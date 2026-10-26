@@ -551,6 +551,8 @@ public static class RegionDatabase
                 "Goldenrod_RadioTower_2F", "Goldenrod_RadioTower_3F", "Goldenrod_RadioTower_4F", "Goldenrod_RadioTower_5F",
                 "Goldenrod_RadioTower_ObservationDeck", "Goldenrod_RadioTower_Elevator", "Goldenrod_Underground_B1F",
                 "Goldenrod_Underground_B2F", "Goldenrod_Underground_Warehouse", "Goldenrod_DeptStore_Basement",
+                // Plan 20 · J15: Route 28's house, Mt. Silver's Pokémon Center and the cave to the summit
+                "Route28_House", "MtSilver_PokemonCenter_1F", "MtSilver_PokemonCenter_B1F", "MtSilverCave_1F", "MtSilverCave_UpperMountainside", "MtSilverCave_LowerMountainside", "MtSilverCave_ExpertBeltChamber", "MtSilverCave_MoltresChamber", "MtSilverCave_2F", "MtSilverCave_3F", "MtSilverCave_Summit",
             }
         },
         new()

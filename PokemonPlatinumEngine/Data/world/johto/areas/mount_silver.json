@@ -1,0 +1,92 @@
+{
+  "key": "mount_silver",
+  "index": 90,
+  "name": "Mt. Silver",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "General",
+  "dayMusic": "GS_CHAMPROAD",
+  "nightMusic": "GS_CHAMPROAD",
+  "encounters": "T31",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Tangela", "level": 41 },
+    { "species": "Ponyta", "level": 42 },
+    { "species": "Tangela", "level": 41 },
+    { "species": "Ponyta", "level": 42 },
+    { "species": "Donphan", "level": 42 },
+    { "species": "Donphan", "level": 42 },
+    { "species": "Rapidash", "level": 44 },
+    { "species": "Rapidash", "level": 44 },
+    { "species": "Doduo", "level": 41, "night": "Sneasel" },
+    { "species": "Dodrio", "level": 43, "night": "Sneasel" },
+    { "species": "Doduo", "level": 41, "night": "Sneasel" },
+    { "species": "Dodrio", "level": 43, "night": "Sneasel" }
+  ],
+  "landRate": 25,
+  "swarm": [
+    "Tangela",
+    "Tangela"
+  ],
+  "surfSwarm": "Poliwhirl",
+  "fishSwarm": "Magikarp",
+  "water": [
+    { "species": "Poliwhirl", "level": 30, "maxLevel": 40 },
+    { "species": "Poliwhirl", "level": 35, "maxLevel": 45 },
+    { "species": "Poliwag", "level": 30, "maxLevel": 40 },
+    { "species": "Poliwag", "level": 30, "maxLevel": 40 },
+    { "species": "Poliwhirl", "level": 48, "maxLevel": 48 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Poliwag", "level": 10, "maxLevel": 10 },
+    { "species": "Poliwag", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 },
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 },
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 },
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Poliwag", "level": 40, "maxLevel": 40 },
+    { "species": "Poliwag", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 },
+    { "species": "Poliwag", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "hoennSounds": [
+    "Whismur",
+    "Linoone"
+  ],
+  "sinnohSounds": [
+    "Buizel",
+    "Bidoof"
+  ],
+  "warps": [
+    { "x": 811, "z": 260, "to": "mount_silver_cave_1f", "toWarp": 0 },
+    { "x": 820, "z": 265, "to": "mount_silver_pokecenter_1f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "t31_monstarball", "looks": "monstarball", "movement": "0", "x": 808, "z": 277, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_T31_REAPER_CLOTH", "item": "Reaper Cloth", "script": "std_itemball_t31_reaper_cloth" },
+    { "id": "t31_gsmiddleman1", "looks": "gsmiddleman1", "movement": "14", "x": 820, "z": 271, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CAMERON", "script": "T31_000+1" }
+  ],
+  "signs": [
+    { "x": 827, "z": 263, "type": 2, "script": "std_hiddenitem_t31_full_restore", "item": "Full Restore", "flag": "FLAG_HIDDEN_ITEM_T31_FULL_RESTORE" },
+    { "x": 810, "z": 262, "type": 1, "script": "T31_002+1" }
+  ],
+  "triggers": []
+}

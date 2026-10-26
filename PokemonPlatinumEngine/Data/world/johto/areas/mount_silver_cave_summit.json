@@ -1,0 +1,25 @@
+{
+  "key": "mount_silver_cave_summit",
+  "index": 465,
+  "name": "Mt. Silver Cave",
+  "matrix": 272,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "5",
+  "camera": "0",
+  "battleBackground": "Snow",
+  "dayMusic": "SILENCE_FIELD",
+  "nightMusic": "SILENCE_FIELD",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 30, "z": 36, "to": "mount_silver_cave_3f", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "d41r0108_red", "looks": "red", "movement": "0", "x": 30, "z": 11, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_25F", "script": "D41R0108_000+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

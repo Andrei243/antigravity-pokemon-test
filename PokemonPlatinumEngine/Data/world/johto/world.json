@@ -226,7 +226,19 @@
     { "name": "IndigoLeague_HallOfFame", "matrix": 170, "area": "johto_pokemon_league_hall_of_fame", "trees": "Round", "setting": "Indoors" },
     // Plan 20 · J13: the Pokéathlon Dome's square, west of Route 35's gate house, and its lobby
     { "name": "PokeathlonDome", "matrix": 153, "area": "pokeathlon_dome", "trees": "Round" },
-    { "name": "PokeathlonDome_1F", "matrix": 154, "area": "pokeathlon_dome_interior_1f", "trees": "Round", "setting": "Indoors" }
+    { "name": "PokeathlonDome_1F", "matrix": 154, "area": "pokeathlon_dome_interior_1f", "trees": "Round", "setting": "Indoors" },
+    // Plan 20 · J15: Route 28's house, Mt. Silver's Pokémon Center and the cave's floors to the summit, where Red waits
+    { "name": "Route28_House", "matrix": 66, "area": "route_28_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "MtSilver_PokemonCenter_1F", "matrix": 73, "area": "mount_silver_pokecenter_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "MtSilver_PokemonCenter_B1F", "matrix": 77, "area": "mount_silver_pokecenter_b1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "MtSilverCave_1F", "matrix": 265, "area": "mount_silver_cave_1f", "trees": "Round", "setting": "Cave" },
+    { "name": "MtSilverCave_UpperMountainside", "matrix": 266, "area": "mount_silver_cave_upper_mountainside", "trees": "Round", "setting": "Cave" },
+    { "name": "MtSilverCave_LowerMountainside", "matrix": 267, "area": "mount_silver_cave_lower_mountainside", "trees": "Round", "setting": "Cave" },
+    { "name": "MtSilverCave_ExpertBeltChamber", "matrix": 268, "area": "mount_silver_cave_expert_belt_chamber", "trees": "Round", "setting": "Cave" },
+    { "name": "MtSilverCave_MoltresChamber", "matrix": 269, "area": "mount_silver_cave_moltres_chamber", "trees": "Round", "setting": "Cave" },
+    { "name": "MtSilverCave_2F", "matrix": 270, "area": "mount_silver_cave_2f", "trees": "Round", "setting": "Cave" },
+    { "name": "MtSilverCave_3F", "matrix": 271, "area": "mount_silver_cave_3f", "trees": "Round", "setting": "Cave" },
+    { "name": "MtSilverCave_Summit", "matrix": 272, "area": "mount_silver_cave_summit", "trees": "Round", "setting": "Cave" }
   ],
   "areas": [
     // Plan 20 · J2: New Bark Town to Route 31's gate house, with their rooms
@@ -312,6 +324,11 @@
     "pokemon_league_will_room", "pokemon_league_koga_room", "pokemon_league_bruno_room", "pokemon_league_karen_room",
     "pokemon_league_lance_room", "johto_pokemon_league_hall_of_fame",
     // Plan 20 · J13: the Pokéathlon Dome's square and its lobby
-    "pokeathlon_dome", "pokeathlon_dome_interior_1f"
+    "pokeathlon_dome", "pokeathlon_dome_interior_1f",
+    // Plan 20 · J15: Route 28, Mt. Silver and its cave to the summit
+    "route_28", "route_28_house", "mount_silver", "mount_silver_pokecenter_1f", "mount_silver_pokecenter_b1f",
+    "mount_silver_cave_1f", "mount_silver_cave_upper_mountainside", "mount_silver_cave_lower_mountainside",
+    "mount_silver_cave_expert_belt_chamber", "mount_silver_cave_moltres_chamber", "mount_silver_cave_2f",
+    "mount_silver_cave_3f", "mount_silver_cave_summit"
   ]
 }

@@ -1,0 +1,7 @@
+{
+  // Mt. Silver Cave's second floor (plan 20 · J15): its rocks give way to Rock Smash, and its six doors open onto the
+  // upper mountainside
+  "area": "mount_silver_cave_2f",
+  "bgmTrack": "johto/lighthouse",
+  "people": {}
+}

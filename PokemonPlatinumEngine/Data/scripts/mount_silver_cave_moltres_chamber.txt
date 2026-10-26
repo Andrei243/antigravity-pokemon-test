@@ -1,0 +1,29 @@
+# Moltres's chamber in Mt. Silver Cave (plan 20 · J15). docs/scripts.md describes the language; the lines are our own,
+# on HeartGold's beats (scr_seq_D41R0105).
+#
+# Moltres waits in the chamber until it has been fought (FLAG_JOHTO_FOUGHT_MOLTRES, ours), as on Mt. Ember in FireRed's
+# Kanto: beaten or caught it is gone for good, run from it flies off and is back on the next visit.
+
+
+script OnEnter
+  if not flag FLAG_JOHTO_FOUGHT_MOLTRES clearflag FLAG_HIDE_MT_SILVER_CAVE_MOLTRES
+  end
+
+script Moltres
+  scene "Moltres"
+  speaker none
+  cry "Moltres"
+  text "Gyaoo!\nThe chamber blazed as Moltres spread its wings of fire!"
+  wildbattle "Moltres" 50
+  if result == 2 goto Fled
+  setflag FLAG_JOHTO_FOUGHT_MOLTRES
+  setflag FLAG_HIDE_MT_SILVER_CAVE_MOLTRES
+  hide self
+  endscene
+  end
+label Fled
+  setflag FLAG_HIDE_MT_SILVER_CAVE_MOLTRES
+  hide self
+  text "Moltres flew off into the dark of the cave!"
+  endscene
+  end

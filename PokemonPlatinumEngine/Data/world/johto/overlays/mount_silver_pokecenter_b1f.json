@@ -1,0 +1,25 @@
+{
+  // Mt. Silver's Pokémon Center below ground (plan 20 · J15): the Wi-Fi counters, closed (decision 06 · 7)
+  "area": "mount_silver_pokecenter_b1f",
+  "bgmTrack": "johto/indigo_plateau",
+  "people": {
+    "t31pc0102_wifisf": {
+      "name": "Receptionist",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    },
+    "t31pc0102_pcwoman2": {
+      "name": "Receptionist",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    },
+    "t31pc0102_pcwoman2_2": {
+      "name": "Receptionist",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    }
+  }
+}

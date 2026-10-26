@@ -1,0 +1,90 @@
+{
+  "key": "mount_silver_cave_moltres_chamber",
+  "index": 462,
+  "name": "Mt. Silver Cave",
+  "matrix": 269,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave2",
+  "dayMusic": "GS_TO_TOUDAI",
+  "nightMusic": "GS_TO_TOUDAI",
+  "encounters": "D41R0105",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Quagsire", "level": 45 },
+    { "species": "Steelix", "level": 48 },
+    { "species": "Quagsire", "level": 45 },
+    { "species": "Golduck", "level": 48 },
+    { "species": "Donphan", "level": 48 },
+    { "species": "Donphan", "level": 47 },
+    { "species": "Quagsire", "level": 45, "night": "Misdreavus" },
+    { "species": "Quagsire", "level": 45, "night": "Misdreavus" },
+    { "species": "Golbat", "level": 48 },
+    { "species": "Larvitar", "level": 20 },
+    { "species": "Golbat", "level": 48 },
+    { "species": "Larvitar", "level": 15 }
+  ],
+  "landRate": 5,
+  "swarm": [
+    "Quagsire",
+    "Quagsire"
+  ],
+  "surfSwarm": "Seaking",
+  "fishSwarm": "Magikarp",
+  "water": [
+    { "species": "Seaking", "level": 30, "maxLevel": 40 },
+    { "species": "Seaking", "level": 35, "maxLevel": 45 },
+    { "species": "Goldeen", "level": 30, "maxLevel": 40 },
+    { "species": "Goldeen", "level": 30, "maxLevel": 40 },
+    { "species": "Goldeen", "level": 30, "maxLevel": 40 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 10 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Goldeen", "level": 40, "maxLevel": 40 },
+    { "species": "Goldeen", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 },
+    { "species": "Seaking", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "hoennSounds": [
+    "Absol",
+    "Makuhita"
+  ],
+  "sinnohSounds": [
+    "Bronzor",
+    "Chingling"
+  ],
+  "warps": [
+    { "x": 10, "z": 22, "to": "mount_silver_cave_1f", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "d41r0105_tsure_poke_static_moltres", "looks": "follower_mon_static_moltres", "movement": "15", "x": 10, "z": 9, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_MT_SILVER_CAVE_MOLTRES", "script": "D41R0105_000+1" }
+  ],
+  "signs": [
+    { "x": 18, "z": 1, "type": 2, "script": "std_hiddenitem_d41r0105_ultra_ball", "item": "Ultra Ball", "flag": "FLAG_HIDDEN_ITEM_D41R0105_ULTRA_BALL" },
+    { "x": 2, "z": 1, "type": 2, "script": "std_hiddenitem_d41r0105_hyper_potion", "item": "Hyper Potion", "flag": "FLAG_HIDDEN_ITEM_D41R0105_HYPER_POTION" }
+  ],
+  "triggers": []
+}

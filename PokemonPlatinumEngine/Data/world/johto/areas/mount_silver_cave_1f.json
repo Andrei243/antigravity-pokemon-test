@@ -1,0 +1,98 @@
+{
+  "key": "mount_silver_cave_1f",
+  "index": 122,
+  "name": "Mt. Silver Cave",
+  "matrix": 265,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave1",
+  "dayMusic": "GS_TO_TOUDAI",
+  "nightMusic": "GS_TO_TOUDAI",
+  "encounters": "D41R0101",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Onix", "level": 42 },
+    { "species": "Donphan", "level": 44 },
+    { "species": "Onix", "level": 42 },
+    { "species": "Donphan", "level": 44 },
+    { "species": "Phanpy", "level": 43 },
+    { "species": "Graveler", "level": 43 },
+    { "species": "Graveler", "level": 42 },
+    { "species": "Graveler", "level": 41 },
+    { "species": "Golbat", "level": 45 },
+    { "species": "Larvitar", "level": 20 },
+    { "species": "Golbat", "level": 45 },
+    { "species": "Larvitar", "level": 15 }
+  ],
+  "landRate": 10,
+  "swarm": [
+    "Onix",
+    "Onix"
+  ],
+  "surfSwarm": "Seaking",
+  "fishSwarm": "Magikarp",
+  "water": [
+    { "species": "Seaking", "level": 30, "maxLevel": 40 },
+    { "species": "Seaking", "level": 35, "maxLevel": 45 },
+    { "species": "Goldeen", "level": 30, "maxLevel": 40 },
+    { "species": "Goldeen", "level": 30, "maxLevel": 40 },
+    { "species": "Seaking", "level": 50, "maxLevel": 50 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 10 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Seaking", "level": 20, "maxLevel": 20 },
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Seaking", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Gyarados", "level": 40, "maxLevel": 40 },
+    { "species": "Seaking", "level": 40, "maxLevel": 40 },
+    { "species": "Seaking", "level": 40, "maxLevel": 40 },
+    { "species": "Gyarados", "level": 40, "maxLevel": 40 },
+    { "species": "Seaking", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "hoennSounds": [
+    "Absol",
+    "Makuhita"
+  ],
+  "sinnohSounds": [
+    "Bronzor",
+    "Chingling"
+  ],
+  "warps": [
+    { "x": 40, "z": 61, "to": "mount_silver", "toWarp": 0 },
+    { "x": 15, "z": 12, "to": "mount_silver_cave_moltres_chamber", "toWarp": 0 },
+    { "x": 34, "z": 47, "to": "mount_silver_cave_expert_belt_chamber", "toWarp": 0 },
+    { "x": 51, "z": 46, "to": "mount_silver_cave_lower_mountainside", "toWarp": 2 },
+    { "x": 53, "z": 41, "to": "mount_silver_cave_lower_mountainside", "toWarp": 1 },
+    { "x": 55, "z": 24, "to": "mount_silver_cave_lower_mountainside", "toWarp": 0 },
+    { "x": 32, "z": 9, "to": "mount_silver_cave_2f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "d41r0101_monstarball", "looks": "monstarball", "movement": "0", "x": 54, "z": 15, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D41R0101_FULL_RESTORE", "item": "Full Restore", "script": "std_itemball_d41r0101_full_restore" },
+    { "id": "d41r0101_gsmiddleman1", "looks": "gsmiddleman1", "movement": "14", "x": 12, "z": 40, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CAMERON", "script": "D41R0101_000+1" }
+  ],
+  "signs": [
+    { "x": 45, "z": 45, "type": 2, "script": "std_hiddenitem_d41r0101_dire_hit", "item": "Dire Hit", "flag": "FLAG_HIDDEN_ITEM_D41R0101_DIRE_HIT" },
+    { "x": 10, "z": 39, "type": 2, "script": "std_hiddenitem_d41r0101_ultra_ball", "item": "Ultra Ball", "flag": "FLAG_HIDDEN_ITEM_D41R0101_ULTRA_BALL" },
+    { "x": 45, "z": 17, "type": 2, "script": "std_hiddenitem_d41r0101_revive", "item": "Revive", "flag": "FLAG_HIDDEN_ITEM_D41R0101_REVIVE" }
+  ],
+  "triggers": []
+}

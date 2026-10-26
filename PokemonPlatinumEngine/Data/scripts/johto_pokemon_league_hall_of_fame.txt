@@ -22,6 +22,8 @@ script OnEnter
   setflag JohtoHallOfFame
   # Johto's swarms begin with the Champion (plan 20 · J13, part c; HeartGold turns them on in Professor Oak's lab)
   swarms on
+  # Red is back on Mt. Silver's summit for every new entry (plan 20 · J15)
+  clearflag FLAG_UNK_25F
   halloffame show
   heal
   warp "NewBark_PlayersHouse_2F" 4 9 up

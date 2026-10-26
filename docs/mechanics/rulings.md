@@ -5848,6 +5848,17 @@ Our own, off under Normal (`RunRules.Random` is null, `Randomizer.For` answers n
 | Swarms | One place of twenty a day (`sSwarmMapLUT`), met in the grass, on the water or on a rod, turned on in Oak's lab and told by Pokémon Talk | The same twenty by the day's number modulo 20; they begin at the Johto Hall of Fame (`swarms on`); the radio tells the day's one time in two; the nine Kanto places are in the table and open nowhere yet |
 | The Move Relearner | A Heart Scale for a move the Pokémon could have learned by its level and doesn't know | The same (`Relearning.MovesFor`, the party menu's REMEMBER list) in Pastoria and in Blackthorn; the scale goes only once the move is learned; Fallarbor's relearner still only talks |
 
+## Mt. Silver and Red (2026-10-26, plan 20 · J15, first part)
+
+| Subject | HeartGold | This game |
+|---|---|---|
+| Who may go west to Mt. Silver | Professor Oak's word once all sixteen Badges (Johto's and Kanto's) are won; the guard at the reception gate's west door (`R22R0101_002`, the second trigger, on `VAR_UNK_4110` 1) turns back anyone without it | The same guard and trigger: a Champion of Johto (`JohtoHallOfFame`) who holds Kanto's eight Badges too (`badges of kanto >= 8`), sixteen in all; Kanto's are the region's own, won in FireRed's Kanto, since HeartGold's Kanto Gyms aren't built. Let by, the trigger rests at `VAR_UNK_4110` 2 (ours). A game begun in Johto has no way to Kanto's Badges yet, so Mt. Silver waits for it |
+| The places | Route 28 with its house, Mt. Silver's foot and Pokémon Center, the cave's eight areas | All of them, HeartGold's maps as the second DS reader reads them; the cave plays the lighthouse's song as HeartGold does, and its silent summit the same song (no silent track yet) |
+| The celebrity on Route 28 | TM47 Steel Wing once | The same, in our own words (`FLAG_GOT_TM47_ON_ROUTE_28`, ours) |
+| Red | Silent; battled when spoken to; gone afterwards, back after each new entry into the Hall of Fame | The same: `johto_pkmn_trainer_red_red`, HeartGold's team; beaten, `FLAG_UNK_25F` hides him and Johto's Hall of Fame scene clears it; `FLAG_JOHTO_BEAT_RED` (ours) remembers the first win |
+| Moltres | Waits in its chamber off the first floor | Level 50, as on Mt. Ember: fought it is gone (`FLAG_JOHTO_FOUGHT_MOLTRES`, ours), run from it is back on the next visit |
+| Left | Kanto three years on as Johto's maps (its towns, Gyms and the eight Badges, the S.S. Aqua's voyage to Vermilion, the Magnet Train, the Power Plant, Suicune's Kanto stops, the Kanto Apricorn trees), the rival's Mt. Moon battle, Blue at the gate, Lance's rematch teams, Cameron's photographs | |
+
 ## Route 40's way to the Battle Frontier (2026-10-25, plan 20 · J13, part d)
 
 HeartGold's gate on Route 40 leads north to a Battle Frontier of its own (`battle_frontier_frontier_access` and the

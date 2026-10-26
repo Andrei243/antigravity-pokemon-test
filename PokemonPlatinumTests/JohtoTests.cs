@@ -566,11 +566,12 @@ public class JohtoTests
         Assert.Equal(InteriorStyle.PokemonCenter, hall.Interior);
         Assert.Contains(hall.Everyone, n => n.Script == "Nurse");
 
-        // The reception gate: Route 28's door is shut, the guard turns back anyone short of eight Badges, and the door to
-        // Kanto's Route 22 is held until the Champion has been faced
+        // The reception gate: the guard turns back anyone short of eight Badges, and the door to Kanto's Route 22 is held
+        // until the Champion has been faced; Route 28's door is open since plan 20 · J15, its guard's line the second trigger
         var gate = MapNamed("Route22_LeagueReceptionGate");
         var route28 = Johto.Area("route_22_pokemon_league_reception_gate")!.Warps[3];
-        Assert.Null(gate.GetWarpAt(route28.X, route28.Z));
+        Assert.Equal("Johto", gate.GetWarpAt(route28.X, route28.Z)?.TargetMap);
+        Assert.Contains(gate.Triggers, t => t.Script == "MtSilverCheck" && t.Variable == "VAR_UNK_4110" && t.Value == 1);
         Assert.Contains(gate.Triggers, t => t.Script == "BadgeCheck" && t.Variable == "VAR_UNK_4110" && t.Value == 0);
         Assert.Contains(gate.Triggers, t => t.Script == "KantoShut");
 
@@ -597,6 +598,30 @@ public class JohtoTests
         var spawn = SpawnLocations.ArrivedIn(RegionDatabase.Johto, "indigo_plateau")!;
         Assert.Equal("IndigoLeague_PokemonCenter_1F", spawn.Room);
         Assert.Equal(spawn.Room, Overworld.GetWarpAt(spawn.X, spawn.Y - 1)?.TargetMap);
+    }
+
+    [Fact]
+    public void MtSilverIsWalkedToByRouteTwentyEightAndItsCaveClimbedToRedAtTheSummit()
+    {
+        // Plan 20 · J15: west from the League's reception gate along Route 28 to Mt. Silver, its Pokémon Center and the cave
+        // to the summit, every floor walked into; Red waits at the top with HeartGold's team
+        var walked = Walked.Value;
+        var outside = walked.Single(kv => kv.Key.Name == "Johto").Value;
+        foreach (string key in new[] { "route_28", "mount_silver" })
+            Assert.True(outside.Any(t => Overworld.AreaAt(t.X, t.Y)?.Key == key), $"{key} can't be walked to from the start");
+        foreach (string name in new[] { "Route28_House", "MtSilver_PokemonCenter_1F", "MtSilver_PokemonCenter_B1F", "MtSilverCave_1F",
+                     "MtSilverCave_LowerMountainside", "MtSilverCave_ExpertBeltChamber", "MtSilverCave_MoltresChamber", "MtSilverCave_2F",
+                     "MtSilverCave_UpperMountainside", "MtSilverCave_3F", "MtSilverCave_Summit" })
+            Assert.True(walked.Keys.Any(m => m.Name == name), $"nobody walks into {name}");
+        var summit = walked.Single(kv => kv.Key.Name == "MtSilverCave_Summit");
+        var red = summit.Key.Everyone.Single(n => n.Key == "d41r0108_red");
+        Assert.Equal("Red", red.Name);
+        Assert.Contains(summit.Value, t => Math.Abs(t.X - red.GridX) + Math.Abs(t.Y - red.GridY) == 1);
+        var team = TrainerDatabase.Get("johto_pkmn_trainer_red_red", RegionDatabase.Johto)!;
+        Assert.Equal(new[] { "Pikachu", "Lapras", "Snorlax", "Venusaur", "Charizard", "Blastoise" }, TrainerDatabase.PartyOf(team).Members.Select(p => p.Species.Name));
+        Assert.Equal("Mt. Silver", Overworld.DisplayNameAt(Johto.Area("mount_silver")!.Warps[0].X, Johto.Area("mount_silver")!.Warps[0].Z + 1));
+        Assert.Equal("johto/lighthouse", summit.Key.BgmTrackAt(red.GridX, red.GridY));
+        Assert.Equal(InteriorStyle.PokemonCenter, MapNamed("MtSilver_PokemonCenter_1F").Interior);
     }
 
     [Fact]
