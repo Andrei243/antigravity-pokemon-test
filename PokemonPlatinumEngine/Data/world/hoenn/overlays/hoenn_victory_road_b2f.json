@@ -2,6 +2,7 @@
   // Victory Road's lowest floor (plan 21 · H9): six trainers, two of them watching one bank together, and the ways back
   // up to the middle floor
   "area": "hoenn_victory_road_b2f",
+  "ours": { "land": [ ["Deceivore", 142, 146] ], "superRod": [ ["Namazuro", 148, 152] ] },
   "name": "Victory Road",
   "bgmTrack": "hoenn/victory_road",
   "people": {

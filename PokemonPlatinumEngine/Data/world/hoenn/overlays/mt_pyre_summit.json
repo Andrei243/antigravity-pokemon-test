@@ -5,6 +5,7 @@
   // (mt_pyre_summit.txt). Maxie stands beside Archie only when the two bring the orbs back (plan 21 · H8), and the
   // triggers for that scene (3 to 5) wait for it
   "area": "mt_pyre_summit",
+  "ours": { "land": [ ["Ascetrance", 145, 149], ["Carillone", 145, 149] ] },
   "bgmTrack": "hoenn/mt_pyre_exterior",
   "trees": "Round",
   "triggers": [

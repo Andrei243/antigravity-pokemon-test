@@ -2,6 +2,7 @@
   // Meteor Falls' upper room (plan 21 · H4, part b), reached by Waterfall from the first room: a Dragon Tamer and an old
   // couple who battle together, and the ways down to the lower rooms
   "area": "meteor_falls_1f_2r",
+  "ours": { "land": [ ["Selenolith", 150, 154], ["Heliolith", 150, 154] ] },
   "bgmTrack": "hoenn/cave_of_origin",
   "trees": "Round",
   "people": {

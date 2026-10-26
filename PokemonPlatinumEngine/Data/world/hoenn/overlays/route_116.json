@@ -3,6 +3,7 @@
   // mouth while the grunt holds his Peeko inside, is route_116.txt's (trigger 0). East of the tunnel's mouth the road
   // runs on toward Verdanturf Town past rocks only Rock Smash moves (plan 21 · H3), and the ways that lead there are shut
   "area": "route_116",
+  "ours": { "land": [ ["Shinobuzz", 145, 149] ] },
   "bgmTrack": "hoenn/route104",
   "trees": "Round",
   "locked": [ 3, 4 ],

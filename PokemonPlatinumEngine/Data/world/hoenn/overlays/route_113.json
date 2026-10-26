@@ -4,6 +4,7 @@
   // grass, to be gathered in the glass workshop's Soot Sack (GameEngine.GatherAsh). Two of its doors lead to places
   // not open yet (a secret base's hollow and the way Terra Cave would open), and stay shut
   "area": "route_113",
+  "ours": { "land": [ ["Whirlpanda", 140, 144] ] },
   "bgmTrack": "hoenn/route113",
   "trees": "Round",
   "locked": [ 1, 2 ],

@@ -2,6 +2,7 @@
   // Route 43 (plan 20 · J10): the road north from Mahogany Town to the Lake of Rage, its six trainers by their own
   // records. Its Apricorn tree is plan 20 · J6's
   "area": "route_43",
+  "ours": { "land": [ ["Zenitheon", 120, 124] ] },
   "bgmTrack": "johto/route42",
   "trees": "Round",
   "people": {

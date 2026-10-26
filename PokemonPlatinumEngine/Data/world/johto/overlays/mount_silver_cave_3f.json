@@ -1,6 +1,7 @@
 {
   // Mt. Silver Cave's third floor (plan 20 · J15): the last of the climb, its way up the summit's
   "area": "mount_silver_cave_3f",
+  "ours": { "land": [ ["Eclipseon", 120, 124], ["Pinecitadel", 112, 116] ] },
   "bgmTrack": "johto/lighthouse",
   "people": {}
 }

@@ -6,6 +6,7 @@
   // Wattson's Basement Key (plan 21 · H12, part d); Team Aqua's grunts stand at the way west to Route 103 until Mt. Chimney (H4), and the professor's own scene
   // here, his number for Match Call, is left for later
   "area": "route_110",
+  "ours": { "land": [ ["Anodion", 142, 146], ["Cathodion", 142, 146] ] },
   "bgmTrack": "hoenn/route110",
   "trees": "Round",
   "triggers": [

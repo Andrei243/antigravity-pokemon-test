@@ -4,6 +4,7 @@
   // that nothing in this game sets, so they always graze (hiddenBy ""). The photographer, the gentleman and the
   // Monday-night visitor wait for their chapters; the Apricorn tree is plan 20 · J6's
   "area": "route_39",
+  "ours": { "land": [ ["Pastorine", 115, 119] ] },
   "bgmTrack": "johto/route38",
   "trees": "Round",
   "people": {

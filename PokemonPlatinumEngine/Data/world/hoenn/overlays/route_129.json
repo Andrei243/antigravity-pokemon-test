@@ -3,6 +3,7 @@
   // While the titans' weather lasts (FLAG_SYS_WEATHER_CTRL) the downpour and the drought take turns over it, as over the
   // rest of the eastern sea. The sea floor under it is the Marine Cave's, left for the post-game (plan 21 · H12)
   "area": "route_129",
+  "ours": { "superRod": [ ["Leviawhale", 155, 159] ] },
   "bgmTrack": "hoenn/route119",
   "trees": "Round",
   "zones": [

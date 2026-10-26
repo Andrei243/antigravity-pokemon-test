@@ -6,6 +6,7 @@
   // under the downpour and the drought by turns, with Emerald's song of it. ever_grande_city.txt gives a save from
   // before this stretch its hiding (common.HoennChapterTwelve)
   "area": "ever_grande_city",
+  "ours": { "superRod": [ ["Heartreef", 140, 144] ] },
   "bgmTrack": "hoenn/ever_grande",
   "trees": "Round",
   "architecture": "Bloomstone",

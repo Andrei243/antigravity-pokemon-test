@@ -2,6 +2,7 @@
   // Route 28 (plan 20 · J15): the road west from the League's reception gate to the foot of Mt. Silver, open to a
   // Champion of Johto with Kanto's eight Badges too (the gate's guard). A house stands by the way; a tree waits for Cut
   "area": "route_28",
+  "ours": { "land": [ ["Helianthra", 110, 114], ["Guillotyne", 120, 124] ] },
   "bgmTrack": "johto/indigo_plateau",
   "trees": "Round",
   "people": {},

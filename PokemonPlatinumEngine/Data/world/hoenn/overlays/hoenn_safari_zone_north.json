@@ -2,6 +2,7 @@
   // The Safari Zone's north part (plan 21 · H6, part b), up its muddy slopes: a fisherman, a collector and the rocks
   // Rock Smash breaks
   "area": "hoenn_safari_zone_north",
+  "ours": { "land": [ ["Gulpgorge", 146, 150] ] },
   "bgmTrack": "hoenn/safari_zone",
   "trees": "Round",
   "people": {

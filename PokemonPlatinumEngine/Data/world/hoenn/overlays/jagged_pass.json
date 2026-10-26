@@ -6,6 +6,7 @@
   // VAR_JAGGED_PASS_STATE 2), and the grunt who guards the spot battles until Mt. Pyre's old woman has given the emblem
   // (FLAG_HIDE_JAGGED_PASS_MAGMA_GUARD, set on the summit)
   "area": "jagged_pass",
+  "ours": { "land": [ ["Volcamel", 150, 154], ["Boarcane", 148, 152] ] },
   "bgmTrack": "hoenn/petalburg_woods",
   "trees": "Round",
   "switches": [ { "warp": 4, "from": "FLAG_HOENN_MAGMA_HIDEOUT_OPEN" } ],

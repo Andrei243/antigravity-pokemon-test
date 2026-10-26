@@ -2,6 +2,7 @@
   // Route 114 (plan 21 · H4, part a): the rugged valley north from Fallarbor Town to Meteor Falls, with the Fossil
   // Maniac's house and Lanette's (route_114.txt). The ways into Terra Cave's hollow and a secret base's stay shut
   "area": "route_114",
+  "ours": { "land": [ ["Ravagoose", 148, 152], ["Scimitail", 148, 152] ] },
   "bgmTrack": "hoenn/route110",
   "trees": "Round",
   "locked": [ 3, 4 ],

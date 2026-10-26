@@ -4,6 +4,7 @@
   // then go off south to Mt. Pyre (the area's triggers 0 to 3, VAR_ROUTE121_STATE). The way on east to Lilycove and
   // the sea south to Mt. Pyre are plan 21 · H7's
   "area": "route_121",
+  "ours": { "land": [ ["Hyaenarch", 142, 146], ["Chromeleon", 145, 149] ] },
   "bgmTrack": "hoenn/route120",
   "trees": "Round",
   "triggers": [

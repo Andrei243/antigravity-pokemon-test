@@ -3,6 +3,7 @@
   // Islands, whose ways in lie behind whirlpools that only Whirlpool crosses (style guide, "Water"). Ten swimmers by
   // their own records
   "area": "route_41",
+  "ours": { "surf": [ ["Raysail", 112, 116] ] },
   "bgmTrack": "johto/route34",
   "trees": "Round",
   "people": {

@@ -3,6 +3,7 @@
   // hall and sends them out with Wally, whose catch in the tall grass east of town is petalburg_city.txt's. Wally's
   // father in the street and Scott are later chapters'; the road west to Route 104 isn't open yet
   "area": "petalburg_city",
+  "ours": { "superRod": [ ["Crayronin", 148, 152] ] },
   "bgmTrack": "hoenn/petalburg",
   "trees": "Round",
   "architecture": "Parkside",

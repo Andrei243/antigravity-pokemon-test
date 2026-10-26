@@ -2,6 +2,7 @@
   // Shoal Cave's ice room (plan 21 · H8, part d), at the foot of the cave beyond the lower room: a floor of ice and
   // two items, TM07 Hail and the Never-Melt Ice
   "area": "shoal_cave_low_tide_ice_room",
+  "ours": { "land": [ ["Bergmaw", 145, 149] ] },
   "bgmTrack": "hoenn/mt_pyre",
   "trees": "Round"
 }

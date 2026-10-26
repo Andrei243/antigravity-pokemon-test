@@ -4,6 +4,7 @@
   // under the rocks and the islets lands on the same tile of the sea above. Clamperl, Chinchou and Relicanth live in its
   // seaweed; its shards and pearls are hidden in the sand.
   "area": "underwater_route_124",
+  "ours": { "surf": [ ["Gulpereel", 150, 154] ] },
   "name": "Underwater",
   "bgmTrack": "hoenn/underwater",
   "trees": "Round"

@@ -4,6 +4,7 @@
   // by day his double stands on his tile and only talks (plan 20 · J7, scripts/route_34.txt). The friend with the Marill and
   // Cameron are later chapters'
   "area": "route_34",
+  "ours": { "superRod": [ ["Reefcrown", 106, 110] ] },
   "bgmTrack": "johto/route34",
   "trees": "Round",
   "people": {

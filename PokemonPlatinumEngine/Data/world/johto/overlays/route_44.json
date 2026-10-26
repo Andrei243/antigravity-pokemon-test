@@ -2,6 +2,7 @@
   // Route 44 (plan 20 · J10): the road east from Mahogany Town to the Ice Path, its seven trainers by their own records.
   // Its Apricorn tree is plan 20 · J6's
   "area": "route_44",
+  "ours": { "superRod": [ ["Krakannon", 112, 116] ] },
   "bgmTrack": "johto/route42",
   "trees": "Round",
   "people": {

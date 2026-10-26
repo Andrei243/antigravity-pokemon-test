@@ -4,6 +4,7 @@
   // Embedded Tower, whose rooms (warps 4 to 6) are a later session's, as are Crasher Wake by the waterfall and Chuck
   // after the Kanto Badges. Thom and Kae, and Duff and Eda, each battle as one trainer of HeartGold's table
   "area": "route_47",
+  "ours": { "land": [ ["Noctaugur", 110, 114], ["Sleighwing", 104, 108] ], "superRod": [ ["Abyssolux", 112, 116] ] },
   "bgmTrack": "johto/route38",
   "trees": "Round",
   "locked": [ 4, 5, 6 ],
