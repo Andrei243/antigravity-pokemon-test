@@ -87,6 +87,7 @@ public partial class BattleEngine
             OffersSwitch = rules.OffersSwitch,
             Difficulty = rules.Difficulty,
             RunLevelCap = rules.RunLevelCap,
+            CrossedExp = rules.CrossedExp,
             Scene = scene
         };
         return new BattleEngine(setup, file);

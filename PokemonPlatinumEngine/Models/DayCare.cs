@@ -48,6 +48,14 @@ public sealed class DayCare
 
     public int Count => pokemon.Count(p => p != null);
 
+    /// <summary>
+    /// The level the player's Pokémon are held to where the Day Care is (plan 18 · W4b-3: the game's
+    /// <c>CurrentLevelCap</c>, a run's cap or a crossed region's ceiling), null for none: the steps it gives as EXP stop
+    /// there as a battle's do (<see cref="LevelCaps.Allowed"/>), and the fee counts only the levels grown under it. Not
+    /// saved: the engine sets it every frame.
+    /// </summary>
+    public int? LevelCap { get; set; }
+
     /// <summary>Whether an Egg is waiting for the player (<c>Daycare_HasEgg</c>).</summary>
     public bool HasEgg => Offspring != 0;
 
@@ -98,7 +106,7 @@ public sealed class DayCare
     public int LevelNow(int place)
     {
         if (this[place] is not { } p) return 0;
-        return LevelForExp(p, p.CurrentExp + steps[place]);
+        return LevelForExp(p, p.CurrentExp + LevelCaps.Allowed(p, steps[place], LevelCap));
     }
 
     /// <summary>The levels a Pokémon in a place has grown (the Day-Care Lady's "grown by N levels").</summary>
@@ -117,7 +125,7 @@ public sealed class DayCare
     public Pokemon? TakeBack(Party party, int place)
     {
         if (this[place] is not { } p || party.IsFull) return null;
-        if (!p.AtTheCap) Grow(p, steps[place]);
+        if (!p.AtTheCap) Grow(p, LevelCaps.Allowed(p, steps[place], LevelCap));
         pokemon[place] = null;
         steps[place] = 0;
         party.Add(p);

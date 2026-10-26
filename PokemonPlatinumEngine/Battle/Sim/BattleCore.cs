@@ -93,6 +93,13 @@ public sealed class CoreSetup
     public int RunLevelCap { get; init; }
 
     /// <summary>
+    /// The battle is fought in a region the game crossed into (plan 18 · W4b-3, Design C): every EXP it gives is half as
+    /// much again (<see cref="LevelCaps.CrossedExp"/>), after the formula and before Easy's three halves, with which it
+    /// stacks. Off unless given, which changes nothing; a record of the battle keeps it.
+    /// </summary>
+    public bool CrossedExp { get; init; }
+
+    /// <summary>
     /// The Nuzlocke's terms for this battle (plan 13 · V4): no revive for the player, and a wild Pokémon that may not be
     /// caught refuses every ball (<see cref="NuzlockeTerms.Catch"/>). Null for none, which changes nothing. A record of the
     /// battle doesn't keep it: it only refuses choices, so the answers a battle was given replay alike without it.
@@ -230,6 +237,9 @@ public sealed partial class BattleCore : IBattleContext
     /// <summary>The level EXP stops at in this battle (<see cref="CoreSetup.RunLevelCap"/>), null for none.</summary>
     public int? RunLevelCap { get; }
 
+    /// <summary>Whether this battle's EXP is a crossed region's, half as much again (<see cref="CoreSetup.CrossedExp"/>).</summary>
+    public bool CrossedExp { get; }
+
     /// <summary>The Nuzlocke's terms (<see cref="CoreSetup.Nuzlocke"/>), null for none.</summary>
     public NuzlockeTerms? Nuzlocke { get; }
 
@@ -294,6 +304,7 @@ public sealed partial class BattleCore : IBattleContext
         MegaMaxDen = setup.MegaMaxDen;
         Difficulty = setup.Difficulty;
         RunLevelCap = setup.RunLevelCap > 0 ? setup.RunLevelCap : null;
+        CrossedExp = setup.CrossedExp;
         Nuzlocke = setup.Nuzlocke;
         Restrictions = setup.Restrictions;
         KeyStone = setup.KeyStone;
@@ -420,7 +431,7 @@ public sealed partial class BattleCore : IBattleContext
     /// given from outside. Null when its numbers aren't a <see cref="BattleRandom"/>'s: nothing else comes out
     /// the same everywhere.
     /// </summary>
-    public BattleRecord? Record => startedFrom is uint seed ? new BattleRecord(seed, answers.ToList(), Inverse, OffersSwitch, Difficulty, RunLevelCap ?? 0, Format) : null;
+    public BattleRecord? Record => startedFrom is uint seed ? new BattleRecord(seed, answers.ToList(), Inverse, OffersSwitch, Difficulty, RunLevelCap ?? 0, Format, CrossedExp) : null;
 
     /// <summary>
     /// Plays a record through. The battle must be new, between teams as they were when the recorded one began,
@@ -434,6 +445,7 @@ public sealed partial class BattleCore : IBattleContext
         if (OffersSwitch != record.OffersSwitch) throw new ArgumentException("A replay offers a switch where the recorded battle did (plan 08 · P1): Shift's as Shift's");
         if (Difficulty != record.Difficulty) throw new ArgumentException("A replay is fought under the record's own difficulty (plan 13 · V2): Easy's EXP as Easy's");
         if ((RunLevelCap ?? 0) != record.RunLevelCap) throw new ArgumentException("A replay is fought under the record's own level cap (plan 13 · V3): a capped battle's EXP as capped");
+        if (CrossedExp != record.CrossedExp) throw new ArgumentException("A replay gives the record's own EXP (plan 18 · W4b-3): a crossed region's half again as such");
         if (record.Format is { } format && format != Format) throw new ArgumentException("A replay is fought in the record's own format (plan 14 · B3): a horde's as a horde");
         Start();
         foreach (var answered in record.Answers) Submit(answered);
@@ -1366,6 +1378,8 @@ public sealed partial class BattleCore : IBattleContext
     /// </summary>
     private void Give(Pokemon p, int exp, bool boosted, Pokemon foe, bool fought = true)
     {
+        // A crossed region's foes give half as much again (plan 18 · W4b-3), after the formula and before Easy's three halves
+        if (CrossedExp) exp = LevelCaps.CrossedExp(exp);
         // Easy gives three halves of it (plan 13 · V2); the other difficulties leave it as it is
         exp = DifficultyRules.ScaleExp(exp, Difficulty);
         // The run's level cap (plan 13 · V3) lets through only what takes it to the cap's level; with none, exp is exp

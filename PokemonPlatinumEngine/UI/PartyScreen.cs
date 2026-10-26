@@ -102,6 +102,9 @@ public class PartyScreen
     /// <summary>Whether the options' PARTY TOOLS row is on (plan 12 · Q19): a Pokémon's menu then has REMEMBER and RENAME. Set by the game while the menu is open.</summary>
     public bool PartyTools { get; set; }
 
+    /// <summary>The level the player's Pokémon are held to where the player stands (plan 18 · W4b-3, the game's <c>CurrentLevelCap</c>), null for none: the summary says so under the EXP bar of one that is held. Set by the game while the menu is open.</summary>
+    public int? RunCap { get; set; }
+
     /// <summary>While REMEMBER's list is open: the moves it offers, the one under the cursor, and the move a full set is asked to make room for.</summary>
     public bool Remembering { get; private set; }
     public IReadOnlyList<string> RememberMoves { get; private set; } = Array.Empty<string>();
@@ -604,7 +607,7 @@ public class PartyScreen
         if (ShowSummary && SelectedIndex < party.Count)
         {
             ModernUi.DrawSummary(screenWidth, screenHeight, party.Members[SelectedIndex], SelectedIndex, party.Count,
-                Math.Clamp(summaryAge / SummaryAppearTime, 0f, 1f), SummaryPage, RibbonCursor, MarkCursor, MoveSelection);
+                Math.Clamp(summaryAge / SummaryAppearTime, 0f, 1f), SummaryPage, RibbonCursor, MarkCursor, MoveSelection, heldAt: RunCap);
         }
         else if (Entering)
         {

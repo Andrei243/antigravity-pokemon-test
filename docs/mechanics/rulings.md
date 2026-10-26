@@ -6226,3 +6226,35 @@ Two of Emerald's places left for the time after Norman and after the Hall of Fam
 - **Left for a later part**: the Marine and Terra Caves with the Weather Institute's reports, Trainer Hill, Mirage
   Island, Altering Cave, the event islands, the S.S. Tidal, the island's halls, the Devon Corporation's revival of the
   desert's fossils, and Wattson's rematch in his Gym (Emerald's FLAG_WATTSON_REMATCH_AVAILABLE).
+
+## A crossed region's EXP (2026-10-26, plan 18 · W4b-3)
+
+Design C of [the levelling proposal](../plans/W4b-levelling-the-world.md), approved by the user on 2026-10-26 with
+every other answer at its default (L5: in every difficulty). Two rules of EXP, only in a region the game crossed into
+(`GameEngine.CrossedLevels`: every built region but the one the game began in, so never Sinnoh for a game from the title):
+
+- **Its foes give half as much again** (`CoreSetup.CrossedExp`, `LevelCaps.CrossedExp`): every EXP the battle gives is
+  × 3 / 2, rounded down, after the formula (as a Lucky Egg's share is) and before Easy's three halves, with which it
+  stacks. *Our ruling*: it rides on every battle the game begins there (wild and trainers'), and the battles that give
+  no EXP (the Frontier's, the Safari Game's, Pal Park's) are no different. A `BattleRecord` and a Vs. Recorder file keep
+  the flag (a file without it reads as a battle without the bonus), and a replay under the other is refused, as for
+  Easy and the run's cap.
+- **A soft ceiling** (`LevelCaps.Ceiling`): no Pokémon gains EXP past 110% of the region's next milestone, rounded down
+  and held under 260. The milestone (`LevelCaps.MilestoneOf`) is the region's cap table as met (W4b-1's mapped `caps`)
+  at the Badges held, so the next Leader's best and with all eight the Champion's; once the region's Hall of Fame is
+  entered it is the post-game's top, the last pair of the region's `levels`. Kanto's ceilings run 77 82 84 89 99 99 102
+  104 114 and 132 after its Hall of Fame; Johto's 122 to 149 and 171; Hoenn's 156 to 178 and 201; Unova's 182 to 203
+  and 223. *The user's option B stands*: the ceiling never lowers a level and makes no copy. A Pokémon at or over it
+  keeps its level, fights at it and only stops growing until the region catches up: it gains no EXP and no line says
+  it did, and the battle says once that it can't grow past the ceiling yet (V3's line).
+- **One cap** (`GameEngine.CurrentLevelCap`): the run's own cap (plan 13 · V3, mapped since W4b-1) and the ceiling,
+  whichever is lower; after a region's Hall of Fame the run's cap falls away and the ceiling stays. It reaches the
+  battle (`CoreSetup.RunLevelCap`), the bag (the Rare Candy and the EXP Candies refuse a Pokémon held there) and the
+  Day Care (`DayCare.LevelCap`: the steps given as EXP stop there, and the fee counts only the levels grown under it),
+  in every difficulty.
+- **On screen**: the team's summary and the battle's say "Gains no EXP above Lv. N for now." under the EXP bar of a
+  Pokémon held (style guide, "Summary").
+- **Not in this session**: L9, the rematches of a region come back to (its League's, the Vs. Seeker's and the
+  phone's, at the furthest Hall of Fame entered, mapped by that region's post-game pair), is in no session of the
+  proposal's table and changes how a trainer's team is relevelled, which W4b-2 rewrote beside this session: it is left
+  for a session of its own. Until then a rematch in a region come back to by Fly is met as that region's own levels map it.

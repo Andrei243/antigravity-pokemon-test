@@ -569,6 +569,7 @@
     "expPoints": "EXP. POINTS",
     "topLevel": "TOP LEVEL",
     "toLevel": "TO Lv {level}",
+    "heldAt": "Gains no EXP above Lv. {level} for now.",
     "stats": "STATS",
     "stat": { "HP": "HP", "Attack": "Attack", "Defense": "Defense", "SpAttack": "Sp. Atk", "SpDefense": "Sp. Def", "Speed": "Speed" },
     "moves": "MOVES",

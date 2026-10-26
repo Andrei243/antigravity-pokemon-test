@@ -115,7 +115,7 @@ public sealed record BattleChoice(Place Who, ChoiceKind Kind)
 /// doesn't say (one written before, or a Vs. Recorder file's, whose setup names the format itself) isn't held to one.
 /// </summary>
 public sealed record BattleRecord(uint Seed, IReadOnlyList<IReadOnlyList<BattleChoice>> Answers, bool Inverse = false, bool OffersSwitch = false, Difficulty Difficulty = Difficulty.Normal, int RunLevelCap = 0,
-    BattleFormat? Format = null);
+    BattleFormat? Format = null, bool CrossedExp = false);
 
 /// <summary>What the core is waiting for before it can go on.</summary>
 public abstract record BattleRequest;

@@ -190,7 +190,7 @@ internal static partial class ModernUi
             case BattleMenuState.Summary:
                 if (battle.SummaryIndex < party.Count)
                     DrawSummary(sw, sh, party.Members[battle.SummaryIndex], battle.SummaryIndex, party.Count, 1f, (int)battle.Summary.Page,
-                        battle.Summary.RibbonCursor, battle.Summary.MarkCursor, battle.Summary.MoveSelection, canMark: false);
+                        battle.Summary.RibbonCursor, battle.Summary.MarkCursor, battle.Summary.MoveSelection, canMark: false, heldAt: battle.Core.RunLevelCap);
                 break;
             case BattleMenuState.LearnMove:
                 // The question in the message box, and beside it its Yes and No or the moves to forget

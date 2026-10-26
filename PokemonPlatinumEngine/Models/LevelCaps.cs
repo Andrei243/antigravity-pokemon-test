@@ -44,6 +44,39 @@ public static class LevelCaps
         return table[Math.Clamp(story.BadgeCount(regionId), 0, table.Count - 1)];
     }
 
+    /// <summary>The share over a crossed region's next milestone the ceiling stands at (plan 18 · W4b-3): 110%.</summary>
+    public const int CeilingPercent = 110;
+
+    /// <summary>What a crossed region's foes give, in halves (plan 18 · W4b-3): three halves, as a Lucky Egg does.</summary>
+    public const int CrossedExpHalves = 3;
+
+    /// <summary>
+    /// The milestone a crossed region's ceiling is measured from (plan 18 · W4b-3): the mapped level of the next Leader
+    /// whose Badge isn't held, the Champion's with all eight, and once the region's Hall of Fame is entered its post-game
+    /// top (the last pair of its <c>levels</c>, as met). Null for a region with no table or no mapping (Sinnoh).
+    /// </summary>
+    public static int? MilestoneOf(string regionId, StoryState story)
+    {
+        if (RegionDatabase.Get(regionId) is not { Levels: { } levels } || TableOf(regionId, crossed: true) is not { } table) return null;
+        if (story.IsRegionComplete(regionId)) return levels.Points[^1].To;
+        return table[Math.Clamp(story.BadgeCount(regionId), 0, table.Count - 1)];
+    }
+
+    /// <summary>
+    /// A crossed region's soft ceiling (plan 18 · W4b-3, Design C; <c>docs/mechanics/rulings.md</c>, "A crossed region's
+    /// EXP"): no Pokémon gains EXP past 110% of the next milestone's level (<see cref="MilestoneOf"/>, rounded down), held
+    /// under <see cref="Ruleset.HighestLevel"/>. It never lowers a level: a Pokémon over it keeps its level and fights at
+    /// it, and only stops growing until the region catches up. In every difficulty; null where there is no milestone.
+    /// </summary>
+    public static int? Ceiling(string regionId, StoryState story) =>
+        MilestoneOf(regionId, story) is { } m ? Math.Min(Ruleset.HighestLevel, m * CeilingPercent / 100) : null;
+
+    /// <summary>The lower of two caps, either of which may be none: a run's own cap wins where it is lower (W4b-3's L5).</summary>
+    public static int? Lower(int? a, int? b) => a is { } x ? (b is { } y ? Math.Min(x, y) : x) : b;
+
+    /// <summary>A crossed region's EXP (plan 18 · W4b-3): half as much again, after the formula, rounded down.</summary>
+    public static int CrossedExp(int exp) => exp * CrossedExpHalves / 2;
+
     /// <summary>
     /// The EXP total a Pokémon of this growth rate stops at under <paramref name="cap"/>: the very start of the cap's
     /// level, so it reaches the level and none of the next one's way.

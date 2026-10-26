@@ -213,6 +213,7 @@ public partial class GameEngine
         flow.BagScreen.Sorting = BoxLinkOn;
         flow.BagScreen.RunCap = CurrentLevelCap();
         flow.BagScreen.NoRevives = flow.Run.Nuzlocke;
+        flow.PartyScreen.RunCap = flow.DayCare.LevelCap = flow.BagScreen.RunCap;
         flow.Poketch.ShowsHiddenMoves = FieldHelp.On(Settings.FieldHelpers, Ruleset.Current.Preset);
     }
 
@@ -1165,6 +1166,8 @@ public partial class GameEngine
                 else if (!flow.TownMapScreen.IsActive) CloseTownMap();
                 break;
             case GameState.BagMenu:
+                // The level a Rare Candy may raise a Pokémon to is the cap where the player stands (plan 18 · W4b-3)
+                KeepTheHelpersInView();
                 flow.BagScreen.Update(flow.Bag, flow.Party, ShowNotification, EvolutionContextNow(), dt);
                 flow.RegisteredItem = flow.BagScreen.Registered;
                 if (flow.BagScreen.TakeEvolution() is { } fromBag) PlayEvolutions(new[] { fromBag }, GameState.BagMenu);
