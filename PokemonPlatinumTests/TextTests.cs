@@ -67,7 +67,10 @@ public class TextTests
         ["Core/Diagnostics/GameVersion.cs"] = "the build's version as the log and --help write it",
         ["Core/Autoplay/AutoplayReport.cs"] = "the playthrough bot's play.md, for whoever reads the run (plan 16 · T7)",
         ["Core/Autoplay/Autoplayer.cs"] = "the playthrough bot's findings and the goals it names, for play.md (plan 16 · T7)",
-        ["Core/Autoplay/Policy.cs"] = "the keys the bot remembers its goals by, no words (plan 16 · T7)"
+        ["Core/Autoplay/Policy.cs"] = "the keys the bot remembers its goals by, no words (plan 16 · T7)",
+        ["Core/Autoplay/Autoplayer.Itinerary.cs"] = "why a leg of the bot's way was given up, for play.md (plan 16 · T13)",
+        ["Core/Autoplay/Itinerary.cs"] = "a leg of the bot's way as play.md names it (plan 16 · T13)",
+        ["Core/Autoplay/Itineraries.cs"] = "the names of maps, places, scripts and people the bot's way goes by, no words (plan 16 · T13)"
     };
 
     /// <summary>What may stay in quotes in a file on the table: names of the data, and the logo, which is a picture (plan 17).</summary>
