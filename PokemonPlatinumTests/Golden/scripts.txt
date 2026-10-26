@@ -15523,7 +15523,7 @@ way -
 from Gym Guide at 7,23 of Goldenrod_Gym
 way -
   Gym Guide> Yo, future Champion! Whitney's Pokémon are Normal types. They look cute, but they hit hard.
-  Gym Guide> Her Miltank is the one to watch. It can roll right over a team. Fighting moves are your best bet!
+  Gym Guide> Her Pastorine is the one to watch. It can roll right over a team. Fighting moves are your best bet!
 === goldenrod_gym.Whitney
 from Whitney at 13,4 of Goldenrod_Gym
 way 0
@@ -17971,7 +17971,7 @@ way 0.0
   Wally> But we've been training! We can beat anyone!
   Wally> Lucas! You came at just the right time. Will you battle me? If I win, my uncle will see how strong I am!
   Wally> Battle Wally?
-  Wally> Thank you! Ralts, here we go!
+  Wally> Thank you! Gardevoir, here we go!
   Wally> I... I lost. You really are strong, Lucas.
   Wally> Uncle... I'll go back to Verdanturf with you. I'm not ready for the Gym yet.
   Wally> Lucas, thank you. Battling you showed me how much further I have to go.
@@ -21372,7 +21372,7 @@ way 1, from answer 1
 === route_109.Lola
 from Lola at 222,327 of Hoenn
 way 0
-  Tuber Lola> Tuber Lola: My Azurill and me are floating all day! Wanna play?
+  Tuber Lola> Tuber Lola: My Azumarill and me are floating all day! Wanna play?
   * battle hoenn_lola_1 Won
   + beaten hoenn_lola_1
 way 1, from answer 1
@@ -21414,10 +21414,10 @@ way -
 === route_110.Abigail
 from Abigail at 230,191 of Hoenn
 way 0.0
-  Triathlete Abigail> Triathlete Abigail: My Magnemite and I are charged and ready!
+  Triathlete Abigail> Triathlete Abigail: My Magnezone and I are charged and ready!
   Abigail> You've got real power! Can I have your number? I want to keep up with you.
   Abigail> Register Abigail in the PokéNav's Match Call?
-  Abigail> Thanks! I'll let you know how my Magnemite is doing.
+  Abigail> Thanks! I'll let you know how my Magnezone is doing.
   ? Register Abigail in the PokéNav's Match Call? = Yes
   * battle hoenn_abigail_1 Won
   * addcontact hoenn_abigail
@@ -21468,8 +21468,8 @@ way 1, from answer 1
 === route_110.Isabel
 from Isabel at 210,236 of Hoenn
 way 0.0
-  Pokéfan Isabel> Pokéfan Isabel: Aren't my Plusle and Minun adorable? And they battle, too!
-  Isabel> Plusle and Minun want to be your friends! Will you register me in your PokéNav?
+  Pokéfan Isabel> Pokéfan Isabel: Aren't my Anodion and Cathodion adorable? And they battle, too!
+  Isabel> Anodion and Cathodion want to be your friends! Will you register me in your PokéNav?
   Isabel> Register Isabel in the PokéNav's Match Call?
   Isabel> Yay! I'll call with all their cutest news!
   ? Register Isabel in the PokéNav's Match Call? = Yes
@@ -21478,7 +21478,7 @@ way 0.0
   + FLAG_PHONE_CONTACT_HOENN_ISABEL
   + beaten hoenn_isabel_1
 way 0.1, from answer 2
-  Isabel> Aww. Plusle and Minun are pouting now.
+  Isabel> Aww. Anodion and Cathodion are pouting now.
   ? Register Isabel in the PokéNav's Match Call? = No
   + beaten hoenn_isabel_1
 way 1, from answer 1
@@ -21903,10 +21903,10 @@ way 1, from answer 1
 === route_117.Maria
 from Maria at 166,153 of Hoenn
 way 0.0
-  Triathlete Maria> Triathlete Maria: My Doduo and I run every day! Keep up if you can!
+  Triathlete Maria> Triathlete Maria: My Tripluma and I run every day! Keep up if you can!
   Maria> That was fun! Can I register you in my PokéNav?
   Maria> Register Maria in the PokéNav's Match Call?
-  Maria> Thanks! I'll call when Doduo beats its best time.
+  Maria> Thanks! I'll call when Tripluma beats its best time.
   ? Register Maria in the PokéNav's Match Call? = Yes
   * battle hoenn_maria_1 Won
   * addcontact hoenn_maria
@@ -22207,10 +22207,10 @@ way -
 === route_120.Jeffrey
 from Jeffrey at 379,80 of Hoenn
 way 0.0
-  Bug Maniac Jeffrey> Bug Maniac Jeffrey: Three Surskit, all raised in puddles! Behold!
+  Bug Maniac Jeffrey> Bug Maniac Jeffrey: Three Ocellwing, all raised in puddles! Behold!
   Jeffrey> You know your stuff! Want my number? I'll tell you about every bug I find.
   Jeffrey> Register Jeffrey in the PokéNav's Match Call?
-  Jeffrey> Brilliant! Expect lots of calls about Surskit.
+  Jeffrey> Brilliant! Expect lots of calls about Ocellwing.
   ? Register Jeffrey in the PokéNav's Match Call? = Yes
   * battle hoenn_jeffrey_1 Won
   * addcontact hoenn_jeffrey
@@ -22245,10 +22245,10 @@ way -
 === route_120.Robert
 from Robert at 392,14 of Hoenn
 way 0.0
-  Bird Keeper Robert> Bird Keeper Robert: My Swablu's cotton wings are softer than clouds, but tough in battle!
+  Bird Keeper Robert> Bird Keeper Robert: My Altaria's cotton wings are softer than clouds, but tough in battle!
   Robert> Your Pokémon fly true! Let's exchange numbers and train together sometime.
   Robert> Register Robert in the PokéNav's Match Call?
-  Robert> Great! I'll call when Swablu learns something new.
+  Robert> Great! I'll call when Altaria learns something new.
   ? Register Robert in the PokéNav's Match Call? = Yes
   * battle hoenn_robert_1 Won
   * addcontact hoenn_robert
@@ -22327,7 +22327,7 @@ way -
 from Jessica at 422,85 of Hoenn
 way 0.0
   Beauty Jessica> Beauty Jessica: My Pokémon are as lovely as they are sly. Can you even see them coming?
-  Jessica> You're good at spotting things. Let's keep in touch, so I can tell you how my Kecleon is doing.
+  Jessica> You're good at spotting things. Let's keep in touch, so I can tell you how my Chromeleon is doing.
   Jessica> Register Jessica in the PokéNav's Match Call?
   Jessica> Lovely! Don't be surprised if I call out of nowhere.
   ? Register Jessica in the PokéNav's Match Call? = Yes
@@ -22336,7 +22336,7 @@ way 0.0
   + FLAG_PHONE_CONTACT_HOENN_JESSICA
   + beaten hoenn_jessica_1
 way 0.1, from answer 2
-  Jessica> Oh well. My Kecleon will just have to hide its sulk.
+  Jessica> Oh well. My Chromeleon will just have to hide its sulk.
   ? Register Jessica in the PokéNav's Match Call? = No
   + beaten hoenn_jessica_1
 way 1, from answer 1
@@ -23411,7 +23411,7 @@ way -
 === route_30.Joey
 from Joey at 553,332 of Johto
 way 0
-  Youngster Joey> Youngster Joey: My Rattata is in the top bit of all Rattata. Want to see?
+  Youngster Joey> Youngster Joey: My Ratchisel is in the top bit of all Ratchisel. Want to see?
   * battle johto_youngster_joey Won
   + beaten johto_youngster_joey
 way 1, from answer 1
@@ -27502,7 +27502,7 @@ way -
 === verdanturf_town_wandas_house.WallysUncle
 from Wally's Uncle at 7,2 of VerdanturfTown_WandasHouse
 way -
-  Wally's Uncle> Wally's in the next room, so to speak. He's been training with his Ralts from morning till night!
+  Wally's Uncle> Wally's in the next room, so to speak. He's been training with his Gardevoir from morning till night!
 === verdanturf_town_wandas_house.Wanda
 from Wanda at 5,5 of VerdanturfTown_WandasHouse
 way -
