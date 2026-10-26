@@ -1,0 +1,10 @@
+# A trainer's challenge: Route 202's Youngster Tristan, his battle at its menu and the first move's lines
+newgame
+at Sinnoh 174 815 up
+trainer youngster_tristan
+menu
+shot scn_trainer_menu
+move 0
+read
+shot scn_trainer_first_move
+state

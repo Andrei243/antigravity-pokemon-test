@@ -89,8 +89,8 @@ static class Compare
         string otherDir = Path.GetFullPath(args[2], startDir);
         static string NameOf(string path) => Path.GetFileNameWithoutExtension(path);
         bool Compared(string name) => !name.StartsWith("compare_") && !name.StartsWith("diff_") && !name.StartsWith("crop_") && !name.StartsWith("contact_");
-        var mine = Directory.GetFiles(outDir, "*.png").Select(NameOf).Where(Compared).ToHashSet();
-        var theirs = Directory.GetFiles(otherDir, "*.png").Select(NameOf).Where(Compared).ToHashSet();
+        var mine = Files(outDir, "*.png").Where(Compared).ToHashSet();
+        var theirs = Files(otherDir, "*.png").Where(Compared).ToHashSet();
         foreach (string old in Directory.GetFiles(outDir, "diff_*.png")) File.Delete(old);
 
         const int tolerance = 6;
@@ -145,7 +145,7 @@ static class Compare
                     Raylib.UnloadImage(small);
                     col++;
                 }
-                Raylib.ExportImage(board, Path.Combine(outDir, "diff_" + name + ".png"));
+                Raylib.ExportImage(board, Path.Combine(outDir, "diff_" + name.Replace('/', '_') + ".png"));
                 Raylib.UnloadImage(board);
             }
             Raylib.UnloadImage(delta); Raylib.UnloadImage(a); Raylib.UnloadImage(b);
@@ -158,8 +158,36 @@ static class Compare
         var onlyTheirs = theirs.Except(mine).OrderBy(n => n, StringComparer.Ordinal).ToList();
         if (onlyMine.Count > 0) Console.WriteLine($"only here ({onlyMine.Count}): {string.Join(", ", onlyMine)}");
         if (onlyTheirs.Count > 0) Console.WriteLine($"only in the other ({onlyTheirs.Count}): {string.Join(", ", onlyTheirs)}");
-        // Scripts read the answer: 1 when any shot moved, appeared or went (tools/dev/baseline.sh, bisect.sh, CI)
-        if (changed.Count > 0 || onlyMine.Count > 0 || onlyTheirs.Count > 0) Environment.ExitCode = 1;
+        // The state beside the shots (plan 16 · T17): every field that changed, file by file
+        int statesMoved = 0;
+        var myStates = Files(outDir, "*.json").Where(n => n.EndsWith(".state") || n.EndsWith("/state") || n == "state").ToHashSet();
+        var theirStates = Files(otherDir, "*.json").Where(n => n.EndsWith(".state") || n.EndsWith("/state") || n == "state").ToHashSet();
+        foreach (string name in myStates.Union(theirStates).OrderBy(n => n, StringComparer.Ordinal))
+        {
+            if (!myStates.Contains(name) || !theirStates.Contains(name))
+            {
+                Console.WriteLine($"{name}.json: only {(myStates.Contains(name) ? "here" : "in the other")}");
+                statesMoved++;
+                continue;
+            }
+            var before = StateSnapshot.FromJson(File.ReadAllText(Path.Combine(otherDir, name + ".json")));
+            var after = StateSnapshot.FromJson(File.ReadAllText(Path.Combine(outDir, name + ".json")));
+            var moved = StateSnapshot.Changes(before, after).ToList();
+            if (moved.Count == 0) continue;
+            statesMoved++;
+            Console.WriteLine($"{name}.json:");
+            foreach (var (field, was, now) in moved) Console.WriteLine($"  {field}: {was ?? "(none)"} -> {now ?? "(none)"}");
+        }
+        if (myStates.Count + theirStates.Count > 0) Console.WriteLine($"{myStates.Union(theirStates).Count()} states compared: {statesMoved} differ.");
+        // Scripts read the answer: 1 when any shot moved, appeared or went (tools/dev/baseline.sh, bisect.sh, CI), or a state did
+        if (changed.Count > 0 || onlyMine.Count > 0 || onlyTheirs.Count > 0 || statesMoved > 0) Environment.ExitCode = 1;
         return;
     }
+
+    // A run's files of a kind by name without the extension: its own, and those of each scenario's folder (one that
+    // holds printed.txt, plan 16 · T17) as <scenario>/<name>
+    static IEnumerable<string> Files(string dir, string pattern) =>
+        Directory.GetFiles(dir, pattern).Select(Path.GetFileNameWithoutExtension)
+            .Concat(Directory.GetDirectories(dir).Where(d => File.Exists(Path.Combine(d, "printed.txt")))
+                .SelectMany(d => Directory.GetFiles(d, pattern).Select(f => Path.GetFileName(d) + "/" + Path.GetFileNameWithoutExtension(f))));
 }

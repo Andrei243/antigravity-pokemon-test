@@ -89,6 +89,16 @@ internal sealed partial class FieldLife
         ForgetPlank();
     }
 
+    /// <summary>Forgets everything and sets the clock back to nought: a scenario's new game (plan 16 · T17), so a game begun after another draws what it draws alone.</summary>
+    public void Restart()
+    {
+        Clear();
+        Now = 0;
+        steps = 0;
+        rainBeat = 0;
+        breathClock = 0;
+    }
+
     private static float LifeOf(Kind kind) => kind switch
     {
         Kind.Print => PrintStays + PrintFades,

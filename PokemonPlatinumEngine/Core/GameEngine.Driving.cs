@@ -24,7 +24,7 @@ public partial class GameEngine
     /// <summary>The engine's state and steps for a tool that drives it.</summary>
     internal Driver Drive => driver ??= new Driver(this);
 
-    internal sealed class Driver
+    internal sealed partial class Driver
     {
         private readonly GameEngine game;
         public Driver(GameEngine game) { this.game = game; }

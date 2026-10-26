@@ -1,0 +1,9 @@
+# Twinleaf Town after dark: the player before their own door, its windows lit (plan 16 · T17's kept scenarios)
+newgame
+time night
+at Sinnoh 116 886 up
+wait 1
+shot scn_twinleaf_door_night
+expect map Sinnoh
+expect area twinleaf_town
+expect state Overworld

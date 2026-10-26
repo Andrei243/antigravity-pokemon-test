@@ -142,7 +142,7 @@ public partial class GameEngine
     // Whether the run button was down last frame (on the Bicycle a press changes gear)
     private bool runWasDown;
 
-    private readonly Random fieldRandom = Dice.New();
+    private Random fieldRandom = Dice.New();
 
     // The opening and title menu, the slots' saves it offers to continue from, and where the options screen returns to
     private readonly TitleScene titleScene = new();

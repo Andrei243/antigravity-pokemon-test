@@ -46,6 +46,7 @@
 //   dotnet run --project tools/ShotHarness -- <output dir> fulldex            the game with every species in it: the start's steps, the National Pokédex walked whole, the boxes full, a save of it all, forty battles, with the memory and what is held after each
 //   dotnet run --project tools/ShotHarness -- <output dir> skips              no shots: four of the story's scenes played and then skipped by the hold (plan 12 · Q20), with what each way left told side by side
 //   dotnet run --project tools/ShotHarness -- <output dir> play [minutes] [seed] [--keys] [--past-opening]   the playthrough bot (plan 16 · T7) from the bedroom, a shot at each first arrival and play.md; --keys the key fuzzer
+//   dotnet run --project tools/ShotHarness -- <output dir> run <file.scn> [...]   scenarios (plan 16 · T17), each a written file of lines played on a game afresh; serve keeps the engine warm and plays every file written into <output dir>/inbox; scenarios plays the kept ones
 //   dotnet run --project tools/ShotHarness -- <dir> diff <other dir>          two runs' shots compared pixel by pixel (exits 1 if any differ)
 //   dotnet run --project tools/ShotHarness -- <dir> ab <before> <after> <before again>   three runs of `profile` compared (tools/dev/ab.sh)
 //   dotnet run --project tools/ShotHarness -- <dir> contact [prefix]          every shot of a run on sheets of twenty
@@ -194,6 +195,9 @@ if (mode == "athlon") h.AthlonMode();
 if (mode == "hoenncontest") h.HoennContestMode();
 if (mode == "play") h.PlayMode();
 if (mode == "budgets") h.BudgetsMode();
+if (mode == "run") h.RunScenariosMode();
+if (mode == "serve") h.ServeMode();
+if (mode == "scenarios") h.ScenariosMode();
 
 h.Close();
 Raylib.CloseWindow();
