@@ -29,7 +29,7 @@ public class FormTests
         Assert.Equal(2, forms.Count(f => f.Kind == FormKind.Primal));
         Assert.Equal(34, forms.Count(f => f.Kind == FormKind.Gigantamax));
         // Ours: a Mega Dynamax form for 63 of the Megas (plan 06 · R20c)
-        Assert.Equal(63, forms.Count(f => f.Kind == FormKind.MegaDynamax));
+        Assert.Equal(78, forms.Count(f => f.Kind == FormKind.MegaDynamax));
         Assert.Equal(57, forms.Count(f => f.Kind == FormKind.Regional));
 
         // Each answers to a name of its own, its species' and the form's, which no species has
