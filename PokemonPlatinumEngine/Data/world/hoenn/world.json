@@ -13,7 +13,17 @@
   // and _INNER_ROOM, laid by each room's ON_TRANSITION while FLAG_SYS_SHOAL_TIDE is set; GbaWorld.Alternates)
   "swaps": [
     { "map": "ShoalCave_LowTideEntranceRoom", "flag": "FLAG_SYS_SHOAL_TIDE", "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 813 }, { "chunkX": 1, "chunkY": 0, "chunk": 814 }, { "chunkX": 0, "chunkY": 1, "chunk": 815 }, { "chunkX": 1, "chunkY": 1, "chunk": 816 } ] },
-    { "map": "ShoalCave_LowTideInnerRoom", "flag": "FLAG_SYS_SHOAL_TIDE", "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 817 }, { "chunkX": 1, "chunkY": 0, "chunk": 818 }, { "chunkX": 0, "chunkY": 1, "chunk": 819 }, { "chunkX": 1, "chunkY": 1, "chunk": 820 } ] }
+    { "map": "ShoalCave_LowTideInnerRoom", "flag": "FLAG_SYS_SHOAL_TIDE", "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 817 }, { "chunkX": 1, "chunkY": 0, "chunk": 818 }, { "chunkX": 0, "chunkY": 1, "chunk": 819 }, { "chunkX": 1, "chunkY": 1, "chunk": 820 } ] },
+    // Plan 21 · H12, part c: Sky Pillar cracked all over once Rayquaza has calmed Sootopolis (Emerald's own layouts, laid
+    // while VAR_SKY_PILLAR_STATE is 2 or more; here by FLAG_HOENN_SKY_PILLAR_CRACKED, which the calm sets)
+    { "map": "SkyPillar_1F", "flag": "FLAG_HOENN_SKY_PILLAR_CRACKED", "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 821 } ] },
+    { "map": "SkyPillar_2F", "flag": "FLAG_HOENN_SKY_PILLAR_CRACKED", "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 822 } ] },
+    { "map": "SkyPillar_3F", "flag": "FLAG_HOENN_SKY_PILLAR_CRACKED", "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 823 } ] },
+    { "map": "SkyPillar_4F", "flag": "FLAG_HOENN_SKY_PILLAR_CRACKED", "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 824 } ] },
+    { "map": "SkyPillar_5F", "flag": "FLAG_HOENN_SKY_PILLAR_CRACKED", "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 825 } ] },
+    { "map": "SkyPillar_Top", "flag": "FLAG_HOENN_SKY_PILLAR_CRACKED", "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 826 } ] },
+    // and Steven's cave's mouth in Meteor Falls' first room, which Emerald's ON_LOAD opens once the game is cleared
+    { "map": "MeteorFalls_1F_1R", "flag": "HoennHallOfFame", "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 827 }, { "chunkX": 0, "chunkY": 1, "chunk": 828 } ] }
   ],
   "maps": [
     // The overworld: Emerald's connected maps stitched into one, Littleroot Town at its south-west
@@ -377,7 +387,9 @@
     { "name": "BattleFrontier_Lounge5", "matrix": 397, "area": "battle_frontier_lounge_5", "trees": "Round", "setting": "Indoors" },
     { "name": "BattleFrontier_Lounge6", "matrix": 398, "area": "battle_frontier_lounge_6", "trees": "Round", "setting": "Indoors" },
     { "name": "BattleFrontier_Lounge7", "matrix": 399, "area": "battle_frontier_lounge_7", "trees": "Round", "setting": "Indoors" },
-    { "name": "BattleFrontier_Lounge8", "matrix": 401, "area": "battle_frontier_lounge_8", "trees": "Round", "setting": "Indoors" }
+    { "name": "BattleFrontier_Lounge8", "matrix": 401, "area": "battle_frontier_lounge_8", "trees": "Round", "setting": "Indoors" },
+    // Plan 21 · H12, part c: Steven's cave behind Meteor Falls' first room
+    { "name": "MeteorFalls_StevensCave", "matrix": 294, "area": "meteor_falls_stevens_cave", "trees": "Round", "setting": "Cave" }
   ],
   "areas": [
     // Plan 21 · H1: Littleroot Town, Route 101, Oldale Town, Routes 102 and 103 and Petalburg City, with their rooms
@@ -517,6 +529,8 @@
     "battle_frontier_pokemon_center_1f", "battle_frontier_pokemon_center_2f", "battle_frontier_mart",
     "battle_frontier_exchange_service_corner", "battle_frontier_scotts_house", "battle_frontier_ranking_hall",
     "battle_frontier_lounge_1", "battle_frontier_lounge_2", "battle_frontier_lounge_3", "battle_frontier_lounge_4",
-    "battle_frontier_lounge_5", "battle_frontier_lounge_6", "battle_frontier_lounge_7", "battle_frontier_lounge_8"
+    "battle_frontier_lounge_5", "battle_frontier_lounge_6", "battle_frontier_lounge_7", "battle_frontier_lounge_8",
+    // Plan 21 · H12, part c: Steven's cave
+    "meteor_falls_stevens_cave"
   ]
 }

@@ -131,7 +131,8 @@ public static class Checks
             return;
         }
         if (!target.InBounds(x, y)) found.Add(new Finding(Kind.Way, file, name, $"leads to {x},{y} of {mapName}, which is {target.Width} by {target.Height} tiles"));
-        else if (target.IsSolid(x, y)) found.Add(new Finding(Kind.Way, file, name, $"puts the player down on a blocked tile of {mapName} ({x},{y})"));
+        // (a tile a swap of the story's opens is landed on once the swap is made: Steven's cave's mouth, plan 21 · H12, part c)
+        else if (target.IsSolid(x, y) && !target.OpenOnceSwapped(x, y)) found.Add(new Finding(Kind.Way, file, name, $"puts the player down on a blocked tile of {mapName} ({x},{y})"));
     }
 
     // What stands on a map as something other than a person: an item's ball, a Pokémon, an obstacle, a Gym's piece, a

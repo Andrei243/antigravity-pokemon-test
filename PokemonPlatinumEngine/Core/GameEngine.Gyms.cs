@@ -40,7 +40,8 @@ public partial class GameEngine
     /// </summary>
     private bool FallThroughCrackedFloor()
     {
-        if (flow.Player.Mode == TravelMode.Cycling) return false;
+        // (a hole already broken through drops a rider too: plan 21 · H12, part c)
+        if (flow.Player.Mode == TravelMode.Cycling && !flow.Map.IsOpenHole(flow.Player.GridX, flow.Player.GridY)) return false;
         if (flow.Map.HoleTargetAt(flow.Player.GridX, flow.Player.GridY) is not { } hole) return false;
         AudioManager.PlaySound("ledge");
         WarpTo(hole.Map, hole.X, hole.Y, flow.Player.Facing);

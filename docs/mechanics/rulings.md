@@ -5970,3 +5970,40 @@ Mart, the Exchange Service Corner, Scott's house, the Ranking Hall and eight lou
 - **Left out**: Emerald's ninth lounge, whose door is a blocked tile nobody reaches; Artisan Cave (its two ways in
   `locked`, Smeargle's cave being plan 21 · H12's later part); the island's own song (it plays Lilycove's, as Sinnoh's
   Frontier plays Veilstone's); the halls' buildings, which the import draws only where a warp leads somewhere.
+
+## Rayquaza on Sky Pillar and Steven at Meteor Falls (2026-10-26, plan 21 · H12, part c)
+
+What Emerald leaves for the time after Sootopolis's calm and after its Hall of Fame in the places already open, and
+plan 03 · D12a's check for Hoenn's own game. The lines are our own.
+
+- **Sky Pillar cracks all over once Rayquaza has calmed Sootopolis.** Emerald lays each floor clean while
+  `VAR_SKY_PILLAR_STATE` is under 2 and in the map's own, cracked layout afterwards; here the six cracked layouts are
+  chunks of their own (`GbaWorld.Alternates`, chunks 821 to 826) swapped in by `FLAG_HOENN_SKY_PILLAR_CRACKED`, a flag of
+  ours that the calm over Sootopolis sets beside the variable, and that the island's arrival sets for a save past the
+  calm. Cracked floor drops whoever walks onto it to the same tile of the floor below where the floor names one (the
+  second and fourth floors, Emerald's `setholewarp`), and is ridden over on a bicycle (Emerald asks the Mach Bike's
+  speed; here any bicycle, as part c of H8 decided); a tile already broken through (`MB_CRACKED_FLOOR_HOLE`,
+  `TileBehavior.Hole`) drops a rider too (`Map.IsOpenHole`). The top's holes lead nowhere, as Emerald gives the top no
+  floor to fall to.
+- **Rayquaza waits on the top** from the calm until it is beaten or caught (`FLAG_DEFEATED_RAYQUAZA`), as Emerald's
+  `TryShowRayquaza` shows it, and is battled at level 70; run from, it flies off and is back the next time the top is
+  come to. Emerald lets it be battled before the League, and so does this game.
+- **Steven's cave** opens in Meteor Falls' first room once Hoenn's Hall of Fame is entered (Emerald's
+  `OpenStevensCave`, four metatiles on load). A layout a map's own script patches block by block is written by the
+  importer as a layout of its own (`GbaMaps.Patches`) and swapped in like any other (`HoennHallOfFame`, chunks 827 and
+  828); the warp on the block it opens is kept as a way (it had been taken for one never taken), and a way out that
+  lands on such a tile is open once the swap is laid (`Map.OpenOnceSwapped`, which the content check asks). Steven
+  battles once with Emerald's post-game team (`hoenn_steven`, `FLAG_DEFEATED_METEOR_FALLS_STEVEN`) and afterwards only
+  talks.
+- **The walks of the whole game** lay every swap of a flag for their second walk (they had laid Shoal Cave's tide alone),
+  so a place a swap opens is walked.
+- **Every species with nobody else, for Hoenn** (`SpeciesSources.Hoenn`, `HoennSpeciesTests`): Emerald's Hoenn Pokédex,
+  202, from Hoenn's open areas (rocks smashed counted now), its scripts and the professor's bag, without Sinnoh's tables
+  of no area, Game Corner or Underground. What nothing gives yet is a list in the test, by reason: Ruby's and Sapphire's
+  (Meditite, Roselia, Zangoose, Lunatone), the television's outbreak (Surskit), the trade evolutions (no Linking Cord in
+  Hoenn), New Mauville's (Magnemite, Voltorb), the Devon Corporation's fossils, Route 119's Feebas tiles, Kyogre and
+  Groudon (the Marine and Terra Caves) and the event Pokémon.
+- **Left for a later part**: the Marine and Terra Caves with the Weather Institute's reports (Emerald places their mouths
+  by metatile on sixteen route tiles, `abnormal_weather.inc`, which the pinned cache doesn't hold; a swap of the
+  overworld builds the whole map again, so sixteen of them want a cheaper swap first), New Mauville, the Desert
+  Underpass, Trainer Hill, Mirage Island, Altering Cave, the event islands, the S.S. Tidal and the island's halls.

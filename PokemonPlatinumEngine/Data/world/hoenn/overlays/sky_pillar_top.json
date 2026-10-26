@@ -2,13 +2,14 @@
   // The top of Sky Pillar (plan 21 · H8, part c): Rayquaza sleeps coiled at its middle. The first step onto the tile
   // before it (the area's trigger 0, VAR_SKY_PILLAR_RAYQUAZA_CRY_DONE 0) wakes it: it roars, the tower shakes, and it
   // flies off toward Sootopolis (sky_pillar_top.txt; VAR_SOOTOPOLIS_CITY_STATE 5, VAR_SKY_PILLAR_STATE 1). Rayquaza come
-  // back to wait here to be battled is the post-game's (FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_STILL, plan 21 · H12)
+  // back to wait here to be battled once Sootopolis is calm (FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_STILL, cleared by the
+  // top's OnEnter from VAR_SKY_PILLAR_STATE 2 until FLAG_DEFEATED_RAYQUAZA; the Rayquaza script, plan 21 · H12, part c)
   "area": "sky_pillar_top",
   "bgmTrack": "hoenn/mt_chimney",
   "trees": "Round",
   "triggers": [ { "trigger": 0, "script": "Awaken" } ],
   "people": {
     "rayquaza_sleeping": { "name": "Rayquaza", "npcType": "Pokemon", "species": "Rayquaza", "still": true, "script": "Sleeping" },
-    "rayquaza_still": { "name": "Rayquaza", "npcType": "Pokemon", "species": "Rayquaza", "still": true, "dialog": [ "Rayquaza is watching you closely." ] }
+    "rayquaza_still": { "name": "Rayquaza", "npcType": "Pokemon", "species": "Rayquaza", "still": true, "script": "Rayquaza" }
   }
 }

@@ -63,7 +63,7 @@
     { "x": 10, "z": 3, "to": "meteor_falls_1f_2r", "toWarp": 0 },
     { "x": 5, "z": 4, "to": "meteor_falls_b1f_1r", "toWarp": 4 },
     { "x": 26, "z": 28, "to": "meteor_falls_b1f_1r", "toWarp": 5 },
-    { "x": 4, "z": 2, "to": "", "toWarp": 0 }
+    { "x": 4, "z": 2, "to": "meteor_falls_stevens_cave", "toWarp": 0 }
   ],
   "objects": [
     { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 2, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ITEM_METEOR_FALLS_1F_1R_TM_IRON_TAIL", "item": "TM23", "script": "MeteorFalls_1F_1R_EventScript_ItemTMIronTail" },
