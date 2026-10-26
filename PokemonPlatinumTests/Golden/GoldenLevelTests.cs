@@ -32,8 +32,21 @@ public class GoldenLevelTests
         text.Append($"{how} {Range(table.SelectMany(e => new[] { e.MinLevel, e.MaxLevel }))}\n");
     }
 
+    /// <summary>
+    /// An area's species of our own past level 100 (plan 03 · D15): their own levels, never mapped, which alone may pass
+    /// 100 (to 260), each from its evolution's level; a line only where the area has any.
+    /// </summary>
+    private static void Ours(StringBuilder text, MapArea area)
+    {
+        var slots = area.OursLand.Concat(area.OursSurf).Concat(area.OursSuperRod).ToList();
+        if (slots.Count == 0) return;
+        Assert.All(slots, s => Assert.InRange(s.MinLevel, OursSlots.EvolutionLevel(PokemonDatabase.Get(s.Species)!), s.MaxLevel));
+        Assert.All(slots, s => Assert.InRange(s.MaxLevel, s.MinLevel, Ruleset.HighestLevel));
+        text.Append($"ours {string.Join(", ", slots.Select(s => $"{s.Species} {(s.MinLevel == s.MaxLevel ? $"{s.MinLevel}" : $"{s.MinLevel}-{s.MaxLevel}")}"))}\n");
+    }
+
     /// <summary>A place: an area of the imported world, or a room or cave made by hand, which is a map of its own.</summary>
-    private sealed record Place(string Name, string? Region, List<(string How, IReadOnlyCollection<WildEncounterEntry> Table)> Tables, List<NPC> Trainers);
+    private sealed record Place(string Name, string? Region, List<(string How, IReadOnlyCollection<WildEncounterEntry> Table)> Tables, List<NPC> Trainers, MapArea? Area = null);
 
     /// <summary>Every place of every map, gathered once for both files (building every map is the costly part).</summary>
     private static readonly Lazy<SortedDictionary<string, Place>> Places = new(() =>
@@ -58,7 +71,7 @@ public class GoldenLevelTests
                     ("old rod", area.RodEncounters[0]),
                     ("good rod", area.RodEncounters[1]),
                     ("super rod", area.RodEncounters[2])
-                }, new List<NPC>());
+                }, new List<NPC>(), area);
             foreach (var person in map.Everyone.Where(n => n.TrainerData != null))
                 if (map.AreaAt(person.GridX, person.GridY) is { } stands) places[stands.Key].Trainers.Add(person);
         }
@@ -81,6 +94,7 @@ public class GoldenLevelTests
         {
             var block = new StringBuilder();
             foreach (var (how, table) in place.Tables) Wild(block, how, table);
+            if (place.Area != null) Ours(block, place.Area);
             var trainers = TrainersOf(place);
             if (trainers.Count > 0)
             {

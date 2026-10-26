@@ -1015,7 +1015,8 @@
         "one": "Undița {rods}",
         "few": "Undițele {rods}",
         "other": "Undițele {rods}"
-      }
+      },
+      "ours": "Rar, după Sala Faimei"
     },
     "search": {
       "title": "Caută în Pokédex",

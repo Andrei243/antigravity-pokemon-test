@@ -75,6 +75,12 @@ public sealed record EncounterMoment
     /// Hall of Fame is entered, under rules that have hordes. Null where none may be met, and nothing is drawn for one.
     /// </summary>
     public HordeTables? Hordes { get; init; }
+
+    /// <summary>
+    /// Whether the region's slots of our own species past level 100 are met (plan 03 · D15, design B; <see cref="OursSlots.Open"/>):
+    /// once its Hall of Fame is entered, and Sinnoh's once Kanto's is.
+    /// </summary>
+    public bool OursOpen { get; init; }
 }
 
 /// <summary>How a swarm is met (plan 20 · J13, part c; HeartGold's <c>sSwarmMapLUT</c> keeps a way beside each place).</summary>
@@ -178,6 +184,11 @@ public static class EncounterSlots
             Put(6, today);
             Put(7, today);
         }
+        // Plan 03 · D15: our own species past level 100 in the two rarest slots, at their own levels, once the region's
+        // Hall of Fame is entered; after everything else, which none of it touches
+        if (moment.OursOpen)
+            for (int i = 0; i < area.OursLand.Count && i < OverlayOurs.MostOnLand; i++)
+                OursSlots.Put(slots[OverlayOurs.FirstLandSlot + i], area.OursLand[i]);
         return slots;
     }
 
@@ -187,21 +198,29 @@ public static class EncounterSlots
     /// </summary>
     public static IReadOnlyList<WildEncounterEntry> SuperRod(MapArea area, IReadOnlyList<WildEncounterEntry> table, EncounterMoment? moment)
     {
-        if (moment?.NationalDex != true || area.NationalSuperRod.Count == 0 || table.Count <= OverlayNational.SuperRodSlot) return table;
+        bool national = moment?.NationalDex == true && area.NationalSuperRod.Count > 0 && table.Count > OverlayNational.SuperRodSlot;
+        bool ours = moment?.OursOpen == true && area.OursSuperRod.Count > 0 && table.Count > OverlayOurs.SuperRodSlot;
+        if (!national && !ours) return table;
         var slots = table.Select(Copy).ToList();
-        slots[OverlayNational.SuperRodSlot].SpeciesName = area.NationalSuperRod[0];
+        if (national) slots[OverlayNational.SuperRodSlot].SpeciesName = area.NationalSuperRod[0];
+        // Plan 03 · D15: a species of ours in the rarest slot, at its own levels, once the region's Hall of Fame is entered
+        if (ours) OursSlots.Put(slots[OverlayOurs.SuperRodSlot], area.OursSuperRod[0]);
         return slots;
     }
 
     /// <summary>
     /// The water's table with a swarm in it (plan 20 · J13, part c; <c>EncSlots_Update_SurfingSwarm</c>): the swarm's
-    /// species in the first slot, where the day's swarm is this area's and is met on the water.
+    /// species in the first slot, where the day's swarm is this area's and is met on the water; and a species of ours in
+    /// the rarest slot, 4, once the region's Hall of Fame is entered (plan 03 · D15).
     /// </summary>
     public static IReadOnlyList<WildEncounterEntry> Surf(MapArea area, IReadOnlyList<WildEncounterEntry> table, EncounterMoment? moment)
     {
-        if (moment?.SwarmArea != area.Key || moment.SwarmWay != SwarmWay.Surf || string.IsNullOrEmpty(area.SurfSwarm) || table.Count == 0) return table;
+        bool swarm = moment?.SwarmArea == area.Key && moment.SwarmWay == SwarmWay.Surf && !string.IsNullOrEmpty(area.SurfSwarm) && table.Count > 0;
+        bool ours = moment?.OursOpen == true && area.OursSurf.Count > 0 && table.Count > OverlayOurs.SurfSlot;
+        if (!swarm && !ours) return table;
         var slots = table.Select(Copy).ToList();
-        slots[0].SpeciesName = area.SurfSwarm;
+        if (swarm) slots[0].SpeciesName = area.SurfSwarm!;
+        if (ours) OursSlots.Put(slots[OverlayOurs.SurfSlot], area.OursSurf[0]);
         return slots;
     }
 
@@ -215,7 +234,7 @@ public static class EncounterSlots
         int[] which = rod switch { FishingRod.Old => new[] { 2 }, FishingRod.Good => new[] { 0, 2, 3 }, _ => new[] { 0, 1, 2, 3, 4 } };
         var slots = table.Select(Copy).ToList();
         foreach (int slot in which)
-            if (slot < slots.Count) slots[slot].SpeciesName = area.FishSwarm;
+            if (slot < slots.Count && !slots[slot].Unmapped) slots[slot].SpeciesName = area.FishSwarm; // a slot of ours keeps its own (plan 03 · D15)
         return slots;
     }
 
@@ -227,6 +246,14 @@ public static class EncounterSlots
         slots[5].SpeciesName = area.RadarSlots[1];
         slots[10].SpeciesName = area.RadarSlots[2];
         slots[11].SpeciesName = area.RadarSlots[3];
+        // A slot of ours the radar's species takes goes back to the table's own levels (plan 03 · D15)
+        foreach (int i in new[] { 10, 11 })
+            if (slots[i].Unmapped && i < area.WildEncounters.Count)
+            {
+                slots[i].MinLevel = area.WildEncounters[i].MinLevel;
+                slots[i].MaxLevel = area.WildEncounters[i].MaxLevel;
+                slots[i].Unmapped = false;
+            }
     }
 
     private static WildEncounterEntry Copy(WildEncounterEntry e) => new()
@@ -234,7 +261,8 @@ public static class EncounterSlots
         SpeciesName = e.SpeciesName,
         MinLevel = e.MinLevel,
         MaxLevel = e.MaxLevel,
-        Weight = e.Weight
+        Weight = e.Weight,
+        Unmapped = e.Unmapped
     };
 }
 

@@ -226,7 +226,7 @@ public sealed class RadarChain
     /// </summary>
     public WildEncounterEntry Meet(IReadOnlyList<WildEncounterEntry> table, MapArea? area, RadarStep step, WildLead? lead, Map map, int x, int y, float height, Random rng)
     {
-        var grass = table.Select(e => new WildEncounterEntry { SpeciesName = e.SpeciesName, MinLevel = e.MinLevel, MaxLevel = e.MaxLevel, Weight = e.Weight }).ToList();
+        var grass = table.Select(e => new WildEncounterEntry { SpeciesName = e.SpeciesName, MinLevel = e.MinLevel, MaxLevel = e.MaxLevel, Weight = e.Weight, Unmapped = e.Unmapped }).ToList();
         if (step.Shake == PatchShake.Hard && area != null) EncounterSlots.PutRadarSpecies(grass, area);
         string species;
         int level;
@@ -259,6 +259,8 @@ public sealed class RadarChain
             MinLevel = level,
             MaxLevel = level,
             Shiny = step.KeepsChain && step.Shiny,
+            // A species of ours is in a table only by its own slot, whose levels are never mapped (plan 03 · D15)
+            Unmapped = PokemonDatabase.Get(species)?.IsOurs == true,
             Gender = WildEncounterRules.GenderFor(PokemonDatabase.Get(species), lead, rng),
             Nature = WildEncounterRules.NatureFor(lead, rng)
         };

@@ -509,6 +509,13 @@ public class WildEncounterEntry
     [System.Text.Json.Serialization.JsonIgnore]
     public bool CallsForHelp { get; set; }
 
+    /// <summary>
+    /// A slot of our own species past level 100 (plan 03 · D15, design B, <see cref="OursSlots"/>): its levels are its
+    /// own and the region's levels never map them (<c>GameEngine.LevelHere</c> is passed by); never in a table's file.
+    /// </summary>
+    [System.Text.Json.Serialization.JsonIgnore]
+    public bool Unmapped { get; set; }
+
     /// <summary><see cref="Count"/> as a file has it: left out for one, so the tables written before it don't change.</summary>
     [System.Text.Json.Serialization.JsonPropertyName("count")]
     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]

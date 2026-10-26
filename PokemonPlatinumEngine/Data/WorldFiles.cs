@@ -891,6 +891,12 @@ public sealed class WorldOverlayFile
     /// </summary>
     public OverlayNational? National { get; set; }
 
+    /// <summary>
+    /// The species of our own past level 100 the area holds once the region's Hall of Fame is entered (plan 03 · D15,
+    /// design B): the grass's slots 10 and 11, the water's slot 4 and the Super Rod's slot 4. Left out where it holds none.
+    /// </summary>
+    public OverlayOurs? Ours { get; set; }
+
     /// <summary>What the area's signposts and mailboxes say, by their id in the area file.</summary>
     public Dictionary<string, string>? Signs { get; set; }
 
@@ -1069,6 +1075,51 @@ public sealed class OverlayNational
 
     /// <summary>The grass's slots the two take, and the Super Rod's slot the one takes.</summary>
     public const int FirstLandSlot = 8, SuperRodSlot = 3;
+}
+
+/// <summary>
+/// An area's species of our own past level 100 (plan 03 · D15, design B; <see cref="WorldOverlayFile.Ours"/>): at most
+/// two for the grass's rarest slots, 10 and 11 (1 in 100 each), one for the water's slot 4 and one for the Super Rod's
+/// slot 4 (1 in 100 each), each at its own levels (its evolution level to four above), never mapped, met only once the
+/// region's Hall of Fame is entered (Sinnoh's once Kanto's is, <see cref="OursSlots.GateFlag"/>).
+/// </summary>
+public sealed class OverlayOurs
+{
+    public List<OursSlot>? Land { get; set; }
+    public List<OursSlot>? Surf { get; set; }
+    public List<OursSlot>? SuperRod { get; set; }
+
+    /// <summary>The grass's slots the two take, the water's slot and the Super Rod's slot the one takes.</summary>
+    public const int FirstLandSlot = 10, SurfSlot = 4, SuperRodSlot = 4;
+
+    /// <summary>How many each list may hold.</summary>
+    public const int MostOnLand = 2, MostOnWater = 1, MostOnRod = 1;
+}
+
+/// <summary>A species of ours and the levels it is met at, written <c>["Ratchisel", 105, 109]</c>.</summary>
+[JsonConverter(typeof(OursSlotConverter))]
+public sealed record OursSlot(string Species, int MinLevel, int MaxLevel);
+
+/// <summary>Reads and writes an <see cref="OursSlot"/> as an array of its three values.</summary>
+public sealed class OursSlotConverter : JsonConverter<OursSlot>
+{
+    public override OursSlot Read(ref Utf8JsonReader reader, Type type, JsonSerializerOptions options)
+    {
+        using var doc = JsonDocument.ParseValue(ref reader);
+        var a = doc.RootElement;
+        if (a.ValueKind != JsonValueKind.Array || a.GetArrayLength() != 3)
+            throw new JsonException("A slot of ours is written [\"Species\", lowest level, highest level].");
+        return new OursSlot(a[0].GetString() ?? "", a[1].GetInt32(), a[2].GetInt32());
+    }
+
+    public override void Write(Utf8JsonWriter writer, OursSlot value, JsonSerializerOptions options)
+    {
+        writer.WriteStartArray();
+        writer.WriteStringValue(value.Species);
+        writer.WriteNumberValue(value.MinLevel);
+        writer.WriteNumberValue(value.MaxLevel);
+        writer.WriteEndArray();
+    }
 }
 
 /// <summary>

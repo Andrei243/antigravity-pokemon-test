@@ -142,6 +142,14 @@ public sealed class MapArea
     public List<string> NationalSuperRod { get; } = new();
 
     /// <summary>
+    /// Our own species past level 100 (plan 03 · D15, an overlay's <c>ours</c>): up to two for the grass's slots 10 and
+    /// 11, one for the water's slot 4 and one for the Super Rod's slot 4, each at its own levels. Empty where none live.
+    /// </summary>
+    public List<OursSlot> OursLand { get; } = new();
+    public List<OursSlot> OursSurf { get; } = new();
+    public List<OursSlot> OursSuperRod { get; } = new();
+
+    /// <summary>
     /// What each game in the console's second slot puts in the grass's slots 8 and 9 (plan 08 · P23, the original's
     /// <c>ruby</c>, <c>sapphire</c>, <c>emerald</c>, <c>firered</c> and <c>leafgreen</c>, <c>WildEncounters_ReplaceDualSlotEncounters</c>);
     /// null where the area has no grass.
