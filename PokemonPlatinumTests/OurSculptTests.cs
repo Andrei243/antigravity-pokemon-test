@@ -82,6 +82,13 @@ public class OurSculptTests
     {
         Assert.Equal(39, Sinnoh.Length);
         foreach (var s in Sinnoh)
+    /// <summary>Batch 2: the species of our own that evolve from Johto's (Nos. 2152 to 2251).</summary>
+    private static PokemonSpecies[] Johto => PokemonDatabase.Ours().Where(s => s.DexNumber is >= 2152 and <= 2251).ToArray();
+
+    public void EverySpeciesOfOursOfJohtoIsHandBuiltAndNotItsForebear()
+    {
+        Assert.Equal(34, Johto.Length);
+        foreach (var s in Johto)
         {
             Assert.True(PokemonModels.HasModel(s.Name), $"{s.Name} has no sculpt of its own");
             Assert.Contains(s.Name, PokemonModels.Species);
@@ -109,6 +116,37 @@ public class OurSculptTests
     public void ASinnohFemaleLookIsKeptWhereTheForebearsIs()
     {
         var flagged = Sinnoh.Where(s => s.GenderDifferences).Select(s => s.Name).OrderBy(n => n).ToArray();
+    public void EachJohtoDecalCoversItsWholeSquare()
+    {
+        // As PokemonModelTests.EachDecalCoversItsWholeSquare, for this batch alone (that test walks every model)
+        foreach (var s in Johto)
+            foreach (var name in s.GenderDifferences ? new[] { s.Name, s.Name + PokemonLook.FemaleSuffix } : new[] { s.Name })
+            {
+                var m = PokemonModels.Get(name);
+                var uvs = m.DecalUVs!;
+                for (int d = 0; d < m.Decals.Count; d++)
+                {
+                    int col = d % m.AtlasColumns, row = d / m.AtlasColumns;
+                    var center = new System.Numerics.Vector2((col + 0.5f) / m.AtlasColumns, (row + 0.5f) / m.AtlasRows);
+                    var half = new System.Numerics.Vector2(0.25f / m.AtlasColumns, 0.25f / m.AtlasRows);
+                    bool left = false, right = false, top = false, bottom = false;
+                    foreach (var uv in uvs)
+                    {
+                        if (System.MathF.Abs(uv.X - center.X) > 2f * half.X || System.MathF.Abs(uv.Y - center.Y) > 2f * half.Y) continue;
+                        left |= uv.X <= center.X - half.X;
+                        right |= uv.X >= center.X + half.X;
+                        top |= uv.Y <= center.Y - half.Y;
+                        bottom |= uv.Y >= center.Y + half.Y;
+                    }
+                    Assert.True(left && right && top && bottom, $"{name}: decal {d} isn't covered");
+                }
+            }
+    }
+
+    [Fact]
+    public void AJohtoFemaleLookIsKeptWhereTheForebearsIs()
+    {
+        var flagged = Johto.Where(s => s.GenderDifferences).Select(s => s.Name).ToArray();
         Assert.Equal(11, flagged.Length);
         Assert.All(flagged, n => Assert.Contains(n, PokemonLook.Females));
     }

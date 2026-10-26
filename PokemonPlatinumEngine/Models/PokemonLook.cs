@@ -49,6 +49,8 @@ public static class PokemonLook
         "Ratchisel", "Tripluma", "Mesmeryx", "Sabrefin", "Typhonarch",
         // Plan 03 · D14: batch 4, Sinnoh
         "Dambarel", "Maestrikket", "Voltglider", "Tidestoat", "Quadripom", "Behemowdon", "Venomsensei", "Lumifathom", "Glaciarbor", "Rimeripper", "Tanglewood"
+        // Batch 2, Johto
+        "Coccinova", "Totemsight", "Mimicedar", "Mirelord", "Wobbulwark", "Ironwyrm", "Guillotyne", "Atlascross", "Krakannon", "Cerberhound", "Siegephant"
     };
 
     /// <summary>

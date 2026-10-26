@@ -50,6 +50,8 @@ public class PokemonModelTests
         ["Najarok"] = 4, ["Molemount"] = 10, ["Tripluma"] = 6, ["Clamspire"] = 4, ["Palmagus"] = 14, ["Smoglom"] = 6, ["Matriroo"] = 4,
         ["Stellamir"] = 0,
         ["Dogunarch"] = 7, ["Regimonolith"] = 0, ["Regiglacier"] = 0, ["Regiferrum"] = 0
+        // Batch 2 (Johto): Noctaugur's third eye on its brow, Cerberhound's two more heads
+        ["Noctaugur"] = 3, ["Cerberhound"] = 6
     }.Concat(PokemonModels.Forms.Where(f => f.StartsWith("Unown-")).Select(f => KeyValuePair.Create(f, 1))).ToDictionary(e => e.Key, e => e.Value);
 
     /// <summary>
