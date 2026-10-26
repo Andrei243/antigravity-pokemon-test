@@ -336,7 +336,7 @@ public class PadInputTests
     {
         var rows = Enum.GetValues<OptionRow>();
         // (The Vs. Recorder's row, plan 08 · P10, the second slot's, P23, the next objective's, plan 12 · Q14, and the season's, plan 22 · U3, went in after them, before CONTROLS, as every new row does)
-        Assert.Equal(new[] { OptionRow.ButtonMode, OptionRow.StickDeadZone, OptionRow.Gamepad, OptionRow.RecordBattles, OptionRow.SlotTwo, OptionRow.NextObjective, OptionRow.Season, OptionRow.FieldHelpers, OptionRow.PartyTools, OptionRow.BoxesAnywhere, OptionRow.Autosave, OptionRow.DynamicResolution, OptionRow.Controls, OptionRow.Jukebox, OptionRow.Packs, OptionRow.Help, OptionRow.ResetDefaults }, rows[^17..]);
+        Assert.Equal(new[] { OptionRow.ButtonMode, OptionRow.StickDeadZone, OptionRow.Gamepad, OptionRow.RecordBattles, OptionRow.SlotTwo, OptionRow.NextObjective, OptionRow.Season, OptionRow.FieldHelpers, OptionRow.PartyTools, OptionRow.BoxesAnywhere, OptionRow.Autosave, OptionRow.DynamicResolution, OptionRow.TimingAssist, OptionRow.Rumble, OptionRow.Controls, OptionRow.Jukebox, OptionRow.Packs, OptionRow.Help, OptionRow.ResetDefaults }, rows[^19..]);
 
         var s = new GameSettings();
         OptionsScreen.Change(s, OptionRow.ButtonMode, 1);
@@ -394,7 +394,8 @@ public class PadInputTests
         var shown = InputManager.Bindings.Where(b => !InputManager.NotReadYet.Contains(b.Action)).Select(b => b.Action).ToArray();
         Assert.Contains(GameAction.Fullscreen, shown);
         Assert.Contains(GameAction.Mute, shown);
-        Assert.DoesNotContain(GameAction.Screenshot, shown);
+        // The screenshot key is read since plan 12 · Q16
+        Assert.Contains(GameAction.Screenshot, shown);
         // Every action that is shown has something the page can name
         Assert.All(InputManager.Bindings, b => Assert.NotEmpty(b.Keys));
     }

@@ -331,6 +331,24 @@
         "unusable": "Driverul grafic al acestui calculator nu poate fi cronometrat, așa că scena nu se poate redimensiona în timpul jocului."
       }
     },
+    "timingAssist": {
+      "label": "Ajutor la sincronizare",
+      "value": { "Off": "Nu", "Generous": "Generos", "Automatic": "Automat" },
+      "help": {
+        "Off": "O apăsare care trebuie făcută la timp, cum e tragerea undiței când mușcă ceva, are momentul ei obișnuit.",
+        "Generous": "O apăsare care trebuie făcută la timp, cum e tragerea undiței când mușcă ceva, are de două ori mai mult timp.",
+        "Automatic": "Jocul apasă pentru tine când vine momentul: orice mușcătură e trasă la mal. Acolo unde scorul se măsoară cu al altora, ajutorul e doar generos."
+      }
+    },
+    "rumble": {
+      "label": "Vibrații",
+      "value": { "Off": "Nu", "Light": "Ușoare", "Full": "Pline" },
+      "help": {
+        "Off": "Controllerul nu vibrează niciodată.",
+        "Light": "Controllerul vibrează ușor la o lovitură, o prindere, o mușcătură și o ciocnire, cât timp e cel pe care îl ții în mâini.",
+        "Full": "Controllerul vibrează la o lovitură, o prindere, o mușcătură și o ciocnire, cât timp e cel pe care îl ții în mâini."
+      }
+    },
     "controls": {
       "label": "Comenzi",
       "value": "Deschide",
@@ -4485,6 +4503,10 @@
   "sessionReport": {
     "written": "Un raport de reluat a fost scris în {folder}.",
     "notWritten": "Raportul nu a putut fi scris: {why}"
+  },
+  "screenshotKey": {
+    "taken": "Captură de ecran salvată: {file}",
+    "notTaken": "Captura de ecran nu a putut fi salvată: {why}"
   },
   "replayNotice": {
     "playing": "Se reia {folder}. {key:menu} iese; ține apăsat {key:run} ca să meargă de patru ori mai repede.",

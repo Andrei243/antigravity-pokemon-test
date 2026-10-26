@@ -523,6 +523,7 @@ public partial class GameEngine
         if (flow.Battle != null) flow.Battle.AutoAdvanceAfter = GameSettings.AutoAdvanceAfter(Settings.AutoAdvance);
         flow.Dialogue.CharactersPerSecond = GameSettings.CharactersPerSecond(Settings.TextSpeed);
         ModernUi.TextFrame = Settings.Frame;
+        Haptics.Strength = Settings.Rumble; // plan 12 · Q24
         if (window && !WindowLocked) WindowSettings.Apply(Settings);
     }
 
@@ -957,6 +958,7 @@ public partial class GameEngine
         // Full screen on F11 or Alt+Enter: the Fullscreen action (plan 12 · Q4), read even while the game waits behind another window
         if (!IsHeadless && !InputManager.CaptureRequested && InputManager.IsActionPressed(GameAction.Fullscreen)) ToggleFullscreen();
         KeepTheReportKey(); // F8: a report of the session (plan 16 · T20)
+        KeepTheScreenshotKey(); // F12: a picture of the screen (plan 12 · Q16)
         // Behind another window, with the option on, the game waits where it is and its sound drops (plan 16 · T3)
         bool held = HeldForFocus;
         AudioManager.Away = held;
@@ -2917,7 +2919,7 @@ public partial class GameEngine
                 break;
         }
 
-        flow.Toast.Draw(VirtualWidth);
+        if (!screenshotWanted) flow.Toast.Draw(VirtualWidth); // (a screenshot leaves the toasts out: plan 12 · Q16)
         DrawStandingNotice();
         DrawAutosaveDisc();
 
@@ -2939,6 +2941,7 @@ public partial class GameEngine
         Raylib.EndTextureMode();
         TakeDevShot();
         TakeReportScreen();
+        TakeScreenshot();
         FrameProfiler.Lap(FrameSection.Interface);
         SampleTheFrame();
 

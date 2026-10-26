@@ -308,6 +308,12 @@ public sealed class GameSettings
     /// </summary>
     public bool DynamicResolution { get; set; }
 
+    /// <summary>The help with a press that must come in time, today the rod's bite (plan 12 · Q24): off unless chosen.</summary>
+    public TimingAssist TimingAssist { get; set; }
+
+    /// <summary>How hard the pad trembles at a hit, a catch, a bite (plan 12 · Q24, <see cref="Haptics"/>): off unless chosen.</summary>
+    public Rumble Rumble { get; set; }
+
     /// <summary>The preset the first run's measuring chose on this machine (plan 16 · T23), or null where nothing was measured.</summary>
     public GraphicsQuality? MeasuredQuality { get; set; }
 

@@ -139,7 +139,7 @@ internal static partial class ModernUi
     {
         var panel = new Rectangle(Margin, top, sw - Margin * 2, ContentBottom - top);
         Panel(panel, 30);
-        // (PageLeft, PageRight and Screenshot have no reader yet; plan 12 · Q5's Controls page lists every action)
+        // (an action nothing reads yet is left out; plan 12 · Q5's Controls page lists every action)
         var rows = InputManager.Bindings.Where(b => !InputManager.NotReadYet.Contains(b.Action))
             .Select(b => (b.Name, Keys: b.Keys.Select(InputManager.KeyName).ToArray(), Pad: b.Pad.Length == 0 ? null : string.Join(" / ", b.Pad.Select(InputManager.PadName)))).ToArray();
         int perColumn = (rows.Length + 1) / 2;

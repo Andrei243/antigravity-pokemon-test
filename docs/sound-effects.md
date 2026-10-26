@@ -23,6 +23,7 @@ Every sound effect of the game (plan 05 · A3), what it stands for in the origin
 | `page` | `SEQ_SE_DP_MEKURU` | A page turns: the bag's pockets, a Pokédex entry's pages, the PC's boxes. |
 | `text` | — | The text box moves on to its next line. |
 | `levelup` | — | A Pokédex completed, an evolution done: a bright arpeggio. |
+| `shutter` | — | The screenshot key (F12) takes a picture of the screen: a shutter's snap and click (plan 12 · Q16). |
 
 ## The field
 

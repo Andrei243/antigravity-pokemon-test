@@ -60,6 +60,7 @@ public static partial class SoundBank
         Add("fish_cast", SoundGroup.Field, null, "A rod cast (waits for fishing).");
         Add("fish_bite", SoundGroup.Field, "SEQ_SE_DP_FW104", "Something bites (waits for fishing).");
         Add("fish_reel", SoundGroup.Field, null, "The line reeled in (waits for fishing).");
+        Add("shutter", SoundGroup.Menu, null, "The screenshot key takes a picture (plan 12 · Q16).");
         Add("poketch", SoundGroup.Field, "SEQ_SE_DP_POKETCH_003", "A Pokétch button (waits for the Pokétch).");
         Add("poketch_count", SoundGroup.Field, "SEQ_SE_DP_POKETCH_010", "The Pokétch's Counter counts one more.");
         Add("poketch_beep", SoundGroup.Field, "SEQ_SE_DP_BEEP", "The Pokétch's short beep for a button that can't be used now (the roulette or the kitchen timer at the wrong moment), and the link searcher done.");
@@ -550,6 +551,13 @@ public static partial class SoundBank
                     d.Noise(at, 0.012f, Filter.Band, 2400f + 60f * k, 2400f + 60f * k, 0.8f, 4f, 0.1f, 2f);
                 }
                 return Finish(d.S, 0.34f);
+            case "shutter":
+                // A camera's shutter: the blade's snap open and its click shut a moment after
+                d = new SoundDesign(0.18f, 0x5Bu);
+                d.Noise(0, 0.025f, Filter.Band, 3800f, 2600f, 0.9f, 3f, 0.005f, 2.5f);
+                d.Noise(0.07f, 0.03f, Filter.Band, 2600f, 1800f, 0.8f, 3f, 0.005f, 2.5f);
+                d.Thump(0.07f, 0.05f, 420f, 180f, 0.3f, 0.3f);
+                return Finish(d.S, 0.32f);
             case "poketch":
                 // A digital chirp from the watch on the wrist
                 d = new SoundDesign(0.12f);

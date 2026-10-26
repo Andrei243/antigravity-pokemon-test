@@ -30,6 +30,7 @@ public enum OptionRow
     BoxesAnywhere,
     Autosave,
     DynamicResolution,
+    TimingAssist, Rumble,
     Controls,
     Jukebox,
     Packs,
@@ -374,6 +375,14 @@ public class OptionsScreen
                 // Only where the card can be waited for (plan 16 · T23): elsewhere the row says why and stays off
                 if (DynamicResolutionUsable) s.DynamicResolution = !s.DynamicResolution;
                 break;
+            case OptionRow.TimingAssist:
+                // Off, Generous, Automatic, and round again (plan 12 · Q24)
+                s.TimingAssist = (TimingAssist)Wrap((int)s.TimingAssist + step, 3);
+                break;
+            case OptionRow.Rumble:
+                // Off, Light, Full, and round again (plan 12 · Q24)
+                s.Rumble = (Rumble)Wrap((int)s.Rumble + step, 3);
+                break;
         }
     }
 
@@ -448,6 +457,8 @@ public class OptionsScreen
         OptionRow.DynamicResolution => (Text.Of("options.dynamicResolution.label"),
             DynamicResolutionUsable ? OnOff(s.DynamicResolution) : Text.Of("options.dynamicResolution.unusable"),
             Text.Of(!DynamicResolutionUsable ? "options.dynamicResolution.help.unusable" : s.DynamicResolution ? "options.dynamicResolution.help.on" : "options.dynamicResolution.help.off")),
+        OptionRow.TimingAssist => (Text.Of("options.timingAssist.label"), Text.Of($"options.timingAssist.value.{s.TimingAssist}"), Text.Of($"options.timingAssist.help.{s.TimingAssist}")),
+        OptionRow.Rumble => (Text.Of("options.rumble.label"), Text.Of($"options.rumble.value.{s.Rumble}"), Text.Of($"options.rumble.help.{s.Rumble}")),
         OptionRow.ResetDefaults => (Text.Of("options.resetDefaults.label"), Text.Of("options.resetDefaults.value"), Text.Of("options.resetDefaults.help")),
         OptionRow.Controls => (Text.Of("options.controls.label"), Text.Of("options.controls.value"), Text.Of("options.controls.help")),
         OptionRow.Jukebox => (Text.Of("options.jukebox.label"), Text.Of("options.jukebox.value"), Text.Of("options.jukebox.help")),

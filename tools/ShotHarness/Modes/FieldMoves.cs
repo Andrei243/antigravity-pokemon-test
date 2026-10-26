@@ -311,5 +311,24 @@ partial class Harness
         watch.Toggle(poketch); Frames(4);
         for (int i = 0; i < 40 && poketch.Current != PoketchApp.HiddenMoves; i++) { watch.NextApp(poketch); Frames(2); }
         Frames(20); Shot("fm34_helpers_poketch");
+        watch.Toggle(poketch); Frames(4);
+
+        // ---- the timing assist (plan 12 · Q24), last so nothing before it moves: under Automatic a bite is landed with
+        // no press, and the catch is told
+        if (shore is var (ax, ay))
+        {
+            engine.Settings.TimingAssist = TimingAssist.Automatic;
+            game.State = GameState.Overworld;
+            At("LakeVerity", ax, ay, Direction.Up);
+            game.Fishing = new FishingAttempt(FishingRod.Super, new WildEncounterEntry { SpeciesName = "Magikarp", MinLevel = 12, MaxLevel = 12 }, new Random(3));
+            Until(() => State() == GameState.Dialogue, "the assisted catch", 400);
+            Whole(); Shot("fm36_fish_assisted");
+            Console.WriteLine($"timing assist: the cast {engine.CastStage}, with no press");
+            Next();
+            Until(() => State() == GameState.Battle, "the assisted fish's battle", 600);
+            game.State = GameState.Overworld;
+            Frames(2);
+            engine.Settings.TimingAssist = TimingAssist.Off;
+        }
     }
 }

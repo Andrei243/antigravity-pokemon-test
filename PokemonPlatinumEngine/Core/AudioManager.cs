@@ -109,6 +109,8 @@ public static class AudioManager
     {
         if (hushed) return;
         heard?.Add(soundName);
+        // The pad trembles with what it stands for, muted or not (plan 12 · Q24)
+        Haptics.FromSound(soundName);
         if (isMuted || !isInitialized) return;
         var sound = SoundBank.Get(soundName);
         if (sound == null)
