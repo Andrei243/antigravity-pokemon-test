@@ -1,0 +1,46 @@
+{
+  "regions": [
+    {
+      "region": "Sinnoh",
+      "events": [
+        {
+          "id": "sinnohLeaders",
+          "points": 3,
+          "always": [],
+          "pool": [
+            { "trainer": "leader_roark_rematch", "look": "roark" },
+            { "trainer": "leader_gardenia_rematch", "look": "gardenia" },
+            { "trainer": "leader_maylene_rematch", "look": "maylene" },
+            { "trainer": "leader_wake_rematch", "look": "crasher_wake" },
+            { "trainer": "leader_fantina_rematch", "look": "fantina" },
+            { "trainer": "leader_byron_rematch", "look": "byron" },
+            { "trainer": "leader_candice_rematch", "look": "candice" },
+            { "trainer": "leader_volkner_rematch", "look": "volkner" }
+          ]
+        },
+        {
+          "id": "sinnohChampion",
+          "points": 6,
+          "after": "sinnohLeaders",
+          "always": [
+            { "trainer": "champion_cynthia_rematch", "look": "cynthia" },
+            { "trainer": "elite_four_aaron_rematch", "look": "aaron" },
+            { "trainer": "elite_four_bertha_rematch", "look": "bertha" },
+            { "trainer": "elite_four_flint_rematch", "look": "flint" },
+            { "trainer": "elite_four_lucian_rematch", "look": "lucian" }
+          ],
+          "pool": [
+            { "trainer": "leader_roark_rematch", "look": "roark" },
+            { "trainer": "leader_gardenia_rematch", "look": "gardenia" },
+            { "trainer": "leader_maylene_rematch", "look": "maylene" },
+            { "trainer": "leader_wake_rematch", "look": "crasher_wake" },
+            { "trainer": "leader_fantina_rematch", "look": "fantina" },
+            { "trainer": "leader_byron_rematch", "look": "byron" },
+            { "trainer": "leader_candice_rematch", "look": "candice" },
+            { "trainer": "leader_volkner_rematch", "look": "volkner" }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -4091,6 +4091,29 @@
     "chooseTwo": "TWO GO INTO BATTLE",
     "battle": "BATTLE"
   },
+  "tournamentScreen": {
+    "title": "WORLD TOURNAMENT",
+    "event": { "sinnohLeaders": "SINNOH LEADERS", "sinnohChampion": "THE CHAMPION'S EVENT" },
+    "note": {
+      "sinnohLeaders": "Sinnoh's eight Gym Leaders. Seven of them meet you in a bracket of eight.",
+      "sinnohChampion": "Cynthia and the Elite Four, with two Gym Leaders drawn to make seven."
+    },
+    "titles": "Titles won: {count}",
+    "points": "{points} BP",
+    "after": "Opens once the {event} title is won.",
+    "locked": "LOCKED",
+    "round": { "0": "QUARTERFINALS", "1": "SEMIFINALS", "2": "FINAL" },
+    "over": "THE TOURNAMENT IS OVER",
+    "you": "You",
+    "next": "NEXT",
+    "champion": "CHAMPION",
+    "outIn": "OUT IN THE {round}",
+    "prompt": {
+      "events": "Choose an event to enter.",
+      "locked": "This event isn't open to you yet.",
+      "look": "The tournament's bracket. Look at any Trainer's card."
+    }
+  },
   "venueScreen": {
     "closed": "CHOOSING BY NATURE",
     "closedNote": "Your Pokémon picks its own moves here.",

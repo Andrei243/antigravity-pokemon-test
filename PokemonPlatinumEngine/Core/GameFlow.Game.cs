@@ -153,4 +153,5 @@ public sealed partial class GameFlow
     public BattleVenueChallenge? Venue { get; set; }
     public BattlePikeChallenge? Pike { get; set; }
     public BattlePyramidChallenge? Pyramid { get; set; }
+    public Models.Tournament? Tournament { get; set; }
 }

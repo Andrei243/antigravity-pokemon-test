@@ -1,0 +1,27 @@
+# A match of the World Tournament won (plan 14 · B11): a short C-major flourish, then a bright strut for the crowd.
+# Original composition for this game.
+title Victory! World Tournament
+tempo 140
+meter 4/4
+reverb 0.24
+
+track lead brass vol=0.84 pan=0 rev=0.25
+  o5 c8 r16 c16 c8 r8 e4 g4 | o6 c2. r4 |
+  L o5 g4 e8 g8 >c4 <b8 a8 | o5 a4 f8 a8 >c4 <a4 | o5 b4 g8 b8 >d4 c8 <b8 | o6 c2 <g2 |
+  o5 a4 >c8 e8 a4 e4 | o6 f4 e8 d8 c4 <a4 | o5 b4 >d8 g8 f4 d4 | o6 c2. r4 |
+
+track strings strings vol=0.42 pan=0.3 rev=0.35
+  o4 (c e)8 r16 (c e)16 (c e)8 r8 (e g)4 (e g)4 | o4 (e g >c)2. r4 |
+  L o4 (c e g)1 | o4 (c f a)1 | o4 (d g b)1 | o4 (c e g)1 |
+  o4 (c e a)1 | o4 (c f a)1 | o4 (d g b)1 | o4 (c e g)1 |
+
+track bass bass vol=0.68 rev=0.08
+  o3 c8 r8 c8 r8 e4 g4 | o3 c2. r4 |
+  L o3 c4 g4 c4 g4 | o3 f4 c4 f4 c4 | o3 g4 d4 g4 d4 | o3 c4 g4 c4 g4 |
+  o3 a4 e4 a4 e4 | o3 f4 c4 f4 c4 | o3 g4 d4 g4 d4 | o3 c4 g4 c4 g4 |
+
+track drums kit vol=0.46 rev=0.12
+  v90 b8 s16 s16 s8 r8 b4 b4 | (b c)2. r4 | L (b c)4 s4 b8 b8 s4 | [ b4 s4 b8 b8 s4 | ]6 b4 s4 s16 s16 s16 s16 t16 m16 f16 f16 |
+
+track hats kit vol=0.46 pan=0.15 rev=0.1
+  r1 | r1 | L v60 [ h8 v40 h8 v60 h8 v40 h8 v60 h8 v40 h8 v60 h8 v40 h8 v60 | ]8

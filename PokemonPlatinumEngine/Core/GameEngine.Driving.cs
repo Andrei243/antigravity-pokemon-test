@@ -105,6 +105,8 @@ public partial class GameEngine
         /// <summary>The Battle Dome (plan 14 · B8): the tournament under way and its bracket.</summary>
         public Models.Frontier.BattleDomeChallenge? Dome => game.flow.Dome;
         public BracketScreen Bracket => game.flow.BracketScreen;
+        public Models.Tournament? Tournament => game.flow.Tournament;
+        public TournamentScreen TournamentScreen => game.flow.TournamentScreen;
         /// <summary>The Battle Palace's or the Battle Arena's round under way (plan 14 · B9).</summary>
         public Models.Frontier.BattleVenueChallenge? Venue => game.flow.Venue;
         /// <summary>The Battle Pike's and the Battle Pyramid's round under way (plan 14 · B10).</summary>

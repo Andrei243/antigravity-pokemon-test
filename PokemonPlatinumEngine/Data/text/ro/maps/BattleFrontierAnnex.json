@@ -97,6 +97,16 @@
           "Recepționera"
         ]
       }
+    },
+    "tournament_receptionist": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {}

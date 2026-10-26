@@ -145,6 +145,8 @@ public enum Op
     Venue,
     // The Battle Pike's rooms of chance and the Battle Pyramid's floors (plan 14 · B10)
     Pike, Pyramid,
+    // The World Tournament (plan 14 · B11): an event chosen, three entered, a bracket of eight fought round by round
+    Tournament,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

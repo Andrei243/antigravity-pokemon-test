@@ -1230,6 +1230,10 @@ public partial class GameEngine
                 case ScriptScreen.Bracket:
                     game.OpenBracket(counter == "pick");
                     break;
+                // The World Tournament's events, or its bracket (plan 14 · B11)
+                case ScriptScreen.Tournament:
+                    game.OpenTournament(counter == "events");
+                    break;
                 case ScriptScreen.Pc:
                     game.flow.State = GameState.PCStorage;
                     game.flow.PCScreen.Open(game.flow.Boxes);

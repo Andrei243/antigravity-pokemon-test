@@ -232,6 +232,9 @@ public partial class BattleEngine
     {
     }
 
+    // The World Tournament's own victory (plan 14 · B11), in place of the trainers' classes'
+    private readonly Audio.MusicRole? victoryMusic;
+
     /// <summary>
     /// A battle on screen: fought, or (with <paramref name="watched"/>, plan 08 · P11) a recorded battle watched, whose
     /// answers are the record's and whose Pokémon, bag and Pokédex are the recording's own (<see cref="ForReplay"/>).
@@ -248,6 +251,7 @@ public partial class BattleEngine
 
         Kind = setup.Kind;
         Partner = setup.Partner;
+        victoryMusic = setup.VictoryMusic;
         if (setup.PlayerLook != null) Anim.PlayerTrainer = setup.PlayerLook;
         // The ground fought on, for the looks that go by it (plan 25 · Y6: Secret Power, Camouflage); never the rules'
         terrain = setup.Conditions?.Terrain ?? BattleTerrain.Plain;
@@ -1021,7 +1025,7 @@ public partial class BattleEngine
                 }
                 break;
             case Won:
-                AudioManager.PlayMusic(MusicDirector.VictoryRole(MusicDirector.BattleRole(Trainers.Select(t => t.TrainerClass))));
+                AudioManager.PlayMusic(victoryMusic ?? MusicDirector.VictoryRole(MusicDirector.BattleRole(Trainers.Select(t => t.TrainerClass))));
                 // Whoever of the player's still stands cheers (plan 25 · Y5)
                 if (Scene) Anim.Cheer(BattleSide.Player);
                 break;

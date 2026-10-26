@@ -76,6 +76,7 @@ public sealed partial class GameFlow
     public CastleScreen CastleScreen { get; } = new();
     public ArcadeBoardScreen ArcadeBoardScreen { get; } = new();
     public BracketScreen BracketScreen { get; } = new();
+    public TournamentScreen TournamentScreen { get; } = new();
     public PoketchView PoketchView { get; } = new();
 
     /// <summary>A question's answers, shown beside the text box once the question is written out.</summary>

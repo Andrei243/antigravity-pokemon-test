@@ -836,6 +836,12 @@ public sealed class HeadlessScriptHost : IScriptHost
             if (Answer > 0) Athlon.Record(AthlonCourses.Practice.Key, AthlonScore, Answer);
             Log[^1] = $"open {screen} {Answer}";
         }
+        // The World Tournament's events (plan 14 · B11): the event the test chooses, counted from 1 (0 backs out)
+        if (screen == ScriptScreen.Tournament && counter == "events")
+        {
+            Answer = TournamentChoice;
+            Log[^1] = $"open {screen} events {Answer}";
+        }
         // A region's rival named: the name the test gives, or the region's own (plan 18 · W4, part b)
         if (screen == ScriptScreen.NameRival)
         {
@@ -1300,6 +1306,10 @@ public sealed class HeadlessScriptHost : IScriptHost
     public Models.Frontier.BattleVenueChallenge? Venue { get; set; }
     public Models.Frontier.BattlePikeChallenge? Pike { get; set; }
     public Models.Frontier.BattlePyramidChallenge? Pyramid { get; set; }
+    public Models.Tournament? Tournament { get; set; }
+
+    /// <summary>The World Tournament's event a test chooses at the desk, counted from 1 (Sinnoh's Leaders); 0 backs out.</summary>
+    public int TournamentChoice { get; set; } = 1;
 
     /// <summary>The Pokémon of the team that walks behind the player, and the thing of the map it is (plan 06 · R16c).</summary>
     public Pokemon? Strolling { get; private set; }

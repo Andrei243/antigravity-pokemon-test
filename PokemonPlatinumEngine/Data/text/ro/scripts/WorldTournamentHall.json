@@ -1,0 +1,92 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Announcer"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Round {number} of the World Tournament! Let's look at the bracket."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The final! Only two Trainers are left standing. Let's look at the bracket."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{foe} steps onto the stage!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Announcer"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What a match! The rest of the round is over too. On to the next!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Announcer"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And there it is! {player} takes the title of the World Tournament!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received {number} BP!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Announcer"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Defeated! {player}'s tournament ends here. A fine showing all the same!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

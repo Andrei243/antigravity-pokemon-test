@@ -1,0 +1,148 @@
+{
+  "name": "WorldTournamentHall",
+  "displayName": "World Tournament",
+  "bgmTrack": "common/tournament/hall",
+  "interior": "GameHall",
+  "trees": "Round",
+  "battleArena": "Gym",
+  "width": 17,
+  "height": 15,
+  "ground": [
+    "#################",
+    "#################",
+    "#################",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "########D########"
+  ],
+  "solid": [
+    "#################",
+    "#################",
+    "#################",
+    "##.............##",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "##.............##",
+    "########.########"
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 15,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 5,
+      "y": 4,
+      "width": 7,
+      "depth": 7
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 8,
+      "sourceY": 14,
+      "targetMap": "BattleFrontierAnnex",
+      "targetX": 12,
+      "targetY": 8,
+      "targetFacing": "Left"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "announcer",
+      "name": "Announcer",
+      "npcType": "Gentleman",
+      "x": 3,
+      "y": 7,
+      "facing": "Right",
+      "dialog": [
+        "No tournament is under way. The World Tournament's desk is in the annex's lobby."
+      ]
+    },
+    {
+      "id": "opponent",
+      "name": "Trainer",
+      "npcType": "Youngster",
+      "x": 8,
+      "y": 3,
+      "facing": "Down",
+      "dialog": [
+        "..."
+      ],
+      "shownBy": "FLAG_WORLD_TOURNAMENT_SHOW_OPPONENT"
+    },
+    {
+      "id": "spectator_1",
+      "name": "Spectator",
+      "npcType": "Lass",
+      "x": 1,
+      "y": 8,
+      "facing": "Right",
+      "dialog": [
+        "Gym Leaders from all over Sinnoh, at Level 50! Anyone could win."
+      ]
+    },
+    {
+      "id": "spectator_2",
+      "name": "Spectator",
+      "npcType": "Youngster",
+      "x": 15,
+      "y": 8,
+      "facing": "Left",
+      "dialog": [
+        "Three against three, and every Pokémon at the same level. Pure skill!"
+      ]
+    },
+    {
+      "id": "spectator_3",
+      "name": "Spectator",
+      "npcType": "Lady",
+      "x": 5,
+      "y": 13,
+      "facing": "Up",
+      "dialog": [
+        "I came all the way from Hearthome to see Fantina battle."
+      ]
+    },
+    {
+      "id": "spectator_4",
+      "name": "Spectator",
+      "npcType": "Gentleman",
+      "x": 11,
+      "y": 13,
+      "facing": "Up",
+      "dialog": [
+        "Eight Trainers, three rounds. Only one of them leaves with the title."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

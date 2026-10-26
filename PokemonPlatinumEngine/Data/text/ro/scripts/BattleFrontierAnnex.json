@@ -598,5 +598,133 @@
         "Găsește scările pe șapte etaje ca să câștigi runda. Dacă leșină toți trei ai tăi, runda s-a terminat."
       ]
     }
+  ],
+  "TournamentDesk": [
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Pokémon World Tournament! Leaders and Champions battle here, and every Pokémon fights at Level 50."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Titles you've won here so far: {number}. The crowd knows your name!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Would you like to enter a tournament?",
+        "Enter",
+        "The rules",
+        "No"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You need three Pokémon that can take part, all of different species and holding different items."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "An Egg can't take part, and nor can {banned}."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which event would you like to enter?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please choose the three Pokémon you'll enter."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thank you! The bracket has been drawn. This way to the hall, please!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry. The three entered must all be of different species."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry. No two of the three entered may hold the same item."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please come again. The Leaders are always ready for another tournament."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Every Pokémon battles at Level 50 here, raised or lowered to it. Nothing that happens here changes yours."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Eight Trainers enter, and you meet one in each round: three of your Pokémon against three of theirs."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Win three matches and the title is yours. Lose one, and the tournament is over for you."
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

@@ -1046,6 +1046,14 @@ public static class ScriptParser
                 string which = what == "finish" ? r.OneOf("won", "lost") : "";
                 return new Instruction { Op = Op.Pyramid, Line = line, Name = what, Other = which };
             }
+            // The World Tournament (plan 14 · B11)
+            case "tournament":
+            {
+                string what = r.OneOf("events", "enough", "choose", "check", "begin", "titles", "active", "round", "show", "opponent", "battle", "won", "lost",
+                    "finish", "points", "end");
+                string which = what == "finish" ? r.OneOf("won", "lost") : "";
+                return new Instruction { Op = Op.Tournament, Line = line, Name = what, Other = which };
+            }
             // The Berry Blender and the Pokéblock Case (plan 21 · H11)
             case "pokeblock":
             {

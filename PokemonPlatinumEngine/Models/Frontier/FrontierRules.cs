@@ -21,9 +21,9 @@ public enum FrontierRefusal
 /// Battle Arcade's board gives either. The annex's Battle Palace hands over <c>Palace</c> and its Battle Arena the
 /// turns a bout runs (<c>TurnLimit</c>; plan 14 · B9, <see cref="Battle.Sim.CoreSetup.Palace"/>).
 /// The Battle Pike and the Battle Pyramid hand over a wild Pokémon met in place of a trainer (<c>Wild</c>; plan 14 · B10),
-/// which may be run from.
+/// which may be run from. The World Tournament (plan 14 · B11) hands over <c>Tournament</c>: its own battle and victory songs.
 /// </summary>
-public sealed record FrontierConditions(Battle.Sim.BattleWeather Weather = Battle.Sim.BattleWeather.None, bool TrickRoom = false, bool Palace = false, int TurnLimit = 0, Pokemon? Wild = null);
+public sealed record FrontierConditions(Battle.Sim.BattleWeather Weather = Battle.Sim.BattleWeather.None, bool TrickRoom = false, bool Palace = false, int TurnLimit = 0, Pokemon? Wild = null, bool Tournament = false);
 
 /// <summary>
 /// The rules every facility of the Battle Frontier holds its entrants to (plan 06 · R18a): which Pokémon may enter,

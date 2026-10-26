@@ -329,7 +329,7 @@ internal sealed class ScriptWalk
                 foreach (var (what, give) in Givens(called, looked)) Add(what, give);
             // A team that may enter a Frontier-style run (plan 22 · U6, part d: the Battle Subway's desks and the World
             // Tournament's offer), of different species, which a Bidoof or two couldn't make up
-            if (i.Op is Op.Subway or Op.Bracket or Op.Venue or Op.Pike or Op.Pyramid && i.Name == "enough")
+            if (i.Op is Op.Subway or Op.Bracket or Op.Venue or Op.Pike or Op.Pyramid or Op.Tournament && i.Name == "enough")
                 Add("a team that may enter", host =>
                 {
                     foreach (string species in new[] { "Starly", "Shinx", "Kricketot", "Bidoof" })
