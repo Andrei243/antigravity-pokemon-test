@@ -13,5 +13,8 @@
     "3": { "name": "Elmer", "trainer": { "dialogueBefore": "You climbed all this way? Then you deserve a real battle!", "dialogueAfter": "You deserved that win." } },
     "4": { "name": "Chalina", "trainer": { "dialogueBefore": "I train on this summit at dawn every day. You're up late!", "dialogueAfter": "Up late, and still too strong." } },
     "5": { "name": "Portia", "trainer": { "dialogueBefore": "One last test before the League. Make it count!", "dialogueAfter": "It counted. Go and win it all." } }
+  },
+  "ours": {
+    "land": [ [ "Throjutsu", 172, 176 ], [ "Sawkendo", 172, 176 ] ]
   }
 }

@@ -84,5 +84,8 @@
       "npcType": "ranger_m",
       "dialog": [ "A buried castle in an endless desert. If there's no treasure here, there's no treasure anywhere!" ]
     }
+  },
+  "ours": {
+    "land": [ [ "Darumandala", 174, 178 ], [ "Mariachactus", 172, 176 ] ]
   }
 }

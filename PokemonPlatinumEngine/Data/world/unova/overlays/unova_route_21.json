@@ -23,5 +23,9 @@
     "9": { "name": "{rival}", "npcType": "hugh", "script": "Hugh", "hiddenBy": "FLAG_UNOVA_HIDE_HUGH_ROUTE_21", "still": true, "at": [ 797, 240 ] },
     "10": { "name": "Marlon", "npcType": "swimmer_m_water", "hiddenBy": "FLAG_UNOVA_HIDE_MARLON_ROUTE_21", "still": true, "dialog": [ "Hey, be careful, 'K!" ] },
     "11": { "name": "Cheren", "npcType": "cheren", "script": "Cheren", "hiddenBy": "FLAG_UNOVA_HIDE_CHEREN_ROUTE_21", "still": true, "at": [ 797, 242 ] }
+  },
+  "ours": {
+    "surf": [ [ "Alomatron", 175, 179 ] ],
+    "superRod": [ [ "Tortugarch", 178, 182 ] ]
   }
 }

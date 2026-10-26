@@ -37,5 +37,9 @@
         "dialogueAfter": "I should've learned a little more from them."
       }
     }
+  },
+  "ours": {
+    "land": [ [ "Lancelier", 176, 180 ], [ "Velocigor", 176, 180 ] ],
+    "superRod": [ [ "Bascurage", 172, 176 ] ]
   }
 }

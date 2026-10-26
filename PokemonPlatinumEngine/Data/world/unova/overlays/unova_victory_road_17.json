@@ -29,5 +29,8 @@
     "5": { "name": "Jamie", "trainer": { "dialogueBefore": "These ruins were the old Victory Road. Fitting place to lose, don't you think?", "dialogueAfter": "Fitting place for me to lose, as it turns out." } },
     "6": { "name": "Alia", "trainer": { "dialogueBefore": "My mind is calm. My Pokémon's minds are calm. Are yours?", "dialogueAfter": "Calm... and beaten." } },
     "7": { "name": "Al", "trainer": { "dialogueBefore": "I sensed you coming from three halls away. My Pokémon did too!", "dialogueAfter": "I didn't sense this, though." } }
+  },
+  "ours": {
+    "land": [ [ "Colossurk", 178, 182 ] ]
   }
 }

@@ -300,9 +300,11 @@ super rod 40
 === desert_resort
 Desert Resort
 grass 18-21
+ours Crustadel 174-178
 === desert_resort_2
 Desert Resort
 grass 18-21
+ours Darumandala 174-178, Mariachactus 172-176
 trainers 9, 22-23: unova_backpacker_clara 22, unova_backpacker_sam 22, unova_backpacker_tami 22, unova_backpacker_walt 22, unova_nurse_mariah 22, unova_pkmn_ranger_anja 23, unova_pkmn_ranger_jaden 23, unova_psychic_future 23, unova_psychic_tommy 22
 === desert_underpass
 Desert Underpass
@@ -501,11 +503,13 @@ super rod 20-55
 === giant_chasm
 Giant Chasm
 grass 44-47
+ours Beartundra 178-182, Cryohedron 178-182
 === giant_chasm_2
 Giant Chasm
 grass 44-47
 surf 35-50
 super rod 40-70
+ours Cosmogrey 178-182, Amorabat 166-170
 === giant_chasm_3
 Giant Chasm
 grass 44-47
@@ -786,6 +790,7 @@ Lostlorn Forest
 grass 21-24
 surf 10-25
 super rod 40-70
+ours Ballerilly 172-176, Simisylvan 170-174
 trainers 4, 24-51: unova_pkmn_breeder_galen 24, unova_pkmn_ranger_forrest 26, unova_pkmn_ranger_serenity 26, unova_veteran_murphy 51
 === magma_hideout_1f
 Magma Hideout
@@ -1283,6 +1288,7 @@ grass 27-30
 === relic_castle_17
 Relic Castle
 grass 27-30
+ours Pharaurum 175-179, Glyphoracle 174-178
 === relic_castle_19
 Relic Castle
 grass 27-30
@@ -1322,6 +1328,7 @@ super rod 1-100
 === reversal_mountain
 Reversal Mountain
 grass 31-34
+ours Helioptera 183-187, Pyrovore 176-180
 trainers 2, 37: unova_cyclist_adelaide 37, unova_cyclist_jeremiah 37
 === reversal_mountain_2
 Reversal Mountain
@@ -2674,6 +2681,7 @@ trainers 16, 55-61: ace_trainer_abel 60, ace_trainer_jasmin 61, ace_trainer_kass
 === strange_house
 Strange House
 grass 31-34
+ours Zoromirage 178-182, Somnarna 170-174
 === strange_house_2
 Strange House
 grass 31-34
@@ -2800,6 +2808,7 @@ super rod 15-35
 Undella Bay
 surf 25-40
 super rod 40-70
+ours Tortugarch 178-182, Jellicrown 176-180
 trainers 6, 38-40: unova_ace_trainer_summer 40, unova_swimmer_f_arissa 39, unova_swimmer_f_mitzi 38, unova_swimmer_m_bart 39, unova_swimmer_m_matt 39, unova_swimmer_m_tim 39
 === undella_town
 Undella Town
@@ -2840,10 +2849,12 @@ Route 11
 grass 36-39
 surf 25-40
 super rod 40-60
+ours Lancelier 176-180, Velocigor 176-180, Bascurage 172-176
 trainers 3, 41-52: unova_pkmn_breeder_magnolia 41, unova_pkmn_ranger_crofton 42, unova_pkmn_ranger_thalia 52
 === unova_route_12
 Route 12
 grass 35-38
+ours Simiscorch 170-174, Simitorrent 170-174
 trainers 5, 39-44: unova_backers_cleo_rio 40, unova_battle_girl_azra 41, unova_black_belt_jeriel 42, unova_team_plasma_grunt_45 39, unova_team_plasma_zinzolin_4 44
 === unova_route_13
 Route 13
@@ -2870,18 +2881,21 @@ trainers 7, 4-11: unova_lass_isabel 4, unova_nursery_aide_kimya 11, unova_presch
 Route 21
 surf 30-45
 super rod 40-70
+ours Alomatron 175-179, Tortugarch 178-182
 trainers 7, 44-47: unova_black_belt_kenneth 47, unova_doctor_braid 46, unova_fisherman_kenzo 44, unova_swimmer_f_desiree 46, unova_swimmer_f_kaoru 45, unova_swimmer_m_harold 46, unova_swimmer_m_kyle 45
 === unova_route_22
 Route 22
 grass 39-42
 surf 15-40
 super rod 40-70
+ours Brawlhood 174-178
 trainers 6, 45-47: unova_ace_trainer_lucca 47, unova_ace_trainer_shel 47, unova_backpacker_lowell 45, unova_backpacker_myra 45, unova_hiker_justin 45, unova_pkmn_breeder_addison 45
 === unova_route_23
 Route 23
 grass 47-51
 surf 40-55
 super rod 40-70
+ours Bouffalanx 176-180, Mienshifu 180-184, Bascurage 172-176
 trainers 12, 51-54: unova_ace_trainer_grant 53, unova_ace_trainer_juliet 53, unova_ace_trainer_miki 54, unova_ace_trainer_tom 54, unova_battle_girl_brenda 53, unova_battle_girl_tiffany 53, unova_black_belt_benjamin 53, unova_black_belt_luke 53, unova_hiker_don 51, unova_hiker_doug 53, unova_pkmn_ranger_lena 53, unova_pkmn_ranger_steve 52
 === unova_route_4
 Route 4
@@ -2898,50 +2912,61 @@ Route 6
 grass 23-26
 surf 10-25
 super rod 40-70
+ours Seasonstag 174-178, Nimbolga 167-171
 trainers 8, 27-28: unova_parasol_lady_nicole 28, unova_parasol_lady_tihana 28, unova_pkmn_breeder_april 27, unova_pkmn_ranger_richard 28, unova_school_kid_alvin 27, unova_school_kid_mara 27, unova_scientist_jacques 28, unova_scientist_marissa 27
 === unova_route_7
 Route 7
 grass 30-33
+ours Stormstrika 170-174, Beaconwatch 165-169
 trainers 9, 33-35: unova_harlequin_ian 35, unova_harlequin_pat 35, unova_lass_flo 33, unova_nursery_aide_hollie 34, unova_pkmn_breeder_marcus 34, unova_preschooler_chrissy 34, unova_preschooler_greg 34, unova_twins_sola_ana 33, unova_youngster_cody 33
 === unova_route_9
 Route 9
 grass 37-40
+ours Scrapodor 172-176, Umbrapard 166-170
 trainers 5, 42-43: unova_biker_phillip 43, unova_biker_zeke 43, unova_hooligans_jim_cas 42, unova_roughneck_chance 43, unova_roughneck_reese 43
 === unova_victory_road_16
 Victory Road
 grass 47-50
+ours Excavarch 176-180, Formicarch 176-180
 === unova_victory_road_17
 Victory Road
 grass 47-50
 surf 35-50
 super rod 40-55
+ours Colossurk 178-182
 trainers 6, 54-55: unova_ace_trainer_billy 55, unova_ace_trainer_jamie 55, unova_psychic_al 54, unova_psychic_alia 54, unova_veteran_cecile 55, unova_veteran_claude 55
 === unova_victory_road_18
 Victory Road
 grass 47-50
+ours Cottonimbus 172-176, Sporemonarch 174-178
 trainers 1, 55: unova_ace_trainer_chandra 55
 === unova_victory_road_19
 Victory Road
 grass 47-50
 surf 35-50
 super rod 40-70
+ours Imperavia 182-186, Carrionqueen 182-186, Cygnelle 172-176
 trainers 6, 54-55: unova_ace_trainer_beckett 55, unova_ace_trainer_pierce 55, unova_ace_trainer_shelly 55, unova_backpacker_mae 54, unova_doctor_logan 54, unova_veteran_cathy 55
 === unova_victory_road_20
 Victory Road
 grass 41-44
+ours Primavian 178-182
 trainers 5, 54-55: unova_ace_trainer_shanta 55, unova_ace_trainer_webster 55, unova_pkmn_ranger_eddie 54, unova_pkmn_ranger_elle 54, unova_veteran_abraham 55
 === unova_victory_road_21
 Victory Road
 grass 47-50
 surf 35-50
 super rod 40-70
+ours Ferrospire 176-180, Voltarantula 175-179
 === unova_victory_road_22
 Victory Road
 grass 47-50
+ours Throjutsu 172-176, Sawkendo 172-176
 trainers 6, 54-55: unova_ace_trainer_caroll 55, unova_ace_trainer_elmer 55, unova_battle_girl_chalina 54, unova_black_belt_martell 54, unova_veteran_portia 54, unova_veteran_sterling 54
 === unova_victory_road_23
 Victory Road
 grass 47-50
+ours Drudrakon 180-184
 trainers 1, 54: unova_veteran_hugo 54
 === valley_windworks_outside
 Valley Windworks
@@ -3000,6 +3025,7 @@ Village Bridge
 grass 36-39
 surf 25-40
 super rod 40-70
+ours Remedino 168-172, Chinchillux 170-174, Fluxflounder 172-176
 trainers 7, 42-44: unova_artist_gough 42, unova_fisherman_dean 42, unova_hoopster_derrick 42, unova_hoopster_nicolas 42, unova_smasher_amy 44, unova_smasher_lizzy 44, unova_youngster_karl 42
 === violet
 Violet City

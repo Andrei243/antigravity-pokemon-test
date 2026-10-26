@@ -5,5 +5,8 @@
   "bgmTrack": "unova/victory_road",
   "people": {
     "0": { "name": "Hugo", "trainer": { "dialogueBefore": "Few find this hollow. Fewer leave it without a battle!", "dialogueAfter": "You'll leave it, then. Well earned." } }
+  },
+  "ours": {
+    "land": [ [ "Drudrakon", 180, 184 ] ]
   }
 }

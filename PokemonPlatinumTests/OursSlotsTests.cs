@@ -20,7 +20,7 @@ public class OursSlotsTests
     /// The regions whose batch has been placed (plan 03 · D15's placement sessions): every placeable species of ours of
     /// such a region's batch lives somewhere in its overlays. A session that places a region adds it here.
     /// </summary>
-    private static readonly string[] Placed = Array.Empty<string>();
+    private static readonly string[] Placed = { RegionDatabase.Unova };
 
     private static MapArea AreaWithTables()
     {

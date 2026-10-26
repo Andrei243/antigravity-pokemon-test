@@ -17,5 +17,8 @@
   ],
   "signs": {
     "10797": "An old trailer, its door rusted shut. Nobody has lived here for a long while."
+  },
+  "ours": {
+    "land": [ [ "Ballerilly", 172, 176 ], [ "Simisylvan", 170, 174 ] ]
   }
 }
