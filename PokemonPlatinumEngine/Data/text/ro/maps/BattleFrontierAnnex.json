@@ -4,7 +4,7 @@
       "Battle Frontier Annex"
     ],
     "text": [
-      ""
+      "Anexa Battle Frontier"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Dome Fan"
         ],
         "text": [
-          ""
+          "Fan al Domului"
         ]
       },
       "dialog": {
@@ -33,8 +33,8 @@
           "The trick is the card. Look at what they bring before you choose your two!"
         ],
         "text": [
-          "",
-          ""
+          "Șaisprezece Antrenori, patru runde, un singur campion. Nimic din Frontier nu e la fel de zgomotos ca finala Domului.",
+          "Secretul e fișa. Uită-te ce aduc ei înainte să-i alegi pe cei doi ai tăi!"
         ]
       }
     },
@@ -44,7 +44,7 @@
           "Gentleman"
         ],
         "text": [
-          ""
+          "Gentleman"
         ]
       },
       "dialog": {
@@ -53,8 +53,8 @@
           "Whoever you meet in the final has won three times to get there. Respect that."
         ],
         "text": [
-          "",
-          ""
+          "Celelalte meciuri ale unei runde se joacă cât aștepți, iar fiecare rezultat apare pe tablou.",
+          "Cine îți iese în cale în finală a câștigat de trei ori ca să ajungă acolo. Respectă asta."
         ]
       }
     },
@@ -64,7 +64,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       }
     },
@@ -74,7 +74,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       }
     },
@@ -84,7 +84,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       }
     },
@@ -94,7 +94,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       }
     }

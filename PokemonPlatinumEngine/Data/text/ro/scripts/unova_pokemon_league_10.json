@@ -5,7 +5,7 @@
         "Iris"
       ],
       "text": [
-        ""
+        "Iris"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "This is the Hall of Fame. Every Champion's name is kept here, together with the Pokémon who stood beside them."
       ],
       "text": [
-        ""
+        "Aceasta este Sala Faimei. Numele fiecărui Campion e păstrat aici, împreună cu Pokémonii care au stat lângă el."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Your Pokémon came all this way with you. Let's record your team, so everyone will remember them!"
       ],
       "text": [
-        ""
+        "Pokémonii tăi au venit până aici cu tine. Să-ți înregistrăm echipa, ca toți să-și amintească de ei!"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "{player} saved the game."
       ],
       "text": [
-        ""
+        "{player} a salvat jocul."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "The game could not be saved."
       ],
       "text": [
-        ""
+        "Jocul nu a putut fi salvat."
       ]
     }
   ]

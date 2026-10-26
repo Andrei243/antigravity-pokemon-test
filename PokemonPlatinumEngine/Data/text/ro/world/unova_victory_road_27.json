@@ -4,7 +4,7 @@
       "Victory Road"
     ],
     "text": [
-      ""
+      "Drumul Victoriei"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Nurse"
         ],
         "text": [
-          ""
+          "Asistenta"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Funcționarul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bun venit! Cu ce vă pot ajuta?"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Funcționarul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bun venit! Cu ce vă pot ajuta?"
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Ace Trainer"
         ],
         "text": [
-          ""
+          "Antrenor As"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "Past the Badge Check Gates the road goes underground, then over the mountain. Stock up here!"
         ],
         "text": [
-          ""
+          "După Porțile de verificare a Insignelor, drumul intră sub pământ, apoi urcă peste munte. Aprovizionează-te aici!"
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Pokémon Ranger"
         ],
         "text": [
-          ""
+          "Ranger Pokémon"
         ]
       },
       "dialog": {
@@ -86,7 +86,7 @@
           "Some ledges on Victory Road are only reached by climbing the waterfalls. Keep a Pokémon that knows Waterfall with you."
         ],
         "text": [
-          ""
+          "Unele cornișe de pe Drumul Victoriei se ajung doar urcând cascadele. Ține cu tine un Pokémon care știe Cascadă."
         ]
       }
     }

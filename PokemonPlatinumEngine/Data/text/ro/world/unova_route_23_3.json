@@ -6,7 +6,7 @@
           "Artist"
         ],
         "text": [
-          ""
+          "Artistul"
         ]
       },
       "dialog": {
@@ -15,8 +15,8 @@
           "I paint that face. Would you sit for me, once you come back down as Champion?"
         ],
         "text": [
-          "",
-          ""
+          "Fiecare Antrenor care trece pe sub fereastra mea poartă același chip: obosit și plin de speranță.",
+          "Pictez chipul acela. Ai poza pentru mine, când te vei întoarce ca Campion?"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Smeargle"
         ],
         "text": [
-          ""
+          "Smeargle"
         ]
       },
       "dialog": {
@@ -34,7 +34,7 @@
           "Smeargle: Smea, smea!"
         ],
         "text": [
-          ""
+          "Smeargle: Smea, smea!"
         ]
       }
     }

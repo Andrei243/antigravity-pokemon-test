@@ -5,7 +5,7 @@
         "Attendant"
       ],
       "text": [
-        ""
+        "Însoțitoarea"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Room {number} of fourteen. Something stirs behind the door on the left..."
       ],
       "text": [
-        ""
+        "Camera {number} din paisprezece. Ceva se mișcă în spatele ușii din stânga..."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Room {number} of fourteen. Something stirs behind the middle door..."
       ],
       "text": [
-        ""
+        "Camera {number} din paisprezece. Ceva se mișcă în spatele ușii din mijloc..."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Room {number} of fourteen. Something stirs behind the door on the right..."
       ],
       "text": [
-        ""
+        "Camera {number} din paisprezece. Ceva se mișcă în spatele ușii din dreapta..."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "I can feel people waiting in there. Someone eager, I think."
       ],
       "text": [
-        ""
+        "Simt că acolo așteaptă oameni. Cineva nerăbdător, cred."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "It feels nostalgic, somehow. Like something from long ago."
       ],
       "text": [
-        ""
+        "Are ceva nostalgic, nu știu cum. Ca ceva de demult."
       ]
     },
     {
@@ -53,7 +53,7 @@
         "I can hear whispering. Quiet voices, just behind the wall."
       ],
       "text": [
-        ""
+        "Aud șoapte. Voci încete, chiar în spatele peretelui."
       ]
     },
     {
@@ -61,7 +61,7 @@
         "I sense Pokémon in there. Strong ones, and restless."
       ],
       "text": [
-        ""
+        "Simt Pokémoni acolo. Puternici și neliniștiți."
       ]
     },
     {
@@ -69,7 +69,7 @@
         "Attendant"
       ],
       "text": [
-        ""
+        "Însoțitoarea"
       ]
     },
     {
@@ -77,7 +77,7 @@
         "Room {number}... Oh! The same presence fills every door at once."
       ],
       "text": [
-        ""
+        "Camera {number}... Oh! Aceeași prezență umple toate ușile deodată."
       ]
     },
     {
@@ -85,7 +85,7 @@
         "The Pike Queen is waiting. Whichever door you take, you'll meet her."
       ],
       "text": [
-        ""
+        "Regina Știucii te așteaptă. Pe orice ușă ai merge, o vei întâlni."
       ]
     }
   ]

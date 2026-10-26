@@ -4,7 +4,7 @@
       "Victory Road"
     ],
     "text": [
-      ""
+      "Drumul Victoriei"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Mae"
         ],
         "text": [
-          ""
+          "Mae"
         ]
       },
       "before": {
@@ -22,7 +22,7 @@
           "I packed for a week on Victory Road. I'll unpack my Pokémon for you!"
         ],
         "text": [
-          ""
+          "Mi-am făcut bagajele pentru o săptămână pe Drumul Victoriei. Îmi despachetez Pokémonii pentru tine!"
         ]
       },
       "after": {
@@ -30,7 +30,7 @@
           "Time to pack up and go home."
         ],
         "text": [
-          ""
+          "E timpul să-mi strâng lucrurile și să plec acasă."
         ]
       }
     },
@@ -40,7 +40,7 @@
           "Logan"
         ],
         "text": [
-          ""
+          "Logan"
         ]
       },
       "before": {
@@ -48,7 +48,7 @@
           "Doctors follow the challengers up this road. Let me check your Pokémon's health... in battle!"
         ],
         "text": [
-          ""
+          "Doctorii îi urmează pe provocatori pe drumul ăsta. Lasă-mă să-ți verific sănătatea Pokémonilor... în luptă!"
         ]
       },
       "after": {
@@ -56,7 +56,7 @@
           "A clean bill of health, I'd say."
         ],
         "text": [
-          ""
+          "O stare de sănătate impecabilă, aș zice."
         ]
       }
     },
@@ -66,7 +66,7 @@
           "Shelly"
         ],
         "text": [
-          ""
+          "Shelly"
         ]
       },
       "before": {
@@ -74,7 +74,7 @@
           "The falls hide the strong Trainers. Found one!"
         ],
         "text": [
-          ""
+          "Cascadele îi ascund pe Antrenorii puternici. Am găsit unul!"
         ]
       },
       "after": {
@@ -82,7 +82,7 @@
           "You found me, and then some."
         ],
         "text": [
-          ""
+          "M-ai găsit, și chiar mai mult."
         ]
       }
     },
@@ -92,7 +92,7 @@
           "Beckett"
         ],
         "text": [
-          ""
+          "Beckett"
         ]
       },
       "before": {
@@ -100,7 +100,7 @@
           "A quiet ridge in the middle of Victory Road. Let's ruin the quiet!"
         ],
         "text": [
-          ""
+          "O creastă liniștită în mijlocul Drumului Victoriei. Să stricăm liniștea!"
         ]
       },
       "after": {
@@ -108,7 +108,7 @@
           "Quiet again. Thanks for that."
         ],
         "text": [
-          ""
+          "Liniște din nou. Mulțumesc pentru asta."
         ]
       }
     },
@@ -118,7 +118,7 @@
           "Cathy"
         ],
         "text": [
-          ""
+          "Cathy"
         ]
       },
       "before": {
@@ -126,7 +126,7 @@
           "Water, rock and Trainers. Victory Road has them all!"
         ],
         "text": [
-          ""
+          "Apă, stânci și Antrenori. Drumul Victoriei are de toate!"
         ]
       },
       "after": {
@@ -134,7 +134,7 @@
           "And now it has one beaten Veteran."
         ],
         "text": [
-          ""
+          "Și acum are un Veteran învins."
         ]
       }
     },
@@ -144,7 +144,7 @@
           "Pierce"
         ],
         "text": [
-          ""
+          "Pierce"
         ]
       },
       "before": {
@@ -152,7 +152,7 @@
           "The falls are loud. My Pokémon's attacks are louder!"
         ],
         "text": [
-          ""
+          "Cascadele fac zgomot. Atacurile Pokémonilor mei fac și mai mult!"
         ]
       },
       "after": {
@@ -160,7 +160,7 @@
           "I can hardly hear myself lose."
         ],
         "text": [
-          ""
+          "Abia mă aud pierzând."
         ]
       }
     }

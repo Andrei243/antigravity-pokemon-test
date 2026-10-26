@@ -4,7 +4,7 @@
       "Battle Pike"
     ],
     "text": [
-      ""
+      "Știuca Luptei"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Trainer"
         ],
         "text": [
-          ""
+          "Antrenor"
         ]
       },
       "dialog": {
@@ -22,7 +22,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Trainer"
         ],
         "text": [
-          ""
+          "Antrenor"
         ]
       },
       "dialog": {
@@ -40,7 +40,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     },
@@ -50,7 +50,7 @@
           "Attendant"
         ],
         "text": [
-          ""
+          "Însoțitoarea"
         ]
       },
       "dialog": {
@@ -58,7 +58,7 @@
           "Rest while you can. The next door may not be so kind."
         ],
         "text": [
-          ""
+          "Odihnește-te cât poți. Următoarea ușă s-ar putea să nu fie la fel de blândă."
         ]
       }
     },
@@ -68,7 +68,7 @@
           "Visitor"
         ],
         "text": [
-          ""
+          "Vizitator"
         ]
       },
       "dialog": {
@@ -76,7 +76,7 @@
           "Oh, a challenger! Don't mind me. I only come to watch the doors."
         ],
         "text": [
-          ""
+          "Oh, un provocator! Nu-ți face griji pentru mine. Vin doar să mă uit la uși."
         ]
       }
     },
@@ -86,7 +86,7 @@
           "Lucy"
         ],
         "text": [
-          ""
+          "Lucy"
         ]
       },
       "dialog": {
@@ -94,7 +94,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     },
@@ -104,7 +104,7 @@
           "Kirlia"
         ],
         "text": [
-          ""
+          "Kirlia"
         ]
       }
     },
@@ -114,7 +114,7 @@
           "Dusclops"
         ],
         "text": [
-          ""
+          "Dusclops"
         ]
       }
     }

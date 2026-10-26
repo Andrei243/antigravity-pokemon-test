@@ -5,7 +5,7 @@
         "{player} stepped on the switch. Click..."
       ],
       "text": [
-        ""
+        "{player} a călcat pe comutator. Clic..."
       ]
     },
     {
@@ -13,7 +13,7 @@
         "... ... ... ... ... ..."
       ],
       "text": [
-        ""
+        "... ... ... ... ... ..."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "The generator appears to have stopped..."
       ],
       "text": [
-        ""
+        "Pare că generatorul s-a oprit..."
       ]
     }
   ],
@@ -31,7 +31,7 @@
         "The generator is giving off heat that can be felt from a distance. It should be switched off as soon as possible."
       ],
       "text": [
-        ""
+        "Generatorul degajă o căldură care se simte de la distanță. Ar trebui oprit cât mai curând."
       ]
     },
     {
@@ -39,7 +39,7 @@
         "The generator has gone quiet."
       ],
       "text": [
-        ""
+        "Generatorul s-a liniștit."
       ]
     }
   ],
@@ -49,7 +49,7 @@
         "The Poké Ball was a Voltorb!"
       ],
       "text": [
-        ""
+        "Poké Ball-ul era un Voltorb!"
       ]
     }
   ],
@@ -59,7 +59,7 @@
         "The Poké Ball was a Voltorb!"
       ],
       "text": [
-        ""
+        "Poké Ball-ul era un Voltorb!"
       ]
     }
   ],
@@ -69,7 +69,7 @@
         "The Poké Ball was a Voltorb!"
       ],
       "text": [
-        ""
+        "Poké Ball-ul era un Voltorb!"
       ]
     }
   ]

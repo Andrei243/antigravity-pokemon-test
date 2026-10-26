@@ -5,7 +5,7 @@
         "Referee"
       ],
       "text": [
-        ""
+        "Arbitru"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Battle {number} of seven! Three turns a bout, then the judge decides."
       ],
       "text": [
-        ""
+        "Lupta {number} din șapte! Trei ture pe rundă, apoi judecătorul hotărăște."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "{foe} steps into the arena!"
       ],
       "text": [
-        ""
+        "{foe} intră în arenă!"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Referee"
       ],
       "text": [
-        ""
+        "Arbitru"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "The judge is satisfied! Your three have been made whole again. Next!"
       ],
       "text": [
-        ""
+        "Judecătorul este mulțumit! Cei trei ai tăi au fost vindecați complet. Următorul!"
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Referee"
       ],
       "text": [
-        ""
+        "Arbitru"
       ]
     },
     {
@@ -53,7 +53,7 @@
         "Seven straight! {player} has mastered Mind, Skill and Body alike."
       ],
       "text": [
-        ""
+        "Șapte la rând! {player} stăpânește deopotrivă Mintea, Îndemânarea și Trupul."
       ]
     },
     {
@@ -61,7 +61,7 @@
         "{player} received {number} BP!"
       ],
       "text": [
-        ""
+        "{player} a primit {number} BP!"
       ]
     },
     {
@@ -69,7 +69,7 @@
         "Referee"
       ],
       "text": [
-        ""
+        "Arbitru"
       ]
     },
     {
@@ -77,7 +77,7 @@
         "That's the end of your round. Come back and test yourself again."
       ],
       "text": [
-        ""
+        "Aici se încheie runda ta. Revino să te pui din nou la încercare."
       ]
     }
   ]
