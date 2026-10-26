@@ -1,0 +1,126 @@
+{
+  "name": "BattleArena",
+  "displayName": "Battle Arena",
+  "bgmTrack": "sinnoh/veilstone",
+  "interior": "GameHall",
+  "trees": "Round",
+  "battleArena": "Gym",
+  "width": 17,
+  "height": 15,
+  "ground": [
+    "#################",
+    "#################",
+    "#################",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "########D########"
+  ],
+  "solid": [
+    "#################",
+    "#################",
+    "#################",
+    "##.............##",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "##.............##",
+    "########.########"
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 15,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 4,
+      "width": 9,
+      "depth": 7
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 8,
+      "sourceY": 14,
+      "targetMap": "BattleFrontierAnnex",
+      "targetX": 12,
+      "targetY": 5,
+      "targetFacing": "Right"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "referee",
+      "name": "Referee",
+      "npcType": "Gentleman",
+      "x": 13,
+      "y": 7,
+      "facing": "Left",
+      "dialog": [
+        "No round is under way. The receptionist in the annex's lobby takes your three."
+      ]
+    },
+    {
+      "id": "opponent",
+      "name": "Trainer",
+      "npcType": "Youngster",
+      "x": 8,
+      "y": 3,
+      "facing": "Down",
+      "dialog": [
+        "..."
+      ],
+      "shownBy": "FLAG_BATTLE_ARENA_SHOW_OPPONENT"
+    },
+    {
+      "id": "spectator_1",
+      "name": "Spectator",
+      "npcType": "Youngster",
+      "x": 3,
+      "y": 9,
+      "facing": "Right",
+      "dialog": [
+        "Three turns, then the judge! Hit hard, hit well, and keep your HP."
+      ]
+    },
+    {
+      "id": "spectator_2",
+      "name": "Spectator",
+      "npcType": "Lass",
+      "x": 5,
+      "y": 13,
+      "facing": "Up",
+      "dialog": [
+        "Protecting yourself won't win the judge over. Boldness counts in here."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

@@ -14,6 +14,12 @@ partial class Harness
     // points, and whether the final's Vs. Recorder file replays to the same lines.
     public void VenuesMode()
     {
+        // B9's Palace and Arena alone (Modes/VenuesPalaceArena.cs)
+        if (Environment.GetEnvironmentVariable("VENUES_FROM") == "palace")
+        {
+            VenuesPalaceArena(fresh: true);
+            return;
+        }
         engine.StartNewGame();
         PastTheOpening();
         game.State = GameState.Overworld;
@@ -259,5 +265,8 @@ partial class Harness
         Shot("vn09_dome_lobby_after");
         Console.WriteLine($"  the record: streak {records.Dome.Streak}, best {records.Dome.Best}, won {records.Dome.Won}, matches {records.Dome.Matches}, "
             + $"in progress {records.Dome.InProgress}; {records.BattlePoints} BP; the team's levels {string.Join(", ", team.Members.Select(p => p.Level))}");
+
+        // ---- B9: the Battle Palace and the Battle Arena, from the same lobby
+        VenuesPalaceArena(fresh: false);
     }
 }

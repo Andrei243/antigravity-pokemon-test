@@ -52,3 +52,95 @@ label Rules
   say "Before every match you'll see your opponent's three, and you send two of yours into a battle of one on one."
   say "Win the final and you're the champion. Lose a match, and the tournament is over for you."
   end
+
+
+# The Battle Palace's desk (plan 14 · B9): a round of seven Trainers, three against three, every Pokémon choosing its own
+# moves by its nature (Models/Frontier/BattleVenue.cs; the round itself is BattlePalace.txt's arrival script)
+script PalaceDesk
+  face self player
+  speaker "Receptionist"
+  say "Welcome to the Battle Palace! Here your Pokémon battle as their natures tell them to."
+  venue streak palace
+  if result == 0 goto PalaceAsk
+  say "You've won {number} battles in a row here. Your Pokémon must trust you!"
+label PalaceAsk
+  choose "Would you like to take on the Battle Palace?" "Enter" "The rules" "No"
+  if result == 1 goto PalaceRules
+  if result == 2 goto PalaceLater
+  venue enough
+  if result == 1 goto PalaceChoose
+  say "You need three Pokémon that can take part, all of different species and holding different items."
+  say "An Egg can't take part, and nor can {banned}."
+  end
+label PalaceChoose
+  say "Please choose the three Pokémon you'll enter."
+  venue choose
+  if result == 0 goto PalaceLater
+  venue check
+  if result == 1 goto PalaceSameSpecies
+  if result == 2 goto PalaceSameItem
+  venue begin palace
+  say "Thank you! Seven Trainers are waiting. This way to the hall, please!"
+  fade out 0.6
+  warp "BattlePalace" 8 10 up
+  fade in
+  end
+label PalaceSameSpecies
+  say "I'm sorry. The three entered must all be of different species."
+  goto PalaceLater
+label PalaceSameItem
+  say "I'm sorry. No two of the three entered may hold the same item."
+label PalaceLater
+  say "Please come again. Your Pokémon will be glad of the chance to speak for themselves."
+  end
+label PalaceRules
+  say "Your three battle at Level 50, or at their own level if it's lower. They are made whole after every battle."
+  say "You give no orders here. Each Pokémon chooses its moves by its nature, bolder or warier as its HP runs low."
+  say "Beat seven Trainers in a row to win the round. Lose once, and the round is over."
+  end
+
+
+# The Battle Arena's desk (plan 14 · B9): a round of seven Trainers, three against three, no switching, and every bout that
+# lasts three turns judged (Models/Frontier/BattleVenue.cs; the round itself is BattleArena.txt's arrival script)
+script ArenaDesk
+  face self player
+  speaker "Receptionist"
+  say "Welcome to the Battle Arena! Every bout is fought to a finish, or to the judge's verdict."
+  venue streak arena
+  if result == 0 goto ArenaAsk
+  say "You've won {number} battles in a row here. The judges know your name!"
+label ArenaAsk
+  choose "Would you like to take on the Battle Arena?" "Enter" "The rules" "No"
+  if result == 1 goto ArenaRules
+  if result == 2 goto ArenaLater
+  venue enough
+  if result == 1 goto ArenaChoose
+  say "You need three Pokémon that can take part, all of different species and holding different items."
+  say "An Egg can't take part, and nor can {banned}."
+  end
+label ArenaChoose
+  say "Please choose the three Pokémon you'll enter, in the order they'll fight."
+  venue choose
+  if result == 0 goto ArenaLater
+  venue check
+  if result == 1 goto ArenaSameSpecies
+  if result == 2 goto ArenaSameItem
+  venue begin arena
+  say "Thank you! Seven Trainers are waiting. This way to the arena, please!"
+  fade out 0.6
+  warp "BattleArena" 8 10 up
+  fade in
+  end
+label ArenaSameSpecies
+  say "I'm sorry. The three entered must all be of different species."
+  goto ArenaLater
+label ArenaSameItem
+  say "I'm sorry. No two of the three entered may hold the same item."
+label ArenaLater
+  say "Please come again. The judges are always watching."
+  end
+label ArenaRules
+  say "Your three battle at Level 50, or at their own level if it's lower, one at a time in the order you chose."
+  say "No switching! A bout still going after three turns is judged on Mind, Skill and Body, and the loser is out."
+  say "Beat seven Trainers in a row to win the round. Lose once, and the round is over."
+  end

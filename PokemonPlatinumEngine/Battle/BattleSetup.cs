@@ -254,6 +254,18 @@ public sealed class BattleSetup
     /// </summary>
     public bool Scene { get; init; } = true;
 
+    /// <summary>
+    /// Who chooses for the player's side from inside the rules (plan 14 · B9; <see cref="Sim.CoreSetup.PlayerController"/>):
+    /// null, the player through the menus. A Palace battle needs none given: its own is <see cref="Sim.PalaceController"/>.
+    /// </summary>
+    public Sim.IBattleController? PlayerController { get; init; }
+
+    /// <summary>A battle of the Battle Palace (plan 14 · B9; <see cref="Sim.CoreSetup.Palace"/>): the menus never open.</summary>
+    public bool Palace { get; init; }
+
+    /// <summary>A battle of the Battle Arena (plan 14 · B9; <see cref="Sim.CoreSetup.TurnLimit"/>): the turns a bout runs before it is judged, 0 for none.</summary>
+    public int TurnLimit { get; init; }
+
     /// <summary>The trainer's first Pokémon when it isn't the first in their party (the old constructor's foe argument).</summary>
     internal Pokemon? FirstTrainerPokemon { get; init; }
 }

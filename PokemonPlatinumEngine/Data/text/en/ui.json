@@ -3030,7 +3030,23 @@
     "nuzlockeDuplicate": "You've caught this one's line. It can't be caught.",
     "runNoCatching": "This run doesn't allow catching Pokémon.",
     "runMonotype": "This run only keeps {type}-type Pokémon.",
-    "runNoRunning": "This run doesn't allow running away!"
+    "runNoRunning": "This run doesn't allow running away!",
+    "venue": {
+      "choosing": "{pokemon} is deciding for itself what to do...",
+      "hesitates": "{pokemon} hesitates and can't bring itself to act!",
+      "flavour": {
+        "Eager": "{pokemon} looks hungry for the next exchange!",
+        "Glint": "A hard gleam comes into {pokemon}'s eyes!",
+        "Position": "{pokemon} braces itself and digs in!",
+        "Growl": "{pokemon} gives a low, rumbling growl!"
+      },
+      "timeUp": "Time's up! The judge weighs the bout...",
+      "boutWon": "The judge gives the bout to {pokemon}!",
+      "boutDrawn": "The judge calls it even! Neither takes the bout.",
+      "boutLost": "{pokemon} is out of the bout!",
+      "noHesitating": "Only a Pokémon of the Battle Palace hesitates.",
+      "noSwitching": "A bout of the Battle Arena is fought to its end!"
+    }
   },
 
   "battleInfo": {
@@ -4057,5 +4073,14 @@
     "yourThree": "YOUR THREE",
     "chooseTwo": "TWO GO INTO BATTLE",
     "battle": "BATTLE"
+  },
+  "venueScreen": {
+    "closed": "CHOOSING BY NATURE",
+    "closedNote": "Your Pokémon picks its own moves here.",
+    "judgment": "JUDGMENT",
+    "mind": "MIND",
+    "skill": "SKILL",
+    "body": "BODY",
+    "total": "TOTAL"
   }
 }

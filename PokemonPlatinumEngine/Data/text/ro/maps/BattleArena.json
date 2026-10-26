@@ -1,0 +1,85 @@
+{
+  "displayName": {
+    "en": [
+      "Battle Arena"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "referee": {
+      "name": {
+        "en": [
+          "Referee"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "No round is under way. The receptionist in the annex's lobby takes your three."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "opponent": {
+      "name": {
+        "en": [
+          "Trainer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "spectator_1": {
+      "name": {
+        "en": [
+          "Spectator"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Three turns, then the judge! Hit hard, hit well, and keep your HP."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "spectator_2": {
+      "name": {
+        "en": [
+          "Spectator"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Protecting yourself won't win the judge over. Boldness counts in here."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

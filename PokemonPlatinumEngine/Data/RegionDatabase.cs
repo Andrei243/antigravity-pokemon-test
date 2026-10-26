@@ -354,6 +354,8 @@ public static class RegionDatabase
                 "PoketchCompany2F", "PoketchCompany3F",
                 // Plan 14 · B8: the Battle Frontier's annex, its lobby and the Battle Dome's hall (maps of ours)
                 "BattleFrontierAnnex", "BattleDome",
+                // Plan 14 · B9: the Battle Palace's and the Battle Arena's halls in the annex (maps of ours)
+                "BattlePalace", "BattleArena",
             }
         },
         new()

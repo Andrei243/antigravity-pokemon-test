@@ -1024,6 +1024,13 @@ public static class ScriptParser
                 string which = what == "finish" ? r.OneOf("won", "lost") : "";
                 return new Instruction { Op = Op.Bracket, Line = line, Name = what, Other = which };
             }
+            // The Battle Palace's and the Battle Arena's rounds (plan 14 · B9)
+            case "venue":
+            {
+                string what = r.OneOf("enough", "choose", "check", "begin", "active", "next", "opponent", "fight", "won", "finish", "points", "streak", "best", "end");
+                string which = what is "begin" or "streak" or "best" ? r.OneOf("palace", "arena") : what == "finish" ? r.OneOf("won", "lost") : "";
+                return new Instruction { Op = Op.Venue, Line = line, Name = what, Other = which };
+            }
             // The Berry Blender and the Pokéblock Case (plan 21 · H11)
             case "pokeblock":
             {

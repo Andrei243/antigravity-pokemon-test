@@ -1,0 +1,140 @@
+{
+  "name": "BattlePalace",
+  "displayName": "Battle Palace",
+  "bgmTrack": "sinnoh/veilstone",
+  "interior": "Museum",
+  "trees": "Round",
+  "battleArena": "Gym",
+  "width": 17,
+  "height": 15,
+  "ground": [
+    "#################",
+    "#################",
+    "#################",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "########D########"
+  ],
+  "solid": [
+    "#################",
+    "#################",
+    "#################",
+    "##.............##",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "##.............##",
+    "########.########"
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 15,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 13,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 15,
+      "y": 13,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 5,
+      "y": 4,
+      "width": 7,
+      "depth": 7
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 8,
+      "sourceY": 14,
+      "targetMap": "BattleFrontierAnnex",
+      "targetX": 2,
+      "targetY": 5,
+      "targetFacing": "Left"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "attendant",
+      "name": "Palace Maven",
+      "npcType": "Gentleman",
+      "x": 3,
+      "y": 7,
+      "facing": "Right",
+      "dialog": [
+        "No round is under way. The receptionist in the annex's lobby takes your three."
+      ]
+    },
+    {
+      "id": "opponent",
+      "name": "Trainer",
+      "npcType": "Youngster",
+      "x": 8,
+      "y": 3,
+      "facing": "Down",
+      "dialog": [
+        "..."
+      ],
+      "shownBy": "FLAG_BATTLE_PALACE_SHOW_OPPONENT"
+    },
+    {
+      "id": "onlooker_1",
+      "name": "Onlooker",
+      "npcType": "Lady",
+      "x": 13,
+      "y": 8,
+      "facing": "Left",
+      "dialog": [
+        "A gentle Pokémon in a corner turns nasty. Natures show most when the going gets hard."
+      ]
+    },
+    {
+      "id": "onlooker_2",
+      "name": "Onlooker",
+      "npcType": "Gentleman",
+      "x": 11,
+      "y": 13,
+      "facing": "Up",
+      "dialog": [
+        "Here you don't command. You watch, and you learn who your Pokémon really are."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

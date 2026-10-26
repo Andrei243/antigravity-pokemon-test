@@ -132,6 +132,19 @@ public sealed class CoreSetup
     /// own Pokémon may Terastallize once in the battle. A trainer has theirs as <see cref="Trainer.TeraOrb"/>.
     /// </summary>
     public bool TeraOrb { get; init; }
+
+    /// <summary>
+    /// A battle of the Battle Palace (plan 14 · B9): every Pokémon on both sides chooses by its nature
+    /// (<see cref="PalaceController"/>), nobody is asked, and one at half its HP says so once. A record keeps it.
+    /// </summary>
+    public bool Palace { get; init; }
+
+    /// <summary>
+    /// A battle of the Battle Arena (plan 14 · B9): a bout of two facing each other that has run this many turns with both
+    /// standing is judged (<see cref="ArenaJudge"/>, the <see cref="Judged"/> event) and the loser falls; the player may
+    /// not switch, and the next in the team's order comes in. 0 for none, which changes nothing. A record keeps it.
+    /// </summary>
+    public int TurnLimit { get; init; }
 }
 
 /// <summary>
@@ -267,8 +280,11 @@ public sealed partial class BattleCore : IBattleContext
         startedFrom = (rng as BattleRandom)?.State;
         playerName = setup.PlayerName;
         firstTrainerPokemon = setup.FirstTrainerPokemon;
-        playerController = setup.PlayerController;
-        enemyController = setup.EnemyController;
+        // The Battle Palace's Pokémon choose for themselves on both sides; the Arena judges its bouts (plan 14 · B9)
+        Palace = setup.Palace;
+        TurnLimit = Math.Max(0, setup.TurnLimit);
+        playerController = setup.PlayerController ?? (Palace ? PalaceController.Instance : null);
+        enemyController = Palace ? PalaceController.Instance : setup.EnemyController;
         partnerController = setup.PartnerController;
         Kind = setup.Kind;
         CannotFlee = setup.CannotFlee;
@@ -551,15 +567,19 @@ public sealed partial class BattleCore : IBattleContext
             zChosen.Clear();
             dynamaxChosen.Clear();
             teraChosen.Clear();
+            // A bout of the Battle Arena begins between whoever face each other now (plan 14 · B9)
+            KeepTheBout();
             if (asked.Count > 0)
             {
                 yield return new ActionRequest(asked);
                 choices.AddRange(answer);
                 ChooseMegas(answer);
             }
+            // The Battle Palace's own Pokémon choose for themselves, and the battle says so (plan 14 · B9)
+            ChoosesForItself(free);
             foreach (var b in free.Where(b => ControllerOf(b) != null))
             {
-                var chosen = ControllerOf(b)!.ChooseAction(this, b);
+                var chosen = AsTheVenueLets(b, ControllerOf(b)!.ChooseAction(this, b));
                 // A chooser inside may only Mega Evolve where the rules let it (plan 06 · R20)
                 if (chosen.Mega && !CanMegaEvolve(b)) chosen = chosen with { Mega = false };
                 // And use a Z-Move or Ultra Burst only where they let it (plan 06 · R21)
@@ -766,6 +786,9 @@ public sealed partial class BattleCore : IBattleContext
         EndOfTurn();
         if (Result != BattleResult.None) yield break;
         WatchTheRed();
+        // The Palace's Pokémon at half their HP say so, and the Arena's bouts that have run their turns are judged (plan 14 · B9)
+        AtTheVenuesTurnEnd();
+        if (Result != BattleResult.None) yield break;
 
         foreach (var request in ReplaceFainted()) yield return request;
         if (Result != BattleResult.None) yield break;

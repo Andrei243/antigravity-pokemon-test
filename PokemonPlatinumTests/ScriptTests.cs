@@ -629,6 +629,22 @@ public class ScriptTests
           bracket streak
           bracket best
           bracket end
+          venue enough
+          venue choose
+          venue check
+          venue begin palace
+          venue begin arena
+          venue active
+          venue next
+          venue opponent
+          venue fight
+          venue won
+          venue finish won
+          venue finish lost
+          venue points
+          venue streak palace
+          venue best arena
+          venue end
         script Other
           end
         """;
@@ -1651,6 +1667,7 @@ public class ScriptTests
         public PokemonPlatinumEngine.Models.Frontier.BattleCastleChallenge? Castle { get => inner.Castle; set => inner.Castle = value; }
         public PokemonPlatinumEngine.Models.Frontier.BattleArcadeChallenge? Arcade { get => inner.Arcade; set => inner.Arcade = value; }
         public PokemonPlatinumEngine.Models.Frontier.BattleDomeChallenge? Dome { get => inner.Dome; set => inner.Dome = value; }
+        public PokemonPlatinumEngine.Models.Frontier.BattleVenueChallenge? Venue { get => inner.Venue; set => inner.Venue = value; }
         public void WalkWith(NPC? body, Pokemon? pokemon) => inner.WalkWith(body, pokemon);
         public int FrontierAct(string what, int number, NPC? subject) => inner.FrontierAct(what, number, subject);
         public IReadOnlyList<int> Entered => inner.Entered;

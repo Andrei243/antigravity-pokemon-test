@@ -105,6 +105,10 @@ public sealed class BattleRecordFile
     public bool MegaMaxBand { get; set; }
     public bool TeraOrb { get; set; }
 
+    /// <summary>A Battle Palace's battle and a Battle Arena's bouts (plan 14 · B9): both change how it goes. A file without them is neither.</summary>
+    public bool Palace { get; set; }
+    public int TurnLimit { get; set; }
+
     public RecordedConditions Conditions { get; set; } = new();
 
     /// <summary>Where the battle's chance began (<see cref="BattleRecord.Seed"/>).</summary>
@@ -155,6 +159,8 @@ public sealed class BattleRecordFile
             DynamaxBand = setup.DynamaxBand,
             MegaMaxBand = setup.MegaMaxBand,
             TeraOrb = setup.TeraOrb,
+            Palace = setup.Palace,
+            TurnLimit = setup.TurnLimit,
             Conditions = new RecordedConditions
             {
                 Terrain = conditions.Terrain,
@@ -254,7 +260,9 @@ public sealed class BattleRecordFile
             ZRing = ZRing,
             DynamaxBand = DynamaxBand,
             MegaMaxBand = MegaMaxBand,
-            TeraOrb = TeraOrb
+            TeraOrb = TeraOrb,
+            Palace = Palace,
+            TurnLimit = TurnLimit
         };
     }
 

@@ -125,6 +125,8 @@ public sealed partial class BattleCore
         var move = act.Move!;
         var target = act.Target;
         bool goesOn = act.Choice.Move == BattleChoice.HeldMove;
+        // A Pokémon of the Battle Palace that can't bring itself to use what it chose spends its turn so (plan 14 · B9)
+        if (act.Choice.Falters && !goesOn && Falters(user)) yield break;
 
         // Under an Encore whatever was chosen comes out as the encored move
         // (A Dynamaxed Pokémon's Max Move isn't turned aside: plan 06 · R22)
@@ -189,6 +191,8 @@ public sealed partial class BattleCore
         bool wentOn = Perform(use, goesOn);
         bool failed = failedNow || (use.Hits.Count > 0 && !use.Hits.Any(h => h.Landed));
         if (failed) failedOnTurn[user.Pokemon!] = Turn;
+        // The Battle Arena's judge counts the move for Mind and how it came off for Skill (plan 14 · B9)
+        JudgeTheMove(use, failed, wentOn);
         failedNow = false;
         lastMoveShown = move.Data;
         if (!wentOn)

@@ -34,6 +34,8 @@ public sealed partial class BattleCore
         if (place.IsPlayerSide && place.Trainer == null) sentOut.Add(place.Pokemon);
         // Illusion's disguise (plan 06 · R27b)
         TakeTheIllusion(place);
+        // The Battle Palace knows whether it comes in at half its HP or less (plan 14 · B9)
+        EnteredThePalace(place);
     }
 
     /// <summary>
@@ -431,6 +433,8 @@ public sealed partial class BattleCore
 
         int index;
         if (ControllerOf(place) is { } controller) index = controller.ChooseReplacement(this, place);
+        // In the Battle Arena the next of the team comes in by itself (plan 14 · B9)
+        else if (TurnLimit > 0) index = -1;
         else
         {
             yield return new ReplacementRequest(place.Place);

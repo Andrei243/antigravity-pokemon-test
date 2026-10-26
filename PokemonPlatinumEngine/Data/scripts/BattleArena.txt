@@ -1,0 +1,59 @@
+# The Battle Arena's hall (plan 14 · B9). docs/scripts.md describes the language; the lines are our own, on the beats of
+# Emerald's Battle Arena: seven Trainers one after another, three against three, no switching, and every bout that lasts
+# three turns judged on Mind, Skill and Body.
+#
+# A whole round is this one arrival script, which loops battle by battle (Models/Frontier/BattleVenue.cs; `venue`). The
+# round lives between the desk and the hall as the host's Venue, so a game closed in the middle of one finds no round
+# here: the script does nothing, and the next one begun at the desk ends the streak (VenueRecord.InProgress).
+
+
+script OnEnter
+  venue active
+  if result == 0 end
+  clearflag FLAG_BATTLE_ARENA_SHOW_OPPONENT
+  hide opponent
+  place player 8 10 up
+label Battle
+  venue next
+  speaker "Referee"
+  say "Battle {number} of seven! Three turns a bout, then the judge decides."
+  venue opponent
+  place opponent 8 3 down
+  setflag FLAG_BATTLE_ARENA_SHOW_OPPONENT
+  show opponent
+  walk opponent down 2
+  text "{foe} steps into the arena!"
+  venue fight
+  if result == 0 goto Lost
+  call Leaves
+  venue won
+  if result == 1 goto RoundWon
+  speaker "Referee"
+  say "The judge is satisfied! Your three have been made whole again. Next!"
+  goto Battle
+label RoundWon
+  speaker "Referee"
+  say "Seven straight! {player} has mastered Mind, Skill and Body alike."
+  venue finish won
+  venue points
+  text "{player} received {number} BP!"
+  fanfare item
+  goto Home
+label Lost
+  call Leaves
+  venue finish lost
+  speaker "Referee"
+  say "That's the end of your round. Come back and test yourself again."
+label Home
+  venue end
+  fade out 0.6
+  warp "BattleFrontierAnnex" 12 5 right
+  fade in
+  end
+
+
+# The opponent goes off the floor again
+script Leaves
+  clearflag FLAG_BATTLE_ARENA_SHOW_OPPONENT
+  hide opponent
+  return
