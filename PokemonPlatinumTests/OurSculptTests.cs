@@ -242,7 +242,7 @@ public class OurSculptTests
             if (mmax == null) continue;
             var p = new Pokemon(PokemonDatabase.Get(species)!, 50, Gender.Male, Nature.Hardy, false);
             p.ChangeForm(mmax.Name);
-            Assert.Equal(species + "-Mega", p.ModelName);
+            Assert.Equal(PokemonModels.HasModel(mmax.Name) ? mmax.Name : species + "-Mega", p.ModelName);
         }
     }
 

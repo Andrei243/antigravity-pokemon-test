@@ -4,6 +4,7 @@ using System.Linq;
 using PokemonPlatinumEngine.Battle;
 using PokemonPlatinumEngine.Battle.Sim;
 using PokemonPlatinumEngine.Data;
+using PokemonPlatinumEngine.Graphics;
 using PokemonPlatinumEngine.Models;
 using Xunit;
 using static PokemonPlatinumTests.CoreScenario;
@@ -320,9 +321,9 @@ public class MegaDynamaxTests
             Assert.Equal(1000f, form.Weight);
             Assert.InRange(form.Height ?? 0, 20f, 60f);
             Assert.False(species.Legendary || species.Mythical, form.Name);
-            // A Pokémon in it shows its Mega's model until it has a sculpt of its own
+            // A Pokémon in it shows its Mega's model until it has a sculpt of its own (wave 60: PokemonModels.HasModel says)
             var p = new Pokemon(species, 50) { Form = form.Name };
-            Assert.Equal(mega.Name, p.ModelName);
+            Assert.Equal(PokemonModels.HasModel(form.Name) ? form.Name : mega.Name, p.ModelName);
         }
     }
 
