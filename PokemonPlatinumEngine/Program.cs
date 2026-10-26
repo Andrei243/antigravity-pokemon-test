@@ -125,6 +125,8 @@ public static class Program
         // but for what a switch asks of this run alone (--windowed, --fullscreen, --safe-mode)
         var settings = GameSettings.Load();
         launch.ApplyTo(settings);
+        // Developer mode (plan 16 · T6): the console, and the files watched, read from the repository's data before anything loads them
+        if (DevMode.Wanted(launch, settings)) DevMode.Enable();
         if (launch.SafeMode)
         {
             // Safe mode shows the game as it is built: every model meshed afresh, and no hand-made file read
