@@ -46,7 +46,9 @@ public static class PokemonLook
         // Plan 09 · L8: Unova's one whose female is no form of her own
         "Unfezant",
         // Plan 03 · D14: species of our own sculpted with their forebears' female difference (batch 1, Kanto)
-        "Ratchisel", "Tripluma", "Mesmeryx", "Sabrefin", "Typhonarch"
+        "Ratchisel", "Tripluma", "Mesmeryx", "Sabrefin", "Typhonarch",
+        // Batch 2, Johto
+        "Coccinova", "Totemsight", "Mimicedar", "Mirelord", "Wobbulwark", "Ironwyrm", "Guillotyne", "Atlascross", "Krakannon", "Cerberhound", "Siegephant"
     };
 
     /// <summary>

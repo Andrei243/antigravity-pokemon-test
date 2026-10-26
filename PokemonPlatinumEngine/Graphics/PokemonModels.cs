@@ -794,7 +794,12 @@ internal static partial class PokemonModels
         "Kirinine", "Medusarch", "Solarion", "Slowmantle", "Porrigard", "Tripluma", "Glacitusk", "Sludgemire", "Clamspire", "Mesmeryx",
         "Pincerex", "Dynamorb", "Palmagus", "Ossugard", "Savateur", "Pugilord", "Smoglom", "Matriroo", "Sabrefin", "Stellamir",
         "Mimestro", "Aurorelle", "Mandibron", "Bovarch", "Typhonarch", "Ferrisle", "Naiadeon", "Fulgureon", "Pyreon", "Ammonarch",
-        "Eurypterox", "Azhdarch", "Dozemount", "Glacirune", "Fulguris", "Pyrevant"
+        "Eurypterox", "Azhdarch", "Dozemount", "Glacirune", "Fulguris", "Pyrevant",
+        // Batch 2 (Johto; PokemonModels.Ours.Johto.cs)
+        "Ermilong", "Noctaugur", "Coccinova", "Orbweavix", "Abyssolux", "Totemsight", "Mimicedar", "Helianthra", "Mirelord", "Zenitheon",
+        "Eclipseon", "Slowmonarch", "Wobbulwark", "Pinecitadel", "Ironwyrm", "Mastiffang", "Fugumace", "Guillotyne",
+        "Fermentoise", "Atlascross", "Calderon", "Reefcrown", "Krakannon", "Sleighwing", "Raysail", "Rapierwing",
+        "Cerberhound", "Siegephant", "Muralist", "Gyrodrill", "Pastorine", "Raitenko", "Enkaiou", "Suiseiren"
     };
 
     /// <summary>
@@ -1103,6 +1108,17 @@ internal static partial class PokemonModels
         "MESMERYX" => Mesmeryx(female: true),
         "SABREFIN" => Sabrefin(female: true),
         "TYPHONARCH" => Typhonarch(female: true),
+        "COCCINOVA" => Coccinova(female: true),
+        "TOTEMSIGHT" => Totemsight(female: true),
+        "MIMICEDAR" => Mimicedar(female: true),
+        "MIRELORD" => Mirelord(female: true),
+        "WOBBULWARK" => Wobbulwark(female: true),
+        "IRONWYRM" => Ironwyrm(female: true),
+        "GUILLOTYNE" => Guillotyne(female: true),
+        "ATLASCROSS" => Atlascross(female: true),
+        "KRAKANNON" => Krakannon(female: true),
+        "CERBERHOUND" => Cerberhound(female: true),
+        "SIEGEPHANT" => Siegephant(female: true),
         // Plan 09 · L8: a flagged species with no sculpt of its own (none today) is generated, her by the rule of
         // PokemonGenomes.FemaleOf; a hand-built one missing above shows her male, which FemaleLookTests forbids
         _ => HasModel(species) ? Create(species) : PokemonGenerator.Build(species + PokemonPlatinumEngine.Models.PokemonLook.FemaleSuffix) ?? Create(species)

@@ -46,7 +46,9 @@ public class PokemonModelTests
         ["Sandy Shocks"] = 3, ["Iron Jugulis"] = 6, ["Poltchageist"] = 0, ["Sinistcha"] = 0,
         // Plan 03 · D14: the species of our own (the face on Najarok's hood has eyes of its own)
         ["Najarok"] = 4, ["Molemount"] = 10, ["Tripluma"] = 6, ["Clamspire"] = 4, ["Palmagus"] = 14, ["Smoglom"] = 6, ["Matriroo"] = 4,
-        ["Stellamir"] = 0
+        ["Stellamir"] = 0,
+        // Batch 2 (Johto): Noctaugur's third eye on its brow, Cerberhound's two more heads
+        ["Noctaugur"] = 3, ["Cerberhound"] = 6
     }.Concat(PokemonModels.Forms.Where(f => f.StartsWith("Unown-")).Select(f => KeyValuePair.Create(f, 1))).ToDictionary(e => e.Key, e => e.Value);
 
     /// <summary>
