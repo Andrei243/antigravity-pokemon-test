@@ -246,6 +246,35 @@ public class OurSculptTests
         }
     }
 
+    /// <summary>The Mega Dynamax forms of the Megas from Incineroar to Victreebel (plan 06 · R20c, PokemonModels.MegaMax2.cs).</summary>
+    private static readonly string[] MegaMaxSecondHalf = { "Incineroar", "Infernape", "Inteleon", "Kangaskhan", "Lopunny", "Lucario", "Manectric", "Mawile", "Medicham",
+        "Meganium", "Meowscarada", "Metagross", "Pidgeot", "Pinsir", "Primarina", "Pyroar", "Quaquaval", "Raichu-X", "Raichu-Y", "Rillaboom", "Sableye", "Salamence",
+        "Samurott", "Sceptile", "Scizor", "Scolipede", "Serperior", "Sharpedo", "Skarmory", "Skeledirge", "Slowbro", "Starmie", "Steelix", "Swampert", "Torterra",
+        "Typhlosion", "Tyranitar", "Venusaur", "Victreebel" };
+
+    private static string MegaOf(string name) => name.StartsWith("Raichu-") ? "Raichu-Mega-" + name[^1] : name + "-Mega";
+
+    [Fact]
+    public void EveryMegaDynamaxOfTheSecondHalfHasASculptOfItsOwn()
+    {
+        Assert.Equal(39, MegaMaxSecondHalf.Length);
+        foreach (var name in MegaMaxSecondHalf)
+        {
+            string mmax = MegaOf(name) + "-Mmax";
+            Assert.True(PokemonDatabase.SpeciesOfForm(mmax) != null, mmax);
+            Assert.True(PokemonModels.HasModel(mmax), $"{mmax} has no sculpt of its own");
+            Assert.Contains(mmax, PokemonModels.Forms);
+            Assert.True(MegaDynamaxLooks.HasSculpt(mmax), mmax);
+            Assert.NotEqual(PokemonModels.Signature(MegaOf(name)), PokemonModels.Signature(mmax));
+            Assert.Equal(mmax, PokemonModels.Build(mmax).Species);
+            // A Pokémon in the form asks for it by name
+            var species = PokemonDatabase.SpeciesOfForm(mmax)!;
+            var p = new Pokemon(species, 50) { Form = mmax };
+            Assert.Equal(mmax, p.ModelName);
+        }
+        Assert.Equal(39, MegaMaxSecondHalf.Select(n => PokemonModels.Signature(MegaOf(n) + "-Mmax")).Distinct().Count());
+    }
+
     /// <summary>Batch 6 and its supplement: the species of our own that evolve from Kalos's (Nos. 2650 to 2729), Ecosentinel among them.</summary>
     private static PokemonSpecies[] Kalos => PokemonDatabase.Ours().Where(s => s.DexNumber is >= 2650 and <= 2729).ToArray();
 

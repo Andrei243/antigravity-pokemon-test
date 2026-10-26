@@ -66,7 +66,9 @@ public class PokemonModelTests
         // Plan 06 · R20b: Mega Inteleon's right eye is the lens of its scope
         ["Inteleon-Mega"] = 1,
         // Wave 60: the Mega Dynamax form of Gengar keeps its Mega's third eye
-        ["Gengar-Mega-Mmax"] = 3
+        ["Gengar-Mega-Mmax"] = 3,
+        // Plan 06 · R20c: the Mega Dynamax forms keep their Megas' eyes (Mega Starmie has none, Kangaskhan four, Inteleon one)
+        ["Inteleon-Mega-Mmax"] = 1, ["Kangaskhan-Mega-Mmax"] = 4, ["Starmie-Mega-Mmax"] = 0
     }.Concat(PokemonModels.Forms.Where(f => f.StartsWith("Unown-")).Select(f => KeyValuePair.Create(f, 1))).ToDictionary(e => e.Key, e => e.Value);
 
     /// <summary>
