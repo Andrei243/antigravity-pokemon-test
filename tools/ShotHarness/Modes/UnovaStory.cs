@@ -1165,5 +1165,59 @@ partial class Harness
         ReadTo("the Giant Chasm"); Frames(10); Shot("us360_cheren_on_the_beach");
         ReadTo(null); Frames(20); Shot("us361_route_21_after");
         Humilau("the Frigate gone");
+
+        // Plan 22 · U9, part a: the Giant Chasm (us362 to us387), played in this same game: Hugh and Rood's spy in the cave, Rood's
+        // stand in the crater, Ghetsis and the Shadow Triad aboard the Frigate, Ghetsis and Kyurem in the cavern, N and Zekrom, the
+        // black Kyurem, Ghetsis's own battle, and Hugh and Cheren afterwards
+        void Chasm(string what) =>
+            Console.WriteLine($"  {what}: map {game.Map.Name} {game.Player.GridX},{game.Player.GridY}, chasm {story.Var("VAR_UNOVA_CHASM")}, "
+                + $"spy gone {story.Has("FLAG_UNOVA_CHASM_SPY_GONE")}, cleared {story.Has("FLAG_UNOVA_CHASM_CLEARED")}, "
+                + $"ghetsis beaten {story.HasDefeated("unova_team_plasma_ghetsis")}, kyurem beaten {story.HasDefeated("unova_ghetsis_kyurem")}");
+
+        // ---- the cave: Hugh catches up and Rood's spy
+        ComeThrough("GiantChasm_Cave", 61, 13, Direction.Left); Frames(30); Shot("us362_the_chasm_cave");
+        StepOnto("GiantChasm_Cave", 23, 51, Direction.Up);
+        ReadTo("You got here first?"); Frames(10); Shot("us363_hugh_catches_up");
+        ReadTo("Rood of the old Team Plasma"); Frames(10); Shot("us364_the_spy");
+        ReadTo(null); Frames(10);
+        Chasm("the cave");
+
+        // ---- the crater: Rood's stand
+        ComeThrough("GiantChasm_CraterFrigate", 26, 78, Direction.Up); Frames(30); Shot("us365_the_crater");
+        StepOnto("GiantChasm_CraterFrigate", 26, 72, Direction.Up);
+        ReadTo("Freeing them was only a tale"); Frames(10); Shot("us366_roods_stand");
+        ReadTo("you take the other!"); Frames(10); Shot("us367_one_each");
+        ReadTo("Retreat!"); Frames(10); Shot("us368_the_grunts_beaten");
+        ReadTo("full of energy again"); Frames(10); Shot("us369_the_sages_heal");
+        ReadTo(null); Frames(10);
+        Chasm("Rood's stand");
+
+        // ---- aboard: Ghetsis, the Liepard and the Triad
+        ComeThrough("PlasmaFrigate_Ramp", 11, 15, Direction.Up); Frames(30); Shot("us370_the_ramp_hall");
+        StepOnto("PlasmaFrigate_Ramp", 11, 14, Direction.Up);
+        ReadTo("Kyurem is a hollow thing"); Frames(10); Shot("us371_ghetsis_aboard");
+        ReadTo("I took it as a Purrloin"); Frames(10); Shot("us372_the_liepard");
+        ReadTo("Then try all three of us"); Frames(10); Shot("us373_the_first_of_the_triad");
+        ReadTo("You may have the Liepard back"); Frames(10); Shot("us374_the_triad_beaten");
+        ReadTo("It's glaring at me"); Frames(10); Shot("us375_hugh_and_liepard");
+        ReadTo(null); Frames(10);
+        Chasm("the Triad");
+
+        // ---- the cavern: Ghetsis, Kyurem, N and Zekrom
+        ComeThrough("GiantChasm_Cavern", 15, 45, Direction.Up); Frames(30); Shot("us376_the_cavern");
+        StepOnto("GiantChasm_Cavern", 15, 25, Direction.Up);
+        ReadTo("Kyurem, come!"); Frames(10); Shot("us377_ghetsis_calls_kyurem");
+        ReadTo("a black dragon fell"); Frames(10); Shot("us378_zekrom_falls");
+        ReadTo("Zekrom told me Kyurem"); Frames(10); Shot("us379_n");
+        ReadTo("Two Pokémon made into one"); Frames(10); Shot("us380_black_kyurem"); ShotCrop("us380_black_kyurem_native", 640, 300, 640, 360, 2);
+        ReadTo("Zekrom broke free"); Frames(10); Shot("us381_separated");
+        ReadTo("by my own hand"); Frames(10); Shot("us382_ghetsis_battles");
+        ReadTo("Lord Ghetsis has lost himself"); Frames(10); Shot("us383_the_triad_take_him");
+        ReadTo("put it to the test"); Frames(10); Shot("us384_n_and_the_league");
+        ReadTo("the black dragon rose"); Frames(10); Shot("us385_n_leaves");
+        ReadTo("Is it over?"); Frames(10); Shot("us386_cheren_and_hugh");
+        ReadTo("Route 23"); Frames(10); Shot("us387_the_way_on");
+        ReadTo(null); Frames(20); Shot("us388_the_cavern_after");
+        Chasm("the chasm cleared");
     }
 }

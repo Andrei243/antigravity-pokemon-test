@@ -1016,6 +1016,14 @@ public static class ScriptParser
                 };
                 return new Instruction { Op = Op.Appeals, Line = line, Name = what, Other = value };
             }
+            // The Battle Dome's tournament and its bracket (plan 14 · B8)
+            case "bracket":
+            {
+                string what = r.OneOf("enough", "choose", "check", "begin", "active", "round", "show", "opponent", "pick", "battle", "won", "lost",
+                    "finish", "points", "streak", "best", "end");
+                string which = what == "finish" ? r.OneOf("won", "lost") : "";
+                return new Instruction { Op = Op.Bracket, Line = line, Name = what, Other = which };
+            }
             // The Berry Blender and the Pokéblock Case (plan 21 · H11)
             case "pokeblock":
             {

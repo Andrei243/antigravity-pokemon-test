@@ -1,0 +1,54 @@
+# The Battle Frontier's annex (plan 14 · B8), a building of our own beside Platinum's five, and its lobby. docs/scripts.md
+# describes the language; the lines are our own, on the beats of Emerald's Battle Dome (a tournament of sixteen, four wins
+# to the title, the opponent's three seen before two of the player's are sent in).
+#
+# The annex has no model of its own on the Frontier's grounds: the guide before the lodge on the plaza's south side shows
+# the player in (battle_frontier.txt, AnnexGuide), and the lobby's door leads back out to him. Its rooms are maps of ours
+# (Data/maps/BattleFrontierAnnex.json, BattleDome.json). The Dome's desk is here; the tournament itself is the hall's
+# arrival script (BattleDome.txt), round by round, on Models/Frontier/BattleDome.cs. Plan 14 · B15's Masters' Hall joins
+# this lobby later.
+
+
+# The Battle Dome's desk
+script Receptionist
+  face self player
+  speaker "Receptionist"
+  say "Welcome to the Battle Dome! Sixteen Trainers meet in a tournament, and four wins in a row make a champion."
+  bracket streak
+  if result == 0 goto Ask
+  say "You've won {number} tournaments in a row. The field gets tougher with every one!"
+label Ask
+  choose "Would you like to enter a tournament?" "Enter" "The rules" "No"
+  if result == 1 goto Rules
+  if result == 2 goto Later
+  bracket enough
+  if result == 1 goto Choose
+  say "You need three Pokémon that can take part, all of different species and holding different items."
+  say "An Egg can't take part, and nor can {banned}."
+  end
+label Choose
+  say "Please choose the three Pokémon you'll enter."
+  bracket choose
+  if result == 0 goto Later
+  bracket check
+  if result == 1 goto SameSpecies
+  if result == 2 goto SameItem
+  bracket begin
+  say "Thank you! The bracket has been drawn. This way to the hall, please!"
+  fade out 0.6
+  warp "BattleDome" 8 10 up
+  fade in
+  end
+label SameSpecies
+  say "I'm sorry. The three entered must all be of different species."
+  goto Later
+label SameItem
+  say "I'm sorry. No two of the three entered may hold the same item."
+label Later
+  say "Please come again. There's always another tournament about to begin."
+  end
+label Rules
+  say "Your three battle at Level 50, or at their own level if it's lower. Nothing you do here changes them."
+  say "Before every match you'll see your opponent's three, and you send two of yours into a battle of one on one."
+  say "Win the final and you're the champion. Lose a match, and the tournament is over for you."
+  end

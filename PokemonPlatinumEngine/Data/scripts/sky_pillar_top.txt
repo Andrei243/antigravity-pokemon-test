@@ -11,6 +11,28 @@
 
 script OnEnter
   if not flag FLAG_HOENN_CHAPTER_ELEVEN call HoennChapterEleven
+  if var VAR_SKY_PILLAR_STATE < 2 end
+  if flag FLAG_DEFEATED_RAYQUAZA end
+  clearflag FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_STILL
+  end
+
+
+# Rayquaza back on the top (plan 21 · H12, part c): once it has calmed Sootopolis (VAR_SKY_PILLAR_STATE 2, Emerald's
+# SkyPillar_Top_EventScript_TryShowRayquaza) it waits here, awake, until beaten or caught, and is battled at level 70
+# (Emerald's SkyPillar_Top_EventScript_Rayquaza). Run from, it flies off and is back the next time the top is come to,
+# as Emerald's OnTransition shows it again. The floors below are cracked meanwhile (FLAG_HOENN_SKY_PILLAR_CRACKED).
+script Rayquaza
+  cry "Rayquaza"
+  speaker none
+  text "Rayquaza glares down from the top of the pillar!"
+  wildbattle "Rayquaza" 70
+  hide self
+  setflag FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_STILL
+  if result == 2 goto Fled
+  setflag FLAG_DEFEATED_RAYQUAZA
+  end
+label Fled
+  text "Rayquaza flew off into the sky..."
   end
 
 

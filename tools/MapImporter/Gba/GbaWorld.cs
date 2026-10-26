@@ -132,7 +132,18 @@ public sealed class GbaWorld
         // Plan 21 · H8, part d: Shoal Cave at high tide (Emerald's ON_TRANSITION lays these layouts over its two upper
         // rooms while FLAG_SYS_SHOAL_TIDE is set; the map is read in its own, the low tide's)
         ("MAP_SHOAL_CAVE_LOW_TIDE_ENTRANCE_ROOM", "LAYOUT_SHOAL_CAVE_HIGH_TIDE_ENTRANCE_ROOM"),
-        ("MAP_SHOAL_CAVE_LOW_TIDE_INNER_ROOM", "LAYOUT_SHOAL_CAVE_HIGH_TIDE_INNER_ROOM")
+        ("MAP_SHOAL_CAVE_LOW_TIDE_INNER_ROOM", "LAYOUT_SHOAL_CAVE_HIGH_TIDE_INNER_ROOM"),
+        // Plan 21 · H12, part c: Sky Pillar cracked all over once Rayquaza has calmed Sootopolis (Emerald's floors are
+        // laid clean by their ON_TRANSITION while VAR_SKY_PILLAR_STATE is under 2, GbaMaps.FirstLayouts; afterwards in
+        // the maps' own layouts, which these are)
+        ("MAP_SKY_PILLAR_1F", "LAYOUT_SKY_PILLAR_1F"),
+        ("MAP_SKY_PILLAR_2F", "LAYOUT_SKY_PILLAR_2F"),
+        ("MAP_SKY_PILLAR_3F", "LAYOUT_SKY_PILLAR_3F"),
+        ("MAP_SKY_PILLAR_4F", "LAYOUT_SKY_PILLAR_4F"),
+        ("MAP_SKY_PILLAR_5F", "LAYOUT_SKY_PILLAR_5F"),
+        ("MAP_SKY_PILLAR_TOP", "LAYOUT_SKY_PILLAR_TOP"),
+        // and Steven's cave's mouth in Meteor Falls' first room once the game is cleared (GbaMaps.Patches)
+        ("MAP_METEOR_FALLS_1F_1R", "LAYOUT_METEOR_FALLS_1F_1R_STEVENS_CAVE_OPEN")
     };
 
     /// <summary>

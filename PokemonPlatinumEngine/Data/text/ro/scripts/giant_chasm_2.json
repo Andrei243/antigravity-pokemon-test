@@ -1,0 +1,168 @@
+{
+  "HughInTheCave": [
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hold it! The crater isn't safe right now. Something huge is coming, and I'm keeping watch for it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! You got here first? I ran the whole way from Route 21 and you still beat me."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "So this is the Giant Chasm. It's freezing in here... That has to be Kyurem's doing."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Psst! Easy, easy. I'm not one of them. Rood of the old Team Plasma asked me to keep watch in these clothes."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Their ship came down in the crater up this way. The new Team Plasma are guarding it, and Rood has gone to face them."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The old Team Plasma, standing up to the new one? Then we'd better hurry before they get hurt!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'll go back and tell the others that help has come. Thank you, really!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come on, {player}! My sister's Purrloin could be on that ship!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Spy": [
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "This crater's no place to be right now. Something huge is on its way here, and I'm watching for it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "...Don't tell anyone, but I'm with Rood. Go and help the people of Humilau first, all right?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You came! Their ship is up in the crater. Go on and I'll warn the others."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Guard": [
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Nobody goes out this way! Lord Ghetsis's orders!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

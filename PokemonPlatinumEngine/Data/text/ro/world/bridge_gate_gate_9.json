@@ -6,7 +6,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome to Humilau City! The sea here is so calm you could sleep on it."
         ],
         "text": [
-          ""
+          "Bun venit în Orașul Humilau! Marea de aici e atât de liniștită că ai putea dormi pe ea."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Artist"
         ],
         "text": [
-          ""
+          "Artistul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "I came to paint the sea from the tube, but I keep painting the Pokémon looking in at me instead."
         ],
         "text": [
-          ""
+          "Am venit să pictez marea din tub, dar mă trezesc pictând Pokémonii care se uită la mine."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Parasol Lady"
         ],
         "text": [
-          ""
+          "Doamna cu umbrelă"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "The sun in Humilau is gentle. Even my parasol is on holiday."
         ],
         "text": [
-          ""
+          "Soarele din Humilau e blând. Până și umbrela mea e în vacanță."
         ]
       }
     }
@@ -61,7 +61,7 @@
         "Marine Tube\nThe walk-through aquarium to Undella Town"
       ],
       "text": [
-        ""
+        "Tubul Marin\nAcvariul pe jos spre Orășelul Undella"
       ]
     }
   }

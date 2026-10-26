@@ -67,7 +67,13 @@ public class TextTests
         ["Core/Diagnostics/GameVersion.cs"] = "the build's version as the log and --help write it",
         ["Core/Autoplay/AutoplayReport.cs"] = "the playthrough bot's play.md, for whoever reads the run (plan 16 · T7)",
         ["Core/Autoplay/Autoplayer.cs"] = "the playthrough bot's findings and the goals it names, for play.md (plan 16 · T7)",
-        ["Core/Autoplay/Policy.cs"] = "the keys the bot remembers its goals by, no words (plan 16 · T7)"
+        ["Core/Autoplay/Policy.cs"] = "the keys the bot remembers its goals by, no words (plan 16 · T7)",
+        ["Core/DevCommands.cs"] = "the developer's commands and what they print, for the console and the harness's scenarios (plan 16 · T17)",
+        ["Core/ShotScenario.cs"] = "a scenario's verbs and the mistakes in its lines, said to whoever wrote it (plan 16 · T17)",
+        ["Core/StateSnapshot.cs"] = "the names of a snapshot's fields, which a scenario expects and state.json keeps (plan 16 · T17)",
+        ["Core/Autoplay/Autoplayer.Itinerary.cs"] = "why a leg of the bot's way was given up, for play.md (plan 16 · T13)",
+        ["Core/Autoplay/Itinerary.cs"] = "a leg of the bot's way as play.md names it (plan 16 · T13)",
+        ["Core/Autoplay/Itineraries.cs"] = "the names of maps, places, scripts and people the bot's way goes by, no words (plan 16 · T13)"
     };
 
     /// <summary>What may stay in quotes in a file on the table: names of the data, and the logo, which is a picture (plan 17).</summary>

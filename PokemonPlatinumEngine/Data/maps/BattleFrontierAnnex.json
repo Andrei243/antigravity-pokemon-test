@@ -1,0 +1,126 @@
+{
+  "name": "BattleFrontierAnnex",
+  "displayName": "Battle Frontier Annex",
+  "bgmTrack": "sinnoh/veilstone",
+  "interior": "GameHall",
+  "trees": "Round",
+  "width": 15,
+  "height": 11,
+  "ground": [
+    "###############",
+    "###############",
+    "###############",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#######D#######"
+  ],
+  "solid": [
+    "###############",
+    "###############",
+    "###############",
+    "##..#######..##",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "##...........##",
+    "#######.#######"
+  ],
+  "props": [
+    {
+      "type": "Counter",
+      "x": 4,
+      "y": 3,
+      "width": 7,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 13,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 13,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 6,
+      "y": 5,
+      "width": 3,
+      "depth": 5
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 7,
+      "sourceY": 10,
+      "targetMap": "BattleFrontier",
+      "targetX": 44,
+      "targetY": 63,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "dome_receptionist",
+      "name": "Receptionist",
+      "npcType": "Lass",
+      "x": 7,
+      "y": 4,
+      "facing": "Down",
+      "script": "Receptionist"
+    },
+    {
+      "id": "dome_fan",
+      "name": "Dome Fan",
+      "npcType": "Youngster",
+      "x": 11,
+      "y": 7,
+      "facing": "Left",
+      "dialog": [
+        "Sixteen Trainers, four rounds, one champion. Nothing in the Frontier is as loud as a Dome final.",
+        "The trick is the card. Look at what they bring before you choose your two!"
+      ]
+    },
+    {
+      "id": "dome_veteran",
+      "name": "Gentleman",
+      "npcType": "Gentleman",
+      "x": 3,
+      "y": 6,
+      "facing": "Right",
+      "dialog": [
+        "The other matches of a round are fought while you wait, and every result goes up on the bracket.",
+        "Whoever you meet in the final has won three times to get there. Respect that."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

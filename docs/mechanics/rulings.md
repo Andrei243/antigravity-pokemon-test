@@ -2231,6 +2231,18 @@ Black and White's rotation battles: three of each side's Pokémon on a turntable
 - **Not built.** Rotation-specific abilities and items (none in Black and White differ), a rotation's own Battle Style offer (none is made, as in Black and White), wild rotation battles (none in the games).
 - **On the screen** (style guide, "Stage", "A rotation's turntable", "Camera (G8)", "A turntable turning", and "Battle panels", "The rotation arrows"): each platform is a turntable of three seats, the front lit, turning a third as the Pokémon brought forward hops on; the camera watches the side turning; the FIGHT button has an arrow at each end, armed with the shoulder buttons, and FIGHT opens the moves of the Pokémon of the armed seat.
 
+### The Battle Dome (plan 14 · B8)
+
+Emerald's Battle Dome, as a facility of a building of our own beside Platinum's five: the Battle Frontier's annex. Nothing of Emerald's is read (its tables of trainers, its seeding and its AI's choice of two are not taken): the trainers and their teams are Platinum's Frontier's own, and every rule below that isn't the Frontier's frame is ours.
+
+- **Where it stands** (decision 2's annex): the lodge on the plaza's south side (`d32_s05`) faces the lake, and its front is the only wall a door is drawn in, so no door could be put on it; the annex has no model of its own either. A guide of ours stands on the paving before the lodge's back (`battle_frontier.AnnexGuide`, 44, 64) and shows the player into the lobby; the lobby's door leads back out to him. A model of our own with a door of its own is left for whichever session builds the annex's outside (B9 or B15).
+- **The entry.** Three Pokémon by the Frontier's rules (no Egg, none of the banned, no two of a species or holding the same item), which go in as copies at level 50 or their own level if lower, so nothing a battle does reaches them.
+- **The field.** Fifteen trainers of the Frontier's table, drawn without repeats from the Battle Tower's row of the room the streak of tournaments has come to (the first tournament from the first room's row, the eighth on from the last), each with three Pokémon made as every Frontier team but the Tower's is. The sixteen are shuffled into the bracket by a draw (Emerald seeds its tournament by strength; ours is a draw, so the player may meet anyone in any round).
+- **A match** is a single battle, two against two: before it the player sees the opponent's card (all three, as Emerald's card shows them) and sends two of their three in; the opponent sends the two of its three whose best damaging move does best against the player's three by power, the type chart of the rules in force and the same-type bonus (a rule of ours, where Emerald's AI rates each move). Backing out of the choice sends the first two.
+- **The other matches** of each round are fought by the battle's core with nobody watching, the trainer AI choosing for both sides. Platinum's AI thinks only for a place with a trainer behind it and draws its moves at random for the player's side, so which of the two stands on the player's side is drawn for each match; two more draws are the battle's seed. A battle that came to no end (it never should) would go to the side with more of its HP left.
+- **The record** (`FrontierRecords.Dome`): the tournaments won in a row, the most ever, every tournament and match won. A loss ends the streak. A tournament isn't saved: one left unfinished (a game closed in the hall) ends the streak when the next is begun.
+- **The prize**: three Battle Points for a tournament won, one more for each won in a row before it, up to ten (ours: Emerald's points aren't read). No Dome Ace, no print and no board of records yet.
+
 ### Master Trainers (plan 14 · B14)
 
 Let's Go's Master Trainers: a master for every species, battled one-on-one by one of the player's Pokémon of that species, with the bag closed. Nothing of Let's Go's is read; the masters' moves are Pokémon Showdown's random-battle sets at the pinned commit (MIT), and their names are our own.
@@ -3246,6 +3258,44 @@ scripts, read for the order alone) on flags of ours. `VAR_UNOVA_HUMILAU` is the 
   `seaside_cave` and `colress` (his theme as he steps up), each over 25 s and clean in `MusicRender`.
 - **What a save needs.** A save past Opelucid City is given the chapter's hidden people by `UnovaCatchUpD` (`FLAG_UNOVA_HUMILAU_BEGUN`),
   which the arrivals of Humilau City, its Gym, Routes 21 and 22, the Seaside Cave and the Frigate's rooms call, with no story version
+  raised.
+
+## Unova's fifth chapter, part a: the Giant Chasm (2026-10-26, plan 22 · U9)
+
+Black 2's beats from Route 22's cave mouth to Ghetsis's fall in the Giant Chasm's cavern, in our own words (the decompilation's zone
+scripts, read for the order alone) on flags of ours. `VAR_UNOVA_CHASM` is the chapter's count (`giant_chasm_2.txt`'s header). Part b
+(Route 23, Victory Road and the League) is the next session's.
+
+- **The order of the chapter.** Route 22's cave mouth leads into the chasm's cave, whose way up into the crater a spy of Rood's in a
+  grunt's clothes turns everyone back from (our trigger on the tile before it) until the Frigate has flown from Route 21
+  (`VAR_UNOVA_HUMILAU` 9); then Hugh catches up and the spy goes to warn Rood (1). In the crater Rood and two of the old Team Plasma's
+  sages stand against five grunts of the new on the grass by the cave's mouth; Hugh takes one of them and the player another (Black
+  2's `TRAINER_TEAM_PLASMA_GRUNT_46`), the sages heal the team and Rood sends both to the ship (2). Up its ramp Ghetsis tells his plan
+  for Kyurem and leaves; Hugh runs in and asks after the Purrloin; the first of the Shadow Triad shows it grown into a Liepard that
+  answers only to him; the three battle the player one after another (`_SHADOW`, `_SHADOW_2`, `_SHADOW_3`) and give it back; Hugh stays
+  with it (3). North of the crater, through the passage, Ghetsis waits in the cavern with Kyurem: N comes with Zekrom (Black 2's dragon),
+  Ghetsis uses the DNA Splicers, the black Kyurem is battled and parts from Zekrom, Ghetsis battles the player himself
+  (`TRAINER_TEAM_PLASMA_GHETSIS`), the Triad take him away, N sends the player to the League and leaves on Zekrom, Kyurem goes back
+  into the dark, and Hugh and Cheren come up to say the way to Route 23 lies through the cave (4, `FLAG_UNOVA_CHASM_CLEARED`).
+- **Two craters, one way in.** Black 2 keeps the crater with the Frigate (`giant_chasm_4`) and the crater afterwards (`giant_chasm_3`)
+  as two zones under one tile of the cave's and of the passage's warps; ours keep both, switched by `FLAG_UNOVA_CHASM_CLEARED`
+  (overlay `switches`). The crater's three balls lie in both under the same flags, so the crater with the Frigate holds them back.
+- **The Frigate in the crater.** Its ramp leads straight into its ramp hall (`plasma_frigate_6`), where Black 2 has the player come
+  down from the deck (`plasma_frigate_11`) by warp panels; the deck is not open and the ship itself is not drawn, as at its other
+  moorings (the catalogue's `c03_ship_03` is ground). Colress, battled aboard in U8's stern room, is not met again: Rood says
+  afterwards that the scientist flew the ship away.
+- **The black Kyurem can't be caught.** Black 2's is a wild battle that refuses a ball; ours is Ghetsis's, a team of ours of one
+  Pokémon (`unova_ghetsis_kyurem`, `Kyurem` in its `Kyurem-Black` form at level 50, our-trainers.json), so nothing in the battle
+  needs a new rule and Kyurem stays free for the post-game (plan 22 · U10).
+- **Route 22's catwalks are decks.** Black 2's second grid of a chunk (a catwalk, a bridge) lies over its ground, and Route 22's
+  catwalks cross the tall grass of the hollow before the cave's mouth. Laid as plates the walker stood on, the catwalks walled the
+  hollow off and nobody could reach the cave; a Black 2 chunk's overlapping plates are now decks, as a GBA bridge's are, so the grass
+  is walked under them and the catwalks on top.
+- **Looks and sounds.** Ghetsis has a look of ours (tall, sage-green hair over a dark violet robe banded in gold) until plan 22 · U12;
+  `Team Plasma Ghetsis` and `Team Plasma Shadow` battle in his and the Triad's looks, Ghetsis's battles in the villain boss's role.
+  The chasm's song is ours, `unova/giant_chasm` (45.7 s, the same by day and night), not yet heard by the user.
+- **What a save needs.** A save past the Frigate's flight is given the chapter's hidden people by `UnovaCatchUpE`
+  (`FLAG_UNOVA_CHASM_BEGUN`), which the arrivals of the cave, both craters, the ramp hall and the cavern call, with no story version
   raised.
 
 ## Kanto's first chapter (2026-10-18, plan 19 · K3)
@@ -5970,3 +6020,40 @@ Mart, the Exchange Service Corner, Scott's house, the Ranking Hall and eight lou
 - **Left out**: Emerald's ninth lounge, whose door is a blocked tile nobody reaches; Artisan Cave (its two ways in
   `locked`, Smeargle's cave being plan 21 · H12's later part); the island's own song (it plays Lilycove's, as Sinnoh's
   Frontier plays Veilstone's); the halls' buildings, which the import draws only where a warp leads somewhere.
+
+## Rayquaza on Sky Pillar and Steven at Meteor Falls (2026-10-26, plan 21 · H12, part c)
+
+What Emerald leaves for the time after Sootopolis's calm and after its Hall of Fame in the places already open, and
+plan 03 · D12a's check for Hoenn's own game. The lines are our own.
+
+- **Sky Pillar cracks all over once Rayquaza has calmed Sootopolis.** Emerald lays each floor clean while
+  `VAR_SKY_PILLAR_STATE` is under 2 and in the map's own, cracked layout afterwards; here the six cracked layouts are
+  chunks of their own (`GbaWorld.Alternates`, chunks 821 to 826) swapped in by `FLAG_HOENN_SKY_PILLAR_CRACKED`, a flag of
+  ours that the calm over Sootopolis sets beside the variable, and that the island's arrival sets for a save past the
+  calm. Cracked floor drops whoever walks onto it to the same tile of the floor below where the floor names one (the
+  second and fourth floors, Emerald's `setholewarp`), and is ridden over on a bicycle (Emerald asks the Mach Bike's
+  speed; here any bicycle, as part c of H8 decided); a tile already broken through (`MB_CRACKED_FLOOR_HOLE`,
+  `TileBehavior.Hole`) drops a rider too (`Map.IsOpenHole`). The top's holes lead nowhere, as Emerald gives the top no
+  floor to fall to.
+- **Rayquaza waits on the top** from the calm until it is beaten or caught (`FLAG_DEFEATED_RAYQUAZA`), as Emerald's
+  `TryShowRayquaza` shows it, and is battled at level 70; run from, it flies off and is back the next time the top is
+  come to. Emerald lets it be battled before the League, and so does this game.
+- **Steven's cave** opens in Meteor Falls' first room once Hoenn's Hall of Fame is entered (Emerald's
+  `OpenStevensCave`, four metatiles on load). A layout a map's own script patches block by block is written by the
+  importer as a layout of its own (`GbaMaps.Patches`) and swapped in like any other (`HoennHallOfFame`, chunks 827 and
+  828); the warp on the block it opens is kept as a way (it had been taken for one never taken), and a way out that
+  lands on such a tile is open once the swap is laid (`Map.OpenOnceSwapped`, which the content check asks). Steven
+  battles once with Emerald's post-game team (`hoenn_steven`, `FLAG_DEFEATED_METEOR_FALLS_STEVEN`) and afterwards only
+  talks.
+- **The walks of the whole game** lay every swap of a flag for their second walk (they had laid Shoal Cave's tide alone),
+  so a place a swap opens is walked.
+- **Every species with nobody else, for Hoenn** (`SpeciesSources.Hoenn`, `HoennSpeciesTests`): Emerald's Hoenn Pokédex,
+  202, from Hoenn's open areas (rocks smashed counted now), its scripts and the professor's bag, without Sinnoh's tables
+  of no area, Game Corner or Underground. What nothing gives yet is a list in the test, by reason: Ruby's and Sapphire's
+  (Meditite, Roselia, Zangoose, Lunatone), the television's outbreak (Surskit), the trade evolutions (no Linking Cord in
+  Hoenn), New Mauville's (Magnemite, Voltorb), the Devon Corporation's fossils, Route 119's Feebas tiles, Kyogre and
+  Groudon (the Marine and Terra Caves) and the event Pokémon.
+- **Left for a later part**: the Marine and Terra Caves with the Weather Institute's reports (Emerald places their mouths
+  by metatile on sixteen route tiles, `abnormal_weather.inc`, which the pinned cache doesn't hold; a swap of the
+  overworld builds the whole map again, so sixteen of them want a cheaper swap first), New Mauville, the Desert
+  Underpass, Trainer Hill, Mirage Island, Altering Cave, the event islands, the S.S. Tidal and the island's halls.

@@ -331,7 +331,10 @@ public static class WorldMapBuilder
                             map.SetTileArea(cx * T + x, cy * T + z, tileArea);
                         }
                 }
-                PlaceChunk(map, chunk, cx * T, cy * T, matrix.AltitudeAt(cx, cy) / 2f, area, under, vague, blank, tilesOwn, world.Index.BuildingsAtDoors);
+                // (a Black 2 chunk's only overlapping plates are its second grid, the catwalks and bridges over its ground, which
+                // are decks as a GBA bridge's are: plan 22 · U9, Route 22's catwalks over the grass before the Giant Chasm)
+                PlaceChunk(map, chunk, cx * T, cy * T, matrix.AltitudeAt(cx, cy) / 2f, area, under, vague, blank, tilesOwn,
+                    world.Index.BuildingsAtDoors || world.Index.Region == RegionDatabase.Unova);
                 foreach (var prop in chunk.Props)
                 {
                     // A GBA room's furniture (plan 19 · K2) is laid once the room's floor and walls are

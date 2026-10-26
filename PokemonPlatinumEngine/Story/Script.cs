@@ -139,6 +139,8 @@ public enum Op
     // and the Berry Blender and the Pokéblock Case
     Appeals,
     Pokeblock,
+    // The Battle Dome's tournament and its bracket (plan 14 · B8): entered, drawn, looked at, fought round by round
+    Bracket,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

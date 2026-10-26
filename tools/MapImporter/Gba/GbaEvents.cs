@@ -59,7 +59,9 @@ public static class GbaEvents
             var w = map.Warps[index];
             int x = ox + w.X, z = oy + w.Y;
             var own = matrix != null && matrix.Has(x, z) ? (TileBehavior)matrix.Behaviour[z * matrix.Width + x] : TileBehavior.None;
-            bool never = matrix != null && matrix.Has(x, z) && NeverTaken(own, matrix.Solid[z * matrix.Width + x]);
+            // (a block the map's own script opens later is a way all the same: plan 21 · H12, part c, Steven's cave)
+            bool never = matrix != null && matrix.Has(x, z) && NeverTaken(own, matrix.Solid[z * matrix.Width + x])
+                && !GbaMaps.PatchOpens(map.Layout, w.X, w.Y);
             var to = never ? null : byId(w.DestMap);
             if (to == null && !never && w.DestMap != "MAP_DYNAMIC") problems.Add($"{map.Name}: a warp to {w.DestMap}, which has no map");
             // Where a faller through a hole above comes down is no way anywhere (plan 19 · K6, part b)

@@ -318,9 +318,10 @@ public class PokemonTests
         var reached = WorldWalk.FromEveryStart(maps);
         // Shoal Cave's tide comes and goes (plan 21 · H8, part d): some of its rooms are reached only by surfing at high
         // tide, so the walk is made again on maps of its own with the high tide's chunks laid, and what it reaches is
-        // added to the low tide's, map by map
+        // added to the low tide's, map by map. Every other swap of a flag is laid in the same walk (plan 21 · H12, part c:
+        // Steven's cave, whose mouth Meteor Falls opens only after Hoenn's Hall of Fame, and Sky Pillar cracked)
         var flooded = MapDatabase.Fresh();
-        foreach (string name in MapDatabase.MapNames) flooded(name).ApplySwappedPlaces(_ => 0, f => f == ShoalTide.Flag);
+        foreach (string name in MapDatabase.MapNames) flooded(name).ApplySwappedPlaces(_ => 0, _ => true);
         foreach (var (map, tiles) in WorldWalk.FromEveryStart(flooded))
             if (reached.TryGetValue(maps(map.Name), out var had)) had.UnionWith(tiles);
             else reached[maps(map.Name)] = tiles;

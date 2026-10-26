@@ -1,0 +1,88 @@
+{
+  "key": "giant_chasm_5",
+  "index": 234,
+  "name": "Giant Chasm",
+  "matrix": 252,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave2",
+  "dayMusic": "BGM_D_05",
+  "nightMusic": "BGM_D_05",
+  "encounters": "ENCOUNTERS_GIANT_CHASM_5",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Sneasel", "level": 44 },
+    { "species": "Piloswine", "level": 44 },
+    { "species": "Vanillish", "level": 45 },
+    { "species": "Clefairy", "level": 44 },
+    { "species": "Lunatone", "level": 46 },
+    { "species": "Solrock", "level": 46 },
+    { "species": "Clefairy", "level": 46 },
+    { "species": "Vanillish", "level": 47 },
+    { "species": "Piloswine", "level": 46 },
+    { "species": "Delibird", "level": 47 },
+    { "species": "Piloswine", "level": 46 },
+    { "species": "Delibird", "level": 47 }
+  ],
+  "landRate": 18,
+  "water": [
+    { "species": "Basculin", "level": 35, "maxLevel": 50 },
+    { "species": "Seel", "level": 35, "maxLevel": 50 },
+    { "species": "Basculin", "level": 40, "maxLevel": 50 },
+    { "species": "Basculin", "level": 40, "maxLevel": 50 },
+    { "species": "Basculin", "level": 40, "maxLevel": 50 }
+  ],
+  "waterRate": 12,
+  "superRod": [
+    { "species": "Poliwag", "level": 40, "maxLevel": 60, "weight": 60 },
+    { "species": "Basculin", "level": 40, "maxLevel": 60, "weight": 30 },
+    { "species": "Poliwag", "level": 50, "maxLevel": 70, "weight": 5 },
+    { "species": "Poliwag", "level": 50, "maxLevel": 70, "weight": 4 },
+    { "species": "Poliwag", "level": 50, "maxLevel": 70, "weight": 1 }
+  ],
+  "superRodRate": 50,
+  "shakingGrass": [
+    { "species": "Excadrill", "level": 44 },
+    { "species": "Excadrill", "level": 44 },
+    { "species": "Excadrill", "level": 45 },
+    { "species": "Excadrill", "level": 45 },
+    { "species": "Excadrill", "level": 46 },
+    { "species": "Excadrill", "level": 46 },
+    { "species": "Excadrill", "level": 47 },
+    { "species": "Excadrill", "level": 47 },
+    { "species": "Excadrill", "level": 47 },
+    { "species": "Excadrill", "level": 47 },
+    { "species": "Excadrill", "level": 47 },
+    { "species": "Excadrill", "level": 47 }
+  ],
+  "shakingGrassRate": 13,
+  "ripplingWater": [
+    { "species": "Seel", "level": 35, "maxLevel": 50 },
+    { "species": "Basculin", "level": 35, "maxLevel": 50 },
+    { "species": "Dewgong", "level": 40, "maxLevel": 50 },
+    { "species": "Dewgong", "level": 40, "maxLevel": 50 },
+    { "species": "Dewgong", "level": 40, "maxLevel": 50 }
+  ],
+  "ripplingWaterRate": 13,
+  "ripplingRod": [
+    { "species": "Poliwhirl", "level": 40, "maxLevel": 60, "weight": 60 },
+    { "species": "Basculin", "level": 40, "maxLevel": 60, "weight": 30 },
+    { "species": "Poliwhirl", "level": 50, "maxLevel": 70, "weight": 5 },
+    { "species": "Poliwrath", "level": 50, "maxLevel": 70, "weight": 4 },
+    { "species": "Poliwrath", "level": 50, "maxLevel": 70, "weight": 1 }
+  ],
+  "ripplingRodRate": 1,
+  "warps": [
+    { "x": 16, "z": 30, "to": "giant_chasm_3", "toWarp": 1 },
+    { "x": 16, "z": 30, "to": "giant_chasm_4", "toWarp": 1 },
+    { "x": 16, "z": 1, "to": "giant_chasm_6", "toWarp": 0 }
+  ],
+  "objects": [],
+  "signs": [],
+  "triggers": []
+}

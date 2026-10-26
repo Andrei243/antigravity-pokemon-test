@@ -5,7 +5,7 @@
         "Grunt"
       ],
       "text": [
-        ""
+        "Grunt"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Who are you two? This is Team Plasma's ship!"
       ],
       "text": [
-        ""
+        "Voi cine sunteți? Asta e nava lui Team Plasma!"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "{player}! Perfect timing. Just so you know, guys... you're about to feel my rage!"
       ],
       "text": [
-        ""
+        "{player}! Exact la timp. Ca să știți, băieți... o să simțiți furia mea!"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Grunt"
       ],
       "text": [
-        ""
+        "Grunt"
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Ugh! We have to tell the others!"
       ],
       "text": [
-        ""
+        "Ugh! Trebuie să le spunem celorlalți!"
       ]
     },
     {
@@ -53,7 +53,7 @@
         "Quick! Protect the switches!"
       ],
       "text": [
-        ""
+        "Repede! Apărați comutatoarele!"
       ]
     },
     {
@@ -61,7 +61,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -69,7 +69,7 @@
         "They didn't have a Purrloin with them. So where is it?"
       ],
       "text": [
-        ""
+        "N-aveau niciun Purrloin cu ei. Atunci unde e?"
       ]
     },
     {
@@ -77,7 +77,7 @@
         "Switches, they said... And look, the way to the bow is blocked by some kind of barrier. Electrified, by the sound of it."
       ],
       "text": [
-        ""
+        "Comutatoare, au zis... Și uite, drumul spre prora e blocat de un fel de barieră. Electrificată, după cum sună."
       ]
     },
     {
@@ -85,7 +85,7 @@
         "So we switch off the barrier! {player}, let's split up and look. Try the cabins off the deck. I'll take the stern!"
       ],
       "text": [
-        ""
+        "Deci stingem bariera! {player}, hai să ne despărțim și să căutăm. Încearcă cabinele de pe punte. Eu iau pupa!"
       ]
     }
   ],
@@ -95,7 +95,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -103,7 +103,7 @@
         "Let's take them on together!"
       ],
       "text": [
-        ""
+        "Să-i înfruntăm împreună!"
       ]
     }
   ],
@@ -113,7 +113,7 @@
         "Grunt"
       ],
       "text": [
-        ""
+        "Grunt"
       ]
     },
     {
@@ -121,7 +121,7 @@
         "Get off our ship!"
       ],
       "text": [
-        ""
+        "Coborâți de pe nava noastră!"
       ]
     }
   ],
@@ -131,7 +131,7 @@
         "Bzzt! An electrified barrier blocks the passage. Its switches must be somewhere else on the ship."
       ],
       "text": [
-        ""
+        "Bzzt! O barieră electrificată blochează trecerea. Comutatoarele ei trebuie să fie în altă parte pe navă."
       ]
     }
   ]

@@ -1,0 +1,151 @@
+# The cavern at the heart of the Giant Chasm, north of the crater (plan 22 · U9, part a). docs/scripts.md describes the language;
+# the lines are our own, on Black 2's beats (the decompilation's res/field/scripts/giant_chasm_6.s, read for the order alone).
+#
+# Ghetsis (ghetsis) waits on the cavern's floor with Kyurem (kyurem) before him. As the player comes up the corridor (our trigger,
+# 14 to 17, 25; VAR_UNOVA_CHASM 3) he calls on Kyurem's ice; N (n) comes with Zekrom (zekrom), Black 2's dragon, to stop him;
+# Ghetsis uses the DNA Splicers and Kyurem takes Zekrom into itself (kyurem_black). Ghetsis sends it at the player: the battle is
+# a team of ours, Ghetsis's Kyurem in its black form (unova_ghetsis_kyurem in our-trainers.json), so that it can't be caught, as
+# Black 2's can't. Beaten, it parts from Zekrom; Ghetsis battles the player himself (Black 2's TRAINER_TEAM_PLASMA_GHETSIS), loses
+# his reason, and the Shadow Triad (triad_cavern_a to _c) take him away. N thanks the player and points them to the Pokémon League,
+# and leaves on Zekrom; Kyurem goes back into the dark of the cavern. Hugh (hugh_cavern) and Cheren (cheren_cavern) come up
+# afterwards, and Hugh says how to reach Route 23 (4, FLAG_UNOVA_CHASM_CLEARED: the Frigate has flown and the crater is clear).
+
+
+script OnEnter
+  call UnovaCatchUpE
+  end
+
+
+script Ghetsis
+  scene "Ghetsis and Kyurem"
+  place player 15 24 up
+  speaker "Ghetsis"
+  say "Ah, the Giant Chasm. Here Kyurem's power answers most strongly. From here its ice will cover all of Unova."
+  say "Kyurem, come!"
+  cry "Kyurem"
+  say "You again. There is a look in your eyes I find most unpleasant. It reminds me of someone. No matter."
+  say "Kyurem! Freeze this child where they stand!"
+  speaker none
+  text "Kyurem breathed out a storm of ice! The cavern froze white..."
+  text "...and from somewhere above, a black dragon fell through the cold, scattering the ice with a crack of lightning!"
+  clearflag FLAG_UNOVA_HIDE_ZEKROM_CAVERN
+  clearflag FLAG_UNOVA_HIDE_N_CAVERN
+  show zekrom
+  show n
+  cry "Zekrom"
+  speaker "Ghetsis"
+  say "So you have come... The boy with no human heart. N!"
+  face n up
+  speaker "N"
+  say "Zekrom told me Kyurem is suffering. I won't let anyone make a Pokémon suffer for their own ends. And I like Unova."
+  speaker "Ghetsis"
+  say "How touching. So the lessons I gave you to make you a king were not entirely wasted."
+  say "And how kind of you to bring Zekrom. Its lightning is exactly what I need. These are the DNA Splicers!"
+  speaker "N"
+  say "No! That is an ugly equation. It won't work!"
+  speaker "Ghetsis"
+  say "Oh, but it will. Kyurem! Take Zekrom into yourself!"
+  fade out 0.6
+  setflag FLAG_UNOVA_HIDE_ZEKROM_CAVERN
+  setflag FLAG_UNOVA_HIDE_KYUREM_CAVERN
+  hide zekrom
+  hide kyurem
+  clearflag FLAG_UNOVA_HIDE_BLACK_KYUREM
+  show kyurem_black
+  fade in
+  cry "Kyurem-Black"
+  face n kyurem_black
+  speaker "N"
+  say "Zekrom...! Two Pokémon made into one... I never imagined there could be such an equation."
+  speaker "Ghetsis"
+  say "Fool. Last time I meant to use you to win people's hearts. This time I will simply take Unova by force."
+  say "Come, Trainer. No one will save you now. Let us see whether you can stop THIS Kyurem!"
+  battle ghetsis as "unova_ghetsis_kyurem"
+  speaker none
+  text "Kyurem shuddered... and Zekrom broke free of it!"
+  fade out 0.4
+  setflag FLAG_UNOVA_HIDE_BLACK_KYUREM
+  hide kyurem_black
+  clearflag FLAG_UNOVA_HIDE_KYUREM_CAVERN
+  clearflag FLAG_UNOVA_HIDE_ZEKROM_CAVERN
+  show kyurem
+  show zekrom
+  fade in
+  cry "Zekrom"
+  speaker "Ghetsis"
+  say "No! The Kyurem I took such trouble to make, undone! Then I will deal with you by my own hand!"
+  battle ghetsis as "unova_team_plasma_ghetsis"
+  speaker "Ghetsis"
+  say "This cannot be! I made Team Plasma! I am perfect! How can I lose to someone who doesn't even use Pokémon properly?"
+  speaker "N"
+  say "Father... It is hard to call you that, but please understand. Pokémon are not tools. People and Pokémon help each other."
+  speaker "Ghetsis"
+  say "Silence! Don't speak to me as if you were a person! No real person can talk to Pokémon!"
+  clearflag FLAG_UNOVA_HIDE_TRIAD_CAVERN
+  show triad_cavern_a
+  show triad_cavern_b
+  show triad_cavern_c
+  speaker "Shadow Triad"
+  say "Lord Ghetsis has lost himself... We will take him from here."
+  speaker "N"
+  say "...I see. Without him, Team Plasma is..."
+  speaker "Shadow Triad"
+  say "Farewell."
+  fade out 0.4
+  setflag FLAG_UNOVA_HIDE_TRIAD_CAVERN
+  setflag FLAG_UNOVA_HIDE_GHETSIS_CAVERN
+  hide triad_cavern_a
+  hide triad_cavern_b
+  hide triad_cavern_c
+  hide ghetsis
+  fade in
+  face n player
+  speaker "N"
+  say "Thank you, for everyone. Kyurem is safe. It has spent its strength, but it will come back here to rest."
+  cry "Zekrom"
+  say "Zekrom says thank you as well. Yes... I can talk with Pokémon."
+  say "Two years ago a Trainer and Alder taught me that when different ideas meet, the world is changed by them."
+  say "People with Pokémon go on to new places. Pokémon with people find their true strength. That is the world I want to see."
+  say "And you? What are you and your Pokémon striving for? Go to the Pokémon League, and put it to the test!"
+  fade out 0.6
+  setflag FLAG_UNOVA_HIDE_N_CAVERN
+  setflag FLAG_UNOVA_HIDE_ZEKROM_CAVERN
+  setflag FLAG_UNOVA_HIDE_KYUREM_CAVERN
+  hide n
+  hide zekrom
+  hide kyurem
+  speaker none
+  text "N climbed onto Zekrom's back, and the black dragon rose into the sky. Kyurem sank back into the dark of the cavern..."
+  clearflag FLAG_UNOVA_HIDE_HUGH_CAVERN
+  clearflag FLAG_UNOVA_HIDE_CHEREN_CAVERN
+  show hugh_cavern
+  show cheren_cavern
+  fade in
+  face player hugh_cavern
+  speaker "Cheren"
+  say "{player}! Team Plasma's ship has flown off out of the crater. Is it over?"
+  say "I see... So it's finished. And you saved Kyurem from Team Plasma. You really are something."
+  speaker "{rival}"
+  say "I'm going to take Liepard home to my sister. It still won't come out of its Poké Ball for me, but I'll be patient."
+  say "That man told you to go to the Pokémon League? He's right. Right now you're the strongest Trainer in Unova!"
+  say "Remember the cave where we met up? Follow it west and you come out on Route 23. Victory Road and the League are past it."
+  setflag FLAG_UNOVA_HIDE_HUGH_RAMP
+  setflag FLAG_UNOVA_HIDE_LIEPARD_RAMP
+  setflag FLAG_UNOVA_HIDE_ROOD_CHASM
+  setflag FLAG_UNOVA_CHASM_CLEARED
+  setvar VAR_UNOVA_CHASM 4
+  fade out 0.3
+  setflag FLAG_UNOVA_HIDE_HUGH_CAVERN
+  setflag FLAG_UNOVA_HIDE_CHEREN_CAVERN
+  hide hugh_cavern
+  hide cheren_cavern
+  endscene
+  fade in
+  end
+
+
+script Kyurem
+  cry "Kyurem"
+  speaker none
+  text "Kyurem: Haaahraaan..."
+  end

@@ -794,7 +794,35 @@ internal static partial class PokemonModels
         "Kirinine", "Medusarch", "Solarion", "Slowmantle", "Porrigard", "Tripluma", "Glacitusk", "Sludgemire", "Clamspire", "Mesmeryx",
         "Pincerex", "Dynamorb", "Palmagus", "Ossugard", "Savateur", "Pugilord", "Smoglom", "Matriroo", "Sabrefin", "Stellamir",
         "Mimestro", "Aurorelle", "Mandibron", "Bovarch", "Typhonarch", "Ferrisle", "Naiadeon", "Fulgureon", "Pyreon", "Ammonarch",
-        "Eurypterox", "Azhdarch", "Dozemount", "Glacirune", "Fulguris", "Pyrevant"
+        "Eurypterox", "Azhdarch", "Dozemount", "Glacirune", "Fulguris", "Pyrevant",
+        // Plan 03 · D14: batch 3 (Hoenn; PokemonModels.Ours.Hoenn.cs)
+        "Hyaenarch", "Streakoon", "Swiftarrow", "Pelicaptain", "Ocellwing", "Sporepugil", "Shinobuzz", "Yokozan", "Felinelle",
+        "Gemwraith", "Deceivore", "Ascetrance", "Fulmenhound", "Anodion", "Cathodion", "Photurion", "Lampyria", "Gulpgorge", "Megalodax",
+        "Leviawhale", "Volcamel", "Smeltortoise", "Boarcane", "Whirlpanda", "Saguarox", "Nimbusong", "Ravagoose", "Scimitail", "Selenolith",
+        "Heliolith", "Namazuro", "Crayronin", "Dogunarch", "Crinolith", "Anomalorex", "Prismaria", "Chromeleon", "Effigrim",
+        "Musadon", "Carillone", "Omenblade", "Bergmaw", "Gulpereel", "Sirenyss", "Aeonfin", "Heartreef", "Regimonolith", "Regiglacier",
+        "Regiferrum", "Aurelias", "Aurelios",
+        // Plan 03 · D14, batch 5 (Unova; PokemonModels.Ours.Unova.cs)
+        "Beaconwatch", "Umbrapard", "Simisylvan", "Simiscorch", "Simitorrent", "Somnarna", "Stormstrika", "Amorabat", "Excavarch", "Remedino",
+        "Throjutsu", "Sawkendo", "Cottonimbus", "Ballerilly", "Bascurage",
+        "Darumandala", "Mariachactus", "Crustadel", "Brawlhood", "Glyphoracle", "Pharaurum",
+        "Tortugarch", "Primavian", "Scrapodor", "Zoromirage", "Chinchillux", "Cygnelle",
+        "Seasonstag", "Nimbolga", "Lancelier", "Sporemonarch", "Jellicrown", "Alomatron",
+        "Voltarantula", "Ferrospire", "Cosmogrey",
+        "Beartundra", "Cryohedron", "Velocigor", "Fluxflounder", "Mienshifu",
+        "Drudrakon", "Colossurk", "Bouffalanx", "Imperavia",
+        "Carrionqueen", "Pyrovore", "Formicarch", "Helioptera", "Cobaltarch", "Terrakhan", "Virizenith",
+        // Batch 4 (Sinnoh; PokemonModels.Ours.Sinnoh.cs)
+        "Dambarel", "Maestrikket", "Cranialith", "Bastionsaur", "Nocturmoth", "Hivempress", "Voltglider", "Tidestoat",
+        "Sakurabloom", "Gastromire", "Quadripom", "Dirigeist", "Lapinova", "Hexmagistra", "Corvicapo", "Brutabby",
+        "Mephitarch", "Dotakuron", "Cantatot", "Ossuarion", "Aurasage", "Behemowdon", "Dreadpion", "Venomsensei",
+        "Flytrapex", "Lumifathom", "Glaciarbor", "Rimeripper", "Lickolossus", "Tanglewood",
+        "Meganeuron", "Dryadeon", "Borealeon", "Fangliscor", "Lodestarch", "Frostbride", "Uxinous", "Mespathos", "Azelthymos",
+        // Batch 2 (Johto; PokemonModels.Ours.Johto.cs)
+        "Ermilong", "Noctaugur", "Coccinova", "Orbweavix", "Abyssolux", "Totemsight", "Mimicedar", "Helianthra", "Mirelord", "Zenitheon",
+        "Eclipseon", "Slowmonarch", "Wobbulwark", "Pinecitadel", "Ironwyrm", "Mastiffang", "Fugumace", "Guillotyne",
+        "Fermentoise", "Atlascross", "Calderon", "Reefcrown", "Krakannon", "Sleighwing", "Raysail", "Rapierwing",
+        "Cerberhound", "Siegephant", "Muralist", "Gyrodrill", "Pastorine", "Raitenko", "Enkaiou", "Suiseiren"
     };
 
     /// <summary>
@@ -1103,6 +1131,36 @@ internal static partial class PokemonModels
         "MESMERYX" => Mesmeryx(female: true),
         "SABREFIN" => Sabrefin(female: true),
         "TYPHONARCH" => Typhonarch(female: true),
+        "ASCETRANCE" => Ascetrance(female: true),
+        "GULPGORGE" => Gulpgorge(female: true),
+        "VOLCAMEL" => Volcamel(female: true),
+        "SAGUAROX" => Saguarox(female: true),
+        "PRISMARIA" => Prismaria(female: true),
+        "AEONFIN" => Aeonfin(female: true),
+        // Batch 5: Jellicent's female is a form of her own, Jellicrown's a look of the same species (by the data's flag)
+        "JELLICROWN" => Jellicrown(female: true),
+        "DAMBAREL" => Dambarel(female: true),
+        "MAESTRIKKET" => Maestrikket(female: true),
+        "VOLTGLIDER" => Voltglider(female: true),
+        "TIDESTOAT" => Tidestoat(female: true),
+        "QUADRIPOM" => Quadripom(female: true),
+        "BEHEMOWDON" => Behemowdon(female: true),
+        "VENOMSENSEI" => Venomsensei(female: true),
+        "LUMIFATHOM" => Lumifathom(female: true),
+        "GLACIARBOR" => Glaciarbor(female: true),
+        "RIMERIPPER" => Rimeripper(female: true),
+        "TANGLEWOOD" => Tanglewood(female: true),
+        "COCCINOVA" => Coccinova(female: true),
+        "TOTEMSIGHT" => Totemsight(female: true),
+        "MIMICEDAR" => Mimicedar(female: true),
+        "MIRELORD" => Mirelord(female: true),
+        "WOBBULWARK" => Wobbulwark(female: true),
+        "IRONWYRM" => Ironwyrm(female: true),
+        "GUILLOTYNE" => Guillotyne(female: true),
+        "ATLASCROSS" => Atlascross(female: true),
+        "KRAKANNON" => Krakannon(female: true),
+        "CERBERHOUND" => Cerberhound(female: true),
+        "SIEGEPHANT" => Siegephant(female: true),
         // Plan 09 · L8: a flagged species with no sculpt of its own (none today) is generated, her by the rule of
         // PokemonGenomes.FemaleOf; a hand-built one missing above shows her male, which FemaleLookTests forbids
         _ => HasModel(species) ? Create(species) : PokemonGenerator.Build(species + PokemonPlatinumEngine.Models.PokemonLook.FemaleSuffix) ?? Create(species)

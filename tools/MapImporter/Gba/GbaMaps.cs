@@ -158,6 +158,10 @@ public sealed class GbaMaps
                 }
                 Layouts[layout.Id] = layout;
             }
+        // The layouts a map's own script patches block by block (plan 21 · H12, part c): written as layouts of their own
+        foreach (var patch in Patches)
+            if (Layouts.TryGetValue(patch.Base, out var under))
+                Layouts[patch.Id] = patch.Apply(under);
 
         using var groups = JsonDocument.Parse(File.ReadAllText(Path.Combine(dir, "data", "maps", "map_groups.json")));
         foreach (var group in groups.RootElement.GetProperty("group_order").EnumerateArray())
@@ -199,6 +203,40 @@ public sealed class GbaMaps
         ["MAP_SKY_PILLAR_5F"] = "LAYOUT_SKY_PILLAR_5F_CLEAN",
         ["MAP_SKY_PILLAR_TOP"] = "LAYOUT_SKY_PILLAR_TOP_CLEAN"
     };
+
+    /// <summary>
+    /// A layout a map's own script lays block by block over its own (plan 21 · H12, part c): Emerald's
+    /// <c>setmetatile</c> on load opens Steven's cave in Meteor Falls' first room once the game is cleared
+    /// (<c>MeteorFalls_1F_1R_EventScript_OpenStevensCave</c>). Each is written as a layout of its own (<see cref="Id"/>),
+    /// which <see cref="GbaWorld.Alternates"/> swaps in; a warp on a block it opens is a way, not one never taken.
+    /// </summary>
+    public sealed record GbaPatch(string Id, string Base, (int X, int Y, int Metatile, bool Blocked)[] Blocks)
+    {
+        public GbaLayout Apply(GbaLayout under)
+        {
+            var blocks = (ushort[])under.Blocks.Clone();
+            foreach (var (x, y, metatile, blocked) in Blocks)
+            {
+                int i = y * under.Width + x;
+                // The metatile and the collision change; the elevation stays, as setmetatile leaves it
+                blocks[i] = (ushort)((blocks[i] & 0xF000) | (blocked ? 1 << 10 : 0) | (metatile & 0x3FF));
+            }
+            return new GbaLayout { Id = Id, Name = Id, Width = under.Width, Height = under.Height, Primary = under.Primary, Secondary = under.Secondary, Blocks = blocks };
+        }
+
+        /// <summary>Whether the patch opens this block of its layout.</summary>
+        public bool Opens(int x, int y) => Blocks.Any(b => b.X == x && b.Y == y && !b.Blocked);
+    }
+
+    public static readonly IReadOnlyList<GbaPatch> Patches = new[]
+    {
+        // Steven's cave's mouth in Meteor Falls' first room (METATILE_MeteorFalls_CaveEntrance_Top, _Left, _Bottom, _Right)
+        new GbaPatch("LAYOUT_METEOR_FALLS_1F_1R_STEVENS_CAVE_OPEN", "LAYOUT_METEOR_FALLS_1F_1R",
+            new[] { (4, 1, 0x246, true), (3, 2, 0x24D, true), (4, 2, 0x24E, false), (5, 2, 0x24F, true) })
+    };
+
+    /// <summary>Whether a patch of this layout opens the block a warp stands on (<see cref="GbaPatch.Opens"/>).</summary>
+    public static bool PatchOpens(string layout, int x, int y) => Patches.Any(p => p.Base == layout && p.Opens(x, y));
 
     /// <summary>The tileset a block's metatile is drawn from, and its number within it.</summary>
     public (string Tileset, int Index) TilesetOf(GbaLayout layout, int metatile) =>

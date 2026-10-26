@@ -98,5 +98,6 @@ partial class Harness
         Until(() => game.State == GameState.Battle, "the Sudowoodo's battle", 600);
         if (game.State == GameState.Battle) { ToMainMenu(game.Battle); Shot("h27f_sudowoodo_battle"); }
         Flags("the tree", "FLAG_HIDE_BATTLE_FRONTIER_SUDOWOODO");
+        HoennRayquazaAndStevenShots();
     }
 }

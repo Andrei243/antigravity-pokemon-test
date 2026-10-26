@@ -1,0 +1,121 @@
+{
+  "displayName": {
+    "en": [
+      "Battle Dome"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "announcer": {
+      "name": {
+        "en": [
+          "Announcer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The next tournament hasn't begun yet. Please speak to the receptionist in the annex's lobby."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "opponent": {
+      "name": {
+        "en": [
+          "Trainer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "spectator_1": {
+      "name": {
+        "en": [
+          "Spectator"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I've had the bracket memorised since this morning."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "spectator_2": {
+      "name": {
+        "en": [
+          "Spectator"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Two out of three! Which two will they send in?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "spectator_3": {
+      "name": {
+        "en": [
+          "Spectator"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Every round, the crowd gets louder."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "spectator_4": {
+      "name": {
+        "en": [
+          "Spectator"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A tournament is won one match at a time. Nobody remembers who lost in the first round."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

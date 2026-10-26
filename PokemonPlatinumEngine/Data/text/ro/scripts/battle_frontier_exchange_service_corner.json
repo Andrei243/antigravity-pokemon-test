@@ -5,7 +5,7 @@
         "Clerk"
       ],
       "text": [
-        ""
+        "Vânzătoarea"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Welcome! This counter trades Battle Points for items your Pokémon can hold, and more."
       ],
       "text": [
-        ""
+        "Bun venit! La tejgheaua asta schimbi Puncte de Luptă pe obiecte pe care Pokémonii tăi le pot purta, și nu numai."
       ]
     }
   ],
@@ -23,7 +23,7 @@
         "Clerk"
       ],
       "text": [
-        ""
+        "Vânzătoarea"
       ]
     },
     {
@@ -31,7 +31,7 @@
         "Welcome! This counter trades Battle Points for Technical Machines."
       ],
       "text": [
-        ""
+        "Bun venit! La tejgheaua asta schimbi Puncte de Luptă pe Mașini Tehnice."
       ]
     }
   ],
@@ -41,7 +41,7 @@
         "Clerk"
       ],
       "text": [
-        ""
+        "Vânzătoarea"
       ]
     },
     {
@@ -49,7 +49,7 @@
         "This counter will trade Battle Points for dolls and cushions for a secret base. Our stock hasn't arrived yet, I'm afraid."
       ],
       "text": [
-        ""
+        "La tejgheaua asta se schimbă Puncte de Luptă pe păpuși și perne pentru o bază secretă. Din păcate, marfa încă n-a sosit."
       ]
     }
   ],
@@ -59,7 +59,7 @@
         "{player} traded {price} BP for the {item}."
       ],
       "text": [
-        ""
+        "{player} a dat {price} PL pentru {item}."
       ]
     },
     {
@@ -67,7 +67,7 @@
         "Thank you! Please come again."
       ],
       "text": [
-        ""
+        "Mulțumim! Mai treci pe la noi."
       ]
     },
     {
@@ -75,7 +75,7 @@
         "I'm sorry. You don't have the Battle Points for that."
       ],
       "text": [
-        ""
+        "Îmi pare rău. Nu ai destule Puncte de Luptă pentru asta."
       ]
     },
     {
@@ -83,7 +83,7 @@
         "Please come again."
       ],
       "text": [
-        ""
+        "Mai treci pe la noi."
       ]
     }
   ]

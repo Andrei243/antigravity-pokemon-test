@@ -59,4 +59,138 @@ public class OurSculptTests
         Assert.Equal(new[] { "Mesmeryx", "Ratchisel", "Sabrefin", "Tripluma", "Typhonarch" }, flagged);
         Assert.All(flagged, n => Assert.Contains(n, PokemonLook.Females));
     }
+
+
+    /// <summary>Batch 3: the species of our own that evolve from Hoenn's (Nos. 2252 to 2386).</summary>
+    private static PokemonSpecies[] Hoenn => PokemonDatabase.Ours().Where(s => s.DexNumber is >= 2252 and <= 2386).ToArray();
+
+    [Fact]
+    public void EverySpeciesOfOursOfHoennIsHandBuiltAndItsOwn()
+    {
+        Assert.Equal(51, Hoenn.Length);
+        foreach (var s in Hoenn)
+        {
+            Assert.True(PokemonModels.HasModel(s.Name), $"{s.Name} has no sculpt of its own");
+            Assert.Contains(s.Name, PokemonModels.Species);
+            Assert.NotEqual(PokemonModels.Signature(ForebearOf(s).Name), PokemonModels.Signature(s.Name));
+            Assert.Equal(s.Name, PokemonModels.Build(s.Name).Species);
+        }
+    }
+
+    [Fact]
+    public void AHoennFemaleLookIsSculptedWhereTheForebearsIs()
+    {
+        // Medicham, Swalot, Camerupt, Cacturne, Milotic and Relicanth: their evolutions of ours keep the difference
+        var flagged = Hoenn.Where(s => s.GenderDifferences).Select(s => s.Name).OrderBy(n => n).ToArray();
+        Assert.Equal(new[] { "Aeonfin", "Ascetrance", "Gulpgorge", "Prismaria", "Saguarox", "Volcamel" }, flagged);
+        foreach (var n in flagged)
+        {
+            Assert.True(PokemonLook.HasFemale(n));
+            Assert.NotEqual(PokemonModels.Signature(n), PokemonModels.Signature(n + PokemonLook.FemaleSuffix));
+        }
+    }
+
+
+    /// <summary>Batch 5: the species of our own that evolve from Unova's (Nos. 2494 to 2649), sculpted from the user's reference pictures.</summary>
+    private static PokemonSpecies[] Unova => PokemonDatabase.Ours().Where(s => s.DexNumber is >= 2494 and <= 2649).ToArray();
+
+    [Fact]
+    public void EverySpeciesOfOursOfUnovaIsHandBuiltAndItsOwn()
+    {
+        Assert.Equal(52, Unova.Length);
+        foreach (var s in Unova)
+        {
+            Assert.True(PokemonModels.HasModel(s.Name), $"{s.Name} has no sculpt of its own");
+            Assert.Contains(s.Name, PokemonModels.Species);
+            Assert.NotEqual(PokemonModels.Signature(ForebearOf(s).Name), PokemonModels.Signature(s.Name));
+            Assert.Equal(s.Name, PokemonModels.Build(s.Name).Species);
+        }
+    }
+
+    [Fact]
+    public void JellicrownsFemaleIsPinkAndHerOwn()
+    {
+        // Jellicent's female is a form of her own; Jellicrown keeps the difference as a look of the one species
+        Assert.True(PokemonLook.HasFemale("Jellicrown"));
+        Assert.NotEqual(PokemonModels.Signature("Jellicrown"), PokemonModels.Signature("Jellicrown+f"));
+    }
+
+
+    /// <summary>Batch 4: the species of our own that evolve from Sinnoh's (Nos. 2400 to 2482).</summary>
+    private static PokemonSpecies[] Sinnoh => PokemonDatabase.Ours().Where(s => s.DexNumber is >= 2400 and <= 2499).ToArray();
+
+    [Fact]
+    public void EverySpeciesOfOursOfSinnohIsHandBuiltAndItsOwn()
+    {
+        Assert.Equal(39, Sinnoh.Length);
+        foreach (var s in Sinnoh)
+        {
+            Assert.True(PokemonModels.HasModel(s.Name), $"{s.Name} has no sculpt of its own");
+            Assert.Contains(s.Name, PokemonModels.Species);
+            Assert.NotEqual(PokemonModels.Signature(ForebearOf(s).Name), PokemonModels.Signature(s.Name));
+            Assert.Equal(s.Name, PokemonModels.Build(s.Name).Species);
+        }
+    }
+
+    [Fact]
+    public void ASinnohFemaleLookIsKeptWhereTheForebearsIs()
+    {
+        var flagged = Sinnoh.Where(s => s.GenderDifferences).Select(s => s.Name).OrderBy(n => n).ToArray();
+        Assert.Equal(11, flagged.Length);
+        Assert.All(flagged, n => Assert.Contains(n, PokemonLook.Females));
+    }
+
+
+    /// <summary>Batch 2: the species of our own that evolve from Johto's (Nos. 2152 to 2251).</summary>
+    private static PokemonSpecies[] Johto => PokemonDatabase.Ours().Where(s => s.DexNumber is >= 2152 and <= 2251).ToArray();
+
+    [Fact]
+    public void EverySpeciesOfOursOfJohtoIsHandBuiltAndNotItsForebear()
+    {
+        Assert.Equal(34, Johto.Length);
+        foreach (var s in Johto)
+        {
+            Assert.True(PokemonModels.HasModel(s.Name), $"{s.Name} has no sculpt of its own");
+            Assert.Contains(s.Name, PokemonModels.Species);
+            Assert.NotEqual(PokemonModels.Signature(ForebearOf(s).Name), PokemonModels.Signature(s.Name));
+            Assert.Equal(s.Name, PokemonModels.Build(s.Name).Species);
+        }
+    }
+
+    [Fact]
+    public void EachJohtoDecalCoversItsWholeSquare()
+    {
+        // As PokemonModelTests.EachDecalCoversItsWholeSquare, for this batch alone (that test walks every model)
+        foreach (var s in Johto)
+            foreach (var name in s.GenderDifferences ? new[] { s.Name, s.Name + PokemonLook.FemaleSuffix } : new[] { s.Name })
+            {
+                var m = PokemonModels.Get(name);
+                var uvs = m.DecalUVs!;
+                for (int d = 0; d < m.Decals.Count; d++)
+                {
+                    int col = d % m.AtlasColumns, row = d / m.AtlasColumns;
+                    var center = new System.Numerics.Vector2((col + 0.5f) / m.AtlasColumns, (row + 0.5f) / m.AtlasRows);
+                    var half = new System.Numerics.Vector2(0.25f / m.AtlasColumns, 0.25f / m.AtlasRows);
+                    bool left = false, right = false, top = false, bottom = false;
+                    foreach (var uv in uvs)
+                    {
+                        if (System.MathF.Abs(uv.X - center.X) > 2f * half.X || System.MathF.Abs(uv.Y - center.Y) > 2f * half.Y) continue;
+                        left |= uv.X <= center.X - half.X;
+                        right |= uv.X >= center.X + half.X;
+                        top |= uv.Y <= center.Y - half.Y;
+                        bottom |= uv.Y >= center.Y + half.Y;
+                    }
+                    Assert.True(left && right && top && bottom, $"{name}: decal {d} isn't covered");
+                }
+            }
+    }
+
+    [Fact]
+    public void AJohtoFemaleLookIsKeptWhereTheForebearsIs()
+    {
+        var flagged = Johto.Where(s => s.GenderDifferences).Select(s => s.Name).ToArray();
+        Assert.Equal(11, flagged.Length);
+        Assert.All(flagged, n => Assert.Contains(n, PokemonLook.Females));
+    }
+
 }

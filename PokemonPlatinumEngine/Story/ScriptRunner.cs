@@ -387,6 +387,8 @@ public sealed partial class ScriptRunner
         // Hoenn's contests: the contest and the blender are the player's to play; the rest only asks and changes (plan 21 · H11)
         Op.Appeals => i.Name is "enter" or "view",
         Op.Pokeblock => i.Name == "blend",
+        // The Battle Dome opens screens, asks the Frontier and battles on most of its words, as the facilities do: none is hurried through (plan 14 · B8)
+        Op.Bracket => true,
         _ => throw new ArgumentOutOfRangeException(nameof(i), i.Op, "This command doesn't say what it does in a hurry: name it in ScriptRunner.StopsAHurry.")
     };
 
@@ -1271,6 +1273,10 @@ public sealed partial class ScriptRunner
             // The Battle Subway (plan 22 · U6, part d)
             case Op.Subway:
                 Subway(i);
+                break;
+            // The Battle Dome (plan 14 · B8)
+            case Op.Bracket:
+                DomeBracket(i);
                 break;
 
             // Amity Square's walk (plan 06 · R16c)

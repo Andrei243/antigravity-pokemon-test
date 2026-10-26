@@ -107,7 +107,9 @@ public enum GameState
     /// <summary>A Hoenn contest's appeals, a script's <c>appeals enter</c> waiting on it; the Pokéblock Case; the Berry Blender (plan 21 · H11).</summary>
     Appeals,
     PokeblockCase,
-    Blender
+    Blender,
+    /// <summary>The Battle Dome's bracket, a script's <c>bracket show</c> or <c>bracket pick</c> waiting on it (plan 14 · B8).</summary>
+    Bracket
 }
 
 public partial class GameEngine
@@ -142,7 +144,7 @@ public partial class GameEngine
     // Whether the run button was down last frame (on the Bicycle a press changes gear)
     private bool runWasDown;
 
-    private readonly Random fieldRandom = Dice.New();
+    private Random fieldRandom = Dice.New();
 
     // The opening and title menu, the slots' saves it offers to continue from, and where the options screen returns to
     private readonly TitleScene titleScene = new();
@@ -1363,6 +1365,9 @@ public partial class GameEngine
                 break;
             case GameState.Blender:
                 UpdateBlender(dt);
+                break;
+            case GameState.Bracket:
+                UpdateBracket(dt);
                 break;
             case GameState.Journal:
                 flow.JournalScreen.Update(flow.Journal, dt);
@@ -2760,6 +2765,9 @@ public partial class GameEngine
                 break;
             case GameState.Blender:
                 flow.BlenderScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.Bracket:
+                flow.BracketScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.Journal:
                 flow.JournalScreen.Draw(VirtualWidth, VirtualHeight, flow.Journal);

@@ -1,0 +1,63 @@
+{
+  "displayName": {
+    "en": [
+      "Battle Frontier Annex"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "dome_receptionist": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "dome_fan": {
+      "name": {
+        "en": [
+          "Dome Fan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Sixteen Trainers, four rounds, one champion. Nothing in the Frontier is as loud as a Dome final.",
+          "The trick is the card. Look at what they bring before you choose your two!"
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    },
+    "dome_veteran": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The other matches of a round are fought while you wait, and every result goes up on the bracket.",
+          "Whoever you meet in the final has won three times to get there. Respect that."
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

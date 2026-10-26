@@ -8,7 +8,7 @@ namespace PokemonPlatinumEngine.Core.Autoplay;
 /// mashing the pad would make them (a few held for a while, a press now and then). Full screen, mute and the
 /// screenshot are left out: none of them changes the game, and the first two would touch a window.
 /// </summary>
-public sealed class KeyFuzzer
+public sealed class KeyFuzzer : IFuzzer
 {
     private static readonly GameAction[] Actions = Enum.GetValues<GameAction>()
         .Where(a => a is not (GameAction.Fullscreen or GameAction.Mute or GameAction.Screenshot)).ToArray();

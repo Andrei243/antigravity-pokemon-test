@@ -287,6 +287,9 @@
     // shadows, white hair over a black suit with a pale band at the collar
     "zinzolin": { "hairColor": "#b8b8c0", "hair": "Bald", "top": "#5a2a48", "accent": "#d8b44a", "bottom": "#5a2a48", "shoes": "#2a2026", "beard": true, "coat": true, "skirt": true, "build": "Elder", "height": 1.04 },
     "shadow_triad": { "hairColor": "#ececf2", "hair": "Spiky", "top": "#1c1c24", "accent": "#d0d0d8", "bottom": "#1c1c24", "shoes": "#141418", "eyes": "#6a2a2a", "build": "Adult", "height": 1.04 },
+    // Plan 22 · U9, part a: Ghetsis (our own take, a stand-in until plan 22 · U12), very tall, long sage-green hair over a dark violet
+    // robe banded in gold, one red eye
+    "ghetsis": { "hairColor": "#7aa86a", "hair": "Long", "top": "#3e3050", "accent": "#d8b44a", "bottom": "#3e3050", "shoes": "#2a2026", "eyes": "#a83a3a", "coat": true, "skirt": true, "build": "Adult", "height": 1.16 },
     // The first trainers of the open areas (plan 11 · C2), each our own take. The school kids: navy with a white collar, the boy in a bowl cut and grey shorts with a satchel, the girl with a ponytail tied in red and a red skirt
     "school_kid_m": { "hairColor": "#4a3428", "hair": "Bowl", "top": "#34467a", "accent": "#f4f4f6", "bottom": "#8a8c96", "shoes": "#4a3428", "shorts": true, "bag": "#b4864e", "blush": true },
     "school_kid_f": { "hairColor": "#3c2a26", "hair": "Ponytail", "hatBand": "#d8434a", "top": "#34467a", "accent": "#f4f4f6", "bottom": "#c4464c", "shoes": "#3c2c2a", "skirt": true, "bag": "#b4864e", "lashes": true, "blush": true },
@@ -765,6 +768,9 @@
     "Depot Agent": "worker",
     // Plan 22 · U7, part a: Skyla and her pilots
     "Leader Skyla": "skyla",
-    "Pilot": "pilot"
+    "Pilot": "pilot",
+    // Plan 22 · U9, part a: Ghetsis and the Shadow Triad in battle
+    "Team Plasma Ghetsis": "ghetsis",
+    "Team Plasma Shadow": "shadow_triad"
   }
 }

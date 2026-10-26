@@ -77,6 +77,8 @@ label Rayquaza
   setflag FLAG_HIDE_SOOTOPOLIS_CITY_RAYQUAZA
   text "Rayquaza flew off into the clear sky..."
   setvar VAR_SKY_PILLAR_STATE 2
+  # Sky Pillar is cracked all over from now on, and Rayquaza waits back on its top (plan 21 · H12, part c)
+  setflag FLAG_HOENN_SKY_PILLAR_CRACKED
   camera release 2
   fade out
   call OutsideGym

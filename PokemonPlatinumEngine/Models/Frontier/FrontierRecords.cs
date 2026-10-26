@@ -162,6 +162,9 @@ public sealed class FrontierRecords
     /// <summary>The Battle Arcade's own part (plan 06 · R18d): a challenge put down, and the Battle Points its board has given.</summary>
     public ArcadeRecord Arcade { get; set; } = new();
 
+    /// <summary>The Battle Dome's own part (plan 14 · B8, in the Frontier's annex): the tournaments won in a row and in all.</summary>
+    public DomeRecord Dome { get; set; } = new();
+
     // ------------------------------------------------------------------ the numbers
 
     /// <summary><c>BattleFrontierSave_GetStat</c>.</summary>

@@ -313,7 +313,13 @@ public class Map
     /// whose overlay names one (<see cref="MapArea.HoleTo"/>); null anywhere else.
     /// </summary>
     public Data.MapSpot? HoleTargetAt(int x, int y) =>
-        BehaviourAt(x, y) == TileBehavior.CrackedFloor && AreaAt(x, y) is { HoleTo: { } below } ? new Data.MapSpot(below, x, y) : null;
+        BehaviourAt(x, y) is TileBehavior.CrackedFloor or TileBehavior.Hole && AreaAt(x, y) is { HoleTo: { } below } ? new Data.MapSpot(below, x, y) : null;
+
+    /// <summary>
+    /// Whether this tile is a hole already broken through to the floor below (plan 21 · H12, part c: Sky Pillar cracked all
+    /// over, Emerald's <c>MB_CRACKED_FLOOR_HOLE</c>), which drops even a rider, where a cracked floor bears one.
+    /// </summary>
+    public bool IsOpenHole(int x, int y) => BehaviourAt(x, y) == TileBehavior.Hole && HoleTargetAt(x, y) != null;
 
     /// <summary>The map and tile coming up from this tile of the sea floor comes up onto, as <see cref="DiveTargetAt"/> goes down.</summary>
     public Data.MapSpot? EmergeTargetAt(int x, int y) => AreaAt(x, y) switch
@@ -495,8 +501,12 @@ public class Map
     public double WeatherClock { get; set; }
 
     /// <summary>What falls or hangs in the air over a tile; in a room and a cave only fog hangs (the Lost Tower's top floor).</summary>
+    /// <summary>A weather a developer's command lays over the whole map (plan 16 · T17, the console's <c>weather</c>); null for the place's own.</summary>
+    public FieldWeather? WeatherOverride { get; set; }
+
     public FieldWeather WeatherAt(int x, int y)
     {
+        if (WeatherOverride is { } over) return over;
         if (IsIndoors) return Weather == FieldWeather.Fog && !FogLifted ? FieldWeather.Fog : FieldWeather.Clear;
         // The calendar follows the computer's date, as the original follows the DS's
         var weather = AreaAt(x, y) is { } area ? area.WeatherAt(x, y, Core.GameClock.Today) : Weather;
@@ -1217,6 +1227,27 @@ public class Map
         internal ChunkGround[] Before = Array.Empty<ChunkGround>(), After = Array.Empty<ChunkGround>();
 
         public bool Covers(int x, int y) => Cells.Contains((x / ChunkTiles, y / ChunkTiles));
+    }
+
+    /// <summary>
+    /// Whether a tile the map's own ground blocks is open ground once a swap of the story's is laid (plan 21 · H12, part c:
+    /// Steven's cave's mouth, which Meteor Falls' first room opens only after the Hall of Fame): a way out onto it lands
+    /// there only when the swap is made, as the original's way does.
+    /// </summary>
+    public bool OpenOnceSwapped(int x, int y)
+    {
+        foreach (var place in SwappedPlaces)
+        {
+            if (place.Season != null) continue;
+            for (int i = 0; i < place.Cells.Count; i++)
+            {
+                var (cx, cy) = place.Cells[i];
+                if (x / ChunkTiles != cx || y / ChunkTiles != cy) continue;
+                int x0 = cx * ChunkTiles, y0 = cy * ChunkTiles, w = Math.Min(ChunkTiles, Width - x0);
+                if (!place.After[i].Solid[(y - y0) * w + x - x0]) return true;
+            }
+        }
+        return false;
     }
 
     /// <summary>The ground of one chunk and what stands on it by the world's models: what a swap changes.</summary>

@@ -10,6 +10,8 @@
 
 
 script OnEnter
+  # A save that saw Rayquaza calm Sootopolis before the pillar cracked with it (plan 21 · H12, part c)
+  if var VAR_SKY_PILLAR_STATE >= 2 setflag FLAG_HOENN_SKY_PILLAR_CRACKED
   if var VAR_SOOTOPOLIS_CITY_STATE != 3 end
   scene "Wallace at Sky Pillar"
   wait 0.5

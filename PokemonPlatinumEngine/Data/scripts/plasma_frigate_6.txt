@@ -1,0 +1,99 @@
+# The Plasma Frigate's ramp hall, the ship at rest in the Giant Chasm's crater (plan 22 · U9, part a). docs/scripts.md describes the
+# language; the lines are our own, on Black 2's beats (the decompilation's res/field/scripts/plasma_frigate_6.s, read for the order
+# alone).
+#
+# As the player comes up the ramp (our trigger, 10 to 12, 14; VAR_UNOVA_CHASM 2) Ghetsis (ghetsis_ramp) is at the head of the hall
+# with the Shadow Triad (triad_ramp_a to _c) before him. He tells of his plan for Kyurem and leaves for the place where its power is
+# strongest; Hugh (hugh_ramp) runs in and asks after his sister's Purrloin, and the first of the Triad shows a Liepard (liepard) that
+# answers only to him now. The three battle the player one after another (Black 2's TRAINER_TEAM_PLASMA_SHADOW, _2 and _3), give the
+# Liepard back and go; Hugh stays with it, and the player goes on alone to the cavern north of the crater (3).
+
+
+script OnEnter
+  call UnovaCatchUpE
+  end
+
+
+script GhetsisAboard
+  scene "Ghetsis aboard the Frigate"
+  place player 11 10 up
+  speaker "???"
+  say "So Colress has gone his own way, has he? He cares more for his questions than for the cause that fed them."
+  speaker "Ghetsis"
+  say "Well, well. A child, here? Then you shall have the rare honour of hearing my plan from my own lips."
+  say "Kyurem is a hollow thing, what was left behind when Reshiram and Zekrom were made. Hollow things can be filled."
+  say "With our science, its power will be wound to the very limit, and all of Unova will be buried in ice."
+  say "The people will beg us to stop it, and they will give up their Pokémon to save themselves. Unova will be mine!"
+  speaker "Shadow Triad"
+  say "Lord Ghetsis. Kyurem has been moved to the place you chose."
+  speaker "Ghetsis"
+  say "At last! Then the age of my rule begins. I leave this child to you."
+  fade out 0.4
+  setflag FLAG_UNOVA_HIDE_GHETSIS_RAMP
+  hide ghetsis_ramp
+  clearflag FLAG_UNOVA_HIDE_HUGH_RAMP
+  show hugh_ramp
+  fade in
+  face player hugh_ramp
+  speaker "{rival}"
+  say "{player}! I saw a man in a long robe leave... Never mind him. You! You're one of the Shadow Triad, aren't you?"
+  face hugh_ramp triad_ramp_a
+  say "Tell me what happened to the Purrloin that was stolen in Aspertia City five years ago!"
+  speaker "Shadow Triad"
+  say "Very well. Perhaps this is the one you mean."
+  clearflag FLAG_UNOVA_HIDE_LIEPARD_RAMP
+  show liepard
+  cry "Liepard"
+  say "I took it as a Purrloin, five years ago. It has grown, and now it obeys no one but me."
+  speaker "{rival}"
+  say "No... That Pokémon belongs to my little sister! Give it back!"
+  speaker "Shadow Triad"
+  say "Pity the Pokémon, bound to Poké Balls and to whatever their Trainers want. But enough. You will not hinder Lord Ghetsis."
+  battle triad_ramp_a as "unova_team_plasma_shadow"
+  speaker "Shadow Triad"
+  say "Hm. Then try all three of us."
+  battle triad_ramp_b as "unova_team_plasma_shadow_2"
+  speaker "Shadow Triad"
+  say "Even if we fall, Lord Ghetsis need only win."
+  battle triad_ramp_c as "unova_team_plasma_shadow_3"
+  speaker "Shadow Triad"
+  say "It makes no difference. You can only watch as Lord Ghetsis uses Kyurem to freeze Unova."
+  face triad_ramp_a hugh_ramp
+  say "You may have the Liepard back. After what Lord Ghetsis is about to do, I have no more need of it."
+  fade out 0.4
+  setflag FLAG_UNOVA_HIDE_TRIAD_RAMP
+  hide triad_ramp_a
+  hide triad_ramp_b
+  hide triad_ramp_c
+  fade in
+  face hugh_ramp player
+  speaker "{rival}"
+  say "...It's glaring at me. I finally found my sister's Pokémon, and it doesn't know me at all."
+  say "{player}... If Team Plasma get their way, there'll be more Pokémon like this one, and like Kyurem. Go after that man!"
+  say "I'll stay here with Liepard for now. I'll catch you up, I promise."
+  clearflag FLAG_UNOVA_HIDE_GHETSIS_CAVERN
+  clearflag FLAG_UNOVA_HIDE_KYUREM_CAVERN
+  setvar VAR_UNOVA_CHASM 3
+  endscene
+  end
+
+
+script Hugh
+  face hugh_ramp player
+  speaker "{rival}"
+  say "The man in the robe went somewhere north of the crater, deeper in. Go on, {player}. I'll be right behind you."
+  end
+
+
+script Liepard
+  cry "Liepard"
+  speaker none
+  text "Liepard: Grrrrr..."
+  end
+
+
+script Triad
+  face self player
+  speaker "Shadow Triad"
+  say "..."
+  end

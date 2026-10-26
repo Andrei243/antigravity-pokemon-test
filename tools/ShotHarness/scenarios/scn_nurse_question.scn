@@ -1,0 +1,11 @@
+# Sandgem Town's Pokémon Center: the nurse's question, its answers, and the team seen to
+newgame
+at PokemonCenter 8 6 up
+talk
+read
+shot scn_nurse_asks
+state
+answer 0
+read
+shot scn_nurse_done
+expect state Overworld

@@ -14,4 +14,9 @@
     <ProjectReference Include="../../PokemonPlatinumEngine/PokemonPlatinumEngine.csproj" />
   </ItemGroup>
 
+  <!-- The kept scenarios (plan 16 · T17), which the `scenarios` mode plays -->
+  <ItemGroup>
+    <None Include="scenarios\*.scn" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
 </Project>

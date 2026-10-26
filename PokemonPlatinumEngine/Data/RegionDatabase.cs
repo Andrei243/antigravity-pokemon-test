@@ -352,6 +352,8 @@ public static class RegionDatabase
                 "Battleground", "SpearPillarDialga", "SpearPillarPalkia",
                 // Plan 01 · M11, the last rooms: the floors over the Pokétch Company's, on the original's plans
                 "PoketchCompany2F", "PoketchCompany3F",
+                // Plan 14 · B8: the Battle Frontier's annex, its lobby and the Battle Dome's hall (maps of ours)
+                "BattleFrontierAnnex", "BattleDome",
             }
         },
         new()
@@ -671,6 +673,8 @@ public static class RegionDatabase
                 "BattleFrontier_Mart", "BattleFrontier_ExchangeServiceCorner", "BattleFrontier_ScottsHouse", "BattleFrontier_RankingHall",
                 "BattleFrontier_Lounge1", "BattleFrontier_Lounge2", "BattleFrontier_Lounge3", "BattleFrontier_Lounge4", "BattleFrontier_Lounge5",
                 "BattleFrontier_Lounge6", "BattleFrontier_Lounge7", "BattleFrontier_Lounge8",
+                // Plan 21 · H12, part c: Steven's cave
+                "MeteorFalls_StevensCave",
             }
         },
         new()
@@ -743,6 +747,8 @@ public static class RegionDatabase
                 // Plan 22 · U8, part b: the Marine Tube (a map of ours, Data/maps/MarineTube.json) between its gates, Humilau City's
                 // rooms and Gym, the Seaside Cave and five rooms of the Plasma Frigate
                 "MarineTubeGate_Undella", "MarineTube", "MarineTubeGate_Humilau", "HumilauCity_House1", "HumilauCity_House2", "HumilauCity_House3", "HumilauCity_House4", "HumilauCity_House5", "HumilauCity_PokemonCenter", "HumilauCity_Gym", "SeasideCave_1F", "SeasideCave_B1F", "PlasmaFrigate_Hold", "PlasmaFrigate_Stern", "PlasmaFrigate_Bridge", "PlasmaFrigate_Cabins", "PlasmaFrigate_Cabin",
+                // Plan 22 · U9, part a: the Giant Chasm's cave, crater (twice), passage and cavern, and the Frigate's ramp hall
+                "GiantChasm_Cave", "GiantChasm_Crater", "GiantChasm_CraterFrigate", "GiantChasm_Passage", "GiantChasm_Cavern", "PlasmaFrigate_Ramp",
             }
         },
         new() { Id = Kalos, Name = "Kalos", Generation = 6 },

@@ -22,9 +22,10 @@ public class HoennTests
         var walked = WorldWalk.From(MapNamed, starts);
         // Shoal Cave's tide comes and goes (plan 21 · H8, part d): some of its rooms are reached only by surfing at high
         // tide, and the ice room below only on foot at low tide. The walk is made again on maps of its own with the high
-        // tide's chunks laid, and what it reaches is added to the low tide's, map by map
+        // tide's chunks laid, and what it reaches is added to the low tide's, map by map. Every other swap of a flag is laid
+        // in the same walk (plan 21 · H12, part c: Sky Pillar cracked after the calm, Steven's cave open after the League)
         var flooded = LoadedWorld.Value.BuildMaps().ToDictionary(m => m.Name);
-        foreach (var map in flooded.Values) map.ApplySwappedPlaces(_ => 0, f => f == ShoalTide.Flag);
+        foreach (var map in flooded.Values) map.ApplySwappedPlaces(_ => 0, _ => true);
         foreach (var (map, tiles) in WorldWalk.From(name => flooded.TryGetValue(name, out var m) ? m : MapDatabase.Get(name), starts))
         {
             var same = BuiltMaps.Value.TryGetValue(map.Name, out var built) ? built : map;

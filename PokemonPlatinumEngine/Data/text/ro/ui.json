@@ -4329,5 +4329,27 @@
       "BetterWhenAudienceExcited": "Cu cât publicul e mai aprins, cu atât mai bine.",
       "DontExciteAudience": "Ține publicul pe loc până la sfârșitul rundei."
     }
+  },
+  "bracketScreen": {
+    "title": "BATTLE DOME",
+    "hint": { "bracket": "Tablou" },
+    "round": { "0": "PRIMA RUNDĂ", "1": "SFERTURI", "2": "SEMIFINALE", "3": "FINALA" },
+    "over": "TURNEUL S-A ÎNCHEIAT",
+    "you": "Tu",
+    "next": "URMĂTORUL",
+    "champion": "CAMPION",
+    "outIn": "ELIMINAT ÎN {round}",
+    "prompt": {
+      "look": "Tabloul turneului. Uită-te la fișa oricărui Antrenor.",
+      "back": "Apasă Înapoi ca să revii la alegerea ta.",
+      "pick": "Alege doi dintre cei trei ai tăi ca să-i trimiți în luptă.",
+      "ready": "Îi trimiți pe acești doi în luptă?"
+    },
+    "level": "Nv. {level}",
+    "sentIn": "TRIMIS",
+    "theirThree": "CEI TREI AI LOR",
+    "yourThree": "CEI TREI AI TĂI",
+    "chooseTwo": "DOI INTRĂ ÎN LUPTĂ",
+    "battle": "LUPTĂ"
   }
 }

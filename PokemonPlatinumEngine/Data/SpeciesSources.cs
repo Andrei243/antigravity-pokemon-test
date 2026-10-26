@@ -67,6 +67,31 @@ public sealed class SpeciesSources
         }
     }
 
+    /// <summary>The species Hoenn must hold: Ruby's, Sapphire's and Emerald's National Pokédex, 1 to 386.</summary>
+    public const int HighestInHoenn = 386;
+
+    private static SpeciesSources? hoenn;
+
+    /// <summary>
+    /// Hoenn's (plan 21 · H12, part c, D12a's check for a region's own game): its open areas and their scripts alone, with
+    /// the region's briefcase of three, read once. Hoenn has no hand-made rooms, and the tables of no area are Sinnoh's.
+    /// </summary>
+    public static SpeciesSources Hoenn
+    {
+        get
+        {
+            lock (loading)
+            {
+                if (hoenn != null) return hoenn;
+                var world = World.LoadAll().First(w => string.Equals(w.Index.Region, RegionDatabase.Hoenn, StringComparison.OrdinalIgnoreCase));
+                var own = world.Index.Areas.ToHashSet(StringComparer.OrdinalIgnoreCase);
+                var starters = RegionDatabase.Get(RegionDatabase.Hoenn)?.Starters ?? Array.Empty<string>();
+                return hoenn = Of(world, ScriptLibrary.Default, Array.Empty<MapFile>(), HighestInHoenn, own.Contains,
+                    starters.Select(s => (s, "the professor's bag")), noAreaTables: true);
+            }
+        }
+    }
+
     /// <summary>The rooms' map files, read as the game reads them.</summary>
     public static IEnumerable<MapFile> Rooms()
     {
@@ -78,9 +103,9 @@ public sealed class SpeciesSources
 
     /// <summary>What a world, its scripts and the rooms give, for the species numbered up to <paramref name="highest"/>.</summary>
     public static SpeciesSources Of(World world, ScriptLibrary scripts, IEnumerable<MapFile> rooms, int highest = HighestInSinnoh,
-        Func<string, bool>? scriptFile = null)
+        Func<string, bool>? scriptFile = null, IEnumerable<(string Species, string Way)>? given = null, bool noAreaTables = false)
     {
-        var found = Gather(world, scripts, rooms.ToList(), scriptFile ?? (_ => true));
+        var found = Gather(world, scripts, rooms.ToList(), scriptFile ?? (_ => true), given, noAreaTables);
         var pool = PokemonDatabase.GetAll().Where(s => s.DexNumber >= 1 && s.DexNumber <= highest && !found.ways.ContainsKey(s.Name))
             .OrderBy(s => s.DexNumber).Select(s => s.Name).ToList();
         var sources = new SpeciesSources(pool);
@@ -114,9 +139,12 @@ public sealed class SpeciesSources
         }
     }
 
-    private static Found Gather(World world, ScriptLibrary scripts, List<MapFile> rooms, Func<string, bool> scriptFile)
+    private static Found Gather(World world, ScriptLibrary scripts, List<MapFile> rooms, Func<string, bool> scriptFile,
+        IEnumerable<(string Species, string Way)>? given, bool noAreaTables)
     {
         var f = new Found();
+        // What the region hands over by no script (its briefcase of three)
+        foreach (var (species, way) in given ?? Array.Empty<(string, string)>()) f.Species(species, way);
 
         // The open areas: their wild tables, our own species once the National Pokédex is had, their items and places
         foreach (string key in world.Index.Areas)
@@ -134,6 +162,8 @@ public sealed class SpeciesSources
                 foreach (var e in area.OldRod ?? new()) f.Species(e.Species, $"{key}: the Old Rod", true);
                 foreach (var e in area.GoodRod ?? new()) f.Species(e.Species, $"{key}: the Good Rod", true);
                 foreach (var e in area.SuperRod ?? new()) f.Species(e.Species, $"{key}: the Super Rod", true);
+                // (a rock smashed: Hoenn's, plan 21 · H4; plan 21 · H12, part c counts it)
+                foreach (var e in area.RockSmash ?? new()) f.Species(e.Species, $"{key}: a rock smashed", true);
                 var heldBack = new HashSet<string>(overlay?.HeldBack ?? new(), StringComparer.Ordinal);
                 foreach (var o in area.Objects)
                     if (o.Item != null && !heldBack.Contains(o.Id)) f.Item(o.Item, $"{key}: on the ground");
@@ -159,10 +189,13 @@ public sealed class SpeciesSources
 
         // The tables that belong to no one area (plan 06 · R13)
         var tables = world.Encounters;
-        foreach (string s in tables.HoneyTrees.Common.Concat(tables.HoneyTrees.Uncommon).Concat(tables.HoneyTrees.Rare)) f.Species(s, "a honey tree", true);
-        foreach (string s in tables.GreatMarsh.Local.Concat(tables.GreatMarsh.National)) f.Species(s, "the Great Marsh", true);
-        foreach (string s in tables.TrophyGarden) f.Species(s, "the Trophy Garden", true);
-        f.Species(tables.Feebas.Species, "Feebas's tiles", true);
+        if (!noAreaTables)
+        {
+            foreach (string s in tables.HoneyTrees.Common.Concat(tables.HoneyTrees.Uncommon).Concat(tables.HoneyTrees.Rare)) f.Species(s, "a honey tree", true);
+            foreach (string s in tables.GreatMarsh.Local.Concat(tables.GreatMarsh.National)) f.Species(s, "the Great Marsh", true);
+            foreach (string s in tables.TrophyGarden) f.Species(s, "the Trophy Garden", true);
+            f.Species(tables.Feebas.Species, "Feebas's tiles", true);
+        }
 
         // What the scripts hand over, battle or sell
         bool revives = false;
@@ -187,8 +220,9 @@ public sealed class SpeciesSources
         foreach (var (counter, list) in MartDatabase.Specialties)
             foreach (string item in list) f.Item(item, $"the counter {counter}");
         foreach (var prize in FrontierDatabase.ExchangeItems) f.Item(prize.Item, "the Battle Points' exchange");
-        foreach (var (item, _) in Models.GameCornerPrizes.All) f.Item(item, "the Game Corner's prizes");
-        foreach (var o in UndergroundDatabase.Objects)
+        // (Veilstone's Game Corner and the Underground are Sinnoh's: a region's own game asked without them has none)
+        if (!noAreaTables) foreach (var (item, _) in Models.GameCornerPrizes.All) f.Item(item, "the Game Corner's prizes");
+        if (!noAreaTables) foreach (var o in UndergroundDatabase.Objects)
             if (o.Odd + o.OddNational > 0 && o.Even + o.EvenNational > 0
                 && Enumerable.Range(1, UndergroundDatabase.TreasureEnd - 1).Select(UndergroundDatabase.Treasure).FirstOrDefault(t => t?.Id == o.Id) is { Item: { } dug })
                 f.Item(dug, "the Underground's walls");

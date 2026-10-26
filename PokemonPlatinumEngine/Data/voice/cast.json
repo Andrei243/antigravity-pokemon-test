@@ -412,6 +412,10 @@
       "provisional": true
     },
     "gardenia": {},
+    "ghetsis": {
+      "note": "first spoken at giant_chasm_6.txt(22)",
+      "provisional": true
+    },
     "ghost": {
       "note": "first spoken at pokemon_tower_6f.txt(15)",
       "provisional": true
@@ -922,6 +926,10 @@
       "note": "first spoken at saffron_city_gym.txt(11)",
       "provisional": true
     },
+    "sage": {
+      "note": "first spoken at giant_chasm_3.txt(22)",
+      "provisional": true
+    },
     "sailor_eldritch": {
       "note": "first spoken at CanalaveCitySailorEldritchHouse.txt(82)",
       "provisional": true
@@ -1296,6 +1304,7 @@
     "Gardenia": "gardenia",
     "Gate Keeper": "look:guard",
     "Gentleman": "look:gentleman",
+    "Ghetsis": "ghetsis",
     "Ghost": "ghost",
     "Gideon": "gideon",
     "Giovanni": "giovanni",
@@ -1444,6 +1453,7 @@
     "Roxie": "roxie",
     "Rydel": "rydel",
     "Sabrina": "sabrina",
+    "Sage": "sage",
     "Sailor": "look:sailor",
     "Sailor Eldritch": "sailor_eldritch",
     "Salesman": "salesman",
