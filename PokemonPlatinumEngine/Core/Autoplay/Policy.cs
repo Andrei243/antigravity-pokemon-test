@@ -164,6 +164,39 @@ public static class Policy
     public static IReadOnlyCollection<(int X, int Y)> Reachable(Map map, int x, int y, Walker walker, int reach = Reach) =>
         Search(map, x, y, walker, reach, new List<StepTrigger>()).Keys;
 
+    /// <summary>
+    /// The steps to the nearest tile <paramref name="goal"/> accepts, by the field's own rules and with no bound but
+    /// <paramref name="most"/> tiles looked at (plan 16 · T13: an itinerary's leg is often a route or two away), searched
+    /// toward <paramref name="towardX"/>, <paramref name="towardY"/> first. A warp's tile ends a path unless it is a goal,
+    /// and a tile <paramref name="avoid"/> names (an armed trigger) is never stepped onto unless it is a goal. Null when
+    /// no goal can be come to; empty when the player stands on one.
+    /// </summary>
+    public static List<Direction>? Route(Map map, int x, int y, Walker walker, Func<int, int, bool> goal, int towardX, int towardY,
+        Func<int, int, bool>? avoid = null, int most = 300_000)
+    {
+        if (goal(x, y)) return new List<Direction>();
+        var reached = new Dictionary<(int X, int Y), Node> { [(x, y)] = new Node(walker.Height, walker.Mode, x, y, Direction.Down, 0) };
+        var open = new PriorityQueue<(int X, int Y), int>();
+        open.Enqueue((x, y), Math.Abs(towardX - x) + Math.Abs(towardY - y));
+        int looked = 0;
+        while (open.Count > 0 && looked++ < most)
+        {
+            var here = open.Dequeue();
+            var node = reached[here];
+            if (here != (x, y) && goal(here.X, here.Y)) return PathTo(reached, x, y, here.X, here.Y);
+            if (here != (x, y) && map.GetWarpAt(here.X, here.Y) != null) continue;
+            foreach (var way in Ways)
+            {
+                var step = FieldMovement.Step(map, here.X, here.Y, way, walker with { Height = node.Height, Mode = node.Mode, Running = false, Climbing = false });
+                if (!step.Moves || reached.ContainsKey((step.X, step.Y))) continue;
+                if (avoid != null && avoid(step.X, step.Y) && !goal(step.X, step.Y)) continue;
+                reached[(step.X, step.Y)] = new Node(step.Height, step.Mode, here.X, here.Y, way, node.Depth + 1);
+                open.Enqueue((step.X, step.Y), node.Depth + 1 + Math.Abs(towardX - step.X) + Math.Abs(towardY - step.Y));
+            }
+        }
+        return null;
+    }
+
     private static Dictionary<(int X, int Y), Node> Search(Map map, int x, int y, Walker walker, int reach, List<StepTrigger> triggers)
     {
         var reached = new Dictionary<(int X, int Y), Node> { [(x, y)] = new Node(walker.Height, walker.Mode, x, y, Direction.Down, 0) };

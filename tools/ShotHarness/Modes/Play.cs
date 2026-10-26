@@ -9,12 +9,15 @@ partial class Harness
     // begin. A shot at each place it comes to the first time (play_<place>), and play.md in the out dir: the places, the
     // people, items, triggers and ways it went for, the scripts that ran, the battles, and every finding (an exception,
     // a softlock, a script gone wrong, a value out of range, a goal dropped). With --keys it is the key fuzzer instead:
-    // seeded actions and nothing decided. `play [minutes] [seed] [--keys] [--past-opening]`; not part of "all".
+    // seeded actions and nothing decided; with --field the field fuzzer (plan 16 · T13); with --badge the bot follows
+    // the story's way to the Coal Badge. `play [minutes] [seed] [--keys|--field] [--badge] [--past-opening]`; not part of "all".
     public void PlayMode()
     {
         var words = args.Skip(2).ToList();
         bool keys = words.Remove("--keys");
         bool pastOpening = words.Remove("--past-opening");
+        bool badge = words.Remove("--badge");
+        bool field = words.Remove("--field");
         double minutes = words.Count > 0 && double.TryParse(words[0], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out double m) ? m : 10;
         int seed = words.Count > 1 && int.TryParse(words[1], out int s) ? s : 1;
 
@@ -30,7 +33,9 @@ partial class Harness
         // People about their day, as a player meets them: the bot plans again at every tile
         engine.PeopleStayPut = false;
 
-        var bot = new Autoplayer(engine, seed, keys);
+        // --badge: on the story's way to the Coal Badge (plan 16 · T13); --field: the field fuzzer's random walk instead
+        var bot = field ? new Autoplayer(engine, new FieldFuzzer(seed)) : new Autoplayer(engine, seed, keys);
+        if (badge) bot.Itinerary = new Itinerary(Itineraries.TwinleafToCoalBadge);
         int shots = 0;
         // A place is noted only once the field is the player's again, so the shot is never of a fade
         bot.FirstArrival = place => Shot($"play_{shots++:00}_{place}");

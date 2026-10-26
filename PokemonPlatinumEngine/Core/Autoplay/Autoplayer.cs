@@ -30,7 +30,7 @@ namespace PokemonPlatinumEngine.Core.Autoplay;
 /// fails three times is dropped.
 /// </para>
 /// </summary>
-internal sealed class Autoplayer
+internal sealed partial class Autoplayer
 {
     /// <summary>How long the bot tries for one goal before it counts as failed.</summary>
     public const float GoalSeconds = 8f;
@@ -40,7 +40,7 @@ internal sealed class Autoplayer
 
     private readonly GameEngine engine;
     private readonly GameEngine.Driver game;
-    private readonly KeyFuzzer? fuzzer;
+    private readonly IFuzzer? fuzzer;
     private readonly Softlock watch = new();
     private readonly HashSet<string> outOfRange = new(StringComparer.Ordinal);
     private int frame;
@@ -72,6 +72,12 @@ internal sealed class Autoplayer
         scriptsWrong = engine.ScriptsGoneWrong.Count;
     }
 
+    /// <summary>The run fed by a fuzzer of the caller's (plan 16 · T13: the field fuzzer), nothing decided.</summary>
+    public Autoplayer(GameEngine engine, IFuzzer fuzzer) : this(engine)
+    {
+        this.fuzzer = fuzzer;
+    }
+
     /// <summary>Plays frames for this many seconds of game time, or until the run stops; nothing is done once it has.</summary>
     public void Play(double seconds, float dt = 1f / 60f)
     {
@@ -85,10 +91,11 @@ internal sealed class Autoplayer
         frame++;
         try
         {
-            var input = fuzzer?.Next() ?? Decide(dt);
-            if (fuzzer != null) engine.Steering = null;
+            var input = fuzzer != null && !settling ? fuzzer.Next() : Decide(dt);
+            if (fuzzer != null && !settling) engine.Steering = null;
             InputManager.Feed(input);
             engine.Update(dt);
+            if (Itinerary is { Taken: true } way && (engine.ScriptRunning || game.State == GameState.Battle)) way.SawScript = true;
             Report.Seconds += dt;
             Check(dt);
         }
@@ -98,6 +105,32 @@ internal sealed class Autoplayer
             Stopped = true;
             Release();
         }
+    }
+
+    /// <summary>The field is the player's: nothing running, shown or open over it.</summary>
+    public bool FieldIsFree => game.State == GameState.Overworld && !engine.ScriptRunning && game.Flow.TrainerApproach == null
+        && !game.StartMenu.IsActive && !game.Dialogue.IsActive;
+
+    private bool settling;
+
+    /// <summary>
+    /// Plays on as the bot plays (lines read, questions answered, battles fought, screens backed out of) until the
+    /// field is the player's again, for at most this many seconds of game time; a fuzzer's run uses it to finish what
+    /// it started before it is set down elsewhere (plan 16 · T13). False when the field never came back.
+    /// </summary>
+    public bool Settle(double seconds, float dt = 1f / 60f)
+    {
+        settling = true;
+        try
+        {
+            for (double t = 0; t < seconds && !Stopped && !FieldIsFree; t += dt) Frame(dt);
+        }
+        finally
+        {
+            settling = false;
+            engine.Steering = null;
+        }
+        return FieldIsFree;
     }
 
     /// <summary>Gives the keys back: no steering and nothing fed.</summary>
@@ -130,9 +163,14 @@ internal sealed class Autoplayer
                 return ActionFrame.None;
             case GameState.Dialogue:
                 return Pulse(GameAction.Confirm);
+            case GameState.StarterSelect:
+                // The briefcase's question opens on NO: YES is to the right (plan 16 · T13)
+                return game.StarterSelect is { ConfirmingSelection: true, AnswerYes: false } ? Pulse(GameAction.Right) : Pulse(GameAction.Confirm);
             default:
-                // A screen: confirmed, and after a while backed out of as well
-                return stateSeconds > ScreenPatience && frame % 12 >= 6 ? Pulse(GameAction.Cancel) : Pulse(GameAction.Confirm);
+                // A screen: confirmed, and after a while backed out of: B for twelve seconds in every sixteen, since a
+                // press of A and one of B taken in turns can open and shut a page's own mode for ever (the summary's
+                // marks, found by the field fuzzer, plan 16 · T13)
+                return stateSeconds > ScreenPatience && (stateSeconds - ScreenPatience) % 16f < 12f ? Pulse(GameAction.Cancel) : Pulse(GameAction.Confirm);
         }
     }
 
@@ -157,6 +195,7 @@ internal sealed class Autoplayer
         if (player.IsMoving || player.IsSliding || player.IsPushing) return ActionFrame.None;
 
         Arrived(map, player.GridX, player.GridY);
+        if (Itinerary is { Finished: false } itinerary) return Follow(itinerary, dt);
         var walker = new Walker(player.Mode, player.HeightOn(map), false, player.FastGear, player.Moves, false, player.Bike);
         var team = game.Party.Members.Where(p => !p.IsEgg).ToList();
         bool low = team.Count > 0 && (team.Any(p => p.IsFainted) || team[0].CurrentHP * 3 < team[0].MaxHP);
@@ -286,6 +325,8 @@ internal sealed class Autoplayer
             battleSeen = null;
         }
         Report.TrainersBeaten = game.Story.DefeatedTrainers.Count;
+        // A fuzzer's run decides nothing, so the places it comes to are noted here
+        if (fuzzer != null && !settling && state == GameState.Overworld && !game.Player.IsMoving) Arrived(game.Map, game.Player.GridX, game.Player.GridY);
         if (game.ScriptNow is { } script) Report.Scripts.Add(script);
 
         // Scripts that went wrong, as the game noted them
@@ -304,10 +345,11 @@ internal sealed class Autoplayer
         if (game.Money < 0 || game.Money > 999_999) OutOfRange($"money {game.Money}");
 
         // A softlock: whatever the game holds, standing still while input goes in
-        if (fuzzer == null)
         {
             bool free = state == GameState.Overworld && !engine.ScriptRunning && game.Flow.TrainerApproach == null && !game.StartMenu.IsActive;
             float limit = state is GameState.Overworld or GameState.Dialogue or GameState.Battle or GameState.Transition ? Softlock.Limit : 3 * Softlock.Limit;
+            // Random presses get through a screen slowly: a fuzzer's run is given six times as long (plan 16 · T13)
+            if (fuzzer != null) limit = 6 * Softlock.Limit;
             if (watch.Observe(Signature(), dt, watched: !free, limit))
                 Report.Softlocks.Add($"{Softlock.Limit:0}+ seconds unchanged: {watch.Frozen}");
         }

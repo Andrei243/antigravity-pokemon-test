@@ -34,6 +34,10 @@ public sealed class AutoplayReport
     public List<string> ScriptsGoneWrong { get; } = new();
     public List<string> Dropped { get; } = new();
 
+    /// <summary>An itinerary's legs done, in order, and those given up (plan 16 · T13).</summary>
+    public List<string> Legs { get; } = new();
+    public List<string> LegsGivenUp { get; } = new();
+
     /// <summary>Nothing went wrong: no exception, softlock, value out of range or script gone wrong (a dropped goal is no finding).</summary>
     public bool Clean => Exceptions.Count == 0 && Softlocks.Count == 0 && OutOfRange.Count == 0 && ScriptsGoneWrong.Count == 0;
 
@@ -68,6 +72,11 @@ public sealed class AutoplayReport
         Section(md, "Findings: values out of range", OutOfRange);
         Section(md, "Findings: scripts gone wrong", ScriptsGoneWrong);
         Section(md, "Goals dropped after three tries", Dropped);
+        if (Legs.Count + LegsGivenUp.Count > 0)
+        {
+            Section(md, "Itinerary: legs given up", LegsGivenUp);
+            Section(md, "Itinerary: legs done", Legs);
+        }
         Section(md, "Places, in the order come to", Places);
         if (reachable != null) Section(md, "Maps a walk of the whole game reaches that the run did not", NotReached(reachable).ToList());
         return md.ToString();
