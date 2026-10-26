@@ -24,5 +24,14 @@ public static class Dice
 
     /// <summary>The generator for a single roll.</summary>
     public static Random Shared => seeded ?? Random.Shared;
+
+    /// <summary>
+    /// A seed drawn by chance (plan 16 · T19): what the game hands <see cref="Seed"/> as it starts a recording, so its
+    /// chance stays chance and only where it comes from is written down.
+    /// </summary>
+    public static int DrawSeed() => Random.Shared.Next(1, int.MaxValue);
 #pragma warning restore RS0030
+
+    /// <summary>Whether the game's chance is seeded now (a recorded game's, or a tool's).</summary>
+    public static bool IsSeeded => seeded != null;
 }

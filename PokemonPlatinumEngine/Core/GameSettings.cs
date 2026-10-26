@@ -429,4 +429,10 @@ public sealed class GameSettings
         told[nameof(ScenesSeen)] = ScenesSeen.Count;
         return told.ToJsonString(Json);
     }
+
+    /// <summary>The options as they are in force now, whole, as a recording keeps them (plan 16 · T19).</summary>
+    public string InForce() => JsonSerializer.Serialize(this, Json);
+
+    /// <summary>Options read back from <see cref="InForce"/>, read from no file (so they are saved beside the saves).</summary>
+    public static GameSettings FromJson(string json) => JsonSerializer.Deserialize<GameSettings>(json, Json) ?? new GameSettings();
 }

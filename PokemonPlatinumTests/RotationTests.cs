@@ -338,6 +338,75 @@ public class RotationTests
         Assert.False(single.Anim.Turntables);
     }
 
+    [Fact]
+    public void TheVsRecordersFileOfARotationFoughtOnTheScreenReplaysToTheSameLines()
+    {
+        // The harness's formats mode fought one and found its file did not replay: fought here through the face's own
+        // arrows and menus with nothing changed in the middle, then kept, written, read back and fought again
+        var party = Party(Mon("Golem", 50, "Rock Slide", "Earthquake"), Mon("Gyarados", 50, "Waterfall", "Ice Fang"), Mon("Luxray", 50, "Spark", "Crunch"));
+        var trainer = new Trainer { Id = "ace", Name = "Vera", TrainerClass = "Ace Trainer", PrizeMoney = 0, Format = "rotation", Ai = PokemonPlatinumEngine.Battle.Sim.Ai.AiFlags.Basic };
+        foreach (var p in new[] { Mon("Staravia", 44, "Wing Attack", "Quick Attack"), Mon("Ponyta", 44, "Ember", "Stomp"), Mon("Bibarel", 44, "Headbutt", "Water Gun") })
+            trainer.Party.Add(p);
+        var battle = new BattleEngine(new BattleSetup
+        {
+            PlayerParty = party, Inventory = new Inventory(), Pokedex = new Pokedex(), Trainers = new List<Trainer> { trainer },
+            Format = BattleFormat.Rotation, Random = new BattleRandom(20261026), Rules = Ruleset.Modern, PlayerName = "Lucas"
+        });
+        Settle(battle);
+        Assert.True(battle.IsRotation);
+        int[] ways = { 1, -1, -1, 0, 1, 0 };
+        for (int turn = 0, guard = 0; guard < 400 && !battle.IsBattleOver; guard++)
+        {
+            switch (battle.HUD.MenuState)
+            {
+                case BattleMenuState.Main:
+                    if (ways[turn % ways.Length] != 0) battle.RotateChoice(ways[turn % ways.Length]);
+                    turn++;
+                    battle.SelectMainMenuOption(0);
+                    battle.SelectMove(0);
+                    break;
+                case BattleMenuState.SwitchPokemon:
+                    battle.SelectSwitch(Enumerable.Range(0, party.Count).First(i => !party.Members[i].IsFainted && battle.PlayerSlots.All(s => s.Pokemon != party.Members[i])));
+                    break;
+                default:
+                    battle.ConfirmMessage();
+                    battle.Update(0.5f);
+                    break;
+            }
+        }
+        Assert.True(battle.IsBattleOver);
+        Assert.Contains(battle.Core.Record!.Answers.SelectMany(a => a), c => c.Rotation != 0);
+
+        var reading = BattleRecordFile.Read(battle.RecordFile(new DateTime(2026, 10, 26))!.Serialize());
+        Assert.Equal(ReplayRefusal.None, reading.Refused);
+        Assert.Equal(BattleFormat.Rotation, reading.File!.Format);
+        var again = reading.File.Replay();
+        Assert.Equal(BattleFormat.Rotation, again.Format);
+        Assert.Equal(Lines(battle.Core.Log), Lines(again.Log));
+        Assert.Equal(battle.Result, again.Result);
+        Assert.False(battle.ChangedFromOutside);
+    }
+
+    [Fact]
+    public void ABattleAToolChangedInTheMiddleIsKeptByNoRecorder()
+    {
+        // What the harness's formats and venues modes did (a foe kept at one HP at every menu): the rules take the change
+        // over, no answer of the record holds it, and its file would play another battle, so none is made
+        var foe = Mon("Bidoof", 30, "Tackle");
+        var battle = new BattleEngine(new BattleSetup
+        {
+            PlayerParty = Party(Mon("Golem", 30, "Tackle")), Inventory = new Inventory(), Pokedex = new Pokedex(), WildPokemon = new List<Pokemon> { foe },
+            Random = new BattleRandom(9), Rules = Ruleset.Modern
+        });
+        Settle(battle);
+        Turn(battle);
+        Assert.False(battle.ChangedFromOutside);
+        foe.CurrentHP = 1;
+        Turn(battle);
+        Assert.True(battle.ChangedFromOutside);
+        Assert.Null(battle.RecordFile(new DateTime(2026, 10, 26)));
+    }
+
     private static Party Party(params Pokemon[] members)
     {
         var party = new Party();
