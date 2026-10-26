@@ -33,7 +33,10 @@
     "id": "wattson",
     "type": 12,
     "class": "Leader",
-    "area": "mauville_city_gym"
+    "trainer": "hoenn_wattson_1",
+    "area": "mauville_city_gym",
+    "rematchDay": "Thursday",
+    "rematchTime": "Day"
   },
   {
     "id": "flannery",

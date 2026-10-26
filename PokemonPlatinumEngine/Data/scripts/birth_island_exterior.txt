@@ -1,0 +1,82 @@
+# Birth Island (plan 21 · H12, part f). docs/scripts.md describes the language; the lines are our own, on Emerald's
+# beats (data/maps/BirthIsland_Exterior/scripts.inc and DoDeoxysRockInteraction, src/field_specials.c).
+#
+# A triangle of stone stands on the sand. Each time it is touched it moves on to the next of Emerald's eleven places
+# (sDeoxysRockCoords, VAR_DEOXYS_ROCK_LEVEL 0 to 10), and touched in the last it breaks, Deoxys comes down in its Speed
+# Forme, as Emerald's is, and is met at level 30. *Ours*: Emerald also counts the steps taken between touches and sends
+# the stone back to its first place when there were too many (sStoneMaxStepCounts); here there is no step count, so the
+# puzzle is to find the stone each time. Coming to the island puts the stone back (Emerald's ON_TRANSITION). Run from,
+# Deoxys flies off and the stone is there again next time; beaten (FLAG_DEFEATED_DEOXYS) or caught
+# (FLAG_BATTLED_DEOXYS, Emerald's flag for the catch), both are gone for good.
+
+
+script OnEnter
+  setvar VAR_DEOXYS_ROCK_LEVEL 0
+  if flag FLAG_BATTLED_DEOXYS goto Gone
+  if flag FLAG_DEFEATED_DEOXYS goto Gone
+  clearflag FLAG_HIDE_BIRTH_ISLAND_DEOXYS_TRIANGLE
+  clearflag FLAG_DEOXYS_ROCK_COMPLETE
+  setflag FLAG_HIDE_DEOXYS
+  place birth_island_exterior_rock 15 12
+  end
+label Gone
+  setflag FLAG_HIDE_DEOXYS
+  setflag FLAG_HIDE_BIRTH_ISLAND_DEOXYS_TRIANGLE
+  end
+
+
+script Triangle
+  if flag FLAG_DEOXYS_ROCK_COMPLETE end
+  if var VAR_DEOXYS_ROCK_LEVEL < 10 goto Move
+  setflag FLAG_DEOXYS_ROCK_COMPLETE
+  scene "Deoxys on Birth Island"
+  camera shake 0.5
+  effect burst 15 10
+  wait 0.5
+  hide birth_island_exterior_rock
+  setflag FLAG_HIDE_BIRTH_ISLAND_DEOXYS_TRIANGLE
+  clearflag FLAG_HIDE_DEOXYS
+  show birth_island_deoxys
+  place birth_island_deoxys 15 10
+  wait 0.4
+  cry "Deoxys"
+  wait 0.8
+  endscene
+  wildbattle "Deoxys-Speed" 30
+  hide birth_island_deoxys
+  setflag FLAG_HIDE_DEOXYS
+  if result == 1 goto Beaten
+  if result == 3 goto Caught
+  speaker none
+  text "Deoxys shot up into the sky and was gone..."
+  end
+label Beaten
+  setflag FLAG_DEFEATED_DEOXYS
+  speaker none
+  text "Deoxys shot up into the sky and was gone..."
+  end
+label Caught
+  setflag FLAG_BATTLED_DEOXYS
+  end
+# The stone moves on to its next place
+label Move
+  addvar VAR_DEOXYS_ROCK_LEVEL 1
+  sound "select"
+  if var VAR_DEOXYS_ROCK_LEVEL == 1 place birth_island_exterior_rock 11 14
+  if var VAR_DEOXYS_ROCK_LEVEL == 2 place birth_island_exterior_rock 15 8
+  if var VAR_DEOXYS_ROCK_LEVEL == 3 place birth_island_exterior_rock 19 14
+  if var VAR_DEOXYS_ROCK_LEVEL == 4 place birth_island_exterior_rock 12 11
+  if var VAR_DEOXYS_ROCK_LEVEL == 5 place birth_island_exterior_rock 18 11
+  if var VAR_DEOXYS_ROCK_LEVEL == 6 place birth_island_exterior_rock 15 14
+  if var VAR_DEOXYS_ROCK_LEVEL == 7 place birth_island_exterior_rock 11 14
+  if var VAR_DEOXYS_ROCK_LEVEL == 8 place birth_island_exterior_rock 19 14
+  if var VAR_DEOXYS_ROCK_LEVEL == 9 place birth_island_exterior_rock 15 15
+  if var VAR_DEOXYS_ROCK_LEVEL == 10 place birth_island_exterior_rock 15 10
+  end
+
+
+# Deoxys looked at before the battle has begun (it is only shown in the scene)
+script Deoxys
+  speaker none
+  text "A strange Pokémon floats over the sand, watching."
+  end

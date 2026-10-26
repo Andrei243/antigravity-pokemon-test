@@ -1,0 +1,7 @@
+{
+  // Navel Rock's halls (plan 21 · H12, part f): the way through the rock from its mouth to the fork, up the ladders to its
+  // peak and down them to its foot. Emerald plays the Sevii Islands' cave song; here the Sealed Chamber's
+  "area": "navel_rock_down_07",
+  "bgmTrack": "hoenn/sealed_chamber",
+  "trees": "Round"
+}

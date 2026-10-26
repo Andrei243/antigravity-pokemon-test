@@ -46,6 +46,9 @@ script FerryAttendant
   text "{player} was given a ferry pass for Southern Island!"
   say "There's an island far to the south that no ferry calls at, with a garden in the middle of it. The pass lets my ferry sail there for you."
 label Offer
+  # Plan 21 · H12, part f: the event islands' passes, for the prints of the Battle Frontier (Passes, below)
+  call Passes
+  if flag FLAG_ENABLE_SHIP_NAVEL_ROCK goto Islands
   # Plan 21 · H12, part b: with Dad's S.S. Ticket the ferry also sails to the Battle Frontier island, to its quay at 19, 67
   if flag FLAG_RECEIVED_SS_TICKET goto Choose
   ask "Shall I take you to Southern Island?"
@@ -66,9 +69,60 @@ label Choose
   choose "Where would you like to sail?" "SOUTHERN ISLAND" "BATTLE FRONTIER" "NOWHERE"
   if result == 0 goto Southern
   if result == 2 goto Stay
+label Frontier
   text "{player} showed the S.S. Ticket."
   say "The Battle Frontier it is! Please come aboard."
   fade out 0.8
   text "{player} sailed for the Battle Frontier..."
   warp "HoennBattleFrontier" 19 67 up
   end
+label Islands
+  choose "Where would you like to sail?" "SOUTHERN ISLAND" "BATTLE FRONTIER" "NAVEL ROCK" "BIRTH ISLAND" "NOWHERE"
+  if result == 0 goto Southern
+  if result == 4 goto Stay
+  if result == 3 goto Birth
+  if result == 2 goto Navel
+  if flag FLAG_RECEIVED_SS_TICKET goto Frontier
+  say "I'm sorry, the Battle Frontier is only for passengers with an S.S. Ticket."
+  end
+label Navel
+  text "{player} showed the Mystic Ticket."
+  say "Navel Rock it is! A long way over the open sea. Please come aboard."
+  fade out 0.8
+  text "{player} sailed for Navel Rock..."
+  warp "NavelRock_Harbor" 8 4 up
+  end
+label Birth
+  if not flag FLAG_ENABLE_SHIP_BIRTH_ISLAND goto NoAurora
+  text "{player} showed the Aurora Ticket."
+  say "Birth Island it is! The sea there shines strangely at night. Please come aboard."
+  fade out 0.8
+  text "{player} sailed for Birth Island..."
+  warp "BirthIsland_Harbor" 8 4 up
+  end
+label NoAurora
+  say "I'm sorry, Birth Island is only for passengers with an Aurora Ticket."
+  end
+
+
+# The event islands' passes (plan 21 · H12, part f; the plan's decision 5, ours: Emerald gave its tickets only by
+# events). A Champion of Hoenn who has won a Frontier Brain's print is given the Mystic Ticket for Navel Rock
+# (FLAG_ENABLE_SHIP_NAVEL_ROCK), and with prints from two facilities the Aurora Ticket for Birth Island
+# (FLAG_ENABLE_SHIP_BIRTH_ISLAND): flags, as the Southern Island pass is. The Old Sea Map for Faraway Island is left.
+script Passes
+  frontier prints
+  if result == 0 return
+  if flag FLAG_ENABLE_SHIP_NAVEL_ROCK goto Second
+  say "Oh! Word has come from the Battle Frontier: you've won a Frontier Brain's print. Then this is yours."
+  setflag FLAG_ENABLE_SHIP_NAVEL_ROCK
+  text "{player} was given the Mystic Ticket!"
+  say "It's a pass for Navel Rock, an island far out in the sea where the S.S. Tidal never calls. Some say a legend sleeps there."
+label Second
+  frontier prints
+  if result < 2 return
+  if flag FLAG_ENABLE_SHIP_BIRTH_ISLAND return
+  say "Prints from two facilities of the Frontier! The harbour master asked me to give you this, too."
+  setflag FLAG_ENABLE_SHIP_BIRTH_ISLAND
+  text "{player} was given the Aurora Ticket!"
+  say "It's a pass for Birth Island, where a strange triangle of stone stands on the sand. Nobody knows who put it there."
+  return

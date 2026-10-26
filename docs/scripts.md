@@ -584,6 +584,7 @@ every facility shares (the records are the game's `FrontierRecords`, saved; the 
 | `frontier judge` | Reads the potential of the Pokémon `RESULT` names (after `choosepokemon`): `RESULT` 0 with none chosen, 3 for an Egg, else 1; `{wearer}` names it and `{thing}` its best stat. |
 | `frontier judged total`, `frontier judged best` | `RESULT` is the six IVs added up, or the highest of them. |
 | `frontier save` | Saves the game where the player stands, as a counter does before a challenge goes up. |
+| `frontier prints` | `RESULT` is how many of the five facilities have handed over a print, silver or gold (plan 21 · H12, part f: what Lilycove's ferry desk gives the event islands' passes for). |
 | `tower begin single` | Starts a challenge (`single`, `double`, `multi`): a streak still running in that mode is taken up. |
 | `tower enough`, `tower enough 2` | `RESULT` 1 when the team holds enough Pokémon that could go in together (the challenge's own number, or the one given). `{number}` is how many are needed and `{banned}` the banned species the Pokédex has seen. |
 | `tower choose` | Opens the team for the challenge's Pokémon to be entered: `RESULT` 1, or 0 when backed out of. |

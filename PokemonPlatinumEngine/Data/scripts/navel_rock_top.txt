@@ -1,0 +1,50 @@
+# The peak of Navel Rock (plan 21 · H12, part f). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/NavelRock_Top/scripts.inc).
+#
+# Ho-Oh waits over the peak until it is beaten (FLAG_DEFEATED_HO_OH) or caught (FLAG_CAUGHT_HO_OH). The peak's arrival
+# shows it and readies the step before the summit (the area's trigger 0, VAR_TEMP_1 0), as Emerald's OnTransition does;
+# that step meets it at level 70 (Emerald's camera pans up to it and it flies down; ours perches it on the summit,
+# the path's last tile, and shakes the picture). Run from, it flies off and is back the next time the peak is come to.
+
+
+script OnEnter
+  setvar VAR_TEMP_1 1
+  if flag FLAG_CAUGHT_HO_OH goto Gone
+  if flag FLAG_DEFEATED_HO_OH goto Gone
+  clearflag FLAG_HIDE_HO_OH
+  setvar VAR_TEMP_1 0
+  end
+label Gone
+  setflag FLAG_HIDE_HO_OH
+  end
+
+
+script HoOh
+  if flag FLAG_CAUGHT_HO_OH end
+  if flag FLAG_DEFEATED_HO_OH end
+  setvar VAR_TEMP_1 1
+  scene "Ho-Oh at the peak of Navel Rock"
+  face player up
+  wait 0.6
+  cry "Ho-Oh"
+  camera shake 0.5
+  wait 0.8
+  endscene
+  wildbattle "Ho-Oh" 70
+  hide navel_rock_ho_oh
+  setflag FLAG_HIDE_HO_OH
+  if result == 3 goto Caught
+  if result == 1 setflag FLAG_DEFEATED_HO_OH
+  speaker none
+  text "Ho-Oh spread its wings and flew off into the sky..."
+  end
+label Caught
+  setflag FLAG_CAUGHT_HO_OH
+  end
+
+
+# Ho-Oh looked at over the rock before the step that brings it down
+script Waiting
+  speaker none
+  text "A Pokémon of rainbow colours is perched high on the rock above the peak."
+  end

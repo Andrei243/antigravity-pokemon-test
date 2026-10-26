@@ -29,9 +29,7 @@
     },
     "fossil_scientist": {
       "name": "Scientist",
-      "dialog": [
-        "Somewhere in the desert, ancient Pokémon lie sleeping in the rock. One day we'll wake them."
-      ]
+      "script": "FossilScientist"
     },
     "scientist_1_5": {
       "name": "Scientist",

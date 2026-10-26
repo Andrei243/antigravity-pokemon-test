@@ -1,0 +1,10 @@
+{
+  // The foot of Navel Rock (plan 21 · H12, part f): Lugia rests by the water at the bottom of the ladders until spoken to,
+  // and is met at level 70 (navel_rock_bottom.txt)
+  "area": "navel_rock_bottom",
+  "bgmTrack": "hoenn/sealed_chamber",
+  "trees": "Round",
+  "people": {
+    "navel_rock_lugia": { "name": "Lugia", "npcType": "Pokemon", "species": "Lugia", "still": true, "script": "Lugia" }
+  }
+}

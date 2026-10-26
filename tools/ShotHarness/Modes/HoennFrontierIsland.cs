@@ -101,5 +101,6 @@ partial class Harness
         HoennRayquazaAndStevenShots();
         HoennNewMauvilleShots();
         HoennWeatherCavesShots();
+        HoennEventIslandsShots();
     }
 }

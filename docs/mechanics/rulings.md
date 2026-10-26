@@ -6280,6 +6280,47 @@ for its coordinates; the caves' maps, CreateAbnormalWeatherEvent). The lines are
   in their pool or past their magma.
 - `HoennSpeciesTests.Owed` no longer lists Kyogre and Groudon.
 
+## The event islands, Devon's fossils and Wattson's rematch (2026-10-26, plan 21 · H12, part f)
+
+Three of Emerald's post-game pieces that stand alone. The lines are our own.
+
+- **The passes** (the plan's decision 5). Emerald gave the Mystic Ticket, the Aurora Ticket and the Old Sea Map only by
+  events. *Ours*: Lilycove's ferry desk gives a Champion of Hoenn the Mystic Ticket once any of the Battle Frontier's
+  five facilities has handed over a print (silver or gold), and the Aurora Ticket once two have; both are flags
+  (`FLAG_ENABLE_SHIP_NAVEL_ROCK`, `FLAG_ENABLE_SHIP_BIRTH_ISLAND`), as the Southern Island pass is. The prints are counted
+  by the script command `frontier prints`. With the Mystic Ticket the desk's choice has five places (Southern Island, the
+  Battle Frontier, Navel Rock, Birth Island, nowhere), and a place with no pass is refused. The ship is not drawn; a sailor
+  on each island's quay sails the player back to Lilycove.
+- **Navel Rock** (matrices 416 to 437): the quay, the shore, the halls to the fork, four ladders up to the peak and eleven
+  down to the foot, as Emerald lays them. Ho-Oh waits on the summit, the path's last tile (*ours*: Emerald hangs it over
+  the rock and flies it down while the camera pans), and the step before it (the area's trigger, readied by the peak's
+  arrival) meets it at level 70; Lugia rests at the foot and is met when spoken to, at level 70. Run from, each is back the
+  next visit; beaten (`FLAG_DEFEATED_HO_OH`, `_LUGIA`) or caught (`FLAG_CAUGHT_HO_OH`, `_LUGIA`), gone for good. Emerald
+  plays the Sevii Islands' cave song; here the Sealed Chamber's.
+- **Birth Island** (matrices 408, 409): the triangle moves through Emerald's eleven places (`sDeoxysRockCoords`,
+  `VAR_DEOXYS_ROCK_LEVEL`) one touch at a time, and the eleventh touch breaks it: Deoxys comes down in its Speed Forme,
+  Emerald's, at level 30. *Ours*: no step count between touches (Emerald sends the triangle home after too many steps,
+  `sStoneMaxStepCounts`); the triangle wears the rubble's look until it has one of its own. Coming to the island puts it
+  back at its first place; run from, Deoxys and the triangle are back next time; beaten (`FLAG_DEFEATED_DEOXYS`) or caught
+  (`FLAG_BATTLED_DEOXYS`, Emerald's flag for the catch), gone for good.
+- **The Fossil Regenerator.** The Devon researcher on the second floor takes the Root Fossil or the Claw Fossil (asking
+  which when the bag holds both; no other region's fossil), works while the player is away
+  (`VAR_FOSSIL_RESURRECTION_STATE` 1, made 2 by the next arrival on the floor; *ours*: Emerald's other researchers' talk
+  does it too) and hands back Lileep or Anorith at level 20 (`VAR_WHICH_FOSSIL_REVIVED`, `FLAG_RECEIVED_REVIVED_FOSSIL_MON`),
+  ready for another fossil.
+- **Wattson's rematch.** Wattson's Match Call contact names his first team (`hoenn_wattson_1`) and a day of ours
+  (Thursday, by day), and `rematches.json` his four stronger teams. His call asks a Champion of Hoenn for a rematch only
+  once he is back in his Gym after New Mauville (`FLAG_WATTSON_REMATCH_AVAILABLE`, which Mauville's arrival sets as
+  Emerald's does; before that the call takes the waiting back and only talks). In his Gym he battles the first of
+  `hoenn_wattson_2` to `_5` not yet beaten, a double battle as Emerald's (two Pokémon needed), the last again once all are.
+  *Ours*: Emerald's leaders step up their teams by their own rematch counts and the game's progress; here one step a
+  rematch. The other Gym Leaders' rematches are left.
+- `HoennSpeciesTests.Owed` no longer lists Lileep, Cradily, Anorith, Armaldo or Deoxys.
+- **Left**: Faraway Island (Mew's hide and seek in the grass wants a mechanic of its own) and the Old Sea Map, Jirachi,
+  Trainer Hill, Mirage Island (a layout of Route 130 by the party's personalities), Altering Cave (its way in is a rock
+  wall), the S.S. Tidal's cabins and Slateport's ferry, the island halls, the Gold and Silver Shields, the other leaders'
+  rematches, and the looks of the triangle, Deoxys's descent and the ship.
+
 ## A crossed region's EXP (2026-10-26, plan 18 · W4b-3)
 
 Design C of [the levelling proposal](../plans/W4b-levelling-the-world.md), approved by the user on 2026-10-26 with

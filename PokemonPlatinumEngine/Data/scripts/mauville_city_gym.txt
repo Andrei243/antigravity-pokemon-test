@@ -84,6 +84,7 @@ script Beam
 script Wattson
   face wattson player
   speaker "Wattson"
+  if flag FLAG_PHONE_REMATCH_WATTSON goto Rematch
   if badge dynamo goto Won
   scene "Wattson"
   say "Wahahaha! Welcome, welcome! I'm Wattson, Mauville's Gym Leader, and I've been powering this city for years!"
@@ -126,6 +127,32 @@ label Won
   end
 label Bright
   say "Wahahaha! Keep that spark of yours burning bright, and you'll go far!"
+  end
+# The rematch a Match Call asked for (plan 21 · H12, part f; Emerald's MauvilleCity_Gym_EventScript_WattsonRematch, a
+# double battle): each time one team stronger, Emerald's TRAINER_WATTSON_2 to _5, the last again once all are beaten
+label Rematch
+  if party < 2 goto NeedTwo
+  say "Wahahaha! You came! My Pokémon have been charging up just for you. Two at a time, this time. Ready?"
+  if not defeated "hoenn_wattson_2" goto Second
+  if not defeated "hoenn_wattson_3" goto Third
+  if not defeated "hoenn_wattson_4" goto Fourth
+  battle self as "hoenn_wattson_5"
+  goto Rematched
+label Second
+  battle self as "hoenn_wattson_2"
+  goto Rematched
+label Third
+  battle self as "hoenn_wattson_3"
+  goto Rematched
+label Fourth
+  battle self as "hoenn_wattson_4"
+label Rematched
+  speaker "Wattson"
+  clearflag FLAG_PHONE_REMATCH_WATTSON
+  say "Wahahahaha! Shocking! You've only grown brighter since last time. Call again whenever you like!"
+  end
+label NeedTwo
+  say "Wahahaha! A rematch, two Pokémon at a time! Come back with at least two on your team."
   end
 
 

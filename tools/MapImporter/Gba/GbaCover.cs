@@ -461,6 +461,12 @@ public static class GbaCover
                 (0x3CD, 0x3CE, TerrainCover.Paving), (0x3E4, 0x3E4, TerrainCover.Paving), (0x3EA, 0x3EB, TerrainCover.Paving),
                 (0x3F2, 0x3F3, TerrainCover.Paving), (0x3F7, 0x3F7, TerrainCover.Paving),
             },
+            // Plan 21 · H12, part f: the harbours of Birth Island and Navel Rock, where the S.S. Tidal ties up: the open
+            // metatiles of their quay, a deck of planks (the rest is the sea's and the rock's)
+            ["gTileset_IslandHarbor"] = new (int, int, TerrainCover)[]
+            {
+                (0x20E, 0x20E, TerrainCover.Bridge), (0x218, 0x218, TerrainCover.Bridge), (0x3A0, 0x3A1, TerrainCover.Bridge),
+            },
             ["gTileset_Petalburg"] = new (int, int, TerrainCover)[]
             {
                 // The doormat before a house's door, and the earth where the paths meet the towns' edges

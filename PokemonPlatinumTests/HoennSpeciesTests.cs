@@ -32,12 +32,11 @@ public class HoennSpeciesTests
         "Surskit", "Masquerain",
         // Evolved by trading, and Hoenn sells or gives no Linking Cord yet
         "Alakazam", "Golem", "Machamp", "Kingdra", "Huntail", "Gorebyss",
-        // The Devon Corporation's revival of the desert's two fossils, not built
-        "Lileep", "Cradily", "Anorith", "Armaldo",
         // Route 119's Feebas tiles, not built for Hoenn
         "Feebas", "Milotic",
-        // The event Pokémon of decision 5 (Faraway, Birth and Navel Rock's tickets) and Jirachi's
-        "Jirachi", "Deoxys"
+        // Jirachi, which no island of decision 5 gives (Birth Island's Deoxys and the Devon Corporation's fossils are
+        // given since plan 21 · H12, part f)
+        "Jirachi"
     };
 
     [Fact]

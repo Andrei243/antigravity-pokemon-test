@@ -1,0 +1,12 @@
+{
+  // Birth Island (plan 21 · H12, part f): the triangle of stone on the sand, which moves on each time it is touched and
+  // breaks at its eleventh place to let Deoxys down (birth_island_exterior.txt). Its look is a heap of stone until it has
+  // one of its own; Deoxys stands hidden until the scene shows it
+  "area": "birth_island_exterior",
+  "bgmTrack": "hoenn/sealed_chamber",
+  "trees": "Round",
+  "people": {
+    "birth_island_exterior_rock": { "name": "Triangle", "npcType": "Rubble", "still": true, "script": "Triangle" },
+    "birth_island_deoxys": { "name": "Deoxys", "npcType": "Pokemon", "species": "Deoxys-Speed", "still": true, "script": "Deoxys" }
+  }
+}

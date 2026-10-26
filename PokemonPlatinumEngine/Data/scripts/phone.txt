@@ -191,10 +191,26 @@ script Brawly
   end
 
 
-# Wattson, Mauville's Gym Leader, registered with his Badge
+# Wattson, Mauville's Gym Leader, registered with his Badge. A Champion of Hoenn is asked on his day for a rematch in his
+# Gym (plan 21 · H12, part f), but only once he is back there after New Mauville (FLAG_WATTSON_REMATCH_AVAILABLE, as
+# Emerald's): before that the call that would ask takes the waiting back and is only a talk.
 script Wattson
   speaker "Wattson"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
+label Talk
   say "Wahahaha! {player}, is that you? I just rewired the whole Gym. The lights are brighter than ever!"
+  end
+label Rematch
+  if not flag FLAG_WATTSON_REMATCH_AVAILABLE goto NotYet
+  setflag FLAG_PHONE_REMATCH_WATTSON
+  say "Wahahaha! {player}! My Pokémon have been charging up all week. Come to my Gym in Mauville and let's have a rematch!"
+  end
+label NotYet
+  clearflag FLAG_PHONE_REMATCH_WATTSON
+  goto Talk
+label Waiting
+  say "Wattson here! The Gym's lights are on and my Pokémon are buzzing. Don't keep us waiting too long, wahahaha!"
   end
 
 

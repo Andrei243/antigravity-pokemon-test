@@ -411,7 +411,33 @@
     { "name": "MarineCave_Entrance", "matrix": 289, "area": "marine_cave_entrance", "trees": "Round", "setting": "Cave" },
     { "name": "MarineCave_End", "matrix": 290, "area": "marine_cave_end", "trees": "Round", "setting": "Cave" },
     { "name": "TerraCave_Entrance", "matrix": 291, "area": "terra_cave_entrance", "trees": "Round", "setting": "Cave" },
-    { "name": "TerraCave_End", "matrix": 292, "area": "terra_cave_end", "trees": "Round", "setting": "Cave" }
+    { "name": "TerraCave_End", "matrix": 292, "area": "terra_cave_end", "trees": "Round", "setting": "Cave" },
+    // Plan 21 · H12, part f: the event islands the ferry sails a Champion to on a pass for the Frontier's prints: Birth
+    // Island (Deoxys and its triangle) and Navel Rock (Ho-Oh at its peak, Lugia at its foot)
+    { "name": "BirthIsland_Harbor", "matrix": 409, "area": "birth_island_harbor", "trees": "Round" },
+    { "name": "BirthIsland_Exterior", "matrix": 408, "area": "birth_island_exterior", "trees": "Round" },
+    { "name": "NavelRock_Harbor", "matrix": 417, "area": "navel_rock_harbor", "trees": "Round" },
+    { "name": "NavelRock_Exterior", "matrix": 416, "area": "navel_rock_exterior", "trees": "Round" },
+    { "name": "NavelRock_Entrance", "matrix": 418, "area": "navel_rock_entrance", "trees": "Round", "setting": "Cave" },
+    { "name": "NavelRock_B1F", "matrix": 419, "area": "navel_rock_b1f", "trees": "Round", "setting": "Cave" },
+    { "name": "NavelRock_Fork", "matrix": 420, "area": "navel_rock_fork", "trees": "Round", "setting": "Cave" },
+    { "name": "NavelRock_Up1", "matrix": 421, "area": "navel_rock_up_1", "trees": "Round", "setting": "Cave" },
+    { "name": "NavelRock_Up2", "matrix": 422, "area": "navel_rock_up_2", "trees": "Round", "setting": "Cave" },
+    { "name": "NavelRock_Up3", "matrix": 423, "area": "navel_rock_up_3", "trees": "Round", "setting": "Cave" },
+    { "name": "NavelRock_Up4", "matrix": 424, "area": "navel_rock_up_4", "trees": "Round", "setting": "Cave" },
+    { "name": "NavelRock_Top", "matrix": 425, "area": "navel_rock_top", "trees": "Round" },
+    { "name": "NavelRock_Down01", "matrix": 426, "area": "navel_rock_down_01", "trees": "Round", "setting": "Cave" },
+    { "name": "NavelRock_Down02", "matrix": 427, "area": "navel_rock_down_02", "trees": "Round", "setting": "Cave" },
+    { "name": "NavelRock_Down03", "matrix": 428, "area": "navel_rock_down_03", "trees": "Round", "setting": "Cave" },
+    { "name": "NavelRock_Down04", "matrix": 429, "area": "navel_rock_down_04", "trees": "Round", "setting": "Cave" },
+    { "name": "NavelRock_Down05", "matrix": 430, "area": "navel_rock_down_05", "trees": "Round", "setting": "Cave" },
+    { "name": "NavelRock_Down06", "matrix": 431, "area": "navel_rock_down_06", "trees": "Round", "setting": "Cave" },
+    { "name": "NavelRock_Down07", "matrix": 432, "area": "navel_rock_down_07", "trees": "Round", "setting": "Cave" },
+    { "name": "NavelRock_Down08", "matrix": 433, "area": "navel_rock_down_08", "trees": "Round", "setting": "Cave" },
+    { "name": "NavelRock_Down09", "matrix": 434, "area": "navel_rock_down_09", "trees": "Round", "setting": "Cave" },
+    { "name": "NavelRock_Down10", "matrix": 435, "area": "navel_rock_down_10", "trees": "Round", "setting": "Cave" },
+    { "name": "NavelRock_Down11", "matrix": 436, "area": "navel_rock_down_11", "trees": "Round", "setting": "Cave" },
+    { "name": "NavelRock_Bottom", "matrix": 437, "area": "navel_rock_bottom", "trees": "Round", "setting": "Cave" }
   ],
   "areas": [
     // Plan 21 · H1: Littleroot Town, Route 101, Oldale Town, Routes 102 and 103 and Petalburg City, with their rooms
@@ -558,6 +584,11 @@
     "new_mauville_entrance", "new_mauville_inside", "desert_underpass",
     // Plan 21 · H12, part e: the Marine Cave and Terra Cave, and the sea floors the Marine Cave is dived to from
     "underwater_route_105", "underwater_route_125", "underwater_route_129", "underwater_marine_cave",
-    "marine_cave_entrance", "marine_cave_end", "terra_cave_entrance", "terra_cave_end"
+    "marine_cave_entrance", "marine_cave_end", "terra_cave_entrance", "terra_cave_end",
+    // Plan 21 · H12, part f: Birth Island and Navel Rock
+    "birth_island_harbor", "birth_island_exterior", "navel_rock_harbor", "navel_rock_exterior", "navel_rock_entrance",
+    "navel_rock_b1f", "navel_rock_fork", "navel_rock_up_1", "navel_rock_up_2", "navel_rock_up_3", "navel_rock_up_4", "navel_rock_top",
+    "navel_rock_down_01", "navel_rock_down_02", "navel_rock_down_03", "navel_rock_down_04", "navel_rock_down_05", "navel_rock_down_06",
+    "navel_rock_down_07", "navel_rock_down_08", "navel_rock_down_09", "navel_rock_down_10", "navel_rock_down_11", "navel_rock_bottom"
   ]
 }

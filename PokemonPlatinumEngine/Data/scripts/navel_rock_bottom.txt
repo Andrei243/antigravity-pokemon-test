@@ -1,0 +1,39 @@
+# The foot of Navel Rock (plan 21 · H12, part f). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/NavelRock_Bottom/scripts.inc).
+#
+# Lugia rests by the water at the bottom of the ladders until it is beaten (FLAG_DEFEATED_LUGIA) or caught
+# (FLAG_CAUGHT_LUGIA). Spoken to, the cave shakes twice and Lugia is met at level 70; run from, it dives off into the
+# water and is back the next time the foot is come to.
+
+
+script OnEnter
+  if flag FLAG_CAUGHT_LUGIA goto Gone
+  if flag FLAG_DEFEATED_LUGIA goto Gone
+  clearflag FLAG_HIDE_LUGIA
+  end
+label Gone
+  setflag FLAG_HIDE_LUGIA
+  end
+
+
+script Lugia
+  scene "Lugia at the foot of Navel Rock"
+  wait 0.3
+  camera shake 0.5
+  wait 0.6
+  camera shake 0.5
+  wait 1.0
+  cry "Lugia"
+  wait 0.6
+  endscene
+  wildbattle "Lugia" 70
+  hide navel_rock_lugia
+  setflag FLAG_HIDE_LUGIA
+  if result == 3 goto Caught
+  if result == 1 setflag FLAG_DEFEATED_LUGIA
+  speaker none
+  text "Lugia dived into the dark water and was gone..."
+  end
+label Caught
+  setflag FLAG_CAUGHT_LUGIA
+  end

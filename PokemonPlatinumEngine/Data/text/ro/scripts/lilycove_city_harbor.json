@@ -191,6 +191,138 @@
       "text": [
         "{player} a pornit spre Battle Frontier..."
       ]
+    },
+    {
+      "en": [
+        "Where would you like to sail?",
+        "SOUTHERN ISLAND",
+        "BATTLE FRONTIER",
+        "NAVEL ROCK",
+        "BIRTH ISLAND",
+        "NOWHERE"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry, the Battle Frontier is only for passengers with an S.S. Ticket."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} showed the Mystic Ticket."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Navel Rock it is! A long way over the open sea. Please come aboard."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} sailed for Navel Rock..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} showed the Aurora Ticket."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Birth Island it is! The sea there shines strangely at night. Please come aboard."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} sailed for Birth Island..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry, Birth Island is only for passengers with an Aurora Ticket."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Passes": [
+    {
+      "en": [
+        "Oh! Word has come from the Battle Frontier: you've won a Frontier Brain's print. Then this is yours."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} was given the Mystic Ticket!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's a pass for Navel Rock, an island far out in the sea where the S.S. Tidal never calls. Some say a legend sleeps there."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Prints from two facilities of the Frontier! The harbour master asked me to give you this, too."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} was given the Aurora Ticket!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's a pass for Birth Island, where a strange triangle of stone stands on the sand. Nobody knows who put it there."
+      ],
+      "text": [
+        ""
+      ]
     }
   ]
 }

@@ -1,0 +1,26 @@
+{
+  "key": "birth_island_harbor",
+  "index": 466,
+  "name": "Birth Island",
+  "matrix": 409,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_NONE",
+  "nightMusic": "MUS_NONE",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 8, "z": 2, "to": "birth_island_exterior", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "birth_island_sailor", "looks": "sailor", "movement": "look_north", "x": 8, "z": 5, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "BirthIsland_Harbor_EventScript_Sailor" },
+    { "id": "birth_island_ss_tidal", "looks": "ss_tidal", "movement": "look_east", "x": 8, "z": 7, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "" }
+  ],
+  "signs": [],
+  "triggers": []
+}

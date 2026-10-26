@@ -104,6 +104,11 @@ public sealed partial class ScriptRunner
                 // Common_SaveGame, as a facility's counter saves before a challenge goes up and as it comes back
                 Result = host.FrontierAct("save", 0, Subject);
                 break;
+            case "prints":
+                // (ours, plan 21 · H12, part f) how many facilities have handed over a print, silver or gold: what the
+                // event islands' passes are given for (Lilycove's ferry desk)
+                Result = FrontierBrains.Printed.Count(f => host.Story.Var(FrontierBrains.PrintVariable(f)) >= 2);
+                break;
         }
     }
 

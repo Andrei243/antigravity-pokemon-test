@@ -1,0 +1,12 @@
+{
+  // The peak of Navel Rock (plan 21 · H12, part f): Ho-Oh waits over the rock until the player comes up the path to the
+  // step before the summit (the area's trigger 0, which the peak's arrival readies), comes down and is met at level 70
+  // (navel_rock_top.txt)
+  "area": "navel_rock_top",
+  "bgmTrack": "hoenn/sealed_chamber",
+  "trees": "Round",
+  "triggers": [ { "trigger": 0, "script": "HoOh" } ],
+  "people": {
+    "navel_rock_ho_oh": { "name": "Ho-Oh", "npcType": "Pokemon", "species": "Ho-Oh", "at": [ 12, 9 ], "still": true, "script": "Waiting" }
+  }
+}

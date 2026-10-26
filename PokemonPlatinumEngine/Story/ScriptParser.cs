@@ -784,7 +784,7 @@ public static class ScriptParser
             // The Battle Frontier's frame and the Battle Tower (plan 06 · R18a)
             case "frontier":
             {
-                string what = r.OneOf("points", "give", "prize", "buy", "records", "print", "judge", "judged", "save");
+                string what = r.OneOf("points", "give", "prize", "buy", "records", "print", "judge", "judged", "save", "prints");
                 string which = what switch
                 {
                     "prize" => r.OneOf("items", "machines"),

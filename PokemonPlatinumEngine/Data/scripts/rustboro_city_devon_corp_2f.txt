@@ -1,0 +1,72 @@
+# Devon Corporation's laboratories (plan 21 · H12, part f). docs/scripts.md describes the language; the lines are our
+# own, on Emerald's beats (data/maps/RustboroCity_DevonCorp_2F/scripts.inc).
+#
+# The fossil researcher brings the Root Fossil or the Claw Fossil back to life, Emerald's two (the regenerator takes no
+# other region's): VAR_FOSSIL_RESURRECTION_STATE 1 while it works, which the next arrival on the floor makes 2 (Emerald's
+# ON_TRANSITION, and its other researchers' talk), and VAR_WHICH_FOSSIL_REVIVED 1 for Lileep, 2 for Anorith. The
+# Pokémon comes at level 20 (FLAG_RECEIVED_REVIVED_FOSSIL_MON), and the regenerator is ready for another fossil.
+
+
+script OnEnter
+  if var VAR_FOSSIL_RESURRECTION_STATE == 1 setvar VAR_FOSSIL_RESURRECTION_STATE 2
+  end
+
+
+script FossilScientist
+  face self player
+  speaker "Scientist"
+  if var VAR_FOSSIL_RESURRECTION_STATE == 2 goto Ready
+  if var VAR_FOSSIL_RESURRECTION_STATE == 1 goto Working
+  say "I've been building a machine that brings Pokémon back from their fossils. And do you know what? It works!"
+  if item "Root Fossil" goto Noticed
+  if item "Claw Fossil" goto Noticed
+  end
+label Noticed
+  emote fossil_scientist exclaim
+  say "Hold on! Is that a fossil in your bag? An ancient Pokémon is sleeping in it!"
+  ask "Shall my Fossil Regenerator wake it up for you?"
+  if no goto Declined
+  if not item "Root Fossil" goto Claw
+  if not item "Claw Fossil" goto Root
+  choose "Two fossils! The machine can only work on one at a time. Which one?" "ROOT FOSSIL" "CLAW FOSSIL" "NEITHER"
+  if result == 0 goto Root
+  if result == 1 goto Claw
+  end
+label Root
+  take "Root Fossil" 1
+  setvar VAR_WHICH_FOSSIL_REVIVED 1
+  goto Handed
+label Claw
+  take "Claw Fossil" 1
+  setvar VAR_WHICH_FOSSIL_REVIVED 2
+label Handed
+  say "Splendid! Let's get started right away."
+  text "{player} handed the fossil to the Devon researcher."
+  setvar VAR_FOSSIL_RESURRECTION_STATE 1
+label Working
+  say "The Fossil Regenerator is a marvel, but it's a slow one. Why not take a stroll and come back in a while?"
+  end
+label Declined
+  say "No? Well, Devon's machines will be here whenever you change your mind."
+  end
+label Ready
+  say "Thanks for waiting! Your fossil has come back to life. It was an ancient Pokémon all along!"
+  if not party < 6 goto Full
+  if var VAR_WHICH_FOSSIL_REVIVED == 2 goto Anorith
+  givepokemon "Lileep" 20
+  fanfare pokemon
+  text "{player} received Lileep from the Devon researcher!"
+  goto Given
+label Anorith
+  givepokemon "Anorith" 20
+  fanfare pokemon
+  text "{player} received Anorith from the Devon researcher!"
+label Given
+  setvar VAR_FOSSIL_RESURRECTION_STATE 0
+  setvar VAR_WHICH_FOSSIL_REVIVED 0
+  setflag FLAG_RECEIVED_REVIVED_FOSSIL_MON
+  say "Look after it. It has waited a very long time to see the world again."
+  end
+label Full
+  say "Oh, but your team is full! Make room for it, and come back."
+  end
