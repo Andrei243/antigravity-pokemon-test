@@ -924,6 +924,21 @@ public class Pokemon
     }
 
     /// <summary>
+    /// Becomes the next stage of its line as a Pokémon not yet anyone's is met at a level past it (plan 18 · W4b-2, plan
+    /// 03 · D15-A: <see cref="OursGrowth"/>), with nothing of an evolution's own (no scene, nothing used up): moves chosen
+    /// for it are kept, and moves that were only what its level taught it are the new species' at that level, or at
+    /// <paramref name="learnsUpTo"/> where that is lower (<see cref="Relevel"/>'s rule).
+    /// </summary>
+    internal void GrowInto(PokemonSpecies next, string? form, int learnsUpTo = int.MaxValue)
+    {
+        bool byLevel = Moves.Select(m => m.Name).SequenceEqual(MovesLearnedBy(Math.Min(Level, learnsUpTo)));
+        EvolveInto(next);
+        if (form != null && next.Form(form) != null) ChangeForm(form);
+        EvolutionProgress.Clear();
+        if (byLevel) PopulateMovesForLevel(Math.Min(Level, learnsUpTo));
+    }
+
+    /// <summary>
     /// Works its stats out again and moves its HP by what its maximum moved (<c>Pokemon_CalcStats</c>): what the
     /// original does after a vitamin. A fainted Pokémon stays down.
     /// </summary>

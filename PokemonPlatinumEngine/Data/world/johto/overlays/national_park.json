@@ -79,7 +79,7 @@
     "d22r0101_middlewoman1_2_2": {
       "name": "Beverly",
       "trainer": {
-        "dialogueBefore": "Pokéfan Beverly: My Snubbull is the sweetest thing. Look at its little face!",
+        "dialogueBefore": "Pokéfan Beverly: My Mastiffang is the sweetest thing. Look at its little face!",
         "dialogueAfter": "Pokéfan Beverly: Its little face is so sad now..."
       },
       "hiddenBy": "FLAG_BUG_CONTEST_UNDER_WAY"

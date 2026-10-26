@@ -47,7 +47,7 @@ script GymGuy
   speaker "Gym Guide"
   if badge plain goto Won
   say "Yo, future Champion! Whitney's Pokémon are Normal types. They look cute, but they hit hard."
-  say "Her Miltank is the one to watch. It can roll right over a team. Fighting moves are your best bet!"
+  say "Her Pastorine is the one to watch. It can roll right over a team. Fighting moves are your best bet!"
   end
 label Won
   say "You beat Whitney! Did she cry? She always cries. Don't worry, she'll be fine in a minute."

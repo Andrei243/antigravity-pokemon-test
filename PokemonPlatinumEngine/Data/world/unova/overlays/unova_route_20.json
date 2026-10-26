@@ -21,7 +21,7 @@
     "1": {
       "name": "Youngster",
       "trainer": {
-        "dialogueBefore": "Hey, you! My Patrat and I just started out. Let's see who's ahead!",
+        "dialogueBefore": "Hey, you! My Watchog and I just started out. Let's see who's ahead!",
         "dialogueAfter": "You're way ahead. I'll catch up!"
       }
     },
@@ -42,7 +42,7 @@
     "4": {
       "name": "Preschooler",
       "trainer": {
-        "dialogueBefore": "My Psyduck is the bestest! Battle me!",
+        "dialogueBefore": "My Psyduke is the bestest! Battle me!",
         "dialogueAfter": "Waaah! I'm telling my teacher!"
       }
     },
@@ -70,7 +70,7 @@
     "12": {
       "name": "Lass",
       "trainer": {
-        "dialogueBefore": "I caught my Purrloin right here on this route. Want to see what it can do?",
+        "dialogueBefore": "I caught my Liepard right here on this route. Want to see what it can do?",
         "dialogueAfter": "It can do a lot, just not enough today."
       }
     },

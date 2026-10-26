@@ -19,6 +19,6 @@
     "9": { "name": "Crustle", "npcType": "Pokemon", "species": "Crustle", "script": "Crustle", "hiddenBy": "FLAG_UNOVA_HIDE_CRUSTLE", "still": true },
     "10": { "name": "Roggenrola", "npcType": "Pokemon", "species": "Roggenrola", "hiddenBy": "FLAG_UNOVA_HIDE_ROCKY", "dialog": [ "Roggenrola: Stur! Stur!" ] },
     "11": { "name": "Roggenrola", "npcType": "Pokemon", "species": "Roggenrola", "hiddenBy": "FLAG_UNOVA_HIDE_ROCKY", "dialog": [ "Roggenrola: Rooog!" ] },
-    "12": { "name": "Rocky", "npcType": "black_belt", "script": "Rocky", "hiddenBy": "FLAG_UNOVA_HIDE_ROCKY", "still": true, "trainer": { "id": "unova_black_belt_rocky", "dialogueBefore": "If you want past here, you'll have to beat me and my Roggenrola!", "dialogueAfter": "Your strength is the real thing!" } }
+    "12": { "name": "Rocky", "npcType": "black_belt", "script": "Rocky", "hiddenBy": "FLAG_UNOVA_HIDE_ROCKY", "still": true, "trainer": { "id": "unova_black_belt_rocky", "dialogueBefore": "If you want past here, you'll have to beat me and my Gigalith!", "dialogueAfter": "Your strength is the real thing!" } }
   }
 }

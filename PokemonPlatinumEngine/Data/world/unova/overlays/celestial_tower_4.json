@@ -54,15 +54,15 @@
     "3": {
       "name": "Bryce",
       "trainer": {
-        "dialogueBefore": "Elgyem and Duosion have heads full of thought. Can you out-think them?",
+        "dialogueBefore": "Beheeyem and Reuniclus have heads full of thought. Can you out-think them?",
         "dialogueAfter": "My thoughts are in a muddle."
       }
     },
     "4": {
       "name": "Georgia",
       "trainer": {
-        "dialogueBefore": "My Cubchoo loves a chilly tower. Cold hands, warm heart! Battle me!",
-        "dialogueAfter": "Oh, my poor Cubchoo's nose!"
+        "dialogueBefore": "My Beartic loves a chilly tower. Cold hands, warm heart! Battle me!",
+        "dialogueAfter": "Oh, my poor Beartic's nose!"
       }
     },
     "5": {

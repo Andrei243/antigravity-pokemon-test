@@ -152,7 +152,7 @@ public static class Evolution
     /// is the personality here), and Alcremie's cream by the spin and the hour with its sweet's decoration. Any other
     /// evolution is as the data has it.
     /// </summary>
-    private static EvolutionData Chosen(Pokemon p, EvolutionData e, EvolutionContext context)
+    internal static EvolutionData Chosen(Pokemon p, EvolutionData e, EvolutionContext context)
     {
         string? form = e.TargetSpecies switch
         {
@@ -209,7 +209,7 @@ public static class Evolution
     /// by its species' own evolutions into species its form has none into (a male Burmy in a sandy cloak still
     /// becomes Mothim).
     /// </summary>
-    private static bool FitsForm(Pokemon p, EvolutionData e)
+    internal static bool FitsForm(Pokemon p, EvolutionData e)
     {
         if (e.FromForm != null) return string.Equals(e.FromForm, p.Form, StringComparison.OrdinalIgnoreCase);
         if (p.Form == null) return true;

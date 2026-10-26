@@ -76,7 +76,7 @@ script Ask
   ask "Battle Wally?"
   if no goto Refused
   speaker "Wally"
-  say "Thank you! Ralts, here we go!"
+  say "Thank you! Gardevoir, here we go!"
   battle mauville_wally as "hoenn_wally_mauville"
   speaker "Wally"
   say "I... I lost. You really are strong, {player}."

@@ -65,14 +65,14 @@ script Jessica
   if flag FLAG_PHONE_CONTACT_HOENN_JESSICA goto Known
 label Ask
   speaker "Jessica"
-  say "You're good at spotting things. Let's keep in touch, so I can tell you how my Kecleon is doing."
+  say "You're good at spotting things. Let's keep in touch, so I can tell you how my Chromeleon is doing."
   ask "Register Jessica in the PokéNav's Match Call?"
   if no goto Refused
   addcontact hoenn_jessica
   say "Lovely! Don't be surprised if I call out of nowhere."
   end
 label Refused
-  say "Oh well. My Kecleon will just have to hide its sulk."
+  say "Oh well. My Chromeleon will just have to hide its sulk."
   end
 label Known
   trainerline after

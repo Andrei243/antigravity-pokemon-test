@@ -20,7 +20,7 @@ script GymGuide
   speaker "Guide"
   if not flag FLAG_UNOVA_GOT_WATER_NIMBASA goto Water
   if badge bolt goto Won
-  say "Win your way up the runway, and Elesa waits at the top. Ground moves hit her Electric types hard, but not her Emolga!"
+  say "Win your way up the runway, and Elesa waits at the top. Ground moves hit her Electric types hard, but not her Nimbolga!"
   end
 label Water
   say "Surprised? This Gym is a fashion show and a battle all at once, on a runway lit up like a stage!"

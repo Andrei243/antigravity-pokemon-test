@@ -17,7 +17,7 @@
     "r34_picnicgirl_2": {
       "name": "Gina",
       "trainer": {
-        "dialogueBefore": "Picnicker Gina: Oh, a Trainer! My Hoppip have been dying to battle somebody.",
+        "dialogueBefore": "Picnicker Gina: Oh, a Trainer! My Jumpluff have been dying to battle somebody.",
         "dialogueAfter": "Picnicker Gina: They floated off the moment you hit them!"
       }
     },
@@ -50,7 +50,7 @@
     "r34_gsmiddleman1": {
       "name": "Brandon",
       "trainer": {
-        "dialogueBefore": "Pokéfan Brandon: My Snubbull and Mareep are the cutest pair in Johto. Want to see?",
+        "dialogueBefore": "Pokéfan Brandon: My Mastiffang and Ampharos are the cutest pair in Johto. Want to see?",
         "dialogueAfter": "Pokéfan Brandon: Even losing, they're still the cutest."
       }
     },

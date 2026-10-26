@@ -8,14 +8,14 @@
     "3": {
       "name": "Jebediah",
       "trainer": {
-        "dialogueBefore": "Mountain men aren't afraid of a dark cave. But Onix isn't afraid of anything at all!",
+        "dialogueBefore": "Mountain men aren't afraid of a dark cave. But Ironwyrm isn't afraid of anything at all!",
         "dialogueAfter": "A rock crushed by a Trainer. Hm."
       }
     },
     "4": {
       "name": "Shelby",
       "trainer": {
-        "dialogueBefore": "Boldore! Roll along the path and flatten that Trainer!",
+        "dialogueBefore": "Gigalith! Roll along the path and flatten that Trainer!",
         "dialogueAfter": "My rolling plan got flattened."
       }
     }

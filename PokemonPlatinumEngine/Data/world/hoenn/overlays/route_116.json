@@ -17,7 +17,7 @@
     "youngster": {
       "name": "Joey",
       "trainer": {
-        "dialogueBefore": "Youngster Joey: My Machop's been training every day! It's going to flatten you!",
+        "dialogueBefore": "Youngster Joey: My Machamp's been training every day! It's going to flatten you!",
         "dialogueAfter": "Youngster Joey: Flattened. Me, I mean."
       }
     },
@@ -38,7 +38,7 @@
     "lass": {
       "name": "Janice",
       "trainer": {
-        "dialogueBefore": "Lass Janice: My Marill is round and blue and very, very strong!",
+        "dialogueBefore": "Lass Janice: My Azumarill is round and blue and very, very strong!",
         "dialogueAfter": "Lass Janice: Still round and blue. Less strong."
       }
     },
@@ -80,7 +80,7 @@
     "hiker_2": {
       "name": "Devan",
       "trainer": {
-        "dialogueBefore": "Hiker Devan: Two Geodude, solid as boulders. Ready to roll?",
+        "dialogueBefore": "Hiker Devan: Two Golem, solid as boulders. Ready to roll?",
         "dialogueAfter": "Hiker Devan: Rolled right over us, you did."
       }
     }

@@ -104,6 +104,15 @@ public class GoldenLevelTests
         return $"{Range(all.Select(levels.Map))} (own {Range(all)})";
     }
 
+    /// <summary>The Pokémon of a team whose stage is another as it is met (plan 18 · W4b-2, plan 03 · D15-A), in square brackets; nothing where none is.</summary>
+    private static string Grown(Party own, LevelMapping levels)
+    {
+        var met = new Trainer { Party = own }.Relevelled(levels.Map, grow: true);
+        var changed = own.Members.Zip(met.Party.Members).Where(p => p.First.Species.Name != p.Second.Species.Name)
+            .Select(p => $"{p.First.Species.Name} → {p.Second.Species.Name}").ToList();
+        return changed.Count == 0 ? "" : $" [{string.Join(", ", changed)}]";
+    }
+
     /// <summary>
     /// Plan 18 · W4b-1: <c>levels-crossed.txt</c>, every region crossed into as a game begun in Sinnoh meets it: first a
     /// block for each region (its pairs, its caps own and met, and the trainers its file has that stand on no map:
@@ -115,7 +124,7 @@ public class GoldenLevelTests
     public void TheLevelsOfEveryCrossedPlaceAreWhatTheyWere()
     {
         var text = new StringBuilder($"# Every region crossed into, as a game begun in Sinnoh meets it (plan 18 · W4b-1), made by GoldenLevelTests. Rewritten by: {GoldenFile.AcceptCommand}\n");
-        text.Append("# A region's pairs and caps, then its trainers that stand on no map; then each of its places' wild Pokémon and trainers. Each level as met, its own game's in brackets.\n");
+        text.Append("# A region's pairs and caps, then its trainers that stand on no map; then each of its places' wild Pokémon and trainers. Each level as met, its own game's in brackets; in square brackets the species a trainer's Pokémon is met as where its stage is another (plan 18 · W4b-2).\n");
         var crossed = RegionDatabase.All.Where(r => r.Levels != null && !string.Equals(r.Id, RegionDatabase.First.Id, StringComparison.Ordinal)).ToList();
         Assert.True(crossed.Count >= 4, "Kanto, Johto, Hoenn and Unova are crossed into");
 
@@ -131,7 +140,7 @@ public class GoldenLevelTests
             {
                 int top = record.Party.Max(m => m.Level);
                 Assert.InRange(levels.Map(top), 1, Ruleset.HighestLevel);
-                text.Append($"{record.Id} {levels.Map(top)} ({top})\n");
+                text.Append($"{record.Id} {levels.Map(top)} ({top}){Grown(TrainerDatabase.PartyOf(record), levels)}\n");
             }
         }
 
@@ -150,7 +159,7 @@ public class GoldenLevelTests
                 block.Append($"trainers {trainers.Count}, {Crossed(all, levels)}: {string.Join(", ", trainers.Select(t =>
                 {
                     int top = t.TrainerData!.Party.Members.Max(p => p.Level);
-                    return $"{t.TrainerData!.Id ?? t.Name} {levels.Map(top)} ({top})";
+                    return $"{t.TrainerData!.Id ?? t.Name} {levels.Map(top)} ({top}){Grown(t.TrainerData!.Party, levels)}";
                 }))}\n");
             }
             if (block.Length == 0) continue;

@@ -10,7 +10,7 @@ script Joey
   if rematch self goto Rematch
   if flag FLAG_PHONE_CONTACT_JOEY goto Known
   speaker "Joey"
-  say "Hey, you're pretty good! Let's swap numbers. I'll call you when my Rattata's even stronger."
+  say "Hey, you're pretty good! Let's swap numbers. I'll call you when my Ratchisel's even stronger."
   ask "Register Joey's number in your Pokégear?"
   if no goto Refused
   addcontact joey

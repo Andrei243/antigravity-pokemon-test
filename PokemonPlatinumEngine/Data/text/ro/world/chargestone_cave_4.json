@@ -37,18 +37,18 @@
       },
       "before": {
         "en": [
-          "A Ferroseed on the team means I never fear a spark. Come on!"
+          "A Ferrothorn on the team means I never fear a spark. Come on!"
         ],
         "text": [
-          "Cu un Ferroseed în echipă nu mă tem de nicio scânteie. Hai!"
+          "Cu un Ferrothorn în echipă nu mă tem de nicio scânteie. Hai!"
         ]
       },
       "after": {
         "en": [
-          "My Ferroseed is stunned."
+          "My Ferrothorn is stunned."
         ],
         "text": [
-          "Ferroseed al meu e amețit."
+          "Ferrothorn al meu e amețit."
         ]
       }
     },
@@ -63,10 +63,10 @@
       },
       "before": {
         "en": [
-          "Zebstrika's mane lights up like a stage! Let me play you a battle song."
+          "Stormstrika's mane lights up like a stage! Let me play you a battle song."
         ],
         "text": [
-          "Coama lui Zebstrika se aprinde ca o scenă! Lasă-mă să-ți cânt un cântec de luptă."
+          "Coama lui Stormstrika se aprinde ca o scenă! Lasă-mă să-ți cânt un cântec de luptă."
         ]
       },
       "after": {

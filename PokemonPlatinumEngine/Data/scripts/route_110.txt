@@ -127,7 +127,7 @@ label Ask
   ask "Register Abigail in the PokéNav's Match Call?"
   if no goto Refused
   addcontact hoenn_abigail
-  say "Thanks! I'll let you know how my Magnemite is doing."
+  say "Thanks! I'll let you know how my Magnezone is doing."
   end
 label Refused
   say "Oh well. I'll just have to catch up by myself!"
@@ -147,14 +147,14 @@ script Isabel
   if flag FLAG_PHONE_CONTACT_HOENN_ISABEL goto Known
 label Ask
   speaker "Isabel"
-  say "Plusle and Minun want to be your friends! Will you register me in your PokéNav?"
+  say "Anodion and Cathodion want to be your friends! Will you register me in your PokéNav?"
   ask "Register Isabel in the PokéNav's Match Call?"
   if no goto Refused
   addcontact hoenn_isabel
   say "Yay! I'll call with all their cutest news!"
   end
 label Refused
-  say "Aww. Plusle and Minun are pouting now."
+  say "Aww. Anodion and Cathodion are pouting now."
   end
 label Known
   trainerline after

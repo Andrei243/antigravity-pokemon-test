@@ -12,9 +12,9 @@
     "beauty": { "name": "Olivia", "trainer": { "dialogueBefore": "Beauty Olivia: I raised these two from a single seed! Well, almost.", "dialogueAfter": "Beauty Olivia: They'll bloom another day." } },
     "biker": { "name": "Alex", "trainer": { "dialogueBefore": "Biker Alex: You came down the Cycling Road? Let's see how tough you are!", "dialogueAfter": "Biker Alex: Tougher than me, I'll give you that." } },
     "biker_2": { "name": "Ernest", "trainer": { "dialogueBefore": "Biker Ernest: Five Pokémon full of smoke! Think you can breathe through that?", "dialogueAfter": "Biker Ernest: The smoke's cleared, and so's my team." } },
-    "picnicker_3": { "name": "Becky", "trainer": { "dialogueBefore": "Picnicker Becky: My Pikachu evolved just yesterday! Watch it go!", "dialogueAfter": "Picnicker Becky: It's still getting used to its new tail." } },
+    "picnicker_3": { "name": "Becky", "trainer": { "dialogueBefore": "Picnicker Becky: My Raichu evolved just yesterday! Watch it go!", "dialogueAfter": "Picnicker Becky: It's still getting used to its new tail." } },
     "beauty_2": { "name": "Grace", "trainer": { "dialogueBefore": "Beauty Grace: A soft Pokémon and a swift one. The perfect pair!", "dialogueAfter": "Beauty Grace: Perfect, but not quite enough." } },
-    "picnicker_4": { "name": "Celia", "trainer": { "dialogueBefore": "Picnicker Celia: My Clefairy came down from Mt. Moon just to battle you!", "dialogueAfter": "Picnicker Celia: Back to the moon with it, then." } },
+    "picnicker_4": { "name": "Celia", "trainer": { "dialogueBefore": "Picnicker Celia: My Clefable came down from Mt. Moon just to battle you!", "dialogueAfter": "Picnicker Celia: Back to the moon with it, then." } },
     "black_belt": { "name": "Ron", "trainer": { "dialogueBefore": "Crush Kin Ron & Mya: We train together every morning. Take us both on!", "dialogueAfter": "Crush Kin Ron & Mya: More training tomorrow, then." } },
     "crush_girl": { "name": "Mya", "trainer": { "dialogueBefore": "Crush Kin Ron & Mya: We train together every morning. Take us both on!", "dialogueAfter": "Crush Kin Ron & Mya: More training tomorrow, then." } }
   },

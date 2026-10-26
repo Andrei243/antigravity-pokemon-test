@@ -16,7 +16,7 @@
     "everywhere_boarder": {
       "name": "Patton",
       "trainer": {
-        "dialogueBefore": "Boarder Patton: My Swinub love the cold. How about yours?",
+        "dialogueBefore": "Boarder Patton: My Mamoswine love the cold. How about yours?",
         "dialogueAfter": "Boarder Patton: Wiped out!"
       }
     }

@@ -9,7 +9,7 @@
       "name": "Cooper",
       "trainer": {
         "dialogueBefore": "Poké Maniac Cooper: I've got three of my favourite Pokémon with me. Guess which!",
-        "dialogueAfter": "Poké Maniac Cooper: Slowpoke all along. They took it slowly."
+        "dialogueAfter": "Poké Maniac Cooper: Slowbro all along. They took it slowly."
       }
     },
     "hiker": {
@@ -29,7 +29,7 @@
     "hiker_2": {
       "name": "Allen",
       "trainer": {
-        "dialogueBefore": "Hiker Allen: One Pokémon is all I need. My Geodude is solid!",
+        "dialogueBefore": "Hiker Allen: One Pokémon is all I need. My Golem is solid!",
         "dialogueAfter": "Hiker Allen: Not solid enough, it seems."
       }
     },
@@ -57,7 +57,7 @@
     "poke_maniac_3": {
       "name": "Winston",
       "trainer": {
-        "dialogueBefore": "Poké Maniac Winston: My Slowpoke is one of a kind. Look at it go... slowly!",
+        "dialogueBefore": "Poké Maniac Winston: My Slowbro is one of a kind. Look at it go... slowly!",
         "dialogueAfter": "Poké Maniac Winston: Slowly, but it lost."
       }
     },

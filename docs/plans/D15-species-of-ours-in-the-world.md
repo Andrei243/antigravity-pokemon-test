@@ -179,3 +179,11 @@ Master Trainers of ours (plan 14 · B14's `master_<species>`, made from Showdown
 8. **The Pokédex's area page.** *Default*: **shows where B places them**, as a way of their own. *Alternative*: not shown, as D12a's `national` slots aren't.
 9. **Kalos to Paldea's 147.** *Default*: **they wait for their regions** (plan 23), each region's plan placing its batch by B's rule. *Alternative*: placed now, by habitat, in the five built regions' post-game (at 120 to 256, far above anything there).
 10. **T, if chosen: when is the team ready?** *Default*: **the region's Hall of Fame and a Pokémon of the team at or past the batch's lowest evolution level**. *Alternative*: the region's Hall of Fame alone; every built region's.
+
+## Status
+
+Approved by the user on 2026-10-26: A + B + T, named trainers grow ([APPROVAL-levelling-and-our-species.md](APPROVAL-levelling-and-our-species.md)).
+
+- [x] **D15-A, grown as they are met** (wave 64, with plan 18 · W4b-2: [W4b-levelling-the-world.md](W4b-levelling-the-world.md)'s status). `Models/OursGrowth.cs` (`OursAt`, D15's `GrownAt`; `GrowTrainers` after the games' stages; `GrowWild` one in four by personality), called from `Trainer.Relevelled(..., grow: true)` and `StartWildBattle`; every trainer of a crossed region, named ones too, every evolution of ours with its condition taken as met, never a legendary set, never a Master, the first battle, the Frontier or the Subway. The lines that named a forebear are rewritten (`tools/dev/grown-names.mjs`, `GrownNamesTests`). No data written, no table touched.
+- [ ] D15-B, the `ours` slots (engine, then three placement sessions).
+- [ ] D15-T, the Leagues' `<id>_beyond` teams.

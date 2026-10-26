@@ -10,11 +10,11 @@
     "picnicker_2": { "name": "Susie", "trainer": { "dialogueBefore": "Picnicker Susie: I caught every one of these myself! Aren't they cute?", "dialogueAfter": "Picnicker Susie: Cute isn't quite enough, is it?" } },
     "beauty": { "name": "Sheila", "trainer": { "dialogueBefore": "Beauty Sheila: Do my Pokémon look lovely today? Let me show you!", "dialogueAfter": "Beauty Sheila: Oh, my hair's all windswept now." } },
     "beauty_2": { "name": "Lola", "trainer": { "dialogueBefore": "Beauty Lola: You've walked right into my view of the sea. Battle me, then!", "dialogueAfter": "Beauty Lola: Fine. The view's yours." } },
-    "picnicker_3": { "name": "Valerie", "trainer": { "dialogueBefore": "Picnicker Valerie: Two Poliwag are better than one! Ready?", "dialogueAfter": "Picnicker Valerie: Two weren't enough after all." } },
+    "picnicker_3": { "name": "Valerie", "trainer": { "dialogueBefore": "Picnicker Valerie: Two Poliwhirl are better than one! Ready?", "dialogueAfter": "Picnicker Valerie: Two weren't enough after all." } },
     "picnicker_4": { "name": "Gwen", "trainer": { "dialogueBefore": "Picnicker Gwen: I've packed a lunch and a team of birds. Let's go!", "dialogueAfter": "Picnicker Gwen: Time to eat that lunch, I think." } },
     "rocker_2": { "name": "Robert", "trainer": { "dialogueBefore": "Bird Keeper Robert: The wind off the sea is perfect for flying. Watch this!", "dialogueAfter": "Bird Keeper Robert: The wind changed on me." } },
     "rocker_3": { "name": "Perry", "trainer": { "dialogueBefore": "Bird Keeper Perry: A whole flock against you! Can you keep up?", "dialogueAfter": "Bird Keeper Perry: My flock's scattered to the four winds." } },
-    "biker": { "name": "Jared", "trainer": { "dialogueBefore": "Biker Jared: Smell that? That's the smell of my Koffing. Get ready!", "dialogueAfter": "Biker Jared: Blew away like smoke." } }
+    "biker": { "name": "Jared", "trainer": { "dialogueBefore": "Biker Jared: Smell that? That's the smell of my Weezing. Get ready!", "dialogueAfter": "Biker Jared: Blew away like smoke." } }
   },
   "signs": {
     "Route13_EventScript_RouteSign": "Route 13\nNorth to Silence Bridge",

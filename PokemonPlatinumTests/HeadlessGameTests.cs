@@ -167,6 +167,42 @@ public class HeadlessGameTests
     }
 
     [Fact]
+    public void ATrainerOfARegionCrossedIntoIsMetAtTheStageItsLevelAllows()
+    {
+        // Plan 18 · W4b-2 with plan 03 · D15-A: Route 30's Joey's Rattata of 4 is met at 105 as a game begun in Sinnoh
+        // meets Johto, a Raticate and then our Ratchisel; a game begun in Johto meets HeartGold's own Rattata
+        var paths = SavePaths.Current;
+        try
+        {
+            Dice.Seed(12);
+            foreach (var (began, expected) in new[] { ("Sinnoh", "Ratchisel"), ("Johto", "Rattata") })
+            {
+                var engine = Headless();
+                var game = engine.Drive;
+                engine.NewGameRegion = began;
+                engine.StartNewGame();
+                game.Party.Clear();
+                game.Party.Add(new Pokemon(PokemonDatabase.Get("Turtwig")!, 70));
+                game.State = GameState.Overworld;
+                game.Place(MapDatabase.Get("Johto"), 553, 334, Direction.Up);
+                var joey = game.Map.Everyone.First(n => n.Key == "r30_gsboy2");
+                game.StartTrainerBattle(joey);
+                Until(engine, () => game.State == GameState.Battle, "the battle");
+                Assert.Equal(expected, game.Battle!.EnemyPokemon.Species.Name);
+                // The trainer of the map keeps HeartGold's team
+                Assert.Equal("Rattata", joey.TrainerData!.Party.Members[0].Species.Name);
+            }
+        }
+        finally
+        {
+            InputManager.Feed(null);
+            Dice.Seed(null);
+            Ruleset.Use(RulesPreset.Platinum);
+            SavePaths.Current = paths;
+        }
+    }
+
+    [Fact]
     public void TheSignOverTheFieldNamesTheAreaInTheChosenLanguage()
     {
         // Plan 17 · N6b, slice 4: walking into an area showed its English name under every language

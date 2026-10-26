@@ -6226,3 +6226,38 @@ Two of Emerald's places left for the time after Norman and after the Hall of Fam
 - **Left for a later part**: the Marine and Terra Caves with the Weather Institute's reports, Trainer Hill, Mirage
   Island, Altering Cave, the event islands, the S.S. Tidal, the island's halls, the Devon Corporation's revival of the
   desert's fossils, and Wattson's rematch in his Gym (Emerald's FLAG_WATTSON_REMATCH_AVAILABLE).
+
+## Stages as they are met (2026-10-26, plan 18 · W4b-2 with plan 03 · D15-A)
+
+The user approved on 2026-10-26 (docs/plans/APPROVAL-levelling-and-our-species.md): design C, named trainers grow too,
+every evolution of ours counting with its condition taken as met, wild Pokémon one in four by personality, Masters follow
+the player, Challenge by share in a crossed region. `Models/OursGrowth.cs`.
+
+- **A trainer's Pokémon in a region the game crossed into** (`Trainer.Relevelled(levels.Map, grow: true)`, in
+  `GameEngine.StartTrainerBattle`, the partner's too) takes the stage its mapped level allows: first the games' own
+  (`OursGrowth.GamesStageAt`: among the ways into a species of the games that fit its form and ask for no region, the
+  first with a level its level reaches, a way decided by the Pokémon itself (gender, stats, personality) only where it
+  holds; where no way has a level, the one way there is at 16 for friendship and 30 for the rest, as
+  `DifficultyRules.StageAt` reads them going down; a line of several ways and no level, Eevee, Gloom or Poliwhirl, stays),
+  then ours (`OursGrowth.OursAt`: the first evolution of ours its level reaches, its condition taken as met, never into a
+  legendary or mythical set's end). Every trainer grows, the Leaders, Elite Four, Champions, rivals and bosses with them
+  (Whitney's Miltank is met as Pastorine). Moves the data chose are kept; moves its level taught it are the new species'
+  up to 100 (R31's rule). Nothing is used up and no scene plays. Not the first battle, a Master Trainer's, the Battle
+  Frontier's or the Battle Subway's.
+- **A wild Pokémon** keeps the games' stage its table gives it (so every regional Pokédex can still be completed) and,
+  met at or past an evolution of ours, is met as it when its personality's remainder by four is nought
+  (`OursGrowth.GrowWild`): no new draw, so nothing seeded moves. The same for a horde's others and a partner's second; not
+  a roamer, a script's `wildbattle` or a gift.
+- **Master Trainers** follow the player (`DifficultyRules.FollowThePlayer`): met at the higher of their own 75 and the
+  chosen Pokémon's level, never relevelled by a region's mapping and never grown.
+- **Challenge and Easy in a crossed region** move a Pokémon by a share of its level (`DifficultyRules.PerMilleOf`: 6.5%
+  for a Chief, 5% for a Boss, 2% for everyone, rounded, never less than Sinnoh's +4, +3, +1), so Unova's Champion's ace of
+  185 is raised by 12; Sinnoh keeps its levels. A Chief's one more from the rematch takes its stage in a crossed region too.
+- **Lines that named a forebear.** Every game the title starts begins in Sinnoh and crosses into the rest, so a trainer's
+  line that names a Pokémon its team is now met as something else says the new species (Joey's "My Ratchisel"). No
+  placeholder of the text box carries a speaker's team, so the lines are written so: `node tools/dev/grown-names.mjs
+  --write` finds and rewrites them in English and in Romanian's translation (166 lines), and `tools/dev/grown-names.json`
+  keeps the lines that mean another Pokémon or a time before (a wild one, a find, a catch, a family raised) and writes a
+  few by hand. A game begun with `--region` (a development switch) meets the old teams under the new names.
+  `GrownNamesTests` holds every trainer's line to the engine's own rule, so a change of the levels or the data that makes
+  a line stale fails there.

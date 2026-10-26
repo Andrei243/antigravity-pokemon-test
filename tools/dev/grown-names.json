@@ -1,0 +1,25 @@
+{
+  "//": "Plan 18 · W4b-2 with plan 03 · D15-A: the lines tools/dev/grown-names.mjs would change that a person decided otherwise. 'kept': lines that name a species the speaker's team no longer is but mean another Pokémon or a time before (a wild one, a find, a catch, a family raised); 'written': lines whose new species a plain swap would say badly. GrownNamesTests reads 'kept' as the lines it lets name a forebear.",
+  "kept": {
+    "I saw old Mr. Briney hurrying home with his Wingull. He looked so happy!": "Mr. Briney's own Wingull, Peeko, who is no trainer's Pokémon",
+    "Wally's been so full of energy since he caught his Ralts. It's wonderful, but I do worry about him.": "the catch, told as it happened",
+    "Edwin speaking. I found a Nuzleaf with the most elegant leaf. My collection grows ever finer!": "a Nuzleaf he found, not one of his team",
+    "It's Jeffrey! I found a Surskit skating on a puddle in the rain. Bugs are the best, aren't they?": "a wild Surskit he saw",
+    "Swimmer Beverly: My Pokémon and I race the Wingull. Want to race us?": "the wild Wingull over the sea",
+    "Bug Maniac Taylor: I've raised these bugs from tiny Wurmple! Witness their glory!": "what they were before he raised them",
+    "Pokéfan Bethany: Azurill, Marill, Azumarill... I raised the whole family!": "every stage of the family she raised",
+    "Bug Maniac Brent: Surskit skates on the puddles here. Have you ever seen anything so lovely?": "the place's wild Surskit",
+    "Ace Trainer Cody: Horsea grow into dragons too, you know!": "what Horsea becomes, said of every Horsea",
+    "Ace Trainer Piper: The water here is where Horsea learn to be dragons. Watch them!": "the den's wild Horsea",
+    "Swimmer Denise: I swim faster than a Seel! Want to see what else I can do?": "any Seel, not one of hers",
+    "Fisherman Marvin: The lake up north is full of Gyarados. I raise my own from Magikarp!": "what his Gyarados were before he raised them",
+    "Swimmer Nora: Shellder hide in the rocks round here. So do I!": "the place's wild Shellder",
+    "Swimmer Darrin: Horsea love these warm currents. So do I!": "the place's wild Horsea"
+  },
+  "written": {
+    "Tuber Simon: My Azurill and Marill are the best of friends. And the best battlers!": "Tuber Simon: My two Azumarill are the best of friends. And the best battlers!",
+    "Hiker Timothy: Diglett dig, Dugtrio dig faster! Ready?": "Hiker Timothy: Two Molemount, digging twice as fast! Ready?",
+    "Magneton are three Magnemite in one, and I'm one stubborn scientist! Battle!": "Magnezone started out as three Magnemite, and I'm one stubborn scientist! Battle!",
+    "A Shelmet and a Karrablast: two Pokémon that change only when they meet. Let's see how you change in battle!": "An Accelgor and an Escavalier: two Pokémon that changed only when they met. Let's see how you change in battle!"
+  }
+}

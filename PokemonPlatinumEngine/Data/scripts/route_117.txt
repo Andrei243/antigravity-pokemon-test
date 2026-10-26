@@ -86,7 +86,7 @@ label Ask
   ask "Register Maria in the PokéNav's Match Call?"
   if no goto Refused
   addcontact hoenn_maria
-  say "Thanks! I'll call when Doduo beats its best time."
+  say "Thanks! I'll call when Tripluma beats its best time."
   end
 label Refused
   say "Okay! Maybe next time we meet."

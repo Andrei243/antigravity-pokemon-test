@@ -9,10 +9,10 @@
     "biker": { "name": "Virgil", "trainer": { "dialogueBefore": "Biker Virgil: Nobody rides my road without a race. And a battle!", "dialogueAfter": "Biker Virgil: You can have the road. For now." } },
     "biker_2": { "name": "Isaiah", "trainer": { "dialogueBefore": "Cue Ball Isaiah: My Pokémon train their muscles on this slope every day!", "dialogueAfter": "Cue Ball Isaiah: More push-ups for us, then." } },
     "biker_3": { "name": "Raul", "trainer": { "dialogueBefore": "Cue Ball Raul: I go round and round this bit of road. Now I'm going round you!", "dialogueAfter": "Cue Ball Raul: I'm dizzy now." } },
-    "biker_4": { "name": "Nikolas", "trainer": { "dialogueBefore": "Biker Nikolas: Watch out, my Voltorb have a short fuse!", "dialogueAfter": "Biker Nikolas: Fizzled out." } },
+    "biker_4": { "name": "Nikolas", "trainer": { "dialogueBefore": "Biker Nikolas: Watch out, my Electrode have a short fuse!", "dialogueAfter": "Biker Nikolas: Fizzled out." } },
     "biker_5": { "name": "Billy", "trainer": { "dialogueBefore": "Biker Billy: One Pokémon is all I need. Come on!", "dialogueAfter": "Biker Billy: Maybe I needed two." } },
     "biker_6": { "name": "Jamal", "trainer": { "dialogueBefore": "Cue Ball Jamal: Lost your way? Lost your nerve? Let's find out!", "dialogueAfter": "Cue Ball Jamal: Lost the battle, that's what." } },
-    "biker_7": { "name": "Zeek", "trainer": { "dialogueBefore": "Cue Ball Zeek: My Machoke can lift a Bicycle with one arm. And its rider!", "dialogueAfter": "Cue Ball Zeek: It dropped the Bicycle." } },
+    "biker_7": { "name": "Zeek", "trainer": { "dialogueBefore": "Cue Ball Zeek: My Machamp can lift a Bicycle with one arm. And its rider!", "dialogueAfter": "Cue Ball Zeek: It dropped the Bicycle." } },
     "biker_8": { "name": "Corey", "trainer": { "dialogueBefore": "Cue Ball Corey: This hill's no place for slowpokes. Show me your speed!", "dialogueAfter": "Cue Ball Corey: Too fast for me." } },
     "biker_9": { "name": "William", "trainer": { "dialogueBefore": "Biker William: Breathe in the fumes of the Cycling Road!", "dialogueAfter": "Biker William: The fumes got me instead." } },
     "biker_10": { "name": "Jaxon", "trainer": { "dialogueBefore": "Biker Jaxon: You made it this far down? Then you can make it past me!", "dialogueAfter": "Biker Jaxon: Yeah, you made it past me." } }

@@ -63,10 +63,10 @@
       },
       "before": {
         "en": [
-          "Hiker Parry: Onix and I are as solid as the mountain!"
+          "Hiker Parry: Ironwyrm and I are as solid as the mountain!"
         ],
         "text": [
-          "Drumeț Parry: Onix și cu mine suntem solizi ca muntele!"
+          "Drumeț Parry: Ironwyrm și cu mine suntem solizi ca muntele!"
         ]
       },
       "after": {
@@ -141,10 +141,10 @@
       },
       "before": {
         "en": [
-          "Hiker Timothy: Diglett dig, Dugtrio dig faster! Ready?"
+          "Hiker Timothy: Two Molemount, digging twice as fast! Ready?"
         ],
         "text": [
-          "Drumeț Timothy: Diglett sapă, Dugtrio sapă și mai repede! Gata?"
+          "Drumeț Timothy: Doi Molemount, care sapă de două ori mai repede! Gata?"
         ]
       },
       "after": {

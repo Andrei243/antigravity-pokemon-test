@@ -11,7 +11,7 @@
   "people": {
     "swimmer_m": { "name": "Chase", "trainer": { "dialogueBefore": "Triathlete Chase: I've swum all the way from Ever Grande. Still got enough left for you!", "dialogueAfter": "Triathlete Chase: Now I've got nothing left at all." } },
     "swimmer_f": { "name": "Allison", "trainer": { "dialogueBefore": "Triathlete Allison: The open sea is my training track. Keep up if you can!", "dialogueAfter": "Triathlete Allison: You kept up, and then some." } },
-    "swimmer_f_2": { "name": "Tisha", "trainer": { "dialogueBefore": "Swimmer Tisha: My Chinchou lights the way when I swim at night. Shall I dazzle you?", "dialogueAfter": "Swimmer Tisha: I'm the one seeing spots now." } },
+    "swimmer_f_2": { "name": "Tisha", "trainer": { "dialogueBefore": "Swimmer Tisha: My Abyssolux lights the way when I swim at night. Shall I dazzle you?", "dialogueAfter": "Swimmer Tisha: I'm the one seeing spots now." } },
     "swimmer_m_2": { "name": "Reed", "trainer": { "dialogueBefore": "Swimmer Reed: Out this far, you never know what's swimming under you. Like my Sharpedo!", "dialogueAfter": "Swimmer Reed: Better swim back to shore, I think." } },
     "swimmer_m_3": { "name": "Clarence", "trainer": { "dialogueBefore": "Swimmer Clarence: I race my Sharpedo across this route every morning. It always wins.", "dialogueAfter": "Swimmer Clarence: So do you, it seems." } }
   }

@@ -8,8 +8,8 @@
     "lass": {
       "name": "Julia",
       "trainer": {
-        "dialogueBefore": "Lass Julia: My Clefairy are twins, just like me and my sister!",
-        "dialogueAfter": "Lass Julia: Two Clefairy, one loss."
+        "dialogueBefore": "Lass Julia: My Clefable are twins, just like me and my sister!",
+        "dialogueAfter": "Lass Julia: Two Clefable, one loss."
       }
     },
     "old_man_1": {
@@ -36,14 +36,14 @@
     "scientist_2": {
       "name": "Leslie",
       "trainer": {
-        "dialogueBefore": "Super Nerd Leslie: Have you seen what a Koffing can do? Let me show you!",
+        "dialogueBefore": "Super Nerd Leslie: Have you seen what a Weezing can do? Let me show you!",
         "dialogueAfter": "Super Nerd Leslie: It went up in smoke..."
       }
     },
     "lass_3": {
       "name": "Andrea",
       "trainer": {
-        "dialogueBefore": "Lass Andrea: Three Meowth, three times the fun!",
+        "dialogueBefore": "Lass Andrea: Three Persian, three times the fun!",
         "dialogueAfter": "Lass Andrea: Three times the loss, too."
       }
     },

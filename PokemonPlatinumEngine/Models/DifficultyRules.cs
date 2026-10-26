@@ -47,6 +47,22 @@ public static class DifficultyRules
         _ => 1
     };
 
+    /// <summary>
+    /// What a tier is raised by under Challenge and lowered by under Easy in a region the game crossed into (plan 18 ·
+    /// W4b-2, the user's answer L6), in thousandths of the Pokémon's level: the share Sinnoh's levels are of Sinnoh's
+    /// own (+4 of a Champion's 62), so Unova's Champion's ace of 185 is raised by 12. Never less than <see cref="LevelsOf(Tier)"/>.
+    /// </summary>
+    public static int PerMilleOf(Tier tier) => tier switch
+    {
+        Tier.Chief => 65,
+        Tier.Boss => 50,
+        _ => 20
+    };
+
+    /// <summary>The levels a Pokémon of <paramref name="level"/> of a <paramref name="tier"/> is moved by: <see cref="LevelsOf(Tier)"/>, or in a crossed region its share (<see cref="PerMilleOf"/>), rounded to the nearest.</summary>
+    public static int LevelsOf(Tier tier, int level, bool crossed) =>
+        crossed ? Math.Max(LevelsOf(tier), (level * PerMilleOf(tier) + 500) / 1000) : LevelsOf(tier);
+
     /// <summary>EXP under Easy is this much more (three halves), rounded down and never less than it was.</summary>
     public static int ScaleExp(int exp, Difficulty difficulty) =>
         difficulty == Difficulty.Easy ? Math.Max(exp, exp * 3 / 2) : exp;
@@ -83,7 +99,7 @@ public static class DifficultyRules
     /// gives important trainers a held item, thinks with every routine of the AI and pays half as much again; Easy
     /// lowers the levels by the same table and changes nothing else of the trainer.
     /// </summary>
-    public static Trainer Prepare(Trainer trainer, RunRules? rules, int leadLevel = 0)
+    public static Trainer Prepare(Trainer trainer, RunRules? rules, int leadLevel = 0, bool crossed = false)
     {
         var difficulty = rules?.Difficulty ?? Difficulty.Normal;
         bool scale = rules is { ScaleTrainers: true } && leadLevel > 0 && trainer.Party.Count > 0;
@@ -94,10 +110,11 @@ public static class DifficultyRules
         if (scale) ScaleTo(copy, leadLevel);
         if (difficulty == Difficulty.Normal) return copy;
         var tier = TierOf(trainer.TrainerClass);
-        int by = LevelsOf(tier);
         int cap = Ruleset.Current.LevelCap;
         foreach (var p in copy.Party.Members)
         {
+            // By share of the level in a region the game crossed into (plan 18 · W4b-2)
+            int by = LevelsOf(tier, p.Level, crossed);
             int level = difficulty == Difficulty.Challenge
                 ? Math.Min(p.Level + by, Math.Max(p.Level, cap))
                 : Math.Max(Math.Min(p.Level, 2), p.Level - by);
@@ -106,6 +123,8 @@ public static class DifficultyRules
         if (difficulty == Difficulty.Easy) return copy;
 
         var extra = tier == Tier.Chief ? AddFromTheRematch(copy, trainer.Id) : null;
+        // In a crossed region the one more takes the stage its level allows, as the rest of the team has (plan 18 · W4b-2)
+        if (crossed && extra != null) OursGrowth.GrowTrainers(extra, Ruleset.Platinum.LevelCap);
         if (tier != Tier.Everyone) GiveItems(copy, extra);
         copy.Ai |= EveryRoutine;
         copy.PrizeMoney = PrizeMoney(copy.PrizeMoney, difficulty);
@@ -124,6 +143,20 @@ public static class DifficultyRules
         if (shift == 0) return;
         int cap = Ruleset.Current.LevelCap;
         foreach (var p in copy.Party.Members) p.Relevel(Math.Clamp(p.Level + shift, 1, cap));
+    }
+
+    /// <summary>
+    /// A Master Trainer's (plan 14 · B14) team as the player meets it (plan 18 · W4b-2, W4b's section 4, piece 5): at the
+    /// higher of its own level (75) and <paramref name="chosenLevel"/>, the level of the Pokémon put forward, its best
+    /// brought there and the rest by as many; the trainer itself where the chosen one is no higher. Its species stay
+    /// as they are (D15-A grows no Master's).
+    /// </summary>
+    public static Trainer FollowThePlayer(Trainer trainer, int chosenLevel)
+    {
+        if (trainer.Party.Count == 0 || chosenLevel <= trainer.Party.Members.Max(p => p.Level)) return trainer;
+        var copy = trainer.Copied();
+        ScaleTo(copy, chosenLevel);
+        return copy;
     }
 
     /// <summary>

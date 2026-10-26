@@ -24,7 +24,7 @@
     "r37_mystery_2": {
       "name": "Greg",
       "trainer": {
-        "dialogueBefore": "Psychic Greg: My Drowzee sees dreams. What does your Pokémon dream of?",
+        "dialogueBefore": "Psychic Greg: My Mesmeryx sees dreams. What does your Pokémon dream of?",
         "dialogueAfter": "Psychic Greg: It dreamt of losing, it seems."
       }
     },

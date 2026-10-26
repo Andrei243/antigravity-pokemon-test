@@ -31,7 +31,7 @@
     "0": {
       "name": "April",
       "trainer": {
-        "dialogueBefore": "Minccino keeps my house spotless and Deerling keeps my garden pretty. Shall we show you how it's done?",
+        "dialogueBefore": "Chinchillux keeps my house spotless and Sawsbuck keeps my garden pretty. Shall we show you how it's done?",
         "dialogueAfter": "Spotless defeat! I'll go and dust myself off."
       }
     },
@@ -52,14 +52,14 @@
     "3": {
       "name": "Jacques",
       "trainer": {
-        "dialogueBefore": "Watching a Deerling's coat turn with the seasons is my life's work. Now watch this battle!",
+        "dialogueBefore": "Watching a Sawsbuck's coat turn with the seasons is my life's work. Now watch this battle!",
         "dialogueAfter": "A fascinating result! Unfortunately for me."
       }
     },
     "4": {
       "name": "Marissa",
       "trainer": {
-        "dialogueBefore": "A Shelmet and a Karrablast: two Pokémon that change only when they meet. Let's see how you change in battle!",
+        "dialogueBefore": "An Accelgor and an Escavalier: two Pokémon that changed only when they met. Let's see how you change in battle!",
         "dialogueAfter": "I'd like to study how you won that."
       }
     },

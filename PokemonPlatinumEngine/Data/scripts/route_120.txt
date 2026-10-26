@@ -154,7 +154,7 @@ label Ask
   ask "Register Robert in the PokéNav's Match Call?"
   if no goto Refused
   addcontact hoenn_robert
-  say "Great! I'll call when Swablu learns something new."
+  say "Great! I'll call when Altaria learns something new."
   end
 label Refused
   say "Ah well. The sky's big enough for both of us."
@@ -178,7 +178,7 @@ label Ask
   ask "Register Jeffrey in the PokéNav's Match Call?"
   if no goto Refused
   addcontact hoenn_jeffrey
-  say "Brilliant! Expect lots of calls about Surskit."
+  say "Brilliant! Expect lots of calls about Ocellwing."
   end
 label Refused
   say "Fine, fine. More bugs for me!"

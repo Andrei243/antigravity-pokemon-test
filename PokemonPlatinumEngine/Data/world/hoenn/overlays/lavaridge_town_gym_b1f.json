@@ -9,7 +9,7 @@
   "people": {
     "jace": { "name": "Jace", "trainer": { "dialogueBefore": "Kindler Jace: Down here the steam never stops. Neither does my fire!", "dialogueAfter": "Kindler Jace: My fire went out in all this steam." } },
     "keegan": { "name": "Keegan", "trainer": { "dialogueBefore": "Kindler Keegan: You fell through the floor? Ha! Everyone does. Now battle me!", "dialogueAfter": "Kindler Keegan: The vents will take you back up. Good luck finding the right one." } },
-    "jeff": { "name": "Jeff", "trainer": { "dialogueBefore": "Kindler Jeff: Two Slugma, double the heat! Let's go!", "dialogueAfter": "Kindler Jeff: Double the heat, and still not enough." } },
+    "jeff": { "name": "Jeff", "trainer": { "dialogueBefore": "Kindler Jeff: Two Calderon, double the heat! Let's go!", "dialogueAfter": "Kindler Jeff: Double the heat, and still not enough." } },
     "eli": { "name": "Eli", "trainer": { "dialogueBefore": "Hiker Eli: I came for the hot springs and stayed for the battles. Ready?", "dialogueAfter": "Hiker Eli: Ahh, I'll go and soak my sore feet now." } }
   }
 }

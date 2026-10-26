@@ -20,7 +20,7 @@
       // Beaten, he gives his number for the Pokégear's phone (plan 20 · J3; route_30.txt)
       "script": "Joey",
       "trainer": {
-        "dialogueBefore": "Youngster Joey: My Rattata is in the top bit of all Rattata. Want to see?",
+        "dialogueBefore": "Youngster Joey: My Ratchisel is in the top bit of all Ratchisel. Want to see?",
         "dialogueAfter": "Youngster Joey: Huh. It's still the top bit. Just maybe not the very top."
       }
     },

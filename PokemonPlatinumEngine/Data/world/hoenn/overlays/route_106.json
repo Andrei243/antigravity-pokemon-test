@@ -5,8 +5,8 @@
   "bgmTrack": "hoenn/route104",
   "trees": "Round",
   "people": {
-    "swimmer_m": { "name": "Douglas", "trainer": { "dialogueBefore": "Swimmer Douglas: Two Tentacool, twice the stings! Come on in!", "dialogueAfter": "Swimmer Douglas: Ouch. Stung by my own pride." } },
-    "swimmer_f": { "name": "Kyla", "trainer": { "dialogueBefore": "Swimmer Kyla: My Wailmer gives the best rides. Shall we battle first?", "dialogueAfter": "Swimmer Kyla: Wailmer, let's float home." } },
+    "swimmer_m": { "name": "Douglas", "trainer": { "dialogueBefore": "Swimmer Douglas: Two Medusarch, twice the stings! Come on in!", "dialogueAfter": "Swimmer Douglas: Ouch. Stung by my own pride." } },
+    "swimmer_f": { "name": "Kyla", "trainer": { "dialogueBefore": "Swimmer Kyla: My Wailord gives the best rides. Shall we battle first?", "dialogueAfter": "Swimmer Kyla: Wailord, let's float home." } },
     "fisherman": { "name": "Elliot", "trainer": { "dialogueBefore": "Fisherman Elliot: You scared off my bite! Now you owe me a battle.", "dialogueAfter": "Fisherman Elliot: I should have stuck to fishing." } },
     "fisherman_2": { "name": "Ned", "trainer": { "dialogueBefore": "Fisherman Ned: I've caught nothing all day. Maybe I'll catch a win instead!", "dialogueAfter": "Fisherman Ned: Nothing all day, and now this." } }
   },
