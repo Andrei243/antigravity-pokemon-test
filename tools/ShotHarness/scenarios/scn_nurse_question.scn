@@ -3,9 +3,13 @@ newgame
 at PokemonCenter 8 6 up
 talk
 read
+wait 1
 shot scn_nurse_asks
 state
 answer 0
 read
+wait 1
 shot scn_nurse_done
+answer 1
+read
 expect state Overworld
