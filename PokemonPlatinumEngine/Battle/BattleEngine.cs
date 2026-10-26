@@ -274,6 +274,10 @@ public partial class BattleEngine
             RunLevelCap = setup.RunLevelCap,
             Nuzlocke = setup.Nuzlocke,
             Restrictions = setup.Restrictions,
+            // The Battle Palace and the Battle Arena (plan 14 · B9); a battle watched has what the recorded one had
+            PlayerController = setup.PlayerController,
+            Palace = watched?.Palace ?? setup.Palace,
+            TurnLimit = watched?.TurnLimit ?? setup.TurnLimit,
             // A Key Stone in the bag lets one of the player's Pokémon Mega Evolve (plan 06 · R20); a battle watched
             // has what the recorded one had (plan 08 · P11)
             KeyStone = watched?.KeyStone ?? setup.Inventory.AllItems.Any(s => s.Name == BattleCore.KeyStoneItem),
@@ -334,6 +338,15 @@ public partial class BattleEngine
 
     /// <summary>Nothing may be used from the bag (plan 14 · B14, a Master Trainer's battle): BAG is greyed and says why.</summary>
     public bool BagClosed => core.NoBattleItems || core.BagShutByTheRun;
+
+    /// <summary>A battle of the Battle Palace (plan 14 · B9): the player's Pokémon choose for themselves and the commands stand closed.</summary>
+    public bool Palace => core.Palace;
+
+    /// <summary>A battle of the Battle Arena (plan 14 · B9): its bouts are judged after <see cref="BattleCore.TurnLimit"/> turns.</summary>
+    public bool Arena => core.TurnLimit > 0;
+
+    /// <summary>The judge's card on show (plan 14 · B9): the verdict the line being read gives, until the next line.</summary>
+    public ArenaVerdict? JudgeCard { get; private set; }
 
     /// <summary>
     /// The one ball this battle throws in place of the bag (plan 15 · E5: the Bug-Catching Contest's Sport Ball, counted
@@ -499,6 +512,8 @@ public partial class BattleEngine
             switch (interlude.Count > 0 ? interlude.Dequeue() : steps.Dequeue())
             {
                 case Line line:
+                    // The judge's card stands over its own line alone (plan 14 · B9)
+                    JudgeCard = null;
                     currentMessage = line.Text;
                     CurrentSpeaker = line.Speaker;
                     waitingForMessageConfirm = true;
@@ -828,6 +843,10 @@ public partial class BattleEngine
                 // colour of its Z-Move's type, with its sound; nothing to see with the scene off
                 Sound("z_power", zPower.Place.Side);
                 if (Scene) Anim.ZPower(zPower.Place.Side, zPower.Place.Slot, MoveDatabase.Get(zPower.ZMove)?.Type ?? MoveDatabase.Get(zPower.From)?.Type ?? PokemonType.Normal);
+                break;
+            case Judged judged:
+                // The Battle Arena's judge gives its verdict: the card stands over the line (plan 14 · B9)
+                JudgeCard = judged.Verdict;
                 break;
             case Rotated rotated:
             {

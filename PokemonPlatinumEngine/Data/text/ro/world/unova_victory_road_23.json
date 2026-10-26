@@ -1,0 +1,39 @@
+{
+  "displayName": {
+    "en": [
+      "Victory Road"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Hugo"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Few find this hollow. Fewer leave it without a battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "You'll leave it, then. Well earned."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

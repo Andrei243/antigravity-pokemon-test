@@ -69,6 +69,8 @@ public sealed partial class BattleCore
     {
         var b = At(choice.Who);
         if (!b.IsActive) return Text.Of("battle.thereIsNoPokemon");
+        // Only a Pokémon of the Battle Palace hesitates over what it chose (plan 14 · B9)
+        if (choice.Falters && (!Palace || choice.Kind != ChoiceKind.Fight)) return Text.Of("battle.venue.noHesitating");
         // A move chosen for a Pokémon behind the front of a rotation battle's turntable (plan 14 · B7)
         if (choice.Rotation != 0) return WhyNotRotation(choice);
         // A Mega Evolution goes with a move and where the rules let it (plan 06 · R20)
@@ -106,6 +108,8 @@ public sealed partial class BattleCore
                 // At Battle Style Shift's offer nothing holds it: the original opens the team with nothing barred
                 // (BtlCmd_ChoosePokemonMenu), and whatever bound it fell with the foe
                 if (Request is SwitchOfferRequest offered && offered.Place == choice.Who) return null;
+                // A bout of the Battle Arena is fought to its end by the two in it (plan 14 · B9)
+                if (TurnLimit > 0 && Request is not ReplacementRequest) return Text.Of("battle.venue.noSwitching");
                 return TrapOn(b, forRunning: false);
 
             case ChoiceKind.Stay:

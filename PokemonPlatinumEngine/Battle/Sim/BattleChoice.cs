@@ -65,6 +65,13 @@ public sealed record BattleChoice(Place Who, ChoiceKind Kind)
     /// </summary>
     public int Rotation { get; init; }
 
+    /// <summary>
+    /// With a move, in the Battle Palace (plan 14 · B9): the Pokémon chose it by its nature but can't bring itself to use
+    /// it (Emerald's <c>palaceUnableToUseMove</c>), and spends its turn hesitating. Only <see cref="PalaceController"/>
+    /// makes one; refused anywhere but the Palace (<see cref="BattleCore.WhyNot"/>).
+    /// </summary>
+    public bool Falters { get; init; }
+
     /// <summary>In place of a move's position: the move the Pokémon is in the middle of or held to.</summary>
     public const int HeldMove = -2;
 

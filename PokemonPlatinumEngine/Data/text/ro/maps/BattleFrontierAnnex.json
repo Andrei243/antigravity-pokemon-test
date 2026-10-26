@@ -57,6 +57,26 @@
           ""
         ]
       }
+    },
+    "palace_receptionist": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "arena_receptionist": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {}

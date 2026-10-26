@@ -140,7 +140,8 @@ public class CommandLineTests
         Assert.Contains(GameVersion.Version, usage);
         // The switches whose other half isn't built yet say so plainly
         Assert.Contains("none is made yet", CommandLine.Switches.Single(s => s.Name == "--verify").Help);
-        Assert.Contains("Nothing reads it yet", CommandLine.Switches.Single(s => s.Name == "--dev").Help);
+        // --dev's other half is built since plan 16 · T6: the console and live reload
+        Assert.Contains("console", CommandLine.Switches.Single(s => s.Name == "--dev").Help);
         Assert.Contains("packs", CommandLine.Switches.Single(s => s.Name == "--safe-mode").Help);
         // A console shows it whole and unbroken: no line wider than a hundred, and nothing but plain letters
         Assert.All(usage.Split('\n'), line => Assert.True(line.Length <= 100, line));

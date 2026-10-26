@@ -611,5 +611,26 @@ partial class Harness
         Frames(30); Shot("st44_crossing_arrived");
         Console.WriteLine($"crossing: arrived in {engine.Here.Id} on {game.Map.Name} {game.Player.GridX},{game.Player.GridY}, " +
             $"the team {team.Count} of {crossingTeam}, the sign \"{game.LocationSign.Name}\"");
+
+        // ---- the developer's console (plan 16 · T6), the very last: a script of the harness's own traced as the game
+        // carries it out, then the console opened over the field with the trace, a command's answer, a refusal and the
+        // frame's time in the corner. The console is drawn whether or not developer mode is on (only its key is
+        // developer mode's), so nothing else of the run is in developer mode. It prints the console's last lines
+        var console = engine.DevConsole;
+        console.Run(engine, "trace on");
+        var traced = ScriptLibrary.FromSources((game.Map.Name, "script Traced\n setflag FLAG_HARNESS_TRACED\n setvar VAR_HARNESS_TRACED 7\n clearflag FLAG_HARNESS_TRACED\n"));
+        engine.StartScript(traced.All.Single());
+        Until(() => !engine.ScriptRunning, "the traced script's end", 120);
+        console.Run(engine, "trace off");
+        console.Run(engine, "flags HARNESS_TRACED");
+        console.Run(engine, "fly Sinnoh");
+        console.Run(engine, "fps on");
+        console.Type("warp Sinnoh 116 886");
+        console.Open();
+        Frames(10); Shot("st9k_console");
+        Console.WriteLine($"console: {console.Output.Count} lines, the last \"{console.Output[^1].Text}\"; traced {console.Output.Count(l => l.Tone == ConsoleTone.Trace)} instruction(s)");
+        console.Close();
+        console.Run(engine, "fps off");
+        Frames(2);
     }
 }

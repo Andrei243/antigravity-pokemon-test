@@ -160,7 +160,11 @@
     "Hoopster": "sport",
     "Team Plasma Colress": "mystery",
     "Team Plasma Shadow": "galactic",
-    "Team Plasma Ghetsis": "galactic"
+    "Team Plasma Ghetsis": "galactic",
+    "Elite Four Shauntal": "eliteFour",
+    "Elite Four Marshal": "eliteFour",
+    "Elite Four Grimsley": "eliteFour",
+    "Elite Four Caitlin": "eliteFour"
   },
   "battleThemes": {
     "Leader": "gym",
@@ -203,7 +207,11 @@
     "Leader Marlon": "gym",
     "Team Plasma Colress": "gym",
     "Team Plasma Shadow": "galactic",
-    "Team Plasma Ghetsis": "galacticBoss"
+    "Team Plasma Ghetsis": "galacticBoss",
+    "Elite Four Shauntal": "eliteFour",
+    "Elite Four Marshal": "eliteFour",
+    "Elite Four Grimsley": "eliteFour",
+    "Elite Four Caitlin": "eliteFour"
   },
   "eyeSongs": {
     "Team Magma": "eye_magma",

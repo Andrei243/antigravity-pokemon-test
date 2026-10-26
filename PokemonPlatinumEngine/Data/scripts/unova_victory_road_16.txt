@@ -1,0 +1,46 @@
+# Victory Road's last tunnel (plan 22 · U9, part b). docs/scripts.md describes the language; the lines are our own, on Black 2's
+# beats (the decompilation's res/field/scripts/victory_road_16.s, read for the order alone).
+#
+# VAR_UNOVA_HUGH_TUNNEL is 0 until Hugh has caught the player up in the tunnel, 1 after his battle. As the player comes along the
+# passage towards the way out (our trigger across it, 12, 6 to 9) Hugh runs in from the summit wanting one more battle before the
+# League: Black 2's TRAINER_RIVAL_16, _17 and _18 are his team by the player's starter (the one strong against it). He thanks the
+# player for the journey, gives TM24 and runs back the way he came.
+
+
+script OnEnter
+  call UnovaCatchUpF
+  end
+
+
+script Hugh
+  scene "Hugh in Victory Road"
+  place player 12 7 right
+  clearflag FLAG_UNOVA_HIDE_HUGH_TUNNEL
+  place hugh_tunnel 20 7 left
+  show hugh_tunnel
+  speaker "{rival}"
+  say "Wait up, {player}!"
+  walk hugh_tunnel left 7
+  say "Before you take on the Pokémon League, battle me one more time. Every battle makes us stronger, right?"
+  if starter "Snivy" goto AgainstSnivy
+  if starter "Tepig" goto AgainstTepig
+  battle hugh_tunnel as "unova_rival_18"
+  goto Fought
+label AgainstSnivy
+  battle hugh_tunnel as "unova_rival_16"
+  goto Fought
+label AgainstTepig
+  battle hugh_tunnel as "unova_rival_17"
+label Fought
+  speaker "{rival}"
+  say "{player}... Thanks to you, I did what I set out to do on this journey. My sister's Purrloin is home."
+  say "I wish you could have seen her face. This is my thanks!"
+  give "TM24"
+  say "You're seriously amazing. So go and become the Champion! Show everyone the kind of Trainer your Pokémon are proud of!"
+  say "See you!"
+  walk hugh_tunnel right 7 fast
+  hide hugh_tunnel
+  setflag FLAG_UNOVA_HIDE_HUGH_TUNNEL
+  setvar VAR_UNOVA_HUGH_TUNNEL 1
+  endscene
+  end

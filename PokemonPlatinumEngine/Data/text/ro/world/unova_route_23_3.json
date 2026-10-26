@@ -1,0 +1,43 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Artist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Every Trainer who passes my window wears the same face: tired, and full of hope.",
+          "I paint that face. Would you sit for me, once you come back down as Champion?"
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Smeargle"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Smeargle: Smea, smea!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

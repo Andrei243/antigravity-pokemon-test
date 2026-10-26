@@ -77,7 +77,9 @@ public enum RollKind
     /// </summary>
     Call,
     /// <summary>The ally that answers a call (plan 14 · B5): its level, which of the species that may come, the number its personality and IVs are made from.</summary>
-    Ally
+    Ally,
+    /// <summary>The Battle Palace (plan 14 · B9): out of 100 the group a nature chooses, then which of the group's moves, a slot of four, and out of 100 whether a move off the group is used.</summary>
+    Palace
 }
 
 /// <summary>

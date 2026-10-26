@@ -50,6 +50,10 @@ public static class Bw2Cover
         ("^in10_kabe", TerrainCover.Cliff),
         // (and the Relic Passage's floors, whose d0yuka is a cave's floor, not a street's)
         ("^d0yuka", TerrainCover.CaveFloor),
+        // (plan 22 · U9, part b: the Pokémon League's plaza, judged with --chunk: its mountain's rock faces, and the League's
+        // roofs, windows, ring and lifts)
+        ("^pk_l_iwa", TerrainCover.Cliff),
+        ("^pk_l_(yane|mado|ring)|^pl_ele|^pl_colum", TerrainCover.Building),
         ("^taki|^sea_zanami|^sea_simi|^shore|^ike\\d|^mizu|kawa|gawa|^sea_|nagare|asase|_zan\\d|mizo|suimon|foun", TerrainCover.Water),   // falls, surf, ponds, rivers, shallows, the sea, ditches, sluices, fountains
         ("marsh", TerrainCover.Marsh),
         ("gake|^ga_s|dansa|gak\\d|futa|wall", TerrainCover.Cliff),   // cliffs, the sea's cliffs, their caps (futa) and steps of rock, walls of rock

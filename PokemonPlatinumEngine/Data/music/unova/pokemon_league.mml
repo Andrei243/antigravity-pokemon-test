@@ -1,0 +1,33 @@
+# The Pokémon League's plaza (the terrace before the League under its mountain): a trumpet's stately tune in C major over a
+# harp's arpeggios, held strings and a slow bass, with a light kit. At night the tune goes to the horn.
+# Original composition for this game (plan 22 · U9, part b).
+title Pokémon League
+tempo 96
+meter 4/4
+reverb 0.38
+nighttempo 0.94
+
+track lead trumpet night=horn vol=0.58 pan=0.05 rev=0.34
+  L o5 c2 e4 g4 | o5 a2 f4 a4 | o5 b2 a4 g4 | o5 g2 e2 |
+  o5 a4 o6 c4 o5 a4 e4 | o5 f4 a4 o6 c4 d4 | o6 d2 o5 b4 g4 | o5 g1 |
+  o5 a2 o6 c2 | o5 b2 o6 d2 | o6 e2 o5 b4 g4 | o5 a1 |
+  o5 f4 a4 o6 c4 o5 a4 | o5 g4 b4 o6 d4 o5 b4 | o6 c1 | o5 b2 d2 |
+
+track arps harp vol=0.38 pan=-0.20 rev=0.30
+  L [ o4 c8 e8 g8 e8 ]2 | [ o4 f8 a8 o5 c8 o4 a8 ]2 | [ o4 g8 b8 o5 d8 o4 b8 ]2 | [ o4 c8 e8 g8 e8 ]2 |
+  [ o4 a8 o5 c8 e8 c8 ]2 | [ o4 f8 a8 o5 c8 o4 a8 ]2 | [ o4 g8 b8 o5 d8 o4 b8 ]2 | [ o4 g8 b8 o5 d8 o4 b8 ]2 |
+  [ o4 f8 a8 o5 c8 o4 a8 ]2 | [ o4 g8 b8 o5 d8 o4 b8 ]2 | [ o4 e8 g8 b8 g8 ]2 | [ o4 a8 o5 c8 e8 c8 ]2 |
+  [ o4 f8 a8 o5 c8 o4 a8 ]2 | [ o4 g8 b8 o5 d8 o4 b8 ]2 | [ o4 c8 e8 g8 e8 ]2 | [ o4 g8 b8 o5 d8 o4 b8 ]2 |
+
+track pad strings vol=0.30 rev=0.45
+  L o4 (c e g)1 | o4 (f a >c)1 | o4 (g b >d)1 | o4 (c e g)1 |
+  o4 (a >c e)1 | o4 (f a >c)1 | o4 (g b >d)1 | o4 (g b >d)1 |
+  o4 (f a >c)1 | o4 (g b >d)1 | o4 (e g b)1 | o4 (a >c e)1 |
+  o4 (f a >c)1 | o4 (g b >d)1 | o4 (c e g)1 | o4 (g b >d)1 |
+
+track bass contrabass vol=0.52 rev=0.18
+  L o3 c1 | o3 f1 | o3 g1 | o3 c1 | o3 a1 | o3 f1 | o3 g1 | o3 g1 |
+  o3 f1 | o3 g1 | o3 e1 | o3 a1 | o3 f1 | o3 g1 | o3 c1 | o3 g1 |
+
+track drums kit vol=0.26 rev=0.26
+  L v60 [ b4 h4 s4 h4 | ]16

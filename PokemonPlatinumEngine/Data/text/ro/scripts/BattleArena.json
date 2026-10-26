@@ -1,0 +1,84 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Referee"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Battle {number} of seven! Three turns a bout, then the judge decides."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{foe} steps into the arena!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Referee"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The judge is satisfied! Your three have been made whole again. Next!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Referee"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Seven straight! {player} has mastered Mind, Skill and Body alike."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received {number} BP!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Referee"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's the end of your round. Come back and test yourself again."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

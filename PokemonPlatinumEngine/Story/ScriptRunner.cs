@@ -389,6 +389,8 @@ public sealed partial class ScriptRunner
         Op.Pokeblock => i.Name == "blend",
         // The Battle Dome opens screens, asks the Frontier and battles on most of its words, as the facilities do: none is hurried through (plan 14 · B8)
         Op.Bracket => true,
+        // So do the Battle Palace and the Battle Arena (plan 14 · B9)
+        Op.Venue => true,
         _ => throw new ArgumentOutOfRangeException(nameof(i), i.Op, "This command doesn't say what it does in a hurry: name it in ScriptRunner.StopsAHurry.")
     };
 
@@ -432,8 +434,12 @@ public sealed partial class ScriptRunner
 
     // ------------------------------------------------------------------ a line
 
+    /// <summary>Told of every instruction as it is carried out, with the script it is in (plan 16 · T6: the console's <c>trace</c>); null for nobody.</summary>
+    public Action<Script, Instruction>? Trace { get; set; }
+
     private void Execute(Instruction i)
     {
+        if (Trace != null && script != null) Trace(script, i);
         var story = host.Story;
         switch (i.Op)
         {
@@ -1277,6 +1283,10 @@ public sealed partial class ScriptRunner
             // The Battle Dome (plan 14 · B8)
             case Op.Bracket:
                 DomeBracket(i);
+                break;
+            // The Battle Palace and the Battle Arena (plan 14 · B9)
+            case Op.Venue:
+                VenueRound(i);
                 break;
 
             // Amity Square's walk (plan 06 · R16c)

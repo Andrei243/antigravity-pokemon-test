@@ -165,6 +165,10 @@ public sealed class FrontierRecords
     /// <summary>The Battle Dome's own part (plan 14 · B8, in the Frontier's annex): the tournaments won in a row and in all.</summary>
     public DomeRecord Dome { get; set; } = new();
 
+    /// <summary>The Battle Palace's and the Battle Arena's own parts (plan 14 · B9, in the Frontier's annex): the battles won in a row and the rounds.</summary>
+    public VenueRecord Palace { get; set; } = new();
+    public VenueRecord Arena { get; set; } = new();
+
     // ------------------------------------------------------------------ the numbers
 
     /// <summary><c>BattleFrontierSave_GetStat</c>.</summary>

@@ -1,0 +1,27 @@
+{
+  "key": "unova_pokemon_league_2",
+  "index": 137,
+  "name": "Pokémon League",
+  "matrix": 210,
+  "kind": "Outdoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "20",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_POKEMON_LEAGUE",
+  "nightMusic": "BGM_POKEMON_LEAGUE",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 30, "z": 51, "to": "", "toWarp": 65535 },
+    { "x": 31, "z": 51, "to": "", "toWarp": 65535 },
+    { "x": 32, "z": 51, "to": "", "toWarp": 65535 }
+  ],
+  "objects": [],
+  "signs": [
+    { "x": 31, "z": 44, "type": 0, "script": "3" }
+  ],
+  "triggers": []
+}

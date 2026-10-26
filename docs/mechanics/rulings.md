@@ -2243,6 +2243,25 @@ Emerald's Battle Dome, as a facility of a building of our own beside Platinum's 
 - **The record** (`FrontierRecords.Dome`): the tournaments won in a row, the most ever, every tournament and match won. A loss ends the streak. A tournament isn't saved: one left unfinished (a game closed in the hall) ends the streak when the next is begun.
 - **The prize**: three Battle Points for a tournament won, one more for each won in a row before it, up to ten (ours: Emerald's points aren't read). No Dome Ace, no print and no board of records yet.
 
+### The Battle Palace (plan 14 · B9)
+
+Emerald's Battle Palace, as a second venue of the annex beside the Dome, on the Frontier's frame. Its numbers are Emerald's, read from pret/pokeemerald at the commit `Sources.EmeraldCommit` pins (`src/battle_script_commands.c`, `src/battle_gfx_sfx_util.c`), transcribed by hand into `Data/palace-natures.json`; no line of its text is taken.
+
+- **The desk and the round** (`BattleFrontierAnnex.txt`'s `PalaceDesk`, `BattlePalace.txt`): three Pokémon by the Frontier's rules go in as copies at level 50 or under, made whole for every battle; seven trainers of the Frontier's table, drawn without repeats from the Battle Tower's row of the room the rounds won in a row have come to (the streak of battles over seven), each with three, are met one after another, three against three. Seven wins take the round; a loss ends it and the streak. Emerald asks after every battle whether to go on and lets a challenge be saved; ours goes on to the seventh and keeps nothing mid-round (a round walked out on ends the streak when the next is begun, as the Dome's).
+- **Every Pokémon chooses for itself, on both sides** (`CoreSetup.Palace`, `PalaceController`): a roll of 0 to 99 and its nature's two shares (attack, defence; support the rest) choose a group; the second pair of shares is used once it is at half its HP or less and awake (Emerald's `palaceFlags`: set as it comes in that way or at the end of the turn it first is, with the nature's line, cleared as it comes in otherwise). The groups are Emerald's by a move's target: aimed at a foe it strikes unless it is a status move, which supports; aimed at the foes' side it supports; aimed at the user or its side it defends; anything else (a weather move, which Emerald aims at every battler) strikes. A status move is told by its category, since this game's data gives variable power as 0 where Emerald gives 1.
+- **The move itself** is one of the group's moves with PP left, taken by chance (ours: Emerald hands the group to its AI); one the battle then refuses (disabled, taunted, locked) comes to nothing that turn (Emerald's `palaceUnableToUseMove`, "can't bring itself to act", `BattleChoice.Falters`). With no move of the group, Emerald's fallback is kept, quirk and all: a group with two or more usable moves is preferred when it is the only such, the support group's count being read wrongly so it never is, a slot of four is drawn until a usable one comes up, and the move is used one time in two. A Pokémon with nothing it can use struggles. Every roll is the battle's own (`RollKind.Palace`), so a Palace battle's record is its seed alone.
+- **The menu stays closed**: nothing is asked of the player, and each turn the battle says that the player's Pokémon is deciding for itself (a line of ours). Single battles only: Emerald's doubles and its nature's choice of target in them (`gBattlePalaceNatureToMoveTarget`) are not built.
+- **The prize**: the Dome's rule of ours, three Battle Points for a round won and one more for each round won in a row before it, up to ten. No Palace Maven's print, no board of records.
+
+### The Battle Arena (plan 14 · B9)
+
+Emerald's Battle Arena, as the annex's third venue, its judge read from pret/pokeemerald's `src/battle_arena.c` at the same commit.
+
+- **The round** is the Palace's (seven trainers, three against three, copies at 50 made whole each battle, `ArenaDesk`, `BattleArena.txt`). The player chooses moves as anywhere else, but **may not switch** (the POKéMON command says why), and after a faint the next of each team in its order comes in with nobody asked; the Frontier's trainers don't switch either (a switch their AI chooses becomes the first move they can use).
+- **A bout** is the two facing each other from the turn they met (`CoreSetup.TurnLimit` 3, `ArenaJudge`): if both still stand at the end of its third turn the judge gives its verdict (`Judged`). **Mind** adds each move's rating as it is used: a damaging move one, Counter, Mirror Coat and Bide nothing, Fake Out one less; a status move nothing, Protect, Detect and Endure one less (ours for the later games: Metal Burst and Comeuppance with Counter, the later protections with Protect). **Skill** adds what each move came to: two less for one that failed, missed or did nothing (nothing at all when only a protection stopped it), two for one super effective, one for one both super and not very effective, one less for one not very effective, one for anything else that came off. **Body** is the share of its bout's starting HP each kept, in hundredths, rounded down.
+- **The verdict**: each count is won by the side ahead on it (two points) or shared (one each); the side with more points takes the bout and the other's HP falls to nothing, and on level points both fall (Emerald's draw). A bout one side left early (a faint) is over and the next pair begins anew.
+- **The prize** is the Palace's. No Arena Tycoon, no print.
+
 ### Master Trainers (plan 14 · B14)
 
 Let's Go's Master Trainers: a master for every species, battled one-on-one by one of the player's Pokémon of that species, with the bag closed. Nothing of Let's Go's is read; the masters' moves are Pokémon Showdown's random-battle sets at the pinned commit (MIT), and their names are our own.
@@ -3297,6 +3316,74 @@ scripts, read for the order alone) on flags of ours. `VAR_UNOVA_CHASM` is the ch
 - **What a save needs.** A save past the Frigate's flight is given the chapter's hidden people by `UnovaCatchUpE`
   (`FLAG_UNOVA_CHASM_BEGUN`), which the arrivals of the cave, both craters, the ramp hall and the cavern call, with no story version
   raised.
+
+## Unova's fifth chapter, parts b and c: Route 23, Victory Road and the League (2026-10-26, plan 22 · U9)
+
+Black 2's beats from the Giant Chasm's way out to the Hall of Fame and home, in our own words (the decompilation's zone scripts, read
+for the order alone) on variables of ours. What differs from Black 2, and why:
+
+- **Route 23** opens from the chasm's cave once the chapter there is over (its two guards gone), with Black 2's trainers, trees,
+  boulders and balls and its two houses; Azelf, which waits there after the League, and the Shards' three things are plan 22 · U10's.
+- **N at the foot of Victory Road** steps out to meet the player at the head of the way up from Route 23 (Black 2's own trigger,
+  `VAR_UNOVA_N_VICTORY_ROAD`), says the League lies past Victory Road, gives HM05 (Black 2's item 424) and goes.
+- **The Badge Check Gates** are eight triggers of ours on Black 2's gate lines west along the road, taken in order by
+  `VAR_UNOVA_BADGE_GATES` (0 to 8, the eight Badges in Unova's order; 9 once the last gate before the cave has said all eight are
+  confirmed). Black 2 checks with its own variables, one to a gate, set by the area's arrival for each Badge held; a gate whose
+  Badge is missing turns the player back a step, where Black 2's gate stays shut. The gates themselves are not drawn.
+- **Victory Road is Black 2's**, where the two versions differ: the decompilation keeps two sets of the ruins and the falls, one
+  whose models are named for White 2 (`victory_road_24`, `_25`, `white2601` and `white2603`) and the dungeon's own (`_17`, `_19`); the
+  latter are built, and the other set's ways lead nowhere and are closed, as the original's script moves them away by version. Of the
+  people standing by version that set's are kept (the grove's Chandra, the falls' Beckett and Shelly, the long cave's Webster and
+  Shanta by its north wall with its two boulders). The ruins and the long cave each have two holes a boulder pushed with Strength
+  fills (`StrengthHole`), as the Relic Passage's are: overlay `holes` and `pits`, their scripts `Fill<Side>`, the boulder gone with its
+  hole; without them the floors are cut in two. The ruins' TM93 is a move of the later games this game's data hasn't, held back. The
+  Zoroark that guards the way to N's Castle and the way itself are plan 22 · U10's. Route 23's six holes are left unfilled (the way
+  along it doesn't need them).
+- **Hugh's last battle** is in Victory Road's last tunnel, as Black 2 has it (not before Victory Road): as the player comes along
+  the passage to the way out he runs in from the summit, battles with Black 2's `TRAINER_RIVAL_16`, `_17` or `_18` by the player's
+  starter, thanks the player for his sister's Purrloin, gives TM24 (Black 2's item 351) and runs back (`VAR_UNOVA_HUGH_TUNNEL`).
+- **The way out to the League** leads in Black 2 onto a bridge that stands on its rails (`victory_road_2`), which the reader leaves
+  out: here the tunnel's way out leads straight onto the plaza at the head of its steps, and the plaza's way down straight back.
+- **The plaza is one chunk of 64 by 64** (`pokemon_league_pl_00_00`, the one such grid of Black 2's), read by the importer as four
+  quarters of 32 by 32 in a matrix of two by two (`Bw2Maps.QuarterBigChunks`; the quarters after the first are numbered past the
+  ice twins, `Bw2World.QuarterOffset`), so its steps, its door and the Pokémon Center's door, which lie past the first quarter, are
+  there. The League's building is drawn into the plaza's own model with no prop: its tiles are `Building` cover and blocked, as
+  Castelia's towers once were, and look plain until a prop of ours stands for it. The veteran by the steps asks whether the
+  challenger is ready (`VAR_UNOVA_LEAGUE_GUARD`); no, and they step back.
+- **The League's hall and rooms** stand on rails in Black 2 too: the hall's four staircases up to the Elite Four's rooms, each room's
+  stairs up to its floor, and the Champion's room's stairs up to the walk. Each is an exit of ours (an overlay's `exits`): at the head
+  of the hall's four arms (Shauntal's west, Grimsley's north-west, Caitlin's north-east, Marshal's east, which is our own arrangement
+  of the four), at the foot of each room's stairs, and at the foot of the Champion's walk, both ways. A room cut to what its ways
+  reach counts its overlay's exits as ways (`WaysIntoRoom`), so the floors the rails led to are not walls. The door back to the hall
+  is shut behind the challenger in every room; once its master is beaten (`VAR_UNOVA_LEAGUE_SHAUNTAL`, `_GRIMSLEY`, `_MARSHAL`,
+  `_CAITLIN`) Black 2's own light in the floor's corner carries the player back to the hall. The four battle when spoken to, with
+  Black 2's first teams and, once Unova's Hall of Fame has been entered, the second round's (`_2`); Black 2's Challenge Mode teams
+  (`_3`, `_4`) are plan 13's. The hall has no way back out to the plaza, as Black 2's door is shut; the plaza's arrival puts the four
+  and the Champion back (every challenge starts there, and a battle lost wakes the player in the plaza's Pokémon Center).
+- **The statue** in the hall's well is read from the floor south of it (Black 2's own background event stands in the well) and,
+  with all four beaten, sinks and carries the challenger down to the great hall below (`pokemon_league_3`), over a fade, where
+  Black 2 plays a lift. The statue there takes them back up if they ask.
+- **Iris** comes down from her dais as the challenger reaches the head of the walk (our trigger) and battles with Black 2's team
+  (`unova_champion_iris`, after the Hall of Fame `_2`). Black 2's walk to the Hall of Fame past the Elite Four (`pokemon_league_4`)
+  is not played: Iris leads the new Champion straight there over a fade, as Hoenn's Wallace does.
+- **The Hall of Fame** has no way of its own (Black 2 reaches it by a scene); a room with no way is as large as the floor its people
+  of ours stand on (`WaysIntoRoom`). Its one scene is Kanto's, Johto's and Hoenn's: Iris's words, the team recorded, `UnovaHallOfFame`
+  set (the region's flag, which opens the flight to Kalos and the National Pokédex), the team's entry, the team healed, home to the
+  player's room in Aspertia City, the game saved and the credits.
+- **Home**: as the player comes down from their room after the Hall of Fame, Mom welcomes the Champion and the professor's father,
+  Cedric Juniper, comes in with the National Pokédex (`VAR_UNOVA_HOUSE` 2 to 3; Black 2's beat). The region file's `nationalUnlock`
+  is `HallOfFame`.
+- **The way on to Kalos is by air from Mistralton City's cargo hall**: the airline's attendant stands in its east wing once Unova's
+  Hall of Fame is entered (`RegionDatabase`'s link from Unova, `common.Attendant`), and says the flight isn't running until plan 23
+  builds Kalos.
+- **Looks and sounds.** Shauntal, Marshal and Grimsley have looks of ours (stand-ins until plan 22 · U12), Caitlin is the Battle
+  Castle's, and Cedric Juniper is ours; the four's classes (`Elite Four Shauntal` and the rest, Black 2's) battle in their own looks and
+  to the Elite Four's music. The songs are ours: `unova/route23` (30 s, the ocarina at night), `unova/victory_road` (32 s, the same by
+  day and night), `unova/pokemon_league` (40 s, the plaza and the League's rooms, the horn at night), `unova/battle_elite_four` and
+  `unova/battle_champion` (each with its low-HP arrangement) and `unova/credits` (37 s), not yet heard by the user.
+- **What a save needs.** A save of the Giant Chasm's is given the chapter's hidden people (Hugh in the tunnel, Cedric Juniper) by
+  `UnovaCatchUpF` (`FLAG_UNOVA_LEAGUE_BEGUN`), which the foot of Victory Road, its last tunnel and the plaza call, with no story
+  version raised.
 
 ## Kanto's first chapter (2026-10-18, plan 19 · K3)
 

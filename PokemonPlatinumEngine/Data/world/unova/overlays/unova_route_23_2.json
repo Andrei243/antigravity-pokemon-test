@@ -1,0 +1,10 @@
+{
+  // A house on Route 23 (plan 22 · U9, part b): a Trainer resting before Victory Road with her two Pokémon; our words
+  "area": "unova_route_23_2",
+  "bgmTrack": "unova/route23",
+  "people": {
+    "0": { "name": "Lucario", "npcType": "Pokemon", "species": "Lucario", "dialog": [ "Lucario: Gwaoh!" ] },
+    "1": { "name": "Ace Trainer", "npcType": "ace_trainer_f", "dialog": [ "I lost at the League three times. Now I live here, at the foot of Victory Road, and I train every day.", "When I'm ready, I'll know. My Pokémon will tell me." ] },
+    "2": { "name": "Audino", "npcType": "Pokemon", "species": "Audino", "dialog": [ "Audino: Dabun!" ] }
+  }
+}

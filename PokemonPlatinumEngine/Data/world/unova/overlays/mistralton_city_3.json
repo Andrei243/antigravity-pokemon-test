@@ -78,6 +78,18 @@
       "y": 23,
       "facing": "Up",
       "hiddenBy": "FLAG_UNOVA_HIDE_BIANCA_HALL"
+    },
+    // The airline's attendant (plan 22 · U9, part c), in the hall's east wing once Unova's Hall of Fame is entered: the flight
+    // on to Kalos (RegionDatabase's link from Unova, common.Attendant), which says it isn't flying yet until plan 23 builds Kalos
+    {
+      "id": "mistralton_city_3.Attendant",
+      "name": "Attendant",
+      "npcType": "receptionist",
+      "x": 23,
+      "y": 15,
+      "facing": "Down",
+      "isTransportAttendant": true,
+      "shownBy": "UnovaHallOfFame"
     }
   ]
 }

@@ -73,7 +73,11 @@ public class TextTests
         ["Core/StateSnapshot.cs"] = "the names of a snapshot's fields, which a scenario expects and state.json keeps (plan 16 · T17)",
         ["Core/Autoplay/Autoplayer.Itinerary.cs"] = "why a leg of the bot's way was given up, for play.md (plan 16 · T13)",
         ["Core/Autoplay/Itinerary.cs"] = "a leg of the bot's way as play.md names it (plan 16 · T13)",
-        ["Core/Autoplay/Itineraries.cs"] = "the names of maps, places, scripts and people the bot's way goes by, no words (plan 16 · T13)"
+        ["Core/Autoplay/Itineraries.cs"] = "the names of maps, places, scripts and people the bot's way goes by, no words (plan 16 · T13)",
+        ["Core/DevMode.cs"] = "where developer mode reads the data from, for the log (plan 16 · T6)",
+        ["Core/Reload.cs"] = "the folders and kinds of file the live reload watches, for the developer (plan 16 · T6)",
+        ["Core/GameEngine.Dev.cs"] = "what the developer's console, reload, trace and frame time say, for the developer alone (plan 16 · T6)",
+        ["UI/DevConsole.cs"] = "the developer's console, which says what its commands answer in English (plan 16 · T6)"
     };
 
     /// <summary>What may stay in quotes in a file on the table: names of the data, and the logo, which is a picture (plan 17).</summary>

@@ -1,0 +1,10 @@
+{
+  // Victory Road's grove (plan 22 · U9, part b): Black 2's wooded hollow between the ruins and the falls, its trees and balls in
+  // the area file; our words. Black 2 stands Chandra (6) here; Beckett and Shelly (2, 3) are met on the falls instead
+  "area": "unova_victory_road_18",
+  "name": "Victory Road",
+  "bgmTrack": "unova/victory_road",
+  "people": {
+    "6": { "name": "Chandra", "trainer": { "dialogueBefore": "I've been running up and down this grove all day. You're just in time!", "dialogueAfter": "Just in time to beat me, it seems." } }
+  }
+}

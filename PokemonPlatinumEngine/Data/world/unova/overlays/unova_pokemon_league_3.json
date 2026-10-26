@@ -1,0 +1,11 @@
+{
+  // The way down to the Champion (plan 22 · U9, part c): Black 2's great hall under the League, where the statue sets the
+  // challenger down (Black 2's own background event beside it takes them back up; unova_pokemon_league_3.txt) and a long walk
+  // north leads to the Champion's room
+  "area": "unova_pokemon_league_3",
+  "name": "Pokémon League",
+  "bgmTrack": "unova/pokemon_league",
+  "read": {
+    "2": "Statue"
+  }
+}

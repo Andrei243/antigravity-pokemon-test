@@ -419,6 +419,7 @@ public sealed class Bw2Maps
             if (zone.Matrix.Length > 0 && !Matrices.ContainsKey(zone.Matrix)) Problems.Add($"{zone.Constant} names {zone.Matrix}, which has no file");
 
         Chunks = System.IO.Directory.GetDirectories(Path.Combine(dir, "res", "field", "maps", "models")).Select(Path.GetFileName).Order(StringComparer.Ordinal).ToList()!;
+        (Matrices, Chunks) = QuarterBigChunks(Matrices, Chunks);
 
         // The props' names: the most common folder name of each resource, its _N taken off
         var names = new Dictionary<int, Dictionary<string, int>>();
@@ -460,10 +461,84 @@ public sealed class Bw2Maps
 
     public Bw2Matrix Matrix(string constant) => Matrices[constant].Matrix;
 
+    /// <summary>What joins a quartered chunk's folder to the quarter's column and row (<see cref="QuarterBigChunks"/>).</summary>
+    public const char QuarterMark = '~';
+
+    /// <summary>The chunks read as quarters, by their own folders (plan 22 · U9, part b: the Pokémon League's plaza).</summary>
+    public IReadOnlySet<string> Quartered => quartered;
+    private readonly HashSet<string> quartered = new(StringComparer.Ordinal);
+
+    /// <summary>A quarter's folder: the chunk's, its column and its row (<c>pokemon_league_pl_00_00~1_0</c>).</summary>
+    public static string QuarterOf(string folder, int x, int z) => $"{folder}{QuarterMark}{x}_{z}";
+
+    /// <summary>The chunk a quarter's folder is part of and the quarter's column and row; null for a folder of its own.</summary>
+    public static (string Folder, int X, int Z)? QuarterParts(string folder)
+    {
+        int mark = folder.IndexOf(QuarterMark);
+        if (mark < 0) return null;
+        var xz = folder[(mark + 1)..].Split('_');
+        return (folder[..mark], int.Parse(xz[0], CultureInfo.InvariantCulture), int.Parse(xz[1], CultureInfo.InvariantCulture));
+    }
+
+    /// <summary>
+    /// A chunk whose grid is larger than 32 × 32 (plan 22 · U9, part b: the Pokémon League's plaza, 64 × 64, the one such grid
+    /// of Black 2's) is read as quarters of 32 × 32, each a folder of its own (<see cref="QuarterOf"/>) with the grid's own
+    /// tiles, its props and its triangles moved into the quarter's frame, and the one-chunk matrix that lays it becomes a
+    /// matrix of its quarters: a world file's chunk is 32 × 32, and the grid's first 32 × 32 alone had been drawn.
+    /// </summary>
+    private (IReadOnlyDictionary<string, (int Id, Bw2Matrix Matrix)>, IReadOnlyList<string>) QuarterBigChunks(
+        IReadOnlyDictionary<string, (int Id, Bw2Matrix Matrix)> matrices, IReadOnlyList<string> chunks)
+    {
+        const int T = LandData.Tiles;
+        var result = matrices.ToDictionary(m => m.Key, m => m.Value, StringComparer.Ordinal);
+        var allChunks = chunks.ToList();
+        foreach (var (constant, (id, matrix)) in matrices)
+        {
+            if (matrix.Width != 1 || matrix.Height != 1 || matrix.ModelAt(0, 0) is not { } model) continue;
+            string folder = Bw2Matrix.Folder(model);
+            if (Terrain(folder) is not [{ } land, ..] || (land.Width <= T && land.Height <= T)
+                || land.Width % T != 0 || land.Height % T != 0) continue;
+            int across = land.Width / T, down = land.Height / T;
+            var models = new string?[across * down];
+            var zones = matrix.HasZones ? new string?[across * down] : null;
+            for (int z = 0; z < down; z++)
+                for (int x = 0; x < across; x++)
+                {
+                    models[z * across + x] = QuarterOf(folder, x, z);
+                    if (zones != null) zones[z * across + x] = matrix.ZoneAt(0, 0);
+                    allChunks.Add(QuarterOf(folder, x, z));
+                }
+            quartered.Add(folder);
+            result[constant] = (id, new Bw2Matrix(matrix.Name, across, down, models, zones));
+        }
+        return (result, allChunks);
+    }
+
+    /// <summary>How far a quarter's frame is from its chunk's, in units: what is added to a place of the chunk to have it in the quarter's.</summary>
+    private Vector3 QuarterShift(string folder, int x, int z)
+    {
+        var land = Terrain(folder)[0]!;
+        const int T = LandData.Tiles;
+        return new Vector3((land.Width / 2f - T * x - T / 2f) * LandData.TileUnits, 0f, (land.Height / 2f - T * z - T / 2f) * LandData.TileUnits);
+    }
+
     /// <summary>A chunk's terrain grids, by layer (most chunks have one, a few two), or null where it has none.</summary>
     public Bw2Terrain?[] Terrain(string chunk)
     {
         if (terrain.TryGetValue(chunk, out var known)) return known;
+        if (QuarterParts(chunk) is var (whole, qx, qz))
+        {
+            const int T = LandData.Tiles;
+            return terrain[chunk] = Terrain(whole).Select(layer =>
+            {
+                if (layer == null) return null;
+                var tiles = new Bw2Tile[T * T];
+                for (int z = 0; z < T; z++)
+                    for (int x = 0; x < T; x++)
+                        tiles[z * T + x] = layer.At(qx * T + x, qz * T + z);
+                return new Bw2Terrain(T, T, tiles, layer.RawPlanes);
+            }).ToArray();
+        }
         var layers = new List<Bw2Terrain?>();
         for (int layer = 0; ; layer++)
         {
@@ -484,6 +559,17 @@ public sealed class Bw2Maps
     public Bw2Model? Model(string chunk)
     {
         if (models.TryGetValue(chunk, out var known)) return known;
+        if (QuarterParts(chunk) is var (whole, qx, qz))
+        {
+            if (Model(whole) is not { } all) return models[chunk] = null;
+            var shift = QuarterShift(whole, qx, qz);
+            float half = LandData.Tiles * LandData.TileUnits / 2f;
+            return models[chunk] = all with
+            {
+                Props = all.Props.Select(p => p with { Position = p.Position + shift })
+                    .Where(p => p.Position.X >= -half && p.Position.X < half && p.Position.Z >= -half && p.Position.Z < half).ToList()
+            };
+        }
         string path = Path.Combine(Directory, "res", "field", "maps", "models", chunk, "model.glb");
         Bw2Model? model = null;
         if (File.Exists(path))
@@ -501,6 +587,11 @@ public sealed class Bw2Maps
     public List<Bw2Geometry.Triangle> Geometry(string chunk)
     {
         if (geometry.TryGetValue(chunk, out var known)) return known;
+        if (QuarterParts(chunk) is var (whole, qx, qz))
+        {
+            var shift = QuarterShift(whole, qx, qz);
+            return geometry[chunk] = Geometry(whole).Select(t => new Bw2Geometry.Triangle(t.Texture, t.A + shift, t.B + shift, t.C + shift)).ToList();
+        }
         string path = Path.Combine(Directory, "res", "field", "maps", "models", chunk, "model.glb");
         var triangles = new List<Bw2Geometry.Triangle>();
         if (File.Exists(path))

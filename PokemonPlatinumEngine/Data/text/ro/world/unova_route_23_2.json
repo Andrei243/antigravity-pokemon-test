@@ -1,0 +1,61 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Lucario"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Lucario: Gwaoh!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Ace Trainer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I lost at the League three times. Now I live here, at the foot of Victory Road, and I train every day.",
+          "When I'm ready, I'll know. My Pokémon will tell me."
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    },
+    "2": {
+      "name": {
+        "en": [
+          "Audino"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Audino: Dabun!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

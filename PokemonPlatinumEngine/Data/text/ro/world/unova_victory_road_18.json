@@ -1,0 +1,39 @@
+{
+  "displayName": {
+    "en": [
+      "Victory Road"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "6": {
+      "name": {
+        "en": [
+          "Chandra"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "I've been running up and down this grove all day. You're just in time!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Just in time to beat me, it seems."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

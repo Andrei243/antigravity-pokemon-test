@@ -1,0 +1,172 @@
+{
+  "N": [
+    {
+      "en": [
+        "N"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You came. I knew you would."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Pokémon League lies past Victory Road. The road is long, and the Pokémon on it are strong."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Take this. Parts of the new road can only be climbed with Waterfall."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You and your Pokémon... I believe you will reach the League, and find there the truth of what you are to one another."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That is what I see ahead for you. Farewell."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "BasicGate": [
+    {
+      "en": [
+        "Basic Badge confirmed!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "ToxicGate": [
+    {
+      "en": [
+        "Toxic Badge confirmed!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "InsectGate": [
+    {
+      "en": [
+        "Insect Badge confirmed!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "BoltGate": [
+    {
+      "en": [
+        "Bolt Badge confirmed!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "QuakeGate": [
+    {
+      "en": [
+        "Quake Badge confirmed!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "JetGate": [
+    {
+      "en": [
+        "Jet Badge confirmed!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "LegendGate": [
+    {
+      "en": [
+        "Legend Badge confirmed!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "WaveGate": [
+    {
+      "en": [
+        "Wave Badge confirmed!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "GateShut": [
+    {
+      "en": [
+        "The gate won't open. A Badge this gate checks for is missing."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "LastGate": [
+    {
+      "en": [
+        "All eight Badges confirmed! The way to Victory Road is open."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "GateSign": [
+    {
+      "en": [
+        "Badge Check Gates ahead.\nOnly Trainers with all eight of Unova's Badges may pass."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "CaveSign": [
+    {
+      "en": [
+        "Victory Road\nThe Pokémon League lies through this cave."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

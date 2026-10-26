@@ -206,7 +206,10 @@ public partial class GameEngine
                 MoveHints = MoveHintsOn,
                 TrainerLines = TrainerLinesOn,
                 // The Frontier never offers a switch (BATTLE_TYPE_FORCED_SET_MODE; plan 08 · P1), but plays as the scene says
-                Scene = Settings.BattleScene
+                Scene = Settings.BattleScene,
+                // The annex's Battle Palace and Battle Arena (plan 14 · B9)
+                Palace = conditions?.Palace ?? false,
+                TurnLimit = conditions?.TurnLimit ?? 0
             });
             battleRenderer.SetArena(flow.Map, flow.Player.GridX, flow.Player.GridY);
             flow.BattleTrainers.Clear();

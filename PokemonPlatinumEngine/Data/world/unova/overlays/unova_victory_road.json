@@ -1,0 +1,32 @@
+{
+  // Victory Road's foot (plan 22 · U9, part b): Black 2's valley between Route 23 and the mouth of Victory Road, with the Pokémon
+  // Center at its head and its balls and hidden things in the area file; our words. Black 2's eight Badge Check Gates stand
+  // across the road west from Route 23 (its own triggers, by Black 2's variables, are left out): each is a trigger of ours on the
+  // gate's line (75, 70 ... 40, rows 48 to 50), taken in order by VAR_UNOVA_BADGE_GATES 0 to 8, and the last, across the way north
+  // to the cave (28 to 34, 44), opens the road at 8 (unova_victory_road.txt). N (0, FLAG_UNOVA_HIDE_N_VICTORY_ROAD) waits at the
+  // head of the way up from Route 23 and steps out to meet the player as they come in (Black 2's own trigger, 77 to 83, 52, our
+  // variable VAR_UNOVA_N_VICTORY_ROAD), with HM05. Of the two warps on the cave's mouth Black 2 opens the one into
+  // unova_victory_road_24, which is the one built (White 2's floor, _17, is not)
+  "area": "unova_victory_road",
+  "name": "Victory Road",
+  "bgmTrack": "unova/victory_road",
+  "triggers": [
+    { "script": "N", "x": 77, "z": 52, "width": 7, "depth": 1, "variable": "VAR_UNOVA_N_VICTORY_ROAD", "value": 0 },
+    { "script": "BasicGate", "x": 75, "z": 48, "width": 1, "depth": 3, "variable": "VAR_UNOVA_BADGE_GATES", "value": 0 },
+    { "script": "ToxicGate", "x": 70, "z": 48, "width": 1, "depth": 3, "variable": "VAR_UNOVA_BADGE_GATES", "value": 1 },
+    { "script": "InsectGate", "x": 65, "z": 48, "width": 1, "depth": 3, "variable": "VAR_UNOVA_BADGE_GATES", "value": 2 },
+    { "script": "BoltGate", "x": 60, "z": 48, "width": 1, "depth": 3, "variable": "VAR_UNOVA_BADGE_GATES", "value": 3 },
+    { "script": "QuakeGate", "x": 55, "z": 48, "width": 1, "depth": 3, "variable": "VAR_UNOVA_BADGE_GATES", "value": 4 },
+    { "script": "JetGate", "x": 50, "z": 48, "width": 1, "depth": 3, "variable": "VAR_UNOVA_BADGE_GATES", "value": 5 },
+    { "script": "LegendGate", "x": 45, "z": 48, "width": 1, "depth": 3, "variable": "VAR_UNOVA_BADGE_GATES", "value": 6 },
+    { "script": "WaveGate", "x": 40, "z": 48, "width": 1, "depth": 3, "variable": "VAR_UNOVA_BADGE_GATES", "value": 7 },
+    { "script": "LastGate", "x": 28, "z": 44, "width": 7, "depth": 1, "variable": "VAR_UNOVA_BADGE_GATES", "value": 8 }
+  ],
+  "people": {
+    "0": { "name": "N", "npcType": "n", "hiddenBy": "FLAG_UNOVA_HIDE_N_VICTORY_ROAD", "still": true, "dialog": [ "N: The League is waiting for you." ] }
+  },
+  "read": {
+    "12": "GateSign",
+    "13": "CaveSign"
+  }
+}

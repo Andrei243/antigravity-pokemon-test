@@ -144,6 +144,29 @@ public sealed class ScriptLibrary
     public static ScriptLibrary Default => shared ??= Load();
 
     /// <summary>
+    /// Reads the scripts again while the game runs (plan 16 · T6, the developer's live reload). The game's own folder,
+    /// when <paramref name="folder"/> is null, becomes <see cref="Default"/> once it reads; any other is only read. A
+    /// file that doesn't parse leaves everything as it was and is null, with its file and line in
+    /// <paramref name="problems"/>; one that parses comes with <see cref="Problems"/>' findings, which don't stop it.
+    /// </summary>
+    public static ScriptLibrary? Reload(out List<string> problems, string? folder = null, Func<string, bool>? mapExists = null, Func<string, bool>? songExists = null)
+    {
+        ScriptLibrary library;
+        try
+        {
+            library = Load(folder);
+        }
+        catch (Exception e) when (e is InvalidDataException or IOException or ScriptException)
+        {
+            problems = new List<string> { e.Message };
+            return null;
+        }
+        problems = library.Problems(mapExists, songExists);
+        if (folder == null) shared = library;
+        return library;
+    }
+
+    /// <summary>
     /// The script a name means where it is used: <c>file.Name</c> exactly, or a bare name in the file of the
     /// place (<paramref name="file"/>) and then among the common ones.
     /// </summary>

@@ -151,6 +151,10 @@
       "provisional": true
     },
     "byron": {},
+    "caitlin": {
+      "note": "first spoken at unova_pokemon_league_8.txt(12)",
+      "provisional": true
+    },
     "cameraman": {
       "note": "first spoken at Route212GateToHearthomeCity.txt(13)",
       "provisional": true
@@ -436,6 +440,10 @@
       "note": "first spoken at route_113_glass_workshop.txt(17)",
       "provisional": true
     },
+    "grimsley": {
+      "note": "first spoken at unova_pokemon_league_6.txt(12)",
+      "provisional": true
+    },
     "guide_gent": {
       "note": "first spoken at cherrygrove.txt(21)",
       "provisional": true
@@ -657,6 +665,10 @@
       "provisional": true
     },
     "mars": {},
+    "marshal": {
+      "note": "first spoken at unova_pokemon_league_7.txt(12)",
+      "provisional": true
+    },
     "mary": {
       "note": "first spoken at goldenrod_radio_tower_4f.txt(26)",
       "provisional": true
@@ -773,6 +785,10 @@
       "note": "first spoken at phone.txt(377)",
       "provisional": true
     },
+    "palace_maven": {
+      "note": "first spoken at BattlePalace.txt(18)",
+      "provisional": true
+    },
     "palmer": {
       "note": "first spoken at BattleTowerBattleRoom.txt(75)",
       "provisional": true
@@ -821,6 +837,10 @@
       "note": "first spoken at littleroot_town_professor_birchs_lab.txt(16)",
       "provisional": true
     },
+    "prof_cedric_juniper": {
+      "note": "first spoken at aspertia_city_2.txt(96)",
+      "provisional": true
+    },
     "prof_cozmo": {
       "note": "first spoken at fallarbor_town_cozmos_house.txt(23)",
       "provisional": true
@@ -856,6 +876,10 @@
     },
     "ramon": {
       "note": "first spoken at cinnabar_island_gym.txt(57)",
+      "provisional": true
+    },
+    "referee": {
+      "note": "first spoken at BattleArena.txt(18)",
       "provisional": true
     },
     "rhona": {
@@ -968,6 +992,10 @@
       "note": "first spoken at plasma_frigate.txt(57)",
       "provisional": true
     },
+    "shauntal": {
+      "note": "first spoken at unova_pokemon_league_5.txt(12)",
+      "provisional": true
+    },
     "shelly": {
       "note": "first spoken at route_119_weather_institute_2f.txt(21)",
       "provisional": true
@@ -1071,6 +1099,10 @@
     },
     "valet": {
       "note": "first spoken at BattleCastleBattleRoom.txt(130)",
+      "provisional": true
+    },
+    "veteran": {
+      "note": "first spoken at unova_pokemon_league.txt(22)",
       "provisional": true
     },
     "vicky": {
@@ -1224,6 +1256,7 @@
     "Burgh": "burgh",
     "Butler": "look:butler",
     "Byron": "byron",
+    "Caitlin": "caitlin",
     "Cameraman": "cameraman",
     "Candice": "candice",
     "Captain": "captain",
@@ -1311,6 +1344,7 @@
     "Girl": "look:girl",
     "Glacia": "glacia",
     "Glass Worker": "glass_worker",
+    "Grimsley": "grimsley",
     "Grunt": "look:grunt",
     "Guard": "look:guard",
     "Guide": "look:gym_guide",
@@ -1379,6 +1413,7 @@
     "Maria": "maria",
     "Marley": "marley",
     "Mars": "mars",
+    "Marshal": "marshal",
     "Mary": "mary",
     "Matt": "matt",
     "Maxie": "maxie",
@@ -1412,6 +1447,7 @@
     "Old Woman": "look:old_woman",
     "Owner": "owner",
     "Pablo": "pablo",
+    "Palace Maven": "palace_maven",
     "Palmer": "palmer",
     "Papa": "papa",
     "Park Attendant": "park_attendant",
@@ -1424,6 +1460,7 @@
     "Poochyena": "poochyena",
     "President": "president",
     "Prof. Birch": "prof_birch",
+    "Prof. Cedric Juniper": "prof_cedric_juniper",
     "Prof. Cozmo": "prof_cozmo",
     "Prof. Elm": "prof_elm",
     "Prof. Juniper": "prof_juniper",
@@ -1437,6 +1474,7 @@
     "Ralph": "ralph",
     "Ramon": "ramon",
     "Receptionist": "look:receptionist",
+    "Referee": "referee",
     "Researcher": "look:scientist",
     "Rhona": "rhona",
     "Rich Boy Liam": "rich_boy_liam",
@@ -1467,6 +1505,7 @@
     "Seller": "seller",
     "Selphy": "selphy",
     "Shadow Triad": "shadow_triad",
+    "Shauntal": "shauntal",
     "Shelly": "shelly",
     "Shop Boy": "shop_boy",
     "Shopkeeper": "shopkeeper",
@@ -1495,6 +1534,7 @@
     "Ty": "ty",
     "Underground Man": "underground_man",
     "Valet": "valet",
+    "Veteran": "veteran",
     "Vicky": "vicky",
     "Victor": "victor",
     "Victoria": "victoria",

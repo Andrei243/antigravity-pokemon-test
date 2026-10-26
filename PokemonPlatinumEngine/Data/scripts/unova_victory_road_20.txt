@@ -1,0 +1,19 @@
+# Victory Road's long cave (plan 22 · U9, part b). docs/scripts.md describes the language; the lines are our own.
+#
+# Two holes in the floor that a boulder pushed with Strength fills (the behaviour StrengthHole), as the Relic Passage's: the
+# overlay's holes, a wall until their flag, and the pits on the holes' tiles, whose script sets the flag as the boulder comes to
+# rest. The boulder is gone with the hole it filled.
+
+
+script FillEast
+  call BoulderFallsIn
+  setflag FLAG_UNOVA_VICTORY_ROAD_CAVE_HOLE_EAST
+  hide self
+  end
+
+
+script FillWest
+  call BoulderFallsIn
+  setflag FLAG_UNOVA_VICTORY_ROAD_CAVE_HOLE_WEST
+  hide self
+  end

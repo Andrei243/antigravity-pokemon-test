@@ -1,0 +1,104 @@
+{
+  "Guard": [
+    {
+      "en": [
+        "Veteran"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Pokémon League is where Trainers seek strength and show it. To show it, you need only defeat the Elite Four and then the Champion."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Challenge the Elite Four in any order you like. Beat all four, and the Champion's way opens."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "But hear me: once you go in, there's no turning back. You battle until you have beaten them all, or been beaten yourself."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Are you ready to go in?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Then go, and good luck!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Don't skimp on getting ready. The Pokémon Center is just there. Heal your Pokémon and come back."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "GuardTalk": [
+    {
+      "en": [
+        "Veteran"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Once you go in, you battle until you have beaten them all, or been beaten yourself."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Prepare": [
+    {
+      "en": [
+        "Veteran"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Pokémon League is the greatest challenge a Trainer can take on!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Get ready here first. Lose even once inside, and you start all over again."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

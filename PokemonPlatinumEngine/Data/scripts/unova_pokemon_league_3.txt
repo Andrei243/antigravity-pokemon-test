@@ -1,0 +1,10 @@
+# The way down to the Champion (plan 22 · U9, part c). docs/scripts.md describes the language; the lines are our own.
+# The statue that brought the challenger down takes them back up to the hall if they ask.
+
+
+script Statue
+  speaker none
+  ask "Ride the statue back up to the hall?"
+  if no end
+  warp "UnovaPokemonLeague_Hall" 31 46 down
+  end

@@ -1,0 +1,169 @@
+{
+  "displayName": {
+    "en": [
+      "Victory Road"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Mae"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "I packed for a week on Victory Road. I'll unpack my Pokémon for you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Time to pack up and go home."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Logan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Doctors follow the challengers up this road. Let me check your Pokémon's health... in battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "A clean bill of health, I'd say."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "2": {
+      "name": {
+        "en": [
+          "Shelly"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "The falls hide the strong Trainers. Found one!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "You found me, and then some."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "3": {
+      "name": {
+        "en": [
+          "Beckett"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "A quiet ridge in the middle of Victory Road. Let's ruin the quiet!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Quiet again. Thanks for that."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "4": {
+      "name": {
+        "en": [
+          "Cathy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Water, rock and Trainers. Victory Road has them all!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "And now it has one beaten Veteran."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "5": {
+      "name": {
+        "en": [
+          "Pierce"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "The falls are loud. My Pokémon's attacks are louder!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "I can hardly hear myself lose."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

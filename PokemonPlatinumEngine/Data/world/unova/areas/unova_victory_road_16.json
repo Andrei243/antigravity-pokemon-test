@@ -1,0 +1,57 @@
+{
+  "key": "unova_victory_road_16",
+  "index": 228,
+  "name": "Victory Road",
+  "matrix": 198,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave2",
+  "dayMusic": "BGM_D_CHAMPROAD",
+  "nightMusic": "BGM_D_CHAMPROAD",
+  "encounters": "ENCOUNTERS_VICTORY_ROAD",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Boldore", "level": 47 },
+    { "species": "Boldore", "level": 47 },
+    { "species": "Boldore", "level": 48 },
+    { "species": "Boldore", "level": 48 },
+    { "species": "Boldore", "level": 49 },
+    { "species": "Boldore", "level": 49 },
+    { "species": "Boldore", "level": 50 },
+    { "species": "Boldore", "level": 50 },
+    { "species": "Boldore", "level": 50 },
+    { "species": "Boldore", "level": 50 },
+    { "species": "Boldore", "level": 50 },
+    { "species": "Boldore", "level": 50 }
+  ],
+  "landRate": 18,
+  "shakingGrass": [
+    { "species": "Excadrill", "level": 47 },
+    { "species": "Excadrill", "level": 47 },
+    { "species": "Excadrill", "level": 48 },
+    { "species": "Excadrill", "level": 48 },
+    { "species": "Excadrill", "level": 49 },
+    { "species": "Excadrill", "level": 49 },
+    { "species": "Excadrill", "level": 50 },
+    { "species": "Excadrill", "level": 50 },
+    { "species": "Excadrill", "level": 50 },
+    { "species": "Excadrill", "level": 50 },
+    { "species": "Excadrill", "level": 50 },
+    { "species": "Excadrill", "level": 50 }
+  ],
+  "shakingGrassRate": 13,
+  "warps": [
+    { "x": 9, "z": 10, "to": "unova_victory_road_2", "toWarp": 0 },
+    { "x": 22, "z": 13, "to": "unova_victory_road_22", "toWarp": 5 }
+  ],
+  "objects": [],
+  "signs": [],
+  "triggers": [
+    { "x": 12, "z": 6, "width": 1, "depth": 3, "script": "1", "variable": "VAR_UNOVA_0x4124", "value": "0" }
+  ]
+}

@@ -2813,6 +2813,12 @@ grass 39-42
 surf 15-40
 super rod 40-70
 trainers 6, 45-47: unova_ace_trainer_lucca 47, unova_ace_trainer_shel 47, unova_backpacker_lowell 45, unova_backpacker_myra 45, unova_hiker_justin 45, unova_pkmn_breeder_addison 45
+=== unova_route_23
+Route 23
+grass 47-51
+surf 40-55
+super rod 40-70
+trainers 12, 51-54: unova_ace_trainer_grant 53, unova_ace_trainer_juliet 53, unova_ace_trainer_miki 54, unova_ace_trainer_tom 54, unova_battle_girl_brenda 53, unova_battle_girl_tiffany 53, unova_black_belt_benjamin 53, unova_black_belt_luke 53, unova_hiker_don 51, unova_hiker_doug 53, unova_pkmn_ranger_lena 53, unova_pkmn_ranger_steve 52
 === unova_route_4
 Route 4
 grass 14-17
@@ -2837,6 +2843,42 @@ trainers 9, 33-35: unova_harlequin_ian 35, unova_harlequin_pat 35, unova_lass_fl
 Route 9
 grass 37-40
 trainers 5, 42-43: unova_biker_phillip 43, unova_biker_zeke 43, unova_hooligans_jim_cas 42, unova_roughneck_chance 43, unova_roughneck_reese 43
+=== unova_victory_road_16
+Victory Road
+grass 47-50
+=== unova_victory_road_17
+Victory Road
+grass 47-50
+surf 35-50
+super rod 40-55
+trainers 6, 54-55: unova_ace_trainer_billy 55, unova_ace_trainer_jamie 55, unova_psychic_al 54, unova_psychic_alia 54, unova_veteran_cecile 55, unova_veteran_claude 55
+=== unova_victory_road_18
+Victory Road
+grass 47-50
+trainers 1, 55: unova_ace_trainer_chandra 55
+=== unova_victory_road_19
+Victory Road
+grass 47-50
+surf 35-50
+super rod 40-70
+trainers 6, 54-55: unova_ace_trainer_beckett 55, unova_ace_trainer_pierce 55, unova_ace_trainer_shelly 55, unova_backpacker_mae 54, unova_doctor_logan 54, unova_veteran_cathy 55
+=== unova_victory_road_20
+Victory Road
+grass 41-44
+trainers 5, 54-55: unova_ace_trainer_shanta 55, unova_ace_trainer_webster 55, unova_pkmn_ranger_eddie 54, unova_pkmn_ranger_elle 54, unova_veteran_abraham 55
+=== unova_victory_road_21
+Victory Road
+grass 47-50
+surf 35-50
+super rod 40-70
+=== unova_victory_road_22
+Victory Road
+grass 47-50
+trainers 6, 54-55: unova_ace_trainer_caroll 55, unova_ace_trainer_elmer 55, unova_battle_girl_chalina 54, unova_black_belt_martell 54, unova_veteran_portia 54, unova_veteran_sterling 54
+=== unova_victory_road_23
+Victory Road
+grass 47-50
+trainers 1, 54: unova_veteran_hugo 54
 === valley_windworks_outside
 Valley Windworks
 grass 9-12

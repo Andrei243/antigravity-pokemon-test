@@ -1,0 +1,47 @@
+# Unova's Champion (Iris, the girl from the Village of Dragons): a fierce, soaring trumpet line in G minor over brass that rears
+# like a dragon, a running piano, octave bass and a hammering kit, the brass giving way to an alarm while a Pokémon of the
+# player's is in the red. Original composition for this game (plan 22 · U9, part c).
+title Battle! Champion (Unova)
+tempo 176
+meter 4/4
+lowhptempo 1.07
+reverb 0.2
+
+track lead trumpet lowhp=sawlead vol=0.8 pan=0.05 rev=0.22
+  o5 g8 r8 g8 r8 b-8 r8 o6 d8 r8 | o6 d8 r8 d8 r8 f+4 a4 |
+  L o5 g4. b-8 o6 d4 g4 | o6 g4 f8 e-8 o5 b-2 | o5 a4. o6 c8 f4 a4 | o6 f+4 e8 d8 o5 a2 |
+  o5 b-4. o6 d8 g4 b-4 | o6 b-4 g8 f8 e-2 | o6 e-4. g8 c4 e-4 | o6 d4 f+4 a2 |
+  o6 g8 f8 d8 c8 o5 b-4 o6 d4 | o6 e-8 f8 g8 f8 e-4 o5 b-4 | o6 c8 f8 a8 g8 f4 c4 | o5 a4 o6 d4 f+4 e4 |
+  o6 g2 b-4 g4 | o6 f4 e-4 o5 b-4 g4 | o5 g4 o6 c4 e-4 f4 | o6 d2 o5 f+4 a4 |
+
+track brass brass unless=lowhp vol=0.36 pan=-0.25 rev=0.22
+  o4 (g b- >d)8 r8 (g b- >d)8 r8 (g b- >d)8 r8 (g b- >d)8 r8 | o4 (d f+ a)8 r8 (d f+ a)8 r8 (d f+ a)4 (d f+ a)4 |
+  L o4 (g b- >d)1 | o4 (e- g b-)1 | o4 (f a >c)1 | o4 (d f+ a)1 |
+  o4 (g b- >d)1 | o4 (e- g b-)1 | o4 (c e- g)1 | o4 (d f+ a)1 |
+  o4 (g b- >d)1 | o4 (e- g b-)1 | o4 (f a >c)1 | o4 (d f+ a)1 |
+  o4 (g b- >d)1 | o4 (e- g b-)1 | o4 (c e- g)1 | o4 (d f+ a)1 |
+
+track piano piano vol=0.32 pan=0.3 rev=0.16
+  r1 | r1 |
+  L [ o4 g16 b-16 o5 d16 o4 b-16 ]4 | [ o4 e-16 g16 b-16 g16 ]4 | [ o4 f16 a16 o5 c16 o4 a16 ]4 | [ o4 d16 f+16 a16 f+16 ]4 |
+  [ o4 g16 b-16 o5 d16 o4 b-16 ]4 | [ o4 e-16 g16 b-16 g16 ]4 | [ o4 c16 e-16 g16 e-16 ]4 | [ o4 d16 f+16 a16 f+16 ]4 |
+  [ o4 g16 b-16 o5 d16 o4 b-16 ]4 | [ o4 e-16 g16 b-16 g16 ]4 | [ o4 f16 a16 o5 c16 o4 a16 ]4 | [ o4 d16 f+16 a16 f+16 ]4 |
+  [ o4 g16 b-16 o5 d16 o4 b-16 ]4 | [ o4 e-16 g16 b-16 g16 ]4 | [ o4 c16 e-16 g16 e-16 ]4 | [ o4 d16 f+16 a16 f+16 ]4 |
+
+track bass synthbass vol=0.7 rev=0.05
+  o3 g8 r8 g8 r8 g8 r8 g8 r8 | o3 d8 r8 d8 r8 d4 d4 |
+  L [ o2 g8 o3 g8 ]4 | [ o2 e-8 o3 e-8 ]4 | [ o2 f8 o3 f8 ]4 | [ o2 d8 o3 d8 ]4 |
+  [ o2 g8 o3 g8 ]4 | [ o2 e-8 o3 e-8 ]4 | [ o2 c8 o3 c8 ]4 | [ o2 d8 o3 d8 ]4 |
+  [ o2 g8 o3 g8 ]4 | [ o2 e-8 o3 e-8 ]4 | [ o2 f8 o3 f8 ]4 | [ o2 d8 o3 d8 ]4 |
+  [ o2 g8 o3 g8 ]4 | [ o2 e-8 o3 e-8 ]4 | [ o2 c8 o3 c8 ]4 | [ o2 d8 o3 d8 ]4 |
+
+track drums kit vol=0.52 rev=0.1
+  v100 (b c)8 r8 b8 r8 (b c)8 r8 b8 r8 | (b c)8 r8 b8 r8 s16 s16 s16 s16 s8 s8 | L [ b8 b8 s8 b8 r8 b8 s8 b8 | ]15 b8 r8 s8 b8 s16 s16 s16 s16 s8 s8 |
+
+track hats kit vol=0.4 pan=0.15 rev=0.1
+  r1 | r1 | L v62 [ h8 v40 h8 v62 h8 v40 h8 v62 h8 v40 h8 v62 h8 v40 h8 v62 | ]16
+
+# Low HP: two pips a beat on the bar's root, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.5 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ [ o6 g16 r16 g16 r16 r4 ]2 | [ o6 e-16 r16 e-16 r16 r4 ]2 | [ o6 f16 r16 f16 r16 r4 ]2 | [ o6 d16 r16 d16 r16 r4 ]2 |
+  [ o6 g16 r16 g16 r16 r4 ]2 | [ o6 e-16 r16 e-16 r16 r4 ]2 | [ o6 c16 r16 c16 r16 r4 ]2 | [ o6 d16 r16 d16 r16 r4 ]2 | ]2

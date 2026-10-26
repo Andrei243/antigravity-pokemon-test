@@ -2579,6 +2579,195 @@ public class UnovaStoryTests
             Assert.Contains(map, RegionDatabase.Get(RegionDatabase.Unova)!.Maps);
     }
 
+    // ---- Plan 22 · U9, parts b and c: Route 23, Victory Road and the League ---------------------------------------------
+
+    /// <summary>A game past the Giant Chasm, with all eight of Unova's Badges, standing at the foot of Victory Road.</summary>
+    private static Game PastTheChasm()
+    {
+        var game = AtHumilau();
+        game.Story.SetVar("VAR_UNOVA_HUMILAU", 9);
+        game.Story.SetVar("VAR_UNOVA_CHASM", 4);
+        game.Story.Set("FLAG_UNOVA_CHASM_CLEARED");
+        foreach (string badge in RegionDatabase.Get(RegionDatabase.Unova)!.BadgeNames) game.Story.GiveBadge(RegionDatabase.Unova, badge);
+        return game;
+    }
+
+    [Fact]
+    public void RouteTwentyThreeLeadsFromTheChasmToVictoryRoadWhereNGivesWaterfallAndTheGatesCheckTheBadges()
+    {
+        var game = PastTheChasm();
+        // the chasm's way out to Route 23 is no longer kept, and Route 23 climbs to Victory Road
+        game.Arrive("GiantChasm_Cave", 23, 51);
+        Assert.Contains(game.Map.Warps, w => w.TargetMap == "Unova" && !w.Shut);
+        game.Arrive("Unova", 664, 137);
+        Assert.Equal("unova/route23", game.Map.BgmTrackAt(664, 137));
+        Assert.Contains(game.Map.Warps, w => w.TargetMap == "UnovaVictoryRoad" && !w.Shut);
+        // N meets the player at the head of the way up and gives HM05
+        game.Arrive("UnovaVictoryRoad", 80, 57);
+        Assert.Equal("unova/victory_road", game.Map.BgmTrackAt(80, 57));
+        Assert.NotNull(game.Present("0", "unova_victory_road"));
+        var n = game.Step("N");
+        Assert.Contains(n.Transcript, l => l.Speaker == "N" && l.Text.Contains("Pokémon League"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("HM05")!));
+        Assert.Equal(1, game.Story.Var("VAR_UNOVA_N_VICTORY_ROAD"));
+        Assert.Null(game.Present("0", "unova_victory_road"));
+        Assert.False(game.Fires("N"));
+        // the eight gates, west along the road, then the last before the cave
+        foreach (string gate in new[] { "BasicGate", "ToxicGate", "InsectGate", "BoltGate", "QuakeGate", "JetGate", "LegendGate", "WaveGate" })
+        {
+            Assert.True(game.Fires(gate), gate);
+            Assert.Contains(game.Step(gate).Transcript, l => l.Text.Contains("confirmed"));
+        }
+        Assert.Contains(game.Step("LastGate").Transcript, l => l.Text.Contains("All eight Badges"));
+        Assert.Equal(9, game.Story.Var("VAR_UNOVA_BADGE_GATES"));
+        // the cave's mouth leads into Black 2's own floor of Victory Road, and the Pokémon Center stands at its head
+        Assert.Contains(game.Map.Warps, w => w.TargetMap == "UnovaVictoryRoad_Ruins" && !w.Shut);
+        Assert.Contains(game.Map.Warps, w => w.TargetMap == "UnovaVictoryRoad_PokemonCenter" && !w.Shut);
+    }
+
+    [Fact]
+    public void ABadgeCheckGateTurnsBackAPlayerWithoutItsBadge()
+    {
+        var game = PastTheChasm();
+        game.Story.SetVar("VAR_UNOVA_N_VICTORY_ROAD", 1);
+        game.Story.SetBadges(RegionDatabase.Unova, 0);
+        game.Arrive("UnovaVictoryRoad", 76, 49);
+        var shut = game.Step("BasicGate");
+        Assert.Contains(shut.Transcript, l => l.Text.Contains("won't open"));
+        Assert.Equal(0, game.Story.Var("VAR_UNOVA_BADGE_GATES"));
+        Assert.Equal((76, 48), game.Tile);
+    }
+
+    [Theory]
+    [InlineData(0, "unova_rival_16")]
+    [InlineData(1, "unova_rival_17")]
+    [InlineData(2, "unova_rival_18")]
+    public void HughBattlesThePlayerInVictoryRoadsLastTunnelAndItsWayOutReachesTheLeague(int starter, string team)
+    {
+        var game = PastTheChasm();
+        game.Story.ChooseStarter(RegionDatabase.Get(RegionDatabase.Unova)!.Starters[starter]);
+        game.Arrive("UnovaVictoryRoad_Tunnel", 22, 12);
+        Assert.Null(game.Present("hugh_tunnel", "unova_victory_road_16"));
+        var hugh = game.Step("Hugh");
+        Assert.Contains(hugh.Log, l => l.StartsWith($"battle {team} "));
+        Assert.Contains(hugh.Transcript, l => l.Speaker == "Hugh" && l.Text.Contains("Champion"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM24")!));
+        Assert.Equal(1, game.Story.Var("VAR_UNOVA_HUGH_TUNNEL"));
+        Assert.Null(game.Present("hugh_tunnel", "unova_victory_road_16"));
+        // Black 2's bridge on its rails is left out: the tunnel's way out leads onto the League's plaza, and back
+        Assert.Contains(game.Map.Warps, w => w.TargetMap == "UnovaPokemonLeague" && w.TargetX == 32 && w.TargetY == 57);
+        game.Through("UnovaPokemonLeague");
+        Assert.Equal("UnovaPokemonLeague", game.Map.Name);
+        Assert.Contains(game.Map.Warps, w => w.TargetMap == "UnovaVictoryRoad_Tunnel" && !w.Shut);
+        Assert.Contains(game.Map.Warps, w => w.TargetMap == "UnovaPokemonLeague_PokemonCenter" && !w.Shut);
+    }
+
+    [Fact]
+    public void TheLeaguesPlazaIsItsOneChunkReadAsFourQuarters()
+    {
+        var plaza = Unova.Value.Matrix(87);
+        Assert.Equal(2, plaza.Width);
+        Assert.Equal(2, plaza.Height);
+        var game = new Game(begin: false);
+        Assert.Equal(64, game.Mapped("UnovaPokemonLeague").Width);
+        Assert.Equal(64, game.Mapped("UnovaPokemonLeague").Height);
+        // the steps up to the League's door and the Pokémon Center's door lie past the chunk's first quarter
+        Assert.Contains(game.Mapped("UnovaPokemonLeague").Warps, w => w.TargetMap == "UnovaPokemonLeague_Hall" && w.SourceY == 45);
+        Assert.Contains(game.Mapped("UnovaPokemonLeague").Warps, w => w.TargetMap == "UnovaPokemonLeague_PokemonCenter" && w.SourceY == 47);
+    }
+
+    [Fact]
+    public void TheEliteFourTheChampionAndTheHallOfFameEndUnovasStoryAndThePokedexIsMadeNational()
+    {
+        var game = PastTheChasm();
+        game.Story.SetVar("VAR_UNOVA_HUGH_TUNNEL", 1);
+        // the plaza's veteran asks whoever comes to the steps; no and they step back, yes and they may go in
+        game.Arrive("UnovaPokemonLeague", 32, 50);
+        game.Answers.Add(1);
+        game.Step("Guard");
+        Assert.Equal(0, game.Story.Var("VAR_UNOVA_LEAGUE_GUARD"));
+        game.Answers.Add(0);
+        game.Step("Guard");
+        Assert.Equal(1, game.Story.Var("VAR_UNOVA_LEAGUE_GUARD"));
+        game.Through("UnovaPokemonLeague_Hall");
+        Assert.Equal("UnovaPokemonLeague_Hall", game.Map.Name);
+        // the statue won't move before the Four are beaten
+        Assert.Contains(game.Play(Scripts.Find("Statue", "unova_pokemon_league_2")!).Transcript, l => l.Text.Contains("won't move"));
+        // each of the four in their room, up its stairs, and the light back down to the hall
+        foreach (var (room, who, team) in new[]
+        {
+            ("UnovaPokemonLeague_ShauntalsRoom", "Shauntal", "unova_elite_four_shauntal"),
+            ("UnovaPokemonLeague_GrimsleysRoom", "Grimsley", "unova_elite_four_grimsley"),
+            ("UnovaPokemonLeague_CaitlinsRoom", "Caitlin", "unova_elite_four_caitlin"),
+            ("UnovaPokemonLeague_MarshalsRoom", "Marshal", "unova_elite_four_marshal")
+        })
+        {
+            game.Through(room);
+            Assert.Equal(room, game.Map.Name);
+            Assert.DoesNotContain(game.Map.Warps, w => w.TargetMap == "UnovaPokemonLeague_Hall" && !w.Shut);
+            game.Through(room);
+            var master = game.Map.NPCs.Single(p => p.Name == who);
+            Assert.Contains((master.GridX, master.GridY + 2), ReachableOn(game.Map, game.Tile));
+            Assert.False(game.Fires("Pad"));
+            var battle = game.Talk("0", game.Map.ScriptFileAt(master.GridX, master.GridY)!);
+            Assert.Contains(battle.Log, l => l.StartsWith($"battle {team} "));
+            Assert.Equal(1, game.Story.Var($"VAR_UNOVA_LEAGUE_{who.ToUpperInvariant()}"));
+            Assert.True(game.Fires("Pad"));
+            game.Step("Pad");
+            Assert.Equal("UnovaPokemonLeague_Hall", game.Map.Name);
+        }
+        // the statue carries the challenger down, and the walk leads to the Champion's room
+        game.Answers.Add(0);
+        game.Play(Scripts.Find("Statue", "unova_pokemon_league_2")!);
+        Assert.Equal("UnovaPokemonLeague_Descent", game.Map.Name);
+        Assert.Contains((31, 3), ReachableOn(game.Map, game.Tile));
+        game.Arrive("UnovaPokemonLeague_Descent", 31, 3);
+        game.Through("UnovaPokemonLeague_ChampionsRoom");
+        Assert.Equal("UnovaPokemonLeague_ChampionsRoom", game.Map.Name);
+        game.Through("UnovaPokemonLeague_ChampionsRoom");
+        Assert.Contains((16, 43), ReachableOn(game.Map, game.Tile));
+        // Iris, then the Hall of Fame: the team recorded, Unova's story ended, home, saved and the credits
+        var iris = game.Step("Iris");
+        Assert.Contains(iris.Log, l => l.StartsWith("battle unova_champion_iris "));
+        Assert.Contains(game.Played, p => p.Script.EndsWith("OnEnter") && p.Host.Log.Contains("halloffame"));
+        Assert.True(game.Story.Has("UnovaHallOfFame"));
+        Assert.Equal("AspertiaCity_PlayersHouse", game.Map.Name);
+        Assert.Equal(0, game.Story.Var("VAR_UNOVA_LEAGUE_IRIS"));
+        Assert.Equal(2, game.Story.Var("VAR_UNOVA_HOUSE"));
+        // home: Mom, and the professor's father with the National Pokédex
+        var home = game.Step("ChampionHome");
+        Assert.Contains(home.Transcript, l => l.Speaker == "Prof. Cedric Juniper" && l.Text.Contains("National Pokédex"));
+        Assert.True(home.NationalDex);
+        Assert.Equal(3, game.Story.Var("VAR_UNOVA_HOUSE"));
+        Assert.Null(game.Present("cedric_home", "aspertia_city_2"));
+        // and the airline's attendant at Mistralton names the flight on to Kalos
+        var link = RegionDatabase.LinkFrom(RegionDatabase.Unova)!;
+        Assert.Equal(RegionDatabase.Kalos, link.To);
+        Assert.Equal("MistraltonCity_CargoHall", link.DepartureMap);
+        game.Arrive("MistraltonCity_CargoHall", 14, 23);
+        var attendant = game.Map.NPCs.Single(p => p.IsTransportAttendant);
+        Assert.Contains(game.Play(Scripts.Find(FieldScripts.For(attendant)!, "common")!, attendant).Transcript, l => l.Text.Contains("Kalos"));
+    }
+
+    [Fact]
+    public void TheLeaguesChapterIsHiddenUntilItsScenesAndItsSongsAreThere()
+    {
+        var game = new Game();
+        foreach (string flag in new[] { "FLAG_UNOVA_LEAGUE_BEGUN", "FLAG_UNOVA_HIDE_HUGH_TUNNEL", "FLAG_UNOVA_HIDE_CEDRIC_HOME" })
+            Assert.True(game.Story.Has(flag), flag);
+        game.Story.Unset("FLAG_UNOVA_LEAGUE_BEGUN");
+        game.Story.Unset("FLAG_UNOVA_HIDE_HUGH_TUNNEL");
+        game.Play(Scripts.Find("UnovaCatchUpF", "common")!);
+        Assert.True(game.Story.Has("FLAG_UNOVA_LEAGUE_BEGUN"));
+        Assert.True(game.Story.Has("FLAG_UNOVA_HIDE_HUGH_TUNNEL"));
+        foreach (string song in new[] { "route23", "victory_road", "pokemon_league", "battle_elite_four", "battle_champion", "credits" })
+            Assert.True(File.Exists(GameDataFiles.PathOf(Path.Combine("music", "unova", song + ".mml"))), song);
+        foreach (string map in new[] { "UnovaVictoryRoad", "UnovaVictoryRoad_Tunnel", "UnovaPokemonLeague", "UnovaPokemonLeague_Hall", "UnovaPokemonLeague_ChampionsRoom", "UnovaPokemonLeague_HallOfFame" })
+            Assert.Contains(map, RegionDatabase.Get(RegionDatabase.Unova)!.Maps);
+        foreach (string four in new[] { "Shauntal", "Marshal", "Grimsley", "Caitlin" })
+            Assert.Equal("eliteFour", SoundMap.BattleThemes[$"Elite Four {four}"]);
+    }
+
     private static string AreaAt(WorldMatrixFile matrix, int x, int y)
     {
         var cells = matrix.Areas[y].Split(' ', StringSplitOptions.RemoveEmptyEntries);

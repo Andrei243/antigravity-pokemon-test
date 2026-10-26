@@ -42,6 +42,8 @@ public partial class GameEngine
     /// </summary>
     private void MeetInTheField(WildEncounterEntry entry)
     {
+        // The developer's console can hold the wild Pokémon off (plan 16 · T6)
+        if (WildEncountersOff) return;
         if (InBugContest && flow.Player.Mode != TravelMode.Surfing && entry.Roamer == null)
         {
             var (species, level) = flow.BugContest.Meet(fieldRandom);

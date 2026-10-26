@@ -1,0 +1,17 @@
+{
+  // Victory Road's summit (plan 22 · U9, part b): Black 2's high ground under the League, its balls and hidden things in the area
+  // file; our words. Black 2's Zoroark (9) that guards the way to N's Castle, the way itself (to unova_victory_road_26) and its two
+  // triggers are plan 22 · U10's
+  "area": "unova_victory_road_22",
+  "name": "Victory Road",
+  "bgmTrack": "unova/victory_road",
+  "heldBack": [ "9" ],
+  "people": {
+    "0": { "name": "Sterling", "trainer": { "dialogueBefore": "The League's in sight from up here. So is your defeat!", "dialogueAfter": "I misjudged the view." } },
+    "1": { "name": "Caroll", "trainer": { "dialogueBefore": "Last stretch! Let's make it a battle to remember!", "dialogueAfter": "I'll remember it, all right." } },
+    "2": { "name": "Martell", "trainer": { "dialogueBefore": "I guard the summit path with my fists and my Pokémon. Come at me!", "dialogueAfter": "Both of us flattened. Impressive." } },
+    "3": { "name": "Elmer", "trainer": { "dialogueBefore": "You climbed all this way? Then you deserve a real battle!", "dialogueAfter": "You deserved that win." } },
+    "4": { "name": "Chalina", "trainer": { "dialogueBefore": "I train on this summit at dawn every day. You're up late!", "dialogueAfter": "Up late, and still too strong." } },
+    "5": { "name": "Portia", "trainer": { "dialogueBefore": "One last test before the League. Make it count!", "dialogueAfter": "It counted. Go and win it all." } }
+  }
+}

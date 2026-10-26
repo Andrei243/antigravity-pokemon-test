@@ -68,7 +68,16 @@ public sealed class Bw2World
         || key.StartsWith("pokemon_league", StringComparison.Ordinal);
 
     /// <summary>A chunk's number, by its folder; -1 where the list has none.</summary>
-    public int ChunkId(string folder) => chunkIds.GetValueOrDefault(folder, -1);
+    public int ChunkId(string folder) => Bw2Maps.QuarterParts(folder) is var (whole, x, z)
+        ? (x == 0 && z == 0 ? ChunkId(whole) : ChunkId(whole) is var id and >= 0 ? QuarterOffset + id * 4 + z * 2 + x : -1)
+        : chunkIds.GetValueOrDefault(folder, -1);
+
+    /// <summary>
+    /// The number a quarter of a chunk larger than 32 × 32 is written under (<see cref="Bw2Maps.QuarterBigChunks"/>): the first
+    /// quarter keeps its chunk's, and the others are this plus four times the chunk's and the quarter's place (past the ice twins'
+    /// numbers, <see cref="IceOffset"/>).
+    /// </summary>
+    public const int QuarterOffset = 4000;
 
     /// <summary>The name of the area a zone is, in our capitals: <c>PLACE_ASPERTIA_CITY</c> is "Aspertia City".</summary>
     public static string NameOf(Bw2Zone zone)

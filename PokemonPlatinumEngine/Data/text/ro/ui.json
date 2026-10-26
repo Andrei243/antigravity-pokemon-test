@@ -3079,7 +3079,23 @@
     "battleBond": "{pokemon} s-a încărcat pe deplin prin legătura cu Antrenorul său!",
     "powerConstruct": "Simți prezența multora!",
     "completeForme": "{pokemon} s-a transformat în Forma Completă!",
-    "ballFetch": "{pokemon} a adus înapoi {item}!"
+    "ballFetch": "{pokemon} a adus înapoi {item}!",
+    "venue": {
+      "choosing": "{pokemon} hotărăște singur ce să facă...",
+      "hesitates": "{pokemon} ezită și nu se îndură să acționeze!",
+      "flavour": {
+        "Eager": "{pokemon} pare flămând de următorul schimb!",
+        "Glint": "O sclipire aspră apare în ochii lui {pokemon}!",
+        "Position": "{pokemon} se încordează și prinde poziție!",
+        "Growl": "{pokemon} scoate un mârâit adânc și surd!"
+      },
+      "timeUp": "Timpul a expirat! Arbitrul cântărește runda...",
+      "boutWon": "Arbitrul îi dă runda lui {pokemon}!",
+      "boutDrawn": "Arbitrul declară egalitate! Nimeni nu ia runda.",
+      "boutLost": "{pokemon} iese din rundă!",
+      "noHesitating": "Doar un Pokémon din Battle Palace ezită.",
+      "noSwitching": "O rundă din Battle Arena se luptă până la capăt!"
+    }
   },
 
   "battleInfo": {
@@ -4351,5 +4367,14 @@
     "yourThree": "CEI TREI AI TĂI",
     "chooseTwo": "DOI INTRĂ ÎN LUPTĂ",
     "battle": "LUPTĂ"
+  },
+  "venueScreen": {
+    "closed": "ALEGE DUPĂ FIRE",
+    "closedNote": "Aici Pokémonul tău își alege singur atacurile.",
+    "judgment": "VERDICTUL",
+    "mind": "MINTE",
+    "skill": "ÎNDEMÂNARE",
+    "body": "TRUP",
+    "total": "TOTAL"
   }
 }

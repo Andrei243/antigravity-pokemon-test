@@ -1,0 +1,36 @@
+{
+  "Statue": [
+    {
+      "en": [
+        "The statue is glowing. All four of the Elite Four have been beaten!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Go down to the Champion?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The statue sank slowly into the ground, carrying {player} with it..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A statue of a Pokémon stands in the well. It won't move until all four of the Elite Four have been beaten."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

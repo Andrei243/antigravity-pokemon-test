@@ -147,6 +147,16 @@
           "Bianca"
         ]
       }
+    },
+    "mistralton_city_3.Attendant": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {}

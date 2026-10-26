@@ -1,0 +1,59 @@
+# The Battle Palace's hall (plan 14 · B9). docs/scripts.md describes the language; the lines are our own, on the beats of
+# Emerald's Battle Palace: seven Trainers one after another, three against three, and every Pokémon in the room choosing
+# its moves by its own nature while its Trainer watches.
+#
+# A whole round is this one arrival script, which loops battle by battle (Models/Frontier/BattleVenue.cs; `venue`). The
+# round lives between the desk and the hall as the host's Venue, so a game closed in the middle of one finds no round
+# here: the script does nothing, and the next one begun at the desk ends the streak (VenueRecord.InProgress).
+
+
+script OnEnter
+  venue active
+  if result == 0 end
+  clearflag FLAG_BATTLE_PALACE_SHOW_OPPONENT
+  hide opponent
+  place player 8 10 up
+label Battle
+  venue next
+  speaker "Palace Maven"
+  say "Battle {number} of seven! Your Pokémon choose for themselves. Trust their natures."
+  venue opponent
+  place opponent 8 3 down
+  setflag FLAG_BATTLE_PALACE_SHOW_OPPONENT
+  show opponent
+  walk opponent down 2
+  text "{foe} steps forward!"
+  venue fight
+  if result == 0 goto Lost
+  call Leaves
+  venue won
+  if result == 1 goto RoundWon
+  speaker "Palace Maven"
+  say "Well fought! Your three have been made whole again. The next Trainer awaits."
+  goto Battle
+label RoundWon
+  speaker "Palace Maven"
+  say "Seven in a row! {player}'s Pokémon have shown us who they truly are."
+  venue finish won
+  venue points
+  text "{player} received {number} BP!"
+  fanfare item
+  goto Home
+label Lost
+  call Leaves
+  venue finish lost
+  speaker "Palace Maven"
+  say "The round ends here. Even a defeat teaches you your Pokémon's hearts."
+label Home
+  venue end
+  fade out 0.6
+  warp "BattleFrontierAnnex" 2 5 left
+  fade in
+  end
+
+
+# The opponent goes off the floor again
+script Leaves
+  clearflag FLAG_BATTLE_PALACE_SHOW_OPPONENT
+  hide opponent
+  return

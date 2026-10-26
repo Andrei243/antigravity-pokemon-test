@@ -1,0 +1,85 @@
+{
+  "displayName": {
+    "en": [
+      "Battle Palace"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "attendant": {
+      "name": {
+        "en": [
+          "Palace Maven"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "No round is under way. The receptionist in the annex's lobby takes your three."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "opponent": {
+      "name": {
+        "en": [
+          "Trainer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "onlooker_1": {
+      "name": {
+        "en": [
+          "Onlooker"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A gentle Pokémon in a corner turns nasty. Natures show most when the going gets hard."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "onlooker_2": {
+      "name": {
+        "en": [
+          "Onlooker"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Here you don't command. You watch, and you learn who your Pokémon really are."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

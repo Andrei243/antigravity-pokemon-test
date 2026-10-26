@@ -205,6 +205,9 @@ internal static partial class ModernUi
                 MessageBox(new Rectangle(48, 858, MessageBoxWidth, 172), message, null, battle.CurrentSpeaker);
                 // A level's panel stands on the message box's right end, over the line that tells of the level (plan 08 · P5)
                 if (hud.LevelUp is { } level) LevelUp(48 + 1824, 858 - 22, level);
+                // The Battle Palace's commands stand closed, and the Battle Arena's judge shows its card (plan 14 · B9)
+                if (battle.Palace) PalaceClosed();
+                if (battle.JudgeCard is { } verdict) JudgeCard(verdict, anim.Player.Shown?.DisplayName ?? "", anim.Enemy.Shown?.DisplayName ?? "");
                 break;
         }
     }

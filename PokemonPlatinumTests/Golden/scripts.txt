@@ -354,6 +354,74 @@ way 1.1.1, from answer 3
 from Youngster at 16,5 of BattleFactory
 way -
   Youngster> Rent them, win with them, hand them back. No favourites, no excuses. That's my style, and I'll teach it to anybody.
+=== BattleFrontierAnnex.ArenaDesk
+from Receptionist at 13,5 of BattleFrontierAnnex
+way 0
+  Receptionist> Welcome to the Battle Arena! Every bout is fought to a finish, or to the judge's verdict.
+  Receptionist> Would you like to take on the Battle Arena?
+  Receptionist> You need three Pokémon that can take part, all of different species and holding different items.
+  Receptionist> An Egg can't take part, and nor can certain rare Pokémon.
+  ? Would you like to take on the Battle Arena? = Enter
+  * frontier seen 150
+  * frontier seen 151
+  * frontier seen 249
+  * frontier seen 250
+  * frontier seen 251
+  * frontier seen 382
+  * frontier seen 383
+  * frontier seen 384
+  * frontier seen 385
+  * frontier seen 386
+  * frontier seen 483
+  * frontier seen 484
+  * frontier seen 487
+  * frontier seen 489
+  * frontier seen 490
+  * frontier seen 491
+  * frontier seen 492
+  * frontier seen 493
+way 2, from answer 1
+  Receptionist> Please come again. The judges are always watching.
+  ? Would you like to take on the Battle Arena? = No
+way 1, from answer 1
+  Receptionist> Your three battle at Level 50, or at their own level if it's lower, one at a time in the order you chose.
+  Receptionist> No switching! A bout still going after three turns is judged on Mind, Skill and Body, and the loser is out.
+  Receptionist> Beat seven Trainers in a row to win the round. Lose once, and the round is over.
+  ? Would you like to take on the Battle Arena? = The rules
+=== BattleFrontierAnnex.PalaceDesk
+from Receptionist at 1,5 of BattleFrontierAnnex
+way 0
+  Receptionist> Welcome to the Battle Palace! Here your Pokémon battle as their natures tell them to.
+  Receptionist> Would you like to take on the Battle Palace?
+  Receptionist> You need three Pokémon that can take part, all of different species and holding different items.
+  Receptionist> An Egg can't take part, and nor can certain rare Pokémon.
+  ? Would you like to take on the Battle Palace? = Enter
+  * frontier seen 150
+  * frontier seen 151
+  * frontier seen 249
+  * frontier seen 250
+  * frontier seen 251
+  * frontier seen 382
+  * frontier seen 383
+  * frontier seen 384
+  * frontier seen 385
+  * frontier seen 386
+  * frontier seen 483
+  * frontier seen 484
+  * frontier seen 487
+  * frontier seen 489
+  * frontier seen 490
+  * frontier seen 491
+  * frontier seen 492
+  * frontier seen 493
+way 2, from answer 1
+  Receptionist> Please come again. Your Pokémon will be glad of the chance to speak for themselves.
+  ? Would you like to take on the Battle Palace? = No
+way 1, from answer 1
+  Receptionist> Your three battle at Level 50, or at their own level if it's lower. They are made whole after every battle.
+  Receptionist> You give no orders here. Each Pokémon chooses its moves by its nature, bolder or warier as its HP runs low.
+  Receptionist> Beat seven Trainers in a row to win the round. Lose once, and the round is over.
+  ? Would you like to take on the Battle Palace? = The rules
 === BattleFrontierAnnex.Receptionist
 from Receptionist at 7,4 of BattleFrontierAnnex
 way 0
@@ -6361,6 +6429,25 @@ way -
 from {rival}'s Sister at 45,740 of Unova
 way -
   Barry's Sister> Be good friends with your Pokémon, OK?
+=== aspertia_city_2.ChampionHome
+from the trigger at 10,8 of AspertiaCity_PlayersHouse
+way -
+  Mom> Lucas! Welcome home, Champion! I heard it all on the news. I'm so proud of you I could burst!
+  Mom> Oh, and we have a visitor. He's been waiting all morning to meet you.
+  Prof. Cedric Juniper> So you're the new Champion! I'm Cedric Juniper. Yes, the professor's father. I study Pokémon too, in my own way.
+  Prof. Cedric Juniper> My daughter tells me you've filled your Pokédex with Unova's Pokémon. Then it's time it saw the rest of the world.
+  Prof. Cedric Juniper> Let me have it for a moment... There! It's the National Pokédex now.
+  > Lucas's Pokédex was upgraded to the National Pokédex!
+  Prof. Cedric Juniper> Pokémon from far beyond Unova will be recorded now. And there's a plane at Mistralton for anyone who wants to go and see them!
+  Prof. Cedric Juniper> Well, I'll be off. Good luck, Champion!
+  * scene aspertia_city_2.Home as Champion
+  * emote Mom Exclaim
+  * nationaldex
+  * fanfare FanfareKeyItem
+  * endscene
+  + FLAG_UNOVA_HIDE_CEDRIC_HOME
+  = VAR_UNOVA_HOUSE 0 -> 3
+  + seen aspertia_city_2.Home as Champion
 === aspertia_city_2.Mom
 from Mom at 4,5 of AspertiaCity_PlayersHouse
 way -
@@ -10932,6 +11019,7 @@ way -
   + FLAG_UNOVA_HIDE_BIANCA_STORYTELLER
   + FLAG_UNOVA_HIDE_BLACK_KYUREM
   + FLAG_UNOVA_HIDE_BURGH_GYM
+  + FLAG_UNOVA_HIDE_CEDRIC_HOME
   + FLAG_UNOVA_HIDE_CHEREN_CAVERN
   + FLAG_UNOVA_HIDE_CHEREN_FRIGATE
   + FLAG_UNOVA_HIDE_CHEREN_LAB
@@ -10977,6 +11065,7 @@ way -
   + FLAG_UNOVA_HIDE_HUGH_ROUTE_21
   + FLAG_UNOVA_HIDE_HUGH_SEWERS
   + FLAG_UNOVA_HIDE_HUGH_THUMB
+  + FLAG_UNOVA_HIDE_HUGH_TUNNEL
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA_LATER
   + FLAG_UNOVA_HIDE_IRIS_AVENUE
@@ -11030,6 +11119,7 @@ way -
   + FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA
   + FLAG_UNOVA_HUMILAU_BEGUN
   + FLAG_UNOVA_LACUNOSA_BEGUN
+  + FLAG_UNOVA_LEAGUE_BEGUN
   + FLAG_UNOVA_MISTRALTON_BEGUN
   + FLAG_UNOVA_NIMBASA_BEGUN
   + FLAG_UNOVA_OPELUCID_BEGUN
@@ -11060,6 +11150,7 @@ way -
   + FLAG_UNOVA_HIDE_BLACK_KYUREM
   + FLAG_UNOVA_HIDE_BURGH_GYM
   + FLAG_UNOVA_HIDE_CAPTAIN_TERMINAL
+  + FLAG_UNOVA_HIDE_CEDRIC_HOME
   + FLAG_UNOVA_HIDE_CHEREN_ASPERTIA
   + FLAG_UNOVA_HIDE_CHEREN_CAVERN
   + FLAG_UNOVA_HIDE_CHEREN_FRIGATE
@@ -11111,6 +11202,7 @@ way -
   + FLAG_UNOVA_HIDE_HUGH_SEWERS
   + FLAG_UNOVA_HIDE_HUGH_TERMINAL
   + FLAG_UNOVA_HIDE_HUGH_THUMB
+  + FLAG_UNOVA_HIDE_HUGH_TUNNEL
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA_LATER
   + FLAG_UNOVA_HIDE_IRIS_AVENUE
@@ -11170,6 +11262,7 @@ way -
   + FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA
   + FLAG_UNOVA_HUMILAU_BEGUN
   + FLAG_UNOVA_LACUNOSA_BEGUN
+  + FLAG_UNOVA_LEAGUE_BEGUN
   + FLAG_UNOVA_MISTRALTON_BEGUN
   + FLAG_UNOVA_NIMBASA_BEGUN
   + FLAG_UNOVA_OPELUCID_BEGUN
@@ -11206,6 +11299,7 @@ way -
   + FLAG_UNOVA_HIDE_BLACK_KYUREM
   + FLAG_UNOVA_HIDE_BURGH_GYM
   + FLAG_UNOVA_HIDE_CAPTAIN_TERMINAL
+  + FLAG_UNOVA_HIDE_CEDRIC_HOME
   + FLAG_UNOVA_HIDE_CHEREN_ASPERTIA
   + FLAG_UNOVA_HIDE_CHEREN_CAVERN
   + FLAG_UNOVA_HIDE_CHEREN_FRIGATE
@@ -11257,6 +11351,7 @@ way -
   + FLAG_UNOVA_HIDE_HUGH_SEWERS
   + FLAG_UNOVA_HIDE_HUGH_TERMINAL
   + FLAG_UNOVA_HIDE_HUGH_THUMB
+  + FLAG_UNOVA_HIDE_HUGH_TUNNEL
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA_LATER
   + FLAG_UNOVA_HIDE_IRIS_AVENUE
@@ -11316,6 +11411,7 @@ way -
   + FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA
   + FLAG_UNOVA_HUMILAU_BEGUN
   + FLAG_UNOVA_LACUNOSA_BEGUN
+  + FLAG_UNOVA_LEAGUE_BEGUN
   + FLAG_UNOVA_MISTRALTON_BEGUN
   + FLAG_UNOVA_NIMBASA_BEGUN
   + FLAG_UNOVA_OPELUCID_BEGUN
@@ -11352,6 +11448,7 @@ way -
   + FLAG_UNOVA_HIDE_BLACK_KYUREM
   + FLAG_UNOVA_HIDE_BURGH_GYM
   + FLAG_UNOVA_HIDE_CAPTAIN_TERMINAL
+  + FLAG_UNOVA_HIDE_CEDRIC_HOME
   + FLAG_UNOVA_HIDE_CHEREN_ASPERTIA
   + FLAG_UNOVA_HIDE_CHEREN_CAVERN
   + FLAG_UNOVA_HIDE_CHEREN_FRIGATE
@@ -11403,6 +11500,7 @@ way -
   + FLAG_UNOVA_HIDE_HUGH_SEWERS
   + FLAG_UNOVA_HIDE_HUGH_TERMINAL
   + FLAG_UNOVA_HIDE_HUGH_THUMB
+  + FLAG_UNOVA_HIDE_HUGH_TUNNEL
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA_LATER
   + FLAG_UNOVA_HIDE_IRIS_AVENUE
@@ -11462,6 +11560,7 @@ way -
   + FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA
   + FLAG_UNOVA_HUMILAU_BEGUN
   + FLAG_UNOVA_LACUNOSA_BEGUN
+  + FLAG_UNOVA_LEAGUE_BEGUN
   + FLAG_UNOVA_MISTRALTON_BEGUN
   + FLAG_UNOVA_NIMBASA_BEGUN
   + FLAG_UNOVA_OPELUCID_BEGUN
@@ -11498,6 +11597,7 @@ way -
   + FLAG_UNOVA_HIDE_BLACK_KYUREM
   + FLAG_UNOVA_HIDE_BURGH_GYM
   + FLAG_UNOVA_HIDE_CAPTAIN_TERMINAL
+  + FLAG_UNOVA_HIDE_CEDRIC_HOME
   + FLAG_UNOVA_HIDE_CHEREN_ASPERTIA
   + FLAG_UNOVA_HIDE_CHEREN_CAVERN
   + FLAG_UNOVA_HIDE_CHEREN_FRIGATE
@@ -11549,6 +11649,7 @@ way -
   + FLAG_UNOVA_HIDE_HUGH_SEWERS
   + FLAG_UNOVA_HIDE_HUGH_TERMINAL
   + FLAG_UNOVA_HIDE_HUGH_THUMB
+  + FLAG_UNOVA_HIDE_HUGH_TUNNEL
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA_LATER
   + FLAG_UNOVA_HIDE_IRIS_AVENUE
@@ -11608,6 +11709,7 @@ way -
   + FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA
   + FLAG_UNOVA_HUMILAU_BEGUN
   + FLAG_UNOVA_LACUNOSA_BEGUN
+  + FLAG_UNOVA_LEAGUE_BEGUN
   + FLAG_UNOVA_MISTRALTON_BEGUN
   + FLAG_UNOVA_NIMBASA_BEGUN
   + FLAG_UNOVA_OPELUCID_BEGUN
@@ -11644,6 +11746,7 @@ way -
   + FLAG_UNOVA_HIDE_BLACK_KYUREM
   + FLAG_UNOVA_HIDE_BURGH_GYM
   + FLAG_UNOVA_HIDE_CAPTAIN_TERMINAL
+  + FLAG_UNOVA_HIDE_CEDRIC_HOME
   + FLAG_UNOVA_HIDE_CHEREN_ASPERTIA
   + FLAG_UNOVA_HIDE_CHEREN_CAVERN
   + FLAG_UNOVA_HIDE_CHEREN_FRIGATE
@@ -11695,6 +11798,7 @@ way -
   + FLAG_UNOVA_HIDE_HUGH_SEWERS
   + FLAG_UNOVA_HIDE_HUGH_TERMINAL
   + FLAG_UNOVA_HIDE_HUGH_THUMB
+  + FLAG_UNOVA_HIDE_HUGH_TUNNEL
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA_LATER
   + FLAG_UNOVA_HIDE_IRIS_AVENUE
@@ -11754,6 +11858,156 @@ way -
   + FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA
   + FLAG_UNOVA_HUMILAU_BEGUN
   + FLAG_UNOVA_LACUNOSA_BEGUN
+  + FLAG_UNOVA_LEAGUE_BEGUN
+  + FLAG_UNOVA_MISTRALTON_BEGUN
+  + FLAG_UNOVA_NIMBASA_BEGUN
+  + FLAG_UNOVA_OPELUCID_BEGUN
+  + FLAG_UNOVA_STORY_BEGUN
+  + FLAG_UNOVA_VIRBANK_BEGUN
+  = VAR_UNOVA_ASPERTIA 0 -> 7
+  = VAR_UNOVA_HOUSE 0 -> 1
+  = VAR_UNOVA_OUTLOOK 0 -> 1
+  = VAR_UNOVA_ROUTE_19 0 -> 1
+=== common.UnovaCatchUpF
+from a trainer with lines of their own
+way -
+  + FLAG_HAS_POKEDEX
+  + FLAG_HAS_RUNNING_SHOES
+  + FLAG_UNOVA_CASTELIA_BEGUN
+  + FLAG_UNOVA_CHASM_BEGUN
+  + FLAG_UNOVA_DRIFTVEIL_BEGUN
+  + FLAG_UNOVA_FRIGATE_BEGUN
+  + FLAG_UNOVA_HIDE_ANVILLE_WEEKEND
+  + FLAG_UNOVA_HIDE_BAY_WORKER
+  + FLAG_UNOVA_HIDE_BIANCA_ALONG
+  + FLAG_UNOVA_HIDE_BIANCA_ASPERTIA
+  + FLAG_UNOVA_HIDE_BIANCA_CENTER
+  + FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE
+  + FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE_HEART
+  + FLAG_UNOVA_HIDE_BIANCA_HALL
+  + FLAG_UNOVA_HIDE_BIANCA_LACUNOSA
+  + FLAG_UNOVA_HIDE_BIANCA_LENTIMAS
+  + FLAG_UNOVA_HIDE_BIANCA_REVERSAL
+  + FLAG_UNOVA_HIDE_BIANCA_REVERSAL_EXIT
+  + FLAG_UNOVA_HIDE_BIANCA_ROUTE_19
+  + FLAG_UNOVA_HIDE_BIANCA_ROUTE_5
+  + FLAG_UNOVA_HIDE_BIANCA_STORYTELLER
+  + FLAG_UNOVA_HIDE_BLACK_KYUREM
+  + FLAG_UNOVA_HIDE_BURGH_GYM
+  + FLAG_UNOVA_HIDE_CAPTAIN_TERMINAL
+  + FLAG_UNOVA_HIDE_CEDRIC_HOME
+  + FLAG_UNOVA_HIDE_CHEREN_ASPERTIA
+  + FLAG_UNOVA_HIDE_CHEREN_CAVERN
+  + FLAG_UNOVA_HIDE_CHEREN_FRIGATE
+  + FLAG_UNOVA_HIDE_CHEREN_LAB
+  + FLAG_UNOVA_HIDE_CHEREN_OPELUCID
+  + FLAG_UNOVA_HIDE_CHEREN_PWT
+  + FLAG_UNOVA_HIDE_CHEREN_PWT_PIER
+  + FLAG_UNOVA_HIDE_CHEREN_ROUTE_20
+  + FLAG_UNOVA_HIDE_CHEREN_ROUTE_21
+  + FLAG_UNOVA_HIDE_CHEREN_ROUTE_6
+  + FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL
+  + FLAG_UNOVA_HIDE_COBALION_ROUTE_13
+  + FLAG_UNOVA_HIDE_COBALION_ROUTE_6
+  + FLAG_UNOVA_HIDE_COLRESS_PLAZA
+  + FLAG_UNOVA_HIDE_COLRESS_PWT
+  + FLAG_UNOVA_HIDE_COLRESS_ROUTE_22
+  + FLAG_UNOVA_HIDE_COLRESS_ROUTE_4
+  + FLAG_UNOVA_HIDE_CRATER_GRUNTS
+  + FLAG_UNOVA_HIDE_DRAYDEN_OPELUCID
+  + FLAG_UNOVA_HIDE_EXPLASMA_HOME
+  + FLAG_UNOVA_HIDE_GHETSIS_CAVERN
+  + FLAG_UNOVA_HIDE_GHETSIS_RAMP
+  + FLAG_UNOVA_HIDE_GRUNTS_OPELUCID
+  + FLAG_UNOVA_HIDE_GRUNT_LACUNOSA
+  + FLAG_UNOVA_HIDE_GRUNT_PWT
+  + FLAG_UNOVA_HIDE_HEATRAN
+  + FLAG_UNOVA_HIDE_HOLD_GRUNTS
+  + FLAG_UNOVA_HIDE_HUGHS_SISTER
+  + FLAG_UNOVA_HIDE_HUGH_ASPERTIA
+  + FLAG_UNOVA_HIDE_HUGH_BRIDGE
+  + FLAG_UNOVA_HIDE_HUGH_CAVE
+  + FLAG_UNOVA_HIDE_HUGH_CAVERN
+  + FLAG_UNOVA_HIDE_HUGH_CHURCH
+  + FLAG_UNOVA_HIDE_HUGH_CRATER
+  + FLAG_UNOVA_HIDE_HUGH_DRIFTVEIL
+  + FLAG_UNOVA_HIDE_HUGH_FRIGATE
+  + FLAG_UNOVA_HIDE_HUGH_GYM
+  + FLAG_UNOVA_HIDE_HUGH_HOLD
+  + FLAG_UNOVA_HIDE_HUGH_HUMILAU
+  + FLAG_UNOVA_HIDE_HUGH_LACUNOSA
+  + FLAG_UNOVA_HIDE_HUGH_NIMBASA
+  + FLAG_UNOVA_HIDE_HUGH_PIER
+  + FLAG_UNOVA_HIDE_HUGH_PLASMA_HOUSE
+  + FLAG_UNOVA_HIDE_HUGH_PWT
+  + FLAG_UNOVA_HIDE_HUGH_PWT_PIER
+  + FLAG_UNOVA_HIDE_HUGH_RAMP
+  + FLAG_UNOVA_HIDE_HUGH_ROUTE_20
+  + FLAG_UNOVA_HIDE_HUGH_ROUTE_21
+  + FLAG_UNOVA_HIDE_HUGH_SEWERS
+  + FLAG_UNOVA_HIDE_HUGH_TERMINAL
+  + FLAG_UNOVA_HIDE_HUGH_THUMB
+  + FLAG_UNOVA_HIDE_HUGH_TUNNEL
+  + FLAG_UNOVA_HIDE_HUGH_UNDELLA
+  + FLAG_UNOVA_HIDE_HUGH_UNDELLA_LATER
+  + FLAG_UNOVA_HIDE_IRIS_AVENUE
+  + FLAG_UNOVA_HIDE_IRIS_GYM_STREET
+  + FLAG_UNOVA_HIDE_IRIS_OPELUCID
+  + FLAG_UNOVA_HIDE_IRIS_PIER
+  + FLAG_UNOVA_HIDE_JUNIPER_HALL
+  + FLAG_UNOVA_HIDE_JUNIPER_LACUNOSA
+  + FLAG_UNOVA_HIDE_JUNIPER_LENTIMAS
+  + FLAG_UNOVA_HIDE_JUNIPER_MISTRALTON
+  + FLAG_UNOVA_HIDE_JUNIPER_STORYTELLER
+  + FLAG_UNOVA_HIDE_JUNIPER_TOWER
+  + FLAG_UNOVA_HIDE_KYUREM_CAVERN
+  + FLAG_UNOVA_HIDE_LIEPARD_RAMP
+  + FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK
+  + FLAG_UNOVA_HIDE_MARLON_BEACH
+  + FLAG_UNOVA_HIDE_MARLON_GYM
+  + FLAG_UNOVA_HIDE_MARLON_ROUTE_21
+  + FLAG_UNOVA_HIDE_MOM_ASPERTIA
+  + FLAG_UNOVA_HIDE_NATE_NIMBASA
+  + FLAG_UNOVA_HIDE_NIMBASA_PLASMA
+  + FLAG_UNOVA_HIDE_N_CAVERN
+  + FLAG_UNOVA_HIDE_OLDMAN_ROUTE_6
+  + FLAG_UNOVA_HIDE_RANCH_GRUNT
+  + FLAG_UNOVA_HIDE_RANCH_OWNERS
+  + FLAG_UNOVA_HIDE_ROOD_CHASM
+  + FLAG_UNOVA_HIDE_ROOD_HOME
+  + FLAG_UNOVA_HIDE_ROOD_ROUTE_6
+  + FLAG_UNOVA_HIDE_ROSA_NIMBASA
+  + FLAG_UNOVA_HIDE_ROUTE_11_SPARE
+  + FLAG_UNOVA_HIDE_ROUTE_20_GRUNT
+  + FLAG_UNOVA_HIDE_ROXIE_SCENE
+  + FLAG_UNOVA_HIDE_RUNWAY_KIDS
+  + FLAG_UNOVA_HIDE_RUNWAY_TREASURE
+  + FLAG_UNOVA_HIDE_SEWERS_BURGH
+  + FLAG_UNOVA_HIDE_SEWERS_COLRESS
+  + FLAG_UNOVA_HIDE_SEWER_GRUNTS
+  + FLAG_UNOVA_HIDE_SKYLA_GYM
+  + FLAG_UNOVA_HIDE_SKYLA_HALL
+  + FLAG_UNOVA_HIDE_SKYLA_MISTRALTON
+  + FLAG_UNOVA_HIDE_STRANGE_GIRL
+  + FLAG_UNOVA_HIDE_TERRAKION
+  + FLAG_UNOVA_HIDE_TRIAD_BRIDGE
+  + FLAG_UNOVA_HIDE_TRIAD_CAVERN
+  + FLAG_UNOVA_HIDE_TRIAD_EAST
+  + FLAG_UNOVA_HIDE_TRIAD_FRIGATE
+  + FLAG_UNOVA_HIDE_TRIAD_OPELUCID
+  + FLAG_UNOVA_HIDE_TRIAD_RAMP
+  + FLAG_UNOVA_HIDE_UNDELLA_SPARE
+  + FLAG_UNOVA_HIDE_VIRBANK_DOCK
+  + FLAG_UNOVA_HIDE_VIRIZION_ROUTE_11
+  + FLAG_UNOVA_HIDE_ZEKROM_CAVERN
+  + FLAG_UNOVA_HIDE_ZINZOLIN_FRIGATE
+  + FLAG_UNOVA_HIDE_ZINZOLIN_GYM
+  + FLAG_UNOVA_HIDE_ZINZOLIN_LACUNOSA
+  + FLAG_UNOVA_HIDE_ZINZOLIN_OPELUCID
+  + FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA
+  + FLAG_UNOVA_HUMILAU_BEGUN
+  + FLAG_UNOVA_LACUNOSA_BEGUN
+  + FLAG_UNOVA_LEAGUE_BEGUN
   + FLAG_UNOVA_MISTRALTON_BEGUN
   + FLAG_UNOVA_NIMBASA_BEGUN
   + FLAG_UNOVA_OPELUCID_BEGUN
@@ -11768,6 +12022,7 @@ from a trainer with lines of their own
 way -
   + FLAG_UNOVA_CHASM_BEGUN
   + FLAG_UNOVA_HIDE_BLACK_KYUREM
+  + FLAG_UNOVA_HIDE_CEDRIC_HOME
   + FLAG_UNOVA_HIDE_CHEREN_CAVERN
   + FLAG_UNOVA_HIDE_CRATER_GRUNTS
   + FLAG_UNOVA_HIDE_GHETSIS_CAVERN
@@ -11776,6 +12031,7 @@ way -
   + FLAG_UNOVA_HIDE_HUGH_CAVERN
   + FLAG_UNOVA_HIDE_HUGH_CRATER
   + FLAG_UNOVA_HIDE_HUGH_RAMP
+  + FLAG_UNOVA_HIDE_HUGH_TUNNEL
   + FLAG_UNOVA_HIDE_KYUREM_CAVERN
   + FLAG_UNOVA_HIDE_LIEPARD_RAMP
   + FLAG_UNOVA_HIDE_N_CAVERN
@@ -11783,6 +12039,7 @@ way -
   + FLAG_UNOVA_HIDE_TRIAD_CAVERN
   + FLAG_UNOVA_HIDE_TRIAD_RAMP
   + FLAG_UNOVA_HIDE_ZEKROM_CAVERN
+  + FLAG_UNOVA_LEAGUE_BEGUN
 === common.UnovaDriftveil
 from a trainer with lines of their own
 way -
@@ -11802,6 +12059,7 @@ way -
   + FLAG_UNOVA_HIDE_BIANCA_ROUTE_5
   + FLAG_UNOVA_HIDE_BIANCA_STORYTELLER
   + FLAG_UNOVA_HIDE_BLACK_KYUREM
+  + FLAG_UNOVA_HIDE_CEDRIC_HOME
   + FLAG_UNOVA_HIDE_CHEREN_CAVERN
   + FLAG_UNOVA_HIDE_CHEREN_FRIGATE
   + FLAG_UNOVA_HIDE_CHEREN_LAB
@@ -11841,6 +12099,7 @@ way -
   + FLAG_UNOVA_HIDE_HUGH_PWT_PIER
   + FLAG_UNOVA_HIDE_HUGH_RAMP
   + FLAG_UNOVA_HIDE_HUGH_ROUTE_21
+  + FLAG_UNOVA_HIDE_HUGH_TUNNEL
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA_LATER
   + FLAG_UNOVA_HIDE_IRIS_OPELUCID
@@ -11885,6 +12144,7 @@ way -
   + FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA
   + FLAG_UNOVA_HUMILAU_BEGUN
   + FLAG_UNOVA_LACUNOSA_BEGUN
+  + FLAG_UNOVA_LEAGUE_BEGUN
   + FLAG_UNOVA_MISTRALTON_BEGUN
   + FLAG_UNOVA_OPELUCID_BEGUN
 === common.UnovaFrigate
@@ -11904,6 +12164,7 @@ way -
   + FLAG_UNOVA_HIDE_BIANCA_REVERSAL_EXIT
   + FLAG_UNOVA_HIDE_BIANCA_STORYTELLER
   + FLAG_UNOVA_HIDE_BLACK_KYUREM
+  + FLAG_UNOVA_HIDE_CEDRIC_HOME
   + FLAG_UNOVA_HIDE_CHEREN_CAVERN
   + FLAG_UNOVA_HIDE_CHEREN_FRIGATE
   + FLAG_UNOVA_HIDE_CHEREN_LAB
@@ -11937,6 +12198,7 @@ way -
   + FLAG_UNOVA_HIDE_HUGH_PWT_PIER
   + FLAG_UNOVA_HIDE_HUGH_RAMP
   + FLAG_UNOVA_HIDE_HUGH_ROUTE_21
+  + FLAG_UNOVA_HIDE_HUGH_TUNNEL
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA_LATER
   + FLAG_UNOVA_HIDE_IRIS_OPELUCID
@@ -11980,6 +12242,7 @@ way -
   + FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA
   + FLAG_UNOVA_HUMILAU_BEGUN
   + FLAG_UNOVA_LACUNOSA_BEGUN
+  + FLAG_UNOVA_LEAGUE_BEGUN
   + FLAG_UNOVA_MISTRALTON_BEGUN
   + FLAG_UNOVA_OPELUCID_BEGUN
 === common.UnovaFrigateBarriers
@@ -11990,6 +12253,7 @@ from a trainer with lines of their own
 way -
   + FLAG_UNOVA_CHASM_BEGUN
   + FLAG_UNOVA_HIDE_BLACK_KYUREM
+  + FLAG_UNOVA_HIDE_CEDRIC_HOME
   + FLAG_UNOVA_HIDE_CHEREN_CAVERN
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_21
   + FLAG_UNOVA_HIDE_COLRESS_ROUTE_22
@@ -12005,6 +12269,7 @@ way -
   + FLAG_UNOVA_HIDE_HUGH_HUMILAU
   + FLAG_UNOVA_HIDE_HUGH_RAMP
   + FLAG_UNOVA_HIDE_HUGH_ROUTE_21
+  + FLAG_UNOVA_HIDE_HUGH_TUNNEL
   + FLAG_UNOVA_HIDE_KYUREM_CAVERN
   + FLAG_UNOVA_HIDE_LIEPARD_RAMP
   + FLAG_UNOVA_HIDE_MARLON_BEACH
@@ -12018,6 +12283,7 @@ way -
   + FLAG_UNOVA_HIDE_TRIAD_RAMP
   + FLAG_UNOVA_HIDE_ZEKROM_CAVERN
   + FLAG_UNOVA_HUMILAU_BEGUN
+  + FLAG_UNOVA_LEAGUE_BEGUN
 === common.UnovaLacunosa
 from a trainer with lines of their own
 way -
@@ -12029,6 +12295,7 @@ way -
   + FLAG_UNOVA_HIDE_BIANCA_REVERSAL_EXIT
   + FLAG_UNOVA_HIDE_BIANCA_STORYTELLER
   + FLAG_UNOVA_HIDE_BLACK_KYUREM
+  + FLAG_UNOVA_HIDE_CEDRIC_HOME
   + FLAG_UNOVA_HIDE_CHEREN_CAVERN
   + FLAG_UNOVA_HIDE_CHEREN_OPELUCID
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_21
@@ -12051,6 +12318,7 @@ way -
   + FLAG_UNOVA_HIDE_HUGH_LACUNOSA
   + FLAG_UNOVA_HIDE_HUGH_RAMP
   + FLAG_UNOVA_HIDE_HUGH_ROUTE_21
+  + FLAG_UNOVA_HIDE_HUGH_TUNNEL
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA_LATER
   + FLAG_UNOVA_HIDE_IRIS_OPELUCID
@@ -12080,6 +12348,7 @@ way -
   + FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA
   + FLAG_UNOVA_HUMILAU_BEGUN
   + FLAG_UNOVA_LACUNOSA_BEGUN
+  + FLAG_UNOVA_LEAGUE_BEGUN
   + FLAG_UNOVA_OPELUCID_BEGUN
 === common.UnovaLacunosaTale
 from a trainer with lines of their own
@@ -12088,6 +12357,12 @@ way -
   Anyone> Something frightening was sleeping inside the meteorite. On cold nights it woke, and a freezing wind rolled down into the village.
   Anyone> Whatever the wind touched turned to ice, and the people hid in their houses until the sun came up again. That's why we keep indoors after dark, even now.
   Anyone> Believe it or not, as you please. But the people of this town stay inside at night to this day. Old stories shape our lives.
+=== common.UnovaLeague
+from a trainer with lines of their own
+way -
+  + FLAG_UNOVA_HIDE_CEDRIC_HOME
+  + FLAG_UNOVA_HIDE_HUGH_TUNNEL
+  + FLAG_UNOVA_LEAGUE_BEGUN
 === common.UnovaMistralton
 from a trainer with lines of their own
 way -
@@ -12103,6 +12378,7 @@ way -
   + FLAG_UNOVA_HIDE_BIANCA_REVERSAL_EXIT
   + FLAG_UNOVA_HIDE_BIANCA_STORYTELLER
   + FLAG_UNOVA_HIDE_BLACK_KYUREM
+  + FLAG_UNOVA_HIDE_CEDRIC_HOME
   + FLAG_UNOVA_HIDE_CHEREN_CAVERN
   + FLAG_UNOVA_HIDE_CHEREN_LAB
   + FLAG_UNOVA_HIDE_CHEREN_OPELUCID
@@ -12128,6 +12404,7 @@ way -
   + FLAG_UNOVA_HIDE_HUGH_LACUNOSA
   + FLAG_UNOVA_HIDE_HUGH_RAMP
   + FLAG_UNOVA_HIDE_HUGH_ROUTE_21
+  + FLAG_UNOVA_HIDE_HUGH_TUNNEL
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA_LATER
   + FLAG_UNOVA_HIDE_IRIS_OPELUCID
@@ -12168,6 +12445,7 @@ way -
   + FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA
   + FLAG_UNOVA_HUMILAU_BEGUN
   + FLAG_UNOVA_LACUNOSA_BEGUN
+  + FLAG_UNOVA_LEAGUE_BEGUN
   + FLAG_UNOVA_MISTRALTON_BEGUN
   + FLAG_UNOVA_OPELUCID_BEGUN
 === common.UnovaNewGame
@@ -12194,6 +12472,7 @@ way -
   + FLAG_UNOVA_HIDE_BLACK_KYUREM
   + FLAG_UNOVA_HIDE_BURGH_GYM
   + FLAG_UNOVA_HIDE_CAPTAIN_TERMINAL
+  + FLAG_UNOVA_HIDE_CEDRIC_HOME
   + FLAG_UNOVA_HIDE_CHEREN_ASPERTIA
   + FLAG_UNOVA_HIDE_CHEREN_CAVERN
   + FLAG_UNOVA_HIDE_CHEREN_FRIGATE
@@ -12243,6 +12522,7 @@ way -
   + FLAG_UNOVA_HIDE_HUGH_SEWERS
   + FLAG_UNOVA_HIDE_HUGH_TERMINAL
   + FLAG_UNOVA_HIDE_HUGH_THUMB
+  + FLAG_UNOVA_HIDE_HUGH_TUNNEL
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA_LATER
   + FLAG_UNOVA_HIDE_IRIS_AVENUE
@@ -12302,6 +12582,7 @@ way -
   + FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA
   + FLAG_UNOVA_HUMILAU_BEGUN
   + FLAG_UNOVA_LACUNOSA_BEGUN
+  + FLAG_UNOVA_LEAGUE_BEGUN
   + FLAG_UNOVA_MISTRALTON_BEGUN
   + FLAG_UNOVA_NIMBASA_BEGUN
   + FLAG_UNOVA_OPELUCID_BEGUN
@@ -12326,6 +12607,7 @@ way -
   + FLAG_UNOVA_HIDE_BIANCA_ROUTE_5
   + FLAG_UNOVA_HIDE_BIANCA_STORYTELLER
   + FLAG_UNOVA_HIDE_BLACK_KYUREM
+  + FLAG_UNOVA_HIDE_CEDRIC_HOME
   + FLAG_UNOVA_HIDE_CHEREN_CAVERN
   + FLAG_UNOVA_HIDE_CHEREN_FRIGATE
   + FLAG_UNOVA_HIDE_CHEREN_LAB
@@ -12366,6 +12648,7 @@ way -
   + FLAG_UNOVA_HIDE_HUGH_PWT_PIER
   + FLAG_UNOVA_HIDE_HUGH_RAMP
   + FLAG_UNOVA_HIDE_HUGH_ROUTE_21
+  + FLAG_UNOVA_HIDE_HUGH_TUNNEL
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA_LATER
   + FLAG_UNOVA_HIDE_IRIS_OPELUCID
@@ -12413,6 +12696,7 @@ way -
   + FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA
   + FLAG_UNOVA_HUMILAU_BEGUN
   + FLAG_UNOVA_LACUNOSA_BEGUN
+  + FLAG_UNOVA_LEAGUE_BEGUN
   + FLAG_UNOVA_MISTRALTON_BEGUN
   + FLAG_UNOVA_NIMBASA_BEGUN
   + FLAG_UNOVA_OPELUCID_BEGUN
@@ -12421,6 +12705,7 @@ from a trainer with lines of their own
 way -
   + FLAG_UNOVA_CHASM_BEGUN
   + FLAG_UNOVA_HIDE_BLACK_KYUREM
+  + FLAG_UNOVA_HIDE_CEDRIC_HOME
   + FLAG_UNOVA_HIDE_CHEREN_CAVERN
   + FLAG_UNOVA_HIDE_CHEREN_OPELUCID
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_21
@@ -12439,6 +12724,7 @@ way -
   + FLAG_UNOVA_HIDE_HUGH_HUMILAU
   + FLAG_UNOVA_HIDE_HUGH_RAMP
   + FLAG_UNOVA_HIDE_HUGH_ROUTE_21
+  + FLAG_UNOVA_HIDE_HUGH_TUNNEL
   + FLAG_UNOVA_HIDE_IRIS_OPELUCID
   + FLAG_UNOVA_HIDE_KYUREM_CAVERN
   + FLAG_UNOVA_HIDE_LIEPARD_RAMP
@@ -12459,6 +12745,7 @@ way -
   + FLAG_UNOVA_HIDE_ZINZOLIN_GYM
   + FLAG_UNOVA_HIDE_ZINZOLIN_OPELUCID
   + FLAG_UNOVA_HUMILAU_BEGUN
+  + FLAG_UNOVA_LEAGUE_BEGUN
   + FLAG_UNOVA_OPELUCID_BEGUN
 === common.UnovaOpeningDone
 from a trainer with lines of their own
@@ -12497,6 +12784,7 @@ way -
   + FLAG_UNOVA_HIDE_BLACK_KYUREM
   + FLAG_UNOVA_HIDE_BURGH_GYM
   + FLAG_UNOVA_HIDE_CAPTAIN_TERMINAL
+  + FLAG_UNOVA_HIDE_CEDRIC_HOME
   + FLAG_UNOVA_HIDE_CHEREN_CAVERN
   + FLAG_UNOVA_HIDE_CHEREN_FRIGATE
   + FLAG_UNOVA_HIDE_CHEREN_LAB
@@ -12543,6 +12831,7 @@ way -
   + FLAG_UNOVA_HIDE_HUGH_SEWERS
   + FLAG_UNOVA_HIDE_HUGH_TERMINAL
   + FLAG_UNOVA_HIDE_HUGH_THUMB
+  + FLAG_UNOVA_HIDE_HUGH_TUNNEL
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA_LATER
   + FLAG_UNOVA_HIDE_IRIS_AVENUE
@@ -12599,6 +12888,7 @@ way -
   + FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA
   + FLAG_UNOVA_HUMILAU_BEGUN
   + FLAG_UNOVA_LACUNOSA_BEGUN
+  + FLAG_UNOVA_LEAGUE_BEGUN
   + FLAG_UNOVA_MISTRALTON_BEGUN
   + FLAG_UNOVA_NIMBASA_BEGUN
   + FLAG_UNOVA_OPELUCID_BEGUN
@@ -26171,6 +26461,133 @@ from the tile read at 8,4 of Underwater_SeafloorCavern
 way -
   > "Submarine Explorer 1" is painted on its side.
   > It's the submarine Team Aqua took from Slateport! They must have come ashore near here.
+=== unova_pokemon_league.Guard
+from the trigger at 31,48 of UnovaPokemonLeague
+way 0
+  Veteran> The Pokémon League is where Trainers seek strength and show it. To show it, you need only defeat the Elite Four and then the Champion.
+  Veteran> Challenge the Elite Four in any order you like. Beat all four, and the Champion's way opens.
+  Veteran> But hear me: once you go in, there's no turning back. You battle until you have beaten them all, or been beaten yourself.
+  Veteran> Are you ready to go in?
+  Veteran> Then go, and good luck!
+  ? Are you ready to go in? = Yes
+  = VAR_UNOVA_LEAGUE_GUARD 0 -> 1
+way 1, from answer 1
+  Veteran> Don't skimp on getting ready. The Pokémon Center is just there. Heal your Pokémon and come back.
+  ? Are you ready to go in? = No
+=== unova_pokemon_league.GuardTalk
+from Veteran at 29,48 of UnovaPokemonLeague
+way -
+  Veteran> Once you go in, you battle until you have beaten them all, or been beaten yourself.
+=== unova_pokemon_league.Prepare
+from Veteran at 23,47 of UnovaPokemonLeague
+way -
+  Veteran> The Pokémon League is the greatest challenge a Trainer can take on!
+  Veteran> Get ready here first. Lose even once inside, and you start all over again.
+=== unova_pokemon_league_2.Statue
+from the tile read at 30,44 of UnovaPokemonLeague_Hall
+from the tile read at 31,44 of UnovaPokemonLeague_Hall
+from the tile read at 32,44 of UnovaPokemonLeague_Hall
+way -
+  > A statue of a Pokémon stands in the well. It won't move until all four of the Elite Four have been beaten.
+=== unova_pokemon_league_3.Statue
+from the tile read at 30,82 of UnovaPokemonLeague_Descent
+way 0
+  > Ride the statue back up to the hall?
+  ? Ride the statue back up to the hall? = Yes
+  * warp UnovaPokemonLeague_Hall 31 46
+way 1, from answer 1
+  ? Ride the statue back up to the hall? = No
+=== unova_pokemon_league_5.Pad
+from the trigger at 18,5 of UnovaPokemonLeague_ShauntalsRoom
+way -
+  > The light carried Lucas back down to the hall.
+  * warp UnovaPokemonLeague_Hall 24 39
+=== unova_pokemon_league_5.Shauntal
+from Shauntal at 15,7 of UnovaPokemonLeague_ShauntalsRoom
+way 0
+  Shauntal> 'A lone Trainer, a dragon at her side, crossing the world in search of the truth...' Forgive me, that's a line from the novel I'm writing.
+  Shauntal> You must be the challenger. I'm Shauntal of the Elite Four. My Ghost-type Pokémon and I will be your opponents.
+  Shauntal> Every Pokémon on the field fought on, hurting and tired. Thank you, all of you. What a chapter that was.
+  > A light began to glow in the corner of the room.
+  * battle unova_elite_four_shauntal Won
+  = VAR_UNOVA_LEAGUE_SHAUNTAL 0 -> 1
+  + beaten unova_elite_four_shauntal
+way 1, from answer 1
+  * battle unova_elite_four_shauntal Lost
+=== unova_pokemon_league_6.Grimsley
+from Grimsley at 15,8 of UnovaPokemonLeague_GrimsleysRoom
+way 0
+  Grimsley> Win or lose, it all comes down to a roll of the dice. That's the thrill of it.
+  Grimsley> I'm Grimsley of the Elite Four, and my Dark-type Pokémon play to win. Let's see where the dice land.
+  Grimsley> Well, well. The dice weren't with me today. No regrets, though. I played my hand as well as I could.
+  > A light began to glow in the corner of the room.
+  * battle unova_elite_four_grimsley Won
+  = VAR_UNOVA_LEAGUE_GRIMSLEY 0 -> 1
+  + beaten unova_elite_four_grimsley
+way 1, from answer 1
+  * battle unova_elite_four_grimsley Lost
+=== unova_pokemon_league_6.Pad
+from the trigger at 19,7 of UnovaPokemonLeague_GrimsleysRoom
+way -
+  > The light carried Lucas back down to the hall.
+  * warp UnovaPokemonLeague_Hall 25 37
+=== unova_pokemon_league_7.Marshal
+from Marshal at 15,7 of UnovaPokemonLeague_MarshalsRoom
+way 0
+  Marshal> I am Marshal of the Elite Four. I learned all I know from Alder, our former Champion.
+  Marshal> My Fighting-type Pokémon and I have trained our bodies and our spirits to the limit. Show me yours!
+  Marshal> Your strength... is the real thing. Your spirit, and your Pokémon's, would make my master proud.
+  > A light began to glow in the corner of the room.
+  * battle unova_elite_four_marshal Won
+  = VAR_UNOVA_LEAGUE_MARSHAL 0 -> 1
+  + beaten unova_elite_four_marshal
+way 1, from answer 1
+  * battle unova_elite_four_marshal Lost
+=== unova_pokemon_league_7.Pad
+from the trigger at 18,9 of UnovaPokemonLeague_MarshalsRoom
+way -
+  > The light carried Lucas back down to the hall.
+  * warp UnovaPokemonLeague_Hall 38 39
+=== unova_pokemon_league_8.Caitlin
+from Caitlin at 15,7 of UnovaPokemonLeague_CaitlinsRoom
+way 0
+  Caitlin> Mm... You woke me. Not many challengers make it this far before I've had my rest.
+  Caitlin> I am Caitlin of the Elite Four. My Psychic-type Pokémon are waiting. Let me see what you're made of.
+  Caitlin> Splendid. Your Pokémon fought with grace, and you guided them with a clear mind.
+  > A light began to glow in the corner of the room.
+  * battle unova_elite_four_caitlin Won
+  = VAR_UNOVA_LEAGUE_CAITLIN 0 -> 1
+  + beaten unova_elite_four_caitlin
+way 1, from answer 1
+  * battle unova_elite_four_caitlin Lost
+=== unova_pokemon_league_8.Pad
+from the trigger at 18,5 of UnovaPokemonLeague_CaitlinsRoom
+way -
+  > The light carried Lucas back down to the hall.
+  * warp UnovaPokemonLeague_Hall 37 37
+=== unova_pokemon_league_9.Iris
+from the trigger at 15,43 of UnovaPokemonLeague_ChampionsRoom
+way 0
+  Iris> Hi! You made it all the way here, past the whole Elite Four!
+  Iris> I'm Iris. I'm the Champion of the Pokémon League. Can you believe it? Sometimes I can't either.
+  Iris> I know how much your Pokémon trust you. I can tell just by looking at them. So let's have a battle we'll both remember!
+  Iris> Wow... You're amazing! Your Pokémon fought their very hardest for you, and you fought for them.
+  Iris> That means you're the Champion now! Come with me. There's a room where every Champion is remembered.
+  * scene unova_pokemon_league_9.Iris the Champion
+  * battle unova_champion_iris Won
+  * endscene
+  * fade out
+  * warp UnovaPokemonLeague_HallOfFame 8 14
+  = VAR_UNOVA_LEAGUE_IRIS 0 -> 1
+  + beaten unova_champion_iris
+  + seen unova_pokemon_league_9.Iris the Champion
+way 1, from answer 1
+  * battle unova_champion_iris Lost
+  * scene over, unseen
+=== unova_pokemon_league_9.IrisTalk
+from Iris at 16,34 of UnovaPokemonLeague_ChampionsRoom
+way -
+  Iris> Come on up! I'm waiting for you!
 === unova_route_13.TreasureHunter
 from Treasure Hunter at 683,237 of Unova
 way -
@@ -26528,6 +26945,127 @@ way -
   Nursery Aide> Oh, dear. Your team looks a bit sluggish. Rest for just a moment!
   Nursery Aide> There! All better. Walking the raised walkways is more tiring than you'd think, isn't it?
   * fanfare FanfareHeal
+=== unova_victory_road.BasicGate
+from the trigger at 75,48 of UnovaVictoryRoad
+way -
+  > The gate won't open. A Badge this gate checks for is missing.
+=== unova_victory_road.BoltGate
+from the trigger at 60,48 of UnovaVictoryRoad
+way -
+  > The gate won't open. A Badge this gate checks for is missing.
+=== unova_victory_road.CaveSign
+from the tile read at 35,19 of UnovaVictoryRoad
+way -
+  > Victory Road\nThe Pokémon League lies through this cave.
+=== unova_victory_road.GateSign
+from the tile read at 77,47 of UnovaVictoryRoad
+way -
+  > Badge Check Gates ahead.\nOnly Trainers with all eight of Unova's Badges may pass.
+=== unova_victory_road.InsectGate
+from the trigger at 65,48 of UnovaVictoryRoad
+way -
+  > The gate won't open. A Badge this gate checks for is missing.
+=== unova_victory_road.JetGate
+from the trigger at 50,48 of UnovaVictoryRoad
+way -
+  > The gate won't open. A Badge this gate checks for is missing.
+=== unova_victory_road.LastGate
+from the trigger at 28,44 of UnovaVictoryRoad
+way -
+  > All eight Badges confirmed! The way to Victory Road is open.
+  = VAR_UNOVA_BADGE_GATES 0 -> 9
+=== unova_victory_road.LegendGate
+from the trigger at 45,48 of UnovaVictoryRoad
+way -
+  > The gate won't open. A Badge this gate checks for is missing.
+=== unova_victory_road.N
+from the trigger at 77,52 of UnovaVictoryRoad
+way -
+  N> You came. I knew you would.
+  N> The Pokémon League lies past Victory Road. The road is long, and the Pokémon on it are strong.
+  N> Take this. Parts of the new road can only be climbed with Waterfall.
+  > Lucas received the HM05!
+  > HM05 holds the move Defog.
+  > Lucas put it away in the TMs & HMs pocket.
+  N> You and your Pokémon... I believe you will reach the League, and find there the truth of what you are to one another.
+  N> That is what I see ahead for you. Farewell.
+  * scene unova_victory_road.N at Victory Road
+  * fanfare FanfareTM
+  * endscene
+  + FLAG_UNOVA_HIDE_N_VICTORY_ROAD
+  = VAR_UNOVA_N_VICTORY_ROAD 0 -> 1
+  + seen unova_victory_road.N at Victory Road
+=== unova_victory_road.QuakeGate
+from the trigger at 55,48 of UnovaVictoryRoad
+way -
+  > The gate won't open. A Badge this gate checks for is missing.
+=== unova_victory_road.ToxicGate
+from the trigger at 70,48 of UnovaVictoryRoad
+way -
+  > The gate won't open. A Badge this gate checks for is missing.
+=== unova_victory_road.WaveGate
+from the trigger at 40,48 of UnovaVictoryRoad
+way -
+  > The gate won't open. A Badge this gate checks for is missing.
+=== unova_victory_road_16.Hugh
+from the trigger at 12,6 of UnovaVictoryRoad_Tunnel
+way 0
+  Barry> Wait up, Lucas!
+  Barry> Before you take on the Pokémon League, battle me one more time. Every battle makes us stronger, right?
+  Barry> Lucas... Thanks to you, I did what I set out to do on this journey. My sister's Purrloin is home.
+  Barry> I wish you could have seen her face. This is my thanks!
+  > Lucas received the TM24!
+  > TM24 holds the move Thunderbolt.
+  > Lucas put it away in the TMs & HMs pocket.
+  Barry> You're seriously amazing. So go and become the Champion! Show everyone the kind of Trainer your Pokémon are proud of!
+  Barry> See you!
+  * scene unova_victory_road_16.Hugh in Victory Road
+  * battle unova_rival_18 Won
+  * fanfare FanfareTM
+  * endscene
+  + FLAG_UNOVA_HIDE_HUGH_TUNNEL
+  = VAR_UNOVA_HUGH_TUNNEL 0 -> 1
+  + beaten unova_rival_18
+  + seen unova_victory_road_16.Hugh in Victory Road
+way 1, from answer 1
+  * battle unova_rival_18 Lost
+  * scene over, unseen
+=== unova_victory_road_17.FillEast
+from the pit at 52,18 of UnovaVictoryRoad_Ruins
+from the pit at 52,19 of UnovaVictoryRoad_Ruins
+from the pit at 53,18 of UnovaVictoryRoad_Ruins
+from the pit at 53,19 of UnovaVictoryRoad_Ruins
+way -
+  > The boulder dropped into the hole and filled it in! The way across is open.
+  * sound ledge
+  + FLAG_UNOVA_VICTORY_ROAD_RUINS_HOLE_EAST
+=== unova_victory_road_17.FillWest
+from the pit at 17,37 of UnovaVictoryRoad_Ruins
+from the pit at 17,38 of UnovaVictoryRoad_Ruins
+from the pit at 18,37 of UnovaVictoryRoad_Ruins
+from the pit at 18,38 of UnovaVictoryRoad_Ruins
+way -
+  > The boulder dropped into the hole and filled it in! The way across is open.
+  * sound ledge
+  + FLAG_UNOVA_VICTORY_ROAD_RUINS_HOLE_WEST
+=== unova_victory_road_20.FillEast
+from the pit at 31,6 of UnovaVictoryRoad_Cave
+from the pit at 31,7 of UnovaVictoryRoad_Cave
+from the pit at 32,6 of UnovaVictoryRoad_Cave
+from the pit at 32,7 of UnovaVictoryRoad_Cave
+way -
+  > The boulder dropped into the hole and filled it in! The way across is open.
+  * sound ledge
+  + FLAG_UNOVA_VICTORY_ROAD_CAVE_HOLE_EAST
+=== unova_victory_road_20.FillWest
+from the pit at 27,7 of UnovaVictoryRoad_Cave
+from the pit at 27,8 of UnovaVictoryRoad_Cave
+from the pit at 28,7 of UnovaVictoryRoad_Cave
+from the pit at 28,8 of UnovaVictoryRoad_Cave
+way -
+  > The boulder dropped into the hole and filled it in! The way across is open.
+  * sound ledge
+  + FLAG_UNOVA_VICTORY_ROAD_CAVE_HOLE_WEST
 === valley_windworks_outside.Door
 from the tile read at 243,654 of Sinnoh
 way -

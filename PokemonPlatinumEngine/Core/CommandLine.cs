@@ -36,8 +36,8 @@ public sealed record LaunchOptions
     public string? LogPath { get; init; }
 
     /// <summary>
-    /// <c>--dev</c>: the developer's surface (plan 16's "One build, two faces"). Nothing reads it yet: plan 16 · T6's
-    /// console and live reload will, through <see cref="CommandLine.Launched"/>.
+    /// <c>--dev</c>: the developer's surface (plan 16's "One build, two faces"): plan 16 · T6's console and live reload
+    /// (<see cref="DevMode"/>), turned on by <c>Program.Main</c>.
     /// </summary>
     public bool Dev { get; init; }
 
@@ -138,7 +138,8 @@ public static class CommandLine
             + $"{Manifest.NoManifest} when there is no {Manifest.FileName} (only a release build has one; none is made yet).",
             (o, _) => o with { Verify = true }),
         new("--log", "path", $"Write the log to this file instead of {Log.FileName} beside the save.", (o, v) => o with { LogPath = v }),
-        new("--dev", null, "Developer mode. Nothing reads it yet: the console and live reload will.", (o, _) => o with { Dev = true }),
+        new("--dev", null, "Developer mode: the console on the grave key (` - help lists its commands), and the scripts, overlays, rooms, songs and model files "
+            + "reloaded as they are saved, read from the repository's data when the game runs from it.", (o, _) => o with { Dev = true }),
         new("--crash-after", "frames", "Throw on purpose after that many frames, to see the crash handler at work.",
             (o, v) => o with { CrashAfter = int.Parse(v!, CultureInfo.InvariantCulture) })
         {

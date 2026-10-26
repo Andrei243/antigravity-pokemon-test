@@ -61,7 +61,10 @@
     // and Opelucid City's (plan 22 · U8, part a)
     { "id": 10, "area": "opelucid_city", "x": 425, "y": 173, "room": "OpelucidCity_PokemonCenter" },
     // and Humilau City's (plan 22 · U8, part b)
-    { "id": 11, "area": "humilau_city", "x": 775, "y": 177, "room": "HumilauCity_PokemonCenter" }
+    { "id": 11, "area": "humilau_city", "x": 775, "y": 177, "room": "HumilauCity_PokemonCenter" },
+    // and Victory Road's and the Pokémon League's, each on a map of its own (plan 22 · U9, part b)
+    { "id": 12, "area": "unova_victory_road", "map": "UnovaVictoryRoad", "x": 43, "y": 17, "room": "UnovaVictoryRoad_PokemonCenter" },
+    { "id": 13, "area": "unova_pokemon_league", "map": "UnovaPokemonLeague", "x": 19, "y": 48, "room": "UnovaPokemonLeague_PokemonCenter" }
   ],
   // Plan 18 · W4: Black 2's levels for a team that crossed from Hoenn, from Hoenn's Champion's 162 on the first
   // route to Iris at 185 (the study's fair climb); the post-game climbs on past her on the same line

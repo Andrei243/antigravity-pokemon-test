@@ -1,0 +1,326 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Lena"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Rangers keep these hills safe. Let me see if you're safe to let through!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "You're more than safe. You're dangerous."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Doug"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Everyone on this road is bound for the League. Me, I'm bound for the next rock!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "That rock can wait. I need a sit-down."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "2": {
+      "name": {
+        "en": [
+          "Tom"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Only Trainers with eight Badges come this far. Show me yours were earned!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Earned, every one of them."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "3": {
+      "name": {
+        "en": [
+          "Miki"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "One more battle before Victory Road? Don't mind if I do!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "I'll walk the road behind you, then."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "4": {
+      "name": {
+        "en": [
+          "Benjamin"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "My training ends at the League's door. Yours ends here!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "My training goes on, it seems."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "5": {
+      "name": {
+        "en": [
+          "Tiffany"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "I run up and down this valley every morning. Keep up with me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "You didn't even break a sweat!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "23": {
+      "name": {
+        "en": [
+          "Juliet"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "The river's loud, but my Pokémon are louder!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Drowned out completely."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "25": {
+      "name": {
+        "en": [
+          "Don"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "I've climbed every hill on Route 23. Now let's see you climb past me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Over the top, just like that."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "26": {
+      "name": {
+        "en": [
+          "Luke"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiyah! A Trainer at the end of the road must be strong. Prove it!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Proven. Painfully."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "28": {
+      "name": {
+        "en": [
+          "Grant"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "I came to watch the challengers go by. Then I thought: why not battle one?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "I'll go back to watching, I think."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "31": {
+      "name": {
+        "en": [
+          "Brenda"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "My fists and my Pokémon, both ready for you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Both of us lost. Good battle!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "34": {
+      "name": {
+        "en": [
+          "Steve"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Wild Pokémon here are tough. So are the Trainers. Ready?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Tougher than any of us, you are."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "10806": {
+      "en": [
+        "Route 23\nThe Giant Chasm to Victory Road"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}
