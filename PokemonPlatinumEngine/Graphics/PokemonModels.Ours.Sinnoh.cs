@@ -57,7 +57,7 @@ internal static partial class PokemonModels
             b.Spike(Body, V(x, 0.56f, 0.2f), V(x * 1.2f, 0.4f, 0.24f), 0.03f, wet, 0.5f);
         // A twig caught behind its right ear
         var twig = Rgb(112, 84, 58);
-        b.Tube(head, new[] { V(0.05f, 0.92f, -0.12f), V(0.2f, 0.98f, -0.1f), V(0.34f, 1.04f, -0.06f) }, 0.009f, 0.006f, twig, Shell, 0.004f);
+        b.Tube(head, new[] { V(0.08f, 0.86f, -0.04f), V(0.2f, 0.98f, -0.1f), V(0.34f, 1.04f, -0.06f) }, 0.009f, 0.006f, twig, Shell, 0.004f);
         b.Tube(head, new[] { V(0.24f, 1f, -0.09f), V(0.29f, 1.08f, -0.1f) }, 0.006f, 0.004f, twig, Shell, 0.003f);
         // Claws on its feet and hands
         PokeBuilder.Both(s =>
@@ -103,7 +103,7 @@ internal static partial class PokemonModels
             if (s > 0)
             {
                 // A long straight sword held down and out
-                var tip = hand + Vector3.Normalize(V(0.4f, -0.55f, 0.3f)) * 0.62f;
+                var tip = hand + Vector3.Normalize(V(0.5f, -0.45f, 0.3f)) * 0.46f;
                 b.Box(arm, hand + V(0, 0, 0.0f), V(0.045f, 0.01f, 0.012f), 0.004f, silver, Euler(tip - hand) + V(0, 0, 90f), Metal, 0.004f);
                 Blade(b, arm, hand + Vector3.Normalize(tip - hand) * 0.03f, tip, 0.05f, Steel, V(0, 0, 1f), 0.18f, Metal);
             }
@@ -113,22 +113,21 @@ internal static partial class PokemonModels
                 var top = hand + V(-0.06f, 0.42f, 0.02f);
                 var foot = hand + V(-0.02f, -0.3f, 0.04f);
                 var arc = Smooth(3, foot, hand + V(-0.09f, -0.12f, 0.04f), hand, hand + V(-0.12f, 0.22f, 0.03f), top);
-                b.Tube(arm, arc, 0.012f, 0.008f, Rgb(110, 30, 44), Shell, 0.004f);
-                b.Tube(arm, new[] { foot, top }, 0.003f, 0.003f, silver, Metal, 0f);
+                b.Tube(arm, arc, 0.02f, 0.016f, Rgb(110, 30, 44), Shell, 0.006f);
+                b.Tube(arm, new[] { foot, top }, 0.01f, 0.01f, silver, Metal, 0.004f);
             }
         });
         // The wings grow into a long tail-coat, crimson lined in black, falling to its ankles
         PokeBuilder.Both(s =>
         {
             int w = BoneOf(b, s < 0 ? "wingL" : "wingR");
-            Grow(b, V(1.05f, 1.35f, 1.1f), V(0.12f * s, 0.6f, -0.06f), bone => bone == w);
+            Grow(b, V(1.05f, 1.08f, 1.1f), V(0.12f * s, 0.6f, -0.06f), bone => bone == w);
             b.PaintEll(w, V(0.22f * s, 0.3f, -0.0f), V(0.05f, 0.28f, 0.1f), crimson);
         });
         // A violin's scroll curling up from its brow in place of its crest
         int head = BoneOf(b, "head");
         var scroll = Spiral(V(0, 1.1f, 0.02f), V(0, 0, 1), V(0, 1, 0), 0.06f, 0.018f, MathF.PI, MathF.PI * 3.2f, 16);
         b.Tube(head, new[] { V(0, 0.95f, 0.0f), V(0, 1.03f, -0.02f) }.Concat(scroll).ToArray(), 0.024f, 0.012f, Rgb(110, 30, 44), Shell, 0.006f);
-        PokeBuilder.Both(s => b.Spike(head, V(0.02f * s, 1.06f, -0.02f), V(0.06f * s, 1.07f, -0.02f), 0.012f, black, mat: Shell, blend: 0.003f));
         // Silver trim down the breast
         b.PaintEll(Body, V(0, 0.46f, 0.15f), V(0.016f, 0.2f, 0.06f), silver, soft: 0.006f);
         Stretch(b, V(0.92f, 1.14f, 0.92f));
@@ -209,7 +208,7 @@ internal static partial class PokemonModels
         b.Box(head, V(0, 0.42f, 0.13f), V(0.29f, 0.28f, 0.05f), 0.03f, rim, mat: Metal);
         PokeBuilder.Both(s =>
         {
-            var at = V(0.42f * s, 0.4f, 0.06f);
+            var at = V(0.36f * s, 0.4f, 0.08f);
             b.Box(head, at, V(0.13f, 0.27f, 0.05f), 0.03f, rim, V(0, -28f * s, 0), Metal);
             b.Box(head, at + V(0.01f * s, 0, 0.02f), V(0.11f, 0.25f, 0.045f), 0.03f, steel, V(0, -28f * s, 0), Metal, 0.004f);
             foreach (float t in new[] { -0.08f, 0.08f })
@@ -550,9 +549,11 @@ internal static partial class PokemonModels
             Petal(b, Body, V(0, 0.3f, 0.06f) + dir * 0.08f, V(0, 0.3f, 0.1f) + dir * 0.17f, 0.05f, petal, Leaf, 0.008f);
         }
         // A crown of small blossoms on its brow
-        foreach (var (x, y, z) in new[] { (0f, 0.45f, 0.06f), (-0.065f, 0.43f, 0.05f), (0.065f, 0.43f, 0.05f), (-0.11f, 0.4f, 0.03f), (0.11f, 0.4f, 0.03f) })
+        var fc0 = V(0, 0.32f, 0.02f);
+        var fr0 = V(0.13f, 0.12f, 0.11f);
+        foreach (var (x, y) in new[] { (0f, 0.43f), (-0.055f, 0.42f), (0.055f, 0.42f), (-0.095f, 0.39f), (0.095f, 0.39f) })
         {
-            var c = V(x, y, z);
+            var c = On(fc0, fr0, x, y);
             for (int k = 0; k < 5; k++)
             {
                 float a = k * MathF.Tau / 5f;
@@ -726,7 +727,7 @@ internal static partial class PokemonModels
         foreach (float x in new[] { -0.05f, 0.05f })
             PokeBuilder.Both(s => b.Ell(Body, g + V(x + 0.012f * s, 0.005f, 0.145f), V(0.009f, 0.013f, 0.006f), glow, mat: Glow, blend: 0f));
         foreach (var (x, z) in new[] { (-0.08f, 0.1f), (0.08f, 0.1f), (-0.08f, -0.1f), (0.08f, -0.1f) })
-            b.Tube(Body, new[] { g + V(x, 0.04f, z), c + V(x * 1.6f, -ry * 0.82f, z * 1.8f) }, 0.006f, 0.006f, lilac, blend: 0.003f);
+            b.Tube(Body, new[] { g + V(x, 0.02f, z), c + V(x * 1.4f, -ry * 0.55f, z * 1.6f) }, 0.007f, 0.007f, lilac, blend: 0.003f);
         // The four arms lengthen into streamers
         foreach (var name in new[] { "armL", "armR", "backArmL", "backArmR" })
         {
@@ -734,6 +735,11 @@ internal static partial class PokemonModels
             float s = name.EndsWith("L") ? -1f : 1f;
             float z = name.StartsWith("back") ? -0.1f : 0.1f;
             Grow(b, V(1.15f, 1.3f, 1.6f), V(0.1f * s, 0.38f, z) + lift, bone => bone == arm);
+            // Each streamer's root held to the envelope's underside, and its joint whole
+            var shoulder = V(0.1f * s, 0.38f, z) + lift;
+            var elbow = shoulder + V(0.14f * s * 1.15f, -0.14f * 1.3f, z * 0.8f * 1.6f);
+            b.Limb(arm, shoulder, V(0.08f * s, 0.46f, z * 1.2f) + lift, 0.03f, 0.03f, lilac, blend: 0.01f);
+            b.Limb(arm, shoulder, elbow, 0.022f, 0.02f, Rgb(206, 196, 232), blend: 0.01f);
         }
         Recolour(b, (Rgb(240, 236, 246), Rgb(206, 196, 232)));
         return Lift(b);
@@ -927,7 +933,7 @@ internal static partial class PokemonModels
         });
         // A notch torn out of its right ear
         int ear = BoneOf(b, "earR");
-        b.Cut(ear, V(0.17f, 0.74f, 0.07f), V(0.035f, 0.03f, 0.06f));
+        b.Cut(ear, V(0.205f, 0.79f, 0.06f), V(0.035f, 0.03f, 0.06f));
         Stretch(b, V(1.08f, 1.1f, 1.08f));
         return b;
     }
@@ -995,7 +1001,6 @@ internal static partial class PokemonModels
             var at = V(x, 0.76f - Math.Abs(x) * 0.4f, 0) + lift;
             b.Ell(Body, at + V(0, 0.03f, 0), V(0.04f, 0.04f, 0.04f), Rgb(108, 108, 96), mat: Metal, blend: 0.01f);
             b.Spike(Body, at + V(0, 0.05f, 0), at + V(0, h, 0), 0.035f, Rgb(108, 108, 96), mat: Metal, blend: 0.006f);
-            b.Torus(Body, at + V(0, 0.08f, 0), 0.03f, 0.008f, bronze, mat: Metal, blend: 0.003f);
         }
         // Raised bands of bronze with studs between them
         foreach (var (y, r) in new[] { (0.66f, 0.17f), (0.5f, 0.19f), (0.3f, 0.225f) })
@@ -1003,14 +1008,14 @@ internal static partial class PokemonModels
         for (int i = 0; i < 12; i++)
         {
             float a = i * MathF.Tau / 12f;
-            b.Ell(Body, V(MathF.Sin(a) * 0.19f, 0.58f, MathF.Cos(a) * 0.19f) + lift, V(0.012f, 0.012f, 0.012f), bronze, mat: Metal, blend: 0.003f);
+            b.Ell(Body, V(MathF.Sin(a) * 0.18f, 0.58f, MathF.Cos(a) * 0.18f) + lift, V(0.014f, 0.014f, 0.014f), bronze, mat: Metal, blend: 0.004f);
         }
         // A fringe of small bells hanging round the rim
         for (int i = 0; i < 14; i++)
         {
             float a = i * MathF.Tau / 14f;
             var hang = V(MathF.Sin(a) * 0.2f, 0.12f, MathF.Cos(a) * 0.2f) + lift;
-            b.Limb(Body, hang + V(0, 0.04f, 0), hang, 0.006f, 0.006f, dark, Metal, 0.003f);
+            b.Limb(Body, hang + V(-MathF.Sin(a) * 0.02f, 0.08f, -MathF.Cos(a) * 0.02f), hang, 0.011f, 0.011f, dark, Metal, 0.004f);
             b.Ell(Body, hang - V(0, 0.03f, 0), V(0.026f, 0.03f, 0.026f), bronze, mat: Metal, blend: 0.006f);
             b.Torus(Body, hang - V(0, 0.055f, 0), 0.024f, 0.007f, bronze, mat: Metal, blend: 0.004f);
         }
@@ -1269,8 +1274,7 @@ internal static partial class PokemonModels
         {
             int arm = BoneOf(b, s < 0 ? "armL" : "armR");
             var wrist = V(0.31f * s, 0.34f, 0.22f);
-            const float g = 1.35f;
-            Grow(b, V(g, g, g), wrist, sh => sh.Bone == arm && Vector3.Distance(sh.A, wrist) < 0.15f, bn => bn == arm);
+            const float g = 1f;
             var d = Vector3.Normalize(V(-0.03f * s, 0.07f, 0.08f));
             const float size = 0.075f;
             var palm = wrist + d * size * 0.6f;
@@ -1887,7 +1891,7 @@ internal static partial class PokemonModels
             for (int i = 0; i < 4; i++)
             {
                 float dy = i * 0.02f;
-                var path = Smooth(3, V(0.03f * s, 0.3f - dy, 0.19f), V(0.14f * s, 0.2f - dy, 0.2f), V(0.28f * s, 0.06f - dy * 0.5f, 0.14f), V(0.4f * s, 0.06f + dy, 0.08f));
+                var path = Smooth(3, V(0.03f * s, 0.3f - dy, 0.14f), V(0.14f * s, 0.2f - dy, 0.2f), V(0.28f * s, 0.06f - dy * 0.5f, 0.14f), V(0.4f * s, 0.06f + dy, 0.08f));
                 b.Tube(Body, path, 0.03f - i * 0.004f, 0.006f, iron, blend: 0.006f);
             }
         });
@@ -1922,6 +1926,8 @@ internal static partial class PokemonModels
         var ice = Rgb(176, 214, 240);
         var crimson = Rgb(190, 42, 64);
         Recolour(b, (Rgb(240, 84, 40), crimson), (Rgb(132, 82, 184), Rgb(150, 140, 200)));
+        // The diamonds on the robe go under the gown
+        b.Model.Decals.RemoveAll(d => !d.IsEye && d.Bone == Body);
         // A gown falling from the waist, fraying into ice at its hem
         var hem = V(0, 0.2f, 0) + lift;
         b.Ell(Body, V(0, 0.3f, 0) + lift, V(0.1f, 0.14f, 0.09f), white, blend: 0.03f);

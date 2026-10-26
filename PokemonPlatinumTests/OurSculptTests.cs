@@ -59,4 +59,28 @@ public class OurSculptTests
         Assert.Equal(new[] { "Mesmeryx", "Ratchisel", "Sabrefin", "Tripluma", "Typhonarch" }, flagged);
         Assert.All(flagged, n => Assert.Contains(n, PokemonLook.Females));
     }
+
+    /// <summary>Batch 4: the species of our own that evolve from Sinnoh's (Nos. 2400 to 2482).</summary>
+    private static PokemonSpecies[] Sinnoh => PokemonDatabase.Ours().Where(s => s.DexNumber is >= 2400 and <= 2499).ToArray();
+
+    [Fact]
+    public void EverySpeciesOfOursOfSinnohIsHandBuiltAndItsOwn()
+    {
+        Assert.Equal(39, Sinnoh.Length);
+        foreach (var s in Sinnoh)
+        {
+            Assert.True(PokemonModels.HasModel(s.Name), $"{s.Name} has no sculpt of its own");
+            Assert.Contains(s.Name, PokemonModels.Species);
+            Assert.NotEqual(PokemonModels.Signature(ForebearOf(s).Name), PokemonModels.Signature(s.Name));
+            Assert.Equal(s.Name, PokemonModels.Build(s.Name).Species);
+        }
+    }
+
+    [Fact]
+    public void ASinnohFemaleLookIsKeptWhereTheForebearsIs()
+    {
+        var flagged = Sinnoh.Where(s => s.GenderDifferences).Select(s => s.Name).OrderBy(n => n).ToArray();
+        Assert.Equal(11, flagged.Length);
+        Assert.All(flagged, n => Assert.Contains(n, PokemonLook.Females));
+    }
 }
