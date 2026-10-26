@@ -203,6 +203,49 @@ public class HeadlessGameTests
     }
 
     [Fact]
+    public void ARematchInARegionGonePastIsMetAtTheFurthestHallOfFamesLevels()
+    {
+        // Plan 18 · W4b, L9: Cynthia's rematch (her first Pokémon of 74) in Sinnoh is Platinum's until a Hall of Fame past
+        // Sinnoh is entered, then Kanto's 119 and Johto's 149 (Models.RematchLevels; the numbers by the script of the
+        // rulings' "Rematches of a region gone past"); a trainer of the place who is no rematch keeps Platinum's level
+        var paths = SavePaths.Current;
+        try
+        {
+            Dice.Seed(12);
+            foreach (var (flags, cynthia) in new[] { (new string[0], 74), (new[] { "SinnohHallOfFame", "KantoHallOfFame" }, 119), (new[] { "SinnohHallOfFame", "KantoHallOfFame", "JohtoHallOfFame" }, 149) })
+            {
+                var engine = Headless();
+                var game = engine.Drive;
+                engine.NewGameRegion = "Sinnoh";
+                engine.StartNewGame();
+                foreach (var flag in flags) game.Story.Set(flag);
+                game.Party.Clear();
+                game.Party.Add(new Pokemon(PokemonDatabase.Get("Turtwig")!, 100));
+                game.State = GameState.Overworld;
+                game.Place(MapDatabase.Get("Sinnoh"), 116, 886, Direction.Right);
+                var someone = game.Map.Everyone.First(n => n.IsTrainer && n.TrainerData != null);
+                var own = someone.TrainerData!;
+                var team = new Trainer { Id = "champion_cynthia_rematch" };
+                TrainerDatabase.Fill(team, TrainerDatabase.Get(team.Id)!);
+                someone.TrainerData = team;
+                game.StartTrainerBattle(someone);
+                Until(engine, () => game.State == GameState.Battle, "the battle");
+                Assert.Equal(cynthia, game.Battle!.EnemyPokemon.Level);
+                // The trainer of the map keeps the data's team
+                Assert.Equal(74, team.Party.Members[0].Level);
+                someone.TrainerData = own;
+            }
+        }
+        finally
+        {
+            InputManager.Feed(null);
+            Dice.Seed(null);
+            Ruleset.Use(RulesPreset.Platinum);
+            SavePaths.Current = paths;
+        }
+    }
+
+    [Fact]
     public void TheSignOverTheFieldNamesTheAreaInTheChosenLanguage()
     {
         // Plan 17 · N6b, slice 4: walking into an area showed its English name under every language

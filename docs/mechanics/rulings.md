@@ -6292,3 +6292,30 @@ the player, Challenge by share in a crossed region. `Models/OursGrowth.cs`.
   few by hand. A game begun with `--region` (a development switch) meets the old teams under the new names.
   `GrownNamesTests` holds every trainer's line to the engine's own rule, so a change of the levels or the data that makes
   a line stale fails there.
+
+## Rematches of a region gone past (2026-10-26, plan 18 · W4b, L9)
+
+The user approved L9's default on 2026-10-26 (docs/plans/APPROVAL-levelling-and-our-species.md). `Models/RematchLevels.cs`.
+
+- **A region come back to keeps the levels it was met at**: Sinnoh's places and trainers stay Platinum's, a crossed
+  region's stay its own pairs' (as Gold and Silver's Kanto).
+- **Its rematch teams take the furthest Hall of Fame's levels**: in `GameEngine.StartTrainerBattle`, a team that is a
+  rematch's (`TrainerDatabase.IsRematchTeam`: an id with `_rematch` in it, which is Platinum's Vs. Seeker rows, its
+  League's and the Battleground's and Hoenn's of ours; a team of any trainer's row, which is Johto's phone; an Elite
+  Four's or a Champion's team with a number after the first's id, Kanto's League once the Sevii Islands are linked) of a
+  region before the furthest region whose Hall of Fame is entered is relevelled by that region's `levels`, whose last
+  pair is its post-game, and grows as a crossed team does (`grow: true`); Challenge and Easy by share. The team's region
+  is its id's prefix (`RematchLevels.RegionOfTeam`; none is Sinnoh). *Decided*: the rematch's own level is read as the
+  furthest region's own level and mapped by its whole line, not scaled from the rematch's own post-game, so every rematch
+  meets the player between the furthest region's first route and its post-game: with Unova's Hall of Fame every rematch
+  of the four regions before it is met between 162 and 203 (`RematchLevelTests`). Worked out by a script from the region
+  files and the trainers' files: Cynthia's rematch (74 to 78) is met at 119–124 after Kanto's Hall of Fame, 149–151 after
+  Johto's, 179–183 after Hoenn's, 198–201 after Unova's; Youngster Tristan's first rematch (24) at 77, 119, 146, 171;
+  Kanto's Champion's rematch ace (75) at 149 after Johto's; Hoenn's Wallace of ours (66) at 191 after Unova's.
+- **Left alone**: a trainer who is no rematch, a team beyond the League (`_beyond`) and a Champion's Mega Dynamax team
+  (`_megamax`), the partner (who keeps the place's levels), the first battle, the Masters, the Frontier, the Subway and
+  the Dome. Nothing moves while the furthest Hall of Fame is the rematch's own region's or one before it, nor in a game
+  begun in the furthest region (`--region`, L10: it has no pairs to map by). Such a rematch in Sinnoh gives Sinnoh's EXP
+  (no crossed bonus, no ceiling): only the levels move.
+- *Left*: a Sinnoh rematch's line that names a Pokémon its team now grows out of keeps Platinum's name, since the same
+  line is said before and after a Hall of Fame past Sinnoh (`grown-names.mjs` covers the crossed regions' lines only).

@@ -483,18 +483,28 @@ public partial class GameEngine
         // stage its new level allows, the games' and then ours (plan 18 · W4b-2, plan 03 · D15-A), the partner's too. Not
         // the first battle's, nor a Master Trainer's, who follows the player instead (below)
         var crossed = CrossedLevels();
-        if (crossed is { } levels && !firstBattle && terms?.Alone == null)
+        // A rematch's team of a region gone past is met at the furthest Hall of Fame's levels instead (plan 18 · W4b, L9;
+        // Models.RematchLevels), Sinnoh's too, and grows as any crossed team does
+        var mapped = new bool[trainers.Count];
+        if (!firstBattle && terms?.Alone == null)
         {
-            trainers = trainers.Select(t => t.Id.EndsWith(Battle.Sim.BattleCore.BeyondSuffix, StringComparison.Ordinal) ? t : t.Relevelled(levels.Map, grow: true)).ToList();
+            for (int k = 0; k < trainers.Count; k++)
+            {
+                var t = trainers[k];
+                if (t.Id.EndsWith(Battle.Sim.BattleCore.BeyondSuffix, StringComparison.Ordinal)) continue;
+                if ((RematchLevels.For(t.Id, flow.Story, flow.BeganIn) ?? crossed) is not { } levels) continue;
+                trainers[k] = t.Relevelled(levels.Map, grow: true);
+                mapped[k] = true;
+            }
             trainer = trainers[0];
-            partner = partner?.Relevelled(levels.Map, grow: true);
+            if (crossed is { } partnerLevels) partner = partner?.Relevelled(partnerLevels.Map, grow: true);
         }
         // The difficulty chosen at NEW GAME is laid on a copy of each foe (plan 13 · V2): the trainers of the map keep
         // their teams, and under Normal the very same objects are handed on; in a crossed region by share of the level
         // (plan 18 · W4b-2, L6). The first battle of a game, the tutorial the rival fights beside the player's first
         // Pokémon, and a Master Trainer's (a Pokémon chosen to fight alone, at a level of its own) are left as they are
         if (!firstBattle && terms?.Alone == null)
-            trainers = trainers.Select(t => DifficultyRules.Prepare(t, flow.Run, LeadLevel(), crossed: crossed != null)).ToList();
+            trainers = trainers.Select((t, k) => DifficultyRules.Prepare(t, flow.Run, LeadLevel(), crossed: crossed != null || mapped[k])).ToList();
         // A Master Trainer follows the player (W4b's section 4, piece 5): met at the higher of its own level and the
         // chosen Pokémon's
         if (terms?.Alone is { } chosen)

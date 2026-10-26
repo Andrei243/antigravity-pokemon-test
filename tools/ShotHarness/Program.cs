@@ -205,6 +205,7 @@ if (mode == "scenarios") h.ScenariosMode();
 if (mode == "venues") h.VenuesMode();
 if (mode == "layers") h.LayersMode();
 if (mode == "soak") h.SoakMode();
+if (mode == "levelling") h.LevellingMode();
 
 h.Close();
 Raylib.CloseWindow();
