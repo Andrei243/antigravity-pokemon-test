@@ -3,6 +3,7 @@
   // north-east, where an old gentleman gives an Egg to a trainer whose Pokémon trusts them fully
   // (five_island_water_labyrinth.txt)
   "area": "five_island_water_labyrinth",
+  "ours": { "surf": [ ["Stellamir", 120, 124] ], "superRod": [ ["Pincerex", 110, 114] ] },
   "name": "Water Labyrinth",
   "bgmTrack": "kanto/sevii_route",
   "trees": "Round",

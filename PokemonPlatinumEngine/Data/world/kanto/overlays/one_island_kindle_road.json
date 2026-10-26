@@ -3,6 +3,7 @@
   // sea up to the foot of Mt. Ember, with the Ember Spa's cave halfway; its trainers battle by their own records
   // (Kanto's trainers.json), and Mik and Kia, a brother and sister of the Crush Kin, battle together as one
   "area": "one_island_kindle_road",
+  "ours": { "land": [ ["Solarion", 115, 119], ["Pyreon", 120, 124] ] },
   "name": "Kindle Road",
   "bgmTrack": "kanto/route3",
   "trees": "Round",

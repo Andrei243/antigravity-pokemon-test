@@ -1,5 +1,6 @@
 {
   "area": "route_225",
+  "ours": { "land": [ ["Lapinova", 110, 114], ["Quadripom", 110, 114] ] },
   // The original's role (Routes 225 to 227 and Stark Mountain's foot share it) has no song yet (plan 05 · A6):
   // Routes 206 to 208's climb stands in
   "bgmTrack": "sinnoh/route206",

@@ -2,6 +2,7 @@
   // Outcast Island (plan 19 · K9, part b): FireRed's map, our words. A rocky islet at the end of the Green Path, a
   // Team Rocket grunt on watch by Altering Cave until the warehouse is cleared
   "area": "six_island_outcast_island",
+  "ours": { "surf": [ ["Medusarch", 115, 119] ], "superRod": [ ["Eurypterox", 120, 124] ] },
   "name": "Outcast Island",
   "bgmTrack": "kanto/sevii_route",
   "trees": "Round",

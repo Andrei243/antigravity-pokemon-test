@@ -1,5 +1,6 @@
 {
   "area": "stark_mountain_room_1",
+  "ours": { "land": [ ["Cranialith", 115, 119], ["Bastionsaur", 115, 119] ] },
   "climate": "Volcanic",
   // The original's role is D_06, Stark Mountain's own, which has no song yet (plan 05 · A6): Victory Road's stands in
   "bgmTrack": "sinnoh/victory_road",

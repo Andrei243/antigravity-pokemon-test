@@ -1,5 +1,6 @@
 {
   "area": "great_marsh_1",
+  "ours": { "land": [ ["Flytrapex", 106, 110], ["Venomsensei", 112, 116] ] },
   "bgmTrack": "sinnoh/great_marsh",
   "trees": "Round",
   "people": {

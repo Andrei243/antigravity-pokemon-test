@@ -1,5 +1,6 @@
 {
   "area": "victory_road_1f_room_1",
+  "ours": { "land": [ ["Lodestarch", 118, 122], ["Aurasage", 120, 124] ] },
   "bgmTrack": "sinnoh/victory_road"
   // The first of Victory Road's back rooms (plan 01 · M10, part a): a passage from the guarded way in on the first
   // floor to the long room where Marley waits. Nobody stands in it

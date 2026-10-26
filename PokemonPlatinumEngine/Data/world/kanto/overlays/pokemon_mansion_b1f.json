@@ -3,6 +3,7 @@
   // floor's (pokemon_mansion_1f.json has the rule), its trainers, the last page of the diary, and the Secret Key in its
   // ball, which opens Blaine's Gym (cinnabar_island.txt)
   "area": "pokemon_mansion_b1f",
+  "ours": { "land": [ ["Smoglom", 112, 116], ["Sludgemire", 115, 119] ] },
   "name": "Pokémon Mansion",
   "bgmTrack": "kanto/pokemon_mansion",
   "people": {

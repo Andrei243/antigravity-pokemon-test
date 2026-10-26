@@ -3,6 +3,7 @@
   // when a boulder is pushed onto them (kanto_victory_road_2f.txt); the boulder for the second falls through the hole
   // on the floor above (its own flag, which Route 23 puts back). A Cooltrainer teaches Double-Edge once
   "area": "kanto_victory_road_2f",
+  "ours": { "land": [ ["Najarok", 106, 110], ["Azhdarch", 125, 129] ] },
   "name": "Victory Road",
   "bgmTrack": "kanto/mt_moon",
   "pits": [

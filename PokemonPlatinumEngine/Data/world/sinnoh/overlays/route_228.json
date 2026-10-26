@@ -1,5 +1,6 @@
 {
   "area": "route_228",
+  "ours": { "land": [ ["Behemowdon", 115, 119], ["Dreadpion", 115, 119] ] },
   // Plan 03 · D12a: the Trapinch line, which Platinum's tables leave out, where Diamond and Pearl have it (both
   // versions, by the Poké Radar on this route and nowhere else): in the grass's slots 8 and 9 once the National
   // Pokédex is had, at those slots' levels (49 and 50)

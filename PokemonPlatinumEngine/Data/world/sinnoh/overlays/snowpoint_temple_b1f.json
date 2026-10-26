@@ -1,5 +1,6 @@
 {
   "area": "snowpoint_temple_b1f",
+  "ours": { "land": [ ["Rimeripper", 115, 119], ["Glaciarbor", 115, 119] ] },
   "climate": "Frozen",
   "bgmTrack": "sinnoh/forest"
   // The first floor down (plan 01 · M10, part b): its ice is the field's own, slid across from wall to wall, and a

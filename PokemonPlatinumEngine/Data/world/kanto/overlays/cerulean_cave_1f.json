@@ -2,6 +2,7 @@
   // Cerulean Cave, its first floor (plan 19 · K9, part b): FireRed's map. The cave behind Cerulean City's guard, who
   // stands aside once the Sapphire is in Celio's machine
   "area": "cerulean_cave_1f",
+  "ours": { "land": [ ["Dynamorb", 105, 109], ["Cordyhusk", 110, 114] ], "surf": [ ["Psyduke", 112, 116] ], "superRod": [ ["Sabrefin", 106, 110] ] },
   "name": "Cerulean Cave",
   "bgmTrack": "kanto/rocket_hideout"
 }

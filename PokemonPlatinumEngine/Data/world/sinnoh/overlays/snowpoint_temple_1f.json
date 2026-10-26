@@ -1,5 +1,6 @@
 {
   "area": "snowpoint_temple_1f",
+  "ours": { "land": [ ["Frostbride", 112, 116], ["Borealeon", 120, 124] ] },
   "climate": "Frozen",
   // D_02, the role Eterna Forest has: the same hush under the snow
   "bgmTrack": "sinnoh/forest",

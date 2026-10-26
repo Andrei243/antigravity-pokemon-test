@@ -3,6 +3,7 @@
   // their own records (Kanto's trainers.json). A boulder pushed with Strength onto the floor switch in the east lifts the
   // rock barrier on the way north (victory_road_1f.txt; Route 23 puts it back, route_23.txt)
   "area": "kanto_victory_road_1f",
+  "ours": { "land": [ ["Najarok", 106, 110], ["Sandspire", 108, 112] ] },
   "name": "Victory Road",
   "bgmTrack": "kanto/mt_moon",
   "pits": [

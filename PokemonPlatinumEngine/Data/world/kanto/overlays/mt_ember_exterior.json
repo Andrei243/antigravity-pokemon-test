@@ -5,6 +5,7 @@
   // in place of FireRed's metatile set by VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F 4), the grunts let slip their
   // password in front of the player (the area's triggers 0 to 2) and battle (mt_ember_exterior.txt)
   "area": "mt_ember_exterior",
+  "ours": { "land": [ ["Solarion", 115, 119], ["Kirinine", 130, 134] ] },
   "name": "Mt. Ember",
   "bgmTrack": "kanto/sevii_cave",
   "trees": "Round",

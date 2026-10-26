@@ -4,6 +4,7 @@
   // Cascade Badge to the Earth Badge (route_23.txt: the area's triggers, one script to each guard's line of tiles,
   // waiting on VAR_MAP_SCENE_ROUTE23 as FireRed counts it). The water halfway up is crossed with Surf
   "area": "route_23",
+  "ours": { "land": [ ["Najarok", 106, 110], ["Lancerow", 104, 108] ] },
   "name": "Route 23",
   "bgmTrack": "kanto/victory_road",
   "trees": "Round",

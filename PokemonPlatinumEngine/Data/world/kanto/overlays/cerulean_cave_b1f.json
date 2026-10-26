@@ -2,6 +2,7 @@
   // Cerulean Cave, its lowest floor (plan 19 · K9, part b): FireRed's map. Mewtwo waits at the back until it has been
   // fought (cerulean_cave_b1f.txt), as the legendary birds do
   "area": "cerulean_cave_b1f",
+  "ours": { "land": [ ["Dynamorb", 105, 109], ["Mesmeryx", 110, 114] ], "surf": [ ["Psyduke", 112, 116] ], "superRod": [ ["Typhonarch", 130, 134] ] },
   "name": "Cerulean Cave",
   "bgmTrack": "kanto/rocket_hideout",
   "people": {

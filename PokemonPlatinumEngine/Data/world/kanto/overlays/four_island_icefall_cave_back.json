@@ -3,6 +3,7 @@
   // player comes up the row before them (the area's triggers 0 to 2), and three of them flee after one is beaten
   // (four_island_icefall_cave_back.txt)
   "area": "four_island_icefall_cave_back",
+  "ours": { "surf": [ ["Ferrisle", 125, 129] ], "superRod": [ ["Clamspire", 120, 124] ] },
   "name": "Icefall Cave",
   "bgmTrack": "kanto/sevii_cave",
   "triggers": [ { "trigger": 0, "script": "Poachers" }, { "trigger": 1, "script": "Poachers" }, { "trigger": 2, "script": "Poachers" } ],

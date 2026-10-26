@@ -1,5 +1,6 @@
 {
   "area": "route_222",
+  "ours": { "land": [ ["Voltglider", 102, 106], ["Mephitarch", 110, 114] ], "surf": [ ["Tidestoat", 110, 114] ] },
   // Plan 03 · D12a: Pearl's Glameow line, which Platinum's tables leave out, where Pearl has both (Glameow on
   // Routes 218 and 222, Purugly on this route and 229): in the grass's slots 8 and 9 once the National Pokédex is
   // had, at those slots' levels (40 and 41)

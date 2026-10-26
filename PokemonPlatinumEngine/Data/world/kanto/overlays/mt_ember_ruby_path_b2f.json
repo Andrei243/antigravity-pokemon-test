@@ -1,6 +1,7 @@
 {
   // The Ruby Path, B2F (plan 19 · K9, part a): boulders for Strength and rocks for Rock Smash
   "area": "mt_ember_ruby_path_b2f",
+  "ours": { "land": [ ["Kirinine", 130, 134], ["Pyreon", 120, 124] ] },
   "name": "Ruby Path",
   "bgmTrack": "kanto/sevii_cave"
 }

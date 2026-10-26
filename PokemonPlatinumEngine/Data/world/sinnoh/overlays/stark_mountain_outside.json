@@ -1,5 +1,6 @@
 {
   "area": "stark_mountain_outside",
+  "ours": { "land": [ ["Fangliscor", 118, 122], ["Dreadpion", 115, 119] ] },
   "climate": "Volcanic",
   // The original's role is TOWN06, which Routes 225 to 227 share and which has no song yet (plan 05 · A6): Route
   // 206's stands in
