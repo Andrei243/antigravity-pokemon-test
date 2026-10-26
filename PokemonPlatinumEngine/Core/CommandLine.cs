@@ -65,6 +65,9 @@ public sealed record LaunchOptions
     /// </summary>
     public string? RecordPath { get; init; }
 
+    /// <summary><c>--replay &lt;folder&gt;</c> (plan 16 · T20): play a report's folder (or a recording's file) back in the game's window, saving into its <c>replayed/</c>.</summary>
+    public string? ReplayFolder { get; init; }
+
     /// <summary>What was wrong with the command line, a line to each mistake; empty when nothing was.</summary>
     public IReadOnlyList<string> Errors { get; init; } = Array.Empty<string>();
 
@@ -124,6 +127,9 @@ public static class CommandLine
     /// <summary>What the game exits with: a run that ended as the player chose, one that stopped on a crash, and a command line it couldn't read. <c>--verify</c> has its own (<see cref="Manifest"/>).</summary>
     public const int Ended = 0, Crashed = 1, BadCommandLine = 2;
 
+    /// <summary>What <c>--replay</c> exits with when the recording can't be read or this build can't play it (plan 16 · T20).</summary>
+    public const int ReplayRefused = 5;
+
     /// <summary>The name the usage calls the game by: the executable's.</summary>
     public const string Executable = "PokemonPlatinumEngine";
 
@@ -161,7 +167,8 @@ public static class CommandLine
         },
         new("--where", null, "Say where the saves, the options and the log are kept, and why, and exit. Nothing is opened, made or moved.",
             (o, _) => o with { Where = true }),
-        new("--record", "file", "Write this session's recording (every frame's keys and clock, kept from the title) to this file as the game ends or crashes, to be played back.", (o, v) => o with { RecordPath = v }) { Check = v => v.IndexOfAny(Path.GetInvalidPathChars()) >= 0 ? $"--record takes a file, and '{v}' can't be one." : null }
+        new("--record", "file", "Write this session's recording (every frame's keys and clock, kept from the title) to this file as the game ends or crashes, to be played back.", (o, v) => o with { RecordPath = v }) { Check = v => v.IndexOfAny(Path.GetInvalidPathChars()) >= 0 ? $"--record takes a file, and '{v}' can't be one." : null },
+        new("--replay", "folder", "Play a report's folder (written with F8, or after a crash) back in the window, from the title to where it was written, saving into its replayed folder and never over your save. Menu leaves; hold Run to go four times as fast.", (o, v) => o with { ReplayFolder = v }) { Check = v => v.IndexOfAny(Path.GetInvalidPathChars()) >= 0 ? $"--replay takes a folder, and '{v}' can't be one." : null }
     };
 
     /// <summary>
@@ -205,6 +212,7 @@ public static class CommandLine
         // What can't go together
         if (options.Windowed && options.Fullscreen) errors.Add("--windowed and --fullscreen can't both be given.");
         if (options.SafeMode && options.Fullscreen) errors.Add("--safe-mode opens in a window: it can't be given with --fullscreen.");
+        if (options.ReplayFolder != null && options.RecordPath != null) errors.Add("--replay and --record can't both be given: a replay is never recorded.");
         if (options.Portable && options.SaveFolder != null) errors.Add("--portable and --save can't both be given: each says where the saves are kept.");
         return options with { Errors = errors };
     }

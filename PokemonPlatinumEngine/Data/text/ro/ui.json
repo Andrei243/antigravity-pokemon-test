@@ -2199,7 +2199,7 @@
     "action": {
       "Up": "Sus", "Down": "Jos", "Left": "Stânga", "Right": "Dreapta", "Confirm": "Confirmă, vorbește, citește", "Cancel": "Înapoi", "Menu": "Meniu",
       "Run": "Fugă (ținut apăsat)", "Item": "Obiect înregistrat", "Poketch": "Scoate sau ascunde Pokétch-ul", "PoketchApp": "Următoarea aplicație Pokétch",
-      "PoketchTouch": "Atinge Pokétch-ul", "PageLeft": "Pagina înapoi", "PageRight": "Pagina înainte", "Fullscreen": "Ecran complet", "Mute": "Sunet pornit sau oprit", "Screenshot": "Fă o captură de ecran"
+      "PoketchTouch": "Atinge Pokétch-ul", "PageLeft": "Pagina înapoi", "PageRight": "Pagina înainte", "Fullscreen": "Ecran complet", "Mute": "Sunet pornit sau oprit", "Screenshot": "Fă o captură de ecran", "Report": "Scrie un raport de reluat"
     },
     "page": {
       "title": "COMENZI",
@@ -4381,5 +4381,14 @@
     "skill": "ÎNDEMÂNARE",
     "body": "TRUP",
     "total": "TOTAL"
+  },
+  "sessionReport": {
+    "written": "Un raport de reluat a fost scris în {folder}.",
+    "notWritten": "Raportul nu a putut fi scris: {why}"
+  },
+  "replayNotice": {
+    "playing": "Se reia {folder}. {key:menu} iese; ține apăsat {key:run} ca să meargă de patru ori mai repede.",
+    "parted": "Reluarea se desparte de înregistrare la {seconds} s ({groups}). {key:menu} iese.",
+    "ended": "Înregistrarea s-a încheiat. {key:menu} iese."
   }
 }
