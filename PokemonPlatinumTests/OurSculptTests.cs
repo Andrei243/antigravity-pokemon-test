@@ -185,6 +185,72 @@ public class OurSculptTests
             }
     }
 
+    /// <summary>Batch 6 and its supplement: the species of our own that evolve from Kalos's (Nos. 2650 to 2729), Ecosentinel among them.</summary>
+    private static PokemonSpecies[] Kalos => PokemonDatabase.Ours().Where(s => s.DexNumber is >= 2650 and <= 2729).ToArray();
+
+    /// <summary>Batch 7 and its supplement: the species of our own that evolve from Alola's (Nos. 2730 to 2810), the Ultra Beasts' ten among them.</summary>
+    private static PokemonSpecies[] Alola => PokemonDatabase.Ours().Where(s => s.DexNumber is >= 2730 and <= 2810).ToArray();
+
+    [Theory]
+    [InlineData("Kalos", 25)]
+    [InlineData("Alola", 38)]
+    public void EverySpeciesOfOursOfKalosAndAlolaIsHandBuiltAndItsOwn(string region, int count)
+    {
+        var batch = region == "Kalos" ? Kalos : Alola;
+        Assert.Equal(count, batch.Length);
+        foreach (var s in batch)
+        {
+            Assert.True(PokemonModels.HasModel(s.Name), $"{s.Name} has no sculpt of its own");
+            Assert.Contains(s.Name, PokemonModels.Species);
+            Assert.NotEqual(PokemonModels.Signature(ForebearOf(s).Name), PokemonModels.Signature(s.Name));
+            Assert.Equal(s.Name, PokemonModels.Build(s.Name).Species);
+        }
+    }
+
+    [Fact]
+    public void KalossFemaleLooksAreKeptWhereTheForebearsFemaleIsAForm()
+    {
+        // Pyroar's and Meowstic's females are forms of their own; Blazemonarch's and Occulynx's looks of the one species
+        var flagged = Kalos.Concat(Alola).Where(s => s.GenderDifferences).Select(s => s.Name).OrderBy(n => n).ToArray();
+        Assert.Equal(new[] { "Blazemonarch", "Occulynx" }, flagged);
+        foreach (var n in flagged)
+        {
+            Assert.Contains(n, PokemonLook.Females);
+            Assert.NotEqual(PokemonModels.Signature(n), PokemonModels.Signature(n + PokemonLook.FemaleSuffix));
+        }
+    }
+
+    [Theory]
+    [InlineData("Kalos")]
+    [InlineData("Alola")]
+    public void EachKalosAndAlolaDecalCoversItsWholeSquare(string region)
+    {
+        // As PokemonModelTests.EachDecalCoversItsWholeSquare, for these batches alone (that test walks every model)
+        foreach (var s in region == "Kalos" ? Kalos : Alola)
+            foreach (var name in s.GenderDifferences ? new[] { s.Name, s.Name + PokemonLook.FemaleSuffix } : new[] { s.Name })
+            {
+                var m = PokemonModels.Get(name);
+                if (m.Decals.Count == 0) continue;
+                var uvs = m.DecalUVs!;
+                for (int d = 0; d < m.Decals.Count; d++)
+                {
+                    int col = d % m.AtlasColumns, row = d / m.AtlasColumns;
+                    var center = new System.Numerics.Vector2((col + 0.5f) / m.AtlasColumns, (row + 0.5f) / m.AtlasRows);
+                    var half = new System.Numerics.Vector2(0.25f / m.AtlasColumns, 0.25f / m.AtlasRows);
+                    bool left = false, right = false, top = false, bottom = false;
+                    foreach (var uv in uvs)
+                    {
+                        if (System.MathF.Abs(uv.X - center.X) > 2f * half.X || System.MathF.Abs(uv.Y - center.Y) > 2f * half.Y) continue;
+                        left |= uv.X <= center.X - half.X;
+                        right |= uv.X >= center.X + half.X;
+                        top |= uv.Y <= center.Y - half.Y;
+                        bottom |= uv.Y >= center.Y + half.Y;
+                    }
+                    Assert.True(left && right && top && bottom, $"{name}: decal {d} isn't covered");
+                }
+            }
+    }
+
     [Fact]
     public void AJohtoFemaleLookIsKeptWhereTheForebearsIs()
     {

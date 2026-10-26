@@ -52,7 +52,9 @@ public static class PokemonLook
         // Batch 2, Johto
         "Coccinova", "Totemsight", "Mimicedar", "Mirelord", "Wobbulwark", "Ironwyrm", "Guillotyne", "Atlascross", "Krakannon", "Cerberhound", "Siegephant",
         // Batch 3, Hoenn, and Jellicrown of batch 5, Unova
-        "Ascetrance", "Gulpgorge", "Volcamel", "Saguarox", "Prismaria", "Aeonfin", "Jellicrown"
+        "Ascetrance", "Gulpgorge", "Volcamel", "Saguarox", "Prismaria", "Aeonfin", "Jellicrown",
+        // Batch 6, Kalos: Pyroar's and Meowstic's females are forms of their own, ours keep them as looks
+        "Blazemonarch", "Occulynx"
     };
 
     /// <summary>
