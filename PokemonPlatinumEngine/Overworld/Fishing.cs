@@ -53,6 +53,15 @@ public sealed class FishingAttempt
 
     public FishingStage Stage { get; private set; } = FishingStage.Casting;
 
+    /// <summary>
+    /// The options' timing assist (plan 12 · Q24), which the game hands the cast each frame: Off is the original's
+    /// window, Generous twice it, Automatic lands every bite as it comes and passes over a press made too soon.
+    /// </summary>
+    public TimingAssist Assist { get; set; }
+
+    /// <summary>How long the bite waits for the press under the assist: <see cref="HookSeconds"/> with the assist off.</summary>
+    public float Window => TimingAssists.Window(HookSeconds(Rod), Assist);
+
     /// <summary>The Pokémon reeled in, once it has been: the game then starts its battle.</summary>
     public WildEncounterEntry? Caught => Stage is FishingStage.Done && landed ? Fish : null;
     private bool landed;
@@ -79,7 +88,7 @@ public sealed class FishingAttempt
                 Next(FishingStage.Waiting);
                 return;
             case FishingStage.Waiting:
-                if (pressed)
+                if (pressed && TimingAssists.EarlyPressCounts(Assist))
                 {
                     Next(FishingStage.TooSoon);
                     return;
@@ -87,12 +96,12 @@ public sealed class FishingAttempt
                 if (clock >= (Fish != null ? biteAfter : NothingSeconds)) Next(Fish != null ? FishingStage.Hooked : FishingStage.NoNibble);
                 return;
             case FishingStage.Hooked:
-                if (pressed)
+                if (TimingAssists.Pressed(pressed, windowOpen: true, Assist))
                 {
                     landed = true;
                     Next(FishingStage.Landed);
                 }
-                else if (clock >= HookSeconds(Rod)) Next(FishingStage.GotAway);
+                else if (clock >= Window) Next(FishingStage.GotAway);
                 return;
         }
     }

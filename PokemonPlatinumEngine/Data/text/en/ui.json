@@ -331,6 +331,24 @@
         "unusable": "This computer's graphics driver can't be timed, so the scene can't be resized as you play."
       }
     },
+    "timingAssist": {
+      "label": "Timing assist",
+      "value": { "Off": "Off", "Generous": "Generous", "Automatic": "Automatic" },
+      "help": {
+        "Off": "A press that must come in time, such as reeling in a bite, has its usual moment.",
+        "Generous": "A press that must come in time, such as reeling in a bite, has twice as long.",
+        "Automatic": "The game presses for you as the moment comes: every bite is reeled in. Where a score is set against others, it is only generous."
+      }
+    },
+    "rumble": {
+      "label": "Rumble",
+      "value": { "Off": "Off", "Light": "Light", "Full": "Full" },
+      "help": {
+        "Off": "The controller never trembles.",
+        "Light": "The controller trembles softly at a hit, a catch, a bite and a bump, while it is the one in your hands.",
+        "Full": "The controller trembles at a hit, a catch, a bite and a bump, while it is the one in your hands."
+      }
+    },
     "resetDefaults": {
       "label": "Reset to defaults",
       "value": "Reset",
@@ -4126,6 +4144,10 @@
   "sessionReport": {
     "written": "A report to replay was written to {folder}.",
     "notWritten": "The report couldn't be written: {why}"
+  },
+  "screenshotKey": {
+    "taken": "Screenshot saved: {file}",
+    "notTaken": "The screenshot couldn't be saved: {why}"
   },
   "replayNotice": {
     "playing": "Replaying {folder}. {key:menu} leaves; hold {key:run} to go four times as fast.",

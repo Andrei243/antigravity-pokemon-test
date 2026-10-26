@@ -583,6 +583,7 @@ public partial class GameEngine
     {
         var cast = flow.Fishing!;
         var before = cast.Stage;
+        cast.Assist = Settings.TimingAssist; // plan 12 · Q24
         cast.Update(dt, InputManager.IsActionPressed(GameAction.Confirm) || FishingPress);
         FishingPress = false;
         flow.Player.StandStill(dt);
@@ -600,7 +601,7 @@ public partial class GameEngine
             if (cast.Stage == FishingStage.Waiting) world.Life.Splash(flow.Map, wx, wy, 0.8f, 2);
             if (cast.Stage == FishingStage.Hooked)
             {
-                flow.Player.ShowBubble(EmoteBubble.Exclaim, FishingAttempt.HookSeconds(cast.Rod));
+                flow.Player.ShowBubble(EmoteBubble.Exclaim, cast.Window);
                 world.Life.Splash(flow.Map, wx, wy, 1.2f, 4);
                 AudioManager.PlaySound("fish_bite");
             }

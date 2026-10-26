@@ -98,8 +98,8 @@ public static class InputManager
         stick.Reset();
     }
 
-    /// <summary>Actions bound and kept in the settings that nothing in the game reads yet (the screenshot: plan 12 · Q16; the page buttons are read by the bag, the PC, the Pokédex and the summary).</summary>
-    public static readonly IReadOnlySet<GameAction> NotReadYet = new HashSet<GameAction> { GameAction.Screenshot };
+    /// <summary>Actions bound and kept in the settings that nothing in the game reads yet: none since the screenshot key (plan 12 · Q16).</summary>
+    public static readonly IReadOnlySet<GameAction> NotReadYet = new HashSet<GameAction>();
 
     /// <summary>Set by the Controls page while it waits for a new binding: <see cref="ReadKeys"/> then reports the first key or button pressed in <see cref="Captured"/>.</summary>
     public static volatile bool CaptureRequested;
@@ -167,6 +167,16 @@ public static class InputManager
             foreach (var key in inputs.Keys)
                 if (Raylib.IsKeyPressed(key)) return true;
         return false;
+    }
+
+    /// <summary>
+    /// Trembles the pad in force (plan 12 · Q24, <see cref="Haptics"/>): raylib times it. Nothing without a window (a
+    /// test's, a headless game's) or with no pad plugged in.
+    /// </summary>
+    public static void Vibrate(float left, float right, float seconds)
+    {
+        if (!Raylib.IsWindowReady() || !Raylib.IsGamepadAvailable(padIndex)) return;
+        Raylib.SetGamepadVibration(padIndex, left, right, seconds);
     }
 
     /// <summary>The pad as raylib reports it (the thin layer: everything made of it is <see cref="InputBindings"/>'s).</summary>

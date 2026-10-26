@@ -109,7 +109,7 @@ public sealed class SavePaths
     /// <summary>The save Q3's autosave will write, beside the slots.</summary>
     public const string AutosaveName = "autosave.json";
 
-    /// <summary>The folder Q16's screenshots will go in.</summary>
+    /// <summary>The folder the screenshot key's pictures go in (plan 12 · Q16).</summary>
     public const string ScreenshotsName = "screenshots";
 
     /// <summary>The folder the Vs. Recorder keeps its battles in (plan 08 · P10, <see cref="Battle.Sim.BattleRecordFile"/>).</summary>

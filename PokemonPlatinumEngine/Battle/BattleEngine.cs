@@ -722,6 +722,8 @@ public partial class BattleEngine
                 // A miss is dodged, furthest aside as it passes (plan 25 · Y5): our own, so none with the scene off
                 if (Scene && move.Missed && move.To != move.From)
                     Anim.Dodge(move.To.Side, move.To.Slot, move.From.Side, move.From.Slot);
+                // A critical hit's own tremble, as it lands (plan 12 · Q24)
+                if (move.Critical && !move.Missed && !move.Blocked) After(ImpactDelay, () => Haptics.Play(Haptics.Critical));
                 break;
             case Charging charging:
             {

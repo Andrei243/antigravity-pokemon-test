@@ -239,6 +239,34 @@ partial class Harness
         Console.WriteLine($"the scene's share at the last step: {game.ResolutionStep}; dynamic resolution {(engine.Settings.DynamicResolution ? "on" : "off")}");
         engine.FixedResolutionStep = heldScale;
 
+        // The timing assist and the rumble (plan 12 · Q24), last so that no shot before them moves: each row at each value
+        game.State = GameState.Options;
+        options.Open();
+        GoToRow(OptionRow.TimingAssist);
+        Frames(1); Shot("look_20_options_timing_assist");
+        OptionsScreen.Change(engine.Settings, OptionRow.TimingAssist, 2);
+        Frames(1); Shot("look_20b_options_timing_assist_automatic");
+        OptionsScreen.Change(engine.Settings, OptionRow.TimingAssist, 1);
+        GoToRow(OptionRow.Rumble);
+        OptionsScreen.Change(engine.Settings, OptionRow.Rumble, 2);
+        Frames(1); Shot("look_20c_options_rumble_full");
+        OptionsScreen.Change(engine.Settings, OptionRow.Rumble, 1);
+        game.ApplySettings();
+        Console.WriteLine($"timing assist {engine.Settings.TimingAssist}, rumble {engine.Settings.Rumble}");
+
+        // The screenshot key (plan 12 · Q16), last of all: F12 over the field writes the 4K picture into the output
+        // folder's screenshots/ (the harness's folder is the game's), with no toast in it, and the toast names it after
+        game.State = GameState.Overworld;
+        GoTo("TwinleafTown", 11, 8, Direction.Down);
+        Frames(4);
+        InputManager.Feed(ActionFrame.Press(GameAction.Screenshot));
+        Frames(1);
+        InputManager.Feed(null);
+        Frames(1);
+        string? picture = game.LastScreenshot;
+        Console.WriteLine(picture == null ? "!! no screenshot was written" : $"the screenshot: {Path.GetFileName(picture)}, {new FileInfo(picture).Length} bytes");
+        Frames(18); Shot("look_21_screenshot_toast");
+
         if (args.Length > 2)
             Boards(args[2], new[] { "look_1_twinleaf", "look_2_dialogue", "look_3_battle", "look_3b_moves", "look_4_party", "look_5_route201", "look_6_house", "look_7_lake" });
     }
