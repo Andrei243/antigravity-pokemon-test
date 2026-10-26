@@ -18,9 +18,10 @@ public enum FrontierRefusal
 /// <summary>
 /// What a facility hands a Frontier battle beside its two teams (plan 06 · R18d; the original's <c>fieldWeather</c> of
 /// a <c>FieldBattleDTO</c>): the weather the battle opens under, which stays, or the Trick Room it opens in. Only the
-/// Battle Arcade's board gives either.
+/// Battle Arcade's board gives either. The annex's Battle Palace hands over <c>Palace</c> and its Battle Arena the
+/// turns a bout runs (<c>TurnLimit</c>; plan 14 · B9, <see cref="Battle.Sim.CoreSetup.Palace"/>).
 /// </summary>
-public sealed record FrontierConditions(Battle.Sim.BattleWeather Weather = Battle.Sim.BattleWeather.None, bool TrickRoom = false);
+public sealed record FrontierConditions(Battle.Sim.BattleWeather Weather = Battle.Sim.BattleWeather.None, bool TrickRoom = false, bool Palace = false, int TurnLimit = 0);
 
 /// <summary>
 /// The rules every facility of the Battle Frontier holds its entrants to (plan 06 · R18a): which Pokémon may enter,

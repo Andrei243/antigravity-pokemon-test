@@ -773,6 +773,10 @@
       "note": "first spoken at phone.txt(377)",
       "provisional": true
     },
+    "palace_maven": {
+      "note": "first spoken at BattlePalace.txt(18)",
+      "provisional": true
+    },
     "palmer": {
       "note": "first spoken at BattleTowerBattleRoom.txt(75)",
       "provisional": true
@@ -856,6 +860,10 @@
     },
     "ramon": {
       "note": "first spoken at cinnabar_island_gym.txt(57)",
+      "provisional": true
+    },
+    "referee": {
+      "note": "first spoken at BattleArena.txt(18)",
       "provisional": true
     },
     "rhona": {
@@ -1412,6 +1420,7 @@
     "Old Woman": "look:old_woman",
     "Owner": "owner",
     "Pablo": "pablo",
+    "Palace Maven": "palace_maven",
     "Palmer": "palmer",
     "Papa": "papa",
     "Park Attendant": "park_attendant",
@@ -1437,6 +1446,7 @@
     "Ralph": "ralph",
     "Ramon": "ramon",
     "Receptionist": "look:receptionist",
+    "Referee": "referee",
     "Researcher": "look:scientist",
     "Rhona": "rhona",
     "Rich Boy Liam": "rich_boy_liam",

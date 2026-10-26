@@ -848,6 +848,26 @@ The tournament lives between the desk and the hall (`BattleDome.txt`, whose arri
 | `bracket finish won`, `bracket finish lost`, `bracket points` | Writes the record (a win lengthens the streak of tournaments, a loss ends it; `RESULT` and `{number}` the streak); hands over the Battle Points a tournament won earns (3, one more for each won in a row before it, up to 10). |
 | `bracket streak`, `bracket best`, `bracket end` | The tournaments won in a row and the most ever (`{number}`); lets go of the tournament. |
 
+### The Battle Palace and the Battle Arena
+
+Plan 14 · B9; `docs/mechanics/rulings.md`, "The Battle Palace" and "The Battle Arena". A round of seven trainers in either
+venue of the annex (`Models/Frontier/BattleVenue.cs`): three Pokémon entered at the venue's desk (`BattleFrontierAnnex.txt`,
+`PalaceDesk` and `ArenaDesk`) go in as copies at level 50 or under, made whole for every battle; seven trainers of the
+Frontier's table are met one after another, three against three, under the venue's rules (the Palace's Pokémon choose by their
+natures; the Arena's bouts are judged after three turns). The round lives between the desk and the hall (`BattlePalace.txt`,
+`BattleArena.txt`, whose arrival scripts loop battle by battle) as the host's `Venue`, and is not saved.
+
+| Command | What it does |
+|---|---|
+| `venue enough`, `venue choose`, `venue check` | As `bracket`'s: three that could go in together (`{banned}`), the team opened for three to be chosen and waited on, two of a species (1) or the same item (2). |
+| `venue begin palace`, `venue begin arena` | Draws the round's seven trainers and their teams with the three chosen; a round left unfinished before it ends that venue's streak first. |
+| `venue active`, `venue next` | `RESULT` 1 while a round is under way; the battle to come, 0 to 6, `{number}` 1 to 7. |
+| `venue opponent` | Stands the battle's trainer in the room as `opponent`, with their look; `{foe}` names them. |
+| `venue fight` | The battle, three copies against the trainer's three under the venue's rules (`RESULT` 1 won, 0 lost). |
+| `venue won` | Counts the win: the streak lengthens and the next trainer is to come; `RESULT` 1 when it was the seventh. |
+| `venue finish won`, `venue finish lost`, `venue points` | Writes the venue's record (a round won counts, a loss ends the streak; `RESULT` and `{number}` the streak); hands over the Battle Points a round won earns (3, one more for each round won in a row before it, up to 10). |
+| `venue streak palace`, `venue best arena`, `venue end` | A venue's battles won in a row and the most ever (`{number}`); lets go of the round. |
+
 ### Amity Square's walk
 
 Plan 06 · R16c; `docs/mechanics/rulings.md`, "Amity Square's walk". The rules are `Overworld/AmitySquare.cs`, and what

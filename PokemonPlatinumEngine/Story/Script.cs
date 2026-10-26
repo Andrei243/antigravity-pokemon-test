@@ -141,6 +141,8 @@ public enum Op
     Pokeblock,
     // The Battle Dome's tournament and its bracket (plan 14 · B8): entered, drawn, looked at, fought round by round
     Bracket,
+    // The Battle Palace's and the Battle Arena's rounds of seven (plan 14 · B9): entered, drawn, fought battle by battle
+    Venue,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

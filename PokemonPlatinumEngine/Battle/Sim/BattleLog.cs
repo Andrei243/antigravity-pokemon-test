@@ -424,3 +424,10 @@ public sealed record AllyJoined(Place Place, Pokemon Pokemon, Pokemon AsItCame, 
 /// <see cref="VolatileChanged"/>. It rides on the line that says so.
 /// </summary>
 public sealed record Rotated(Place Place, int Way, Pokemon Pokemon, bool Substitute) : BattleEvent;
+
+/// <summary>
+/// The Battle Arena's judge gives a bout that ran its turns its verdict (plan 14 · B9; <see cref="ArenaJudge"/>): the
+/// three counts of each side and who won, none on a draw. It rides on the line that says the time is up; the losers'
+/// HP falls to nothing on the lines after it.
+/// </summary>
+public sealed record Judged(ArenaVerdict Verdict) : BattleEvent;

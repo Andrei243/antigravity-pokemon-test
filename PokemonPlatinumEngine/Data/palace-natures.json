@@ -1,0 +1,35 @@
+// The Battle Palace's natures (plan 14 · B9; docs/mechanics/rulings.md, "The Battle Palace"): how likely a Pokémon of each
+// nature is to choose a move of each group, with more than half its HP and with half or less, and the line it says when it
+// first falls to half. Our own transcription of the numbers of Emerald's gBattlePalaceNatureToMoveGroupLikelihood and
+// sBattlePalaceNatureToFlavorTextId (pret/pokeemerald, src/battle_script_commands.c, at the commit Sources.EmeraldCommit
+// pins): the percentage of the attack group and of the defence group, the support group being what is left. The lines
+// themselves are ours (ui.json, battle.palace.flavour.*). Written by hand; nothing generates it.
+{
+  "natures": [
+    { "nature": "Hardy",   "attack": 61, "defence":  7, "attackLow": 61, "defenceLow":  7, "flavour": "Eager" },
+    { "nature": "Lonely",  "attack": 20, "defence": 25, "attackLow": 84, "defenceLow":  8, "flavour": "Glint" },
+    { "nature": "Brave",   "attack": 70, "defence": 15, "attackLow": 32, "defenceLow": 60, "flavour": "Position" },
+    { "nature": "Adamant", "attack": 38, "defence": 31, "attackLow": 70, "defenceLow": 15, "flavour": "Glint" },
+    { "nature": "Naughty", "attack": 20, "defence": 70, "attackLow": 70, "defenceLow": 22, "flavour": "Glint" },
+    { "nature": "Bold",    "attack": 30, "defence": 20, "attackLow": 32, "defenceLow": 58, "flavour": "Position" },
+    { "nature": "Docile",  "attack": 56, "defence": 22, "attackLow": 56, "defenceLow": 22, "flavour": "Eager" },
+    { "nature": "Relaxed", "attack": 25, "defence": 15, "attackLow": 75, "defenceLow": 15, "flavour": "Glint" },
+    { "nature": "Impish",  "attack": 69, "defence":  6, "attackLow": 28, "defenceLow": 55, "flavour": "Position" },
+    { "nature": "Lax",     "attack": 35, "defence": 10, "attackLow": 29, "defenceLow":  6, "flavour": "Growl" },
+    { "nature": "Timid",   "attack": 62, "defence": 10, "attackLow": 30, "defenceLow": 20, "flavour": "Growl" },
+    { "nature": "Hasty",   "attack": 58, "defence": 37, "attackLow": 88, "defenceLow":  6, "flavour": "Glint" },
+    { "nature": "Serious", "attack": 34, "defence": 11, "attackLow": 29, "defenceLow": 11, "flavour": "Eager" },
+    { "nature": "Jolly",   "attack": 35, "defence":  5, "attackLow": 35, "defenceLow": 60, "flavour": "Position" },
+    { "nature": "Naive",   "attack": 56, "defence": 22, "attackLow": 56, "defenceLow": 22, "flavour": "Eager" },
+    { "nature": "Modest",  "attack": 35, "defence": 45, "attackLow": 34, "defenceLow": 60, "flavour": "Position" },
+    { "nature": "Mild",    "attack": 44, "defence": 50, "attackLow": 34, "defenceLow":  6, "flavour": "Growl" },
+    { "nature": "Quiet",   "attack": 56, "defence": 22, "attackLow": 56, "defenceLow": 22, "flavour": "Eager" },
+    { "nature": "Bashful", "attack": 30, "defence": 58, "attackLow": 30, "defenceLow": 58, "flavour": "Eager" },
+    { "nature": "Rash",    "attack": 30, "defence": 13, "attackLow": 27, "defenceLow":  6, "flavour": "Growl" },
+    { "nature": "Calm",    "attack": 40, "defence": 50, "attackLow": 25, "defenceLow": 62, "flavour": "Position" },
+    { "nature": "Gentle",  "attack": 18, "defence": 70, "attackLow": 90, "defenceLow":  5, "flavour": "Glint" },
+    { "nature": "Sassy",   "attack": 88, "defence":  6, "attackLow": 22, "defenceLow": 20, "flavour": "Growl" },
+    { "nature": "Careful", "attack": 42, "defence": 50, "attackLow": 42, "defenceLow":  5, "flavour": "Growl" },
+    { "nature": "Quirky",  "attack": 56, "defence": 22, "attackLow": 56, "defenceLow": 22, "flavour": "Eager" }
+  ]
+}

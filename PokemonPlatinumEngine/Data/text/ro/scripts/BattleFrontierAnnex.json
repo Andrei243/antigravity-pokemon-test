@@ -118,5 +118,245 @@
         ""
       ]
     }
+  ],
+  "PalaceDesk": [
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Battle Palace! Here your Pokémon battle as their natures tell them to."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You've won {number} battles in a row here. Your Pokémon must trust you!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Would you like to take on the Battle Palace?",
+        "Enter",
+        "The rules",
+        "No"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You need three Pokémon that can take part, all of different species and holding different items."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "An Egg can't take part, and nor can {banned}."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please choose the three Pokémon you'll enter."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thank you! Seven Trainers are waiting. This way to the hall, please!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry. The three entered must all be of different species."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry. No two of the three entered may hold the same item."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please come again. Your Pokémon will be glad of the chance to speak for themselves."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your three battle at Level 50, or at their own level if it's lower. They are made whole after every battle."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You give no orders here. Each Pokémon chooses its moves by its nature, bolder or warier as its HP runs low."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Beat seven Trainers in a row to win the round. Lose once, and the round is over."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "ArenaDesk": [
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Battle Arena! Every bout is fought to a finish, or to the judge's verdict."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You've won {number} battles in a row here. The judges know your name!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Would you like to take on the Battle Arena?",
+        "Enter",
+        "The rules",
+        "No"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You need three Pokémon that can take part, all of different species and holding different items."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "An Egg can't take part, and nor can {banned}."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please choose the three Pokémon you'll enter, in the order they'll fight."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thank you! Seven Trainers are waiting. This way to the arena, please!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry. The three entered must all be of different species."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry. No two of the three entered may hold the same item."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please come again. The judges are always watching."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your three battle at Level 50, or at their own level if it's lower, one at a time in the order you chose."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "No switching! A bout still going after three turns is judged on Mind, Skill and Body, and the loser is out."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Beat seven Trainers in a row to win the round. Lose once, and the round is over."
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

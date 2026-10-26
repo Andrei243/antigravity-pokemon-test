@@ -1,0 +1,84 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Palace Maven"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Battle {number} of seven! Your Pokémon choose for themselves. Trust their natures."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{foe} steps forward!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Palace Maven"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Well fought! Your three have been made whole again. The next Trainer awaits."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Palace Maven"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Seven in a row! {player}'s Pokémon have shown us who they truly are."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received {number} BP!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Palace Maven"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The round ends here. Even a defeat teaches you your Pokémon's hearts."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

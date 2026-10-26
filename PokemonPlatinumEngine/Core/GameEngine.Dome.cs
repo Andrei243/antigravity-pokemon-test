@@ -38,5 +38,7 @@ public partial class GameEngine
     private sealed partial class FieldHost
     {
         public BattleDomeChallenge? Dome { get => game.flow.Dome; set => game.flow.Dome = value; }
+        // The Battle Palace's and the Battle Arena's round under way (plan 14 · B9): nothing else of theirs is the engine's
+        public BattleVenueChallenge? Venue { get => game.flow.Venue; set => game.flow.Venue = value; }
     }
 }

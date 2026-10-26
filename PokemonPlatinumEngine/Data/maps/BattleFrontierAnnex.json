@@ -120,6 +120,24 @@
         "The other matches of a round are fought while you wait, and every result goes up on the bracket.",
         "Whoever you meet in the final has won three times to get there. Respect that."
       ]
+    },
+    {
+      "id": "palace_receptionist",
+      "name": "Receptionist",
+      "npcType": "Lady",
+      "x": 1,
+      "y": 5,
+      "facing": "Right",
+      "script": "PalaceDesk"
+    },
+    {
+      "id": "arena_receptionist",
+      "name": "Receptionist",
+      "npcType": "Lass",
+      "x": 13,
+      "y": 5,
+      "facing": "Left",
+      "script": "ArenaDesk"
     }
   ],
   "wildEncounters": []
