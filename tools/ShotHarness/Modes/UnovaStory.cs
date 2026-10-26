@@ -960,7 +960,7 @@ partial class Harness
                 + $"ice {story.Has("FLAG_UNOVA_OPELUCID_ICE")}, Legend Badge {story.HasBadge(RegionDatabase.Unova, "Legend")}, TM82 {game.Bag.GetQuantity(ItemDatabase.Get("TM82")!)}, "
                 + $"Ring Target {game.Bag.GetQuantity(ItemDatabase.Get("Ring Target")!)}, Fresh Water {game.Bag.GetQuantity(ItemDatabase.Get("Fresh Water")!)}, "
                 + $"grunts {story.Has("FLAG_UNOVA_DEFEATED_GRUNT_41")}/{story.Has("FLAG_UNOVA_DEFEATED_GRUNT_42")}/{story.Has("FLAG_UNOVA_DEFEATED_GRUNT_43")}, "
-                + $"iceTiles {Enumerable.Range(380, 70).SelectMany(x => Enumerable.Range(134, 55).Select(z => (x, z))).Count(c => game.Map.GetGroundTile(c.x, c.z) is TileType.Ice or TileType.Snow)}");
+                + $"iceTiles {Enumerable.Range(380, 70).SelectMany(x => Enumerable.Range(134, 55).Select(z => (x, z))).Count(c => game.Map.InBounds(c.x, c.z) && game.Map.GetGroundTile(c.x, c.z) is TileType.Ice or TileType.Snow)}");
         story.SetVar("VAR_UNOVA_LACUNOSA", 4);
 
         // ---- the east gate, and Iris on the road's end
