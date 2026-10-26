@@ -56,6 +56,9 @@ static class Cli
                 foreach (var b in chosen.Take(3)) Console.WriteLine(b.Prompt() + "\n");
                 return 0;
 
+            case "fetch-official":
+                return await FetchOfficial(root, chosen.Where(b => b.IsMegaDynamax).ToList(), delay);
+
             case "generate":
                 return await Generate(root, chosen, model, size, delay, limit, force);
 
@@ -88,7 +91,15 @@ static class Cli
             if (File.Exists(path) && !force) { skipped++; continue; }
 
             Console.Write($"{b.Set}/{b.Slug} ... ");
-            var result = await Ask(http, model, size, b.Prompt(), dir);
+            // A Mega Dynamax of one of our own Megas is shown that Mega's picture, when it has one: the base design to scale up.
+            byte[]? baseImage = null;
+            if (b.IsMegaDynamax)
+            {
+                string basePath = Path.Combine(root, "docs", "art", "reference", "gemini", "megas", Briefs.SlugOf(b.BaseMega) + ".jpg");
+                if (File.Exists(basePath)) baseImage = await File.ReadAllBytesAsync(basePath);
+                else if (File.Exists(OfficialPath(root, b))) baseImage = await File.ReadAllBytesAsync(OfficialPath(root, b));
+            }
+            var result = await Ask(http, model, size, b.Prompt(baseImage != null), dir, baseImage);
             if (result.Bytes == null)
             {
                 Console.WriteLine("FAILED: " + result.Error);
@@ -109,12 +120,15 @@ static class Cli
 
     record Reply(byte[]? Bytes, string? Error, bool Fatal);
 
-    static async Task<Reply> Ask(HttpClient http, string model, string size, string prompt, string dumpDir)
+    static async Task<Reply> Ask(HttpClient http, string model, string size, string prompt, string dumpDir, byte[]? baseImage = null)
     {
+        var input = new List<object> { new { type = "text", text = prompt } };
+        if (baseImage != null)
+            input.Add(new { type = "image", data = Convert.ToBase64String(baseImage), mime_type = "image/jpeg" });
         var body = JsonSerializer.Serialize(new
         {
             model,
-            input = new object[] { new { type = "text", text = prompt } },
+            input,
             response_format = new { type = "image", mime_type = "image/jpeg", aspect_ratio = "1:1", image_size = size },
         });
 
@@ -193,6 +207,48 @@ static class Cli
 
     static string Trim(string s) => s.Length > 400 ? s[..400] + "..." : s;
 
+    // The official picture of a Mega Dynamax's base Mega, kept in a git-ignored cache (never committed, never shipped):
+    // it is only handed to Gemini as the design to scale up. "Venusaur-Mega-Mmax" -> "venusaur-mega".
+    static string OfficialPath(string root, Brief b) =>
+        Path.Combine(root, "tools", "GeminiArt", ".cache", "official", b.Form.Replace("-Mmax", "").ToLowerInvariant() + ".jpg");
+
+    static async Task<int> FetchOfficial(string root, List<Brief> chosen, int delay)
+    {
+        using var http = new HttpClient { Timeout = TimeSpan.FromMinutes(1) };
+        http.DefaultRequestHeaders.UserAgent.ParseAdd("Mozilla/5.0");
+        int got = 0, had = 0, missing = 0;
+        foreach (var b in chosen)
+        {
+            string path = OfficialPath(root, b);
+            string slug = Path.GetFileNameWithoutExtension(path);
+            // Our own Megas have a picture in megas/ already; nothing official exists for them.
+            if (File.Exists(Path.Combine(root, "docs", "art", "reference", "gemini", "megas", Briefs.SlugOf(b.BaseMega) + ".jpg"))) { had++; continue; }
+            if (File.Exists(path)) { had++; continue; }
+            Directory.CreateDirectory(Path.GetDirectoryName(path)!);
+            try
+            {
+                var resp = await http.GetAsync($"https://img.pokemondb.net/artwork/large/{slug}.jpg");
+                var bytes = resp.IsSuccessStatusCode ? await resp.Content.ReadAsByteArrayAsync() : null;
+                // A JPEG starts FF D8; anything else (an error page) is not a picture.
+                if (bytes == null || bytes.Length < 2000 || bytes[0] != 0xFF || bytes[1] != 0xD8)
+                {
+                    Console.WriteLine($"{slug}: none ({(int)resp.StatusCode})");
+                    missing++;
+                }
+                else
+                {
+                    await File.WriteAllBytesAsync(path, bytes);
+                    Console.WriteLine($"{slug}: {bytes.Length / 1024} KB");
+                    got++;
+                }
+            }
+            catch (HttpRequestException e) { Console.WriteLine($"{slug}: {e.Message}"); missing++; }
+            await Task.Delay(delay);
+        }
+        Console.WriteLine($"fetched {got}, had {had}, none {missing}");
+        return 0;
+    }
+
     static string? Take(List<string> a, string flag)
     {
         int i = a.IndexOf(flag);
@@ -212,11 +268,17 @@ static class Cli
     }
 }
 
-record Brief(string Set, string Name, string Slug, string Typing, string Category, string Look, string Size)
+record Brief(string Set, string Name, string Slug, string Typing, string Category, string Look, string Size, string Form = "")
 {
     // One prompt for every creature, so the sheet reads as one set of references.
-    public string Prompt()
+    public bool IsMegaDynamax => Name.StartsWith("Mega Dynamax ", StringComparison.OrdinalIgnoreCase);
+
+    // "Mega Dynamax Charizard X" grows from "Mega Charizard X".
+    public string BaseMega => "Mega " + Name["Mega Dynamax ".Length..];
+
+    public string Prompt(bool baseAttached = false)
     {
+        if (IsMegaDynamax) return MegaDynamaxPrompt(baseAttached);
         var sb = new StringBuilder();
         sb.AppendLine("Concept art for a 3D sculptor: one original fictional creature for a monster-collecting video game, drawn as a character design reference.");
         sb.AppendLine("Show the whole body in a clean three-quarter view, standing on nothing, centred on a plain white background, with enough room round it. Clean dark outlines, flat colours with one soft shade and one highlight, readable silhouette. No text, no labels, no logo, no border, no second creature, no scenery.");
@@ -226,6 +288,24 @@ record Brief(string Set, string Name, string Slug, string Typing, string Categor
         if (Typing.Length > 0) sb.AppendLine($"Elemental typing, for mood and palette: {Typing}");
         if (Category.Length > 0) sb.AppendLine($"Category: {Category}");
         if (Size.Length > 0) sb.AppendLine($"Real-world size: {Size}");
+        sb.AppendLine("Design brief:");
+        sb.AppendLine(Look);
+        return sb.ToString();
+    }
+
+    // A Mega Dynamax is the giant (Dynamax) state of a Mega-Evolved creature, so the base Mega is named and kept true to.
+    string MegaDynamaxPrompt(bool baseAttached)
+    {
+        var sb = new StringBuilder();
+        sb.AppendLine("Concept art for a 3D sculptor: the giant Dynamax form of a Mega-Evolved creature from a monster-collecting video game, drawn as a character design reference.");
+        sb.AppendLine($"The base creature is {BaseMega}. It has Mega Evolved and then Dynamaxed, so this picture is {Name}: the same Mega-Evolved creature made colossal, as in the games' Dynamax battles, with the same design, colours and markings as {BaseMega}, only grown to titanic size and given the changes in the brief below.");
+        if (baseAttached)
+            sb.AppendLine($"The attached picture is {BaseMega} at its normal size: keep its design, proportions and colours, and apply the brief to it.");
+        sb.AppendLine("Show the whole body in a three-quarter view seen from slightly below, so it reads as a towering giant, centred on a plain white background with enough room round it. A swirl of red and violet Dynamax energy and cloud rises round its feet and the edges of its body, and nothing else; the creature itself is the subject. Clean dark outlines, flat colours with one soft shade and one highlight, readable silhouette. No text, no labels, no logo, no border, no second creature, no scenery.");
+        sb.AppendLine();
+        sb.AppendLine($"Name (do not write it in the picture): {Name}");
+        if (Typing.Length > 0) sb.AppendLine($"Elemental typing, for mood and palette: {Typing}");
+        if (Size.Length > 0) sb.AppendLine($"Height at this size: {Size}");
         sb.AppendLine("Design brief:");
         sb.AppendLine(Look);
         return sb.ToString();
@@ -271,6 +351,7 @@ static class Briefs
             string head = m.Groups["head"].Value;
             string name = Regex.Match(head, @"^[^,:(]+").Value.Trim();
             string typing = "", look = "", category = "", size = "", number = "";
+            string form = Regex.Match(head, "`(?<f>[^`]+)`").Groups["f"].Value; // "Venusaur-Mega-Mmax"
             for (int j = i + 1; j < lines.Length && !lines[j].StartsWith("### ") && !lines[j].StartsWith("## "); j++)
             {
                 string t = lines[j];
@@ -283,12 +364,18 @@ static class Briefs
                 }
             }
             if (look.Length == 0) continue;
+            // A Mega Dynamax's height is in its heading: "Mega Dynamax Venusaur: `Venusaur-Mega-Mmax`, about 29 m (yes)".
+            if (size.Length == 0)
+            {
+                var about = Regex.Match(head, @"about (?<h>[0-9.]+ m)");
+                if (about.Success) size = about.Groups["h"].Value;
+            }
             // Typing lines argue the case for the typing; the part after the arrow (or the first sentence) is the result.
             typing = typing.Contains('→') ? typing[(typing.IndexOf('→') + 1)..] : typing;
             typing = Regex.Match(typing.Trim(), @"^[A-Za-z /]+").Value.Trim();
 
             string slug = Slug(number.Length > 0 ? $"{number}-{name}" : name);
-            found.Add(new Brief(set, name, slug, typing, category, look, size));
+            found.Add(new Brief(set, name, slug, typing, category, look, size, form));
         }
         return found;
     }
@@ -297,6 +384,8 @@ static class Briefs
 
     // The notes' own markup (bold, code, our engine's words) means nothing to a picture-maker.
     static string Clean(string s) => Regex.Replace(s.Replace("**", "").Replace("`", ""), @"\s+", " ").Trim();
+
+    public static string SlugOf(string name) => Slug(name);
 
     static string Slug(string s) => Regex.Replace(s, @"[^A-Za-z0-9\-]+", "-").Trim('-');
 }

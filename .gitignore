@@ -56,3 +56,4 @@ migrate/
 
 # What Python leaves beside tools/BlenderAnim's scripts when Blender imports one from another
 __pycache__/
+tools/GeminiArt/.cache/
