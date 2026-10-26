@@ -177,3 +177,7 @@ Each is the style guide first, no rule touched, the golden files unmoved (`GOLDE
 - [ ] YD5 The music and the hits
 - [ ] YD6 The Champions with the Mega Max Band
 - [ ] YD7 Gigantamax signatures
+
+## Approved by the user on 2026-10-26
+
+All ten questions at their defaults. Wave 1 (YD0 with plan 12 Q9) first; waves 2 to 5 follow in the build order above.
