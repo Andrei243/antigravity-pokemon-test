@@ -45,6 +45,15 @@ public sealed record TitleNotice(string Heading, string Body)
         _ => null
     };
 
+    /// <summary>
+    /// What the title says of a slot whose game was played with packs that aren't in use now (plan 16 · T15): each named,
+    /// gone or at another version. Null when every pack it was played with is here.
+    /// </summary>
+    public static TitleNotice? ForPacks(int slot, IReadOnlyList<Data.MissingPack> missing) => missing.Count == 0 ? null
+        : new(Text.Of("title.notice.packs.heading", ("slot", slot)), Text.Of("title.notice.packs.body", ("packs", string.Join(", ", missing.Select(m =>
+            m.NowVersion == null ? Text.Of("title.notice.packs.gone", ("name", m.Name), ("version", m.Version))
+                : Text.Of("title.notice.packs.other", ("name", m.Name), ("version", m.Version), ("now", m.NowVersion)))))));
+
     /// <summary>What the title says of a lone save as it was read: slot 1's notice.</summary>
     public static TitleNotice? ForSave(SaveLoad load) => ForSlot(1, load);
 

@@ -315,6 +315,11 @@
       "value": "Open",
       "help": "Play any song the game has played for you, and every sound effect, cry and ambient sound in it."
     },
+    "packs": {
+      "label": "Packs",
+      "value": "{n} in use",
+      "help": "Turn packs on or off, choose the order they load in, and see whose work each one is."
+    },
     "autosave": {
       "label": "Autosave",
       "help": {
@@ -391,6 +396,12 @@
       "oldSaveFailed": {
         "heading": "An older save couldn't be moved",
         "body": "{file} is from before the game had slots and couldn't be given one. It is where it was, untouched; the next start tries again."
+      },
+      "packs": {
+        "heading": "Slot {slot} was played with packs",
+        "body": "Not in use now: {packs}. The game goes on without what they changed; turn them on under OPTIONS, PACKS.",
+        "gone": "{name} {version}",
+        "other": "{name} {version} (now {now})"
       },
       "crash": {
         "heading": "The game stopped unexpectedly",
@@ -971,6 +982,7 @@
     "stars": "STARS",
     "starsNote": "A star for each of five great feats.",
     "runEnded": "RUN OVER",
+    "packs": { "one": "PACK: {name}", "other": "{n} PACKS" },
     "graveyard": "GRAVEYARD  {count}",
     "graveyardEmpty": "Nobody has fallen yet.",
     "graveyardMore": "and {count} more before",
@@ -3855,6 +3867,23 @@
       "Cave": "Cave",
       "Underwater": "Under the sea"
     }
+  },
+  "packScreen": {
+    "title": "PACKS",
+    "hint": { "order": "Order", "toggle": "On / off" },
+    "none": "No packs were found.",
+    "on": "ON",
+    "off": "OFF",
+    "version": "Version {version}",
+    "author": "MADE BY",
+    "unknown": "Not said",
+    "place": "LOADS",
+    "credits": "CREDITS",
+    "about": "WHAT IT IS",
+    "after": "Loads after {names}.",
+    "pending": "These changes take hold the next time the game starts.",
+    "problems": "{n} pack(s) couldn't be read and were left out. The first: {first}",
+    "help": "A later pack is laid over the earlier ones. A pack is its maker's own work; its credits travel with it."
   },
   "places": {
   },

@@ -232,6 +232,16 @@ public static class DataLayers
     /// </summary>
     public static List<DataLayer> Discover(IEnumerable<string> packFolders, IReadOnlyList<PackChoice>? chosen, List<string> problems)
     {
+        var found = Found(packFolders, problems);
+        return InLoadOrder(found, chosen, problems);
+    }
+
+    /// <summary>
+    /// Every pack of these folders that can be read, on or off, by its folder's name (plan 16 · T15: what the packs
+    /// screen lists). A pack that can't be read, or a second of one name, is left out and said in <paramref name="problems"/>.
+    /// </summary>
+    public static List<DataLayer> Found(IEnumerable<string> packFolders, List<string> problems)
+    {
         var found = new List<DataLayer>();
         foreach (string folder in packFolders.Where(Directory.Exists).Distinct(StringComparer.OrdinalIgnoreCase))
             foreach (string dir in Directory.GetDirectories(folder).OrderBy(d => d, StringComparer.Ordinal))
@@ -251,7 +261,12 @@ public static class DataLayers
                     problems.Add(e.Message);
                 }
             }
+        return found;
+    }
 
+    /// <summary>The packs found put in the order they load, those the options turn off left out (<see cref="Discover"/>).</summary>
+    public static List<DataLayer> InLoadOrder(IReadOnlyList<DataLayer> found, IReadOnlyList<PackChoice>? chosen, List<string> problems)
+    {
         chosen ??= Array.Empty<PackChoice>();
         int Rank(DataLayer l)
         {

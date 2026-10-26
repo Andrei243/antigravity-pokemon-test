@@ -478,6 +478,13 @@ public class SaveData
     /// </summary>
     public Dictionary<string, List<string>> StoryPhrases { get; set; } = new();
 
+    /// <summary>
+    /// The packs the game was last saved with (plan 16 · T15; <c>PackRecords</c>), each its name and version in load
+    /// order; null with none, so a save made without packs, and every older save, is as it was. The card says so and
+    /// the title names a pack no longer in use.
+    /// </summary>
+    public List<Data.SavedPack>? Packs { get; set; }
+
     /// <summary>The species taken from the professor's briefcase, and the one the rival took; null until then.</summary>
     public string? PlayerStarter { get; set; }
     public string? RivalStarter { get; set; }

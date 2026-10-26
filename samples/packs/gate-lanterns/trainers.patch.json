@@ -1,0 +1,9 @@
+[
+  {
+    "id": "veteran_grant",
+    "party": [
+      { "species": "Riolu", "level": 34, "ivScale": 100, "personality": 3300744, "moves": ["Force Palm", "Quick Attack", "Counter", "Screech"] },
+      { "species": "Chimecho", "level": 34, "ivScale": 100, "personality": 14702472, "moves": ["Extrasensory", "Astonish", "Heal Bell", "Yawn"] }
+    ]
+  }
+]

@@ -846,5 +846,44 @@ partial class Harness
             Console.WriteLine($"jukebox: {jukebox.Entries.Count} beds, {jukebox.Species.Count} species offered");
             game.State = GameState.Overworld;
         }
+
+        // The packs screen (plan 16 · T15), last of all so that nothing before it moves: the options' row, the screen with
+        // no pack found, then the repository's sample and the tests' fixture packs (one of which can't be read) as if
+        // they lay beside the game, a pack turned off and moved in the order, and the word that the change waits for the
+        // next start. Nothing is put in use and the options are put back. Written, not run.
+        {
+            var options = game.Options;
+            var packsBefore = engine.Settings.Packs.ToList();
+            game.State = GameState.Options;
+            options.Open();
+            while (OptionsScreen.AllRows[options.SelectedIndex] != OptionRow.Packs) options.Move(1);
+            Frames(6); Shot("29e_packs_row");
+            string? repo = AppContext.BaseDirectory;
+            while (repo != null && !Directory.Exists(Path.Combine(repo, "samples", "packs"))) repo = Path.GetDirectoryName(repo);
+            var packs = options.Packs;
+            string nowhere = Path.Combine(outDir, "packs");
+            packs.Open(DataLayers.Found(new[] { nowhere }, new List<string>()), engine.Settings.Packs, DataLayers.Packs, folders: DataLayers.PackFolders(outDir));
+            Frames(20); Shot("29e_packs_none");
+            if (repo != null)
+            {
+                var folders = new[] { Path.Combine(repo, "samples", "packs"), Path.Combine(repo, "PokemonPlatinumTests", "Fixtures", "packs") };
+                var problems = new List<string>();
+                packs.Open(DataLayers.Found(folders, problems), engine.Settings.Packs, DataLayers.Packs, problems, folders);
+                Frames(20); Shot("29e_packs_list");
+                Console.WriteLine($"packs: {string.Join(", ", packs.Rows.Select(r => $"{r.Pack.Name} {r.Pack.Version} {(r.Enabled ? "on" : "off")}"))}; {problems.Count} left out: {string.Join(" | ", problems)}");
+                packs.Move(1);
+                Frames(6); Shot("29e_packs_second");
+                packs.Toggle();
+                Frames(6); Shot("29e_packs_turned_off");
+                packs.Shift(1);
+                Frames(6); Shot("29e_packs_moved");
+                Console.WriteLine($"packs: the next start would load {string.Join(", ", packs.WillLoad)}; pending {packs.Pending}; the sample checks with {PackCheck.Check(Path.Combine(repo, "samples", "packs", "gate-lanterns")).Count} finding(s)");
+            }
+            else Console.WriteLine("!! the repository's samples/packs wasn't found above the harness: the list wasn't shot");
+            packs.Close();
+            options.Open();
+            engine.Settings.Packs = packsBefore;
+            game.State = GameState.Overworld;
+        }
     }
 }

@@ -292,6 +292,11 @@
       "value": "Deschide",
       "help": "Ascultă orice melodie pe care jocul ți-a cântat-o, și fiecare efect sonor, strigăt și sunet de ambianță din el."
     },
+    "packs": {
+      "label": "Pachete",
+      "value": "{n} folosite",
+      "help": "Pornește sau oprește pachetele, alege ordinea în care se încarcă și vezi al cui e fiecare."
+    },
     "boxesAnywhere": {
       "label": "Cutii oriunde și rucsac ordonat",
       "value": { "Off": "Nu", "Rules": "După reguli", "On": "Da" },
@@ -391,6 +396,12 @@
       "oldSaveFailed": {
         "heading": "O salvare mai veche nu a putut fi mutată",
         "body": "{file} e de dinainte ca jocul să aibă sloturi și nu a putut primi unul. E unde era, neatinsă; la următoarea pornire se încearcă din nou."
+      },
+      "packs": {
+        "heading": "Slotul {slot} a fost jucat cu pachete",
+        "body": "Nefolosite acum: {packs}. Jocul merge mai departe fără ce au schimbat ele; pornește-le din OPȚIUNI, PACHETE.",
+        "gone": "{name} {version}",
+        "other": "{name} {version} (acum {now})"
       },
       "crash": {
         "heading": "Jocul s-a oprit pe neașteptate",
@@ -605,6 +616,23 @@
       "Cave": "Peșteră",
       "Underwater": "Sub mare"
     }
+  },
+  "packScreen": {
+    "title": "PACHETE",
+    "hint": { "order": "Ordine", "toggle": "Pornit / oprit" },
+    "none": "Nu s-a găsit niciun pachet.",
+    "on": "PORNIT",
+    "off": "OPRIT",
+    "version": "Versiunea {version}",
+    "author": "FĂCUT DE",
+    "unknown": "Nespus",
+    "place": "SE ÎNCARCĂ",
+    "credits": "MERITE",
+    "about": "CE ESTE",
+    "after": "Se încarcă după {names}.",
+    "pending": "Schimbările acestea au efect la următoarea pornire a jocului.",
+    "problems": "{n} pachet(e) n-au putut fi citite și au fost lăsate deoparte. Primul: {first}",
+    "help": "Un pachet de mai jos e pus peste cele de dinainte. Un pachet e munca celui care l-a făcut; meritele îl însoțesc."
   },
 
   "athlon": {
@@ -1129,6 +1157,7 @@
     "debut": "DEBUT ÎN SALA FAIMEI",
     "debutWhen": "{date}   {time}",
     "runEnded": "JOC TERMINAT",
+    "packs": { "one": "PACHET: {name}", "few": "{n} PACHETE", "other": "{n} DE PACHETE" },
     "graveyard": "CIMITIR  {count}",
     "graveyardEmpty": "Încă nu a leșinat nimeni.",
     "graveyardMore": "și încă {count} dinainte",

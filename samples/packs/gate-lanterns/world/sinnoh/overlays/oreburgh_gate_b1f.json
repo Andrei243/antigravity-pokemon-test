@@ -1,0 +1,21 @@
+{
+  "area": "oreburgh_gate_b1f",
+  "bgmTrack": "gatelanterns/lantern_walk",
+  "people": {
+    "cyclist_f": {
+      "name": "Cyclist",
+      "script": "Cyclist",
+      "dialog": [
+        "Somebody hung lanterns along the humps. Now I can see where I'm flying!",
+        "Mind the last one, though. It's a little crooked."
+      ]
+    },
+    "veteran_grant": {
+      "name": "Grant",
+      "trainer": {
+        "dialogueBefore": "Veteran Grant: I lit every lantern down here myself. Let's see if you can match their glow!",
+        "dialogueAfter": "Veteran Grant: Outshone by a youngster! I'll go and trim the wicks."
+      }
+    }
+  }
+}
