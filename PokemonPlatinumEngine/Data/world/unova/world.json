@@ -226,7 +226,32 @@
     { "name": "GiantChasm_CraterFrigate", "matrix": 251, "area": "giant_chasm_4", "trees": "Round" },
     { "name": "GiantChasm_Passage", "matrix": 252, "area": "giant_chasm_5", "trees": "Round", "setting": "Cave" },
     { "name": "GiantChasm_Cavern", "matrix": 397, "area": "giant_chasm_6", "trees": "Round", "setting": "Cave" },
-    { "name": "PlasmaFrigate_Ramp", "matrix": 343, "area": "plasma_frigate_6", "trees": "Round", "setting": "Indoors" }
+    { "name": "PlasmaFrigate_Ramp", "matrix": 343, "area": "plasma_frigate_6", "trees": "Round", "setting": "Indoors" },
+    // Plan 22 · U9, part b: Route 23's two rooms, Victory Road (its Badge Check Gates outside, Black 2's own floors, the Pokémon
+    // Center at its foot) and the Pokémon League's plaza with its Pokémon Center
+    { "name": "Route23_House1", "matrix": 44, "area": "unova_route_23_2", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route23_House2", "matrix": 44, "area": "unova_route_23_3", "trees": "Round", "setting": "Indoors" },
+    { "name": "UnovaVictoryRoad", "matrix": 337, "area": "unova_victory_road", "trees": "Round" },
+    { "name": "UnovaVictoryRoad_PokemonCenter", "matrix": 54, "area": "unova_victory_road_27", "trees": "Round", "setting": "Indoors" },
+    { "name": "UnovaVictoryRoad_Ruins", "matrix": 382, "area": "unova_victory_road_17", "trees": "Round", "setting": "Cave" },
+    { "name": "UnovaVictoryRoad_Grove", "matrix": 383, "area": "unova_victory_road_18", "trees": "Round" },
+    { "name": "UnovaVictoryRoad_Falls", "matrix": 384, "area": "unova_victory_road_19", "trees": "Round" },
+    { "name": "UnovaVictoryRoad_Cave", "matrix": 385, "area": "unova_victory_road_20", "trees": "Round", "setting": "Cave" },
+    { "name": "UnovaVictoryRoad_Pool", "matrix": 386, "area": "unova_victory_road_21", "trees": "Round", "setting": "Cave" },
+    { "name": "UnovaVictoryRoad_Summit", "matrix": 387, "area": "unova_victory_road_22", "trees": "Round" },
+    { "name": "UnovaVictoryRoad_Hollow", "matrix": 388, "area": "unova_victory_road_23", "trees": "Round", "setting": "Cave" },
+    { "name": "UnovaVictoryRoad_Tunnel", "matrix": 198, "area": "unova_victory_road_16", "trees": "Round", "setting": "Cave" },
+    { "name": "UnovaPokemonLeague", "matrix": 87, "area": "unova_pokemon_league", "trees": "Round" },
+    { "name": "UnovaPokemonLeague_PokemonCenter", "matrix": 54, "area": "unova_pokemon_league_11", "trees": "Round", "setting": "Indoors" },
+    // Plan 22 · U9, part c: the League's hall, the Elite Four's four rooms, the way down to the Champion's room, her room and
+    // the Hall of Fame
+    { "name": "UnovaPokemonLeague_Hall", "matrix": 210, "area": "unova_pokemon_league_2", "trees": "Round", "setting": "Indoors" },
+    { "name": "UnovaPokemonLeague_ShauntalsRoom", "matrix": 121, "area": "unova_pokemon_league_5", "trees": "Round", "setting": "Indoors" },
+    { "name": "UnovaPokemonLeague_GrimsleysRoom", "matrix": 122, "area": "unova_pokemon_league_6", "trees": "Round", "setting": "Indoors" },
+    { "name": "UnovaPokemonLeague_MarshalsRoom", "matrix": 123, "area": "unova_pokemon_league_7", "trees": "Round", "setting": "Indoors" },
+    { "name": "UnovaPokemonLeague_CaitlinsRoom", "matrix": 124, "area": "unova_pokemon_league_8", "trees": "Round", "setting": "Indoors" },
+    { "name": "UnovaPokemonLeague_Descent", "matrix": 211, "area": "unova_pokemon_league_3", "trees": "Round", "setting": "Indoors" },
+    { "name": "UnovaPokemonLeague_ChampionsRoom", "matrix": 125, "area": "unova_pokemon_league_9", "trees": "Round", "setting": "Indoors" },    { "name": "UnovaPokemonLeague_HallOfFame", "matrix": 126, "area": "unova_pokemon_league_10", "trees": "Round", "setting": "Indoors" }
   ],
   "areas": [
     "aspertia_city", "aspertia_city_2", "aspertia_city_3", "aspertia_city_4", "aspertia_city_5", "aspertia_city_6",
@@ -267,6 +292,10 @@
     // plan 22 · U8, part b
     "bridge_gate_gate_8", "bridge_gate_gate_9", "humilau_city", "humilau_city_2", "humilau_city_3", "humilau_city_4", "humilau_city_5", "humilau_city_6", "humilau_city_pokemon_center", "humilau_city_gym", "unova_route_22", "unova_route_21", "seaside_cave", "seaside_cave_2", "plasma_frigate_2", "plasma_frigate_3", "plasma_frigate_5", "plasma_frigate_7", "plasma_frigate_9",
     // plan 22 · U9, part a
-    "giant_chasm", "giant_chasm_2", "giant_chasm_3", "giant_chasm_4", "giant_chasm_5", "giant_chasm_6", "plasma_frigate_6"
+    "giant_chasm", "giant_chasm_2", "giant_chasm_3", "giant_chasm_4", "giant_chasm_5", "giant_chasm_6", "plasma_frigate_6",
+    // plan 22 · U9, part b
+    "unova_route_23", "unova_route_23_2", "unova_route_23_3", "unova_victory_road", "unova_victory_road_27", "unova_victory_road_17", "unova_victory_road_18", "unova_victory_road_19", "unova_victory_road_20", "unova_victory_road_21", "unova_victory_road_22", "unova_victory_road_23", "unova_victory_road_16", "unova_pokemon_league", "unova_pokemon_league_11",
+    // plan 22 · U9, part c
+    "unova_pokemon_league_2", "unova_pokemon_league_5", "unova_pokemon_league_6", "unova_pokemon_league_7", "unova_pokemon_league_8", "unova_pokemon_league_3", "unova_pokemon_league_9", "unova_pokemon_league_10"
   ]
 }

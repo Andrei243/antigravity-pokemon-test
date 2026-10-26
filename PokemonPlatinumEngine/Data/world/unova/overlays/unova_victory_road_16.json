@@ -1,0 +1,16 @@
+{
+  // Victory Road's last tunnel (plan 22 · U9, part b): Black 2's passage from the summit to the way out under the League. Hugh
+  // (hugh_tunnel, FLAG_UNOVA_HIDE_HUGH_TUNNEL) runs in after the player along it (our trigger across the passage, 12, 6 to 9,
+  // VAR_UNOVA_HUGH_TUNNEL 0; unova_victory_road_16.txt). The way out (0) leads in Black 2 onto a bridge that stands on its rails,
+  // which the reader leaves out (unova_victory_road_2): here it leads straight onto the League's plaza, at the head of its steps
+  "area": "unova_victory_road_16",
+  "name": "Victory Road",
+  "bgmTrack": "unova/victory_road",
+  "doors": [ { "warp": 0, "map": "UnovaPokemonLeague", "x": 32, "y": 57, "facing": "Up" } ],
+  "triggers": [
+    { "script": "Hugh", "x": 12, "z": 6, "width": 1, "depth": 4, "variable": "VAR_UNOVA_HUGH_TUNNEL", "value": 0 }
+  ],
+  "npcs": [
+    { "id": "hugh_tunnel", "name": "{rival}", "npcType": "hugh", "x": 20, "y": 7, "facing": "Left", "hiddenBy": "FLAG_UNOVA_HIDE_HUGH_TUNNEL" }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  // Victory Road's ruins (plan 22 · U9, part b): Black 2's first floor past the cave's mouth, the old road's ruined halls with
+  // water through them, its boulders and balls in the area file; our words. Its two holes (52, 18 and 17, 37) are filled by its two boulders pushed with Strength, as the Relic Passage's are (unova_victory_road_17.txt). The TM of its last ball (8) is a move of the later
+  // games this game's data hasn't, held back
+  "area": "unova_victory_road_17",
+  "name": "Victory Road",
+  "bgmTrack": "unova/victory_road",
+  "heldBack": [ "8" ],
+  "holes": [
+    { "x": 52, "z": 18, "width": 2, "depth": 2, "filledBy": "FLAG_UNOVA_VICTORY_ROAD_RUINS_HOLE_EAST" },
+    { "x": 17, "z": 37, "width": 2, "depth": 2, "filledBy": "FLAG_UNOVA_VICTORY_ROAD_RUINS_HOLE_WEST" }
+  ],
+  "pits": [
+    { "x": 52, "z": 18, "script": "FillEast" },
+    { "x": 53, "z": 18, "script": "FillEast" },
+    { "x": 52, "z": 19, "script": "FillEast" },
+    { "x": 53, "z": 19, "script": "FillEast" },
+    { "x": 17, "z": 37, "script": "FillWest" },
+    { "x": 18, "z": 37, "script": "FillWest" },
+    { "x": 17, "z": 38, "script": "FillWest" },
+    { "x": 18, "z": 38, "script": "FillWest" }
+  ],
+  "people": {
+    "0": { "name": "Boulder", "hiddenBy": "FLAG_UNOVA_VICTORY_ROAD_RUINS_HOLE_EAST" },
+    "1": { "name": "Boulder", "hiddenBy": "FLAG_UNOVA_VICTORY_ROAD_RUINS_HOLE_WEST" },
+    "2": { "name": "Claude", "trainer": { "dialogueBefore": "I've walked this road forty years. Let's see how far you've walked!", "dialogueAfter": "Further than me, it seems." } },
+    "3": { "name": "Cecile", "trainer": { "dialogueBefore": "My husband and I train together. Now you get both of us, one at a time!", "dialogueAfter": "Well, that was humbling." } },
+    "4": { "name": "Billy", "trainer": { "dialogueBefore": "Halfway to the League and already tired? Not me. Battle!", "dialogueAfter": "Now I'm tired." } },
+    "5": { "name": "Jamie", "trainer": { "dialogueBefore": "These ruins were the old Victory Road. Fitting place to lose, don't you think?", "dialogueAfter": "Fitting place for me to lose, as it turns out." } },
+    "6": { "name": "Alia", "trainer": { "dialogueBefore": "My mind is calm. My Pokémon's minds are calm. Are yours?", "dialogueAfter": "Calm... and beaten." } },
+    "7": { "name": "Al", "trainer": { "dialogueBefore": "I sensed you coming from three halls away. My Pokémon did too!", "dialogueAfter": "I didn't sense this, though." } }
+  }
+}

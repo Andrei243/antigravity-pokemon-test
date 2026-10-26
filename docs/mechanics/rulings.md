@@ -3317,6 +3317,74 @@ scripts, read for the order alone) on flags of ours. `VAR_UNOVA_CHASM` is the ch
   (`FLAG_UNOVA_CHASM_BEGUN`), which the arrivals of the cave, both craters, the ramp hall and the cavern call, with no story version
   raised.
 
+## Unova's fifth chapter, parts b and c: Route 23, Victory Road and the League (2026-10-26, plan 22 · U9)
+
+Black 2's beats from the Giant Chasm's way out to the Hall of Fame and home, in our own words (the decompilation's zone scripts, read
+for the order alone) on variables of ours. What differs from Black 2, and why:
+
+- **Route 23** opens from the chasm's cave once the chapter there is over (its two guards gone), with Black 2's trainers, trees,
+  boulders and balls and its two houses; Azelf, which waits there after the League, and the Shards' three things are plan 22 · U10's.
+- **N at the foot of Victory Road** steps out to meet the player at the head of the way up from Route 23 (Black 2's own trigger,
+  `VAR_UNOVA_N_VICTORY_ROAD`), says the League lies past Victory Road, gives HM05 (Black 2's item 424) and goes.
+- **The Badge Check Gates** are eight triggers of ours on Black 2's gate lines west along the road, taken in order by
+  `VAR_UNOVA_BADGE_GATES` (0 to 8, the eight Badges in Unova's order; 9 once the last gate before the cave has said all eight are
+  confirmed). Black 2 checks with its own variables, one to a gate, set by the area's arrival for each Badge held; a gate whose
+  Badge is missing turns the player back a step, where Black 2's gate stays shut. The gates themselves are not drawn.
+- **Victory Road is Black 2's**, where the two versions differ: the decompilation keeps two sets of the ruins and the falls, one
+  whose models are named for White 2 (`victory_road_24`, `_25`, `white2601` and `white2603`) and the dungeon's own (`_17`, `_19`); the
+  latter are built, and the other set's ways lead nowhere and are closed, as the original's script moves them away by version. Of the
+  people standing by version that set's are kept (the grove's Chandra, the falls' Beckett and Shelly, the long cave's Webster and
+  Shanta by its north wall with its two boulders). The ruins and the long cave each have two holes a boulder pushed with Strength
+  fills (`StrengthHole`), as the Relic Passage's are: overlay `holes` and `pits`, their scripts `Fill<Side>`, the boulder gone with its
+  hole; without them the floors are cut in two. The ruins' TM93 is a move of the later games this game's data hasn't, held back. The
+  Zoroark that guards the way to N's Castle and the way itself are plan 22 · U10's. Route 23's six holes are left unfilled (the way
+  along it doesn't need them).
+- **Hugh's last battle** is in Victory Road's last tunnel, as Black 2 has it (not before Victory Road): as the player comes along
+  the passage to the way out he runs in from the summit, battles with Black 2's `TRAINER_RIVAL_16`, `_17` or `_18` by the player's
+  starter, thanks the player for his sister's Purrloin, gives TM24 (Black 2's item 351) and runs back (`VAR_UNOVA_HUGH_TUNNEL`).
+- **The way out to the League** leads in Black 2 onto a bridge that stands on its rails (`victory_road_2`), which the reader leaves
+  out: here the tunnel's way out leads straight onto the plaza at the head of its steps, and the plaza's way down straight back.
+- **The plaza is one chunk of 64 by 64** (`pokemon_league_pl_00_00`, the one such grid of Black 2's), read by the importer as four
+  quarters of 32 by 32 in a matrix of two by two (`Bw2Maps.QuarterBigChunks`; the quarters after the first are numbered past the
+  ice twins, `Bw2World.QuarterOffset`), so its steps, its door and the Pokémon Center's door, which lie past the first quarter, are
+  there. The League's building is drawn into the plaza's own model with no prop: its tiles are `Building` cover and blocked, as
+  Castelia's towers once were, and look plain until a prop of ours stands for it. The veteran by the steps asks whether the
+  challenger is ready (`VAR_UNOVA_LEAGUE_GUARD`); no, and they step back.
+- **The League's hall and rooms** stand on rails in Black 2 too: the hall's four staircases up to the Elite Four's rooms, each room's
+  stairs up to its floor, and the Champion's room's stairs up to the walk. Each is an exit of ours (an overlay's `exits`): at the head
+  of the hall's four arms (Shauntal's west, Grimsley's north-west, Caitlin's north-east, Marshal's east, which is our own arrangement
+  of the four), at the foot of each room's stairs, and at the foot of the Champion's walk, both ways. A room cut to what its ways
+  reach counts its overlay's exits as ways (`WaysIntoRoom`), so the floors the rails led to are not walls. The door back to the hall
+  is shut behind the challenger in every room; once its master is beaten (`VAR_UNOVA_LEAGUE_SHAUNTAL`, `_GRIMSLEY`, `_MARSHAL`,
+  `_CAITLIN`) Black 2's own light in the floor's corner carries the player back to the hall. The four battle when spoken to, with
+  Black 2's first teams and, once Unova's Hall of Fame has been entered, the second round's (`_2`); Black 2's Challenge Mode teams
+  (`_3`, `_4`) are plan 13's. The hall has no way back out to the plaza, as Black 2's door is shut; the plaza's arrival puts the four
+  and the Champion back (every challenge starts there, and a battle lost wakes the player in the plaza's Pokémon Center).
+- **The statue** in the hall's well is read from the floor south of it (Black 2's own background event stands in the well) and,
+  with all four beaten, sinks and carries the challenger down to the great hall below (`pokemon_league_3`), over a fade, where
+  Black 2 plays a lift. The statue there takes them back up if they ask.
+- **Iris** comes down from her dais as the challenger reaches the head of the walk (our trigger) and battles with Black 2's team
+  (`unova_champion_iris`, after the Hall of Fame `_2`). Black 2's walk to the Hall of Fame past the Elite Four (`pokemon_league_4`)
+  is not played: Iris leads the new Champion straight there over a fade, as Hoenn's Wallace does.
+- **The Hall of Fame** has no way of its own (Black 2 reaches it by a scene); a room with no way is as large as the floor its people
+  of ours stand on (`WaysIntoRoom`). Its one scene is Kanto's, Johto's and Hoenn's: Iris's words, the team recorded, `UnovaHallOfFame`
+  set (the region's flag, which opens the flight to Kalos and the National Pokédex), the team's entry, the team healed, home to the
+  player's room in Aspertia City, the game saved and the credits.
+- **Home**: as the player comes down from their room after the Hall of Fame, Mom welcomes the Champion and the professor's father,
+  Cedric Juniper, comes in with the National Pokédex (`VAR_UNOVA_HOUSE` 2 to 3; Black 2's beat). The region file's `nationalUnlock`
+  is `HallOfFame`.
+- **The way on to Kalos is by air from Mistralton City's cargo hall**: the airline's attendant stands in its east wing once Unova's
+  Hall of Fame is entered (`RegionDatabase`'s link from Unova, `common.Attendant`), and says the flight isn't running until plan 23
+  builds Kalos.
+- **Looks and sounds.** Shauntal, Marshal and Grimsley have looks of ours (stand-ins until plan 22 · U12), Caitlin is the Battle
+  Castle's, and Cedric Juniper is ours; the four's classes (`Elite Four Shauntal` and the rest, Black 2's) battle in their own looks and
+  to the Elite Four's music. The songs are ours: `unova/route23` (30 s, the ocarina at night), `unova/victory_road` (32 s, the same by
+  day and night), `unova/pokemon_league` (40 s, the plaza and the League's rooms, the horn at night), `unova/battle_elite_four` and
+  `unova/battle_champion` (each with its low-HP arrangement) and `unova/credits` (37 s), not yet heard by the user.
+- **What a save needs.** A save of the Giant Chasm's is given the chapter's hidden people (Hugh in the tunnel, Cedric Juniper) by
+  `UnovaCatchUpF` (`FLAG_UNOVA_LEAGUE_BEGUN`), which the foot of Victory Road, its last tunnel and the plaza call, with no story
+  version raised.
+
 ## Kanto's first chapter (2026-10-18, plan 19 · K3)
 
 FireRed's first chapter, from the bedroom in Pallet Town to the Boulder Badge in Pewter City, is scripts of ours on its

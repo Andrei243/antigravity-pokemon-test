@@ -1,0 +1,93 @@
+{
+  "key": "unova_victory_road_21",
+  "index": 591,
+  "name": "Victory Road 2",
+  "matrix": 386,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave2",
+  "dayMusic": "BGM_D_CHAMPROAD",
+  "nightMusic": "BGM_D_CHAMPROAD",
+  "encounters": "ENCOUNTERS_VICTORY_ROAD_6",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Boldore", "level": 47 },
+    { "species": "Boldore", "level": 47 },
+    { "species": "Boldore", "level": 48 },
+    { "species": "Boldore", "level": 48 },
+    { "species": "Boldore", "level": 49 },
+    { "species": "Onix", "level": 49 },
+    { "species": "Boldore", "level": 50 },
+    { "species": "Onix", "level": 50 },
+    { "species": "Boldore", "level": 50 },
+    { "species": "Onix", "level": 50 },
+    { "species": "Boldore", "level": 50 },
+    { "species": "Onix", "level": 50 }
+  ],
+  "landRate": 18,
+  "water": [
+    { "species": "Basculin", "level": 35, "maxLevel": 50 },
+    { "species": "Marill", "level": 35, "maxLevel": 50 },
+    { "species": "Basculin", "level": 40, "maxLevel": 50 },
+    { "species": "Basculin", "level": 40, "maxLevel": 50 },
+    { "species": "Basculin", "level": 40, "maxLevel": 50 }
+  ],
+  "waterRate": 12,
+  "superRod": [
+    { "species": "Poliwag", "level": 40, "maxLevel": 60, "weight": 60 },
+    { "species": "Basculin", "level": 40, "maxLevel": 60, "weight": 30 },
+    { "species": "Poliwag", "level": 50, "maxLevel": 70, "weight": 5 },
+    { "species": "Poliwag", "level": 50, "maxLevel": 70, "weight": 4 },
+    { "species": "Poliwag", "level": 50, "maxLevel": 70, "weight": 1 }
+  ],
+  "superRodRate": 50,
+  "shakingGrass": [
+    { "species": "Excadrill", "level": 47 },
+    { "species": "Onix", "level": 47 },
+    { "species": "Excadrill", "level": 48 },
+    { "species": "Excadrill", "level": 48 },
+    { "species": "Excadrill", "level": 49 },
+    { "species": "Excadrill", "level": 49 },
+    { "species": "Excadrill", "level": 50 },
+    { "species": "Excadrill", "level": 50 },
+    { "species": "Excadrill", "level": 50 },
+    { "species": "Excadrill", "level": 50 },
+    { "species": "Excadrill", "level": 50 },
+    { "species": "Excadrill", "level": 50 }
+  ],
+  "shakingGrassRate": 13,
+  "ripplingWater": [
+    { "species": "Marill", "level": 35, "maxLevel": 60 },
+    { "species": "Basculin", "level": 35, "maxLevel": 60 },
+    { "species": "Basculin", "level": 40, "maxLevel": 70 },
+    { "species": "Azumarill", "level": 40, "maxLevel": 70 },
+    { "species": "Azumarill", "level": 40, "maxLevel": 70 }
+  ],
+  "ripplingWaterRate": 13,
+  "ripplingRod": [
+    { "species": "Poliwhirl", "level": 40, "maxLevel": 60, "weight": 60 },
+    { "species": "Basculin", "level": 40, "maxLevel": 60, "weight": 30 },
+    { "species": "Poliwhirl", "level": 50, "maxLevel": 70, "weight": 5 },
+    { "species": "Poliwrath", "level": 50, "maxLevel": 70, "weight": 4 },
+    { "species": "Poliwrath", "level": 50, "maxLevel": 70, "weight": 1 }
+  ],
+  "ripplingRodRate": 1,
+  "warps": [
+    { "x": 13, "z": 30, "to": "unova_victory_road_20", "toWarp": 0 },
+    { "x": 24, "z": 7, "to": "unova_victory_road_22", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "110", "movement": "none", "x": 27, "z": 29, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0522", "item": "Rare Candy", "script": "7214" },
+    { "id": "1", "looks": "110", "movement": "none", "x": 12, "z": 16, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x051b", "item": "PP Max", "script": "7207" }
+  ],
+  "signs": [
+    { "x": 29, "z": 20, "type": 2, "script": "8107", "item": "Max Elixir", "flag": "FLAG_UNOVA_0x0b6f" },
+    { "x": 12, "z": 21, "type": 2, "script": "8106", "item": "Red Shard", "flag": "FLAG_UNOVA_0x0b6e" }
+  ],
+  "triggers": []
+}

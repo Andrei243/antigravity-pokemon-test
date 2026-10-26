@@ -1,0 +1,9 @@
+{
+  // Victory Road's hollow (plan 22 · U9, part b): Black 2's small cave in the summit, its ball in the area file; our words
+  "area": "unova_victory_road_23",
+  "name": "Victory Road",
+  "bgmTrack": "unova/victory_road",
+  "people": {
+    "0": { "name": "Hugo", "trainer": { "dialogueBefore": "Few find this hollow. Fewer leave it without a battle!", "dialogueAfter": "You'll leave it, then. Well earned." } }
+  }
+}

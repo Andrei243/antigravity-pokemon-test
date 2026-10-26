@@ -3137,6 +3137,7 @@ script UnovaChasm
   setflag FLAG_UNOVA_HIDE_HUGH_CAVERN
   setflag FLAG_UNOVA_HIDE_CHEREN_CAVERN
   setflag FLAG_UNOVA_CHASM_BEGUN
+  call UnovaLeague
   return
 
 
@@ -3145,4 +3146,23 @@ script UnovaChasm
 script UnovaCatchUpE
   call UnovaCatchUpD
   if not flag FLAG_UNOVA_CHASM_BEGUN call UnovaChasm
+  return
+
+
+# What Unova's League chapter hides until its scenes (plan 22 · U9, parts b and c): Hugh in Victory Road's last tunnel and the
+# professor's father, who calls at the player's house after the Hall of Fame. A new game runs
+# it from UnovaChasm (the chain of every chapter's hiding); a save of the Giant Chasm's is given it by UnovaCatchUpF. It may only
+# set flags and variables, and ends in return.
+script UnovaLeague
+  setflag FLAG_UNOVA_HIDE_HUGH_TUNNEL
+  setflag FLAG_UNOVA_HIDE_CEDRIC_HOME
+  setflag FLAG_UNOVA_LEAGUE_BEGUN
+  return
+
+
+# What the arrival of each place of plan 22 · U9's second part calls (Route 23, Victory Road and the League): the earlier
+# chapters' catch-up, and for a save from before this one the people of it hidden
+script UnovaCatchUpF
+  call UnovaCatchUpE
+  if not flag FLAG_UNOVA_LEAGUE_BEGUN call UnovaLeague
   return

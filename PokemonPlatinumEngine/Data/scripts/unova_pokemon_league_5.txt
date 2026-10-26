@@ -1,0 +1,40 @@
+# Shauntal's room of the Elite Four (plan 22 · U9, part c). docs/scripts.md describes the language; the lines are our own, on Black 2's
+# beats (the decompilation's res/field/scripts/pokemon_league_5.s, read for the order alone).
+#
+# VAR_UNOVA_LEAGUE_SHAUNTAL is 0 until Shauntal is beaten in this challenge, 1 after; the plaza's arrival puts it back to 0, as a new
+# challenge begins there. Shauntal battles with Black 2's first team (unova_elite_four_shauntal) and, once Unova's Hall of Fame has been
+# entered, with the team of the second round (unova_elite_four_shauntal_2). Once beaten, the light in the corner (Pad) carries the
+# player back down to the League's hall, beside the arm to this room.
+
+
+script Shauntal
+  face 0 player
+  speaker "Shauntal"
+  if var VAR_UNOVA_LEAGUE_SHAUNTAL == 1 goto Beaten
+  if flag UnovaHallOfFame goto Again
+  say "'A lone Trainer, a dragon at her side, crossing the world in search of the truth...' Forgive me, that's a line from the novel I'm writing."
+  say "You must be the challenger. I'm Shauntal of the Elite Four. My Ghost-type Pokémon and I will be your opponents."
+  battle 0 as "unova_elite_four_shauntal"
+  goto Won
+label Again
+  say "Back again? Good! Every return is a new chapter. Let's write this one together!"
+  battle 0 as "unova_elite_four_shauntal_2"
+label Won
+  speaker "Shauntal"
+  say "Every Pokémon on the field fought on, hurting and tired. Thank you, all of you. What a chapter that was."
+  setvar VAR_UNOVA_LEAGUE_SHAUNTAL 1
+  speaker none
+  text "A light began to glow in the corner of the room."
+  end
+label Beaten
+  say "Battles hurt, for us and for our Pokémon. Remember that, and you'll never forget the bonds you share."
+  say "That's what I try to put into my stories."
+  end
+
+
+# The light in the corner, once Shauntal is beaten: back down to the League's hall
+script Pad
+  speaker none
+  text "The light carried {player} back down to the hall."
+  warp "UnovaPokemonLeague_Hall" 24 39 right
+  end

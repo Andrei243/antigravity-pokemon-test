@@ -1,0 +1,51 @@
+# The Pokémon League's plaza (plan 22 · U9, part b). docs/scripts.md describes the language; the lines are our own, on Black 2's
+# beats (the decompilation's res/field/scripts/pokemon_league.s, read for the order alone).
+#
+# VAR_UNOVA_LEAGUE_GUARD is 0 until the veteran by the steps (1) has been told the player is ready, 1 after. As the player comes to
+# the foot of the steps (Black 2's own trigger across them, 31 to 33, 48) he asks: yes and he lets them by, no and they step back.
+
+
+# Anyone on the plaza is between challenges (the League's hall has no way back out, and a battle lost inside wakes the player in
+# the Pokémon Center here): the Elite Four and the Champion wait to be beaten afresh
+script OnEnter
+  call UnovaCatchUpF
+  setvar VAR_UNOVA_LEAGUE_SHAUNTAL 0
+  setvar VAR_UNOVA_LEAGUE_GRIMSLEY 0
+  setvar VAR_UNOVA_LEAGUE_MARSHAL 0
+  setvar VAR_UNOVA_LEAGUE_CAITLIN 0
+  setvar VAR_UNOVA_LEAGUE_IRIS 0
+  end
+
+
+script Guard
+  face 1 player
+  speaker "Veteran"
+  say "The Pokémon League is where Trainers seek strength and show it. To show it, you need only defeat the Elite Four and then the Champion."
+  say "Challenge the Elite Four in any order you like. Beat all four, and the Champion's way opens."
+  say "But hear me: once you go in, there's no turning back. You battle until you have beaten them all, or been beaten yourself."
+  ask "Are you ready to go in?"
+  if no goto NotYet
+  say "Then go, and good luck!"
+  setvar VAR_UNOVA_LEAGUE_GUARD 1
+  end
+label NotYet
+  say "Don't skimp on getting ready. The Pokémon Center is just there. Heal your Pokémon and come back."
+  walk player down 1
+  end
+
+
+# The veteran by the steps, spoken to once he has let the player by
+script GuardTalk
+  face 1 player
+  speaker "Veteran"
+  say "Once you go in, you battle until you have beaten them all, or been beaten yourself."
+  end
+
+
+# The veteran by the Pokémon Center
+script Prepare
+  face 0 player
+  speaker "Veteran"
+  say "The Pokémon League is the greatest challenge a Trainer can take on!"
+  say "Get ready here first. Lose even once inside, and you start all over again."
+  end

@@ -1,0 +1,11 @@
+{
+  // The Hall of Fame (plan 22 · U9, part c): Black 2's room behind the Champion's, which it reaches by a scene and no door. Iris
+  // (iris_hof) brings the new Champion here and their team is recorded (unova_pokemon_league_10.txt); the room has no way of its
+  // own, so it is as large as the floor Iris stands on
+  "area": "unova_pokemon_league_10",
+  "name": "Pokémon League",
+  "bgmTrack": "unova/pokemon_league",
+  "npcs": [
+    { "id": "iris_hof", "name": "Iris", "npcType": "iris", "x": 8, "y": 12, "facing": "Down", "dialog": [ "Iris: Congratulations, Champion!" ] }
+  ]
+}

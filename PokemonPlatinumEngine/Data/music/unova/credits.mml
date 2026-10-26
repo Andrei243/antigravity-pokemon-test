@@ -1,0 +1,30 @@
+# Unova's credits: a bright, open theme in A major that looks back over the journey from Aspertia's hill, a flute over a harp
+# and held strings with a gentle bass, round again for as long as the roll lasts. Original composition for this game (plan 22 ·
+# U9, part c).
+title Credits (Unova)
+tempo 104
+meter 4/4
+reverb 0.38
+night none
+
+track lead flute vol=0.72 pan=0 rev=0.38
+  L o5 e4 a4 o6 c+2 | o6 c+4. o5 b8 a2 | o5 f+4 a4 o6 d4 e4 | o6 e2. o5 b4 |
+  o5 a4 o6 c+4 e4 c+4 | o6 e4. f+8 g+4 e4 | o6 f+4 e4 d4 o5 a4 | o5 b1 |
+  o6 c+4 o5 a4 f+4 a4 | o5 b4 a4 f+2 | o5 e4 a4 o6 c+4 e4 | o6 e4 f+4 g+2 |
+  o6 a4 f+4 e4 d4 | o6 e4 c+4 o5 b2 | o5 a1 | o5 g+2 b2 |
+
+track harp harp vol=0.4 pan=0.3 rev=0.36
+  L [ o4 a8 o5 c+8 e8 c+8 ]2 | [ o4 f+8 a8 o5 c+8 o4 a8 ]2 | [ o4 d8 f+8 a8 f+8 ]2 | [ o4 e8 g+8 b8 g+8 ]2 |
+  [ o4 a8 o5 c+8 e8 c+8 ]2 | [ o4 c+8 e8 g+8 e8 ]2 | [ o4 d8 f+8 a8 f+8 ]2 | [ o4 e8 g+8 b8 g+8 ]2 |
+  [ o4 f+8 a8 o5 c+8 o4 a8 ]2 | [ o4 d8 f+8 a8 f+8 ]2 | [ o4 a8 o5 c+8 e8 c+8 ]2 | [ o4 e8 g+8 b8 g+8 ]2 |
+  [ o4 d8 f+8 a8 f+8 ]2 | [ o4 e8 g+8 b8 g+8 ]2 | [ o4 a8 o5 c+8 e8 c+8 ]2 | [ o4 e8 g+8 b8 g+8 ]2 |
+
+track pad strings vol=0.26 pan=-0.3 rev=0.44
+  L o4 (a >c+ e)1 | o4 (f+ a >c+)1 | o4 (d f+ a)1 | o4 (e g+ b)1 |
+  o4 (a >c+ e)1 | o4 (c+ e g+)1 | o4 (d f+ a)1 | o4 (e g+ b)1 |
+  o4 (f+ a >c+)1 | o4 (d f+ a)1 | o4 (a >c+ e)1 | o4 (e g+ b)1 |
+  o4 (d f+ a)1 | o4 (e g+ b)1 | o4 (a >c+ e)1 | o4 (e g+ b)1 |
+
+track bass contrabass vol=0.58 rev=0.3
+  L o3 a2 e2 | o3 f+2 c+2 | o3 d2 a2 | o3 e2 b2 | o3 a2 e2 | o3 c+2 g+2 | o3 d2 a2 | o3 e2 b2 |
+  o3 f+2 c+2 | o3 d2 a2 | o3 a2 e2 | o3 e2 b2 | o3 d2 a2 | o3 e2 b2 | o3 a2 e2 | o3 e2 b2 |

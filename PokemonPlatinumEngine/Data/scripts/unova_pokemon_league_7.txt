@@ -1,0 +1,39 @@
+# Marshal's room of the Elite Four (plan 22 · U9, part c). docs/scripts.md describes the language; the lines are our own, on Black 2's
+# beats (the decompilation's res/field/scripts/pokemon_league_7.s, read for the order alone).
+#
+# VAR_UNOVA_LEAGUE_MARSHAL is 0 until Marshal is beaten in this challenge, 1 after; the plaza's arrival puts it back to 0, as a new
+# challenge begins there. Marshal battles with Black 2's first team (unova_elite_four_marshal) and, once Unova's Hall of Fame has been
+# entered, with the team of the second round (unova_elite_four_marshal_2). Once beaten, the light in the corner (Pad) carries the
+# player back down to the League's hall, beside the arm to this room.
+
+
+script Marshal
+  face 0 player
+  speaker "Marshal"
+  if var VAR_UNOVA_LEAGUE_MARSHAL == 1 goto Beaten
+  if flag UnovaHallOfFame goto Again
+  say "I am Marshal of the Elite Four. I learned all I know from Alder, our former Champion."
+  say "My Fighting-type Pokémon and I have trained our bodies and our spirits to the limit. Show me yours!"
+  battle 0 as "unova_elite_four_marshal"
+  goto Won
+label Again
+  say "You return to train with me again? Then I hold nothing back. Come!"
+  battle 0 as "unova_elite_four_marshal_2"
+label Won
+  speaker "Marshal"
+  say "Your strength... is the real thing. Your spirit, and your Pokémon's, would make my master proud."
+  setvar VAR_UNOVA_LEAGUE_MARSHAL 1
+  speaker none
+  text "A light began to glow in the corner of the room."
+  end
+label Beaten
+  say "Alder taught me that strength means nothing without care for others. You have both. Go on."
+  end
+
+
+# The light in the corner, once Marshal is beaten: back down to the League's hall
+script Pad
+  speaker none
+  text "The light carried {player} back down to the hall."
+  warp "UnovaPokemonLeague_Hall" 38 39 left
+  end

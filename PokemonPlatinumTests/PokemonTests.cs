@@ -241,7 +241,9 @@ public class PokemonTests
         // but the attendants' scripts: the strip before its gate asks whether to give the show up (plan 06 · R16b),
         // and Hoenn's sea floor none but Dive, down from the routes over it and back up (plan 21 · H5)
         // (Hoenn's Hall of Fame too, whose scene sends the player home, plan 21 · H9)
-        if (mapName != "PokemonLeagueHallOfFame" && mapName != "EverGrandeCity_HallOfFame" && mapName != "Underground" && mapName != "PalPark" && mapName != "HoennUnderwater")
+        // (and Unova's, which Iris's scene leads into and its own sends home, plan 22 · U9, part c)
+        if (mapName != "PokemonLeagueHallOfFame" && mapName != "EverGrandeCity_HallOfFame" && mapName != "Underground" && mapName != "PalPark" && mapName != "HoennUnderwater"
+            && mapName != "UnovaPokemonLeague_HallOfFame")
             Assert.NotEmpty(map.Warps);
         // A map of the imported world is many places, and not every one leads to every other: a cave lies between
         // the two halves of a route, rocks wait for Rock Smash. The test below walks the whole game instead.

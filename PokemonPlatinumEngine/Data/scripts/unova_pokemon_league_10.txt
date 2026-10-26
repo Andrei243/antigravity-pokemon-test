@@ -1,0 +1,49 @@
+# Unova's Hall of Fame (plan 22 · U9, part c). docs/scripts.md describes the language; the lines are our own, on Black 2's beats
+# (the decompilation's res/field/scripts/pokemon_league_10.s, read for the order alone).
+#
+# One scene, played as the new Champion comes in behind Iris, as Kanto's, Johto's and Hoenn's are: her words, the team recorded
+# (halloffame), Unova's story ended (UnovaHallOfFame, the region's flag, which opens the flight on to Kalos and the National
+# Pokédex), the scene of the team's entry, the team healed, home to the player's room in Aspertia City, the game saved there and the
+# credits. ClearGame puts the League back for a second challenge and sends the professor's father to the player's house, where he
+# upgrades the Pokédex (aspertia_city_2.txt, VAR_UNOVA_HOUSE 2).
+
+
+script OnEnter
+  if var VAR_UNOVA_LEAGUE_IRIS != 1 end
+  scene "Unova's Hall of Fame"
+  face iris_hof player
+  speaker "Iris"
+  say "This is the Hall of Fame. Every Champion's name is kept here, together with the Pokémon who stood beside them."
+  say "Your Pokémon came all this way with you. Let's record your team, so everyone will remember them!"
+  endscene
+  wait 0.4
+  fade out 0.8
+  halloffame
+  setflag UnovaHallOfFame
+  call ClearGame
+  halloffame show
+  heal
+  warp "AspertiaCity_PlayersHouse" 14 5 down
+  save
+  if result == 0 goto NotSaved
+  sound "save"
+  text "{player} saved the game."
+  goto Roll
+label NotSaved
+  text "The game could not be saved."
+label Roll
+  credits
+  end
+
+
+# What a victory leaves behind for the time after: the League's rooms put back for a second challenge, and the professor's
+# father sent to call at the player's house
+script ClearGame
+  setvar VAR_UNOVA_LEAGUE_SHAUNTAL 0
+  setvar VAR_UNOVA_LEAGUE_GRIMSLEY 0
+  setvar VAR_UNOVA_LEAGUE_MARSHAL 0
+  setvar VAR_UNOVA_LEAGUE_CAITLIN 0
+  setvar VAR_UNOVA_LEAGUE_IRIS 0
+  setvar VAR_UNOVA_LEAGUE_GUARD 0
+  setvar VAR_UNOVA_HOUSE 2
+  return

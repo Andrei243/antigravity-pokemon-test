@@ -1,0 +1,42 @@
+{
+  "key": "unova_pokemon_league",
+  "index": 136,
+  "name": "Pokémon League",
+  "matrix": 87,
+  "kind": "Outdoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "5",
+  "battleBackground": "Mountain",
+  "dayMusic": "BGM_POKEMON_LEAGUE",
+  "nightMusic": "BGM_POKEMON_LEAGUE",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 28, "z": 58, "to": "unova_victory_road_2", "toWarp": 1 },
+    { "x": 31, "z": 45, "to": "unova_pokemon_league_2", "toWarp": 0 },
+    { "x": 18, "z": 47, "to": "unova_pokemon_league_11", "toWarp": 0 },
+    { "x": 29, "z": 58, "to": "unova_victory_road_2", "toWarp": 1 },
+    { "x": 30, "z": 58, "to": "unova_victory_road_2", "toWarp": 1 },
+    { "x": 31, "z": 58, "to": "unova_victory_road_2", "toWarp": 1 },
+    { "x": 32, "z": 58, "to": "unova_victory_road_2", "toWarp": 1 },
+    { "x": 33, "z": 58, "to": "unova_victory_road_2", "toWarp": 1 },
+    { "x": 34, "z": 58, "to": "unova_victory_road_2", "toWarp": 1 },
+    { "x": 35, "z": 58, "to": "unova_victory_road_2", "toWarp": 1 },
+    { "x": 36, "z": 58, "to": "unova_victory_road_2", "toWarp": 1 },
+    { "x": 32, "z": 45, "to": "unova_pokemon_league_2", "toWarp": 0 },
+    { "x": 33, "z": 45, "to": "unova_pokemon_league_2", "toWarp": 0 },
+    { "x": 19, "z": 47, "to": "unova_pokemon_league_11", "toWarp": 0 },
+    { "x": 20, "z": 47, "to": "unova_pokemon_league_11", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "veteran_m", "movement": "none", "x": 23, "z": 47, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "5" },
+    { "id": "1", "looks": "veteran_m", "movement": "none", "x": 29, "z": 48, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "4" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 31, "z": 48, "width": 3, "depth": 1, "script": "6", "variable": "VAR_UNOVA_0x4109", "value": "0" }
+  ]
+}

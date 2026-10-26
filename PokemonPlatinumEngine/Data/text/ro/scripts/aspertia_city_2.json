@@ -154,5 +154,95 @@
         "Bună dimineața. Vino un moment, am ceva să te întreb."
       ]
     }
+  ],
+  "ChampionHome": [
+    {
+      "en": [
+        "Mom"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! Welcome home, Champion! I heard it all on the news. I'm so proud of you I could burst!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, and we have a visitor. He's been waiting all morning to meet you."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Prof. Cedric Juniper"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "So you're the new Champion! I'm Cedric Juniper. Yes, the professor's father. I study Pokémon too, in my own way."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "My daughter tells me you've filled your Pokédex with Unova's Pokémon. Then it's time it saw the rest of the world."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Let me have it for a moment... There! It's the National Pokédex now."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}'s Pokédex was upgraded to the National Pokédex!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Prof. Cedric Juniper"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Pokémon from far beyond Unova will be recorded now. And there's a plane at Mistralton for anyone who wants to go and see them!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Well, I'll be off. Good luck, Champion!"
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

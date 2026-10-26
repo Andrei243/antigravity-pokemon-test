@@ -1,0 +1,23 @@
+{
+  // The Pokémon League's hall (plan 22 · U9, part c): Black 2's square floor under the League's dome, with the statue in the well at
+  // its heart. Black 2 climbs from it to the Elite Four's four rooms by staircases on its rails, which the reader leaves out: here
+  // each is an exit of ours at the head of the floor's four arms, Shauntal's west, Grimsley's north-west, Caitlin's north-east and
+  // Marshal's east, onto the foot of the stairs in the room (each room's own exit takes the player up them). The statue (read from
+  // the floor south of the well; Black 2's own background event stands in the well) carries the challenger down to the Champion
+  // once all four are beaten (unova_pokemon_league_2.txt). There is no way back out to the plaza: Black 2's door behind the
+  // challenger is shut
+  "area": "unova_pokemon_league_2",
+  "name": "Pokémon League",
+  "bgmTrack": "unova/pokemon_league",
+  "exits": [
+    { "x": 23, "z": 39, "map": "UnovaPokemonLeague_ShauntalsRoom", "toX": 15, "toY": 29, "facing": "Up" },
+    { "x": 25, "z": 36, "map": "UnovaPokemonLeague_GrimsleysRoom", "toX": 15, "toY": 29, "facing": "Up" },
+    { "x": 37, "z": 36, "map": "UnovaPokemonLeague_CaitlinsRoom", "toX": 15, "toY": 29, "facing": "Up" },
+    { "x": 39, "z": 39, "map": "UnovaPokemonLeague_MarshalsRoom", "toX": 15, "toY": 29, "facing": "Up" }
+  ],
+  "readAt": [
+    { "x": 30, "z": 44, "script": "Statue" },
+    { "x": 31, "z": 44, "script": "Statue" },
+    { "x": 32, "z": 44, "script": "Statue" }
+  ]
+}

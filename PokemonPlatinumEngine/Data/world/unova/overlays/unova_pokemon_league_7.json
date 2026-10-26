@@ -1,0 +1,19 @@
+{
+  // Marshal's room of the Elite Four (plan 22 · U9, part c), the Fighting type's, up the League hall's arm to the east. Black 2 climbs
+  // its stairs on its rails, which the reader leaves out: the exit of ours at the stairs' foot (15, 25) takes the player up onto
+  // the room's floor, and the door back to the hall (0 to 2) is shut behind the challenger. Marshal (0) battles when spoken to;
+  // once beaten (VAR_UNOVA_LEAGUE_MARSHAL 1) the light in the floor's corner (Black 2's own pad, 18, 9) carries the
+  // player back to the hall (unova_pokemon_league_7.txt)
+  "area": "unova_pokemon_league_7",
+  "name": "Pokémon League",
+  "bgmTrack": "unova/pokemon_league",
+  "arenaType": "Fighting",
+  "locked": [ 0, 1, 2 ],
+  "exits": [ { "x": 15, "z": 25, "map": "UnovaPokemonLeague_MarshalsRoom", "toX": 15, "toY": 12, "facing": "Up" } ],
+  "triggers": [
+    { "script": "Pad", "x": 18, "z": 9, "width": 1, "depth": 1, "variable": "VAR_UNOVA_LEAGUE_MARSHAL", "value": 1 }
+  ],
+  "people": {
+    "0": { "name": "Marshal", "npcType": "marshal", "script": "Marshal", "still": true }
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Nurse"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome! How can I help you?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "2": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome! How can I help you?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "4": {
+      "name": {
+        "en": [
+          "Ace Trainer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Once you walk through the League's door, there's no coming back out until it's over. Heal up first!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "5": {
+      "name": {
+        "en": [
+          "Veteran"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I lost to the Elite Four years ago. Now I come to watch the young ones try. Good luck to you."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

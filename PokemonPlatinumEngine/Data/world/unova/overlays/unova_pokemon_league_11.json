@@ -1,0 +1,13 @@
+{
+  // The Pokémon League's Pokémon Center (plan 22 · U9, part b): Black 2's, beside the League's door, with its nurse, its two
+  // counters and two who have come to watch; our words
+  "area": "unova_pokemon_league_11",
+  "bgmTrack": "common/pokecenter",
+  "people": {
+    "0": { "name": "Nurse", "npcType": "Nurse", "script": "Nurse", "isHealingNurse": true },
+    "1": { "name": "Clerk", "npcType": "Clerk", "script": "Clerk", "dialog": [ "Welcome! How can I help you?" ] },
+    "2": { "name": "Clerk", "npcType": "Clerk", "script": "Clerk", "dialog": [ "Welcome! How can I help you?" ] },
+    "4": { "name": "Ace Trainer", "npcType": "ace_trainer_f", "dialog": [ "Once you walk through the League's door, there's no coming back out until it's over. Heal up first!" ] },
+    "5": { "name": "Veteran", "npcType": "veteran", "dialog": [ "I lost to the Elite Four years ago. Now I come to watch the young ones try. Good luck to you." ] }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon League"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "iris_hof": {
+      "name": {
+        "en": [
+          "Iris"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Iris: Congratulations, Champion!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

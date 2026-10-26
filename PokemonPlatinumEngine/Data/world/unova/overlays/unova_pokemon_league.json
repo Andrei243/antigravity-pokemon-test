@@ -1,0 +1,29 @@
+{
+  // The Pokémon League's plaza (plan 22 · U9, part b): Black 2's terrace before the League under its mountain, read as four quarters
+  // of its one 64-by-64 chunk (the importer's Bw2Maps.QuarterBigChunks), with the Pokémon Center's door at its west end; our words.
+  // In Black 2 the way down from the plaza (0, 3 to 10) leads onto a bridge on its rails, which the reader leaves out
+  // (unova_victory_road_2): here it leads straight back into Victory Road's last tunnel. The veteran by the steps (1) asks whoever
+  // comes up to them whether they are ready (Black 2's own trigger across the steps, 31 to 33, 48; our variable
+  // VAR_UNOVA_LEAGUE_GUARD; unova_pokemon_league.txt). The League's door at the head of the steps (1, 11, 12) leads into its hall
+  // (plan 22 · U9, part c)
+  "area": "unova_pokemon_league",
+  "bgmTrack": "unova/pokemon_league",
+  "doors": [
+    { "warp": 0, "map": "UnovaVictoryRoad_Tunnel", "x": 9, "y": 9, "facing": "Up" },
+    { "warp": 3, "map": "UnovaVictoryRoad_Tunnel", "x": 9, "y": 9, "facing": "Up" },
+    { "warp": 4, "map": "UnovaVictoryRoad_Tunnel", "x": 9, "y": 9, "facing": "Up" },
+    { "warp": 5, "map": "UnovaVictoryRoad_Tunnel", "x": 9, "y": 9, "facing": "Up" },
+    { "warp": 6, "map": "UnovaVictoryRoad_Tunnel", "x": 9, "y": 9, "facing": "Up" },
+    { "warp": 7, "map": "UnovaVictoryRoad_Tunnel", "x": 9, "y": 9, "facing": "Up" },
+    { "warp": 8, "map": "UnovaVictoryRoad_Tunnel", "x": 9, "y": 9, "facing": "Up" },
+    { "warp": 9, "map": "UnovaVictoryRoad_Tunnel", "x": 9, "y": 9, "facing": "Up" },
+    { "warp": 10, "map": "UnovaVictoryRoad_Tunnel", "x": 9, "y": 9, "facing": "Up" }
+  ],
+  "triggers": [
+    { "script": "Guard", "x": 31, "z": 48, "width": 3, "depth": 1, "variable": "VAR_UNOVA_LEAGUE_GUARD", "value": 0 }
+  ],
+  "people": {
+    "0": { "name": "Veteran", "npcType": "veteran", "script": "Prepare" },
+    "1": { "name": "Veteran", "npcType": "veteran", "script": "GuardTalk", "still": true }
+  }
+}

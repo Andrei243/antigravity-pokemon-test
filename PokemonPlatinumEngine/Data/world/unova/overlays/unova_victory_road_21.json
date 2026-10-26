@@ -1,0 +1,7 @@
+{
+  // Victory Road's pool (plan 22 · U9, part b): Black 2's cave with a pool fed from the falls above, its balls and hidden things
+  // in the area file; nobody stands here
+  "area": "unova_victory_road_21",
+  "name": "Victory Road",
+  "bgmTrack": "unova/victory_road"
+}

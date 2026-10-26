@@ -312,7 +312,7 @@ public static class Bw2Import
                     if (layer == null) continue;
                     census.Layers++;
                     if (layer.RawPlanes) census.RawPlanes++;
-                    if (layer.Width != LandData.Tiles || layer.Height != LandData.Tiles) census.OddSizes.Add($"{chunk} ({layer.Width} × {layer.Height})");
+                    if ((layer.Width != LandData.Tiles || layer.Height != LandData.Tiles) && !maps.Quartered.Contains(chunk)) census.OddSizes.Add($"{chunk} ({layer.Width} × {layer.Height})");
                     var seen = new HashSet<int>();
                     foreach (var tile in layer.Tiles)
                     {
