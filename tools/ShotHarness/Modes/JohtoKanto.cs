@@ -91,6 +91,8 @@ partial class Harness
         Until(() => game.State == GameState.Battle || BandLit(), "the battle", 600);
         Frames(30); Shot("jk18_lt_surges_battle");
         Tell();
+        // leave the battle and read the scene to its end, or Surge's box stays over every later shot
+        game.State = GameState.Overworld; ReadTo(null, 1200); box.Close();
         JohtoKantoSaffronShots(ReadTo, TalkTo, Until);
     }
 
@@ -125,6 +127,7 @@ partial class Harness
         until(() => game.State == GameState.Battle || BandLit(), "the battle", 600);
         Frames(30); Shot("jk28_sabrinas_battle");
         Console.WriteLine($"  Marsh Badge {game.Story.HasBadge(RegionDatabase.Kanto, "Marsh")}");
+        game.State = GameState.Overworld; ReadTo(null); game.Dialogue.Close();
 
         // ---- The Magnet Train, from Goldenrod to Saffron
         game.State = GameState.Overworld;
