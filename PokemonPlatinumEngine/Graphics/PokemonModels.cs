@@ -915,6 +915,10 @@ internal static partial class PokemonModels
         "Malamar-Mega", "Barbaracle-Mega", "Dragalge-Mega", "Hawlucha-Mega", "Zygarde-Mega", "Diancie-Mega", "Crabominable-Mega", "Golisopod-Mega", "Drampa-Mega", "Magearna-Mega", "Magearna-Original-Mega",
         "Zeraora-Mega", "Falinks-Mega", "Scovillain-Mega", "Glimmora-Mega",
         "Tatsugiri-Curly-Mega", "Tatsugiri-Droopy-Mega", "Tatsugiri-Stretchy-Mega", "Baxcalibur-Mega",
+        // The Megas of our own (plan 06 · R20b, PokemonModels.Ours.Megas.cs)
+        "Typhlosion-Mega", "Torterra-Mega", "Infernape-Mega", "Empoleon-Mega", "Serperior-Mega", "Samurott-Mega",
+        "Decidueye-Mega", "Incineroar-Mega", "Primarina-Mega", "Rillaboom-Mega", "Cinderace-Mega", "Inteleon-Mega",
+        "Meowscarada-Mega", "Skeledirge-Mega", "Quaquaval-Mega",
         "Venusaur-Gmax", "Charizard-Gmax", "Blastoise-Gmax", "Butterfree-Gmax",
         "Pikachu-Gmax", "Meowth-Gmax", "Machamp-Gmax", "Gengar-Gmax", "Kingler-Gmax", "Lapras-Gmax", "Eevee-Gmax", "Snorlax-Gmax", "Garbodor-Gmax",
         "Melmetal-Gmax", "Rillaboom-Gmax", "Cinderace-Gmax", "Inteleon-Gmax", "Corviknight-Gmax", "Orbeetle-Gmax", "Drednaw-Gmax", "Coalossal-Gmax",
@@ -9854,6 +9858,8 @@ internal static partial class PokemonModels
         var pikachu when pikachu.StartsWith("PIKACHU-") && PikachuForms.Contains(pikachu) => Pikachu(Array.Find(Forms, f => f.Equals(pikachu, StringComparison.OrdinalIgnoreCase))),
         // A species of our own with a sculpt of its own (plan 03 · D14, PokemonModels.Ours.*.cs)
         _ when CreateOurs(species) is { } ours => ours,
+        // A Mega of our own (plan 06 · R20b, PokemonModels.Ours.Megas.cs)
+        _ when CreateOurMega(species.ToUpperInvariant()) is { } mega => mega,
         // A form that looks just like another form of its species shows that form's sculpt
         _ when LooksLike.TryGetValue(species, out var like) => Create(like),
         // A form of a hand-built species shows its species' model until it has one of its own (plan 03 · D11)
