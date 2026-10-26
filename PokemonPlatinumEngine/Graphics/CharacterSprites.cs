@@ -53,7 +53,7 @@ internal static class CharacterSprites
     private static void EnsureLoaded()
     {
         if (loaded) return;
-        target = Raylib.LoadRenderTexture(SpriteW, SpriteH);
+        target = Gpu.Target(SpriteW, SpriteH, "characters");
 
         // Unit quad standing on the origin, facing +Z (toward the field camera)
         var b = new MeshBuilder();
@@ -241,7 +241,7 @@ internal static class CharacterSprites
         {
             var baked = Cache[key];
             Cache.Remove(key);
-            Raylib.UnloadTexture(baked.Texture);
+            Gpu.Unload(baked.Texture);
             // Never UnloadMaterial: it would free the shared shaders the materials point at
             Raylib.MemFree(baked.Color.Maps);
             Raylib.MemFree(baked.Depth.Maps);

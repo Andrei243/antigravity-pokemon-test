@@ -71,7 +71,7 @@ internal sealed class BandPortraits
         if (rig == null || rig.Kind != RigKind.Humanoid) return false;
         if (!loaded)
         {
-            target = Raylib.LoadRenderTexture(Pixels, Pixels);
+            target = Gpu.Target(Pixels, Pixels, "ui");
             Raylib.SetTextureFilter(target.Texture, TextureFilter.Bilinear);
             loaded = true;
         }
@@ -91,8 +91,8 @@ internal sealed class BandPortraits
     /// <summary>The band is over: its targets are freed.</summary>
     public void End()
     {
-        if (theirsLoaded) Raylib.UnloadRenderTexture(theirs);
-        if (ownLoaded) Raylib.UnloadRenderTexture(own);
+        if (theirsLoaded) Gpu.Unload(theirs);
+        if (ownLoaded) Gpu.Unload(own);
         theirsLoaded = ownLoaded = theirsRendered = ownRendered = false;
         theirLook = ownLook = null;
         Active = false;

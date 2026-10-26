@@ -21,14 +21,14 @@ internal sealed class ShadowMap
     {
         if (loaded) return;
         Resolution = resolution;
-        target = new RenderTexture2D { Id = Rlgl.LoadFramebuffer() };
+        target = new RenderTexture2D { Id = Gpu.Framebuffer("shadow") };
         target.Texture.Width = Resolution;
         target.Texture.Height = Resolution;
 
         Rlgl.EnableFramebuffer(target.Id);
         target.Depth = new Texture2D
         {
-            Id = Rlgl.LoadTextureDepth(Resolution, Resolution, false),
+            Id = Gpu.DepthTexture(Resolution, Resolution, "shadow"),
             Width = Resolution,
             Height = Resolution,
             Format = (PixelFormat)19,
@@ -45,8 +45,8 @@ internal sealed class ShadowMap
     public void Unload()
     {
         if (!loaded) return;
-        Rlgl.UnloadFramebuffer(target.Id);
-        Rlgl.UnloadTexture(target.Depth.Id);
+        Gpu.UnloadFramebuffer(target.Id);
+        Gpu.UnloadRawTexture(target.Depth.Id);
         loaded = false;
     }
 

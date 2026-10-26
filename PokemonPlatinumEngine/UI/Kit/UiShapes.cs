@@ -99,7 +99,7 @@ void main()
     private static void EnsureLoaded()
     {
         if (loaded) return;
-        shader = Raylib.LoadShaderFromMemory(Vertex, Fragment);
+        shader = PokemonPlatinumEngine.Graphics.Gpu.ShaderFrom(Vertex, Fragment, "shader");
         locHalf = Graphics.FieldShaders.Location(shader, "halfSize");
         locRadius = Graphics.FieldShaders.Location(shader, "radius");
         locSkew = Graphics.FieldShaders.Location(shader, "skew");
@@ -111,7 +111,7 @@ void main()
         locSoft = Graphics.FieldShaders.Location(shader, "softness");
         locAa = Graphics.FieldShaders.Location(shader, "aa");
 
-        triangle = Raylib.LoadShaderFromMemory(Vertex, TriangleFragment);
+        triangle = PokemonPlatinumEngine.Graphics.Gpu.ShaderFrom(Vertex, TriangleFragment, "shader");
         locP0 = Graphics.FieldShaders.Location(triangle, "p0");
         locP1 = Graphics.FieldShaders.Location(triangle, "p1");
         locP2 = Graphics.FieldShaders.Location(triangle, "p2");

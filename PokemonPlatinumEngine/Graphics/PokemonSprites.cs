@@ -232,7 +232,11 @@ internal static class PokemonSprites
         }
         // The strips (plan 09 · L5) after the stills, in what is left of the budget: a list's stills come first
         ServiceStrips(context, clock, budgetMs);
+        LastServiceMs = clock.Elapsed.TotalMilliseconds;
     }
+
+    /// <summary>What the last <see cref="Service"/> spent loading and baking (plan 16 · T21, for the soak run's causes).</summary>
+    public static double LastServiceMs { get; private set; }
 
     /// <summary>Waits until every strip asked for is ready (the harness, before it shoots a screen that plays one).</summary>
     public static void FlushStrips(RenderContext context)
@@ -285,10 +289,10 @@ internal static class PokemonSprites
         var textures = new List<Texture2D>();
         foreach (var file in files)
         {
-            var tex = Raylib.LoadTexture(file);
+            var tex = Gpu.TextureFromFile(file, "sprites");
             if (tex.Id == 0)
             {
-                foreach (var t in textures) Raylib.UnloadTexture(t);
+                foreach (var t in textures) Gpu.Unload(t);
                 return false;
             }
             Raylib.SetTextureFilter(tex, TextureFilter.Point);
@@ -303,8 +307,8 @@ internal static class PokemonSprites
     {
         if (!targetsLoaded)
         {
-            bakeBig = Raylib.LoadRenderTexture(Size, Size);
-            bakeSmall = Raylib.LoadRenderTexture(IconSize, IconSize);
+            bakeBig = Gpu.Target(Size, Size, "sprites");
+            bakeSmall = Gpu.Target(IconSize, IconSize, "sprites");
             targetsLoaded = true;
         }
         string signature = SignatureOf(name);
@@ -323,7 +327,7 @@ internal static class PokemonSprites
 
     private static void Keep(string name, SpriteView view, Texture2D texture)
     {
-        if (Baked.TryGetValue(Key(name, view), out var old)) Raylib.UnloadTexture(old);
+        if (Baked.TryGetValue(Key(name, view), out var old)) Gpu.Unload(old);
         Baked[Key(name, view)] = texture;
         Ledger.Keep(name);
     }
@@ -358,7 +362,7 @@ internal static class PokemonSprites
     public static void Forget(string name)
     {
         foreach (var view in Views)
-            if (Baked.Remove(Key(name, view), out var tex)) Raylib.UnloadTexture(tex);
+            if (Baked.Remove(Key(name, view), out var tex)) Gpu.Unload(tex);
         Ledger.Forget(name);
     }
 
@@ -491,11 +495,11 @@ internal static class PokemonSprites
         var file = Directory.GetFiles(CacheFolder, stem + "*.png").FirstOrDefault();
         if (file == null) return false;
         if (!int.TryParse(Path.GetFileNameWithoutExtension(file)[stem.Length..], out int ms) || ms <= 0) return false;
-        var tex = Raylib.LoadTexture(file);
+        var tex = Gpu.TextureFromFile(file, "sprites");
         if (tex.Id == 0) return false;
         if (tex.Width != Size * StripFrames || tex.Height != Size)
         {
-            Raylib.UnloadTexture(tex);
+            Gpu.Unload(tex);
             return false;
         }
         Raylib.SetTextureFilter(tex, TextureFilter.Point);
@@ -508,8 +512,8 @@ internal static class PokemonSprites
     {
         if (!targetsLoaded)
         {
-            bakeBig = Raylib.LoadRenderTexture(Size, Size);
-            bakeSmall = Raylib.LoadRenderTexture(IconSize, IconSize);
+            bakeBig = Gpu.Target(Size, Size, "sprites");
+            bakeSmall = Gpu.Target(IconSize, IconSize, "sprites");
             targetsLoaded = true;
         }
         var strip = new PixelCanvas(Size * StripFrames, Size);
@@ -535,7 +539,7 @@ internal static class PokemonSprites
 
     private static void KeepStrip(string name, Strip strip)
     {
-        if (Strips.TryGetValue(StripKey(name), out var old)) Raylib.UnloadTexture(old.Texture);
+        if (Strips.TryGetValue(StripKey(name), out var old)) Gpu.Unload(old.Texture);
         Strips[StripKey(name)] = strip;
         StripLedger.Keep(name);
     }
@@ -543,7 +547,7 @@ internal static class PokemonSprites
     /// <summary>Forgets a look's strip (and frees it).</summary>
     public static void ForgetStrip(string name)
     {
-        if (Strips.Remove(StripKey(name), out var strip)) Raylib.UnloadTexture(strip.Texture);
+        if (Strips.Remove(StripKey(name), out var strip)) Gpu.Unload(strip.Texture);
         StripLedger.Forget(name);
     }
 }

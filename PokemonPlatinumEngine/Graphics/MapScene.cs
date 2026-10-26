@@ -337,7 +337,7 @@ internal sealed class MapScene
             Texture2D texture = default;
             steps.Enqueue(() =>
             {
-                texture = Raylib.LoadTextureFromImage(image);
+                texture = Gpu.TextureFromImage(image, "chunk");
                 Raylib.UnloadImage(image);
                 Raylib.SetTextureFilter(texture, TextureFilter.Point);
                 scene.ownTextures.Add(texture);
@@ -362,7 +362,7 @@ internal sealed class MapScene
     /// </summary>
     private static unsafe Mesh OnGpu(Mesh mesh)
     {
-        Raylib.UploadMesh(ref mesh, false);
+        Gpu.Upload(ref mesh, "chunk");
         Raylib.MemFree(mesh.Vertices); mesh.Vertices = null;
         Raylib.MemFree(mesh.TexCoords); mesh.TexCoords = null;
         Raylib.MemFree(mesh.Normals); mesh.Normals = null;
@@ -382,7 +382,7 @@ internal sealed class MapScene
     public void Unload()
     {
         meshes.Unload();
-        foreach (var texture in ownTextures) Raylib.UnloadTexture(texture);
+        foreach (var texture in ownTextures) Gpu.Unload(texture);
         ownTextures.Clear();
         foreach (var art in moving)
             foreach (var frame in art.Frames) Raylib.UnloadImage(frame);

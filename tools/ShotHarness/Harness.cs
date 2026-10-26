@@ -113,7 +113,7 @@ partial class Harness
 
     void Frames(int n)
     {
-        if (timeLimit > 0 && running.Elapsed.TotalSeconds > timeLimit)
+        if (timeLimit > 0 && soakWatch == null && running.Elapsed.TotalSeconds > timeLimit)
         {
             Console.WriteLine($"!! the run was given up after {timeLimit:0} seconds: it is stuck (SHOTS_TIME_LIMIT)");
             Console.Out.Flush();
@@ -121,6 +121,7 @@ partial class Harness
         }
         for (int i = 0; i < n; i++)
         {
+            if (soakWatch != null) { SoakFrame(draw: true); continue; }
             FrameClock.Fixed = ++tick / 60.0;
             engine.Update(1f / 60f);
             engine.Draw();
@@ -134,6 +135,7 @@ partial class Harness
         int n = Math.Max(1, (int)Math.Round(seconds * 60.0));
         for (int i = 0; i < n; i++)
         {
+            if (soakWatch != null) { SoakFrame(draw: i % 6 == 5 || i == n - 1); continue; }
             FrameClock.Fixed = ++tick / 60.0;
             engine.Update(1f / 60f);
             if (i % 6 == 5 || i == n - 1) engine.Draw();

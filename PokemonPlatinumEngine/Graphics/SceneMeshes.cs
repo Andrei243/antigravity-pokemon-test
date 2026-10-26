@@ -253,14 +253,14 @@ internal sealed class SceneMeshes
         }
         foreach (var part in parts)
         {
-            Raylib.UnloadMesh(part.Mesh);
+            Gpu.Unload(part.Mesh);
             Free(part.Main);
             Free(part.Depth);
             Free(part.Prepass);
         }
         foreach (var (mesh, material, _) in lights)
         {
-            Raylib.UnloadMesh(mesh);
+            Gpu.Unload(mesh);
             Free(material);
         }
         parts.Clear();

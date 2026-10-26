@@ -436,12 +436,12 @@ public class IntroScreen
         context.EnsureLoaded();
         if (!picturesLoaded)
         {
-            professorPicture = Raylib.LoadRenderTexture(FigureWidth, FigureHeight);
-            boyPicture = Raylib.LoadRenderTexture(FigureWidth, FigureHeight);
-            girlPicture = Raylib.LoadRenderTexture(FigureWidth, FigureHeight);
-            pokemonPicture = Raylib.LoadRenderTexture(PokemonSize, PokemonSize);
-            ballPicture = Raylib.LoadRenderTexture(BallSize, BallSize);
-            friendPicture = Raylib.LoadRenderTexture(FigureWidth, FigureHeight);
+            professorPicture = Gpu.Target(FigureWidth, FigureHeight, "ui");
+            boyPicture = Gpu.Target(FigureWidth, FigureHeight, "ui");
+            girlPicture = Gpu.Target(FigureWidth, FigureHeight, "ui");
+            pokemonPicture = Gpu.Target(PokemonSize, PokemonSize, "ui");
+            ballPicture = Gpu.Target(BallSize, BallSize, "ui");
+            friendPicture = Gpu.Target(FigureWidth, FigureHeight, "ui");
             foreach (var picture in new[] { professorPicture, boyPicture, girlPicture, pokemonPicture, ballPicture, friendPicture })
                 Raylib.SetTextureFilter(picture.Texture, TextureFilter.Bilinear);
             picturesLoaded = true;

@@ -52,8 +52,8 @@ public static class RegionMapPictures
         var canvas = RegionMapArt.Paint(MapDatabase.Get(region.Map), region, (x, y) => habitats.LookAt(x, y) != ' ', entry.Revealed);
         if (entry.Loaded)
         {
-            Raylib.UnloadTexture(entry.Full);
-            Raylib.UnloadTexture(entry.Small);
+            Gpu.Unload(entry.Full);
+            Gpu.Unload(entry.Small);
         }
         entry.Full = canvas.ToTexture();
         Raylib.SetTextureFilter(entry.Full, TextureFilter.Point);
@@ -70,8 +70,8 @@ public static class RegionMapPictures
         foreach (var entry in entries.Values)
             if (entry.Loaded)
             {
-                Raylib.UnloadTexture(entry.Full);
-                Raylib.UnloadTexture(entry.Small);
+                Gpu.Unload(entry.Full);
+                Gpu.Unload(entry.Small);
                 entry.Loaded = false;
             }
     }

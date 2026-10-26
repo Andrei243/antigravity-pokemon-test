@@ -298,8 +298,8 @@ public sealed class EvolutionScreen
         renderContext.EnsureLoaded();
         if (!picturesLoaded)
         {
-            oldPicture = Raylib.LoadRenderTexture(PictureSize, PictureSize);
-            newPicture = Raylib.LoadRenderTexture(PictureSize, PictureSize);
+            oldPicture = Gpu.Target(PictureSize, PictureSize, "ui");
+            newPicture = Gpu.Target(PictureSize, PictureSize, "ui");
             Raylib.SetTextureFilter(oldPicture.Texture, TextureFilter.Bilinear);
             Raylib.SetTextureFilter(newPicture.Texture, TextureFilter.Bilinear);
             picturesLoaded = true;

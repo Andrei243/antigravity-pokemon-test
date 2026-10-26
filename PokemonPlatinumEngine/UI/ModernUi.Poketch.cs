@@ -158,7 +158,7 @@ internal static partial class ModernUi
                 var tone = c.A < 128 ? new Color(0, 0, 0, 0) : light < 0.3f ? LcdInk : light < 0.62f ? LcdMid : faint;
                 Raylib.ImageDrawPixel(ref image, x, y, tone);
             }
-        var texture = Raylib.LoadTextureFromImage(image);
+        var texture = Gpu.TextureFromImage(image, "ui");
         Raylib.UnloadImage(image);
         lcdIcons[(model, icon.Id, tones)] = texture;
         return texture;
