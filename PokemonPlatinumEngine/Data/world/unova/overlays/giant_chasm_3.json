@@ -1,0 +1,15 @@
+{
+  // The Giant Chasm's crater once the Plasma Frigate has gone (plan 22 · U9, part a): Black 2's ring of forest round the frozen
+  // pond where the ship lay, with its balls in the area file; our words. Rood (7) and two sages (8, 9) stay on (giant_chasm_3.txt).
+  // The cave's and the passage's ways in lead here from FLAG_UNOVA_CHASM_CLEARED on
+  "area": "giant_chasm_3",
+  "bgmTrack": "unova/giant_chasm",
+  "people": {
+    "7": { "name": "Rood", "npcType": "rood", "script": "Rood", "still": true },
+    "8": { "name": "Sage", "npcType": "sage", "script": "Sage", "still": true },
+    "9": { "name": "Sage", "npcType": "sage", "script": "Sage", "still": true }
+  },
+  "signs": {
+    "10804": "The Giant Chasm\nWhere a star fell, long ago"
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "key": "giant_chasm_3",
+  "index": 232,
+  "name": "Giant Chasm",
+  "matrix": 250,
+  "kind": "Outdoors",
+  "sign": "None",
+  "weather": "9",
+  "camera": "0",
+  "battleBackground": "Mountain",
+  "dayMusic": "BGM_D_05",
+  "nightMusic": "BGM_D_05",
+  "encounters": "ENCOUNTERS_GIANT_CHASM_3",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Piloswine", "level": 44 },
+    { "species": "Clefairy", "level": 45 },
+    { "species": "Piloswine", "level": 46 },
+    { "species": "Ditto", "level": 45 },
+    { "species": "Lunatone", "level": 46 },
+    { "species": "Solrock", "level": 46 },
+    { "species": "Ditto", "level": 47 },
+    { "species": "Metang", "level": 45 },
+    { "species": "Delibird", "level": 44 },
+    { "species": "Metang", "level": 47 },
+    { "species": "Delibird", "level": 44 },
+    { "species": "Metang", "level": 47 }
+  ],
+  "landRate": 13,
+  "darkGrass": [
+    { "species": "Piloswine", "level": 49 },
+    { "species": "Clefairy", "level": 50 },
+    { "species": "Piloswine", "level": 51 },
+    { "species": "Ditto", "level": 50 },
+    { "species": "Lunatone", "level": 51 },
+    { "species": "Solrock", "level": 51 },
+    { "species": "Ditto", "level": 52 },
+    { "species": "Metang", "level": 50 },
+    { "species": "Delibird", "level": 49 },
+    { "species": "Metang", "level": 52 },
+    { "species": "Delibird", "level": 49 },
+    { "species": "Metang", "level": 52 }
+  ],
+  "darkGrassRate": 13,
+  "shakingGrass": [
+    { "species": "Audino", "level": 44 },
+    { "species": "Audino", "level": 44 },
+    { "species": "Audino", "level": 45 },
+    { "species": "Audino", "level": 45 },
+    { "species": "Audino", "level": 46 },
+    { "species": "Audino", "level": 46 },
+    { "species": "Audino", "level": 47 },
+    { "species": "Mamoswine", "level": 47 },
+    { "species": "Clefable", "level": 47 },
+    { "species": "Metagross", "level": 47 },
+    { "species": "Clefable", "level": 47 },
+    { "species": "Metagross", "level": 47 }
+  ],
+  "shakingGrassRate": 13,
+  "warps": [
+    { "x": 26, "z": 79, "to": "giant_chasm_2", "toWarp": 1 },
+    { "x": 62, "z": 21, "to": "giant_chasm_5", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "110", "movement": "none", "x": 31, "z": 24, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x04ff", "item": "Carbos", "script": "7179" },
+    { "id": "1", "looks": "110", "movement": "none", "x": 54, "z": 32, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0501", "item": "Sun Stone", "script": "7181" },
+    { "id": "2", "looks": "110", "movement": "none", "x": 66, "z": 51, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0502", "item": "PP Up", "script": "7182" },
+    { "id": "3", "looks": "110", "movement": "none", "x": 37, "z": 50, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0503", "item": "TM03", "script": "7183" },
+    { "id": "4", "looks": "110", "movement": "none", "x": 19, "z": 53, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0504", "item": "Moon Stone", "script": "7184" },
+    { "id": "5", "looks": "110", "movement": "none", "x": 19, "z": 71, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0505", "item": "Razor Claw", "script": "7185" },
+    { "id": "6", "looks": "110", "movement": "none", "x": 72, "z": 72, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0506", "item": "Star Piece", "script": "7186" },
+    { "id": "7", "looks": "191", "movement": "none", "x": 44, "z": 56, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0373", "script": "1" },
+    { "id": "8", "looks": "98", "movement": "none", "x": 43, "z": 55, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0373", "script": "2" },
+    { "id": "9", "looks": "98", "movement": "none", "x": 43, "z": 57, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0373", "script": "3" }
+  ],
+  "signs": [
+    { "x": 28, "z": 58, "type": 0, "script": "10804" }
+  ],
+  "triggers": []
+}

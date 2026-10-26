@@ -1,0 +1,44 @@
+{
+  "people": {
+    "7": {
+      "name": {
+        "en": [
+          "Rood"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "8": {
+      "name": {
+        "en": [
+          "Sage"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "9": {
+      "name": {
+        "en": [
+          "Sage"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "10804": {
+      "en": [
+        "The Giant Chasm\nWhere a star fell, long ago"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

@@ -1247,5 +1247,31 @@
         ]
       }
     ]
+  },
+  {
+    "id": "unova_ghetsis_kyurem",
+    "name": "Ghetsis",
+    "class": "Team Plasma Ghetsis",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "prizeMoney": 0,
+    "party": [
+      {
+        "species": "Kyurem",
+        "form": "Kyurem-Black",
+        "level": 50,
+        "ivScale": 200,
+        "personality": 7340040,
+        "moves": [
+          "Fusion Bolt",
+          "Dragon Pulse",
+          "Slash",
+          "Scary Face"
+        ]
+      }
+    ]
   }
 ]

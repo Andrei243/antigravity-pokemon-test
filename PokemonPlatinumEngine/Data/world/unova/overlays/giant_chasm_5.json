@@ -1,0 +1,11 @@
+{
+  // The Giant Chasm's passage north of the crater (plan 22 · U9, part a): Black 2's tunnel between the crater and the cavern where
+  // Ghetsis waits (giant_chasm_6). Its way down into the crater (0 and 1, one tile) leads to the crater with the Plasma Frigate
+  // (giant_chasm_4) until FLAG_UNOVA_CHASM_CLEARED and to the crater as it is afterwards (giant_chasm_3) from then on
+  "area": "giant_chasm_5",
+  "bgmTrack": "unova/giant_chasm",
+  "switches": [
+    { "warp": 0, "from": "FLAG_UNOVA_CHASM_CLEARED" },
+    { "warp": 1, "until": "FLAG_UNOVA_CHASM_CLEARED" }
+  ]
+}

@@ -747,6 +747,8 @@ public static class RegionDatabase
                 // Plan 22 · U8, part b: the Marine Tube (a map of ours, Data/maps/MarineTube.json) between its gates, Humilau City's
                 // rooms and Gym, the Seaside Cave and five rooms of the Plasma Frigate
                 "MarineTubeGate_Undella", "MarineTube", "MarineTubeGate_Humilau", "HumilauCity_House1", "HumilauCity_House2", "HumilauCity_House3", "HumilauCity_House4", "HumilauCity_House5", "HumilauCity_PokemonCenter", "HumilauCity_Gym", "SeasideCave_1F", "SeasideCave_B1F", "PlasmaFrigate_Hold", "PlasmaFrigate_Stern", "PlasmaFrigate_Bridge", "PlasmaFrigate_Cabins", "PlasmaFrigate_Cabin",
+                // Plan 22 · U9, part a: the Giant Chasm's cave, crater (twice), passage and cavern, and the Frigate's ramp hall
+                "GiantChasm_Cave", "GiantChasm_Crater", "GiantChasm_CraterFrigate", "GiantChasm_Passage", "GiantChasm_Cavern", "PlasmaFrigate_Ramp",
             }
         },
         new() { Id = Kalos, Name = "Kalos", Generation = 6 },

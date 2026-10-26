@@ -1,0 +1,24 @@
+# The Giant Chasm's crater once the Plasma Frigate has gone (plan 22 · U9, part a): the cave's way in leads here from
+# FLAG_UNOVA_CHASM_CLEARED on (giant_chasm_2's overlay). Rood (7) and two sages (8, 9) stay on in the crater. The lines are our own,
+# on Black 2's beats (the decompilation's res/field/scripts/giant_chasm_3.s, read for the order alone).
+
+
+script OnEnter
+  call UnovaCatchUpE
+  end
+
+
+script Rood
+  face 7 player
+  speaker "Rood"
+  say "You're safe! Thank goodness. The ship flew off without its master, they tell me, and the scientist aboard went with it."
+  say "He said a Trainer had given him the answer he was looking for, and that Team Plasma was finished. N is safe too."
+  say "Thank you, child. Now we old ones must go on making amends, a day at a time."
+  end
+
+
+script Sage
+  face self player
+  speaker "Sage"
+  say "We stole Pokémon too, once. Who are we to judge anyone? We can only do better from here."
+  end

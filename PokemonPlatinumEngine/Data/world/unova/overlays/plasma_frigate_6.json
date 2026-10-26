@@ -1,0 +1,27 @@
+{
+  // The Plasma Frigate's ramp hall, the ship at rest in the Giant Chasm's crater (plan 22 · U9, part a), our words. Ghetsis
+  // (ghetsis_ramp, FLAG_UNOVA_HIDE_GHETSIS_RAMP) and the Shadow Triad (triad_ramp_a to _c, FLAG_UNOVA_HIDE_TRIAD_RAMP) wait at the
+  // head of the hall; as the player comes up the ramp (our trigger, 10 to 12, 14; VAR_UNOVA_CHASM 2) Ghetsis tells his plan and
+  // leaves, Hugh (hugh_ramp, FLAG_UNOVA_HIDE_HUGH_RAMP) runs in, the Triad show his sister's Purrloin grown into a Liepard (liepard,
+  // FLAG_UNOVA_HIDE_LIEPARD_RAMP), battle the player one after another and give it back (plasma_frigate_6.txt). Black 2's own
+  // people of the hall (0 to 5) are held back, and its warp panel (to the decks below) carries nobody here
+  "area": "plasma_frigate_6",
+  "bgmTrack": "unova/plasma_frigate",
+  "heldBack": [ "0", "1", "2", "3", "4", "5" ],
+  "triggers": [
+    { "script": "GhetsisAboard", "x": 10, "z": 14, "width": 3, "depth": 1, "variable": "VAR_UNOVA_CHASM", "value": 2 }
+  ],
+  "npcs": [
+    { "id": "ghetsis_ramp", "name": "Ghetsis", "npcType": "ghetsis", "x": 11, "y": 3, "facing": "Down", "hiddenBy": "FLAG_UNOVA_HIDE_GHETSIS_RAMP" },
+    { "id": "triad_ramp_a", "name": "Shadow Triad", "npcType": "shadow_triad", "x": 9, "y": 7, "facing": "Down", "script": "Triad", "hiddenBy": "FLAG_UNOVA_HIDE_TRIAD_RAMP" },
+    { "id": "triad_ramp_b", "name": "Shadow Triad", "npcType": "shadow_triad", "x": 11, "y": 7, "facing": "Down", "script": "Triad", "hiddenBy": "FLAG_UNOVA_HIDE_TRIAD_RAMP" },
+    { "id": "triad_ramp_c", "name": "Shadow Triad", "npcType": "shadow_triad", "x": 13, "y": 7, "facing": "Down", "script": "Triad", "hiddenBy": "FLAG_UNOVA_HIDE_TRIAD_RAMP" },
+    { "id": "liepard", "name": "Liepard", "npcType": "Pokemon", "species": "Liepard", "x": 9, "y": 8, "facing": "Down", "script": "Liepard", "hiddenBy": "FLAG_UNOVA_HIDE_LIEPARD_RAMP" },
+    { "id": "hugh_ramp", "name": "{rival}", "npcType": "hugh", "x": 10, "y": 10, "facing": "Up", "script": "Hugh", "hiddenBy": "FLAG_UNOVA_HIDE_HUGH_RAMP" }
+  ],
+  "signs": {
+    "12": "A map of Unova glows on the screen. The Giant Chasm is circled in red.",
+    "13": "Diagrams of the ship's engines and cannons scroll past.",
+    "14": "The screen hisses with static. Faint voices can be heard."
+  }
+}

@@ -2454,6 +2454,131 @@ public class UnovaStoryTests
         Assert.Equal(Architecture.Skyline, WorldModels.Of("c8_buildb", "unova")!.Town);
     }
 
+    // ---- Plan 22 · U9, part a: the Giant Chasm --------------------------------------------------------------------------
+
+    [Fact]
+    public void RoodsSpyKeepsTheChasmShutUntilTheFrigateHasFlownAndThenHughCatchesThePlayerUp()
+    {
+        var game = AtHumilau();
+        game.Arrive("GiantChasm_Cave", 61, 13);
+        Assert.Equal("unova/giant_chasm", game.Map.BgmTrackAt(61, 13));
+        Assert.NotNull(game.Present("10", "giant_chasm_2"));
+        Assert.Null(game.Present("hugh_cave", "giant_chasm_2"));
+        // the way up into the crater is reached from Route 22's door; before the Frigate has flown the spy turns the player back from it
+        Assert.Contains((23, 51), ReachableOn(game.Map, (61, 13)));
+        Assert.True(game.Fires("HughInTheCave"));
+        var back = game.Step("HughInTheCave");
+        Assert.Contains(back.Transcript, l => l.Speaker == "Grunt" && l.Text.Contains("crater"));
+        Assert.Equal((23, 52), game.Tile);
+        Assert.Equal(0, game.Story.Var("VAR_UNOVA_CHASM"));
+        Assert.Contains(game.Talk("10", "giant_chasm_2").Transcript, l => l.Speaker == "Grunt" && l.Text.Contains("Rood"));
+        // once it has, Hugh catches up, the spy goes, and the way to the crater is open
+        game.Story.SetVar("VAR_UNOVA_HUMILAU", 9);
+        var hugh = game.Step("HughInTheCave");
+        Assert.Contains(hugh.Transcript, l => l.Speaker == "Hugh" && l.Text.Contains("Giant Chasm"));
+        Assert.Contains(hugh.Transcript, l => l.Speaker == "Grunt" && l.Text.Contains("crater"));
+        Assert.Equal(1, game.Story.Var("VAR_UNOVA_CHASM"));
+        Assert.Null(game.Present("10", "giant_chasm_2"));
+        Assert.Null(game.Present("hugh_cave", "giant_chasm_2"));
+        Assert.False(game.Fires("HughInTheCave"));
+        // the way into the crater leads to the crater with the Frigate; the guards keep the way out to Route 23
+        Assert.Contains(game.Map.Warps, w => w.TargetMap == "GiantChasm_CraterFrigate" && !w.Shut);
+        Assert.DoesNotContain(game.Map.Warps, w => w.TargetMap == "GiantChasm_Crater" && !w.Shut);
+        Assert.NotNull(game.Present("7", "giant_chasm_2"));
+        Assert.NotNull(game.Present("8", "giant_chasm_2"));
+    }
+
+    [Fact]
+    public void RoodsStandTheTriadAboardTheFrigateAndGhetsisAndKyuremInTheCavernEndTheChapter()
+    {
+        var game = AtHumilau();
+        game.Story.SetVar("VAR_UNOVA_HUMILAU", 9);
+        game.Arrive("GiantChasm_Cave", 61, 13);
+        game.Step("HughInTheCave");
+
+        // the crater: Rood and his sages against the grunts, Hugh already there
+        game.Arrive("GiantChasm_Cave", 23, 51);
+        game.Through("GiantChasm_CraterFrigate");
+        Assert.Equal("GiantChasm_CraterFrigate", game.Map.Name);
+        Assert.NotNull(game.Present("2", "giant_chasm_4"));
+        Assert.NotNull(game.Present("4", "giant_chasm_4"));
+        Assert.NotNull(game.Present("6", "giant_chasm_4"));
+        var stand = game.Step("RoodAndTheGrunts");
+        Assert.Contains(stand.Log, l => l.StartsWith("battle unova_team_plasma_grunt_46"));
+        Assert.Contains(stand.Transcript, l => l.Speaker == "Rood" && l.Text.Contains("ramp"));
+        Assert.Equal(2, game.Story.Var("VAR_UNOVA_CHASM"));
+        Assert.Null(game.Present("4", "giant_chasm_4"));
+        Assert.Null(game.Present("6", "giant_chasm_4"));
+        Assert.NotNull(game.Present("2", "giant_chasm_4"));
+
+        // aboard: Ghetsis's plan, Hugh, the Liepard and the three of the Triad
+        game.Through("PlasmaFrigate_Ramp");
+        Assert.Equal("PlasmaFrigate_Ramp", game.Map.Name);
+        Assert.NotNull(game.Present("ghetsis_ramp", "plasma_frigate_6"));
+        var aboard = game.Step("GhetsisAboard");
+        Assert.Contains(aboard.Transcript, l => l.Speaker == "Ghetsis" && l.Text.Contains("Kyurem"));
+        Assert.Contains(aboard.Transcript, l => l.Speaker == "Hugh" && l.Text.Contains("Purrloin"));
+        foreach (string triad in new[] { "unova_team_plasma_shadow", "unova_team_plasma_shadow_2", "unova_team_plasma_shadow_3" })
+            Assert.Contains(aboard.Log, l => l == $"battle {triad}" || l.StartsWith($"battle {triad} "));
+        Assert.Equal(3, game.Story.Var("VAR_UNOVA_CHASM"));
+        Assert.Null(game.Present("ghetsis_ramp", "plasma_frigate_6"));
+        Assert.Null(game.Present("triad_ramp_a", "plasma_frigate_6"));
+        Assert.NotNull(game.Present("hugh_ramp", "plasma_frigate_6"));
+        Assert.NotNull(game.Present("liepard", "plasma_frigate_6"));
+
+        // the cavern: Ghetsis and Kyurem, N and Zekrom, Kyurem's black form and Ghetsis's own battle
+        game.Arrive("GiantChasm_Cavern", 15, 45);
+        Assert.NotNull(game.Present("ghetsis", "giant_chasm_6"));
+        Assert.NotNull(game.Present("kyurem", "giant_chasm_6"));
+        Assert.Null(game.Present("kyurem_black", "giant_chasm_6"));
+        var cavern = game.Step("Ghetsis");
+        int fused = cavern.Log.FindIndex(l => l.StartsWith("battle unova_ghetsis_kyurem"));
+        int himself = cavern.Log.FindIndex(l => l.StartsWith("battle unova_team_plasma_ghetsis"));
+        Assert.True(fused >= 0 && himself > fused);
+        Assert.Contains(cavern.Transcript, l => l.Speaker == "N" && l.Text.Contains("Pokémon League"));
+        Assert.Contains(cavern.Transcript, l => l.Speaker == "Hugh" && l.Text.Contains("Route 23"));
+        Assert.Equal(4, game.Story.Var("VAR_UNOVA_CHASM"));
+        Assert.True(game.Story.Has("FLAG_UNOVA_CHASM_CLEARED"));
+        foreach (string gone in new[] { "ghetsis", "kyurem", "kyurem_black", "n", "zekrom", "hugh_cavern", "cheren_cavern", "triad_cavern_a" })
+            Assert.Null(game.Present(gone, "giant_chasm_6"));
+        Assert.False(game.Fires("Ghetsis"));
+
+        // afterwards the cave and the passage lead into the crater as it is without the Frigate, where Rood stays on
+        game.Arrive("GiantChasm_Cave", 23, 51);
+        Assert.Contains(game.Map.Warps, w => w.TargetMap == "GiantChasm_Crater" && !w.Shut);
+        Assert.DoesNotContain(game.Map.Warps, w => w.TargetMap == "GiantChasm_CraterFrigate" && !w.Shut);
+        Assert.Null(game.Present("7", "giant_chasm_2"));
+        game.Arrive("GiantChasm_Passage", 16, 29);
+        Assert.Contains(game.Map.Warps, w => w.TargetMap == "GiantChasm_Crater" && !w.Shut);
+        Assert.DoesNotContain(game.Map.Warps, w => w.TargetMap == "GiantChasm_CraterFrigate" && !w.Shut);
+        game.Arrive("GiantChasm_Crater", 26, 78);
+        Assert.Contains(game.Talk("7", "giant_chasm_3").Transcript, l => l.Speaker == "Rood");
+        game.Arrive("PlasmaFrigate_Ramp", 11, 15);
+        Assert.Null(game.Present("hugh_ramp", "plasma_frigate_6"));
+    }
+
+    [Fact]
+    public void GhetsissKyuremIsATeamOfOursInItsBlackFormAndASaveFromBeforeTheChasmIsGivenItsHiddenPeople()
+    {
+        var kyurem = TrainerDatabase.PartyOf(TrainerDatabase.Get("unova_ghetsis_kyurem")!).Members.Single();
+        Assert.Equal("Kyurem", kyurem.Species.Name);
+        Assert.Equal("Kyurem-Black", kyurem.Form);
+        Assert.Equal(50, kyurem.Level);
+        Assert.NotNull(TrainerDatabase.Get("unova_team_plasma_ghetsis"));
+
+        var game = new Game();
+        Assert.True(game.Story.Has("FLAG_UNOVA_CHASM_BEGUN"));
+        game.Story.Unset("FLAG_UNOVA_CHASM_BEGUN");
+        foreach (string flag in new[] { "FLAG_UNOVA_HIDE_HUGH_CAVE", "FLAG_UNOVA_HIDE_ROOD_CHASM", "FLAG_UNOVA_HIDE_GHETSIS_CAVERN" })
+            game.Story.Unset(flag);
+        game.Play(Scripts.Find("UnovaCatchUpE", "common")!);
+        foreach (string flag in new[] { "FLAG_UNOVA_CHASM_BEGUN", "FLAG_UNOVA_HIDE_HUGH_CAVE", "FLAG_UNOVA_HIDE_ROOD_CHASM", "FLAG_UNOVA_HIDE_GHETSIS_CAVERN", "FLAG_UNOVA_HIDE_N_CAVERN" })
+            Assert.True(game.Story.Has(flag), flag);
+        Assert.True(File.Exists(GameDataFiles.PathOf(Path.Combine("music", "unova", "giant_chasm.mml"))));
+        foreach (string map in new[] { "GiantChasm_Cave", "GiantChasm_Crater", "GiantChasm_CraterFrigate", "GiantChasm_Passage", "GiantChasm_Cavern", "PlasmaFrigate_Ramp" })
+            Assert.Contains(map, RegionDatabase.Get(RegionDatabase.Unova)!.Maps);
+    }
+
     private static string AreaAt(WorldMatrixFile matrix, int x, int y)
     {
         var cells = matrix.Areas[y].Split(' ', StringSplitOptions.RemoveEmptyEntries);

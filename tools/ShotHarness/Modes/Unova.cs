@@ -89,6 +89,10 @@ partial class Harness
             ("u178_humilau_boardwalks_day", "u179_humilau_boardwalks_night", "Unova", 786, 150, Direction.Up),
             ("u180_route22_pass_day", "u181_route22_pass_night", "Unova", 752, 147, Direction.Left),
             ("u182_route21_beach_day", "u183_route21_beach_night", "Unova", 796, 242, Direction.Right),
+            // Plan 22 · U9, part a: the Giant Chasm's forest outside the cave, and its crater with the Frigate and without it
+            ("u197_chasm_forest_day", "u198_chasm_forest_night", "Unova", 686, 147, Direction.Up),
+            ("u199_chasm_crater_frigate_day", "u200_chasm_crater_frigate_night", "GiantChasm_CraterFrigate", 26, 71, Direction.Up),
+            ("u201_chasm_crater_day", "u202_chasm_crater_night", "GiantChasm_Crater", 26, 71, Direction.Up),
         };
         foreach (var (day, _, map, x, y, facing) in places)
         {
@@ -206,6 +210,13 @@ partial class Harness
             ("u194_frigate_cabins", "PlasmaFrigate_Cabins", 16, 24, Direction.Down),
             ("u195_frigate_stern", "PlasmaFrigate_Stern", 11, 2, Direction.Down),
             ("u196_frigate_kyurem", "PlasmaFrigate_Bridge", 12, 19, Direction.Up),
+            // plan 22 · U9, part a: the Giant Chasm's cave at Route 22's door and by the way up into the crater, the passage north,
+            // the cavern and the Frigate's ramp hall
+            ("u203_chasm_cave", "GiantChasm_Cave", 61, 13, Direction.Left),
+            ("u204_chasm_cave_crater_way", "GiantChasm_Cave", 24, 52, Direction.Up),
+            ("u205_chasm_passage", "GiantChasm_Passage", 16, 20, Direction.Up),
+            ("u206_chasm_cavern", "GiantChasm_Cavern", 15, 24, Direction.Up),
+            ("u207_frigate_ramp_hall", "PlasmaFrigate_Ramp", 11, 10, Direction.Up),
         };
         foreach (var (name, map, x, y, facing) in more)
         {

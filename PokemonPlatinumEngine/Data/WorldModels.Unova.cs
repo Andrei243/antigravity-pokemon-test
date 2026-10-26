@@ -260,6 +260,10 @@ public static partial class WorldModels
         Thing("c14_boat", PropType.Boat, "a boat moored among Humilau's boardwalks"),
         Furniture("warp01", PropType.WarpPanel, "a warp panel of the Plasma Frigate (the panels' rides are the overlays' exits)"),
         Furniture("p_gun01", PropType.LabMachine, "the Plasma Frigate's ice cannon, over Kyurem's chamber"),
+
+        // ---------------------------------------------------------------- the Giant Chasm
+        // Plan 22 · U9, part a: the Plasma Frigate at rest on the ice in the middle of the crater (the ground under it is the crater's)
+        Ground("c03_ship_03", "the Plasma Frigate at rest in the Giant Chasm's crater (not drawn, as at its other moorings: its ramp is the crater's warp into the ramp hall)"),
     };
 
     private static readonly Dictionary<string, WorldModel> UnovaByName = UnovaTable.ToDictionary(m => m.Name, StringComparer.Ordinal);

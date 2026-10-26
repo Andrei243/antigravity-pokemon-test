@@ -1,0 +1,28 @@
+{
+  // The cavern at the heart of the Giant Chasm (plan 22 · U9, part a), Black 2's, its ball in the area file; our words. Ghetsis
+  // (ghetsis, FLAG_UNOVA_HIDE_GHETSIS_CAVERN) and Kyurem (kyurem, FLAG_UNOVA_HIDE_KYUREM_CAVERN) wait on its floor once the Triad
+  // are beaten aboard the Frigate; as the player comes up the corridor (our trigger, 14 to 17, 25; VAR_UNOVA_CHASM 3) N (n,
+  // FLAG_UNOVA_HIDE_N_CAVERN) comes with Zekrom (zekrom, FLAG_UNOVA_HIDE_ZEKROM_CAVERN), Kyurem takes Zekrom into itself (kyurem_black,
+  // FLAG_UNOVA_HIDE_BLACK_KYUREM, on Kyurem's own tile), the player battles it and Ghetsis, the Shadow Triad (triad_cavern_a to _c,
+  // FLAG_UNOVA_HIDE_TRIAD_CAVERN) take him away, and Hugh (hugh_cavern) and Cheren (cheren_cavern) come up afterwards
+  // (giant_chasm_6.txt). Black 2's own people of the cavern (0 to 6, 8 to 11) are held back; Kyurem's place here after the League is
+  // plan 22 · U10's
+  "area": "giant_chasm_6",
+  "bgmTrack": "unova/giant_chasm",
+  "heldBack": [ "0", "1", "2", "3", "4", "5", "6", "8", "9", "10", "11" ],
+  "triggers": [
+    { "script": "Ghetsis", "x": 14, "z": 25, "width": 4, "depth": 1, "variable": "VAR_UNOVA_CHASM", "value": 3 }
+  ],
+  "npcs": [
+    { "id": "ghetsis", "name": "Ghetsis", "npcType": "ghetsis", "x": 15, "y": 16, "facing": "Down", "hiddenBy": "FLAG_UNOVA_HIDE_GHETSIS_CAVERN" },
+    { "id": "kyurem", "name": "Kyurem", "npcType": "Pokemon", "species": "Kyurem", "x": 15, "y": 19, "facing": "Down", "script": "Kyurem", "hiddenBy": "FLAG_UNOVA_HIDE_KYUREM_CAVERN" },
+    { "id": "kyurem_black", "name": "Kyurem", "npcType": "Pokemon", "species": "Kyurem-Black", "x": 15, "y": 19, "facing": "Down", "script": "Kyurem", "hiddenBy": "FLAG_UNOVA_HIDE_BLACK_KYUREM" },
+    { "id": "n", "name": "N", "npcType": "n", "x": 17, "y": 20, "facing": "Up", "hiddenBy": "FLAG_UNOVA_HIDE_N_CAVERN" },
+    { "id": "zekrom", "name": "Zekrom", "npcType": "Pokemon", "species": "Zekrom", "x": 18, "y": 17, "facing": "Left", "hiddenBy": "FLAG_UNOVA_HIDE_ZEKROM_CAVERN" },
+    { "id": "triad_cavern_a", "name": "Shadow Triad", "npcType": "shadow_triad", "x": 14, "y": 16, "facing": "Down", "hiddenBy": "FLAG_UNOVA_HIDE_TRIAD_CAVERN" },
+    { "id": "triad_cavern_b", "name": "Shadow Triad", "npcType": "shadow_triad", "x": 16, "y": 16, "facing": "Down", "hiddenBy": "FLAG_UNOVA_HIDE_TRIAD_CAVERN" },
+    { "id": "triad_cavern_c", "name": "Shadow Triad", "npcType": "shadow_triad", "x": 15, "y": 15, "facing": "Down", "hiddenBy": "FLAG_UNOVA_HIDE_TRIAD_CAVERN" },
+    { "id": "hugh_cavern", "name": "{rival}", "npcType": "hugh", "x": 15, "y": 26, "facing": "Up", "hiddenBy": "FLAG_UNOVA_HIDE_HUGH_CAVERN" },
+    { "id": "cheren_cavern", "name": "Cheren", "npcType": "cheren", "x": 16, "y": 26, "facing": "Up", "hiddenBy": "FLAG_UNOVA_HIDE_CHEREN_CAVERN" }
+  ]
+}
