@@ -64,11 +64,12 @@ partial class Harness
                 if (until != null && until()) return;
                 if (until == null && !engine.ScriptRunning && !Box().IsActive && State() == GameState.Overworld) return;
                 if (State() == GameState.Battle) { Win(); continue; }
+                if (State() == GameState.Evolution) { FieldAgain(); Tick(); continue; }
                 if (engine.Choice.IsOpen) { Skip(10 / 60.0); engine.Choice.Confirm(); Skip(4 / 60.0); }
                 else if (Box().IsActive && Box().IsCurrentLineComplete && !Box().IsQuestion) { Box().Advance(); Tick(); Tick(); }
                 else Tick();
             }
-            Console.WriteLine("  !! the script never got there");
+            Console.WriteLine($"  !! the script never got there (state {State()}, script {engine.ScriptRunning}, box {Box().IsActive}/\"{(Box().IsActive ? Box().CurrentLine : "")}\", choice {engine.Choice.IsOpen})");
         }
         bool Says(string word) => Box().IsActive && Translated.Saying(Box().CurrentLine, word);
         void Line(string word, string shot)
@@ -221,10 +222,12 @@ partial class Harness
             story.Set("SinnohHallOfFame");
             story.Set("FLAG_ARRESTED_CHARON_STARK_MOUNTAIN");
             team.Members.Insert(0, new Pokemon(PokemonDatabase.Get("Garchomp")!, 110));
+            story.Unset("FLAG_DEFEATED_AARON"); // the Center's own OnEnter does this; the mode comes from the Hall of Fame still running its script
             Enter(Center, 11, 11);
             Ride("Aaron", null);
             team.HealAll();
             Enter(RoomOf("Aaron"), 8, 11);
+            Console.WriteLine($"league: beyond: FLAG_DEFEATED_AARON {story.Has("FLAG_DEFEATED_AARON")}, in {Here().Name}, aaron at {Here().Everyone.FirstOrDefault(n => n.Key == "aaron")?.GridX},{Here().Everyone.FirstOrDefault(n => n.Key == "aaron")?.GridY}, the player at {game.Player.GridX},{game.Player.GridY}");
             TalkFrom(RoomOf("Aaron"), "aaron", 8, 6, Direction.Up);
             ReadOn(() => State() == GameState.Battle, 3000);
             if (State() != GameState.Battle) Console.WriteLine("  !! never happened: Aaron's battle beyond");

@@ -166,6 +166,8 @@ partial class Harness
             var save = game.BuildSave();
             save.Frontier = null;
             save.PlayTimeSeconds = 0;
+            save.GreetedPeople = new(); // talking to the receptionist and the songs heard are no change worth telling
+            save.Heard = new();
             return SaveManager.Write(save);
         }
         // One event entered at the desk and played through the hall to its end
@@ -180,12 +182,15 @@ partial class Harness
             {
                 ReadOn(() => Says("steps onto the stage") || Says("title of the World Tournament") || game.Tournament == null || Here().Name != GameEngine.TournamentHallMap);
                 if (!Says("steps onto the stage")) break;
+                string stageLine = Box().CurrentLine;
+                Console.WriteLine($"  stage: {stageLine}");
                 if (stageShot != null && stageWord != null && Says(stageWord))
                 {
                     Box().FinishLine(); Frames(6); Shot(stageShot);
                     stageShot = null;
                 }
                 Box().Advance();
+                ReadOn(() => !Says("steps onto the stage") || Box().CurrentLine != stageLine || game.Tournament == null);
                 Tick();
             }
             ReadOn(() => Says("title of the World Tournament") || Here().Name != GameEngine.TournamentHallMap);
