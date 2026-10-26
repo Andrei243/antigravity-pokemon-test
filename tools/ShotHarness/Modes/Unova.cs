@@ -100,6 +100,9 @@ partial class Harness
             ("u214_badge_gates_day", "u215_badge_gates_night", "UnovaVictoryRoad", 62, 49, Direction.Left),
             ("u216_league_plaza_day", "u217_league_plaza_night", "UnovaPokemonLeague", 32, 54, Direction.Up),
         };
+        // UNOVA_FROM=chasm: only the places of plan 22 · U9 (u200 on), for a look at the chapter alone
+        if (Environment.GetEnvironmentVariable("UNOVA_FROM") == "chasm")
+            places = places.Where(p => int.TryParse(new string(p.Day.Skip(1).TakeWhile(char.IsDigit).ToArray()), out int n) && n >= 200).ToArray();
         foreach (var (day, _, map, x, y, facing) in places)
         {
             At(map, x, y, facing); Frames(2); Shot(day);
@@ -246,6 +249,8 @@ partial class Harness
             ("u236_champions_room", "UnovaPokemonLeague_ChampionsRoom", 16, 44, Direction.Up),
             ("u237_hall_of_fame", "UnovaPokemonLeague_HallOfFame", 8, 15, Direction.Up),
         };
+        if (Environment.GetEnvironmentVariable("UNOVA_FROM") == "chasm")
+            more = more.Where(m => int.TryParse(new string(m.Name.Skip(1).TakeWhile(char.IsDigit).ToArray()), out int n) && n >= 200).ToArray();
         foreach (var (name, map, x, y, facing) in more)
         {
             At(map, x, y, facing); Frames(2); Shot(name);
