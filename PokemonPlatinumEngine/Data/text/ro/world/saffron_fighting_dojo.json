@@ -1,0 +1,42 @@
+{
+  "people": {
+    "t11r0101_gsfighter": {
+      "name": {
+        "en": [
+          "Black Belt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This was Saffron's Gym once, until Sabrina won the right to the title. Now it's a dojo, and we train harder than ever!",
+          "The masters of Kanto and Johto come here to battle one another. You might meet one if you're lucky."
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T11R0101_001+1": {
+      "en": [
+        "\"Fighting spirit!\""
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T11R0101_002+1": {
+      "en": [
+        "\"Train your body and your mind!\""
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

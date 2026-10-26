@@ -1,0 +1,16 @@
+# Mr. Psychic's house in Saffron City (plan 20 · J15, part c). docs/scripts.md describes the language; the lines are
+# our own, on HeartGold's beats (scr_seq_T11R0501). He gives TM29 once (FLAG_JOHTO_GOT_TM29_FROM_MR_PSYCHIC, ours).
+
+
+script MrPsychic
+  face t11r0501_fishing_2 player
+  speaker "Mr. Psychic"
+  if flag FLAG_JOHTO_GOT_TM29_FROM_MR_PSYCHIC goto Given
+  say "...Wait. Don't tell me. You came here hoping for something, didn't you? I knew it!"
+  say "Here, take this. I had a feeling I'd be giving it away today."
+  give "TM29"
+  setflag FLAG_JOHTO_GOT_TM29_FROM_MR_PSYCHIC
+  end
+label Given
+  say "TM29 is Psychic. It may lower the foe's Special Defense, too. ...I can tell you're pleased."
+  end

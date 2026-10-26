@@ -1,0 +1,78 @@
+{
+  "people": {
+    "t11r0601_policeman": {
+      "name": {
+        "en": [
+          "Officer"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t11r0601_gsbigman": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I go to Goldenrod City every week for the Radio Tower's quiz show. The Magnet Train has me there in no time."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t11r0601_gswoman1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "When the Power Plant went down, the trains stopped too. It's good to have them running again."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t11r0601_gsgirl1": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm waiting for my friend from Johto. She says the station there is just like this one!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T11R0601_008+1": {
+      "en": [
+        "Magnet Train\nSaffron City to Goldenrod City"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  // The Copycat's room in Saffron City (plan 20 · J15, part c). Her lost doll, the Magnet Train Pass she trades for it
+  // in HeartGold and the doll's place on her shelf (HeartGold's FLAG_HIDE_SAFFRON_CITY_COPYCAT_HOUSE_CLEFAIRY_DOLL) wait
+  // for a later session: here a Champion of Johto rides without a Pass. The doll on her bed and the second look of
+  // the girl HeartGold swaps in as she copies are left out
+  "area": "saffron_copycat_house_2f",
+  "bgmTrack": "kanto/viridian",
+  "people": {
+    "t11r0802_gsgirl1": {
+      "name": "Copycat",
+      "still": true,
+      "dialog": [
+        "Hello, {player}! ...Oh, sorry. I'm practising being you. Did I sound right?",
+        "I lost my favourite doll somewhere. Copying people cheers me up a little."
+      ]
+    }
+  },
+  "signs": {
+    "T11R0802_001+1": "A games console. The Copycat plays it every day.",
+    "T11R0802_002+1": "A games console. The Copycat plays it every day.",
+    "T11R0802_006+1": "There's an empty spot on the shelf, just the size of a doll."
+  }
+}

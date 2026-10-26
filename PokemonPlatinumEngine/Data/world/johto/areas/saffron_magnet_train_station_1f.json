@@ -1,0 +1,35 @@
+{
+  "key": "saffron_magnet_train_station_1f",
+  "index": 400,
+  "name": "Saffron City",
+  "matrix": 187,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_C_YAMABUKI",
+  "nightMusic": "GS_C_YAMABUKI",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 14, "z": 20, "to": "saffron", "toWarp": 6 },
+    { "x": 3, "z": 4, "to": "saffron_magnet_train_station_2f_empty", "toWarp": 0 },
+    { "x": 3, "z": 3, "to": "saffron_magnet_train_station_2f_empty", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "t11r0601_policeman", "looks": "policeman", "movement": "0", "x": 14, "z": 9, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T11R0601_000+1" },
+    { "id": "t11r0601_gsbigman", "looks": "gsbigman", "movement": "4", "x": 16, "z": 15, "facing": 0, "rangeX": 0, "rangeZ": 1, "script": "T11R0601_001+1" },
+    { "id": "t11r0601_gswoman1", "looks": "gswoman1", "movement": "3", "x": 8, "z": 18, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "T11R0601_002+1" },
+    { "id": "t11r0601_gsgirl1", "looks": "gsgirl1", "movement": "17", "x": 12, "z": 13, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "T11R0601_003+1" },
+    { "id": "t11r0601_gsleader9", "looks": "gsleader9", "movement": "14", "x": 19, "z": 10, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SAFFRON_TRAIN_STATION_LT_SURGE", "script": "T11R0601_007+1" }
+  ],
+  "signs": [
+    { "x": 7, "z": 9, "type": 0, "script": "T11R0601_008+1" }
+  ],
+  "triggers": [
+    { "x": 14, "z": 7, "width": 1, "depth": 1, "script": "T11R0601_004+1", "variable": "VAR_UNK_411D", "value": "0" }
+  ]
+}

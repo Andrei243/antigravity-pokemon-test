@@ -1,0 +1,129 @@
+{
+  "people": {
+    "t11gym0101_gsleader10": {
+      "name": {
+        "en": [
+          "Sabrina"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t11gym0101_sunglasses": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t11gym0101_itako": {
+      "name": {
+        "en": [
+          "Darcy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Medium Darcy: The spirits whispered that you would come. They didn't say you'd win, though."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Medium Darcy: The spirits have gone very quiet."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t11gym0101_mystery_2": {
+      "name": {
+        "en": [
+          "Jared"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Jared: I can see which panel you'll step on next. Can you see what I'll do?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Jared: I didn't see that coming at all."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t11gym0101_itako_2": {
+      "name": {
+        "en": [
+          "Rebecca"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Medium Rebecca: Lost among the panels? Let me lead you astray a little further!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Medium Rebecca: It seems I'm the one who's lost."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t11gym0101_mystery_2_2": {
+      "name": {
+        "en": [
+          "Franklin"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Franklin: Sabrina sees everything. So do I, a little. Let's battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Franklin: My mind's eye needs glasses."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

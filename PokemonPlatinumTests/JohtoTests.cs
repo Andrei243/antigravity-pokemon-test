@@ -32,6 +32,10 @@ public class JohtoTests
         "ss_aqua_1f", "ss_aqua_vermilion_port_exterior", "ss_aqua_vermilion_port_interior", "vermilion", "vermilion_pokecenter_1f",
         "vermilion_pokecenter_b1f", "vermilion_pokemart", "vermilion_fishing_dude_house", "vermilion_pokemon_fan_club",
         "vermilion_central_house", "vermilion_south_house",
+        // Plan 20 · J15, part c: Route 6, its gate and Saffron City with its rooms (its Gym plays Johto's Gym theme)
+        "johto_route_6", "route_6_saffron_gatehouse", "saffron", "saffron_magnet_train_station_1f", "saffron_pokecenter_1f",
+        "saffron_pokecenter_2f", "saffron_pokemart", "saffron_fighting_dojo", "saffron_mr_psychic_house",
+        "saffron_copycat_house_1f", "saffron_copycat_house_2f",
     };
 
     [Fact]
@@ -169,11 +173,12 @@ public class JohtoTests
                      "Goldenrod_Underground", "Goldenrod_GameCorner", "Ecruteak_DanceTheater", "BurnedTower_B1F", "Ecruteak_BellTowerGate" })
             Assert.True(walked.Keys.Any(m => m.Name == name), $"nobody walks into {name}");
 
-        // What waits stays shut: the Magnet Train and the Global Terminal, the Bell Tower beyond its gate (Ecruteak's
-        // Gym is open since plan 20 · J7, the road west since J8, the road east to Route 42 since J10 and the Radio
-        // Tower's upper floors since J11, part b)
+        // What waits stays shut: the Global Terminal, the Bell Tower beyond its gate (Ecruteak's Gym is open since plan
+        // 20 · J7, the road west since J8, the road east to Route 42 since J10, the Radio Tower's upper floors since J11,
+        // part b, and the Magnet Train's station since J15, part c)
         var goldenrod = Johto.Area("goldenrod")!;
-        foreach (int shut in new[] { 9, 16 }) Assert.Empty(Overworld.WarpsAt(goldenrod.Warps[shut].X, goldenrod.Warps[shut].Z));
+        Assert.Empty(Overworld.WarpsAt(goldenrod.Warps[16].X, goldenrod.Warps[16].Z));
+        Assert.Contains(Overworld.WarpsAt(goldenrod.Warps[9].X, goldenrod.Warps[9].Z), w => w.TargetMap == "Goldenrod_MagnetTrainStation");
         var ecruteak = Johto.Area("ecruteak")!;
         Assert.Contains(Overworld.WarpsAt(ecruteak.Warps[10].X, ecruteak.Warps[10].Z), w => w.TargetMap == "Route42_EcruteakGate");
         Assert.Contains(Overworld.WarpsAt(ecruteak.Warps[7].X, ecruteak.Warps[7].Z), w => w.TargetMap == "Ecruteak_Gym");
@@ -208,6 +213,10 @@ public class JohtoTests
         var tree = maps["Johto"].Everyone.Single(n => n.Species == "Sudowoodo");
         Assert.Equal((415, 246), (tree.GridX, tree.GridY));
         tree.HiddenBy = null;
+        // The Magnet Train's officer, who takes a Champion round by Kanto and the S.S. Aqua (plan 20 · J15, part c), is
+        // no way past the tree before the Hall of Fame
+        var station = maps["Goldenrod_MagnetTrainStation"];
+        station.NPCs.Remove(station.NPCs.Single(n => n.Key == "t25r0501_policeman"));
         var outside = WorldWalk.From(Named, RegionDatabase.Get(RegionDatabase.Johto)!.Start!).Single(kv => kv.Key.Name == "Johto").Value;
         Assert.Contains(outside, t => Overworld.AreaAt(t.X, t.Y)?.Key == "national_park" || Overworld.AreaAt(t.X, t.Y)?.Key == "route_36");
         Assert.DoesNotContain(outside, t => Overworld.AreaAt(t.X, t.Y)?.Key is "route_37" or "ecruteak");
@@ -658,6 +667,34 @@ public class JohtoTests
         Assert.Equal(6, gym.Key.Everyone.Count(n => n.NpcType == NPC.ElectricGateType));
         Assert.NotNull(TrainerDatabase.Get("johto_leader_lt_surge_lt__surge", RegionDatabase.Johto));
         Assert.Equal(InteriorStyle.PokemonCenter, MapNamed("Vermilion_PokemonCenter_1F").Interior);
+    }
+
+    [Fact]
+    public void SaffronCityIsWalkedToByRouteSixAndTheMagnetTrainAndSabrinaIsReachedByTheGymsPanels()
+    {
+        // Plan 20 · J15, part c: Route 6 north from Vermilion, its gate, Saffron City and its rooms, and both stations
+        var walked = Walked.Value;
+        var outside = walked.Single(kv => kv.Key.Name == "Johto").Value;
+        foreach (string key in new[] { "johto_route_6", "saffron" })
+            Assert.True(outside.Any(t => Overworld.AreaAt(t.X, t.Y)?.Key == key), $"{key} can't be walked to from the start");
+        foreach (string name in new[] { "Goldenrod_MagnetTrainStation", "Saffron_MagnetTrainStation", "Route6_SaffronGate",
+                     "Saffron_PokemonCenter_1F", "Saffron_PokemonCenter_2F", "Saffron_Mart", "Saffron_FightingDojo",
+                     "Saffron_MrPsychicHouse", "Saffron_CopycatHouse_1F", "Saffron_CopycatHouse_2F", "Saffron_Gym" })
+        {
+            Assert.True(walked.Keys.Any(m => m.Name == name), $"nobody walks into {name}");
+            Assert.Equal(RegionDatabase.Johto, RegionDatabase.RegionOfMap(name)!.Id);
+        }
+        // Route 6's key meets FireRed's, so it takes Johto's prefix; Saffron's own don't
+        Assert.True(HgWorld.Clashes("route_6"));
+        Assert.Equal("johto_route_6", HgWorld.KeyOf("MAP_ROUTE_6"));
+        Assert.Equal("saffron", HgWorld.KeyOf("MAP_SAFFRON"));
+        // The Gym is one floor of warp panels, and Sabrina in its middle room is reached by them
+        var gym = walked.Single(kv => kv.Key.Name == "Saffron_Gym");
+        var sabrina = gym.Key.Everyone.Single(n => n.Key == "t11gym0101_gsleader10");
+        Assert.Contains(gym.Value, t => Math.Abs(t.X - sabrina.GridX) + Math.Abs(t.Y - sabrina.GridY) == 1);
+        Assert.True(gym.Key.Warps.Count(w => w.TargetMap == "Saffron_Gym") >= 30);
+        Assert.NotNull(TrainerDatabase.Get("johto_leader_sabrina_sabrina", RegionDatabase.Johto));
+        Assert.Equal(InteriorStyle.PokemonCenter, MapNamed("Saffron_PokemonCenter_1F").Interior);
     }
 
     [Fact]

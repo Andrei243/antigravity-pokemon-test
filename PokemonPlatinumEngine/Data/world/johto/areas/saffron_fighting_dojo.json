@@ -1,0 +1,44 @@
+{
+  "key": "saffron_fighting_dojo",
+  "index": 398,
+  "name": "Saffron City",
+  "matrix": 192,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_C_YAMABUKI",
+  "nightMusic": "GS_C_YAMABUKI",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 7, "z": 14, "to": "saffron", "toWarp": 10 }
+  ],
+  "objects": [
+    { "id": "t11r0101_gsfighter", "looks": "gsfighter", "movement": "0", "x": 7, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T11R0101_000+1" },
+    { "id": "t11r0101_gsleader3", "looks": "gsleader3", "movement": "0", "x": 3, "z": 7, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_2B5", "script": "T11R0101_004+1" },
+    { "id": "t11r0101_gsleader13", "looks": "gsleader13", "movement": "0", "x": 11, "z": 6, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_2B6", "script": "T11R0101_005+1" },
+    { "id": "t11r0101_gsleader8", "looks": "gsleader8", "movement": "0", "x": 5, "z": 11, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_2B7", "script": "T11R0101_006+1" },
+    { "id": "t11r0101_gsleader12", "looks": "gsleader12", "movement": "0", "x": 11, "z": 9, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_2B8", "script": "T11R0101_007+1" },
+    { "id": "t11r0101_gsleader11", "looks": "gsleader11", "movement": "0", "x": 8, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_2B9", "script": "T11R0101_008+1" },
+    { "id": "t11r0101_gsleader16", "looks": "gsleader16", "movement": "0", "x": 12, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_2BB", "script": "T11R0101_010+1" },
+    { "id": "t11r0101_gsleader5", "looks": "gsleader5", "movement": "0", "x": 6, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_2BC", "script": "T11R0101_011+1" },
+    { "id": "t11r0101_gsleader14", "looks": "gsleader14", "movement": "0", "x": 9, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_2BD", "script": "T11R0101_012+1" },
+    { "id": "t11r0101_gsleader2", "looks": "gsleader2", "movement": "0", "x": 4, "z": 9, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_2BE", "script": "T11R0101_013+1" },
+    { "id": "t11r0101_gsleader10", "looks": "gsleader10", "movement": "0", "x": 10, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_2BF", "script": "T11R0101_014+1" },
+    { "id": "t11r0101_gsleader1", "looks": "gsleader1", "movement": "0", "x": 2, "z": 12, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_2C0", "script": "T11R0101_015+1" },
+    { "id": "t11r0101_gsleader9", "looks": "gsleader9", "movement": "0", "x": 10, "z": 11, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_2C1", "script": "T11R0101_016+1" },
+    { "id": "t11r0101_gsleader4", "looks": "gsleader4", "movement": "0", "x": 5, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_2C2", "script": "T11R0101_017+1" },
+    { "id": "t11r0101_gsleader6", "looks": "gsleader6", "movement": "0", "x": 2, "z": 8, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_2C3", "script": "T11R0101_018+1" },
+    { "id": "t11r0101_gsleader7", "looks": "gsleader7", "movement": "0", "x": 3, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_2C4", "script": "T11R0101_019+1" },
+    { "id": "t11r0101_gsleader15", "looks": "gsleader15", "movement": "0", "x": 12, "z": 10, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_2BA", "script": "T11R0101_009+1" }
+  ],
+  "signs": [
+    { "x": 6, "z": 2, "type": 0, "script": "T11R0101_001+1" },
+    { "x": 8, "z": 2, "type": 0, "script": "T11R0101_002+1" }
+  ],
+  "triggers": []
+}

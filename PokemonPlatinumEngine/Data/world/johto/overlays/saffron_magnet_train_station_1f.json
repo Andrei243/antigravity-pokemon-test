@@ -1,0 +1,40 @@
+{
+  // Saffron City's Magnet Train station (plan 20 · J15, part c). The officer at the gate to the platform makes the
+  // ride back to Goldenrod City (saffron_magnet_train_station_1f.txt). The train's car (warps 1 and 2) stays shut, and
+  // Lt. Surge, whom HeartGold stands here for a rematch, waits for that session
+  "area": "saffron_magnet_train_station_1f",
+  "bgmTrack": "kanto/viridian",
+  "locked": [
+    1,
+    2
+  ],
+  "people": {
+    "t11r0601_policeman": {
+      "name": "Officer",
+      "script": "Officer",
+      "still": true
+    },
+    "t11r0601_gsbigman": {
+      "name": "Man",
+      "dialog": [
+        "I go to Goldenrod City every week for the Radio Tower's quiz show. The Magnet Train has me there in no time."
+      ]
+    },
+    "t11r0601_gswoman1": {
+      "name": "Woman",
+      "dialog": [
+        "When the Power Plant went down, the trains stopped too. It's good to have them running again."
+      ]
+    },
+    "t11r0601_gsgirl1": {
+      "name": "Girl",
+      "still": true,
+      "dialog": [
+        "I'm waiting for my friend from Johto. She says the station there is just like this one!"
+      ]
+    }
+  },
+  "signs": {
+    "T11R0601_008+1": "Magnet Train\nSaffron City to Goldenrod City"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  // Saffron City's Pokémon Center upstairs (plan 20 · J15, part c): the Wi-Fi counters, closed (decision 06 · 7)
+  "area": "saffron_pokecenter_2f",
+  "bgmTrack": "kanto/viridian",
+  "people": {
+    "t11pc0102_wifisf": {
+      "name": "Receptionist",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    },
+    "t11pc0102_pcwoman2": {
+      "name": "Receptionist",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    },
+    "t11pc0102_pcwoman2_2": {
+      "name": "Receptionist",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    }
+  }
+}

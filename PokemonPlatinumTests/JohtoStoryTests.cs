@@ -1781,4 +1781,59 @@ public class JohtoStoryTests
         Assert.False(game.Story.Has("FLAG_JOHTO_SS_AQUA_AT_VERMILION"));
         Assert.Equal("SSAqua_OlivinePort", game.Map.GetWarpAt(24, 19)?.TargetMap);
     }
+
+    [Fact]
+    public void TheMagnetTrainTakesAChampionToSaffronWhereSabrinaGivesKantosMarshBadge()
+    {
+        // Plan 20 · J15, part c: Goldenrod's station, its officer at the gate to the platform
+        var game = new Game();
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Tyranitar")!, 60));
+        const string Officer = "t25r0501_policeman";
+        game.Arrive("Goldenrod_MagnetTrainStation", 6, 16);
+
+        // No ride before the Hall of Fame
+        Assert.Contains(game.Talk(Officer).Transcript, l => l.Text.Contains("Champion"));
+        Assert.Equal("Goldenrod_MagnetTrainStation", game.Map.Name);
+
+        // A Champion who says no stays; one who says yes rides to Saffron
+        game.Story.Set(RegionDatabase.Get(RegionDatabase.Johto)!.StoryCompleteFlag);
+        game.Answers.Enqueue(1);
+        game.Talk(Officer);
+        Assert.Equal("Goldenrod_MagnetTrainStation", game.Map.Name);
+        game.Answers.Enqueue(0);
+        game.Talk(Officer);
+        Assert.Equal("Saffron_MagnetTrainStation", game.Map.Name);
+        Assert.Equal((14, 10), game.Tile);
+
+        // Out into the city, and the Gym
+        game.Through("Johto");
+        Assert.Equal("saffron", game.Map.AreaAt(game.Tile.X, game.Tile.Y)?.Key);
+        game.Arrive("Saffron_Gym", 15, 27);
+        Assert.Contains(game.Read(13, 23).Transcript, l => !l.Text.Contains("Winning"));
+
+        // Sabrina: Kanto's Marsh Badge, not Johto's, her trainers counted beaten, and TM48 once
+        int johtoBadges = game.Story.BadgeCount(RegionDatabase.Johto);
+        Assert.Contains(game.Talk("t11gym0101_gsleader10").Log, l => l.StartsWith("battle johto_leader_sabrina_sabrina Won"));
+        Assert.True(game.Story.HasBadge(RegionDatabase.Kanto, "Marsh"));
+        Assert.Equal(johtoBadges, game.Story.BadgeCount(RegionDatabase.Johto));
+        Assert.True(game.Story.HasDefeated("johto_medium_darcy"));
+        Assert.True(game.Story.HasDefeated("johto_psychic_m_franklin"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM48")!));
+        game.Talk("t11gym0101_gsleader10");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM48")!));
+        Assert.Contains(game.Read(13, 23).Transcript, l => l.Text.Contains("Winning"));
+
+        // Mr. Psychic's TM29, once
+        game.Arrive("Saffron_MrPsychicHouse", 4, 7);
+        game.Talk("t11r0501_fishing_2");
+        game.Talk("t11r0501_fishing_2");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM29")!));
+
+        // And back to Goldenrod by the train
+        game.Arrive("Saffron_MagnetTrainStation", 14, 16);
+        game.Answers.Enqueue(0);
+        game.Talk("t11r0601_policeman");
+        Assert.Equal("Goldenrod_MagnetTrainStation", game.Map.Name);
+        Assert.Equal((6, 9), game.Tile);
+    }
 }

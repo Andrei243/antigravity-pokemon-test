@@ -41,6 +41,10 @@ public static class HgCover
         ("^wall\\d|^wallkn|^cl_bg|^r_climb", TerrainCover.Cliff), // the walls of rock between the areas, and their faces
         // Route 22's open grass by the League's gate (plan 20 · J10, part b): every tile of it walked, none blocked
         ("^tok_fe01", TerrainCover.Grass),
+        // Olivine's streets and quay and Saffron's (plan 20 · J15, part c), by `--unknown`'s counts: their `_feNN`
+        // textures are open floor, never blocked, and the quay's planks (`as_hato`) too, but for its blocked edge
+        ("^(as|ymb)_fe0\\d", TerrainCover.Paving),
+        ("^as_hato0[1-4]", TerrainCover.Paving),
         ("_fe\\d|fence|^senro|_board$", TerrainCover.Fence),      // each town's fences, the railway's line, signboards
         ("_rd\\d|^ko_land|^ko_h\\d|^d22_|^area18_", TerrainCover.Path),
         ("_yuka|_fuch|^ar_|_teien$|^kk_|_shouka$", TerrainCover.Paving),   // floors, kerbs, the ruins' stone, gardens

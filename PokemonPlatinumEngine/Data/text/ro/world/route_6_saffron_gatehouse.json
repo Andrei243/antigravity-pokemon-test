@@ -1,0 +1,23 @@
+{
+  "people": {
+    "r06r0201_counterm": {
+      "name": {
+        "en": [
+          "Officer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Saffron City is just through here. It's the biggest city in Kanto, so try not to get lost!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

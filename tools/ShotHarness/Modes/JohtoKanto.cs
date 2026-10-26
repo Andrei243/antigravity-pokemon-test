@@ -91,5 +91,48 @@ partial class Harness
         Until(() => game.State == GameState.Battle || BandLit(), "the battle", 600);
         Frames(30); Shot("jk18_lt_surges_battle");
         Tell();
+        JohtoKantoSaffronShots(ReadTo, TalkTo, Until);
     }
+
+    /// <summary>
+    /// Plan 20 · J15, part c, after part b's in the same game: Route 6 and its gate (<c>jk19</c>, <c>jk20</c>), Saffron
+    /// City by day and after dark (<c>jk21</c>, <c>jk22</c>), its Pokémon Center, the Copycat's room and the Fighting Dojo
+    /// (<c>jk23</c> to <c>jk25</c>), the Gym's warp panels and Sabrina with her battle's band (<c>jk26</c> to <c>jk28</c>),
+    /// and the Magnet Train: Goldenrod's station, the ride over the dark and Saffron's (<c>jk29</c> to <c>jk31</c>). It
+    /// prints Kanto's Marsh Badge and the map the ride ends on. Written, not run.
+    /// </summary>
+    void JohtoKantoSaffronShots(Action<string?, int> readTo, Action<string, string, int, int> talkTo, Action<Func<bool>, string, int> until)
+    {
+        void ReadTo(string? text) => readTo(text, 2400);
+        game.State = GameState.Overworld;
+        At("Johto", 1301, 270, Direction.Up); Frames(30); Shot("jk19_route_6");
+        At("Route6_SaffronGate", 5, 9, Direction.Up); Frames(10); Shot("jk20_route_6s_gate");
+        At("Johto", 1303, 213, Direction.Down); Frames(30); Shot("jk21_saffron_city");
+        engine.Settings.TimeOfDay = TimeOfDay.Night;
+        engine.ApplySettings(window: false);
+        Frames(30); Shot("jk22_saffron_city_after_dark");
+        engine.Settings.TimeOfDay = TimeOfDay.Day;
+        engine.ApplySettings(window: false);
+        At("Saffron_PokemonCenter_1F", 8, 15, Direction.Up); Frames(10); Shot("jk23_saffrons_pokemon_center");
+        At("Saffron_CopycatHouse_2F", 5, 9, Direction.Up); Frames(10); Shot("jk24_the_copycats_room");
+        At("Saffron_FightingDojo", 7, 12, Direction.Up); Frames(10); Shot("jk25_the_fighting_dojo");
+
+        // ---- The Gym: a warp panel, then Sabrina
+        At("Saffron_Gym", 15, 26, Direction.Up); game.ArriveOnMap(); Frames(10); Shot("jk26_the_saffron_gym");
+        talkTo("Saffron_Gym", "t11gym0101_gsleader10", 0, 1);
+        ReadTo("I knew you would come"); Frames(10); Shot("jk27_sabrina");
+        ReadTo("Show me the strength"); game.Dialogue.Advance();
+        until(() => game.State == GameState.Battle || BandLit(), "the battle", 600);
+        Frames(30); Shot("jk28_sabrinas_battle");
+        Console.WriteLine($"  Marsh Badge {game.Story.HasBadge(RegionDatabase.Kanto, "Marsh")}");
+
+        // ---- The Magnet Train, from Goldenrod to Saffron
+        game.State = GameState.Overworld;
+        At("Goldenrod_MagnetTrainStation", 6, 12, Direction.Up); game.ArriveOnMap(); Frames(10); Shot("jk29_goldenrods_station");
+        talkTo("Goldenrod_MagnetTrainStation", "t25r0501_policeman", 0, 1);
+        ReadTo("glided out of Goldenrod"); Frames(10); Shot("jk30_the_magnet_train");
+        ReadTo(null); Frames(20); Shot("jk31_saffrons_station");
+        Console.WriteLine($"  the ride ended on {game.Map.Name} at {game.Player.GridX},{game.Player.GridY}");
+    }
+
 }

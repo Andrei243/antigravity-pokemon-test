@@ -1,0 +1,136 @@
+{
+  "people": {
+    "r06_campboy_2": {
+      "name": {
+        "en": [
+          "Virgil"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Camper Virgil: I've walked every road from Vermilion to Saffron. Have you got the legs for a battle?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Camper Virgil: My legs are fine. It's my Pokémon that are tired."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r06_picnicgirl_2": {
+      "name": {
+        "en": [
+          "Selina"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Selina: I came out here for a picnic by the pond. A battle goes nicely with lunch!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Selina: That spoiled my appetite a little."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r06_gsbabygirl1": {
+      "name": {
+        "en": [
+          "Day"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Twins Day: We do everything together, even battling!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Twins Day: We lose together too."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r06_gsbabygirl1_2": {
+      "name": {
+        "en": [
+          "Dani"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Twins Dani: Two of us against one of you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Twins Dani: One of you was enough for two of us."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r06_gsmiddleman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Underground Path runs from here to Route 5, but it's shut while the work on it goes on. Sorry!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "R06_001+1": {
+      "en": [
+        "Underground Path\nRoute 6 to Route 5"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

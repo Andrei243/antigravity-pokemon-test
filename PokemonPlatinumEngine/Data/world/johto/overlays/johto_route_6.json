@@ -1,0 +1,53 @@
+{
+  // Route 6 as HeartGold has it three years on (plan 20 · J15, part c): the road north from Vermilion City to Saffron
+  // City's gate, round a pond. Its key meets FireRed's, so it takes Johto's prefix (HgWorld.Clashes). The Underground
+  // Path's gate (warp 2) stays shut, and the man before it says so (HeartGold hides him by FLAG_UNK_258 once the path
+  // opens, which nothing here sets)
+  "area": "johto_route_6",
+  "bgmTrack": "kanto/route3",
+  "locked": [
+    2
+  ],
+  "people": {
+    "r06_campboy_2": {
+      "name": "Virgil",
+      "trainer": {
+        "dialogueBefore": "Camper Virgil: I've walked every road from Vermilion to Saffron. Have you got the legs for a battle?",
+        "dialogueAfter": "Camper Virgil: My legs are fine. It's my Pokémon that are tired."
+      }
+    },
+    "r06_picnicgirl_2": {
+      "name": "Selina",
+      "trainer": {
+        "dialogueBefore": "Picnicker Selina: I came out here for a picnic by the pond. A battle goes nicely with lunch!",
+        "dialogueAfter": "Picnicker Selina: That spoiled my appetite a little."
+      }
+    },
+    "r06_gsbabygirl1": {
+      "name": "Day",
+      "trainer": {
+        "dialogueBefore": "Twins Day: We do everything together, even battling!",
+        "dialogueAfter": "Twins Day: We lose together too."
+      }
+    },
+    "r06_gsbabygirl1_2": {
+      "name": "Dani",
+      "trainer": {
+        "id": "johto_twins_day_and_dani",
+        "dialogueBefore": "Twins Dani: Two of us against one of you!",
+        "dialogueAfter": "Twins Dani: One of you was enough for two of us."
+      }
+    },
+    "r06_gsmiddleman1": {
+      "name": "Man",
+      "hiddenBy": "",
+      "still": true,
+      "dialog": [
+        "The Underground Path runs from here to Route 5, but it's shut while the work on it goes on. Sorry!"
+      ]
+    }
+  },
+  "signs": {
+    "R06_001+1": "Underground Path\nRoute 6 to Route 5"
+  }
+}

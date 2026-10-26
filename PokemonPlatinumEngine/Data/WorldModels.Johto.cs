@@ -373,6 +373,25 @@ public static partial class WorldModels
         Ground("mg09_es2", "the Vermilion Gym's electric fittings on its walls: the room's walls draw them"),
         Ground("mp3_sb", "the timetable board of Vermilion's port hall: the wall draws it"),
         Furniture("chair03", PropType.Chair, "a chair of the Pokémon Fan Club"),
+
+        // ---------------------------------------------------------------- plan 20 · J15, part c: Route 6, Saffron City (ybc_,
+        // ya_: the original's Yamabuki) and the Magnet Train, built in Goldenrod's brick as Kanto's great city
+        House("ybc_h01", Architecture.Boulevard, "a house of Saffron City"),
+        House("ybc_h02", Architecture.Boulevard, "a house of Saffron City"),
+        House("ybc_h03", Architecture.Boulevard, "a house of Saffron City"),
+        House("ybc_h04", Architecture.Boulevard, "the Copycat's house in Saffron City, two storeys tall", storeys: 2),
+        House("ybc_mmc", Architecture.Boulevard, "Mr. Psychic's house in Saffron City"),
+        Built("ybc_lnr", BuildingKind.Terminal, "Saffron City's Magnet Train station", Architecture.Boulevard, sign: "STATION"),
+        Built("ybc_fgm", BuildingKind.Hall, "Saffron City's Fighting Dojo", Architecture.Boulevard, sign: "DOJO"),
+        Built("ybc_slf", BuildingKind.Office, "Silph Co.'s head office in Saffron City", Architecture.Boulevard, storeys: 3, sign: "SILPH CO."),
+        Built("ya_gym", BuildingKind.Gym, "the Saffron Gym"),
+        Built("kn_gate_b", BuildingKind.Gate, "a gate house on a road into Saffron City that runs east and west"),
+        Built("kn_chika_x", BuildingKind.Hall, "the Underground Path's entrance on Route 6 (the path is shut)"),
+        House("ha_h01a", Architecture.Boulevard, "a house on Route 5, north of Saffron City (the route is not open)"),
+        Door("ha_dr01"), Door("ybc_dor1"), Door("ybc_dor2"), Door("ybc_dor3"),
+        Ground("ymbk_sl", "a flight of steps of Saffron City's raised walks: its tiles draw it"),
+        Ground("st_board", "a notice board by a road of Kanto: its tiles draw it"),
+        Ground("y_j_warp", "the Saffron Gym's floor of warp panels: the room's tiles draw it"),
     };
 
     private static readonly Dictionary<string, WorldModel> JohtoByName = JohtoTable.ToDictionary(m => m.Name, StringComparer.Ordinal);

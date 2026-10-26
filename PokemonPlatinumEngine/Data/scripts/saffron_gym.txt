@@ -1,0 +1,60 @@
+# The Saffron Gym as HeartGold has it (plan 20 · J15, part c). docs/scripts.md describes the language; the lines are
+# our own, on HeartGold's beats (scr_seq_T11GYM0101).
+#
+# Sabrina waits in the middle of nine rooms joined by warp panels (overlays/saffron_gym.json). She battles for the
+# Marsh Badge, which is Kanto's (`givebadge marsh of kanto`, as Lt. Surge's Thunder Badge: the rulings' "HeartGold's
+# Kanto, part b" and "part c"), counts her four trainers beaten and gives TM48, Skill Swap. A trainer who already holds
+# the Badge from FireRed's Kanto battles her all the same: whether she has been beaten here is
+# FLAG_JOHTO_DEFEATED_SABRINA, a flag of ours.
+
+
+script Sabrina
+  face t11gym0101_gsleader10 player
+  speaker "Sabrina"
+  if flag FLAG_JOHTO_DEFEATED_SABRINA goto Won
+  scene "Sabrina"
+  say "I knew you would come. I saw it three years ago, in a vision: a Champion from Johto, standing where you stand now."
+  say "I don't enjoy battling, but it's my duty as a Gym Leader. Show me the strength my vision promised!"
+  battle self as "johto_leader_sabrina_sabrina"
+  say "Your power is far beyond what I foresaw. Even my visions can't see everything. Take the Marsh Badge."
+  givebadge marsh of kanto
+  text "{player} received the Marsh Badge from Sabrina!"
+  setflag FLAG_JOHTO_DEFEATED_SABRINA
+  defeat "johto_medium_darcy"
+  defeat "johto_psychic_m_jared"
+  defeat "johto_medium_rebecca"
+  defeat "johto_psychic_m_franklin"
+  endscene
+label Tm
+  say "Take this as well. It holds a move that lets two Pokémon trade their abilities."
+  give "TM48"
+  setflag FLAG_JOHTO_GOT_TM48_FROM_SABRINA
+  say "TM48 is Skill Swap. Used well, it turns a foe's own ability against it."
+  end
+label Won
+  if not flag FLAG_JOHTO_GOT_TM48_FROM_SABRINA goto Tm
+  say "Psychic power isn't only for battling. I've learned to feel what others feel, too. You feel... happy."
+  end
+
+
+# The guide by the door.
+script GymGuy
+  speaker "Gym Guide"
+  if flag FLAG_JOHTO_DEFEATED_SABRINA goto Won
+  say "Hey, champ! Sabrina waits in the middle room, but the only way in is by the warp panels."
+  say "Step on one and it whisks you to another room. Keep trying them, and you'll find the way through!"
+  say "Her Pokémon are Psychic types. Dark types and Bug types are what you want here."
+  end
+label Won
+  say "You read Sabrina's mind before she could read yours! What a battle!"
+  end
+
+
+# The statues by the door.
+script Statue
+  if flag FLAG_JOHTO_DEFEATED_SABRINA goto Won
+  text "Saffron City Pokémon Gym\nLeader: Sabrina"
+  end
+label Won
+  text "Saffron City Pokémon Gym\nLeader: Sabrina\nWinning trainers: {player}"
+  end

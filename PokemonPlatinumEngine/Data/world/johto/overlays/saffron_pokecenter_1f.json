@@ -1,0 +1,52 @@
+{
+  // Saffron City's Pokémon Center (plan 20 · J15, part c), the Centers' floor with the town's people. The counters for
+  // the link say it is closed, as in every Center (decision 06 · 7)
+  "area": "saffron_pokecenter_1f",
+  "bgmTrack": "kanto/viridian",
+  "read": {
+    "0": "PC"
+  },
+  "people": {
+    "t11pc0101_pcwoman1": {
+      "name": "Nurse",
+      "script": "Nurse"
+    },
+    "t11pc0101_pcwoman2": {
+      "name": "Receptionist",
+      "dialog": [
+        "Your Trainer Card shows your name, your money and the Pokémon you've seen. Have a look at it from the menu."
+      ]
+    },
+    "t11pc0101_pcwoman2_2": {
+      "name": "Receptionist",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    },
+    "t11pc0101_pcwoman2_3": {
+      "name": "Receptionist",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    },
+    "t11pc0101_gswoman1": {
+      "name": "Woman",
+      "dialog": [
+        "My Pokémon got a bit of a scare in the Gym. Sabrina's Pokémon are scary strong!"
+      ]
+    },
+    "t11pc0101_mount_2": {
+      "name": "Hiker",
+      "still": true,
+      "dialog": [
+        "I walked here all the way from Johto, over the mountains. Next time I'm taking the Magnet Train."
+      ]
+    },
+    "t11pc0101_gsboy1": {
+      "name": "Boy",
+      "dialog": [
+        "Did you know the Magnet Train and the S.S. Aqua both link Kanto to Johto? I want to ride them both!"
+      ]
+    }
+  }
+}
