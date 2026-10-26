@@ -59,4 +59,33 @@ public class OurSculptTests
         Assert.Equal(new[] { "Mesmeryx", "Ratchisel", "Sabrefin", "Tripluma", "Typhonarch" }, flagged);
         Assert.All(flagged, n => Assert.Contains(n, PokemonLook.Females));
     }
+
+    /// <summary>Batch 3: the species of our own that evolve from Hoenn's (Nos. 2252 to 2386).</summary>
+    private static PokemonSpecies[] Hoenn => PokemonDatabase.Ours().Where(s => s.DexNumber is >= 2252 and <= 2386).ToArray();
+
+    [Fact]
+    public void EverySpeciesOfOursOfHoennIsHandBuiltAndItsOwn()
+    {
+        Assert.Equal(51, Hoenn.Length);
+        foreach (var s in Hoenn)
+        {
+            Assert.True(PokemonModels.HasModel(s.Name), $"{s.Name} has no sculpt of its own");
+            Assert.Contains(s.Name, PokemonModels.Species);
+            Assert.NotEqual(PokemonModels.Signature(ForebearOf(s).Name), PokemonModels.Signature(s.Name));
+            Assert.Equal(s.Name, PokemonModels.Build(s.Name).Species);
+        }
+    }
+
+    [Fact]
+    public void AHoennFemaleLookIsSculptedWhereTheForebearsIs()
+    {
+        // Medicham, Swalot, Camerupt, Cacturne, Milotic and Relicanth: their evolutions of ours keep the difference
+        var flagged = Hoenn.Where(s => s.GenderDifferences).Select(s => s.Name).OrderBy(n => n).ToArray();
+        Assert.Equal(new[] { "Aeonfin", "Ascetrance", "Gulpgorge", "Prismaria", "Saguarox", "Volcamel" }, flagged);
+        foreach (var n in flagged)
+        {
+            Assert.True(PokemonLook.HasFemale(n));
+            Assert.NotEqual(PokemonModels.Signature(n), PokemonModels.Signature(n + PokemonLook.FemaleSuffix));
+        }
+    }
 }
