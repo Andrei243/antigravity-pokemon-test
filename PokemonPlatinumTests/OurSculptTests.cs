@@ -185,6 +185,133 @@ public class OurSculptTests
             }
     }
 
+    /// <summary>The fifteen Megas of our own (plan 06 · R20b, PokemonModels.Ours.Megas.cs).</summary>
+    private static readonly string[] OurMegas = { "Typhlosion", "Torterra", "Infernape", "Empoleon", "Serperior", "Samurott", "Decidueye",
+        "Incineroar", "Primarina", "Rillaboom", "Cinderace", "Inteleon", "Meowscarada", "Skeledirge", "Quaquaval" };
+
+    [Fact]
+    public void EveryMegaOfOursIsHandBuiltAndNotItsSpecies()
+    {
+        foreach (var species in OurMegas)
+        {
+            string mega = species + "-Mega";
+            Assert.Equal(species, PokemonDatabase.SpeciesOfForm(mega)?.Name);
+            Assert.True(PokemonModels.HasModel(mega), $"{mega} has no sculpt of its own");
+            Assert.Contains(mega, PokemonModels.Forms);
+            Assert.NotEqual(PokemonModels.Signature(species), PokemonModels.Signature(mega));
+            Assert.Equal(mega, PokemonModels.Build(mega).Species);
+        }
+        // No two of them are the same sculpt
+        Assert.Equal(OurMegas.Length, OurMegas.Select(s => PokemonModels.Signature(s + "-Mega")).Distinct().Count());
+    }
+
+    [Fact]
+    public void EachDecalOfAMegaOfOursCoversItsWholeSquare()
+    {
+        // As PokemonModelTests.EachDecalCoversItsWholeSquare, for these fifteen alone (that test walks every model)
+        foreach (var species in OurMegas)
+        {
+            var m = PokemonModels.Get(species + "-Mega");
+            var uvs = m.DecalUVs!;
+            for (int d = 0; d < m.Decals.Count; d++)
+            {
+                int col = d % m.AtlasColumns, row = d / m.AtlasColumns;
+                var center = new System.Numerics.Vector2((col + 0.5f) / m.AtlasColumns, (row + 0.5f) / m.AtlasRows);
+                var half = new System.Numerics.Vector2(0.25f / m.AtlasColumns, 0.25f / m.AtlasRows);
+                bool left = false, right = false, top = false, bottom = false;
+                foreach (var uv in uvs)
+                {
+                    if (System.MathF.Abs(uv.X - center.X) > 2f * half.X || System.MathF.Abs(uv.Y - center.Y) > 2f * half.Y) continue;
+                    left |= uv.X <= center.X - half.X;
+                    right |= uv.X >= center.X + half.X;
+                    top |= uv.Y <= center.Y - half.Y;
+                    bottom |= uv.Y >= center.Y + half.Y;
+                }
+                Assert.True(left && right && top && bottom, $"{species}-Mega: decal {d} isn't covered");
+            }
+        }
+    }
+
+    [Fact]
+    public void AMegaDynamaxOfOursShowsItsMegasSculpt()
+    {
+        // A Pokémon in a Mega Dynamax form asks for its Mega's model (Pokemon.ModelName), which is now its own
+        foreach (var species in OurMegas)
+        {
+            var mmax = PokemonDatabase.Get(species)!.Forms?.FirstOrDefault(f => f.Kind == FormKind.MegaDynamax);
+            if (mmax == null) continue;
+            var p = new Pokemon(PokemonDatabase.Get(species)!, 50, Gender.Male, Nature.Hardy, false);
+            p.ChangeForm(mmax.Name);
+            Assert.Equal(species + "-Mega", p.ModelName);
+        }
+    }
+
+    /// <summary>Batch 6 and its supplement: the species of our own that evolve from Kalos's (Nos. 2650 to 2729), Ecosentinel among them.</summary>
+    private static PokemonSpecies[] Kalos => PokemonDatabase.Ours().Where(s => s.DexNumber is >= 2650 and <= 2729).ToArray();
+
+    /// <summary>Batch 7 and its supplement: the species of our own that evolve from Alola's (Nos. 2730 to 2810), the Ultra Beasts' ten among them.</summary>
+    private static PokemonSpecies[] Alola => PokemonDatabase.Ours().Where(s => s.DexNumber is >= 2730 and <= 2810).ToArray();
+
+    [Theory]
+    [InlineData("Kalos", 25)]
+    [InlineData("Alola", 38)]
+    public void EverySpeciesOfOursOfKalosAndAlolaIsHandBuiltAndItsOwn(string region, int count)
+    {
+        var batch = region == "Kalos" ? Kalos : Alola;
+        Assert.Equal(count, batch.Length);
+        foreach (var s in batch)
+        {
+            Assert.True(PokemonModels.HasModel(s.Name), $"{s.Name} has no sculpt of its own");
+            Assert.Contains(s.Name, PokemonModels.Species);
+            Assert.NotEqual(PokemonModels.Signature(ForebearOf(s).Name), PokemonModels.Signature(s.Name));
+            Assert.Equal(s.Name, PokemonModels.Build(s.Name).Species);
+        }
+    }
+
+    [Fact]
+    public void KalossFemaleLooksAreKeptWhereTheForebearsFemaleIsAForm()
+    {
+        // Pyroar's and Meowstic's females are forms of their own; Blazemonarch's and Occulynx's looks of the one species
+        var flagged = Kalos.Concat(Alola).Where(s => s.GenderDifferences).Select(s => s.Name).OrderBy(n => n).ToArray();
+        Assert.Equal(new[] { "Blazemonarch", "Occulynx" }, flagged);
+        foreach (var n in flagged)
+        {
+            Assert.Contains(n, PokemonLook.Females);
+            Assert.NotEqual(PokemonModels.Signature(n), PokemonModels.Signature(n + PokemonLook.FemaleSuffix));
+        }
+    }
+
+    [Theory]
+    [InlineData("Kalos")]
+    [InlineData("Alola")]
+    public void EachKalosAndAlolaDecalCoversItsWholeSquare(string region)
+    {
+        // As PokemonModelTests.EachDecalCoversItsWholeSquare, for these batches alone (that test walks every model)
+        foreach (var s in region == "Kalos" ? Kalos : Alola)
+            foreach (var name in s.GenderDifferences ? new[] { s.Name, s.Name + PokemonLook.FemaleSuffix } : new[] { s.Name })
+            {
+                var m = PokemonModels.Get(name);
+                if (m.Decals.Count == 0) continue;
+                var uvs = m.DecalUVs!;
+                for (int d = 0; d < m.Decals.Count; d++)
+                {
+                    int col = d % m.AtlasColumns, row = d / m.AtlasColumns;
+                    var center = new System.Numerics.Vector2((col + 0.5f) / m.AtlasColumns, (row + 0.5f) / m.AtlasRows);
+                    var half = new System.Numerics.Vector2(0.25f / m.AtlasColumns, 0.25f / m.AtlasRows);
+                    bool left = false, right = false, top = false, bottom = false;
+                    foreach (var uv in uvs)
+                    {
+                        if (System.MathF.Abs(uv.X - center.X) > 2f * half.X || System.MathF.Abs(uv.Y - center.Y) > 2f * half.Y) continue;
+                        left |= uv.X <= center.X - half.X;
+                        right |= uv.X >= center.X + half.X;
+                        top |= uv.Y <= center.Y - half.Y;
+                        bottom |= uv.Y >= center.Y + half.Y;
+                    }
+                    Assert.True(left && right && top && bottom, $"{name}: decal {d} isn't covered");
+                }
+            }
+    }
+
     [Fact]
     public void AJohtoFemaleLookIsKeptWhereTheForebearsIs()
     {
@@ -193,4 +320,115 @@ public class OurSculptTests
         Assert.All(flagged, n => Assert.Contains(n, PokemonLook.Females));
     }
 
+
+    /// <summary>Batch 9 and its supplement: the species of our own that evolve from Paldea's (Nos. 2916 to 3016), sculpted from the user's reference pictures.</summary>
+    private static PokemonSpecies[] Paldea => PokemonDatabase.Ours().Where(s => s.DexNumber is >= 2906 and <= 3099).ToArray();
+
+    [Fact]
+    public void EverySpeciesOfOursOfPaldeaIsHandBuiltAndItsOwn()
+    {
+        Assert.Equal(57, Paldea.Length);
+        foreach (var s in Paldea)
+        {
+            Assert.True(PokemonModels.HasModel(s.Name), $"{s.Name} has no sculpt of its own");
+            Assert.Contains(s.Name, PokemonModels.Species);
+            Assert.NotEqual(PokemonModels.Signature(ForebearOf(s).Name), PokemonModels.Signature(s.Name));
+            Assert.Equal(s.Name, PokemonModels.Build(s.Name).Species);
+        }
+    }
+
+    [Fact]
+    public void TrufflordKeepsTheFemaleOinkolognesLook()
+    {
+        // Oinkologne's female is a form of her own; Trufflord keeps the difference as a look of the one species
+        var flagged = Paldea.Where(s => s.GenderDifferences).Select(s => s.Name).ToArray();
+        Assert.Equal(new[] { "Trufflord" }, flagged);
+        Assert.Contains("Trufflord", PokemonLook.Females);
+        Assert.NotEqual(PokemonModels.Signature("Trufflord"), PokemonModels.Signature("Trufflord+f"));
+    }
+
+    [Fact]
+    public void EachPaldeaDecalCoversItsWholeSquare()
+    {
+        // As PokemonModelTests.EachDecalCoversItsWholeSquare, for this batch alone (that test walks every model)
+        foreach (var s in Paldea)
+            foreach (var name in s.GenderDifferences ? new[] { s.Name, s.Name + PokemonLook.FemaleSuffix } : new[] { s.Name })
+            {
+                var m = PokemonModels.Get(name);
+                var uvs = m.DecalUVs!;
+                for (int d = 0; d < m.Decals.Count; d++)
+                {
+                    int col = d % m.AtlasColumns, row = d / m.AtlasColumns;
+                    var center = new System.Numerics.Vector2((col + 0.5f) / m.AtlasColumns, (row + 0.5f) / m.AtlasRows);
+                    var half = new System.Numerics.Vector2(0.25f / m.AtlasColumns, 0.25f / m.AtlasRows);
+                    bool left = false, right = false, top = false, bottom = false;
+                    foreach (var uv in uvs)
+                    {
+                        if (System.MathF.Abs(uv.X - center.X) > 2f * half.X || System.MathF.Abs(uv.Y - center.Y) > 2f * half.Y) continue;
+                        left |= uv.X <= center.X - half.X;
+                        right |= uv.X >= center.X + half.X;
+                        top |= uv.Y <= center.Y - half.Y;
+                        bottom |= uv.Y >= center.Y + half.Y;
+                    }
+                    Assert.True(left && right && top && bottom, $"{name}: decal {d} isn't covered");
+                }
+            }
+    }
+
+    /// <summary>Batch 8: the species of our own that evolve from Galar's and Hisui's (Nos. 2810 to 2905), with Ursensei and the supplement's designs grown from regional forms (Nos. 5000 to 6999).</summary>
+    private static PokemonSpecies[] Galar => PokemonDatabase.Ours().Where(s => s.DexNumber is >= 2810 and <= 2905 or >= 5000 and < 7000).ToArray();
+
+    [Fact]
+    public void EverySpeciesOfOursOfGalarAndHisuiIsHandBuiltAndItsOwn()
+    {
+        Assert.Equal(58, Galar.Length);
+        foreach (var s in Galar)
+        {
+            Assert.True(PokemonModels.HasModel(s.Name), $"{s.Name} has no sculpt of its own");
+            Assert.Contains(s.Name, PokemonModels.Species);
+            Assert.Equal(s.Name, PokemonModels.Build(s.Name).Species);
+        }
+    }
+
+    [Fact]
+    public void EachGalarDecalCoversItsWholeSquare()
+    {
+        // As PokemonModelTests.EachDecalCoversItsWholeSquare, for this batch alone (that test walks every model)
+        foreach (var s in Galar)
+            foreach (var name in s.GenderDifferences ? new[] { s.Name, s.Name + PokemonLook.FemaleSuffix } : new[] { s.Name })
+            {
+                var m = PokemonModels.Get(name);
+                var uvs = m.DecalUVs!;
+                for (int d = 0; d < m.Decals.Count; d++)
+                {
+                    int col = d % m.AtlasColumns, row = d / m.AtlasColumns;
+                    var center = new System.Numerics.Vector2((col + 0.5f) / m.AtlasColumns, (row + 0.5f) / m.AtlasRows);
+                    var half = new System.Numerics.Vector2(0.25f / m.AtlasColumns, 0.25f / m.AtlasRows);
+                    bool left = false, right = false, top = false, bottom = false;
+                    foreach (var uv in uvs)
+                    {
+                        if (System.MathF.Abs(uv.X - center.X) > 2f * half.X || System.MathF.Abs(uv.Y - center.Y) > 2f * half.Y) continue;
+                        left |= uv.X <= center.X - half.X;
+                        right |= uv.X >= center.X + half.X;
+                        top |= uv.Y <= center.Y - half.Y;
+                        bottom |= uv.Y >= center.Y + half.Y;
+                    }
+                    Assert.True(left && right && top && bottom, $"{name}: decal {d} isn't covered");
+                }
+            }
+    }
+
+    [Fact]
+    public void AGalarFemaleLookIsKeptWhereTheForebearsIs()
+    {
+        // Indeedee's and Basculegion's females are forms of their own; Majordomee and Shoalwraith keep the difference as
+        // a look of the one species, sculpted from the forebear's female form
+        var flagged = Galar.Where(s => s.GenderDifferences).Select(s => s.Name).OrderBy(n => n).ToArray();
+        Assert.Equal(new[] { "Majordomee", "Shoalwraith" }, flagged);
+        foreach (var n in flagged)
+        {
+            Assert.Contains(n, PokemonLook.Females);
+            Assert.NotEqual(PokemonModels.Signature(n), PokemonModels.Signature(n + PokemonLook.FemaleSuffix));
+        }
+    }
 }

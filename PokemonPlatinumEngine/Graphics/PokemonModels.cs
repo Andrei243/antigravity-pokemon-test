@@ -822,7 +822,32 @@ internal static partial class PokemonModels
         "Ermilong", "Noctaugur", "Coccinova", "Orbweavix", "Abyssolux", "Totemsight", "Mimicedar", "Helianthra", "Mirelord", "Zenitheon",
         "Eclipseon", "Slowmonarch", "Wobbulwark", "Pinecitadel", "Ironwyrm", "Mastiffang", "Fugumace", "Guillotyne",
         "Fermentoise", "Atlascross", "Calderon", "Reefcrown", "Krakannon", "Sleighwing", "Raysail", "Rapierwing",
-        "Cerberhound", "Siegephant", "Muralist", "Gyrodrill", "Pastorine", "Raitenko", "Enkaiou", "Suiseiren"
+        "Cerberhound", "Siegephant", "Muralist", "Gyrodrill", "Pastorine", "Raitenko", "Enkaiou", "Suiseiren",
+        // Batch 6 (Kalos; PokemonModels.Ours.Kalos.cs)
+        "Excavabbit", "Blazemonarch", "Alpicorn", "Bambrawler", "Majesthound", "Occulynx", "Perfumelle", "Soufflair", "Mesmerquid", "Reefcolony", "Kelpdrake", "Salvoclaw", "Coronafrill", "Despotitan", "Borealosaur", "Faerieon", "Luchacondor", "Signalmus",
+        "Druzarion", "Chatelkey", "Sylvanshade", "Lanternhusk", "Glacitadel", "Sonarwing", "Ecosentinel",
+        // Batch 7 (Alola; PokemonModels.Ours.Alola.cs)
+        "Inspectoose", "Glacipincer", "Pollenoble", "Lupinacle", "Venomreef", "Claysteed",
+        "Diveweaver", "Orchimantis", "Lumishroom", "Smolderess", "Huggrizzle", "Wreathfey",
+        "Arborsage", "Scrummian", "Shogunpod", "Sandcitadel", "Cucumbrawl", "Somnikoala",
+        "Caldertoise", "Rollocupine", "Masqueradoll", "Chromagnash", "Elderdrake", "Galleonghast",
+        "Kokonui", "Lelenui", "Bulunui", "Fininui",
+        "Nihiliad", "Buzzcolossus", "Pheromuse", "Xurkigrove", "Celestrata", "Origamurai", "Devourmaw", "Naganapex", "Ziggurak", "Pyrocephalon",
+        // Batch 8 (Galar and Hisui, with the supplement's designs grown from regional forms; PokemonModels.Ours.Galar.cs)
+        "Larderous", "Reynardine", "Thistlewisp", "Ramsworth", "Juggernaw", "Voltcourser", "Pippinwyrm", "Crumbledrake", "Duneconda", "Gannetgulp",
+        "Rapierfin", "Amplipunk", "Furnapede", "Kraketsu", "Urngeist", "Jarlkatt", "Wraithreef", "Paladrake", "Runedolmen", "Patisserene",
+        "Phalanxion", "Voltechinus", "Auroramoth", "Henjourner", "Floeguin", "Majordomee", "Gorgehog", "Verdigrand", "Fulgurex", "Glacivolt",
+        "Abyssaurus", "Glacichthys", "Regifulgur", "Regidraconis", "Hoarsteed", "Shadesteed", "Wyrdstag", "Halberdon", "Shoalwraith", "Clifflasher",
+        "Spinarmada", "Enamorata", "Ursensei", "Glimmane", "Slowslinger", "Slowmagus", "Purifume", "Frostruma", "Snareflat", "Hypnoskye",
+        "Stridestorm", "Duskphoenix", "Obsidhound", "Apricharge", "Fandangleaf", "Spectrevix", "Augurhawk", "Bergbreaker",
+        // Batch 9 and its supplement (Paldea; PokemonModels.Ours.Paldea.cs)
+        "Trufflord", "Fortarach", "Locustorm", "Squeakshire", "Brioschund", "Bossquawk", "Pyropaladin", "Duskenblade",
+        "Thunderbelly", "Terawattrel", "Mastiffdon", "Graffitape", "Thornwraith", "Myceliarch", "Klawlossus",
+        "Habanerogue", "Khepristar", "Mirastrich", "Wugsextet", "Bomberon", "Zerofin", "Turbovroom", "Velocidrake", "Orthobore",
+        "Geodiadem", "Barrowhound", "Flamenkick", "Cetiberg", "Sashimaru", "Grandozo",
+        "Tatsushogun", "Clodkaiser", "Farigigiraf", "Dunsprawl", "Tuskendon", "Shriekpuff", "Fungoliath", "Banshemane", "Saurmoth",
+        "Lodestatic", "Treadnought", "Cryoparcel", "Gauntletron", "Hydrajet", "Fusionmoth", "Thornframe", "Bullionaire",
+        "Tabletruin", "Swordruin", "Vesselruin", "Beadruin", "Lunaroar", "Paladroid", "Chagamage", "Okidaimyo", "Munkiregent", "Fezantessa"
     };
 
     /// <summary>
@@ -905,6 +930,10 @@ internal static partial class PokemonModels
         "Malamar-Mega", "Barbaracle-Mega", "Dragalge-Mega", "Hawlucha-Mega", "Zygarde-Mega", "Diancie-Mega", "Crabominable-Mega", "Golisopod-Mega", "Drampa-Mega", "Magearna-Mega", "Magearna-Original-Mega",
         "Zeraora-Mega", "Falinks-Mega", "Scovillain-Mega", "Glimmora-Mega",
         "Tatsugiri-Curly-Mega", "Tatsugiri-Droopy-Mega", "Tatsugiri-Stretchy-Mega", "Baxcalibur-Mega",
+        // The Megas of our own (plan 06 · R20b, PokemonModels.Ours.Megas.cs)
+        "Typhlosion-Mega", "Torterra-Mega", "Infernape-Mega", "Empoleon-Mega", "Serperior-Mega", "Samurott-Mega",
+        "Decidueye-Mega", "Incineroar-Mega", "Primarina-Mega", "Rillaboom-Mega", "Cinderace-Mega", "Inteleon-Mega",
+        "Meowscarada-Mega", "Skeledirge-Mega", "Quaquaval-Mega",
         "Venusaur-Gmax", "Charizard-Gmax", "Blastoise-Gmax", "Butterfree-Gmax",
         "Pikachu-Gmax", "Meowth-Gmax", "Machamp-Gmax", "Gengar-Gmax", "Kingler-Gmax", "Lapras-Gmax", "Eevee-Gmax", "Snorlax-Gmax", "Garbodor-Gmax",
         "Melmetal-Gmax", "Rillaboom-Gmax", "Cinderace-Gmax", "Inteleon-Gmax", "Corviknight-Gmax", "Orbeetle-Gmax", "Drednaw-Gmax", "Coalossal-Gmax",
@@ -1161,6 +1190,14 @@ internal static partial class PokemonModels
         "KRAKANNON" => Krakannon(female: true),
         "CERBERHOUND" => Cerberhound(female: true),
         "SIEGEPHANT" => Siegephant(female: true),
+        // Batch 6: Pyroar's and Meowstic's females are forms, Blazemonarch's and Occulynx's looks of the one species
+        "BLAZEMONARCH" => Blazemonarch(female: true),
+        "OCCULYNX" => Occulynx(female: true),
+        // Batch 8: Indeedee's and Basculegion's females are forms of their own, Majordomee's and Shoalwraith's looks of the one species (by the data's flag)
+        "MAJORDOMEE" => Majordomee(female: true),
+        "SHOALWRAITH" => Shoalwraith(female: true),
+        // Batch 9: Oinkologne's female is a form of her own, Trufflord's a look of the same species (by the data's flag)
+        "TRUFFLORD" => Trufflord(female: true),
         // Plan 09 · L8: a flagged species with no sculpt of its own (none today) is generated, her by the rule of
         // PokemonGenomes.FemaleOf; a hand-built one missing above shows her male, which FemaleLookTests forbids
         _ => HasModel(species) ? Create(species) : PokemonGenerator.Build(species + PokemonPlatinumEngine.Models.PokemonLook.FemaleSuffix) ?? Create(species)
@@ -2557,6 +2594,8 @@ internal static partial class PokemonModels
         var pikachu when pikachu.StartsWith("PIKACHU-") && PikachuForms.Contains(pikachu) => Pikachu(Array.Find(Forms, f => f.Equals(pikachu, StringComparison.OrdinalIgnoreCase))),
         // A species of our own with a sculpt of its own (plan 03 · D14, PokemonModels.Ours.*.cs)
         _ when CreateOurs(species) is { } ours => ours,
+        // A Mega of our own (plan 06 · R20b, PokemonModels.Ours.Megas.cs)
+        _ when CreateOurMega(species.ToUpperInvariant()) is { } mega => mega,
         // A form that looks just like another form of its species shows that form's sculpt
         _ when LooksLike.TryGetValue(species, out var like) => Create(like),
         // A form of a hand-built species shows its species' model until it has one of its own (plan 03 · D11)

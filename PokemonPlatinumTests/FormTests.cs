@@ -29,7 +29,7 @@ public class FormTests
         Assert.Equal(2, forms.Count(f => f.Kind == FormKind.Primal));
         Assert.Equal(34, forms.Count(f => f.Kind == FormKind.Gigantamax));
         // Ours: a Mega Dynamax form for 63 of the Megas (plan 06 · R20c)
-        Assert.Equal(63, forms.Count(f => f.Kind == FormKind.MegaDynamax));
+        Assert.Equal(78, forms.Count(f => f.Kind == FormKind.MegaDynamax));
         Assert.Equal(57, forms.Count(f => f.Kind == FormKind.Regional));
 
         // Each answers to a name of its own, its species' and the form's, which no species has
@@ -193,10 +193,6 @@ public class FormTests
         Assert.Null(new SavedPokemonData { SpeciesName = "Rotom", Level = 25 }.ToPokemon().Form);
     }
 
-    /// <summary>The species whose Megas are our own (plan 06 · R20b), waiting for their sculpts.</summary>
-    private static string[] MegasOfOurOwn => new[] { "Typhlosion", "Torterra", "Infernape", "Empoleon", "Serperior", "Samurott", "Decidueye",
-        "Incineroar", "Primarina", "Rillaboom", "Cinderace", "Inteleon", "Meowscarada", "Skeledirge", "Quaquaval" };
-
     [Fact]
     public void EveryFormOfAHandBuiltSpeciesIsHandBuilt()
     {
@@ -228,9 +224,6 @@ public class FormTests
                 "Poltchageist-Artisan", "Sinistcha-Masterpiece" }
             .Concat(new[] { "Orange", "Yellow", "Green", "Blue", "Indigo", "Violet" }.Select(c => "Minior-" + c + "-Meteor"))
             .Concat(patterns.Select(p => "Scatterbug-" + p)).Concat(patterns.Select(p => "Spewpa-" + p))
-            // Plan 06 · R20b: the fifteen Megas of our own are data only so far; each shows its species' sculpt until the
-            // later session that sculpts them, which takes them off this list
-            .Concat(MegasOfOurOwn.Select(s => s + "-Mega"))
             // The Mega Dynamax forms (plan 06 · R20c) have no sculpts yet: a Pokémon in one asks for its Mega's model (Pokemon.ModelName),
             // and the name itself falls back to the species', as every form without a sculpt of its own does
             .Concat(PokemonDatabase.GetAll().SelectMany(s => s.Forms ?? new()).Where(f => f.Kind == FormKind.MegaDynamax).Select(f => f.Name)).ToArray();

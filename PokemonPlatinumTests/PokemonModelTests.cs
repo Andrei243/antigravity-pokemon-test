@@ -51,7 +51,20 @@ public class PokemonModelTests
         ["Stellamir"] = 0,
         ["Dogunarch"] = 7, ["Regimonolith"] = 0, ["Regiglacier"] = 0, ["Regiferrum"] = 0,
         // Batch 2 (Johto): Noctaugur's third eye on its brow, Cerberhound's two more heads
-        ["Noctaugur"] = 3, ["Cerberhound"] = 6
+        ["Noctaugur"] = 3, ["Cerberhound"] = 6,
+        // Batch 6 (Kalos): Reefcolony's two more heads at its shoulders, Sylvanshade's three eyes in its knot
+        ["Reefcolony"] = 6, ["Sylvanshade"] = 3,
+        // Batch 7 (Alola): the Ultra Beasts' heirs keep their forebears' faceless heads
+        ["Nihiliad"] = 0, ["Xurkigrove"] = 0, ["Celestrata"] = 0, ["Origamurai"] = 0, ["Pyrocephalon"] = 0,
+        ["Galleonghast"] = 1,
+        // Batch 8 (Galar and Hisui): a reef of three faces, a phalanx whose front rank shows its eyes, three bodies of gas, and the two giants
+        // whose faces are dots
+        ["Wraithreef"] = 6, ["Phalanxion"] = 6, ["Purifume"] = 6, ["Regifulgur"] = 0, ["Regidraconis"] = 0,
+        // Batch 9 (Paldea): six mice, six eels, Habanerogue's third head, Hydrajet's head at its tail; the eyeless forebears' heirs
+        ["Squeakshire"] = 12, ["Wugsextet"] = 12, ["Habanerogue"] = 6, ["Hydrajet"] = 8, ["Lodestatic"] = 3,
+        ["Orthobore"] = 0, ["Barrowhound"] = 0, ["Chagamage"] = 0,
+        // Plan 06 · R20b: Mega Inteleon's right eye is the lens of its scope
+        ["Inteleon-Mega"] = 1
     }.Concat(PokemonModels.Forms.Where(f => f.StartsWith("Unown-")).Select(f => KeyValuePair.Create(f, 1))).ToDictionary(e => e.Key, e => e.Value);
 
     /// <summary>
@@ -63,7 +76,9 @@ public class PokemonModelTests
     {
         ["Haunter"] = 3, ["Probopass"] = 3, ["Porygon-Z"] = 5, ["Alakazam-Mega"] = 6, ["Shedinja"] = 2, ["Hoopa-Unbound"] = 5,
         // Probopass's heir keeps its two Mini-Noses hovering free at its sides
-        ["Lodestarch"] = 3
+        ["Lodestarch"] = 3,
+        // Beadruin's ring of six beads floats round its body, as Chi-Yu's beads do round it in the original
+        ["Beadruin"] = 2
     };
 
     [Theory]
