@@ -868,6 +868,33 @@ natures; the Arena's bouts are judged after three turns). The round lives betwee
 | `venue finish won`, `venue finish lost`, `venue points` | Writes the venue's record (a round won counts, a loss ends the streak; `RESULT` and `{number}` the streak); hands over the Battle Points a round won earns (3, one more for each round won in a row before it, up to 10). |
 | `venue streak palace`, `venue best arena`, `venue end` | A venue's battles won in a row and the most ever (`{number}`); lets go of the round. |
 
+### The Battle Pike and the Battle Pyramid
+
+Plan 14 · B10; `docs/mechanics/rulings.md`, "The Battle Pike" and "The Battle Pyramid". Two more venues of the annex, entered at
+their desks (`BattleFrontierAnnex.txt`, `PikeDesk` and `PyramidDesk`) with three Pokémon that go in as copies at level 50 and stay
+as the round leaves them. The Pike's round (`Models/Frontier/BattlePike.cs`) is fourteen rooms, each behind one of three doors
+(`BattlePike.txt`: the hall's arrival gives the hint, its doors' triggers choose; `BattlePikeRoom.txt`: the room's arrival plays
+what is behind the door, its doorway north passes it). The Pyramid's (`Models/Frontier/BattlePyramid.cs`) is seven dark floors,
+each a map made from the round's seed (`BattlePyramidFloor.txt`: its arrival, its trainers, its wild Pokémon, its finds, its
+stairs). Both live as the host's `Pike` and `Pyramid` and are not saved.
+
+| Command | What it does |
+|---|---|
+| `pike enough`, `pike choose`, `pike check`, `pike begin` | As `venue`'s: three that could go in together, the team opened, two of a species (1) or the same item (2); the round begun (a round left unfinished ends the streak first). |
+| `pike active`, `pike hint`, `pike hintdoor` | 1 while a round is under way; the hint for the room to come, drawn once a room (0 nostalgia, 1 whispering, 2 Pokémon, 3 people, 4 the Pike Queen; `{number}` the room, 1 to 14); the door it is of (0 left, 1 middle, 2 right). |
+| `pike door 0`, `pike door 1`, `pike door 2` | Chooses that door: the room behind it is drawn and made ready; `RESULT` its kind. |
+| `pike room`, `pike opponents`, `pike fight` | The room's kind (0 a trainer, 1 a full rest, 2 a visitor, 3 a strange power, 4 a rest for some, 5 a wild Pokémon, 6 a hard trainer, 7 two trainers, 8 the Pike Queen; 255 none); stands its trainers as `opponent` and `opponent_2` (`{foe}`); its battle on the three as they are (`RESULT` 1 won, 2 run from, 0 lost). |
+| `pike queen`, `pike status`, `pike giver`, `pike healed`, `pike lost` | Which of her teams the Pike Queen brings to the room (0, 1, 2); the condition a strange power gave (its number, 0 none; `{foe}` the Pokémon, `{number}` how many); 1 for the Kirlia, 2 the Dusclops; how many a rest healed (`{number}`); 1 when all three have fainted. |
+| `pike passed`, `pike finish won`, `pike finish lost`, `pike points`, `pike streak`, `pike best`, `pike end` | Passes the room (`RESULT` 1 when it was the fourteenth); as `venue`'s: the record, the Battle Points, the rooms passed in a row and the most ever, the round let go. |
+| `pyramid enough`, `pyramid choose`, `pyramid check`, `pyramid begin` | As `pike`'s; `begin` also draws the seven floors' seeds. |
+| `pyramid active`, `pyramid enter`, `pyramid arrive`, `pyramid floor` | 1 while a round is under way; lays the floor the player is on, which a `warp "BattlePyramidFloor"` then goes to; puts the player on its way in; the floor, 1 to 7 (`{number}`). |
+| `pyramid opponent`, `pyramid fight` | 1 when whoever the script belongs to is a trainer of the floor not yet beaten (`{foe}`); their battle, or where the script belongs to nobody of the floor the Pyramid King's (`RESULT` 1 won, 0 lost). |
+| `pyramid wild`, `pyramid light`, `pyramid find` | The battle of the wild Pokémon met (1 won, 2 run from, 0 lost); widens the light after a battle won; uses the script's own find on the three (`{item}`, `{entrant}`; 0 when nobody needed it). |
+| `pyramid lost`, `pyramid climb`, `pyramid king` | 1 when all three have fainted; climbs the stairs (`RESULT` 1 once the seventh is climbed, `{number}` the floor come to); which of his teams the King brings to the top (0, 1, 2). |
+| `pyramid finish won`, `pyramid finish lost`, `pyramid points`, `pyramid streak`, `pyramid best`, `pyramid end` | As `pike`'s, the streak in floors. |
+
+A place's own `HiddenItem` script stands in for the common one when something hidden there is found (the Pyramid's finds).
+
 ### Amity Square's walk
 
 Plan 06 · R16c; `docs/mechanics/rulings.md`, "Amity Square's walk". The rules are `Overworld/AmitySquare.cs`, and what

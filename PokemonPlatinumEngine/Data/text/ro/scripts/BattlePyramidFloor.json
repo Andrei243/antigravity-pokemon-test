@@ -1,0 +1,134 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Battle Pyramid, floor {number}. The stairs up are somewhere in the dark."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Trainer": [
+    {
+      "en": [
+        "{foe} stepped out of the dark!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The light around {player} grew a little wider."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{foe} is catching their breath in the dark."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Wild": [
+    {
+      "en": [
+        "The light around {player} grew a little wider."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "HiddenItem": [
+    {
+      "en": [
+        "{player} found {item}! It was used on {entrant} at once."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} found {item}, but none of the three needed it, and it crumbled to dust."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Stairs": [
+    {
+      "en": [
+        "Brandon"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ha! You climbed my Pyramid in the dark and kept your nerve. I like that!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm Brandon, the Pyramid King. Now show me how you fight in the light!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Brandon"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What a climb! You've earned the view from up here."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} reached the top of the Battle Pyramid!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received {number} BP!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Down": [
+    {
+      "en": [
+        "{player}'s Pokémon can't go on. The climb ends here."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

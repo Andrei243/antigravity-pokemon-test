@@ -293,7 +293,8 @@ public static class FieldMoveRules
             SecretBase = map.SecretBaseSpots.ContainsKey((nx, ny)),
             Braille = map.BrailleSpots.TryGetValue((x, y), out var puzzle) ? puzzle.Move : null,
             Fog = map.WeatherAt(x, y) == FieldWeather.Fog,
-            Dark = Darkness.Covers(map),
+            // (Flash is no use where it lifts no dark: the Battle Pyramid's floors, plan 14 · B10)
+            Dark = Darkness.Covers(map) && map.FlashLifts,
             Surfing = walker.Mode == TravelMode.Surfing,
             Region = RegionDatabase.RegionOfMap(map.Name)?.Id ?? RegionDatabase.Sinnoh,
             FlyAllowed = area?.FlyAllowed ?? !map.IsIndoors,

@@ -352,6 +352,12 @@ public class Map
     public bool Lit { get; set; }
 
     /// <summary>
+    /// Whether Flash lifts this place's dark (plan 14 · B10): true everywhere but the Battle Pyramid's floors, whose dark
+    /// is the Pyramid's own and only widens as battles are won (<see cref="Models.Frontier.BattlePyramidChallenge.Light"/>).
+    /// </summary>
+    public bool FlashLifts { get; set; } = true;
+
+    /// <summary>
     /// Whether Defog has blown the fog away here: fog then reads as clear weather (<see cref="WeatherAt"/>), as the
     /// original sets the field's weather to clear. The game keeps it from <see cref="FieldMoveRules.DefogFlag"/>.
     /// </summary>

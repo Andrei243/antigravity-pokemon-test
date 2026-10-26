@@ -1,0 +1,123 @@
+{
+  "displayName": {
+    "en": [
+      "Battle Pike"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "opponent": {
+      "name": {
+        "en": [
+          "Trainer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "opponent_2": {
+      "name": {
+        "en": [
+          "Trainer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "attendant": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Rest while you can. The next door may not be so kind."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "visitor": {
+      "name": {
+        "en": [
+          "Visitor"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Oh, a challenger! Don't mind me. I only come to watch the doors."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "queen": {
+      "name": {
+        "en": [
+          "Lucy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "kirlia": {
+      "name": {
+        "en": [
+          "Kirlia"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "dusclops": {
+      "name": {
+        "en": [
+          "Dusclops"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

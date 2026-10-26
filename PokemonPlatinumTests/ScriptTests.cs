@@ -645,6 +645,49 @@ public class ScriptTests
           venue streak palace
           venue best arena
           venue end
+          pike enough
+          pike choose
+          pike check
+          pike begin
+          pike active
+          pike hint
+          pike hintdoor
+          pike door 1
+          pike room
+          pike opponents
+          pike fight
+          pike queen
+          pike status
+          pike giver
+          pike healed
+          pike lost
+          pike passed
+          pike finish won
+          pike points
+          pike streak
+          pike best
+          pike end
+          pyramid enough
+          pyramid choose
+          pyramid check
+          pyramid begin
+          pyramid active
+          pyramid enter
+          pyramid arrive
+          pyramid floor
+          pyramid opponent
+          pyramid fight
+          pyramid wild
+          pyramid light
+          pyramid find
+          pyramid climb
+          pyramid king
+          pyramid lost
+          pyramid finish lost
+          pyramid points
+          pyramid streak
+          pyramid best
+          pyramid end
         script Other
           end
         """;
@@ -1668,6 +1711,8 @@ public class ScriptTests
         public PokemonPlatinumEngine.Models.Frontier.BattleArcadeChallenge? Arcade { get => inner.Arcade; set => inner.Arcade = value; }
         public PokemonPlatinumEngine.Models.Frontier.BattleDomeChallenge? Dome { get => inner.Dome; set => inner.Dome = value; }
         public PokemonPlatinumEngine.Models.Frontier.BattleVenueChallenge? Venue { get => inner.Venue; set => inner.Venue = value; }
+        public PokemonPlatinumEngine.Models.Frontier.BattlePikeChallenge? Pike { get => inner.Pike; set => inner.Pike = value; }
+        public PokemonPlatinumEngine.Models.Frontier.BattlePyramidChallenge? Pyramid { get => inner.Pyramid; set => inner.Pyramid = value; }
         public void WalkWith(NPC? body, Pokemon? pokemon) => inner.WalkWith(body, pokemon);
         public int FrontierAct(string what, int number, NPC? subject) => inner.FrontierAct(what, number, subject);
         public IReadOnlyList<int> Entered => inner.Entered;

@@ -41,6 +41,8 @@ public partial class GameEngine
         flow.Hall = null;
         flow.Castle = null;
         flow.Arcade = null;
+        flow.Pike = null;
+        flow.Pyramid = null;
         flow.EnteredSlots = Array.Empty<int>();
         if (saved != null)
         {
@@ -163,19 +165,23 @@ public partial class GameEngine
         EndRadarChain();
         flow.ScriptOutcome = BattleOutcome.None;
         var trainers = foes.ToList();
+        // A wild Pokémon of the Battle Pike's or the Battle Pyramid's, met in place of a trainer (plan 14 · B10)
+        var wild = trainers.Count == 0 && conditions?.Wild is { } met ? new List<Pokemon> { met } : new List<Pokemon>();
         CharacterModels.Preload(trainers.Append(beside).OfType<Trainer>()
             .Select(t => CharacterStyles.Default.InBattle(t.TrainerClass, PlayerIdentity.CharacterFor(t.Look ?? "Trainer"))));
         eyeThemePlaying = false;
-        AudioManager.PlayMusic(MusicDirector.BattleRole(trainers.Select(t => t.TrainerClass)), immediate: true);
-        var shown = PrepareModels(trainers.SelectMany(t => t.Party.Members).Concat(beside?.Party.Members ?? Enumerable.Empty<Pokemon>()).Concat(team.Members));
+        if (wild.Count > 0) AudioManager.PlayWildBattleMusic(wild[0].Species);
+        else AudioManager.PlayMusic(MusicDirector.BattleRole(trainers.Select(t => t.TrainerClass)), immediate: true);
+        var shown = PrepareModels(trainers.SelectMany(t => t.Party.Members).Concat(wild).Concat(beside?.Party.Members ?? Enumerable.Empty<Pokemon>()).Concat(team.Members));
         // BATTLE_TYPE_FRONTIER: the Frontier's own way in, a Brain's even in a double, and the double's for anyone else's (plan 09 · L13)
         var meeting = new BattleMeeting
         {
             Trainers = BattleMeeting.Of(trainers),
+            WildSpecies = wild.Count > 0 ? wild[0].Species.Name : null,
             Double = doubles,
-            Frontier = true,
+            Frontier = wild.Count == 0,
             Terrain = Battle.Sim.BattleTerrain.Special,
-            TheirLevel = trainers[0].Party.Members[0].Level,
+            TheirLevel = wild.Count > 0 ? wild[0].Level : trainers[0].Party.Members[0].Level,
             OwnLevel = team.Members.FirstOrDefault()?.Level ?? 0
         };
         StartTransition(GameState.Battle, () =>
@@ -189,6 +195,7 @@ public partial class GameEngine
                 Place = PlaceName(),
                 Format = doubles ? BattleFormat.Double : BattleFormat.Single,
                 Trainers = trainers,
+                WildPokemon = wild,
                 Partner = beside,
                 Frontier = true,
                 // BACKGROUND_BATTLE_TOWER and TERRAIN_BATTLE_TOWER: one of the grounds of their own
@@ -222,7 +229,13 @@ public partial class GameEngine
     /// </summary>
     private void EndFrontierBattle()
     {
-        flow.ScriptOutcome = flow.Battle?.Result == BattleResult.PlayerVictory ? BattleOutcome.Won : BattleOutcome.Lost;
+        // (a wild Pokémon of the Pike's or the Pyramid's run from is fled, plan 14 · B10)
+        flow.ScriptOutcome = flow.Battle?.Result switch
+        {
+            BattleResult.PlayerVictory => BattleOutcome.Won,
+            BattleResult.PlayerRan => BattleOutcome.Fled,
+            _ => BattleOutcome.Lost
+        };
         // The turns it took, which the Battle Arcade scores a battle by (dto->totalTurnsElapsed)
         flow.ScriptTurns = flow.Battle?.Core.Turn ?? 0;
         flow.BattleMayBeLost = false;

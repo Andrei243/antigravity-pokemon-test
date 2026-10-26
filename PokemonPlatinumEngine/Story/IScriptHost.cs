@@ -747,6 +747,10 @@ public interface IScriptHost
     /// <summary>The round of the Battle Palace or the Battle Arena under way (plan 14 · B9); null while none is. A script's <c>venue</c> plays it.</summary>
     Models.Frontier.BattleVenueChallenge? Venue { get; set; }
 
+    /// <summary>The round of the Battle Pike and of the Battle Pyramid under way (plan 14 · B10); null while none is. A script's <c>pike</c> and <c>pyramid</c> play them.</summary>
+    Models.Frontier.BattlePikeChallenge? Pike { get; set; }
+    Models.Frontier.BattlePyramidChallenge? Pyramid { get; set; }
+
     /// <summary>
     /// A Pokémon of the team is out of its ball and walks behind the player as a thing of the map (plan 06 · R16c:
     /// Amity Square's <c>follower_mon</c>, dressed as it by <see cref="Follower.Dress"/>); null for both and it stops

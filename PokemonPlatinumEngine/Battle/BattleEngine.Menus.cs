@@ -610,7 +610,7 @@ public partial class BattleEngine
     private void AttemptRun()
     {
         // In the Battle Frontier RUN is a question: to give the match up, and lose it (COMMAND_SELECTION_RUN_SELECT_INIT)
-        if (IsFrontier)
+        if (IsFrontier && IsTrainerBattle)
         {
             AskToForfeit();
             return;

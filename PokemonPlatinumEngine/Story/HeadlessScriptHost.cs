@@ -1298,6 +1298,8 @@ public sealed class HeadlessScriptHost : IScriptHost
     public Models.Frontier.BattleArcadeChallenge? Arcade { get; set; }
     public Models.Frontier.BattleDomeChallenge? Dome { get; set; }
     public Models.Frontier.BattleVenueChallenge? Venue { get; set; }
+    public Models.Frontier.BattlePikeChallenge? Pike { get; set; }
+    public Models.Frontier.BattlePyramidChallenge? Pyramid { get; set; }
 
     /// <summary>The Pokémon of the team that walks behind the player, and the thing of the map it is (plan 06 · R16c).</summary>
     public Pokemon? Strolling { get; private set; }

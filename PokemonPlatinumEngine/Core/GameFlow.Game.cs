@@ -151,4 +151,6 @@ public sealed partial class GameFlow
     public BattleArcadeChallenge? Arcade { get; set; }
     public BattleDomeChallenge? Dome { get; set; }
     public BattleVenueChallenge? Venue { get; set; }
+    public BattlePikeChallenge? Pike { get; set; }
+    public BattlePyramidChallenge? Pyramid { get; set; }
 }

@@ -143,6 +143,8 @@ public enum Op
     Bracket,
     // The Battle Palace's and the Battle Arena's rounds of seven (plan 14 · B9): entered, drawn, fought battle by battle
     Venue,
+    // The Battle Pike's rooms of chance and the Battle Pyramid's floors (plan 14 · B10)
+    Pike, Pyramid,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

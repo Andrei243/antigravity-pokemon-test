@@ -1,0 +1,204 @@
+# A room of the Battle Pike (plan 14 · B10). docs/scripts.md describes the language; the lines are our own, on the beats
+# of Emerald's Battle Pike rooms (BattleFrontier_BattlePikeRoomNormal, BattleFrontier_BattlePikeRoomWildMons): what the
+# door chosen opened onto plays as the player comes in, and the doorway north leads on to the next three doors.
+#
+# What is behind the door was drawn as it was chosen (BattlePike.txt; Models/Frontier/BattlePike.cs, `pike door`): a
+# trainer, a hard one or two at once; a rest for all three or for some; a visitor who only talks; a Pokémon's strange power
+# that gives one or more a condition; a wild Pokémon; or the Pike Queen herself.
+
+
+script OnEnter
+  pike active
+  if result == 0 end
+  call Clear
+  place player 6 9 up
+  pike room
+  if result == 0 goto Battle
+  if result == 1 goto RestAll
+  if result == 2 goto Visitor
+  if result == 3 goto Power
+  if result == 4 goto RestSome
+  if result == 5 goto Wild
+  if result == 6 goto Hard
+  if result == 7 goto Double
+  if result == 8 goto Queen
+  end
+
+label Battle
+  pike opponents
+  setflag FLAG_BATTLE_PIKE_SHOW_OPPONENT
+  show opponent
+  text "{foe} was waiting in the room!"
+  pike fight
+  if result == 0 goto Lost
+  end
+
+label Hard
+  pike opponents
+  setflag FLAG_BATTLE_PIKE_SHOW_ATTENDANT
+  show attendant
+  setflag FLAG_BATTLE_PIKE_SHOW_OPPONENT
+  show opponent
+  speaker "Attendant"
+  say "Be careful. The Trainer in this room is far tougher than the rest."
+  text "{foe} was waiting in the room!"
+  pike fight
+  if result == 0 goto Lost
+  end
+
+label Double
+  pike opponents
+  setflag FLAG_BATTLE_PIKE_SHOW_OPPONENT
+  show opponent
+  setflag FLAG_BATTLE_PIKE_SHOW_OPPONENT_2
+  show opponent_2
+  text "Two Trainers were waiting in the room!"
+  pike fight
+  if result == 0 goto Lost
+  end
+
+label RestAll
+  setflag FLAG_BATTLE_PIKE_SHOW_ATTENDANT
+  show attendant
+  speaker "Attendant"
+  say "You look worn out. Please, let me take care of your Pokémon."
+  fanfare heal
+  say "All three are well again. Good luck behind the next door!"
+  end
+
+label RestSome
+  setflag FLAG_BATTLE_PIKE_SHOW_VISITOR
+  show visitor
+  pike healed
+  speaker "Gentleman"
+  if result == 0 goto NobodyToRest
+  say "Ah, a weary traveller. Allow me to look after a few of your Pokémon."
+  fanfare heal
+  say "There. {number} of them are well again."
+  end
+label NobodyToRest
+  say "Your Pokémon are in fine shape. There's nothing I can do for them."
+  end
+
+label Visitor
+  setflag FLAG_BATTLE_PIKE_SHOW_VISITOR
+  show visitor
+  speaker "Visitor"
+  say "Oh, hello! I'm only here to watch. I like to guess what's behind each door."
+  say "Whatever you find next, I hope it's kind to you!"
+  end
+
+label Power
+  setflag FLAG_BATTLE_PIKE_SHOW_VISITOR
+  show visitor
+  pike giver
+  if result == 2 goto ShowDusclops
+  setflag FLAG_BATTLE_PIKE_SHOW_KIRLIA
+  show kirlia
+  goto Struck
+label ShowDusclops
+  setflag FLAG_BATTLE_PIKE_SHOW_DUSCLOPS
+  show dusclops
+label Struck
+  speaker "Gentleman"
+  say "Welcome! My Pokémon has been dying to show off its strange power."
+  pike status
+  if result == 0 goto Missed
+  text "{foe} gave off a strange power!"
+  if result == 2 goto Poisoned
+  if result == 3 goto Burned
+  if result == 4 goto Paralysed
+  if result == 5 goto Asleep
+  text "{number} of your Pokémon froze solid!"
+  end
+label Poisoned
+  text "{number} of your Pokémon were badly poisoned!"
+  end
+label Burned
+  text "{number} of your Pokémon were burned!"
+  end
+label Paralysed
+  text "{number} of your Pokémon were paralysed!"
+  end
+label Asleep
+  text "{number} of your Pokémon fell asleep!"
+  end
+label Missed
+  say "Hmm. It seems your Pokémon shrugged it off. How dull!"
+  end
+
+label Wild
+  text "A wild Pokémon leapt out of the shadows!"
+  pike fight
+  if result == 0 goto Lost
+  end
+
+label Queen
+  setflag FLAG_BATTLE_PIKE_SHOW_QUEEN
+  show queen
+  pike healed
+  speaker "Lucy"
+  say "So you made it this far. Your luck held, but luck runs out."
+  say "I'm the Pike Queen. Let's see what you're really made of."
+  pike fight
+  if result == 0 goto Lost
+  speaker "Lucy"
+  say "...Fine. You won. Don't expect it to happen twice."
+  end
+
+label Lost
+  call Clear
+  pike finish lost
+  speaker "Attendant"
+  say "Your Pokémon can't go on. The round ends here."
+  pike end
+  fade out 0.6
+  warp "BattleFrontierAnnex" 2 7 left
+  fade in
+  end
+
+
+# Whoever the last room showed goes off the floor again
+script Clear
+  clearflag FLAG_BATTLE_PIKE_SHOW_OPPONENT
+  hide opponent
+  clearflag FLAG_BATTLE_PIKE_SHOW_OPPONENT_2
+  hide opponent_2
+  clearflag FLAG_BATTLE_PIKE_SHOW_ATTENDANT
+  hide attendant
+  clearflag FLAG_BATTLE_PIKE_SHOW_VISITOR
+  hide visitor
+  clearflag FLAG_BATTLE_PIKE_SHOW_QUEEN
+  hide queen
+  clearflag FLAG_BATTLE_PIKE_SHOW_KIRLIA
+  hide kirlia
+  clearflag FLAG_BATTLE_PIKE_SHOW_DUSCLOPS
+  hide dusclops
+  return
+
+
+# The doorway north: the room is passed, and the next three doors wait; the fourteenth wins the round
+script Exit
+  pike active
+  if result == 0 end
+  pike room
+  if result == 255 end
+  pike passed
+  if result == 1 goto RoundWon
+  fade out 0.4
+  warp "BattlePike" 6 9 up
+  fade in
+  end
+label RoundWon
+  call Clear
+  speaker "Attendant"
+  say "Fourteen rooms! You've passed the whole of the Battle Pike."
+  pike finish won
+  pike points
+  text "{player} received {number} BP!"
+  fanfare item
+  pike end
+  fade out 0.6
+  warp "BattleFrontierAnnex" 2 7 left
+  fade in
+  end

@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Battle Pike"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "attendant": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "No round is under way. The receptionist in the annex's lobby takes your three."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

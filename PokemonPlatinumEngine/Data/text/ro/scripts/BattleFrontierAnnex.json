@@ -358,5 +358,245 @@
         ""
       ]
     }
+  ],
+  "PikeDesk": [
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Battle Pike! Three doors, fourteen rooms, and luck as your fourth Pokémon."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You've passed {number} rooms in a row here. The Pike remembers you!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Would you like to take on the Battle Pike?",
+        "Enter",
+        "The rules",
+        "No"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You need three Pokémon that can take part, all of different species and holding different items."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "An Egg can't take part, and nor can {banned}."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please choose the three Pokémon you'll enter."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thank you! The first three doors are waiting. Good luck, and choose well!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry. The three entered must all be of different species."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry. No two of the three entered may hold the same item."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please come again. The doors will still be here, and still be hiding things."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your three go in at Level 50, or at their own level if it's lower. Nothing heals them unless a room does."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Before every room you choose one of three doors. Behind it there may be a battle, a rest, a wild Pokémon, or worse."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Pass fourteen rooms to win the round. If all three of yours faint, the round is over."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "PyramidDesk": [
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Battle Pyramid! Seven floors in the dark, and the stairs up somewhere on each."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You've climbed {number} floors in a row. The Pyramid King has heard of you!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Would you like to take on the Battle Pyramid?",
+        "Enter",
+        "The rules",
+        "No"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You need three Pokémon that can take part, all of different species and holding different items."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "An Egg can't take part, and nor can {banned}."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please choose the three Pokémon you'll enter."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thank you! The first floor has been laid out. Watch your step in the dark!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry. The three entered must all be of different species."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry. No two of the three entered may hold the same item."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please come again. The Pyramid changes every time, but it's always dark."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your three go in at Level 50, or at their own level if it's lower. Nothing heals them but what you find."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Each floor is dark. Every battle you win lets you see a little farther. Flash is no help in here."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Find the stairs on seven floors to win the round. If all three of yours faint, the round is over."
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

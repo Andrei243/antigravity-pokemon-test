@@ -1,0 +1,286 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "{foe} was waiting in the room!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Be careful. The Trainer in this room is far tougher than the rest."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{foe} was waiting in the room!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Two Trainers were waiting in the room!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You look worn out. Please, let me take care of your Pokémon."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "All three are well again. Good luck behind the next door!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Gentleman"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ah, a weary traveller. Allow me to look after a few of your Pokémon."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There. {number} of them are well again."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your Pokémon are in fine shape. There's nothing I can do for them."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Visitor"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, hello! I'm only here to watch. I like to guess what's behind each door."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Whatever you find next, I hope it's kind to you!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Gentleman"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome! My Pokémon has been dying to show off its strange power."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{foe} gave off a strange power!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{number} of your Pokémon froze solid!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{number} of your Pokémon were badly poisoned!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{number} of your Pokémon were burned!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{number} of your Pokémon were paralysed!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{number} of your Pokémon fell asleep!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hmm. It seems your Pokémon shrugged it off. How dull!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A wild Pokémon leapt out of the shadows!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Lucy"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "So you made it this far. Your luck held, but luck runs out."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm the Pike Queen. Let's see what you're really made of."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Lucy"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "...Fine. You won. Don't expect it to happen twice."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your Pokémon can't go on. The round ends here."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Exit": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Fourteen rooms! You've passed the whole of the Battle Pike."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received {number} BP!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

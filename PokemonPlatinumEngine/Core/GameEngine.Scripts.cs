@@ -905,10 +905,12 @@ public partial class GameEngine
     /// <summary>Goes to a tile of a map through a fade, as a door does: a script's warp.</summary>
     private void WarpTo(string mapName, int x, int y, Direction? facing)
     {
-        var target = MapDatabase.Get(mapName);
+        var target = MapNamed(mapName);
         PlayAreaMusic(target, x, y);
         StartTransition(GameState.Overworld, () =>
         {
+            // A floor of the Battle Pyramid is laid afresh under the same name: the last one's scene goes (plan 14 · B10)
+            if (target != flow.Map && target.Name == flow.Map.Name) world.Forget(target, 0, 0, target.Width, target.Height);
             flow.Map = target;
             flow.Player.SetPosition(x, y, facing ?? flow.Player.Facing);
             world.Life.Clear();

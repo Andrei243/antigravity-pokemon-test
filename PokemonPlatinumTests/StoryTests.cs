@@ -701,6 +701,8 @@ public class StoryTests
         // What looking at the Villa's furniture says, and the Catching Show's end (plan 06 · R16b)
         started.UnionWith(PokemonPlatinumEngine.Core.GameEngine.PastimeScripts.Select(s => Scripts.Find(s.Script, s.File)!.FullName));
         started.UnionWith(Enum.GetValues<FieldMove>().Select(FieldScripts.FromMenu).OfType<string>());
+        // The Battle Pyramid's floor: a wild Pokémon met, its trainers and its finds, on a map laid as the round goes (plan 14 · B10)
+        started.UnionWith(PokemonPlatinumEngine.Core.GameEngine.PyramidScripts);
         // A field move worked at a braille spot, which the party menu starts as the place's own script (plan 21 · H12, part a)
         foreach (var map in Walk.OwnMaps.Values)
             foreach (var (at, puzzle) in map.BrailleSpots)

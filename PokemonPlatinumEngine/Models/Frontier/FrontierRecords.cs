@@ -169,6 +169,10 @@ public sealed class FrontierRecords
     public VenueRecord Palace { get; set; } = new();
     public VenueRecord Arena { get; set; } = new();
 
+    /// <summary>The Battle Pike's and the Battle Pyramid's (plan 14 · B10): the Pike's streak counts rooms passed, the Pyramid's floors climbed.</summary>
+    public VenueRecord Pike { get; set; } = new();
+    public VenueRecord Pyramid { get; set; } = new();
+
     // ------------------------------------------------------------------ the numbers
 
     /// <summary><c>BattleFrontierSave_GetStat</c>.</summary>
