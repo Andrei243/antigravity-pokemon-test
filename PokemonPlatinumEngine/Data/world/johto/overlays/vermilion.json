@@ -1,0 +1,49 @@
+{
+  // Vermilion City as HeartGold has it three years on (plan 20 · J15, part b): a town of Johto's own map, come to by
+  // the S.S. Aqua from Olivine. Its Gym gives Kanto's Thunder Badge (vermilion_gym.txt). The roads out, Route 6 north
+  // and Route 11 east to Diglett's Cave, share their keys with FireRed's Kanto and wait for the session that opens
+  // them (HgWorld.Clashes); Suicune's stop, Eusine, Steven and the photographer wait for theirs
+  "area": "vermilion",
+  "bgmTrack": "kanto/vermilion",
+  "people": {
+    "t06_gsoldman1": {
+      "name": "Old Man",
+      "still": true,
+      "dialog": [
+        "My Machop is stamping the ground flat so I can build on it. It's been at it for years. I'm in no hurry."
+      ]
+    },
+    "t06_tsure_poke_static_machop": {
+      "name": "Machop",
+      "npcType": "Pokemon",
+      "species": "Machop",
+      "still": true,
+      "dialog": [ "Machop stamped the ground flat with all its might." ]
+    },
+    "t06_gsmiddleman1": {
+      "name": "Man",
+      "still": true,
+      "dialog": [
+        "East of town is Diglett's Cave, a tunnel the Diglett dug all the way through to Pewter City."
+      ]
+    },
+    "t06_gswoman1": {
+      "name": "Woman",
+      "dialog": [
+        "The sunsets over Vermilion's harbour are the best in Kanto. Stay till evening, and you'll see."
+      ]
+    },
+    "t06_gsman1": {
+      "name": "Man",
+      "dialog": [
+        "Lt. Surge, the Gym Leader, is a tough one. He hides his Gym's switches in the bins, of all places!"
+      ]
+    }
+  },
+  "signs": {
+    "T06_005+1": "Vermilion City\nA harbour where the sunsets glow red.",
+    "T06_006+1": "Vermilion City Pokémon Gym\nLeader: Lt. Surge\nA soldier who fights with thunder.",
+    "T06_007+1": "Pokémon Fan Club\nAll Pokémon lovers welcome!",
+    "T06_008+1": "Diglett's Cave\nThe way through to Pewter City."
+  }
+}

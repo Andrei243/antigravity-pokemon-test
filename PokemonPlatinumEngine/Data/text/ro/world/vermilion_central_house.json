@@ -1,0 +1,41 @@
+{
+  "people": {
+    "t06r0401_middlewoman1_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A big Snorlax used to sleep in front of Diglett's Cave. Nobody could get past until someone woke it up."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t06r0401_gsboy1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The S.S. Aqua's horn wakes me up every morning. I don't mind. It means somebody's coming home."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

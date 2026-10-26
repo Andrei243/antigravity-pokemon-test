@@ -1,0 +1,14 @@
+{
+  // A house by Vermilion City's harbour (plan 20 · J15, part b)
+  "area": "vermilion_south_house",
+  "bgmTrack": "kanto/vermilion",
+  "people": {
+    "t06r0601_gsgentleman": {
+      "name": "Gentleman",
+      "still": true,
+      "dialog": [
+        "In my younger days I sailed the world. Now I'm content to watch the ships come and go from my window."
+      ]
+    }
+  }
+}

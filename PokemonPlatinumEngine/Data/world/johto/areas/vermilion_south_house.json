@@ -1,0 +1,25 @@
+{
+  "key": "vermilion_south_house",
+  "index": 364,
+  "name": "Vermilion City",
+  "matrix": 95,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_C_KUCHIBA",
+  "nightMusic": "GS_C_KUCHIBA",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 8, "to": "vermilion", "toWarp": 5 }
+  ],
+  "objects": [
+    { "id": "t06r0601_gsgentleman", "looks": "gsgentleman", "movement": "0", "x": 5, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T06R0601_000+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

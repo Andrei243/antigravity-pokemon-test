@@ -1,0 +1,128 @@
+{
+  "people": {
+    "t06_gsoldman1": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Machop is stamping the ground flat so I can build on it. It's been at it for years. I'm in no hurry."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t06_tsure_poke_static_machop": {
+      "name": {
+        "en": [
+          "Machop"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Machop stamped the ground flat with all its might."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t06_gsmiddleman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "East of town is Diglett's Cave, a tunnel the Diglett dug all the way through to Pewter City."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t06_gswoman1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The sunsets over Vermilion's harbour are the best in Kanto. Stay till evening, and you'll see."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t06_gsman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Lt. Surge, the Gym Leader, is a tough one. He hides his Gym's switches in the bins, of all places!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T06_005+1": {
+      "en": [
+        "Vermilion City\nA harbour where the sunsets glow red."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T06_006+1": {
+      "en": [
+        "Vermilion City Pokémon Gym\nLeader: Lt. Surge\nA soldier who fights with thunder."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T06_007+1": {
+      "en": [
+        "Pokémon Fan Club\nAll Pokémon lovers welcome!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T06_008+1": {
+      "en": [
+        "Diglett's Cave\nThe way through to Pewter City."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

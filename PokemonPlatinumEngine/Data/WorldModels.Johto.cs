@@ -355,6 +355,24 @@ public static partial class WorldModels
         Ground("psentry_d", "a bell on a desk of the Pokéathlon Dome's reception"),
         Furniture("pc03", PropType.Computer, "a PC on a desk"),
         Furniture("stair_pc_u01", PropType.SideStairsUp, "stairs up"),
+
+        // ---------------------------------------------------------------- plan 20 · J15, part b: the S.S. Aqua and Vermilion
+        // City (kbc_: the original's Kuchiba), built as plan 19 · K5 builds FireRed's Vermilion
+        House("kbc_h01", Architecture.Portside, "a house of Vermilion City"),
+        House("kbc_h02", Architecture.Portside, "a house of Vermilion City"),
+        Built("kbc_love", BuildingKind.Hall, "the Pokémon Fan Club, a heart over its door", Architecture.Portside, sign: "FAN CLUB"),
+        Built("kbc_gym", BuildingKind.Gym, "the Vermilion Gym"),
+        Built("kbc_port", BuildingKind.Hall, "Vermilion's port hall, where the S.S. Aqua's passengers wait", Architecture.Portside),
+        Thing("aqua_go", PropType.Boat, "the S.S. Aqua at her quay"),
+        Ground("kbc_sl", "a flight of steps down to Vermilion's quays: its tiles draw it"),
+        Door("kbc_dr01"), Door("kbc_dr02"), Door("kbc_dr03"),
+        Built("kn_gate_a", BuildingKind.Gate, "the gate house at Vermilion City's north edge, to Route 6"),
+        Ground("kn_chika", "the mouth of Diglett's Cave on Route 11 (the route is not open: its tiles draw it)"),
+        Ground("maq_dr01", "a door off the S.S. Aqua's corridor: the warp's tile is the way"),
+        Ground("mg09_es1", "the Vermilion Gym's electric fittings on its walls: the room's walls draw them"),
+        Ground("mg09_es2", "the Vermilion Gym's electric fittings on its walls: the room's walls draw them"),
+        Ground("mp3_sb", "the timetable board of Vermilion's port hall: the wall draws it"),
+        Furniture("chair03", PropType.Chair, "a chair of the Pokémon Fan Club"),
     };
 
     private static readonly Dictionary<string, WorldModel> JohtoByName = JohtoTable.ToDictionary(m => m.Name, StringComparer.Ordinal);

@@ -1,0 +1,23 @@
+{
+  "people": {
+    "p01r0104_seaman_2": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to Vermilion City, the port of Kanto! The S.S. Aqua sails back to Olivine whenever you're ready."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,297 @@
+# The Vermilion Gym as HeartGold has it (plan 20 · J15, part b). docs/scripts.md describes the language; the lines are
+# our own, on HeartGold's beats (scr_seq_T06GYM0101).
+#
+# Lt. Surge stands behind two rows of electric gates, HeartGold's own objects (overlays/vermilion_gym.json). Two of the
+# fifteen bins in the hall hide their switches, as in FireRed's Gym (vermilion_city_gym.txt, whose puzzle this is):
+# the first is any bin, drawn on the game's own chance each time the Gym is come into, the second a bin beside it. The
+# first found opens the first lock (FLAG_MAP_LOCAL_JOHTO_VERMILION_GYM_FIRST_SWITCH); a wrong bin after it resets both
+# and draws the switches again; the second takes the gates away for good (FLAG_HIDE_VERMILION_GYM_STOPS, the flag
+# HeartGold hides them by). VAR_JOHTO_VERMILION_GYM_SWITCH_1 and _2 are the switches' bins (1 to 15, five to a row,
+# west to east, north to south) and VAR_JOHTO_VERMILION_GYM_CAN the bin last looked into: variables of ours, apart
+# from FireRed's Gym's.
+#
+# Lt. Surge battles for the Thunder Badge, which is Kanto's (`givebadge thunder of kanto`: HeartGold's Kanto is Johto's
+# maps, and its Badges are the region's own, the rulings' "HeartGold's Kanto, part b"), counts his three trainers
+# beaten and gives TM57, Charge Beam. A trainer who already holds the Badge from FireRed's Kanto battles him all the
+# same: whether he has been beaten here is FLAG_JOHTO_DEFEATED_LT_SURGE, a flag of ours.
+
+
+# HeartGold's arrival, as FireRed's OnTransition: the switches are drawn again each time the Gym is come into, until both are found.
+script OnEnter
+  if flag FLAG_HIDE_VERMILION_GYM_STOPS end
+  call DrawSwitches
+  end
+
+
+# The first switch on any of the fifteen bins, the second on a bin beside it.
+script DrawSwitches
+  random 15
+  setvar VAR_JOHTO_VERMILION_GYM_SWITCH_1 RESULT
+  addvar VAR_JOHTO_VERMILION_GYM_SWITCH_1 1
+  setvar VAR_JOHTO_VERMILION_GYM_SWITCH_2 VAR_JOHTO_VERMILION_GYM_SWITCH_1
+  if var VAR_JOHTO_VERMILION_GYM_SWITCH_1 == 1 goto Beside1
+  if var VAR_JOHTO_VERMILION_GYM_SWITCH_1 == 2 goto Beside2
+  if var VAR_JOHTO_VERMILION_GYM_SWITCH_1 == 3 goto Beside3
+  if var VAR_JOHTO_VERMILION_GYM_SWITCH_1 == 4 goto Beside4
+  if var VAR_JOHTO_VERMILION_GYM_SWITCH_1 == 5 goto Beside5
+  if var VAR_JOHTO_VERMILION_GYM_SWITCH_1 == 6 goto Beside6
+  if var VAR_JOHTO_VERMILION_GYM_SWITCH_1 == 7 goto Beside7
+  if var VAR_JOHTO_VERMILION_GYM_SWITCH_1 == 8 goto Beside8
+  if var VAR_JOHTO_VERMILION_GYM_SWITCH_1 == 9 goto Beside9
+  if var VAR_JOHTO_VERMILION_GYM_SWITCH_1 == 10 goto Beside10
+  if var VAR_JOHTO_VERMILION_GYM_SWITCH_1 == 11 goto Beside11
+  if var VAR_JOHTO_VERMILION_GYM_SWITCH_1 == 12 goto Beside12
+  if var VAR_JOHTO_VERMILION_GYM_SWITCH_1 == 13 goto Beside13
+  if var VAR_JOHTO_VERMILION_GYM_SWITCH_1 == 14 goto Beside14
+  if var VAR_JOHTO_VERMILION_GYM_SWITCH_1 == 15 goto Beside15
+  return
+label Beside1
+  random 2
+  if result == 0 setvar VAR_JOHTO_VERMILION_GYM_SWITCH_2 2
+  if result == 1 setvar VAR_JOHTO_VERMILION_GYM_SWITCH_2 6
+  return
+label Beside2
+  random 3
+  if result == 0 setvar VAR_JOHTO_VERMILION_GYM_SWITCH_2 1
+  if result == 1 setvar VAR_JOHTO_VERMILION_GYM_SWITCH_2 3
+  if result == 2 setvar VAR_JOHTO_VERMILION_GYM_SWITCH_2 7
+  return
+label Beside3
+  random 3
+  if result == 0 setvar VAR_JOHTO_VERMILION_GYM_SWITCH_2 2
+  if result == 1 setvar VAR_JOHTO_VERMILION_GYM_SWITCH_2 4
+  if result == 2 setvar VAR_JOHTO_VERMILION_GYM_SWITCH_2 8
+  return
+label Beside4
+  random 3
+  if result == 0 setvar VAR_JOHTO_VERMILION_GYM_SWITCH_2 3
+  if result == 1 setvar VAR_JOHTO_VERMILION_GYM_SWITCH_2 5
+  if result == 2 setvar VAR_JOHTO_VERMILION_GYM_SWITCH_2 9
+  return
+label Beside5
+  random 2
+  if result == 0 setvar VAR_JOHTO_VERMILION_GYM_SWITCH_2 4
+  if result == 1 setvar VAR_JOHTO_VERMILION_GYM_SWITCH_2 10
+  return
+label Beside6
+  random 3
+  if result == 0 setvar VAR_JOHTO_VERMILION_GYM_SWITCH_2 7
+  if result == 1 setvar VAR_JOHTO_VERMILION_GYM_SWITCH_2 1
+  if result == 2 setvar VAR_JOHTO_VERMILION_GYM_SWITCH_2 11
+  return
+label Beside7
+  random 4
+  if result == 0 setvar VAR_JOHTO_VERMILION_GYM_SWITCH_2 6
+  if result == 1 setvar VAR_JOHTO_VERMILION_GYM_SWITCH_2 8
+  if result == 2 setvar VAR_JOHTO_VERMILION_GYM_SWITCH_2 2
+  if result == 3 setvar VAR_JOHTO_VERMILION_GYM_SWITCH_2 12
+  return
+label Beside8
+  random 4
+  if result == 0 setvar VAR_JOHTO_VERMILION_GYM_SWITCH_2 7
+  if result == 1 setvar VAR_JOHTO_VERMILION_GYM_SWITCH_2 9
+  if result == 2 setvar VAR_JOHTO_VERMILION_GYM_SWITCH_2 3
+  if result == 3 setvar VAR_JOHTO_VERMILION_GYM_SWITCH_2 13
+  return
+label Beside9
+  random 4
+  if result == 0 setvar VAR_JOHTO_VERMILION_GYM_SWITCH_2 8
+  if result == 1 setvar VAR_JOHTO_VERMILION_GYM_SWITCH_2 10
+  if result == 2 setvar VAR_JOHTO_VERMILION_GYM_SWITCH_2 4
+  if result == 3 setvar VAR_JOHTO_VERMILION_GYM_SWITCH_2 14
+  return
+label Beside10
+  random 3
+  if result == 0 setvar VAR_JOHTO_VERMILION_GYM_SWITCH_2 9
+  if result == 1 setvar VAR_JOHTO_VERMILION_GYM_SWITCH_2 5
+  if result == 2 setvar VAR_JOHTO_VERMILION_GYM_SWITCH_2 15
+  return
+label Beside11
+  random 2
+  if result == 0 setvar VAR_JOHTO_VERMILION_GYM_SWITCH_2 12
+  if result == 1 setvar VAR_JOHTO_VERMILION_GYM_SWITCH_2 6
+  return
+label Beside12
+  random 3
+  if result == 0 setvar VAR_JOHTO_VERMILION_GYM_SWITCH_2 11
+  if result == 1 setvar VAR_JOHTO_VERMILION_GYM_SWITCH_2 13
+  if result == 2 setvar VAR_JOHTO_VERMILION_GYM_SWITCH_2 7
+  return
+label Beside13
+  random 3
+  if result == 0 setvar VAR_JOHTO_VERMILION_GYM_SWITCH_2 12
+  if result == 1 setvar VAR_JOHTO_VERMILION_GYM_SWITCH_2 14
+  if result == 2 setvar VAR_JOHTO_VERMILION_GYM_SWITCH_2 8
+  return
+label Beside14
+  random 3
+  if result == 0 setvar VAR_JOHTO_VERMILION_GYM_SWITCH_2 13
+  if result == 1 setvar VAR_JOHTO_VERMILION_GYM_SWITCH_2 15
+  if result == 2 setvar VAR_JOHTO_VERMILION_GYM_SWITCH_2 9
+  return
+label Beside15
+  random 2
+  if result == 0 setvar VAR_JOHTO_VERMILION_GYM_SWITCH_2 14
+  if result == 1 setvar VAR_JOHTO_VERMILION_GYM_SWITCH_2 10
+  return
+
+
+# The fifteen bins, each read where it stands (the overlay's `read`).
+script Can1
+  setvar VAR_JOHTO_VERMILION_GYM_CAN 1
+  call Can
+  end
+
+script Can2
+  setvar VAR_JOHTO_VERMILION_GYM_CAN 2
+  call Can
+  end
+
+script Can3
+  setvar VAR_JOHTO_VERMILION_GYM_CAN 3
+  call Can
+  end
+
+script Can4
+  setvar VAR_JOHTO_VERMILION_GYM_CAN 4
+  call Can
+  end
+
+script Can5
+  setvar VAR_JOHTO_VERMILION_GYM_CAN 5
+  call Can
+  end
+
+script Can6
+  setvar VAR_JOHTO_VERMILION_GYM_CAN 6
+  call Can
+  end
+
+script Can7
+  setvar VAR_JOHTO_VERMILION_GYM_CAN 7
+  call Can
+  end
+
+script Can8
+  setvar VAR_JOHTO_VERMILION_GYM_CAN 8
+  call Can
+  end
+
+script Can9
+  setvar VAR_JOHTO_VERMILION_GYM_CAN 9
+  call Can
+  end
+
+script Can10
+  setvar VAR_JOHTO_VERMILION_GYM_CAN 10
+  call Can
+  end
+
+script Can11
+  setvar VAR_JOHTO_VERMILION_GYM_CAN 11
+  call Can
+  end
+
+script Can12
+  setvar VAR_JOHTO_VERMILION_GYM_CAN 12
+  call Can
+  end
+
+script Can13
+  setvar VAR_JOHTO_VERMILION_GYM_CAN 13
+  call Can
+  end
+
+script Can14
+  setvar VAR_JOHTO_VERMILION_GYM_CAN 14
+  call Can
+  end
+
+script Can15
+  setvar VAR_JOHTO_VERMILION_GYM_CAN 15
+  call Can
+  end
+
+
+# A bin looked into.
+script Can
+  if flag FLAG_HIDE_VERMILION_GYM_STOPS goto Trash
+  if flag FLAG_MAP_LOCAL_JOHTO_VERMILION_GYM_FIRST_SWITCH goto Second
+  if var VAR_JOHTO_VERMILION_GYM_CAN == VAR_JOHTO_VERMILION_GYM_SWITCH_1 goto First
+label Trash
+  text "Nope! There's only rubbish in here."
+  return
+label First
+  text "Hey! There's a switch under the rubbish! {player} pressed it.\nThe first electric lock opened!"
+  sound "select"
+  setflag FLAG_MAP_LOCAL_JOHTO_VERMILION_GYM_FIRST_SWITCH
+  return
+label Second
+  if var VAR_JOHTO_VERMILION_GYM_CAN == VAR_JOHTO_VERMILION_GYM_SWITCH_2 goto Both
+  text "Nope! There's only rubbish in here.\nHey! The electric locks were reset!"
+  sound "error"
+  clearflag FLAG_MAP_LOCAL_JOHTO_VERMILION_GYM_FIRST_SWITCH
+  call DrawSwitches
+  return
+label Both
+  text "There's another switch under the rubbish! {player} pressed it.\nThe second electric lock opened, and the gates are down!"
+  sound "door_slide"
+  setflag FLAG_HIDE_VERMILION_GYM_STOPS
+  return
+
+
+script LtSurge
+  face t06gym0101_gsleader9 player
+  speaker "Lt. Surge"
+  if flag FLAG_JOHTO_DEFEATED_LT_SURGE goto Won
+  scene "Surge"
+  say "Hey, you! You came all the way from Johto? Ha! You've got guts, I'll give you that."
+  say "Electricity saved my hide more times than I can count. Now let's see you take a jolt of it!"
+  battle self as "johto_leader_lt_surge_lt__surge"
+  say "Whoa! That's some real power you've got! All right, you've earned it. Take the Thunder Badge!"
+  givebadge thunder of kanto
+  text "{player} received the Thunder Badge from Lt. Surge!"
+  setflag FLAG_JOHTO_DEFEATED_LT_SURGE
+  defeat "johto_guitarist_vincent"
+  defeat "johto_juggler_horton"
+  defeat "johto_gentleman_gregory"
+  endscene
+label Tm
+  say "And take this too. It's a move that charges you up while it hits!"
+  give "TM57"
+  setflag FLAG_JOHTO_GOT_TM57_FROM_SURGE
+  say "TM57 is Charge Beam. Every hit has a good chance to raise your Pokémon's Special Attack."
+  end
+label Won
+  if not flag FLAG_JOHTO_GOT_TM57_FROM_SURGE goto Tm
+  say "Electricity is mighty, but it's nothing against Ground types. Keep that in mind, and you'll go far!"
+  end
+
+
+# The guide by the door.
+script GymGuy
+  speaker "Gym Guide"
+  if flag FLAG_JOHTO_DEFEATED_LT_SURGE goto Won
+  say "Hey, champ! Welcome to Kanto! Lt. Surge has locked himself in behind electric gates."
+  say "The switches are hidden in the bins round the hall. Find the first, and the second is always right beside it!"
+  say "His Pokémon are Electric types, so a Ground type is your best friend here."
+  end
+label Won
+  say "What a shocking battle! You really lit Lt. Surge up."
+  end
+
+
+# The statues by the door.
+script Statue
+  if flag FLAG_JOHTO_DEFEATED_LT_SURGE goto Won
+  text "Vermilion City Pokémon Gym\nLeader: Lt. Surge"
+  end
+label Won
+  text "Vermilion City Pokémon Gym\nLeader: Lt. Surge\nWinning trainers: {player}"
+  end
+
+
+# The gates spoken to.
+script Gate
+  text "A beam of electricity crackles across the way. It must be switched off somewhere in the Gym."
+  end

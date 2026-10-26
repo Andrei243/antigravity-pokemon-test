@@ -1,0 +1,21 @@
+{
+  // A house in the north-west of Vermilion City (plan 20 · J15, part b): a fisherman and his boy
+  "area": "vermilion_fishing_dude_house",
+  "bgmTrack": "kanto/vermilion",
+  "people": {
+    "t06r0101_fishing_2": {
+      "name": "Fisherman",
+      "still": true,
+      "dialog": [
+        "I've fished every pier from Olivine to Vermilion. The trick is patience. The fish always bite in the end."
+      ]
+    },
+    "t06r0101_babyboy1_2": {
+      "name": "Boy",
+      "still": true,
+      "dialog": [
+        "Dad says I can have a rod of my own when I'm older. Then I'll catch a Gyarados!"
+      ]
+    }
+  }
+}

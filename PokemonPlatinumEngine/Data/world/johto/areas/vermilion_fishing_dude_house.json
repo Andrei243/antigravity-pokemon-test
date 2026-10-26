@@ -1,0 +1,26 @@
+{
+  "key": "vermilion_fishing_dude_house",
+  "index": 361,
+  "name": "Vermilion City",
+  "matrix": 95,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_C_KUCHIBA",
+  "nightMusic": "GS_C_KUCHIBA",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 8, "to": "vermilion", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "t06r0101_fishing_2", "looks": "fishing_2", "movement": "0", "x": 5, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T06R0101_000+1" },
+    { "id": "t06r0101_babyboy1_2", "looks": "babyboy1_2", "movement": "0", "x": 7, "z": 5, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "T06R0101_001+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

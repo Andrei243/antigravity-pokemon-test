@@ -1,0 +1,28 @@
+{
+  "key": "ss_aqua_vermilion_port_exterior",
+  "index": 387,
+  "name": "Vermilion City",
+  "matrix": 211,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "City",
+  "dayMusic": "GS_C_KUCHIBA",
+  "nightMusic": "GS_C_KUCHIBA",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 12, "z": 12, "to": "ss_aqua_vermilion_port_interior", "toWarp": 1 },
+    { "x": 23, "z": 17, "to": "ss_aqua_1f", "toWarp": 12 }
+  ],
+  "objects": [
+    { "id": "p01r0104_seaman_2", "looks": "seaman_2", "movement": "0", "x": 23, "z": 19, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "P01R0104_000+1" }
+  ],
+  "signs": [
+    { "x": 26, "z": 20, "type": 2, "script": "std_hiddenitem_p01r0104_iron", "item": "Iron", "flag": "FLAG_HIDDEN_ITEM_P01R0104_IRON" }
+  ],
+  "triggers": []
+}

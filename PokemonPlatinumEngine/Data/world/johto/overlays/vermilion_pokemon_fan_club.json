@@ -1,0 +1,47 @@
+{
+  // The Pokémon Fan Club (plan 20 · J15, part b): its chairman and members, each with a Pokémon to talk about. The
+  // lost item HeartGold hides on the floor waits for a later session
+  "area": "vermilion_pokemon_fan_club",
+  "bgmTrack": "kanto/vermilion",
+  "people": {
+    "t06r0301_gsgentleman": {
+      "name": "Chairman",
+      "still": true,
+      "dialog": [
+        "Welcome to the Pokémon Fan Club! I'm the chairman. Shall I tell you about my Rapidash? It runs like the wind..."
+      ]
+    },
+    "t06r0301_gswoman2": {
+      "name": "Woman",
+      "still": true,
+      "dialog": [
+        "The chairman could talk about his Pokémon all day. We usually let him."
+      ]
+    },
+    "t06r0301_gswoman1": {
+      "name": "Woman",
+      "still": true,
+      "dialog": [
+        "My Bayleef loves it when I brush its leaf. Look how happy it is!"
+      ]
+    },
+    "t06r0301_gsbigman": {
+      "name": "Man",
+      "still": true,
+      "dialog": [
+        "I joined the Fan Club because everyone here loves their Pokémon as much as I love mine."
+      ]
+    },
+    "t06r0301_tsure_poke_static_bayleef": {
+      "name": "Bayleef",
+      "npcType": "Pokemon",
+      "species": "Bayleef",
+      "still": true,
+      "dialog": [ "Bayleef gave a contented cry." ]
+    }
+  },
+  "signs": {
+    "T06R0301_005+1": "Members: Pokémon lovers of every kind. Rule one: let the chairman finish his stories.",
+    "T06R0301_006+1": "Rule two: never compare one member's Pokémon with another's."
+  }
+}

@@ -182,7 +182,7 @@ What an `if` can ask:
 | `yes`, `no` | The answer to the last `ask`. |
 | `result == 1` | What the last question, battle, handing-over or taking came to. |
 | `won`, `lost` | The last battle. |
-| `badge coal`, `badges >= 3` | The badges of the region the player is in (plan 18 · W2): a badge by its name in that region's file (`coal` in Sinnoh, `boulder` in Kanto), and how many of that region's are won. A name no region has is a mistake the parser tells; one the place's own region hasn't, `ScriptLibrary.Problems` tells. `badges of kanto >= 8` counts another region's by its name (plan 20 · J15: Mt. Silver's guard asks Kanto's beside Johto's). |
+| `badge coal`, `badges >= 3` | The badges of the region the player is in (plan 18 · W2): a badge by its name in that region's file (`coal` in Sinnoh, `boulder` in Kanto), and how many of that region's are won. A name no region has is a mistake the parser tells; one the place's own region hasn't, `ScriptLibrary.Problems` tells. `badges of kanto >= 8` counts another region's by its name (plan 20 · J15: Mt. Silver's guard asks Kanto's beside Johto's), and `badge thunder of kanto` one badge of another region (plan 20 · J15, part b). |
 | `movebadge "Cut"` | The Badge a field move needs outside battle in the region the player is in is won, or that region asks none (plan 19 · K4, part b; `FieldMoveRules.BadgeFor`, the region's `gates`): the Forest Badge for Cut in Sinnoh, the Cascade Badge in Kanto. The common scripts of the obstacles ask this, never a Badge by its name. |
 | `item "Potion"`, `item "Coupon 1" >= 3` | The bag holds it (that many). |
 | `party < 6`, `has "Starly"`, `knows "Cut"` | The team's size, a species on it, a move one of them knows. |
@@ -235,7 +235,7 @@ on leaving any place), `FLAG_FLASH_ACTIVE` and `FLAG_DEFOG_ACTIVE` (cleared on g
 | `givepokemon "Starly" 4` | Onto the team, or to the PC when the team is full. `RESULT` is 1 or 2. The words and the fanfare are the script's. |
 | `givepokemon "Castform" 25 holding "Mystic Water"` | The same with an item in its hand (plan 21 · H6: the Weather Institute's Castform, as Emerald gives it). |
 | `givepokemon "Dratini" 15 knowing "Extreme Speed"` | The same with a move in the place of its first (plan 20 · J11, part c: the Dragon Shrine's Dratini, as HeartGold's `SetMonMove` puts it); `holding` and `knowing` may both be given, in either order. A move the data doesn't have is a problem of the library's. |
-| `givebadge coal` | Gives a badge of the region the player is in, by its name in that region's file (plan 18 · W2), with its fanfare. |
+| `givebadge coal` | Gives a badge of the region the player is in, by its name in that region's file (plan 18 · W2), with its fanfare; `givebadge thunder of kanto` gives another region's (plan 20 · J15, part b: HeartGold's Kanto Gyms, Johto's maps, give Kanto's Badges). |
 | `givemoney 500`, `takemoney 500` | `takemoney` takes all of it or nothing; `RESULT` says which. |
 | `heal` | The whole team. |
 | `seen "Dialga"` | The Pokédex has the species as seen, without a word and without a battle (plan 02 · S12; the original's `SetSpeciesSeen`, for a Pokémon a scene shows: Dialga and Palkia at Spear Pillar). |

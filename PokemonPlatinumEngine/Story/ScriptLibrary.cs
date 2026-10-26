@@ -403,7 +403,7 @@ public sealed class ScriptLibrary
                     case Op.Sound when soundExists != null && !soundExists(i.Name):
                         Wrong(i, $"there is no sound '{i.Name}'");
                         break;
-                    case Op.GiveBadge when NoBadge(script.File, i.Name) is { } why:
+                    case Op.GiveBadge when i.Other == null && NoBadge(script.File, i.Name) is { } why:
                         Wrong(i, why);
                         break;
                 }
@@ -424,7 +424,7 @@ public sealed class ScriptLibrary
                     case Query.Knows when MoveDatabase.Get(c.Name) == null:
                         Wrong(i, $"there is no move '{c.Name}'");
                         break;
-                    case Query.Badge when NoBadge(script.File, c.Name) is { } why:
+                    case Query.Badge when c.Other == null && NoBadge(script.File, c.Name) is { } why:
                         Wrong(i, why);
                         break;
                 }

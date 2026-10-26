@@ -1,0 +1,27 @@
+# Vermilion City's port hall (plan 20 · J15, part b). docs/scripts.md describes the language; the lines are our own,
+# on HeartGold's beats (scr_seq_P01R0103).
+#
+# The sailor before the quay lets by anyone with passage on the S.S. Aqua (FLAG_JOHTO_SS_AQUA_PASSAGE, which Olivine's
+# port hall gives a Champion of Johto), stepping aside for good the first time, as Olivine's does.
+
+
+script OnEnter
+  if not flag FLAG_JOHTO_SS_AQUA_PASSAGE end
+  place p01r0103_seaman_2 8 10 left
+  setflag FLAG_MAP_LOCAL_JOHTO_VERMILION_PORT_SAILOR_ASIDE
+  end
+
+
+script Sailor
+  face p01r0103_seaman_2 player
+  speaker "Sailor"
+  if not flag FLAG_JOHTO_SS_AQUA_PASSAGE goto Shut
+  say "Bound back to Johto? The S.S. Aqua is at the quay, ready to sail for Olivine City."
+  if flag FLAG_MAP_LOCAL_JOHTO_VERMILION_PORT_SAILOR_ASIDE end
+  walk self down 1 right 1
+  face p01r0103_seaman_2 left
+  setflag FLAG_MAP_LOCAL_JOHTO_VERMILION_PORT_SAILOR_ASIDE
+  end
+label Shut
+  say "The S.S. Aqua sails from here to Olivine City in Johto. Only those with passage may board."
+  end

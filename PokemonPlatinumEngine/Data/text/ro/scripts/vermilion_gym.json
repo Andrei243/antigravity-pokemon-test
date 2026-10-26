@@ -1,0 +1,172 @@
+{
+  "Can": [
+    {
+      "en": [
+        "Nope! There's only rubbish in here."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hey! There's a switch under the rubbish! {player} pressed it.\nThe first electric lock opened!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Nope! There's only rubbish in here.\nHey! The electric locks were reset!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There's another switch under the rubbish! {player} pressed it.\nThe second electric lock opened, and the gates are down!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "LtSurge": [
+    {
+      "en": [
+        "Lt. Surge"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hey, you! You came all the way from Johto? Ha! You've got guts, I'll give you that."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Electricity saved my hide more times than I can count. Now let's see you take a jolt of it!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Whoa! That's some real power you've got! All right, you've earned it. Take the Thunder Badge!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Thunder Badge from Lt. Surge!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And take this too. It's a move that charges you up while it hits!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "TM57 is Charge Beam. Every hit has a good chance to raise your Pokémon's Special Attack."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Electricity is mighty, but it's nothing against Ground types. Keep that in mind, and you'll go far!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "GymGuy": [
+    {
+      "en": [
+        "Gym Guide"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hey, champ! Welcome to Kanto! Lt. Surge has locked himself in behind electric gates."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The switches are hidden in the bins round the hall. Find the first, and the second is always right beside it!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "His Pokémon are Electric types, so a Ground type is your best friend here."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What a shocking battle! You really lit Lt. Surge up."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Statue": [
+    {
+      "en": [
+        "Vermilion City Pokémon Gym\nLeader: Lt. Surge"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Vermilion City Pokémon Gym\nLeader: Lt. Surge\nWinning trainers: {player}"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Gate": [
+    {
+      "en": [
+        "A beam of electricity crackles across the way. It must be switched off somewhere in the Gym."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

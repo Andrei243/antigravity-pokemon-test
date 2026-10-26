@@ -87,6 +87,17 @@ partial class Harness
             engine.NewGameRegion = "Sinnoh";
             return;
         }
+        // JOHTO_FROM=kanto shoots only plan 20 · J15, part b (the S.S. Aqua to Vermilion City and Lt. Surge's Gym)
+        if (Environment.GetEnvironmentVariable("JOHTO_FROM") == "kanto")
+        {
+            engine.NewGameRegion = "Johto";
+            engine.StartNewGame();
+            game.SaveSlot = 1;
+            game.LocationSign.Hide();
+            JohtoKantoShots();
+            engine.NewGameRegion = "Sinnoh";
+            return;
+        }
         // JOHTO_FROM=partb shoots only plan 20 · J13, part b (Mt. Mortar's Tyrogue, Blackthorn's house of moves)
         if (Environment.GetEnvironmentVariable("JOHTO_FROM") == "partb")
         {

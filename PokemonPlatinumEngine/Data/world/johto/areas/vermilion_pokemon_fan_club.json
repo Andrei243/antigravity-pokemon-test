@@ -1,0 +1,34 @@
+{
+  "key": "vermilion_pokemon_fan_club",
+  "index": 362,
+  "name": "Vermilion City",
+  "matrix": 185,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_C_KUCHIBA",
+  "nightMusic": "GS_C_KUCHIBA",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 7, "z": 12, "to": "vermilion", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "t06r0301_gsgentleman", "looks": "gsgentleman", "movement": "0", "x": 14, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T06R0301_000+1" },
+    { "id": "t06r0301_gswoman2", "looks": "gswoman2", "movement": "0", "x": 12, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T06R0301_001+1" },
+    { "id": "t06r0301_gswoman1", "looks": "gswoman1", "movement": "0", "x": 3, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T06R0301_003+1" },
+    { "id": "t06r0301_gsbigman", "looks": "gsbigman", "movement": "0", "x": 5, "z": 8, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "T06R0301_002+1" },
+    { "id": "t06r0301_tsure_poke_static_bayleef", "looks": "follower_mon_static_bayleef", "movement": "42", "x": 4, "z": 4, "facing": 1, "rangeX": 2, "rangeZ": 2, "script": "T06R0301_004+1" },
+    { "id": "t06r0301_mono_pip", "looks": "mono_pip", "movement": "0", "x": 6, "z": 7, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_VERMILION_FAN_CLUB_LOST_ITEM", "script": "0" }
+  ],
+  "signs": [
+    { "x": 4, "z": 2, "type": 0, "script": "T06R0301_006+1" },
+    { "x": 10, "z": 2, "type": 0, "script": "T06R0301_005+1" },
+    { "x": 6, "z": 7, "type": 0, "script": "T06R0301_007+1" }
+  ],
+  "triggers": []
+}

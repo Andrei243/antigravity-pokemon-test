@@ -1,0 +1,104 @@
+{
+  "key": "vermilion",
+  "index": 54,
+  "name": "Vermilion City",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "City",
+  "dayMusic": "GS_C_KUCHIBA",
+  "nightMusic": "GS_C_KUCHIBA",
+  "encounters": "T06",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "surfSwarm": "Wingull",
+  "fishSwarm": "Magikarp",
+  "water": [
+    { "species": "Tentacool", "level": 35, "maxLevel": 35 },
+    { "species": "Tentacool", "level": 30, "maxLevel": 30 },
+    { "species": "Tentacruel", "level": 35, "maxLevel": 35 },
+    { "species": "Tentacruel", "level": 35, "maxLevel": 35 },
+    { "species": "Tentacruel", "level": 35, "maxLevel": 35 }
+  ],
+  "waterRate": 15,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 10 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Tentacool", "level": 20, "maxLevel": 20 },
+    { "species": "Chinchou", "level": 20, "maxLevel": 20 },
+    { "species": "Shellder", "level": 20, "maxLevel": 20 },
+    { "species": "Chinchou", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Chinchou", "level": 40, "maxLevel": 40 },
+    { "species": "Shellder", "level": 40, "maxLevel": 40 },
+    { "species": "Tentacruel", "level": 40, "maxLevel": 40 },
+    { "species": "Lanturn", "level": 40, "maxLevel": 40 },
+    { "species": "Tentacruel", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "rockSmash": [
+    { "species": "Diglett", "level": 24, "maxLevel": 37 },
+    { "species": "Shuckle", "level": 32, "maxLevel": 35 }
+  ],
+  "rockSmashRate": 40,
+  "warps": [
+    { "x": 1292, "z": 294, "to": "vermilion_fishing_dude_house", "toWarp": 0 },
+    { "x": 1297, "z": 294, "to": "vermilion_pokecenter_1f", "toWarp": 0 },
+    { "x": 1293, "z": 309, "to": "vermilion_pokemon_fan_club", "toWarp": 0 },
+    { "x": 1301, "z": 309, "to": "vermilion_central_house", "toWarp": 0 },
+    { "x": 1310, "z": 309, "to": "vermilion_pokemart", "toWarp": 0 },
+    { "x": 1310, "z": 318, "to": "vermilion_south_house", "toWarp": 0 },
+    { "x": 1295, "z": 319, "to": "vermilion_gym", "toWarp": 0 },
+    { "x": 1309, "z": 340, "to": "ss_aqua_vermilion_port_interior", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "t06_gsoldman1", "looks": "gsoldman1", "movement": "0", "x": 1316, "z": 296, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T06_003+1" },
+    { "id": "t06_gsmiddleman1", "looks": "gsmiddleman1", "movement": "0", "x": 1326, "z": 309, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T06_000+1" },
+    { "id": "t06_gswoman1", "looks": "gswoman1", "movement": "3", "x": 1307, "z": 306, "facing": 1, "rangeX": 1, "rangeZ": 3, "script": "T06_001+1" },
+    { "id": "t06_gsman1", "looks": "gsman1", "movement": "3", "x": 1301, "z": 315, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "T06_002+1" },
+    { "id": "t06_tsure_poke_static_machop", "looks": "follower_mon_static_machop", "movement": "38", "x": 1318, "z": 298, "facing": 1, "rangeX": 2, "rangeZ": 2, "script": "T06_004+1" },
+    { "id": "t06_breakrock", "looks": "breakrock", "movement": "0", "x": 1320, "z": 306, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_010", "script": "std_field_rock_smash" },
+    { "id": "t06_breakrock_2", "looks": "breakrock", "movement": "0", "x": 1325, "z": 300, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_011", "script": "std_field_rock_smash" },
+    { "id": "t06_breakrock_3", "looks": "breakrock", "movement": "0", "x": 1326, "z": 301, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_012", "script": "std_field_rock_smash" },
+    { "id": "t06_breakrock_4", "looks": "breakrock", "movement": "0", "x": 1319, "z": 306, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_013", "script": "std_field_rock_smash" },
+    { "id": "t06_breakrock_5", "looks": "breakrock", "movement": "0", "x": 1324, "z": 305, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_014", "script": "std_field_rock_smash" },
+    { "id": "t06_breakrock_6", "looks": "breakrock", "movement": "0", "x": 1326, "z": 297, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_015", "script": "std_field_rock_smash" },
+    { "id": "t06_tree", "looks": "tree", "movement": "0", "x": 1300, "z": 319, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_016", "script": "std_field_cut" },
+    { "id": "t06_monstarball", "looks": "monstarball", "movement": "0", "x": 1321, "z": 328, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_T06_LUCK_INCENSE", "item": "Luck Incense", "script": "std_itemball_t06_luck_incense" },
+    { "id": "t06_monstarball_2", "looks": "monstarball", "movement": "0", "x": 1336, "z": 327, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_T06_STICKY_BARB", "item": "Sticky Barb", "script": "std_itemball_t06_sticky_barb" },
+    { "id": "t06_gsmiddleman1_2", "looks": "gsmiddleman1", "movement": "14", "x": 1323, "z": 305, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CAMERON", "script": "T06_010+1" },
+    { "id": "t06_tsure_poke_static_suicune", "looks": "follower_mon_static_suicune", "movement": "0", "x": 1330, "z": 328, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_VERMILION_SUICUNE", "script": "0" },
+    { "id": "t06_minaki", "looks": "minaki", "movement": "0", "x": 1325, "z": 321, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_VERMILION_EUSINE", "script": "0" },
+    { "id": "t06_minaki_2", "looks": "minaki", "movement": "0", "x": 1318, "z": 332, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_VERMILION_EUSINE_2", "script": "0" },
+    { "id": "t06_daigo", "looks": "daigo", "movement": "0", "x": 1298, "z": 311, "facing": 2, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_VERMILION_CITY_STEVEN", "script": "0" }
+  ],
+  "signs": [
+    { "x": 1298, "z": 320, "type": 1, "script": "T06_006+1" },
+    { "x": 1296, "z": 309, "type": 1, "script": "T06_007+1" },
+    { "x": 1324, "z": 310, "type": 1, "script": "T06_008+1" },
+    { "x": 1304, "z": 299, "type": 1, "script": "T06_005+1" },
+    { "x": 1324, "z": 306, "type": 2, "script": "std_hiddenitem_t06_full_heal", "item": "Full Heal", "flag": "FLAG_HIDDEN_ITEM_T06_FULL_HEAL" },
+    { "x": 1318, "z": 323, "type": 2, "script": "std_hiddenitem_t06_heart_scale", "item": "Heart Scale", "flag": "FLAG_HIDDEN_ITEM_T06_HEART_SCALE" },
+    { "x": 1312, "z": 336, "type": 2, "script": "std_hiddenitem_t06_pearl", "item": "Pearl", "flag": "FLAG_HIDDEN_ITEM_T06_PEARL" },
+    { "x": 1313, "z": 335, "type": 2, "script": "std_hiddenitem_t06_pearl_2", "item": "Pearl", "flag": "FLAG_HIDDEN_ITEM_T06_PEARL_2" },
+    { "x": 1315, "z": 335, "type": 2, "script": "std_hiddenitem_t06_big_pearl", "item": "Big Pearl", "flag": "FLAG_HIDDEN_ITEM_T06_BIG_PEARL" }
+  ],
+  "triggers": [
+    { "x": 1323, "z": 331, "width": 1, "depth": 3, "script": "T06_011+1", "variable": "VAR_UNK_4070", "value": "1" },
+    { "x": 1324, "z": 323, "width": 3, "depth": 1, "script": "T06_012+1", "variable": "VAR_UNK_4071", "value": "1" },
+    { "x": 1334, "z": 326, "width": 1, "depth": 3, "script": "T06_011+1", "variable": "VAR_UNK_4070", "value": "1" }
+  ]
+}

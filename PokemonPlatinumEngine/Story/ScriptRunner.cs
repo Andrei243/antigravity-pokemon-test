@@ -583,8 +583,12 @@ public sealed partial class ScriptRunner
                 break;
             }
             case Op.GiveBadge:
-                if (StoryState.FindBadge(host.Region, i.Name) < 0) throw Wrong(i, $"{host.Region} has no badge '{i.Name}'");
-                story.GiveBadge(host.Region, i.Name);
+            {
+                // ...of another region where the line names one (plan 20 · J15, part b)
+                string badgeRegion = i.Other ?? host.Region;
+                if (StoryState.FindBadge(badgeRegion, i.Name) < 0) throw Wrong(i, $"{badgeRegion} has no badge '{i.Name}'");
+                story.GiveBadge(badgeRegion, i.Name);
+            }
                 host.Fanfare(MusicRole.FanfareBadge);
                 host.Milestone(AutosaveMoment.Badge);
                 break;
@@ -2166,7 +2170,7 @@ public sealed partial class ScriptRunner
         {
             Query.Flag => story.Has(c.Name),
             Query.Var => Condition.Holds(Value(c.Name), c.Compare, c.Other != null ? Value(c.Other) : c.Number),
-            Query.Badge => StoryState.FindBadge(host.Region, c.Name) is var badge and >= 0 ? story.HasBadge(host.Region, badge) : throw Wrong(at, $"{host.Region} has no badge '{c.Name}'"),
+            Query.Badge => StoryState.FindBadge(c.Other ?? host.Region, c.Name) is var badge and >= 0 ? story.HasBadge(c.Other ?? host.Region, badge) : throw Wrong(at, $"{c.Other ?? host.Region} has no badge '{c.Name}'"),
             Query.Badges => Condition.Holds(story.BadgeCount(string.IsNullOrEmpty(c.Name) ? host.Region : c.Name), c.Compare, c.Number),
             Query.MoveBadge => FieldMoveRules.BadgeFor(FieldMoveRules.Of(c.Name)!.Value, host.Region) is not { } needed
                 || StoryState.FindBadge(host.Region, needed) is var index and >= 0 && story.HasBadge(host.Region, index),
