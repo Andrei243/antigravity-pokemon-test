@@ -478,7 +478,7 @@ public partial class GameEngine
         // handed copies, and the trainers of the map keep their teams at their game's levels
         if (CrossedLevels() is { } levels)
         {
-            trainers = trainers.Select(t => t.Relevelled(levels.Map)).ToList();
+            trainers = trainers.Select(t => t.Id.EndsWith(Battle.Sim.BattleCore.BeyondSuffix, StringComparison.Ordinal) ? t : t.Relevelled(levels.Map)).ToList();
             trainer = trainers[0];
             partner = partner?.Relevelled(levels.Map);
         }
