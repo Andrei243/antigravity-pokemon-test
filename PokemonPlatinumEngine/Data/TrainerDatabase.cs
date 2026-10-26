@@ -243,6 +243,9 @@ public static class TrainerDatabase
     /// <summary>What a rematch team's id adds, and what a Champion's Mega Dynamax team's adds in its place (plan 06 · R20c, <c>BattleCore.MegaMaxTeamOf</c>).</summary>
     public const string RematchSuffix = "_rematch", MegaMaxSuffix = "_megamax";
 
+    /// <summary>What a League's team beyond adds (plan 03 · D15-T, <c>BattleCore.BeyondTeamOf</c>), and what a first battle's id of Kanto's Champion holds.</summary>
+    public const string BeyondSuffix = "_beyond", FirstMarker = "_first";
+
     public static bool IsRivalAsChampion(TrainerRecord record) =>
         record.Class == "Champion" && record.Id.StartsWith("kanto_champion_", StringComparison.Ordinal);
 

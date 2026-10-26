@@ -7,7 +7,8 @@ partial class Harness
     // and its platform rising, each room of the Elite Four from its way in with the door shut behind, its master's
     // greeting and battle and the door on open, the Champion's room, her battle and the platform up to the gallery,
     // the hallway with Cynthia and the professor, the Hall of Fame and its record, and home. It wins every battle and
-    // prints what each room left behind. Name rooms to shoot only those: `league aaron flint champion`.
+    // prints what each room left behind. Name rooms to shoot only those: `league aaron flint champion`; `beyond` is the
+    // last, Aaron's team beyond the League (plan 03 · D15-T, lg_beyond_aaron_battle).
     public void LeagueMode()
     {
         var story = game.Story;
@@ -212,5 +213,28 @@ partial class Harness
         Console.WriteLine($"league: FLAG_DEFEATED_CYNTHIA {story.Has("FLAG_DEFEATED_CYNTHIA")}, the Hall of Fame holds {game.HallOfFame.Total}, " +
             $"SinnohHallOfFame {story.Has("SinnohHallOfFame")}, FLAG_GAME_COMPLETED {story.Has("FLAG_GAME_COMPLETED")}, " +
             $"the player in {Here().Name} at {game.Player.GridX},{game.Player.GridY}, the lead's HP {team.Members[0].CurrentHP}/{team.Members[0].MaxHP}");
+
+        // ---- plan 03 · D15-T: Aaron's team beyond the League, once the Hall of Fame is entered, Charon is caught and
+        // the team has a Pokémon past Sinnoh's batch's lowest level (101); the last thing the mode does, so nothing moves
+        if (Want("beyond"))
+        {
+            story.Set("SinnohHallOfFame");
+            story.Set("FLAG_ARRESTED_CHARON_STARK_MOUNTAIN");
+            team.Members.Insert(0, new Pokemon(PokemonDatabase.Get("Garchomp")!, 110));
+            Enter(Center, 11, 11);
+            Ride("Aaron", null);
+            team.HealAll();
+            Enter(RoomOf("Aaron"), 8, 11);
+            TalkFrom(RoomOf("Aaron"), "aaron", 8, 6, Direction.Up);
+            ReadOn(() => State() == GameState.Battle, 3000);
+            if (State() != GameState.Battle) Console.WriteLine("  !! never happened: Aaron's battle beyond");
+            else
+            {
+                Skip(1.6);
+                Shot("lg_beyond_aaron_battle");
+                Console.WriteLine($"league: beyond: Aaron brings {string.Join(", ", game.Battle.EnemyParty.Members.Select(p => $"{p.Species.Name} {p.Level}"))}");
+                ReadOn();
+            }
+        }
     }
 }

@@ -1397,5 +1397,1380 @@
         "personality": 5243033
       }
     ]
+  },
+  {
+    "id": "elite_four_aaron_beyond",
+    "name": "Aaron",
+    "class": "Elite Four",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 8280,
+    "party": [
+      {
+        "species": "Maestrikket",
+        "level": 111,
+        "ivScale": 250,
+        "personality": 13597832
+      },
+      {
+        "species": "Nocturmoth",
+        "level": 111,
+        "ivScale": 250,
+        "personality": 559240
+      },
+      {
+        "species": "Hivempress",
+        "level": 112,
+        "ivScale": 250,
+        "personality": 5932936
+      },
+      {
+        "species": "Meganeuron",
+        "level": 115,
+        "ivScale": 250,
+        "personality": 6311048
+      },
+      {
+        "species": "Dreadpion",
+        "level": 115,
+        "ivScale": 250,
+        "personality": 15875976,
+        "item": "Sitrus Berry"
+      }
+    ]
+  },
+  {
+    "id": "elite_four_bertha_beyond",
+    "name": "Bertha",
+    "class": "Elite Four",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 8520,
+    "party": [
+      {
+        "species": "Gastromire",
+        "level": 112,
+        "ivScale": 250,
+        "personality": 1905272
+      },
+      {
+        "species": "Bastionsaur",
+        "level": 115,
+        "ivScale": 250,
+        "personality": 962168
+      },
+      {
+        "species": "Cranialith",
+        "level": 115,
+        "ivScale": 250,
+        "personality": 7957880
+      },
+      {
+        "species": "Lodestarch",
+        "level": 118,
+        "ivScale": 250,
+        "personality": 629112
+      },
+      {
+        "species": "Behemowdon",
+        "level": 117,
+        "ivScale": 250,
+        "personality": 15917176,
+        "item": "Sitrus Berry"
+      }
+    ]
+  },
+  {
+    "id": "elite_four_flint_beyond",
+    "name": "Flint",
+    "class": "Elite Four",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 8760,
+    "party": [
+      {
+        "species": "Quadripom",
+        "level": 114,
+        "ivScale": 250,
+        "personality": 9913480
+      },
+      {
+        "species": "Sakurabloom",
+        "level": 117,
+        "ivScale": 250,
+        "personality": 4660872
+      },
+      {
+        "species": "Lapinova",
+        "level": 115,
+        "ivScale": 250,
+        "personality": 1159304
+      },
+      {
+        "species": "Brutabby",
+        "level": 117,
+        "ivScale": 250,
+        "personality": 2824328
+      },
+      {
+        "species": "Venomsensei",
+        "level": 119,
+        "ivScale": 250,
+        "personality": 15706760,
+        "item": "Sitrus Berry"
+      }
+    ]
+  },
+  {
+    "id": "elite_four_lucian_beyond",
+    "name": "Lucian",
+    "class": "Elite Four",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert",
+      "SetupFirstTurn"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 9000,
+    "party": [
+      {
+        "species": "Hexmagistra",
+        "level": 115,
+        "ivScale": 250,
+        "personality": 3004040
+      },
+      {
+        "species": "Lumifathom",
+        "level": 117,
+        "ivScale": 250,
+        "personality": 14723720
+      },
+      {
+        "species": "Dirigeist",
+        "level": 116,
+        "ivScale": 250,
+        "personality": 2284168
+      },
+      {
+        "species": "Frostbride",
+        "level": 118,
+        "ivScale": 250,
+        "personality": 15869320
+      },
+      {
+        "species": "Dotakuron",
+        "level": 121,
+        "ivScale": 250,
+        "personality": 10681224,
+        "item": "Sitrus Berry"
+      }
+    ]
+  },
+  {
+    "id": "champion_cynthia_beyond",
+    "name": "Cynthia",
+    "class": "Champion",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore",
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 15600,
+    "party": [
+      {
+        "species": "Ossuarion",
+        "level": 120,
+        "ivScale": 250,
+        "personality": 1988216
+      },
+      {
+        "species": "Dryadeon",
+        "level": 120,
+        "ivScale": 250,
+        "personality": 8734072
+      },
+      {
+        "species": "Corvicapo",
+        "level": 122,
+        "ivScale": 250,
+        "personality": 6657656
+      },
+      {
+        "species": "Aurasage",
+        "level": 122,
+        "ivScale": 250,
+        "personality": 10512504
+      },
+      {
+        "species": "Tidestoat",
+        "level": 120,
+        "ivScale": 250,
+        "personality": 13009528
+      },
+      {
+        "species": "Fangliscor",
+        "level": 124,
+        "ivScale": 250,
+        "personality": 7349880,
+        "item": "Sitrus Berry"
+      }
+    ]
+  },
+  {
+    "id": "kanto_elite_four_lorelei_beyond",
+    "name": "Lorelei",
+    "class": "Elite Four",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 6600,
+    "party": [
+      {
+        "species": "Glacitusk",
+        "level": 119,
+        "ivScale": 255,
+        "personality": 705416
+      },
+      {
+        "species": "Clamspire",
+        "level": 120,
+        "ivScale": 255,
+        "personality": 1469064
+      },
+      {
+        "species": "Naiadeon",
+        "level": 120,
+        "ivScale": 255,
+        "personality": 2281608
+      },
+      {
+        "species": "Aurorelle",
+        "level": 122,
+        "ivScale": 255,
+        "personality": 2843528
+      },
+      {
+        "species": "Ferrisle",
+        "level": 125,
+        "ivScale": 255,
+        "personality": 3499144,
+        "item": "Cheri Berry"
+      }
+    ]
+  },
+  {
+    "id": "kanto_elite_four_bruno_beyond",
+    "name": "Bruno",
+    "class": "Elite Four",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 6800,
+    "party": [
+      {
+        "species": "Sandspire",
+        "level": 121,
+        "ivScale": 255,
+        "personality": 613512
+      },
+      {
+        "species": "Pugilord",
+        "level": 121,
+        "ivScale": 255,
+        "personality": 1372552
+      },
+      {
+        "species": "Savateur",
+        "level": 121,
+        "ivScale": 255,
+        "personality": 2082952
+      },
+      {
+        "species": "Molemount",
+        "level": 122,
+        "ivScale": 255,
+        "personality": 2696328
+      },
+      {
+        "species": "Matriroo",
+        "level": 125,
+        "ivScale": 255,
+        "personality": 3299720,
+        "item": "Persim Berry"
+      }
+    ]
+  },
+  {
+    "id": "kanto_elite_four_agatha_beyond",
+    "name": "Agatha",
+    "class": "Elite Four",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 7000,
+    "party": [
+      {
+        "species": "Cordyhusk",
+        "level": 122,
+        "ivScale": 255,
+        "personality": 594568
+      },
+      {
+        "species": "Smoglom",
+        "level": 122,
+        "ivScale": 255,
+        "personality": 1190792
+      },
+      {
+        "species": "Ossugard",
+        "level": 121,
+        "ivScale": 255,
+        "personality": 1995912
+      },
+      {
+        "species": "Najarok",
+        "level": 125,
+        "ivScale": 255,
+        "personality": 2541448
+      },
+      {
+        "species": "Kitsunox",
+        "level": 127,
+        "ivScale": 255,
+        "personality": 3135880,
+        "item": "Chesto Berry"
+      }
+    ]
+  },
+  {
+    "id": "kanto_elite_four_lance_beyond",
+    "name": "Lance",
+    "class": "Elite Four",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 7200,
+    "party": [
+      {
+        "species": "Solarion",
+        "level": 125,
+        "ivScale": 255,
+        "personality": 651144
+      },
+      {
+        "species": "Kirinine",
+        "level": 130,
+        "ivScale": 255,
+        "personality": 1350536
+      },
+      {
+        "species": "Sabrefin",
+        "level": 122,
+        "ivScale": 255,
+        "personality": 1947272
+      },
+      {
+        "species": "Azhdarch",
+        "level": 127,
+        "ivScale": 255,
+        "personality": 2697096
+      },
+      {
+        "species": "Typhonarch",
+        "level": 130,
+        "ivScale": 255,
+        "personality": 3396488,
+        "item": "Persim Berry"
+      }
+    ]
+  },
+  {
+    "id": "kanto_champion_beyond",
+    "name": "Terry",
+    "class": "Champion",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore",
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 7500,
+    "party": [
+      {
+        "species": "Mandibron",
+        "level": 130,
+        "ivScale": 255,
+        "personality": 715912
+      },
+      {
+        "species": "Mesmeryx",
+        "level": 131,
+        "ivScale": 255,
+        "personality": 1373832
+      },
+      {
+        "species": "Ammonarch",
+        "level": 130,
+        "ivScale": 255,
+        "personality": 2094728
+      },
+      {
+        "species": "Pyreon",
+        "level": 131,
+        "ivScale": 255,
+        "personality": 2752392
+      },
+      {
+        "species": "Palmagus",
+        "level": 131,
+        "ivScale": 255,
+        "personality": 3472264
+      },
+      {
+        "species": "Dozemount",
+        "level": 134,
+        "ivScale": 255,
+        "personality": 4187016,
+        "item": "Sitrus Berry"
+      }
+    ]
+  },
+  {
+    "id": "johto_elite_four_will_will_beyond",
+    "name": "Will",
+    "class": "Elite Four",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 7440,
+    "party": [
+      {
+        "species": "Wobbulwark",
+        "level": 140,
+        "ivScale": 250,
+        "personality": 6935161
+      },
+      {
+        "species": "Sleighwing",
+        "level": 141,
+        "ivScale": 250,
+        "personality": 1217657
+      },
+      {
+        "species": "Noctaugur",
+        "level": 141,
+        "ivScale": 250,
+        "personality": 8203641
+      },
+      {
+        "species": "Slowmonarch",
+        "level": 141,
+        "ivScale": 250,
+        "personality": 11791481
+      },
+      {
+        "species": "Zenitheon",
+        "level": 142,
+        "ivScale": 250,
+        "personality": 16008825
+      },
+      {
+        "species": "Totemsight",
+        "level": 142,
+        "ivScale": 250,
+        "personality": 7587961,
+        "item": "Sitrus Berry"
+      }
+    ]
+  },
+  {
+    "id": "johto_elite_four_koga_koga_beyond",
+    "name": "Koga",
+    "class": "Elite Four",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 7440,
+    "party": [
+      {
+        "species": "Muralist",
+        "level": 142,
+        "ivScale": 250,
+        "personality": 14936969
+      },
+      {
+        "species": "Coccinova",
+        "level": 143,
+        "ivScale": 250,
+        "personality": 12118409
+      },
+      {
+        "species": "Fugumace",
+        "level": 141,
+        "ivScale": 250,
+        "personality": 7991177
+      },
+      {
+        "species": "Mirelord",
+        "level": 142,
+        "ivScale": 250,
+        "personality": 5457801,
+        "item": "Black Sludge"
+      },
+      {
+        "species": "Orbweavix",
+        "level": 143,
+        "ivScale": 250,
+        "personality": 12962953
+      },
+      {
+        "species": "Pinecitadel",
+        "level": 142,
+        "ivScale": 250,
+        "personality": 1364105,
+        "item": "Leftovers"
+      }
+    ]
+  },
+  {
+    "id": "johto_elite_four_bruno_bruno_beyond",
+    "name": "Bruno",
+    "class": "Elite Four",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 7680,
+    "party": [
+      {
+        "species": "Gyrodrill",
+        "level": 142,
+        "ivScale": 250,
+        "personality": 6853769
+      },
+      {
+        "species": "Mastiffang",
+        "level": 142,
+        "ivScale": 250,
+        "personality": 13077897
+      },
+      {
+        "species": "Fermentoise",
+        "level": 142,
+        "ivScale": 250,
+        "personality": 16716425
+      },
+      {
+        "species": "Pastorine",
+        "level": 142,
+        "ivScale": 250,
+        "personality": 7074953,
+        "item": "Sitrus Berry"
+      },
+      {
+        "species": "Calderon",
+        "level": 143,
+        "ivScale": 250,
+        "personality": 3161993
+      },
+      {
+        "species": "Atlascross",
+        "level": 143,
+        "ivScale": 250,
+        "personality": 10155913
+      }
+    ]
+  },
+  {
+    "id": "johto_elite_four_karen_karen_beyond",
+    "name": "Karen",
+    "class": "Elite Four",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 7680,
+    "party": [
+      {
+        "species": "Ermilong",
+        "level": 142,
+        "ivScale": 250,
+        "personality": 4033912
+      },
+      {
+        "species": "Mimicedar",
+        "level": 142,
+        "ivScale": 250,
+        "personality": 13567608
+      },
+      {
+        "species": "Krakannon",
+        "level": 142,
+        "ivScale": 250,
+        "personality": 15479417
+      },
+      {
+        "species": "Guillotyne",
+        "level": 143,
+        "ivScale": 250,
+        "personality": 9755257
+      },
+      {
+        "species": "Cerberhound",
+        "level": 143,
+        "ivScale": 250,
+        "personality": 16631929
+      },
+      {
+        "species": "Eclipseon",
+        "level": 143,
+        "ivScale": 250,
+        "personality": 4813689,
+        "item": "Sitrus Berry"
+      }
+    ]
+  },
+  {
+    "id": "johto_champion_lance_beyond",
+    "name": "Lance",
+    "class": "Champion",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore",
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 15000,
+    "party": [
+      {
+        "species": "Rapierwing",
+        "level": 148,
+        "ivScale": 250,
+        "personality": 2452360,
+        "item": "Lum Berry"
+      },
+      {
+        "species": "Raysail",
+        "level": 145,
+        "ivScale": 250,
+        "personality": 5072264
+      },
+      {
+        "species": "Siegephant",
+        "level": 148,
+        "ivScale": 250,
+        "personality": 16156552
+      },
+      {
+        "species": "Abyssolux",
+        "level": 148,
+        "ivScale": 250,
+        "personality": 10598792
+      },
+      {
+        "species": "Helianthra",
+        "level": 145,
+        "ivScale": 250,
+        "personality": 12229000
+      },
+      {
+        "species": "Ironwyrm",
+        "level": 149,
+        "ivScale": 250,
+        "personality": 3030408,
+        "item": "Sitrus Berry"
+      }
+    ]
+  },
+  {
+    "id": "hoenn_sidney_beyond",
+    "name": "Sidney",
+    "class": "Elite Four",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert",
+      "SetupFirstTurn"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 7350,
+    "party": [
+      {
+        "species": "Hyaenarch",
+        "level": 160,
+        "ivScale": 250,
+        "personality": 759944
+      },
+      {
+        "species": "Scimitail",
+        "level": 161,
+        "ivScale": 250,
+        "personality": 1425288
+      },
+      {
+        "species": "Saguarox",
+        "level": 160,
+        "ivScale": 250,
+        "personality": 2133128
+      },
+      {
+        "species": "Crayronin",
+        "level": 161,
+        "ivScale": 250,
+        "personality": 2893704
+      },
+      {
+        "species": "Omenblade",
+        "level": 162,
+        "ivScale": 255,
+        "personality": 3449480,
+        "item": "Sitrus Berry"
+      }
+    ]
+  },
+  {
+    "id": "hoenn_phoebe_beyond",
+    "name": "Phoebe",
+    "class": "Elite Four",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 7650,
+    "party": [
+      {
+        "species": "Chromeleon",
+        "level": 161,
+        "ivScale": 250,
+        "personality": 707704
+      },
+      {
+        "species": "Effigrim",
+        "level": 162,
+        "ivScale": 250,
+        "personality": 1356920
+      },
+      {
+        "species": "Gemwraith",
+        "level": 162,
+        "ivScale": 250,
+        "personality": 2006648
+      },
+      {
+        "species": "Shinobuzz",
+        "level": 162,
+        "ivScale": 250,
+        "personality": 2655864
+      },
+      {
+        "species": "Dogunarch",
+        "level": 163,
+        "ivScale": 255,
+        "personality": 3363448,
+        "item": "Sitrus Berry"
+      }
+    ]
+  },
+  {
+    "id": "hoenn_glacia_beyond",
+    "name": "Glacia",
+    "class": "Elite Four",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 7950,
+    "party": [
+      {
+        "species": "Heartreef",
+        "level": 162,
+        "ivScale": 250,
+        "personality": 594552
+      },
+      {
+        "species": "Bergmaw",
+        "level": 162,
+        "ivScale": 250,
+        "personality": 1186168
+      },
+      {
+        "species": "Gulpereel",
+        "level": 164,
+        "ivScale": 250,
+        "personality": 1780600
+      },
+      {
+        "species": "Carillone",
+        "level": 164,
+        "ivScale": 250,
+        "personality": 2372216
+      },
+      {
+        "species": "Aeonfin",
+        "level": 165,
+        "ivScale": 255,
+        "personality": 3020664,
+        "item": "Sitrus Berry"
+      }
+    ]
+  },
+  {
+    "id": "hoenn_drake_beyond",
+    "name": "Drake",
+    "class": "Elite Four",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 8250,
+    "party": [
+      {
+        "species": "Swiftarrow",
+        "level": 164,
+        "ivScale": 250,
+        "personality": 601992
+      },
+      {
+        "species": "Musadon",
+        "level": 166,
+        "ivScale": 250,
+        "personality": 1199240
+      },
+      {
+        "species": "Megalodax",
+        "level": 165,
+        "ivScale": 250,
+        "personality": 1797000
+      },
+      {
+        "species": "Volcamel",
+        "level": 165,
+        "ivScale": 250,
+        "personality": 2350984
+      },
+      {
+        "species": "Nimbusong",
+        "level": 167,
+        "ivScale": 255,
+        "personality": 3046280,
+        "item": "Sitrus Berry"
+      }
+    ]
+  },
+  {
+    "id": "hoenn_wallace_beyond",
+    "name": "Wallace",
+    "class": "Champion",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore",
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 17400,
+    "party": [
+      {
+        "species": "Leviawhale",
+        "level": 169,
+        "ivScale": 255,
+        "personality": 702344
+      },
+      {
+        "species": "Pelicaptain",
+        "level": 167,
+        "ivScale": 255,
+        "personality": 1556872
+      },
+      {
+        "species": "Sirenyss",
+        "level": 168,
+        "ivScale": 255,
+        "personality": 2309000
+      },
+      {
+        "species": "Namazuro",
+        "level": 168,
+        "ivScale": 255,
+        "personality": 3060872
+      },
+      {
+        "species": "Fulmenhound",
+        "level": 168,
+        "ivScale": 255,
+        "personality": 3812744
+      },
+      {
+        "species": "Prismaria",
+        "level": 170,
+        "ivScale": 255,
+        "personality": 4514696,
+        "item": "Sitrus Berry"
+      }
+    ]
+  },
+  {
+    "id": "hoenn_steven_beyond",
+    "name": "Steven",
+    "class": "Rival",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore",
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 4680,
+    "party": [
+      {
+        "species": "Deceivore",
+        "level": 182,
+        "ivScale": 255,
+        "personality": 719240
+      },
+      {
+        "species": "Heliolith",
+        "level": 180,
+        "ivScale": 255,
+        "personality": 1378440
+      },
+      {
+        "species": "Smeltortoise",
+        "level": 181,
+        "ivScale": 255,
+        "personality": 1987464
+      },
+      {
+        "species": "Crinolith",
+        "level": 181,
+        "ivScale": 255,
+        "personality": 2646664
+      },
+      {
+        "species": "Selenolith",
+        "level": 181,
+        "ivScale": 255,
+        "personality": 3303816
+      },
+      {
+        "species": "Anomalorex",
+        "level": 183,
+        "ivScale": 255,
+        "personality": 4069768,
+        "item": "Sitrus Berry"
+      }
+    ]
+  },
+  {
+    "id": "unova_elite_four_shauntal_beyond",
+    "name": "Shauntal",
+    "class": "Elite Four Shauntal",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 9000,
+    "party": [
+      {
+        "species": "Pharaurum",
+        "level": 197,
+        "ivScale": 250,
+        "personality": 1356680,
+        "item": "Leftovers"
+      },
+      {
+        "species": "Jellicrown",
+        "level": 197,
+        "ivScale": 250,
+        "personality": 11377800,
+        "item": "Expert Belt"
+      },
+      {
+        "species": "Cottonimbus",
+        "level": 197,
+        "ivScale": 250,
+        "personality": 6249352,
+        "item": "Wise Glasses"
+      },
+      {
+        "species": "Amorabat",
+        "level": 197,
+        "ivScale": 250,
+        "personality": 13584776,
+        "item": "Flying Gem"
+      },
+      {
+        "species": "Colossurk",
+        "level": 197,
+        "ivScale": 250,
+        "personality": 5798280,
+        "item": "Muscle Band"
+      },
+      {
+        "species": "Helioptera",
+        "level": 199,
+        "ivScale": 250,
+        "personality": 4909960,
+        "item": "Choice Scarf"
+      }
+    ]
+  },
+  {
+    "id": "unova_elite_four_grimsley_beyond",
+    "name": "Grimsley",
+    "class": "Elite Four Grimsley",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 9000,
+    "party": [
+      {
+        "species": "Carrionqueen",
+        "level": 197,
+        "ivScale": 250,
+        "personality": 2162056,
+        "item": "Scope Lens"
+      },
+      {
+        "species": "Brawlhood",
+        "level": 197,
+        "ivScale": 250,
+        "personality": 13587848,
+        "item": "Leftovers"
+      },
+      {
+        "species": "Bascurage",
+        "level": 197,
+        "ivScale": 250,
+        "personality": 16199048,
+        "item": "Muscle Band"
+      },
+      {
+        "species": "Umbrapard",
+        "level": 197,
+        "ivScale": 250,
+        "personality": 14824072,
+        "item": "Wise Glasses"
+      },
+      {
+        "species": "Scrapodor",
+        "level": 197,
+        "ivScale": 250,
+        "personality": 2943112,
+        "item": "Focus Band"
+      },
+      {
+        "species": "Zoromirage",
+        "level": 199,
+        "ivScale": 250,
+        "personality": 14959496,
+        "item": "Quick Claw"
+      }
+    ]
+  },
+  {
+    "id": "unova_elite_four_marshal_beyond",
+    "name": "Marshal",
+    "class": "Elite Four Marshal",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore"
+    ],
+    "prizeMoney": 9000,
+    "party": [
+      {
+        "species": "Throjutsu",
+        "level": 197,
+        "ivScale": 250,
+        "personality": 14925448,
+        "item": "Focus Band"
+      },
+      {
+        "species": "Sawkendo",
+        "level": 197,
+        "ivScale": 250,
+        "personality": 7684744,
+        "item": "Muscle Band"
+      },
+      {
+        "species": "Beartundra",
+        "level": 197,
+        "ivScale": 250,
+        "personality": 12313736,
+        "item": "Expert Belt"
+      },
+      {
+        "species": "Excavarch",
+        "level": 197,
+        "ivScale": 250,
+        "personality": 12283528,
+        "item": "Wise Glasses"
+      },
+      {
+        "species": "Bouffalanx",
+        "level": 197,
+        "ivScale": 250,
+        "personality": 8384648,
+        "item": "Eject Button"
+      },
+      {
+        "species": "Mienshifu",
+        "level": 199,
+        "ivScale": 250,
+        "personality": 12629896,
+        "item": "Flame Orb"
+      }
+    ]
+  },
+  {
+    "id": "unova_elite_four_caitlin_beyond",
+    "name": "Caitlin",
+    "class": "Elite Four Caitlin",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 9000,
+    "party": [
+      {
+        "species": "Somnarna",
+        "level": 197,
+        "ivScale": 250,
+        "personality": 4240520,
+        "item": "Zoom Lens"
+      },
+      {
+        "species": "Glyphoracle",
+        "level": 197,
+        "ivScale": 250,
+        "personality": 10449288,
+        "item": "Expert Belt"
+      },
+      {
+        "species": "Darumandala",
+        "level": 197,
+        "ivScale": 250,
+        "personality": 10533256,
+        "item": "Muscle Band"
+      },
+      {
+        "species": "Cosmogrey",
+        "level": 197,
+        "ivScale": 250,
+        "personality": 11700360,
+        "item": "Leftovers"
+      },
+      {
+        "species": "Ballerilly",
+        "level": 197,
+        "ivScale": 250,
+        "personality": 9408392,
+        "item": "Wise Glasses"
+      },
+      {
+        "species": "Cryohedron",
+        "level": 199,
+        "ivScale": 250,
+        "personality": 9122184,
+        "item": "Life Orb"
+      }
+    ]
+  },
+  {
+    "id": "unova_champion_iris_beyond",
+    "name": "Iris",
+    "class": "Champion",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore",
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 15800,
+    "party": [
+      {
+        "species": "Stormstrika",
+        "level": 200,
+        "ivScale": 250,
+        "personality": 9344136,
+        "item": "Wise Glasses"
+      },
+      {
+        "species": "Imperavia",
+        "level": 200,
+        "ivScale": 250,
+        "personality": 3225224,
+        "item": "Life Orb"
+      },
+      {
+        "species": "Primavian",
+        "level": 200,
+        "ivScale": 250,
+        "personality": 5194632,
+        "item": "Flying Gem"
+      },
+      {
+        "species": "Tortugarch",
+        "level": 200,
+        "ivScale": 250,
+        "personality": 8512136,
+        "item": "Muscle Band"
+      },
+      {
+        "species": "Cygnelle",
+        "level": 200,
+        "ivScale": 250,
+        "personality": 1287560,
+        "item": "Zoom Lens"
+      },
+      {
+        "species": "Drudrakon",
+        "level": 202,
+        "ivScale": 250,
+        "personality": 12503688,
+        "item": "Focus Sash"
+      }
+    ]
   }
 ]
