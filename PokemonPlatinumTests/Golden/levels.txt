@@ -3092,6 +3092,12 @@ grass 25-28
 === veilstone_city
 Veilstone City
 trainers 2, 24-26: galactic_grunt_veilstone_city_1 26, galactic_grunt_veilstone_city_2 26
+=== vermilion
+Vermilion City
+surf 30-35
+old rod 10
+good rod 20
+super rod 40
 === vermilion_city
 Vermilion City
 surf 5-40
@@ -3101,6 +3107,9 @@ super rod 15-35
 === vermilion_city_gym
 Vermilion City
 trainers 3, 21-23: kanto_engineer_baily 21, kanto_gentleman_tucker 23, kanto_sailor_dwayne 21
+=== vermilion_gym
+Vermilion City
+trainers 3, 42-46: johto_gentleman_gregory 46, johto_guitarist_vincent 45, johto_juggler_horton 43
 === victory_road_1f
 Victory Road
 grass 40-43

@@ -524,6 +524,40 @@ way 1, from answer 1
   Receptionist> Before every match you'll see your opponent's three, and you send two of yours into a battle of one on one.
   Receptionist> Win the final and you're the champion. Lose a match, and the tournament is over for you.
   ? Would you like to enter a tournament? = The rules
+=== BattleFrontierAnnex.TournamentDesk
+from Receptionist at 13,8 of BattleFrontierAnnex
+way 0
+  Receptionist> Welcome to the Pokémon World Tournament! Leaders and Champions battle here, and every Pokémon fights at Level 50.
+  Receptionist> Would you like to enter a tournament?
+  Receptionist> You need three Pokémon that can take part, all of different species and holding different items.
+  Receptionist> An Egg can't take part, and nor can certain rare Pokémon.
+  ? Would you like to enter a tournament? = Enter
+  * frontier seen 150
+  * frontier seen 151
+  * frontier seen 249
+  * frontier seen 250
+  * frontier seen 251
+  * frontier seen 382
+  * frontier seen 383
+  * frontier seen 384
+  * frontier seen 385
+  * frontier seen 386
+  * frontier seen 483
+  * frontier seen 484
+  * frontier seen 487
+  * frontier seen 489
+  * frontier seen 490
+  * frontier seen 491
+  * frontier seen 492
+  * frontier seen 493
+way 2, from answer 1
+  Receptionist> Please come again. The Leaders are always ready for another tournament.
+  ? Would you like to enter a tournament? = No
+way 1, from answer 1
+  Receptionist> Every Pokémon battles at Level 50 here, raised or lowered to it. Nothing that happens here changes yours.
+  Receptionist> Eight Trainers enter, and you meet one in each round: three of your Pokémon against three of theirs.
+  Receptionist> Win three matches and the title is yours. Lose one, and the tournament is over for you.
+  ? Would you like to enter a tournament? = The rules
 === BattleFrontierGateToFightArea.Arcade
 from Attendant at 9,13 of BattleFrontierGateToFightArea
 way 0
@@ -9973,6 +10007,12 @@ way -
   > Lucas put it away in the Items pocket.
   * fanfare FanfareItem
   + FLAG_OBTAINED_HIDDEN_TEST_STARDUST
+=== common.HoennAbnormalWeather
+from a trainer with lines of their own
+way -
+=== common.HoennAbnormalWeatherEnd
+from a trainer with lines of their own
+way -
 === common.HoennChapterEight
 from a trainer with lines of their own
 way -
@@ -17958,6 +17998,25 @@ from Salesman at 6,3 of Mahogany_SouvenirShop
 way -
   Salesman> Welcome, welcome! Rage Candy Bars, fresh today. Well... nearly fresh.
   Salesman> Nothing back there but stock. Customers stay this side of the counter!
+=== marine_cave_end.Kyogre
+from the trigger at 9,26 of MarineCave_End
+way 0
+  > Kyogre rose from the depths of the pool!
+  * scene marine_cave_end.Kyogre in the Marine Cave
+  * cry Kyogre
+  * camera Shake
+  * endscene
+  * wildbattle Kyogre 70 Won
+  + FLAG_DEFEATED_KYOGRE
+  + FLAG_HIDE_MARINE_CAVE_KYOGRE
+  + seen marine_cave_end.Kyogre in the Marine Cave
+way 1, from answer 1
+  * wildbattle Kyogre 70 Lost
+  + seen marine_cave_end.Kyogre in the Marine Cave
+=== marine_cave_end.Waiting
+from Kyogre at 9,22 of MarineCave_End
+way -
+  > A huge blue Pokémon floats in the pool, perfectly still.
 === mauville_city.SchoolKid
 from Boy at 217,154 of Hoenn
 way -
@@ -25705,6 +25764,29 @@ way -
   + FLAG_GOT_HM01
   = VAR_MAP_SCENE_VERMILION_CITY 0 -> 1
   + seen ss_anne_captains_office.The seasick captain
+=== ss_aqua_1f.Crewman
+from Sailor at 24,17 of SSAqua_1F
+way 0
+  Sailor> Welcome aboard the S.S. Aqua! We're bound for Vermilion City in Kanto. Shall we cast off?
+  Sailor> Anchors aweigh! Make yourself at home. We'll be there before you know it.
+  > The S.S. Aqua sped east across the sea, skimming the waves...
+  Sailor> We've docked at Vermilion City, Kanto! Mind your step on the gangway.
+  ? Welcome aboard the S.S. Aqua! We're bound for Vermilion City in Kanto. Shall we cast off? = Yes
+  * fade out
+  * fade in
+  + FLAG_JOHTO_SS_AQUA_AT_VERMILION
+way 1, from answer 1
+  Sailor> No rush. The gangway's behind you, if you'd rather stay ashore a while longer.
+  ? Welcome aboard the S.S. Aqua! We're bound for Vermilion City in Kanto. Shall we cast off? = No
+=== ss_aqua_olivine_port_interior.Sailor
+from Sailor at 7,9 of Olivine_PortHall
+way -
+  Sailor> The S.S. Aqua sails to Vermilion City in Kanto, but she only carries those the League has named Champion.
+  Sailor> Win at the Indigo Plateau, and you'll be welcome aboard.
+=== ss_aqua_vermilion_port_interior.Sailor
+from Sailor at 7,9 of Vermilion_PortHall
+way -
+  Sailor> The S.S. Aqua sails from here to Olivine City in Johto. Only those with passage may board.
 === stark_mountain_outside.Grunt
 from Grunt at 742,232 of Sinnoh
 from Grunt at 742,233 of Sinnoh
@@ -26383,6 +26465,28 @@ way -
   + FLAG_HIDE_ROCKET_HIDEOUT_B3F_RIVAL
   = VAR_UNK_40AC 0 -> 3
   + seen team_rocket_headquarters_b3f.The rival in the hideout
+=== terra_cave_end.Groudon
+from the trigger at 17,26 of TerraCave_End
+way 0
+  > Groudon heaved itself up out of the magma!
+  * scene terra_cave_end.Groudon in Terra Cave
+  * cry Groudon
+  * camera Shake
+  * endscene
+  * wildbattle Groudon 70 Won
+  + FLAG_DEFEATED_GROUDON
+  + FLAG_HIDE_TERRA_CAVE_GROUDON
+  + seen terra_cave_end.Groudon in Terra Cave
+way 1, from answer 1
+  * wildbattle Groudon 70 Lost
+  + seen terra_cave_end.Groudon in Terra Cave
+=== terra_cave_end.Waiting
+from Groudon at 17,22 of TerraCave_End
+way -
+  > A huge red Pokémon lies beyond the magma, perfectly still.
+=== terra_cave_entrance.Out
+from the trigger at 8,18 of TerraCave_Entrance
+way -
 === three_island.AntiBiker1
 from Man at 103,24 of ThreeIsland
 way -
@@ -26668,6 +26772,9 @@ way -
   Hiker> Dug up any treasures? I'll give you good Spheres for them.
   Hiker> Mind how you go down here!
   * underground hiker
+=== underwater_marine_cave.Out
+from the trigger at 9,8 of Underwater_MarineCave
+way -
 === underwater_seafloor_cavern.Submarine
 from the tile read at 5,4 of Underwater_SeafloorCavern
 from the tile read at 6,4 of Underwater_SeafloorCavern
@@ -27736,6 +27843,132 @@ from Woman at 4,5 of VermilionCity_PokemonFanClub
 way -
   Woman> Isn't my Seel adorable? That little nose! That sleek coat!
   + FLAG_MAP_LOCAL_FAN_CLUB_SPOKE_TO_WOMAN
+=== vermilion_gym.Can1
+from the tile read at 2,13 of Vermilion_Gym
+way -
+  > Nope! There's only rubbish in here.
+  = VAR_JOHTO_VERMILION_GYM_CAN 0 -> 1
+=== vermilion_gym.Can10
+from the tile read at 10,15 of Vermilion_Gym
+way -
+  > Nope! There's only rubbish in here.
+  = VAR_JOHTO_VERMILION_GYM_CAN 0 -> 10
+=== vermilion_gym.Can11
+from the tile read at 2,17 of Vermilion_Gym
+way -
+  > Nope! There's only rubbish in here.
+  = VAR_JOHTO_VERMILION_GYM_CAN 0 -> 11
+=== vermilion_gym.Can12
+from the tile read at 4,17 of Vermilion_Gym
+way -
+  > Nope! There's only rubbish in here.
+  = VAR_JOHTO_VERMILION_GYM_CAN 0 -> 12
+=== vermilion_gym.Can13
+from the tile read at 6,17 of Vermilion_Gym
+way -
+  > Nope! There's only rubbish in here.
+  = VAR_JOHTO_VERMILION_GYM_CAN 0 -> 13
+=== vermilion_gym.Can14
+from the tile read at 8,17 of Vermilion_Gym
+way -
+  > Nope! There's only rubbish in here.
+  = VAR_JOHTO_VERMILION_GYM_CAN 0 -> 14
+=== vermilion_gym.Can15
+from the tile read at 10,17 of Vermilion_Gym
+way -
+  > Nope! There's only rubbish in here.
+  = VAR_JOHTO_VERMILION_GYM_CAN 0 -> 15
+=== vermilion_gym.Can2
+from the tile read at 4,13 of Vermilion_Gym
+way -
+  > Nope! There's only rubbish in here.
+  = VAR_JOHTO_VERMILION_GYM_CAN 0 -> 2
+=== vermilion_gym.Can3
+from the tile read at 6,13 of Vermilion_Gym
+way -
+  > Nope! There's only rubbish in here.
+  = VAR_JOHTO_VERMILION_GYM_CAN 0 -> 3
+=== vermilion_gym.Can4
+from the tile read at 8,13 of Vermilion_Gym
+way -
+  > Nope! There's only rubbish in here.
+  = VAR_JOHTO_VERMILION_GYM_CAN 0 -> 4
+=== vermilion_gym.Can5
+from the tile read at 10,13 of Vermilion_Gym
+way -
+  > Nope! There's only rubbish in here.
+  = VAR_JOHTO_VERMILION_GYM_CAN 0 -> 5
+=== vermilion_gym.Can6
+from the tile read at 2,15 of Vermilion_Gym
+way -
+  > Nope! There's only rubbish in here.
+  = VAR_JOHTO_VERMILION_GYM_CAN 0 -> 6
+=== vermilion_gym.Can7
+from the tile read at 4,15 of Vermilion_Gym
+way -
+  > Nope! There's only rubbish in here.
+  = VAR_JOHTO_VERMILION_GYM_CAN 0 -> 7
+=== vermilion_gym.Can8
+from the tile read at 6,15 of Vermilion_Gym
+way -
+  > Nope! There's only rubbish in here.
+  = VAR_JOHTO_VERMILION_GYM_CAN 0 -> 8
+=== vermilion_gym.Can9
+from the tile read at 8,15 of Vermilion_Gym
+way -
+  > Nope! There's only rubbish in here.
+  = VAR_JOHTO_VERMILION_GYM_CAN 0 -> 9
+=== vermilion_gym.Gate
+from Electric gate at 5,10 of Vermilion_Gym
+from Electric gate at 5,8 of Vermilion_Gym
+from Electric gate at 6,10 of Vermilion_Gym
+from Electric gate at 6,8 of Vermilion_Gym
+from Electric gate at 7,10 of Vermilion_Gym
+from Electric gate at 7,8 of Vermilion_Gym
+way -
+  > A beam of electricity crackles across the way. It must be switched off somewhere in the Gym.
+=== vermilion_gym.GymGuy
+from Gym Guide at 9,20 of Vermilion_Gym
+way -
+  Gym Guide> Hey, champ! Welcome to Kanto! Lt. Surge has locked himself in behind electric gates.
+  Gym Guide> The switches are hidden in the bins round the hall. Find the first, and the second is always right beside it!
+  Gym Guide> His Pokémon are Electric types, so a Ground type is your best friend here.
+=== vermilion_gym.LtSurge
+from Lt. Surge at 6,4 of Vermilion_Gym
+way 0
+  Lt. Surge> Hey, you! You came all the way from Johto? Ha! You've got guts, I'll give you that.
+  Lt. Surge> Electricity saved my hide more times than I can count. Now let's see you take a jolt of it!
+  Lt. Surge> Whoa! That's some real power you've got! All right, you've earned it. Take the Thunder Badge!
+  > Lucas received the Thunder Badge from Lt. Surge!
+  Lt. Surge> And take this too. It's a move that charges you up while it hits!
+  > Lucas received the TM57!
+  > TM57 holds the move Charge Beam.
+  > Lucas put it away in the TMs & HMs pocket.
+  Lt. Surge> TM57 is Charge Beam. Every hit has a good chance to raise your Pokémon's Special Attack.
+  * scene vermilion_gym.Surge
+  * battle johto_leader_lt_surge_lt__surge Won
+  * fanfare FanfareBadge
+  * defeat johto_guitarist_vincent
+  * defeat johto_juggler_horton
+  * defeat johto_gentleman_gregory
+  * endscene
+  * fanfare FanfareTM
+  + FLAG_JOHTO_DEFEATED_LT_SURGE
+  + FLAG_JOHTO_GOT_TM57_FROM_SURGE
+  + beaten johto_gentleman_gregory
+  + beaten johto_guitarist_vincent
+  + beaten johto_juggler_horton
+  + beaten johto_leader_lt_surge_lt__surge
+  = badges Kanto 0 -> 100
+  + seen vermilion_gym.Surge
+way 1, from answer 1
+  * battle johto_leader_lt_surge_lt__surge Lost
+  * scene over, unseen
+=== vermilion_gym.Statue
+from the tile read at 4,20 of Vermilion_Gym
+from the tile read at 8,20 of Vermilion_Gym
+way -
+  > Vermilion City Pokémon Gym\nLeader: Lt. Surge
 === victory_road_1f.Collector
 from Collector at 45,33 of VictoryRoad1F
 way -

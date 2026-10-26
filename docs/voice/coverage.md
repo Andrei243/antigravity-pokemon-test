@@ -10,9 +10,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 |---|---|---|---|---|---|
 | The introduction (`intro:`) | 80 | 80 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1276 | 1236 | 40 | 1 | 0 |
-| Scripts (`script:`) | 8828 | 8405 | 423 | 17 | 0 |
-| People of the world (`world:`) | 6203 | 6144 | 59 | 4 | 0 |
-| **All** | 16387 | 15865 | 522 | 22 | 0 |
+| Scripts (`script:`) | 8872 | 8449 | 423 | 17 | 0 |
+| People of the world (`world:`) | 6240 | 6181 | 59 | 4 | 0 |
+| **All** | 16468 | 15946 | 522 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -20,11 +20,11 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 
 | What | Lines |
 |---|---|
-| a Pokémon's cry | 209 |
-| a question's answers | 528 |
-| a sign | 1401 |
+| a Pokémon's cry | 211 |
+| a question's answers | 534 |
+| a sign | 1407 |
 | the game's own voice (speaker none) | 247 |
-| the game's own voice (text) | 1180 |
+| the game's own voice (text) | 1196 |
 
 ## The cast
 
@@ -40,25 +40,26 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | Voice | Lines | Shown only |
 |---|---|---|
 | `@self` | 1827 | 132 |
-| `look:gentleman (any)` | 612 | 13 |
+| `look:gentleman (any)` | 619 | 13 |
 | `look:grunt (any)` | 582 | 0 |
 | `rival` | 571 | 17 |
-| `look:youngster (any)` | 361 | 18 |
-| `look:lady (any)` | 352 | 1 |
-| `look:clerk (any)` | 305 | 7 |
+| `look:youngster (any)` | 364 | 18 |
+| `look:lady (any)` | 358 | 1 |
+| `look:clerk (any)` | 307 | 7 |
 | `look:lass (any)` | 296 | 11 |
 | `look:attendant (any)` | 207 | 7 |
-| `look:nurse (any)` | 189 | 0 |
-| `look:gym_guide (any)` | 173 | 1 |
+| `look:nurse (any)` | 195 | 0 |
+| `look:gym_guide (any)` | 177 | 1 |
+| `look:scientist (any)` | 167 | 4 |
 | `cynthia` | 157 | 1 |
 | `look:receptionist (any)` | 150 | 17 |
-| `look:scientist (any)` | 150 | 4 |
 | `rowan` | 147 | 12 |
 | `class:ace_trainer (any)` | 146 | 0 |
 | `class:team_rocket (any)` | 132 | 0 |
 | `look:woman (any)` | 129 | 13 |
 | `class:hiker (any)` | 124 | 0 |
 | `class:fisherman (any)` | 118 | 0 |
+| `look:sailor (any)` | 115 | 0 |
 | `class:psychic (any)` | 112 | 0 |
 | `class:swimmer_m (any)` | 112 | 0 |
 | `assistant` | 111 | 5 |
@@ -73,7 +74,6 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:cooltrainer (any)` | 96 | 0 |
 | `class:picnicker (any)` | 96 | 0 |
 | `black_belt` | 94 | 14 |
-| `look:sailor (any)` | 94 | 0 |
 | `looker` | 91 | 1 |
 | `class:lass (any)` | 88 | 0 |
 | `class:swimmer_f (any)` | 86 | 0 |
@@ -86,8 +86,8 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `ace_trainer` | 75 | 0 |
 | `look:old_woman (any)` | 75 | 5 |
 | `look:hiker (any)` | 73 | 0 |
+| `look:fisherman (any)` | 71 | 4 |
 | `class:swimmer (any)` | 70 | 0 |
-| `look:fisherman (any)` | 69 | 4 |
 | `class:bug_catcher (any)` | 68 | 0 |
 | `steven` | 65 | 0 |
 | `look:worker (any)` | 63 | 0 |
@@ -162,10 +162,12 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `policeman` | 28 | 0 |
 | `saturn` | 28 | 0 |
 | `school_kid` | 28 | 0 |
+| `chairman` | 27 | 0 |
 | `president` | 27 | 0 |
 | `captain` | 26 | 0 |
-| `chairman` | 26 | 0 |
 | `class:aroma_lady (any)` | 26 | 0 |
+| `class:gentleman (any)` | 26 | 0 |
+| `class:guitarist (any)` | 26 | 0 |
 | `look:battle_girl (any)` | 26 | 0 |
 | `look:twin (any)` | 26 | 0 |
 | `lottery_clerk` | 26 | 2 |
@@ -177,8 +179,6 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `roughneck` | 25 | 0 |
 | `class:ace_trainer_m (any)` | 24 | 0 |
 | `class:cyclist (any)` | 24 | 0 |
-| `class:gentleman (any)` | 24 | 0 |
-| `class:guitarist (any)` | 24 | 0 |
 | `class:sis_and_bro (any)` | 24 | 0 |
 | `class:team_plasma_grunt (any)` | 24 | 0 |
 | `day_care_lady` | 24 | 3 |
@@ -203,6 +203,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:gymstatue (any)` | 21 | 0 |
 | `backers` | 20 | 0 |
 | `class:collector (any)` | 20 | 0 |
+| `class:juggler (any)` | 20 | 0 |
 | `class:poke_maniac (any)` | 20 | 0 |
 | `class:skier (any)` | 20 | 0 |
 | `class:tuber (any)` | 20 | 0 |

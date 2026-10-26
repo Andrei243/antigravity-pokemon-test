@@ -428,11 +428,9 @@ johto_gentleman_alfred_2 127 (36) [Noctowl → Noctaugur]
 johto_gentleman_alfred_3 131 (42) [Noctowl → Noctaugur]
 johto_gentleman_alfred_4 140 (58) [Noctowl → Noctaugur]
 johto_gentleman_edward 130 (41) [Persian → Regalynx]
-johto_gentleman_gregory 133 (46) [Pikachu → Raichu, Flaaffy → Ampharos, Electrike → Manectric]
 johto_gentleman_mickey 116 (20) [Ponyta → Solarion]
 johto_gentleman_milton 133 (45) [Growlithe → Kirinine]
 johto_guitarist_clyde 131 (42) [Electabuzz → Electivire]
-johto_guitarist_vincent 133 (45) [Jolteon → Fulgureon, Voltorb → Dynamorb, Magnemite → Magnezone]
 johto_hall_matron_argenta 106 (5) [Rattata → Ratchisel]
 johto_hiker_anthony_2 125 (33) [Graveler → Golem, Machoke → Machamp]
 johto_hiker_anthony_3 129 (40) [Graveler → Golem, Graveler → Golem, Machoke → Machamp]
@@ -453,7 +451,6 @@ johto_hiker_parry_2 128 (38) [Onix → Ironwyrm, Graveler → Golem]
 johto_hiker_parry_3 130 (41) [Steelix → Ironwyrm, Graveler → Golem]
 johto_hiker_parry_4 139 (56) [Steelix → Ironwyrm]
 johto_juggler_fritz 127 (37) [Mr. Mime → Mimestro, Magmar → Magmortar, Machoke → Machamp]
-johto_juggler_horton 131 (43) [Electrode → Dynamorb, Electrode → Dynamorb, Electrode → Dynamorb]
 johto_juggler_irwin_2 125 (34) [Voltorb → Dynamorb, Voltorb → Dynamorb, Voltorb → Dynamorb, Voltorb → Dynamorb]
 johto_juggler_irwin_3 131 (42) [Voltorb → Dynamorb, Voltorb → Dynamorb, Voltorb → Dynamorb, Electrode → Dynamorb]
 johto_juggler_irwin_4 137 (51) [Voltorb → Dynamorb, Voltorb → Dynamorb, Electrode → Dynamorb, Electrode → Dynamorb]
@@ -3921,6 +3918,12 @@ trainers 6, 183 (own 54-55): unova_ace_trainer_caroll 183 (55) [Fraxure → Haxo
 Victory Road, Unova
 grass 180-181 (own 47-50)
 trainers 1, 183 (own 54): unova_veteran_hugo 183 (54) [Fraxure → Haxorus, Zweilous → Hydreigon]
+=== vermilion
+Vermilion City, Johto
+surf 123-126 (own 30-35)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
 === vermilion_city
 Vermilion City, Kanto
 surf 64-88 (own 5-40)
@@ -3930,6 +3933,9 @@ super rod 71-85 (own 15-35)
 === vermilion_city_gym
 Vermilion City, Kanto
 trainers 3, 75-76 (own 21-23): kanto_engineer_baily 75 (21) [Voltorb → Electrode, Magnemite → Magnezone], kanto_gentleman_tucker 76 (23) [Pikachu → Raichu], kanto_sailor_dwayne 75 (21) [Pikachu → Raichu, Pikachu → Raichu]
+=== vermilion_gym
+Vermilion City, Johto
+trainers 3, 131-133 (own 42-46): johto_gentleman_gregory 133 (46) [Pikachu → Raichu, Flaaffy → Ampharos, Electrike → Manectric], johto_guitarist_vincent 133 (45) [Jolteon → Fulgureon, Voltorb → Dynamorb, Magnemite → Magnezone], johto_juggler_horton 131 (43) [Electrode → Dynamorb, Electrode → Dynamorb, Electrode → Dynamorb]
 === village_bridge
 Village Bridge, Unova
 grass 176-177 (own 36-39)
