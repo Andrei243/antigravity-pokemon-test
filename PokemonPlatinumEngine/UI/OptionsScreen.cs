@@ -32,6 +32,7 @@ public enum OptionRow
     DynamicResolution,
     Controls,
     Jukebox,
+    Packs,
     Help,
     ResetDefaults
 }
@@ -73,6 +74,9 @@ public class OptionsScreen
     /// <summary>The Controls page (plan 12 · Q5), open over the options while <see cref="ControlsScreen.IsActive"/>.</summary>
     public ControlsScreen Controls { get; } = new();
 
+    /// <summary>The packs screen (plan 16 · T15), open over the options while <see cref="PacksScreen.IsActive"/>.</summary>
+    public PacksScreen Packs { get; } = new();
+
     private bool jukeboxRequested;
 
     /// <summary>True while the reset question (plan 12 · Q3) is up over the options.</summary>
@@ -99,6 +103,7 @@ public class OptionsScreen
         ResetAsking = false;
         Help.Close();
         Controls.Close();
+        Packs.Close();
     }
 
     /// <summary>Moves the reset question's slide-in and slide-out along; call every frame the options are up.</summary>
@@ -146,6 +151,7 @@ public class OptionsScreen
             return false;
         }
         if (Controls.IsActive) return Controls.Update(settings);
+        if (Packs.IsActive) return Packs.Update(settings);
         // The reset question holds the screen until it is answered: B is NO
         if (ResetAsking)
         {
@@ -167,7 +173,7 @@ public class OptionsScreen
             IsActive = false;
             AudioManager.PlaySound("cancel");
         }
-        else if (Rows[SelectedIndex] is OptionRow.Help or OptionRow.Controls or OptionRow.Jukebox or OptionRow.ResetDefaults)
+        else if (Rows[SelectedIndex] is OptionRow.Help or OptionRow.Controls or OptionRow.Jukebox or OptionRow.Packs or OptionRow.ResetDefaults)
         {
             if (InputManager.IsActionPressed(GameAction.Confirm)) Confirm(settings);
         }
@@ -202,6 +208,12 @@ public class OptionsScreen
         if (Rows[SelectedIndex] == OptionRow.Controls && settings != null)
         {
             Controls.Open(settings);
+            AudioManager.PlaySound("select");
+            return;
+        }
+        if (Rows[SelectedIndex] == OptionRow.Packs && settings != null)
+        {
+            Packs.OpenHere(settings);
             AudioManager.PlaySound("select");
             return;
         }
@@ -439,6 +451,7 @@ public class OptionsScreen
         OptionRow.ResetDefaults => (Text.Of("options.resetDefaults.label"), Text.Of("options.resetDefaults.value"), Text.Of("options.resetDefaults.help")),
         OptionRow.Controls => (Text.Of("options.controls.label"), Text.Of("options.controls.value"), Text.Of("options.controls.help")),
         OptionRow.Jukebox => (Text.Of("options.jukebox.label"), Text.Of("options.jukebox.value"), Text.Of("options.jukebox.help")),
+        OptionRow.Packs => (Text.Of("options.packs.label"), Text.Of("options.packs.value", ("n", Data.DataLayers.Packs.Count)), Text.Of("options.packs.help")),
         _ => (Text.Of("options.help.label"), Text.Of("options.help.value"), Text.Of("options.help.help"))
     };
 
@@ -459,9 +472,14 @@ public class OptionsScreen
             Controls.Draw(sw, sh);
             return;
         }
+        if (Packs.IsActive)
+        {
+            Packs.Draw(sw, sh);
+            return;
+        }
         ModernUi.Backdrop(sw, sh);
         ModernUi.ScreenTitle(Text.Of("options.title"));
-        if (Rows[SelectedIndex] is OptionRow.Help or OptionRow.Controls or OptionRow.Jukebox or OptionRow.ResetDefaults) ModernUi.Hints(sw - 64, 44, ModernUi.Hint("shared.keys.z", "shared.hints.open"), ModernUi.Hint("shared.keys.esc", "shared.hints.back"));
+        if (Rows[SelectedIndex] is OptionRow.Help or OptionRow.Controls or OptionRow.Jukebox or OptionRow.Packs or OptionRow.ResetDefaults) ModernUi.Hints(sw - 64, 44, ModernUi.Hint("shared.keys.z", "shared.hints.open"), ModernUi.Hint("shared.keys.esc", "shared.hints.back"));
         else ModernUi.Hints(sw - 64, 44, ModernUi.Hint("shared.keys.leftRight", "shared.hints.change"), ModernUi.Hint("shared.keys.esc", "shared.hints.back"));
 
         const float pitch = 86, height = 78;

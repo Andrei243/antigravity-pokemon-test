@@ -478,6 +478,29 @@ partial class Harness
 
         FirstStartShots(Seconds);
 
+        // Packs (plan 16 · T15), last so that nothing before it moves: a game saved with two packs, one of which is no
+        // longer in use, told of before the menu, and its card and its lone card naming them. Written, not run.
+        save.Packs = new() { new() { Name = "gate-lanterns", Version = "1.0" }, new() { Name = "alpha", Version = "1.0" } };
+        var packed = TitleScreen.WithSlots(new[] { new TitleSlot(1, save), new TitleSlot(2, second) },
+            TitleNotice.ForPacks(1, PackRecords.Missing(save.Packs, DataLayers.Packs)));
+        game.Title = packed;
+        game.State = GameState.Title;
+        packed.PressConfirm();
+        Seconds(1.2f);
+        packed.PressConfirm();
+        Seconds(0.5f); Shot("title_48_packs_notice");
+        Console.WriteLine($"a game saved with packs: \"{packed.Notice?.Heading}\": {packed.Notice?.Body}");
+        packed.PressConfirm();
+        Seconds(1f); Shot("title_49_packs_cards");
+        Console.WriteLine($"its card's mark: \"{ModernUi.PacksMark(save)}\"");
+        save.Packs = new() { new() { Name = "gate-lanterns", Version = "1.0" } };
+        var lonePacked = NewTitle(save);
+        lonePacked.PressConfirm();
+        Seconds(1.2f);
+        lonePacked.PressConfirm();
+        Seconds(1f); Shot("title_50_packs_lone_card");
+        save.Packs = null;
+
         game.State = GameState.Overworld;
     }
 

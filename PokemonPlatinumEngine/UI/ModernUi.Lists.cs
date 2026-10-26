@@ -385,6 +385,8 @@ internal static partial class ModernUi
 
         // The party as 2D sprites, like the main games' save panel
         Label(Text.Of("saving.party"), x, r.Y + 340);
+        // Played with packs (plan 16 · T15): a tag at the party row's right end
+        if (PacksMark(save) is { } packs) Tag(r.X + r.Width - 48 - UiFonts.Measure(packs, 22, UiWeight.Black) - 31, r.Y + 328, packs, Blue, 38);
         for (int i = 0; i < save.Party.Count && i < 6; i++)
         {
             var icon = PixelArtGenerator.GetPokemonIcon(PokemonLook.Of(save.Party[i].Form ?? save.Party[i].SpeciesName, save.Party[i].Gender == Gender.Female, save.Party[i].IsShiny));
@@ -442,7 +444,14 @@ internal static partial class ModernUi
         if (ww > room && ww > 0) size = MathF.Max(18, MathF.Floor(size * room / ww));
         UiFonts.Draw(where, x, r.Y + 100, size, Muted, UiWeight.ExtraBold);
         // How it is played, when it isn't Platinum's way (plan 13 · V1), at the foot's right end
+        float tagsEnd = right;
         if (SaveMark(save) is var (runMark, markColour))
-            Tag(right - UiFonts.Measure(runMark, 20, UiWeight.Black) - 26, r.Y + 98, runMark, markColour, 34);
+            tagsEnd -= 12 + Tag(tagsEnd - UiFonts.Measure(runMark, 20, UiWeight.Black) - 26, r.Y + 98, runMark, markColour, 34);
+        // Played with packs (plan 16 · T15), before the run's mark
+        if (PacksMark(save) is { } packs) Tag(tagsEnd - UiFonts.Measure(packs, 20, UiWeight.Black) - 26, r.Y + 98, packs, Blue, 34);
     }
+
+    /// <summary>What a save's card says of the packs it was played with (plan 16 · T15): their count, or null for none.</summary>
+    public static string? PacksMark(SaveData save) => save.Packs is { Count: > 0 } packs
+        ? Text.Of("card.packs", ("n", packs.Count), ("name", packs[0].Name)) : null;
 }

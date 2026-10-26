@@ -1,0 +1,6 @@
+# The sample pack's own script for Oreburgh Gate's lower floor (plan 16 · T15). Our own lines.
+
+script Cyclist
+  say "Hey! Did you see the lanterns on the way down?"
+  sayown
+  end

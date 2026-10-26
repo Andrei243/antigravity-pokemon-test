@@ -343,6 +343,7 @@ public partial class GameEngine
             else Log.Info($"The saves read as: {read}.");
             var notices = new List<TitleNotice?> { TitleNotice.ForCrash(crashed, titleSlots.Select(s => s.Outcome).ToList()), TitleNotice.ForOldSave(old) };
             notices.AddRange(titleSlots.Select(s => TitleNotice.ForSlot(s.Number, s.Outcome)));
+            notices.AddRange(titleSlots.Select(s => TitleNotice.ForPacks(s.Number, PackRecords.Missing(s.Save?.Packs, DataLayers.Packs))));
             flow.TitleScreen = TitleScreen.WithSlots(TitleCards(), notices.ToArray());
             // The player's own files (plan 08 · P21): MIGRATE is on the menu while the folder holds one the readers know
             using (Log.Phase("migrate folder")) OfferMigration();
@@ -815,6 +816,7 @@ public partial class GameEngine
             ScenesSeen = flow.Story.ScenesSeen.Order(StringComparer.Ordinal).ToList(),
             Heard = AudioManager.Heard.ToList(),
             StoryPhrases = flow.Story.PhrasesToSave(),
+            Packs = PackRecords.InUse(),
             PlayerStarter = told.PlayerStarter,
             RivalStarter = told.RivalStarter,
             Money = flow.Money,

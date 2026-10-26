@@ -50,9 +50,23 @@ public class BudgetTests
         if (Mode == "off") return;
         double median = MedianMs(runs, run), budget = measuredMs * Headroom;
         output.WriteLine($"{what}: median {median:F1} ms, budget {budget:F1} ms (measured {measuredMs} ms on 2026-10-26)");
+        Record(what, median);
         Assert.True(median <= budget, $"{what} took {median:F1} ms (median of {runs}); its budget is {budget:F1} ms, {Headroom}x the {measuredMs} ms measured on 2026-10-26.");
     }
 
+    /// <summary>
+    /// The nightly's record (plan 16 · T10): with <c>BUDGETS_JSON</c> naming a file, each median measured is added to it
+    /// as a line of JSON (<c>{"what": …, "ms": …}</c>), which <c>tools/dev/budgets-month.sh</c> holds to the month's.
+    /// </summary>
+    internal static void Record(string what, double ms)
+    {
+        string? file = Environment.GetEnvironmentVariable("BUDGETS_JSON");
+        if (string.IsNullOrWhiteSpace(file)) return;
+        string line = System.Text.Json.JsonSerializer.Serialize(new { what, ms = Math.Round(ms, 3) }) + "\n";
+        lock (RecordGate) File.AppendAllText(file, line);
+    }
+
+    private static readonly object RecordGate = new();
     private static readonly Lazy<Map> Sinnoh = new(() => World.LoadAll().Single(w => w.Index.Region == "Sinnoh").BuildMaps().Single(m => m.Name == "Sinnoh"));
 
     [Fact]
@@ -128,6 +142,7 @@ public class BudgetTests
         long megabytes = GC.GetTotalMemory(true) / (1024 * 1024);
         long ceiling = (long)(190 * (Mode == "strict" ? 1.25 : 2.0));
         output.WriteLine($"managed memory after the world's maps: {megabytes} MB, ceiling {ceiling} MB (measured 190 MB on 2026-10-26)");
+        Record("managed memory after the world's maps (MB)", megabytes);
         Assert.True(megabytes <= ceiling, $"{megabytes} MB held after the world's maps; the ceiling is {ceiling} MB.");
     }
 }

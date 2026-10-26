@@ -37,6 +37,12 @@ public static class Program
             return verified.Code;
         }
 
+        if (launch.ValidatePacks)
+        {
+            // Every pack beside the game and the saves held to what the game can read (plan 16 · T15); nothing is put in use
+            return PokemonPlatinumEngine.Data.PackCheck.CheckAll(PokemonPlatinumEngine.Data.DataLayers.PackFolders(Locate(launch).Folder), line => Log.Say(line));
+        }
+
         if (launch.Where)
         {
             // Where the saves would be kept, and nothing else: no folder is made and no file opened
