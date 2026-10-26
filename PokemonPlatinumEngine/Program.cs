@@ -145,6 +145,12 @@ public static class Program
         Log.Info($"Renderer: {Gl.Renderer() ?? "unknown"}");
         Log.Info($"Options: {System.Text.RegularExpressions.Regex.Replace(settings.Describe(), @"\s+", " ")}");
 
+        // The session is recorded from the title (plan 16 · T19): a seed drawn by chance goes into the dice before the
+        // engine is made, so the field's chance and every map the start loads draw from it, and each frame's keys and
+        // clock are kept with it. Only --record writes it anywhere
+        var recorder = MovieRecorder.Begin(settings, SavePaths.Current.Folder, launch.Region);
+        Log.Info($"Recording the session from seed {recorder.Recording.Seed}{(launch.RecordPath != null ? $", to be written to {launch.RecordPath}" : "")}.");
+
         // Initialize Engine
         GameEngine engine = new(settings);
         made(engine);
@@ -155,22 +161,42 @@ public static class Program
 
         // Main Game Loop: the window's close button asks first (plan 12 · Q1), and the game ends once it is answered
         long frames = 0;
-        while (!engine.QuitRequested)
+        var live = new LiveInput();
+        try
         {
-            if (Raylib.WindowShouldClose()) engine.RequestClose();
+            while (!engine.QuitRequested)
+            {
+                // The close button and whether the window is the one in front (with the options' "Pause in the
+                // background" on, the game waits while it isn't) go into the frame, as they change the game
+                live.Window = (Raylib.WindowShouldClose() ? WindowEvents.CloseAsked : WindowEvents.None)
+                    | (Raylib.IsWindowFocused() ? WindowEvents.None : WindowEvents.Unfocused);
 
-            // Whether the window is the one in front: with the options' "Pause in the background" on, the game waits while it isn't
-            engine.WindowFocused = Raylib.IsWindowFocused();
+                float dt = Raylib.GetFrameTime();
+                if (dt > 0.1f) dt = 0.1f; // Prevent spiral of death on lag spike
 
-            float dt = Raylib.GetFrameTime();
-            if (dt > 0.1f) dt = 0.1f; // Prevent spiral of death on lag spike
+                recorder.Step(engine, live.Next(dt)!.Value);
+                engine.Draw();
 
-            engine.Update(dt);
-            engine.Draw();
-
-            // --crash-after: the crash handler seen at work on the real game
-            if (launch.CrashAfter is { } crashAfter && ++frames >= crashAfter)
-                throw new InvalidOperationException($"Thrown on purpose after {frames} frames (--crash-after).");
+                // --crash-after: the crash handler seen at work on the real game
+                if (launch.CrashAfter is { } crashAfter && ++frames >= crashAfter)
+                    throw new InvalidOperationException($"Thrown on purpose after {frames} frames (--crash-after).");
+            }
+        }
+        finally
+        {
+            Movie.Release();
+            if (launch.RecordPath is { } path)
+            {
+                try
+                {
+                    recorder.Recording.WriteTo(path);
+                    Log.Info($"The session's recording ({recorder.Recording.Frames.Count} frames) was written to {path}.");
+                }
+                catch (Exception e) when (e is IOException or UnauthorizedAccessException)
+                {
+                    Log.Warn($"The session's recording couldn't be written to {path}: {e.Message}");
+                }
+            }
         }
 
         // Cleanup

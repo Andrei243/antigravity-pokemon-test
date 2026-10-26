@@ -115,7 +115,14 @@ public partial class BattleEngine
     /// The battle as the Vs. Recorder keeps it, on the day given (plan 08 · P10): the opening, the record of its seed
     /// and answers, and how it ended. Null for a battle whose chance was no <see cref="BattleRandom"/>.
     /// </summary>
-    public BattleRecordFile? RecordFile(DateTime day) => Opening.Closing(core, day);
+    public BattleRecordFile? RecordFile(DateTime day) => ChangedFromOutside ? null : Opening.Closing(core, day);
+
+    /// <summary>
+    /// Whether something outside the battle changed one of its Pokémon after it began (a tool keeping a foe at one HP, a
+    /// test setting a burn): the rules took the change over (<see cref="BattleMirror.Adopt()"/>), but no answer of the
+    /// record holds it, so the battle would replay otherwise and the Vs. Recorder keeps none of it (<see cref="RecordFile"/>).
+    /// </summary>
+    public bool ChangedFromOutside { get; private set; }
 
     public Random Random => core.Random;
 
@@ -372,7 +379,7 @@ public partial class BattleEngine
     /// <summary>Tells the rules of anything that changed a Pokémon or a place outside the battle since they last looked.</summary>
     private void SyncToCore()
     {
-        mirror.Adopt();
+        if (mirror.Adopt()) ChangedFromOutside = true;
         foreach (var place in AllBattlers) core.At(place.Place).CopyVolatileFrom(place);
     }
 

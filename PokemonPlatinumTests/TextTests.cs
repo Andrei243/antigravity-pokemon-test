@@ -77,7 +77,10 @@ public class TextTests
         ["Core/DevMode.cs"] = "where developer mode reads the data from, for the log (plan 16 · T6)",
         ["Core/Reload.cs"] = "the folders and kinds of file the live reload watches, for the developer (plan 16 · T6)",
         ["Core/GameEngine.Dev.cs"] = "what the developer's console, reload, trace and frame time say, for the developer alone (plan 16 · T6)",
-        ["UI/DevConsole.cs"] = "the developer's console, which says what its commands answer in English (plan 16 · T6)"
+        ["UI/DevConsole.cs"] = "the developer's console, which says what its commands answer in English (plan 16 · T6)",
+        ["Core/InputRecording.cs"] = "why a recording is refused, for whoever plays it back with a tool (plan 16 · T19)",
+        ["Core/Movie.cs"] = "where a replay parted, for the log and the tool playing it (plan 16 · T19)",
+        ["Core/StateHash.cs"] = "the names of the hash's groups, which a parting names (plan 16 · T19)"
     };
 
     /// <summary>What may stay in quotes in a file on the table: names of the data, and the logo, which is a picture (plan 17).</summary>

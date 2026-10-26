@@ -114,6 +114,7 @@ partial class Harness
             bool same = again.Log.OfType<Said>().Select(s => s.Text).SequenceEqual(rotation.Core.Log.OfType<Said>().Select(s => s.Text));
             Console.WriteLine($"  the Vs. Recorder's file replays to the same lines: {same}{(same ? "" : "  !!")}");
         }
+        else if (rotation.ChangedFromOutside) Console.WriteLine("  the harness changed the battle's Pokémon in the middle, so the Vs. Recorder keeps no file of it (RotationTests replays one fought untouched)");
         else Console.WriteLine("  !! no record file");
         for (int i = 0; i < 1500 && game.State != GameState.Overworld; i++) { if (!FieldAgain()) Quick(); }
         Frames(10);
