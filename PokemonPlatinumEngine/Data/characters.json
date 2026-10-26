@@ -290,6 +290,14 @@
     // Plan 22 · U9, part a: Ghetsis (our own take, a stand-in until plan 22 · U12), very tall, long sage-green hair over a dark violet
     // robe banded in gold, one red eye
     "ghetsis": { "hairColor": "#7aa86a", "hair": "Long", "top": "#3e3050", "accent": "#d8b44a", "bottom": "#3e3050", "shoes": "#2a2026", "eyes": "#a83a3a", "coat": true, "skirt": true, "build": "Adult", "height": 1.16 },
+    // Plan 22 · U9, part c: Unova's Elite Four (our own takes, stand-ins until plan 22 · U12; Caitlin is the Battle Castle's own):
+    // Shauntal, who writes ghost stories, a purple bob, glasses and a long plum dress; Marshal, who trains in the mountains, a
+    // bald head and a dark gi tied with a brown belt; Grimsley, the gambler, swept dark hair and a black suit with a yellow scarf
+    "shauntal": { "hairColor": "#5a3a6e", "hair": "Short", "top": "#4a2a58", "accent": "#d8c8e8", "bottom": "#4a2a58", "shoes": "#2a1e2e", "eyes": "#6a4a8a", "glasses": "#2a2a36", "skirt": true, "lashes": true, "build": "Adult", "height": 1.02 },
+    "marshal": { "skin": "#d8a078", "hairColor": "#3a2a24", "hair": "Bald", "top": "#3a3a40", "accent": "#7a5232", "bottom": "#3a3a40", "shoes": "#3a3a40", "eyes": "#2a2420", "bushyBrows": true, "build": "Adult", "height": 1.12 },
+    "grimsley": { "hairColor": "#2e2a36", "hair": "Swept", "top": "#22222a", "accent": "#e8c040", "bottom": "#22222a", "shoes": "#1c1c22", "eyes": "#4a3a2a", "scarf": true, "coat": true, "build": "Adult", "height": 1.08 },
+    // and Professor Juniper's father, Cedric, who calls on the new Champion: grey hair swept back, glasses and a tan coat
+    "cedric_juniper": { "hairColor": "#a8a8b0", "hair": "Swept", "top": "#5a7a5a", "accent": "#f0e8d8", "bottom": "#4a4a52", "shoes": "#3a2e28", "eyes": "#3a3a4a", "glasses": "#3a3a46", "mustache": true, "coat": true, "build": "Adult", "height": 1.06 },
     // The first trainers of the open areas (plan 11 · C2), each our own take. The school kids: navy with a white collar, the boy in a bowl cut and grey shorts with a satchel, the girl with a ponytail tied in red and a red skirt
     "school_kid_m": { "hairColor": "#4a3428", "hair": "Bowl", "top": "#34467a", "accent": "#f4f4f6", "bottom": "#8a8c96", "shoes": "#4a3428", "shorts": true, "bag": "#b4864e", "blush": true },
     "school_kid_f": { "hairColor": "#3c2a26", "hair": "Ponytail", "hatBand": "#d8434a", "top": "#34467a", "accent": "#f4f4f6", "bottom": "#c4464c", "shoes": "#3c2c2a", "skirt": true, "bag": "#b4864e", "lashes": true, "blush": true },
@@ -771,6 +779,11 @@
     "Pilot": "pilot",
     // Plan 22 · U9, part a: Ghetsis and the Shadow Triad in battle
     "Team Plasma Ghetsis": "ghetsis",
-    "Team Plasma Shadow": "shadow_triad"
+    "Team Plasma Shadow": "shadow_triad",
+    // Plan 22 · U9, part c: Unova's Elite Four in battle
+    "Elite Four Shauntal": "shauntal",
+    "Elite Four Marshal": "marshal",
+    "Elite Four Grimsley": "grimsley",
+    "Elite Four Caitlin": "caitlin"
   }
 }

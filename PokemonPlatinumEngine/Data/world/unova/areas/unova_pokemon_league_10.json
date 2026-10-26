@@ -1,0 +1,21 @@
+{
+  "key": "unova_pokemon_league_10",
+  "index": 145,
+  "name": "Pokémon League",
+  "matrix": 126,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_SILENCE_FIELD",
+  "nightMusic": "BGM_SILENCE_FIELD",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [],
+  "objects": [],
+  "signs": [],
+  "triggers": []
+}

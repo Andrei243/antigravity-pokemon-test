@@ -1,0 +1,15 @@
+{
+  // Victory Road's falls (plan 22 · U9, part b): Black 2's open hillside with its river and waterfalls, its balls in the area
+  // file; our words
+  "area": "unova_victory_road_19",
+  "name": "Victory Road",
+  "bgmTrack": "unova/victory_road",
+  "people": {
+    "0": { "name": "Mae", "trainer": { "dialogueBefore": "I packed for a week on Victory Road. I'll unpack my Pokémon for you!", "dialogueAfter": "Time to pack up and go home." } },
+    "1": { "name": "Logan", "trainer": { "dialogueBefore": "Doctors follow the challengers up this road. Let me check your Pokémon's health... in battle!", "dialogueAfter": "A clean bill of health, I'd say." } },
+    "2": { "name": "Shelly", "trainer": { "dialogueBefore": "The falls hide the strong Trainers. Found one!", "dialogueAfter": "You found me, and then some." } },
+    "3": { "name": "Beckett", "trainer": { "dialogueBefore": "A quiet ridge in the middle of Victory Road. Let's ruin the quiet!", "dialogueAfter": "Quiet again. Thanks for that." } },
+    "4": { "name": "Cathy", "trainer": { "dialogueBefore": "Water, rock and Trainers. Victory Road has them all!", "dialogueAfter": "And now it has one beaten Veteran." } },
+    "5": { "name": "Pierce", "trainer": { "dialogueBefore": "The falls are loud. My Pokémon's attacks are louder!", "dialogueAfter": "I can hardly hear myself lose." } }
+  }
+}

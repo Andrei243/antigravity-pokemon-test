@@ -72,10 +72,12 @@ public class UnovaTests
         Assert.Equal("Aspertia City", Overworld.DisplayNameAt(arrival.X, arrival.Y));
         Assert.Equal("AspertiaCity_PlayersHouse", Overworld.GetWarpAt(arrival.X, arrival.Y - 1)?.TargetMap);
         // and the record's spawns stand on open ground before their rooms' doors
+        // (Victory Road's and the League's on maps of their own, plan 22 · U9, part b)
         foreach (var spawn in unova.File!.Spawns)
         {
-            Assert.True(Overworld.IsWalkable(spawn.X, spawn.Y), $"spawn {spawn.Id} stands on a blocked tile");
-            Assert.Equal(spawn.Room, Overworld.GetWarpAt(spawn.X, spawn.Y - 1)?.TargetMap);
+            var on = spawn.Map == null ? Overworld : BuiltMaps.Value[spawn.Map];
+            Assert.True(on.IsWalkable(spawn.X, spawn.Y), $"spawn {spawn.Id} stands on a blocked tile");
+            Assert.Equal(spawn.Room, on.GetWarpAt(spawn.X, spawn.Y - 1)?.TargetMap);
         }
         // The region's story is written (plan 22 · U5), its starters are Black 2's, and it alone changes with the seasons
         Assert.True(unova.HasStory);
@@ -573,7 +575,9 @@ public class UnovaTests
                 // and Mistralton's, Route 7's tower and Route 6's lab since plan 22 · U7
                 || m.Name.StartsWith("c6_", StringComparison.Ordinal) || m.Name is "c06_gym" or "r7_toh" or "sikiken" or "t7_house"
                 // and Opelucid's and Humilau's since plan 22 · U8, part b
-                || m.Name.StartsWith("c8_", StringComparison.Ordinal) || m.Name.StartsWith("c14_", StringComparison.Ordinal))
+                || m.Name.StartsWith("c8_", StringComparison.Ordinal) || m.Name.StartsWith("c14_", StringComparison.Ordinal)
+                // and Victory Road's Pokémon Center since plan 22 · U9, part b
+                || m.Name == "bg_pc")
                 Assert.True(string.IsNullOrEmpty(m.StandInUntil), $"{m.Name} is still a stand-in");
             else Assert.False(string.IsNullOrEmpty(m.StandInUntil), $"{m.Name} is no stand-in");
         }

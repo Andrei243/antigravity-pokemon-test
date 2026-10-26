@@ -2,7 +2,8 @@
 # on Black 2's beats (the decompilation's res/field/scripts/aspertia_city_2.s, read for the order of the scene alone).
 #
 # VAR_UNOVA_HOUSE, the house's count as Black 2 keeps it: 0 a new game, nothing said yet; 1 Mom's questions asked
-# and the player sent to find Bianca. (2 and 3 are the professor's father's visit after the Hall of Fame, plan 22 · U9.)
+# and the player sent to find Bianca; 2 once Unova's Hall of Fame has been entered (unova_pokemon_league_10.txt), when the
+# professor's father calls as the player comes down from their room (ChampionHome); 3 once he has upgraded the Pokédex.
 # Mom is the room's own person 0, at the table; FLAG_UNOVA_HIDE_MOM_HOME takes her off the map while she is out in town.
 
 
@@ -69,4 +70,45 @@ label NoTeam
   end
 label Morning
   say "Good morning, sleepyhead. Come here a moment, I've got something to ask you."
+  end
+
+
+# Home as Unova's Champion (plan 22 · U9, part c; Black 2's beats, the professor's father's visit): as the player comes down from
+# their room after the Hall of Fame (the room's trigger on 10, 8, at 2), Mom comes over proud as anything, and the professor's
+# father, Cedric Juniper, comes in at the door with the National Pokédex.
+script ChampionHome
+  scene "Home as Champion"
+  clearflag FLAG_UNOVA_HIDE_MOM_HOME
+  place 0 4 5 down
+  show 0
+  emote 0 exclaim
+  walk 0 down 3 right 5
+  face 0 player
+  face player 0
+  speaker "Mom"
+  say "{player}! Welcome home, Champion! I heard it all on the news. I'm so proud of you I could burst!"
+  say "Oh, and we have a visitor. He's been waiting all morning to meet you."
+  clearflag FLAG_UNOVA_HIDE_CEDRIC_HOME
+  show cedric_home
+  walk cedric_home up 1 right 3
+  face cedric_home player
+  face player cedric_home
+  speaker "Prof. Cedric Juniper"
+  say "So you're the new Champion! I'm Cedric Juniper. Yes, the professor's father. I study Pokémon too, in my own way."
+  say "My daughter tells me you've filled your Pokédex with Unova's Pokémon. Then it's time it saw the rest of the world."
+  say "Let me have it for a moment... There! It's the National Pokédex now."
+  nationaldex
+  fanfare keyitem
+  speaker none
+  text "{player}'s Pokédex was upgraded to the National Pokédex!"
+  speaker "Prof. Cedric Juniper"
+  say "Pokémon from far beyond Unova will be recorded now. And there's a plane at Mistralton for anyone who wants to go and see them!"
+  say "Well, I'll be off. Good luck, Champion!"
+  walk cedric_home left 3 down 1
+  hide cedric_home
+  setflag FLAG_UNOVA_HIDE_CEDRIC_HOME
+  walk 0 left 5 up 3
+  face 0 down
+  setvar VAR_UNOVA_HOUSE 3
+  endscene
   end

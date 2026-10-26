@@ -1,0 +1,32 @@
+{
+  // Victory Road's long cave (plan 22 · U9, part b): Black 2's cave under the ridge, its boulders and hidden things in the area
+  // file; our words. Its two holes (31, 6 and 27, 7) are filled by its two boulders pushed with Strength, as the Relic Passage's are (unova_victory_road_20.txt). Black 2 stands Webster and Shanta by the north wall (4, 5) with its two boulders (0, 1); the other version's
+  // two deep in the cave (9, 10) and their boulders (2, 3) are held back, as are that version's ways down to its own falls
+  "area": "unova_victory_road_20",
+  "name": "Victory Road",
+  "bgmTrack": "unova/victory_road",
+  "heldBack": [ "2", "3" ],
+  "holes": [
+    { "x": 31, "z": 6, "width": 2, "depth": 2, "filledBy": "FLAG_UNOVA_VICTORY_ROAD_CAVE_HOLE_EAST" },
+    { "x": 27, "z": 7, "width": 2, "depth": 2, "filledBy": "FLAG_UNOVA_VICTORY_ROAD_CAVE_HOLE_WEST" }
+  ],
+  "pits": [
+    { "x": 31, "z": 6, "script": "FillEast" },
+    { "x": 32, "z": 6, "script": "FillEast" },
+    { "x": 31, "z": 7, "script": "FillEast" },
+    { "x": 32, "z": 7, "script": "FillEast" },
+    { "x": 27, "z": 7, "script": "FillWest" },
+    { "x": 28, "z": 7, "script": "FillWest" },
+    { "x": 27, "z": 8, "script": "FillWest" },
+    { "x": 28, "z": 8, "script": "FillWest" }
+  ],
+  "people": {
+    "0": { "name": "Boulder", "hiddenBy": "FLAG_UNOVA_VICTORY_ROAD_CAVE_HOLE_EAST" },
+    "1": { "name": "Boulder", "hiddenBy": "FLAG_UNOVA_VICTORY_ROAD_CAVE_HOLE_WEST" },
+    "4": { "name": "Webster", "trainer": { "dialogueBefore": "I've reached this cave three times. This time I'll get through it!", "dialogueAfter": "Maybe the fourth time..." } },
+    "5": { "name": "Shanta", "trainer": { "dialogueBefore": "I'm almost at the League. I won't be stopped this close!", "dialogueAfter": "Stopped. This close." } },
+    "6": { "name": "Abraham", "trainer": { "dialogueBefore": "This cave has turned back many a challenger. Will it be you?", "dialogueAfter": "Not you. Clearly not you." } },
+    "7": { "name": "Elle", "trainer": { "dialogueBefore": "I patrol the length of this cave. You'll have to battle your way through!", "dialogueAfter": "On you go, then. Carefully." } },
+    "8": { "name": "Eddie", "trainer": { "dialogueBefore": "The Pokémon here are tough, but a Ranger is tougher!", "dialogueAfter": "A Ranger is tougher, but you're toughest." } }
+  }
+}

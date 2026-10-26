@@ -1,0 +1,9 @@
+{
+  // A house on Route 23 (plan 22 · U9, part b): an artist who paints the challengers on their way, and her Smeargle; our words
+  "area": "unova_route_23_3",
+  "bgmTrack": "unova/route23",
+  "people": {
+    "0": { "name": "Artist", "npcType": "artist", "dialog": [ "Every Trainer who passes my window wears the same face: tired, and full of hope.", "I paint that face. Would you sit for me, once you come back down as Champion?" ] },
+    "1": { "name": "Smeargle", "npcType": "Pokemon", "species": "Smeargle", "dialog": [ "Smeargle: Smea, smea!" ] }
+  }
+}

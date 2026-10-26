@@ -1,0 +1,21 @@
+{
+  // The Champion's room (plan 22 · U9, part c): Black 2's long walk up to Iris's dais. Black 2 climbs from the floor by the door to
+  // the walk by a staircase on its rails, which the reader leaves out: here an exit of ours at its foot (16, 58) takes the player up
+  // onto the walk, and another at the walk's foot (16, 56) back down. As the player comes to the head of the walk (our trigger
+  // across it, 15 to 17, 43; VAR_UNOVA_LEAGUE_IRIS 0) Iris (0) comes down from the dais and battles; then she leads the new
+  // Champion to the Hall of Fame (unova_pokemon_league_9.txt)
+  "area": "unova_pokemon_league_9",
+  "name": "Pokémon League",
+  "bgmTrack": "unova/pokemon_league",
+  "arenaType": "Dragon",
+  "exits": [
+    { "x": 16, "z": 58, "map": "UnovaPokemonLeague_ChampionsRoom", "toX": 16, "toY": 55, "facing": "Up" },
+    { "x": 16, "z": 56, "map": "UnovaPokemonLeague_ChampionsRoom", "toX": 16, "toY": 59, "facing": "Down" }
+  ],
+  "triggers": [
+    { "script": "Iris", "x": 15, "z": 43, "width": 3, "depth": 1, "variable": "VAR_UNOVA_LEAGUE_IRIS", "value": 0 }
+  ],
+  "people": {
+    "0": { "name": "Iris", "npcType": "iris", "script": "IrisTalk", "still": true }
+  }
+}

@@ -93,6 +93,12 @@ partial class Harness
             ("u197_chasm_forest_day", "u198_chasm_forest_night", "Unova", 686, 147, Direction.Up),
             ("u199_chasm_crater_frigate_day", "u200_chasm_crater_frigate_night", "GiantChasm_CraterFrigate", 26, 71, Direction.Up),
             ("u201_chasm_crater_day", "u202_chasm_crater_night", "GiantChasm_Crater", 26, 71, Direction.Up),
+            // Plan 22 · U9, parts b and c: Route 23 by the chasm and below Victory Road, Victory Road's foot and gates, the League's plaza
+            ("u208_route23_chasm_day", "u209_route23_chasm_night", "Unova", 664, 136, Direction.Up),
+            ("u210_route23_top_day", "u211_route23_top_night", "Unova", 620, 71, Direction.Up),
+            ("u212_victory_road_foot_day", "u213_victory_road_foot_night", "UnovaVictoryRoad", 80, 56, Direction.Up),
+            ("u214_badge_gates_day", "u215_badge_gates_night", "UnovaVictoryRoad", 62, 49, Direction.Left),
+            ("u216_league_plaza_day", "u217_league_plaza_night", "UnovaPokemonLeague", 32, 54, Direction.Up),
         };
         foreach (var (day, _, map, x, y, facing) in places)
         {
@@ -217,6 +223,28 @@ partial class Harness
             ("u205_chasm_passage", "GiantChasm_Passage", 16, 20, Direction.Up),
             ("u206_chasm_cavern", "GiantChasm_Cavern", 15, 24, Direction.Up),
             ("u207_frigate_ramp_hall", "PlasmaFrigate_Ramp", 11, 10, Direction.Up),
+            // plan 22 · U9, parts b and c: Route 23's houses, Victory Road's Pokémon Center and floors, the League's Pokémon Center,
+            // hall, four rooms, way down, Champion's room and Hall of Fame
+            ("u218_route23_house1", "Route23_House1", 6, 8, Direction.Up),
+            ("u219_route23_house2", "Route23_House2", 6, 8, Direction.Up),
+            ("u220_victory_road_center", "UnovaVictoryRoad_PokemonCenter", 7, 17, Direction.Up),
+            ("u221_victory_road_ruins", "UnovaVictoryRoad_Ruins", 50, 59, Direction.Up),
+            ("u222_victory_road_grove", "UnovaVictoryRoad_Grove", 16, 14, Direction.Up),
+            ("u223_victory_road_falls", "UnovaVictoryRoad_Falls", 31, 15, Direction.Up),
+            ("u224_victory_road_cave", "UnovaVictoryRoad_Cave", 30, 26, Direction.Up),
+            ("u225_victory_road_pool", "UnovaVictoryRoad_Pool", 13, 29, Direction.Up),
+            ("u226_victory_road_summit", "UnovaVictoryRoad_Summit", 31, 5, Direction.Up),
+            ("u227_victory_road_hollow", "UnovaVictoryRoad_Hollow", 28, 13, Direction.Down),
+            ("u228_victory_road_tunnel", "UnovaVictoryRoad_Tunnel", 16, 7, Direction.Left),
+            ("u229_league_center", "UnovaPokemonLeague_PokemonCenter", 7, 17, Direction.Up),
+            ("u230_league_hall", "UnovaPokemonLeague_Hall", 31, 49, Direction.Up),
+            ("u231_shauntals_room", "UnovaPokemonLeague_ShauntalsRoom", 15, 10, Direction.Up),
+            ("u232_grimsleys_room", "UnovaPokemonLeague_GrimsleysRoom", 15, 12, Direction.Up),
+            ("u233_marshals_room", "UnovaPokemonLeague_MarshalsRoom", 15, 12, Direction.Up),
+            ("u234_caitlins_room", "UnovaPokemonLeague_CaitlinsRoom", 15, 12, Direction.Up),
+            ("u235_league_descent", "UnovaPokemonLeague_Descent", 31, 84, Direction.Up),
+            ("u236_champions_room", "UnovaPokemonLeague_ChampionsRoom", 16, 44, Direction.Up),
+            ("u237_hall_of_fame", "UnovaPokemonLeague_HallOfFame", 8, 15, Direction.Up),
         };
         foreach (var (name, map, x, y, facing) in more)
         {

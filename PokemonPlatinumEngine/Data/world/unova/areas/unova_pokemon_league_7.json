@@ -1,0 +1,30 @@
+{
+  "key": "unova_pokemon_league_7",
+  "index": 142,
+  "name": "Pokémon League",
+  "matrix": 123,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "19",
+  "battleBackground": "",
+  "dayMusic": "BGM_POKEMON_LEAGUE",
+  "nightMusic": "BGM_POKEMON_LEAGUE",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 14, "z": 30, "to": "unova_pokemon_league_2", "toWarp": 2 },
+    { "x": 15, "z": 30, "to": "unova_pokemon_league_2", "toWarp": 2 },
+    { "x": 16, "z": 30, "to": "unova_pokemon_league_2", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "95", "movement": "none", "x": 15, "z": 7, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "4" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 15, "z": 29, "width": 1, "depth": 1, "script": "5", "variable": "VAR_UNOVA_0x4000", "value": "0" },
+    { "x": 18, "z": 9, "width": 1, "depth": 1, "script": "7", "variable": "VAR_UNOVA_0x400a", "value": "555" }
+  ]
+}

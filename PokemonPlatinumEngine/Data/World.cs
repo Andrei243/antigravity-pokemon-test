@@ -245,7 +245,7 @@ public static class WorldMapBuilder
         // it is as large as what can be walked to from its ways in, and the rest of it is wall
         bool[]? reach = null;
         var (mapWidth, mapHeight) = room && matrix.Width == 1 && matrix.Height == 1 && world.Chunk(ChunkOf(0, 0)) is { } only
-            ? world.Index.BuildingsAtDoors ? RoomExtent(only) : RoomExtent(only, reach = RoomReach(only, world.Area(entry.Area ?? "")?.Warps ?? new()))
+            ? world.Index.BuildingsAtDoors ? RoomExtent(only) : RoomExtent(only, reach = RoomReach(only, WaysIntoRoom(world, entry)))
             // A GBA game's room longer than a chunk (plan 21 · H2, part b: Petalburg's Gym, 112 tiles deep) lies in the
             // west of a column of chunks: it is as wide as the widest of them shows, and as long as all of them, so the
             // camera looks at the hall and not at the column's empty east
@@ -604,6 +604,27 @@ public static class WorldMapBuilder
     /// The tiles of a DS game's room (plan 20 · J2) that can be walked to from its ways in, by the chunk's own tiles:
     /// the original leaves the chunk round the room open, where nobody can come.
     /// </summary>
+    /// <summary>
+    /// The tiles a DS game's room is reached from: its area's warps, and its overlay's exits, both where they stand and where
+    /// one of them leads within the room itself (plan 22 · U9, part c: the floor of an Elite Four's room in Unova, which Black 2
+    /// reaches by a staircase on its rails, the reader leaving it out, is joined to the room's door by an exit of ours), and in a
+    /// room with no way of its own, which a script warps into (Unova's Hall of Fame), the tiles its people of ours stand on.
+    /// </summary>
+    private static List<AreaWarp> WaysIntoRoom(World world, WorldMapEntry entry)
+    {
+        var ways = (world.Area(entry.Area ?? "")?.Warps ?? new()).ToList();
+        var overlay = world.Overlay(entry.Area ?? "");
+        foreach (var exit in overlay?.Exits ?? new())
+        {
+            ways.Add(new AreaWarp { X = exit.X, Z = exit.Z });
+            if (exit.Map == entry.Name) ways.Add(new AreaWarp { X = exit.ToX, Z = exit.ToY });
+        }
+        if (ways.Count == 0)
+            foreach (var person in overlay?.Npcs ?? new())
+                ways.Add(new AreaWarp { X = person.X, Z = person.Y });
+        return ways;
+    }
+
     public static bool[] RoomReach(WorldChunkFile chunk, IReadOnlyList<AreaWarp> warps)
     {
         var reached = new bool[T * T];

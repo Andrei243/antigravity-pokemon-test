@@ -1,0 +1,40 @@
+# The Champion's room (plan 22 · U9, part c). docs/scripts.md describes the language; the lines are our own, on Black 2's beats
+# (the decompilation's res/field/scripts/pokemon_league_9.s, read for the order alone).
+#
+# VAR_UNOVA_LEAGUE_IRIS is 0 until Iris is beaten in this challenge, 1 after; the plaza's arrival puts it back to 0. As the player
+# comes to the head of the walk (our trigger across it, 15 to 17, 43) Iris comes down from her dais and battles, with Black 2's
+# team (unova_champion_iris) or, once Unova's Hall of Fame has been entered, the second round's (unova_champion_iris_2). Won, she
+# leads the new Champion to the Hall of Fame (unova_pokemon_league_10.txt). Lost, the challenge is over and starts again.
+
+
+script Iris
+  scene "Iris the Champion"
+  place player 16 43 up
+  walk 0 down 8
+  face 0 player
+  speaker "Iris"
+  if flag UnovaHallOfFame goto Again
+  say "Hi! You made it all the way here, past the whole Elite Four!"
+  say "I'm Iris. I'm the Champion of the Pokémon League. Can you believe it? Sometimes I can't either."
+  say "I know how much your Pokémon trust you. I can tell just by looking at them. So let's have a battle we'll both remember!"
+  battle 0 as "unova_champion_iris"
+  goto Won
+label Again
+  say "You came back! I've been training every day, waiting for this. Let's go!"
+  battle 0 as "unova_champion_iris_2"
+label Won
+  speaker "Iris"
+  say "Wow... You're amazing! Your Pokémon fought their very hardest for you, and you fought for them."
+  say "That means you're the Champion now! Come with me. There's a room where every Champion is remembered."
+  setvar VAR_UNOVA_LEAGUE_IRIS 1
+  endscene
+  fade out 0.8
+  warp "UnovaPokemonLeague_HallOfFame" 8 14 up
+  end
+
+
+# Iris on her dais, spoken to before the challenger has come up the walk
+script IrisTalk
+  speaker "Iris"
+  say "Come on up! I'm waiting for you!"
+  end

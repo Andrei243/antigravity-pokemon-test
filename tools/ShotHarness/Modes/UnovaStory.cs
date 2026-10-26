@@ -1219,5 +1219,107 @@ partial class Harness
         ReadTo("Route 23"); Frames(10); Shot("us387_the_way_on");
         ReadTo(null); Frames(20); Shot("us388_the_cavern_after");
         Chasm("the chasm cleared");
+
+        // Plan 22 · U9, parts b and c: Route 23, Victory Road and the League (us389 to us420), played in this same game: N at the foot
+        // of Victory Road, the Badge Check Gates, Hugh in the last tunnel, the plaza's veteran, the Elite Four one room after another,
+        // the statue, Iris, the Hall of Fame, home and the professor's father with the National Pokédex
+        void League(string what) =>
+            Console.WriteLine($"  {what}: map {game.Map.Name} {game.Player.GridX},{game.Player.GridY}, N {story.Var("VAR_UNOVA_N_VICTORY_ROAD")}, "
+                + $"gates {story.Var("VAR_UNOVA_BADGE_GATES")}, Hugh {story.Var("VAR_UNOVA_HUGH_TUNNEL")}, guard {story.Var("VAR_UNOVA_LEAGUE_GUARD")}, "
+                + $"four {story.Var("VAR_UNOVA_LEAGUE_SHAUNTAL")}{story.Var("VAR_UNOVA_LEAGUE_GRIMSLEY")}{story.Var("VAR_UNOVA_LEAGUE_CAITLIN")}{story.Var("VAR_UNOVA_LEAGUE_MARSHAL")}, "
+                + $"Iris {story.Var("VAR_UNOVA_LEAGUE_IRIS")}, Hall of Fame {story.Has("UnovaHallOfFame")}, house {story.Var("VAR_UNOVA_HOUSE")}, "
+                + $"National Pokédex {game.Pokedex.NationalUnlocked}");
+
+        // ---- Route 23, and N at the foot of Victory Road
+        ComeThrough("Unova", 664, 136, Direction.Up); Frames(30); Shot("us389_route_23");
+        StepOnto("UnovaVictoryRoad", 80, 52, Direction.Up);
+        ReadTo("You came. I knew you would."); Frames(10); Shot("us390_n_at_victory_road");
+        ReadTo("Parts of the new road"); Frames(10); Shot("us391_n_gives_waterfall");
+        ReadTo(null); Frames(10);
+        League("N");
+
+        // ---- the Badge Check Gates, west along the road, and the last before the cave
+        StepOnto("UnovaVictoryRoad", 75, 49, Direction.Left);
+        ReadTo("Basic Badge confirmed!"); Frames(10); Shot("us392_the_first_gate");
+        ReadTo(null);
+        foreach (int x in new[] { 70, 65, 60, 55, 50, 45, 40 }) { StepOnto("UnovaVictoryRoad", x, 49, Direction.Left); ReadTo(null); }
+        StepOnto("UnovaVictoryRoad", 31, 44, Direction.Up);
+        ReadTo("All eight Badges confirmed!"); Frames(10); Shot("us393_the_last_gate");
+        ReadTo(null);
+        League("the gates");
+
+        // ---- Hugh in the last tunnel
+        ComeThrough("UnovaVictoryRoad_Tunnel", 22, 12, Direction.Up); Frames(30); Shot("us394_the_last_tunnel");
+        StepOnto("UnovaVictoryRoad_Tunnel", 12, 7, Direction.Left);
+        ReadTo("Wait up"); Frames(10); Shot("us395_hugh_runs_in");
+        ReadTo("battle me one more time"); Frames(10); Shot("us396_hughs_last_battle");
+        ReadTo("This is my thanks!"); Frames(10); Shot("us397_hughs_thanks");
+        ReadTo(null); Frames(10);
+        League("Hugh");
+
+        // ---- the plaza and its veteran
+        ComeThrough("UnovaPokemonLeague", 32, 57, Direction.Up); Frames(30); Shot("us398_the_league_plaza");
+        StepOnto("UnovaPokemonLeague", 32, 48, Direction.Up);
+        ReadTo("Are you ready to go in?"); Frames(10); Shot("us399_are_you_ready");
+        ReadTo(null);
+        League("the plaza");
+
+        // ---- the hall, and the Elite Four one room after another
+        ComeThrough("UnovaPokemonLeague_Hall", 31, 50, Direction.Up); Frames(30); Shot("us400_the_leagues_hall");
+        foreach (var (room, area, top, first, last, n) in new[]
+        {
+            ("UnovaPokemonLeague_ShauntalsRoom", "unova_pokemon_league_5", 10, "I'm Shauntal of the Elite Four.", "What a chapter that was.", 401),
+            ("UnovaPokemonLeague_GrimsleysRoom", "unova_pokemon_league_6", 12, "I'm Grimsley of the Elite Four", "No regrets, though.", 403),
+            ("UnovaPokemonLeague_CaitlinsRoom", "unova_pokemon_league_8", 12, "I am Caitlin of the Elite Four.", "with a clear mind.", 405),
+            ("UnovaPokemonLeague_MarshalsRoom", "unova_pokemon_league_7", 12, "I am Marshal of the Elite Four.", "would make my master proud.", 407)
+        })
+        {
+            ComeThrough(room, 15, top, Direction.Up); Frames(20);
+            TalkTo(room, "0", area);
+            ReadTo(first); Frames(10); Shot($"us{n}_{area.Replace("unova_pokemon_league", "elite_four")}_greets");
+            ReadTo(last); Frames(10); Shot($"us{n + 1}_{area.Replace("unova_pokemon_league", "elite_four")}_beaten");
+            ReadTo(null);
+            League(room);
+        }
+
+        // ---- the statue, the way down and Iris
+        At("UnovaPokemonLeague_Hall", 31, 45, Direction.Up); Frames(4);
+        game.Interact();
+        ReadTo("All four of the Elite Four have been beaten!"); Frames(10); Shot("us409_the_statue_glows");
+        ReadTo(null);
+        ComeThrough("UnovaPokemonLeague_Descent", 31, 84, Direction.Up); Frames(30); Shot("us410_the_way_down");
+        ComeThrough("UnovaPokemonLeague_ChampionsRoom", 16, 50, Direction.Up); Frames(30); Shot("us411_the_champions_room");
+        StepOnto("UnovaPokemonLeague_ChampionsRoom", 16, 43, Direction.Up);
+        ReadTo("I'm Iris."); Frames(10); Shot("us412_iris");
+        ShotCrop("us412_iris_native", 640, 300, 640, 360, 2);
+        ReadTo("That means you're the Champion now!"); Frames(10); Shot("us413_iris_beaten");
+        for (int i = 0; i < 1500 && game.Map.Name != "UnovaPokemonLeague_HallOfFame"; i++)
+        {
+            if (Box().IsActive && Box().IsCurrentLineComplete && !Box().IsQuestion) { Box().Advance(); Frames(2); }
+            else Frames(1);
+        }
+        ReadTo("This is the Hall of Fame."); Frames(10); Shot("us414_the_hall_of_fame");
+        for (int i = 0; i < 2400 && State() != GameState.HallOfFameCeremony; i++)
+        {
+            if (Box().IsActive && Box().IsCurrentLineComplete && !Box().IsQuestion) { Box().Advance(); Frames(2); }
+            else Frames(1);
+        }
+        if (State() != GameState.HallOfFameCeremony) Console.WriteLine("  !! never happened: the team's entry");
+        Skip(3.0); Shot("us415_the_teams_entry");
+        League("the Hall of Fame");
+
+        // ---- home: Mom and the professor's father with the National Pokédex; and the flight to Kalos at Mistralton
+        ComeThrough("AspertiaCity_PlayersHouse", 14, 5, Direction.Down); Frames(20); Shot("us416_home_again");
+        StepOnto("AspertiaCity_PlayersHouse", 10, 8, Direction.Left);
+        ReadTo("Welcome home, Champion!"); Frames(10); Shot("us417_mom_welcomes_the_champion");
+        ReadTo("It's the National Pokédex now."); Frames(10); Shot("us418_the_national_pokedex");
+        ReadTo(null); Frames(10);
+        League("home");
+        ComeThrough("MistraltonCity_CargoHall", 23, 17, Direction.Up); Frames(20);
+        At("MistraltonCity_CargoHall", 23, 16, Direction.Up); Frames(4);
+        game.Interact();
+        ReadTo("Kalos"); Frames(10); Shot("us419_the_flight_to_kalos");
+        ReadTo(null); Frames(10); Shot("us420_the_cargo_hall_after");
+        League("Mistralton");
     }
 }

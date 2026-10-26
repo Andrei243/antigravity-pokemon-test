@@ -1,0 +1,44 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Iris"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "This is the Hall of Fame. Every Champion's name is kept here, together with the Pokémon who stood beside them."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your Pokémon came all this way with you. Let's record your team, so everyone will remember them!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} saved the game."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The game could not be saved."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

@@ -264,6 +264,17 @@ public static partial class WorldModels
         // ---------------------------------------------------------------- the Giant Chasm
         // Plan 22 · U9, part a: the Plasma Frigate at rest on the ice in the middle of the crater (the ground under it is the crater's)
         Ground("c03_ship_03", "the Plasma Frigate at rest in the Giant Chasm's crater (not drawn, as at its other moorings: its ramp is the crater's warp into the ramp hall)"),
+
+        // ---------------------------------------------------------------- Victory Road and the League
+        // Plan 22 · U9, parts b and c: the Pokémon Center at the foot of Victory Road, a rock of the summit, the mountains behind the
+        // League's plaza, the hall's gate and the pad inside it, the Elite Four's lights and the Hall of Fame's monument
+        Built("bg_pc", BuildingKind.PokemonCenter, "the Pokémon Center at the foot of Victory Road"),
+        Ground("cr_obj", "a mass of rock on Victory Road's summit (the area's blocked tiles hold it)"),
+        Ground("c09_back", "the mountains and the sky behind the Pokémon League's plaza (no model of its own: the plaza's blocked tiles are its edge)"),
+        Ground("c09gate_main", "the gate of the Pokémon League's hall, behind the challenger (the hall's floor ends there)"),
+        Ground("outwarp03", "the pad inside the gate of the Pokémon League's hall"),
+        Furniture("warp04", PropType.WarpPanel, "the light in the corner of an Elite Four's room that carries a challenger back to the hall (the room's trigger)"),
+        Thing("c09_dendo", PropType.Statue, "the monument at the head of Unova's Hall of Fame"),
     };
 
     private static readonly Dictionary<string, WorldModel> UnovaByName = UnovaTable.ToDictionary(m => m.Name, StringComparer.Ordinal);

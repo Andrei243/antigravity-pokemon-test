@@ -749,6 +749,10 @@ public static class RegionDatabase
                 "MarineTubeGate_Undella", "MarineTube", "MarineTubeGate_Humilau", "HumilauCity_House1", "HumilauCity_House2", "HumilauCity_House3", "HumilauCity_House4", "HumilauCity_House5", "HumilauCity_PokemonCenter", "HumilauCity_Gym", "SeasideCave_1F", "SeasideCave_B1F", "PlasmaFrigate_Hold", "PlasmaFrigate_Stern", "PlasmaFrigate_Bridge", "PlasmaFrigate_Cabins", "PlasmaFrigate_Cabin",
                 // Plan 22 · U9, part a: the Giant Chasm's cave, crater (twice), passage and cavern, and the Frigate's ramp hall
                 "GiantChasm_Cave", "GiantChasm_Crater", "GiantChasm_CraterFrigate", "GiantChasm_Passage", "GiantChasm_Cavern", "PlasmaFrigate_Ramp",
+                // Plan 22 · U9, part b: Route 23's rooms, Victory Road's foot, floors and Pokémon Center, and the League's plaza and Pokémon Center
+                "Route23_House1", "Route23_House2", "UnovaVictoryRoad", "UnovaVictoryRoad_PokemonCenter", "UnovaVictoryRoad_Ruins", "UnovaVictoryRoad_Grove", "UnovaVictoryRoad_Falls", "UnovaVictoryRoad_Cave", "UnovaVictoryRoad_Pool", "UnovaVictoryRoad_Summit", "UnovaVictoryRoad_Hollow", "UnovaVictoryRoad_Tunnel", "UnovaPokemonLeague", "UnovaPokemonLeague_PokemonCenter",
+                // Plan 22 · U9, part c: the League's hall, the Elite Four's rooms, the way down, the Champion's room and the Hall of Fame
+                "UnovaPokemonLeague_Hall", "UnovaPokemonLeague_ShauntalsRoom", "UnovaPokemonLeague_GrimsleysRoom", "UnovaPokemonLeague_MarshalsRoom", "UnovaPokemonLeague_CaitlinsRoom", "UnovaPokemonLeague_Descent", "UnovaPokemonLeague_ChampionsRoom", "UnovaPokemonLeague_HallOfFame",
             }
         },
         new() { Id = Kalos, Name = "Kalos", Generation = 6 },
@@ -773,7 +777,9 @@ public static class RegionDatabase
         // entered (plan 21 · H9, part b: the harbour's overlay, common.Attendant), where Emerald's ferries leave from
         new() { From = Hoenn, To = Unova, Transport = Transport.Boat, Vessel = "ship", DepartureMap = "LilycoveCity_Harbor" },
         // The later regions by air, as the table proposes; their plans (23) name where they leave from
-        new() { From = Unova, To = Kalos, Transport = Transport.Plane, Vessel = "plane" },
+        // From Unova by air: the airline's attendant stands in the east wing of Mistralton City's cargo hall once Unova's Hall of
+        // Fame is entered (plan 22 · U9, part c: the hall's overlay, common.Attendant)
+        new() { From = Unova, To = Kalos, Transport = Transport.Plane, Vessel = "plane", DepartureMap = "MistraltonCity_CargoHall" },
         new() { From = Kalos, To = Alola, Transport = Transport.Plane, Vessel = "plane" },
         new() { From = Alola, To = Galar, Transport = Transport.Plane, Vessel = "plane" },
         new() { From = Galar, To = Paldea, Transport = Transport.Plane, Vessel = "plane" }

@@ -1,0 +1,23 @@
+# The Pokémon League's hall (plan 22 · U9, part c). docs/scripts.md describes the language; the lines are our own, on Black 2's
+# beats (the decompilation's res/field/scripts/pokemon_league_2.s, read for the order alone).
+#
+# The statue in the well at the hall's heart is read from the floor south of it. Until the Elite Four are all beaten in this
+# challenge (VAR_UNOVA_LEAGUE_SHAUNTAL, _GRIMSLEY, _MARSHAL and _CAITLIN all 1) it only says so; then it sinks and carries the
+# challenger down to the way to the Champion's room (Black 2's own lift, played over a fade).
+
+
+script Statue
+  speaker none
+  if var VAR_UNOVA_LEAGUE_SHAUNTAL != 1 goto Waiting
+  if var VAR_UNOVA_LEAGUE_GRIMSLEY != 1 goto Waiting
+  if var VAR_UNOVA_LEAGUE_MARSHAL != 1 goto Waiting
+  if var VAR_UNOVA_LEAGUE_CAITLIN != 1 goto Waiting
+  text "The statue is glowing. All four of the Elite Four have been beaten!"
+  ask "Go down to the Champion?"
+  if no end
+  text "The statue sank slowly into the ground, carrying {player} with it..."
+  warp "UnovaPokemonLeague_Descent" 31 84 up
+  end
+label Waiting
+  text "A statue of a Pokémon stands in the well. It won't move until all four of the Elite Four have been beaten."
+  end

@@ -1,0 +1,125 @@
+# Victory Road's foot (plan 22 · U9, part b). docs/scripts.md describes the language; the lines are our own, on Black 2's beats
+# (the decompilation's res/field/scripts/victory_road.s, read for the order alone).
+#
+# VAR_UNOVA_N_VICTORY_ROAD is 0 until N has met the player at the head of the way up from Route 23, 1 after it.
+# VAR_UNOVA_BADGE_GATES counts the Badge Check Gates passed, west along the road: 0 before the first (the Basic Badge's), 8 once
+# the Wave Badge's has been passed, 9 once the last gate before the cave has opened the way.
+# A gate whose Badge is missing turns the player back a step, as Black 2's gate stays shut.
+
+
+script OnEnter
+  call UnovaCatchUpF
+  end
+
+
+script N
+  scene "N at Victory Road"
+  place player 80 52 up
+  face n player
+  speaker "N"
+  say "You came. I knew you would."
+  walk n down 5
+  say "The Pokémon League lies past Victory Road. The road is long, and the Pokémon on it are strong."
+  say "Take this. Parts of the new road can only be climbed with Waterfall."
+  give "HM05"
+  say "You and your Pokémon... I believe you will reach the League, and find there the truth of what you are to one another."
+  say "That is what I see ahead for you. Farewell."
+  walk n up 5
+  hide n
+  setflag FLAG_UNOVA_HIDE_N_VICTORY_ROAD
+  setvar VAR_UNOVA_N_VICTORY_ROAD 1
+  endscene
+  end
+
+
+script BasicGate
+  if not badge basic call GateShut
+  if not badge basic end
+  speaker none
+  text "Basic Badge confirmed!"
+  setvar VAR_UNOVA_BADGE_GATES 1
+  end
+
+script ToxicGate
+  if not badge toxic call GateShut
+  if not badge toxic end
+  speaker none
+  text "Toxic Badge confirmed!"
+  setvar VAR_UNOVA_BADGE_GATES 2
+  end
+
+script InsectGate
+  if not badge insect call GateShut
+  if not badge insect end
+  speaker none
+  text "Insect Badge confirmed!"
+  setvar VAR_UNOVA_BADGE_GATES 3
+  end
+
+script BoltGate
+  if not badge bolt call GateShut
+  if not badge bolt end
+  speaker none
+  text "Bolt Badge confirmed!"
+  setvar VAR_UNOVA_BADGE_GATES 4
+  end
+
+script QuakeGate
+  if not badge quake call GateShut
+  if not badge quake end
+  speaker none
+  text "Quake Badge confirmed!"
+  setvar VAR_UNOVA_BADGE_GATES 5
+  end
+
+script JetGate
+  if not badge jet call GateShut
+  if not badge jet end
+  speaker none
+  text "Jet Badge confirmed!"
+  setvar VAR_UNOVA_BADGE_GATES 6
+  end
+
+script LegendGate
+  if not badge legend call GateShut
+  if not badge legend end
+  speaker none
+  text "Legend Badge confirmed!"
+  setvar VAR_UNOVA_BADGE_GATES 7
+  end
+
+script WaveGate
+  if not badge wave call GateShut
+  if not badge wave end
+  speaker none
+  text "Wave Badge confirmed!"
+  setvar VAR_UNOVA_BADGE_GATES 8
+  end
+
+
+# A gate whose Badge is missing
+script GateShut
+  speaker none
+  text "The gate won't open. A Badge this gate checks for is missing."
+  walk player right 1
+  return
+
+
+# The last gate, across the way north to the cave's mouth
+script LastGate
+  speaker none
+  text "All eight Badges confirmed! The way to Victory Road is open."
+  setvar VAR_UNOVA_BADGE_GATES 9
+  end
+
+
+script GateSign
+  speaker none
+  text "Badge Check Gates ahead.\nOnly Trainers with all eight of Unova's Badges may pass."
+  end
+
+
+script CaveSign
+  speaker none
+  text "Victory Road\nThe Pokémon League lies through this cave."
+  end

@@ -1,0 +1,14 @@
+{
+  // The Pokémon Center at the foot of Victory Road (plan 22 · U9, part b): Black 2's small one, with its nurse, its two counters and
+  // two challengers resting; our words
+  "area": "unova_victory_road_27",
+  "name": "Victory Road",
+  "bgmTrack": "common/pokecenter",
+  "people": {
+    "1": { "name": "Nurse", "npcType": "Nurse", "script": "Nurse", "isHealingNurse": true },
+    "2": { "name": "Clerk", "npcType": "Clerk", "script": "Clerk", "dialog": [ "Welcome! How can I help you?" ] },
+    "3": { "name": "Clerk", "npcType": "Clerk", "script": "Clerk", "dialog": [ "Welcome! How can I help you?" ] },
+    "4": { "name": "Ace Trainer", "npcType": "ace_trainer_m", "dialog": [ "Past the Badge Check Gates the road goes underground, then over the mountain. Stock up here!" ] },
+    "5": { "name": "Pokémon Ranger", "npcType": "ranger_f", "dialog": [ "Some ledges on Victory Road are only reached by climbing the waterfalls. Keep a Pokémon that knows Waterfall with you." ] }
+  }
+}

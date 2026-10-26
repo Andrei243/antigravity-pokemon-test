@@ -1,0 +1,58 @@
+{
+  "key": "unova_victory_road_23",
+  "index": 593,
+  "name": "Victory Road 2",
+  "matrix": 388,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave1",
+  "dayMusic": "BGM_D_CHAMPROAD",
+  "nightMusic": "BGM_D_CHAMPROAD",
+  "encounters": "ENCOUNTERS_VICTORY_ROAD_8",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Druddigon", "level": 47 },
+    { "species": "Druddigon", "level": 47 },
+    { "species": "Druddigon", "level": 48 },
+    { "species": "Druddigon", "level": 48 },
+    { "species": "Druddigon", "level": 49 },
+    { "species": "Zweilous", "level": 49 },
+    { "species": "Druddigon", "level": 50 },
+    { "species": "Zweilous", "level": 50 },
+    { "species": "Druddigon", "level": 50 },
+    { "species": "Zweilous", "level": 50 },
+    { "species": "Druddigon", "level": 50 },
+    { "species": "Zweilous", "level": 50 }
+  ],
+  "landRate": 18,
+  "shakingGrass": [
+    { "species": "Excadrill", "level": 47 },
+    { "species": "Onix", "level": 47 },
+    { "species": "Excadrill", "level": 48 },
+    { "species": "Excadrill", "level": 48 },
+    { "species": "Excadrill", "level": 49 },
+    { "species": "Excadrill", "level": 49 },
+    { "species": "Excadrill", "level": 50 },
+    { "species": "Excadrill", "level": 50 },
+    { "species": "Excadrill", "level": 50 },
+    { "species": "Excadrill", "level": 50 },
+    { "species": "Excadrill", "level": 50 },
+    { "species": "Excadrill", "level": 50 }
+  ],
+  "shakingGrassRate": 13,
+  "warps": [
+    { "x": 28, "z": 12, "to": "unova_victory_road_22", "toWarp": 3 },
+    { "x": 12, "z": 21, "to": "unova_victory_road_22", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "veteran_m", "movement": "none", "x": 23, "z": 23, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_VETERAN_HUGO" },
+    { "id": "1", "looks": "110", "movement": "none", "x": 16, "z": 20, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x058e", "item": "Dragon Scale", "script": "7322" }
+  ],
+  "signs": [],
+  "triggers": []
+}
