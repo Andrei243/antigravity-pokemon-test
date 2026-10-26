@@ -56,6 +56,13 @@ public sealed partial class ScriptRunner
                 Result = FrontierRules.EnoughToEnter(host.Party, Tournament.TeamSize) ? 1 : 0;
                 break;
             case "choose":
+                // The rental event's three are drawn as it begins (plan 14 · B12): nobody of the team is chosen
+                if (tournamentEvent?.Rental == true)
+                {
+                    tournamentSlots = Array.Empty<int>();
+                    Result = 1;
+                    break;
+                }
                 Result = host.FrontierAct("enter", Tournament.TeamSize, Subject);
                 afterBusy = () =>
                 {
@@ -67,10 +74,15 @@ public sealed partial class ScriptRunner
             {
                 var chosen = tournamentSlots.Where(s => s >= 0 && s < host.Party.Count).Select(s => host.Party.Members[s]).ToList();
                 Result = (int)FrontierRules.WhyNot(chosen);
+                // A type bracket's three must each be of one of its types (plan 14 · B12): 3
+                if (Result == 0 && tournamentEvent is { } typed && chosen.Any(p => !Tournament.FitsTheEvent(typed, p))) Result = 3;
                 break;
             }
+            case "rental":
+                Result = tournamentEvent?.Rental == true ? 1 : 0;
+                break;
             case "begin":
-                if (tournamentSlots.Count != Tournament.TeamSize) throw Wrong(i, "'tournament begin' needs the three to have been chosen ('tournament choose')");
+                if (tournamentSlots.Count != Tournament.TeamSize && tournamentEvent?.Rental != true) throw Wrong(i, "'tournament begin' needs the three to have been chosen ('tournament choose')");
                 var ev = tournamentEvent ?? TournamentDatabase.Events.FirstOrDefault(e => Tournament.IsOpen(e, records.Tournament))
                     ?? throw Wrong(i, "there is no event of the World Tournament to enter");
                 host.Tournament = Tournament.Begin(records, ev, host.Party, tournamentSlots, Draw);
@@ -102,7 +114,8 @@ public sealed partial class ScriptRunner
             case "battle":
             {
                 var t = Under();
-                host.FrontierBattle(t.TeamForBattle(), new List<Trainer> { t.OpponentAsTrainer() }, null, doubles: false, new FrontierConditions(Tournament: true));
+                host.FrontierBattle(t.TeamForBattle(), new List<Trainer> { t.OpponentAsTrainer() }, null, doubles: t.Format != PokemonPlatinumEngine.Battle.BattleFormat.Single,
+                    new FrontierConditions(Tournament: true, Format: t.Format == PokemonPlatinumEngine.Battle.BattleFormat.Single ? null : t.Format));
                 afterBusy = () => Result = host.Outcome == BattleOutcome.Won ? 1 : 0;
                 break;
             }

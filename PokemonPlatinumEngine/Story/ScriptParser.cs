@@ -1053,7 +1053,7 @@ public static class ScriptParser
             case "tournament":
             {
                 string what = r.OneOf("events", "enough", "choose", "check", "begin", "titles", "active", "round", "show", "opponent", "battle", "won", "lost",
-                    "finish", "points", "end");
+                    "finish", "points", "end", "rental");
                 string which = what == "finish" ? r.OneOf("won", "lost") : "";
                 return new Instruction { Op = Op.Tournament, Line = line, Name = what, Other = which };
             }

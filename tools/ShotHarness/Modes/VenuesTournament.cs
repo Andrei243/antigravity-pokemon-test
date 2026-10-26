@@ -52,6 +52,13 @@ partial class Harness
             {
                 if (fight.HUD.MenuState == BattleMenuState.Main)
                 {
+                    if (doublesShot != null && fight.Format != PokemonPlatinumEngine.Battle.BattleFormat.Single)
+                    {
+                        Frames(30);
+                        Shot(doublesShot);
+                        Console.WriteLine($"  {doublesShot}: a {fight.Format} battle, {fight.PlayerSlots.Count(s => s.Pokemon != null)} out on the player's side");
+                        doublesShot = null;
+                    }
                     var lead = fight.PlayerPokemon;
                     lead.CurrentHP = lead.MaxHP;
                     lead.Status = StatusCondition.None;
@@ -218,5 +225,31 @@ partial class Harness
         Console.WriteLine(before == after
             ? "  the save is byte for byte what it was but for its record"
             : $"  !! the save moved beyond its record: {changed.Count} lines, first {string.Join(" | ", changed.Take(4).Select(l => l.Trim()))}");
+
+        // ---- plan 14 · B12: the events of every region and the special ones
+        int IndexOf(string id) => TournamentDatabase.Events.ToList().FindIndex(e => e.Id == id);
+        Console.WriteLine($"  events offered: {string.Join(", ", TournamentDatabase.Events.Select(e => e.Id))}");
+        // The World Leaders' title as if won, so the type brackets and the formats are open
+        records.Tournament.Titles["worldLeaders"] = 1;
+
+        // A type bracket (vn34_pwt_type_bracket): three Water types entered, seven Water specialists drawn
+        team.Clear();
+        team.Add(Mon("Empoleon", 60, "Leftovers"));
+        team.Add(Mon("Gyarados", 58, "Life Orb"));
+        team.Add(Mon("Milotic", 55, "Sitrus Berry"));
+        bracketShot = "vn34_pwt_type_bracket";
+        PlayEvent(IndexOf("typeWater"), null, null);
+
+        // The doubles event (vn35_pwt_doubles): its first match at its menu, two out on each side
+        team.Clear();
+        team.Add(Mon("Garchomp", 62, "Leftovers"));
+        team.Add(Mon("Lucario", 58, "Life Orb"));
+        team.Add(Mon("Staraptor", 44, "Choice Band"));
+        doublesShot = "vn35_pwt_doubles";
+        PlayEvent(IndexOf("worldDoubles"), null, null);
+        if (doublesShot != null) Console.WriteLine("  !! the doubles event's battle never reached its menu");
     }
+
+    // The shot of the doubles event's first match at its menu (plan 14 · B12), taken by the battle's reader once
+    private string? doublesShot;
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
+using PokemonPlatinumEngine.UI.Kit;
 
 namespace PokemonPlatinumEngine.UI;
 
@@ -54,6 +55,12 @@ public sealed class TournamentScreen
     public float Age { get; private set; }
     public float StepAge { get; private set; }
 
+    /// <summary>The events shown at once, a card each, scrolled as the cursor goes (plan 14 · B12: there are more than fit).</summary>
+    public const int VisibleRows = 3;
+
+    /// <summary>The first event shown.</summary>
+    public int First { get; private set; }
+
     public int EntrantAt(int seat) => Tournament?.Bracket.Seats[seat] ?? -1;
     public int SeatOf(int entrant) => Tournament?.Bracket.Seats.IndexOf(entrant) ?? -1;
 
@@ -65,6 +72,7 @@ public sealed class TournamentScreen
         Open = Events.Select(e => Models.Tournament.IsOpen(e, record)).ToList();
         Titles = Events.Select(e => record.TitlesOf(e.Id)).ToList();
         Cursor = Math.Max(0, Open.ToList().IndexOf(true));
+        First = UiNav.Window(0, Cursor, Events.Count, VisibleRows);
         Begin(TournamentStep.Events);
     }
 
@@ -110,6 +118,7 @@ public sealed class TournamentScreen
             case TournamentStep.Events:
                 if (dy == 0 || Events.Count == 0) return;
                 Cursor = (Cursor + dy + Events.Count) % Events.Count;
+                First = UiNav.Window(First, Cursor, Events.Count, VisibleRows);
                 break;
             case TournamentStep.Tree:
                 if (dx != 0) Cursor = (Cursor + HalfSeats) % Models.Tournament.Entrants;

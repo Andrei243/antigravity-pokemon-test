@@ -41,11 +41,22 @@ internal static partial class ModernUi
     private static void TournamentEvents(int sw, TournamentScreen screen, float rise)
     {
         float w = sw - Margin * 2 - 400;
-        for (int i = 0; i < screen.Events.Count; i++)
+        int shown = Math.Min(TournamentScreen.VisibleRows, screen.Events.Count);
+        // More events than fit (plan 14 · B12): a window of them, with the list's bar beside it
+        if (screen.Events.Count > TournamentScreen.VisibleRows)
         {
+            var track = new Rectangle(Margin + 200 + w + 28, ContentTop + 60 + rise, 10, shown * (TournamentEventH + 28) - 28);
+            UiShapes.Fill(track, 5, Rule);
+            float size = Math.Max(40f, track.Height * shown / screen.Events.Count);
+            float at = (track.Height - size) * screen.First / Math.Max(1, screen.Events.Count - shown);
+            UiShapes.Fill(new Rectangle(track.X, track.Y + at, track.Width, size), 5, Frame);
+        }
+        for (int row = 0; row < shown; row++)
+        {
+            int i = screen.First + row;
             var ev = screen.Events[i];
             bool open = screen.Open[i], under = screen.Cursor == i;
-            var r = new Rectangle(Margin + 200, ContentTop + 60 + rise + i * (TournamentEventH + 28), w, TournamentEventH);
+            var r = new Rectangle(Margin + 200, ContentTop + 60 + rise + row * (TournamentEventH + 28), w, TournamentEventH);
             Card(r, 32, under, under ? Gold : null);
             string id = ev.Id;
             UiFonts.DrawCentered(Text.Of($"tournamentScreen.event.{id}"), r.X + 48, r.Y + 52, 40, open ? Ink : Muted, UiWeight.Black);

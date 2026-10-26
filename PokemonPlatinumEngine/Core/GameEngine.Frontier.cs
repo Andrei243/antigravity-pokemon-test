@@ -197,7 +197,7 @@ public partial class GameEngine
                 Inventory = flow.Bag,
                 Pokedex = flow.Pokedex,
                 Place = PlaceName(),
-                Format = doubles ? BattleFormat.Double : BattleFormat.Single,
+                Format = conditions?.Format ?? (doubles ? BattleFormat.Double : BattleFormat.Single),
                 Trainers = trainers,
                 WildPokemon = wild,
                 Partner = beside,
