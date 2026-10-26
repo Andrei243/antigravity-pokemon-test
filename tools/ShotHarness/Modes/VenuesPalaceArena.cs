@@ -89,6 +89,7 @@ partial class Harness
                 }
                 Skip(0.4);
             }
+            if (!fight.IsBattleOver) { Console.WriteLine($"  !! the battle never ended: menu {fight.HUD.MenuState}, line \"{fight.CurrentMessage}\""); throw new InvalidOperationException("the Arena's battle is stuck"); }
             Console.WriteLine($"  {venue} battle {(game.Venue?.Battle ?? -1) + 1}: {fight.Result} in {fight.Core.Turn} turns, "
                 + $"{string.Join("/", fight.PlayerParty.Members.Select(p => $"{p.Species.Name} {p.CurrentHP}"))} against "
                 + $"{string.Join("/", fight.EnemyParty.Members.Select(p => $"{p.Species.Name} {p.CurrentHP}"))}; verdicts {fight.Core.Verdicts.Count}");

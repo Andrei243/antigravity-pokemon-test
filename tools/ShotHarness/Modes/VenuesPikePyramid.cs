@@ -147,6 +147,7 @@ partial class Harness
             engine.StartScript(doors[n % 3], file: GameEngine.PikeMap);
             ReadOn(() => Here().Name == GameEngine.PikeRoomMap && State() == GameState.Overworld && (Box().IsActive || !engine.ScriptRunning));
             Frames(20);
+            if (Box().IsActive) { Box().FinishLine(); Frames(4); }
             Shot(roomShots[n]);
             Console.WriteLine($"  behind it: {pike.Current}; foes {string.Join(", ", pike.Foes.Select(f => $"{f.Record.Class} {f.Record.Name}"))}; "
                 + $"wild {pike.Wild?.Species.Name ?? "none"}; power {pike.Inflicted?.ToString() ?? "none"}; healed {pike.Healed}");
@@ -169,6 +170,7 @@ partial class Harness
         EnterTeam();
         ReadOn(() => Here().Name == PyramidFloor.MapName && State() == GameState.Overworld && !engine.ScriptRunning && !Box().IsActive);
         Frames(40);
+        if (Box().IsActive) { Box().FinishLine(); Frames(4); }
         Shot("vn21_pyramid_dark");
         var round = game.Pyramid;
         if (round == null) { Console.WriteLine("  !! no round of the Pyramid under way"); return; }
@@ -195,7 +197,7 @@ partial class Harness
                 Frames(90);
                 Shot("vn22_pyramid_lit");
             }
-            if (floor == BattlePyramidChallenge.Floors) { Frames(30); Shot("vn23_pyramid_floor7"); }
+            if (floor == BattlePyramidChallenge.Floors) { Frames(30); if (Box().IsActive) { Box().FinishLine(); Frames(4); } Shot("vn23_pyramid_floor7"); }
             game.Player.SetPosition(layout.Exit.X, layout.Exit.Y, Direction.Up);
             engine.StartScript("Stairs", file: PyramidFloor.MapName);
             ReadOn(() => State() == GameState.Overworld && !engine.ScriptRunning && !Box().IsActive && (game.Pyramid == null || round.Floor > floor));
