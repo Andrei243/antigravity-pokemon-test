@@ -1533,7 +1533,8 @@ public partial class GameEngine
 
         public PoffinCase Poffins => game.flow.PoffinCase;
 
-        public DayCare DayCare => game.flow.DayCare;
+        // The steps a Pokémon taken back gains stop at the cap where the player stands (plan 18 · W4b-3)
+        public DayCare DayCare { get { game.flow.DayCare.LevelCap = game.CurrentLevelCap(); return game.flow.DayCare; } }
 
         // ---- the Super Contests (plan 06 · R17a)
 

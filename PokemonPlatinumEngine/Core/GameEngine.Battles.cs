@@ -209,6 +209,7 @@ public partial class GameEngine
                 MoveHints = MoveHintsOn,
                 Difficulty = flow.Run.Difficulty,
                 RunLevelCap = CurrentLevelCap() ?? 0,
+                CrossedExp = CrossedExpHere(),
                 Nuzlocke = NuzlockeTermsFor(kind, nuzlockeCatch),
                 Restrictions = RunTermsFor(kind),
                 Scene = Settings.BattleScene
@@ -423,8 +424,20 @@ public partial class GameEngine
     /// <summary>The level of the first Pokémon the player would send out: what Platinum measures a foe against to pick the way into the battle.</summary>
     private int LeadLevel() => flow.Party.Members.FirstOrDefault(p => !p.IsFainted)?.Level ?? 0;
 
-    /// <summary>The level the run's cap holds the player's Pokémon to now (plan 13 · V3), null for none: Normal, no table for the region, or its story done.</summary>
-    internal int? CurrentLevelCap() => LevelCaps.For(flow.Run, Here.Id, flow.Story, crossed: CrossedLevels() != null);
+    /// <summary>
+    /// The level the player's Pokémon are held to now, null for none: the run's cap (plan 13 · V3: Normal, no table for
+    /// the region, or its story done, have none) and, in a region the game crossed into, its soft ceiling (plan 18 ·
+    /// W4b-3, <see cref="LevelCaps.Ceiling"/>, in every difficulty), the lower of the two.
+    /// </summary>
+    internal int? CurrentLevelCap()
+    {
+        bool crossed = CrossedLevels() != null;
+        var run = LevelCaps.For(flow.Run, Here.Id, flow.Story, crossed);
+        return crossed ? LevelCaps.Lower(run, LevelCaps.Ceiling(Here.Id, flow.Story)) : run;
+    }
+
+    /// <summary>Whether the region the player stands in was crossed into, so its foes give half as much EXP again (plan 18 · W4b-3).</summary>
+    internal bool CrossedExpHere() => CrossedLevels() != null;
 
     /// <summary>
     /// A battle with a trainer of the map; with a <paramref name="partner"/>, a tag battle beside them (plan 06 · R9);
@@ -525,6 +538,7 @@ public partial class GameEngine
                 OffersSwitch = Settings.BattleStyle == BattleStyle.Shift && !flow.Run.SetStyle,
                 Difficulty = flow.Run.Difficulty,
                 RunLevelCap = CurrentLevelCap() ?? 0,
+                CrossedExp = CrossedExpHere(),
                 Nuzlocke = NuzlockeTermsFor(BattleKind.Normal),
                 Restrictions = RunTermsFor(BattleKind.Normal),
                 Scene = Settings.BattleScene

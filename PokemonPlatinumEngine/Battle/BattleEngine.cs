@@ -279,6 +279,7 @@ public partial class BattleEngine
             MegaMaxDen = setup.MegaMaxDen,
             Difficulty = setup.Difficulty,
             RunLevelCap = setup.RunLevelCap,
+            CrossedExp = setup.CrossedExp,
             Nuzlocke = setup.Nuzlocke,
             Restrictions = setup.Restrictions,
             // The Battle Palace and the Battle Arena (plan 14 · B9); a battle watched has what the recorded one had

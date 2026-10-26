@@ -236,6 +236,12 @@ public sealed class BattleSetup
     public int RunLevelCap { get; init; }
 
     /// <summary>
+    /// The battle is fought in a region the game crossed into (plan 18 · W4b-3; <see cref="Sim.CoreSetup.CrossedExp"/>): its
+    /// foes give half as much EXP again. The game hands it over; a battle a test or a tool builds gives the plain EXP.
+    /// </summary>
+    public bool CrossedExp { get; init; }
+
+    /// <summary>
     /// The Nuzlocke's terms (plan 13 · V4; <see cref="Sim.CoreSetup.Nuzlocke"/>): no revive, and whether the wild Pokémon
     /// may be caught. The game hands them over under a Nuzlocke run; null for none, which changes nothing.
     /// </summary>

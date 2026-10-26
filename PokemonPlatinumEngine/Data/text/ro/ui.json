@@ -800,6 +800,7 @@
     "expPoints": "PUNCTE EXP.",
     "topLevel": "NIVEL MAXIM",
     "toLevel": "PÂNĂ LA Nv {level}",
+    "heldAt": "Nu mai primește EXP peste Nv. {level} deocamdată.",
     "stats": "STATISTICI",
     "stat": { "HP": "HP", "Attack": "Atac", "Defense": "Apărare", "SpAttack": "At. Sp.", "SpDefense": "Ap. Sp.", "Speed": "Viteză" },
     "moves": "MIȘCĂRI",

@@ -165,8 +165,9 @@ internal static partial class ModernUi
     /// <param name="page">-1 for a summary of one page; else 0 for the stats and moves, 1 for the condition (plan 06 · R14c) and 2 for the ribbons (plan 06 · R17b).</param>
     /// <param name="ribbonCursor">On the ribbons' page, the ribbon looked at; -1 while the page only shows them.</param>
     /// <param name="rental">A rental Pokémon of the Battle Factory (plan 06 · R18b): its ability and what it holds stand where a Pokémon of one's own shows its experience.</param>
+    /// <param name="heldAt">The level the player's Pokémon are held to where the player stands (plan 18 · W4b-3), null for none: one at it or over it says so under its EXP bar.</param>
     /// <param name="title">The screen's title where it is neither the team's nor a rental's (the Battle Castle's counters, plan 06 · R18c).</param>
-    public static void DrawSummary(int sw, int sh, Pokemon p, int index, int count, float appear = 1f, int page = -1, int ribbonCursor = -1, int markCursor = -1, int moveCursor = -1, bool rental = false, string? title = null, bool canMark = true)
+    public static void DrawSummary(int sw, int sh, Pokemon p, int index, int count, float appear = 1f, int page = -1, int ribbonCursor = -1, int markCursor = -1, int moveCursor = -1, bool rental = false, string? title = null, bool canMark = true, int? heldAt = null)
     {
         Backdrop(sw, sh);
         ScreenTitle(title ?? Text.Of(rental ? "summary.rental" : "summary.title"));
@@ -236,10 +237,14 @@ internal static partial class ModernUi
 
             // At the game's level cap (plan 18 · W4: 100 in Platinum, 260 by the modern rules)
             bool top = p.AtTheCap;
-            Label(top ? Text.Of("summary.topLevel") : Text.Of("summary.toLevel", ("level", p.Level + 1)), x, who.Y + 834);
+            // Held to a level where the player stands (plan 18 · W4b-3: a run's cap or a crossed region's ceiling): the row moves up for a line under the bar
+            bool held = !top && Models.LevelCaps.Holds(p, heldAt);
+            float up = held ? 14 : 0;
+            Label(top ? Text.Of("summary.topLevel") : Text.Of("summary.toLevel", ("level", p.Level + 1)), x, who.Y + 834 - up);
             string toNext = top ? "" : Math.Max(0, p.ExpForNextLevel - p.CurrentExp).ToString("N0");
-            UiFonts.Draw(toNext, who.X + who.Width - 44 - UiFonts.Measure(toNext, 24, UiWeight.Black), who.Y + 830, 24, Ink, UiWeight.Black);
-            ExpBar(new Rectangle(x, who.Y + 864, who.Width - 88, 12), top ? 1f : p.ExpProgressRatio);
+            UiFonts.Draw(toNext, who.X + who.Width - 44 - UiFonts.Measure(toNext, 24, UiWeight.Black), who.Y + 830 - up, 24, Ink, UiWeight.Black);
+            ExpBar(new Rectangle(x, who.Y + 864 - up, who.Width - 88, 12), top ? 1f : p.ExpProgressRatio);
+            if (held) UiFonts.Draw(Text.Of("summary.heldAt", ("level", heldAt!.Value)), x, who.Y + 868, 22, Muted, UiWeight.ExtraBold);
         }
 
         // ---- The condition, on its own page
