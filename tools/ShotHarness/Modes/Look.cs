@@ -199,6 +199,19 @@ partial class Harness
         ShotCrop("look_17f_autosave_disc_close", 0, 920, 160, 160, 4);
         game.ShowAutosaveDisc(-1f);
 
+        // The Report key (plan 16 · T20), last so that no shot before it moves: F8 over the field writes a report's folder
+        // into the output folder's repros/ (the harness's game is never recorded, so it lends the engine an empty
+        // recording) and the toast names it once the frame's picture is taken
+        engine.Recording = new InputRecording { DataVersion = GameDataFiles.Version, GameVersion = GameVersion.Describe() };
+        InputManager.Feed(ActionFrame.Press(GameAction.Report));
+        Frames(1);
+        InputManager.Feed(null);
+        Frames(1);
+        string? report = engine.LastReport;
+        Console.WriteLine(report == null ? "!! no report was written" : $"the report: {ReportFolder.Shown(report)}: {string.Join(", ", Directory.GetFiles(report).Select(Path.GetFileName).OrderBy(n => n, StringComparer.Ordinal))}");
+        Frames(18); Shot("look_18_report");
+        engine.Recording = null;
+
         if (args.Length > 2)
             Boards(args[2], new[] { "look_1_twinleaf", "look_2_dialogue", "look_3_battle", "look_3b_moves", "look_4_party", "look_5_route201", "look_6_house", "look_7_lake" });
     }

@@ -75,7 +75,11 @@ public sealed class ShotScenario
             : a[0].IndexOfAny(Path.GetInvalidFileNameChars()) >= 0 ? $"'{a[0]}' can't be a file's name"
             : a.Skip(1).Select((w, i) => DevCommands.Int(w, new[] { "x", "y", "w", "h", "scale" }[i], i < 2 ? 0 : 1)).FirstOrDefault(p => p != null)),
         new("state", "state", 0, 0, _ => null),
-        new("expect", "expect <field> <value>", 2, 2, _ => null)
+        new("expect", "expect <field> <value>", 2, 2, _ => null),
+        // A player's report played back to a moment, which the scenario goes on from (plan 16 · T20)
+        new("replay", "replay <folder> [to <seconds>]", 1, 3, a => a.Count == 1 ? null
+            : a.Count == 3 && a[1] == "to" && double.TryParse(a[2], NumberStyles.Float, CultureInfo.InvariantCulture, out double s) && s >= 0 ? null
+            : "a replay is a folder, or a folder, 'to' and a number of seconds")
     };
 
     public static Verb? FindVerb(string name) => Verbs.FirstOrDefault(v => v.Name == name);
@@ -134,8 +138,8 @@ public sealed class ShotScenario
                 continue;
             }
 
-            if (steps.Count == 0 && verb is not ("newgame" or "load"))
-                Problem($"a scenario begins a game first (newgame or load), not with '{verb}'");
+            if (steps.Count == 0 && verb is not ("newgame" or "load" or "replay"))
+                Problem($"a scenario begins a game first (newgame, load or replay), not with '{verb}'");
             steps.Add(new ScenarioStep(verb, args, number));
         }
         if (steps.Count == 0 && problems.Count == 0) problems.Add($"{file}:1: the scenario has no lines");

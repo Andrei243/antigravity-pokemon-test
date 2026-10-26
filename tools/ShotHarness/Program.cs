@@ -47,7 +47,8 @@
 //   dotnet run --project tools/ShotHarness -- <output dir> skips              no shots: four of the story's scenes played and then skipped by the hold (plan 12 · Q20), with what each way left told side by side
 //   dotnet run --project tools/ShotHarness -- <output dir> play [minutes] [seed] [--keys] [--past-opening]   the playthrough bot (plan 16 · T7) from the bedroom, a shot at each first arrival and play.md; --keys the key fuzzer
 //   dotnet run --project tools/ShotHarness -- <output dir> run <file.scn> [...]   scenarios (plan 16 · T17), each a written file of lines played on a game afresh; serve keeps the engine warm and plays every file written into <output dir>/inbox; scenarios plays the kept ones
-//   dotnet run --project tools/ShotHarness -- <dir> diff <other dir>          two runs' shots compared pixel by pixel (exits 1 if any differ)
+//   dotnet run --project tools/ShotHarness -- <output dir> replay <folder> [every <s>] [from <s>]   a player's report (F8, or a crash's) played back: rp_<seconds>, rp_end, each with state.json
+//   dotnet run --project tools/ShotHarness -- <dir> diff <other dir>         two runs' shots compared pixel by pixel (exits 1 if any differ)
 //   dotnet run --project tools/ShotHarness -- <dir> ab <before> <after> <before again>   three runs of `profile` compared (tools/dev/ab.sh)
 //   dotnet run --project tools/ShotHarness -- <dir> contact [prefix]          every shot of a run on sheets of twenty
 //   dotnet run --project tools/ShotHarness -- <dir> crop <shot> <x> <y> <width> <height> <scale> [other dir ...]   a rectangle of a shot, enlarged
@@ -94,6 +95,9 @@ Raylib.SetConfigFlags(ConfigFlags.HiddenWindow);
 // display (FXAA on the high preset, the screen shown one to one), which is what the timings should be read at
 var windowSize = (Environment.GetEnvironmentVariable("SHOTS_WINDOW") ?? "1920x1080").Split('x');
 Raylib.InitWindow(int.Parse(windowSize[0]), int.Parse(windowSize[1]), "shots");
+
+// A player's report played back (plan 16 · T20, Replay.cs): before the seeds and clocks below, which are the harness's and not the recording's
+if (mode == "replay") { Replay.Run(args, outDir, startDir); Raylib.CloseWindow(); return; }
 
 // Two runs draw the same pictures: the game's chance is seeded, the clock its small motions keep time by is the
 // harness's own count of frames, and the day is fixed (the weather calendar and Pokérus's days follow the date): the

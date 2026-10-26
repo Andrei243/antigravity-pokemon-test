@@ -11,7 +11,7 @@ namespace PokemonPlatinumEngine.Core.Autoplay;
 public sealed class KeyFuzzer : IFuzzer
 {
     private static readonly GameAction[] Actions = Enum.GetValues<GameAction>()
-        .Where(a => a is not (GameAction.Fullscreen or GameAction.Mute or GameAction.Screenshot)).ToArray();
+        .Where(a => a is not (GameAction.Fullscreen or GameAction.Mute or GameAction.Screenshot or GameAction.Report)).ToArray();
 
     private readonly Random random;
     private ActionFrame frame = ActionFrame.None;

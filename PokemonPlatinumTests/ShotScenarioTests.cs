@@ -57,7 +57,7 @@ public class ShotScenarioTests
         Assert.Equal(new[] { "flag.FLAG_HAS_POKEDEX", "var.VAR_SPAWN_LOCATION" }, scenario.Watched);
         Assert.Equal("look", scenario.Name);
         // Every harness verb is in the scenario above
-        Assert.Empty(ShotScenario.Verbs.Select(v => v.Name).Except(verbs));
+        Assert.Empty(ShotScenario.Verbs.Select(v => v.Name).Except(verbs).Except(new[] { "replay" })); // (replay: AReplayBeginsAGameToo)
     }
 
     [Fact]
@@ -108,13 +108,25 @@ public class ShotScenarioTests
     public void AScenarioBeginsAGameFirst()
     {
         var e = Assert.Throws<ScenarioException>(() => ShotScenario.Parse("talk\nnewgame", File));
-        Assert.Equal($"{File}:1: a scenario begins a game first (newgame or load), not with 'talk'", Assert.Single(e.Problems));
+        Assert.Equal($"{File}:1: a scenario begins a game first (newgame, load or replay), not with 'talk'", Assert.Single(e.Problems));
         var empty = Assert.Throws<ScenarioException>(() => ShotScenario.Parse("# nothing\n\n", File));
         Assert.Equal($"{File}:1: the scenario has no lines", Assert.Single(empty.Problems));
         // A comment after a line, and a # inside quotes kept
         var scenario = ShotScenario.Parse("load save.json # the morning's\nexpect text \"Room #2\"", File);
         Assert.Equal(new[] { "save.json" }, scenario.Steps[0].Args);
         Assert.Equal(new[] { "text", "Room #2" }, scenario.Steps[1].Args);
+    }
+
+    [Fact]
+    public void AReplayBeginsAGameToo()
+    {
+        // A player's report played back to a moment, which the scenario goes on from (plan 16 · T20)
+        var scenario = ShotScenario.Parse("replay \"repros/20261026-101500\" to 12.5\nshot scn_after", File);
+        Assert.Equal("replay", scenario.Steps[0].Verb);
+        Assert.Equal(new[] { "repros/20261026-101500", "to", "12.5" }, scenario.Steps[0].Args);
+        Assert.Single(ShotScenario.Parse("replay here", File).Steps);
+        var e = Assert.Throws<ScenarioException>(() => ShotScenario.Parse("replay here until 3", File));
+        Assert.Contains("a replay is a folder, or a folder, 'to' and a number of seconds", Assert.Single(e.Problems));
     }
 
     [Fact]

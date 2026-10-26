@@ -513,11 +513,12 @@ public partial class GameEngine
         if (flow.Battle != null) flow.Battle.AutoAdvanceAfter = GameSettings.AutoAdvanceAfter(Settings.AutoAdvance);
         flow.Dialogue.CharactersPerSecond = GameSettings.CharactersPerSecond(Settings.TextSpeed);
         ModernUi.TextFrame = Settings.Frame;
-        if (window) WindowSettings.Apply(Settings);
+        if (window && !WindowLocked) WindowSettings.Apply(Settings);
     }
 
     public void ToggleFullscreen()
     {
+        if (WindowLocked) return; // a replay's window is the player's (plan 16 · T20)
         Settings.Fullscreen = !Settings.Fullscreen;
         ApplySettings(window: true);
         Settings.Save();
@@ -944,6 +945,7 @@ public partial class GameEngine
     {
         // Full screen on F11 or Alt+Enter: the Fullscreen action (plan 12 · Q4), read even while the game waits behind another window
         if (!IsHeadless && !InputManager.CaptureRequested && InputManager.IsActionPressed(GameAction.Fullscreen)) ToggleFullscreen();
+        KeepTheReportKey(); // F8: a report of the session (plan 16 · T20)
         // Behind another window, with the option on, the game waits where it is and its sound drops (plan 16 · T3)
         bool held = HeldForFocus;
         AudioManager.Away = held;
@@ -2887,6 +2889,7 @@ public partial class GameEngine
         }
 
         flow.Toast.Draw(VirtualWidth);
+        DrawStandingNotice();
         DrawAutosaveDisc();
 
         // The scene closing, or the next one opening; a cave's ring closes on the player, wherever the field shows them,
@@ -2906,6 +2909,7 @@ public partial class GameEngine
         Rlgl.ColorMask(true, true, true, true);
         Raylib.EndTextureMode();
         TakeDevShot();
+        TakeReportScreen();
         FrameProfiler.Lap(FrameSection.Interface);
 
         // Fit the 4K screen into the window (at 1080p this halves it, which also anti-aliases it)

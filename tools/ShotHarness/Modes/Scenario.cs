@@ -180,6 +180,8 @@ partial class Harness
                 Frames(2);
                 return null;
             }
+            case "replay":
+                return ReplayInto(scenario, a, folder, say);
             case "at":
             {
                 if (MapDatabase.TryGet(a[0]) == null) return $"no map is called '{a[0]}'";
@@ -287,6 +289,39 @@ partial class Harness
             }
         }
         return $"'{step.Verb}' is known to the reader but not to the harness";
+    }
+
+    // `replay <folder> [to <seconds>]` (plan 16 · T20): a player's report played from its title to that moment (or its
+    // end) on an engine of its own, which takes the harness's engine's place for the rest of the scenario (and of the
+    // run: the one before is left as it was, since its graphics are shared). The clocks then go on from the movie's.
+    string? ReplayInto(ShotScenario scenario, IReadOnlyList<string> a, string folder, Action<string> say)
+    {
+        string path = Path.GetFullPath(a[0], Path.GetDirectoryName(Path.GetFullPath(scenario.File))!);
+        if (!Directory.Exists(path) && !File.Exists(path)) path = Path.GetFullPath(a[0], startDir);
+        double? to = a.Count == 3 ? double.Parse(a[2], System.Globalization.CultureInfo.InvariantCulture) : null;
+        if (Replay.Open(path, Path.Combine(folder, ReportFolder.ReplayedName), say) is not { } opened) return $"the recording at {a[0]} can't be played";
+        var (replayed, player) = opened;
+        engine = replayed;
+        game = engine.Drive;
+        try
+        {
+            while ((to == null || player.Seconds + 1e-9 < to) && player.Step(engine)) { }
+        }
+        finally
+        {
+            Movie.Release();
+        }
+        var frames = player.Recording.Frames;
+        // The harness's own clocks go on from where the movie left them
+        tick = (long)Math.Round(player.Seconds * 60.0);
+        FrameClock.Fixed = tick / 60.0;
+        if (player.Position > 0) WallClock.Fixed = frames[player.Position - 1].Utc + player.Recording.Offset;
+        scenarioRevisionBase = game.Flow.Story.Revision;
+        game.World.Layers = ShotLayers;
+        // ... and from here on the people stay put, as in every scenario (the recording's game had them wander)
+        engine.PeopleStayPut = true;
+        say($"  replayed to {player.Seconds:0.00} s (frame {player.Position} of {frames.Count}): {game.State} on {game.Map?.Name} at {game.Player?.GridX}, {game.Player?.GridY}");
+        return player.Parted is { } parted ? parted.ToString() : null;
     }
 
     // The story's count of changes when a scenario began: a snapshot tells it from there, so a scenario served after another reads what it reads alone

@@ -154,6 +154,7 @@ public sealed class InputBindings
         Set(GameAction.Fullscreen, Of(K(KeyboardKey.F11)));
         Set(GameAction.Mute, Of(K(KeyboardKey.M)));
         Set(GameAction.Screenshot, Of(K(KeyboardKey.F12)));
+        Set(GameAction.Report, Of(K(KeyboardKey.F8)));
         return table;
     }
 
