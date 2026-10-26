@@ -138,6 +138,24 @@
       "y": 5,
       "facing": "Left",
       "script": "ArenaDesk"
+    },
+    {
+      "id": "pike_receptionist",
+      "name": "Receptionist",
+      "npcType": "Lady",
+      "x": 1,
+      "y": 7,
+      "facing": "Right",
+      "script": "PikeDesk"
+    },
+    {
+      "id": "pyramid_receptionist",
+      "name": "Receptionist",
+      "npcType": "Lass",
+      "x": 13,
+      "y": 7,
+      "facing": "Left",
+      "script": "PyramidDesk"
     }
   ],
   "wildEncounters": []

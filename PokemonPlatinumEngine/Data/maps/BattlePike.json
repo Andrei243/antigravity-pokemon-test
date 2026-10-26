@@ -1,0 +1,124 @@
+{
+  "name": "BattlePike",
+  "displayName": "Battle Pike",
+  "bgmTrack": "sinnoh/veilstone",
+  "interior": "Museum",
+  "trees": "Round",
+  "battleArena": "Gym",
+  "width": 13,
+  "height": 11,
+  "ground": [
+    "#############",
+    "#############",
+    "#############",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "######D######"
+  ],
+  "solid": [
+    "#############",
+    "#############",
+    "###.##.##.###",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "##.........##",
+    "######.######"
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 11,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 6,
+      "sourceY": 10,
+      "targetMap": "BattleFrontierAnnex",
+      "targetX": 2,
+      "targetY": 7,
+      "targetFacing": "Left"
+    },
+    {
+      "sourceX": 3,
+      "sourceY": 2,
+      "targetMap": "BattlePikeRoom",
+      "targetX": 6,
+      "targetY": 9,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 6,
+      "sourceY": 2,
+      "targetMap": "BattlePikeRoom",
+      "targetX": 6,
+      "targetY": 9,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 9,
+      "sourceY": 2,
+      "targetMap": "BattlePikeRoom",
+      "targetX": 6,
+      "targetY": 9,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "attendant",
+      "name": "Attendant",
+      "npcType": "Lady",
+      "x": 1,
+      "y": 4,
+      "facing": "Right",
+      "dialog": [
+        "No round is under way. The receptionist in the annex's lobby takes your three."
+      ]
+    }
+  ],
+  "triggers": [
+    {
+      "x": 3,
+      "y": 2,
+      "width": 1,
+      "depth": 1,
+      "script": "LeftDoor"
+    },
+    {
+      "x": 6,
+      "y": 2,
+      "width": 1,
+      "depth": 1,
+      "script": "MiddleDoor"
+    },
+    {
+      "x": 9,
+      "y": 2,
+      "width": 1,
+      "depth": 1,
+      "script": "RightDoor"
+    }
+  ],
+  "wildEncounters": []
+}

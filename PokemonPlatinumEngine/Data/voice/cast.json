@@ -125,6 +125,10 @@
       "note": "first spoken at cinnabar_island_gym.txt(152)",
       "provisional": true
     },
+    "brandon": {
+      "note": "first spoken at BattlePyramidFloor.txt(87)",
+      "provisional": true
+    },
     "brawly": {
       "note": "first spoken at dewford_town_gym.txt(12)",
       "provisional": true
@@ -617,6 +621,10 @@
     "lucian": {},
     "lucius": {
       "note": "first spoken at opelucid_city_gym.txt(92)",
+      "provisional": true
+    },
+    "lucy": {
+      "note": "first spoken at BattlePikeRoom.txt(140)",
       "provisional": true
     },
     "lydia": {
@@ -1117,6 +1125,10 @@
       "note": "first spoken at route_111.txt(63)",
       "provisional": true
     },
+    "visitor": {
+      "note": "first spoken at BattlePikeRoom.txt(86)",
+      "provisional": true
+    },
     "vivi": {
       "note": "first spoken at route_111.txt(76)",
       "provisional": true
@@ -1246,6 +1258,7 @@
     "Black Belt": "black_belt",
     "Blaine": "blaine",
     "Boy": "look:boy",
+    "Brandon": "brandon",
     "Brawly": "brawly",
     "Breeder": "breeder",
     "Brock": "brock",
@@ -1400,6 +1413,7 @@
     "Lt. Surge": "lt_surge",
     "Lucian": "lucian",
     "Lucius": "lucius",
+    "Lucy": "lucy",
     "Lydia": "lydia",
     "Machop": "machop",
     "Maid Belinda": "maid_belinda",
@@ -1538,6 +1552,7 @@
     "Vicky": "vicky",
     "Victor": "victor",
     "Victoria": "victoria",
+    "Visitor": "visitor",
     "Vivi": "vivi",
     "Volkner": "volkner",
     "Wade": "wade",

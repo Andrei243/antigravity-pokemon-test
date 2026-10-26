@@ -1031,6 +1031,21 @@ public static class ScriptParser
                 string which = what is "begin" or "streak" or "best" ? r.OneOf("palace", "arena") : what == "finish" ? r.OneOf("won", "lost") : "";
                 return new Instruction { Op = Op.Venue, Line = line, Name = what, Other = which };
             }
+            // The Battle Pike's rooms and the Battle Pyramid's floors (plan 14 · B10)
+            case "pike":
+            {
+                string what = r.OneOf("enough", "choose", "check", "begin", "active", "hint", "hintdoor", "door", "room", "opponents", "fight",
+                    "queen", "status", "giver", "healed", "lost", "passed", "finish", "points", "streak", "best", "end");
+                string which = what == "finish" ? r.OneOf("won", "lost") : what == "door" ? r.OneOf("0", "1", "2") : "";
+                return new Instruction { Op = Op.Pike, Line = line, Name = what, Other = which };
+            }
+            case "pyramid":
+            {
+                string what = r.OneOf("enough", "choose", "check", "begin", "active", "enter", "arrive", "floor", "opponent", "fight", "wild", "light",
+                    "find", "climb", "king", "lost", "finish", "points", "streak", "best", "end");
+                string which = what == "finish" ? r.OneOf("won", "lost") : "";
+                return new Instruction { Op = Op.Pyramid, Line = line, Name = what, Other = which };
+            }
             // The Berry Blender and the Pokéblock Case (plan 21 · H11)
             case "pokeblock":
             {

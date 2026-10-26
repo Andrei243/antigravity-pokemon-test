@@ -107,6 +107,9 @@ public partial class GameEngine
         public BracketScreen Bracket => game.flow.BracketScreen;
         /// <summary>The Battle Palace's or the Battle Arena's round under way (plan 14 · B9).</summary>
         public Models.Frontier.BattleVenueChallenge? Venue => game.flow.Venue;
+        /// <summary>The Battle Pike's and the Battle Pyramid's round under way (plan 14 · B10).</summary>
+        public Models.Frontier.BattlePikeChallenge? Pike => game.flow.Pike;
+        public Models.Frontier.BattlePyramidChallenge? Pyramid => game.flow.Pyramid;
         /// <summary>A stone panel of the Ruins of Alph, open while a chamber's script waits on it (plan 20 · J5).</summary>
         public AlphPuzzleScreen AlphPuzzle => game.flow.AlphPuzzleScreen;
         /// <summary>The phrase picker, open while a script's <c>phrase</c> waits on it (plan 08 · P9).</summary>

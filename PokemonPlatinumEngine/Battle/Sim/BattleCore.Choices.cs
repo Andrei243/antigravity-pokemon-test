@@ -117,7 +117,7 @@ public sealed partial class BattleCore
 
             case ChoiceKind.Run:
                 // In the Battle Frontier RUN gives the match up, whatever holds the Pokémon
-                if (Frontier) return null;
+                if (Frontier && IsTrainerBattle) return null;
                 if (CannotFlee && b.IsPlayerSide) return Text.Of("battle.thereNoRunningFrom");
                 if (Kind is BattleKind.Safari or BattleKind.PalPark) return null;
                 // A run that may not run from a wild Pokémon (plan 13 · V5)

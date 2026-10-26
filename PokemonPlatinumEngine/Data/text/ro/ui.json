@@ -3528,7 +3528,9 @@
     "BossTrainer": "Antrenor-Șef",
     "Harlequin": "Arlechin",
     "NoData": "Antrenor",
-    "PokemonTrainerColress": "Antrenor Pokémon"
+    "PokemonTrainerColress": "Antrenor Pokémon",
+    "PikeQueen": "Regina Știucii",
+    "PyramidKing": "Regele Piramidei"
   },
   "broadcast": {
     "clock": {

@@ -237,7 +237,7 @@ public class RoomPlanTests
 
     /// <summary>The Battle Frontier's annex (plan 14 · B8): rooms of our own, its lobby and the Battle Dome's hall, laid out
     /// for what they hold and not on the hand-made rooms' plan (<c>BattleDomeTests</c>).</summary>
-    internal static readonly string[] FrontierAnnex = { "BattleFrontierAnnex", "BattleDome", "BattlePalace", "BattleArena" };
+    internal static readonly string[] FrontierAnnex = { "BattleFrontierAnnex", "BattleDome", "BattlePalace", "BattleArena", "BattlePike", "BattlePikeRoom", "BattlePyramidFloor" };
 
     /// <summary>The Canalave Library's upper floors (plan 02 · S10): no door, only the stairs.</summary>
     internal static readonly string[] LibraryUpperFloors = { "CanalaveLibrary2F", "CanalaveLibrary3F" };

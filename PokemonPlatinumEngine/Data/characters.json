@@ -468,7 +468,11 @@
     "elder_li": { "hairColor": "#ecece8", "hair": "Bald", "top": "#6a7a8e", "accent": "#e6dcc2", "bottom": "#6a7a8e", "shoes": "#3a3234", "eyes": "#3a3036", "skirt": true, "coat": true, "beard": true, "bushyBrows": true, "build": "Elder" },
     "dragon_elder": { "hairColor": "#e4e0d8", "hair": "Bald", "top": "#8a3a2a", "accent": "#e8c870", "bottom": "#8a3a2a", "shoes": "#3a2a26", "eyes": "#3a2a24", "skirt": true, "coat": true, "beard": true, "bushyBrows": true, "build": "Elder" },
     "radio_director": { "hairColor": "#3a3a44", "hair": "Short", "top": "#6a2e3a", "accent": "#f2f0e6", "bottom": "#2a2a34", "shoes": "#1e1e22", "glasses": "#2a2a30", "mustache": true, "coat": true, "build": "Adult", "height": 1.04 },
-    "athlon_owner": { "hairColor": "#2a2a2e", "hair": "Swept", "hat": "Visor", "hatColor": "#f2f2f6", "hatBand": "#2e8ad8", "top": "#2e8ad8", "accent": "#f2f2f6", "bottom": "#26304e", "shoes": "#f2f2f6", "eyes": "#2a3a4a", "shortSleeves": true, "build": "Adult", "height": 1.04 }
+    "athlon_owner": { "hairColor": "#2a2a2e", "hair": "Swept", "hat": "Visor", "hatColor": "#f2f2f6", "hatBand": "#2e8ad8", "top": "#2e8ad8", "accent": "#f2f2f6", "bottom": "#26304e", "shoes": "#f2f2f6", "eyes": "#2a3a4a", "shortSleeves": true, "build": "Adult", "height": 1.04 },
+    // The annex's two Brains of plan 14 · B10, our own takes: Lucy, the Pike Queen, long dark-violet hair over a black
+    // coat with a snake-green trim; Brandon, the Pyramid King, a broad explorer in a khaki shirt and a sand-coloured hat
+    "lucy": { "hairColor": "#3a2a4a", "hair": "Long", "top": "#26222e", "accent": "#5ab44a", "bottom": "#26222e", "shoes": "#2a2430", "eyes": "#6a3a7a", "coat": true, "build": "Adult", "lashes": true, "height": 1.04 },
+    "brandon": { "hairColor": "#4a3022", "hair": "Short", "hat": "Cap", "hatColor": "#c8a868", "hatBand": "#5a4a2a", "top": "#a88a52", "accent": "#e8dcb8", "bottom": "#5a4a32", "shoes": "#3a2a1e", "eyes": "#3a2a22", "bushyBrows": true, "build": "Adult", "height": 1.12 }
   },
   // Names that are another look
   "same": { "trainer": "player", "lucas": "player", "grunt_m": "grunt", "black_belt": "blackbelt", "scientist_m": "scientist" },
@@ -784,6 +788,9 @@
     "Elite Four Shauntal": "shauntal",
     "Elite Four Marshal": "marshal",
     "Elite Four Grimsley": "grimsley",
-    "Elite Four Caitlin": "caitlin"
+    "Elite Four Caitlin": "caitlin",
+    // Plan 14 · B10: the Battle Pike's and the Battle Pyramid's Brains in battle
+    "Pike Queen": "lucy",
+    "Pyramid King": "brandon"
   }
 }

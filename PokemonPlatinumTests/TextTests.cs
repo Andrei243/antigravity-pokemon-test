@@ -249,6 +249,8 @@ public class TextTests
         ["Core/GameEngine.Factory.cs"] = new[] { "BattleFactory" },
         ["Core/GameEngine.Castle.cs"] = new[] { "BattleCastle" },
         ["Core/GameEngine.Arcade.cs"] = new[] { "BattleArcade" },
+        // The Battle Pyramid's floor's own scripts by name (plan 14 · B10)
+        ["Core/GameEngine.Pyramid.cs"] = new[] { "Wild", "Trainer", "HiddenItem" },
         ["Core/GameEngine.Encounters.cs"] = new[] { "Poké Radar" },
         // The characters' own names, which the save keeps as the player's and the rival's, and the looks by their names
         ["Core/PlayerIdentity.cs"] = new[] { "Barry", "Dawn", "Lucas", "DAWN", "PLAYER", "Player", "Assistant", "Rival:" },

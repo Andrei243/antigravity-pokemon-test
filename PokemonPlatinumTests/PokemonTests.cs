@@ -243,7 +243,9 @@ public class PokemonTests
         // (Hoenn's Hall of Fame too, whose scene sends the player home, plan 21 · H9)
         // (and Unova's, which Iris's scene leads into and its own sends home, plan 22 · U9, part c)
         if (mapName != "PokemonLeagueHallOfFame" && mapName != "EverGrandeCity_HallOfFame" && mapName != "Underground" && mapName != "PalPark" && mapName != "HoennUnderwater"
-            && mapName != "UnovaPokemonLeague_HallOfFame")
+            && mapName != "UnovaPokemonLeague_HallOfFame"
+            // (and the Battle Pyramid's floor, left by its stairs' script and its own arrival's, plan 14 · B10)
+            && mapName != "BattlePyramidFloor")
             Assert.NotEmpty(map.Warps);
         // A map of the imported world is many places, and not every one leads to every other: a cave lies between
         // the two halves of a route, rocks wait for Rock Smash. The test below walks the whole game instead.

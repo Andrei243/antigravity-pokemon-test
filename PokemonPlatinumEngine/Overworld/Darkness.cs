@@ -24,9 +24,10 @@ public static class Darkness
     /// <summary>
     /// Whether the dark closes round whoever walks a map: it is a dark cave, and nobody has used Flash in it
     /// (<see cref="FieldMoveRules.FlashFlag"/>, plan 02 · S2: knowing the move isn't enough, it is used from the
-    /// party menu, and it lasts until the player leaves the caves).
+    /// party menu, and it lasts until the player leaves the caves). A dark place whose dark Flash doesn't lift
+    /// (<see cref="Map.FlashLifts"/>: the Battle Pyramid's floors, plan 14 · B10) stays covered whatever Flash left in force.
     /// </summary>
-    public static bool Covers(Map map) => map.IsDark && !map.Lit;
+    public static bool Covers(Map map) => map.IsDark && (!map.Lit || !map.FlashLifts);
 
     /// <summary>How dark it is a number of tiles from the player: 0 where the cave is seen, 1 where nothing is.</summary>
     public static float At(float tiles)

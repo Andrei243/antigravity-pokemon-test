@@ -1273,5 +1273,129 @@
         ]
       }
     ]
+  },
+  {
+    "id": "pike_queen_lucy",
+    "name": "Lucy",
+    "class": "Pike Queen",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "prizeMoney": 0,
+    "party": [
+      {
+        "species": "Seviper",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 5243001
+      },
+      {
+        "species": "Shuckle",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 5243002
+      },
+      {
+        "species": "Milotic",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 5243003
+      }
+    ]
+  },
+  {
+    "id": "pike_queen_lucy_gold",
+    "name": "Lucy",
+    "class": "Pike Queen",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "prizeMoney": 0,
+    "party": [
+      {
+        "species": "Seviper",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 5243011
+      },
+      {
+        "species": "Steelix",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 5243012
+      },
+      {
+        "species": "Gengar",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 5243013
+      }
+    ]
+  },
+  {
+    "id": "pyramid_king_brandon",
+    "name": "Brandon",
+    "class": "Pyramid King",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "prizeMoney": 0,
+    "party": [
+      {
+        "species": "Regirock",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 5243021
+      },
+      {
+        "species": "Registeel",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 5243022
+      },
+      {
+        "species": "Regice",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 5243023
+      }
+    ]
+  },
+  {
+    "id": "pyramid_king_brandon_gold",
+    "name": "Brandon",
+    "class": "Pyramid King",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "prizeMoney": 0,
+    "party": [
+      {
+        "species": "Articuno",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 5243031
+      },
+      {
+        "species": "Zapdos",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 5243032
+      },
+      {
+        "species": "Moltres",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 5243033
+      }
+    ]
   }
 ]
