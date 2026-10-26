@@ -37,6 +37,24 @@ public static class MusicLibrary
 
     public static Song? Get(string id) => Songs.TryGetValue(id, out var s) ? s : null;
 
+    /// <summary>
+    /// Reads every song again while the game runs (plan 16 · T6, the developer's live reload): the new set takes the
+    /// old one's place only when every file reads; otherwise what was wrong is handed back and the songs stay as they were.
+    /// </summary>
+    public static List<string> Reload()
+    {
+        try
+        {
+            var fresh = Load();
+            lock (loadLock) songs = fresh;
+            return new List<string>();
+        }
+        catch (Exception e) when (e is not OutOfMemoryException)
+        {
+            return new List<string> { e.Message };
+        }
+    }
+
     private static Dictionary<string, Song> Load()
     {
         var result = new Dictionary<string, Song>(StringComparer.OrdinalIgnoreCase);

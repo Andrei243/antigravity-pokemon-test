@@ -51,7 +51,17 @@ internal static class DevCommands
         new("flag", "flag <name> [on|off]", "flag FLAG_HAS_POKEDEX on", 1, 2,
             a => a.Length > 1 && a[1] != "on" && a[1] != "off" ? $"a flag is on or off, not '{a[1]}'" : null, Flag),
         new("var", "var <name> [value]", "var VAR_SPAWN_LOCATION 1", 1, 2,
-            a => a.Length > 1 ? Int(a[1], "value", int.MinValue) : null, Var)
+            a => a.Length > 1 ? Int(a[1], "value", int.MinValue) : null, Var),
+        // Plan 16 · T6's own: the console takes this table over, and these are its commands beside T17's
+        new("flags", "flags [part of a name]", "flags POKEDEX", 0, 1, _ => null, Flags),
+        new("encounters", "encounters [on|off]", "encounters off", 0, 1, a => a.Length > 0 ? OnOff(a[0]) : null, Encounters),
+        new("trace", "trace [on|off]", "trace on", 0, 1, a => a.Length > 0 ? OnOff(a[0]) : null, Trace),
+        new("reload", "reload [scripts|maps|music|models|all]", "reload scripts", 0, 1,
+            a => a.Length > 0 && Reload.Named(a[0]) == null ? $"'{a[0]}' is nothing to reload (scripts, maps, music, models, all)" : null, ReloadFiles),
+        new("fps", "fps [on|off|sections]", "fps on", 0, 1,
+            a => a.Length > 0 && a[0] is not ("on" or "off" or "sections") ? $"fps is on, off or sections, not '{a[0]}'" : null, Fps),
+        new("screenshot", "screenshot", "screenshot", 0, 0, _ => null, (engine, _) => engine.DevShot()),
+        new("help", "help [command]", "help warp", 0, 1, a => a.Length > 0 && Find(a[0]) == null ? $"no command is called '{a[0]}'" : null, Help)
     };
 
     public static DevCommand? Find(string name) => Commands.FirstOrDefault(c => c.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
@@ -197,5 +207,48 @@ internal static class DevCommands
         var story = engine.Drive.Story;
         if (a.Length > 1) story.SetVar(a[0], Number(a[1]));
         return DevResult.Done($"{a[0]} is {story.Var(a[0])}");
+    }
+
+    internal static string? OnOff(string word) => word is "on" or "off" ? null : $"it is on or off, not '{word}'";
+
+    /// <summary>The most flags and variables <c>flags</c> lists at once.</summary>
+    public const int MostListed = 40;
+
+    private static DevResult Flags(GameEngine engine, string[] a)
+    {
+        var story = engine.Drive.Story;
+        string part = a.Length > 0 ? a[0] : "";
+        var flags = story.Flags.Where(f => f.Contains(part, StringComparison.OrdinalIgnoreCase)).Order(StringComparer.Ordinal).ToList();
+        var vars = story.Variables.Where(v => v.Key.Contains(part, StringComparison.OrdinalIgnoreCase)).OrderBy(v => v.Key, StringComparer.Ordinal).ToList();
+        var lines = flags.Take(MostListed).Concat(vars.Take(Math.Max(0, MostListed - flags.Count)).Select(v => $"{v.Key} = {v.Value}")).ToList();
+        int more = flags.Count + vars.Count - lines.Count;
+        lines.Insert(0, $"{flags.Count} flag(s) on and {vars.Count} variable(s){(part.Length > 0 ? $" with '{part}' in the name" : "")}:");
+        if (more > 0) lines.Add($"... and {more} more: name a part of a name");
+        return DevResult.Done(string.Join("\n", lines));
+    }
+
+    private static DevResult Encounters(GameEngine engine, string[] a)
+    {
+        if (a.Length > 0) engine.WildEncountersOff = a[0] == "off";
+        return DevResult.Done(engine.WildEncountersOff ? "no wild Pokémon is met in the field" : "wild Pokémon are met in the field");
+    }
+
+    private static DevResult Trace(GameEngine engine, string[] a) =>
+        engine.DevTrace(a.Length > 0 ? a[0] == "on" : !engine.Tracing);
+
+    private static DevResult ReloadFiles(GameEngine engine, string[] a) =>
+        engine.DevReload(a.Length > 0 ? Reload.Named(a[0])!.Value : ReloadKind.All);
+
+    private static DevResult Fps(GameEngine engine, string[] a) => engine.DevFrameTimes(a.Length > 0 ? a[0] : "on");
+
+    private static DevResult Help(GameEngine engine, string[] a)
+    {
+        if (a.Length > 0)
+        {
+            var command = Find(a[0])!;
+            return DevResult.Done($"{command.Usage}\n  for example: {command.Example}");
+        }
+        return DevResult.Done("The commands (a word in double quotes is kept whole; up and down go through the lines typed before):\n"
+            + string.Join("\n", Commands.Select(c => "  " + c.Usage)));
     }
 }

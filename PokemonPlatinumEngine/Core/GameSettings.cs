@@ -285,6 +285,9 @@ public sealed class GameSettings
     /// </summary>
     public Season? Season { get; set; }
 
+    /// <summary>Developer mode every run, as <c>--dev</c> is for one (plan 16 · T6, <see cref="DevMode"/>): no row of the options, written by hand.</summary>
+    public bool Developer { get; set; }
+
     /// <summary>
     /// The scenes this machine has seen played to their end, in any game (plan 12 · Q20), each by its key
     /// (<see cref="Story.SceneSkip.Key"/>), in the order of their keys: what a second game may skip under

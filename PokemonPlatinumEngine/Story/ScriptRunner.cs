@@ -434,8 +434,12 @@ public sealed partial class ScriptRunner
 
     // ------------------------------------------------------------------ a line
 
+    /// <summary>Told of every instruction as it is carried out, with the script it is in (plan 16 · T6: the console's <c>trace</c>); null for nobody.</summary>
+    public Action<Script, Instruction>? Trace { get; set; }
+
     private void Execute(Instruction i)
     {
+        if (Trace != null && script != null) Trace(script, i);
         var story = host.Story;
         switch (i.Op)
         {

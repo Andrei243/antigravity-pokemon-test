@@ -14,8 +14,12 @@ namespace PokemonPlatinumEngine.Data;
 /// </summary>
 public static class GameDataFiles
 {
-    /// <summary>The folder the data files are read from.</summary>
-    public static string Directory { get; } = Path.Combine(AppContext.BaseDirectory, "Data");
+    /// <summary>
+    /// The folder the data files are read from: the copy beside the executable, or, in developer mode, the repository's
+    /// own <c>PokemonPlatinumEngine/Data</c>, so the file saved is the file read (plan 16 · T6, <c>Core.DevMode</c>,
+    /// which sets it before the game loads anything).
+    /// </summary>
+    public static string Directory { get; set; } = Path.Combine(AppContext.BaseDirectory, "Data");
 
     /// <summary>camelCase names, enums as their names, accented text kept readable.</summary>
     public static readonly JsonSerializerOptions Json = new()

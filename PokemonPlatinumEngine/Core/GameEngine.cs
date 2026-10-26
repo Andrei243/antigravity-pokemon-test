@@ -953,6 +953,8 @@ public partial class GameEngine
             Log.Info(held ? "Another window is in front: the game waits (the options' Pause in the background)." : "The window is in front again: the game goes on.");
         }
         if (held) return;
+        // The developer's console holds the game while it is open, and what was saved is read again (plan 16 · T6)
+        if (UpdateDev(dt)) return;
 
         if (gameStarted && flow.State != GameState.WindowClosing) flow.PlayTime += dt;
 
@@ -2893,11 +2895,14 @@ public partial class GameEngine
 
         // The close button's question over all of it, sliding away once answered
         closePrompt.Draw(VirtualWidth, VirtualHeight);
+        // The developer's console and frame time over all of it (plan 16 · T6)
+        DrawDev();
 
         Raylib.EndMode2D();
         // (Ending the 2D mode drew what was batched; every other target is written whole)
         Rlgl.ColorMask(true, true, true, true);
         Raylib.EndTextureMode();
+        TakeDevShot();
         FrameProfiler.Lap(FrameSection.Interface);
 
         // Fit the 4K screen into the window (at 1080p this halves it, which also anti-aliases it)
