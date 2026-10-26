@@ -2,6 +2,7 @@
   // Petalburg Woods (plan 21 · H2, part b), the dark wood between Route 104's halves. The Devon researcher looking for
   // Shroomish and the Team Aqua grunt who corners him are petalburg_woods.txt's (the two triggers on the path north)
   "area": "petalburg_woods",
+  "ours": { "land": [ ["Sporepugil", 148, 152] ] },
   "bgmTrack": "hoenn/petalburg_woods",
   "trees": "Round",
   "triggers": [

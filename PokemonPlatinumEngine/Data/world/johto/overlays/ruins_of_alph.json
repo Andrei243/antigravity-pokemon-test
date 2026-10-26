@@ -4,6 +4,7 @@
   // the chambers' puzzles; Union Cave's two ways up are open. The man with the camera and the suit at the centre's door
   // are later chapters'
   "area": "ruins_of_alph",
+  "ours": { "land": [ ["Totemsight", 115, 119], ["Muralist", 110, 114] ] },
   "bgmTrack": "johto/ruins_of_alph",
   "trees": "Round",
   "locked": [ 8, 9, 11, 12, 13, 14 ],

@@ -4,6 +4,7 @@
   // Badge yet and gives a Miracle Seed to whoever has (route_32.txt). Its trainers battle by their own records (Johto's
   // trainers.json); the girl here only on Fridays and the man with the Lure are later chapters'
   "area": "route_32",
+  "ours": { "surf": [ ["Mirelord", 106, 110] ], "superRod": [ ["Fugumace", 106, 110] ] },
   "bgmTrack": "johto/route30",
   "trees": "Round",
   "triggers": [ { "trigger": 0, "script": "BadgeCheck" } ],

@@ -3,6 +3,7 @@
   // beach and the high ground above it. Terra Cave's hollows open only after Sootopolis's storm (plan 21 · H12), so its
   // two ways in stay shut
   "area": "route_115",
+  "ours": { "land": [ ["Swiftarrow", 145, 149] ] },
   "bgmTrack": "hoenn/route104",
   "trees": "Round",
   "locked": [ 1, 2 ],

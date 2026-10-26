@@ -3,6 +3,7 @@
   // day whose number matches a Pokémon's and isn't open; its berry tree stays hidden with it. The titans' weather lies
   // over it while the story keeps it (FLAG_SYS_WEATHER_CTRL)
   "area": "route_130",
+  "ours": { "surf": [ ["Pelicaptain", 145, 149] ], "superRod": [ ["Megalodax", 152, 156] ] },
   "bgmTrack": "hoenn/route119",
   "trees": "Round",
   "zones": [

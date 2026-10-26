@@ -3,6 +3,7 @@
   // Day Care, whose couple raise Pokémon as Sinnoh's do (common.DayCareMan, and the Day-Care Lady inside), and its
   // trainers, four of whom swap numbers for the PokéNav once beaten (route_117.txt)
   "area": "route_117",
+  "ours": { "land": [ ["Photurion", 145, 149], ["Lampyria", 145, 149] ] },
   "bgmTrack": "hoenn/route110",
   "trees": "Round",
   "people": {

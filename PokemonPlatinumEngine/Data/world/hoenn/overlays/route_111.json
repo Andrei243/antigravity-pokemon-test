@@ -8,6 +8,7 @@
   // own session; Gabby and Ty come by turns on this
   // route, 118 and 120 (plan 21 · H6, part c: GabbyAndTyUpdateLocation in common.txt)
   "area": "route_111",
+  "ours": { "land": [ ["Saguarox", 148, 152] ] },
   "bgmTrack": "hoenn/route110",
   "trees": "Round",
   "locked": [ 4 ],

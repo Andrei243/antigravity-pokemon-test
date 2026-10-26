@@ -1,6 +1,7 @@
 {
   // The Dark Cave's north side (plan 20 · J10), its back way out onto Route 45
   "area": "dark_cave_route_45_side",
+  "ours": { "land": [ ["Wobbulwark", 110, 114] ] },
   "bgmTrack": "johto/ice_path",
   "people": {
     "d42r0101_sunglasses": {

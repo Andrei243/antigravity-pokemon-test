@@ -5,6 +5,7 @@
   // into the Ancient Tomb and the Scorched Slab are open since part b. The shadow Emerald draws under the bridge's
   // Kecleon is left away; Gabby and Ty stand here in their turn (plan 21 · H6, part c)
   "area": "route_120",
+  "ours": { "land": [ ["Ocellwing", 142, 146], ["Omenblade", 150, 154] ] },
   "bgmTrack": "hoenn/route120",
   "trees": "Round",
   "zones": [

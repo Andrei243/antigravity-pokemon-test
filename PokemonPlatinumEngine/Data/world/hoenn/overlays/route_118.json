@@ -4,6 +4,7 @@
   // below him. The two ways into Terra Cave stay shut until the weather goes wrong (plan 21 · H8); Gabby and Ty stand here
   // in their turn (plan 21 · H6, part c)
   "area": "route_118",
+  "ours": { "land": [ ["Streakoon", 140, 144], ["Fulmenhound", 150, 154] ] },
   "bgmTrack": "hoenn/route118",
   "trees": "Round",
   "locked": [ 0, 1 ],

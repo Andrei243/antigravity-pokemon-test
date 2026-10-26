@@ -2,6 +2,7 @@
   // Moltres's chamber at the back of Mt. Silver Cave's first floor (plan 20 · J15): Moltres waits until it has been
   // fought, as on Mt. Ember (mount_silver_cave_moltres_chamber.txt)
   "area": "mount_silver_cave_moltres_chamber",
+  "ours": { "land": [ ["Ironwyrm", 115, 119], ["Rapierwing", 115, 119] ] },
   "bgmTrack": "johto/lighthouse",
   "people": {
     "d41r0105_tsure_poke_static_moltres": { "name": "Moltres", "npcType": "Pokemon", "species": "Moltres", "script": "Moltres", "still": true }

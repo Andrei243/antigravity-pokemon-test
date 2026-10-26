@@ -4,6 +4,7 @@
   // (hoenn_safari_zone_south.txt). Every wild Pokémon in the zone is met in a Safari battle while the game is on
   // (Models/SafariGame.cs). Emerald's Pokéblock feeders are plan 21 · H11's
   "area": "hoenn_safari_zone_south",
+  "ours": { "land": [ ["Felinelle", 140, 144] ] },
   "bgmTrack": "hoenn/safari_zone",
   "trees": "Round",
   "people": {

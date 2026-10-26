@@ -1,6 +1,7 @@
 {
   // The small chamber off Mt. Silver Cave's first floor (plan 20 · J15), where the Expert Belt lies
   "area": "mount_silver_cave_expert_belt_chamber",
+  "ours": { "land": [ ["Mastiffang", 108, 112], ["Atlascross", 115, 119] ] },
   "bgmTrack": "johto/lighthouse",
   "people": {}
 }

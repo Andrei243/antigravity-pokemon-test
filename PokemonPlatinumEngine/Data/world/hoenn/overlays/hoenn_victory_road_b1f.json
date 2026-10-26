@@ -2,6 +2,7 @@
   // Victory Road's middle floor (plan 21 · H9): its boulders for Strength and its cracked rocks for Rock Smash, which come
   // back as the player comes in again (FLAG_TEMP_*), and five trainers
   "area": "hoenn_victory_road_b1f",
+  "ours": { "land": [ ["Yokozan", 150, 154] ] },
   "name": "Victory Road",
   "bgmTrack": "hoenn/victory_road",
   "people": {

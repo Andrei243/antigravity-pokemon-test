@@ -3,6 +3,7 @@
   // hot with the volcano's heat, Strength's three boulders in its west corner. Its grunts go with Maxie once Groudon
   // has fled (FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS, magma_hideout_4f.txt)
   "area": "magma_hideout_1f",
+  "ours": { "land": [ ["Smeltortoise", 148, 152] ] },
   "bgmTrack": "hoenn/aqua_magma_hideout",
   "trees": "Round",
   "climate": "Volcanic",

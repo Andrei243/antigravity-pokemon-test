@@ -176,6 +176,7 @@ trainers 9, 16-31: unova_doctor_heath 17, unova_janitor_brady 31, unova_janitor_
 === cave_of_origin_1f
 Cave Of Origin
 grass 30-36
+ours Gemwraith 142-146
 === cave_of_origin_entrance
 Cave Of Origin
 grass 28-36
@@ -300,6 +301,7 @@ surf 2-20
 old rod 10
 good rod 20
 super rod 40
+ours Wobbulwark 110-114
 === desert_resort
 Desert Resort
 grass 18-21
@@ -310,6 +312,7 @@ trainers 9, 22-23: unova_backpacker_clara 22, unova_backpacker_sam 22, unova_bac
 === desert_underpass
 Desert Underpass
 grass 35-45
+ours Crinolith 150-154, Anomalorex 150-154
 === dewford_town
 Dewford Town
 surf 5-35
@@ -355,6 +358,7 @@ surf 5-35
 old rod 5-10
 good rod 10-30
 super rod 30-45
+ours Heartreef 140-144
 === fiery_path
 Fiery Path
 grass 14-16
@@ -612,6 +616,7 @@ super rod 20-55
 === hoenn_safari_zone_north
 Safari Zone
 grass 27-31
+ours Gulpgorge 146-150
 === hoenn_safari_zone_northeast
 Safari Zone
 grass 33-40
@@ -625,6 +630,7 @@ super rod 25-40
 === hoenn_safari_zone_south
 Safari Zone
 grass 25-29
+ours Felinelle 140-144
 === hoenn_safari_zone_southeast
 Safari Zone
 grass 33-40
@@ -646,6 +652,7 @@ trainers 5, 43-45: hoenn_albert 43, hoenn_edgar 43, hoenn_hope 45, hoenn_katelyn
 === hoenn_victory_road_b1f
 Victory Road
 grass 38-42
+ours Yokozan 150-154
 trainers 5, 42-45: hoenn_halle 43, hoenn_michelle 42, hoenn_mitchell 43, hoenn_samuel 42, hoenn_shannon 45
 === hoenn_victory_road_b2f
 Victory Road
@@ -654,6 +661,7 @@ surf 25-40
 old rod 5-10
 good rod 10-30
 super rod 25-45
+ours Deceivore 142-146, Namazuro 148-152
 trainers 6, 42-43: hoenn_caroline 43, hoenn_dianne 43, hoenn_felix 43, hoenn_julie 42, hoenn_owen 42, hoenn_vito 42
 === humilau_city
 Humilau City
@@ -712,6 +720,7 @@ grass 31-35
 === jagged_pass
 Jagged Pass
 grass 20-22
+ours Volcamel 150-154, Boarcane 148-152
 trainers 5, 19-21: hoenn_autumn 21, hoenn_diana_1 19, hoenn_eric 20, hoenn_ethan_1 20, hoenn_julio 21
 === johto_route_22
 Route 22
@@ -809,6 +818,7 @@ trainers 4, 24-51: unova_pkmn_breeder_galen 24, unova_pkmn_ranger_forrest 26, un
 === magma_hideout_1f
 Magma Hideout
 grass 27-33
+ours Smeltortoise 148-152
 trainers 2, 29: hoenn_grunt_magma_hideout_1 29, hoenn_grunt_magma_hideout_2 29
 === magma_hideout_2f_1r
 Magma Hideout
@@ -859,6 +869,7 @@ surf 5-35
 old rod 5-10
 good rod 10-30
 super rod 25-45
+ours Selenolith 150-154, Heliolith 150-154
 trainers 2, 37-39: hoenn_john_and_jay_1 39, hoenn_nicolas_1 37
 === meteor_falls_b1f_1r
 Meteor Falls
@@ -944,6 +955,7 @@ surf 30-48
 old rod 10
 good rod 20
 super rod 40
+ours Gyrodrill 110-114
 === mount_silver_cave_1f
 Mt. Silver Cave
 grass 15-45
@@ -951,6 +963,7 @@ surf 30-50
 old rod 10
 good rod 20
 super rod 40
+ours Cerberhound 120-124, Siegephant 115-119
 === mount_silver_cave_2f
 Mt. Silver Cave
 grass 15-50
@@ -958,6 +971,7 @@ surf 30-45
 old rod 10
 good rod 20
 super rod 40
+ours Orbweavix 108-112, Mimicedar 108-112
 === mount_silver_cave_3f
 Mt. Silver Cave
 grass 15-50
@@ -965,12 +979,15 @@ surf 30-45
 old rod 10
 good rod 20
 super rod 40
+ours Eclipseon 120-124, Pinecitadel 112-116
 === mount_silver_cave_expert_belt_chamber
 Mt. Silver Cave
 grass 15-48
+ours Mastiffang 108-112, Atlascross 115-119
 === mount_silver_cave_lower_mountainside
 Mt. Silver Cave
 grass 15-51
+ours Ermilong 106-110, Coccinova 106-110
 === mount_silver_cave_moltres_chamber
 Mt. Silver Cave
 grass 15-48
@@ -978,6 +995,7 @@ surf 30-45
 old rod 10
 good rod 20
 super rod 40
+ours Ironwyrm 115-119, Rapierwing 115-119
 === mount_silver_cave_upper_mountainside
 Mt. Silver Cave
 grass 15-48
@@ -985,6 +1003,7 @@ surf 30-45
 old rod 10
 good rod 20
 super rod 40
+ours Fermentoise 110-114, Calderon 112-116
 === mt_chimney
 Mt Chimney
 trainers 8, 18-22: hoenn_grunt_mt_chimney_1 20, hoenn_grunt_mt_chimney_2 20, hoenn_melissa 21, hoenn_sawyer_1 21, hoenn_sheila 21, hoenn_shelby_1 21, hoenn_shirley 21, hoenn_tabitha_mt_chimney 22
@@ -1117,6 +1136,7 @@ grass 25-29
 === mt_pyre_summit
 Mt Pyre
 grass 24-30
+ours Ascetrance 145-149, Carillone 145-149
 trainers 4, 30-32: hoenn_grunt_mt_pyre_1 32, hoenn_grunt_mt_pyre_2 32, hoenn_grunt_mt_pyre_3 30, hoenn_grunt_mt_pyre_4 30
 === national_park
 National Park
@@ -1222,12 +1242,14 @@ surf 5-35
 old rod 5-10
 good rod 10-30
 super rod 20-45
+ours Crayronin 148-152
 === petalburg_city_gym
 Petalburg City
 trainers 7, 26: hoenn_alexia 26, hoenn_berke 26, hoenn_george 26, hoenn_jody 26, hoenn_mary 26, hoenn_parker 26, hoenn_randall 26
 === petalburg_woods
 Petalburg Woods
 grass 5-6
+ours Sporepugil 148-152
 trainers 2, 3-6: hoenn_james_1 6, hoenn_lyle 3
 === pewter_city_gym
 Pewter City
@@ -1480,6 +1502,7 @@ surf 5-35
 old rod 5-10
 good rod 10-30
 super rod 20-45
+ours Anodion 142-146, Cathodion 142-146
 trainers 14, 6-16: hoenn_abigail_1 16, hoenn_alyssa 15, hoenn_anthony 14, hoenn_benjamin_1 16, hoenn_dale 14, hoenn_edward 15, hoenn_edwin_1 14, hoenn_isabel_1 14, hoenn_jaclyn 16, hoenn_jacob 14, hoenn_jasmine 14, hoenn_joseph 14, hoenn_kaleb 14, hoenn_timmy 15
 === route_110_trick_house_puzzle_1
 Route 110
@@ -1491,6 +1514,7 @@ surf 5-35
 old rod 5-10
 good rod 10-30
 super rod 20-45
+ours Saguarox 148-152
 trainers 17, 17-23: hoenn_beau 21, hoenn_becky 22, hoenn_bianca 18, hoenn_branden 22, hoenn_brooke_1 17, hoenn_bryan 22, hoenn_celia 22, hoenn_celina 18, hoenn_daisuke 19, hoenn_drew 23, hoenn_dusty_1 23, hoenn_hayden 18, hoenn_heidi 22, hoenn_irene 17, hoenn_travis 18, hoenn_tyron 19, hoenn_wilton_1 17
 === route_112
 Route 112
@@ -1499,6 +1523,7 @@ trainers 6, 16-18: hoenn_brice 17, hoenn_bryant 18, hoenn_carol 17, hoenn_larry 
 === route_113
 Route 113
 grass 14-16
+ours Whirlpanda 140-144
 trainers 10, 17-19: hoenn_coby 19, hoenn_dillon 19, hoenn_jaylen 19, hoenn_lao_1 17, hoenn_lawrence 18, hoenn_lung 18, hoenn_madeline_1 19, hoenn_sophie 19, hoenn_tori_and_tia 19, hoenn_wyatt 18
 === route_114
 Route 114
@@ -1507,6 +1532,7 @@ surf 5-35
 old rod 5-10
 good rod 10-30
 super rod 20-45
+ours Ravagoose 148-152, Scimitail 148-152
 trainers 12, 16-20: hoenn_angelina 18, hoenn_bernie_1 18, hoenn_charlotte 19, hoenn_claude 18, hoenn_kai 19, hoenn_lenny 18, hoenn_lucas_1 18, hoenn_nancy 18, hoenn_nolan 19, hoenn_shane 18, hoenn_steve_1 19, hoenn_tyra_and_ivy 20
 === route_115
 Route 115
@@ -1515,10 +1541,12 @@ surf 5-35
 old rod 5-10
 good rod 10-30
 super rod 20-45
+ours Swiftarrow 145-149
 trainers 10, 18-28: hoenn_alix 26, hoenn_cyndy_1 18, hoenn_hector 18, hoenn_helene 26, hoenn_jaiden 26, hoenn_koichi 28, hoenn_kyra 26, hoenn_marlene 18, hoenn_nob_1 19, hoenn_timothy_1 27
 === route_116
 Route 116
 grass 6-8
+ours Shinobuzz 145-149
 trainers 10, 8-9: hoenn_clark 8, hoenn_dawson 8, hoenn_devan 8, hoenn_janice 9, hoenn_jerry_1 9, hoenn_joey 9, hoenn_johnson 8, hoenn_jose 8, hoenn_karen_1 9, hoenn_sarah 8
 === route_117
 Route 117
@@ -1527,6 +1555,7 @@ surf 5-35
 old rod 5-10
 good rod 10-30
 super rod 20-45
+ours Photurion 145-149, Lampyria 145-149
 trainers 9, 11-17: hoenn_aisha 17, hoenn_anna_and_meg_1 17, hoenn_brandi 17, hoenn_derek 16, hoenn_dylan_1 17, hoenn_isaac_1 11, hoenn_lydia_1 11, hoenn_maria_1 17, hoenn_melina 17
 === route_118
 Route 118
@@ -1535,6 +1564,7 @@ surf 5-35
 old rod 5-10
 good rod 10-30
 super rod 20-45
+ours Streakoon 140-144, Fulmenhound 150-154
 trainers 7, 14-26: hoenn_barny 25, hoenn_chester 25, hoenn_dalton_1 15, hoenn_deandre 14, hoenn_perry 26, hoenn_rose_1 14, hoenn_wade 16
 === route_119
 Route 119
@@ -1543,6 +1573,7 @@ surf 5-35
 old rod 5-10
 good rod 10-30
 super rod 20-45
+ours Musadon 148-152, Prismaria 155-159
 trainers 17, 20-29: hoenn_brent 26, hoenn_catherine_1 26, hoenn_chris 29, hoenn_dayton 25, hoenn_donald 24, hoenn_doug 28, hoenn_fabian 26, hoenn_greg 25, hoenn_hideo 25, hoenn_hugh 25, hoenn_jackson_1 27, hoenn_kent 25, hoenn_phil 26, hoenn_rachel 26, hoenn_takashi 25, hoenn_taylor 27, hoenn_yasu 26
 === route_119_weather_institute_1f
 Route 119
@@ -1566,6 +1597,7 @@ surf 5-35
 old rod 5-10
 good rod 10-30
 super rod 20-45
+ours Ocellwing 142-146, Omenblade 150-154
 trainers 13, 27-30: hoenn_angelica 30, hoenn_callie 28, hoenn_chip 27, hoenn_clarissa 28, hoenn_colin 28, hoenn_jeffrey_1 27, hoenn_jenna 28, hoenn_jennifer 30, hoenn_keigo 28, hoenn_leonel 30, hoenn_lorenzo 28, hoenn_riley 28, hoenn_robert_1 29
 === route_121
 Route 121
@@ -1574,6 +1606,7 @@ surf 5-35
 old rod 5-10
 good rod 10-30
 super rod 20-45
+ours Hyaenarch 142-146, Chromeleon 145-149
 trainers 10, 25-32: hoenn_cale 29, hoenn_cristin_1 29, hoenn_jessica_1 29, hoenn_kate_and_joy 32, hoenn_marcel 29, hoenn_myles 25, hoenn_pat 25, hoenn_tammy 29, hoenn_vanessa 30, hoenn_walter_1 29
 === route_122
 Route 122
@@ -1595,6 +1628,7 @@ surf 5-35
 old rod 5-10
 good rod 10-30
 super rod 25-45
+ours Aeonfin 158-162
 trainers 8, 33-34: hoenn_chad 33, hoenn_declan 34, hoenn_grace 34, hoenn_isabella 34, hoenn_jenny_1 34, hoenn_lila_and_roy_1 34, hoenn_roland 34, hoenn_spencer 33
 === route_125
 Route 125
@@ -1630,6 +1664,7 @@ surf 5-35
 old rod 5-10
 good rod 10-30
 super rod 25-45
+ours Leviawhale 155-159
 trainers 5, 26-34: hoenn_allison 33, hoenn_chase 34, hoenn_clarence 34, hoenn_reed 33, hoenn_tisha 34
 === route_13
 Route 13
@@ -1646,6 +1681,7 @@ surf 5-35
 old rod 5-10
 good rod 10-30
 super rod 25-45
+ours Pelicaptain 145-149, Megalodax 152-156
 trainers 3, 33-34: hoenn_katie 33, hoenn_rodney 34, hoenn_santiago 33
 === route_131
 Route 131
@@ -2027,6 +2063,7 @@ surf 35-40
 old rod 10
 good rod 20
 super rod 40
+ours Helianthra 110-114, Guillotyne 120-124
 === route_29
 Route 29
 grass 2-4
@@ -2057,6 +2094,7 @@ surf 10-36
 old rod 10
 good rod 20
 super rod 40
+ours Mirelord 106-110, Fugumace 106-110
 trainers 8, 5-15: johto_bird_keeper_gs_peter 8, johto_camper_roland 9, johto_fisherman_henry 8, johto_fisherman_justin 15, johto_fisherman_ralph 10, johto_picnicker_liz 8, johto_youngster_albert 8, johto_youngster_gordon 10
 === route_33
 Route 33
@@ -2069,6 +2107,7 @@ surf 10-29
 old rod 10
 good rod 20
 super rod 40
+ours Reefcrown 106-110
 trainers 6, 7-17: johto_camper_todd 14, johto_picnicker_gina 12, johto_pokefan_m_brandon 13, johto_policeman_keith 17, johto_youngster_ian 12, johto_youngster_samuel 10
 === route_35
 Route 35
@@ -2093,6 +2132,7 @@ trainers 5, 16-20: johto_beauty_valerie 18, johto_bird_keeper_gs_toby 18, johto_
 === route_39
 Route 39
 grass 15-17
+ours Pastorine 115-119
 trainers 4, 17-20: johto_pokefan_m_derek 18, johto_pokefan_ruth 17, johto_psychic_m_nelson 20, johto_sailor_eugene 19
 === route_4
 Route 4
@@ -2115,6 +2155,7 @@ surf 15-25
 old rod 10
 good rod 20
 super rod 40
+ours Raysail 112-116
 trainers 10, 16-23: johto_swimmer_f_denise 22, johto_swimmer_f_kara 20, johto_swimmer_f_kaylee 20, johto_swimmer_f_susie 22, johto_swimmer_f_wendy 21, johto_swimmer_m_berke 23, johto_swimmer_m_charlie 21, johto_swimmer_m_george 19, johto_swimmer_m_matthew 23, johto_swimmer_m_ronald 20
 === route_42
 Route 42
@@ -2131,6 +2172,7 @@ surf 5-50
 old rod 10
 good rod 20
 super rod 40
+ours Zenitheon 120-124
 trainers 6, 10-24: johto_camper_spencer 20, johto_fisherman_marvin 20, johto_picnicker_tiffany 21, johto_poke_maniac_beckett 20, johto_poke_maniac_brent 24, johto_poke_maniac_ron 20
 === route_44
 Route 44
@@ -2139,6 +2181,7 @@ surf 15-30
 old rod 10
 good rod 20
 super rod 40
+ours Krakannon 112-116
 trainers 7, 26-30: johto_ace_trainer_f_cybil 29, johto_ace_trainer_m_allen 29, johto_bird_keeper_gs_vance 28, johto_fisherman_edgar 28, johto_fisherman_wilton 28, johto_poke_maniac_zach 30, johto_psychic_m_phil 29
 === route_45
 Route 45
@@ -2159,6 +2202,7 @@ surf 10-25
 old rod 10
 good rod 20
 super rod 40
+ours Noctaugur 110-114, Sleighwing 104-108, Abyssolux 112-116
 trainers 4, 19-25: johto_camper_grant 21, johto_double_team_thom_and_kae 25, johto_hiker_devin 19, johto_young_couple_duff_and_eda 22
 === route_48
 Route 48
@@ -2195,6 +2239,7 @@ surf 10-25
 old rod 10
 good rod 20
 super rod 40
+ours Totemsight 115-119, Muralist 110-114
 trainers 1, 26: johto_psychic_m_nathan 26
 === rustboro_city_gym
 Rustboro City
@@ -2464,6 +2509,7 @@ super rod 20-45
 === shoal_cave_low_tide_ice_room
 Shoal Cave
 grass 26-32
+ours Bergmaw 145-149
 === shoal_cave_low_tide_inner_room
 Shoal Cave
 grass 26-32
@@ -2552,12 +2598,14 @@ trainers 6, 46-50: kanto_aroma_lady_rose 49, kanto_hiker_earl 49, kanto_juggler_
 === sky_pillar_1f
 Sky Pillar
 grass 33-38
+ours Effigrim 146-150
 === sky_pillar_3f
 Sky Pillar
 grass 33-38
 === sky_pillar_5f
 Sky Pillar
 grass 33-39
+ours Nimbusong 152-156, Dogunarch 152-156
 === slateport_city
 Slateport City
 surf 5-35
@@ -2579,6 +2627,7 @@ surf 10-30
 old rod 10
 good rod 20
 super rod 40
+ours Slowmonarch 120-124
 === snowpoint_temple_1f
 Snowpoint Temple
 grass 47-50
@@ -2868,9 +2917,11 @@ super rod 40-70
 === underwater_route_124
 Underwater
 surf 20-35
+ours Gulpereel 150-154
 === underwater_route_126
 Underwater
 surf 20-35
+ours Sirenyss 150-154
 === union_cave_1f
 Union Cave
 grass 4-7

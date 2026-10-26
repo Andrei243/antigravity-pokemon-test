@@ -2,5 +2,6 @@
   // Sky Pillar's fifth floor (plan 21 · H8, part c): laid clean, as Emerald lays it until Rayquaza has come down; its
   // cracked floor, crossed only on the Mach Bike, is the post-game's (plan 21 · H12)
   "area": "sky_pillar_5f",
+  "ours": { "land": [ ["Nimbusong", 152, 156], ["Dogunarch", 152, 156] ] },
   "bgmTrack": "hoenn/mt_chimney"
 }

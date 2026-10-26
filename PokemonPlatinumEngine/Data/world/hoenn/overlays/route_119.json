@@ -6,6 +6,7 @@
   // the bridge north of it, and Scott after. Emerald's rival on a bicycle, a second object for the same rival's ride
   // away, is left off the map: the rival runs
   "area": "route_119",
+  "ours": { "land": [ ["Musadon", 148, 152] ], "surf": [ ["Prismaria", 155, 159] ] },
   "bgmTrack": "hoenn/route119",
   "trees": "Round",
   "zones": [

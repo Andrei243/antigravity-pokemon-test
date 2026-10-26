@@ -24,6 +24,8 @@ public class OursSlotsTests
     {
         RegionDatabase.Sinnoh,
         RegionDatabase.Kanto,
+        RegionDatabase.Johto,
+        RegionDatabase.Hoenn,
     };
 
     private static MapArea AreaWithTables()

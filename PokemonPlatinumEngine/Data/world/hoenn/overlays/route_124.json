@@ -4,6 +4,7 @@
   // open since plan 21 · H8, and the way here by water from Lilycove City is plan 21 · H7's. Emerald plays Route 120's
   // song here, as it does over the whole eastern sea (plan 21 · H8: Route 104's sea stood in until H6 wrote it).
   "area": "route_124",
+  "ours": { "superRod": [ ["Aeonfin", 158, 162] ] },
   "bgmTrack": "hoenn/route120",
   "zones": [
     { "x": 0, "z": 0, "width": 100000, "depth": 100000, "weather": "Abnormal", "bgmTrack": "hoenn/abnormal_weather", "while": "FLAG_SYS_WEATHER_CTRL" }
