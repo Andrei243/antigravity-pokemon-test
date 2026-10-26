@@ -26,6 +26,14 @@ public class JohtoTests
 
     private static readonly string[] FirstAreas = { "new_bark", "route_29", "cherrygrove", "route_30", "route_31", "violet" };
 
+    /// <summary>The areas of HeartGold's Kanto open as Johto's maps that play Kanto's songs (plan 20 · J15, part b).</summary>
+    private static readonly HashSet<string> KantoOfJohto = new(StringComparer.Ordinal)
+    {
+        "ss_aqua_1f", "ss_aqua_vermilion_port_exterior", "ss_aqua_vermilion_port_interior", "vermilion", "vermilion_pokecenter_1f",
+        "vermilion_pokecenter_b1f", "vermilion_pokemart", "vermilion_fishing_dude_house", "vermilion_pokemon_fan_club",
+        "vermilion_central_house", "vermilion_south_house",
+    };
+
     [Fact]
     public void TheIndexOpensNewBarkTownToVioletCityWithTheirRooms()
     {
@@ -46,7 +54,8 @@ public class JohtoTests
         foreach (string key in Johto.Index.Areas)
         {
             Assert.NotNull(Johto.Area(key));
-            Assert.StartsWith("johto/", Johto.Overlay(key)!.BgmTrack);
+            // (HeartGold's Kanto, Johto's own maps since plan 20 · J15, part b, plays Kanto's town themes)
+            Assert.StartsWith(KantoOfJohto.Contains(key) ? "kanto/" : "johto/", Johto.Overlay(key)!.BgmTrack);
         }
         // HeartGold's keys meet neither Sinnoh's nor Kanto's
         var others = World.LoadAll().Where(w => w.Index.Region != "Johto").SelectMany(w => w.Index.Areas).ToHashSet();
@@ -345,7 +354,8 @@ public class JohtoTests
         // What waits stays shut: the S.S. Aqua's quay, the Battle Frontier's road and Lugia's cave (the road east of
         // Ecruteak to Route 42 is open since plan 20 · J10); the lighthouse's lift waits for Jasmine to step aside (plan
         // 20 · J9), its door a wall until then. The cliff path to Route 47 is open since plan 20 · J8, part b
-        Assert.Null(MapNamed("Olivine_PortHall").GetWarpAt(7, 11));
+        // (the S.S. Aqua's quay is open since plan 20 · J15, part b: its sailor steps aside for a Champion)
+        Assert.Equal("SSAqua_OlivinePort", MapNamed("Olivine_PortHall").GetWarpAt(7, 11)?.TargetMap);
         Assert.Null(MapNamed("Route40_FrontierGate").GetWarpAt(5, 2));
         Assert.Equal("FLAG_UNK_1D8", MapNamed("OlivineLighthouse_1F").GetWarpAt(8, 4)?.OpenedBy);
         Assert.Equal("FLAG_UNK_1D8", MapNamed("OlivineLighthouse_LightRoom").GetWarpAt(8, 4)?.OpenedBy);
@@ -622,6 +632,32 @@ public class JohtoTests
         Assert.Equal("Mt. Silver", Overworld.DisplayNameAt(Johto.Area("mount_silver")!.Warps[0].X, Johto.Area("mount_silver")!.Warps[0].Z + 1));
         Assert.Equal("johto/lighthouse", summit.Key.BgmTrackAt(red.GridX, red.GridY));
         Assert.Equal(InteriorStyle.PokemonCenter, MapNamed("MtSilver_PokemonCenter_1F").Interior);
+    }
+
+    [Fact]
+    public void VermilionCityIsSailedToOnTheSSAquaAndEveryRoomOfItsIsWalkedInto()
+    {
+        // Plan 20 · J15, part b: Olivine's quay, the S.S. Aqua's deck and Vermilion City's quay, port hall, town and rooms
+        var walked = Walked.Value;
+        var outside = walked.Single(kv => kv.Key.Name == "Johto").Value;
+        Assert.True(outside.Any(t => Overworld.AreaAt(t.X, t.Y)?.Key == "vermilion"), "vermilion can't be walked to from the start");
+        foreach (string name in new[] { "SSAqua_OlivinePort", "SSAqua_1F", "SSAqua_VermilionPort", "Vermilion_PortHall",
+                     "Vermilion_PokemonCenter_1F", "Vermilion_PokemonCenter_B1F", "Vermilion_Mart", "Vermilion_FishingGuruHouse",
+                     "Vermilion_FanClub", "Vermilion_CentralHouse", "Vermilion_SouthHouse", "Vermilion_Gym" })
+        {
+            Assert.True(walked.Keys.Any(m => m.Name == name), $"nobody walks into {name}");
+            Assert.Equal(RegionDatabase.Johto, RegionDatabase.RegionOfMap(name)!.Id);
+        }
+        // The gangway's one tile leads to either quay, by where the ship lies
+        var deck = MapNamed("SSAqua_1F");
+        Assert.Equal(new[] { "SSAqua_OlivinePort", "SSAqua_VermilionPort" }, deck.WarpsAt(24, 19).Select(w => w.TargetMap).OrderBy(n => n));
+        // Lt. Surge, behind the gates, is reached; the Gym's trainers are HeartGold's
+        var gym = walked.Single(kv => kv.Key.Name == "Vermilion_Gym");
+        var surge = gym.Key.Everyone.Single(n => n.Key == "t06gym0101_gsleader9");
+        Assert.Contains(gym.Value, t => Math.Abs(t.X - surge.GridX) + Math.Abs(t.Y - surge.GridY) == 1);
+        Assert.Equal(6, gym.Key.Everyone.Count(n => n.NpcType == NPC.ElectricGateType));
+        Assert.NotNull(TrainerDatabase.Get("johto_leader_lt_surge_lt__surge", RegionDatabase.Johto));
+        Assert.Equal(InteriorStyle.PokemonCenter, MapNamed("Vermilion_PokemonCenter_1F").Interior);
     }
 
     [Fact]

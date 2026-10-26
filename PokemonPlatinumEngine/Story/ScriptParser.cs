@@ -217,7 +217,10 @@ public static class ScriptParser
                 return new Instruction { Op = Op.GivePokemon, Line = line, Name = species, Number = level, Other = held, Move = knows };
             }
             case "givebadge":
-                return new Instruction { Op = Op.GiveBadge, Line = line, Name = r.Badge() };
+            {
+                string badge = r.Badge();
+                return new Instruction { Op = Op.GiveBadge, Line = line, Name = badge, Other = r.BadgeRegion(badge) };
+            }
             case "givemoney":
             case "takemoney":
             {
@@ -1159,7 +1162,10 @@ public static class ScriptParser
                 return new Condition { Query = Query.Var, Negated = negated, Name = name, Compare = compare, Other = r.Variable(writable: false) };
             }
             case "badge":
-                return new Condition { Query = Query.Badge, Negated = negated, Name = r.Badge() };
+            {
+                string badge = r.Badge();
+                return new Condition { Query = Query.Badge, Negated = negated, Name = badge, Other = r.BadgeRegion(badge) };
+            }
             case "badges":
             {
                 // ...of another region by its name (plan 20 · J15: Mt. Silver's guard counts Kanto's eight beside Johto's)
@@ -1448,6 +1454,20 @@ public static class ScriptParser
             string word = Word("a badge");
             if (!RegionDatabase.All.Any(r => StoryState.FindBadge(r.Id, word) >= 0)) throw Error($"'{word}' is not a badge of any region");
             return word;
+        }
+
+        /// <summary>
+        /// After a badge's name, <c>of &lt;region&gt;</c> where the badge is another region's than the place's (plan 20 ·
+        /// J15, part b: HeartGold's Kanto, Johto's own maps, gives Kanto's Badges): the region's id, or null for none.
+        /// </summary>
+        public string? BadgeRegion(string badge)
+        {
+            if (!PeekWord("of")) return null;
+            Next();
+            string region = Word("a region");
+            if (RegionDatabase.Get(region) is not { } named) throw Error($"'{region}' is no region");
+            if (StoryState.FindBadge(named.Id, badge) < 0) throw Error($"{named.Name} has no badge '{badge}'");
+            return named.Id;
         }
 
         public Direction Direction()

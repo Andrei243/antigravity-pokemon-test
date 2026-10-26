@@ -1,0 +1,42 @@
+{
+  "key": "ss_aqua_1f",
+  "index": 307,
+  "name": "S.S. Aqua",
+  "matrix": 171,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_KOUSOKUSEN",
+  "nightMusic": "GS_KOUSOKUSEN",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 24, "z": 19, "to": "ss_aqua_olivine_port_exterior", "toWarp": 1 },
+    { "x": 13, "z": 14, "to": "ss_aqua_1f_southwest_rooms", "toWarp": 0 },
+    { "x": 19, "z": 14, "to": "ss_aqua_1f_southwest_rooms", "toWarp": 1 },
+    { "x": 30, "z": 14, "to": "ss_aqua_1f_southeast_rooms", "toWarp": 0 },
+    { "x": 36, "z": 14, "to": "ss_aqua_1f_southeast_rooms", "toWarp": 1 },
+    { "x": 13, "z": 8, "to": "ss_aqua_1f_northwest_rooms", "toWarp": 0 },
+    { "x": 19, "z": 8, "to": "ss_aqua_1f_northwest_rooms", "toWarp": 1 },
+    { "x": 30, "z": 8, "to": "ss_aqua_1f_northeast_rooms", "toWarp": 0 },
+    { "x": 36, "z": 8, "to": "ss_aqua_1f_northeast_rooms", "toWarp": 1 },
+    { "x": 24, "z": 3, "to": "ss_aqua_b1f", "toWarp": 0 },
+    { "x": 42, "z": 9, "to": "ss_aqua_b1f", "toWarp": 1 },
+    { "x": 49, "z": 15, "to": "ss_aqua_captain_room", "toWarp": 0 },
+    { "x": 24, "z": 19, "to": "ss_aqua_vermilion_port_exterior", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "p01r0301_seaman_2", "looks": "seaman_2", "movement": "5", "x": 16, "z": 10, "facing": 3, "rangeX": 1, "rangeZ": 0, "script": "P01R0301_002+1" },
+    { "id": "p01r0301_seaman_2_2", "looks": "seaman_2", "movement": "15", "x": 24, "z": 17, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "P01R0301_000+1" },
+    { "id": "p01r0301_seaman_2_3", "looks": "seaman_2", "movement": "16", "x": 37, "z": 13, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "P01R0301_001+1" },
+    { "id": "p01r0301_gsgentleman", "looks": "gsgentleman", "movement": "16", "x": 35, "z": 14, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_215", "script": "P01R0301_003+1" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 22, "z": 14, "width": 5, "depth": 1, "script": "P01R0301_004+1", "variable": "VAR_UNK_40CB", "value": "0" }
+  ]
+}

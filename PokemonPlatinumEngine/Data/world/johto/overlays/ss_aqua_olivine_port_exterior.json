@@ -1,0 +1,33 @@
+{
+  // Olivine's quay (plan 20 · J15, part b), where the S.S. Aqua lies at her berth. Its gangway (warp 1) leads aboard;
+  // the side door into the port hall (warp 2) is how HeartGold brings arrivals in. The woman who waits for Professor
+  // Oak's ship (FLAG_UNK_2C9) is left for that chapter
+  "area": "ss_aqua_olivine_port_exterior",
+  "bgmTrack": "johto/olivine",
+  "people": {
+    // HeartGold stands him across the foot of the gangway and has him step aside for a ticket; the port hall's sailor
+    // keeps the way here, so he stands a step east of it
+    "p01r0102_seaman_2": {
+      "name": "Sailor",
+      "still": true,
+      "at": [ 28, 22 ],
+      "dialog": [
+        "The S.S. Aqua runs between Olivine and Vermilion. Walk up the gangway, and the crew will see you aboard."
+      ]
+    },
+    "p01r0102_seaman_2_2": {
+      "name": "Sailor",
+      "still": true,
+      "dialog": [
+        "She's the fastest ship on the sea, the Aqua. Her hull's built to skim the waves instead of ploughing through them."
+      ]
+    },
+    "p01r0102_gswoman2": {
+      "name": "Woman",
+      "still": true,
+      "dialog": [
+        "My husband works on the S.S. Aqua. I come down to the quay every time she comes in."
+      ]
+    }
+  }
+}

@@ -1708,4 +1708,77 @@ public class JohtoStoryTests
         game.Arrive("MtSilverCave_MoltresChamber", 10, 20);
         Assert.Null(game.Present("d41r0105_tsure_poke_static_moltres"));
     }
+
+    [Fact]
+    public void TheSSAquaSailsAChampionToVermilionWhereLtSurgeGivesKantosThunderBadge()
+    {
+        // Plan 20 · J15, part b: Olivine's port hall, its sailor before the quay
+        var game = new Game();
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Quagsire")!, 60));
+        const string Sailor = "ss_aqua_olivine_port_interior.Sailor";
+        game.Arrive("Olivine_PortHall", 7, 3);
+        Assert.Equal("SSAqua_OlivinePort", game.Map.GetWarpAt(7, 11)?.TargetMap);
+
+        // No passage before the Hall of Fame
+        Assert.Contains(game.Talk(Sailor).Transcript, l => l.Text.Contains("Champion"));
+        Assert.False(game.Story.Has("FLAG_JOHTO_SS_AQUA_PASSAGE"));
+
+        // A Champion bound for Vermilion: he steps aside, and stays aside on every visit after
+        game.Story.Set(RegionDatabase.Get(RegionDatabase.Johto)!.StoryCompleteFlag);
+        game.Answers.Enqueue(0);
+        game.Talk(Sailor);
+        Assert.True(game.Story.Has("FLAG_JOHTO_SS_AQUA_PASSAGE"));
+        game.Arrive("Olivine_PortHall", 7, 3);
+        Assert.Equal((8, 10), (game.Present(Sailor)!.GridX, game.Present(Sailor)!.GridY));
+
+        // The quay, and aboard: the gangway leads back to Olivine until the ship has crossed
+        game.Arrive("SSAqua_OlivinePort", 16, 16);
+        game.Through("SSAqua_1F");
+        Assert.Equal("SSAqua_OlivinePort", game.Map.GetWarpAt(24, 19)?.TargetMap);
+        game.Answers.Enqueue(1);
+        game.Talk("p01r0301_seaman_2_2");
+        Assert.False(game.Story.Has("FLAG_JOHTO_SS_AQUA_AT_VERMILION"));
+        game.Answers.Enqueue(0);
+        game.Talk("p01r0301_seaman_2_2");
+        Assert.True(game.Story.Has("FLAG_JOHTO_SS_AQUA_AT_VERMILION"));
+        Assert.Equal("SSAqua_VermilionPort", game.Map.GetWarpAt(24, 19)?.TargetMap);
+
+        // Down the gangway to Vermilion's quay, its port hall (its sailor aside already) and the city
+        game.Tile = (24, 19);
+        game.Through("SSAqua_VermilionPort");
+        game.Through("Vermilion_PortHall");
+        Assert.Equal(8, game.Present("p01r0103_seaman_2")!.GridX);
+        game.Through("Johto");
+        Assert.Equal("vermilion", game.Map.AreaAt(game.Tile.X, game.Tile.Y)?.Key);
+
+        // The Gym: the bins' two switches take the gates down
+        game.Arrive("Vermilion_Gym", 6, 21);
+        Assert.NotNull(game.Present("t06gym0101_stop"));
+        int first = game.Story.Var("VAR_JOHTO_VERMILION_GYM_SWITCH_1"), second = game.Story.Var("VAR_JOHTO_VERMILION_GYM_SWITCH_2");
+        Assert.InRange(first, 1, 15);
+        Assert.NotEqual(first, second);
+        (int X, int Y) Bin(int n) => (2 + 2 * ((n - 1) % 5), 13 + 2 * ((n - 1) / 5));
+        game.Read(Bin(first).X, Bin(first).Y);
+        Assert.False(game.Story.Has("FLAG_HIDE_VERMILION_GYM_STOPS"));
+        game.Read(Bin(second).X, Bin(second).Y);
+        Assert.True(game.Story.Has("FLAG_HIDE_VERMILION_GYM_STOPS"));
+        Assert.Null(game.Present("t06gym0101_stop"));
+
+        // Lt. Surge: Kanto's Thunder Badge, not Johto's, and TM57 once
+        int johtoBadges = game.Story.BadgeCount(RegionDatabase.Johto);
+        Assert.Contains(game.Talk("t06gym0101_gsleader9").Log, l => l.StartsWith("battle johto_leader_lt_surge_lt__surge Won"));
+        Assert.True(game.Story.HasBadge(RegionDatabase.Kanto, "Thunder"));
+        Assert.Equal(johtoBadges, game.Story.BadgeCount(RegionDatabase.Johto));
+        Assert.True(game.Story.HasDefeated("johto_juggler_horton"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM57")!));
+        game.Talk("t06gym0101_gsleader9");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM57")!));
+
+        // And home again: the crewman sails back to Olivine
+        game.Arrive("SSAqua_1F", 24, 18);
+        game.Answers.Enqueue(0);
+        game.Talk("p01r0301_seaman_2_2");
+        Assert.False(game.Story.Has("FLAG_JOHTO_SS_AQUA_AT_VERMILION"));
+        Assert.Equal("SSAqua_OlivinePort", game.Map.GetWarpAt(24, 19)?.TargetMap);
+    }
 }

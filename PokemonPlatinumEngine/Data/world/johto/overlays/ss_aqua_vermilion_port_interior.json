@@ -1,0 +1,19 @@
+{
+  // Vermilion City's port hall (plan 20 · J15, part b). Its sailor keeps the way to the quay as Olivine's does, and
+  // steps aside for anyone with passage on the S.S. Aqua (ss_aqua_vermilion_port_interior.txt)
+  "area": "ss_aqua_vermilion_port_interior",
+  "bgmTrack": "kanto/vermilion",
+  "people": {
+    "p01r0103_seaman_2": {
+      "name": "Sailor",
+      "script": "Sailor",
+      "still": true
+    },
+    "p01r0103_gsman1": {
+      "name": "Man",
+      "dialog": [
+        "Ships from Johto bring all kinds of people to Vermilion. Some come to battle, and some just come to see the sea."
+      ]
+    }
+  }
+}

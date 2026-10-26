@@ -1,0 +1,59 @@
+{
+  "people": {
+    "p01r0102_seaman_2": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The S.S. Aqua runs between Olivine and Vermilion. Walk up the gangway, and the crew will see you aboard."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "p01r0102_seaman_2_2": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "She's the fastest ship on the sea, the Aqua. Her hull's built to skim the waves instead of ploughing through them."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "p01r0102_gswoman2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My husband works on the S.S. Aqua. I come down to the quay every time she comes in."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

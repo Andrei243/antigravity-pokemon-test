@@ -1,0 +1,33 @@
+{
+  "key": "ss_aqua_olivine_port_exterior",
+  "index": 330,
+  "name": "Olivine City",
+  "matrix": 178,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "City",
+  "dayMusic": "GS_C_ASAGI",
+  "nightMusic": "GS_C_ASAGI",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 16, "z": 15, "to": "ss_aqua_olivine_port_interior", "toWarp": 1 },
+    { "x": 27, "z": 20, "to": "ss_aqua_1f", "toWarp": 0 },
+    { "x": 11, "z": 13, "to": "ss_aqua_olivine_port_interior", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "p01r0102_seaman_2", "looks": "seaman_2", "movement": "0", "x": 27, "z": 22, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "P01R0102_000+1" },
+    { "id": "p01r0102_seaman_2_2", "looks": "seaman_2", "movement": "0", "x": 10, "z": 15, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "P01R0102_003+1" },
+    { "id": "p01r0102_gswoman2", "looks": "gswoman2", "movement": "0", "x": 10, "z": 16, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "P01R0102_004+1" },
+    { "id": "p01r0102_gsleader10", "looks": "gsleader10", "movement": "0", "x": 18, "z": 22, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_2C9", "script": "P01R0102_006+1" }
+  ],
+  "signs": [
+    { "x": 23, "z": 26, "type": 2, "script": "std_hiddenitem_p01r0102_protein", "item": "Protein", "flag": "FLAG_HIDDEN_ITEM_P01R0102_PROTEIN" },
+    { "x": 13, "z": 16, "type": 2, "script": "std_hiddenitem_p01r0102_pearl", "item": "Pearl", "flag": "FLAG_HIDDEN_ITEM_P01R0102_PEARL" }
+  ],
+  "triggers": []
+}

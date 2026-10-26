@@ -1,0 +1,48 @@
+{
+  // The Vermilion Gym as HeartGold has it (plan 20 · J15, part b). Lt. Surge, the guide, the statues and the fifteen
+  // bins are vermilion_gym.txt's; the two rows of electric gates across the way to him are HeartGold's own objects
+  // (SPRITE_STOP), off the map once both switches are found (FLAG_HIDE_VERMILION_GYM_STOPS). His three trainers battle
+  // by their own records (Johto's trainers.json)
+  "area": "vermilion_gym",
+  "bgmTrack": "johto/gym",
+  "arenaType": "Electric",
+  "people": {
+    "t06gym0101_gsleader9": { "name": "Lt. Surge", "script": "LtSurge", "still": true, "hiddenBy": "" },
+    "t06gym0101_sunglasses": { "name": "Gym Guide", "script": "GymGuy", "still": true },
+    "t06gym0101_stop": { "name": "Electric gate", "npcType": "ElectricGate", "script": "Gate" },
+    "t06gym0101_stop_2": { "name": "Electric gate", "npcType": "ElectricGate", "script": "Gate" },
+    "t06gym0101_stop_3": { "name": "Electric gate", "npcType": "ElectricGate", "script": "Gate" },
+    "t06gym0101_stop_4": { "name": "Electric gate", "npcType": "ElectricGate", "script": "Gate" },
+    "t06gym0101_stop_5": { "name": "Electric gate", "npcType": "ElectricGate", "script": "Gate" },
+    "t06gym0101_stop_6": { "name": "Electric gate", "npcType": "ElectricGate", "script": "Gate" },
+    "t06gym0101_gsman2": {
+      "name": "Vincent",
+      "trainer": {
+        "dialogueBefore": "Guitarist Vincent: My riffs crackle with electricity! Lt. Surge taught me everything!",
+        "dialogueAfter": "Guitarist Vincent: You blew every string on my guitar..."
+      }
+    },
+    "t06gym0101_juggrer": {
+      "name": "Horton",
+      "trainer": {
+        "dialogueBefore": "Juggler Horton: Watch closely! Can you keep up with my juggling?",
+        "dialogueAfter": "Juggler Horton: I dropped everything at once. How embarrassing!"
+      }
+    },
+    "t06gym0101_gsgentleman": {
+      "name": "Gregory",
+      "trainer": {
+        "dialogueBefore": "Gentleman Gregory: Lt. Surge served with honour. You'll show his Gym some respect, young one.",
+        "dialogueAfter": "Gentleman Gregory: You battle with honour too. I stand corrected."
+      }
+    }
+  },
+  // The bins and the statues, read where they stand
+  "read": {
+    "T06GYM0101_000+1": "Can1", "T06GYM0101_001+1": "Can2", "T06GYM0101_002+1": "Can3", "T06GYM0101_003+1": "Can4",
+    "T06GYM0101_004+1": "Can5", "T06GYM0101_005+1": "Can6", "T06GYM0101_006+1": "Can7", "T06GYM0101_007+1": "Can8",
+    "T06GYM0101_008+1": "Can9", "T06GYM0101_009+1": "Can10", "T06GYM0101_010+1": "Can11", "T06GYM0101_011+1": "Can12",
+    "T06GYM0101_012+1": "Can13", "T06GYM0101_013+1": "Can14", "T06GYM0101_014+1": "Can15",
+    "T06GYM0101_025+1": "Statue"
+  }
+}

@@ -1,0 +1,46 @@
+# Olivine's port hall (plan 20 · J8, J12, J15). docs/scripts.md describes the language; the lines are our own, on
+# HeartGold's beats (scr_seq_P01R0101).
+#
+# The sailor before the quay keeps the way to the S.S. Aqua. Since plan 20 · J15, part b, he asks a Champion of Johto
+# where they're bound: Vermilion City in Kanto on the S.S. Aqua, or Hoenn by the region's own crossing (common.Attendant,
+# plan 18 · W5). HeartGold asks for the S.S. Ticket Professor Elm hands a Champion; here the Hall of Fame is the ticket
+# (the rulings' "HeartGold's Kanto, part b"). Bound for Vermilion, he steps aside for good (FLAG_JOHTO_SS_AQUA_PASSAGE,
+# a flag of ours, which this room's arrival and Vermilion's port hall keep him and his fellow aside by).
+
+
+script OnEnter
+  if not flag FLAG_JOHTO_SS_AQUA_PASSAGE end
+  place ss_aqua_olivine_port_interior.Sailor 8 10 left
+  end
+
+
+script Sailor
+  face ss_aqua_olivine_port_interior.Sailor player
+  speaker "Sailor"
+  if not flag JohtoHallOfFame goto Shut
+  if flag FLAG_JOHTO_SS_AQUA_PASSAGE goto Aboard
+  choose "Where are you bound, Champion?" "Vermilion City" "Hoenn" "Never mind"
+  if result == 0 goto Kanto
+  if result == 1 goto Hoenn
+  say "Take your time. The sea will still be here."
+  end
+label Kanto
+  say "Vermilion City, in Kanto! The S.S. Aqua makes the crossing in no time. A Champion of the League sails as our guest."
+  say "Right this way. She's waiting at the quay."
+  walk self down 1 right 1
+  face ss_aqua_olivine_port_interior.Sailor left
+  setflag FLAG_JOHTO_SS_AQUA_PASSAGE
+  end
+label Hoenn
+  call Attendant
+  end
+label Aboard
+  choose "The S.S. Aqua is at the quay. Or is it Hoenn you're after?" "The S.S. Aqua" "Hoenn" "Never mind"
+  if result == 1 goto Hoenn
+  if result == 2 end
+  say "Go right on through. She sails whenever you're ready."
+  end
+label Shut
+  say "The S.S. Aqua sails to Vermilion City in Kanto, but she only carries those the League has named Champion."
+  say "Win at the Indigo Plateau, and you'll be welcome aboard."
+  end

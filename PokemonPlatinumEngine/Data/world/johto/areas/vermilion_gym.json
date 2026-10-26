@@ -1,0 +1,53 @@
+{
+  "key": "vermilion_gym",
+  "index": 365,
+  "name": "Vermilion City",
+  "matrix": 255,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "9",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_GYM",
+  "nightMusic": "GS_GYM",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 22, "to": "vermilion", "toWarp": 6 }
+  ],
+  "objects": [
+    { "id": "t06gym0101_stop", "looks": "stop", "movement": "0", "x": 5, "z": 8, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_VERMILION_GYM_STOPS", "script": "T06GYM0101_015+1" },
+    { "id": "t06gym0101_stop_2", "looks": "stop", "movement": "0", "x": 6, "z": 8, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_VERMILION_GYM_STOPS", "script": "T06GYM0101_016+1" },
+    { "id": "t06gym0101_stop_3", "looks": "stop", "movement": "0", "x": 7, "z": 8, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_VERMILION_GYM_STOPS", "script": "T06GYM0101_017+1" },
+    { "id": "t06gym0101_stop_4", "looks": "stop", "movement": "0", "x": 5, "z": 10, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_VERMILION_GYM_STOPS", "script": "T06GYM0101_018+1" },
+    { "id": "t06gym0101_stop_5", "looks": "stop", "movement": "0", "x": 6, "z": 10, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_VERMILION_GYM_STOPS", "script": "T06GYM0101_019+1" },
+    { "id": "t06gym0101_stop_6", "looks": "stop", "movement": "0", "x": 7, "z": 10, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_VERMILION_GYM_STOPS", "script": "T06GYM0101_020+1" },
+    { "id": "t06gym0101_gsman2", "looks": "gsman2", "movement": "15", "x": 5, "z": 13, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_GUITARIST_VINCENT" },
+    { "id": "t06gym0101_juggrer", "looks": "juggrer", "movement": "17", "x": 3, "z": 16, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 2, "script": "TRAINER_JUGGLER_HORTON" },
+    { "id": "t06gym0101_gsgentleman", "looks": "gsgentleman", "movement": "16", "x": 10, "z": 14, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_GENTLEMAN_GREGORY" },
+    { "id": "t06gym0101_gsleader9", "looks": "gsleader9", "movement": "15", "x": 6, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_VERMILION_GYM_LT_SURGE", "script": "T06GYM0101_023+1" },
+    { "id": "t06gym0101_sunglasses", "looks": "sunglasses", "movement": "15", "x": 9, "z": 20, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T06GYM0101_024+1" }
+  ],
+  "signs": [
+    { "x": 2, "z": 13, "type": 0, "script": "T06GYM0101_000+1" },
+    { "x": 4, "z": 13, "type": 0, "script": "T06GYM0101_001+1" },
+    { "x": 6, "z": 13, "type": 0, "script": "T06GYM0101_002+1" },
+    { "x": 8, "z": 13, "type": 0, "script": "T06GYM0101_003+1" },
+    { "x": 10, "z": 13, "type": 0, "script": "T06GYM0101_004+1" },
+    { "x": 2, "z": 15, "type": 0, "script": "T06GYM0101_005+1" },
+    { "x": 4, "z": 15, "type": 0, "script": "T06GYM0101_006+1" },
+    { "x": 6, "z": 15, "type": 0, "script": "T06GYM0101_007+1" },
+    { "x": 8, "z": 15, "type": 0, "script": "T06GYM0101_008+1" },
+    { "x": 10, "z": 15, "type": 0, "script": "T06GYM0101_009+1" },
+    { "x": 2, "z": 17, "type": 0, "script": "T06GYM0101_010+1" },
+    { "x": 4, "z": 17, "type": 0, "script": "T06GYM0101_011+1" },
+    { "x": 6, "z": 17, "type": 0, "script": "T06GYM0101_012+1" },
+    { "x": 8, "z": 17, "type": 0, "script": "T06GYM0101_013+1" },
+    { "x": 10, "z": 17, "type": 0, "script": "T06GYM0101_014+1" },
+    { "x": 4, "z": 20, "type": 0, "script": "T06GYM0101_025+1" },
+    { "x": 8, "z": 20, "type": 0, "script": "T06GYM0101_025+1" }
+  ],
+  "triggers": []
+}

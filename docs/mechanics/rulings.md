@@ -6319,3 +6319,34 @@ The user approved L9's default on 2026-10-26 (docs/plans/APPROVAL-levelling-and-
   (no crossed bonus, no ceiling): only the levels move.
 - *Left*: a Sinnoh rematch's line that names a Pokémon its team now grows out of keeps Platinum's name, since the same
   line is said before and after a Hall of Fame past Sinnoh (`grown-names.mjs` covers the crossed regions' lines only).
+
+## HeartGold's Kanto, part b (2026-10-26, plan 20 · J15, part b)
+
+- *The slice*: the S.S. Aqua's voyage and Vermilion City, the one town of HeartGold's Kanto whose keys meet none of
+  FireRed's (`vermilion`, `vermilion_gym`, `ss_aqua_*`; FireRed's are `vermilion_city*` and `ss_anne_*`), so neither
+  `HgWorld.Clashes` nor a `ScriptLibrary` region folder is needed yet. Opened as Johto's maps: Olivine's quay, the ship's
+  deck, Vermilion's quay and port hall, the town, its Pokémon Center (both floors), Mart, Fan Club, three houses and Gym.
+  Route 6, Route 11 and Diglett's Cave share FireRed's keys and stay scenery: the session that opens them adds them to
+  `HgWorld.Clashes` (or gives the scripts a region folder).
+- *The passage*: HeartGold asks for the S.S. Ticket Professor Elm hands a Champion. Here the Hall of Fame is the ticket:
+  Olivine's port hall sailor (still the region's attendant to Hoenn, now with a script of his own that offers both) steps
+  aside for a Champion bound for Vermilion and stays aside (`FLAG_JOHTO_SS_AQUA_PASSAGE`, ours); Vermilion's does the
+  same for anyone with passage.
+- *The voyage*: HeartGold's night aboard (the lost granddaughter, the cabins' trainers, a sleep) is not built. The
+  crewman at the head of the gangway makes the crossing over a dark screen and the gangway's one tile leads to the quay
+  the ship lies at (two warps switched by `FLAG_JOHTO_SS_AQUA_AT_VERMILION`, ours). The cabins, the hold and the captain's
+  room stay shut. Olivine's and Vermilion's quay sailors stand a step off the gangway's foot, which HeartGold has them
+  block until a ticket is shown.
+- *Kanto's Badges from Johto's maps*: a script may name another region's badge, `givebadge thunder of kanto` and
+  `if badge thunder of kanto`. Lt. Surge gives Kanto's Thunder Badge (the same mask FireRed's Kanto fills, plan 18 · W2),
+  so a game begun in Johto starts towards the sixteen Mt. Silver asks for; a game that came through FireRed's Kanto and
+  holds the Badge already battles him all the same (whether he is beaten here is `FLAG_JOHTO_DEFEATED_LT_SURGE`, ours) and
+  gets TM57 (Charge Beam).
+- *The Gym's puzzle* is FireRed's (`vermilion_city_gym.txt`): two switches among fifteen bins, the second beside the
+  first, drawn on the game's chance each visit, on variables of ours (`VAR_JOHTO_VERMILION_GYM_*`); the second takes
+  HeartGold's own gates away (`FLAG_HIDE_VERMILION_GYM_STOPS`).
+- *Songs*: the town, its rooms, the ship and Vermilion's quay play FireRed's `kanto/vermilion` and `kanto/ss_anne`, which
+  stand for HeartGold's own Kanto themes; the Gym plays Johto's Gym theme. Olivine's quay keeps Olivine's.
+- *Left*: the rest of HeartGold's Kanto (its other seven Gyms, routes and towns, the Magnet Train and the Expn Card, the
+  Power Plant, Suicune's Kanto stops, Kanto's Apricorn trees), the S.S. Aqua's night aboard, the Fan Club's lost item,
+  Suicune, Eusine, Steven and the photographer in Vermilion, the rival's Mt. Moon battle, Blue at the gate.

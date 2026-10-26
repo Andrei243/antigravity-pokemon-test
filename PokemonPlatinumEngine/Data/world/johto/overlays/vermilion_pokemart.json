@@ -1,0 +1,36 @@
+{
+  // Vermilion City's Poké Mart (plan 20 · J15, part b). Its delivery men are the original's gifts, which this game has
+  // no use for
+  "area": "vermilion_pokemart",
+  "bgmTrack": "kanto/vermilion",
+  "people": {
+    "t06fs0101_shopm1_2": {
+      "name": "Clerk",
+      "script": "Clerk",
+      "still": true,
+      "dialog": [
+        "Welcome! How can I help you?"
+      ]
+    },
+    "t06fs0101_shopm1_2_2": {
+      "name": "Clerk",
+      "script": "Clerk",
+      "still": true,
+      "dialog": [
+        "Welcome! How can I help you?"
+      ]
+    },
+    "t06fs0101_gswoman1": {
+      "name": "Woman",
+      "dialog": [
+        "Ground types don't feel Electric moves at all. Bring one if you're going to the Gym."
+      ]
+    },
+    "t06fs0101_gsman1": {
+      "name": "Man",
+      "dialog": [
+        "Sailors stock up here before every voyage. The shelves are always half empty when the ship's in."
+      ]
+    }
+  }
+}

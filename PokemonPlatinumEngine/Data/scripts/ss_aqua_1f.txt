@@ -1,0 +1,35 @@
+# The S.S. Aqua's deck (plan 20 · J15, part b). docs/scripts.md describes the language; the lines are our own, on
+# HeartGold's beats (scr_seq_P01R0301).
+#
+# The crewman at the head of the gangway makes the crossing: from Olivine to Vermilion City, or back. Where the ship
+# lies is FLAG_JOHTO_SS_AQUA_AT_VERMILION (a flag of ours), which the gangway's two ways go by (overlays/ss_aqua_1f.json).
+# HeartGold's voyage is a night aboard, the lost granddaughter found and a sleep in the cabin; here the crossing is
+# told over the dark, as the region's own crossings are (the rulings' "HeartGold's Kanto, part b").
+
+
+script Crewman
+  face p01r0301_seaman_2_2 player
+  speaker "Sailor"
+  if flag FLAG_JOHTO_SS_AQUA_AT_VERMILION goto ToOlivine
+  ask "Welcome aboard the S.S. Aqua! We're bound for Vermilion City in Kanto. Shall we cast off?"
+  if no goto Wait
+  say "Anchors aweigh! Make yourself at home. We'll be there before you know it."
+  fade out 0.8
+  text "The S.S. Aqua sped east across the sea, skimming the waves..."
+  setflag FLAG_JOHTO_SS_AQUA_AT_VERMILION
+  fade in 0.8
+  say "We've docked at Vermilion City, Kanto! Mind your step on the gangway."
+  end
+label ToOlivine
+  ask "Welcome aboard the S.S. Aqua! We're bound for Olivine City in Johto. Shall we cast off?"
+  if no goto Wait
+  say "Anchors aweigh! Make yourself at home. We'll be there before you know it."
+  fade out 0.8
+  text "The S.S. Aqua sped west across the sea, skimming the waves..."
+  clearflag FLAG_JOHTO_SS_AQUA_AT_VERMILION
+  fade in 0.8
+  say "We've docked at Olivine City, Johto! Mind your step on the gangway."
+  end
+label Wait
+  say "No rush. The gangway's behind you, if you'd rather stay ashore a while longer."
+  end

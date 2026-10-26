@@ -1,0 +1,163 @@
+{
+  "people": {
+    "t06gym0101_gsleader9": {
+      "name": {
+        "en": [
+          "Lt. Surge"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t06gym0101_sunglasses": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t06gym0101_stop": {
+      "name": {
+        "en": [
+          "Electric gate"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t06gym0101_stop_2": {
+      "name": {
+        "en": [
+          "Electric gate"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t06gym0101_stop_3": {
+      "name": {
+        "en": [
+          "Electric gate"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t06gym0101_stop_4": {
+      "name": {
+        "en": [
+          "Electric gate"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t06gym0101_stop_5": {
+      "name": {
+        "en": [
+          "Electric gate"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t06gym0101_stop_6": {
+      "name": {
+        "en": [
+          "Electric gate"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t06gym0101_gsman2": {
+      "name": {
+        "en": [
+          "Vincent"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Guitarist Vincent: My riffs crackle with electricity! Lt. Surge taught me everything!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Guitarist Vincent: You blew every string on my guitar..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t06gym0101_juggrer": {
+      "name": {
+        "en": [
+          "Horton"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Juggler Horton: Watch closely! Can you keep up with my juggling?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Juggler Horton: I dropped everything at once. How embarrassing!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t06gym0101_gsgentleman": {
+      "name": {
+        "en": [
+          "Gregory"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Gentleman Gregory: Lt. Surge served with honour. You'll show his Gym some respect, young one."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Gentleman Gregory: You battle with honour too. I stand corrected."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

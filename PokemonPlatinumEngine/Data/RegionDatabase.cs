@@ -553,6 +553,8 @@ public static class RegionDatabase
                 "Goldenrod_Underground_B2F", "Goldenrod_Underground_Warehouse", "Goldenrod_DeptStore_Basement",
                 // Plan 20 · J15: Route 28's house, Mt. Silver's Pokémon Center and the cave to the summit
                 "Route28_House", "MtSilver_PokemonCenter_1F", "MtSilver_PokemonCenter_B1F", "MtSilverCave_1F", "MtSilverCave_UpperMountainside", "MtSilverCave_LowerMountainside", "MtSilverCave_ExpertBeltChamber", "MtSilverCave_MoltresChamber", "MtSilverCave_2F", "MtSilverCave_3F", "MtSilverCave_Summit",
+                // Plan 20 · J15, part b: the S.S. Aqua's voyage and Vermilion City's rooms
+                "SSAqua_OlivinePort", "SSAqua_1F", "SSAqua_VermilionPort", "Vermilion_PortHall", "Vermilion_PokemonCenter_1F", "Vermilion_PokemonCenter_B1F", "Vermilion_Mart", "Vermilion_FishingGuruHouse", "Vermilion_FanClub", "Vermilion_CentralHouse", "Vermilion_SouthHouse", "Vermilion_Gym",
             }
         },
         new()

@@ -1,0 +1,16 @@
+{
+  // Vermilion City's quay (plan 20 · J15, part b), where the S.S. Aqua berths in Kanto. HeartGold stands its sailor on
+  // the gangway's foot; he stands a step aside here, so whoever comes down the gangway isn't shut in by him
+  "area": "ss_aqua_vermilion_port_exterior",
+  "bgmTrack": "kanto/vermilion",
+  "people": {
+    "p01r0104_seaman_2": {
+      "name": "Sailor",
+      "still": true,
+      "at": [ 25, 19 ],
+      "dialog": [
+        "Welcome to Vermilion City, the port of Kanto! The S.S. Aqua sails back to Olivine whenever you're ready."
+      ]
+    }
+  }
+}

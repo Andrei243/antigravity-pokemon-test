@@ -238,7 +238,20 @@
     { "name": "MtSilverCave_MoltresChamber", "matrix": 269, "area": "mount_silver_cave_moltres_chamber", "trees": "Round", "setting": "Cave" },
     { "name": "MtSilverCave_2F", "matrix": 270, "area": "mount_silver_cave_2f", "trees": "Round", "setting": "Cave" },
     { "name": "MtSilverCave_3F", "matrix": 271, "area": "mount_silver_cave_3f", "trees": "Round", "setting": "Cave" },
-    { "name": "MtSilverCave_Summit", "matrix": 272, "area": "mount_silver_cave_summit", "trees": "Round", "setting": "Cave" }
+    { "name": "MtSilverCave_Summit", "matrix": 272, "area": "mount_silver_cave_summit", "trees": "Round", "setting": "Cave" },
+    // Plan 20 · J15, part b: Olivine's quay, the S.S. Aqua's deck, Vermilion City's quay and port hall, and Vermilion's rooms
+    { "name": "SSAqua_OlivinePort", "matrix": 178, "area": "ss_aqua_olivine_port_exterior", "trees": "Round" },
+    { "name": "SSAqua_1F", "matrix": 171, "area": "ss_aqua_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "SSAqua_VermilionPort", "matrix": 211, "area": "ss_aqua_vermilion_port_exterior", "trees": "Round" },
+    { "name": "Vermilion_PortHall", "matrix": 186, "area": "ss_aqua_vermilion_port_interior", "trees": "Round", "setting": "Indoors" },
+    { "name": "Vermilion_PokemonCenter_1F", "matrix": 73, "area": "vermilion_pokecenter_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Vermilion_PokemonCenter_B1F", "matrix": 77, "area": "vermilion_pokecenter_b1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Vermilion_Mart", "matrix": 104, "area": "vermilion_pokemart", "trees": "Round", "setting": "Indoors" },
+    { "name": "Vermilion_FishingGuruHouse", "matrix": 95, "area": "vermilion_fishing_dude_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "Vermilion_FanClub", "matrix": 185, "area": "vermilion_pokemon_fan_club", "trees": "Round", "setting": "Indoors" },
+    { "name": "Vermilion_CentralHouse", "matrix": 95, "area": "vermilion_central_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "Vermilion_SouthHouse", "matrix": 95, "area": "vermilion_south_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "Vermilion_Gym", "matrix": 255, "area": "vermilion_gym", "trees": "Round", "setting": "Indoors" }
   ],
   "areas": [
     // Plan 20 · J2: New Bark Town to Route 31's gate house, with their rooms
@@ -329,6 +342,10 @@
     "route_28", "route_28_house", "mount_silver", "mount_silver_pokecenter_1f", "mount_silver_pokecenter_b1f",
     "mount_silver_cave_1f", "mount_silver_cave_upper_mountainside", "mount_silver_cave_lower_mountainside",
     "mount_silver_cave_expert_belt_chamber", "mount_silver_cave_moltres_chamber", "mount_silver_cave_2f",
-    "mount_silver_cave_3f", "mount_silver_cave_summit"
+    "mount_silver_cave_3f", "mount_silver_cave_summit",
+    // Plan 20 · J15, part b: the S.S. Aqua's voyage from Olivine's quay to Vermilion City's, and Vermilion City with its rooms and Gym
+    "ss_aqua_olivine_port_exterior", "ss_aqua_1f", "ss_aqua_vermilion_port_exterior", "ss_aqua_vermilion_port_interior", "vermilion",
+    "vermilion_pokecenter_1f", "vermilion_pokecenter_b1f", "vermilion_pokemart", "vermilion_fishing_dude_house", "vermilion_pokemon_fan_club",
+    "vermilion_central_house", "vermilion_south_house", "vermilion_gym"
   ]
 }

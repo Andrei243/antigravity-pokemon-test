@@ -1,0 +1,112 @@
+{
+  "people": {
+    "t06r0301_gsgentleman": {
+      "name": {
+        "en": [
+          "Chairman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the Pokémon Fan Club! I'm the chairman. Shall I tell you about my Rapidash? It runs like the wind..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t06r0301_gswoman2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The chairman could talk about his Pokémon all day. We usually let him."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t06r0301_gswoman1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Bayleef loves it when I brush its leaf. Look how happy it is!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t06r0301_gsbigman": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I joined the Fan Club because everyone here loves their Pokémon as much as I love mine."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t06r0301_tsure_poke_static_bayleef": {
+      "name": {
+        "en": [
+          "Bayleef"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Bayleef gave a contented cry."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T06R0301_005+1": {
+      "en": [
+        "Members: Pokémon lovers of every kind. Rule one: let the chairman finish his stories."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T06R0301_006+1": {
+      "en": [
+        "Rule two: never compare one member's Pokémon with another's."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

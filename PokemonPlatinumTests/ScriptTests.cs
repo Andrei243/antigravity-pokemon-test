@@ -1286,6 +1286,25 @@ public class ScriptTests
     }
 
     [Fact]
+    public void ABadgeOfAnotherRegionIsGivenAndAskedAboutByItsRegion()
+    {
+        // Plan 20 · J15, part b: HeartGold's Kanto Gyms are Johto's maps and give Kanto's Badges
+        var host = Run("""
+            script S
+              if not badge thunder of kanto say "No Thunder Badge yet."
+              givebadge thunder of kanto
+              if badge thunder of kanto say "The Thunder Badge!"
+              if badges of kanto == 1 say "One of Kanto's."
+              if badges == 0 say "None of this region's."
+            """);
+
+        Assert.Equal(new[] { "No Thunder Badge yet.", "The Thunder Badge!", "One of Kanto's.", "None of this region's." }, Said(host));
+        Assert.True(host.Story.HasBadge(RegionDatabase.Kanto, "Thunder"));
+        Assert.Equal(0, host.Story.BadgeMask("Sinnoh"));
+        Assert.Throws<ScriptException>(() => ScriptParser.Parse("town", "script A\n givebadge coal of kanto"));
+    }
+
+    [Fact]
     public void TheTeamIsHealed()
     {
         var host = Run("script S\n heal", h =>

@@ -1,12 +1,12 @@
 {
-  // Olivine's port hall (plan 20 · J8), where the S.S. Aqua's passengers wait. The ship and its quay (warps 1 and 2)
-  // wait for the voyage to Kanto (plan 20 · J15), and Professor Oak's visit for its chapter. The sailor before the quay
-  // is the region's attendant since plan 20 · J12 (RegionDatabase's link from Johto, common.Attendant): he takes a
-  // Champion of Johto on to Hoenn, and tells anyone else who may come aboard
+  // Olivine's port hall (plan 20 · J8), where the S.S. Aqua's passengers wait. The sailor before the quay is the
+  // region's attendant since plan 20 · J12 (RegionDatabase's link from Johto): he takes a Champion of Johto on to Hoenn,
+  // and since plan 20 · J15, part b, steps aside for a Champion bound for Vermilion City on the S.S. Aqua (his own
+  // script, ss_aqua_olivine_port_interior.txt). The way out onto the quay (warp 1) is open; warp 2, the quay's side
+  // door, stays shut, as HeartGold only ever leads in by it. Professor Oak's visit waits for its chapter
   "area": "ss_aqua_olivine_port_interior",
   "bgmTrack": "johto/olivine",
   "locked": [
-    1,
     2
   ],
   "people": {
@@ -31,7 +31,8 @@
       "x": 7,
       "y": 9,
       "facing": "Up",
-      "isTransportAttendant": true
+      "isTransportAttendant": true,
+      "script": "Sailor"
     }
   ]
 }
