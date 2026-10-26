@@ -1,0 +1,26 @@
+# Mt. Silver's summit (plan 20 · J15). docs/scripts.md describes the language; the lines are our own, on HeartGold's
+# beats (scr_seq_D41R0108).
+#
+# Red stands at the top of the mountain and says nothing. Spoken to, he turns, and his battle is the last of Johto's
+# (his team is HeartGold's own, johto_pkmn_trainer_red_red); beaten, he is gone from the summit (FLAG_UNK_25F, the
+# flag HeartGold hides him by) until the player enters Johto's Hall of Fame again, whose scene clears it. A battle lost
+# ends the script, and he waits on.
+
+
+script Red
+  scene "Red"
+  face d41r0108_red player
+  speaker "Red"
+  say "..."
+  say "...!"
+  battle d41r0108_red as "johto_pkmn_trainer_red_red"
+  speaker "Red"
+  say "..."
+  # (ours: that Red has been beaten at least once, which stays when he comes back)
+  setflag FLAG_JOHTO_BEAT_RED
+  fade out 0.8
+  setflag FLAG_UNK_25F
+  hide d41r0108_red
+  fade in 0.8
+  endscene
+  end

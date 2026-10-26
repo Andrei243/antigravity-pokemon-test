@@ -1,0 +1,18 @@
+{
+  // The house on Route 28 (plan 20 · J15): a woman who once starred in films hides from her fans here, with her Fearow;
+  // she gives TM47 once (route_28_house.txt)
+  "area": "route_28_house",
+  "bgmTrack": "johto/indigo_plateau",
+  "people": {
+    "r28r0101_gsgirl1": { "name": "Celebrity", "script": "Celebrity", "still": true },
+    "r28r0101_tsure_poke_static_fearow": {
+      "name": "Fearow",
+      "npcType": "Pokemon",
+      "species": "Fearow",
+      "still": true,
+      "dialog": [
+        "Feeaaroo!"
+      ]
+    }
+  }
+}

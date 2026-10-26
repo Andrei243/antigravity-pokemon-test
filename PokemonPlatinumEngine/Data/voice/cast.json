@@ -176,6 +176,10 @@
       "note": "first spoken at phone.txt(315)",
       "provisional": true
     },
+    "celebrity": {
+      "note": "first spoken at route_28_house.txt(9)",
+      "provisional": true
+    },
     "celio": {
       "note": "first spoken at one_island_pokemon_center_1f.txt(35)",
       "provisional": true
@@ -886,6 +890,10 @@
       "note": "first spoken at cinnabar_island_gym.txt(57)",
       "provisional": true
     },
+    "red": {
+      "note": "first spoken at mount_silver_cave_summit.txt(13)",
+      "provisional": true
+    },
     "referee": {
       "note": "first spoken at BattleArena.txt(18)",
       "provisional": true
@@ -1275,6 +1283,7 @@
     "Captain": "captain",
     "Captain Stern": "captain_stern",
     "Catherine": "catherine",
+    "Celebrity": "celebrity",
     "Celio": "celio",
     "Chairman": "chairman",
     "Charcoal Maker": "charcoal_maker",
@@ -1488,6 +1497,7 @@
     "Ralph": "ralph",
     "Ramon": "ramon",
     "Receptionist": "look:receptionist",
+    "Red": "red",
     "Referee": "referee",
     "Researcher": "look:scientist",
     "Rhona": "rhona",

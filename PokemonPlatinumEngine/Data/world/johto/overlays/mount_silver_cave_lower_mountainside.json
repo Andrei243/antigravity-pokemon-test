@@ -1,0 +1,6 @@
+{
+  // Mt. Silver's lower mountainside (plan 20 · J15): the slopes between the cave's first floor's three doors
+  "area": "mount_silver_cave_lower_mountainside",
+  "bgmTrack": "johto/lighthouse",
+  "people": {}
+}

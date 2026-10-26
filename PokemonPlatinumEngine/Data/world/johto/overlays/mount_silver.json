@@ -1,0 +1,11 @@
+{
+  // Mt. Silver (plan 20 · J15): the foot of the mountain at the end of Route 28, its Pokémon Center and the mouth of the
+  // cave that climbs to the summit. Cameron the photographer is held back, as on Route 48
+  "area": "mount_silver",
+  "bgmTrack": "johto/indigo_plateau",
+  "trees": "Round",
+  "people": {},
+  "signs": {
+    "T31_002+1": "Mt. Silver\nOnly the strongest trainers dare to climb it."
+  }
+}

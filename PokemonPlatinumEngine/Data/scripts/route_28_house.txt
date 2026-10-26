@@ -1,0 +1,19 @@
+# The house on Route 28 (plan 20 · J15). docs/scripts.md describes the language; the lines are our own, on HeartGold's
+# beats (scr_seq_R28R0101).
+#
+# A woman who once starred in films hides here from her fans with her Fearow. She asks the player to keep her secret
+# and gives TM47 once (FLAG_GOT_TM47_ON_ROUTE_28, ours).
+
+
+script Celebrity
+  speaker "Celebrity"
+  if flag FLAG_GOT_TM47_ON_ROUTE_28 goto Given
+  say "Oh! You found me... Please don't tell anyone I'm hiding out here. My fans never give me a moment's peace."
+  say "If you keep my secret, I'll give you this. My Fearow and I used it in all of our films."
+  give "TM47"
+  setflag FLAG_GOT_TM47_ON_ROUTE_28
+  say "TM47 is Steel Wing. It hits hard, and it can make the user's Defense rise too!"
+  end
+label Given
+  say "It's so quiet out here. Nobody comes this far west but the toughest trainers."
+  end

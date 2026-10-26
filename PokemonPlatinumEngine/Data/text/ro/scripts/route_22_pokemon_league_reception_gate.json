@@ -118,5 +118,65 @@
         "Dincolo de ușa asta e Ruta 22, iar mai departe Kanto. Drum bun, Campionule."
       ]
     }
+  ],
+  "MtSilverCheck": [
+    {
+      "en": [
+        "Guard"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Sixteen Badges, Johto's and Kanto's... You're the trainer the League told me about. Mt. Silver is past this door."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The mountain is wild and its Pokémon are fierce. Go carefully."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hold on! Past this door is Route 28, and Mt. Silver. Only a Champion with all sixteen of Johto's and Kanto's Badges may go there."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "MtSilverGuard": [
+    {
+      "en": [
+        "Guard"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The road west leads to Mt. Silver. Only a Champion with all sixteen of Johto's and Kanto's Badges may go that way."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Mt. Silver is past this door. Not many trainers come back down it the same as they went up."
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

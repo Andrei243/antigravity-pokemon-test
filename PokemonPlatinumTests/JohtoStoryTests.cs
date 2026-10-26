@@ -1623,4 +1623,89 @@ public class JohtoStoryTests
         game.Time = TimeOfDay.Day;
         game.Arrive("DragonsDen", 28, 12);
         Assert.NotNull(game.Present("d44r0102_gsleader8"));
-    }}
+    }
+
+    [Fact]
+    public void RedIsFoughtAtMtSilversSummitBySixteenBadgesAndComesBackWithTheHallOfFame()
+    {
+        // Plan 20 · J15: a Champion of Johto past the middle guard, at the line before Route 28's door
+        var game = new Game();
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Typhlosion")!, 70));
+        game.Story.Set(RegionDatabase.Get(RegionDatabase.Johto)!.StoryCompleteFlag);
+        game.Story.SetBadges(RegionDatabase.Johto, 0xFF);
+        game.Story.SetVar("VAR_UNK_4110", 1);
+        game.Arrive("Route22_LeagueReceptionGate", 11, 12);
+        Assert.True(game.Fires("MtSilverCheck"));
+
+        // Johto's eight alone are turned back: Kanto's eight are wanted too, sixteen in all
+        var shut = game.Step("MtSilverCheck");
+        Assert.Equal((9, 8), shut.PlayerTile);
+        Assert.Equal(1, game.Story.Var("VAR_UNK_4110"));
+        Assert.True(game.Fires("MtSilverCheck"));
+
+        // ... and so is a trainer with Kanto's who is no Champion of Johto
+        game.Story.SetBadges(RegionDatabase.Kanto, 0xFF);
+        game.Story.Unset(RegionDatabase.Get(RegionDatabase.Johto)!.StoryCompleteFlag);
+        Assert.Equal((9, 8), game.Step("MtSilverCheck").PlayerTile);
+        game.Story.Set(RegionDatabase.Get(RegionDatabase.Johto)!.StoryCompleteFlag);
+        var through = game.Step("MtSilverCheck");
+        Assert.Equal((8, 8), through.PlayerTile);
+        Assert.Equal(2, game.Story.Var("VAR_UNK_4110"));
+        Assert.False(game.Fires("MtSilverCheck"));
+        // the middle guard still knows the player, and the door to Route 28 is open
+        Assert.Contains(game.Talk("r22r0101_policeman").Transcript, l => l.Text.Contains("all eight Badges"));
+        var door = game.Map.Warps.Single(w => w.TargetMap == "Johto" && w.SourceX < 5);
+        Assert.False(game.Map.IsSolid(door.SourceX, door.SourceY));
+
+        // Route 28's house: TM47 once
+        game.Tile = (door.SourceX, door.SourceY);
+        game.Through("Johto");
+        game.Through("Route28_House");
+        game.Talk("r28r0101_gsgirl1");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM47")!));
+        game.Talk("r28r0101_gsgirl1");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM47")!));
+        game.Through("Johto");
+
+        // Up the mountain: the cave's first floor, the second, the upper mountainside, the third and the summit
+        game.Through("MtSilverCave_1F");
+        game.Through("MtSilverCave_2F");
+        game.Through("MtSilverCave_UpperMountainside");
+        game.Through("MtSilverCave_3F");
+        game.Through("MtSilverCave_Summit");
+        Assert.NotNull(game.Present("d41r0108_red"));
+
+        // A battle lost leaves him waiting
+        game.Fight = BattleOutcome.Lost;
+        Assert.Contains(game.Talk("d41r0108_red").Log, l => l.StartsWith("battle johto_pkmn_trainer_red_red Lost"));
+        game.Arrive("MtSilverCave_Summit", 30, 30);
+        Assert.NotNull(game.Present("d41r0108_red"));
+        Assert.False(game.Story.Has("FLAG_JOHTO_BEAT_RED"));
+
+        // Beaten, he is gone, until the Hall of Fame is entered again
+        game.Fight = BattleOutcome.Won;
+        Assert.Contains(game.Talk("d41r0108_red").Log, l => l.StartsWith("battle johto_pkmn_trainer_red_red Won"));
+        Assert.True(game.Story.Has("FLAG_JOHTO_BEAT_RED"));
+        Assert.Null(game.Present("d41r0108_red"));
+        game.Arrive("MtSilverCave_Summit", 30, 30);
+        Assert.Null(game.Present("d41r0108_red"));
+        var hall = Scripts.In("johto_pokemon_league_hall_of_fame", ScriptLibrary.OnEnter)!;
+        Assert.Contains(hall.Code, i => i.Op == Op.ClearFlag && i.Name == "FLAG_UNK_25F");
+        game.Story.Unset("FLAG_UNK_25F");
+        game.Arrive("MtSilverCave_Summit", 30, 30);
+        Assert.NotNull(game.Present("d41r0108_red"));
+
+        // Moltres waits in its chamber until it is fought; run from, it is back on the next visit
+        game.Arrive("MtSilverCave_MoltresChamber", 10, 20);
+        Assert.NotNull(game.Present("d41r0105_tsure_poke_static_moltres"));
+        game.Fight = BattleOutcome.Fled;
+        game.Talk("d41r0105_tsure_poke_static_moltres");
+        Assert.Null(game.Present("d41r0105_tsure_poke_static_moltres"));
+        game.Arrive("MtSilverCave_MoltresChamber", 10, 20);
+        Assert.NotNull(game.Present("d41r0105_tsure_poke_static_moltres"));
+        game.Fight = BattleOutcome.Won;
+        game.Talk("d41r0105_tsure_poke_static_moltres");
+        game.Arrive("MtSilverCave_MoltresChamber", 10, 20);
+        Assert.Null(game.Present("d41r0105_tsure_poke_static_moltres"));
+    }
+}

@@ -3,24 +3,19 @@
   // Route 22 from Kanto in the east and Route 28 from Mt. Silver in the west, Victory Road beyond its north door. Its
   // guards are route_22_pokemon_league_reception_gate.txt's: the first trigger is the row before the middle guard, who
   // lets only a trainer with Johto's eight Badges north; the third the line before the east door, shut until the
-  // League's Champion has been beaten (JohtoHallOfFame, plan 20 · J12). The second (Route 28's side) waits for the post-game. Route 28's door (warp 3)
-  // is locked: Mt. Silver is plan 20 · J15's. Blue, who visits in HeartGold's post-game, is left out
+  // League's Champion has been beaten (JohtoHallOfFame, plan 20 · J12). The second (Route 28's side) is the line before
+  // the west door since plan 20 · J15: its guard lets through only a Champion of Johto who holds Kanto's eight Badges
+  // too, sixteen in all, toward Mt. Silver. Blue, who visits in HeartGold's post-game, is left out
   "area": "route_22_pokemon_league_reception_gate",
   "bgmTrack": "johto/route26",
-  "locked": [ 3 ],
   "triggers": [
     { "trigger": 0, "script": "BadgeCheck" },
-    { "trigger": 2, "script": "KantoShut" }
+    { "trigger": 2, "script": "KantoShut" },
+    { "trigger": 1, "script": "MtSilverCheck" }
   ],
   "people": {
     "r22r0101_policeman": { "name": "Guard", "script": "Guard", "still": true },
-    "r22r0101_policeman_2": {
-      "name": "Guard",
-      "still": true,
-      "dialog": [
-        "The road west leads to Mt. Silver. Only trainers the League invites may go that way, so the door stays shut."
-      ]
-    },
+    "r22r0101_policeman_2": { "name": "Guard", "script": "MtSilverGuard", "still": true },
     "r22r0101_policeman_3": { "name": "Guard", "script": "KantoGuard", "still": true }
   }
 }

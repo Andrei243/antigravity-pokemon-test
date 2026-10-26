@@ -1,0 +1,10 @@
+{
+  // Mt. Silver's summit (plan 20 · J15), in its snow. Red stands at the top, silent, until he is beaten; he is back
+  // whenever the player enters Johto's Hall of Fame again (mount_silver_cave_summit.txt). HeartGold plays no song up
+  // here, only the wind; the cave's own stands in for the silence
+  "area": "mount_silver_cave_summit",
+  "bgmTrack": "johto/lighthouse",
+  "people": {
+    "d41r0108_red": { "name": "Red", "script": "Red", "still": true }
+  }
+}

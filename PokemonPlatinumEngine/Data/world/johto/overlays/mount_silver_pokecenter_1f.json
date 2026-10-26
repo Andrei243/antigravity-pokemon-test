@@ -1,0 +1,33 @@
+{
+  // Mt. Silver's Pokémon Center (plan 20 · J15), the last place to rest before the climb. The counters for the link say
+  // it is closed, as in every Center (decision 06 · 7)
+  "area": "mount_silver_pokecenter_1f",
+  "bgmTrack": "johto/indigo_plateau",
+  "read": {
+    "0": "PC"
+  },
+  "people": {
+    "t31pc0101_pcwoman1": {
+      "name": "Nurse",
+      "script": "Nurse"
+    },
+    "t31pc0101_pcwoman2": {
+      "name": "Receptionist",
+      "dialog": [
+        "Your Trainer Card shows your name, your money and the Pokémon you've seen. Have a look at it from the menu."
+      ]
+    },
+    "t31pc0101_pcwoman2_2": {
+      "name": "Receptionist",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    },
+    "t31pc0101_pcwoman2_3": {
+      "name": "Receptionist",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    }
+  }
+}

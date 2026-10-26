@@ -1,0 +1,33 @@
+{
+  "people": {
+    "r28r0101_gsgirl1": {
+      "name": {
+        "en": [
+          "Celebrity"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r28r0101_tsure_poke_static_fearow": {
+      "name": {
+        "en": [
+          "Fearow"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Feeaaroo!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

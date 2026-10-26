@@ -1,0 +1,98 @@
+{
+  "key": "mount_silver_cave_upper_mountainside",
+  "index": 459,
+  "name": "Mt. Silver Cave",
+  "matrix": 266,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Snow",
+  "dayMusic": "GS_TO_TOUDAI",
+  "nightMusic": "GS_TO_TOUDAI",
+  "encounters": "D41R0102",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Sneasel", "level": 45 },
+    { "species": "Golduck", "level": 48 },
+    { "species": "Quagsire", "level": 45 },
+    { "species": "Golduck", "level": 48, "night": "Misdreavus" },
+    { "species": "Donphan", "level": 47 },
+    { "species": "Donphan", "level": 47 },
+    { "species": "Larvitar", "level": 30 },
+    { "species": "Quagsire", "level": 45, "night": "Misdreavus" },
+    { "species": "Golbat", "level": 48 },
+    { "species": "Larvitar", "level": 20 },
+    { "species": "Golbat", "level": 48 },
+    { "species": "Larvitar", "level": 15 }
+  ],
+  "landRate": 20,
+  "swarm": [
+    "Sneasel",
+    "Sneasel"
+  ],
+  "surfSwarm": "Seaking",
+  "fishSwarm": "Magikarp",
+  "water": [
+    { "species": "Seaking", "level": 30, "maxLevel": 40 },
+    { "species": "Seaking", "level": 35, "maxLevel": 45 },
+    { "species": "Goldeen", "level": 30, "maxLevel": 40 },
+    { "species": "Goldeen", "level": 30, "maxLevel": 40 },
+    { "species": "Goldeen", "level": 30, "maxLevel": 40 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 10 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Goldeen", "level": 40, "maxLevel": 40 },
+    { "species": "Goldeen", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 },
+    { "species": "Seaking", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "hoennSounds": [
+    "Absol",
+    "Makuhita"
+  ],
+  "sinnohSounds": [
+    "Bronzor",
+    "Chingling"
+  ],
+  "warps": [
+    { "x": 24, "z": 12, "to": "mount_silver_cave_2f", "toWarp": 1 },
+    { "x": 39, "z": 19, "to": "mount_silver_cave_2f", "toWarp": 2 },
+    { "x": 39, "z": 31, "to": "mount_silver_cave_2f", "toWarp": 3 },
+    { "x": 39, "z": 43, "to": "mount_silver_cave_2f", "toWarp": 4 },
+    { "x": 32, "z": 51, "to": "mount_silver_cave_2f", "toWarp": 5 },
+    { "x": 18, "z": 51, "to": "mount_silver_cave_2f", "toWarp": 6 },
+    { "x": 14, "z": 39, "to": "mount_silver_cave_3f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "everywhere_monstarball", "looks": "monstarball", "movement": "0", "x": 31, "z": 40, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D41R0102_PURE_INCENSE", "item": "Pure Incense", "script": "std_itemball_d41r0102_pure_incense" },
+    { "id": "everywhere_monstarball_2", "looks": "monstarball", "movement": "0", "x": 10, "z": 40, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D41R0102_DAWN_STONE", "item": "Dawn Stone", "script": "std_itemball_d41r0102_dawn_stone" }
+  ],
+  "signs": [
+    { "x": 28, "z": 41, "type": 2, "script": "std_hiddenitem_d41r0102_rare_candy", "item": "Rare Candy", "flag": "FLAG_HIDDEN_ITEM_D41R0102_RARE_CANDY" },
+    { "x": 23, "z": 12, "type": 2, "script": "std_hiddenitem_d41r0102_max_ether", "item": "Max Ether", "flag": "FLAG_HIDDEN_ITEM_D41R0102_MAX_ETHER" },
+    { "x": 20, "z": 40, "type": 2, "script": "std_hiddenitem_d41r0102_hyper_potion", "item": "Hyper Potion", "flag": "FLAG_HIDDEN_ITEM_D41R0102_HYPER_POTION" }
+  ],
+  "triggers": []
+}
