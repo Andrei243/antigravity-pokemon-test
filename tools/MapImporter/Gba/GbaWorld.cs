@@ -143,7 +143,13 @@ public sealed class GbaWorld
         ("MAP_SKY_PILLAR_5F", "LAYOUT_SKY_PILLAR_5F"),
         ("MAP_SKY_PILLAR_TOP", "LAYOUT_SKY_PILLAR_TOP"),
         // and Steven's cave's mouth in Meteor Falls' first room once the game is cleared (GbaMaps.Patches)
-        ("MAP_METEOR_FALLS_1F_1R", "LAYOUT_METEOR_FALLS_1F_1R_STEVENS_CAVE_OPEN")
+        ("MAP_METEOR_FALLS_1F_1R", "LAYOUT_METEOR_FALLS_1F_1R_STEVENS_CAVE_OPEN"),
+        // Plan 21 · H12, part d: New Mauville's door shut, its barriers by the blue switch and by the green one, and its
+        // generator switched off (GbaMaps.Patches)
+        ("MAP_NEW_MAUVILLE_ENTRANCE", "LAYOUT_NEW_MAUVILLE_ENTRANCE_CLOSED"),
+        ("MAP_NEW_MAUVILLE_INSIDE", "LAYOUT_NEW_MAUVILLE_INSIDE_BLUE"),
+        ("MAP_NEW_MAUVILLE_INSIDE", "LAYOUT_NEW_MAUVILLE_INSIDE_GREEN"),
+        ("MAP_NEW_MAUVILLE_INSIDE", "LAYOUT_NEW_MAUVILLE_INSIDE_GENERATOR_OFF")
     };
 
     /// <summary>

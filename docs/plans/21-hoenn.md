@@ -1277,3 +1277,18 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
       whole map, so a cheaper swap first), New Mauville, the Desert Underpass, Trainer Hill, Mirage Island, Altering
       Cave, the event islands, the S.S. Tidal, the halls, the Shields and the Glass Ornament, and the species
       `HoennSpeciesTests.Owed` lists.
+    - **Part d** (done 2026-10-26, wave 62: New Mauville and the Desert Underpass; `docs/mechanics/rulings.md`, "New
+      Mauville and the Desert Underpass"; tests written and run with `--filter` (`HoennNewMauvilleTests`), shots `h290` to
+      `h29c` written and not taken). **Built**: three maps (matrices 239, 240, 285: `NewMauville_Entrance`,
+      `NewMauville_Inside`, `DesertUnderpass`) in `RegionDatabase`'s Hoenn list; Route 110's way in unlocked; Wattson's
+      script in Mauville (the Basement Key, TM24 once the generator is stopped, back to his Gym afterwards); the entrance's
+      door (the overlay's `openedBy` `FLAG_HOENN_NEW_MAUVILLE_OPENED`, its shut blocks a patch swapped in by
+      `VAR_NEW_MAUVILLE_STATE` 0); the plant's blue and green barriers as two patches swapped in by `VAR_TEMP_1` and
+      `VAR_TEMP_2` (reset by its `OnTransition`), the red switch and the generator's quiet blocks (the state 2), three
+      Voltorb balls; the Fossil Maniac's tunnel opened by `HoennHallOfFame` with the maniac aside, and the underpass's
+      fossil (the one Mirage Tower's fall left). The importer's `GbaMaps.Patches` gained four (chunks 829 to 841), and
+      `Map.ApplySwappedPlaces` puts back before it lays, so two swaps of one cell can take turns. `HoennSpeciesTests.Owed`
+      no longer lists Magnemite, Magneton and Voltorb. **Golden** `scripts.txt` moves (mauville_city.OnEnter and Wattson,
+      the tunnel's OnEnter and maniac, the three new places' scripts): accept it. **Left**: the Marine and Terra Caves with
+      the Weather Institute's reports, Trainer Hill, Mirage Island, Altering Cave, the event islands, the S.S. Tidal, the
+      halls, Wattson's rematch, the Devon Corporation's fossil revival, the Shields and the Glass Ornament.

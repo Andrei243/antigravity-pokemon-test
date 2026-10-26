@@ -1,0 +1,11 @@
+{
+  // The Desert Underpass (plan 21 · H12, part d): the long cavern the Fossil Maniac's digging broke into, open behind his
+  // tunnel once Hoenn's Hall of Fame is entered. At its east end lies the fossil Mirage Tower's fall left behind, the one
+  // not taken there (desert_underpass.txt); it stands as Kanto's Dome Fossil's card until Hoenn's own fossils are drawn
+  "area": "desert_underpass",
+  "bgmTrack": "hoenn/mt_chimney",
+  "trees": "Round",
+  "people": {
+    "underpass_fossil": { "name": "Fossil", "npcType": "DomeFossil", "script": "Fossil", "still": true }
+  }
+}

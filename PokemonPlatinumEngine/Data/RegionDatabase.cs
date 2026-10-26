@@ -679,6 +679,8 @@ public static class RegionDatabase
                 "BattleFrontier_Lounge6", "BattleFrontier_Lounge7", "BattleFrontier_Lounge8",
                 // Plan 21 · H12, part c: Steven's cave
                 "MeteorFalls_StevensCave",
+                // Plan 21 · H12, part d: New Mauville and the Desert Underpass
+                "NewMauville_Entrance", "NewMauville_Inside", "DesertUnderpass",
             }
         },
         new()

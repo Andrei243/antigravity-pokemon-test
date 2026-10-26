@@ -1,0 +1,22 @@
+# New Mauville's entrance (plan 21 · H12, part d). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/NewMauville_Entrance/scripts.inc).
+#
+# The plant under Route 110's Cycling Road is reached by surfing to its door. The door is locked until Wattson's
+# Basement Key opens it (FLAG_GOT_BASEMENT_KEY_FROM_WATTSON, his errand once Norman is beaten): the step before it asks,
+# and the key used sets VAR_NEW_MAUVILLE_STATE 1, Emerald's, which world.json's swap reads to lay the shut door's
+# blocks, and FLAG_HOENN_NEW_MAUVILLE_OPENED, a flag of ours the overlay's door is opened by. A Basement Key of another
+# region's (HeartGold's) is not Wattson's, so the script asks his flag and not the bag.
+
+
+script Door
+  face player up
+  speaker none
+  text "The door is locked."
+  if not flag FLAG_GOT_BASEMENT_KEY_FROM_WATTSON end
+  ask "Use the Basement Key?"
+  if no end
+  text "{player} used the Basement Key. The door opened!"
+  sound "door_open"
+  setvar VAR_NEW_MAUVILLE_STATE 1
+  setflag FLAG_HOENN_NEW_MAUVILLE_OPENED
+  end

@@ -1,0 +1,41 @@
+{
+  "key": "desert_underpass",
+  "index": 336,
+  "name": "Desert Underpass",
+  "matrix": 285,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_MT_CHIMNEY",
+  "nightMusic": "MUS_MT_CHIMNEY",
+  "encounters": "desert_underpass",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Ditto", "level": 38 },
+    { "species": "Whismur", "level": 35 },
+    { "species": "Ditto", "level": 40 },
+    { "species": "Loudred", "level": 40 },
+    { "species": "Ditto", "level": 41 },
+    { "species": "Whismur", "level": 36 },
+    { "species": "Loudred", "level": 38 },
+    { "species": "Ditto", "level": 42 },
+    { "species": "Whismur", "level": 38 },
+    { "species": "Ditto", "level": 43 },
+    { "species": "Loudred", "level": 44 },
+    { "species": "Ditto", "level": 45 }
+  ],
+  "landRate": 10,
+  "warps": [
+    { "x": 10, "z": 12, "to": "route_114_fossil_maniacs_tunnel", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "underpass_fossil", "looks": "fossil", "movement": "look_south", "x": 132, "z": 10, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_DESERT_UNDERPASS_FOSSIL", "script": "DesertUnderpass_EventScript_Fossil" }
+  ],
+  "signs": [],
+  "triggers": []
+}

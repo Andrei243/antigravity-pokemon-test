@@ -12,6 +12,38 @@ script OnEnter
   # The Gym's barriers go back to how they began whenever the city is come to (MauvilleCity_OnTransition)
   clearflag FLAG_MAUVILLE_GYM_BARRIERS_STATE
   setvar VAR_MAUVILLE_GYM_STATE 0
+  # Wattson goes back to his Gym once he has given the TM for New Mauville (MauvilleCity_EventScript_MoveWattsonBackToGym)
+  if not flag FLAG_GOT_TM_THUNDERBOLT_FROM_WATTSON end
+  clearflag FLAG_HIDE_MAUVILLE_GYM_WATTSON
+  setflag FLAG_HIDE_MAUVILLE_CITY_WATTSON
+  end
+
+
+# Wattson in the street once Norman is beaten (plan 21 · H12, part d): he hands over the Basement Key to New Mauville
+# under the Cycling Road (FLAG_GOT_BASEMENT_KEY_FROM_WATTSON) and asks the player to stop its generator, and once it is
+# stopped (VAR_NEW_MAUVILLE_STATE 2) gives TM24 (FLAG_GOT_TM_THUNDERBOLT_FROM_WATTSON) and goes back to his Gym the next
+# time the city is come to
+script Wattson
+  face self player
+  speaker "Wattson"
+  if flag FLAG_GOT_TM_THUNDERBOLT_FROM_WATTSON goto Charge
+  if var VAR_NEW_MAUVILLE_STATE == 2 goto Stopped
+  if flag FLAG_GOT_BASEMENT_KEY_FROM_WATTSON goto Waiting
+  say "Oh, {player}! You're just the one I wanted. I've a favour to ask of a trainer of your spark!"
+  say "Under the Cycling Road lies New Mauville, a power plant I built. Its generator has run wild and won't settle down."
+  say "Would you go and switch it off for me? Here, this is the key to its door."
+  give "Basement Key"
+  setflag FLAG_GOT_BASEMENT_KEY_FROM_WATTSON
+label Waiting
+  say "Don't you worry about it. Surf along Route 110 under the Cycling Road and you'll come to its door. Wahahaha!"
+  end
+label Stopped
+  say "Wahahahaha! You switched it off! I knew I could count on you, {player}!"
+  say "Here, take this as my thanks. It holds Thunderbolt, a move with a jolt to it!"
+  give "TM24"
+  setflag FLAG_GOT_TM_THUNDERBOLT_FROM_WATTSON
+label Charge
+  say "Wahahaha! Seeing young people take charge like you makes an old man like me feel bright as a bulb!"
   end
 
 

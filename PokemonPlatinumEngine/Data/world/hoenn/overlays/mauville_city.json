@@ -1,7 +1,7 @@
 {
   // Mauville City (plan 21 · H3, part b): the city of light and power at Hoenn's crossroads, its streets under one great
   // roof. Wally and his uncle stand at the Gym's door on their way to Verdanturf Town, and Wally asks the player for a
-  // battle; Scott watches it (mauville_city.txt). Wattson, out in the street once Norman is beaten, is plan 21 · H4's;
+  // battle; Scott watches it (mauville_city.txt). Wattson, out in the street once Norman is beaten, sends the player to New Mauville (plan 21 · H12, part d);
   // the Game Corner is open since plan 21 · H3, part c
   "area": "mauville_city",
   "bgmTrack": "hoenn/rustboro",
@@ -11,7 +11,7 @@
     "mauville_wally": { "name": "Wally", "npcType": "wally", "script": "Wally", "still": true },
     "mauville_wallys_uncle": { "name": "Wally's Uncle", "script": "WallysUncle", "still": true },
     "mauville_scott": { "name": "Scott", "npcType": "scott", "still": true, "dialog": [ "Keep it up! I'll be watching." ] },
-    "wattson": { "name": "Wattson", "npcType": "wattson", "still": true, "dialog": [ "Wahahaha! Mauville's lights never go out, and neither does my good mood!" ] },
+    "wattson": { "name": "Wattson", "npcType": "wattson", "still": true, "script": "Wattson" },
     "boy_3": { "name": "Boy", "dialog": [ "My Pokémon got hurt, but the nurse at the Pokémon Center fixed it right up. She's amazing!" ] },
     "rich_boy": { "name": "Boy", "dialog": [ "A Pokémon can jump out at you while you're riding a bike, too. You can't outpedal everything!" ] },
     "maniac": { "name": "Man", "dialog": [ "Mauville's right in the middle of Hoenn. All kinds of people pass through here." ] },

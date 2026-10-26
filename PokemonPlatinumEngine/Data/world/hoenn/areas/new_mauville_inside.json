@@ -1,0 +1,68 @@
+{
+  "key": "new_mauville_inside",
+  "index": 291,
+  "name": "New Mauville",
+  "matrix": 240,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_MT_PYRE",
+  "nightMusic": "MUS_MT_PYRE",
+  "encounters": "new_mauville_inside",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Voltorb", "level": 24 },
+    { "species": "Magnemite", "level": 24 },
+    { "species": "Voltorb", "level": 25 },
+    { "species": "Magnemite", "level": 25 },
+    { "species": "Voltorb", "level": 23 },
+    { "species": "Magnemite", "level": 23 },
+    { "species": "Voltorb", "level": 26 },
+    { "species": "Magnemite", "level": 26 },
+    { "species": "Voltorb", "level": 22 },
+    { "species": "Magnemite", "level": 22 },
+    { "species": "Electrode", "level": 26 },
+    { "species": "Magneton", "level": 26 }
+  ],
+  "landRate": 10,
+  "warps": [
+    { "x": 32, "z": 33, "to": "new_mauville_entrance", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 32, "z": 25, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ITEM_NEW_MAUVILLE_ULTRA_BALL", "item": "Ultra Ball", "script": "NewMauville_Inside_EventScript_ItemUltraBall" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_around", "x": 16, "z": 22, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ITEM_NEW_MAUVILLE_ESCAPE_ROPE", "item": "Escape Rope", "script": "NewMauville_Inside_EventScript_ItemEscapeRope" },
+    { "id": "item_ball_3", "looks": "item_ball", "movement": "look_around", "x": 39, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_ITEM_NEW_MAUVILLE_THUNDER_STONE", "item": "Thunder Stone", "script": "NewMauville_Inside_EventScript_ItemThunderStone" },
+    { "id": "item_ball_4", "looks": "item_ball", "movement": "look_around", "x": 17, "z": 10, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_ITEM_NEW_MAUVILLE_FULL_HEAL", "item": "Full Heal", "script": "NewMauville_Inside_EventScript_ItemFullHeal" },
+    { "id": "item_ball_5", "looks": "item_ball", "movement": "look_around", "x": 2, "z": 11, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_ITEM_NEW_MAUVILLE_PARALYZE_HEAL", "item": "Paralyze Heal", "script": "NewMauville_Inside_EventScript_ItemParalyzeHeal" },
+    { "id": "item_ball_6", "looks": "item_ball", "movement": "look_around", "x": 25, "z": 18, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_NEW_MAUVILLE_VOLTORB_1", "script": "NewMauville_Inside_EventScript_Voltorb1" },
+    { "id": "item_ball_7", "looks": "item_ball", "movement": "look_around", "x": 6, "z": 11, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_NEW_MAUVILLE_VOLTORB_2", "script": "NewMauville_Inside_EventScript_Voltorb2" },
+    { "id": "item_ball_8", "looks": "item_ball", "movement": "look_around", "x": 13, "z": 10, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_NEW_MAUVILLE_VOLTORB_3", "script": "NewMauville_Inside_EventScript_Voltorb3" }
+  ],
+  "signs": [
+    { "x": 32, "z": 4, "type": 0, "script": "NewMauville_Inside_EventScript_Generator" },
+    { "x": 32, "z": 3, "type": 0, "script": "NewMauville_Inside_EventScript_Generator" },
+    { "x": 32, "z": 2, "type": 0, "script": "NewMauville_Inside_EventScript_Generator" },
+    { "x": 33, "z": 4, "type": 0, "script": "NewMauville_Inside_EventScript_Generator" },
+    { "x": 34, "z": 4, "type": 0, "script": "NewMauville_Inside_EventScript_Generator" },
+    { "x": 35, "z": 4, "type": 0, "script": "NewMauville_Inside_EventScript_Generator" },
+    { "x": 35, "z": 3, "type": 0, "script": "NewMauville_Inside_EventScript_Generator" },
+    { "x": 35, "z": 2, "type": 0, "script": "NewMauville_Inside_EventScript_Generator" }
+  ],
+  "triggers": [
+    { "x": 30, "z": 38, "width": 1, "depth": 1, "script": "NewMauville_Inside_EventScript_BlueButton", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 18, "z": 36, "width": 1, "depth": 1, "script": "NewMauville_Inside_EventScript_GreenButton", "variable": "VAR_TEMP_2", "value": "0" },
+    { "x": 4, "z": 26, "width": 1, "depth": 1, "script": "NewMauville_Inside_EventScript_BlueButton", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 16, "z": 22, "width": 1, "depth": 1, "script": "NewMauville_Inside_EventScript_BlueButton", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 25, "z": 18, "width": 1, "depth": 1, "script": "NewMauville_Inside_EventScript_GreenButton", "variable": "VAR_TEMP_2", "value": "0" },
+    { "x": 2, "z": 11, "width": 1, "depth": 1, "script": "NewMauville_Inside_EventScript_GreenButton", "variable": "VAR_TEMP_2", "value": "0" },
+    { "x": 6, "z": 11, "width": 1, "depth": 1, "script": "NewMauville_Inside_EventScript_BlueButton", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 13, "z": 10, "width": 1, "depth": 1, "script": "NewMauville_Inside_EventScript_BlueButton", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 17, "z": 10, "width": 1, "depth": 1, "script": "NewMauville_Inside_EventScript_GreenButton", "variable": "VAR_TEMP_2", "value": "0" },
+    { "x": 33, "z": 6, "width": 1, "depth": 1, "script": "NewMauville_Inside_EventScript_RedButton", "variable": "VAR_NEW_MAUVILLE_STATE", "value": "1" }
+  ]
+}

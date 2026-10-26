@@ -1,9 +1,9 @@
 {
   // The Fossil Maniac's tunnel under his house (plan 21 · H4, part a): the maniac at the end, where a cave-in has shut
-  // the way on to the Desert Underpass (its door stays shut, as Emerald's does until the Hall of Fame)
+  // the way on to the Desert Underpass (its door stays shut, as Emerald's does until the Hall of Fame; plan 21 · H12, part d opens it then, and the maniac stands aside)
   "area": "route_114_fossil_maniacs_tunnel",
   "bgmTrack": "hoenn/fallarbor",
-  "locked": [ 2 ],
+  "doors": [ { "warp": 2, "map": "DesertUnderpass", "x": 10, "y": 12, "facing": "Up", "openedBy": "HoennHallOfFame" } ],
   "people": {
     "fossil_maniac": { "name": "Fossil Maniac", "script": "FossilManiac" }
   }

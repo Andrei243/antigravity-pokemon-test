@@ -1,0 +1,10 @@
+{
+  // New Mauville's entrance (plan 21 · H12, part d), under Route 110's Cycling Road and come to by Surf: its door is shut
+  // until Wattson's Basement Key opens it from the step before it (new_mauville_entrance.txt; FLAG_HOENN_NEW_MAUVILLE_OPENED
+  // opens the door here, VAR_NEW_MAUVILLE_STATE lays its blocks). Emerald plays Mt. Pyre's song all through the plant
+  "area": "new_mauville_entrance",
+  "bgmTrack": "hoenn/mt_pyre",
+  "trees": "Round",
+  "doors": [ { "warp": 1, "map": "NewMauville_Inside", "x": 32, "y": 33, "facing": "Down", "openedBy": "FLAG_HOENN_NEW_MAUVILLE_OPENED" } ],
+  "triggers": [ { "trigger": 0, "script": "Door" } ]
+}
