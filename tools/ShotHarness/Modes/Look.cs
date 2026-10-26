@@ -191,6 +191,7 @@ partial class Harness
         options.Confirm(engine.Settings);
         Frames(20); Shot("look_17d_options_reset_question");
         options.AnswerReset(engine.Settings, false);
+        for (int i = 0; i < 20; i++) options.Animate(0.05f); // the question slides out only as the options are animated: finish it, or every later options shot keeps it
         Console.WriteLine($"the reset asked: {options.ResetAsking}; autosave {(engine.Settings.Autosave ? "on" : "off")}");
         options.Open();
         game.State = GameState.Overworld;
