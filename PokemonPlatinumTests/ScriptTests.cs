@@ -612,6 +612,23 @@ public class ScriptTests
           pokeblock blend 2
           pokeblock count
           pokeblock full
+          bracket enough
+          bracket choose
+          bracket check
+          bracket begin
+          bracket active
+          bracket round
+          bracket show
+          bracket opponent
+          bracket pick
+          bracket battle
+          bracket won
+          bracket lost
+          bracket finish won
+          bracket points
+          bracket streak
+          bracket best
+          bracket end
         script Other
           end
         """;
@@ -1633,6 +1650,7 @@ public class ScriptTests
         public PokemonPlatinumEngine.Models.Frontier.BattleHallChallenge? Hall { get => inner.Hall; set => inner.Hall = value; }
         public PokemonPlatinumEngine.Models.Frontier.BattleCastleChallenge? Castle { get => inner.Castle; set => inner.Castle = value; }
         public PokemonPlatinumEngine.Models.Frontier.BattleArcadeChallenge? Arcade { get => inner.Arcade; set => inner.Arcade = value; }
+        public PokemonPlatinumEngine.Models.Frontier.BattleDomeChallenge? Dome { get => inner.Dome; set => inner.Dome = value; }
         public void WalkWith(NPC? body, Pokemon? pokemon) => inner.WalkWith(body, pokemon);
         public int FrontierAct(string what, int number, NPC? subject) => inner.FrontierAct(what, number, subject);
         public IReadOnlyList<int> Entered => inner.Entered;

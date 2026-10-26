@@ -824,6 +824,30 @@ by the Tower's rooms, with the Subway Bosses at the 21st battle (Ingo) and the 4
 | `subway won`, `subway streak`, `subway best` | Counts the win (`RESULT` 1 once a set of seven is through); the streak as it stands and the longest of the run's train (`{number}`). |
 | `subway finish won`, `subway finish lost`, `subway points` | Writes the best streak of the train; hands over the Battle Points of the sets cleared (3 for the first, one more for each set after it, up to 10; `RESULT` and `{number}`). |
 
+### The Battle Dome and its bracket
+
+Plan 14 · B8; `docs/mechanics/rulings.md`, "The Battle Dome". Emerald's tournament in the Battle Frontier's annex
+(`Models/Frontier/BattleDome.cs` over `Models/Frontier/Bracket.cs`): three Pokémon entered at the desk
+(`BattleFrontierAnnex.txt`) go in as copies at level 50 or under; fifteen trainers of the Frontier's table are drawn by the
+Tower's rooms for the tournaments won in a row and shuffled with the player into a bracket of sixteen; before each match the
+player sees the opponent's three and sends two in; the other matches of the round are fought headless by the battle's core.
+The tournament lives between the desk and the hall (`BattleDome.txt`, whose arrival script loops round by round) as the host's
+`Dome`, and is not saved: a game closed in the hall loses it, and the next one begun ends the streak.
+
+| Command | What it does |
+|---|---|
+| `bracket enough` | `RESULT` 1 when the team holds three Pokémon that could go in together. `{number}` three, `{banned}` the species of the banlist the Pokédex has seen. |
+| `bracket choose`, `bracket check` | Opens the team for three to be chosen, and waits: `RESULT` 1, or 0 when backed out of. Then 0, or 1 for two of one species and 2 for two holding the same item. |
+| `bracket begin` | Draws the tournament (its fifteen trainers, their teams and the bracket) with the three chosen; a tournament left unfinished before it ends the streak first. |
+| `bracket active`, `bracket round` | `RESULT` 1 while a tournament is under way; the round to come, 0 to 3 (3 the final), `{number}` 1 to 4. |
+| `bracket show` | Opens the bracket to be looked at (the screen `Bracket`), and waits. |
+| `bracket opponent` | Stands the round's opponent in the room as `opponent`, with their look; `{foe}` names them. |
+| `bracket pick` | Opens the bracket on the opponent's card beside the player's three for two to be sent in, and waits; a host that answers nothing sends the first two. |
+| `bracket battle` | The match: the two sent in as copies against the two of the opponent's three that do best against the player's (`RESULT` 1 won, 0 lost). |
+| `bracket won`, `bracket lost` | Decides the player's match and fights every other match of the round headless; `won` is `RESULT` 1 when that was the final. |
+| `bracket finish won`, `bracket finish lost`, `bracket points` | Writes the record (a win lengthens the streak of tournaments, a loss ends it; `RESULT` and `{number}` the streak); hands over the Battle Points a tournament won earns (3, one more for each won in a row before it, up to 10). |
+| `bracket streak`, `bracket best`, `bracket end` | The tournaments won in a row and the most ever (`{number}`); lets go of the tournament. |
+
 ### Amity Square's walk
 
 Plan 06 · R16c; `docs/mechanics/rulings.md`, "Amity Square's walk". The rules are `Overworld/AmitySquare.cs`, and what

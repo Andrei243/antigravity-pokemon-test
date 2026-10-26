@@ -1222,6 +1222,10 @@ public partial class GameEngine
                 case ScriptScreen.ContestPainting:
                     if (System.Enum.TryParse<ContestStat>(counter, out var hung)) game.ShowContestPainting(hung);
                     break;
+                // The Battle Dome's bracket (plan 14 · B8): looked at, or the counter "pick" for two to be sent in
+                case ScriptScreen.Bracket:
+                    game.OpenBracket(counter == "pick");
+                    break;
                 case ScriptScreen.Pc:
                     game.flow.State = GameState.PCStorage;
                     game.flow.PCScreen.Open(game.flow.Boxes);

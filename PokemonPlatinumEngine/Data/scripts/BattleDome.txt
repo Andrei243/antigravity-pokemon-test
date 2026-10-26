@@ -1,0 +1,68 @@
+# The Battle Dome's hall (plan 14 · B8). docs/scripts.md describes the language; the lines are our own, on the beats of
+# Emerald's Battle Dome: the bracket shown before each round, the opponent's card, two of the three sent in, the other
+# matches of the round fought while the player waits, and the bracket again at the end.
+#
+# A whole tournament is this one arrival script, which loops round by round (Models/Frontier/BattleDome.cs; `bracket`).
+# The tournament lives between the desk and the hall as the host's Dome, so a game closed in the middle of one finds no
+# tournament here: the script does nothing, and the next one begun at the desk ends the streak (DomeRecord.InProgress).
+
+
+script OnEnter
+  bracket active
+  if result == 0 end
+  clearflag FLAG_BATTLE_DOME_SHOW_OPPONENT
+  hide opponent
+  place player 8 10 up
+label Round
+  bracket round
+  speaker "Announcer"
+  if result == 3 goto TheFinal
+  say "Round {number} of the Battle Dome's tournament! Let's look at the bracket."
+  goto Bracket
+label TheFinal
+  say "The final! Only two Trainers are left standing. Let's look at the bracket."
+label Bracket
+  bracket show
+  bracket opponent
+  place opponent 8 3 down
+  setflag FLAG_BATTLE_DOME_SHOW_OPPONENT
+  show opponent
+  walk opponent down 2
+  text "{foe} steps into the ring!"
+  bracket pick
+  bracket battle
+  if result == 0 goto Lost
+  call Leaves
+  bracket won
+  if result == 1 goto Champion
+  speaker "Announcer"
+  say "Victory! The other matches of the round are over too. On to the next!"
+  goto Round
+label Champion
+  speaker "Announcer"
+  say "And there it is! {player} is the champion of the Battle Dome!"
+  bracket show
+  bracket finish won
+  bracket points
+  text "{player} received {number} BP!"
+  fanfare item
+  goto Home
+label Lost
+  call Leaves
+  bracket lost
+  bracket finish lost
+  speaker "Announcer"
+  say "Defeated! {player}'s tournament ends here. A fine effort all the same!"
+label Home
+  bracket end
+  fade out 0.6
+  warp "BattleFrontierAnnex" 7 5 down
+  fade in
+  end
+
+
+# The opponent goes off the stage again
+script Leaves
+  clearflag FLAG_BATTLE_DOME_SHOW_OPPONENT
+  hide opponent
+  return

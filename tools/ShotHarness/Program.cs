@@ -193,6 +193,7 @@ if (mode == "contest") h.BugContestMode();
 if (mode == "athlon") h.AthlonMode();
 if (mode == "hoenncontest") h.HoennContestMode();
 if (mode == "play") h.PlayMode();
+if (mode == "venues") h.VenuesMode();
 
 h.Close();
 Raylib.CloseWindow();

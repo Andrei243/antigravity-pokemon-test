@@ -134,3 +134,20 @@ script HoennGuide
 label HoennStay
   say "Take your time. The ferry waits for those who have Scott's pass."
   end
+
+
+# The guide of the Frontier's annex (plan 14 · B8), a person of our own before the lodge on the plaza's south side: the
+# annex has no model on the grounds, so he shows the player into its lobby (BattleFrontierAnnex.txt), whose door leads back
+# out to him
+script AnnexGuide
+  face self player
+  say "Behind this lodge is the Frontier's annex, where the Battle Dome holds its tournaments."
+  ask "Shall I show you in?"
+  if no goto AnnexStay
+  fade out 0.6
+  warp "BattleFrontierAnnex" 7 9 up
+  fade in
+  end
+label AnnexStay
+  say "Whenever you like. The Dome's tournaments never stop."
+  end
