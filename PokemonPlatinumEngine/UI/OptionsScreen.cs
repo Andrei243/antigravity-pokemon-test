@@ -29,6 +29,7 @@ public enum OptionRow
     PartyTools,
     BoxesAnywhere,
     Autosave,
+    DynamicResolution,
     Controls,
     Jukebox,
     Help,
@@ -357,6 +358,10 @@ public class OptionsScreen
             case OptionRow.Autosave:
                 s.Autosave = !s.Autosave;
                 break;
+            case OptionRow.DynamicResolution:
+                // Only where the card can be waited for (plan 16 · T23): elsewhere the row says why and stays off
+                if (DynamicResolutionUsable) s.DynamicResolution = !s.DynamicResolution;
+                break;
         }
     }
 
@@ -374,11 +379,23 @@ public class OptionsScreen
             ? (Text.Of("options.battleStyle.label"), Text.Of("options.battleStyle.value.Set"), Text.Of("options.battleStyle.help.locked"))
             : Describe(s, row);
 
+    /// <summary>
+    /// Whether dynamic resolution can be used here (plan 16 · T23): it times a frame by waiting for the card, which
+    /// needs <c>Gl.Available</c>. The game sets it as it starts; a screen nobody told is usable.
+    /// </summary>
+    public static bool DynamicResolutionUsable { get; set; } = true;
+
+    /// <summary>The Quality row's help: the preset's, and what the first run measured on this machine where it measured (plan 16 · T23).</summary>
+    private static string QualityHelp(GameSettings s) => s.MeasuredQuality is { } measured
+        ? Text.Of($"options.quality.help.{s.Quality}") + " " + Text.Of("options.quality.measured",
+            ("quality", Text.Of($"options.quality.value.{measured}")), ("ms", (s.MeasuredMilliseconds ?? 0).ToString("0.0", System.Globalization.CultureInfo.InvariantCulture)))
+        : Text.Of($"options.quality.help.{s.Quality}");
+
     public static (string Label, string Value, string Help) Describe(GameSettings s, OptionRow row) => row switch
     {
         OptionRow.Language => (Text.Of("options.language.label"), (Core.Language.Of(s.Language) ?? Text.Language).Name, Text.Of("options.language.help")),
         OptionRow.TextSpeed => (Text.Of("options.textSpeed.label"), Text.Of($"options.textSpeed.value.{s.TextSpeed}"), Text.Of("options.textSpeed.help")),
-        OptionRow.Quality => (Text.Of("options.quality.label"), Text.Of($"options.quality.value.{s.Quality}"), Text.Of($"options.quality.help.{s.Quality}")),
+        OptionRow.Quality => (Text.Of("options.quality.label"), Text.Of($"options.quality.value.{s.Quality}"), QualityHelp(s)),
         OptionRow.WindowSize => (Text.Of("options.windowSize.label"), Text.Of("options.windowSize.value", ("width", s.WindowWidth), ("height", s.WindowHeight)), Text.Of("options.windowSize.help")),
         OptionRow.Fullscreen => (Text.Of("options.fullscreen.label"), OnOff(s.Fullscreen), Text.Of("options.fullscreen.help")),
         OptionRow.VSync => (Text.Of("options.vsync.label"), OnOff(s.VSync), Text.Of("options.vsync.help")),
@@ -416,6 +433,9 @@ public class OptionsScreen
         OptionRow.PartyTools => (Text.Of("options.partyTools.label"), Text.Of($"options.partyTools.value.{s.PartyTools}"), Text.Of($"options.partyTools.help.{s.PartyTools}")),
         OptionRow.BoxesAnywhere => (Text.Of("options.boxesAnywhere.label"), Text.Of($"options.boxesAnywhere.value.{s.BoxesAnywhere}"), Text.Of($"options.boxesAnywhere.help.{s.BoxesAnywhere}")),
         OptionRow.Autosave => (Text.Of("options.autosave.label"), OnOff(s.Autosave), Text.Of(s.Autosave ? "options.autosave.help.on" : "options.autosave.help.off")),
+        OptionRow.DynamicResolution => (Text.Of("options.dynamicResolution.label"),
+            DynamicResolutionUsable ? OnOff(s.DynamicResolution) : Text.Of("options.dynamicResolution.unusable"),
+            Text.Of(!DynamicResolutionUsable ? "options.dynamicResolution.help.unusable" : s.DynamicResolution ? "options.dynamicResolution.help.on" : "options.dynamicResolution.help.off")),
         OptionRow.ResetDefaults => (Text.Of("options.resetDefaults.label"), Text.Of("options.resetDefaults.value"), Text.Of("options.resetDefaults.help")),
         OptionRow.Controls => (Text.Of("options.controls.label"), Text.Of("options.controls.value"), Text.Of("options.controls.help")),
         OptionRow.Jukebox => (Text.Of("options.jukebox.label"), Text.Of("options.jukebox.value"), Text.Of("options.jukebox.help")),

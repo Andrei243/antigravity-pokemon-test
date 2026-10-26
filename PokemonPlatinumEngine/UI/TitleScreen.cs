@@ -141,6 +141,12 @@ public sealed class TitleScreen
     private int? deletion;
 
     public TitlePhase Phase { get; private set; } = TitlePhase.Notice;
+
+    /// <summary>
+    /// Whether the notice stays whatever time and buttons say (plan 16 · T23): while the first run measures which preset
+    /// the machine keeps, behind it. The engine sets it and clears it.
+    /// </summary>
+    public bool HoldNotice { get; set; }
     public int SelectedIndex { get; private set; }
 
     /// <summary>In the "start a new game?" and the "delete this save?" prompts: true while Yes is highlighted.</summary>
@@ -262,7 +268,7 @@ public sealed class TitleScreen
 
         switch (Phase)
         {
-            case TitlePhase.Notice when phaseTime >= NoticeTime: Enter(TitlePhase.Journey); break;
+            case TitlePhase.Notice when phaseTime >= NoticeTime && !HoldNotice: Enter(TitlePhase.Journey); break;
             case TitlePhase.Journey when phaseTime >= SegmentTime * Segments.Length: Enter(TitlePhase.Reveal); break;
             case TitlePhase.Reveal when phaseTime >= RevealTime: Enter(TitlePhase.Idle); break;
             // Left alone, the title plays its opening again: the attract loop (the menu and its prompts wait for good)
@@ -275,6 +281,9 @@ public sealed class TitleScreen
     {
         switch (Phase)
         {
+            // (The first run's measuring holds the notice until it is done, plan 16 · T23)
+            case TitlePhase.Notice when HoldNotice:
+                break;
             case TitlePhase.Notice:
             case TitlePhase.Journey:
             case TitlePhase.Reveal:

@@ -212,6 +212,33 @@ partial class Harness
         Frames(18); Shot("look_18_report");
         engine.Recording = null;
 
+        // Dynamic resolution (plan 16 · T23), last so that no shot before it moves: its row off and on, then the scene held
+        // at each step in Twinleaf Town and at a battle's menu (the menus and text stay at the screen's own resolution)
+        game.State = GameState.Options;
+        options.Open();
+        GoToRow(OptionRow.DynamicResolution);
+        Frames(1); Shot("look_19_options_dynamic_resolution");
+        OptionsScreen.Change(engine.Settings, OptionRow.DynamicResolution, 1);
+        Frames(1); Shot("look_19b_options_dynamic_resolution_on");
+        OptionsScreen.Change(engine.Settings, OptionRow.DynamicResolution, 1);
+        game.State = GameState.Overworld;
+        float? heldScale = engine.FixedResolutionStep;
+        GoTo("TwinleafTown", 11, 8, Direction.Down);
+        foreach (int step in ResolutionScale.Steps)
+        {
+            engine.FixedResolutionStep = step / 100f;
+            Frames(2); Shot($"look_19c_scale_twinleaf_{step}");
+        }
+        var scaled = StartBattle("Shinx", 5);
+        ToMainMenu(scaled);
+        foreach (int step in ResolutionScale.Steps)
+        {
+            engine.FixedResolutionStep = step / 100f;
+            Frames(1); Shot($"look_19d_scale_battle_{step}");
+        }
+        Console.WriteLine($"the scene's share at the last step: {game.ResolutionStep}; dynamic resolution {(engine.Settings.DynamicResolution ? "on" : "off")}");
+        engine.FixedResolutionStep = heldScale;
+
         if (args.Length > 2)
             Boards(args[2], new[] { "look_1_twinleaf", "look_2_dialogue", "look_3_battle", "look_3b_moves", "look_4_party", "look_5_route201", "look_6_house", "look_7_lake" });
     }

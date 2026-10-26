@@ -710,7 +710,7 @@ public sealed partial class WorldRenderer
 
         // 2. The scene itself, sampling the shadow map
         float near = indoors ? 1f : 10f, far = indoors ? 100f : 140f;
-        Raylib.BeginTextureMode(context.Target);
+        context.BeginScene();
         Raylib.ClearBackground(rig.Background);
         Rlgl.SetClipPlanes(near, far);
 

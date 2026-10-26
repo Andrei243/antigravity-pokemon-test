@@ -90,7 +90,8 @@
         "High": "Cea mai clară imagine: scenele 3D se randează la 4K (3840 × 2160), cu umbre fine și ocluzie ambientală.",
         "Medium": "Scenele 3D se randează la 2880 × 1620, cu anti-aliasing; păstrează umbrele fine și ocluzia ambientală.",
         "Low": "Cea mai rapidă: scenele 3D se randează la 1920 × 1080, cu umbre simple, fără ocluzie ambientală sau profunzime de câmp."
-      }
+      },
+      "measured": "Măsurată pe acest calculator la prima pornire: {quality}, {ms} ms pe cadru."
     },
     "windowSize": {
       "label": "Mărimea ferestrei",
@@ -314,6 +315,15 @@
       "help": {
         "on": "Jocul se salvează singur, pe tăcute, după o luptă, o vindecare, o Insignă, o prindere și la intrarea într-un loc, într-un fișier al lui, lângă salvările tale. O salvare făcută de tine nu e atinsă niciodată. După o oprire neașteptată, CONTINUĂ ți-o oferă.",
         "off": "Jocul se salvează doar când îl salvezi tu, ca în Platinum."
+      }
+    },
+    "dynamicResolution": {
+      "label": "Rezoluție dinamică",
+      "unusable": "Indisponibilă",
+      "help": {
+        "on": "Când un cadru durează prea mult, scena 3D se desenează puțin mai mică, până la jumătate, și crește la loc când jocul merge iar ușor. Meniurile și textul rămân clare.",
+        "off": "Scena 3D se desenează mereu la mărimea dată de calitatea grafică.",
+        "unusable": "Driverul grafic al acestui calculator nu poate fi cronometrat, așa că scena nu se poate redimensiona în timpul jocului."
       }
     },
     "controls": {

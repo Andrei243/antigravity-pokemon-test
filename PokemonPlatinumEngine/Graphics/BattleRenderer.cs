@@ -228,9 +228,9 @@ public sealed class BattleRenderer
         shaders.SetUpright(0f, 0f);
 
         // 2. Sky (or the dark behind a cave's walls), then the field
-        var target = context.Target;
-        int tw = target.Texture.Width, th = target.Texture.Height;
-        Raylib.BeginTextureMode(target);
+        // (The part of the target dynamic resolution allows, plan 16 · T23: all of it at a step of 1)
+        int tw = context.PartWidth, th = context.PartHeight;
+        context.BeginScene();
         // The sky, the stage, its lights and whoever stands on it take a move's light; the Pokémon do not (plan 25 · Y16)
         SkyPainter.Draw(anim.Time, tw, th, stageLight.Apply(rig.Sky), clouds: Arena.Outdoors);
 
