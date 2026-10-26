@@ -188,6 +188,7 @@ public sealed class PcBoxes
     {
         foreach (var move in pokemon.Moves) move.CurrentPP = move.MaxPP;
         FormRules.BackToLand(pokemon);
+        FormRules.TrimGrowsOut(pokemon);
     }
 
     /// <summary>

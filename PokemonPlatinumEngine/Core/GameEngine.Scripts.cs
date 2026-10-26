@@ -161,6 +161,8 @@ public partial class GameEngine
         cameInFromOutdoors = flow.LeftMap.Length > 0 && !flow.LeftCave
             && MapDatabase.Get(flow.LeftMap) is { IsIndoors: false, Setting: MapSetting.Outdoors };
         ChangePlace();
+        // A Giratina of the team takes its Origin Forme in the Distortion World and its item's form outside (plan 06 · R29b)
+        FormRules.GiratinaHere(flow.Party.Members, flow.Map.Name);
         NoteTheTrailOnArrival();
         // The place's own script behind the fade (Emerald's ON_TRANSITION), and the chunks it swaps laid at once
         RunTransitionScript();

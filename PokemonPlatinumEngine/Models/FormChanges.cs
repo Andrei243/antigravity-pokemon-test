@@ -96,7 +96,8 @@ public static class FormChanges
                 FusionOf(item, p) != null ? party != null && !party.IsFull : FusionFor(item, p, party) != null,
             "Reveal Glass" => ForcesOfNature.Contains(species) && p.Species.Form(species + "-Therian") != null,
             "Prison Bottle" => species == "Hoopa" && p.Species.Form("Hoopa-Unbound") != null,
-            "Zygarde Cube" => species == "Zygarde" && ZygardeOther(p.Form) != p.Form,
+            // Since R29b it teaches its five moves too, so any Zygarde
+            "Zygarde Cube" => species == "Zygarde",
             "Rotom Catalog" => species == "Rotom",
             _ => false
         };
@@ -129,29 +130,102 @@ public static class FormChanges
             }
 
             case "Zygarde Cube":
+                if (ZygardeOther(p.Form) == p.Form) return ItemUseResult.Nothing;
                 p.ChangeForm(ZygardeOther(p.Form));
                 return Changed(name);
 
             case "Rotom Catalog":
             {
-                int at = RotomCatalog.ToList().FindIndex(c => c.Form == p.Form);
-                var (_, oldMove) = RotomCatalog[Math.Max(0, at)];
-                var (form, move) = RotomCatalog[(Math.Max(0, at) + 1) % RotomCatalog.Count];
-                p.ChangeForm(form);
-                var wanted = new List<string>();
-                // The appliance's move takes the place of the last one's; none to take, it is learned where there is room
-                int old = oldMove == null ? -1 : p.Moves.FindIndex(m => m.Name == oldMove);
-                if (move == null)
-                {
-                    if (old >= 0) p.Moves.RemoveAt(old);
-                    if (p.Moves.Count == 0) p.TryLearn(RotomFallback);
-                }
-                else if (old >= 0 && !p.Knows(move)) p.ReplaceMove(old, move);
-                else if (!p.TryLearn(move) && !p.Knows(move)) wanted.Add(move);
-                return Changed(name) with { Wanted = wanted };
+                int at = Math.Max(0, CatalogPage(p));
+                return ToAppliance(p, (at + 1) % RotomCatalog.Count);
             }
         }
         return ItemUseResult.Nothing;
+    }
+
+    // ---------------------------------------------------------------- the lists to choose from (plan 06 · R29b)
+
+    /// <summary>The page of the Rotom Catalog a Rotom is on now: 0 its own form, 1 to 5 an appliance.</summary>
+    public static int CatalogPage(Pokemon p) => RotomCatalog.ToList().FindIndex(c => c.Form == p.Form);
+
+    /// <summary>
+    /// The Rotom Catalog's list as the bag shows it (Sun and Moon's): the five appliances in the catalogue's order and
+    /// last the light bulb, its own form. The <paramref name="option"/> of <see cref="Choose"/> is a row of it.
+    /// </summary>
+    public static IReadOnlyList<string> CatalogRows => new[]
+    {
+        Text.Of("bag.catalog.heat"), Text.Of("bag.catalog.wash"), Text.Of("bag.catalog.frost"),
+        Text.Of("bag.catalog.fan"), Text.Of("bag.catalog.mow"), Text.Of("bag.catalog.bulb")
+    };
+
+    /// <summary>
+    /// The moves the Zygarde Cube teaches (Sun and Moon's, by its cores): all five from the first, since this game has
+    /// no cores to gather (our ruling, docs/mechanics/rulings.md, "What R29 left").
+    /// </summary>
+    public static IReadOnlyList<string> CubeMoves { get; } = new[] { "Thousand Arrows", "Thousand Waves", "Core Enforcer", "Extreme Speed", "Dragon Dance" };
+
+    /// <summary>
+    /// What the bag lists when this item is used on this Pokémon, a row to an answer (plan 06 · R29b): the Rotom
+    /// Catalog's appliances, and the Zygarde Cube's CHANGE FORME (where its form can change) with the five moves it
+    /// teaches. Null for an item that does its one thing at once.
+    /// </summary>
+    public static IReadOnlyList<string>? OptionsFor(ItemData item, Pokemon p)
+    {
+        if (!Handles(item) || p.IsEgg) return null;
+        return item.Name switch
+        {
+            "Rotom Catalog" when p.Species.Name == "Rotom" => CatalogRows,
+            "Zygarde Cube" when p.Species.Name == "Zygarde" =>
+                (ZygardeOther(p.Form) != p.Form ? new[] { Text.Of("bag.cube.changeForme") } : Array.Empty<string>())
+                    .Concat(CubeMoves.Select(LocalNames.Move)).ToArray(),
+            _ => null
+        };
+    }
+
+    /// <summary>
+    /// The row of <see cref="OptionsFor"/> chosen: an appliance (or the bulb) for Rotom, or for Zygarde its other form
+    /// or a move to teach. A move that doesn't fit is <see cref="ItemUseResult.Wanted"/>; one known already, or the
+    /// appliance Rotom is in, changes nothing and says why.
+    /// </summary>
+    public static ItemUseResult Choose(ItemData item, Pokemon p, Party? party, int option)
+    {
+        if (OptionsFor(item, p) is not { } rows || option < 0 || option >= rows.Count) return ItemUseResult.Nothing;
+        if (item.Name == "Rotom Catalog")
+        {
+            // Rows 0 to 4 are pages 1 to 5, the bulb page 0
+            int page = option == RotomCatalog.Count - 1 ? 0 : option + 1;
+            if (page == Math.Max(0, CatalogPage(p))) return new ItemUseResult(false, Text.Of("bag.noEffect"));
+            return ToAppliance(p, page);
+        }
+        bool changes = ZygardeOther(p.Form) != p.Form;
+        if (changes && option == 0)
+        {
+            p.ChangeForm(ZygardeOther(p.Form));
+            return Changed(p.DisplayName);
+        }
+        string move = CubeMoves[option - (changes ? 1 : 0)];
+        if (p.Knows(move)) return new ItemUseResult(false, Text.Of("bag.knowsAlready", ("name", p.DisplayName), ("move", LocalNames.Move(move))));
+        if (p.TryLearn(move)) return new ItemUseResult(true, Text.Of("bag.learned", ("name", p.DisplayName), ("move", LocalNames.Move(move))));
+        return new ItemUseResult(true, "") { Wanted = new[] { move } };
+    }
+
+    /// <summary>Sends Rotom into a page of the catalogue, its appliance's move with it (R29's rule).</summary>
+    private static ItemUseResult ToAppliance(Pokemon p, int page)
+    {
+        var (_, oldMove) = RotomCatalog[Math.Max(0, CatalogPage(p))];
+        var (form, move) = RotomCatalog[page];
+        p.ChangeForm(form);
+        var wanted = new List<string>();
+        // The appliance's move takes the place of the last one's; none to take, it is learned where there is room
+        int old = oldMove == null ? -1 : p.Moves.FindIndex(m => m.Name == oldMove);
+        if (move == null)
+        {
+            if (old >= 0) p.Moves.RemoveAt(old);
+            if (p.Moves.Count == 0) p.TryLearn(RotomFallback);
+        }
+        else if (old >= 0 && !p.Knows(move)) p.ReplaceMove(old, move);
+        else if (!p.TryLearn(move) && !p.Knows(move)) wanted.Add(move);
+        return Changed(p.DisplayName) with { Wanted = wanted };
     }
 
     private static ItemUseResult Changed(string name) => new(true, Text.Of("bag.changedForm", ("name", name)));
