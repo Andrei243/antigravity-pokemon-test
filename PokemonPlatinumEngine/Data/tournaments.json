@@ -16,12 +16,12 @@
             { "trainer": "leader_byron_rematch", "look": "byron" },
             { "trainer": "leader_candice_rematch", "look": "candice" },
             { "trainer": "leader_volkner_rematch", "look": "volkner" }
-          ]
+          ],
+          "kind": "leaders"
         },
         {
           "id": "sinnohChampion",
           "points": 6,
-          "after": "sinnohLeaders",
           "always": [
             { "trainer": "champion_cynthia_rematch", "look": "cynthia" },
             { "trainer": "elite_four_aaron_rematch", "look": "aaron" },
@@ -38,7 +38,371 @@
             { "trainer": "leader_byron_rematch", "look": "byron" },
             { "trainer": "leader_candice_rematch", "look": "candice" },
             { "trainer": "leader_volkner_rematch", "look": "volkner" }
-          ]
+          ],
+          "kind": "league",
+          "after": "sinnohLeaders"
+        }
+      ]
+    },
+    {
+      "region": "Kanto",
+      "events": [
+        {
+          "id": "kantoLeaders",
+          "points": 3,
+          "always": [],
+          "pool": [
+            { "trainer": "johto_leader_brock_brock_2", "look": "brock" },
+            { "trainer": "johto_leader_misty_misty_2", "look": "misty" },
+            { "trainer": "johto_leader_lt_surge_lt__surge_2", "look": "lt_surge" },
+            { "trainer": "johto_leader_erika_erika_2", "look": "erika" },
+            { "trainer": "johto_leader_janine_janine_2", "look": "ace_trainer_f" },
+            { "trainer": "johto_leader_sabrina_sabrina_2", "look": "sabrina" },
+            { "trainer": "johto_leader_blaine_blaine_2", "look": "blaine" },
+            { "trainer": "johto_leader_blue_blue_2", "look": "blue" }
+          ],
+          "kind": "leaders"
+        },
+        {
+          "id": "kantoChampion",
+          "points": 6,
+          "always": [
+            { "trainer": "kanto_champion_rematch_squirtle", "look": "blue" },
+            { "trainer": "kanto_elite_four_lorelei_2", "look": "lorelei" },
+            { "trainer": "kanto_elite_four_bruno_2", "look": "bruno" },
+            { "trainer": "kanto_elite_four_agatha_2", "look": "agatha" },
+            { "trainer": "kanto_elite_four_lance_2", "look": "lance" }
+          ],
+          "pool": [
+            { "trainer": "johto_leader_brock_brock_2", "look": "brock" },
+            { "trainer": "johto_leader_misty_misty_2", "look": "misty" },
+            { "trainer": "johto_leader_lt_surge_lt__surge_2", "look": "lt_surge" },
+            { "trainer": "johto_leader_erika_erika_2", "look": "erika" },
+            { "trainer": "johto_leader_janine_janine_2", "look": "ace_trainer_f" },
+            { "trainer": "johto_leader_sabrina_sabrina_2", "look": "sabrina" },
+            { "trainer": "johto_leader_blaine_blaine_2", "look": "blaine" },
+            { "trainer": "johto_leader_blue_blue_2", "look": "blue" }
+          ],
+          "kind": "league",
+          "after": "kantoLeaders"
+        }
+      ]
+    },
+    {
+      "region": "Johto",
+      "events": [
+        {
+          "id": "johtoLeaders",
+          "points": 3,
+          "always": [],
+          "pool": [
+            { "trainer": "johto_leader_falkner_falkner_2", "look": "falkner" },
+            { "trainer": "johto_leader_bugsy_bugsy_2", "look": "bugsy" },
+            { "trainer": "johto_leader_whitney_2", "look": "whitney" },
+            { "trainer": "johto_leader_morty_morty_2", "look": "morty" },
+            { "trainer": "johto_leader_pryce_pryce_2", "look": "pryce" },
+            { "trainer": "johto_leader_jasmine_jasmine_2", "look": "jasmine" },
+            { "trainer": "johto_leader_chuck_chuck_2", "look": "chuck" },
+            { "trainer": "johto_leader_clair_clair_2", "look": "clair" }
+          ],
+          "kind": "leaders"
+        },
+        {
+          "id": "johtoChampion",
+          "points": 6,
+          "always": [
+            { "trainer": "johto_champion_lance_2", "look": "lance" },
+            { "trainer": "johto_elite_four_will_will_2", "look": "will" },
+            { "trainer": "johto_elite_four_koga_koga_2", "look": "koga" },
+            { "trainer": "johto_elite_four_bruno_bruno_2", "look": "bruno" },
+            { "trainer": "johto_elite_four_karen_karen_2", "look": "karen" }
+          ],
+          "pool": [
+            { "trainer": "johto_leader_falkner_falkner_2", "look": "falkner" },
+            { "trainer": "johto_leader_bugsy_bugsy_2", "look": "bugsy" },
+            { "trainer": "johto_leader_whitney_2", "look": "whitney" },
+            { "trainer": "johto_leader_morty_morty_2", "look": "morty" },
+            { "trainer": "johto_leader_pryce_pryce_2", "look": "pryce" },
+            { "trainer": "johto_leader_jasmine_jasmine_2", "look": "jasmine" },
+            { "trainer": "johto_leader_chuck_chuck_2", "look": "chuck" },
+            { "trainer": "johto_leader_clair_clair_2", "look": "clair" }
+          ],
+          "kind": "league",
+          "after": "johtoLeaders"
+        }
+      ]
+    },
+    {
+      "region": "Hoenn",
+      "events": [
+        {
+          "id": "hoennLeaders",
+          "points": 3,
+          "always": [],
+          "pool": [
+            { "trainer": "hoenn_roxanne_5", "look": "roxanne" },
+            { "trainer": "hoenn_brawly_5", "look": "brawly" },
+            { "trainer": "hoenn_wattson_5", "look": "wattson" },
+            { "trainer": "hoenn_flannery_5", "look": "flannery" },
+            { "trainer": "hoenn_norman_5", "look": "norman" },
+            { "trainer": "hoenn_winona_5", "look": "winona" },
+            { "trainer": "hoenn_tate_and_liza_5", "look": "tate" },
+            { "trainer": "hoenn_juan_5", "look": "juan" }
+          ],
+          "kind": "leaders"
+        },
+        {
+          "id": "hoennChampion",
+          "points": 6,
+          "always": [
+            { "trainer": "hoenn_wallace_rematch", "look": "wallace" },
+            { "trainer": "hoenn_sidney_rematch", "look": "sidney" },
+            { "trainer": "hoenn_phoebe_rematch", "look": "phoebe" },
+            { "trainer": "hoenn_glacia_rematch", "look": "glacia" },
+            { "trainer": "hoenn_drake_rematch", "look": "drake" }
+          ],
+          "pool": [
+            { "trainer": "hoenn_roxanne_5", "look": "roxanne" },
+            { "trainer": "hoenn_brawly_5", "look": "brawly" },
+            { "trainer": "hoenn_wattson_5", "look": "wattson" },
+            { "trainer": "hoenn_flannery_5", "look": "flannery" },
+            { "trainer": "hoenn_norman_5", "look": "norman" },
+            { "trainer": "hoenn_winona_5", "look": "winona" },
+            { "trainer": "hoenn_tate_and_liza_5", "look": "tate" },
+            { "trainer": "hoenn_juan_5", "look": "juan" }
+          ],
+          "kind": "league",
+          "after": "hoennLeaders"
+        }
+      ]
+    },
+    {
+      "region": "Unova",
+      "events": [
+        {
+          "id": "unovaLeaders",
+          "points": 3,
+          "always": [],
+          "pool": [
+            { "trainer": "unova_leader_cheren_2", "look": "cheren" },
+            { "trainer": "unova_leader_roxie_2", "look": "roxie" },
+            { "trainer": "unova_leader_burgh_2", "look": "burgh" },
+            { "trainer": "unova_leader_elesa_2", "look": "elesa" },
+            { "trainer": "unova_leader_clay_2", "look": "clay" },
+            { "trainer": "unova_leader_skyla_2", "look": "skyla" },
+            { "trainer": "unova_leader_drayden_2", "look": "dragon_tamer" },
+            { "trainer": "unova_leader_marlon_2", "look": "swimmer_m" }
+          ],
+          "kind": "leaders"
+        },
+        {
+          "id": "unovaChampion",
+          "points": 6,
+          "always": [
+            { "trainer": "unova_champion_iris_4", "look": "iris" },
+            { "trainer": "unova_elite_four_shauntal_4", "look": "shauntal" },
+            { "trainer": "unova_elite_four_grimsley_4", "look": "grimsley" },
+            { "trainer": "unova_elite_four_marshal_4", "look": "marshal" },
+            { "trainer": "unova_elite_four_caitlin_4", "look": "caitlin" }
+          ],
+          "pool": [
+            { "trainer": "unova_leader_cheren_2", "look": "cheren" },
+            { "trainer": "unova_leader_roxie_2", "look": "roxie" },
+            { "trainer": "unova_leader_burgh_2", "look": "burgh" },
+            { "trainer": "unova_leader_elesa_2", "look": "elesa" },
+            { "trainer": "unova_leader_clay_2", "look": "clay" },
+            { "trainer": "unova_leader_skyla_2", "look": "skyla" },
+            { "trainer": "unova_leader_drayden_2", "look": "dragon_tamer" },
+            { "trainer": "unova_leader_marlon_2", "look": "swimmer_m" }
+          ],
+          "kind": "league",
+          "after": "unovaLeaders"
+        }
+      ]
+    },
+    {
+      "region": "World",
+      "events": [
+        {
+          "id": "worldLeaders",
+          "points": 6,
+          "always": [],
+          "pool": [],
+          "kind": "leaders",
+          "after": "sinnohLeaders",
+          "from": [ "sinnohLeaders", "kantoLeaders", "johtoLeaders", "hoennLeaders", "unovaLeaders" ]
+        },
+        {
+          "id": "worldChampions",
+          "points": 10,
+          "always": [
+            { "trainer": "champion_cynthia_rematch", "look": "cynthia" },
+            { "trainer": "kanto_champion_rematch_squirtle", "look": "blue" },
+            { "trainer": "johto_champion_lance_2", "look": "lance" },
+            { "trainer": "hoenn_wallace_rematch", "look": "wallace" },
+            { "trainer": "unova_champion_iris_4", "look": "iris" }
+          ],
+          "pool": [],
+          "kind": "champions",
+          "after": "sinnohChampion",
+          "from": [ "sinnohChampion", "kantoChampion", "johtoChampion", "hoennChampion", "unovaChampion" ]
+        },
+        {
+          "id": "worldBeyond",
+          "points": 12,
+          "always": [
+            { "trainer": "champion_cynthia_beyond", "look": "cynthia" },
+            { "trainer": "kanto_champion_beyond", "look": "blue" },
+            { "trainer": "johto_champion_lance_beyond", "look": "lance" },
+            { "trainer": "hoenn_wallace_beyond", "look": "wallace" },
+            { "trainer": "unova_champion_iris_beyond", "look": "iris" }
+          ],
+          "pool": [
+            { "trainer": "elite_four_aaron_beyond", "look": "aaron" },
+            { "trainer": "elite_four_bertha_beyond", "look": "bertha" },
+            { "trainer": "elite_four_flint_beyond", "look": "flint" },
+            { "trainer": "elite_four_lucian_beyond", "look": "lucian" },
+            { "trainer": "kanto_elite_four_lorelei_beyond", "look": "lorelei" },
+            { "trainer": "kanto_elite_four_bruno_beyond", "look": "bruno" },
+            { "trainer": "kanto_elite_four_agatha_beyond", "look": "agatha" },
+            { "trainer": "kanto_elite_four_lance_beyond", "look": "lance" },
+            { "trainer": "johto_elite_four_will_will_beyond", "look": "will" },
+            { "trainer": "johto_elite_four_koga_koga_beyond", "look": "koga" },
+            { "trainer": "johto_elite_four_bruno_bruno_beyond", "look": "bruno" },
+            { "trainer": "johto_elite_four_karen_karen_beyond", "look": "karen" },
+            { "trainer": "hoenn_sidney_beyond", "look": "sidney" },
+            { "trainer": "hoenn_phoebe_beyond", "look": "phoebe" },
+            { "trainer": "hoenn_glacia_beyond", "look": "glacia" },
+            { "trainer": "hoenn_drake_beyond", "look": "drake" },
+            { "trainer": "unova_elite_four_shauntal_beyond", "look": "shauntal" },
+            { "trainer": "unova_elite_four_grimsley_beyond", "look": "grimsley" },
+            { "trainer": "unova_elite_four_marshal_beyond", "look": "marshal" },
+            { "trainer": "unova_elite_four_caitlin_beyond", "look": "caitlin" }
+          ],
+          "kind": "champions",
+          "after": "worldChampions"
+        },
+        {
+          "id": "worldDoubles",
+          "points": 4,
+          "always": [],
+          "pool": [],
+          "kind": "leaders",
+          "after": "worldLeaders",
+          "format": "double",
+          "from": [ "sinnohLeaders", "kantoLeaders", "johtoLeaders", "hoennLeaders", "unovaLeaders" ]
+        },
+        {
+          "id": "worldTriples",
+          "points": 4,
+          "always": [],
+          "pool": [],
+          "kind": "leaders",
+          "after": "worldLeaders",
+          "format": "triple",
+          "from": [ "sinnohLeaders", "kantoLeaders", "johtoLeaders", "hoennLeaders", "unovaLeaders" ]
+        },
+        {
+          "id": "worldRotation",
+          "points": 4,
+          "always": [],
+          "pool": [],
+          "kind": "leaders",
+          "after": "worldLeaders",
+          "format": "rotation",
+          "from": [ "sinnohLeaders", "kantoLeaders", "johtoLeaders", "hoennLeaders", "unovaLeaders" ]
+        },
+        {
+          "id": "worldMix",
+          "points": 4,
+          "always": [],
+          "pool": [],
+          "kind": "leaders",
+          "after": "worldLeaders",
+          "mix": true,
+          "from": [ "sinnohLeaders", "kantoLeaders", "johtoLeaders", "hoennLeaders", "unovaLeaders" ]
+        },
+        {
+          "id": "worldRental",
+          "points": 4,
+          "always": [],
+          "pool": [],
+          "kind": "leaders",
+          "after": "worldLeaders",
+          "rental": true,
+          "from": [ "sinnohLeaders", "kantoLeaders", "johtoLeaders", "hoennLeaders", "unovaLeaders" ]
+        },
+        {
+          "id": "typeWater",
+          "points": 4,
+          "always": [],
+          "pool": [],
+          "after": "worldLeaders",
+          "types": [ "Water" ],
+          "from": [ "sinnohLeaders", "kantoLeaders", "johtoLeaders", "hoennLeaders", "unovaLeaders", "sinnohChampion", "kantoChampion", "johtoChampion", "hoennChampion", "unovaChampion" ]
+        },
+        {
+          "id": "typeFireElectric",
+          "points": 4,
+          "always": [],
+          "pool": [],
+          "after": "worldLeaders",
+          "types": [ "Fire", "Electric" ],
+          "from": [ "sinnohLeaders", "kantoLeaders", "johtoLeaders", "hoennLeaders", "unovaLeaders", "sinnohChampion", "kantoChampion", "johtoChampion", "hoennChampion", "unovaChampion" ]
+        },
+        {
+          "id": "typeIceDark",
+          "points": 4,
+          "always": [],
+          "pool": [],
+          "after": "worldLeaders",
+          "types": [ "Ice", "Dark" ],
+          "from": [ "sinnohLeaders", "kantoLeaders", "johtoLeaders", "hoennLeaders", "unovaLeaders", "sinnohChampion", "kantoChampion", "johtoChampion", "hoennChampion", "unovaChampion" ]
+        },
+        {
+          "id": "typeDragonFlying",
+          "points": 4,
+          "always": [],
+          "pool": [],
+          "after": "worldLeaders",
+          "types": [ "Dragon", "Flying" ],
+          "from": [ "sinnohLeaders", "kantoLeaders", "johtoLeaders", "hoennLeaders", "unovaLeaders", "sinnohChampion", "kantoChampion", "johtoChampion", "hoennChampion", "unovaChampion" ]
+        },
+        {
+          "id": "typeGhostPsychic",
+          "points": 4,
+          "always": [],
+          "pool": [],
+          "after": "worldLeaders",
+          "types": [ "Ghost", "Psychic" ],
+          "from": [ "sinnohLeaders", "kantoLeaders", "johtoLeaders", "hoennLeaders", "unovaLeaders", "sinnohChampion", "kantoChampion", "johtoChampion", "hoennChampion", "unovaChampion" ]
+        },
+        {
+          "id": "typeFightingSteel",
+          "points": 4,
+          "always": [],
+          "pool": [],
+          "after": "worldLeaders",
+          "types": [ "Fighting", "Steel" ],
+          "from": [ "sinnohLeaders", "kantoLeaders", "johtoLeaders", "hoennLeaders", "unovaLeaders", "sinnohChampion", "kantoChampion", "johtoChampion", "hoennChampion", "unovaChampion" ]
+        },
+        {
+          "id": "typeRockGroundGrass",
+          "points": 4,
+          "always": [],
+          "pool": [],
+          "after": "worldLeaders",
+          "types": [ "Rock", "Ground", "Grass" ],
+          "from": [ "sinnohLeaders", "kantoLeaders", "johtoLeaders", "hoennLeaders", "unovaLeaders", "sinnohChampion", "kantoChampion", "johtoChampion", "hoennChampion", "unovaChampion" ]
+        },
+        {
+          "id": "typeBugPoisonNormal",
+          "points": 4,
+          "always": [],
+          "pool": [],
+          "after": "worldLeaders",
+          "types": [ "Bug", "Poison", "Normal" ],
+          "from": [ "sinnohLeaders", "kantoLeaders", "johtoLeaders", "hoennLeaders", "unovaLeaders", "sinnohChampion", "kantoChampion", "johtoChampion", "hoennChampion", "unovaChampion" ]
         }
       ]
     }

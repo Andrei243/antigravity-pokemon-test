@@ -704,6 +704,7 @@ public class ScriptTests
           tournament finish won
           tournament points
           tournament end
+          tournament rental
         script Other
           end
         """;

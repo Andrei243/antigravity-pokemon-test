@@ -32,6 +32,29 @@ public sealed class TournamentEventRecord
 
     /// <summary>The rest of the seven are drawn from these, none twice and none of <see cref="Always"/>.</summary>
     public List<TournamentEntrantRecord> Pool { get; set; } = new();
+
+    // ------------------------------------------------------------------ plan 14 · B12: the other events
+
+    /// <summary>Events whose entrants (always-in and pool) join this one's pool, so a world event names no trainer twice.</summary>
+    public List<string> From { get; set; } = new();
+
+    /// <summary>
+    /// Who may be seated (<see cref="Models.Tournament.OfKind"/>): <c>leaders</c> (a class that begins "Leader"),
+    /// <c>champions</c> (a Champion or one of the Elite Four), <c>league</c> (any of them), or null for anyone the event names.
+    /// </summary>
+    public string? Kind { get; set; }
+
+    /// <summary>A type bracket's types: every entrant brings three of them, the player's three each of one of them; empty for any.</summary>
+    public List<string> Types { get; set; } = new();
+
+    /// <summary>The battle's format: <c>single</c> (the default), <c>double</c>, <c>triple</c> or <c>rotation</c>.</summary>
+    public string? Format { get; set; }
+
+    /// <summary>The rental event: everyone, the player too, fights with three drawn from the Battle Factory's rentals.</summary>
+    public bool Rental { get; set; }
+
+    /// <summary>The mixed event: before each match the two in it hand each other one of their three.</summary>
+    public bool Mix { get; set; }
 }
 
 /// <summary>A region's events, a section of the file (plan 14 · B12 adds the other regions' as their tables land).</summary>
@@ -58,9 +81,38 @@ public static class TournamentDatabase
 
     public static IReadOnlyList<TournamentRegionRecord> Regions => Data.Regions;
 
-    /// <summary>Every event, region by region in the file's order.</summary>
-    public static IReadOnlyList<TournamentEventRecord> Events => Data.Regions.SelectMany(r => r.Events).ToList();
+    /// <summary>The section of the events of no one region (the World Leaders, the type brackets): read whatever data there is.</summary>
+    public const string World = "World";
+
+    /// <summary>Every event the file writes, region by region in the file's order, whether its trainers' tables are there or not.</summary>
+    public static IReadOnlyList<TournamentEventRecord> All => Data.Regions.SelectMany(r => r.Events).ToList();
+
+    private static readonly Lazy<IReadOnlyList<TournamentEventRecord>> Offered = new(() =>
+        Models.Tournament.Offered(Data, id => TrainerDatabase.Get(id) != null, HasData));
+
+    /// <summary>
+    /// The events offered (plan 14 · B12): a region's section only once its trainers' table exists (Sinnoh's is the
+    /// game's own; the others are <c>Data/world/&lt;region&gt;/trainers.json</c>), and an event only when it can
+    /// seat seven of its kind among the trainers there are.
+    /// </summary>
+    public static IReadOnlyList<TournamentEventRecord> Events => Offered.Value;
+
+    /// <summary>Whether a section's region has trainers of its own to seat: Sinnoh and the world's always.</summary>
+    public static bool HasData(string region) =>
+        region.Equals("Sinnoh", StringComparison.OrdinalIgnoreCase) || region.Equals(World, StringComparison.OrdinalIgnoreCase)
+        || TrainerDatabase.OfRegion(region.ToLowerInvariant()).Count > 0;
+
+    /// <summary>The event's entrants, its always-in and its pool (with those of the events it draws <see cref="TournamentEventRecord.From"/>), none twice.</summary>
+    public static (List<TournamentEntrantRecord> Always, List<TournamentEntrantRecord> Pool) EntrantsOf(TournamentEventRecord ev, TournamentData? data = null)
+    {
+        var events = (data ?? Data).Regions.SelectMany(r => r.Events).ToList();
+        var always = ev.Always.ToList();
+        var pool = new List<TournamentEntrantRecord>();
+        foreach (var entrant in ev.Pool.Concat(ev.From.SelectMany(id => events.Where(e => e.Id == id).SelectMany(e => e.Always.Concat(e.Pool)))))
+            if (always.Concat(pool).All(a => !a.Trainer.Equals(entrant.Trainer, StringComparison.OrdinalIgnoreCase))) pool.Add(entrant);
+        return (always, pool);
+    }
 
     public static TournamentEventRecord? Get(string? id) =>
-        id == null ? null : Events.FirstOrDefault(e => string.Equals(e.Id, id, StringComparison.OrdinalIgnoreCase));
+        id == null ? null : All.FirstOrDefault(e => string.Equals(e.Id, id, StringComparison.OrdinalIgnoreCase));
 }

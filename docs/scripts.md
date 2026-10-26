@@ -915,6 +915,7 @@ host's `Tournament`; nothing of it is saved but the record (`FrontierRecords.Tou
 | `tournament battle` | The match: the three at level 50 against the opponent's three at level 50, the tournament's own songs, nothing paid or gained (`RESULT` 1 won, 0 lost). |
 | `tournament won`, `tournament lost` | Decides the player's match and fights every other match of the round headless; `won` is `RESULT` 1 when that was the final. |
 | `tournament finish won`, `tournament finish lost`, `tournament points`, `tournament end` | Writes the record (a title for a win); hands over the event's Battle Points for a title (`RESULT` and `{number}`); lets go of the tournament. |
+| `tournament rental` | Plan 14 · B12: `RESULT` 1 when the event chosen is the rental event, whose three are lent as it begins (`tournament choose` then opens nothing and is 1); `tournament check` is also 3 when a type bracket's three are not each of one of its types. |
 
 ### Amity Square's walk
 

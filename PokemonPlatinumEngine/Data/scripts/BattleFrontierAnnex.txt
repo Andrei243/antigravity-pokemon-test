@@ -262,12 +262,16 @@ label TournamentEvents
   say "Which event would you like to enter?"
   tournament events
   if result == 0 goto TournamentLater
+  tournament rental
+  if result == 1 goto TournamentRental
   say "Please choose the three Pokémon you'll enter."
   tournament choose
   if result == 0 goto TournamentLater
   tournament check
   if result == 1 goto TournamentSameSpecies
   if result == 2 goto TournamentSameItem
+  if result == 3 goto TournamentWrongType
+label TournamentBegin
   tournament begin
   say "Thank you! The bracket has been drawn. This way to the hall, please!"
   fade out 0.6
@@ -279,6 +283,14 @@ label TournamentSameSpecies
   goto TournamentLater
 label TournamentSameItem
   say "I'm sorry. No two of the three entered may hold the same item."
+  goto TournamentLater
+label TournamentWrongType
+  say "I'm sorry. In this event, each of the three entered must be of one of the event's types."
+  goto TournamentLater
+label TournamentRental
+  say "This is the rental event! You'll be lent three Pokémon, and so will every Trainer you meet."
+  tournament choose
+  goto TournamentBegin
 label TournamentLater
   say "Please come again. The Leaders are always ready for another tournament."
   end
