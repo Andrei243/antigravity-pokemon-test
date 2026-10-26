@@ -200,6 +200,7 @@ if (mode == "serve") h.ServeMode();
 if (mode == "scenarios") h.ScenariosMode();
 if (mode == "venues") h.VenuesMode();
 if (mode == "layers") h.LayersMode();
+if (mode == "soak") h.SoakMode();
 
 h.Close();
 Raylib.CloseWindow();

@@ -265,7 +265,7 @@ public class WardrobeScreen
         context.EnsureLoaded();
         if (!figureLoaded)
         {
-            figure = Raylib.LoadRenderTexture(FigureWidth, FigureHeight);
+            figure = Gpu.Target(FigureWidth, FigureHeight, "ui");
             Raylib.SetTextureFilter(figure.Texture, TextureFilter.Bilinear);
             figureLoaded = true;
         }

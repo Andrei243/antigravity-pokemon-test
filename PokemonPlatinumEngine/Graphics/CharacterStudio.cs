@@ -125,7 +125,7 @@ internal static class CharacterStudio
         var rig = CharacterModels.Get(npcType, context.Shaders);
         var shaders = context.Shaders;
         var sheet = Raylib.GenImageColor(w * yaws.Length, h, new Color(206, 218, 232, 255));
-        var target = Raylib.LoadRenderTexture(w, h);
+        var target = Gpu.Target(w, h, "studio");
 
         for (int i = 0; i < yaws.Length; i++)
         {
@@ -153,7 +153,7 @@ internal static class CharacterStudio
             Raylib.UnloadImage(view);
         }
         Rlgl.SetClipPlanes(0.01, 1000.0);
-        Raylib.UnloadRenderTexture(target);
+        Gpu.Unload(target);
         return sheet;
     }
 }

@@ -1345,7 +1345,7 @@ internal sealed class GymPieces
     private Texture2D Upload(ArtSheet sheet)
     {
         var image = sheet.ToCanvas().ToImage();
-        var texture = Raylib.LoadTextureFromImage(image);
+        var texture = Gpu.TextureFromImage(image, "gym");
         Raylib.UnloadImage(image);
         Raylib.SetTextureFilter(texture, TextureFilter.Point);
         Raylib.SetTextureWrap(texture, TextureWrap.Clamp);
@@ -1369,12 +1369,12 @@ internal sealed class GymPieces
     {
         foreach (var piece in owned)
         {
-            Raylib.UnloadMesh(piece.Mesh);
+            Gpu.Unload(piece.Mesh);
             if (piece.Main.Maps != null) Raylib.MemFree(piece.Main.Maps);
             if (piece.Depth.Maps != null) Raylib.MemFree(piece.Depth.Maps);
         }
         owned.Clear();
-        if (art.Id != 0) Raylib.UnloadTexture(art);
+        if (art.Id != 0) Gpu.Unload(art);
         art = default;
         builtFor = null;
         minuteHand = hourHand = waterPool = stillParts = raft = null;

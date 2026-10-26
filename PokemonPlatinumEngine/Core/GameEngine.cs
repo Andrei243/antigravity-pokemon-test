@@ -248,7 +248,7 @@ public partial class GameEngine
         using var startUp = Log.Phase("start-up, in all");
         using (Log.Phase("the screen"))
         {
-            virtualScreen = Raylib.LoadRenderTexture(VirtualWidth * RenderScale, VirtualHeight * RenderScale);
+            virtualScreen = Gpu.Target(VirtualWidth * RenderScale, VirtualHeight * RenderScale, "screen");
             UiShapes.PixelScale = RenderScale;
             Raylib.SetTextureFilter(virtualScreen.Texture, TextureFilter.Bilinear);
         }
@@ -2944,7 +2944,7 @@ public partial class GameEngine
         band.End();
         renderContext.Unload();
         RegionMapPictures.Unload();
-        Raylib.UnloadRenderTexture(virtualScreen);
+        Gpu.Unload(virtualScreen);
         AudioManager.Close();
     }
 }

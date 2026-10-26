@@ -106,7 +106,7 @@ internal sealed class SkinnedModel
         }
         for (int i = 0; i < source.Indices.Length; i++) idx[i] = (ushort)source.Indices[i];
 
-        Raylib.UploadMesh(ref mesh, false);
+        Gpu.Upload(ref mesh, "rig");
         var uploaded = new SkinnedModel { Mesh = mesh, BoneCount = boneCount };
         uploaded.AttachBones(n);
         return uploaded;
@@ -127,10 +127,10 @@ internal sealed class SkinnedModel
     private unsafe void AttachBones(int vertexCount)
     {
         Rlgl.EnableVertexArray(Mesh.VaoId);
-        boneIndexBuffer = Rlgl.LoadVertexBuffer(Mesh.BoneIndices, vertexCount * 4, false);
+        boneIndexBuffer = Gpu.VertexBuffer(Mesh.BoneIndices, vertexCount * 4, "rig");
         Rlgl.SetVertexAttribute(BoneIndexLocation, 4, GlUnsignedByte, false, 0, 0);
         Rlgl.EnableVertexAttribute(BoneIndexLocation);
-        boneWeightBuffer = Rlgl.LoadVertexBuffer(Mesh.BoneWeights, vertexCount * 4 * sizeof(float), false);
+        boneWeightBuffer = Gpu.VertexBuffer(Mesh.BoneWeights, vertexCount * 4 * sizeof(float), "rig");
         Rlgl.SetVertexAttribute(BoneWeightLocation, 4, GlFloat, false, 0, 0);
         Rlgl.EnableVertexAttribute(BoneWeightLocation);
         Rlgl.DisableVertexArray();
@@ -166,9 +166,9 @@ internal sealed class SkinnedModel
     /// <summary>Frees the mesh and its buffers, the two of the bones among them. Call on the main thread, once.</summary>
     public void Unload()
     {
-        if (boneIndexBuffer != 0) Rlgl.UnloadVertexBuffer(boneIndexBuffer);
-        if (boneWeightBuffer != 0) Rlgl.UnloadVertexBuffer(boneWeightBuffer);
+        if (boneIndexBuffer != 0) Gpu.UnloadVertexBuffer(boneIndexBuffer);
+        if (boneWeightBuffer != 0) Gpu.UnloadVertexBuffer(boneWeightBuffer);
         boneIndexBuffer = boneWeightBuffer = 0;
-        Raylib.UnloadMesh(Mesh);
+        Gpu.Unload(Mesh);
     }
 }

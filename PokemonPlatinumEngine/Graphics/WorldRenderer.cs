@@ -110,6 +110,9 @@ public sealed partial class WorldRenderer
         public int Waits { get; internal set; }
         public double WorstWaitMs { get; internal set; }
 
+        /// <summary>What the last frame drawn spent uploading and waiting (plan 16 · T21, for the soak run's causes).</summary>
+        public double LastFrameMs { get; internal set; }
+
         public override string ToString() =>
             $"{Chunks} chunks made ready ({(Chunks > 0 ? TotalUploadMs / Chunks : 0):F1} ms of uploads each, at most {WorstFrameMs:F1} ms in a frame), {Waits} waited for (worst {WorstWaitMs:F1} ms)";
     }
@@ -164,6 +167,7 @@ public sealed partial class WorldRenderer
     private List<MapScene> ScenesFor(Map map, float focusX, float focusZ, GroundRect? view, GroundRect? ahead = null)
     {
         drawn.Clear();
+        Streaming.LastFrameMs = 0;
         if (!map.IsStreamed)
         {
             drawn.Add(GetScene(map));
@@ -233,6 +237,7 @@ public sealed partial class WorldRenderer
         }
         double spent = streamClock.Elapsed.TotalMilliseconds;
         Streaming.TotalUploadMs += spent;
+        Streaming.LastFrameMs = spent;
         Streaming.WorstFrameMs = Math.Max(Streaming.WorstFrameMs, spent);
 
         Evict(map, focusX, focusZ);

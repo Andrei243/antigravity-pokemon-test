@@ -109,7 +109,7 @@ public sealed class RenderContext
         if (Quality.Reflections)
         {
             // Read in whole texels of the field, so it is never filtered
-            var mirror = Raylib.LoadRenderTexture(Reflections.TargetWidth, Reflections.TargetHeight);
+            var mirror = Gpu.Target(Reflections.TargetWidth, Reflections.TargetHeight, "post");
             Raylib.SetTextureFilter(mirror.Texture, TextureFilter.Point);
             Raylib.SetTextureWrap(mirror.Texture, TextureWrap.Clamp);
             Mirror = mirror;
@@ -122,11 +122,11 @@ public sealed class RenderContext
     /// <summary>A colour target whose depth is a texture (raylib's own render textures keep depth in a renderbuffer).</summary>
     private static unsafe RenderTexture2D LoadSceneTarget(int width, int height)
     {
-        var rt = new RenderTexture2D { Id = Rlgl.LoadFramebuffer() };
+        var rt = new RenderTexture2D { Id = Gpu.Framebuffer("post") };
         Rlgl.EnableFramebuffer(rt.Id);
         rt.Texture = new Texture2D
         {
-            Id = Rlgl.LoadTexture(null, width, height, PixelFormat.UncompressedR8G8B8A8, 1),
+            Id = Gpu.RawTexture(width, height, PixelFormat.UncompressedR8G8B8A8, "post"),
             Width = width,
             Height = height,
             Format = PixelFormat.UncompressedR8G8B8A8,
@@ -134,7 +134,7 @@ public sealed class RenderContext
         };
         rt.Depth = new Texture2D
         {
-            Id = Rlgl.LoadTextureDepth(width, height, false),
+            Id = Gpu.DepthTexture(width, height, "post"),
             Width = width,
             Height = height,
             Format = (PixelFormat)19,
@@ -155,11 +155,11 @@ public sealed class RenderContext
     /// </summary>
     private static unsafe RenderTexture2D LoadDepthCopy(int width, int height)
     {
-        var rt = new RenderTexture2D { Id = Rlgl.LoadFramebuffer() };
+        var rt = new RenderTexture2D { Id = Gpu.Framebuffer("post") };
         Rlgl.EnableFramebuffer(rt.Id);
         rt.Texture = new Texture2D
         {
-            Id = Rlgl.LoadTexture(null, width, height, PixelFormat.UncompressedR32, 1),
+            Id = Gpu.RawTexture(width, height, PixelFormat.UncompressedR32, "post"),
             Width = width,
             Height = height,
             Format = PixelFormat.UncompressedR32,
@@ -176,7 +176,7 @@ public sealed class RenderContext
     /// <summary>A filtered target a fraction of the virtual screen (half for blur and bloom, a quarter for occlusion).</summary>
     private RenderTexture2D HalfTarget(int divisor = 2)
     {
-        var rt = Raylib.LoadRenderTexture(Width / divisor, Height / divisor);
+        var rt = Gpu.Target(Width / divisor, Height / divisor, "post");
         Raylib.SetTextureFilter(rt.Texture, TextureFilter.Bilinear);
         Raylib.SetTextureWrap(rt.Texture, TextureWrap.Clamp);
         return rt;
@@ -290,13 +290,13 @@ public sealed class RenderContext
     private void UnloadTargets()
     {
         if (!targetsLoaded) return;
-        Rlgl.UnloadFramebuffer(Target.Id);
-        Rlgl.UnloadTexture(Target.Texture.Id);
-        Rlgl.UnloadTexture(Target.Depth.Id);
-        Rlgl.UnloadFramebuffer(depthHalf.Id);
-        Rlgl.UnloadTexture(depthHalf.Texture.Id);
-        foreach (var rt in new[] { half, blurA, blurB, bloomA, bloomB, aoA, aoB }) Raylib.UnloadRenderTexture(rt);
-        if (Mirror.Id != 0) Raylib.UnloadRenderTexture(Mirror);
+        Gpu.UnloadFramebuffer(Target.Id);
+        Gpu.UnloadRawTexture(Target.Texture.Id);
+        Gpu.UnloadRawTexture(Target.Depth.Id);
+        Gpu.UnloadFramebuffer(depthHalf.Id);
+        Gpu.UnloadRawTexture(depthHalf.Texture.Id);
+        foreach (var rt in new[] { half, blurA, blurB, bloomA, bloomB, aoA, aoB }) Gpu.Unload(rt);
+        if (Mirror.Id != 0) Gpu.Unload(Mirror);
         Mirror = default;
         Shadows.Unload();
         targetsLoaded = false;

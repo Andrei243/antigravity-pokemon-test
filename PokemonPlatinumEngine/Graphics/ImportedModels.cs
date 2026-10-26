@@ -866,7 +866,7 @@ internal static class ImportedModels
         foreach (var material in rig.Materials)
         {
             if (material is not { } mat) continue;
-            Raylib.UnloadTexture(mat.Maps[(int)MaterialMapIndex.Albedo].Texture);
+            Gpu.Unload(mat.Maps[(int)MaterialMapIndex.Albedo].Texture);
             Raylib.MemFree(mat.Maps);
         }
         rig.Materials = new Material?[rig.Images.Length];

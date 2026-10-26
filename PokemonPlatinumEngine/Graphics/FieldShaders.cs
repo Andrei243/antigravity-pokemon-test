@@ -903,23 +903,23 @@ void main()
     public void Load()
     {
         if (Loaded) return;
-        World = Raylib.LoadShaderFromMemory(CommonVertex, Shadowed(WorldFragment));
-        Depth = Raylib.LoadShaderFromMemory(CommonVertex, DepthFragment);
-        Prepass = Raylib.LoadShaderFromMemory(CommonVertex, DepthFragment);
-        Character = Raylib.LoadShaderFromMemory(CommonVertex, Shadowed(CharacterFragment));
-        Outline = Raylib.LoadShaderFromMemory(OutlineVertex, OutlineFragment);
-        CharacterSkinned = Raylib.LoadShaderFromMemory(SkinnedVertex, Shadowed(CharacterFragment));
-        DepthSkinned = Raylib.LoadShaderFromMemory(SkinnedVertex, DepthFragment);
-        OutlineSkinned = Raylib.LoadShaderFromMemory(SkinnedOutlineVertex, SkinnedOutlineFragment);
-        Water = Raylib.LoadShaderFromMemory(CommonVertex, Shadowed(WaterFragment));
-        SoftWater = Raylib.LoadShaderFromMemory(CommonVertex, Shadowed(SoftWaterFragment));
-        Sprite = Raylib.LoadShaderFromMemory(CommonVertex, SpriteFragment);
-        Light = Raylib.LoadShaderFromMemory(CommonVertex, LightFragment);
-        Post = Raylib.LoadShaderFromMemory(PostVertex, PostFragment);
-        Down = Raylib.LoadShaderFromMemory(PostVertex, DownFragment);
-        DepthCopy = Raylib.LoadShaderFromMemory(PostVertex, DepthCopyFragment);
-        Blur = Raylib.LoadShaderFromMemory(PostVertex, BlurFragment);
-        Ssao = Raylib.LoadShaderFromMemory(PostVertex, SsaoFragment);
+        World = Gpu.ShaderFrom(CommonVertex, Shadowed(WorldFragment), "shader");
+        Depth = Gpu.ShaderFrom(CommonVertex, DepthFragment, "shader");
+        Prepass = Gpu.ShaderFrom(CommonVertex, DepthFragment, "shader");
+        Character = Gpu.ShaderFrom(CommonVertex, Shadowed(CharacterFragment), "shader");
+        Outline = Gpu.ShaderFrom(OutlineVertex, OutlineFragment, "shader");
+        CharacterSkinned = Gpu.ShaderFrom(SkinnedVertex, Shadowed(CharacterFragment), "shader");
+        DepthSkinned = Gpu.ShaderFrom(SkinnedVertex, DepthFragment, "shader");
+        OutlineSkinned = Gpu.ShaderFrom(SkinnedOutlineVertex, SkinnedOutlineFragment, "shader");
+        Water = Gpu.ShaderFrom(CommonVertex, Shadowed(WaterFragment), "shader");
+        SoftWater = Gpu.ShaderFrom(CommonVertex, Shadowed(SoftWaterFragment), "shader");
+        Sprite = Gpu.ShaderFrom(CommonVertex, SpriteFragment, "shader");
+        Light = Gpu.ShaderFrom(CommonVertex, LightFragment, "shader");
+        Post = Gpu.ShaderFrom(PostVertex, PostFragment, "shader");
+        Down = Gpu.ShaderFrom(PostVertex, DownFragment, "shader");
+        DepthCopy = Gpu.ShaderFrom(PostVertex, DepthCopyFragment, "shader");
+        Blur = Gpu.ShaderFrom(PostVertex, BlurFragment, "shader");
+        Ssao = Gpu.ShaderFrom(PostVertex, SsaoFragment, "shader");
 
         foreach (var shader in new[] { World, Character, CharacterSkinned, Water, SoftWater })
         {
@@ -945,7 +945,7 @@ void main()
         if (!Loaded) return;
         foreach (var shader in new[] { World, Depth, Prepass, Character, Outline, CharacterSkinned, DepthSkinned, OutlineSkinned, Water, SoftWater, Sprite, Light, Post, Down, DepthCopy, Blur, Ssao })
         {
-            Raylib.UnloadShader(shader);
+            Gpu.Unload(shader);
         }
         Loaded = false;
     }

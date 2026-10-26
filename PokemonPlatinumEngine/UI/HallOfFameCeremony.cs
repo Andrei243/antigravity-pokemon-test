@@ -233,10 +233,10 @@ public sealed class HallOfFameCeremony
         {
             for (int i = 0; i < pictures.Length; i++)
             {
-                pictures[i] = Raylib.LoadRenderTexture(PictureSize, PictureSize);
+                pictures[i] = Gpu.Target(PictureSize, PictureSize, "ui");
                 Raylib.SetTextureFilter(pictures[i].Texture, TextureFilter.Bilinear);
             }
-            figure = Raylib.LoadRenderTexture(FigureWidth, FigureHeight);
+            figure = Gpu.Target(FigureWidth, FigureHeight, "ui");
             Raylib.SetTextureFilter(figure.Texture, TextureFilter.Bilinear);
             picturesLoaded = true;
         }
