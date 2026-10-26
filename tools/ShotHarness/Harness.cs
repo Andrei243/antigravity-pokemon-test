@@ -54,6 +54,8 @@ partial class Harness
         // word the table doesn't give shows bare
         if (Environment.GetEnvironmentVariable("SHOTS_LANGUAGE") is { Length: > 0 } language) engine.Settings.Language = language;
         engine.ApplySettings(window: false);
+        // SHOTS_SCALE=0.7 holds the scene at a step of dynamic resolution (plan 16 · T23); the whole preset unless named
+        if (float.TryParse(Environment.GetEnvironmentVariable("SHOTS_SCALE"), System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out float shotsScale)) engine.FixedResolutionStep = shotsScale;
         // SHOTS_LAYERS=solid,sight,... draws the field's rules over every field shot (plan 16 · T18); none unless named
         ShotLayers = DebugLayers.Parse(Environment.GetEnvironmentVariable("SHOTS_LAYERS") ?? "", out var unknownLayer)
             ?? throw new ArgumentException($"SHOTS_LAYERS names '{unknownLayer}', which is no layer");

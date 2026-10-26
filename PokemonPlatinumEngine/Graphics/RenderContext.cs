@@ -60,6 +60,40 @@ public sealed class RenderContext
     public static bool NeedsFxaa(QualityProfile quality, int sceneWidth, int windowWidth) =>
         quality.Fxaa && sceneWidth * 3 < windowWidth * 4;
 
+    /// <summary>
+    /// The share of the preset's width and height the scene is drawn at (plan 16 · T23, dynamic resolution): one of
+    /// <see cref="ResolutionScale.Steps"/>, 1 unless dynamic resolution or the harness's <c>SHOTS_SCALE</c> says
+    /// otherwise. The target stays the preset's; the scene is drawn into its top-left part (<see cref="BeginScene"/>),
+    /// and the post passes read that part. At 1 nothing is done that wasn't done before.
+    /// </summary>
+    public float ResolutionStep { get; set; } = 1f;
+
+    /// <summary>The part of the scene target the scene is drawn into, in pixels: the whole target at a step of 1.</summary>
+    public int PartWidth => ResolutionStep >= 1f ? Target.Texture.Width : Math.Max(1, (int)(Target.Texture.Width * ResolutionStep));
+
+    /// <inheritdoc cref="PartWidth"/>
+    public int PartHeight => ResolutionStep >= 1f ? Target.Texture.Height : Math.Max(1, (int)(Target.Texture.Height * ResolutionStep));
+
+    /// <summary>The part's share of the target, across and down: what the post passes scale their reading by.</summary>
+    private Vector2 Part => new((float)PartWidth / Target.Texture.Width, (float)PartHeight / Target.Texture.Height);
+
+    /// <summary>
+    /// Opens the scene target for the scene's pass, as <c>BeginTextureMode(Target)</c> does, drawing into the part
+    /// of it the step allows (plan 16 · T23): the viewport and the 2D projection are the part's, so a 3D camera and a
+    /// sky painted at <see cref="PartWidth"/> × <see cref="PartHeight"/> fill it. Closed with <c>EndTextureMode</c>.
+    /// </summary>
+    internal void BeginScene()
+    {
+        Raylib.BeginTextureMode(Target);
+        if (ResolutionStep >= 1f) return;
+        Rlgl.Viewport(0, 0, PartWidth, PartHeight);
+        Rlgl.MatrixMode(MatrixMode.Projection);
+        Rlgl.LoadIdentity();
+        Rlgl.Ortho(0, PartWidth, PartHeight, 0, 0, 1);
+        Rlgl.MatrixMode(MatrixMode.ModelView);
+        Rlgl.LoadIdentity();
+    }
+
     public bool Loaded { get; private set; }
 
     public RenderContext(int width, int height)
@@ -223,14 +257,14 @@ public sealed class RenderContext
         // The 4K picture is read once, into its half-size copy; the wide blur and the glow both start from that
         // (the glow keeps only what is bright as it takes its first step)
         if (post.Dof > 0f || post.BloomStrength > 0f)
-            Pass(Target.Texture, half, Shaders.Down, () => Shaders.SetDown(Texel(Target.Texture)));
+            Pass(Target.Texture, half, Shaders.Down, () => Shaders.SetDown(Texel(Target.Texture)), PartWidth, PartHeight);
         if (post.Dof > 0f) BlurChain(half.Texture, blurA, blurB, 1.5f, rounds: 2, threshold: 1f);
         FrameProfiler.Lap(FrameSection.Blur);
         if (post.BloomStrength > 0f) BlurChain(half.Texture, bloomA, bloomB, 1.2f, rounds: 2, post.BloomThreshold);
         FrameProfiler.Lap(FrameSection.Bloom);
         if (post.AoStrength > 0f)
         {
-            Pass(Target.Depth, depthHalf, Shaders.DepthCopy, () => { });
+            Pass(Target.Depth, depthHalf, Shaders.DepthCopy, () => { }, PartWidth, PartHeight);
             // (The pass steps three of its texels to either side to find the surface's slope: one texel of the copy)
             Pass(depthHalf.Texture, aoA, Shaders.Ssao, () => Shaders.SetSsao(Texel(depthHalf.Texture) / 3f, depth, aoRadius));
             BlurChain(aoA.Texture, aoA, aoB, 0.6f, rounds: 1, threshold: 1f);
@@ -262,12 +296,14 @@ public sealed class RenderContext
     /// Draws <paramref name="source"/> over all of <paramref name="destination"/> through a shader, keeping its
     /// orientation. Nothing is cleared first: every pixel is written.
     /// </summary>
-    private static void Pass(Texture2D source, RenderTexture2D destination, Shader shader, System.Action setUniforms)
+    /// <param name="width">How much of the source is read across, in pixels (all of it unless given): the scene's part (plan 16 · T23).</param>
+    /// <param name="height">How much of the source is read down, the same way.</param>
+    private static void Pass(Texture2D source, RenderTexture2D destination, Shader shader, System.Action setUniforms, int width = 0, int height = 0)
     {
         setUniforms();
         Raylib.BeginTextureMode(destination);
         Raylib.BeginShaderMode(shader);
-        Raylib.DrawTexturePro(source, new Rectangle(0, 0, source.Width, -source.Height),
+        Raylib.DrawTexturePro(source, new Rectangle(0, 0, width > 0 ? width : source.Width, -(height > 0 ? height : source.Height)),
             new Rectangle(0, 0, destination.Texture.Width, destination.Texture.Height), Vector2.Zero, 0f, Color.White);
         Raylib.EndShaderMode();
         Raylib.EndTextureMode();
@@ -277,11 +313,14 @@ public sealed class RenderContext
     public void Composite(Rectangle destination, SceneRipple ripple = default)
     {
         if (!targetsLoaded) return;
-        bool fxaa = NeedsFxaa(Quality, Target.Texture.Width, OutputWidth);
-        Shaders.SetPost(Texel(Target.Texture), post, depthRange, fxaa, Quality.SceneScale, ripple);
+        // At a step of dynamic resolution the scene is the target's top-left part: FXAA is asked by the part's width,
+        // the outlines are as many of its texels narrower, and the shader reads the part (plan 16 · T23)
+        bool fxaa = NeedsFxaa(Quality, PartWidth, OutputWidth);
+        var part = Part;
+        Shaders.SetPost(Texel(Target.Texture), post, depthRange, fxaa, Quality.SceneScale * part.X, ripple, part);
         Raylib.BeginShaderMode(Shaders.Post);
         Shaders.BindPostTextures(blurA.Texture, bloomA.Texture, aoA.Texture, Target.Depth);
-        var src = new Rectangle(0, 0, Target.Texture.Width, -Target.Texture.Height);
+        var src = new Rectangle(0, 0, PartWidth, -PartHeight);
         Raylib.DrawTexturePro(Target.Texture, src, destination, Vector2.Zero, 0f, Color.White);
         Raylib.EndShaderMode();
         FrameProfiler.Lap(FrameSection.Composite);

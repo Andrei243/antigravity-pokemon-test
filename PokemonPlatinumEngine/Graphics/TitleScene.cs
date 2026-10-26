@@ -51,9 +51,8 @@ internal sealed class TitleScene
         shaders.SetLighting(Matrix4x4.Identity, Light, camera.Position, 1f);
         shaders.SetCharacterStyle(shadowStrength: 0f, rimStrength: 1.3f * reveal);
 
-        var target2D = context.Target;
-        int tw = target2D.Texture.Width, th = target2D.Texture.Height;
-        Raylib.BeginTextureMode(target2D);
+        int tw = context.PartWidth, th = context.PartHeight;
+        context.BeginScene();
         PaintVoid(time, reveal, tw, th, offset);
 
         Rlgl.SetClipPlanes(Near, Far);

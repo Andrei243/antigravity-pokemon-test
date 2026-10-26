@@ -682,6 +682,7 @@ uniform vec3 shadowTint;
 uniform vec3 highlightTint;
 uniform float vignette;
 uniform vec4 ripple;
+uniform vec2 part;
 out vec4 finalColor;
 
 
@@ -722,14 +723,17 @@ float InverseDepth(vec2 uv)
 
 void main()
 {
-    vec2 uv = fragTexCoord;
+    // The picture's own place (0 to 1), and where that is in the scene target, whose top-left part alone holds the
+    // scene at a step of dynamic resolution (plan 16 · T23); the half-size buffers hold the part whole
+    vec2 uv = fragTexCoord / part;
     // A scene's ripple: each row of the field's texels pushed sideways by whole texels on a sine (SceneFx.RippleOffset)
     if (ripple.x > 0.0)
     {
         float row = floor(uv.y * ripple.w);
         uv.x = clamp(uv.x + floor(ripple.x * sin(6.2831853 * row / 24.0 + ripple.y) + 0.5) * ripple.z, 0.0, 1.0);
     }
-    vec3 color = fxaa > 0.5 ? Fxaa(uv) : texture(texture0, uv).rgb;
+    vec2 src = uv * part;
+    vec3 color = fxaa > 0.5 ? Fxaa(src) : texture(texture0, src).rgb;
 
     float band = abs(uv.y - 0.5) * 2.0;
     float edge = smoothstep(focusBand, 1.0, band);
@@ -741,14 +745,14 @@ void main()
             // Close in, four taps on the diagonals round the middle one lie as close as the texels themselves
             // (each is the card's own blend of four), and are as wide a blur as the disc is at this radius
             vec2 o = texel * radius * 0.64;
-            color = (color + texture(texture0, uv + o).rgb + texture(texture0, uv - o).rgb
-                + texture(texture0, uv + vec2(o.x, -o.y)).rgb + texture(texture0, uv + vec2(-o.x, o.y)).rgb) * 0.2;
+            color = (color + texture(texture0, src + o).rgb + texture(texture0, src - o).rgb
+                + texture(texture0, src + vec2(o.x, -o.y)).rgb + texture(texture0, src + vec2(-o.x, o.y)).rgb) * 0.2;
         }
         else
         {
             // Further out so few would show as doubled edges: the whole disc
             vec3 sum = color;
-            for (int i = 0; i < 12; i++) sum += texture(texture0, uv + taps[i] * radius * texel).rgb;
+            for (int i = 0; i < 12; i++) sum += texture(texture0, src + taps[i] * radius * texel).rgb;
             color = sum / 13.0;
         }
     }
@@ -760,9 +764,9 @@ void main()
     if (outlineStrength > 0.0)
     {
         vec2 o = texel * outlineWidth;
-        float c = InverseDepth(uv);
-        float around = InverseDepth(uv + vec2(o.x, 0.0)) + InverseDepth(uv - vec2(o.x, 0.0))
-                     + InverseDepth(uv + vec2(0.0, o.y)) + InverseDepth(uv - vec2(0.0, o.y));
+        float c = InverseDepth(src);
+        float around = InverseDepth(src + vec2(o.x, 0.0)) + InverseDepth(src - vec2(o.x, 0.0))
+                     + InverseDepth(src + vec2(0.0, o.y)) + InverseDepth(src - vec2(0.0, o.y));
         float rise = (4.0 * c - around) / c;
         color *= 1.0 - smoothstep(0.06, 0.2, rise) * outlineStrength;
     }
@@ -1147,8 +1151,10 @@ void main()
     }
 
     /// <param name="ripple">A scene's ripple (<see cref="SceneFx.Ripple"/>): the rows of the picture pushed sideways by whole texels of the field, nought when none plays.</param>
-    public void SetPost(Vector2 texel, PostSettings post, DepthRange depth, bool fxaa, float outlineWidth, SceneRipple ripple = default)
+    /// <param name="part">The share of the scene target the scene fills (plan 16 · T23): the whole of it unless dynamic resolution has stepped down.</param>
+    public void SetPost(Vector2 texel, PostSettings post, DepthRange depth, bool fxaa, float outlineWidth, SceneRipple ripple = default, Vector2 part = default)
     {
+        Set(Post, "part", part == default ? Vector2.One : part);
         Set(Post, "ripple", new Vector4(ripple.Reach, ripple.Phase, 1f / SceneFx.RippleColumns, SceneFx.RippleRows));
         Set(Post, "texel", texel);
         Set(Post, "blurStrength", post.TiltShift);

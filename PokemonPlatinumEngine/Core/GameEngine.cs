@@ -347,6 +347,8 @@ public partial class GameEngine
         }
         // On the first run only, a page of options comes before the title's notice (plan 16 · T24)
         OfferTheFirstStart();
+        // ... and behind it and the notice, the measuring of the preset this machine keeps (plan 16 · T23)
+        MeasureOnTheFirstRun();
     }
 
     /// <summary>Starts a new game at once as the boy with his own name: for tests and the screenshot harness.</summary>
@@ -2644,6 +2646,10 @@ public partial class GameEngine
         // its rig ready, and before the scene, which sets the uniforms it needs after them
         if (shown == GameState.Transition && flow.Closing) band.Render(renderContext);
 
+        // The first run's measuring, a frame of it, and the share of the preset this frame's scene is drawn at (plan 16 · T23)
+        MeasureAFrame();
+        ChooseTheResolution();
+
         // The 3D scenes render into their own targets first (texture modes can't nest)
         if (showWorld)
         {
@@ -2653,7 +2659,7 @@ public partial class GameEngine
         {
             battleRenderer.Render(flow.Battle!);
         }
-        else if (showTitle)
+        else if (showTitle && !MeasuringQuality)
         {
             flow.TitleScreen.Render(renderContext, world, titleScene);
         }
@@ -2924,6 +2930,7 @@ public partial class GameEngine
         TakeDevShot();
         TakeReportScreen();
         FrameProfiler.Lap(FrameSection.Interface);
+        SampleTheFrame();
 
         // Fit the 4K screen into the window (at 1080p this halves it, which also anti-aliases it)
         int screenW = Raylib.GetScreenWidth();
@@ -2946,6 +2953,7 @@ public partial class GameEngine
         Raylib.EndDrawing();
         FrameProfiler.Lap(FrameSection.Swap);
         FrameProfiler.EndFrame();
+        BeginTheNextFrame();
         // The first frame since a place was come to has been drawn: its arrival is timed to here (plan 16 · T3)
         EndTheArrival();
     }

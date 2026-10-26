@@ -233,14 +233,14 @@ public sealed class GameSettings
     /// <summary>
     /// Every option back at its default (plan 12 · Q3: the options' last row, behind a question): the settings as
     /// <c>new GameSettings()</c> has them. Not the scenes this machine has seen (<see cref="ScenesSeen"/>), which are
-    /// no option but a record of what was played, and not what a switch of the command line set for this run alone,
+    /// no option but a record of what was played, nor what the first run measured (plan 16 · T23), and not what a switch of the command line set for this run alone,
     /// which the run then forgets: the player has now chosen.
     /// </summary>
     public void ResetToDefaults()
     {
         var fresh = new GameSettings();
         foreach (var property in typeof(GameSettings).GetProperties())
-            if (property.GetSetMethod() is { IsPublic: true } && property.Name != nameof(ScenesSeen))
+            if (property.GetSetMethod() is { IsPublic: true } && property.Name is not (nameof(ScenesSeen) or nameof(MeasuredQuality) or nameof(MeasuredMilliseconds)))
                 property.SetValue(this, property.GetValue(fresh));
         forThisRun.Clear();
     }
@@ -300,6 +300,19 @@ public sealed class GameSettings
     /// after these, by name. Empty unless chosen; plan 16 · T15's screen changes it.
     /// </summary>
     public List<Data.PackChoice> Packs { get; set; } = new();
+
+    /// <summary>
+    /// Whether the scene is drawn smaller when a frame runs long (plan 16 · T23, <see cref="Graphics.ResolutionScale"/>):
+    /// off unless chosen, and switched on by the first run's measuring only when even Low misses the budget (plan 16's
+    /// decision 12). Never in force where the card can't be waited for (<c>Gl.Available</c>), nor in the harness.
+    /// </summary>
+    public bool DynamicResolution { get; set; }
+
+    /// <summary>The preset the first run's measuring chose on this machine (plan 16 · T23), or null where nothing was measured.</summary>
+    public GraphicsQuality? MeasuredQuality { get; set; }
+
+    /// <summary>The median frame, in milliseconds, of the preset the measuring chose: what the Quality row's help tells.</summary>
+    public double? MeasuredMilliseconds { get; set; }
 
     /// <summary>
     /// Notes a scene as seen on this machine; true when it hadn't been, which is when the options are worth writing
