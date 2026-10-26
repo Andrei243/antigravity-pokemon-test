@@ -238,6 +238,58 @@ internal static partial class PokemonModels
             prev = at;
         }
         b.Ell(Root, prev + V(0, t * 0.5f, 0), V(t * 0.5f, t * 0.42f, t * 0.5f), MmCyan, mat: Glow, blend: 0.008f);
+        MmFitDecals(b);
+    }
+
+    /// <summary>
+    /// The storm widens the build, so it meshes coarser: an eye or a marking whose square is only a few mesh cells
+    /// across would have too few vertices under it. Each is grown, eyes and marks together, until its square is
+    /// at least a few cells wide.
+    /// </summary>
+    private static int MmBoneHolding(PokeBuilder b, PokeDecal d)
+    {
+        PokemonDecals.Frame(d, out var right, out var up);
+        int bones = Math.Max(b.Model.Skeleton.Count, 1);
+        var least = new float[bones];
+        Array.Fill(least, 1f);
+        var w = new float[bones];
+        float reach = MathF.Max(d.Half.X, d.Half.Y);
+        for (int i = -2; i <= 2; i++)
+            for (int k = -2; k <= 2; k++)
+            {
+                var p = d.Center + right * (i * 0.5f * reach) + up * (k * 0.5f * reach);
+                p -= d.Normal * b.Sdf.Distance(p);
+                b.Sdf.Surface(p, w);
+                for (int j = 0; j < bones; j++) least[j] = MathF.Min(least[j], w[j]);
+            }
+        int best = d.Bone;
+        float most = best < bones ? least[best] : 0f;
+        for (int j = 0; j < bones; j++)
+            if (least[j] > most + 0.02f) { most = least[j]; best = j; }
+        return best;
+    }
+
+    private static void MmFitDecals(PokeBuilder b)
+    {
+        var (mn, mx) = b.Sdf.Bounds();
+        float cell = MathF.Max(mx.X - mn.X, MathF.Max(mx.Y - mn.Y, mx.Z - mn.Z)) * 1.05f / PokemonModels.CellsAcross;
+        foreach (var d in b.Model.Decals)
+        {
+            // The emblem was laid before the other parts blended in: sit it on the surface as it ended up
+            if (!d.IsEye && d.Shape is MarkShape.Ring or MarkShape.Star
+                && MmHit(b, d.Center + d.Normal * 0.12f, -d.Normal, 0.3f) is { } on)
+            {
+                d.Center = on;
+                d.Normal = MmNormal(b, on);
+                d.Bone = MmBoneHolding(b, d);
+            }
+            float least = MathF.Max(d.Half.X, d.Half.Y);
+            float want = cell * 3.2f;
+            if (least >= want) continue;
+            float k = want / least;
+            d.Half *= k;
+            d.Size *= k;
+        }
     }
 
     /// <summary>A zigzag of lightning (a thin lit tube) through <paramref name="points"/>.</summary>
