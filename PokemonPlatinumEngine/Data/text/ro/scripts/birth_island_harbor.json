@@ -1,0 +1,52 @@
+{
+  "Sailor": [
+    {
+      "en": [
+        "Sailor"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "This is Birth Island. Odd place. The sky over it hums some nights."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Shall we sail back to Lilycove?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Aye. Hold on tight."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} sailed back to Lilycove City..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "As you like. I'll be here when you're ready."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

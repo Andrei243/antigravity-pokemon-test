@@ -1,0 +1,25 @@
+{
+  "people": {
+    "birth_island_exterior_rock": {
+      "name": {
+        "en": [
+          "Triangle"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "birth_island_deoxys": {
+      "name": {
+        "en": [
+          "Deoxys"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

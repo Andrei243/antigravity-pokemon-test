@@ -16,6 +16,8 @@ script OnEnter
   if not flag FLAG_GOT_TM_THUNDERBOLT_FROM_WATTSON end
   clearflag FLAG_HIDE_MAUVILLE_GYM_WATTSON
   setflag FLAG_HIDE_MAUVILLE_CITY_WATTSON
+  # and from then on he may ask for a rematch over Match Call (plan 21 · H12, part f; mauville_city_gym.txt)
+  setflag FLAG_WATTSON_REMATCH_AVAILABLE
   end
 
 

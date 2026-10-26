@@ -4,5 +4,6 @@
   "hoenn_glacia": [ "hoenn_glacia_rematch" ],
   "hoenn_drake": [ "hoenn_drake_rematch" ],
   "hoenn_wallace": [ "hoenn_wallace_rematch" ],
-  "hoenn_wally_vr_2": [ "hoenn_wally_rematch" ]
+  "hoenn_wally_vr_2": [ "hoenn_wally_rematch" ],
+  "hoenn_wattson_1": [ "hoenn_wattson_2", "hoenn_wattson_3", "hoenn_wattson_4", "hoenn_wattson_5" ]
 }

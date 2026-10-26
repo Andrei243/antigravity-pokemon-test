@@ -1,0 +1,24 @@
+{
+  "key": "navel_rock_exterior",
+  "index": 473,
+  "name": "Navel Rock",
+  "matrix": 416,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_RG_SEVII_ROUTE",
+  "nightMusic": "MUS_RG_SEVII_ROUTE",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 10, "z": 18, "to": "navel_rock_harbor", "toWarp": 0 },
+    { "x": 10, "z": 10, "to": "navel_rock_entrance", "toWarp": 1 }
+  ],
+  "objects": [],
+  "signs": [],
+  "triggers": []
+}

@@ -1,0 +1,24 @@
+{
+  "key": "navel_rock_b1f",
+  "index": 476,
+  "name": "Navel Rock",
+  "matrix": 419,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_RG_SEVII_CAVE",
+  "nightMusic": "MUS_RG_SEVII_CAVE",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 3, "to": "navel_rock_entrance", "toWarp": 0 },
+    { "x": 18, "z": 9, "to": "navel_rock_fork", "toWarp": 1 }
+  ],
+  "objects": [],
+  "signs": [],
+  "triggers": []
+}

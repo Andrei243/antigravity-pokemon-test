@@ -1,0 +1,11 @@
+{
+  // Navel Rock's quay (plan 21 · H12, part f): the ferry from Lilycove's harbour sets a Champion with the Mystic Ticket down at
+  // 8, 4 (lilycove_city_harbor.txt), and the sailor who brought them waits to sail them back (navel_rock_harbor.txt). The
+  // ship itself is not drawn
+  "area": "navel_rock_harbor",
+  "bgmTrack": "hoenn/sailing",
+  "trees": "Round",
+  "people": {
+    "navel_rock_sailor": { "name": "Sailor", "script": "Sailor", "still": true }
+  }
+}

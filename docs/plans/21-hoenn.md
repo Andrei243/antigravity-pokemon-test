@@ -1295,3 +1295,18 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
       route's own look; a look per flag would be a swap of the overworld), the weather's expiry, Trainer Hill, Mirage Island,
       Altering Cave, the event islands, the S.S. Tidal, the halls, Wattson's rematch, the Devon Corporation's fossil revival,
       the Shields and the Glass Ornament.
+    - **Part f** (done 2026-10-26, wave 68: the event islands, Devon's fossils and Wattson's rematch; docs/mechanics/rulings.md,
+      "The event islands, Devon's fossils and Wattson's rematch"; tests written and run with --filter (HoennEventIslandsTests,
+      HoennSpeciesTests, StoryTests, ScriptTests, HoennTests, the warp walks), shots h2b0 to h2bf written and not taken).
+      **Built**: Navel Rock (matrices 416 to 437, its quay, shore, halls, fork, four ladders up and eleven down) and Birth
+      Island (408, 409) in RegionDatabase's Hoenn list, with GbaCover rows for gTileset_IslandHarbor's quay; Lilycove's ferry
+      desk gives the Mystic Ticket for a Frontier print and the Aurora Ticket for two (flags; the new script word
+      frontier prints) and sails to five places; Ho-Oh on Navel Rock's summit and Lugia at its foot at level 70; Birth
+      Island's triangle through Emerald's eleven places and Deoxys (Speed Forme) at level 30; the Devon researcher's Fossil
+      Regenerator (Root or Claw, Lileep or Anorith at 20, ready after a walk); Wattson's rematch over Match Call once back in
+      his Gym (hoenn_wattson_2 to _5, one step a rematch, a double battle). The Glass Ornament was already given (H11, part b).
+      **Decided**: the passes are ours (decision 5), no step count on the triangle, the islands play the Sealed Chamber's
+      song. **Golden** scripts.txt moves (the islands' scripts, the Devon researcher's; new blocks): accept it.
+      **Left**: Faraway Island and Mew (and the Old Sea Map), Jirachi, Trainer Hill, Mirage Island, Altering Cave, the S.S.
+      Tidal's cabins and Slateport's ferry, the island's halls, the Gold and Silver Shields, the other Gym Leaders' rematches,
+      the triangle's and the ship's own looks.

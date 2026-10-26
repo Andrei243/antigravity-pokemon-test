@@ -1,0 +1,6 @@
+{
+  // Navel Rock's shore (plan 21 · H12, part f): the way up from the quay to the mouth of the rock
+  "area": "navel_rock_exterior",
+  "bgmTrack": "hoenn/sailing",
+  "trees": "Round"
+}

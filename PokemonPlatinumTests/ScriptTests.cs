@@ -327,6 +327,7 @@ public class ScriptTests
           frontier judge
           frontier judged total
           frontier judged best
+          frontier prints
           frontier save
           tower enough 3
           tower begin single

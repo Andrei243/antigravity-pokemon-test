@@ -1,0 +1,122 @@
+{
+  "FossilScientist": [
+    {
+      "en": [
+        "Scientist"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I've been building a machine that brings Pokémon back from their fossils. And do you know what? It works!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hold on! Is that a fossil in your bag? An ancient Pokémon is sleeping in it!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Shall my Fossil Regenerator wake it up for you?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Two fossils! The machine can only work on one at a time. Which one?",
+        "ROOT FOSSIL",
+        "CLAW FOSSIL",
+        "NEITHER"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Splendid! Let's get started right away."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} handed the fossil to the Devon researcher."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Fossil Regenerator is a marvel, but it's a slow one. Why not take a stroll and come back in a while?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "No? Well, Devon's machines will be here whenever you change your mind."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thanks for waiting! Your fossil has come back to life. It was an ancient Pokémon all along!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received Lileep from the Devon researcher!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received Anorith from the Devon researcher!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Look after it. It has waited a very long time to see the world again."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, but your team is full! Make room for it, and come back."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}
