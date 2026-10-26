@@ -5,7 +5,7 @@
         "It's an odd tree. It is wiggling about!"
       ],
       "text": [
-        ""
+        "E un copac ciudat. Se zbate de colo-colo!"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Water the tree with the Wailmer Pail?"
       ],
       "text": [
-        ""
+        "Uzi copacul cu Wailmer Pail?"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "{player} watered the tree with the Wailmer Pail!"
       ],
       "text": [
-        ""
+        "{player} a udat copacul cu Wailmer Pail!"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "The tree hated the water! It leapt up and attacked!"
       ],
       "text": [
-        ""
+        "Copacul a urât apa! A sărit și a atacat!"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "It's an odd tree. It is wiggling about, though there is no wind."
       ],
       "text": [
-        ""
+        "E un copac ciudat. Se zbate de colo-colo, deși nu bate vântul."
       ]
     }
   ]

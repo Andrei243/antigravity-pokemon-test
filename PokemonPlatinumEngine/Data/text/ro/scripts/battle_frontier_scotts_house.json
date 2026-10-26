@@ -5,7 +5,7 @@
         "Scott"
       ],
       "text": [
-        ""
+        "Scott"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Welcome to my home, {player}! I've watched you since the very start of your journey."
       ],
       "text": [
-        ""
+        "Bun venit în casa mea, {player}! Te urmăresc de la începutul călătoriei tale."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "A little something to begin your challenges with."
       ],
       "text": [
-        ""
+        "Un mic dar cu care să-ți începi provocările."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "{player} received 3 Battle Points!"
       ],
       "text": [
-        ""
+        "{player} a primit 3 Puncte de Luptă!"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "The halls of this island aren't ready yet. The Frontier Brains are still at Sinnoh's Battle Frontier."
       ],
       "text": [
-        ""
+        "Sălile insulei asta nu sunt încă gata. Frontier Brains sunt tot la Battle Frontier din Sinnoh."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Shall I take you to the Battle Frontier in Sinnoh?"
       ],
       "text": [
-        ""
+        "Să te duc la Battle Frontier din Sinnoh?"
       ]
     },
     {
@@ -53,7 +53,7 @@
         "Splendid! Your team comes along, and your records stay as they are."
       ],
       "text": [
-        ""
+        "Splendid! Echipa ta vine cu tine, iar recordurile îți rămân neschimbate."
       ]
     },
     {
@@ -61,7 +61,7 @@
         "{player} sailed with Scott for the Battle Frontier..."
       ],
       "text": [
-        ""
+        "{player} a pornit cu Scott spre Battle Frontier..."
       ]
     },
     {
@@ -69,7 +69,7 @@
         "Whenever you're ready. I'll be here."
       ],
       "text": [
-        ""
+        "Oricând ești gata. Eu sunt aici."
       ]
     }
   ]

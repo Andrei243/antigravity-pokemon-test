@@ -5,7 +5,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Team Plasma! Wherever you go, I won't let you get away!"
       ],
       "text": [
-        ""
+        "Team Plasma! Oriunde te-ai duce, nu te las să scapi!"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "With a roar of engines, the Plasma Frigate rose from the water and flew off toward the west..."
       ],
       "text": [
-        ""
+        "Cu un vuiet de motoare, Fregata Plasma s-a ridicat din apă și a zburat spre vest..."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "...It flies?! Where's it going?"
       ],
       "text": [
-        ""
+        "...Zboară?! Încotro merge?"
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Cheren"
       ],
       "text": [
-        ""
+        "Cheren"
       ]
     },
     {
@@ -53,7 +53,7 @@
         "Sorry I'm late. If I had to guess, they're making for the Giant Chasm."
       ],
       "text": [
-        ""
+        "Scuze că întârzii. Dacă ar fi să ghicesc, se îndreaptă spre Giant Chasm."
       ]
     },
     {
@@ -61,7 +61,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -69,7 +69,7 @@
         "The Giant Chasm! That's at the far end of Route 22, right? Then that's where I'm going!"
       ],
       "text": [
-        ""
+        "Giant Chasm! E la capătul îndepărtat al Rutei 22, nu? Atunci acolo mă duc!"
       ]
     },
     {
@@ -77,7 +77,7 @@
         "That Pokémon in the ship... Kyurem. Its cry sounded so lonely."
       ],
       "text": [
-        ""
+        "Pokémonul ăla de pe navă... Kyurem. Strigătul lui suna atât de singuratic."
       ]
     },
     {
@@ -85,7 +85,7 @@
         "Cheren"
       ],
       "text": [
-        ""
+        "Cheren"
       ]
     },
     {
@@ -93,7 +93,7 @@
         "Kyurem! So Team Plasma means to use Kyurem's power for themselves."
       ],
       "text": [
-        ""
+        "Kyurem! Deci Team Plasma vrea să folosească puterea lui Kyurem pentru ei."
       ]
     },
     {
@@ -101,7 +101,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -109,7 +109,7 @@
         "How do we stop something like that? Drayden said only Reshiram or Zekrom could stand up to it. And neither of them is anywhere!"
       ],
       "text": [
-        ""
+        "Cum oprim așa ceva? Drayden a spus că doar Reshiram sau Zekrom i-ar putea ține piept. Iar niciunul nu e nicăieri!"
       ]
     },
     {
@@ -117,7 +117,7 @@
         "...It doesn't matter. I'm going. {player}, follow when you're ready!"
       ],
       "text": [
-        ""
+        "...Nu contează. Eu plec. {player}, vino când ești gata!"
       ]
     }
   ],
@@ -127,7 +127,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -135,7 +135,7 @@
         "{player}! You found them! I knew you could do it!"
       ],
       "text": [
-        ""
+        "{player}! I-ai găsit! Știam că poți!"
       ]
     },
     {
@@ -143,7 +143,7 @@
         "That's Team Plasma's ship, anchored right off the beach. But... how do we get aboard?"
       ],
       "text": [
-        ""
+        "Asta e nava lui Team Plasma, ancorată chiar lângă plajă. Dar... cum urcăm la bord?"
       ]
     },
     {
@@ -151,7 +151,7 @@
         "Marlon"
       ],
       "text": [
-        ""
+        "Marlon"
       ]
     },
     {
@@ -159,7 +159,7 @@
         "Hold up!"
       ],
       "text": [
-        ""
+        "Stai!"
       ]
     },
     {
@@ -167,7 +167,7 @@
         "Eh, this should do it!"
       ],
       "text": [
-        ""
+        "Ei, cu asta ar trebui să meargă!"
       ]
     },
     {
@@ -175,7 +175,7 @@
         "A heavy gangplank came down from the ship's rail with a solid thud..."
       ],
       "text": [
-        ""
+        "O pasarelă grea a coborât din balustrada navei cu un bufnet solid..."
       ]
     },
     {
@@ -183,7 +183,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -191,7 +191,7 @@
         "Marlon! I thought you didn't care about Team Plasma?"
       ],
       "text": [
-        ""
+        "Marlon! Credeam că nu-ți pasă de Team Plasma!"
       ]
     },
     {
@@ -199,7 +199,7 @@
         "Marlon"
       ],
       "text": [
-        ""
+        "Marlon"
       ]
     },
     {
@@ -207,7 +207,7 @@
         "Hey, friends! Team Plasma's not bothering me. They might be up to no good for real, but it's not my style to decide that without thinking it through."
       ],
       "text": [
-        ""
+        "Hei, prieteni! Team Plasma nu mă deranjează. S-ar putea să pună la cale ceva rău pe bune, dar nu e stilul meu să hotărăsc asta fără să mă gândesc."
       ]
     },
     {
@@ -215,7 +215,7 @@
         "But you're in trouble, so I've got to help. That's what I want to do!"
       ],
       "text": [
-        ""
+        "Dar voi aveți probleme, așa că trebuie să vă ajut. Asta vreau să fac!"
       ]
     },
     {
@@ -223,7 +223,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -231,7 +231,7 @@
         "...Thanks."
       ],
       "text": [
-        ""
+        "...Mulțumesc."
       ]
     },
     {
@@ -239,7 +239,7 @@
         "Marlon"
       ],
       "text": [
-        ""
+        "Marlon"
       ]
     },
     {
@@ -247,7 +247,7 @@
         "Listen, 'K? Believe in something. Searching for a stolen Pokémon is fine. Keeping Unova from freezing is fine too. Just think about why you're doing it."
       ],
       "text": [
-        ""
+        "Ascultă, 'K? Crede în ceva. E bine să cauți un Pokémon furat. E bine și să împiedici înghețarea Unovei. Doar gândește-te de ce o faci."
       ]
     },
     {
@@ -255,7 +255,7 @@
         "I made a bit of noise, so some of them are bound to come out. Be careful, 'K!"
       ],
       "text": [
-        ""
+        "Am făcut puțin zgomot, așa că vor ieși câțiva dintre ei. Fii atent, 'K!"
       ]
     },
     {
@@ -263,7 +263,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -271,7 +271,7 @@
         "What was that?! The guy doesn't stick around, does he?"
       ],
       "text": [
-        ""
+        "Ce-a fost asta?! Tipul nu stă pe loc, nu?"
       ]
     },
     {
@@ -279,7 +279,7 @@
         "Well... I guess he was being kind in his own way. All right, I'm going in!"
       ],
       "text": [
-        ""
+        "Ei bine... Cred că a fost drăguț în felul lui. Bine, intru!"
       ]
     }
   ],
@@ -289,7 +289,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -297,7 +297,7 @@
         "Let's go! Team Plasma isn't getting away this time!"
       ],
       "text": [
-        ""
+        "Hai! De data asta Team Plasma nu ne mai scapă!"
       ]
     }
   ],
@@ -307,7 +307,7 @@
         "Cheren"
       ],
       "text": [
-        ""
+        "Cheren"
       ]
     },
     {
@@ -315,7 +315,7 @@
         "You can reach the Giant Chasm from Route 22. Be ready before you go, {player}."
       ],
       "text": [
-        ""
+        "Poți ajunge la Giant Chasm de pe Ruta 22. Pregătește-te înainte să pleci, {player}."
       ]
     }
   ]

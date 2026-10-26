@@ -6,7 +6,7 @@
           "Nurse"
         ],
         "text": [
-          ""
+          "Asistenta"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "The doctor sees people and Pokémon both. Today it's mostly sunburn."
         ],
         "text": [
-          ""
+          "Doctorul consultă și oameni, și Pokémon. Azi mai ales arsuri solare."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Doctor"
         ],
         "text": [
-          ""
+          "Doctorul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Swim, rest, eat well. That's the whole of my medicine in Humilau, and it works."
         ],
         "text": [
-          ""
+          "Înoată, odihnește-te, mănâncă bine. Asta e toată medicina mea în Humilau, și funcționează."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Audino"
         ],
         "text": [
-          ""
+          "Audino"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Audino: Dabun!"
         ],
         "text": [
-          ""
+          "Audino: Dabun!"
         ]
       }
     }

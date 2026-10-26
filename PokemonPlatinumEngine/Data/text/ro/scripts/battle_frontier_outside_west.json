@@ -5,7 +5,7 @@
         "Attendant"
       ],
       "text": [
-        ""
+        "Însoțitoarea"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Welcome to the Battle Frontier! The ferry back to the mainland leaves whenever you're ready."
       ],
       "text": [
-        ""
+        "Bun venit la Battle Frontier! Feribotul spre continent pleacă oricând ești gata."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Shall I take you back to Lilycove City?"
       ],
       "text": [
-        ""
+        "Să te duc înapoi în Orașul Lilycove?"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Very good. Please come aboard."
       ],
       "text": [
-        ""
+        "Foarte bine. Urcă la bord, te rog."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "{player} sailed back to Lilycove City..."
       ],
       "text": [
-        ""
+        "{player} s-a întors pe mare în Orașul Lilycove..."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Enjoy the Frontier! I'll be here when you want to sail home."
       ],
       "text": [
-        ""
+        "Bucură-te de Frontier! Voi fi aici când vei vrea să te întorci acasă pe mare."
       ]
     }
   ]

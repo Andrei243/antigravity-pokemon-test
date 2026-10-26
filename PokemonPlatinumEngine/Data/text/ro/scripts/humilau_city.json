@@ -5,7 +5,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "{player}! Over here! You came through the tube too, huh?"
       ],
       "text": [
-        ""
+        "{player}! Aici! Ai trecut și tu prin tub, nu?"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "We'll get the DNA Splicers back from Team Plasma, no matter what. But you should beat this city's Gym Leader first. You'll need the strength."
       ],
       "text": [
-        ""
+        "O să luăm DNA Splicers înapoi de la Team Plasma, orice-ar fi. Dar mai întâi învinge-l pe Liderul Arenei din orașul ăsta. O să ai nevoie de puterea asta."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Thing is, the Gym's empty. People say Marlon went for a swim and never came back. Try the beach south of here."
       ],
       "text": [
-        ""
+        "Problema e că Arena e goală. Se zice că Marlon a ieșit la înot și nu s-a mai întors. Încearcă plaja de la sud de aici."
       ]
     }
   ],
@@ -39,7 +39,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -47,7 +47,7 @@
         "After you've got the Badge, we go looking for Team Plasma! I won't let them turn Unova into a block of ice!"
       ],
       "text": [
-        ""
+        "După ce iei Insigna, mergem după Team Plasma! Nu-i las să transforme Unova într-un bloc de gheață!"
       ]
     },
     {
@@ -55,7 +55,7 @@
         "Eight Badges! Now it's Team Plasma's turn."
       ],
       "text": [
-        ""
+        "Opt Insigne! Acum e rândul lui Team Plasma."
       ]
     }
   ],
@@ -65,7 +65,7 @@
         "Marlon"
       ],
       "text": [
-        ""
+        "Marlon"
       ]
     },
     {
@@ -73,7 +73,7 @@
         "Woo-hoo! The sea's just right today!"
       ],
       "text": [
-        ""
+        "Uhuu! Marea e numai bună azi!"
       ]
     },
     {
@@ -81,7 +81,7 @@
         "Sup! You must be here to take on the Gym, yeah? I'm the Gym Leader, Marlon. Sorry for the wait, yo."
       ],
       "text": [
-        ""
+        "Salut! Ai venit să înfrunți Arena, nu? Eu sunt Liderul Arenei, Marlon. Scuze că te-am făcut să aștepți, yo."
       ]
     },
     {
@@ -89,7 +89,7 @@
         "I was out swimming with my Pokémon, and it felt so good I kinda kept going. I'll be waiting in the Gym, 'K?"
       ],
       "text": [
-        ""
+        "Ieșisem la înot cu Pokémonii mei și a fost atât de bine că am cam continuat. Te aștept în Arenă, 'K?"
       ]
     },
     {
@@ -97,7 +97,7 @@
         "The sea's got room for everybody, yo."
       ],
       "text": [
-        ""
+        "În mare e loc pentru toată lumea, yo."
       ]
     }
   ],
@@ -107,7 +107,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -115,7 +115,7 @@
         "You got all eight Badges! You're really something, {player}! Normally you'd head for the Pokémon League now, but... Team Plasma comes first."
       ],
       "text": [
-        ""
+        "Ai toate cele opt Insigne! Chiar ești grozav, {player}! În mod normal ai porni spre Liga Pokémon acum, dar... Team Plasma are prioritate."
       ]
     },
     {
@@ -123,7 +123,7 @@
         "Marlon"
       ],
       "text": [
-        ""
+        "Marlon"
       ]
     },
     {
@@ -131,7 +131,7 @@
         "Sup again! What's this Team Plasma you're talking about, yo?"
       ],
       "text": [
-        ""
+        "Salut iar! Ce-i cu Team Plasma de vorbești, yo?"
       ]
     },
     {
@@ -139,7 +139,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -147,7 +147,7 @@
         "They steal people's Pokémon. Like my sister's... And now they want to use a Pokémon to freeze all of Unova solid! Doesn't that make you angry?"
       ],
       "text": [
-        ""
+        "Fură Pokémonii oamenilor. Ca al surorii mele... Și acum vor să folosească un Pokémon ca să înghețe toată Unova! Nu te înfurie asta?"
       ]
     },
     {
@@ -155,7 +155,7 @@
         "Marlon"
       ],
       "text": [
-        ""
+        "Marlon"
       ]
     },
     {
@@ -163,7 +163,7 @@
         "Nope! When the sea's your home, you don't sweat that kind of thing. The sea takes in every river, the muddy ones too."
       ],
       "text": [
-        ""
+        "Nu! Când marea e casa ta, nu te agiți pentru așa ceva. Marea primește toate râurile, și pe cele noroioase."
       ]
     },
     {
@@ -171,7 +171,7 @@
         "So you reckon Team Plasma's bad, then?"
       ],
       "text": [
-        ""
+        "Deci tu crezi că Team Plasma e rău?"
       ]
     },
     {
@@ -179,7 +179,7 @@
         "I get it. They're bad, so you fight 'em. But say it in your own words first. Then you'll know what you really want to do, and why."
       ],
       "text": [
-        ""
+        "Am înțeles. Sunt răi, deci le tragi. Dar spune-o mai întâi cu vorbele tale. Așa o să știi ce vrei cu adevărat să faci și de ce."
       ]
     },
     {
@@ -187,7 +187,7 @@
         "Shoots! Not bad. You're not sure, but you're going anyway! Still, say it in your own words first. Then you'll know what you really want to do."
       ],
       "text": [
-        ""
+        "Ei, drăcie! Nu-i rău. Nu ești sigur, dar mergi oricum! Totuși, spune-o mai întâi cu vorbele tale. Așa o să știi ce vrei cu adevărat să faci."
       ]
     },
     {
@@ -195,7 +195,7 @@
         "Well then... See ya!"
       ],
       "text": [
-        ""
+        "Păi atunci... Pe curând!"
       ]
     },
     {
@@ -203,7 +203,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -211,7 +211,7 @@
         "Man, I can't tell if that guy's laid back or just doesn't care. Doesn't matter. Our opponent is Team Plasma!"
       ],
       "text": [
-        ""
+        "Omule, nu-mi dau seama dacă tipul ăla e relaxat sau pur și simplu nu-i pasă. Nu contează. Adversarul nostru e Team Plasma!"
       ]
     },
     {
@@ -219,7 +219,7 @@
         "First we have to find where they are. Let's split up! You check Route 22, west of the city. I'll look along the shore. Got it?"
       ],
       "text": [
-        ""
+        "Mai întâi trebuie să aflăm unde sunt. Hai să ne despărțim! Tu verifici Ruta 22, la vest de oraș. Eu mă uit de-a lungul țărmului. Clar?"
       ]
     }
   ]

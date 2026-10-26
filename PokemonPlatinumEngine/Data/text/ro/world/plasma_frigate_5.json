@@ -6,7 +6,7 @@
           "Kyurem"
         ],
         "text": [
-          ""
+          "Kyurem"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Kyurem: Haaahraa..."
         ],
         "text": [
-          ""
+          "Kyurem: Haaahraa..."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Zinzolin"
         ],
         "text": [
-          ""
+          "Zinzolin"
         ]
       },
       "before": {
@@ -32,7 +32,7 @@
           "We will simply remove the both of you!"
         ],
         "text": [
-          ""
+          "Pur și simplu vă vom elimina pe amândoi!"
         ]
       },
       "after": {
@@ -40,7 +40,7 @@
           "Hmph. You are smarter than you look."
         ],
         "text": [
-          ""
+          "Hmpf. Ești mai deștept decât pari."
         ]
       }
     },
@@ -50,7 +50,7 @@
           "Shadow Triad"
         ],
         "text": [
-          ""
+          "Triada Umbrelor"
         ]
       },
       "dialog": {
@@ -58,7 +58,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     },
@@ -68,7 +68,7 @@
           "Shadow Triad"
         ],
         "text": [
-          ""
+          "Triada Umbrelor"
         ]
       },
       "dialog": {
@@ -76,7 +76,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     },
@@ -86,7 +86,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -94,7 +94,7 @@
           "For Lord Zinzolin! For Team Plasma!"
         ],
         "text": [
-          ""
+          "Pentru Domnul Zinzolin! Pentru Team Plasma!"
         ]
       },
       "after": {
@@ -102,7 +102,7 @@
           "Lord Zinzolin, I'm sorry!"
         ],
         "text": [
-          ""
+          "Domnule Zinzolin, îmi pare rău!"
         ]
       }
     },
@@ -112,7 +112,7 @@
           "{rival}"
         ],
         "text": [
-          ""
+          "{rival}"
         ]
       }
     }

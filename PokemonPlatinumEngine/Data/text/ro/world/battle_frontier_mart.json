@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Old Woman"
         ],
         "text": [
-          ""
+          "Bătrâna"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "We came to watch our grandson battle. I thought I'd buy him a little something while we're here."
         ],
         "text": [
-          ""
+          "Am venit să ne vedem nepotul luptând. M-am gândit să-i cumpăr ceva cât suntem aici."
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "Potions, Revives... Would he like a Max Repel, do you think? I've no idea what young Trainers want."
         ],
         "text": [
-          ""
+          "Potions, Revives... Oare i-ar plăcea un Max Repel? Habar n-am ce vor Antrenorii tineri."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "Most of the halls here won't let you use items in battle. Stocking up is for the trip home!"
         ],
         "text": [
-          ""
+          "Majoritatea sălilor de aici nu te lasă să folosești obiecte în luptă. Aprovizionarea e pentru drumul acasă!"
         ]
       }
     }

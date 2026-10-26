@@ -5,7 +5,7 @@
         "Rocky"
       ],
       "text": [
-        ""
+        "Stâncosul"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Hm! If you want past here, you'll have to beat me and my Roggenrola. We're as sturdy as rock!"
       ],
       "text": [
-        ""
+        "Hm! Dacă vrei să treci pe aici, trebuie să ne învingi pe mine și pe Roggenrola mea. Suntem solizi ca piatra!"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "But my Roggenrola and I only battle strong Trainers. Can you break our rock-hard will?"
       ],
       "text": [
-        ""
+        "Dar Roggenrola mea și cu mine luptăm doar cu Antrenori puternici. Poți să ne rupi voința de piatră?"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Hm! Your strength is the real thing! My Roggenrola and I must become sturdier still. We're off to train. Farewell!"
       ],
       "text": [
-        ""
+        "Hm! Puterea ta e pe bune! Eu și Roggenrola mea trebuie să devenim și mai solizi. Plecăm la antrenament. Rămas-bun!"
       ]
     }
   ],
@@ -39,7 +39,7 @@
         "A great boulder blocks the way. It doesn't look as if any Pokémon could move it..."
       ],
       "text": [
-        ""
+        "Un bolovan uriaș blochează drumul. Nu pare că vreun Pokémon l-ar putea mișca..."
       ]
     },
     {
@@ -47,7 +47,7 @@
         "It's a great boulder... Use the Colress Machine on it?"
       ],
       "text": [
-        ""
+        "E un bolovan uriaș... Folosești Colress Machine pe el?"
       ]
     },
     {
@@ -55,7 +55,7 @@
         "{player} switched on the Colress Machine! It hums, and the boulder begins to shake..."
       ],
       "text": [
-        ""
+        "{player} a pornit Colress Machine! Aceasta bâzâie, iar bolovanul începe să se cutremure..."
       ]
     },
     {
@@ -63,7 +63,7 @@
         "It wasn't a boulder at all! A Crustle was sleeping in its rock!"
       ],
       "text": [
-        ""
+        "Nu era deloc un bolovan! Un Crustle dormea în stânca lui!"
       ]
     },
     {
@@ -71,7 +71,7 @@
         "The Colress Machine gave a pop and a puff of smoke. It's broken..."
       ],
       "text": [
-        ""
+        "Colress Machine a făcut pop și a scos un nor de fum. S-a stricat..."
       ]
     }
   ]
