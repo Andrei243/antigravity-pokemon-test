@@ -1,0 +1,14 @@
+{"what":"SaveManager.Read and Write of w5-s29-v1-safari-game.json","ms":1.324}
+{"what":"PixelGround.Bake of one chunk","ms":102.346}
+{"what":"MapDatabase.Initialize","ms":2137.418}
+{"what":"ScriptLibrary.Load","ms":109.042}
+{"what":"World.LoadAll and WorldMapBuilder.Build of Sinnoh","ms":363.058}
+{"what":"species.json (PokemonDatabase)","ms":29.912}
+{"what":"moves.json (MoveDatabase)","ms":2.028}
+{"what":"abilities.json (AbilityDatabase)","ms":0.186}
+{"what":"items.json (ItemDatabase)","ms":1.349}
+{"what":"trainers.json (TrainerDatabase\u0027s first read)","ms":2.099}
+{"what":"SdfMesher.Mesh of Turtwig (PokemonModels.Build)","ms":355}
+{"what":"SdfMesher.Mesh of a rig (CharacterModels.Build)","ms":840.076}
+{"what":"Mml.Parse of 393 songs","ms":58.381}
+{"what":"managed memory after the world\u0027s maps (MB)","ms":201}
