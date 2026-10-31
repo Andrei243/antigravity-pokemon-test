@@ -53,6 +53,9 @@ public sealed record TrainerCardInfo(string Name, int TrainerId, int Money, int 
     /// <summary>The regions that have a page: every one, once there are two or more.</summary>
     public IReadOnlyList<CardRegion> RegionPages => Regions.Count > 1 ? Regions : Array.Empty<CardRegion>();
 
+    /// <summary>What the game has counted (plan 13 · V8); the card has its statistics page once this holds anything.</summary>
+    public Models.Statistics? Counts { get; init; }
+
     /// <summary>The ways the game is played (plan 13 · V1); null for Normal, which gives the card no page for it.</summary>
     public Models.RunRules? Run { get; init; }
 
@@ -85,7 +88,7 @@ public sealed record CardFallen(string Name, string Species, int Level, string P
 /// The pages of the Trainer Card (plan 18 · W2; plan 13 · V1, V13 add theirs at the end): the front, its back, and a
 /// page for each region the player has been in.
 /// </summary>
-public enum CardPage { Front, Back, Run, Region, Titles }
+public enum CardPage { Front, Back, Run, Statistics, Region, Titles }
 
 /// <summary>
 /// The Trainer Card: who the player is, what they have, how long they have played and the badges they have
@@ -120,14 +123,32 @@ public class TrainerCardScreen
     // 0 is the front, 1 the back, then the run's page when the game is played some way of its own (plan 13 · V1), then
     // the Masters' Hall's titles once one is won (plan 14 · B15), then the regions'
     private int RunPageIndex => hasRun ? 2 : -1;
-    private int TitlesPageIndex => titles > 0 ? (hasRun ? 3 : 2) : -1;
-    private int FirstRegionPage => 2 + (hasRun ? 1 : 0) + (titles > 0 ? 1 : 0);
+    private int StatsPageIndex => hasStats ? (hasRun ? 3 : 2) : -1;
+    private int TitlesPageIndex => titles > 0 ? 2 + (hasRun ? 1 : 0) + (hasStats ? 1 : 0) : -1;
+    private int FirstRegionPage => 2 + (hasRun ? 1 : 0) + (hasStats ? 1 : 0) + (titles > 0 ? 1 : 0);
     private int RegionOf(int index) => index >= FirstRegionPage ? index - FirstRegionPage : -1;
     private int LastPage => FirstRegionPage - 1 + RegionPages;
 
     /// <summary>Whether the card has a page for the ways the game is played (plan 13 · V1): only when they are not Normal.</summary>
     public bool HasRunPage => hasRun;
     private bool hasRun;
+
+    /// <summary>Whether the card has the statistics page (plan 13 · V8): once anything is counted.</summary>
+    public bool HasStatsPage => hasStats;
+    private bool hasStats;
+
+    /// <summary>The group of counters the statistics page shows (up and down change it).</summary>
+    public int StatTab { get; private set; }
+
+    /// <summary>Moves to the next group of counters or the one before, wrapping; false off the statistics page.</summary>
+    public bool ChangeStatTab(int step)
+    {
+        if (Page != CardPage.Statistics || step == 0) return false;
+        int groups = Enum.GetValues<StatGroup>().Length;
+        StatTab = ((StatTab + Math.Sign(step)) % groups + groups) % groups;
+        AudioManager.PlaySound("cursor");
+        return true;
+    }
 
     /// <summary>Whether the card has a page of the Masters' Hall's titles (plan 14 · B15): only once one is won.</summary>
     public bool HasTitlesPage => titles > 0;
@@ -163,7 +184,7 @@ public class TrainerCardScreen
 
     private CardPage PageOf(int index) =>
         index == 0 ? CardPage.Front : index == 1 ? CardPage.Back : index == RunPageIndex ? CardPage.Run
-        : index == TitlesPageIndex ? CardPage.Titles : CardPage.Region;
+        : index == StatsPageIndex ? CardPage.Statistics : index == TitlesPageIndex ? CardPage.Titles : CardPage.Region;
 
     /// <summary>Turns the card over: the front to its back and the back to its front; a region's page goes back to the front.</summary>
     public void Flip() => TurnTo(page == 0 ? 1 : 0);
@@ -188,9 +209,11 @@ public class TrainerCardScreen
     /// <param name="portrait">The player's field sprite (baked outside any texture mode); none in tests.</param>
     /// <param name="regionPages">How many regions' pages the card has (<see cref="TrainerCardInfo.RegionPages"/>).</param>
     /// <param name="titles">How many of the Masters' Hall's titles are won (plan 14 · B15); the card has their page with one or more.</param>
-    public void Open(Texture2D? portrait = null, int regionPages = 0, bool hasRun = false, int titles = 0)
+    public void Open(Texture2D? portrait = null, int regionPages = 0, bool hasRun = false, int titles = 0, bool hasStats = false)
     {
         IsActive = true;
+        this.hasStats = hasStats;
+        StatTab = 0;
         page = from = 0;
         openAge = 0f;
         flipAge = FlipTime;
@@ -232,6 +255,8 @@ public class TrainerCardScreen
         }
         else if (InputManager.IsActionPressed(GameAction.Left)) Turn(-1);
         else if (InputManager.IsActionPressed(GameAction.Right)) Turn(1);
+        else if (Page == CardPage.Statistics && InputManager.IsActionPressed(GameAction.Down)) ChangeStatTab(1);
+        else if (Page == CardPage.Statistics && InputManager.IsActionPressed(GameAction.Up)) ChangeStatTab(-1);
         else if (Page == CardPage.Titles && InputManager.IsActionPressed(GameAction.Down)) ScrollTitles(1);
         else if (Page == CardPage.Titles && InputManager.IsActionPressed(GameAction.Up)) ScrollTitles(-1);
     }
@@ -240,7 +265,7 @@ public class TrainerCardScreen
     {
         if (!IsActive) return;
         ModernUi.DrawTrainerCard(screenWidth, screenHeight, info, portrait, Math.Clamp(openAge / AppearTime, 0f, 1f),
-            new CardSide(Page, RegionShown), new CardSide(PageOf(from), RegionOf(from)), Math.Clamp(flipAge / FlipTime, 0f, 1f), TitleRow);
+            new CardSide(Page, RegionShown), new CardSide(PageOf(from), RegionOf(from)), Math.Clamp(flipAge / FlipTime, 0f, 1f), TitleRow, StatTab);
     }
 }
 

@@ -166,6 +166,21 @@ partial class Harness
         trainerCard.Flip();
         Frames(30); Shot("28d_trainer_card_cobalt_back");
         trainerCard.Close();
+        // Counted play (plan 13 · V8): the card gains its statistics page, one tab at a time (the group of counters up and down)
+        var counts = game.Statistics;
+        var countsBefore = counts.ToSaved();
+        counts.Count(Statistics.StepsFoot, 12408); counts.Count(Statistics.StepsSurf, 930);
+        counts.Count(Statistics.WildWon, 41); counts.Count(Statistics.TrainerWon, 17); counts.Count(Statistics.Whiteouts, 2);
+        counts.Count(Statistics.Encounters, 63); counts.Count(Statistics.Catches, 9); counts.Count(Statistics.Levelled, 88);
+        game.ChooseFromStartMenu(StartMenuChoice.Trainer);
+        Frames(40);
+        trainerCard.GoTo(CardPage.Statistics);
+        Frames(30); Shot("28e_trainer_card_statistics");
+        trainerCard.ChangeStatTab(1);
+        Frames(4); Shot("28f_trainer_card_statistics_battles");
+        trainerCard.Close();
+        game.Statistics.Clear();
+        foreach (var (key, n) in countsBefore ?? new Dictionary<string, long>()) game.Statistics.Count(key, n);
         game.TrainerScore = scoreBefore;
         game.Story.SetBadges("Sinnoh", 0);
 

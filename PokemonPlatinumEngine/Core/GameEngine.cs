@@ -438,6 +438,7 @@ public partial class GameEngine
         flow.Run = RunRules.Current = run ?? RunRules.Normal;
         flow.Party.Limit = RunRules.ClampLimit(flow.Run.PartyLimit);
         flow.RunState = new RunState();
+        flow.Statistics = new Statistics();
         flow.NameAfterBattle = null;
         flow.TrainerScore = flow.ScoredBadges = 0;
         flow.HallOfFame = new HallOfFame();
@@ -716,6 +717,7 @@ public partial class GameEngine
         flow.Run = RunRules.Current = save.Run ?? RunRules.Normal;
         flow.Party.Limit = RunRules.ClampLimit(flow.Run.PartyLimit);
         flow.RunState = save.RunState ?? new RunState();
+        flow.Statistics = Statistics.From(save.Counters);
         flow.NameAfterBattle = null;
         flow.TrainerScore = save.TrainerScore;
         flow.HallOfFame = new HallOfFame();
@@ -760,6 +762,7 @@ public partial class GameEngine
             Started = flow.AdventureStarted,
             Run = flow.Run.IsNormal ? null : flow.Run,
             RunState = flow.RunState.IsEmpty ? null : flow.RunState,
+            Counters = flow.Statistics.ToSaved(),
             TrainerScore = flow.TrainerScore,
             HallOfFameTotal = flow.HallOfFame.Total,
             HallOfFameDebut = flow.HallOfFame.Debut,
@@ -1792,6 +1795,7 @@ public partial class GameEngine
         if (IsUnderground && UndergroundStep()) return true;
         // The steps the game has counted (RECORD_STEPS), and a step of Pal Park's Catching Show (plan 06 · R16b)
         flow.Pastimes.Steps++;
+        flow.Statistics.Count(Statistics.StepKey(flow.Player.Mode));
         // And the steps a Pokémon out of its ball has walked since it last turned something up (plan 06 · R16c;
         // SystemVars_IncrementAmitySquareStepCount, which the original counts everywhere and reads only in the square)
         if (flow.Story.Var(AmitySquare.ActiveVar) == 1) AmitySquare.CountStep(flow.Story);
@@ -1987,6 +1991,7 @@ public partial class GameEngine
         {
             if (flow.EvolutionScreen.Pokemon is { } evolved) flow.Pokedex.RegisterCaught(evolved);
             else flow.Pokedex.RegisterCaught(outcome.Into.DexNumber);
+            flow.Statistics.Count(Statistics.Evolutions);
             if (outcome.Shed != null) flow.Pokedex.RegisterCaught(outcome.Shed);
         }
         if (BeginNextEvolution()) return;
@@ -2410,7 +2415,7 @@ public partial class GameEngine
                 flow.State = GameState.TrainerCard;
             {
                 var card = TrainerCardNow();
-                flow.TrainerCardScreen.Open((IsHeadless ? null : world.Portrait(PlayerIdentity.Character)), card.RegionPages.Count, card.Run != null, card.Titles.Count);
+                flow.TrainerCardScreen.Open((IsHeadless ? null : world.Portrait(PlayerIdentity.Character)), card.RegionPages.Count, card.Run != null, card.Titles.Count, card.Counts is { IsEmpty: false });
             }
                 break;
             case StartMenuChoice.Options:
@@ -2493,6 +2498,7 @@ public partial class GameEngine
         {
             Regions = regions,
             Run = flow.Run.IsNormal ? null : flow.Run,
+            Counts = flow.Statistics,
             Graveyard = flow.RunState.Graveyard.Select(f => new CardFallen(
                 f.Pokemon.Nickname.Length > 0 ? f.Pokemon.Nickname : LocalNames.Species(f.Pokemon.SpeciesName),
                 LocalNames.Species(f.Pokemon.SpeciesName), f.Pokemon.Level,

@@ -298,6 +298,9 @@ public partial class GameEngine
         public int? LevelCap => game.CurrentLevelCap();
         /// <summary>What the run remembers (plan 13 · V4): the places met, the graveyard, its end.</summary>
         public Models.RunState RunState => game.flow.RunState;
+
+        /// <summary>What the game has counted (plan 13 · V8).</summary>
+        public Models.Statistics Statistics => game.flow.Statistics;
         /// <summary>A Pokémon caught under the Nuzlocke whose name the keyboard will ask once the field is back (plan 13 · V4).</summary>
         public Pokemon? NameAfterBattle { get => game.flow.NameAfterBattle; set => game.flow.NameAfterBattle = value; }
         /// <summary>

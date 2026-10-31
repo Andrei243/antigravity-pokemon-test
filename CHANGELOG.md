@@ -6,6 +6,7 @@ What changes from one release to the next, for players. Every session's close-ou
 
 ### Added
 - The pseudo-legendaries' big moves and the signature moves of the starters of Unova to Paldea are staged in battle: Outrage circled by the camera, Stone Edge tossing its target among falling shards, Dragon Rush and Glaive Rush lunging in, Meteor Mash's stars, Clanging Scales' rings of sound, Pyro Ball and Snipe Shot followed across the field, Flower Trick's petals and more, each with a brief hold on the heaviest blows (off under REDUCE MOTION).
+- The Trainer Card gains a statistics page once you have played a little: steps (on foot, surfing, cycling, diving), battles won, lost and run from, blackouts, Pokémon met and caught, levels gained and evolutions, in four tabs (up and down change the tab).
 - A new way to play at NEW GAME, "No later mechanics": nobody, you or the trainers you meet, can Mega Evolve, use a Z-Move, Dynamax or Terastallize in that run.
 - Trainers use Mega Evolution, Z-Moves, Dynamax and Terastallization with more sense: a Z-Move only when it will hit well or its bonus helps, Dynamax kept for their last Pokémon or their ace, and Terastallization when it turns a weakness to your last move around or on their last Pokémon.
 - Release builds for Windows, Linux and macOS (Intel and Apple silicon): one executable each with everything it needs inside, and the models the first screens show already made, so the first start takes seconds (plan 16 · T2).
