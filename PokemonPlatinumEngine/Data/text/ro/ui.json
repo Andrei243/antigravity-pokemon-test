@@ -363,6 +363,16 @@
         "on": "O medalie câștigată apare sus pe teren, cu o fanfară."
       }
     },
+    "runTimer": {
+      "label": "Cronometru",
+      "value": { "Off": "Oprit", "HallOfFame": "Sala Faimei", "Badges": "Insigne", "Story": "Poveste" },
+      "help": {
+        "Off": "Fiecare joc este cronometrat, dar niciun colț nu arată timpul și nu se scriu timpi parțiali.",
+        "HallOfFame": "Un colț arată timpul jocului; splits.json de lângă salvare cronometrează doar Sala Faimei.",
+        "Badges": "Un colț arată timpul jocului; timpi parțiali la fiecare Insignă și la Sala Faimei.",
+        "Story": "Un colț arată timpul jocului; timpi parțiali la fiecare Insignă, fiecare comandant Galactic și Sala Faimei."
+      }
+    },
     "reduceMotion": {
       "label": "Mai puțină mișcare",
       "help": {
@@ -1152,6 +1162,7 @@
     "title": "SALA FAIMEI",
     "empty": "Nicio echipă nu a intrat încă în Sala Faimei.",
     "number": "Nr. {number}",
+    "runTime": "TIMP {time}",
     "which": "ECHIPA {entry} DIN {count}",
     "level": "Nv. {level}",
     "profile": "PROFIL",
@@ -4566,6 +4577,21 @@
     "skill": "ÎNDEMÂNARE",
     "body": "TRUP",
     "total": "TOTAL"
+  },
+  "timer": {
+    "run": "TIMP REAL",
+    "final": "TIMP FINAL",
+    "game": "În joc {time}",
+    "split": {
+      "badge": "Insigna {badge}",
+      "hallOfFame": "Sala Faimei, {region}",
+      "windworks": "Valley Windworks",
+      "eternaBuilding": "Clădirea Galactic din Eterna",
+      "valorCavern": "Peștera Valor",
+      "lakeVerity": "Lacul Verity",
+      "headquarters": "Cartierul Galactic",
+      "spearPillar": "Spear Pillar"
+    }
   },
   "medals": {
     "notice": "MEDALIE  ·  {category}",

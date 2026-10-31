@@ -1151,8 +1151,15 @@ public class SavedHallOfFameEntry
     public DateTime Date { get; set; }
     public List<HallOfFameMember> Team { get; set; } = new();
 
-    public static SavedHallOfFameEntry From(HallOfFameEntry entry) => new() { Date = entry.Date, Team = entry.Team.ToList() };
-    public HallOfFameEntry ToEntry() => new(Date, Team);
+    /// <summary>The run timer's real and game times as the team entered (plan 13 · V10); null in a save from before the timer.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public double? RunSeconds { get; set; }
+
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public double? GameSeconds { get; set; }
+
+    public static SavedHallOfFameEntry From(HallOfFameEntry entry) => new() { Date = entry.Date, Team = entry.Team.ToList(), RunSeconds = entry.RunSeconds, GameSeconds = entry.GameSeconds };
+    public HallOfFameEntry ToEntry() => new(Date, Team, RunSeconds, GameSeconds);
 }
 
 /// <summary>One look of a species the Pokédex has seen, as a save keeps it (plan 08 · P19): the model's name and the gender.</summary>

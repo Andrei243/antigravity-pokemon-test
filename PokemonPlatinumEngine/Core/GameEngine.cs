@@ -437,7 +437,9 @@ public partial class GameEngine
         flow.AdventureStarted = GameClock.Today;
         flow.Run = RunRules.Current = run ?? RunRules.Normal;
         flow.Party.Limit = RunRules.ClampLimit(flow.Run.PartyLimit);
-        flow.RunState = new RunState();
+        // The run timer begins with the game (plan 13 · V10)
+        flow.RunState = new RunState { Timer = new RunTimer() };
+        timerLookedAt = -1;
         flow.Statistics = new Statistics();
         flow.Medals = new Medals();
         flow.MedalNotice.Clear();
@@ -720,6 +722,9 @@ public partial class GameEngine
         flow.Run = RunRules.Current = save.Run ?? RunRules.Normal;
         flow.Party.Limit = RunRules.ClampLimit(flow.Run.PartyLimit);
         flow.RunState = save.RunState ?? new RunState();
+        // A save from before the run timer (plan 13 · V10) begins it now, from its play time, with what it had reached already untimed
+        if (flow.RunState.Timer == null) flow.RunState.Timer = RunTimerBegunLate(flow.PlayTime, flow.Story);
+        timerLookedAt = -1;
         flow.Statistics = Statistics.From(save.Counters);
         flow.Medals = Medals.From(save.Medals);
         flow.MedalNotice.Clear();
@@ -986,7 +991,11 @@ public partial class GameEngine
             wasHeldForFocus = held;
             Log.Info(held ? "Another window is in front: the game waits (the options' Pause in the background)." : "The window is in front again: the game goes on.");
         }
-        if (held) return;
+        if (held)
+        {
+            flow.RunState.Timer?.Pause();
+            return;
+        }
         // The developer's console holds the game while it is open, and what was saved is read again (plan 16 · T6)
         if (UpdateDev(dt)) return;
 
@@ -994,6 +1003,7 @@ public partial class GameEngine
 
         flow.Toast.Update(dt);
         KeepTheMedals(dt);
+        KeepTheTimer(dt);
         KeepTheAutosave(dt);
         flow.StartMenu.Animate(dt);
         closePrompt.Animate(dt);
@@ -2785,6 +2795,8 @@ public partial class GameEngine
                 DrawCastlePoints();
                 flow.Dialogue.Draw(VirtualWidth, VirtualHeight);
                 DrawChoice();
+                // The run timer's corner (plan 13 · V10), under the start menu and the skip's pill
+                DrawTheTimer();
                 // A scene being skipped: its dark over all of that, and the hold's ring while the button is down (plan 12 · Q20)
                 DrawSkip();
                 flow.LocationSign.Draw();
@@ -2792,6 +2804,7 @@ public partial class GameEngine
                 break;
             case GameState.Battle:
                 DrawBattle();
+                DrawTheTimer();
                 break;
             case GameState.PartyMenu:
                 flow.PartyScreen.Draw(VirtualWidth, VirtualHeight, flow.Party);

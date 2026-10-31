@@ -1309,7 +1309,8 @@ public partial class GameEngine
 
         public void EnterHallOfFame()
         {
-            game.flow.HallOfFame.Enter(game.flow.Party, p => p.OriginalTrainer is { } mark ? (mark.Name, mark.Id) : (playerName, game.flow.TrainerId), GameClock.Moment);
+            game.flow.HallOfFame.Enter(game.flow.Party, p => p.OriginalTrainer is { } mark ? (mark.Name, mark.Id) : (playerName, game.flow.TrainerId), GameClock.Moment,
+                game.TimeForTheHallOfFame());
             game.flow.TrainerScore = TrainerScore.Add(game.flow.TrainerScore, TrainerScore.HallOfFame);
         }
 

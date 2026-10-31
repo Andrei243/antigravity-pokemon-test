@@ -33,6 +33,7 @@ public enum OptionRow
     TimingAssist, Rumble,
     ReduceFlashes, ReduceMotion,
     MedalNotices,
+    RunTimer,
     Controls,
     Jukebox,
     Packs,
@@ -395,6 +396,10 @@ public class OptionsScreen
             case OptionRow.MedalNotices:
                 s.MedalNotices = !s.MedalNotices; // plan 13 · V9
                 break;
+            case OptionRow.RunTimer:
+                // Off, the Hall of Fame alone, the Badges, the whole story, and round again (plan 13 · V10)
+                s.RunTimer = (Models.TimerCategory)Wrap((int)s.RunTimer + step, 4);
+                break;
         }
     }
 
@@ -474,6 +479,7 @@ public class OptionsScreen
         OptionRow.ReduceFlashes => (Text.Of("options.reduceFlashes.label"), OnOff(s.ReduceFlashes), Text.Of(s.ReduceFlashes ? "options.reduceFlashes.help.on" : "options.reduceFlashes.help.off")),
         OptionRow.ReduceMotion => (Text.Of("options.reduceMotion.label"), OnOff(s.ReduceMotion), Text.Of(s.ReduceMotion ? "options.reduceMotion.help.on" : "options.reduceMotion.help.off")),
         OptionRow.MedalNotices => (Text.Of("options.medalNotices.label"), OnOff(s.MedalNotices), Text.Of(s.MedalNotices ? "options.medalNotices.help.on" : "options.medalNotices.help.off")),
+        OptionRow.RunTimer => (Text.Of("options.runTimer.label"), Text.Of($"options.runTimer.value.{s.RunTimer}"), Text.Of($"options.runTimer.help.{s.RunTimer}")),
         OptionRow.ResetDefaults => (Text.Of("options.resetDefaults.label"), Text.Of("options.resetDefaults.value"), Text.Of("options.resetDefaults.help")),
         OptionRow.Controls => (Text.Of("options.controls.label"), Text.Of("options.controls.value"), Text.Of("options.controls.help")),
         OptionRow.Jukebox => (Text.Of("options.jukebox.label"), Text.Of("options.jukebox.value"), Text.Of("options.jukebox.help")),

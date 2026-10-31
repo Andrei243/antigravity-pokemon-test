@@ -14,8 +14,11 @@ public sealed record HallOfFameMember(
     public string ShownName => string.IsNullOrWhiteSpace(Nickname) || Nickname == Species ? LocalNames.Species(Species) : Nickname;
 }
 
-/// <summary>A team entered into the Hall of Fame, and the day it was.</summary>
-public sealed record HallOfFameEntry(DateTime Date, IReadOnlyList<HallOfFameMember> Team);
+/// <summary>
+/// A team entered into the Hall of Fame, and the day it was; and the run timer's real and game times as the team
+/// entered (plan 13 · V10), null in a record from before the timer.
+/// </summary>
+public sealed record HallOfFameEntry(DateTime Date, IReadOnlyList<HallOfFameMember> Team, double? RunSeconds = null, double? GameSeconds = null);
 
 /// <summary>
 /// The Hall of Fame's records (plan 06 · R12; <c>hall_of_fame_entries.c</c>): the last thirty teams to enter it,
@@ -40,9 +43,9 @@ public sealed class HallOfFame
 
     /// <summary>
     /// Enters a team (<c>ClearGame_AddHallOfFameEntry</c>): its Pokémon in the team's order, each with whose it
-    /// is. Nothing more is kept once 9,999 have entered.
+    /// is, and the run timer's times (plan 13 · V10) where it was given them. Nothing more is kept once 9,999 have entered.
     /// </summary>
-    public void Enter(Party party, Func<Pokemon, (string Name, int Id)> trainerOf, DateTime now)
+    public void Enter(Party party, Func<Pokemon, (string Name, int Id)> trainerOf, DateTime now, (double Real, double Game)? time = null)
     {
         if (Total >= MostEver) return;
         Debut ??= now;
@@ -53,7 +56,7 @@ public sealed class HallOfFame
             return new HallOfFameMember(p.Species.Name, p.Form, p.Level, p.Nickname, p.Gender, p.IsShiny, p.Personality, name, id,
                 p.Moves.Select(m => m.Name).ToList());
         }).ToList();
-        entries.Add(new HallOfFameEntry(now.Date, team));
+        entries.Add(new HallOfFameEntry(now.Date, team, time?.Real, time?.Game));
         if (entries.Count > Kept) entries.RemoveAt(0);
         Total++;
     }
