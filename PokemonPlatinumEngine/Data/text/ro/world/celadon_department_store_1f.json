@@ -11,10 +11,10 @@
       },
       "dialog": {
         "en": [
-          "Welcome to the Celadon Department Store! I'm sorry, the floors upstairs are closed while we restock."
+          "Welcome to the Celadon Department Store! The directory is on the wall behind me. Do enjoy your shopping."
         ],
         "text": [
-          "Bun venit la Magazinul Universal Celadon! Îmi pare rău, etajele de sus sunt închise cât timp reaprovizionăm."
+          ""
         ]
       }
     },
@@ -47,10 +47,10 @@
       },
       "dialog": {
         "en": [
-          "I'm waiting for the floors upstairs to open again. I've a whole list of things to buy!"
+          "I've a whole list of things to buy! I'll start at the top floor and work my way down."
         ],
         "text": [
-          "Aștept să se redeschidă etajele de sus. Am o listă întreagă de lucruri de cumpărat!"
+          ""
         ]
       }
     }
@@ -58,10 +58,10 @@
   "signs": {
     "T07R0101_003+1": {
       "en": [
-        "1F: Service Counter\n2F to 5F: closed while we restock."
+        "1F: Service Counter   2F: Trainer's Market\n3F: TM Corner   4F: Gift Corner\n5F: Drugstore   Roof: Rooftop Square"
       ],
       "text": [
-        "Parter: Ghișeu de servicii\nEtajele 2–5: închise cât timp reaprovizionăm."
+        ""
       ]
     }
   }

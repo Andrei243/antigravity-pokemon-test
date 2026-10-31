@@ -1,0 +1,10 @@
+{
+  // The Celadon Condominiums' second floor (plan 20 · J15, part k): its tenants are out, and nobody stands in it in
+  // HeartGold either. Its stairs lead down, its lift (the right-hand one) up to the roof
+  "area": "celadon_condominiums_2f",
+  "bgmTrack": "kanto/celadon",
+  "signs": {
+    "T07R0202_000+1": "Someone's flat. The door is locked and the curtains are drawn.",
+    "T07R0202_002+1": "A shelf of travel guides: Johto, Hoenn, Sinnoh... every page is dog-eared."
+  }
+}

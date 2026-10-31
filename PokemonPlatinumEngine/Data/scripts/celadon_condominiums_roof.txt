@@ -1,0 +1,7 @@
+# The Celadon Condominiums' roof in HeartGold's Kanto (plan 20 · J15, part k). docs/scripts.md describes the language.
+# Both lifts come up here, and the little room on the roof stands at its far side.
+
+
+script OnEnter
+  setvar VAR_JOHTO_CELADON_CONDO_FLOOR 4
+  end

@@ -1,0 +1,24 @@
+# The Celadon Condominiums' right-hand lift in HeartGold's Kanto (plan 20 · J15, part k). docs/scripts.md describes the
+# language; the lines are our own, on HeartGold's beats (scr_seq_T07R0207).
+#
+# HeartGold's car goes to the second floor and the roof. As the left-hand lift (celadon_condominiums_left_elevator.txt),
+# whoever comes in steps up to the panel and chooses, and the ride is up or down from the floor they came in from.
+
+
+script OnEnter
+  walk player up 2
+  face player down
+  speaker none
+  choose "A panel of buttons for the floors. Which floor?" "ROOF" "2F"
+  setvar VAR_TEMP_1 4
+  if result == 1 setvar VAR_TEMP_1 2
+  if var VAR_TEMP_1 == VAR_JOHTO_CELADON_CONDO_FLOOR goto Out
+  if var VAR_TEMP_1 < VAR_JOHTO_CELADON_CONDO_FLOOR goto Down
+  anim elevator up
+  goto Out
+label Down
+  anim elevator down
+label Out
+  if var VAR_TEMP_1 == 4 warp "Celadon_Condominiums_Roof" 6 5 down
+  if var VAR_TEMP_1 == 2 warp "Celadon_Condominiums_2F" 7 3 down
+  end

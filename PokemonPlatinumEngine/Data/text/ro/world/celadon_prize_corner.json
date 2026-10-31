@@ -1,0 +1,76 @@
+{
+  "people": {
+    "t07r0501_gsgentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I won a whole TM here once. These days I just come in to look at the prize shelves."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t07r0501_sunglasses": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Coins? Not today. Not until the tables next door are running again."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t07r0501_gsman2": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the Prize Corner. I'm sorry, we can't exchange any coins until the Game Corner opens again."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T07R0501_003+1": {
+      "en": [
+        "A list of prizes. Every one of them is marked out of stock."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T07R0501_004+1": {
+      "en": [
+        "A glass case of prizes, locked."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

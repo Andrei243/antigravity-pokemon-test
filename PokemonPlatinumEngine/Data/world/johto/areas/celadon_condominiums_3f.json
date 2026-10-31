@@ -1,0 +1,48 @@
+{
+  "key": "celadon_condominiums_3f",
+  "index": 378,
+  "name": "Celadon City",
+  "matrix": 223,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_C_TAMAMUSHI",
+  "nightMusic": "GS_C_TAMAMUSHI",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 2, "to": "celadon_condominiums_left_elevator", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "t07r0203_gsman1", "looks": "gsman1", "movement": "14", "x": 1, "z": 7, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "T07R0203_002+1" },
+    { "id": "t07r0203_sunglasses", "looks": "sunglasses", "movement": "14", "x": 14, "z": 10, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "T07R0203_001+1" },
+    { "id": "t07r0203_gsbigman", "looks": "gsbigman", "movement": "14", "x": 6, "z": 9, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "T07R0203_003+1" },
+    { "id": "t07r0203_gsman3", "looks": "gsman3", "movement": "5", "x": 8, "z": 5, "facing": 2, "rangeX": 2, "rangeZ": 0, "script": "T07R0203_000+1" },
+    { "id": "t07r0203_gsboy1", "looks": "gsboy1", "movement": "0", "x": 14, "z": 6, "facing": 0, "rangeX": 2, "rangeZ": 0, "script": "T07R0203_009+1" },
+    { "id": "t07r0203_var_1", "looks": "var_1", "movement": "0", "x": 15, "z": 30, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "0" },
+    { "id": "t07r0203_tsure_poke_static_marill", "looks": "follower_mon_static_marill", "movement": "0", "x": 16, "z": 30, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "0" },
+    { "id": "t07r0203_suit", "looks": "suit", "movement": "0", "x": 8, "z": 12, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T07R0203_012+1" }
+  ],
+  "signs": [
+    { "x": 5, "z": 2, "type": 0, "script": "T07R0203_004+1" },
+    { "x": 5, "z": 8, "type": 0, "script": "T07R0203_007+1" },
+    { "x": 5, "z": 12, "type": 0, "script": "T07R0203_007+1" },
+    { "x": 6, "z": 12, "type": 0, "script": "T07R0203_007+1" },
+    { "x": 10, "z": 12, "type": 0, "script": "T07R0203_007+1" },
+    { "x": 11, "z": 12, "type": 0, "script": "T07R0203_007+1" },
+    { "x": 10, "z": 8, "type": 0, "script": "T07R0203_007+1" },
+    { "x": 11, "z": 8, "type": 0, "script": "T07R0203_007+1" },
+    { "x": 1, "z": 9, "type": 0, "script": "T07R0203_005+1" },
+    { "x": 1, "z": 12, "type": 0, "script": "T07R0203_005+1" },
+    { "x": 14, "z": 9, "type": 0, "script": "T07R0203_006+1" },
+    { "x": 15, "z": 12, "type": 0, "script": "T07R0203_006+1" },
+    { "x": 15, "z": 9, "type": 0, "script": "T07R0203_006+1" },
+    { "x": 14, "z": 12, "type": 0, "script": "T07R0203_006+1" },
+    { "x": 7, "z": 2, "type": 0, "script": "T07R0203_013+1" }
+  ],
+  "triggers": []
+}

@@ -1,0 +1,84 @@
+{
+  "Vending": [
+    {
+      "en": [
+        "A drinks machine. Which drink would you like?",
+        "FRESH WATER  200",
+        "SODA POP  300",
+        "LEMONADE  350",
+        "NONE"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Decided not to buy a drink."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Clang! A bottle of Fresh Water dropped down."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Lucky! Another bottle of Fresh Water dropped down."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Clang! A can of Soda Pop dropped down."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Lucky! Another can of Soda Pop dropped down."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Clang! A can of Lemonade dropped down."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Lucky! Another can of Lemonade dropped down."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Not enough money..."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

@@ -101,10 +101,10 @@
       },
       "dialog": {
         "en": [
-          "The Game Corner is closed for refitting. My husband is quite lost without it."
+          "The Game Corner's tables are switched off while they change them over. My husband is quite lost without them."
         ],
         "text": [
-          "Game Corner este închis pentru renovare. Soțul meu e complet pierdut fără el."
+          ""
         ]
       }
     },
@@ -174,18 +174,18 @@
     },
     "T07_013+1": {
       "en": [
-        "Celadon Game Corner\nClosed for refitting."
+        "Celadon Game Corner\nThe playground for grown-ups."
       ],
       "text": [
-        "Celadon Game Corner\nÎnchis pentru renovare."
+        ""
       ]
     },
     "T07_014+1": {
       "en": [
-        "Celadon Prize Corner\nClosed for refitting."
+        "Celadon Prize Corner\nCoins exchanged for prizes."
       ],
       "text": [
-        "Celadon Prize Corner\nÎnchis pentru renovare."
+        ""
       ]
     },
     "T07_012+1": {

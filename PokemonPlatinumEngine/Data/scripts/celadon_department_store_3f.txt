@@ -1,0 +1,14 @@
+# The Celadon Department Store's third floor in HeartGold's Kanto (plan 20 · J15, part k). docs/scripts.md describes
+# the language. Its counter sells TMs (marts.json's celadon_3f, a list of ours).
+
+
+script OnEnter
+  setvar VAR_JOHTO_CELADON_STORE_FLOOR 3
+  end
+
+
+script Clerk
+  sayown
+  shop "celadon_3f"
+  say "Thank you! Do come again."
+  end

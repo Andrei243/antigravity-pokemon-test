@@ -378,7 +378,23 @@
     { "name": "BellTower_Roof", "matrix": 24, "area": "bell_tower_roof", "trees": "Round", "setting": "Cave" },
     // and the Whirl Islands' third basement and Lugia's cave below the second basement's rock step
     { "name": "WhirlIslands_B3F", "matrix": 275, "area": "whirl_islands_b3f", "trees": "Round", "setting": "Cave" },
-    { "name": "WhirlIslands_LugiaCave", "matrix": 144, "area": "whirl_islands_b3f_lugia_cave", "trees": "Round", "setting": "Cave" }
+    { "name": "WhirlIslands_LugiaCave", "matrix": 144, "area": "whirl_islands_b3f_lugia_cave", "trees": "Round", "setting": "Cave" },
+    // Plan 20 · J15, part k: Celadon City's Department Store to its roof with its lift, the Condominiums to their roof
+    // room with their two lifts, the Game Corner and the Prize Corner (FireRed's Kanto has CeladonCity_…)
+    { "name": "Celadon_DeptStore_2F", "matrix": 216, "area": "celadon_department_store_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Celadon_DeptStore_3F", "matrix": 217, "area": "celadon_department_store_3f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Celadon_DeptStore_4F", "matrix": 218, "area": "celadon_department_store_4f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Celadon_DeptStore_5F", "matrix": 219, "area": "celadon_department_store_5f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Celadon_DeptStore_Roof", "matrix": 220, "area": "celadon_department_store_roof", "trees": "Round", "setting": "Indoors" },
+    { "name": "Celadon_DeptStore_Elevator", "matrix": 262, "area": "celadon_department_store_elevator", "trees": "Round", "setting": "Indoors" },
+    { "name": "Celadon_Condominiums_2F", "matrix": 222, "area": "celadon_condominiums_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Celadon_Condominiums_3F", "matrix": 223, "area": "celadon_condominiums_3f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Celadon_Condominiums_Roof", "matrix": 224, "area": "celadon_condominiums_roof", "trees": "Round", "setting": "Indoors" },
+    { "name": "Celadon_Condominiums_RoofRoom", "matrix": 225, "area": "celadon_condominiums_roof_room", "trees": "Round", "setting": "Indoors" },
+    { "name": "Celadon_Condominiums_LeftElevator", "matrix": 262, "area": "celadon_condominiums_left_elevator", "trees": "Round", "setting": "Indoors" },
+    { "name": "Celadon_Condominiums_RightElevator", "matrix": 262, "area": "celadon_condominiums_right_elevator", "trees": "Round", "setting": "Indoors" },
+    { "name": "Celadon_GameCorner", "matrix": 286, "area": "celadon_game_corner", "trees": "Round", "setting": "Indoors" },
+    { "name": "Celadon_PrizeCorner", "matrix": 214, "area": "celadon_prize_corner", "trees": "Round", "setting": "Indoors" }
   ],
   "areas": [
     // Plan 20 · J2: New Bark Town to Route 31's gate house, with their rooms
@@ -520,6 +536,11 @@
     // Plan 20 · J11, part d: the Bell Tower's corridor, Bellchime Trail and the tower's eleven floors
     "ecruteak_bell_tower_barrier_station_corridor", "bellchime_tower", "bell_tower_1f", "bell_tower_2f", "bell_tower_3f",
     "bell_tower_4f", "bell_tower_5f", "bell_tower_6f", "bell_tower_7f", "bell_tower_8f", "bell_tower_9f", "bell_tower_10f",
-    "bell_tower_roof", "whirl_islands_b3f", "whirl_islands_b3f_lugia_cave"
+    "bell_tower_roof", "whirl_islands_b3f", "whirl_islands_b3f_lugia_cave",
+    // Plan 20 · J15, part k: Celadon City's Department Store to its roof, the Condominiums to their roof room, the Game Corner and the Prize Corner
+    "celadon_department_store_2f", "celadon_department_store_3f", "celadon_department_store_4f", "celadon_department_store_5f",
+    "celadon_department_store_roof", "celadon_department_store_elevator", "celadon_condominiums_2f", "celadon_condominiums_3f",
+    "celadon_condominiums_roof", "celadon_condominiums_roof_room", "celadon_condominiums_left_elevator",
+    "celadon_condominiums_right_elevator", "celadon_game_corner", "celadon_prize_corner"
   ]
 }

@@ -11,10 +11,10 @@
       },
       "dialog": {
         "en": [
-          "I own this building, dear. The tenants upstairs are out, so I can't let you up today. Do mind the Meowth."
+          "I own this building, dear. Game makers work upstairs, so do knock quietly. And mind the Meowth."
         ],
         "text": [
-          "Eu dețin clădirea asta, dragă. Chiriașii de sus sunt plecați, așa că nu te pot lăsa sus azi. Ai grijă la Meowth."
+          ""
         ]
       }
     },
@@ -76,10 +76,10 @@
   "signs": {
     "T07R0201_004+1": {
       "en": [
-        "Celadon Condominiums\nResidents only above the ground floor."
+        "Celadon Condominiums\nPlease be quiet: people are working upstairs."
       ],
       "text": [
-        "Blocul Celadon\nDoar rezidenți la etajele de deasupra parterului."
+        ""
       ]
     }
   }

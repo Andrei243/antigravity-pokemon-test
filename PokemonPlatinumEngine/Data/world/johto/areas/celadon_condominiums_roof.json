@@ -1,0 +1,27 @@
+{
+  "key": "celadon_condominiums_roof",
+  "index": 379,
+  "name": "Celadon City",
+  "matrix": 224,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "0",
+  "camera": "3",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_C_TAMAMUSHI",
+  "nightMusic": "GS_C_TAMAMUSHI",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 12, "z": 7, "to": "celadon_condominiums_roof_room", "toWarp": 0 },
+    { "x": 2, "z": 4, "to": "celadon_condominiums_left_elevator", "toWarp": 0 },
+    { "x": 6, "z": 4, "to": "celadon_condominiums_right_elevator", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "t07r0204_gsbigman", "looks": "gsbigman", "movement": "17", "x": 14, "z": 11, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "T07R0204_000+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

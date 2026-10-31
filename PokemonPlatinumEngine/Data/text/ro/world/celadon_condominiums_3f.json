@@ -1,0 +1,154 @@
+{
+  "people": {
+    "t07r0203_gsman1": {
+      "name": {
+        "en": [
+          "Programmer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm testing the new battle screens. Every move has to land at exactly the right moment!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t07r0203_sunglasses": {
+      "name": {
+        "en": [
+          "Artist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I draw the towns. I walk through every one of them first, to get the feel of the place."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t07r0203_gsbigman": {
+      "name": {
+        "en": [
+          "Composer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Each route has a song of its own. The trick is a tune you can hear a hundred times and still hum."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t07r0203_gsman3": {
+      "name": {
+        "en": [
+          "Designer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "How many kinds of Pokémon are there? Every time I think I've counted them all, someone finds another."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t07r0203_gsboy1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My dad works here. He says I can test the next game if I finish my homework first."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t07r0203_suit": {
+      "name": {
+        "en": [
+          "Director"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Ah, a Trainer! Fill your Pokédex, every page of it. The Pokédex itself knows when you've done it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T07R0203_004+1": {
+      "en": [
+        "A busy office. Please knock quietly."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T07R0203_007+1": {
+      "en": [
+        "A computer. Lines of code scroll past, far too fast to read."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T07R0203_005+1": {
+      "en": [
+        "A shelf full of thick binders, each labelled with the name of a town."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T07R0203_006+1": {
+      "en": [
+        "Sketches of Pokémon are pinned up in rows. Some of them look brand new."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T07R0203_013+1": {
+      "en": [
+        "A whiteboard with a map of a region nobody has heard of."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

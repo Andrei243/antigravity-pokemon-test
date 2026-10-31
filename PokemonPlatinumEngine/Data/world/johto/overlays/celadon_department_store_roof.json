@@ -1,0 +1,21 @@
+{
+  // The Celadon Department Store's roof (plan 20 · J15, part k)
+  "area": "celadon_department_store_roof",
+  "bgmTrack": "kanto/celadon",
+  "people": {
+    "t07r0106_gsman1": {
+      "name": "Man",
+      "still": true,
+      "dialog": [ "From up here you can see the whole of Celadon. On a clear day you can see Saffron's tower too." ]
+    },
+    "t07r0106_gsboy1": {
+      "name": "Boy",
+      "dialog": [ "My mum bought me a Soda Pop. My Pokémon wanted it more than I did, so I shared!" ]
+    }
+  },
+  // The drinks machines sell Fresh Water, Soda Pop and Lemonade (scripts/celadon_department_store_roof.txt)
+  "read": { "T07R0106_003+1": "Vending" },
+  "signs": {
+    "T07R0106_002+1": "Rooftop Square\nA place to rest your feet."
+  }
+}

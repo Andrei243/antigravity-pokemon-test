@@ -1,0 +1,47 @@
+{
+  // The Celadon Condominiums' third floor (plan 20 · J15, part k): an office of people who make games, come to by the
+  // left-hand lift. Its people talk in lines of ours; the two of HeartGold's objects that stand off the room's floor (a
+  // thing of a scene and a Marill, at row 30) are held back, and the man of the office who in HeartGold hands a diploma
+  // to whoever has completed the Pokédex only talks of it: the diploma is the Pokédex's own (plan 03 · D10)
+  "area": "celadon_condominiums_3f",
+  "bgmTrack": "kanto/celadon",
+  "heldBack": [ "t07r0203_var_1", "t07r0203_tsure_poke_static_marill" ],
+  "people": {
+    "t07r0203_gsman1": {
+      "name": "Programmer",
+      "still": true,
+      "dialog": [ "I'm testing the new battle screens. Every move has to land at exactly the right moment!" ]
+    },
+    "t07r0203_sunglasses": {
+      "name": "Artist",
+      "still": true,
+      "dialog": [ "I draw the towns. I walk through every one of them first, to get the feel of the place." ]
+    },
+    "t07r0203_gsbigman": {
+      "name": "Composer",
+      "still": true,
+      "dialog": [ "Each route has a song of its own. The trick is a tune you can hear a hundred times and still hum." ]
+    },
+    "t07r0203_gsman3": {
+      "name": "Designer",
+      "dialog": [ "How many kinds of Pokémon are there? Every time I think I've counted them all, someone finds another." ]
+    },
+    "t07r0203_gsboy1": {
+      "name": "Boy",
+      "still": true,
+      "dialog": [ "My dad works here. He says I can test the next game if I finish my homework first." ]
+    },
+    "t07r0203_suit": {
+      "name": "Director",
+      "still": true,
+      "dialog": [ "Ah, a Trainer! Fill your Pokédex, every page of it. The Pokédex itself knows when you've done it." ]
+    }
+  },
+  "signs": {
+    "T07R0203_004+1": "A busy office. Please knock quietly.",
+    "T07R0203_007+1": "A computer. Lines of code scroll past, far too fast to read.",
+    "T07R0203_005+1": "A shelf full of thick binders, each labelled with the name of a town.",
+    "T07R0203_006+1": "Sketches of Pokémon are pinned up in rows. Some of them look brand new.",
+    "T07R0203_013+1": "A whiteboard with a map of a region nobody has heard of."
+  }
+}

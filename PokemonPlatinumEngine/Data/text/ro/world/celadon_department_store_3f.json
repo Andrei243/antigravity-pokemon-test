@@ -1,0 +1,104 @@
+{
+  "people": {
+    "t07r0103_shopm1_2": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the TM Corner! Which would you like?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t07r0103_gsdsboy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Shh! I'm about to beat my best score. Don't make me look up!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t07r0103_gsdsboy_2": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We come here after school to try the new games. The staff don't seem to mind."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t07r0103_gsboy1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A TM can be used again and again now. I'm going to teach Protect to my whole team!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t07r0103_gsman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Sunny Day and Rain Dance change a whole battle. Choose your weather and build round it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T07R0103_005+1": {
+      "en": [
+        "3F: TM Corner\nMoves to teach, as often as you like."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

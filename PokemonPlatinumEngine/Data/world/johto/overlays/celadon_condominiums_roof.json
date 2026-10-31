@@ -1,0 +1,13 @@
+{
+  // The Celadon Condominiums' roof (plan 20 · J15, part k): both lifts come up here, and the room on the roof stands at
+  // its far side
+  "area": "celadon_condominiums_roof",
+  "bgmTrack": "kanto/celadon",
+  "people": {
+    "t07r0204_gsbigman": {
+      "name": "Man",
+      "still": true,
+      "dialog": [ "The landlady lets me sit up here in the evenings. The city's lights are the best show in Kanto." ]
+    }
+  }
+}

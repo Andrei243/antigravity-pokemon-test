@@ -1,0 +1,27 @@
+{
+  "key": "celadon_condominiums_2f",
+  "index": 377,
+  "name": "Celadon City",
+  "matrix": 222,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_C_TAMAMUSHI",
+  "nightMusic": "GS_C_TAMAMUSHI",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 13, "z": 9, "to": "celadon_condominiums_1f", "toWarp": 1 },
+    { "x": 7, "z": 2, "to": "celadon_condominiums_right_elevator", "toWarp": 0 }
+  ],
+  "objects": [],
+  "signs": [
+    { "x": 5, "z": 2, "type": 0, "script": "T07R0202_000+1" },
+    { "x": 3, "z": 2, "type": 0, "script": "T07R0202_002+1" }
+  ],
+  "triggers": []
+}

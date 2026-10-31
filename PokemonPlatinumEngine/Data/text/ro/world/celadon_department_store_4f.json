@@ -1,0 +1,68 @@
+{
+  "people": {
+    "t07r0104_shopm1_2": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the Gift Corner! Something for someone special?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t07r0104_gsboy1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm writing to my friend in Johto. Which mail is nicer, do you think: the hearts or the snow?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t07r0104_gsman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A Poké Doll is a fine thing to carry. Toss it, and a wild Pokémon forgets all about you."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T07R0104_003+1": {
+      "en": [
+        "4F: Gift Corner\nDolls and mail for every occasion."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

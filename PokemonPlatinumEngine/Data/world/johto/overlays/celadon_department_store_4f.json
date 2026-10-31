@@ -1,0 +1,28 @@
+{
+  // The Celadon Department Store's fourth floor (plan 20 · J15, part k), its counter gifts and mail
+  // (scripts/celadon_department_store_4f.txt). The two Leaders shopping together on a day of their phones' meetings
+  // (HeartGold's FLAG_UNK_260 and FLAG_UNK_2E2) are held back with the Leaders' street meetings
+  "area": "celadon_department_store_4f",
+  "bgmTrack": "kanto/celadon",
+  "heldBack": [ "t07r0104_gsleader1", "t07r0104_gsleader13" ],
+  "people": {
+    "t07r0104_shopm1_2": {
+      "name": "Clerk",
+      "script": "Clerk",
+      "still": true,
+      "dialog": [ "Welcome to the Gift Corner! Something for someone special?" ]
+    },
+    "t07r0104_gsboy1": {
+      "name": "Boy",
+      "still": true,
+      "dialog": [ "I'm writing to my friend in Johto. Which mail is nicer, do you think: the hearts or the snow?" ]
+    },
+    "t07r0104_gsman1": {
+      "name": "Man",
+      "dialog": [ "A Poké Doll is a fine thing to carry. Toss it, and a wild Pokémon forgets all about you." ]
+    }
+  },
+  "signs": {
+    "T07R0104_003+1": "4F: Gift Corner\nDolls and mail for every occasion."
+  }
+}

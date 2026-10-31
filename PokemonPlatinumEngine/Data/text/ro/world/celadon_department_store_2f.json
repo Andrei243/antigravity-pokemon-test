@@ -1,0 +1,86 @@
+{
+  "people": {
+    "t07r0102_shopm1_2": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome! How can I help you?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t07r0102_shopm1_2_2": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome! How can I help you?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t07r0102_gsmiddleman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I stock up on Revives before every long trip. You never know what's waiting in a cave."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t07r0102_gsboy1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My big brother says Ultra Balls are the best. I'm saving up for one!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T07R0102_004+1": {
+      "en": [
+        "2F: Trainer's Market\nMedicine and Poké Balls."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

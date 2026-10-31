@@ -1,0 +1,9 @@
+# The Celadon Condominiums' ground floor in HeartGold's Kanto (plan 20 · J15, part k). docs/scripts.md describes the
+# language. Every floor says so as it is come to (VAR_JOHTO_CELADON_CONDO_FLOOR, a variable of our own: 1 to 3 for the
+# floors, 4 for the roof), so the building's two lifts know whether they go up or down
+# (celadon_condominiums_left_elevator.txt, celadon_condominiums_right_elevator.txt).
+
+
+script OnEnter
+  setvar VAR_JOHTO_CELADON_CONDO_FLOOR 1
+  end

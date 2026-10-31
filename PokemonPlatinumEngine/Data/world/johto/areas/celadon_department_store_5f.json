@@ -1,0 +1,33 @@
+{
+  "key": "celadon_department_store_5f",
+  "index": 374,
+  "name": "Celadon City",
+  "matrix": 219,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_FS",
+  "nightMusic": "GS_FS",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 11, "z": 8, "to": "celadon_department_store_4f", "toWarp": 1 },
+    { "x": 6, "z": 8, "to": "celadon_department_store_roof", "toWarp": 0 },
+    { "x": 5, "z": 2, "to": "celadon_department_store_elevator", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "t07r0105_shopm1_2", "looks": "shopm1_2", "movement": "14", "x": 19, "z": 10, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "T07R0105_000+1" },
+    { "id": "t07r0105_shopm1_2_2", "looks": "shopm1_2", "movement": "14", "x": 17, "z": 10, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "T07R0105_001+1" },
+    { "id": "t07r0105_gsgentleman", "looks": "gsgentleman", "movement": "17", "x": 14, "z": 5, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "T07R0105_002+1" },
+    { "id": "t07r0105_seaman_2", "looks": "seaman_2", "movement": "5", "x": 9, "z": 11, "facing": 2, "rangeX": 2, "rangeZ": 0, "script": "T07R0105_003+1" },
+    { "id": "t07r0105_gswoman1", "looks": "gswoman1", "movement": "17", "x": 1, "z": 7, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "T07R0105_004+1" }
+  ],
+  "signs": [
+    { "x": 7, "z": 2, "type": 0, "script": "T07R0105_005+1" }
+  ],
+  "triggers": []
+}

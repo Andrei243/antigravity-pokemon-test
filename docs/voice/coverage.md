@@ -10,9 +10,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 |---|---|---|---|---|---|
 | The introduction (`intro:`) | 80 | 80 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1276 | 1236 | 40 | 1 | 0 |
-| Scripts (`script:`) | 9200 | 8770 | 430 | 17 | 0 |
-| People of the world (`world:`) | 6882 | 6823 | 59 | 4 | 0 |
-| **All** | 17438 | 16909 | 529 | 22 | 0 |
+| Scripts (`script:`) | 9211 | 8781 | 430 | 17 | 0 |
+| People of the world (`world:`) | 6914 | 6855 | 59 | 4 | 0 |
+| **All** | 17481 | 16952 | 529 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -21,10 +21,10 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | What | Lines |
 |---|---|
 | a Pokémon's cry | 237 |
-| a question's answers | 551 |
-| a sign | 1536 |
-| the game's own voice (speaker none) | 257 |
-| the game's own voice (text) | 1310 |
+| a question's answers | 560 |
+| a sign | 1552 |
+| the game's own voice (speaker none) | 260 |
+| the game's own voice (text) | 1318 |
 
 ## The cast
 
@@ -40,23 +40,23 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | Voice | Lines | Shown only |
 |---|---|---|
 | `@self` | 1857 | 134 |
-| `look:gentleman (any)` | 697 | 13 |
+| `look:gentleman (any)` | 709 | 13 |
 | `look:grunt (any)` | 582 | 0 |
 | `rival` | 577 | 17 |
-| `look:lady (any)` | 401 | 1 |
-| `look:youngster (any)` | 376 | 18 |
-| `look:clerk (any)` | 332 | 7 |
+| `look:lady (any)` | 402 | 1 |
+| `look:youngster (any)` | 383 | 18 |
+| `look:clerk (any)` | 344 | 7 |
 | `look:lass (any)` | 312 | 11 |
 | `look:nurse (any)` | 255 | 0 |
-| `look:attendant (any)` | 218 | 7 |
+| `look:attendant (any)` | 223 | 7 |
 | `look:scientist (any)` | 193 | 4 |
-| `look:gym_guide (any)` | 188 | 1 |
+| `look:gym_guide (any)` | 191 | 1 |
 | `cynthia` | 157 | 1 |
 | `look:receptionist (any)` | 157 | 19 |
 | `class:ace_trainer (any)` | 148 | 0 |
 | `rowan` | 147 | 12 |
 | `class:hiker (any)` | 140 | 0 |
-| `look:sailor (any)` | 136 | 0 |
+| `look:sailor (any)` | 137 | 0 |
 | `class:fisherman (any)` | 134 | 0 |
 | `class:team_rocket (any)` | 132 | 0 |
 | `look:woman (any)` | 129 | 13 |
@@ -108,8 +108,8 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `bill` | 50 | 2 |
 | `officer` | 50 | 5 |
 | `look:girl (any)` | 49 | 0 |
+| `artist` | 48 | 1 |
 | `class:beauty (any)` | 48 | 0 |
-| `artist` | 47 | 1 |
 | `class:young_couple (any)` | 46 | 0 |
 | `drayden` | 46 | 0 |
 | `elder` | 46 | 0 |
@@ -215,6 +215,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:pokefan (any)` | 20 | 0 |
 | `class:skier (any)` | 20 | 0 |
 | `class:tuber (any)` | 20 | 0 |
+| `director` | 20 | 1 |
 | `juan` | 20 | 0 |
 | `look:announcer (any)` | 20 | 12 |
 | `look:pokemon_breeder_f (any)` | 20 | 0 |

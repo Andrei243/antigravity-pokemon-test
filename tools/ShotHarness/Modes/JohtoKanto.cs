@@ -501,6 +501,75 @@ partial class Harness
         Spot("Rock_Tunnel_B1F", 10, 20, Direction.Down, "jkj11_rock_tunnel_below");
         Spot("Johto", 1413, 202, Direction.Down, "jkj12_route_10_south");
         Spot("Johto", 1420, 212, Direction.Down, "jkj13_route_10_to_lavender");
+        JohtoKantoCeladonRoomsShots();
+    }
+
+    /// <summary>
+    /// Plan 20 · J15, part k: Celadon City's Department Store floor by floor to its roof and its lift with the
+    /// attendant's question, the Condominiums' floors, roof and roof room and a lift's panel, the Game Corner and the
+    /// Prize Corner (<c>jkk01</c> to <c>jkk18</c>), after part j's, so nothing before them moves. It prints whether each
+    /// spot stood on is open.
+    /// </summary>
+    void JohtoKantoCeladonRoomsShots()
+    {
+        var box = game.Dialogue;
+        void ReadTo(string? text, int most = 2400)
+        {
+            int idle = 0;
+            for (int i = 0; i < most; i++)
+            {
+                if (text != null && box.IsActive && Translated.Saying(box.CurrentLine, text)) { box.FinishLine(); Frames(2); Console.WriteLine($"  said: {text}"); return; }
+                if (text != null && !engine.ScriptRunning && !box.IsActive && game.State == GameState.Overworld) { if (++idle > 60) break; }
+                else idle = 0;
+                if (text == null && !engine.ScriptRunning && !box.IsActive && game.State == GameState.Overworld) return;
+                if (engine.Choice.IsOpen) { Frames(10); engine.Choice.Confirm(); Frames(4); }
+                else if (box.IsActive && box.IsCurrentLineComplete && !box.IsQuestion) { box.Advance(); Frames(2); }
+                else Frames(1);
+            }
+            Console.WriteLine($"  !! never said: {text ?? "the script's end"}");
+        }
+        void Spot(string map, int x, int y, Direction way, string shot, int frames = 10)
+        {
+            At(map, x, y, way);
+            if (!game.Map.IsWalkable(x, y))
+                (x, y) = Enumerable.Range(1, 4).SelectMany(r => Enumerable.Range(-r, 2 * r + 1).SelectMany(dy => Enumerable.Range(-r, 2 * r + 1).Select(dx => (X: x + dx, Y: y + dy))))
+                    .First(t => game.Map.IsWalkable(t.X, t.Y));
+            At(map, x, y, way); Frames(frames); Shot(shot);
+            Console.WriteLine($"  {shot}: {map} {x},{y} open {game.Map.IsWalkable(x, y)}, {game.Map.ShownNameAt(x, y)}");
+        }
+        game.State = GameState.Overworld;
+        game.Player.SetMode(TravelMode.OnFoot);
+
+        Spot("Celadon_DeptStore_1F", 8, 9, Direction.Up, "jkk01_store_ground_floor");
+        Spot("Celadon_DeptStore_2F", 12, 10, Direction.Up, "jkk02_store_2f_trainers_market");
+        Spot("Celadon_DeptStore_3F", 12, 7, Direction.Up, "jkk03_store_3f_tm_corner");
+        Spot("Celadon_DeptStore_4F", 15, 8, Direction.Up, "jkk04_store_4f_gift_corner");
+        Spot("Celadon_DeptStore_5F", 14, 8, Direction.Up, "jkk05_store_5f_drugstore");
+        Spot("Celadon_DeptStore_Roof", 12, 11, Direction.Up, "jkk06_store_roof");
+        Spot("Celadon_DeptStore_Elevator", 2, 6, Direction.Left, "jkk07_store_lift");
+        game.Interact();
+        ReadTo("Which floor"); Frames(20);
+        Shot("jkk08_store_lift_attendants_question");
+        engine.Choice.Move(-1); engine.Choice.Confirm(); Frames(20);
+        ReadTo(null); Frames(20);
+        Console.WriteLine($"  after 'Stay here': {game.Map.Name}, VAR_JOHTO_CELADON_STORE_FLOOR {game.Story.Var("VAR_JOHTO_CELADON_STORE_FLOOR")}");
+        Spot("Celadon_Condominiums_1F", 8, 9, Direction.Up, "jkk09_condominiums_ground_floor");
+        Spot("Celadon_Condominiums_2F", 9, 8, Direction.Up, "jkk10_condominiums_2f");
+        Spot("Celadon_Condominiums_3F", 8, 9, Direction.Up, "jkk11_condominiums_3f_games_office");
+        Spot("Celadon_Condominiums_3F", 12, 11, Direction.Down, "jkk12_condominiums_3f_desks");
+        Spot("Celadon_Condominiums_Roof", 5, 7, Direction.Up, "jkk13_condominiums_roof");
+        Spot("Celadon_Condominiums_Roof", 12, 9, Direction.Up, "jkk14_condominiums_roof_room_door");
+        Spot("Celadon_Condominiums_RoofRoom", 6, 9, Direction.Up, "jkk15_condominiums_roof_room");
+        // the left-hand lift's panel, as the car is come into from the ground floor
+        At("Celadon_Condominiums_1F", 3, 3, Direction.Up); game.ArriveOnMap(); Frames(10);
+        At("Celadon_Condominiums_LeftElevator", 3, 5, Direction.Up); game.ArriveOnMap();
+        ReadTo("Which floor"); Frames(20);
+        Shot("jkk16_condominiums_lift_panel");
+        engine.Choice.Move(-1); engine.Choice.Confirm(); Frames(20);
+        ReadTo(null); Frames(30);
+        Console.WriteLine($"  after '1F': {game.Map.Name} {game.Player.GridX},{game.Player.GridY}");
+        Spot("Celadon_GameCorner", 7, 10, Direction.Up, "jkk17_game_corner");
+        Spot("Celadon_PrizeCorner", 4, 5, Direction.Up, "jkk18_prize_corner");
     }
 
 }

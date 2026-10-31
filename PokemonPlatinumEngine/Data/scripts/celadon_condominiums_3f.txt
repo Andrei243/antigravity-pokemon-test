@@ -1,0 +1,7 @@
+# The Celadon Condominiums' third floor in HeartGold's Kanto (plan 20 · J15, part k): the office of the people who make
+# games. docs/scripts.md describes the language. It is come to only by the left-hand lift.
+
+
+script OnEnter
+  setvar VAR_JOHTO_CELADON_CONDO_FLOOR 3
+  end

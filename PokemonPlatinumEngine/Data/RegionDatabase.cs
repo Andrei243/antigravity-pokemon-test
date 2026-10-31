@@ -588,6 +588,11 @@ public static class RegionDatabase
                 "WhirlIslands_B3F", "WhirlIslands_LugiaCave",
                 // Plan 20 · J15, part j: Route 10's Pokémon Center and Power Plant, and Rock Tunnel's two floors
                 "Route10North_PokemonCenter_1F", "Route10North_PokemonCenter_B1F", "Route10_PowerPlant", "Rock_Tunnel_1F", "Rock_Tunnel_B1F",
+                // Plan 20 · J15, part k: Celadon City's Department Store, Condominiums, Game Corner and Prize Corner
+                "Celadon_DeptStore_2F", "Celadon_DeptStore_3F", "Celadon_DeptStore_4F", "Celadon_DeptStore_5F", "Celadon_DeptStore_Roof",
+                "Celadon_DeptStore_Elevator", "Celadon_Condominiums_2F", "Celadon_Condominiums_3F", "Celadon_Condominiums_Roof",
+                "Celadon_Condominiums_RoofRoom", "Celadon_Condominiums_LeftElevator", "Celadon_Condominiums_RightElevator",
+                "Celadon_GameCorner", "Celadon_PrizeCorner",
                 // Plan 20 · J5's leftovers: the Ruins of Alph's hall
                 "RuinsOfAlph_HallEntrance", "RuinsOfAlph_UndergroundHall",
             }

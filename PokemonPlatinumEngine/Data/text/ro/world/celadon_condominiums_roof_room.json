@@ -1,0 +1,23 @@
+{
+  "people": {
+    "t07r0205_sunglasses": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This room's the quietest in the city. I come here to think. Or to nap, mostly."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

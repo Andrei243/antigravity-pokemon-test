@@ -1,0 +1,7 @@
+# The Celadon Condominiums' second floor in HeartGold's Kanto (plan 20 · J15, part k). docs/scripts.md describes the
+# language. Its stairs lead down to the ground floor and its lift (the right-hand one) up to the roof.
+
+
+script OnEnter
+  setvar VAR_JOHTO_CELADON_CONDO_FLOOR 2
+  end

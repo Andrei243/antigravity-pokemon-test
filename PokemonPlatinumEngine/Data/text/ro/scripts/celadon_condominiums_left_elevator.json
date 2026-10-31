@@ -1,0 +1,18 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "A panel of buttons for the floors. Which floor?",
+        "ROOF",
+        "3F",
+        "1F"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  // The Celadon Department Store's third floor (plan 20 · J15, part k), its counter TMs
+  // (scripts/celadon_department_store_3f.txt)
+  "area": "celadon_department_store_3f",
+  "bgmTrack": "kanto/celadon",
+  "people": {
+    "t07r0103_shopm1_2": {
+      "name": "Clerk",
+      "script": "Clerk",
+      "still": true,
+      "dialog": [ "Welcome to the TM Corner! Which would you like?" ]
+    },
+    "t07r0103_gsdsboy": {
+      "name": "Boy",
+      "still": true,
+      "dialog": [ "Shh! I'm about to beat my best score. Don't make me look up!" ]
+    },
+    "t07r0103_gsdsboy_2": {
+      "name": "Boy",
+      "still": true,
+      "dialog": [ "We come here after school to try the new games. The staff don't seem to mind." ]
+    },
+    "t07r0103_gsboy1": {
+      "name": "Boy",
+      "dialog": [ "A TM can be used again and again now. I'm going to teach Protect to my whole team!" ]
+    },
+    "t07r0103_gsman1": {
+      "name": "Man",
+      "dialog": [ "Sunny Day and Rain Dance change a whole battle. Choose your weather and build round it." ]
+    }
+  },
+  "signs": {
+    "T07R0103_005+1": "3F: TM Corner\nMoves to teach, as often as you like."
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "Attendant": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome. Which floor would you like?",
+        "ROOF",
+        "5F",
+        "4F",
+        "3F",
+        "LOWER FLOORS",
+        "Stay here"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The second floor or the ground floor?",
+        "2F",
+        "1F",
+        "Stay here"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Going up!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Going down!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Here we are. Please come again!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

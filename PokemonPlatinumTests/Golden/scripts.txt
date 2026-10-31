@@ -8185,6 +8185,141 @@ way -
   > Lucas put it away in the Key Items pocket.
   * fanfare FanfareKeyItem
   + FLAG_GOT_COIN_CASE
+=== celadon_department_store_2f.BallClerk
+from Clerk at 18,8 of Celadon_DeptStore_2F
+way -
+  Clerk> Welcome! How can I help you?
+  Clerk> Thank you! Do come again.
+  * open Shop goldenrod_2f_balls
+=== celadon_department_store_2f.MedicineClerk
+from Clerk at 16,8 of Celadon_DeptStore_2F
+way -
+  Clerk> Welcome! How can I help you?
+  Clerk> Thank you! Do come again.
+  * open Shop goldenrod_2f_medicine
+=== celadon_department_store_3f.Clerk
+from Clerk at 17,4 of Celadon_DeptStore_3F
+way -
+  Clerk> Welcome to the TM Corner! Which would you like?
+  Clerk> Thank you! Do come again.
+  * open Shop celadon_3f
+=== celadon_department_store_4f.Clerk
+from Clerk at 21,11 of Celadon_DeptStore_4F
+way -
+  Clerk> Welcome to the Gift Corner! Something for someone special?
+  Clerk> Thank you! Do come again.
+  * open Shop celadon_4f
+=== celadon_department_store_5f.BattleClerk
+from Clerk at 17,10 of Celadon_DeptStore_5F
+way -
+  Clerk> Welcome! Our items give a Pokémon an edge in battle.
+  Clerk> Thank you! Do come again.
+  * open Shop goldenrod_3f
+=== celadon_department_store_5f.VitaminClerk
+from Clerk at 19,10 of Celadon_DeptStore_5F
+way -
+  Clerk> Welcome to the Drugstore! Our vitamins make Pokémon stronger.
+  Clerk> Thank you! Do come again.
+  * open Shop goldenrod_4f
+=== celadon_department_store_elevator.Attendant
+from Attendant at 1,6 of Celadon_DeptStore_Elevator
+way 0
+  Attendant> Welcome. Which floor would you like?
+  Attendant> Going up!
+  Attendant> Here we are. Please come again!
+  ? Welcome. Which floor would you like? = ROOF
+  * anim elevator up 4
+  * warp Celadon_DeptStore_Roof 5 3
+  = VAR_JOHTO_CELADON_STORE_FLOOR 0 -> 1
+  = VAR_TEMP_1 0 -> 6
+way 5, from answer 1
+  ? Welcome. Which floor would you like? = Stay here
+  = VAR_JOHTO_CELADON_STORE_FLOOR 0 -> 1
+way 4.0, from answer 1
+  Attendant> The second floor or the ground floor?
+  Attendant> Going up!
+  Attendant> Here we are. Please come again!
+  ? Welcome. Which floor would you like? = LOWER FLOORS
+  ? The second floor or the ground floor? = 2F
+  * anim elevator up 4
+  * warp Celadon_DeptStore_2F 5 3
+  = VAR_JOHTO_CELADON_STORE_FLOOR 0 -> 1
+  = VAR_TEMP_1 0 -> 2
+way 4.2, from answer 2
+  ? The second floor or the ground floor? = Stay here
+  = VAR_JOHTO_CELADON_STORE_FLOOR 0 -> 1
+  = VAR_TEMP_1 0 -> 6
+way 4.1, from answer 2
+  Attendant> Here we are. Please come again!
+  ? The second floor or the ground floor? = 1F
+  * warp Celadon_DeptStore_1F 5 3
+  = VAR_JOHTO_CELADON_STORE_FLOOR 0 -> 1
+  = VAR_TEMP_1 0 -> 1
+way 3, from answer 1
+  Attendant> Going up!
+  Attendant> Here we are. Please come again!
+  ? Welcome. Which floor would you like? = 3F
+  * anim elevator up 4
+  * warp Celadon_DeptStore_3F 5 3
+  = VAR_JOHTO_CELADON_STORE_FLOOR 0 -> 1
+  = VAR_TEMP_1 0 -> 3
+way 2, from answer 1
+  Attendant> Going up!
+  Attendant> Here we are. Please come again!
+  ? Welcome. Which floor would you like? = 4F
+  * anim elevator up 4
+  * warp Celadon_DeptStore_4F 5 3
+  = VAR_JOHTO_CELADON_STORE_FLOOR 0 -> 1
+  = VAR_TEMP_1 0 -> 4
+way 1, from answer 1
+  Attendant> Going up!
+  Attendant> Here we are. Please come again!
+  ? Welcome. Which floor would you like? = 5F
+  * anim elevator up 4
+  * warp Celadon_DeptStore_5F 5 3
+  = VAR_JOHTO_CELADON_STORE_FLOOR 0 -> 1
+  = VAR_TEMP_1 0 -> 5
+=== celadon_department_store_roof.Vending
+from the tile read at 15,3 of Celadon_DeptStore_Roof
+from the tile read at 19,3 of Celadon_DeptStore_Roof
+from the tile read at 20,3 of Celadon_DeptStore_Roof
+way 0
+  > A drinks machine. Which drink would you like?
+  > Clang! A bottle of Fresh Water dropped down.
+  > Lucas received the Fresh Water!
+  > Lucas put it away in the Medicine pocket.
+  > Lucky! Another bottle of Fresh Water dropped down.
+  > Lucas received the Fresh Water!
+  > Lucas put it away in the Medicine pocket.
+  ? A drinks machine. Which drink would you like? = FRESH WATER  200
+  * sound bump
+  * fanfare FanfareItem
+  * fanfare FanfareItem
+way 3, from answer 1
+  > Decided not to buy a drink.
+  ? A drinks machine. Which drink would you like? = NONE
+way 2, from answer 1
+  > Clang! A can of Lemonade dropped down.
+  > Lucas received the Lemonade!
+  > Lucas put it away in the Medicine pocket.
+  > Lucky! Another can of Lemonade dropped down.
+  > Lucas received the Lemonade!
+  > Lucas put it away in the Medicine pocket.
+  ? A drinks machine. Which drink would you like? = LEMONADE  350
+  * sound bump
+  * fanfare FanfareItem
+  * fanfare FanfareItem
+way 1, from answer 1
+  > Clang! A can of Soda Pop dropped down.
+  > Lucas received the Soda Pop!
+  > Lucas put it away in the Medicine pocket.
+  > Lucky! Another can of Soda Pop dropped down.
+  > Lucas received the Soda Pop!
+  > Lucas put it away in the Medicine pocket.
+  ? A drinks machine. Which drink would you like? = SODA POP  300
+  * sound bump
+  * fanfare FanfareItem
+  * fanfare FanfareItem
 === celadon_gym.Erika
 from Erika at 7,3 of Celadon_Gym
 way 0

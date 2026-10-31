@@ -6996,6 +6996,56 @@ a new HM of ours.
   dance, the Underground Path, Silph Co., the upper floors of Celadon's store and condominiums, the Game Corner, the Radio
   Tower and the Expn Card, the Trainer House's battles, the Leaders' rematches and street meetings, Suicune's stops, the
   rest of Kanto's Apricorn trees.
+
+## HeartGold's Kanto, part k (2026-10-31, plan 20 · J15, part k)
+
+- *The slice*: Celadon City's buildings above and behind its street. The Department Store's stairs and lift (its ground
+  floor's warps 1 and 2, locked in part d) lead to its second to fifth floors and its roof (HeartGold's store has no
+  sixth floor); the Condominiums' stairs lead to their second floor, and their two lifts to the third floor, the roof
+  and the little room on it; the Game Corner and the Prize Corner (Celadon's warps 3 and 4, locked in part d) open off
+  the street. Nothing else in Kanto waits on them, and they wait on nothing.
+- *Keys and names*: none of the keys meets FireRed's (its are `celadon_city_…`), so none takes Johto's prefix. The maps
+  are `Celadon_DeptStore_2F` to `_5F`, `_Roof` and `_Elevator`, `Celadon_Condominiums_2F`, `_3F`, `_Roof`, `_RoofRoom`,
+  `_LeftElevator` and `_RightElevator`, `Celadon_GameCorner` and `Celadon_PrizeCorner` (FireRed's are `CeladonCity_…`).
+  The two roofs are rooms here (`setting` `Indoors`): as one chunk of the open, their unreached tiles drew as a lawn one
+  could walk off the roof onto. The roof room's hut (`tafl04_h01`) is the roof's walls round its door.
+- *The lifts*: HeartGold's cars remember the floor they last stopped at (a dynamic warp), which the cache's scripts don't
+  show. Here every floor of each building says so as it is come to, by its own arrival script (`VAR_JOHTO_CELADON_STORE_FLOOR`,
+  1 to 5 and 6 for the roof; `VAR_JOHTO_CELADON_CONDO_FLOOR`, 1 to 3 and 4 for the roof: ours), so a car goes up or down
+  from the floor the player came in from, the stairs taken between rides or not; the Goldenrod store's lift goes from the
+  floor it last rode to. The store's attendant asks as Goldenrod's does (the roof and four floors, then the lower two);
+  the Condominiums' cars have no attendant, so the panel asks as the car is come into, as the Glitter Lighthouse's car
+  carries whoever comes in: the left-hand car serves the ground floor, the third floor and the roof, the right-hand one
+  the second floor and the roof, as HeartGold's do. Each car's own door leads to its lowest floor.
+- *The counters*: HeartGold's mart lists are not in the pinned folders. The second floor sells medicine and Poké Balls
+  (Goldenrod's second floor's lists), the third TMs (`celadon_3f`: Hidden Power, Sunny Day, Light Screen, Protect, Rain
+  Dance, Safeguard, Reflect), the fourth dolls and mail (`celadon_4f`), the fifth vitamins and battle items (Goldenrod's
+  fourth and third floors' lists); the third's and the fourth's are lists of ours. The roof's drinks machines are the
+  Goldenrod store's top floor's.
+- *The Game Corner*: as Goldenrod's (plan 20 · J5, part b), HeartGold's has no slot machines to play, and ours none: its
+  tables are read as switched off, and the Prize Corner's counter is shut. Its people talk.
+- *The games office*: the Condominiums' third floor is HeartGold's office of game makers; its people talk in lines of
+  ours, and the man who in HeartGold hands a diploma for a complete Pokédex only speaks of it, since the Pokédex gives its
+  own diplomas (plan 03 · D10). Its two objects that stand off the floor (row 30: a thing of a scene and a Marill) are
+  held back.
+- *Held back*: Cameron and Crasher Wake on the store's second floor (`FLAG_HIDE_CELADON_DEPT_STORE_2F_CRASHER_WAKE`, a
+  visit of HeartGold's own), and the two Leaders shopping on the fourth (`FLAG_UNK_260`, `FLAG_UNK_2E2`: the Leaders'
+  street meetings).
+- *Models*: the office's globe (`globe01`) is a `Statue`; the roof's hut, its door and its wall light (`tafl04_h01`,
+  `tafl04_door1`, `tafl_light`) stand for nothing in a room.
+- *Songs*: every room plays `kanto/celadon`, but the Game Corner `kanto/game_corner`, as FireRed's do.
+- *Known* (the harness's `jkk01` to `jkk18`): the store's counters are islands of tiles that block with no look of their
+  own, so a room draws them as solid blocks of wall at the room's height, and the clerks who stand inside them (the
+  ground floor's receptionist since part d, the clerks of the second, third and fifth floors) are hidden in them. They
+  are spoken to across the counter's edge all the same (HeartGold's `Counter` behaviour on its rim). Laying such an
+  island as a counter round open floor is a rule of the builder's that would move Goldenrod's store and other DS rooms'
+  pictures, and is left to a session of its own. The two roofs read as rooms with walls and paper rather than open sky.
+- *Left*: the Power Plant's story (the Machine Part, the grunts of Cerulean's Gym and Route 24, TM57, the plant broken),
+  Lt. Surge on Route 10 and Zapdos, the dark of HeartGold's Flash caves, the Seafoam Islands' lower floors and Articuno,
+  the Snorlax woken (the Poké Flute's channel and the Expn Card), Pal Park's gate, Oak's gift after Red, the Clefairy's
+  dance, the Underground Path, Silph Co., a game to play in the Game Corners and their prizes, the Radio Tower and the
+  Expn Card, the Trainer House's battles, the Leaders' rematches and street meetings, Suicune's stops, the rest of
+  Kanto's Apricorn trees.
 ## The week siblings and the dome's pieces (2026-10-31, plan 20 · J13, the last part)
 
 | Subject | HeartGold | This game |

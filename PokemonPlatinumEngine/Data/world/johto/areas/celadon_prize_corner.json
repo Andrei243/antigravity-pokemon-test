@@ -1,0 +1,30 @@
+{
+  "key": "celadon_prize_corner",
+  "index": 382,
+  "name": "Celadon City",
+  "matrix": 214,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_GAME",
+  "nightMusic": "GS_GAME",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 7, "to": "celadon", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "t07r0501_gsgentleman", "looks": "gsgentleman", "movement": "4", "x": 1, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 1, "script": "T07R0501_000+1" },
+    { "id": "t07r0501_sunglasses", "looks": "sunglasses", "movement": "8", "x": 6, "z": 6, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "T07R0501_001+1" },
+    { "id": "t07r0501_gsman2", "looks": "gsman2", "movement": "16", "x": 7, "z": 3, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "T07R0501_002+1" }
+  ],
+  "signs": [
+    { "x": 3, "z": 2, "type": 0, "script": "T07R0501_003+1" },
+    { "x": 6, "z": 2, "type": 0, "script": "T07R0501_004+1" }
+  ],
+  "triggers": []
+}
