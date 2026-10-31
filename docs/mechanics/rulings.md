@@ -6328,6 +6328,48 @@ Three of Emerald's post-game pieces that stand alone. The lines are our own.
   wall), the S.S. Tidal's cabins and Slateport's ferry, the island halls, the Gold and Silver Shields, the other leaders'
   rematches, and the looks of the triangle, Deoxys's descent and the ship.
 
+## Faraway Island, the S.S. Tidal, the Gym Leaders' rematches and the Tower's shields (2026-10-31, plan 21 · H12, part g)
+
+Four more of Emerald's post-game pieces. The lines are our own.
+
+- **The Old Sea Map** (the plan's decision 5, *ours* as the other passes): Lilycove's ferry desk gives it once three of
+  the Battle Frontier's facilities have handed over a print (`FLAG_ENABLE_SHIP_FARAWAY_ISLAND`, Emerald's flag for the
+  voyage). With it the desk's choice has six places, Faraway Island before NOWHERE; without it the choice of five is
+  as before, its answers numbered as they were.
+- **Faraway Island** (matrices 406, 407): the shore, where the ferry sets the player down at 13, 38 and the sailor sails
+  them back, and the island's heart of tall grass. Mew moves as Emerald's `MOVEMENT_TYPE_COPY_PLAYER_OPPOSITE_IN_GRASS`:
+  a step the other way for each step the player takes, and only onto tall grass (`PersonMoves.Mirror`, in
+  `Overworld/Wandering.cs`, which notes the player's own step from one frame to the next), so it is cornered against the
+  grass's edge. It stands three tiles north of the area file's tile, where Emerald's arrival walks it (the overlay's
+  `at`; a moving person's box is now kept round the overlay's tile, `World.PlaceEvents`). Spoken to, it is met at
+  level 30; run from, back the next visit; beaten (`FLAG_DEFEATED_MEW`) or caught (`FLAG_CAUGHT_MEW`), gone for good.
+  *Ours*: Emerald hides Mew until the player is beside it and shows it flickering; here it is seen at once. The island
+  plays the Sealed Chamber's song as the other event islands do.
+- **The S.S. Tidal** (matrices 336 to 338: the corridor, the hold, the eight cabins of one room): Slateport's ferry desk
+  (`slateport_city_harbor.Ferry`) and the sailor on Lilycove's quay (`lilycove_city_harbor.Tidal`) take a holder of the
+  S.S. Ticket aboard, onto the corridor's gangway at 1, 10. `VAR_SS_TIDAL_STATE` is *ours*: 1 bound for Lilycove, 2
+  bound for Slateport, 3 and 4 in at each; Emerald's halfway states and its step count are left out, and *one* rest in
+  the cabin's bed (it heals the team, as Emerald's does) brings the ship in. The sailor by the gangway lets the player
+  off onto the quay of the harbour come to (8, 11 of each) and the voyage is over (0). The cabins' and the hold's
+  trainers are Emerald's (Colton, Micah, Thomas, Lea and Jed, Garret, Naomi; Phillip and Leonard, who keep still here);
+  Mr. Briney and Peeko, Scott's first-voyage scene and the TM49 giver are left out.
+- **The Gym Leaders' rematches**: Roxanne, Brawly, Flannery, Norman, Winona, Tate and Liza and Juan ask a Champion of
+  Hoenn for a rematch over Match Call on a day and time of ours (Roxanne Monday morning, Brawly Tuesday by day, Flannery
+  Wednesday morning, Winona Friday by day, Norman Saturday by day, Juan Saturday night, Tate and Liza Sunday night;
+  Wattson's Thursday stays), each with their four stronger teams of Emerald (`TRAINER_<LEADER>_2` to `_5`, `rematches.json`),
+  one step a rematch, a double battle as Emerald's (two Pokémon needed), the last team again once all are beaten.
+  Roxanne and Norman had no Match Call number: *ours*, each gives it when spoken to in their Gym with their Badge and a
+  PokéNav (`FLAG_ENABLE_ROXANNE_MATCH_CALL`, `FLAG_ENABLE_NORMAN_MATCH_CALL`).
+- **The Tower's shields** (*ours*: Emerald's Battle Tower gives them for streaks of fifty and a hundred, and this game's
+  Tower is Sinnoh's): Scott in his house on the Frontier island gives the Silver Shield once the Tower Tycoon's silver
+  print is had and the Gold Shield for the gold one, decorations for the secret base's PC (`FLAG_RECEIVED_SILVER_SHIELD`,
+  `_GOLD_SHIELD`), asked through the new script word `frontier printed <facility>`. With no room in the PC he keeps them.
+- `HoennSpeciesTests.Owed` did not list Mew, so nothing came off it.
+- **Left**: Jirachi (Emerald's only way is the Wishmaker disc), Trainer Hill (its floors are built by a mechanic of their
+  own, Emerald's `trainer_hill.c`), Mirage Island (a layout of Route 130 by the party's personalities and the day's
+  number), Altering Cave (its way in is a rock wall), the island's halls, Emerald's halfway arrivals on the S.S. Tidal,
+  the cabins' furniture and beds beyond the room's blocks, Mew's hiding and flicker, and the ship's own look.
+
 ## A crossed region's EXP (2026-10-26, plan 18 · W4b-3)
 
 Design C of [the levelling proposal](../plans/W4b-levelling-the-world.md), approved by the user on 2026-10-26 with

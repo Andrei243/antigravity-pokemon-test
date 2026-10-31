@@ -810,7 +810,6 @@ hoenn_cindy_3 148 (27) [Linoone → Streakoon]
 hoenn_cindy_4 149 (30) [Linoone → Streakoon]
 hoenn_cindy_5 150 (33) [Linoone → Streakoon]
 hoenn_cindy_6 152 (36) [Linoone → Streakoon]
-hoenn_colton 155 (42) [Skitty → Felinelle, Skitty → Felinelle, Skitty → Felinelle, Skitty → Felinelle, Skitty → Felinelle, Delcatty → Felinelle]
 hoenn_cora 148 (27) [Meditite → Ascetrance]
 hoenn_cory_2 149 (30) [Wingull → Pelicaptain, Machop → Machamp, Tentacool → Medusarch]
 hoenn_cory_3 150 (32) [Pelipper → Pelicaptain, Machop → Machamp, Tentacool → Medusarch]
@@ -880,7 +879,6 @@ hoenn_gabrielle_2 149 (31) [Skitty → Felinelle, Mightyena → Hyaenarch, Zigza
 hoenn_gabrielle_3 150 (33) [Skitty → Felinelle, Mightyena → Hyaenarch, Linoone → Streakoon, Lombre → Ludicolo, Nuzleaf → Shiftry, Taillow → Swiftarrow]
 hoenn_gabrielle_4 151 (35) [Delcatty → Felinelle, Mightyena → Hyaenarch, Linoone → Streakoon, Lombre → Ludicolo, Nuzleaf → Shiftry, Swellow → Swiftarrow]
 hoenn_gabrielle_5 152 (37) [Delcatty → Felinelle, Mightyena → Hyaenarch, Linoone → Streakoon, Swellow → Swiftarrow]
-hoenn_garret 156 (45)
 hoenn_garrison 147 (26) [Sandslash → Sandspire]
 hoenn_georgia 143 (16) [Shroomish → Breloom]
 hoenn_gina_and_mia_2 140 (10) [Duskull → Dusknoir, Shroomish → Breloom]
@@ -974,9 +972,7 @@ hoenn_lao_2 147 (26) [Koffing → Smoglom, Koffing → Smoglom, Koffing → Smog
 hoenn_lao_3 149 (29) [Koffing → Smoglom, Koffing → Smoglom, Koffing → Smoglom, Koffing → Smoglom]
 hoenn_lao_4 150 (32) [Koffing → Smoglom, Koffing → Smoglom, Koffing → Smoglom, Koffing → Smoglom]
 hoenn_lao_5 151 (35) [Koffing → Smoglom, Koffing → Smoglom, Koffing → Smoglom, Weezing → Smoglom]
-hoenn_lea_and_jed 156 (45) [Luvdisc → Heartreef, Luvdisc → Heartreef]
 hoenn_leaf 137 (5) [Bulbasaur → Venusaur]
-hoenn_leonard 155 (43) [Machop → Machamp, Pelipper → Pelicaptain, Machoke → Machamp]
 hoenn_leroy 156 (46) [Mawile → Deceivore, Starmie → Stellamir]
 hoenn_lila_and_roy_2 155 (42) [Chinchou → Abyssolux, Carvanha → Megalodax]
 hoenn_lila_and_roy_3 156 (45) [Lanturn → Abyssolux, Carvanha → Megalodax]
@@ -1022,13 +1018,11 @@ hoenn_may_route_119_treecko 149 (31) [Pelipper → Pelicaptain, Lombre → Ludic
 hoenn_may_rustboro_mudkip 142 (15) [Wingull → Pelipper, Treecko → Sceptile]
 hoenn_may_rustboro_torchic 142 (15) [Mudkip → Swampert]
 hoenn_may_rustboro_treecko 142 (15) [Lotad → Ludicolo, Torchic → Blaziken]
-hoenn_micah 156 (44) [Manectric → Fulmenhound, Manectric → Fulmenhound]
 hoenn_miguel_2 149 (29) [Skitty → Felinelle]
 hoenn_miguel_3 150 (32) [Skitty → Felinelle]
 hoenn_miguel_4 151 (35) [Delcatty → Felinelle]
 hoenn_miguel_5 153 (38) [Delcatty → Felinelle]
 hoenn_mike_1 140 (10) [Poochyena → Mightyena]
-hoenn_naomi 156 (45) [Roselia → Roserade]
 hoenn_nicolas_2 154 (41) [Altaria → Nimbusong, Altaria → Nimbusong]
 hoenn_nicolas_3 156 (44) [Altaria → Nimbusong, Altaria → Nimbusong]
 hoenn_nicolas_4 156 (46) [Bagon → Salamence, Altaria → Nimbusong, Altaria → Nimbusong]
@@ -1050,7 +1044,6 @@ hoenn_pablo_5 155 (43) [Pelipper → Pelicaptain, Starmie → Stellamir, Starmie
 hoenn_patricia 154 (41) [Banette → Effigrim, Lunatone → Selenolith]
 hoenn_paul 142 (15) [Numel → Camerupt, Oddish → Gloom, Wingull → Pelipper]
 hoenn_paula 148 (27) [Breloom → Sporepugil]
-hoenn_phillip 156 (44) [Tentacruel → Medusarch, Machoke → Machamp]
 hoenn_phoebe 159 (51) [Dusclops → Dusknoir, Banette → Effigrim, Sableye → Gemwraith, Banette → Effigrim, Dusclops → Dusknoir]
 hoenn_red 137 (5) [Charmander → Charizard]
 hoenn_ricky_2 148 (27) [Linoone → Streakoon]
@@ -1100,7 +1093,6 @@ hoenn_thalia_2 151 (34) [Wailmer → Wailord, Horsea → Kingdra]
 hoenn_thalia_3 152 (36) [Luvdisc → Heartreef, Wailmer → Wailord, Seadra → Kingdra]
 hoenn_thalia_4 153 (38) [Luvdisc → Heartreef, Wailmer → Wailord, Seadra → Kingdra]
 hoenn_thalia_5 154 (40) [Luvdisc → Heartreef]
-hoenn_thomas 156 (45) [Zangoose → Ravagoose]
 hoenn_timothy_2 150 (33) [Hariyama → Yokozan]
 hoenn_timothy_3 152 (36) [Hariyama → Yokozan]
 hoenn_timothy_4 153 (39) [Hariyama → Yokozan]
@@ -3718,6 +3710,12 @@ surf 64-88 (own 5-40)
 old rod 64 (own 5)
 good rod 64-71 (own 5-15)
 super rod 71-85 (own 15-35)
+=== ss_tidal_lower_deck
+S.S. Tidal, Hoenn
+trainers 2, 155-156 (own 43-44): hoenn_leonard 155 (43) [Machop → Machamp, Pelipper → Pelicaptain, Machoke → Machamp], hoenn_phillip 156 (44) [Tentacruel → Medusarch, Machoke → Machamp]
+=== ss_tidal_rooms
+S.S. Tidal, Hoenn
+trainers 6, 141-156 (own 12-45): hoenn_colton 155 (42) [Skitty → Felinelle, Skitty → Felinelle, Skitty → Felinelle, Skitty → Felinelle, Skitty → Felinelle, Delcatty → Felinelle], hoenn_garret 156 (45), hoenn_lea_and_jed 156 (45) [Luvdisc → Heartreef, Luvdisc → Heartreef], hoenn_micah 156 (44) [Manectric → Fulmenhound, Manectric → Fulmenhound], hoenn_naomi 156 (45) [Roselia → Roserade], hoenn_thomas 156 (45) [Zangoose → Ravagoose]
 === strange_house
 Strange House, Unova
 grass 174-175 (own 31-34)

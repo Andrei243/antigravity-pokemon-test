@@ -17,6 +17,7 @@
 script TateAndLiza
   face tate player
   face liza player
+  if flag FLAG_PHONE_REMATCH_TATE_AND_LIZA goto Rematch
   if badge mind goto Won
   scene "Tate and Liza"
   speaker "Tate"
@@ -95,6 +96,38 @@ label Proud
   say "The bond between you and your Pokémon is stronger than the one we share as twins."
   speaker "Liza"
   say "You'll grow stronger still. We battled you, so we know!"
+  end
+# The rematch a Match Call asked for (plan 21 · H12, part g; Emerald's MossdeepCity_Gym_EventScript_TateAndLizaRematch,
+# a double battle as their first): each time one team stronger, Emerald's TRAINER_TATE_AND_LIZA_2 to _5, the last again
+label Rematch
+  if party < 2 goto NeedTwo
+  speaker "Tate"
+  say "You came back..."
+  speaker "Liza"
+  say "...just as we knew you would! Our new combination is ready."
+  if not defeated "hoenn_tate_and_liza_2" goto Second
+  if not defeated "hoenn_tate_and_liza_3" goto Third
+  if not defeated "hoenn_tate_and_liza_4" goto Fourth
+  battle tate as "hoenn_tate_and_liza_5"
+  goto Rematched
+label Second
+  battle tate as "hoenn_tate_and_liza_2"
+  goto Rematched
+label Third
+  battle tate as "hoenn_tate_and_liza_3"
+  goto Rematched
+label Fourth
+  battle tate as "hoenn_tate_and_liza_4"
+label Rematched
+  clearflag FLAG_PHONE_REMATCH_TATE_AND_LIZA
+  speaker "Tate"
+  say "Broken again..."
+  speaker "Liza"
+  say "...but we'll think of something new. Call us!"
+  end
+label NeedTwo
+  speaker "Liza"
+  say "We battle two at a time. Come back with at least two Pokémon!"
   end
 
 

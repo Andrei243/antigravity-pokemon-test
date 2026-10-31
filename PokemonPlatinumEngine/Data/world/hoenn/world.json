@@ -437,7 +437,13 @@
     { "name": "NavelRock_Down09", "matrix": 434, "area": "navel_rock_down_09", "trees": "Round", "setting": "Cave" },
     { "name": "NavelRock_Down10", "matrix": 435, "area": "navel_rock_down_10", "trees": "Round", "setting": "Cave" },
     { "name": "NavelRock_Down11", "matrix": 436, "area": "navel_rock_down_11", "trees": "Round", "setting": "Cave" },
-    { "name": "NavelRock_Bottom", "matrix": 437, "area": "navel_rock_bottom", "trees": "Round", "setting": "Cave" }
+    { "name": "NavelRock_Bottom", "matrix": 437, "area": "navel_rock_bottom", "trees": "Round", "setting": "Cave" },
+    // Plan 21 · H12, part g: Faraway Island (Mew, on the Old Sea Map's pass) and the S.S. Tidal's corridor, hold and cabins
+    { "name": "FarawayIsland_Entrance", "matrix": 406, "area": "faraway_island_entrance", "trees": "Round" },
+    { "name": "FarawayIsland_Interior", "matrix": 407, "area": "faraway_island_interior", "trees": "Round" },
+    { "name": "SSTidalCorridor", "matrix": 336, "area": "ss_tidal_corridor", "trees": "Round", "setting": "Indoors" },
+    { "name": "SSTidalLowerDeck", "matrix": 337, "area": "ss_tidal_lower_deck", "trees": "Round", "setting": "Indoors" },
+    { "name": "SSTidalRooms", "matrix": 338, "area": "ss_tidal_rooms", "trees": "Round", "setting": "Indoors" }
   ],
   "areas": [
     // Plan 21 · H1: Littleroot Town, Route 101, Oldale Town, Routes 102 and 103 and Petalburg City, with their rooms
@@ -589,6 +595,8 @@
     "birth_island_harbor", "birth_island_exterior", "navel_rock_harbor", "navel_rock_exterior", "navel_rock_entrance",
     "navel_rock_b1f", "navel_rock_fork", "navel_rock_up_1", "navel_rock_up_2", "navel_rock_up_3", "navel_rock_up_4", "navel_rock_top",
     "navel_rock_down_01", "navel_rock_down_02", "navel_rock_down_03", "navel_rock_down_04", "navel_rock_down_05", "navel_rock_down_06",
-    "navel_rock_down_07", "navel_rock_down_08", "navel_rock_down_09", "navel_rock_down_10", "navel_rock_down_11", "navel_rock_bottom"
+    "navel_rock_down_07", "navel_rock_down_08", "navel_rock_down_09", "navel_rock_down_10", "navel_rock_down_11", "navel_rock_bottom",
+    // Plan 21 · H12, part g: Faraway Island and the S.S. Tidal
+    "faraway_island_entrance", "faraway_island_interior", "ss_tidal_corridor", "ss_tidal_lower_deck", "ss_tidal_rooms"
   ]
 }

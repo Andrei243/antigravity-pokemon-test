@@ -1,0 +1,30 @@
+# The S.S. Tidal's cabins (plan 21 · H12, part g). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/SSTidalRooms/scripts.inc).
+#
+# The bed of the player's cabin: a rest heals the team (Emerald's Common_EventScript_OutOfCenterPartyHeal) and passes the
+# voyage, so the ship comes in (VAR_SS_TIDAL_STATE 1, bound for Lilycove, becomes 3; 2, bound for Slateport, becomes 4;
+# ss_tidal_corridor.txt has the values). Ours: Emerald's ship is halfway after one rest out of Lilycove and in after a
+# second, and comes in by itself after enough steps; here one rest brings it in, and nothing else does.
+
+
+script Bed
+  speaker none
+  ask "A soft bed. Lie down for a rest?"
+  if no end
+  fade out 0.8
+  heal
+  text "{player} took a rest. The ship's engines hummed below..."
+  if var VAR_SS_TIDAL_STATE == 1 goto Lilycove
+  if var VAR_SS_TIDAL_STATE == 2 goto Slateport
+  fade in 0.8
+  end
+label Lilycove
+  setvar VAR_SS_TIDAL_STATE 3
+  fade in 0.8
+  text "Attention, passengers. We have arrived at Lilycove City."
+  end
+label Slateport
+  setvar VAR_SS_TIDAL_STATE 4
+  fade in 0.8
+  text "Attention, passengers. We have arrived at Slateport City."
+  end

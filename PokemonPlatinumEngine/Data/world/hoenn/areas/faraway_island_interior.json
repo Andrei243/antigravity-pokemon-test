@@ -1,0 +1,26 @@
+{
+  "key": "faraway_island_interior",
+  "index": 464,
+  "name": "Faraway Island",
+  "matrix": 407,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Cloudy",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ABANDONED_SHIP",
+  "nightMusic": "MUS_ABANDONED_SHIP",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 12, "z": 19, "to": "faraway_island_entrance", "toWarp": 0 },
+    { "x": 13, "z": 19, "to": "faraway_island_entrance", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "faraway_island_mew", "looks": "mew", "movement": "copy_player_opposite_in_grass", "x": 13, "z": 17, "facing": 1, "rangeX": 15, "rangeZ": 15, "hiddenBy": "FLAG_HIDE_MEW", "script": "FarawayIsland_Interior_EventScript_Mew" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -12,6 +12,7 @@
 script Juan
   face juan player
   speaker "Juan"
+  if flag FLAG_PHONE_REMATCH_JUAN goto Rematch
   if badge rain goto Won
   scene "Juan"
   say "Ah, a visitor. Let me tell you something, if I may. It was I who taught Wallace everything he knows."
@@ -60,6 +61,32 @@ label Won
   end
 label Proud
   say "The Pokémon League waits beyond Ever Grande City. Go, and show them the beauty I saw today."
+  end
+# The rematch a Match Call asked for (plan 21 · H12, part g; Emerald's SootopolisCity_Gym_1F_EventScript_JuanRematch, a
+# double battle): each time one team stronger, Emerald's TRAINER_JUAN_2 to _5, the last again once all are beaten
+label Rematch
+  if party < 2 goto NeedTwo
+  say "Ah, you have come. My Pokémon have learned a dance for two. Shall we take the floor together?"
+  if not defeated "hoenn_juan_2" goto Second
+  if not defeated "hoenn_juan_3" goto Third
+  if not defeated "hoenn_juan_4" goto Fourth
+  battle self as "hoenn_juan_5"
+  goto Rematched
+label Second
+  battle self as "hoenn_juan_2"
+  goto Rematched
+label Third
+  battle self as "hoenn_juan_3"
+  goto Rematched
+label Fourth
+  battle self as "hoenn_juan_4"
+label Rematched
+  speaker "Juan"
+  clearflag FLAG_PHONE_REMATCH_JUAN
+  say "Ahahaha, beautiful! You outshine my dance once more. Do call again, {player}."
+  end
+label NeedTwo
+  say "Our dance is for two Pokémon at a time. Do come back with at least two on your team."
   end
 
 

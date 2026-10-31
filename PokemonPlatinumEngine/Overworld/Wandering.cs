@@ -15,7 +15,12 @@ public enum PersonMoves
     /// <summary>Turns now and then to the next way round (<c>ROTATE_CLOCKWISE</c>, <c>ROTATE_COUNTERCLOCKWISE</c>).</summary>
     Rotate,
     /// <summary>Walks a loop of four legs round a corner of the box, step after step (<c>WALK_WEST_SOUTH_EAST_NORTH</c>…).</summary>
-    Loop
+    Loop,
+    /// <summary>
+    /// Steps the opposite way each time the player takes a step, and only onto tall grass (Emerald's
+    /// <c>MOVEMENT_TYPE_COPY_PLAYER_OPPOSITE_IN_GRASS</c>: Faraway Island's Mew, plan 21 · H12, part g).
+    /// </summary>
+    Mirror
 }
 
 /// <summary>
@@ -64,6 +69,8 @@ public sealed record PersonMovement(PersonMoves Kind, Direction[] Ways, int Rang
                 return Of(PersonMoves.Loop, new[] { facing, FieldMovement.Opposite(facing), facing, FieldMovement.Opposite(facing) });
             case "walk" when Ways(words.Skip(1)) is { Length: 4 } legs:
                 return Of(PersonMoves.Loop, legs);
+            case "copy" when movement == "copy_player_opposite_in_grass":
+                return Of(PersonMoves.Mirror, new[] { Direction.Up, Direction.Down, Direction.Left, Direction.Right });
         }
         return null;
     }
@@ -98,6 +105,10 @@ public sealed class Wandering
     private readonly Dictionary<NPC, NpcWalk> steps = new();
     private readonly Dictionary<NPC, int> legs = new();
 
+    // Where the player stood at the last frame, and on which map, for those who mirror their steps
+    private (int X, int Y)? lastPlayer;
+    private Map? lastMap;
+
     /// <summary>Whether anyone is in the middle of a step.</summary>
     public bool AnyoneStepping => steps.Count > 0;
 
@@ -108,6 +119,18 @@ public sealed class Wandering
     /// </summary>
     public void Update(float dt, Map map, (int X, int Y) player, (int X, int Y) heading, Random rng, Func<NPC, bool>? still = null)
     {
+        // The step the player has just taken, for whoever mirrors it (Faraway Island's Mew): a tile's difference, and
+        // nothing when the player has come to the map, warped or been put somewhere by a script
+        Direction? stepped = null;
+        if (lastPlayer is { } was && lastMap == map)
+        {
+            int dx = player.X - was.X, dy = player.Y - was.Y;
+            if (Math.Abs(dx) + Math.Abs(dy) == 1)
+                stepped = dx > 0 ? Direction.Right : dx < 0 ? Direction.Left : dy > 0 ? Direction.Down : Direction.Up;
+        }
+        lastPlayer = player;
+        lastMap = map;
+
         // Only those within reach of the player move about (plan 01 · M12): the original has nobody on the map but
         // the people of the place the player is in, and the map of Sinnoh holds everyone. Whoever is in the middle of
         // a step finishes it wherever the player has got to
@@ -125,6 +148,19 @@ public sealed class Wandering
                 walk.Update(dt);
                 if (!walk.IsDone) continue;
                 steps.Remove(npc);
+            }
+
+            // Whoever mirrors the player moves only as the player does: the opposite way, onto tall grass alone
+            if (movement.Kind == PersonMoves.Mirror)
+            {
+                if (stepped is { } way0)
+                {
+                    var back = FieldMovement.Opposite(way0);
+                    npc.Facing = back;
+                    var (mx, my) = FieldMovement.Delta(back);
+                    if (map.IsTallGrass(npc.GridX + mx, npc.GridY + my) && CanStep(map, npc, movement, back, player, heading)) Take(npc, back);
+                }
+                continue;
             }
 
             // A loop walks on without waiting, unless it is marking time; everyone else waits a while between one
@@ -254,6 +290,8 @@ public sealed class Wandering
         steps.Clear();
         waits.Clear();
         legs.Clear();
+        lastPlayer = null;
+        lastMap = null;
     }
 
     /// <summary>

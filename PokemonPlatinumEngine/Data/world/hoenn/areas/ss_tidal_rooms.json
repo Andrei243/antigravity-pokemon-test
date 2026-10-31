@@ -1,0 +1,46 @@
+{
+  "key": "ss_tidal_rooms",
+  "index": 389,
+  "name": "Dynamic",
+  "matrix": 338,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SAILING",
+  "nightMusic": "MUS_SAILING",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 16, "to": "ss_tidal_corridor", "toWarp": 0 },
+    { "x": 5, "z": 16, "to": "ss_tidal_corridor", "toWarp": 0 },
+    { "x": 13, "z": 16, "to": "ss_tidal_corridor", "toWarp": 1 },
+    { "x": 14, "z": 16, "to": "ss_tidal_corridor", "toWarp": 1 },
+    { "x": 22, "z": 16, "to": "ss_tidal_corridor", "toWarp": 2 },
+    { "x": 23, "z": 16, "to": "ss_tidal_corridor", "toWarp": 2 },
+    { "x": 31, "z": 16, "to": "ss_tidal_corridor", "toWarp": 3 },
+    { "x": 32, "z": 16, "to": "ss_tidal_corridor", "toWarp": 3 },
+    { "x": 4, "z": 1, "to": "ss_tidal_corridor", "toWarp": 4 },
+    { "x": 13, "z": 1, "to": "ss_tidal_corridor", "toWarp": 5 },
+    { "x": 22, "z": 1, "to": "ss_tidal_corridor", "toWarp": 6 },
+    { "x": 31, "z": 1, "to": "ss_tidal_corridor", "toWarp": 7 }
+  ],
+  "objects": [
+    { "id": "pokefan_m", "looks": "pokefan_m", "movement": "look_east", "x": 4, "z": 7, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 0, "script": "TRAINER_COLTON" },
+    { "id": "gentleman", "looks": "gentleman", "movement": "look_west", "x": 34, "z": 11, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_MICAH" },
+    { "id": "gentleman_2", "looks": "gentleman", "movement": "look_east", "x": 21, "z": 5, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 0, "script": "TRAINER_THOMAS" },
+    { "id": "man_4", "looks": "man_4", "movement": "look_south", "x": 5, "z": 14, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 1, "script": "TRAINER_LEA_AND_JED" },
+    { "id": "woman_4", "looks": "woman_4", "movement": "look_south", "x": 4, "z": 14, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 1, "script": "TRAINER_LEA_AND_JED" },
+    { "id": "rich_boy", "looks": "rich_boy", "movement": "look_south", "x": 22, "z": 11, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_GARRET" },
+    { "id": "woman_2", "looks": "woman_2", "movement": "look_west", "x": 15, "z": 6, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 0, "script": "TRAINER_NAOMI" },
+    { "id": "maniac", "looks": "maniac", "movement": "look_north", "x": 28, "z": 5, "facing": 0, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SS_TIDAL_ROOMS_SNATCH_GIVER", "script": "SSTidalRooms_EventScript_SnatchGiver" }
+  ],
+  "signs": [
+    { "x": 15, "z": 11, "type": 0, "script": "SSTidalRooms_EventScript_Bed" },
+    { "x": 15, "z": 12, "type": 0, "script": "SSTidalRooms_EventScript_Bed" }
+  ],
+  "triggers": []
+}

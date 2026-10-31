@@ -702,6 +702,8 @@ public static class RegionDatabase
                 "NavelRock_Fork", "NavelRock_Up1", "NavelRock_Up2", "NavelRock_Up3", "NavelRock_Up4", "NavelRock_Top",
                 "NavelRock_Down01", "NavelRock_Down02", "NavelRock_Down03", "NavelRock_Down04", "NavelRock_Down05", "NavelRock_Down06",
                 "NavelRock_Down07", "NavelRock_Down08", "NavelRock_Down09", "NavelRock_Down10", "NavelRock_Down11", "NavelRock_Bottom",
+                // Plan 21 · H12, part g: Faraway Island and the S.S. Tidal
+                "FarawayIsland_Entrance", "FarawayIsland_Interior", "SSTidalCorridor", "SSTidalLowerDeck", "SSTidalRooms",
             }
         },
         new()

@@ -109,6 +109,11 @@ public sealed partial class ScriptRunner
                 // event islands' passes are given for (Lilycove's ferry desk)
                 Result = FrontierBrains.Printed.Count(f => host.Story.Var(FrontierBrains.PrintVariable(f)) >= 2);
                 break;
+            case "printed":
+                // (ours, plan 21 · H12, part g) the print a facility has handed over: 0 none, 1 silver, 2 gold (Scott's
+                // shields for the Tower's)
+                Result = (int)FrontierBrains.PrintOf(host.Story, FacilityOf(i.Other));
+                break;
         }
     }
 

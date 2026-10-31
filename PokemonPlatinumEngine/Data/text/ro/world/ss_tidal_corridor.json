@@ -1,0 +1,82 @@
+{
+  "displayName": {
+    "en": [
+      "S.S. Tidal"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "ss_tidal_exit_sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The cabins are along this corridor, and the hold is down the stairs at the end. Mind the step when she rolls."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "SSTidalCorridor_EventScript_Porthole": {
+      "en": [
+        "Through the porthole, the sea rushes past."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SSTidalCorridor_EventScript_Cabin1Sign": {
+      "en": [
+        "Cabin 1"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SSTidalCorridor_EventScript_Cabin2Sign": {
+      "en": [
+        "Cabin 2"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SSTidalCorridor_EventScript_Cabin3Sign": {
+      "en": [
+        "Cabin 3"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SSTidalCorridor_EventScript_Cabin4Sign": {
+      "en": [
+        "Cabin 4"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

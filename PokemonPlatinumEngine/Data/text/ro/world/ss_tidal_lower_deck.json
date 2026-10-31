@@ -1,0 +1,65 @@
+{
+  "displayName": {
+    "en": [
+      "S.S. Tidal"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "sailor": {
+      "name": {
+        "en": [
+          "Phillip"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Sailor Phillip: A passenger down in the hold? You must be looking for a battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Sailor Phillip: Back to hauling crates, then."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "sailor_2": {
+      "name": {
+        "en": [
+          "Leonard"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Sailor Leonard: Nobody comes down here unless they mean business. Let's go!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Sailor Leonard: You've got sea legs and a strong team."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

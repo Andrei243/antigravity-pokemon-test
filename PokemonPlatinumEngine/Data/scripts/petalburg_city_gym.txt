@@ -42,6 +42,7 @@ script OnEnter
 # Norman (Emerald's PetalburgCity_Gym_EventScript_Norman): at the first visit, Wally comes in with his father's word
 # and Norman sends the player out with him to catch his first Pokémon; with four Badges, his battle
 script Norman
+  if flag FLAG_PHONE_REMATCH_NORMAN goto Rematch
   if var VAR_PETALBURG_GYM_STATE >= 7 goto After
   if var VAR_PETALBURG_GYM_STATE >= 6 goto Battle
   if var VAR_PETALBURG_GYM_STATE >= 2 goto Rules
@@ -145,6 +146,41 @@ label After
   end
 label Training
   say "Go and see your mother now and then, {player}. I'll be here, training harder than ever. I can't stay beaten by my own child!"
+  # Spoken to with his Badge and a PokéNav, he gives his number (plan 21 · H12, part g; ours)
+  if flag FLAG_ENABLE_NORMAN_MATCH_CALL end
+  if not flag FLAG_SYS_POKENAV_GET end
+  setflag FLAG_ENABLE_NORMAN_MATCH_CALL
+  say "And let me have your PokéNav's number. A father should be able to call his child."
+  addcontact norman
+  text "Registered Norman in the PokéNav."
+  end
+# The rematch a Match Call asked for (plan 21 · H12, part g; Emerald's PetalburgCity_Gym_EventScript_NormanRematch, a
+# double battle): each time one team stronger, Emerald's TRAINER_NORMAN_2 to _5, the last again once all are beaten
+label Rematch
+  face petalburg_gym_norman player
+  speaker "Norman"
+  if party < 2 goto NeedTwo
+  say "You came, {player}. This time I won't hold anything back, not even as your father. Two Pokémon each!"
+  if not defeated "hoenn_norman_2" goto Second
+  if not defeated "hoenn_norman_3" goto Third
+  if not defeated "hoenn_norman_4" goto Fourth
+  battle self as "hoenn_norman_5"
+  goto Rematched
+label Second
+  battle self as "hoenn_norman_2"
+  goto Rematched
+label Third
+  battle self as "hoenn_norman_3"
+  goto Rematched
+label Fourth
+  battle self as "hoenn_norman_4"
+label Rematched
+  speaker "Norman"
+  clearflag FLAG_PHONE_REMATCH_NORMAN
+  say "Beaten again by my own child. I couldn't be prouder, {player}. Call me whenever you want another."
+  end
+label NeedTwo
+  say "A rematch is two Pokémon at a time, {player}. Come back with at least two on your team."
   end
 
 

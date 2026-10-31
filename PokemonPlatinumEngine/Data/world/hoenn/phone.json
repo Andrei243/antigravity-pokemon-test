@@ -27,7 +27,10 @@
     "id": "brawly",
     "type": 12,
     "class": "Leader",
-    "area": "dewford_town_gym"
+    "trainer": "hoenn_brawly_1",
+    "area": "dewford_town_gym",
+    "rematchDay": "Tuesday",
+    "rematchTime": "Day"
   },
   {
     "id": "wattson",
@@ -42,13 +45,19 @@
     "id": "flannery",
     "type": 12,
     "class": "Leader",
-    "area": "lavaridge_town_gym_1f"
+    "trainer": "hoenn_flannery_1",
+    "area": "lavaridge_town_gym_1f",
+    "rematchDay": "Wednesday",
+    "rematchTime": "Morning"
   },
   {
     "id": "winona",
     "type": 12,
     "class": "Leader",
-    "area": "fortree_city_gym"
+    "trainer": "hoenn_winona_1",
+    "area": "fortree_city_gym",
+    "rematchDay": "Friday",
+    "rematchTime": "Day"
   },
   {
     "id": "scott",
@@ -193,7 +202,10 @@
     "id": "tate_and_liza",
     "type": 12,
     "class": "Leader",
-    "area": "mossdeep_city_gym"
+    "trainer": "hoenn_tate_and_liza_1",
+    "area": "mossdeep_city_gym",
+    "rematchDay": "Sunday",
+    "rematchTime": "Night"
   },
   {
     "id": "hoenn_ernest",
@@ -234,7 +246,28 @@
     "id": "juan",
     "type": 12,
     "class": "Leader",
-    "area": "sootopolis_city_gym_1f"
+    "trainer": "hoenn_juan_1",
+    "area": "sootopolis_city_gym_1f",
+    "rematchDay": "Saturday",
+    "rematchTime": "Night"
+  },
+  {
+    "id": "roxanne",
+    "type": 12,
+    "class": "Leader",
+    "trainer": "hoenn_roxanne_1",
+    "area": "rustboro_city_gym",
+    "rematchDay": "Monday",
+    "rematchTime": "Morning"
+  },
+  {
+    "id": "norman",
+    "type": 12,
+    "class": "Leader",
+    "trainer": "hoenn_norman_1",
+    "area": "petalburg_city_gym",
+    "rematchDay": "Saturday",
+    "rematchTime": "Day"
   },
   {
     "id": "sidney",

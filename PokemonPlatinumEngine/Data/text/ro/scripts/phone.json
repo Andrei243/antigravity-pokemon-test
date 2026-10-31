@@ -415,6 +415,22 @@
       "text": [
         "Salut, {player}! Azi valurile au fost uriașe. Am căzut de trei ori, dar așa înveți!"
       ]
+    },
+    {
+      "en": [
+        "Yo, {player}! I've been riding bigger waves than ever. Come to my Gym in Dewford and let's go again, two on two!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Brawly here! The Gym's still dark and my Pokémon are pumped. Don't leave me hanging, {player}!"
+      ],
+      "text": [
+        ""
+      ]
     }
   ],
   "Wattson": [
@@ -467,6 +483,22 @@
       "text": [
         "{player}! Sunt Flannery. M-am antrenat în izvoarele termale în fiecare dimineață. Pokémonii mei sunt înfocați!"
       ]
+    },
+    {
+      "en": [
+        "{player}! Flannery here. My Pokémon are hotter than the springs this week. Come to Lavaridge for a rematch!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's Flannery! I'm waiting in my Gym, and I'm not cooling off one bit until you show up!"
+      ],
+      "text": [
+        ""
+      ]
     }
   ],
   "Winona": [
@@ -484,6 +516,22 @@
       ],
       "text": [
         "Alo, {player}. Sunt Winona. Vântul peste Fortree bate tare azi. Altaria mea planează deasupra copacilor."
+      ]
+    },
+    {
+      "en": [
+        "{player}, it's Winona. My birds have learned to ride a fiercer wind. Will you come to Fortree and battle us again?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Winona here. The gates of my Gym are open, and my Pokémon are waiting on the wind for you."
+      ],
+      "text": [
+        ""
       ]
     }
   ],
@@ -911,6 +959,70 @@
       "text": [
         "...și tu o vei vedea prima!"
       ]
+    },
+    {
+      "en": [
+        "Tate"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! The new combination is ready..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Liza"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "...so come to Mossdeep's Gym and face it!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Liza"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We're still waiting in our Gym..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Tate"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "...and we're getting impatient!"
+      ],
+      "text": [
+        ""
+      ]
     }
   ],
   "HoennErnest": [
@@ -1026,6 +1138,90 @@
       ],
       "text": [
         "Ai grijă pe drumul din față. Sunt mereu gata de o altă luptă, dacă ți-o dorești."
+      ]
+    },
+    {
+      "en": [
+        "Ah, {player}. Juan speaking. My Pokémon have polished a new dance, and it wants an audience. Come to Sootopolis's Gym."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Juan here. The ice in my Gym is fresh and the stage is set. I await you, {player}."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Roxanne": [
+    {
+      "en": [
+        "Roxanne"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hello, {player}. It's Roxanne. I've been teaching my students how a rock wears down under water. Fascinating!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}, it's Roxanne. I've studied a great deal since our battle. Would you come to Rustboro's Gym and test me?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Roxanne here. My notes are ready and so are my Pokémon. I'll be in my Gym until you come."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Norman": [
+    {
+      "en": [
+        "Norman"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}? It's your dad. Your mother says you never call. Just checking that you're keeping well."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}, it's Dad. I've been training hard, and I'd like to see how far you've come. Come to the Gym in Petalburg."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's Dad. I'm waiting in the Gym, {player}. Don't keep your old man standing around too long."
+      ],
+      "text": [
+        ""
       ]
     }
   ],

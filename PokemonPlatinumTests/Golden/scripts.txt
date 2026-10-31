@@ -14378,6 +14378,33 @@ way -
   * endscene
   + FLAG_HIDE_FALLARBOR_POKEMON_CENTER_LANETTE
   + seen fallarbor_town_pokemon_center_1f.Lanette in Fallarbor
+=== faraway_island_entrance.Sailor
+from Sailor at 13,39 of FarawayIsland_Entrance
+way 0
+  Sailor> This must be the island on that old map. I've never seen grass grow so tall. I'll stay with the ship.
+  Sailor> Shall we sail back to Lilycove?
+  Sailor> Aye. Hold on tight.
+  > Lucas sailed back to Lilycove City...
+  ? Shall we sail back to Lilycove? = Yes
+  * fade out
+  * warp LilycoveCity_Harbor 8 11
+way 1, from answer 1
+  Sailor> As you like. I'll be here when you're ready.
+  ? Shall we sail back to Lilycove? = No
+=== faraway_island_interior.Mew
+from Mew at 13,14 of FarawayIsland_Interior
+way 0
+  * scene faraway_island_interior.Mew in the tall grass
+  * emote Mew Exclaim
+  * cry Mew
+  * endscene
+  * wildbattle Mew 30 Won
+  + FLAG_DEFEATED_MEW
+  + FLAG_HIDE_MEW
+  + seen faraway_island_interior.Mew in the tall grass
+way 1, from answer 1
+  * wildbattle Mew 30 Lost
+  + seen faraway_island_interior.Mew in the tall grass
 === fight_area.Buck
 from Buck at 657,426 of Sinnoh
 way -
@@ -17798,6 +17825,10 @@ way 1, from answer 1
   Scott> No hurry. The Frontier will still be there when you are ready.
   ? Shall we sail for the Battle Frontier now? = No
   + FLAG_RECEIVED_FRONTIER_PASS
+=== lilycove_city_harbor.Tidal
+from Sailor at 3,13 of LilycoveCity_Harbor
+way -
+  Sailor> Ships out of Lilycove go a long way. Some of them cross the whole ocean to lands I've only heard of.
 === lilycove_city_house_2.RestMan
 from Man at 0,4 of LilycoveCity_House2
 way -
@@ -25271,6 +25302,10 @@ way -
 === slateport_city_harbor.AquaEscape3
 from the trigger at 8,14 of SlateportCity_Harbor
 way -
+=== slateport_city_harbor.Ferry
+from Attendant at 8,10 of SlateportCity_Harbor
+way -
+  Attendant> Welcome to Slateport's harbour. The S.S. Tidal sails for Lilycove, but only for passengers with a ticket.
 === slateport_city_harbor.Stern
 from Captain Stern at 6,13 of SlateportCity_Harbor
 way -
@@ -26022,6 +26057,21 @@ way -
 from Sailor at 7,9 of Vermilion_PortHall
 way -
   Sailor> The S.S. Aqua sails from here to Olivine City in Johto. Only those with passage may board.
+=== ss_tidal_corridor.ExitSailor
+from Sailor at 1,11 of SSTidalCorridor
+way -
+  Sailor> We're still at sea. Your cabin's down the corridor, if you'd like a rest while we sail.
+=== ss_tidal_rooms.Bed
+from the tile read at 15,11 of SSTidalRooms
+from the tile read at 15,12 of SSTidalRooms
+way 0
+  > A soft bed. Lie down for a rest?
+  > Lucas took a rest. The ship's engines hummed below...
+  ? A soft bed. Lie down for a rest? = Yes
+  * fade out
+  * fade in
+way 1, from answer 1
+  ? A soft bed. Lie down for a rest? = No
 === stark_mountain_outside.Grunt
 from Grunt at 742,232 of Sinnoh
 from Grunt at 742,233 of Sinnoh

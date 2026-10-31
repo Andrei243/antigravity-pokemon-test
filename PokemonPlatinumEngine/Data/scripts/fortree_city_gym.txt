@@ -10,6 +10,7 @@
 script Winona
   face winona player
   speaker "Winona"
+  if flag FLAG_PHONE_REMATCH_WINONA goto Rematch
   if badge feather goto Won
   scene "Winona"
   say "I am Winona, the Leader of Fortree's Gym. I have lived among the trees and the wind all my life."
@@ -49,6 +50,32 @@ label Won
   end
 label Proud
   say "Even though I lost, my Pokémon and I will keep flying. The wind is always there to lift us again."
+  end
+# The rematch a Match Call asked for (plan 21 · H12, part g; Emerald's FortreeCity_Gym_EventScript_WinonaRematch, a
+# double battle): each time one team stronger, Emerald's TRAINER_WINONA_2 to _5, the last again once all are beaten
+label Rematch
+  if party < 2 goto NeedTwo
+  say "You answered the wind's call. My birds fly in pairs now. Two Pokémon each, if you please."
+  if not defeated "hoenn_winona_2" goto Second
+  if not defeated "hoenn_winona_3" goto Third
+  if not defeated "hoenn_winona_4" goto Fourth
+  battle self as "hoenn_winona_5"
+  goto Rematched
+label Second
+  battle self as "hoenn_winona_2"
+  goto Rematched
+label Third
+  battle self as "hoenn_winona_3"
+  goto Rematched
+label Fourth
+  battle self as "hoenn_winona_4"
+label Rematched
+  speaker "Winona"
+  clearflag FLAG_PHONE_REMATCH_WINONA
+  say "You still fly higher than my birds. Thank you, {player}. Call me when the wind is right."
+  end
+label NeedTwo
+  say "A rematch is two Pokémon against two. Come back with at least two on your team."
   end
 
 

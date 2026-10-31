@@ -273,6 +273,100 @@
       "text": [
         "Îmi pare rău, Birth Island este doar pentru pasagerii cu un Aurora Ticket."
       ]
+    },
+    {
+      "en": [
+        "Where would you like to sail?",
+        "SOUTHERN ISLAND",
+        "BATTLE FRONTIER",
+        "NAVEL ROCK",
+        "BIRTH ISLAND",
+        "FARAWAY ISLAND",
+        "NOWHERE"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} showed the Old Sea Map."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Faraway Island! It's on no chart of ours, but with this map the captain will find it. Please come aboard."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} sailed for Faraway Island..."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Tidal": [
+    {
+      "en": [
+        "Sailor"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The S.S. Tidal sails for Slateport City. Coming aboard?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} showed the S.S. Ticket."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome aboard! Your cabin's ready."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ships out of Lilycove go a long way. Some of them cross the whole ocean to lands I've only heard of."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "She sails whenever you're ready."
+      ],
+      "text": [
+        ""
+      ]
     }
   ],
   "Passes": [
@@ -322,6 +416,30 @@
       ],
       "text": [
         "E un permis pentru Birth Island, unde pe nisip stă un straniu triunghi de piatră. Nimeni nu știe cine l-a pus acolo."
+      ]
+    },
+    {
+      "en": [
+        "Three of the Frontier's prints! An old sailor left this with the harbour for a trainer like you."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} was given the Old Sea Map!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's a faded chart with an island drawn on it that no other map shows. The captain says he can find it."
+      ],
+      "text": [
+        ""
       ]
     }
   ]

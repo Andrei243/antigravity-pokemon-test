@@ -10,6 +10,7 @@
 script Brawly
   face brawly player
   speaker "Brawly"
+  if flag FLAG_PHONE_REMATCH_BRAWLY goto Rematch
   if badge knuckle goto Won
   scene "Brawly"
   say "I'm Brawly! Dewford's Gym Leader. I've been riding the big waves out there, and they've made me tough."
@@ -43,6 +44,32 @@ label Tm
 label Won
   if not flag FLAG_RECEIVED_TM_BULK_UP goto Tm
   say "I'm going to get back out on the water and train harder. Next time, I won't wipe out so easily!"
+  end
+# The rematch a Match Call asked for (plan 21 · H12, part g; Emerald's DewfordTown_Gym_EventScript_BrawlyRematch, a
+# double battle): each time one team stronger, Emerald's TRAINER_BRAWLY_2 to _5, the last again once all are beaten
+label Rematch
+  if party < 2 goto NeedTwo
+  say "You made it! I've been training on waves twice as big. Two Pokémon each this time. Let's ride!"
+  if not defeated "hoenn_brawly_2" goto Second
+  if not defeated "hoenn_brawly_3" goto Third
+  if not defeated "hoenn_brawly_4" goto Fourth
+  battle self as "hoenn_brawly_5"
+  goto Rematched
+label Second
+  battle self as "hoenn_brawly_2"
+  goto Rematched
+label Third
+  battle self as "hoenn_brawly_3"
+  goto Rematched
+label Fourth
+  battle self as "hoenn_brawly_4"
+label Rematched
+  speaker "Brawly"
+  clearflag FLAG_PHONE_REMATCH_BRAWLY
+  say "Wiped out again! You're a real big-wave rider, {player}. Call me when you want another round."
+  end
+label NeedTwo
+  say "A rematch is two on two! Come back with at least two Pokémon on your team."
   end
 
 

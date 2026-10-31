@@ -2792,6 +2792,12 @@ surf 5-40
 old rod 5
 good rod 5-15
 super rod 15-35
+=== ss_tidal_lower_deck
+S.S. Tidal
+trainers 2, 43-44: hoenn_leonard 43, hoenn_phillip 44
+=== ss_tidal_rooms
+S.S. Tidal
+trainers 6, 12-45: hoenn_colton 42, hoenn_garret 45, hoenn_lea_and_jed 45, hoenn_micah 44, hoenn_naomi 45, hoenn_thomas 45
 === stark_mountain_outside
 Stark Mountain
 grass 51-54

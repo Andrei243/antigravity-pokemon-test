@@ -108,5 +108,55 @@
         "Dacă ar putea cineva să-i urmeze acolo jos..."
       ]
     }
+  ],
+  "Ferry": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The S.S. Tidal sails for Lilycove City. Would you like to board?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} showed the S.S. Ticket."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thank you. Please come aboard, and have a pleasant voyage."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to Slateport's harbour. The S.S. Tidal sails for Lilycove, but only for passengers with a ticket."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Of course. Come back whenever you'd like to sail."
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

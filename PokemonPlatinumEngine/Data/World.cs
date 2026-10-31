@@ -2521,7 +2521,8 @@ public static class WorldMapBuilder
             npc.LinesKey = o.Id;
             npc.ScriptFile = key;
             // How they move about of their own accord, within the original's range round where they stand (plan 02 · S6)
-            if (!person.Still) npc.Movement = PersonMovement.Parse(o.Movement, o.RangeX, o.RangeZ, o.X, o.Z, npc.Facing);
+            // (round where the overlay stands them, where it says: Faraway Island's Mew, plan 21 · H12, part g)
+            if (!person.Still) npc.Movement = PersonMovement.Parse(o.Movement, o.RangeX, o.RangeZ, px, pz, npc.Facing);
             // Someone the original stands inside a thing that blocks the way (the swimmer in the Resort Area's pool) keeps
             // their tile, where the overlay says they never leave it: they are what is in the way there
             else if (map.IsSolid(px, pz) && map.Props.FirstOrDefault(p => p.Model.Length > 0 && p.Covers(px, pz)) is { } inside)

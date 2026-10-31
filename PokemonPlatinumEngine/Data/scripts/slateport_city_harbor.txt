@@ -119,3 +119,26 @@ label Gone
   say "They took the submarine out of their hideout in Lilycove and dived away, you say? Then it's somewhere at the bottom of the sea."
   say "If only somebody could follow them down there..."
   end
+
+
+# The ferry desk (plan 21 · H12, part g; Emerald's SlateportCity_Harbor_EventScript_FerryAttendant): with the S.S. Ticket
+# the S.S. Tidal takes the player aboard for Lilycove (VAR_SS_TIDAL_STATE 1, ss_tidal_corridor.txt), onto the corridor's
+# gangway at 1, 10. Ours: Emerald's choice of the Battle Frontier from here is left to Lilycove's desk.
+script Ferry
+  face self player
+  speaker "Attendant"
+  if not flag FLAG_RECEIVED_SS_TICKET goto NoTicket
+  ask "The S.S. Tidal sails for Lilycove City. Would you like to board?"
+  if no goto Stay
+  text "{player} showed the S.S. Ticket."
+  say "Thank you. Please come aboard, and have a pleasant voyage."
+  setvar VAR_SS_TIDAL_STATE 1
+  fade out 0.8
+  warp "SSTidalCorridor" 1 10 up
+  end
+label NoTicket
+  say "Welcome to Slateport's harbour. The S.S. Tidal sails for Lilycove, but only for passengers with a ticket."
+  end
+label Stay
+  say "Of course. Come back whenever you'd like to sail."
+  end

@@ -1,0 +1,20 @@
+{
+  // The S.S. Tidal's cabins (plan 21 · H12, part g): eight cabins in one room of Emerald's layout, each with its passengers,
+  // the trainers of Emerald's cabins. The bed of the player's own cabin is a rest that heals the team and passes the
+  // voyage (ss_tidal_rooms.txt, Bed). The man who gives TM49 is left out
+  "area": "ss_tidal_rooms",
+  "name": "S.S. Tidal",
+  "bgmTrack": "hoenn/sailing",
+  "read": {
+    "SSTidalRooms_EventScript_Bed": "Bed"
+  },
+  "people": {
+    "pokefan_m": { "name": "Colton", "trainer": { "dialogueBefore": "Pokéfan Colton: My Pokémon get seasick, but a battle always cheers them up!", "dialogueAfter": "Pokéfan Colton: Now they're seasick and beaten." } },
+    "gentleman": { "name": "Micah", "trainer": { "dialogueBefore": "Gentleman Micah: A voyage is best spent in good company. Shall we?", "dialogueAfter": "Gentleman Micah: Splendid company indeed." } },
+    "gentleman_2": { "name": "Thomas", "trainer": { "dialogueBefore": "Gentleman Thomas: I've crossed this sea a hundred times. You may be my hundredth battle.", "dialogueAfter": "Gentleman Thomas: A voyage to remember." } },
+    "man_4": { "name": "Jed", "trainer": { "dialogueBefore": "Lea & Jed: We're on our honeymoon, and we battle as one!", "dialogueAfter": "Lea & Jed: Even beaten, we're happy together." } },
+    "woman_4": { "name": "Lea", "trainer": { "dialogueBefore": "Lea & Jed: We're on our honeymoon, and we battle as one!", "dialogueAfter": "Lea & Jed: Even beaten, we're happy together." } },
+    "rich_boy": { "name": "Garret", "trainer": { "dialogueBefore": "Rich Boy Garret: Daddy bought the whole cabin. You can battle me instead of tipping.", "dialogueAfter": "Rich Boy Garret: Daddy won't hear about this." } },
+    "woman_2": { "name": "Naomi", "trainer": { "dialogueBefore": "Lady Naomi: Oh, a visitor! I was so bored. Do battle me.", "dialogueAfter": "Lady Naomi: That was far from boring." } }
+  }
+}

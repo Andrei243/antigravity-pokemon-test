@@ -1,0 +1,11 @@
+{
+  // The S.S. Tidal's hold (plan 21 · H12, part g): two sailors at work who battle whoever they see, Emerald's Phillip and
+  // Leonard; they keep still here, where Emerald walks them round the crates
+  "area": "ss_tidal_lower_deck",
+  "name": "S.S. Tidal",
+  "bgmTrack": "hoenn/sailing",
+  "people": {
+    "sailor": { "name": "Phillip", "still": true, "trainer": { "dialogueBefore": "Sailor Phillip: A passenger down in the hold? You must be looking for a battle!", "dialogueAfter": "Sailor Phillip: Back to hauling crates, then." } },
+    "sailor_2": { "name": "Leonard", "still": true, "trainer": { "dialogueBefore": "Sailor Leonard: Nobody comes down here unless they mean business. Let's go!", "dialogueAfter": "Sailor Leonard: You've got sea legs and a strong team." } }
+  }
+}

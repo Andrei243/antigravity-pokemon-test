@@ -184,10 +184,21 @@ script Steven
   end
 
 
-# Brawly, Dewford's Gym Leader, registered with his Badge
+# Brawly, Dewford's Gym Leader, registered with his Badge. Like every Gym Leader of Hoenn he asks a Champion of Hoenn for
+# a rematch in his Gym on his day (plan 21 · H12, part g; Data/world/hoenn/phone.json, rematches.json): the call only
+# sets the rematch waiting (VAR_PHONE_CALL 2, then 3 until it is fought), and the Gym's script battles the team.
 script Brawly
   speaker "Brawly"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
   say "Yo, {player}! The waves were huge today. I wiped out three times, but that's how you learn!"
+  end
+label Rematch
+  setflag FLAG_PHONE_REMATCH_BRAWLY
+  say "Yo, {player}! I've been riding bigger waves than ever. Come to my Gym in Dewford and let's go again, two on two!"
+  end
+label Waiting
+  say "Brawly here! The Gym's still dark and my Pokémon are pumped. Don't leave me hanging, {player}!"
   end
 
 
@@ -217,14 +228,32 @@ label Waiting
 # Flannery, Lavaridge's Gym Leader, registered with her Badge (plan 21 · H4, part b)
 script Flannery
   speaker "Flannery"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
   say "{player}! It's Flannery. I've been training in the hot springs every morning. My Pokémon are fired up!"
+  end
+label Rematch
+  setflag FLAG_PHONE_REMATCH_FLANNERY
+  say "{player}! Flannery here. My Pokémon are hotter than the springs this week. Come to Lavaridge for a rematch!"
+  end
+label Waiting
+  say "It's Flannery! I'm waiting in my Gym, and I'm not cooling off one bit until you show up!"
   end
 
 
 # Winona, Fortree's Gym Leader, registered with her Badge (plan 21 · H6)
 script Winona
   speaker "Winona"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
   say "Hello, {player}. This is Winona. The wind over Fortree is strong today. My Altaria is soaring above the trees."
+  end
+label Rematch
+  setflag FLAG_PHONE_REMATCH_WINONA
+  say "{player}, it's Winona. My birds have learned to ride a fiercer wind. Will you come to Fortree and battle us again?"
+  end
+label Waiting
+  say "Winona here. The gates of my Gym are open, and my Pokémon are waiting on the wind for you."
   end
 
 
@@ -370,6 +399,8 @@ script HoennCristin
 
 # Tate and Liza, Mossdeep's Gym Leaders, registered with their Badge (plan 21 · H8, part a): a word each
 script TateAndLiza
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
   speaker "Tate"
   say "Hello, {player}! It's Tate..."
   speaker "Liza"
@@ -378,6 +409,19 @@ script TateAndLiza
   say "We've been working on a new combination..."
   speaker "Liza"
   say "...and you'll be the first to see it!"
+  end
+label Rematch
+  setflag FLAG_PHONE_REMATCH_TATE_AND_LIZA
+  speaker "Tate"
+  say "{player}! The new combination is ready..."
+  speaker "Liza"
+  say "...so come to Mossdeep's Gym and face it!"
+  end
+label Waiting
+  speaker "Liza"
+  say "We're still waiting in our Gym..."
+  speaker "Tate"
+  say "...and we're getting impatient!"
   end
 
 
@@ -419,8 +463,51 @@ script HoennKatelyn
 # Juan, Sootopolis's Gym Leader, registered with his Badge (plan 21 · H8, part c)
 script Juan
   speaker "Juan"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
   say "Ah, {player}. Juan speaking. The water in the crater is as still as glass today. A fine day for a dance."
   say "Do take care on the road ahead. I am always ready for another battle, should you wish one."
+  end
+label Rematch
+  setflag FLAG_PHONE_REMATCH_JUAN
+  say "Ah, {player}. Juan speaking. My Pokémon have polished a new dance, and it wants an audience. Come to Sootopolis's Gym."
+  end
+label Waiting
+  say "Juan here. The ice in my Gym is fresh and the stage is set. I await you, {player}."
+  end
+
+
+# Roxanne, Rustboro's Gym Leader, registered when the player speaks to her with her Badge (plan 21 · H12, part g; ours:
+# Emerald registers her by the PokéNav's own order of events)
+script Roxanne
+  speaker "Roxanne"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
+  say "Hello, {player}. It's Roxanne. I've been teaching my students how a rock wears down under water. Fascinating!"
+  end
+label Rematch
+  setflag FLAG_PHONE_REMATCH_ROXANNE
+  say "{player}, it's Roxanne. I've studied a great deal since our battle. Would you come to Rustboro's Gym and test me?"
+  end
+label Waiting
+  say "Roxanne here. My notes are ready and so are my Pokémon. I'll be in my Gym until you come."
+  end
+
+
+# Norman, Petalburg's Gym Leader and the player's father, registered when the player speaks to him with his Badge
+# (plan 21 · H12, part g)
+script Norman
+  speaker "Norman"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
+  say "{player}? It's your dad. Your mother says you never call. Just checking that you're keeping well."
+  end
+label Rematch
+  setflag FLAG_PHONE_REMATCH_NORMAN
+  say "{player}, it's Dad. I've been training hard, and I'd like to see how far you've come. Come to the Gym in Petalburg."
+  end
+label Waiting
+  say "It's Dad. I'm waiting in the Gym, {player}. Don't keep your old man standing around too long."
   end
 
 

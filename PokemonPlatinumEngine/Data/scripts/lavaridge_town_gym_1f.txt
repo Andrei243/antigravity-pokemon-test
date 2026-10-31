@@ -10,6 +10,7 @@
 script Flannery
   face flannery player
   speaker "Flannery"
+  if flag FLAG_PHONE_REMATCH_FLANNERY goto Rematch
   if badge heat goto Won
   scene "Flannery"
   say "Welcome! I'm Flannery, the Leader of Lavaridge's Gym. My grandfather handed it to me not long ago."
@@ -54,6 +55,32 @@ label Won
   end
 label Warm
   say "I'm going to train harder than anyone! Next time we meet, I'll be a Leader worthy of the name."
+  end
+# The rematch a Match Call asked for (plan 21 · H12, part g; Emerald's LavaridgeTown_Gym_1F_EventScript_FlanneryRematch,
+# a double battle): each time one team stronger, Emerald's TRAINER_FLANNERY_2 to _5, the last again once all are beaten
+label Rematch
+  if party < 2 goto NeedTwo
+  say "You came! I'm a real Leader now, and I'll prove it. Two Pokémon each. Let's turn up the heat!"
+  if not defeated "hoenn_flannery_2" goto Second
+  if not defeated "hoenn_flannery_3" goto Third
+  if not defeated "hoenn_flannery_4" goto Fourth
+  battle self as "hoenn_flannery_5"
+  goto Rematched
+label Second
+  battle self as "hoenn_flannery_2"
+  goto Rematched
+label Third
+  battle self as "hoenn_flannery_3"
+  goto Rematched
+label Fourth
+  battle self as "hoenn_flannery_4"
+label Rematched
+  speaker "Flannery"
+  clearflag FLAG_PHONE_REMATCH_FLANNERY
+  say "Phew, that was hot! I lost, but I felt like a true Leader the whole way through. Call me again!"
+  end
+label NeedTwo
+  say "A rematch means two Pokémon at a time! Come back with at least two on your team."
   end
 
 

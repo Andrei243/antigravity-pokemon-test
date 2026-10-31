@@ -1,0 +1,36 @@
+{
+  "Bed": [
+    {
+      "en": [
+        "A soft bed. Lie down for a rest?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} took a rest. The ship's engines hummed below..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Attention, passengers. We have arrived at Lilycove City."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Attention, passengers. We have arrived at Slateport City."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

@@ -143,6 +143,7 @@ partial class Harness
             if (game.State == GameState.Battle) game.State = GameState.Overworld;
         }
         else Console.WriteLine("  !! Wattson is not in his Gym");
+        HoennPostGameGShots();
         game.State = GameState.Overworld;
     }
 }

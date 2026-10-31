@@ -1,0 +1,29 @@
+# The S.S. Tidal's corridor (plan 21 · H12, part g). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/SSTidalCorridor/scripts.inc).
+#
+# VAR_SS_TIDAL_STATE, ours (Emerald's has a halfway state each way): 1 bound for Lilycove, out of Slateport; 2 bound for
+# Slateport, out of Lilycove; 3 in at Lilycove; 4 in at Slateport. The desks of both harbours set 1 or 2 as they let the
+# player aboard; a rest in the cabin's bed brings the ship in (ss_tidal_rooms.txt). The sailor by the gangway lets the
+# player off once she is in, onto the quay of the harbour she has come to (Emerald's ExitLilycove and ExitSlateport, 8, 11
+# in both rooms), and the voyage is over (0).
+
+
+script ExitSailor
+  face self player
+  speaker "Sailor"
+  if var VAR_SS_TIDAL_STATE == 3 goto Lilycove
+  if var VAR_SS_TIDAL_STATE == 4 goto Slateport
+  say "We're still at sea. Your cabin's down the corridor, if you'd like a rest while we sail."
+  end
+label Lilycove
+  say "We've arrived at Lilycove City. Mind the gangway on your way down!"
+  setvar VAR_SS_TIDAL_STATE 0
+  fade out 0.8
+  warp "LilycoveCity_Harbor" 8 11 down
+  end
+label Slateport
+  say "We've arrived at Slateport City. Mind the gangway on your way down!"
+  setvar VAR_SS_TIDAL_STATE 0
+  fade out 0.8
+  warp "SlateportCity_Harbor" 8 11 down
+  end

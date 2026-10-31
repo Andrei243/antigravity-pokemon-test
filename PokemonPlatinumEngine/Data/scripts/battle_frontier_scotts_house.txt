@@ -17,6 +17,7 @@ script Scott
   setflag FLAG_RECEIVED_SCOTTS_BATTLE_POINTS
   text "{player} received 3 Battle Points!"
 label Offer
+  call Shields
   say "The halls of this island aren't ready yet. The Frontier Brains are still at Sinnoh's Battle Frontier."
   ask "Shall I take you to the Battle Frontier in Sinnoh?"
   if no goto Stay
@@ -29,3 +30,33 @@ label Offer
 label Stay
   say "Whenever you're ready. I'll be here."
   end
+
+
+# The Battle Tower's shields (plan 21 · H12, part g; ours: Emerald's Tower hands them over for a streak of fifty and of a
+# hundred, and this game's Tower is Sinnoh's): Scott gives the Silver Shield once the Tower Tycoon's silver print is won
+# (`frontier printed tower` 1 or more) and the Gold Shield for the gold one (2), decorations for the secret base's PC
+# (FLAG_RECEIVED_SILVER_SHIELD, FLAG_RECEIVED_GOLD_SHIELD, Emerald's flags). With no room in the PC he keeps them.
+script Shields
+  frontier printed tower
+  if result == 0 return
+  if flag FLAG_RECEIVED_SILVER_SHIELD goto Gold
+  say "You won the Tower Tycoon's silver print! That deserves a trophy for your secret base."
+  openbase give "Silver Shield"
+  if result == 0 goto NoRoom
+  setflag FLAG_RECEIVED_SILVER_SHIELD
+  fanfare item
+  text "{player} received the {thing}!"
+label Gold
+  frontier printed tower
+  if result < 2 return
+  if flag FLAG_RECEIVED_GOLD_SHIELD return
+  say "And the gold print, too! Nobody has earned this more than you."
+  openbase give "Gold Shield"
+  if result == 0 goto NoRoom
+  setflag FLAG_RECEIVED_GOLD_SHIELD
+  fanfare item
+  text "{player} received the {thing}!"
+  return
+label NoRoom
+  say "Ah, your PC has no room for it. Make some, and I'll keep it for you until then."
+  return
