@@ -353,6 +353,12 @@ public sealed class GameSettings
     /// </summary>
     public RulesDefault BoxTools { get; set; } = RulesDefault.Rules;
 
+    /// <summary>
+    /// AUTO among a battle's commands (plan 12 · Q12, <see cref="Battle.BattleEngine.AutoOffered"/>): it plays the battle for
+    /// the player, turn after turn, until something wants them. Off unless chosen, so the commands stand as they always did.
+    /// </summary>
+    public bool AutoBattle { get; set; }
+
     /// <summary>The preset the first run's measuring chose on this machine (plan 16 · T23), or null where nothing was measured.</summary>
     public GraphicsQuality? MeasuredQuality { get; set; }
 

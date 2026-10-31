@@ -1141,6 +1141,7 @@ public partial class GameEngine
                 if (flow.Battle != null)
                 {
                     flow.Battle.AutoAdvanceAfter = GameSettings.AutoAdvanceAfter(Settings.AutoAdvance);
+                    flow.Battle.AutoOn = Settings.AutoBattle; // plan 12 · Q12
                     flow.Battle.Update(dt * Pace);
                     // The Bug-Catching Contest's minutes go on in its battles (plan 15 · E5)
                     if (flow.Battle.OnlyBall != null) flow.BugContest.Tick(dt);

@@ -162,6 +162,8 @@ internal static partial class ModernUi
                 if (battle.BagClosed) colors[0] = Closed;
                 for (int i = 0; i < 3; i++)
                     if (labels[i].Length > 0) Button(new Rectangle(1600, 848 + i * 66, 272, 58), 29, colors[i], labels[i], 28, hud.MainMenuIndex == i + 1);
+                // AUTO beside FIGHT, on the prompt's corner (plan 12 · Q12)
+                if (battle.AutoOffered && !battle.AutoRunning) AutoButton(lit: false, hud.MainMenuIndex == BattleEngine.AutoIndex);
                 break;
             case BattleMenuState.Moves:
                 // A rotation battle's moves are those of the one the turntable is turned to (plan 14 · B7)
@@ -214,6 +216,8 @@ internal static partial class ModernUi
                 if (battle.JudgeCard is { } verdict) JudgeCard(verdict, anim.Player.Shown?.DisplayName ?? "", anim.Enemy.Shown?.DisplayName ?? "");
                 break;
         }
+        // AUTO at work (plan 12 · Q12): the button lit on the prompt's corner and how to stop it
+        if (battle.AutoRunning) AutoAtWork(sw);
     }
 
     // ------------------------------------------------------------------ the level-up panel

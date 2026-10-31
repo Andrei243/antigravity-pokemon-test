@@ -297,6 +297,13 @@
       "value": "{n} folosite",
       "help": "Pornește sau oprește pachetele, alege ordinea în care se încarcă și vezi al cui e fiecare."
     },
+    "autoBattle": {
+      "label": "Luptă automată",
+      "help": {
+        "off": "Comenzile unei lupte sunt LUPTĂ, RUCSAC, POKéMON și FUGI, alese de tine în fiecare tură.",
+        "on": "Comenzile au AUTO, care joacă lupta pentru tine cu cea mai puternică mișcare a fiecărui Pokémon până leșină unul de-al tău sau Înapoi o oprește."
+      }
+    },
     "boxesAnywhere": {
       "label": "Cutii oriunde și rucsac ordonat",
       "value": { "Off": "Nu", "Rules": "După reguli", "On": "Da" },
@@ -3370,6 +3377,8 @@
       "tera": "Terastalizare",
       "megaDynamax": "Mega Dynamax"
     },
+    "auto": "AUTO",
+    "autoStop": "Oprește auto",
     "fight": "LUPTĂ",
     "bag": "RUCSAC",
     "pokemon": "POKÉMON",
