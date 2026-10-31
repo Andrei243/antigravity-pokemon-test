@@ -55,7 +55,7 @@
         "Cobalion let out a ringing cry!\nIts steel-hard gaze holds {player} where they stand!"
       ],
       "text": [
-        ""
+        "Cobalion a scos un strigăt răsunător!\nPrivirea lui de oțel o ține pe {player} locului!"
       ]
     },
     {
@@ -63,7 +63,7 @@
         "The road is quiet again. Only the sea breeze is left..."
       ],
       "text": [
-        ""
+        "Drumul e din nou liniștit. A rămas doar briza mării..."
       ]
     },
     {
@@ -71,7 +71,7 @@
         "Cobalion leapt away beyond the road..."
       ],
       "text": [
-        ""
+        "Cobalion a sărit departe, dincolo de drum..."
       ]
     }
   ]

@@ -5,7 +5,7 @@
         "Misty"
       ],
       "text": [
-        ""
+        "Misty"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "So you came after all. You did spoil my afternoon on the cape, you know."
       ],
       "text": [
-        ""
+        "Deci ai venit totuși. Mi-ai stricat după-amiaza pe promontoriu, să știi."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Still, a Champion from Johto doesn't turn up every day. My Water Pokémon have been itching for a real battle."
       ],
       "text": [
-        ""
+        "Totuși, un Campion din Johto nu apare în fiecare zi. Pokémonii mei de apă abia așteptau o luptă adevărată."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Let's make a splash! Show me what you've got!"
       ],
       "text": [
-        ""
+        "Să facem valuri! Arată-mi ce poți!"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Wow... you really are strong. All right, you've earned it. Here's the Cascade Badge."
       ],
       "text": [
-        ""
+        "Uau... chiar ești puternic. Bine, ai meritat-o. Poftim Insigna Cascadă."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "{player} received the Cascade Badge from Misty!"
       ],
       "text": [
-        ""
+        "{player} a primit Insigna Cascadă de la Misty!"
       ]
     },
     {
@@ -53,7 +53,7 @@
         "Take this too. It's a move my Pokémon love to use."
       ],
       "text": [
-        ""
+        "Ia și asta. E o mișcare pe care Pokémonii mei o adoră."
       ]
     },
     {
@@ -61,7 +61,7 @@
         "TM55 is Brine. It hits twice as hard when the foe is down to half its HP or less."
       ],
       "text": [
-        ""
+        "TM55 este Brine. Lovește de două ori mai tare când adversarul are jumătate din PS sau mai puțin."
       ]
     },
     {
@@ -69,7 +69,7 @@
         "Next time, I'll beat you. Then you can owe me an afternoon on the cape!"
       ],
       "text": [
-        ""
+        "Data viitoare te înving eu. Și atunci îmi vei datora o după-amiază pe promontoriu!"
       ]
     }
   ],
@@ -79,7 +79,7 @@
         "Hey, champ in the making! Bad news, I'm afraid. Misty isn't here."
       ],
       "text": [
-        ""
+        "Hei, viitor campion! Am o veste proastă, din păcate. Misty nu e aici."
       ]
     },
     {
@@ -87,7 +87,7 @@
         "She slipped out to the cape north of town again. Try Route 25, past Nugget Bridge."
       ],
       "text": [
-        ""
+        "S-a strecurat iar spre promontoriul de la nordul orașului. Încearcă pe Ruta 25, după Podul Pepitelor."
       ]
     },
     {
@@ -95,7 +95,7 @@
         "Misty's back! Her Pokémon are Water types, so Electric and Grass moves will serve you well."
       ],
       "text": [
-        ""
+        "Misty s-a întors! Pokémonii ei sunt de tip Apă, deci mișcările de tip Electric și Iarbă îți vor prinde bine."
       ]
     },
     {
@@ -103,7 +103,7 @@
         "You beat Misty! What a battle. The whole pool was splashing!"
       ],
       "text": [
-        ""
+        "Ai învins-o pe Misty! Ce luptă! Toată piscina stropea!"
       ]
     }
   ],
@@ -113,7 +113,7 @@
         "Cerulean City Pokémon Gym\nLeader: Misty"
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orașul Cerulean\nLider: Misty"
       ]
     },
     {
@@ -121,7 +121,7 @@
         "Cerulean City Pokémon Gym\nLeader: Misty\nWinning trainers: {player}"
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orașul Cerulean\nLider: Misty\nAntrenori învingători: {player}"
       ]
     }
   ]

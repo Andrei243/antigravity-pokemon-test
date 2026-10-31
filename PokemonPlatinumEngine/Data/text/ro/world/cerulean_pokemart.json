@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bun venit! Cu ce vă pot ajuta?"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bun venit! Cu ce vă pot ajuta?"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "I'm stocking up on Repels. The grass by the river is thick with Pokémon this time of year."
         ],
         "text": [
-          ""
+          "Îmi fac stocul de Repel. Iarba de lângă râu e plină de Pokémoni în perioada asta a anului."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "Paralyze Heals, Antidotes, Awakenings... I always forget one, and it's always the one I need."
         ],
         "text": [
-          ""
+          "Paralyze Heal, Antidote, Awakening... Uit mereu câte unul, și e mereu cel de care am nevoie."
         ]
       }
     }
