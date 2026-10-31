@@ -369,6 +369,8 @@ public partial class GameEngine
         newGameSlot = null;
         // Before any Pokémon is made: the moves they learn take their values from the rules
         Ruleset.Use(RulesPreset.Modern);
+        // A randomised run's abilities, moves and types, swapped in over the rules' values (plan 13 · V7)
+        Randomizer.Use(run);
         flow.Party.Clear();
         flow.Party.Limit = Party.MaxSize;
         flow.Bag.Clear();
@@ -567,6 +569,8 @@ public partial class GameEngine
         // save says Modern. SaveData.Rules is read for nothing else.
         if (save.Rules != RulesPreset.Modern) Log.Info($"A game begun under {Ruleset.Of(save.Rules).Name} is brought over to the modern rules.");
         Ruleset.Use(RulesPreset.Modern);
+        // A randomised run's abilities, moves and types, before any of its Pokémon are made (plan 13 · V7)
+        Randomizer.Use(save.Run);
         // The save's own records brought up to date (plan 07 · O2): an older save's Pokémon are given their ids
         int savedFrom = save.SaveVersion;
         int idsGiven = SaveMigration.Upgrade(save);

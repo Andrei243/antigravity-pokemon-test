@@ -547,6 +547,9 @@
       "ShinyOdds": "Șansa de shiny",
       "RandomSpecies": "Pokémoni amestecați",
       "RandomItems": "Obiecte amestecate",
+      "RandomAbilities": "Abilități amestecate",
+      "RandomMoves": "Atacuri amestecate",
+      "RandomTypes": "Tipuri amestecate",
       "Seed": "Sămânță",
       "Start": "START"
     },
@@ -569,6 +572,9 @@
       "ShinyOdds": "Cât de des e un Pokémon shiny. „După reguli” este șansa obișnuită a jocului.",
       "RandomSpecies": "Pokémonii sălbatici, echipele antrenorilor, darurile, legendele și partenerul tău sunt alte specii, aceleași de fiecare dată pentru o sămânță. Evoluțiile rămân în liniile lor.",
       "RandomItems": "Obiectele de pe jos și cele primite sunt alte obiecte. Obiectele cheie, HM-urile și tot ce cere povestea nu se schimbă niciodată.",
+      "RandomAbilities": "Linia fiecărui Pokémon are alte abilități. Un Pokémon a cărui abilitate îi face forma o păstrează.",
+      "RandomMoves": "Pokémonii învață alte atacuri pe nivel, de putere asemănătoare, păstrând un atac de tipul lor. Atacurile alese ale antrenorilor se schimbă și ele.",
+      "RandomTypes": "Linia fiecărui Pokémon are alte tipuri, toată linia schimbată la fel.",
       "Seed": "O sămânță face un singur joc. Stânga și dreapta trag alta; A scrie cel mult nouă cifre. Se păstrează pe cardul de antrenor.",
       "Start": "Începe jocul cu aceste alegeri. Nu mai pot fi schimbate după aceea."
     }

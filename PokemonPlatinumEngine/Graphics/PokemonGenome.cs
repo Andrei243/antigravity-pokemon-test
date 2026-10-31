@@ -293,8 +293,10 @@ internal static class PokemonGenomes
         var (root, steps) = Family(family);
         var fr = new GenomeRandom(GenomeRandom.Hash(root.DexNumber, 0xFA11u));
         var r = new GenomeRandom(GenomeRandom.Hash(s.DexNumber, 0x5EEDu));
-        var types = new List<PokemonType> { s.PrimaryType };
-        if (s.SecondaryType is { } second && second != s.PrimaryType) types.Add(second);
+        // The types as loaded: a randomised run's swap (plan 13 · V7) never changes a model
+        var (primary, secondaryType) = Models.Randomizer.TypesAsLoaded(s.Name, s.PrimaryType, s.SecondaryType);
+        var types = new List<PokemonType> { primary };
+        if (secondaryType is { } second && second != primary) types.Add(second);
         bool Is(PokemonType t) => types.Contains(t);
         var eggs = s.EggGroups ?? new List<string>();
         bool Egg(string e) => eggs.Any(x => x.Equals(e, StringComparison.OrdinalIgnoreCase));
@@ -303,7 +305,7 @@ internal static class PokemonGenomes
 
         var g = new PokeGenome
         {
-            Species = s.Name, Category = s.Category, Dex = s.DexNumber, Primary = s.PrimaryType, Secondary = types.Count > 1 ? types[1] : null,
+            Species = s.Name, Category = s.Category, Dex = s.DexNumber, Primary = primary, Secondary = types.Count > 1 ? types[1] : null,
             Seed = GenomeRandom.Hash(s.DexNumber, 0xB0D1u),
             Stage = undiscovered && evolves && steps == 0 && s.Height <= 0.6f ? -1 : steps,
             Legendary = undiscovered && !evolves && steps == 0 && s.BaseHP + s.BaseAttack + s.BaseDefense + s.BaseSpAttack + s.BaseSpDefense + s.BaseSpeed >= 570

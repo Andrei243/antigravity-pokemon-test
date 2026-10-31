@@ -398,6 +398,9 @@ public sealed class Ruleset
     /// </summary>
     public static void Use(RulesPreset preset)
     {
+        // A randomised run's swap of abilities, moves and types is put back first (plan 13 · V7), so the rules' own
+        // values are taken over the data as loaded and a game begun afterwards starts from it
+        Models.Randomizer.PutBack();
         Current = Of(preset);
         MoveDatabase.UseRules(Current);
         PokemonDatabase.UseRules(Current);

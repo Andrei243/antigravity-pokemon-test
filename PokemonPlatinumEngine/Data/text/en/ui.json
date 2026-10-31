@@ -943,6 +943,9 @@
       "ShinyOdds": "Shiny odds",
       "RandomSpecies": "Randomise Pokémon",
       "RandomItems": "Randomise items",
+      "RandomAbilities": "Randomise abilities",
+      "RandomMoves": "Randomise moves",
+      "RandomTypes": "Randomise types",
       "Seed": "Seed",
       "Start": "START"
     },
@@ -965,6 +968,9 @@
       "ShinyOdds": "How often a Pokémon is shiny. As the rules say is the game's usual chance.",
       "RandomSpecies": "Wild Pokémon, trainers' teams, gifts, legends and your partner are other species, the same ones every time for a seed. Evolutions stay in their lines.",
       "RandomItems": "Items on the ground and handed to you are other items. Key items, HMs and anything the story asks for are never changed.",
+      "RandomAbilities": "Each Pokémon's line has other abilities. A Pokémon whose ability makes its own shape keeps it.",
+      "RandomMoves": "Pokémon learn other moves by level, of about the same power, keeping a move of their own type. Trainers' chosen moves change too.",
+      "RandomTypes": "Each Pokémon's line has other types, the whole line changed alike.",
       "Seed": "One seed makes one game. Left and right roll another; A types nine digits at most. It is kept on the Trainer Card.",
       "Start": "Begin the game with these choices. They cannot be changed afterwards."
     },
