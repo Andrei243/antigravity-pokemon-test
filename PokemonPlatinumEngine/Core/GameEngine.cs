@@ -1117,6 +1117,8 @@ public partial class GameEngine
                     if (flow.Battle.OnlyBall != null) flow.BugContest.Tick(dt);
                     // The battle theme turns agitated while a Pokémon of the player's is in the red, and calms for the end
                     AudioManager.LowHp = flow.Battle.Result == BattleResult.None && flow.Battle.PlayerInDanger;
+                    // ...and takes its giant layer while a Dynamaxed Pokémon stands on the field (plan Y · YD5)
+                    AudioManager.Giant = flow.Battle.Result == BattleResult.None && flow.Battle.GiantStands;
                     // A recording watched (plan 08 · P11) ends back on the Vs. Recorder's list, and leaves nothing behind
                     if (flow.Battle.Watching)
                     {
@@ -2331,6 +2333,7 @@ public partial class GameEngine
         if (RadioDial.SongFile(radioSong) is { } radio)
         {
             AudioManager.LowHp = false;
+            AudioManager.Giant = false;
             AudioManager.PlayMusic(radio);
             return;
         }
@@ -2347,6 +2350,7 @@ public partial class GameEngine
     private static void PlayAreaMusic(Map map, int x, int y)
     {
         AudioManager.LowHp = false;
+        AudioManager.Giant = false;
         AudioManager.Region = RegionDatabase.RegionOfMap(map.Name)?.Id;
         string track = map.BgmTrackAt(x, y);
         if (!string.IsNullOrEmpty(track)) AudioManager.PlayMusic(track);

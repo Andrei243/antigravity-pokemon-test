@@ -130,6 +130,17 @@ public sealed class AudioMixer
         set { lock (gate) music.Agitated = value; }
     }
 
+    /// <summary>
+    /// The music's giant arrangement (plan Y · YD5: a battle theme's layer of choir, brass and timpani while a Dynamaxed
+    /// Pokémon stands on the field). Like <see cref="LowHp"/> it holds across songs and the game sets it every frame of
+    /// a battle; the two are independent, so a giant in the red takes both.
+    /// </summary>
+    public bool Giant
+    {
+        get { lock (gate) return music.Giant; }
+        set { lock (gate) music.Giant = value; }
+    }
+
     /// <summary>A bus's volume, 0 to 1: what the options set.</summary>
     public float VolumeOf(AudioBus bus)
     {

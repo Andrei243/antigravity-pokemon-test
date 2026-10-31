@@ -35,8 +35,30 @@ public sealed class SongPlayer
         {
             if (agitated == value) return;
             agitated = value;
-            if (song != null) ticksPerSample = 1.0 / (song.SecondsPerTick(night, agitated) * Synthesizer.SampleRate);
+            Retime();
         }
+    }
+
+    /// <summary>
+    /// The giant arrangement (plan Y · YD5), switched while a Dynamaxed Pokémon stands on the field, the same way as
+    /// <see cref="Agitated"/> and independently of it: its layer joins in or falls silent on the next notes and the
+    /// song keeps its place. A song with no giant arrangement plays exactly as it did.
+    /// </summary>
+    public bool Giant
+    {
+        get => giant;
+        set
+        {
+            if (giant == value) return;
+            giant = value;
+            Retime();
+        }
+    }
+    private bool giant;
+
+    private void Retime()
+    {
+        if (song != null) ticksPerSample = 1.0 / (song.SecondsPerTick(night, agitated, giant) * Synthesizer.SampleRate);
     }
 
     /// <summary>True while notes are still being started (a one-shot song that has reached its end is not).</summary>
@@ -57,7 +79,7 @@ public sealed class SongPlayer
         night = atNight && s.HasNight;
         tick = 0;
         Loops = 0;
-        ticksPerSample = 1.0 / (s.SecondsPerTick(night, agitated) * Synthesizer.SampleRate);
+        ticksPerSample = 1.0 / (s.SecondsPerTick(night, agitated, giant) * Synthesizer.SampleRate);
         next = new int[s.Tracks.Count];
         synth.AllNotesOff(immediate: true);
         synth.ReverbLevel = s.Reverb + (night ? 0.08f : 0f);
@@ -106,12 +128,17 @@ public sealed class SongPlayer
             {
                 var track = s.Tracks[t];
                 var notes = track.Notes;
-                bool plays = track.When switch { TrackWhen.LowHp => agitated, TrackWhen.NotLowHp => !agitated, _ => true };
+                bool plays = track.When switch
+                {
+                    TrackWhen.LowHp => agitated, TrackWhen.NotLowHp => !agitated,
+                    TrackWhen.Giant => giant, TrackWhen.NotGiant => !giant, _ => true
+                };
                 while (next[t] < notes.Count && notes[next[t]].Tick < end && notes[next[t]].Tick < s.EndTick)
                 {
                     var note = notes[next[t]++];
                     if (note.Tick < tick || !plays) continue;
                     var inst = agitated && track.LowHpInstrument != null ? track.LowHpInstrument
+                        : giant && track.GiantInstrument != null ? track.GiantInstrument
                         : night ? track.NightInstrument ?? track.Instrument : track.Instrument;
                     float vol = track.Volume * (night && track.IsDrums ? 0.6f : 1f);
                     synth.NoteOn(inst, note.Key, note.Velocity, (int)(note.Gate * samplesPerTick), track.Pan, vol, track.ReverbSend);

@@ -51,3 +51,8 @@ track hats kit vol=0.36 pan=0.2 rev=0.1
 # Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
 track alarm pulse only=lowhp vol=0.56 pan=0.1 rev=0.08
   v110 r1 | r1 | L [ o6 e-16 r16 e-16 r16 r4 e-16 r16 e-16 r16 r4 | ]16
+
+# Giant (plan Y · YD5): while a Dynamaxed Pokémon stands on the field, a choir on the chords,
+# horn on the roots and timpani on the bass's beats
+track giantchoir choir only=giant double=choir vol=0.2 pan=-0.25 rev=0.4
+track gianttimpani timpani only=giant double=bass beats=1 shift=24 vol=0.32 rev=0.2

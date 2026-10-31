@@ -114,6 +114,7 @@ Each is the style guide first, no rule touched, the golden files unmoved (`GOLDE
 - Tests: `MusicTests` and the MML reader's for the new keys; a theme without them plays as it did, bar for bar (the arrangement's off-path is the old one); `tools/MusicRender` level, loudness and clash checks for each theme with `--giant`.
 - Harness: none (music); `tools/MusicRender <out> battle_champion --giant --stems` and the rest, MP3s for the user.
 - **Done when** the user has heard the Champion's theme with a giant and approved it.
+- **As built** (2026-10-31): `TrackWhen.Giant`, `NotGiant`; `only=giant`, `unless=giant`, `giant=<instrument>`, `gianttempo` (both tempos multiply; a low-HP instrument wins over a giant one); `SongPlayer.Giant`, `AudioMixer.Giant`, `AudioManager.Giant`, set in `GameEngine.cs` beside `LowHp` from `BattleEngine.GiantStands` (any present view `Dynamaxed`, either side) and cleared everywhere `LowHp` is. A layer track is written as a doubling (`double=<track>`, `shift=`, `beats=`, new to the MML), so every one of the 127 themes with a low-HP arrangement ends in up to three: a choir on the chords (on the tune where there are none), brass or horns on the bass's roots, timpani on the bass's beats, each put by a one-off scratch generator in the octave and on the beats that add no clash in the giant arrangement or in the giant one in the red; none free of one is left out (Giratina's brass and timpani, Ting-Lu's brass). Volumes 0.2, 0.22, 0.32; trimmed on `battle_gym`, `battle_wild` and Solgaleo's to stay in the music bus's window, the Champion's brass raised to 0.36. Out of the arrangement every theme plays sample for sample as before. The jukebox offers `JukeboxArrangement.Giant` (`jukebox.arrangement.Giant`, en and ro). `max_land` (1.3 s, a set piece) plays at the impact of every Max Move but Max Guard that is neither missed nor blocked (`SoundBank.LandsAsAGiant`), with the scene off too, so YD2 needs no `max_land` of its own. `MusicRender --giant` (with `--lowhp`, stems in the arrangement). Renders: 127 themes plain, giant and giant in the red, no NaN, no peak over −0.3 dB, no clash added (the 5 and 7 counted are the alarm's own, as before), every theme in its window once the three were trimmed; the Champion's theme −16.3 dB plain, −15.6 giant, −16.7 giant in the red. **Open**: the user's listening and approval (WAVs; no MP3 encoder on this machine).
 
 ### YD6 · The Champions with the Mega Max Band (L)
 - Idea 20, with YD1 to YD5's pieces.
@@ -183,7 +184,7 @@ Each is the style guide first, no rule touched, the golden files unmoved (`GOLDE
 - [ ] YD2 The Max Move finisher
 - [ ] YD3 Max Guard, the countdown and the fall
 - [ ] YD4 Max Moves on the field and Mega Dynamax's double change
-- [ ] YD5 The music and the hits
+- [x] YD5 The music and the hits (built; waits on the user's listening)
 - [ ] YD6 The Champions with the Mega Max Band
 - [ ] YD7 Gigantamax signatures
 

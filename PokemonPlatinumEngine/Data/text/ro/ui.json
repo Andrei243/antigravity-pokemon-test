@@ -609,7 +609,7 @@
     "keys": { "shoulders": "Q / E" },
     "tab": { "songs": "MELODII", "sounds": "SUNETE", "cries": "STRIGĂTE", "beds": "AMBIANȚĂ" },
     "hint": { "tab": "Filă", "arrangement": "Variantă", "species": "Specie" },
-    "arrangement": { "Day": "ZI", "Night": "NOAPTE", "LowHp": "PV PUȚINE" },
+    "arrangement": { "Day": "ZI", "Night": "NOAPTE", "LowHp": "PV PUȚINE", "Giant": "URIAȘ" },
     "group": { "Menu": "MENIU", "Field": "TEREN", "Battle": "LUPTĂ", "Move": "MIȘCARE" },
     "cry": {
       "Normal": "Obișnuit",

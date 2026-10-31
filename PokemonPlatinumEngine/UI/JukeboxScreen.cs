@@ -12,8 +12,8 @@ namespace PokemonPlatinumEngine.UI;
 /// <summary>The jukebox's four lists (plan 12 · Q15): the songs, the sound effects, the cries and the ambience beds.</summary>
 public enum JukeboxTab { Songs, Sounds, Cries, Beds }
 
-/// <summary>How a song is played: as it is by day, in its night arrangement, or in the one a battle turns to in the red.</summary>
-public enum JukeboxArrangement { Day, Night, LowHp }
+/// <summary>How a song is played: as it is by day, in its night arrangement, in the one a battle turns to in the red, or in the one it takes while a giant stands (plan Y · YD5).</summary>
+public enum JukeboxArrangement { Day, Night, LowHp, Giant }
 
 /// <summary>
 /// One line of a jukebox list: what is played (<see cref="Id"/>: a song's id, a sound's name, a cry mode's or a bed's),
@@ -83,6 +83,7 @@ public class JukeboxScreen
             var how = new List<JukeboxArrangement> { JukeboxArrangement.Day };
             if (unlocked && song.HasNight) how.Add(JukeboxArrangement.Night);
             if (unlocked && song.HasLowHp) how.Add(JukeboxArrangement.LowHp);
+            if (unlocked && song.HasGiant) how.Add(JukeboxArrangement.Giant);
             return new JukeboxEntry(song.Id, unlocked, how);
         }).ToList();
 
@@ -160,6 +161,7 @@ public class JukeboxScreen
         if (playing is { Tab: JukeboxTab.Beds }) AudioManager.PreviewBed(null);
         if (playing is { Tab: JukeboxTab.Songs }) AudioManager.StopMusic();
         AudioManager.LowHp = false;
+        AudioManager.Giant = false;
         playing = null;
     }
 
@@ -225,7 +227,7 @@ public class JukeboxScreen
                     return;
                 }
                 if (playing is { Tab: JukeboxTab.Beds }) AudioManager.PreviewBed(null);
-                AudioManager.PreviewMusic(entry.Id, Arrangement == JukeboxArrangement.Night, Arrangement == JukeboxArrangement.LowHp);
+                AudioManager.PreviewMusic(entry.Id, Arrangement == JukeboxArrangement.Night, Arrangement == JukeboxArrangement.LowHp, Arrangement == JukeboxArrangement.Giant);
                 playing = (JukeboxTab.Songs, entry.Id, Arrangement);
                 break;
             case JukeboxTab.Sounds:

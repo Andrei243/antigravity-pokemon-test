@@ -100,11 +100,13 @@ public class JukeboxTests
             var song = MusicLibrary.Get(entry.Id)!;
             Assert.Equal(song.HasNight, entry.Arrangements.Contains(JukeboxArrangement.Night));
             Assert.Equal(song.HasLowHp, entry.Arrangements.Contains(JukeboxArrangement.LowHp));
+            Assert.Equal(song.HasGiant, entry.Arrangements.Contains(JukeboxArrangement.Giant));
             Assert.Equal(JukeboxArrangement.Day, entry.Arrangements[0]);
         }
         // Somewhere there is a song with each, and one with neither (or the offer would prove nothing)
         var offered = JukeboxScreen.Songs(all);
         Assert.Contains(offered, e => e.Arrangements.Contains(JukeboxArrangement.LowHp));
+        Assert.Contains(offered, e => e.Arrangements.Contains(JukeboxArrangement.Giant));
         Assert.Contains(offered, e => e.Arrangements.Contains(JukeboxArrangement.Night));
         Assert.Contains(offered, e => e.Arrangements.Count == 1);
 
@@ -126,7 +128,7 @@ public class JukeboxTests
         var heard = AudioManager.Listen();
         screen.Confirm();
         AudioManager.StopListening();
-        string want = $"music {withLowHp.Id}{(screen.Arrangement == JukeboxArrangement.Night ? " night" : "")}{(screen.Arrangement == JukeboxArrangement.LowHp ? " lowhp" : "")}";
+        string want = $"music {withLowHp.Id}{(screen.Arrangement == JukeboxArrangement.Night ? " night" : "")}{(screen.Arrangement == JukeboxArrangement.LowHp ? " lowhp" : "")}{(screen.Arrangement == JukeboxArrangement.Giant ? " giant" : "")}";
         Assert.Contains(want, heard);
 
         // Moving to another song starts again from its day

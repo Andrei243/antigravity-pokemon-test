@@ -5,8 +5,11 @@ namespace PokemonPlatinumEngine.Audio;
 /// <summary>One note of a track, in ticks (<see cref="Song.TicksPerWhole"/> to a whole note).</summary>
 public readonly record struct NoteEvent(int Tick, int Length, int Gate, int Key, float Velocity);
 
-/// <summary>Which arrangements a track belongs to.</summary>
-public enum TrackWhen { Always, LowHp, NotLowHp }
+/// <summary>
+/// Which arrangements a track belongs to: always; only in the low-HP arrangement or only out of it; only while a giant
+/// stands (plan Y · YD5) or only while none does. The two arrangements are independent, so a giant in the red takes both.
+/// </summary>
+public enum TrackWhen { Always, LowHp, NotLowHp, Giant, NotGiant }
 
 public sealed class SongTrack
 {
@@ -19,7 +22,10 @@ public sealed class SongTrack
     /// <summary>The instrument the low-HP arrangement uses instead (over the night one); the same one when null.</summary>
     public Instrument? LowHpInstrument { get; init; }
 
-    /// <summary>When the track plays: always, only in the low-HP arrangement (an alarm figure), or only out of it.</summary>
+    /// <summary>The instrument the giant arrangement uses instead (under the low-HP one, over the night one); the same one when null.</summary>
+    public Instrument? GiantInstrument { get; init; }
+
+    /// <summary>When the track plays: always, only in the low-HP arrangement (an alarm figure), only out of it, only while a giant stands, or only while none does.</summary>
     public TrackWhen When { get; init; } = TrackWhen.Always;
 
     public float Volume { get; init; } = 0.8f;
@@ -61,6 +67,9 @@ public sealed class Song
     /// <summary>The low-HP arrangement of a battle theme plays this much faster (Black and White's way: the music itself turns agitated).</summary>
     public double LowHpTempo { get; init; } = 1.0;
 
+    /// <summary>The giant arrangement (plan Y · YD5: a Dynamaxed Pokémon on the field) plays this much faster; both multiply when both are on.</summary>
+    public double GiantTempo { get; init; } = 1.0;
+
     public int TicksPerBar { get; init; } = TicksPerWhole;
 
     /// <summary>Tick the song jumps back to when it reaches the end; -1 to play once.</summary>
@@ -76,9 +85,13 @@ public sealed class Song
     public bool Loops => LoopTick >= 0;
 
     /// <summary>Whether the song has a low-HP arrangement (plan 12 · Q15): a faster tempo, a track of the alarm figure or a track that plays only out of it.</summary>
-    public bool HasLowHp => LowHpTempo != 1.0 || Tracks.Exists(t => t.When != TrackWhen.Always || t.LowHpInstrument != null);
+    public bool HasLowHp => LowHpTempo != 1.0 || Tracks.Exists(t => t.When is TrackWhen.LowHp or TrackWhen.NotLowHp || t.LowHpInstrument != null);
 
-    public double SecondsPerTick(bool night, bool lowHp = false) => 60.0 / (Tempo * (night && HasNight ? NightTempo : 1.0) * (lowHp ? LowHpTempo : 1.0) * TicksPerQuarter);
+    /// <summary>Whether the song has a giant arrangement (plan Y · YD5): a tempo of its own, a track that plays only with a giant or only without, or an instrument swapped for it.</summary>
+    public bool HasGiant => GiantTempo != 1.0 || Tracks.Exists(t => t.When is TrackWhen.Giant or TrackWhen.NotGiant || t.GiantInstrument != null);
+
+    public double SecondsPerTick(bool night, bool lowHp = false, bool giant = false) =>
+        60.0 / (Tempo * (night && HasNight ? NightTempo : 1.0) * (lowHp ? LowHpTempo : 1.0) * (giant ? GiantTempo : 1.0) * TicksPerQuarter);
 
     /// <summary>Length of one pass through the song, in seconds.</summary>
     public double Duration(bool night = false) => EndTick * SecondsPerTick(night);

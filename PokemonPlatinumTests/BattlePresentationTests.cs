@@ -795,6 +795,26 @@ public class BattlePresentationTests
         Tick(battle, 3f);
         Assert.False(battle.PlayerInDanger);
     }
+
+    [Fact]
+    public void AGiantStandsFromItsGrowthToItsEndOnEitherSide()
+    {
+        // The battle theme's giant layer (plan Y · YD5) goes by what the lines have shown (the animator's views),
+        // on either side, from the growth on, whether its cue is played or not, and stops once the Dynamax ends
+        var battle = Battle("Piplup", 12, "Bidoof", 8);
+        Tick(battle, 4f);
+        Assert.False(battle.GiantStands);
+        battle.Anim.Dynamax(BattleSide.Enemy, 0, gigantamax: false);
+        Assert.True(battle.GiantStands);
+        Tick(battle, 3f);
+        Assert.True(battle.GiantStands);
+        battle.Anim.Undynamax(BattleSide.Enemy, 0);
+        Assert.False(battle.GiantStands);
+        battle.Anim.Dynamax(BattleSide.Player, 0, gigantamax: true, played: false);
+        Assert.True(battle.GiantStands);
+        battle.Anim.Undynamax(BattleSide.Player, 0, played: false);
+        Assert.False(battle.GiantStands);
+    }
     // ------------------------------------------------------------------ move hints (plan 12 · Q10)
 
     /// <summary>A wild battle with the hints on or off, its foe seen before it began or not, played to the first choice.</summary>

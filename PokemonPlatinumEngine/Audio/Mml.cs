@@ -25,7 +25,7 @@ public static class Mml
     public static Song Parse(string id, string text)
     {
         string title = id;
-        double tempo = 120, nightTempo = 0.95, lowHpTempo = 1.0;
+        double tempo = 120, nightTempo = 0.95, lowHpTempo = 1.0, giantTempo = 1.0;
         bool hasNight = true;
         int beatsPerBar = 4, beatUnit = 4;
         float reverb = 0.3f;
@@ -62,6 +62,7 @@ public static class Mml
                     hasNight = false;
                     break;
                 case "lowhptempo": lowHpTempo = ParseDouble(rest, id, n); break;
+                case "gianttempo": giantTempo = ParseDouble(rest, id, n); break;
                 case "reverb": reverb = (float)ParseDouble(rest, id, n); break;
                 case "meter":
                 {
@@ -79,7 +80,21 @@ public static class Mml
         var tracks = new List<(SongTrack Track, int End, int Loop)>();
         foreach (var (header, body, line) in trackHeaders)
         {
-            var track = ParseTrackHeader(id, header, line);
+            var (track, doubled) = ParseTrackHeader(id, header, line);
+            if (doubled is { } d)
+            {
+                // A track that doubles another plays its notes (moved, perhaps thinned) and has no body of its own
+                if (body.ToString().Trim().Length > 0) throw Error(id, line - 1, $"track '{track.Name}' doubles '{d.Source}' and can't have notes of its own");
+                int at = tracks.FindIndex(t => t.Track.Name == d.Source);
+                if (at < 0) throw Error(id, line - 1, $"track '{track.Name}' doubles '{d.Source}', which isn't a track above it");
+                var (source, sourceEnd, sourceLoop) = tracks[at];
+                if (source.IsDrums != track.IsDrums) throw Error(id, line - 1, $"track '{track.Name}' can't double '{d.Source}': one is drums and the other isn't");
+                int every = d.Beats > 0 ? Song.TicksPerWhole / d.Beats : 1;
+                foreach (var note in source.Notes)
+                    if (note.Tick % every == 0) track.Notes.Add(note with { Key = note.Key + (track.IsDrums ? 0 : d.Shift) });
+                tracks.Add((track, sourceEnd, sourceLoop));
+                continue;
+            }
             var (end, loop) = ParseBody(id, track, Expand(body.ToString(), id, track.Name), ticksPerBar);
             tracks.Add((track, end, loop));
         }
@@ -101,7 +116,7 @@ public static class Mml
 
         var song = new Song
         {
-            Id = id, Title = title, Tempo = tempo, NightTempo = nightTempo, HasNight = hasNight, LowHpTempo = lowHpTempo, TicksPerBar = ticksPerBar,
+            Id = id, Title = title, Tempo = tempo, NightTempo = nightTempo, HasNight = hasNight, LowHpTempo = lowHpTempo, GiantTempo = giantTempo, TicksPerBar = ticksPerBar,
             LoopTick = loopTick, EndTick = endTick, Reverb = reverb
         };
         foreach (var t in tracks) song.Tracks.Add(t.Track);
@@ -110,14 +125,20 @@ public static class Mml
 
     private static string Bars(int ticks, int ticksPerBar) => (ticks / (double)ticksPerBar).ToString("0.##", CultureInfo.InvariantCulture);
 
-    private static SongTrack ParseTrackHeader(string id, string header, int line)
+    /// <summary>A track that plays another's notes (<c>double=</c>), moved by <c>shift=</c> semitones and kept only on every 1/<c>beats=</c> note.</summary>
+    private readonly record struct Doubling(string Source, int Shift, int Beats);
+
+    private static (SongTrack Track, Doubling? Doubled) ParseTrackHeader(string id, string header, int line)
     {
         var parts = header.Split(' ', StringSplitOptions.RemoveEmptyEntries);
         if (parts.Length < 2) throw Error(id, line - 1, "a track needs a name and an instrument");
         var inst = InstrumentBank.Get(parts[1]) ?? throw Error(id, line - 1, $"unknown instrument '{parts[1]}'");
-        Instrument? night = null, lowHp = null;
+        Instrument? night = null, lowHp = null, giant = null;
         var when = TrackWhen.Always;
         float vol = 0.8f, pan = 0f, rev = 0.3f;
+        string? source = null;
+        int shift = 0, beats = 0;
+        bool shifted = false, thinned = false;
         for (int i = 2; i < parts.Length; i++)
         {
             var kv = parts[i].Split('=');
@@ -126,15 +147,44 @@ public static class Mml
             {
                 case "night": night = InstrumentBank.Get(kv[1]) ?? throw Error(id, line - 1, $"unknown instrument '{kv[1]}'"); break;
                 case "lowhp": lowHp = InstrumentBank.Get(kv[1]) ?? throw Error(id, line - 1, $"unknown instrument '{kv[1]}'"); break;
-                case "only": when = kv[1] == "lowhp" ? TrackWhen.LowHp : throw Error(id, line - 1, $"unknown arrangement '{kv[1]}' (only lowhp)"); break;
-                case "unless": when = kv[1] == "lowhp" ? TrackWhen.NotLowHp : throw Error(id, line - 1, $"unknown arrangement '{kv[1]}' (only lowhp)"); break;
+                case "giant": giant = InstrumentBank.Get(kv[1]) ?? throw Error(id, line - 1, $"unknown instrument '{kv[1]}'"); break;
+                case "only":
+                    when = kv[1] switch
+                    {
+                        "lowhp" => TrackWhen.LowHp, "giant" => TrackWhen.Giant,
+                        _ => throw Error(id, line - 1, $"unknown arrangement '{kv[1]}' (lowhp or giant)")
+                    };
+                    break;
+                case "unless":
+                    when = kv[1] switch
+                    {
+                        "lowhp" => TrackWhen.NotLowHp, "giant" => TrackWhen.NotGiant,
+                        _ => throw Error(id, line - 1, $"unknown arrangement '{kv[1]}' (lowhp or giant)")
+                    };
+                    break;
+                case "double": source = kv[1]; break;
+                case "shift":
+                    shift = int.TryParse(kv[1], NumberStyles.AllowLeadingSign, CultureInfo.InvariantCulture, out int s) ? s : throw Error(id, line - 1, $"bad shift '{kv[1]}'");
+                    shifted = true;
+                    break;
+                case "beats":
+                    beats = int.TryParse(kv[1], NumberStyles.None, CultureInfo.InvariantCulture, out int b) && b > 0 && Song.TicksPerWhole % b == 0
+                        ? b : throw Error(id, line - 1, $"bad beats '{kv[1]}' (a length that divides a whole note)");
+                    thinned = true;
+                    break;
                 case "vol": vol = (float)ParseDouble(kv[1], id, line - 1); break;
                 case "pan": pan = (float)ParseDouble(kv[1], id, line - 1); break;
                 case "rev": rev = (float)ParseDouble(kv[1], id, line - 1); break;
                 default: throw Error(id, line - 1, $"unknown track option '{kv[0]}'");
             }
         }
-        return new SongTrack { Name = parts[0], Instrument = inst, NightInstrument = night, LowHpInstrument = lowHp, When = when, Volume = vol, Pan = pan, ReverbSend = rev };
+        if (source == null && (shifted || thinned)) throw Error(id, line - 1, "'shift' and 'beats' go only with 'double'");
+        var track = new SongTrack
+        {
+            Name = parts[0], Instrument = inst, NightInstrument = night, LowHpInstrument = lowHp, GiantInstrument = giant,
+            When = when, Volume = vol, Pan = pan, ReverbSend = rev
+        };
+        return (track, source == null ? null : new Doubling(source, shift, beats));
     }
 
     /// <summary>Writes out <c>[ … ]n</c> repeats, innermost first.</summary>
