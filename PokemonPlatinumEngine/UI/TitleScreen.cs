@@ -345,6 +345,7 @@ public sealed class TitleScreen
                     case TitleChoice.NewGame when FreeSlot == null: Tell(TitleNotice.NoFreeSlot); break;
                     case TitleChoice.NewGame when cards.Count > 0:
                         ConfirmYes = false;
+                        PlusHighlighted = false;
                         Enter(TitlePhase.ConfirmNewGame);
                         break;
                     case TitleChoice.NewGame: OpenRunPanel(); break;
@@ -363,8 +364,10 @@ public sealed class TitleScreen
                 }
                 break;
             case TitlePhase.ConfirmNewGame:
-                AudioManager.PlaySound(ConfirmYes ? "select" : "cancel");
-                if (ConfirmYes) OpenRunPanel();
+                AudioManager.PlaySound(ConfirmYes || PlusHighlighted ? "select" : "cancel");
+                // NEW GAME+ (plan 13 · V11): the run is the finished save's, a step harder, so nothing more is asked
+                if (PlusHighlighted) BeginNewGamePlus();
+                else if (ConfirmYes) OpenRunPanel();
                 else Enter(TitlePhase.Menu);
                 break;
             case TitlePhase.ChooseRun:
@@ -448,7 +451,43 @@ public sealed class TitleScreen
     {
         Slot = FreeSlot ?? 1;
         ChosenRun = Run.Rules;
+        ChosenPlus = null;
         Leave(TitleChoice.NewGame);
+    }
+
+    /// <summary>
+    /// The finished save NEW GAME+ would carry from (plan 13 · V11): of the slots whose game has finished a region's story
+    /// and whose boxes can take the team, the one played longest. Null when none is, and the question has its two answers.
+    /// </summary>
+    public TitleSlot? PlusCard => NewGamePlus.Choose(cards, c => c.Number, c => c.Save);
+
+    /// <summary>In the "start a new game?" prompt: true while NEW GAME+, the third answer, is highlighted.</summary>
+    public bool PlusHighlighted { get; private set; }
+
+    /// <summary>The finished save a new game handed over begins from (plan 13 · V11); null for a plain new game.</summary>
+    public SaveData? ChosenPlus { get; private set; }
+
+    /// <summary>The slot <see cref="ChosenPlus"/> was read from: it is left as it was, and the new game takes the first empty one.</summary>
+    public int? PlusSlot { get; private set; }
+
+    /// <summary>NEW GAME+ chosen: a new game in the first empty slot, by the finished save's run a step harder.</summary>
+    private void BeginNewGamePlus()
+    {
+        var from = PlusCard!;
+        Slot = FreeSlot ?? 1;
+        ChosenPlus = from.Save;
+        PlusSlot = from.Number;
+        ChosenRun = NewGamePlus.Raised(from.Save!.Run);
+        Leave(TitleChoice.NewGame);
+    }
+
+    // The prompt's answers in their order: NO, YES, and NEW GAME+ where a finished save offers it; the one highlighted
+    private int NewGameAnswer => PlusHighlighted ? 2 : ConfirmYes ? 1 : 0;
+
+    private void SetNewGameAnswer(int answer)
+    {
+        ConfirmYes = answer == 1;
+        PlusHighlighted = answer == 2;
     }
 
     /// <summary>
@@ -518,6 +557,8 @@ public sealed class TitleScreen
         else if (Phase == TitlePhase.ChooseDelete) SelectedIndex = ((SelectedIndex + step) % cards.Count + cards.Count) % cards.Count;
         else if (Phase == TitlePhase.ChooseRun && Run.EnteringSeed) Run.MoveCursor(0, step);
         else if (Phase == TitlePhase.ChooseRun) Run.Move(step);
+        // With a finished save the new game's question has three answers, stepped through in their order (plan 13 · V11)
+        else if (Phase == TitlePhase.ConfirmNewGame && PlusCard != null) SetNewGameAnswer(((NewGameAnswer + Math.Sign(step)) % 3 + 3) % 3);
         else if (Phase is TitlePhase.ConfirmNewGame or TitlePhase.ConfirmDelete or TitlePhase.ChooseAutosave) ConfirmYes = !ConfirmYes;
         else return;
         AudioManager.PlaySound("cursor");
@@ -844,9 +885,23 @@ public sealed class TitleScreen
         Text.Of("title.newGame.blurb", ("slot", slot), ("n", saves));
 
     // (Yes is Green since the slots: a new game takes an empty slot, so nothing is lost by it. Red is the delete question's)
-    private void DrawConfirm(int sw, int sh) =>
+    private void DrawConfirm(int sw, int sh)
+    {
+        // A finished save adds NEW GAME+ in Gold, and the blurb says what it carries (plan 13 · V11; style guide, "The slots")
+        if (PlusCard is { Save: { } finished } plus)
+        {
+            ModernUi.Prompt(sw, sh, Text.Of("title.newGame.heading"), PlusBlurb(FreeSlot ?? 1, plus.Number, finished),
+                new[] { (Text.Of("title.newGame.no"), ModernUi.Blue), (Text.Of("title.newGame.yes"), ModernUi.Green), (Text.Of("title.newGame.plus"), ModernUi.Gold) },
+                NewGameAnswer);
+            return;
+        }
         ModernUi.Prompt(sw, sh, Text.Of("title.newGame.heading"), NewGameBlurb(FreeSlot ?? 1, cards.Count),
             new[] { (Text.Of("title.newGame.no"), ModernUi.Blue), (Text.Of("title.newGame.yes"), ModernUi.Green) }, ConfirmYes ? 1 : 0);
+    }
+
+    /// <summary>What the question says with NEW GAME+ among its answers: the slot it takes, the save it carries from and what it carries.</summary>
+    public static string PlusBlurb(int slot, int from, SaveData finished) =>
+        Text.Of("title.newGame.plusBlurb", ("slot", slot), ("from", from), ("region", NewGamePlus.FinishedRegion(finished) is { } r ? r.Name : ""));
 
     /// <summary>The autosave question's two answers (plan 12 · Q3): the game saved by hand, then the autosave.</summary>
     public static string[] AutosaveAnswers => new[] { Text.Of("title.autosave.saved"), Text.Of("title.autosave.auto") };

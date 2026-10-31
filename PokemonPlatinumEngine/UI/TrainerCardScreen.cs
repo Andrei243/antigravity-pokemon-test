@@ -71,6 +71,9 @@ public sealed record TrainerCardInfo(string Name, int TrainerId, int Money, int 
     /// <summary>The run has ended (plan 13 · V4): the Run page says so.</summary>
     public bool RunEnded { get; init; }
 
+    /// <summary>How many times the journey has begun again by New Game+ (plan 13 · V11): the Run page says so; 0 for a first journey.</summary>
+    public int Clears { get; init; }
+
     /// <summary>
     /// The Masters' Hall's titles won (plan 14 · B15), by National Pokédex number; empty for none, which gives the card
     /// no page for them.
