@@ -1,0 +1,42 @@
+{
+  // Pewter City as HeartGold has it three years on (plan 20 · J15, part f): a town of Johto's own map, come to by Route
+  // 3 from Mt. Moon. Its Gym gives Kanto's Boulder Badge (pewter_gym.txt). Route 2 south shares FireRed's key and is
+  // scenery. Cameron the photographer, and Steven with the Latios or Latias HeartGold brings him with, wait for theirs
+  "area": "pewter",
+  "bgmTrack": "kanto/viridian",
+  "trees": "Round",
+  "architecture": "Granite",
+  "heldBack": [
+    "t03_gsmiddleman1",
+    "t03_daigo",
+    "t03_tsure_poke_static_latios",
+    "t03_tsure_poke_static_latias"
+  ],
+  "people": {
+    "t03_gsoldman1": {
+      "name": "Old man",
+      "still": true,
+      "dialog": [
+        "The museum here has fossils older than anyone can count. I go and look at them when I feel young."
+      ]
+    },
+    "t03_gswoman3": {
+      "name": "Woman",
+      "dialog": [
+        "Brock's back running the Gym. He went off to be a breeder for a while, you know."
+      ]
+    },
+    "t03_gsbabyboy1": {
+      "name": "Boy",
+      "dialog": [
+        "The trees by the north houses grow Apricorns. I'm not allowed to climb them."
+      ]
+    }
+  },
+  "signs": {
+    "T03_003+1": "Pewter City\nA stone-grey city between rugged mountains.",
+    "T03_004+1": "Pewter City Pokémon Gym\nLeader: Brock\nThe rock-solid Pokémon Trainer.",
+    "T03_005+1": "Pewter Museum of Science\nFossils and space, side by side.",
+    "T03_006+1": "Route 2 is to the south.\nThe road is closed beyond Viridian Forest."
+  }
+}

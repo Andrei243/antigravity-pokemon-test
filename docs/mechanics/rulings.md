@@ -5920,7 +5920,7 @@ Our own, three more halves of `RandomizerOptions` (`Abilities`, `Moves`, `Types`
 
 | Subject | HeartGold | This game |
 |---|---|---|
-| What begins the Den's post-game | The rival's battle in Mt. Moon (`D02R0101`) sets `VAR_UNK_40FC` 1 | The first arrival at the Dragon's Den once `JohtoHallOfFame` is set does (Kanto's part of Johto is J15's, which puts the Mt. Moon battle in front of it) |
+| What begins the Den's post-game | The rival's battle in Mt. Moon (`D02R0101`) sets `VAR_UNK_40FC` 1 | The first arrival at the Dragon's Den once `JohtoHallOfFame` is set did, until plan 20 · J15, part f put the Mt. Moon battle in front of it (`mount_moon.txt`): now the same as HeartGold's ("HeartGold's Kanto, part f") |
 | The scene | The rival, Lance and Clair; a multi battle, the player with the rival against Lance and Clair (`TRAINER_PARTNER_RIVAL_1` to `_3` by the starter, `CHAMPION_LANCE_3`, `LEADER_CLAIR_CLAIR_3`) | The same, in our own words, as a `battle a and b with partner` of two overlay trainers; it ends at `VAR_UNK_40FC` 2 |
 | The boy and Clair afterwards | The boy on Tuesdays and Thursdays; Clair by the hour (6 to 9 until her number is registered, 16 to 18 after), her number for the asking, a photograph with her | The boy on Tuesdays and Thursdays; Clair on the morning, then the afternoon once registered (the time of day, not the hour); no photograph |
 | Swarms | One place of twenty a day (`sSwarmMapLUT`), met in the grass, on the water or on a rod, turned on in Oak's lab and told by Pokémon Talk | The same twenty by the day's number modulo 20; they begin at the Johto Hall of Fame (`swarms on`); the radio tells the day's one time in two; the nine Kanto places are in the table and open nowhere yet |
@@ -6650,3 +6650,41 @@ The user approved L9's default on 2026-10-26 (docs/plans/APPROVAL-levelling-and-
   and Route 24, the Underground Path, Silph Co., the store's and the condominiums' upper floors, the Game Corner, the Radio
   Tower and the Expn Card, the Leaders' rematches and street meetings, Suicune's stops, the rest of Kanto's Apricorn
   trees, Blue at the gate; the Celadon Gym's garden beds, which draw as dark wells (not looked into).
+
+## HeartGold's Kanto, part f (2026-10-31, plan 20 · J15, part f)
+
+- *The slice*: the west of Kanto, from the League's reception gate. Route 22's east end (open since J10, behind the
+  gate's guard, who lets only Johto's Champion by) leads to Viridian City with its Pokémon Center (both floors), Mart,
+  north-east house and the Trainer House's ground floor; Route 2 runs north through Viridian Forest, or past a tree to cut
+  and its eastern gate house, to its northern half with its house, and on to Pewter City with its Pokémon Center (both
+  floors), Mart, two houses, the Museum of Science and its Gym; Route 3 runs east to Mt. Moon's western mouth and the
+  Pokémon Center beside it, the cave's one floor with the stairs up to Mt. Moon Square and its gift shop, and Route 4 out
+  of its eastern mouth. Route 4's ledges drop a walker toward Cerulean City and not back, as HeartGold's do, so Pewter is
+  come to by Route 2, not from Cerulean.
+- *Keys and names*: `route_2`, `route_2_house`, `viridian_forest`, `route_3` and `route_4` meet FireRed's and take Johto's
+  prefix (`HgWorld.Clashes`); `viridian`, `pewter`, `route_2_east`, `mount_moon`… meet none. The maps are `Viridian_…`,
+  `Pewter_…`, `Route2_…`, `Route3_…`, `MountMoon…` and `Viridian_Forest`, since FireRed's Kanto has `ViridianCity_…`,
+  `PewterCity_…`, `Route2_House`, `MtMoon_…` and `ViridianForest`.
+- *Brock*: HeartGold hides him by `FLAG_HIDE_PEWTER_GYM_BROCK` only on the day of his phone's meeting at Diglett's Cave,
+  which this game has not, so he stands in his Gym always. He gives Kanto's Boulder Badge (`givebadge boulder of kanto`)
+  and TM80 (Rock Slide); whether he is beaten here is `FLAG_JOHTO_DEFEATED_BROCK` (ours), and his two trainers are counted
+  beaten by his script.
+- *The rival in Mt. Moon*: once `JohtoHallOfFame` is set the red-haired boy waits by the cave's western mouth
+  (HeartGold's `FLAG_UNK_25C`, kept by the cave's own arrival, so no story version); spoken to, he battles with the team
+  that beats the player's starter (`johto_rival_silver_14` to `_16`), goes, and sets `VAR_UNK_40FC` 1. **The Dragon's
+  Den's post-game now waits for it, as HeartGold's does**: the Den no longer sets the variable on the first arrival after
+  the Hall of Fame (the row of "The Dragon's Den after the League" that said so is closed), so a game of Johto at 40FC 0
+  meets the boy in Mt. Moon first. HeartGold starts the battle as the player comes near him; here he is spoken to.
+- *Held back*: Viridian's Gym (Blue) stays locked with the old man before it, and the gate to Route 1 (its key meets
+  FireRed's) waits; the Trainer House's hall downstairs (HeartGold's link records) is shut; Diglett's Cave is shut; Steven
+  with Latios or Latias in Pewter and the Museum, Cameron, Bugsy in Viridian Forest (the phone's meeting) and the
+  Clefairy's Monday-night dance on Mt. Moon Square (its stop is held back, its map not opened).
+- *Apricorns*: Pewter's two trees and Route 2's one are rows of `apricorns.json` (Black, Green, Yellow: ours).
+- *Songs*: Viridian and Pewter and their rooms play FireRed's `kanto/viridian` (as FireRed's do), the roads and Route 3's
+  Center `kanto/route3`, Mt. Moon and its square `kanto/mt_moon`, the forest `kanto/viridian_forest`; the Gym Johto's.
+- *The walk test*: the strange tree's walk (J7) also takes the League gate's door to Route 22 away, since Kanto's roads
+  now lead round from it to the S.S. Aqua and Olivine City.
+- *Left*: Viridian's Gym and Blue, Route 1 and Pallet Town, Diglett's Cave, the Clefairy's dance, Fuchsia and the south,
+  Cinnabar's key, the Power Plant with the grunts of Cerulean's Gym and Route 24, the Underground Path, Silph Co., the
+  upper floors of Celadon's store and condominiums, the Game Corner, the Radio Tower and the Expn Card, the Trainer House's
+  battles, the Leaders' rematches and street meetings, Suicune's stops, the rest of Kanto's Apricorn trees.

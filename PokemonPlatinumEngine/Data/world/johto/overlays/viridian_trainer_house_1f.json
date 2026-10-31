@@ -1,0 +1,55 @@
+{
+  // Viridian City's Trainer House (plan 20 · J15, part f): the club's ground floor. The way down to its battle hall
+  // (warp 1) stays shut: the battles there are HeartGold's link records, which this game has not
+  "area": "viridian_trainer_house_1f",
+  "bgmTrack": "kanto/viridian",
+  "locked": [
+    1
+  ],
+  "people": {
+    "t02r0301_gswoman6": {
+      "name": "Receptionist",
+      "still": true,
+      "dialog": [
+        "Welcome to the Trainer House. The hall downstairs is closed for the moment, I'm afraid."
+      ]
+    },
+    "t02r0301_gsman3": {
+      "name": "Man",
+      "dialog": [
+        "Trainers from all over write their names on the board. I'd like to see mine up there one day."
+      ]
+    },
+    "t02r0301_gsboy1": {
+      "name": "Boy",
+      "dialog": [
+        "The best trainer here beat everyone in a single afternoon. I watched every battle."
+      ]
+    },
+    "t02r0301_gsgentleman": {
+      "name": "Gentleman",
+      "still": true,
+      "dialog": [
+        "A good trainer learns as much from a loss as from a win. More, usually."
+      ]
+    },
+    "t02r0301_gswoman3": {
+      "name": "Woman",
+      "still": true,
+      "dialog": [
+        "My husband comes here every day. I come to make sure he eats lunch."
+      ]
+    },
+    "t02r0301_babyboy1_2": {
+      "name": "Little boy",
+      "still": true,
+      "dialog": [
+        "When I grow up I'm going to battle downstairs!"
+      ]
+    }
+  },
+  "signs": {
+    "T02R0301_005+1": "The Trainer House's rules:\nOne battle a day for each visitor.",
+    "T02R0301_006+1": "Today's challenger:\nNobody yet."
+  }
+}

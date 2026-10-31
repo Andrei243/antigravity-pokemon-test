@@ -1,0 +1,38 @@
+{
+  // A house in the north-east of Viridian City (plan 20 · J15, part f)
+  "area": "viridian_northeast_house",
+  "bgmTrack": "kanto/viridian",
+  "people": {
+    "t02r0201_gsmiddleman1": {
+      "name": "Man",
+      "still": true,
+      "dialog": [
+        "My daughter's Rattata and my Spearow fight over the same cushion every day."
+      ]
+    },
+    "t02r0201_gsgirl1": {
+      "name": "Girl",
+      "dialog": [
+        "Rattata always wins. It's smaller, so it gets there first!"
+      ]
+    },
+    "t02r0201_tsure_poke_static_rattata": {
+      "name": "Rattata",
+      "npcType": "Pokemon",
+      "species": "Rattata",
+      "still": true,
+      "dialog": [
+        "Rattata squeaked from its cushion."
+      ]
+    },
+    "t02r0201_tsure_poke_static_spearow": {
+      "name": "Spearow",
+      "npcType": "Pokemon",
+      "species": "Spearow",
+      "still": true,
+      "dialog": [
+        "Spearow glared at Rattata."
+      ]
+    }
+  }
+}

@@ -16,7 +16,7 @@
   },
   "swarms": [
     { "area": "route_1", "name": "Route 1", "species": "Poochyena" },
-    { "area": "route_3", "name": "Route 3", "species": "Baltoy" },
+    { "area": "johto_route_3", "name": "Route 3", "species": "Baltoy" },
     { "area": "route_9", "name": "Route 9", "species": "Sableye" },
     { "area": "route_12", "name": "Route 12", "species": "Relicanth", "way": "fish" },
     { "area": "route_13", "name": "Route 13", "species": "Chansey" },
@@ -32,7 +32,7 @@
     { "area": "route_47", "name": "Route 47", "species": "Ditto" },
     { "area": "mount_mortar_1f_entrance", "name": "Mt. Mortar", "species": "Marill" },
     { "area": "dark_cave_route_31_side", "name": "Dark Cave", "species": "Dunsparce" },
-    { "area": "viridian_forest", "name": "Viridian Forest", "species": "Kricketot" },
+    { "area": "johto_viridian_forest", "name": "Viridian Forest", "species": "Kricketot" },
     { "area": "vermilion", "name": "Vermilion City", "species": "Wingull", "way": "surf" },
     { "area": "violet", "name": "Violet City", "species": "Whiscash", "way": "fish" }
   ]

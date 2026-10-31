@@ -1,0 +1,45 @@
+{
+  // The Pokémon Center at Mt. Moon's mouth on Route 3 (plan 20 · J15, part f). The counters for the link say it is
+  // closed, as in every Center (decision 06 · 7)
+  "area": "route_3_pokecenter_1f",
+  "bgmTrack": "kanto/route3",
+  "read": {
+    "0": "PC"
+  },
+  "people": {
+    "r03pc0101_pcwoman1": {
+      "name": "Nurse",
+      "script": "Nurse"
+    },
+    "r03pc0101_pcwoman2": {
+      "name": "Receptionist",
+      "dialog": [
+        "Your Trainer Card shows your name, your money and the Pokémon you've seen. Have a look at it from the menu."
+      ]
+    },
+    "r03pc0101_pcwoman2_2": {
+      "name": "Receptionist",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    },
+    "r03pc0101_pcwoman2_3": {
+      "name": "Receptionist",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    },
+    "r03pc0101_mount_2": {
+      "name": "Hiker",
+      "dialog": [
+        "Mt. Moon's only one floor deep these days, but there's a way up to its top. Worth the climb."
+      ]
+    },
+    "r03pc0101_campboy_2": {
+      "name": "Camper",
+      "dialog": [
+        "I came to see the Clefairy dance. They only do it on certain nights, so I'm waiting."
+      ]
+    }
+  }
+}

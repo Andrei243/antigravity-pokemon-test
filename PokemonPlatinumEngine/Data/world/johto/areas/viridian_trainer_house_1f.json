@@ -1,0 +1,34 @@
+{
+  "key": "viridian_trainer_house_1f",
+  "index": 498,
+  "name": "Viridian City",
+  "matrix": 244,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_C_TOKIWA",
+  "nightMusic": "GS_C_TOKIWA",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 15, "to": "viridian", "toWarp": 2 },
+    { "x": 13, "z": 3, "to": "viridian_trainer_house_b1f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "t02r0301_gswoman6", "looks": "gswoman6", "movement": "17", "x": 2, "z": 13, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "T02R0301_000+1" },
+    { "id": "t02r0301_gsman3", "looks": "gsman3", "movement": "14", "x": 11, "z": 13, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "T02R0301_001+1" },
+    { "id": "t02r0301_gsboy1", "looks": "gsboy1", "movement": "5", "x": 7, "z": 11, "facing": 2, "rangeX": 1, "rangeZ": 0, "script": "T02R0301_003+1" },
+    { "id": "t02r0301_gsgentleman", "looks": "gsgentleman", "movement": "15", "x": 6, "z": 6, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T02R0301_004+1" },
+    { "id": "t02r0301_gswoman3", "looks": "gswoman3", "movement": "15", "x": 10, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T02R0301_002+1" },
+    { "id": "t02r0301_babyboy1_2", "looks": "babyboy1_2", "movement": "0", "x": 8, "z": 9, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "T02R0301_007+1" }
+  ],
+  "signs": [
+    { "x": 6, "z": 2, "type": 0, "script": "T02R0301_005+1" },
+    { "x": 8, "z": 2, "type": 0, "script": "T02R0301_006+1" }
+  ],
+  "triggers": []
+}

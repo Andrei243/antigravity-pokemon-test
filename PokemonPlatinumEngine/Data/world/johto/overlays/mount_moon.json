@@ -1,0 +1,14 @@
+{
+  // Mt. Moon as HeartGold has it three years on (plan 20 · J15, part f): one floor between Route 3's mouth in the west
+  // and Route 4's in the east, with the way up to its square. The red-haired boy waits by the western mouth once Johto's
+  // Hall of Fame is entered, until his battle (mount_moon.txt, VAR_UNK_40FC, which begins the Dragon's Den's post-game)
+  "area": "mount_moon",
+  "bgmTrack": "kanto/mt_moon",
+  "people": {
+    "d02r0101_gsrivel": {
+      "name": "{rival}",
+      "script": "Rival",
+      "still": true
+    }
+  }
+}

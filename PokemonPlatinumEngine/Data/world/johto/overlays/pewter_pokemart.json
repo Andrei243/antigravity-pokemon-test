@@ -1,0 +1,36 @@
+{
+  // Pewter City's Poké Mart (plan 20 · J15, part f). Its delivery men are the original's gifts, which this game has no use for
+  "area": "pewter_pokemart",
+  "bgmTrack": "kanto/viridian",
+  "people": {
+    "t03fs0101_shopm1_2": {
+      "name": "Clerk",
+      "script": "Clerk",
+      "still": true,
+      "dialog": [
+        "Welcome! How can I help you?"
+      ]
+    },
+    "t03fs0101_shopm1_2_2": {
+      "name": "Clerk",
+      "script": "Clerk",
+      "still": true,
+      "dialog": [
+        "Welcome! How can I help you?"
+      ]
+    },
+    "t03fs0101_gsboy1": {
+      "name": "Boy",
+      "dialog": [
+        "I'm saving up for Repels. Mt. Moon is full of Zubat."
+      ]
+    },
+    "t03fs0101_gsman1": {
+      "name": "Man",
+      "still": true,
+      "dialog": [
+        "Brock's Pokémon are Rock types. Water and Grass moves wear them down fastest."
+      ]
+    }
+  }
+}

@@ -19057,6 +19057,29 @@ way -
 from Steven at 9,6 of MossdeepCity_StevensHouse
 way -
   Steven> They say there's an underwater cavern between Mossdeep and Sootopolis. The one Captain Stern found in his submarine.
+=== mount_moon.Rival
+from {rival} at 10,4 of MountMoon
+way 0
+  Barry> ...You. Of all the caves in Kanto, you had to walk into this one.
+  Barry> I came here to train where nobody would find me. I've been thinking about what it means to be strong.
+  Barry> Not winning at any cost. Something else. My Pokémon and I, together. I want to see if I've got it right.
+  Barry> Lucas! Battle me. Here, now!
+  Barry> ...Hmph. So that's where I stand.
+  Barry> I'm not angry. That's new. I'm going somewhere the dragons train. Don't follow me. Or do. I don't care.
+  * scene mount_moon.The rival in Mount Moon
+  * music johto/rival
+  * battle johto_rival_silver_14 Won
+  * fade out
+  * fade in
+  * music area
+  * endscene
+  + FLAG_UNK_25C
+  = VAR_UNK_40FC 0 -> 1
+  + beaten johto_rival_silver_14
+  + seen mount_moon.The rival in Mount Moon
+way 1, from answer 1
+  * battle johto_rival_silver_14 Lost
+  * scene over, unseen
 === mount_mortar_b1f.Karate
 from Karate Master at 41,18 of MtMortar_B1F
 way 0.0
@@ -20766,6 +20789,45 @@ way 0
 way 1, from answer 1
   Receptionist> Do come again!
   ? Welcome! A child's ticket is 50. Would you like to come in? = No
+=== pewter_gym.Brock
+from Brock at 7,4 of Pewter_Gym
+way 0
+  Brock> A Champion from Johto, here in Pewter? I heard you'd been making your way round Kanto.
+  Brock> I've been away breeding Pokémon, but rock is where my heart is. My Pokémon are as hard as the mountains.
+  Brock> Show me how a Champion breaks stone!
+  Brock> Well, I'll be. You broke right through. All right, take this: the Boulder Badge.
+  > Lucas received the Boulder Badge from Brock!
+  Brock> And take this. It's a move every Rock type should know.
+  > Lucas received the TM80!
+  > TM80 holds the move Rock Slide.
+  > Lucas put it away in the TMs & HMs pocket.
+  Brock> TM80 is Rock Slide. It sends rocks tumbling down on the foe, and it may make them flinch.
+  * scene pewter_gym.Brock
+  * battle johto_leader_brock_brock Won
+  * fanfare FanfareBadge
+  * defeat johto_camper_jerry
+  * defeat johto_hiker_edwin
+  * endscene
+  * fanfare FanfareTM
+  + FLAG_JOHTO_DEFEATED_BROCK
+  + FLAG_JOHTO_GOT_TM80_FROM_BROCK
+  + beaten johto_camper_jerry
+  + beaten johto_hiker_edwin
+  + beaten johto_leader_brock_brock
+  = badges Kanto 0 -> 1
+  + seen pewter_gym.Brock
+way 1, from answer 1
+  * battle johto_leader_brock_brock Lost
+  * scene over, unseen
+=== pewter_gym.Guide
+from Gym guide at 11,25 of Pewter_Gym
+way -
+  Gym guide> Hey, champ in the making! Brock's Pokémon are Rock types. Water and Grass moves will crumble them.
+=== pewter_gym.Statue
+from the tile read at 10,25 of Pewter_Gym
+from the tile read at 4,25 of Pewter_Gym
+way -
+  > Pewter City Pokémon Gym\nLeader: Brock
 === plasma_frigate_2.Barrier
 from the trigger at 9,7 of PlasmaFrigate_Hold
 way -

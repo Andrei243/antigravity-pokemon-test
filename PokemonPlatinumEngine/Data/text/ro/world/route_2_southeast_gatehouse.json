@@ -1,0 +1,41 @@
+{
+  "people": {
+    "r02r0301_assistantm": {
+      "name": {
+        "en": [
+          "Aide"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I study the Pokémon of the forest. Even the quiet ones have a lot to say, if you watch them long enough."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r02r0301_counterm": {
+      "name": {
+        "en": [
+          "Guard"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This way skips the forest. It's quicker, but you'll miss the bugs."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

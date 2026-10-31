@@ -1,0 +1,48 @@
+{
+  "key": "pewter",
+  "index": 51,
+  "name": "Pewter City",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "City",
+  "dayMusic": "GS_C_NIBI",
+  "nightMusic": "GS_C_NIBI",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 1048, "z": 78, "to": "pewter_museum_of_science", "toWarp": 0 },
+    { "x": 1068, "z": 87, "to": "pewter_northeast_house", "toWarp": 0 },
+    { "x": 1047, "z": 92, "to": "pewter_gym", "toWarp": 0 },
+    { "x": 1060, "z": 97, "to": "pewter_pokemart", "toWarp": 0 },
+    { "x": 1048, "z": 106, "to": "pewter_pokecenter_1f", "toWarp": 0 },
+    { "x": 1037, "z": 111, "to": "pewter_southwest_house", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "t03_gsoldman1", "looks": "gsoldman1", "movement": "0", "x": 1069, "z": 94, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "T03_000+1" },
+    { "id": "t03_gswoman3", "looks": "gswoman3", "movement": "3", "x": 1056, "z": 89, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "T03_001+1" },
+    { "id": "t03_gsbabyboy1", "looks": "gsbabyboy1", "movement": "3", "x": 1050, "z": 111, "facing": 0, "rangeX": 3, "rangeZ": 2, "script": "T03_002+1" },
+    { "id": "t03_breakrock", "looks": "breakrock", "movement": "0", "x": 1035, "z": 75, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_010", "script": "std_field_rock_smash" },
+    { "id": "t03_bonguri", "looks": "bonguri", "movement": "0", "x": 1072, "z": 77, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "std_apricorn_tree" },
+    { "id": "t03_bonguri_2", "looks": "bonguri", "movement": "0", "x": 1074, "z": 77, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "std_apricorn_tree" },
+    { "id": "t03_monstarball", "looks": "monstarball", "movement": "0", "x": 1029, "z": 91, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_T03_WISE_GLASSES", "item": "Wise Glasses", "script": "std_itemball_t03_wise_glasses" },
+    { "id": "t03_gsmiddleman1", "looks": "gsmiddleman1", "movement": "14", "x": 1047, "z": 85, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CAMERON", "script": "T03_007+1" },
+    { "id": "t03_daigo", "looks": "daigo", "movement": "0", "x": 1044, "z": 81, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_PEWTER_CITY_STEVEN", "script": "T03_009+1" },
+    { "id": "t03_tsure_poke_static_latios", "looks": "follower_mon_static_latios", "movement": "0", "x": 1039, "z": 83, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_PEWTER_CITY_LATIOS", "script": "T03_010+1" },
+    { "id": "t03_tsure_poke_static_latias", "looks": "follower_mon_static_latias", "movement": "0", "x": 1039, "z": 83, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_PEWTER_CITY_LATIAS", "script": "T03_010+1" }
+  ],
+  "signs": [
+    { "x": 1045, "z": 112, "type": 1, "script": "T03_006+1" },
+    { "x": 1045, "z": 95, "type": 1, "script": "T03_004+1" },
+    { "x": 1064, "z": 105, "type": 1, "script": "T03_003+1" },
+    { "x": 1051, "z": 81, "type": 1, "script": "T03_005+1" },
+    { "x": 1035, "z": 101, "type": 2, "script": "std_hiddenitem_t03_pp_up", "item": "PP Up", "flag": "FLAG_HIDDEN_ITEM_T03_PP_UP" },
+    { "x": 1068, "z": 108, "type": 2, "script": "std_hiddenitem_t03_guard_spec_", "item": "Guard Spec.", "flag": "FLAG_HIDDEN_ITEM_T03_GUARD_SPEC_" },
+    { "x": 1038, "z": 119, "type": 2, "script": "std_hiddenitem_t03_max_revive", "item": "Max Revive", "flag": "FLAG_HIDDEN_ITEM_T03_MAX_REVIVE" }
+  ],
+  "triggers": []
+}

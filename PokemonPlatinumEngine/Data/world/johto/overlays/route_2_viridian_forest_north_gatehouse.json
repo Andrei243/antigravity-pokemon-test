@@ -1,0 +1,14 @@
+{
+  // The gate house between Viridian Forest's northern edge and Route 2's way to Pewter City (plan 20 · J15, part f)
+  "area": "route_2_viridian_forest_north_gatehouse",
+  "bgmTrack": "kanto/route3",
+  "people": {
+    "r02r0501_counterm": {
+      "name": "Guard",
+      "still": true,
+      "dialog": [
+        "Made it through the forest? Pewter City is just up the road."
+      ]
+    }
+  }
+}

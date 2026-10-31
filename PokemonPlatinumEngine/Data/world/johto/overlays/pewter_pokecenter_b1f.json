@@ -1,0 +1,13 @@
+{
+  // Pewter City's Pokémon Center downstairs (plan 20 · J15, part f): the Wi-Fi counter, closed (decision 06 · 7)
+  "area": "pewter_pokecenter_b1f",
+  "bgmTrack": "kanto/viridian",
+  "people": {
+    "t03pc0102_wifisf": {
+      "name": "Receptionist",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    }
+  }
+}

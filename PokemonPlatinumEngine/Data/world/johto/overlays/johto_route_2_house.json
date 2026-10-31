@@ -1,0 +1,14 @@
+{
+  // The house on Route 2's northern half, by Diglett's Cave (plan 20 · J15, part f)
+  "area": "johto_route_2_house",
+  "bgmTrack": "kanto/route3",
+  "people": {
+    "r02r0201_gsbigman": {
+      "name": "Man",
+      "still": true,
+      "dialog": [
+        "The Diglett next door dig all night. I've got used to the rumbling. Mostly."
+      ]
+    }
+  }
+}

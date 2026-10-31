@@ -8,8 +8,9 @@
 # (FLAG_HIDE_VICTORY_ROAD_CLAIR, HeartGold's own) unless she is waiting with the TM.
 #
 # After the Hall of Fame (plan 20 · J13, part c): HeartGold begins the Den's post-game with the rival's battle in Mt.
-# Moon (VAR_UNK_40FC 1), which this game has not yet (Kanto's part of Johto is J15's), so the first arrival here once
-# JohtoHallOfFame is set begins it instead (docs/mechanics/rulings.md, "The Dragon's Den after the League"). The
+# Moon (VAR_UNK_40FC 1), which mount_moon.txt plays since plan 20 · J15, part f; until then the Den stood in for it by
+# setting the variable on the first arrival after the Hall of Fame (docs/mechanics/rulings.md, "The Dragon's Den
+# after the League" and "HeartGold's Kanto, part f"). The
 # red-haired boy waits by the lake's shrine and the first step onto the row before him (trigger 1) brings Lance and Clair
 # for a double battle, the player beside the boy (VAR_UNK_40FC 2). From then on the boy trains here on Tuesdays and
 # Thursdays, and Clair walks the island on her mornings until her number is in the Pokégear and then on her afternoons
@@ -25,7 +26,7 @@ script OnEnter
   if var VAR_UNK_40C4 == 1 end
   setflag FLAG_HIDE_VICTORY_ROAD_CLAIR
   if not flag JohtoHallOfFame end
-  if var VAR_UNK_40FC == 0 setvar VAR_UNK_40FC 1
+  if var VAR_UNK_40FC == 0 end
   if var VAR_UNK_40FC != 1 goto Later
   clearflag FLAG_HIDE_DRAGONS_DEN_RIVAL
   end

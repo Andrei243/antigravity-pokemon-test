@@ -1,0 +1,56 @@
+{
+  // The Pewter Museum of Science (plan 20 · J15, part f): its fossils and its space wing, read where they stand. Cameron
+  // the photographer and Steven, in both of HeartGold's places, wait for their sessions
+  "area": "pewter_museum_of_science",
+  "bgmTrack": "kanto/viridian",
+  "heldBack": [
+    "t03r0101_gsmiddleman1",
+    "t03r0101_daigo",
+    "t03r0101_daigo_2"
+  ],
+  "people": {
+    "t03r0101_gsassistantm": {
+      "name": "Scientist",
+      "still": true,
+      "dialog": [
+        "Welcome to the museum. Mind the bones: some of them are older than the mountains outside."
+      ]
+    },
+    "t03r0101_gswoman6": {
+      "name": "Woman",
+      "still": true,
+      "dialog": [
+        "I could stand here all day trying to picture this creature alive."
+      ]
+    },
+    "t03r0101_gsoldman1": {
+      "name": "Old man",
+      "still": true,
+      "dialog": [
+        "A meteorite fell on Mt. Moon long ago. They say the Clefairy came with it. I like to think so."
+      ]
+    },
+    "t03r0101_mania": {
+      "name": "Poké Maniac",
+      "dialog": [
+        "Fossils! Fossils! I could look at fossils for the rest of my life!"
+      ]
+    },
+    "t03r0101_gsassistantm_2": {
+      "name": "Scientist",
+      "dialog": [
+        "We're studying how to bring Pokémon back from fossils. Some day, we'll manage it here too."
+      ]
+    }
+  },
+  "signs": {
+    "T03R0101_005+1": "A fossil of a great winged Pokémon. It ruled the skies long ago.",
+    "T03R0101_006+1": "A fossil of a shelled Pokémon that lived in the ancient sea.",
+    "T03R0101_007+1": "A fossil of a Pokémon with a hard dome on its back.",
+    "T03R0101_008+1": "A fossil of a Pokémon with blades for arms.",
+    "T03R0101_009+1": "Old tools dug up near Pewter City. People and Pokémon lived here even then.",
+    "T03R0101_010+1": "A model of a rocket that once flew to the moon.",
+    "T03R0101_011+1": "A piece of the meteorite that fell on Mt. Moon. It glitters faintly.",
+    "T03R0101_012+1": "A model of the space shuttle. It looks ready to lift off."
+  }
+}

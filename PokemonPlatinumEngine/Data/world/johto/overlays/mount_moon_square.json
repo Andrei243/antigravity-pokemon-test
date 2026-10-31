@@ -1,0 +1,13 @@
+{
+  // Mt. Moon Square (plan 20 · J15, part f): the clearing on the mountain's top with its gift shop. The Clefairy's
+  // Monday-night dance and the stone it leaves wait; HeartGold's stop that keeps the dance's ground is held back
+  "area": "mount_moon_square",
+  "bgmTrack": "kanto/mt_moon",
+  "heldBack": [
+    "d02r0103_stop"
+  ],
+  "people": {},
+  "signs": {
+    "D02R0103_000+1": "Mt. Moon Square\nThe Clefairy are said to dance here under a full moon."
+  }
+}

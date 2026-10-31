@@ -1,0 +1,41 @@
+{
+  "people": {
+    "d02fs0101_gsgirl1": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My grandpa runs this shop. He says the Clefairy come out to play when nobody's looking."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d02fs0101_gsoldman1": {
+      "name": {
+        "en": [
+          "Shopkeeper"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome, welcome! Nothing much in stock today, I'm afraid. Come back on a moonlit night."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

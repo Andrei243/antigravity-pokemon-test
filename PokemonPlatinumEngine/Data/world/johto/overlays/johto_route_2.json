@@ -1,0 +1,26 @@
+{
+  // Route 2 as HeartGold has it three years on (plan 20 · J15, part f): the road north of Viridian City to the gate of
+  // Viridian Forest and, past a tree to cut, the gate to its eastern half. Its key meets FireRed's, so it takes Johto's
+  // prefix (HgWorld.Clashes). Its trainers battle by their own records
+  "area": "johto_route_2",
+  "bgmTrack": "kanto/route3",
+  "people": {
+    "r02_gsboy3": {
+      "name": "Rob",
+      "trainer": {
+        "dialogueBefore": "Bug Catcher Rob: I caught every Bug Pokémon in the forest. Well, nearly every one!",
+        "dialogueAfter": "Bug Catcher Rob: I'll go and catch a few more."
+      }
+    },
+    "r02_gsboy3_2": {
+      "name": "Doug",
+      "trainer": {
+        "dialogueBefore": "Bug Catcher Doug: Bugs are the best! They're tough and they never give up!",
+        "dialogueAfter": "Bug Catcher Doug: My bugs gave up."
+      }
+    }
+  },
+  "signs": {
+    "R02_000+1": "Route 2\nViridian City - Viridian Forest"
+  }
+}

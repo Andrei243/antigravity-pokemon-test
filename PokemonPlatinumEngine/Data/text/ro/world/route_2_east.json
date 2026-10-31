@@ -1,0 +1,40 @@
+{
+  "people": {
+    "r02r0101_gsboy3": {
+      "name": {
+        "en": [
+          "Ed"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Catcher Ed: I came out of the forest to find tougher bugs. Are you one?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Catcher Ed: Definitely tougher."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "R02R0101_000+1": {
+      "en": [
+        "Diglett's Cave\nThe cave is closed while its tunnels are shored up."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

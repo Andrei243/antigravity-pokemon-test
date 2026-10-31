@@ -1,0 +1,54 @@
+{
+  // Viridian City as HeartGold has it three years on (plan 20 · J15, part f): a town of Johto's own map, come to by
+  // Route 22's east end from the League's reception gate, with Route 2 north to Pewter. Its Gym (warp 0) stays locked,
+  // and the old man HeartGold stands before it while it is shut says so; its Leader and the Gym's opening wait for
+  // their session. The gate house to Route 1 (warps 5 and 6) leads onto a road whose key meets FireRed's and waits.
+  // Cameron the photographer waits for his
+  "area": "viridian",
+  "bgmTrack": "kanto/viridian",
+  "trees": "Round",
+  "architecture": "Evergreen",
+  "locked": [
+    0,
+    5,
+    6
+  ],
+  "heldBack": [
+    "t02_gsmiddleman1",
+    "t02_gsoldman1_3"
+  ],
+  "people": {
+    "t02_gsoldman1": {
+      "name": "Old man",
+      "still": true,
+      "hiddenBy": "",
+      "dialog": [
+        "The Gym's been locked for years. Its Leader is off somewhere, and nobody knows when he'll be back."
+      ]
+    },
+    "t02_gsoldman1_2": {
+      "name": "Old man",
+      "dialog": [
+        "I've walked these streets every morning since I was a boy. Viridian never changes much, and I like it that way."
+      ]
+    },
+    "t02_gsbigman": {
+      "name": "Man",
+      "dialog": [
+        "Route 22 leads west to the League's gate. Only the strongest trainers come back that way."
+      ]
+    },
+    "t02_gsboy1": {
+      "name": "Boy",
+      "dialog": [
+        "There's a forest north of Route 2, full of Bug Pokémon. I'm too scared to go in alone."
+      ]
+    }
+  },
+  "signs": {
+    "T02_004+1": "Viridian City\nThe eternally green paradise.",
+    "T02_005+1": "Viridian City Pokémon Gym\nThe doors are locked.",
+    "T02_006+1": "Trainer Tips\nA Pokémon that is asleep or paralysed is easier to catch.",
+    "T02_007+1": "Trainer House\nThe club for trainers who want a challenge."
+  }
+}

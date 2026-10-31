@@ -1,0 +1,28 @@
+{
+  "key": "viridian_northeast_house",
+  "index": 497,
+  "name": "Viridian City",
+  "matrix": 96,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_C_TOKIWA",
+  "nightMusic": "GS_C_TOKIWA",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 8, "to": "viridian", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "t02r0201_gsmiddleman1", "looks": "gsmiddleman1", "movement": "17", "x": 5, "z": 6, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "T02R0201_000+1" },
+    { "id": "t02r0201_gsgirl1", "looks": "gsgirl1", "movement": "14", "x": 8, "z": 6, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "T02R0201_001+1" },
+    { "id": "t02r0201_tsure_poke_static_rattata", "looks": "follower_mon_static_rattata", "movement": "3", "x": 8, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 0, "script": "T02R0201_003+1" },
+    { "id": "t02r0201_tsure_poke_static_spearow", "looks": "follower_mon_static_spearow", "movement": "15", "x": 6, "z": 3, "facing": 1, "rangeX": 1, "rangeZ": 0, "script": "T02R0201_002+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

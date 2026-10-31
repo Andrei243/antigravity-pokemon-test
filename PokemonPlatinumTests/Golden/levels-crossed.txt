@@ -298,7 +298,6 @@ johto_bird_keeper_gs_bret 130 (41) [Taillow → Swellow, Fearow → Lancerow]
 johto_bird_keeper_gs_easton 127 (36) [Doduo → Tripluma, Doduo → Tripluma, Dodrio → Tripluma, Dodrio → Tripluma]
 johto_bird_keeper_gs_ernie 135 (48) [Starly → Staraptor]
 johto_bird_keeper_gs_gail 131 (42) [Fearow → Lancerow, Spearow → Lancerow]
-johto_bird_keeper_gs_hank 132 (44) [Pidgey → Pidgeot]
 johto_bird_keeper_gs_jose 132 (44) [Farfetch'd → Porrigard]
 johto_bird_keeper_gs_jose_3 133 (45) [Farfetch'd → Porrigard, Farfetch'd → Porrigard]
 johto_bird_keeper_gs_jose_4 138 (53) [Farfetch'd → Porrigard, Farfetch'd → Porrigard, Farfetch'd → Porrigard]
@@ -313,35 +312,25 @@ johto_bird_keeper_gs_roy 132 (44) [Fearow → Lancerow, Fearow → Lancerow]
 johto_bird_keeper_gs_vance_2 125 (33) [Hoothoot → Noctaugur, Pidgeotto → Pidgeot]
 johto_bird_keeper_gs_vance_3 131 (42) [Pidgeotto → Pidgeot, Noctowl → Noctaugur]
 johto_bird_keeper_gs_vance_4 139 (56) [Noctowl → Noctaugur]
-johto_black_belt_ander 132 (44) [Primeape → Annihilape, Graveler → Golem, Machoke → Machamp]
 johto_black_belt_kenji_2 124 (32) [Onix → Ironwyrm, Hitmonlee → Savateur, Onix → Ironwyrm, Machoke → Machamp]
 johto_black_belt_kenji_3 130 (41) [Onix → Ironwyrm, Onix → Ironwyrm, Hitmonlee → Savateur]
 johto_black_belt_kenji_4 138 (53) [Onix → Ironwyrm, Onix → Ironwyrm, Hitmonlee → Savateur]
 johto_black_belt_kiyo 125 (34) [Hitmonlee → Savateur, Hitmonchan → Pugilord]
-johto_black_belt_manford 134 (47)
 johto_black_belt_wai 131 (42) [Machoke → Machamp, Machoke → Machamp, Meditite → Medicham]
 johto_boarder_bryce 139 (55) [Dewgong → Glacitusk, Lapras → Ferrisle]
 johto_boarder_shaun 139 (55) [Cloyster → Clamspire, Dewgong → Glacitusk]
-johto_bug_catcher_abner 132 (44) [Pikachu → Raichu]
 johto_bug_catcher_arnie_2 127 (36) [Venonat → Somnimoth]
 johto_bug_catcher_arnie_3 131 (43) [Venomoth → Somnimoth]
 johto_bug_catcher_arnie_4 139 (56) [Nincada → Ninjask, Venomoth → Somnimoth]
-johto_bug_catcher_dane 135 (48)
-johto_bug_catcher_dion 136 (50) [Ariados → Orbweavix]
-johto_bug_catcher_doug 129 (39) [Ariados → Orbweavix]
 johto_bug_catcher_doug_2 129 (40) [Ariados → Orbweavix]
 johto_bug_catcher_doug_3 134 (47) [Ariados → Orbweavix]
 johto_bug_catcher_doug_4 137 (52) [Ariados → Orbweavix]
-johto_bug_catcher_ed 131 (43) [Burmy → Nocturmoth]
-johto_bug_catcher_ellis 133 (46) [Weedle → Beedrill, Kakuna → Beedrill]
 johto_bug_catcher_ken 129 (40) [Ariados → Orbweavix, Pinsir → Mandibron]
 johto_bug_catcher_mickey 129 (40) [Venomoth → Somnimoth]
 johto_bug_catcher_mickey_2 125 (34)
-johto_bug_catcher_rob 129 (40)
 johto_bug_catcher_rob_2 133 (45)
 johto_bug_catcher_rob_3 137 (52)
 johto_bug_catcher_rob_4 139 (56)
-johto_bug_catcher_stacey 141 (60) [Metapod → Butterfree, Metapod → Butterfree, Metapod → Butterfree]
 johto_bug_catcher_wade_2 129 (40)
 johto_bug_catcher_wade_3 122 (29) [Metapod → Butterfree, Kakuna → Beedrill, Metapod → Butterfree]
 johto_bug_catcher_wade_4 137 (52)
@@ -351,7 +340,6 @@ johto_camper_barry 135 (48)
 johto_camper_bertrand 123 (30) [Fearow → Lancerow, Primeape → Annihilape, Tauros → Bovarch]
 johto_camper_clark 129 (40) [Buizel → Tidestoat]
 johto_camper_dean 132 (44) [Golduck → Psyduke, Sandslash → Sandspire]
-johto_camper_jerry 136 (50) [Rhydon → Rhyperior]
 johto_camper_mickey 113 (15) [Nidorino → Nidoking]
 johto_camper_mickey_2 113 (15) [Nidorino → Nidoking]
 johto_camper_mickey_3 131 (42) [Graveler → Golem, Graveler → Golem, Golbat → Crobat, Golduck → Psyduke]
@@ -372,7 +360,6 @@ johto_castle_valet_darach 106 (5) [Rattata → Ratchisel]
 johto_champion_lance 136 (50) [Gyarados → Typhonarch, Aerodactyl → Azhdarch]
 johto_champion_lance_2 149 (75) [Gyarados → Typhonarch]
 johto_double_team_elan_and_ida 137 (52) [Porygon2 → Porygon-Z]
-johto_double_team_zac_and_jen 134 (47) [Electabuzz → Electivire, Dugtrio → Molemount]
 johto_elder_li 109 (10) [Bellsprout → Victreebel, Bellsprout → Victreebel, Hoothoot → Noctowl]
 johto_elite_four_bruno_bruno 133 (46) [Hitmontop → Gyrodrill, Hitmonlee → Savateur, Hitmonchan → Pugilord, Onix → Ironwyrm]
 johto_elite_four_bruno_bruno_2 143 (64) [Hitmontop → Gyrodrill, Hitmonlee → Savateur, Hitmonchan → Pugilord, Lucario → Aurasage]
@@ -386,9 +373,7 @@ johto_executive_archer_archer 128 (38) [Houndour → Cerberhound, Koffing → Sm
 johto_executive_petrel_petrel 124 (32) [Koffing → Smoglom, Koffing → Smoglom, Koffing → Smoglom, Weezing → Smoglom, Koffing → Smoglom, Koffing → Smoglom]
 johto_executive_proton_proton 111 (12) [Zubat → Crobat, Koffing → Weezing]
 johto_factory_head_thorton 106 (5) [Rattata → Ratchisel]
-johto_firebreather_burt 133 (45) [Weezing → Smoglom, Magcargo → Calderon]
 johto_firebreather_lyle 129 (39) [Koffing → Smoglom, Flareon → Pyreon, Koffing → Smoglom]
-johto_firebreather_otis 134 (47) [Magmar → Magmortar, Weezing → Smoglom]
 johto_firebreather_walt_2 124 (32) [Magmar → Magmortar, Magmar → Magmortar]
 johto_firebreather_walt_3 127 (37) [Magmar → Magmortar, Magmar → Magmortar]
 johto_firebreather_walt_4 140 (58) [Magby → Magmortar, Magmar → Magmortar]
@@ -428,10 +413,7 @@ johto_hall_matron_argenta 106 (5) [Rattata → Ratchisel]
 johto_hiker_anthony_2 125 (33) [Graveler → Golem, Machoke → Machamp]
 johto_hiker_anthony_3 129 (40) [Graveler → Golem, Graveler → Golem, Machoke → Machamp]
 johto_hiker_anthony_4 139 (55) [Graveler → Golem]
-johto_hiker_bruce 133 (45) [Graveler → Golem, Rhydon → Rhyperior, Clefairy → Clefable]
 johto_hiker_clarke 133 (45) [Onix → Ironwyrm, Dugtrio → Molemount]
-johto_hiker_dwight 132 (44) [Magneton → Magnezone, Steelix → Ironwyrm]
-johto_hiker_edwin 136 (50)
 johto_hiker_eoin 131 (42) [Graveler → Golem, Graveler → Golem, Graveler → Golem]
 johto_hiker_jim 133 (45)
 johto_hiker_kenny 125 (33) [Sandslash → Sandspire, Graveler → Golem]
@@ -519,14 +501,12 @@ johto_picnicker_gina_3 132 (44) [Skiploom → Jumpluff, Skiploom → Jumpluff, I
 johto_picnicker_gina_4 139 (55) [Skiploom → Jumpluff]
 johto_picnicker_ginger 130 (41) [Whismur → Exploud]
 johto_picnicker_heidi 131 (43) [Skiploom → Jumpluff, Skiploom → Jumpluff]
-johto_picnicker_hope 132 (44) [Flaaffy → Ampharos]
 johto_picnicker_liz_2 128 (38) [Weepinbell → Victreebel, Nidorina → Nidoqueen]
 johto_picnicker_liz_3 129 (40) [Weepinbell → Victreebel, Nidorino → Nidoking]
 johto_picnicker_liz_4 141 (60)
 johto_picnicker_mickey 124 (32) [Weepinbell → Victreebel]
 johto_picnicker_mickey_2 128 (38)
 johto_picnicker_piper 129 (40) [Spoink → Grumpig]
-johto_picnicker_sharon 131 (43) [Furret → Ermilong, Rapidash → Solarion]
 johto_picnicker_tiffany_2 125 (34) [Clefairy → Clefable]
 johto_picnicker_tiffany_3 130 (41)
 johto_picnicker_tiffany_4 142 (61)
@@ -712,14 +692,11 @@ johto_youngster_ian_2 125 (33) [Mankey → Annihilape, Dugtrio → Molemount]
 johto_youngster_ian_3 129 (40) [Primeape → Annihilape, Dugtrio → Molemount]
 johto_youngster_ian_4 140 (58) [Primeape → Annihilape, Dugtrio → Molemount]
 johto_youngster_jason 131 (42) [Sandslash → Sandspire]
-johto_youngster_jimmy 131 (42) [Raticate → Ratchisel, Arbok → Najarok, Parasect → Cordyhusk]
 johto_youngster_joey_2 125 (34) [Raticate → Ratchisel]
 johto_youngster_joey_3 129 (40) [Raticate → Ratchisel]
 johto_youngster_joey_4 138 (54) [Raticate → Ratchisel]
 johto_youngster_mickey 127 (37) [Raticate → Ratchisel]
 johto_youngster_owen 132 (44) [Growlithe → Kirinine]
-johto_youngster_regis 129 (40) [Golbat → Crobat, Electrode → Dynamorb]
-johto_youngster_warren 131 (42) [Fearow → Lancerow, Raticate → Ratchisel]
 === region Hoenn
 levels 2 → 136, 58 → 162, 78 → 183
 caps 142 144 146 149 149 150 155 156 162 (own 15 19 24 29 31 33 42 46 58)
@@ -2182,6 +2159,10 @@ super rod 129 (own 40)
 Jagged Pass, Hoenn
 grass 144-145 (own 20-22)
 trainers 5, 144-145 (own 19-21): hoenn_autumn 145 (21) [Shroomish → Breloom], hoenn_diana_1 144 (19) [Shroomish → Breloom, Oddish → Gloom, Swablu → Altaria], hoenn_eric 144 (20) [Geodude → Golem, Baltoy → Claydol], hoenn_ethan_1 144 (20) [Zigzagoon → Streakoon, Taillow → Swellow], hoenn_julio 145 (21) [Magnemite → Magnezone]
+=== johto_route_2
+Route 2, Johto
+grass 105-109 (own 3-10)
+trainers 2, 127-129 (own 37-40): johto_bug_catcher_doug 129 (39) [Ariados → Orbweavix], johto_bug_catcher_rob 129 (40)
 === johto_route_22
 Route 22, Johto
 grass 105-107 (own 3-7)
@@ -2204,6 +2185,18 @@ old rod 109 (own 10)
 good rod 116 (own 20)
 super rod 129 (own 40)
 trainers 7, 128-134 (own 38-47): johto_camper_lloyd 133 (46), johto_lass_ellen 132 (44) [Granbull → Mastiffang], johto_lass_laura 130 (41) [Pidgeotto → Pidgeot], johto_lass_shannon 131 (42) [Paras → Cordyhusk, Paras → Cordyhusk, Parasect → Cordyhusk], johto_school_kid_m_dudley 133 (45) [Oddish → Gloom], johto_school_kid_m_joe 132 (44) [Tangela → Tanglewood, Vaporeon → Naiadeon], johto_super_nerd_pat 134 (47) [Porygon → Porygon-Z]
+=== johto_route_3
+Route 3, Johto
+grass 106-109 (own 5-10)
+trainers 10, 128-134 (own 38-47): johto_black_belt_ander 132 (44) [Primeape → Annihilape, Graveler → Golem, Machoke → Machamp], johto_black_belt_manford 134 (47), johto_double_team_zac_and_jen 134 (47) [Electabuzz → Electivire, Dugtrio → Molemount], johto_firebreather_burt 133 (45) [Weezing → Smoglom, Magcargo → Calderon], johto_firebreather_otis 134 (47) [Magmar → Magmortar, Weezing → Smoglom], johto_hiker_bruce 133 (45) [Graveler → Golem, Rhydon → Rhyperior, Clefairy → Clefable], johto_hiker_dwight 132 (44) [Magneton → Magnezone, Steelix → Ironwyrm], johto_youngster_jimmy 131 (42) [Raticate → Ratchisel, Arbok → Najarok, Parasect → Cordyhusk], johto_youngster_regis 129 (40) [Golbat → Crobat, Electrode → Dynamorb], johto_youngster_warren 131 (42) [Fearow → Lancerow, Raticate → Ratchisel]
+=== johto_route_4
+Route 4, Johto
+grass 106-109 (own 5-10)
+surf 106-109 (own 5-10)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+trainers 3, 111-132 (own 13-44): johto_bird_keeper_gs_hank 132 (44) [Pidgey → Pidgeot], johto_picnicker_hope 132 (44) [Flaaffy → Ampharos], johto_picnicker_sharon 131 (43) [Furret → Ermilong, Rapidash → Solarion]
 === johto_route_5
 Route 5, Johto
 grass 111-113 (own 12-15)
@@ -2231,6 +2224,10 @@ grass 124-127 (own 32-36)
 === johto_victory_road_3f
 Victory Road Jk, Johto
 grass 124-127 (own 32-36)
+=== johto_viridian_forest
+Viridian Forest, Johto
+grass 105-107 (own 3-7)
+trainers 5, 121-141 (own 28-60): johto_bug_catcher_abner 132 (44) [Pikachu → Raichu], johto_bug_catcher_dane 135 (48), johto_bug_catcher_dion 136 (50) [Ariados → Orbweavix], johto_bug_catcher_ellis 133 (46) [Weedle → Beedrill, Kakuna → Beedrill], johto_bug_catcher_stacey 141 (60) [Metapod → Butterfree, Metapod → Butterfree, Metapod → Butterfree]
 === kanto_victory_road_1f
 Victory Road, Kanto
 grass 83-92 (own 32-46)
@@ -2373,6 +2370,18 @@ trainers 4, 147-150 (own 26-32): hoenn_grunt_space_center_1 150 (32) [Numel → 
 === mossdeep_city_space_center_2f
 Mossdeep City, Hoenn
 trainers 1, 152-154 (own 36-40): hoenn_tabitha_mossdeep 154 (40) [Camerupt → Volcamel, Mightyena → Hyaenarch, Golbat → Crobat]
+=== mount_moon
+Mt. Moon, Johto
+grass 107-111 (own 6-12)
+=== mount_moon_square
+Mt. Moon, Johto
+surf 123-126 (own 30-35)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+=== mount_moon_square_entrance
+Mt. Moon, Johto
+grass 107-111 (own 6-12)
 === mount_mortar_1f_back
 Mt. Mortar, Johto
 grass 111-113 (own 13-15)
@@ -2609,6 +2618,9 @@ trainers 2, 136-138 (own 3-6): hoenn_james_1 138 (6) [Nincada → Ninjask, Ninca
 === pewter_city_gym
 Pewter City, Kanto
 trainers 1, 68 (own 10-11): kanto_camper_liam 68 (11) [Geodude → Golem, Sandshrew → Sandslash]
+=== pewter_gym
+Pewter City, Johto
+trainers 2, 136 (own 50): johto_camper_jerry 136 (50) [Rhydon → Rhyperior], johto_hiker_edwin 136 (50)
 === plasma_frigate_2
 Plasma Frigate, Unova
 trainers 2, 180 (own 46): unova_team_plasma_grunt_50 180 (46) [Golbat → Crobat, Drapion → Dreadpion], unova_team_plasma_grunt_51 180 (46) [Seviper → Scimitail, Garbodor → Scrapodor]
@@ -3138,6 +3150,10 @@ super rod 129 (own 40)
 === route_29
 Route 29, Johto
 grass 104-105 (own 2-4)
+=== route_2_east
+Route 2, Johto
+grass 105-109 (own 3-10)
+trainers 1, 131 (own 43): johto_bug_catcher_ed 131 (43) [Burmy → Nocturmoth]
 === route_3
 Route 3, Kanto
 grass 63-66 (own 3-8)
@@ -3986,6 +4002,12 @@ super rod 177-194 (own 40-70)
 Virbank Complex, Unova
 grass 165-166 (own 10-13)
 trainers 6, 166 (own 12-13): unova_lass_daya 166 (13) [Woobat → Amorabat], unova_worker_isaac 166 (12) [Magby → Magmortar, Koffing → Smoglom], unova_worker_mitchell 166 (12) [Patrat → Beaconwatch, Elekid → Electivire], unova_worker_nathan 166 (12) [Riolu → Aurasage, Lillipup → Stoutland], unova_youngster_masahiro 166 (13) [Lillipup → Stoutland], unova_youngster_waylon 166 (13) [Patrat → Beaconwatch]
+=== viridian
+Viridian City, Johto
+surf 106-109 (own 5-10)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
 === viridian_city
 Viridian City, Kanto
 surf 74-88 (own 20-40)

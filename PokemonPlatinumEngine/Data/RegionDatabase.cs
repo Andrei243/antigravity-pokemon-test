@@ -567,6 +567,11 @@ public static class RegionDatabase
                 // Plan 20 · J15, part e: Route 5's gate and house, Cerulean City's rooms and Gym, Route 25's Sea Cottage
                 "Route5_SaffronGate", "Route5_House", "Cerulean_PokemonCenter_1F", "Cerulean_PokemonCenter_B1F", "Cerulean_Mart", "Cerulean_NorthHouse",
                 "Cerulean_EastHouse", "Cerulean_WestHouse", "Cerulean_BikeManiacHouse", "Cerulean_Gym", "CeruleanCape_SeaCottage",
+                // Plan 20 · J15, part f: Mt. Moon, its square and shop, Route 3's Pokémon Center, Pewter City's rooms and Gym, Viridian City's rooms, Route 2's and Viridian Forest
+                "MountMoon", "MountMoon_SquareEntrance", "MountMoon_Square", "MountMoon_SquareShop", "Route3_PokemonCenter_1F", "Route3_PokemonCenter_B1F",
+                "Pewter_Museum", "Pewter_NortheastHouse", "Pewter_Gym", "Pewter_Mart", "Pewter_PokemonCenter_1F", "Pewter_PokemonCenter_B1F", "Pewter_SouthwestHouse",
+                "Viridian_PokemonCenter_1F", "Viridian_PokemonCenter_B1F", "Viridian_Mart", "Viridian_NortheastHouse", "Viridian_TrainerHouse_1F",
+                "Route2_ForestSouthGate", "Route2_ForestNorthGate", "Route2_SoutheastGate", "Route2_RoadHouse", "Viridian_Forest",
             }
         },
         new()

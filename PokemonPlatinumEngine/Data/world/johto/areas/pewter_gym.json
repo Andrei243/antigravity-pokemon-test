@@ -1,0 +1,31 @@
+{
+  "key": "pewter_gym",
+  "index": 473,
+  "name": "Pewter City",
+  "matrix": 260,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_GYM",
+  "nightMusic": "GS_GYM",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 7, "z": 27, "to": "pewter", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "t03gym0101_sunglasses", "looks": "sunglasses", "movement": "15", "x": 11, "z": 25, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T03GYM0101_001+1" },
+    { "id": "t03gym0101_gsleader14", "looks": "gsleader14", "movement": "15", "x": 7, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_PEWTER_GYM_BROCK", "script": "T03GYM0101_000+1" },
+    { "id": "t03gym0101_campboy_2", "looks": "campboy_2", "movement": "17", "x": 6, "z": 20, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 2, "script": "TRAINER_CAMPER_JERRY" },
+    { "id": "t03gym0101_mount_2", "looks": "mount_2", "movement": "16", "x": 8, "z": 14, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 2, "script": "TRAINER_HIKER_EDWIN" }
+  ],
+  "signs": [
+    { "x": 4, "z": 25, "type": 0, "script": "T03GYM0101_002+1" },
+    { "x": 10, "z": 25, "type": 0, "script": "T03GYM0101_002+1" }
+  ],
+  "triggers": []
+}

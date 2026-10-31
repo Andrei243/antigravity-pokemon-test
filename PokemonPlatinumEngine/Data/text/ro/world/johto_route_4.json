@@ -1,0 +1,92 @@
+{
+  "people": {
+    "r04_picnicgirl_2": {
+      "name": {
+        "en": [
+          "Hope"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Hope: I packed lunch for two, and my Pokémon ate both. Now I'm hungry for a battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Hope: I'm still hungry. Just not for battles."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r04_picnicgirl_2_2": {
+      "name": {
+        "en": [
+          "Sharon"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Sharon: It's such a lovely day for a picnic. And for a battle, if you insist!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Sharon: My picnic's ruined. Oh well, there's always tomorrow."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r04_gsman2": {
+      "name": {
+        "en": [
+          "Hank"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Hank: My birds can see you coming from a mile off. They saw a battle coming too!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Hank: They didn't see that coming, though."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "R04_000+1": {
+      "en": [
+        "Route 4\nMt. Moon - Cerulean City"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

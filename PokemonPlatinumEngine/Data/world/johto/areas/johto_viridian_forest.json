@@ -1,0 +1,77 @@
+{
+  "key": "johto_viridian_forest",
+  "index": 147,
+  "name": "Viridian Forest",
+  "matrix": 86,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Forest",
+  "dayMusic": "GS_D_TOKIWANOMORI3",
+  "nightMusic": "GS_D_TOKIWANOMORI3",
+  "encounters": "D46R0101",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Caterpie", "level": 3, "night": "Hoothoot" },
+    { "species": "Caterpie", "level": 3, "night": "Hoothoot" },
+    { "species": "Metapod", "level": 3, "night": "Hoothoot" },
+    { "species": "Pidgey", "level": 3, "night": "Hoothoot" },
+    { "species": "Metapod", "level": 5, "night": "Hoothoot" },
+    { "species": "Metapod", "level": 5, "night": "Hoothoot" },
+    { "species": "Butterfree", "level": 7, "day": "Pidgey", "night": "Noctowl" },
+    { "species": "Butterfree", "level": 7, "day": "Pidgeotto", "night": "Noctowl" },
+    { "species": "Pidgeotto", "level": 7, "night": "Noctowl" },
+    { "species": "Pikachu", "level": 4 },
+    { "species": "Pikachu", "level": 7, "night": "Noctowl" },
+    { "species": "Pikachu", "level": 4 }
+  ],
+  "landRate": 15,
+  "swarm": [
+    "Kricketot",
+    "Kricketot"
+  ],
+  "hoennSounds": [
+    "Spoink",
+    "Numel"
+  ],
+  "sinnohSounds": [
+    "Budew",
+    "Carnivine"
+  ],
+  "warps": [
+    { "x": 32, "z": 77, "to": "route_2_viridian_forest_south_gatehouse", "toWarp": 1 },
+    { "x": 12, "z": 15, "to": "route_2_viridian_forest_north_gatehouse", "toWarp": 0 },
+    { "x": 33, "z": 77, "to": "route_2_viridian_forest_south_gatehouse", "toWarp": 1 },
+    { "x": 13, "z": 15, "to": "route_2_viridian_forest_north_gatehouse", "toWarp": 0 },
+    { "x": 12, "z": 16, "to": "route_2_viridian_forest_north_gatehouse", "toWarp": 0 },
+    { "x": 13, "z": 16, "to": "route_2_viridian_forest_north_gatehouse", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "d46r0101_gsleader2", "looks": "gsleader2", "movement": "0", "x": 25, "z": 71, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_263", "script": "D46R0101_000+1" },
+    { "id": "d46r0101_monstarball", "looks": "monstarball", "movement": "0", "x": 23, "z": 17, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D46R0101_DIRE_HIT", "item": "Dire Hit", "script": "std_itemball_d46r0101_dire_hit" },
+    { "id": "d46r0101_monstarball_2", "looks": "monstarball", "movement": "0", "x": 42, "z": 32, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D46R0101_BLUE_FLUTE", "item": "Blue Flute", "script": "std_itemball_d46r0101_blue_flute" },
+    { "id": "d46r0101_monstarball_3", "looks": "monstarball", "movement": "0", "x": 20, "z": 49, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D46R0101_LEAF_STONE", "item": "Leaf Stone", "script": "std_itemball_d46r0101_leaf_stone" },
+    { "id": "d46r0101_monstarball_4", "looks": "monstarball", "movement": "0", "x": 50, "z": 60, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D46R0101_TM77", "item": "TM77", "script": "std_itemball_d46r0101_tm77" },
+    { "id": "d46r0101_tree", "looks": "tree", "movement": "0", "x": 23, "z": 70, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_010", "script": "std_field_cut" },
+    { "id": "d46r0101_tree_2", "looks": "tree", "movement": "0", "x": 42, "z": 70, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_011", "script": "std_field_cut" },
+    { "id": "d46r0101_gsboy3", "looks": "gsboy3", "movement": "16", "x": 48, "z": 73, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_BUG_CATCHER_DANE" },
+    { "id": "d46r0101_gsboy3_2", "looks": "gsboy3", "movement": "15", "x": 47, "z": 54, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_BUG_CATCHER_DION" },
+    { "id": "d46r0101_gsboy3_3", "looks": "gsboy3", "movement": "17", "x": 47, "z": 39, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_BUG_CATCHER_STACEY" },
+    { "id": "d46r0101_gsboy3_4", "looks": "gsboy3", "movement": "41", "x": 37, "z": 17, "facing": 0, "rangeX": 5, "rangeZ": 1, "trainer": "sees", "sight": 1, "script": "TRAINER_BUG_CATCHER_ELLIS" },
+    { "id": "d46r0101_gsboy3_5", "looks": "gsboy3", "movement": "17", "x": 14, "z": 28, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_BUG_CATCHER_ABNER" }
+  ],
+  "signs": [
+    { "x": 11, "z": 71, "type": 2, "script": "std_hiddenitem_d46r0101_max_ether", "item": "Max Ether", "flag": "FLAG_HIDDEN_ITEM_D46R0101_MAX_ETHER" },
+    { "x": 26, "z": 41, "type": 2, "script": "std_hiddenitem_d46r0101_full_restore", "item": "Full Restore", "flag": "FLAG_HIDDEN_ITEM_D46R0101_FULL_RESTORE" },
+    { "x": 12, "z": 46, "type": 2, "script": "std_hiddenitem_d46r0101_big_mushroom", "item": "Big Mushroom", "flag": "FLAG_HIDDEN_ITEM_D46R0101_BIG_MUSHROOM" },
+    { "x": 47, "z": 46, "type": 2, "script": "std_hiddenitem_d46r0101_big_mushroom_2", "item": "Big Mushroom", "flag": "FLAG_HIDDEN_ITEM_D46R0101_BIG_MUSHROOM_2" },
+    { "x": 49, "z": 18, "type": 2, "script": "std_hiddenitem_d46r0101_tinymushroom", "item": "Tiny Mushroom", "flag": "FLAG_HIDDEN_ITEM_D46R0101_TINYMUSHROOM" },
+    { "x": 32, "z": 57, "type": 2, "script": "std_hiddenitem_d46r0101_tinymushroom_2", "item": "Tiny Mushroom", "flag": "FLAG_HIDDEN_ITEM_D46R0101_TINYMUSHROOM_2" },
+    { "x": 50, "z": 58, "type": 2, "script": "std_hiddenitem_d46r0101_tinymushroom_3", "item": "Tiny Mushroom", "flag": "FLAG_HIDDEN_ITEM_D46R0101_TINYMUSHROOM_3" }
+  ],
+  "triggers": []
+}

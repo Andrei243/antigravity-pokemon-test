@@ -1,0 +1,26 @@
+{
+  "key": "route_2_viridian_forest_south_gatehouse",
+  "index": 419,
+  "name": "Route 2",
+  "matrix": 69,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_R_16_03",
+  "nightMusic": "GS_R_16_03",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 12, "to": "johto_route_2", "toWarp": 0 },
+    { "x": 5, "z": 2, "to": "johto_viridian_forest", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "r02r0401_counterm", "looks": "counterm", "movement": "17", "x": 1, "z": 8, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "R02R0401_000+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

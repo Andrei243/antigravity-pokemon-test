@@ -1,0 +1,48 @@
+# Mt. Moon as HeartGold has it three years on (plan 20 · J15, part f). docs/scripts.md describes the language; the
+# lines are our own, on HeartGold's beats (scr_seq_D02R0101).
+#
+# Once Johto's Hall of Fame is entered the red-haired boy waits in Mt. Moon by its western mouth, training where nobody
+# bothers him, as he said he would on Victory Road. Spoken to, he battles with the team that beats the player's
+# starter, at the levels HeartGold gives him here, and goes; that is VAR_UNK_40FC 1, which begins the Dragon's Den's
+# post-game (dragons_den.txt), as in HeartGold. The cave's own arrival keeps him off the floor (FLAG_UNK_25C,
+# HeartGold's own) unless he is waiting, so a save of Johto from before this session needs no story version.
+
+
+script OnEnter
+  setflag FLAG_UNK_25C
+  if not flag JohtoHallOfFame end
+  if var VAR_UNK_40FC != 0 end
+  clearflag FLAG_UNK_25C
+  end
+
+
+script Rival
+  face d02r0101_gsrivel player
+  speaker "{rival}"
+  scene "The rival in Mount Moon"
+  music "johto/rival"
+  say "...You. Of all the caves in Kanto, you had to walk into this one."
+  say "I came here to train where nobody would find me. I've been thinking about what it means to be strong."
+  say "Not winning at any cost. Something else. My Pokémon and I, together. I want to see if I've got it right."
+  say "{player}! Battle me. Here, now!"
+  if starter "Chikorita" goto VsTyphlosion
+  if starter "Cyndaquil" goto VsFeraligatr
+  battle self as "johto_rival_silver_14"
+  goto Won
+label VsTyphlosion
+  battle self as "johto_rival_silver_15"
+  goto Won
+label VsFeraligatr
+  battle self as "johto_rival_silver_16"
+label Won
+  speaker "{rival}"
+  say "...Hmph. So that's where I stand."
+  say "I'm not angry. That's new. I'm going somewhere the dragons train. Don't follow me. Or do. I don't care."
+  fade out
+  hide d02r0101_gsrivel
+  setflag FLAG_UNK_25C
+  setvar VAR_UNK_40FC 1
+  fade in
+  music area
+  endscene
+  end
