@@ -1,0 +1,16 @@
+# A house of Pacifidlog Town (plan 21 · H12, part h). docs/scripts.md describes the language; the lines are our own,
+# on Emerald's beats (data/maps/PacifidlogTown_House5/scripts.inc).
+#
+# The old man at the window asks the same as Route 130 does (Emerald's IsMirageIslandPresent): on a day the island
+# stands for this team he says he can see it; otherwise that it isn't there today.
+
+
+script Watcher
+  speaker "Old Man"
+  if mirage goto Seen
+  say "From this window I watch the sea to the east. Some days an island rises there... but not today."
+  end
+label Seen
+  say "Look! Out there, to the east! The island has risen from the sea today!"
+  say "Go now, before it sinks again. It may not show itself to you for a long while."
+  end

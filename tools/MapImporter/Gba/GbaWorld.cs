@@ -149,7 +149,10 @@ public sealed class GbaWorld
         ("MAP_NEW_MAUVILLE_ENTRANCE", "LAYOUT_NEW_MAUVILLE_ENTRANCE_CLOSED"),
         ("MAP_NEW_MAUVILLE_INSIDE", "LAYOUT_NEW_MAUVILLE_INSIDE_BLUE"),
         ("MAP_NEW_MAUVILLE_INSIDE", "LAYOUT_NEW_MAUVILLE_INSIDE_GREEN"),
-        ("MAP_NEW_MAUVILLE_INSIDE", "LAYOUT_NEW_MAUVILLE_INSIDE_GENERATOR_OFF")
+        ("MAP_NEW_MAUVILLE_INSIDE", "LAYOUT_NEW_MAUVILLE_INSIDE_GENERATOR_OFF"),
+        // Plan 21 · H12, part h: Mirage Island off Route 130 (Emerald's ON_TRANSITION lays this layout on a day the
+        // team's personalities match, IsMirageIslandPresent; the map is read in its own, the open sea)
+        ("MAP_ROUTE130", "LAYOUT_ROUTE130_MIRAGE_ISLAND")
     };
 
     /// <summary>

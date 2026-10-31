@@ -770,6 +770,7 @@ public class ScriptTests
               if rule nocenter end
               if not rule monotype end
               if titled end
+              if mirage end
             """)[0];
 
         var asked = script.Code.Select(i => i.Condition!.Query).ToHashSet();

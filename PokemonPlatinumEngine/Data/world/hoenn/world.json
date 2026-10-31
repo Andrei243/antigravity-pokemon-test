@@ -30,7 +30,11 @@
     { "map": "NewMauville_Entrance", "var": "VAR_NEW_MAUVILLE_STATE", "value": 0, "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 829 } ] },
     { "map": "NewMauville_Inside", "var": "VAR_TEMP_1", "value": 1, "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 830 }, { "chunkX": 0, "chunkY": 1, "chunk": 832 }, { "chunkX": 1, "chunkY": 1, "chunk": 833 } ] },
     { "map": "NewMauville_Inside", "var": "VAR_TEMP_2", "value": 1, "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 834 }, { "chunkX": 0, "chunkY": 1, "chunk": 836 }, { "chunkX": 1, "chunkY": 1, "chunk": 837 } ] },
-    { "map": "NewMauville_Inside", "var": "VAR_NEW_MAUVILLE_STATE", "value": 2, "cells": [ { "chunkX": 1, "chunkY": 0, "chunk": 839 } ] }
+    { "map": "NewMauville_Inside", "var": "VAR_NEW_MAUVILLE_STATE", "value": 2, "cells": [ { "chunkX": 1, "chunkY": 0, "chunk": 839 } ] },
+    // Plan 21 · H12, part h: Mirage Island off Route 130 (Emerald's LAYOUT_ROUTE130_MIRAGE_ISLAND, laid by its
+    // ON_TRANSITION on a day the team's personalities match; here by FLAG_HOENN_MIRAGE_ISLAND, which common.HoennMirageIsland
+    // sets or clears as Routes 129 to 131 and Pacifidlog are come to)
+    { "map": "Hoenn", "flag": "FLAG_HOENN_MIRAGE_ISLAND", "cells": [ { "chunkX": 18, "chunkY": 8, "chunk": 842 }, { "chunkX": 19, "chunkY": 8, "chunk": 843 }, { "chunkX": 18, "chunkY": 9, "chunk": 844 }, { "chunkX": 19, "chunkY": 9, "chunk": 845 } ] }
   ],
   "maps": [
     // The overworld: Emerald's connected maps stitched into one, Littleroot Town at its south-west

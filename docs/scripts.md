@@ -194,6 +194,7 @@ What an `if` can ask:
 | `taken "item_id"` | An item on the ground has been picked up. |
 | `starter "Piplup"` | The species the player took from the briefcase. |
 | `money >= 500`, `facing left`, `boy`, `girl` | |
+| `mirage` | Mirage Island stands off Route 130 today for this team (plan 21 · H12, part h; Emerald's `IsMirageIslandPresent`, `Overworld/MirageIsland.cs`): the low half of a team member's personality, an Egg's included, is the upper half of the day's number (`SpecialEncounters.DailyNumber`). `common.HoennMirageIsland` and Pacifidlog's old man ask it. |
 | `titled` | The master of the species of the Pokémon the last `choosepokemon` chose is beaten already (plan 14 · B15, the Masters' Hall; `Models/MasterTitles.cs`): its title is the player's. False with nobody chosen or an Egg. |
 | `friendship >= 200` | The friendship of the first of the team that is no Egg (plan 09 · L9; the original's `GetFirstNonEggInParty` and `GetPartyMonFriendship`), 0 to 255; false with no such Pokémon. Dr. Footstep reads his steps with it. |
 | `poketch` | The player has the Pokétch. |

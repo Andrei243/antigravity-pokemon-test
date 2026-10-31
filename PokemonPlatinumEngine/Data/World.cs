@@ -2447,7 +2447,9 @@ public static class WorldMapBuilder
                     GridY = o.Z,
                     BerryPatch = patch,
                     Key = o.Id,
-                    ScriptFile = key
+                    ScriptFile = key,
+                    // Mirage Island's tree is under the sea with its island (plan 21 · H12, part h)
+                    HiddenBy = o.HiddenBy
                 });
                 continue;
             }

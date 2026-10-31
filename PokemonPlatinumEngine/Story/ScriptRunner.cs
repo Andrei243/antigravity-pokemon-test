@@ -2226,6 +2226,8 @@ public sealed partial class ScriptRunner
             Query.Rule => host.Rules.Has(c.Name),
             // The Masters' Hall (plan 14 · B15): the chosen one's master beaten already
             Query.Titled => chosenMember is { IsEgg: false } titled && MasterTitles.Holds(story, titled.Species.Name),
+            // IsMirageIslandPresent (plan 21 · H12, part h)
+            Query.Mirage => Overworld.MirageIsland.Present(host.Party, host.Encounters),
             _ => throw Wrong(at, $"the runner can't answer '{c.Query}'")
         };
         return yes != c.Negated;

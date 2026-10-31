@@ -10364,6 +10364,10 @@ way 1, from answer 1
 from a trainer with lines of their own
 way -
   > Something unseeable is in the way.
+=== common.HoennMirageIsland
+from a trainer with lines of their own
+way -
+  + FLAG_TEMP_HIDE_MIRAGE_ISLAND_BERRY_TREE
 === common.HoennNewGame
 from a trainer with lines of their own
 way -
@@ -20332,6 +20336,10 @@ way 0
 way 1, from answer 1
   Man> Not today? I'm in no hurry. Bagon will come along some day.
   ? I've a Horsea here, but what I've always wanted is a Bagon. Would you trade me one? = No
+=== pacifidlog_town_house_5.Watcher
+from Old Man at 9,4 of PacifidlogTown_House5
+way -
+  Old Man> From this window I watch the sea to the east. Some days an island rises there... but not today.
 === pacifidlog_town_pokemon_center_1f.ExplosionTutor
 from Man at 12,8 of PacifidlogTown_PokemonCenter_1F
 way 0

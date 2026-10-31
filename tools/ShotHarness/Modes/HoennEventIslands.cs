@@ -28,7 +28,10 @@ partial class Harness
             for (int i = 0; i < 1800 && (engine.ScriptRunning || game.State != GameState.Overworld); i++)
             {
                 if (game.State == GameState.Battle) return;
-                if (Box().IsActive && Box().IsCurrentLineComplete && !Box().IsQuestion) { Box().Advance(); Frames(2); }
+                // a question left open is answered yes, or its script waits over every later shot (the researcher's
+                // regenerator was asked again on Wattson's floor)
+                if (engine.Choice.IsOpen) { Frames(10); engine.Choice.Confirm(); Frames(4); }
+                else if (Box().IsActive && Box().IsCurrentLineComplete && !Box().IsQuestion) { Box().Advance(); Frames(2); }
                 else Frames(1);
             }
             Frames(6);
@@ -37,7 +40,10 @@ partial class Harness
         {
             Until(() => game.State == GameState.Battle, what, 900);
             if (game.State == GameState.Battle) { ToMainMenu(game.Battle); Shot(shot); }
-            game.State = GameState.Overworld;
+            // won and read out, so no script is left waiting for the battle's outcome (it was put back to the field
+            // with the battle still on, which left Deoxys's and Wattson's scripts running)
+            if (game.State == GameState.Battle) WinAndReadOut(what);
+            Box().Close();
         }
 
         game.State = GameState.Overworld;
@@ -76,7 +82,11 @@ partial class Harness
         game.ArriveOnMap(); Frames(20);
         ReadOn();
         Shot("h2b5_navel_rock_top_ho_oh");
-        engine.Steering = (Direction.Up, false); Frames(16); engine.Steering = null;
+        // the step onto the summit's trigger (12, 10), from the tile before it
+        At("NavelRock_Top", 12, 11, Direction.Up); Frames(2);
+        engine.Steering = (Direction.Up, false);
+        Until(() => engine.ScriptRunning, "the step onto the summit", 120);
+        engine.Steering = null;
         ReadOn();
         Battle("h2b6_navel_rock_ho_oh_battle", "Ho-Oh's battle");
         At("NavelRock_Bottom", 11, 15, Direction.Up);
@@ -110,7 +120,8 @@ partial class Harness
         At("RustboroCity_DevonCorp_2F", 14, 9, Direction.Up);
         game.Interact(); Frames(3);
         for (int i = 0; i < 6 && !Box().IsQuestion; i++) { Until(() => Box().IsCurrentLineComplete, "a line"); Box().Advance(); Frames(4); }
-        engine.Choice.Confirm(); Frames(4);
+        Until(() => engine.Choice.IsOpen, "the regenerator's question");
+        Frames(10); engine.Choice.Confirm(); Frames(4);
         ReadOn();
         Shot("h2bd_devon_regenerator_at_work");
         At("RustboroCity_DevonCorp_2F", 14, 9, Direction.Up);
@@ -140,7 +151,9 @@ partial class Harness
             Until(() => Box().IsCurrentLineComplete, "Wattson's challenge");
             Shot("h2bf_wattson_rematch");
             ReadOn();
-            if (game.State == GameState.Battle) game.State = GameState.Overworld;
+            Until(() => game.State == GameState.Battle, "Wattson's rematch", 300);
+            if (game.State == GameState.Battle) WinAndReadOut("Wattson's rematch");
+            Console.WriteLine($"  Wattson's rematch: script running {engine.ScriptRunning}, waiting {game.Story.Has("FLAG_PHONE_REMATCH_WATTSON")}");
         }
         else Console.WriteLine("  !! Wattson is not in his Gym");
         HoennPostGameGShots();

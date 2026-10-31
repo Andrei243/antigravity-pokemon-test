@@ -1,0 +1,9 @@
+# Pacifidlog Town (plan 21 · H12, part h). docs/scripts.md describes the language.
+#
+# Coming here decides whether Mirage Island stands off Route 130 today (common.HoennMirageIsland), as Routes 129 to
+# 131 do, so the old man of the fifth house and the sea east of the town agree.
+
+
+script OnEnter
+  call HoennMirageIsland
+  end

@@ -181,7 +181,12 @@ public enum Query
     /// The master of the species of the Pokémon the last <c>choosepokemon</c> chose is beaten already (plan 14 · B15,
     /// the Masters' Hall): <c>titled</c>. False with nobody chosen.
     /// </summary>
-    Titled
+    Titled,
+    /// <summary>
+    /// Mirage Island stands off Route 130 today for this team (plan 21 · H12, part h; Emerald's <c>IsMirageIslandPresent</c>,
+    /// <see cref="Overworld.MirageIsland.Present"/>): <c>mirage</c>.
+    /// </summary>
+    Mirage
 }
 
 /// <summary>A question a script asks of the game before a line: <c>if [not] ...</c>.</summary>
