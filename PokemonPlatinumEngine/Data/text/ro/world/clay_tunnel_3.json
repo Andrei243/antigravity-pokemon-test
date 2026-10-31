@@ -6,7 +6,7 @@
           "Maxwell"
         ],
         "text": [
-          ""
+          "Maxwell"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Rangers go where the Pokémon need us, even underground!"
         ],
         "text": [
-          ""
+          "Rangerii merg unde au nevoie Pokémonii de noi, chiar și sub pământ!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "You'd make a fine Ranger yourself."
         ],
         "text": [
-          ""
+          "Ai face un Ranger de nădejde."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Leo"
         ],
         "text": [
-          ""
+          "Leo"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "The rock down here is the hardest in Unova. So are my Pokémon!"
         ],
         "text": [
-          ""
+          "Stânca de aici e cea mai tare din Unova. Și Pokémonii mei la fel!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Harder than rock, you are."
         ],
         "text": [
-          ""
+          "Mai tare decât stânca ești tu."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Brand"
         ],
         "text": [
-          ""
+          "Brand"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Break time! And by break, I mean battle!"
         ],
         "text": [
-          ""
+          "E pauză! Iar prin pauză înțeleg luptă!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Back to work, I suppose."
         ],
         "text": [
-          ""
+          "Înapoi la treabă, deci."
         ]
       }
     },
@@ -84,7 +84,7 @@
           "Katie"
         ],
         "text": [
-          ""
+          "Katie"
         ]
       },
       "before": {
@@ -92,7 +92,7 @@
           "I'm checking the tunnel for lost Pokémon. Found a Trainer instead!"
         ],
         "text": [
-          ""
+          "Caut prin tunel Pokémoni rătăciți. Am găsit un Antrenor!"
         ]
       },
       "after": {
@@ -100,7 +100,7 @@
           "Everyone here is safe and sound. Even me, just about."
         ],
         "text": [
-          ""
+          "Toți de aici sunt sănătoși și în siguranță. Chiar și eu, cam așa."
         ]
       }
     },
@@ -110,17 +110,7 @@
           "Worker"
         ],
         "text": [
-          ""
-        ]
-      }
-    },
-    "13": {
-      "name": {
-        "en": [
-          "Worker"
-        ],
-        "text": [
-          ""
+          "Muncitorul"
         ]
       }
     },
@@ -130,17 +120,7 @@
           "Worker"
         ],
         "text": [
-          ""
-        ]
-      }
-    },
-    "12": {
-      "name": {
-        "en": [
-          "Worker"
-        ],
-        "text": [
-          ""
+          "Muncitorul"
         ]
       }
     },
@@ -150,7 +130,7 @@
           "Worker"
         ],
         "text": [
-          ""
+          "Muncitorul"
         ]
       }
     },
@@ -160,7 +140,27 @@
           "Worker"
         ],
         "text": [
-          ""
+          "Muncitorul"
+        ]
+      }
+    },
+    "12": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          "Muncitorul"
+        ]
+      }
+    },
+    "13": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          "Muncitorul"
         ]
       }
     }

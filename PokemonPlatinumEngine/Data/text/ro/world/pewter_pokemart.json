@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bine ai venit! Cu ce te pot ajuta?"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bine ai venit! Cu ce te pot ajuta?"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "I'm saving up for Repels. Mt. Moon is full of Zubat."
         ],
         "text": [
-          ""
+          "Strâng bani pentru Repeluri. Muntele Lunii e plin de Zubat."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "Brock's Pokémon are Rock types. Water and Grass moves wear them down fastest."
         ],
         "text": [
-          ""
+          "Pokémonii lui Brock sunt de tip Stâncă. Mișcările de Apă și de Iarbă îi slăbesc cel mai repede."
         ]
       }
     }

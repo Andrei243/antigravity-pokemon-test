@@ -6,7 +6,7 @@
           "Scientist"
         ],
         "text": [
-          ""
+          "Cercetătorul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome to the museum. Mind the bones: some of them are older than the mountains outside."
         ],
         "text": [
-          ""
+          "Bine ai venit la muzeu. Ai grijă la oase: unele sunt mai vechi decât munții de afară."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "I could stand here all day trying to picture this creature alive."
         ],
         "text": [
-          ""
+          "Aș putea sta aici toată ziua, încercând să-mi închipui cum trăia creatura asta."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Old man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "A meteorite fell on Mt. Moon long ago. They say the Clefairy came with it. I like to think so."
         ],
         "text": [
-          ""
+          "Un meteorit a căzut pe Muntele Lunii demult. Se spune că Clefairy au venit odată cu el. Îmi place să cred asta."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Poké Maniac"
         ],
         "text": [
-          ""
+          "Pasionatul Pokémon"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "Fossils! Fossils! I could look at fossils for the rest of my life!"
         ],
         "text": [
-          ""
+          "Fosile! Fosile! Aș putea privi fosile toată viața!"
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Scientist"
         ],
         "text": [
-          ""
+          "Cercetătorul"
         ]
       },
       "dialog": {
@@ -86,7 +86,7 @@
           "We're studying how to bring Pokémon back from fossils. Some day, we'll manage it here too."
         ],
         "text": [
-          ""
+          "Studiem cum să readucem Pokémonii din fosile. Într-o zi vom reuși și aici."
         ]
       }
     }
@@ -97,7 +97,7 @@
         "A fossil of a great winged Pokémon. It ruled the skies long ago."
       ],
       "text": [
-        ""
+        "O fosilă a unui mare Pokémon înaripat. Stăpânea cerurile cu mult timp în urmă."
       ]
     },
     "T03R0101_006+1": {
@@ -105,7 +105,7 @@
         "A fossil of a shelled Pokémon that lived in the ancient sea."
       ],
       "text": [
-        ""
+        "O fosilă a unui Pokémon cu carapace care trăia în marea străveche."
       ]
     },
     "T03R0101_007+1": {
@@ -113,7 +113,7 @@
         "A fossil of a Pokémon with a hard dome on its back."
       ],
       "text": [
-        ""
+        "O fosilă a unui Pokémon cu o cupolă tare pe spate."
       ]
     },
     "T03R0101_008+1": {
@@ -121,7 +121,7 @@
         "A fossil of a Pokémon with blades for arms."
       ],
       "text": [
-        ""
+        "O fosilă a unui Pokémon cu lame în loc de brațe."
       ]
     },
     "T03R0101_009+1": {
@@ -129,7 +129,7 @@
         "Old tools dug up near Pewter City. People and Pokémon lived here even then."
       ],
       "text": [
-        ""
+        "Unelte vechi scoase din pământ lângă Orașul Pewter. Oameni și Pokémoni trăiau aici chiar și atunci."
       ]
     },
     "T03R0101_010+1": {
@@ -137,7 +137,7 @@
         "A model of a rocket that once flew to the moon."
       ],
       "text": [
-        ""
+        "Macheta unei rachete care a zburat odată spre lună."
       ]
     },
     "T03R0101_011+1": {
@@ -145,7 +145,7 @@
         "A piece of the meteorite that fell on Mt. Moon. It glitters faintly."
       ],
       "text": [
-        ""
+        "O bucată din meteoritul căzut pe Muntele Lunii. Sclipește slab."
       ]
     },
     "T03R0101_012+1": {
@@ -153,7 +153,7 @@
         "A model of the space shuttle. It looks ready to lift off."
       ],
       "text": [
-        ""
+        "Macheta unei navete spațiale. Pare gata de decolare."
       ]
     }
   }

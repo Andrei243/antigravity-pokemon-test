@@ -5,7 +5,7 @@
         "Brock"
       ],
       "text": [
-        ""
+        "Brock"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "A Champion from Johto, here in Pewter? I heard you'd been making your way round Kanto."
       ],
       "text": [
-        ""
+        "Un Campion din Johto, aici, în Pewter? Am auzit că ai străbătut Kanto."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "I've been away breeding Pokémon, but rock is where my heart is. My Pokémon are as hard as the mountains."
       ],
       "text": [
-        ""
+        "Am fost plecat să cresc Pokémoni, dar inima mea e la stâncă. Pokémonii mei sunt tari ca munții."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Show me how a Champion breaks stone!"
       ],
       "text": [
-        ""
+        "Arată-mi cum sparge stânca un Campion!"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Well, I'll be. You broke right through. All right, take this: the Boulder Badge."
       ],
       "text": [
-        ""
+        "Ia te uită. Ai trecut chiar prin piatră. Bine, ia asta: Insigna Bolovan."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "{player} received the Boulder Badge from Brock!"
       ],
       "text": [
-        ""
+        "{player} a primit Insigna Bolovan de la Brock!"
       ]
     },
     {
@@ -53,7 +53,7 @@
         "And take this. It's a move every Rock type should know."
       ],
       "text": [
-        ""
+        "Și ia și asta. E o mișcare pe care orice tip Stâncă ar trebui s-o știe."
       ]
     },
     {
@@ -61,7 +61,7 @@
         "TM80 is Rock Slide. It sends rocks tumbling down on the foe, and it may make them flinch."
       ],
       "text": [
-        ""
+        "TM80 este Avalanșă. Prăvălește stânci peste inamic și îl poate face să tresară."
       ]
     },
     {
@@ -69,7 +69,7 @@
         "There's more to rock than hardness. Patience, too. I'll be ready for you next time."
       ],
       "text": [
-        ""
+        "În stâncă nu contează doar duritatea. Contează și răbdarea. Data viitoare voi fi pregătit."
       ]
     }
   ],
@@ -79,7 +79,7 @@
         "Hey, champ in the making! Brock's Pokémon are Rock types. Water and Grass moves will crumble them."
       ],
       "text": [
-        ""
+        "Hei, campion în devenire! Pokémonii lui Brock sunt de tip Stâncă. Mișcările de Apă și de Iarbă îi vor face fărâme."
       ]
     },
     {
@@ -87,7 +87,7 @@
         "You beat Brock! The whole floor shook!"
       ],
       "text": [
-        ""
+        "L-ai învins pe Brock! S-a cutremurat tot etajul!"
       ]
     }
   ],
@@ -97,7 +97,7 @@
         "Pewter City Pokémon Gym\nLeader: Brock"
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orașul Pewter\nLider: Brock"
       ]
     },
     {
@@ -105,7 +105,7 @@
         "Pewter City Pokémon Gym\nLeader: Brock\nWinning trainers: {player}"
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orașul Pewter\nLider: Brock\nAntrenori câștigători: {player}"
       ]
     }
   ]

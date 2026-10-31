@@ -6,7 +6,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome to the Trainer House. The hall downstairs is closed for the moment, I'm afraid."
         ],
         "text": [
-          ""
+          "Bine ai venit la Casa Antrenorilor. Sala de la parter e închisă deocamdată, din păcate."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Trainers from all over write their names on the board. I'd like to see mine up there one day."
         ],
         "text": [
-          ""
+          "Antrenori din toate colțurile își scriu numele pe panou. Aș vrea să-l văd și pe al meu acolo într-o zi."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "The best trainer here beat everyone in a single afternoon. I watched every battle."
         ],
         "text": [
-          ""
+          "Cel mai bun antrenor de aici i-a învins pe toți într-o singură după-amiază. Am urmărit fiecare luptă."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Gentleman"
         ],
         "text": [
-          ""
+          "Gentlemanul"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "A good trainer learns as much from a loss as from a win. More, usually."
         ],
         "text": [
-          ""
+          "Un antrenor bun învață la fel de mult dintr-o înfrângere ca dintr-o victorie. De obicei, mai mult."
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -86,7 +86,7 @@
           "My husband comes here every day. I come to make sure he eats lunch."
         ],
         "text": [
-          ""
+          "Soțul meu vine aici în fiecare zi. Eu vin să mă asigur că mănâncă la prânz."
         ]
       }
     },
@@ -96,7 +96,7 @@
           "Little boy"
         ],
         "text": [
-          ""
+          "Băiețelul"
         ]
       },
       "dialog": {
@@ -104,7 +104,7 @@
           "When I grow up I'm going to battle downstairs!"
         ],
         "text": [
-          ""
+          "Când voi fi mare, o să mă lupt jos!"
         ]
       }
     }
@@ -115,7 +115,7 @@
         "The Trainer House's rules:\nOne battle a day for each visitor."
       ],
       "text": [
-        ""
+        "Regulile Casei Antrenorilor:\nO luptă pe zi pentru fiecare vizitator."
       ]
     },
     "T02R0301_006+1": {
@@ -123,7 +123,7 @@
         "Today's challenger:\nNobody yet."
       ],
       "text": [
-        ""
+        "Provocatorul de azi:\nÎncă nimeni."
       ]
     }
   }

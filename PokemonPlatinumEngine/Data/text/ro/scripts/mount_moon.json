@@ -5,7 +5,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "...You. Of all the caves in Kanto, you had to walk into this one."
       ],
       "text": [
-        ""
+        "...Tu. Din toate peșterile din Kanto, tocmai în asta trebuia să intri."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "I came here to train where nobody would find me. I've been thinking about what it means to be strong."
       ],
       "text": [
-        ""
+        "Am venit aici să mă antrenez unde nu mă găsește nimeni. M-am tot gândit ce înseamnă să fii puternic."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Not winning at any cost. Something else. My Pokémon and I, together. I want to see if I've got it right."
       ],
       "text": [
-        ""
+        "Nu să câștigi cu orice preț. Altceva. Eu și Pokémonii mei, împreună. Vreau să văd dacă am dreptate."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "{player}! Battle me. Here, now!"
       ],
       "text": [
-        ""
+        "{player}! Luptă cu mine. Aici, acum!"
       ]
     },
     {
@@ -45,7 +45,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -53,7 +53,7 @@
         "...Hmph. So that's where I stand."
       ],
       "text": [
-        ""
+        "...Hmpf. Deci asta e locul meu."
       ]
     },
     {
@@ -61,7 +61,7 @@
         "I'm not angry. That's new. I'm going somewhere the dragons train. Don't follow me. Or do. I don't care."
       ],
       "text": [
-        ""
+        "Nu sunt supărat. E ceva nou. Mă duc unde se antrenează dragonii. Nu mă urma. Sau urmează-mă. Nu-mi pasă."
       ]
     }
   ]

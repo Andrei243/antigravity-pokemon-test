@@ -6,7 +6,7 @@
           "Brock"
         ],
         "text": [
-          ""
+          "Brock"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Gym guide"
         ],
         "text": [
-          ""
+          "Ghidul Arenei"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Jerry"
         ],
         "text": [
-          ""
+          "Jerry"
         ]
       },
       "before": {
@@ -34,7 +34,7 @@
           "Camper Jerry: I'm Brock's student. Rock-hard, that's what he taught me!"
         ],
         "text": [
-          ""
+          "Campist Jerry: Sunt elevul lui Brock. Tare ca piatra, asta m-a învățat!"
         ]
       },
       "after": {
@@ -42,7 +42,7 @@
           "Camper Jerry: I need more practice, apparently."
         ],
         "text": [
-          ""
+          "Campist Jerry: Am nevoie de mai multă practică, se pare."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Edwin"
         ],
         "text": [
-          ""
+          "Edwin"
         ]
       },
       "before": {
@@ -60,7 +60,7 @@
           "Hiker Edwin: Rocks don't move, and neither do I. You'll have to go through me!"
         ],
         "text": [
-          ""
+          "Drumeț Edwin: Stâncile nu se mișcă, nici eu. Va trebui să treci prin mine!"
         ]
       },
       "after": {
@@ -68,7 +68,7 @@
           "Hiker Edwin: Moved, after all."
         ],
         "text": [
-          ""
+          "Drumeț Edwin: M-am mișcat, până la urmă."
         ]
       }
     }

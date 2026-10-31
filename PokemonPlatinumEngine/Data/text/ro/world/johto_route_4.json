@@ -6,7 +6,7 @@
           "Hope"
         ],
         "text": [
-          ""
+          "Hope"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Picnicker Hope: I packed lunch for two, and my Pokémon ate both. Now I'm hungry for a battle!"
         ],
         "text": [
-          ""
+          "Excursionistă Hope: Am luat prânz pentru doi și Pokémonii mei le-au mâncat pe amândouă. Acum mi-e poftă de luptă!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Picnicker Hope: I'm still hungry. Just not for battles."
         ],
         "text": [
-          ""
+          "Excursionistă Hope: Tot mi-e foame. Dar nu de lupte."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Sharon"
         ],
         "text": [
-          ""
+          "Sharon"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Picnicker Sharon: It's such a lovely day for a picnic. And for a battle, if you insist!"
         ],
         "text": [
-          ""
+          "Excursionistă Sharon: E o zi minunată pentru un picnic. Și pentru o luptă, dacă insiști!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Picnicker Sharon: My picnic's ruined. Oh well, there's always tomorrow."
         ],
         "text": [
-          ""
+          "Excursionistă Sharon: Picnicul mi-a fost stricat. Nu-i nimic, mâine e o altă zi."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Hank"
         ],
         "text": [
-          ""
+          "Hank"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Bird Keeper Hank: My birds can see you coming from a mile off. They saw a battle coming too!"
         ],
         "text": [
-          ""
+          "Crescător de păsări Hank: Păsările mele te văd venind de la o poștă. Au văzut venind și o luptă!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Bird Keeper Hank: They didn't see that coming, though."
         ],
         "text": [
-          ""
+          "Crescător de păsări Hank: Asta însă n-au văzut-o venind."
         ]
       }
     }
@@ -85,7 +85,7 @@
         "Route 4\nMt. Moon - Cerulean City"
       ],
       "text": [
-        ""
+        "Ruta 4\nMuntele Lunii - Orașul Cerulean"
       ]
     }
   }

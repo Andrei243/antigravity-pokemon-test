@@ -6,7 +6,7 @@
           "Nurse"
         ],
         "text": [
-          ""
+          "Asistenta"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "Your Trainer Card shows your name, your money and the Pokémon you've seen. Have a look at it from the menu."
         ],
         "text": [
-          ""
+          "Fișa de Antrenor îți arată numele, banii și Pokémonii pe care i-ai văzut. Uită-te la ea din meniu."
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "I'm sorry, the link to other players is closed for now."
         ],
         "text": [
-          ""
+          "Îmi pare rău, legătura cu alți jucători e închisă deocamdată."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "I'm sorry, the link to other players is closed for now."
         ],
         "text": [
-          ""
+          "Îmi pare rău, legătura cu alți jucători e închisă deocamdată."
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "My big brother says the Gym Leader here was the strongest in Kanto. Then he just left."
         ],
         "text": [
-          ""
+          "Fratele meu mai mare zice că Liderul Arenei de aici era cel mai puternic din Kanto. Apoi a plecat pur și simplu."
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -96,7 +96,7 @@
           "Trainers coming down from the League always look so tired. And so pleased with themselves."
         ],
         "text": [
-          ""
+          "Antrenorii care coboară de la Ligă par mereu atât de obosiți. Și atât de mulțumiți de ei."
         ]
       }
     },
@@ -106,7 +106,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -114,7 +114,7 @@
           "If you're heading for Pewter, the forest is the quick way. Bring something for the bugs."
         ],
         "text": [
-          ""
+          "Dacă te duci spre Pewter, pădurea e drumul scurt. Ia ceva pentru insecte."
         ]
       }
     }

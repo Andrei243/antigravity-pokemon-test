@@ -6,7 +6,7 @@
           "Aide"
         ],
         "text": [
-          ""
+          "Asistentul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "I study the Pokémon of the forest. Even the quiet ones have a lot to say, if you watch them long enough."
         ],
         "text": [
-          ""
+          "Studiez Pokémonii pădurii. Chiar și cei tăcuți au multe de spus, dacă îi urmărești destul."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Guard"
         ],
         "text": [
-          ""
+          "Paznic"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "This way skips the forest. It's quicker, but you'll miss the bugs."
         ],
         "text": [
-          ""
+          "Drumul ăsta ocolește pădurea. E mai rapid, dar vei pierde insectele."
         ]
       }
     }
