@@ -175,7 +175,8 @@ public class AutoBattleTests
         Assert.False(settings.AutoBattle);
         var rows = Enum.GetValues<OptionRow>();
         Assert.Equal(Array.IndexOf(rows, OptionRow.BoxTools) + 1, Array.IndexOf(rows, OptionRow.AutoBattle));
-        Assert.Equal(Array.IndexOf(rows, OptionRow.AutoBattle) + 1, Array.IndexOf(rows, OptionRow.Controls));
+        // (plan 12 · Q22's WHAT IS LEFT HERE went in after it, before Controls)
+        Assert.Equal(Array.IndexOf(rows, OptionRow.AutoBattle) + 2, Array.IndexOf(rows, OptionRow.Controls));
 
         var (_, off, helpOff) = OptionsScreen.Describe(settings, OptionRow.AutoBattle);
         OptionsScreen.Change(settings, OptionRow.AutoBattle, 1);

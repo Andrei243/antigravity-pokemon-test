@@ -1677,6 +1677,7 @@ public partial class GameEngine
             flow.StartMenu.HasPokegear = HasPokegear;
             flow.StartMenu.HasPokeNav = HasPokeNav;
             flow.StartMenu.Objective = NextObjectiveLine;
+            flow.StartMenu.Counts = AreaCountsLine() ?? "";
             flow.StartMenu.Open();
             // The team's menu sprites are asked for as the menu opens, so that they are there by the time a screen
             // shows them: only the opening's are made at the start, and a sprite long unshown is let go (plan 03 · D13)
@@ -1952,7 +1953,7 @@ public partial class GameEngine
         NoteArrival();
         PlayFieldMusic();
         // As the language writes it (plan 17 · N6b): the area's own name was shown in English under every language
-        if (!string.IsNullOrEmpty(area.DisplayName)) flow.LocationSign.Show(flow.Map.ShownNameAt(flow.Player.GridX, flow.Player.GridY), SeasonHere);
+        if (!string.IsNullOrEmpty(area.DisplayName)) flow.LocationSign.Show(flow.Map.ShownNameAt(flow.Player.GridX, flow.Player.GridY), SeasonHere, AreaCountsLine());
         return StartEnterScript();
     }
 
@@ -2422,7 +2423,7 @@ public partial class GameEngine
         flow.CurrentZone = flow.Map.ZoneAt(flow.Player.GridX, flow.Player.GridY);
         NoteArrival();
         if (flow.Map.IsIndoors) flow.LocationSign.Hide();
-        else flow.LocationSign.Show(flow.Map.ShownNameAt(flow.Player.GridX, flow.Player.GridY), SeasonHere);
+        else flow.LocationSign.Show(flow.Map.ShownNameAt(flow.Player.GridX, flow.Player.GridY), SeasonHere, AreaCountsLine());
     }
 
     private void HandleStartMenuChoice(StartMenuChoice choice)

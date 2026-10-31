@@ -304,6 +304,13 @@
         "on": "Comenzile au AUTO, care joacă lupta pentru tine cu cea mai puternică mișcare a fiecărui Pokémon până leșină unul de-al tău sau Înapoi o oprește."
       }
     },
+    "areaChecklist": {
+      "label": "Ce a mai rămas aici",
+      "help": {
+        "off": "Indicatorul locului arată doar numele lui.",
+        "on": "Indicatorul locului și meniul numără obiectele, antrenorii și Pokémonii pe care îi mai poți găsi de unde ești acum, fără să-i numească."
+      }
+    },
     "boxesAnywhere": {
       "label": "Cutii oriunde și rucsac ordonat",
       "value": { "Off": "Nu", "Rules": "După reguli", "On": "Da" },
@@ -4926,5 +4933,10 @@
       "alike": "Toate la fel",
       "grade": { "Nothing": "NIMIC", "Meagre": "SLAB", "Fair": "BINIȘOR", "Good": "BUN", "Splendid": "SPLENDID", "Flawless": "FĂRĂ CUSUR" }
     }
+  },
+  "leftHere": {
+    "caption": "A RĂMAS AICI",
+    "line": "Obiecte {items} · Antrenori {trainers} · Pokémon {species}",
+    "nothing": "Nu a mai rămas nimic aici"
   }
 }

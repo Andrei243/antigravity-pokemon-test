@@ -271,6 +271,7 @@ Written 2026-10-06, before any session.
 - Tests on the fixtures and on maps of the test's own (`Fixtures`, `StoryTests.OwnMaps`): a ball picked up and a hidden item found each lower the count; twins count once; a ball behind a cut tree counts only once Cut can be used there; the water's species count only with Surf and a rod's only with the rod; with the row off the sign is today's.
 - Shots: `10d_sign_counts` beside `10_sign_and_notice`, `09g_requests_this_area`, `09h_startmenu_counts`.
 - **Done when** arriving on Route 202 says how many items, trainers and species are left there, and each number falls as one is taken, beaten or caught.
+- **As built (2026-10-31).** `Models/AreaChecklist.cs` (`AreaCounts`, `ChecklistTerms`, `Count`, `Reach`, `Present`) walks the area's chunks and one chunk round them (a route's halves may be joined through a neighbour) by `FieldMovement.Step` with the climbs said yes to, past balls (picked up) and the obstacles in `ChecklistTerms.Clears`, at most 60,000 tiles; a ball, a hidden item or a trainer counts when its tile is reached or faced from one reached. Species are the land table's (with its day and night species), the water's with Surf, each rod's with that rod in the bag (`FishingAttempt.RodOf`); a small map's own table stands for land. `GameEngine.Checklist.cs` fills the terms (the obstacles by `FieldHelp.CanUse` and the region's Badge) and hands the line to `LocationSign.Show(name, season, counts)` and `StartMenu.Counts`; `Driver.AreaCounts` for tools. The row is `OptionRow.AreaChecklist` after AUTO-BATTLE, `GameSettings.AreaChecklist`, off unless chosen (a plain bool, not `RulesDefault`, as the plan's `Off`/`On`), so the sign is today's with it off. Words: `options.areaChecklist.*`, `leftHere.*` (en, ro). Shots: `menus` ends with `10d_sign_counts`, `10e_sign_counts_native` and `09h_startmenu_counts` on Route 202, and prints the counts. **Left:** the THIS AREA tab (`09g_requests_this_area`) comes with Q21's page; the Bicycle's ramps and slopes are not walked (a ball beyond one counts only once reached on foot), and a trainer counts by the tiles beside them, not by their sight.
 
 ### Q23 · Trainer tips
 - After Q10, whose HELP page takes the TIPS tab.
@@ -395,7 +396,7 @@ Written 2026-10-06, before any session.
 - [x] Q19 Remembering and renaming from the party menu
 - [x] Q20 Skipping a scene already seen (2026-10-12)
 - [ ] Q21 Requests
-- [ ] Q22 What is left here
+- [x] Q22 What is left here (2026-10-31; the sign's and the start menu's counts, the row WHAT IS LEFT HERE, off unless chosen; the THIS AREA tab waits for Q21's page)
 - [ ] Q23 Trainer tips
 - [x] Q24 Timing assists and rumble (2026-10-26, wave 68; the strengths wait for the user's hands on a pad)
 - [ ] Q25 A lost battle fought again, and a battle suspended

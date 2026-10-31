@@ -22,10 +22,14 @@ public sealed class LocationSign
 
     public bool Visible => time >= 0f;
 
-    public void Show(string name, Core.Season? season = null)
+    /// <summary>What is left in the place, said under the name (plan 12 · Q22, <see cref="Models.AreaCounts.Line"/>); null with the row off.</summary>
+    public string? Counts { get; private set; }
+
+    public void Show(string name, Core.Season? season = null, string? counts = null)
     {
         Name = name;
         Season = season;
+        Counts = counts;
         time = 0f;
     }
 
@@ -47,7 +51,7 @@ public sealed class LocationSign
 
     public void Draw()
     {
-        if (Visible) ModernUi.DrawLocationSign(Name, Shown, SecondLine);
+        if (Visible) ModernUi.DrawLocationSign(Name, Shown, SecondLine, Counts);
     }
 }
 
