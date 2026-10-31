@@ -25,6 +25,18 @@ public sealed class ConditionView
 
     public bool Up => Layers > 0;
 
+    /// <summary>
+    /// The place a Max Move's blow landed on as the newest layer came (plan 25 · YD4), which it arrives from; null for
+    /// one that simply came, or once it has settled with the rules. Only how it comes goes by it, never what lasts.
+    /// </summary>
+    public Place? From { get; internal set; }
+
+    /// <summary>
+    /// It is arriving from a blow now: a <see cref="From"/>, and its newest layer still within
+    /// <see cref="BattleAnimator.BlowArrivalTime"/> (longer than its own coming in, so the Max Move's pull-back sees the flood run out).
+    /// </summary>
+    public bool ArrivingFromABlow => Up && From != null && Age < BattleAnimator.BlowArrivalTime;
+
     /// <summary>Something of it is on screen: standing, or still fading.</summary>
     public bool Visible => Up || FadingAge >= 0f;
 
@@ -40,7 +52,7 @@ public sealed class ConditionView
     /// <summary>How far a look with no pieces of its own has come (the light under Gravity): in over the fade's time, and out again.</summary>
     public float Presence => Up ? Math.Clamp(Age / BattleAnimator.FieldFadeTime, 0f, 1f) : Strength;
 
-    internal void Set(int layers, FieldLook owner, int salt, bool instantly)
+    internal void Set(int layers, FieldLook owner, int salt, bool instantly, Place? from = null)
     {
         layers = Math.Max(0, layers);
         if (layers == Layers) return;
@@ -51,11 +63,13 @@ public sealed class ConditionView
             FadingAge = instantly ? -1f : 0f;
             Layers = 0;
             Age = 0f;
+            From = null;
             return;
         }
         // The first layer brings its seed; a layer more keeps it, so what lies there already stays where it lay
         if (Layers == 0) Seed = owner.NextSeed(salt);
         Layers = layers;
+        From = instantly ? null : from;
         Age = instantly ? BattleAnimator.FieldArriveTime : 0f;
         Fading = 0;
         FadingAge = -1f;
@@ -126,31 +140,36 @@ public sealed class FieldLook
     private static int Salt(Place place, PlaceCondition condition) => (int)condition * 41 + place.Number * 7 + 11;
 
     /// <summary>A side has this much of something now: more of it comes in, none of it fades away.</summary>
-    public void Set(BattleSide side, SideCondition condition, int layers) =>
-        Of(side, condition).Set(layers, this, Salt(side, condition), instantly: false);
+    /// <param name="from">The place a Max Move's blow landed on, which a new layer arrives from (plan 25 · YD4).</param>
+    public void Set(BattleSide side, SideCondition condition, int layers, Place? from = null) =>
+        Of(side, condition).Set(layers, this, Salt(side, condition), instantly: false, from);
 
-    public void Set(FieldCondition condition, bool up) => Of(condition).Set(up ? 1 : 0, this, Salt(condition), instantly: false);
+    public void Set(FieldCondition condition, bool up, Place? from = null) => Of(condition).Set(up ? 1 : 0, this, Salt(condition), instantly: false, from);
 
-    public void Set(Place place, PlaceCondition condition, bool up) =>
-        Of(place, condition).Set(up ? 1 : 0, this, Salt(place, condition), instantly: false);
+    public void Set(Place place, PlaceCondition condition, bool up, Place? from = null) =>
+        Of(place, condition).Set(up ? 1 : 0, this, Salt(place, condition), instantly: false, from);
 
     /// <summary>
     /// Takes what one of the log's events tells of the field; false for an event that tells nothing of it. This is
     /// the one way the look changes while a battle is shown: <see cref="BattleEngine"/> hands every event here as
     /// its line is read, and a test that follows a log does the same.
     /// </summary>
-    public bool Tell(BattleEvent happening)
+    /// <param name="from">
+    /// The place a Max Move's blow landed on, when the event is one of that Max Move's lines (plan 25 · YD4): what it
+    /// brings arrives from there. It changes how a thing comes and never what stands, nor any seed.
+    /// </param>
+    public bool Tell(BattleEvent happening, Place? from = null)
     {
         switch (happening)
         {
             case SideConditionChanged side:
-                Set(side.Side, side.Condition, side.Layers);
+                Set(side.Side, side.Condition, side.Layers, from);
                 return true;
             case FieldConditionChanged room:
-                Set(room.Condition, room.Up);
+                Set(room.Condition, room.Up, from);
                 return true;
             case PlaceConditionChanged waiting:
-                Set(waiting.Place, waiting.Condition, waiting.Up);
+                Set(waiting.Place, waiting.Condition, waiting.Up, from);
                 return true;
             default:
                 return false;

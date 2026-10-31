@@ -72,7 +72,7 @@ public partial class BattleEngine
     /// cue, and the screen's Pokémon taking the form the rules' copy has taken <paramref name="swap"/> into the cue,
     /// inside its light; at once with the scene off, where no cue plays.
     /// </summary>
-    private void Change(Place place, string form, CueKind kind, string sound, float swap, bool primal = false)
+    private void Change(Place place, string form, CueKind kind, string sound, float swap, bool primal = false, bool megaMax = false)
     {
         Sound(sound, place.Side);
         var shown = At(place).Pokemon;
@@ -94,7 +94,7 @@ public partial class BattleEngine
             Take();
             return;
         }
-        Anim.Change(place.Side, place.Slot, kind, primal, colour);
+        Anim.Change(place.Side, place.Slot, kind, primal, colour, megaMax);
         After(swap, Take);
     }
 }

@@ -20,7 +20,9 @@ partial class Harness
     // Every cue that starts is shot at the same moments from its start: gi<part>_<what>_<n>, with its kinds, quads, the
     // camera's shot and the giant's sky printed; a growth with a trainer's call (YD1) has four shots of the call first
     // (_call_1 to _4) and then the growth's at the same moments of the growth as YD0's. Not part of "all".
-    // GIANTS_PART=cynthia|dynamax|double|own|finisher|guard runs one part.
+    //   7. Max Moves on the field (plan 25 · YD4): Max Flare's sun, Max Lightning's terrain and G-Max Steelsurge arriving from their blows (gi40_* to gi42_*);
+    //   8. Mega Dynamax's double change (plan 25 · YD4): the player's own Garchomp (gi45_* to gi47_*) and Cynthia's (gi48_*).
+    // GIANTS_PART=cynthia|dynamax|double|own|finisher|guard|field|megamax runs one part.
     public void GiantsMode()
     {
         string only = Environment.GetEnvironmentVariable("GIANTS_PART") ?? "";
@@ -522,6 +524,142 @@ partial class Harness
             var fell = Until(fb, c => c.Kind == CueKind.DynamaxEnd && c.Fell, 600);
             if (fell != null) Finisher(fb, "gi37_faint", fell, 0.1, 0.3, 0.55, 0.9);
             else Console.WriteLine($"  !! the giant never fell (faint age {fb.Anim.Enemy.FaintAge:0.00}, fall age {fb.Anim.Enemy.FallAge:0.00})");
+        }
+
+        // ---- 7. Max Moves on the field (plan 25 · YD4): Max Flare's sun (gi40_*), Max Lightning's terrain (gi41_*) and
+        // G-Max Steelsurge's splinters (gi42_*) arriving from their blows, each from the Max Move's line on, reading each
+        // line as it comes, and what lasts once each has arrived (_settled)
+        if (only is "" or "field")
+        {
+            string FieldNow(BattleEngine b) =>
+                $"weather {b.Anim.Weather} ({b.Anim.WeatherStrength:0.00}); terrain {string.Join("/", new[] { FieldCondition.ElectricTerrain, FieldCondition.GrassyTerrain, FieldCondition.MistyTerrain, FieldCondition.PsychicTerrain }.Where(t => b.Anim.FieldLook.Of(t).Up))}; "
+                + $"steelsurge on the foe {b.Anim.FieldLook.Of(BattleSide.Enemy, SideCondition.GMaxSteelsurge).Layers}";
+
+            // Plays the battle on from the move's choice until the field change is seen arriving, then shoots it at the
+            // ages given from when it was found and once more after it has settled
+            void Arriving(BattleEngine b, string prefix, Func<(bool Now, float Age, string What)> seen, params double[] ages)
+            {
+                (bool Now, float Age, string What) found = default;
+                for (int i = 0; i < 800 && !b.IsBattleOver; i++)
+                {
+                    found = seen();
+                    if (found.Now) break;
+                    if (b.IsWaitingForConfirm) Confirm(b); else Skip(0.05);
+                }
+                if (!found.Now) { Console.WriteLine($"  !! never arrived: {prefix} ({FieldNow(b)})"); return; }
+                Console.WriteLine($"  {prefix}: {found.What} found arriving at {found.Age:0.00} s");
+                double at = found.Age;
+                for (int i = 0; i < ages.Length; i++)
+                {
+                    if (ages[i] > at) Skip(ages[i] - at);
+                    at = Math.Max(at, ages[i]);
+                    Shot($"{prefix}_{i + 1}");
+                    Console.WriteLine($"  {prefix}_{i + 1} +{ages[i]:0.00} s: {game.BattleRenderer.Effects.Count} quads and ribbons; camera {game.BattleRenderer.Shot}; {FieldNow(b)}; {seen().What}");
+                }
+                for (int i = 0; i < 400 && b.HUD.MenuState != BattleMenuState.Main && !b.IsBattleOver; i++) { if (b.IsWaitingForConfirm) Confirm(b); else Skip(0.05); }
+                Skip(1.0);
+                Shot($"{prefix}_settled");
+                Console.WriteLine($"  {prefix}_settled: {game.BattleRenderer.Effects.Count} quads and ribbons; {FieldNow(b)}");
+            }
+
+            void Strike(BattleEngine b)
+            {
+                ToMainMenu(b);
+                b.SelectMainMenuOption(0);
+                Frames(5);
+                b.ToggleLaterMechanic();
+                b.SelectMove(0);
+                Frames(1);
+            }
+
+            var sun = OwnBattle(Giant("Charizard", false, 50, "Flamethrower"), 321, Sitter("Snorlax", 70));
+            Strike(sun);
+            Arriving(sun, "gi40_field_sun", () => sun.Anim.Cues.FirstOrDefault(c => c.Kind == CueKind.Weather) is { } w
+                ? (w.FromBlow, w.Age, $"{w.Weather} from the blow {w.FromBlow} on {w.ToSide} {w.ToSlot}") : (false, 0f, "no weather cue"), 0.08, 0.3, 0.6, 0.95);
+
+            var bolt = OwnBattle(Giant("Jolteon", false, 50, "Thunderbolt"), 322, Sitter("Snorlax", 70));
+            Strike(bolt);
+            Arriving(bolt, "gi41_field_terrain", () =>
+            {
+                var v = bolt.Anim.FieldLook.Of(FieldCondition.ElectricTerrain);
+                return (v.ArrivingFromABlow, v.Age, $"Electric Terrain from {v.From?.ToString() ?? "nowhere"}, age {v.Age:0.00}, arrival {v.Arrival:0.00}");
+            }, 0.08, 0.4, 0.8);
+
+            var steel = OwnBattle(Giant("Copperajah", true, 50, "Iron Head"), 323, Sitter("Snorlax", 70));
+            Strike(steel);
+            Arriving(steel, "gi42_field_steelsurge", () =>
+            {
+                var v = steel.Anim.FieldLook.Of(BattleSide.Enemy, SideCondition.GMaxSteelsurge);
+                return (v.ArrivingFromABlow, v.Age, $"Steelsurge from {v.From?.ToString() ?? "nowhere"}, age {v.Age:0.00}, arrival {v.Arrival:0.00}");
+            }, 0.08, 0.3, 0.6, 0.9);
+        }
+
+        // ---- 8. Mega Dynamax's double change (plan 25 · YD4): the player's own Garchomp Mega Evolving and Mega
+        // Dynamaxing through the button (gi45_own_mega_*, the hold between, gi46_own_megamax_* for the call and the
+        // growth, gi47_own_megamax_menu with its wreath), and Cynthia's as the AI does it (gi48_foe_*)
+        if (only is "" or "megamax")
+        {
+            var garchomp = Giant("Garchomp", false, 60, "Dragon Claw", "Earthquake");
+            garchomp.HeldItem = ItemDatabase.Get("Garchompite");
+            var party = new Party();
+            party.Add(garchomp);
+            var bag = new Inventory();
+            bag.AddItem(ItemDatabase.Get(PokemonPlatinumEngine.Battle.Sim.BattleCore.KeyStoneItem)!);
+            bag.AddItem(ItemDatabase.Get(PokemonPlatinumEngine.Battle.Sim.BattleCore.DynamaxBandItem)!);
+            bag.AddItem(ItemDatabase.Get(PokemonPlatinumEngine.Battle.Sim.BattleCore.MegaMaxBandItem)!);
+            game.Map = MapDatabase.Get("Sinnoh");
+            game.BattleRenderer.SetArena(BattleArena.Grass);
+            var b = new BattleEngine(new BattleSetup
+            {
+                PlayerParty = party, Inventory = bag, Pokedex = pokedex, WildPokemon = new List<Pokemon> { Sitter("Snorlax", 70) },
+                Random = new BattleRandom(331).Force(RollKind.Critical, 1).Force(RollKind.Accuracy, 0), Rules = Ruleset.Modern
+            });
+            game.Battle = b;
+            game.State = GameState.Battle;
+            ToMainMenu(b);
+            b.SelectMainMenuOption(0);
+            Frames(5);
+            b.ToggleLaterMechanic();
+            b.ToggleLaterMechanic();
+            Console.WriteLine($"  the own Mega Dynamax armed: {b.MegaDynamaxArmed}");
+            b.SelectMove(0);
+            Frames(1);
+            var mega = Until(b, c => c.Kind == CueKind.Mega, 200);
+            if (mega == null) Console.WriteLine("  !! no Mega Evolution");
+            else
+            {
+                Console.WriteLine($"  gi45_own_mega: told a Mega Dynamax {mega.MegaMax}, held {b.Anim.MegaMaxHold != null}");
+                // The Mega's light, and on past its end while its line is still on the box: the hold
+                Beat(b, "gi45_own_mega", 0.2, 0.8, 1.3, 1.9, 2.6);
+                var growth = Until(b, c => c.Kind == CueKind.Dynamax, 200);
+                if (growth == null) Console.WriteLine("  !! no growth after the Mega");
+                else
+                {
+                    Console.WriteLine($"  gi46_own_megamax: told a Mega Dynamax {growth.MegaMax}, the call {(growth.Lead > 0f ? "played" : "not played")}, hold let go {b.Anim.MegaMaxHold == null}");
+                    Growth(b, "gi46_own_megamax", growth);
+                }
+                for (int i = 0; i < 400 && b.HUD.MenuState != BattleMenuState.Main && !b.IsBattleOver; i++) { if (b.IsWaitingForConfirm) Confirm(b); else Skip(0.05); }
+                Skip(1.0);
+                Shot("gi47_own_megamax_menu");
+                Console.WriteLine($"  gi47_own_megamax_menu: {b.Anim.Player.Shown?.Form}, Mega Dynamax look {b.Anim.Player.MegaMax}, {game.BattleRenderer.Effects.Count} quads and ribbons");
+            }
+
+            // Cynthia's Garchomp as the AI does it, her first turn
+            var record = TrainerDatabase.Get("champion_cynthia_megamax");
+            if (record != null)
+            {
+                var cynthia = new Trainer { Id = record.Id };
+                TrainerDatabase.Fill(cynthia, record);
+                int ace = cynthia.Party.Members.FindIndex(p => p.Species.Name == "Garchomp");
+                if (ace > 0) { var g = cynthia.Party.Members[ace]; cynthia.Party.Members.RemoveAt(ace); cynthia.Party.Members.Insert(0, g); }
+                var cb = Begin(cynthia, "Champion", Tank("Shuckle", "Splash", "Protect"), Tank("Blissey", "Splash", "Softboiled"));
+                if (cb != null)
+                {
+                    ToMainMenu(cb);
+                    Whole(cb);
+                    Watch(cb, "gi48_foe", 2, 3);
+                }
+            }
         }
         game.State = GameState.Overworld;
     }

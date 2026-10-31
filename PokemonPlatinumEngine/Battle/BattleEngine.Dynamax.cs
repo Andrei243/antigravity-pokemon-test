@@ -93,7 +93,8 @@ public partial class BattleEngine
                 // The first Dynamax of a single battle is called by its trainer first (plan 25 · YD1); every sound,
                 // the cry at the burst and the form wait for the call
                 string? caller = Scene ? Anim.CallerFor(grown.Place.Side, grown.Place.Slot, IsFrontier) : null;
-                Anim.Dynamax(grown.Place.Side, grown.Place.Slot, grown.Gigantamax, played: Scene, caller);
+                // A Mega Dynamax is told by its form's kind, the log having no event of its own for it (plan 25 · YD4; R20c's question 12)
+                Anim.Dynamax(grown.Place.Side, grown.Place.Slot, grown.Gigantamax, played: Scene, caller, megaMax: IsMegaDynamaxForm(grown.Form));
                 float lead = caller != null ? BattleAnimator.DynamaxCallTime : 0f;
                 string sound = grown.Gigantamax ? "gigantamax" : "dynamax";
                 var side = grown.Place.Side;
