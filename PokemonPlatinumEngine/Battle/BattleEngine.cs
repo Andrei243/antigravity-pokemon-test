@@ -1236,6 +1236,15 @@ public partial class BattleEngine
         }
         if (!waitingForMessageConfirm) return;
 
+        // A growth still playing (its trainer's call included) holds the lines until it is over (plan 25 · YD6): the
+        // line read stays in the box, and its sound, cry and form keep their own beats through the hold
+        if (HUD.LevelUp == null && GrowthHold is > 0f and var hold)
+        {
+            waitingForMessageConfirm = false;
+            messageWaitTimer = hold;
+            return;
+        }
+
         // Anything the message started lands now, so what is shown never runs ahead of it
         FlushPendingEffects();
 

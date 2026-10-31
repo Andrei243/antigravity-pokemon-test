@@ -77,6 +77,73 @@ public partial class BattleEngine
         if (v.Shown == shown) v.DisplayedHp = Math.Min(v.DisplayedHp * maxHp / before, maxHp);
     }
 
+    // ------------------------------------------------------------------ the Champions with the Mega Max Band (plan 25 · YD6)
+
+    /// <summary>How long the boss box takes to widen from the growth's burst, and to narrow back over the fall, in seconds.</summary>
+    public const float BossWidens = 0.4f;
+
+    /// <summary>A single battle against one trainer whose team is a Champion's Mega Max team: its Mega Dynamax ace is the boss.</summary>
+    public bool AgainstAMegaMaxTeam =>
+        Format == BattleFormat.Single && Trainers.Count == 1 && Data.TrainerDatabase.IsMegaMaxTeam(Trainers[0].Id);
+
+    /// <summary>
+    /// How far the foe's HP box is widened into the boss box (plan 25 · YD6; style guide, "The boss box"), 0 to 1: a
+    /// foe of a Mega Max team that has Mega Dynamaxed, widened over <see cref="BossWidens"/> from its growth's burst
+    /// (at once with no growth playing, as with the scene off) and narrowed back over the fall as its end plays;
+    /// nought for anyone else. GPU-free: the animator's state alone, never the rules'.
+    /// </summary>
+    public float BossShare(CombatantView v)
+    {
+        if (!AgainstAMegaMaxTeam || v.Shown == null || !v.Present) return 0f;
+        // A single battle: the foe is the one place across
+        if (!ReferenceEquals(v, Anim[BattleSide.Enemy, 0])) return 0f;
+        if (v.Dynamaxed && v.MegaMax)
+        {
+            if (v.GiantAge < 0f) return 1f;
+            return Smooth((v.GiantAge - v.GiantLead - BattleAnimator.DynamaxGrown) / BossWidens);
+        }
+        // The fall of a Mega Dynamax: the end's cue on that place, told a Mega Dynamax's
+        var end = Anim.Cues.FirstOrDefault(c => c.Kind == CueKind.DynamaxEnd && c.MegaMax && c.ToSide == BattleSide.Enemy && c.ToSlot == 0);
+        if (end == null) return 0f;
+        return 1f - Smooth(end.Age / BattleAnimator.DynamaxShrinkTime);
+    }
+
+    /// <summary>Whether a Pokémon's HP box is the boss box now (any share of it).</summary>
+    public bool IsBoss(CombatantView v) => BossShare(v) > 0f;
+
+    private static float Smooth(float k)
+    {
+        k = Math.Clamp(k, 0f, 1f);
+        return k * k * (3f - 2f * k);
+    }
+
+    /// <summary>
+    /// How long the lines must still wait for a growth on screen (plan 25 · YD6; style guide, "The lines wait for
+    /// it"): what is left of the longest growth playing (its trainer's call included), nought for none and with the
+    /// scene off. A line read before then goes on only once it is over, as a thrown ball holds the lines, so the next
+    /// line, turn and menu never come while a Pokémon is still in its ball or growing (YD3's finding).
+    /// </summary>
+    /// <summary>A line has been read and the next waits for a growth (<see cref="GrowthHold"/>): the box shows no arrow then.</summary>
+    public bool HeldForAGrowth => !waitingForMessageConfirm && messageWaitTimer > 0f && GrowthHold > 0f;
+
+    public float GrowthHold =>
+        !Scene ? 0f : Anim.Cues.Where(c => c.Kind == CueKind.Dynamax).Select(c => c.Length - c.Age).DefaultIfEmpty(0f).Max();
+
+    /// <summary>
+    /// A Champion's words as their Pokémon grows (plan 25 · YD6): read straight after the growth's line, once the
+    /// growth is over, stepping back onto the platform as for any of their lines. The screen's alone: no moment of the
+    /// rules asks for it. Nothing with the trainers' lines off.
+    /// </summary>
+    private void SayAsItGrows(Place place)
+    {
+        if (place.Side != BattleSide.Enemy || !SpeaksTrainerLines || At(place).Trainer is not { } speaker) return;
+        if (TrainerLines.GiantFor(speaker.Id) is not { } said) return;
+        bool second = Trainers.Count > 1 && (ReferenceEquals(Trainers[1], speaker) || Trainers[1].Id == speaker.Id && Trainers[0].Id != speaker.Id);
+        Action? stepBack = Scene ? () => Anim.StepBack(second, said.Face, said.Gesture) : null;
+        interlude.Enqueue(new Line(PlayerIdentity.Fill(Text.OfData(said.Text)), stepBack, PlayerIdentity.Fill(speaker.Name)));
+        if (Scene) interlude.Enqueue(new Happening(Anim.SendOffSpeaker));
+    }
+
     /// <summary>
     /// A Dynamax or its end on screen (plan 25 · Y15): its sound and its cue; the screen's Pokémon takes the HP and
     /// the most HP the event says at once (the box shows the raised numbers from the line on), and the form (a
@@ -111,6 +178,7 @@ public partial class BattleEngine
                 else AudioManager.PlayCry(big, CryMode.Giant, pan);
                 if (Scene && big.Form != grown.Form) After(lead + BattleAnimator.DynamaxSwapTime, () => big.Form = grown.Form);
                 else big.Form = grown.Form;
+                SayAsItGrows(grown.Place);
                 break;
             }
             case DynamaxEnded ended:

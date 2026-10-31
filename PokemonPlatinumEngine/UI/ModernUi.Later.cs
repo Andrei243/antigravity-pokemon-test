@@ -145,6 +145,90 @@ internal static partial class ModernUi
         }
     }
 
+    // ------------------------------------------------------------------ the boss box (plan 25 · YD6)
+
+    /// <summary>The foe's own box, and the boss box it widens into (the style guide's "The boss box"), layout units.</summary>
+    public static readonly Rectangle BossFrom = new(56, 52, 580, 120), BossTo = new(56, 22, 1808, 100);
+
+    /// <summary>The boss box at a share of its widening (GPU-free): the foe's own box at nought, the whole at one.</summary>
+    public static Rectangle BossRect(float share)
+    {
+        float k = Math.Clamp(share, 0f, 1f);
+        return new Rectangle(BossFrom.X + (BossTo.X - BossFrom.X) * k, BossFrom.Y + (BossTo.Y - BossFrom.Y) * k,
+            BossFrom.Width + (BossTo.Width - BossFrom.Width) * k, BossFrom.Height + (BossTo.Height - BossFrom.Height) * k);
+    }
+
+    /// <summary>
+    /// The share of the most HP the boss box's bar holds (GPU-free): exactly the HP box's own, the view's displayed
+    /// HP over the screen's Pokémon's most, which <c>TakeRaisedHp</c> keeps as the giant grows and falls.
+    /// </summary>
+    public static float BossBarShare(CombatantView view) =>
+        view.Shown is { } p ? view.DisplayedHp / Math.Max(1, p.MaxHP) : 0f;
+
+    /// <summary>
+    /// The boss box's three pips (GPU-free): how many are lit (the turns left), and the alpha of the one going out as
+    /// the pill's number would fall (1 when nothing ticks).
+    /// </summary>
+    public static (int Lit, int Going, float GoingAlpha) BossPips(CombatantView view)
+    {
+        var (from, to, k) = TickOf(view);
+        return from > to ? (to, from, 1f - k) : (to, -1, 1f);
+    }
+
+    private static Color Toward(Color a, Color b, float k) => new((byte)(a.R + (b.R - a.R) * k), (byte)(a.G + (b.G - a.G) * k), (byte)(a.B + (b.B - a.B) * k), (byte)(a.A + (b.A - a.A) * k));
+
+    /// <summary>The pips' radius and the gap between their middles.</summary>
+    public const float BossPipRadius = 13f, BossPipGap = 34f;
+
+    /// <summary>
+    /// The boss box: the foe's HP box widened along the picture's top as a Mega Max team's ace Mega Dynamaxes, the
+    /// Mega Max mark on a disc, the trainer's class and name over the ace's, a bar across, its level and the three
+    /// turns as three pips; what belongs to the widened box fades in with it.
+    /// </summary>
+    private static void BossBox(CombatantView view, float share, Party? trainerParty, string trainerLine)
+    {
+        var p = view.Shown!;
+        var (jolt, ghost, _) = PunchOf(view);
+        var r = BossRect(share);
+        r.X += jolt.X;
+        r.Y += jolt.Y;
+        byte a = (byte)(255 * Math.Clamp((share - 0.4f) / 0.6f, 0f, 1f));
+
+        TrainerTray(r.X, r.Y + r.Height, trainerParty);
+
+        Panel(r, 22, skew: -0.2f, frame: Toward(Frame, DynamaxRed, share * 0.7f));
+        // The mark on its disc, coming in with the widening
+        float inset = 96f * share;
+        float nameY = r.Y + 38 - 4 * share;
+        float nameW = NameWithGender(p, r.X + 38 + inset, nameY, 36);
+        float pillW = StatusPill(r.X + 38 + inset + nameW + 14, nameY - 16, p.Status, 30);
+        if (a > 0)
+        {
+            var disc = new Vector2(r.X + 28 + 40, r.Y + r.Height / 2f);
+            UiShapes.Glow(disc, 50, 50, DynamaxRed with { A = (byte)(a * 0.45f) });
+            UiShapes.Circle(disc, 40, DynamaxRed with { A = a });
+            UiShapes.Circle(disc, 34, Color.White with { A = a });
+            if (a == 255) DrawLaterMark(LaterMark.MegaDynamax, disc);
+            // Whose ace it is, after its name on the same row
+            float after = r.X + 38 + inset + nameW + 22 + (pillW > 0 ? pillW + 14 : 0);
+            UiFonts.DrawCentered(trainerLine.ToUpperInvariant(), after, nameY + 2, 24, Muted with { A = a }, UiWeight.ExtraBold);
+        }
+        Level(r.X + r.Width - 46, nameY, p.Level, 34);
+        float barY = r.Y + 72 - 10 * share;
+        float barRight = 52 + (3 * BossPipGap + 6) * share;
+        HpBar(r.X + 38 + inset, barY, r.Width - 38 - inset - barRight, 24 + 2 * share, BossBarShare(view), ghost);
+        if (a == 0) return;
+        // The three turns as three pips, lit for each left; the one going fades out as the pill's number would fall
+        var (lit, going, goingAlpha) = BossPips(view);
+        for (int i = 0; i < 3; i++)
+        {
+            var c = new Vector2(r.X + r.Width - 46 - BossPipGap * (2 - i) - BossPipRadius, barY + 12 + share);
+            UiShapes.Ring(c, BossPipRadius, 3f, Darker(DynamaxRed, 0.35f) with { A = a });
+            if (i < lit) UiShapes.Circle(c, BossPipRadius - 3f, DynamaxRed with { A = a });
+            else if (i == going - 1) UiShapes.Circle(c, BossPipRadius - 3f, DynamaxRed with { A = (byte)(a * goingAlpha) });
+        }
+    }
+
     /// <summary>How far the pill's numbers fall as it ticks, layout units (plan 25 · YD3).</summary>
     public const float TickFall = 14f;
 

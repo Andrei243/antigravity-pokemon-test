@@ -15,7 +15,7 @@ namespace PokemonPlatinumEngine.UI;
 /// drop and the name's plate, and a light one for its lines and the mark's echoes. The card behind a portrait is
 /// the light colour too (<see cref="Backing"/>), but for a person whose hair is that colour, who has one of their own.
 /// </summary>
-public readonly record struct BattleBand(string Class, string Name, Color Base, Color Deep, Color Light, Color? Card = null)
+public readonly record struct BattleBand(string Class, string Name, Color Base, Color Deep, Color Light, Color? Card = null, bool MegaMax = false)
 {
     /// <summary>The colour of the card a portrait stands before.</summary>
     public Color Backing => Card ?? Light;
@@ -192,8 +192,62 @@ public static partial class SceneTransition
     /// Whose band a meeting opens on: the first trainer's, as the first trainer's class alone picks the way
     /// (<see cref="ForBattle"/>); null for a meeting that opens any other way.
     /// </summary>
-    public static BattleBand? BandFor(BattleMeeting meeting) =>
-        IsBand(ForBattle(meeting)) ? BandOf(meeting.Trainers[0].Class, meeting.Trainers[0].Name) : null;
+    public static BattleBand? BandFor(BattleMeeting meeting)
+    {
+        if (!IsBand(ForBattle(meeting))) return null;
+        var first = meeting.Trainers[0];
+        if (!IsMegaMax(first.Id)) return BandOf(first.Class, first.Name);
+        return MegaMaxBandOf(first.Id, first.Name);
+    }
+
+    // ------------------------------------------------------------------ the Mega Max band (plan 25 · YD6)
+
+    /// <summary>Whether a trainer's id is a Champion's Mega Max team, whose battle opens on the Mega Max band.</summary>
+    public static bool IsMegaMax(string? id) => Data.TrainerDatabase.IsMegaMaxTeam(id);
+
+    /// <summary>The Champions with a Mega Max team whom no table names (the style guide's table under "The Mega Max band").</summary>
+    public static IReadOnlyList<BattleBand> MegaMaxChampions { get; } = new[]
+    {
+        new BattleBand("Champion", "Lance", Rgb(168, 48, 52), Rgb(96, 20, 28), Rgb(244, 196, 120), MegaMax: true),
+        new BattleBand("Champion", "Steven", Rgb(96, 104, 140), Rgb(44, 48, 76), Rgb(200, 206, 236), MegaMax: true),
+        new BattleBand("Champion", "Iris", Rgb(140, 72, 160), Rgb(72, 32, 96), Rgb(236, 184, 236), MegaMax: true)
+    };
+
+    /// <summary>
+    /// The Mega Max band of a Champion's Mega Max team: Cynthia's own colours, the rival's purple for Kanto's Champion
+    /// (whatever he was named), and the three of <see cref="MegaMaxChampions"/>; always of the Champion's class.
+    /// </summary>
+    public static BattleBand MegaMaxBandOf(string id, string name)
+    {
+        BattleBand band;
+        if (id.StartsWith("kanto_champion", StringComparison.Ordinal)) band = KantoBands.Last() with { Name = name };
+        else if (Bands.FirstOrDefault(b => b.Class == "Champion" && b.Name == name) is { Name.Length: > 0 } own) band = own;
+        else if (MegaMaxChampions.FirstOrDefault(b => b.Name == name) is { Name.Length: > 0 } ours) band = ours;
+        else band = PlainBand with { Name = name };
+        return band with { Class = "Champion", MegaMax = true };
+    }
+
+    /// <summary>When the red begins to rise through a Mega Max band (the halves have met) and how long it takes to fill it.</summary>
+    public const float MegaMaxRiseFrom = 0.2f, MegaMaxRiseTakes = 1.4f;
+
+    /// <summary>The red's wash at the band's foot, its chevrons' alpha, and how fast they climb, units a second.</summary>
+    public const int MegaMaxWash = 150, MegaMaxChevrons = 130;
+    public const float MegaMaxClimb = 240f;
+
+    /// <summary>The Dynamax red and pink a Mega Max band's red rises in.</summary>
+    public static readonly Color MegaMaxRed = Rgb(232, 40, 84), MegaMaxPink = Rgb(255, 96, 150);
+
+    /// <summary>
+    /// How far the red has risen through a Mega Max band, 0 to 1 of its height (GPU-free): nought before the halves
+    /// have met and once the band is gone, eased to the whole by <see cref="MegaMaxRiseFrom"/> +
+    /// <see cref="MegaMaxRiseTakes"/>; nought for every other kind.
+    /// </summary>
+    public static float MegaMaxRise(TransitionKind kind, float seconds)
+    {
+        if (kind != TransitionKind.EliteBand || seconds < FlashSeconds || seconds >= OutSeconds(kind)) return 0f;
+        float k = Math.Clamp((seconds - FlashSeconds - MegaMaxRiseFrom) / MegaMaxRiseTakes, 0f, 1f);
+        return k * k * (3f - 2f * k);
+    }
 
     /// <summary>The beats of a band (the style guide's table), in seconds after the flashes; nothing for a kind that is no band.</summary>
     public static BandBeats Beats(TransitionKind kind)
@@ -325,6 +379,9 @@ public static partial class SceneTransition
                 }
         }
 
+        // A Mega Max band's red, rising through it from its foot (plan 25 · YD6): over the lines, under the cards
+        if (band.MegaMax) DrawRise(MegaMaxRise(kind, seconds), seconds - FlashSeconds, look.Top, look.Bottom, width);
+
         // The cards the portraits stand before: part of the band, so the League's ride their halves in and a Leader's
         // is there once the wipe has passed it
         if (league)
@@ -410,6 +467,11 @@ public static partial class SceneTransition
     private static void DrawMark(BattleBand band, Vector2 at, float come)
     {
         if (come <= 0f) return;
+        if (band.MegaMax)
+        {
+            DrawMegaMaxMark(band, at, come);
+            return;
+        }
         for (int echo = 0; echo < 3; echo++)
         {
             float shrunk = (come - 0.2f * echo) / 0.4f;
@@ -419,6 +481,67 @@ public static partial class SceneTransition
         if (come < 0.6f) return;
         MarkText(at + new Vector2(8f, 8f), MarkSize, band.Deep);
         MarkText(at, MarkSize, White);
+    }
+
+    /// <summary>
+    /// The Dynamax red rising through a Mega Max band: a wash from its foot to its front, strongest at the foot, and
+    /// rows of chevrons climbing inside it (the style guide's "The Mega Max band").
+    /// </summary>
+    private static void DrawRise(float rise, float since, float top, float bottom, float width)
+    {
+        if (rise <= 0f) return;
+        float front = bottom - (bottom - top) * rise;
+        Raylib.DrawRectangleGradientV(0, (int)front, (int)width, (int)MathF.Ceiling(bottom - front),
+            MegaMaxRed with { A = 0 }, MegaMaxRed with { A = (byte)MegaMaxWash });
+        const float Across = 120f, Apart = 60f, Tall = 14f, Half = 18f;
+        float climbed = MathF.Floor(since * MegaMaxClimb) % Apart;
+        var colour = MegaMaxPink with { A = (byte)MegaMaxChevrons };
+        for (float y = bottom + Apart - climbed; y > front + Tall; y -= Apart)
+        {
+            if (y > bottom) continue;
+            int row = (int)MathF.Round((bottom + Apart - climbed - y) / Apart);
+            for (float x = (row % 2) * Across / 2f; x < width + Half; x += Across)
+            {
+                UiShapes.Line(new Vector2(x - Half, y), new Vector2(x, y - Tall), 5f, colour);
+                UiShapes.Line(new Vector2(x, y - Tall), new Vector2(x + Half, y), 5f, colour);
+            }
+        }
+    }
+
+    /// <summary>The Mega Max mark's ring and star sizes (the style guide's): the ring 136 across and 14 thick, the star 52 to a point.</summary>
+    public const float MegaMaxRing = 68f, MegaMaxRingThick = 14f, MegaMaxStar = 52f;
+
+    /// <summary>The Mega's four colours, at the star's points: violet, pink, orange, cyan.</summary>
+    private static readonly Color[] MegaFour = { Rgb(186, 96, 255), Rgb(255, 120, 200), Rgb(255, 176, 70), Rgb(110, 220, 255) };
+
+    /// <summary>The Mega Max mark in place of "VS", stamped in as it is: echoes of the ring, then the mark over its drop.</summary>
+    private static void DrawMegaMaxMark(BattleBand band, Vector2 at, float come)
+    {
+        for (int echo = 0; echo < 3; echo++)
+        {
+            float shrunk = (come - 0.2f * echo) / 0.4f;
+            if (shrunk <= 0f || shrunk >= 1f) continue;
+            UiShapes.Ring(at, MegaMaxRing * (2f - shrunk), MegaMaxRingThick, band.Light with { A = (byte)(90 + 40 * echo) });
+        }
+        if (come < 0.6f) return;
+        MegaMaxMark(at + new Vector2(8f, 8f), band.Deep, band.Deep, false);
+        MegaMaxMark(at, MegaMaxRed, White, true);
+    }
+
+    private static void MegaMaxMark(Vector2 c, Color ring, Color star, bool dots)
+    {
+        UiShapes.Ring(c, MegaMaxRing, MegaMaxRingThick, ring);
+        // A four-pointed star: four slim triangles from the middle to the points, between them a waist of a third
+        for (int i = 0; i < 4; i++)
+        {
+            float a = i * MathF.PI / 2f - MathF.PI / 2f;
+            var point = c + new Vector2(MathF.Cos(a), MathF.Sin(a)) * MegaMaxStar;
+            var left = c + new Vector2(MathF.Cos(a - MathF.PI / 4f), MathF.Sin(a - MathF.PI / 4f)) * (MegaMaxStar * 0.3f);
+            var right = c + new Vector2(MathF.Cos(a + MathF.PI / 4f), MathF.Sin(a + MathF.PI / 4f)) * (MegaMaxStar * 0.3f);
+            UiShapes.Triangle(c, left, point, star);
+            UiShapes.Triangle(c, point, right, star);
+            if (dots) UiShapes.Circle(c + new Vector2(MathF.Cos(a), MathF.Sin(a)) * (MegaMaxStar * 0.62f), 6f, MegaFour[i]);
+        }
     }
 
     private static void MarkText(Vector2 middle, float size, Color colour)

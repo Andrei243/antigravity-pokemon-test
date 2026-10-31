@@ -247,6 +247,13 @@ public static class TrainerDatabase
     public const string BeyondSuffix = "_beyond", FirstMarker = "_first";
 
     /// <summary>
+    /// Whether a team is a Champion's Mega Max team (plan 25 · YD6): <c>_megamax</c> at the end of its id
+    /// (<c>champion_cynthia_megamax</c>) or before the starter it answers (<c>kanto_champion_megamax_squirtle</c>).
+    /// </summary>
+    public static bool IsMegaMaxTeam(string? id) =>
+        !string.IsNullOrEmpty(id) && (id.EndsWith(MegaMaxSuffix, StringComparison.Ordinal) || id.Contains(MegaMaxSuffix + "_", StringComparison.Ordinal));
+
+    /// <summary>
     /// Whether a team is a rematch's (plan 18 · W4b, L9): an id with <c>_rematch</c> in it (Platinum's Vs. Seeker rows,
     /// its League's and the Battleground's, Hoenn's of ours), a team of any trainer's row (<see cref="TrainerRecord.Rematches"/>:
     /// Johto's phone), or an Elite Four's or a Champion's team with a number after the first's id (Kanto's League once the

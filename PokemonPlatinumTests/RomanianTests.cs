@@ -415,8 +415,7 @@ public class RomanianTests
 
     /// <summary>Every line of <c>trainer-lines.json</c>, as its English is written.</summary>
     private static HashSet<string> TrainerLineTexts() =>
-        TrainerLines.All.SelectMany(e => Enum.GetValues<TrainerCue>().Select(cue => e.Value.For(cue)?.Text))
-            .Where(t => !string.IsNullOrEmpty(t)).Select(t => t!).ToHashSet(StringComparer.Ordinal);
+        TrainerLines.All.SelectMany(e => e.Value.Lines.Select(l => l.Text)).ToHashSet(StringComparer.Ordinal);
 
     [Fact]
     public void EveryTrainerLineHasARomanianOneThatFitsTheBattlesTwoLines()

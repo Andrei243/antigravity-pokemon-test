@@ -33,8 +33,8 @@ public static class TextSources
                 if (property.GetValue(professor!.Lines) is string { Length: > 0 } line) lines.Add(line);
         }
         foreach (var (_, set) in TrainerLines.All)
-            foreach (var cue in Enum.GetValues<Battle.Sim.TrainerCue>())
-                if (set.For(cue)?.Text is { Length: > 0 } line) lines.Add(line);
+            // The rules' three moments and the screen's giant (plan 25 · YD6)
+            foreach (var said in set.Lines) lines.Add(said.Text);
         // The Pokégear's radio (plan 17 · N6f): what each station says, drawn from the English and said in the language's words
         foreach (string line in Models.RadioShows.AllLines) lines.Add(line);
         // The Town Map's words about each area and landmark of every region's map (plan 17 · N6g), as the radio's are said
