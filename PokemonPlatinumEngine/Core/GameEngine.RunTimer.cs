@@ -37,7 +37,7 @@ public partial class GameEngine
     private void KeepTheTimer(float dt)
     {
         if (flow.RunState.Timer is not { } timer) return;
-        if (!gameStarted || TimerStandsStill(flow.State))
+        if (!gameStarted || TimerStandsStill(flow.State) || flow.State == GameState.ReplayList || flow.Battle is { Watching: true })
         {
             timer.Pause();
             return;

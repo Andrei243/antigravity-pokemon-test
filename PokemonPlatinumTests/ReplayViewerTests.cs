@@ -308,6 +308,7 @@ public class ReplayViewerTests
     {
         var save = game.BuildSave();
         save.PlayTimeSeconds = 0;
+        save.RunState = null; // the run timer counts the frames too (plan 13 · V10)
         return GameDataFiles.Serialize(save);
     }
 
