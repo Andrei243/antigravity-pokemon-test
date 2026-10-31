@@ -218,7 +218,8 @@ internal static partial class ModernUi
 
         if (pc.AskingRelease && under != null)
             Prompt(sw, sh, Text.Of("boxes.release.question", ("name", under.DisplayName)), Text.Of("boxes.release.body"),
-                new[] { (Text.Of("boxes.release.yes"), Red), (Text.Of("boxes.release.no"), Blue) }, -1);
+                new[] { (Text.Of("boxes.release.yes"), Red), (Text.Of("boxes.release.no"), Blue) }, -1, 1f,
+                pc.ReleaseHold.Holding ? (0, pc.ReleaseHold.Fill) : null);
     }
 
     private static string PcActionLabel(PcAction action) => Text.Of($"boxes.action.{action}");

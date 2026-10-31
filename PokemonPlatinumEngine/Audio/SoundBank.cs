@@ -30,7 +30,11 @@ public enum SoundGroup { Menu, Field, Battle, Move }
 /// decompilation's <c>pl_sound_data.json</c>, or null where the original has none or it isn't known), and where
 /// this game plays it.
 /// </summary>
-public sealed record SoundEntry(string Name, SoundGroup Group, string? Original, string PlayedWhen);
+public sealed record SoundEntry(string Name, SoundGroup Group, string? Original, string PlayedWhen)
+{
+    /// <summary>What the sound is called on screen while the options' CAPTIONS row is on (plan 12 · Q9), in the language chosen.</summary>
+    public string Caption => SoundBank.CaptionOf(Name);
+}
 
 /// <summary>
 /// The game's sound effects (plan 05 · A3), synthesised in code the first time each is asked for with
