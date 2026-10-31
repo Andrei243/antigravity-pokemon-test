@@ -7006,6 +7006,22 @@ The user approved L9's default on 2026-10-26 (docs/plans/decisions/APPROVAL-leve
   down 36, 31 and 35 to 32, 32 to 18), which the sage at 36, 30 stood on; he now stands aside for the Silver Wing (a
   double of ours at 34, 29), so the lower level, the third basement and Lugia's cave are reached that way and `WorldWalk`
   finds them. The stairs themselves still read as cliffs: laying edge-on plates as slopes is still undone, and needed
-  nowhere yet.
+  nowhere yet. *Corrected 2026-10-31*: there are no such stairs (below, "The Whirl Islands' stairs that weren't").
 - *The terrain lab's whirlpool*: the harness's `lab` map has a whirlpool of three tiles in its bay (`lab36`, `lab37`),
   which J8 left for the session that shot `lab` again.
+
+## The Whirl Islands' stairs that weren't (2026-10-31, plan 20 · J1's decision 8 looked at again)
+
+- *Asked*: an importer rule laying HeartGold's height plates that stand on their edge as slopes, so that the Whirl
+  Islands' B2F stairs (rows 31, 35 and 39 at x 30 and 31) would stop reading as cliffs.
+- *Found*: at the pinned commit HeartGold has **one** plate on its edge in all 676 chunks (chunk 464, of matrix 32,
+  which no area uses, and lying outside the chunk itself, x −23 to −14.5), so decision 8 drops nothing walked. B2F's
+  chunks (561 to 564) have none. What was taken for stairs is the original's own: row 31 at x 31 is the landing at 18
+  under the cliff of the upper floor at 21, with the ladder to the third basement on it (warp 4); rows 35 and 39 are
+  rows under **no plate at all**, the walls between the ramps of the switchback that is the floor's only way down
+  (from 36, 30 at 21, east and west down to 0, its last landing holding the warp to Lugia's cave at 31, 43). A tile under
+  no plate is no place to stand in the original either (pret's `docs/maps/bdhc.md`), and the game here leaves it at a
+  height none of its walked neighbours steps to. A scan of the 326 maps of Johto's `world.json` for three open tiles in a
+  line each a step of 1.25 to 4 below the last (a flight read as cliffs) finds none.
+- *So*: no rule was written and no world file changed. The sage at 36, 30 stands on the switchback's head, which is
+  the way down and no workaround: his standing aside for the Silver Wing stays.
