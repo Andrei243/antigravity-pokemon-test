@@ -6,7 +6,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Cerulean's water is the clearest in Kanto. Misty says that's why her Pokémon are so strong."
         ],
         "text": [
-          ""
+          "Apa din Cerulean e cea mai limpede din Kanto. Misty zice că de-aia sunt Pokémonii ei atât de puternici."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "My Slowbro naps by the water all day. Sometimes I wonder which of us is taking the other for a walk."
         ],
         "text": [
-          ""
+          "Slowbro-ul meu moțăie lângă apă toată ziua. Uneori mă întreb care dintre noi pe care îl scoate la plimbare."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Slowbro"
         ],
         "text": [
-          ""
+          "Slowbro"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Slowbro gazed at the river. After a long while, it yawned."
         ],
         "text": [
-          ""
+          "Slowbro s-a uitat la râu. După mult timp, a căscat."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "The Gym Leader likes to sneak off to the cape north of town. You'll find her there more often than not."
         ],
         "text": [
-          ""
+          "Liderului de Arenă îi place să se strecoare spre promontoriul de la nordul orașului. Acolo o vei găsi mai mereu."
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -86,7 +86,7 @@
           "Nugget Bridge is just north of here. The trainers who stood on it have all grown up and moved on."
         ],
         "text": [
-          ""
+          "Podul Pepitelor e chiar la nord de aici. Antrenorii care stăteau pe el au crescut și au plecat."
         ]
       }
     },
@@ -96,7 +96,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -104,7 +104,7 @@
           "I dropped something shiny around here once. I never found it again."
         ],
         "text": [
-          ""
+          "Am pierdut pe aici ceva strălucitor, odată. N-am mai dat de el."
         ]
       }
     },
@@ -114,7 +114,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -122,7 +122,7 @@
           "The cave behind me is far too dangerous. Nobody goes in without the League's leave, and nobody has it."
         ],
         "text": [
-          ""
+          "Peștera din spatele meu e mult prea periculoasă. Nimeni nu intră fără aprobarea Ligii, și nimeni nu o are."
         ]
       }
     }
@@ -133,7 +133,7 @@
         "Route 24\nNugget Bridge ahead."
       ],
       "text": [
-        ""
+        "Ruta 24\nPodul Pepitelor în față."
       ]
     },
     "T04_007+1": {
@@ -141,7 +141,7 @@
         "Cerulean City Pokémon Gym\nLeader: Misty\nShe swims with Water Pokémon."
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orașul Cerulean\nLider: Misty\nEa înoată cu Pokémoni de apă."
       ]
     },
     "T04_006+1": {
@@ -149,7 +149,7 @@
         "Cerulean City\nA city of clear water and blue rooftops."
       ],
       "text": [
-        ""
+        "Orașul Cerulean\nUn oraș cu apă limpede și acoperișuri albastre."
       ]
     },
     "T04_009+1": {
@@ -157,7 +157,7 @@
         "Cerulean City\nThe river runs clear all year round."
       ],
       "text": [
-        ""
+        "Orașul Cerulean\nRâul curge limpede tot anul."
       ]
     },
     "T04_008+1": {
@@ -165,7 +165,7 @@
         "The bike shop has moved to Goldenrod City.\nThe house stays, and so does its owner."
       ],
       "text": [
-        ""
+        "Magazinul de biciclete s-a mutat în Orașul Goldenrod.\nCasa rămâne, și stăpânul ei la fel."
       ]
     }
   }

@@ -47,7 +47,7 @@
         "Mesprit gave a soft cry!\nA warm feeling washes over {player}!"
       ],
       "text": [
-        ""
+        "Mesprit a scos un strigăt blând!\nO senzație caldă o cuprinde pe {player}!"
       ]
     },
     {
@@ -55,7 +55,7 @@
         "The bell hums faintly in the wind..."
       ],
       "text": [
-        ""
+        "Clopotul vibrează încet în vânt..."
       ]
     },
     {
@@ -63,7 +63,7 @@
         "Mesprit drifted off into the sky..."
       ],
       "text": [
-        ""
+        "Mesprit s-a pierdut în cer..."
       ]
     }
   ]

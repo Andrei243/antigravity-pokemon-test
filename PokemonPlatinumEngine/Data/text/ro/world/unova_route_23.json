@@ -1,15 +1,5 @@
 {
   "people": {
-    "16": {
-      "name": {
-        "en": [
-          "Azelf"
-        ],
-        "text": [
-          ""
-        ]
-      }
-    },
     "0": {
       "name": {
         "en": [
@@ -163,6 +153,16 @@
         ],
         "text": [
           "Nici măcar n-ai asudat!"
+        ]
+      }
+    },
+    "16": {
+      "name": {
+        "en": [
+          "Azelf"
+        ],
+        "text": [
+          "Azelf"
         ]
       }
     },

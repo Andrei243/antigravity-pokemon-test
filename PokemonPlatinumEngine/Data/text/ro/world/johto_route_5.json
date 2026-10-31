@@ -6,7 +6,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "The Underground Path is closed while they fix the lights. Walk round by Saffron City instead."
         ],
         "text": [
-          ""
+          "Pasajul Subteran e închis cât repară luminile. Ocolește prin Orașul Saffron."
         ]
       }
     }
@@ -25,7 +25,7 @@
         "Underground Path\nCerulean City - Vermilion City\nClosed for repairs."
       ],
       "text": [
-        ""
+        "Pasajul Subteran\nOrașul Cerulean - Orașul Vermilion\nÎnchis pentru reparații."
       ]
     }
   }

@@ -6,7 +6,7 @@
           "Misty"
         ],
         "text": [
-          ""
+          "Misty"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Gym guide"
         ],
         "text": [
-          ""
+          "Ghidul Arenei"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Diana"
         ],
         "text": [
-          ""
+          "Diana"
         ]
       },
       "before": {
@@ -34,7 +34,7 @@
           "Swimmer Diana: I've swum laps here since before you could walk. Let's see you keep up!"
         ],
         "text": [
-          ""
+          "Înotător Diana: Înot ture aici de pe când tu nici nu mergeai. Hai să te văd ținând pasul!"
         ]
       },
       "after": {
@@ -42,7 +42,7 @@
           "Swimmer Diana: I've run out of breath."
         ],
         "text": [
-          ""
+          "Înotător Diana: Mi-a mai ieșit sufletul."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Joy"
         ],
         "text": [
-          ""
+          "Joy"
         ]
       },
       "before": {
@@ -60,7 +60,7 @@
           "Swimmer Joy: Misty taught me to swim, and to battle. You'll get the lesson too!"
         ],
         "text": [
-          ""
+          "Înotător Joy: Misty m-a învățat să înot și să lupt. Vei primi și tu lecția!"
         ]
       },
       "after": {
@@ -68,7 +68,7 @@
           "Swimmer Joy: I'll need a few more lessons myself."
         ],
         "text": [
-          ""
+          "Înotător Joy: Mai am nevoie de câteva lecții."
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Briana"
         ],
         "text": [
-          ""
+          "Briana"
         ]
       },
       "before": {
@@ -86,7 +86,7 @@
           "Swimmer Briana: The water's lovely today. Come on in, if you can beat me!"
         ],
         "text": [
-          ""
+          "Înotător Briana: Apa e minunată azi. Hai la apă, dacă mă poți învinge!"
         ]
       },
       "after": {
@@ -94,7 +94,7 @@
           "Swimmer Briana: I'll just float here for a while."
         ],
         "text": [
-          ""
+          "Înotător Briana: Plutesc și eu aici o vreme."
         ]
       }
     },
@@ -104,7 +104,7 @@
           "Eddie"
         ],
         "text": [
-          ""
+          "Eddie"
         ]
       },
       "before": {
@@ -112,7 +112,7 @@
           "Sailor Eddie: I sailed every sea there is, and I still come back to Misty's pool!"
         ],
         "text": [
-          ""
+          "Marinar Eddie: Am navigat pe toate mările și tot mă întorc la piscina lui Misty!"
         ]
       },
       "after": {
@@ -120,7 +120,7 @@
           "Sailor Eddie: Sunk in a swimming pool. The shame of it."
         ],
         "text": [
-          ""
+          "Marinar Eddie: Scufundat într-o piscină. Ce rușine."
         ]
       }
     },
@@ -130,7 +130,7 @@
           "Parker"
         ],
         "text": [
-          ""
+          "Parker"
         ]
       },
       "before": {
@@ -138,7 +138,7 @@
           "Sailor Parker: Ahoy! No landlubber gets past me without a battle!"
         ],
         "text": [
-          ""
+          "Marinar Parker: Ahoi! Niciun uscat nu trece de mine fără luptă!"
         ]
       },
       "after": {
@@ -146,7 +146,7 @@
           "Sailor Parker: You've got your sea legs, all right."
         ],
         "text": [
-          ""
+          "Marinar Parker: Ai picior de marinar, într-adevăr."
         ]
       }
     }

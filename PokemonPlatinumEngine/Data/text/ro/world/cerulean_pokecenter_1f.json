@@ -6,7 +6,7 @@
           "Nurse"
         ],
         "text": [
-          ""
+          "Asistenta"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "Your Trainer Card shows your name, your money and the Pokémon you've seen. Have a look at it from the menu."
         ],
         "text": [
-          ""
+          "Cartea ta de Antrenor arată numele, banii și Pokémonii pe care i-ai văzut. Uită-te pe ea din meniu."
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "I'm sorry, the link to other players is closed for now."
         ],
         "text": [
-          ""
+          "Îmi pare rău, legătura cu alți jucători e închisă deocamdată."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "I'm sorry, the link to other players is closed for now."
         ],
         "text": [
-          ""
+          "Îmi pare rău, legătura cu alți jucători e închisă deocamdată."
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "Misty's Pokémon are Water types. Electric and Grass moves are what you want against her."
         ],
         "text": [
-          ""
+          "Pokémonii lui Misty sunt de tip Apă. Mișcările de tip Electric și Iarbă sunt ce îți trebuie împotriva ei."
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -96,7 +96,7 @@
           "The power plant east of here has been having trouble. The whole region felt the lights flicker last week."
         ],
         "text": [
-          ""
+          "Centrala electrică de la est are probleme. Toată regiunea a simțit luminile pâlpâind săptămâna trecută."
         ]
       }
     }
