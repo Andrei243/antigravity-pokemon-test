@@ -1125,7 +1125,7 @@ internal sealed class MapScene
 
         // The room's own inner walls (a room rebuilt to the original's plan: the Valley Windworks' hall and the
         // corridor below it) are cut away as the front wall is, so the camera sees over them, but only down to the
-        // wainscot: each face that looks onto the floor is the lower part of the room's wall, under the walls' dark top
+        // wainscot: each face that looks onto the floor is the lower part of the room's wall, under a cap in the room's own colours
         const int innerH = PropModels.InnerWallHeight;
         bool Floor(int x, int y) => x >= lx && x < w - 1 && y >= by && y < h - 1 && Map.GetGroundTile(x, y) != TileType.Wall;
         Art? inner = null, jog = null;
@@ -1150,7 +1150,7 @@ internal sealed class MapScene
                 if (Jog(tx, ty))
                 {
                     jog ??= kit.Face("wall.jog", T, wallH, c => GroundBaker.PaintWall(c, style, 0, theme, look));
-                    var jogTop = kit.Face($"wall.top.jog.{(s ? "s" : "")}{(wst ? "w" : "")}{(e ? "e" : "")}", T, T, c => GroundBaker.PaintWallTop(c, false, s, wst, e));
+                    var jogTop = kit.Face($"wall.top.jog.{(s ? "s" : "")}{(wst ? "w" : "")}{(e ? "e" : "")}", T, T, c => GroundBaker.PaintJogTop(c, style, theme, look, s, wst, e));
                     // Beside a lower wall its side shows too, above that wall's top
                     bool west = wst || tx - 1 >= lx && Map.GetGroundTile(tx - 1, ty) == TileType.Wall && !Jog(tx - 1, ty), east = e || tx + 1 < w - 1 && Map.GetGroundTile(tx + 1, ty) == TileType.Wall && !Jog(tx + 1, ty);
                     bool south = s || ty + 1 < h - 1 && Map.GetGroundTile(tx, ty + 1) == TileType.Wall && !Jog(tx, ty + 1);
@@ -1160,7 +1160,7 @@ internal sealed class MapScene
                 }
                 inner ??= kit.Face("wall.inner", T, innerH, c => GroundBaker.PaintWall(c, style, wallH - innerH, theme, look));
                 var top = kit.Face($"wall.top.inner.{(n ? "n" : "")}{(s ? "s" : "")}{(wst ? "w" : "")}{(e ? "e" : "")}", T, T,
-                    c => GroundBaker.PaintWallTop(c, n, s, wst, e));
+                    c => GroundBaker.PaintInnerWallTop(c, style, theme, look, n, s, wst, e));
                 // With relief a wall stands on the highest floor beside it (the Pastoria Gym's wings by its entrance)
                 kit.Origin = new Vector3(0f, Map.HasRelief ? InnerWallFoot(tx, ty) : 0f, 0f);
                 kit.Box(tx * T, tx * T + T, ty * T, ty * T + T, 0, innerH, top, s ? inner : null, wst ? inner : null, e ? inner : null);

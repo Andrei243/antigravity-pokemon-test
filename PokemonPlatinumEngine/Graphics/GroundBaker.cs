@@ -278,17 +278,7 @@ internal static class GroundBaker
     /// <summary>The same for a hall with a look of its own and no type (<paramref name="hall"/>: a room of the League; style guide, "The League's rooms").</summary>
     public static void PaintWall(PixelCanvas c, InteriorStyle style, int from, PokemonType? theme, HallStyle? hall)
     {
-        var (paper, motif, wainscot, trim, skirting) = style == InteriorStyle.Gym ? GymWall(theme, hall) : style switch
-        {
-            InteriorStyle.PokemonCenter => (Rgb(250, 242, 240), Rgb(242, 214, 216), Tone.Of(232, 108, 116), Tone.Of(248, 248, 250), Tone.Of(150, 70, 84)),
-            InteriorStyle.PokeMart => (Rgb(234, 242, 250), Rgb(214, 226, 242), Tone.Of(76, 128, 216), Tone.Of(248, 248, 250), Tone.Of(52, 84, 150)),
-            InteriorStyle.Lab => (Rgb(238, 240, 244), Rgb(224, 228, 236), Tone.Of(150, 160, 186), Tone.Of(250, 250, 252), Tone.Of(96, 104, 128)),
-            InteriorStyle.Museum => (Rgb(244, 236, 216), Rgb(230, 220, 196), Tone.Of(96, 84, 78), Tone.Of(250, 246, 232), Tone.Of(64, 56, 54)),
-            InteriorStyle.GameHall => (Rgb(44, 48, 96), Rgb(226, 182, 80), Tone.Of(62, 70, 132), Tone.Of(226, 182, 80), Tone.Of(28, 30, 62)),
-            // A covered street's shopfronts: cream stucco with a coral motif over a band of shop glass (plan 22, wave 48)
-            InteriorStyle.Street => (Rgb(240, 230, 208), Rgb(226, 104, 92), Tone.Of(110, 168, 196), Tone.Of(226, 104, 92), Tone.Of(72, 86, 110)),
-            _ => (Rgb(246, 232, 200), Rgb(232, 212, 172), Tone.Of(178, 124, 82), Tone.Of(250, 244, 226), Tone.Of(120, 84, 58))
-        };
+        var (paper, motif, wainscot, trim, skirting) = WallColours(style, theme, hall);
 
         const int crown = 6, rail = 48, panels = 52, skirt = 74;
         int w = c.Width, h = c.Height;
@@ -319,6 +309,55 @@ internal static class GroundBaker
                 c.SetRaw(x, ry, col);
             }
     }
+
+    /// <summary>
+    /// The top of a tile of a room's inner wall cut to the wainscot (style guide, "Rooms"): a cap of the wainscot's
+    /// own colour in shade, with a rail of the room's trim two texels wide only along the sides that look onto the
+    /// floor, so a wall of many tiles reads as one ledge. The frame's dark top inside the room read as navy furniture.
+    /// </summary>
+    public static void PaintInnerWallTop(PixelCanvas c, InteriorStyle style, PokemonType? theme, HallStyle? hall,
+        bool north, bool south, bool west, bool east)
+    {
+        var (_, _, wainscot, trim, _) = WallColours(style, theme, hall);
+        PaintCap(c, PixelCanvas.Shadow(wainscot.Base, 0.2f), trim, north, south, west, east);
+    }
+
+    /// <summary>
+    /// The top of a block of wall that reaches the back wall (<see cref="MapScene.BackWallJog"/>; style guide,
+    /// "Rooms"): the wall's paper cut through, in shade by a third, with the trim's rail along the sides that look
+    /// onto the floor.
+    /// </summary>
+    public static void PaintJogTop(PixelCanvas c, InteriorStyle style, PokemonType? theme, HallStyle? hall,
+        bool south, bool west, bool east)
+    {
+        var (paper, _, _, trim, _) = WallColours(style, theme, hall);
+        PaintCap(c, PixelCanvas.Shadow(paper, 0.33f), trim, false, south, west, east);
+    }
+
+    /// <summary>A cap in one colour with a rail two texels wide along the sides given: the trim's light outermost, its base inside.</summary>
+    private static void PaintCap(PixelCanvas c, Color fill, Tone trim, bool north, bool south, bool west, bool east)
+    {
+        int w = c.Width, h = c.Height;
+        c.Rect(0, 0, w, h, fill);
+        if (north) { c.HLine(0, 1, w, trim.Base); c.HLine(0, 0, w, trim.Light); }
+        if (south) { c.HLine(0, h - 2, w, trim.Base); c.HLine(0, h - 1, w, trim.Light); }
+        if (west) { c.VLine(1, 0, h, trim.Base); c.VLine(0, 0, h, trim.Light); }
+        if (east) { c.VLine(w - 2, 0, h, trim.Base); c.VLine(w - 1, 0, h, trim.Light); }
+    }
+
+    /// <summary>A room's wall colours by its look: the paper, its motif, the wainscot, the trim (crown and chair rail) and the skirting.</summary>
+    private static (Color Paper, Color Motif, Tone Wainscot, Tone Trim, Tone Skirting) WallColours(InteriorStyle style, PokemonType? theme, HallStyle? hall) =>
+        style == InteriorStyle.Gym ? GymWall(theme, hall) : style switch
+        {
+            InteriorStyle.PokemonCenter => (Rgb(250, 242, 240), Rgb(242, 214, 216), Tone.Of(232, 108, 116), Tone.Of(248, 248, 250), Tone.Of(150, 70, 84)),
+            InteriorStyle.PokeMart => (Rgb(234, 242, 250), Rgb(214, 226, 242), Tone.Of(76, 128, 216), Tone.Of(248, 248, 250), Tone.Of(52, 84, 150)),
+            InteriorStyle.Lab => (Rgb(238, 240, 244), Rgb(224, 228, 236), Tone.Of(150, 160, 186), Tone.Of(250, 250, 252), Tone.Of(96, 104, 128)),
+            InteriorStyle.Museum => (Rgb(244, 236, 216), Rgb(230, 220, 196), Tone.Of(96, 84, 78), Tone.Of(250, 246, 232), Tone.Of(64, 56, 54)),
+            InteriorStyle.GameHall => (Rgb(44, 48, 96), Rgb(226, 182, 80), Tone.Of(62, 70, 132), Tone.Of(226, 182, 80), Tone.Of(28, 30, 62)),
+            // A covered street's shopfronts: cream stucco with a coral motif over a band of shop glass (plan 22, wave 48)
+            InteriorStyle.Street => (Rgb(240, 230, 208), Rgb(226, 104, 92), Tone.Of(110, 168, 196), Tone.Of(226, 104, 92), Tone.Of(72, 86, 110)),
+            _ => (Rgb(246, 232, 200), Rgb(232, 212, 172), Tone.Of(178, 124, 82), Tone.Of(250, 244, 226), Tone.Of(120, 84, 58))
+        };
 
     private static (Color Paper, Color Motif, Tone Wainscot, Tone Trim, Tone Skirting) GymWall(PokemonType? theme, HallStyle? hall) => hall switch
     {
