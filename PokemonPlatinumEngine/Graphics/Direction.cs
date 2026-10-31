@@ -123,7 +123,7 @@ internal static class Directions
         ["Blaze Kick"] = new(SignatureShot.ImpactPunch, HeavyStop, Effect: Embers),
         ["Flare Blitz"] = new(SignatureShot.ImpactPunch, HeavyStop, Light: Lit(0.6f, 0.24f, 0.08f, 0.26f), Effect: Embers),
         ["Wood Hammer"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: Pressed, Effect: Leaves),
-        ["Earthquake"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: Jolted, Light: Lit(0.36f, 0.28f, 0.18f, 0.24f, 0.2f), Effect: Cracks),
+        ["Earthquake"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: Jolted, Light: Lit(0.36f, 0.28f, 0.18f, 0.24f, 0.2f), Effect: RingCracks),
         // Blastoise's and Empoleon's jet: the camera rides it
         ["Hydro Pump"] = new(SignatureShot.FollowProjectile, HeavyStop, Effect: Spray),
         // Sceptile's and Torterra's storm of leaves: the camera swings round it
@@ -200,7 +200,7 @@ internal static class Directions
         // Its ring of fire round the foes: the camera swings round
         ["Searing Shot"] = new(SignatureShot.Orbit, Light: Lit(0.62f, 0.3f, 0.08f, 0.28f), Effect: Embers),
         // The Swords of Justice's blade, and Keldeo's: punch-ins on the cut; steel pale, and a deep water blue
-        ["Sacred Sword"] = new(SignatureShot.ImpactPunch, HeavyStop, Light: Lit(0.7f, 0.74f, 0.8f, 0.16f), Effect: Shards),
+        ["Sacred Sword"] = new(SignatureShot.ImpactPunch, HeavyStop, Light: Lit(0.7f, 0.74f, 0.8f, 0.16f), Effect: Blades),
         ["Secret Sword"] = new(SignatureShot.ImpactPunch, HeavyStop, Light: Lit(0.22f, 0.32f, 0.56f, 0.28f)),
         // The forces of nature's storms (their Hisuian moves) round the foes: orbits, each its own colour and what it leaves
         ["Bleakwind Storm"] = new(SignatureShot.Orbit, Light: Lit(0.34f, 0.4f, 0.5f, 0.32f, 0.2f), Effect: Frost),
@@ -225,8 +225,8 @@ internal static class Directions
         // Yveltal's wing of oblivion: the camera rides it; a deep red; wisps
         ["Oblivion Wing"] = new(SignatureShot.FollowProjectile, HeavyStop, Light: Lit(0.38f, 0.05f, 0.1f, 0.4f), Effect: Wisps),
         // Zygarde's: arrows of earth from above pressing the target; waves of earth jolting it; its enforcer followed
-        ["Thousand Arrows"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: Pressed, Light: Lit(0.3f, 0.36f, 0.18f, 0.3f), Effect: Cracks),
-        ["Thousand Waves"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: Jolted, Light: Lit(0.36f, 0.4f, 0.2f, 0.3f), Effect: Cracks),
+        ["Thousand Arrows"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: Pressed, Light: Lit(0.3f, 0.36f, 0.18f, 0.3f), Effect: RingCracks),
+        ["Thousand Waves"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: Jolted, Light: Lit(0.36f, 0.4f, 0.2f, 0.3f), Effect: RingCracks),
         ["Core Enforcer"] = new(SignatureShot.FollowProjectile, HeavyStop, Light: Lit(0.2f, 0.44f, 0.24f, 0.3f), Effect: Glints),
         // Diancie's storm of diamonds round the foes: a pale, faint pink; glints
         ["Diamond Storm"] = new(SignatureShot.Orbit, Light: Lit(0.74f, 0.62f, 0.78f, 0.16f), Effect: Glints),
@@ -296,6 +296,62 @@ internal static class Directions
         ["Thunderclap"] = new(SignatureShot.ImpactPunch, HeavyStop, Light: Lit(0.5f, 0.48f, 0.14f, 0.3f), Effect: Sparks),
         ["Mighty Cleave"] = new(SignatureShot.ImpactPunch, HeavyStop, Light: Lit(0.42f, 0.34f, 0.24f, 0.26f), Effect: Shards),
         ["Tachyon Cutter"] = new(SignatureShot.FollowProjectile, Light: Lit(0.4f, 0.44f, 0.56f, 0.24f), Effect: Glints),
+
+        // ---------------------------------------------------------------- Y17e: the advanced and special moves
+        // Wound up and let go: pushed in on, the user rocked back
+        ["Sky Attack"] = new(SignatureShot.ChargePush, HeavyStop, User: Recoil, Light: Lit(0.66f, 0.6f, 0.36f, 0.2f)),
+        ["Focus Blast"] = new(SignatureShot.ChargePush, HeavyStop, User: Recoil, Light: Lit(0.5f, 0.24f, 0.1f, 0.26f), Effect: Shards),
+        // Bloodmoon Ursaluna's: a blood-red moon's light pushed in on, the user heaving as it roars it out
+        ["Blood Moon"] = new(SignatureShot.ChargePush, HeavyStop, User: Heave, Light: Lit(0.42f, 0.04f, 0.06f, 0.4f), Effect: Embers),
+        ["Chloroblast"] = new(SignatureShot.ChargePush, HeavyStop, User: Recoil, Light: Lit(0.3f, 0.56f, 0.2f, 0.1f), Effect: Leaves),
+        // Balls and cannons followed across
+        ["Shadow Ball"] = new(SignatureShot.FollowProjectile, HeavyStop, Light: Lit(0.18f, 0.1f, 0.3f, 0.34f), Effect: Wisps),
+        ["Flash Cannon"] = new(SignatureShot.FollowProjectile, HeavyStop, Light: Lit(0.6f, 0.64f, 0.7f, 0.14f), Effect: Glints),
+        ["Barb Barrage"] = new(SignatureShot.FollowProjectile, Light: Lit(0.3f, 0.12f, 0.36f, 0.26f), Effect: Shards),
+        ["Bitter Malice"] = new(SignatureShot.FollowProjectile, Light: Lit(0.14f, 0.12f, 0.26f, 0.34f), Effect: Frost),
+        ["Esper Wing"] = new(SignatureShot.FollowProjectile, Light: Lit(0.5f, 0.22f, 0.5f, 0.24f)),
+        // A body flung in: lunges
+        ["Brave Bird"] = new(SignatureShot.ImpactPunch, HeavyStop, User: Lunge, Light: Lit(0.5f, 0.6f, 0.76f, 0.22f)),
+        ["Headlong Rush"] = new(SignatureShot.ImpactPunch, HeavyStop, User: Lunge, Light: Lit(0.38f, 0.28f, 0.16f, 0.24f), Effect: RingCracks),
+        ["Wave Crash"] = new(SignatureShot.ImpactPunch, HeavyStop, User: Lunge, Light: Lit(0.14f, 0.32f, 0.56f, 0.26f), Effect: Spray),
+        ["Psyshield Bash"] = new(SignatureShot.ImpactPunch, HeavyStop, User: Lunge, Light: Lit(0.5f, 0.24f, 0.5f, 0.22f), Effect: Glints),
+        // Blows: punch-ins
+        ["Superpower"] = new(SignatureShot.ImpactPunch, HeavyStop, Light: Lit(0.5f, 0.24f, 0.1f, 0.24f)),
+        ["Stone Axe"] = new(SignatureShot.ImpactPunch, HeavyStop, Light: Lit(0.38f, 0.3f, 0.2f, 0.22f), Effect: Shards),
+        ["Dire Claw"] = new(SignatureShot.ImpactPunch, HeavyStop, Light: Lit(0.3f, 0.1f, 0.34f, 0.26f)),
+        ["Mountain Gale"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: Pressed, Light: Lit(0.5f, 0.66f, 0.84f, 0.18f), Effect: Frost),
+        // The two-turn moves' strikes: up from under for Dig and Dive, down from above for Bounce
+        ["Dig"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: TossedUp, Effect: RingCracks),
+        ["Dive"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: TossedUp, Effect: Spray),
+        ["Bounce"] = new(SignatureShot.ImpactPunch, HeavyStop, User: Dive, Target: Pressed),
+        // The Pledges: a pillar out of the ground under the target, punched in on, no stop
+        ["Fire Pledge"] = new(SignatureShot.ImpactPunch, Target: TossedUp, Light: Lit(0.6f, 0.26f, 0.08f, 0.24f), Effect: Embers),
+        ["Water Pledge"] = new(SignatureShot.ImpactPunch, Target: TossedUp, Light: Lit(0.12f, 0.3f, 0.56f, 0.24f), Effect: Spray),
+        ["Grass Pledge"] = new(SignatureShot.ImpactPunch, Target: TossedUp, Light: Lit(0.18f, 0.4f, 0.14f, 0.24f), Effect: Leaves),
+        // Round the foes: orbits
+        ["Surf"] = new(SignatureShot.Orbit, Light: Lit(0.12f, 0.3f, 0.56f, 0.22f)),
+        ["Blizzard"] = new(SignatureShot.Orbit, Light: Lit(0.5f, 0.66f, 0.84f, 0.2f, 0.2f), Effect: Frost),
+        ["Heat Wave"] = new(SignatureShot.Orbit, Light: Lit(0.64f, 0.32f, 0.1f, 0.26f), Effect: Embers),
+        ["Whirlpool"] = new(SignatureShot.Orbit, Light: Lit(0.1f, 0.26f, 0.5f, 0.24f), Effect: Spray),
+        ["Thrash"] = new(SignatureShot.Orbit, HeavyStop),
+        ["Matcha Gotcha"] = new(SignatureShot.Orbit, Light: Lit(0.3f, 0.5f, 0.2f, 0.22f), Effect: Leaves),
+        ["Raging Fury"] = new(SignatureShot.Orbit, HeavyStop, Light: Lit(0.6f, 0.2f, 0.06f, 0.3f), Effect: Embers),
+        // On its own side: no shot. A dance or a thought pulses an aura in the move's colour
+        ["Swords Dance"] = new(SignatureShot.None, Effect: Aura),
+        ["Nasty Plot"] = new(SignatureShot.None, Light: Lit(0.14f, 0.08f, 0.18f, 0.24f), Effect: Aura),
+        ["Calm Mind"] = new(SignatureShot.None, Light: Lit(0.4f, 0.3f, 0.56f, 0.18f), Effect: Aura),
+        ["Dragon Dance"] = new(SignatureShot.None, Light: Lit(0.24f, 0.2f, 0.5f, 0.22f), Effect: Aura),
+        ["Victory Dance"] = new(SignatureShot.None, Light: Lit(0.5f, 0.3f, 0.16f, 0.18f), Effect: Aura),
+        ["Take Heart"] = new(SignatureShot.None, Light: Lit(0.5f, 0.3f, 0.5f, 0.18f), Effect: Aura),
+        // Cresselia's, left before: a night's lavender over its own side
+        ["Lunar Blessing"] = new(SignatureShot.None, Light: Lit(0.4f, 0.34f, 0.62f, 0.3f), Effect: Glints),
+        // Protections show what they are made of
+        ["Spiky Shield"] = new(SignatureShot.None, Effect: Thorns),
+        ["Burning Bulwark"] = new(SignatureShot.None, Light: Lit(0.6f, 0.24f, 0.06f, 0.22f), Effect: Embers),
+        ["Shelter"] = new(SignatureShot.None, Effect: Glints),
+        // Weather: a light alone; the weather's own look is Y1's
+        ["Rain Dance"] = new(SignatureShot.None, Light: Lit(0.24f, 0.3f, 0.42f, 0.16f, 0.1f)),
+        ["Sunny Day"] = new(SignatureShot.None, Light: Lit(0.9f, 0.7f, 0.36f, 0.05f)),
     };
 
     private static StageLight Lit(float r, float g, float b, float amount, float grey = 0f) => new(new Vector3(r, g, b), amount, grey);
@@ -799,6 +855,86 @@ internal static class Directions
             var tint = (i % 3) switch { 0 => Rgb(255, 236, 250), 1 => Rgb(214, 236, 255), _ => Rgb(255, 246, 214) };
             float alpha = k < 0.1f ? k / 0.1f : 1f - (k - 0.1f) / 0.9f;
             fx.Sprite(FxShape.Shard, at, c.ToSize * 0.1f, Fx.Fade(tint, 0.95f * alpha), FxBlend.Alpha, c.Age * 4f * (i % 2 == 0 ? 1f : -1f) + i);
+        }
+    }
+
+    // ------------------------------------------------------------------ Y17e's reactions
+
+    /// <summary>
+    /// A setup move's aura (Swords Dance, Nasty Plot, Calm Mind, Dragon Dance…): two rings in the move's colour rising
+    /// up the body it is on, tilted to the lens, and four motes lifting off it, pulsing once and gone.
+    /// </summary>
+    private static void Aura(in FxCtx c, FxColors col, FxList fx)
+    {
+        float k = After(c, -0.05f, 0.8f);
+        if (k < 0f) return;
+        float alpha = k < 0.15f ? k / 0.15f : 1f - (k - 0.15f) / 0.85f;
+        for (int i = 0; i < 2; i++)
+        {
+            float rise = Math.Clamp(k * 1.3f - i * 0.3f, 0f, 1f);
+            var at = c.ToFeet + Vector3.UnitY * c.ToSize * (0.1f + 0.9f * rise);
+            float r = (c.ToHalfWidth + 0.2f * c.ToSize) * (1.1f - 0.25f * rise);
+            fx.Flat(FxShape.Ring, at, HaloTilt, r, Fx.Fade(col.Main, 0.8f * alpha * (1f - 0.5f * rise)), FxBlend.Alpha, depth: false);
+        }
+        for (int i = 0; i < 4; i++)
+        {
+            float a = (i / 4f + 0.1f * Fx.Signed(c.Seed, i, 281)) * MathF.Tau;
+            float r = c.ToHalfWidth + 0.1f * c.ToSize;
+            var at = c.ToFeet + new Vector3(MathF.Cos(a) * r, c.ToSize * (0.2f + 0.9f * k + 0.15f * Fx.Rand(c.Seed, i, 282)), 0.3f * c.ToSize);
+            fx.Sprite(FxShape.Glow, at, c.ToSize * 0.12f, Fx.Fade(col.Light, 0.9f * alpha), FxBlend.Alpha);
+        }
+    }
+
+    /// <summary>Spiky Shield: green thorns standing up round its user's feet as the shield goes up, and gone.</summary>
+    private static void Thorns(in FxCtx c, FxColors col, FxList fx)
+    {
+        float k = After(c, 0f, 0.75f);
+        if (k < 0f) return;
+        float up = Fx.EaseOut(Math.Min(1f, k * 3f));
+        float alpha = k < 0.7f ? 1f : (1f - k) / 0.3f;
+        for (int i = 0; i < 7; i++)
+        {
+            float a = (i / 7f) * MathF.PI + 0.1f * Fx.Signed(c.Seed, i, 291);
+            float r = c.ToHalfWidth + 0.15f * c.ToSize;
+            var at = c.ToFeet + new Vector3(-MathF.Cos(a) * r, c.ToSize * 0.12f * up, MathF.Sin(a) * r * 0.6f + 0.15f * c.ToSize);
+            var tint = i % 2 == 0 ? Rgb(96, 170, 64) : Rgb(150, 210, 96);
+            fx.Sprite(FxShape.Shard, at, c.ToSize * 0.14f * up, Fx.Fade(tint, 0.95f * alpha), FxBlend.Alpha, Fx.Signed(c.Seed, i, 292) * 0.4f);
+        }
+    }
+
+    /// <summary>
+    /// Cracks in a ring (Earthquake, Thousand Arrows, Thousand Waves, Dig, Headlong Rush): four dark cracks spread to both
+    /// sides of the target and before it, past its half width, so the punch-in sees them round the body, not behind it.
+    /// </summary>
+    private static void RingCracks(in FxCtx c, FxColors col, FxList fx)
+    {
+        float k = After(c, 0f, 0.9f);
+        if (k < 0f) return;
+        float alpha = k < 0.1f ? k / 0.1f : 1f - (k - 0.1f) / 0.9f;
+        float r = c.ToHalfWidth + 0.35f * c.ToSize;
+        for (int i = 0; i < 4; i++)
+        {
+            // From the left side through the front to the right side: 200° to 340° of the circle, the lens at 270°
+            float a = MathF.PI * (1.1f + 0.27f * i) + 0.08f * Fx.Signed(c.Seed, i, 301);
+            var at = c.ToFeet + new Vector3(MathF.Cos(a) * r, 0.02f, -MathF.Sin(a) * r * 0.7f + 0.1f * c.ToSize);
+            fx.Flat(FxShape.Crack, at, GroundToLens, c.ToSize * 0.5f, Fx.Fade(Rgb(52, 40, 30), 0.9f * alpha), FxBlend.Alpha, Fx.Rand(c.Seed, i, 302) * MathF.Tau);
+        }
+    }
+
+    /// <summary>Sacred Sword's blades: shards of pale steel, larger than rock's, falling round the target with a white glint each.</summary>
+    private static void Blades(in FxCtx c, FxColors col, FxList fx)
+    {
+        float k = After(c, 0.03f, 0.8f);
+        if (k < 0f) return;
+        float alpha = k < 0.75f ? 1f : (1f - k) / 0.25f;
+        for (int i = 0; i < 5; i++)
+        {
+            float x = Fx.Signed(c.Seed, i, 311) * (c.ToHalfWidth + 0.3f * c.ToSize);
+            float fall = 1f - Fx.EaseOut(Math.Min(1f, k * 1.6f + Fx.Rand(c.Seed, i, 312) * 0.15f));
+            var at = c.ToFeet + new Vector3(x, c.ToSize * (0.06f + 0.6f * fall), 0.35f * c.ToSize);
+            float spin = c.Age * 5f * (i % 2 == 0 ? 1f : -1f) + i;
+            fx.Sprite(FxShape.Shard, at, c.ToSize * 0.18f, Fx.Fade(Rgb(206, 220, 240), alpha), FxBlend.Alpha, spin);
+            if (i < 4) fx.Sprite(FxShape.Star, at, c.ToSize * 0.08f, Fx.Fade(Rgb(255, 255, 255), 0.8f * alpha * (1f - k)), FxBlend.Add, spin);
         }
     }
 }

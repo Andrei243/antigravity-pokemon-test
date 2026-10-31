@@ -236,6 +236,87 @@ public class SignatureMoveTests
         Assert.InRange(during.Quads.Count + during.Ribbons.Count, 1, 10);
     }
 
+    /// <summary>Y17e's batch: the advanced and special moves, the Pledges, the protections and what was left before.</summary>
+    public static readonly string[] Y17e =
+    {
+        "Sky Attack", "Focus Blast", "Blood Moon", "Chloroblast",
+        "Shadow Ball", "Flash Cannon", "Barb Barrage", "Bitter Malice", "Esper Wing",
+        "Brave Bird", "Headlong Rush", "Wave Crash", "Psyshield Bash",
+        "Superpower", "Stone Axe", "Dire Claw", "Mountain Gale", "Dig", "Dive", "Bounce",
+        "Fire Pledge", "Water Pledge", "Grass Pledge",
+        "Surf", "Blizzard", "Heat Wave", "Whirlpool", "Thrash", "Matcha Gotcha", "Raging Fury",
+        "Swords Dance", "Nasty Plot", "Calm Mind", "Dragon Dance", "Victory Dance", "Take Heart", "Lunar Blessing",
+        "Spiky Shield", "Burning Bulwark", "Shelter", "Rain Dance", "Sunny Day",
+    };
+
+    [Fact]
+    public void Y17esBatchIsInTheTable()
+    {
+        Assert.DoesNotContain(Y17e, m => !Directions.Has(m));
+        Assert.Empty(Y17e.Intersect(Y17b));
+        Assert.Empty(Y17e.Intersect(Y17c));
+        Assert.Empty(Y17e.Intersect(Y17d));
+        Assert.Equal(Y17e.Length, Y17e.Distinct().Count());
+        Assert.True(Directions.Table.Count >= 35 + Y17c.Length + Y17d.Length + Y17e.Length);
+    }
+
+    [Fact]
+    public void Y17esBodiesAnswer()
+    {
+        // The bodies flung in meet their targets and never rise
+        foreach (var move in new[] { "Brave Bird", "Headlong Rush", "Wave Crash", "Psyshield Bash" })
+        {
+            Assert.True(Directions.UserBody(Cue(move, I)).Toward > 0.5f, move);
+            for (float age = 0f; age < 1.3f; age += 0.01f) Assert.Equal(0f, Directions.UserBody(Cue(move, age)).Up);
+        }
+        // Bounce's user rises before the impact and comes down onto its target, which is pressed
+        Assert.True(Directions.UserBody(Cue("Bounce", I - 0.12f)).Up > 0.2f);
+        Assert.True(Directions.TargetBody(Cue("Bounce", I + 0.1f)).Squash > 0f);
+        // Dig, Dive and the Pledges toss their targets up from under them
+        foreach (var move in new[] { "Dig", "Dive", "Fire Pledge", "Water Pledge", "Grass Pledge" })
+            Assert.True(Directions.TargetBody(Cue(move, I + 0.3f)).Up > 0.1f, move);
+        // The Pledges hold nothing; the wound-up blasts rock their users back
+        foreach (var move in new[] { "Fire Pledge", "Water Pledge", "Grass Pledge" })
+            Assert.False(Directions.Of(move)!.Heavy, move);
+        foreach (var move in new[] { "Sky Attack", "Focus Blast", "Chloroblast" })
+            Assert.True(Directions.UserBody(Cue(move, I)).Toward < 0f, move);
+        // Moves on their own side have no shot
+        foreach (var move in new[] { "Swords Dance", "Nasty Plot", "Calm Mind", "Dragon Dance", "Victory Dance", "Take Heart",
+                     "Lunar Blessing", "Spiky Shield", "Burning Bulwark", "Shelter", "Rain Dance", "Sunny Day" })
+            Assert.Equal(SignatureShot.None, Directions.Of(move)!.Shot);
+    }
+
+    [Theory]
+    [InlineData("Swords Dance"), InlineData("Dragon Dance"), InlineData("Spiky Shield"), InlineData("Earthquake"),
+     InlineData("Thousand Arrows"), InlineData("Sacred Sword"), InlineData("Headlong Rush")]
+    public void Y17esReactionsComeAfterTheImpactAndGo(string move)
+    {
+        var col = MoveFx.ColorsOf(MoveDatabase.Get(move)!.Type);
+        var before = new FxList();
+        Directions.PlayEffect(new FxCtx(Cue(move, I - 0.08f), new FxPlaces()), col, before);
+        Assert.Empty(before.Quads);
+        var during = new FxList();
+        Directions.PlayEffect(new FxCtx(Cue(move, I + 0.2f), new FxPlaces()), col, during);
+        Assert.InRange(during.Quads.Count + during.Ribbons.Count, 1, 10);
+    }
+
+    [Fact]
+    public void RingCracksStandBesideTheTargetNotBehindIt()
+    {
+        // Every crack of the ring lies past the target's half width to one side, or before its feet toward the lens
+        var places = new FxPlaces();
+        var c = new FxCtx(Cue("Thousand Waves", I + 0.2f), places);
+        var fx = new FxList();
+        Directions.PlayEffect(c, MoveFx.ColorsOf(MoveDatabase.Get("Thousand Waves")!.Type), fx);
+        Assert.Equal(4, fx.Quads.Count);
+        foreach (var q in fx.Quads)
+        {
+            var off = q.Center - c.ToFeet;
+            Assert.True(MathF.Abs(off.X) > c.ToHalfWidth * 0.9f || off.Z > 0.2f * c.ToSize, $"crack at {off}");
+            Assert.True(off.Z >= -0.05f * c.ToSize, $"crack behind at {off}");
+        }
+    }
+
     // ------------------------------------------------------------------ the hit-stop
 
     [Theory]
