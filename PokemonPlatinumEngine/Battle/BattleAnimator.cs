@@ -113,6 +113,9 @@ public sealed class CombatantView
     /// <summary>Its Dynamax is a Mega Dynamax (plan 25 · YD4): its wreath and its pulse in the Mega's four colours.</summary>
     public bool MegaMax { get; internal set; }
 
+    /// <summary>A Gigantamax's own G-Max Move (plan 25 · YD7): its wreath's clouds in that move's two colours; null for none.</summary>
+    public string? GMax { get; internal set; }
+
     /// <summary>Seconds since it began to grow (<see cref="Dynamaxed"/>) or to shrink back (-1 = standing at its size).</summary>
     public float GiantAge { get; internal set; } = -1f;
 
@@ -259,6 +262,12 @@ public sealed class EffectCue
 
     /// <summary>For <see cref="CueKind.Dynamax"/> and <see cref="CueKind.DynamaxEnd"/> (plan 25 · Y15): a Gigantamax, with gold in its light.</summary>
     public bool Gigantamax { get; init; }
+
+    /// <summary>
+    /// For <see cref="CueKind.Dynamax"/> and <see cref="CueKind.DynamaxEnd"/> (plan 25 · YD7): a Gigantamax's own G-Max
+    /// Move, whose two colours its clouds take (<see cref="BattleAnimator.GMaxOfForm"/>); null for none.
+    /// </summary>
+    public string? GMax { get; init; }
 
     /// <summary>For <see cref="CueKind.DynamaxEnd"/> (plan 25 · YD3): the giant fainted, and sinks into its clouds rather than shuddering where it stands.</summary>
     public bool Fell { get; init; }
@@ -1196,13 +1205,15 @@ public sealed class BattleAnimator
     /// <see cref="DynamaxCallTime"/>, and the growth after it; null for the growth alone.
     /// </param>
     /// <param name="megaMax">A Mega Dynamax (plan 25 · YD4): in the Mega's four colours, with the Mega mark.</param>
-    public EffectCue? Dynamax(BattleSide side, int slot, bool gigantamax, bool played = true, string? caller = null, bool megaMax = false)
+    /// <param name="gmax">A Gigantamax's own G-Max Move (plan 25 · YD7): its clouds in that move's colours.</param>
+    public EffectCue? Dynamax(BattleSide side, int slot, bool gigantamax, bool played = true, string? caller = null, bool megaMax = false, string? gmax = null)
     {
         var v = this[side, slot];
         Dynamaxes++;
         v.Dynamaxed = true;
         v.Gigantamax = gigantamax;
         v.MegaMax = megaMax && !gigantamax;
+        v.GMax = gigantamax ? gmax : null;
         if (MegaMaxHold is { } held && held.ToSide == side && held.ToSlot == slot) MegaMaxHold = null;
         v.DynamaxTurnsLeft = 3;
         v.GiantAge = played ? 0f : -1f;
@@ -1211,11 +1222,40 @@ public sealed class BattleAnimator
         if (!played) return null;
         var cue = Cue(new EffectCue
         {
-            Kind = CueKind.Dynamax, Gigantamax = gigantamax, MegaMax = v.MegaMax, Move = "Transform", Type = PokemonType.Normal,
+            Kind = CueKind.Dynamax, Gigantamax = gigantamax, MegaMax = v.MegaMax, GMax = v.GMax, Move = "Transform", Type = PokemonType.Normal,
             FromSide = side, FromSlot = slot, ToSide = side, ToSlot = slot, Lead = lead
         });
         if (caller != null) Call = new DynamaxCall(caller, side, slot, cue);
         return cue;
+    }
+
+    /// <summary>
+    /// The G-Max Move whose Gigantamax form this is (plan 25 · YD7): the form's name less its "-Gmax", or the shorter
+    /// names it is made of ("Toxtricity-Amped-Gmax" is Toxtricity's, "Urshifu-Rapid-Strike-Gmax" the Rapid Strike Style's),
+    /// read from the moves' <c>gigantamaxOf</c>; null for a form that is no Gigantamax or names none. The screen's alone.
+    /// </summary>
+    public static string? GMaxOfForm(string? form)
+    {
+        if (form == null || !form.EndsWith("-Gmax", StringComparison.OrdinalIgnoreCase)) return null;
+        string name = form[..^5];
+        var byOwner = gmaxByOwner ??= BuildGMaxByOwner();
+        while (true)
+        {
+            if (byOwner.TryGetValue(name, out var move)) return move;
+            int dash = name.LastIndexOf('-');
+            if (dash <= 0) return null;
+            name = name[..dash];
+        }
+    }
+
+    private static Dictionary<string, string>? gmaxByOwner;
+
+    private static Dictionary<string, string> BuildGMaxByOwner()
+    {
+        var map = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+        foreach (var m in MoveDatabase.GetAll())
+            if (m.Kind == MoveKind.GMaxMove && m.GigantamaxOf != null) map.TryAdd(m.GigantamaxOf, m.Name);
+        return map;
     }
 
     /// <summary>
@@ -1249,7 +1289,9 @@ public sealed class BattleAnimator
         var v = this[side, slot];
         if (!v.Dynamaxed) return null;
         bool gigantamax = v.Gigantamax, megaMax = v.MegaMax;
+        string? gmax = v.GMax;
         v.Dynamaxed = v.Gigantamax = v.MegaMax = false;
+        v.GMax = null;
         v.DynamaxTurnsLeft = 0;
         v.GiantLead = 0f;
         if (Call is { } call && call.Side == side && call.Slot == slot) Call = null;
@@ -1262,7 +1304,7 @@ public sealed class BattleAnimator
         if (!played || leaving) return null;
         var cue = new EffectCue
         {
-            Kind = CueKind.DynamaxEnd, Gigantamax = gigantamax, MegaMax = megaMax, Fell = fell, FromSide = side, FromSlot = slot, ToSide = side, ToSlot = slot,
+            Kind = CueKind.DynamaxEnd, Gigantamax = gigantamax, MegaMax = megaMax, GMax = gmax, Fell = fell, FromSide = side, FromSlot = slot, ToSide = side, ToSlot = slot,
             Seed = ++giantCount * 4583 + slot * 17 + (int)side
         };
         cues.Add(cue);
@@ -1272,7 +1314,7 @@ public sealed class BattleAnimator
     private int giantCount;
 
     /// <summary>A Dynamax as the rules have it once a menu opens, with the turns it has left: nothing played.</summary>
-    public void SettleDynamax(BattleSide side, int slot, bool dynamaxed, int turnsLeft, bool gigantamax, bool megaMax = false)
+    public void SettleDynamax(BattleSide side, int slot, bool dynamaxed, int turnsLeft, bool gigantamax, bool megaMax = false, string? gmax = null)
     {
         var v = this[side, slot];
         if (v.Dynamaxed != dynamaxed)
@@ -1283,6 +1325,9 @@ public sealed class BattleAnimator
             v.GiantAge = -1f;
             v.GiantLead = 0f;
         }
+        // A Gigantamax's own colours (plan 25 · YD7), as the rules' form has them; kept where the form says nothing
+        if (!v.Gigantamax) v.GMax = null;
+        else if (gmax != null) v.GMax = gmax;
         int now = dynamaxed ? Math.Clamp(turnsLeft, 1, 3) : 0;
         // The pill ticks down as the menu settles a lower count, never up (plan 25 · YD3)
         if (now > 0 && v.DynamaxTurnsLeft > now)
@@ -1668,6 +1713,7 @@ public sealed class BattleAnimator
         v.Substitute = null;
         // ...and at its own size (a Dynamax ends as its Pokémon leaves: plan 25 · Y15)
         v.Dynamaxed = v.Gigantamax = false;
+        v.GMax = null;
         v.GiantAge = -1f;
         v.GiantLead = 0f;
         v.DynamaxTurnsLeft = 0;

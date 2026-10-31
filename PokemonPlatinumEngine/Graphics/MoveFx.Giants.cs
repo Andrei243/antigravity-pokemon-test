@@ -90,7 +90,7 @@ internal static partial class MoveFx
                 var feet = places.Feet(side, slot);
                 float h = places.Height(side, slot), w = places.HalfWidth(side, slot);
                 int seed = slot * 37 + s * 101 + 7;
-                if (giant) Wreath(feet, h, w, anim.Time, seed, v.Gigantamax, shown, fx, v.DynamaxTurnsLeft, v.MegaMax);
+                if (giant) Wreath(feet, h, w, anim.Time, seed, v.Gigantamax, shown, fx, v.DynamaxTurnsLeft, v.MegaMax, v.GMax);
                 else if (v.Shown!.Terastallized is { } type) Crown(feet, h, TeraColours(type.IsStellar, type.Type, anim.Time * 0.25f), anim.Time, type.IsStellar, shown, 0f, fx);
             }
     }
@@ -109,7 +109,7 @@ internal static partial class MoveFx
     /// light on three of them, a glow under it and two motes rising up its body (a Gigantamax's gold). At most 12 quads.
     /// Round the feet, never over the head: a giant's head stands near the picture's top, and over it under the HP box.
     /// </summary>
-    private static void Wreath(Vector3 feet, float h, float w, float time, int seed, bool gold, float strength, FxList fx, int turns = 3, bool megaMax = false)
+    private static void Wreath(Vector3 feet, float h, float w, float time, int seed, bool gold, float strength, FxList fx, int turns = 3, bool megaMax = false, string? gmax = null)
     {
         if (strength <= 0f) return;
         // It thins a cloud a turn, and flickers on the last (plan 25 · YD3)
@@ -122,10 +122,10 @@ internal static partial class MoveFx
             var p = feet + new Vector3(MathF.Cos(a) * rx, h * (0.07f + 0.02f * MathF.Sin(time * 2f + i)), MathF.Sin(a) * rx * 0.6f);
             bool behind = MathF.Sin(a) < 0f;
             // A Mega Dynamax's clouds take the Mega's four colours by turns (plan 25 · YD4)
-            fx.Sprite(FxShape.Smoke, p, h * 0.2f, Fx.Fade(megaMax ? MegaMaxCloud(i) : CloudRed, strength * 0.7f), FxBlend.Alpha, a + time * 0.4f, depth: behind);
+            fx.Sprite(FxShape.Smoke, p, h * 0.2f, Fx.Fade(megaMax ? MegaMaxCloud(i) : GMaxCloud(gmax, i) ?? CloudRed, strength * 0.7f), FxBlend.Alpha, a + time * 0.4f, depth: behind);
             if (i % 2 == 0)
                 fx.Sprite(FxShape.Glow, p + Vector3.UnitY * h * 0.02f, h * 0.13f,
-                    Fx.Fade(megaMax ? MegaColours[(i + 1) % 4] : gold && i == 0 ? DynaGold : DynaPink, strength * 0.7f), depth: behind);
+                    Fx.Fade(megaMax ? MegaColours[(i + 1) % 4] : gold && i == 0 ? DynaGold : GMaxGlow(gmax, i / 2) ?? DynaPink, strength * 0.7f), depth: behind);
         }
         fx.Flat(FxShape.Glow, feet + Vector3.UnitY * h * 0.02f, Vector3.UnitY, w + h * 0.3f, Fx.Fade(megaMax ? MegaMaxRed : DynaRed, strength * 0.45f));
         for (int i = 0; i < 2; i++)
@@ -211,8 +211,8 @@ internal static partial class MoveFx
                 float a = i * MathF.Tau / 8f + t * 2.2f;
                 var p = feet + new Vector3(MathF.Cos(a) * r, h * (0.08f + 0.06f * Fx.Rand(c.Seed, i, 411)), MathF.Sin(a) * r * 0.6f);
                 bool behind = MathF.Sin(a) < 0f;
-                fx.Sprite(FxShape.Smoke, p, h * 0.22f, Fx.Fade(mega ? MegaMaxCloud(i) : CloudRed, gather * 0.75f), FxBlend.Alpha, a, depth: behind);
-                if (i % 2 == 0) fx.Sprite(FxShape.Glow, p, h * 0.14f, Fx.Fade(mega ? MegaColours[(i / 2 + 1) % 4] : DynaPink, gather * 0.6f), depth: behind);
+                fx.Sprite(FxShape.Smoke, p, h * 0.22f, Fx.Fade(mega ? MegaMaxCloud(i) : GMaxCloud(c.Cue.GMax, i) ?? CloudRed, gather * 0.75f), FxBlend.Alpha, a, depth: behind);
+                if (i % 2 == 0) fx.Sprite(FxShape.Glow, p, h * 0.14f, Fx.Fade(mega ? MegaColours[(i / 2 + 1) % 4] : GMaxGlow(c.Cue.GMax, i / 2) ?? DynaPink, gather * 0.6f), depth: behind);
             }
             for (int i = 0; i < 10; i++)
             {
@@ -235,7 +235,7 @@ internal static partial class MoveFx
         // The burst: a red ring, cloud thrown out, a flash; a Gigantamax's gold sparks and bolts in the clouds
         Fx.Shockwave(fx, t, middle, Vector3.Zero, B, 0.5f, h * 1.4f, Fx.Fade(mega ? MegaViolet : DynaRed, 0.9f));
         Fx.Shockwave(fx, t, feet + Vector3.UnitY * h * 0.03f, Vector3.UnitY, B, 0.55f, h * 1.3f, Fx.Fade(mega ? MegaCyan : DynaPink, 0.8f));
-        Fx.Burst(fx, c.Seed, t, middle, h, B, 0.6f, 10, FxShape.Smoke, mega ? MegaMaxCloud(0) : CloudRed, mega ? MegaOrange : DynaPink, 0.18f, 0.8f, 0f, FxBlend.Alpha, salt: 61);
+        Fx.Burst(fx, c.Seed, t, middle, h, B, 0.6f, 10, FxShape.Smoke, mega ? MegaMaxCloud(0) : GMaxCloud(c.Cue.GMax, 0) ?? CloudRed, mega ? MegaOrange : GMaxCloud(c.Cue.GMax, 1) ?? DynaPink, 0.18f, 0.8f, 0f, FxBlend.Alpha, salt: 61);
         fx.ScreenFlash(mega ? Rgb(236, 214, 255) : Rgb(255, 200, 220), 0.25f * Fx.Envelope(real, B - 0.02f, B + 0.03f, B + 0.06f, B + 0.25f));
         // The shockwave (plan 25 · YD1): a ring on the ground out across the stage, and dust thrown off the platform's rim
         Fx.Shockwave(fx, t, feet + Vector3.UnitY * h * 0.02f, Vector3.UnitY, B, 0.7f, h * GiantWaveReach, Fx.Fade(mega ? MegaPink : DynaPink, 0.75f));
@@ -255,7 +255,7 @@ internal static partial class MoveFx
 
         // Settling: the clouds closing over its head into its wreath
         float settle = Fx.Envelope(t, 1.0f, 1.25f, BattleAnimator.DynamaxTime - BattleAnimator.ConditionReturnTime, BattleAnimator.DynamaxTime);
-        if (settle > 0f) Wreath(feet, h, w, t, c.Seed, gold, settle, fx, megaMax: mega);
+        if (settle > 0f) Wreath(feet, h, w, t, c.Seed, gold, settle, fx, megaMax: mega, gmax: c.Cue.GMax);
 
         // A Mega Dynamax's Mega mark (plan 25 · YD4): flaring on the body's middle, before it, as it grows, brightest at
         // the burst and fading as the wreath settles
@@ -328,7 +328,7 @@ internal static partial class MoveFx
                 float r = c.Cue.Fell ? rx * (1f - 0.3f * draw) : rx * (1f - 0.75f * draw);
                 float y = c.Cue.Fell ? h * (0.07f + 0.1f * draw) : h * (0.07f + 0.45f * draw);
                 var p = feet + new Vector3(MathF.Cos(a) * r, y, MathF.Sin(a) * r * 0.6f);
-                fx.Sprite(FxShape.Smoke, p, h * 0.2f * (1f + (c.Cue.Fell ? 0.4f * draw : -0.4f * draw)), Fx.Fade(c.Cue.MegaMax ? MegaMaxCloud(i) : CloudRed, 0.7f * (1f - 0.5f * draw)), FxBlend.Alpha, a, depth: MathF.Sin(a) < 0f);
+                fx.Sprite(FxShape.Smoke, p, h * 0.2f * (1f + (c.Cue.Fell ? 0.4f * draw : -0.4f * draw)), Fx.Fade(c.Cue.MegaMax ? MegaMaxCloud(i) : GMaxCloud(c.Cue.GMax, i) ?? CloudRed, 0.7f * (1f - 0.5f * draw)), FxBlend.Alpha, a, depth: MathF.Sin(a) < 0f);
             }
         // Red light bleeding out of it in streams while it shudders
         if (!c.Cue.Fell && t < S + 0.1f)

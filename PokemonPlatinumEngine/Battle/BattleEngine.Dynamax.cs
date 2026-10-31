@@ -161,7 +161,8 @@ public partial class BattleEngine
                 // the cry at the burst and the form wait for the call
                 string? caller = Scene ? Anim.CallerFor(grown.Place.Side, grown.Place.Slot, IsFrontier) : null;
                 // A Mega Dynamax is told by its form's kind, the log having no event of its own for it (plan 25 · YD4; R20c's question 12)
-                Anim.Dynamax(grown.Place.Side, grown.Place.Slot, grown.Gigantamax, played: Scene, caller, megaMax: IsMegaDynamaxForm(grown.Form));
+                Anim.Dynamax(grown.Place.Side, grown.Place.Slot, grown.Gigantamax, played: Scene, caller, megaMax: IsMegaDynamaxForm(grown.Form),
+                    gmax: grown.Gigantamax ? BattleAnimator.GMaxOfForm(grown.Form) : null);
                 float lead = caller != null ? BattleAnimator.DynamaxCallTime : 0f;
                 string sound = grown.Gigantamax ? "gigantamax" : "dynamax";
                 var side = grown.Place.Side;

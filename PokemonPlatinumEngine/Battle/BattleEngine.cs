@@ -423,7 +423,7 @@ public partial class BattleEngine
             Anim.SettleCharge(place.Side, place.Slot, theirs.IsActive && theirs.Volatile.Charging);
             // A Dynamax and the turns it has left, for the HP box (plan 25 · Y15)
             Anim.SettleDynamax(place.Side, place.Slot, theirs.IsActive && theirs.Volatile.Dynamaxed, 3 - theirs.Volatile.DynamaxTurns, theirs.Volatile.Gigantamaxed,
-                theirs.Pokemon?.FormData?.Kind == FormKind.MegaDynamax);
+                theirs.Pokemon?.FormData?.Kind == FormKind.MegaDynamax, BattleAnimator.GMaxOfForm(theirs.Pokemon?.Form));
             // Every Max Guard came down with the turn (plan 25 · YD3)
             Anim.SettleGuard(place.Side, place.Slot);
             // What lasts on it (plan 09 · L2): the lines have told all of it already; this catches a Pokémon changed from outside

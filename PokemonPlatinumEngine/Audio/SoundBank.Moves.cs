@@ -29,7 +29,7 @@ public static partial class SoundBank
     public static string MoveSound(string move, PokemonType type) =>
         IsZMove(move) ? ZMoveSound(type) :
         move == "Max Guard" ? "max_guard" :
-        IsMaxMove(move) ? MaxMoveSound(type) :
+        IsMaxMove(move) ? (Exists(GMaxSound(move)) ? GMaxSound(move) : MaxMoveSound(type)) :
         move.Length > 0 && Exists("use_" + MoveKey(move)) ? "use_" + MoveKey(move) : MoveSound(type);
 
     /// <summary>The moves whose animation is the user's own voice, with the cry modes the original plays them in, in order.</summary>

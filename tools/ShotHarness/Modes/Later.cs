@@ -318,6 +318,22 @@ partial class Harness
             Skip(BattleAnimator.DynamaxTime + 0.3);
             Shot("lt19_both_giant");
             Console.WriteLine($"  lt19: foe x{BattleAnimator.GiantOf(board.Anim.Enemy, false):0.00}, own x{BattleAnimator.GiantOf(board.Anim.Player, true):0.00}");
+
+            // The Gigantamax signatures (plan 25 · YD7): the 33 G-Max Moves alone, at their set piece and late in it
+            // (the five with a set piece of their own beside the rest's marks), and every Gigantamax's growth in its own
+            // colours as its clouds gather on the foe. Last, so every shot before them stands as it was.
+            board.Anim.Undynamax(BattleSide.Enemy, 0, played: false);
+            board.Anim.Undynamax(BattleSide.Player, 0, played: false);
+            var gmaxMoves = maxMoves.Where(m => m.Kind == MoveKind.GMaxMove).ToList();
+            foreach (var (boardName, age) in new[] { ("lt_gmax_board_piece", 0.75), ("lt_gmax_board_late", 1.1) })
+                Board(boardName, gmaxMoves.Count, i => (gmaxMoves[i].Name, () => Start(gmaxMoves[i])), age);
+            Board("lt_gmax_board_growth", gmaxMoves.Count, i => (gmaxMoves[i].Name, () =>
+            {
+                board.Anim.Undynamax(BattleSide.Enemy, 0, played: false);
+                Skip(BattleAnimator.DynamaxTime + 0.4);
+                board.Anim.Dynamax(BattleSide.Enemy, 0, true, gmax: gmaxMoves[i].Name);
+            }), 0.45);
+            board.Anim.Undynamax(BattleSide.Enemy, 0, played: false);
         }
         game.State = GameState.Overworld;
     }
