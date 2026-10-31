@@ -185,7 +185,8 @@ internal readonly struct FxCtx
     public readonly Vector3 Foe;
     public readonly float FoeSize;
 
-    public float Age => Cue.Age;
+    /// <summary>The cue's shown age (plan 25 · Y17): its age, held a moment at a heavy signature move's impact.</summary>
+    public float Age => Cue.ShownAge;
     public int Seed => Cue.Seed;
 
     public FxCtx(EffectCue cue, FxPlaces places)

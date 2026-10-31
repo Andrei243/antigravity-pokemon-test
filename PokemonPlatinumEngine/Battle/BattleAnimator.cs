@@ -243,6 +243,13 @@ public sealed class EffectCue
 
     public float Age { get; internal set; }
 
+    /// <summary>
+    /// The age the cue is drawn at (plan 25 · Y17's hit-stop): <see cref="Age"/> itself, but for a heavy signature
+    /// move's landed strike, which holds at the impact a moment and then catches up to end on time
+    /// (<see cref="Graphics.Directions.Remap"/>). The animator's clock and the line's impact keep <see cref="Age"/>.
+    /// </summary>
+    public float ShownAge => Graphics.Directions.ShownAge(this);
+
     /// <summary>A move the user aims at itself (Swords Dance, Harden).</summary>
     public bool OnSelf => FromSide == ToSide && FromSlot == ToSlot;
 

@@ -70,7 +70,12 @@ internal static partial class MoveFx
                 else if (cue.ZMove) ZMoveRecipe(cue.Move, cue.Type)(c, ColorsOf(cue.Type), fx);
                 // And a Max Move or a G-Max Move its own (plan 25 · Y15)
                 else if (cue.MaxMove) MaxMoveRecipe(cue.Move, cue.Type)(c, ColorsOf(cue.Type), fx);
-                else RecipeFor(cue.Move, cue.Type, cue.Category, cue.OnSelf)(c, ColorsOf(cue.Type), fx);
+                else
+                {
+                    RecipeFor(cue.Move, cue.Type, cue.Category, cue.OnSelf)(c, ColorsOf(cue.Type), fx);
+                    // A signature move's own layer over its look (plan 25 · Y17)
+                    Directions.PlayEffect(c, ColorsOf(cue.Type), fx);
+                }
                 break;
             case CueKind.StatUp:
                 StatChange(c, fx, up: true);

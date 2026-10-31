@@ -71,6 +71,10 @@ partial class Harness
                 }
                 string key = SoundBank.MoveKey(move.Name);
                 var cue = Start(move);
+                // A signature move (plan 25 · Y17) is watched as a battle's line would have it, not from the menu's
+                // overview, so its camera is seen
+                bool staged = Directions.Has(move.Name);
+                if (staged) b.HUD.MenuState = BattleMenuState.Message;
                 Console.WriteLine($"  {move.Name} ({Whose(move.Name)}): sound {SoundBank.MoveSound(move.Name, move.Type)}");
                 double at = 0;
                 // MOVES_AGES=0.25,0.33 asks for other moments (a look is judged where it is strongest)
@@ -96,9 +100,12 @@ partial class Harness
                     var lit = game.BattleRenderer.StageLit;
                     var user = BodyMotions.Of(b.Anim, BattleSide.Player, 0);
                     var target = BodyMotions.Of(b.Anim, BattleSide.Enemy, 0);
-                    Console.WriteLine($"    {moment} at {cue.Age:0.00} s: {Drawn(cue, cue.Age)} quads and ribbons; stage {lit.Amount:0.00} toward ({lit.Color.X:0.00}, {lit.Color.Y:0.00}, {lit.Color.Z:0.00}) grey {lit.Grey:0.00}"
+                    // A signature move's shot and its shown age (plan 25 · Y17)
+                    string shot = staged ? $"; shot {game.BattleRenderer.Shot}, shown at {cue.ShownAge:0.00} s" : "";
+                    Console.WriteLine($"    {moment} at {cue.Age:0.00} s: {Drawn(cue, cue.Age)} quads and ribbons{shot}; stage {lit.Amount:0.00} toward ({lit.Color.X:0.00}, {lit.Color.Y:0.00}, {lit.Color.Z:0.00}) grey {lit.Grey:0.00}"
                         + (user.Moves ? $"; user {user}" : "") + (target.Moves ? $"; target {target}" : ""));
                 }
+                if (staged) b.HUD.MenuState = BattleMenuState.Main;
             }
             for (int first = 0; first < rows.Count; first += 4)
             {
