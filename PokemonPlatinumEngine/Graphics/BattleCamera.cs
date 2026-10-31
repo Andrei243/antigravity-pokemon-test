@@ -17,7 +17,7 @@ internal readonly record struct CameraShot(Vector3 Position, Vector3 Target, flo
 }
 
 /// <summary>What the director is showing.</summary>
-internal enum ShotKind { Intro, Overview, SendOut, Attacker, Target, Self, Critical, Throw, Ball, BallClose, Faint, Trainer, Rotation }
+internal enum ShotKind { Intro, Overview, SendOut, Attacker, Target, Self, Critical, Throw, Ball, BallClose, Faint, Trainer, Rotation, Push, Follow, Punch, Orbit }
 
 /// <summary>
 /// The battle's camera director (plan 04 · G8). The overview is the DS-like framing; the director sweeps in at the
@@ -53,6 +53,12 @@ internal sealed class BattleCamera
     /// <summary>The widest lens a shot may take on to frame a big foe, degrees.</summary>
     public const float WidestFov = 40f;
 
+    /// <summary>
+    /// How much of the camera's own moves play (plan 25 · Y17, YD; plan 12 · Q9's reduce-motion option): 1 normally,
+    /// 0 for none, where a signature move takes the ordinary move's shots and no hit-stop holds the picture.
+    /// </summary>
+    public static float Motion { get; set; } = 1f;
+
     public CameraShot Current { get; private set; }
     public ShotKind Kind { get; private set; } = ShotKind.Intro;
     private bool started;
@@ -71,6 +77,9 @@ internal sealed class BattleCamera
         bool cut = !started || kind == ShotKind.Intro
             || (kind == ShotKind.Target && lastKind == ShotKind.Attacker && cue == lastCue)
             || (kind == ShotKind.Critical && lastKind != ShotKind.Critical)
+            // A signature move's snap from its push to the target, and its punch-in (plan 25 · Y17)
+            || (kind == ShotKind.Target && lastKind == ShotKind.Push && cue == lastCue)
+            || (kind == ShotKind.Punch && lastKind != ShotKind.Punch)
             || CrossesPlayerSide(Current.Position, shot.Position);
         Current = cut ? shot : CameraShot.Lerp(Current, shot, 1f - MathF.Exp(-Math.Max(0f, dt) / Smoothing));
         started = true;
@@ -190,17 +199,22 @@ internal sealed class BattleCamera
         EffectCue? move = null;
         for (int i = anim.Cues.Count - 1; i >= 0; i--)
             if (anim.Cues[i].Kind == CueKind.Move) { move = anim.Cues[i]; break; }
-        if (move != null && move.Age < MoveShotEnd)
+        if (move != null)
         {
-            if (move.OnSelf) return (Close(places, move.FromSide, move.FromSlot, 2.9f), ShotKind.Self, move);
-            float cut = move.Category == MoveCategory.Status ? 0.3f : CutTime;
-            // An attack sent ahead is watched where it lands from the start: nobody need stand where it was sent from (plan 25 · Y3)
-            if (move.Age < cut && !move.Arriving) return (Close(places, move.FromSide, move.FromSlot, 3.0f), ShotKind.Attacker, move);
-            var targets = TargetsOf(anim, move);
-            var target = TargetShot(places, targets, move.Category == MoveCategory.Status ? 3.4f : 3.0f);
-            if (move.Critical && move.Age >= BattleAnimator.ImpactTime && move.Age < BattleAnimator.ImpactTime + 0.4f)
-                return (TargetShot(places, targets, 2.1f), ShotKind.Critical, move);
-            return (target, ShotKind.Target, move);
+            // A signature move's own shot (plan 25 · Y17), laid over the ordinary one by the motion number
+            float motion = Math.Clamp(Motion, 0f, 1f);
+            if (motion > 0f && SignatureOf(move) is { } signature && move.Age < Directions.ShotEnd)
+            {
+                var (sig, sigKind) = SignatureShotOf(signature, anim, places, move);
+                if (motion >= 1f) return (sig, sigKind, move);
+                var (plain, plainKind) = move.Age < MoveShotEnd ? MoveShot(anim, places, move) : (Overview(anim.Time), ShotKind.Overview);
+                return (CameraShot.Lerp(plain, sig, motion), motion >= 0.5f ? sigKind : plainKind, move);
+            }
+            if (move.Age < MoveShotEnd)
+            {
+                var (shot, kind) = MoveShot(anim, places, move);
+                return (shot, kind, move);
+            }
         }
 
         // A Pokémon coming out of its ball
@@ -246,6 +260,119 @@ internal sealed class BattleCamera
 
         if (anim.Time < 1.8f) return (Intro(anim.Time), ShotKind.Intro, null);
         return (Overview(anim.Time), ShotKind.Overview, null);
+    }
+
+    /// <summary>An ordinary move's shots: the attacker, the cut to its target, a critical hit's punch-in.</summary>
+    private static (CameraShot Shot, ShotKind Kind) MoveShot(BattleAnimator anim, FxPlaces places, EffectCue move)
+    {
+        if (move.OnSelf) return (Close(places, move.FromSide, move.FromSlot, 2.9f), ShotKind.Self);
+        float cut = move.Category == MoveCategory.Status ? 0.3f : CutTime;
+        // An attack sent ahead is watched where it lands from the start: nobody need stand where it was sent from (plan 25 · Y3)
+        if (move.Age < cut && !move.Arriving) return (Close(places, move.FromSide, move.FromSlot, 3.0f), ShotKind.Attacker);
+        var targets = TargetsOf(anim, move);
+        var target = TargetShot(places, targets, move.Category == MoveCategory.Status ? 3.4f : 3.0f);
+        if (move.Critical && move.Age >= BattleAnimator.ImpactTime && move.Age < BattleAnimator.ImpactTime + 0.4f)
+            return (TargetShot(places, targets, 2.1f), ShotKind.Critical);
+        return (target, ShotKind.Target);
+    }
+
+    // ------------------------------------------------------------------ signature moves (plan 25 · Y17)
+
+    /// <summary>The furthest south a projectile's follow may stand: 3.2 units in front of the player's platform.</summary>
+    public static readonly float FollowLimit = BattleStage.PlayerSpot.Z - 3.2f;
+
+    /// <summary>The widest a signature's orbit swings round a foe, and round the player's own Pokémon, radians.</summary>
+    public const float OrbitSwingFoe = 1.8f, OrbitSwingOwn = 1.2f;
+
+    /// <summary>The signature shot a move cue takes, if any: a strike at another, or the charge turn of a pushing move.</summary>
+    public static SignatureShot? SignatureOf(EffectCue move)
+    {
+        if (Directions.For(move) is not { Shot: not SignatureShot.None } d) return null;
+        if (move.Charging) return d.Shot == SignatureShot.ChargePush ? d.Shot : null;
+        return move.OnSelf ? null : d.Shot;
+    }
+
+    /// <summary>
+    /// A shot riding with a projectile at <paramref name="point"/>: from the overview's side turned 0.6 rad and lifted,
+    /// fitting <paramref name="size"/>, and never further south than <see cref="FollowLimit"/>; a camera that would be
+    /// is brought north to it, looking back at the point with a lens widened to keep the size (up to <see cref="WidestFov"/>).
+    /// </summary>
+    public static CameraShot FollowShot(Vector3 point, float size)
+    {
+        var shot = Frame(point, size, -0.6f, 0.12f);
+        if (shot.Position.Z <= FollowLimit) return shot;
+        var at = shot.Position with { Z = FollowLimit };
+        float dist = Math.Max(1f, Vector3.Distance(at, point));
+        float fov = Math.Clamp(2f * MathF.Atan(size / (2f * dist)) * 180f / MathF.PI, OverviewFov, WidestFov);
+        return new CameraShot(at, point, fov);
+    }
+
+    private static float Smooth(float t)
+    {
+        t = Math.Clamp(t, 0f, 1f);
+        return t * t * (3f - 2f * t);
+    }
+
+    /// <summary>
+    /// A signature move's shot at its shown age (style guide, "Camera (G8)"): the charge-up push, the follow of the
+    /// projectile, the impact punch-in or the orbit. A pure function of the cue and the places.
+    /// </summary>
+    public static (CameraShot Shot, ShotKind Kind) SignatureShotOf(SignatureShot kind, BattleAnimator anim, FxPlaces places, EffectCue move)
+    {
+        float a = move.ShownAge;
+        const float I = BattleAnimator.ImpactTime;
+        CameraShot User(float scale) => Close(places, move.FromSide, move.FromSlot, scale);
+        var targets = TargetsOf(anim, move);
+        CameraShot Target(float scale) => TargetShot(places, targets, scale);
+
+        switch (kind)
+        {
+            case SignatureShot.ChargePush:
+                // A charge turn: the whole gathering, pushed in on
+                if (move.Charging) return (User(3.0f - 0.9f * Smooth(a / 0.9f)), ShotKind.Push);
+                if (a < CutTime) return (User(3.0f - 0.8f * Smooth(a / CutTime)), ShotKind.Push);
+                // The beam lands: a step wider than an ordinary target's, so its length is in the shot
+                return (Target(3.0f + 0.4f * Smooth((a - I - 0.3f) / 0.5f)), ShotKind.Target);
+
+            case SignatureShot.FollowProjectile:
+            {
+                if (a >= I) return (Target(3.0f + 0.4f * Smooth((a - I - 0.3f) / 0.5f)), ShotKind.Target);
+                float s = Smooth(a / I);
+                var from = places.Body(move.FromSide, move.FromSlot);
+                var to = places.Body(targets[0].Side, targets[0].Slot);
+                var point = Vector3.Lerp(from, to, s);
+                float hFrom = places.Height(move.FromSide, move.FromSlot), hTo = places.Height(targets[0].Side, targets[0].Slot);
+                float size = (hFrom + (hTo - hFrom) * s) * 3.4f;
+                if (move.FromSide == BattleSide.Player)
+                {
+                    // From over the player's own Pokémon's shoulder: the camera stays, turns after the shot and narrows on it
+                    var over = User(3.0f);
+                    float dist = Math.Max(1f, Vector3.Distance(over.Position, point));
+                    float fit = Math.Clamp(2f * MathF.Atan(size / (2f * dist)) * 180f / MathF.PI, 12f, WidestFov);
+                    return (new CameraShot(over.Position, point, over.Fov + (fit - over.Fov) * s), ShotKind.Follow);
+                }
+                return (FollowShot(point, size), ShotKind.Follow);
+            }
+
+            case SignatureShot.ImpactPunch:
+                if (a < CutTime) return (User(3.0f), ShotKind.Attacker);
+                if (a < I - 0.02f) return (Target(3.0f), ShotKind.Target);
+                if (a < I + 0.4f) return (Target(2.0f), ShotKind.Punch);
+                // The late pull-back, wider than the shot it punched in from
+                return (Target(2.0f + 1.8f * Smooth((a - I - 0.4f) / 0.4f)), ShotKind.Target);
+
+            case SignatureShot.Orbit:
+            {
+                if (a < CutTime) return (User(3.0f), ShotKind.Attacker);
+                var (side, slot) = targets[0];
+                float p = Math.Clamp((a - CutTime) / (Directions.ShotEnd - CutTime), 0f, 1f);
+                float swing = MathF.Sin(MathF.PI * Smooth(p));
+                // Round a foe the way of its open side; round the player's own the way away from the trainer behind it
+                float yaw = side == BattleSide.Enemy ? OrbitSwingFoe * swing : -OrbitSwingOwn * swing;
+                return (targets.Count == 1 ? Close(places, side, slot, 3.6f, yaw) : Target(3.6f), ShotKind.Orbit);
+            }
+        }
+        return MoveShot(anim, places, move);
     }
 
     /// <summary>How wide the shot of a turning turntable is, in the Pokémon's heights (a send-out's is 3.6): plan 14 · B7.</summary>

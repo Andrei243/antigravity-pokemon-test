@@ -186,13 +186,20 @@ internal static class StageLights
     }
 
     /// <summary>A cue's light at its age.</summary>
-    public static StageLight At(EffectCue cue) => For(cue).Scaled(Envelope(cue.Age, cue.Length));
+    public static StageLight At(EffectCue cue) => For(cue).Scaled(Envelope(cue.ShownAge, cue.Length));
 
-    /// <summary>The stage's light now: every cue playing, the older under the newer.</summary>
+    /// <summary>The stage's light now: every cue playing, the older under the newer, a signature move's own over its move's (plan 25 · Y17).</summary>
     public static StageLight Of(BattleAnimator anim)
     {
         var light = StageLight.None;
-        foreach (var cue in anim.Cues) light = StageLight.Compose(light, At(cue));
+        foreach (var cue in anim.Cues)
+        {
+            var lit = StageLight.Compose(light, At(cue));
+            // A signature's light changes the colour over a stage already dark, never darkens it past the cap
+            light = StageLight.Compose(lit, Directions.LightAt(cue));
+            float most = Math.Max(MostDark, lit.Amount);
+            if (light.Amount > most) light = light with { Amount = most };
+        }
         return light;
     }
 }

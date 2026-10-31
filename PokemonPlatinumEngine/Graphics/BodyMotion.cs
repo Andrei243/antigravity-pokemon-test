@@ -204,10 +204,17 @@ internal static class BodyMotions
         foreach (var cue in anim.Cues)
         {
             if (cue.Kind != CueKind.Move || cue.Charging || cue.Arriving) continue;
-            if (cue.FromSide == side && cue.FromSlot == slot && !SpendsTheUser(cue.Move)) motion += OfUser(cue.Move, cue.Age, cue.Length);
+            // Read at the shown age, which a heavy signature move holds at its impact (plan 25 · Y17)
+            float age = cue.ShownAge;
+            if (cue.FromSide == side && cue.FromSlot == slot)
+            {
+                if (!SpendsTheUser(cue.Move)) motion += OfUser(cue.Move, age, cue.Length);
+                motion += Directions.UserBody(cue);
+            }
+            if (cue.ToSide == side && cue.ToSlot == slot) motion += Directions.TargetBody(cue);
             if (!cue.Landed || !Targets.TryGetValue(cue.Move, out var kind)) continue;
             if (kind == TargetMove.Press || (cue.ToSide == side && cue.ToSlot == slot && !cue.OnSelf))
-                motion += OfTarget(cue.Move, cue.Age, cue.Length);
+                motion += OfTarget(cue.Move, age, cue.Length);
         }
         if (v.SpentAge >= 0f) motion += Spent(v.SpentAge, v.Shown is { CurrentHP: <= 0 });
         if (v.Away && v.AwayAge >= 0f) motion += Leaving(WayOf(v.AwayMove), v.AwayAge / LeaveTime);
