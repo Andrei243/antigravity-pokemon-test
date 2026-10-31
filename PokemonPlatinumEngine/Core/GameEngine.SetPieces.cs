@@ -127,6 +127,9 @@ public partial class GameEngine
         public float Flicker(NPC? who, int times) =>
             !Skipping ? game.MoveSomeone(who, times, flicker: true) : Dropped(who) ? 0f : SetPieces.FlickerLength(times);
 
+        // A photograph (plan 20 · J13): the screenshot key's own picture of the next frame drawn, with its shutter and toast
+        public void Photograph() => game.AskForScreenshot();
+
         // (Nobody of that name on the map: the piece takes no time, played or not)
         private bool Dropped(NPC? who) => who != null && !game.flow.Map.NPCs.Contains(who);
     }

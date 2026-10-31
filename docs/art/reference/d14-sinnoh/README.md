@@ -1,6 +1,6 @@
 # D14 batch 4 (Sinnoh): reference drawings
 
-Thirty-nine flat drawings of the species of our own that plan 03 · D14's fourth batch proposes (`docs/plans/D14-proposals-sinnoh.md`, Nos. 2400 to 2482, approved in full by the user), one SVG per creature named `<No>-<Name>.svg`, and `index.html`, a contact sheet of all of them with their names, numbers, typings and what each evolves from (open it in a browser; it loads nothing from outside).
+Thirty-nine flat drawings of the species of our own that plan 03 · D14's fourth batch proposes (`docs/plans/decisions/D14-proposals-sinnoh.md`, Nos. 2400 to 2482, approved in full by the user), one SVG per creature named `<No>-<Name>.svg`, and `index.html`, a contact sheet of all of them with their names, numbers, typings and what each evolves from (open it in a browser; it loads nothing from outside).
 
 **They are references only.** They exist so that the sessions that sculpt these species in 3D (`PokemonModels`, the SDF kit) have a picture of the proportions, the colours and the one new feature each design adds. The game never reads them: the engine's project copies only `Assets/` and `Data/` to its output, and nothing in `docs/` is built, copied or shipped. They are not ignored by git either; they are kept in the repository as design notes.
 

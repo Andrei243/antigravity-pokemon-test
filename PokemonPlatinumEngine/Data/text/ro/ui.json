@@ -297,6 +297,13 @@
       "value": "{n} folosite",
       "help": "Pornește sau oprește pachetele, alege ordinea în care se încarcă și vezi al cui e fiecare."
     },
+    "autoBattle": {
+      "label": "Luptă automată",
+      "help": {
+        "off": "Comenzile unei lupte sunt LUPTĂ, RUCSAC, POKéMON și FUGI, alese de tine în fiecare tură.",
+        "on": "Comenzile au AUTO, care joacă lupta pentru tine cu cea mai puternică mișcare a fiecărui Pokémon până leșină unul de-al tău sau Înapoi o oprește."
+      }
+    },
     "boxesAnywhere": {
       "label": "Cutii oriunde și rucsac ordonat",
       "value": { "Off": "Nu", "Rules": "După reguli", "On": "Da" },
@@ -3370,6 +3377,8 @@
       "tera": "Terastalizare",
       "megaDynamax": "Mega Dynamax"
     },
+    "auto": "AUTO",
+    "autoStop": "Oprește auto",
     "fight": "LUPTĂ",
     "bag": "RUCSAC",
     "pokemon": "POKÉMON",
@@ -4886,5 +4895,35 @@
       "keep": "PĂSTREAZĂ-I  (ESC)"
     },
     "hint": { "stretch": "Întinde" }
+  },
+  "boxTeams": {
+    "menu": "ECHIPE",
+    "action": { "judge": "JUDECĂ" },
+    "title": "ECHIPE",
+    "count": "{count} / {most}",
+    "save": "PĂSTREAZĂ ECHIPA",
+    "defaultName": "Echipa {number}",
+    "teamMenu": { "SwapIn": "SCHIMBĂ", "Delete": "ȘTERGE", "Cancel": "ÎNAPOI" },
+    "kept": "Echipa a fost păstrată ca {team}.",
+    "deleted": "{team} a fost uitată.",
+    "swapped": "{team} e acum echipa ta.",
+    "swappedSome": "{team} e acum echipa ta. {count} din ea nu mai sunt în cutii.",
+    "swap": {
+      "noneHere": "Nimeni din {team} nu mai e în cutii.",
+      "mail": "{name} ține o scrisoare, deci nu poate intra într-o cutie.",
+      "capsule": "{name} are o capsulă pe minge, deci nu poate intra într-o cutie.",
+      "noRoom": "Cutiile n-au loc pentru cei {count} care ar pleca din echipă."
+    },
+    "naming": {
+      "title": "NUMEȘTE ECHIPA",
+      "note": "Echipa e păstrată după cine e în ea. Adu-o înapoi de la orice PC, cu ECHIPE."
+    },
+    "judge": {
+      "title": "JUDECATA",
+      "egg": "Încă nu e nimic de văzut.",
+      "best": "Cel mai bun: {stat}",
+      "alike": "Toate la fel",
+      "grade": { "Nothing": "NIMIC", "Meagre": "SLAB", "Fair": "BINIȘOR", "Good": "BUN", "Splendid": "SPLENDID", "Flawless": "FĂRĂ CUSUR" }
+    }
   }
 }

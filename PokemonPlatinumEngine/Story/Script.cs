@@ -147,6 +147,8 @@ public enum Op
     Pike, Pyramid,
     // The World Tournament (plan 14 · B11): an event chosen, three entered, a bracket of eight fought round by round
     Tournament,
+    // A photograph of the screen as it stands, kept beside the player's screenshots (plan 20 · J13: Clair's in the Dragon's Den)
+    Photograph,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

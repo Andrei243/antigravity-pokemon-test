@@ -227,6 +227,13 @@
     // Plan 20 · J13: the Pokéathlon Dome's square, west of Route 35's gate house, and its lobby
     { "name": "PokeathlonDome", "matrix": 153, "area": "pokeathlon_dome", "trees": "Round" },
     { "name": "PokeathlonDome_1F", "matrix": 154, "area": "pokeathlon_dome_interior_1f", "trees": "Round", "setting": "Indoors" },
+    // and the lobby's two other ways, up to the stands and down to the four halls of the dome's history (J13, the last part)
+    { "name": "PokeathlonDome_2FEntrance", "matrix": 156, "area": "pokeathlon_dome_interior_2f_entrance", "trees": "Round", "setting": "Indoors" },
+    { "name": "PokeathlonDome_2F", "matrix": 155, "area": "pokeathlon_dome_interior_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "PokeathlonDome_B1F_Solidarity", "matrix": 157, "area": "pokeathlon_dome_interior_b1f_solidarity_room", "trees": "Round", "setting": "Indoors" },
+    { "name": "PokeathlonDome_B1F_Trust", "matrix": 158, "area": "pokeathlon_dome_interior_b1f_trust_room", "trees": "Round", "setting": "Indoors" },
+    { "name": "PokeathlonDome_B1F_Potential", "matrix": 159, "area": "pokeathlon_dome_interior_b1f_potential_room", "trees": "Round", "setting": "Indoors" },
+    { "name": "PokeathlonDome_B1F_Friendship", "matrix": 160, "area": "pokeathlon_dome_interior_b1f_friendship_room", "trees": "Round", "setting": "Indoors" },
     // Plan 20 · J15: Route 28's house, Mt. Silver's Pokémon Center and the cave's floors to the summit, where Red waits
     { "name": "Route28_House", "matrix": 66, "area": "route_28_house", "trees": "Round", "setting": "Indoors" },
     { "name": "MtSilver_PokemonCenter_1F", "matrix": 73, "area": "mount_silver_pokecenter_1f", "trees": "Round", "setting": "Indoors" },
@@ -344,7 +351,17 @@
     { "name": "Route16_CyclingGate", "matrix": 70, "area": "route_16_gatehouse", "trees": "Round", "setting": "Indoors" },
     { "name": "Route16_EastHouse", "matrix": 66, "area": "johto_route_16_house", "trees": "Round", "setting": "Indoors" },
     { "name": "Route18_CyclingGate", "matrix": 70, "area": "route_18_gatehouse", "trees": "Round", "setting": "Indoors" },
+    // Plan 20 · J15, part j: Route 10's Pokémon Center and Power Plant and Rock Tunnel's floors (named Route10North_PokemonCenter_, Route10_PowerPlant and Rock_Tunnel_: FireRed's are Route10_PokemonCenter_, PowerPlant and RockTunnel_)
+    { "name": "Route10North_PokemonCenter_1F", "matrix": 73, "area": "route_10_pokecenter_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route10North_PokemonCenter_B1F", "matrix": 77, "area": "route_10_pokecenter_b1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route10_PowerPlant", "matrix": 251, "area": "route_10_power_plant_repaired", "trees": "Round", "setting": "Indoors" },
+    { "name": "Rock_Tunnel_1F", "matrix": 6, "area": "johto_rock_tunnel_1f", "trees": "Round", "setting": "Cave" },
+    { "name": "Rock_Tunnel_B1F", "matrix": 7, "area": "johto_rock_tunnel_b1f", "trees": "Round", "setting": "Cave" },
     { "name": "Seafoam_Gym", "matrix": 264, "area": "seafoam_islands_cinnabar_gym", "trees": "Round", "setting": "Cave" },
+    // Plan 20 · J5 and J8's leftovers: the Ruins of Alph's hall (its entrance on the grounds, the stairs down and the
+    // underground hall with the Unown)
+    { "name": "RuinsOfAlph_HallEntrance", "matrix": 181, "area": "ruins_of_alph_hall_entrance", "trees": "Round", "setting": "Cave" },
+    { "name": "RuinsOfAlph_UndergroundHall", "matrix": 37, "area": "ruins_of_alph_underground_hall", "trees": "Round", "setting": "Cave" },
     // Plan 20 · J11, part d: the corridor behind the Bell Tower's gate, Bellchime Trail and the Bell Tower's floors to its roof
     { "name": "Ecruteak_BellTowerCorridor", "matrix": 130, "area": "ecruteak_bell_tower_barrier_station_corridor", "trees": "Round", "setting": "Indoors" },
     { "name": "BellchimeTrail", "matrix": 67, "area": "bellchime_tower", "trees": "Round" },
@@ -448,6 +465,9 @@
     "pokemon_league_lance_room", "johto_pokemon_league_hall_of_fame",
     // Plan 20 · J13: the Pokéathlon Dome's square and its lobby
     "pokeathlon_dome", "pokeathlon_dome_interior_1f",
+    "pokeathlon_dome_interior_2f_entrance", "pokeathlon_dome_interior_2f", "pokeathlon_dome_interior_b1f_solidarity_room",
+    "pokeathlon_dome_interior_b1f_trust_room", "pokeathlon_dome_interior_b1f_potential_room",
+    "pokeathlon_dome_interior_b1f_friendship_room",
     // Plan 20 · J15: Route 28, Mt. Silver and its cave to the summit
     "route_28", "route_28_house", "mount_silver", "mount_silver_pokecenter_1f", "mount_silver_pokecenter_b1f",
     "mount_silver_cave_1f", "mount_silver_cave_upper_mountainside", "mount_silver_cave_lower_mountainside",
@@ -491,6 +511,12 @@
     // and Routes 16 to 18, the Cycling Road from Celadon City down to Fuchsia City, with their gates and Route 16's house
     "johto_route_11", "route_19_route_12_gatehouse", "diglett_cave", "johto_route_16", "johto_route_16_house", "route_16_east",
     "route_16_gatehouse", "johto_route_17", "johto_route_18", "route_18_gatehouse",
+    // Plan 20 · J15, part j: Route 9 east of Cerulean City to Route 10's north with its Pokémon Center and the Power Plant,
+    // and Rock Tunnel's two floors under to Route 10's south, down to Lavender Town
+    "johto_route_9", "johto_route_10", "route_10_pokecenter_1f", "route_10_pokecenter_b1f", "route_10_power_plant_repaired",
+    "johto_rock_tunnel_1f", "johto_rock_tunnel_b1f", "route_10_south",
+    // Plan 20 · J5's leftovers: the Ruins of Alph's hall
+    "ruins_of_alph_hall_entrance", "ruins_of_alph_underground_hall",
     // Plan 20 · J11, part d: the Bell Tower's corridor, Bellchime Trail and the tower's eleven floors
     "ecruteak_bell_tower_barrier_station_corridor", "bellchime_tower", "bell_tower_1f", "bell_tower_2f", "bell_tower_3f",
     "bell_tower_4f", "bell_tower_5f", "bell_tower_6f", "bell_tower_7f", "bell_tower_8f", "bell_tower_9f", "bell_tower_10f",

@@ -8,6 +8,8 @@
   "trees": "Round",
   "architecture": "Dragonstone",
   "people": {
+    // Santos of Saturday, one of the week's seven siblings, here on Saturdays alone (blackthorn.txt, plan 20 · J13)
+    "t30_gsboy2": { "name": "Santos", "script": "Santos" },
     "t30_gsman1": { "name": "Man", "script": "GymGuard", "still": true },
     "t30_gsman1_2": { "name": "Man", "script": "GymGuardAside", "still": true },
     "t30_gsoldman1": { "name": "Old Man", "script": "DenGuard", "still": true },

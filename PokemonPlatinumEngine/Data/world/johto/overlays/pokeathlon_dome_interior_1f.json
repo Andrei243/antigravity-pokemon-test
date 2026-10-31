@@ -1,15 +1,12 @@
 {
   // The Pokéathlon Dome's lobby (plan 20 · J13): HeartGold's MAP_POKEATHLON_DOME_INTERIOR_1F. The course reception in
   // the middle of the long desk runs plan 15 · E6's clerk (common.AthlonDesk); the desk to its east keeps the records
-  // (common.AthlonRecords, plan 15 · E8); the other desks (the data card, HeartGold's other receptionists) only talk. The way down to the event rooms
-  // (warp 1) and the stairs up to the stands (warp 2) stay shut: the events are played on their own board (rulings, "The
-  // Pokéathlon"). Whitney, who visits the lobby in HeartGold behind a flag nothing sets here, is left out
+  // (common.AthlonRecords, plan 15 · E8); the other desks (the data card, HeartGold's other receptionists) only talk. The
+  // way down (warp 1) leads to the four halls of the dome's history and the stairs up (warp 2) to the stands, both open
+  // since J13's last part; the events themselves are played on their own board (rulings, "The Pokéathlon"). Whitney,
+  // who visits the lobby in HeartGold behind a flag nothing sets here, is left out
   "area": "pokeathlon_dome_interior_1f",
   "bgmTrack": "johto/route34",
-  "locked": [
-    1,
-    2
-  ],
   "people": {
     "d49r0101_pcwoman1": {
       "name": "Clerk",
@@ -32,14 +29,14 @@
       "name": "Clerk",
       "still": true,
       "dialog": [
-        "Downstairs are the rooms where the events are held. Today the courses run from the main desk, in the middle."
+        "Downstairs the dome keeps its history: medals, trophies and pictures of every course. Do have a look around!"
       ]
     },
     "d49r0101_pcwoman1_3": {
       "name": "Clerk",
       "still": true,
       "dialog": [
-        "The stands upstairs are closed today. Every seat will be filled when the big courses come!"
+        "The stands are up the stairs to the west. The crowd cheers every course, win or lose!"
       ]
     },
     "d49r0101_gsboy1": {

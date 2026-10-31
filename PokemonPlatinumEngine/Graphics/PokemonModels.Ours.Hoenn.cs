@@ -7,7 +7,7 @@ namespace PokemonPlatinumEngine.Graphics;
 
 // The species of our own that evolve past level 100 (plan 03 · D14), batch 3: Hoenn's, in our numbers' order
 // (2000 + the forebear's National number). Each is sculpted from its forebear's own sculpt as the look of
-// docs/plans/D14-proposals-hoenn.md and the reference pictures (docs/art/reference/gemini/hoenn) say: the forebear's
+// docs/plans/decisions/D14-proposals-hoenn.md and the reference pictures (docs/art/reference/gemini/hoenn) say: the forebear's
 // build is taken whole (renamed, stretched, its colours changed, a part taken away) and the new features are added to
 // it, with the helpers of PokemonModels.Ours.Kanto.cs. The forebears' own sculpts are never touched.
 internal static partial class PokemonModels

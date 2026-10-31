@@ -431,6 +431,13 @@ public interface IScriptHost
     /// </summary>
     void Milestone(AutosaveMoment moment) { }
 
+    /// <summary>
+    /// A photograph is taken (plan 20 · J13: Clair's in the Dragon's Den, HeartGold's photo with her): the game writes the
+    /// next frame drawn into the player's screenshots, as the screenshot key does, once the line before it is put away.
+    /// The default takes none (a host with no screen); a hurry takes none either.
+    /// </summary>
+    void Photograph() { }
+
     // ------------------------------------------------------------------ sound
 
     /// <summary>Plays a song; null goes back to the theme of the place, and an empty name is silence.</summary>

@@ -6,6 +6,8 @@
   "bgmTrack": "johto/route34",
   "trees": "Round",
   "people": {
+    // Sunny of Sunday, one of the week's seven siblings, here on Sundays alone (route_37.txt, plan 20 · J13)
+    "r37_gsbabyboy1": { "name": "Sunny", "script": "Sunny" },
     "r37_gsbabygirl1": {
       "name": "Tori",
       "trainer": {

@@ -1,0 +1,18 @@
+{
+  // Route 10's northern half as HeartGold has it three years on (plan 20 · J15, part j): the end of Route 9, with the
+  // Pokémon Center, Rock Tunnel's northern mouth and the Power Plant on the river south of it. Lt. Surge, whom HeartGold
+  // meets here on a day of his phone's (FLAG_HIDE_ROUTE_10_LT_SURGE), and Zapdos before the plant
+  // (FLAG_HIDE_ROUTE_10_ZAPDOS) wait for the Leaders' street meetings and the Power Plant's story, so they are held back;
+  // so is HeartGold's trigger before the plant's door, whose scene waits with them. Its key meets FireRed's, so it takes
+  // Johto's prefix (HgWorld.Clashes)
+  "area": "johto_route_10",
+  "bgmTrack": "kanto/route3",
+  "heldBack": [
+    "r10_gsleader9",
+    "r10_tsure_poke_static_zapdos"
+  ],
+  "signs": {
+    "R10_005+1": "Kanto Power Plant",
+    "R10_006+1": "Route 10\nCerulean City - Lavender Town"
+  }
+}

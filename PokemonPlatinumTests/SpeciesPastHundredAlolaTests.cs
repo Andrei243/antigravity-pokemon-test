@@ -10,7 +10,7 @@ using static PokemonPlatinumTests.Scenario;
 namespace PokemonPlatinumTests;
 
 /// <summary>
-/// Plan 03 · D14, batch 7 (Alola: docs/plans/D14-proposals-alola.md, all 28 designs approved by the user with the
+/// Plan 03 · D14, batch 7 (Alola: docs/plans/decisions/D14-proposals-alola.md, all 28 designs approved by the user with the
 /// defaults of questions 1 to 5 and 7). What is Alola's own beside the rules <see cref="SpeciesPastHundredTests"/> holds
 /// every batch to: the band of 209 to 221 within Alola's climb, the island guardians' ring at 225 to 660, the two pairs
 /// of version exclusives, Salazzle's court, Lycanroc's three shapes at dusk, and the conditions that ask for more than a

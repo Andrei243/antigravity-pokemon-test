@@ -206,7 +206,8 @@ public sealed class HgWorld
     /// east of Pewter and Route 4 west of Cerulean, either side of Mt. Moon, since part f; Route 1 south of Viridian, Cinnabar
     /// Island, Route 20 east of it and the Seafoam Islands' floors, since part g; Route 19 south of Fuchsia and Routes 15,
     /// 14, 13 and 12 between it and Lavender, since part h; Route 11 east of Vermilion and Routes 16 to 18 with Route 16's
-    /// house, the Cycling Road between Celadon and Fuchsia, since part i.
+    /// house, the Cycling Road between Celadon and Fuchsia, since part i; Routes 9 and 10 east of Cerulean and Rock Tunnel
+    /// between Route 10's halves, since part j.
     /// </summary>
     public static bool Clashes(string key) =>
         key.StartsWith("victory_road", StringComparison.Ordinal)
@@ -216,7 +217,8 @@ public sealed class HgWorld
             or "route_1" or "route_20" or "cinnabar_island" or "seafoam_islands_1f" or "seafoam_islands_b1f"
             or "seafoam_islands_b2f" or "seafoam_islands_b3f" or "seafoam_islands_b4f"
             or "route_19" or "route_15" or "route_14" or "route_13" or "route_12"
-            or "route_11" or "route_16" or "route_16_house" or "route_17" or "route_18";
+            or "route_11" or "route_16" or "route_16_house" or "route_17" or "route_18"
+            or "route_9" or "route_10" or "rock_tunnel_1f" or "rock_tunnel_b1f";
 
     /// <summary>The area's table of wild Pokémon, by its header's bank (<c>R29</c>); null for none.</summary>
     public HgEncounters? EncountersOf(HgHeader header) => header.Encounters == null ? null : Encounters.FirstOrDefault(e => e.Map == header.Encounters);

@@ -10,7 +10,7 @@ using static PokemonPlatinumTests.Scenario;
 namespace PokemonPlatinumTests;
 
 /// <summary>
-/// Plan 03 · D14, batch 8 (Galar and Hisui: docs/plans/D14-proposals-galar.md, all 42 designs approved by the user on
+/// Plan 03 · D14, batch 8 (Galar and Hisui: docs/plans/decisions/D14-proposals-galar.md, all 42 designs approved by the user on
 /// 2026-10-26, every question at its default but 7 and 8, whose designs wait for D14-proposals-galar-supplement.md).
 /// The batch's own band (question 1: within Galar's climb, 226 to 240, the legendary sets at 244) and a test to each
 /// condition new to the table: three critical hits in one battle (Sirfetch'd's), damage taken under the Stone Arch

@@ -89,6 +89,42 @@ public class GiantPresenceTests
         }
     }
 
+    [Theory]
+    [InlineData(0), InlineData(1)]
+    public void InADoubleThePlayersOwnShotsStandAwayFromThePartner(int slot)
+    {
+        // Plan 25's leftovers: from the right shoulder of the first place the partner beside it stood huge across the
+        // picture's middle as near as the giant; each end place's giant shot and Max Move user shot now stand on its
+        // outer side, the partner behind it
+        var anim = new BattleAnimator();
+        anim.SetSlots(2, 2);
+        anim.Appear(BattleSide.Player, Mon("Garchomp"), 0);
+        anim.Appear(BattleSide.Player, Mon("Blissey"), 1);
+        anim.Appear(BattleSide.Enemy, Mon("Snorlax"), 0);
+        anim.Appear(BattleSide.Enemy, Mon("Snorlax"), 1);
+        var places = new FxPlaces();
+        for (int s = 0; s < 2; s++)
+        {
+            places.Set(BattleSide.Player, s, BattlePlaces.Spot(BattleSide.Player, s, 2) + new Vector3(0, BattleStage.PlatformHeight, 0), 1.6f);
+            places.Set(BattleSide.Enemy, s, BattlePlaces.Spot(BattleSide.Enemy, s, 2) + new Vector3(0, BattleStage.PlatformHeight, 0), 2.2f);
+        }
+        var own = places.Feet(BattleSide.Player, slot);
+        var partner = places.Feet(BattleSide.Player, 1 - slot);
+        var cue = anim.Dynamax(BattleSide.Player, slot, gigantamax: false)!;
+        anim.Update(cue.Lead + 0.6f, (_, _) => null);
+        var giant = BattleCamera.GiantShot(anim, places, cue);
+        var user = BattleCamera.MaxUserShot(places, BattleSide.Player, slot, BattleCamera.PairYaw(anim, BattleSide.Player, slot));
+        foreach (var (what, shot) in new[] { ("giant", giant), ("user", user) })
+        {
+            // The camera stands on the far side of its own Pokémon from the partner, and the partner is further from it
+            Assert.True(MathF.Sign(shot.Position.X - own.X) == -MathF.Sign(partner.X - own.X), $"{what} shot of place {slot} stands toward the partner: camera {shot.Position}, own {own}, partner {partner}");
+            Assert.True(Vector3.Distance(shot.Position, partner) > 1.04f * Vector3.Distance(shot.Position, own), $"{what} shot of place {slot}: the partner not behind");
+        }
+        // A single keeps its turns
+        Assert.Null(BattleCamera.PairYaw(Standing(BattleSide.Player), BattleSide.Player, 0));
+        Assert.Null(BattleCamera.PairYaw(anim, BattleSide.Enemy, slot));
+    }
+
     [Fact]
     public void TheGiantShotTakesTheCameraThroughTheGrowthAndLetsGoBeforeItsEnd()
     {

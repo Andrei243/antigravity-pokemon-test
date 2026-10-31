@@ -2,7 +2,7 @@
 
 Plan 06 · R31, the design part. Drafted 2026-10-25, **approved by the user on 2026-10-25**: all 72 moves as written, with the defaults of the eight questions at the end. **Built the same day** (wave 50): the rows are in `tools/DataImporter/Overrides/moves.json`, the rule is `tools/DataImporter/MovesPastHundred.cs`, and the importer gives every number below (the counts by species, the learners of each move, the examples), which `MovesPastHundredTests` holds. Left for plan 25, of what "Look" says: the recipes of their own of the eight capstones and Mindbreak Wave, and Resonant Hymn's cry mode; every move plays its type's template and sound meanwhile. Added to keep question 8's default true: `Trainer.Relevelled` stops what a later region's trainer's level taught it at 100, since W4's mapping would otherwise have handed those trainers moves of the pool.
 
-The need is plan 18 · W4's decision of 2026-10-21 ([the study](W4-level-curve-study.md), "The decision"): the level cap rises to about 260, and the team carried from Sinnoh plays every later region at full strength. Today no species learns anything past level 100, so a Pokémon would climb 160 levels and learn nothing. This proposal is the pool of moves of our own that fills those levels, and the rule that hands them out.
+The need is plan 18 · W4's decision of 2026-10-21 ([the study](../studies/W4-level-curve-study.md), "The decision"): the level cap rises to about 260, and the team carried from Sinnoh plays every later region at full strength. Today no species learns anything past level 100, so a Pokémon would climb 160 levels and learn nothing. This proposal is the pool of moves of our own that fills those levels, and the rule that hands them out.
 
 ## How to read this
 

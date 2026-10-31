@@ -356,6 +356,47 @@ partial class Harness
                 Skip(BattleAnimator.ImpactTime + 0.03);
                 Profile($"{maxMove}, landing, a giant on each side", 120, frozen: true);
             }
+
+            // Plan 25's leftovers, after the rest so nothing before them moves: the boss box over a Mega Max team's ace at
+            // the menu, and a Mega Dynamax beside its partner in a double at the menu
+            var bossTrainer = new Trainer { Id = "champion_cynthia_megamax", Name = "Cynthia", TrainerClass = "Champion", PrizeMoney = 0 };
+            var bossAce = Made("Garchomp", 100, 44);
+            bossAce.ChangeForm("Garchomp-Mega-Mmax");
+            bossTrainer.Party.Add(bossAce);
+            var bossTeam = new Party();
+            bossTeam.Add(Made("Charizard", 100, 45));
+            var bossB = new BattleEngine(new BattleSetup
+            {
+                PlayerParty = bossTeam, Inventory = inventory, Pokedex = pokedex, Trainers = new List<Trainer> { bossTrainer },
+                Random = new Random(46), Rules = Ruleset.Modern
+            });
+            game.BattleRenderer.SetArena(BattleArena.Grass);
+            game.Battle = bossB;
+            game.State = GameState.Battle;
+            ToMainMenu(bossB);
+            bossB.Anim.Dynamax(BattleSide.Enemy, 0, false, megaMax: true);
+            Skip(BattleAnimator.DynamaxTime + 0.5);
+            Console.WriteLine($"  the boss box: {bossB.BossShare(bossB.Anim.Enemy):0.00}");
+            Profile("battle, the boss box at the menu");
+
+            var pairTeam = new Party();
+            var pairAce = Made("Garchomp", 100, 47);
+            pairAce.ChangeForm("Garchomp-Mega-Mmax");
+            pairTeam.Add(pairAce);
+            pairTeam.Add(Made("Blissey", 100, 48));
+            var pairB = new BattleEngine(new BattleSetup
+            {
+                PlayerParty = pairTeam, Inventory = inventory, Pokedex = pokedex, Format = BattleFormat.Double,
+                WildPokemon = new List<Pokemon> { Made("Snorlax", 100, 49), Made("Snorlax", 100, 50) },
+                Random = new Random(51), Rules = Ruleset.Modern
+            });
+            game.BattleRenderer.SetArena(BattleArena.Grass);
+            game.Battle = pairB;
+            game.State = GameState.Battle;
+            ToMainMenu(pairB);
+            pairB.Anim.Dynamax(BattleSide.Player, 0, false, megaMax: true);
+            Skip(BattleAnimator.DynamaxTime + 0.5);
+            Profile("double battle, a Mega Dynamax beside its partner, at the menu");
             game.State = GameState.Overworld;
         }
         engine.Settings.Quality = GraphicsQuality.High;

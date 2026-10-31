@@ -37,7 +37,7 @@ internal static partial class ModernUi
         Backdrop(sw, sh);
         ScreenTitle(Text.Of("boxes.title"));
         var under = pc.Under(party, stored);
-        if (BoxToolHints(sw, pc)) { }
+        if (TeamHints(sw, pc) || BoxToolHints(sw, pc)) { }
         else if (pc.AskingRelease) Hints(sw - Margin, 44, Hint("shared.keys.z", "shared.hints.release"), Hint("shared.keys.esc", "shared.hints.keepIt"));
         else if (pc.Marking != null) Hints(sw - Margin, 44, Hint("shared.keys.arrows", "shared.hints.choose"), Hint("shared.keys.z", "shared.hints.mark"), Hint("shared.keys.esc", "shared.hints.back"));
         else if (pc.Menu != null || pc.BoxMenu != null)
@@ -168,7 +168,11 @@ internal static partial class ModernUi
         // ---- The Pokémon under the cursor, or the one carried
         var detail = new Rectangle(box.X + box.Width + Gutter + slide, ContentTop, sw - Margin - (box.X + box.Width + Gutter + slide), height);
         Panel(detail, 34);
-        if ((pc.Held ?? (pc.Carried.Count > 0 ? pc.Carried[0].Pokemon : under)) is { } shown) StoredPokemon(detail, shown);
+        if ((pc.Held ?? (pc.Carried.Count > 0 ? pc.Carried[0].Pokemon : under)) is { } shown)
+        {
+            if (pc.Judging) JudgePage(detail, shown);
+            else StoredPokemon(detail, shown);
+        }
         else
         {
             string note = Text.Of(onName ? "boxes.changeBoxNote" : "boxes.emptyPlace");
@@ -226,14 +230,21 @@ internal static partial class ModernUi
                 pc.ReleaseHold.Holding ? (0, pc.ReleaseHold.Fill) : null);
 
         DrawBoxTools(sw, sh, pc, stored, box, plate, detail, cursor, Beside(340), Within(cursor.Y - 8, MenuPanelHeight(3)));
+        DrawTeams(sw, pc, party, stored, box);
     }
 
-    private static string PcActionLabel(PcAction action) => action == PcAction.Select ? Text.Of("boxTools.action.select") : Text.Of($"boxes.action.{action}");
+    private static string PcActionLabel(PcAction action) => action switch
+    {
+        PcAction.Select => Text.Of("boxTools.action.select"),
+        PcAction.Judge => Text.Of("boxTeams.action.judge"),
+        _ => Text.Of($"boxes.action.{action}")
+    };
 
     private static string BoxMenuLabel(PcBoxAction action) => action switch
     {
         PcBoxAction.Search => Text.Of("boxTools.menu.search"),
         PcBoxAction.Sort => Text.Of("boxTools.menu.sort"),
+        PcBoxAction.Teams => Text.Of("boxTeams.menu"),
         _ => Text.Of($"boxes.menu.{action}")
     };
 

@@ -432,7 +432,7 @@ internal sealed class BattleCamera
         const float I = BattleAnimator.ImpactTime;
         var targets = TargetsOf(anim, move);
         if (a >= MaxLetGo || (!move.Landed && a >= MoveShotEnd)) return null;
-        var user = MaxUserShot(places, move.FromSide, move.FromSlot);
+        var user = MaxUserShot(places, move.FromSide, move.FromSlot, PairYaw(anim, move.FromSide, move.FromSlot));
         if (a < CutTime) return user;
         // Onto the player's own from across the stage there is no whip: from where the foe's shot stands the player's
         // platform is too near to look at, and an ease would pass it, so it cuts as an ordinary move's attacker does
@@ -468,7 +468,8 @@ internal sealed class BattleCamera
     }
 
     /// <summary>A Max Move's user from below: from its own side (the foe's turn or the player's from its right), pitched up at it, never into the ground.</summary>
-    public static CameraShot MaxUserShot(FxPlaces places, BattleSide side, int slot)
+    /// <param name="pairYaw">In a battle of two or more a side, an end place's turn to its outer side (<see cref="PairYaw"/>), away from its partner; null in a single.</param>
+    public static CameraShot MaxUserShot(FxPlaces places, BattleSide side, int slot, float? pairYaw = null)
     {
         float h = places.Height(side, slot);
         var feet = places.Feet(side, slot);
@@ -478,7 +479,7 @@ internal sealed class BattleCamera
             ? Frame(focus, h * MaxUserFrame, -0.18f, lift, limitZ: FoeShotLimit)
             // The player's own from its left (east), away from where its trainer stands to call a Dynamax: the first
             // Max Move of a battle comes in the turn of the call, while the trainer still stands at the platform's west
-            : Frame(focus, Math.Max(h * MaxUserFrame, MaxOwnLeast), MaxOwnYaw, lift);
+            : Frame(focus, Math.Max(h * MaxUserFrame, MaxOwnLeast), pairYaw ?? MaxOwnYaw, lift);
         float floor = feet.Y + 0.25f;
         return shot.Position.Y >= floor ? shot : shot with { Position = shot.Position with { Y = floor } };
     }
@@ -493,6 +494,26 @@ internal sealed class BattleCamera
 
     /// <summary>The giant shot's pitch: this far below level, looking up (degrees).</summary>
     public const float GiantPitchDeg = -5f;
+
+    /// <summary>The turn of the player's own giant shot from the overview's side (radians), behind its right shoulder; the other way for the first of two or more.</summary>
+    public const float GiantOwnYaw = 0.75f;
+
+    /// <summary>The turn of an end place's own shots to its outer side in a battle of two or more a side (radians): side-on, the partner behind it.</summary>
+    public const float PairOuterYaw = 1.5f;
+
+    /// <summary>
+    /// The player's own end place of two or more (plan 25's leftovers, the doubles): its giant shot and Max Move user shot
+    /// turned to its outer side (the first, screen-left, to the west; the last to the east), so the partner stands
+    /// behind the giant and further off, where from the overview's side it stood as near as the giant beside it. Null for
+    /// a single, the foe's side and a middle place, which keep their own turns.
+    /// </summary>
+    public static float? PairYaw(BattleAnimator anim, BattleSide side, int slot)
+    {
+        int slots = anim.SlotsOf(side);
+        if (side != BattleSide.Player || slots < 2) return null;
+        if (slot == 0) return -PairOuterYaw;
+        return slot == slots - 1 ? PairOuterYaw : null;
+    }
 
     /// <summary>The narrowest lens the giant shot takes (degrees); the widest is <see cref="WidestFov"/>.</summary>
     public const float GiantNarrowest = 14f;
@@ -542,7 +563,9 @@ internal sealed class BattleCamera
         float grown = h / Math.Max(0.05f, now) * (player ? BattleAnimator.DynamaxScaleOwn : BattleAnimator.DynamaxScaleFoe);
         var feet = places.Feet(side, slot);
         float lift = GiantPitchDeg * MathF.PI / 180f - BattleStage.PitchDeg * MathF.PI / 180f;
-        float yaw = player ? -0.75f : -0.18f;
+        // The player's own from behind its right shoulder; in a battle of two or more a side an end place's from its outer
+        // side, the partner hidden behind it, where it stood as near as the giant across the picture's middle
+        float yaw = player ? PairYaw(anim, side, slot) ?? -GiantOwnYaw : -0.18f;
         var at = Frame(feet + Vector3.UnitY * grown * GiantLook, grown * GiantFrame, yaw, lift, 30f, player ? float.PositiveInfinity : FoeShotLimit);
         var target = feet + Vector3.UnitY * h * GiantLook;
         float dist = Math.Max(1f, Vector3.Distance(at.Position, target));

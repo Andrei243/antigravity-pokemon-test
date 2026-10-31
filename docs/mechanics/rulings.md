@@ -2480,7 +2480,7 @@ The rules are Pokémon Showdown's at the pinned commit (`sim/battle-actions.ts`'
 - **The data**: the Key Stone (a key item), the Red Orb and the Blue Orb (held items) are imported from PokeAPI by name (`Importer.LaterItemsByName`); the 89 Mega Stones and the 97 Mega and 2 primal forms were already there (R1, plan 03 · D11). **Where the stones are found is Kalos's**: nothing in the game gives a Key Stone, a Mega Stone or an orb, and plan 23's Kalos chapter places them with the beat that hands the Key Stone over.
 - **Approximations**, each Showdown's rule cut down: a Mega Evolution doesn't count as Truant's action for the turn (Showdown's `moveThisTurnResult`); a Pokémon that leaves under Power Trick or with an ability a move gave it comes back with its Mega form's own; the Megas whose abilities are of later generations (Tough Claws, Aerilate, Parental Bond, Mega Launcher, Magic Bounce…) have them in name only until R27; Illusion and Sky Drop, which Showdown checks, aren't in the game yet.
 - **The screen** (`BattleEngine`): the item button in the move menu arms the Mega Evolution for the move to be chosen (`ToggleMega`, `MegaArmed`, `CanMegaEvolveNow`); the screen's Pokémon takes the form from `MegaEvolved` and plays Transform's cue on itself as a stand-in. The forms' models, which plan 03 built, are asked for before the battle with the Pokémon's own (`GameEngine.BattleShapesOf`). The button's picture and the change's own look are plan 25 · Y14's.
-- **Megas of our own** (plan 06 · R20b, approved 2026-10-26, data built in wave 56): the fifteen of `docs/plans/R20b-mega-proposals.md` follow every rule above, with stones of their own (9400 to 9414) that nothing gives until plan 23. **A stone of a species' own works for no regional form of it** (Showdown keys a stone by the species' own name): a Galarian Slowbro holding Slowbronite, an Alolan Raichu holding Raichunite X and a Hisuian Typhlosion holding Typhlosionite don't Mega Evolve, which R20 had let them.
+- **Megas of our own** (plan 06 · R20b, approved 2026-10-26, data built in wave 56): the fifteen of `docs/plans/decisions/R20b-mega-proposals.md` follow every rule above, with stones of their own (9400 to 9414) that nothing gives until plan 23. **A stone of a species' own works for no regional form of it** (Showdown keys a stone by the species' own name): a Galarian Slowbro holding Slowbronite, an Alolan Raichu holding Raichunite X and a Hisuian Typhlosion holding Typhlosionite don't Mega Evolve, which R20 had let them.
 
 ## Z-Moves and Ultra Burst (2026-10-17, plan 06 · R21)
 
@@ -2531,7 +2531,7 @@ The user's decisions of 2026-10-31 (`docs/mechanics/signoff.md`); rules of ours,
 
 ## Mega Dynamax (2026-10-26, plan 06 · R20c)
 
-Our own: no game has it and Showdown has no rule for it. The design is `docs/plans/R20c-mega-dynamax-proposals.md`, which the user approved on 2026-10-25 with every default of its fourteen questions but the fourteenth (a den in Galar, below) and every row of its table (the 36 "yes" and 27 "maybe" of the data's Megas, and R20b's fifteen of ours). It is R22's Dynamax on a Mega, behind `Ruleset.MegaDynamax` (the modern rules have it, Platinum's don't, so `battles-platinum.txt` can't move for it). Code: `Battle/Sim/BattleCore.Dynamax.cs` (`WhyNotMegaDynamax`, `MegaDynamaxFormOf`, `CanMegaDynamax`, `KeepsDynamaxForAMega`, `MegaMaxTeamOf`), `Battle/BattleEngine.Dynamax.cs` and `BattleEngine.Menus.cs` for the menu; tests: `MegaDynamaxTests`.
+Our own: no game has it and Showdown has no rule for it. The design is `docs/plans/decisions/R20c-mega-dynamax-proposals.md`, which the user approved on 2026-10-25 with every default of its fourteen questions but the fourteenth (a den in Galar, below) and every row of its table (the 36 "yes" and 27 "maybe" of the data's Megas, and R20b's fifteen of ours). It is R22's Dynamax on a Mega, behind `Ruleset.MegaDynamax` (the modern rules have it, Platinum's don't, so `battles-platinum.txt` can't move for it). Code: `Battle/Sim/BattleCore.Dynamax.cs` (`WhyNotMegaDynamax`, `MegaDynamaxFormOf`, `CanMegaDynamax`, `KeepsDynamaxForAMega`, `MegaMaxTeamOf`), `Battle/BattleEngine.Dynamax.cs` and `BattleEngine.Menus.cs` for the menu; tests: `MegaDynamaxTests`.
 
 - **Who may**: a trainer with the **Mega Max Band**, a key item of ours (`CoreSetup.MegaMaxBand`, the player while it is in the bag; `Trainer.MegaMaxBand`, a record's `megaMaxBand`; kept by the Vs. Recorder's file), and the Key Stone to Mega Evolve at all. A Pokémon in a Mega form, or one Mega Evolving in the same choice; not a legendary's or a mythical's Mega (Mewtwo, Latias, Latios, Rayquaza, Heatran, Darkrai, Zygarde, Diancie, Magearna, Zeraora), nor a primal or Ultra form, nor a Terastallized Pokémon. Any other Mega may, whether its Mega has a Mega Dynamax form or not: one with none grows in its Mega form. A plain Dynamax still needs the Dynamax Band, and is still refused to a stone's holder.
 - **When and what it spends**: a move's choice may carry both `Mega` and `Dynamax` (the Mega Evolution at its moment, order 104, then the Dynamax at 105, the moves after put in order again), or a Mega of an earlier turn chooses `Dynamax` alone. It spends the trainer's one Mega Evolution and one Dynamax: a trainer who Dynamaxed another can't, and one who Mega Evolved can Mega Dynamax only that Mega.
@@ -5560,7 +5560,7 @@ files written by `Core/MigrationOut.cs`.
 ## The level cap past 100 and a region's levels (2026-10-24, plan 18 · W4)
 
 The user chose on 2026-10-21 that the team crosses from region to region at full strength, with the level cap raised
-well above 100 ([the study](../plans/W4-level-curve-study.md), option B). What W4 built:
+well above 100 ([the study](../plans/studies/W4-level-curve-study.md), option B). What W4 built:
 
 - **The cap is 260 by the modern rules** (`Ruleset.LevelCap`; `Ruleset.HighestLevel` is the highest any rules allow) and
   stays 100 by Platinum's, so the baseline (`battles-platinum.txt`) can't move. 260 is the study's fair climb under the
@@ -5600,7 +5600,7 @@ well above 100 ([the study](../plans/W4-level-curve-study.md), option B). What W
 - **Not yet**: the post-games of the later regions climb on past their Champions on the same line (Johto's Red, 88 in
   HeartGold, comes to 161), which a region's plan may bend with a third pair. The Battle Hall takes a Pokémon at its own
   level and draws its foes to 100 at most: a Pokémon past 100 entered there is plan 06's to rule on.
-- **The post-game and the caps** (plan 18 · W4b-1, design C of `docs/plans/W4b-levelling-the-world.md`, approved
+- **The post-game and the caps** (plan 18 · W4b-1, design C of `docs/plans/decisions/W4b-levelling-the-world.md`, approved
   2026-10-26): each region's third pair puts its post-game's strongest trainer at `min(1.15 × its Champion, the next
   Champion − 2, 260)`: Kanto `[75, 120]`, Johto `[88, 156]` (Red), Hoenn `[78, 183]` (Steven), Unova `[80, 203]` (Kalos's
   Champion the study's 205 until plan 23). Each region file's `caps` is V3's level cap by Badges held in its own game's
@@ -5978,7 +5978,7 @@ Our own, three more halves of `RandomizerOptions` (`Abilities`, `Moves`, `Types`
 |---|---|---|
 | What begins the Den's post-game | The rival's battle in Mt. Moon (`D02R0101`) sets `VAR_UNK_40FC` 1 | The first arrival at the Dragon's Den once `JohtoHallOfFame` is set did, until plan 20 · J15, part f put the Mt. Moon battle in front of it (`mount_moon.txt`): now the same as HeartGold's ("HeartGold's Kanto, part f") |
 | The scene | The rival, Lance and Clair; a multi battle, the player with the rival against Lance and Clair (`TRAINER_PARTNER_RIVAL_1` to `_3` by the starter, `CHAMPION_LANCE_3`, `LEADER_CLAIR_CLAIR_3`) | The same, in our own words, as a `battle a and b with partner` of two overlay trainers; it ends at `VAR_UNK_40FC` 2 |
-| The boy and Clair afterwards | The boy on Tuesdays and Thursdays; Clair by the hour (6 to 9 until her number is registered, 16 to 18 after), her number for the asking, a photograph with her | The boy on Tuesdays and Thursdays; Clair on the morning, then the afternoon once registered (the time of day, not the hour); no photograph |
+| The boy and Clair afterwards | The boy on Tuesdays and Thursdays; Clair by the hour (6 to 9 until her number is registered, 16 to 18 after), her number for the asking, a photograph with her | The boy on Tuesdays and Thursdays; Clair on the morning, then the afternoon once registered (the time of day, not the hour); since J13's last part a photograph once registered, the screenshot key's picture of the field ("The week siblings and the dome's pieces") |
 | Swarms | One place of twenty a day (`sSwarmMapLUT`), met in the grass, on the water or on a rod, turned on in Oak's lab and told by Pokémon Talk | The same twenty by the day's number modulo 20; they begin at the Johto Hall of Fame (`swarms on`); the radio tells the day's one time in two; the nine Kanto places are in the table and open nowhere yet |
 | The Move Relearner | A Heart Scale for a move the Pokémon could have learned by its level and doesn't know | The same (`Relearning.MovesFor`, the party menu's REMEMBER list) in Pastoria and in Blackthorn; the scale goes only once the move is learned; Fallarbor's relearner still only talks |
 
@@ -6499,7 +6499,7 @@ Four more of Emerald's post-game pieces. The lines are our own.
 
 ## A crossed region's EXP (2026-10-26, plan 18 · W4b-3)
 
-Design C of [the levelling proposal](../plans/W4b-levelling-the-world.md), approved by the user on 2026-10-26 with
+Design C of [the levelling proposal](../plans/decisions/W4b-levelling-the-world.md), approved by the user on 2026-10-26 with
 every other answer at its default (L5: in every difficulty). Two rules of EXP, only in a region the game crossed into
 (`GameEngine.CrossedLevels`: every built region but the one the game began in, so never Sinnoh for a game from the title):
 
@@ -6530,7 +6530,7 @@ every other answer at its default (L5: in every difficulty). Two rules of EXP, o
   for a session of its own. Until then a rematch in a region come back to by Fly is met as that region's own levels map it.
 ## Stages as they are met (2026-10-26, plan 18 · W4b-2 with plan 03 · D15-A)
 
-The user approved on 2026-10-26 (docs/plans/APPROVAL-levelling-and-our-species.md): design C, named trainers grow too,
+The user approved on 2026-10-26 (docs/plans/decisions/APPROVAL-levelling-and-our-species.md): design C, named trainers grow too,
 every evolution of ours counting with its condition taken as met, wild Pokémon one in four by personality, Masters follow
 the player, Challenge by share in a crossed region. `Models/OursGrowth.cs`.
 
@@ -6565,7 +6565,7 @@ the player, Challenge by share in a crossed region. `Models/OursGrowth.cs`.
 
 ## Rematches of a region gone past (2026-10-26, plan 18 · W4b, L9)
 
-The user approved L9's default on 2026-10-26 (docs/plans/APPROVAL-levelling-and-our-species.md). `Models/RematchLevels.cs`.
+The user approved L9's default on 2026-10-26 (docs/plans/decisions/APPROVAL-levelling-and-our-species.md). `Models/RematchLevels.cs`.
 
 - **A region come back to keeps the levels it was met at**: Sinnoh's places and trainers stay Platinum's, a crossed
   region's stay its own pairs' (as Gold and Silver's Kanto).
@@ -6929,3 +6929,83 @@ The user approved L9's default on 2026-10-26 (docs/plans/APPROVAL-levelling-and-
   a fixed team of the walk's own against each trainer's team as the data builds it, the trainer AI on both sides). It is
   the scripts' game with real battles, not the window's game driven by keys (`HeadlessGameTests`' way), which would need an
   itinerary of the whole region (`Itineraries`).
+## HeartGold's Kanto, part j (2026-10-31, plan 20 · J15, part j)
+
+- *The slice*: the north-east of Kanto. Route 9 runs east from Cerulean City's east edge, past trees Cut fells, to Route
+  10's northern half with its Pokémon Center (both floors), Rock Tunnel's northern mouth and the Power Plant on the river;
+  Rock Tunnel's two floors, joined by four pairs of ladders, come out at Route 10's southern half, which runs down past a
+  boulder Strength moves to Lavender Town's north edge. With it Kanto has a second way between Cerulean and Lavender
+  besides Saffron City's gates.
+- *Keys and names*: `route_9`, `route_10`, `rock_tunnel_1f` and `rock_tunnel_b1f` meet FireRed's and take Johto's prefix
+  (`HgWorld.Clashes`); `route_10_south`, `route_10_pokecenter_1f` and `_b1f` and `route_10_power_plant_repaired` meet
+  none. The maps are `Route10North_PokemonCenter_1F` and `_B1F` (the name must hold `PokemonCenter` for the room's look,
+  `World.RoomStyleOf`), `Route10_PowerPlant`, `Rock_Tunnel_1F` and `Rock_Tunnel_B1F` (FireRed's are
+  `Route10_PokemonCenter_`, `PowerPlant` and `RockTunnel_`). HeartGold's Route 9 swarm (Sableye) now names
+  `johto_route_9`; it had named `route_9`, which is no area of Johto's.
+- *The Power Plant*: HeartGold has two plans of it, at work (R10R0201, the one Route 10's door names) and broken
+  (R10R0202, the same room and people), and moves between them by script, which the cache doesn't hold; and Route 10's one
+  door can't be switched between two maps (`switches` want two warps on its tile). So the plant at work is the one built,
+  and its people (the manager, two policemen, four engineers) talk of their work in lines of ours. **The story of the
+  stolen part** (the manager's request, the grunt in the Cerulean Gym and on Route 24, the Machine Part in the Gym's pool,
+  TM57 for its return, and the plant broken until then) waits: it needs an item the data hasn't got (`Machine Part`,
+  through `tools/DataImporter/Overrides`) and the broken plan as a second map. HeartGold's trigger on the plant's door
+  (`VAR_UNK_4084`) is given no script, so it does nothing.
+- *Held back*: Lt. Surge before the plant (`FLAG_HIDE_ROUTE_10_LT_SURGE`, a day of his phone's: the Leaders' street
+  meetings) and Zapdos (`FLAG_HIDE_ROUTE_10_ZAPDOS`, which HeartGold shows once the plant is repaired and the Expn Card had).
+- *Rock Tunnel is not dark*: its header asks for Flash (HeartGold's weather 11, as the Dark Cave's), which `World.cs`
+  reads only as Sinnoh's `DarkFlash`, so neither HeartGold cave is dark here. Making them so is one rule of the builder's
+  and moves the Dark Cave's pictures; it is left, and the lines of ours say nothing of the dark.
+- *Models*: the plant (`kn_power`) is a `Factory` with its sign; its generator (`mpwr_ge`) a lab machine and its desks
+  (`table_l03`) lab desks.
+- *Songs*: Routes 9 and 10 and the Center play `kanto/route3`, Rock Tunnel `kanto/mt_moon`, the Power Plant
+  `kanto/pokemon_mansion`, as FireRed's do.
+- *Left*: the Power Plant's story (the Machine Part, the grunts of Cerulean's Gym and Route 24, TM57, the plant broken),
+  Lt. Surge on Route 10 and Zapdos, the dark of HeartGold's Flash caves, the Seafoam Islands' lower floors and Articuno,
+  the Snorlax woken (the Poké Flute's channel and the Expn Card), Pal Park's gate, Oak's gift after Red, the Clefairy's
+  dance, the Underground Path, Silph Co., the upper floors of Celadon's store and condominiums, the Game Corner, the Radio
+  Tower and the Expn Card, the Trainer House's battles, the Leaders' rematches and street meetings, Suicune's stops, the
+  rest of Kanto's Apricorn trees.
+## The week siblings and the dome's pieces (2026-10-31, plan 20 · J13, the last part)
+
+| Subject | HeartGold | This game |
+|---|---|---|
+| The week siblings | Monica (Monday, Route 40, Sharp Beak), Tuscany (Tuesday, Route 29, once the Zephyr Badge is won, Twisted Spoon), Wesley (Wednesday, the Lake of Rage, Black Belt), Arthur (Thursday, Route 36, Hard Stone), Frieda (Friday, Route 32, Poison Barb), Santos (Saturday, Blackthorn City, Soft Sand), Sunny (Sunday, Route 37, Magnet); each shown by the place's own script on their day, each gift once, `VAR_NUM_MET_WEEKDAY_SIBLINGS` counting them | The same seven, places, days, gifts and flags, in our own words (Arthur and Frieda came with J7 and J4's stretch) |
+| Wesley's day | Hidden until the Red Scale; after it, the lake's arrival compares a variable of its own on a branch nothing reaches | Shown on Wednesdays once the Red Scale is left behind (`lake_of_rage.WesleyOrNot`), as his own script asks the weekday |
+| The ribbon of the day | Once all seven are met, the sibling of the day puts the day's ribbon (Alert to Smile) on the first able Pokémon (`GetPartyLeadAlive`), one a day between all seven under the one flag `FLAG_DAILY_GOT_SHOCK_RIBBON` | The same through `common.WeekSiblingRibbon` (`ribbon has today`, `ribbon give today`), on the first of the team that is no Egg, as every `ribbon` command reads it; the one daily flag kept |
+| The photograph with Clair | Once her number is registered, she offers a photograph together, which goes into the photo album (`CameronPhoto`) | The same offer; the picture is the screenshot key's own of the field, written to the player's screenshots folder by the script command `photograph`. The photo album and Cameron's other photographs are not built |
+| The dome's stands and halls | The lobby's stairs lead up to the stands, its way down to four halls of the dome's history; three guides stand in the ways on and step aside by `FLAG_UNK_0EF`, `0F0` and `0F1`, which the game's own code sets | All six rooms are HeartGold's maps, their people in our own words, the medals, scrolls and pictures read as signs. What sets the three flags couldn't be read from the scripts, so here each first place won at the course desk sets the next (`common.AthlonDesk`): a hall a course. The guide in the way is hidden by the flag and a guide of ours stands aside where HeartGold moves her (the overlay's `npcs`) |
+| Left out | The dome's owner and his Poliwrath on the stands, Whitney's visits, the shoes', clothes', flag's, Pokégear's and ball's signs and the statue of a Trainer with every gold | The owner greets the player on the square and stands in the last hall; the signs and the statue wait for the bonuses that earn them (plan 15 · E8's "Left") |
+## The Ruins of Alph's hall, and what J2, J5 and J8 left (2026-10-31, plan 20 · J2, J5 and J8's leftovers)
+
+- *The hall*: HeartGold's hall entrance (`RuinsOfAlph_HallEntrance`, `D24R0211`) and underground hall
+  (`RuinsOfAlph_UndergroundHall`, `D24R0205`) are open. The hall is the only place the Unown live (its area's own table,
+  every slot an Unown of level 5, which the import already carried). Its door on the grounds (the grounds' warps 8 and 9,
+  on the two tiles in the middle of the grounds) waits for `FLAG_ALPH_HALL_OPEN`, a flag of ours that each chamber's
+  `Panel` script sets as its picture is put back together; the grounds' warps 11 to 14 on the same tiles, and the hall
+  entrance's east half, are HeartGold's Arceus event (the "Sinjoh" maps), which this game doesn't have, and stay shut.
+- *The fall*: in HeartGold a solved panel drops the player into a "hidden room" under the chamber (`D24R0203`, `0207`,
+  `0209`, `0210`), a ring of corridor with one trigger and no way out the event files show: what takes the player on from
+  there is HeartGold's script, which the pinned folders don't fetch. This game drops the player straight into the
+  underground hall (a corner of it for each chamber: the north-east chamber's at 26, 4, the north-west's at 4, 4, the
+  south-east's at 26, 42 and the south-west's at 4, 42), which is where HeartGold's fall leads in the end. The hidden
+  rooms are not opened.
+- *The people*: the three visitors and the four assistants of the hall stand and talk, a line each of ours (HeartGold's
+  assistants say nothing); the suit of the Arceus event is left out, as are the hall entrance's scientist and photographer
+  (both in its shut east half, the photographer the Pokégear's Cameron).
+- *Not built*: the chambers' second rooms behind their back walls (`D24R0212` to `0215`, each with four items). HeartGold
+  opens each wall on a condition its scripts hold (the Gold and Silver games' were a Pokémon or an item brought before
+  the wall), which the pinned folders don't carry; the walls stay shut until a session reads them.
+- *The Whirl Islands' lower floors are not opened*: the second basement's lower level, with the ladder to the third
+  basement (`D40R0106`) and the way into Lugia's cave (`D40R0107`), is come to from the upper level by flights of stairs
+  (rows 31, 35 and 39 of the matrix at x 30 and 31) whose height plates stand on their edge, which J1's decision 8 leaves
+  out of the chunk's file; between the plates the import keeps (21 above, 18, 12, 3 and 0 below) the stairs read as
+  cliffs, and nothing else in the islands reaches the lower level. Opening it wants an importer rule that lays such a
+  flight as a slope between the plates north and south of it, which touches every HeartGold chunk with such plates and
+  is left to a session of its own (with J11's Lugia, whose scene waits there anyway). *Solved by J11, part d*: the
+  importer's ground already joins the upper level to the lower by a walked slope east of the stairs (from 36, 30 at 21
+  down 36, 31 and 35 to 32, 32 to 18), which the sage at 36, 30 stood on; he now stands aside for the Silver Wing (a
+  double of ours at 34, 29), so the lower level, the third basement and Lugia's cave are reached that way and `WorldWalk`
+  finds them. The stairs themselves still read as cliffs: laying edge-on plates as slopes is still undone, and needed
+  nowhere yet.
+- *The terrain lab's whirlpool*: the harness's `lab` map has a whirlpool of three tiles in its bay (`lab36`, `lab37`),
+  which J8 left for the session that shot `lab` again.

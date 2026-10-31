@@ -436,6 +436,9 @@ public class JohtoStoryTests
         var solved = game.Play(script);
         Assert.Contains($"open AlphPuzzle {panel} solved", solved.Log);
         Assert.True(game.Story.Has(flag));
+        // ...the hall's door on the grounds opens for good and the floor gives way into the hall (J5's leftovers)
+        Assert.True(game.Story.Has("FLAG_ALPH_HALL_OPEN"));
+        Assert.Contains(solved.Log, l => l.StartsWith("warp RuinsOfAlph_UndergroundHall", StringComparison.Ordinal));
         var after = game.Play(script);
         Assert.DoesNotContain(after.Log, l => l.StartsWith("open AlphPuzzle"));
         Assert.Empty(after.Asked);
@@ -1665,6 +1668,14 @@ public class JohtoStoryTests
         game.Time = TimeOfDay.Day;
         game.Arrive("DragonsDen", 28, 12);
         Assert.NotNull(game.Present("d44r0102_gsleader8"));
+        // Plan 20 · J13: registered, she offers a photograph together (HeartGold's CameronPhoto); a no takes none
+        game.Answers.Enqueue(1);
+        var refused = game.Talk("d44r0102_gsleader8");
+        int before = refused.Photographs;
+        game.Answers.Enqueue(0);
+        var taken = game.Talk("d44r0102_gsleader8");
+        Assert.Equal(before + 1, taken.Photographs);
+        Assert.Contains(taken.Transcript, l => l.Text.Contains("Keep it somewhere safe"));
     }
 
     [Fact]

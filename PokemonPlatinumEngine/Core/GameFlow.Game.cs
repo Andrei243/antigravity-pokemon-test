@@ -40,6 +40,9 @@ public sealed partial class GameFlow
     /// <summary>The link battles' record (plan 07 · O2; saved).</summary>
     public LinkBattleRecord LinkBattles { get; set; } = new();
 
+    /// <summary>The teams kept by name at the PC (plan 12 · Q27; saved as <c>SaveData.Teams</c>).</summary>
+    public System.Collections.Generic.List<SavedTeam> Teams { get; set; } = new();
+
     /// <summary>The Trainer Card's score (plan 06 · R12), and the badges it has counted.</summary>
     public int TrainerScore { get; set; }
     public int ScoredBadges { get; set; }

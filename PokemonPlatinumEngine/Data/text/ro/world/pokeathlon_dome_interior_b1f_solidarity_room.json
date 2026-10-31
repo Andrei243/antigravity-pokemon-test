@@ -1,0 +1,174 @@
+{
+  "people": {
+    "d49r0104_pcwoman2": {
+      "name": {
+        "en": [
+          "Guide"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "These four halls tell the story of the Pokéathlon. This first one is about teamwork: three Pokémon, one team."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49r0104_pcwoman2_2": {
+      "name": {
+        "en": [
+          "Guide"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49r0104_gsman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "These medals were won by teams that were nothing special alone. Together they were unbeatable."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49r0104_gsboy2": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Rattata and I are reading every plaque. We want to know how the champions trained!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49r0104_tsure_poke_static_rattata": {
+      "name": {
+        "en": [
+          "Rattata"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Rattata is staring at the medals, its whiskers twitching."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49r0104_gsgirl1": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Zubat can't see the pictures, but it likes the echo in here."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49r0104_tsure_poke_static_zubat": {
+      "name": {
+        "en": [
+          "Zubat"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Zubat flaps about happily."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "pokeathlon_dome_interior_b1f_solidarity_room.GuideAside": {
+      "name": {
+        "en": [
+          "Guide"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "D49R0104_007+1": {
+      "en": [
+        "Medals won by teams of three, each with a card naming the Pokémon who shared it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "D49R0104_008+1": {
+      "en": [
+        "A wall of pictures: Pokémon of every shape crossing a finish line side by side."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "D49R0104_009+1": {
+      "en": [
+        "A scroll: \"A course is never won by one. It is won by three who trust each other.\""
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "D49R0104_010+1": {
+      "en": [
+        "A scroll: \"The first course ever run in the dome had three events and only six teams.\""
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "D49R0104_013+1": {
+      "en": [
+        "A bench for visitors. Someone left a programme of last week's courses on it."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

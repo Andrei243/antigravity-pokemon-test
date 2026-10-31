@@ -9,7 +9,7 @@ using static PokemonPlatinumTests.Scenario;
 namespace PokemonPlatinumTests;
 
 /// <summary>
-/// Plan 03 · D14, batch 9's supplement (Paldea: docs/plans/D14-proposals-paldea-supplement.md, approved by the user on
+/// Plan 03 · D14, batch 9's supplement (Paldea: docs/plans/decisions/D14-proposals-paldea-supplement.md, approved by the user on
 /// 2026-10-26, all 18 designs, every question at its default). What is new beside <see cref="SpeciesPastHundredTests"/>
 /// and <see cref="SpeciesPastHundredPaldeaTests"/>: the fourteen paradox Pokémon at 600 by the hour, the Loyal Three to
 /// 600 under their master Pecharunt, and Zerofin.

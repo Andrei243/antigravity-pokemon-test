@@ -7,7 +7,7 @@ namespace PokemonPlatinumEngine.Graphics;
 
 // The species of our own that evolve past level 100 (plan 03 · D14), batch 6: Kalos's, in our numbers' order
 // (2000 + the forebear's National number), with Ecosentinel of its supplement. Each is sculpted from its forebear's own
-// sculpt as the look of docs/plans/D14-proposals-kalos.md and the user's reference pictures
+// sculpt as the look of docs/plans/decisions/D14-proposals-kalos.md and the user's reference pictures
 // (docs/art/reference/gemini/kalos) say: the forebear's build is taken whole (renamed, stretched, its colours changed,
 // a part taken away) and the picture's new features are added to it, with the tools of batches 1 and 5
 // (PokemonModels.Ours.Kanto.cs, PokemonModels.Ours.Unova.cs). The forebears' own sculpts are never touched.

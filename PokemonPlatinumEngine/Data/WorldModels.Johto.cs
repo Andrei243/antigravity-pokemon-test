@@ -471,6 +471,10 @@ public static partial class WorldModels
         Ground("obj_hosz", "the great bell's frame at the head of the Bell Tower's roof: the roof's tiles draw its ground"),
         Ground("sroof_back", "the eaves of the Bell Tower's roof round its top (no model of its own: the sky stands behind them)"),
         Ground("obj_lgsz", "the carved stone at the head of Lugia's cave in the Whirl Islands: the cave's floor draws its ground"),
+        // ---------------------------------------------------------------- plan 20 · J15, part j: Route 10's Power Plant (kn_, mpwr_)
+        Built("kn_power", BuildingKind.Factory, "the Power Plant on Route 10", sign: "POWER PLANT"),
+        Furniture("mpwr_ge", PropType.LabMachine, "the Power Plant's generator"),
+        Furniture("table_l03", PropType.LabDesk, "a desk of the Power Plant's control room"),
     };
 
     private static readonly Dictionary<string, WorldModel> JohtoByName = JohtoTable.ToDictionary(m => m.Name, StringComparer.Ordinal);

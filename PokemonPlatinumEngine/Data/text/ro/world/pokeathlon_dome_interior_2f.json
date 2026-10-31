@@ -1,0 +1,311 @@
+{
+  "people": {
+    "d49r0102_instructor": {
+      "name": {
+        "en": [
+          "Coach"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Every Pokémon has five Pokéathlon stats: Speed, Power, Skill, Stamina and Jump. Pick a team whose stars cover each other!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49r0102_gsman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I come every weekend. The roar when a Pokémon clears the last hurdle never gets old."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49r0102_gsboy2": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Rattata wants to be down there so badly. One day we'll enter a course together!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49r0102_tsure_poke_static_rattata": {
+      "name": {
+        "en": [
+          "Rattata"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Rattata is squeaking at the arena. It wants to run!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49r0102_gsgirl1": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Butterfree and I always sit here. You can see every event from these seats."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49r0102_tsure_poke_static_butterfree": {
+      "name": {
+        "en": [
+          "Butterfree"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Butterfree flutters its wings in time with the cheering."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49r0102_gswoman2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Machop, sit down! You'll block the view for everybody behind us."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49r0102_tsure_poke_static_machop": {
+      "name": {
+        "en": [
+          "Machop"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Machop is shadow-boxing at the edge of the stands."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49r0102_middlewoman1_2": {
+      "name": {
+        "en": [
+          "Lady"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My grandchildren dragged me here. Now I'm the loudest one in the row!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49r0102_gsbabygirl1": {
+      "name": {
+        "en": [
+          "Little Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Go, go, go! ...Who are we cheering for? Everybody!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49r0102_gsbabygirl1_2": {
+      "name": {
+        "en": [
+          "Little Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "When I'm big I'll win a gold medal. My sister says so."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49r0102_gsoldwoman1": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We used to watch battles together. Now we watch races. Both make my heart pound."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49r0102_gsoldman1": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Ho ho! That little one jumped higher than a Pokémon three times its size."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49r0102_gsboy1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I keep a notebook of every course's best score. Somebody's going to beat them all one day."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49r0102_gsmiddleman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My son wants to enter next year. I'm here to learn the rules before he does."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49r0102_gsbabyboy1": {
+      "name": {
+        "en": [
+          "Little Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Daddy, which one is winning? The round one? I like the round one."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49r0102_gsman3": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A Pokémon's friendship doesn't show in its stats, but you can see it in how it runs."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -7,7 +7,7 @@ namespace PokemonPlatinumEngine.Graphics;
 
 // The species of our own that evolve past level 100 (plan 03 · D14), batch 4: Sinnoh's, in our numbers' order
 // (2000 + the forebear's National number). Each is sculpted from its forebear's own sculpt as the look of
-// docs/plans/D14-proposals-sinnoh.md and the user's reference picture say, built as batch 1's are
+// docs/plans/decisions/D14-proposals-sinnoh.md and the user's reference picture say, built as batch 1's are
 // (PokemonModels.Ours.Kanto.cs: Become, Recolour, Stretch, Grow, Move): the forebear's build taken whole where the
 // body stays and the new features added to it. The forebears' own sculpts are never touched; a female keeps her
 // forebear's difference by asking the forebear's sculptor for its female.

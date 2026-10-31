@@ -1,0 +1,131 @@
+{
+  "people": {
+    "r10r0201_gsbigman": {
+      "name": {
+        "en": [
+          "Manager"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm the manager of this plant. Every light in Kanto runs on what our generator makes, so I keep an eye on it day and night."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r10r0201_policeman": {
+      "name": {
+        "en": [
+          "Policeman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm posted here to keep the plant safe. Nobody touches that generator on my watch."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r10r0201_policeman_2": {
+      "name": {
+        "en": [
+          "Policeman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "All quiet at the back of the plant. Just the hum of the machines."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r10r0201_gsassistantm": {
+      "name": {
+        "en": [
+          "Engineer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The generator spins day and night. If it ever stopped, the Magnet Train would stop with it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r10r0201_gsassistantm_2": {
+      "name": {
+        "en": [
+          "Engineer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Electric Pokémon love it here. Some of them wander in from Route 10 just to bask in the hum."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r10r0201_gsassistantm_3": {
+      "name": {
+        "en": [
+          "Engineer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I check every dial on these panels twice a day. Everything reads fine."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r10r0201_gsassistantm_4": {
+      "name": {
+        "en": [
+          "Engineer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "There's a radio tower in Lavender Town now. Its music reaches us all the way out here."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

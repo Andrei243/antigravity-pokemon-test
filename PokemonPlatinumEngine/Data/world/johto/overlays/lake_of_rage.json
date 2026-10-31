@@ -8,6 +8,9 @@
   "trees": "Round",
   "architecture": "Upland",
   "people": {
+    // Wesley of Wednesday, one of the week's seven siblings, on the north shore on Wednesdays once the Red Scale is
+    // left behind (lake_of_rage.txt, plan 20 · J13)
+    "t29_gsman1_2": { "name": "Wesley", "script": "Wesley" },
     "t29_rgyaradosu": { "name": "Gyarados", "npcType": "Pokemon", "species": "Gyarados", "script": "RedGyarados", "still": true },
     "t29_wataru": { "name": "Lance", "script": "Lance", "still": true },
     "t29_tsure_poke_static_dragonite": { "name": "Dragonite", "npcType": "Pokemon", "species": "Dragonite", "script": "Dragonite", "still": true },

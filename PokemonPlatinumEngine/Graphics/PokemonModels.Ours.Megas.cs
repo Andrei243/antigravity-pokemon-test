@@ -6,7 +6,7 @@ using Raylib_cs;
 namespace PokemonPlatinumEngine.Graphics;
 
 // The Megas of our own (plan 06 · R20b): the fifteen final forms of the starters whose lines had no Mega, in National
-// Pokédex order. Each is sculpted from its species' own sculpt as the look of docs/plans/R20b-mega-proposals.md and the
+// Pokédex order. Each is sculpted from its species' own sculpt as the look of docs/plans/decisions/R20b-mega-proposals.md and the
 // user's reference pictures (docs/art/reference/gemini/megas) say: the species' build is taken whole (renamed,
 // stretched, its colours changed, a part taken away) and the Mega's new features are added to it, with the helpers of
 // PokemonModels.Ours.Kanto.cs, as the species of our own are built. The species' own sculpts are never touched.

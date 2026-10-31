@@ -90,6 +90,9 @@ partial class Harness
 
         // Battle Style Shift's offer (plan 08 · P1), last for the same reason, with its own team and chance
         ShiftOffer();
+
+        // Auto-battle (plan 12 · Q12), last of all for the same reason
+        AutoShots();
     }
 
     // A trainer's first Pokémon knocked out under Battle Style Shift: the offer's question with the next one named

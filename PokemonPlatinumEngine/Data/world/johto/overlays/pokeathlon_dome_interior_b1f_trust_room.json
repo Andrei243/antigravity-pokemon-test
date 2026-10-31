@@ -1,0 +1,57 @@
+{
+  // The second hall under the Pokéathlon Dome (plan 20 · J13, the last part): HeartGold's
+  // MAP_POKEATHLON_DOME_INTERIOR_B1F_TRUST_ROOM. The signs HeartGold hangs once the player has earned them (the shoes',
+  // the clothes' and the flag's, behind flags nothing sets here) are left out; the hall's own things are read
+  "area": "pokeathlon_dome_interior_b1f_trust_room",
+  "bgmTrack": "johto/route34",
+  "people": {
+    "d49r0105_pcwoman2": {
+      "name": "Guide",
+      "still": true,
+      "dialog": [ "This hall is about trust. A Pokémon runs its best when it knows its Trainer believes in it." ]
+    },
+    // Before the way on to the next hall until two courses are won (pokeathlon_dome_interior_b1f_trust_room.txt)
+    "d49r0105_pcwoman2_2": { "name": "Guide", "still": true, "script": "Guide", "hiddenBy": "FLAG_UNK_0F0" },
+    "d49r0105_gsfighter": {
+      "name": "Black Belt",
+      "still": true,
+      "dialog": [ "I came to study how Pokémon train their bodies. Their footwork in Ring Drop is better than mine!" ]
+    },
+    "d49r0105_gsman3": {
+      "name": "Man",
+      "still": true,
+      "dialog": [ "My Dratini isn't strong yet, but its Jump is something else. We'll enter a course soon." ]
+    },
+    "d49r0105_tsure_poke_static_dratini": {
+      "name": "Dratini",
+      "npcType": "Pokemon",
+      "species": "Dratini",
+      "still": true,
+      "dialog": [ "Dratini curls and uncurls, as if practising a jump." ]
+    },
+    "d49r0105_gswoman3": {
+      "name": "Woman",
+      "still": true,
+      "dialog": [ "Abra teleports away when it's nervous. In here it's calm. I think it likes the quiet." ]
+    },
+    "d49r0105_tsure_poke_static_abra": {
+      "name": "Abra",
+      "npcType": "Pokemon",
+      "species": "Abra",
+      "still": true,
+      "dialog": [ "Abra is fast asleep... or is it?" ]
+    }
+  },
+  // The same guide aside once the hall of potential is open (HeartGold moves her to 2, 3 facing east)
+  "npcs": [
+    { "id": "pokeathlon_dome_interior_b1f_trust_room.GuideAside", "name": "Guide", "npcType": "Nurse", "x": 2, "y": 3,
+      "facing": "Right", "script": "Guide", "shownBy": "FLAG_UNK_0F0" }
+  ],
+  "signs": {
+    "D49R0105_007+1": "A row of trophies, one for each course, polished to a shine.",
+    "D49R0105_008+1": "An empty space on the wall, waiting for something a great athlete will one day earn.",
+    "D49R0105_009+1": "An empty space on the wall, waiting for something a great athlete will one day earn.",
+    "D49R0105_010+1": "Pictures of Trainers and Pokémon after a course, tired and smiling.",
+    "D49R0105_013+1": "A display case of worn-out running shoes from the dome's first season."
+  }
+}

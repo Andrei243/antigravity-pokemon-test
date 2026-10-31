@@ -540,6 +540,13 @@ public class SaveData
         int mask = RegionalBadges().FirstOrDefault(b => string.Equals(b.Key, region, StringComparison.OrdinalIgnoreCase)).Value;
         return (mask, RegionDatabase.Get(region)?.BadgeNames.Count ?? 0);
     }
+
+    /// <summary>
+    /// The teams kept by name at the PC (plan 12 · Q27): each a name and up to six of the player's Pokémon by their own id.
+    /// Null with none, so a save that keeps none is as it was and an older save needs no version raised.
+    /// </summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public List<SavedTeam>? Teams { get; set; }
 }
 
 /// <summary>

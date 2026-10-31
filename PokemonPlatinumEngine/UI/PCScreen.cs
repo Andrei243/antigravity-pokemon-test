@@ -11,10 +11,10 @@ namespace PokemonPlatinumEngine.UI;
 public enum StorageZone { Party, BoxName, Box }
 
 /// <summary>What can be done with the Pokémon under the cursor (the box application's menu, plan 06 · R12).</summary>
-public enum PcAction { Move, Withdraw, Store, Summary, Mark, Release, Cancel, Select }
+public enum PcAction { Move, Withdraw, Store, Summary, Mark, Release, Cancel, Select, Judge }
 
 /// <summary>What can be done with the box whose name is under the cursor (SEARCH and SORT are the boxes' tools', plan 12 · Q26).</summary>
-public enum PcBoxAction { Name, Wallpaper, Cancel, Search, Sort }
+public enum PcBoxAction { Name, Wallpaper, Cancel, Search, Sort, Teams }
 
 /// <summary>What can be done with a rectangle of a box once it is drawn (plan 12 · Q26).</summary>
 public enum PcGroupAction { Move, Release, Cancel }
@@ -30,7 +30,7 @@ public enum PcSortChoice { ThisBox, AllBoxes, Number, Level, Name, Type, Recent,
 /// <see cref="PcBoxes"/>'s, and this keeps only the screen's state. Its logic takes no input (<see cref="Move"/>,
 /// <see cref="Confirm"/>, <see cref="Cancel"/>, <see cref="Choose"/>), so tests and the harness drive it.
 /// </summary>
-public class PCScreen
+public partial class PCScreen
 {
     private const float AppearTime = 0.3f;
 
@@ -194,11 +194,12 @@ public class PCScreen
         Results = null;
         SortMenu = null;
         AskingReleaseMany = false;
+        CloseTeams();
     }
 
     /// <summary>Whether one of the screen's own menus or questions is open over the boxes.</summary>
     public bool Busy => Menu != null || BoxMenu != null || Marking != null || AskingRelease || Naming != null || Summarizing
-        || Selecting || GroupMenu != null || Search != null || SortMenu != null || AskingReleaseMany;
+        || Selecting || GroupMenu != null || Search != null || SortMenu != null || AskingReleaseMany || TeamsBusy;
 
     /// <summary>The place in the boxes that the cursor's place stands for, counted from the first box.</summary>
     public int StoredIndex => Box * BoxSize + Cell;
@@ -303,14 +304,16 @@ public class PCScreen
 
     /// <summary>What the menu offers for the Pokémon under the cursor (with the boxes' tools, SELECT before CANCEL in a box).</summary>
     public IReadOnlyList<PcAction> ActionsFor(StorageZone zone) => zone == StorageZone.Party
-        ? new[] { PcAction.Move, PcAction.Store, PcAction.Summary, PcAction.Mark, PcAction.Release, PcAction.Cancel }
+        ? Tools
+            ? new[] { PcAction.Move, PcAction.Store, PcAction.Summary, PcAction.Mark, PcAction.Release, PcAction.Judge, PcAction.Cancel }
+            : new[] { PcAction.Move, PcAction.Store, PcAction.Summary, PcAction.Mark, PcAction.Release, PcAction.Cancel }
         : Tools
-            ? new[] { PcAction.Move, PcAction.Withdraw, PcAction.Summary, PcAction.Mark, PcAction.Release, PcAction.Select, PcAction.Cancel }
+            ? new[] { PcAction.Move, PcAction.Withdraw, PcAction.Summary, PcAction.Mark, PcAction.Release, PcAction.Select, PcAction.Judge, PcAction.Cancel }
             : new[] { PcAction.Move, PcAction.Withdraw, PcAction.Summary, PcAction.Mark, PcAction.Release, PcAction.Cancel };
 
-    /// <summary>What the box's menu offers: with the boxes' tools, SEARCH and SORT before CANCEL.</summary>
+    /// <summary>What the box's menu offers: with the boxes' tools, SEARCH, SORT and TEAMS (plan 12 · Q27) before CANCEL.</summary>
     public IReadOnlyList<PcBoxAction> BoxActions => Tools
-        ? new[] { PcBoxAction.Name, PcBoxAction.Wallpaper, PcBoxAction.Search, PcBoxAction.Sort, PcBoxAction.Cancel }
+        ? new[] { PcBoxAction.Name, PcBoxAction.Wallpaper, PcBoxAction.Search, PcBoxAction.Sort, PcBoxAction.Teams, PcBoxAction.Cancel }
         : new[] { PcBoxAction.Name, PcBoxAction.Wallpaper, PcBoxAction.Cancel };
 
     /// <summary>
@@ -415,6 +418,7 @@ public class PCScreen
         else if (Marking != null) Marking = null;
         else if (Menu != null || BoxMenu != null) { Menu = null; BoxMenu = null; }
         else if (Held != null) PutBack(party, pc);
+        else if (Judging) Judging = false;
         else return false;
         AudioManager.PlaySound("cancel");
         return true;
@@ -486,6 +490,11 @@ public class PCScreen
             case PcAction.Release:
                 AskingRelease = true;
                 break;
+            case PcAction.Judge:
+                // The detail column turns into the judge's page until B (plan 12 · Q27)
+                Judging = true;
+                AudioManager.PlaySound("select");
+                break;
             case PcAction.Select:
                 // A rectangle begun here: the cursor is its other corner
                 if (Zone != StorageZone.Box) return;
@@ -528,6 +537,7 @@ public class PCScreen
         if (action == PcBoxAction.Name) Naming = new NameEntry(NameToEdit(pc), PcBoxes.NameLength);
         else if (action == PcBoxAction.Wallpaper) NextWallpaper(pc);
         else if (action == PcBoxAction.Search) OpenSearch(pc);
+        else if (action == PcBoxAction.Teams) OpenTeams();
         else if (action == PcBoxAction.Sort)
         {
             SortMenu = new[] { PcSortChoice.ThisBox, PcSortChoice.AllBoxes, PcSortChoice.Cancel };
@@ -659,6 +669,7 @@ public class PCScreen
             return;
         }
 
+        if (UpdateTeamNaming(party, onNotification)) return;
         if (Naming is { } naming)
         {
             // The keyboard's own keys while a box is being named
@@ -723,6 +734,7 @@ public class PCScreen
     /// <summary>The cursor's step where a tool has it: the search's rows, the results, the sort's and the rectangle's menus, the rectangle's corner. True when a tool took it.</summary>
     private bool MoveTools(int dx, int dy)
     {
+        if (MoveTeams(dy)) return true;
         if (Results is { } results)
         {
             if (dy == 0) return true;
@@ -761,6 +773,7 @@ public class PCScreen
     /// <summary>The A button where a tool has it; true when a tool took it.</summary>
     private bool ConfirmTools(Party party, PcBoxes pc, Action<string> onNotification)
     {
+        if (ConfirmTeams(party, pc, onNotification)) return true;
         if (AskingReleaseMany)
         {
             // The release's yes: at once, or once the hold is done where the options ask for it (plan 12 · Q9)
@@ -862,6 +875,7 @@ public class PCScreen
     /// <summary>The B button where a tool has it: each steps back once; true when a tool took it.</summary>
     private bool CancelTools(PcBoxes pc)
     {
+        if (CancelTeams()) return true;
         if (AskingReleaseMany) { AskingReleaseMany = false; ReleaseHold.Stop(); releasing = new(); }
         else if (Results != null) Results = null;
         else if (Search != null) Search = null;
@@ -952,6 +966,11 @@ public class PCScreen
     public void Draw(int screenWidth, int screenHeight, Party party, PcBoxes pc)
     {
         if (!IsActive) return;
+        if (TeamNaming is { } teamName)
+        {
+            ModernUi.DrawTeamNaming(screenWidth, screenHeight, teamName, party);
+            return;
+        }
         if (Summarizing && Under(party, pc) is { } shown)
         {
             var (index, count) = SummaryPlace(party, pc);

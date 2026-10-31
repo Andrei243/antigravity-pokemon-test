@@ -247,7 +247,7 @@ public class BoxToolsTests
         screen.Move(1, 0, party.Count);
         screen.Move(0, -1, party.Count);
         screen.Confirm(party, pc, notes.Add);
-        Assert.Equal(new[] { PcBoxAction.Name, PcBoxAction.Wallpaper, PcBoxAction.Search, PcBoxAction.Sort, PcBoxAction.Cancel }, screen.BoxMenu);
+        Assert.Equal(new[] { PcBoxAction.Name, PcBoxAction.Wallpaper, PcBoxAction.Search, PcBoxAction.Sort, PcBoxAction.Teams, PcBoxAction.Cancel }, screen.BoxMenu);
         screen.MenuIndex = 2;
         screen.Confirm(party, pc, notes.Add);
         var search = screen.Search!;

@@ -287,4 +287,16 @@ public class GiantChampionTests
         Assert.Equal(ModernUi.BossFrom, ModernUi.BossRect(0f));
         Assert.Equal(ModernUi.BossTo, ModernUi.BossRect(1f));
     }
+
+    [Fact]
+    public void TheBossBoxStopsShortOfTheGiantsHead()
+    {
+        // At every share of its widening the box ends before the foe's platform as the overview sees it, so the giant's
+        // head and crown stand clear of it (plan 25's leftovers: a box along the whole top hid them)
+        for (float k = 0f; k <= 1f; k += 0.05f)
+        {
+            var r = ModernUi.BossRect(k);
+            Assert.True(r.X + r.Width <= ModernUi.BossRightLimit, $"{k:0.00}: ends at {r.X + r.Width}");
+        }
+    }
 }

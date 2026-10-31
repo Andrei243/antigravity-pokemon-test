@@ -1,0 +1,48 @@
+{
+  "key": "ruins_of_alph_hall_entrance",
+  "index": 323,
+  "name": "Ruins of Alph",
+  "matrix": 181,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building3",
+  "dayMusic": "GS_D_CHIKATSUURO",
+  "nightMusic": "GS_D_CHIKATSUURO",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 13, "to": "ruins_of_alph", "toWarp": 8 },
+    { "x": 6, "z": 7, "to": "ruins_of_alph_underground_hall", "toWarp": 0 },
+    { "x": 25, "z": 30, "to": "ruins_of_alph", "toWarp": 11 },
+    { "x": 25, "z": 24, "to": "ruins_of_alph_underground_hall_sinjoh_event", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "d24r0211_gsassistantm", "looks": "gsassistantm", "movement": "0", "x": 1, "z": 30, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "0" },
+    { "id": "d24r0211_gsmiddleman1", "looks": "gsmiddleman1", "movement": "14", "x": 4, "z": 9, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CAMERON", "script": "D24R0211_002+1" },
+    { "id": "d24r0211_gsmiddleman1_2", "looks": "gsmiddleman1", "movement": "14", "x": 23, "z": 26, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CAMERON", "script": "D24R0211_004+1" }
+  ],
+  "signs": [
+    { "x": 2, "z": 5, "type": 0, "script": "D24R0211_000+1" },
+    { "x": 2, "z": 10, "type": 0, "script": "D24R0211_000+1" },
+    { "x": 10, "z": 5, "type": 0, "script": "D24R0211_000+1" },
+    { "x": 10, "z": 10, "type": 0, "script": "D24R0211_000+1" },
+    { "x": 2, "z": 4, "type": 0, "script": "D24R0211_000+1" },
+    { "x": 10, "z": 4, "type": 0, "script": "D24R0211_000+1" },
+    { "x": 2, "z": 9, "type": 0, "script": "D24R0211_000+1" },
+    { "x": 10, "z": 9, "type": 0, "script": "D24R0211_000+1" },
+    { "x": 25, "z": 19, "type": 0, "script": "D24R0211_001+1" },
+    { "x": 29, "z": 27, "type": 0, "script": "D24R0211_000+1" },
+    { "x": 29, "z": 26, "type": 0, "script": "D24R0211_000+1" },
+    { "x": 29, "z": 22, "type": 0, "script": "D24R0211_000+1" },
+    { "x": 29, "z": 21, "type": 0, "script": "D24R0211_000+1" },
+    { "x": 21, "z": 27, "type": 0, "script": "D24R0211_000+1" },
+    { "x": 21, "z": 26, "type": 0, "script": "D24R0211_000+1" },
+    { "x": 21, "z": 22, "type": 0, "script": "D24R0211_000+1" },
+    { "x": 21, "z": 21, "type": 0, "script": "D24R0211_000+1" }
+  ],
+  "triggers": []
+}

@@ -1,0 +1,54 @@
+{
+  // Route 9 as HeartGold has it three years on (plan 20 · J15, part j): the rough road east of Cerulean City to Route
+  // 10's northern half, past trees Cut fells. Its key meets FireRed's, so it takes Johto's prefix (HgWorld.Clashes). Its
+  // trainers battle by their own records (Johto's trainers.json)
+  "area": "johto_route_9",
+  "bgmTrack": "kanto/route3",
+  "people": {
+    "r09_campboy_2": {
+      "name": "Sid",
+      "trainer": {
+        "dialogueBefore": "Camper Sid: I pitched my tent right on the road. Anyone who passes has to battle me!",
+        "dialogueAfter": "Camper Sid: I should have pitched it somewhere quieter."
+      }
+    },
+    "r09_picnicgirl_2": {
+      "name": "Edna",
+      "trainer": {
+        "dialogueBefore": "Picnicker Edna: I walk this road every weekend. My Pokémon know every bump in it!",
+        "dialogueAfter": "Picnicker Edna: We tripped over the last bump."
+      }
+    },
+    "r09_campboy_2_2": {
+      "name": "Dean",
+      "trainer": {
+        "dialogueBefore": "Camper Dean: I'm on my way to Rock Tunnel. You look like a good warm-up!",
+        "dialogueAfter": "Camper Dean: Some warm-up. I'm worn out."
+      }
+    },
+    "r09_mount_2": {
+      "name": "Clarke",
+      "trainer": {
+        "dialogueBefore": "Hiker Clarke: These hills have nothing on the mountains of Johto. Let's see what you've brought!",
+        "dialogueAfter": "Hiker Clarke: You'd make a fine climber."
+      }
+    },
+    "r09_mount_2_2": {
+      "name": "Eoin",
+      "trainer": {
+        "dialogueBefore": "Hiker Eoin: I've been pacing up and down here all day. A battle will settle my legs!",
+        "dialogueAfter": "Hiker Eoin: My legs are settled. So is the battle."
+      }
+    },
+    "r09_picnicgirl_2_2": {
+      "name": "Heidi",
+      "trainer": {
+        "dialogueBefore": "Picnicker Heidi: I brought sandwiches for my Pokémon. They battle better full!",
+        "dialogueAfter": "Picnicker Heidi: I'll bring more sandwiches next time."
+      }
+    }
+  },
+  "signs": {
+    "R09_000+1": "Route 9\nCerulean City - Rock Tunnel"
+  }
+}

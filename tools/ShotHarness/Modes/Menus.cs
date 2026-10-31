@@ -1027,5 +1027,72 @@ partial class Harness
             engine.Settings.BoxTools = toolsBefore;
             game.State = GameState.Overworld;
         }
+
+        // Saved teams and the judge (plan 12 · Q27), after the boxes' tools so that nothing before them moves: two teams kept,
+        // one with a member released, the panel and a team's menu, the keyboard naming a third, the second swapped in, and
+        // the judge's page on a box's Pokémon
+        {
+            var toolsBefore = engine.Settings.BoxTools;
+            engine.Settings.BoxTools = RulesDefault.On;
+            var boxesBefore = game.Boxes;
+            var membersBefore = party.Members.ToList();
+            var stored = new PcBoxes();
+            var gym = new[] { "Shinx", "Budew", "Kricketot", "Abra", "Buneary", "Starly" }
+                .Select((s, i) => new Pokemon(PokemonDatabase.Get(s)!, 14 + i * 3, new Random(40 + i))).ToList();
+            foreach (var p in gym) stored.Store(p);
+            var gone = new Pokemon(PokemonDatabase.Get("Bidoof")!, 8, new Random(7));
+            stored.Store(gone);
+            uint idCount = 900;
+            PokemonIds.Give(party.Members.Concat(stored.All), 4242, ref idCount);
+            var teams = new List<SavedTeam>
+            {
+                SavedTeams.Of("Road", party),
+                new() { Name = "Gym", Members = gym.Select(p => p.Id).ToList() },
+                new() { Name = "Pond", Members = { gym[1].Id, gone.Id, gym[3].Id } }
+            };
+            stored.Release(gone, party);
+            game.Boxes = stored;
+            game.State = GameState.PCStorage;
+            var ps = game.PcScreen;
+            ps.Tools = true;
+            var teamsBefore = game.Teams;
+            game.Teams = teams;
+            ps.Teams = teams;
+            ps.Open(stored);
+            ps.Move(1, 0, party.Count);
+            ps.Move(0, -1, party.Count);
+            ps.Confirm(party, stored, engine.ShowNotification);
+            ps.MenuIndex = ps.BoxMenu!.ToList().IndexOf(PcBoxAction.Teams);
+            ps.Confirm(party, stored, engine.ShowNotification);
+            Frames(20); Shot("30w_pc_teams");
+            ps.Move(0, 1, party.Count);
+            ps.Confirm(party, stored, engine.ShowNotification);
+            Frames(12); Shot("30x_pc_team_menu");
+            ps.Cancel(party, stored);
+            while (!ps.OnSaveRow) ps.Move(0, 1, party.Count);
+            ps.Confirm(party, stored, engine.ShowNotification);
+            Frames(12); Shot("30y_pc_team_naming");
+            ps.FinishTeamNaming(party, null, engine.ShowNotification);
+            ps.TeamIndex = 1;
+            ps.SwapIn(party, stored, engine.ShowNotification);
+            ps.Cancel(party, stored);
+            Frames(30); Shot("30y2_pc_team_swapped");
+            Console.WriteLine($"teams: {teams.Count} kept ({string.Join(", ", teams.Select(t => t.Name))}); the party now {string.Join(", ", party.Members.Select(p => p.Species.Name))}; the boxes hold {stored.Count}");
+            // The judge on a box's Pokémon
+            ps.Move(0, 1, party.Count);
+            ps.Confirm(party, stored, engine.ShowNotification);
+            ps.MenuIndex = ps.Menu!.ToList().IndexOf(PcAction.Judge);
+            ps.Confirm(party, stored, engine.ShowNotification);
+            Frames(12); Shot("30z_pc_judge");
+            if (ps.Under(party, stored) is { } judged)
+                Console.WriteLine($"judge: {judged.Species.Name} IVs {judged.IvHP}/{judged.IvAttack}/{judged.IvDefense}/{judged.IvSpAttack}/{judged.IvSpDefense}/{judged.IvSpeed} -> {string.Join(", ", IvJudge.Of(judged))}");
+            ps.Close();
+            party.Clear();
+            foreach (var p in membersBefore) party.Add(p);
+            game.Teams = teamsBefore;
+            game.Boxes = boxesBefore;
+            engine.Settings.BoxTools = toolsBefore;
+            game.State = GameState.Overworld;
+        }
     }
 }

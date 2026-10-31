@@ -1,0 +1,6 @@
+{
+  // Rock Tunnel's floor below (plan 20 · J15, part j): the ladders of the first floor come down into it, and cracked rocks
+  // Rock Smash breaks stand in its corners. Its key meets FireRed's, so it takes Johto's prefix (HgWorld.Clashes)
+  "area": "johto_rock_tunnel_b1f",
+  "bgmTrack": "kanto/mt_moon"
+}

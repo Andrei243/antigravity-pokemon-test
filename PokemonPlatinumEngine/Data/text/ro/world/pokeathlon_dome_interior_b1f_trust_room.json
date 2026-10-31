@@ -1,0 +1,174 @@
+{
+  "people": {
+    "d49r0105_pcwoman2": {
+      "name": {
+        "en": [
+          "Guide"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This hall is about trust. A Pokémon runs its best when it knows its Trainer believes in it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49r0105_pcwoman2_2": {
+      "name": {
+        "en": [
+          "Guide"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49r0105_gsfighter": {
+      "name": {
+        "en": [
+          "Black Belt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came to study how Pokémon train their bodies. Their footwork in Ring Drop is better than mine!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49r0105_gsman3": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Dratini isn't strong yet, but its Jump is something else. We'll enter a course soon."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49r0105_tsure_poke_static_dratini": {
+      "name": {
+        "en": [
+          "Dratini"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Dratini curls and uncurls, as if practising a jump."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49r0105_gswoman3": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Abra teleports away when it's nervous. In here it's calm. I think it likes the quiet."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49r0105_tsure_poke_static_abra": {
+      "name": {
+        "en": [
+          "Abra"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Abra is fast asleep... or is it?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "pokeathlon_dome_interior_b1f_trust_room.GuideAside": {
+      "name": {
+        "en": [
+          "Guide"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "D49R0105_007+1": {
+      "en": [
+        "A row of trophies, one for each course, polished to a shine."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "D49R0105_008+1": {
+      "en": [
+        "An empty space on the wall, waiting for something a great athlete will one day earn."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "D49R0105_009+1": {
+      "en": [
+        "An empty space on the wall, waiting for something a great athlete will one day earn."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "D49R0105_010+1": {
+      "en": [
+        "Pictures of Trainers and Pokémon after a course, tired and smiling."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "D49R0105_013+1": {
+      "en": [
+        "A display case of worn-out running shoes from the dome's first season."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

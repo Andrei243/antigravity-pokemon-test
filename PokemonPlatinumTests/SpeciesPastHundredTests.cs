@@ -15,7 +15,7 @@ namespace PokemonPlatinumTests;
 
 /// <summary>
 /// Plan 03 · D14: the species of our own that evolve past level 100, batches 1 to 4 (Kanto, Johto, Hoenn and Sinnoh:
-/// docs/plans/D14-proposals-kanto.md, -johto.md, -hoenn.md and -sinnoh.md, each approved by the user on 2026-10-25). The hand-written table (<c>tools/DataImporter/Overrides/species-past-hundred.json</c>)
+/// docs/plans/decisions/D14-proposals-kanto.md, -johto.md, -hoenn.md and -sinnoh.md, each approved by the user on 2026-10-25). The hand-written table (<c>tools/DataImporter/Overrides/species-past-hundred.json</c>)
 /// held to the proposals' rules, the species the importer made of it, each evolution firing at its level under the
 /// engine's own rules and not before, their moves by R31's rule, a battle, a save, and how the rest of the game counts
 /// them (outside the 1,025: the National Pokédex lists them last and counts them toward nothing).

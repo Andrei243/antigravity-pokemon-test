@@ -1,0 +1,14 @@
+{
+  // The Ruins of Alph's hall entrance (plan 20 · J5's leftovers), HeartGold's room under the grounds' middle: the door on
+  // the grounds opens once a chamber's panel is put back together (the grounds' overlay), and the stairs at its middle
+  // (warp 1) go down to the underground hall. Its east half (warp 2 to the grounds and the way down to the hall of
+  // HeartGold's Arceus event) belongs to that event, which this game doesn't have, and stays shut, with the scientist
+  // who stands in it and the photographer (Cameron, the Pokégear's)
+  "area": "ruins_of_alph_hall_entrance",
+  "bgmTrack": "johto/ruins_of_alph",
+  "locked": [ 2, 3 ],
+  "signs": {
+    "D24R0211_000+1": "Rows of small shapes are carved into the stone. Each looks a little like an eye with a mark beside it.",
+    "D24R0211_001+1": "The carving is worn smooth. Whatever it showed, it has been touched by a great many hands."
+  }
+}

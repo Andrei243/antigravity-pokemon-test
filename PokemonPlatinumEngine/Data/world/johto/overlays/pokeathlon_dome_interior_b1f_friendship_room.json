@@ -1,0 +1,23 @@
+{
+  // The last hall under the Pokéathlon Dome (plan 20 · J13, the last part): HeartGold's
+  // MAP_POKEATHLON_DOME_INTERIOR_B1F_FRIENDSHIP_ROOM. The dome's owner tells why he built it; the statue HeartGold raises
+  // of a Trainer who has won every course (its hero's and heroine's objects) is left out, and its pedestal is read
+  "area": "pokeathlon_dome_interior_b1f_friendship_room",
+  "bgmTrack": "johto/route34",
+  "people": {
+    "d49r0107_thlonowner": {
+      "name": "Dome Owner",
+      "still": true,
+      "dialog": [
+        "You found the last hall! I built the dome for one reason: so that every Pokémon could feel what it is to be cheered.",
+        "Battles aren't everything. Friendship is what makes a Pokémon run, jump and push with all it has."
+      ]
+    }
+  },
+  "signs": {
+    "D49R0107_001+1": "An empty pedestal. Its plaque says a statue will stand here for the Trainer who wins gold on every course.",
+    "D49R0107_002+1": "The dome's motto in big letters: \"Every Pokémon can shine.\"",
+    "D49R0107_003+1": "A picture of the dome being built, with the owner and his Poliwrath carrying a beam.",
+    "D49R0107_004+1": "A picture of the dome's first winners, three small Pokémon holding up a trophy together."
+  }
+}

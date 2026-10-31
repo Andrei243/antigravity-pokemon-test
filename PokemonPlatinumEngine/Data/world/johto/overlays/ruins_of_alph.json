@@ -1,13 +1,18 @@
 {
   // The Ruins of Alph (plan 20 · J5): HeartGold's grounds between Route 32's gate house and Route 36's, with the
-  // research centre and the four chambers. The hall's way in (warps 8, 9 and 11 to 14, all on its two tiles) waits for
-  // the chambers' puzzles; Union Cave's two ways up are open. The man with the camera and the suit at the centre's door
-  // are later chapters'
+  // research centre and the four chambers. The hall's way in (warps 8 and 9 on its two tiles) opens once any chamber's
+  // panel is put back together (FLAG_ALPH_HALL_OPEN, ours, set by the panels' Falls script); warps 11 to 14 on the same
+  // tiles are HeartGold's for its Arceus event and stay shut. Union Cave's two ways up are open. The man with the
+  // camera and the suit at the centre's door are later chapters'
   "area": "ruins_of_alph",
   "ours": { "land": [ ["Totemsight", 115, 119], ["Muralist", 110, 114] ] },
   "bgmTrack": "johto/ruins_of_alph",
   "trees": "Round",
-  "locked": [ 8, 9, 11, 12, 13, 14 ],
+  "locked": [ 11, 12, 13, 14 ],
+  "doors": [
+    { "warp": 8, "map": "RuinsOfAlph_HallEntrance", "x": 6, "y": 12, "facing": "Up", "openedBy": "FLAG_ALPH_HALL_OPEN" },
+    { "warp": 9, "map": "RuinsOfAlph_HallEntrance", "x": 6, "y": 12, "facing": "Up", "openedBy": "FLAG_ALPH_HALL_OPEN" }
+  ],
   "people": {
     "d24r0101_mystery_2": {
       "name": "Nathan",

@@ -6,7 +6,7 @@ using PokemonPlatinumEngine.Models;
 namespace DataImporter;
 
 /// <summary>
-/// Plan 06 · R20c: the Mega Dynamax forms of our own (<c>docs/plans/R20c-mega-dynamax-proposals.md</c>, approved by the
+/// Plan 06 · R20c: the Mega Dynamax forms of our own (<c>docs/plans/decisions/R20c-mega-dynamax-proposals.md</c>, approved by the
 /// user on 2026-10-25). Each row of <c>Overrides/mega-dynamax.json</c> names a Mega form and the height of its Mega
 /// Dynamax form; this writes <c>&lt;Mega form&gt;-Mmax</c> (<see cref="FormKind.MegaDynamax"/>) right after the Mega,
 /// with the Mega's types, base stats, abilities, yields and colour (so taking it in battle changes nothing but the look

@@ -69,6 +69,9 @@ public class JohtoTests
         // Plan 20 · J15, part i: Route 11 and its gate, Diglett's Cave, Routes 16 to 18 with their gates and Route 16's house
         "johto_route_11", "route_19_route_12_gatehouse", "diglett_cave", "johto_route_16", "johto_route_16_house", "route_16_east",
         "route_16_gatehouse", "johto_route_17", "johto_route_18", "route_18_gatehouse",
+        // Plan 20 · J15, part j: Routes 9 and 10 with Route 10's Pokémon Center and the Power Plant, and Rock Tunnel
+        "johto_route_9", "johto_route_10", "route_10_pokecenter_1f", "route_10_pokecenter_b1f", "route_10_power_plant_repaired",
+        "johto_rock_tunnel_1f", "johto_rock_tunnel_b1f", "route_10_south",
     };
 
     [Fact]
@@ -163,13 +166,13 @@ public class JohtoTests
                      "RuinsOfAlph_NortheastChamber", "Azalea_KurtsHouse", "Azalea_CharcoalKiln", "Azalea_PokemonCenter_B1F" })
             Assert.True(walked.Keys.Any(m => m.Name == name), $"nobody walks into {name}");
 
-        // The Slowpoke Well and the Gym are open since plan 20 · J7; what waits for its chapter stays shut: the Ruins'
-        // hall and the rooms behind the chambers' back walls
+        // The Slowpoke Well and the Gym are open since plan 20 · J7; the Ruins' hall waits for a panel (J5's leftovers:
+        // TheRuinsHallOpensWithAPanelAndHoldsTheUnown), and the rooms behind the chambers' back walls stay shut
         var azalea = Johto.Area("azalea")!;
         Assert.Contains(Overworld.WarpsAt(azalea.Warps[2].X, azalea.Warps[2].Z), w => w.TargetMap == "Azalea_GymEntrance");
         Assert.Contains(Overworld.WarpsAt(azalea.Warps[7].X, azalea.Warps[7].Z), w => w.TargetMap == "SlowpokeWell_Entrance");
         var hall = Johto.Area("ruins_of_alph")!.Warps[8];
-        Assert.Empty(Overworld.WarpsAt(hall.X, hall.Z));
+        Assert.All(Overworld.WarpsAt(hall.X, hall.Z), w => Assert.Equal("FLAG_ALPH_HALL_OPEN", w.OpenedBy));
         Assert.Null(MapNamed("RuinsOfAlph_NortheastChamber").GetWarpAt(6, 2));
         // ...and Ilex Forest beyond Azalea's gate house is open since J5's part b
         Assert.Equal("IlexForest", MapNamed("Azalea_IlexForestGate").GetWarpAt(1, 7)?.TargetMap);
@@ -185,6 +188,32 @@ public class JohtoTests
         // The chambers' trainers and Union Cave's battle by HeartGold's records
         Assert.Contains(MapNamed("UnionCave_1F").Everyone, n => n.Id == "johto_hiker_daniel");
         Assert.Contains(Overworld.Everyone, n => n.Id == "johto_psychic_m_nathan");
+    }
+
+    [Fact]
+    public void TheRuinsHallOpensWithAPanelAndHoldsTheUnown()
+    {
+        // Plan 20 · J5's leftovers: the hall's door on the grounds is shut until a chamber's panel is put back together,
+        // its stairs go down to the underground hall, and the hall is where Unown live, every slot of its table one
+        var grounds = Johto.Area("ruins_of_alph")!;
+        foreach (int index in new[] { 8, 9 })
+        {
+            var door = Assert.Single(Overworld.WarpsAt(grounds.Warps[index].X, grounds.Warps[index].Z));
+            Assert.Equal("RuinsOfAlph_HallEntrance", door.TargetMap);
+            Assert.Equal("FLAG_ALPH_HALL_OPEN", door.OpenedBy);
+        }
+        Assert.Equal("RuinsOfAlph_UndergroundHall", MapNamed("RuinsOfAlph_HallEntrance").GetWarpAt(6, 7)?.TargetMap);
+        Assert.True(Walked.Value.Keys.Any(m => m.Name == "RuinsOfAlph_UndergroundHall"), "nobody walks into the underground hall");
+        var hall = MapNamed("RuinsOfAlph_UndergroundHall");
+        Assert.Equal("johto/ruins_of_alph", hall.BgmTrackAt(18, 25));
+        var table = EncounterSlots.Grass(hall.Areas.Single(a => a.Key == "ruins_of_alph_underground_hall"), new EncounterMoment { Time = TimeOfDay.Day });
+        Assert.NotEmpty(table);
+        Assert.All(table, s => Assert.Equal("Unown", s.SpeciesName));
+        // The visitors and the assistants stand and talk; the suit of HeartGold's Arceus event is left out
+        Assert.Contains(hall.Everyone, n => n.Key == "d24r0205_gsoldman1");
+        Assert.DoesNotContain(hall.Everyone, n => n.Key == "d24r0205_suit");
+        // The hall entrance's east half belongs to HeartGold's Arceus event and stays shut
+        Assert.Null(MapNamed("RuinsOfAlph_HallEntrance").GetWarpAt(25, 30));
     }
 
     private static readonly string[] NorthOfAzalea = { "ilex_forest", "route_34", "goldenrod", "route_35", "national_park", "route_36", "route_37", "ecruteak" };
@@ -990,6 +1019,33 @@ public class JohtoTests
     }
 
     [Fact]
+    public void Routes9And10RockTunnelAndThePowerPlantAreWalkedTo()
+    {
+        // Plan 20 · J15, part j: Route 9 east of Cerulean City to Route 10's north with its Pokémon Center and the Power
+        // Plant, and Rock Tunnel's two floors under to Route 10's south and Lavender Town
+        var walked = Walked.Value;
+        var outside = walked.Single(kv => kv.Key.Name == "Johto").Value;
+        foreach (string key in new[] { "johto_route_9", "johto_route_10", "route_10_south" })
+            Assert.True(outside.Any(t => Overworld.AreaAt(t.X, t.Y)?.Key == key), $"{key} can't be walked to from the start");
+        foreach (string name in new[] { "Route10North_PokemonCenter_1F", "Route10North_PokemonCenter_B1F", "Route10_PowerPlant", "Rock_Tunnel_1F", "Rock_Tunnel_B1F" })
+        {
+            Assert.True(walked.Keys.Any(m => m.Name == name), $"nobody walks into {name}");
+            Assert.Equal(RegionDatabase.Johto, RegionDatabase.RegionOfMap(name)!.Id);
+        }
+        // The routes' and the tunnel's keys meet FireRed's, so they take Johto's prefix; the rooms' and Route 10's south don't
+        foreach (string key in new[] { "route_9", "route_10", "rock_tunnel_1f", "rock_tunnel_b1f" })
+        {
+            Assert.True(HgWorld.Clashes(key));
+            Assert.Equal("johto_" + key, HgWorld.KeyOf("MAP_" + key.ToUpperInvariant()));
+        }
+        foreach (string key in new[] { "route_10_south", "route_10_pokecenter_1f", "route_10_power_plant_repaired" })
+            Assert.Equal(key, HgWorld.KeyOf("MAP_" + key.ToUpperInvariant()));
+        // Lt. Surge and Zapdos before the plant wait for their sessions
+        Assert.DoesNotContain(Overworld.Everyone, n => n.Key is "r10_gsleader9" or "r10_tsure_poke_static_zapdos");
+        Assert.Equal(InteriorStyle.PokemonCenter, MapNamed("Route10North_PokemonCenter_1F").Interior);
+    }
+
+    [Fact]
     public void ADsRoomOfSeveralChunksIsAsLargeAsWhatItsWaysInReach()
     {
         // Plan 20 · J15, part i: the Viridian Gym's matrix is two chunks tall, and its hall nine tiles wide at the chunks'
@@ -1024,9 +1080,45 @@ public class JohtoTests
         Assert.NotNull(found);
         Assert.Equal(GameEngine.AthlonDeskScript, $"{found!.File}.{found.Name}");
 
-        // The ways down to the event rooms and up to the stands stay shut: the events are played on their own board
-        foreach (var shut in Johto.Area("pokeathlon_dome_interior_1f")!.Warps.Skip(1))
-            Assert.Null(lobby.GetWarpAt(shut.X, shut.Z));
+        // Since J13's last part the way down leads to the four halls of the dome's history and the stairs up to the
+        // stands, every room walked into from the start and joined both ways
+        var ways = Johto.Area("pokeathlon_dome_interior_1f")!.Warps;
+        Assert.Equal("PokeathlonDome_B1F_Solidarity", lobby.GetWarpAt(ways[1].X, ways[1].Z)?.TargetMap);
+        Assert.Equal("PokeathlonDome_2FEntrance", lobby.GetWarpAt(ways[2].X, ways[2].Z)?.TargetMap);
+        foreach (string name in new[] { "PokeathlonDome_2FEntrance", "PokeathlonDome_2F", "PokeathlonDome_B1F_Solidarity",
+                     "PokeathlonDome_B1F_Trust", "PokeathlonDome_B1F_Potential", "PokeathlonDome_B1F_Friendship" })
+            Assert.True(walked.Keys.Any(m => m.Name == name), $"nobody walks into {name}");
+        Assert.Contains(MapNamed("PokeathlonDome_2F").Everyone, n => n.Name == "Coach");
+        Assert.Contains(MapNamed("PokeathlonDome_B1F_Friendship").Everyone, n => n.Name == "Dome Owner");
+        // The halls beyond the first open one by one with each course won: the guide in the way on is gone and a
+        // guide of ours stands aside
+        foreach (var (room, flag, way) in new[]
+                 {
+                     ("PokeathlonDome_B1F_Solidarity", "FLAG_UNK_0EF", (3, 3)),
+                     ("PokeathlonDome_B1F_Trust", "FLAG_UNK_0F0", (3, 3)),
+                     ("PokeathlonDome_B1F_Potential", "FLAG_UNK_0F1", (7, 3)),
+                 })
+        {
+            var hall = MapNamed(room);
+            var story = new StoryState();
+            hall.ApplyPresence(story.Has);
+            Assert.Contains(hall.NPCs, n => (n.GridX, n.GridY) == way && n.Name == "Guide");
+            story.Set(flag);
+            hall.ApplyPresence(story.Has);
+            Assert.DoesNotContain(hall.NPCs, n => (n.GridX, n.GridY) == way);
+            Assert.Contains(hall.NPCs, n => (n.GridX, n.GridY) == (way.Item1 - 1, way.Item2) && n.Name == "Guide");
+        }
+        // The course desk opens them: a first win, a second, a third
+        var desk = new HeadlessScriptHost { AthlonPlace = 1 };
+        foreach (string species in new[] { "Pikachu", "Machop", "Pidgey" })
+            desk.Party.Add(new Pokemon(PokemonDatabase.Get(species)!, 20));
+        foreach (string flag in new[] { "FLAG_UNK_0EF", "FLAG_UNK_0F0", "FLAG_UNK_0F1" })
+        {
+            var r = new ScriptRunner(ScriptLibrary.Default, desk);
+            r.Start(found);
+            r.RunToEnd();
+            Assert.True(desk.Story.Has(flag));
+        }
 
         // Spoken to, the clerk asks about a course and runs one for a team of three
         var host = new HeadlessScriptHost { AthlonPlace = 1 };

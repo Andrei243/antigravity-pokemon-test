@@ -702,6 +702,9 @@ public partial class BattleEngine
     /// </summary>
     private int CommandStep(int index, int dx, int dy)
     {
+        // AUTO stands to the left of FIGHT where it is offered (plan 12 · Q12): left from FIGHT, right back to it
+        if (index == AutoIndex) return dx > 0 || !AutoOffered ? 0 : index;
+        if (index == 0 && dx < 0 && dy == 0 && AutoOffered) return AutoIndex;
         if (index != 0) stackRow = index;
         if (dy != 0) return UI.Kit.UiNav.Wrap(index, Math.Sign(dy), 4);
         return index == 0 ? stackRow : 0;
@@ -810,6 +813,11 @@ public partial class BattleEngine
                 // A rotation battle's arrows beside FIGHT turn the turntable for the move (plan 14 · B7)
                 if (TurnedTheTable()) return;
                 MoveCursor(dx, dy);
+                if (confirm && HUD.MainMenuIndex == AutoIndex)
+                {
+                    AutoUntilStopped();
+                    break;
+                }
                 if (confirm)
                 {
                     AudioManager.PlaySound("select");

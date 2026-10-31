@@ -1,0 +1,32 @@
+{
+  "key": "pokeathlon_dome_interior_b1f_friendship_room",
+  "index": 287,
+  "name": "Pokeathlon Dome",
+  "matrix": 160,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_PT_END_FIELD",
+  "nightMusic": "GS_PT_END_FIELD",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 7, "z": 14, "to": "pokeathlon_dome_interior_b1f_potential_room", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "d49r0107_thlonowner", "looks": "thlonowner", "movement": "0", "x": 7, "z": 10, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "D49R0107_000+1" },
+    { "id": "d49r0107_statuehero", "looks": "statuehero", "movement": "0", "x": 7, "z": 8, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "0" },
+    { "id": "d49r0107_statueheroine", "looks": "statueheroine", "movement": "0", "x": 7, "z": 8, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "0" }
+  ],
+  "signs": [
+    { "x": 7, "z": 8, "type": 0, "script": "D49R0107_001+1" },
+    { "x": 7, "z": 5, "type": 0, "script": "D49R0107_002+1" },
+    { "x": 10, "z": 10, "type": 0, "script": "D49R0107_003+1" },
+    { "x": 4, "z": 10, "type": 0, "script": "D49R0107_004+1" }
+  ],
+  "triggers": []
+}

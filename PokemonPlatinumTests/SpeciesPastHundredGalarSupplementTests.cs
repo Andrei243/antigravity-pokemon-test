@@ -12,7 +12,7 @@ using static PokemonPlatinumTests.Scenario;
 namespace PokemonPlatinumTests;
 
 /// <summary>
-/// Plan 03 · D14, batch 8's supplement (Galar and Hisui: docs/plans/D14-proposals-galar-supplement.md, all 16 designs
+/// Plan 03 · D14, batch 8's supplement (Galar and Hisui: docs/plans/decisions/D14-proposals-galar-supplement.md, all 16 designs
 /// approved by the user on 2026-10-26, every question at its default): the 15 regional forms of Galar and Hisui that
 /// end lines of one or two, each a row grown from its form (the evolution's <c>fromForm</c>) and numbered by question 1
 /// (Galar 5000, Hisui 6000, + the species' number), and Urshifu's Ursensei from either style. The rules every design is

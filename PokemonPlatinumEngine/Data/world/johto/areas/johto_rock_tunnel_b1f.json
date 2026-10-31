@@ -1,0 +1,86 @@
+{
+  "key": "johto_rock_tunnel_b1f",
+  "index": 452,
+  "name": "Rock Tunnel",
+  "matrix": 7,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "11",
+  "camera": "0",
+  "battleBackground": "Cave2",
+  "dayMusic": "GS_D_IWAYAMA",
+  "nightMusic": "GS_D_IWAYAMA",
+  "encounters": "D05R0102",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Cubone", "level": 12 },
+    { "species": "Geodude", "level": 12 },
+    { "species": "Cubone", "level": 12 },
+    { "species": "Geodude", "level": 12 },
+    { "species": "Onix", "level": 16 },
+    { "species": "Onix", "level": 16 },
+    { "species": "Zubat", "level": 10 },
+    { "species": "Zubat", "level": 10 },
+    { "species": "Marowak", "level": 14 },
+    { "species": "Kangaskhan", "level": 14 },
+    { "species": "Marowak", "level": 14 },
+    { "species": "Kangaskhan", "level": 14 }
+  ],
+  "landRate": 15,
+  "swarm": [
+    "Cubone",
+    "Cubone"
+  ],
+  "rockSmash": [
+    { "species": "Geodude", "level": 12, "maxLevel": 16 },
+    { "species": "Geodude", "level": 17, "maxLevel": 21 }
+  ],
+  "rockSmashRate": 20,
+  "hoennSounds": [
+    "Absol",
+    "Makuhita"
+  ],
+  "sinnohSounds": [
+    "Bronzor",
+    "Chingling"
+  ],
+  "warps": [
+    { "x": 8, "z": 34, "to": "johto_rock_tunnel_1f", "toWarp": 2 },
+    { "x": 10, "z": 19, "to": "johto_rock_tunnel_1f", "toWarp": 3 },
+    { "x": 8, "z": 7, "to": "johto_rock_tunnel_1f", "toWarp": 4 },
+    { "x": 37, "z": 18, "to": "johto_rock_tunnel_1f", "toWarp": 5 },
+    { "x": 8, "z": 33, "to": "johto_rock_tunnel_1f", "toWarp": 2 },
+    { "x": 10, "z": 18, "to": "johto_rock_tunnel_1f", "toWarp": 3 },
+    { "x": 8, "z": 6, "to": "johto_rock_tunnel_1f", "toWarp": 4 },
+    { "x": 37, "z": 17, "to": "johto_rock_tunnel_1f", "toWarp": 5 }
+  ],
+  "objects": [
+    { "id": "everywhere_monstarball", "looks": "monstarball", "movement": "0", "x": 33, "z": 33, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D05R0102_IRON", "item": "Iron", "script": "std_itemball_d05r0102_iron" },
+    { "id": "everywhere_monstarball_2", "looks": "monstarball", "movement": "0", "x": 31, "z": 21, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D05R0102_PP_UP", "item": "PP Up", "script": "std_itemball_d05r0102_pp_up" },
+    { "id": "everywhere_monstarball_3", "looks": "monstarball", "movement": "0", "x": 24, "z": 5, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D05R0102_REVIVE", "item": "Revive", "script": "std_itemball_d05r0102_revive" },
+    { "id": "everywhere_breakrock", "looks": "breakrock", "movement": "0", "x": 43, "z": 32, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_010", "script": "std_field_rock_smash" },
+    { "id": "everywhere_breakrock_2", "looks": "breakrock", "movement": "0", "x": 39, "z": 30, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_011", "script": "std_field_rock_smash" },
+    { "id": "everywhere_breakrock_3", "looks": "breakrock", "movement": "0", "x": 40, "z": 34, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_012", "script": "std_field_rock_smash" },
+    { "id": "everywhere_breakrock_4", "looks": "breakrock", "movement": "0", "x": 39, "z": 34, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_013", "script": "std_field_rock_smash" },
+    { "id": "everywhere_breakrock_5", "looks": "breakrock", "movement": "0", "x": 44, "z": 33, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_014", "script": "std_field_rock_smash" },
+    { "id": "everywhere_breakrock_6", "looks": "breakrock", "movement": "0", "x": 5, "z": 23, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_015", "script": "std_field_rock_smash" },
+    { "id": "everywhere_breakrock_7", "looks": "breakrock", "movement": "0", "x": 7, "z": 23, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_016", "script": "std_field_rock_smash" },
+    { "id": "everywhere_breakrock_8", "looks": "breakrock", "movement": "0", "x": 5, "z": 21, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_017", "script": "std_field_rock_smash" },
+    { "id": "everywhere_breakrock_9", "looks": "breakrock", "movement": "0", "x": 8, "z": 22, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_018", "script": "std_field_rock_smash" },
+    { "id": "everywhere_breakrock_10", "looks": "breakrock", "movement": "0", "x": 10, "z": 23, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_019", "script": "std_field_rock_smash" },
+    { "id": "everywhere_breakrock_11", "looks": "breakrock", "movement": "0", "x": 5, "z": 37, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_01A", "script": "std_field_rock_smash" },
+    { "id": "everywhere_breakrock_12", "looks": "breakrock", "movement": "0", "x": 5, "z": 36, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_01B", "script": "std_field_rock_smash" },
+    { "id": "everywhere_breakrock_13", "looks": "breakrock", "movement": "0", "x": 6, "z": 37, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_01C", "script": "std_field_rock_smash" },
+    { "id": "everywhere_breakrock_14", "looks": "breakrock", "movement": "0", "x": 10, "z": 37, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_01D", "script": "std_field_rock_smash" },
+    { "id": "everywhere_breakrock_15", "looks": "breakrock", "movement": "0", "x": 5, "z": 34, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_01E", "script": "std_field_rock_smash" },
+    { "id": "everywhere_monstarball_4", "looks": "monstarball", "movement": "0", "x": 15, "z": 31, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D05R0102_OVAL_STONE", "item": "Oval Stone", "script": "std_itemball_d05r0102_oval_stone" }
+  ],
+  "signs": [
+    { "x": 38, "z": 34, "type": 2, "script": "std_hiddenitem_d05r0102_max_potion", "item": "Max Potion", "flag": "FLAG_HIDDEN_ITEM_D05R0102_MAX_POTION" },
+    { "x": 25, "z": 34, "type": 2, "script": "std_hiddenitem_d05r0102_hp_up", "item": "HP Up", "flag": "FLAG_HIDDEN_ITEM_D05R0102_HP_UP" }
+  ],
+  "triggers": []
+}

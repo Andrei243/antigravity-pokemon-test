@@ -1,0 +1,38 @@
+# Route 40 (plan 20 · J13). docs/scripts.md describes the language; the lines are our own, on HeartGold's beats
+# (scr_seq_W40).
+#
+# Monica of Monday, the first of the week's seven siblings, is on the beach on Mondays alone (FLAG_UNK_206, HeartGold's
+# W40_000) and gives a Sharp Beak once (FLAG_GOT_SHARP_BEAK_FROM_MONICA), counting herself among the siblings met
+# (VAR_NUM_MET_WEEKDAY_SIBLINGS); once all seven are met she gives the ribbon of the day (common.WeekSiblingRibbon).
+
+
+# W40_000, the route's own script as it loads
+script OnEnter
+  setflag FLAG_UNK_206
+  if weekday monday clearflag FLAG_UNK_206
+  end
+
+
+# W40_001: Monica of Monday
+script Monica
+  face w40_gswoman1 player
+  speaker "Monica"
+  if var VAR_NUM_MET_WEEKDAY_SIBLINGS >= 7 goto All
+  if flag FLAG_GOT_SHARP_BEAK_FROM_MONICA goto Again
+  if not weekday monday goto NotToday
+  say "Good morning! I'm Monica of Monday. Monday is the start of the week, and the start of my brothers' and sisters' days!"
+  give "Sharp Beak"
+  setflag FLAG_GOT_SHARP_BEAK_FROM_MONICA
+  addvar VAR_NUM_MET_WEEKDAY_SIBLINGS 1
+  say "A Pokémon that holds a Sharp Beak hits harder with Flying-type moves. Have a happy Monday!"
+  end
+label Again
+  say "There are seven of us, one for each day. Have you met the others? They're all over Johto."
+  end
+label NotToday
+  say "Today isn't Monday? Oh dear, I must have lost track of the week. Monday is my day!"
+  end
+label All
+  if not weekday monday goto NotToday
+  call WeekSiblingRibbon
+  end

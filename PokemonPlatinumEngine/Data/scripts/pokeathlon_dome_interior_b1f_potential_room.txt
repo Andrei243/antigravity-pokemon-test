@@ -1,0 +1,14 @@
+# The third of the Pokéathlon Dome's halls under the lobby (plan 20 · J13, the last part; HeartGold's D49R0106). The
+# guide stands in the way on to the last hall until it is open (HeartGold's FLAG_UNK_0F1, which hides her), and a guide
+# of ours stands aside to the west once it is (the overlay's `npcs`, shown by the same flag).
+
+
+# The guide before the way on, and the same guide aside
+script Guide
+  speaker "Guide"
+  if flag FLAG_UNK_0F1 goto Open
+  say "Beyond me is the last hall. It opens to a Trainer once their team has won three courses."
+  end
+label Open
+  say "Go right ahead! Your wins have opened the last hall."
+  end

@@ -9,7 +9,7 @@ using Xunit;
 namespace PokemonPlatinumTests;
 
 /// <summary>
-/// Plan 18 · W4b-1, the ladder's data (docs/plans/W4b-levelling-the-world.md, design C, approved 2026-10-26): each
+/// Plan 18 · W4b-1, the ladder's data (docs/plans/decisions/W4b-levelling-the-world.md, design C, approved 2026-10-26): each
 /// region's pairs rise, its first route stands at or above the Champion before it less 5, its post-game's strongest is
 /// met at min(1.15 × the Champion, the next Champion − 2, 260), and its caps by Badge are its trainers' files' own,
 /// mapped where the region is crossed into.

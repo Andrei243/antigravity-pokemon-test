@@ -403,9 +403,12 @@ internal static partial class MoveFx
             float t0 = I + 0.02f + 0.035f * i;
             float k = (t - t0) / 0.4f;
             if (k < 0f) continue;
-            float a = Fx.Rand(s, i, 781) * MathF.Tau;
-            float r = w * 0.6f + h * (0.3f + 0.9f * Fx.Rand(s, i, 782));
-            var ground = feet + new Vector3(MathF.Cos(a) * r, h * 0.03f, MathF.Sin(a) * r * 0.6f);
+            // A heap, not a scatter: the coins land close before its feet (the camera's side, where the body hides none),
+            // the later ones nearer and higher on the pile
+            float a = (0.12f + 0.76f * Fx.Rand(s, i, 781)) * MathF.PI;
+            float pile = i / 17f;
+            float r = w * 0.55f + h * (0.12f + 0.5f * Fx.Rand(s, i, 782)) * (1f - 0.5f * pile);
+            var ground = feet + new Vector3(MathF.Cos(a) * r, h * (0.03f + 0.09f * pile), MathF.Sin(a) * r * 0.6f);
             bool behind = MathF.Sin(a) < 0f;
             if (k < 1f)
             {
@@ -417,8 +420,10 @@ internal static partial class MoveFx
             }
             else
             {
-                // Lying flat in the heap
-                fx.Flat(FxShape.Dot, ground, Vector3.UnitY, h * 0.11f, Fx.Fade(gold, e), FxBlend.Alpha, i);
+                // Lying in the heap, tipped a little as a coin on a pile lies, on its darker rim
+                var tip = Vector3.Normalize(Vector3.UnitY + new Vector3(Fx.Signed(s, i, 783), 0f, Fx.Signed(s, i, 784)) * 0.45f);
+                fx.Flat(FxShape.Dot, ground - Vector3.UnitY * h * 0.012f, tip, h * 0.16f, Fx.Fade(rim, e), FxBlend.Alpha, i);
+                fx.Flat(FxShape.Dot, ground, tip, h * 0.13f, Fx.Fade(gold, e), FxBlend.Alpha, i);
                 if (i % 3 == 0)
                 {
                     float wink = MathF.Max(0f, MathF.Sin((t - t0) * 7f + i));
@@ -497,12 +502,19 @@ internal static partial class MoveFx
         float open = Fx.EaseOut(Math.Clamp((t - I) / 0.25f, 0f, 1f));
         float beat = 0.25f * MathF.Sin(Math.Max(0f, t - I - 0.25f) * MathF.Tau * 1.8f);
         var back = feet + new Vector3(0f, h * 0.6f, -(w * 0.4f + h * 0.2f));
+        // Each side a butterfly's two lobes, a great forewing slanting up and out and a smaller hindwing below it, so they
+        // read as wings and not as two discs; each lobe edged gold
         for (int side = -1; side <= 1; side += 2)
         {
-            float tilt = side * (0.9f + beat) * open;
-            var at = back + new Vector3(side * h * 0.35f * open, h * 0.05f, 0f);
-            fx.Sprite(FxShape.Petal, at, h * 0.5f * open, Fx.Fade(gold, e * 0.5f), FxBlend.Alpha, tilt, depth: true);
-            fx.Sprite(FxShape.Petal, at, h * 0.42f * open, Fx.Fade(violet, e * 0.75f), FxBlend.Alpha, tilt, depth: true);
+            for (int lobe = 0; lobe < 2; lobe++)
+            {
+                bool fore = lobe == 0;
+                float tilt = side * ((fore ? 0.75f : 2.1f) + beat) * open;
+                var at = back + new Vector3(side * h * (fore ? 0.38f : 0.26f) * open, h * (fore ? 0.2f : -0.18f), 0f);
+                float size = h * (fore ? 0.52f : 0.32f) * open;
+                fx.Sprite(FxShape.Petal, at, size, Fx.Fade(gold, e * 0.55f), FxBlend.Alpha, tilt, depth: true);
+                fx.Sprite(FxShape.Petal, at, size * 0.84f, Fx.Fade(fore ? violet : Fx.Mix(violet, Rgb(110, 70, 170), 0.5f), e * 0.8f), FxBlend.Alpha, tilt, depth: true);
+            }
         }
         // The scales falling in a spiral round it
         for (int i = 0; i < 24; i++)

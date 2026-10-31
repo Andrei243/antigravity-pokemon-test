@@ -548,7 +548,9 @@ public static class RegionDatabase
                 "IndigoLeague_KogaRoom", "IndigoLeague_BrunoRoom", "IndigoLeague_KarenRoom", "IndigoLeague_LanceRoom",
                 "IndigoLeague_HallOfFame",
                 // Plan 20 · J13: the Pokéathlon Dome's square west of Route 35's gate house, and its lobby
-                "PokeathlonDome", "PokeathlonDome_1F",
+                "PokeathlonDome", "PokeathlonDome_1F", "PokeathlonDome_2FEntrance", "PokeathlonDome_2F",
+                "PokeathlonDome_B1F_Solidarity", "PokeathlonDome_B1F_Trust", "PokeathlonDome_B1F_Potential",
+                "PokeathlonDome_B1F_Friendship",
                 // Plan 20 · J11, part a: the Team Rocket Hideout under Mahogany's souvenir shop
                 "TeamRocketHQ_B1F", "TeamRocketHQ_B2F", "TeamRocketHQ_B3F",
                 // Plan 20 · J11, part b: Goldenrod's takeover, the Radio Tower's upper floors and the ways under the city
@@ -584,6 +586,10 @@ public static class RegionDatabase
                 "Ecruteak_BellTowerCorridor", "BellchimeTrail", "BellTower_1F", "BellTower_2F", "BellTower_3F", "BellTower_4F",
                 "BellTower_5F", "BellTower_6F", "BellTower_7F", "BellTower_8F", "BellTower_9F", "BellTower_10F", "BellTower_Roof",
                 "WhirlIslands_B3F", "WhirlIslands_LugiaCave",
+                // Plan 20 · J15, part j: Route 10's Pokémon Center and Power Plant, and Rock Tunnel's two floors
+                "Route10North_PokemonCenter_1F", "Route10North_PokemonCenter_B1F", "Route10_PowerPlant", "Rock_Tunnel_1F", "Rock_Tunnel_B1F",
+                // Plan 20 · J5's leftovers: the Ruins of Alph's hall
+                "RuinsOfAlph_HallEntrance", "RuinsOfAlph_UndergroundHall",
             }
         },
         new()

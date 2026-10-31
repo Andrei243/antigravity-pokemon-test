@@ -95,9 +95,10 @@ script OnEnter
   end
 
 # Frieda of Friday (HeartGold's R32_005): on her day she gives a Poison Barb, once, and counts herself among the siblings
-# met (VAR_NUM_MET_WEEKDAY_SIBLINGS); the ribbon she gives once all seven are met is the siblings' last chapter's.
+# met (VAR_NUM_MET_WEEKDAY_SIBLINGS); once all seven are met she gives the ribbon of the day on Fridays (common.WeekSiblingRibbon, plan 20 · J13).
 script Frieda
   speaker "Frieda"
+  if var VAR_NUM_MET_WEEKDAY_SIBLINGS >= 7 goto All
   if flag FLAG_GOT_POISON_BARB_FROM_FRIEDA goto Again
   if not weekday friday goto NotToday
   say "Yay! It's Friday! I'm Frieda of Friday. Nice to meet you! Here, I want you to have this."
@@ -111,4 +112,8 @@ label Again
   end
 label NotToday
   say "Huh? Today isn't Friday. I only come out on Fridays!"
+  end
+label All
+  if not weekday friday goto NotToday
+  call WeekSiblingRibbon
   end

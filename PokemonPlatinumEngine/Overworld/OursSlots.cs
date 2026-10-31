@@ -7,7 +7,7 @@ using PokemonPlatinumEngine.Models;
 namespace PokemonPlatinumEngine.Overworld;
 
 /// <summary>
-/// The species of our own met in the wild (plan 03 · D15, design B; <c>docs/plans/D15-species-of-ours-in-the-world.md</c>):
+/// The species of our own met in the wild (plan 03 · D15, design B; <c>docs/plans/decisions/D15-species-of-ours-in-the-world.md</c>):
 /// an overlay's <c>ours</c> (<see cref="OverlayOurs"/>) puts them in the rarest slots of an area's grass (10 and 11), its
 /// water (4) and its Super Rod (4), at their own levels, never mapped by the region's levels, once the region's Hall of
 /// Fame is entered (for Sinnoh, Kanto's: its team comes back by the harbour at 100 and more). What may stand in such a

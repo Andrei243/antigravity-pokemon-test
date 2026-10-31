@@ -1,6 +1,6 @@
 # The Ruins of Alph's northwest chamber (plan 20 · J5). docs/scripts.md describes the language; the lines are our own, on
 # HeartGold's beat: the stone panel in the floor, its picture of a great bird broken into sixteen pieces, to be put back
-# together. What solving it opens (the floor giving way to the rooms below, the Unown) is a later chapter's.
+# together. Solving it opens the floor under the player, who lands in the underground hall with the Unown (plan 20 · J5's leftovers).
 
 
 # The panel (HeartGold's background event at 6, 6)
@@ -12,8 +12,12 @@ script Panel
   puzzle hooh
   if result == 0 goto Left
   setflag FLAG_ALPH_HOOH_PANEL_SOLVED
+  # The hall's door on the grounds opens for good, and the player drops into the hall below
+  setflag FLAG_ALPH_HALL_OPEN
   sound "boulder"
-  text "The last piece slid home with a deep click. Somewhere under the Ruins, something rumbled."
+  text "The last piece slid home with a deep click. The floor shuddered, and then it was gone from under your feet!"
+  warp "RuinsOfAlph_UndergroundHall" 4 4
+  text "You landed in a great hall under the Ruins. Its walls are carved with rows of strange shapes."
   end
 label Left
   text "The pieces lie where they were."

@@ -1,5 +1,5 @@
 // Plan 03 · D14: the species of our own that evolve past level 100, one design to an entry, approved by the user
-// (batch 1, Kanto: docs/plans/D14-proposals-kanto.md; batch 2, Johto: D14-proposals-johto.md; batch 3, Hoenn:
+// (batch 1, Kanto: docs/plans/decisions/D14-proposals-kanto.md; batch 2, Johto: D14-proposals-johto.md; batch 3, Hoenn:
 // D14-proposals-hoenn.md; batch 4, Sinnoh: D14-proposals-sinnoh.md; all on 2026-10-25, each batch's rows generated from its document by a script that checked
 // every number against the data). Hand-written; tools/DataImporter/SpeciesPastHundred.cs
 // makes each a whole species of species.json (numbered 2000 + the number of the species it evolves from, the rest of its
@@ -281,7 +281,7 @@
     "abilities": ["Pressure"], "hiddenAbility": "Drought",
     "evolution": {"method": "LevelHoldingItem", "level": 150, "item": "Charcoal"}
   },
-  // Batch 2, Johto: docs/plans/D14-proposals-johto.md, approved by the user on 2026-10-25 (all 34, every default).
+  // Batch 2, Johto: docs/plans/decisions/D14-proposals-johto.md, approved by the user on 2026-10-25 (all 34, every default).
   "Ermilong": {
     "from": "Furret", "types": ["Normal","Ice"], "category": "Ermine", "height": 2.2, "weight": 45.0,
     "stats": {"hp": 100, "attack": 101, "defense": 74, "spAttack": 45, "spDefense": 65, "speed": 110},
@@ -486,7 +486,7 @@
     "abilities": ["Pressure"], "hiddenAbility": "Misty Surge",
     "evolution": {"method": "LevelWithSpeciesInParty", "level": 150, "species": "Ho-Oh"}
   },
-  // Batch 3, Hoenn: docs/plans/D14-proposals-hoenn.md, approved by the user on 2026-10-25 (all 51, every default:
+  // Batch 3, Hoenn: docs/plans/decisions/D14-proposals-hoenn.md, approved by the user on 2026-10-25 (all 51, every default:
   // each evolves within its own region's climb, 140 to 158, the legendaries at 160).
   "Hyaenarch": {
     "from": "Mightyena", "types": ["Dark"], "category": "Packleader", "height": 1.4, "weight": 60.0,
@@ -794,7 +794,7 @@
     "abilities": ["Levitate"],
     "evolution": {"method": "LevelWithSpeciesInParty", "level": 160, "species": "Latias"}
   },
-  // Batch 4, Sinnoh: docs/plans/D14-proposals-sinnoh.md, approved by the user on 2026-10-25 (all 39, every default:
+  // Batch 4, Sinnoh: docs/plans/decisions/D14-proposals-sinnoh.md, approved by the user on 2026-10-25 (all 39, every default:
   // each evolves at 101 to 120, the band where the chain first climbs past 100, the lake guardians at 150).
   "Dambarel": {
     "from": "Bibarel", "types": ["Normal","Water"], "category": "Dam Builder", "height": 1.4, "weight": 55.0,
@@ -1030,7 +1030,7 @@
     "abilities": ["Levitate"],
     "evolution": {"method": "LevelWithSpeciesInParty", "level": 150, "species": "Uxie"}
   },
-  // Batch 5, Unova: docs/plans/D14-proposals-unova.md, approved by the user on 2026-10-26 (all 52, every default:
+  // Batch 5, Unova: docs/plans/decisions/D14-proposals-unova.md, approved by the user on 2026-10-26 (all 52, every default:
   // each evolves within Unova's own climb, 165 to 183, the Swords of Justice at 190 with a Keldeo in the party).
   "Beaconwatch": {
     "from": "Watchog", "types": ["Normal","Electric"], "category": "Beacon", "height": 1.4, "weight": 38.0,
@@ -1344,7 +1344,7 @@
     "abilities": ["Justified"],
     "evolution": {"method": "LevelWithSpeciesInParty", "level": 190, "species": "Keldeo"}
   },
-  // Batch 6, Kalos: docs/plans/D14-proposals-kalos.md, approved by the user on 2026-10-26 (all 24; every default but
+  // Batch 6, Kalos: docs/plans/decisions/D14-proposals-kalos.md, approved by the user on 2026-10-26 (all 24; every default but
   // question 2, Zygarde, whose design waits in D14-proposals-kalos-supplement.md: each evolves at 188 to 203, Kalos's
   // own climb, Sylveon's end at 120 with the other Eeveelutions).
   "Excavabbit": {
@@ -1491,7 +1491,7 @@
     "abilities": ["Frisk", "Infiltrator"], "hiddenAbility": "Telepathy",
     "evolution": {"method": "LevelKnowsMove", "level": 203, "move": "Boomburst"}
   },
-  // Batch 7, Alola: docs/plans/D14-proposals-alola.md, approved by the user on 2026-10-26 (all 28, every default:
+  // Batch 7, Alola: docs/plans/decisions/D14-proposals-alola.md, approved by the user on 2026-10-26 (all 28, every default:
   // each evolves at 209 to 221, within Alola's climb, the island guardians at 225 as a ring). The Ultra Beasts' set (question 6, b) waits for its designs: D14-proposals-alola-supplement.md.
   "Inspectoose": {
     "from": "Gumshoos", "types": ["Normal","Dark"], "category": "Inspector", "height": 1.0, "weight": 22.0,
@@ -1661,7 +1661,7 @@
     "abilities": ["Misty Surge"], "hiddenAbility": "Telepathy",
     "evolution": {"method": "LevelWithSpeciesInParty", "level": 225, "species": "Tapu Koko"}
   },
-  // Batch 8, Galar and Hisui: docs/plans/D14-proposals-galar.md, approved by the user on 2026-10-26 (all 42, Enamorata
+  // Batch 8, Galar and Hisui: docs/plans/decisions/D14-proposals-galar.md, approved by the user on 2026-10-26 (all 42, Enamorata
   // among them though Unova builds no forces of nature; every question at its default but 7 and 8, whose designs wait for
   // D14-proposals-galar-supplement.md): each evolves within Galar's own climb, 226 to 240, the legendary sets at 244.
   "Larderous": {
@@ -1917,7 +1917,7 @@
     "evolution": {"method": "LevelWithSpeciesInParty", "level": 244, "species": "Landorus"}
   },
 
-  // Batch 9, Paldea: docs/plans/D14-proposals-paldea.md, approved by the user on 2026-10-26 (all 39 designs, every question
+  // Batch 9, Paldea: docs/plans/decisions/D14-proposals-paldea.md, approved by the user on 2026-10-26 (all 39 designs, every question
   // at its default but 3, 4 and 6, whose designs are D14-proposals-paldea-supplement.md's): each evolves within Paldea's climb,
   // 244 to 256, the Treasures of Ruin a ring at 258.
   "Trufflord": {
@@ -2154,7 +2154,7 @@
     "abilities": ["Hospitality"], "hiddenAbility": "Heatproof",
     "evolution": {"method": "UseItem", "level": 250, "item": "Masterpiece Teacup"}
   },
-  // Supplement, Kalos: docs/plans/D14-proposals-kalos-supplement.md, approved by the user on 2026-10-26 (Zygarde alone as the
+  // Supplement, Kalos: docs/plans/decisions/D14-proposals-kalos-supplement.md, approved by the user on 2026-10-26 (Zygarde alone as the
   // trio's guardian; every question at its default: 660, level 205, any forme evolves, knowing Core Enforcer).
   "Ecosentinel": {
     "from": "Zygarde", "types": ["Dragon","Ground"], "category": "Equilibrium", "height": 6.2, "weight": 720.0,
@@ -2163,7 +2163,7 @@
     "evolution": {"method": "LevelKnowsMove", "level": 205, "move": "Core Enforcer"}
   },
 
-  // Supplement, Alola: docs/plans/D14-proposals-alola-supplement.md, approved by the user on 2026-10-26 (all ten, every
+  // Supplement, Alola: docs/plans/decisions/D14-proposals-alola-supplement.md, approved by the user on 2026-10-26 (all ten, every
   // question at its default): the Ultra Beasts made a legendary set by the row ("legendary"), each at 225 with any other
   // Ultra Beast in the party ("anyOfSpecies": the eleven but itself, Poipole among them), to 660.
   "Nihiliad": {
@@ -2227,7 +2227,7 @@
     "evolution": {"method": "LevelWithSpeciesInParty", "level": 225, "anyOfSpecies": ["Nihilego","Buzzwole","Pheromosa","Xurkitree","Celesteela","Kartana","Guzzlord","Poipole","Naganadel","Stakataka"]}
   },
 
-  // Supplement, Paldea: docs/plans/D14-proposals-paldea-supplement.md, approved by the user on 2026-10-26 (all 18, every
+  // Supplement, Paldea: docs/plans/decisions/D14-proposals-paldea-supplement.md, approved by the user on 2026-10-26 (all 18, every
   // default: the Loyal Three to 600 at 258 with a Pecharunt in the party, the ancient paradox Pokémon at night and the
   // future ones by day to 600, Zerofin with Swift Swim at 248 knowing Wave Crash).
   "Zerofin": {
@@ -2338,7 +2338,7 @@
     "abilities": ["Toxic Chain"], "hiddenAbility": "Technician",
     "evolution": {"method": "LevelWithSpeciesInParty", "level": 258, "species": "Pecharunt"}
   },
-  // Supplement, Galar and Hisui: docs/plans/D14-proposals-galar-supplement.md, approved by the user on 2026-10-26 (all 16,
+  // Supplement, Galar and Hisui: docs/plans/decisions/D14-proposals-galar-supplement.md, approved by the user on 2026-10-26 (all 16,
   // every question at its default): the 15 regional forms that end lines of one or two, each grown from its form (its
   // evolution's fromForm) and numbered 5000 (Galar) or 6000 (Hisui) + the species' number, and Urshifu's Ursensei to 630.
   "Glimmane": {

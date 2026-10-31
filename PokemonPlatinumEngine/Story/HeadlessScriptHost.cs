@@ -677,6 +677,15 @@ public sealed class HeadlessScriptHost : IScriptHost
         return SetPieces.Length(piece, count);
     }
 
+    /// <summary>The photographs a script has taken (plan 20 · J13); a host with no screen keeps no picture.</summary>
+    public int Photographs { get; private set; }
+
+    public void Photograph()
+    {
+        Photographs++;
+        Log.Add("photograph");
+    }
+
     public float Shake(NPC? who, int times)
     {
         Shown("shake someone");

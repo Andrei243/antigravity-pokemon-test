@@ -1,0 +1,58 @@
+{
+  // The Power Plant on Route 10 (plan 20 · J15, part j), on HeartGold's plan of the plant at work (R10R0201; the plant
+  // broken, R10R0202, is the same room with its generator stopped). Its people are HeartGold's, but the story of the
+  // part stolen from its generator (the manager's request, the grunt in the Cerulean Gym and on Route 24, the part in the
+  // Gym's pool and TM57 for its return) waits for its session: here the staff only talk of their work
+  "area": "route_10_power_plant_repaired",
+  "bgmTrack": "kanto/pokemon_mansion",
+  "people": {
+    "r10r0201_gsbigman": {
+      "name": "Manager",
+      "still": true,
+      "dialog": [
+        "I'm the manager of this plant. Every light in Kanto runs on what our generator makes, so I keep an eye on it day and night."
+      ]
+    },
+    "r10r0201_policeman": {
+      "name": "Policeman",
+      "still": true,
+      "dialog": [
+        "I'm posted here to keep the plant safe. Nobody touches that generator on my watch."
+      ]
+    },
+    "r10r0201_policeman_2": {
+      "name": "Policeman",
+      "still": true,
+      "dialog": [
+        "All quiet at the back of the plant. Just the hum of the machines."
+      ]
+    },
+    "r10r0201_gsassistantm": {
+      "name": "Engineer",
+      "still": true,
+      "dialog": [
+        "The generator spins day and night. If it ever stopped, the Magnet Train would stop with it."
+      ]
+    },
+    "r10r0201_gsassistantm_2": {
+      "name": "Engineer",
+      "still": true,
+      "dialog": [
+        "Electric Pokémon love it here. Some of them wander in from Route 10 just to bask in the hum."
+      ]
+    },
+    "r10r0201_gsassistantm_3": {
+      "name": "Engineer",
+      "dialog": [
+        "I check every dial on these panels twice a day. Everything reads fine."
+      ]
+    },
+    "r10r0201_gsassistantm_4": {
+      "name": "Engineer",
+      "still": true,
+      "dialog": [
+        "There's a radio tower in Lavender Town now. Its music reaches us all the way out here."
+      ]
+    }
+  }
+}

@@ -2868,6 +2868,21 @@ script AthlonDesk
   goto Points
 label Won
   say "First place! Your team is the champion of the course. Congratulations!"
+  # Each course won opens the next of the halls under the lobby (plan 20 · J13; HeartGold's FLAG_UNK_0EF, 0F0, 0F1,
+  # whose guides step aside: the halls' own OnEnter)
+  if flag FLAG_UNK_0F1 goto Points
+  if flag FLAG_UNK_0F0 goto ThirdHall
+  if flag FLAG_UNK_0EF goto SecondHall
+  setflag FLAG_UNK_0EF
+  say "The hall of trust under the lobby is open to you now. Do have a look!"
+  goto Points
+label SecondHall
+  setflag FLAG_UNK_0F0
+  say "The hall of potential under the lobby is open to you now. Do have a look!"
+  goto Points
+label ThirdHall
+  setflag FLAG_UNK_0F1
+  say "The last hall under the lobby is open to you now. The dome's owner would like to meet you there!"
 label Points
   athlon points
   say "You now have {result} Athlete Points. Come back and compete any time!"
@@ -3251,4 +3266,25 @@ label Risen
 # and out through the door, to the tile below the ruins' door, facing away from it
 script UnovaRuinsWayBack
   warp "UndergroundRuins" 15 3 down
+  return
+
+# The week siblings' ribbon (plan 20 · J13, HeartGold's last part of each sibling's script): once all seven have been
+# met (VAR_NUM_MET_WEEKDAY_SIBLINGS 7), the sibling of the day puts the ribbon of the day on the first of the team that
+# is no Egg, if it hasn't it. One a day between the seven: HeartGold keeps the day under the one flag
+# FLAG_DAILY_GOT_SHOCK_RIBBON for all of them, cleared with the day's other daily flags.
+script WeekSiblingRibbon
+  ribbon has today
+  if result == 1 goto Has
+  if flag FLAG_DAILY_GOT_SHOCK_RIBBON goto Given
+  say "You've met all seven of us! That calls for something special. Let me give your {wearer} a ribbon for today."
+  ribbon give today
+  fanfare item
+  text "{player} received the {ribbon}!" "{player} put the {ribbon} on {wearer}."
+  setflag FLAG_DAILY_GOT_SHOCK_RIBBON
+  return
+label Has
+  say "Your {wearer} is already wearing the {ribbon}. It suits it!"
+  return
+label Given
+  say "One ribbon a day is all we give. Come and see whoever's day it is tomorrow!"
   return

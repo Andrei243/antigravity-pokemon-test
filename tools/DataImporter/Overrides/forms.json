@@ -1,5 +1,5 @@
 // Forms of our own, appended to a species' imported forms (Overrides.AddForms; a form of the same name is replaced).
-// Plan 06 · R20b: the fifteen Megas of the starters' final forms whose line had none, as docs/plans/R20b-mega-proposals.md
+// Plan 06 · R20b: the fifteen Megas of the starters' final forms whose line had none, as docs/plans/decisions/R20b-mega-proposals.md
 // gives them (approved by the user in full on 2026-10-26). Each total is its species' plus 100, HP unchanged, the ability
 // one already in abilities.json; "types" only where the Mega's differ. Heights and weights are this session's own.
 {

@@ -1021,6 +1021,7 @@ public partial class BattleEngine
                 Sound("run_away", left.Place.Side);
                 break;
             case Fainted fainted:
+                AutoSeesAFaint(fainted.Place);
                 if (At(fainted.Place).Pokemon is { } down)
                 {
                     down.Status = StatusCondition.Faint;
@@ -1162,6 +1163,14 @@ public partial class BattleEngine
         Anim.Update(dt, (side, slot) => SlotsOf(side).ElementAtOrDefault(slot)?.Pokemon);
         UpdatePendingEffects(dt);
         HUD.LevelUp?.Advance(dt);
+
+        // AUTO plays the battle for the player while it runs (plan 12 · Q12); a press still reads a line on
+        if (AutoRunning && waitingForMessageConfirm && ConfirmPressed)
+        {
+            ConfirmMessage();
+            return;
+        }
+        if (AutoFrame(dt)) return;
 
         if (IsLearningMove)
         {

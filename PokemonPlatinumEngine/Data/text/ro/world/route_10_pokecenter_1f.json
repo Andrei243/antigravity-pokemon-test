@@ -1,0 +1,123 @@
+{
+  "people": {
+    "r10pc0101_pcwoman1": {
+      "name": {
+        "en": [
+          "Nurse"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r10pc0101_pcwoman2": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Your Trainer Card shows your name, your money and the Pokémon you've seen. Have a look at it from the menu."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r10pc0101_pcwoman2_2": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm sorry, the link to other players is closed for now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r10pc0101_pcwoman2_3": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm sorry, the link to other players is closed for now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r10pc0101_gsgentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Rock Tunnel winds back and forth between two floors. Keep to the ladders and you'll come out by Lavender Town."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r10pc0101_gswoman3": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Power Plant down the river keeps the lights on all over Kanto. And the Magnet Train running, too."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r10pc0101_gsassistantm": {
+      "name": {
+        "en": [
+          "Engineer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I work at the Power Plant. I only came in here for a rest, so don't tell the manager."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

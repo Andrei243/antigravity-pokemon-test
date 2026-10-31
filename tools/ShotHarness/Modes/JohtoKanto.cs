@@ -464,6 +464,43 @@ partial class Harness
         game.Story.SetVar("VAR_JOHTO_CYCLING_ROAD", 0);
         game.Player.SetMode(TravelMode.OnFoot);
         At("Johto", 1170, 430, Direction.Right); game.ArriveOnMap(); Frames(30); Shot("jki14_route_18_to_fuchsia");
+        JohtoKantoPowerPlantShots();
+    }
+
+    /// <summary>
+    /// Plan 20 · J15, part j: Route 9 east of Cerulean City, Route 10's north with its Pokémon Center, Rock Tunnel's mouth
+    /// and the Power Plant, Rock Tunnel's two floors, and Route 10's south down to Lavender Town (<c>jkj01</c> to
+    /// <c>jkj13</c>), after part i's, so nothing before them moves. It prints whether each spot stood on is open.
+    /// </summary>
+    void JohtoKantoPowerPlantShots()
+    {
+        void Daylight(TimeOfDay time) { engine.Settings.TimeOfDay = time; engine.ApplySettings(window: false); }
+        void Spot(string map, int x, int y, Direction way, string shot, int frames = 30)
+        {
+            At(map, x, y, way);
+            // the nearest open tile, so a spot written by the area file's numbers stands on the ground
+            if (!game.Map.IsWalkable(x, y))
+                (x, y) = Enumerable.Range(1, 4).SelectMany(r => Enumerable.Range(-r, 2 * r + 1).SelectMany(dy => Enumerable.Range(-r, 2 * r + 1).Select(dx => (X: x + dx, Y: y + dy))))
+                    .First(t => game.Map.IsWalkable(t.X, t.Y));
+            At(map, x, y, way); game.ArriveOnMap(); Frames(frames); Shot(shot);
+            Console.WriteLine($"  {shot}: {map} {x},{y} open {game.Map.IsWalkable(x, y)}, {game.Map.ShownNameAt(x, y)}");
+        }
+        game.State = GameState.Overworld;
+        game.Player.SetMode(TravelMode.OnFoot);
+
+        Spot("Johto", 1367, 144, Direction.Up, "jkj01_route_9_from_cerulean");
+        Spot("Johto", 1400, 146, Direction.Right, "jkj02_route_9");
+        Spot("Johto", 1426, 165, Direction.Up, "jkj03_route_10s_pokemon_center");
+        Spot("Johto", 1419, 165, Direction.Up, "jkj04_rock_tunnels_northern_mouth");
+        Spot("Johto", 1423, 186, Direction.Up, "jkj05_the_power_plant");
+        Daylight(TimeOfDay.Night); Frames(30); Shot("jkj06_the_power_plant_after_dark"); Daylight(TimeOfDay.Day);
+        Spot("Route10North_PokemonCenter_1F", 8, 18, Direction.Up, "jkj07_route_10s_center", 10);
+        Spot("Route10_PowerPlant", 7, 19, Direction.Up, "jkj08_inside_the_power_plant", 10);
+        Spot("Route10_PowerPlant", 13, 10, Direction.Up, "jkj09_the_generator", 10);
+        Spot("Rock_Tunnel_1F", 46, 11, Direction.Down, "jkj10_rock_tunnel");
+        Spot("Rock_Tunnel_B1F", 10, 20, Direction.Down, "jkj11_rock_tunnel_below");
+        Spot("Johto", 1413, 202, Direction.Down, "jkj12_route_10_south");
+        Spot("Johto", 1420, 212, Direction.Down, "jkj13_route_10_to_lavender");
     }
 
 }

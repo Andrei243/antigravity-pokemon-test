@@ -8,7 +8,7 @@ using static PokemonPlatinumTests.Scenario;
 namespace PokemonPlatinumTests;
 
 /// <summary>
-/// Plan 03 · D14, batch 6's supplement (docs/plans/D14-proposals-kalos-supplement.md, approved by the user on
+/// Plan 03 · D14, batch 6's supplement (docs/plans/decisions/D14-proposals-kalos-supplement.md, approved by the user on
 /// 2026-10-26 with every question at its default): Ecosentinel from Zygarde, 660 at level 205 knowing Core Enforcer, any
 /// forme evolving. <see cref="SpeciesPastHundredTests"/> holds the design to the shared rules.
 /// </summary>
