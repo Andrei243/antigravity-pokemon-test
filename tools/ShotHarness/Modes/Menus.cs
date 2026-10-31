@@ -933,5 +933,88 @@ partial class Harness
             credits.Close();
             game.State = GameState.Overworld;
         }
+
+        // The boxes' tools (plan 12 · Q26), after everything else so that nothing before them moves: the search panel on
+        // Starly, its results, a box sorted by level, a rectangle drawn and the four in it carried together, and the
+        // release of several with its hold half full
+        {
+            var toolsBefore = engine.Settings.BoxTools;
+            engine.Settings.BoxTools = RulesDefault.On;
+            var boxesBefore = game.Boxes;
+            var stored = new PcBoxes();
+            var kinds = new[] { "Bidoof", "Shinx", "Budew", "Kricketot", "Buneary", "Abra" };
+            for (int box = 0; box < 6; box++)
+            {
+                stored.PutIn(box, (box * 5) % PcBoxes.BoxSize, new Pokemon(PokemonDatabase.Get("Starly")!, 3 + box * 2));
+                for (int k = 0; k < kinds.Length; k++)
+                    stored.PutIn(box, (box * 5 + 1 + k * 3) % PcBoxes.BoxSize, new Pokemon(PokemonDatabase.Get(kinds[(k + box) % kinds.Length])!, 2 + k * 4 + box));
+            }
+            game.Boxes = stored;
+            game.State = GameState.PCStorage;
+            var ps = game.PcScreen;
+            ps.Tools = true;
+            ps.Open(stored);
+            ps.Move(1, 0, party.Count);
+            ps.Move(0, -1, party.Count);
+            ps.Confirm(party, stored, engine.ShowNotification);
+            ps.MenuIndex = 2;
+            ps.Confirm(party, stored, engine.ShowNotification);
+            var search = ps.Search!;
+            search.Choose(BoxSearchRow.Species, "Starly");
+            search.Choose(BoxSearchRow.MinLevel, 5);
+            Frames(30); Shot("30r_pc_search");
+            while (BoxSearch.Rows[search.Row] != BoxSearchRow.Go) ps.Move(0, 1, party.Count);
+            ps.Confirm(party, stored, engine.ShowNotification);
+            ps.Move(0, 1, party.Count);
+            Frames(12); Shot("30s_pc_results");
+            Console.WriteLine($"box tools: the search found {ps.Results!.Count} ({string.Join(", ", ps.Results.Select(r => $"box {r.Box + 1} place {r.Slot + 1}"))})");
+            ps.Cancel(party, stored);
+            ps.Cancel(party, stored);
+            // Sorted by level, this box alone
+            ps.Confirm(party, stored, engine.ShowNotification);
+            ps.MenuIndex = 3;
+            ps.Confirm(party, stored, engine.ShowNotification);
+            ps.Confirm(party, stored, engine.ShowNotification);
+            ps.MenuIndex = 1;
+            Frames(8); Shot("30t0_pc_sort_menu");
+            ps.Confirm(party, stored, engine.ShowNotification);
+            ps.Move(0, 1, party.Count);
+            Frames(12); Shot("30t_pc_sorted");
+            Console.WriteLine($"box tools: box 1 by level {string.Join(" ", Enumerable.Range(0, PcBoxes.BoxSize).Select(s => stored[0, s]?.Level.ToString() ?? "."))}");
+            // A rectangle of two by two, drawn and then carried
+            ps.Confirm(party, stored, engine.ShowNotification);
+            ps.MenuIndex = 5;
+            ps.Confirm(party, stored, engine.ShowNotification);
+            ps.Move(1, 0, party.Count); ps.Move(1, 0, party.Count); ps.Move(0, 1, party.Count);
+            Frames(8); Shot("30u0_pc_rectangle");
+            ps.Confirm(party, stored, engine.ShowNotification);
+            ps.Confirm(party, stored, engine.ShowNotification);
+            ps.ChangeBox(1, party.Count);
+            ps.Move(1, 0, party.Count); ps.Move(0, 1, party.Count);
+            Frames(12); Shot("30u_pc_picked_many");
+            Console.WriteLine($"box tools: carrying {ps.Carried.Count} ({string.Join(", ", ps.Carried.Select(c => c.Pokemon.Species.Name))})");
+            ps.Confirm(party, stored, engine.ShowNotification);
+            Frames(8); Shot("30u2_pc_put_down_many");
+            Console.WriteLine($"box tools: box 2 holds {stored.Boxes[1].Count} after the four went down");
+            // The release of several, its hold half full
+            ps.Move(0, -1, party.Count);
+            ps.Confirm(party, stored, engine.ShowNotification);
+            ps.MenuIndex = 5;
+            ps.Confirm(party, stored, engine.ShowNotification);
+            ps.Move(1, 0, party.Count); ps.Move(0, 1, party.Count);
+            ps.Confirm(party, stored, engine.ShowNotification);
+            ps.MenuIndex = 1;
+            ps.Confirm(party, stored, engine.ShowNotification);
+            Frames(20);
+            // (the game's own frame lets the hold drain with nothing pressed, so it is filled after the frames and one more drawn)
+            for (int f = 0; f < 32; f++) ps.HoldRelease(1f / 60f, true, party, stored, engine.ShowNotification);
+            Frames(1); Shot("30v_pc_release_many");
+            Console.WriteLine($"box tools: releasing {ps.Releasing.Count}, the hold at {ps.ReleaseHold:0.00}");
+            ps.Cancel(party, stored);
+            ps.Close();
+            game.Boxes = boxesBefore;
+            engine.Settings.BoxTools = toolsBefore;
+            game.State = GameState.Overworld;
+        }
     }
 }

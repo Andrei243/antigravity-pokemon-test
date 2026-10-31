@@ -1444,6 +1444,7 @@ public partial class GameEngine
                 break;
             case GameState.PCStorage:
                 KeepTheRunInView();
+                flow.PCScreen.Tools = BoxToolsOn;
                 flow.PCScreen.Update(flow.Party, flow.Boxes, ShowNotification, dt);
                 if (!flow.PCScreen.IsActive)
                 {

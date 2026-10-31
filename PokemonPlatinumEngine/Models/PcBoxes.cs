@@ -290,6 +290,12 @@ public sealed class PcBoxes
         }
         return pc;
     }
+
+    /// <summary>
+    /// Lays a place's content as it is, empty or not, without what storing does to a Pokémon (the boxes' tools, plan 12 · Q26:
+    /// a sort moves Pokémon that are stored already, which the box's own MOVE does with <see cref="Swap"/>).
+    /// </summary>
+    internal void Lay(int box, int slot, Pokemon? pokemon) => boxes[box].Slots[slot] = pokemon;
 }
 
 /// <summary>What happened when a Pokémon was to be released.</summary>

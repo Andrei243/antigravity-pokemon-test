@@ -37,7 +37,8 @@ internal static partial class ModernUi
         Backdrop(sw, sh);
         ScreenTitle(Text.Of("boxes.title"));
         var under = pc.Under(party, stored);
-        if (pc.AskingRelease) Hints(sw - Margin, 44, Hint("shared.keys.z", "shared.hints.release"), Hint("shared.keys.esc", "shared.hints.keepIt"));
+        if (BoxToolHints(sw, pc)) { }
+        else if (pc.AskingRelease) Hints(sw - Margin, 44, Hint("shared.keys.z", "shared.hints.release"), Hint("shared.keys.esc", "shared.hints.keepIt"));
         else if (pc.Marking != null) Hints(sw - Margin, 44, Hint("shared.keys.arrows", "shared.hints.choose"), Hint("shared.keys.z", "shared.hints.mark"), Hint("shared.keys.esc", "shared.hints.back"));
         else if (pc.Menu != null || pc.BoxMenu != null)
             Hints(sw - Margin, 44, Hint("shared.keys.upDown", "shared.hints.choose"), Hint("shared.keys.z", "shared.hints.doIt"), Hint("shared.keys.esc", "shared.hints.back"));
@@ -139,7 +140,10 @@ internal static partial class ModernUi
         {
             var r = CellRect(i);
             bool selected = pc.Zone == StorageZone.Box && pc.Cell == i;
-            if (selected)
+            // A rectangle being drawn (plan 12 · Q26): its places tinted and edged in the Selection colour
+            if (pc.Selecting && pc.Rectangle.Contains(i) && !selected)
+                UiShapes.Shape(r, 24, Selection with { A = 64 }, Selection with { A = 64 }, Selection, 4f);
+            else if (selected)
             {
                 UiShapes.Shadow(r, 24, 22, Vector2.Zero, Selection with { A = 190 });
                 UiShapes.Shape(r, 24, new Color(255, 255, 255, 170), new Color(255, 255, 255, 140), Selection, 6f);
@@ -164,7 +168,7 @@ internal static partial class ModernUi
         // ---- The Pokémon under the cursor, or the one carried
         var detail = new Rectangle(box.X + box.Width + Gutter + slide, ContentTop, sw - Margin - (box.X + box.Width + Gutter + slide), height);
         Panel(detail, 34);
-        if ((pc.Held ?? under) is { } shown) StoredPokemon(detail, shown);
+        if ((pc.Held ?? (pc.Carried.Count > 0 ? pc.Carried[0].Pokemon : under)) is { } shown) StoredPokemon(detail, shown);
         else
         {
             string note = Text.Of(onName ? "boxes.changeBoxNote" : "boxes.emptyPlace");
@@ -207,7 +211,7 @@ internal static partial class ModernUi
         else if (pc.BoxMenu is { } boxMenu)
         {
             var rows = new List<string>();
-            foreach (var action in boxMenu) rows.Add(Text.Of($"boxes.menu.{action}"));
+            foreach (var action in boxMenu) rows.Add(BoxMenuLabel(action));
             MenuPanel(plate.X + plate.Width / 2f - 170, plate.Y + plate.Height + 16, rows, pc.MenuIndex);
         }
         else if (pc.Marking is { } marks)
@@ -219,9 +223,18 @@ internal static partial class ModernUi
         if (pc.AskingRelease && under != null)
             Prompt(sw, sh, Text.Of("boxes.release.question", ("name", under.DisplayName)), Text.Of("boxes.release.body"),
                 new[] { (Text.Of("boxes.release.yes"), Red), (Text.Of("boxes.release.no"), Blue) }, -1);
+
+        DrawBoxTools(sw, sh, pc, stored, box, plate, detail, cursor, Beside(340), Within(cursor.Y - 8, MenuPanelHeight(3)));
     }
 
-    private static string PcActionLabel(PcAction action) => Text.Of($"boxes.action.{action}");
+    private static string PcActionLabel(PcAction action) => action == PcAction.Select ? Text.Of("boxTools.action.select") : Text.Of($"boxes.action.{action}");
+
+    private static string BoxMenuLabel(PcBoxAction action) => action switch
+    {
+        PcBoxAction.Search => Text.Of("boxTools.menu.search"),
+        PcBoxAction.Sort => Text.Of("boxTools.menu.sort"),
+        _ => Text.Of($"boxes.menu.{action}")
+    };
 
     /// <summary>
     /// A stored Pokémon told in the detail column: its sprite on a disc, its marks, name, level, types and condition,
@@ -404,5 +417,155 @@ internal static partial class ModernUi
         if (askingVisible)
             Prompt(sw, sh, Text.Of("starters.question", ("name", chosen.DisplayName)), Text.Of("starters.body", ("category", chosen.Category)),
                 new[] { (Text.Of("starters.no"), Blue), (Text.Of("starters.yes", ("name", chosen.DisplayName.ToUpperInvariant())), Green) }, screen.AnswerYes ? 1 : 0, asking);
+    }
+
+    // ------------------------------------------------------------------ the boxes' tools (plan 12 · Q26)
+
+    private const float SearchRowHeight = 60, SearchRowPitch = 66, SearchPill = 360, ResultRowHeight = 64, ResultRowPitch = 72;
+
+    /// <summary>The key hints while a tool of the boxes has the screen; false when none has.</summary>
+    private static bool BoxToolHints(int sw, PCScreen pc)
+    {
+        if (pc.AskingReleaseMany)
+            Hints(sw - Margin, 44, Hint("shared.keys.z", "boxTools.hint.hold"), Hint("shared.keys.esc", "shared.hints.keepIt"));
+        else if (pc.Results != null)
+            Hints(sw - Margin, 44, Hint("shared.keys.upDown", "shared.hints.choose"), Hint("shared.keys.z", "shared.hints.doIt"), Hint("shared.keys.esc", "shared.hints.back"));
+        else if (pc.Search != null)
+            Hints(sw - Margin, 44, Hint("shared.keys.upDown", "shared.hints.choose"), Hint("shared.keys.leftRight", "shared.hints.change"), Hint("shared.keys.esc", "shared.hints.back"));
+        else if (pc.Selecting)
+            Hints(sw - Margin, 44, Hint("shared.keys.arrows", "boxTools.hint.stretch"), Hint("shared.keys.z", "shared.hints.choose"), Hint("shared.keys.esc", "shared.hints.back"));
+        else if (pc.Carried.Count > 0)
+            Hints(sw - Margin, 44, Hint("shared.keys.z", "shared.hints.putDown"), Hint("shared.keys.esc", "shared.hints.putBack"));
+        else if (pc.SortMenu != null || pc.GroupMenu != null)
+            Hints(sw - Margin, 44, Hint("shared.keys.upDown", "shared.hints.choose"), Hint("shared.keys.z", "shared.hints.doIt"), Hint("shared.keys.esc", "shared.hints.back"));
+        else return false;
+        return true;
+    }
+
+    /// <summary>
+    /// What the boxes' tools put over the storage screen: several carried over the cursor, the rectangle's and the sort's
+    /// menus, the search panel or its results, and the release of several with its hold.
+    /// </summary>
+    private static void DrawBoxTools(int sw, int sh, PCScreen pc, PcBoxes stored, Rectangle box, Rectangle plate, Rectangle detail, Rectangle cursor, float besideX, float menuY)
+    {
+        // Several carried: the first three stacked over the place under the cursor, a pill counting them
+        if (pc.Carried.Count > 0)
+        {
+            var spot = pc.Zone switch
+            {
+                StorageZone.Party => new Vector2(cursor.X + 70, cursor.Y + cursor.Height / 2f),
+                StorageZone.Box => new Vector2(cursor.X + cursor.Width / 2f, cursor.Y + cursor.Height / 2f),
+                _ => new Vector2(plate.X + plate.Width / 2f, plate.Y + plate.Height + 40)
+            };
+            UiShapes.Glow(spot + new Vector2(0, 30), 38, 11, new Color(10, 16, 40, 110));
+            int shown = Math.Min(3, pc.Carried.Count);
+            for (int i = shown - 1; i >= 0; i--)
+                PixelArt(PixelArtGenerator.IconOf(pc.Carried[i].Pokemon), spot + new Vector2(i * 10, -46 - i * 8), 2, i == 0 ? Hop(false) * 2 : 0);
+            string count = Text.Of("boxTools.many.count", ("count", pc.Carried.Count));
+            float cw = UiFonts.Measure(count, 24, UiWeight.Black) + 28;
+            var pill = new Rectangle(spot.X + 36, spot.Y - 104, cw, 40);
+            UiShapes.Shadow(pill, 20, 10, new Vector2(0, 3), ShadowColor);
+            UiShapes.Shape(pill, 20, Lighter(Selection, 0.14f), Darker(Selection, 0.06f), Darker(Selection, 0.3f), 3);
+            UiFonts.DrawCentered(count, pill.X + 14, pill.Y + pill.Height / 2f, 24, Color.White, UiWeight.Black);
+        }
+
+        if (pc.GroupMenu is { } group)
+        {
+            var rows = new List<string>();
+            foreach (var action in group) rows.Add(Text.Of($"boxTools.group.{action}"));
+            MenuPanel(besideX, menuY, rows, pc.MenuIndex);
+        }
+        else if (pc.SortMenu is { } sort)
+        {
+            var rows = new List<string>();
+            foreach (var choice in sort) rows.Add(Text.Of($"boxTools.sort.{choice}"));
+            MenuPanel(plate.X + plate.Width / 2f - 170, plate.Y + plate.Height + 16, rows, pc.MenuIndex);
+        }
+
+        if (pc.Search is { } search)
+        {
+            var panel = new Rectangle(box.X, ContentTop, sw - Margin - box.X, ContentBottom - ContentTop);
+            Panel(panel, 34);
+            if (pc.Results is { } results) SearchResults(panel, pc, stored, results);
+            else SearchPanel(panel, search, stored);
+        }
+
+        if (pc.AskingReleaseMany)
+        {
+            Prompt(sw, sh, Text.Of("boxTools.many.releaseQuestion", ("count", pc.Releasing.Count)), Text.Of("boxTools.many.releaseBody"),
+                new[] { (Text.Of("boxTools.many.releaseHold"), Red), (Text.Of("boxTools.many.keep"), Blue) }, -1);
+            // The hold's bar, filling while the confirm button is held
+            const float barW = 480, barH = 16;
+            var bar = new Rectangle(sw / 2f - barW / 2f, sh / 2f - 170 + 186, barW, barH);
+            UiShapes.Fill(bar, barH / 2f, Rule);
+            if (pc.ReleaseHold > 0f) UiShapes.Fill(new Rectangle(bar.X, bar.Y, MathF.Max(barH, barW * pc.ReleaseHold), barH), barH / 2f, Selection);
+        }
+    }
+
+    /// <summary>The search's rows: each filter's name and its value on a pill between arrows, then SEARCH.</summary>
+    private static void SearchPanel(Rectangle panel, BoxSearch search, PcBoxes stored)
+    {
+        Label(Text.Of("boxTools.search.title"), panel.X + 40, panel.Y + 30);
+        string held = Text.Of("boxTools.search.holding", ("count", stored.Count));
+        UiFonts.Draw(held, panel.X + panel.Width - 40 - UiFonts.Measure(held, 20, UiWeight.Black), panel.Y + 30, 20, Muted, UiWeight.Black);
+        float top = panel.Y + 64;
+        for (int i = 0; i < BoxSearch.Rows.Count; i++)
+        {
+            var row = BoxSearch.Rows[i];
+            var r = new Rectangle(panel.X + 24, top + i * SearchRowPitch, panel.Width - 48, SearchRowHeight);
+            bool selected = search.Row == i;
+            if (row == BoxSearchRow.Go)
+            {
+                string go = Text.Of("boxTools.search.go");
+                ListRow(r, selected, go, nameX: (r.Width - UiFonts.Measure(go, 30, UiWeight.Black)) / 2f, size: 30);
+                continue;
+            }
+            Card(r, 26, selected);
+            UiFonts.DrawCentered(Text.Of($"boxTools.search.row.{row}"), r.X + 36, r.Y + r.Height / 2f, 28, Ink, UiWeight.ExtraBold);
+            var pill = new Rectangle(r.X + r.Width - 80 - SearchPill, r.Y + 10, SearchPill, r.Height - 20);
+            UiShapes.Fill(pill, pill.Height / 2f, selected ? Frame : new Color(214, 222, 236, 255));
+            string value = search.Shown(row);
+            float size = 26, vw = UiFonts.Measure(value, size, UiWeight.Black);
+            if (vw > SearchPill - 24) { size = MathF.Floor(size * (SearchPill - 24) / vw); vw = UiFonts.Measure(value, size, UiWeight.Black); }
+            UiFonts.DrawCentered(value, pill.X + (pill.Width - vw) / 2f, pill.Y + pill.Height / 2f, size, selected ? Color.White : Ink, UiWeight.Black);
+            var arrow = selected ? Selection : new Color(170, 180, 200, 255);
+            UiIcons.ArrowH(new Vector2(pill.X - 34, r.Y + r.Height / 2f), 18, -1, arrow);
+            UiIcons.ArrowH(new Vector2(pill.X + pill.Width + 34, r.Y + r.Height / 2f), 18, 1, arrow);
+        }
+    }
+
+    /// <summary>What the search found: PICK UP ALL, then each with its icon, name, and its box and place.</summary>
+    private static void SearchResults(Rectangle panel, PCScreen pc, PcBoxes stored, IReadOnlyList<BoxPlace> results)
+    {
+        Label(Text.Of("boxTools.results.title", ("count", results.Count)), panel.X + 40, panel.Y + 30);
+        float top = panel.Y + 64;
+        int total = results.Count + 1;
+        for (int k = 0; k < PCScreen.ResultRows && pc.ResultFirst + k < total; k++)
+        {
+            int i = pc.ResultFirst + k;
+            var r = new Rectangle(panel.X + 24, top + k * ResultRowPitch, panel.Width - 72, ResultRowHeight);
+            bool selected = pc.ResultIndex == i;
+            if (i == 0)
+            {
+                ListRow(r, selected, Text.Of("boxTools.results.pickUpAll", ("count", results.Count)), nameX: 40, size: 30);
+                continue;
+            }
+            var place = results[i - 1];
+            if (stored[place.Box, place.Slot] is not { } p) continue;
+            ListRow(r, selected, p.DisplayName, nameX: 104, size: 30);
+            RowIcon(r, PixelArtGenerator.IconOf(p), 1, selected);
+            string where = Text.Of("boxTools.results.where", ("box", stored.ShownName(place.Box)), ("place", place.Slot + 1));
+            UiFonts.DrawCentered(where, r.X + r.Width - 32 - UiFonts.Measure(where, 24, UiWeight.ExtraBold), r.Y + r.Height / 2f, 24,
+                selected ? Color.White : Muted, UiWeight.ExtraBold);
+        }
+        // The scroll bar, where there are more than the rows show
+        if (total > PCScreen.ResultRows)
+        {
+            var track = new Rectangle(panel.X + panel.Width - 34, top, 10, PCScreen.ResultRows * ResultRowPitch - (ResultRowPitch - ResultRowHeight));
+            UiShapes.Fill(track, 5, Rule);
+            float size = Math.Max(40f, track.Height * PCScreen.ResultRows / total);
+            float at = (track.Height - size) * pc.ResultFirst / Math.Max(1, total - PCScreen.ResultRows);
+            UiShapes.Fill(new Rectangle(track.X, track.Y + at, track.Width, size), 5, Frame);
+        }
     }
 }

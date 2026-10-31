@@ -4338,5 +4338,61 @@
       "label": "CONTINUE",
       "help": "Keeps these choices and goes on to the title screen. This page won't be shown again."
     }
+  },
+  "boxTools": {
+    "option": {
+      "label": "Box tools",
+      "value": { "Off": "Off", "Rules": "By the rules", "On": "On" },
+      "help": {
+        "Off": "The PC's boxes are as in Platinum: one Pokémon moved at a time.",
+        "Rules": "Platinum's rules keep the PC as it was; the modern rules add searching, sorting and moving several at once.",
+        "On": "A box's menu has SEARCH and SORT, and SELECT draws a rectangle of a box to move or release together."
+      }
+    },
+    "action": { "select": "SELECT" },
+    "menu": { "search": "SEARCH", "sort": "SORT" },
+    "group": { "Move": "MOVE", "Release": "RELEASE", "Cancel": "CANCEL" },
+    "sort": {
+      "ThisBox": "THIS BOX", "AllBoxes": "ALL BOXES",
+      "Number": "BY NUMBER", "Level": "BY LEVEL", "Name": "BY NAME", "Type": "BY TYPE", "Recent": "BY RECENT",
+      "Cancel": "CANCEL",
+      "done": "{box} was put in order.",
+      "doneAll": "Every box was put in order."
+    },
+    "search": {
+      "title": "SEARCH THE BOXES",
+      "holding": "STORED  {count}",
+      "go": "SEARCH",
+      "any": "Any",
+      "holdsSomething": "Holding something",
+      "holdsNothing": "Holding nothing",
+      "level": "Lv. {level}",
+      "shinyOnly": "Shiny only",
+      "none": "Nothing in the boxes matches that.",
+      "row": {
+        "Species": "Species", "Type": "Type", "Move": "Knows", "Ability": "Ability", "Nature": "Nature",
+        "MinLevel": "Lowest level", "MaxLevel": "Highest level", "Item": "Held item", "Gender": "Gender",
+        "Shiny": "Shiny", "Mark": "Mark"
+      }
+    },
+    "gender": { "Male": "Male", "Female": "Female", "Genderless": "Unknown" },
+    "mark": { "Circle": "Circle", "Triangle": "Triangle", "Square": "Square", "Heart": "Heart", "Star": "Star", "Diamond": "Diamond" },
+    "results": {
+      "title": "FOUND  {count}",
+      "pickUpAll": "PICK UP ALL  ({count})",
+      "where": "{box}, place {place}"
+    },
+    "many": {
+      "count": "×{count}",
+      "notTheTeam": "Several at once go into a box, not onto the team.",
+      "noRoom": "{box} hasn't room for all {count}.",
+      "released": "Released: {count}. Bye-bye!",
+      "releasedSome": "Released: {count}. {stayed} stayed with you.",
+      "releaseQuestion": "Release these {count}?",
+      "releaseBody": "Hold the button until the bar is full. They won't come back.",
+      "releaseHold": "HOLD  {KEY:confirm}",
+      "keep": "KEEP THEM  (ESC)"
+    },
+    "hint": { "hold": "Hold to release", "stretch": "Stretch" }
   }
 }
