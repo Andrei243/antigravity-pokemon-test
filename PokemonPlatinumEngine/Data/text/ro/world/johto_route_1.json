@@ -1,0 +1,118 @@
+{
+  "people": {
+    "r01_gswoman3": {
+      "name": {
+        "en": [
+          "Quinn"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Quinn: This road is where a lot of famous trainers took their first steps. Let's see how far yours have taken you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Quinn: Your steps have taken you a long way, it seems."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r01_gsman3": {
+      "name": {
+        "en": [
+          "French"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer French: I walk this route every day to remember where I started. Battle me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer French: I started here, and here I lose. Fitting."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r01_gsboy1": {
+      "name": {
+        "en": [
+          "Danny"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "School Kid Danny: I've studied every type matchup there is. Test me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "School Kid Danny: I knew the answers. I just didn't have the Pokémon."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r01_gsboy1_2": {
+      "name": {
+        "en": [
+          "Sherman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "School Kid Sherman: My homework today is a real battle. Please be my homework!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "School Kid Sherman: I'll get a bad mark for that one."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "R01_002+1": {
+      "en": [
+        "Route 1\nPallet Town - Viridian City"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

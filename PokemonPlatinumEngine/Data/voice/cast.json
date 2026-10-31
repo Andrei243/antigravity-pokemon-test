@@ -125,6 +125,10 @@
       "note": "first spoken at cinnabar_island_gym.txt(152)",
       "provisional": true
     },
+    "blue": {
+      "note": "first spoken at johto_cinnabar_island.txt(11)",
+      "provisional": true
+    },
     "brandon": {
       "note": "first spoken at BattlePyramidFloor.txt(87)",
       "provisional": true
@@ -1273,6 +1277,7 @@
     "Bill": "bill",
     "Black Belt": "black_belt",
     "Blaine": "blaine",
+    "Blue": "blue",
     "Boy": "look:boy",
     "Brandon": "brandon",
     "Brawly": "brawly",

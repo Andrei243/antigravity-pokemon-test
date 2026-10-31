@@ -1,0 +1,74 @@
+{
+  "people": {
+    "t01_gswoman1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pallet Town is quiet, but some of the greatest trainers grew up here. You can feel it in the breeze."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t01_gsbigman": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The sea south of town runs all the way to Cinnabar Island. You need a Pokémon that can swim to get there."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T01_002+1": {
+      "en": [
+        "Pallet Town\nA quiet town where journeys begin."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T01_003+1": {
+      "en": [
+        "Red's house"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T01_004+1": {
+      "en": [
+        "Oak Pokémon Research Lab"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T01_005+1": {
+      "en": [
+        "Blue's house"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

@@ -1,0 +1,317 @@
+{
+  "people": {
+    "w21_fishing_2": {
+      "name": {
+        "en": [
+          "Arnold"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Arnold: The fish out here are bigger than anywhere in Johto. Want to see?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Arnold: That one got away. And so did my win."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "w21_fishing_2_2": {
+      "name": {
+        "en": [
+          "Murphy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Murphy: Shh! You'll scare the fish. Well, since you're here, let's battle."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Murphy: Now the fish really are scared."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "w21_fishing_2_3": {
+      "name": {
+        "en": [
+          "Liam"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Liam: I've been out here since dawn. A battle would wake me up."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Liam: I'm wide awake now. And beaten."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "w21_fishing_2_4": {
+      "name": {
+        "en": [
+          "Gideon"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Gideon: Nothing biting all day. Maybe you will!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Gideon: You bit back. Hard."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "w21_gsswimmerw": {
+      "name": {
+        "en": [
+          "Nikki"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Nikki: The water's lovely and cold. Perfect for a battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Nikki: Brr. Losing makes it colder."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "w21_gsswimmerw_2": {
+      "name": {
+        "en": [
+          "Chelan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Chelan: I swim to Cinnabar and back every day. Can you keep up?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Chelan: You kept up, and then some."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "w21_gsswimmerw_3": {
+      "name": {
+        "en": [
+          "Kendra"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Kendra: You're riding on a Pokémon? That's cheating! Battle me fairly, then!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Kendra: Fair and square. You win."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "w21_gsswimmerm": {
+      "name": {
+        "en": [
+          "Tyson"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Tyson: I can hold my breath for ages. Let's see if you can hold your own!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Tyson: I'm out of breath. And out of Pokémon."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "w21_gsswimmerm_2": {
+      "name": {
+        "en": [
+          "Esteban"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Esteban: The current here pulls you south. Good thing I like battles as much as swimming!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Esteban: The current pulled my win away."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "w21_gsswimmerm_3": {
+      "name": {
+        "en": [
+          "Duane"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Duane: I'm training for a race to Seafoam. A battle is good practice!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Duane: I'd better practise more."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "w21_gsman2": {
+      "name": {
+        "en": [
+          "Easton"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Easton: My birds fly over the sea to Cinnabar. They can fly circles round you, too!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Easton: Grounded. Completely grounded."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "w21_gsman2_2": {
+      "name": {
+        "en": [
+          "Kinsley"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Kinsley: I'm resting on this rock before flying on. A battle first!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Kinsley: I need a longer rest now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

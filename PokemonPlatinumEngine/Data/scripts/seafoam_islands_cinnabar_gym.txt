@@ -1,0 +1,43 @@
+# Blaine's Gym in the Seafoam Islands as HeartGold has it (plan 20 · J15, part g). docs/scripts.md describes the
+# language; the lines are our own, on HeartGold's beats (scr_seq_D11R0106).
+#
+# Cinnabar Island's volcano erupted and took the old Gym with it, so Blaine keeps his Gym in a hall of the Seafoam
+# Islands' rock. He waits at its head and battles for the Volcano Badge, which is Kanto's (`givebadge volcano of kanto`,
+# as the other Kanto Gyms of HeartGold's: the rulings' "HeartGold's Kanto, part b" to "part g"), and gives TM50,
+# Overheat. Whether he is beaten here is FLAG_JOHTO_DEFEATED_BLAINE, a flag of ours, so a FireRed Champion battles him
+# all the same. The Gym has no trainers of its own: its volunteers only talk.
+
+
+script Blaine
+  face d11r0106_gsleader15 player
+  speaker "Blaine"
+  if flag FLAG_JOHTO_DEFEATED_BLAINE goto Won
+  scene "Blaine"
+  say "So, you found my hideaway. The volcano swallowed my old Gym, and now I keep my fire in a cave of ice."
+  say "But a Leader's fire doesn't go out with a building. A Champion from Johto, is it? Then let's turn up the heat!"
+  battle self as "johto_leader_blaine_blaine"
+  say "My flames are out, for now. You've earned this: the Volcano Badge."
+  givebadge volcano of kanto
+  text "{player} received the Volcano Badge from Blaine!"
+  setflag FLAG_JOHTO_DEFEATED_BLAINE
+  endscene
+label Tm
+  say "And take this, too. It holds my hottest move."
+  give "TM50"
+  setflag FLAG_JOHTO_GOT_TM50_FROM_BLAINE
+  say "TM50 is Overheat. It's fearsomely strong, but it leaves the user's Special Attack much lower afterwards."
+  end
+label Won
+  if not flag FLAG_JOHTO_GOT_TM50_FROM_BLAINE goto Tm
+  say "One day I'll build my Gym on Cinnabar again. Until then, the ice keeps my fire honest."
+  end
+
+
+# The Gym guide by the door.
+script Guide
+  if flag FLAG_JOHTO_DEFEATED_BLAINE goto Won
+  say "Hey, champ in the making! Blaine's Pokémon burn hot. Water and Ground moves will cool them right down."
+  end
+label Won
+  say "You beat Blaine! The ice in here nearly melted!"
+  end

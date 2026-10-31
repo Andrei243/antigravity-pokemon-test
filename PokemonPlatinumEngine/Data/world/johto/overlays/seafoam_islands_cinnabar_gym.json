@@ -1,0 +1,81 @@
+{
+  // Blaine's Gym in the Seafoam Islands as HeartGold has it (plan 20 · J15, part g): a hall in the rock, Blaine at
+  // its head (seafoam_islands_cinnabar_gym.txt). HeartGold hides him behind FLAG_HIDE_SEAFOAM_GYM_BLAINE only on the
+  // days of his phone's meeting on Cinnabar Island, which this game has not, so he stands here always. The
+  // volunteers who helped him build it stand about and talk; four the import stands in the narrow ways round the
+  // rocks to Blaine stand a tile or two aside (15, 17 at 14, 17; 20, 14 at 21, 14; 17, 11 at 18, 10; 8, 17 at 11,
+  // 16), so that his head of the hall can be walked to
+  "area": "seafoam_islands_cinnabar_gym",
+  "bgmTrack": "johto/gym",
+  "arenaType": "Fire",
+  "people": {
+    "d11r0106_gsleader15": {
+      "name": "Blaine",
+      "npcType": "blaine",
+      "script": "Blaine",
+      "still": true,
+      "hiddenBy": ""
+    },
+    "d11r0106_sunglasses": {
+      "name": "Gym guide",
+      "script": "Guide",
+      "still": true
+    },
+    "d11r0106_assistantm": {
+      "name": "Volunteer",
+      "still": true,
+      "dialog": [
+        "We carried every rock of this Gym in by hand. Blaine says a Gym is where the Leader stands, not where the building is."
+      ],
+      "at": [
+        14,
+        17
+      ]
+    },
+    "d11r0106_assistantm_2": {
+      "name": "Volunteer",
+      "still": true,
+      "dialog": [
+        "The cave is cold, but Blaine never seems to notice. His Pokémon keep him warm."
+      ],
+      "at": [
+        18,
+        10
+      ]
+    },
+    "d11r0106_assistantm_3": {
+      "name": "Volunteer",
+      "still": true,
+      "dialog": [
+        "I used to live on Cinnabar. I'll go back one day, when the island has cooled."
+      ],
+      "at": [
+        11,
+        16
+      ]
+    },
+    "d11r0106_gsassistantm": {
+      "name": "Scientist",
+      "still": true,
+      "dialog": [
+        "Blaine was a researcher before he was a Leader. He still asks us riddles over lunch."
+      ],
+      "at": [
+        21,
+        14
+      ]
+    },
+    "d11r0106_gsassistantm_2": {
+      "name": "Scientist",
+      "dialog": [
+        "Fire and ice in one cave. Blaine says it keeps him humble."
+      ]
+    },
+    "d11r0106_gsassistantm_3": {
+      "name": "Scientist",
+      "dialog": [
+        "We're measuring how warm the Gym stays. Blaine's Pokémon heat the whole floor!"
+      ]
+    }
+  }
+}

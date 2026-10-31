@@ -1,0 +1,46 @@
+{
+  // Professor Oak's laboratory in Pallet Town (plan 20 · J15, part g): the professor and his aides. The three Poké
+  // Balls on his table (HeartGold's gift to whoever beats Red) wait for their session
+  "area": "pallet_town_oaks_lab",
+  "bgmTrack": "kanto/oak_lab",
+  "heldBack": [
+    "t01r0301_monstarball",
+    "t01r0301_monstarball_2",
+    "t01r0301_monstarball_3"
+  ],
+  "people": {
+    "t01r0301_ookido": {
+      "name": "Professor Oak",
+      "still": true,
+      "dialog": [
+        "Well, well! A Champion from Johto, here in my lab! Kanto has eight Gyms of its own, you know. Have you thought of taking them on?"
+      ]
+    },
+    "t01r0301_assistantm": {
+      "name": "Aide",
+      "dialog": [
+        "The professor is on the radio most days now. He still finds time to research, somehow."
+      ]
+    },
+    "t01r0301_assistantm_2": {
+      "name": "Aide",
+      "still": true,
+      "dialog": [
+        "Some of the greatest trainers in the world started their journeys from this very lab."
+      ]
+    },
+    "t01r0301_assistantm_3": {
+      "name": "Aide",
+      "dialog": [
+        "I'm sorting the Pokédex data the professor sends back. There's so much of it!"
+      ]
+    }
+  },
+  "signs": {
+    "T01R0301_004+1": "The shelves are crammed with books about Pokémon.",
+    "T01R0301_005+1": "A PC full of the professor's notes. It's password-protected.",
+    "T01R0301_007+1": "A bare table. Something used to rest here.",
+    "T01R0301_008+1": "A bare table. Something used to rest here.",
+    "T01R0301_009+1": "A bare table. Something used to rest here."
+  }
+}

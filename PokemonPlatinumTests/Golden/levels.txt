@@ -766,10 +766,27 @@ Jagged Pass
 grass 20-22
 ours Volcamel 150-154, Boarcane 148-152
 trainers 5, 19-21: hoenn_autumn 21, hoenn_diana_1 19, hoenn_eric 20, hoenn_ethan_1 20, hoenn_julio 21
+=== johto_cinnabar_island
+Cinnabar Island
+surf 30-35
+old rod 10
+good rod 20
+super rod 40
+=== johto_route_1
+Route 1
+grass 2-6
+trainers 4, 43-47: johto_ace_trainer_f_quinn 47, johto_ace_trainer_m_french 47, johto_school_kid_m_danny 43, johto_school_kid_m_sherman 43
 === johto_route_2
 Route 2
 grass 3-10
 trainers 2, 37-40: johto_bug_catcher_doug 39, johto_bug_catcher_rob 40
+=== johto_route_20
+Route 20
+surf 30-35
+old rod 10
+good rod 20
+super rod 40
+trainers 12, 38-48: johto_bird_keeper_gs_bert 46, johto_bird_keeper_gs_ernie 48, johto_camper_pedro 45, johto_picnicker_adrian 45, johto_picnicker_cheyenne 45, johto_swimmer_f_leona 44, johto_swimmer_f_lori 42, johto_swimmer_f_mina 41, johto_swimmer_f_nicole 42, johto_swimmer_m_elmo 46, johto_swimmer_m_frankie 44, johto_swimmer_m_luis 46
 === johto_route_22
 Route 22
 grass 3-7
@@ -822,6 +839,9 @@ grass 15-19
 Route 8
 grass 15-19
 trainers 7, 38-45: johto_biker_dwayne 41, johto_biker_harris 45, johto_biker_zeke 43, johto_gentleman_milton 45, johto_super_nerd_sam 44, johto_super_nerd_tyrone 40, johto_young_couple_moe_and_lulu 43
+=== johto_seafoam_islands_1f
+Seafoam Islands
+grass 26-32
 === johto_victory_road_1f
 Victory Road Jk
 grass 32-36
@@ -1338,6 +1358,12 @@ surf 5-35
 old rod 5-10
 good rod 10-30
 super rod 25-45
+=== pallet
+Pallet Town
+surf 30-35
+old rod 10
+good rod 20
+super rod 40
 === pallet_town
 Pallet Town
 surf 5-40
@@ -1942,6 +1968,14 @@ old rod 3-15
 good rod 10-25
 super rod 30-55
 trainers 8, 20-23: breeder_albert 20, breeder_jennifer 20, cowgirl_shelley 23, jogger_raul 23, jogger_richard 23, poke_kid_danielle 22, twins_emma_and_lil 22, young_couple_ty_and_sue 23
+=== route_21
+Route 21
+grass 20-35
+surf 30-35
+old rod 10
+good rod 20
+super rod 40
+trainers 12, 32-44: johto_bird_keeper_gs_easton 36, johto_bird_keeper_gs_kinsley 37, johto_fisherman_arnold 44, johto_fisherman_gideon 44, johto_fisherman_liam 42, johto_fisherman_murphy 38, johto_swimmer_f_chelan 40, johto_swimmer_f_kendra 43, johto_swimmer_f_nikki 42, johto_swimmer_m_duane 40, johto_swimmer_m_esteban 38, johto_swimmer_m_tyson 42
 === route_210_north
 Route 210
 grass 27-30

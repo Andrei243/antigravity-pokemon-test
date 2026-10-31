@@ -1961,4 +1961,39 @@ public class JohtoStoryTests
         game.Arrive("DragonsDen", 28, 12);
         Assert.NotNull(game.Present("d44r0102_gsrivel_2"));
     }
+    [Fact]
+    public void BlaineGivesKantosVolcanoBadgeInHisGymInTheSeafoamIslands()
+    {
+        // Plan 20 · J15, part g: Blaine at the head of his Gym in the Seafoam Islands, come to by Route 20 from Cinnabar
+        var game = new Game();
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Feraligatr")!, 60));
+        game.Arrive("Seafoam_Gym", 14, 24);
+        Assert.NotNull(game.Present("d11r0106_gsleader15"));
+        Assert.Contains(game.Talk("d11r0106_sunglasses").Transcript, l => l.Text.Contains("Water"));
+
+        // Kanto's Volcano Badge, not Johto's, and TM50 once
+        int johtoBadges = game.Story.BadgeCount(RegionDatabase.Johto);
+        Assert.Contains(game.Talk("d11r0106_gsleader15").Log, l => l.StartsWith("battle johto_leader_blaine_blaine Won"));
+        Assert.True(game.Story.HasBadge(RegionDatabase.Kanto, "Volcano"));
+        Assert.Equal(johtoBadges, game.Story.BadgeCount(RegionDatabase.Johto));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM50")!));
+        game.Talk("d11r0106_gsleader15");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM50")!));
+        Assert.Contains(game.Talk("d11r0106_sunglasses").Transcript, l => l.Text.Contains("You beat Blaine"));
+    }
+
+    [Fact]
+    public void BlueOnCinnabarAsksForKantosOtherSevenBadges()
+    {
+        // Plan 20 · J15, part g: Blue by the ruins of Cinnabar, whose Gym in Viridian waits for its session
+        var game = new Game();
+        game.Arrive("Johto", 1037, 494);
+        Assert.NotNull(game.Present("t09_gsleader16"));
+        Assert.Contains(game.Talk("t09_gsleader16").Transcript, l => l.Text.Contains("other seven Badges"));
+        foreach (string badge in new[] { "Boulder", "Cascade", "Thunder", "Rainbow", "Soul", "Marsh", "Volcano" })
+            game.Story.GiveBadge(RegionDatabase.Kanto, badge);
+        var talk = game.Talk("t09_gsleader16");
+        Assert.Contains(talk.Transcript, l => l.Text.Contains("head back to Viridian"));
+        Assert.DoesNotContain(talk.Log, l => l.StartsWith("battle"));
+    }
 }

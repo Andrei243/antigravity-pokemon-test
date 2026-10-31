@@ -1,0 +1,9 @@
+{
+  // Blue's room upstairs (plan 20 · J15, part g)
+  "area": "pallet_town_blues_house_2f",
+  "bgmTrack": "kanto/pallet",
+  "signs": {
+    "T01R0202_000+1": "A map of Kanto, with every Gym circled twice.",
+    "T01R0202_001+1": "A PC. Its wallpaper is a picture of a trophy."
+  }
+}

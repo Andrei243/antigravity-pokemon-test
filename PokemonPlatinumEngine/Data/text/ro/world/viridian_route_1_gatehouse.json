@@ -1,0 +1,23 @@
+{
+  "people": {
+    "t02r0401_counterm": {
+      "name": {
+        "en": [
+          "Guard"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Route 1 runs south to Pallet Town. It is a short road, but plenty of trainers walk it to test themselves."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

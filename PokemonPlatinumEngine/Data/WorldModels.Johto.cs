@@ -436,6 +436,14 @@ public static partial class WorldModels
         Built("to_trainer", BuildingKind.Hall, "Viridian City's Trainer House", Architecture.Evergreen, sign: "TRAINERS"),
         Built("to_gym", BuildingKind.Gym, "the Viridian Gym (locked)"),
         Furniture("table03_3", PropType.Table, "a long table"),
+
+        // ---------------------------------------------------------------- plan 20 · J15, part g: Pallet Town (mst_: the
+        // original's Masara), built as plan 19 · K3 builds FireRed's, and Professor Oak's machine
+        House("mst_rdh", Architecture.Clapboard, "Red's house or Blue's house in Pallet Town", storeys: 2),
+        Built("mst_okl", BuildingKind.Lab, "Professor Oak's laboratory", Architecture.Clapboard, sign: "OAK LAB"),
+        Door("mst_dr1"),
+        Door("mst_dr2"),
+        Furniture("o_kido_obj", PropType.LabMachine, "Professor Oak's machine"),
     };
 
     private static readonly Dictionary<string, WorldModel> JohtoByName = JohtoTable.ToDictionary(m => m.Name, StringComparer.Ordinal);

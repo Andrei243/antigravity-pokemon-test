@@ -1,0 +1,133 @@
+{
+  "people": {
+    "d11r0106_gsleader15": {
+      "name": {
+        "en": [
+          "Blaine"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d11r0106_sunglasses": {
+      "name": {
+        "en": [
+          "Gym guide"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d11r0106_assistantm": {
+      "name": {
+        "en": [
+          "Volunteer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We carried every rock of this Gym in by hand. Blaine says a Gym is where the Leader stands, not where the building is."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d11r0106_assistantm_2": {
+      "name": {
+        "en": [
+          "Volunteer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The cave is cold, but Blaine never seems to notice. His Pokémon keep him warm."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d11r0106_assistantm_3": {
+      "name": {
+        "en": [
+          "Volunteer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I used to live on Cinnabar. I'll go back one day, when the island has cooled."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d11r0106_gsassistantm": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Blaine was a researcher before he was a Leader. He still asks us riddles over lunch."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d11r0106_gsassistantm_2": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Fire and ice in one cave. Blaine says it keeps him humble."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d11r0106_gsassistantm_3": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We're measuring how warm the Gym stays. Blaine's Pokémon heat the whole floor!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

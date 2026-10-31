@@ -299,6 +299,55 @@ partial class Harness
         game.State = GameState.Overworld; ReadTo(null); game.Dialogue.Close();
         Console.WriteLine($"  VAR_UNK_40FC {game.Story.Var("VAR_UNK_40FC")}");
         At("Johto", 1220, 114, Direction.Left); game.ArriveOnMap(); Frames(30); Shot("jk81_route_4");
+
+        JohtoKantoPalletShots(readTo, talkTo);
+    }
+
+    /// <summary>
+    /// Plan 20 · J15, part g: Viridian's gate to Route 1, Route 1, Pallet Town by day and after dark, Red's house, Blue's
+    /// house and Professor Oak's lab, Route 21 surfed, Cinnabar Island and Blue's word, its Pokémon Center, Route 20, the
+    /// Seafoam Islands' first floor and Blaine's Gym, Blaine and his battle's band (<c>jk82</c> to <c>jk99</c>), after
+    /// part f's, so nothing before them moves. It prints Kanto's Volcano Badge.
+    /// </summary>
+    void JohtoKantoPalletShots(Action<string?, int> readTo, Action<string, string, int, int> talkTo)
+    {
+        void ReadTo(string? text) => readTo(text, 2400);
+        void Daylight(TimeOfDay time) { engine.Settings.TimeOfDay = time; engine.ApplySettings(window: false); }
+        game.State = GameState.Overworld;
+        game.Player.SetMode(TravelMode.OnFoot);
+
+        // ---- Route 1 and Pallet Town
+        At("Viridian_Route1Gate", 5, 10, Direction.Down); game.ArriveOnMap(); Frames(10); Shot("jk82_viridians_gate_to_route_1");
+        At("Johto", 1037, 300, Direction.Down); game.ArriveOnMap(); Frames(30); Shot("jk83_route_1");
+        At("Johto", 1039, 368, Direction.Up); game.ArriveOnMap(); Frames(30); Shot("jk84_pallet_town");
+        Daylight(TimeOfDay.Night); Frames(30); Shot("jk85_pallet_town_after_dark"); Daylight(TimeOfDay.Day);
+        At("Pallet_RedsHouse_1F", 5, 9, Direction.Up); game.ArriveOnMap(); Frames(10); Shot("jk86_reds_house");
+        At("Pallet_BluesHouse_1F", 5, 9, Direction.Up); game.ArriveOnMap(); Frames(10); Shot("jk87_blues_house");
+        At("Pallet_OaksLab", 8, 12, Direction.Up); game.ArriveOnMap(); Frames(10); Shot("jk88_professor_oaks_lab");
+
+        // ---- Route 21 by sea to Cinnabar Island
+        At("Johto", 1040, 440, Direction.Down); game.Player.SetMode(TravelMode.Surfing); game.ArriveOnMap(); Frames(30); Shot("jk89_route_21");
+        game.Player.SetMode(TravelMode.OnFoot);
+        At("Johto", 1038, 495, Direction.Left); game.ArriveOnMap(); Frames(30); Shot("jk90_cinnabar_island");
+        Daylight(TimeOfDay.Night); Frames(30); Shot("jk91_cinnabar_island_after_dark"); Daylight(TimeOfDay.Day);
+        talkTo("Johto", "t09_gsleader16", 1, 0);
+        ReadTo("Look at this place"); Frames(10); Shot("jk92_blue_on_cinnabar");
+        ReadTo(null); game.Dialogue.Close();
+        At("Cinnabar_PokemonCenter_1F", 8, 17, Direction.Up); game.ArriveOnMap(); Frames(10); Shot("jk93_cinnabars_pokemon_center");
+
+        // ---- Route 20, the Seafoam Islands and Blaine
+        At("Johto", 1100, 500, Direction.Right); game.Player.SetMode(TravelMode.Surfing); game.ArriveOnMap(); Frames(30); Shot("jk94_route_20");
+        game.Player.SetMode(TravelMode.OnFoot);
+        At("Seafoam_1F", 55, 26, Direction.Up); game.ArriveOnMap(); Frames(30); Shot("jk95_the_seafoam_islands");
+        At("Seafoam_Gym", 14, 24, Direction.Up); game.ArriveOnMap(); Frames(10); Shot("jk96_blaines_gym");
+        talkTo("Seafoam_Gym", "d11r0106_gsleader15", 0, 1);
+        ReadTo("found my hideaway"); Frames(10); Shot("jk97_blaine");
+        ReadTo("turn up the heat"); game.Dialogue.Advance();
+        UntilALeadersBattle();
+        Frames(30); Shot("jk98_blaines_battle");
+        game.State = GameState.Overworld; ReadTo(null); game.Dialogue.Close();
+        Console.WriteLine($"  Volcano Badge {game.Story.HasBadge(RegionDatabase.Kanto, "Volcano")}");
+        At("Seafoam_Gym", 13, 13, Direction.Up); Frames(10); Shot("jk99_blaine_beaten");
     }
 
 }

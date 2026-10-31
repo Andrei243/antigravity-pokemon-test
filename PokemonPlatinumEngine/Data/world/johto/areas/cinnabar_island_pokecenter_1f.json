@@ -1,0 +1,33 @@
+{
+  "key": "cinnabar_island_pokecenter_1f",
+  "index": 508,
+  "name": "Cinnabar Island",
+  "matrix": 73,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_POKESEN",
+  "nightMusic": "GS_POKESEN",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 8, "z": 19, "to": "johto_cinnabar_island", "toWarp": 0 },
+    { "x": 14, "z": 17, "to": "cinnabar_island_pokecenter_b1f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "t09pc0101_pcwoman1", "looks": "pcwoman1", "movement": "15", "x": 8, "z": 11, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T09PC0101_000+1" },
+    { "id": "t09pc0101_pcwoman2", "looks": "pcwoman2", "movement": "15", "x": 2, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "std_trainer_card_explain" },
+    { "id": "t09pc0101_pcwoman2_2", "looks": "pcwoman2", "movement": "15", "x": 6, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "std_union_room" },
+    { "id": "t09pc0101_pcwoman2_3", "looks": "pcwoman2", "movement": "15", "x": 11, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "std_wireless_colosseum" },
+    { "id": "t09pc0101_seaman_2", "looks": "seaman_2", "movement": "15", "x": 6, "z": 15, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T09PC0101_002+1" },
+    { "id": "t09pc0101_gswoman3", "looks": "gswoman3", "movement": "5", "x": 11, "z": 18, "facing": 2, "rangeX": 1, "rangeZ": 0, "script": "T09PC0101_001+1" }
+  ],
+  "signs": [
+    { "x": 4, "z": 8, "type": 0, "script": "0" }
+  ],
+  "triggers": []
+}

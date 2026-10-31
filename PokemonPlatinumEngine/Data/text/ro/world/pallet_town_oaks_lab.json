@@ -1,0 +1,118 @@
+{
+  "people": {
+    "t01r0301_ookido": {
+      "name": {
+        "en": [
+          "Professor Oak"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Well, well! A Champion from Johto, here in my lab! Kanto has eight Gyms of its own, you know. Have you thought of taking them on?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t01r0301_assistantm": {
+      "name": {
+        "en": [
+          "Aide"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The professor is on the radio most days now. He still finds time to research, somehow."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t01r0301_assistantm_2": {
+      "name": {
+        "en": [
+          "Aide"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Some of the greatest trainers in the world started their journeys from this very lab."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t01r0301_assistantm_3": {
+      "name": {
+        "en": [
+          "Aide"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm sorting the Pokédex data the professor sends back. There's so much of it!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T01R0301_004+1": {
+      "en": [
+        "The shelves are crammed with books about Pokémon."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T01R0301_005+1": {
+      "en": [
+        "A PC full of the professor's notes. It's password-protected."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T01R0301_007+1": {
+      "en": [
+        "A bare table. Something used to rest here."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T01R0301_008+1": {
+      "en": [
+        "A bare table. Something used to rest here."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T01R0301_009+1": {
+      "en": [
+        "A bare table. Something used to rest here."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

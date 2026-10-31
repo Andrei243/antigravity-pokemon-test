@@ -1,0 +1,46 @@
+{
+  // Cinnabar Island's Pokémon Center (plan 20 · J15, part g), the one building left on the island. The counters for
+  // the link say it is closed, as in every Center (decision 06 · 7)
+  "area": "cinnabar_island_pokecenter_1f",
+  "bgmTrack": "kanto/cinnabar",
+  "read": {
+    "0": "PC"
+  },
+  "people": {
+    "t09pc0101_pcwoman1": {
+      "name": "Nurse",
+      "script": "Nurse"
+    },
+    "t09pc0101_pcwoman2": {
+      "name": "Receptionist",
+      "dialog": [
+        "Your Trainer Card shows your name, your money and the Pokémon you've seen. Have a look at it from the menu."
+      ]
+    },
+    "t09pc0101_pcwoman2_2": {
+      "name": "Receptionist",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    },
+    "t09pc0101_pcwoman2_3": {
+      "name": "Receptionist",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    },
+    "t09pc0101_seaman_2": {
+      "name": "Sailor",
+      "still": true,
+      "dialog": [
+        "When the volcano blew, everyone got off the island in boats. Only this Center was left standing. Blaine moved his Gym to the Seafoam Islands, east of here."
+      ]
+    },
+    "t09pc0101_gswoman3": {
+      "name": "Woman",
+      "dialog": [
+        "I come here to look at the sea. It's hard to believe there was a whole town on this island once."
+      ]
+    }
+  }
+}

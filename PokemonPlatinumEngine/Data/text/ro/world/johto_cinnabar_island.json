@@ -1,0 +1,32 @@
+{
+  "people": {
+    "t09_gsleader16": {
+      "name": {
+        "en": [
+          "Blue"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T09_001+1": {
+      "en": [
+        "Pokémon Center"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T09_002+1": {
+      "en": [
+        "Cinnabar Island\nWhat the volcano left standing."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

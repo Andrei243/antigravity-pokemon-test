@@ -859,7 +859,10 @@ public class StoryTests
         // Cave's), or the two are one place shown on two maps (Mt. Coronet's north and south faces share a ledge and
         // its two Star Pieces): whichever is found first, the other is gone too
         Assert.Empty(hidden.GroupBy(h => h.Item.Flag)
-            .Where(g => g.Count() > 1 && !g.Key.Contains("_OR_") && !g.All(h => h.Map.Name.StartsWith("MtCoronetOutside", StringComparison.Ordinal)))
+            // (HeartGold's Rare Candy on Cinnabar's shore names both its areas, T09 and W21, and each area's events list
+            // it: plan 20 · J15, part g)
+            .Where(g => g.Count() > 1 && !g.Key.Contains("_OR_") && g.Key != "FLAG_HIDDEN_ITEM_T09_W21_RARE_CANDY"
+                && !g.All(h => h.Map.Name.StartsWith("MtCoronetOutside", StringComparison.Ordinal)))
             .Select(g => g.Key));
 
         foreach (var (map, at, item) in hidden)

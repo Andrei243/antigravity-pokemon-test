@@ -1,0 +1,58 @@
+{
+  "key": "johto_seafoam_islands_1f",
+  "index": 146,
+  "name": "Seafoam Islands",
+  "matrix": 81,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave1",
+  "dayMusic": "GS_D_KOORINONUKE",
+  "nightMusic": "GS_D_KOORINONUKE",
+  "encounters": "D11R0101",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Zubat", "level": 28 },
+    { "species": "Golbat", "level": 32 },
+    { "species": "Psyduck", "level": 28 },
+    { "species": "Psyduck", "level": 29 },
+    { "species": "Golbat", "level": 30 },
+    { "species": "Golduck", "level": 32 },
+    { "species": "Zubat", "level": 27 },
+    { "species": "Zubat", "level": 26 },
+    { "species": "Psyduck", "level": 27 },
+    { "species": "Psyduck", "level": 26 },
+    { "species": "Psyduck", "level": 27 },
+    { "species": "Psyduck", "level": 26 }
+  ],
+  "landRate": 5,
+  "swarm": [
+    "Zubat",
+    "Zubat"
+  ],
+  "hoennSounds": [
+    "Absol",
+    "Makuhita"
+  ],
+  "sinnohSounds": [
+    "Bronzor",
+    "Chingling"
+  ],
+  "warps": [
+    { "x": 55, "z": 28, "to": "johto_route_20", "toWarp": 0 },
+    { "x": 8, "z": 12, "to": "johto_route_20", "toWarp": 1 },
+    { "x": 52, "z": 20, "to": "johto_seafoam_islands_b1f", "toWarp": 0 },
+    { "x": 11, "z": 4, "to": "johto_seafoam_islands_b1f", "toWarp": 1 },
+    { "x": 55, "z": 24, "to": "seafoam_islands_cinnabar_gym", "toWarp": 0 },
+    { "x": 55, "z": 23, "to": "seafoam_islands_cinnabar_gym", "toWarp": 0 }
+  ],
+  "objects": [],
+  "signs": [
+    { "x": 56, "z": 19, "type": 2, "script": "std_hiddenitem_d11r0101_escape_rope", "item": "Escape Rope", "flag": "FLAG_HIDDEN_ITEM_D11R0101_ESCAPE_ROPE" }
+  ],
+  "triggers": []
+}
