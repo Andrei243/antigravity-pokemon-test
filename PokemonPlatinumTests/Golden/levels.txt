@@ -2479,6 +2479,9 @@ good rod 20
 super rod 40
 ours Totemsight 115-119, Muralist 110-114
 trainers 1, 26: johto_psychic_m_nathan 26
+=== ruins_of_alph_underground_hall
+Ruins of Alph
+grass 5
 === rustboro_city_gym
 Rustboro City
 trainers 3, 8-10: hoenn_josh 10, hoenn_marc 8, hoenn_tommy 8

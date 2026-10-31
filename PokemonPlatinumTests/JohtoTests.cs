@@ -166,13 +166,13 @@ public class JohtoTests
                      "RuinsOfAlph_NortheastChamber", "Azalea_KurtsHouse", "Azalea_CharcoalKiln", "Azalea_PokemonCenter_B1F" })
             Assert.True(walked.Keys.Any(m => m.Name == name), $"nobody walks into {name}");
 
-        // The Slowpoke Well and the Gym are open since plan 20 · J7; what waits for its chapter stays shut: the Ruins'
-        // hall and the rooms behind the chambers' back walls
+        // The Slowpoke Well and the Gym are open since plan 20 · J7; the Ruins' hall waits for a panel (J5's leftovers:
+        // TheRuinsHallOpensWithAPanelAndHoldsTheUnown), and the rooms behind the chambers' back walls stay shut
         var azalea = Johto.Area("azalea")!;
         Assert.Contains(Overworld.WarpsAt(azalea.Warps[2].X, azalea.Warps[2].Z), w => w.TargetMap == "Azalea_GymEntrance");
         Assert.Contains(Overworld.WarpsAt(azalea.Warps[7].X, azalea.Warps[7].Z), w => w.TargetMap == "SlowpokeWell_Entrance");
         var hall = Johto.Area("ruins_of_alph")!.Warps[8];
-        Assert.Empty(Overworld.WarpsAt(hall.X, hall.Z));
+        Assert.All(Overworld.WarpsAt(hall.X, hall.Z), w => Assert.Equal("FLAG_ALPH_HALL_OPEN", w.OpenedBy));
         Assert.Null(MapNamed("RuinsOfAlph_NortheastChamber").GetWarpAt(6, 2));
         // ...and Ilex Forest beyond Azalea's gate house is open since J5's part b
         Assert.Equal("IlexForest", MapNamed("Azalea_IlexForestGate").GetWarpAt(1, 7)?.TargetMap);
@@ -188,6 +188,32 @@ public class JohtoTests
         // The chambers' trainers and Union Cave's battle by HeartGold's records
         Assert.Contains(MapNamed("UnionCave_1F").Everyone, n => n.Id == "johto_hiker_daniel");
         Assert.Contains(Overworld.Everyone, n => n.Id == "johto_psychic_m_nathan");
+    }
+
+    [Fact]
+    public void TheRuinsHallOpensWithAPanelAndHoldsTheUnown()
+    {
+        // Plan 20 · J5's leftovers: the hall's door on the grounds is shut until a chamber's panel is put back together,
+        // its stairs go down to the underground hall, and the hall is where Unown live, every slot of its table one
+        var grounds = Johto.Area("ruins_of_alph")!;
+        foreach (int index in new[] { 8, 9 })
+        {
+            var door = Assert.Single(Overworld.WarpsAt(grounds.Warps[index].X, grounds.Warps[index].Z));
+            Assert.Equal("RuinsOfAlph_HallEntrance", door.TargetMap);
+            Assert.Equal("FLAG_ALPH_HALL_OPEN", door.OpenedBy);
+        }
+        Assert.Equal("RuinsOfAlph_UndergroundHall", MapNamed("RuinsOfAlph_HallEntrance").GetWarpAt(6, 7)?.TargetMap);
+        Assert.True(Walked.Value.Keys.Any(m => m.Name == "RuinsOfAlph_UndergroundHall"), "nobody walks into the underground hall");
+        var hall = MapNamed("RuinsOfAlph_UndergroundHall");
+        Assert.Equal("johto/ruins_of_alph", hall.BgmTrackAt(18, 25));
+        var table = EncounterSlots.Grass(hall.Areas.Single(a => a.Key == "ruins_of_alph_underground_hall"), new EncounterMoment { Time = TimeOfDay.Day });
+        Assert.NotEmpty(table);
+        Assert.All(table, s => Assert.Equal("Unown", s.SpeciesName));
+        // The visitors and the assistants stand and talk; the suit of HeartGold's Arceus event is left out
+        Assert.Contains(hall.Everyone, n => n.Key == "d24r0205_gsoldman1");
+        Assert.DoesNotContain(hall.Everyone, n => n.Key == "d24r0205_suit");
+        // The hall entrance's east half belongs to HeartGold's Arceus event and stays shut
+        Assert.Null(MapNamed("RuinsOfAlph_HallEntrance").GetWarpAt(25, 30));
     }
 
     private static readonly string[] NorthOfAzalea = { "ilex_forest", "route_34", "goldenrod", "route_35", "national_park", "route_36", "route_37", "ecruteak" };

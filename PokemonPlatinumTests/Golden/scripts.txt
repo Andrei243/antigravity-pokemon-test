@@ -24602,10 +24602,13 @@ from the tile read at 6,6 of RuinsOfAlph_NortheastChamber
 way 0
   > A stone panel is set in the floor. It shows a Kabuto, broken into sixteen pieces that seem to slide.
   > Try to put the picture back together?
-  > The last piece slid home with a deep click. Somewhere under the Ruins, something rumbled.
+  > The last piece slid home with a deep click. The floor shuddered, and then it was gone from under your feet!
+  > You landed in a great hall under the Ruins. Its walls are carved with rows of strange shapes.
   ? Try to put the picture back together? = Yes
   * open AlphPuzzle kabuto solved
   * sound boulder
+  * warp RuinsOfAlph_UndergroundHall 26 4
+  + FLAG_ALPH_HALL_OPEN
   + FLAG_ALPH_KABUTO_PANEL_SOLVED
 way 1, from answer 1
   > The pieces lie where they were.
@@ -24615,10 +24618,13 @@ from the tile read at 6,6 of RuinsOfAlph_NorthwestChamber
 way 0
   > A stone panel is set in the floor. It shows a great bird, broken into sixteen pieces that seem to slide.
   > Try to put the picture back together?
-  > The last piece slid home with a deep click. Somewhere under the Ruins, something rumbled.
+  > The last piece slid home with a deep click. The floor shuddered, and then it was gone from under your feet!
+  > You landed in a great hall under the Ruins. Its walls are carved with rows of strange shapes.
   ? Try to put the picture back together? = Yes
   * open AlphPuzzle hooh solved
   * sound boulder
+  * warp RuinsOfAlph_UndergroundHall 4 4
+  + FLAG_ALPH_HALL_OPEN
   + FLAG_ALPH_HOOH_PANEL_SOLVED
 way 1, from answer 1
   > The pieces lie where they were.
@@ -24628,11 +24634,14 @@ from the tile read at 6,6 of RuinsOfAlph_SoutheastChamber
 way 0
   > A stone panel is set in the floor. It shows an Aerodactyl, broken into sixteen pieces that seem to slide.
   > Try to put the picture back together?
-  > The last piece slid home with a deep click. Somewhere under the Ruins, something rumbled.
+  > The last piece slid home with a deep click. The floor shuddered, and then it was gone from under your feet!
+  > You landed in a great hall under the Ruins. Its walls are carved with rows of strange shapes.
   ? Try to put the picture back together? = Yes
   * open AlphPuzzle aerodactyl solved
   * sound boulder
+  * warp RuinsOfAlph_UndergroundHall 26 42
   + FLAG_ALPH_AERODACTYL_PANEL_SOLVED
+  + FLAG_ALPH_HALL_OPEN
 way 1, from answer 1
   > The pieces lie where they were.
   ? Try to put the picture back together? = No
@@ -24641,10 +24650,13 @@ from the tile read at 6,6 of RuinsOfAlph_SouthwestChamber
 way 0
   > A stone panel is set in the floor. It shows an Omanyte, broken into sixteen pieces that seem to slide.
   > Try to put the picture back together?
-  > The last piece slid home with a deep click. Somewhere under the Ruins, something rumbled.
+  > The last piece slid home with a deep click. The floor shuddered, and then it was gone from under your feet!
+  > You landed in a great hall under the Ruins. Its walls are carved with rows of strange shapes.
   ? Try to put the picture back together? = Yes
   * open AlphPuzzle omanyte solved
   * sound boulder
+  * warp RuinsOfAlph_UndergroundHall 4 42
+  + FLAG_ALPH_HALL_OPEN
   + FLAG_ALPH_OMANYTE_PANEL_SOLVED
 way 1, from answer 1
   > The pieces lie where they were.

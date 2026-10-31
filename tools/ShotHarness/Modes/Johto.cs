@@ -98,6 +98,19 @@ partial class Harness
             engine.NewGameRegion = "Sinnoh";
             return;
         }
+        // JOHTO_FROM=leftovers shoots only plan 20 · J2, J5 and J8's leftovers (the cliff path and the Safari Zone, the
+        // rooms whose looks were left, the Ruins of Alph's hall)
+        if (Environment.GetEnvironmentVariable("JOHTO_FROM") == "leftovers")
+        {
+            engine.NewGameRegion = "Johto";
+            engine.StartNewGame();
+            game.State = GameState.Overworld;
+            game.SaveSlot = 1;
+            game.LocationSign.Hide();
+            JohtoLeftoverShots();
+            engine.NewGameRegion = "Sinnoh";
+            return;
+        }
         // JOHTO_FROM=partb shoots only plan 20 · J13, part b (Mt. Mortar's Tyrogue, Blackthorn's house of moves)
         if (Environment.GetEnvironmentVariable("JOHTO_FROM") == "partb")
         {
@@ -227,6 +240,9 @@ partial class Harness
         JohtoPartDShots();
         // And last plan 20 · J6: Apricorn trees, the Apricorn Box and Kurt's balls
         JohtoApricornShots();
+        // And last plan 20 · J2, J5 and J8's leftovers: the cliff path and the Safari Zone, the rooms whose looks were
+        // left, the Ruins of Alph's hall
+        JohtoLeftoverShots();
         engine.NewGameRegion = "Sinnoh";
     }
 }

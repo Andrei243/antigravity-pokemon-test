@@ -1,0 +1,92 @@
+{
+  "key": "ruins_of_alph_underground_hall",
+  "index": 315,
+  "name": "Ruins of Alph",
+  "matrix": 37,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Building3",
+  "dayMusic": "GS_D_UNKNOWN_ISEKI",
+  "nightMusic": "GS_D_UNKNOWN_ISEKI",
+  "encounters": "D24R0205",
+  "bike": false,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Unown", "level": 5 },
+    { "species": "Unown", "level": 5 },
+    { "species": "Unown", "level": 5 },
+    { "species": "Unown", "level": 5 },
+    { "species": "Unown", "level": 5 },
+    { "species": "Unown", "level": 5 },
+    { "species": "Unown", "level": 5 },
+    { "species": "Unown", "level": 5 },
+    { "species": "Unown", "level": 5 },
+    { "species": "Unown", "level": 5 },
+    { "species": "Unown", "level": 5 },
+    { "species": "Unown", "level": 5 }
+  ],
+  "landRate": 15,
+  "swarm": [
+    "Unown",
+    "Unown"
+  ],
+  "hoennSounds": [
+    "Unown",
+    "Unown"
+  ],
+  "sinnohSounds": [
+    "Unown",
+    "Unown"
+  ],
+  "warps": [
+    { "x": 18, "z": 24, "to": "ruins_of_alph_hall_entrance", "toWarp": 1 },
+    { "x": 18, "z": 23, "to": "ruins_of_alph_hall_entrance", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "d24r0205_gswoman1", "looks": "gswoman1", "movement": "3", "x": 23, "z": 24, "facing": 0, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_RUINS_OF_ALPH_TOURISTS", "script": "D24R0205_004+1" },
+    { "id": "d24r0205_gsbigman", "looks": "gsbigman", "movement": "2", "x": 4, "z": 14, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_RUINS_OF_ALPH_TOURISTS", "script": "D24R0205_003+1" },
+    { "id": "d24r0205_gsoldman1", "looks": "gsoldman1", "movement": "14", "x": 15, "z": 34, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_RUINS_OF_ALPH_TOURISTS", "script": "D24R0205_005+1" },
+    { "id": "d24r0205_gsassistantm", "looks": "gsassistantm", "movement": "14", "x": 20, "z": 3, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_RUINS_OF_ALPH_ASSISTANTS", "script": "0" },
+    { "id": "d24r0205_gsassistantm_2", "looks": "gsassistantm", "movement": "14", "x": 20, "z": 39, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_RUINS_OF_ALPH_ASSISTANTS", "script": "0" },
+    { "id": "d24r0205_gsassistantm_3", "looks": "gsassistantm", "movement": "14", "x": 10, "z": 21, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_RUINS_OF_ALPH_ASSISTANTS", "script": "0" },
+    { "id": "d24r0205_gsassistantm_4", "looks": "gsassistantm", "movement": "14", "x": 10, "z": 39, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_RUINS_OF_ALPH_ASSISTANTS", "script": "0" },
+    { "id": "d24r0205_suit", "looks": "suit", "movement": "0", "x": 14, "z": 24, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ALPH_MAIN_CHAMBER_ARCEUS_EVENT_PEOPLE", "script": "0" }
+  ],
+  "signs": [
+    { "x": 3, "z": 6, "type": 0, "script": "D24R0205_002+1" },
+    { "x": 7, "z": 6, "type": 0, "script": "D24R0205_002+1" },
+    { "x": 11, "z": 6, "type": 0, "script": "D24R0205_002+1" },
+    { "x": 15, "z": 6, "type": 0, "script": "D24R0205_002+1" },
+    { "x": 19, "z": 6, "type": 0, "script": "D24R0205_002+1" },
+    { "x": 23, "z": 6, "type": 0, "script": "D24R0205_002+1" },
+    { "x": 27, "z": 6, "type": 0, "script": "D24R0205_002+1" },
+    { "x": 27, "z": 15, "type": 0, "script": "D24R0205_002+1" },
+    { "x": 23, "z": 15, "type": 0, "script": "D24R0205_002+1" },
+    { "x": 3, "z": 15, "type": 0, "script": "D24R0205_002+1" },
+    { "x": 7, "z": 15, "type": 0, "script": "D24R0205_002+1" },
+    { "x": 27, "z": 24, "type": 0, "script": "D24R0205_002+1" },
+    { "x": 11, "z": 15, "type": 0, "script": "D24R0205_002+1" },
+    { "x": 15, "z": 15, "type": 0, "script": "D24R0205_002+1" },
+    { "x": 19, "z": 15, "type": 0, "script": "D24R0205_002+1" },
+    { "x": 3, "z": 24, "type": 0, "script": "D24R0205_002+1" },
+    { "x": 27, "z": 33, "type": 0, "script": "D24R0205_002+1" },
+    { "x": 23, "z": 33, "type": 0, "script": "D24R0205_002+1" },
+    { "x": 19, "z": 33, "type": 0, "script": "D24R0205_002+1" },
+    { "x": 15, "z": 33, "type": 0, "script": "D24R0205_002+1" },
+    { "x": 11, "z": 33, "type": 0, "script": "D24R0205_002+1" },
+    { "x": 7, "z": 33, "type": 0, "script": "D24R0205_002+1" },
+    { "x": 3, "z": 33, "type": 0, "script": "D24R0205_002+1" },
+    { "x": 3, "z": 42, "type": 0, "script": "D24R0205_002+1" },
+    { "x": 7, "z": 42, "type": 0, "script": "D24R0205_002+1" },
+    { "x": 11, "z": 42, "type": 0, "script": "D24R0205_002+1" },
+    { "x": 15, "z": 42, "type": 0, "script": "D24R0205_002+1" },
+    { "x": 19, "z": 42, "type": 0, "script": "D24R0205_002+1" },
+    { "x": 23, "z": 42, "type": 0, "script": "D24R0205_002+1" },
+    { "x": 27, "z": 42, "type": 0, "script": "D24R0205_002+1" }
+  ],
+  "triggers": []
+}

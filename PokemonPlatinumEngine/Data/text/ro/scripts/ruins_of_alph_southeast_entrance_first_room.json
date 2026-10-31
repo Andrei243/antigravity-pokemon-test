@@ -18,10 +18,24 @@
     },
     {
       "en": [
-        "The last piece slid home with a deep click. Somewhere under the Ruins, something rumbled."
+        "The last piece slid home with a deep click. The floor shuddered, and then it was gone from under your feet!"
       ],
       "text": [
+        ""
+      ],
+      "was": [
         "Ultima bucată a alunecat la locul ei cu un clic adânc. Undeva sub Ruine, ceva a bubuit."
+      ]
+    },
+    {
+      "en": [
+        "You landed in a great hall under the Ruins. Its walls are carved with rows of strange shapes."
+      ],
+      "text": [
+        ""
+      ],
+      "was": [
+        "Bucățile stau unde erau."
       ]
     },
     {
@@ -29,7 +43,10 @@
         "The pieces lie where they were."
       ],
       "text": [
-        "Bucățile stau unde erau."
+        ""
+      ],
+      "was": [
+        "Panoul arată un Aerodactyl, întreg din nou. Piatra din jur e caldă la atingere."
       ]
     },
     {
@@ -37,7 +54,7 @@
         "The panel shows an Aerodactyl, whole again. The stone around it is warm to the touch."
       ],
       "text": [
-        "Panoul arată un Aerodactyl, întreg din nou. Piatra din jur e caldă la atingere."
+        ""
       ]
     }
   ]

@@ -1,0 +1,46 @@
+{
+  // The Ruins of Alph's underground hall (plan 20 · J5's leftovers), HeartGold's great hall under the grounds: rows of
+  // carvings on its pillars, the Unown that live nowhere else (the area's own table, every slot an Unown of level 5),
+  // a few visitors and the research centre's assistants, who say nothing in HeartGold and a line each here. It is come
+  // to by falling through a chamber's floor once its panel is put back together, or down the stairs of the hall's
+  // entrance on the grounds. The suit HeartGold stands here for its Arceus event is left out
+  "area": "ruins_of_alph_underground_hall",
+  "bgmTrack": "johto/ruins_of_alph",
+  "people": {
+    "d24r0205_gswoman1": {
+      "name": "Tourist",
+      "dialog": [ "I came for the carvings and found these Pokémon floating between them. They look like the carvings come to life!" ]
+    },
+    "d24r0205_gsbigman": {
+      "name": "Tourist",
+      "dialog": [ "Every one of them is a different shape. I'm trying to see one of each, but I keep losing count." ]
+    },
+    "d24r0205_gsoldman1": {
+      "name": "Old man",
+      "dialog": [ "When I was young the Ruins were only stones in a field. Now there's a whole hall under them. Who'd have thought?" ]
+    },
+    "d24r0205_gsassistantm": {
+      "name": "Scientist",
+      "still": true,
+      "dialog": [ "We're copying out every carving on these pillars. There are more shapes than letters in any alphabet we know." ]
+    },
+    "d24r0205_gsassistantm_2": {
+      "name": "Scientist",
+      "still": true,
+      "dialog": [ "The Pokémon here are called Unown. They seem to gather wherever the carvings are thickest." ]
+    },
+    "d24r0205_gsassistantm_3": {
+      "name": "Scientist",
+      "still": true,
+      "dialog": [ "Each panel that was solved seems to have woken more of them. I wonder what solving all four would do." ]
+    },
+    "d24r0205_gsassistantm_4": {
+      "name": "Scientist",
+      "still": true,
+      "dialog": [ "Careful where you step. We've only just begun to map this place, and it may go deeper still." ]
+    }
+  },
+  "signs": {
+    "D24R0205_002+1": "Strange shapes are carved in rows down the pillar. They look a little like the Pokémon floating in the hall."
+  }
+}

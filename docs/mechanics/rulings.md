@@ -6932,3 +6932,32 @@ The user approved L9's default on 2026-10-26 (docs/plans/APPROVAL-levelling-and-
 | The photograph with Clair | Once her number is registered, she offers a photograph together, which goes into the photo album (`CameronPhoto`) | The same offer; the picture is the screenshot key's own of the field, written to the player's screenshots folder by the script command `photograph`. The photo album and Cameron's other photographs are not built |
 | The dome's stands and halls | The lobby's stairs lead up to the stands, its way down to four halls of the dome's history; three guides stand in the ways on and step aside by `FLAG_UNK_0EF`, `0F0` and `0F1`, which the game's own code sets | All six rooms are HeartGold's maps, their people in our own words, the medals, scrolls and pictures read as signs. What sets the three flags couldn't be read from the scripts, so here each first place won at the course desk sets the next (`common.AthlonDesk`): a hall a course. The guide in the way is hidden by the flag and a guide of ours stands aside where HeartGold moves her (the overlay's `npcs`) |
 | Left out | The dome's owner and his Poliwrath on the stands, Whitney's visits, the shoes', clothes', flag's, Pokégear's and ball's signs and the statue of a Trainer with every gold | The owner greets the player on the square and stands in the last hall; the signs and the statue wait for the bonuses that earn them (plan 15 · E8's "Left") |
+## The Ruins of Alph's hall, and what J2, J5 and J8 left (2026-10-31, plan 20 · J2, J5 and J8's leftovers)
+
+- *The hall*: HeartGold's hall entrance (`RuinsOfAlph_HallEntrance`, `D24R0211`) and underground hall
+  (`RuinsOfAlph_UndergroundHall`, `D24R0205`) are open. The hall is the only place the Unown live (its area's own table,
+  every slot an Unown of level 5, which the import already carried). Its door on the grounds (the grounds' warps 8 and 9,
+  on the two tiles in the middle of the grounds) waits for `FLAG_ALPH_HALL_OPEN`, a flag of ours that each chamber's
+  `Panel` script sets as its picture is put back together; the grounds' warps 11 to 14 on the same tiles, and the hall
+  entrance's east half, are HeartGold's Arceus event (the "Sinjoh" maps), which this game doesn't have, and stay shut.
+- *The fall*: in HeartGold a solved panel drops the player into a "hidden room" under the chamber (`D24R0203`, `0207`,
+  `0209`, `0210`), a ring of corridor with one trigger and no way out the event files show: what takes the player on from
+  there is HeartGold's script, which the pinned folders don't fetch. This game drops the player straight into the
+  underground hall (a corner of it for each chamber: the north-east chamber's at 26, 4, the north-west's at 4, 4, the
+  south-east's at 26, 42 and the south-west's at 4, 42), which is where HeartGold's fall leads in the end. The hidden
+  rooms are not opened.
+- *The people*: the three visitors and the four assistants of the hall stand and talk, a line each of ours (HeartGold's
+  assistants say nothing); the suit of the Arceus event is left out, as are the hall entrance's scientist and photographer
+  (both in its shut east half, the photographer the Pokégear's Cameron).
+- *Not built*: the chambers' second rooms behind their back walls (`D24R0212` to `0215`, each with four items). HeartGold
+  opens each wall on a condition its scripts hold (the Gold and Silver games' were a Pokémon or an item brought before
+  the wall), which the pinned folders don't carry; the walls stay shut until a session reads them.
+- *The Whirl Islands' lower floors are not opened*: the second basement's lower level, with the ladder to the third
+  basement (`D40R0106`) and the way into Lugia's cave (`D40R0107`), is come to from the upper level by flights of stairs
+  (rows 31, 35 and 39 of the matrix at x 30 and 31) whose height plates stand on their edge, which J1's decision 8 leaves
+  out of the chunk's file; between the plates the import keeps (21 above, 18, 12, 3 and 0 below) the stairs read as
+  cliffs, and nothing else in the islands reaches the lower level. Opening it wants an importer rule that lays such a
+  flight as a slope between the plates north and south of it, which touches every HeartGold chunk with such plates and
+  is left to a session of its own (with J11's Lugia, whose scene waits there anyway).
+- *The terrain lab's whirlpool*: the harness's `lab` map has a whirlpool of three tiles in its bay (`lab36`, `lab37`),
+  which J8 left for the session that shot `lab` again.

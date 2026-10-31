@@ -584,6 +584,8 @@ public static class RegionDatabase
                 "Route11_Route12Gate", "Diglett_Cave", "Route16_CyclingGate", "Route16_EastHouse", "Route18_CyclingGate",
                 // Plan 20 · J15, part j: Route 10's Pokémon Center and Power Plant, and Rock Tunnel's two floors
                 "Route10North_PokemonCenter_1F", "Route10North_PokemonCenter_B1F", "Route10_PowerPlant", "Rock_Tunnel_1F", "Rock_Tunnel_B1F",
+                // Plan 20 · J5's leftovers: the Ruins of Alph's hall
+                "RuinsOfAlph_HallEntrance", "RuinsOfAlph_UndergroundHall",
             }
         },
         new()
