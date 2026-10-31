@@ -276,6 +276,14 @@ public class SaveData
     public int SaveVersion { get; set; }
 
     /// <summary>
+    /// The build that wrote the save (plan 16 · T2): <see cref="Diagnostics.GameVersion.Shown"/>, <c>0.1.0</c> or
+    /// <c>0.0.0-dev</c>. Nothing reads it to decide anything (the versions above do that); it says, to a player or a
+    /// report, which release a save came from. Null in a save from before.
+    /// </summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public string? GameVersion { get; set; }
+
+    /// <summary>
     /// How many ids this game has given its Pokémon (plan 07 · O2): the count the next is made from
     /// (<see cref="Models.PokemonIds"/>). 0 in a save from before, whose ids are counted from nought as it loads.
     /// </summary>

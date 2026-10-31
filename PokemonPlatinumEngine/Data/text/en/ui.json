@@ -382,13 +382,14 @@
     "help": {
       "label": "Help",
       "value": "Open",
-      "help": "The type chart, the controls and a few notes for the road."
+      "help": "The type chart, the controls and a few notes for the road. This is version {version}."
     }
   },
 
   "title": {
     "press": "PRESS  {KEY:confirm}  OR  {KEY:menu}",
     "credit": "A fan-made project, not affiliated with Nintendo, Creatures or GAME FREAK.",
+    "version": "v{version}",
     "disclaimer": {
       "heading": "A fan-made remake",
       "owners": "This project is not affiliated with or endorsed by Nintendo, Creatures Inc. or GAME FREAK inc.",

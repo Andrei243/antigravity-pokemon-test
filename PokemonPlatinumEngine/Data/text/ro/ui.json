@@ -371,7 +371,7 @@
     "help": {
       "label": "Ajutor",
       "value": "Deschide",
-      "help": "Tabelul tipurilor, comenzile și câteva sfaturi de drum."
+      "help": "Tabelul tipurilor, comenzile și câteva sfaturi de drum. Aceasta este versiunea {version}."
     },
     "resetDefaults": {
       "label": "Revino la implicit",
@@ -389,6 +389,7 @@
   "title": {
     "press": "APASĂ  {KEY:confirm}  SAU  {KEY:menu}",
     "credit": "Un proiect făcut de fani, neafiliat cu Nintendo, Creatures sau GAME FREAK.",
+    "version": "v{version}",
     "disclaimer": {
       "heading": "O refacere făcută de fani",
       "owners": "Acest proiect nu este afiliat cu și nici susținut de Nintendo, Creatures Inc. sau GAME FREAK inc.",

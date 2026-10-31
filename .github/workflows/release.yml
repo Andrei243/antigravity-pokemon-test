@@ -1,0 +1,182 @@
+# A release (plan 16 · T2): a tag v<major>.<minor>.<patch>[-label] builds the game for Windows, Linux and macOS (Intel
+# and Apple silicon), each one executable with the .NET runtime and raylib inside it and the game's Data and Assets
+# beside it, zips each with the licence, the README, the third-party notices, docs/playing.md, the shipped mesh cache
+# and a manifest of the game's files (what `--verify` checks), and puts the four zips on a GitHub release of this
+# repository with the changelog's section for the version. Nothing else is uploaded anywhere.
+#
+# The version is the tag less its "v" (GameVersion.FromTag does the same, and GameVersionTests holds the cases); a
+# build made any other way calls itself 0.0.0-dev. The macOS builds are made on macOS, where the SDK signs the
+# executable ad hoc: an unsigned arm64 executable doesn't start at all. Nothing is signed or notarised with a
+# developer's certificate (docs/playing.md says what a player does about that).
+
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'The tag to build (v0.1.0); the release is a draft when run by hand'
+        required: true
+
+permissions:
+  contents: write
+
+env:
+  DOTNET_CLI_TELEMETRY_OPTOUT: 1
+  DOTNET_NOLOGO: 1
+
+jobs:
+  version:
+    runs-on: ubuntu-latest
+    outputs:
+      tag: ${{ steps.v.outputs.tag }}
+      version: ${{ steps.v.outputs.version }}
+    steps:
+      - id: v
+        shell: bash
+        run: |
+          tag="${{ github.event.inputs.tag || github.ref_name }}"
+          version="${tag#v}"
+          version="${version#V}"
+          # Three whole numbers, and perhaps a label: anything else is no release
+          if ! [[ "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?$ ]]; then
+            echo "::error::$tag is no version tag (v0.1.0, v0.2.0-beta.1)"
+            exit 1
+          fi
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
+  # The meshes a first start asks for, made once by the harness's `warm` mode and shipped in every zip
+  cache:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.tag || github.ref }}
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - name: Software rendering
+        run: sudo apt-get update && sudo apt-get install -y xvfb libgl1-mesa-dri libglu1-mesa
+      - name: Warm the mesh cache
+        shell: bash
+        env:
+          LIBGL_ALWAYS_SOFTWARE: '1'
+          GALLIUM_DRIVER: llvmpipe
+        run: tools/dev/shots.sh "$RUNNER_TEMP/warm" warm
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mesh-cache
+          path: ${{ runner.temp }}/warm/cache/models
+          retention-days: 1
+
+  build:
+    needs: [version, cache]
+    strategy:
+      fail-fast: true
+      matrix:
+        include:
+          # (Windows on Windows: only there does the SDK put the icon and the manifest into the executable)
+          - rid: win-x64
+            os: windows-latest
+          - rid: linux-x64
+            os: ubuntu-latest
+          - rid: osx-x64
+            os: macos-latest
+          - rid: osx-arm64
+            os: macos-latest
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.tag || github.ref }}
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Publish
+        shell: bash
+        run: |
+          dotnet publish PokemonPlatinumEngine -p:PublishProfile=${{ matrix.rid }} \
+            -p:Version=${{ needs.version.outputs.version }} -p:PublishDir="$RUNNER_TEMP/game/"
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: mesh-cache
+          path: ${{ runner.temp }}/game/cache/models
+
+      - name: Put the folder together
+        shell: bash
+        run: |
+          game="$RUNNER_TEMP/game"
+          for file in LICENSE README.md THIRD-PARTY-NOTICES.md CHANGELOG.md; do
+            [ -f "$file" ] && cp "$file" "$game/" || echo "::warning::$file is not in the repository"
+          done
+          mkdir -p "$game/docs"
+          cp docs/playing.md "$game/docs/playing.md"
+          # The list --verify reads, in sha256sum's own form, over the game's own data and pictures
+          ( cd "$game" && find Data Assets -type f | LC_ALL=C sort | while read -r f; do shasum -a 256 "$f"; done > manifest.sha256 )
+          echo "$(wc -l < "$game/manifest.sha256") files in the manifest"
+
+      - name: Check the build reads its own manifest
+        if: matrix.rid == 'linux-x64'
+        shell: bash
+        run: |
+          chmod +x "$RUNNER_TEMP/game/PokemonPlatinumEngine"
+          "$RUNNER_TEMP/game/PokemonPlatinumEngine" --verify
+          "$RUNNER_TEMP/game/PokemonPlatinumEngine" --help | head -n 1 | grep -F "${{ needs.version.outputs.version }}"
+
+      - name: Zip
+        shell: bash
+        run: |
+          name="pokemon-platinum-fan-remake-${{ needs.version.outputs.tag }}-${{ matrix.rid }}"
+          cd "$RUNNER_TEMP"
+          mv game "$name"
+          if command -v zip >/dev/null; then zip -r -q -y "$name.zip" "$name"; else 7z a -tzip -bd "$name.zip" "$name" >/dev/null; fi
+          echo "ZIP=$RUNNER_TEMP/$name.zip" >> "$GITHUB_ENV"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: zip-${{ matrix.rid }}
+          path: ${{ env.ZIP }}
+          retention-days: 7
+
+  release:
+    needs: [version, build]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.tag || github.ref }}
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: zip-*
+          merge-multiple: true
+          path: zips
+      - name: The changelog's section for this version
+        shell: bash
+        run: |
+          version="${{ needs.version.outputs.version }}"
+          # The lines under "## [<version>]" (or "## <version>") up to the next heading of that level
+          awk -v v="$version" '
+            /^## / { inside = (index($0, "[" v "]") || $2 == v) ; next }
+            inside { print }
+          ' CHANGELOG.md > notes.md
+          if [ ! -s notes.md ]; then
+            echo "::warning::CHANGELOG.md has no section for $version; the release says only that"
+            echo "No changelog section was written for $version." > notes.md
+          fi
+          cat notes.md
+      - name: Publish the release
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          tag="${{ needs.version.outputs.tag }}"
+          draft=""
+          [ "${{ github.event_name }}" = "workflow_dispatch" ] && draft="--draft"
+          prerelease=""
+          [[ "$tag" == *-* ]] && prerelease="--prerelease"
+          gh release create "$tag" zips/*.zip --title "$tag" --notes-file notes.md $draft $prerelease

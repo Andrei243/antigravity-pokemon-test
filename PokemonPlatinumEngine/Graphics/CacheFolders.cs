@@ -34,6 +34,21 @@ internal static class CacheFolders
         shared != null ? Path.Combine(shared, kind) : Path.Combine(baseDirectory, "cache", kind);
 
     /// <summary>
+    /// Where a build published for players keeps its caches (plan 16 · T2): it writes beside the saves
+    /// (<c>&lt;save folder&gt;/cache/models</c>, <c>/cache/sprites</c>), since the folder it is installed in may not be
+    /// writable (Program Files, a read-only <c>.app</c>), and reads the meshes it was shipped with beside the
+    /// executable (<c>cache/models</c>) where its own folder has none. A folder already written to is not read twice.
+    /// </summary>
+    public static (string Models, string Sprites, IReadOnlyList<string> ShippedModels) ForShippedBuild(string saveFolder, string baseDirectory)
+    {
+        string models = Of("models", null, saveFolder), sprites = Of("sprites", null, saveFolder);
+        string shipped = Of("models", null, baseDirectory);
+        bool same = string.Equals(Path.TrimEndingDirectorySeparator(Path.GetFullPath(models)), Path.TrimEndingDirectorySeparator(Path.GetFullPath(shipped)),
+            OperatingSystem.IsWindows() ? StringComparison.OrdinalIgnoreCase : StringComparison.Ordinal);
+        return (models, sprites, same ? Array.Empty<string>() : new[] { shipped });
+    }
+
+    /// <summary>
     /// Writes a file of a cache folder through a temporary file moved into place, so another process reading
     /// the same folder never finds it half written, then deletes the <paramref name="older"/> files when
     /// <paramref name="prune"/> says so. A folder that can't be written is no error: the file is made again

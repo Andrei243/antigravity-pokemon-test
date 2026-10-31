@@ -601,6 +601,12 @@ public sealed class TitleScreen
         }
     }
 
+    /// <summary>What the title's corner says of the build (plan 16 · T2; style guide, "Opening and title screen"): <c>v0.1.0</c>.</summary>
+    public static string VersionLine => Text.Of("title.version", ("version", Core.Diagnostics.GameVersion.Shown));
+
+    /// <summary>How far the version's right edge stands from the screen's.</summary>
+    public const float VersionMargin = 48;
+
     /// <summary>Draws the opening or the title into the current target (the virtual screen).</summary>
     internal void Draw(int sw, int sh, RenderContext context, WorldRenderer world)
     {
@@ -640,6 +646,9 @@ public sealed class TitleScreen
         string credit = Text.Of("title.credit");
         float cw = UiFonts.Measure(credit, 20, UiWeight.Bold);
         UiFonts.Draw(credit, (sw - cw) / 2f, sh - 44, 20, new Color(220, 214, 240, (int)(150 * logoAlpha)), UiWeight.Bold);
+        // The build's version in the corner on the same line (plan 16 · T2): the version alone, never the commit
+        string version = VersionLine;
+        UiFonts.Draw(version, sw - VersionMargin - UiFonts.Measure(version, 20, UiWeight.Bold), sh - 44, 20, new Color(220, 214, 240, (int)(150 * logoAlpha)), UiWeight.Bold);
 
         // Fades: up from black as Giratina appears, a flash as it lights up or the opening is skipped, out to black on leaving
         if (Phase == TitlePhase.Reveal)

@@ -56,6 +56,15 @@ public static class Program
         // writes in a user's own folder
         var paths = Settle(Locate(launch));
         SavePaths.Current = paths;
+        // A build published for players (plan 16 · T2) keeps the caches it writes beside the saves and reads the meshes
+        // shipped beside it; POKEMON_CACHE, a developer's, still wins
+        if (GameVersion.Shipped && CacheFolders.Shared == null)
+        {
+            var (models, sprites, shipped) = CacheFolders.ForShippedBuild(paths.Folder, AppContext.BaseDirectory);
+            SdfCache.Folder = models;
+            SdfCache.ShippedFolders = shipped;
+            PokemonSprites.CacheFolder = sprites;
+        }
         // The log is beside the saves unless --log names another place; a run begins with what it is and where it runs
         string log = launch.LogPath ?? paths.LogFile;
         if (!Log.Open(log)) Log.Say($"The log couldn't be opened at {log}: this run keeps none.", error: true);
