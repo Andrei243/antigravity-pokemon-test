@@ -14,7 +14,7 @@ using static PokemonPlatinumTests.Scenario;
 namespace PokemonPlatinumTests;
 
 /// <summary>
-/// The Gigantamax signatures, part a (plan 25 · YD7; style guide, "The Gigantamax signatures"): five G-Max Moves with
+/// The Gigantamax signatures, parts a and b (plan 25 · YD7; style guide, "The Gigantamax signatures"): ten G-Max Moves with
 /// set pieces of their own, held as Y14 holds its batches (each lands with its damage, is over by its cue's end, stays
 /// under <see cref="MoveFx.MaxQuads"/> with the Max Moves' shared beats at every frame from both sides, is gentle on
 /// the eyes, pure and its own), each with a sound of its own; and every Gigantamax growth's clouds in its own G-Max
@@ -26,6 +26,8 @@ public class GMaxSignatureTests
     private static readonly FxPlaces Places = new();
 
     private static readonly string[] PartA = { "G-Max Wildfire", "G-Max Volt Crash", "G-Max Terror", "G-Max Resonance", "G-Max Replenish" };
+    private static readonly string[] PartB = { "G-Max Chi Strike", "G-Max Gold Rush", "G-Max Cuddle", "G-Max Befuddle", "G-Max Depletion" };
+    private static readonly string[] Ten = PartA.Concat(PartB).ToArray();
 
     private static MoveData Move(string name) => MoveDatabase.Get(name) ?? throw new ArgumentException(name);
 
@@ -53,16 +55,28 @@ public class GMaxSignatureTests
         + "|" + string.Join(";", fx.Ribbons.Select(r => $"{r.Width:0.000}/{r.Points.Length}/{r.Color.R},{r.Color.G}")) + $"|{fx.Flash:0.000}|{fx.Shake:0.000}";
 
     [Fact]
-    public void PartAHasFiveSignaturesAndEachIsAGMaxMove()
+    public void TheTenSignaturesAreGMaxMovesAndNothingElseHasOne()
     {
-        Assert.Equal(PartA.OrderBy(n => n), MoveFx.GMaxSignatureMoves.OrderBy(n => n));
-        Assert.All(PartA, n => Assert.Equal(MoveKind.GMaxMove, Move(n).Kind));
+        Assert.Equal(Ten.OrderBy(n => n), MoveFx.GMaxSignatureMoves.OrderBy(n => n));
+        Assert.All(Ten, n => Assert.Equal(MoveKind.GMaxMove, Move(n).Kind));
+    }
+
+    [Fact]
+    public void ResonancesCurtainsStandUpAsFoldsNotAlongTheirLength()
+    {
+        // Part a's first curtains were ribbons along the curtain's line, which read as streaks across the trees: each
+        // curtain is upright folds now and nothing runs along its length (a thin seam there read as a streak too).
+        var cue = Cue("G-Max Resonance");
+        var fx = Draw(cue, 0.9f);
+        var folds = fx.Quads.Where(q => q.Shape == FxShape.Glow && q.Stretch >= 2.5f && q.Along.Y > 0.99f).ToList();
+        Assert.True(folds.Count >= 24, $"{folds.Count} upright folds");
+        Assert.DoesNotContain(fx.Ribbons, r => r.Points.Length >= 8);
     }
 
     [Fact]
     public void EverySignatureLandsWithItsDamageAndIsOverByItsCuesEnd()
     {
-        foreach (var name in PartA)
+        foreach (var name in Ten)
             foreach (var side in new[] { BattleSide.Player, BattleSide.Enemy })
             {
                 var fx = Draw(Cue(name, side), BattleAnimator.ImpactTime);
@@ -80,7 +94,7 @@ public class GMaxSignatureTests
     public void NoSignatureDrawsMoreThanTheCapFlashesTooHardShakesTooMuchOrRisesTooHigh()
     {
         var over = new List<string>();
-        foreach (var name in PartA)
+        foreach (var name in Ten)
             foreach (var side in new[] { BattleSide.Player, BattleSide.Enemy })
                 foreach (var cue in new[] { Cue(name, side, critical: true), Cue(name, side, onGuard: true) })
                 {
@@ -111,7 +125,7 @@ public class GMaxSignatureTests
     public void EverySignatureIsPureAndItsOwnNotItsTypesMaxMoveNorItsOldMark()
     {
         var seen = new Dictionary<string, string>();
-        foreach (var name in PartA)
+        foreach (var name in Ten)
         {
             var a = Cue(name);
             var b = Cue(name);
@@ -133,7 +147,7 @@ public class GMaxSignatureTests
     [Fact]
     public void EachSignatureIsHeardByItsOwnSoundAndTheRestByTheirTypes()
     {
-        foreach (var name in PartA)
+        foreach (var name in Ten)
         {
             string sound = SoundBank.GMaxSound(name);
             Assert.StartsWith("gmax_", sound);
@@ -142,7 +156,7 @@ public class GMaxSignatureTests
             Assert.True(SoundBank.IsSetPiece(sound));
             Assert.InRange(SoundBank.Get(sound)!.Duration, 1.0, 2.0);
         }
-        foreach (var name in MoveFx.GMaxMoves.Except(PartA))
+        foreach (var name in MoveFx.GMaxMoves.Except(Ten))
             Assert.Equal(SoundBank.MaxMoveSound(Move(name).Type), SoundBank.MoveSound(name, Move(name).Type));
         Assert.Equal("", SoundBank.GMaxSound("Max Flare"));
     }

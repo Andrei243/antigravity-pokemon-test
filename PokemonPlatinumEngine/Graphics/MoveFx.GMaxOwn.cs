@@ -6,23 +6,30 @@ using PokemonPlatinumEngine.Battle;
 
 namespace PokemonPlatinumEngine.Graphics;
 
-// The Gigantamax signatures, part a (plan 25 · YD7; style guide, "Dynamax, Max Moves and Terastallization", "The
-// Gigantamax signatures"): five G-Max Moves given set pieces of their own in place of their type's piece and their
-// mark (G-Max Wildfire, Volt Crash, Terror, Resonance and Replenish), and every Gigantamax growth's clouds in its own
+// The Gigantamax signatures (plan 25 · YD7; style guide, "Dynamax, Max Moves and Terastallization", "The
+// Gigantamax signatures"): ten G-Max Moves given set pieces of their own in place of their type's piece and their
+// mark (part a: G-Max Wildfire, Volt Crash, Terror, Resonance and Replenish; part b: Chi Strike, Gold Rush, Cuddle,
+// Befuddle and Depletion), and every Gigantamax growth's clouds in its own
 // G-Max Move's two colours. All of it our own. A signature lays over the Max Moves' shared beats (MaxCommon: the pulse,
 // the crossing, the landing at ImpactTime, the finisher's shatter and the red glow), is faded by MaxMoveTime with
 // SetPiece's envelope, and stays under MaxQuads with them at every age; pure in the cue's shown age and seed; no
 // flash over 0.35, no shake over 0.5; nothing large over 1.3 h above the target's feet.
 internal static partial class MoveFx
 {
-    /// <summary>The G-Max Moves with a set piece of their own (part a: five; part b adds five more).</summary>
+    /// <summary>The G-Max Moves with a set piece of their own (ten: part a's five and part b's).</summary>
     private static readonly Dictionary<string, FxRecipe> GMaxSignatures = new(StringComparer.OrdinalIgnoreCase)
     {
         ["G-Max Wildfire"] = GMaxWildfire,
         ["G-Max Volt Crash"] = GMaxVoltCrash,
         ["G-Max Terror"] = GMaxTerror,
         ["G-Max Resonance"] = GMaxResonance,
-        ["G-Max Replenish"] = GMaxReplenish
+        ["G-Max Replenish"] = GMaxReplenish,
+        // Part b
+        ["G-Max Chi Strike"] = GMaxChiStrike,
+        ["G-Max Gold Rush"] = GMaxGoldRush,
+        ["G-Max Cuddle"] = GMaxCuddle,
+        ["G-Max Befuddle"] = GMaxBefuddle,
+        ["G-Max Depletion"] = GMaxDepletion
     };
 
     /// <summary>The G-Max Moves with a set piece of their own (plan 25 · YD7).</summary>
@@ -214,22 +221,28 @@ internal static partial class MoveFx
         var green = Rgb(150, 240, 190);
         var blue = Rgb(150, 210, 255);
         var violet = Rgb(190, 160, 255);
-        // The curtains, unrolling out from over the target and waving
+        // The curtains: each eight upright folds along a waving line, opening out from over the target. A band along
+        // the line (part a's first look) read as a streak across the trees; an aurora hangs, so its folds stand up.
         float unroll = Fx.EaseOut(Math.Clamp((t - I) / 0.4f, 0f, 1f));
         Color[] colours = { green, blue, violet };
+        const int Folds = 8;
         for (int k = 0; k < 3; k++)
         {
-            var pts = new Vector3[12];
-            float y = h * (1.0f + 0.1f * k);
-            float span = (w + h * 1.6f) * unroll;
-            for (int i = 0; i < pts.Length; i++)
+            float span = (w + h * (1.2f + 0.25f * k)) * unroll;
+            float back = -h * (0.3f + 0.18f * k);
+            float foot = h * (0.75f + 0.12f * k);
+            for (int i = 0; i < Folds; i++)
             {
-                float u = i / (pts.Length - 1f) * 2f - 1f;
-                pts[i] = feet + new Vector3(u * span, y + h * 0.06f * MathF.Sin(u * 4f + t * 3f + k), -h * (0.25f + 0.15f * k) + h * 0.12f * MathF.Sin(u * 3f - t * 2f + k * 1.3f));
+                float u = (i + 0.5f) / Folds * 2f - 1f;
+                float sway = h * 0.07f * MathF.Sin(t * 2.2f + i * 1.3f + k * 2f);
+                var at = feet + new Vector3(u * span + sway, foot + h * 0.06f * MathF.Sin(u * 4f + t * 3f + k),
+                    back + h * 0.12f * MathF.Sin(u * 3f - t * 2f + k * 1.3f));
+                float beat = 0.7f + 0.3f * MathF.Sin(t * 4f + i * 2.1f + k);
+                // A soft fold standing three times as tall as wide, its foot on the curtain's waving line. No seam
+                // along the foot: a line of any width along the curtain read as a streak again.
+                float fw = Math.Max(h * 0.09f, span / Folds * 0.85f);
+                fx.Streak(FxShape.Glow, at + Vector3.UnitY * fw * 2.2f, Vector3.UnitY, fw, 3f, Fx.Fade(colours[k], e * beat), FxBlend.Alpha);
             }
-            // A wide, soft curtain of the colour and a bright seam along it (a thin band read as a streak of light, not an aurora)
-            fx.Ribbon(pts, h * 0.42f, Fx.Fade(colours[k], e * 0.32f), FxBlend.Alpha);
-            fx.Ribbon(pts, h * 0.1f, Fx.Fade(colours[k], e * 0.75f));
         }
         // Rings of sound rising round it
         for (int j = 0; j < 4; j++)
@@ -240,9 +253,9 @@ internal static partial class MoveFx
                 Fx.Fade(j % 2 == 0 ? green : blue, e * (1f - u) * 0.9f), rotation: j, depth: false);
         }
         // Snowflakes turning round it
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < 6; i++)
         {
-            float a = i * MathF.Tau / 8f + t * 1.8f;
+            float a = i * MathF.Tau / 6f + t * 1.8f;
             float r = w + h * 0.3f;
             var p = feet + new Vector3(MathF.Cos(a) * r, h * (0.3f + 0.25f * MathF.Sin(a * 3f + t)), MathF.Sin(a) * r * 0.6f);
             fx.Sprite(FxShape.Snowflake, p, h * 0.09f, Fx.Fade(i % 2 == 0 ? White : blue, e), FxBlend.Alpha, a + t * 2f, depth: MathF.Sin(a) < 0f);
@@ -321,5 +334,242 @@ internal static partial class MoveFx
                 fx.Sprite(FxShape.Seed, p, hu * 0.1f * k, Fx.Fade(Berries[i], back), FxBlend.Alpha, i, depth: MathF.Sin(a) < 0f);
             }
         }
+    }
+
+    // ------------------------------------------------------------------ part b
+
+    /// <summary>
+    /// G-Max Chi Strike (Machamp): four great fists of gold light drive in on the target from four sides at mid height,
+    /// 0.07 s apart, each trailing light and landing with a white-gold impact; at the fourth, a burst of gold sparks and
+    /// an upright ring round its middle; then five gold stars circle over its head. About 32 quads.
+    /// </summary>
+    private static void GMaxChiStrike(in FxCtx c, FxColors col, FxList fx)
+    {
+        float t = c.Age, h = c.ToSize, w = c.ToHalfWidth, e = SetPiece(t);
+        if (e <= 0f) return;
+        var mid = c.To;
+        int s = c.Seed;
+        var gold = Rgb(255, 210, 80);
+        var pale = Rgb(255, 250, 220);
+        float reach = w + h * 0.9f;
+        for (int j = 0; j < 4; j++)
+        {
+            // From the four diagonals, the front two drawn over the body and the back two behind it
+            float a = j * MathF.Tau / 4f + MathF.PI / 4f;
+            var dir = new Vector3(MathF.Cos(a), 0.25f * (j % 2 == 0 ? 1f : -0.6f), MathF.Sin(a) * 0.6f);
+            float t0 = I + 0.02f + 0.07f * j;
+            float k = Math.Clamp((t - t0) / 0.14f, 0f, 1f);
+            float fade = Fx.Envelope(t, t0 - 0.02f, t0, t0 + 0.32f, t0 + 0.55f);
+            if (fade <= 0f) continue;
+            bool behind = MathF.Sin(a) < 0f;
+            var at = mid + dir * (reach * (1f - Fx.EaseOut(k)) + w * 0.6f);
+            fx.Streak(FxShape.Glow, at + dir * h * 0.2f, dir, h * 0.12f, 2.5f, Fx.Fade(gold, fade * 0.6f), depth: behind);
+            fx.Sprite(FxShape.Fist, at, h * 0.22f, Fx.Fade(gold, fade), FxBlend.Alpha, a + MathF.PI, depth: behind);
+            fx.Sprite(FxShape.Fist, at, h * 0.15f, Fx.Fade(pale, fade * 0.45f), rotation: a + MathF.PI, depth: behind);
+            float hit = Fx.Envelope(t, t0 + 0.13f, t0 + 0.15f, t0 + 0.2f, t0 + 0.32f);
+            if (hit > 0f) fx.Sprite(FxShape.Impact, mid + dir * w * 0.6f, h * 0.35f * hit, Fx.Fade(pale, hit), rotation: a, depth: behind);
+        }
+        float last = I + 0.02f + 0.21f + 0.14f;
+        Fx.Burst(fx, s, t, mid, h, last, 0.6f, 10, FxShape.Spark, gold, pale, 0.07f, 1.1f, salt: 771);
+        // An upright ring of gold spreading round its middle, facing the camera's side
+        Fx.Shockwave(fx, t, mid, Vector3.UnitZ, last, 0.5f, h * 1.3f, Fx.Fade(gold, 0.9f));
+        // Five gold stars circling over its head: its blows strike true now
+        float crown = Fx.Envelope(t, last + 0.1f, last + 0.3f, 1.2f, 1.4f);
+        if (crown > 0f)
+            for (int i = 0; i < 5; i++)
+            {
+                float a = i * MathF.Tau / 5f + t * 3f;
+                var p = c.ToFeet + new Vector3(MathF.Cos(a) * (w * 0.7f + h * 0.15f), h * (1.0f + 0.08f * MathF.Sin(a * 2f + t * 4f)), MathF.Sin(a) * (w * 0.7f + h * 0.15f) * 0.5f);
+                fx.Sprite(FxShape.Star, p, h * 0.09f, Fx.Fade(i % 2 == 0 ? gold : pale, crown), rotation: t * 4f + i, depth: MathF.Sin(a) < 0f);
+            }
+    }
+
+    /// <summary>
+    /// G-Max Gold Rush (Meowth): eighteen gold coins rain out of the sky round the target, each spinning to its edge and
+    /// back, landing flat round its feet in a growing heap; glints wink on the heap and the ground glows gold. About 34 quads.
+    /// </summary>
+    private static void GMaxGoldRush(in FxCtx c, FxColors col, FxList fx)
+    {
+        float t = c.Age, h = c.ToSize, w = c.ToHalfWidth, e = SetPiece(t);
+        if (e <= 0f) return;
+        var feet = c.ToFeet;
+        int s = c.Seed;
+        var gold = Rgb(255, 200, 60);
+        var rim = Rgb(200, 140, 30);
+        var glint = Rgb(255, 250, 210);
+        fx.Flat(FxShape.Glow, feet + Vector3.UnitY * h * 0.02f, Vector3.UnitY, w + h * 1.0f, Fx.Fade(gold, e * 0.45f), FxBlend.Alpha);
+        for (int i = 0; i < 18; i++)
+        {
+            float t0 = I + 0.02f + 0.035f * i;
+            float k = (t - t0) / 0.4f;
+            if (k < 0f) continue;
+            float a = Fx.Rand(s, i, 781) * MathF.Tau;
+            float r = w * 0.6f + h * (0.3f + 0.9f * Fx.Rand(s, i, 782));
+            var ground = feet + new Vector3(MathF.Cos(a) * r, h * 0.03f, MathF.Sin(a) * r * 0.6f);
+            bool behind = MathF.Sin(a) < 0f;
+            if (k < 1f)
+            {
+                // Falling from 1.25 h on a slant, spinning to its edge and back
+                var p = ground + new Vector3(h * 0.25f * (1f - k), h * 1.2f * (1f - k * k), 0f);
+                float spin = Math.Max(0.2f, MathF.Abs(MathF.Cos(k * 9f + i)));
+                fx.Streak(FxShape.Dot, p, Vector3.UnitY, h * 0.1f * spin, 1f / spin, Fx.Fade(rim, e), FxBlend.Alpha, depth: behind);
+                fx.Streak(FxShape.Dot, p, Vector3.UnitY, h * 0.075f * spin, 1f / spin, Fx.Fade(gold, e), FxBlend.Alpha, depth: behind);
+            }
+            else
+            {
+                // Lying flat in the heap
+                fx.Flat(FxShape.Dot, ground, Vector3.UnitY, h * 0.11f, Fx.Fade(gold, e), FxBlend.Alpha, i);
+                if (i % 3 == 0)
+                {
+                    float wink = MathF.Max(0f, MathF.Sin((t - t0) * 7f + i));
+                    fx.Sprite(FxShape.Star, ground + Vector3.UnitY * h * 0.05f, h * 0.1f * wink, Fx.Fade(glint, e * wink), rotation: t * 2f);
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// G-Max Cuddle (Eevee): twelve pink hearts float in from round the stage and gather into a ring that hugs the target at
+    /// its middle, squeezing twice; then a great soft heart of pink light blooms over its body with sparkles round it, and
+    /// four little hearts pop up over its head as the hug lets go. About 28 quads.
+    /// </summary>
+    private static void GMaxCuddle(in FxCtx c, FxColors col, FxList fx)
+    {
+        float t = c.Age, h = c.ToSize, w = c.ToHalfWidth, e = SetPiece(t);
+        if (e <= 0f) return;
+        var feet = c.ToFeet;
+        int s = c.Seed;
+        var pink = Rgb(255, 150, 190);
+        var cream = Rgb(240, 214, 170);
+        var deep = Rgb(240, 100, 150);
+        float hugY = h * 0.5f;
+        float gather = Fx.EaseOut(Math.Clamp((t - I) / 0.35f, 0f, 1f));
+        // The hug's squeeze: twice between 0.7 and 1.0 s, letting go after 1.05 s
+        float squeeze = t > I + 0.35f && t < I + 0.7f ? 0.15f * MathF.Max(0f, MathF.Sin((t - I - 0.35f) / 0.35f * MathF.Tau * 2f)) : 0f;
+        float letGo = Fx.EaseOut(Math.Clamp((t - I - 0.7f) / 0.3f, 0f, 1f));
+        float ring = (w + h * 0.25f) * (1f - squeeze) * (1f + 0.4f * letGo);
+        float far = w + h * 1.6f;
+        for (int i = 0; i < 12; i++)
+        {
+            float a = i * MathF.Tau / 12f + 0.2f + (1f - gather) * 0.8f;
+            float r = far + (ring - far) * gather;
+            var p = feet + new Vector3(MathF.Cos(a) * r, hugY + h * 0.05f * MathF.Sin(t * 5f + i) + (1f - gather) * h * 0.3f * Fx.Signed(s, i, 791), MathF.Sin(a) * r * 0.6f);
+            fx.Sprite(FxShape.Heart, p, h * 0.12f, Fx.Fade(i % 3 == 0 ? cream : pink, e * (1f - 0.7f * letGo)), FxBlend.Alpha, 0.2f * MathF.Sin(t * 4f + i), depth: MathF.Sin(a) < 0f);
+        }
+        // The great soft heart blooming over its body, and sparkles round it
+        float bloom = Fx.Envelope(t, I + 0.55f, I + 0.75f, 1.15f, 1.38f);
+        if (bloom > 0f)
+        {
+            var at = feet + Vector3.UnitY * h * 0.55f + Vector3.UnitZ * (w * 0.3f);
+            fx.Sprite(FxShape.Glow, at, h * 0.6f * bloom, Fx.Fade(pink, bloom * 0.45f), FxBlend.Alpha);
+            fx.Sprite(FxShape.Heart, at, h * 0.38f * (0.85f + 0.15f * bloom), Fx.Fade(deep, bloom * 0.55f), FxBlend.Alpha);
+            for (int i = 0; i < 6; i++)
+            {
+                float a = i * MathF.Tau / 6f + t;
+                var p = at + new Vector3(MathF.Cos(a) * h * 0.45f, MathF.Sin(a) * h * 0.4f, 0f);
+                fx.Sprite(FxShape.Star, p, h * 0.06f * bloom, Fx.Fade(cream, bloom), rotation: t * 3f + i);
+            }
+        }
+        // Four little hearts popping up over its head as it lets go
+        for (int i = 0; i < 4; i++)
+        {
+            float k = Math.Clamp((t - I - 0.75f - 0.06f * i) / 0.45f, 0f, 1f);
+            if (k <= 0f) continue;
+            var p = feet + new Vector3((i - 1.5f) * h * 0.18f, h * (0.85f + 0.25f * Fx.EaseOut(k)), 0f);
+            fx.Sprite(FxShape.Heart, p, h * 0.07f * MathF.Sin(MathF.Min(1f, k * 2f) * MathF.PI * 0.5f), Fx.Fade(deep, e * (1f - k * k)), FxBlend.Alpha);
+        }
+    }
+
+    /// <summary>
+    /// G-Max Befuddle (Butterfree): a pair of great wings of violet light opens behind the target and beats twice; a falling
+    /// spiral of twenty-four glittering scales in the three colours of what it may bring (poison, paralysis, sleep) turns
+    /// round it; and, as they settle, a bubble, a spark and a Z pop over its head one after another. About 34 quads.
+    /// </summary>
+    private static void GMaxBefuddle(in FxCtx c, FxColors col, FxList fx)
+    {
+        float t = c.Age, h = c.ToSize, w = c.ToHalfWidth, e = SetPiece(t);
+        if (e <= 0f) return;
+        var feet = c.ToFeet;
+        var violet = Rgb(176, 120, 230);
+        var gold = Rgb(255, 214, 90);
+        Color[] statuses = { Rgb(190, 90, 220), Rgb(255, 220, 70), Rgb(170, 210, 255) };
+        // The wings: two great petals of light behind it, opening and beating twice
+        float open = Fx.EaseOut(Math.Clamp((t - I) / 0.25f, 0f, 1f));
+        float beat = 0.25f * MathF.Sin(Math.Max(0f, t - I - 0.25f) * MathF.Tau * 1.8f);
+        var back = feet + new Vector3(0f, h * 0.6f, -(w * 0.4f + h * 0.2f));
+        for (int side = -1; side <= 1; side += 2)
+        {
+            float tilt = side * (0.9f + beat) * open;
+            var at = back + new Vector3(side * h * 0.35f * open, h * 0.05f, 0f);
+            fx.Sprite(FxShape.Petal, at, h * 0.5f * open, Fx.Fade(gold, e * 0.5f), FxBlend.Alpha, tilt, depth: true);
+            fx.Sprite(FxShape.Petal, at, h * 0.42f * open, Fx.Fade(violet, e * 0.75f), FxBlend.Alpha, tilt, depth: true);
+        }
+        // The scales falling in a spiral round it
+        for (int i = 0; i < 24; i++)
+        {
+            float u = ((t - I) * 0.8f + i / 24f) % 1f;
+            if (t < I) break;
+            float a = i * 2.39996f + t * 2.4f;
+            float r = (w + h * 0.35f) * (1.1f - 0.4f * u);
+            var p = feet + new Vector3(MathF.Cos(a) * r, h * (1.15f - 1.05f * u), MathF.Sin(a) * r * 0.6f);
+            fx.Sprite(FxShape.Spore, p, h * 0.06f, Fx.Fade(statuses[i % 3], e * MathF.Sin(u * MathF.PI)), rotation: a, depth: MathF.Sin(a) < 0f);
+        }
+        // A bubble, a spark and a Z popping over its head one after another
+        FxShape[] signs = { FxShape.Bubble, FxShape.Spark, FxShape.Zzz };
+        for (int j = 0; j < 3; j++)
+        {
+            float k = Fx.Envelope(t, I + 0.55f + 0.12f * j, I + 0.65f + 0.12f * j, 1.15f, 1.35f);
+            if (k <= 0f) continue;
+            var p = feet + new Vector3((j - 1) * h * 0.28f, h * (0.95f + 0.06f * (j % 2)), w * 0.2f);
+            fx.Sprite(signs[j], p, h * 0.11f * k, Fx.Fade(statuses[j], k), FxBlend.Alpha);
+        }
+    }
+
+    /// <summary>
+    /// G-Max Depletion (Duraludon): a tower of hex panels of steel-blue light stands behind the target, two columns of
+    /// six, lit at the impact and going dark one by one from the top down as a building's windows go out; motes of cyan
+    /// are drawn up out of the target, fading as they rise; and eight hex plates round its feet dim from cyan to dark
+    /// steel. About 34 quads.
+    /// </summary>
+    private static void GMaxDepletion(in FxCtx c, FxColors col, FxList fx)
+    {
+        float t = c.Age, h = c.ToSize, w = c.ToHalfWidth, e = SetPiece(t);
+        if (e <= 0f) return;
+        var feet = c.ToFeet;
+        int s = c.Seed;
+        var steel = Rgb(90, 130, 190);
+        var cyan = Rgb(160, 230, 255);
+        var dark = Rgb(40, 54, 80);
+        // The tower behind it: two columns of six panels, going out from the top down after 0.5 s
+        var back = feet + new Vector3(0f, 0f, -(w * 0.5f + h * 0.25f));
+        float panel = h * 0.13f;
+        for (int row = 0; row < 6; row++)
+        {
+            float outAt = I + 0.25f + 0.09f * (5 - row);
+            float lit = 1f - Math.Clamp((t - outAt) / 0.08f, 0f, 1f);
+            float rise = Fx.EaseOut(Math.Clamp((t - I - 0.02f * row) / 0.15f, 0f, 1f));
+            for (int colm = 0; colm < 2; colm++)
+            {
+                var p = back + new Vector3((colm - 0.5f) * panel * 1.9f, h * 0.12f + row * panel * 1.85f * rise, 0f);
+                fx.Sprite(FxShape.Hex, p, panel, Fx.Fade(Fx.Mix(dark, cyan, lit), e * 0.9f), FxBlend.Alpha, 0f, depth: true);
+            }
+        }
+        // Motes of cyan drawn up out of it
+        for (int i = 0; i < 10; i++)
+        {
+            float u = ((t - I) * 1.2f + Fx.Rand(s, i, 801)) % 1f;
+            if (t < I) break;
+            var p = c.To + new Vector3(Fx.Signed(s, i, 802) * w * 0.8f, h * 0.9f * u, Fx.Signed(s, i, 803) * h * 0.2f);
+            fx.Sprite(FxShape.Dot, p, h * 0.045f * (1f - u * 0.5f), Fx.Fade(cyan, e * (1f - u)));
+        }
+        // Eight hex plates lying round its feet, dimming from cyan to dark steel
+        float dim = Math.Clamp((t - I - 0.3f) / 0.6f, 0f, 1f);
+        for (int i = 0; i < 8; i++)
+        {
+            var at = AroundFeet(c, i, 8, w + h * 0.45f, 0.2f);
+            float flicker = dim > 0f && dim < 1f ? 0.7f + 0.3f * MathF.Sin(t * 30f + i * 2f) : 1f;
+            fx.Flat(FxShape.Hex, at + Vector3.UnitY * h * 0.03f, Vector3.UnitY, h * 0.16f, Fx.Fade(Fx.Mix(cyan, steel, dim), e * flicker), FxBlend.Alpha, i * 0.3f);
+        }
+        fx.Flat(FxShape.Glow, feet + Vector3.UnitY * h * 0.02f, Vector3.UnitY, w + h * 0.7f, Fx.Fade(Fx.Mix(cyan, dark, dim), e * 0.4f), FxBlend.Alpha);
     }
 }
