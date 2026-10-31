@@ -1,0 +1,10 @@
+{
+  // The Underground Ruins' hall of the moon (plan 22 · U10, part b), Black 2's, through the ruins' door while the sun is down; our words.
+  // Its stone plaques are read (3 to 6); the way back (the area's trigger 0, 14 to 16, 60) leads to the ruins' door
+  // (underground_ruins_3.txt). Black 2's puzzle of the plaques' answers is not built: the ruins' switch opens the chambers
+  "area": "underground_ruins_3",
+  "bgmTrack": "johto/ruins_of_alph",
+  "battleArena": "Cave",
+  "triggers": [ { "trigger": 0, "script": "BackToTheDoor" } ],
+  "read": { "3": "PlaqueName", "4": "PlaqueHint", "5": "PlaqueWorld", "6": "PlaqueGuardians" }
+}

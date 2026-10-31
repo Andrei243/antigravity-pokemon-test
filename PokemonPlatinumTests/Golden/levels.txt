@@ -293,6 +293,22 @@ super rod 15-35
 === cinnabar_island_gym
 Cinnabar Island
 trainers 7, 34-41: kanto_burglar_dusty 37, kanto_burglar_quinn 36, kanto_burglar_ramon 41, kanto_super_nerd_avery 34, kanto_super_nerd_derek 41, kanto_super_nerd_erik 36, kanto_super_nerd_zac 37
+=== clay_tunnel
+Clay Tunnel
+grass 54-57
+trainers 2, 61: unova_hiker_teppei 61, unova_worker_morgann 61
+=== clay_tunnel_2
+Clay Tunnel
+grass 54-57
+surf 45-60
+super rod 50-70
+trainers 3, 60-61: unova_hiker_manuel 61, unova_worker_herman 61, unova_worker_paul 60
+=== clay_tunnel_3
+Clay Tunnel
+grass 54-57
+surf 45-60
+super rod 50-70
+trainers 4, 60-62: unova_pkmn_ranger_katie 62, unova_pkmn_ranger_maxwell 62, unova_worker_brand 60, unova_worker_leo 60
 === cliff_cave
 Cliff Cave
 grass 18-23
@@ -632,6 +648,9 @@ surf 20-40
 old rod 3-15
 good rod 10-25
 super rod 20-55
+=== guidance_chamber
+Guidance Chamber
+grass 27-30
 === hoenn_safari_zone_north
 Safari Zone
 grass 27-31
@@ -701,6 +720,9 @@ grass 22-24
 === ice_path_b3f
 Ice Path
 grass 22-24
+=== iceberg_chamber
+Iceberg Chamber
+grass 54-57
 === ilex_forest
 Ilex Forest
 grass 5-6
@@ -708,6 +730,9 @@ surf 5-20
 old rod 10
 good rod 20
 super rod 40
+=== iron_chamber
+Iron Chamber
+grass 54-57
 === iron_island
 Iron Island
 surf 20-40
@@ -957,6 +982,10 @@ grass 20-24
 Mistralton Cave
 grass 27-30
 trainers 2, 32: unova_hiker_jebediah 32, unova_hiker_shelby 32
+=== mistralton_cave_2
+Mistralton Cave
+grass 27-30
+trainers 2, 33: unova_ace_trainer_belle 33, unova_ace_trainer_geoff 33
 === mistralton_city_gym
 Mistralton City
 trainers 5, 36-37: unova_pilot_chase 36, unova_pilot_elron 36, unova_pilot_ewing 37, unova_pilot_flynn 37, unova_pilot_winslow 37
@@ -1446,6 +1475,9 @@ grass 31-35
 === reversal_mountain_7
 Reversal Mountain
 grass 31-35
+=== rock_peak_chamber
+Rock Peak Chamber
+grass 54-57
 === rock_tunnel_1f
 Rock Tunnel
 grass 13-17
@@ -2980,6 +3012,15 @@ trainers 6, 38-40: unova_ace_trainer_summer 40, unova_swimmer_f_arissa 39, unova
 Undella Town
 surf 25-40
 super rod 40-70
+=== underground_ruins
+Underground Ruins
+grass 54-57
+=== underground_ruins_2
+Underground Ruins
+grass 54-57
+=== underground_ruins_3
+Underground Ruins
+grass 54-57
 === underwater_route_124
 Underwater
 surf 20-35

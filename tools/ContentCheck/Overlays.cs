@@ -186,8 +186,9 @@ public static class Overlays
             TrainerLines(found, file, name, lines.DialogueBefore, lines.DialogueAfter, person.Name, null, null, own ?? named);
         }
 
+        // (a hidden thing is held back by its script's number: plan 22 · U10, part b)
         foreach (string held in overlay.HeldBack ?? new())
-            if (!objects.ContainsKey(held)) Add(Kind.Person, $"heldBack.{held}", $"nothing in areas/{key}.json is called '{held}'{Nearest(held)}");
+            if (!objects.ContainsKey(held) && !area.Signs.Any(s => s.Type == AreaSign.HiddenItem && s.Script == held)) Add(Kind.Person, $"heldBack.{held}", $"nothing in areas/{key}.json is called '{held}'{Nearest(held)}");
 
         // ---- signs, and what is read
 

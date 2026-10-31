@@ -1,0 +1,13 @@
+{
+  // The Iron Chamber (plan 22 · U10, part b), behind the Underground Ruins' door once its switch has turned it there, Black 2's; our
+  // words. Registeel (0) stands at its head as a statue until spoken to, level 65; caught or beaten it is gone for good
+  // (FLAG_UNOVA_FOUGHT_REGISTEEL), run from, it is back the next time (iron_chamber.txt). The way back (trigger 0) leads to the ruins' door
+  "area": "iron_chamber",
+  "bgmTrack": "johto/ruins_of_alph",
+  "battleArena": "Cave",
+  "triggers": [ { "trigger": 0, "script": "BackToTheDoor" } ],
+  "read": { "4": "Plaque", "5": "Inscription" },
+  "people": {
+    "0": { "name": "Registeel", "npcType": "Pokemon", "species": "Registeel", "hiddenBy": "FLAG_UNOVA_FOUGHT_REGISTEEL", "script": "Registeel", "still": true }
+  }
+}

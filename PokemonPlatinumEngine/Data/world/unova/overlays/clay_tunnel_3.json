@@ -1,0 +1,37 @@
+{
+  // Clay Tunnel's third floor (plan 22 · U10, part b), Black 2's, our words: the long works under the hills, with the way into
+  // the Underground Ruins (warp 3) and the way on to Twist Mountain (warps 4, 7, 8), which stays shut until the old roads round
+  // Icirrus City are open. Mining carts: the workers by them ride the player up to the first floor (8, 13) or across the floor
+  // (9 and 12, 10 and 11, each to the other's end). Black 2 keeps one worker at each cart and moves them with it; ours stay put
+  "area": "clay_tunnel_3",
+  "bgmTrack": "unova/seaside_cave",
+  "battleArena": "Cave",
+  "holes": [
+    { "x": 16, "z": 47, "width": 2, "depth": 2, "filledBy": "FLAG_UNOVA_CLAY_TUNNEL_3_HOLE_1" },
+    { "x": 42, "z": 87, "width": 2, "depth": 2, "filledBy": "FLAG_UNOVA_CLAY_TUNNEL_3_HOLE_2" }
+  ],
+  "pits": [
+    { "x": 16, "z": 47, "script": "FillHole1" },
+    { "x": 17, "z": 47, "script": "FillHole1" },
+    { "x": 16, "z": 48, "script": "FillHole1" },
+    { "x": 17, "z": 48, "script": "FillHole1" },
+    { "x": 42, "z": 87, "script": "FillHole2" },
+    { "x": 43, "z": 87, "script": "FillHole2" },
+    { "x": 42, "z": 88, "script": "FillHole2" },
+    { "x": 43, "z": 88, "script": "FillHole2" }
+  ],
+  // (the Big Nugget hidden at 23, 41 is an item this game's data hasn't: held back by its script's number)
+  "heldBack": [ "8121" ],
+  "people": {
+    "0": { "name": "Maxwell", "trainer": { "dialogueBefore": "Rangers go where the Pokémon need us, even underground!", "dialogueAfter": "You'd make a fine Ranger yourself." } },
+    "1": { "name": "Leo", "trainer": { "dialogueBefore": "The rock down here is the hardest in Unova. So are my Pokémon!", "dialogueAfter": "Harder than rock, you are." } },
+    "2": { "name": "Brand", "trainer": { "dialogueBefore": "Break time! And by break, I mean battle!", "dialogueAfter": "Back to work, I suppose." } },
+    "3": { "name": "Katie", "trainer": { "dialogueBefore": "I'm checking the tunnel for lost Pokémon. Found a Trainer instead!", "dialogueAfter": "Everyone here is safe and sound. Even me, just about." } },
+    "8": { "name": "Worker", "npcType": "worker", "script": "CartUpWest", "still": true, "hiddenBy": "" },
+    "13": { "name": "Worker", "npcType": "worker", "script": "CartUpEast", "still": true, "hiddenBy": "" },
+    "9": { "name": "Worker", "npcType": "worker", "script": "CartAcrossSouthEast", "still": true, "hiddenBy": "" },
+    "12": { "name": "Worker", "npcType": "worker", "script": "CartAcrossMiddle", "still": true, "hiddenBy": "" },
+    "10": { "name": "Worker", "npcType": "worker", "script": "CartAcrossSouth", "still": true, "hiddenBy": "" },
+    "11": { "name": "Worker", "npcType": "worker", "script": "CartAcrossNorth", "still": true, "hiddenBy": "" }
+  }
+}

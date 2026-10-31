@@ -9091,6 +9091,195 @@ way 0
 way 1, from answer 1
   Researcher> No? A pity. Science waits for nobody.
   ? I've been studying a move that could do anything at all! Shall I teach Metronome to one of your Pokémon? = No
+=== clay_tunnel.CartToSecond
+from Worker at 28,38 of ClayTunnel_1
+way 0
+  Worker> You there! Fancy a ride in the mining cart?
+  Worker> Hop in and hold on tight!
+  ? You there! Fancy a ride in the mining cart? = Yes
+  * warp ClayTunnel_2 27 14
+way 1, from answer 1
+  Worker> Whenever you like, just come and ask me.
+  ? You there! Fancy a ride in the mining cart? = No
+=== clay_tunnel.CartToThirdEast
+from Worker at 25,14 of ClayTunnel_1
+way 0
+  Worker> You there! Fancy a ride in the mining cart?
+  Worker> Hop in and hold on tight!
+  ? You there! Fancy a ride in the mining cart? = Yes
+  * warp ClayTunnel_3 56 84
+way 1, from answer 1
+  Worker> Whenever you like, just come and ask me.
+  ? You there! Fancy a ride in the mining cart? = No
+=== clay_tunnel.CartToThirdWest
+from Worker at 16,6 of ClayTunnel_1
+way 0
+  Worker> You there! Fancy a ride in the mining cart?
+  Worker> Hop in and hold on tight!
+  ? You there! Fancy a ride in the mining cart? = Yes
+  * warp ClayTunnel_3 19 35
+way 1, from answer 1
+  Worker> Whenever you like, just come and ask me.
+  ? You there! Fancy a ride in the mining cart? = No
+=== clay_tunnel.Diggers
+from Worker at 5,14 of ClayTunnel_1
+way -
+  Worker> Phew! We've dug and dug at this heap all week, and it won't budge... Hang on. Is one of your Pokémon good at Rock Smash?
+  Worker> No? Ah well. We'll keep at it with our picks, then...
+=== clay_tunnel.Digging
+from Worker at 4,13 of ClayTunnel_1
+from Worker at 4,15 of ClayTunnel_1
+way -
+  Worker> Chip, chip, chip! Chip, chip, chip! This heap is tougher than it looks!
+=== clay_tunnel.DugRocks
+from Rocks at 1,13 of ClayTunnel_1
+from Rocks at 1,14 of ClayTunnel_1
+from Rocks at 1,15 of ClayTunnel_1
+from Rocks at 2,13 of ClayTunnel_1
+from Rocks at 2,14 of ClayTunnel_1
+from Rocks at 2,15 of ClayTunnel_1
+from Rocks at 3,13 of ClayTunnel_1
+from Rocks at 3,14 of ClayTunnel_1
+from Rocks at 3,15 of ClayTunnel_1
+from Rocks at 4,14 of ClayTunnel_1
+way -
+  > A heap of broken rock fills the way.
+=== clay_tunnel.FillHole1
+from the pit at 22,12 of ClayTunnel_1
+from the pit at 22,13 of ClayTunnel_1
+from the pit at 23,12 of ClayTunnel_1
+from the pit at 23,13 of ClayTunnel_1
+way -
+  > The boulder dropped into the hole and filled it in! The way across is open.
+  * sound ledge
+  + FLAG_UNOVA_CLAY_TUNNEL_HOLE_1
+=== clay_tunnel.FillHole2
+from the pit at 17,26 of ClayTunnel_1
+from the pit at 17,27 of ClayTunnel_1
+from the pit at 18,26 of ClayTunnel_1
+from the pit at 18,27 of ClayTunnel_1
+way -
+  > The boulder dropped into the hole and filled it in! The way across is open.
+  * sound ledge
+  + FLAG_UNOVA_CLAY_TUNNEL_HOLE_2
+=== clay_tunnel_2.CartToFirst
+from Worker at 28,14 of ClayTunnel_2
+way 0
+  Worker> You there! Fancy a ride in the mining cart?
+  Worker> Hop in and hold on tight!
+  ? You there! Fancy a ride in the mining cart? = Yes
+  * warp ClayTunnel_1 27 38
+way 1, from answer 1
+  Worker> Whenever you like, just come and ask me.
+  ? You there! Fancy a ride in the mining cart? = No
+=== clay_tunnel_2.DugRocks
+from Rocks at 23,45 of ClayTunnel_2
+from Rocks at 23,46 of ClayTunnel_2
+from Rocks at 23,47 of ClayTunnel_2
+from Rocks at 24,45 of ClayTunnel_2
+from Rocks at 24,46 of ClayTunnel_2
+from Rocks at 25,46 of ClayTunnel_2
+from Rocks at 25,47 of ClayTunnel_2
+from Rocks at 26,45 of ClayTunnel_2
+from Rocks at 26,47 of ClayTunnel_2
+way -
+  > A heap of broken rock fills the way.
+=== clay_tunnel_2.FillHole1
+from the pit at 21,21 of ClayTunnel_2
+from the pit at 21,22 of ClayTunnel_2
+from the pit at 22,21 of ClayTunnel_2
+from the pit at 22,22 of ClayTunnel_2
+way -
+  > The boulder dropped into the hole and filled it in! The way across is open.
+  * sound ledge
+  + FLAG_UNOVA_CLAY_TUNNEL_2_HOLE_1
+=== clay_tunnel_2.FillHole2
+from the pit at 7,52 of ClayTunnel_2
+from the pit at 7,53 of ClayTunnel_2
+from the pit at 8,52 of ClayTunnel_2
+from the pit at 8,53 of ClayTunnel_2
+way -
+  > The boulder dropped into the hole and filled it in! The way across is open.
+  * sound ledge
+  + FLAG_UNOVA_CLAY_TUNNEL_2_HOLE_2
+=== clay_tunnel_3.CartAcrossMiddle
+from Worker at 27,73 of ClayTunnel_3
+way 0
+  Worker> You there! Fancy a ride in the mining cart?
+  Worker> Hop in and hold on tight!
+  ? You there! Fancy a ride in the mining cart? = Yes
+  * warp ClayTunnel_3 58 90
+way 1, from answer 1
+  Worker> Whenever you like, just come and ask me.
+  ? You there! Fancy a ride in the mining cart? = No
+=== clay_tunnel_3.CartAcrossNorth
+from Worker at 27,48 of ClayTunnel_3
+way 0
+  Worker> You there! Fancy a ride in the mining cart?
+  Worker> Hop in and hold on tight!
+  ? You there! Fancy a ride in the mining cart? = Yes
+  * warp ClayTunnel_3 47 88
+way 1, from answer 1
+  Worker> Whenever you like, just come and ask me.
+  ? You there! Fancy a ride in the mining cart? = No
+=== clay_tunnel_3.CartAcrossSouth
+from Worker at 47,87 of ClayTunnel_3
+way 0
+  Worker> You there! Fancy a ride in the mining cart?
+  Worker> Hop in and hold on tight!
+  ? You there! Fancy a ride in the mining cart? = Yes
+  * warp ClayTunnel_3 26 48
+way 1, from answer 1
+  Worker> Whenever you like, just come and ask me.
+  ? You there! Fancy a ride in the mining cart? = No
+=== clay_tunnel_3.CartAcrossSouthEast
+from Worker at 59,90 of ClayTunnel_3
+way 0
+  Worker> You there! Fancy a ride in the mining cart?
+  Worker> Hop in and hold on tight!
+  ? You there! Fancy a ride in the mining cart? = Yes
+  * warp ClayTunnel_3 26 73
+way 1, from answer 1
+  Worker> Whenever you like, just come and ask me.
+  ? You there! Fancy a ride in the mining cart? = No
+=== clay_tunnel_3.CartUpEast
+from Worker at 56,83 of ClayTunnel_3
+way 0
+  Worker> You there! Fancy a ride in the mining cart?
+  Worker> Hop in and hold on tight!
+  ? You there! Fancy a ride in the mining cart? = Yes
+  * warp ClayTunnel_1 24 14
+way 1, from answer 1
+  Worker> Whenever you like, just come and ask me.
+  ? You there! Fancy a ride in the mining cart? = No
+=== clay_tunnel_3.CartUpWest
+from Worker at 19,34 of ClayTunnel_3
+way 0
+  Worker> You there! Fancy a ride in the mining cart?
+  Worker> Hop in and hold on tight!
+  ? You there! Fancy a ride in the mining cart? = Yes
+  * warp ClayTunnel_1 16 7
+way 1, from answer 1
+  Worker> Whenever you like, just come and ask me.
+  ? You there! Fancy a ride in the mining cart? = No
+=== clay_tunnel_3.FillHole1
+from the pit at 16,47 of ClayTunnel_3
+from the pit at 16,48 of ClayTunnel_3
+from the pit at 17,47 of ClayTunnel_3
+from the pit at 17,48 of ClayTunnel_3
+way -
+  > The boulder dropped into the hole and filled it in! The way across is open.
+  * sound ledge
+  + FLAG_UNOVA_CLAY_TUNNEL_3_HOLE_1
+=== clay_tunnel_3.FillHole2
+from the pit at 42,87 of ClayTunnel_3
+from the pit at 42,88 of ClayTunnel_3
+from the pit at 43,87 of ClayTunnel_3
+from the pit at 43,88 of ClayTunnel_3
+way -
+  > The boulder dropped into the hole and filled it in! The way across is open.
+  * sound ledge
+  + FLAG_UNOVA_CLAY_TUNNEL_3_HOLE_2
 === cliff_edge_gate.Board
 from the tile read at 37,19 of CliffEdgeGate
 from the tile read at 38,19 of CliffEdgeGate
@@ -13047,6 +13236,10 @@ way -
   = VAR_UNOVA_HOUSE 0 -> 1
   = VAR_UNOVA_OUTLOOK 0 -> 1
   = VAR_UNOVA_ROUTE_19 0 -> 1
+=== common.UnovaRuinsWayBack
+from a trainer with lines of their own
+way -
+  * warp UndergroundRuins 15 3
 === common.UnovaVirbank
 from a trainer with lines of their own
 way -
@@ -16081,6 +16274,28 @@ way -
 from Steven at 7,8 of GraniteCave_StevensRoom
 way -
   Steven> Hello. I'm Steven. I came here looking for rare stones. Did you come for the same thing?
+=== guidance_chamber.FillHole1
+from the pit at 15,16 of GuidanceChamber
+from the pit at 15,17 of GuidanceChamber
+from the pit at 16,16 of GuidanceChamber
+from the pit at 16,17 of GuidanceChamber
+way -
+  > The boulder dropped into the hole and filled it in! The way across is open.
+  * sound ledge
+  + FLAG_UNOVA_GUIDANCE_CHAMBER_HOLE_1
+=== guidance_chamber.FillHole2
+from the pit at 12,21 of GuidanceChamber
+from the pit at 12,22 of GuidanceChamber
+from the pit at 13,21 of GuidanceChamber
+from the pit at 13,22 of GuidanceChamber
+way -
+  > The boulder dropped into the hole and filled it in! The way across is open.
+  * sound ledge
+  + FLAG_UNOVA_GUIDANCE_CHAMBER_HOLE_2
+=== guidance_chamber.Painter
+from Artist at 10,24 of GuidanceChamber
+way -
+  Artist> I have spent my whole life painting caves, hoping one day to paint Cobalion in one. It has never come.
 === hearthome_city.Buneary
 from the trigger at 461,725 of Sinnoh
 way -
@@ -16341,6 +16556,28 @@ from Boulder at 19,10 of IcePath_B2F
 from Boulder at 20,22 of IcePath_B2F
 way -
   > The boulder that fell from above is wedged fast in the ice. It won't budge.
+=== iceberg_chamber.BackToTheDoor
+from the trigger at 14,60 of IcebergChamber
+way -
+  * warp UndergroundRuins 15 3
+=== iceberg_chamber.Inscription
+from the tile read at 15,9 of IcebergChamber
+way -
+  > Here sleeps the guardian of ice, who keeps watch over these ruins.
+=== iceberg_chamber.Plaque
+from the tile read at 15,50 of IcebergChamber
+way -
+  > Iceberg Chamber
+=== iceberg_chamber.Regice
+from Regice at 15,14 of IcebergChamber
+way 0
+  > The statue of the ice giant began to move!
+  > The chamber is still again...
+  * cry Regice
+  * wildbattle Regice 65 Won
+  + FLAG_UNOVA_FOUGHT_REGICE
+way 1, from answer 1
+  * wildbattle Regice 65 Lost
 === ilex_forest.Apprentice
 from Apprentice at 15,64 of IlexForest
 way -
@@ -16380,6 +16617,28 @@ from Guard at 5,3 of IndigoPlateau_PokemonCenter_1F
 way -
   Guard> Beyond this door wait the Elite Four, the strongest trainers in Kanto. Beat all four, and the Champion awaits.
   Guard> Once you step through, there's no coming back out until it's over. Good luck!
+=== iron_chamber.BackToTheDoor
+from the trigger at 14,60 of IronChamber
+way -
+  * warp UndergroundRuins 15 3
+=== iron_chamber.Inscription
+from the tile read at 15,9 of IronChamber
+way -
+  > Here sleeps the guardian of iron, who keeps watch over these ruins.
+=== iron_chamber.Plaque
+from the tile read at 15,50 of IronChamber
+way -
+  > Iron Chamber
+=== iron_chamber.Registeel
+from Registeel at 15,14 of IronChamber
+way 0
+  > The statue of the iron giant began to move!
+  > The chamber is still again...
+  * cry Registeel
+  * wildbattle Registeel 65 Won
+  + FLAG_UNOVA_FOUGHT_REGISTEEL
+way 1, from answer 1
+  * wildbattle Registeel 65 Lost
 === iron_island.Ferry
 from Sailor at 99,502 of Sinnoh
 way 0
@@ -18594,6 +18853,60 @@ way 0
 way 1, from answer 1
   > Lucas left the Root Fossil where it lay.
   ? Take the Root Fossil anyway? = No
+=== mistralton_cave.FillHole1
+from the pit at 7,7 of MistraltonCave
+from the pit at 7,8 of MistraltonCave
+from the pit at 8,7 of MistraltonCave
+from the pit at 8,8 of MistraltonCave
+way -
+  > The boulder dropped into the hole and filled it in! The way across is open.
+  * sound ledge
+  + FLAG_UNOVA_MISTRALTON_CAVE_HOLE_1
+=== mistralton_cave.FillHole2
+from the pit at 5,16 of MistraltonCave
+from the pit at 5,17 of MistraltonCave
+from the pit at 6,16 of MistraltonCave
+from the pit at 6,17 of MistraltonCave
+way -
+  > The boulder dropped into the hole and filled it in! The way across is open.
+  * sound ledge
+  + FLAG_UNOVA_MISTRALTON_CAVE_HOLE_2
+=== mistralton_cave.FillHole3
+from the pit at 17,25 of MistraltonCave
+from the pit at 17,26 of MistraltonCave
+from the pit at 18,25 of MistraltonCave
+from the pit at 18,26 of MistraltonCave
+way -
+  > The boulder dropped into the hole and filled it in! The way across is open.
+  * sound ledge
+  + FLAG_UNOVA_MISTRALTON_CAVE_HOLE_3
+=== mistralton_cave_2.FillHole1
+from the pit at 23,14 of MistraltonCave_2F
+from the pit at 23,15 of MistraltonCave_2F
+from the pit at 24,14 of MistraltonCave_2F
+from the pit at 24,15 of MistraltonCave_2F
+way -
+  > The boulder dropped into the hole and filled it in! The way across is open.
+  * sound ledge
+  + FLAG_UNOVA_MISTRALTON_CAVE_2_HOLE_1
+=== mistralton_cave_2.FillHole2
+from the pit at 12,16 of MistraltonCave_2F
+from the pit at 12,17 of MistraltonCave_2F
+from the pit at 13,16 of MistraltonCave_2F
+from the pit at 13,17 of MistraltonCave_2F
+way -
+  > The boulder dropped into the hole and filled it in! The way across is open.
+  * sound ledge
+  + FLAG_UNOVA_MISTRALTON_CAVE_2_HOLE_2
+=== mistralton_cave_2.FillHole3
+from the pit at 11,23 of MistraltonCave_2F
+from the pit at 11,24 of MistraltonCave_2F
+from the pit at 12,23 of MistraltonCave_2F
+from the pit at 12,24 of MistraltonCave_2F
+way -
+  > The boulder dropped into the hole and filled it in! The way across is open.
+  * sound ledge
+  + FLAG_UNOVA_MISTRALTON_CAVE_2_HOLE_3
 === mistralton_city.JuniperAndSkyla
 from the trigger at 100,301 of Unova
 way -
@@ -21517,6 +21830,28 @@ way -
 === reversal_mountain_7.BiancaSaysGoodbye
 from the trigger at 26,25 of ReversalMountain_6
 way -
+=== rock_peak_chamber.BackToTheDoor
+from the trigger at 14,60 of RockPeakChamber
+way -
+  * warp UndergroundRuins 15 3
+=== rock_peak_chamber.Inscription
+from the tile read at 15,9 of RockPeakChamber
+way -
+  > Here sleeps the guardian of rock, who keeps watch over these ruins.
+=== rock_peak_chamber.Plaque
+from the tile read at 15,50 of RockPeakChamber
+way -
+  > Rock Peak Chamber
+=== rock_peak_chamber.Regirock
+from Regirock at 15,14 of RockPeakChamber
+way 0
+  > The statue of the stone giant began to move!
+  > The chamber is still again...
+  * cry Regirock
+  * wildbattle Regirock 65 Won
+  + FLAG_UNOVA_FOUGHT_REGIROCK
+way 1, from answer 1
+  * wildbattle Regirock 65 Lost
 === rock_tunnel_b1f.RockSlideTutor
 from Youngster at 2,29 of RockTunnel_B1F
 way 0
@@ -27145,6 +27480,66 @@ way -
   Hiker> Dug up any treasures? I'll give you good Spheres for them.
   Hiker> Mind how you go down here!
   * underground hiker
+=== underground_ruins.DoorWatcher
+from Psychic at 13,10 of UndergroundRuins
+way -
+  Psychic> That door puzzles me. Go through it by daylight and you come out in one hall. Go through it by night and it's another!
+=== underground_ruins.Switch
+from the tile read at 23,11 of UndergroundRuins
+from the tile read at 24,10 of UndergroundRuins
+from the tile read at 24,12 of UndergroundRuins
+from the tile read at 25,11 of UndergroundRuins
+way 0
+  > There's an old switch set into the floor right at your feet. Step down on it?
+  > The switch sank a little under your foot and sprang back up. Nothing seems to have happened...
+  ? There's an old switch set into the floor right at your feet. Step down on it? = Yes
+way 1, from answer 1
+  ? There's an old switch set into the floor right at your feet. Step down on it? = No
+=== underground_ruins.TheDoor
+from the trigger at 13,2 of UndergroundRuins
+way -
+  > The great stone door slid open...
+  * warp UndergroundRuins_Sun 15 59
+=== underground_ruins_2.BackToTheDoor
+from the trigger at 14,60 of UndergroundRuins_Sun
+way -
+  * warp UndergroundRuins 15 3
+=== underground_ruins_2.PlaqueGuardians
+from the tile read at 4,17 of UndergroundRuins_Sun
+way -
+  > The guardians were shaped from stone, from ice and from molten iron...
+=== underground_ruins_2.PlaqueHint
+from the tile read at 18,18 of UndergroundRuins_Sun
+way -
+  > The way is found by two answers. This hall holds one of them. Seek the other while the moon is in the sky.
+=== underground_ruins_2.PlaqueName
+from the tile read at 20,50 of UndergroundRuins_Sun
+way -
+  > Here waits the one who stands beside the sun to guard this place.
+=== underground_ruins_2.PlaqueWorld
+from the tile read at 12,18 of UndergroundRuins_Sun
+way -
+  > Day and night, black and white: the world was made in two halves.
+=== underground_ruins_3.BackToTheDoor
+from the trigger at 14,60 of UndergroundRuins_Moon
+way -
+  * warp UndergroundRuins 15 3
+=== underground_ruins_3.PlaqueGuardians
+from the tile read at 4,17 of UndergroundRuins_Moon
+way -
+  > The guardians were shaped from stone, from ice and from molten iron...
+=== underground_ruins_3.PlaqueHint
+from the tile read at 18,18 of UndergroundRuins_Moon
+way -
+  > The way is found by two answers. This hall holds one of them. Seek the other while the sun is in the sky.
+=== underground_ruins_3.PlaqueName
+from the tile read at 10,50 of UndergroundRuins_Moon
+way -
+  > Here waits the one who stands beside the moon to guard this place.
+=== underground_ruins_3.PlaqueWorld
+from the tile read at 26,17 of UndergroundRuins_Moon
+way -
+  > Day and night, black and white: the world was made in two halves.
 === underwater_marine_cave.Out
 from the trigger at 9,8 of Underwater_MarineCave
 way -

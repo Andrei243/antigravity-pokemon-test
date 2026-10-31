@@ -2574,7 +2574,12 @@ public static class WorldMapBuilder
                 if (Models.SecretBaseLayouts.IdOf(s.Script) is > 0 and var baseId) map.SecretBaseSpots[(s.X, s.Z)] = baseId;
             }
             else if (s.Type == AreaSign.HiddenItem && s.Item != null && s.Flag != null)
-                map.HiddenItems[(s.X, s.Z)] = new HiddenItem(s.Item, s.Count ?? 1, s.Flag, s.Range ?? 0);
+            {
+                // (an overlay holds a hidden thing back by its script's number, as it holds an object back by its id: plan 22 ·
+                // U10, part b, Clay Tunnel's Big Nugget, an item this game's data hasn't)
+                if (overlay?.HeldBack?.Contains(s.Script) != true)
+                    map.HiddenItems[(s.X, s.Z)] = new HiddenItem(s.Item, s.Count ?? 1, s.Flag, s.Range ?? 0);
+            }
             else if (overlay?.Read?.GetValueOrDefault(s.Script) is { Length: > 0 } read)
                 map.TileScripts[(s.X, s.Z)] = read;
             // A GBA game's signpost is a tile and a sign event (plan 19 · K1): where the overlay gives the sign's script

@@ -384,8 +384,8 @@ A tile of a Black 2 chunk carries a 32-bit type: its low sixteen bits are its cl
 
 | Class | What | Becomes | Value | Tiles | Blocked |
 |---|---|---|---|---:|---:|
-| `0x00` | Plain ground. | `None` | `0x00` | 145,303 | 1,312 |
-| `0x01` | A wall: plain, always blocked. | `None` | `0x00` | 823,825 | 822,858 |
+| `0x00` | Plain ground. | `None` | `0x00` | 145,780 | 1,312 |
+| `0x01` | A wall: plain, always blocked. | `None` | `0x00` | 827,444 | 826,477 |
 | `0x02` | Not understood yet. | `None` (not in the table) | `0x00` | 1,243 | 0 |
 | `0x03` | Not understood yet. | `None` (not in the table) | `0x00` | 10,978 | 0 |
 | `0x04` | Tall grass. | `TallGrass` | `0x02` | 7,932 | 0 |

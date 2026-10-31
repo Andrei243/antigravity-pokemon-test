@@ -126,9 +126,10 @@ partial class Harness
         Frames(2);
         // UNOVA_FROM=league: the same new game brought at once to where the story stands past the Giant Chasm (as
         // UnovaStoryTests' PastTheChasm makes it), for the League's shots (us389 on) and plan 22 · U10's after them alone;
-        // UNOVA_FROM=legends: past the Hall of Fame as well, for U10's legendaries alone (us421 on)
+        // UNOVA_FROM=legends: past the Hall of Fame as well, for U10's legendaries alone (us421 on); UNOVA_FROM=oldroads for U10,
+        // part b's caves alone (us451 on)
         string? from = Environment.GetEnvironmentVariable("UNOVA_FROM");
-        if (from is "league" or "legends")
+        if (from is "league" or "legends" or "oldroads")
         {
             var unova = RegionDatabase.Get(RegionDatabase.Unova)!;
             story.ChooseStarter(unova.Starters[0]);
@@ -143,6 +144,7 @@ partial class Harness
             story.Set("FLAG_UNOVA_CHASM_CLEARED");
             foreach (string badge in unova.BadgeNames) story.GiveBadge(RegionDatabase.Unova, badge);
             if (from == "legends") { story.Set("UnovaHallOfFame"); goto legends; }
+            if (from == "oldroads") { story.Set("UnovaHallOfFame"); goto oldroads; }
             goto league;
         }
         StepOnto("AspertiaCity_PlayersHouse", 10, 8, Direction.Left);
@@ -1388,5 +1390,56 @@ partial class Harness
         IntoBattle("Heatran"); Frames(10); Shot("us443_heatran_battle");
         Win(); ReadTo(null); Frames(10); Shot("us444_the_lair_after");
         Legends("Heatran");
-    }
+
+        // Plan 22 · U10, part b: the caves of the old roads off the open ones (us451 to us469), in this same game: Clay Tunnel opened from Driftveil and dug through, a mining cart, the Underground Ruins' switch and door,
+        // a chamber of the Regis and its battle, a hall of the ruins, Mistralton Cave's upper floor and the Guidance Chamber
+    oldroads:
+        void OldRoads(string what) =>
+            Console.WriteLine($"  {what}: map {game.Map.Name} {game.Player.GridX},{game.Player.GridY}, "
+                + $"dug {story.Has("FLAG_UNOVA_CLAY_TUNNEL_DUG")}, ruins door {story.Var("VAR_UNOVA_RUINS_DOOR")}, fought "
+                + string.Join(" ", new[] { "REGIROCK", "REGISTEEL", "REGICE" }.Where(w => story.Has($"FLAG_UNOVA_FOUGHT_{w}"))));
+        // ---- Clay Tunnel: its mouth in Driftveil, the diggers, a cart
+        At("Unova", 167, 393, Direction.Up); Frames(20); Shot("us451_clay_tunnels_mouth");
+        ComeThrough("ClayTunnel_1", 16, 59, Direction.Up); Frames(30); Shot("us452_clay_tunnel");
+        var smasher = new Pokemon(PokemonDatabase.Get("Roggenrola")!, 60);
+        smasher.ReplaceMove(0, "Rock Smash");
+        game.Party.RemoveAt(game.Party.Count - 1);
+        game.Party.Add(smasher);
+        TalkTo("ClayTunnel_1", "8", "clay_tunnel", 0, -1);
+        ReadTo("good at Rock Smash"); Frames(10); Shot("us453_the_diggers");
+        ReadTo("We did it"); Frames(10); Shot("us454_broken_through");
+        ReadTo(null); Frames(20); Shot("us455_the_way_open");
+        OldRoads("Clay Tunnel dug");
+        TalkTo("ClayTunnel_1", "16", "clay_tunnel", 0, -1);
+        ReadTo("Fancy a ride"); Frames(10); Shot("us456_the_mining_cart");
+        ReadTo(null); Frames(30); Shot("us457_the_second_floor");
+        OldRoads("the cart");
+        // ---- the Underground Ruins: the hall, the switch, the door, a chamber of the Regis
+        ComeThrough("UndergroundRuins", 15, 8, Direction.Up); Frames(30); Shot("us458_the_underground_ruins");
+        TalkTo("UndergroundRuins", "0", "underground_ruins");
+        ReadTo("That door puzzles me"); Frames(10); Shot("us459_the_door_watcher");
+        ReadTo(null);
+        At("UndergroundRuins", 24, 11, Direction.Up); Frames(4);
+        game.Interact();
+        ReadTo("Step down on it?"); Frames(10); Shot("us460_the_old_switch");
+        ReadTo("Clunk"); Frames(10); Shot("us461_the_door_turns");
+        ReadTo(null);
+        StepOnto("UndergroundRuins", 15, 2, Direction.Up);
+        ReadTo(null); Frames(30); Shot("us462_rock_peak_chamber");
+        TalkTo("RockPeakChamber", "0", "rock_peak_chamber");
+        ReadTo("began to move"); Frames(10); Shot("us463_regirock_stirs");
+        IntoBattle("Regirock"); Frames(10); Shot("us464_regirock_battle");
+        Win(); ReadTo(null); Frames(10); Shot("us465_the_chamber_after");
+        OldRoads("Regirock");
+        story.SetVar("VAR_UNOVA_RUINS_DOOR", 0);
+        StepOnto("UndergroundRuins", 15, 2, Direction.Up);
+        ReadTo(null); Frames(30); Shot("us466_a_hall_of_the_ruins");
+        OldRoads("a hall");
+        // ---- Mistralton Cave's upper floor and the Guidance Chamber
+        ComeThrough("MistraltonCave_2F", 17, 13, Direction.Down); Frames(30); Shot("us467_mistralton_cave_upstairs");
+        ComeThrough("GuidanceChamber", 16, 26, Direction.Up); Frames(30); Shot("us468_the_guidance_chamber");
+        TalkTo("GuidanceChamber", "2", "guidance_chamber");
+        ReadTo("painting caves"); Frames(10); Shot("us469_the_painter");
+        ReadTo(null); Frames(10);
+        OldRoads("the Guidance Chamber");    }
 }

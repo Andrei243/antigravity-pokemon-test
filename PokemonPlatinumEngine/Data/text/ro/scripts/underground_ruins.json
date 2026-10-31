@@ -1,0 +1,64 @@
+{
+  "TheDoor": [
+    {
+      "en": [
+        "The great stone door slid open..."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Switch": [
+    {
+      "en": [
+        "There's an old switch set into the floor right at your feet. Step down on it?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Something heavy rumbled behind the door and fell quiet. It feels just as it did when you first came in."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Clunk! Something heavy ground into a new place on the far side of the door..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The switch sank a little under your foot and sprang back up. Nothing seems to have happened..."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "DoorWatcher": [
+    {
+      "en": [
+        "Psychic"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That door puzzles me. Go through it by daylight and you come out in one hall. Go through it by night and it's another!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

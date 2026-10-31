@@ -882,6 +882,10 @@
       "note": "first spoken at mahogany_gym_leader_room.txt(14)",
       "provisional": true
     },
+    "psychic": {
+      "note": "first spoken at underground_ruins.txt(62)",
+      "provisional": true
+    },
     "quinn": {
       "note": "first spoken at cinnabar_island_gym.txt(19)",
       "provisional": true
@@ -1498,6 +1502,7 @@
     "Prospector": "prospector",
     "Proton": "proton",
     "Pryce": "pryce",
+    "Psychic": "psychic",
     "Quinn": "quinn",
     "Ralph": "ralph",
     "Ramon": "ramon",

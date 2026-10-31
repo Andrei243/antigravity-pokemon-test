@@ -1,0 +1,35 @@
+# The Underground Ruins' hall of the sun (plan 22 · U10, part b). docs/scripts.md describes the language; the lines are our own,
+# on Black 2's beats (the decompilation's res/field/scripts/underground_ruins_2.s, read for the order alone): its plaques are read, and the
+# way back leads to the ruins' door.
+script PlaquePlace
+  speaker none
+  text "Here waits the one who stands beside the sun to guard this place."
+  end
+
+
+script PlaqueName
+  call PlaquePlace
+  end
+
+
+script PlaqueHint
+  speaker none
+  text "The way is found by two answers. This hall holds one of them. Seek the other while the moon is in the sky."
+  end
+
+
+script PlaqueWorld
+  speaker none
+  text "Day and night, black and white: the world was made in two halves."
+  end
+
+
+script PlaqueGuardians
+  speaker none
+  text "The guardians were shaped from stone, from ice and from molten iron..."
+  end
+
+
+script BackToTheDoor
+  call UnovaRuinsWayBack
+  end

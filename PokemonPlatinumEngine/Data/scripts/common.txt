@@ -3230,3 +3230,9 @@ label Risen
   setflag FLAG_HOENN_MIRAGE_ISLAND
   clearflag FLAG_TEMP_HIDE_MIRAGE_ISLAND_BERRY_TREE
   return
+
+# The way back out of the Underground Ruins' halls and the Regis' chambers (plan 22 · U10, part b): Black 2's walk down the hall
+# and out through the door, to the tile below the ruins' door, facing away from it
+script UnovaRuinsWayBack
+  warp "UndergroundRuins" 15 3 down
+  return

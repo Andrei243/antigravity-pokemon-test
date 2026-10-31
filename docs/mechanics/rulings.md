@@ -3476,6 +3476,43 @@ the levels alone). What differs from Black 2, and why:
   checker of boards; a pillar now says nothing of the ground (`Bw2Cover`), as it does in the League's rooms, whose pillars were
   planks too. The Champion's walk stands over the dark (`overTheDark`), as the Nimbasa Gym's runway does.
 
+## Unova after the Hall of Fame, part b: the caves of the old roads (2026-10-31, plan 22 · U10)
+
+The caves that open off the roads already built: Mistralton Cave's upper floor and the Guidance Chamber, Clay Tunnel's three
+floors, and the Underground Ruins with their two halls and the three chambers of the Regis, Black 2's maps, events, trainers and wild Pokémon, in our own words (the decompilation's zone scripts read for the order, the species and
+the levels alone). What differs from Black 2, and why:
+
+- **When they open.** Mistralton Cave's stairs up, its upper floor and the Guidance Chamber are open from the start, as Black 2's are
+  (their trainers are level 33). Clay Tunnel, whose trainers are level 60 and over, opens from Driftveil City once Unova's Hall of Fame
+  is entered (an overlay `door` with `openedBy`); its way to Mistralton Cave stays shut on both sides, Black 2's heap of rock standing
+  on the tile at the tunnel's end, and its way on to Twist Mountain waits for the old roads round Icirrus City.
+- **The diggers.** Three workers dig at a heap that shuts the first floor from the second; with a Pokémon that knows Rock Smash (or
+  a field move helper for it) they break it together and go home (`FLAG_UNOVA_CLAY_TUNNEL_DUG`, a flag of ours: Black 2's is a
+  placeholder by value), the heap on the second floor's side with it. It is no scene that may be skipped: it is a few lines.
+- **The mining carts.** Black 2's cart workers ride the player between the floors and across the third, each worker moving to the
+  far end with the cart; ours stay put at both ends (no flags), and the ride is a fade and a warp to Black 2's own landing. The third
+  floor's east end, which Black 2 reaches only by cart, would read as rock to a cave's flood from its warps, so its world entry names
+  the carts' landings as tiles it is come to by (`arrivals`).
+- **The Underground Ruins' door.** Black 2's door leads by the clock to one of two halls (before noon or after) and, with the Key
+  System's keys, which come by link, to one of the Regis' three chambers. Ours leads to the hall of the sun in the morning and by day
+  and the hall of the moon from twilight on (as the man in the hall says), and the old switch in the floor, which Black 2 also asks
+  for, turns it to the chambers once Unova's Hall of Fame is entered: each step on it the next chamber (Rock Peak, Iron, Iceberg) and
+  the fourth back to the halls (`VAR_UNOVA_RUINS_DOOR`). The halls and the chambers have no warp of their own (a script brings the
+  player in and out), so their world entries name the tile they are come to by. Black 2's puzzle of the halls' plaques, two answers
+  found by day and by night, is not built: the plaques are read, the switch opens the chambers.
+- **The Regis.** Regirock, Registeel and Regice stand as statues at their chambers' heads and are battled at Black 2's level 65,
+  gone for good once caught or beaten (`FLAG_UNOVA_FOUGHT_<SPECIES>`), back the next time if run from, as part a's legendaries are.
+- **The Cave of Being** is not open. Black 2 sets it on an island of Route 20's pond, but the pond's banks are solid in the import
+  and no way onto its water is walked, so a map of it would be one nobody reaches; it waits for the session that opens the pond (and
+  part a's ruling stands: Azelf and Mesprit wait on their roads from the Hall of Fame on).
+- **The Guidance Chamber's painter** has looked for Cobalion all his life and is glad to see one on the team (a flag of ours). He
+  stands at the chamber's foot: Black 2's ledge of his, with the Strength boulder and the hidden Dragon Gem beside it, reads as rock,
+  its floors not joined in the import.
+- **What is held back.** Clay Tunnel's hidden Big Nugget is an item this game's data hasn't: an overlay's `heldBack` now holds back
+  a hidden thing by its script's number, as it holds an object by its id.
+- **Music.** No song is new: the caves play `sinnoh/cave` (Mistralton's), `unova/seaside_cave` (Clay Tunnel), `johto/ruins_of_alph`
+  (the ruins and chambers).
+
 ## Kanto's first chapter (2026-10-18, plan 19 · K3)
 
 FireRed's first chapter, from the bedroom in Pallet Town to the Boulder Badge in Pewter City, is scripts of ours on its
