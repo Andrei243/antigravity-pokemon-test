@@ -30,7 +30,7 @@ public class JohtoPartCTests
         Assert.Equal(20, places.Count);
         Assert.All(places, p => Assert.NotEmpty(p.Species));
         // sSwarmMapLUT's order, and the way of each (0 land, 1 surf, 2 fish)
-        Assert.Equal(("route_1", null), (places[0].Area, places[0].Way));
+        Assert.Equal(("johto_route_1", null), (places[0].Area, places[0].Way));
         Assert.Equal(("route_32", "fish"), (places[6].Area, places[6].Way));
         Assert.Equal(("route_27", "surf"), (places[8].Area, places[8].Way));
         Assert.Equal(("violet", "fish"), (places[19].Area, places[19].Way));

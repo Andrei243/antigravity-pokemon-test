@@ -144,7 +144,7 @@ public class HgImportTests
         Assert.Equal(("MAP_NEW_BARK", 2, "T20"), ids[2]);
         var headers = HgMaps.ParseHeaders(HeadersH, ids);
         var route1 = headers["MAP_ROUTE_1"];
-        Assert.Equal(("route_1", "R01", "006_R01", 0), (route1.Key, route1.Encounters, route1.Events, route1.Matrix));
+        Assert.Equal(("johto_route_1", "R01", "006_R01", 0), (route1.Key, route1.Encounters, route1.Events, route1.Matrix));
         Assert.True(route1.Kanto);
         Assert.Equal((13, 9), (route1.WorldMapX, route1.WorldMapY));
         Assert.Equal(("Route 1", "ROUTE", "GENERAL"), (route1.Name, route1.MapType, route1.BattleBackground));
