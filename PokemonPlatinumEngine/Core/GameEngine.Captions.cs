@@ -17,7 +17,7 @@ public partial class GameEngine
     /// <summary>The captions standing, in their column at the left; nothing with the row off, nor in a picture the screenshot key takes.</summary>
     private void DrawCaptions()
     {
-        if (!Accessibility.Captions || screenshotWanted) return;
+        if (!Accessibility.Captions || screenshotWanted || battlePhoto != null) return;
         var lines = Accessibility.CaptionsShown.Lines;
         if (lines.Count > 0) ModernUi.Captions(lines);
     }

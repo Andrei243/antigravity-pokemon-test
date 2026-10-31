@@ -3,6 +3,7 @@ using System.Globalization;
 using System.Numerics;
 using Raylib_cs;
 using PokemonPlatinumEngine.Core;
+using PokemonPlatinumEngine.Graphics;
 using PokemonPlatinumEngine.Overworld;
 using PokemonPlatinumEngine.UI.Kit;
 
@@ -63,29 +64,45 @@ internal static partial class ModernUi
     public static void PhotoPanel(PhotoView p)
     {
         var rows = Enum.GetValues<PhotoRow>();
-        float height = p.PanelOpen ? 56 + rows.Length * PhotoRowHeight + 16 : 56 + rows.Length * 28 + 12;
+        var names = new string[rows.Length];
+        var values = new string[rows.Length];
+        var here = new bool[rows.Length];
+        for (int i = 0; i < rows.Length; i++)
+        {
+            var rowName = rows[i];
+            names[i] = Text.Of($"photo.row.{rowName}");
+            values[i] = PhotoValue(p, rows[i]);
+            here[i] = rows[i] != PhotoRow.Weather || p.WeatherAllowed;
+        }
+        PhotoRows(names, values, here, p.PanelOpen, (int)p.Row);
+    }
+
+    /// <summary>The panel's rows, the field's and the battle's (plan 12 · Q17): names, values, whether each can change here.</summary>
+    private static void PhotoRows(string[] names, string[] values, bool[] hereAt, bool open, int chosenRow)
+    {
+        int count = names.Length;
+        float height = open ? 56 + count * PhotoRowHeight + 16 : 56 + count * 28 + 12;
         var panel = new Rectangle(PhotoPanelX, PhotoPanelY, PhotoPanelWidth, height);
         Panel(panel, 24);
         float x = panel.X + 24, right = panel.X + panel.Width - 24;
         Label(Text.Of("photo.title"), x, panel.Y + 20);
         float y = panel.Y + 56;
-        foreach (var row in rows)
+        for (int row = 0; row < count; row++)
         {
-            string value = PhotoValue(p, row);
-            if (!p.PanelOpen)
+            string value = values[row];
+            if (!open)
             {
                 UiFonts.Draw(value, x, y, 20, Muted, UiWeight.Bold);
                 y += 28;
                 continue;
             }
-            bool chosen = row == p.Row;
+            bool chosen = row == chosenRow;
             var pill = new Rectangle(panel.X + 12, y + 4, panel.Width - 24, PhotoRowHeight - 8);
             if (chosen) UiShapes.Fill(pill, 20, Selection);
             var ink = chosen ? Color.White : Ink;
             float middle = y + PhotoRowHeight / 2f;
-            var rowName = row;
-            UiFonts.Draw(Text.Of($"photo.row.{rowName}"), x, middle - 14, 24, ink, UiWeight.Bold);
-            bool here = row != PhotoRow.Weather || p.WeatherAllowed;
+            UiFonts.Draw(names[row], x, middle - 14, 24, ink, UiWeight.Bold);
+            bool here = hereAt[row];
             var valueInk = chosen ? Color.White : here ? Ink : Muted;
             float w = UiFonts.Measure(value, 24, UiWeight.ExtraBold);
             float valueX = right - 22 - w;
@@ -107,5 +124,56 @@ internal static partial class ModernUi
         var pill = new Rectangle((sw - w) / 2f, sh - 32 - 52, w, 52);
         UiShapes.Fill(pill, 26, new Color(16, 20, 32, 200));
         UiFonts.Draw(line, pill.X + 28, pill.Y + 13, 22, Color.White, UiWeight.Bold);
+    }
+
+    // ---------------------------------------------------------------- photo mode in battle (plan 12 · Q17)
+
+    /// <summary>A row of the battle's panel as the panel writes it.</summary>
+    public static string BattlePhotoValue(BattlePhotoView p, BattlePhotoRow row)
+    {
+        switch (row)
+        {
+            case BattlePhotoRow.Zoom:
+                string zoom = p.Zoom.ToString("0.00", CultureInfo.InvariantCulture);
+                return Text.Of("photo.zoom", ("zoom", zoom));
+            case BattlePhotoRow.Time:
+                if (p.Time is not { } time) return Text.Of("photo.time.now");
+                return Text.Of($"photo.time.{time}");
+            case BattlePhotoRow.Pose:
+                if (p.Pose == 0) return Text.Of("photo.pose.still");
+                string seconds = p.PoseStep.ToString("0.0", CultureInfo.InvariantCulture);
+                return Text.Of("photo.pose.step", ("seconds", seconds));
+            case BattlePhotoRow.Filter:
+                var filter = p.Filter;
+                return Text.Of($"photo.filter.{filter}");
+            default:
+                var frame = p.Frame;
+                return Text.Of($"photo.frame.{frame}");
+        }
+    }
+
+    /// <summary>The battle's panel: the field's, with POSE in place of WEATHER.</summary>
+    public static void BattlePhotoPanel(BattlePhotoView p)
+    {
+        var rows = Enum.GetValues<BattlePhotoRow>();
+        var names = new string[rows.Length];
+        var values = new string[rows.Length];
+        var here = new bool[rows.Length];
+        for (int i = 0; i < rows.Length; i++)
+        {
+            var rowName = rows[i];
+            names[i] = Text.Of($"photo.row.{rowName}");
+            values[i] = BattlePhotoValue(p, rows[i]);
+            here[i] = true;
+        }
+        PhotoRows(names, values, here, p.PanelOpen, (int)p.Row);
+    }
+
+    /// <summary>The Cinema frame over a battle's stage: the camera kit's bars, 120 high and black.</summary>
+    public static void PhotoBars(int sw, int sh)
+    {
+        float bar = CameraRig.BarHeight;
+        Raylib.DrawRectangleRec(new Rectangle(0, 0, sw, bar), Color.Black);
+        Raylib.DrawRectangleRec(new Rectangle(0, sh - bar, sw, bar), Color.Black);
     }
 }

@@ -4691,8 +4691,9 @@
   },
   "photo": {
     "title": "FOTO",
-    "row": { "Zoom": "Zoom", "Time": "Ora", "Weather": "Vremea", "Filter": "Filtru", "Frame": "Ramă" },
+    "row": { "Zoom": "Zoom", "Time": "Ora", "Weather": "Vremea", "Filter": "Filtru", "Frame": "Ramă", "Pose": "Ipostaza" },
     "zoom": "×{zoom}",
+    "pose": { "still": "Cum e", "step": "+{seconds} s" },
     "time": { "now": "Acum", "Morning": "Dimineața", "Day": "Ziua", "Twilight": "Seara", "Night": "Noaptea", "LateNight": "Târziu în noapte" },
     "weather": { "Now": "Cum e", "Clear": "Senin", "Rain": "Ploaie", "Snow": "Ninsoare", "Fog": "Ceață" },
     "notHere": "Nu aici",
