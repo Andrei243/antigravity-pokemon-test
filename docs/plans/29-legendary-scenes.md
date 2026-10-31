@@ -148,7 +148,7 @@ Every session: `tools/ContentCheck` first, then the filtered tests of what it to
 
 ## Decisions for the user
 
-1. **The event-only legendaries and mythicals** (Darkrai, Shaymin, Arceus, Manaphy and Phione, Celebi, Jirachi, Victini, Keldeo, Meloetta, Genesect): recommended, left out of this plan as plan 03 · D12c left the Hall of Origin; a later decision may give each a way in by a post-game condition of our own, and that session writes its scene by this recipe. The other choice is a session here that opens them.
+1. **The event-only legendaries and mythicals** (Darkrai, Shaymin, Arceus, Manaphy and Phione, Celebi, Jirachi, Victini, Keldeo, Meloetta, Genesect): **DECIDED 2026-10-31 by the user: open them.** Session LS11 (added) gives each a way in by a post-game condition of our own, battled after a scene written by the recipe; its designs are proposed to the user one region at a time before building.
 2. **A zoom into the battle**: recommended, the camera released before `wildbattle`, so L14's widening starts from the place's own lens as it does today. The other choice keeps the scene's zoom into the way in.
 
 ## Status
@@ -163,3 +163,6 @@ Every session: `tools/ContentCheck` first, then the filtered tests of what it to
 - [ ] LS8 Unova's legends after the League
 - [ ] LS9 Kyurem's fusion and FireRed's roaming beast
 - [ ] LS10 What the kit lacked (optional)
+
+### LS11 (added with decision 1): the event legendaries
+Open each event-only species named in decision 1 by a post-game condition of our own (a region's Hall of Fame plus a place-specific step), with a staged scene by the five-beat recipe and the unchanged wildbattle; one proposal per region for the user's approval first. Tests: LegendaryScenesTests covers them.
