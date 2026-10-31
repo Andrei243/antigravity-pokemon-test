@@ -36,6 +36,7 @@ public enum OptionRow
     RunTimer,
     Captions, HoldToConfirm,
     BoxTools,
+    AutoBattle,
     Controls,
     Jukebox,
     Packs,
@@ -405,6 +406,9 @@ public class OptionsScreen
                 // Off, as the rules have it, On (plan 12 · Q26), and round again
                 s.BoxTools = (RulesDefault)Wrap((int)s.BoxTools + step, 3);
                 break;
+            case OptionRow.AutoBattle:
+                s.AutoBattle = !s.AutoBattle;
+                break;
             case OptionRow.BoxesAnywhere:
                 // Off, as the rules have it, On (plan 12 · Q13), and round again
                 s.BoxesAnywhere = (RulesDefault)Wrap((int)s.BoxesAnywhere + step, 3);
@@ -517,6 +521,7 @@ public class OptionsScreen
         OptionRow.FieldHelpers => (Text.Of("options.fieldHelpers.label"), Text.Of($"options.fieldHelpers.value.{s.FieldHelpers}"), Text.Of($"options.fieldHelpers.help.{s.FieldHelpers}")),
         OptionRow.PartyTools => (Text.Of("options.partyTools.label"), Text.Of($"options.partyTools.value.{s.PartyTools}"), Text.Of($"options.partyTools.help.{s.PartyTools}")),
         OptionRow.BoxTools => (Text.Of("boxTools.option.label"), Text.Of($"boxTools.option.value.{s.BoxTools}"), Text.Of($"boxTools.option.help.{s.BoxTools}")),
+        OptionRow.AutoBattle => (Text.Of("options.autoBattle.label"), OnOff(s.AutoBattle), Text.Of(s.AutoBattle ? "options.autoBattle.help.on" : "options.autoBattle.help.off")),
         OptionRow.BoxesAnywhere => (Text.Of("options.boxesAnywhere.label"), Text.Of($"options.boxesAnywhere.value.{s.BoxesAnywhere}"), Text.Of($"options.boxesAnywhere.help.{s.BoxesAnywhere}")),
         OptionRow.Autosave => (Text.Of("options.autosave.label"), OnOff(s.Autosave), Text.Of(s.Autosave ? "options.autosave.help.on" : "options.autosave.help.off")),
         OptionRow.DynamicResolution => (Text.Of("options.dynamicResolution.label"),

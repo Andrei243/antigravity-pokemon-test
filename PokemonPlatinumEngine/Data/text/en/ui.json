@@ -165,6 +165,13 @@
         "off": "Nothing says where the story goes next: you find your own way, as in the original."
       }
     },
+    "autoBattle": {
+      "label": "Auto-battle",
+      "help": {
+        "off": "A battle's commands are FIGHT, BAG, POKéMON and RUN, chosen by you every turn.",
+        "on": "The commands have AUTO, which plays the battle for you with each Pokémon's strongest move until one of yours faints or Back stops it."
+      }
+    },
     "boxesAnywhere": {
       "label": "Boxes anywhere and a sorted bag",
       "value": { "Off": "Off", "Rules": "By the rules", "On": "On" },
@@ -3253,6 +3260,8 @@
       "tera": "Terastallize",
       "megaDynamax": "Mega Dynamax"
     },
+    "auto": "AUTO",
+    "autoStop": "Stop auto",
     "fight": "FIGHT",
     "bag": "BAG",
     "pokemon": "POKÉMON",
