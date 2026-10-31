@@ -121,6 +121,57 @@ public class SignatureMoveTests
         Assert.True(Directions.UserBody(Cue("Dragon Ascent", I)).Toward > 0.5f);
     }
 
+    /// <summary>Y17c's batch: the pseudo-legendaries' moves and the starters' finals' of Unova to Paldea (Hisui's three among them).</summary>
+    public static readonly string[] Y17c =
+    {
+        "Outrage", "Stone Edge", "Crunch", "Dragon Rush", "Meteor Mash", "Dragon Claw", "Dark Pulse", "Dragon Pulse",
+        "Clanging Scales", "Clangorous Soul", "Dragon Darts", "Glaive Rush",
+        "Heat Crash", "Head Smash", "Razor Shell", "Ceaseless Edge", "Leaf Blade", "Hammer Arm", "Mystical Fire",
+        "Water Shuriken", "Spirit Shackle", "Triple Arrows", "Darkest Lariat", "Sparkling Aria", "Drum Beating",
+        "Pyro Ball", "Snipe Shot", "Flower Trick", "Torch Song", "Aqua Step", "Infernal Parade",
+    };
+
+    [Fact]
+    public void Y17csBatchIsInTheTable()
+    {
+        Assert.DoesNotContain(Y17c, m => !Directions.Has(m));
+        Assert.Empty(Y17c.Intersect(Y17b));
+        Assert.True(Directions.Table.Count >= 35 + Y17c.Length);
+    }
+
+    [Fact]
+    public void Y17csBodiesAnswer()
+    {
+        // The three lunges meet their targets at the impact and are home by the cue's end, never rising
+        foreach (var move in new[] { "Dragon Rush", "Glaive Rush", "Aqua Step" })
+        {
+            Assert.True(Directions.UserBody(Cue(move, I)).Toward > 0.5f, move);
+            Assert.True(Directions.UserBody(Cue(move, I - 0.15f)).Toward < 0f, move);
+            for (float age = 0f; age < 1.3f; age += 0.01f) Assert.Equal(0f, Directions.UserBody(Cue(move, age)).Up);
+        }
+        // Stone Edge tosses its target; Crunch only shudders it; Heat Crash and Hammer Arm press it; Drum Beating jolts it
+        Assert.True(Directions.TargetBody(Cue("Stone Edge", I + 0.3f)).Up > 0.1f);
+        Assert.Equal(0f, Directions.TargetBody(Cue("Crunch", I + 0.1f)).Toward);
+        foreach (var move in new[] { "Heat Crash", "Hammer Arm" })
+            Assert.True(Directions.TargetBody(Cue(move, I + 0.1f)).Squash > 0f, move);
+        Assert.True(Directions.TargetBody(Cue("Drum Beating", I + 0.12f)).Moves);
+        // Clangorous Soul is on its user alone: no shot of its own, no throw
+        Assert.Equal(SignatureShot.None, Directions.Of("Clangorous Soul")!.Shot);
+    }
+
+    [Theory]
+    [InlineData("Stone Edge"), InlineData("Meteor Mash"), InlineData("Clanging Scales"), InlineData("Glaive Rush"), InlineData("Flower Trick")]
+    public void Y17csReactionsComeAfterTheImpactAndGo(string move)
+    {
+        var col = MoveFx.ColorsOf(MoveDatabase.Get(move)!.Type);
+        var before = new FxList();
+        Directions.PlayEffect(new FxCtx(Cue(move, I - 0.02f), new FxPlaces()), col, before);
+        Assert.Empty(before.Quads);
+        var during = new FxList();
+        Directions.PlayEffect(new FxCtx(Cue(move, I + 0.2f), new FxPlaces()), col, during);
+        Assert.InRange(during.Quads.Count + during.Ribbons.Count, 1, 10);
+    }
+
     // ------------------------------------------------------------------ the hit-stop
 
     [Theory]
