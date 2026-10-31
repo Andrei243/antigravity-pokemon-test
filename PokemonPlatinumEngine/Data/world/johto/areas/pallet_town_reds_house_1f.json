@@ -1,0 +1,29 @@
+{
+  "key": "pallet_town_reds_house_1f",
+  "index": 503,
+  "name": "Pallet Town",
+  "matrix": 246,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_T_MASARA",
+  "nightMusic": "GS_T_MASARA",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 10, "to": "pallet", "toWarp": 0 },
+    { "x": 9, "z": 3, "to": "pallet_town_reds_house_2f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "t01r0101_redmama", "looks": "redmama", "movement": "14", "x": 6, "z": 6, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "T01R0101_000+1" }
+  ],
+  "signs": [
+    { "x": 6, "z": 3, "type": 0, "script": "T01R0101_001+1" },
+    { "x": 5, "z": 3, "type": 0, "script": "T01R0101_001+1" }
+  ],
+  "triggers": []
+}

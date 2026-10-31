@@ -1,0 +1,43 @@
+{
+  // Route 1 as HeartGold has it three years on (plan 20 · J15, part g): the short road between Viridian City and
+  // Pallet Town. Its key meets FireRed's, so it takes Johto's prefix (HgWorld.Clashes). Its four trainers battle by
+  // their own records (Johto's trainers.json); Cameron the photographer waits for his session
+  "area": "johto_route_1",
+  "bgmTrack": "kanto/route1",
+  "heldBack": [
+    "r01_gsmiddleman1"
+  ],
+  "people": {
+    "r01_gswoman3": {
+      "name": "Quinn",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Quinn: This road is where a lot of famous trainers took their first steps. Let's see how far yours have taken you!",
+        "dialogueAfter": "Ace Trainer Quinn: Your steps have taken you a long way, it seems."
+      }
+    },
+    "r01_gsman3": {
+      "name": "French",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer French: I walk this route every day to remember where I started. Battle me!",
+        "dialogueAfter": "Ace Trainer French: I started here, and here I lose. Fitting."
+      }
+    },
+    "r01_gsboy1": {
+      "name": "Danny",
+      "trainer": {
+        "dialogueBefore": "School Kid Danny: I've studied every type matchup there is. Test me!",
+        "dialogueAfter": "School Kid Danny: I knew the answers. I just didn't have the Pokémon."
+      }
+    },
+    "r01_gsboy1_2": {
+      "name": "Sherman",
+      "trainer": {
+        "dialogueBefore": "School Kid Sherman: My homework today is a real battle. Please be my homework!",
+        "dialogueAfter": "School Kid Sherman: I'll get a bad mark for that one."
+      }
+    }
+  },
+  "signs": {
+    "R01_002+1": "Route 1\nPallet Town - Viridian City"
+  }
+}

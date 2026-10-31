@@ -16759,6 +16759,12 @@ from the trigger at 21,15 of JaggedPass
 from the trigger at 21,20 of JaggedPass
 from the trigger at 22,20 of JaggedPass
 way -
+=== johto_cinnabar_island.Blue
+from Blue at 1036,494 of Johto
+way -
+  Blue> Huh. A Champion from Johto, all the way out here. Look at this place. The volcano blew and the whole town went with it.
+  Blue> I'm the Leader of the Viridian Gym. Funny, right? I'm never there. I don't take on just anyone.
+  Blue> Come back when you've got Kanto's other seven Badges. Then we'll see if you're worth my time.
 === johto_route_25.MistysDate
 from Misty at 1421,47 of Johto
 from the trigger at 1418,40 of Johto
@@ -25185,6 +25191,35 @@ way 0
 way 1, from answer 1
   * wildbattle Articuno 50 Lost
   * scene over, unseen
+=== seafoam_islands_cinnabar_gym.Blaine
+from Blaine at 13,12 of Seafoam_Gym
+way 0
+  Blaine> So, you found my hideaway. The volcano swallowed my old Gym, and now I keep my fire in a cave of ice.
+  Blaine> But a Leader's fire doesn't go out with a building. A Champion from Johto, is it? Then let's turn up the heat!
+  Blaine> My flames are out, for now. You've earned this: the Volcano Badge.
+  > Lucas received the Volcano Badge from Blaine!
+  Blaine> And take this, too. It holds my hottest move.
+  > Lucas received the TM50!
+  > TM50 holds the move Overheat.
+  > Lucas put it away in the TMs & HMs pocket.
+  Blaine> TM50 is Overheat. It's fearsomely strong, but it leaves the user's Special Attack much lower afterwards.
+  * scene seafoam_islands_cinnabar_gym.Blaine
+  * battle johto_leader_blaine_blaine Won
+  * fanfare FanfareBadge
+  * endscene
+  * fanfare FanfareTM
+  + FLAG_JOHTO_DEFEATED_BLAINE
+  + FLAG_JOHTO_GOT_TM50_FROM_BLAINE
+  + beaten johto_leader_blaine_blaine
+  = badges Kanto 0 -> 1000000
+  + seen seafoam_islands_cinnabar_gym.Blaine
+way 1, from answer 1
+  * battle johto_leader_blaine_blaine Lost
+  * scene over, unseen
+=== seafoam_islands_cinnabar_gym.Guide
+from Gym guide at 16,23 of Seafoam_Gym
+way -
+  Gym guide> Hey, champ in the making! Blaine's Pokémon burn hot. Water and Ground moves will cool them right down.
 === sealed_chamber_inner_room.BackWall
 from the tile read at 10,4 of SealedChamber_InnerRoom
 from the tile read at 11,4 of SealedChamber_InnerRoom

@@ -1,0 +1,69 @@
+{
+  "key": "pallet",
+  "index": 49,
+  "name": "Pallet Town",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "General",
+  "dayMusic": "GS_T_MASARA",
+  "nightMusic": "GS_T_MASARA",
+  "encounters": "T01",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "surfSwarm": "Tentacool",
+  "fishSwarm": "Magikarp",
+  "water": [
+    { "species": "Tentacool", "level": 35, "maxLevel": 35 },
+    { "species": "Tentacool", "level": 30, "maxLevel": 30 },
+    { "species": "Tentacruel", "level": 35, "maxLevel": 35 },
+    { "species": "Tentacruel", "level": 35, "maxLevel": 35 },
+    { "species": "Tentacruel", "level": 35, "maxLevel": 35 }
+  ],
+  "waterRate": 15,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 10 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Tentacool", "level": 20, "maxLevel": 20 },
+    { "species": "Chinchou", "level": 20, "maxLevel": 20 },
+    { "species": "Shellder", "level": 20, "maxLevel": 20 },
+    { "species": "Chinchou", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Chinchou", "level": 40, "maxLevel": 40 },
+    { "species": "Shellder", "level": 40, "maxLevel": 40 },
+    { "species": "Tentacruel", "level": 40, "maxLevel": 40 },
+    { "species": "Lanturn", "level": 40, "maxLevel": 40 },
+    { "species": "Tentacruel", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "warps": [
+    { "x": 1033, "z": 363, "to": "pallet_town_reds_house_1f", "toWarp": 0 },
+    { "x": 1044, "z": 363, "to": "pallet_town_blues_house_1f", "toWarp": 0 },
+    { "x": 1045, "z": 373, "to": "pallet_town_oaks_lab", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "t01_gswoman1", "looks": "gswoman1", "movement": "5", "x": 1040, "z": 367, "facing": 2, "rangeX": 1, "rangeZ": 0, "script": "T01_000+1" },
+    { "id": "t01_gsbigman", "looks": "gsbigman", "movement": "2", "x": 1044, "z": 380, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T01_001+1" },
+    { "id": "t01_gsmiddleman1", "looks": "gsmiddleman1", "movement": "14", "x": 1031, "z": 371, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CAMERON", "script": "T01_006+1" }
+  ],
+  "signs": [
+    { "x": 1042, "z": 363, "type": 1, "script": "T01_005+1" },
+    { "x": 1031, "z": 363, "type": 1, "script": "T01_003+1" },
+    { "x": 1045, "z": 378, "type": 1, "script": "T01_004+1" },
+    { "x": 1036, "z": 369, "type": 1, "script": "T01_002+1" }
+  ],
+  "triggers": []
+}

@@ -1,0 +1,26 @@
+{
+  "key": "viridian_route_1_gatehouse",
+  "index": 527,
+  "name": "Route 1",
+  "matrix": 69,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_C_TOKIWA",
+  "nightMusic": "GS_C_TOKIWA",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 12, "to": "johto_route_1", "toWarp": 0 },
+    { "x": 5, "z": 2, "to": "viridian", "toWarp": 5 }
+  ],
+  "objects": [
+    { "id": "t02r0401_counterm", "looks": "counterm", "movement": "17", "x": 1, "z": 8, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "T02R0401_000+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

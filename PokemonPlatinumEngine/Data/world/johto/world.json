@@ -316,7 +316,18 @@
     { "name": "Route2_ForestNorthGate", "matrix": 69, "area": "route_2_viridian_forest_north_gatehouse", "trees": "Round", "setting": "Indoors" },
     { "name": "Route2_SoutheastGate", "matrix": 69, "area": "route_2_southeast_gatehouse", "trees": "Round", "setting": "Indoors" },
     { "name": "Route2_RoadHouse", "matrix": 66, "area": "johto_route_2_house", "trees": "Round", "setting": "Indoors" },
-    { "name": "Viridian_Forest", "matrix": 86, "area": "johto_viridian_forest", "trees": "Round", "setting": "Cave" }
+    { "name": "Viridian_Forest", "matrix": 86, "area": "johto_viridian_forest", "trees": "Round", "setting": "Cave" },
+    // Plan 20 · J15, part g: Viridian's gate to Route 1, Pallet Town's rooms, Cinnabar Island's Pokémon Center, and the Seafoam Islands' first floor with Blaine's Gym (named Pallet_, Cinnabar_ and Seafoam_: FireRed's are PalletTown_, CinnabarIsland_ and SeafoamIslands_)
+    { "name": "Viridian_Route1Gate", "matrix": 69, "area": "viridian_route_1_gatehouse", "trees": "Round", "setting": "Indoors" },
+    { "name": "Pallet_RedsHouse_1F", "matrix": 246, "area": "pallet_town_reds_house_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Pallet_RedsHouse_2F", "matrix": 247, "area": "pallet_town_reds_house_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Pallet_BluesHouse_1F", "matrix": 248, "area": "pallet_town_blues_house_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Pallet_BluesHouse_2F", "matrix": 249, "area": "pallet_town_blues_house_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Pallet_OaksLab", "matrix": 250, "area": "pallet_town_oaks_lab", "trees": "Round", "setting": "Indoors" },
+    { "name": "Cinnabar_PokemonCenter_1F", "matrix": 73, "area": "cinnabar_island_pokecenter_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Cinnabar_PokemonCenter_B1F", "matrix": 77, "area": "cinnabar_island_pokecenter_b1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Seafoam_1F", "matrix": 81, "area": "johto_seafoam_islands_1f", "trees": "Round", "setting": "Cave" },
+    { "name": "Seafoam_Gym", "matrix": 264, "area": "seafoam_islands_cinnabar_gym", "trees": "Round", "setting": "Cave" }
   ],
   "areas": [
     // Plan 20 · J2: New Bark Town to Route 31's gate house, with their rooms
@@ -433,6 +444,10 @@
     // and from Route 22's east end: Viridian City with its rooms, Route 2 north to Pewter with its gates, house and Viridian Forest
     "viridian", "viridian_pokecenter_1f", "viridian_pokecenter_b1f", "viridian_pokemart", "viridian_northeast_house",
     "viridian_trainer_house_1f", "johto_route_2", "route_2_east", "route_2_viridian_forest_south_gatehouse",
-    "route_2_viridian_forest_north_gatehouse", "route_2_southeast_gatehouse", "johto_route_2_house", "johto_viridian_forest"
+    "route_2_viridian_forest_north_gatehouse", "route_2_southeast_gatehouse", "johto_route_2_house", "johto_viridian_forest",
+    // Plan 20 · J15, part g: Viridian's gate south to Route 1 and Pallet Town with its rooms, Route 21 by sea to Cinnabar Island, and Route 20 east to the Seafoam Islands and Blaine's Gym
+    "viridian_route_1_gatehouse", "johto_route_1", "pallet", "pallet_town_reds_house_1f", "pallet_town_reds_house_2f",
+    "pallet_town_blues_house_1f", "pallet_town_blues_house_2f", "pallet_town_oaks_lab", "route_21", "johto_cinnabar_island",
+    "cinnabar_island_pokecenter_1f", "cinnabar_island_pokecenter_b1f", "johto_route_20", "johto_seafoam_islands_1f", "seafoam_islands_cinnabar_gym"
   ]
 }

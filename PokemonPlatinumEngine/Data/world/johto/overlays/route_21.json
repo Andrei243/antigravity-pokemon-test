@@ -1,0 +1,97 @@
+{
+  // Route 21 as HeartGold has it three years on (plan 20 · J15, part g): the sea between Pallet Town and Cinnabar
+  // Island, fished and swum. Its trainers battle by their own records (Johto's trainers.json); Cameron the
+  // photographer and the man of a scene at Pallet Town's edge (FLAG_MAPTEMP_031) wait for their sessions
+  "area": "route_21",
+  "bgmTrack": "kanto/route3",
+  "heldBack": [
+    "w21_gsmiddleman1",
+    "w21_gsbigman"
+  ],
+  "people": {
+    "w21_fishing_2": {
+      "name": "Arnold",
+      "trainer": {
+        "dialogueBefore": "Fisherman Arnold: The fish out here are bigger than anywhere in Johto. Want to see?",
+        "dialogueAfter": "Fisherman Arnold: That one got away. And so did my win."
+      }
+    },
+    "w21_fishing_2_2": {
+      "name": "Murphy",
+      "trainer": {
+        "dialogueBefore": "Fisherman Murphy: Shh! You'll scare the fish. Well, since you're here, let's battle.",
+        "dialogueAfter": "Fisherman Murphy: Now the fish really are scared."
+      }
+    },
+    "w21_fishing_2_3": {
+      "name": "Liam",
+      "trainer": {
+        "dialogueBefore": "Fisherman Liam: I've been out here since dawn. A battle would wake me up.",
+        "dialogueAfter": "Fisherman Liam: I'm wide awake now. And beaten."
+      }
+    },
+    "w21_fishing_2_4": {
+      "name": "Gideon",
+      "trainer": {
+        "dialogueBefore": "Fisherman Gideon: Nothing biting all day. Maybe you will!",
+        "dialogueAfter": "Fisherman Gideon: You bit back. Hard."
+      }
+    },
+    "w21_gsswimmerw": {
+      "name": "Nikki",
+      "trainer": {
+        "dialogueBefore": "Swimmer Nikki: The water's lovely and cold. Perfect for a battle!",
+        "dialogueAfter": "Swimmer Nikki: Brr. Losing makes it colder."
+      }
+    },
+    "w21_gsswimmerw_2": {
+      "name": "Chelan",
+      "trainer": {
+        "dialogueBefore": "Swimmer Chelan: I swim to Cinnabar and back every day. Can you keep up?",
+        "dialogueAfter": "Swimmer Chelan: You kept up, and then some."
+      }
+    },
+    "w21_gsswimmerw_3": {
+      "name": "Kendra",
+      "trainer": {
+        "dialogueBefore": "Swimmer Kendra: You're riding on a Pokémon? That's cheating! Battle me fairly, then!",
+        "dialogueAfter": "Swimmer Kendra: Fair and square. You win."
+      }
+    },
+    "w21_gsswimmerm": {
+      "name": "Tyson",
+      "trainer": {
+        "dialogueBefore": "Swimmer Tyson: I can hold my breath for ages. Let's see if you can hold your own!",
+        "dialogueAfter": "Swimmer Tyson: I'm out of breath. And out of Pokémon."
+      }
+    },
+    "w21_gsswimmerm_2": {
+      "name": "Esteban",
+      "trainer": {
+        "dialogueBefore": "Swimmer Esteban: The current here pulls you south. Good thing I like battles as much as swimming!",
+        "dialogueAfter": "Swimmer Esteban: The current pulled my win away."
+      }
+    },
+    "w21_gsswimmerm_3": {
+      "name": "Duane",
+      "trainer": {
+        "dialogueBefore": "Swimmer Duane: I'm training for a race to Seafoam. A battle is good practice!",
+        "dialogueAfter": "Swimmer Duane: I'd better practise more."
+      }
+    },
+    "w21_gsman2": {
+      "name": "Easton",
+      "trainer": {
+        "dialogueBefore": "Bird Keeper Easton: My birds fly over the sea to Cinnabar. They can fly circles round you, too!",
+        "dialogueAfter": "Bird Keeper Easton: Grounded. Completely grounded."
+      }
+    },
+    "w21_gsman2_2": {
+      "name": "Kinsley",
+      "trainer": {
+        "dialogueBefore": "Bird Keeper Kinsley: I'm resting on this rock before flying on. A battle first!",
+        "dialogueAfter": "Bird Keeper Kinsley: I need a longer rest now."
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+# Cinnabar Island as HeartGold has it three years on (plan 20 · J15, part g). docs/scripts.md describes the language;
+# the lines are our own, on HeartGold's beats (scr_seq_T09).
+#
+# Blue, the Leader of the Viridian Gym, stands by the ruins looking out to sea. Spoken to, he says what the volcano did
+# and that his Gym waits for a challenger who holds Kanto's other seven Badges; with seven he says he will be home. His
+# going back to Viridian and the Gym's battle wait for their session (the Gym's door stays locked), so nothing is set.
+
+
+script Blue
+  face t09_gsleader16 player
+  speaker "Blue"
+  if badges of kanto >= 7 goto Seven
+  say "Huh. A Champion from Johto, all the way out here. Look at this place. The volcano blew and the whole town went with it."
+  say "I'm the Leader of the Viridian Gym. Funny, right? I'm never there. I don't take on just anyone."
+  say "Come back when you've got Kanto's other seven Badges. Then we'll see if you're worth my time."
+  end
+label Seven
+  say "Seven of Kanto's Badges, huh? Not bad. Not bad at all."
+  say "I'll head back to Viridian soon. Don't keep me waiting when I do."
+  end

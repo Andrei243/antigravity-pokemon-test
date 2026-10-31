@@ -15,7 +15,7 @@
     "tiles": ""
   },
   "swarms": [
-    { "area": "route_1", "name": "Route 1", "species": "Poochyena" },
+    { "area": "johto_route_1", "name": "Route 1", "species": "Poochyena" },
     { "area": "johto_route_3", "name": "Route 3", "species": "Baltoy" },
     { "area": "route_9", "name": "Route 9", "species": "Sableye" },
     { "area": "route_12", "name": "Route 12", "species": "Relicanth", "way": "fish" },

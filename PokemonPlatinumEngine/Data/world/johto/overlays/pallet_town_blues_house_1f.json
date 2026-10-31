@@ -1,0 +1,15 @@
+{
+  // Blue's house in Pallet Town (plan 20 · J15, part g): his sister, who grooms Pokémon for the town
+  "area": "pallet_town_blues_house_1f",
+  "bgmTrack": "kanto/pallet",
+  "people": {
+    "t01r0201_nanami": {
+      "name": "Daisy",
+      "npcType": "lady",
+      "still": true,
+      "dialog": [
+        "Oh, a visitor! My brother is the Leader of the Viridian Gym, though he's hardly ever there. Last I heard he was off on Cinnabar Island."
+      ]
+    }
+  }
+}

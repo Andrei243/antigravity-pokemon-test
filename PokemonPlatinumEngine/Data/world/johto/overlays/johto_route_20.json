@@ -1,0 +1,97 @@
+{
+  // Route 20 as HeartGold has it three years on (plan 20 · J15, part g): the sea east of Cinnabar Island to the
+  // Seafoam Islands, where Blaine keeps his Gym now. Its key meets FireRed's, so it takes Johto's prefix
+  // (HgWorld.Clashes). Its trainers battle by their own records (Johto's trainers.json)
+  "area": "johto_route_20",
+  "bgmTrack": "kanto/route3",
+  "people": {
+    "w20_gsswimmerm": {
+      "name": "Frankie",
+      "trainer": {
+        "dialogueBefore": "Swimmer Frankie: I'm swimming laps round the islands. Join me for a battle!",
+        "dialogueAfter": "Swimmer Frankie: I'll swim it off."
+      }
+    },
+    "w20_campboy_2": {
+      "name": "Pedro",
+      "trainer": {
+        "dialogueBefore": "Camper Pedro: I'm camping on the islands. The Gym inside is roasting hot!",
+        "dialogueAfter": "Camper Pedro: At least my tent is cool."
+      }
+    },
+    "w20_picnicgirl_2": {
+      "name": "Adrian",
+      "trainer": {
+        "dialogueBefore": "Picnicker Adrian: A picnic on the beach, and a battle for dessert!",
+        "dialogueAfter": "Picnicker Adrian: That dessert was bitter."
+      }
+    },
+    "w20_picnicgirl_2_2": {
+      "name": "Cheyenne",
+      "trainer": {
+        "dialogueBefore": "Picnicker Cheyenne: The sand's so warm here. Let's battle on it!",
+        "dialogueAfter": "Picnicker Cheyenne: I think I got sand in my shoes."
+      }
+    },
+    "w20_gsman2": {
+      "name": "Bert",
+      "trainer": {
+        "dialogueBefore": "Bird Keeper Bert: My birds patrol this whole stretch of sea. Halt!",
+        "dialogueAfter": "Bird Keeper Bert: Patrol over."
+      }
+    },
+    "w20_gsman2_2": {
+      "name": "Ernie",
+      "trainer": {
+        "dialogueBefore": "Bird Keeper Ernie: Up here on the island I can see everyone coming. I saw you!",
+        "dialogueAfter": "Bird Keeper Ernie: I didn't see that coming, though."
+      }
+    },
+    "w20_gsswimmerw": {
+      "name": "Nicole",
+      "trainer": {
+        "dialogueBefore": "Swimmer Nicole: The water round the Seafoam Islands is icy. You'll need a warm-up battle!",
+        "dialogueAfter": "Swimmer Nicole: I'm warmed up. And worn out."
+      }
+    },
+    "w20_gsswimmerw_2": {
+      "name": "Lori",
+      "trainer": {
+        "dialogueBefore": "Swimmer Lori: My Pokémon sparkle in the sun. Pretty, aren't they? Strong, too!",
+        "dialogueAfter": "Swimmer Lori: They're still pretty, at least."
+      }
+    },
+    "w20_gsswimmerm_2": {
+      "name": "Elmo",
+      "trainer": {
+        "dialogueBefore": "Swimmer Elmo: I've swum here all the way from Fuchsia City. Ready to battle!",
+        "dialogueAfter": "Swimmer Elmo: All that way, for this."
+      }
+    },
+    "w20_gsswimmerm_3": {
+      "name": "Luis",
+      "trainer": {
+        "dialogueBefore": "Swimmer Luis: You look like you're heading for the Gym. Get past me first!",
+        "dialogueAfter": "Swimmer Luis: Off you go, then."
+      }
+    },
+    "w20_gsswimmerw_3": {
+      "name": "Leona",
+      "trainer": {
+        "dialogueBefore": "Swimmer Leona: Swimming is the best training there is. Let me show you!",
+        "dialogueAfter": "Swimmer Leona: Maybe battling is better training."
+      }
+    },
+    "w20_gsswimmerw_4": {
+      "name": "Mina",
+      "trainer": {
+        "dialogueBefore": "Swimmer Mina: I love the sea, and I love battles. Today is a good day!",
+        "dialogueAfter": "Swimmer Mina: It was a good day until now."
+      }
+    }
+  },
+  "signs": {
+    "W20_000+1": "Seafoam Islands\nCinnabar Gym inside",
+    "W20_001+1": "Seafoam Islands"
+  }
+}

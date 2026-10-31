@@ -1,0 +1,9 @@
+{
+  // Red's room upstairs (plan 20 · J15, part g), kept as he left it
+  "area": "pallet_town_reds_house_2f",
+  "bgmTrack": "kanto/pallet",
+  "signs": {
+    "T01R0102_000+1": "An old game console. It's been dusted, but nobody has switched it on in years.",
+    "T01R0102_001+1": "A PC, switched off. A sticky note on it says not to touch anything."
+  }
+}

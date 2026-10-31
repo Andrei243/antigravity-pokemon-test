@@ -1,0 +1,334 @@
+{
+  "people": {
+    "w20_gsswimmerm": {
+      "name": {
+        "en": [
+          "Frankie"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Frankie: I'm swimming laps round the islands. Join me for a battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Frankie: I'll swim it off."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "w20_campboy_2": {
+      "name": {
+        "en": [
+          "Pedro"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Camper Pedro: I'm camping on the islands. The Gym inside is roasting hot!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Camper Pedro: At least my tent is cool."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "w20_picnicgirl_2": {
+      "name": {
+        "en": [
+          "Adrian"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Adrian: A picnic on the beach, and a battle for dessert!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Adrian: That dessert was bitter."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "w20_picnicgirl_2_2": {
+      "name": {
+        "en": [
+          "Cheyenne"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Cheyenne: The sand's so warm here. Let's battle on it!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Cheyenne: I think I got sand in my shoes."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "w20_gsman2": {
+      "name": {
+        "en": [
+          "Bert"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Bert: My birds patrol this whole stretch of sea. Halt!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Bert: Patrol over."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "w20_gsman2_2": {
+      "name": {
+        "en": [
+          "Ernie"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Ernie: Up here on the island I can see everyone coming. I saw you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Ernie: I didn't see that coming, though."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "w20_gsswimmerw": {
+      "name": {
+        "en": [
+          "Nicole"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Nicole: The water round the Seafoam Islands is icy. You'll need a warm-up battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Nicole: I'm warmed up. And worn out."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "w20_gsswimmerw_2": {
+      "name": {
+        "en": [
+          "Lori"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Lori: My Pokémon sparkle in the sun. Pretty, aren't they? Strong, too!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Lori: They're still pretty, at least."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "w20_gsswimmerm_2": {
+      "name": {
+        "en": [
+          "Elmo"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Elmo: I've swum here all the way from Fuchsia City. Ready to battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Elmo: All that way, for this."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "w20_gsswimmerm_3": {
+      "name": {
+        "en": [
+          "Luis"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Luis: You look like you're heading for the Gym. Get past me first!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Luis: Off you go, then."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "w20_gsswimmerw_3": {
+      "name": {
+        "en": [
+          "Leona"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Leona: Swimming is the best training there is. Let me show you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Leona: Maybe battling is better training."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "w20_gsswimmerw_4": {
+      "name": {
+        "en": [
+          "Mina"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Mina: I love the sea, and I love battles. Today is a good day!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Mina: It was a good day until now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "W20_000+1": {
+      "en": [
+        "Seafoam Islands\nCinnabar Gym inside"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "W20_001+1": {
+      "en": [
+        "Seafoam Islands"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

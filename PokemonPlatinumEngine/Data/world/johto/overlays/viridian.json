@@ -2,16 +2,14 @@
   // Viridian City as HeartGold has it three years on (plan 20 · J15, part f): a town of Johto's own map, come to by
   // Route 22's east end from the League's reception gate, with Route 2 north to Pewter. Its Gym (warp 0) stays locked,
   // and the old man HeartGold stands before it while it is shut says so; its Leader and the Gym's opening wait for
-  // their session. The gate house to Route 1 (warps 5 and 6) leads onto a road whose key meets FireRed's and waits.
+  // their session. The gate house to Route 1 (warps 5 and 6) leads south to Pallet Town since part g.
   // Cameron the photographer waits for his
   "area": "viridian",
   "bgmTrack": "kanto/viridian",
   "trees": "Round",
   "architecture": "Evergreen",
   "locked": [
-    0,
-    5,
-    6
+    0
   ],
   "heldBack": [
     "t02_gsmiddleman1",

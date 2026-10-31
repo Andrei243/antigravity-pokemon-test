@@ -56,6 +56,11 @@ public class JohtoTests
         "viridian", "viridian_pokecenter_1f", "viridian_pokecenter_b1f", "viridian_pokemart", "viridian_northeast_house",
         "viridian_trainer_house_1f", "johto_route_2", "route_2_east", "route_2_viridian_forest_south_gatehouse",
         "route_2_viridian_forest_north_gatehouse", "route_2_southeast_gatehouse", "johto_route_2_house", "johto_viridian_forest",
+        // Plan 20 · J15, part g: Viridian's gate to Route 1, Pallet Town with its rooms, Route 21, Cinnabar Island with its
+        // Pokémon Center, Route 20 and the Seafoam Islands' first floor (Blaine's Gym plays Johto's Gym theme)
+        "viridian_route_1_gatehouse", "johto_route_1", "pallet", "pallet_town_reds_house_1f", "pallet_town_reds_house_2f",
+        "pallet_town_blues_house_1f", "pallet_town_blues_house_2f", "pallet_town_oaks_lab", "route_21", "johto_cinnabar_island",
+        "cinnabar_island_pokecenter_1f", "cinnabar_island_pokecenter_b1f", "johto_route_20", "johto_seafoam_islands_1f",
     };
 
     [Fact]
@@ -836,12 +841,11 @@ public class JohtoTests
         Assert.Equal("pewter", HgWorld.KeyOf("MAP_PEWTER"));
         Assert.Equal("viridian", HgWorld.KeyOf("MAP_VIRIDIAN"));
         Assert.Equal("mount_moon", HgWorld.KeyOf("MAP_MOUNT_MOON"));
-        // What waits stays shut: the Clefairy's night on the square, Viridian's Gym and its gate to Route 1, the Trainer
-        // House's hall and Diglett's Cave
+        // What waits stays shut: the Clefairy's night on the square, Viridian's Gym (its gate to Route 1 opens in part g),
+        // the Trainer House's hall and Diglett's Cave
         Assert.DoesNotContain(walked.Keys, m => m.Name.Contains("Clefairy", StringComparison.Ordinal));
         var viridian = Johto.Area("viridian")!;
-        foreach (int warp in new[] { 0, 5 })
-            Assert.Empty(Overworld.WarpsAt(viridian.Warps[warp].X, viridian.Warps[warp].Z));
+        Assert.Empty(Overworld.WarpsAt(viridian.Warps[0].X, viridian.Warps[0].Z));
         var east = Johto.Area("route_2_east")!;
         Assert.Empty(Overworld.WarpsAt(east.Warps[4].X, east.Warps[4].Z));
         Assert.DoesNotContain(walked.Keys, m => m.Name == "Viridian_Gym" || m.Name.StartsWith("Diglett", StringComparison.Ordinal));
@@ -855,6 +859,46 @@ public class JohtoTests
         var cave = walked.Single(kv => kv.Key.Name == "MountMoon");
         var rival = cave.Key.Everyone.Single(n => n.Key == "d02r0101_gsrivel");
         Assert.Contains(cave.Value, t => Math.Abs(t.X - rival.GridX) + Math.Abs(t.Y - rival.GridY) == 1);
+    }
+
+    [Fact]
+    public void PalletCinnabarAndTheSeafoamIslandsAreWalkedToFromViridianAndBlaineIsReachedAtTheHeadOfHisGym()
+    {
+        // Plan 20 · J15, part g: Viridian's gate south to Route 1 and Pallet Town, Route 21 over the sea to Cinnabar
+        // Island, and Route 20 east to the Seafoam Islands, where Blaine keeps his Gym
+        var walked = Walked.Value;
+        var outside = walked.Single(kv => kv.Key.Name == "Johto").Value;
+        foreach (string key in new[] { "johto_route_1", "pallet", "route_21", "johto_cinnabar_island", "johto_route_20" })
+            Assert.True(outside.Any(t => Overworld.AreaAt(t.X, t.Y)?.Key == key), $"{key} can't be walked to from the start");
+        foreach (string name in new[] { "Viridian_Route1Gate", "Pallet_RedsHouse_1F", "Pallet_RedsHouse_2F", "Pallet_BluesHouse_1F",
+                     "Pallet_BluesHouse_2F", "Pallet_OaksLab", "Cinnabar_PokemonCenter_1F", "Cinnabar_PokemonCenter_B1F",
+                     "Seafoam_1F", "Seafoam_Gym" })
+        {
+            Assert.True(walked.Keys.Any(m => m.Name == name), $"nobody walks into {name}");
+            Assert.Equal(RegionDatabase.Johto, RegionDatabase.RegionOfMap(name)!.Id);
+        }
+        // Route 1's, Route 20's, the island's and the caves' keys meet FireRed's, so they take Johto's prefix; the town's,
+        // its rooms' and Route 21's don't
+        foreach (string key in new[] { "route_1", "route_20", "cinnabar_island", "seafoam_islands_1f", "seafoam_islands_b4f" })
+        {
+            Assert.True(HgWorld.Clashes(key));
+            Assert.Equal("johto_" + key, HgWorld.KeyOf("MAP_" + key.ToUpperInvariant()));
+        }
+        foreach (string key in new[] { "pallet", "route_21", "pallet_town_oaks_lab", "seafoam_islands_cinnabar_gym" })
+            Assert.Equal(key, HgWorld.KeyOf("MAP_" + key.ToUpperInvariant()));
+        // What waits stays shut: the Seafoam Islands' lower floors and the bird within
+        var seafoam = Johto.Area("johto_seafoam_islands_1f")!;
+        Assert.Equal("johto_seafoam_islands_b1f", seafoam.Warps[2].To);
+        Assert.Equal("johto_seafoam_islands_b1f", seafoam.Warps[3].To);
+        Assert.DoesNotContain(walked.Keys, m => m.Name.StartsWith("Seafoam_B", StringComparison.Ordinal));
+        // Blaine stands at the head of his Gym, reached across its floor; Blue looks out to sea on Cinnabar
+        var gym = walked.Single(kv => kv.Key.Name == "Seafoam_Gym");
+        var blaine = gym.Key.Everyone.Single(n => n.Key == "d11r0106_gsleader15");
+        Assert.Contains(gym.Value, t => Math.Abs(t.X - blaine.GridX) + Math.Abs(t.Y - blaine.GridY) == 1);
+        Assert.NotNull(TrainerDatabase.Get("johto_leader_blaine_blaine", RegionDatabase.Johto));
+        var blue = Overworld.Everyone.Single(n => n.Key == "t09_gsleader16");
+        Assert.Contains(outside, t => Math.Abs(t.X - blue.GridX) + Math.Abs(t.Y - blue.GridY) == 1);
+        Assert.Equal(InteriorStyle.PokemonCenter, MapNamed("Cinnabar_PokemonCenter_1F").Interior);
     }
 
     [Fact]

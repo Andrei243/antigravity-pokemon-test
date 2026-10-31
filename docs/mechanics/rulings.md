@@ -6725,3 +6725,41 @@ The user approved L9's default on 2026-10-26 (docs/plans/APPROVAL-levelling-and-
   Cinnabar's key, the Power Plant with the grunts of Cerulean's Gym and Route 24, the Underground Path, Silph Co., the
   upper floors of Celadon's store and condominiums, the Game Corner, the Radio Tower and the Expn Card, the Trainer House's
   battles, the Leaders' rematches and street meetings, Suicune's stops, the rest of Kanto's Apricorn trees.
+
+## HeartGold's Kanto, part g (2026-10-31, plan 20 · J15, part g)
+
+- *The slice*: the south-west of Kanto, from Viridian City. Viridian's gate house (its warps 5 and 6, shut in part f)
+  leads to Route 1 and south to Pallet Town with Red's house and Blue's house (both floors) and Professor Oak's
+  laboratory; Route 21 runs by sea to Cinnabar Island, of which only the Pokémon Center (both floors) stands; Route 20
+  runs east by sea to the Seafoam Islands, whose first floor's eastern mouth leads to Blaine's Gym. The first floor's
+  ways down (warps 2 and 3) are locked: the lower floors, their currents and the bird within wait.
+- *Keys and names*: `route_1`, `route_20`, `cinnabar_island` and the five `seafoam_islands_*` floors meet FireRed's and
+  take Johto's prefix (`HgWorld.Clashes`); `pallet`, its rooms (`pallet_town_reds_house_1f`…), `route_21`,
+  `cinnabar_island_pokecenter_*` and `seafoam_islands_cinnabar_gym` meet none. The maps are `Pallet_…`, `Cinnabar_…`,
+  `Seafoam_1F`, `Seafoam_Gym` and `Viridian_Route1Gate`, since FireRed's Kanto has `PalletTown_…`, `CinnabarIsland_…`
+  and `SeafoamIslands_…`. HeartGold's Route 1 swarm (Poochyena) now names `johto_route_1`.
+- *Blaine*: HeartGold hides him by `FLAG_HIDE_SEAFOAM_GYM_BLAINE` only on the day of his phone's meeting on Cinnabar
+  Island, which this game has not, so he stands in his Gym always and his Cinnabar double (`t09_gsleader15`) is held
+  back. He gives Kanto's Volcano Badge (`givebadge volcano of kanto`) and TM50 (Overheat); whether he is beaten here is
+  `FLAG_JOHTO_DEFEATED_BLAINE` (ours). The Gym has no trainers. Four of its six volunteers and scientists, whom the
+  import stands in the narrow ways round its rocks so that Blaine's head of the hall can't be walked to, stand a tile
+  or two aside (the overlay's `at`; the room's comment names each): ours.
+- *Blue*: he stands on Cinnabar by the ruins (`FLAG_UNK_25A`, which hid him, is HeartGold's and nothing here sets it);
+  spoken to, he asks for Kanto's other seven Badges, or with seven says he will head back to Viridian
+  (`johto_cinnabar_island.txt`). Nothing is set: his going home and the Viridian Gym's battle (`johto_leader_blue_blue`)
+  wait for their session, and the Gym's door stays locked.
+- *Held back*: Oak's three Poké Balls (HeartGold's gift to whoever beats Red), Cameron on Route 1, in Pallet and on
+  Route 21, and the man of a scene at Pallet's edge on Route 21 (`FLAG_MAPTEMP_031`).
+- *Apricorns*: Route 1's tree is a row of `apricorns.json` (Red: ours).
+- *Models*: Pallet's houses and lab (`mst_rdh`, `mst_okl`, `mst_dr1`, `mst_dr2`) are built as FireRed's Pallet builds
+  (`Architecture.Clapboard`), Cinnabar as FireRed's (`Cinder`); Oak's machine (`o_kido_obj`) is a lab machine.
+- *Songs*: Pallet and its rooms play `kanto/pallet`, Oak's lab `kanto/oak_lab`, Route 1 `kanto/route1`, Cinnabar and its
+  Center `kanto/cinnabar`, Routes 20 and 21 `kanto/route3`, the Seafoam Islands `kanto/viridian_forest`, as FireRed's
+  do; Blaine's Gym Johto's Gym theme.
+- *The rival in Mt. Moon*: already battled on a word, not on approach (part f's `mount_moon.txt`, no sight, no trigger);
+  nothing changed.
+- *Left*: Viridian's Gym and Blue's battle, the Seafoam Islands' lower floors and Articuno, Oak's gift after Red,
+  Diglett's Cave, the Clefairy's dance, Fuchsia and the south (Routes 11 to 19), the Power Plant with the grunts of
+  Cerulean's Gym and Route 24, the Underground Path, Silph Co., the upper floors of Celadon's store and condominiums, the
+  Game Corner, the Radio Tower and the Expn Card, the Trainer House's battles, the Leaders' rematches and street
+  meetings, Suicune's stops, the rest of Kanto's Apricorn trees.

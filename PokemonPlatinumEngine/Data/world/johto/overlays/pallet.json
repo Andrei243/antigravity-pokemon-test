@@ -1,0 +1,31 @@
+{
+  // Pallet Town as HeartGold has it three years on (plan 20 · J15, part g): Red's house, Blue's house and Professor
+  // Oak's laboratory, with Route 1 north to Viridian City and Route 21 south over the sea to Cinnabar Island.
+  // Cameron the photographer waits for his session
+  "area": "pallet",
+  "bgmTrack": "kanto/pallet",
+  "architecture": "Clapboard",
+  "heldBack": [
+    "t01_gsmiddleman1"
+  ],
+  "people": {
+    "t01_gswoman1": {
+      "name": "Woman",
+      "dialog": [
+        "Pallet Town is quiet, but some of the greatest trainers grew up here. You can feel it in the breeze."
+      ]
+    },
+    "t01_gsbigman": {
+      "name": "Man",
+      "dialog": [
+        "The sea south of town runs all the way to Cinnabar Island. You need a Pokémon that can swim to get there."
+      ]
+    }
+  },
+  "signs": {
+    "T01_002+1": "Pallet Town\nA quiet town where journeys begin.",
+    "T01_003+1": "Red's house",
+    "T01_004+1": "Oak Pokémon Research Lab",
+    "T01_005+1": "Blue's house"
+  }
+}

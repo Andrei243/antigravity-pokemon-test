@@ -1,0 +1,23 @@
+{
+  "people": {
+    "t01r0201_nanami": {
+      "name": {
+        "en": [
+          "Daisy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Oh, a visitor! My brother is the Leader of the Viridian Gym, though he's hardly ever there. Last I heard he was off on Cinnabar Island."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

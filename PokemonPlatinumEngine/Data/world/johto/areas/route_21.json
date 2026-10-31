@@ -1,0 +1,103 @@
+{
+  "key": "route_21",
+  "index": 93,
+  "name": "Route 21",
+  "matrix": 0,
+  "kind": "Route",
+  "sign": "Route",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Ocean",
+  "dayMusic": "GS_R_17_03",
+  "nightMusic": "GS_R_17_03",
+  "encounters": "W21",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Tangela", "level": 30 },
+    { "species": "Tangela", "level": 25 },
+    { "species": "Tangela", "level": 30 },
+    { "species": "Tangela", "level": 25 },
+    { "species": "Tangela", "level": 35 },
+    { "species": "Tangela", "level": 35 },
+    { "species": "Tangela", "level": 20 },
+    { "species": "Tangela", "level": 20 },
+    { "species": "Tangela", "level": 30, "day": "Mr. Mime" },
+    { "species": "Mr. Mime", "level": 28 },
+    { "species": "Tangela", "level": 30, "day": "Mr. Mime" },
+    { "species": "Mr. Mime", "level": 28 }
+  ],
+  "landRate": 20,
+  "swarm": [
+    "Tangela",
+    "Tangela"
+  ],
+  "surfSwarm": "Tentacool",
+  "fishSwarm": "Magikarp",
+  "water": [
+    { "species": "Tentacool", "level": 35, "maxLevel": 35 },
+    { "species": "Tentacool", "level": 30, "maxLevel": 30 },
+    { "species": "Tentacruel", "level": 35, "maxLevel": 35 },
+    { "species": "Tentacruel", "level": 35, "maxLevel": 35 },
+    { "species": "Tentacruel", "level": 35, "maxLevel": 35 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 10 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Tentacool", "level": 20, "maxLevel": 20 },
+    { "species": "Chinchou", "level": 20, "maxLevel": 20 },
+    { "species": "Shellder", "level": 20, "maxLevel": 20 },
+    { "species": "Chinchou", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Chinchou", "level": 40, "maxLevel": 40 },
+    { "species": "Shellder", "level": 40, "maxLevel": 40 },
+    { "species": "Tentacruel", "level": 40, "maxLevel": 40 },
+    { "species": "Lanturn", "level": 40, "maxLevel": 40 },
+    { "species": "Tentacruel", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "hoennSounds": [
+    "Whismur",
+    "Linoone"
+  ],
+  "sinnohSounds": [
+    "Buizel",
+    "Bidoof"
+  ],
+  "warps": [],
+  "objects": [
+    { "id": "w21_fishing_2", "looks": "fishing_2", "movement": "17", "x": 1048, "z": 412, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 0, "script": "TRAINER_FISHERMAN_ARNOLD" },
+    { "id": "w21_fishing_2_2", "looks": "fishing_2", "movement": "0", "x": 1031, "z": 423, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 0, "script": "TRAINER_FISHERMAN_MURPHY" },
+    { "id": "w21_fishing_2_3", "looks": "fishing_2", "movement": "0", "x": 1033, "z": 444, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 0, "script": "TRAINER_FISHERMAN_LIAM" },
+    { "id": "w21_fishing_2_4", "looks": "fishing_2", "movement": "0", "x": 1034, "z": 458, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 0, "script": "TRAINER_FISHERMAN_GIDEON" },
+    { "id": "w21_gsswimmerw", "looks": "gsswimmerw", "movement": "0", "x": 1038, "z": 406, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_SWIMMER_F_NIKKI" },
+    { "id": "w21_gsswimmerw_2", "looks": "gsswimmerw", "movement": "20", "x": 1037, "z": 429, "facing": 2, "rangeX": 8, "rangeZ": 0, "trainer": "sees", "sight": 2, "script": "TRAINER_SWIMMER_F_CHELAN" },
+    { "id": "w21_gsswimmerw_3", "looks": "gsswimmerw", "movement": "0", "x": 1047, "z": 477, "facing": 1, "rangeX": 8, "rangeZ": 0, "trainer": "sees", "sight": 2, "script": "TRAINER_SWIMMER_F_KENDRA" },
+    { "id": "w21_gsswimmerm", "looks": "gsswimmerm", "movement": "39", "x": 1047, "z": 444, "facing": 2, "rangeX": 4, "rangeZ": 4, "trainer": "sees", "sight": 1, "script": "TRAINER_SWIMMER_M_TYSON" },
+    { "id": "w21_gsswimmerm_2", "looks": "gsswimmerm", "movement": "0", "x": 1039, "z": 465, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_SWIMMER_M_ESTEBAN" },
+    { "id": "w21_gsswimmerm_3", "looks": "gsswimmerm", "movement": "0", "x": 1050, "z": 465, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_SWIMMER_M_DUANE" },
+    { "id": "w21_gsman2", "looks": "gsman2", "movement": "0", "x": 1029, "z": 471, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 2, "script": "TRAINER_BIRD_KEEPER_GS_EASTON" },
+    { "id": "w21_gsman2_2", "looks": "gsman2", "movement": "0", "x": 1033, "z": 418, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_BIRD_KEEPER_GS_KINSLEY" },
+    { "id": "w21_gsmiddleman1", "looks": "gsmiddleman1", "movement": "14", "x": 1043, "z": 415, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CAMERON", "script": "W21_000+1" },
+    { "id": "w21_gsbigman", "looks": "gsbigman", "movement": "0", "x": 1044, "z": 380, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_031", "script": "65535" }
+  ],
+  "signs": [
+    { "x": 1044, "z": 412, "type": 2, "script": "std_hiddenitem_w21_stardust", "item": "Stardust", "flag": "FLAG_HIDDEN_ITEM_W21_STARDUST" },
+    { "x": 1037, "z": 436, "type": 2, "script": "std_hiddenitem_w21_stardust_2", "item": "Stardust", "flag": "FLAG_HIDDEN_ITEM_W21_STARDUST_2" },
+    { "x": 1042, "z": 439, "type": 2, "script": "std_hiddenitem_w21_stardust_3", "item": "Stardust", "flag": "FLAG_HIDDEN_ITEM_W21_STARDUST_3" },
+    { "x": 1033, "z": 481, "type": 2, "script": "std_hiddenitem_t09_w21_rare_candy", "item": "Rare Candy", "flag": "FLAG_HIDDEN_ITEM_T09_W21_RARE_CANDY" }
+  ],
+  "triggers": []
+}

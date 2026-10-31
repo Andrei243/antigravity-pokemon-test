@@ -1,0 +1,48 @@
+{
+  "key": "pallet_town_oaks_lab",
+  "index": 505,
+  "name": "Pallet Town",
+  "matrix": 250,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_T_MASARA",
+  "nightMusic": "GS_T_MASARA",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 8, "z": 13, "to": "pallet", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "t01r0301_ookido", "looks": "ookido", "movement": "15", "x": 8, "z": 6, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T01R0301_000+1" },
+    { "id": "t01r0301_assistantm", "looks": "assistantm", "movement": "2", "x": 6, "z": 10, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T01R0301_001+1" },
+    { "id": "t01r0301_assistantm_2", "looks": "assistantm", "movement": "16", "x": 11, "z": 8, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "T01R0301_002+1" },
+    { "id": "t01r0301_assistantm_3", "looks": "assistantm", "movement": "14", "x": 12, "z": 12, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "T01R0301_003+1" },
+    { "id": "t01r0301_monstarball", "looks": "monstarball", "movement": "0", "x": 7, "z": 3, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_OAKS_LAB_CHARMANDER_BALL", "script": "0" },
+    { "id": "t01r0301_monstarball_2", "looks": "monstarball", "movement": "0", "x": 8, "z": 3, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_OAKS_LAB_SQUIRTLE_BALL", "script": "0" },
+    { "id": "t01r0301_monstarball_3", "looks": "monstarball", "movement": "0", "x": 9, "z": 3, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_OAKS_LAB_BULBASAUR_BALL", "script": "0" }
+  ],
+  "signs": [
+    { "x": 5, "z": 3, "type": 0, "script": "T01R0301_005+1" },
+    { "x": 1, "z": 11, "type": 0, "script": "T01R0301_004+1" },
+    { "x": 2, "z": 11, "type": 0, "script": "T01R0301_004+1" },
+    { "x": 3, "z": 11, "type": 0, "script": "T01R0301_004+1" },
+    { "x": 4, "z": 11, "type": 0, "script": "T01R0301_004+1" },
+    { "x": 11, "z": 11, "type": 0, "script": "T01R0301_004+1" },
+    { "x": 12, "z": 11, "type": 0, "script": "T01R0301_004+1" },
+    { "x": 13, "z": 11, "type": 0, "script": "T01R0301_004+1" },
+    { "x": 14, "z": 11, "type": 0, "script": "T01R0301_004+1" },
+    { "x": 9, "z": 3, "type": 0, "script": "T01R0301_007+1" },
+    { "x": 7, "z": 3, "type": 0, "script": "T01R0301_009+1" },
+    { "x": 8, "z": 3, "type": 0, "script": "T01R0301_008+1" },
+    { "x": 11, "z": 3, "type": 0, "script": "T01R0301_004+1" },
+    { "x": 12, "z": 3, "type": 0, "script": "T01R0301_004+1" },
+    { "x": 13, "z": 3, "type": 0, "script": "T01R0301_004+1" },
+    { "x": 14, "z": 3, "type": 0, "script": "T01R0301_004+1" }
+  ],
+  "triggers": []
+}

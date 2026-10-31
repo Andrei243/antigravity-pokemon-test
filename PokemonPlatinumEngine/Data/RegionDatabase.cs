@@ -572,6 +572,9 @@ public static class RegionDatabase
                 "Pewter_Museum", "Pewter_NortheastHouse", "Pewter_Gym", "Pewter_Mart", "Pewter_PokemonCenter_1F", "Pewter_PokemonCenter_B1F", "Pewter_SouthwestHouse",
                 "Viridian_PokemonCenter_1F", "Viridian_PokemonCenter_B1F", "Viridian_Mart", "Viridian_NortheastHouse", "Viridian_TrainerHouse_1F",
                 "Route2_ForestSouthGate", "Route2_ForestNorthGate", "Route2_SoutheastGate", "Route2_RoadHouse", "Viridian_Forest",
+                // Plan 20 · J15, part g: Viridian's gate to Route 1, Pallet Town's rooms, Cinnabar Island's Pokémon Center, the Seafoam Islands' first floor and Blaine's Gym
+                "Viridian_Route1Gate", "Pallet_RedsHouse_1F", "Pallet_RedsHouse_2F", "Pallet_BluesHouse_1F", "Pallet_BluesHouse_2F", "Pallet_OaksLab",
+                "Cinnabar_PokemonCenter_1F", "Cinnabar_PokemonCenter_B1F", "Seafoam_1F", "Seafoam_Gym",
             }
         },
         new()

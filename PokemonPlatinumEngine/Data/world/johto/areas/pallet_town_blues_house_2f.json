@@ -1,0 +1,26 @@
+{
+  "key": "pallet_town_blues_house_2f",
+  "index": 507,
+  "name": "Pallet Town",
+  "matrix": 249,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_T_MASARA",
+  "nightMusic": "GS_T_MASARA",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 3, "to": "pallet_town_blues_house_1f", "toWarp": 1 }
+  ],
+  "objects": [],
+  "signs": [
+    { "x": 5, "z": 3, "type": 0, "script": "T01R0202_001+1" },
+    { "x": 7, "z": 3, "type": 0, "script": "T01R0202_000+1" }
+  ],
+  "triggers": []
+}

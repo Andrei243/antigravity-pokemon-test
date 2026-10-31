@@ -1,0 +1,14 @@
+{
+  // The gate house between Viridian City's south edge and Route 1 (plan 20 · J15, part g)
+  "area": "viridian_route_1_gatehouse",
+  "bgmTrack": "kanto/viridian",
+  "people": {
+    "t02r0401_counterm": {
+      "name": "Guard",
+      "still": true,
+      "dialog": [
+        "Route 1 runs south to Pallet Town. It is a short road, but plenty of trainers walk it to test themselves."
+      ]
+    }
+  }
+}

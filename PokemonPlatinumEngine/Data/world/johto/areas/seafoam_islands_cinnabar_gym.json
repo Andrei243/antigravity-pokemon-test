@@ -1,0 +1,32 @@
+{
+  "key": "seafoam_islands_cinnabar_gym",
+  "index": 457,
+  "name": "Seafoam Islands",
+  "matrix": 264,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave3",
+  "dayMusic": "GS_GYM",
+  "nightMusic": "GS_GYM",
+  "bike": false,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 14, "z": 25, "to": "johto_seafoam_islands_1f", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "d11r0106_gsleader15", "looks": "gsleader15", "movement": "15", "x": 13, "z": 12, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SEAFOAM_GYM_BLAINE", "script": "D11R0106_000+1" },
+    { "id": "d11r0106_sunglasses", "looks": "sunglasses", "movement": "15", "x": 16, "z": 23, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "D11R0106_001+1" },
+    { "id": "d11r0106_assistantm", "looks": "assistantm", "movement": "15", "x": 15, "z": 17, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "D11R0106_005+1" },
+    { "id": "d11r0106_assistantm_2", "looks": "assistantm", "movement": "17", "x": 17, "z": 11, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "D11R0106_006+1" },
+    { "id": "d11r0106_assistantm_3", "looks": "assistantm", "movement": "17", "x": 8, "z": 17, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "D11R0106_007+1" },
+    { "id": "d11r0106_gsassistantm", "looks": "gsassistantm", "movement": "16", "x": 20, "z": 14, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "D11R0106_002+1" },
+    { "id": "d11r0106_gsassistantm_2", "looks": "gsassistantm", "movement": "14", "x": 13, "z": 8, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "D11R0106_003+1" },
+    { "id": "d11r0106_gsassistantm_3", "looks": "gsassistantm", "movement": "14", "x": 9, "z": 12, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "D11R0106_004+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}
