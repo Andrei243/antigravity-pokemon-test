@@ -4,6 +4,7 @@ using System.Numerics;
 using PokemonPlatinumEngine.Battle;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Graphics;
+using PokemonPlatinumEngine.Models;
 using Xunit;
 
 namespace PokemonPlatinumTests;
@@ -315,6 +316,88 @@ public class SignatureMoveTests
             Assert.True(MathF.Abs(off.X) > c.ToHalfWidth * 0.9f || off.Z > 0.2f * c.ToSize, $"crack at {off}");
             Assert.True(off.Z >= -0.05f * c.ToSize, $"crack behind at {off}");
         }
+    }
+
+    /// <summary>Y17f's batch: the moves of our own past level 100 (plan 06 · R31) that are worth staging.</summary>
+    public static readonly string[] Y17f =
+    {
+        "Titan Tackle", "Resonant Hymn", "Crescent Kick", "Ki Burst", "Mountain Breaker", "Talon Dive", "Jet Stream",
+        "Zenith Plunge", "Venom Lance", "Miasma Torrent", "Fault Line", "Magma Vein", "Tectonic Rend", "Boulder Crush",
+        "Crystal Lance", "Skyfall Stone", "Mandible Crush", "Spectral Claw", "Phantom Lantern", "Forge Hammer", "Magnet Lance",
+        "Cinder Stomp", "Pyre Lance", "Sunforge Blast", "Riptide Slam", "Abyssal Current", "Maelstrom Crash", "Thornlash",
+        "Arc Lance", "Ion Cascade", "Mind Blade", "Astral Pulse", "Mindbreak Wave", "Glacier Ram", "Whiteout Gale",
+        "Permafrost Lance", "Scale Rend", "Wyrmflare", "Serpent Crash", "Rending Fang", "Umbral Pulse", "Fey Strike",
+        "Starlight Chorus",
+        "Rally Cry", "Centered Stance", "Updraft", "Monolith Pose", "Molt Renewal", "Alloy Plating", "Kindle", "Tidal Ward",
+        "Verdant Renewal", "Overcharge", "Clairvoyance", "Wyrm Dance", "Moonlit Grace",
+    };
+
+    /// <summary>The setups of our own on their own side, which take no shot.</summary>
+    private static readonly string[] Y17fSetups =
+    {
+        "Rally Cry", "Centered Stance", "Updraft", "Monolith Pose", "Molt Renewal", "Alloy Plating", "Kindle", "Tidal Ward",
+        "Verdant Renewal", "Overcharge", "Clairvoyance", "Wyrm Dance", "Moonlit Grace",
+    };
+
+    [Fact]
+    public void Y17fsBatchIsInTheTable()
+    {
+        Assert.DoesNotContain(Y17f, m => !Directions.Has(m));
+        // Every one a move of our own (generation 0, ids 3001 to 3072), none of an earlier batch, none twice
+        Assert.All(Y17f, m => Assert.InRange(MoveDatabase.Get(m)!.Id, 3001, 3072));
+        Assert.Empty(Y17f.Intersect(Y17b).Concat(Y17f.Intersect(Y17c)).Concat(Y17f.Intersect(Y17d)).Concat(Y17f.Intersect(Y17e)));
+        Assert.Equal(Y17f.Length, Y17f.Distinct().Count());
+        // Every move of ours of 90 power or more is staged, and every one on its own side
+        var ours = MoveDatabase.GetAll().Where(m => m.Id is >= 3001 and <= 3072).ToList();
+        Assert.DoesNotContain(ours, m => m.Power >= 90 && !Directions.Has(m.Name));
+        Assert.DoesNotContain(ours, m => m.Category == MoveCategory.Status && m.Target is MoveTarget.User or MoveTarget.UserAndAllies &&!Directions.Has(m.Name));
+        Assert.True(Directions.Table.Count >= 35 + Y17c.Length + Y17d.Length + Y17e.Length + Y17f.Length);
+    }
+
+    [Fact]
+    public void Y17fsBodiesAnswer()
+    {
+        // The bodies flung in meet their targets and never rise
+        foreach (var move in new[] { "Titan Tackle", "Riptide Slam", "Maelstrom Crash", "Arc Lance", "Glacier Ram", "Serpent Crash" })
+        {
+            Assert.True(Directions.UserBody(Cue(move, I)).Toward > 0.5f, move);
+            for (float age = 0f; age < 1.3f; age += 0.01f) Assert.Equal(0f, Directions.UserBody(Cue(move, age)).Up);
+        }
+        // The talons and the plunge rise over their wind-up and come down on the target
+        foreach (var move in new[] { "Talon Dive", "Zenith Plunge" })
+            Assert.True(Directions.UserBody(Cue(move, I - 0.12f)).Up > 0.2f, move);
+        // Blows from above press; the ground's jolt; the magma's vein tosses; the jaws and the fang only shudder
+        foreach (var move in new[] { "Mountain Breaker", "Zenith Plunge", "Boulder Crush", "Forge Hammer", "Cinder Stomp" })
+            Assert.True(Directions.TargetBody(Cue(move, I + 0.1f)).Squash > 0f, move);
+        foreach (var move in new[] { "Fault Line", "Tectonic Rend" })
+            Assert.True(Directions.TargetBody(Cue(move, I + 0.12f)).Moves, move);
+        Assert.True(Directions.TargetBody(Cue("Magma Vein", I + 0.3f)).Up > 0.1f);
+        foreach (var move in new[] { "Mandible Crush", "Rending Fang" })
+            Assert.Equal(0f, Directions.TargetBody(Cue(move, I + 0.1f)).Toward);
+        // The blasts wound up: Sunforge Blast heaves, Mindbreak Wave and Permafrost Lance rock their users back
+        Assert.True(Directions.UserBody(Cue("Sunforge Blast", I - 0.1f)).Squash > 0f);
+        foreach (var move in new[] { "Mindbreak Wave", "Permafrost Lance" })
+            Assert.True(Directions.UserBody(Cue(move, I)).Toward < 0f, move);
+        // The setups are on their own side: no shot, nothing held
+        foreach (var move in Y17fSetups)
+        {
+            Assert.Equal(SignatureShot.None, Directions.Of(move)!.Shot);
+            Assert.False(Directions.Of(move)!.Heavy, move);
+        }
+    }
+
+    [Theory]
+    [InlineData("Mountain Breaker"), InlineData("Zenith Plunge"), InlineData("Skyfall Stone"), InlineData("Forge Hammer"),
+     InlineData("Sunforge Blast"), InlineData("Astral Pulse"), InlineData("Rally Cry"), InlineData("Alloy Plating"), InlineData("Overcharge")]
+    public void Y17fsReactionsComeAfterTheImpactAndGo(string move)
+    {
+        var col = MoveFx.ColorsOf(MoveDatabase.Get(move)!.Type);
+        var before = new FxList();
+        Directions.PlayEffect(new FxCtx(Cue(move, I - 0.08f), new FxPlaces()), col, before);
+        Assert.Empty(before.Quads);
+        var during = new FxList();
+        Directions.PlayEffect(new FxCtx(Cue(move, I + 0.2f), new FxPlaces()), col, during);
+        Assert.InRange(during.Quads.Count + during.Ribbons.Count, 1, 10);
     }
 
     // ------------------------------------------------------------------ the hit-stop
