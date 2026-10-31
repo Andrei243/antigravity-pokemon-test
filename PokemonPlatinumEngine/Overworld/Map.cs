@@ -246,6 +246,9 @@ public class Map
     public InteriorStyle Interior { get; set; } = InteriorStyle.None;
     public bool IsIndoors => Interior != InteriorStyle.None;
 
+    /// <summary>How a cave that is a building is built (plan 20, wave 77: the Burned Tower's timbers, the Ruins of Alph's stone); rock for every other.</summary>
+    public CaveLook CaveLook { get; set; } = CaveLook.Rock;
+
     /// <summary>
     /// Where a room's floor begins: the first column and the first row with anything but wall on them, above the
     /// front wall's row. Its side wall stands west of the one and its back wall north of the other. The rooms made

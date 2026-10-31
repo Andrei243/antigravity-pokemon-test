@@ -3,6 +3,8 @@
   // sprout_tower_3f.txt's; the Sages battle by their own records (Johto's trainers.json). The boy is hidden by a flag
   // of ours until his scene, in place of HeartGold's unnamed one
   "area": "sprout_tower_3f",
+  "interior": "Tower",
+  "overTheDark": true,
   "bgmTrack": "johto/sprout_tower",
   "triggers": [ { "trigger": 0, "script": "RivalLeaves" } ],
   "people": {

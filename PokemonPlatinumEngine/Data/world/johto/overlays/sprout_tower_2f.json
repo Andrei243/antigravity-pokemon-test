@@ -2,6 +2,8 @@
   // Sprout Tower's middle floor (plan 20 · J4), HeartGold's room. The Sages battle by their own records (Johto's
   // trainers.json)
   "area": "sprout_tower_2f",
+  "interior": "Tower",
+  "overTheDark": true,
   "bgmTrack": "johto/sprout_tower",
   "people": {
     "d15r0102_bozu": {

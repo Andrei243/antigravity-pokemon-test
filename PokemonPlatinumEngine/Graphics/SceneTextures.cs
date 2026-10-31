@@ -27,6 +27,7 @@ internal static class SceneTextures
         _ = BankFace; _ = RockFace; _ = PowerFace; _ = Waterfall; _ = IslandUnderside;
         _ = LeagueFace(LeagueArt.Stone.Slate); _ = LeagueFace(LeagueArt.Stone.Basalt); _ = LeagueFace(LeagueArt.Stone.Marble);
         _ = LeagueFace(LeagueArt.Stone.Sandstone); _ = RoomFace;
+        _ = TimberFace; _ = CaveFace(CaveLook.Ruins); _ = CaveFace(CaveLook.Charred);
         _ = LightPool; _ = LampGlow; _ = WindowLight;
         // Unova's seasons' plants (plan 22 · U3): small sheets, made once, so a chunk baked in any season finds them
         foreach (var season in Enum.GetValues<Core.Season>())
@@ -141,6 +142,12 @@ internal static class SceneTextures
 
     /// <summary>The face a house's upper level stands on: its own panelled wainscot (style guide, "Rooms"; plan 01 · M11).</summary>
     public static Texture2D RoomFace => Get("room_face", GroundBaker.RoomFace, repeat: true);
+
+    /// <summary>The face a wooden floor stands on over the dark: posts and braces under a beam (plan 20, wave 77: Sprout Tower, the Violet Gym).</summary>
+    public static Texture2D TimberFace => Get("timber_face", BuiltArt.TimberFace, repeat: true);
+
+    /// <summary>The face between the levels of a cave that is a building, in its look (plan 20, wave 77).</summary>
+    public static Texture2D CaveFace(CaveLook look) => Get($"cave_face_{look}", () => BuiltArt.Face(look), repeat: true);
 
     /// <summary>The face the floors of a room of the League stand on, in its stone (style guide, "The League's rooms").</summary>
     public static Texture2D LeagueFace(LeagueArt.Stone stone) => Get($"league_face_{stone}", () => LeagueArt.Face(stone), repeat: true);

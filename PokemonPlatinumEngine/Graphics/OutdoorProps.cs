@@ -106,7 +106,9 @@ internal static class OutdoorProps
             {
                 if (map.GetGroundTile(tx, ty) != TileType.Signpost || MapStructures.IsWallSign(map, tx, ty)) continue;
                 kit.Origin = new Vector3(tx, Relief.At(map, tx + 0.5f, ty + 0.5f), ty);
-                kit.Sprite(kit.Face("signpost", 30, 30, PaintSignpost), 16, 16);
+                // In the Ruins of Alph what is read is a carved stele, not a signboard (plan 20, wave 77)
+                if (map.CaveLook == CaveLook.Ruins) kit.Sprite(kit.Face("stele", 32, 36, BuiltArt.PaintStele), 16, 16);
+                else kit.Sprite(kit.Face("signpost", 30, 30, PaintSignpost), 16, 16);
             }
     }
 

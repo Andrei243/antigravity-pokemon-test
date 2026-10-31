@@ -335,6 +335,31 @@ public enum InteriorStyle
     /// paving) as a Gym's is, its walls and the blocks of its shops shopfronts (style guide, "Rooms").
     /// </summary>
     Street,
+    /// <summary>
+    /// A wooden tower's floor (plan 20, wave 77: Sprout Tower): dark polished boards, walls of timber and paper screens,
+    /// and the gaps the original leaves between its floors open onto the dark under a rail of timber, its floors standing
+    /// on posts and beams; its swaying pillar drawn apart (style guide, "Rooms", "A wooden tower").
+    /// </summary>
+    Tower,
+    /// <summary>
+    /// A hall of raised walkways over the dark (plan 20, wave 77: the Violet Gym, Falkner's): pale boards railed in
+    /// timber on trestles, walls of the sky's blue over timber (style guide, "Rooms", "Walkways over the dark").
+    /// </summary>
+    Aerie,
+}
+
+/// <summary>
+/// How a cave that is no cave is built (plan 20, wave 77; an overlay's <c>caveLook</c>; style guide, "Caves", "Caves that
+/// are built"): its floor, the top of its rock and the faces between its levels. <see cref="Rock"/> is every cave's.
+/// </summary>
+public enum CaveLook
+{
+    /// <summary>Rock: every cave's own look.</summary>
+    Rock,
+    /// <summary>A tower burned down to its timbers (the Burned Tower): charred boards, ash and burnt beams.</summary>
+    Charred,
+    /// <summary>Dressed stone (the Ruins of Alph's chambers and hall): flagstones, ashlar and carved steles.</summary>
+    Ruins,
 }
 
 /// <summary>

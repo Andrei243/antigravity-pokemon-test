@@ -4,6 +4,7 @@
   // (trigger 0); they wake and flee, Raikou and Entei to roam Johto, and Eusine comes down after them. Its charred look
   // is still the stand-in a later session paints
   "area": "burned_tower_b1f",
+  "caveLook": "Charred",
   "bgmTrack": "johto/burned_tower",
   "triggers": [
     { "trigger": 0, "script": "Awaken" }

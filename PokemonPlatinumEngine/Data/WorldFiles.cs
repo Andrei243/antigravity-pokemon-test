@@ -854,6 +854,12 @@ public sealed class WorldOverlayFile
     /// Gym's gears stand over it.
     /// </summary>
     public bool OverTheDark { get; set; }
+
+    /// <summary>
+    /// A cave that is a building (plan 20, wave 77): <c>Charred</c> for the Burned Tower's timbers, <c>Ruins</c> for the
+    /// Ruins of Alph's dressed stone. Left out, a cave is rock (<see cref="Overworld.CaveLook.Rock"/>).
+    /// </summary>
+    public CaveLook? CaveLook { get; set; }
     public List<string>? EvolutionSites { get; set; }
 
     /// <summary>Where the area's warps lead among the hand-made maps, by the warp's number in the area file.</summary>

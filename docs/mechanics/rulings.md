@@ -7091,6 +7091,31 @@ a new HM of ours.
 - *The terrain lab's whirlpool*: the harness's `lab` map has a whirlpool of three tiles in its bay (`lab36`, `lab37`),
   which J8 left for the session that shot `lab` again.
 
+## Johto's room looks: Sprout Tower, the Violet Gym, the Burned Tower and the Ruins of Alph (2026-10-31, plan 20, wave 77)
+
+The user's decision of 2026-10-31: build the room looks J2, J5 and J7 left. The style guide's "A wooden tower",
+"Walkways over the dark" and "Caves that are built" say what each looks like; this says what was decided.
+
+- *Sprout Tower* (`interior: Tower`, `overTheDark`): what the import left blocked with nothing drawn (the gap between the
+  ring and the hall on 1F, the openings round the pillar on 2F and 3F, the strip beside the 3F hall) is nothing, not wall,
+  as the Nimbasa Gym's runway is, and every floor stands on two tiles of timber over it with a rail along its edge. On 1F
+  HeartGold's ring and hall are walled from one another, not open over a gap: we draw the gap, since a wall of the
+  importer's thickness was the dark slab the user asked to be rid of, and the walk is the same either way. The pillar
+  is the room's nine columns drawn as one trunk that sways (`GymPieces.BuildPillar`), its lean the picture's alone: the
+  columns' tiles block as they did, and nothing of the field moves with it.
+- *The Violet Gym* (`interior: Aerie`, `overTheDark`): its walkways over the dark, each on two tiles of timber whatever
+  lies lower beside it; the drop from the walkways' level to the entrance's floor is a timber face as tall as the drop.
+  No `arenaType` is given, so Falkner's battle keeps the stage it had (a Johto Gym's stage is a later session's).
+- *The Burned Tower and the Ruins of Alph* stay caves (`setting: Cave`: the camera, the light, the lip, the encounters
+  and the walk are a cave's) and take a look of their own by an overlay's `caveLook` (`Charred`, `Ruins`; `Map.CaveLook`):
+  their floor, rock tops and faces are painted in it, tile for tile, and the rock with no floor within two tiles of it is
+  void (`World.DarkBeyondTheWalls`), which takes away the slab of rock in the underground hall's unreached corner. A
+  signpost of the Ruins is a carved stele of our own glyphs.
+- *The building over the hall's door*: the catalogue had the two names the wrong way round. `ar_center` stands over the
+  grounds' warps 8 and 9 (the hall's door) and `ar_study`, with `ar_study_door` in it, over warp 10 (the research
+  centre's): `ar_center` is now a `Shrine` (the chambers' boards under a hip roof, no sign) and `ar_study` the `Lab`.
+- *Other regions*: nothing they draw asks the new values, and the harness's `rooms`, `interiors twinleaf` and a Sinnoh
+  cave (`area oreburgh_gate_1f`) drew the same before and after, shot for shot.
 ## The Whirl Islands' stairs that weren't (2026-10-31, plan 20 · J1's decision 8 looked at again)
 
 - *Asked*: an importer rule laying HeartGold's height plates that stand on their edge as slopes, so that the Whirl
