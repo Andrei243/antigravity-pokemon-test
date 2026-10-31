@@ -38,6 +38,7 @@ About 350 sittings are left, a dozen or so of them marked optional (Hisui and th
 | 24 · Guards | X1, X2, X3 | 3 | |
 | 25 · Battle presentation | Y1, Y2, Y3, Y4, Y5, Y6 | 10 | |
 | 26 · Voice | — (only the plan is written) | 8 | NVorbis allowed on 2026-10-12 |
+| 29 · Legendary scenes | — (only the plan is written, 2026-10-31) | 9 | LS10 optional; LS2 to LS9 side by side after LS1 |
 | 27 · Moving to Unity | — (only the plan is written, 2026-10-08) | 7 | deferred by the user to the end of the project, after every other plan; its numbers are measured again then |
 
 Plan 13 and plan 26 both number their sessions V1, V2…; this file always writes the plan with the ID (13 · V1, 26 · V1), and so should anyone citing them.
@@ -249,6 +250,7 @@ These are the plans the README put after Sinnoh's Hall of Fame, which has been i
   - N4 done in wave 14 (the scripts, overlays and rooms translated through sibling files, `tools/TextTool`, `docs/localisation.md`; it numbers the lines as 26 · V1 will address them, so V1 takes N4's keys as they are). It was kept out of the same wave as V1 for that reason.
   - N5's Latin half done in wave 15 (a second atlas of Nunito for Latin Extended-A and the marks, made when a text first needs it, so English pays nothing; no face downloaded; the no-break spaces drawn as spaces). Its CJK half waits for a language that needs it.
   - N6 in Romanian: part a done in wave 16 (`Data/text/ro/ui.json`, every key of the screens and the battle, offered in the options; the glossary and the decisions are in plan 17); part b, the scripts, overlays, rooms and places, goes in slices in the story's order: slice 1 done in wave 17 (to Eterna Forest), slice 2 in wave 18 (to Celestic Town and Veilstone City's streets).
+- **Legendary scenes (29)**, written 2026-10-31: LS1 first (the recipe in the style guide, `LegendaryScenesTests`, Sinnoh's rifts and Turnback Cave); then LS2 to LS9 side by side in lane 4 with the chapters, each in its own script files (LS7 and LS8 agree the Regis' lines); LS10 only if they ask for it. Plans 20 · J15 and 22 · U10 write their remaining legendaries by its recipe.
 - **Side activities (15)**: E6 to E8 (the Pokéathlon) are kept (decided 2026-10-12) and run just before 20 · J13, which stands the dome in Johto; E5 runs just before 20 · J7.
 - **Unity (27)**: deferred by the user to the end, after everything above. Its spike (S0) is where its own six decisions begin.
 
