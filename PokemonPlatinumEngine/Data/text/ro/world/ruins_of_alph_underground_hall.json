@@ -1,0 +1,140 @@
+{
+  "people": {
+    "d24r0205_gswoman1": {
+      "name": {
+        "en": [
+          "Tourist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came for the carvings and found these Pokémon floating between them. They look like the carvings come to life!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d24r0205_gsbigman": {
+      "name": {
+        "en": [
+          "Tourist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Every one of them is a different shape. I'm trying to see one of each, but I keep losing count."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d24r0205_gsoldman1": {
+      "name": {
+        "en": [
+          "Old man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "When I was young the Ruins were only stones in a field. Now there's a whole hall under them. Who'd have thought?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d24r0205_gsassistantm": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We're copying out every carving on these pillars. There are more shapes than letters in any alphabet we know."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d24r0205_gsassistantm_2": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Pokémon here are called Unown. They seem to gather wherever the carvings are thickest."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d24r0205_gsassistantm_3": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Each panel that was solved seems to have woken more of them. I wonder what solving all four would do."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d24r0205_gsassistantm_4": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Careful where you step. We've only just begun to map this place, and it may go deeper still."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "D24R0205_002+1": {
+      "en": [
+        "Strange shapes are carved in rows down the pillar. They look a little like the Pokémon floating in the hall."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

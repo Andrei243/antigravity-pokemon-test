@@ -344,7 +344,11 @@
     { "name": "Route16_CyclingGate", "matrix": 70, "area": "route_16_gatehouse", "trees": "Round", "setting": "Indoors" },
     { "name": "Route16_EastHouse", "matrix": 66, "area": "johto_route_16_house", "trees": "Round", "setting": "Indoors" },
     { "name": "Route18_CyclingGate", "matrix": 70, "area": "route_18_gatehouse", "trees": "Round", "setting": "Indoors" },
-    { "name": "Seafoam_Gym", "matrix": 264, "area": "seafoam_islands_cinnabar_gym", "trees": "Round", "setting": "Cave" }
+    { "name": "Seafoam_Gym", "matrix": 264, "area": "seafoam_islands_cinnabar_gym", "trees": "Round", "setting": "Cave" },
+    // Plan 20 · J5 and J8's leftovers: the Ruins of Alph's hall (its entrance on the grounds, the stairs down and the
+    // underground hall with the Unown)
+    { "name": "RuinsOfAlph_HallEntrance", "matrix": 181, "area": "ruins_of_alph_hall_entrance", "trees": "Round", "setting": "Cave" },
+    { "name": "RuinsOfAlph_UndergroundHall", "matrix": 37, "area": "ruins_of_alph_underground_hall", "trees": "Round", "setting": "Cave" }
   ],
   "areas": [
     // Plan 20 · J2: New Bark Town to Route 31's gate house, with their rooms
@@ -473,6 +477,8 @@
     // Plan 20 · J15, part i: Route 11 east of Vermilion City with its gate to Route 12 and Diglett's Cave under it to Route 2,
     // and Routes 16 to 18, the Cycling Road from Celadon City down to Fuchsia City, with their gates and Route 16's house
     "johto_route_11", "route_19_route_12_gatehouse", "diglett_cave", "johto_route_16", "johto_route_16_house", "route_16_east",
-    "route_16_gatehouse", "johto_route_17", "johto_route_18", "route_18_gatehouse"
+    "route_16_gatehouse", "johto_route_17", "johto_route_18", "route_18_gatehouse",
+    // Plan 20 · J5's leftovers: the Ruins of Alph's hall
+    "ruins_of_alph_hall_entrance", "ruins_of_alph_underground_hall"
   ]
 }

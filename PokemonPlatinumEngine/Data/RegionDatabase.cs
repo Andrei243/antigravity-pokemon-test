@@ -580,6 +580,8 @@ public static class RegionDatabase
                 "Fuchsia_Gym", "Fuchsia_SouthwestHouse", "Fuchsia_WardensHouse", "Viridian_Gym", "Route12_FishingBrotherHouse",
                 // Plan 20 · J15, part i: the gate between Routes 11 and 12, Diglett's Cave, the Cycling Road's two gates and Route 16's house
                 "Route11_Route12Gate", "Diglett_Cave", "Route16_CyclingGate", "Route16_EastHouse", "Route18_CyclingGate",
+                // Plan 20 · J5's leftovers: the Ruins of Alph's hall
+                "RuinsOfAlph_HallEntrance", "RuinsOfAlph_UndergroundHall",
             }
         },
         new()

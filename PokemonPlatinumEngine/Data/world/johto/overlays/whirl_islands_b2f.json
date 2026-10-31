@@ -1,7 +1,9 @@
 {
   // The Whirl Islands' second basement (plan 20 · J8): an old sage keeps watch over the deep part of the caves, where the
   // great bird of the sea sleeps. Only its upper level is come to so far: the lower level below its rock step, with the
-  // ladder down to the third basement (warp 4) and the way into Lugia's cave (warp 5), is plan 20 · J11's
+  // ladder down to the third basement (warp 4) and the way into Lugia's cave (warp 5), is plan 20 · J11's. HeartGold's
+  // flights of stairs down to it (rows 31, 35 and 39 of the matrix) are height plates standing on their edge, which the
+  // importer leaves out (J1's decision 8), so the stairs read as cliffs until it lays them as slopes (plan 20, J8's status)
   "area": "whirl_islands_b2f",
   "bgmTrack": "johto/union_cave",
   "locked": [

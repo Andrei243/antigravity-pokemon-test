@@ -3337,6 +3337,9 @@ old rod 109 (own 10)
 good rod 116 (own 20)
 super rod 129 (own 40)
 trainers 1, 120 (own 26): johto_psychic_m_nathan 120 (26) [Girafarig → Farigiraf]
+=== ruins_of_alph_underground_hall
+Ruins of Alph, Johto
+grass 106 (own 5)
 === rustboro_city_gym
 Rustboro City, Hoenn
 trainers 3, 139-140 (own 8-10): hoenn_josh 140 (10) [Geodude → Golem], hoenn_marc 139 (8) [Geodude → Golem, Geodude → Golem], hoenn_tommy 139 (8) [Geodude → Golem, Geodude → Golem]

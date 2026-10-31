@@ -428,6 +428,9 @@ public class JohtoStoryTests
         var solved = game.Play(script);
         Assert.Contains($"open AlphPuzzle {panel} solved", solved.Log);
         Assert.True(game.Story.Has(flag));
+        // ...the hall's door on the grounds opens for good and the floor gives way into the hall (J5's leftovers)
+        Assert.True(game.Story.Has("FLAG_ALPH_HALL_OPEN"));
+        Assert.Contains(solved.Log, l => l.StartsWith("warp RuinsOfAlph_UndergroundHall", StringComparison.Ordinal));
         var after = game.Play(script);
         Assert.DoesNotContain(after.Log, l => l.StartsWith("open AlphPuzzle"));
         Assert.Empty(after.Asked);

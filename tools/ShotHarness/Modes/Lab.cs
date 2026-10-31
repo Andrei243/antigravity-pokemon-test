@@ -72,6 +72,14 @@ partial class Harness
         engine.ApplySettings(window: false);
         Frames(2);
 
+        // The whirlpool in the bay, from the shore and from the water beside it, a quarter of a second apart as it turns
+        Stand("lab36_whirlpool", 45, 27, Direction.Down);
+        ShotCrop("lab36b_whirlpool_native", 640, 300, 640, 360, 2);
+        Stand("lab37_whirlpool_surfing", 43, 29, Direction.Right, TravelMode.Surfing);
+        Frames(15);
+        Shot("lab37b_whirlpool_turned");
+        Console.WriteLine($"  lab37: the tile ahead of the surfer {lab.BehaviourAt(44, 29)}, a step there {FieldMovement.Step(lab, 43, 29, Direction.Right, new Walker(TravelMode.Surfing, -0.5f)).Kind}");
+
         hiker.SetPosition(20, 15, Direction.Up);
         hiker.SetMode(TravelMode.OnFoot);
         Timing("terrain lab");
@@ -200,6 +208,9 @@ partial class Harness
         // And a polished floor beside them (plan 09 · L10), seen here before the League's rooms and the ruins
         Does(44, 24, 45, 26, TileBehavior.ShinyFloor);
         m.AddProp(PropType.Boulder, 43, 30);
+        // And a whirlpool out in the bay (plan 20 · J8's leftovers): HeartGold's three tiles across, its ring turning
+        Does(44, 28, 46, 30, TileBehavior.Whirlpool);
+        m.AddProp(PropType.Whirlpool, 44, 28, 3, 3);
 
         // A lawn with tall grass, fenced by ledges: hopped out of southward, westward and eastward, entered from the north
         Fill(38, 14, 42, 17, TileType.TallGrass);
