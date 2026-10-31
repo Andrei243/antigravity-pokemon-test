@@ -244,6 +244,9 @@ public class PokemonTests
         // (and Unova's, which Iris's scene leads into and its own sends home, plan 22 · U9, part c)
         if (mapName != "PokemonLeagueHallOfFame" && mapName != "EverGrandeCity_HallOfFame" && mapName != "Underground" && mapName != "PalPark" && mapName != "HoennUnderwater"
             && mapName != "UnovaPokemonLeague_HallOfFame"
+            // (and the Underground Ruins' halls and the three Regis' chambers, which have no warps of their own: the old switch turns the door between them, plan 22 · U10, part b)
+            && mapName != "UndergroundRuins" && mapName != "UndergroundRuins_Sun" && mapName != "UndergroundRuins_Moon"
+            && mapName != "RockPeakChamber" && mapName != "IronChamber" && mapName != "IcebergChamber"
             // (and the Battle Pyramid's floor, left by its stairs' script and its own arrival's, plan 14 · B10)
             && mapName != "BattlePyramidFloor")
             Assert.NotEmpty(map.Warps);
