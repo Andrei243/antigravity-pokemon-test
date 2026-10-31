@@ -180,7 +180,7 @@ internal static partial class ModernUi
     /// The start menu: a panel on the right that slides in, one row per entry with its icon on a coloured chip.
     /// The selected row is a filled pill; the last entry (leaving the game) sits under a rule.
     /// </summary>
-    public static void DrawStartMenu(int sw, IReadOnlyList<(string Label, UiIcon Icon, Color Color)> entries, int selected, float shown, string objective = "")
+    public static void DrawStartMenu(int sw, IReadOnlyList<(string Label, UiIcon Icon, Color Color)> entries, int selected, float shown, string objective = "", string counts = "")
     {
         const float width = 440, row = 74;
         float height = 40 + entries.Count * row + 18;
@@ -188,12 +188,16 @@ internal static partial class ModernUi
         Panel(panel, 34);
 
         // What to do next (plan 12 · Q14): a smaller panel under the menu's, its line wrapped to the panel's width
+        float below = panel.Y + height + 16;
         if (objective.Length > 0)
         {
-            var next = new Rectangle(panel.X, panel.Y + height + 16, width, NextPanelHeight(objective, width - 56));
+            var next = new Rectangle(panel.X, below, width, NextPanelHeight(objective, width - 56));
             Panel(next, 30);
             NextLine(new Rectangle(next.X + 28, next.Y + 18, width - 56, next.Height - 28), objective);
+            below = next.Y + next.Height + 16;
         }
+        // What is left here (plan 12 · Q22): one more under the last
+        if (counts.Length > 0) LeftHerePanel(new Rectangle(panel.X, below, width, LeftHereHeight), counts);
 
         for (int i = 0; i < entries.Count; i++)
         {
@@ -304,8 +308,14 @@ internal static partial class ModernUi
 
     /// <summary>The sign that drops in at the top left on arriving somewhere, as in the games: the place's name on a slanted plate.</summary>
     /// <param name="second">A second line under the name (the season in Unova, plan 22 · U3; style guide, "Location sign"), or null for the one-line sign.</param>
-    public static void DrawLocationSign(string name, float shown, string? second = null)
+    /// <param name="counts">What is left in the place (plan 12 · Q22; style guide, "Location sign"), a line under the name and the season, or null.</param>
+    public static void DrawLocationSign(string name, float shown, string? second = null, string? counts = null)
     {
+        if (counts != null)
+        {
+            DrawCountedSign(name, shown, second, counts);
+            return;
+        }
         float textW = UiFonts.Measure(name, 44, UiWeight.Black);
         if (second != null) textW = Math.Max(textW, UiFonts.Measure(second, 28, UiWeight.Bold));
         float height = second != null ? 132 : 96;
@@ -320,6 +330,38 @@ internal static partial class ModernUi
         }
         UiFonts.DrawCentered(name, r.X + 76, r.Y + 50, 44, Ink, UiWeight.Black);
         UiFonts.DrawCentered(second, r.X + 76, r.Y + 96, 28, Muted, UiWeight.Bold);
+    }
+
+    /// <summary>The location sign with the counts of what is left there (plan 12 · Q22): 36 taller for the line, as wide as its widest.</summary>
+    private static void DrawCountedSign(string name, float shown, string? second, string counts)
+    {
+        var lines = new List<string>();
+        if (second != null) lines.Add(second);
+        lines.Add(counts);
+        float textW = UiFonts.Measure(name, 44, UiWeight.Black);
+        foreach (string line in lines) textW = Math.Max(textW, UiFonts.Measure(line, 28, UiWeight.Bold));
+        float height = 96 + lines.Count * 36;
+        var r = new Rectangle(48, 40 - (1f - shown) * (height + 94), Math.Max(380, textW + 150), height);
+        Panel(r, 24, skew: -0.2f);
+        var color = PlaceColor(name);
+        UiShapes.Shape(new Rectangle(r.X + 26, r.Y + 16, 22, r.Height - 32), 11, Lighter(color, 0.15f), Darker(color, 0.1f), skew: -0.2f);
+        UiFonts.DrawCentered(name, r.X + 76, r.Y + 50, 44, Ink, UiWeight.Black);
+        for (int i = 0; i < lines.Count; i++)
+            UiFonts.DrawCentered(lines[i], r.X + 76, r.Y + 96 + i * 36, 28, Muted, UiWeight.Bold);
+    }
+
+    /// <summary>The height of the start menu's LEFT HERE panel: a caption and one line, as the NEXT panel's.</summary>
+    public const float LeftHereHeight = 28 + 30 + NextLineHeight + 12;
+
+    /// <summary>
+    /// What is left here (plan 12 · Q22; style guide, "Start menu"): the caption LEFT HERE and the counts' line under it, in a
+    /// panel as wide as the start menu's.
+    /// </summary>
+    public static void LeftHerePanel(Rectangle panel, string counts)
+    {
+        Panel(panel, 30);
+        Label(Text.Of("leftHere.caption"), panel.X + 28, panel.Y + 18);
+        UiFonts.Draw(counts, panel.X + 28, panel.Y + 48, NextSize, Ink, UiWeight.ExtraBold);
     }
 
     /// <summary>

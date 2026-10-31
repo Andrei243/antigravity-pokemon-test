@@ -359,6 +359,12 @@ public sealed class GameSettings
     /// </summary>
     public bool AutoBattle { get; set; }
 
+    /// <summary>
+    /// What is left here (plan 12 · Q22, <see cref="Models.AreaChecklist"/>): the items, trainers and species still to be had
+    /// in the area underfoot, counted on the location sign and the start menu. Off unless chosen.
+    /// </summary>
+    public bool AreaChecklist { get; set; }
+
     /// <summary>The preset the first run's measuring chose on this machine (plan 16 · T23), or null where nothing was measured.</summary>
     public GraphicsQuality? MeasuredQuality { get; set; }
 

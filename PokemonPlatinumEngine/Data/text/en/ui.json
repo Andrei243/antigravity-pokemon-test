@@ -172,6 +172,13 @@
         "on": "The commands have AUTO, which plays the battle for you with each Pokémon's strongest move until one of yours faints or Back stops it."
       }
     },
+    "areaChecklist": {
+      "label": "What is left here",
+      "help": {
+        "off": "The place's sign shows only its name.",
+        "on": "The place's sign and the menu count the items, trainers and Pokémon you can still find where you are now, without naming them."
+      }
+    },
     "boxesAnywhere": {
       "label": "Boxes anywhere and a sorted bag",
       "value": { "Off": "Off", "Rules": "By the rules", "On": "On" },
@@ -4631,5 +4638,10 @@
       "alike": "All alike",
       "grade": { "Nothing": "NOTHING", "Meagre": "MEAGRE", "Fair": "FAIR", "Good": "GOOD", "Splendid": "SPLENDID", "Flawless": "FLAWLESS" }
     }
+  },
+  "leftHere": {
+    "caption": "LEFT HERE",
+    "line": "Items {items} · Trainers {trainers} · Pokémon {species}",
+    "nothing": "Nothing left here"
   }
 }
