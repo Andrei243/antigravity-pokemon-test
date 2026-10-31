@@ -6,7 +6,7 @@
           "Nurse"
         ],
         "text": [
-          ""
+          "Asistenta"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "Your Trainer Card shows your name, your money and the Pokémon you've seen. Have a look at it from the menu."
         ],
         "text": [
-          ""
+          "Cartea ta de Antrenor arată numele tău, banii tăi și Pokémonii pe care i-ai văzut. Aruncă o privire în meniu."
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "I'm sorry, the link to other players is closed for now."
         ],
         "text": [
-          ""
+          "Îmi pare rău, legătura cu alți jucători este închisă deocamdată."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "I'm sorry, the link to other players is closed for now."
         ],
         "text": [
-          ""
+          "Îmi pare rău, legătura cu alți jucători este închisă deocamdată."
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Gentleman"
         ],
         "text": [
-          ""
+          "Gentlemanul"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "I came to Celadon to buy a gift for my granddaughter. Choosing one is harder than any battle!"
         ],
         "text": [
-          ""
+          "Am venit în Celadon să cumpăr un cadou pentru nepoata mea. Alegerea lui e mai grea decât orice luptă!"
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -96,7 +96,7 @@
           "Erika's Pokémon are Grass types. Fire, Flying and Ice moves will wilt them in no time."
         ],
         "text": [
-          ""
+          "Pokémonii Erikăi sunt de tip Iarbă. Mișcările de tip Foc, Zburător și Gheață îi ofilesc într-o clipă."
         ]
       }
     },
@@ -106,7 +106,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -114,7 +114,7 @@
           "The perfume shop that used to be here is gone, but the city still smells of flowers in spring."
         ],
         "text": [
-          ""
+          "Magazinul de parfumuri care era aici a dispărut, dar orașul tot miroase a flori primăvara."
         ]
       }
     }

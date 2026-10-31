@@ -6,7 +6,7 @@
           "Caretaker"
         ],
         "text": [
-          ""
+          "Îngrijitorul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome. When the old tower was rebuilt, the memorials were brought here. Take as long as you like."
         ],
         "text": [
-          ""
+          "Bun venit. Când vechiul turn a fost reconstruit, monumentele au fost aduse aici. Stai cât vrei."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Old woman"
         ],
         "text": [
-          ""
+          "Bătrâna"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "I come every week to tell my old Pokémon how its grandchildren are doing. I'm sure it listens."
         ],
         "text": [
-          ""
+          "Vin în fiecare săptămână să-i spun vechiului meu Pokémon ce mai fac nepoții lui. Sunt sigură că ascultă."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "My first Pokémon is remembered here. I miss it, but I'm not sad any more. It wouldn't want me to be."
         ],
         "text": [
-          ""
+          "Primul meu Pokémon este pomenit aici. Îmi lipsește, dar nu mai sunt tristă. N-ar fi vrut să fiu."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "It's quiet here, but not gloomy. The flowers are always fresh."
         ],
         "text": [
-          ""
+          "E liniște aici, dar nu e posomorât. Florile sunt mereu proaspete."
         ]
       }
     }

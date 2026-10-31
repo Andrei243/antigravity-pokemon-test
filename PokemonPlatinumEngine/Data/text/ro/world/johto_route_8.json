@@ -6,7 +6,7 @@
           "Dwayne"
         ],
         "text": [
-          ""
+          "Dwayne"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Biker Dwayne: This road's ours! Nobody passes without a battle!"
         ],
         "text": [
-          ""
+          "Biker Dwayne: Drumul ăsta e al nostru! Nimeni nu trece fără o luptă!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Biker Dwayne: Fine, fine. Pass, then."
         ],
         "text": [
-          ""
+          "Biker Dwayne: Bine, bine. Treci atunci."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Harris"
         ],
         "text": [
-          ""
+          "Harris"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Biker Harris: You beat Dwayne? Let's see you get past me!"
         ],
         "text": [
-          ""
+          "Biker Harris: L-ai învins pe Dwayne? Hai să vedem dacă treci de mine!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Biker Harris: My engine's still running, but my Pokémon aren't."
         ],
         "text": [
-          ""
+          "Biker Harris: Motorul meu încă merge, dar Pokémonii mei nu."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Zeke"
         ],
         "text": [
-          ""
+          "Zeke"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Biker Zeke: Last of the gang. I'm the toughest of us, so don't get comfortable!"
         ],
         "text": [
-          ""
+          "Biker Zeke: Ultimul din bandă. Sunt cel mai dur dintre noi, așa că nu te lăsa pe tânjală!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Biker Zeke: The gang's going to hear about this."
         ],
         "text": [
-          ""
+          "Biker Zeke: Banda va afla despre asta."
         ]
       }
     },
@@ -84,7 +84,7 @@
           "Sam"
         ],
         "text": [
-          ""
+          "Sam"
         ]
       },
       "before": {
@@ -92,7 +92,7 @@
           "Super Nerd Sam: I've worked out the odds of you winning. They're not good!"
         ],
         "text": [
-          ""
+          "Super Nerd Sam: Am calculat șansele să câștigi. Nu sunt prea bune!"
         ]
       },
       "after": {
@@ -100,7 +100,7 @@
           "Super Nerd Sam: I must have carried a one somewhere."
         ],
         "text": [
-          ""
+          "Super Nerd Sam: Trebuie să fi uitat o cifră pe undeva."
         ]
       }
     },
@@ -110,7 +110,7 @@
           "Tyrone"
         ],
         "text": [
-          ""
+          "Tyrone"
         ]
       },
       "before": {
@@ -118,7 +118,7 @@
           "Super Nerd Tyrone: I'm on my way to Lavender's radio station. Let's battle first!"
         ],
         "text": [
-          ""
+          "Super Nerd Tyrone: Mă îndrept spre stația de radio din Lavender. Mai întâi să ne luptăm!"
         ]
       },
       "after": {
@@ -126,7 +126,7 @@
           "Super Nerd Tyrone: I'll be late now, and it's your fault."
         ],
         "text": [
-          ""
+          "Super Nerd Tyrone: Acum voi întârzia, și e vina ta."
         ]
       }
     },
@@ -136,7 +136,7 @@
           "Moe"
         ],
         "text": [
-          ""
+          "Moe"
         ]
       },
       "before": {
@@ -144,7 +144,7 @@
           "Young Couple Moe: We're out for a walk together. Want to battle the two of us?"
         ],
         "text": [
-          ""
+          "Young Couple Moe: Ieșim la plimbare împreună. Vrei să te lupți cu noi doi?"
         ]
       },
       "after": {
@@ -152,7 +152,7 @@
           "Young Couple Moe: We'll walk home a little more slowly."
         ],
         "text": [
-          ""
+          "Young Couple Moe: Ne vom întoarce acasă ceva mai încet."
         ]
       }
     },
@@ -162,7 +162,7 @@
           "Lulu"
         ],
         "text": [
-          ""
+          "Lulu"
         ]
       },
       "before": {
@@ -170,7 +170,7 @@
           "Young Couple Lulu: Moe and I make a perfect team. You'll see!"
         ],
         "text": [
-          ""
+          "Young Couple Lulu: Moe și cu mine formăm o echipă perfectă. Vei vedea!"
         ]
       },
       "after": {
@@ -178,7 +178,7 @@
           "Young Couple Lulu: A perfect team that lost. Oh well."
         ],
         "text": [
-          ""
+          "Young Couple Lulu: O echipă perfectă care a pierdut. Ei bine."
         ]
       }
     },
@@ -188,7 +188,7 @@
           "Milton"
         ],
         "text": [
-          ""
+          "Milton"
         ]
       },
       "before": {
@@ -196,7 +196,7 @@
           "Gentleman Milton: A fine day for a stroll, and a finer one for a battle. Shall we?"
         ],
         "text": [
-          ""
+          "Gentleman Milton: O zi frumoasă pentru o plimbare și una și mai frumoasă pentru o luptă. Începem?"
         ]
       },
       "after": {
@@ -204,7 +204,7 @@
           "Gentleman Milton: Splendid. Quite splendid."
         ],
         "text": [
-          ""
+          "Gentleman Milton: Splendid. Cu adevărat splendid."
         ]
       }
     }
@@ -215,7 +215,7 @@
         "Route 8\nSaffron City - Lavender Town"
       ],
       "text": [
-        ""
+        "Ruta 8\nOrașul Saffron - Orășelul Lavender"
       ]
     },
     "R08_000+1": {
@@ -223,7 +223,7 @@
         "The Underground Path's entrance is closed for repairs."
       ],
       "text": [
-        ""
+        "Intrarea în Underground Path este închisă pentru reparații."
       ]
     }
   }

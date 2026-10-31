@@ -4,7 +4,7 @@
       "S.S. Tidal"
     ],
     "text": [
-      ""
+      "S.S. Tidal"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Phillip"
         ],
         "text": [
-          ""
+          "Phillip"
         ]
       },
       "before": {
@@ -22,7 +22,7 @@
           "Sailor Phillip: A passenger down in the hold? You must be looking for a battle!"
         ],
         "text": [
-          ""
+          "Sailor Phillip: Un pasager jos în cală? Trebuie că cauți o luptă!"
         ]
       },
       "after": {
@@ -30,7 +30,7 @@
           "Sailor Phillip: Back to hauling crates, then."
         ],
         "text": [
-          ""
+          "Sailor Phillip: Înapoi la cărat lăzi, atunci."
         ]
       }
     },
@@ -40,7 +40,7 @@
           "Leonard"
         ],
         "text": [
-          ""
+          "Leonard"
         ]
       },
       "before": {
@@ -48,7 +48,7 @@
           "Sailor Leonard: Nobody comes down here unless they mean business. Let's go!"
         ],
         "text": [
-          ""
+          "Sailor Leonard: Nimeni nu coboară aici dacă nu vorbește serios. Hai!"
         ]
       },
       "after": {
@@ -56,7 +56,7 @@
           "Sailor Leonard: You've got sea legs and a strong team."
         ],
         "text": [
-          ""
+          "Sailor Leonard: Ai picior de marinar și o echipă puternică."
         ]
       }
     }

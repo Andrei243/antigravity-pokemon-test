@@ -4,7 +4,7 @@
       "S.S. Tidal"
     ],
     "text": [
-      ""
+      "S.S. Tidal"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Sailor"
         ],
         "text": [
-          ""
+          "Marinarul"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Sailor"
         ],
         "text": [
-          ""
+          "Marinarul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "The cabins are along this corridor, and the hold is down the stairs at the end. Mind the step when she rolls."
         ],
         "text": [
-          ""
+          "Cabinele sunt de-a lungul coridorului acesta, iar cala e jos pe scările de la capăt. Atenție la treaptă când vasul se leagănă."
         ]
       }
     }
@@ -43,7 +43,7 @@
         "Through the porthole, the sea rushes past."
       ],
       "text": [
-        ""
+        "Prin hublou, marea trece în goană."
       ]
     },
     "SSTidalCorridor_EventScript_Cabin1Sign": {
@@ -51,7 +51,7 @@
         "Cabin 1"
       ],
       "text": [
-        ""
+        "Cabina 1"
       ]
     },
     "SSTidalCorridor_EventScript_Cabin2Sign": {
@@ -59,7 +59,7 @@
         "Cabin 2"
       ],
       "text": [
-        ""
+        "Cabina 2"
       ]
     },
     "SSTidalCorridor_EventScript_Cabin3Sign": {
@@ -67,7 +67,7 @@
         "Cabin 3"
       ],
       "text": [
-        ""
+        "Cabina 3"
       ]
     },
     "SSTidalCorridor_EventScript_Cabin4Sign": {
@@ -75,7 +75,7 @@
         "Cabin 4"
       ],
       "text": [
-        ""
+        "Cabina 4"
       ]
     }
   }

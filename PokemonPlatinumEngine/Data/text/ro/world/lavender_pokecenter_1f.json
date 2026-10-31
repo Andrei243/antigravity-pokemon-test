@@ -6,7 +6,7 @@
           "Nurse"
         ],
         "text": [
-          ""
+          "Asistenta"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "Your Trainer Card shows your name, your money and the Pokémon you've seen. Have a look at it from the menu."
         ],
         "text": [
-          ""
+          "Cartea ta de Antrenor arată numele tău, banii tăi și Pokémonii pe care i-ai văzut. Aruncă o privire în meniu."
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "I'm sorry, the link to other players is closed for now."
         ],
         "text": [
-          ""
+          "Îmi pare rău, legătura cu alți jucători este închisă deocamdată."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "I'm sorry, the link to other players is closed for now."
         ],
         "text": [
-          ""
+          "Îmi pare rău, legătura cu alți jucători este închisă deocamdată."
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "I listen to the radio from the tower next door every morning. The music always cheers my Pokémon up."
         ],
         "text": [
-          ""
+          "Ascult radioul de la turnul vecin în fiecare dimineață. Muzica le ridică mereu moralul Pokémonilor mei."
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Gentleman"
         ],
         "text": [
-          ""
+          "Gentlemanul"
         ]
       },
       "dialog": {
@@ -96,7 +96,7 @@
           "The road north leads to the Power Plant. I hear it's had trouble lately, but I don't know what."
         ],
         "text": [
-          ""
+          "Drumul spre nord duce la Centrala Electrică. Aud că a avut probleme în ultima vreme, dar nu știu ce anume."
         ]
       }
     },
@@ -106,7 +106,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -114,7 +114,7 @@
           "I came all the way from Saffron on foot. Those bikers on Route 8 nearly scared me home again!"
         ],
         "text": [
-          ""
+          "Am venit pe jos tot drumul din Saffron. Motocicliștii de pe Ruta 8 aproape m-au speriat înapoi acasă!"
         ]
       }
     }

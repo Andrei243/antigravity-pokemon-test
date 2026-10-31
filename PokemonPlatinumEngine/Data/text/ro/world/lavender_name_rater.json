@@ -6,7 +6,7 @@
           "Name Rater"
         ],
         "text": [
-          ""
+          "Name Rater"
         ]
       },
       "dialog": {
@@ -15,8 +15,8 @@
           "My pen is resting just now. Do come back another day, and I'll rate your Pokémon's names!"
         ],
         "text": [
-          "",
-          ""
+          "Bun venit, bun venit! Sunt Name Rater din Kanto. Fratele meu face aceeași muncă în Goldenrod.",
+          "Pixul meu se odihnește acum. Revino într-o altă zi și voi nota numele Pokémonilor tăi!"
         ]
       }
     }

@@ -109,7 +109,7 @@
         "You made it! I've been training on waves twice as big. Two Pokémon each this time. Let's ride!"
       ],
       "text": [
-        ""
+        "Ai venit! M-am antrenat pe valuri de două ori mai mari. Câte doi Pokémoni de fiecare parte, de data asta. Hai la surf!"
       ]
     },
     {
@@ -117,7 +117,7 @@
         "Brawly"
       ],
       "text": [
-        ""
+        "Brawly"
       ]
     },
     {
@@ -125,7 +125,7 @@
         "Wiped out again! You're a real big-wave rider, {player}. Call me when you want another round."
       ],
       "text": [
-        ""
+        "Zdrobit din nou! Chiar ești un adevărat călăreț de valuri uriașe, {player}. Sună-mă când vrei încă o rundă."
       ]
     },
     {
@@ -133,7 +133,7 @@
         "A rematch is two on two! Come back with at least two Pokémon on your team."
       ],
       "text": [
-        ""
+        "O revanșă se dă doi contra doi! Revino cu cel puțin doi Pokémoni în echipă."
       ]
     }
   ],

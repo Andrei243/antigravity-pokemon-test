@@ -109,7 +109,7 @@
         "You answered the wind's call. My birds fly in pairs now. Two Pokémon each, if you please."
       ],
       "text": [
-        ""
+        "Ai răspuns chemării vântului. Păsările mele zboară acum în perechi. Câte doi Pokémoni de fiecare parte, te rog."
       ]
     },
     {
@@ -117,7 +117,7 @@
         "Winona"
       ],
       "text": [
-        ""
+        "Winona"
       ]
     },
     {
@@ -125,7 +125,7 @@
         "You still fly higher than my birds. Thank you, {player}. Call me when the wind is right."
       ],
       "text": [
-        ""
+        "Tot zbori mai sus decât păsările mele. Mulțumesc, {player}. Sună-mă când vântul e prielnic."
       ]
     },
     {
@@ -133,7 +133,7 @@
         "A rematch is two Pokémon against two. Come back with at least two on your team."
       ],
       "text": [
-        ""
+        "O revanșă se dă doi Pokémoni contra doi. Revino cu cel puțin doi în echipă."
       ]
     }
   ],

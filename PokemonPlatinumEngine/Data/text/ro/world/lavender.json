@@ -6,7 +6,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Lavender is a quiet town. People come here to remember the Pokémon they've loved."
         ],
         "text": [
-          ""
+          "Lavender este un orășel liniștit. Oamenii vin aici să-și amintească Pokémonii pe care i-au iubit."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "The tall building is the radio station. It broadcasts all over Kanto, but they won't let me in to watch."
         ],
         "text": [
-          ""
+          "Clădirea înaltă este stația de radio. Emite în tot Kanto, dar nu mă lasă înăuntru să mă uit."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Old man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "There used to be a tower here where Pokémon were laid to rest. Now they rest in the House of Memories."
         ],
         "text": [
-          ""
+          "Cândva era aici un turn unde Pokémonii erau lăsați la odihnă. Acum se odihnesc în House of Memories."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "The Name Rater lives here in Lavender. He'll tell you what he thinks of your Pokémon's names."
         ],
         "text": [
-          ""
+          "Name Rater locuiește aici, în Lavender. Îți va spune ce crede despre numele Pokémonilor tăi."
         ]
       }
     }
@@ -79,7 +79,7 @@
         "Lavender Town\nA quiet town where memories rest."
       ],
       "text": [
-        ""
+        "Orășelul Lavender\nUn orășel liniștit unde amintirile se odihnesc."
       ]
     },
     "T05_005+1": {
@@ -87,7 +87,7 @@
         "Kanto Radio Tower\nClosed to visitors."
       ],
       "text": [
-        ""
+        "Kanto Radio Tower\nÎnchis vizitatorilor."
       ]
     },
     "T05_007+1": {
@@ -95,7 +95,7 @@
         "House of Memories\nWhere Pokémon are remembered."
       ],
       "text": [
-        ""
+        "House of Memories\nUnde Pokémonii sunt pomeniți."
       ]
     },
     "T05_006+1": {
@@ -103,7 +103,7 @@
         "Volunteer Pokémon House"
       ],
       "text": [
-        ""
+        "Volunteer Pokémon House"
       ]
     }
   }
