@@ -12,7 +12,12 @@ partial class Harness
     // fading (mv_<key>_1 to _4). Not part of "all".
     public void MovesMode()
     {
-        var named = args.Skip(2).ToArray();
+        // `moves signatures` names every move of the signature table (plan 25 · Y17), in its order; `moves signatures:Outrage`
+        // starts there, so a batch added at the table's end is watched by itself
+        var named = args.Skip(2).SelectMany(a =>
+            a == "signatures" ? Directions.Table.Keys
+            : a.StartsWith("signatures:") ? Directions.Table.Keys.SkipWhile(k => k != a["signatures:".Length..])
+            : new[] { a }).ToArray();
         var mine = new Pokemon(PokemonDatabase.Get("Empoleon")!, 40, new Random(81));
         party.HealAll();
         party.Members.Insert(0, mine);

@@ -128,6 +128,69 @@ internal static class Directions
         ["Hydro Pump"] = new(SignatureShot.FollowProjectile, HeavyStop, Effect: Spray),
         // Sceptile's and Torterra's storm of leaves: the camera swings round it
         ["Leaf Storm"] = new(SignatureShot.Orbit, Light: Lit(0.2f, 0.44f, 0.16f, 0.3f), Effect: Leaves),
+
+        // ---------------------------------------------------------------- Y17c: the pseudo-legendaries' moves
+        // Dragonite's rage round its foe: the camera circles with it; a red wash, light, over the move's own red fade
+        ["Outrage"] = new(SignatureShot.Orbit, HeavyStop, Light: Lit(0.5f, 0.1f, 0.08f, 0.16f)),
+        // Tyranitar's blades of stone from under: a punch-in; the target tossed up, shards falling round it
+        ["Stone Edge"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: TossedUp, Light: Lit(0.38f, 0.3f, 0.2f, 0.26f), Effect: Shards),
+        // Its bite: a punch-in held on the jaws closing; the target only shudders in them
+        ["Crunch"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: Held, Light: Lit(0.14f, 0.08f, 0.16f, 0.3f)),
+        // Salamence's charge: the user lunges in to meet its target; a punch-in
+        ["Dragon Rush"] = new(SignatureShot.ImpactPunch, HeavyStop, User: Lunge, Light: Lit(0.24f, 0.18f, 0.5f, 0.32f)),
+        // Metagross's meteor of a fist: a punch-in; stars springing off the body
+        ["Meteor Mash"] = new(SignatureShot.ImpactPunch, HeavyStop, Effect: Stars),
+        // Garchomp's claws (its Earthquake is Y17b's): a punch-in on the slash; a dragon's teal
+        ["Dragon Claw"] = new(SignatureShot.ImpactPunch, HeavyStop, Light: Lit(0.12f, 0.34f, 0.4f, 0.26f)),
+        // Hydreigon's pulse of darkness: the camera rides it; the dark vignette; wisps left rising
+        ["Dark Pulse"] = new(SignatureShot.FollowProjectile, HeavyStop, Light: Lit(0.06f, 0.03f, 0.08f, 0.4f), Effect: Wisps),
+        // Goodra's pulse: the camera rides it; a soft violet
+        ["Dragon Pulse"] = new(SignatureShot.FollowProjectile, HeavyStop, Light: Lit(0.34f, 0.22f, 0.56f, 0.3f)),
+        // Kommo-o's scales clashed: the camera swings round; gold rings of sound round the target
+        ["Clanging Scales"] = new(SignatureShot.Orbit, HeavyStop, Light: Lit(0.56f, 0.42f, 0.16f, 0.28f), Effect: SoundRings),
+        // Its soul's dance on its user alone: the shot stays; the rings stand round the user
+        ["Clangorous Soul"] = new(SignatureShot.None, Light: Lit(0.6f, 0.46f, 0.18f, 0.3f), Effect: SoundRings),
+        // Dragapult's darts: the camera rides each; a ghostly teal; light hits, no stop
+        ["Dragon Darts"] = new(SignatureShot.FollowProjectile, Light: Lit(0.18f, 0.4f, 0.46f, 0.26f)),
+        // Baxcalibur's charge with its glaive: the user lunges; a punch-in; frost left on the platform
+        ["Glaive Rush"] = new(SignatureShot.ImpactPunch, HeavyStop, User: Lunge, Light: Lit(0.3f, 0.44f, 0.6f, 0.3f), Effect: Frost),
+
+        // ---------------------------------------------------------------- Y17c: the starters' finals of Unova to Paldea
+        // Emboar: its weight falling on the target, embers after; its head of stone, shards after
+        ["Heat Crash"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: Pressed, Light: Lit(0.6f, 0.22f, 0.06f, 0.32f), Effect: Embers),
+        ["Head Smash"] = new(SignatureShot.ImpactPunch, HeavyStop, Effect: Shards),
+        // Samurott's shell blade, and the Hisuian one's edge leaving splinters
+        ["Razor Shell"] = new(SignatureShot.ImpactPunch, HeavyStop, Effect: Spray),
+        ["Ceaseless Edge"] = new(SignatureShot.ImpactPunch, HeavyStop, Light: Lit(0.16f, 0.1f, 0.2f, 0.3f), Effect: Shards),
+        // Serperior's blade (its Leaf Storm is Y17b's)
+        ["Leaf Blade"] = new(SignatureShot.ImpactPunch, HeavyStop, Effect: Leaves),
+        // Chesnaught's arm brought down: the target pressed
+        ["Hammer Arm"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: Pressed),
+        // Delphox's mystic fire: the camera rides it; violet and red; embers
+        ["Mystical Fire"] = new(SignatureShot.FollowProjectile, Light: Lit(0.5f, 0.18f, 0.36f, 0.3f), Effect: Embers),
+        // Greninja's stars of water: the camera rides them; spray
+        ["Water Shuriken"] = new(SignatureShot.FollowProjectile, Effect: Spray),
+        // Decidueye's arrow pinning a shadow, and the Hisuian one's three arrows
+        ["Spirit Shackle"] = new(SignatureShot.FollowProjectile, HeavyStop, Light: Lit(0.18f, 0.12f, 0.3f, 0.36f), Effect: Wisps),
+        ["Triple Arrows"] = new(SignatureShot.FollowProjectile, HeavyStop, Light: Lit(0.42f, 0.3f, 0.18f, 0.24f)),
+        // Incineroar's lariat: a punch-in; a dark red
+        ["Darkest Lariat"] = new(SignatureShot.ImpactPunch, HeavyStop, Light: Lit(0.3f, 0.06f, 0.08f, 0.36f)),
+        // Primarina's aria round the foes: the camera swings round; a soft sea light; spray
+        ["Sparkling Aria"] = new(SignatureShot.Orbit, Light: Lit(0.5f, 0.66f, 0.82f, 0.18f), Effect: Spray),
+        // Rillaboom's drum through the roots: a punch-in; the target jolted; leaves
+        ["Drum Beating"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: Jolted, Light: Lit(0.18f, 0.36f, 0.12f, 0.3f), Effect: Leaves),
+        // Cinderace's ball of fire: the camera rides it; embers
+        ["Pyro Ball"] = new(SignatureShot.FollowProjectile, HeavyStop, Light: Lit(0.68f, 0.3f, 0.08f, 0.32f), Effect: Embers),
+        // Inteleon's shot: the camera rides it; spray
+        ["Snipe Shot"] = new(SignatureShot.FollowProjectile, HeavyStop, Effect: Spray),
+        // Meowscarada's bouquet: a punch-in on the burst; petals drifting down
+        ["Flower Trick"] = new(SignatureShot.ImpactPunch, HeavyStop, Light: Lit(0.5f, 0.2f, 0.34f, 0.26f), Effect: Petals),
+        // Skeledirge's song of fire: the camera rides it; the user swelling as it sings; embers
+        ["Torch Song"] = new(SignatureShot.FollowProjectile, HeavyStop, User: Heave, Light: Lit(0.66f, 0.32f, 0.1f, 0.3f), Effect: Embers),
+        // Quaquaval's dancing step: the user lunges in; spray
+        ["Aqua Step"] = new(SignatureShot.ImpactPunch, HeavyStop, User: Lunge, Effect: Spray),
+        // The Hisuian Typhlosion's parade of spirit flames: the camera rides it; a ghostly violet; wisps
+        ["Infernal Parade"] = new(SignatureShot.FollowProjectile, Light: Lit(0.3f, 0.14f, 0.4f, 0.32f), Effect: Wisps),
     };
 
     private static StageLight Lit(float r, float g, float b, float amount, float grey = 0f) => new(new Vector3(r, g, b), amount, grey);
@@ -268,6 +331,28 @@ internal static class Directions
         }
         float s = 1f - Smooth((age - I) / 0.55f);
         return new BodyMotion(Squash: -0.1f * s, Toward: -0.05f * s);
+    }
+
+    /// <summary>
+    /// A charge that meets its target (Dragon Rush, Glaive Rush, Aqua Step): drawn back a little, lunging in to the
+    /// impact and going home over 0.45 s, with no rise.
+    /// </summary>
+    private static BodyMotion Lunge(float age, int seed)
+    {
+        const float start = I - 0.22f, end = I + 0.45f;
+        if (age < start || age >= end) return BodyMotion.Still;
+        if (age < I - 0.1f)
+        {
+            float k = Smooth((age - start) / 0.12f);
+            return new BodyMotion(Toward: -0.06f * k, Squash: 0.05f * k);
+        }
+        if (age < I)
+        {
+            float k = Smooth((age - (I - 0.1f)) / 0.1f);
+            return new BodyMotion(Toward: -0.06f + 0.61f * k, Narrow: 0.1f * k);
+        }
+        float back = Smooth((age - I) / (end - I));
+        return new BodyMotion(Toward: 0.55f * (1f - back));
     }
 
     /// <summary>What a direction does to the user's body at a cue's shown age.</summary>
@@ -448,6 +533,83 @@ internal static class Directions
             var at = c.ToFeet + new Vector3(MathF.Sin(c.Age * 8f + i * 2f) * 0.08f * c.ToSize, c.ToSize * (0.3f + 1.0f * rise), 0.25f * c.ToSize);
             float alpha = 0.45f * MathF.Sin(rise * MathF.PI) * (1f - k);
             fx.Sprite(FxShape.Wave, at, c.ToSize * 0.9f, Fx.Fade(Rgb(255, 196, 140), alpha), FxBlend.Alpha);
+        }
+    }
+
+    // ------------------------------------------------------------------ Y17c's reactions
+
+    /// <summary>Shards of rock falling round the target's feet (Stone Edge, Head Smash, Ceaseless Edge's splinters), tumbling and gone.</summary>
+    private static void Shards(in FxCtx c, FxColors col, FxList fx)
+    {
+        float k = After(c, 0.03f, 0.8f);
+        if (k < 0f) return;
+        for (int i = 0; i < 6; i++)
+        {
+            float x = Fx.Signed(c.Seed, i, 221) * (c.ToHalfWidth + 0.25f * c.ToSize);
+            float fall = 1f - Fx.EaseOut(Math.Min(1f, k * 1.8f + Fx.Rand(c.Seed, i, 222) * 0.15f));
+            var at = c.ToFeet + new Vector3(x, c.ToSize * (0.04f + 0.5f * fall), 0.3f * c.ToSize);
+            float alpha = k < 0.75f ? 1f : (1f - k) / 0.25f;
+            fx.Sprite(FxShape.Shard, at, c.ToSize * 0.12f, Fx.Fade(Rgb(150, 128, 100), 0.95f * alpha), FxBlend.Alpha, c.Age * 6f * (i % 2 == 0 ? 1f : -1f) + i);
+        }
+    }
+
+    /// <summary>Meteor Mash: stars springing off the body in gold and white, arcing out and gone.</summary>
+    private static void Stars(in FxCtx c, FxColors col, FxList fx)
+    {
+        float k = After(c, 0f, 0.7f);
+        if (k < 0f) return;
+        float out1 = Fx.EaseOut(k);
+        for (int i = 0; i < 6; i++)
+        {
+            float a = (i / 6f + 0.08f * Fx.Signed(c.Seed, i, 231)) * MathF.Tau;
+            var at = c.To + new Vector3(MathF.Cos(a) * c.ToSize * 0.75f * out1, MathF.Sin(a) * c.ToSize * 0.6f * out1 + c.ToSize * 0.1f * out1, 0.3f * c.ToSize);
+            var tint = i % 2 == 0 ? Rgb(255, 222, 120) : Rgb(255, 250, 230);
+            fx.Sprite(FxShape.Star, at, c.ToSize * 0.11f, Fx.Fade(tint, 1f - k * k), FxBlend.Alpha, c.Age * 5f + i);
+        }
+    }
+
+    /// <summary>Clanging Scales, Clangorous Soul: gold rings of sound standing round the one it rings out on, widening and gone.</summary>
+    private static void SoundRings(in FxCtx c, FxColors col, FxList fx)
+    {
+        if (c.Cue.Missed) return;
+        for (int i = 0; i < 3; i++)
+        {
+            float t0 = I + i * 0.1f;
+            float k = (c.Age - t0) / 0.5f;
+            if (k <= 0f || k >= 1f) continue;
+            float grow = Fx.EaseOut(k);
+            fx.Sprite(FxShape.Ring, c.To, c.ToSize * (0.4f + 0.8f * grow), Fx.Fade(Rgb(255, 214, 120), 0.8f * (1f - k)), FxBlend.Alpha);
+        }
+    }
+
+    /// <summary>Glaive Rush: frost glinting on the target's platform in snowflakes, melting away.</summary>
+    private static void Frost(in FxCtx c, FxColors col, FxList fx)
+    {
+        float k = After(c, 0.05f, 0.85f);
+        if (k < 0f) return;
+        float alpha = k < 0.1f ? k / 0.1f : 1f - (k - 0.1f) / 0.9f;
+        for (int i = 0; i < 7; i++)
+        {
+            float a = Fx.Rand(c.Seed, i, 241) * MathF.Tau;
+            float r = c.ToSize * (0.3f + 0.4f * Fx.Rand(c.Seed, i, 242));
+            var at = c.ToFeet + new Vector3(MathF.Cos(a) * r, c.ToSize * 0.05f, MathF.Sin(a) * r * 0.6f + 0.2f * c.ToSize);
+            float glint = 0.7f + 0.3f * MathF.Sin(c.Age * 14f + i * 1.7f);
+            fx.Sprite(FxShape.Snowflake, at, c.ToSize * 0.1f, Fx.Fade(Rgb(214, 238, 255), alpha * glint), FxBlend.Alpha, i);
+        }
+    }
+
+    /// <summary>Flower Trick: petals drifting down round the target after the bouquet bursts.</summary>
+    private static void Petals(in FxCtx c, FxColors col, FxList fx)
+    {
+        float k = After(c, 0.03f, 0.85f);
+        if (k < 0f) return;
+        for (int i = 0; i < 7; i++)
+        {
+            float x = Fx.Signed(c.Seed, i, 251) * c.ToSize * 0.75f;
+            float fall = 1f - Fx.EaseOut(Math.Min(1f, k * 1.4f + Fx.Rand(c.Seed, i, 252) * 0.2f));
+            var at = c.ToFeet + new Vector3(x + MathF.Sin(c.Age * 4f + i) * 0.1f * c.ToSize, c.ToSize * (0.08f + 0.9f * fall), 0.25f * c.ToSize);
+            var tint = i % 2 == 0 ? Rgb(255, 150, 190) : Rgb(255, 214, 230);
+            fx.Sprite(FxShape.Petal, at, c.ToSize * 0.12f, Fx.Fade(tint, 1f - k * k), FxBlend.Alpha, c.Age * 3f + i);
         }
     }
 }
