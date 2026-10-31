@@ -1,0 +1,14 @@
+{
+  // The gate house between Fuchsia City's south edge and Route 19 (plan 20 · J15, part h)
+  "area": "route_19_fuchsia_gatehouse",
+  "bgmTrack": "kanto/fuchsia",
+  "people": {
+    "w19r0101_counterm": {
+      "name": "Guard",
+      "still": true,
+      "dialog": [
+        "Route 19 is open again. The workers cleared away the rocks that fell, so you can swim all the way to the Seafoam Islands."
+      ]
+    }
+  }
+}

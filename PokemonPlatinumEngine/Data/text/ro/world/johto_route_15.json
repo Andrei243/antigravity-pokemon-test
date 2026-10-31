@@ -1,0 +1,274 @@
+{
+  "people": {
+    "r15_gsboy1": {
+      "name": {
+        "en": [
+          "Kipp"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "School Kid Kipp: Our teacher says a battle is the best lesson. Class is in session!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "School Kid Kipp: I'll be staying after class."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r15_gsboy1_2": {
+      "name": {
+        "en": [
+          "Tommy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "School Kid Tommy: I'm top of my class at type matchups. Try me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "School Kid Tommy: I think I mixed up my notes."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r15_middlewoman1_2": {
+      "name": {
+        "en": [
+          "Hillary"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Teacher Hillary: My pupils are watching, so I'd better win this one!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Teacher Hillary: Class, that is what losing gracefully looks like."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r15_gsbabygirl1": {
+      "name": {
+        "en": [
+          "Kay"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Twins Kay: We came on the school trip together!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Twins Kay: We're going back on the bus together, too."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r15_gsbabygirl1_2": {
+      "name": {
+        "en": [
+          "Tia"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Twins Tia: Two against one is fair, isn't it?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Twins Tia: It wasn't fair for us, though."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r15_middlewoman1_2_2": {
+      "name": {
+        "en": [
+          "Eleanor"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokéfan Eleanor: I brought my darlings along on the trip. Aren't they adorable?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokéfan Eleanor: Still adorable, even when they lose."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r15_gsmiddleman1": {
+      "name": {
+        "en": [
+          "Boone"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokéfan Boone: My Pokémon and I match outfits. Let me show you our style!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokéfan Boone: Our style couldn't save us."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r15_middlewoman1_2_3": {
+      "name": {
+        "en": [
+          "Colette"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Teacher Colette: Pop quiz! The question is: can you beat me?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Teacher Colette: Correct answer. Full marks."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r15_gsboy1_3": {
+      "name": {
+        "en": [
+          "Johnny"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "School Kid Johnny: I wandered off from the group. Want to battle while nobody's looking?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "School Kid Johnny: I'd better find my class."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r15_gsboy1_4": {
+      "name": {
+        "en": [
+          "Billy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "School Kid Billy: I'm going to be a Gym Leader one day. Starting now!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "School Kid Billy: Maybe starting next year."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "R15_000+1": {
+      "en": [
+        "Route 15\nFuchsia City - Lavender Town"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

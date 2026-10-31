@@ -1,0 +1,26 @@
+{
+  "key": "fuchsia_southwest_house",
+  "index": 481,
+  "name": "Fuchsia City",
+  "matrix": 96,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_C_SEKICHIKU",
+  "nightMusic": "GS_C_SEKICHIKU",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 8, "to": "fuchsia", "toWarp": 8 }
+  ],
+  "objects": [
+    { "id": "t08r0401_middlewoman1_2", "looks": "middlewoman1_2", "movement": "17", "x": 5, "z": 5, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "T08R0401_000+1" },
+    { "id": "t08r0401_gsboy1", "looks": "gsboy1", "movement": "4", "x": 9, "z": 5, "facing": 0, "rangeX": 0, "rangeZ": 1, "script": "T08R0401_001+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

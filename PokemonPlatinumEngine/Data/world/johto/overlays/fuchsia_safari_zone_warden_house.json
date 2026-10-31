@@ -1,0 +1,43 @@
+{
+  // The Safari Zone warden's house in Fuchsia City (plan 20 · J15, part h): the warden is away seeing the world, and
+  // his granddaughter keeps the house and his three Aipom
+  "area": "fuchsia_safari_zone_warden_house",
+  "bgmTrack": "kanto/fuchsia",
+  "people": {
+    "t08r0601_gsgirl1": {
+      "name": "Girl",
+      "still": true,
+      "dialog": [
+        "Grandpa closed the Safari Zone and went travelling. He sends postcards from all over the world. I look after his Aipom while he's gone."
+      ]
+    },
+    "t08r0601_tsure_poke_static_aipom": {
+      "name": "Aipom",
+      "npcType": "Pokemon",
+      "species": "Aipom",
+      "script": "Pokemon",
+      "dialog": [
+        "Aipom: Ai-ai!"
+      ]
+    },
+    "t08r0601_tsure_poke_static_aipom_2": {
+      "name": "Aipom",
+      "npcType": "Pokemon",
+      "species": "Aipom",
+      "script": "Pokemon",
+      "still": true,
+      "dialog": [
+        "Aipom: Pom!"
+      ]
+    },
+    "t08r0601_tsure_poke_static_aipom_3": {
+      "name": "Aipom",
+      "npcType": "Pokemon",
+      "species": "Aipom",
+      "script": "Pokemon",
+      "dialog": [
+        "Aipom: Aipom ai!"
+      ]
+    }
+  }
+}

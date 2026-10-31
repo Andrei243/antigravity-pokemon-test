@@ -348,6 +348,84 @@ partial class Harness
         game.State = GameState.Overworld; ReadTo(null); game.Dialogue.Close();
         Console.WriteLine($"  Volcano Badge {game.Story.HasBadge(RegionDatabase.Kanto, "Volcano")}");
         At("Seafoam_Gym", 13, 13, Direction.Up); Frames(10); Shot("jk99_blaine_beaten");
+
+        JohtoKantoFuchsiaShots(readTo, talkTo);
+    }
+
+    /// <summary>
+    /// Plan 20 · J15, part h: Routes 12 to 15 south of Lavender Town, Fuchsia City by day and after dark, its rooms,
+    /// Route 19 surfed, the Fuchsia Gym with its decoys, a decoy unmasked and her battle, Janine and her battle; then Blue
+    /// going home from Cinnabar Island, the Viridian Gym open, Blue and his battle (<c>jkh01</c> to <c>jkh26</c>), after
+    /// part g's, so nothing before them moves. It prints Kanto's Soul and Earth Badges and Blue's flag.
+    /// </summary>
+    void JohtoKantoFuchsiaShots(Action<string?, int> readTo, Action<string, string, int, int> talkTo)
+    {
+        void ReadTo(string? text) => readTo(text, 2400);
+        void Daylight(TimeOfDay time) { engine.Settings.TimeOfDay = time; engine.ApplySettings(window: false); }
+        void UntilBattle(int most = 900)
+        {
+            var box = game.Dialogue;
+            for (int i = 0; i < most && game.State != GameState.Battle; i++)
+            {
+                if (box.IsActive && box.IsCurrentLineComplete && !box.IsQuestion) { box.Advance(); Frames(2); }
+                else Frames(1);
+            }
+            if (game.State != GameState.Battle) Console.WriteLine("  !! never happened: the battle");
+        }
+        game.State = GameState.Overworld;
+        game.Player.SetMode(TravelMode.OnFoot);
+
+        // ---- Routes 12 to 15, south from Lavender Town
+        At("Johto", 1424, 320, Direction.Down); game.ArriveOnMap(); Frames(30); Shot("jkh01_route_12");
+        At("Johto", 1412, 308, Direction.Up); game.ArriveOnMap(); Frames(30); Shot("jkh02_route_12_snorlax");
+        At("Route12_FishingBrotherHouse", 4, 7, Direction.Up); game.ArriveOnMap(); Frames(10); Shot("jkh03_fishing_brothers_house");
+        At("Johto", 1395, 372, Direction.Left); game.ArriveOnMap(); Frames(30); Shot("jkh04_route_13");
+        At("Johto", 1350, 416, Direction.Down); game.ArriveOnMap(); Frames(30); Shot("jkh05_route_14");
+        At("Johto", 1290, 430, Direction.Left); game.ArriveOnMap(); Frames(30); Shot("jkh06_route_15");
+        At("Route15_FuchsiaGate", 5, 7, Direction.Left); game.ArriveOnMap(); Frames(10); Shot("jkh07_route_15s_gate");
+
+        // ---- Fuchsia City and its rooms
+        At("Johto", 1210, 428, Direction.Down); game.ArriveOnMap(); Frames(30); Shot("jkh08_fuchsia_city");
+        Daylight(TimeOfDay.Night); Frames(30); Shot("jkh09_fuchsia_city_after_dark"); Daylight(TimeOfDay.Day);
+        At("Fuchsia_PokemonCenter_1F", 8, 17, Direction.Up); game.ArriveOnMap(); Frames(10); Shot("jkh10_fuchsias_pokemon_center");
+        At("Fuchsia_Mart", 4, 10, Direction.Up); game.ArriveOnMap(); Frames(10); Shot("jkh11_fuchsias_mart");
+        At("Fuchsia_WardensHouse", 4, 7, Direction.Up); game.ArriveOnMap(); Frames(10); Shot("jkh12_the_wardens_house");
+        At("Fuchsia_SouthwestHouse", 4, 7, Direction.Up); game.ArriveOnMap(); Frames(10); Shot("jkh13_fuchsias_southwest_house");
+        At("Route19_FuchsiaGate", 5, 10, Direction.Down); game.ArriveOnMap(); Frames(10); Shot("jkh14_route_19s_gate");
+        At("Johto", 1200, 478, Direction.Down); game.Player.SetMode(TravelMode.Surfing); game.ArriveOnMap(); Frames(30); Shot("jkh15_route_19");
+        game.Player.SetMode(TravelMode.OnFoot);
+
+        // ---- The Fuchsia Gym: a decoy unmasked, and Janine
+        At("Fuchsia_Gym", 7, 23, Direction.Up); game.ArriveOnMap(); Frames(10); Shot("jkh16_fuchsia_gym");
+        talkTo("Fuchsia_Gym", "t08gym0101_gsleader13_4", 0, 1);
+        ReadTo("Look closer"); Frames(10); Shot("jkh17_a_decoy");
+        ReadTo("Janine lends us"); Frames(10); Shot("jkh18_the_decoy_unmasked");
+        UntilBattle(); Frames(30); Shot("jkh19_the_decoys_battle");
+        game.State = GameState.Overworld; ReadTo(null); game.Dialogue.Close();
+        talkTo("Fuchsia_Gym", "t08gym0101_gsleader13", 0, 1);
+        ReadTo("found the real me"); Frames(10); Shot("jkh20_janine");
+        ReadTo("a little poison"); game.Dialogue.Advance();
+        UntilALeadersBattle();
+        Frames(30); Shot("jkh21_janines_battle");
+        game.State = GameState.Overworld; ReadTo(null); game.Dialogue.Close();
+        Console.WriteLine($"  Soul Badge {game.Story.HasBadge(RegionDatabase.Kanto, "Soul")}");
+
+        // ---- Blue goes home, and the Viridian Gym
+        foreach (string badge in new[] { "Boulder", "Cascade", "Thunder", "Rainbow", "Soul", "Marsh", "Volcano" })
+            game.Story.GiveBadge(RegionDatabase.Kanto, badge);
+        talkTo("Johto", "t09_gsleader16", 1, 0);
+        ReadTo("heading back to Viridian"); Frames(10); Shot("jkh22_blue_heads_home");
+        ReadTo(null); game.Dialogue.Close();
+        Console.WriteLine($"  Blue home {game.Story.Has("FLAG_JOHTO_BLUE_BACK_IN_GYM")}");
+        At("Johto", 1045, 241, Direction.Up); game.ArriveOnMap(); Frames(30); Shot("jkh23_viridian_gym_open");
+        At("Viridian_Gym", 5, 46, Direction.Up); game.ArriveOnMap(); Frames(10); Shot("jkh24_viridian_gym");
+        talkTo("Viridian_Gym", "t02gym0101_gsleader16", 0, 1);
+        ReadTo("You've been busy"); Frames(10); Shot("jkh25_blue");
+        ReadTo("what you've got"); game.Dialogue.Advance();
+        UntilALeadersBattle();
+        Frames(30); Shot("jkh26_blues_battle");
+        game.State = GameState.Overworld; ReadTo(null); game.Dialogue.Close();
+        Console.WriteLine($"  Earth Badge {game.Story.HasBadge(RegionDatabase.Kanto, "Earth")}");
     }
 
 }

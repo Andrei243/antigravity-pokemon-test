@@ -6765,3 +6765,55 @@ The user approved L9's default on 2026-10-26 (docs/plans/APPROVAL-levelling-and-
   Cerulean's Gym and Route 24, the Underground Path, Silph Co., the upper floors of Celadon's store and condominiums, the
   Game Corner, the Radio Tower and the Expn Card, the Trainer House's battles, the Leaders' rematches and street
   meetings, Suicune's stops, the rest of Kanto's Apricorn trees.
+
+## HeartGold's Kanto, part h (2026-10-31, plan 20 · J15, part h)
+
+- *The slice*: Fuchsia City and the south-east, and the Viridian Gym. Route 12 (with the fishing brother's house) runs
+  south from Lavender Town to Route 13, Route 14 and Route 15, which ends at Fuchsia City's west gate house; Fuchsia
+  has its Pokémon Center (both floors), Mart, Gym, south-west house and the Safari Zone warden's house; its south gate
+  house leads to Route 19. Route 19 is **not** joined to Route 20's water by sea: HeartGold's sea between them is walled
+  by lines of rock, so Route 19 and the strip of Route 20 inside those lines (with the Seafoam Islands' western mouth,
+  part g's walled pocket) are come to only from Fuchsia; the western mouth stays locked because the first floor's
+  western half still joins its eastern half only through the lower floors, which wait.
+- *Why from Lavender*: with the lower floors of the Seafoam Islands shut, Fuchsia's only way in is by land. Route 12's
+  Snorlax sleeps before the gate house to Route 11 (shown, `hiddenBy ""`; its three filler objects held back), and the
+  gate house's doors (Route 12's warps 0 and 1) are locked: waking it with the Poké Flute's channel and Route 11 beyond
+  wait. Route 18's gate and Pal Park's gate (Fuchsia's warps 5 and 6) are not open either.
+- *Keys and names*: `route_12`, `route_13`, `route_14`, `route_15` and `route_19` meet FireRed's and take Johto's prefix
+  (`HgWorld.Clashes`); `fuchsia`, its rooms, the gate houses and `viridian_gym` meet none. The maps are `Fuchsia_…`,
+  `Route19_FuchsiaGate`, `Route15_FuchsiaGate`, `Viridian_Gym` and `Route12_FishingBrotherHouse` (FireRed's Kanto has
+  `FuchsiaCity_…`, `Route15_WestEntrance_…`, `ViridianCity_…` and `Route12_FishingHouse`).
+- *Route 19*: HeartGold shuts it at first for a rockfall, with barriers and two workmen below the gate; here the road is
+  open, so the barriers (`FLAG_UNK_265`) and that pair (`FLAG_HIDE_ROUTE_19_WORKMEN_CLOSED`) are held back and the two
+  workmen of the road reopened stand (`hiddenBy ""`): ours.
+- *Janine*: Fuchsia's four Gym trainers stand dressed as her, each decoy and the trainer beneath on one tile. Spoken to,
+  a decoy drops the disguise and battles as that trainer (`battle … as`); the decoy is hidden and the trainer shown by a
+  flag of ours, `FLAG_JOHTO_FUCHSIA_GYM_<WHO>_REVEALED` (the overlay's `hiddenBy` and `shownBy`), where HeartGold swaps
+  two flags of its own for each. Janine stands always (HeartGold's `FLAG_HIDE_FUCHSIA_GYM_JANINE` is for her phone's
+  errand); she gives Kanto's Soul Badge (`givebadge soul of kanto`) and TM84 (Poison Jab), counts the four beaten and
+  unmasks any still in disguise; `FLAG_JOHTO_DEFEATED_JANINE` (ours). Her look, `janine`, is a look of ours in
+  `characters.json`, and HeartGold's `gsleader13` stands as it.
+- *Blue*: with Kanto's other seven Badges, his word on Cinnabar sets `FLAG_JOHTO_BLUE_BACK_IN_GYM` (ours) and takes him
+  off the island; the flag opens Viridian's Gym door (the overlay's `doors`, `openedBy`) and takes the old man who stands
+  before the shut door away. In the Gym he and one of his trainers stand always (HeartGold's
+  `FLAG_HIDE_VIRIDIAN_GYM_BLUE` hides them until he is back, which the door does here), and HeartGold's trigger before
+  the door (his absence) is left out. He gives Kanto's Earth Badge (`givebadge earth of kanto`) and TM92 (Trick Room);
+  `FLAG_JOHTO_DEFEATED_BLUE` (ours). With it, HeartGold's Kanto gives all eight of Kanto's Badges, so a game begun in
+  Johto can reach Mt. Silver's sixteen.
+- *Held back*: Cameron (Fuchsia, Routes 12 and 14), the women of two scenes on Routes 12 and 13 (`FLAG_MAPTEMP_035`,
+  `_016`), Suicune and Eusine on Route 14 with their trigger, the Mart's delivery men.
+- *Apricorns*: Fuchsia City's tree is a row of `apricorns.json` (White: ours).
+- *Models*: Fuchsia's houses (`sk_h01` to `_h03`, `Architecture.Wildwood`, as FireRed's Fuchsia builds), its Gym
+  (`sk_gym`), Pal Park's gate (`se_palpark`, a hall, locked), its doors and steps (`sk_door1`, `_2`, `sktk_sl`); the tall
+  markers `a13_anemo` draw nothing (Ground), as their tiles draw the ground.
+- *Songs*: Fuchsia, its rooms and gate houses play `kanto/fuchsia`, Routes 12 to 15 and the fishing house
+  `kanto/route11`, Route 19 `kanto/route3`, as FireRed's do; the two Gyms Johto's Gym theme.
+- *Known*: the Viridian Gym's matrix is two chunks tall, and a DS room of more than one chunk is as wide as its chunk
+  (`World.cs` sizes only a single chunk's room by its reach), so the camera centres on the chunk and the nine-tile hall
+  sits at the picture's left edge with the chunk's wall over the rest (the harness's `jkh24`, `jkh25`). Other DS rooms
+  of several chunks (five of Johto's, several of Unova's) share it; the fix is the builder's and moves their pictures.
+- *Left*: the Seafoam Islands' lower floors and Articuno, Route 11, Diglett's Cave and the Snorlax woken, Routes 16 to 18
+  and the Cycling Road, Pal Park's gate, Oak's gift after Red, the Clefairy's dance, the Power Plant with the grunts of
+  Cerulean's Gym and Route 24, the Underground Path, Silph Co., the upper floors of Celadon's store and condominiums, the
+  Game Corner, the Radio Tower and the Expn Card, the Trainer House's battles, the Leaders' rematches and street
+  meetings, Suicune's stops, the rest of Kanto's Apricorn trees.

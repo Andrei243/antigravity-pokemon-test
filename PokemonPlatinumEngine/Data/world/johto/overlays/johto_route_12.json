@@ -1,0 +1,101 @@
+{
+  // Route 12 as HeartGold has it three years on (plan 20 · J15, part h): the long pier of the fishermen south of Lavender
+  // Town, down to Route 13. A Snorlax sleeps before the gate house to Route 11, whose doors (warps 0 and 1) are locked:
+  // waking it with the Poké Flute's channel, and Route 11 beyond, wait for their session. HeartGold's three other
+  // objects of the Snorlax only take up its tiles, so they are held back; so are Cameron and the woman of a scene
+  // (FLAG_MAPTEMP_035). Its key meets FireRed's, so it takes Johto's prefix (HgWorld.Clashes). Its trainers battle by
+  // their own records (Johto's trainers.json); the Young Couple are two people with one record
+  "area": "johto_route_12",
+  "bgmTrack": "kanto/route11",
+  "locked": [
+    0,
+    1
+  ],
+  "heldBack": [
+    "r12_gsbabyboy1",
+    "r12_gsbabyboy1_2",
+    "r12_gsbabyboy1_3",
+    "r12_gsmiddleman1",
+    "r12_gswoman1"
+  ],
+  "people": {
+    "r12_kabigon": {
+      "name": "Snorlax",
+      "npcType": "Pokemon",
+      "species": "Snorlax",
+      "still": true,
+      "hiddenBy": "",
+      "dialog": [
+        "A Snorlax is fast asleep across the way. It doesn't stir, however loudly it is called."
+      ]
+    },
+    "r12_fishing_2": {
+      "name": "Kyle",
+      "trainer": {
+        "dialogueBefore": "Fisherman Kyle: Shh! You'll scare the fish. Well, since you're here, battle me!",
+        "dialogueAfter": "Fisherman Kyle: The fish got away, and so did the win."
+      }
+    },
+    "r12_fishing_2_2": {
+      "name": "Martin",
+      "trainer": {
+        "dialogueBefore": "Fisherman Martin: I've been fishing off this pier since dawn. A battle would wake me up!",
+        "dialogueAfter": "Fisherman Martin: I'm wide awake now."
+      }
+    },
+    "r12_gsman2": {
+      "name": "Justin",
+      "trainer": {
+        "dialogueBefore": "Bird Keeper Justin: My birds dive for the fish these anglers miss. Watch them dive at you!",
+        "dialogueAfter": "Bird Keeper Justin: They should stick to fish."
+      }
+    },
+    "r12_gsman2_2": {
+      "name": "Vic",
+      "trainer": {
+        "dialogueBefore": "Young Couple Vic: We came here for a stroll by the sea. Shall we make it a battle?",
+        "dialogueAfter": "Young Couple Vic: The stroll was nicer."
+      }
+    },
+    "r12_gswoman2": {
+      "name": "Tara",
+      "trainer": {
+        "id": "johto_young_couple_vic_and_tara",
+        "dialogueBefore": "Young Couple Tara: Two of us, one of you. Ready?",
+        "dialogueAfter": "Young Couple Tara: At least we lost together."
+      }
+    },
+    "r12_fishing_2_3": {
+      "name": "Stephen",
+      "trainer": {
+        "dialogueBefore": "Fisherman Stephen: My line's been still all morning. Give me something to do!",
+        "dialogueAfter": "Fisherman Stephen: Back to the still line."
+      }
+    },
+    "r12_fishing_2_4": {
+      "name": "Barney",
+      "trainer": {
+        "dialogueBefore": "Fisherman Barney: The biggest Pokémon I ever hooked was a Gyarados. You're next!",
+        "dialogueAfter": "Fisherman Barney: You got away, like that Gyarados."
+      }
+    },
+    "r12_gsman2_3": {
+      "name": "Gail",
+      "trainer": {
+        "dialogueBefore": "Bird Keeper Gail: The sea breeze here is perfect for flying. Let's battle in it!",
+        "dialogueAfter": "Bird Keeper Gail: The breeze is still nice, at least."
+      }
+    },
+    "r12_fishing_2_5": {
+      "name": "Kyler",
+      "trainer": {
+        "dialogueBefore": "Fisherman Kyler: I fish at the very end of the pier, where nobody bothers me. Until now!",
+        "dialogueAfter": "Fisherman Kyler: Now leave me in peace."
+      }
+    }
+  },
+  "signs": {
+    "R12_003+1": "Route 12\nNorth to Lavender Town",
+    "R12_002+1": "The Fishing Brothers' House"
+  }
+}

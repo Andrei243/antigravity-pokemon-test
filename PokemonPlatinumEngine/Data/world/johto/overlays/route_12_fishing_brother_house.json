@@ -1,0 +1,15 @@
+{
+  // The fishing brother's house on Route 12 (plan 20 · J15, part h). HeartGold's brother weighs a Magikarp; here he
+  // only talks of it, as the record keeper of Lake of Rage's own house is the one who measures
+  "area": "route_12_fishing_brother_house",
+  "bgmTrack": "kanto/route11",
+  "people": {
+    "r12r0101_fishing_2": {
+      "name": "Fisherman",
+      "still": true,
+      "dialog": [
+        "My brother at the Lake of Rage keeps the record for the biggest Magikarp. I fish here to find one that beats it."
+      ]
+    }
+  }
+}

@@ -327,6 +327,17 @@
     { "name": "Cinnabar_PokemonCenter_1F", "matrix": 73, "area": "cinnabar_island_pokecenter_1f", "trees": "Round", "setting": "Indoors" },
     { "name": "Cinnabar_PokemonCenter_B1F", "matrix": 77, "area": "cinnabar_island_pokecenter_b1f", "trees": "Round", "setting": "Indoors" },
     { "name": "Seafoam_1F", "matrix": 81, "area": "johto_seafoam_islands_1f", "trees": "Round", "setting": "Cave" },
+    // Plan 20 · J15, part h: Route 19's and Route 15's gates, Fuchsia City's rooms and Janine's Gym, Viridian's Gym and Route 12's house (named Fuchsia_, Route19_, Route15_, Viridian_ and Route12_FishingBrotherHouse: FireRed's are FuchsiaCity_, Route15_WestEntrance, ViridianCity_ and Route12_FishingHouse)
+    { "name": "Route19_FuchsiaGate", "matrix": 69, "area": "route_19_fuchsia_gatehouse", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route15_FuchsiaGate", "matrix": 70, "area": "route_15_fuchsia_gatehouse", "trees": "Round", "setting": "Indoors" },
+    { "name": "Fuchsia_PokemonCenter_1F", "matrix": 73, "area": "fuchsia_pokecenter_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Fuchsia_PokemonCenter_B1F", "matrix": 77, "area": "fuchsia_pokecenter_b1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Fuchsia_Mart", "matrix": 104, "area": "fuchsia_pokemart", "trees": "Round", "setting": "Indoors" },
+    { "name": "Fuchsia_Gym", "matrix": 259, "area": "fuchsia_gym", "trees": "Round", "setting": "Indoors" },
+    { "name": "Fuchsia_SouthwestHouse", "matrix": 96, "area": "fuchsia_southwest_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "Fuchsia_WardensHouse", "matrix": 97, "area": "fuchsia_safari_zone_warden_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "Viridian_Gym", "matrix": 261, "area": "viridian_gym", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route12_FishingBrotherHouse", "matrix": 66, "area": "route_12_fishing_brother_house", "trees": "Round", "setting": "Indoors" },
     { "name": "Seafoam_Gym", "matrix": 264, "area": "seafoam_islands_cinnabar_gym", "trees": "Round", "setting": "Cave" }
   ],
   "areas": [
@@ -448,6 +459,10 @@
     // Plan 20 · J15, part g: Viridian's gate south to Route 1 and Pallet Town with its rooms, Route 21 by sea to Cinnabar Island, and Route 20 east to the Seafoam Islands and Blaine's Gym
     "viridian_route_1_gatehouse", "johto_route_1", "pallet", "pallet_town_reds_house_1f", "pallet_town_reds_house_2f",
     "pallet_town_blues_house_1f", "pallet_town_blues_house_2f", "pallet_town_oaks_lab", "route_21", "johto_cinnabar_island",
-    "cinnabar_island_pokecenter_1f", "cinnabar_island_pokecenter_b1f", "johto_route_20", "johto_seafoam_islands_1f", "seafoam_islands_cinnabar_gym"
+    "cinnabar_island_pokecenter_1f", "cinnabar_island_pokecenter_b1f", "johto_route_20", "johto_seafoam_islands_1f", "seafoam_islands_cinnabar_gym",
+    // Plan 20 · J15, part h: Route 19 north from Route 20's sea to its gate and Fuchsia City with its rooms and Janine's Gym, Route 15 west of it with its gate, and Viridian's Gym, where Blue comes home
+    "johto_route_19", "route_19_fuchsia_gatehouse", "fuchsia", "fuchsia_pokecenter_1f", "fuchsia_pokecenter_b1f", "fuchsia_pokemart",
+    "fuchsia_gym", "fuchsia_southwest_house", "fuchsia_safari_zone_warden_house", "route_15_fuchsia_gatehouse", "johto_route_15",
+    "viridian_gym", "johto_route_14", "johto_route_13", "johto_route_12", "route_12_fishing_brother_house"
   ]
 }

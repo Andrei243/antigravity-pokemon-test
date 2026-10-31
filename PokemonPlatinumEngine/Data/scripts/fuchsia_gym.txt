@@ -1,0 +1,167 @@
+# The Fuchsia Gym as HeartGold has it three years on (plan 20 · J15, part h). docs/scripts.md describes the language;
+# the lines are our own, on HeartGold's beats (scr_seq_T08GYM0101).
+#
+# Janine, Koga's daughter, keeps her father's old Gym, and four of her trainers stand about it dressed as her. Spoken
+# to, a decoy drops the disguise and battles as who she or he is (`battle self as`); the decoy is hidden and the
+# trainer shown on the same tile by a flag of ours, FLAG_JOHTO_FUCHSIA_GYM_<WHO>_REVEALED (the overlay's `hiddenBy` and
+# `shownBy`), where HeartGold swaps its own two flags of each. The real Janine waits in the middle of the floor and
+# battles for the Soul Badge, which is Kanto's (`givebadge soul of kanto`, as the other Kanto Gyms of HeartGold's: the
+# rulings' "HeartGold's Kanto, part b" to "part h"), counts her four trainers beaten, unmasks whoever is still in
+# disguise and gives TM84, Poison Jab. Whether she is beaten here is FLAG_JOHTO_DEFEATED_JANINE, a flag of ours, so a
+# FireRed Champion battles her all the same.
+
+
+script Janine
+  face t08gym0101_gsleader13 player
+  speaker "Janine"
+  if flag FLAG_JOHTO_DEFEATED_JANINE goto Won
+  scene "Janine"
+  say "So you found the real me. Not bad! My father taught me every trick a ninja knows, and now this Gym is mine."
+  say "A Champion from Johto, is it? Then you won't mind a little poison. Here I come!"
+  battle self as "johto_leader_janine_janine"
+  say "Ugh... You were too quick for my tricks. All right, you've earned it: the Soul Badge."
+  givebadge soul of kanto
+  text "{player} received the Soul Badge from Janine!"
+  setflag FLAG_JOHTO_DEFEATED_JANINE
+  defeat "johto_lass_linda"
+  defeat "johto_lass_alice"
+  defeat "johto_camper_barry"
+  defeat "johto_picnicker_cindy"
+  setflag FLAG_JOHTO_FUCHSIA_GYM_LINDA_REVEALED
+  setflag FLAG_JOHTO_FUCHSIA_GYM_ALICE_REVEALED
+  setflag FLAG_JOHTO_FUCHSIA_GYM_BARRY_REVEALED
+  setflag FLAG_JOHTO_FUCHSIA_GYM_CINDY_REVEALED
+  endscene
+label Tm
+  say "Take this as well. It's a move I practised until my arms ached."
+  give "TM84"
+  setflag FLAG_JOHTO_GOT_TM84_FROM_JANINE
+  say "TM84 is Poison Jab. It stabs the foe with a poisoned spike, and it may poison them too."
+  end
+label Won
+  if not flag FLAG_JOHTO_GOT_TM84_FROM_JANINE goto Tm
+  say "I'll train until no Champion can see through me. Then we'll battle again!"
+  end
+
+
+# The four decoys, each dressed as Janine. Spoken to, one drops the disguise and battles.
+script Linda
+  face t08gym0101_gsleader13_4 player
+  say "Hah! Did you think I was Janine? Look closer!"
+  setflag FLAG_JOHTO_FUCHSIA_GYM_LINDA_REVEALED
+  hide t08gym0101_gsleader13_4
+  show t08gym0101_gsgirl1
+  speaker "Linda"
+  say "I'm Linda! Janine lends us her clothes so challengers get lost. Now, battle!"
+  battle t08gym0101_gsgirl1 as "johto_lass_linda"
+  say "You saw right through me in the end."
+  end
+
+script LindaRevealed
+  face t08gym0101_gsgirl1 player
+  if defeated "johto_lass_linda" goto LindaBeaten
+  speaker "Linda"
+  say "I'm Linda! Janine lends us her clothes so challengers get lost. Now, battle!"
+  battle t08gym0101_gsgirl1 as "johto_lass_linda"
+  say "You saw right through me in the end."
+  end
+label LindaBeaten
+  speaker "Linda"
+  say "Janine's disguises are better than mine. She can fool anyone."
+  end
+
+script Alice
+  face t08gym0101_gsleader13_5 player
+  say "I'm the real Janine! ...Or am I?"
+  setflag FLAG_JOHTO_FUCHSIA_GYM_ALICE_REVEALED
+  hide t08gym0101_gsleader13_5
+  show t08gym0101_gsgirl1_2
+  speaker "Alice"
+  say "Fooled you! I'm Alice. And my Pokémon are just as poisonous as hers!"
+  battle t08gym0101_gsgirl1_2 as "johto_lass_alice"
+  say "Next time I'll practise standing still like a ninja."
+  end
+
+script AliceRevealed
+  face t08gym0101_gsgirl1_2 player
+  if defeated "johto_lass_alice" goto AliceBeaten
+  speaker "Alice"
+  say "Fooled you! I'm Alice. And my Pokémon are just as poisonous as hers!"
+  battle t08gym0101_gsgirl1_2 as "johto_lass_alice"
+  say "Next time I'll practise standing still like a ninja."
+  end
+label AliceBeaten
+  speaker "Alice"
+  say "The real Janine stands in the middle of the floor. Don't tell her I told you."
+  end
+
+script Barry
+  face t08gym0101_gsleader13_3 player
+  say "Welcome to my Gym, challenger. ...Hmm, my voice gives me away, doesn't it?"
+  setflag FLAG_JOHTO_FUCHSIA_GYM_BARRY_REVEALED
+  hide t08gym0101_gsleader13_3
+  show t08gym0101_campboy_2
+  speaker "Barry"
+  say "It's me, Barry! The wig itches, but the battle won't. Let's go!"
+  battle t08gym0101_campboy_2 as "johto_camper_barry"
+  say "I'm taking the wig off for good."
+  end
+
+script BarryRevealed
+  face t08gym0101_campboy_2 player
+  if defeated "johto_camper_barry" goto BarryBeaten
+  speaker "Barry"
+  say "It's me, Barry! The wig itches, but the battle won't. Let's go!"
+  battle t08gym0101_campboy_2 as "johto_camper_barry"
+  say "I'm taking the wig off for good."
+  end
+label BarryBeaten
+  speaker "Barry"
+  say "Being a decoy is harder than it looks. You have to keep a straight face."
+  end
+
+script Cindy
+  face t08gym0101_gsleader13_2 player
+  say "You've reached the end of the Gym. Prepare to face Janine! ...Gotcha!"
+  setflag FLAG_JOHTO_FUCHSIA_GYM_CINDY_REVEALED
+  hide t08gym0101_gsleader13_2
+  show t08gym0101_picnicgirl_2
+  speaker "Cindy"
+  say "I'm Cindy, and the corner was the perfect hiding place. Battle me!"
+  battle t08gym0101_picnicgirl_2 as "johto_picnicker_cindy"
+  say "Even the corner couldn't save me."
+  end
+
+script CindyRevealed
+  face t08gym0101_picnicgirl_2 player
+  if defeated "johto_picnicker_cindy" goto CindyBeaten
+  speaker "Cindy"
+  say "I'm Cindy, and the corner was the perfect hiding place. Battle me!"
+  battle t08gym0101_picnicgirl_2 as "johto_picnicker_cindy"
+  say "Even the corner couldn't save me."
+  end
+label CindyBeaten
+  speaker "Cindy"
+  say "Janine trains in secret every night. That's why she's so strong."
+  end
+
+
+# The Gym guide by the door.
+script Guide
+  if flag FLAG_JOHTO_DEFEATED_JANINE goto Won
+  say "Hey, champ in the making! Janine's trainers all dress up as her. Talk to each one to find out who's real."
+  say "Her Pokémon use poison, so Ground and Psychic moves will serve you well."
+  end
+label Won
+  say "You beat Janine! I never could tell which one was really her."
+  end
+
+
+# The statues by the door.
+script Statue
+  if flag FLAG_JOHTO_DEFEATED_JANINE goto Won
+  text "Fuchsia City Pokémon Gym\nLeader: Janine"
+  end
+label Won
+  text "Fuchsia City Pokémon Gym\nLeader: Janine\nWinning trainers: {player}"
+  end

@@ -1,0 +1,84 @@
+{
+  "key": "johto_route_12",
+  "index": 20,
+  "name": "Route 12",
+  "matrix": 0,
+  "kind": "Route",
+  "sign": "Route",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "General",
+  "dayMusic": "GS_R_13_11",
+  "nightMusic": "GS_R_13_11",
+  "encounters": "R12",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "surfSwarm": "Tentacool",
+  "fishSwarm": "Relicanth",
+  "water": [
+    { "species": "Tentacool", "level": 25, "maxLevel": 25 },
+    { "species": "Quagsire", "level": 25, "maxLevel": 25 },
+    { "species": "Tentacruel", "level": 25, "maxLevel": 25 },
+    { "species": "Tentacruel", "level": 25, "maxLevel": 25 },
+    { "species": "Tentacruel", "level": 25, "maxLevel": 25 }
+  ],
+  "waterRate": 15,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 10 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Tentacool", "level": 20, "maxLevel": 20 },
+    { "species": "Tentacool", "level": 20, "maxLevel": 20 },
+    { "species": "Tentacool", "level": 20, "maxLevel": 20 },
+    { "species": "Tentacool", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Tentacool", "level": 40, "maxLevel": 40 },
+    { "species": "Tentacool", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 },
+    { "species": "Qwilfish", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "warps": [
+    { "x": 1408, "z": 305, "to": "route_19_route_12_gatehouse", "toWarp": 1 },
+    { "x": 1408, "z": 306, "to": "route_19_route_12_gatehouse", "toWarp": 1 },
+    { "x": 1429, "z": 318, "to": "route_12_fishing_brother_house", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "r12_fishing_2", "looks": "fishing_2", "movement": "0", "x": 1420, "z": 274, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 0, "script": "TRAINER_FISHERMAN_KYLE" },
+    { "id": "r12_fishing_2_2", "looks": "fishing_2", "movement": "0", "x": 1428, "z": 287, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 0, "script": "TRAINER_FISHERMAN_MARTIN" },
+    { "id": "r12_gsman2", "looks": "gsman2", "movement": "8", "x": 1423, "z": 285, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_BIRD_KEEPER_GS_JUSTIN" },
+    { "id": "r12_gsman2_2", "looks": "gsman2", "movement": "0", "x": 1426, "z": 300, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 2, "script": "TRAINER_YOUNG_COUPLE_VIC_AND_TARA" },
+    { "id": "r12_gswoman2", "looks": "gswoman2", "movement": "0", "x": 1426, "z": 299, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "std_trainer_2(TRAINER_YOUNG_COUPLE_VIC_AND_TARA)" },
+    { "id": "r12_fishing_2_3", "looks": "fishing_2", "movement": "0", "x": 1433, "z": 300, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 0, "script": "TRAINER_FISHERMAN_STEPHEN" },
+    { "id": "r12_fishing_2_4", "looks": "fishing_2", "movement": "0", "x": 1434, "z": 327, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 0, "script": "TRAINER_FISHERMAN_BARNEY" },
+    { "id": "r12_gsman2_3", "looks": "gsman2", "movement": "4", "x": 1424, "z": 318, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 2, "script": "TRAINER_BIRD_KEEPER_GS_GAIL" },
+    { "id": "r12_fishing_2_5", "looks": "fishing_2", "movement": "16", "x": 1427, "z": 340, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 0, "script": "TRAINER_FISHERMAN_KYLER" },
+    { "id": "r12_monstarball", "looks": "monstarball", "movement": "0", "x": 1410, "z": 332, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_R12_CALCIUM", "item": "Calcium", "script": "std_itemball_r12_calcium" },
+    { "id": "r12_monstarball_2", "looks": "monstarball", "movement": "0", "x": 1411, "z": 347, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_R12_YELLOW_FLUTE", "item": "Yellow Flute", "script": "std_itemball_r12_yellow_flute" },
+    { "id": "r12_tree", "looks": "tree", "movement": "0", "x": 1414, "z": 334, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_010", "script": "std_field_cut" },
+    { "id": "r12_tree_2", "looks": "tree", "movement": "0", "x": 1414, "z": 348, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_011", "script": "std_field_cut" },
+    { "id": "r12_gsmiddleman1", "looks": "gsmiddleman1", "movement": "14", "x": 1427, "z": 279, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CAMERON", "script": "R12_000+1" },
+    { "id": "r12_gswoman1", "looks": "gswoman1", "movement": "2", "x": 1416, "z": 252, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_035", "script": "65535" },
+    { "id": "r12_kabigon", "looks": "kabigon", "movement": "0", "x": 1411, "z": 306, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_12_SNORLAX", "script": "R12_005+1" },
+    { "id": "r12_gsbabyboy1", "looks": "gsbabyboy1", "movement": "53", "x": 1411, "z": 305, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_12_SNORLAX", "script": "R12_005+1" },
+    { "id": "r12_gsbabyboy1_2", "looks": "gsbabyboy1", "movement": "53", "x": 1412, "z": 305, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_12_SNORLAX", "script": "R12_005+1" },
+    { "id": "r12_gsbabyboy1_3", "looks": "gsbabyboy1", "movement": "53", "x": 1412, "z": 306, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_12_SNORLAX", "script": "R12_005+1" }
+  ],
+  "signs": [
+    { "x": 1432, "z": 273, "type": 1, "script": "R12_003+1" },
+    { "x": 1434, "z": 342, "type": 1, "script": "R12_002+1" },
+    { "x": 1415, "z": 302, "type": 2, "script": "std_hiddenitem_r12_elixir", "item": "Elixir", "flag": "FLAG_HIDDEN_ITEM_R12_ELIXIR" }
+  ],
+  "triggers": []
+}

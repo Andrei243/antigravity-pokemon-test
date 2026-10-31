@@ -1,0 +1,67 @@
+{
+  // Route 19 as HeartGold has it three years on (plan 20 · J15, part h): the sea south of Fuchsia City down to Route
+  // 20's, by the Seafoam Islands. HeartGold shuts it for a rockfall at first, with barriers and two workmen across the
+  // way below the gate; here the road is open already, so the barriers and that pair are held back and the two workmen
+  // of the road reopened stand by the shore (HeartGold's FLAG_HIDE_ROUTE_19_WORKMEN_OPEN, which nothing here sets). Its
+  // key meets FireRed's, so it takes Johto's prefix (HgWorld.Clashes). Its trainers battle by their own records
+  // (Johto's trainers.json)
+  "area": "johto_route_19",
+  "bgmTrack": "kanto/route3",
+  "heldBack": [
+    "w19_stop",
+    "w19_stop_2",
+    "w19_stop_3",
+    "w19_stop_4",
+    "w19_workman",
+    "w19_workman_2"
+  ],
+  "people": {
+    "w19_workman_3": {
+      "name": "Worker",
+      "still": true,
+      "hiddenBy": "",
+      "dialog": [
+        "That rockfall took us weeks to clear. The road's open again now, so swim safely!"
+      ]
+    },
+    "w19_workman_4": {
+      "name": "Worker",
+      "hiddenBy": "",
+      "dialog": [
+        "We break the leftover rocks with our Pokémon. Machop can lift boulders bigger than I am."
+      ]
+    },
+    "w19_gsswimmerm": {
+      "name": "Jerome",
+      "trainer": {
+        "dialogueBefore": "Swimmer Jerome: I've swum this route every day for years. Let's see if you can keep up!",
+        "dialogueAfter": "Swimmer Jerome: I'm all out of breath."
+      }
+    },
+    "w19_gsswimmerm_2": {
+      "name": "Harold",
+      "trainer": {
+        "dialogueBefore": "Swimmer Harold: The current pulls you east here. Battle me before it pulls you away!",
+        "dialogueAfter": "Swimmer Harold: I'll let the current take me home."
+      }
+    },
+    "w19_gsswimmerm_3": {
+      "name": "Tucker",
+      "trainer": {
+        "dialogueBefore": "Swimmer Tucker: My girlfriend and I swim together. I'll show her how strong I am!",
+        "dialogueAfter": "Swimmer Tucker: Please don't tell her about this."
+      }
+    },
+    "w19_gsswimmerw": {
+      "name": "Debbie",
+      "trainer": {
+        "dialogueBefore": "Swimmer Debbie: He's showing off again. Let me show him how it's really done!",
+        "dialogueAfter": "Swimmer Debbie: Well, at least he didn't see that."
+      }
+    }
+  },
+  "signs": {
+    "W19_005+1": "Route 19\nFuchsia City - Seafoam Islands",
+    "W19_004+1": "Notice\nWatch for falling rocks near the shore."
+  }
+}

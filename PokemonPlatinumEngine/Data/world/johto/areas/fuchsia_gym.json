@@ -1,0 +1,37 @@
+{
+  "key": "fuchsia_gym",
+  "index": 480,
+  "name": "Fuchsia City",
+  "matrix": 259,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "14",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_GYM",
+  "nightMusic": "GS_GYM",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 7, "z": 25, "to": "fuchsia", "toWarp": 7 }
+  ],
+  "objects": [
+    { "id": "t08gym0101_picnicgirl_2", "looks": "picnicgirl_2", "movement": "0", "x": 12, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_FUCHSIA_GYM_PICNICKER_CINDY_REVEALED", "script": "T08GYM0101_006+1" },
+    { "id": "t08gym0101_gsgirl1", "looks": "gsgirl1", "movement": "0", "x": 3, "z": 18, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_FUCHSIA_GYM_LASS_LINDA_REVEALED", "script": "T08GYM0101_003+1" },
+    { "id": "t08gym0101_gsleader13", "looks": "gsleader13", "movement": "0", "x": 7, "z": 16, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_FUCHSIA_GYM_JANINE", "script": "T08GYM0101_001+1" },
+    { "id": "t08gym0101_sunglasses", "looks": "sunglasses", "movement": "15", "x": 10, "z": 23, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "T08GYM0101_002+1" },
+    { "id": "t08gym0101_gsgirl1_2", "looks": "gsgirl1", "movement": "0", "x": 9, "z": 11, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_FUCHSIA_GYM_LASS_ALICE_REVEALED", "script": "T08GYM0101_005+1" },
+    { "id": "t08gym0101_campboy_2", "looks": "campboy_2", "movement": "0", "x": 3, "z": 10, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_FUCHSIA_GYM_CAMPER_BARRY_REVEALED", "script": "T08GYM0101_004+1" },
+    { "id": "t08gym0101_gsleader13_2", "looks": "gsleader13", "movement": "0", "x": 12, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_FUCHSIA_GYM_PICNICKER_CINDY_DISGUISED", "script": "T08GYM0101_006+1" },
+    { "id": "t08gym0101_gsleader13_3", "looks": "gsleader13", "movement": "0", "x": 3, "z": 10, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_FUCHSIA_GYM_CAMPER_BARRY_DISGUISED", "script": "T08GYM0101_004+1" },
+    { "id": "t08gym0101_gsleader13_4", "looks": "gsleader13", "movement": "0", "x": 3, "z": 18, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_FUCHSIA_GYM_LASS_LINDA_DISGUISED", "script": "T08GYM0101_003+1" },
+    { "id": "t08gym0101_gsleader13_5", "looks": "gsleader13", "movement": "0", "x": 9, "z": 11, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_FUCHSIA_GYM_LASS_ALICE_DISGUISED", "script": "T08GYM0101_005+1" }
+  ],
+  "signs": [
+    { "x": 5, "z": 23, "type": 0, "script": "T08GYM0101_007+1" },
+    { "x": 9, "z": 23, "type": 0, "script": "T08GYM0101_007+1" }
+  ],
+  "triggers": []
+}

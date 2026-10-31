@@ -575,6 +575,9 @@ public static class RegionDatabase
                 // Plan 20 · J15, part g: Viridian's gate to Route 1, Pallet Town's rooms, Cinnabar Island's Pokémon Center, the Seafoam Islands' first floor and Blaine's Gym
                 "Viridian_Route1Gate", "Pallet_RedsHouse_1F", "Pallet_RedsHouse_2F", "Pallet_BluesHouse_1F", "Pallet_BluesHouse_2F", "Pallet_OaksLab",
                 "Cinnabar_PokemonCenter_1F", "Cinnabar_PokemonCenter_B1F", "Seafoam_1F", "Seafoam_Gym",
+                // Plan 20 · J15, part h: Route 19's and Route 15's gates, Fuchsia City's rooms and Janine's Gym, Viridian's Gym and Route 12's house
+                "Route19_FuchsiaGate", "Route15_FuchsiaGate", "Fuchsia_PokemonCenter_1F", "Fuchsia_PokemonCenter_B1F", "Fuchsia_Mart",
+                "Fuchsia_Gym", "Fuchsia_SouthwestHouse", "Fuchsia_WardensHouse", "Viridian_Gym", "Route12_FishingBrotherHouse",
             }
         },
         new()

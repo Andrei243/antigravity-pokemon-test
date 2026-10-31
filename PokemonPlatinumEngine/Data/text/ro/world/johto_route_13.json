@@ -1,0 +1,316 @@
+{
+  "people": {
+    "r13_mount_2": {
+      "name": {
+        "en": [
+          "Kenny"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Kenny: I walked here all the way from Rock Tunnel. My legs are fine; let's battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Kenny: Now my legs are tired."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r13_gsman2": {
+      "name": {
+        "en": [
+          "Tim"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Young Couple Tim: This road is our favourite date. You've walked right into it!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Young Couple Tim: Our date isn't ruined. Probably."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r13_gswoman2": {
+      "name": {
+        "en": [
+          "Sue"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Young Couple Sue: We battle as a pair. Can you keep up?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Young Couple Sue: You kept up and then some."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r13_gsmiddleman1": {
+      "name": {
+        "en": [
+          "Joshua"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokéfan Joshua: My Pokémon wear matching bows today. Admire them while we battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokéfan Joshua: The bows came loose."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r13_gsmiddleman1_2": {
+      "name": {
+        "en": [
+          "Alex"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokéfan Alex: I polish my Pokémon every morning. See how they shine!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokéfan Alex: They still shine. Just less."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r13_campboy_2": {
+      "name": {
+        "en": [
+          "Clark"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Camper Clark: I'm pitching my tent by the fence tonight. Battle me first!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Camper Clark: I'll sleep on that one."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r13_campboy_2_2": {
+      "name": {
+        "en": [
+          "Tanner"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Camper Tanner: These fences make the road a maze. You'll have to get past me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Camper Tanner: You found the way, all right."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r13_picnicgirl_2": {
+      "name": {
+        "en": [
+          "Piper"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Piper: I brought sandwiches and a strong team. Hungry for a battle?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Piper: I'll eat my sandwiches alone, then."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r13_picnicgirl_2_2": {
+      "name": {
+        "en": [
+          "Ginger"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Ginger: The grass here is perfect for a picnic, and for a battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Ginger: Picnic it is."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r13_gsman2_2": {
+      "name": {
+        "en": [
+          "Bret"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Bret: My birds roost on these fence posts. Don't scare them off!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Bret: You scared them off anyway."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r13_gsman2_3": {
+      "name": {
+        "en": [
+          "Perry"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Perry: I've been watching you from the end of the road. Battle time!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Perry: I should have kept watching."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "R13_002+1": {
+      "en": [
+        "Route 13\nWest to Route 14"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "R13_001+1": {
+      "en": [
+        "Trainer Tips\nA trainer who stands still may still see you coming."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "R13_000+1": {
+      "en": [
+        "Trainer Tips\nA Pokémon's held item can turn a battle."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

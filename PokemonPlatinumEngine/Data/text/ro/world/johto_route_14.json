@@ -1,0 +1,231 @@
+{
+  "people": {
+    "r14_gswoman1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The grass on this route grows so tall you can lose sight of the road. Keep your Repels handy."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r14_gsmiddleman1": {
+      "name": {
+        "en": [
+          "Trevor"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokéfan Trevor: I've raised my Pokémon like my own children. They'll show you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokéfan Trevor: My children did their best."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r14_middlewoman1_2": {
+      "name": {
+        "en": [
+          "Clarice"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Teacher Clarice: My class is out on a nature walk. Let's give them a lesson to watch!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Teacher Clarice: That was a lesson for me, I think."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r14_gsman2": {
+      "name": {
+        "en": [
+          "Roy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Roy: My birds fly ahead and tell me who's coming. They told me about you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Roy: They didn't tell me you were this strong."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r14_gsmiddleman1_2": {
+      "name": {
+        "en": [
+          "Carter"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokéfan Carter: I'm the president of a fan club. Members only, but battles are open!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokéfan Carter: Would you like to join the club?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r14_gsman2_2": {
+      "name": {
+        "en": [
+          "Josh"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Josh: The wind blows straight down this route. My birds love it!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Josh: The wind changed."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r14_gsboy1": {
+      "name": {
+        "en": [
+          "Torin"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "School Kid Torin: We're on a nature walk. Battling counts as nature, right?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "School Kid Torin: Back in line, I suppose."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r14_gsboy1_2": {
+      "name": {
+        "en": [
+          "Connor"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "School Kid Connor: I'm at the back of the line, so I get to battle you first!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "School Kid Connor: I'll stay at the back."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r14_gsboy1_3": {
+      "name": {
+        "en": [
+          "Travis"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "School Kid Travis: Teacher said no battling. She's not looking. Quick!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "School Kid Travis: Don't tell her about this."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

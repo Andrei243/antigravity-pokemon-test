@@ -1,0 +1,112 @@
+{
+  "Blue": [
+    {
+      "en": [
+        "Blue"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "So you made it. Seven of Kanto's Badges, and a Johto Champion's title on top. You've been busy."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I was the Champion once, you know. For about five minutes. Then someone from Pallet Town beat me."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I won't lose that easily again. Let's see what you've got!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Tch. You're the real thing, all right. Here, take it: the Earth Badge."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Earth Badge from Blue!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And this. It's a strange move, but in the right hands it turns a battle on its head."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "TM92 is Trick Room. For five turns, the slowest Pokémon move first."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's all sixteen Badges, isn't it? If you're heading for Mt. Silver, say hello to someone for me."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Guide": [
+    {
+      "en": [
+        "Hey, champ in the making! Blue doesn't stick to one type. Bring a team that can handle anything."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You beat Blue! I knew you had it in you."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Statue": [
+    {
+      "en": [
+        "Viridian City Pokémon Gym\nLeader: Blue"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Viridian City Pokémon Gym\nLeader: Blue\nWinning trainers: {player}"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  // The house in Fuchsia City's south-west corner (plan 20 · J15, part h)
+  "area": "fuchsia_southwest_house",
+  "bgmTrack": "kanto/fuchsia",
+  "people": {
+    "t08r0401_middlewoman1_2": {
+      "name": "Woman",
+      "still": true,
+      "dialog": [
+        "My grandfather used to say the Fuchsia Gym was full of invisible walls. These days it's full of people dressed as Janine."
+      ]
+    },
+    "t08r0401_gsboy1": {
+      "name": "Boy",
+      "dialog": [
+        "I want to be a ninja like Koga when I grow up. I've been practising sneaking up on my mum. She always hears me."
+      ]
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  // Fuchsia City's Poké Mart (plan 20 · J15, part h). Its delivery men are the original's gifts, which this game has no use for
+  "area": "fuchsia_pokemart",
+  "bgmTrack": "kanto/fuchsia",
+  "heldBack": [
+    "t08fs0101_delivery2",
+    "t08fs0101_delivery"
+  ],
+  "people": {
+    "t08fs0101_shopm1_2": {
+      "name": "Clerk",
+      "script": "Clerk",
+      "still": true,
+      "dialog": [
+        "Welcome! How can I help you?"
+      ]
+    },
+    "t08fs0101_shopm1_2_2": {
+      "name": "Clerk",
+      "script": "Clerk",
+      "still": true,
+      "dialog": [
+        "Welcome! How can I help you?"
+      ]
+    },
+    "t08fs0101_gsbigman": {
+      "name": "Man",
+      "still": true,
+      "dialog": [
+        "I came to buy Safari Balls, out of habit. They don't sell them any more."
+      ]
+    },
+    "t08fs0101_gswoman3": {
+      "name": "Woman",
+      "dialog": [
+        "Full Heals are a must in this town. Everyone here seems to train Poison types."
+      ]
+    }
+  }
+}

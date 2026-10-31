@@ -1,0 +1,110 @@
+{
+  "people": {
+    "t08_gsmiddleman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Safari Zone closed down, you know. The warden went off travelling, and now there's a gate to some park there."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t08_gswoman1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Janine took over the Gym when her father joined the Elite Four. She's every bit as sneaky as he was."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t08_gsboy2": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Route 19 runs south into the sea. Swimmers race all the way to the Seafoam Islands from here."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t08_juggrer": {
+      "name": {
+        "en": [
+          "Juggler"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I practise juggling Poké Balls out here. If I drop one, it pops open, so I never drop one."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T08_004+1": {
+      "en": [
+        "Pal Park\nThe gate is closed."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T08_005+1": {
+      "en": [
+        "Safari Zone Warden's Home"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T08_003+1": {
+      "en": [
+        "Fuchsia City Pokémon Gym\nLeader: Janine"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T08_009+1": {
+      "en": [
+        "Fuchsia City\nA town of old gardens and quiet ninjas."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

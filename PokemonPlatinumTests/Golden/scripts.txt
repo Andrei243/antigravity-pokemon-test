@@ -15487,6 +15487,137 @@ way 0
 way 1, from answer 1
   Warden> Heh? Oh hoo. Hee hah hee ho hah...
   ? Hif fuff hefifoo! Ha lof ha feef ee hafahi ho. Heff hee fwee! = No
+=== fuchsia_gym.Alice
+from Janine? at 9,11 of Fuchsia_Gym
+way 0
+  Janine?> I'm the real Janine! ...Or am I?
+  Alice> Fooled you! I'm Alice. And my Pokémon are just as poisonous as hers!
+  Alice> Next time I'll practise standing still like a ninja.
+  * battle johto_lass_alice Won
+  + FLAG_JOHTO_FUCHSIA_GYM_ALICE_REVEALED
+  + beaten johto_lass_alice
+way 1, from answer 1
+  * battle johto_lass_alice Lost
+  + FLAG_JOHTO_FUCHSIA_GYM_ALICE_REVEALED
+=== fuchsia_gym.AliceRevealed
+from Alice at 9,11 of Fuchsia_Gym
+way 0
+  Alice> Fooled you! I'm Alice. And my Pokémon are just as poisonous as hers!
+  Alice> Next time I'll practise standing still like a ninja.
+  * battle johto_lass_alice Won
+  + beaten johto_lass_alice
+way 1, from answer 1
+  * battle johto_lass_alice Lost
+=== fuchsia_gym.Barry
+from Janine? at 3,10 of Fuchsia_Gym
+way 0
+  Janine?> Welcome to my Gym, challenger. ...Hmm, my voice gives me away, doesn't it?
+  Barry> It's me, Barry! The wig itches, but the battle won't. Let's go!
+  Barry> I'm taking the wig off for good.
+  * battle johto_camper_barry Won
+  + FLAG_JOHTO_FUCHSIA_GYM_BARRY_REVEALED
+  + beaten johto_camper_barry
+way 1, from answer 1
+  * battle johto_camper_barry Lost
+  + FLAG_JOHTO_FUCHSIA_GYM_BARRY_REVEALED
+=== fuchsia_gym.BarryRevealed
+from Barry at 3,10 of Fuchsia_Gym
+way 0
+  Barry> It's me, Barry! The wig itches, but the battle won't. Let's go!
+  Barry> I'm taking the wig off for good.
+  * battle johto_camper_barry Won
+  + beaten johto_camper_barry
+way 1, from answer 1
+  * battle johto_camper_barry Lost
+=== fuchsia_gym.Cindy
+from Janine? at 12,5 of Fuchsia_Gym
+way 0
+  Janine?> You've reached the end of the Gym. Prepare to face Janine! ...Gotcha!
+  Cindy> I'm Cindy, and the corner was the perfect hiding place. Battle me!
+  Cindy> Even the corner couldn't save me.
+  * battle johto_picnicker_cindy Won
+  + FLAG_JOHTO_FUCHSIA_GYM_CINDY_REVEALED
+  + beaten johto_picnicker_cindy
+way 1, from answer 1
+  * battle johto_picnicker_cindy Lost
+  + FLAG_JOHTO_FUCHSIA_GYM_CINDY_REVEALED
+=== fuchsia_gym.CindyRevealed
+from Cindy at 12,5 of Fuchsia_Gym
+way 0
+  Cindy> I'm Cindy, and the corner was the perfect hiding place. Battle me!
+  Cindy> Even the corner couldn't save me.
+  * battle johto_picnicker_cindy Won
+  + beaten johto_picnicker_cindy
+way 1, from answer 1
+  * battle johto_picnicker_cindy Lost
+=== fuchsia_gym.Guide
+from Gym guide at 10,23 of Fuchsia_Gym
+way -
+  Gym guide> Hey, champ in the making! Janine's trainers all dress up as her. Talk to each one to find out who's real.
+  Gym guide> Her Pokémon use poison, so Ground and Psychic moves will serve you well.
+=== fuchsia_gym.Janine
+from Janine at 7,16 of Fuchsia_Gym
+way 0
+  Janine> So you found the real me. Not bad! My father taught me every trick a ninja knows, and now this Gym is mine.
+  Janine> A Champion from Johto, is it? Then you won't mind a little poison. Here I come!
+  Janine> Ugh... You were too quick for my tricks. All right, you've earned it: the Soul Badge.
+  > Lucas received the Soul Badge from Janine!
+  Janine> Take this as well. It's a move I practised until my arms ached.
+  > Lucas received the TM84!
+  > TM84 holds the move Poison Jab.
+  > Lucas put it away in the TMs & HMs pocket.
+  Janine> TM84 is Poison Jab. It stabs the foe with a poisoned spike, and it may poison them too.
+  * scene fuchsia_gym.Janine
+  * battle johto_leader_janine_janine Won
+  * fanfare FanfareBadge
+  * defeat johto_lass_linda
+  * defeat johto_lass_alice
+  * defeat johto_camper_barry
+  * defeat johto_picnicker_cindy
+  * endscene
+  * fanfare FanfareTM
+  + FLAG_JOHTO_DEFEATED_JANINE
+  + FLAG_JOHTO_FUCHSIA_GYM_ALICE_REVEALED
+  + FLAG_JOHTO_FUCHSIA_GYM_BARRY_REVEALED
+  + FLAG_JOHTO_FUCHSIA_GYM_CINDY_REVEALED
+  + FLAG_JOHTO_FUCHSIA_GYM_LINDA_REVEALED
+  + FLAG_JOHTO_GOT_TM84_FROM_JANINE
+  + beaten johto_camper_barry
+  + beaten johto_lass_alice
+  + beaten johto_lass_linda
+  + beaten johto_leader_janine_janine
+  + beaten johto_picnicker_cindy
+  = badges Kanto 0 -> 10000
+  + seen fuchsia_gym.Janine
+way 1, from answer 1
+  * battle johto_leader_janine_janine Lost
+  * scene over, unseen
+=== fuchsia_gym.Linda
+from Janine? at 3,18 of Fuchsia_Gym
+way 0
+  Janine?> Hah! Did you think I was Janine? Look closer!
+  Linda> I'm Linda! Janine lends us her clothes so challengers get lost. Now, battle!
+  Linda> You saw right through me in the end.
+  * battle johto_lass_linda Won
+  + FLAG_JOHTO_FUCHSIA_GYM_LINDA_REVEALED
+  + beaten johto_lass_linda
+way 1, from answer 1
+  * battle johto_lass_linda Lost
+  + FLAG_JOHTO_FUCHSIA_GYM_LINDA_REVEALED
+=== fuchsia_gym.LindaRevealed
+from Linda at 3,18 of Fuchsia_Gym
+way 0
+  Linda> I'm Linda! Janine lends us her clothes so challengers get lost. Now, battle!
+  Linda> You saw right through me in the end.
+  * battle johto_lass_linda Won
+  + beaten johto_lass_linda
+way 1, from answer 1
+  * battle johto_lass_linda Lost
+=== fuchsia_gym.Statue
+from the tile read at 5,23 of Fuchsia_Gym
+from the tile read at 9,23 of Fuchsia_Gym
+way -
+  > Fuchsia City Pokémon Gym\nLeader: Janine
 === fuego_ironworks_building.MrFuego
 from Mr. Fuego at 25,19 of FuegoIronworksBuilding
 way 0
@@ -29258,6 +29389,49 @@ way -
 from Clerk at 2,3 of ViridianCity_Mart
 way -
   Clerk> Professor Oak's waiting on that parcel. Off you go, quick as you can!
+=== viridian_gym.Blue
+from Blue at 5,4 of Viridian_Gym
+way 0
+  Blue> So you made it. Seven of Kanto's Badges, and a Johto Champion's title on top. You've been busy.
+  Blue> I was the Champion once, you know. For about five minutes. Then someone from Pallet Town beat me.
+  Blue> I won't lose that easily again. Let's see what you've got!
+  Blue> Tch. You're the real thing, all right. Here, take it: the Earth Badge.
+  > Lucas received the Earth Badge from Blue!
+  Blue> And this. It's a strange move, but in the right hands it turns a battle on its head.
+  > Lucas received the TM92!
+  > TM92 holds the move Trick Room.
+  > Lucas put it away in the TMs & HMs pocket.
+  Blue> TM92 is Trick Room. For five turns, the slowest Pokémon move first.
+  * scene viridian_gym.Blue
+  * battle johto_leader_blue_blue Won
+  * fanfare FanfareBadge
+  * defeat johto_ace_trainer_m_arabella
+  * defeat johto_ace_trainer_m_bonita
+  * defeat johto_ace_trainer_f_salma
+  * defeat johto_double_team_elan_and_ida
+  * endscene
+  * fanfare FanfareTM
+  + FLAG_JOHTO_DEFEATED_BLUE
+  + FLAG_JOHTO_GOT_TM92_FROM_BLUE
+  + beaten johto_ace_trainer_f_salma
+  + beaten johto_ace_trainer_m_arabella
+  + beaten johto_ace_trainer_m_bonita
+  + beaten johto_double_team_elan_and_ida
+  + beaten johto_leader_blue_blue
+  = badges Kanto 0 -> 10000000
+  + seen viridian_gym.Blue
+way 1, from answer 1
+  * battle johto_leader_blue_blue Lost
+  * scene over, unseen
+=== viridian_gym.Guide
+from Gym guide at 7,46 of Viridian_Gym
+way -
+  Gym guide> Hey, champ in the making! Blue doesn't stick to one type. Bring a team that can handle anything.
+=== viridian_gym.Statue
+from the tile read at 3,45 of Viridian_Gym
+from the tile read at 7,45 of Viridian_Gym
+way -
+  > Viridian City Pokémon Gym\nLeader: Blue
 === wayward_cave_1f.Exit
 from the trigger at 41,53 of WaywardCave1F
 way -

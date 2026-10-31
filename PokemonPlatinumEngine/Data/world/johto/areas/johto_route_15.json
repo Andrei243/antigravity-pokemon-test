@@ -1,0 +1,68 @@
+{
+  "key": "johto_route_15",
+  "index": 23,
+  "name": "Route 15",
+  "matrix": 0,
+  "kind": "Route",
+  "sign": "Route",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "General",
+  "dayMusic": "GS_R_13_11",
+  "nightMusic": "GS_R_13_11",
+  "encounters": "R15",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Nidorina", "level": 23 },
+    { "species": "Nidorino", "level": 23 },
+    { "species": "Nidorina", "level": 23 },
+    { "species": "Nidorino", "level": 23 },
+    { "species": "Pidgeotto", "level": 25, "night": "Noctowl" },
+    { "species": "Pidgeotto", "level": 25, "night": "Noctowl" },
+    { "species": "Hoppip", "level": 22, "night": "Quagsire" },
+    { "species": "Hoppip", "level": 22, "night": "Quagsire" },
+    { "species": "Hoppip", "level": 24, "night": "Quagsire" },
+    { "species": "Hoppip", "level": 24, "night": "Quagsire" },
+    { "species": "Hoppip", "level": 24, "night": "Quagsire" },
+    { "species": "Chansey", "level": 25 }
+  ],
+  "landRate": 20,
+  "swarm": [
+    "Nidorina",
+    "Nidorina"
+  ],
+  "hoennSounds": [
+    "Plusle",
+    "Minun"
+  ],
+  "sinnohSounds": [
+    "Shinx",
+    "Shinx"
+  ],
+  "warps": [
+    { "x": 1248, "z": 422, "to": "route_15_fuchsia_gatehouse", "toWarp": 1 },
+    { "x": 1248, "z": 423, "to": "route_15_fuchsia_gatehouse", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "r15_gsboy1", "looks": "gsboy1", "movement": "0", "x": 1266, "z": 432, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 6, "script": "TRAINER_SCHOOL_KID_M_KIPP" },
+    { "id": "r15_gsboy1_2", "looks": "gsboy1", "movement": "0", "x": 1267, "z": 437, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "script": "TRAINER_SCHOOL_KID_M_TOMMY" },
+    { "id": "r15_middlewoman1_2", "looks": "middlewoman1_2", "movement": "0", "x": 1280, "z": 432, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_TEACHER_HILLARY" },
+    { "id": "r15_gsbabygirl1", "looks": "gsbabygirl1", "movement": "0", "x": 1276, "z": 421, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "std_trainer_2(TRAINER_TWINS_KAY_AND_TIA)" },
+    { "id": "r15_gsbabygirl1_2", "looks": "gsbabygirl1", "movement": "0", "x": 1277, "z": 421, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "script": "TRAINER_TWINS_KAY_AND_TIA" },
+    { "id": "r15_middlewoman1_2_2", "looks": "middlewoman1_2", "movement": "0", "x": 1270, "z": 420, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_POKEFAN_ELEANOR" },
+    { "id": "r15_gsmiddleman1", "looks": "gsmiddleman1", "movement": "0", "x": 1303, "z": 437, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "script": "TRAINER_POKEFAN_M_BOONE" },
+    { "id": "r15_middlewoman1_2_3", "looks": "middlewoman1_2", "movement": "4", "x": 1289, "z": 423, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_TEACHER_COLETTE" },
+    { "id": "r15_gsboy1_3", "looks": "gsboy1", "movement": "0", "x": 1318, "z": 433, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 6, "script": "TRAINER_SCHOOL_KID_M_JOHNNY" },
+    { "id": "r15_gsboy1_4", "looks": "gsboy1", "movement": "11", "x": 1314, "z": 422, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_SCHOOL_KID_M_BILLY" },
+    { "id": "r15_tree", "looks": "tree", "movement": "0", "x": 1333, "z": 427, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_010", "script": "std_field_cut" },
+    { "id": "r15_monstarball", "looks": "monstarball", "movement": "0", "x": 1263, "z": 423, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_R15_PP_UP", "item": "PP Up", "script": "std_itemball_r15_pp_up" },
+    { "id": "r15_monstarball_2", "looks": "monstarball", "movement": "0", "x": 1290, "z": 434, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_R15_ROSE_INCENSE", "item": "Rose Incense", "script": "std_itemball_r15_rose_incense" }
+  ],
+  "signs": [
+    { "x": 1272, "z": 431, "type": 1, "script": "R15_000+1" }
+  ],
+  "triggers": []
+}

@@ -1,15 +1,15 @@
 {
   // Viridian City as HeartGold has it three years on (plan 20 · J15, part f): a town of Johto's own map, come to by
-  // Route 22's east end from the League's reception gate, with Route 2 north to Pewter. Its Gym (warp 0) stays locked,
-  // and the old man HeartGold stands before it while it is shut says so; its Leader and the Gym's opening wait for
-  // their session. The gate house to Route 1 (warps 5 and 6) leads south to Pallet Town since part g.
-  // Cameron the photographer waits for his
+  // Route 22's east end from the League's reception gate, with Route 2 north to Pewter. Its Gym (warp 0) is shut until
+  // Blue comes home from Cinnabar Island (FLAG_JOHTO_BLUE_BACK_IN_GYM, part h), and the old man HeartGold stands before
+  // it while it is shut says so and goes once it opens. The gate house to Route 1 (warps 5 and 6) leads south to Pallet
+  // Town since part g. Cameron the photographer waits for his session
   "area": "viridian",
   "bgmTrack": "kanto/viridian",
   "trees": "Round",
   "architecture": "Evergreen",
-  "locked": [
-    0
+  "doors": [
+    { "warp": 0, "map": "Viridian_Gym", "x": 5, "y": 46, "facing": "Up", "openedBy": "FLAG_JOHTO_BLUE_BACK_IN_GYM" }
   ],
   "heldBack": [
     "t02_gsmiddleman1",
@@ -19,7 +19,7 @@
     "t02_gsoldman1": {
       "name": "Old man",
       "still": true,
-      "hiddenBy": "",
+      "hiddenBy": "FLAG_JOHTO_BLUE_BACK_IN_GYM",
       "dialog": [
         "The Gym's been locked for years. Its Leader is off somewhere, and nobody knows when he'll be back."
       ]
@@ -45,7 +45,7 @@
   },
   "signs": {
     "T02_004+1": "Viridian City\nThe eternally green paradise.",
-    "T02_005+1": "Viridian City Pokémon Gym\nThe doors are locked.",
+    "T02_005+1": "Viridian City Pokémon Gym\nLeader: Blue",
     "T02_006+1": "Trainer Tips\nA Pokémon that is asleep or paralysed is easier to catch.",
     "T02_007+1": "Trainer House\nThe club for trainers who want a challenge."
   }

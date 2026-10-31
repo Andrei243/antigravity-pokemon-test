@@ -1,0 +1,64 @@
+{
+  // The Viridian Gym as HeartGold has it (plan 20 · J15, part h): a long hall, Blue at its far end (viridian_gym.txt).
+  // Its door opens once Blue is home from Cinnabar Island (FLAG_JOHTO_BLUE_BACK_IN_GYM, viridian.json's door), so
+  // HeartGold's FLAG_HIDE_VIRIDIAN_GYM_BLUE, which hides him and one of his trainers until then, has nothing left to do:
+  // both stand here always. His four trainers battle by their own records (Johto's trainers.json); the Double Team are
+  // two people with one record. The trigger before the door (HeartGold's word of the Leader being away) is left out:
+  // the door is shut while he is
+  "area": "viridian_gym",
+  "bgmTrack": "johto/gym",
+  "people": {
+    "t02gym0101_gsleader16": {
+      "name": "Blue",
+      "npcType": "blue",
+      "script": "Blue",
+      "still": true,
+      "hiddenBy": ""
+    },
+    "t02gym0101_sunglasses": {
+      "name": "Gym guide",
+      "script": "Guide",
+      "still": true
+    },
+    "t02gym0101_gsman3": {
+      "name": "Arabella",
+      "hiddenBy": "",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Arabella: Blue picked every one of us himself. Show me why you're here!",
+        "dialogueAfter": "Ace Trainer Arabella: I see why, now."
+      }
+    },
+    "t02gym0101_gsman3_2": {
+      "name": "Bonita",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Bonita: Blue never gives up a lead. Neither do I!",
+        "dialogueAfter": "Ace Trainer Bonita: Well, I gave that one up."
+      }
+    },
+    "t02gym0101_gswoman3": {
+      "name": "Salma",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Salma: You've come all this way for the last Badge? Then you'll have to earn it!",
+        "dialogueAfter": "Ace Trainer Salma: You earned that much, at least."
+      }
+    },
+    "t02gym0101_gswoman3_2": {
+      "name": "Ida",
+      "trainer": {
+        "dialogueBefore": "Double Team Ida: Two of us guard the way to Blue. Can you handle both?",
+        "dialogueAfter": "Double Team Ida: Both of us, beaten at once."
+      }
+    },
+    "t02gym0101_gsman3_3": {
+      "name": "Elan",
+      "trainer": {
+        "id": "johto_double_team_elan_and_ida",
+        "dialogueBefore": "Double Team Elan: We train side by side every day. Ready?",
+        "dialogueAfter": "Double Team Elan: We'll train harder, side by side."
+      }
+    }
+  },
+  "read": {
+    "T02GYM0101_004+1": "Statue"
+  }
+}

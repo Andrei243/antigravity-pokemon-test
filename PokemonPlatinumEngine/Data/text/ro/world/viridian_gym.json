@@ -1,0 +1,155 @@
+{
+  "people": {
+    "t02gym0101_gsleader16": {
+      "name": {
+        "en": [
+          "Blue"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t02gym0101_sunglasses": {
+      "name": {
+        "en": [
+          "Gym guide"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t02gym0101_gsman3": {
+      "name": {
+        "en": [
+          "Arabella"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Arabella: Blue picked every one of us himself. Show me why you're here!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Arabella: I see why, now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t02gym0101_gsman3_2": {
+      "name": {
+        "en": [
+          "Bonita"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Bonita: Blue never gives up a lead. Neither do I!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Bonita: Well, I gave that one up."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t02gym0101_gswoman3": {
+      "name": {
+        "en": [
+          "Salma"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Salma: You've come all this way for the last Badge? Then you'll have to earn it!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Salma: You earned that much, at least."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t02gym0101_gswoman3_2": {
+      "name": {
+        "en": [
+          "Ida"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Double Team Ida: Two of us guard the way to Blue. Can you handle both?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Double Team Ida: Both of us, beaten at once."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t02gym0101_gsman3_3": {
+      "name": {
+        "en": [
+          "Elan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Double Team Elan: We train side by side every day. Ready?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Double Team Elan: We'll train harder, side by side."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

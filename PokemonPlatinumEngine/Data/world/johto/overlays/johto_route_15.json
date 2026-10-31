@@ -1,0 +1,84 @@
+{
+  // Route 15 as HeartGold has it three years on (plan 20 · J15, part h): the road west of Fuchsia City, busy with a
+  // school's trip. Its west end runs on into Route 14, which waits for its session. Its key meets FireRed's, so it
+  // takes Johto's prefix (HgWorld.Clashes). Its trainers battle by their own records (Johto's trainers.json); the Twins
+  // are two people with one record
+  "area": "johto_route_15",
+  "bgmTrack": "kanto/route11",
+  "people": {
+    "r15_gsboy1": {
+      "name": "Kipp",
+      "trainer": {
+        "dialogueBefore": "School Kid Kipp: Our teacher says a battle is the best lesson. Class is in session!",
+        "dialogueAfter": "School Kid Kipp: I'll be staying after class."
+      }
+    },
+    "r15_gsboy1_2": {
+      "name": "Tommy",
+      "trainer": {
+        "dialogueBefore": "School Kid Tommy: I'm top of my class at type matchups. Try me!",
+        "dialogueAfter": "School Kid Tommy: I think I mixed up my notes."
+      }
+    },
+    "r15_middlewoman1_2": {
+      "name": "Hillary",
+      "trainer": {
+        "dialogueBefore": "Teacher Hillary: My pupils are watching, so I'd better win this one!",
+        "dialogueAfter": "Teacher Hillary: Class, that is what losing gracefully looks like."
+      }
+    },
+    "r15_gsbabygirl1": {
+      "name": "Kay",
+      "trainer": {
+        "id": "johto_twins_kay_and_tia",
+        "dialogueBefore": "Twins Kay: We came on the school trip together!",
+        "dialogueAfter": "Twins Kay: We're going back on the bus together, too."
+      }
+    },
+    "r15_gsbabygirl1_2": {
+      "name": "Tia",
+      "trainer": {
+        "dialogueBefore": "Twins Tia: Two against one is fair, isn't it?",
+        "dialogueAfter": "Twins Tia: It wasn't fair for us, though."
+      }
+    },
+    "r15_middlewoman1_2_2": {
+      "name": "Eleanor",
+      "trainer": {
+        "dialogueBefore": "Pokéfan Eleanor: I brought my darlings along on the trip. Aren't they adorable?",
+        "dialogueAfter": "Pokéfan Eleanor: Still adorable, even when they lose."
+      }
+    },
+    "r15_gsmiddleman1": {
+      "name": "Boone",
+      "trainer": {
+        "dialogueBefore": "Pokéfan Boone: My Pokémon and I match outfits. Let me show you our style!",
+        "dialogueAfter": "Pokéfan Boone: Our style couldn't save us."
+      }
+    },
+    "r15_middlewoman1_2_3": {
+      "name": "Colette",
+      "trainer": {
+        "dialogueBefore": "Teacher Colette: Pop quiz! The question is: can you beat me?",
+        "dialogueAfter": "Teacher Colette: Correct answer. Full marks."
+      }
+    },
+    "r15_gsboy1_3": {
+      "name": "Johnny",
+      "trainer": {
+        "dialogueBefore": "School Kid Johnny: I wandered off from the group. Want to battle while nobody's looking?",
+        "dialogueAfter": "School Kid Johnny: I'd better find my class."
+      }
+    },
+    "r15_gsboy1_4": {
+      "name": "Billy",
+      "trainer": {
+        "dialogueBefore": "School Kid Billy: I'm going to be a Gym Leader one day. Starting now!",
+        "dialogueAfter": "School Kid Billy: Maybe starting next year."
+      }
+    }
+  },
+  "signs": {
+    "R15_000+1": "Route 15\nFuchsia City - Lavender Town"
+  }
+}

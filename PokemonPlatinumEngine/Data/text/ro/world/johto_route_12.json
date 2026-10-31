@@ -1,0 +1,274 @@
+{
+  "people": {
+    "r12_kabigon": {
+      "name": {
+        "en": [
+          "Snorlax"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A Snorlax is fast asleep across the way. It doesn't stir, however loudly it is called."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r12_fishing_2": {
+      "name": {
+        "en": [
+          "Kyle"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Kyle: Shh! You'll scare the fish. Well, since you're here, battle me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Kyle: The fish got away, and so did the win."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r12_fishing_2_2": {
+      "name": {
+        "en": [
+          "Martin"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Martin: I've been fishing off this pier since dawn. A battle would wake me up!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Martin: I'm wide awake now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r12_gsman2": {
+      "name": {
+        "en": [
+          "Justin"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Justin: My birds dive for the fish these anglers miss. Watch them dive at you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Justin: They should stick to fish."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r12_gsman2_2": {
+      "name": {
+        "en": [
+          "Vic"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Young Couple Vic: We came here for a stroll by the sea. Shall we make it a battle?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Young Couple Vic: The stroll was nicer."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r12_gswoman2": {
+      "name": {
+        "en": [
+          "Tara"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Young Couple Tara: Two of us, one of you. Ready?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Young Couple Tara: At least we lost together."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r12_fishing_2_3": {
+      "name": {
+        "en": [
+          "Stephen"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Stephen: My line's been still all morning. Give me something to do!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Stephen: Back to the still line."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r12_fishing_2_4": {
+      "name": {
+        "en": [
+          "Barney"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Barney: The biggest Pokémon I ever hooked was a Gyarados. You're next!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Barney: You got away, like that Gyarados."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r12_gsman2_3": {
+      "name": {
+        "en": [
+          "Gail"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Gail: The sea breeze here is perfect for flying. Let's battle in it!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Gail: The breeze is still nice, at least."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r12_fishing_2_5": {
+      "name": {
+        "en": [
+          "Kyler"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Kyler: I fish at the very end of the pier, where nobody bothers me. Until now!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Kyler: Now leave me in peace."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "R12_003+1": {
+      "en": [
+        "Route 12\nNorth to Lavender Town"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "R12_002+1": {
+      "en": [
+        "The Fishing Brothers' House"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}
