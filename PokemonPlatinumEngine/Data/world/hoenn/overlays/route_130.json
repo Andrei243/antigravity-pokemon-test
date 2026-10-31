@@ -1,6 +1,7 @@
 {
   // Route 130 (plan 21 · H8, part c): open sea between Routes 129 and 131. Emerald's Mirage Island rises here only on a
-  // day whose number matches a Pokémon's and isn't open; its berry tree stays hidden with it. The titans' weather lies
+  // day whose number matches a Pokémon's (plan 21 · H12, part h: route_130.txt, common.HoennMirageIsland, world.json's
+  // swap by FLAG_HOENN_MIRAGE_ISLAND); its berry tree and its Wynaut's grass rise with it. The titans' weather lies
   // over it while the story keeps it (FLAG_SYS_WEATHER_CTRL)
   "area": "route_130",
   "ours": { "surf": [ ["Pelicaptain", 145, 149] ], "superRod": [ ["Megalodax", 152, 156] ] },

@@ -3215,3 +3215,18 @@ script UnovaCatchUpF
   call UnovaCatchUpE
   if not flag FLAG_UNOVA_LEAGUE_BEGUN call UnovaLeague
   return
+
+
+# Mirage Island (plan 21 · H12, part h; Emerald's Route130_OnTransition and IsMirageIslandPresent): the island off Route
+# 130 stands on a day whose number matches the low half of a team member's personality. Emerald decides it as Route 130's
+# map loads; here Routes 129, 130 and 131 and Pacifidlog Town decide it as each is come to, so the island is laid (or
+# taken away) before Route 130's water is in view. The berry tree on it is hidden with it. It may only set flags.
+script HoennMirageIsland
+  if mirage goto Risen
+  clearflag FLAG_HOENN_MIRAGE_ISLAND
+  setflag FLAG_TEMP_HIDE_MIRAGE_ISLAND_BERRY_TREE
+  return
+label Risen
+  setflag FLAG_HOENN_MIRAGE_ISLAND
+  clearflag FLAG_TEMP_HIDE_MIRAGE_ISLAND_BERRY_TREE
+  return

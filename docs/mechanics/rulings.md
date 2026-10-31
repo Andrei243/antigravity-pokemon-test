@@ -6370,6 +6370,28 @@ Four more of Emerald's post-game pieces. The lines are our own.
   number), Altering Cave (its way in is a rock wall), the island's halls, Emerald's halfway arrivals on the S.S. Tidal,
   the cabins' furniture and beds beyond the room's blocks, Mew's hiding and flicker, and the ship's own look.
 
+## Mirage Island (2026-10-31, plan 21 · H12, part h)
+
+- **When it stands** is Emerald's `IsMirageIslandPresent`: the low half of a team member's personality equal to the
+  day's number, every slot that holds a species asked, an Egg's included (`Overworld/MirageIsland.cs`, the script word
+  `if mirage`). Emerald keeps a number of its own for it (`VAR_MIRAGE_RND_H`, moved on once a day); *ours*: the upper
+  half of the day's number the game already keeps (`SpecialEncounters.DailyNumber`, moved on by `DaysPass`), so nothing
+  new is saved and no version is raised. The odds are Emerald's (about one day in ten thousand for a full team): the
+  island is meant to be rare.
+- **The island** is Emerald's own `LAYOUT_ROUTE130_MIRAGE_ISLAND`, read as an alternate layout of Route 130
+  (`GbaWorld.Alternates`, chunks 842 to 845) and swapped into the overworld by `FLAG_HOENN_MIRAGE_ISLAND` (*ours*,
+  `world.json`'s `swaps`); its grass meets Route 130's own land table (Wynaut, as Emerald's), and its Liechi tree (patch
+  215) is hidden with it by Emerald's `FLAG_TEMP_HIDE_MIRAGE_ISLAND_BERRY_TREE` (a patch of soil now keeps its
+  object's `hiddenBy`).
+- **When it is decided**: Emerald decides on Route 130's map load; here `common.HoennMirageIsland` runs as Routes 129,
+  130 and 131 and Pacifidlog Town are come to, so the island is laid or taken away before Route 130's water is in view
+  (a day that turns while the player is out on Route 130 changes nothing until one of them is come to again).
+- **Pacifidlog's old man** (the fifth house) asks the same and says whether he can see it today; the lines are our own.
+- **Left**: Altering Cave stays unbuilt (part a's ruling), Trainer Hill (Emerald's `trainer_hill.c` and its floor data
+  are not in the pinned cache, which holds no `src/` but the data headers), the island's halls, the S.S. Tidal's
+  halfway arrivals, Jirachi, and H11's part c (the contest's stage rooms, the Pokéblock feeders and the Lilycove Lady,
+  whose rules are in Emerald's `src/` too).
+
 ## A crossed region's EXP (2026-10-26, plan 18 · W4b-3)
 
 Design C of [the levelling proposal](../plans/W4b-levelling-the-world.md), approved by the user on 2026-10-26 with

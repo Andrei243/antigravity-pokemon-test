@@ -1268,6 +1268,9 @@ public static class ScriptParser
             // The chosen Pokémon's master is beaten already (plan 14 · B15, the Masters' Hall)
             case "titled":
                 return new Condition { Query = Query.Titled, Negated = negated };
+            // Mirage Island stands today for this team (plan 21 · H12, part h; Emerald's IsMirageIslandPresent)
+            case "mirage":
+                return new Condition { Query = Query.Mirage, Negated = negated };
             // A rule of the run chosen at NEW GAME (plan 13 · V5)
             case "rule":
             {

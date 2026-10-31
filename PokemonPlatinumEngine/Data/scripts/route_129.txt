@@ -1,0 +1,9 @@
+# Route 129 (plan 21 · H12, part h). docs/scripts.md describes the language.
+#
+# Route 130's neighbour to the east: coming here decides whether Mirage Island stands off Route 130 today
+# (common.HoennMirageIsland), so the island is laid or taken away before its water is in view.
+
+
+script OnEnter
+  call HoennMirageIsland
+  end

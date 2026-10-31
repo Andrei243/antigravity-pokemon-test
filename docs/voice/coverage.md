@@ -10,9 +10,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 |---|---|---|---|---|---|
 | The introduction (`intro:`) | 80 | 80 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1276 | 1236 | 40 | 1 | 0 |
-| Scripts (`script:`) | 9012 | 8584 | 428 | 17 | 0 |
-| People of the world (`world:`) | 6387 | 6328 | 59 | 4 | 0 |
-| **All** | 16755 | 16228 | 527 | 22 | 0 |
+| Scripts (`script:`) | 9015 | 8587 | 428 | 17 | 0 |
+| People of the world (`world:`) | 6386 | 6327 | 59 | 4 | 0 |
+| **All** | 16757 | 16230 | 527 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -63,9 +63,9 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:psychic (any)` | 112 | 0 |
 | `class:swimmer_m (any)` | 112 | 0 |
 | `assistant` | 111 | 5 |
+| `look:old_man (any)` | 109 | 4 |
 | `look:guard (any)` | 108 | 0 |
 | `class:black_belt (any)` | 106 | 0 |
-| `look:old_man (any)` | 106 | 4 |
 | `look:boy (any)` | 104 | 4 |
 | `mom` | 104 | 6 |
 | `class:youngster (any)` | 102 | 0 |
@@ -160,11 +160,11 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `jupiter` | 29 | 0 |
 | `look:aide (any)` | 29 | 4 |
 | `class:triathlete (any)` | 28 | 0 |
-| `look:expert_m (any)` | 28 | 0 |
 | `policeman` | 28 | 0 |
 | `saturn` | 28 | 0 |
 | `school_kid` | 28 | 0 |
 | `chairman` | 27 | 0 |
+| `look:expert_m (any)` | 27 | 0 |
 | `president` | 27 | 0 |
 | `captain` | 26 | 0 |
 | `class:aroma_lady (any)` | 26 | 0 |

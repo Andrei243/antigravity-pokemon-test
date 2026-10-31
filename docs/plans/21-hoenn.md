@@ -1325,3 +1325,17 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
       `frontier printed`). **Golden**: scripts.txt (six new blocks: the islands', the ship's and the desks'), levels.txt and
       levels-crossed.txt (the S.S. Tidal's eight trainers now placed, in two new blocks): accepted. **Left**: Jirachi, Trainer
       Hill, Mirage Island, Altering Cave, the island's halls, the S.S. Tidal's halfway arrivals, furniture and look, Mew's hiding.
+    - **Part h** (done 2026-10-31: Mirage Island, and the post-game modes' battles played out; docs/mechanics/rulings.md,
+      "Mirage Island"; tests run with --filter (HoennMirageIslandTests, ScriptTests, StoryTests, SceneSkipTests, the goldens,
+      ContentTests, VoiceTests, ScriptTranslationTests, HoennTests, WorldTests, RegionTests, HoennPostGame*, HoennEventIslands,
+      HoennSpeciesTests, the warp walks, DataFileTests, MapIndexTests), shots h2d0 to h2d3). **Built**: Emerald's
+      `LAYOUT_ROUTE130_MIRAGE_ISLAND` as an alternate of Route 130 (chunks 842 to 845) swapped into the overworld by
+      `FLAG_HOENN_MIRAGE_ISLAND`, which `common.HoennMirageIsland` sets as Routes 129 to 131 and Pacifidlog are come to,
+      by the new script word `if mirage` (`Overworld/MirageIsland.cs`: a team member's personality's low half against the
+      upper half of the day's number); its Liechi tree hidden with it (a berry soil now keeps its object's `hiddenBy`);
+      Pacifidlog's old man asks it too. **Harness**: part f's Deoxys's, Ho-Oh's and Wattson's battles and part g's Mew's
+      and Roxanne's are now won and their scripts read out (`Modes/HoennBattles.cs`, `WinAndReadOut`) in place of the
+      state put back to the field with the battle on; Mirage Island's shots (`Modes/HoennMirageIsland.cs`) last.
+      **Golden**: scripts.txt (two new blocks, common.HoennMirageIsland and the old man's): accepted. **Left**: Jirachi,
+      Trainer Hill (its floors are Emerald's `trainer_hill.c`, not in the pinned cache), Altering Cave (decided in part a),
+      the island's halls, the S.S. Tidal's halfway arrivals, furniture and look, Mew's hiding; and H11's part c.

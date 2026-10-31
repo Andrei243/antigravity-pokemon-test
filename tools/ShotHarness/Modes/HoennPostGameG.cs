@@ -103,7 +103,8 @@ partial class Harness
             Until(() => game.State == GameState.Battle, "Mew's battle");
             if (game.State == GameState.Battle) { ToMainMenu(game.Battle); Shot("h2c6_faraway_island_mew_battle"); }
             // leave the battle and let the scene end on the island, or its box stays over every later shot
-            game.State = GameState.Overworld; ReadOn(); Box().Close();
+            if (game.State == GameState.Battle) WinAndReadOut("Mew's battle");
+            Box().Close();
         }
         else Console.WriteLine("  !! Mew is not on the island");
 
@@ -160,7 +161,8 @@ partial class Harness
             Until(() => Box().IsCurrentLineComplete, "Roxanne's challenge");
             Shot("h2cd_roxanne_rematch");
             ReadOn();
-            if (game.State == GameState.Battle) game.State = GameState.Overworld;
+            Until(() => game.State == GameState.Battle, "Roxanne's rematch", 300);
+            if (game.State == GameState.Battle) WinAndReadOut("Roxanne's rematch");
         }
         else Console.WriteLine("  !! Roxanne is not in her Gym");
 
@@ -176,5 +178,7 @@ partial class Harness
         ReadOn();
         Console.WriteLine($"  shields: silver {game.Story.Has("FLAG_RECEIVED_SILVER_SHIELD")}, gold {game.Story.Has("FLAG_RECEIVED_GOLD_SHIELD")}");
         game.State = GameState.Overworld;
+        // Part h's (plan 21 · H12): Mirage Island
+        HoennMirageIslandShots();
     }
 }

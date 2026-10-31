@@ -1,0 +1,11 @@
+# Route 130 (plan 21 · H12, part h). docs/scripts.md describes the language (data/maps/Route130/scripts.inc).
+#
+# Mirage Island rises out of the open sea here on a day whose number matches the low half of a team member's
+# personality (Emerald's IsMirageIslandPresent): common.HoennMirageIsland lays Route 130's island layout
+# (FLAG_HOENN_MIRAGE_ISLAND, world.json's swaps) and shows its berry tree. Routes 129 and 131 and Pacifidlog Town ask
+# the same as they are come to, so the island is decided before this water is in view.
+
+
+script OnEnter
+  call HoennMirageIsland
+  end
