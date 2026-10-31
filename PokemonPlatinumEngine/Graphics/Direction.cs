@@ -130,8 +130,9 @@ internal static class Directions
         ["Leaf Storm"] = new(SignatureShot.Orbit, Light: Lit(0.2f, 0.44f, 0.16f, 0.3f), Effect: Leaves),
 
         // ---------------------------------------------------------------- Y17c: the pseudo-legendaries' moves
-        // Dragonite's rage round its foe: the camera circles with it; a red wash, light, over the move's own red fade
-        ["Outrage"] = new(SignatureShot.Orbit, HeavyStop, Light: Lit(0.5f, 0.1f, 0.08f, 0.16f)),
+        // Dragonite's rage round its foe: the camera circles with it; no wash of its own (Y17d: the move's own red fade
+        // already turns the whole stage brick red, and the signature's 0.16 only deepened it)
+        ["Outrage"] = new(SignatureShot.Orbit, HeavyStop),
         // Tyranitar's blades of stone from under: a punch-in; the target tossed up, shards falling round it
         ["Stone Edge"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: TossedUp, Light: Lit(0.38f, 0.3f, 0.2f, 0.26f), Effect: Shards),
         // Its bite: a punch-in held on the jaws closing; the target only shudders in them
@@ -191,6 +192,110 @@ internal static class Directions
         ["Aqua Step"] = new(SignatureShot.ImpactPunch, HeavyStop, User: Lunge, Effect: Spray),
         // The Hisuian Typhlosion's parade of spirit flames: the camera rides it; a ghostly violet; wisps
         ["Infernal Parade"] = new(SignatureShot.FollowProjectile, Light: Lit(0.3f, 0.14f, 0.4f, 0.32f), Effect: Wisps),
+
+        // ---------------------------------------------------------------- Y17d: the legendaries' and mythicals' own, Unova to Paldea
+        // Unova
+        // Victini's V of flame: the user lunges in; a punch-in; fire's red-orange; embers
+        ["V-create"] = new(SignatureShot.ImpactPunch, HeavyStop, User: Lunge, Light: Lit(0.66f, 0.24f, 0.06f, 0.34f), Effect: Embers),
+        // Its ring of fire round the foes: the camera swings round
+        ["Searing Shot"] = new(SignatureShot.Orbit, Light: Lit(0.62f, 0.3f, 0.08f, 0.28f), Effect: Embers),
+        // The Swords of Justice's blade, and Keldeo's: punch-ins on the cut; steel pale, and a deep water blue
+        ["Sacred Sword"] = new(SignatureShot.ImpactPunch, HeavyStop, Light: Lit(0.7f, 0.74f, 0.8f, 0.16f), Effect: Shards),
+        ["Secret Sword"] = new(SignatureShot.ImpactPunch, HeavyStop, Light: Lit(0.22f, 0.32f, 0.56f, 0.28f)),
+        // The forces of nature's storms (their Hisuian moves) round the foes: orbits, each its own colour and what it leaves
+        ["Bleakwind Storm"] = new(SignatureShot.Orbit, Light: Lit(0.34f, 0.4f, 0.5f, 0.32f, 0.2f), Effect: Frost),
+        ["Wildbolt Storm"] = new(SignatureShot.Orbit, Light: Lit(0.42f, 0.4f, 0.12f, 0.32f), Effect: Sparks),
+        ["Sandsear Storm"] = new(SignatureShot.Orbit, Light: Lit(0.56f, 0.38f, 0.18f, 0.32f), Effect: Embers),
+        // Reshiram's blue flare wound up and loosed, and its fusion flame followed; Zekrom's charge, and its fusion bolt followed
+        ["Blue Flare"] = new(SignatureShot.ChargePush, HeavyStop, User: Recoil, Light: Lit(0.18f, 0.34f, 0.78f, 0.34f), Effect: Shimmer),
+        ["Fusion Flare"] = new(SignatureShot.FollowProjectile, HeavyStop, Light: Lit(0.86f, 0.5f, 0.3f, 0.22f), Effect: Embers),
+        ["Bolt Strike"] = new(SignatureShot.ImpactPunch, HeavyStop, User: Lunge, Light: Lit(0.5f, 0.48f, 0.12f, 0.18f), Effect: Sparks),
+        ["Fusion Bolt"] = new(SignatureShot.FollowProjectile, HeavyStop, Light: Lit(0.24f, 0.3f, 0.6f, 0.3f), Effect: Sparks),
+        // Kyurem's: the cold breath round the foes; its two charged moves wound up and let go
+        ["Glaciate"] = new(SignatureShot.Orbit, Light: Lit(0.5f, 0.7f, 0.86f, 0.18f), Effect: Frost),
+        ["Freeze Shock"] = new(SignatureShot.ChargePush, HeavyStop, Light: Lit(0.4f, 0.6f, 0.8f, 0.24f), Effect: Sparks),
+        ["Ice Burn"] = new(SignatureShot.ChargePush, HeavyStop, Light: Lit(0.5f, 0.64f, 0.86f, 0.22f), Effect: Frost),
+        // Meloetta's old song round the foes: rings of sound, a soft light
+        ["Relic Song"] = new(SignatureShot.Orbit, Light: Lit(0.6f, 0.5f, 0.7f, 0.16f), Effect: SoundRings),
+        // Genesect's blast: the camera rides it; a cold violet; sparks
+        ["Techno Blast"] = new(SignatureShot.FollowProjectile, HeavyStop, Light: Lit(0.38f, 0.28f, 0.54f, 0.28f), Effect: Sparks),
+        // Kalos
+        // Xerneas's gathering on itself: no shot of its own; glints standing round it
+        ["Geomancy"] = new(SignatureShot.None, Light: Lit(0.6f, 0.5f, 0.75f, 0.2f), Effect: Glints),
+        // Yveltal's wing of oblivion: the camera rides it; a deep red; wisps
+        ["Oblivion Wing"] = new(SignatureShot.FollowProjectile, HeavyStop, Light: Lit(0.38f, 0.05f, 0.1f, 0.4f), Effect: Wisps),
+        // Zygarde's: arrows of earth from above pressing the target; waves of earth jolting it; its enforcer followed
+        ["Thousand Arrows"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: Pressed, Light: Lit(0.3f, 0.36f, 0.18f, 0.3f), Effect: Cracks),
+        ["Thousand Waves"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: Jolted, Light: Lit(0.36f, 0.4f, 0.2f, 0.3f), Effect: Cracks),
+        ["Core Enforcer"] = new(SignatureShot.FollowProjectile, HeavyStop, Light: Lit(0.2f, 0.44f, 0.24f, 0.3f), Effect: Glints),
+        // Diancie's storm of diamonds round the foes: a pale, faint pink; glints
+        ["Diamond Storm"] = new(SignatureShot.Orbit, Light: Lit(0.74f, 0.62f, 0.78f, 0.16f), Effect: Glints),
+        // Hoopa's holes in space: punch-ins; the seam left hanging
+        ["Hyperspace Hole"] = new(SignatureShot.ImpactPunch, HeavyStop, Light: Lit(0.36f, 0.2f, 0.5f, 0.32f), Effect: Rift),
+        ["Hyperspace Fury"] = new(SignatureShot.ImpactPunch, HeavyStop, Light: Lit(0.2f, 0.08f, 0.24f, 0.38f), Effect: Rift),
+        // Volcanion's steam: the push; the user heaving; spray
+        ["Steam Eruption"] = new(SignatureShot.ChargePush, HeavyStop, User: Heave, Light: Lit(0.66f, 0.52f, 0.42f, 0.18f), Effect: Spray),
+        // Alola
+        // The island guardians' madness: the camera swings round; a muted violet
+        ["Nature's Madness"] = new(SignatureShot.Orbit, Light: Lit(0.4f, 0.3f, 0.5f, 0.28f)),
+        // Solgaleo's charge as the sun: the user lunges; gold; glints. Lunala's beam of the moon: followed; a night's violet; wisps
+        ["Sunsteel Strike"] = new(SignatureShot.ImpactPunch, HeavyStop, User: Lunge, Light: Lit(0.86f, 0.6f, 0.24f, 0.22f), Effect: Glints),
+        ["Moongeist Beam"] = new(SignatureShot.FollowProjectile, HeavyStop, Light: Lit(0.2f, 0.12f, 0.42f, 0.4f), Effect: Wisps),
+        // Necrozma's light wound up and loosed: the push, the user rocked back, glints; a pale gold and a prism's violet
+        ["Photon Geyser"] = new(SignatureShot.ChargePush, HeavyStop, User: Recoil, Light: Lit(0.9f, 0.86f, 0.66f, 0.16f), Effect: Glints),
+        ["Prismatic Laser"] = new(SignatureShot.ChargePush, HeavyStop, User: Recoil, Light: Lit(0.7f, 0.6f, 0.86f, 0.1f), Effect: Glints),
+        // Magearna's cannon of flowers: the push, the user rocked back, petals
+        ["Fleur Cannon"] = new(SignatureShot.ChargePush, HeavyStop, User: Recoil, Light: Lit(0.8f, 0.5f, 0.66f, 0.18f), Effect: Petals),
+        // Marshadow's theft out of the shadow: a punch-in; near black; wisps
+        ["Spectral Thief"] = new(SignatureShot.ImpactPunch, HeavyStop, Light: Lit(0.1f, 0.06f, 0.14f, 0.4f), Effect: Wisps),
+        // Zeraora's fists: a punch-in; sparks
+        ["Plasma Fists"] = new(SignatureShot.ImpactPunch, HeavyStop, Light: Lit(0.5f, 0.46f, 0.12f, 0.28f), Effect: Sparks),
+        // Melmetal's two blows of its nut: a punch-in; the target pressed
+        ["Double Iron Bash"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: Pressed, Light: Lit(0.36f, 0.36f, 0.4f, 0.24f, 0.2f)),
+        // Galar
+        // The heroes' charges, the sword and the shield: lunges; punch-ins; shards
+        ["Behemoth Blade"] = new(SignatureShot.ImpactPunch, HeavyStop, User: Lunge, Light: Lit(0.3f, 0.4f, 0.6f, 0.28f), Effect: Shards),
+        ["Behemoth Bash"] = new(SignatureShot.ImpactPunch, HeavyStop, User: Lunge, Light: Lit(0.5f, 0.2f, 0.2f, 0.28f), Effect: Shards),
+        // Eternatus's beam wound up and loosed, and its cannon followed: a deep red
+        ["Eternabeam"] = new(SignatureShot.ChargePush, HeavyStop, User: Recoil, Light: Lit(0.4f, 0.04f, 0.12f, 0.24f), Effect: Wisps),
+        ["Dynamax Cannon"] = new(SignatureShot.FollowProjectile, HeavyStop, Light: Lit(0.5f, 0.06f, 0.16f, 0.2f)),
+        // Urshifu's: one blow of darkness held; three of water, light, no stop
+        ["Wicked Blow"] = new(SignatureShot.ImpactPunch, HeavyStop, Light: Lit(0.14f, 0.06f, 0.1f, 0.36f)),
+        ["Surging Strikes"] = new(SignatureShot.ImpactPunch, Light: Lit(0.14f, 0.3f, 0.5f, 0.24f), Effect: Spray),
+        // Zarude's healing in the jungle, on its side alone: no shot; leaves
+        ["Jungle Healing"] = new(SignatureShot.None, Light: Lit(0.3f, 0.56f, 0.26f, 0.22f), Effect: Leaves),
+        // Regieleki's cage round the foes; Regidrago's energy wound up and loosed
+        ["Thunder Cage"] = new(SignatureShot.Orbit, Light: Lit(0.46f, 0.44f, 0.14f, 0.28f), Effect: Sparks),
+        ["Dragon Energy"] = new(SignatureShot.ChargePush, HeavyStop, User: Recoil, Light: Lit(0.3f, 0.5f, 0.24f, 0.32f)),
+        // Glastrier's lance from above, pressing; Spectrier's barrage round the foes
+        ["Glacial Lance"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: Pressed, Light: Lit(0.5f, 0.68f, 0.86f, 0.22f), Effect: Frost),
+        ["Astral Barrage"] = new(SignatureShot.Orbit, Light: Lit(0.16f, 0.1f, 0.3f, 0.4f), Effect: Wisps),
+        // The Galarian birds': a dark wrath round the foes, a frozen glare followed, a kick of thunder punched in on
+        ["Fiery Wrath"] = new(SignatureShot.Orbit, Light: Lit(0.24f, 0.06f, 0.14f, 0.38f), Effect: Wisps),
+        ["Freezing Glare"] = new(SignatureShot.FollowProjectile, HeavyStop, Light: Lit(0.36f, 0.3f, 0.56f, 0.28f), Effect: Frost),
+        ["Thunderous Kick"] = new(SignatureShot.ImpactPunch, HeavyStop, Light: Lit(0.4f, 0.32f, 0.12f, 0.28f), Effect: Sparks),
+        // Hisui
+        // Enamorus's storm of spring round the foes: petals
+        ["Springtide Storm"] = new(SignatureShot.Orbit, Light: Lit(0.8f, 0.5f, 0.66f, 0.18f), Effect: Petals),
+        // Paldea
+        // The two paradox legends' charges: lunges; punch-ins; the ground cracked, and sparks
+        ["Collision Course"] = new(SignatureShot.ImpactPunch, HeavyStop, User: Lunge, Light: Lit(0.5f, 0.2f, 0.08f, 0.32f), Effect: Cracks),
+        ["Electro Drift"] = new(SignatureShot.ImpactPunch, HeavyStop, User: Lunge, Light: Lit(0.3f, 0.24f, 0.6f, 0.3f), Effect: Sparks),
+        // The Treasures of Ruin's ruination round the foes: a dark red
+        ["Ruination"] = new(SignatureShot.Orbit, Light: Lit(0.24f, 0.06f, 0.08f, 0.4f)),
+        // Ogerpon's cudgel brought down: the target pressed; leaves
+        ["Ivy Cudgel"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: Pressed, Light: Lit(0.18f, 0.38f, 0.14f, 0.26f), Effect: Leaves),
+        // Terapagos's starstorm round the foes: a heavy orbit; stars
+        ["Tera Starstorm"] = new(SignatureShot.Orbit, HeavyStop, Light: Lit(0.5f, 0.44f, 0.7f, 0.12f), Effect: Stars),
+        // Pecharunt's chain: a punch-in held on it; the target only shudders; a poison's violet
+        ["Malignant Chain"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: Held, Light: Lit(0.3f, 0.08f, 0.34f, 0.36f)),
+        // The paradox legends' own: Walking Wake's steam followed, Iron Leaves' blade, Raging Bolt's clap, Iron Boulder's
+        // cleave and Iron Crown's two cutters (light, no stop)
+        ["Hydro Steam"] = new(SignatureShot.FollowProjectile, HeavyStop, Light: Lit(0.5f, 0.6f, 0.7f, 0.18f), Effect: Spray),
+        ["Psyblade"] = new(SignatureShot.ImpactPunch, HeavyStop, Light: Lit(0.5f, 0.22f, 0.5f, 0.28f)),
+        ["Thunderclap"] = new(SignatureShot.ImpactPunch, HeavyStop, Light: Lit(0.5f, 0.48f, 0.14f, 0.3f), Effect: Sparks),
+        ["Mighty Cleave"] = new(SignatureShot.ImpactPunch, HeavyStop, Light: Lit(0.42f, 0.34f, 0.24f, 0.26f), Effect: Shards),
+        ["Tachyon Cutter"] = new(SignatureShot.FollowProjectile, Light: Lit(0.4f, 0.44f, 0.56f, 0.24f), Effect: Glints),
     };
 
     private static StageLight Lit(float r, float g, float b, float amount, float grey = 0f) => new(new Vector3(r, g, b), amount, grey);
@@ -658,6 +763,42 @@ internal static class Directions
             var at = c.ToFeet + new Vector3(x + MathF.Sin(c.Age * 4f + i) * 0.1f * c.ToSize, c.ToSize * (0.08f + 0.9f * fall), 0.25f * c.ToSize);
             var tint = i % 2 == 0 ? Rgb(255, 150, 190) : Rgb(255, 214, 230);
             fx.Sprite(FxShape.Petal, at, c.ToSize * 0.12f, Fx.Fade(tint, 1f - k * k), FxBlend.Alpha, c.Age * 3f + i);
+        }
+    }
+
+    // ------------------------------------------------------------------ Y17d's reactions
+
+    /// <summary>Sparks crackling round the target after an electric blow (Bolt Strike, Thunder Cage, Electro Drift…), flickering out.</summary>
+    private static void Sparks(in FxCtx c, FxColors col, FxList fx)
+    {
+        float k = After(c, 0.02f, 0.75f);
+        if (k < 0f) return;
+        for (int i = 0; i < 7; i++)
+        {
+            // Each spark jumps to a new place round the body every tenth of a second, on and off
+            int hop = (int)(c.Age * 10f);
+            float a = Fx.Rand(c.Seed, i * 31 + hop, 261) * MathF.Tau;
+            float on = Fx.Rand(c.Seed, i * 31 + hop, 262) < 0.7f ? 1f : 0.25f;
+            float r = c.ToHalfWidth * (0.8f + 0.5f * Fx.Rand(c.Seed, i, 263));
+            var at = c.To + new Vector3(MathF.Cos(a) * r, MathF.Sin(a) * c.ToSize * 0.45f, 0.3f * c.ToSize);
+            fx.Sprite(FxShape.Spark, at, c.ToSize * 0.13f, Fx.Fade(Rgb(255, 244, 150), (1f - k) * on), FxBlend.Alpha, a);
+        }
+    }
+
+    /// <summary>Glints of crystal or light standing round the one it lands on (Diamond Storm, Necrozma's light, Geomancy), turning and gone.</summary>
+    private static void Glints(in FxCtx c, FxColors col, FxList fx)
+    {
+        float k = After(c, 0f, 0.8f);
+        if (k < 0f) return;
+        float out1 = Fx.EaseOut(k);
+        for (int i = 0; i < 6; i++)
+        {
+            float a = (i / 6f + 0.1f * Fx.Signed(c.Seed, i, 271)) * MathF.Tau + c.Age * 1.5f;
+            float r = (c.ToHalfWidth + 0.15f * c.ToSize) * (0.9f + 0.4f * out1);
+            var at = c.ToFeet + new Vector3(MathF.Cos(a) * r, c.ToSize * (0.25f + 0.55f * Fx.Rand(c.Seed, i, 272) + 0.15f * out1), 0.3f * c.ToSize);
+            var tint = (i % 3) switch { 0 => Rgb(255, 236, 250), 1 => Rgb(214, 236, 255), _ => Rgb(255, 246, 214) };
+            float alpha = k < 0.1f ? k / 0.1f : 1f - (k - 0.1f) / 0.9f;
+            fx.Sprite(FxShape.Shard, at, c.ToSize * 0.1f, Fx.Fade(tint, 0.95f * alpha), FxBlend.Alpha, c.Age * 4f * (i % 2 == 0 ? 1f : -1f) + i);
         }
     }
 }
