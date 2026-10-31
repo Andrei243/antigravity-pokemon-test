@@ -4,6 +4,8 @@
   // opens the door here, VAR_NEW_MAUVILLE_STATE lays its blocks). Emerald plays Mt. Pyre's song all through the plant
   "area": "new_mauville_entrance",
   "bgmTrack": "hoenn/mt_pyre",
+  // a power plant of steel panels and machinery (the lab's look), not a house's wooden room
+  "interior": "Lab",
   "trees": "Round",
   "doors": [ { "warp": 1, "map": "NewMauville_Inside", "x": 32, "y": 33, "facing": "Down", "openedBy": "FLAG_HOENN_NEW_MAUVILLE_OPENED" } ],
   "triggers": [ { "trigger": 0, "script": "Door" } ]

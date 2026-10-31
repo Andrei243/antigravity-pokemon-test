@@ -4,6 +4,8 @@
   // read from before it, and three Poké Balls that are Voltorb (new_mauville_inside.txt), each gone once battled
   "area": "new_mauville_inside",
   "bgmTrack": "hoenn/mt_pyre",
+  // a power plant of steel panels and machinery (the lab's look), not a house's wooden room
+  "interior": "Lab",
   "trees": "Round",
   "triggers": [
     { "trigger": 0, "script": "BlueButton" }, { "trigger": 1, "script": "GreenButton" }, { "trigger": 2, "script": "BlueButton" },

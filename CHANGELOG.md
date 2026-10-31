@@ -4,6 +4,9 @@ What changes from one release to the next, for players. Every session's close-ou
 
 ## [Unreleased]
 
+### Fixed
+- Sabrina in HeartGold's Saffron Gym looks like herself, in the Gym and on her battle's band, where she stood in the plain trainer's clothes. New Mauville is a power plant of steel walls and tiled floors, no longer a wooden house. The packs screen no longer hides a pack that couldn't be read while a change waits (it says both), keeps a long credit from running over the description, and shortens a folder too long for its panel.
+
 ### Added
 - Auto-battle: turn on the new AUTO-BATTLE option and a battle's commands get an AUTO button (left of FIGHT). Choose it and the battle plays itself, each of your Pokémon using its strongest move and the lines read on by themselves, until one of your Pokémon faints, a move is to be learned or the battle ends; Esc stops it at any time. It never uses the bag, so it never throws a ball.
 - With the box tools on, the PC keeps teams by name: SAVE THIS TEAM under TEAMS on a box's menu remembers who is on your team (up to eight teams), and SWAP IN brings a kept team out of the boxes in one step, healed, with your current team put where they were. A member you have since released is simply left out. JUDGE on a Pokémon's menu shows how good each of its stats is born, in six words from NOTHING to FLAWLESS.

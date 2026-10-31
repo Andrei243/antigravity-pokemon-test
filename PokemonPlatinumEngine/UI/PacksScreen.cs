@@ -21,7 +21,7 @@ public sealed class PackRow
 }
 
 /// <summary>
-/// The packs screen under OPTIONS (plan 16 Â· T15; style guide, "Menu screens", Packs): every pack found beside the game
+/// The packs screen under OPTIONS (plan 16 · T15; style guide, "Menu screens", Packs): every pack found beside the game
 /// and beside the saves, on or off, in the order they load, with what each says of itself and the credit it carries.
 /// A turns the pack under the cursor on or off, left and right move it earlier or later in the order, and B goes
 /// back. Changes are written into the options at once (<see cref="GameSettings.Packs"/>) and take hold at the next
