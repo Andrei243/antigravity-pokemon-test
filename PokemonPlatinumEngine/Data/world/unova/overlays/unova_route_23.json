@@ -1,11 +1,13 @@
 {
   // Route 23 (plan 22 · U9, part b): Black 2's river valley from the Giant Chasm's cave up to the Badge Check Gates of Victory
-  // Road, with its trainers, trees, boulders, balls and hidden things in the area file; our words. Azelf (16), which waits here
-  // after the League, is plan 22 · U10's, as are the three things of the Shards (36 to 38)
+  // Road, with its trainers, trees, boulders, balls and hidden things in the area file; our words. Azelf (16) waits here
+  // once Unova's Hall of Fame is entered and is gone once fought (plan 22 · U10, part a: FLAG_UNOVA_FOUGHT_AZELF;
+  // unova_route_23.txt); the three things of the Shards (36 to 38) are plan 22 · U10's later parts'
   "area": "unova_route_23",
   "bgmTrack": "unova/route23",
-  "heldBack": [ "16", "36", "37", "38" ],
+  "heldBack": [ "36", "37", "38" ],
   "people": {
+    "16": { "name": "Azelf", "npcType": "Pokemon", "species": "Azelf", "hiddenBy": "FLAG_UNOVA_FOUGHT_AZELF", "shownBy": "UnovaHallOfFame", "script": "Azelf", "still": true },
     "0": { "name": "Lena", "trainer": { "dialogueBefore": "Rangers keep these hills safe. Let me see if you're safe to let through!", "dialogueAfter": "You're more than safe. You're dangerous." } },
     "1": { "name": "Doug", "trainer": { "dialogueBefore": "Everyone on this road is bound for the League. Me, I'm bound for the next rock!", "dialogueAfter": "That rock can wait. I need a sit-down." } },
     "2": { "name": "Tom", "trainer": { "dialogueBefore": "Only Trainers with eight Badges come this far. Show me yours were earned!", "dialogueAfter": "Earned, every one of them." } },

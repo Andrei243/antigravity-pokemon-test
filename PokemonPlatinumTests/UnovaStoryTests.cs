@@ -2768,6 +2768,69 @@ public class UnovaStoryTests
             Assert.Equal("eliteFour", SoundMap.BattleThemes[$"Elite Four {four}"]);
     }
 
+    // ---- Plan 22 · U10, part a: the legendaries of the open roads after the Hall of Fame ------------------------------------
+
+    [Theory]
+    [InlineData("Unova", 684, 191, "21", "unova_route_13", "Cobalion", 65)]
+    [InlineData("Unova", 468, 171, "0", "unova_route_11", "Virizion", 65)]
+    [InlineData("Unova", 725, 139, "6", "unova_route_22", "Terrakion", 65)]
+    [InlineData("Unova", 584, 81, "16", "unova_route_23", "Azelf", 65)]
+    [InlineData("CelestialTower_Summit", 16, 23, "0", "celestial_tower", "Mesprit", 65)]
+    [InlineData("GiantChasm_Cavern", 15, 18, "kyurem_rest", "giant_chasm_6", "Kyurem", 70)]
+    public void ALegendaryWaitsOnItsRoadOnceTheHallOfFameIsEnteredAndIsGoneOnceFought(string map, int x, int y, string key, string area, string species, int level)
+    {
+        var game = PastTheChasm();
+        string fought = $"FLAG_UNOVA_FOUGHT_{species.ToUpperInvariant()}";
+        game.Arrive(map, x, y);
+        Assert.Null(game.Present(key, area));
+        game.Story.Set("UnovaHallOfFame");
+        game.Arrive(map, x, y);
+        Assert.NotNull(game.Present(key, area));
+        // run from, it is gone until the place is come to again
+        game.Fight = BattleOutcome.Fled;
+        var fled = game.Talk(key, area);
+        Assert.Contains(fled.Log, l => l.StartsWith($"wildbattle {species} {level}"));
+        Assert.False(game.Story.Has(fought));
+        game.Arrive(map, x, y);
+        Assert.NotNull(game.Present(key, area));
+        // caught or beaten, it is gone for good
+        game.Fight = BattleOutcome.Won;
+        game.Talk(key, area);
+        Assert.True(game.Story.Has(fought));
+        game.Arrive(map, x, y);
+        Assert.Null(game.Present(key, area));
+    }
+
+    [Fact]
+    public void TheMagmaStoneSetDownInReversalMountainsLairBringsHeatran()
+    {
+        var game = PastTheChasm();
+        game.Arrive("ReversalMountain_4", 10, 22);
+        Assert.Null(game.Present("magma_stone", "reversal_mountain_5"));
+        game.Story.Set("UnovaHallOfFame");
+        game.Arrive("ReversalMountain_4", 10, 22);
+        Assert.Null(game.Present("0", "reversal_mountain_5"));
+        // the heart of the lair is only warm without the stone
+        var lair = game.Map.TileScripts.Single(t => t.Value == "MagmaStone").Key;
+        Assert.Contains(game.Play(Scripts.Find("MagmaStone", "reversal_mountain_5")!).Transcript, l => l.Text.Contains("warm"));
+        // the stone's ball on the ring path, then the stone set down and Heatran fallen into the lair
+        game.Talk("magma_stone", "reversal_mountain_5");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Magma Stone")!));
+        game.Arrive("ReversalMountain_4", 10, 22);
+        Assert.Null(game.Present("magma_stone", "reversal_mountain_5"));
+        game.Answers.Add(0);
+        game.Play(Scripts.Find("MagmaStone", "reversal_mountain_5")!);
+        Assert.True(game.Story.Has("FLAG_UNOVA_MAGMA_STONE_SET"));
+        Assert.Equal(0, game.Bag.GetQuantity(ItemDatabase.Get("Magma Stone")!));
+        Assert.NotNull(game.Present("0", "reversal_mountain_5"));
+        var heatran = game.Talk("0", "reversal_mountain_5");
+        Assert.Contains(heatran.Log, l => l.StartsWith("wildbattle Heatran 68"));
+        Assert.True(game.Story.Has("FLAG_UNOVA_FOUGHT_HEATRAN"));
+        game.Arrive("ReversalMountain_4", 10, 22);
+        Assert.Null(game.Present("0", "reversal_mountain_5"));
+        Assert.Equal((10, 12), (lair.X, lair.Y));
+    }
+
     private static string AreaAt(WorldMatrixFile matrix, int x, int y)
     {
         var cells = matrix.Areas[y].Split(' ', StringSplitOptions.RemoveEmptyEntries);

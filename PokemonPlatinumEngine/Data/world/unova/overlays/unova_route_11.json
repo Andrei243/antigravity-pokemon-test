@@ -1,5 +1,5 @@
 {
-  // Route 11 (plan 22 · U8, part a): the road between the Village Bridge and Opelucid City, Black 2's: three trainers, a hut at the foot of the hill, and Virizion, who crosses the road for whoever comes this way first (Black 2's, a Sword of Justice: plan 22 · U10) held hidden meanwhile; our words
+  // Route 11 (plan 22 · U8, part a): the road between the Village Bridge and Opelucid City, Black 2's: three trainers, a hut at the foot of the hill, and Virizion (0), a Sword of Justice, who waits on the road once Unova's Hall of Fame is entered and is gone once fought (plan 22 · U10, part a: FLAG_UNOVA_FOUGHT_VIRIZION; unova_route_11.txt); our words
   "area": "unova_route_11",
   "bgmTrack": "unova/route12",
   "heldBack": [
@@ -11,10 +11,10 @@
       "name": "Virizion",
       "npcType": "Pokemon",
       "species": "Virizion",
-      "hiddenBy": "FLAG_UNOVA_HIDE_VIRIZION_ROUTE_11",
-      "dialog": [
-        "Virizion: Kikwaaa!"
-      ]
+      "hiddenBy": "FLAG_UNOVA_FOUGHT_VIRIZION",
+      "shownBy": "UnovaHallOfFame",
+      "script": "Virizion",
+      "still": true
     },
     "4": {
       "name": "Magnolia",

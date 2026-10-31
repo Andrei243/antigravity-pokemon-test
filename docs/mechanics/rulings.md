@@ -3438,6 +3438,32 @@ for the order alone) on variables of ours. What differs from Black 2, and why:
   `UnovaCatchUpF` (`FLAG_UNOVA_LEAGUE_BEGUN`), which the foot of Victory Road, its last tunnel and the plaza call, with no story
   version raised.
 
+## Unova after the Hall of Fame, part a: the legendaries of the open roads (2026-10-31, plan 22 · U10)
+
+The first of the post-game's parts: the legendary Pokémon Black 2 keeps on roads and in places already open, each met where Black 2
+has it once Unova's Hall of Fame is entered, in our own words (the decompilation's zone scripts read for the order, the species and
+the levels alone). What differs from Black 2, and why:
+
+- **Who and where.** Cobalion at Route 13's north end, Virizion on Route 11, Terrakion in Route 22's hills (the Swords of Justice,
+  level 65, Black 2's first meeting; its 45 is a second meeting this game has no way to); Azelf by Route 23's river and Mesprit over
+  the Celestial Tower's summit (level 65); Kyurem at the head of the Giant Chasm's cavern (level 70); Heatran in Reversal Mountain's
+  lair (level 68). Each is a person of the overlay **shown by `UnovaHallOfFame`** (no hiding script and no catch-up: a save from
+  before them needs nothing) and hidden by `FLAG_UNOVA_FOUGHT_<SPECIES>` once caught or beaten; run from, it is gone until the
+  place is come to again (`hide self`), as Mewtwo in Cerulean Cave. Black 2's own hiding flags of the Swords and Heatran (set by the
+  chapters' hiding scripts since U7 and U8) are set still and ask nothing.
+- **The Hall of Fame stands in for the Cave of Being.** Black 2 sets the three of the lakes free from the Cave of Being on Route 23,
+  a later part of U10, and Uxie, which Black 2 keeps out of the decompilation's zone scripts of the open places, is left for it.
+  Azelf and Mesprit wait from the Hall of Fame on.
+- **The Magma Stone.** Black 2's question at the lair's heart asks to set the stone down, and Heatran falls in. Where the player
+  gets the stone is Black 2's script of another place, not read here: ours lies in an item's ball on the lair's ring path once the
+  Hall of Fame is entered (`magma_stone`, `FLAG_UNOVA_GOT_MAGMA_STONE`); read at the heart (10, 12) with it in the bag, the
+  question is asked, the stone taken and `FLAG_UNOVA_MAGMA_STONE_SET` brings Heatran in (shown by that flag).
+- **The cries are ours.** Black 2 writes each legendary's cry out as a word on screen; ours are said in a line of their own.
+- **The League's plaza and the Champion's walk.** `in38_hasira` (a pillar, hashira) was read as a bridge's planks by the cover
+  rules' `hasi`, and every tile of the plaza's lawn the import couldn't name round it took the planks from it, which was the plaza's
+  checker of boards; a pillar now says nothing of the ground (`Bw2Cover`), as it does in the League's rooms, whose pillars were
+  planks too. The Champion's walk stands over the dark (`overTheDark`), as the Nimbasa Gym's runway does.
+
 ## Kanto's first chapter (2026-10-18, plan 19 · K3)
 
 FireRed's first chapter, from the bedroom in Pallet Town to the Boulder Badge in Pewter City, is scripts of ours on its

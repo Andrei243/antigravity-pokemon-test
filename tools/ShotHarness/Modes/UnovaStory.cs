@@ -124,6 +124,27 @@ partial class Harness
         game.SaveSlot = 1;
         game.LocationSign.Hide();
         Frames(2);
+        // UNOVA_FROM=league: the same new game brought at once to where the story stands past the Giant Chasm (as
+        // UnovaStoryTests' PastTheChasm makes it), for the League's shots (us389 on) and plan 22 · U10's after them alone;
+        // UNOVA_FROM=legends: past the Hall of Fame as well, for U10's legendaries alone (us421 on)
+        string? from = Environment.GetEnvironmentVariable("UNOVA_FROM");
+        if (from is "league" or "legends")
+        {
+            var unova = RegionDatabase.Get(RegionDatabase.Unova)!;
+            story.ChooseStarter(unova.Starters[0]);
+            foreach (string species in new[] { unova.Starters[0], "Emolga", "Lillipup", "Pidove", "Roggenrola", "Purrloin" })
+                game.Party.Add(new Pokemon(PokemonDatabase.Get(species)!, 60));
+            story.Set(StoryState.PokedexFlag);
+            story.Set(StoryState.RunningShoesFlag);
+            foreach (var (name, value) in new[] { ("VAR_UNOVA_PWT", 3), ("VAR_UNOVA_MISTRALTON", 4), ("VAR_UNOVA_LENTIMAS", 1), ("VAR_UNOVA_REVERSAL", 2),
+                         ("VAR_UNOVA_LACUNOSA", 4), ("VAR_UNOVA_OPELUCID", 7), ("VAR_UNOVA_HUMILAU", 9), ("VAR_UNOVA_CHASM", 4) })
+                story.SetVar(name, value);
+            story.Set("FLAG_UNOVA_FRIGATE_SAILED");
+            story.Set("FLAG_UNOVA_CHASM_CLEARED");
+            foreach (string badge in unova.BadgeNames) story.GiveBadge(RegionDatabase.Unova, badge);
+            if (from == "legends") { story.Set("UnovaHallOfFame"); goto legends; }
+            goto league;
+        }
         StepOnto("AspertiaCity_PlayersHouse", 10, 8, Direction.Left);
         ReadTo("have you heard of Professor Juniper"); Frames(10); Shot("us01_moms_questions");
         ReadTo("just look for a big green hat"); Frames(10); Shot("us02_sent_to_find_bianca");
@@ -1231,6 +1252,7 @@ partial class Harness
                 + $"National Pokédex {game.Pokedex.NationalUnlocked}");
 
         // ---- Route 23, and N at the foot of Victory Road
+    league:
         ComeThrough("Unova", 664, 136, Direction.Up); Frames(30); Shot("us389_route_23");
         StepOnto("UnovaVictoryRoad", 80, 52, Direction.Up);
         ReadTo("You came. I knew you would."); Frames(10); Shot("us390_n_at_victory_road");
@@ -1321,5 +1343,50 @@ partial class Harness
         ReadTo("Kalos"); Frames(10); Shot("us419_the_flight_to_kalos");
         ReadTo(null); Frames(10); Shot("us420_the_cargo_hall_after");
         League("Mistralton");
+
+        // Plan 22 · U10, part a: the legendaries of the open roads after the Hall of Fame (us421 to us444), in this same game: each
+        // where it waits (shown by UnovaHallOfFame), spoken to, its battle, and the place after it (gone for good once fought); the
+        // Magma Stone picked up in Reversal Mountain's lair and set down at its heart, which brings Heatran down
+    legends:
+        void Legends(string what) =>
+            Console.WriteLine($"  {what}: map {game.Map.Name} {game.Player.GridX},{game.Player.GridY}, Hall of Fame {story.Has("UnovaHallOfFame")}, fought "
+                + string.Join(" ", new[] { "COBALION", "VIRIZION", "TERRAKION", "AZELF", "MESPRIT", "KYUREM", "HEATRAN" }.Where(w => story.Has($"FLAG_UNOVA_FOUGHT_{w}")))
+                + $", Magma Stone {game.Bag.AllItems.Any(s => s.Name == "Magma Stone")}, set {story.Has("FLAG_UNOVA_MAGMA_STONE_SET")}");
+        int legend = 421;
+        foreach (var (map, x, y, key, area, name, say) in new[]
+        {
+            ("Unova", 684, 190, "21", "unova_route_13", "cobalion", "ringing cry"),
+            ("Unova", 468, 170, "0", "unova_route_11", "virizion", "light and sharp"),
+            ("Unova", 725, 138, "6", "unova_route_22", "terrakion", "bellowed"),
+            ("Unova", 584, 80, "16", "unova_route_23", "azelf", "high cry"),
+            ("CelestialTower_Summit", 16, 22, "0", "celestial_tower", "mesprit", "soft cry"),
+            ("GiantChasm_Cavern", 15, 17, "kyurem_rest", "giant_chasm_6", "kyurem", "Kyurem roared")
+        })
+        {
+            // (come to the place first: who stands there is decided as it is come to)
+            ComeThrough(map, x, y + 2, Direction.Up); Frames(30);
+            if (!game.Map.NPCs.Any(n => n.Key == key && n.ScriptFile == area)) { Console.WriteLine($"  !! never happened: {name} where it waits"); legend += 3; continue; }
+            Shot($"us{legend}_{name}_waits");
+            TalkTo(map, key, area);
+            ReadTo(say); Frames(10); Shot($"us{legend + 1}_{name}_cries");
+            IntoBattle(name); Frames(10); Shot($"us{legend + 2}_{name}_battle");
+            Win(); ReadTo(null); Frames(10);
+            Legends(name);
+            legend += 3;
+        }
+        // ---- Reversal Mountain's lair: the Magma Stone, set down, and Heatran
+        ComeThrough("ReversalMountain_4", 8, 17, Direction.Up); Frames(30); Shot("us439_the_magma_stone");
+        game.Interact();
+        ReadTo(null); Frames(10);
+        At("ReversalMountain_4", 10, 13, Direction.Up); Frames(4);
+        game.Interact();
+        ReadTo("Will you set it down here?"); Frames(10); Shot("us440_set_it_down");
+        ReadTo("Something heavy dropped"); Frames(10); Shot("us441_heatran_falls");
+        ReadTo(null); Frames(20); Shot("us442_heatran_in_the_lair");
+        TalkTo("ReversalMountain_4", "0", "reversal_mountain_5");
+        ReadTo("grinding roar"); Frames(10);
+        IntoBattle("Heatran"); Frames(10); Shot("us443_heatran_battle");
+        Win(); ReadTo(null); Frames(10); Shot("us444_the_lair_after");
+        Legends("Heatran");
     }
 }

@@ -1,8 +1,9 @@
 {
   // Route 13 (plan 22 · U7, part b): the longest road in Unova, Black 2's, running from Undella Town's gate north along the sea and
   // its cliffs to Lacunosa Town, with Cut trees (0 and 1), Strength boulders (2 to 4) and a dozen trainers on it, our words. A
-  // treasure hunter (13) gives away a Heart Scale once a day. Black 2's Cobalion (21, FLAG_UNOVA_HIDE_COBALION_ROUTE_13), which
-  // roars at the north end and is met there, is plan 22 · U10's (the Swords of Justice), and so is Black 2's route east
+  // treasure hunter (13) gives away a Heart Scale once a day. Black 2's Cobalion (21), which roars
+  // at the north end, is met there once Unova's Hall of Fame is entered and gone once fought (plan 22 · U10, part a; shown by
+  // UnovaHallOfFame, hidden by FLAG_UNOVA_FOUGHT_COBALION; unova_route_13.txt). Plan 22 · U10's later parts have Black 2's route east
   "area": "unova_route_13",
   "bgmTrack": "unova/route13",
   "people": {
@@ -79,7 +80,9 @@
       "name": "Cobalion",
       "npcType": "Pokemon",
       "species": "Cobalion",
-      "hiddenBy": "FLAG_UNOVA_HIDE_COBALION_ROUTE_13",
+      "hiddenBy": "FLAG_UNOVA_FOUGHT_COBALION",
+      "shownBy": "UnovaHallOfFame",
+      "script": "Cobalion",
       "still": true
     },
     "24": {
