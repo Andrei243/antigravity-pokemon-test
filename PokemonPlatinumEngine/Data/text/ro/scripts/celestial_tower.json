@@ -40,5 +40,31 @@
         "Clopotul a rămas neatins..."
       ]
     }
+  ],
+  "Mesprit": [
+    {
+      "en": [
+        "Mesprit gave a soft cry!\nA warm feeling washes over {player}!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The bell hums faintly in the wind..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Mesprit drifted off into the sky..."
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

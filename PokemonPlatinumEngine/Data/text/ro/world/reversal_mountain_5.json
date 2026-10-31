@@ -19,6 +19,16 @@
           "Bianca"
         ]
       }
+    },
+    "magma_stone": {
+      "name": {
+        "en": [
+          "Magma Stone"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {}

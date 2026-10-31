@@ -426,5 +426,31 @@
         "Kyurem: Haaahraaan..."
       ]
     }
+  ],
+  "KyuremRests": [
+    {
+      "en": [
+        "Kyurem roared!\nA freezing wind howls through the cavern!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The cavern is cold and silent..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Kyurem sank back into the dark of the cavern..."
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

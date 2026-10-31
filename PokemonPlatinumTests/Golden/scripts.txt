@@ -8199,6 +8199,9 @@ from the tile read at 5,44 of Celadon_Gym
 from the tile read at 9,44 of Celadon_Gym
 way -
   > Celadon City Pokémon Gym\nLeader: Erika
+=== celestial_tower.Mesprit
+from Mesprit at 16,22 of CelestialTower_Summit
+way -
 === celestial_tower.RingTheBell
 from the tile read at 16,10 of CelestialTower_Summit
 way 0
@@ -15496,6 +15499,9 @@ from Kyurem at 15,19 of GiantChasm_Cavern
 way -
   > Kyurem: Haaahraaan...
   * cry Kyurem
+=== giant_chasm_6.KyuremRests
+from Kyurem at 15,17 of GiantChasm_Cavern
+way -
 === goldenrod.GateGuard
 from Grunt at 358,326 of Johto
 way -
@@ -21482,6 +21488,21 @@ way -
 === reversal_mountain_5.BiancaInTheLair
 from the trigger at 9,18 of ReversalMountain_4
 way -
+=== reversal_mountain_5.Heatran
+from Heatran at 10,12 of ReversalMountain_4
+way -
+=== reversal_mountain_5.MagmaStone
+from the tile read at 10,12 of ReversalMountain_4
+way -
+  > The rock here is warm to the touch.
+=== reversal_mountain_5.MagmaStoneBall
+from Magma Stone at 8,16 of ReversalMountain_4
+way -
+  > Lucas found the Magma Stone!
+  > Lucas put it away in the Key Items pocket.
+  * fanfare FanfareKeyItem
+  * journal ItemWasObtained Magma Stone
+  + FLAG_UNOVA_GOT_MAGMA_STONE
 === reversal_mountain_6.BiancaOffersToPart
 from the trigger at 12,7 of ReversalMountain_5
 way -
@@ -27262,6 +27283,12 @@ way 1, from answer 1
 from Iris at 16,34 of UnovaPokemonLeague_ChampionsRoom
 way -
   Iris> Come on up! I'm waiting for you!
+=== unova_route_11.Virizion
+from Virizion at 468,170 of Unova
+way -
+=== unova_route_13.Cobalion
+from Cobalion at 684,190 of Unova
+way -
 === unova_route_13.TreasureHunter
 from Treasure Hunter at 683,237 of Unova
 way -
@@ -27438,6 +27465,12 @@ from Colress at 738,138 of Unova
 from the trigger at 752,146 of Unova
 way -
   Colress> The Seaside Cave is on Route 21, south of Humilau. Good luck!
+=== unova_route_22.Terrakion
+from Terrakion at 725,138 of Unova
+way -
+=== unova_route_23.Azelf
+from Azelf at 584,80 of Unova
+way -
 === unova_route_4.ColressWaits
 from the trigger at 427,584 of Unova
 way 0

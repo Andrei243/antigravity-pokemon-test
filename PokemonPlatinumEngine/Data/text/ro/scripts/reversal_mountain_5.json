@@ -32,5 +32,65 @@
         "Se spune că Heatran este un Pokémon prin care curge sânge ca magma! Imaginează-ți!"
       ]
     }
+  ],
+  "MagmaStone": [
+    {
+      "en": [
+        "The Magma Stone is glowing hot, as if something here calls to it..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Will you set it down here?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A deep rumble rose from below...\nSomething heavy dropped into the lair from above!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The rock here is warm to the touch."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Heatran": [
+    {
+      "en": [
+        "Heatran let out a grinding roar!\nThe air of the lair shimmers with heat!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The lair is cooling..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Heatran sank into the depths of the mountain..."
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

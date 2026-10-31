@@ -48,5 +48,31 @@
         "Mâine voi vâna din nou comori aici. Treci pe aici dacă ai timp."
       ]
     }
+  ],
+  "Cobalion": [
+    {
+      "en": [
+        "Cobalion let out a ringing cry!\nIts steel-hard gaze holds {player} where they stand!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The road is quiet again. Only the sea breeze is left..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Cobalion leapt away beyond the road..."
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

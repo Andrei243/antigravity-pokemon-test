@@ -112,5 +112,31 @@
         "Seaside Cave se află pe Ruta 21, la sud de Humilau. Mult noroc!"
       ]
     }
+  ],
+  "Terrakion": [
+    {
+      "en": [
+        "Terrakion bellowed!\nThe ground shakes as it stamps!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The hills are still once more..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Terrakion thundered off over the hills..."
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }
