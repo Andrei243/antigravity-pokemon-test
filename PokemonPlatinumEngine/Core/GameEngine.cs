@@ -452,6 +452,7 @@ public partial class GameEngine
         flow.Journal = new Journal();
         flow.PokemonIdsIssued = 0;
         flow.LinkBattles = new LinkBattleRecord();
+        flow.Teams = new List<SavedTeam>();
 
         InitializeNewGame();
         GiveIds();
@@ -718,6 +719,7 @@ public partial class GameEngine
         // save from before the opening, two that came to hold one id) takes the next
         flow.PokemonIdsIssued = save.PokemonIdsIssued;
         GiveIds();
+        flow.Teams = save.Teams?.Select(t => t.Copy()).ToList() ?? new List<SavedTeam>();
         // Where the game began, which decides whose levels are mapped (plan 18 · W4); an older save began where it stands
         flow.BeganIn = save.BeganInOrHere();
         flow.LinkBattles = LinkBattleRecord.From(save.LinkBattles);
@@ -825,6 +827,7 @@ public partial class GameEngine
             LinkBattles = flow.LinkBattles.ToSave(),
             Party = flow.Party.Members.Select(SavedPokemonData.FromPokemon).ToList(),
             Boxes = SavedBoxes.From(flow.Boxes),
+            Teams = flow.Teams.Count > 0 ? flow.Teams.Select(t => t.Copy()).ToList() : null,
             Inventory = flow.Bag.AllItems.Select(i => new SavedItemData { ItemName = i.Name, Quantity = i.Quantity }).ToList(),
             BagOrder = flow.Bag.Orders.ToDictionary(o => o.Key.ToString(), o => o.Value.ToString()),
             SeenSpecies = flow.Pokedex.SeenSpecies.ToList(),
@@ -1461,6 +1464,7 @@ public partial class GameEngine
             case GameState.PCStorage:
                 KeepTheRunInView();
                 flow.PCScreen.Tools = BoxToolsOn;
+                KeepTheTeamsInView();
                 flow.PCScreen.Update(flow.Party, flow.Boxes, ShowNotification, dt);
                 if (!flow.PCScreen.IsActive)
                 {

@@ -4601,5 +4601,35 @@
       "keep": "KEEP THEM  (ESC)"
     },
     "hint": { "stretch": "Stretch" }
+  },
+  "boxTeams": {
+    "menu": "TEAMS",
+    "action": { "judge": "JUDGE" },
+    "title": "TEAMS",
+    "count": "{count} / {most}",
+    "save": "SAVE THIS TEAM",
+    "defaultName": "Team {number}",
+    "teamMenu": { "SwapIn": "SWAP IN", "Delete": "DELETE", "Cancel": "CANCEL" },
+    "kept": "The team was kept as {team}.",
+    "deleted": "{team} was forgotten.",
+    "swapped": "{team} is your team now.",
+    "swappedSome": "{team} is your team now. {count} of it isn't in the boxes any more.",
+    "swap": {
+      "noneHere": "None of {team} is in the boxes any more.",
+      "mail": "{name} is holding Mail, so it can't go into a box.",
+      "capsule": "{name} has a Ball Capsule on, so it can't go into a box.",
+      "noRoom": "The boxes haven't room for the {count} who would leave the team."
+    },
+    "naming": {
+      "title": "NAME THE TEAM",
+      "note": "The team is kept by who is on it. Swap it in from any PC with TEAMS."
+    },
+    "judge": {
+      "title": "JUDGE",
+      "egg": "Nothing to see yet.",
+      "best": "Best: {stat}",
+      "alike": "All alike",
+      "grade": { "Nothing": "NOTHING", "Meagre": "MEAGRE", "Fair": "FAIR", "Good": "GOOD", "Splendid": "SPLENDID", "Flawless": "FLAWLESS" }
+    }
   }
 }
