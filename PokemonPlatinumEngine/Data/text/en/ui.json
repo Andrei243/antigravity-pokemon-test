@@ -3864,18 +3864,45 @@
     "total": "TOTAL",
     "earned": "You earned {points} Athlete Points. You have {all} in all.",
     "newRecord": "NEW RECORD!",
+    "laps": "{n} laps",
+    "held": "Points: {n}",
+    "goals": "Goals: {n}",
+    "ownGoals": "Own goals: {n}",
+    "records": "RECORDS",
+    "recordsFoot": "Courses run: {runs}   Won: {wins}   Athlete Points: {points}",
+    "medal": { "gold": "Gold medal", "silver": "Silver medal", "bronze": "Bronze medal", "none": "No medal" },
+    "shop": { "purse": "ATHLETE POINTS", "amount": "{n} PTS", "notEnough": "You don't have enough Athlete Points.", "name": "ATHLETE SHOP" },
     "course": {
-      "practice": "Practice Course"
+      "practice": "Practice Course",
+      "speed": "Speed Course",
+      "power": "Power Course",
+      "skill": "Skill Course",
+      "stamina": "Stamina Course",
+      "jump": "Jump Course"
     },
     "event": {
       "hurdleDash": "Hurdle Dash",
       "blockSmash": "Block Smash",
-      "ringDrop": "Ring Drop"
+      "ringDrop": "Ring Drop",
+      "relayRun": "Relay Run",
+      "circlePush": "Circle Push",
+      "goalRoll": "Goal Roll",
+      "pennantCapture": "Pennant Capture",
+      "snowThrow": "Snow Throw",
+      "discCatch": "Disc Catch",
+      "lampJump": "Lamp Jump"
     },
     "howTo": {
       "hurdleDash": "Your three run a leg each over seven hurdles. Press {key:confirm} to jump just before a hurdle: land on one and your runner trips. The fastest team through all three legs wins.",
       "blockSmash": "Press {key:confirm} to smash the blocks before you, once each swing is over. Every hit tires your Pokémon: press {key:cancel} to send the next one in while the tired one gets its breath back.",
-      "ringDrop": "Push the others off the ring with the arrows and press {key:confirm} to lunge. A knock-off scores, a fall loses points, and whoever falls is replaced by the next of their team."
+      "ringDrop": "Push the others off the ring with the arrows and press {key:confirm} to lunge. A knock-off scores, a fall loses points, and whoever falls is replaced by the next of their team.",
+      "relayRun": "Your runner laps the track by itself and tires as it goes. Press {key:confirm} to spurt and {key:cancel} to hand over to the next one while the tired one rests. Every lap scores.",
+      "circlePush": "Get into the circle with the arrows and keep the others out: press {key:confirm} to lunge. Every moment in the circle scores, twice as much alone. Press {key:cancel} to send in a fresh Pokémon.",
+      "goalRoll": "Knock the ball into the other teams' goals with the arrows, and press {key:confirm} beside it to strike it. A goal scores; one into your own goal loses points.",
+      "pennantCapture": "Run about the field with the arrows and take the pennants before the others do. Running tires your Pokémon: press {key:cancel} to send the next one in. Bump into another and both stand dazed.",
+      "snowThrow": "Point the arrows at a team and press {key:confirm} to throw a snowball. Keep {key:confirm} down to duck a ball coming your way. A hit scores two points, a ball ducked one.",
+      "discCatch": "Run along your lane with the arrows to where a disc comes down, and press {key:confirm} to jump for it. A catch in the air scores more. Press {key:cancel} to send in a rested Pokémon.",
+      "lampJump": "Your Pokémon bounces by itself. Press {key:confirm} just before it lands to spring higher, and light the lamps the top of each bounce passes. Too soon or too late, and it falls back."
     },
     "stat": {
       "speed": "Speed",
@@ -3895,18 +3922,6 @@
       "hazel": "Team Hazel"
     },
     "batch2": {
-      "event": {
-        "pennantCapture": "Pennant Capture",
-        "snowThrow": "Snow Throw",
-        "discCatch": "Disc Catch",
-        "lampJump": "Lamp Jump"
-      },
-      "howTo": {
-        "pennantCapture": "Run about the field with the arrows and take the pennants before the others do. Running tires your Pokémon: press {key:cancel} to send the next one in. Bump into another and both stand dazed.",
-        "snowThrow": "Point the arrows at a team and press {key:confirm} to throw a snowball. Keep {key:confirm} down to duck a ball coming your way. A hit scores three points, a ball ducked one.",
-        "discCatch": "Run along your lane with the arrows to where a disc comes down, and press {key:confirm} to jump for it. A catch in the air scores more. Press {key:cancel} to send in a rested Pokémon.",
-        "lampJump": "Your Pokémon bounces by itself. Press {key:confirm} just before it lands to spring higher, and light the lamps the top of each bounce passes. Too soon or too late, and it falls back."
-      },
       "hits": "Hits: {n}",
       "ducked": "Ducked: {n}",
       "catches": "CATCHES",

@@ -186,7 +186,7 @@ public sealed class PennantCapture : AthlonEvent
 /// each team's three throwing at a time. The arrows pick whom to throw at (the team that way), the button throws once the
 /// last throw is made up again (sooner by Skill), and the ball flies to its mark in frames fewer by Power. Keeping the
 /// button down ducks, which lets a ball fly over and throws nothing; one hit stands dazed for frames fewer by Stamina.
-/// A switch sends the next of the three up. Points are three a hit and one a ball ducked.
+/// A switch sends the next of the three up. Points are two a hit and one a ball ducked (three a hit until E8 set the medals).
 /// </summary>
 public sealed class SnowThrow : AthlonEvent
 {
@@ -347,7 +347,7 @@ public sealed class SnowThrow : AthlonEvent
         return new AthlonInput(Tap: true);
     }
 
-    public override int Points(int team) => 3 * throwers[team].Hits + throwers[team].Ducked;
+    public override int Points(int team) => 2 * throwers[team].Hits + throwers[team].Ducked;
 }
 
 /// <summary>
@@ -356,12 +356,12 @@ public sealed class SnowThrow : AthlonEvent
 /// <see cref="Top"/> as it drifts to where it lands; the arrows run along the lane (faster by Speed), the button jumps
 /// (higher by Jump), and a disc within reach (above the catcher by its jump, across by Skill) is caught. Every jump tires
 /// the jumper (less by Stamina) and a tired one jumps half as high; a switch sends the next of the three in. Points are
-/// two a catch and three a catch in the air.
+/// one a catch and two a catch in the air (E8 halved them and thinned the discs: nearly every disc was caught).
 /// </summary>
 public sealed class DiscCatch : AthlonEvent
 {
     public const float LaneWidth = 160f, Top = 120f, Standing = 14f, LaneEdge = 10f;
-    public const int Tired = 100, SwitchFrames = 12, FirstDisc = 45, DiscEvery = 32;
+    public const int Tired = 100, SwitchFrames = 12, FirstDisc = 45, DiscEvery = 44;
     public const int Minute = 60 * FramesPerSecond;
 
     /// <summary>A disc of the timetable: when it is thrown, where it comes in and lands, and how long it falls.</summary>
@@ -397,7 +397,7 @@ public sealed class DiscCatch : AthlonEvent
         {
             float from = LaneEdge + (float)timetable.NextDouble() * (LaneWidth - 2 * LaneEdge);
             float land = LaneEdge + (float)timetable.NextDouble() * (LaneWidth - 2 * LaneEdge);
-            list.Add(new Disc(at, from, land, 28 + timetable.Next(18)));
+            list.Add(new Disc(at, from, land, 22 + timetable.Next(14)));
         }
         discs = list.ToArray();
         ends = new int[AthlonRun.TeamCount, discs.Length];
@@ -415,7 +415,7 @@ public sealed class DiscCatch : AthlonEvent
     public static float Run(AthleteStats s) => 0.8f + 0.25f * s.Speed;
     public static float JumpHeight(AthleteStats s) => 20f + 8f * s.Jump;
     public static int AirFrames(AthleteStats s) => 12 + 2 * s.Jump;
-    public static float Reach(AthleteStats s) => 5f + 1.5f * s.Skill;
+    public static float Reach(AthleteStats s) => 3f + 1f * s.Skill;
     public static int Strain(AthleteStats s) => 30 - 5 * s.Stamina;
 
     public Athlete ActiveOf(int team) => Teams[team].Athletes[catchers[team].Active];
@@ -505,7 +505,7 @@ public sealed class DiscCatch : AthlonEvent
         return new AthlonInput(Tap: jump, Dx: dx);
     }
 
-    public override int Points(int team) => 2 * catchers[team].Caught + catchers[team].CaughtInAir;
+    public override int Points(int team) => catchers[team].Caught + catchers[team].CaughtInAir;
 }
 
 /// <summary>
@@ -514,7 +514,7 @@ public sealed class DiscCatch : AthlonEvent
 /// on its own; the button pressed in the last frames before it lands (as many as its Skill and two more) springs it
 /// higher than it came down (by its Power), up to a height its Jump allows, and a bounce with no press, or one pressed
 /// too soon, falls back to the first bounce's height. Each bounce lights the lamps its top passes. Points are a point
-/// for every two lamps lit.
+/// for every three lamps lit (every two until E8 set the medals).
 /// </summary>
 public sealed class LampJump : AthlonEvent
 {
@@ -622,5 +622,5 @@ public sealed class LampJump : AthlonEvent
         return toLand == j.PressAt ? new AthlonInput(Tap: true) : AthlonInput.None;
     }
 
-    public override int Points(int team) => jumpers[team].Lit / 2;
+    public override int Points(int team) => jumpers[team].Lit / 3;
 }

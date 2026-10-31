@@ -379,7 +379,7 @@ public sealed partial class ScriptRunner
         // its prize is given as a gift is (plan 15 · E5)
         Op.BugContest => i.Name == "results",
         // A course of the Pokéathlon is the player's to run; the rest only asks (plan 15 · E6)
-        Op.Athlon => i.Name == "open",
+        Op.Athlon => i.Name is "open" or "records" or "shop",
         // The tide is only a flag (plan 21 · H8, part d)
         Op.Tide => false,
         // A secret base: what is asked and what goes into the decoration PC needs no screen; going in, decorating, packing up do
@@ -994,6 +994,11 @@ public sealed partial class ScriptRunner
                         break;
                     case "points":
                         Result = host.Athlon.Points;
+                        break;
+                    // The records board and the Athlete Shop (plan 15 · E8): screens the script waits out
+                    case "records":
+                    case "shop":
+                        host.Open(ScriptScreen.Athlon, Subject, i.Name);
                         break;
                     default:
                         host.Open(ScriptScreen.Athlon, Subject);

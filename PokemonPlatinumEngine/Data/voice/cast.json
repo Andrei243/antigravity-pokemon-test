@@ -1080,6 +1080,10 @@
       "note": "first spoken at FightAreaPokeMart.txt(9)",
       "provisional": true
     },
+    "stall_keeper": {
+      "note": "first spoken at common.txt(2892)",
+      "provisional": true
+    },
     "station_agent": {
       "note": "first spoken at GearStation.txt(13)",
       "provisional": true
@@ -1579,6 +1583,7 @@
     "Skyla": "skyla",
     "Slowbro": "slowbro",
     "Socialite": "socialite",
+    "Stall Keeper": "stall_keeper",
     "Station Agent": "station_agent",
     "Steven": "steven",
     "Storyteller": "storyteller",

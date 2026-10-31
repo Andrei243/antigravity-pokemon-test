@@ -1295,7 +1295,14 @@ public partial class GameEngine
                 }
                 break;
             case GameState.Shop:
-                flow.ShopScreen.Update(flow.Bag, ref flow.Money, ShowNotification, dt);
+                if (flow.ShopScreen.InPoints)
+                {
+                    // The Athlete Shop is paid in Athlete Points (plan 15 · E8)
+                    int points = flow.Athlon.Points;
+                    flow.ShopScreen.Update(flow.Bag, ref points, ShowNotification, dt);
+                    flow.Athlon.Points = points;
+                }
+                else flow.ShopScreen.Update(flow.Bag, ref flow.Money, ShowNotification, dt);
                 if (!flow.ShopScreen.IsActive)
                 {
                     // What the visit came to is a line of the Journal (shop_menu.c)
@@ -2849,7 +2856,7 @@ public partial class GameEngine
                 flow.StarterSelectScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.Shop:
-                flow.ShopScreen.Draw(VirtualWidth, VirtualHeight, flow.Money, flow.Bag);
+                flow.ShopScreen.Draw(VirtualWidth, VirtualHeight, flow.ShopScreen.InPoints ? flow.Athlon.Points : flow.Money, flow.Bag);
                 break;
             case GameState.Wardrobe:
                 flow.WardrobeScreen.Draw(VirtualWidth, VirtualHeight, flow.Money);

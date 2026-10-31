@@ -155,6 +155,7 @@ internal static partial class ModernUi
     {
         Backdrop(sw, sh);
         ScreenTitle(shop.Name);
+        shopInPoints = shop.InPoints;
         bool selling = shop.Mode == ShopMode.Selling;
         Hints(sw - Margin, 44, Hint("shared.keys.z", shop.Mode == ShopMode.Choosing ? "shared.hints.choose" : selling ? "shared.hints.sell" : "shared.hints.buy"),
             Hint("shared.keys.esc", shop.Mode == ShopMode.Choosing ? "shared.hints.leave" : "shared.hints.back"));
@@ -176,7 +177,7 @@ internal static partial class ModernUi
             bool affordable = selling || shop.PriceOf(item) <= money;
             var ink = ListRow(r, selected, selling ? Text.Of("shop.listedCount", ("item", item.DisplayName), ("n", inventory.GetQuantity(item))) : item.DisplayName);
             RowIcon(r, PixelArtGenerator.GetItemIcon(item), 1.5f, selected);
-            MoneyRight(r.X + r.Width - 32, r.Y + r.Height / 2f, price, 30, selected ? Color.White : affordable ? ink : Red);
+            ShopAmountRight(r.X + r.Width - 32, r.Y + r.Height / 2f, price, 30, selected ? Color.White : affordable ? ink : Red);
         }
         ScrollBar(list, shop.FirstRow, ShopScreen.VisibleRows, listed.Count, 40);
 
@@ -184,8 +185,8 @@ internal static partial class ModernUi
         float rx = Margin + 920 + Gutter + slide, rw = sw - Margin * 2 - 920 - Gutter;
         var purse = new Rectangle(rx, ContentTop, rw, 132);
         Panel(purse, 34);
-        UiFonts.DrawCentered(Text.Of("shop.money"), purse.X + 44, purse.Y + purse.Height / 2f, 26, Muted, UiWeight.Black);
-        MoneyRight(purse.X + purse.Width - 44, purse.Y + purse.Height / 2f, money, 52, Ink);
+        UiFonts.DrawCentered(Text.Of(shopInPoints ? "athlon.shop.purse" : "shop.money"), purse.X + 44, purse.Y + purse.Height / 2f, 26, Muted, UiWeight.Black);
+        ShopAmountRight(purse.X + purse.Width - 44, purse.Y + purse.Height / 2f, money, 52, Ink);
 
         // ---- The chosen item
         var detail = new Rectangle(rx, ContentTop + 132 + 24, rw, ContentBottom - ContentTop - 132 - 24);
@@ -222,14 +223,14 @@ internal static partial class ModernUi
         UiShapes.Circle(c, 52, Disc);
         PixelArt(PixelArtGenerator.GetItemIcon(item), c, 2);
         UiFonts.DrawCentered(item.DisplayName, r.X + 56 + 128, r.Y + 160, 40, Ink, UiWeight.Black);
-        float width = Money(r.X + 56 + 128, r.Y + 204, each, 26, Muted);
+        float width = ShopAmount(r.X + 56 + 128, r.Y + 204, each, 26, Muted);
         UiFonts.DrawCentered(Text.Of("shop.each"), r.X + 56 + 128 + width + 10, r.Y + 204, 24, Muted, UiWeight.ExtraBold);
 
         Stepper(new Vector2(r.X + r.Width - 56 - 44 - 120 - 24, r.Y + 180), Text.Of("bag.howMany", ("n", quantity)));
 
         UiShapes.Fill(new Rectangle(r.X + 56, r.Y + 272, r.Width - 112, 3), 1.5f, Rule);
         UiFonts.DrawCentered(Text.Of(selling ? "shop.youGet" : "shop.total"), r.X + 56, r.Y + 350, 28, Muted, UiWeight.Black);
-        MoneyRight(r.X + r.Width - 56, r.Y + 350, each * quantity, 60, Ink);
+        ShopAmountRight(r.X + r.Width - 56, r.Y + 350, each * quantity, 60, Ink);
     }
 
     /// <summary>

@@ -18,22 +18,6 @@ internal static partial class ModernUi
     private static readonly Color AthlonSnow = new(226, 236, 246, 255);
     private static readonly Color AthlonNight = new(30, 40, 70, 255);
 
-    public static string AthlonEventNameBatch2(AthlonEventKind kind) => kind switch
-    {
-        AthlonEventKind.PennantCapture => Text.Of("athlon.batch2.event.pennantCapture"),
-        AthlonEventKind.SnowThrow => Text.Of("athlon.batch2.event.snowThrow"),
-        AthlonEventKind.DiscCatch => Text.Of("athlon.batch2.event.discCatch"),
-        _ => Text.Of("athlon.batch2.event.lampJump")
-    };
-
-    private static string AthlonHowToBatch2(AthlonEventKind kind) => kind switch
-    {
-        AthlonEventKind.PennantCapture => Text.Of("athlon.batch2.howTo.pennantCapture"),
-        AthlonEventKind.SnowThrow => Text.Of("athlon.batch2.howTo.snowThrow"),
-        AthlonEventKind.DiscCatch => Text.Of("athlon.batch2.howTo.discCatch"),
-        _ => Text.Of("athlon.batch2.howTo.lampJump")
-    };
-
     private static void DrawAthlonBatch2(int sw, AthlonEvent ev)
     {
         switch (ev)

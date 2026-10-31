@@ -137,11 +137,11 @@ public sealed class HurdleDash : AthlonEvent
         return r.X + r.Speed >= r.JumpAt ? new AthlonInput(Tap: true) : AthlonInput.None;
     }
 
-    /// <summary>Through all three: what was left of the minute, a point for every twelve frames; else how far, out of 30.</summary>
+    /// <summary>Through all three: what was left of the minute, a point for every 24 frames (every twelve until E8 set the medals); else how far, out of 30.</summary>
     public override int Points(int team)
     {
         var r = runners[team];
-        return r.Finished ? Math.Max(0, (Minute - r.FinishedAt) / 12) : (int)(r.Done * 30f);
+        return r.Finished ? Math.Max(0, (Minute - r.FinishedAt) / 24) : (int)(r.Done * 30f);
     }
 }
 

@@ -7,7 +7,7 @@ using PokemonPlatinumEngine.Models;
 namespace PokemonPlatinumEngine.UI;
 
 /// <summary>What the Pokéathlon's screen shows: a course chosen, the team, an event's briefing, the event, its points, the scoreboard.</summary>
-public enum AthlonPhase { Courses, Team, Briefing, Playing, EventPoints, Scoreboard }
+public enum AthlonPhase { Courses, Team, Briefing, Playing, EventPoints, Scoreboard, Records }
 
 /// <summary>
 /// The Pokéathlon on screen (plan 15 · E6; style guide, "The Pokéathlon"): the dome's clerk opens it on the course
@@ -43,6 +43,9 @@ public sealed class AthlonScreen
 
     /// <summary>The player's place once the course is over (1 to 4); 0 when the screen was left before it.</summary>
     public int Outcome { get; private set; }
+
+    /// <summary>The medal the course's score won (plan 15 · E8), shown on the scoreboard.</summary>
+    public AthlonMedal Medal { get; private set; }
 
     /// <summary>Whether the scoreboard's score is a new best for its course.</summary>
     public bool NewRecord { get; private set; }
@@ -150,6 +153,7 @@ public sealed class AthlonScreen
                 break;
 
             case AthlonPhase.Scoreboard:
+            case AthlonPhase.Records:
                 AudioManager.PlaySound("select");
                 IsActive = false;
                 break;
@@ -164,6 +168,10 @@ public sealed class AthlonScreen
             case AthlonPhase.Courses:
                 AudioManager.PlaySound("cancel");
                 Outcome = 0;
+                IsActive = false;
+                break;
+            case AthlonPhase.Records:
+                AudioManager.PlaySound("cancel");
                 IsActive = false;
                 break;
             case AthlonPhase.Team:
@@ -192,6 +200,7 @@ public sealed class AthlonScreen
         var run = Run!;
         Outcome = run.PlayerPlace;
         NewRecord = Records.Record(run.Course.Key, run.Earned, Outcome);
+        Medal = AthlonData.MedalFor(run.Earned);
         Enter(AthlonPhase.Scoreboard);
         AudioManager.PlaySound(Outcome == 1 ? "levelup" : "select");
     }
@@ -247,6 +256,9 @@ public sealed class AthlonScreen
             HurdleDash h => (h.Runners[0].Air, h.Runners[0].Trips, 0, 0, 0),
             BlockSmash b => (0, 0, b.Smashers[0].Broken, 0, 0),
             RingDrop r => (0, 0, 0, r.Pushers[0].Knocks, r.Pushers[0].Falls),
+            // Plan 15 · E8: a lap run, a point of the circle held, a goal scored
+            RelayRun rr => (rr.Relays[0].Laps, 0, 0, 0, 0),
+            GoalRoll g => (0, 0, 0, g.Players[0].Goals, g.Players[0].OwnGoals),
             _ => default
         };
         if (now.Air > heard.Air) AudioManager.PlaySound("ledge");
@@ -255,6 +267,18 @@ public sealed class AthlonScreen
         if (now.Knocks > heard.Knocks) AudioManager.PlaySound("hit_super");
         if (now.Falls > heard.Falls) AudioManager.PlaySound("run_away");
         heard = now;
+    }
+
+    /// <summary>The records board (plan 15 · E8; <c>athlon records</c>): each course's best and its medal; any button closes it.</summary>
+    public void OpenRecords(AthlonRecords records)
+    {
+        Records = records;
+        Run = null;
+        Outcome = 0;
+        Cursor = 0;
+        IsActive = true;
+        Enter(AthlonPhase.Records);
+        AudioManager.PlaySound("select");
     }
 
     public void Update(float dt)

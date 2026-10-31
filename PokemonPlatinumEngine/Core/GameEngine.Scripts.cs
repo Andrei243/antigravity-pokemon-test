@@ -1272,6 +1272,16 @@ public partial class GameEngine
                     game.OpenBugContestResults();
                     break;
                 // The Pokéathlon (plan 15 · E6): the courses on the run's own generator; the script hears the place
+                case ScriptScreen.Athlon when counter == "records":
+                    // The records board (plan 15 · E8)
+                    game.flow.AthlonScreen.OpenRecords(game.flow.Athlon);
+                    game.flow.State = GameState.Athlon;
+                    break;
+                case ScriptScreen.Athlon when counter == "shop":
+                    // The Athlete Shop (plan 15 · E8): the shop's screen with the dome's stock, paid in Athlete Points
+                    game.flow.ShopScreen.OpenForPoints(Text.Of("athlon.shop.name"), AthlonData.Shop);
+                    game.flow.State = GameState.Shop;
+                    break;
                 case ScriptScreen.Athlon:
                     game.flow.ScriptAnswer = 0;
                     game.flow.AthlonScreen.Open(game.flow.Party, game.flow.Athlon, Dice.New());

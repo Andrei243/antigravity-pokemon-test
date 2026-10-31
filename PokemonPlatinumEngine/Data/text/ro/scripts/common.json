@@ -2427,6 +2427,58 @@
       ]
     }
   ],
+  "AthlonRecords": [
+    {
+      "en": [
+        "Clerk"
+      ],
+      "text": [
+        "Funcționar"
+      ]
+    },
+    {
+      "en": [
+        "This desk keeps every course's best score and the best medal won on it. Here are your records!"
+      ],
+      "text": [
+        "Biroul acesta păstrează cel mai bun scor al fiecărui traseu și cea mai bună medalie câștigată pe el. Iată recordurile tale!"
+      ]
+    },
+    {
+      "en": [
+        "Come back and set a new record any time!"
+      ],
+      "text": [
+        "Revino oricând și stabilește un nou record!"
+      ]
+    }
+  ],
+  "AthlonShop": [
+    {
+      "en": [
+        "Stall Keeper"
+      ],
+      "text": [
+        "Vânzător"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Athlete Shop! Everything here is paid for in Athlete Points."
+      ],
+      "text": [
+        "Bine ai venit la Magazinul Atleților! Aici totul se plătește în Puncte de Atlet."
+      ]
+    },
+    {
+      "en": [
+        "Thank you! Earn more points in the dome and come again!"
+      ],
+      "text": [
+        "Mulțumesc! Câștigă mai multe puncte în dom și revino!"
+      ]
+    }
+  ],
   "SecretBaseSpot": [
     {
       "en": [

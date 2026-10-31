@@ -128,7 +128,7 @@ partial class Harness
         Console.WriteLine($"  records: points {game.Athlon.Points}, best {game.Athlon.BestOf("practice")}, runs {game.Athlon.Runs}, wins {game.Athlon.Wins}");
 
         // ---- The second batch (plan 15 · E7) on a course of the mode's own, the same three, records of their own
-        var batch2 = new AthlonCourse("batch2", new[] { AthlonEventKind.PennantCapture, AthlonEventKind.SnowThrow, AthlonEventKind.DiscCatch, AthlonEventKind.LampJump });
+        var batch2 = new AthlonCourse("practice", new[] { AthlonEventKind.PennantCapture, AthlonEventKind.SnowThrow, AthlonEventKind.DiscCatch, AthlonEventKind.LampJump });
         screen.OpenOn(batch2, team, new AthlonRecords(), new System.Random(77), new[] { 0, 1, 3 });
         game.State = GameState.Athlon;
         // Every athlete's icon baked before the first shot of an event: the rivals are new to this run, and an icon asked
@@ -147,6 +147,8 @@ partial class Harness
         PlayEvent("at11_lamp_jump", 700, "at11b_lamp_jump_points");
         screen.Confirm();
         Until(() => game.State is GameState.Overworld or GameState.Dialogue, "the field after the second batch", 120);
+
+        AthlonBatch3(screen, Until, ReadOn);
 
         engine.NewGameRegion = "Sinnoh";
     }

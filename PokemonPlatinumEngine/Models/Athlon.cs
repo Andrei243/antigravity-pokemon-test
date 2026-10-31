@@ -92,20 +92,21 @@ public sealed record Athlete(string Species, AthleteStats Stats)
 public sealed record AthlonTeam(string Name, bool IsPlayer, IReadOnlyList<Athlete> Athletes, float Knack);
 
 /// <summary>The events of the Pokéathlon this game has (plan 15 · E6: one of each kind; E7 and E8 add at the end).</summary>
-public enum AthlonEventKind { HurdleDash, BlockSmash, RingDrop, PennantCapture, SnowThrow, DiscCatch, LampJump }
+public enum AthlonEventKind { HurdleDash, BlockSmash, RingDrop, PennantCapture, SnowThrow, DiscCatch, LampJump, RelayRun, CirclePush, GoalRoll }
 
 /// <summary>A course: three events in order, by its text key (<c>athlon.course.&lt;key&gt;</c>).</summary>
 public sealed record AthlonCourse(string Key, IReadOnlyList<AthlonEventKind> Events);
 
 /// <summary>
-/// The courses (plan 15 · E6): the Practice Course of the three events built so far. Plan 15 · E8 adds HeartGold's five
-/// as it pairs them, from <c>Data/athlon.json</c>.
+/// The courses (plan 15 · E6, E8): the Practice Course of E6's three events first, then HeartGold's five as it pairs them,
+/// from <c>Data/athlon.json</c> (<see cref="AthlonData"/>). A course naming an event this game hasn't built is left out
+/// until it is (<see cref="AthlonData.Waiting"/>).
 /// </summary>
 public static class AthlonCourses
 {
     public static readonly AthlonCourse Practice = new("practice", new[] { AthlonEventKind.HurdleDash, AthlonEventKind.BlockSmash, AthlonEventKind.RingDrop });
 
-    public static IReadOnlyList<AthlonCourse> All { get; } = new[] { Practice };
+    public static IReadOnlyList<AthlonCourse> All { get; } = new[] { Practice }.Concat(AthlonData.Courses).ToArray();
 
     public static AthlonCourse? Get(string key) => All.FirstOrDefault(c => c.Key == key);
 }
@@ -142,12 +143,24 @@ public sealed class AthlonRecords
         Runs++;
         if (place == 1) Wins++;
         Earn(score);
+        Award(course, AthlonData.MedalFor(score));
         if (score <= BestOf(course)) return false;
         Best[course] = score;
         return true;
     }
 
-    public AthlonRecords Copy() => new() { Points = Points, Best = new Dictionary<string, int>(Best), Runs = Runs, Wins = Wins };
+    /// <summary>Each course's best medal (plan 15 · E8), by its key; none where no medal was won.</summary>
+    public Dictionary<string, AthlonMedal> Medals { get; set; } = new();
+
+    public AthlonMedal MedalOf(string course) => Medals.TryGetValue(course, out var m) ? m : AthlonMedal.None;
+
+    /// <summary>A course's medal kept where it is better than the one before (plan 15 · E8).</summary>
+    public void Award(string course, AthlonMedal medal)
+    {
+        if (medal > MedalOf(course)) Medals[course] = medal;
+    }
+
+    public AthlonRecords Copy() => new() { Points = Points, Best = new Dictionary<string, int>(Best), Runs = Runs, Wins = Wins, Medals = new Dictionary<string, AthlonMedal>(Medals) };
 }
 
 /// <summary>
@@ -299,6 +312,9 @@ public abstract class AthlonEvent
         AthlonEventKind.HurdleDash => new HurdleDash(teams, seed),
         AthlonEventKind.BlockSmash => new BlockSmash(teams, seed),
         AthlonEventKind.RingDrop => new RingDrop(teams, seed),
+        AthlonEventKind.RelayRun => new RelayRun(teams, seed),
+        AthlonEventKind.CirclePush => new CirclePush(teams, seed),
+        AthlonEventKind.GoalRoll => new GoalRoll(teams, seed),
         _ => AthlonEventsBatch2.Create(kind, teams, seed) ?? throw new ArgumentOutOfRangeException(nameof(kind))
     };
 

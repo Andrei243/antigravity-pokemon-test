@@ -135,9 +135,9 @@ public class AthlonTests
         Assert.True(me.Finished);
         Assert.Equal(0, me.Trips);
         // Top speed 3 + 0.6 × 5 = 6 a frame, gathered at 0.1 + 0.04 × 5 = 0.3: 3,600 units in a little over 600 frames;
-        // its points are what was left of the minute, a point for twelve frames
+        // its points are what was left of the minute, a point for 24 frames
         Assert.InRange(me.FinishedAt, 600, 700);
-        Assert.Equal((HurdleDash.Minute - me.FinishedAt) / 12, ev.Points(0));
+        Assert.Equal((HurdleDash.Minute - me.FinishedAt) / 24, ev.Points(0));
     }
 
     // ------------------------------------------------------------------ Block Smash
