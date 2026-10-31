@@ -1,0 +1,17 @@
+{
+  // The Celadon Department Store's lift (plan 20 · J15, part k): HeartGold's car, our words. Its attendant rides it to
+  // the floor asked for (scripts/celadon_department_store_elevator.txt); its door, HeartGold's way back to wherever the
+  // player came from, leads to the ground floor here, as the Goldenrod store's does
+  "area": "celadon_department_store_elevator",
+  "bgmTrack": "kanto/celadon",
+  "doors": [
+    { "warp": 0, "map": "Celadon_DeptStore_1F", "x": 5, "y": 3, "facing": "Down" }
+  ],
+  "people": {
+    "t07r0107_gswoman6": {
+      "name": "Attendant",
+      "script": "Attendant",
+      "still": true
+    }
+  }
+}

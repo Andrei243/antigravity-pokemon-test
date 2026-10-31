@@ -1,0 +1,12 @@
+{
+  // The little room on the Celadon Condominiums' roof (plan 20 · J15, part k)
+  "area": "celadon_condominiums_roof_room",
+  "bgmTrack": "kanto/celadon",
+  "people": {
+    "t07r0205_sunglasses": {
+      "name": "Man",
+      "still": true,
+      "dialog": [ "This room's the quietest in the city. I come here to think. Or to nap, mostly." ]
+    }
+  }
+}

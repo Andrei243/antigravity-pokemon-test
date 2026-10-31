@@ -475,6 +475,12 @@ public static partial class WorldModels
         Built("kn_power", BuildingKind.Factory, "the Power Plant on Route 10", sign: "POWER PLANT"),
         Furniture("mpwr_ge", PropType.LabMachine, "the Power Plant's generator"),
         Furniture("table_l03", PropType.LabDesk, "a desk of the Power Plant's control room"),
+
+        // ---------------------------------------------------------------- plan 20 · J15, part k: Celadon's Condominiums (tafl)
+        Furniture("globe01", PropType.Statue, "a globe on its stand in the games office on the Condominiums' third floor"),
+        Ground("tafl04_h01", "the little room on the Condominiums' roof: the roof is a room here, and its blocked tiles stand for the room's walls"),
+        Door("tafl04_door1"),
+        Ground("tafl_light", "a light on the wall by the Condominiums' lifts on the roof: nothing stands for it"),
     };
 
     private static readonly Dictionary<string, WorldModel> JohtoByName = JohtoTable.ToDictionary(m => m.Name, StringComparer.Ordinal);

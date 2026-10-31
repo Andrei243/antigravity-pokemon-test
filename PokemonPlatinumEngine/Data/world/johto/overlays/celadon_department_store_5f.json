@@ -1,0 +1,37 @@
+{
+  // The Celadon Department Store's fifth floor (plan 20 · J15, part k), its counters vitamins and battle items
+  // (scripts/celadon_department_store_5f.txt)
+  "area": "celadon_department_store_5f",
+  "bgmTrack": "kanto/celadon",
+  "people": {
+    "t07r0105_shopm1_2": {
+      "name": "Clerk",
+      "script": "VitaminClerk",
+      "still": true,
+      "dialog": [ "Welcome to the Drugstore! Our vitamins make Pokémon stronger." ]
+    },
+    "t07r0105_shopm1_2_2": {
+      "name": "Clerk",
+      "script": "BattleClerk",
+      "still": true,
+      "dialog": [ "Welcome! Our items give a Pokémon an edge in battle." ]
+    },
+    "t07r0105_gsgentleman": {
+      "name": "Gentleman",
+      "still": true,
+      "dialog": [ "Vitamins are dear, but they last. Battle items are cheap, but gone when the battle is." ]
+    },
+    "t07r0105_seaman_2": {
+      "name": "Sailor",
+      "dialog": [ "My ship docks in Vermilion. Whenever we're in port I come up here for Carbos. Fast Pokémon win at sea!" ]
+    },
+    "t07r0105_gswoman1": {
+      "name": "Woman",
+      "still": true,
+      "dialog": [ "I give my Pokémon an Iron every birthday. It's become a family tradition." ]
+    }
+  },
+  "signs": {
+    "T07R0105_005+1": "5F: Drugstore\nVitamins and battle items."
+  }
+}

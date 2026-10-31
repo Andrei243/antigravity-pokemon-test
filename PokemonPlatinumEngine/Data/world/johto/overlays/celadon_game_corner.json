@@ -1,0 +1,21 @@
+{
+  // The Celadon Game Corner (plan 20 · J15, part k). As the Goldenrod Game Corner (plan 20 · J5, part b), HeartGold's own
+  // has no slot machines to play, and neither has ours: its tables are switched off and its people talk
+  "area": "celadon_game_corner",
+  "bgmTrack": "kanto/game_corner",
+  "people": {
+    "t07sp0101_suit": {
+      "name": "Clerk",
+      "still": true,
+      "dialog": [ "Welcome to the Celadon Game Corner! The tables are being changed over to a new game, I'm afraid." ]
+    },
+    "t07sp0101_sunglasses": {
+      "name": "Man",
+      "dialog": [ "This place was a hideout for Team Rocket once, if you can believe it. Now it's just quiet." ]
+    }
+  },
+  "signs": {
+    "T07SP0101_000+1": "A game table. Its screen is dark and a cloth has been laid over it.",
+    "T07SP0101_002+1": "A game table, switched off for now."
+  }
+}

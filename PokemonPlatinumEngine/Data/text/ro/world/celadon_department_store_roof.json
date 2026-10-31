@@ -1,0 +1,50 @@
+{
+  "people": {
+    "t07r0106_gsman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "From up here you can see the whole of Celadon. On a clear day you can see Saffron's tower too."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t07r0106_gsboy1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My mum bought me a Soda Pop. My Pokémon wanted it more than I did, so I shared!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T07R0106_002+1": {
+      "en": [
+        "Rooftop Square\nA place to rest your feet."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

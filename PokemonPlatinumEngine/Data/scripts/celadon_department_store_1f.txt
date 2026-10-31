@@ -1,0 +1,9 @@
+# The Celadon Department Store's ground floor in HeartGold's Kanto (plan 20 · J15, part k). docs/scripts.md describes
+# the language. Every floor says so as it is come to (VAR_JOHTO_CELADON_STORE_FLOOR, a variable of our own: 1 to 5 for
+# the floors, 6 for the roof), so the lift's attendant knows whether the car goes up or down
+# (celadon_department_store_elevator.txt), whichever way the player went between its rides.
+
+
+script OnEnter
+  setvar VAR_JOHTO_CELADON_STORE_FLOOR 1
+  end

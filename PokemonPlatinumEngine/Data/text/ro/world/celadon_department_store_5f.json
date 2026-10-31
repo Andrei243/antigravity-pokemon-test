@@ -1,0 +1,104 @@
+{
+  "people": {
+    "t07r0105_shopm1_2": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the Drugstore! Our vitamins make Pokémon stronger."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t07r0105_shopm1_2_2": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome! Our items give a Pokémon an edge in battle."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t07r0105_gsgentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Vitamins are dear, but they last. Battle items are cheap, but gone when the battle is."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t07r0105_seaman_2": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My ship docks in Vermilion. Whenever we're in port I come up here for Carbos. Fast Pokémon win at sea!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t07r0105_gswoman1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I give my Pokémon an Iron every birthday. It's become a family tradition."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T07R0105_005+1": {
+      "en": [
+        "5F: Drugstore\nVitamins and battle items."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

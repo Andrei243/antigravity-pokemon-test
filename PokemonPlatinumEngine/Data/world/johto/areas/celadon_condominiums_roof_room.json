@@ -1,0 +1,25 @@
+{
+  "key": "celadon_condominiums_roof_room",
+  "index": 380,
+  "name": "Celadon City",
+  "matrix": 225,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_C_TAMAMUSHI",
+  "nightMusic": "GS_C_TAMAMUSHI",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 11, "to": "celadon_condominiums_roof", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "t07r0205_sunglasses", "looks": "sunglasses", "movement": "15", "x": 6, "z": 6, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T07R0205_000+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

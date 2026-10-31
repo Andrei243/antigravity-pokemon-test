@@ -1,17 +1,13 @@
 {
   // Celadon City as HeartGold has it three years on (plan 20 · J15, part d): a town of Johto's own map, come to by
   // Route 7 from Saffron City. Its Gym gives Kanto's Rainbow Badge (celadon_gym.txt). The Game Corner and its prize
-  // corner (warps 3 and 4) stay shut; Route 16 west shares its key with FireRed's Kanto and waits. Erika and the Leader
+  // corner (warps 3 and 4) are open since plan 20 · J15, part k, with no machines to play. Erika and the Leader
   // beside her in the street are the phone's post-game meeting (HeartGold's FLAG_UNK_25D and FLAG_UNK_2E1), and Cameron
   // the photographer waits for his session: all three are held back
   "area": "celadon",
   "bgmTrack": "kanto/celadon",
   "trees": "Round",
   "architecture": "Jade",
-  "locked": [
-    3,
-    4
-  ],
   "heldBack": [ "t07_gsleader12", "t07_gsleader6", "t07_gsmiddleman1" ],
   "people": {
     "t07_gsbigman": {
@@ -49,7 +45,7 @@
     "t07_gswoman1": {
       "name": "Woman",
       "dialog": [
-        "The Game Corner is closed for refitting. My husband is quite lost without it."
+        "The Game Corner's tables are switched off while they change them over. My husband is quite lost without them."
       ]
     },
     "t07_gsboy2": {
@@ -74,8 +70,8 @@
   },
   "signs": {
     "T07_009+1": "Celadon City\nWhere the flowers bloom in every colour.",
-    "T07_013+1": "Celadon Game Corner\nClosed for refitting.",
-    "T07_014+1": "Celadon Prize Corner\nClosed for refitting.",
+    "T07_013+1": "Celadon Game Corner\nThe playground for grown-ups.",
+    "T07_014+1": "Celadon Prize Corner\nCoins exchanged for prizes.",
     "T07_012+1": "Celadon Condominiums",
     "T07_010+1": "Celadon City Pokémon Gym\nLeader: Erika\nThe gardener of Grass Pokémon.",
     "T07_011+1": "Celadon Department Store\nFind what you need here!"

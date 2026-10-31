@@ -1,0 +1,14 @@
+# The Celadon Department Store's fourth floor in HeartGold's Kanto (plan 20 · J15, part k). docs/scripts.md describes
+# the language. Its counter sells gifts and mail (marts.json's celadon_4f, a list of ours).
+
+
+script OnEnter
+  setvar VAR_JOHTO_CELADON_STORE_FLOOR 4
+  end
+
+
+script Clerk
+  sayown
+  shop "celadon_4f"
+  say "Thank you! Do come again."
+  end

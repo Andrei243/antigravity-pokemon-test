@@ -1,0 +1,22 @@
+# The Celadon Department Store's second floor in HeartGold's Kanto (plan 20 · J15, part k). docs/scripts.md describes
+# the language. Its two counters sell medicine and Poké Balls, the lists of Goldenrod's second floor (marts.json's
+# goldenrod_2f_medicine and goldenrod_2f_balls): HeartGold's own lists are not in the pinned folders.
+
+
+script OnEnter
+  setvar VAR_JOHTO_CELADON_STORE_FLOOR 2
+  end
+
+
+script MedicineClerk
+  sayown
+  shop "goldenrod_2f_medicine"
+  say "Thank you! Do come again."
+  end
+
+
+script BallClerk
+  sayown
+  shop "goldenrod_2f_balls"
+  say "Thank you! Do come again."
+  end

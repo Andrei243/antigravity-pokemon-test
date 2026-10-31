@@ -1,0 +1,22 @@
+# The Celadon Department Store's fifth floor in HeartGold's Kanto (plan 20 · J15, part k). docs/scripts.md describes
+# the language. Its two counters sell the vitamins and the battle items, the lists of Goldenrod's fourth and third
+# floors (marts.json's goldenrod_4f and goldenrod_3f).
+
+
+script OnEnter
+  setvar VAR_JOHTO_CELADON_STORE_FLOOR 5
+  end
+
+
+script VitaminClerk
+  sayown
+  shop "goldenrod_4f"
+  say "Thank you! Do come again."
+  end
+
+
+script BattleClerk
+  sayown
+  shop "goldenrod_3f"
+  say "Thank you! Do come again."
+  end

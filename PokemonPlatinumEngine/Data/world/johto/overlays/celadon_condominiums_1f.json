@@ -1,18 +1,15 @@
 {
   // The Celadon Condominiums' ground floor (plan 20 · J15, part d), the landlady and her Pokémon. The stairs (warp 1)
-  // and the lift (warp 2) to the floors above and the roof stay shut
+  // lead to the second floor and the lift (warp 2, the left-hand one) to the third floor and the roof since plan 20 ·
+  // J15, part k (scripts/celadon_condominiums_left_elevator.txt)
   "area": "celadon_condominiums_1f",
   "bgmTrack": "kanto/celadon",
-  "locked": [
-    1,
-    2
-  ],
   "people": {
     "t07r0201_gsoldwoman1": {
       "name": "Landlady",
       "still": true,
       "dialog": [
-        "I own this building, dear. The tenants upstairs are out, so I can't let you up today. Do mind the Meowth."
+        "I own this building, dear. Game makers work upstairs, so do knock quietly. And mind the Meowth."
       ]
     },
     "t07r0201_tsure_poke_static_meowth": {
@@ -36,6 +33,6 @@
     }
   },
   "signs": {
-    "T07R0201_004+1": "Celadon Condominiums\nResidents only above the ground floor."
+    "T07R0201_004+1": "Celadon Condominiums\nPlease be quiet: people are working upstairs."
   }
 }

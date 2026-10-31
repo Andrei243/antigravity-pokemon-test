@@ -1,0 +1,34 @@
+{
+  // The Celadon Department Store's second floor (plan 20 · J15, part k), its two counters medicine and Poké Balls
+  // (scripts/celadon_department_store_2f.txt). Cameron the photographer and Crasher Wake, who visits from Sinnoh on a day
+  // of HeartGold's own (FLAG_HIDE_CELADON_DEPT_STORE_2F_CRASHER_WAKE), are held back
+  "area": "celadon_department_store_2f",
+  "bgmTrack": "kanto/celadon",
+  "heldBack": [ "t07r0102_gsmiddleman1_2", "t07r0102_leader3" ],
+  "people": {
+    "t07r0102_shopm1_2": {
+      "name": "Clerk",
+      "script": "MedicineClerk",
+      "still": true,
+      "dialog": [ "Welcome! How can I help you?" ]
+    },
+    "t07r0102_shopm1_2_2": {
+      "name": "Clerk",
+      "script": "BallClerk",
+      "still": true,
+      "dialog": [ "Welcome! How can I help you?" ]
+    },
+    "t07r0102_gsmiddleman1": {
+      "name": "Man",
+      "still": true,
+      "dialog": [ "I stock up on Revives before every long trip. You never know what's waiting in a cave." ]
+    },
+    "t07r0102_gsboy1": {
+      "name": "Boy",
+      "dialog": [ "My big brother says Ultra Balls are the best. I'm saving up for one!" ]
+    }
+  },
+  "signs": {
+    "T07R0102_004+1": "2F: Trainer's Market\nMedicine and Poké Balls."
+  }
+}

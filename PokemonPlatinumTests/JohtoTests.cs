@@ -72,6 +72,11 @@ public class JohtoTests
         // Plan 20 · J15, part j: Routes 9 and 10 with Route 10's Pokémon Center and the Power Plant, and Rock Tunnel
         "johto_route_9", "johto_route_10", "route_10_pokecenter_1f", "route_10_pokecenter_b1f", "route_10_power_plant_repaired",
         "johto_rock_tunnel_1f", "johto_rock_tunnel_b1f", "route_10_south",
+        // Plan 20 · J15, part k: Celadon City's Department Store to its roof, the Condominiums to their roof room, the Game Corner and the Prize Corner
+        "celadon_department_store_2f", "celadon_department_store_3f", "celadon_department_store_4f", "celadon_department_store_5f",
+        "celadon_department_store_roof", "celadon_department_store_elevator", "celadon_condominiums_2f", "celadon_condominiums_3f",
+        "celadon_condominiums_roof", "celadon_condominiums_roof_room", "celadon_condominiums_left_elevator",
+        "celadon_condominiums_right_elevator", "celadon_game_corner", "celadon_prize_corner",
     };
 
     [Fact]
@@ -792,16 +797,15 @@ public class JohtoTests
         }
         Assert.Equal("celadon", HgWorld.KeyOf("MAP_CELADON"));
         Assert.Equal("lavender", HgWorld.KeyOf("MAP_LAVENDER"));
-        // What waits stays shut: Silph Co., the Game Corner and its prize corner, the store's and the condominiums'
-        // floors above, and the Radio Tower (the north gate to Route 5 is open since part e)
+        // What waits stays shut: Silph Co. and the Radio Tower (the north gate to Route 5 is open since part e; the Game
+        // Corner, its prize corner and the store's and the condominiums' floors above since part k)
         var saffron = Johto.Area("saffron")!;
         foreach (int shut in new[] { 8 }) Assert.Empty(Overworld.WarpsAt(saffron.Warps[shut].X, saffron.Warps[shut].Z));
         foreach (int open in new[] { 2, 4, 15 }) Assert.NotEmpty(Overworld.WarpsAt(saffron.Warps[open].X, saffron.Warps[open].Z));
         var celadon = Johto.Area("celadon")!;
-        foreach (int shut in new[] { 3, 4 }) Assert.Empty(Overworld.WarpsAt(celadon.Warps[shut].X, celadon.Warps[shut].Z));
+        foreach (int open in new[] { 3, 4 }) Assert.NotEmpty(Overworld.WarpsAt(celadon.Warps[open].X, celadon.Warps[open].Z));
         var lavender = Johto.Area("lavender")!;
         Assert.Empty(Overworld.WarpsAt(lavender.Warps[6].X, lavender.Warps[6].Z));
-        Assert.DoesNotContain(walked.Keys, m => m.Name.StartsWith("Celadon_DeptStore_", StringComparison.Ordinal) && m.Name != "Celadon_DeptStore_1F");
         // Erika stands at the top of her garden, reached through its trees
         var gym = walked.Single(kv => kv.Key.Name == "Celadon_Gym");
         var erika = gym.Key.Everyone.Single(n => n.Key == "t07gym0101_gsleader12");
@@ -1043,6 +1047,35 @@ public class JohtoTests
         // Lt. Surge and Zapdos before the plant wait for their sessions
         Assert.DoesNotContain(Overworld.Everyone, n => n.Key is "r10_gsleader9" or "r10_tsure_poke_static_zapdos");
         Assert.Equal(InteriorStyle.PokemonCenter, MapNamed("Route10North_PokemonCenter_1F").Interior);
+    }
+
+    [Fact]
+    public void CeladonsStoreCondominiumsAndGameCornerAreWalkedTo()
+    {
+        // Plan 20 · J15, part k: the Department Store's floors to its roof by the stairs and the lift, the Condominiums'
+        // floors and roof room by their stairs and two lifts, and the Game Corner and the Prize Corner off the street
+        var walked = Walked.Value;
+        foreach (string name in new[]
+                 {
+                     "Celadon_DeptStore_2F", "Celadon_DeptStore_3F", "Celadon_DeptStore_4F", "Celadon_DeptStore_5F",
+                     "Celadon_DeptStore_Roof", "Celadon_DeptStore_Elevator", "Celadon_Condominiums_2F", "Celadon_Condominiums_3F",
+                     "Celadon_Condominiums_Roof", "Celadon_Condominiums_RoofRoom", "Celadon_Condominiums_LeftElevator",
+                     "Celadon_Condominiums_RightElevator", "Celadon_GameCorner", "Celadon_PrizeCorner",
+                 })
+        {
+            Assert.True(walked.Keys.Any(m => m.Name == name), $"nobody walks into {name}");
+            Assert.Equal(RegionDatabase.Johto, RegionDatabase.RegionOfMap(name)!.Id);
+        }
+        // None of the keys meets FireRed's (its are celadon_city_…), so none takes Johto's prefix
+        foreach (string key in new[] { "celadon_department_store_2f", "celadon_department_store_elevator", "celadon_game_corner" })
+        {
+            Assert.False(HgWorld.Clashes(key));
+            Assert.Equal(key, HgWorld.KeyOf("MAP_" + key.ToUpperInvariant()));
+        }
+        // The Leaders' meetings, Cameron, Crasher Wake and the third floor's two objects off its floor are held back
+        Assert.DoesNotContain(MapNamed("Celadon_DeptStore_4F").Everyone, n => n.Key is "t07r0104_gsleader1" or "t07r0104_gsleader13");
+        Assert.DoesNotContain(MapNamed("Celadon_DeptStore_2F").Everyone, n => n.Key is "t07r0102_leader3" or "t07r0102_gsmiddleman1_2");
+        Assert.DoesNotContain(MapNamed("Celadon_Condominiums_3F").Everyone, n => n.Key is "t07r0203_var_1" or "t07r0203_tsure_poke_static_marill");
     }
 
     [Fact]

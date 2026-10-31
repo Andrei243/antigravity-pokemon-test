@@ -1,0 +1,58 @@
+{
+  "people": {
+    "t07sp0101_suit": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the Celadon Game Corner! The tables are being changed over to a new game, I'm afraid."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t07sp0101_sunglasses": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This place was a hideout for Team Rocket once, if you can believe it. Now it's just quiet."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T07SP0101_000+1": {
+      "en": [
+        "A game table. Its screen is dark and a cloth has been laid over it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T07SP0101_002+1": {
+      "en": [
+        "A game table, switched off for now."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

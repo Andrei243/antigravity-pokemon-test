@@ -1,0 +1,10 @@
+{
+  // The Celadon Condominiums' right-hand lift (plan 20 · J15, part k): HeartGold's car, our words. Whoever comes in
+  // chooses a floor at its panel (scripts/celadon_condominiums_right_elevator.txt); its door, HeartGold's way back to
+  // wherever the player came from, leads to the second floor here
+  "area": "celadon_condominiums_right_elevator",
+  "bgmTrack": "kanto/celadon",
+  "doors": [
+    { "warp": 0, "map": "Celadon_Condominiums_2F", "x": 7, "y": 3, "facing": "Down" }
+  ]
+}

@@ -1069,6 +1069,44 @@ public class JohtoStoryTests
     }
 
     [Fact]
+    public void CeladonsLiftsGoUpOrDownFromTheFloorThePlayerCameFrom()
+    {
+        // Plan 20 · J15, part k: each floor says so as it is come to, so a lift goes the right way whichever way the
+        // player went between its rides (the stairs among them)
+        var game = new Game();
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Machamp")!, 50));
+        game.Arrive("Celadon_DeptStore_5F", 11, 9);
+        Assert.Equal(5, game.Story.Var("VAR_JOHTO_CELADON_STORE_FLOOR"));
+        game.Arrive("Celadon_DeptStore_Elevator", 2, 6);
+        game.Answers.Enqueue(4);
+        game.Answers.Enqueue(1);
+        var down = game.Talk("t07r0107_gswoman6");
+        Assert.Contains(down.Log, l => l.StartsWith("anim elevator down"));
+        Assert.Equal("Celadon_DeptStore_1F", game.Map.Name);
+        Assert.Equal(1, game.Story.Var("VAR_JOHTO_CELADON_STORE_FLOOR"));
+        game.Arrive("Celadon_DeptStore_Elevator", 2, 6);
+        game.Answers.Enqueue(0);
+        var up = game.Talk("t07r0107_gswoman6");
+        Assert.Contains(up.Log, l => l.StartsWith("anim elevator up"));
+        Assert.Equal("Celadon_DeptStore_Roof", game.Map.Name);
+
+        // The Condominiums' left-hand lift from the ground floor to the third floor, the right-hand one from the roof
+        // to the second floor: no attendant, a panel that asks as the car is come into
+        game.Arrive("Celadon_Condominiums_1F", 3, 3);
+        game.Answers.Enqueue(1);
+        game.Arrive("Celadon_Condominiums_LeftElevator", 3, 5);
+        Assert.Equal("Celadon_Condominiums_3F", game.Map.Name);
+        Assert.Equal(3, game.Story.Var("VAR_JOHTO_CELADON_CONDO_FLOOR"));
+        game.Answers.Enqueue(0);
+        game.Arrive("Celadon_Condominiums_LeftElevator", 3, 5);
+        Assert.Equal("Celadon_Condominiums_Roof", game.Map.Name);
+        game.Answers.Enqueue(1);
+        game.Arrive("Celadon_Condominiums_RightElevator", 3, 5);
+        Assert.Equal("Celadon_Condominiums_2F", game.Map.Name);
+        Assert.Equal(2, game.Story.Var("VAR_JOHTO_CELADON_CONDO_FLOOR"));
+    }
+
+    [Fact]
     public void TheMoomooFarmsMiltankIsFedSevenOranBerriesAndItsMilkIsSoldAfterwards()
     {
         var game = new Game();
