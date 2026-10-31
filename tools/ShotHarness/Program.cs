@@ -213,6 +213,7 @@ if (mode == "venues") h.VenuesMode();
 if (mode == "layers") h.LayersMode();
 if (mode == "soak") h.SoakMode();
 if (mode == "levelling") h.LevellingMode();
+if (mode == "photo") h.PhotoMode();
 
 h.Close();
 Raylib.CloseWindow();

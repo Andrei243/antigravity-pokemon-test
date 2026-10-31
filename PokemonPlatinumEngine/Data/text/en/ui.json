@@ -2255,7 +2255,7 @@
     "action": {
       "Up": "Up", "Down": "Down", "Left": "Left", "Right": "Right", "Confirm": "Confirm, talk, read", "Cancel": "Back", "Menu": "Menu",
       "Run": "Run (held)", "Item": "Registered item", "Poketch": "Pokétch out or away", "PoketchApp": "Next Pokétch app",
-      "PoketchTouch": "Touch the Pokétch", "PageLeft": "Page back", "PageRight": "Page on", "Fullscreen": "Full screen", "Mute": "Sound on or off", "Screenshot": "Take a screenshot", "Report": "Write a report to replay"
+      "PoketchTouch": "Touch the Pokétch", "PageLeft": "Page back", "PageRight": "Page on", "Fullscreen": "Full screen", "Mute": "Sound on or off", "Screenshot": "Take a screenshot", "Report": "Write a report to replay", "Photo": "Photo mode"
     },
     "page": {
       "title": "CONTROLS",
@@ -4337,6 +4337,20 @@
     "continue": {
       "label": "CONTINUE",
       "help": "Keeps these choices and goes on to the title screen. This page won't be shown again."
+    }
+  },
+  "photo": {
+    "title": "PHOTO",
+    "row": { "Zoom": "Zoom", "Time": "Time", "Weather": "Weather", "Filter": "Filter", "Frame": "Frame" },
+    "zoom": "×{zoom}",
+    "time": { "now": "Now", "Morning": "Morning", "Day": "Day", "Twilight": "Evening", "Night": "Night", "LateNight": "Late night" },
+    "weather": { "Now": "As it is", "Clear": "Clear", "Rain": "Rain", "Snow": "Snow", "Fog": "Fog" },
+    "notHere": "Not here",
+    "filter": { "None": "None", "Vivid": "Vivid", "Mono": "Black and white", "Sepia": "Sepia", "Soft": "Soft" },
+    "frame": { "None": "None", "Mat": "Mat", "Cinema": "Cinema" },
+    "hint": {
+      "compose": "{key:confirm} Take   {key:menu} Settings   {out} {in} Zoom   {key:item} Hide   {key:cancel} Leave",
+      "panel": "{key:confirm} Take   {key:menu} Close   {key:item} Hide   {key:cancel} Back"
     }
   }
 }
