@@ -421,6 +421,21 @@ public static partial class WorldModels
         Ground("hnda_sl", "a flight of steps by Cerulean City's river: its tiles draw it"),
         House("misaki_h01", Architecture.Riverside, "the Sea Cottage on Route 25's cape, where Bill lived"),
         Door("msk_dr01"),
+
+        // ---------------------------------------------------------------- plan 20 · J15, part f: Pewter City (nbc_, nibi_: the
+        // original's Nibi), built as plan 19 · K3 builds FireRed's, and the Pewter Museum of Science's pieces
+        House("nbc_h01", Architecture.Granite, "a house of Pewter City"),
+        Built("nbc_msem", BuildingKind.Museum, "the Pewter Museum of Science", Architecture.Granite, storeys: 2, sign: "MUSEUM"),
+        Built("nbc_gym", BuildingKind.Gym, "the Pewter Gym"),
+        Door("nbc_dr1"),
+        Ground("nibi_sl", "a flight of steps between Pewter City's levels: its tiles draw it"),
+        Furniture("shelf_muse01", PropType.Bookshelf, "a case of the Pewter Museum of Science"),
+        Furniture("table02_3", PropType.Table, "a table"),
+        // Viridian City (to_: the original's Tokiwa), built as plan 19 · K3 builds FireRed's
+        House("to_h02", Architecture.Evergreen, "a house of Viridian City"),
+        Built("to_trainer", BuildingKind.Hall, "Viridian City's Trainer House", Architecture.Evergreen, sign: "TRAINERS"),
+        Built("to_gym", BuildingKind.Gym, "the Viridian Gym (locked)"),
+        Furniture("table03_3", PropType.Table, "a long table"),
     };
 
     private static readonly Dictionary<string, WorldModel> JohtoByName = JohtoTable.ToDictionary(m => m.Name, StringComparer.Ordinal);

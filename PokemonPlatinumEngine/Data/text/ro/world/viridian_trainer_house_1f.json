@@ -1,0 +1,130 @@
+{
+  "people": {
+    "t02r0301_gswoman6": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the Trainer House. The hall downstairs is closed for the moment, I'm afraid."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t02r0301_gsman3": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Trainers from all over write their names on the board. I'd like to see mine up there one day."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t02r0301_gsboy1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The best trainer here beat everyone in a single afternoon. I watched every battle."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t02r0301_gsgentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A good trainer learns as much from a loss as from a win. More, usually."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t02r0301_gswoman3": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My husband comes here every day. I come to make sure he eats lunch."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t02r0301_babyboy1_2": {
+      "name": {
+        "en": [
+          "Little boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "When I grow up I'm going to battle downstairs!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T02R0301_005+1": {
+      "en": [
+        "The Trainer House's rules:\nOne battle a day for each visitor."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T02R0301_006+1": {
+      "en": [
+        "Today's challenger:\nNobody yet."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

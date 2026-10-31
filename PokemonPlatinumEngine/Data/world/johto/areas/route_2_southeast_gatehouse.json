@@ -1,0 +1,27 @@
+{
+  "key": "route_2_southeast_gatehouse",
+  "index": 418,
+  "name": "Route 2",
+  "matrix": 69,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_R_16_03",
+  "nightMusic": "GS_R_16_03",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 2, "to": "route_2_east", "toWarp": 2 },
+    { "x": 5, "z": 12, "to": "johto_route_2", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "r02r0301_assistantm", "looks": "assistantm", "movement": "16", "x": 6, "z": 7, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "R02R0301_000+1" },
+    { "id": "r02r0301_counterm", "looks": "counterm", "movement": "17", "x": 1, "z": 8, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "R02R0301_001+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

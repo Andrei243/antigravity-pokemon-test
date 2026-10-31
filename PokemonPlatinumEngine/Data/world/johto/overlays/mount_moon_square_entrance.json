@@ -1,0 +1,11 @@
+{
+  // The stairs up through Mt. Moon to its square (plan 20 · J15, part f). The two ways to the square on the night the
+  // Clefairy dance (warps 4 and 5, HeartGold's Monday-night scene) stay shut
+  "area": "mount_moon_square_entrance",
+  "bgmTrack": "kanto/mt_moon",
+  "locked": [
+    4,
+    5
+  ],
+  "people": {}
+}

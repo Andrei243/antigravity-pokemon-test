@@ -1,0 +1,23 @@
+{
+  "people": {
+    "t03r0601_gsoldman1": {
+      "name": {
+        "en": [
+          "Old man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pewter's stone keeps the house cool in summer and warm in winter. Nothing beats it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

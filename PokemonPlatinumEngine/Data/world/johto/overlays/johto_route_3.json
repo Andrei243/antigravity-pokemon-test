@@ -1,0 +1,94 @@
+{
+  // Route 3 as HeartGold has it three years on (plan 20 · J15, part f): the rocky road east of Pewter City to Mt. Moon's
+  // western mouth and the Pokémon Center beside it. Its key meets FireRed's, so it takes Johto's prefix
+  // (HgWorld.Clashes). Its trainers battle by their own records; the Double Team is one trainer on two tiles
+  "area": "johto_route_3",
+  "bgmTrack": "kanto/route3",
+  "people": {
+    "r03_gsboy2": {
+      "name": "Warren",
+      "trainer": {
+        "dialogueBefore": "Youngster Warren: I've been training on this road every day. Let's see if it shows!",
+        "dialogueAfter": "Youngster Warren: I'll train every night too, then."
+      }
+    },
+    "r03_fire": {
+      "name": "Otis",
+      "trainer": {
+        "dialogueBefore": "Firebreather Otis: Hot enough for you? It's about to get hotter!",
+        "dialogueAfter": "Firebreather Otis: Doused. Completely doused."
+      }
+    },
+    "r03_gsboy2_2": {
+      "name": "Jimmy",
+      "trainer": {
+        "dialogueBefore": "Youngster Jimmy: Shorts are the best for running about. And for battling!",
+        "dialogueAfter": "Youngster Jimmy: Maybe I should have worn long trousers."
+      }
+    },
+    "r03_gsman3": {
+      "name": "Zac",
+      "trainer": {
+        "dialogueBefore": "Double Team Zac: We do everything together. Battles included!",
+        "dialogueAfter": "Double Team Zac: We lost together, too."
+      }
+    },
+    "r03_gswoman3": {
+      "name": "Jen",
+      "trainer": {
+        "dialogueBefore": "Double Team Jen: Two of us, one of you. That hardly seems fair. For you!",
+        "dialogueAfter": "Double Team Jen: Fair or not, you won.",
+        "id": "johto_double_team_zac_and_jen"
+      }
+    },
+    "r03_fire_2": {
+      "name": "Burt",
+      "trainer": {
+        "dialogueBefore": "Firebreather Burt: My breath is fiery and so are my Pokémon!",
+        "dialogueAfter": "Firebreather Burt: I think I burned my tongue."
+      }
+    },
+    "r03_mount_2": {
+      "name": "Bruce",
+      "trainer": {
+        "dialogueBefore": "Hiker Bruce: These rocks are my training ground. I'm as tough as they are!",
+        "dialogueAfter": "Hiker Bruce: Cracked like a pebble."
+      }
+    },
+    "r03_gsfighter": {
+      "name": "Manford",
+      "trainer": {
+        "dialogueBefore": "Black Belt Manford: Hah! I train by punching boulders. Your Pokémon are next!",
+        "dialogueAfter": "Black Belt Manford: I'd rather go back to the boulders."
+      }
+    },
+    "r03_gsfighter_2": {
+      "name": "Ander",
+      "trainer": {
+        "dialogueBefore": "Black Belt Ander: A true fighter never turns down a challenge. Come on!",
+        "dialogueAfter": "Black Belt Ander: I accept defeat, like a true fighter."
+      }
+    },
+    "r03_mount_2_2": {
+      "name": "Dwight",
+      "trainer": {
+        "dialogueBefore": "Hiker Dwight: I've climbed Mt. Moon a hundred times. One battle won't tire me!",
+        "dialogueAfter": "Hiker Dwight: Well, that one did."
+      }
+    },
+    "r03_gsboy2_3": {
+      "name": "Regis",
+      "trainer": {
+        "dialogueBefore": "Youngster Regis: I'm heading to Mt. Moon to see the Clefairy. You're in my way!",
+        "dialogueAfter": "Youngster Regis: Fine, I'll go round you."
+      }
+    }
+  },
+  "signs": {
+    "R03_000+1": "Route 3\nMt. Moon ahead.",
+    "R03_001+1": "Route 3\nPewter City is to the west.",
+    "R03_002+1": "Mind the rocks on the road ahead.",
+    "R03_003+1": "Route 3\nPewter City is to the west.",
+    "R03_004+1": "Mind the rocks on the road ahead."
+  }
+}

@@ -1,0 +1,51 @@
+{
+  // Viridian City's Pokémon Center (plan 20 · J15, part f), the Centers' floor with the town's people. The counters for
+  // the link say it is closed, as in every Center (decision 06 · 7)
+  "area": "viridian_pokecenter_1f",
+  "bgmTrack": "kanto/viridian",
+  "read": {
+    "0": "PC"
+  },
+  "people": {
+    "t02pc0101_pcwoman1": {
+      "name": "Nurse",
+      "script": "Nurse"
+    },
+    "t02pc0101_pcwoman2": {
+      "name": "Receptionist",
+      "dialog": [
+        "Your Trainer Card shows your name, your money and the Pokémon you've seen. Have a look at it from the menu."
+      ]
+    },
+    "t02pc0101_pcwoman2_2": {
+      "name": "Receptionist",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    },
+    "t02pc0101_pcwoman2_3": {
+      "name": "Receptionist",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    },
+    "t02pc0101_gsbabyboy1": {
+      "name": "Boy",
+      "dialog": [
+        "My big brother says the Gym Leader here was the strongest in Kanto. Then he just left."
+      ]
+    },
+    "t02pc0101_gswoman3": {
+      "name": "Woman",
+      "dialog": [
+        "Trainers coming down from the League always look so tired. And so pleased with themselves."
+      ]
+    },
+    "t02pc0101_gsman3": {
+      "name": "Man",
+      "dialog": [
+        "If you're heading for Pewter, the forest is the quick way. Bring something for the bugs."
+      ]
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  // A house in the south-west of Pewter City (plan 20 · J15, part f)
+  "area": "pewter_southwest_house",
+  "bgmTrack": "kanto/viridian",
+  "people": {
+    "t03r0601_gsoldman1": {
+      "name": "Old man",
+      "still": true,
+      "dialog": [
+        "Pewter's stone keeps the house cool in summer and warm in winter. Nothing beats it."
+      ]
+    }
+  }
+}

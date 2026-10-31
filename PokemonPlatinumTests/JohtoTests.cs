@@ -47,6 +47,15 @@ public class JohtoTests
         "route_5_saffron_gatehouse", "johto_route_5", "route_5_house", "cerulean", "cerulean_pokecenter_1f",
         "cerulean_pokecenter_b1f", "cerulean_pokemart", "cerulean_north_house", "cerulean_east_house", "cerulean_west_house",
         "cerulean_bike_maniac_house", "johto_route_24", "johto_route_25", "johto_route_25_sea_cottage",
+        // Plan 20 · J15, part f: Route 4, Mt. Moon with its square and shop, Route 3 with its Pokémon Center, and Pewter
+        // City with its rooms (Pewter's Gym plays Johto's Gym theme)
+        "johto_route_4", "mount_moon", "mount_moon_square_entrance", "mount_moon_square", "mount_moon_square_shop",
+        "johto_route_3", "route_3_pokecenter_1f", "route_3_pokecenter_b1f", "pewter", "pewter_museum_of_science",
+        "pewter_northeast_house", "pewter_pokemart", "pewter_pokecenter_1f", "pewter_pokecenter_b1f", "pewter_southwest_house",
+        // and Viridian City with its rooms, Route 2 with its gates and house, and Viridian Forest
+        "viridian", "viridian_pokecenter_1f", "viridian_pokecenter_b1f", "viridian_pokemart", "viridian_northeast_house",
+        "viridian_trainer_house_1f", "johto_route_2", "route_2_east", "route_2_viridian_forest_south_gatehouse",
+        "route_2_viridian_forest_north_gatehouse", "route_2_southeast_gatehouse", "johto_route_2_house", "johto_viridian_forest",
     };
 
     [Fact]
@@ -228,6 +237,11 @@ public class JohtoTests
         // no way past the tree before the Hall of Fame
         var station = maps["Goldenrod_MagnetTrainStation"];
         station.NPCs.Remove(station.NPCs.Single(n => n.Key == "t25r0501_policeman"));
+        // nor is the League gate's door to Kanto's Route 22, whose guard turns back all but a Champion: since part f
+        // Viridian City lies beyond it, and Kanto's roads lead round to the S.S. Aqua and Olivine City
+        var gate = maps["Route22_LeagueReceptionGate"];
+        foreach (var door in gate.Warps.Where(w => w.TargetMap == "Johto" && Overworld.AreaAt(w.TargetX, w.TargetY)?.Key == "johto_route_22").ToList())
+            gate.Warps.Remove(door);
         var outside = WorldWalk.From(Named, RegionDatabase.Get(RegionDatabase.Johto)!.Start!).Single(kv => kv.Key.Name == "Johto").Value;
         Assert.Contains(outside, t => Overworld.AreaAt(t.X, t.Y)?.Key == "national_park" || Overworld.AreaAt(t.X, t.Y)?.Key == "route_36");
         Assert.DoesNotContain(outside, t => Overworld.AreaAt(t.X, t.Y)?.Key is "route_37" or "ecruteak");
@@ -791,6 +805,56 @@ public class JohtoTests
         // Misty's date on the cape, reached along Route 25
         var cape = Overworld.Everyone.Single(n => n.Key == "r25_gsleader11");
         Assert.Contains(outside, t => Math.Abs(t.X - cape.GridX) + Math.Abs(t.Y - cape.GridY) == 1);
+    }
+
+    [Fact]
+    public void ViridianPewterAndMtMoonAreWalkedToFromRouteTwentyTwoAndBrockIsReachedAtTheHeadOfHisGym()
+    {
+        // Plan 20 · J15, part f: Route 22's east end to Viridian City, Route 2 north through Viridian Forest (or its
+        // eastern way) to Pewter City, Route 3 east to Mt. Moon, and through it to Route 4, whose ledges lead down to
+        // Cerulean City and not back
+        var walked = Walked.Value;
+        var outside = walked.Single(kv => kv.Key.Name == "Johto").Value;
+        foreach (string key in new[] { "viridian", "johto_route_2", "route_2_east", "pewter", "johto_route_3", "johto_route_4" })
+            Assert.True(outside.Any(t => Overworld.AreaAt(t.X, t.Y)?.Key == key), $"{key} can't be walked to from the start");
+        foreach (string name in new[] { "MountMoon", "MountMoon_SquareEntrance", "MountMoon_Square", "MountMoon_SquareShop",
+                     "Route3_PokemonCenter_1F", "Route3_PokemonCenter_B1F", "Pewter_Museum", "Pewter_NortheastHouse", "Pewter_Gym",
+                     "Pewter_Mart", "Pewter_PokemonCenter_1F", "Pewter_PokemonCenter_B1F", "Pewter_SouthwestHouse",
+                     "Viridian_PokemonCenter_1F", "Viridian_PokemonCenter_B1F", "Viridian_Mart", "Viridian_NortheastHouse",
+                     "Viridian_TrainerHouse_1F", "Route2_ForestSouthGate", "Route2_ForestNorthGate", "Route2_SoutheastGate",
+                     "Route2_RoadHouse", "Viridian_Forest" })
+        {
+            Assert.True(walked.Keys.Any(m => m.Name == name), $"nobody walks into {name}");
+            Assert.Equal(RegionDatabase.Johto, RegionDatabase.RegionOfMap(name)!.Id);
+        }
+        // The roads' keys and the forest's meet FireRed's, so they take Johto's prefix; the towns' and the cave's don't
+        foreach (string key in new[] { "route_2", "route_2_house", "viridian_forest", "route_3", "route_4" })
+        {
+            Assert.True(HgWorld.Clashes(key));
+            Assert.Equal("johto_" + key, HgWorld.KeyOf("MAP_" + key.ToUpperInvariant()));
+        }
+        Assert.Equal("pewter", HgWorld.KeyOf("MAP_PEWTER"));
+        Assert.Equal("viridian", HgWorld.KeyOf("MAP_VIRIDIAN"));
+        Assert.Equal("mount_moon", HgWorld.KeyOf("MAP_MOUNT_MOON"));
+        // What waits stays shut: the Clefairy's night on the square, Viridian's Gym and its gate to Route 1, the Trainer
+        // House's hall and Diglett's Cave
+        Assert.DoesNotContain(walked.Keys, m => m.Name.Contains("Clefairy", StringComparison.Ordinal));
+        var viridian = Johto.Area("viridian")!;
+        foreach (int warp in new[] { 0, 5 })
+            Assert.Empty(Overworld.WarpsAt(viridian.Warps[warp].X, viridian.Warps[warp].Z));
+        var east = Johto.Area("route_2_east")!;
+        Assert.Empty(Overworld.WarpsAt(east.Warps[4].X, east.Warps[4].Z));
+        Assert.DoesNotContain(walked.Keys, m => m.Name == "Viridian_Gym" || m.Name.StartsWith("Diglett", StringComparison.Ordinal));
+        // Brock stands at the head of his Gym, reached across its floor
+        var gym = walked.Single(kv => kv.Key.Name == "Pewter_Gym");
+        var brock = gym.Key.Everyone.Single(n => n.Key == "t03gym0101_gsleader14");
+        Assert.Contains(gym.Value, t => Math.Abs(t.X - brock.GridX) + Math.Abs(t.Y - brock.GridY) == 1);
+        Assert.NotNull(TrainerDatabase.Get("johto_leader_brock_brock", RegionDatabase.Johto));
+        Assert.Equal(InteriorStyle.PokemonCenter, MapNamed("Pewter_PokemonCenter_1F").Interior);
+        // The red-haired boy's tile in Mt. Moon is reached from the cave's floor
+        var cave = walked.Single(kv => kv.Key.Name == "MountMoon");
+        var rival = cave.Key.Everyone.Single(n => n.Key == "d02r0101_gsrivel");
+        Assert.Contains(cave.Value, t => Math.Abs(t.X - rival.GridX) + Math.Abs(t.Y - rival.GridY) == 1);
     }
 
     [Fact]

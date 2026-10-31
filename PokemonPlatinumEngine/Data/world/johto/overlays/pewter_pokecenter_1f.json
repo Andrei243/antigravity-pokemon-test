@@ -1,0 +1,62 @@
+{
+  // Pewter City's Pokémon Center (plan 20 · J15, part f), the Centers' floor with the town's people. The counters for
+  // the link say it is closed, as in every Center (decision 06 · 7)
+  "area": "pewter_pokecenter_1f",
+  "bgmTrack": "kanto/viridian",
+  "read": {
+    "0": "PC"
+  },
+  "people": {
+    "t03pc0101_pcwoman1": {
+      "name": "Nurse",
+      "script": "Nurse"
+    },
+    "t03pc0101_pcwoman2": {
+      "name": "Receptionist",
+      "dialog": [
+        "Your Trainer Card shows your name, your money and the Pokémon you've seen. Have a look at it from the menu."
+      ]
+    },
+    "t03pc0101_pcwoman2_2": {
+      "name": "Receptionist",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    },
+    "t03pc0101_pcwoman2_3": {
+      "name": "Receptionist",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    },
+    "t03pc0101_gsbabyboy1": {
+      "name": "Boy",
+      "still": true,
+      "dialog": [
+        "My Jigglypuff sings to the people waiting. Nobody stays awake long!"
+      ]
+    },
+    "t03pc0101_tsure_poke_static_jigglypuff": {
+      "name": "Jigglypuff",
+      "npcType": "Pokemon",
+      "species": "Jigglypuff",
+      "still": true,
+      "dialog": [
+        "Jigglypuff hummed a sleepy tune."
+      ]
+    },
+    "t03pc0101_gsmiddleman1": {
+      "name": "Man",
+      "still": true,
+      "dialog": [
+        "I came from Johto to see the museum. The fossils were worth the journey."
+      ]
+    },
+    "t03pc0101_gswoman1": {
+      "name": "Woman",
+      "dialog": [
+        "Brock used to be away so much, breeding Pokémon. It's good to see the Gym lit again."
+      ]
+    }
+  }
+}

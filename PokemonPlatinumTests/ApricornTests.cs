@@ -156,8 +156,8 @@ public class ApricornTests : IDisposable
     {
         var trees = Johto.Value.BuildMaps().SelectMany(m => m.Everyone).Where(n => n.IsApricornTree).ToList();
         Assert.Equal(ApricornData.File.Trees.Count, trees.Count);
-        // Johto's 24, and HeartGold's Kanto's on Route 8 since plan 20 · J15, part d
-        Assert.Equal(25, trees.Count);
+        // Johto's 24, and HeartGold's Kanto's on Route 8 since plan 20 · J15, part d and Pewter City's two and Route 2's since part f
+        Assert.Equal(28, trees.Count);
         Assert.All(trees, t =>
         {
             Assert.Equal(ApricornData.ColourOf(t.ScriptFile!, t.Key!), t.ApricornColour);

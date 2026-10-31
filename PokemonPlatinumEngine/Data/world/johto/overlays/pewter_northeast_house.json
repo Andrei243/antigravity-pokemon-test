@@ -1,0 +1,23 @@
+{
+  // A house in the north-east of Pewter City (plan 20 · J15, part f)
+  "area": "pewter_northeast_house",
+  "bgmTrack": "kanto/viridian",
+  "people": {
+    "t03r0201_gsman1": {
+      "name": "Man",
+      "still": true,
+      "dialog": [
+        "My Nidoran follows me everywhere. It even sits by the door when I go to work."
+      ]
+    },
+    "t03r0201_tsure_poke_static_nidoran_m": {
+      "name": "Nidoran",
+      "npcType": "Pokemon",
+      "species": "Nidoran♂",
+      "still": true,
+      "dialog": [
+        "Nidoran pricked up its ears."
+      ]
+    }
+  }
+}

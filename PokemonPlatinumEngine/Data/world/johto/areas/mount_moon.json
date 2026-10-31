@@ -1,0 +1,60 @@
+{
+  "key": "mount_moon",
+  "index": 107,
+  "name": "Mt. Moon",
+  "matrix": 3,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Building2",
+  "dayMusic": "GS_D_CHIKATSUURO",
+  "nightMusic": "GS_D_CHIKATSUURO",
+  "encounters": "D02R0101",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Zubat", "level": 6 },
+    { "species": "Geodude", "level": 8 },
+    { "species": "Zubat", "level": 6 },
+    { "species": "Geodude", "level": 8 },
+    { "species": "Sandshrew", "level": 8 },
+    { "species": "Sandshrew", "level": 8 },
+    { "species": "Paras", "level": 12 },
+    { "species": "Paras", "level": 12 },
+    { "species": "Sandslash", "level": 10 },
+    { "species": "Clefairy", "level": 8 },
+    { "species": "Sandslash", "level": 10 },
+    { "species": "Clefairy", "level": 8 }
+  ],
+  "landRate": 15,
+  "swarm": [
+    "Zubat",
+    "Zubat"
+  ],
+  "hoennSounds": [
+    "Absol",
+    "Makuhita"
+  ],
+  "sinnohSounds": [
+    "Bronzor",
+    "Chingling"
+  ],
+  "warps": [
+    { "x": 4, "z": 4, "to": "johto_route_3", "toWarp": 0 },
+    { "x": 22, "z": 23, "to": "johto_route_4", "toWarp": 0 },
+    { "x": 17, "z": 4, "to": "mount_moon_square_entrance", "toWarp": 0 },
+    { "x": 22, "z": 16, "to": "mount_moon_square_entrance", "toWarp": 3 },
+    { "x": 22, "z": 15, "to": "mount_moon_square_entrance", "toWarp": 3 },
+    { "x": 17, "z": 3, "to": "mount_moon_square_entrance", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "d02r0101_gsrivel", "looks": "gsrivel", "movement": "16", "x": 10, "z": 4, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_25C", "script": "0" }
+  ],
+  "signs": [
+    { "x": 24, "z": 7, "type": 2, "script": "std_hiddenitem_d02r0101_revive", "item": "Revive", "flag": "FLAG_HIDDEN_ITEM_D02R0101_REVIVE" }
+  ],
+  "triggers": []
+}

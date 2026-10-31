@@ -1,0 +1,23 @@
+{
+  "people": {
+    "r02r0401_counterm": {
+      "name": {
+        "en": [
+          "Guard"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Viridian Forest is ahead. The paths wind about, so keep to the trees' edge and you'll find the way."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

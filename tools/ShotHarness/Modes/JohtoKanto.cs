@@ -248,6 +248,57 @@ partial class Harness
         Frames(30); Shot("jk62_mistys_battle");
         Console.WriteLine($"  Cascade Badge {game.Story.HasBadge(RegionDatabase.Kanto, "Cascade")}");
         game.State = GameState.Overworld; ReadTo(null); game.Dialogue.Close();
+
+        JohtoKantoPewterShots(readTo, talkTo);
+    }
+
+    /// <summary>
+    /// Plan 20 · J15, part f: Route 22's east end and Viridian City by day and after dark, its Pokémon Center and Trainer
+    /// House, Route 2 and Viridian Forest, Pewter City by day and after dark, its museum and Gym, Brock and his battle's
+    /// band, Route 3, Mt. Moon Square, the rival in Mt. Moon and his battle, and Route 4 (<c>jk63</c> to <c>jk81</c>), after
+    /// part e's, so nothing before them moves. It prints Kanto's Boulder Badge and the Den's variable the rival left.
+    /// </summary>
+    void JohtoKantoPewterShots(Action<string?, int> readTo, Action<string, string, int, int> talkTo)
+    {
+        void ReadTo(string? text) => readTo(text, 2400);
+        void Daylight(TimeOfDay time) { engine.Settings.TimeOfDay = time; engine.ApplySettings(window: false); }
+        game.State = GameState.Overworld;
+
+        // ---- Viridian City and Route 2
+        At("Johto", 1000, 258, Direction.Right); game.ArriveOnMap(); Frames(30); Shot("jk63_route_22_into_viridian");
+        At("Johto", 1030, 256, Direction.Up); game.ArriveOnMap(); Frames(30); Shot("jk64_viridian_city");
+        Daylight(TimeOfDay.Night); Frames(30); Shot("jk65_viridian_city_after_dark"); Daylight(TimeOfDay.Day);
+        At("Viridian_PokemonCenter_1F", 8, 15, Direction.Up); Frames(10); Shot("jk66_viridians_pokemon_center");
+        At("Viridian_TrainerHouse_1F", 5, 12, Direction.Up); Frames(10); Shot("jk67_the_trainer_house");
+        At("Johto", 1036, 214, Direction.Up); game.ArriveOnMap(); Frames(30); Shot("jk68_route_2");
+        At("Viridian_Forest", 32, 75, Direction.Up); game.ArriveOnMap(); Frames(30); Shot("jk69_viridian_forest");
+
+        // ---- Pewter City, its museum and Gym
+        At("Johto", 1050, 98, Direction.Up); game.ArriveOnMap(); Frames(30); Shot("jk70_pewter_city");
+        Daylight(TimeOfDay.Night); Frames(30); Shot("jk71_pewter_city_after_dark"); Daylight(TimeOfDay.Day);
+        At("Pewter_Museum", 10, 16, Direction.Up); Frames(10); Shot("jk72_the_museum_of_science");
+        At("Pewter_Gym", 7, 24, Direction.Up); game.ArriveOnMap(); Frames(10); Shot("jk73_the_pewter_gym");
+        talkTo("Pewter_Gym", "t03gym0101_gsleader14", 0, 1);
+        ReadTo("A Champion from Johto"); Frames(10); Shot("jk74_brock");
+        ReadTo("Show me how a Champion"); game.Dialogue.Advance();
+        UntilALeadersBattle();
+        Frames(30); Shot("jk75_brocks_battle");
+        Console.WriteLine($"  Boulder Badge {game.Story.HasBadge(RegionDatabase.Kanto, "Boulder")}");
+        game.State = GameState.Overworld; ReadTo(null); game.Dialogue.Close();
+
+        // ---- Route 3, Mt. Moon and the rival, Route 4
+        At("Johto", 1130, 110, Direction.Right); game.ArriveOnMap(); Frames(30); Shot("jk76_route_3");
+        At("MountMoon_Square", 28, 10, Direction.Up); game.ArriveOnMap(); Frames(30); Shot("jk77_mt_moon_square");
+        game.Story.SetVar("VAR_UNK_40FC", 0);
+        At("MountMoon", 12, 4, Direction.Left); game.ArriveOnMap(); Frames(30); Shot("jk78_the_rival_in_mt_moon");
+        talkTo("MountMoon", "d02r0101_gsrivel", 1, 0);
+        ReadTo("Of all the caves"); Frames(10); Shot("jk79_the_rivals_word");
+        ReadTo("Battle me"); game.Dialogue.Advance();
+        UntilALeadersBattle();
+        Frames(30); Shot("jk80_the_rivals_battle");
+        game.State = GameState.Overworld; ReadTo(null); game.Dialogue.Close();
+        Console.WriteLine($"  VAR_UNK_40FC {game.Story.Var("VAR_UNK_40FC")}");
+        At("Johto", 1220, 114, Direction.Left); game.ArriveOnMap(); Frames(30); Shot("jk81_route_4");
     }
 
 }

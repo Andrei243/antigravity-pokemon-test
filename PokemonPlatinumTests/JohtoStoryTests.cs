@@ -1581,8 +1581,13 @@ public class JohtoStoryTests
         Assert.Null(game.Present("d44r0102_gsrivel"));
         Assert.False(game.Fires("Rival"));
 
-        // After it the boy waits on the island's bank, and the first step onto the row brings Lance and Clair
+        // After it, and once his battle in Mt. Moon is behind him (plan 20 · J15, part f: VAR_UNK_40FC 1), the boy waits on
+        // the island's bank, and the first step onto the row brings Lance and Clair
         game.Story.Set("JohtoHallOfFame");
+        game.Arrive("DragonsDen", 28, 12);
+        Assert.Equal(0, game.Story.Var("VAR_UNK_40FC"));
+        Assert.Null(game.Present("d44r0102_gsrivel_2"));
+        game.Story.SetVar("VAR_UNK_40FC", 1);
         game.Arrive("DragonsDen", 28, 12);
         Assert.Equal(1, game.Story.Var("VAR_UNK_40FC"));
         Assert.NotNull(game.Present("d44r0102_gsrivel_2"));
@@ -1894,5 +1899,66 @@ public class JohtoStoryTests
         game.Talk("t04gym0101_gsleader11");
         Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM55")!));
         Assert.Contains(game.Read(12, 21).Transcript, l => l.Text.Contains("Winning"));
+    }
+
+    [Fact]
+    public void BrockGivesKantosBoulderBadgeInPewtersGym()
+    {
+        // Plan 20 · J15, part f: Brock at the head of his Gym, come to by Route 2 or Mt. Moon
+        var game = new Game();
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Feraligatr")!, 60));
+        game.Arrive("Pewter_Gym", 7, 26);
+        Assert.NotNull(game.Present("t03gym0101_gsleader14"));
+        Assert.NotNull(game.Present("t03gym0101_campboy_2"));
+        Assert.DoesNotContain(game.Read(4, 25).Transcript, l => l.Text.Contains("Winning"));
+        Assert.Contains(game.Talk("t03gym0101_sunglasses").Transcript, l => l.Text.Contains("Rock"));
+
+        // Kanto's Boulder Badge, not Johto's, his two trainers counted beaten, and TM80 once
+        int johtoBadges = game.Story.BadgeCount(RegionDatabase.Johto);
+        Assert.Contains(game.Talk("t03gym0101_gsleader14").Log, l => l.StartsWith("battle johto_leader_brock_brock Won"));
+        Assert.True(game.Story.HasBadge(RegionDatabase.Kanto, "Boulder"));
+        Assert.Equal(johtoBadges, game.Story.BadgeCount(RegionDatabase.Johto));
+        foreach (string trainer in new[] { "johto_camper_jerry", "johto_hiker_edwin" })
+            Assert.True(game.Story.HasDefeated(trainer), trainer);
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM80")!));
+        game.Talk("t03gym0101_gsleader14");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM80")!));
+        Assert.Contains(game.Read(10, 25).Transcript, l => l.Text.Contains("Winning"));
+    }
+
+    [Theory]
+    [InlineData(0)]
+    [InlineData(1)]
+    [InlineData(2)]
+    public void TheRivalWaitsInMtMoonAfterTheLeagueAndHisBattleBeginsTheDragonsDensPostGame(int starter)
+    {
+        // Plan 20 · J15, part f: HeartGold's battle in Mt. Moon, which the Dragon's Den's post-game (J13, part c) waits for
+        var game = new Game(starter);
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Machop")!, 60));
+        var johto = RegionDatabase.Get(RegionDatabase.Johto)!;
+        game.Story.ChooseStarter(johto.Starters[starter]);
+        int team = johto.Starters[starter] switch { "Chikorita" => 15, "Cyndaquil" => 16, _ => 14 };
+
+        // Before the League nobody waits in the cave
+        game.Arrive("MountMoon", 5, 4);
+        Assert.Null(game.Present("d02r0101_gsrivel"));
+
+        // After it the boy waits by the western mouth, and the Den waits for him
+        game.Story.Set("JohtoHallOfFame");
+        game.Arrive("DragonsDen", 28, 12);
+        Assert.Equal(0, game.Story.Var("VAR_UNK_40FC"));
+        Assert.Null(game.Present("d44r0102_gsrivel_2"));
+        game.Arrive("MountMoon", 5, 4);
+        Assert.NotNull(game.Present("d02r0101_gsrivel"));
+        var scene = game.Talk("d02r0101_gsrivel");
+        Assert.Contains($"battle johto_rival_silver_{team} Won", scene.Log);
+        Assert.Equal(1, game.Story.Var("VAR_UNK_40FC"));
+        Assert.Null(game.Present("d02r0101_gsrivel"));
+        game.Arrive("MountMoon", 5, 4);
+        Assert.Null(game.Present("d02r0101_gsrivel"));
+
+        // and now the Den's post-game begins
+        game.Arrive("DragonsDen", 28, 12);
+        Assert.NotNull(game.Present("d44r0102_gsrivel_2"));
     }
 }

@@ -1,0 +1,110 @@
+{
+  "people": {
+    "t02_gsoldman1": {
+      "name": {
+        "en": [
+          "Old man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Gym's been locked for years. Its Leader is off somewhere, and nobody knows when he'll be back."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t02_gsoldman1_2": {
+      "name": {
+        "en": [
+          "Old man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I've walked these streets every morning since I was a boy. Viridian never changes much, and I like it that way."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t02_gsbigman": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Route 22 leads west to the League's gate. Only the strongest trainers come back that way."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t02_gsboy1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "There's a forest north of Route 2, full of Bug Pokémon. I'm too scared to go in alone."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T02_004+1": {
+      "en": [
+        "Viridian City\nThe eternally green paradise."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T02_005+1": {
+      "en": [
+        "Viridian City Pokémon Gym\nThe doors are locked."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T02_006+1": {
+      "en": [
+        "Trainer Tips\nA Pokémon that is asleep or paralysed is easier to catch."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T02_007+1": {
+      "en": [
+        "Trainer House\nThe club for trainers who want a challenge."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

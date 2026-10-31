@@ -291,7 +291,32 @@
     { "name": "Cerulean_WestHouse", "matrix": 96, "area": "cerulean_west_house", "trees": "Round", "setting": "Indoors" },
     { "name": "Cerulean_BikeManiacHouse", "matrix": 274, "area": "cerulean_bike_maniac_house", "trees": "Round", "setting": "Indoors" },
     { "name": "Cerulean_Gym", "matrix": 257, "area": "cerulean_gym", "trees": "Round", "setting": "Indoors" },
-    { "name": "CeruleanCape_SeaCottage", "matrix": 254, "area": "johto_route_25_sea_cottage", "trees": "Round", "setting": "Indoors" }
+    { "name": "CeruleanCape_SeaCottage", "matrix": 254, "area": "johto_route_25_sea_cottage", "trees": "Round", "setting": "Indoors" },
+    // Plan 20 · J15, part f: Mt. Moon with its square, shop and the way up to it, Route 3's Pokémon Center, and Pewter City's rooms and Gym (named MountMoon and Pewter_: Kanto's FireRed maps have MtMoon_ and PewterCity_)
+    { "name": "MountMoon", "matrix": 3, "area": "mount_moon", "trees": "Round", "setting": "Cave" },
+    { "name": "MountMoon_SquareEntrance", "matrix": 4, "area": "mount_moon_square_entrance", "trees": "Round", "setting": "Cave" },
+    { "name": "MountMoon_Square", "matrix": 5, "area": "mount_moon_square", "trees": "Round" },
+    { "name": "MountMoon_SquareShop", "matrix": 139, "area": "mount_moon_square_shop", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route3_PokemonCenter_1F", "matrix": 73, "area": "route_3_pokecenter_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route3_PokemonCenter_B1F", "matrix": 77, "area": "route_3_pokecenter_b1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Pewter_Museum", "matrix": 242, "area": "pewter_museum_of_science", "trees": "Round", "setting": "Indoors" },
+    { "name": "Pewter_NortheastHouse", "matrix": 66, "area": "pewter_northeast_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "Pewter_Gym", "matrix": 260, "area": "pewter_gym", "trees": "Round", "setting": "Indoors" },
+    { "name": "Pewter_Mart", "matrix": 104, "area": "pewter_pokemart", "trees": "Round", "setting": "Indoors" },
+    { "name": "Pewter_PokemonCenter_1F", "matrix": 73, "area": "pewter_pokecenter_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Pewter_PokemonCenter_B1F", "matrix": 77, "area": "pewter_pokecenter_b1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Pewter_SouthwestHouse", "matrix": 66, "area": "pewter_southwest_house", "trees": "Round", "setting": "Indoors" },
+    // and Viridian City's rooms, Route 2's gates and house and Viridian Forest between them (named Viridian_ and Route2_: FireRed's are ViridianCity_, ViridianForest and Route2_House)
+    { "name": "Viridian_PokemonCenter_1F", "matrix": 73, "area": "viridian_pokecenter_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Viridian_PokemonCenter_B1F", "matrix": 77, "area": "viridian_pokecenter_b1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Viridian_Mart", "matrix": 104, "area": "viridian_pokemart", "trees": "Round", "setting": "Indoors" },
+    { "name": "Viridian_NortheastHouse", "matrix": 96, "area": "viridian_northeast_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "Viridian_TrainerHouse_1F", "matrix": 244, "area": "viridian_trainer_house_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route2_ForestSouthGate", "matrix": 69, "area": "route_2_viridian_forest_south_gatehouse", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route2_ForestNorthGate", "matrix": 69, "area": "route_2_viridian_forest_north_gatehouse", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route2_SoutheastGate", "matrix": 69, "area": "route_2_southeast_gatehouse", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route2_RoadHouse", "matrix": 66, "area": "johto_route_2_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "Viridian_Forest", "matrix": 86, "area": "johto_viridian_forest", "trees": "Round", "setting": "Cave" }
   ],
   "areas": [
     // Plan 20 · J2: New Bark Town to Route 31's gate house, with their rooms
@@ -400,6 +425,14 @@
     // Plan 20 · J15, part e: Route 5 north to Cerulean City with its rooms and Gym, and Routes 24 and 25 to the Sea Cottage on the cape
     "route_5_saffron_gatehouse", "johto_route_5", "route_5_house", "cerulean", "cerulean_pokecenter_1f", "cerulean_pokecenter_b1f",
     "cerulean_pokemart", "cerulean_north_house", "cerulean_east_house", "cerulean_west_house", "cerulean_bike_maniac_house",
-    "cerulean_gym", "johto_route_24", "johto_route_25", "johto_route_25_sea_cottage"
+    "cerulean_gym", "johto_route_24", "johto_route_25", "johto_route_25_sea_cottage",
+    // Plan 20 · J15, part f: Route 4 west of Cerulean City through Mt. Moon and its square to Route 3 and Pewter City with its rooms and Gym
+    "johto_route_4", "mount_moon", "mount_moon_square_entrance", "mount_moon_square", "mount_moon_square_shop", "johto_route_3",
+    "route_3_pokecenter_1f", "route_3_pokecenter_b1f", "pewter", "pewter_museum_of_science", "pewter_northeast_house", "pewter_gym",
+    "pewter_pokemart", "pewter_pokecenter_1f", "pewter_pokecenter_b1f", "pewter_southwest_house",
+    // and from Route 22's east end: Viridian City with its rooms, Route 2 north to Pewter with its gates, house and Viridian Forest
+    "viridian", "viridian_pokecenter_1f", "viridian_pokecenter_b1f", "viridian_pokemart", "viridian_northeast_house",
+    "viridian_trainer_house_1f", "johto_route_2", "route_2_east", "route_2_viridian_forest_south_gatehouse",
+    "route_2_viridian_forest_north_gatehouse", "route_2_southeast_gatehouse", "johto_route_2_house", "johto_viridian_forest"
   ]
 }

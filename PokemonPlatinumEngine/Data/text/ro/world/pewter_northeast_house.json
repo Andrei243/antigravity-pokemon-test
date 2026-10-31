@@ -1,0 +1,41 @@
+{
+  "people": {
+    "t03r0201_gsman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Nidoran follows me everywhere. It even sits by the door when I go to work."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t03r0201_tsure_poke_static_nidoran_m": {
+      "name": {
+        "en": [
+          "Nidoran"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Nidoran pricked up its ears."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,26 @@
+{
+  "key": "mount_moon_square_shop",
+  "index": 518,
+  "name": "Mt. Moon",
+  "matrix": 139,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_D_CHIKATSUURO",
+  "nightMusic": "GS_D_CHIKATSUURO",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 9, "to": "mount_moon_square", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "d02fs0101_gsgirl1", "looks": "gsgirl1", "movement": "3", "x": 9, "z": 6, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "D02FS0101_000+1" },
+    { "id": "d02fs0101_gsoldman1", "looks": "gsoldman1", "movement": "15", "x": 5, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "D02FS0101_001+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

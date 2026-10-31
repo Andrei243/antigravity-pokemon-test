@@ -1,0 +1,112 @@
+{
+  "Brock": [
+    {
+      "en": [
+        "Brock"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A Champion from Johto, here in Pewter? I heard you'd been making your way round Kanto."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I've been away breeding Pokémon, but rock is where my heart is. My Pokémon are as hard as the mountains."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Show me how a Champion breaks stone!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Well, I'll be. You broke right through. All right, take this: the Boulder Badge."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Boulder Badge from Brock!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And take this. It's a move every Rock type should know."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "TM80 is Rock Slide. It sends rocks tumbling down on the foe, and it may make them flinch."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There's more to rock than hardness. Patience, too. I'll be ready for you next time."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Guide": [
+    {
+      "en": [
+        "Hey, champ in the making! Brock's Pokémon are Rock types. Water and Grass moves will crumble them."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You beat Brock! The whole floor shook!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Statue": [
+    {
+      "en": [
+        "Pewter City Pokémon Gym\nLeader: Brock"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Pewter City Pokémon Gym\nLeader: Brock\nWinning trainers: {player}"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

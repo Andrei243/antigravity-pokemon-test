@@ -1,0 +1,30 @@
+{
+  "key": "pewter_pokemart",
+  "index": 474,
+  "name": "Pewter City",
+  "matrix": 104,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_FS",
+  "nightMusic": "GS_FS",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 11, "to": "pewter", "toWarp": 3 }
+  ],
+  "objects": [
+    { "id": "t03fs0101_shopm1_2", "looks": "shopm1_2", "movement": "17", "x": 2, "z": 4, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "T03FS0101_000+1" },
+    { "id": "t03fs0101_shopm1_2_2", "looks": "shopm1_2", "movement": "17", "x": 2, "z": 6, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "T03FS0101_001+1" },
+    { "id": "t03fs0101_gsboy1", "looks": "gsboy1", "movement": "4", "x": 6, "z": 9, "facing": 1, "rangeX": 0, "rangeZ": 1, "script": "T03FS0101_002+1" },
+    { "id": "t03fs0101_gsman1", "looks": "gsman1", "movement": "16", "x": 10, "z": 9, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "T03FS0101_003+1" },
+    { "id": "t03fs0101_delivery2", "looks": "delivery2", "movement": "0", "x": 3, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_MOM_GIFT_DELIVERYMAN", "script": "std_moms_gift_deliveryman" },
+    { "id": "t03fs0101_delivery", "looks": "delivery", "movement": "0", "x": 2, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_MYSTERY_GIFT_DELIVERYMAN", "script": "std_mystery_gift_deliveryman" }
+  ],
+  "signs": [],
+  "triggers": []
+}

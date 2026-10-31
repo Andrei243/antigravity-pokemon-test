@@ -1,0 +1,14 @@
+{
+  // The gate house between Route 2 and Viridian Forest's southern edge (plan 20 · J15, part f)
+  "area": "route_2_viridian_forest_south_gatehouse",
+  "bgmTrack": "kanto/route3",
+  "people": {
+    "r02r0401_counterm": {
+      "name": "Guard",
+      "still": true,
+      "dialog": [
+        "Viridian Forest is ahead. The paths wind about, so keep to the trees' edge and you'll find the way."
+      ]
+    }
+  }
+}

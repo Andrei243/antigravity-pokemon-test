@@ -1,0 +1,66 @@
+{
+  "people": {
+    "r02_gsboy3": {
+      "name": {
+        "en": [
+          "Rob"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Catcher Rob: I caught every Bug Pokémon in the forest. Well, nearly every one!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Catcher Rob: I'll go and catch a few more."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r02_gsboy3_2": {
+      "name": {
+        "en": [
+          "Doug"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Catcher Doug: Bugs are the best! They're tough and they never give up!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Catcher Doug: My bugs gave up."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "R02_000+1": {
+      "en": [
+        "Route 2\nViridian City - Viridian Forest"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

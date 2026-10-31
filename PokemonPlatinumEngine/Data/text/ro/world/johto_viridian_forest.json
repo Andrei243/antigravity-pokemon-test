@@ -1,0 +1,135 @@
+{
+  "people": {
+    "d46r0101_gsboy3": {
+      "name": {
+        "en": [
+          "Dane"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Catcher Dane: The forest's quiet today. Let's make some noise!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Catcher Dane: That was too much noise."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d46r0101_gsboy3_2": {
+      "name": {
+        "en": [
+          "Dion"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Catcher Dion: I've been lost in here for an hour. A battle will cheer me up!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Catcher Dion: Now I'm lost and sad."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d46r0101_gsboy3_3": {
+      "name": {
+        "en": [
+          "Stacey"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Catcher Stacey: My Pokémon are hiding in the trees. Surprise!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Catcher Stacey: Not much of a surprise, was it?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d46r0101_gsboy3_4": {
+      "name": {
+        "en": [
+          "Ellis"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Catcher Ellis: I've walked every path of this forest. I know all its secrets!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Catcher Ellis: Except that one, apparently."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d46r0101_gsboy3_5": {
+      "name": {
+        "en": [
+          "Abner"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Catcher Abner: Bugsy from Azalea came here once. I want to be just like him!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Catcher Abner: I've got a long way to go."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,77 @@
+{
+  "people": {
+    "t03gym0101_gsleader14": {
+      "name": {
+        "en": [
+          "Brock"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t03gym0101_sunglasses": {
+      "name": {
+        "en": [
+          "Gym guide"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t03gym0101_campboy_2": {
+      "name": {
+        "en": [
+          "Jerry"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Camper Jerry: I'm Brock's student. Rock-hard, that's what he taught me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Camper Jerry: I need more practice, apparently."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t03gym0101_mount_2": {
+      "name": {
+        "en": [
+          "Edwin"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Edwin: Rocks don't move, and neither do I. You'll have to go through me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Edwin: Moved, after all."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

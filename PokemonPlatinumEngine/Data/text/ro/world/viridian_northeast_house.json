@@ -1,0 +1,77 @@
+{
+  "people": {
+    "t02r0201_gsmiddleman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My daughter's Rattata and my Spearow fight over the same cushion every day."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t02r0201_gsgirl1": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Rattata always wins. It's smaller, so it gets there first!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t02r0201_tsure_poke_static_rattata": {
+      "name": {
+        "en": [
+          "Rattata"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Rattata squeaked from its cushion."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t02r0201_tsure_poke_static_spearow": {
+      "name": {
+        "en": [
+          "Spearow"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Spearow glared at Rattata."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

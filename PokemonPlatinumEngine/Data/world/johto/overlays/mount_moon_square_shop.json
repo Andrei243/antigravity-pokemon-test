@@ -1,0 +1,20 @@
+{
+  // The gift shop on Mt. Moon Square (plan 20 · J15, part f)
+  "area": "mount_moon_square_shop",
+  "bgmTrack": "kanto/mt_moon",
+  "people": {
+    "d02fs0101_gsgirl1": {
+      "name": "Girl",
+      "dialog": [
+        "My grandpa runs this shop. He says the Clefairy come out to play when nobody's looking."
+      ]
+    },
+    "d02fs0101_gsoldman1": {
+      "name": "Shopkeeper",
+      "still": true,
+      "dialog": [
+        "Welcome, welcome! Nothing much in stock today, I'm afraid. Come back on a moonlit night."
+      ]
+    }
+  }
+}

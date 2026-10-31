@@ -1,0 +1,65 @@
+{
+  "key": "mount_moon_square",
+  "index": 449,
+  "name": "Mt. Moon",
+  "matrix": 5,
+  "kind": "Route",
+  "sign": "Route",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "General",
+  "dayMusic": "GS_D_CHIKATSUURO",
+  "nightMusic": "GS_D_CHIKATSUURO",
+  "encounters": "D02R0103",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "surfSwarm": "Poliwag",
+  "fishSwarm": "Magikarp",
+  "water": [
+    { "species": "Poliwag", "level": 35, "maxLevel": 35 },
+    { "species": "Magikarp", "level": 30, "maxLevel": 30 },
+    { "species": "Magikarp", "level": 35, "maxLevel": 35 },
+    { "species": "Magikarp", "level": 35, "maxLevel": 35 },
+    { "species": "Magikarp", "level": 35, "maxLevel": 35 }
+  ],
+  "waterRate": 15,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 },
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 },
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Poliwag", "level": 40, "maxLevel": 40 },
+    { "species": "Poliwag", "level": 40, "maxLevel": 40 },
+    { "species": "Poliwag", "level": 40, "maxLevel": 40 },
+    { "species": "Poliwag", "level": 40, "maxLevel": 40 },
+    { "species": "Poliwag", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "warps": [
+    { "x": 28, "z": 8, "to": "mount_moon_square_entrance", "toWarp": 1 },
+    { "x": 32, "z": 20, "to": "mount_moon_square_entrance", "toWarp": 2 },
+    { "x": 18, "z": 10, "to": "mount_moon_square_shop", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "d02r0103_stop", "looks": "stop", "movement": "0", "x": 19, "z": 4, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "D02R0103_001+1" }
+  ],
+  "signs": [
+    { "x": 36, "z": 2, "type": 2, "script": "std_hiddenitem_d02r0103_max_revive", "item": "Max Revive", "flag": "FLAG_HIDDEN_ITEM_D02R0103_MAX_REVIVE" },
+    { "x": 22, "z": 10, "type": 1, "script": "D02R0103_000+1" }
+  ],
+  "triggers": []
+}

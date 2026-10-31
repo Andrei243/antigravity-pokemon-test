@@ -1,0 +1,39 @@
+{
+  // The Pewter Gym as HeartGold has it (plan 20 · J15, part f): a floor of rock, Brock at its head (pewter_gym.txt).
+  // HeartGold hides him behind FLAG_HIDE_PEWTER_GYM_BROCK only on the days of his phone's meeting at Diglett's Cave, which
+  // this game has not, so he stands here always. His two trainers battle by their own records (Johto's trainers.json)
+  "area": "pewter_gym",
+  "bgmTrack": "johto/gym",
+  "arenaType": "Rock",
+  "people": {
+    "t03gym0101_gsleader14": {
+      "name": "Brock",
+      "npcType": "brock",
+      "script": "Brock",
+      "still": true,
+      "hiddenBy": ""
+    },
+    "t03gym0101_sunglasses": {
+      "name": "Gym guide",
+      "script": "Guide",
+      "still": true
+    },
+    "t03gym0101_campboy_2": {
+      "name": "Jerry",
+      "trainer": {
+        "dialogueBefore": "Camper Jerry: I'm Brock's student. Rock-hard, that's what he taught me!",
+        "dialogueAfter": "Camper Jerry: I need more practice, apparently."
+      }
+    },
+    "t03gym0101_mount_2": {
+      "name": "Edwin",
+      "trainer": {
+        "dialogueBefore": "Hiker Edwin: Rocks don't move, and neither do I. You'll have to go through me!",
+        "dialogueAfter": "Hiker Edwin: Moved, after all."
+      }
+    }
+  },
+  "read": {
+    "T03GYM0101_002+1": "Statue"
+  }
+}

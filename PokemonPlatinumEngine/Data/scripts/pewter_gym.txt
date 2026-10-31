@@ -1,0 +1,55 @@
+# The Pewter Gym as HeartGold has it (plan 20 · J15, part f). docs/scripts.md describes the language; the lines are
+# our own, on HeartGold's beats (scr_seq_T03GYM0101).
+#
+# Brock waits at the head of his rocky floor and battles for the Boulder Badge, which is Kanto's (`givebadge boulder of
+# kanto`, as the other Kanto Gyms of HeartGold's: the rulings' "HeartGold's Kanto, part b" to "part f"), counts his two
+# trainers beaten and gives TM80, Rock Slide. Whether he is beaten here is FLAG_JOHTO_DEFEATED_BROCK, a flag of ours, so
+# a FireRed Champion battles him all the same.
+
+
+script Brock
+  face t03gym0101_gsleader14 player
+  speaker "Brock"
+  if flag FLAG_JOHTO_DEFEATED_BROCK goto Won
+  scene "Brock"
+  say "A Champion from Johto, here in Pewter? I heard you'd been making your way round Kanto."
+  say "I've been away breeding Pokémon, but rock is where my heart is. My Pokémon are as hard as the mountains."
+  say "Show me how a Champion breaks stone!"
+  battle self as "johto_leader_brock_brock"
+  say "Well, I'll be. You broke right through. All right, take this: the Boulder Badge."
+  givebadge boulder of kanto
+  text "{player} received the Boulder Badge from Brock!"
+  setflag FLAG_JOHTO_DEFEATED_BROCK
+  defeat "johto_camper_jerry"
+  defeat "johto_hiker_edwin"
+  endscene
+label Tm
+  say "And take this. It's a move every Rock type should know."
+  give "TM80"
+  setflag FLAG_JOHTO_GOT_TM80_FROM_BROCK
+  say "TM80 is Rock Slide. It sends rocks tumbling down on the foe, and it may make them flinch."
+  end
+label Won
+  if not flag FLAG_JOHTO_GOT_TM80_FROM_BROCK goto Tm
+  say "There's more to rock than hardness. Patience, too. I'll be ready for you next time."
+  end
+
+
+# The Gym guide by the door.
+script Guide
+  if flag FLAG_JOHTO_DEFEATED_BROCK goto Won
+  say "Hey, champ in the making! Brock's Pokémon are Rock types. Water and Grass moves will crumble them."
+  end
+label Won
+  say "You beat Brock! The whole floor shook!"
+  end
+
+
+# The statues by the door.
+script Statue
+  if flag FLAG_JOHTO_DEFEATED_BROCK goto Won
+  text "Pewter City Pokémon Gym\nLeader: Brock"
+  end
+label Won
+  text "Pewter City Pokémon Gym\nLeader: Brock\nWinning trainers: {player}"
+  end

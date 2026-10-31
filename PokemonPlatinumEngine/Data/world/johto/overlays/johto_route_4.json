@@ -1,0 +1,33 @@
+{
+  // Route 4 as HeartGold has it three years on (plan 20 · J15, part f): the road west of Cerulean City to Mt. Moon's
+  // eastern mouth. Its key meets FireRed's, so it takes Johto's prefix (HgWorld.Clashes). Its three trainers battle by
+  // their own records (Johto's trainers.json)
+  "area": "johto_route_4",
+  "bgmTrack": "kanto/route3",
+  "people": {
+    "r04_picnicgirl_2": {
+      "name": "Hope",
+      "trainer": {
+        "dialogueBefore": "Picnicker Hope: I packed lunch for two, and my Pokémon ate both. Now I'm hungry for a battle!",
+        "dialogueAfter": "Picnicker Hope: I'm still hungry. Just not for battles."
+      }
+    },
+    "r04_picnicgirl_2_2": {
+      "name": "Sharon",
+      "trainer": {
+        "dialogueBefore": "Picnicker Sharon: It's such a lovely day for a picnic. And for a battle, if you insist!",
+        "dialogueAfter": "Picnicker Sharon: My picnic's ruined. Oh well, there's always tomorrow."
+      }
+    },
+    "r04_gsman2": {
+      "name": "Hank",
+      "trainer": {
+        "dialogueBefore": "Bird Keeper Hank: My birds can see you coming from a mile off. They saw a battle coming too!",
+        "dialogueAfter": "Bird Keeper Hank: They didn't see that coming, though."
+      }
+    }
+  },
+  "signs": {
+    "R04_000+1": "Route 4\nMt. Moon - Cerulean City"
+  }
+}

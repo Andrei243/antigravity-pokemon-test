@@ -1,0 +1,47 @@
+{
+  // Viridian Forest as HeartGold has it three years on (plan 20 · J15, part f): the wood between Route 2's two gates. Its
+  // key meets FireRed's, so it takes Johto's prefix (HgWorld.Clashes). Bugsy, who comes here on the phone's post-game
+  // meeting, waits for it. Its bug catchers battle by their own records
+  "area": "johto_viridian_forest",
+  "bgmTrack": "kanto/viridian_forest",
+  "heldBack": [
+    "d46r0101_gsleader2"
+  ],
+  "people": {
+    "d46r0101_gsboy3": {
+      "name": "Dane",
+      "trainer": {
+        "dialogueBefore": "Bug Catcher Dane: The forest's quiet today. Let's make some noise!",
+        "dialogueAfter": "Bug Catcher Dane: That was too much noise."
+      }
+    },
+    "d46r0101_gsboy3_2": {
+      "name": "Dion",
+      "trainer": {
+        "dialogueBefore": "Bug Catcher Dion: I've been lost in here for an hour. A battle will cheer me up!",
+        "dialogueAfter": "Bug Catcher Dion: Now I'm lost and sad."
+      }
+    },
+    "d46r0101_gsboy3_3": {
+      "name": "Stacey",
+      "trainer": {
+        "dialogueBefore": "Bug Catcher Stacey: My Pokémon are hiding in the trees. Surprise!",
+        "dialogueAfter": "Bug Catcher Stacey: Not much of a surprise, was it?"
+      }
+    },
+    "d46r0101_gsboy3_4": {
+      "name": "Ellis",
+      "trainer": {
+        "dialogueBefore": "Bug Catcher Ellis: I've walked every path of this forest. I know all its secrets!",
+        "dialogueAfter": "Bug Catcher Ellis: Except that one, apparently."
+      }
+    },
+    "d46r0101_gsboy3_5": {
+      "name": "Abner",
+      "trainer": {
+        "dialogueBefore": "Bug Catcher Abner: Bugsy from Azalea came here once. I want to be just like him!",
+        "dialogueAfter": "Bug Catcher Abner: I've got a long way to go."
+      }
+    }
+  }
+}

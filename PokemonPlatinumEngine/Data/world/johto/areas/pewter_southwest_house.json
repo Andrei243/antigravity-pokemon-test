@@ -1,0 +1,25 @@
+{
+  "key": "pewter_southwest_house",
+  "index": 477,
+  "name": "Pewter City",
+  "matrix": 66,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_C_NIBI",
+  "nightMusic": "GS_C_NIBI",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 8, "to": "pewter", "toWarp": 5 }
+  ],
+  "objects": [
+    { "id": "t03r0601_gsoldman1", "looks": "gsoldman1", "movement": "16", "x": 8, "z": 5, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "T03R0601_000+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

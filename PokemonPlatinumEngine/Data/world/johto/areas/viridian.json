@@ -1,0 +1,80 @@
+{
+  "key": "viridian",
+  "index": 50,
+  "name": "Viridian City",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "City",
+  "dayMusic": "GS_C_TOKIWA",
+  "nightMusic": "GS_C_TOKIWA",
+  "encounters": "T02",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "surfSwarm": "Poliwag",
+  "fishSwarm": "Magikarp",
+  "water": [
+    { "species": "Poliwag", "level": 10, "maxLevel": 10 },
+    { "species": "Poliwag", "level": 5, "maxLevel": 5 },
+    { "species": "Poliwhirl", "level": 10, "maxLevel": 10 },
+    { "species": "Poliwhirl", "level": 10, "maxLevel": 10 },
+    { "species": "Poliwhirl", "level": 10, "maxLevel": 10 }
+  ],
+  "waterRate": 15,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Poliwag", "level": 10, "maxLevel": 10 },
+    { "species": "Poliwag", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 },
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 },
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 },
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Poliwag", "level": 40, "maxLevel": 40 },
+    { "species": "Poliwag", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 },
+    { "species": "Poliwag", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "warps": [
+    { "x": 1045, "z": 239, "to": "viridian_gym", "toWarp": 0 },
+    { "x": 1034, "z": 244, "to": "viridian_northeast_house", "toWarp": 0 },
+    { "x": 1036, "z": 253, "to": "viridian_trainer_house_1f", "toWarp": 0 },
+    { "x": 1042, "z": 253, "to": "viridian_pokemart", "toWarp": 0 },
+    { "x": 1032, "z": 262, "to": "viridian_pokecenter_1f", "toWarp": 0 },
+    { "x": 1036, "z": 280, "to": "viridian_route_1_gatehouse", "toWarp": 1 },
+    { "x": 1037, "z": 280, "to": "viridian_route_1_gatehouse", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "t02_gsoldman1", "looks": "gsoldman1", "movement": "0", "x": 1045, "z": 240, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_VIRIDIAN_CITY_OLD_MAN_OUTSIDE_GYM_LOCKED", "script": "T02_001+1" },
+    { "id": "t02_gsoldman1_2", "looks": "gsoldman1", "movement": "3", "x": 1028, "z": 235, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "T02_000+1" },
+    { "id": "t02_gsbigman", "looks": "gsbigman", "movement": "2", "x": 1008, "z": 264, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T02_002+1" },
+    { "id": "t02_gsboy1", "looks": "gsboy1", "movement": "3", "x": 1027, "z": 255, "facing": 1, "rangeX": 2, "rangeZ": 3, "script": "T02_003+1" },
+    { "id": "t02_tree", "looks": "tree", "movement": "0", "x": 1019, "z": 235, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_010", "script": "std_field_cut" },
+    { "id": "t02_tree_2", "looks": "tree", "movement": "0", "x": 1014, "z": 261, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_011", "script": "std_field_cut" },
+    { "id": "t02_gsmiddleman1", "looks": "gsmiddleman1", "movement": "14", "x": 1037, "z": 260, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CAMERON", "script": "T02_009+1" },
+    { "id": "t02_gsoldman1_3", "looks": "gsoldman1", "movement": "0", "x": 1047, "z": 240, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_VIRIDIAN_CITY_OLD_MAN_OUTSIDE_GYM_UNLOCKED", "script": "T02_010+1" }
+  ],
+  "signs": [
+    { "x": 1041, "z": 239, "type": 1, "script": "T02_005+1" },
+    { "x": 1025, "z": 221, "type": 1, "script": "0" },
+    { "x": 1024, "z": 256, "type": 1, "script": "T02_004+1" },
+    { "x": 1038, "z": 254, "type": 1, "script": "T02_007+1" },
+    { "x": 1029, "z": 230, "type": 1, "script": "T02_006+1" },
+    { "x": 1053, "z": 247, "type": 2, "script": "std_hiddenitem_t02_nugget", "item": "Nugget", "flag": "FLAG_HIDDEN_ITEM_T02_NUGGET" }
+  ],
+  "triggers": []
+}

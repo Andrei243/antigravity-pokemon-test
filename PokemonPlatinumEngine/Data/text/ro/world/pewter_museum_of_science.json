@@ -1,0 +1,160 @@
+{
+  "people": {
+    "t03r0101_gsassistantm": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the museum. Mind the bones: some of them are older than the mountains outside."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t03r0101_gswoman6": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I could stand here all day trying to picture this creature alive."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t03r0101_gsoldman1": {
+      "name": {
+        "en": [
+          "Old man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A meteorite fell on Mt. Moon long ago. They say the Clefairy came with it. I like to think so."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t03r0101_mania": {
+      "name": {
+        "en": [
+          "Poké Maniac"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Fossils! Fossils! I could look at fossils for the rest of my life!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t03r0101_gsassistantm_2": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We're studying how to bring Pokémon back from fossils. Some day, we'll manage it here too."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T03R0101_005+1": {
+      "en": [
+        "A fossil of a great winged Pokémon. It ruled the skies long ago."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T03R0101_006+1": {
+      "en": [
+        "A fossil of a shelled Pokémon that lived in the ancient sea."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T03R0101_007+1": {
+      "en": [
+        "A fossil of a Pokémon with a hard dome on its back."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T03R0101_008+1": {
+      "en": [
+        "A fossil of a Pokémon with blades for arms."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T03R0101_009+1": {
+      "en": [
+        "Old tools dug up near Pewter City. People and Pokémon lived here even then."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T03R0101_010+1": {
+      "en": [
+        "A model of a rocket that once flew to the moon."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T03R0101_011+1": {
+      "en": [
+        "A piece of the meteorite that fell on Mt. Moon. It glitters faintly."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T03R0101_012+1": {
+      "en": [
+        "A model of the space shuttle. It looks ready to lift off."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

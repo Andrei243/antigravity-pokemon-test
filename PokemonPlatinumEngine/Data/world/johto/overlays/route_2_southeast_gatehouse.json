@@ -1,0 +1,20 @@
+{
+  // The gate house on Route 2's eastern way, between its southern and northern halves (plan 20 · J15, part f)
+  "area": "route_2_southeast_gatehouse",
+  "bgmTrack": "kanto/route3",
+  "people": {
+    "r02r0301_assistantm": {
+      "name": "Aide",
+      "dialog": [
+        "I study the Pokémon of the forest. Even the quiet ones have a lot to say, if you watch them long enough."
+      ]
+    },
+    "r02r0301_counterm": {
+      "name": "Guard",
+      "still": true,
+      "dialog": [
+        "This way skips the forest. It's quicker, but you'll miss the bugs."
+      ]
+    }
+  }
+}

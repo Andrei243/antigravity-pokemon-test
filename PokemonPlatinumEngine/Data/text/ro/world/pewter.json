@@ -1,0 +1,92 @@
+{
+  "people": {
+    "t03_gsoldman1": {
+      "name": {
+        "en": [
+          "Old man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The museum here has fossils older than anyone can count. I go and look at them when I feel young."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t03_gswoman3": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Brock's back running the Gym. He went off to be a breeder for a while, you know."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t03_gsbabyboy1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The trees by the north houses grow Apricorns. I'm not allowed to climb them."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T03_003+1": {
+      "en": [
+        "Pewter City\nA stone-grey city between rugged mountains."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T03_004+1": {
+      "en": [
+        "Pewter City Pokémon Gym\nLeader: Brock\nThe rock-solid Pokémon Trainer."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T03_005+1": {
+      "en": [
+        "Pewter Museum of Science\nFossils and space, side by side."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T03_006+1": {
+      "en": [
+        "Route 2 is to the south.\nThe road is closed beyond Viridian Forest."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}
