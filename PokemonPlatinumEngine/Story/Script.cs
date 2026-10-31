@@ -176,7 +176,12 @@ public enum Query
     /// </summary>
     Friendship,
     /// <summary>The run has a rule on (plan 13 · V5): <c>rule nocenter</c>, by a word of <see cref="Models.RunRules.RuleNames"/>; Normal has none.</summary>
-    Rule
+    Rule,
+    /// <summary>
+    /// The master of the species of the Pokémon the last <c>choosepokemon</c> chose is beaten already (plan 14 · B15,
+    /// the Masters' Hall): <c>titled</c>. False with nobody chosen.
+    /// </summary>
+    Titled
 }
 
 /// <summary>A question a script asks of the game before a line: <c>if [not] ...</c>.</summary>

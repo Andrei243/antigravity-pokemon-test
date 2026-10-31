@@ -2387,7 +2387,10 @@ public partial class GameEngine
                 break;
             case StartMenuChoice.Trainer:
                 flow.State = GameState.TrainerCard;
-                flow.TrainerCardScreen.Open((IsHeadless ? null : world.Portrait(PlayerIdentity.Character)), TrainerCardNow().RegionPages.Count, TrainerCardNow().Run != null);
+            {
+                var card = TrainerCardNow();
+                flow.TrainerCardScreen.Open((IsHeadless ? null : world.Portrait(PlayerIdentity.Character)), card.RegionPages.Count, card.Run != null, card.Titles.Count);
+            }
                 break;
             case StartMenuChoice.Options:
                 flow.OptionsReturn = GameState.Overworld;
@@ -2480,7 +2483,11 @@ public partial class GameEngine
             Colour = TrainerCardRules.Colour(flow.Story.Has(StoryState.PokedexFlag), stars),
             HallOfFameDebut = flow.HallOfFame.Debut,
             ContestsEntered = flow.ContestRecords.Entered,
-            ContestsWon = flow.ContestRecords.Won
+            ContestsWon = flow.ContestRecords.Won,
+            // The Masters' Hall's titles (plan 14 · B15): the masters beaten, and the one won last
+            Titles = MasterTitles.Won(flow.Story).Select(t => new CardTitle(t.Number, MasterTitles.Title(t.Species))).ToList(),
+            TitlesOf = MasterTitles.Total,
+            LatestTitle = MasterTitles.Latest(flow.Story) is { } latest ? MasterTitles.Title(latest) : ""
         };
     }
 

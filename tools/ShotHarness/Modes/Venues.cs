@@ -32,6 +32,12 @@ partial class Harness
             VenuesTournament(fresh: true);
             return;
         }
+        // B15's Masters' Hall alone (Modes/VenuesMasters.cs)
+        if (Environment.GetEnvironmentVariable("VENUES_FROM") == "masters")
+        {
+            VenuesMasters(fresh: true);
+            return;
+        }
         engine.StartNewGame();
         PastTheOpening();
         game.State = GameState.Overworld;
@@ -285,5 +291,7 @@ partial class Harness
         VenuesPikePyramid(fresh: false);
         // ---- B11: the World Tournament, from the same lobby
         VenuesTournament(fresh: false);
+        // ---- B15: the Masters' Hall, off the same lobby
+        VenuesMasters(fresh: false);
     }
 }

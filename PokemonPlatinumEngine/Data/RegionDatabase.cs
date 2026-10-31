@@ -360,6 +360,8 @@ public static class RegionDatabase
                 "BattlePike", "BattlePikeRoom", "BattlePyramidFloor",
                 // Plan 14 · B11: the World Tournament's hall in the annex (a map of ours)
                 "WorldTournamentHall",
+                // Plan 14 · B15: the Masters' Hall off the annex's lobby (a map of ours)
+                "MastersHall",
             }
         },
         new()

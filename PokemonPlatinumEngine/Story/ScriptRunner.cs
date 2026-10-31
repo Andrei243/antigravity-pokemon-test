@@ -741,8 +741,20 @@ public sealed partial class ScriptRunner
                 TrainerDatabase.Fill(team, record);
                 master.TrainerData = team;
                 bool mayLoseThis = i.Option;
+                // The species as it went in: an evolution after the battle doesn't change whose title it is
+                var titleOf = member.Species;
                 host.Battle(master, null, null, mayLoseThis, false, new BattleTerms(NoBattleItems: true, Alone: member));
-                afterBusy = () => AfterBattle(mayLoseThis);
+                afterBusy = () =>
+                {
+                    AfterBattle(mayLoseThis);
+                    // A title won (plan 14 · B15): the master beaten (the host has marked it already, as for any
+                    // trainer of a script) and the latest title this one; {number} is how many are held now
+                    if (lastOutcome == BattleOutcome.Won)
+                    {
+                        MasterTitles.Win(host.Story, titleOf);
+                        lastNumber = MasterTitles.Count(host.Story);
+                    }
+                };
                 break;
             }
             case Op.WildBattle:
@@ -2212,6 +2224,8 @@ public sealed partial class ScriptRunner
             Query.Objective => host.ShowsObjectives && Objectives.Current(host.Story, host.Region) != null,
             // The ways to play (plan 13 · V5)
             Query.Rule => host.Rules.Has(c.Name),
+            // The Masters' Hall (plan 14 · B15): the chosen one's master beaten already
+            Query.Titled => chosenMember is { IsEgg: false } titled && MasterTitles.Holds(story, titled.Species.Name),
             _ => throw Wrong(at, $"the runner can't answer '{c.Query}'")
         };
         return yes != c.Negated;
@@ -2299,6 +2313,8 @@ public sealed partial class ScriptRunner
             "result" => Result.ToString(),
             // The Pokémon choosepokemon chose last (plan 14 · B14)
             "chosen" => chosenMember?.DisplayName ?? "",
+            // The title of the chosen one's master, as the class is named (plan 14 · B15: "Bidoof Master")
+            "master" => chosenMember == null ? "" : MasterTitles.Title(chosenMember.Species.Name),
             // The team's Pokémon at the place a variable gives (poison's survivors)
             "member" when argument.Length > 0 => Value(argument) is var slot && slot >= 0 && slot < host.Party.Count ? host.Party.Members[slot].DisplayName : "",
             // The species whose National Pokédex number a variable holds (plan 19 · K9, part c: the one Selphy wishes for)

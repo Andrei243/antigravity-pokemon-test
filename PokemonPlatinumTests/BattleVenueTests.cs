@@ -397,7 +397,8 @@ public class BattleVenueTests
     public void TheHallsLeadBackToTheirDesksInTheLobby()
     {
         var lobby = Room("BattleFrontierAnnex");
-        Assert.Single(lobby.Warps);
+        // The door out to the grounds, and the Masters' Hall's in the west wall (plan 14 · B15)
+        Assert.Single(lobby.Warps, w => w.TargetMap != "MastersHall");
         foreach (var (hall, x) in new[] { ("BattlePalace", 2), ("BattleArena", 12) })
         {
             var room = Room(hall);

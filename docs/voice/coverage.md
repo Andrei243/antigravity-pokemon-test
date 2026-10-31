@@ -10,9 +10,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 |---|---|---|---|---|---|
 | The introduction (`intro:`) | 80 | 80 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1276 | 1236 | 40 | 1 | 0 |
-| Scripts (`script:`) | 8927 | 8504 | 423 | 17 | 0 |
+| Scripts (`script:`) | 8940 | 8512 | 428 | 17 | 0 |
 | People of the world (`world:`) | 6287 | 6228 | 59 | 4 | 0 |
-| **All** | 16570 | 16048 | 522 | 22 | 0 |
+| **All** | 16583 | 16056 | 527 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -21,17 +21,17 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | What | Lines |
 |---|---|
 | a Pokémon's cry | 212 |
-| a question's answers | 542 |
+| a question's answers | 545 |
 | a sign | 1421 |
 | the game's own voice (speaker none) | 247 |
-| the game's own voice (text) | 1218 |
+| the game's own voice (text) | 1219 |
 
 ## The cast
 
-- Named characters: 328 voices (291 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
+- Named characters: 329 voices (292 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Cloned from the user's samples: `rival`.
 - Archetypes in use: 222, with 671 voices to cast (V5).
-- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1831.
+- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1832.
 
 ## Lines by voice
 
@@ -39,7 +39,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 
 | Voice | Lines | Shown only |
 |---|---|---|
-| `@self` | 1831 | 132 |
+| `@self` | 1832 | 132 |
 | `look:gentleman (any)` | 626 | 13 |
 | `look:grunt (any)` | 582 | 0 |
 | `rival` | 571 | 17 |
@@ -52,7 +52,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:gym_guide (any)` | 181 | 1 |
 | `look:scientist (any)` | 176 | 4 |
 | `cynthia` | 157 | 1 |
-| `look:receptionist (any)` | 152 | 17 |
+| `look:receptionist (any)` | 157 | 19 |
 | `rowan` | 147 | 12 |
 | `class:ace_trainer (any)` | 146 | 0 |
 | `class:team_rocket (any)` | 132 | 0 |

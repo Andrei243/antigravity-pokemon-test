@@ -1,0 +1,59 @@
+# The Masters' Hall (plan 14 · B15), off the Battle Frontier annex's lobby, and its titles. docs/scripts.md describes the
+# language; the lines are our own, on the beats of Let's Go's Master Trainers: one of the team put forward, the master of
+# its species steps up, one on one with the bag shut, and the title is the player's once the master is beaten.
+#
+# One hall calls the master of whichever species is put forward (decision 8): nobody stands in the imported world, and
+# the master here carries no team on the map, so loading the room draws nothing. Both people are shown once the Hall of
+# Fame is entered (SinnohHallOfFame). A title is a master beaten (StoryState's beaten trainers, master_<species>); the
+# latest is the story's VAR_MASTER_TITLE_LATEST (Models/MasterTitles.cs), and the Trainer Card has a page of them.
+
+
+script Receptionist
+  face self player
+  speaker "Receptionist"
+  say "Welcome to the Masters' Hall! A master of every species waits here for a Trainer who has raised one of their own."
+label Ask
+  choose "Will you put one of your Pokémon forward?" "Yes" "The rules" "No"
+  if result == 1 goto Rules
+  if result == 2 goto Later
+  say "Please choose the Pokémon you'll put forward."
+  choosepokemon
+  if result == 255 goto Later
+  if titled goto Again
+  say "{chosen}! The {master} will see you now. Please step onto the mark."
+  goto Step
+label Again
+  say "You already hold the title of {master}. The master will gladly battle you again, but the title is yours already."
+label Step
+  fade out 0.4
+  place player 5 8 up
+  fade in
+  walk master down 3
+  speaker "Master"
+  say "So this is your {chosen}. Every one of its kind I've met has taught me something. Let's see what yours knows."
+  master master canlose
+  if won goto Won
+  say "Not this time. Raise {chosen} a little more, and the two of you come back to me."
+  goto Home
+label Won
+  say "Well battled. {chosen} has a Trainer who understands it, and that is what a master looks for."
+  text "{player} holds the title of {master}! Titles held: {number}."
+label Home
+  walk master up 3
+  face master down
+  end
+label Later
+  say "Please come again. The masters are always here."
+  end
+label Rules
+  say "Choose one of your Pokémon, and the master of its species battles it, one on one. Nothing may be used from the Bag."
+  say "Your own Pokémon battles, so what it learns here stays with it. There's no prize money, only the title."
+  say "Win, and the title of that species' master is yours. Lose, and you may try again whenever you like."
+  goto Ask
+
+
+# The master, spoken to before anyone is put forward
+script Master
+  face self player
+  say "The receptionist will ask which of your Pokémon you'll put forward. I am the master of whichever it is."
+  end

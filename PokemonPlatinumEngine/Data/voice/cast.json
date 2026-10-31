@@ -685,6 +685,10 @@
       "note": "first spoken at goldenrod_radio_tower_4f.txt(26)",
       "provisional": true
     },
+    "master": {
+      "note": "first spoken at MastersHall.txt(32)",
+      "provisional": true
+    },
     "matt": {
       "note": "first spoken at aqua_hideout_b2f.txt(28)",
       "provisional": true
@@ -1438,6 +1442,7 @@
     "Mars": "mars",
     "Marshal": "marshal",
     "Mary": "mary",
+    "Master": "master",
     "Matt": "matt",
     "Maxie": "maxie",
     "Maylene": "maylene",

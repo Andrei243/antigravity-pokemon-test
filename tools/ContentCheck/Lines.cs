@@ -59,6 +59,8 @@ public static class Lines
         // A Pokémon by its name
         "lead" or "starter" or "rivalstarter" or "assistantstarter" or "user" or "member" or "swarm" or "trophygarden" or "marsh" or "winner"
             or "daycare" or "left" or "taken" or "wearer" or "rental" or "entrant" or "walker" or "contestant" or "ally" or "chosen" or "bugmon" or "bugnew" => widestSpecies.Value,
+        // A Master Trainer's title (plan 14 · B15)
+        "master" => widestSpecies.Value + " Master",
         // A move
         "forgotten" or "allymove" => widestMove.Value,
         // What to do next (plan 12 · Q14): the widest of the story's lines, with the names in it at their widest

@@ -3541,6 +3541,54 @@ way -
 from Old Woman at 8,9 of LostTower5F
 way -
   Old Woman> Ohh... Who's there? I can hardly see a thing in this fog.
+=== MastersHall.Master
+from Master at 5,4 of MastersHall
+way -
+  Master> The receptionist will ask which of your Pokémon you'll put forward. I am the master of whichever it is.
+=== MastersHall.Receptionist
+from Receptionist at 3,10 of MastersHall
+way 0.0
+  Receptionist> Welcome to the Masters' Hall! A master of every species waits here for a Trainer who has raised one of their own.
+  Receptionist> Will you put one of your Pokémon forward?
+  Receptionist> Please choose the Pokémon you'll put forward.
+  Receptionist> Turtwig! The Turtwig Master will see you now. Please step onto the mark.
+  Master> So this is your Turtwig. Every one of its kind I've met has taught me something. Let's see what yours knows.
+  Master> Well battled. Turtwig has a Trainer who understands it, and that is what a master looks for.
+  > Lucas holds the title of Turtwig Master! Titles held: 1.
+  ? Will you put one of your Pokémon forward? = Yes
+  * open ChoosePokemon
+  * fade out
+  * fade in
+  * battle master_turtwig alone Turtwig noitems Won
+  = VAR_MASTER_TITLE_LATEST 0 -> 387
+  + beaten master_turtwig
+way 0.1, from answer 2
+  Master> Not this time. Raise Turtwig a little more, and the two of you come back to me.
+  * battle master_turtwig alone Turtwig noitems Lost
+way 2, from answer 1
+  Receptionist> Please come again. The masters are always here.
+  ? Will you put one of your Pokémon forward? = No
+way 1.0.0, from answer 1
+  Receptionist> Choose one of your Pokémon, and the master of its species battles it, one on one. Nothing may be used from the Bag.
+  Receptionist> Your own Pokémon battles, so what it learns here stays with it. There's no prize money, only the title.
+  Receptionist> Win, and the title of that species' master is yours. Lose, and you may try again whenever you like.
+  Receptionist> Will you put one of your Pokémon forward?
+  Receptionist> Please choose the Pokémon you'll put forward.
+  Receptionist> Turtwig! The Turtwig Master will see you now. Please step onto the mark.
+  Master> So this is your Turtwig. Every one of its kind I've met has taught me something. Let's see what yours knows.
+  Master> Well battled. Turtwig has a Trainer who understands it, and that is what a master looks for.
+  > Lucas holds the title of Turtwig Master! Titles held: 1.
+  ? Will you put one of your Pokémon forward? = The rules
+  ? Will you put one of your Pokémon forward? = Yes
+  * open ChoosePokemon
+  * fade out
+  * fade in
+  * battle master_turtwig alone Turtwig noitems Won
+  = VAR_MASTER_TITLE_LATEST 0 -> 387
+  + beaten master_turtwig
+way 1.0.1, from answer 3
+  Master> Not this time. Raise Turtwig a little more, and the two of you come back to me.
+  * battle master_turtwig alone Turtwig noitems Lost
 === OldChateauBackMiddleWestRoom.TV
 from the sign at 11,3 of OldChateauBackMiddleWestRoom
 from the sign at 12,3 of OldChateauBackMiddleWestRoom
