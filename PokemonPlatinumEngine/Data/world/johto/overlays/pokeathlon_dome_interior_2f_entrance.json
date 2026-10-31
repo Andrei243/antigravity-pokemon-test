@@ -1,0 +1,6 @@
+{
+  // The stairs up to the Pokéathlon Dome's stands (plan 20 · J13, the last part): HeartGold's
+  // MAP_POKEATHLON_DOME_INTERIOR_2F_ENTRANCE, the passage from the lobby's warp 2 to the stands. Nobody stands in it
+  "area": "pokeathlon_dome_interior_2f_entrance",
+  "bgmTrack": "johto/route34"
+}

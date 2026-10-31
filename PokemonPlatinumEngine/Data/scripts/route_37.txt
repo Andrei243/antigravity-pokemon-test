@@ -1,0 +1,38 @@
+# Route 37 (plan 20 · J13). docs/scripts.md describes the language; the lines are our own, on HeartGold's beats
+# (scr_seq_R37).
+#
+# Sunny of Sunday, the youngest of the week's seven siblings, is on the route on Sundays alone (FLAG_UNK_1C3, HeartGold's
+# R37_000) and gives a Magnet once (FLAG_GOT_MAGNET_FROM_SUNNY), counting himself among the siblings met
+# (VAR_NUM_MET_WEEKDAY_SIBLINGS); once all seven are met he gives the ribbon of the day (common.WeekSiblingRibbon).
+
+
+# R37_000, the route's own script as it loads
+script OnEnter
+  setflag FLAG_UNK_1C3
+  if weekday sunday clearflag FLAG_UNK_1C3
+  end
+
+
+# R37_001: Sunny of Sunday
+script Sunny
+  face r37_gsbabyboy1 player
+  speaker "Sunny"
+  if var VAR_NUM_MET_WEEKDAY_SIBLINGS >= 7 goto All
+  if flag FLAG_GOT_MAGNET_FROM_SUNNY goto Again
+  if not weekday sunday goto NotToday
+  say "Hi! I'm Sunny of Sunday! Today's my day, so I get to give you a present. Here!"
+  give "Magnet"
+  setflag FLAG_GOT_MAGNET_FROM_SUNNY
+  addvar VAR_NUM_MET_WEEKDAY_SIBLINGS 1
+  say "My big sister says a Magnet makes Electric-type moves stronger. I don't really know what that means!"
+  end
+label Again
+  say "I'm the littlest of the seven of us. Sunday is the best day, because nobody has to work!"
+  end
+label NotToday
+  say "It's not Sunday yet. I only get to come out on Sundays!"
+  end
+label All
+  if not weekday sunday goto NotToday
+  call WeekSiblingRibbon
+  end

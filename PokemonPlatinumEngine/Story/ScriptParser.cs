@@ -1114,6 +1114,9 @@ public static class ScriptParser
                         return new Instruction { Op = Op.Anim, Line = line, Piece = SetPiece.HallOfFame };
                 }
             }
+            // photograph: the screen as it stands, kept beside the player's screenshots (plan 20 · J13)
+            case "photograph":
+                return new Instruction { Op = Op.Photograph, Line = line };
             case "shake":
             case "flicker":
             {

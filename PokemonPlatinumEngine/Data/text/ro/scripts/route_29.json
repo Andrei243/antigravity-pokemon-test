@@ -40,5 +40,47 @@
         "Eu și Marill mergem acasă. Ne mai vedem, {player}!"
       ]
     }
+  ],
+  "Tuscany": [
+    {
+      "en": [
+        "Tuscany"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "How do you do? I'm Tuscany of Tuesday. Since we've met on my day, please accept this little gift."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A Pokémon that holds a Twisted Spoon hits harder with Psychic-type moves. Do look after it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Have you met my younger brother Wesley? He keeps Wednesdays at the Lake of Rage."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Today isn't Tuesday, is it? How disappointing. Tuesday is my day."
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

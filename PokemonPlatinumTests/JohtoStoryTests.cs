@@ -1628,6 +1628,14 @@ public class JohtoStoryTests
         game.Time = TimeOfDay.Day;
         game.Arrive("DragonsDen", 28, 12);
         Assert.NotNull(game.Present("d44r0102_gsleader8"));
+        // Plan 20 · J13: registered, she offers a photograph together (HeartGold's CameronPhoto); a no takes none
+        game.Answers.Enqueue(1);
+        var refused = game.Talk("d44r0102_gsleader8");
+        int before = refused.Photographs;
+        game.Answers.Enqueue(0);
+        var taken = game.Talk("d44r0102_gsleader8");
+        Assert.Equal(before + 1, taken.Photographs);
+        Assert.Contains(taken.Transcript, l => l.Text.Contains("Keep it somewhere safe"));
     }
 
     [Fact]

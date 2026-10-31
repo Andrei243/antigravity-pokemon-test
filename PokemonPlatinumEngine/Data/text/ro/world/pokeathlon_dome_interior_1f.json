@@ -49,9 +49,12 @@
       },
       "dialog": {
         "en": [
-          "Downstairs are the rooms where the events are held. Today the courses run from the main desk, in the middle."
+          "Downstairs the dome keeps its history: medals, trophies and pictures of every course. Do have a look around!"
         ],
         "text": [
+          ""
+        ],
+        "was": [
           "Jos sunt sălile în care au loc probele. Azi traseele pornesc de la biroul principal, din mijloc."
         ]
       }
@@ -67,9 +70,12 @@
       },
       "dialog": {
         "en": [
-          "The stands upstairs are closed today. Every seat will be filled when the big courses come!"
+          "The stands are up the stairs to the west. The crowd cheers every course, win or lose!"
         ],
         "text": [
+          ""
+        ],
+        "was": [
           "Tribunele de sus sunt închise azi. Fiecare loc va fi ocupat când vin traseele mari!"
         ]
       }

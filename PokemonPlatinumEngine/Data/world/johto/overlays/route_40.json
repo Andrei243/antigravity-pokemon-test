@@ -6,6 +6,8 @@
   "bgmTrack": "johto/route34",
   "trees": "Round",
   "people": {
+    // Monica of Monday, one of the week's seven siblings, on the beach on Mondays alone (route_40.txt, plan 20 · J13)
+    "w40_gswoman1": { "name": "Monica", "script": "Monica" },
     "w40_gsswimmerm": {
       "name": "Simon",
       "trainer": {

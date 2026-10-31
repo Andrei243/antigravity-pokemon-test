@@ -1,0 +1,38 @@
+{
+  // The third hall under the Pokéathlon Dome (plan 20 · J13, the last part): HeartGold's
+  // MAP_POKEATHLON_DOME_INTERIOR_B1F_POTENTIAL_ROOM. The Pokégear's and the ball's signs, which HeartGold hangs behind
+  // flags nothing sets here, are left out; the hall's own things are read
+  "area": "pokeathlon_dome_interior_b1f_potential_room",
+  "bgmTrack": "johto/route34",
+  "people": {
+    "d49r0106_pcwoman2_2": {
+      "name": "Guide",
+      "still": true,
+      "dialog": [ "This hall is about potential. A Pokémon that keeps at it can find more in itself than its stars say." ]
+    },
+    // Before the way on to the last hall until three courses are won (pokeathlon_dome_interior_b1f_potential_room.txt)
+    "d49r0106_pcwoman2": { "name": "Guide", "still": true, "script": "Guide", "hiddenBy": "FLAG_UNK_0F1" },
+    "d49r0106_gsbigman": {
+      "name": "Fat Man",
+      "still": true,
+      "dialog": [ "Dodrio has three heads, so it thinks it should get three medals. I keep telling it that's not how it works." ]
+    },
+    "d49r0106_tsure_poke_static_dodrio": {
+      "name": "Dodrio",
+      "npcType": "Pokemon",
+      "species": "Dodrio",
+      "still": true,
+      "dialog": [ "All three of Dodrio's heads look at you at once." ]
+    }
+  },
+  // The same guide aside once the last hall is open (HeartGold moves her to 6, 3 facing east)
+  "npcs": [
+    { "id": "pokeathlon_dome_interior_b1f_potential_room.GuideAside", "name": "Guide", "npcType": "Nurse", "x": 6, "y": 3,
+      "facing": "Right", "script": "Guide", "shownBy": "FLAG_UNK_0F1" }
+  ],
+  "signs": {
+    "D49R0106_004+1": "A chart of the five Pokéathlon stats, with a star for each point a Pokémon can reach.",
+    "D49R0106_005+1": "An empty space on the wall, waiting for something a great athlete will one day earn.",
+    "D49R0106_006+1": "An empty space on the wall, waiting for something a great athlete will one day earn."
+  }
+}

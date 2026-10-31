@@ -14,7 +14,8 @@
 # red-haired boy waits by the lake's shrine and the first step onto the row before him (trigger 1) brings Lance and Clair
 # for a double battle, the player beside the boy (VAR_UNK_40FC 2). From then on the boy trains here on Tuesdays and
 # Thursdays, and Clair walks the island on her mornings until her number is in the Pokégear and then on her afternoons
-# (HeartGold's hours 6 to 9 and 16 to 18, the time of day here), to swap numbers. Her photograph and her rematch hours
+# (HeartGold's hours 6 to 9 and 16 to 18, the time of day here), to swap numbers, and once they are swapped for a
+# photograph together (plan 20 · J13: `photograph`, the screenshot key's picture). Her rematch hours
 # (the Pokégear's, J3) are not part of this.
 
 
@@ -93,7 +94,18 @@ label Declined
   say "..."
   end
 label Registered
-  say "You again? Friday nights, remember, if it's a battle you're after. Until then, let me train."
+  say "You again? Friday nights, remember, if it's a battle you're after."
+  # HeartGold's photo with her (CameronPhoto 83, into the photo album): here the picture is the screenshot key's own,
+  # kept with the player's screenshots (docs/mechanics/rulings.md, "The week siblings and the dome's pieces")
+  ask "...Since you came all this way, do you want a picture with me? Don't make a fuss about it."
+  if no goto NoPicture
+  say "Fine. Stand next to me and look this way."
+  photograph
+  wait 0.6
+  say "There. Keep it somewhere safe, and don't go showing it to everyone."
+  end
+label NoPicture
+  say "Suit yourself. Let me get back to training."
   end
 label Waiting
   say "Hm? What is it? I'm on my way back to the Gym."

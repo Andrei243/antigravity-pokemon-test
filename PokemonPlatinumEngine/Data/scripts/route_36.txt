@@ -101,6 +101,7 @@ label Gone
 script Arthur
   face r36_gsboy1_2 player
   speaker "Arthur"
+  if var VAR_NUM_MET_WEEKDAY_SIBLINGS >= 7 goto All
   if flag FLAG_GOT_HARD_STONE_FROM_ARTHUR goto Again
   if not weekday thursday goto NotToday
   say "Who are you? I'm Arthur of Thursday. My sisters and brothers each have a day, and Thursday is mine."
@@ -114,4 +115,8 @@ label Again
   end
 label NotToday
   say "Today isn't Thursday. Come back then."
+  end
+label All
+  if not weekday thursday goto NotToday
+  call WeekSiblingRibbon
   end

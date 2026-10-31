@@ -1,0 +1,38 @@
+{
+  "key": "pokeathlon_dome_interior_b1f_potential_room",
+  "index": 286,
+  "name": "Pokeathlon Dome",
+  "matrix": 159,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_PT_ENTR",
+  "nightMusic": "GS_PT_ENTR",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 7, "z": 2, "to": "pokeathlon_dome_interior_b1f_friendship_room", "toWarp": 0 },
+    { "x": 3, "z": 14, "to": "pokeathlon_dome_interior_b1f_trust_room", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "d49r0106_pcwoman2", "looks": "pcwoman2", "movement": "0", "x": 7, "z": 3, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "D49R0106_001+1" },
+    { "id": "d49r0106_pcwoman2_2", "looks": "pcwoman2", "movement": "0", "x": 1, "z": 14, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "D49R0106_000+1" },
+    { "id": "d49r0106_gsbigman", "looks": "gsbigman", "movement": "0", "x": 11, "z": 7, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "D49R0106_002+1" },
+    { "id": "d49r0106_tsure_poke_static_dodrio", "looks": "follower_mon_static_dodrio", "movement": "0", "x": 12, "z": 7, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "D49R0106_003+1" },
+    { "id": "d49r0106_signpokegear", "looks": "signpokegear", "movement": "0", "x": 3, "z": 3, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_POKEATHLON_POKEGEAR_SIGN", "script": "0" },
+    { "id": "d49r0106_signball", "looks": "signball", "movement": "0", "x": 10, "z": 3, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_POKEATHLON_BALL_SIGN", "script": "0" }
+  ],
+  "signs": [
+    { "x": 3, "z": 3, "type": 0, "script": "D49R0106_005+1" },
+    { "x": 10, "z": 3, "type": 0, "script": "D49R0106_006+1" },
+    { "x": 11, "z": 3, "type": 0, "script": "D49R0106_006+1" },
+    { "x": 6, "z": 11, "type": 0, "script": "D49R0106_004+1" },
+    { "x": 8, "z": 11, "type": 0, "script": "D49R0106_004+1" },
+    { "x": 7, "z": 11, "type": 0, "script": "D49R0106_004+1" }
+  ],
+  "triggers": []
+}

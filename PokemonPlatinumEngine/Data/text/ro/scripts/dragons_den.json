@@ -108,10 +108,48 @@
     },
     {
       "en": [
-        "You again? Friday nights, remember, if it's a battle you're after. Until then, let me train."
+        "You again? Friday nights, remember, if it's a battle you're after."
       ],
       "text": [
+        ""
+      ],
+      "was": [
         "Tu din nou? Vinerea seara, ține minte, dacă vrei o luptă. Până atunci, lasă-mă să mă antrenez."
+      ]
+    },
+    {
+      "en": [
+        "...Since you came all this way, do you want a picture with me? Don't make a fuss about it."
+      ],
+      "text": [
+        ""
+      ],
+      "was": [
+        "Hm? Ce e? Mă întorc la Arenă."
+      ]
+    },
+    {
+      "en": [
+        "Fine. Stand next to me and look this way."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There. Keep it somewhere safe, and don't go showing it to everyone."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Suit yourself. Let me get back to training."
+      ],
+      "text": [
+        ""
       ]
     },
     {
@@ -119,7 +157,7 @@
         "Hm? What is it? I'm on my way back to the Gym."
       ],
       "text": [
-        "Hm? Ce e? Mă întorc la Arenă."
+        ""
       ]
     }
   ],

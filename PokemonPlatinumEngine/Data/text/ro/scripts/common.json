@@ -2404,10 +2404,43 @@
     },
     {
       "en": [
+        "The hall of trust under the lobby is open to you now. Do have a look!"
+      ],
+      "text": [
+        ""
+      ],
+      "was": [
+        "Acum ai {result} Puncte Athlon. Revino și concurează oricând!"
+      ]
+    },
+    {
+      "en": [
+        "The hall of potential under the lobby is open to you now. Do have a look!"
+      ],
+      "text": [
+        ""
+      ],
+      "was": [
+        "O echipă la Pokéathlon înseamnă trei Pokémon, iar Ouăle nu pot concura. Te rog revino cu trei."
+      ]
+    },
+    {
+      "en": [
+        "The last hall under the lobby is open to you now. The dome's owner would like to meet you there!"
+      ],
+      "text": [
+        ""
+      ],
+      "was": [
+        "Revino oricând Pokémonii tăi au chef de o alergare!"
+      ]
+    },
+    {
+      "en": [
         "You now have {result} Athlete Points. Come back and compete any time!"
       ],
       "text": [
-        "Acum ai {result} Puncte Athlon. Revino și concurează oricând!"
+        ""
       ]
     },
     {
@@ -2415,7 +2448,7 @@
         "A team of the Pokéathlon is three Pokémon, and Eggs can't compete. Please come back with three."
       ],
       "text": [
-        "O echipă la Pokéathlon înseamnă trei Pokémon, iar Ouăle nu pot concura. Te rog revino cu trei."
+        ""
       ]
     },
     {
@@ -2423,7 +2456,7 @@
         "Come back whenever your Pokémon feel like a run!"
       ],
       "text": [
-        "Revino oricând Pokémonii tăi au chef de o alergare!"
+        ""
       ]
     }
   ],
@@ -2748,6 +2781,42 @@
       ],
       "text": [
         "Undeva, jos, s-a auzit un bâzâit lung, ca o cădere: bariera din cală a căzut!"
+      ]
+    }
+  ],
+  "WeekSiblingRibbon": [
+    {
+      "en": [
+        "You've met all seven of us! That calls for something special. Let me give your {wearer} a ribbon for today."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received the {ribbon}!",
+        "{player} put the {ribbon} on {wearer}."
+      ],
+      "text": [
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your {wearer} is already wearing the {ribbon}. It suits it!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "One ribbon a day is all we give. Come and see whoever's day it is tomorrow!"
+      ],
+      "text": [
+        ""
       ]
     }
   ]

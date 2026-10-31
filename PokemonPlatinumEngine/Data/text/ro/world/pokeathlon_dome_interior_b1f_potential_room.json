@@ -1,0 +1,104 @@
+{
+  "people": {
+    "d49r0106_pcwoman2_2": {
+      "name": {
+        "en": [
+          "Guide"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This hall is about potential. A Pokémon that keeps at it can find more in itself than its stars say."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49r0106_pcwoman2": {
+      "name": {
+        "en": [
+          "Guide"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49r0106_gsbigman": {
+      "name": {
+        "en": [
+          "Fat Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Dodrio has three heads, so it thinks it should get three medals. I keep telling it that's not how it works."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49r0106_tsure_poke_static_dodrio": {
+      "name": {
+        "en": [
+          "Dodrio"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "All three of Dodrio's heads look at you at once."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "pokeathlon_dome_interior_b1f_potential_room.GuideAside": {
+      "name": {
+        "en": [
+          "Guide"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "D49R0106_004+1": {
+      "en": [
+        "A chart of the five Pokéathlon stats, with a star for each point a Pokémon can reach."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "D49R0106_005+1": {
+      "en": [
+        "An empty space on the wall, waiting for something a great athlete will one day earn."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "D49R0106_006+1": {
+      "en": [
+        "An empty space on the wall, waiting for something a great athlete will one day earn."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "key": "pokeathlon_dome_interior_b1f_trust_room",
+  "index": 285,
+  "name": "Pokeathlon Dome",
+  "matrix": 158,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_PT_ENTR",
+  "nightMusic": "GS_PT_ENTR",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 2, "to": "pokeathlon_dome_interior_b1f_potential_room", "toWarp": 1 },
+    { "x": 3, "z": 12, "to": "pokeathlon_dome_interior_b1f_solidarity_room", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "d49r0105_pcwoman2", "looks": "pcwoman2", "movement": "0", "x": 1, "z": 12, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "D49R0105_000+1" },
+    { "id": "d49r0105_pcwoman2_2", "looks": "pcwoman2", "movement": "0", "x": 3, "z": 3, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "D49R0105_001+1" },
+    { "id": "d49r0105_gsfighter", "looks": "gsfighter", "movement": "0", "x": 14, "z": 9, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "D49R0105_004+1" },
+    { "id": "d49r0105_gsman3", "looks": "gsman3", "movement": "0", "x": 14, "z": 4, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "D49R0105_003+1" },
+    { "id": "d49r0105_gswoman3", "looks": "gswoman3", "movement": "0", "x": 11, "z": 12, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "D49R0105_002+1" },
+    { "id": "d49r0105_tsure_poke_static_abra", "looks": "follower_mon_static_abra", "movement": "0", "x": 10, "z": 12, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "D49R0105_005+1" },
+    { "id": "d49r0105_tsure_poke_static_dratini", "looks": "follower_mon_static_dratini", "movement": "0", "x": 15, "z": 4, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "D49R0105_006+1" },
+    { "id": "d49r0105_signshoes", "looks": "signshoes", "movement": "0", "x": 13, "z": 3, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_POKEATHLON_SHOES_SIGN", "script": "0" },
+    { "id": "d49r0105_signclothes", "looks": "signclothes", "movement": "0", "x": 9, "z": 3, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_POKEATHLON_CLOTHES_SIGN", "script": "0" },
+    { "id": "d49r0105_signflag", "looks": "signflag", "movement": "0", "x": 6, "z": 3, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_POKEATHLON_FLAG_SIGN", "script": "0" }
+  ],
+  "signs": [
+    { "x": 10, "z": 3, "type": 0, "script": "D49R0105_008+1" },
+    { "x": 9, "z": 3, "type": 0, "script": "D49R0105_008+1" },
+    { "x": 13, "z": 3, "type": 0, "script": "D49R0105_009+1" },
+    { "x": 12, "z": 3, "type": 0, "script": "D49R0105_009+1" },
+    { "x": 6, "z": 3, "type": 0, "script": "D49R0105_010+1" },
+    { "x": 7, "z": 3, "type": 0, "script": "D49R0105_010+1" },
+    { "x": 14, "z": 3, "type": 0, "script": "D49R0105_009+1" },
+    { "x": 5, "z": 9, "type": 0, "script": "D49R0105_007+1" },
+    { "x": 6, "z": 9, "type": 0, "script": "D49R0105_007+1" },
+    { "x": 7, "z": 9, "type": 0, "script": "D49R0105_007+1" },
+    { "x": 8, "z": 9, "type": 0, "script": "D49R0105_007+1" },
+    { "x": 9, "z": 9, "type": 0, "script": "D49R0105_007+1" },
+    { "x": 11, "z": 9, "type": 0, "script": "D49R0105_013+1" }
+  ],
+  "triggers": []
+}
