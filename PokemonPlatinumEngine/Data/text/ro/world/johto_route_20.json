@@ -6,7 +6,7 @@
           "Frankie"
         ],
         "text": [
-          ""
+          "Frankie"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Swimmer Frankie: I'm swimming laps round the islands. Join me for a battle!"
         ],
         "text": [
-          ""
+          "Înotător Frankie: Înot ture în jurul insulelor. Hai la o luptă!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Swimmer Frankie: I'll swim it off."
         ],
         "text": [
-          ""
+          "Înotător Frankie: O să înot ca să-mi treacă."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Pedro"
         ],
         "text": [
-          ""
+          "Pedro"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Camper Pedro: I'm camping on the islands. The Gym inside is roasting hot!"
         ],
         "text": [
-          ""
+          "Campist Pedro: Campez pe insule. Arena dinăuntru e fierbinte de-a dreptul!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Camper Pedro: At least my tent is cool."
         ],
         "text": [
-          ""
+          "Campist Pedro: Măcar cortul meu e răcoros."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Adrian"
         ],
         "text": [
-          ""
+          "Adrian"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Picnicker Adrian: A picnic on the beach, and a battle for dessert!"
         ],
         "text": [
-          ""
+          "Excursionistă Adrian: Un picnic pe plajă și o luptă la desert!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Picnicker Adrian: That dessert was bitter."
         ],
         "text": [
-          ""
+          "Excursionistă Adrian: Desertul ăsta a fost amar."
         ]
       }
     },
@@ -84,7 +84,7 @@
           "Cheyenne"
         ],
         "text": [
-          ""
+          "Cheyenne"
         ]
       },
       "before": {
@@ -92,7 +92,7 @@
           "Picnicker Cheyenne: The sand's so warm here. Let's battle on it!"
         ],
         "text": [
-          ""
+          "Excursionistă Cheyenne: Nisipul e atât de cald aici. Hai să luptăm pe el!"
         ]
       },
       "after": {
@@ -100,7 +100,7 @@
           "Picnicker Cheyenne: I think I got sand in my shoes."
         ],
         "text": [
-          ""
+          "Excursionistă Cheyenne: Cred că mi-a intrat nisip în pantofi."
         ]
       }
     },
@@ -110,7 +110,7 @@
           "Bert"
         ],
         "text": [
-          ""
+          "Bert"
         ]
       },
       "before": {
@@ -118,7 +118,7 @@
           "Bird Keeper Bert: My birds patrol this whole stretch of sea. Halt!"
         ],
         "text": [
-          ""
+          "Crescător de păsări Bert: Păsările mele patrulează toată întinderea asta de mare. Stai!"
         ]
       },
       "after": {
@@ -126,7 +126,7 @@
           "Bird Keeper Bert: Patrol over."
         ],
         "text": [
-          ""
+          "Crescător de păsări Bert: Patrula s-a terminat."
         ]
       }
     },
@@ -136,7 +136,7 @@
           "Ernie"
         ],
         "text": [
-          ""
+          "Ernie"
         ]
       },
       "before": {
@@ -144,7 +144,7 @@
           "Bird Keeper Ernie: Up here on the island I can see everyone coming. I saw you!"
         ],
         "text": [
-          ""
+          "Crescător de păsări Ernie: De sus, de pe insulă, văd pe toată lumea care vine. Te-am văzut!"
         ]
       },
       "after": {
@@ -152,7 +152,7 @@
           "Bird Keeper Ernie: I didn't see that coming, though."
         ],
         "text": [
-          ""
+          "Crescător de păsări Ernie: Asta, în schimb, nu am văzut-o venind."
         ]
       }
     },
@@ -162,7 +162,7 @@
           "Nicole"
         ],
         "text": [
-          ""
+          "Nicole"
         ]
       },
       "before": {
@@ -170,7 +170,7 @@
           "Swimmer Nicole: The water round the Seafoam Islands is icy. You'll need a warm-up battle!"
         ],
         "text": [
-          ""
+          "Înotătoare Nicole: Apa din jurul Insulelor Seafoam e înghețată. Ai nevoie de o luptă de încălzire!"
         ]
       },
       "after": {
@@ -178,7 +178,7 @@
           "Swimmer Nicole: I'm warmed up. And worn out."
         ],
         "text": [
-          ""
+          "Înotătoare Nicole: M-am încălzit. Și m-am și epuizat."
         ]
       }
     },
@@ -188,7 +188,7 @@
           "Lori"
         ],
         "text": [
-          ""
+          "Lori"
         ]
       },
       "before": {
@@ -196,7 +196,7 @@
           "Swimmer Lori: My Pokémon sparkle in the sun. Pretty, aren't they? Strong, too!"
         ],
         "text": [
-          ""
+          "Înotătoare Lori: Pokémonii mei sclipesc în soare. Frumoși, nu? Și puternici!"
         ]
       },
       "after": {
@@ -204,7 +204,7 @@
           "Swimmer Lori: They're still pretty, at least."
         ],
         "text": [
-          ""
+          "Înotătoare Lori: Au rămas frumoși, măcar."
         ]
       }
     },
@@ -214,7 +214,7 @@
           "Elmo"
         ],
         "text": [
-          ""
+          "Elmo"
         ]
       },
       "before": {
@@ -222,7 +222,7 @@
           "Swimmer Elmo: I've swum here all the way from Fuchsia City. Ready to battle!"
         ],
         "text": [
-          ""
+          "Înotător Elmo: Am înotat până aici tocmai din Orașul Fuchsia. Gata de luptă!"
         ]
       },
       "after": {
@@ -230,7 +230,7 @@
           "Swimmer Elmo: All that way, for this."
         ],
         "text": [
-          ""
+          "Înotător Elmo: Atâta drum, pentru asta."
         ]
       }
     },
@@ -240,7 +240,7 @@
           "Luis"
         ],
         "text": [
-          ""
+          "Luis"
         ]
       },
       "before": {
@@ -248,7 +248,7 @@
           "Swimmer Luis: You look like you're heading for the Gym. Get past me first!"
         ],
         "text": [
-          ""
+          "Înotător Luis: Arăți ca și cum te îndrepți spre Arenă. Treci mai întâi de mine!"
         ]
       },
       "after": {
@@ -256,7 +256,7 @@
           "Swimmer Luis: Off you go, then."
         ],
         "text": [
-          ""
+          "Înotător Luis: Atunci, mergi."
         ]
       }
     },
@@ -266,7 +266,7 @@
           "Leona"
         ],
         "text": [
-          ""
+          "Leona"
         ]
       },
       "before": {
@@ -274,7 +274,7 @@
           "Swimmer Leona: Swimming is the best training there is. Let me show you!"
         ],
         "text": [
-          ""
+          "Înotătoare Leona: Înotul e cel mai bun antrenament. Lasă-mă să-ți arăt!"
         ]
       },
       "after": {
@@ -282,7 +282,7 @@
           "Swimmer Leona: Maybe battling is better training."
         ],
         "text": [
-          ""
+          "Înotătoare Leona: Poate că lupta e un antrenament mai bun."
         ]
       }
     },
@@ -292,7 +292,7 @@
           "Mina"
         ],
         "text": [
-          ""
+          "Mina"
         ]
       },
       "before": {
@@ -300,7 +300,7 @@
           "Swimmer Mina: I love the sea, and I love battles. Today is a good day!"
         ],
         "text": [
-          ""
+          "Înotătoare Mina: Iubesc marea și iubesc luptele. Azi e o zi bună!"
         ]
       },
       "after": {
@@ -308,7 +308,7 @@
           "Swimmer Mina: It was a good day until now."
         ],
         "text": [
-          ""
+          "Înotătoare Mina: A fost o zi bună până acum."
         ]
       }
     }
@@ -319,7 +319,7 @@
         "Seafoam Islands\nCinnabar Gym inside"
       ],
       "text": [
-        ""
+        "Insulele Seafoam\nArena Cinnabar înăuntru"
       ]
     },
     "W20_001+1": {
@@ -327,7 +327,7 @@
         "Seafoam Islands"
       ],
       "text": [
-        ""
+        "Insulele Seafoam"
       ]
     }
   }

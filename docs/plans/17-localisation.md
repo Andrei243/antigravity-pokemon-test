@@ -629,3 +629,7 @@ Placeholders and plan 09's markup pass through untouched; a translation may use 
 
 - **N6zg, done 2026-10-31**: everything still empty in `ro`: 387 entries in 49 files (12 scripts, 37 world files), by hand. U10 part b: Mistralton Cave 2F, Clay Tunnel's three floors, the Underground Ruins and the Regis' chambers (Guidance, Iceberg, Iron, Rock Peak). J15 part f: Viridian City and its rooms, Route 2 and Viridian Forest's gate houses, Pewter City (Gym, Museum, houses, Pokémon Center), Route 3, Mt. Moon Square and Route 4. Glossary as before: Boulder Badge "Insigna Bolovan", Rock Slide "Avalanșă", class prefixes Puști, Drumeț, Campist, Excursionistă, Vânător de insecte, Scuipător de foc, Echipă dublă, Centură Neagră, Crescător de păsări; Mt. Moon "Muntele Lunii".
   - **Left**: nothing in `ro` after this; whatever later waves write in English is the next slice.
+- [x] N6zh J15 part g's lines in Romanian (done 2026-10-31)
+
+- **N6zh, done 2026-10-31**: everything still empty in `ro`: 169 entries in 16 files (2 scripts, 14 world files), by hand. J15 part g: Route 1 and its Viridian gate house, Pallet Town (Red's and Blue's houses, Oak's Lab), Cinnabar Island and its Pokémon Center, Routes 20 and 21, the Seafoam Islands and Blaine's Gym, and Blue's lines on Cinnabar. Volcano Badge "Insigna Vulcan", Overheat "Supraîncălzire"; class prefixes Înotător/Înotătoare, Pescar, Campist, Excursionistă, Crescător de păsări, Școlar, Antrenor/Antrenoare As.
+  - **Left**: nothing in `ro` after this.

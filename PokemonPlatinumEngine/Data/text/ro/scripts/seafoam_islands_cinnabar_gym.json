@@ -5,7 +5,7 @@
         "Blaine"
       ],
       "text": [
-        ""
+        "Blaine"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "So, you found my hideaway. The volcano swallowed my old Gym, and now I keep my fire in a cave of ice."
       ],
       "text": [
-        ""
+        "Deci mi-ai găsit ascunzătoarea. Vulcanul mi-a înghițit vechea Arenă, iar acum îmi țin focul într-o peșteră de gheață."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "But a Leader's fire doesn't go out with a building. A Champion from Johto, is it? Then let's turn up the heat!"
       ],
       "text": [
-        ""
+        "Dar focul unui Lider nu se stinge odată cu o clădire. Un Campion din Johto, zici? Atunci să dăm căldura la maximum!"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "My flames are out, for now. You've earned this: the Volcano Badge."
       ],
       "text": [
-        ""
+        "Flăcările mele s-au stins, deocamdată. Ți-ai meritat asta: Insigna Vulcan."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "{player} received the Volcano Badge from Blaine!"
       ],
       "text": [
-        ""
+        "{player} a primit Insigna Vulcan de la Blaine!"
       ]
     },
     {
@@ -45,7 +45,7 @@
         "And take this, too. It holds my hottest move."
       ],
       "text": [
-        ""
+        "Și ia și asta. Conține cea mai fierbinte mișcare a mea."
       ]
     },
     {
@@ -53,7 +53,7 @@
         "TM50 is Overheat. It's fearsomely strong, but it leaves the user's Special Attack much lower afterwards."
       ],
       "text": [
-        ""
+        "TM50 este Supraîncălzire. E înfricoșător de puternică, dar după aceea Atacul Special al celui care o folosește scade mult."
       ]
     },
     {
@@ -61,7 +61,7 @@
         "One day I'll build my Gym on Cinnabar again. Until then, the ice keeps my fire honest."
       ],
       "text": [
-        ""
+        "Într-o zi o să-mi construiesc din nou Arena pe Cinnabar. Până atunci, gheața îmi ține focul cu picioarele pe pământ."
       ]
     }
   ],
@@ -71,7 +71,7 @@
         "Hey, champ in the making! Blaine's Pokémon burn hot. Water and Ground moves will cool them right down."
       ],
       "text": [
-        ""
+        "Hei, viitor campion! Pokémonii lui Blaine ard puternic. Mișcările de Apă și de Pământ îi răcesc imediat."
       ]
     },
     {
@@ -79,7 +79,7 @@
         "You beat Blaine! The ice in here nearly melted!"
       ],
       "text": [
-        ""
+        "L-ai învins pe Blaine! Gheața de aici aproape s-a topit!"
       ]
     }
   ]
