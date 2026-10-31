@@ -1,0 +1,22 @@
+# Route 23 (plan 22 · U9, part b; U10, part a). docs/scripts.md describes the language; the lines are our own, on Black 2's beats
+# (the decompilation's res/field/scripts/route_23.s, read for the order alone).
+#
+# Azelf (16) waits by the river once Unova's Hall of Fame is entered (shown by UnovaHallOfFame), at Black 2's level 65; caught or
+# beaten it is gone for good (FLAG_UNOVA_FOUGHT_AZELF), run from, it is back the next time. Black 2 brings it out of the Cave of
+# Being, which is a later part of plan 22 · U10; the Hall of Fame stands in for that scene.
+script Azelf
+  if not flag UnovaHallOfFame end
+  face self player
+  cry "Azelf"
+  speaker none
+  text "Azelf gave a high cry!\nA fierce will brushes against {player}'s own!"
+  wildbattle "Azelf" 65
+  if result == 2 goto Fled
+  setflag FLAG_UNOVA_FOUGHT_AZELF
+  hide self
+  text "Only the river's rushing is left..."
+  end
+label Fled
+  hide self
+  text "Azelf flashed away over the water..."
+  end

@@ -8,6 +8,9 @@
   "name": "Pokémon League",
   "bgmTrack": "unova/pokemon_league",
   "arenaType": "Dragon",
+  // the walk stands over the dark, as the original's does (plan 22 · U10, part a: drawn as a room's walls round it, its floor
+  // stood on blocks of wall over the void)
+  "overTheDark": true,
   "exits": [
     { "x": 16, "z": 58, "map": "UnovaPokemonLeague_ChampionsRoom", "toX": 16, "toY": 55, "facing": "Up" },
     { "x": 16, "z": 56, "map": "UnovaPokemonLeague_ChampionsRoom", "toX": 16, "toY": 59, "facing": "Down" }

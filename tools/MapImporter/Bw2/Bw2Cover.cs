@@ -54,6 +54,10 @@ public static class Bw2Cover
         // roofs, windows, ring and lifts)
         ("^pk_l_iwa", TerrainCover.Cliff),
         ("^pk_l_(yane|mado|ring)|^pl_ele|^pl_colum", TerrainCover.Building),
+        // (plan 22 · U10, part a: a pillar, hashira, is no bridge: in38_hasira stands on the League plaza's lawn below the steps,
+        // hasi below took it for a bridge's planks and every unnamed tile of the lawn round it took the planks from it, and the
+        // pillars of the League's rooms were planks too. A pillar says nothing of the ground it stands on)
+        ("hasira|hashira", null),
         ("^taki|^sea_zanami|^sea_simi|^shore|^ike\\d|^mizu|kawa|gawa|^sea_|nagare|asase|_zan\\d|mizo|suimon|foun", TerrainCover.Water),   // falls, surf, ponds, rivers, shallows, the sea, ditches, sluices, fountains
         ("marsh", TerrainCover.Marsh),
         ("gake|^ga_s|dansa|gak\\d|futa|wall", TerrainCover.Cliff),   // cliffs, the sea's cliffs, their caps (futa) and steps of rock, walls of rock

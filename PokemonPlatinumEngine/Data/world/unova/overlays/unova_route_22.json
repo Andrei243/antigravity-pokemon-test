@@ -2,8 +2,9 @@
   // Route 22 (plan 22 · U8, part b): the wooded hills west of Humilau City to the Giant Chasm, Black 2's, with six trainers and
   // its balls and hidden things in the area file; our words. Colress (7, FLAG_UNOVA_HIDE_COLRESS_ROUTE_22) is shown once Hugh has
   // sent the player here and steps out to meet them in the pass below the beach (our trigger, 752, 146 to 148,
-  // VAR_UNOVA_HUMILAU 4; unova_route_22.txt), with the Colress Machine. Black 2's Terrakion (6, FLAG_UNOVA_HIDE_TERRAKION), who
-  // crosses the road before him, is plan 22 · U10's (the Swords of Justice), as are the Giant Chasm's way in (U9) and the two
+  // VAR_UNOVA_HUMILAU 4; unova_route_22.txt), with the Colress Machine. Black 2's Terrakion (6), a Sword of Justice,
+  // waits by the road once Unova's Hall of Fame is entered and is gone once fought (plan 22 · U10, part a:
+  // FLAG_UNOVA_FOUGHT_TERRAKION; unova_route_22.txt); plan 22 · U10's later parts have the Giant Chasm's way in (U9) and the two
   // things of the Shards (15, 16)
   "area": "unova_route_22",
   "bgmTrack": "unova/route12",
@@ -18,7 +19,7 @@
     "3": { "name": "Lucca", "trainer": { "dialogueBefore": "Eight Badges? Then you won't mind one more battle!", "dialogueAfter": "Badges don't lie, I suppose." } },
     "4": { "name": "Lowell", "trainer": { "dialogueBefore": "My pack is heavy, but my Pokémon are heavier hitters!", "dialogueAfter": "Ouch. I'll carry this loss too." } },
     "5": { "name": "Justin", "trainer": { "dialogueBefore": "These hills have strong Pokémon, and I'm stronger! Hup!", "dialogueAfter": "The hills win again. And you." } },
-    "6": { "name": "Terrakion", "npcType": "Pokemon", "species": "Terrakion", "hiddenBy": "FLAG_UNOVA_HIDE_TERRAKION", "dialog": [ "Terrakion: Gurooooh!" ] },
+    "6": { "name": "Terrakion", "npcType": "Pokemon", "species": "Terrakion", "hiddenBy": "FLAG_UNOVA_FOUGHT_TERRAKION", "shownBy": "UnovaHallOfFame", "script": "Terrakion", "still": true },
     "7": { "name": "Colress", "npcType": "colress", "script": "Colress", "hiddenBy": "FLAG_UNOVA_HIDE_COLRESS_ROUTE_22", "still": true }
   },
   "signs": {

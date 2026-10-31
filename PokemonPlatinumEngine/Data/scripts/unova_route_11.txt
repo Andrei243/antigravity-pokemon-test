@@ -6,3 +6,23 @@
 script OnEnter
   call UnovaCatchUpC
   end
+
+
+# Virizion on the road (0; plan 22 · U10, part a): once Unova's Hall of Fame is entered it waits there, Black 2's level 65
+# (route_11.s), and is gone for good once caught or beaten (FLAG_UNOVA_FOUGHT_VIRIZION); run from, it is back next time.
+script Virizion
+  if not flag UnovaHallOfFame end
+  face self player
+  cry "Virizion"
+  speaker none
+  text "Virizion called out, light and sharp!\nIt watches {player} with calm, keen eyes!"
+  wildbattle "Virizion" 65
+  if result == 2 goto Fled
+  setflag FLAG_UNOVA_FOUGHT_VIRIZION
+  hide self
+  text "The grass by the road sways, and nothing more..."
+  end
+label Fled
+  hide self
+  text "Virizion slipped away into the trees..."
+  end

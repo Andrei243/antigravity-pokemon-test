@@ -5,8 +5,8 @@
   // FLAG_UNOVA_HIDE_N_CAVERN) comes with Zekrom (zekrom, FLAG_UNOVA_HIDE_ZEKROM_CAVERN), Kyurem takes Zekrom into itself (kyurem_black,
   // FLAG_UNOVA_HIDE_BLACK_KYUREM, on Kyurem's own tile), the player battles it and Ghetsis, the Shadow Triad (triad_cavern_a to _c,
   // FLAG_UNOVA_HIDE_TRIAD_CAVERN) take him away, and Hugh (hugh_cavern) and Cheren (cheren_cavern) come up afterwards
-  // (giant_chasm_6.txt). Black 2's own people of the cavern (0 to 6, 8 to 11) are held back; Kyurem's place here after the League is
-  // plan 22 · U10's
+  // (giant_chasm_6.txt). Black 2's own people of the cavern (0 to 6, 8 to 11) are held back. Once Unova's Hall of Fame is entered
+  // Kyurem rests at the cavern's head (kyurem_rest), level 70, until it is fought (FLAG_UNOVA_FOUGHT_KYUREM; plan 22 · U10, part a)
   "area": "giant_chasm_6",
   "bgmTrack": "unova/giant_chasm",
   "heldBack": [ "0", "1", "2", "3", "4", "5", "6", "8", "9", "10", "11" ],
@@ -16,6 +16,7 @@
   "npcs": [
     { "id": "ghetsis", "name": "Ghetsis", "npcType": "ghetsis", "x": 15, "y": 16, "facing": "Down", "hiddenBy": "FLAG_UNOVA_HIDE_GHETSIS_CAVERN" },
     { "id": "kyurem", "name": "Kyurem", "npcType": "Pokemon", "species": "Kyurem", "x": 15, "y": 19, "facing": "Down", "script": "Kyurem", "hiddenBy": "FLAG_UNOVA_HIDE_KYUREM_CAVERN" },
+    { "id": "kyurem_rest", "name": "Kyurem", "npcType": "Pokemon", "species": "Kyurem", "x": 15, "y": 17, "facing": "Down", "script": "KyuremRests", "hiddenBy": "FLAG_UNOVA_FOUGHT_KYUREM", "shownBy": "UnovaHallOfFame" },
     { "id": "kyurem_black", "name": "Kyurem", "npcType": "Pokemon", "species": "Kyurem-Black", "x": 15, "y": 19, "facing": "Down", "script": "Kyurem", "hiddenBy": "FLAG_UNOVA_HIDE_BLACK_KYUREM" },
     { "id": "n", "name": "N", "npcType": "n", "x": 17, "y": 20, "facing": "Up", "hiddenBy": "FLAG_UNOVA_HIDE_N_CAVERN" },
     { "id": "zekrom", "name": "Zekrom", "npcType": "Pokemon", "species": "Zekrom", "x": 18, "y": 17, "facing": "Left", "hiddenBy": "FLAG_UNOVA_HIDE_ZEKROM_CAVERN" },

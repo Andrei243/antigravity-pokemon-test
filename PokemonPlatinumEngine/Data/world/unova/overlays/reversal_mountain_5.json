@@ -1,10 +1,13 @@
 {
   // Reversal Mountain's lair (plan 22 · U7, part b): the small chamber off the great cave where the mountain's heart is said to
   // be, Black 2's, our words. With Bianca along, the passage before it (9 to 11, 18, VAR_UNOVA_REVERSAL_LAIR 1) is a scene of hers:
-  // she wonders at the place and guesses at Heatran (reversal_mountain_5.txt). Heatran itself (0, FLAG_UNOVA_HIDE_HEATRAN) waits for
-  // the post-game and the Magma Stone (plan 22 · U10); the room is empty until then
+  // she wonders at the place and guesses at Heatran (reversal_mountain_5.txt). Once Unova's Hall of Fame is entered the Magma Stone
+  // lies on the ring path (magma_stone, FLAG_UNOVA_GOT_MAGMA_STONE); set down where the lair's heart is (read at 10, 12, as Black 2's
+  // question asks, FLAG_UNOVA_MAGMA_STONE_SET) it calls Heatran (0) down into the lair, gone once fought (FLAG_UNOVA_FOUGHT_HEATRAN;
+  // plan 22 · U10, part a)
   "area": "reversal_mountain_5",
   "bgmTrack": "unova/reversal_cave",
+  "readAt": [ { "x": 10, "z": 12, "script": "MagmaStone" } ],
   "triggers": [
     {
       "script": "BiancaInTheLair",
@@ -25,14 +28,17 @@
       "y": 22,
       "facing": "Up",
       "hiddenBy": "FLAG_UNOVA_HIDE_BIANCA_ALONG"
-    }
+    },
+    { "id": "magma_stone", "name": "Magma Stone", "npcType": "ItemBall", "x": 8, "y": 16, "item": "Magma Stone", "script": "MagmaStoneBall", "hiddenBy": "FLAG_UNOVA_GOT_MAGMA_STONE", "shownBy": "UnovaHallOfFame" }
   ],
   "people": {
     "0": {
       "name": "Heatran",
       "npcType": "Pokemon",
       "species": "Heatran",
-      "hiddenBy": "FLAG_UNOVA_HIDE_HEATRAN",
+      "hiddenBy": "FLAG_UNOVA_FOUGHT_HEATRAN",
+      "shownBy": "FLAG_UNOVA_MAGMA_STONE_SET",
+      "script": "Heatran",
       "still": true
     }
   }

@@ -251,7 +251,8 @@
     { "name": "UnovaPokemonLeague_MarshalsRoom", "matrix": 123, "area": "unova_pokemon_league_7", "trees": "Round", "setting": "Indoors" },
     { "name": "UnovaPokemonLeague_CaitlinsRoom", "matrix": 124, "area": "unova_pokemon_league_8", "trees": "Round", "setting": "Indoors" },
     { "name": "UnovaPokemonLeague_Descent", "matrix": 211, "area": "unova_pokemon_league_3", "trees": "Round", "setting": "Indoors" },
-    { "name": "UnovaPokemonLeague_ChampionsRoom", "matrix": 125, "area": "unova_pokemon_league_9", "trees": "Round", "setting": "Indoors" },    { "name": "UnovaPokemonLeague_HallOfFame", "matrix": 126, "area": "unova_pokemon_league_10", "trees": "Round", "setting": "Indoors" }
+    { "name": "UnovaPokemonLeague_ChampionsRoom", "matrix": 125, "area": "unova_pokemon_league_9", "trees": "Round", "setting": "Indoors" },
+    { "name": "UnovaPokemonLeague_HallOfFame", "matrix": 126, "area": "unova_pokemon_league_10", "trees": "Round", "setting": "Indoors" }
   ],
   "areas": [
     "aspertia_city", "aspertia_city_2", "aspertia_city_3", "aspertia_city_4", "aspertia_city_5", "aspertia_city_6",
