@@ -3879,6 +3879,24 @@
       "flint": "Team Flint",
       "gale": "Team Gale",
       "hazel": "Team Hazel"
+    },
+    "batch2": {
+      "event": {
+        "pennantCapture": "Pennant Capture",
+        "snowThrow": "Snow Throw",
+        "discCatch": "Disc Catch",
+        "lampJump": "Lamp Jump"
+      },
+      "howTo": {
+        "pennantCapture": "Run about the field with the arrows and take the pennants before the others do. Running tires your Pokémon: press {key:cancel} to send the next one in. Bump into another and both stand dazed.",
+        "snowThrow": "Point the arrows at a team and press {key:confirm} to throw a snowball. Keep {key:confirm} down to duck a ball coming your way. A hit scores three points, a ball ducked one.",
+        "discCatch": "Run along your lane with the arrows to where a disc comes down, and press {key:confirm} to jump for it. A catch in the air scores more. Press {key:cancel} to send in a rested Pokémon.",
+        "lampJump": "Your Pokémon bounces by itself. Press {key:confirm} just before it lands to spring higher, and light the lamps the top of each bounce passes. Too soon or too late, and it falls back."
+      },
+      "hits": "Hits: {n}",
+      "ducked": "Ducked: {n}",
+      "catches": "CATCHES",
+      "lamps": "Lamps: {n}"
     }
   },
   "placeWords": {

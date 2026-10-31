@@ -30,3 +30,4 @@ What changes from one release to the next, for players. Every session's close-ou
 - A 1280×800 window size, the Steam Deck's screen, which the first start picks on a screen of that size.
 - `docs/playing.md`: running a release without installing anything, macOS's and Windows' first-start questions, the Steam Deck, the controls, where saves are kept and `overrides/`.
 - `--verify` now has something to check: every release carries the list of its files (`manifest.sha256`).
+- The Pokéathlon has four more events: Pennant Capture (race the other teams to the pennants on a field), Snow Throw (throw snowballs at the other teams, and keep the button down to duck theirs), Disc Catch (run and jump for the discs falling into your lane) and Lamp Jump (press just before your Pokémon lands to bounce higher and light the lamps). They join the courses once those are built.

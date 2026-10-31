@@ -1751,6 +1751,24 @@ own colour is a sky blue (58, 150, 214): an event card's band, a stat's stars an
   ring near its edge and a paler one at its middle; each Pokémon on a disc of its team's colour with a white face, a
   glow behind it while it lunges; each team's corner panel (the player's at the bottom right) with its chip, its
   knock-offs and falls, and, while it is off, the next of its three faded.
+  - **Pennant Capture** (plan 15 · E7): a lawn (96, 168, 84) on a dark rim at the stage's middle, a unit 5.6 of the
+  layout, a white line across its middle and a white ring at its centre; each pennant a white pole with a gold flag;
+  each Pokémon on a disc of its team's colour with a white face (faded while it is changed, three gold sparks circling
+  it while it is dazed); each team's panel 200 wide at its own corner, outside the lawn, with its chip, its pennants in
+  Black 56 and its runner's breath as a bar (the team's colour, Red once tired).
+  - **Snow Throw** (plan 15 · E7): a square of snow (226, 236, 246) on a dark rim at the stage's middle, a unit 5 of the
+  layout, each team on a disc of its colour at its side (the player's at the bottom), a triangle of its colour pointing
+  at whom it throws at, and a bar under it filling as its next throw is made up; one ducking is drawn smaller and lower,
+  one dazed faded with gold sparks; a snowball a white disc with a pale blue rim, rising in an arc 80 high on its way,
+  its shadow on the snow under it. The corner panels are Ring Drop's, with its hits and the balls it ducked.
+  - **Disc Catch** (plan 15 · E7): four lanes as Block Smash's columns, each a pale wash of the dome's blue with a lawn
+  strip 70 tall along its foot; the team's chip, its catches in Black 56; a disc a gold ellipse 44 by 16 with a white
+  rim, its shadow a dark ellipse on the lawn under it; the catcher rising with its jump, a glow of its team's colour
+  for the frames after a catch.
+  - **Lamp Jump** (plan 15 · E7): four columns of night (30, 40, 70), each with its chip, a springboard of its team's
+  colour at the foot and a column of ten lamps up its right side, a unit 1.8 of the layout to each unit of height: a
+  lamp the last bounce's top passed is gold with a glow, the rest dark grey; the jumper over the springboard at its
+  height; the lamps lit in all in Black 32 under the board.
 - **An event's points**: a row 152 tall for each team (the player's on a pale wash of its colour), its chip, its three,
   and a bar of its colour growing over 0.8 s to its points, the number in Black 56 at the right.
 - **The scoreboard**: SCOREBOARD; the four in order, each a row 144 tall with its place in Black 64 (gold for the

@@ -48,14 +48,16 @@ internal static partial class ModernUi
     {
         AthlonEventKind.HurdleDash => Text.Of("athlon.event.hurdleDash"),
         AthlonEventKind.BlockSmash => Text.Of("athlon.event.blockSmash"),
-        _ => Text.Of("athlon.event.ringDrop")
+        AthlonEventKind.RingDrop => Text.Of("athlon.event.ringDrop"),
+        _ => AthlonEventNameBatch2(kind)
     };
 
     private static string AthlonHowTo(AthlonEventKind kind) => kind switch
     {
         AthlonEventKind.HurdleDash => Text.Of("athlon.howTo.hurdleDash"),
         AthlonEventKind.BlockSmash => Text.Of("athlon.howTo.blockSmash"),
-        _ => Text.Of("athlon.howTo.ringDrop")
+        AthlonEventKind.RingDrop => Text.Of("athlon.howTo.ringDrop"),
+        _ => AthlonHowToBatch2(kind)
     };
 
     public static string AthlonCourseName(AthlonCourse course) => course.Key switch
@@ -271,6 +273,7 @@ internal static partial class ModernUi
             case HurdleDash h: DrawHurdleDash(sw, h); break;
             case BlockSmash b: DrawBlockSmash(sw, b); break;
             case RingDrop r: DrawRingDrop(sw, r); break;
+            default: DrawAthlonBatch2(sw, ev); break;
         }
 
         // The count before it starts, and GO as it does
