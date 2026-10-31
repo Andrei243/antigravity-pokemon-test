@@ -1,0 +1,216 @@
+{
+  "people": {
+    "t07_gsbigman": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Poliwrath and I swim in the pond every morning. It's kept us both in shape for years!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t07_tsure_poke_static_poliwrath": {
+      "name": {
+        "en": [
+          "Poliwrath"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Poliwrath flexed its arms, dripping from the pond."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t07_gsboy1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Department Store has everything! I could spend all day just riding up and down the stairs."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t07_gswoman2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "People come to Celadon to shop, but they stay for the flowers. Erika's Gym is full of them."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t07_gsgirl1": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Erika gives flower arranging lessons. I go every week, but my flowers always end up lopsided."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t07_gswoman1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Game Corner is closed for refitting. My husband is quite lost without it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t07_gsboy2": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "There's a tree by the pond that blocks the way to a hidden spot. A Pokémon that knows Cut could clear it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t07_gsoldman1": {
+      "name": {
+        "en": [
+          "Old man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Hm? The Gym is right behind me. Erika is a kind young lady, but don't underestimate her."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t07_gsoldman1_2": {
+      "name": {
+        "en": [
+          "Old man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The restaurant here serves a fine lunch. The chefs were once trainers themselves, they say."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T07_009+1": {
+      "en": [
+        "Celadon City\nWhere the flowers bloom in every colour."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T07_013+1": {
+      "en": [
+        "Celadon Game Corner\nClosed for refitting."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T07_014+1": {
+      "en": [
+        "Celadon Prize Corner\nClosed for refitting."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T07_012+1": {
+      "en": [
+        "Celadon Condominiums"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T07_010+1": {
+      "en": [
+        "Celadon City Pokémon Gym\nLeader: Erika\nThe gardener of Grass Pokémon."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T07_011+1": {
+      "en": [
+        "Celadon Department Store\nFind what you need here!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

@@ -1,20 +1,17 @@
 {
   // Saffron City as HeartGold has it three years on (plan 20 · J15, part c): a town of Johto's own map, come to by
   // Route 6 from Vermilion City or by the Magnet Train from Goldenrod. Its Gym gives Kanto's Marsh Badge
-  // (saffron_gym.txt). The gates to Routes 5, 7 and 8 (warps 2 to 5, 15 and 16) lead onto roads whose keys meet
-  // FireRed's and wait for the session that opens them; Silph Co. (warps 8 and 9) stays shut. Cameron the photographer
-  // and the man HeartGold keeps behind FLAG_UNK_27F wait for theirs
+  // (saffron_gym.txt). The gates to Route 7 west (warps 15 and 16) and Route 8 east (warps 2 and 3) are open since
+  // plan 20 · J15, part d (johto_route_7, johto_route_8); the gate to Route 5 north (warps 4 and 5) leads onto a road
+  // whose key meets FireRed's and waits; Silph Co. (warps 8 and 9) stays shut. Cameron the photographer and the man
+  // HeartGold keeps behind FLAG_UNK_27F wait for theirs
   "area": "saffron",
   "bgmTrack": "kanto/viridian",
   "locked": [
-    2,
-    3,
     4,
     5,
     8,
-    9,
-    15,
-    16
+    9
   ],
   "people": {
     "t11_gsgirl2": {
@@ -56,7 +53,7 @@
     "t11_gsman1": {
       "name": "Man",
       "dialog": [
-        "The gates out of town are closed for roadworks. Only the road south to Vermilion City is open."
+        "The north gate is closed for roadworks. The others take you to Vermilion, Celadon and Lavender."
       ]
     },
     "t11_gsmiddleman1": {

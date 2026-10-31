@@ -8112,6 +8112,45 @@ way -
   > Lucas put it away in the Key Items pocket.
   * fanfare FanfareKeyItem
   + FLAG_GOT_COIN_CASE
+=== celadon_gym.Erika
+from Erika at 7,3 of Celadon_Gym
+way 0
+  Erika> Oh... good afternoon. I must have dozed off among the flowers. The warm air in here is so very soothing.
+  Erika> A Champion from Johto, you say? How lovely. I teach flower arranging, but my Grass Pokémon are no mere decoration.
+  Erika> If you wish for my Badge, you shall have to earn it. I shan't hold back.
+  Erika> Oh my... I concede. You are every bit as strong as they say. Please, accept the Rainbow Badge.
+  > Lucas received the Rainbow Badge from Erika!
+  Erika> And this, if you would. It holds a move my Pokémon are fond of.
+  > Lucas received the TM19!
+  > TM19 holds the move Giga Drain.
+  > Lucas put it away in the TMs & HMs pocket.
+  Erika> TM19 is Giga Drain. It drains the foe's strength and gives half of it back to the user.
+  * scene celadon_gym.Erika
+  * battle johto_leader_erika_erika Won
+  * fanfare FanfareBadge
+  * defeat johto_twins_jo_and_zoe
+  * defeat johto_lass_michelle
+  * defeat johto_picnicker_tanya
+  * defeat johto_beauty_julia
+  * endscene
+  * fanfare FanfareTM
+  + FLAG_JOHTO_DEFEATED_ERIKA
+  + FLAG_JOHTO_GOT_TM19_FROM_ERIKA
+  + beaten johto_beauty_julia
+  + beaten johto_lass_michelle
+  + beaten johto_leader_erika_erika
+  + beaten johto_picnicker_tanya
+  + beaten johto_twins_jo_and_zoe
+  = badges Kanto 0 -> 1000
+  + seen celadon_gym.Erika
+way 1, from answer 1
+  * battle johto_leader_erika_erika Lost
+  * scene over, unseen
+=== celadon_gym.Statue
+from the tile read at 5,44 of Celadon_Gym
+from the tile read at 9,44 of Celadon_Gym
+way -
+  > Celadon City Pokémon Gym\nLeader: Erika
 === celestial_tower.RingTheBell
 from the tile read at 16,10 of CelestialTower_Summit
 way 0

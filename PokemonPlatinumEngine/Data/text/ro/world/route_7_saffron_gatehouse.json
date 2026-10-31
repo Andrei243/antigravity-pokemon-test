@@ -1,0 +1,23 @@
+{
+  "people": {
+    "r07r0101_counterm": {
+      "name": {
+        "en": [
+          "Officer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Route 7 leads west to Celadon City. Mind the roadworks on the far side of the city!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

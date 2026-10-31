@@ -1,0 +1,68 @@
+{
+  "people": {
+    "t07r0101_gswoman6": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the Celadon Department Store! I'm sorry, the floors upstairs are closed while we restock."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t07r0101_gsgentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Goldenrod's store is bigger, they say. But Celadon's was here first, and its roof has the best view."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t07r0101_gswoman3": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm waiting for the floors upstairs to open again. I've a whole list of things to buy!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T07R0101_003+1": {
+      "en": [
+        "1F: Service Counter\n2F to 5F: closed while we restock."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

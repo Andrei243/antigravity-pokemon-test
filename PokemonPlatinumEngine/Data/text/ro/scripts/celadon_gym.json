@@ -1,0 +1,94 @@
+{
+  "Erika": [
+    {
+      "en": [
+        "Erika"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh... good afternoon. I must have dozed off among the flowers. The warm air in here is so very soothing."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A Champion from Johto, you say? How lovely. I teach flower arranging, but my Grass Pokémon are no mere decoration."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "If you wish for my Badge, you shall have to earn it. I shan't hold back."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh my... I concede. You are every bit as strong as they say. Please, accept the Rainbow Badge."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Rainbow Badge from Erika!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And this, if you would. It holds a move my Pokémon are fond of."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "TM19 is Giga Drain. It drains the foe's strength and gives half of it back to the user."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Losing to someone so strong is rather refreshing. I feel I could arrange a whole garden of flowers today."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Statue": [
+    {
+      "en": [
+        "Celadon City Pokémon Gym\nLeader: Erika"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Celadon City Pokémon Gym\nLeader: Erika\nWinning trainers: {player}"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  // A house in the south-west of Lavender Town (plan 20 · J15, part d)
+  "area": "lavender_southwest_house",
+  "bgmTrack": "kanto/lavender",
+  "people": {
+    "t05r0301_middlewoman1_2": {
+      "name": "Woman",
+      "still": true,
+      "dialog": [
+        "My grandmother remembers when this town was full of ghost stories. Now the loudest thing here is the radio."
+      ]
+    }
+  }
+}

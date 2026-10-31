@@ -1,0 +1,57 @@
+{
+  "key": "johto_route_7",
+  "index": 15,
+  "name": "Route 7",
+  "matrix": 0,
+  "kind": "Route",
+  "sign": "Route",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "General",
+  "dayMusic": "GS_R_14_03",
+  "nightMusic": "GS_R_14_03",
+  "encounters": "R07",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Rattata", "level": 17 },
+    { "species": "Spearow", "level": 17, "night": "Murkrow" },
+    { "species": "Rattata", "level": 17 },
+    { "species": "Spearow", "level": 17, "night": "Murkrow" },
+    { "species": "Growlithe", "level": 18 },
+    { "species": "Growlithe", "level": 18 },
+    { "species": "Raticate", "level": 19 },
+    { "species": "Raticate", "level": 19 },
+    { "species": "Rattata", "level": 19, "night": "Murkrow" },
+    { "species": "Rattata", "level": 15, "day": "Growlithe", "night": "Houndour" },
+    { "species": "Rattata", "level": 19, "night": "Murkrow" },
+    { "species": "Rattata", "level": 15, "day": "Growlithe", "night": "Houndour" }
+  ],
+  "landRate": 20,
+  "swarm": [
+    "Rattata",
+    "Rattata"
+  ],
+  "hoennSounds": [
+    "Plusle",
+    "Minun"
+  ],
+  "sinnohSounds": [
+    "Shinx",
+    "Shinx"
+  ],
+  "warps": [
+    { "x": 1273, "z": 240, "to": "route_7_saffron_gatehouse", "toWarp": 1 },
+    { "x": 1273, "z": 241, "to": "route_7_saffron_gatehouse", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "r07_monstarball", "looks": "monstarball", "movement": "0", "x": 1263, "z": 226, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_R07_MENTAL_HERB", "item": "Mental Herb", "script": "std_itemball_r07_mental_herb" }
+  ],
+  "signs": [
+    { "x": 1260, "z": 248, "type": 1, "script": "R07_000+1" },
+    { "x": 1261, "z": 247, "type": 0, "script": "R07_001+1" }
+  ],
+  "triggers": []
+}

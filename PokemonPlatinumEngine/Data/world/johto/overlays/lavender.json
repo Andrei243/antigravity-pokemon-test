@@ -1,0 +1,46 @@
+{
+  // Lavender Town as HeartGold has it three years on (plan 20 · J15, part d): a town of Johto's own map, come to by
+  // Route 8 from Saffron City. The Pokémon Tower is gone and the Kanto Radio Tower stands in its place; its door (warp
+  // 6) stays shut until the Expn Card's session. Route 10 north and Route 12 south share their keys with FireRed's
+  // Kanto and wait (HgWorld.Clashes)
+  "area": "lavender",
+  "bgmTrack": "kanto/lavender",
+  "trees": "Round",
+  "architecture": "Lilac",
+  "locked": [
+    6
+  ],
+  "people": {
+    "t05_gswoman1": {
+      "name": "Woman",
+      "dialog": [
+        "Lavender is a quiet town. People come here to remember the Pokémon they've loved."
+      ]
+    },
+    "t05_gsboy1": {
+      "name": "Boy",
+      "dialog": [
+        "The tall building is the radio station. It broadcasts all over Kanto, but they won't let me in to watch."
+      ]
+    },
+    "t05_gsoldman1": {
+      "name": "Old man",
+      "still": true,
+      "dialog": [
+        "There used to be a tower here where Pokémon were laid to rest. Now they rest in the House of Memories."
+      ]
+    },
+    "t05_gsmiddleman1": {
+      "name": "Man",
+      "dialog": [
+        "The Name Rater lives here in Lavender. He'll tell you what he thinks of your Pokémon's names."
+      ]
+    }
+  },
+  "signs": {
+    "T05_004+1": "Lavender Town\nA quiet town where memories rest.",
+    "T05_005+1": "Kanto Radio Tower\nClosed to visitors.",
+    "T05_007+1": "House of Memories\nWhere Pokémon are remembered.",
+    "T05_006+1": "Volunteer Pokémon House"
+  }
+}

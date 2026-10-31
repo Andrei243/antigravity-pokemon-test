@@ -1,0 +1,39 @@
+{
+  "key": "lavender",
+  "index": 53,
+  "name": "Lavender Town",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "City",
+  "dayMusic": "GS_T_CHION",
+  "nightMusic": "GS_T_CHION",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 1418, "z": 234, "to": "lavender_pokecenter_1f", "toWarp": 0 },
+    { "x": 1419, "z": 242, "to": "lavender_volunteer_pokemon_house", "toWarp": 0 },
+    { "x": 1414, "z": 249, "to": "lavender_southwest_house", "toWarp": 0 },
+    { "x": 1419, "z": 249, "to": "lavender_name_rater", "toWarp": 0 },
+    { "x": 1412, "z": 234, "to": "lavender_pokemart", "toWarp": 0 },
+    { "x": 1431, "z": 246, "to": "lavender_house_of_memories", "toWarp": 0 },
+    { "x": 1429, "z": 234, "to": "lavender_radio_station", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "t05_gswoman1", "looks": "gswoman1", "movement": "2", "x": 1415, "z": 252, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T05_001+1" },
+    { "id": "t05_gsboy1", "looks": "gsboy1", "movement": "2", "x": 1414, "z": 244, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "T05_003+1" },
+    { "id": "t05_gsoldman1", "looks": "gsoldman1", "movement": "0", "x": 1434, "z": 249, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T05_002+1" },
+    { "id": "t05_gsmiddleman1", "looks": "gsmiddleman1", "movement": "3", "x": 1426, "z": 239, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "T05_000+1" }
+  ],
+  "signs": [
+    { "x": 1421, "z": 235, "type": 1, "script": "T05_004+1" },
+    { "x": 1430, "z": 236, "type": 1, "script": "T05_005+1" },
+    { "x": 1426, "z": 246, "type": 1, "script": "T05_007+1" },
+    { "x": 1417, "z": 242, "type": 1, "script": "T05_006+1" }
+  ],
+  "triggers": []
+}

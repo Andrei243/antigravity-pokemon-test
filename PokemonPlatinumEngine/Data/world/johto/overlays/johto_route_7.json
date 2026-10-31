@@ -1,0 +1,10 @@
+{
+  // Route 7 as HeartGold has it three years on (plan 20 · J15, part d): the short road west from Saffron City's gate to
+  // Celadon City. Its key meets FireRed's, so it takes Johto's prefix (HgWorld.Clashes)
+  "area": "johto_route_7",
+  "bgmTrack": "kanto/route3",
+  "signs": {
+    "R07_000+1": "Route 7\nCeladon City - Saffron City",
+    "R07_001+1": "The Underground Path's entrance is closed for repairs."
+  }
+}

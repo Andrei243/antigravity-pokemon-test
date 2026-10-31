@@ -1,0 +1,16 @@
+{
+  // Lavender Town's Name Rater (plan 20 · J15, part d), the brother of Goldenrod's. Renaming is plan 13 · V4's; until
+  // then he says what he does
+  "area": "lavender_name_rater",
+  "bgmTrack": "kanto/lavender",
+  "people": {
+    "t05r0401_gsoldman1": {
+      "name": "Name Rater",
+      "still": true,
+      "dialog": [
+        "Welcome, welcome! I'm the Name Rater of Kanto. My brother does the same work in Goldenrod.",
+        "My pen is resting just now. Do come back another day, and I'll rate your Pokémon's names!"
+      ]
+    }
+  }
+}

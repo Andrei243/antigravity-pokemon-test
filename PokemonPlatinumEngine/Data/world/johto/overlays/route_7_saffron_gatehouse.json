@@ -1,0 +1,11 @@
+{
+  // The gate house between Saffron City and Route 7 (plan 20 · J15, part d)
+  "area": "route_7_saffron_gatehouse",
+  "bgmTrack": "kanto/route3",
+  "people": {
+    "r07r0101_counterm": {
+      "name": "Officer",
+      "dialog": [ "Route 7 leads west to Celadon City. Mind the roadworks on the far side of the city!" ]
+    }
+  }
+}

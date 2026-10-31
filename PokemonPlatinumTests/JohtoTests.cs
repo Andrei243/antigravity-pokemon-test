@@ -36,6 +36,12 @@ public class JohtoTests
         "johto_route_6", "route_6_saffron_gatehouse", "saffron", "saffron_magnet_train_station_1f", "saffron_pokecenter_1f",
         "saffron_pokecenter_2f", "saffron_pokemart", "saffron_fighting_dojo", "saffron_mr_psychic_house",
         "saffron_copycat_house_1f", "saffron_copycat_house_2f",
+        // Plan 20 · J15, part d: Routes 7 and 8 with their gates, Celadon City and Lavender Town with their rooms (Celadon's
+        // Gym plays Johto's Gym theme)
+        "route_7_saffron_gatehouse", "johto_route_7", "celadon", "celadon_pokecenter_1f", "celadon_pokecenter_b1f",
+        "celadon_department_store_1f", "celadon_condominiums_1f", "celadon_restaurant", "route_8_saffron_gatehouse",
+        "johto_route_8", "lavender", "lavender_pokecenter_1f", "lavender_pokecenter_b1f", "lavender_pokemart",
+        "lavender_name_rater", "lavender_southwest_house", "lavender_volunteer_pokemon_house", "lavender_house_of_memories",
     };
 
     [Fact]
@@ -695,6 +701,51 @@ public class JohtoTests
         Assert.True(gym.Key.Warps.Count(w => w.TargetMap == "Saffron_Gym") >= 30);
         Assert.NotNull(TrainerDatabase.Get("johto_leader_sabrina_sabrina", RegionDatabase.Johto));
         Assert.Equal(InteriorStyle.PokemonCenter, MapNamed("Saffron_PokemonCenter_1F").Interior);
+    }
+
+    [Fact]
+    public void CeladonAndLavenderAreWalkedToFromSaffronAndErikaIsReachedThroughHerGardensTrees()
+    {
+        // Plan 20 · J15, part d: Route 7 west to Celadon City and Route 8 east to Lavender Town, by Saffron's gates
+        var walked = Walked.Value;
+        var outside = walked.Single(kv => kv.Key.Name == "Johto").Value;
+        foreach (string key in new[] { "johto_route_7", "celadon", "johto_route_8", "lavender" })
+            Assert.True(outside.Any(t => Overworld.AreaAt(t.X, t.Y)?.Key == key), $"{key} can't be walked to from the start");
+        foreach (string name in new[] { "Route7_SaffronGate", "Route8_SaffronGate", "Celadon_PokemonCenter_1F", "Celadon_PokemonCenter_B1F",
+                     "Celadon_DeptStore_1F", "Celadon_Condominiums_1F", "Celadon_Restaurant", "Celadon_Gym",
+                     "Lavender_PokemonCenter_1F", "Lavender_PokemonCenter_B1F", "Lavender_Mart", "Lavender_NameRater",
+                     "Lavender_SouthwestHouse", "Lavender_VolunteerHouse", "Lavender_HouseOfMemories" })
+        {
+            Assert.True(walked.Keys.Any(m => m.Name == name), $"nobody walks into {name}");
+            Assert.Equal(RegionDatabase.Johto, RegionDatabase.RegionOfMap(name)!.Id);
+        }
+        // The roads' keys meet FireRed's, so they take Johto's prefix; the towns' own don't
+        foreach (string road in new[] { "route_7", "route_8" })
+        {
+            Assert.True(HgWorld.Clashes(road));
+            Assert.Equal("johto_" + road, HgWorld.KeyOf("MAP_" + road.ToUpperInvariant()));
+        }
+        Assert.Equal("celadon", HgWorld.KeyOf("MAP_CELADON"));
+        Assert.Equal("lavender", HgWorld.KeyOf("MAP_LAVENDER"));
+        // What waits stays shut: the north gate to Route 5 and Silph Co., the Game Corner and its prize corner, the
+        // store's and the condominiums' floors above, and the Radio Tower
+        var saffron = Johto.Area("saffron")!;
+        foreach (int shut in new[] { 4, 8 }) Assert.Empty(Overworld.WarpsAt(saffron.Warps[shut].X, saffron.Warps[shut].Z));
+        foreach (int open in new[] { 2, 15 }) Assert.NotEmpty(Overworld.WarpsAt(saffron.Warps[open].X, saffron.Warps[open].Z));
+        var celadon = Johto.Area("celadon")!;
+        foreach (int shut in new[] { 3, 4 }) Assert.Empty(Overworld.WarpsAt(celadon.Warps[shut].X, celadon.Warps[shut].Z));
+        var lavender = Johto.Area("lavender")!;
+        Assert.Empty(Overworld.WarpsAt(lavender.Warps[6].X, lavender.Warps[6].Z));
+        Assert.DoesNotContain(walked.Keys, m => m.Name.StartsWith("Celadon_DeptStore_", StringComparison.Ordinal) && m.Name != "Celadon_DeptStore_1F");
+        // Erika stands at the top of her garden, reached through its trees
+        var gym = walked.Single(kv => kv.Key.Name == "Celadon_Gym");
+        var erika = gym.Key.Everyone.Single(n => n.Key == "t07gym0101_gsleader12");
+        Assert.Contains(gym.Value, t => Math.Abs(t.X - erika.GridX) + Math.Abs(t.Y - erika.GridY) == 1);
+        Assert.NotNull(TrainerDatabase.Get("johto_leader_erika_erika", RegionDatabase.Johto));
+        Assert.Equal(InteriorStyle.PokemonCenter, MapNamed("Celadon_PokemonCenter_1F").Interior);
+        Assert.Equal(InteriorStyle.PokemonCenter, MapNamed("Lavender_PokemonCenter_1F").Interior);
+        // Route 8's Apricorn tree bears its colour
+        Assert.Contains(Overworld.Everyone, n => n.IsApricornTree && n.Key == "r08_bonguri");
     }
 
     [Fact]

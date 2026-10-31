@@ -1,0 +1,113 @@
+{
+  "people": {
+    "t07r0701_gsman1": {
+      "name": {
+        "en": [
+          "Cook"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome! Today's special is berry stew. The secret is to let the berries simmer until they nearly burst."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t07r0701_gswoman1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I come here every week for lunch. The portions are generous and the view of the street is lovely."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t07r0701_gsbigman": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Mmm! I'll have one more bowl, and then I'll go and battle Erika. Well, maybe two more bowls."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t07r0701_leader4": {
+      "name": {
+        "en": [
+          "Diner"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The food is wonderful, but I came for the quiet. A Gym can be terribly noisy."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t07r0701_gsbigman_2": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This is my third plate! The cook says there's a prize for whoever eats the most. I intend to win it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t07r0701_gsbigman_3": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I can't eat another bite. Battling on a full stomach is no good, so I'll rest here a while."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

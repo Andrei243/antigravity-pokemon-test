@@ -1,0 +1,230 @@
+{
+  "people": {
+    "r08_gang": {
+      "name": {
+        "en": [
+          "Dwayne"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Biker Dwayne: This road's ours! Nobody passes without a battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Biker Dwayne: Fine, fine. Pass, then."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r08_gang_2": {
+      "name": {
+        "en": [
+          "Harris"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Biker Harris: You beat Dwayne? Let's see you get past me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Biker Harris: My engine's still running, but my Pokémon aren't."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r08_gang_3": {
+      "name": {
+        "en": [
+          "Zeke"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Biker Zeke: Last of the gang. I'm the toughest of us, so don't get comfortable!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Biker Zeke: The gang's going to hear about this."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r08_gsassistantm": {
+      "name": {
+        "en": [
+          "Sam"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Super Nerd Sam: I've worked out the odds of you winning. They're not good!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Super Nerd Sam: I must have carried a one somewhere."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r08_gsassistantm_2": {
+      "name": {
+        "en": [
+          "Tyrone"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Super Nerd Tyrone: I'm on my way to Lavender's radio station. Let's battle first!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Super Nerd Tyrone: I'll be late now, and it's your fault."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r08_gsman2": {
+      "name": {
+        "en": [
+          "Moe"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Young Couple Moe: We're out for a walk together. Want to battle the two of us?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Young Couple Moe: We'll walk home a little more slowly."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r08_gswoman2": {
+      "name": {
+        "en": [
+          "Lulu"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Young Couple Lulu: Moe and I make a perfect team. You'll see!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Young Couple Lulu: A perfect team that lost. Oh well."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r08_gsgentleman": {
+      "name": {
+        "en": [
+          "Milton"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Gentleman Milton: A fine day for a stroll, and a finer one for a battle. Shall we?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Gentleman Milton: Splendid. Quite splendid."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "R08_001+1": {
+      "en": [
+        "Route 8\nSaffron City - Lavender Town"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "R08_000+1": {
+      "en": [
+        "The Underground Path's entrance is closed for repairs."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

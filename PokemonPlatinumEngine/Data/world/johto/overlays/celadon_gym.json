@@ -1,0 +1,51 @@
+{
+  // The Celadon Gym as HeartGold has it (plan 20 · J15, part d): a garden whose ways three small trees close, Erika at
+  // its top (celadon_gym.txt). The trees are HeartGold's own Cut trees, things of the map behind its local flags. Her
+  // four trainers battle by their own records (Johto's trainers.json); the twins are one trainer on two tiles
+  "area": "celadon_gym",
+  "bgmTrack": "johto/gym",
+  "arenaType": "Grass",
+  "people": {
+    "t07gym0101_gsleader12": { "name": "Erika", "npcType": "erika", "script": "Erika", "still": true, "hiddenBy": "" },
+    "t07gym0101_gsbabygirl1": {
+      "name": "Jo",
+      "trainer": {
+        "dialogueBefore": "Twins Jo: Erika's garden is our favourite place to play. Play with us!",
+        "dialogueAfter": "Twins Jo: We lost in the flowers."
+      }
+    },
+    "t07gym0101_gsbabygirl1_2": {
+      "name": "Zoe",
+      "trainer": {
+        "id": "johto_twins_jo_and_zoe",
+        "dialogueBefore": "Twins Zoe: You'll have to beat both of us to see Erika!",
+        "dialogueAfter": "Twins Zoe: Both of us at once, and still we lost."
+      }
+    },
+    "t07gym0101_gsgirl1": {
+      "name": "Michelle",
+      "trainer": {
+        "dialogueBefore": "Lass Michelle: Erika is so graceful. I want to be just like her when I grow up!",
+        "dialogueAfter": "Lass Michelle: Graceful in defeat, that's me."
+      }
+    },
+    "t07gym0101_picnicgirl_2": {
+      "name": "Tanya",
+      "trainer": {
+        "dialogueBefore": "Picnicker Tanya: The best picnic spot in all of Kanto is right here among the flowers!",
+        "dialogueAfter": "Picnicker Tanya: I think I'll just sit down and eat my sandwiches now."
+      }
+    },
+    "t07gym0101_gswoman2": {
+      "name": "Julia",
+      "trainer": {
+        "dialogueBefore": "Beauty Julia: Were you admiring the flowers, or me? Either way, you'll battle me first.",
+        "dialogueAfter": "Beauty Julia: My Pokémon wilted like cut flowers."
+      }
+    }
+  },
+  // The statues by the door, read where they stand
+  "read": {
+    "T07GYM0101_001+1": "Statue"
+  }
+}

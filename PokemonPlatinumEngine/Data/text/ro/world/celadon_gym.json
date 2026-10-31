@@ -1,0 +1,145 @@
+{
+  "people": {
+    "t07gym0101_gsleader12": {
+      "name": {
+        "en": [
+          "Erika"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t07gym0101_gsbabygirl1": {
+      "name": {
+        "en": [
+          "Jo"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Twins Jo: Erika's garden is our favourite place to play. Play with us!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Twins Jo: We lost in the flowers."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t07gym0101_gsbabygirl1_2": {
+      "name": {
+        "en": [
+          "Zoe"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Twins Zoe: You'll have to beat both of us to see Erika!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Twins Zoe: Both of us at once, and still we lost."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t07gym0101_gsgirl1": {
+      "name": {
+        "en": [
+          "Michelle"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Michelle: Erika is so graceful. I want to be just like her when I grow up!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Michelle: Graceful in defeat, that's me."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t07gym0101_picnicgirl_2": {
+      "name": {
+        "en": [
+          "Tanya"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Tanya: The best picnic spot in all of Kanto is right here among the flowers!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Tanya: I think I'll just sit down and eat my sandwiches now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t07gym0101_gswoman2": {
+      "name": {
+        "en": [
+          "Julia"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Beauty Julia: Were you admiring the flowers, or me? Either way, you'll battle me first."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Beauty Julia: My Pokémon wilted like cut flowers."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

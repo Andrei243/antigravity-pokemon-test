@@ -1,0 +1,41 @@
+{
+  // The Celadon Condominiums' ground floor (plan 20 · J15, part d), the landlady and her Pokémon. The stairs (warp 1)
+  // and the lift (warp 2) to the floors above and the roof stay shut
+  "area": "celadon_condominiums_1f",
+  "bgmTrack": "kanto/celadon",
+  "locked": [
+    1,
+    2
+  ],
+  "people": {
+    "t07r0201_gsoldwoman1": {
+      "name": "Landlady",
+      "still": true,
+      "dialog": [
+        "I own this building, dear. The tenants upstairs are out, so I can't let you up today. Do mind the Meowth."
+      ]
+    },
+    "t07r0201_tsure_poke_static_meowth": {
+      "name": "Meowth",
+      "npcType": "Pokemon",
+      "species": "Meowth",
+      "dialog": [ "Meowth stretched and looked for somewhere sunny to nap." ]
+    },
+    "t07r0201_tsure_poke_static_clefairy": {
+      "name": "Clefairy",
+      "npcType": "Pokemon",
+      "species": "Clefairy",
+      "still": true,
+      "dialog": [ "Clefairy hummed a little tune to itself." ]
+    },
+    "t07r0201_tsure_poke_static_nidoran_f": {
+      "name": "Nidoran",
+      "npcType": "Pokemon",
+      "species": "Nidoran♀",
+      "dialog": [ "Nidoran sniffed at the visitor's shoes." ]
+    }
+  },
+  "signs": {
+    "T07R0201_004+1": "Celadon Condominiums\nResidents only above the ground floor."
+  }
+}

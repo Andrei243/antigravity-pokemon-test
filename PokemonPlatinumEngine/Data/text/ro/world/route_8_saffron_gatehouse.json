@@ -1,0 +1,23 @@
+{
+  "people": {
+    "r08r0201_counterm": {
+      "name": {
+        "en": [
+          "Officer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Route 8 runs east to Lavender Town. There's a gang of bikers on the road, so be careful."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

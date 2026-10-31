@@ -1,0 +1,32 @@
+{
+  "key": "celadon_condominiums_1f",
+  "index": 376,
+  "name": "Celadon City",
+  "matrix": 221,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_C_TAMAMUSHI",
+  "nightMusic": "GS_C_TAMAMUSHI",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 7, "z": 13, "to": "celadon", "toWarp": 1 },
+    { "x": 13, "z": 10, "to": "celadon_condominiums_2f", "toWarp": 0 },
+    { "x": 3, "z": 2, "to": "celadon_condominiums_left_elevator", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "t07r0201_gsoldwoman1", "looks": "gsoldwoman1", "movement": "8", "x": 13, "z": 4, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "T07R0201_000+1" },
+    { "id": "t07r0201_tsure_poke_static_meowth", "looks": "follower_mon_static_meowth", "movement": "2", "x": 11, "z": 6, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "T07R0201_001+1" },
+    { "id": "t07r0201_tsure_poke_static_clefairy", "looks": "follower_mon_static_clefairy", "movement": "15", "x": 12, "z": 3, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T07R0201_002+1" },
+    { "id": "t07r0201_tsure_poke_static_nidoran_f", "looks": "follower_mon_static_nidoran_f", "movement": "3", "x": 7, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "T07R0201_003+1" }
+  ],
+  "signs": [
+    { "x": 5, "z": 2, "type": 0, "script": "T07R0201_004+1" }
+  ],
+  "triggers": []
+}

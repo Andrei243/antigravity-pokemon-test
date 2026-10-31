@@ -1,0 +1,28 @@
+{
+  "key": "lavender_house_of_memories",
+  "index": 438,
+  "name": "Lavender Town",
+  "matrix": 194,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_T_CHION",
+  "nightMusic": "GS_T_CHION",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 17, "to": "lavender", "toWarp": 5 }
+  ],
+  "objects": [
+    { "id": "t05r0601_gsoldman1", "looks": "gsoldman1", "movement": "15", "x": 4, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T05R0601_000+1" },
+    { "id": "t05r0601_gsoldwoman1", "looks": "gsoldwoman1", "movement": "14", "x": 12, "z": 8, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "T05R0601_003+1" },
+    { "id": "t05r0601_gsgirl1", "looks": "gsgirl1", "movement": "14", "x": 7, "z": 12, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "T05R0601_002+1" },
+    { "id": "t05r0601_gswoman1", "looks": "gswoman1", "movement": "14", "x": 8, "z": 12, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "T05R0601_001+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

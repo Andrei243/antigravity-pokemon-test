@@ -1,0 +1,69 @@
+{
+  "key": "johto_route_8",
+  "index": 16,
+  "name": "Route 8",
+  "matrix": 0,
+  "kind": "Route",
+  "sign": "Route",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "General",
+  "dayMusic": "GS_R_13_03",
+  "nightMusic": "GS_R_13_03",
+  "encounters": "R08",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Pidgeotto", "level": 17, "night": "Noctowl" },
+    { "species": "Pidgeotto", "level": 19, "night": "Haunter" },
+    { "species": "Pidgeotto", "level": 17, "night": "Noctowl" },
+    { "species": "Pidgeotto", "level": 19, "night": "Haunter" },
+    { "species": "Abra", "level": 15 },
+    { "species": "Abra", "level": 15 },
+    { "species": "Growlithe", "level": 18, "night": "Noctowl" },
+    { "species": "Growlithe", "level": 18, "night": "Noctowl" },
+    { "species": "Pidgeotto", "level": 17, "night": "Growlithe" },
+    { "species": "Kadabra", "level": 15 },
+    { "species": "Pidgeotto", "level": 17, "night": "Growlithe" },
+    { "species": "Kadabra", "level": 15 }
+  ],
+  "landRate": 20,
+  "swarm": [
+    "Pidgeotto",
+    "Pidgeotto"
+  ],
+  "hoennSounds": [
+    "Plusle",
+    "Minun"
+  ],
+  "sinnohSounds": [
+    "Shinx",
+    "Shinx"
+  ],
+  "warps": [
+    { "x": 1344, "z": 240, "to": "route_8_saffron_gatehouse", "toWarp": 1 },
+    { "x": 1344, "z": 241, "to": "route_8_saffron_gatehouse", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "r08_gang", "looks": "gang", "movement": "0", "x": 1360, "z": 243, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "script": "TRAINER_BIKER_DWAYNE" },
+    { "id": "r08_gang_2", "looks": "gang", "movement": "0", "x": 1360, "z": 244, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "script": "TRAINER_BIKER_HARRIS" },
+    { "id": "r08_gang_3", "looks": "gang", "movement": "0", "x": 1360, "z": 245, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "script": "TRAINER_BIKER_ZEKE" },
+    { "id": "r08_gsassistantm", "looks": "gsassistantm", "movement": "8", "x": 1372, "z": 240, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "script": "TRAINER_SUPER_NERD_SAM" },
+    { "id": "r08_gsassistantm_2", "looks": "gsassistantm", "movement": "5", "x": 1388, "z": 241, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_SUPER_NERD_TYRONE" },
+    { "id": "r08_gsman2", "looks": "gsman2", "movement": "0", "x": 1379, "z": 233, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_YOUNG_COUPLE_MOE_AND_LULU" },
+    { "id": "r08_gswoman2", "looks": "gswoman2", "movement": "0", "x": 1380, "z": 233, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "std_trainer_2(TRAINER_YOUNG_COUPLE_MOE_AND_LULU)" },
+    { "id": "r08_gsgentleman", "looks": "gsgentleman", "movement": "0", "x": 1395, "z": 249, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "script": "TRAINER_GENTLEMAN_MILTON" },
+    { "id": "r08_tree", "looks": "tree", "movement": "0", "x": 1375, "z": 246, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_010", "script": "std_field_cut" },
+    { "id": "r08_tree_2", "looks": "tree", "movement": "0", "x": 1384, "z": 242, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_011", "script": "std_field_cut" },
+    { "id": "r08_bonguri", "looks": "bonguri", "movement": "0", "x": 1397, "z": 232, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "std_apricorn_tree" },
+    { "id": "r08_monstarball", "looks": "monstarball", "movement": "0", "x": 1358, "z": 248, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_R08_TM41", "item": "TM41", "script": "std_itemball_r08_tm41" },
+    { "id": "r08_gsboy1", "looks": "gsboy1", "movement": "2", "x": 1414, "z": 244, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_035", "script": "65535" }
+  ],
+  "signs": [
+    { "x": 1356, "z": 238, "type": 1, "script": "R08_001+1" },
+    { "x": 1354, "z": 237, "type": 0, "script": "R08_000+1" }
+  ],
+  "triggers": []
+}

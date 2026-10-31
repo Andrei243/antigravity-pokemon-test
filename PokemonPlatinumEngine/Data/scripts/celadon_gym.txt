@@ -1,0 +1,48 @@
+# The Celadon Gym as HeartGold has it (plan 20 · J15, part d). docs/scripts.md describes the language; the lines are
+# our own, on HeartGold's beats (scr_seq_T07GYM0101).
+#
+# Erika waits at the top of a garden whose ways three small trees close (Cut opens them, as anywhere). She battles for
+# the Rainbow Badge, which is Kanto's (`givebadge rainbow of kanto`, as Lt. Surge's Thunder Badge and Sabrina's Marsh
+# Badge: the rulings' "HeartGold's Kanto, part b" to "part d"), counts her four trainers beaten and gives TM19, Giga
+# Drain. A trainer who already holds the Badge from FireRed's Kanto battles her all the same: whether she has been
+# beaten here is FLAG_JOHTO_DEFEATED_ERIKA, a flag of ours.
+
+
+script Erika
+  face t07gym0101_gsleader12 player
+  speaker "Erika"
+  if flag FLAG_JOHTO_DEFEATED_ERIKA goto Won
+  scene "Erika"
+  say "Oh... good afternoon. I must have dozed off among the flowers. The warm air in here is so very soothing."
+  say "A Champion from Johto, you say? How lovely. I teach flower arranging, but my Grass Pokémon are no mere decoration."
+  say "If you wish for my Badge, you shall have to earn it. I shan't hold back."
+  battle self as "johto_leader_erika_erika"
+  say "Oh my... I concede. You are every bit as strong as they say. Please, accept the Rainbow Badge."
+  givebadge rainbow of kanto
+  text "{player} received the Rainbow Badge from Erika!"
+  setflag FLAG_JOHTO_DEFEATED_ERIKA
+  defeat "johto_twins_jo_and_zoe"
+  defeat "johto_lass_michelle"
+  defeat "johto_picnicker_tanya"
+  defeat "johto_beauty_julia"
+  endscene
+label Tm
+  say "And this, if you would. It holds a move my Pokémon are fond of."
+  give "TM19"
+  setflag FLAG_JOHTO_GOT_TM19_FROM_ERIKA
+  say "TM19 is Giga Drain. It drains the foe's strength and gives half of it back to the user."
+  end
+label Won
+  if not flag FLAG_JOHTO_GOT_TM19_FROM_ERIKA goto Tm
+  say "Losing to someone so strong is rather refreshing. I feel I could arrange a whole garden of flowers today."
+  end
+
+
+# The statues by the door.
+script Statue
+  if flag FLAG_JOHTO_DEFEATED_ERIKA goto Won
+  text "Celadon City Pokémon Gym\nLeader: Erika"
+  end
+label Won
+  text "Celadon City Pokémon Gym\nLeader: Erika\nWinning trainers: {player}"
+  end

@@ -1,0 +1,26 @@
+{
+  "key": "route_7_saffron_gatehouse",
+  "index": 493,
+  "name": "Route 7",
+  "matrix": 70,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_R_14_03",
+  "nightMusic": "GS_R_14_03",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 10, "z": 7, "to": "saffron", "toWarp": 15 },
+    { "x": 1, "z": 7, "to": "johto_route_7", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "r07r0101_counterm", "looks": "counterm", "movement": "15", "x": 6, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "R07R0101_000+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

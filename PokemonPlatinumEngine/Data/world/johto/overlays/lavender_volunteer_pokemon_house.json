@@ -1,0 +1,39 @@
+{
+  // The Volunteer Pokémon House in Lavender Town (plan 20 · J15, part d), where Mr. Fuji's helpers look after Pokémon
+  // nobody else will
+  "area": "lavender_volunteer_pokemon_house",
+  "bgmTrack": "kanto/lavender",
+  "people": {
+    "t05r0201_gsman1": {
+      "name": "Volunteer",
+      "still": true,
+      "dialog": [
+        "We look after Pokémon whose trainers can't care for them any more. Mr. Fuji started this house long ago."
+      ]
+    },
+    "t05r0201_gsgirl1": {
+      "name": "Girl",
+      "dialog": [
+        "I help out here after school. The Pokémon don't say thank you, but I can tell they're happy."
+      ]
+    },
+    "t05r0201_tsure_poke_static_pidgey": {
+      "name": "Pidgey",
+      "npcType": "Pokemon",
+      "species": "Pidgey",
+      "dialog": [ "Pidgey hopped about, pecking at crumbs." ]
+    },
+    "t05r0201_tsure_poke_static_psyduck": {
+      "name": "Psyduck",
+      "npcType": "Pokemon",
+      "species": "Psyduck",
+      "dialog": [ "Psyduck held its head and stared into space." ]
+    },
+    "t05r0201_tsure_poke_static_nidorino": {
+      "name": "Nidorino",
+      "npcType": "Pokemon",
+      "species": "Nidorino",
+      "dialog": [ "Nidorino pawed the floor, but it seemed friendly enough." ]
+    }
+  }
+}

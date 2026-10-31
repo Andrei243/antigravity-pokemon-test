@@ -1,0 +1,72 @@
+{
+  // Route 8 as HeartGold has it three years on (plan 20 · J15, part d): the road east from Saffron City's gate to
+  // Lavender Town, its bikers across the way. Its key meets FireRed's, so it takes Johto's prefix (HgWorld.Clashes). Its
+  // Apricorn tree is in apricorns.json. The boy HeartGold keeps behind FLAG_MAPTEMP_035 on Lavender's tile (a second
+  // of Lavender's own) is held back
+  "area": "johto_route_8",
+  "bgmTrack": "kanto/route3",
+  "heldBack": [ "r08_gsboy1" ],
+  "people": {
+    "r08_gang": {
+      "name": "Dwayne",
+      "trainer": {
+        "dialogueBefore": "Biker Dwayne: This road's ours! Nobody passes without a battle!",
+        "dialogueAfter": "Biker Dwayne: Fine, fine. Pass, then."
+      }
+    },
+    "r08_gang_2": {
+      "name": "Harris",
+      "trainer": {
+        "dialogueBefore": "Biker Harris: You beat Dwayne? Let's see you get past me!",
+        "dialogueAfter": "Biker Harris: My engine's still running, but my Pokémon aren't."
+      }
+    },
+    "r08_gang_3": {
+      "name": "Zeke",
+      "trainer": {
+        "dialogueBefore": "Biker Zeke: Last of the gang. I'm the toughest of us, so don't get comfortable!",
+        "dialogueAfter": "Biker Zeke: The gang's going to hear about this."
+      }
+    },
+    "r08_gsassistantm": {
+      "name": "Sam",
+      "trainer": {
+        "dialogueBefore": "Super Nerd Sam: I've worked out the odds of you winning. They're not good!",
+        "dialogueAfter": "Super Nerd Sam: I must have carried a one somewhere."
+      }
+    },
+    "r08_gsassistantm_2": {
+      "name": "Tyrone",
+      "trainer": {
+        "dialogueBefore": "Super Nerd Tyrone: I'm on my way to Lavender's radio station. Let's battle first!",
+        "dialogueAfter": "Super Nerd Tyrone: I'll be late now, and it's your fault."
+      }
+    },
+    "r08_gsman2": {
+      "name": "Moe",
+      "trainer": {
+        "dialogueBefore": "Young Couple Moe: We're out for a walk together. Want to battle the two of us?",
+        "dialogueAfter": "Young Couple Moe: We'll walk home a little more slowly."
+      }
+    },
+    "r08_gswoman2": {
+      "name": "Lulu",
+      "trainer": {
+        "id": "johto_young_couple_moe_and_lulu",
+        "dialogueBefore": "Young Couple Lulu: Moe and I make a perfect team. You'll see!",
+        "dialogueAfter": "Young Couple Lulu: A perfect team that lost. Oh well."
+      }
+    },
+    "r08_gsgentleman": {
+      "name": "Milton",
+      "trainer": {
+        "dialogueBefore": "Gentleman Milton: A fine day for a stroll, and a finer one for a battle. Shall we?",
+        "dialogueAfter": "Gentleman Milton: Splendid. Quite splendid."
+      }
+    }
+  },
+  "signs": {
+    "R08_001+1": "Route 8\nSaffron City - Lavender Town",
+    "R08_000+1": "The Underground Path's entrance is closed for repairs."
+  }
+}

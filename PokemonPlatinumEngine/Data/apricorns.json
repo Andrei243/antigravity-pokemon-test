@@ -32,6 +32,7 @@
     { "area": "route_45", "id": "r45_bonguri", "colour": "White" },
     { "area": "route_46", "id": "r46_bonguri", "colour": "Black" },
     { "area": "route_46", "id": "r46_bonguri_2", "colour": "Pink" },
-    { "area": "route_26", "id": "r26_bonguri", "colour": "Green" }
+    { "area": "route_26", "id": "r26_bonguri", "colour": "Green" },
+    { "area": "johto_route_8", "id": "r08_bonguri", "colour": "Pink" }
   ]
 }

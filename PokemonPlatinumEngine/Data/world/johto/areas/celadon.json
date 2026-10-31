@@ -1,0 +1,62 @@
+{
+  "key": "celadon",
+  "index": 55,
+  "name": "Celadon City",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "City",
+  "dayMusic": "GS_C_TAMAMUSHI",
+  "nightMusic": "GS_C_TAMAMUSHI",
+  "encounters": "T07",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "surfSwarm": "Grimer",
+  "water": [
+    { "species": "Grimer", "level": 20, "maxLevel": 20 },
+    { "species": "Grimer", "level": 15, "maxLevel": 15 },
+    { "species": "Muk", "level": 15, "maxLevel": 15 },
+    { "species": "Muk", "level": 15, "maxLevel": 15 },
+    { "species": "Muk", "level": 15, "maxLevel": 15 }
+  ],
+  "waterRate": 15,
+  "warps": [
+    { "x": 1201, "z": 237, "to": "celadon_department_store_1f", "toWarp": 0 },
+    { "x": 1218, "z": 237, "to": "celadon_condominiums_1f", "toWarp": 0 },
+    { "x": 1231, "z": 237, "to": "celadon_pokecenter_1f", "toWarp": 0 },
+    { "x": 1218, "z": 249, "to": "celadon_game_corner", "toWarp": 0 },
+    { "x": 1223, "z": 249, "to": "celadon_prize_corner", "toWarp": 0 },
+    { "x": 1201, "z": 266, "to": "celadon_gym", "toWarp": 0 },
+    { "x": 1225, "z": 261, "to": "celadon_restaurant", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "t07_gsbigman", "looks": "gsbigman", "movement": "0", "x": 1228, "z": 239, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T07_000+1" },
+    { "id": "t07_tsure_poke_static_poliwrath", "looks": "follower_mon_static_poliwrath", "movement": "0", "x": 1229, "z": 239, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T07_001+1" },
+    { "id": "t07_gsboy1", "looks": "gsboy1", "movement": "3", "x": 1219, "z": 241, "facing": 1, "rangeX": 2, "rangeZ": 1, "script": "T07_005+1" },
+    { "id": "t07_gswoman2", "looks": "gswoman2", "movement": "3", "x": 1198, "z": 242, "facing": 1, "rangeX": 2, "rangeZ": 1, "script": "T07_007+1" },
+    { "id": "t07_gsgirl1", "looks": "gsgirl1", "movement": "2", "x": 1207, "z": 254, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T07_008+1" },
+    { "id": "t07_gswoman1", "looks": "gswoman1", "movement": "3", "x": 1218, "z": 254, "facing": 1, "rangeX": 2, "rangeZ": 1, "script": "T07_002+1" },
+    { "id": "t07_gsboy2", "looks": "gsboy2", "movement": "2", "x": 1223, "z": 266, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T07_006+1" },
+    { "id": "t07_gsoldman1", "looks": "gsoldman1", "movement": "0", "x": 1199, "z": 268, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "T07_004+1" },
+    { "id": "t07_gsoldman1_2", "looks": "gsoldman1", "movement": "15", "x": 1211, "z": 250, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T07_003+1" },
+    { "id": "t07_gsleader12", "looks": "gsleader12", "movement": "0", "x": 1200, "z": 251, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_25D", "script": "T07_016+1" },
+    { "id": "t07_gsleader6", "looks": "gsleader6", "movement": "0", "x": 1201, "z": 251, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_2E1", "script": "T07_017+1" },
+    { "id": "t07_tree", "looks": "tree", "movement": "0", "x": 1227, "z": 267, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_010", "script": "std_field_cut" },
+    { "id": "t07_monstarball", "looks": "monstarball", "movement": "0", "x": 1195, "z": 226, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_T07_TM67", "item": "TM67", "script": "std_itemball_t07_tm67" },
+    { "id": "t07_gsmiddleman1", "looks": "gsmiddleman1", "movement": "14", "x": 1200, "z": 256, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CAMERON", "script": "T07_018+1" }
+  ],
+  "signs": [
+    { "x": 1204, "z": 245, "type": 1, "script": "T07_009+1" },
+    { "x": 1219, "z": 252, "type": 1, "script": "T07_013+1" },
+    { "x": 1229, "z": 252, "type": 1, "script": "T07_014+1" },
+    { "x": 1220, "z": 237, "type": 1, "script": "T07_012+1" },
+    { "x": 1204, "z": 268, "type": 1, "script": "T07_010+1" },
+    { "x": 1203, "z": 238, "type": 1, "script": "T07_011+1" },
+    { "x": 1230, "z": 272, "type": 2, "script": "std_hiddenitem_t07_pp_up", "item": "PP Up", "flag": "FLAG_HIDDEN_ITEM_T07_PP_UP" }
+  ],
+  "triggers": []
+}

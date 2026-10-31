@@ -1,0 +1,37 @@
+{
+  // Lavender Town's Poké Mart (plan 20 · J15, part d). Its delivery men are the original's gifts, which this game has
+  // no use for
+  "area": "lavender_pokemart",
+  "bgmTrack": "kanto/lavender",
+  "people": {
+    "t05fs0101_shopm1_2": {
+      "name": "Clerk",
+      "script": "Clerk",
+      "still": true,
+      "dialog": [
+        "Welcome! How can I help you?"
+      ]
+    },
+    "t05fs0101_shopm1_2_2": {
+      "name": "Clerk",
+      "script": "Clerk",
+      "still": true,
+      "dialog": [
+        "Welcome! How can I help you?"
+      ]
+    },
+    "t05fs0101_gsman2": {
+      "name": "Man",
+      "still": true,
+      "dialog": [
+        "I'm buying Repels for the walk north. Rock Tunnel is pitch dark, and full of Zubat."
+      ]
+    },
+    "t05fs0101_gsmiddleman1": {
+      "name": "Man",
+      "dialog": [
+        "Lavender's Mart is small, but it has everything a traveller needs."
+      ]
+    }
+  }
+}
