@@ -73,7 +73,10 @@ public sealed class PhotoView
     public bool InterfaceHidden { get; set; }
 
     /// <summary>The hour the picture is lit at: the middle of the borrowed period, as <see cref="GameClock.Hour"/> has it, or null for the clock's.</summary>
-    public float? Hour => Time switch
+    public float? Hour => HourOf(Time);
+
+    /// <summary>The middle of a borrowed period, as <see cref="GameClock.Hour"/> has it, or null for the clock's (photo mode in battle borrows the same, plan 12 · Q17).</summary>
+    public static float? HourOf(TimeOfDay? time) => time switch
     {
         TimeOfDay.LateNight => 2f,
         TimeOfDay.Morning => 7f,

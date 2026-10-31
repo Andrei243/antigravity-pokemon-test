@@ -213,7 +213,56 @@ public static class WorldMapBuilder
     /// <summary>The height of Sinnoh's lowlands in the original's data, in tiles: its sea lies half a tile lower.</summary>
     public const float GroundLevel = 1f;
 
-    public static Map Build(World world, WorldMapEntry entry) => Build(world, entry, null);
+    public static Map Build(World world, WorldMapEntry entry)
+    {
+        var map = Build(world, entry, null);
+        // A cave of one chunk is as large as its floor and a band of rock round it (style guide, "Caves"): built once at
+        // the chunk's size to find its floor, and again at the size that keeps it
+        if (!IsCaveOfOneChunk(world, entry)) return map;
+        var (width, height) = CaveOfOneChunk(map);
+        return width == map.Width && height == map.Height ? map : Build(world, entry, null, (width, height));
+    }
+
+    /// <summary>
+    /// Whether a map is a cave laid in a chunk of its own, which <see cref="CaveOfOneChunk"/> cuts down: not one the story
+    /// swaps or reveals chunks of, whose other ground could reach further than this one's floor.
+    /// </summary>
+    private static bool IsCaveOfOneChunk(World world, WorldMapEntry entry) =>
+        entry.Setting == MapSetting.Cave && world.Matrix(entry.Matrix) is { Width: 1, Height: 1 }
+        && !world.Index.Swaps.Any(s => s.Map == entry.Name) && !world.Index.Hidden.Any(h => h.Map == entry.Name)
+        && !world.SeasonalSwaps(entry).Any();
+
+    /// <summary>
+    /// How large a cave laid in one chunk is (style guide, "Caves"; the Solaceon Ruins' rooms): one tile past its floor
+    /// and everything on it, east and south, and then as much rock again as lies west and north of it (at least
+    /// <see cref="CaveRockBand"/> tiles), never more than the map it was built at. So a small room is the middle of its
+    /// map, which the camera centres, and the dark lies beyond its walls.
+    /// </summary>
+    public static (int Width, int Height) CaveOfOneChunk(Map map)
+    {
+        int minX = int.MaxValue, minZ = int.MaxValue, maxX = -1, maxZ = -1;
+        void Hold(int x, int z)
+        {
+            if (!map.InBounds(x, z)) return;
+            minX = Math.Min(minX, x); maxX = Math.Max(maxX, x);
+            minZ = Math.Min(minZ, z); maxZ = Math.Max(maxZ, z);
+        }
+        for (int z = 0; z < map.Height; z++)
+            for (int x = 0; x < map.Width; x++)
+                if (map.GetGroundTile(x, z) != TileType.CaveWall) Hold(x, z);
+        foreach (var npc in map.Everyone) Hold(npc.GridX, npc.GridY);
+        foreach (var warp in map.Warps) Hold(warp.SourceX, warp.SourceY);
+        foreach (var t in map.Triggers)
+            for (int z = t.Y; z < t.Y + Math.Max(1, t.Depth); z++)
+                for (int x = t.X; x < t.X + Math.Max(1, t.Width); x++) Hold(x, z);
+        foreach (var key in map.SignScripts.Keys.Concat(map.TileScripts.Keys).Concat(map.HiddenItems.Keys)) Hold(key.X, key.Y);
+        foreach (var prop in map.Props) { Hold(prop.X, prop.Y); Hold(prop.X + prop.Width - 1, prop.Y + prop.Depth - 1); }
+        if (maxX < 0) return (map.Width, map.Height);
+        return (Math.Min(map.Width, maxX + 1 + Math.Max(CaveRockBand, minX)), Math.Min(map.Height, maxZ + 1 + Math.Max(CaveRockBand, minZ)));
+    }
+
+    /// <summary>The least rock a cave cut down by <see cref="CaveOfOneChunk"/> keeps east and south of its floor, in tiles.</summary>
+    public const int CaveRockBand = 2;
 
     /// <summary>
     /// A map as it is round a swap's chunks once they lie in their cells (plan 01 · M10, part b; <see cref="WorldSwap"/>):
@@ -229,7 +278,7 @@ public static class WorldMapBuilder
         return Build(world, entry, swap);
     }
 
-    private static Map Build(World world, WorldMapEntry entry, WorldSwap? swap)
+    private static Map Build(World world, WorldMapEntry entry, WorldSwap? swap, (int Width, int Height)? size = null)
     {
         var matrix = world.Matrix(entry.Matrix);
         // A swap is built by itself: its chunks in their cells, and the chunks beside them as they are
@@ -244,7 +293,7 @@ public static class WorldMapBuilder
         // A DS game's room (plan 20 · J2) lies in its chunk's corner too, but the original leaves the chunk round it open:
         // it is as large as what can be walked to from its ways in, and the rest of it is wall
         bool[]? reach = null;
-        var (mapWidth, mapHeight) = room && matrix.Width == 1 && matrix.Height == 1 && world.Chunk(ChunkOf(0, 0)) is { } only
+        var (mapWidth, mapHeight) = size is { } cut ? cut : room && matrix.Width == 1 && matrix.Height == 1 && world.Chunk(ChunkOf(0, 0)) is { } only
             ? world.Index.BuildingsAtDoors ? RoomExtent(only) : RoomExtent(only, reach = RoomReach(only, WaysIntoRoom(world, entry)))
             // A GBA game's room longer than a chunk (plan 21 · H2, part b: Petalburg's Gym, 112 tiles deep) lies in the
             // west of a column of chunks: it is as wide as the widest of them shows, and as long as all of them, so the

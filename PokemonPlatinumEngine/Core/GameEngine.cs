@@ -194,7 +194,7 @@ public partial class GameEngine
     public string? NewGameRegion { get; set; }
 
     /// <summary>The record of the region a new game starts in: <see cref="NewGameRegion"/>'s, or the chain's first.</summary>
-    private Region NewGameRegionRecord => (NewGameRegion != null ? RegionDatabase.Get(NewGameRegion) : null) ?? RegionDatabase.First;
+    private Region NewGameRegionRecord => PlusRegion ?? (NewGameRegion != null ? RegionDatabase.Get(NewGameRegion) : null) ?? RegionDatabase.First;
 
     /// <summary>The strip of the party menu and the Pokétch's app: the granted moves nobody on the team knows (plan 12 · Q18).</summary>
     /// <summary>
@@ -455,6 +455,8 @@ public partial class GameEngine
         flow.Teams = new List<SavedTeam>();
 
         InitializeNewGame();
+        // NEW GAME+ (plan 13 · V11): what the finished save carries, before any id is given
+        CarryOver();
         GiveIds();
         flow.Journal.TakenUp(GameClock.Today, PlaceName());
         EnterGame();
@@ -990,6 +992,7 @@ public partial class GameEngine
         KeepTheReportKey(); // F8: a report of the session (plan 16 · T20)
         KeepTheScreenshotKey(); // F12: a picture of the screen (plan 12 · Q16)
         if (flow.State == GameState.Overworld) KeepThePhotoKey(); // F9: photo mode (plan 12 · Q16)
+        else if (flow.State == GameState.Battle) KeepTheBattlePhotoKey(); // ... and in battle (plan 12 · Q17)
         // Behind another window, with the option on, the game waits where it is and its sound drops (plan 16 · T3)
         bool held = HeldForFocus;
         AudioManager.Away = held;
@@ -1094,6 +1097,8 @@ public partial class GameEngine
                         // found empty
                         newGameSlot = flow.TitleScreen.Slot;
                         newGameRun = flow.TitleScreen.ChosenRun;
+                        // A NEW GAME+ begins in the region its save finished (plan 13 · V11)
+                        newGamePlus = flow.TitleScreen.ChosenPlus;
                         flow.State = GameState.Intro;
                         flow.IntroScreen.Open(GameSettings.CharactersPerSecond(Settings.TextSpeed), NewGameRegionRecord);
                         AudioManager.PlayMusic(MusicRole.Introduction);
@@ -1141,6 +1146,8 @@ public partial class GameEngine
                 UpdatePhoto(dt);
                 break;
             case GameState.Battle:
+                // A photo stills the battle: nothing of it is updated while one is composed (plan 12 · Q17)
+                if (UpdateBattlePhoto(dt)) break;
                 if (flow.Battle != null)
                 {
                     flow.Battle.AutoAdvanceAfter = GameSettings.AutoAdvanceAfter(Settings.AutoAdvance);
@@ -1674,6 +1681,7 @@ public partial class GameEngine
             flow.StartMenu.HasPokegear = HasPokegear;
             flow.StartMenu.HasPokeNav = HasPokeNav;
             flow.StartMenu.Objective = NextObjectiveLine;
+            flow.StartMenu.Counts = AreaCountsLine() ?? "";
             flow.StartMenu.Open();
             // The team's menu sprites are asked for as the menu opens, so that they are there by the time a screen
             // shows them: only the opening's are made at the start, and a sprite long unshown is let go (plan 03 · D13)
@@ -1949,7 +1957,7 @@ public partial class GameEngine
         NoteArrival();
         PlayFieldMusic();
         // As the language writes it (plan 17 · N6b): the area's own name was shown in English under every language
-        if (!string.IsNullOrEmpty(area.DisplayName)) flow.LocationSign.Show(flow.Map.ShownNameAt(flow.Player.GridX, flow.Player.GridY), SeasonHere);
+        if (!string.IsNullOrEmpty(area.DisplayName)) flow.LocationSign.Show(flow.Map.ShownNameAt(flow.Player.GridX, flow.Player.GridY), SeasonHere, AreaCountsLine());
         return StartEnterScript();
     }
 
@@ -2419,7 +2427,7 @@ public partial class GameEngine
         flow.CurrentZone = flow.Map.ZoneAt(flow.Player.GridX, flow.Player.GridY);
         NoteArrival();
         if (flow.Map.IsIndoors) flow.LocationSign.Hide();
-        else flow.LocationSign.Show(flow.Map.ShownNameAt(flow.Player.GridX, flow.Player.GridY), SeasonHere);
+        else flow.LocationSign.Show(flow.Map.ShownNameAt(flow.Player.GridX, flow.Player.GridY), SeasonHere, AreaCountsLine());
     }
 
     private void HandleStartMenuChoice(StartMenuChoice choice)
@@ -2554,6 +2562,7 @@ public partial class GameEngine
                 LocalNames.Species(f.Pokemon.SpeciesName), f.Pokemon.Level,
                 PlayerIdentity.Fill(LocalNames.PlaceShown(f.PlaceKey, f.Place)))).ToList(),
             RunEnded = flow.RunState.Ended,
+            Clears = flow.RunState.Clears,
             Score = flow.TrainerScore,
             Stars = stars,
             NextObjective = NextObjectiveLine,
@@ -3069,7 +3078,7 @@ public partial class GameEngine
     /// <summary>The 3D battle field and Pokémon, then the HUD and menus on top.</summary>
     private void DrawBattle()
     {
-        if (flow.Battle == null) return;
+        if (flow.Battle == null || DrawBattlePhoto()) return;
         battleRenderer.DrawField(flow.Battle, VirtualWidth, VirtualHeight);
         flow.Battle.Draw(VirtualWidth, VirtualHeight);
     }

@@ -76,6 +76,37 @@ internal static class Relief
     /// <summary>The drawn height of a bridge's deck over a tile, or null where there is none.</summary>
     public static float? Deck(Map map, int tx, int ty) => map.DeckAt(tx, ty) is { } deck ? deck - map.GroundLevel : null;
 
+    /// <summary>How far a person's feet must be under a deck for the deck to be over them, not under them: half a tile.</summary>
+    public const float UnderDeck = 0.5f;
+
+    /// <summary>
+    /// The deck over someone whose feet stand at <paramref name="feet"/> (a drawn height) at a point (style guide,
+    /// "Relief", "Whoever walks under a bridge goes under it"): the run of deck tiles along their row that their card
+    /// overlaps, from <c>X0</c> to <c>X1</c> in tiles, and the height a little inside the deck's boards
+    /// (<see cref="Boards"/> under its drawn top) above which nothing of them is drawn over those tiles. Null where no deck stands over them (beside it, on it, or nowhere near one).
+    /// </summary>
+    /// <param name="halfWidth">Half the width of the card drawn at the point, in tiles.</param>
+    public static (float X0, float X1, float Top)? DeckOver(Map map, float x, float z, float feet, float halfWidth = 0.75f)
+    {
+        if (!map.HasRelief) return null;
+        int ty = (int)MathF.Floor(z);
+        int from = (int)MathF.Floor(x - halfWidth), to = (int)MathF.Floor(x + halfWidth);
+        // The tile under the feet first, then the others the card reaches
+        int under = (int)MathF.Floor(x);
+        foreach (int tx in new[] { under }.Concat(Enumerable.Range(from, to - from + 1).Where(t => t != under)))
+        {
+            if (Deck(map, tx, ty) is not { } top || top - feet < UnderDeck) continue;
+            int x0 = tx, x1 = tx;
+            while (Deck(map, x0 - 1, ty) is { } west && MathF.Abs(west - top) < 0.01f) x0--;
+            while (Deck(map, x1 + 1, ty) is { } east && MathF.Abs(east - top) < 0.01f) x1++;
+            return (x0, x1 + 1, top - Boards);
+        }
+        return null;
+    }
+
+    /// <summary>How far under a deck's top whoever walks beneath it is cut off: inside the boards, so no sliver shows over them.</summary>
+    public const float Boards = 0.1f;
+
     /// <summary>
     /// The drawn height under someone who stands at a point at a height the map knows them to be at: the deck
     /// of a bridge if that is what they are on, the ground otherwise.

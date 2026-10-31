@@ -362,6 +362,11 @@ internal static class DebugLayers
         if (!map.IsStreamed) return;
         int size = Map.ChunkTiles;
         int cx0 = w.X / size, cx1 = (w.Right - 1) / size, cy0 = w.Y / size, cy1 = (w.Bottom - 1) / size;
+        // The window is what the view takes in and more (the relief and the shadows widen it), so a label at the corner
+        // of a chunk's part was off the picture: it stands at the point of its part nearest the window's middle, a tile
+        // in from the part's edges, where the camera looks
+        float midX = w.X + w.Width / 2f, midY = w.Y + w.Height / 2f;
+        static float Toward(float value, int from, int to) => to - from <= 2 ? (from + to) / 2f : Math.Clamp(value, from + 1f, to - 1f);
         for (int cy = cy0; cy <= cy1; cy++)
             for (int cx = cx0; cx <= cx1; cx++)
             {
@@ -372,7 +377,9 @@ internal static class DebugLayers
                 int y0 = Math.Max(w.Y, cy * size), y1 = Math.Min(w.Bottom, (cy + 1) * size);
                 if (cx * size >= w.X) picture.Lines.Add(new LayerLine(cx * size, y0, cx * size, y1, colour, DebugLayer.Chunks));
                 if (cy * size >= w.Y) picture.Lines.Add(new LayerLine(x0, cy * size, x1, cy * size, colour, DebugLayer.Chunks));
-                picture.Labels.Add(new LayerLabel(x0 + 0.5f, y0 + 0.5f, LiftOf(map, x0, y0),
+                float lx = Toward(midX, x0, x1), ly = Toward(midY, y0, y1);
+                int tx = Math.Clamp((int)lx, x0, x1 - 1), ty = Math.Clamp((int)ly, y0, y1 - 1);
+                picture.Labels.Add(new LayerLabel(lx, ly, LiftOf(map, tx, ty),
                     $"chunk {cx},{cy} {state.ToString().ToLowerInvariant()}", colour, DebugLayer.Chunks));
             }
     }

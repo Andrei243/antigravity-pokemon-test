@@ -5298,9 +5298,8 @@ the Ice Path's scenes, Clair, the Dragon's Den, the Kimono Girls, Ho-Oh and Lugi
 - **The takeover's start**: HeartGold sets `VAR_SCENE_ROCKET_TAKEOVER` as its count of the Storm, Mineral and Glacier
   Badges reaches three. Here the Leader's script that gives the last of the three sets it; Pryce's does now, and part b
   gives Chuck's and Jasmine's the same lines, for a game that wins the Glacier Badge before either.
-- **Left out**: Whirlpool's HM, which HeartGold's Lance gives after the hideout: this game's `HM05` is Platinum's
-  Defog, and HeartGold's HM of Whirlpool is no item of its data yet (the importer must give it a name of its own), so
-  the Whirl Islands' lower floors stay shut with it; the Rage Candy seller at Mahogany's east exit and the
+- **Left out**: (Whirlpool's HM, which HeartGold's Lance gives after the hideout, came on 2026-10-31 as HM10: "HM10,
+  Whirlpool", below); the Rage Candy seller at Mahogany's east exit and the
   saleswoman (the Rage Candy Bar isn't in the data either); Wesley, the fishing guru's record and TM10 at the lake.
 
 ## Johto's fourth chapter, part b (2026-10-20, plan 20 · J11, part b)
@@ -5971,6 +5970,17 @@ Our own, three more halves of `RandomizerOptions` (`Abilities`, `Moves`, `Types`
 - **Trainers**: the copy `StartTrainerBattle` makes (V6's `ForTrainer`) is made whenever species, abilities or moves are randomised: each Pokémon picks its ability again from its species' abilities now, and a team whose species stayed has each chosen move another **of its own type** and about its power, decided by the trainer's id and the member's place, so a leader keeps a move of their type (Roark a Rock move). The trainer of the map keeps their team. A team whose species are mapped knows what its new learnset teaches, already randomised.
 - **Pokémon already made** keep what they had: a save's team keeps its abilities and moves, and a Pokémon made before the swap (none in a game) would keep its ability until it evolves. Wild Pokémon, gifts and the starter are made after it and follow.
 - **Left**: random evolutions; TMs and tutors' lists; a type chart of its own.
+
+### New Game+ (2026-10-31, plan 13 · V11)
+
+Our own: Platinum has no New Game+. The user kept V11 on 2026-10-31 (decision 7). `Models/NewGamePlus.cs` says what is carried, `Core/GameEngine.NewGamePlus.cs` lays it over a new game after `InitializeNewGame`.
+
+- **When it is offered**: a third answer, NEW GAME+, on the title's "Start a new game?" where a save has a region's Hall of Fame flag (`Region.StoryCompleteFlag`) and its boxes can take its team and its Day Care's two (`NewGamePlus.HasRoom`: nothing is ever left behind, so a save whose hundred boxes are full is not offered it). Of several such saves, the one played longest. The finished save is only read: its slot stays as it was, and the new game takes the first empty one, so NEW GAME+ needs a free slot as NEW GAME does.
+- **Where it begins**: in the region the save finished (the one it began in first, else the chain's first finished), through `NewGameRegion`'s record; every save today finishes Sinnoh first, so it begins in the player's room in Twinleaf Town with an empty team and bag, as any Sinnoh game (plan 02 · S4). The professor's welcome plays again and the name, look and rival may be chosen anew.
+- **The same trainer**: the Trainer Card's number and its hidden half are the save's, and so is the count of Pokémon ids (`PokemonIdsIssued`). A Pokémon the player caught carries no original trainer's mark (`OriginalTrainer` null) and is the player's whatever their name, so it obeys and stays theirs; one that came by trade keeps its mark, as before. Every carried Pokémon keeps its id, and the count goes on, so none is given twice. A shiny stays shiny (it is kept on the Pokémon).
+- **Carried**: the Pokédex's seen, caught and shiny caught and the looks seen; the PC's boxes as they were (their names and wallpapers, the National Pokédex's hundred where the save had it); the team and whatever was at the Day Care, stored in the boxes in the PC's own order (an Egg the couple had found stays with them); half the money, never less than the 3,000 every game begins with; the run, its difficulty a step up (Easy to Normal, Normal and Challenge to Challenge) and Trainers scale to the team on, with everything else of it as it was (a Nuzlocke stays one, a randomiser keeps its seed so the carried Pokémon still belong to its world); the clears, one more than the save's (`RunState.Clears`, written only once above nought, so no save version was raised).
+- **Left**: the story (a fresh `StoryState` begun by `StoryMigration.BeginNewGame`, which is untouched); the bag and every key item, which the story gives again; the National Pokédex itself and the diplomas (the counts carried mean the professor's check after the next Hall of Fame passes at once); the Hall of Fame, the Journal, the counters and medals, the Trainer Card's score; the Frontier's, the Underground's, the Villa's, the contests' and every other record; the Pokétch and its apps; the wardrobe; the Nuzlocke's graveyard and places met; and Pal Park's six waiting in the park, who were never the player's.
+- **On the card**: the Run page (every NEW GAME+ has one, since its run is never Normal) says NEW GAME+ and the count where RUN OVER would stand.
 
 ## The Dragon's Den after the League, Johto's swarms and the Move Relearner (2026-10-25, plan 20 · J13, part c)
 
@@ -6911,9 +6921,7 @@ The user approved L9's default on 2026-10-26 (docs/plans/decisions/APPROVAL-leve
   level 45, no running, gone for good when caught (`FLAG_JOHTO_CAUGHT_LUGIA`, ours) and back with the next Hall of Fame
   when not (HeartGold's `FLAG_HIDE_WHIRL_ISLAND_LUGIA`). HeartGold's Kimono Girls in the cave are SoulSilver's scene and
   are held back.
-- **Lance's Whirlpool HM is not given**: this game's `HM05` is Platinum's Defog, so HeartGold's Whirlpool HM needs a
-  number and a name of its own, and every species' compatibility from HeartGold's machine table: a decision for the user.
-  Until then a Pokémon that learns Whirlpool by level crosses the whirlpools on the way to the islands.
+- **Lance's Whirlpool HM** is HM10 since 2026-10-31 ("HM10, Whirlpool", below).
 - **Johto's ceremony and credits** have songs of their own (`johto/hall_of_fame`, `johto/credits`, found by
   `MusicDirector.SceneSong`), and the **Safari Zone** a trek of its own (`johto/safari_zone`) in its twelve areas and its
   gate hall. Our own compositions, rendered with no clash; not yet heard by the user.
@@ -6929,6 +6937,29 @@ The user approved L9's default on 2026-10-26 (docs/plans/decisions/APPROVAL-leve
   a fixed team of the walk's own against each trainer's team as the data builds it, the trainer AI on both sides). It is
   the scripts' game with real battles, not the window's game driven by keys (`HeadlessGameTests`' way), which would need an
   itinerary of the whole region (`Itineraries`).
+
+## HM10, Whirlpool (2026-10-31, plan 20 · J11)
+
+The user's decision (a): HeartGold's Whirlpool HM, which Lance gives once the Team Rocket Hideout's generator stops, is
+a new HM of ours.
+
+- **Its number is the tenth**: this game's `HM05` is Platinum's Defog and Platinum's eight keep their numbers, and
+  Hoenn's Dive (Emerald's HM08) took `HM09` in plan 21 · H8, so the user's "HM09 Whirlpool" is `HM10`. It is an item of
+  `tools/DataImporter/Overrides/items.json` (id 9204, the TMs pocket, `fieldUse` `TmHm`), never written by hand into
+  `items.json`.
+- **Who learns it is PokeAPI's**: HeartGold's own machine table is no file the importer reads, so the importer gives
+  `HM10` to every species that learns Whirlpool by a machine in any game PokeAPI lists (`AddHoennMachines`, as `HM09`
+  is made). PokeAPI's machines include Gold, Silver and Crystal's and HeartGold and SoulSilver's own HM05 (Whirlpool in
+  both), so the list is theirs and the later games' together: 241 species, every Water type of Kanto and Johto but
+  Magikarp, and a species of ours that copies its forebear's machines takes it too.
+- **Lance gives it once**, as the generator stops (`team_rocket_headquarters_b2f.AllStopped`, `FLAG_JOHTO_GOT_HM_WHIRLPOOL`,
+  a flag of ours). A game that cleared the hideout before the HM existed is handed it without a word the next time it
+  comes to Mahogany Town (`mahogany.OnEnter`), so no story or save version is raised.
+- **Using it** is J8's field move, unchanged: a whirlpool faced from the water with a Pokémon that knows Whirlpool and
+  Johto's Glacier Badge (`FieldMoveRules.BadgeFor`, `common.Whirlpool`). Whirlpool is now an HM move, so the bag won't
+  have it forgotten to make room (`MoveTeaching.IsHmMove`), as every HM's. It is no field helper's (plan 12 · Q18 helps
+  Platinum's eight HMs; Dive isn't either).
+
 ## HeartGold's Kanto, part j (2026-10-31, plan 20 · J15, part j)
 
 - *The slice*: the north-east of Kanto. Route 9 runs east from Cerulean City's east edge, past trees Cut fells, to Route
@@ -7006,7 +7037,7 @@ The user approved L9's default on 2026-10-26 (docs/plans/decisions/APPROVAL-leve
   down 36, 31 and 35 to 32, 32 to 18), which the sage at 36, 30 stood on; he now stands aside for the Silver Wing (a
   double of ours at 34, 29), so the lower level, the third basement and Lugia's cave are reached that way and `WorldWalk`
   finds them. The stairs themselves still read as cliffs: laying edge-on plates as slopes is still undone, and needed
-  nowhere yet.
+  nowhere yet. *Corrected 2026-10-31*: there are no such stairs (below, "The Whirl Islands' stairs that weren't").
 - *The terrain lab's whirlpool*: the harness's `lab` map has a whirlpool of three tiles in its bay (`lab36`, `lab37`),
   which J8 left for the session that shot `lab` again.
 
@@ -7035,3 +7066,18 @@ The user's decision of 2026-10-31: build the room looks J2, J5 and J7 left. The 
   centre's): `ar_center` is now a `Shrine` (the chambers' boards under a hip roof, no sign) and `ar_study` the `Lab`.
 - *Other regions*: nothing they draw asks the new values, and the harness's `rooms`, `interiors twinleaf` and a Sinnoh
   cave (`area oreburgh_gate_1f`) drew the same before and after, shot for shot.
+## The Whirl Islands' stairs that weren't (2026-10-31, plan 20 · J1's decision 8 looked at again)
+
+- *Asked*: an importer rule laying HeartGold's height plates that stand on their edge as slopes, so that the Whirl
+  Islands' B2F stairs (rows 31, 35 and 39 at x 30 and 31) would stop reading as cliffs.
+- *Found*: at the pinned commit HeartGold has **one** plate on its edge in all 676 chunks (chunk 464, of matrix 32,
+  which no area uses, and lying outside the chunk itself, x −23 to −14.5), so decision 8 drops nothing walked. B2F's
+  chunks (561 to 564) have none. What was taken for stairs is the original's own: row 31 at x 31 is the landing at 18
+  under the cliff of the upper floor at 21, with the ladder to the third basement on it (warp 4); rows 35 and 39 are
+  rows under **no plate at all**, the walls between the ramps of the switchback that is the floor's only way down
+  (from 36, 30 at 21, east and west down to 0, its last landing holding the warp to Lugia's cave at 31, 43). A tile under
+  no plate is no place to stand in the original either (pret's `docs/maps/bdhc.md`), and the game here leaves it at a
+  height none of its walked neighbours steps to. A scan of the 326 maps of Johto's `world.json` for three open tiles in a
+  line each a step of 1.25 to 4 below the last (a flight read as cliffs) finds none.
+- *So*: no rule was written and no world file changed. The sage at 36, 30 stands on the switchback's head, which is
+  the way down and no workaround: his standing aside for the Silver Wing stays.

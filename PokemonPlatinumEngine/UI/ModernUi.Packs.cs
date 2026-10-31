@@ -29,7 +29,9 @@ internal static partial class ModernUi
             float y = list.Y + 112;
             foreach (string folder in screen.Folders)
             {
-                DrawWrapped(folder, list.X + 52, y, list.Width - 104, 26, Muted, 34, UiWeight.ExtraBold);
+                // (a folder is one word to the wrapping, so one too long for the panel ran out past it: shortened in
+                // its middle instead, its drive and its last folders kept)
+                UiFonts.Draw(Shortened(folder, list.Width - 104, 26, UiWeight.ExtraBold), list.X + 52, y, 26, Muted, UiWeight.ExtraBold);
                 y += 44;
             }
         }
@@ -64,11 +66,31 @@ internal static partial class ModernUi
             Label(Text.Of("packScreen.place"), about.X + about.Width - 380, y);
             Stepper(new Vector2(about.X + about.Width - 210, y + 66), screen.Place, 200, 64);
             Label(Text.Of("packScreen.credits"), x, y + 84);
-            DrawWrapped(pack.Credits ?? "", x, y + 108, about.Width - 520, 28, Ink, 38, UiWeight.ExtraBold);
+            // The parts follow one another down the panel: a long credit pushes WHAT IT IS down, and the description
+            // stops a line above "Loads after …" (both were written at fixed places and ran over one another)
+            float bottom = about.Y + about.Height - (pack.After.Count > 0 ? 64 : 24);
+            var credit = Wrap(pack.Credits ?? "", about.Width - 520, 28, UiWeight.ExtraBold);
+            float at = y + 108;
+            foreach (string line in credit)
+            {
+                if (at + 38 > bottom) break;
+                if (line.Length > 0) UiFonts.Draw(line, x, at, 28, Ink, UiWeight.ExtraBold);
+                at += 38;
+            }
             if (pack.Description is { Length: > 0 } description)
             {
-                Label(Text.Of("packScreen.about"), x, y + 210);
-                DrawWrapped(description, x, y + 234, about.Width - 104, 28, Muted, 38, UiWeight.ExtraBold);
+                float top = Math.Max(y + 210, at + 26);
+                if (top + 24 + 38 <= bottom)
+                {
+                    Label(Text.Of("packScreen.about"), x, top);
+                    at = top + 24;
+                    foreach (string line in Wrap(description, about.Width - 104, 28, UiWeight.ExtraBold))
+                    {
+                        if (at + 38 > bottom) break;
+                        if (line.Length > 0) UiFonts.Draw(line, x, at, 28, Muted, UiWeight.ExtraBold);
+                        at += 38;
+                    }
+                }
             }
             if (pack.After.Count > 0)
                 UiFonts.Draw(Text.Of("packScreen.after", ("names", string.Join(", ", pack.After))), x, about.Y + about.Height - 52, 24, Muted, UiWeight.ExtraBold);
@@ -77,9 +99,35 @@ internal static partial class ModernUi
         // When the change takes hold, or what couldn't be read
         var note = new Rectangle(Margin, ContentBottom - noteH, sw - Margin * 2, noteH);
         Panel(note, 30);
-        (string text, Color color) = screen.Pending ? (Text.Of("packScreen.pending"), Red)
-            : screen.Problems.Count > 0 ? (Text.Of("packScreen.problems", ("n", screen.Problems.Count), ("first", screen.Problems[0])), Red)
-            : (Text.Of("packScreen.help"), Muted);
-        DrawWrapped(text, note.X + 44, note.Y + (note.Height - 28) / 2f - 2, note.Width - 88, 28, color, 38, UiWeight.ExtraBold);
+        // Both when both hold: a pack left out was hidden while a change waited (the screen opened with a pack that
+        // couldn't be read said only that the changes wait)
+        var lines = new System.Collections.Generic.List<string>();
+        if (screen.Pending) lines.Add(Text.Of("packScreen.pending"));
+        if (screen.Problems.Count > 0)
+            lines.Add(Text.Of("packScreen.problems", ("n", screen.Problems.Count), ("first", screen.Problems[0])));
+        var color = lines.Count > 0 ? Red : Muted;
+        if (lines.Count == 0) lines.Add(Text.Of("packScreen.help"));
+        float pitch = lines.Count > 1 ? 32 : 38, size = lines.Count > 1 ? 24 : 28;
+        float lineY = note.Y + (note.Height - pitch * (lines.Count - 1) - size) / 2f - 2;
+        foreach (string line in lines)
+        {
+            UiFonts.Draw(Shortened(line, note.Width - 88, size, UiWeight.ExtraBold), note.X + 44, lineY, size, color, UiWeight.ExtraBold);
+            lineY += pitch;
+        }
+    }
+
+    /// <summary>A line cut in its middle with an ellipsis until it fits the width, its start and its end kept.</summary>
+    private static string Shortened(string text, float width, float size, UiWeight weight)
+    {
+        if (UiFonts.Measure(text, size, weight) <= width) return text;
+        int keep = text.Length - 1;
+        while (keep > 2)
+        {
+            int head = keep / 3, tail = keep - head;
+            string cut = text[..head] + "…" + text[^tail..];
+            if (UiFonts.Measure(cut, size, weight) <= width) return cut;
+            keep--;
+        }
+        return "…";
     }
 }

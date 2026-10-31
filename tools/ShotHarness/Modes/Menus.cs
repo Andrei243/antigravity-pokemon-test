@@ -1094,5 +1094,25 @@ partial class Harness
             engine.Settings.BoxTools = toolsBefore;
             game.State = GameState.Overworld;
         }
+
+        // What is left here (plan 12 · Q22), last of all so nothing before it moves: the row on, Route 202's sign with its
+        // counts, and the start menu's panel of them
+        {
+            bool before = engine.Settings.AreaChecklist;
+            engine.Settings.AreaChecklist = true;
+            GoTo("Route202", 14, 10, Direction.Up);
+            var here = game.AreaCounts;
+            Console.WriteLine($"left here on Route 202: {here?.Items} items, {here?.Trainers} trainers, {here?.Species} species ({here?.Line})");
+            sign.Show("Route 202", null, here?.Line);
+            Frames(40); Shot("10d_sign_counts");
+            ShotCrop("10e_sign_counts_native", 30, 20, 760, 200, 2);
+            sign.Hide();
+            startMenu.Counts = here?.Line ?? "";
+            startMenu.Open();
+            Frames(30); Shot("09h_startmenu_counts");
+            startMenu.Hide();
+            startMenu.Counts = "";
+            engine.Settings.AreaChecklist = before;
+        }
     }
 }

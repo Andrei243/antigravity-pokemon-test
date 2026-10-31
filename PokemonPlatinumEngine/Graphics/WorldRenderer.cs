@@ -1092,13 +1092,16 @@ public sealed partial class WorldRenderer
         public readonly Vector3 Feet;
         public readonly float Yaw;
         public readonly CharacterPose Pose;
+        /// <summary>The bridge's deck over them, which hides what of them stands above it (style guide, "Relief").</summary>
+        public readonly (float X0, float X1, float Top)? Over;
 
-        public Actor(CharacterRig rig, Vector3 feet, float yaw, CharacterPose pose)
+        public Actor(CharacterRig rig, Vector3 feet, float yaw, CharacterPose pose, (float X0, float X1, float Top)? over = null)
         {
             Rig = rig;
             Feet = feet;
             Yaw = yaw;
             Pose = pose;
+            Over = over;
         }
     }
 
@@ -1257,7 +1260,7 @@ public sealed partial class WorldRenderer
                 Life.Strokes(map, nx + nudge, nz, npc.Facing, strokesSince, Life.Now, phase);
             }
             if (pose.Stance != Overworld.Stance.Stand) at = Seated(rig, pose.Stance, at, npc.Facing, map.SeatUnder(npc), npc.Level != null, MapScene.PitchOf(map));
-            actors.Add(new Actor(rig, at, Player.YawOf(npc.Facing), pose));
+            actors.Add(new Actor(rig, at, Player.YawOf(npc.Facing), pose, Relief.DeckOver(map, at.X, at.Z, at.Y)));
         }
         strokesSince = Life.Now;
 
@@ -1301,7 +1304,7 @@ public sealed partial class WorldRenderer
             playerPose.Stance = posed;
             playerAt = Seated(playerRig, posed, playerAt, player.Facing, map.SeatAt(player.GridX, player.GridY), false, MapScene.PitchOf(map));
         }
-        actors.Add(new Actor(playerRig, playerAt, player.Yaw, playerPose));
+        actors.Add(new Actor(playerRig, playerAt, player.Yaw, playerPose, Relief.DeckOver(map, playerAt.X, playerAt.Z, playerAt.Y)));
 
         if (player.Mount is { } ridden)
         {
@@ -1430,7 +1433,12 @@ public sealed partial class WorldRenderer
     private void DrawActors(CharacterPass pass)
     {
         foreach (var actor in actors)
+        {
+            // Whoever stands under a bridge's deck is hidden by its boards (style guide, "Relief")
+            if (actor.Over != null && pass == CharacterPass.Color) shaders.SetDeckOver(actor.Over);
             CharacterSprites.DrawBillboard(context, actor.Rig, actor.Pose, actor.Yaw, actor.Feet, VerticalScale, pass);
+            if (actor.Over != null && pass == CharacterPass.Color) shaders.SetDeckOver(null);
+        }
         if (mount is { Own: { } own } carried)
             CharacterSprites.DrawCard(own.Frames[0], carried.At, VerticalScale, pass);
         else if (mount is { } m) SurfMount.Draw(context, m.At, m.Yaw, VerticalScale, pass);

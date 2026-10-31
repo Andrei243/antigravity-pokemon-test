@@ -13996,6 +13996,20 @@
     "cantBeTossed": true
   },
   {
+    "id": 9204,
+    "name": "HM10",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Whirlpool to a compatible Pokémon. It traps the target in a whirlpool, and outside battle it crosses one.",
+    "teachesMove": "Whirlpool",
+    "cantBeTossed": true,
+    "fieldUse": "TmHm"
+  },
+  {
     "id": 9300,
     "name": "Pokéblock Case",
     "pocket": "KeyItems",

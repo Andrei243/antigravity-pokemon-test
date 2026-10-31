@@ -148,7 +148,10 @@ public sealed class HgWorld
             file.Solid.Add(solid.ToString());
             file.Cover.Add(row.ToString());
         }
-        // A plate standing on its edge (a normal with no height) says nothing of the ground walked on; a few of HeartGold's chunks have one
+        // A plate standing on its edge (a normal with no height) says nothing of the ground walked on. At the pinned commit
+        // one chunk of HeartGold's has one (464, of a matrix no area uses, lying outside the chunk): no stairs are lost by it.
+        // A tile under no plate at all (a row of them parts each ramp of the Whirl Islands' B2F from the next) is no stair:
+        // there it stands at a height none of its walked neighbours steps to (the rulings' "The Whirl Islands' stairs that weren't")
         file.Heights = land.Heights.Plates.Where(p => p.Normal.Y != 0).Select(WorldWriter.ToPlate).ToList();
         file.Props = land.Props.Select(p =>
         {

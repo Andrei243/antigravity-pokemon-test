@@ -25,7 +25,7 @@ partial class Harness
     //   9. the Champions with the Mega Max Band (plan 25 · YD6): the bands (gi60 to gi64), Cynthia's fight under the boss box (gi65 to gi75), the Battle Scene off (gi78, gi79).
     //  10. the Gigantamax signatures, part a (plan 25 · YD7): the five's growths and set pieces (gi80 to gi84), a foe's G-Max Replenish (gi85).
     //      Part b: Chi Strike, Gold Rush, Cuddle, Befuddle and Depletion the same way (gi86 to gi90).
-    //  11. doubles (plan 25's leftovers): a Mega Dynamax and a Max Flare's sun in a double (gi91 to gi94), G-Max Steelsurge across a double's foes (gi95).
+    //  11. doubles (plan 25's leftovers): a Mega Dynamax and a Max Flare's sun in a double (gi91 to gi94), G-Max Steelsurge across a double's foes (gi95), and a giant on each side of a double at its menus (gi96).
     // GIANTS_PART=cynthia|dynamax|double|own|finisher|guard|field|megamax|champions|signatures|doubles runs one part; signaturesb part b alone with Resonance again.
     public void GiantsMode()
     {
@@ -1101,6 +1101,64 @@ partial class Harness
                 return (v.ArrivingFromABlow, v.Age, $"Steelsurge from {v.From?.ToString() ?? "nowhere"}, age {v.Age:0.00}, arrival {v.Arrival:0.00}");
             }, 0.08, 0.3, 0.6, 0.9);
             ToMenu(s, "gi95_double_steelsurge_settled");
+
+            // A giant on each side of a double (the user's ruling of 2026-10-31: ×1.15 and ×1.12 beside a partner): the
+            // player's Charizard grown beside a Blissey, a trainer's two of whom the AI grows one, shot at each menu while
+            // a giant stands (gi96_both_*), with the size each place is drawn at
+            game.Bag.AddItem(ItemDatabase.Get(PokemonPlatinumEngine.Battle.Sim.BattleCore.DynamaxBandItem)!);
+            var pair = new Trainer
+            {
+                Id = "harness_double_pair", Name = "Cal", TrainerClass = "Ace Trainer", PrizeMoney = 0, DoubleBattle = true, DynamaxBand = true,
+                Ai = PokemonPlatinumEngine.Battle.Sim.Ai.AiFlags.Basic | PokemonPlatinumEngine.Battle.Sim.Ai.AiFlags.EvalAttack | PokemonPlatinumEngine.Battle.Sim.Ai.AiFlags.Expert
+            };
+            foreach (var (species, level) in new[] { ("Snorlax", 60), ("Charizard", 60) })
+            {
+                var p = new Pokemon(PokemonDatabase.Get(species)!, level);
+                p.DynamaxLevel = 10;
+                pair.Party.Add(p);
+            }
+            var both = Begin(pair, "Ace Trainer", Giant("Garchomp", false, 70, "Growl", "Dragon Claw"), Tank("Blissey", "Splash", "Softboiled"));
+            if (both != null)
+            {
+                ToMainMenu(both);
+                for (int i = 0; i < 8 && both.HUD.MenuState == BattleMenuState.Message; i++) { Confirm(both); Skip(0.5); }
+                Whole(both);
+                Skip(1.0);
+                Shot("gi96_both_intro");
+                string Sizes() => string.Join(", ", new[] { BattleSide.Player, BattleSide.Enemy }.SelectMany(side =>
+                    Enumerable.Range(0, both.Anim.SlotsOf(side)).Select(slot =>
+                        $"{side} {slot} x{BattleAnimator.GiantOf(both.Anim[side, slot], side == BattleSide.Player, both.Anim.Paired(side)):0.00}")));
+                int shots = 0;
+                for (int turn = 0; turn < 4 && !both.IsBattleOver && shots < 3; turn++)
+                {
+                    Whole(both);
+                    both.SelectMainMenuOption(0);
+                    Frames(5);
+                    if (turn == 0) both.ToggleLaterMechanic();
+                    both.SelectMove(0); // Growl, a Max Guard once grown: nobody of theirs falls, so each giant keeps its partner
+                    Frames(1);
+                    if (both.HUD.MenuState == BattleMenuState.SelectTarget) { both.SelectTarget(0); Frames(1); }
+                    if (both.HUD.MenuState == BattleMenuState.Main)
+                    {
+                        both.SelectMainMenuOption(0);
+                        Frames(2);
+                        both.SelectMove(0);
+                        Frames(1);
+                        if (both.HUD.MenuState == BattleMenuState.SelectTarget) { both.SelectTarget(0); Frames(1); }
+                    }
+                    for (int i = 0; i < 600 && both.HUD.MenuState != BattleMenuState.Main && !both.IsBattleOver; i++)
+                    { if (both.IsWaitingForConfirm) Confirm(both); else Skip(0.05); }
+                    Skip(1.0);
+                    bool mine = both.Anim[BattleSide.Player, 0].Dynamaxed || both.Anim[BattleSide.Player, 1].Dynamaxed;
+                    bool theirs = both.Anim[BattleSide.Enemy, 0].Dynamaxed || both.Anim[BattleSide.Enemy, 1].Dynamaxed;
+                    Console.WriteLine($"  gi96 turn {turn + 1}: giants mine {mine}, theirs {theirs}; {Sizes()}; mine {Side(both, BattleSide.Player)}; theirs {Side(both, BattleSide.Enemy)}");
+                    if (mine || theirs)
+                    {
+                        Shot($"gi96_both_menu_{++shots}");
+                        Console.WriteLine($"  gi96_both_menu_{shots}: {game.BattleRenderer.Effects.Count} quads and ribbons");
+                    }
+                }
+            }
         }
         game.State = GameState.Overworld;
     }

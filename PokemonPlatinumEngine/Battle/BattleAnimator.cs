@@ -472,6 +472,19 @@ public sealed class BattleAnimator
     public const float DynamaxScaleFoe = 1.25f, DynamaxScaleOwn = 1.3f;
 
     /// <summary>
+    /// The same in a battle of two or more a side (the user's ruling of 2026-10-31; style guide, "A giant's growth"):
+    /// smaller, so that a giant at the overview keeps clear of the partner beside it. The foe's keeps the single's ratio.
+    /// </summary>
+    public const float DynamaxScaleFoeDouble = 1.12f, DynamaxScaleOwnDouble = 1.15f;
+
+    /// <summary>How big a giant stands at its height: by its side, and by whether a partner stands beside it.</summary>
+    public static float GiantScale(bool isPlayer, bool paired) =>
+        paired ? (isPlayer ? DynamaxScaleOwnDouble : DynamaxScaleFoeDouble) : (isPlayer ? DynamaxScaleOwn : DynamaxScaleFoe);
+
+    /// <summary>Whether a giant on this side stands with a partner beside it: two or more places on its side.</summary>
+    public bool Paired(BattleSide side) => SlotsOf(side) >= 2;
+
+    /// <summary>
     /// The trainer's call before a growth (plan 25 · YD1; style guide, "The giant's arrival"): how long it comes first,
     /// when the Pokémon is drawn back into red light (from <see cref="CallDrawStart"/> to <see cref="CallDrawEnd"/>),
     /// when the ball in the hand has swollen (<see cref="CallSwellEnd"/>), when it is thrown (<see cref="CallThrow"/>),
@@ -1374,11 +1387,12 @@ public sealed class BattleAnimator
 
     /// <summary>
     /// How much bigger the Pokémon here stands than its own size: <see cref="DynamaxScaleFoe"/> (or
-    /// <see cref="DynamaxScaleOwn"/> on the player's side) while Dynamaxed, eased in as it grows and out as it shrinks.
+    /// <see cref="DynamaxScaleOwn"/> on the player's side; <see cref="GiantScale"/>'s smaller pair where
+    /// <paramref name="paired"/>, a partner beside it) while Dynamaxed, eased in as it grows and out as it shrinks.
     /// </summary>
-    public static float GiantOf(CombatantView v, bool isPlayer)
+    public static float GiantOf(CombatantView v, bool isPlayer, bool paired = false)
     {
-        float big = isPlayer ? DynamaxScaleOwn : DynamaxScaleFoe;
+        float big = GiantScale(isPlayer, paired);
         if (v.Dynamaxed)
         {
             if (v.GiantAge < 0f) return big;

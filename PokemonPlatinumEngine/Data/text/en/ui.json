@@ -172,6 +172,13 @@
         "on": "The commands have AUTO, which plays the battle for you with each Pokémon's strongest move until one of yours faints or Back stops it."
       }
     },
+    "areaChecklist": {
+      "label": "What is left here",
+      "help": {
+        "off": "The place's sign shows only its name.",
+        "on": "The place's sign and the menu count the items, trainers and Pokémon you can still find where you are now, without naming them."
+      }
+    },
     "boxesAnywhere": {
       "label": "Boxes anywhere and a sorted bag",
       "value": { "Off": "Off", "Rules": "By the rules", "On": "On" },
@@ -490,7 +497,9 @@
         "other": "It will be saved in slot {slot}. The saves you have are kept as they are."
       },
       "no": "NO, GO BACK",
-      "yes": "YES, NEW GAME"
+      "yes": "YES, NEW GAME",
+      "plus": "NEW GAME+",
+      "plusBlurb": "Slot {slot}. NEW GAME+ carries slot {from}'s Pokédex, boxes and half its money from {region} into a harder journey."
     },
     "delete": {
       "heading": "Delete slot {slot}?",
@@ -1063,6 +1072,7 @@
     "stars": "STARS",
     "starsNote": "A star for each of five great feats.",
     "runEnded": "RUN OVER",
+    "clears": "NEW GAME+ {n}",
     "packs": { "one": "PACK: {name}", "other": "{n} PACKS" },
     "graveyard": "GRAVEYARD  {count}",
     "graveyardEmpty": "Nobody has fallen yet.",
@@ -4397,8 +4407,9 @@
   },
   "photo": {
     "title": "PHOTO",
-    "row": { "Zoom": "Zoom", "Time": "Time", "Weather": "Weather", "Filter": "Filter", "Frame": "Frame" },
+    "row": { "Zoom": "Zoom", "Time": "Time", "Weather": "Weather", "Filter": "Filter", "Frame": "Frame", "Pose": "Pose" },
     "zoom": "×{zoom}",
+    "pose": { "still": "As it is", "step": "+{seconds} s" },
     "time": { "now": "Now", "Morning": "Morning", "Day": "Day", "Twilight": "Evening", "Night": "Night", "LateNight": "Late night" },
     "weather": { "Now": "As it is", "Clear": "Clear", "Rain": "Rain", "Snow": "Snow", "Fog": "Fog" },
     "notHere": "Not here",
@@ -4631,5 +4642,10 @@
       "alike": "All alike",
       "grade": { "Nothing": "NOTHING", "Meagre": "MEAGRE", "Fair": "FAIR", "Good": "GOOD", "Splendid": "SPLENDID", "Flawless": "FLAWLESS" }
     }
+  },
+  "leftHere": {
+    "caption": "LEFT HERE",
+    "line": "Items {items} · Trainers {trainers} · Pokémon {species}",
+    "nothing": "Nothing left here"
   }
 }

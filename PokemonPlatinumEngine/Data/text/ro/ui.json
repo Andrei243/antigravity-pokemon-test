@@ -304,6 +304,13 @@
         "on": "Comenzile au AUTO, care joacă lupta pentru tine cu cea mai puternică mișcare a fiecărui Pokémon până leșină unul de-al tău sau Înapoi o oprește."
       }
     },
+    "areaChecklist": {
+      "label": "Ce a mai rămas aici",
+      "help": {
+        "off": "Indicatorul locului arată doar numele lui.",
+        "on": "Indicatorul locului și meniul numără obiectele, antrenorii și Pokémonii pe care îi mai poți găsi de unde ești acum, fără să-i numească."
+      }
+    },
     "boxesAnywhere": {
       "label": "Cutii oriunde și rucsac ordonat",
       "value": { "Off": "Nu", "Rules": "După reguli", "On": "Da" },
@@ -497,7 +504,9 @@
         "other": "Va fi salvat în slotul {slot}. Salvările pe care le ai rămân cum sunt."
       },
       "no": "NU, ÎNAPOI",
-      "yes": "DA, JOC NOU"
+      "yes": "DA, JOC NOU",
+      "plus": "JOC NOU+",
+      "plusBlurb": "Slotul {slot}. JOC NOU+ ia din slotul {from} Pokédexul, cutiile și jumătate din bani din {region}, într-o călătorie mai grea."
     },
     "delete": {
       "heading": "Ștergi slotul {slot}?",
@@ -1287,6 +1296,7 @@
     "debut": "DEBUT ÎN SALA FAIMEI",
     "debutWhen": "{date}   {time}",
     "runEnded": "JOC TERMINAT",
+    "clears": "JOC NOU+ {n}",
     "packs": { "one": "PACHET: {name}", "few": "{n} PACHETE", "other": "{n} DE PACHETE" },
     "graveyard": "CIMITIR  {count}",
     "graveyardEmpty": "Încă nu a leșinat nimeni.",
@@ -4691,8 +4701,9 @@
   },
   "photo": {
     "title": "FOTO",
-    "row": { "Zoom": "Zoom", "Time": "Ora", "Weather": "Vremea", "Filter": "Filtru", "Frame": "Ramă" },
+    "row": { "Zoom": "Zoom", "Time": "Ora", "Weather": "Vremea", "Filter": "Filtru", "Frame": "Ramă", "Pose": "Ipostaza" },
     "zoom": "×{zoom}",
+    "pose": { "still": "Cum e", "step": "+{seconds} s" },
     "time": { "now": "Acum", "Morning": "Dimineața", "Day": "Ziua", "Twilight": "Seara", "Night": "Noaptea", "LateNight": "Târziu în noapte" },
     "weather": { "Now": "Cum e", "Clear": "Senin", "Rain": "Ploaie", "Snow": "Ninsoare", "Fog": "Ceață" },
     "notHere": "Nu aici",
@@ -4925,5 +4936,10 @@
       "alike": "Toate la fel",
       "grade": { "Nothing": "NIMIC", "Meagre": "SLAB", "Fair": "BINIȘOR", "Good": "BUN", "Splendid": "SPLENDID", "Flawless": "FĂRĂ CUSUR" }
     }
+  },
+  "leftHere": {
+    "caption": "A RĂMAS AICI",
+    "line": "Obiecte {items} · Antrenori {trainers} · Pokémon {species}",
+    "nothing": "Nu a mai rămas nimic aici"
   }
 }
