@@ -1,0 +1,61 @@
+{
+  "key": "bell_tower_4f",
+  "index": 334,
+  "name": "Bell Tower",
+  "matrix": 18,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Building3",
+  "dayMusic": "GS_TO_SUZU",
+  "nightMusic": "GS_TO_SUZU",
+  "encounters": "D17R0104",
+  "bike": false,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Rattata", "level": 20, "night": "Gastly" },
+    { "species": "Rattata", "level": 21, "night": "Gastly" },
+    { "species": "Rattata", "level": 20, "night": "Gastly" },
+    { "species": "Rattata", "level": 21, "night": "Gastly" },
+    { "species": "Rattata", "level": 22, "night": "Gastly" },
+    { "species": "Rattata", "level": 22, "night": "Gastly" },
+    { "species": "Rattata", "level": 22 },
+    { "species": "Rattata", "level": 22 },
+    { "species": "Rattata", "level": 23 },
+    { "species": "Rattata", "level": 24 },
+    { "species": "Rattata", "level": 23 },
+    { "species": "Rattata", "level": 24 }
+  ],
+  "landRate": 5,
+  "swarm": [
+    "Rattata",
+    "Rattata"
+  ],
+  "hoennSounds": [
+    "Zigzagoon",
+    "Spinda"
+  ],
+  "sinnohSounds": [
+    "Chatot",
+    "Meditite"
+  ],
+  "warps": [
+    { "x": 24, "z": 8, "to": "bell_tower_3f", "toWarp": 1 },
+    { "x": 6, "z": 8, "to": "bell_tower_5f", "toWarp": 0 },
+    { "x": 6, "z": 7, "to": "bell_tower_5f", "toWarp": 0 },
+    { "x": 6, "z": 25, "to": "bell_tower_5f", "toWarp": 1 },
+    { "x": 6, "z": 24, "to": "bell_tower_5f", "toWarp": 1 },
+    { "x": 24, "z": 25, "to": "bell_tower_5f", "toWarp": 2 },
+    { "x": 24, "z": 24, "to": "bell_tower_5f", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "everywhere_monstarball", "looks": "monstarball", "movement": "0", "x": 6, "z": 21, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D17R0104_ESCAPE_ROPE", "item": "Escape Rope", "script": "std_itemball_d17r0104_escape_rope" },
+    { "id": "everywhere_monstarball_2", "looks": "monstarball", "movement": "0", "x": 22, "z": 18, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D17R0104_ULTRA_BALL", "item": "Ultra Ball", "script": "std_itemball_d17r0104_ultra_ball" },
+    { "id": "everywhere_monstarball_3", "looks": "monstarball", "movement": "0", "x": 25, "z": 24, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D17R0104_PP_UP", "item": "PP Up", "script": "std_itemball_d17r0104_pp_up" }
+  ],
+  "signs": [],
+  "triggers": []
+}

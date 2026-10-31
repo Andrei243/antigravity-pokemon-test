@@ -62,6 +62,68 @@ script Surf
   end
 
 
+# The five Kimono Girls on the stage (plan 20 · J11, part d; HeartGold's battles at the theater once the bell's holder
+# comes). Before the Rainbow Wing (FLAG_UNK_093, goldenrod_radio_tower_observation_deck.txt) each says her own line.
+# With it, whichever is spoken to calls the others, and the five battle one after another with no heal between them:
+# Zuki, Naoko, Miki, Sayo and Kuni. A battle lost ends the test there, and spoken to again they begin again from the
+# first. All five beaten, they go ahead to the Bell Tower (FLAG_JOHTO_KIMONO_GIRLS_BEATEN, ours: the gate's door to the
+# tower opens and the five stand on its roof; VAR_UNK_40FA 1, the roof's trigger) and leave the stage
+# (FLAG_HIDE_DANCE_STUDIO_KIMONO_GIRLS set again).
+script Dancers
+  if not flag FLAG_UNK_093 goto OwnLine
+  if flag FLAG_JOHTO_KIMONO_GIRLS_BEATEN goto OwnLine
+  scene "The Kimono Girls' test"
+  face self player
+  speaker "Kimono Girl"
+  say "That feather... a Rainbow Wing! Then you may be the one the bird of the Bell Tower is waiting for."
+  say "We are the tower's dancers. Before we let anyone climb it, the five of us test them, one after another."
+  say "There will be no rest between us. Are you ready?"
+  speaker "Zuki"
+  say "I'm first. Don't hold back!"
+  battle t27r0501_dancer as "johto_kimono_girl_zuki" canlose
+  if lost goto Lost
+  speaker "Naoko"
+  say "Zuki's fallen? Then it's my turn to dance."
+  battle t27r0501_dancer_2 as "johto_kimono_girl_naoko" canlose
+  if lost goto Lost
+  speaker "Miki"
+  say "You helped me once. Now let me see how strong you really are."
+  battle t27r0501_dancer_6 as "johto_kimono_girl_miki" canlose
+  if lost goto Lost
+  speaker "Sayo"
+  say "Three of us, and you're still standing. Then try me."
+  battle t27r0501_dancer_4 as "johto_kimono_girl_sayo" canlose
+  if lost goto Lost
+  speaker "Kuni"
+  say "I'm the last. If you pass me, the tower is yours to climb."
+  battle t27r0501_dancer_5 as "johto_kimono_girl_kuni" canlose
+  if lost goto Lost
+  speaker "Kimono Girl"
+  say "Five battles, and not one rest. You and your Pokémon are one heart. We are sure of it now."
+  say "We will go ahead to the Bell Tower and tell the Sages at its gate to let you pass. Meet us at the very top."
+  fade out 0.6
+  setflag FLAG_JOHTO_KIMONO_GIRLS_BEATEN
+  setflag FLAG_HIDE_DANCE_STUDIO_KIMONO_GIRLS
+  setvar VAR_UNK_40FA 1
+  hide t27r0501_dancer
+  hide t27r0501_dancer_2
+  hide t27r0501_dancer_4
+  hide t27r0501_dancer_5
+  hide t27r0501_dancer_6
+  fade in 0.6
+  endscene
+  end
+label Lost
+  speaker "Kimono Girl"
+  say "Not yet, it seems. Rest your Pokémon, and come back to us. We'll test you again from the beginning."
+  endscene
+  end
+label OwnLine
+  face self player
+  sayown
+  end
+
+
 # T27R0501_000: the gentleman of the audience
 script Gentleman
   face t27r0501_gsgentleman player

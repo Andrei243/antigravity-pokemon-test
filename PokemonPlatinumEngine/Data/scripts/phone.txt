@@ -46,6 +46,38 @@ label Two
 
 
 # The trainers who gave their numbers: a word about their Pokémon, or a rematch on their day
+# Chuck, the Cianwood Gym's Leader, registered after Johto's Hall of Fame (cianwood_gym.txt; plan 20 · J9's leftover).
+# His rematch is the Fighting Dojo's on his day (Data/world/johto/phone.json)
+script Chuck
+  speaker "Chuck"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
+  say "HWAAAH! Sorry, I was in the middle of a set of one-handed push-ups. Keep training, Champion!"
+  end
+label Rematch
+  say "Chuck here! My fists are itching. Come to the Fighting Dojo in Saffron City and let's settle it!"
+  end
+label Waiting
+  say "Chuck again! I'm at the Fighting Dojo in Saffron City, warmed up and waiting for you!"
+  end
+
+
+# Jasmine, the Olivine Gym's Leader, registered after Johto's Hall of Fame (olivine_gym.txt; plan 20 · J9's leftover).
+# Her rematch is the Fighting Dojo's on her day (Data/world/johto/phone.json)
+script Jasmine
+  speaker "Jasmine"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
+  say "Um... it's Jasmine. Amphy's light was very bright tonight. I just wanted to tell someone."
+  end
+label Rematch
+  say "It's Jasmine. My steel Pokémon have grown even harder. Would you battle me at the Fighting Dojo in Saffron City?"
+  end
+label Waiting
+  say "Jasmine here. I'm waiting for you at the Fighting Dojo in Saffron City... whenever you're ready."
+  end
+
+
 script Joey
   speaker "Joey"
   if var VAR_PHONE_CALL == 2 goto Rematch

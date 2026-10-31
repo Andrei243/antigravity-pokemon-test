@@ -1,5 +1,7 @@
 using PokemonPlatinumEngine.Audio;
 using PokemonPlatinumEngine.Battle;
+using PokemonPlatinumEngine.Battle.Sim;
+using PokemonPlatinumEngine.Battle.Sim.Ai;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
@@ -33,6 +35,8 @@ public class JohtoStoryTests
         public (int X, int Y) Tile { get; set; }
         public int Starter { get; init; }
         public BattleOutcome Fight { get; set; } = BattleOutcome.Won;
+        /// <summary>Fights a trainer's battle for real (the whole walk's), or null for <see cref="Fight"/>'s outcome.</summary>
+        public Func<NPC?, BattleOutcome?>? Fighter { get; set; }
         public bool Impatient { get; init; }
         public bool PuzzleSolved { get; set; } = true;
         public Queue<int> Answers { get; } = new();
@@ -115,7 +119,7 @@ public class JohtoStoryTests
                 MapNamed = name => maps.GetValueOrDefault(name),
                 StarterChoice = Starter,
                 RivalName = Rival,
-                Fight = _ => Fight,
+                Fight = npc => Fighter?.Invoke(npc) ?? Fight,
                 NeedsPokemon = true,
                 PuzzleSolved = PuzzleSolved,
                 Encounters = Encounters,
@@ -149,7 +153,11 @@ public class JohtoStoryTests
     [InlineData(2, BattleOutcome.Won)]
     public void TheChapterPlaysFromTheBedroomToTheZephyrBadge(int starter, BattleOutcome fight)
     {
-        var game = new Game(starter, fight);
+        PlayTheFirstChapter(new Game(starter, fight), starter, fight);
+    }
+
+    private static void PlayTheFirstChapter(Game game, int starter, BattleOutcome fight)
+    {
         var johto = RegionDatabase.Get(RegionDatabase.Johto)!;
         string mine = johto.Starters[starter];
         string rivals = johto.RivalStarterFor(mine);
@@ -450,7 +458,11 @@ public class JohtoStoryTests
         var johto = RegionDatabase.Get(RegionDatabase.Johto)!;
         game.Story.ChooseStarter(johto.Starters[starter]);
         game.Party.Add(new Pokemon(PokemonDatabase.Get("Machop")!, 30));
+        PlayTheSecondChapter(game, starter);
+    }
 
+    private static void PlayTheSecondChapter(Game game, int starter)
+    {
         // Azalea Town: the grunt shoves a passer-by away from the well and stands guard
         game.Arrive("Johto", 420, 465);
         Assert.Null(game.Present("t23_rocketm"));
@@ -615,7 +627,11 @@ public class JohtoStoryTests
         // As the second chapter leaves it: the three of the Burned Tower fled and the Fog Badge won
         game.Story.SetVar("VAR_UNK_4079", 4);
         game.Story.GiveBadge("Johto", "Fog");
+        PlayTheThirdChapter(game);
+    }
 
+    private static void PlayTheThirdChapter(Game game)
+    {
         // Olivine City: the red-haired boy comes out of the Gym once, and is gone
         game.Arrive("Johto", 272, 248);
         Assert.Null(game.Present("t26_gsrivel"));
@@ -712,7 +728,11 @@ public class JohtoStoryTests
         // As the third chapter leaves it: the Storm and Mineral Badges won
         game.Story.GiveBadge("Johto", "Storm");
         game.Story.GiveBadge("Johto", "Mineral");
+        PlayTheFourthChapter(game);
+    }
 
+    private static void PlayTheFourthChapter(Game game)
+    {
         // Route 43's gate house: the grunts take the toll on arrival, while the guard is out of the way
         game.Arrive("Route43_Gate", 5, 11);
         Assert.Equal(2000, game.Last.Money);
@@ -880,6 +900,11 @@ public class JohtoStoryTests
         game.Party.Add(new Pokemon(PokemonDatabase.Get("Machamp")!, 50));
         game.Story.GiveBadge("Johto", "Storm");
         game.Story.GiveBadge("Johto", "Mineral");
+        PlayTheTakeover(game, starter);
+    }
+
+    private static void PlayTheTakeover(Game game, int starter)
+    {
         var world = Johto.Value;
 
         // The Glacier Badge is the last of the three: the takeover begins, and Elm rings in the next town come to
@@ -1276,7 +1301,11 @@ public class JohtoStoryTests
         // Plan 20 · J11, part c: the man who points out HM07 and then says what it is for, the Kimono Girl pushed off
         // the ice from the tile behind her, a fall through each hole of B1F onto its own tile of B2F, and a boulder
         // pushed into a hole standing on the ice below from then on
-        var game = PastTheTakeover();
+        PlayTheIcePath(PastTheTakeover());
+    }
+
+    private static void PlayTheIcePath(Game game)
+    {
         game.Arrive("IcePath_1F", 47, 5);
         Assert.True(game.Fires("Noticed"));
         game.Step("Noticed");
@@ -1342,7 +1371,11 @@ public class JohtoStoryTests
         // player to the shrine, a wrong answer that ends the talk and is taken up again at the same question, Clair
         // made to give the Rising Badge, TM59 on the way out of the Dragon's Den, and the elder's Dratini without
         // Extreme Speed, since an answer was wrong
-        var game = PastTheTakeover();
+        PlayClairsTest(PastTheTakeover());
+    }
+
+    private static void PlayClairsTest(Game game)
+    {
         var town = Johto.Value.Area("blackthorn")!.Warps[0];
 
         // Before Clair: the way into the Gym is open, the Den's old man stands in its door
@@ -1432,7 +1465,11 @@ public class JohtoStoryTests
         // (Mom has had her word on the first morning long before, as in any game this far: home after the Hall of Fame
         // goes to Elm's call, not the first morning's scene)
         game.Story.SetVar("VAR_SCENE_PLAYERS_HOUSE_1F", 1);
+        PlayTheFifthChapter(game, rival);
+    }
 
+    private static void PlayTheFifthChapter(Game game, string rival)
+    {
         // The lab: Elm's Master Ball, once
         var lab = Johto.Value.Area("new_bark_elms_lab_1f")!.Warps[0];
         game.Arrive("NewBark_ElmsLab", lab.X, lab.Z - 1);
@@ -2092,5 +2129,261 @@ public class JohtoStoryTests
             game.Step("OffTheRoad");
             Assert.Equal(0, game.Story.Var("VAR_JOHTO_CYCLING_ROAD"));
         }
+    }
+
+    [Fact]
+    public void TheKimonoGirlsBattleFiveInARowAndHoOhComesToTheBellTowersRoof()
+    {
+        // Plan 20 · J11, part d: before the Rainbow Wing the dancers only talk and the gate's north door is shut; with
+        // it the five battle one after another, a loss ending the test and the next word beginning it again from Zuki;
+        // won, the gate opens, the Sage stands aside, the five stand on the roof, and their dance brings Ho-Oh down
+        PlayTheBellTower(PastTheTakeover(), losing: true);
+    }
+
+    [Fact]
+    public void HoOhBeatenComesBackWithTheHallOfFameAndCaughtIsGoneForGood()
+    {
+        var game = PastTheTakeover();
+        PlayTheBellTower(game);
+        var roof = game.Map;
+        // Beaten (not caught): gone, and back once Johto's Hall of Fame is entered again
+        Assert.True(game.Story.Has("FLAG_HIDE_BELL_TOWER_HO_OH"));
+        game.Arrive("IndigoLeague_HallOfFame", 6, 21);
+        Assert.False(game.Story.Has("FLAG_HIDE_BELL_TOWER_HO_OH"));
+        game.Arrive("BellTower_Roof", 15, 23);
+        Assert.NotNull(game.Present("d17r0110_hou_obj01"));
+        // Caught: gone for good, the Hall of Fame leaving it so
+        game.Fight = BattleOutcome.Caught;
+        game.Talk("d17r0110_hou_obj01");
+        Assert.True(game.Story.Has("FLAG_JOHTO_CAUGHT_HO_OH"));
+        Assert.Contains(game.Party.Members, p => p.Species.Name == "Ho-Oh");
+        game.Arrive("IndigoLeague_HallOfFame", 6, 21);
+        Assert.True(game.Story.Has("FLAG_HIDE_BELL_TOWER_HO_OH"));
+    }
+
+    [Fact]
+    public void ChuckAndJasmineGiveTheirNumbersToJohtosChampion()
+    {
+        // Plan 20 · J9's leftover: after the Badge and its TM they only talk; to a Champion of Johto they offer their
+        // numbers once, and their calls are their own
+        var game = PastTheTakeover();
+        // (Amphy cured: Jasmine back in her Gym)
+        game.Story.SetVar("VAR_SCENE_LIGHTHOUSE_JASMINE", 2);
+        foreach (var (map, who, contact, tile) in new[]
+                 {
+                     ("Cianwood_Gym", "t24gym0101_gsleader5", "chuck", (13, 18)), ("Olivine_Gym", "t26gym0101_gsleader6", "jasmine", (6, 26))
+                 })
+        {
+            game.Story.Set(contact == "chuck" ? "FLAG_GOT_TM01_FROM_CHUCK" : "FLAG_GOT_TM23_FROM_JASMINE");
+            game.Story.Unset("JohtoHallOfFame");
+            game.Arrive(map, tile.Item1, tile.Item2);
+            Assert.DoesNotContain(game.Talk(who).Log, l => l.StartsWith("addcontact"));
+            Assert.False(game.Story.Has(Pokegear.ContactFlag(contact)));
+            game.Story.Set("JohtoHallOfFame");
+            game.Answers.Enqueue(0);
+            game.Talk(who);
+            Assert.True(game.Story.Has(Pokegear.ContactFlag(contact)));
+            Assert.Empty(game.Talk(who).Asked);
+            Assert.NotNull(Scripts.Find(char.ToUpperInvariant(contact[0]) + contact[1..], "phone"));
+        }
+    }
+
+    [Fact]
+    public void TheFriendIsHomeFromTheRisingBadgeToTheHallOfFame()
+    {
+        // Plan 20 · J12, part b: the room next door is empty through the story, has its owner from the shrine's end to
+        // Johto's Hall of Fame, and empty again afterwards
+        var game = PastTheTakeover();
+        game.Arrive("NewBark_RivalsHouse_2F", 3, 5);
+        Assert.Null(game.Present("new_bark_friend_at_home"));
+        game.Story.Set("FLAG_UNK_0EA");
+        game.Arrive("NewBark_RivalsHouse_2F", 3, 5);
+        Assert.NotNull(game.Present("new_bark_friend_at_home"));
+        Assert.Contains(game.Talk("new_bark_friend_at_home").Transcript, l => l.Text.Contains("eight"));
+        Assert.True(game.Story.Has("FLAG_JOHTO_FRIEND_SAW_THE_EIGHTH_BADGE"));
+        game.Story.Set("JohtoHallOfFame");
+        game.Arrive("NewBark_RivalsHouse_2F", 3, 5);
+        Assert.Null(game.Present("new_bark_friend_at_home"));
+    }
+
+    /// <summary>Plan 20 · J11, part d: the Kimono Girls' five battles, the gate, the climb and Ho-Oh on the roof, beaten.</summary>
+    private static void PlayTheBellTower(Game game, bool losing = false)
+    {
+        // Before the wing: the dancers only talk, and the gate's north door is shut behind its Sage
+        if (!game.Story.Has("FLAG_UNK_093"))
+        {
+            // (a game set up past the takeover: the five on the stage as the second chapter leaves them)
+            game.Story.Unset("FLAG_HIDE_DANCE_STUDIO_KIMONO_GIRLS");
+            game.Arrive("Ecruteak_DanceTheater", 7, 16);
+            Assert.DoesNotContain(game.Talk("t27r0501_dancer").Log, l => l.StartsWith("battle"));
+            game.Story.Set("FLAG_UNK_093");
+        }
+        game.Arrive("Ecruteak_BellTowerGate", 9, 10);
+        var north = game.Map.Warps.Single(w => w.TargetMap == "Ecruteak_BellTowerCorridor");
+        Assert.True(game.Map.IsSolid(north.SourceX, north.SourceY));
+        Assert.NotNull(game.Present("t27r0201_bozu"));
+
+        game.Arrive("Ecruteak_DanceTheater", 7, 16);
+        string[] five = { "zuki", "naoko", "miki", "sayo", "kuni" };
+        if (losing)
+        {
+            // A loss to the third ends the test; spoken to again, they begin from the first
+            int fought = 0;
+            game.Fighter = _ => ++fought == 3 ? BattleOutcome.Lost : BattleOutcome.Won;
+            var lost = game.Talk("t27r0501_dancer_4");
+            Assert.Equal(3, lost.Log.Count(l => l.StartsWith("battle johto_kimono_girl_")));
+            Assert.False(game.Story.Has("FLAG_JOHTO_KIMONO_GIRLS_BEATEN"));
+            game.Fighter = null;
+        }
+        var test = game.Talk("t27r0501_dancer");
+        var battles = test.Log.Where(l => l.StartsWith("battle ")).ToList();
+        Assert.Equal(five.Select(n => $"battle johto_kimono_girl_{n} Won"), battles);
+        // No heal between the five: the only heal is none at all
+        Assert.DoesNotContain(test.Log, l => l == "heal");
+        Assert.True(game.Story.Has("FLAG_JOHTO_KIMONO_GIRLS_BEATEN"));
+        Assert.Equal(1, game.Story.Var("VAR_UNK_40FA"));
+        Assert.Null(game.Present("t27r0501_dancer"));
+        Assert.Null(game.Present("t27r0501_dancer_5"));
+
+        // The gate: the door open, the Sage aside
+        game.Arrive("Ecruteak_BellTowerGate", 9, 10);
+        Assert.False(game.Map.IsSolid(north.SourceX, north.SourceY));
+        Assert.Null(game.Present("t27r0201_bozu"));
+        Assert.NotNull(game.Present("bell_tower_gate_sage"));
+
+        // The roof: the five before the bell, the dance, and Ho-Oh, which can't be run from
+        game.Arrive("BellTower_Roof", 15, 23);
+        Assert.NotNull(game.Present("d17r0110_dancer"));
+        Assert.Null(game.Present("d17r0110_hou_obj01"));
+        Assert.True(game.Fires("Dance"));
+        game.Step("Dance");
+        Assert.True(game.Story.Has("FLAG_JOHTO_HO_OH_CAME"));
+        Assert.Equal(2, game.Story.Var("VAR_UNK_40FA"));
+        Assert.False(game.Fires("Dance"));
+        Assert.NotNull(game.Present("d17r0110_hou_obj01"));
+        var hooh = game.Talk("d17r0110_hou_obj01");
+        Assert.Contains("wildbattle Ho-Oh 45 nofleeing Won", hooh.Log);
+        Assert.True(game.Story.Has("FLAG_HIDE_BELL_TOWER_HO_OH"));
+        Assert.Null(game.Present("d17r0110_hou_obj01"));
+        // The Kimono Girls give the Silver Wing once Ho-Oh has been met, once
+        game.Talk("d17r0110_dancer_2");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Silver Wing")!));
+        game.Talk("d17r0110_dancer_2");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Silver Wing")!));
+        // Morty is gone from Bellchime Trail once Ho-Oh has come
+        game.Arrive("BellchimeTrail", 37, 17);
+        Assert.Null(game.Present("d17r1101_gsleader4"));
+    }
+
+    [Fact]
+    public void LugiaWaitsInTheWhirlIslandsDeepestCaveForTheSilverWingAndComesBackWithTheHallOfFame()
+    {
+        // Plan 20 · J11, part d: the second basement's lower level leads down; Lugia is there only for the Silver Wing,
+        // is battled with no running, and is back after Johto's Hall of Fame unless caught
+        var game = PastTheTakeover();
+        game.Arrive("WhirlIslands_B2F", 31, 30);
+        Assert.Contains(game.Map.Warps, w => w.TargetMap == "WhirlIslands_LugiaCave" && !game.Map.IsSolid(w.SourceX, w.SourceY));
+        Assert.Contains(game.Map.Warps, w => w.TargetMap == "WhirlIslands_B3F" && !game.Map.IsSolid(w.SourceX, w.SourceY));
+        game.Arrive("WhirlIslands_LugiaCave", 16, 37);
+        Assert.Null(game.Present("d40r0107_lug_obj01"));
+        Assert.Null(game.Present("d40r0107_dancer"));
+        game.Story.Set("FLAG_JOHTO_GOT_SILVER_WING");
+        game.Arrive("WhirlIslands_LugiaCave", 16, 37);
+        Assert.Contains("wildbattle Lugia 45 nofleeing Won", game.Talk("d40r0107_lug_obj01").Log);
+        Assert.True(game.Story.Has("FLAG_HIDE_WHIRL_ISLAND_LUGIA"));
+        Assert.Null(game.Present("d40r0107_lug_obj01"));
+        game.Arrive("IndigoLeague_HallOfFame", 6, 21);
+        Assert.False(game.Story.Has("FLAG_HIDE_WHIRL_ISLAND_LUGIA"));
+        game.Arrive("WhirlIslands_LugiaCave", 16, 37);
+        game.Fight = BattleOutcome.Caught;
+        game.Talk("d40r0107_lug_obj01");
+        Assert.True(game.Story.Has("FLAG_JOHTO_CAUGHT_LUGIA"));
+        game.Arrive("IndigoLeague_HallOfFame", 6, 21);
+        Assert.True(game.Story.Has("FLAG_HIDE_WHIRL_ISLAND_LUGIA"));
+    }
+
+    [Theory]
+    [InlineData(0, "Platinum")]
+    [InlineData(1, "Modern")]
+    [InlineData(2, "Modern")]
+    public void AGameOfJohtoPlaysWholeFromTheBedroomToTheHallOfFameUnderEitherRules(int starter, string rules)
+    {
+        // Plan 20 · J12, the story walk: one game, begun in the bedroom with nothing, played chapter after chapter with
+        // no flag, variable or Badge set by hand between them, to the Hall of Fame and home. Every trainer's battle the
+        // story starts is fought by the battle's core under the rules named (the trainer AI on both sides, a team of
+        // the walk's own that the battles never change), so each Leader, executive, rival, master and Lance is a real
+        // battle to its end, under Platinum's rules and under the modern ones
+        var preset = rules == "Platinum" ? Ruleset.Platinum : Ruleset.Modern;
+        var fought = new List<string>();
+        var game = new Game(starter);
+        PlayTheFirstChapter(game, starter, BattleOutcome.Won);
+        game.Fighter = RealBattles(preset, fought);
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Machamp")!, 50));
+        PlayTheSecondChapter(game, starter);
+        PlayTheThirdChapter(game);
+        PlayTheFourthChapter(game);
+        PlayTheTakeover(game, starter);
+        PlayTheBellTower(game);
+        PlayTheIcePath(game);
+        PlayClairsTest(game);
+        string rival = starter switch { 0 => "johto_rival_silver_9", 1 => "johto_rival_silver_13", _ => "johto_rival_silver_5" };
+        PlayTheFifthChapter(game, rival);
+
+        var johto = RegionDatabase.Get(RegionDatabase.Johto)!;
+        Assert.Equal(8, game.Story.BadgeCount(RegionDatabase.Johto));
+        Assert.True(game.Story.Has(johto.StoryCompleteFlag));
+        Assert.True(game.Story.Has("FLAG_ELM_CALLED_THE_CHAMPION"));
+        // The battles that make the story were all fought for real, and won
+        foreach (string id in new[]
+                 {
+                     "johto_leader_bugsy_bugsy", "johto_leader_morty_morty", "johto_leader_chuck_chuck",
+                     "johto_leader_jasmine_jasmine", "johto_leader_pryce_pryce", "johto_leader_clair_clair",
+                     "johto_executive_proton_proton", "johto_executive_petrel_petrel", "johto_executive_archer_archer",
+                     "johto_elite_four_will_will", "johto_elite_four_koga_koga", "johto_elite_four_bruno_bruno",
+                     "johto_elite_four_karen_karen", "johto_champion_lance", rival
+                 })
+            Assert.Contains(fought, f => f.StartsWith(id, StringComparison.Ordinal));
+    }
+
+    /// <summary>
+    /// Fights each trainer's battle a script starts with the battle's core, under the rules given: the walk's own six
+    /// (copies at level 100, the same each time, so the game's own team is never changed) against the trainer's team
+    /// as the data builds it, the trainer AI choosing for both sides, on a seed of the battle's count. Asserts it ends
+    /// in a win, and notes whom it fought.
+    /// </summary>
+    private static Func<NPC?, BattleOutcome?> RealBattles(Ruleset rules, List<string> fought) => npc =>
+    {
+        if (npc?.TrainerData is not { Id.Length: > 0 } trainer) return null;
+        var record = TrainerDatabase.Get(trainer.Id, RegionDatabase.Johto) ?? TrainerDatabase.Get(trainer.Id);
+        if (record is null || record.Party.Count == 0) return null;
+        var foes = TrainerDatabase.PartyOf(record);
+        var mine = new Party();
+        foreach (string name in new[] { "Mewtwo", "Rayquaza", "Groudon", "Kyogre", "Dialga", "Palkia" })
+            mine.Add(new Pokemon(PokemonDatabase.Get(name)!, 100));
+        foreach (var p in mine.Members.Concat(foes.Members)) UnderTheRules(p, rules);
+        var core = new BattleCore(new CoreSetup
+        {
+            PlayerParty = mine,
+            Trainers = new List<Trainer>
+            {
+                new() { Id = record.Id, Name = record.Name, TrainerClass = record.Class, Party = foes, Ai = AiFlagNames.Parse(record.Ai), Items = record.Items.ToList() }
+            },
+            Random = new BattleRandom((uint)(fought.Count + 1)),
+            Rules = rules,
+            PlayerController = TrainerAi.Instance,
+            PlayerName = "Walker"
+        });
+        core.Start();
+        Assert.True(core.Result == BattleResult.PlayerVictory, $"{record.Id} under {rules.Name}: {core.Result} after {core.Turn} turns");
+        fought.Add($"{record.Id} {rules.Name}");
+        return BattleOutcome.Won;
+    };
+
+    private static void UnderTheRules(Pokemon p, Ruleset rules)
+    {
+        p.Species = p.Species.Under(rules);
+        p.RecalculateStats();
+        p.CurrentHP = p.MaxHP;
+        for (int i = 0; i < p.Moves.Count; i++) p.Moves[i] = new Move(p.Moves[i].Data.Under(rules));
     }
 }

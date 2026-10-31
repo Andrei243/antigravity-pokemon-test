@@ -53,6 +53,16 @@
           "Turnul Ars și Turnul Clopotelor au fost construite pereche, ca Pokémonii și oamenii să se întâlnească."
         ]
       }
+    },
+    "bell_tower_gate_sage": {
+      "name": {
+        "en": [
+          "Sage"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {}

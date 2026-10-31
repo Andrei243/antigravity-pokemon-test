@@ -1,0 +1,16 @@
+{
+  // The Bell Tower's ground floor (plan 20 · J11, part d): HeartGold's floor, a Sage by the ladder up. Whoever comes in
+  // has been let through the gate by the Kimono Girls' word, so he only talks (HeartGold's two triggers, which stop
+  // a visitor without the bell, are not bound: the gate's door is what keeps the tower shut)
+  "area": "bell_tower_1f",
+  "bgmTrack": "johto/sprout_tower",
+  "people": {
+    "d17r0101_bozu": {
+      "name": "Sage",
+      "still": true,
+      "dialog": [
+        "The tower is old and its floors are many. Climb with care, and the bell at the top will know you."
+      ]
+    }
+  }
+}

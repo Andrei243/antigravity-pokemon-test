@@ -265,6 +265,19 @@
     "description": "A feather that shimmers in every colour. It was found at the top of an old tower long ago.",
     "cantBeTossed": true
   },
+  // The Silver Wing (plan 20 · J11, part d): HeartGold hands it out in Kanto; here the Kimono Girls give it on the Bell
+  // Tower's roof once Ho-Oh has come, and it lets the player near Lugia in the Whirl Islands
+  "Silver Wing": {
+    "id": 9203,
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A feather as pale as moonlight on the sea. It is said to call the great bird of the Whirl Islands.",
+    "cantBeTossed": true
+  },
   // FireRed's key items of the third chapter (plan 19 · K5, part b), which no game this importer reads has: the
   // Rocket Hideout's Lift Key and the Silph Scope Giovanni leaves, Mr. Fuji's Poké Flute, the Tea Celadon's old lady
   // gives (for the thirsty guards of Saffron City's gates) and Silph Co.'s Card Key

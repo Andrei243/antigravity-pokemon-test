@@ -1584,6 +1584,33 @@ trainers 2, 165 (own 9): unova_lass_serena 165 (9) [Lillipup → Stoutland, Patr
 === azalea_gym
 Azalea Town, Johto
 trainers 4, 107-111 (own 7-13): johto_bug_catcher_al 111 (12) [Caterpie → Butterfree, Weedle → Beedrill], johto_bug_catcher_benny 111 (12) [Weedle → Beedrill, Kakuna → Beedrill], johto_bug_catcher_josh 111 (13) [Paras → Cordyhusk], johto_twins_amy_and_mimi 109 (10) [Spinarak → Orbweavix, Ledyba → Coccinova]
+=== bell_tower_10f
+Bell Tower, Johto
+grass 116-119 (own 20-24)
+=== bell_tower_2f
+Bell Tower, Johto
+grass 116-119 (own 20-24)
+=== bell_tower_3f
+Bell Tower, Johto
+grass 116-119 (own 20-24)
+=== bell_tower_4f
+Bell Tower, Johto
+grass 116-119 (own 20-24)
+=== bell_tower_5f
+Bell Tower, Johto
+grass 116-119 (own 20-24)
+=== bell_tower_6f
+Bell Tower, Johto
+grass 116-119 (own 20-24)
+=== bell_tower_7f
+Bell Tower, Johto
+grass 116-119 (own 20-24)
+=== bell_tower_8f
+Bell Tower, Johto
+grass 116-119 (own 20-24)
+=== bell_tower_9f
+Bell Tower, Johto
+grass 116-119 (own 20-24)
 === blackthorn
 Blackthorn City, Johto
 surf 104-116 (own 2-20)
@@ -4089,3 +4116,6 @@ surf 113-123 (own 15-30)
 old rod 109 (own 10)
 good rod 116 (own 20)
 super rod 129 (own 40)
+=== whirl_islands_b3f
+Whirl Islands, Johto
+grass 118-119 (own 23-25)

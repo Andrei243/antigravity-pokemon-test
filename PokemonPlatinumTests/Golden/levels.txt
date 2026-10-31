@@ -142,6 +142,33 @@ trainers 2, 9: unova_lass_serena 9, unova_youngster_pedro 9
 === azalea_gym
 Azalea Town
 trainers 4, 7-13: johto_bug_catcher_al 12, johto_bug_catcher_benny 12, johto_bug_catcher_josh 13, johto_twins_amy_and_mimi 10
+=== bell_tower_10f
+Bell Tower
+grass 20-24
+=== bell_tower_2f
+Bell Tower
+grass 20-24
+=== bell_tower_3f
+Bell Tower
+grass 20-24
+=== bell_tower_4f
+Bell Tower
+grass 20-24
+=== bell_tower_5f
+Bell Tower
+grass 20-24
+=== bell_tower_6f
+Bell Tower
+grass 20-24
+=== bell_tower_7f
+Bell Tower
+grass 20-24
+=== bell_tower_8f
+Bell Tower
+grass 20-24
+=== bell_tower_9f
+Bell Tower
+grass 20-24
 === blackthorn
 Blackthorn City
 surf 2-20
@@ -3473,3 +3500,6 @@ surf 15-30
 old rod 10
 good rod 20
 super rod 40
+=== whirl_islands_b3f
+Whirl Islands
+grass 23-25

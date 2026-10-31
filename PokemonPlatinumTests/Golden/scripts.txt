@@ -7434,6 +7434,27 @@ way 1, from answer 1
   Scott> Whenever you're ready. I'll be here.
   ? Shall I take you to the Battle Frontier in Sinnoh? = No
   + FLAG_RECEIVED_SCOTTS_BATTLE_POINTS
+=== bell_tower_roof.Dance
+from the trigger at 15,20 of BellTower_Roof
+way -
+=== bell_tower_roof.Dancer
+from Kimono Girl at 13,18 of BellTower_Roof
+from Kimono Girl at 14,18 of BellTower_Roof
+from Kimono Girl at 15,18 of BellTower_Roof
+from Kimono Girl at 16,18 of BellTower_Roof
+from Kimono Girl at 17,18 of BellTower_Roof
+way -
+  Kimono Girl> Step up before the bell when you are ready, and we will begin.
+=== bell_tower_roof.HoOh
+from Ho-Oh at 15,16 of BellTower_Roof
+way 0
+  > Ho-Oh spreads its burning wings!
+  > Ho-Oh rose into the sky in a trail of rainbow light and was gone...
+  * cry Ho-Oh
+  * wildbattle Ho-Oh 45 nofleeing Won
+  + FLAG_HIDE_BELL_TOWER_HO_OH
+way 1, from answer 1
+  * wildbattle Ho-Oh 45 nofleeing Lost
 === birth_island_exterior.Deoxys
 from Deoxys at 15,3 of BirthIsland_Exterior
 way -
@@ -14231,10 +14252,32 @@ way -
   = VAR_UNK_4079 0 -> 4
   = VAR_UNK_410C 0 -> 4
   + seen ecruteak.The red-haired boy in Ecruteak
+=== ecruteak_bell_tower_barrier_station.Sage
+from Sage at 15,7 of Ecruteak_BellTowerGate
+way -
+  Sage> Beyond this gate is the Bell Tower. Only one the tower's Pokémon has chosen may pass.
+from Sage at 16,6 of Ecruteak_BellTowerGate
+way -
 === ecruteak_dance_theater.Bothered
 from Kimono Girl at 10,6 of Ecruteak_DanceTheater
 way -
   Kimono Girl> Thank you for saving me. My Eevee and I would have been so frightened without you.
+=== ecruteak_dance_theater.Dancers
+from Kimono Girl at 10,5 of Ecruteak_DanceTheater
+way -
+  Kimono Girl> A dance is a kind of prayer, my teacher says.
+from Kimono Girl at 12,6 of Ecruteak_DanceTheater
+way -
+  Kimono Girl> Have you come to watch? Then sit and enjoy it.
+from Kimono Girl at 2,6 of Ecruteak_DanceTheater
+way -
+  Kimono Girl> We dance for the Pokémon of the towers, as the dancers before us did.
+from Kimono Girl at 4,5 of Ecruteak_DanceTheater
+way -
+  Kimono Girl> Please don't mind us. We're only practising.
+from Kimono Girl at 7,6 of Ecruteak_DanceTheater
+way -
+  Kimono Girl> My Eevee and I have danced together since we were both very small. Thank you for helping me.
 === ecruteak_dance_theater.Gentleman
 from Gentleman at 8,12 of Ecruteak_DanceTheater
 way -
@@ -20065,6 +20108,13 @@ way -
 from Mom at 6,7 of NewBark_PlayersHouse_1F
 way -
   Mom> Professor Elm is waiting for you at his lab. It's the big building up the lane.
+=== new_bark_rival_house_2f.FriendAtHome
+from {assistant} at 8,7 of NewBark_RivalsHouse_2F
+way -
+  Dawn> Lucas! Mom said you'd come by. Is it true? All eight of Johto's Badges?
+  Dawn> I knew it. Ever since you chose your first Pokémon in Professor Elm's lab, I knew you'd go all the way.
+  Dawn> The road to the League runs west from here, by Route 27 and Tohjo Falls. Go on. I'll be cheering for you!
+  + FLAG_JOHTO_FRIEND_SAW_THE_EIGHTH_BADGE
 === new_mauville_entrance.Door
 from the trigger at 4,2 of NewMauville_Entrance
 way -
@@ -29540,3 +29590,13 @@ way -
   * partner Mira mira_wayward_cave
   + FLAG_TALKED_TO_WAYWARD_CAVE_1F_MIRA
   = VAR_WAYWARD_CAVE_1F_FOLLOWER_MIRA_STATE 0 -> 1
+=== whirl_islands_b3f_lugia_cave.Lugia
+from Lugia at 16,17 of WhirlIslands_LugiaCave
+way 0
+  > The Silver Wing glows, and the great bird of the sea opens its eyes!
+  > Lugia slipped beneath the dark water and was gone...
+  * cry Lugia
+  * wildbattle Lugia 45 nofleeing Won
+  + FLAG_HIDE_WHIRL_ISLAND_LUGIA
+way 1, from answer 1
+  * wildbattle Lugia 45 nofleeing Lost

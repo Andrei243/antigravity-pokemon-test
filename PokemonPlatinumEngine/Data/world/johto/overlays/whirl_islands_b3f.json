@@ -1,0 +1,6 @@
+{
+  // The Whirl Islands' third basement (plan 20 · J11, part d): HeartGold's cave below the second basement's lower level,
+  // its wild Pokémon and items its own
+  "area": "whirl_islands_b3f",
+  "bgmTrack": "johto/union_cave"
+}

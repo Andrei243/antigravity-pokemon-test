@@ -585,6 +585,10 @@
       "note": "first spoken at phone.txt(384)",
       "provisional": true
     },
+    "kuni": {
+      "note": "first spoken at ecruteak_dance_theater.txt(97)",
+      "provisional": true
+    },
     "kurt": {
       "note": "first spoken at azalea_kurt_house.txt(14)",
       "provisional": true
@@ -730,6 +734,10 @@
       "note": "first spoken at mt_moon_b2f.txt(29)",
       "provisional": true
     },
+    "miki": {
+      "note": "first spoken at ecruteak_dance_theater.txt(89)",
+      "provisional": true
+    },
     "mira": {
       "note": "first spoken at Battleground.txt(821)",
       "provisional": true
@@ -790,6 +798,10 @@
     },
     "n": {
       "note": "first spoken at chargestone_cave_2.txt(40)",
+      "provisional": true
+    },
+    "naoko": {
+      "note": "first spoken at ecruteak_dance_theater.txt(85)",
       "provisional": true
     },
     "neighbour": {
@@ -1019,6 +1031,10 @@
       "provisional": true
     },
     "saturn": {},
+    "sayo": {
+      "note": "first spoken at ecruteak_dance_theater.txt(93)",
+      "provisional": true
+    },
     "school_kid": {
       "note": "first spoken at CanalaveLibrary2F.txt(9)",
       "provisional": true
@@ -1278,6 +1294,10 @@
     "zinzolin": {
       "note": "first spoken at plasma_frigate.txt(50)",
       "provisional": true
+    },
+    "zuki": {
+      "note": "first spoken at ecruteak_dance_theater.txt(81)",
+      "provisional": true
     }
   },
   "names": {
@@ -1463,6 +1483,7 @@
     "Koga": "koga",
     "Koichi": "koichi",
     "Koji": "koji",
+    "Kuni": "kuni",
     "Kurt": "kurt",
     "Lady": "look:lady",
     "Lady Celeste": "lady_celeste",
@@ -1506,6 +1527,7 @@
     "Maylene": "maylene",
     "Member": "member",
     "Miguel": "miguel",
+    "Miki": "miki",
     "Mira": "mira",
     "Misty": "misty",
     "Mom": "mom",
@@ -1521,6 +1543,7 @@
     "Mr. Stone": "mr_stone",
     "Murkrow": "murkrow",
     "N": "n",
+    "Naoko": "naoko",
     "Neighbour": "neighbour",
     "Nikola": "nikola",
     "Norman": "norman",
@@ -1586,6 +1609,7 @@
     "Salesman": "salesman",
     "Santos": "santos",
     "Saturn": "saturn",
+    "Sayo": "sayo",
     "School Kid": "school_kid",
     "Schoolboy": "schoolboy",
     "Schoolgirl": "schoolgirl",
@@ -1658,7 +1682,8 @@
     "Young Man": "young_man",
     "Youngster": "look:youngster",
     "Zac": "zac",
-    "Zinzolin": "zinzolin"
+    "Zinzolin": "zinzolin",
+    "Zuki": "zuki"
   },
   "looks": {
     "archie": "archie",

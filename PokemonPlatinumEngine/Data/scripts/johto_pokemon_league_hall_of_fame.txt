@@ -24,6 +24,9 @@ script OnEnter
   swarms on
   # Red is back on Mt. Silver's summit for every new entry (plan 20 · J15)
   clearflag FLAG_UNK_25F
+  # Ho-Oh is back on the Bell Tower's roof unless it was caught (plan 20 · J11, part d)
+  if not flag FLAG_JOHTO_CAUGHT_HO_OH clearflag FLAG_HIDE_BELL_TOWER_HO_OH
+  if not flag FLAG_JOHTO_CAUGHT_LUGIA clearflag FLAG_HIDE_WHIRL_ISLAND_LUGIA
   halloffame show
   heal
   warp "NewBark_PlayersHouse_2F" 4 9 up

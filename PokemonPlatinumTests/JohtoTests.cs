@@ -244,7 +244,9 @@ public class JohtoTests
         var ecruteak = Johto.Area("ecruteak")!;
         Assert.Contains(Overworld.WarpsAt(ecruteak.Warps[10].X, ecruteak.Warps[10].Z), w => w.TargetMap == "Route42_EcruteakGate");
         Assert.Contains(Overworld.WarpsAt(ecruteak.Warps[7].X, ecruteak.Warps[7].Z), w => w.TargetMap == "Ecruteak_Gym");
-        Assert.DoesNotContain(walked.Keys, m => m.Name.StartsWith("BellTower", StringComparison.Ordinal));
+        // Since plan 20 · J11, part d the gate's north door leads on to Bellchime Trail and the Bell Tower's floors, once the
+        // Kimono Girls have tested the player (the walk passes the Sage their flag hides)
+        Assert.Contains(walked.Keys, m => m.Name == "BellTower_Roof");
 
         // The two cities are built their own ways, with songs of their own
         Assert.Equal(Architecture.Boulevard, WorldModels.Of("ko_h01", "johto")!.Town);
@@ -435,7 +437,8 @@ public class JohtoTests
         Assert.Null(MapNamed("Route40_FrontierGate").GetWarpAt(5, 2));
         Assert.Equal("FLAG_UNK_1D8", MapNamed("OlivineLighthouse_1F").GetWarpAt(8, 4)?.OpenedBy);
         Assert.Equal("FLAG_UNK_1D8", MapNamed("OlivineLighthouse_LightRoom").GetWarpAt(8, 4)?.OpenedBy);
-        Assert.DoesNotContain(walked.Keys, m => m.Name.Contains("Lugia", StringComparison.Ordinal));
+        // Lugia's cave is open since plan 20 · J11, part d, past the sage who stands aside for the Silver Wing
+        Assert.Contains(walked.Keys, m => m.Name == "WhirlIslands_LugiaCave");
         var cianwood = Johto.Area("cianwood")!;
         Assert.Contains(Overworld.WarpsAt(cianwood.Warps[6].X, cianwood.Warps[6].Z), w => w.TargetMap == "CliffEdgeGate");
 
@@ -503,7 +506,8 @@ public class JohtoTests
         var door = Johto.Area("safari_zone_entrance_exterior")!.Warps[0];
         var back = zone.GetWarpAt(door.X, door.Z);
         Assert.Equal(("SafariZone_Gate", 5, 3), (back?.TargetMap, back?.TargetX, back?.TargetY));
-        Assert.Equal("johto/national_park", zone.BgmTrackAt(door.X, door.Z));
+        // Since J9's leftovers the zone plays a song of its own
+        Assert.Equal("johto/safari_zone", zone.BgmTrackAt(door.X, door.Z));
         Assert.Equal("johto/union_cave", MapNamed("CliffCave").BgmTrackAt(Johto.Area("cliff_cave")!.Warps[0].X, Johto.Area("cliff_cave")!.Warps[0].Z));
 
         // The Embedded Tower behind Route 47 waits

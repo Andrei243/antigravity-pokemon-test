@@ -1,0 +1,21 @@
+# The gate before the Bell Tower (plan 20 · J11, part d). docs/scripts.md describes the language; the lines are our
+# own, on HeartGold's beats (scr_seq_T27R0201).
+#
+# The Sage by the north door sends visitors away until the Kimono Girls have tested the holder of the Rainbow Wing
+# (FLAG_JOHTO_KIMONO_GIRLS_BEATEN, ecruteak_dance_theater.txt), which opens the door; then he lets them by.
+
+
+# T27R0201_000: the Sage by the north door
+script Sage
+  face self player
+  speaker "Sage"
+  if flag FLAG_JOHTO_KIMONO_GIRLS_BEATEN goto Pass
+  if flag FLAG_UNK_093 goto Wing
+  sayown
+  end
+label Wing
+  say "A Rainbow Wing! Then the Kimono Girls of the Dance Theater must test you first. Go and show it to them."
+  end
+label Pass
+  say "The Kimono Girls have told us of you. The way to the Bell Tower is open. May the bird of the rainbow know you."
+  end

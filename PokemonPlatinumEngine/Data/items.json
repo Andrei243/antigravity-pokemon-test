@@ -13984,6 +13984,18 @@
     "cantBeTossed": true
   },
   {
+    "id": 9203,
+    "name": "Silver Wing",
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A feather as pale as moonlight on the sea. It is said to call the great bird of the Whirl Islands.",
+    "cantBeTossed": true
+  },
+  {
     "id": 9300,
     "name": "Pokéblock Case",
     "pocket": "KeyItems",

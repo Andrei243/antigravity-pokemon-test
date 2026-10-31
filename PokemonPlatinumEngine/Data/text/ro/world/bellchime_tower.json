@@ -1,0 +1,25 @@
+{
+  "people": {
+    "d17r1101_gsleader4": {
+      "name": {
+        "en": [
+          "Morty"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I have trained all my life to be worthy of the bird of the Bell Tower, and still the Kimono Girls chose you.",
+          "No matter. Climb, {player}. I'll keep watch down here, as the Gym Leaders of Ecruteak always have."
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

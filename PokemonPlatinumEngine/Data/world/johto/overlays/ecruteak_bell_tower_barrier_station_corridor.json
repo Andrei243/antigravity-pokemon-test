@@ -1,0 +1,6 @@
+{
+  // The corridor behind the Bell Tower's gate (plan 20 · J11, part d): HeartGold's empty passage from the gate's
+  // north door to Bellchime Trail, reached once the Kimono Girls have let the player through
+  "area": "ecruteak_bell_tower_barrier_station_corridor",
+  "bgmTrack": "johto/ecruteak"
+}

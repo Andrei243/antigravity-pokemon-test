@@ -1,0 +1,33 @@
+{
+  "key": "bellchime_tower",
+  "index": 6,
+  "name": "Bellchime Trail",
+  "matrix": 67,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "General",
+  "dayMusic": "SILENCE_FIELD",
+  "nightMusic": "SILENCE_FIELD",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 9, "z": 9, "to": "ecruteak_bell_tower_barrier_station_corridor", "toWarp": 1 },
+    { "x": 9, "z": 10, "to": "ecruteak_bell_tower_barrier_station_corridor", "toWarp": 1 },
+    { "x": 37, "z": 16, "to": "bell_tower_1f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "d17r1101_gsleader4", "looks": "gsleader4", "movement": "0", "x": 30, "z": 11, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_2CA", "script": "D17R1101_001+1" }
+  ],
+  "signs": [
+    { "x": 33, "z": 10, "type": 2, "script": "std_hiddenitem_d17r1101_tinymushroom", "item": "Tiny Mushroom", "flag": "FLAG_HIDDEN_ITEM_D17R1101_TINYMUSHROOM" },
+    { "x": 39, "z": 20, "type": 2, "script": "std_hiddenitem_d17r1101_big_mushroom", "item": "Big Mushroom", "flag": "FLAG_HIDDEN_ITEM_D17R1101_BIG_MUSHROOM" },
+    { "x": 14, "z": 7, "type": 2, "script": "std_hiddenitem_d17r1101_tinymushroom_2", "item": "Tiny Mushroom", "flag": "FLAG_HIDDEN_ITEM_D17R1101_TINYMUSHROOM_2" },
+    { "x": 23, "z": 7, "type": 2, "script": "std_hiddenitem_d17r1101_big_mushroom_2", "item": "Big Mushroom", "flag": "FLAG_HIDDEN_ITEM_D17R1101_BIG_MUSHROOM_2" },
+    { "x": 17, "z": 7, "type": 2, "script": "std_hiddenitem_d17r1101_tinymushroom_3", "item": "Tiny Mushroom", "flag": "FLAG_HIDDEN_ITEM_D17R1101_TINYMUSHROOM_3" }
+  ],
+  "triggers": []
+}

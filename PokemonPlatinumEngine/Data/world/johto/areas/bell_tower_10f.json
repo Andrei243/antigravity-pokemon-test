@@ -1,0 +1,53 @@
+{
+  "key": "bell_tower_10f",
+  "index": 341,
+  "name": "Bell Tower",
+  "matrix": 183,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Building3",
+  "dayMusic": "GS_TO_SUZU",
+  "nightMusic": "GS_TO_SUZU",
+  "encounters": "D17R0112",
+  "bike": false,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Rattata", "level": 20, "night": "Gastly" },
+    { "species": "Rattata", "level": 21, "night": "Gastly" },
+    { "species": "Rattata", "level": 20, "night": "Gastly" },
+    { "species": "Rattata", "level": 21, "night": "Gastly" },
+    { "species": "Rattata", "level": 22, "night": "Gastly" },
+    { "species": "Rattata", "level": 22, "night": "Gastly" },
+    { "species": "Rattata", "level": 22 },
+    { "species": "Rattata", "level": 22 },
+    { "species": "Rattata", "level": 23 },
+    { "species": "Rattata", "level": 24 },
+    { "species": "Rattata", "level": 23 },
+    { "species": "Rattata", "level": 24 }
+  ],
+  "landRate": 5,
+  "swarm": [
+    "Rattata",
+    "Rattata"
+  ],
+  "hoennSounds": [
+    "Zigzagoon",
+    "Spinda"
+  ],
+  "sinnohSounds": [
+    "Chatot",
+    "Meditite"
+  ],
+  "warps": [
+    { "x": 11, "z": 17, "to": "bell_tower_9f", "toWarp": 6 },
+    { "x": 15, "z": 25, "to": "bell_tower_roof", "toWarp": 0 },
+    { "x": 15, "z": 24, "to": "bell_tower_roof", "toWarp": 0 }
+  ],
+  "objects": [],
+  "signs": [],
+  "triggers": []
+}

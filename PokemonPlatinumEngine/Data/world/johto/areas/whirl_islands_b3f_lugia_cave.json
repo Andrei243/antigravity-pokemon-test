@@ -1,0 +1,37 @@
+{
+  "key": "whirl_islands_b3f_lugia_cave",
+  "index": 244,
+  "name": "Whirl Islands",
+  "matrix": 144,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "12",
+  "battleBackground": "Cave3",
+  "dayMusic": "SILENCE_FIELD",
+  "nightMusic": "SILENCE_FIELD",
+  "bike": false,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 16, "z": 38, "to": "whirl_islands_b2f", "toWarp": 5 }
+  ],
+  "objects": [
+    { "id": "d40r0107_dancer", "looks": "dancer", "movement": "0", "x": 17, "z": 33, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_WHIRL_ISLANDS_BOTTOM_KIMONO_GIRLS", "script": "D40R0107_003+1" },
+    { "id": "d40r0107_dancer_2", "looks": "dancer", "movement": "0", "x": 18, "z": 33, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_WHIRL_ISLANDS_BOTTOM_KIMONO_GIRLS", "script": "D40R0107_003+1" },
+    { "id": "d40r0107_dancer_3", "looks": "dancer", "movement": "0", "x": 15, "z": 33, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_WHIRL_ISLANDS_BOTTOM_KIMONO_GIRLS", "script": "D40R0107_003+1" },
+    { "id": "d40r0107_dancer_4", "looks": "dancer", "movement": "0", "x": 14, "z": 33, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_WHIRL_ISLANDS_BOTTOM_KIMONO_GIRLS", "script": "D40R0107_003+1" },
+    { "id": "d40r0107_dancer_5", "looks": "dancer", "movement": "0", "x": 16, "z": 33, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_WHIRL_ISLANDS_BOTTOM_KIMONO_GIRLS", "script": "D40R0107_001+1" },
+    { "id": "d40r0107_lug_obj01", "looks": "lug_obj01", "movement": "0", "x": 16, "z": 17, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_WHIRL_ISLAND_LUGIA", "script": "D40R0107_000+1" },
+    { "id": "d40r0107_stop", "looks": "stop", "movement": "0", "x": 15, "z": 17, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_WHIRL_ISLAND_LUGIA", "script": "0" },
+    { "id": "d40r0107_stop_2", "looks": "stop", "movement": "0", "x": 17, "z": 17, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_WHIRL_ISLAND_LUGIA", "script": "0" },
+    { "id": "d40r0107_stop_3", "looks": "stop", "movement": "0", "x": 15, "z": 16, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_WHIRL_ISLAND_LUGIA", "script": "0" },
+    { "id": "d40r0107_stop_4", "looks": "stop", "movement": "0", "x": 16, "z": 16, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_WHIRL_ISLAND_LUGIA", "script": "0" },
+    { "id": "d40r0107_stop_5", "looks": "stop", "movement": "0", "x": 17, "z": 16, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_WHIRL_ISLAND_LUGIA", "script": "0" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 16, "z": 36, "width": 1, "depth": 1, "script": "D40R0107_005+1", "variable": "VAR_UNK_40FA", "value": "1" }
+  ]
+}

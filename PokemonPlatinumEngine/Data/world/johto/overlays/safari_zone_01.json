@@ -3,6 +3,6 @@
   // side (docs/mechanics/rulings.md, "The Johto Safari Zone"). Every wild Pokémon here is met in a Safari battle while
   // the game is on (Models/SafariGame.cs)
   "area": "safari_zone_01",
-  "bgmTrack": "johto/national_park",
+  "bgmTrack": "johto/safari_zone",
   "trees": "Round"
 }

@@ -1,0 +1,53 @@
+{
+  "key": "whirl_islands_b3f",
+  "index": 486,
+  "name": "Whirl Islands",
+  "matrix": 275,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "10",
+  "battleBackground": "Cave3",
+  "dayMusic": "GS_D_CHIKATSUURO",
+  "nightMusic": "GS_D_CHIKATSUURO",
+  "encounters": "D40R0106",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Krabby", "level": 23 },
+    { "species": "Zubat", "level": 24 },
+    { "species": "Krabby", "level": 23 },
+    { "species": "Zubat", "level": 24 },
+    { "species": "Krabby", "level": 25 },
+    { "species": "Krabby", "level": 25 },
+    { "species": "Seel", "level": 23 },
+    { "species": "Seel", "level": 23 },
+    { "species": "Golbat", "level": 24 },
+    { "species": "Seel", "level": 25 },
+    { "species": "Golbat", "level": 24 },
+    { "species": "Seel", "level": 25 }
+  ],
+  "landRate": 5,
+  "swarm": [
+    "Krabby",
+    "Krabby"
+  ],
+  "hoennSounds": [
+    "Absol",
+    "Makuhita"
+  ],
+  "sinnohSounds": [
+    "Bronzor",
+    "Chingling"
+  ],
+  "warps": [
+    { "x": 16, "z": 29, "to": "whirl_islands_b2f", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "everywhere_monstarball", "looks": "monstarball", "movement": "0", "x": 14, "z": 27, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D40R0106_RARE_CANDY", "item": "Rare Candy", "script": "std_itemball_d40r0106_rare_candy" }
+  ],
+  "signs": [],
+  "triggers": []
+}

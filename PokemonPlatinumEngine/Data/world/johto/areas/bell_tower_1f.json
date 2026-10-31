@@ -1,0 +1,30 @@
+{
+  "key": "bell_tower_1f",
+  "index": 111,
+  "name": "Bell Tower",
+  "matrix": 15,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Building3",
+  "dayMusic": "GS_TO_SUZU",
+  "nightMusic": "GS_TO_SUZU",
+  "bike": false,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 15, "z": 26, "to": "bellchime_tower", "toWarp": 2 },
+    { "x": 9, "z": 8, "to": "bell_tower_2f", "toWarp": 0 },
+    { "x": 9, "z": 7, "to": "bell_tower_2f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "d17r0101_bozu", "looks": "bozu", "movement": "0", "x": 8, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "D17R0101_000+1" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 7, "z": 12, "width": 3, "depth": 1, "script": "D17R0101_001+1", "variable": "VAR_UNK_40F3", "value": "0" },
+    { "x": 12, "z": 7, "width": 1, "depth": 4, "script": "D17R0101_001+1", "variable": "VAR_UNK_40F3", "value": "0" }
+  ]
+}

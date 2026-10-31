@@ -461,6 +461,16 @@ public static partial class WorldModels
         Thing("cl_slht", PropType.LampPost, "a lamp on the Cycling Road's deck"),
         Ground("cl_stbg", "a span of the Cycling Road's deck over the sea: its tiles draw the deck"),
 
+        // ---------------------------------------------------------------- plan 20 · J11, part d: Bellchime Trail and the Bell Tower
+        Thing("en_sekib", PropType.Statue, "a carved stone beside Bellchime Trail"),
+        Ground("en_sky", "the sky over Bellchime Trail (no model of its own: the sky is the field's)"),
+        Ground("en_suzu", "the little bells hung along Bellchime Trail's gate: its tiles draw the way under them"),
+        Ground("d17_light", "a lamp hung in the Bell Tower's rafters (no model of its own: the floor's own light stands in)"),
+        Ground("object_suzu", "a bell hung from the Bell Tower's beams over its floor: the floor draws the ground under it"),
+        Ground("warp_j01", "a ladder between the Bell Tower's floors: the warp's tile is the way"),
+        Ground("obj_hosz", "the great bell's frame at the head of the Bell Tower's roof: the roof's tiles draw its ground"),
+        Ground("sroof_back", "the eaves of the Bell Tower's roof round its top (no model of its own: the sky stands behind them)"),
+        Ground("obj_lgsz", "the carved stone at the head of Lugia's cave in the Whirl Islands: the cave's floor draws its ground"),
         // ---------------------------------------------------------------- plan 20 · J15, part j: Route 10's Power Plant (kn_, mpwr_)
         Built("kn_power", BuildingKind.Factory, "the Power Plant on Route 10", sign: "POWER PLANT"),
         Furniture("mpwr_ge", PropType.LabMachine, "the Power Plant's generator"),

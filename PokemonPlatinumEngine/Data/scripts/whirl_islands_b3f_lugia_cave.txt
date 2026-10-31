@@ -1,0 +1,25 @@
+# Lugia's cave at the bottom of the Whirl Islands (plan 20 · J11, part d). docs/scripts.md describes the language; the
+# lines are our own, on HeartGold's beats (scr_seq_D40R0107).
+#
+# Lugia is there for whoever has the Silver Wing (FLAG_JOHTO_GOT_SILVER_WING, bell_tower_roof.txt) and is battled where it
+# rests, at level 45, with no running. Caught, it is gone for good (FLAG_JOHTO_CAUGHT_LUGIA, ours); beaten, it dives away
+# (HeartGold's FLAG_HIDE_WHIRL_ISLAND_LUGIA) and is back with the next entry into Johto's Hall of Fame, whose scene clears
+# the flag unless it was caught.
+
+
+# D40R0107_000: Lugia
+script Lugia
+  cry "Lugia"
+  speaker none
+  say "The Silver Wing glows, and the great bird of the sea opens its eyes!"
+  wildbattle "Lugia" 45 nofleeing
+  if var RESULT == 3 goto Caught
+  setflag FLAG_HIDE_WHIRL_ISLAND_LUGIA
+  hide self
+  say "Lugia slipped beneath the dark water and was gone..."
+  end
+label Caught
+  setflag FLAG_JOHTO_CAUGHT_LUGIA
+  setflag FLAG_HIDE_WHIRL_ISLAND_LUGIA
+  hide self
+  end

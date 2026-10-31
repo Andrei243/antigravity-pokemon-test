@@ -1,0 +1,44 @@
+{
+  "FriendAtHome": [
+    {
+      "en": [
+        "{assistant}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! Mom said you'd come by. Is it true? All eight of Johto's Badges?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I knew it. Ever since you chose your first Pokémon in Professor Elm's lab, I knew you'd go all the way."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The road to the League runs west from here, by Route 27 and Tohjo Falls. Go on. I'll be cheering for you!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What are you still doing here? The League is waiting for you!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

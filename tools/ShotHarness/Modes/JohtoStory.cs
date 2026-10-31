@@ -46,12 +46,24 @@ partial class Harness
                 if (fight.HUD.MenuState == BattleMenuState.Main)
                 {
                     foreach (var foe in fight.EnemyParty?.Members ?? new List<Pokemon>()) foe.CurrentHP = Math.Min(foe.CurrentHP, 1);
+                    // A wild Pokémon has no party: the red Gyarados's rain and Waterfall felled a lead kept whole only
+                    // at the menu, and the fourth chapter went on from a white-out
+                    if (fight.EnemyParty == null && fight.EnemyPokemon is { } wild) wild.CurrentHP = Math.Min(wild.CurrentHP, 1);
                     var lead = fight.PlayerPokemon;
                     if (lead != null) lead.CurrentHP = lead.MaxHP;
+                    // and its moves' PP: a lead that wins every battle of two chapters in a row ran Flame Wheel dry, and
+                    // the takeover's grunt then stood through four hundred turns of "no PP left"
+                    if (lead != null) foreach (var m in lead.Moves) m.CurrentPP = m.MaxPP;
                     fight.SelectMainMenuOption(0);
-                    int hurts = lead == null ? 0 : Math.Max(0, lead.Moves.FindIndex(m => m.Data.Category != MoveCategory.Status));
-                    fight.SelectMove(hurts);
+                    // The move the engine itself suggests, which asks the rules what may be picked: the first move that
+                    // hurt was taken blindly before, and Haunter's Disable on Flame Wheel kept the rival's battle in Victory
+                    // Road at its move menu
+                    fight.SelectMove(Math.Max(0, fight.Suggest()));
+                    // A double battle (Ariana's tag battle beside Lance) asks whom the move is for: never answered, the
+                    // tag battle stood at its target menu until the guard gave up (the Kimono Girls' too)
+                    if (fight.HUD.MenuState == BattleMenuState.SelectTarget) fight.SelectTarget(0);
                 }
+                else if (fight.HUD.MenuState == BattleMenuState.SelectTarget) fight.SelectTarget(0);
                 else Confirm(fight);
                 Skip(0.5);
             }
@@ -88,6 +100,8 @@ partial class Harness
         void TalkTo(string map, string key, int dx = 0, int dy = 1)
         {
             var m = MapDatabase.Get(map);
+            // A room not come to since the story changed holds who stood there then (the warehouse's Director)
+            if (!m.NPCs.Any(n => n.Key == key)) m.ApplyPresence(story.Has);
             var npc = m.NPCs.First(n => n.Key == key);
             var facing = (dx, dy) switch { (0, 1) => Direction.Up, (0, -1) => Direction.Down, (1, 0) => Direction.Left, _ => Direction.Right };
             At(map, npc.GridX + dx, npc.GridY + dy, facing);
@@ -735,7 +749,9 @@ partial class Harness
         Frames(10); Shot("jst9f_the_way_open");
         Takeover("the switches");
 
-        // ---- the warehouse: the real Director and his Card Key
+        // ---- the warehouse: the real Director and his Card Key (come into first: its arrival stands him there)
+        ComeThrough("Goldenrod_Underground_Warehouse", 4, 17, Direction.Up);
+        ReadTo(null);
         TalkTo("Goldenrod_Underground_Warehouse", "d37r0105_gsgentleman");
         ReadTo("It's my Card Key"); Frames(10); Shot("jst9g_the_real_director");
         ReadTo(null);
@@ -778,6 +794,56 @@ partial class Harness
         ComeThrough("Johto", towerDoor.TargetX, towerDoor.TargetY, Direction.Down);
         Frames(30); Shot("jst9q_goldenrod_free");
         Takeover("the takeover's end");
+
+        // ---- plan 20 · J11, part d: the Kimono Girls' five battles, the Bell Tower and Ho-Oh (jst9r to jst9z)
+        void Belled(string what) =>
+            Console.WriteLine($"  {what}: wing {story.Has("FLAG_UNK_093")}, five beaten {story.Has("FLAG_JOHTO_KIMONO_GIRLS_BEATEN")}, "
+                + $"roof {story.Var("VAR_UNK_40FA")}, Ho-Oh came {story.Has("FLAG_JOHTO_HO_OH_CAME")}, gone {story.Has("FLAG_HIDE_BELL_TOWER_HO_OH")}, "
+                + $"caught {story.Has("FLAG_JOHTO_CAUGHT_HO_OH")}, team {string.Join(", ", game.Party.Members.Select(p => $"{p.Species.Name} {p.Level} {p.CurrentHP}/{p.MaxHP}"))}");
+        // (a game set up past the takeover alone: the five on the stage as the second chapter leaves them)
+        story.Unset("FLAG_HIDE_DANCE_STUDIO_KIMONO_GIRLS");
+        Heal();
+        TalkTo("Ecruteak_DanceTheater", "t27r0501_dancer");
+        ReadTo("a Rainbow Wing"); Frames(10); Shot("jst9r_the_kimono_girls");
+        ReadTo("I'm first");
+        IntoBattle("Zuki's battle");
+        ToMainMenu(game.Battle); Shot("jst9s_zukis_battle");
+        ReadTo("Five battles, and not one rest"); Frames(10); Shot("jst9t_the_five_beaten");
+        ReadTo(null);
+        Belled("the five beaten");
+        Heal();
+        ComeThrough("Ecruteak_BellTowerGate", 15, 8, Direction.Up);
+        Frames(20); Shot("jst9u_the_gate_open");
+        ComeThrough("BellchimeTrail", 30, 13, Direction.Up);
+        Frames(20); Shot("jst9v_bellchime_trail");
+        ComeThrough("BellTower_1F", 15, 24, Direction.Up);
+        Frames(20); Shot("jst9w_the_bell_tower");
+        StepOnto("BellTower_Roof", 15, 20, Direction.Up);
+        ReadTo("You have come"); Frames(10); Shot("jst9x_the_roof");
+        ReadTo("rainbow fire"); Frames(10); Shot("jst9y_ho_oh_comes");
+        ReadTo(null);
+        TalkTo("BellTower_Roof", "d17r0110_hou_obj01");
+        ReadTo("Ho-Oh spreads its burning wings");
+        IntoBattle("Ho-Oh");
+        ToMainMenu(game.Battle); Shot("jst9z_ho_ohs_battle");
+        Win();
+        ReadTo(null);
+        Heal();
+        Belled("the roof");
+        // ---- the Silver Wing from the Kimono Girls, and Lugia in the Whirl Islands' deepest cave
+        TalkTo("BellTower_Roof", "d17r0110_dancer_2");
+        ReadTo("This feather was left in our care"); Frames(10); Shot("jst9za_the_silver_wing");
+        ReadTo(null);
+        ComeThrough("WhirlIslands_LugiaCave", 16, 20, Direction.Up);
+        Frames(20); Shot("jst9zb_lugias_cave");
+        TalkTo("WhirlIslands_LugiaCave", "d40r0107_lug_obj01");
+        ReadTo("the great bird of the sea opens its eyes");
+        IntoBattle("Lugia");
+        ToMainMenu(game.Battle); Shot("jst9zc_lugias_battle");
+        Win();
+        ReadTo(null);
+        Heal();
+        Belled("Lugia");
 
     // ================= The fourth chapter, part c (plan 20 · J11): the Ice Path, Clair and the Rising Badge (jsta0 to jstaj)
     Rising:
@@ -944,6 +1010,17 @@ partial class Harness
         if (State() != GameState.HallOfFameCeremony) Console.WriteLine("  !! never happened: the team's entry");
         Skip(3.0); Shot("jstbj_the_teams_entry");
         Championed("the Hall of Fame");
+        // The ceremony, the save and the credits run to their end before the field is the player's again (the credits'
+        // button held, as a player in a hurry holds it): the call downstairs waited behind the roll and was never heard
+        for (int i = 0; i < 20000 && !(State() == GameState.Overworld && !engine.ScriptRunning); i++)
+        {
+            if (State() == GameState.Credits) game.Credits.Held = true;
+            if (State() == GameState.HallOfFameCeremony) game.Ceremony.PressConfirm();
+            if (Box().IsActive && Box().IsCurrentLineComplete && !Box().IsQuestion) { Box().Advance(); Frames(2); }
+            else Frames(1);
+        }
+        if (State() != GameState.Overworld) Console.WriteLine($"  !! never happened: home after the credits ({State()})");
+        Frames(20); Shot("jstbj2_home_as_the_champion");
 
         // ---- home: Elm's call downstairs, and the gate's door to Route 22
         var downstairs = MapDatabase.Get("NewBark_PlayersHouse_2F").Warps.First(w => w.TargetMap == "NewBark_PlayersHouse_1F");
@@ -954,7 +1031,21 @@ partial class Harness
         ReadTo("You're the new Champion"); Frames(10); Shot("jstbl_the_gate_to_kanto");
         ReadTo(null);
         TalkTo("Olivine_PortHall", "ss_aqua_olivine_port_interior.Sailor", 0, -1);
-        ReadTo("is ready"); Frames(10); Shot("jstbm_the_ship_to_hoenn");
+        // Since plan 20 · J15, part b the sailor asks where to: Hoenn is the second answer
+        Until(() => engine.Choice.IsOpen, "the sailor's question", 600);
+        Frames(10); Shot("jstbm_the_ship_to_hoenn");
+        engine.Choice.Move(1); Frames(4); engine.Choice.Confirm(); Frames(4);
+        // (the sailor's word that the ferry is ready is read on to the question it asks)
+        for (int i = 0; i < 1200 && !engine.Choice.IsOpen; i++)
+        {
+            if (Box().IsActive && Box().IsCurrentLineComplete && !Box().IsQuestion) { Box().Advance(); Frames(2); }
+            else Frames(1);
+        }
+        if (!engine.Choice.IsOpen) Console.WriteLine("  !! never happened: the crossing's question");
+        Frames(10); Shot("jstbn_the_crossing_asked");
+        // (not today: the mode goes on in Johto)
+        if (engine.Choice.IsOpen) { engine.Choice.Move(1); Frames(4); engine.Choice.Confirm(); Frames(4); }
+        ReadTo(null);
         Championed("the chapter's end");
     }
 }

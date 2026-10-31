@@ -6886,6 +6886,49 @@ The user approved L9's default on 2026-10-26 (docs/plans/decisions/APPROVAL-leve
   Radio Tower and the Expn Card, the Trainer House's battles, the Leaders' rematches and street meetings (Brock in
   Diglett's Cave among them), Suicune's stops, the rest of Kanto's Apricorn trees.
 
+## The Bell Tower and Ho-Oh, and the rest of Johto's third to fifth chapters (2026-10-31, plan 20 · J11, part d; J9 and J12's leftovers)
+
+- **The Kimono Girls test the holder of the Rainbow Wing in the Dance Theater**: this game's Director gives the Rainbow
+  Wing (part b), so the five battle once it is held (`FLAG_UNK_093`), whichever is spoken to: Zuki, Naoko, Miki, Sayo and
+  Kuni, one after another with no heal between (`ecruteak_dance_theater.txt`, `Dancers`). A loss ends the test and the
+  next word begins it again from Zuki (HeartGold's own retry could not be read: the decompilation's scripts are not in
+  the cache). All five beaten (`FLAG_JOHTO_KIMONO_GIRLS_BEATEN`, ours) they leave the stage for the tower
+  (`FLAG_HIDE_DANCE_STUDIO_KIMONO_GIRLS` set again) and set the roof's trigger (`VAR_UNK_40FA` 1).
+- **The gate's north door is that flag's**: an overlay door (`openedBy`) to the corridor; the Sage who stands in its
+  passage is hidden by the flag and a double of ours stands beside it from then on. Bellchime Trail, the corridor and the
+  tower's eleven floors (`BellTower_1F` to `_10F`, `_Roof`) are HeartGold's maps as they are, their items and wild
+  Pokémon its own; HeartGold's two triggers on the ground floor that stop a visitor without the bell are not bound.
+  Morty waits on the trail until Ho-Oh has come (`FLAG_JOHTO_HO_OH_CAME`, ours; HeartGold's `FLAG_UNK_2CA` unused).
+- **Ho-Oh is the roof's**: a step onto HeartGold's tile before the five plays their dance and brings Ho-Oh down
+  (`bell_tower_roof.txt`, `Dance`); it is battled at level 45 and can't be run from. Caught, it is gone for good
+  (`FLAG_JOHTO_CAUGHT_HO_OH`, ours); beaten, it flies off (`FLAG_HIDE_BELL_TOWER_HO_OH`) and is back with the next entry
+  into Johto's Hall of Fame, whose scene clears the flag unless it was caught, as Sinnoh's legendaries come back. The bell
+  rings with Heal Bell's sound (no bell of its own in the bank). The roof plays the tower's song: HeartGold's is the wind.
+- **The Silver Wing comes from the Kimono Girls, and Lugia waits for it**: HeartGold hands the wing out in Kanto; the
+  plan brings it in Johto after Ho-Oh, so the five on the roof give it once Ho-Oh has been met (`FLAG_JOHTO_GOT_SILVER_WING`,
+  ours; a key item of ours, 9203, with PokeAPI's names). The Whirl Islands' second basement leads down to its third and to
+  Lugia's cave, past the sage at the head of the slope, who stands aside for the wing; Lugia rests there for whoever has it,
+  level 45, no running, gone for good when caught (`FLAG_JOHTO_CAUGHT_LUGIA`, ours) and back with the next Hall of Fame
+  when not (HeartGold's `FLAG_HIDE_WHIRL_ISLAND_LUGIA`). HeartGold's Kimono Girls in the cave are SoulSilver's scene and
+  are held back.
+- **Lance's Whirlpool HM is not given**: this game's `HM05` is Platinum's Defog, so HeartGold's Whirlpool HM needs a
+  number and a name of its own, and every species' compatibility from HeartGold's machine table: a decision for the user.
+  Until then a Pokémon that learns Whirlpool by level crosses the whirlpools on the way to the islands.
+- **Johto's ceremony and credits** have songs of their own (`johto/hall_of_fame`, `johto/credits`, found by
+  `MusicDirector.SceneSong`), and the **Safari Zone** a trek of its own (`johto/safari_zone`) in its twelve areas and its
+  gate hall. Our own compositions, rendered with no clash; not yet heard by the user.
+- **The friend at home**: HeartGold's rival's-room scene in New Bark Town is the friend's room next door from the Rising
+  Badge (the shrine's `FLAG_UNK_0EA`) to Johto's Hall of Fame, a person of ours who sees the player off to the League.
+- **Chuck's and Jasmine's numbers** are offered to Johto's Champion in their Gyms (`addcontact`), with calls of their own
+  in `phone.txt`; their rematches are the phone book's (the Fighting Dojo on their day).
+- **No reunion with a Kanto team**: under plan 18 · W4's option B every Pokémon crosses with the player, so nothing waits
+  to be reunited with, and no line was written for it.
+- **The story walk**: one headless game of Johto played chapter after chapter from the bedroom to the Hall of Fame, with
+  nothing set by hand between them, every trainer's battle the scripts start fought by the battle's core under Platinum's
+  rules and under the modern ones (`JohtoStoryTests.AGameOfJohtoPlaysWholeFromTheBedroomToTheHallOfFameUnderEitherRules`:
+  a fixed team of the walk's own against each trainer's team as the data builds it, the trainer AI on both sides). It is
+  the scripts' game with real battles, not the window's game driven by keys (`HeadlessGameTests`' way), which would need an
+  itinerary of the whole region (`Itineraries`).
 ## HeartGold's Kanto, part j (2026-10-31, plan 20 · J15, part j)
 
 - *The slice*: the north-east of Kanto. Route 9 runs east from Cerulean City's east edge, past trees Cut fells, to Route
@@ -6958,6 +7001,11 @@ The user approved L9's default on 2026-10-26 (docs/plans/decisions/APPROVAL-leve
   out of the chunk's file; between the plates the import keeps (21 above, 18, 12, 3 and 0 below) the stairs read as
   cliffs, and nothing else in the islands reaches the lower level. Opening it wants an importer rule that lays such a
   flight as a slope between the plates north and south of it, which touches every HeartGold chunk with such plates and
-  is left to a session of its own (with J11's Lugia, whose scene waits there anyway).
+  is left to a session of its own (with J11's Lugia, whose scene waits there anyway). *Solved by J11, part d*: the
+  importer's ground already joins the upper level to the lower by a walked slope east of the stairs (from 36, 30 at 21
+  down 36, 31 and 35 to 32, 32 to 18), which the sage at 36, 30 stood on; he now stands aside for the Silver Wing (a
+  double of ours at 34, 29), so the lower level, the third basement and Lugia's cave are reached that way and `WorldWalk`
+  finds them. The stairs themselves still read as cliffs: laying edge-on plates as slopes is still undone, and needed
+  nowhere yet.
 - *The terrain lab's whirlpool*: the harness's `lab` map has a whirlpool of three tiles in its bay (`lab36`, `lab37`),
   which J8 left for the session that shot `lab` again.
