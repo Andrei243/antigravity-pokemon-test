@@ -346,6 +346,13 @@ public sealed class GameSettings
     /// <summary>A dangerous answer (deleting a save, resetting the options, releasing a Pokémon) taken only after a 0.4 s hold (plan 12 · Q9, <see cref="UI.Kit.ConfirmHold"/>): off unless chosen.</summary>
     public bool HoldToConfirm { get; set; }
 
+    /// <summary>
+    /// The boxes' tools (plan 12 · Q26): SEARCH and SORT on a box's menu and SELECT on a Pokémon's, several picked up and
+    /// put down together. <see cref="RulesDefault.Rules"/> unless chosen, kept as it is, so a game played by Platinum's
+    /// rules keeps plan 06 · R12's PC exactly as it was.
+    /// </summary>
+    public RulesDefault BoxTools { get; set; } = RulesDefault.Rules;
+
     /// <summary>The preset the first run's measuring chose on this machine (plan 16 · T23), or null where nothing was measured.</summary>
     public GraphicsQuality? MeasuredQuality { get; set; }
 

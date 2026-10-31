@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Models;
 using PokemonPlatinumEngine.UI.Kit;
@@ -10,10 +11,16 @@ namespace PokemonPlatinumEngine.UI;
 public enum StorageZone { Party, BoxName, Box }
 
 /// <summary>What can be done with the Pokémon under the cursor (the box application's menu, plan 06 · R12).</summary>
-public enum PcAction { Move, Withdraw, Store, Summary, Mark, Release, Cancel }
+public enum PcAction { Move, Withdraw, Store, Summary, Mark, Release, Cancel, Select }
 
-/// <summary>What can be done with the box whose name is under the cursor.</summary>
-public enum PcBoxAction { Name, Wallpaper, Cancel }
+/// <summary>What can be done with the box whose name is under the cursor (SEARCH and SORT are the boxes' tools', plan 12 · Q26).</summary>
+public enum PcBoxAction { Name, Wallpaper, Cancel, Search, Sort }
+
+/// <summary>What can be done with a rectangle of a box once it is drawn (plan 12 · Q26).</summary>
+public enum PcGroupAction { Move, Release, Cancel }
+
+/// <summary>The rows of the boxes' sort menus (plan 12 · Q26): which boxes, then by what.</summary>
+public enum PcSortChoice { ThisBox, AllBoxes, Number, Level, Name, Type, Recent, Cancel }
 
 /// <summary>
 /// The Pokémon Storage System (plan 06 · R12): the party beside one of Platinum's eighteen boxes of thirty places
@@ -94,10 +101,62 @@ public class PCScreen
     public void HoldRelease(Party party, PcBoxes pc, Action<string> onNotification, float dt, bool down)
     {
         if (AskingRelease && ReleaseHold.Advance(dt, down)) AnswerRelease(true, party, pc, onNotification);
+        // Several released at once wait for the same hold (plan 12 · Q26)
+        else if (AskingReleaseMany && ReleaseHold.Advance(dt, down)) ReleaseMany(party, pc, onNotification);
     }
 
     /// <summary>The box's new name being typed (NAME), or null.</summary>
     public NameEntry? Naming { get; private set; }
+
+    // ------------------------------------------------------------------ the boxes' tools (plan 12 · Q26)
+
+    /// <summary>
+    /// Whether the boxes' tools are offered (the options' BOX TOOLS row, set by the game every frame the PC is open):
+    /// SEARCH and SORT on the box's menu, SELECT on a Pokémon's. Off, the PC is plan 06 · R12's as it was.
+    /// </summary>
+    public bool Tools { get; set; }
+
+    /// <summary>Whether a rectangle of the box is being drawn (SELECT), from <see cref="Anchor"/> to the cursor.</summary>
+    public bool Selecting { get; private set; }
+
+    /// <summary>The place a rectangle was begun on.</summary>
+    public int Anchor { get; private set; }
+
+    /// <summary>The places of the rectangle being drawn, row by row (empty while none is).</summary>
+    public IReadOnlyList<int> Rectangle => Selecting ? BoxQuery.Rectangle(Anchor, Cell) : Array.Empty<int>();
+
+    /// <summary>The menu of what to do with the rectangle drawn, while it is open.</summary>
+    public IReadOnlyList<PcGroupAction>? GroupMenu { get; private set; }
+
+    private readonly List<(Pokemon Pokemon, BoxPlace From)> carried = new();
+
+    /// <summary>The Pokémon picked up together, in the order they will go down, and where each came from.</summary>
+    public IReadOnlyList<(Pokemon Pokemon, BoxPlace From)> Carried => carried;
+
+    /// <summary>The search panel, while it is open.</summary>
+    public BoxSearch? Search { get; private set; }
+
+    /// <summary>What the search found, while its results are shown over the panel.</summary>
+    public IReadOnlyList<BoxPlace>? Results { get; private set; }
+
+    /// <summary>The results' row under the cursor: 0 is PICK UP ALL, then each found.</summary>
+    public int ResultIndex { get; set; }
+
+    /// <summary>The results' rows shown at once, and the first of them.</summary>
+    public const int ResultRows = 8;
+    public int ResultFirst { get; private set; }
+
+    /// <summary>The sort menu open (its rows), while it is: first which boxes, then by what.</summary>
+    public IReadOnlyList<PcSortChoice>? SortMenu { get; private set; }
+    private bool sortEvery;
+
+    /// <summary>Releasing the rectangle's Pokémon: its yes waits for <see cref="ReleaseHold"/> as a single release's does.</summary>
+    public bool AskingReleaseMany { get; private set; }
+
+    private List<int> releasing = new();
+
+    /// <summary>The Pokémon a release of several would let go, in their places.</summary>
+    public IReadOnlyList<int> Releasing => releasing;
 
     public void Open(PcBoxes? pc = null)
     {
@@ -109,6 +168,7 @@ public class PCScreen
         BoxCount = pc?.Boxes.Count ?? PcBoxes.BoxCount;
         Box = Math.Clamp(pc?.CurrentBox ?? 0, 0, BoxCount - 1);
         Held = null;
+        carried.Clear();
         Changed = false;
         CloseMenus();
         boxKey.Release();
@@ -128,10 +188,17 @@ public class PCScreen
         ReleaseHold.Stop();
         Naming = null;
         MenuIndex = 0;
+        Selecting = false;
+        GroupMenu = null;
+        Search = null;
+        Results = null;
+        SortMenu = null;
+        AskingReleaseMany = false;
     }
 
     /// <summary>Whether one of the screen's own menus or questions is open over the boxes.</summary>
-    public bool Busy => Menu != null || BoxMenu != null || Marking != null || AskingRelease || Naming != null || Summarizing;
+    public bool Busy => Menu != null || BoxMenu != null || Marking != null || AskingRelease || Naming != null || Summarizing
+        || Selecting || GroupMenu != null || Search != null || SortMenu != null || AskingReleaseMany;
 
     /// <summary>The place in the boxes that the cursor's place stands for, counted from the first box.</summary>
     public int StoredIndex => Box * BoxSize + Cell;
@@ -153,7 +220,8 @@ public class PCScreen
     public void Move(int dx, int dy, int partyCount, bool held = false)
     {
         if (dx == 0 && dy == 0) return;
-        if (Naming != null) return;
+        if (Naming != null || AskingReleaseMany) return;
+        if (MoveTools(dx, dy)) return;
         if (Marking != null)
         {
             MarkIndex = UiNav.Wrap(MarkIndex, dx + dy, 7);
@@ -233,10 +301,17 @@ public class PCScreen
         return true;
     }
 
-    /// <summary>What the menu offers for the Pokémon under the cursor.</summary>
+    /// <summary>What the menu offers for the Pokémon under the cursor (with the boxes' tools, SELECT before CANCEL in a box).</summary>
     public IReadOnlyList<PcAction> ActionsFor(StorageZone zone) => zone == StorageZone.Party
         ? new[] { PcAction.Move, PcAction.Store, PcAction.Summary, PcAction.Mark, PcAction.Release, PcAction.Cancel }
-        : new[] { PcAction.Move, PcAction.Withdraw, PcAction.Summary, PcAction.Mark, PcAction.Release, PcAction.Cancel };
+        : Tools
+            ? new[] { PcAction.Move, PcAction.Withdraw, PcAction.Summary, PcAction.Mark, PcAction.Release, PcAction.Select, PcAction.Cancel }
+            : new[] { PcAction.Move, PcAction.Withdraw, PcAction.Summary, PcAction.Mark, PcAction.Release, PcAction.Cancel };
+
+    /// <summary>What the box's menu offers: with the boxes' tools, SEARCH and SORT before CANCEL.</summary>
+    public IReadOnlyList<PcBoxAction> BoxActions => Tools
+        ? new[] { PcBoxAction.Name, PcBoxAction.Wallpaper, PcBoxAction.Search, PcBoxAction.Sort, PcBoxAction.Cancel }
+        : new[] { PcBoxAction.Name, PcBoxAction.Wallpaper, PcBoxAction.Cancel };
 
     /// <summary>
     /// The A button: with a Pokémon picked up, puts it down where the cursor is; on a Pokémon, opens what can be
@@ -245,6 +320,7 @@ public class PCScreen
     public void Confirm(Party party, PcBoxes pc, Action<string> onNotification)
     {
         if (Naming != null) return;
+        if (ConfirmTools(party, pc, onNotification)) return;
         if (AskingRelease)
         {
             // Letting a Pokémon go waits for the hold where the options ask for it (plan 12 · Q9)
@@ -280,7 +356,7 @@ public class PCScreen
         }
         if (Zone == StorageZone.BoxName)
         {
-            BoxMenu = new[] { PcBoxAction.Name, PcBoxAction.Wallpaper, PcBoxAction.Cancel };
+            BoxMenu = BoxActions;
             MenuIndex = 0;
             AudioManager.PlaySound("select");
             return;
@@ -332,6 +408,7 @@ public class PCScreen
     /// <summary>The B button: closes what is open, or puts a Pokémon carried back where it came from; false when there was nothing to back out of.</summary>
     public bool Cancel(Party party, PcBoxes pc)
     {
+        if (CancelTools(pc)) { AudioManager.PlaySound("cancel"); return true; }
         if (Summarizing) Summarizing = false;
         else if (Naming != null) Naming = null;
         else if (AskingRelease) { AskingRelease = false; ReleaseHold.Stop(); }
@@ -409,6 +486,13 @@ public class PCScreen
             case PcAction.Release:
                 AskingRelease = true;
                 break;
+            case PcAction.Select:
+                // A rectangle begun here: the cursor is its other corner
+                if (Zone != StorageZone.Box) return;
+                Selecting = true;
+                Anchor = Cell;
+                AudioManager.PlaySound("select");
+                break;
         }
     }
 
@@ -443,6 +527,13 @@ public class PCScreen
         BoxMenu = null;
         if (action == PcBoxAction.Name) Naming = new NameEntry(NameToEdit(pc), PcBoxes.NameLength);
         else if (action == PcBoxAction.Wallpaper) NextWallpaper(pc);
+        else if (action == PcBoxAction.Search) OpenSearch(pc);
+        else if (action == PcBoxAction.Sort)
+        {
+            SortMenu = new[] { PcSortChoice.ThisBox, PcSortChoice.AllBoxes, PcSortChoice.Cancel };
+            MenuIndex = 0;
+            AudioManager.PlaySound("select");
+        }
     }
 
     /// <summary>Puts up the next wallpaper the PC has (the sixteen, and the eight once unlocked).</summary>
@@ -597,6 +688,14 @@ public class PCScreen
             return;
         }
 
+        // Releasing several (plan 12 · Q26): A answers yes (the hold, where asked, is followed above), B keeps them
+        if (AskingReleaseMany)
+        {
+            if (InputManager.IsActionPressed(GameAction.Cancel)) Cancel(party, pc);
+            else if (InputManager.IsActionPressed(GameAction.Confirm)) Confirm(party, pc, onNotification);
+            return;
+        }
+
         // A key kept down at the box's name runs on through the boxes; anywhere else only a press counts
         tick.Update(dt);
         bool runs = Zone == StorageZone.BoxName && !Busy;
@@ -617,6 +716,237 @@ public class PCScreen
             }
         }
         else if (InputManager.IsActionPressed(GameAction.Confirm)) Confirm(party, pc, onNotification);
+    }
+
+    // ------------------------------------------------------------------ the boxes' tools (plan 12 · Q26)
+
+    /// <summary>The cursor's step where a tool has it: the search's rows, the results, the sort's and the rectangle's menus, the rectangle's corner. True when a tool took it.</summary>
+    private bool MoveTools(int dx, int dy)
+    {
+        if (Results is { } results)
+        {
+            if (dy == 0) return true;
+            ResultIndex = UiNav.Wrap(ResultIndex, Math.Sign(dy), results.Count + 1);
+            ResultFirst = UiNav.Window(ResultFirst, ResultIndex, results.Count + 1, ResultRows);
+            AudioManager.PlaySound("cursor");
+            return true;
+        }
+        if (Search is { } search)
+        {
+            if (dy != 0) search.Move(dy);
+            else if (!search.Change(dx)) return true;
+            AudioManager.PlaySound("cursor");
+            return true;
+        }
+        if (SortMenu is { } sort)
+        {
+            if (dy != 0) { MenuIndex = UiNav.Wrap(MenuIndex, dy, sort.Count); AudioManager.PlaySound("cursor"); }
+            return true;
+        }
+        if (GroupMenu is { } group)
+        {
+            if (dy != 0) { MenuIndex = UiNav.Wrap(MenuIndex, dy, group.Count); AudioManager.PlaySound("cursor"); }
+            return true;
+        }
+        if (Selecting)
+        {
+            // The rectangle's corner stays in the box
+            int col = Math.Clamp(Cell % Columns + Math.Sign(dx), 0, Columns - 1), row = Math.Clamp(Cell / Columns + Math.Sign(dy), 0, Rows - 1);
+            if (row * Columns + col != Cell) { Cell = row * Columns + col; AudioManager.PlaySound("cursor"); }
+            return true;
+        }
+        return false;
+    }
+
+    /// <summary>The A button where a tool has it; true when a tool took it.</summary>
+    private bool ConfirmTools(Party party, PcBoxes pc, Action<string> onNotification)
+    {
+        if (AskingReleaseMany)
+        {
+            // The release's yes: at once, or once the hold is done where the options ask for it (plan 12 · Q9)
+            if (ReleaseHold.Press()) ReleaseMany(party, pc, onNotification);
+            return true;
+        }
+        if (Results is { } results)
+        {
+            if (ResultIndex == 0) PickUpMany(pc, results);
+            else
+            {
+                var place = results[ResultIndex - 1];
+                Box = place.Box;
+                Cell = place.Slot;
+                Zone = StorageZone.Box;
+                AudioManager.PlaySound("select");
+            }
+            Search = null;
+            Results = null;
+            return true;
+        }
+        if (Search is { } search)
+        {
+            if (BoxSearch.Rows[search.Row] != BoxSearchRow.Go) return true;
+            var found = BoxQuery.Find(pc, search.Filter);
+            if (found.Count == 0)
+            {
+                AudioManager.PlaySound("error");
+                onNotification(Text.Of("boxTools.search.none"));
+                return true;
+            }
+            Results = found;
+            ResultIndex = 0;
+            ResultFirst = 0;
+            AudioManager.PlaySound("select");
+            return true;
+        }
+        if (SortMenu is { } sort)
+        {
+            var choice = sort[MenuIndex];
+            if (choice == PcSortChoice.Cancel) SortMenu = null;
+            else if (choice is PcSortChoice.ThisBox or PcSortChoice.AllBoxes)
+            {
+                sortEvery = choice == PcSortChoice.AllBoxes;
+                SortMenu = new[] { PcSortChoice.Number, PcSortChoice.Level, PcSortChoice.Name, PcSortChoice.Type, PcSortChoice.Recent, PcSortChoice.Cancel };
+                MenuIndex = 0;
+            }
+            else
+            {
+                var by = choice switch
+                {
+                    PcSortChoice.Level => BoxSort.Level,
+                    PcSortChoice.Name => BoxSort.Name,
+                    PcSortChoice.Type => BoxSort.Type,
+                    PcSortChoice.Recent => BoxSort.Recent,
+                    _ => BoxSort.Number
+                };
+                if (sortEvery) BoxQuery.SortAll(pc, by);
+                else BoxQuery.Sort(pc, Box, by);
+                SortMenu = null;
+                Changed = true;
+                onNotification(Text.Of(sortEvery ? "boxTools.sort.doneAll" : "boxTools.sort.done", ("box", pc.ShownName(Box))));
+            }
+            AudioManager.PlaySound("select");
+            return true;
+        }
+        if (GroupMenu is { } group)
+        {
+            var action = group[MenuIndex];
+            GroupMenu = null;
+            var cells = BoxQuery.Rectangle(Anchor, Cell).Where(c => pc[Box, c] != null).ToList();
+            Selecting = false;
+            if (action == PcGroupAction.Move) PickUpMany(pc, cells.Select(c => new BoxPlace(Box, c)).ToList());
+            else if (action == PcGroupAction.Release)
+            {
+                releasing = cells;
+                AskingReleaseMany = true;
+                ReleaseHold.Stop();
+            }
+            AudioManager.PlaySound("select");
+            return true;
+        }
+        if (Selecting)
+        {
+            if (!BoxQuery.Rectangle(Anchor, Cell).Any(c => pc[Box, c] != null)) return true;
+            GroupMenu = new[] { PcGroupAction.Move, PcGroupAction.Release, PcGroupAction.Cancel };
+            MenuIndex = 0;
+            AudioManager.PlaySound("select");
+            return true;
+        }
+        if (carried.Count > 0)
+        {
+            PutDownMany(pc, onNotification);
+            return true;
+        }
+        return false;
+    }
+
+    /// <summary>The B button where a tool has it: each steps back once; true when a tool took it.</summary>
+    private bool CancelTools(PcBoxes pc)
+    {
+        if (AskingReleaseMany) { AskingReleaseMany = false; ReleaseHold.Stop(); releasing = new(); }
+        else if (Results != null) Results = null;
+        else if (Search != null) Search = null;
+        else if (SortMenu != null) SortMenu = null;
+        else if (GroupMenu != null) GroupMenu = null;
+        else if (Selecting) Selecting = false;
+        else if (carried.Count > 0) PutBackMany(pc);
+        else return false;
+        return true;
+    }
+
+    /// <summary>Opens the search panel on what the boxes hold now.</summary>
+    public void OpenSearch(PcBoxes pc)
+    {
+        Search = new BoxSearch(pc);
+        Results = null;
+        AudioManager.PlaySound("select");
+    }
+
+    /// <summary>Picks up every Pokémon of the places given, together, in their order (a rectangle's, a search's).</summary>
+    public void PickUpMany(PcBoxes pc, IReadOnlyList<BoxPlace> places)
+    {
+        foreach (var place in places)
+            if (pc.TakeOut(place.Box, place.Slot) is { } p) carried.Add((p, place));
+        if (carried.Count > 0) AudioManager.PlaySound("select");
+    }
+
+    /// <summary>
+    /// Puts every Pokémon carried down in the box on the screen, into its empty places from the cursor's on and round to
+    /// its first, in their order; refused whole where the box hasn't room for all of them, or off the box.
+    /// </summary>
+    public bool PutDownMany(PcBoxes pc, Action<string> onNotification)
+    {
+        if (Zone != StorageZone.Box)
+        {
+            AudioManager.PlaySound("error");
+            if (Zone == StorageZone.Party) onNotification(Text.Of("boxTools.many.notTheTeam"));
+            return false;
+        }
+        if (BoxQuery.PlacesFor(pc, Box, Cell, carried.Count) is not { } places)
+        {
+            AudioManager.PlaySound("error");
+            onNotification(Text.Of("boxTools.many.noRoom", ("count", carried.Count), ("box", pc.ShownName(Box))));
+            return false;
+        }
+        for (int i = 0; i < places.Count; i++) pc.Lay(Box, places[i], carried[i].Pokemon);
+        carried.Clear();
+        Changed = true;
+        AudioManager.PlaySound("select");
+        return true;
+    }
+
+    /// <summary>Puts each Pokémon carried back where it came from (or, if that place has been filled, the first place with room).</summary>
+    private void PutBackMany(PcBoxes pc)
+    {
+        foreach (var (p, from) in carried)
+        {
+            if (pc[from.Box, from.Slot] == null) pc.Lay(from.Box, from.Slot, p);
+            else pc.Store(p);
+        }
+        carried.Clear();
+    }
+
+    /// <summary>
+    /// Lets the rectangle's Pokémon go, each as RELEASE would (one that holds Mail, or would take a move the field needs
+    /// with it, stays). Reached by the release's yes, at once or after <see cref="ReleaseHold"/> where the options ask for it.
+    /// </summary>
+    private void ReleaseMany(Party party, PcBoxes pc, Action<string> onNotification)
+    {
+        if (!AskingReleaseMany) return;
+        int released = 0, stayed = 0;
+        foreach (int cell in releasing)
+        {
+            if (pc[Box, cell] is not { } p) continue;
+            if (pc.Release(p, party) == ReleaseOutcome.Released) released++;
+            else stayed++;
+        }
+        AskingReleaseMany = false;
+        ReleaseHold.Stop();
+        releasing = new();
+        if (released > 0) Changed = true;
+        AudioManager.PlaySound("select");
+        onNotification(stayed == 0
+            ? Text.Of("boxTools.many.released", ("count", released))
+            : Text.Of("boxTools.many.releasedSome", ("count", released), ("stayed", stayed)));
     }
 
     public void Draw(int screenWidth, int screenHeight, Party party, PcBoxes pc)

@@ -40,8 +40,8 @@ public class AccessibilityTests : IDisposable
         int flashes = Array.IndexOf(rows, OptionRow.ReduceFlashes), motion = Array.IndexOf(rows, OptionRow.ReduceMotion);
         Assert.Equal(Array.IndexOf(rows, OptionRow.Rumble) + 1, flashes);
         Assert.Equal(flashes + 1, motion);
-        // (plan 13 · V9 put MEDAL NOTICES between Reduce motion and Controls, and V10 the RUN TIMER after it, and part b CAPTIONS and HOLD TO CONFIRM after that)
-        Assert.Equal(motion + 5, Array.IndexOf(rows, OptionRow.Controls));
+        // (plan 13 · V9 put MEDAL NOTICES between Reduce motion and Controls, and V10 the RUN TIMER after it, part b CAPTIONS and HOLD TO CONFIRM after that, and plan 12 · Q26 BOX TOOLS after those)
+        Assert.Equal(motion + 6, Array.IndexOf(rows, OptionRow.Controls));
         Assert.True(motion < Array.IndexOf(rows, OptionRow.Help));
     }
 

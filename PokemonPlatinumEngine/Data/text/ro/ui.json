@@ -4830,5 +4830,61 @@
       "terastallize": "Un Pokémon se Terastalizează",
       "teraStellar": "O Terastalizare Stelară"
     }
+  },
+  "boxTools": {
+    "option": {
+      "label": "Uneltele cutiilor",
+      "value": { "Off": "Oprit", "Rules": "După reguli", "On": "Pornit" },
+      "help": {
+        "Off": "Cutiile PC-ului sunt ca în Platinum: câte un Pokémon mutat pe rând.",
+        "Rules": "Regulile din Platinum păstrează PC-ul așa cum era; regulile moderne adaugă căutarea, ordonarea și mutarea mai multora deodată.",
+        "On": "Meniul unei cutii are CAUTĂ și ORDONEAZĂ, iar SELECTEAZĂ trage un dreptunghi peste cutie, ca să muți sau să eliberezi mai mulți deodată."
+      }
+    },
+    "action": { "select": "SELECTEAZĂ" },
+    "menu": { "search": "CAUTĂ", "sort": "ORDONEAZĂ" },
+    "group": { "Move": "MUTĂ", "Release": "ELIBEREAZĂ", "Cancel": "ANULEAZĂ" },
+    "sort": {
+      "ThisBox": "CUTIA ASTA", "AllBoxes": "TOATE CUTIILE",
+      "Number": "DUPĂ NUMĂR", "Level": "DUPĂ NIVEL", "Name": "DUPĂ NUME", "Type": "DUPĂ TIP", "Recent": "CEI MAI NOI",
+      "Cancel": "ANULEAZĂ",
+      "done": "{box} a fost pusă în ordine.",
+      "doneAll": "Toate cutiile au fost puse în ordine."
+    },
+    "search": {
+      "title": "CAUTĂ ÎN CUTII",
+      "holding": "PĂSTRAȚI  {count}",
+      "go": "CAUTĂ",
+      "any": "Oricare",
+      "holdsSomething": "Ține ceva",
+      "holdsNothing": "Nu ține nimic",
+      "level": "Nv. {level}",
+      "shinyOnly": "Doar strălucitori",
+      "none": "Nimic din cutii nu se potrivește.",
+      "row": {
+        "Species": "Specia", "Type": "Tipul", "Move": "Știe", "Ability": "Abilitatea", "Nature": "Firea",
+        "MinLevel": "Nivelul cel mai mic", "MaxLevel": "Nivelul cel mai mare", "Item": "Obiectul ținut", "Gender": "Genul",
+        "Shiny": "Strălucitor", "Mark": "Semnul"
+      }
+    },
+    "gender": { "Male": "Mascul", "Female": "Femelă", "Genderless": "Necunoscut" },
+    "mark": { "Circle": "Cerc", "Triangle": "Triunghi", "Square": "Pătrat", "Heart": "Inimă", "Star": "Stea", "Diamond": "Romb" },
+    "results": {
+      "title": "GĂSIȚI  {count}",
+      "pickUpAll": "IA-I PE TOȚI  ({count})",
+      "where": "{box}, locul {place}"
+    },
+    "many": {
+      "count": "×{count}",
+      "notTheTeam": "Mai mulți deodată merg într-o cutie, nu în echipă.",
+      "noRoom": "În {box} nu e loc pentru toți cei {count}.",
+      "released": "Eliberați: {count}. Pa-pa!",
+      "releasedSome": "Eliberați: {count}. {stayed} au rămas cu tine.",
+      "releaseQuestion": "Îi eliberezi pe acești {count}?",
+      "releaseBody": "Odată ce se întorc în sălbăticie, nu mai vin înapoi la tine.",
+      "releaseHold": "ELIBEREAZĂ  ({KEY:confirm})",
+      "keep": "PĂSTREAZĂ-I  (ESC)"
+    },
+    "hint": { "stretch": "Întinde" }
   }
 }
