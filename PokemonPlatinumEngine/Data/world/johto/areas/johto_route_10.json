@@ -1,0 +1,96 @@
+{
+  "key": "johto_route_10",
+  "index": 18,
+  "name": "Route 10",
+  "matrix": 0,
+  "kind": "Route",
+  "sign": "Route",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "General",
+  "dayMusic": "GS_R_12_03",
+  "nightMusic": "GS_R_12_03",
+  "encounters": "R10",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Spearow", "level": 16, "night": "Quagsire" },
+    { "species": "Voltorb", "level": 17 },
+    { "species": "Spearow", "level": 16, "night": "Quagsire" },
+    { "species": "Voltorb", "level": 17 },
+    { "species": "Raticate", "level": 16 },
+    { "species": "Raticate", "level": 16 },
+    { "species": "Fearow", "level": 18, "night": "Quagsire" },
+    { "species": "Fearow", "level": 18, "night": "Quagsire" },
+    { "species": "Raticate", "level": 18, "day": "Electabuzz" },
+    { "species": "Electabuzz", "level": 15 },
+    { "species": "Raticate", "level": 18, "day": "Electabuzz" },
+    { "species": "Electabuzz", "level": 15 }
+  ],
+  "landRate": 20,
+  "swarm": [
+    "Spearow",
+    "Spearow"
+  ],
+  "surfSwarm": "Goldeen",
+  "fishSwarm": "Magikarp",
+  "water": [
+    { "species": "Goldeen", "level": 15, "maxLevel": 15 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 10 },
+    { "species": "Seaking", "level": 15, "maxLevel": 15 },
+    { "species": "Seaking", "level": 15, "maxLevel": 15 },
+    { "species": "Seaking", "level": 15, "maxLevel": 15 }
+  ],
+  "waterRate": 15,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 10 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Goldeen", "level": 40, "maxLevel": 40 },
+    { "species": "Goldeen", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 },
+    { "species": "Seaking", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "hoennSounds": [
+    "Whismur",
+    "Linoone"
+  ],
+  "sinnohSounds": [
+    "Buizel",
+    "Bidoof"
+  ],
+  "warps": [
+    { "x": 1419, "z": 163, "to": "johto_rock_tunnel_1f", "toWarp": 1 },
+    { "x": 1423, "z": 184, "to": "route_10_power_plant_repaired", "toWarp": 0 },
+    { "x": 1426, "z": 163, "to": "route_10_pokecenter_1f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "r10_gsleader9", "looks": "gsleader9", "movement": "3", "x": 1430, "z": 183, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_10_LT_SURGE", "script": "R10_002+1" },
+    { "id": "r10_tsure_poke_static_zapdos", "looks": "follower_mon_static_zapdos", "movement": "15", "x": 1419, "z": 184, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_10_ZAPDOS", "script": "R10_003+1" }
+  ],
+  "signs": [
+    { "x": 1418, "z": 183, "type": 2, "script": "std_hiddenitem_r10_carbos", "item": "Carbos", "flag": "FLAG_HIDDEN_ITEM_R10_CARBOS" },
+    { "x": 1421, "z": 185, "type": 1, "script": "R10_005+1" },
+    { "x": 1422, "z": 164, "type": 1, "script": "R10_006+1" }
+  ],
+  "triggers": [
+    { "x": 1423, "z": 184, "width": 1, "depth": 1, "script": "R10_000+1", "variable": "VAR_UNK_4084", "value": "0" }
+  ]
+}

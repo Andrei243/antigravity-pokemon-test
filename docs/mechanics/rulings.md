@@ -6885,3 +6885,40 @@ The user approved L9's default on 2026-10-26 (docs/plans/APPROVAL-levelling-and-
   Route 24, the Underground Path, Silph Co., the upper floors of Celadon's store and condominiums, the Game Corner, the
   Radio Tower and the Expn Card, the Trainer House's battles, the Leaders' rematches and street meetings (Brock in
   Diglett's Cave among them), Suicune's stops, the rest of Kanto's Apricorn trees.
+
+## HeartGold's Kanto, part j (2026-10-31, plan 20 · J15, part j)
+
+- *The slice*: the north-east of Kanto. Route 9 runs east from Cerulean City's east edge, past trees Cut fells, to Route
+  10's northern half with its Pokémon Center (both floors), Rock Tunnel's northern mouth and the Power Plant on the river;
+  Rock Tunnel's two floors, joined by four pairs of ladders, come out at Route 10's southern half, which runs down past a
+  boulder Strength moves to Lavender Town's north edge. With it Kanto has a second way between Cerulean and Lavender
+  besides Saffron City's gates.
+- *Keys and names*: `route_9`, `route_10`, `rock_tunnel_1f` and `rock_tunnel_b1f` meet FireRed's and take Johto's prefix
+  (`HgWorld.Clashes`); `route_10_south`, `route_10_pokecenter_1f` and `_b1f` and `route_10_power_plant_repaired` meet
+  none. The maps are `Route10North_PokemonCenter_1F` and `_B1F` (the name must hold `PokemonCenter` for the room's look,
+  `World.RoomStyleOf`), `Route10_PowerPlant`, `Rock_Tunnel_1F` and `Rock_Tunnel_B1F` (FireRed's are
+  `Route10_PokemonCenter_`, `PowerPlant` and `RockTunnel_`). HeartGold's Route 9 swarm (Sableye) now names
+  `johto_route_9`; it had named `route_9`, which is no area of Johto's.
+- *The Power Plant*: HeartGold has two plans of it, at work (R10R0201, the one Route 10's door names) and broken
+  (R10R0202, the same room and people), and moves between them by script, which the cache doesn't hold; and Route 10's one
+  door can't be switched between two maps (`switches` want two warps on its tile). So the plant at work is the one built,
+  and its people (the manager, two policemen, four engineers) talk of their work in lines of ours. **The story of the
+  stolen part** (the manager's request, the grunt in the Cerulean Gym and on Route 24, the Machine Part in the Gym's pool,
+  TM57 for its return, and the plant broken until then) waits: it needs an item the data hasn't got (`Machine Part`,
+  through `tools/DataImporter/Overrides`) and the broken plan as a second map. HeartGold's trigger on the plant's door
+  (`VAR_UNK_4084`) is given no script, so it does nothing.
+- *Held back*: Lt. Surge before the plant (`FLAG_HIDE_ROUTE_10_LT_SURGE`, a day of his phone's: the Leaders' street
+  meetings) and Zapdos (`FLAG_HIDE_ROUTE_10_ZAPDOS`, which HeartGold shows once the plant is repaired and the Expn Card had).
+- *Rock Tunnel is not dark*: its header asks for Flash (HeartGold's weather 11, as the Dark Cave's), which `World.cs`
+  reads only as Sinnoh's `DarkFlash`, so neither HeartGold cave is dark here. Making them so is one rule of the builder's
+  and moves the Dark Cave's pictures; it is left, and the lines of ours say nothing of the dark.
+- *Models*: the plant (`kn_power`) is a `Factory` with its sign; its generator (`mpwr_ge`) a lab machine and its desks
+  (`table_l03`) lab desks.
+- *Songs*: Routes 9 and 10 and the Center play `kanto/route3`, Rock Tunnel `kanto/mt_moon`, the Power Plant
+  `kanto/pokemon_mansion`, as FireRed's do.
+- *Left*: the Power Plant's story (the Machine Part, the grunts of Cerulean's Gym and Route 24, TM57, the plant broken),
+  Lt. Surge on Route 10 and Zapdos, the dark of HeartGold's Flash caves, the Seafoam Islands' lower floors and Articuno,
+  the Snorlax woken (the Poké Flute's channel and the Expn Card), Pal Park's gate, Oak's gift after Red, the Clefairy's
+  dance, the Underground Path, Silph Co., the upper floors of Celadon's store and condominiums, the Game Corner, the Radio
+  Tower and the Expn Card, the Trainer House's battles, the Leaders' rematches and street meetings, Suicune's stops, the
+  rest of Kanto's Apricorn trees.

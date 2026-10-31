@@ -1,0 +1,51 @@
+{
+  // The Pokémon Center on Route 10 by Rock Tunnel's northern mouth (plan 20 · J15, part j). The counters for the link say
+  // it is closed, as in every Center (decision 06 · 7)
+  "area": "route_10_pokecenter_1f",
+  "bgmTrack": "kanto/route3",
+  "read": {
+    "0": "PC"
+  },
+  "people": {
+    "r10pc0101_pcwoman1": {
+      "name": "Nurse",
+      "script": "Nurse"
+    },
+    "r10pc0101_pcwoman2": {
+      "name": "Receptionist",
+      "dialog": [
+        "Your Trainer Card shows your name, your money and the Pokémon you've seen. Have a look at it from the menu."
+      ]
+    },
+    "r10pc0101_pcwoman2_2": {
+      "name": "Receptionist",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    },
+    "r10pc0101_pcwoman2_3": {
+      "name": "Receptionist",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    },
+    "r10pc0101_gsgentleman": {
+      "name": "Gentleman",
+      "dialog": [
+        "Rock Tunnel winds back and forth between two floors. Keep to the ladders and you'll come out by Lavender Town."
+      ]
+    },
+    "r10pc0101_gswoman3": {
+      "name": "Woman",
+      "dialog": [
+        "The Power Plant down the river keeps the lights on all over Kanto. And the Magnet Train running, too."
+      ]
+    },
+    "r10pc0101_gsassistantm": {
+      "name": "Engineer",
+      "dialog": [
+        "I work at the Power Plant. I only came in here for a rest, so don't tell the manager."
+      ]
+    }
+  }
+}

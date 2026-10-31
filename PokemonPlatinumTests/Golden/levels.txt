@@ -781,10 +781,23 @@ surf 30-35
 old rod 10
 good rod 20
 super rod 40
+=== johto_rock_tunnel_1f
+Rock Tunnel
+grass 8-14
+=== johto_rock_tunnel_b1f
+Rock Tunnel
+grass 10-16
 === johto_route_1
 Route 1
 grass 2-6
 trainers 4, 43-47: johto_ace_trainer_f_quinn 47, johto_ace_trainer_m_french 47, johto_school_kid_m_danny 43, johto_school_kid_m_sherman 43
+=== johto_route_10
+Route 10
+grass 15-18
+surf 10-15
+old rod 10
+good rod 20
+super rod 40
 === johto_route_11
 Route 11
 grass 14-16
@@ -890,6 +903,14 @@ grass 15-19
 Route 8
 grass 15-19
 trainers 7, 38-45: johto_biker_dwayne 41, johto_biker_harris 45, johto_biker_zeke 43, johto_gentleman_milton 45, johto_super_nerd_sam 44, johto_super_nerd_tyrone 40, johto_young_couple_moe_and_lulu 43
+=== johto_route_9
+Route 9
+grass 13-15
+surf 10-15
+old rod 10
+good rod 20
+super rod 40
+trainers 6, 40-45: johto_camper_dean 44, johto_camper_sid 43, johto_hiker_clarke 45, johto_hiker_eoin 42, johto_picnicker_edna 45, johto_picnicker_heidi 43
 === johto_seafoam_islands_1f
 Seafoam Islands
 grass 26-32
@@ -1686,6 +1707,9 @@ trainers 13, 12-27: hoenn_alice 24, hoenn_austina 26, hoenn_carter 25, hoenn_cha
 === route_109_seashore_house
 Route 109
 trainers 3, 11-13: hoenn_dwayne 11, hoenn_johanna 13, hoenn_simon 12
+=== route_10_south
+Route 10
+trainers 2, 43-45: johto_hiker_jim 45, johto_pokefan_m_robert 43
 === route_11
 Route 11
 grass 11-17

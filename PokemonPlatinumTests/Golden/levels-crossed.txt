@@ -309,7 +309,6 @@ johto_bug_catcher_wayne 109 (10) [Ledyba → Coccinova, Paras → Parasect]
 johto_burglar_corey 128 (38) [Koffing → Smoglom, Magmar → Magmortar, Koffing → Smoglom, Koffing → Smoglom]
 johto_camper_barry 135 (48)
 johto_camper_bertrand 123 (30) [Fearow → Lancerow, Primeape → Annihilape, Tauros → Bovarch]
-johto_camper_dean 132 (44) [Golduck → Psyduke, Sandslash → Sandspire]
 johto_camper_mickey 113 (15) [Nidorino → Nidoking]
 johto_camper_mickey_2 113 (15) [Nidorino → Nidoking]
 johto_camper_mickey_3 131 (42) [Graveler → Golem, Graveler → Golem, Golbat → Crobat, Golduck → Psyduke]
@@ -317,7 +316,6 @@ johto_camper_mickey_4 131 (42) [Graveler → Golem, Graveler → Golem, Golbat �
 johto_camper_mickey_5 131 (42) [Graveler → Golem, Graveler → Golem, Golbat → Crobat, Golduck → Psyduke]
 johto_camper_mickey_6 131 (42) [Graveler → Golem, Graveler → Golem, Golbat → Crobat, Golduck → Psyduke]
 johto_camper_mickey_7 127 (36) [Graveler → Golem, Graveler → Golem, Magcargo → Calderon, Golduck → Psyduke]
-johto_camper_sid 131 (43) [Dugtrio → Molemount, Primeape → Annihilape]
 johto_camper_tanner_2 130 (41) [Sudowoodo → Mimicedar, Chinchou → Abyssolux]
 johto_camper_tanner_3 135 (48) [Sudowoodo → Mimicedar, Lanturn → Abyssolux, Skiploom → Jumpluff]
 johto_camper_tanner_4 137 (52) [Sudowoodo → Mimicedar, Lanturn → Abyssolux]
@@ -371,9 +369,6 @@ johto_hall_matron_argenta 106 (5) [Rattata → Ratchisel]
 johto_hiker_anthony_2 125 (33) [Graveler → Golem, Machoke → Machamp]
 johto_hiker_anthony_3 129 (40) [Graveler → Golem, Graveler → Golem, Machoke → Machamp]
 johto_hiker_anthony_4 139 (55) [Graveler → Golem]
-johto_hiker_clarke 133 (45) [Onix → Ironwyrm, Dugtrio → Molemount]
-johto_hiker_eoin 131 (42) [Graveler → Golem, Graveler → Golem, Graveler → Golem]
-johto_hiker_jim 133 (45)
 johto_hiker_kenny_2 127 (37) [Onix → Steelix, Graveler → Golem, Sandslash → Sandspire]
 johto_hiker_kenny_3 133 (46) [Sandslash → Sandspire, Graveler → Golem, Onix → Ironwyrm]
 johto_hiker_kenny_4 138 (54) [Sandslash → Sandspire, Graveler → Golem, Steelix → Ironwyrm]
@@ -447,14 +442,12 @@ johto_passerby_boy_2 106 (5) [Cyndaquil → Typhlosion]
 johto_passerby_boy_3 106 (5) [Totodile → Feraligatr]
 johto_picnicker_cindy 135 (48)
 johto_picnicker_debra 130 (41) [Seaking → Sabrefin]
-johto_picnicker_edna 133 (45) [Nidorina → Nidoqueen]
 johto_picnicker_erin_2 130 (41) [Rapidash → Solarion]
 johto_picnicker_erin_3 135 (48) [Sunflora → Helianthra, Rapidash → Solarion]
 johto_picnicker_erin_4 138 (53) [Cherrim → Sakurabloom, Sunflora → Helianthra, Rapidash → Solarion]
 johto_picnicker_gina_2 124 (32) [Hoppip → Jumpluff, Hoppip → Jumpluff, Ivysaur → Venusaur]
 johto_picnicker_gina_3 132 (44) [Skiploom → Jumpluff, Skiploom → Jumpluff, Ivysaur → Venusaur]
 johto_picnicker_gina_4 139 (55) [Skiploom → Jumpluff]
-johto_picnicker_heidi 131 (43) [Skiploom → Jumpluff, Skiploom → Jumpluff]
 johto_picnicker_liz_2 128 (38) [Weepinbell → Victreebel, Nidorina → Nidoqueen]
 johto_picnicker_liz_3 129 (40) [Weepinbell → Victreebel, Nidorino → Nidoking]
 johto_picnicker_liz_4 141 (60)
@@ -485,7 +478,6 @@ johto_pokefan_m_derek_3 127 (37) [Pichu → Raichu, Teddiursa → Ursaluna, Pika
 johto_pokefan_m_derek_4 134 (47) [Pichu → Raichu, Teddiursa → Ursaluna, Pikachu → Raichu, Ursaring → Ursaluna]
 johto_pokefan_m_jeremy 127 (36) [Meowth → Regalynx, Meowth → Regalynx, Meowth → Regalynx]
 johto_pokefan_m_rex 133 (45) [Phanpy → Siegephant]
-johto_pokefan_m_robert 131 (43) [Quagsire → Mirelord]
 johto_pokefan_marigold 113 (16) [Meowth → Regalynx]
 johto_psychic_m_rodney 130 (41) [Chingling → Chimecho, Hypno → Mesmeryx]
 johto_rival_silver 115 (18) [Gastly → Gengar, Zubat → Crobat, Bayleef → Meganium]
@@ -2099,10 +2091,23 @@ surf 123-126 (own 30-35)
 old rod 109 (own 10)
 good rod 116 (own 20)
 super rod 129 (own 40)
+=== johto_rock_tunnel_1f
+Rock Tunnel, Johto
+grass 108-112 (own 8-14)
+=== johto_rock_tunnel_b1f
+Rock Tunnel, Johto
+grass 109-113 (own 10-16)
 === johto_route_1
 Route 1, Johto
 grass 104-107 (own 2-6)
 trainers 4, 131-134 (own 43-47): johto_ace_trainer_f_quinn 134 (47) [Ivysaur → Venusaur, Starmie → Stellamir], johto_ace_trainer_m_french 134 (47), johto_school_kid_m_danny 131 (43) [Jynx → Aurorelle, Electabuzz → Electivire, Magmar → Magmortar], johto_school_kid_m_sherman 131 (43) [Furret → Ermilong]
+=== johto_route_10
+Route 10, Johto
+grass 113-115 (own 15-18)
+surf 109-113 (own 10-15)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
 === johto_route_11
 Route 11, Johto
 grass 112-113 (own 14-16)
@@ -2208,6 +2213,14 @@ grass 113-115 (own 15-19)
 Route 8, Johto
 grass 113-115 (own 15-19)
 trainers 7, 128-133 (own 38-45): johto_biker_dwayne 130 (41) [Koffing → Smoglom, Koffing → Smoglom, Koffing → Smoglom, Koffing → Smoglom], johto_biker_harris 133 (45) [Flareon → Pyreon], johto_biker_zeke 131 (43) [Koffing → Smoglom, Koffing → Smoglom], johto_gentleman_milton 133 (45) [Growlithe → Kirinine], johto_super_nerd_sam 132 (44) [Grimer → Sludgemire, Muk → Sludgemire], johto_super_nerd_tyrone 129 (40) [Magnemite → Magnezone, Magnemite → Magnezone, Magnemite → Magnezone], johto_young_couple_moe_and_lulu 131 (43) [Lotad → Ludicolo, Seedot → Shiftry]
+=== johto_route_9
+Route 9, Johto
+grass 111-113 (own 13-15)
+surf 109-113 (own 10-15)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+trainers 6, 129-133 (own 40-45): johto_camper_dean 132 (44) [Golduck → Psyduke, Sandslash → Sandspire], johto_camper_sid 131 (43) [Dugtrio → Molemount, Primeape → Annihilape], johto_hiker_clarke 133 (45) [Onix → Ironwyrm, Dugtrio → Molemount], johto_hiker_eoin 131 (42) [Graveler → Golem, Graveler → Golem, Graveler → Golem], johto_picnicker_edna 133 (45) [Nidorina → Nidoqueen], johto_picnicker_heidi 131 (43) [Skiploom → Jumpluff, Skiploom → Jumpluff]
 === johto_seafoam_islands_1f
 Seafoam Islands, Johto
 grass 120-124 (own 26-32)
@@ -2841,6 +2854,9 @@ trainers 13, 141-148 (own 12-27): hoenn_alice 146 (24) [Goldeen → Sabrefin, Wi
 === route_109_seashore_house
 Route 109, Hoenn
 trainers 3, 140-141 (own 11-13): hoenn_dwayne 140 (11) [Wingull → Pelipper, Machop → Machamp, Tentacool → Medusarch], hoenn_johanna 141 (13) [Goldeen → Sabrefin], hoenn_simon 141 (12) [Azurill → Azumarill, Marill → Azumarill]
+=== route_10_south
+Route 10, Johto
+trainers 2, 131-133 (own 43-45): johto_hiker_jim 133 (45), johto_pokefan_m_robert 131 (43) [Quagsire → Mirelord]
 === route_11
 Route 11, Kanto
 grass 68-72 (own 11-17)

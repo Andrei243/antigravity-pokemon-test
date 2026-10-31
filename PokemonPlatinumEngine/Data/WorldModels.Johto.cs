@@ -460,6 +460,11 @@ public static partial class WorldModels
         // ---------------------------------------------------------------- plan 20 · J15, part i: the Cycling Road (cl_)
         Thing("cl_slht", PropType.LampPost, "a lamp on the Cycling Road's deck"),
         Ground("cl_stbg", "a span of the Cycling Road's deck over the sea: its tiles draw the deck"),
+
+        // ---------------------------------------------------------------- plan 20 · J15, part j: Route 10's Power Plant (kn_, mpwr_)
+        Built("kn_power", BuildingKind.Factory, "the Power Plant on Route 10", sign: "POWER PLANT"),
+        Furniture("mpwr_ge", PropType.LabMachine, "the Power Plant's generator"),
+        Furniture("table_l03", PropType.LabDesk, "a desk of the Power Plant's control room"),
     };
 
     private static readonly Dictionary<string, WorldModel> JohtoByName = JohtoTable.ToDictionary(m => m.Name, StringComparer.Ordinal);

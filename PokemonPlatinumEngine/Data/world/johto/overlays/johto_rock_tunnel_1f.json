@@ -1,0 +1,7 @@
+{
+  // Rock Tunnel's first floor as HeartGold has it three years on (plan 20 · J15, part j): from Route 10's northern mouth
+  // to its southern one, its ladders joining the floor below. Its key meets FireRed's, so it takes Johto's prefix
+  // (HgWorld.Clashes)
+  "area": "johto_rock_tunnel_1f",
+  "bgmTrack": "kanto/mt_moon"
+}
