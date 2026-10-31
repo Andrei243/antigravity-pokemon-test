@@ -1,0 +1,26 @@
+{
+  "key": "route_19_route_12_gatehouse",
+  "index": 425,
+  "name": "Route 11",
+  "matrix": 70,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_R_10_11",
+  "nightMusic": "GS_R_10_11",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 1, "z": 7, "to": "johto_route_11", "toWarp": 0 },
+    { "x": 10, "z": 7, "to": "johto_route_12", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "r11r0101_counterm", "looks": "counterm", "movement": "15", "x": 5, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "R11R0101_001+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

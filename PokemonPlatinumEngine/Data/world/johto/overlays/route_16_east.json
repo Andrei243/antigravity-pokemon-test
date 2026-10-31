@@ -1,0 +1,6 @@
+{
+  // Route 16's eastern half as HeartGold has it three years on (plan 20 · J15, part i): from Celadon City's west edge to the
+  // gate house before the Cycling Road, with a house north of the road behind a tree Cut fells
+  "area": "route_16_east",
+  "bgmTrack": "kanto/route3"
+}

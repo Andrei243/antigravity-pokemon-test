@@ -582,6 +582,8 @@
     "gswoman6": "scientist", "gsassistantm": "scientist", "suit": "Gentleman", "gantetsu": "kurt",
     "gsfighter": "blackbelt", "gsbabygirl1": "Lass", "middlewoman1_2": "Lady", "rocketm": "rocket",
     "mount_2": "hiker", "fire": "firebreather", "mania": "poke_maniac", "mystery_2": "psychic",
+    // Plan 20 · J15, part i: the bikers of the Cycling Road
+    "gang": "biker",
     // Plan 20 · J5, part b: Ilex Forest to Ecruteak City (Whitney, Morty, the Kimono Girls and the Sages stand as looks
     // of their own, above)
     "gsleader3": "whitney", "gsleader4": "morty", "dancer": "kimono_girl", "itako": "medium", "minaki": "eusine",

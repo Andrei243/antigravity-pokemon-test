@@ -456,6 +456,10 @@ public static partial class WorldModels
         Door("sk_door2"),
         Ground("sktk_sl", "a flight of steps between Fuchsia City's levels: its tiles draw it"),
         Ground("a13_anemo", "a tall marker the original stands in a row along Route 15's verge: its tiles draw the ground"),
+
+        // ---------------------------------------------------------------- plan 20 · J15, part i: the Cycling Road (cl_)
+        Thing("cl_slht", PropType.LampPost, "a lamp on the Cycling Road's deck"),
+        Ground("cl_stbg", "a span of the Cycling Road's deck over the sea: its tiles draw the deck"),
     };
 
     private static readonly Dictionary<string, WorldModel> JohtoByName = JohtoTable.ToDictionary(m => m.Name, StringComparer.Ordinal);

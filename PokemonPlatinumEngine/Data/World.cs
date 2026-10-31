@@ -252,7 +252,12 @@ public static class WorldMapBuilder
             : room && world.Index.BuildingsAtDoors && matrix.Width == 1 && matrix.Height > 1
                 && Enumerable.Range(0, matrix.Height).Select(cy => world.Chunk(ChunkOf(0, cy))).ToList() is var column && column.All(c => c != null)
                 ? (column.Max(c => RoomExtent(c!).Width), (matrix.Height - 1) * T + RoomExtent(column[^1]!).Height)
-                : (matrix.Width * T, matrix.Height * T);
+                // A DS game's room of several chunks (plan 20 · J15, part i: the Viridian Gym) is as large as what its ways
+                // in and its triggers reach, east and south, as a room of one chunk is, so the camera looks at the hall and
+                // not at the middle of its chunks
+                : room && !world.Index.BuildingsAtDoors && matrix.Width * matrix.Height > 1
+                    ? RoomsReach(world, entry, matrix, ChunkOf)
+                    : (matrix.Width * T, matrix.Height * T);
         var map = new Map(mapWidth, mapHeight)
         {
             Name = entry.Name, DisplayName = world.Index.Region, Trees = entry.Trees, GroundLevel = GroundLevel, Setting = entry.Setting,
@@ -485,6 +490,14 @@ public static class WorldMapBuilder
                 for (int z = 0; z < map.Height; z++)
                     for (int x = 0; x < map.Width; x++)
                         if (!walked[z * map.Width + x] && !map.IsSolid(x, z)) map.SetGroundTile(x, z, beyond, isSolid: true);
+                // A room cut down to what is reached (plan 20 · J15, part i) is walled along the row and the column it
+                // was cut at, whatever its chunks show there: a blocked lawn left there stood past the room's front wall
+                if (map.Width < matrix.Width * T)
+                    for (int z = 0; z < map.Height; z++)
+                        if (!walked[z * map.Width + map.Width - 1]) map.SetGroundTile(map.Width - 1, z, beyond, isSolid: true);
+                if (map.Height < matrix.Height * T)
+                    for (int x = 0; x < map.Width; x++)
+                        if (!walked[(map.Height - 1) * map.Width + x]) map.SetGroundTile(x, map.Height - 1, beyond, isSolid: true);
             }
             else if (reach != null)
             {
@@ -623,6 +636,67 @@ public static class WorldMapBuilder
             foreach (var person in overlay?.Npcs ?? new())
                 ways.Add(new AreaWarp { X = person.X, Z = person.Y });
         return ways;
+    }
+
+    /// <summary>
+    /// How large a DS game's room of several chunks is (plan 20 · J15, part i): one tile past the last tile its ways in
+    /// (its areas' warps, its overlay's exits) and its triggers reach across all its chunks, east and south, for the wall
+    /// there, never more than its chunks. The room is walled beyond what is reached once it is built, as before.
+    /// </summary>
+    private static (int Width, int Height) RoomsReach(World world, WorldMapEntry entry, WorldMatrixFile matrix, Func<int, int, int> chunkOf)
+    {
+        int w = matrix.Width * T, h = matrix.Height * T;
+        var solid = new bool[w * h];
+        Array.Fill(solid, true);
+        int drawnX = -1, drawnZ = -1;
+        var keys = new HashSet<string>();
+        if (entry.Area != null) keys.Add(entry.Area);
+        for (int cy = 0; cy < matrix.Height; cy++)
+            for (int cx = 0; cx < matrix.Width; cx++)
+            {
+                if (matrix.AreaAt(cx, cy) is { } key) keys.Add(key);
+                int id = chunkOf(cx, cy);
+                if (id == WorldMatrixFile.NoChunk || world.Chunk(id) is not { } chunk) continue;
+                for (int z = 0; z < T; z++)
+                    for (int x = 0; x < T; x++)
+                    {
+                        solid[(cy * T + z) * w + cx * T + x] = chunk.SolidAt(x, z);
+                        // A blocked tile with a look of its own (the Mistralton Gym's lawns south of its door) is part of
+                        // the room's picture, though nobody stands on it: the room is not cut short of it
+                        if (chunk.SolidAt(x, z) && chunk.CoverAt(x, z) is not (TerrainCover.Unknown or TerrainCover.Building))
+                        {
+                            drawnX = Math.Max(drawnX, cx * T + x);
+                            drawnZ = Math.Max(drawnZ, cy * T + z);
+                        }
+                    }
+            }
+        var ways = new HashSet<(int X, int Z)>(WaysIntoRoom(world, entry).Select(a => (a.X, a.Z)));
+        var seeds = new HashSet<(int X, int Z)>(ways);
+        foreach (string key in keys)
+        {
+            foreach (var warp in world.Area(key)?.Warps ?? new()) { ways.Add((warp.X, warp.Z)); seeds.Add((warp.X, warp.Z)); }
+            foreach (var t in world.Area(key)?.Triggers ?? new())
+                for (int z = t.Z; z < t.Z + Math.Max(1, t.Depth); z++)
+                    for (int x = t.X; x < t.X + Math.Max(1, t.Width); x++) seeds.Add((x, z));
+        }
+        var reached = new bool[w * h];
+        var open = new Stack<(int X, int Z)>(seeds);
+        int maxX = -1, maxZ = -1;
+        while (open.Count > 0)
+        {
+            var (x, z) = open.Pop();
+            if (x < 0 || z < 0 || x >= w || z >= h || reached[z * w + x]) continue;
+            if (solid[z * w + x] && !ways.Contains((x, z))) continue;
+            reached[z * w + x] = true;
+            maxX = Math.Max(maxX, x);
+            maxZ = Math.Max(maxZ, z);
+            open.Push((x + 1, z)); open.Push((x - 1, z)); open.Push((x, z + 1)); open.Push((x, z - 1));
+        }
+        // (a room nothing reaches keeps the whole of its chunks, as it had). Only the side across which the room is one
+        // chunk is cut: a room is laid in its chunk's corner, and cutting its length too stood the chunks' blocked ground
+        // past its front wall (the Mistralton Gym's lawns, Join Avenue's street)
+        if (maxX < 0) return (w, h);
+        return (Math.Min(w, Math.Max(maxX, drawnX) + 2), Math.Min(h, Math.Max(maxZ, drawnZ) + 2));
     }
 
     public static bool[] RoomReach(WorldChunkFile chunk, IReadOnlyList<AreaWarp> warps)

@@ -1,0 +1,22 @@
+# The gate house on Route 16 as HeartGold has it (plan 20 · J15, part i). docs/scripts.md describes the language; the
+# lines are our own. The Cycling Road lies west of the room. The column of the lane by the west door (the overlay's
+# trigger at x 5) turns back whoever has no Bicycle in the bag and notes that a rider is going onto the road
+# (VAR_JOHTO_CYCLING_ROAD 1, ours); the column east of it (x 6) notes that they have come off it (0). While the variable
+# is 1, Routes 16, 17 and 18 put the player on the Bicycle and keep them on it (johto_route_16.txt, johto_route_17.txt,
+# johto_route_18.txt), as FireRed's Kanto does.
+
+
+script NeedBike
+  if item "Bicycle" goto Through
+  speaker "Guard"
+  say "Hold on! The Cycling Road is for Bicycles only. Come back when you've got one."
+  walk player right 1
+  end
+label Through
+  setvar VAR_JOHTO_CYCLING_ROAD 1
+  end
+
+
+script OffTheRoad
+  setvar VAR_JOHTO_CYCLING_ROAD 0
+  end

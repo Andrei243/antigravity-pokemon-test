@@ -1,0 +1,55 @@
+{
+  "key": "route_16_east",
+  "index": 422,
+  "name": "Route 16",
+  "matrix": 0,
+  "kind": "Route",
+  "sign": "Route",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "General",
+  "dayMusic": "GS_R_14_03",
+  "nightMusic": "GS_R_14_03",
+  "encounters": "R16R0301",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Grimer", "level": 26 },
+    { "species": "Fearow", "level": 27, "night": "Grimer" },
+    { "species": "Grimer", "level": 26 },
+    { "species": "Fearow", "level": 27, "night": "Grimer" },
+    { "species": "Grimer", "level": 28 },
+    { "species": "Grimer", "level": 28 },
+    { "species": "Fearow", "level": 29, "night": "Murkrow" },
+    { "species": "Fearow", "level": 29, "night": "Murkrow" },
+    { "species": "Slugma", "level": 27 },
+    { "species": "Muk", "level": 30 },
+    { "species": "Slugma", "level": 27 },
+    { "species": "Muk", "level": 30 }
+  ],
+  "landRate": 20,
+  "swarm": [
+    "Grimer",
+    "Grimer"
+  ],
+  "hoennSounds": [
+    "Plusle",
+    "Minun"
+  ],
+  "sinnohSounds": [
+    "Shinx",
+    "Shinx"
+  ],
+  "warps": [
+    { "x": 1158, "z": 276, "to": "route_16_gatehouse", "toWarp": 0 },
+    { "x": 1158, "z": 277, "to": "route_16_gatehouse", "toWarp": 0 },
+    { "x": 1153, "z": 258, "to": "johto_route_16_house", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "r16r0301_tree", "looks": "tree", "movement": "0", "x": 1167, "z": 264, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_010", "script": "std_field_cut" }
+  ],
+  "signs": [],
+  "triggers": []
+}

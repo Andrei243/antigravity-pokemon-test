@@ -1,0 +1,26 @@
+{
+  "key": "johto_route_16",
+  "index": 24,
+  "name": "Route 16",
+  "matrix": 0,
+  "kind": "Route",
+  "sign": "Route",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "General",
+  "dayMusic": "GS_R_15_03",
+  "nightMusic": "GS_R_15_03",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 1151, "z": 276, "to": "route_16_gatehouse", "toWarp": 1 },
+    { "x": 1151, "z": 277, "to": "route_16_gatehouse", "toWarp": 1 }
+  ],
+  "objects": [],
+  "signs": [
+    { "x": 1132, "z": 283, "type": 1, "script": "R16_001+1" }
+  ],
+  "triggers": []
+}

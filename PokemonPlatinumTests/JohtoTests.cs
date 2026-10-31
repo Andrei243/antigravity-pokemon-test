@@ -66,6 +66,9 @@ public class JohtoTests
         "johto_route_19", "route_19_fuchsia_gatehouse", "fuchsia", "fuchsia_pokecenter_1f", "fuchsia_pokecenter_b1f",
         "fuchsia_pokemart", "fuchsia_southwest_house", "fuchsia_safari_zone_warden_house", "route_15_fuchsia_gatehouse",
         "johto_route_15", "johto_route_14", "johto_route_13", "johto_route_12", "route_12_fishing_brother_house",
+        // Plan 20 · J15, part i: Route 11 and its gate, Diglett's Cave, Routes 16 to 18 with their gates and Route 16's house
+        "johto_route_11", "route_19_route_12_gatehouse", "diglett_cave", "johto_route_16", "johto_route_16_house", "route_16_east",
+        "route_16_gatehouse", "johto_route_17", "johto_route_18", "route_18_gatehouse",
     };
 
     [Fact]
@@ -846,12 +849,11 @@ public class JohtoTests
         Assert.Equal("pewter", HgWorld.KeyOf("MAP_PEWTER"));
         Assert.Equal("viridian", HgWorld.KeyOf("MAP_VIRIDIAN"));
         Assert.Equal("mount_moon", HgWorld.KeyOf("MAP_MOUNT_MOON"));
-        // What waits stays shut: the Clefairy's night on the square, the Trainer House's hall and Diglett's Cave (Viridian's
-        // gate to Route 1 opens in part g, its Gym's door with Blue home in part h)
+        // What waits stays shut: the Clefairy's night on the square and the Trainer House's hall (Viridian's gate to Route 1
+        // opens in part g, its Gym's door with Blue home in part h, Diglett's Cave in part i)
         Assert.DoesNotContain(walked.Keys, m => m.Name.Contains("Clefairy", StringComparison.Ordinal));
         var east = Johto.Area("route_2_east")!;
-        Assert.Empty(Overworld.WarpsAt(east.Warps[4].X, east.Warps[4].Z));
-        Assert.DoesNotContain(walked.Keys, m => m.Name.StartsWith("Diglett", StringComparison.Ordinal));
+        Assert.Equal("Diglett_Cave", Assert.Single(Overworld.WarpsAt(east.Warps[4].X, east.Warps[4].Z)).TargetMap);
         // Brock stands at the head of his Gym, reached across its floor
         var gym = walked.Single(kv => kv.Key.Name == "Pewter_Gym");
         var brock = gym.Key.Everyone.Single(n => n.Key == "t03gym0101_gsleader14");
@@ -927,13 +929,11 @@ public class JohtoTests
         }
         foreach (string key in new[] { "fuchsia", "fuchsia_gym", "route_19_fuchsia_gatehouse", "viridian_gym" })
             Assert.Equal(key, HgWorld.KeyOf("MAP_" + key.ToUpperInvariant()));
-        // What waits stays shut: Pal Park's gate where the Safari Zone stood, Route 18's gate west of Fuchsia, and the gate
-        // to Route 11 behind Route 12's sleeping Snorlax
+        // What waits stays shut: Pal Park's gate where the Safari Zone stood (Route 18's gate west of Fuchsia and the gate to
+        // Route 11 behind Route 12's sleeping Snorlax open in part i)
         var fuchsia = Johto.Area("fuchsia")!;
         Assert.Empty(Overworld.WarpsAt(fuchsia.Warps[5].X, fuchsia.Warps[5].Z));
-        var route12 = Johto.Area("johto_route_12")!;
-        Assert.Empty(Overworld.WarpsAt(route12.Warps[0].X, route12.Warps[0].Z));
-        Assert.DoesNotContain(walked.Keys, m => m.Name.Contains("PalPark", StringComparison.Ordinal) || m.Name.StartsWith("Route18", StringComparison.Ordinal));
+        Assert.DoesNotContain(walked.Keys, m => m.Name.Contains("PalPark", StringComparison.Ordinal));
         // The Viridian Gym's door waits for Blue's flag
         var viridian = Johto.Area("viridian")!;
         var door = Assert.Single(Overworld.WarpsAt(viridian.Warps[0].X, viridian.Warps[0].Z));
@@ -949,6 +949,51 @@ public class JohtoTests
         Assert.Contains(hall.Value, t => Math.Abs(t.X - blue.GridX) + Math.Abs(t.Y - blue.GridY) == 1);
         Assert.NotNull(TrainerDatabase.Get("johto_leader_blue_blue", RegionDatabase.Johto));
         Assert.Equal(InteriorStyle.PokemonCenter, MapNamed("Fuchsia_PokemonCenter_1F").Interior);
+    }
+
+    [Fact]
+    public void Route11DiglettsCaveAndTheCyclingRoadAreWalkedToAndTheRoadIsForBicyclesOnly()
+    {
+        // Plan 20 · J15, part i: Route 11 east of Vermilion City with its gate to Route 12, Diglett's Cave under the hills to
+        // Route 2, and Routes 16 to 18 from Celadon City down the Cycling Road to Fuchsia City
+        var walked = Walked.Value;
+        var outside = walked.Single(kv => kv.Key.Name == "Johto").Value;
+        foreach (string key in new[] { "johto_route_11", "route_16_east", "johto_route_16", "johto_route_17", "johto_route_18" })
+            Assert.True(outside.Any(t => Overworld.AreaAt(t.X, t.Y)?.Key == key), $"{key} can't be walked to from the start");
+        foreach (string name in new[] { "Route11_Route12Gate", "Diglett_Cave", "Route16_CyclingGate", "Route16_EastHouse", "Route18_CyclingGate" })
+        {
+            Assert.True(walked.Keys.Any(m => m.Name == name), $"nobody walks into {name}");
+            Assert.Equal(RegionDatabase.Johto, RegionDatabase.RegionOfMap(name)!.Id);
+        }
+        // The routes' keys and the house's meet FireRed's, so they take Johto's prefix; the cave's and the gates' don't
+        foreach (string key in new[] { "route_11", "route_16", "route_16_house", "route_17", "route_18" })
+        {
+            Assert.True(HgWorld.Clashes(key));
+            Assert.Equal("johto_" + key, HgWorld.KeyOf("MAP_" + key.ToUpperInvariant()));
+        }
+        foreach (string key in new[] { "diglett_cave", "route_16_gatehouse", "route_18_gatehouse", "route_19_route_12_gatehouse" })
+            Assert.Equal(key, HgWorld.KeyOf("MAP_" + key.ToUpperInvariant()));
+        // Route 12's Snorlax is the one shown: Route 11's, before the cave's mouth, is held back
+        Assert.Contains(Overworld.Everyone, n => n.Key == "r12_kabigon");
+        Assert.DoesNotContain(Overworld.Everyone, n => n.Key == "r11_kabigon");
+        // Both gates turn back whoever has no Bicycle at their west column, and note a rider going onto the road
+        foreach (string name in new[] { "Route16_CyclingGate", "Route18_CyclingGate" })
+        {
+            var gate = MapNamed(name);
+            Assert.Contains(gate.Triggers, t => t.Script == "NeedBike" && t.X == 5);
+            Assert.Contains(gate.Triggers, t => t.Script == "OffTheRoad" && t.X == 6);
+        }
+    }
+
+    [Fact]
+    public void ADsRoomOfSeveralChunksIsAsLargeAsWhatItsWaysInReach()
+    {
+        // Plan 20 · J15, part i: the Viridian Gym's matrix is two chunks tall, and its hall nine tiles wide at the chunks'
+        // west edge: the room is cut to what its door reaches, so the camera looks at the hall and not at the chunks' middle
+        var gym = MapNamed("Viridian_Gym");
+        Assert.True(gym.Width < Map.ChunkTiles, $"the Viridian Gym is {gym.Width} wide");
+        Assert.True(gym.Height > Map.ChunkTiles, $"the Viridian Gym is {gym.Height} long");
+        Assert.True(MapNamed("Celadon_Gym").Width < Map.ChunkTiles);
     }
 
     [Fact]

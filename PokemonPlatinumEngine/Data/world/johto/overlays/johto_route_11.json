@@ -1,0 +1,50 @@
+{
+  // Route 11 as HeartGold has it three years on (plan 20 · J15, part i): the road east of Vermilion City to the gate house
+  // before Route 12, with Diglett's Cave's mouth at its west end. HeartGold has a Snorlax for Route 11 (before the cave's
+  // mouth) and one for Route 12 (before the gate house), each behind a flag of its own; this game shows Route 12's, as
+  // part h did, so Route 11's and the three objects that only take up its tiles are held back and the cave is open. Its
+  // key meets FireRed's, so it takes Johto's prefix (HgWorld.Clashes). Its trainers battle by their own records (Johto's
+  // trainers.json)
+  "area": "johto_route_11",
+  "bgmTrack": "kanto/route11",
+  "heldBack": [
+    "r11_kabigon",
+    "r11_gsbabyboy1",
+    "r11_gsbabyboy1_2",
+    "r11_gsbabyboy1_3"
+  ],
+  "people": {
+    "r11_mystery_2": {
+      "name": "Fidel",
+      "trainer": {
+        "dialogueBefore": "Psychic Fidel: I saw this battle in a dream last night. Shall we see how it ends?",
+        "dialogueAfter": "Psychic Fidel: My dream ended differently."
+      }
+    },
+    "r11_mystery_2_2": {
+      "name": "Herman",
+      "trainer": {
+        "dialogueBefore": "Psychic Herman: I can read your next move before you make it. Go on, try me!",
+        "dialogueAfter": "Psychic Herman: I read it. I just couldn't stop it."
+      }
+    },
+    "r11_gsboy2": {
+      "name": "Owen",
+      "trainer": {
+        "dialogueBefore": "Youngster Owen: My dad works at the harbour. I trained my Pokémon on the docks!",
+        "dialogueAfter": "Youngster Owen: I'll go back to the docks and train some more."
+      }
+    },
+    "r11_gsboy2_2": {
+      "name": "Jason",
+      "trainer": {
+        "dialogueBefore": "Youngster Jason: I run up and down this road every day. Bet you can't keep up!",
+        "dialogueAfter": "Youngster Jason: You kept up, all right."
+      }
+    }
+  },
+  "signs": {
+    "R11_003+1": "Diglett's Cave\nA tunnel dug by Diglett, through to Route 2.",
+    "R11_002+1": "Route 11\nVermilion City - Route 12"
+  }
+}

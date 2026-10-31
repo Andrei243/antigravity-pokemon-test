@@ -1,0 +1,66 @@
+{
+  "key": "diglett_cave",
+  "index": 106,
+  "name": "Digletts Cave",
+  "matrix": 2,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave2",
+  "dayMusic": "GS_D_IWAYAMA",
+  "nightMusic": "GS_D_IWAYAMA",
+  "encounters": "D01R0101",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Diglett", "level": 15 },
+    { "species": "Diglett", "level": 17 },
+    { "species": "Diglett", "level": 15 },
+    { "species": "Diglett", "level": 17 },
+    { "species": "Diglett", "level": 19 },
+    { "species": "Diglett", "level": 19 },
+    { "species": "Diglett", "level": 13 },
+    { "species": "Diglett", "level": 13 },
+    { "species": "Dugtrio", "level": 19 },
+    { "species": "Dugtrio", "level": 24 },
+    { "species": "Dugtrio", "level": 19 },
+    { "species": "Dugtrio", "level": 29 }
+  ],
+  "landRate": 10,
+  "swarm": [
+    "Diglett",
+    "Diglett"
+  ],
+  "hoennSounds": [
+    "Absol",
+    "Makuhita"
+  ],
+  "sinnohSounds": [
+    "Bronzor",
+    "Chingling"
+  ],
+  "warps": [
+    { "x": 4, "z": 6, "to": "johto_route_11", "toWarp": 2 },
+    { "x": 4, "z": 4, "to": "diglett_cave", "toWarp": 2 },
+    { "x": 34, "z": 86, "to": "diglett_cave", "toWarp": 1 },
+    { "x": 34, "z": 85, "to": "diglett_cave", "toWarp": 1 },
+    { "x": 10, "z": 38, "to": "diglett_cave", "toWarp": 6 },
+    { "x": 10, "z": 37, "to": "diglett_cave", "toWarp": 6 },
+    { "x": 43, "z": 6, "to": "diglett_cave", "toWarp": 4 },
+    { "x": 37, "z": 10, "to": "route_2_east", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "d01r0101_gsmiddleman1", "looks": "gsmiddleman1", "movement": "0", "x": 3, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "D01R0101_002+1" },
+    { "id": "d01r0101_gsleader14", "looks": "gsleader14", "movement": "3", "x": 36, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_262", "script": "D01R0101_001+1" },
+    { "id": "d01r0101_monstarball", "looks": "monstarball", "movement": "0", "x": 10, "z": 58, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D01R0101_PP_MAX", "item": "PP Max", "script": "std_itemball_d01r0101_pp_max" },
+    { "id": "d01r0101_monstarball_2", "looks": "monstarball", "movement": "0", "x": 23, "z": 75, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D01R0101_ROCK_INCENSE", "item": "Rock Incense", "script": "std_itemball_d01r0101_rock_incense" }
+  ],
+  "signs": [
+    { "x": 28, "z": 60, "type": 2, "script": "std_hiddenitem_d01r0101_max_revive", "item": "Max Revive", "flag": "FLAG_HIDDEN_ITEM_D01R0101_MAX_REVIVE" },
+    { "x": 3, "z": 44, "type": 2, "script": "std_hiddenitem_d01r0101_calcium", "item": "Calcium", "flag": "FLAG_HIDDEN_ITEM_D01R0101_CALCIUM" }
+  ],
+  "triggers": []
+}

@@ -1,0 +1,19 @@
+{
+  // Diglett's Cave as HeartGold has it three years on (plan 20 · J15, part i): a long tunnel from Route 11's west end, by
+  // Vermilion City, to Route 2's northern half, by Pewter City, its ladders joining its three levels. Brock, whom
+  // HeartGold meets here on a day of his phone's (FLAG_UNK_262), waits for the Leaders' street meetings, so he is held back
+  "area": "diglett_cave",
+  "bgmTrack": "kanto/viridian_forest",
+  "heldBack": [
+    "d01r0101_gsleader14"
+  ],
+  "people": {
+    "d01r0101_gsmiddleman1": {
+      "name": "Man",
+      "still": true,
+      "dialog": [
+        "A whole colony of Diglett dug this tunnel. Walk through and you'll come out near Pewter City, of all places."
+      ]
+    }
+  }
+}

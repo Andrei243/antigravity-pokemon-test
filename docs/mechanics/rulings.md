@@ -6831,8 +6831,57 @@ The user approved L9's default on 2026-10-26 (docs/plans/APPROVAL-levelling-and-
   (`World.cs` sizes only a single chunk's room by its reach), so the camera centres on the chunk and the nine-tile hall
   sits at the picture's left edge with the chunk's wall over the rest (the harness's `jkh24`, `jkh25`). Other DS rooms
   of several chunks (five of Johto's, several of Unova's) share it; the fix is the builder's and moves their pictures.
+  Fixed in part i (`World.RoomsReach`; "HeartGold's Kanto, part i").
 - *Left*: the Seafoam Islands' lower floors and Articuno, Route 11, Diglett's Cave and the Snorlax woken, Routes 16 to 18
   and the Cycling Road, Pal Park's gate, Oak's gift after Red, the Clefairy's dance, the Power Plant with the grunts of
   Cerulean's Gym and Route 24, the Underground Path, Silph Co., the upper floors of Celadon's store and condominiums, the
   Game Corner, the Radio Tower and the Expn Card, the Trainer House's battles, the Leaders' rematches and street
   meetings, Suicune's stops, the rest of Kanto's Apricorn trees.
+
+## HeartGold's Kanto, part i (2026-10-31, plan 20 · J15, part i)
+
+- *The slice*: the ways round Kanto's south. Route 11 runs east from Vermilion City (whose east edge was open) to the gate
+  house before Route 12 (Route 12's warps 0 and 1, locked in part h, open); Diglett's Cave tunnels from Route 11's west
+  end to Route 2's northern half (Route 2's warp 4, locked in part f, opens), its ladders joining its levels. Route 16
+  runs west from Celadon City's west edge (with its house, behind a tree Cut fells) to the gate house before the Cycling
+  Road, Route 17 runs south over the sea, and Route 18 runs east through its own gate house to Fuchsia City's west edge.
+- *Keys and names*: `route_11`, `route_16`, `route_16_house`, `route_17` and `route_18` meet FireRed's and take Johto's
+  prefix (`HgWorld.Clashes`); `diglett_cave`, `route_16_east`, the gate houses (`route_16_gatehouse`,
+  `route_18_gatehouse`, and HeartGold's `route_19_route_12_gatehouse`, which is the gate between Routes 11 and 12) meet
+  none. The maps are `Route11_Route12Gate`, `Diglett_Cave`, `Route16_CyclingGate`, `Route16_EastHouse` and
+  `Route18_CyclingGate` (FireRed's are `Route11_EastEntrance_…`, `DiglettsCave_…`, `Route16_NorthEntrance_…`,
+  `Route16_House` and `Route18_EastEntrance_…`).
+- *Snorlax*: HeartGold has an object of a Snorlax on Route 11, before Diglett's Cave's mouth, and one on Route 12, before
+  the gate house, each with three objects that only take up its tiles and a flag of its own; which shows is its scripts'
+  business, and they are not in the decompilation's cache this game reads. Part h showed Route 12's; this part keeps that
+  and holds Route 11's four objects back, so the cave's mouth is open. Route 12's Snorlax sleeps in a clearing five
+  tiles deep outside the gate's east door, with room to walk round it, so nothing on these roads is shut by it: it waits
+  for the Poké Flute's channel to be woken, and blocks nothing until then. Ours.
+- *The Cycling Road*: HeartGold's two triggers across each gate's middle wait on variables of its own
+  (`VAR_UNK_4129`, `VAR_UNK_412A`) whose scripts aren't in the cache. Here each gate has triggers of ours on the same two
+  columns (`route_16_gatehouse.txt`, `route_18_gatehouse.txt`): the west column turns back whoever has no Bicycle in the
+  bag and notes that a rider goes onto the road (`VAR_JOHTO_CYCLING_ROAD` 1, ours), the east column that they have come
+  off it (0). While it is 1, arriving on Route 16's western half, Route 17 or Route 18 puts the player on the Bicycle and
+  keeps them on it until the next door (`bicycle on`, `FLAG_ON_CYCLING_ROAD`), as FireRed's Kanto does (plan 19 · K6).
+- *Held back*: Brock in Diglett's Cave (HeartGold's `FLAG_UNK_262`, a day of his phone's: the Leaders' street meetings).
+- *Apricorns*: Route 11's tree is a row of `apricorns.json` (Green: ours).
+- *Models and looks*: the Cycling Road's lamps (`cl_slht`) are lamp posts and its deck's spans (`cl_stbg`) the ground its tiles draw;
+  HeartGold's bikers' look (`gang`) stands as the `biker` look of `characters.json` (they had stood as the player's).
+- *Songs*: Route 11 and its gate play `kanto/route11`, Routes 16 to 18, their gates and Route 16's house `kanto/route3`,
+  Diglett's Cave `kanto/viridian_forest`, as FireRed's do.
+- *A DS room of several chunks* (part h's "Known"): `World.RoomsReach` sizes it by what its ways in and its triggers
+  reach across all its chunks, east and south, as a room of one chunk is, never short of a blocked tile with a look of
+  its own (the Mistralton Gym's lawns south of its door: cutting there stood them past the room's front wall), and walls
+  the row and column it was cut at. Shot before and after (24 rooms, a scenario of the harness): the Viridian and Celadon
+  Gyms, the Pokéathlon Dome's lobby, the S.S. Aqua's first floor, Azalea's, Ecruteak's, Blackthorn's, Mistralton's,
+  Humilau's and Opelucid's Gyms, Join Avenue, the Strange House's cellar, the Rocket Hideout's floors, Goldenrod's
+  Underground and the Unova League's rooms are now framed on the room (the dark slab of the chunks' unreached corner
+  gone or narrowed); the Rocket Hideout's second basement and the League's descent are the same picture. *Known*: where a
+  chunk's last row is floor nobody reaches (Humilau's, Opelucid's and Join Avenue's south edge, the Unova League hall's),
+  a strip of it shows below the room's front wall, as it did before at the picture's foot; now that the room is centred
+  it is nearer the middle of the shot.
+- *Left*: the Seafoam Islands' lower floors and Articuno, the Snorlax woken (the Poké Flute's channel and the Expn Card),
+  Pal Park's gate, Oak's gift after Red, the Clefairy's dance, the Power Plant with the grunts of Cerulean's Gym and
+  Route 24, the Underground Path, Silph Co., the upper floors of Celadon's store and condominiums, the Game Corner, the
+  Radio Tower and the Expn Card, the Trainer House's battles, the Leaders' rematches and street meetings (Brock in
+  Diglett's Cave among them), Suicune's stops, the rest of Kanto's Apricorn trees.

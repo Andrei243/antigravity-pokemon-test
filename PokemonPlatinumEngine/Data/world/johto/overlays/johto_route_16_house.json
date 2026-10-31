@@ -1,0 +1,20 @@
+{
+  // The house on Route 16 (plan 20 · J15, part i). Its key meets FireRed's, so it takes Johto's prefix (HgWorld.Clashes)
+  "area": "johto_route_16_house",
+  "bgmTrack": "kanto/route3",
+  "people": {
+    "r16r0101_gsman1": {
+      "name": "Man",
+      "dialog": [
+        "My father and I moved out here for the quiet. Then they built the Cycling Road right past our door."
+      ]
+    },
+    "r16r0101_gsoldman1": {
+      "name": "Old Man",
+      "still": true,
+      "dialog": [
+        "On a clear day the bikers go flying past the window. I count them instead of sheep."
+      ]
+    }
+  }
+}

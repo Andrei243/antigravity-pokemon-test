@@ -1,0 +1,126 @@
+{
+  "people": {
+    "r11_mystery_2": {
+      "name": {
+        "en": [
+          "Fidel"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Fidel: I saw this battle in a dream last night. Shall we see how it ends?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Fidel: My dream ended differently."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r11_mystery_2_2": {
+      "name": {
+        "en": [
+          "Herman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Herman: I can read your next move before you make it. Go on, try me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Herman: I read it. I just couldn't stop it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r11_gsboy2": {
+      "name": {
+        "en": [
+          "Owen"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Owen: My dad works at the harbour. I trained my Pokémon on the docks!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Owen: I'll go back to the docks and train some more."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r11_gsboy2_2": {
+      "name": {
+        "en": [
+          "Jason"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Jason: I run up and down this road every day. Bet you can't keep up!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Jason: You kept up, all right."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "R11_003+1": {
+      "en": [
+        "Diglett's Cave\nA tunnel dug by Diglett, through to Route 2."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "R11_002+1": {
+      "en": [
+        "Route 11\nVermilion City - Route 12"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

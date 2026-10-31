@@ -1,0 +1,34 @@
+{
+  // Route 18 as HeartGold has it three years on (plan 20 · J15, part i): the foot of the Cycling Road west of its gate
+  // house, and the road on east of it to Fuchsia City's west edge. Whoever came through the gate onto the road rides west
+  // of it (johto_route_18.txt). Its key meets FireRed's, so it takes Johto's prefix (HgWorld.Clashes). Its trainers battle
+  // by their own records (Johto's trainers.json)
+  "area": "johto_route_18",
+  "bgmTrack": "kanto/route3",
+  "people": {
+    "r18_gsman2": {
+      "name": "Bob",
+      "trainer": {
+        "dialogueBefore": "Bird Keeper Bob: My birds ride the sea breeze off the Cycling Road. Watch them swoop!",
+        "dialogueAfter": "Bird Keeper Bob: The breeze dropped."
+      }
+    },
+    "r18_gsman2_2": {
+      "name": "Boris",
+      "trainer": {
+        "dialogueBefore": "Bird Keeper Boris: I come here to watch the bikers fly by. You'll make a change!",
+        "dialogueAfter": "Bird Keeper Boris: You flew past me, too."
+      }
+    },
+    "r18_gang": {
+      "name": "Charles",
+      "trainer": {
+        "dialogueBefore": "Biker Charles: You made it all the way down? Then you've earned a battle with me!",
+        "dialogueAfter": "Biker Charles: You earned the win, too."
+      }
+    }
+  },
+  "signs": {
+    "R18_001+1": "Route 18\nCycling Road - Fuchsia City"
+  }
+}

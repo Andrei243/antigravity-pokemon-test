@@ -1,0 +1,41 @@
+{
+  "people": {
+    "r16r0101_gsman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My father and I moved out here for the quiet. Then they built the Cycling Road right past our door."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r16r0101_gsoldman1": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "On a clear day the bikers go flying past the window. I count them instead of sheep."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,23 @@
+{
+  "people": {
+    "r11r0101_counterm": {
+      "name": {
+        "en": [
+          "Guard"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "There's a Snorlax fast asleep just outside the east door. Nobody can wake it, so folk heading for Lavender tiptoe round."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

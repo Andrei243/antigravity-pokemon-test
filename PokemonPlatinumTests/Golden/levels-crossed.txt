@@ -263,31 +263,17 @@ johto_beauty_mickey_6 113 (15) [Sentret → Ermilong]
 johto_beauty_mickey_7 113 (15) [Sentret → Ermilong]
 johto_beauty_mickey_8 113 (15) [Sentret → Ermilong]
 johto_beauty_mickey_9 113 (15) [Sentret → Ermilong]
-johto_biker_aiden 133 (45) [Tentacruel → Medusarch]
 johto_biker_aiden_2 136 (50) [Hypno → Mesmeryx, Tentacruel → Medusarch]
 johto_biker_aiden_3 139 (55) [Hypno → Mesmeryx, Tentacruel → Medusarch]
 johto_biker_aiden_4 140 (58) [Tentacruel → Medusarch, Hypno → Mesmeryx, Tentacruel → Medusarch]
-johto_biker_charles 131 (42) [Koffing → Smoglom, Charmeleon → Charizard, Weezing → Smoglom]
-johto_biker_dale 134 (47) [Gulpin → Swalot]
-johto_biker_dan 129 (39) [Gulpin → Swalot, Weezing → Smoglom, Weezing → Smoglom]
-johto_biker_ernest 133 (45) [Teddiursa → Ursaluna, Marill → Azumarill]
 johto_biker_ernest_2 134 (47) [Teddiursa → Ursaluna]
 johto_biker_ernest_3 135 (49) [Teddiursa → Ursaluna]
 johto_biker_ernest_4 140 (58) [Ursaring → Ursaluna]
-johto_biker_glenn 131 (43) [Koffing → Smoglom, Magmar → Magmortar, Weezing → Smoglom]
-johto_biker_jacob 131 (43) [Magmar → Magmortar, Tentacruel → Medusarch]
-johto_biker_joel 131 (43) [Magmar → Magmortar, Magmar → Magmortar]
-johto_biker_markey 134 (47) [Skorupi → Dreadpion]
 johto_biker_mickey 116 (20) [Koffing → Smoglom, Koffing → Smoglom, Koffing → Smoglom]
 johto_biker_mickey_2 116 (20) [Koffing → Smoglom, Koffing → Smoglom, Koffing → Smoglom]
-johto_biker_reese 133 (45) [Weezing → Smoglom]
 johto_biker_reese_2 135 (48) [Arbok → Najarok, Weezing → Smoglom]
 johto_biker_reese_3 136 (50) [Arbok → Najarok, Weezing → Smoglom]
 johto_biker_reese_4 139 (56) [Arbok → Najarok, Weezing → Smoglom]
-johto_biker_teddy 133 (46)
-johto_biker_theron 133 (45) [Croagunk → Venomsensei]
-johto_bird_keeper_gs_bob 135 (48) [Noctowl → Noctaugur]
-johto_bird_keeper_gs_boris 130 (41) [Doduo → Tripluma, Doduo → Tripluma, Dodrio → Tripluma]
 johto_bird_keeper_gs_jose 132 (44) [Farfetch'd → Porrigard]
 johto_bird_keeper_gs_jose_3 133 (45) [Farfetch'd → Porrigard, Farfetch'd → Porrigard]
 johto_bird_keeper_gs_jose_4 138 (53) [Farfetch'd → Porrigard, Farfetch'd → Porrigard, Farfetch'd → Porrigard]
@@ -501,8 +487,6 @@ johto_pokefan_m_jeremy 127 (36) [Meowth → Regalynx, Meowth → Regalynx, Meowt
 johto_pokefan_m_rex 133 (45) [Phanpy → Siegephant]
 johto_pokefan_m_robert 131 (43) [Quagsire → Mirelord]
 johto_pokefan_marigold 113 (16) [Meowth → Regalynx]
-johto_psychic_m_fidel 131 (43) [Xatu → Totemsight]
-johto_psychic_m_herman 129 (39) [Exeggcute → Palmagus, Exeggcute → Palmagus, Exeggutor → Palmagus]
 johto_psychic_m_rodney 130 (41) [Chingling → Chimecho, Hypno → Mesmeryx]
 johto_rival_silver 115 (18) [Gastly → Gengar, Zubat → Crobat, Bayleef → Meganium]
 johto_rival_silver_10 115 (18) [Gastly → Gengar, Zubat → Crobat, Croconaw → Feraligatr]
@@ -620,12 +604,10 @@ johto_young_couple_tim_and_sue_4 139 (56) [Golduck → Psyduke]
 johto_youngster_ian_2 125 (33) [Mankey → Annihilape, Dugtrio → Molemount]
 johto_youngster_ian_3 129 (40) [Primeape → Annihilape, Dugtrio → Molemount]
 johto_youngster_ian_4 140 (58) [Primeape → Annihilape, Dugtrio → Molemount]
-johto_youngster_jason 131 (42) [Sandslash → Sandspire]
 johto_youngster_joey_2 125 (34) [Raticate → Ratchisel]
 johto_youngster_joey_3 129 (40) [Raticate → Ratchisel]
 johto_youngster_joey_4 138 (54) [Raticate → Ratchisel]
 johto_youngster_mickey 127 (37) [Raticate → Ratchisel]
-johto_youngster_owen 132 (44) [Growlithe → Kirinine]
 === region Hoenn
 levels 2 → 136, 58 → 162, 78 → 183
 caps 142 144 146 149 149 150 155 156 162 (own 15 19 24 29 31 33 42 46 58)
@@ -1803,6 +1785,9 @@ super rod 144-156 (own 20-45)
 === dewford_town_gym
 Dewford Town, Hoenn
 trainers 6, 141 (own 13): hoenn_brenden 141 (13) [Machop → Machamp], hoenn_cristian 141 (13) [Makuhita → Hariyama], hoenn_jocelyn 141 (13) [Meditite → Medicham], hoenn_laura 141 (13) [Meditite → Medicham], hoenn_lilith 141 (13) [Meditite → Medicham], hoenn_takao 141 (13) [Machop → Machamp]
+=== diglett_cave
+Digletts Cave, Johto
+grass 111-122 (own 13-29)
 === digletts_cave_b1f
 Diglett's Cave, Kanto
 grass 71-82 (own 15-31)
@@ -2118,6 +2103,10 @@ super rod 129 (own 40)
 Route 1, Johto
 grass 104-107 (own 2-6)
 trainers 4, 131-134 (own 43-47): johto_ace_trainer_f_quinn 134 (47) [Ivysaur → Venusaur, Starmie → Stellamir], johto_ace_trainer_m_french 134 (47), johto_school_kid_m_danny 131 (43) [Jynx → Aurorelle, Electabuzz → Electivire, Magmar → Magmortar], johto_school_kid_m_sherman 131 (43) [Furret → Ermilong]
+=== johto_route_11
+Route 11, Johto
+grass 112-113 (own 14-16)
+trainers 4, 129-132 (own 39-44): johto_psychic_m_fidel 131 (43) [Xatu → Totemsight], johto_psychic_m_herman 129 (39) [Exeggcute → Palmagus, Exeggcute → Palmagus, Exeggutor → Palmagus], johto_youngster_jason 131 (42) [Sandslash → Sandspire], johto_youngster_owen 132 (44) [Growlithe → Kirinine]
 === johto_route_12
 Route 12, Johto
 surf 119 (own 25)
@@ -2141,6 +2130,14 @@ trainers 8, 127-132 (own 37-44): johto_bird_keeper_gs_josh 127 (37) [Fearow → 
 Route 15, Johto
 grass 117-119 (own 22-25)
 trainers 9, 123-133 (own 31-45): johto_pokefan_eleanor 131 (43), johto_pokefan_m_boone 131 (43), johto_school_kid_m_billy 129 (39) [Parasect → Cordyhusk], johto_school_kid_m_johnny 131 (42) [Bellsprout → Victreebel, Weepinbell → Victreebel], johto_school_kid_m_kipp 129 (40) [Voltorb → Dynamorb, Magnemite → Magnezone, Voltorb → Dynamorb, Magneton → Magnezone], johto_school_kid_m_tommy 131 (43) [Xatu → Totemsight], johto_teacher_colette 133 (45) [Clefairy → Clefable], johto_teacher_hillary 130 (41) [Sunkern → Helianthra, Aipom → Quadripom], johto_twins_kay_and_tia 130 (41) [Quagsire → Mirelord, Quagsire → Mirelord]
+=== johto_route_17
+Route 17, Johto
+grass 121-124 (own 27-32)
+trainers 11, 127-134 (own 37-47): johto_biker_aiden 133 (45) [Tentacruel → Medusarch], johto_biker_dale 134 (47) [Gulpin → Swalot], johto_biker_dan 129 (39) [Gulpin → Swalot, Weezing → Smoglom, Weezing → Smoglom], johto_biker_ernest 133 (45) [Teddiursa → Ursaluna, Marill → Azumarill], johto_biker_glenn 131 (43) [Koffing → Smoglom, Magmar → Magmortar, Weezing → Smoglom], johto_biker_jacob 131 (43) [Magmar → Magmortar, Tentacruel → Medusarch], johto_biker_joel 131 (43) [Magmar → Magmortar, Magmar → Magmortar], johto_biker_markey 134 (47) [Skorupi → Dreadpion], johto_biker_reese 133 (45) [Weezing → Smoglom], johto_biker_teddy 133 (46), johto_biker_theron 133 (45) [Croagunk → Venomsensei]
+=== johto_route_18
+Route 18, Johto
+grass 120-123 (own 26-30)
+trainers 3, 127-135 (own 37-48): johto_biker_charles 131 (42) [Koffing → Smoglom, Charmeleon → Charizard, Weezing → Smoglom], johto_bird_keeper_gs_bob 135 (48) [Noctowl → Noctaugur], johto_bird_keeper_gs_boris 130 (41) [Doduo → Tripluma, Doduo → Tripluma, Dodrio → Tripluma]
 === johto_route_19
 Route 19, Johto
 surf 123-126 (own 30-35)
@@ -3065,6 +3062,9 @@ trainers 11, 78-83 (own 25-33): kanto_beauty_grace 81 (29) [Pidgeotto → Pidgeo
 Route 16, Kanto
 grass 73-78 (own 18-25)
 trainers 7, 80-83 (own 28-33): kanto_biker_hideo 83 (33), kanto_biker_lao 81 (29) [Grimer → Muk, Koffing → Weezing], kanto_biker_ruben 80 (28) [Koffing → Weezing], kanto_cue_ball_camron 81 (29) [Mankey → Annihilape, Machop → Machamp], kanto_cue_ball_koji 80 (28) [Machop → Machamp, Mankey → Annihilape, Machop → Machamp], kanto_cue_ball_luke 81 (29) [Mankey → Annihilape, Machop → Machamp], kanto_young_couple_lea_jed 81 (29)
+=== route_16_east
+Route 16, Johto
+grass 120-123 (own 26-30)
 === route_17
 Route 17, Kanto
 grass 74-81 (own 20-29)

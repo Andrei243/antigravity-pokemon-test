@@ -1,16 +1,13 @@
 {
   // Route 12 as HeartGold has it three years on (plan 20 · J15, part h): the long pier of the fishermen south of Lavender
-  // Town, down to Route 13. A Snorlax sleeps before the gate house to Route 11, whose doors (warps 0 and 1) are locked:
-  // waking it with the Poké Flute's channel, and Route 11 beyond, wait for their session. HeartGold's three other
+  // Town, down to Route 13. A Snorlax sleeps before the gate house to Route 11, whose doors (warps 0 and 1) open since
+  // part i, and the Snorlax sleeps in the clearing outside its east door, which is wide enough to walk round it:
+  // waking it with the Poké Flute's channel waits for its session. HeartGold's three other
   // objects of the Snorlax only take up its tiles, so they are held back; so are Cameron and the woman of a scene
   // (FLAG_MAPTEMP_035). Its key meets FireRed's, so it takes Johto's prefix (HgWorld.Clashes). Its trainers battle by
   // their own records (Johto's trainers.json); the Young Couple are two people with one record
   "area": "johto_route_12",
   "bgmTrack": "kanto/route11",
-  "locked": [
-    0,
-    1
-  ],
   "heldBack": [
     "r12_gsbabyboy1",
     "r12_gsbabyboy1_2",

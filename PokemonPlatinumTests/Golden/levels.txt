@@ -355,6 +355,9 @@ super rod 20-45
 === dewford_town_gym
 Dewford Town
 trainers 6, 13: hoenn_brenden 13, hoenn_cristian 13, hoenn_jocelyn 13, hoenn_laura 13, hoenn_lilith 13, hoenn_takao 13
+=== diglett_cave
+Digletts Cave
+grass 13-29
 === digletts_cave_b1f
 Diglett's Cave
 grass 15-31
@@ -782,6 +785,10 @@ super rod 40
 Route 1
 grass 2-6
 trainers 4, 43-47: johto_ace_trainer_f_quinn 47, johto_ace_trainer_m_french 47, johto_school_kid_m_danny 43, johto_school_kid_m_sherman 43
+=== johto_route_11
+Route 11
+grass 14-16
+trainers 4, 39-44: johto_psychic_m_fidel 43, johto_psychic_m_herman 39, johto_youngster_jason 42, johto_youngster_owen 44
 === johto_route_12
 Route 12
 surf 25
@@ -805,6 +812,14 @@ trainers 8, 37-44: johto_bird_keeper_gs_josh 37, johto_bird_keeper_gs_roy 44, jo
 Route 15
 grass 22-25
 trainers 9, 31-45: johto_pokefan_eleanor 43, johto_pokefan_m_boone 43, johto_school_kid_m_billy 39, johto_school_kid_m_johnny 42, johto_school_kid_m_kipp 40, johto_school_kid_m_tommy 43, johto_teacher_colette 45, johto_teacher_hillary 41, johto_twins_kay_and_tia 41
+=== johto_route_17
+Route 17
+grass 27-32
+trainers 11, 37-47: johto_biker_aiden 45, johto_biker_dale 47, johto_biker_dan 39, johto_biker_ernest 45, johto_biker_glenn 43, johto_biker_jacob 43, johto_biker_joel 43, johto_biker_markey 47, johto_biker_reese 45, johto_biker_teddy 46, johto_biker_theron 45
+=== johto_route_18
+Route 18
+grass 26-30
+trainers 3, 37-48: johto_biker_charles 42, johto_bird_keeper_gs_bob 48, johto_bird_keeper_gs_boris 41
 === johto_route_19
 Route 19
 surf 30-35
@@ -1908,6 +1923,9 @@ Route 16
 grass 18-25
 ours Dozemount 130-134, Ratchisel 105-109
 trainers 7, 28-33: kanto_biker_hideo 33, kanto_biker_lao 29, kanto_biker_ruben 28, kanto_cue_ball_camron 29, kanto_cue_ball_koji 28, kanto_cue_ball_luke 29, kanto_young_couple_lea_jed 29
+=== route_16_east
+Route 16
+grass 26-30
 === route_17
 Route 17
 grass 20-29

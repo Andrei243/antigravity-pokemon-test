@@ -338,6 +338,12 @@
     { "name": "Fuchsia_WardensHouse", "matrix": 97, "area": "fuchsia_safari_zone_warden_house", "trees": "Round", "setting": "Indoors" },
     { "name": "Viridian_Gym", "matrix": 261, "area": "viridian_gym", "trees": "Round", "setting": "Indoors" },
     { "name": "Route12_FishingBrotherHouse", "matrix": 66, "area": "route_12_fishing_brother_house", "trees": "Round", "setting": "Indoors" },
+    // Plan 20 · J15, part i: the gate between Routes 11 and 12, Diglett's Cave, Route 16's two gates' rooms and its house (named Route11_, Diglett_, Route16_ and Route18_: FireRed's are Route11_EastEntrance, DiglettsCave_, Route16_NorthEntrance, Route16_House and Route18_EastEntrance)
+    { "name": "Route11_Route12Gate", "matrix": 70, "area": "route_19_route_12_gatehouse", "trees": "Round", "setting": "Indoors" },
+    { "name": "Diglett_Cave", "matrix": 2, "area": "diglett_cave", "trees": "Round", "setting": "Cave" },
+    { "name": "Route16_CyclingGate", "matrix": 70, "area": "route_16_gatehouse", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route16_EastHouse", "matrix": 66, "area": "johto_route_16_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route18_CyclingGate", "matrix": 70, "area": "route_18_gatehouse", "trees": "Round", "setting": "Indoors" },
     { "name": "Seafoam_Gym", "matrix": 264, "area": "seafoam_islands_cinnabar_gym", "trees": "Round", "setting": "Cave" }
   ],
   "areas": [
@@ -463,6 +469,10 @@
     // Plan 20 · J15, part h: Route 19 north from Route 20's sea to its gate and Fuchsia City with its rooms and Janine's Gym, Route 15 west of it with its gate, and Viridian's Gym, where Blue comes home
     "johto_route_19", "route_19_fuchsia_gatehouse", "fuchsia", "fuchsia_pokecenter_1f", "fuchsia_pokecenter_b1f", "fuchsia_pokemart",
     "fuchsia_gym", "fuchsia_southwest_house", "fuchsia_safari_zone_warden_house", "route_15_fuchsia_gatehouse", "johto_route_15",
-    "viridian_gym", "johto_route_14", "johto_route_13", "johto_route_12", "route_12_fishing_brother_house"
+    "viridian_gym", "johto_route_14", "johto_route_13", "johto_route_12", "route_12_fishing_brother_house",
+    // Plan 20 · J15, part i: Route 11 east of Vermilion City with its gate to Route 12 and Diglett's Cave under it to Route 2,
+    // and Routes 16 to 18, the Cycling Road from Celadon City down to Fuchsia City, with their gates and Route 16's house
+    "johto_route_11", "route_19_route_12_gatehouse", "diglett_cave", "johto_route_16", "johto_route_16_house", "route_16_east",
+    "route_16_gatehouse", "johto_route_17", "johto_route_18", "route_18_gatehouse"
   ]
 }
