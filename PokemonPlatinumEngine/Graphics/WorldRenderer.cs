@@ -480,8 +480,19 @@ public sealed partial class WorldRenderer
     {
         if (shakeLeft <= 0f) return 0f;
         shakeLeft = MathF.Max(0f, shakeLeft - step);
-        int beat = (int)(Life.Now * 30.0);
-        return SnapToTexel(((beat & 1) == 0 ? 1f : -1f) * shakeReach * (shakeLeft / shakeLength));
+        return SnapToTexel(ShakeAt(Life.Now, shakeReach, shakeLeft / shakeLength));
+    }
+
+    /// <summary>
+    /// How far a shake throws the picture, in tiles, at <paramref name="now"/> with <paramref name="share"/> of it
+    /// left: a beat each thirtieth of a second, dying away. Nought under the options' REDUCE MOTION (plan 12 · Q9),
+    /// when the shake still takes its time, unseen. GPU-free.
+    /// </summary>
+    internal static float ShakeAt(double now, float reach, float share)
+    {
+        if (Core.Accessibility.ReduceMotion) return 0f;
+        int beat = (int)(now * 30.0);
+        return ((beat & 1) == 0 ? 1f : -1f) * reach * share;
     }
 
     /// <summary>How far along a pan the camera is, 0 to 1, eased at both ends.</summary>
@@ -582,7 +593,8 @@ public sealed partial class WorldRenderer
             camera.Target += by;
         }
         // A scene's shake and a lift's shudder throw the picture up and down by whole texels (plan 09 · L12)
-        if (Shake(step) + Pieces.Shudder(Life.Now) / (float)CharacterSprites.TexelsPerUnit is var jolt && jolt != 0f)
+        // (neither under the options' REDUCE MOTION, plan 12 · Q9)
+        if (Shake(step) + Core.Accessibility.Motion * Pieces.Shudder(Life.Now) / (float)CharacterSprites.TexelsPerUnit is var jolt && jolt != 0f)
         {
             camera.Position.Z += jolt;
             camera.Target.Z += jolt;
@@ -765,6 +777,7 @@ public sealed partial class WorldRenderer
     {
         // A scene's ripple is read by the composite's own pass, and a burst's flash whitens everything over it
         var ripple = Life.Ripple;
+        if (Core.Accessibility.ReduceMotion) wavers = default; // plan 12 · Q9
         context.Composite(new Rectangle(0, 0, destWidth, destHeight), wavers.Reach > ripple.Reach ? wavers : ripple);
         if (underwater) DrawCaustics(destWidth, destHeight);
         DrawWeather(destWidth, destHeight);
@@ -878,7 +891,8 @@ public sealed partial class WorldRenderer
         }
 
         // Lightning whitens everything under it, the rain included
-        if (WeatherFx.Lightning(weather, Life.Now) is > 0f and var flash)
+        // (held to a quarter under the options' REDUCE FLASHES, plan 12 · Q9; the thunder still hears it whole)
+        if (Core.Accessibility.Flash(WeatherFx.Lightning(weather, Life.Now)) is > 0f and var flash)
             Raylib.DrawRectangle(0, 0, destWidth, destHeight, new Color(255, 255, 255, (int)(flash * 255f)));
 
         weatherBlocks.Clear();

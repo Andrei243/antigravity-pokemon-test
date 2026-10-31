@@ -881,7 +881,8 @@ public sealed class BattleRenderer
             // A giant's red pulse or a Terastallized body's sheen (plan 25 · Y15), under any cue's own
             var giant = MoveFx.GiantCast(v, anim.Time);
             if (giant.Amount > change.Amount) change = giant;
-            if (a.Flash > 0f) context.Shaders.SetFlash(a.FlashColor, Math.Clamp(a.Flash, 0f, 1f) * 0.85f);
+            // The ball's flash on the body, a quarter at most under the options' REDUCE FLASHES (plan 12 · Q9)
+            if (a.Flash > 0f) context.Shaders.SetFlash(a.FlashColor, Core.Accessibility.Flash(Math.Clamp(a.Flash, 0f, 1f) * 0.85f));
             else if (change.Amount > 0f) context.Shaders.SetFlash(change.Color, Math.Clamp(change.Amount, 0f, 1f));
             else if (a.Silhouette > 0f) context.Shaders.SetFlash(SilhouetteColor, a.Silhouette * 0.92f);
             else

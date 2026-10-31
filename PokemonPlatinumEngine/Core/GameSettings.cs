@@ -314,6 +314,15 @@ public sealed class GameSettings
     /// <summary>How hard the pad trembles at a hit, a catch, a bite (plan 12 · Q24, <see cref="Haptics"/>): off unless chosen.</summary>
     public Rumble Rumble { get; set; }
 
+    /// <summary>Every flash over the picture held to a quarter (plan 12 · Q9, <see cref="Accessibility.ReduceFlashes"/>): off unless chosen.</summary>
+    public bool ReduceFlashes { get; set; }
+
+    /// <summary>
+    /// The shakes, a critical hit's punch-in, the interface's slides, depth of field, the sway and the ripples stilled
+    /// (plan 12 · Q9, <see cref="Accessibility.ReduceMotion"/> and <c>BattleCamera.Motion</c>): off unless chosen.
+    /// </summary>
+    public bool ReduceMotion { get; set; }
+
     /// <summary>The preset the first run's measuring chose on this machine (plan 16 · T23), or null where nothing was measured.</summary>
     public GraphicsQuality? MeasuredQuality { get; set; }
 

@@ -235,6 +235,7 @@ public static partial class SceneTransition
             flash = 0.25f * (1 + Math.Min(2, (int)((since - beats.FlashFrom) / (beats.LitAt - beats.FlashFrom) * 3f)));
         else if (since >= beats.LitAt && since < beats.FlashEnds)
             flash = 0.25f * (3 - Math.Min(2, (int)((since - beats.LitAt) / (beats.FlashEnds - beats.LitAt) * 3f)));
+        flash = Core.Accessibility.Flash(flash); // a quarter at most under REDUCE FLASHES (plan 12 · Q9)
 
         Vector2 theirs, own = default, name, mark;
         int nameAlpha;

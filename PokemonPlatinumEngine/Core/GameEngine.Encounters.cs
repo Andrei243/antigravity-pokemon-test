@@ -126,7 +126,8 @@ public partial class GameEngine
     private void DrawPoisonFlash()
     {
         if (poisonFlash <= 0f) return;
-        byte alpha = poisonFlash > PoisonFlashSeconds / 2f ? (byte)110 : (byte)55;
+        // (a quarter at most under the options' REDUCE FLASHES, plan 12 · Q9)
+        byte alpha = (byte)MathF.Round(255f * Accessibility.Flash((poisonFlash > PoisonFlashSeconds / 2f ? 110f : 55f) / 255f));
         Raylib_cs.Raylib.DrawRectangle(0, 0, VirtualWidth, VirtualHeight, new Raylib_cs.Color((byte)150, (byte)60, (byte)190, alpha));
     }
 

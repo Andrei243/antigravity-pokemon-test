@@ -354,6 +354,20 @@
         "Full": "The controller trembles at a hit, a catch, a bite and a bump, while it is the one in your hands."
       }
     },
+    "reduceFlashes": {
+      "label": "Reduce flashes",
+      "help": {
+        "off": "Flashes over the picture play at their full brightness: a critical hit, lightning, the way into a battle.",
+        "on": "No flash whitens the picture by more than a quarter, and the flashes into a battle are one soft swell."
+      }
+    },
+    "reduceMotion": {
+      "label": "Reduce motion",
+      "help": {
+        "off": "The camera shakes and moves in close in battle, menus slide in, and grass and leaves sway in the wind.",
+        "on": "Nothing shakes or punches in, menus appear at once, nothing sways, and the background is never blurred."
+      }
+    },
     "resetDefaults": {
       "label": "Reset to defaults",
       "value": "Reset",

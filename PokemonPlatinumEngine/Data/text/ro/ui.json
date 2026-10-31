@@ -349,6 +349,20 @@
         "Full": "Controllerul vibrează la o lovitură, o prindere, o mușcătură și o ciocnire, cât timp e cel pe care îl ții în mâini."
       }
     },
+    "reduceFlashes": {
+      "label": "Mai puține sclipiri",
+      "help": {
+        "off": "Sclipirile peste imagine se văd cu toată strălucirea lor: o lovitură critică, fulgerul, intrarea într-o luptă.",
+        "on": "Nicio sclipire nu albește imaginea mai mult de un sfert, iar sclipirile de la intrarea într-o luptă sunt o singură creștere blândă."
+      }
+    },
+    "reduceMotion": {
+      "label": "Mai puțină mișcare",
+      "help": {
+        "off": "Camera se scutură și se apropie în luptă, meniurile alunecă înăuntru, iar iarba și frunzele se leagănă în vânt.",
+        "on": "Nimic nu se scutură și nu se apropie brusc, meniurile apar pe loc, nimic nu se leagănă, iar fundalul nu e niciodată estompat."
+      }
+    },
     "controls": {
       "label": "Comenzi",
       "value": "Deschide",

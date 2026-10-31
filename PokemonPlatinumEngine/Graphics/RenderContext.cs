@@ -250,7 +250,8 @@ public sealed class RenderContext
         post = settings;
         depthRange = depth;
 
-        if (!Quality.DepthOfField) post = post with { Dof = 0f };
+        // Off under the options' REDUCE MOTION too (plan 12 · Q9)
+        if (!Quality.DepthOfField || Core.Accessibility.ReduceMotion) post = post with { Dof = 0f };
         if (!Quality.AmbientOcclusion) post = post with { AoStrength = 0f };
         if (!targetsLoaded) return;
 

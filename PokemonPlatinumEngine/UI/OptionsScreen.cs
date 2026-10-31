@@ -31,6 +31,7 @@ public enum OptionRow
     Autosave,
     DynamicResolution,
     TimingAssist, Rumble,
+    ReduceFlashes, ReduceMotion,
     Controls,
     Jukebox,
     Packs,
@@ -383,6 +384,12 @@ public class OptionsScreen
                 // Off, Light, Full, and round again (plan 12 · Q24)
                 s.Rumble = (Rumble)Wrap((int)s.Rumble + step, 3);
                 break;
+            case OptionRow.ReduceFlashes:
+                s.ReduceFlashes = !s.ReduceFlashes; // plan 12 · Q9
+                break;
+            case OptionRow.ReduceMotion:
+                s.ReduceMotion = !s.ReduceMotion;
+                break;
         }
     }
 
@@ -459,6 +466,8 @@ public class OptionsScreen
             Text.Of(!DynamicResolutionUsable ? "options.dynamicResolution.help.unusable" : s.DynamicResolution ? "options.dynamicResolution.help.on" : "options.dynamicResolution.help.off")),
         OptionRow.TimingAssist => (Text.Of("options.timingAssist.label"), Text.Of($"options.timingAssist.value.{s.TimingAssist}"), Text.Of($"options.timingAssist.help.{s.TimingAssist}")),
         OptionRow.Rumble => (Text.Of("options.rumble.label"), Text.Of($"options.rumble.value.{s.Rumble}"), Text.Of($"options.rumble.help.{s.Rumble}")),
+        OptionRow.ReduceFlashes => (Text.Of("options.reduceFlashes.label"), OnOff(s.ReduceFlashes), Text.Of(s.ReduceFlashes ? "options.reduceFlashes.help.on" : "options.reduceFlashes.help.off")),
+        OptionRow.ReduceMotion => (Text.Of("options.reduceMotion.label"), OnOff(s.ReduceMotion), Text.Of(s.ReduceMotion ? "options.reduceMotion.help.on" : "options.reduceMotion.help.off")),
         OptionRow.ResetDefaults => (Text.Of("options.resetDefaults.label"), Text.Of("options.resetDefaults.value"), Text.Of("options.resetDefaults.help")),
         OptionRow.Controls => (Text.Of("options.controls.label"), Text.Of("options.controls.value"), Text.Of("options.controls.help")),
         OptionRow.Jukebox => (Text.Of("options.jukebox.label"), Text.Of("options.jukebox.value"), Text.Of("options.jukebox.help")),
