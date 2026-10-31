@@ -194,15 +194,16 @@ public static class AudioManager
 
     /// <summary>
     /// The jukebox's play (plan 12 · Q15): a song in the arrangement asked for, from the top, at once. It notes
-    /// nothing as heard (only a heard song can be asked for); tests hear it as "music &lt;id&gt; [night] [lowhp]".
+    /// nothing as heard (only a heard song can be asked for); tests hear it as "music &lt;id&gt; [night] [lowhp] [giant]".
     /// </summary>
-    public static void PreviewMusic(string songId, bool night = false, bool lowHp = false)
+    public static void PreviewMusic(string songId, bool night = false, bool lowHp = false, bool giant = false)
     {
         var song = MusicLibrary.Get(songId);
         if (song == null) return;
-        heard?.Add($"music {song.Id}{(night ? " night" : "")}{(lowHp ? " lowhp" : "")}");
+        heard?.Add($"music {song.Id}{(night ? " night" : "")}{(lowHp ? " lowhp" : "")}{(giant ? " giant" : "")}");
         if (!isInitialized) return;
         mixer.LowHp = lowHp;
+        mixer.Giant = giant;
         mixer.Play(song, night, immediate: true);
     }
 
@@ -289,6 +290,16 @@ public static class AudioManager
     {
         get => mixer.LowHp;
         set => mixer.LowHp = value;
+    }
+
+    /// <summary>
+    /// Whether the music plays its giant arrangement (plan Y · YD5): set by the battle while a Dynamaxed Pokémon stands
+    /// on the field (<c>BattleEngine.GiantStands</c>), beside <see cref="LowHp"/> and cleared with it.
+    /// </summary>
+    public static bool Giant
+    {
+        get => mixer.Giant;
+        set => mixer.Giant = value;
     }
 
     /// <summary>Fades the music out.</summary>

@@ -3838,7 +3838,7 @@
     "keys": { "shoulders": "Q / E" },
     "tab": { "songs": "SONGS", "sounds": "SOUNDS", "cries": "CRIES", "beds": "AMBIENCE" },
     "hint": { "tab": "Tab", "arrangement": "Arrangement", "species": "Species" },
-    "arrangement": { "Day": "DAY", "Night": "NIGHT", "LowHp": "LOW HP" },
+    "arrangement": { "Day": "DAY", "Night": "NIGHT", "LowHp": "LOW HP", "Giant": "GIANT" },
     "group": { "Menu": "MENU", "Field": "FIELD", "Battle": "BATTLE", "Move": "MOVE" },
     "cry": {
       "Normal": "Normal",

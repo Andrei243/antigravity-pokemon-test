@@ -166,6 +166,26 @@ public partial class BattleEngine
         }
     }
 
+    /// <summary>
+    /// True while a Dynamaxed Pokémon stands on the field, on either side, as the lines have shown it (the animator's
+    /// views, never the rules, which are a turn ahead): when the battle theme takes its giant layer (plan Y · YD5). It
+    /// holds from the line that grows the Pokémon to the line that ends its Dynamax, and with the scene off as well,
+    /// since the layer is state of the giant standing.
+    /// </summary>
+    public bool GiantStands
+    {
+        get
+        {
+            foreach (var side in new[] { BattleSide.Player, BattleSide.Enemy })
+                for (int slot = 0; slot < Anim.SlotsOf(side); slot++)
+                {
+                    var view = Anim[side, slot];
+                    if (view.Present && view.Dynamaxed) return true;
+                }
+            return false;
+        }
+    }
+
     private readonly BattleCore core;
     private readonly BattleMirror mirror = new();
     /// <summary>The Pokémon the player caught, and whether its species had never been caught before (the card's score).</summary>
@@ -691,6 +711,9 @@ public partial class BattleEngine
                 {
                     moveSoundAt = Anim.Time;
                     MoveHeard(move.Move, move.Type, move.From);
+                    // Under every Max Move's impact, the giant's punch (plan Y · YD5); a sound, so with the scene off too
+                    if (!move.Missed && !move.Blocked && SoundBank.LandsAsAGiant(move.Move))
+                        After(ImpactDelay, () => Sound("max_land", move.To.Side));
                 }
                 // With the scene off no move's effect plays but Transform's, as the original plays it all the same
                 // (BtlCmd_PlayMoveAnimation; plan 08 · P1); its sound above still does

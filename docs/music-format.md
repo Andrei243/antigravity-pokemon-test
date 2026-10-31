@@ -17,6 +17,8 @@ At night (`TimeOfDay.Night` and `LateNight`) area themes play their night arrang
 
 A battle theme has a **low-HP arrangement** as well, switched on and off in the middle of the song while a Pokémon of the player's is in the red (its bar's colour, `BattleAnimator.LowHpRatio`): the song keeps its place, the next notes start on the tracks' `lowhp=` instruments, tracks marked `only=lowhp` join in (an alarm figure of two pips a beat) and tracks marked `unless=lowhp` fall silent (a pad), and the tempo rises by the song's `lowhptempo`. That is Black and White's way, chosen over Platinum's looping beep (2026-10-05): the music itself turns agitated. `AudioManager.LowHp` sets it; the engine sets it every frame of a battle from `BattleEngine.PlayerInDanger` and clears it when the battle is decided, so the victory theme plays calm.
 
+A battle theme has a **giant arrangement** too (plan Y · YD5), switched the same way while a Dynamaxed Pokémon stands on the field, on either side (`BattleEngine.GiantStands`, read from the animator's views as the lines show them, never from the rules): tracks marked `only=giant` join in, tracks marked `unless=giant` fall silent, the next notes start on the tracks' `giant=` instruments and the tempo changes by `gianttempo` (1 unless written). `AudioManager.Giant` and `AudioMixer.Giant` set it; the engine sets it beside `LowHp` every frame of a battle and clears it with `LowHp`. The two are independent: a giant in the red takes both, its layer and the alarm, and both tempos multiply; an instrument of the low-HP arrangement wins over the giant's. Every battle theme (each region's battle roles, the tournament's and every legendary's own) ends in a layer of up to three tracks, each doubling a track of the theme's own (below): a choir on the chords (on the tune where a theme has no chords), brass or horns on the bass's roots and timpani on the bass's beats, each in the octave and on the beats where it adds no clash to the arrangement; where none is free of one the part is left out (Giratina's brass and timpani, Ting-Lu's brass). Out of the giant arrangement a theme plays exactly as it did before the layer was written, sample for sample (`MusicTests.TestABattleThemePlaysAsItDidWithNoGiant`). The Battle Scene off changes nothing of it: the layer is state of the giant standing.
+
 **Which theme plays when** (`MusicDirector`, plan 05 · A2): a place's own theme by day or by night; the surf theme while the player rides over the water and the bicycle's while they cycle, kept across towns and routes (`GameEngine.PlayFieldMusic`); a trainer's eye theme by their class from the moment they spot the player until the battle theme cuts in (and the place's own again if their script brings no battle); the battle theme by the most important opponent and its victory theme after, chosen as the original's battle controller chooses it (`MusicDirector.VictoryRole`: the gym leaders', the Elite Four's, the Champion's, Team Galactic's, grunts and commanders alike, and their boss's have their own; the rival's is a trainer's); fanfares that pause the music. What a trainer class brings is `Data/audio/sound-map.json` (`Data/SoundMap.cs`): its eye theme, following the original's table (`src/field_bgm.c`) by our names for the classes, and a battle theme of its own for the few that have one (Gym Leader, Rival, Team Galactic, the Elite Four, the Champion). A class not listed gets the boy's eye theme and the trainer battle theme.
 
 ## Loudness
@@ -81,6 +83,7 @@ meter 4/4           # for the bar checks; 6/8 and 3/4 work too
 reverb 0.32         # how much reverb returns to the mix
 nighttempo 0.93     # the night arrangement plays this much slower (or "night none": one arrangement, day and night)
 lowhptempo 1.08     # a battle theme: the low-HP arrangement plays this much faster
+gianttempo 1.0      # a battle theme: the giant arrangement plays this much faster (1 unless written)
 
 track melody flute night=ocarina vol=0.85 pan=0 rev=0.35
   r1 | r1 | L o5 a4. g8 f4 c4 | d4 e8 f8 g2 |
@@ -89,7 +92,7 @@ track drums kit vol=0.5
   r1 | r1 | L [ b4 r4 b4 r4 | ]16
 ```
 
-Track options: `night=<instrument>`, `lowhp=<instrument>` (a battle theme in the red), `only=lowhp` or `unless=lowhp` (a track of one arrangement alone), `vol` (0–1), `pan` (−1 left to 1 right), `rev` (reverb send).
+Track options: `night=<instrument>`, `lowhp=<instrument>` (a battle theme in the red), `giant=<instrument>` (a battle theme while a giant stands), `only=lowhp`, `unless=lowhp`, `only=giant` or `unless=giant` (a track of one arrangement alone), `vol` (0–1), `pan` (−1 left to 1 right), `rev` (reverb send). A track may also **double** another (`double=<track>`, a track above it and of the same kind, pitched or drums): it has no body of its own and plays the other's notes, moved by `shift=<semitones>` and, with `beats=<n>`, only those that start on every 1/*n* of a whole note (`beats=4` the beats, `beats=1` the first of each bar in 4/4); it loops where its source does. The giant layers are written so: `track gianttimpani timpani only=giant double=bass beats=4 shift=12 vol=0.5 rev=0.2`.
 
 | Write | Means |
 | --- | --- |
@@ -126,11 +129,11 @@ Bass instruments (`bass`, `synthbass`, `tuba`, `contrabass`, `timpani`) sound an
 Claude can't listen, so songs are checked by numbers and the user listens.
 
 ```bash
-dotnet run --project tools/MusicRender -- <out dir> [song id, folder or .mml file ...] [--night] [--lowhp] [--stems] [--passes N] [--spectrogram]
+dotnet run --project tools/MusicRender -- <out dir> [song id, folder or .mml file ...] [--night] [--lowhp] [--giant] [--stems] [--passes N] [--spectrogram]
 dotnet run --project tools/MusicRender -- --calibrate
 ```
 
-`MusicRender` writes a WAV per song (the intro, the loop twice and a fade) and prints its length, loop length, peak and RMS level, CPU cost, and any **clashes**: two parts a minor second or minor ninth apart on a beat, which is usually a wrong note, among the tracks of the arrangement rendered (with `--lowhp`, the alarm and not the pad it replaces). A note too short to be checked itself, such as an alarm's pip, is still checked against whatever is struck with it. A song named by its `.mml` file is read from there, so one being written is checked without building the game. `--night` and `--lowhp` render the arrangements. `--stems` adds each track's level, for balancing the mix. `--spectrogram` also writes a picture of each song: time left to right, 0 to 8 kHz bottom to top, black through blue, magenta and orange to white over 80 dB, which the Read tool can look at (a quiet intro, the beat, the loop's seam and a part that is too loud all show).
+`MusicRender` writes a WAV per song (the intro, the loop twice and a fade) and prints its length, loop length, peak and RMS level, CPU cost, and any **clashes**: two parts a minor second or minor ninth apart on a beat, which is usually a wrong note, among the tracks of the arrangement rendered (with `--lowhp`, the alarm and not the pad it replaces). A note too short to be checked itself, such as an alarm's pip, is still checked against whatever is struck with it. A song named by its `.mml` file is read from there, so one being written is checked without building the game. `--night`, `--lowhp` and `--giant` render the arrangements (`--giant --lowhp` the two together; with `--giant` the clashes are told among the giant layer's tracks too). `--stems` adds each track's level, for balancing the mix. `--spectrogram` also writes a picture of each song: time left to right, 0 to 8 kHz bottom to top, black through blue, magenta and orange to white over 80 dB, which the Read tool can look at (a quiet intro, the beat, the loop's seam and a part that is too loud all show).
 
 ```bash
 dotnet run --project tools/MusicRender -- <out dir> --sounds [name ...]

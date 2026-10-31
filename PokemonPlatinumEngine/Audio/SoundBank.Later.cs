@@ -17,11 +17,14 @@ public static partial class SoundBank
     /// <summary>The sounds of the later mechanics' set pieces, which may run to 2 s (a move's own runs to 1).</summary>
     public static bool IsSetPiece(string name) =>
         name is "mega_evolve" or "primal_reversion" or "ultra_burst" or "z_power"
-            or "dynamax" or "gigantamax" or "dynamax_end" or "max_guard" or "terastallize" or "tera_stellar"
+            or "dynamax" or "gigantamax" or "dynamax_end" or "max_guard" or "max_land" or "terastallize" or "tera_stellar"
         || name.StartsWith("z_move_", StringComparison.OrdinalIgnoreCase) || name.StartsWith("max_move_", StringComparison.OrdinalIgnoreCase);
 
     /// <summary>The sound a Max Move of this type makes (a G-Max Move is heard as its type's; plan 25 · Y15).</summary>
     public static string MaxMoveSound(PokemonType type) => "max_move_" + type.ToString().ToLowerInvariant();
+
+    /// <summary>Whether a move lands with <c>max_land</c> under it (plan Y · YD5): every Max Move and G-Max Move but Max Guard, which strikes nothing.</summary>
+    public static bool LandsAsAGiant(string move) => move != "Max Guard" && IsMaxMove(move);
 
     /// <summary>Whether a move is a Max Move or a G-Max Move, heard by its type's Max Move sound (Max Guard by its own).</summary>
     private static bool IsMaxMove(string move) => move.Length > 0 && MoveDatabase.Get(move) is { Kind: MoveKind.MaxMove or MoveKind.GMaxMove };
@@ -41,6 +44,8 @@ public static partial class SoundBank
         add("max_guard", SoundGroup.Battle, null, "Max Guard: a dome of light closing with a deep ring.");
         foreach (var type in Enum.GetValues<PokemonType>())
             add(MaxMoveSound(type), SoundGroup.Battle, null, $"A Max Move of the {type} type (and a G-Max Move of that type) sets off and lands.");
+        // The giant's punch (plan Y · YD5): one sub-bass hit under every Max Move's impact, whatever its type
+        add("max_land", SoundGroup.Battle, null, "A Max Move lands: a sub-bass hit and a deep boom felt under the type's own sound (plan Y · YD5).");
         add("terastallize", SoundGroup.Battle, null, "A Pokémon Terastallizes: crystal ringing as it forms, shattering, and a chime as the crown stands.");
         add("tera_stellar", SoundGroup.Battle, null, "A Stellar Terastallization: the crystal's ringing in a rising run of seven notes, and a shimmering chord.");
     }
@@ -114,6 +119,16 @@ public static partial class SoundBank
                 d.Bell(0.27f, 0.85f, N(74), 3.01f, 1.0f, 0.12f, 2f);
                 d.Noise(0.25f, 0.6f, Filter.Band, 2000f, 1200f, 0.12f, 2f, 0.1f, 1.4f, 6f, 0.4f);
                 return Finish(d.S, 0.42f);
+            case "max_land":
+                // Played at the impact (the Max Move's own blow is at 0.35 s of its sound, so this starts at once):
+                // a kick of sub-bass falling under a long low boom, with a dull body in the low mids so it is heard
+                // on small speakers too, and the air of the blow thrown out after it
+                d = new SoundDesign(1.3f, 0x3A7Du);
+                d.Thump(0, 0.45f, 95f, 32f, 1.0f, 0.35f);
+                d.Tone(0, 1.25f, Wave.Sine, 52f, 30f, 0.55f, 0.01f, 1.3f);
+                d.Tone(0, 0.5f, Wave.Triangle, 140f, 70f, 0.22f, 0.01f, 2.5f);
+                d.Noise(0, 0.6f, Filter.Low, 700f, 150f, 0.3f, 1.4f, 0.02f, 1.8f);
+                return Finish(d.S, 0.48f);
             case "terastallize":
             case "tera_stellar":
             {

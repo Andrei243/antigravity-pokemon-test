@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 using PokemonPlatinumEngine.Audio;
@@ -396,6 +397,158 @@ public class MusicTests
         Assert.True(mixer.LowHp);
         mixer.LowHp = false;
         Assert.False(player.Agitated);
+    }
+
+    // ------------------------------------------------------------------ plan Y · YD5: the giant arrangement
+
+    [Fact]
+    public void TestTheGiantArrangementIsReadAndDoublesAnotherTrack()
+    {
+        var song = Mml.Parse("test", """
+            tempo 120
+            gianttempo 1.05
+            track lead flute giant=brass
+              L [ c4 d8 e8 f4 g4 | ]2
+            track bass bass unless=giant
+              L [ c8 >c8 <g8 >g8 <f8 >f8 <g8 >g8 | ]2
+            track choir choir only=giant double=lead shift=-12
+            track timp timpani only=giant double=bass beats=4 shift=12
+            """);
+        Assert.Equal(1.05, song.GiantTempo);
+        Assert.True(song.HasGiant);
+        Assert.False(song.HasLowHp);
+        Assert.Same(InstrumentBank.Get("brass"), song.Tracks[0].GiantInstrument);
+        Assert.Equal(new[] { TrackWhen.Always, TrackWhen.NotGiant, TrackWhen.Giant, TrackWhen.Giant }, song.Tracks.Select(t => t.When));
+
+        // A doubled track plays its source's notes moved and, with beats=, only those on the beat; it loops where its source does
+        var lead = song.Tracks[0].Notes;
+        Assert.Equal(lead.Select(n => (n.Tick, n.Key - 12)), song.Tracks[2].Notes.Select(n => (n.Tick, n.Key)));
+        var bass = song.Tracks[1].Notes;
+        Assert.Equal(bass.Where(n => n.Tick % Song.TicksPerQuarter == 0).Select(n => (n.Tick, n.Key + 12)), song.Tracks[3].Notes.Select(n => (n.Tick, n.Key)));
+        Assert.Equal(8, song.Tracks[3].Notes.Count);
+        Assert.Equal(0, song.LoopTick);
+
+        // Nothing else is taken: a doubling needs a track above it, no notes of its own, and shift and beats go with it
+        Assert.Throws<FormatException>(() => Mml.Parse("test", "track a flute double=b\n  c1 |\n"));
+        Assert.Throws<FormatException>(() => Mml.Parse("test", "track a flute\n  c1 |\ntrack b brass double=a\n  c1 |\n"));
+        Assert.Throws<FormatException>(() => Mml.Parse("test", "track a flute shift=12\n  c1 |\n"));
+        Assert.Throws<FormatException>(() => Mml.Parse("test", "track a flute\n  c1 |\ntrack b brass double=a beats=5\n"));
+        Assert.Throws<FormatException>(() => Mml.Parse("test", "track a flute\n  c1 |\ntrack b kit double=a\n"));
+        Assert.Throws<FormatException>(() => Mml.Parse("test", "track a flute only=huge\n  c1 |\n"));
+        // A song with none of it has no giant arrangement
+        Assert.False(Mml.Parse("test", "track a flute only=lowhp\n  c1 |\n").HasGiant);
+    }
+
+    [Fact]
+    public void TestTheGiantLayerSwitchesMidSongKeepsItsPlaceAndGoesWithTheRed()
+    {
+        static double Loudness(string track, bool giant, bool agitated = false)
+        {
+            var song = Mml.Parse("test", "tempo 120\n" + track + "\n  L c4 e4 g4 >c4 |\n");
+            var player = new SongPlayer { Giant = giant, Agitated = agitated };
+            player.Start(song, atNight: false);
+            var buffer = new float[Synthesizer.SampleRate * 2];
+            player.Render(buffer, 1f);
+            return buffer.Sum(x => Math.Abs(x));
+        }
+
+        Assert.Equal(0, Loudness("track choir choir only=giant", giant: false));
+        Assert.True(Loudness("track choir choir only=giant", giant: true) > 1);
+        Assert.True(Loudness("track pad strings unless=giant", giant: false) > 1);
+        Assert.Equal(0, Loudness("track pad strings unless=giant", giant: true));
+        // The two arrangements are independent: a giant in the red plays both layers
+        Assert.True(Loudness("track choir choir only=giant", giant: true, agitated: true) > 1);
+        Assert.Equal(0, Loudness("track alarm pulse only=lowhp", giant: true));
+
+        var song = Mml.Parse("test", """
+            tempo 120
+            lowhptempo 1.5
+            gianttempo 1.2
+            track lead flute
+              L [ c4 d4 e4 f4 | ]4
+            """);
+        var player = new SongPlayer();
+        var buffer = new float[2048];
+        void Run(double seconds)
+        {
+            for (int done = 0; done < seconds * Synthesizer.SampleRate; done += 1024) player.Render(buffer, 1f);
+        }
+        player.Start(song, atNight: false);
+        Run(1.0);
+        double at = player.Position;
+        player.Giant = true;
+        Assert.Equal(at, player.Position, 6);
+        Run(1.0);
+        Assert.InRange(player.Position - at, 1.15, 1.25);
+        player.Agitated = true;
+        Run(1.0);
+        Assert.InRange(player.Position - at, 2.95, 3.05);
+        player.Giant = player.Agitated = false;
+        Run(1.0);
+        Assert.InRange(player.Position - at, 3.95, 4.05);
+    }
+
+    [Fact]
+    public void TestTheMixerPassesGiantToTheMusicAndKeepsItAcrossSongs()
+    {
+        var mixer = new AudioMixer();
+        var player = (SongPlayer)typeof(AudioMixer).GetField("music", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)!.GetValue(mixer)!;
+        mixer.Play(MusicLibrary.Get("common/battle_wild")!, night: false, immediate: true);
+        Assert.False(player.Giant);
+        mixer.Giant = true;
+        Assert.True(player.Giant);
+        Assert.False(player.Agitated);
+        mixer.Play(MusicLibrary.Get("common/battle_champion")!, night: false, immediate: true);
+        Assert.True(mixer.Giant);
+        mixer.Giant = false;
+        Assert.False(player.Giant);
+    }
+
+    /// <summary>Every theme a battle plays: each region's battle roles, and every song with a low-HP arrangement (the tournament's, every legendary's own).</summary>
+    private static IEnumerable<Song> BattleThemes() =>
+        Enum.GetValues<MusicRole>().Where(r => r.ToString().StartsWith("Battle"))
+            .SelectMany(role => RegionDatabase.All.Select(r => MusicDirector.Resolve(role, r.Id, MusicLibrary.Exists)!))
+            .Concat(MusicLibrary.All.Where(s => s.HasLowHp).Select(s => s.Id))
+            .Distinct().Select(id => MusicLibrary.Get(id)!);
+
+    [Fact]
+    public void TestEveryBattleThemeHasAGiantLayer()
+    {
+        // Every theme, so a trainer's Dynamax at the Frontier lifts too (plan Y, question 8): a layer that plays only
+        // while a giant stands, and whatever it doubles is a track of the theme's own
+        var themes = BattleThemes().ToList();
+        Assert.True(themes.Count >= 120, $"{themes.Count} battle themes");
+        foreach (var song in themes)
+        {
+            Assert.True(song.HasGiant, $"{song.Id} has no giant arrangement");
+            Assert.Contains(song.Tracks, t => t.When == TrackWhen.Giant && t.Notes.Count > 0);
+            Assert.DoesNotContain(song.Tracks, t => t.When == TrackWhen.NotGiant);
+        }
+    }
+
+    [Fact]
+    public void TestABattleThemePlaysAsItDidWithNoGiant()
+    {
+        // The giant layer is tracks of its own and nothing else: out of it a theme plays exactly as it did before the
+        // layer was written, bar for bar, sample for sample (the arrangement's off-path is the old one)
+        foreach (var id in new[] { "common/battle_champion", "common/battle_wild", "common/legendary/dialga", "unova/battle_trainer" })
+        {
+            string text = System.IO.File.ReadAllText(System.IO.Path.Combine(GameDataFiles.Directory, "music", id + ".mml"));
+            int at = text.IndexOf("# Giant (plan Y", StringComparison.Ordinal);
+            Assert.True(at > 0, id);
+            var before = Mml.Parse(id, text[..at]);
+            var now = MusicLibrary.Get(id)!;
+            Assert.Equal(before.Tracks.Count + now.Tracks.Count(t => t.When == TrackWhen.Giant), now.Tracks.Count);
+            float[] Render(Song s)
+            {
+                var player = new SongPlayer();
+                player.Start(s, atNight: false);
+                var buffer = new float[Synthesizer.SampleRate * 2 * 6];
+                for (int done = 0; done < buffer.Length; done += 2048) player.Render(buffer.AsSpan(done, Math.Min(2048, buffer.Length - done)), 1f);
+                return buffer;
+            }
+            Assert.Equal(Render(before), Render(now));
+        }
     }
 
     [Fact]

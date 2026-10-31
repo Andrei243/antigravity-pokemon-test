@@ -2,7 +2,7 @@
 // ears: levels, clipping, NaNs, clicks, notes that clash (a minor second between two parts on a beat), and a
 // spectrogram picture of each sound (and of each song with --spectrogram) to look at.
 //
-//   dotnet run --project tools/MusicRender -- <out dir> [song id, folder or .mml file ...] [--night] [--stems] [--passes N] [--spectrogram]
+//   dotnet run --project tools/MusicRender -- <out dir> [song id, folder or .mml file ...] [--night] [--lowhp] [--giant] [--stems] [--passes N] [--spectrogram]
 //   dotnet run --project tools/MusicRender -- <out dir> --sounds [name ...]
 //   dotnet run --project tools/MusicRender -- <out dir> --cries [species or form ...] [--all] [--modes]
 //   dotnet run --project tools/MusicRender -- <out dir> --ambience [bed ...] [--handheld]
@@ -17,7 +17,7 @@ using PokemonPlatinumEngine.Data;
 
 if (args.Length < 1)
 {
-    Console.WriteLine("usage: MusicRender <out dir> [song id or folder ...] [--night] [--stems] [--passes N] [--spectrogram]");
+    Console.WriteLine("usage: MusicRender <out dir> [song id or folder ...] [--night] [--lowhp] [--giant] [--stems] [--passes N] [--spectrogram]");
     Console.WriteLine("       MusicRender <out dir> --sounds [name ...]");
     Console.WriteLine("       MusicRender <out dir> --cries [species or form ...] [--all] [--modes]");
     Console.WriteLine("       MusicRender <out dir> --ambience [bed ...] [--handheld]");
@@ -53,11 +53,12 @@ bool night = args.Contains("--night");
 bool stems = args.Contains("--stems");
 bool spectrograms = args.Contains("--spectrogram");
 bool lowHp = args.Contains("--lowhp");
+bool giant = args.Contains("--giant");
 int passes = 2;
 var filters = new List<string>();
 for (int i = 1; i < args.Length; i++)
 {
-    if (args[i] is "--night" or "--stems" or "--spectrogram" or "--sounds" or "--lowhp" or "--cries" or "--all" or "--modes" or "--ambience" or "--handheld") continue;
+    if (args[i] is "--night" or "--stems" or "--spectrogram" or "--sounds" or "--lowhp" or "--giant" or "--cries" or "--all" or "--modes" or "--ambience" or "--handheld") continue;
     if (args[i] == "--passes") { passes = int.Parse(args[++i]); continue; }
     filters.Add(args[i]);
 }
@@ -205,7 +206,7 @@ foreach (var file in filters.Where(f => f.EndsWith(".mml", StringComparison.Ordi
 }
 foreach (var song in songs)
 {
-    var mixer = new AudioMixer { Volume = 0.8f, LowHp = lowHp, Handheld = handheld };
+    var mixer = new AudioMixer { Volume = 0.8f, LowHp = lowHp, Giant = giant, Handheld = handheld };
     double seconds;
     if (song.Loops)
     {
@@ -250,11 +251,11 @@ foreach (var song in songs)
         sum += s * s;
     }
     double rms = Math.Sqrt(sum / samples.Length);
-    string name = song.Id.Replace('/', '_') + (night ? "_night" : "") + (lowHp ? "_lowhp" : "") + (handheld ? "_handheld" : "");
+    string name = song.Id.Replace('/', '_') + (night ? "_night" : "") + (lowHp ? "_lowhp" : "") + (giant ? "_giant" : "") + (handheld ? "_handheld" : "");
     WriteWav(Path.Combine(outDir, name + ".wav"), samples);
     if (spectrograms) WriteSpectrogram(Path.Combine(outDir, name + ".png"), samples, 1200, 256, 8192f);
 
-    var clashes = Clashes(song, lowHp);
+    var clashes = Clashes(song, lowHp, giant);
     // Loudness is measured before the fade, as the game plays it
     var bus = song.Loops ? AudioBus.Music : AudioBus.Fanfare;
     double loud = Loudness.Of(samples.AsSpan(0, (song.Loops ? frames - (int)(2.5 * Synthesizer.SampleRate) : frames) * 2), 2);
@@ -270,7 +271,8 @@ foreach (var song in songs)
                 LoopTick = song.LoopTick, EndTick = song.EndTick, Reverb = song.Reverb
             };
             solo.Tracks.Add(track);
-            var player = new SongPlayer();
+            // In the arrangement rendered, so a layer of the red or of a giant is measured too
+            var player = new SongPlayer { Agitated = lowHp, Giant = giant };
             player.Start(solo, night);
             int n = (int)(song.Duration(night) * Synthesizer.SampleRate);
             var buf = new float[n * 2];
@@ -288,11 +290,12 @@ static double Db(float x) => x <= 0 ? -120 : 20 * Math.Log10(x);
 
 // Two pitched parts a minor second (or minor ninth) apart, where one of them starts on a beat and lasts at least an eighth
 // Two parts a minor second or ninth apart on a beat, in the arrangement rendered: the low-HP one's tracks
-// (only=lowhp) or the normal one's (unless=lowhp), never both
-static List<string> Clashes(Song song, bool lowHp)
+// (only=lowhp) or the normal one's (unless=lowhp), never both; and the giant one's (only=giant) with --giant
+static List<string> Clashes(Song song, bool lowHp, bool giant)
 {
     var result = new List<string>();
-    var pitched = song.Tracks.Where(t => !t.IsDrums && t.When != (lowHp ? TrackWhen.NotLowHp : TrackWhen.LowHp)).ToList();
+    var pitched = song.Tracks.Where(t => !t.IsDrums && t.When != (lowHp ? TrackWhen.NotLowHp : TrackWhen.LowHp)
+        && t.When != (giant ? TrackWhen.NotGiant : TrackWhen.Giant)).ToList();
     int beat = Song.TicksPerQuarter;
     bool Checked(NoteEvent n) => n.Tick % beat == 0 && n.Length >= Song.TicksPerWhole / 8;
     foreach (var a in pitched)

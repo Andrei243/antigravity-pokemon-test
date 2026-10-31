@@ -89,6 +89,7 @@ public partial class GameEngine
     {
         ReplayBroke = flow.Battle?.WatchBroke == true;
         AudioManager.LowHp = false;
+        AudioManager.Giant = false;
         StartTransition(GameState.ReplayList, () =>
         {
             flow.Battle = null;

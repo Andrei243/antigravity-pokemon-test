@@ -183,6 +183,7 @@ Every sound effect of the game (plan 05 · A3), what it stands for in the origin
 | `max_move_dark` | — | A Max Move of the Dark type, and a G-Max Move of that type (`SoundBank.MaxMoveSound`): a deep drone swelling to the landing at 0.35 s and a blow with a boom under it, then a sinking drone drawn into nothing (1.5 s). |
 | `max_move_steel` | — | A Max Move of the Steel type, and a G-Max Move of that type (`SoundBank.MaxMoveSound`): a deep drone swelling to the landing at 0.35 s and a blow with a boom under it, then a ringing strike and a grinding drill (1.5 s). |
 | `max_move_fairy` | — | A Max Move of the Fairy type, and a G-Max Move of that type (`SoundBank.MaxMoveSound`): a deep drone swelling to the landing at 0.35 s and a blow with a boom under it, then a twinkling run of notes (1.5 s). |
+| `max_land` | — | Played under every Max Move's and G-Max Move's impact but Max Guard's (`SoundBank.LandsAsAGiant`; plan Y · YD5, our own): a kick of sub-bass falling under a long low boom, a dull body in the low mids and the air of the blow thrown out after it (1.3 s). With the Battle Scene off it is heard all the same, as the move lands. |
 | `terastallize` | — | A Pokémon Terastallizes: crystal ringing as its facets lock on, a shatter 0.9 s in, and a chime as the crown stands (1.7 s). |
 | `tera_stellar` | — | A Stellar Terastallization: the crystal's ringing and shatter, and a rising run of seven notes (1.7 s). |
 
