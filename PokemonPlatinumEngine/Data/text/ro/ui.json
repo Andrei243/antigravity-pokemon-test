@@ -2336,7 +2336,7 @@
     "action": {
       "Up": "Sus", "Down": "Jos", "Left": "Stânga", "Right": "Dreapta", "Confirm": "Confirmă, vorbește, citește", "Cancel": "Înapoi", "Menu": "Meniu",
       "Run": "Fugă (ținut apăsat)", "Item": "Obiect înregistrat", "Poketch": "Scoate sau ascunde Pokétch-ul", "PoketchApp": "Următoarea aplicație Pokétch",
-      "PoketchTouch": "Atinge Pokétch-ul", "PageLeft": "Pagina înapoi", "PageRight": "Pagina înainte", "Fullscreen": "Ecran complet", "Mute": "Sunet pornit sau oprit", "Screenshot": "Fă o captură de ecran", "Report": "Scrie un raport de reluat"
+      "PoketchTouch": "Atinge Pokétch-ul", "PageLeft": "Pagina înapoi", "PageRight": "Pagina înainte", "Fullscreen": "Ecran complet", "Mute": "Sunet pornit sau oprit", "Screenshot": "Fă o captură de ecran", "Report": "Scrie un raport de reluat", "Photo": "Modul foto"
     },
     "page": {
       "title": "COMENZI",
@@ -4631,6 +4631,20 @@
     "continue": {
       "label": "CONTINUĂ",
       "help": "Păstrează aceste alegeri și trece la ecranul de titlu. Pagina aceasta nu va mai apărea."
+    }
+  },
+  "photo": {
+    "title": "FOTO",
+    "row": { "Zoom": "Zoom", "Time": "Ora", "Weather": "Vremea", "Filter": "Filtru", "Frame": "Ramă" },
+    "zoom": "×{zoom}",
+    "time": { "now": "Acum", "Morning": "Dimineața", "Day": "Ziua", "Twilight": "Seara", "Night": "Noaptea", "LateNight": "Târziu în noapte" },
+    "weather": { "Now": "Cum e", "Clear": "Senin", "Rain": "Ploaie", "Snow": "Ninsoare", "Fog": "Ceață" },
+    "notHere": "Nu aici",
+    "filter": { "None": "Fără", "Vivid": "Viu", "Mono": "Alb-negru", "Sepia": "Sepia", "Soft": "Moale" },
+    "frame": { "None": "Fără", "Mat": "Paspartu", "Cinema": "Cinema" },
+    "hint": {
+      "compose": "{key:confirm} Fotografiază   {key:menu} Setări   {out} {in} Zoom   {key:item} Ascunde   {key:cancel} Ieși",
+      "panel": "{key:confirm} Fotografiază   {key:menu} Închide   {key:item} Ascunde   {key:cancel} Înapoi"
     }
   }
 }
