@@ -11,7 +11,8 @@
 # middle of the chase (2, team_rocket_headquarters_b1f.txt), heard (3) and Ariana beaten (4). The shutters across the
 # middle corridor open for whoever knows the password (FLAG_UNK_0D3) and stay open (FLAG_ROCKET_HIDEOUT_B2F_DOOR_OPEN,
 # a flag of ours). The hideout cleared sets everything the rest of Johto asks (FLAG_ROCKET_HIDEOUT_CLEARED): the toll
-# gate on Route 43 empty, the Gym's doorway in Mahogany Town free, the traps of B1F spent.
+# gate on Route 43 empty, the Gym's doorway in Mahogany Town free, the traps of B1F spent. Lance gives HM10, Whirlpool
+# (HeartGold's HM05, tenth here: FLAG_JOHTO_GOT_HM_WHIRLPOOL, ours), as he does in HeartGold once the generator is off.
 
 
 # D35R0103_018 and _015
@@ -251,7 +252,11 @@ script AllStopped
   speaker "Lance"
   say "That's the last of them. The signal has stopped. The lake's Magikarp will calm down now."
   say "Team Rocket has scattered, too. With their hideout gone, Mahogany Town can breathe again."
-  say "You've done well, {player}. I'll make sure the League hears about this. Until we meet again!"
+  say "You've done well, {player}. Take this. It's an HM that teaches Whirlpool."
+  give "HM10"
+  setflag FLAG_JOHTO_GOT_HM_WHIRLPOOL
+  say "With the Glacier Badge, a Pokémon that knows it can cross the whirlpools at sea. They guard the Whirl Islands."
+  say "I'll make sure the League hears about this. Until we meet again!"
   fade out 0.4
   hide d35r0103_wataru
   hide d35r0103_tsure_poke_static_dragonite
