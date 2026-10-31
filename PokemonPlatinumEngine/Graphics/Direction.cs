@@ -352,6 +352,88 @@ internal static class Directions
         // Weather: a light alone; the weather's own look is Y1's
         ["Rain Dance"] = new(SignatureShot.None, Light: Lit(0.24f, 0.3f, 0.42f, 0.16f, 0.1f)),
         ["Sunny Day"] = new(SignatureShot.None, Light: Lit(0.9f, 0.7f, 0.36f, 0.05f)),
+
+        // ---------------------------------------------------------------- Y17f: the moves of our own past level 100 (plan 06 · R31)
+        // Each plays its type's template (no look of its own yet); the direction stages it. Ordinary strength (the
+        // priority jabs, the drains, Rivet Shot, Root Snare, Pilfer Strike, Sap Lance, Swarm Chorus) and the debuffs
+        // cast on the foes are left as ordinary moves, as Tackle is.
+        // Normal: the tackle of a titan lunged in; the hymn rings round the foes
+        ["Titan Tackle"] = new(SignatureShot.ImpactPunch, HeavyStop, User: Lunge, Light: Lit(0.5f, 0.44f, 0.36f, 0.2f)),
+        ["Resonant Hymn"] = new(SignatureShot.Orbit, Light: Lit(0.66f, 0.56f, 0.36f, 0.16f), Effect: SoundRings),
+        // Fighting: the kick and the mountain-breaking blow punched in on; the burst of ki followed
+        ["Crescent Kick"] = new(SignatureShot.ImpactPunch, HeavyStop, Light: Lit(0.5f, 0.3f, 0.14f, 0.22f)),
+        ["Ki Burst"] = new(SignatureShot.FollowProjectile, HeavyStop, Light: Lit(0.66f, 0.36f, 0.12f, 0.24f), Effect: Shards),
+        ["Mountain Breaker"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: Pressed, Light: Lit(0.46f, 0.28f, 0.14f, 0.3f), Effect: RingCracks),
+        // Flying: the talons and the plunge from the zenith rise and dive in; the jet stream followed
+        ["Talon Dive"] = new(SignatureShot.ImpactPunch, HeavyStop, User: Dive, Light: Lit(0.5f, 0.6f, 0.76f, 0.2f)),
+        ["Jet Stream"] = new(SignatureShot.FollowProjectile, Light: Lit(0.56f, 0.72f, 0.92f, 0.2f)),
+        ["Zenith Plunge"] = new(SignatureShot.ImpactPunch, HeavyStop, User: Dive, Target: Pressed, Light: Lit(0.7f, 0.66f, 0.46f, 0.2f), Effect: RingCracks),
+        // Poison: the lance punched in on; the torrent of miasma followed, a poison's violet, wisps rising
+        ["Venom Lance"] = new(SignatureShot.ImpactPunch, HeavyStop, Light: Lit(0.34f, 0.12f, 0.4f, 0.28f)),
+        ["Miasma Torrent"] = new(SignatureShot.FollowProjectile, HeavyStop, Light: Lit(0.3f, 0.1f, 0.36f, 0.32f), Effect: Wisps),
+        // Ground: the fault and the rend jolt the target, cracks in a ring; the vein of magma bursts from under it
+        ["Fault Line"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: Jolted, Light: Lit(0.38f, 0.3f, 0.18f, 0.24f, 0.2f), Effect: RingCracks),
+        ["Magma Vein"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: TossedUp, Light: Lit(0.56f, 0.16f, 0.05f, 0.34f), Effect: Embers),
+        ["Tectonic Rend"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: Jolted, Light: Lit(0.3f, 0.22f, 0.14f, 0.32f, 0.2f), Effect: RingCracks),
+        // Rock: the boulder pressing, shards; the crystal lance followed, glints; stones falling from the sky round the foes
+        ["Boulder Crush"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: Pressed, Light: Lit(0.38f, 0.3f, 0.2f, 0.24f), Effect: Shards),
+        ["Crystal Lance"] = new(SignatureShot.FollowProjectile, HeavyStop, Light: Lit(0.6f, 0.56f, 0.66f, 0.16f), Effect: Glints),
+        ["Skyfall Stone"] = new(SignatureShot.Orbit, HeavyStop, Light: Lit(0.32f, 0.28f, 0.24f, 0.3f), Effect: Shards),
+        // Bug: the mandibles close on the target, which only shudders in them
+        ["Mandible Crush"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: Held, Light: Lit(0.3f, 0.4f, 0.12f, 0.24f)),
+        // Ghost: the claw out of the shadow punched in on; the lantern's flame followed; wisps from both
+        ["Spectral Claw"] = new(SignatureShot.ImpactPunch, HeavyStop, Light: Lit(0.18f, 0.1f, 0.3f, 0.34f), Effect: Wisps),
+        ["Phantom Lantern"] = new(SignatureShot.FollowProjectile, HeavyStop, Light: Lit(0.24f, 0.14f, 0.42f, 0.32f), Effect: Wisps),
+        // Steel: the forge's hammer brought down, sparks flying; the magnet's lance followed, glints
+        ["Forge Hammer"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: Pressed, Light: Lit(0.5f, 0.32f, 0.14f, 0.24f), Effect: Sparks),
+        ["Magnet Lance"] = new(SignatureShot.FollowProjectile, HeavyStop, Light: Lit(0.44f, 0.48f, 0.58f, 0.2f), Effect: Glints),
+        // Fire: the stomp of cinders pressing, embers; the pyre's lance followed; the blast of a forged sun wound up and
+        // loosed, the user heaving with it, the air shimmering (its own fire is already bright: a low wash)
+        ["Cinder Stomp"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: Pressed, Light: Lit(0.58f, 0.22f, 0.06f, 0.28f), Effect: Embers),
+        ["Pyre Lance"] = new(SignatureShot.FollowProjectile, HeavyStop, Light: Lit(0.64f, 0.28f, 0.08f, 0.28f), Effect: Embers),
+        ["Sunforge Blast"] = new(SignatureShot.ChargePush, HeavyStop, User: Heave, Light: Lit(0.86f, 0.56f, 0.2f, 0.18f), Effect: Shimmer),
+        // Water: the slam and the maelstrom's crash flung in, spray; the current of the abyss followed, a deep blue
+        ["Riptide Slam"] = new(SignatureShot.ImpactPunch, HeavyStop, User: Lunge, Light: Lit(0.14f, 0.32f, 0.56f, 0.24f), Effect: Spray),
+        ["Abyssal Current"] = new(SignatureShot.FollowProjectile, HeavyStop, Light: Lit(0.05f, 0.14f, 0.4f, 0.4f), Effect: Spray),
+        ["Maelstrom Crash"] = new(SignatureShot.ImpactPunch, HeavyStop, User: Lunge, Light: Lit(0.08f, 0.22f, 0.48f, 0.34f), Effect: Spray),
+        // Grass: the lash of thorns punched in on, leaves
+        ["Thornlash"] = new(SignatureShot.ImpactPunch, HeavyStop, Light: Lit(0.18f, 0.38f, 0.14f, 0.26f), Effect: Leaves),
+        // Electric: the lance of an arc flung in, sparks; the cascade of ions followed, sparks
+        ["Arc Lance"] = new(SignatureShot.ImpactPunch, HeavyStop, User: Lunge, Light: Lit(0.46f, 0.44f, 0.14f, 0.22f), Effect: Sparks),
+        ["Ion Cascade"] = new(SignatureShot.FollowProjectile, HeavyStop, Light: Lit(0.42f, 0.4f, 0.16f, 0.22f), Effect: Sparks),
+        // Psychic: the blade of the mind punched in on; the astral pulse followed, stars; the wave that breaks the mind
+        // wound up and loosed, the user rocked back
+        ["Mind Blade"] = new(SignatureShot.ImpactPunch, HeavyStop, Light: Lit(0.5f, 0.22f, 0.5f, 0.26f)),
+        ["Astral Pulse"] = new(SignatureShot.FollowProjectile, HeavyStop, Light: Lit(0.3f, 0.2f, 0.52f, 0.3f), Effect: Stars),
+        ["Mindbreak Wave"] = new(SignatureShot.ChargePush, HeavyStop, User: Recoil, Light: Lit(0.46f, 0.18f, 0.56f, 0.32f)),
+        // Ice: the glacier rammed in, frost; the white-out round the foes; the lance of permafrost wound up and loosed
+        ["Glacier Ram"] = new(SignatureShot.ImpactPunch, HeavyStop, User: Lunge, Light: Lit(0.42f, 0.6f, 0.8f, 0.22f), Effect: Frost),
+        ["Whiteout Gale"] = new(SignatureShot.Orbit, Light: Lit(0.56f, 0.68f, 0.82f, 0.16f, 0.2f), Effect: Frost),
+        ["Permafrost Lance"] = new(SignatureShot.ChargePush, HeavyStop, User: Recoil, Light: Lit(0.32f, 0.5f, 0.74f, 0.26f), Effect: Frost),
+        // Dragon: the scales rent, a dragon's teal; the wyrm's flame followed, embers; the serpent's crash flung in, shards
+        ["Scale Rend"] = new(SignatureShot.ImpactPunch, HeavyStop, Light: Lit(0.12f, 0.34f, 0.4f, 0.26f)),
+        ["Wyrmflare"] = new(SignatureShot.FollowProjectile, HeavyStop, Light: Lit(0.4f, 0.16f, 0.4f, 0.3f), Effect: Embers),
+        ["Serpent Crash"] = new(SignatureShot.ImpactPunch, HeavyStop, User: Lunge, Light: Lit(0.2f, 0.14f, 0.46f, 0.34f), Effect: Shards),
+        // Dark: the fang held in the target; the umbral pulse followed, the dark vignette, wisps
+        ["Rending Fang"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: Held, Light: Lit(0.14f, 0.08f, 0.16f, 0.32f)),
+        ["Umbral Pulse"] = new(SignatureShot.FollowProjectile, HeavyStop, Light: Lit(0.06f, 0.03f, 0.08f, 0.38f), Effect: Wisps),
+        // Fairy: the fey strike punched in on, petals; the chorus of starlight round the foes, stars
+        ["Fey Strike"] = new(SignatureShot.ImpactPunch, HeavyStop, Light: Lit(0.66f, 0.36f, 0.56f, 0.2f), Effect: Petals),
+        ["Starlight Chorus"] = new(SignatureShot.Orbit, Light: Lit(0.56f, 0.5f, 0.74f, 0.16f), Effect: Stars),
+        // On its own side, no shot: each setup pulses an aura in its type's colour; the plating glints, the overcharge sparks
+        ["Rally Cry"] = new(SignatureShot.None, Light: Lit(0.6f, 0.5f, 0.36f, 0.14f), Effect: Aura),
+        ["Centered Stance"] = new(SignatureShot.None, Light: Lit(0.5f, 0.3f, 0.14f, 0.16f), Effect: Aura),
+        ["Updraft"] = new(SignatureShot.None, Light: Lit(0.56f, 0.7f, 0.9f, 0.14f), Effect: Aura),
+        ["Monolith Pose"] = new(SignatureShot.None, Light: Lit(0.4f, 0.34f, 0.24f, 0.18f), Effect: Aura),
+        ["Molt Renewal"] = new(SignatureShot.None, Light: Lit(0.4f, 0.5f, 0.16f, 0.16f), Effect: Aura),
+        ["Alloy Plating"] = new(SignatureShot.None, Light: Lit(0.5f, 0.54f, 0.6f, 0.16f), Effect: Glints),
+        ["Kindle"] = new(SignatureShot.None, Light: Lit(0.6f, 0.28f, 0.08f, 0.18f), Effect: Aura),
+        ["Tidal Ward"] = new(SignatureShot.None, Light: Lit(0.14f, 0.32f, 0.56f, 0.18f), Effect: Aura),
+        ["Verdant Renewal"] = new(SignatureShot.None, Light: Lit(0.26f, 0.5f, 0.2f, 0.16f), Effect: Aura),
+        ["Overcharge"] = new(SignatureShot.None, Light: Lit(0.46f, 0.44f, 0.14f, 0.18f), Effect: Sparks),
+        ["Clairvoyance"] = new(SignatureShot.None, Light: Lit(0.46f, 0.24f, 0.5f, 0.18f), Effect: Aura),
+        ["Wyrm Dance"] = new(SignatureShot.None, Light: Lit(0.24f, 0.2f, 0.5f, 0.2f), Effect: Aura),
+        ["Moonlit Grace"] = new(SignatureShot.None, Light: Lit(0.4f, 0.34f, 0.62f, 0.22f), Effect: Aura),
     };
 
     private static StageLight Lit(float r, float g, float b, float amount, float grey = 0f) => new(new Vector3(r, g, b), amount, grey);
