@@ -422,7 +422,8 @@ public partial class BattleEngine
             // A charge that ended with no move let go (put to sleep, flinched) has nothing more to gather (plan 25 · Y5)
             Anim.SettleCharge(place.Side, place.Slot, theirs.IsActive && theirs.Volatile.Charging);
             // A Dynamax and the turns it has left, for the HP box (plan 25 · Y15)
-            Anim.SettleDynamax(place.Side, place.Slot, theirs.IsActive && theirs.Volatile.Dynamaxed, 3 - theirs.Volatile.DynamaxTurns, theirs.Volatile.Gigantamaxed);
+            Anim.SettleDynamax(place.Side, place.Slot, theirs.IsActive && theirs.Volatile.Dynamaxed, 3 - theirs.Volatile.DynamaxTurns, theirs.Volatile.Gigantamaxed,
+                theirs.Pokemon?.FormData?.Kind == FormKind.MegaDynamax);
             // Every Max Guard came down with the turn (plan 25 · YD3)
             Anim.SettleGuard(place.Side, place.Slot);
             // What lasts on it (plan 09 · L2): the lines have told all of it already; this catches a Pokémon changed from outside
@@ -431,6 +432,9 @@ public partial class BattleEngine
         }
         Weather = core.Field.Weather;
         Anim.SettleWeather(Weather);
+        // A Mega whose growth never came is let go, and no field change is a Max Move's any more (plan 25 · YD4)
+        Anim.LetGoOfMegaMax();
+        maxBlow = null;
         // What lies on the field (plan 25 · Y2): the lines have told all of it already; this catches a field changed from outside
         Anim.FieldLook.Settle(core.Field);
     }
@@ -491,6 +495,9 @@ public partial class BattleEngine
             int lastFall = events.FindLastIndex(PlayersFall);
             if (lastFall >= 0) cheerBefore = events.FindIndex(lastFall + 1, e => e is Said);
         }
+        // A Mega Evolution whose Mega Dynamax comes later in the turn is told so as it is shown (plan 25 · YD4): the
+        // giant shot takes it and holds until the growth
+        var megaMaxes = MegaDynamaxesAhead(events);
         for (int i = 0; i < events.Count; i++)
         {
             var happening = events[i];
@@ -501,18 +508,55 @@ public partial class BattleEngine
                 }));
             if (happening is Said said)
             {
+                bool megaMaxLine = megaMaxes.Contains(i);
                 steps.Enqueue(new Line(said.Text, () =>
                 {
                     // What a line shows is shown knowing its line: a moment on it takes its HP with it (plan 25 · Y3)
                     showing = said;
+                    showingMegaMax = megaMaxLine;
                     foreach (var shown in said.Shows) Show(shown);
                     showing = null;
+                    showingMegaMax = false;
                     foreach (var landing in said.OnImpact) After(ImpactDelay, () => Show(landing));
                 }));
             }
             else steps.Enqueue(new Happening(() => Show(happening)));
         }
     }
+
+    // The line being shown is a Mega Evolution whose Mega Dynamax is still to come (plan 25 · YD4)
+    private bool showingMegaMax;
+
+    // The place the last move shown landed on, if it was a landed Max Move and no menu has opened since (plan 25 · YD4):
+    // the weather, terrain or hazard its lines bring arrives from there
+    private Place? maxBlow;
+
+    /// <summary>
+    /// The lines of a batch that tell of a Mega Evolution whose Pokémon Mega Dynamaxes later in it (plan 25 · YD4): the
+    /// log has R20c's two events, a <see cref="MegaEvolved"/> and a <see cref="Dynamaxed"/> into a form of
+    /// <see cref="FormKind.MegaDynamax"/>, and nothing joins them but the place.
+    /// </summary>
+    private static HashSet<int> MegaDynamaxesAhead(List<BattleEvent> events)
+    {
+        var lines = new HashSet<int>();
+        static IEnumerable<BattleEvent> All(BattleEvent e) => e is Said s ? s.Shows.Concat(s.OnImpact) : new[] { e };
+        for (int i = 0; i < events.Count; i++)
+        {
+            if (events[i] is not Said said) continue;
+            foreach (var mega in said.Shows.OfType<MegaEvolved>())
+            {
+                if (mega.Primal) continue;
+                bool grows = events.Skip(i + 1).SelectMany(All).OfType<Dynamaxed>()
+                    .Any(d => d.Place == mega.Place && IsMegaDynamaxForm(d.Form));
+                if (grows) lines.Add(i);
+            }
+        }
+        return lines;
+    }
+
+    /// <summary>A form of <see cref="FormKind.MegaDynamax"/>, by its name (plan 06 · R20c: a Mega's name and <see cref="Pokemon.MegaDynamaxSuffix"/>).</summary>
+    public static bool IsMegaDynamaxForm(string? form) =>
+        form != null && PokemonDatabase.SpeciesOfForm(form)?.Form(form)?.Kind == FormKind.MegaDynamax;
 
     /// <summary>One of the player's Pokémon going down, by itself or on the line that tells of it.</summary>
     private static bool PlayersFall(BattleEvent e) => e switch
@@ -718,6 +762,8 @@ public partial class BattleEngine
                         After(ImpactDelay, () => Sound("max_land", move.To.Side));
                 }
                 bool maxMove = MoveDatabase.Get(move.Move)?.Kind is MoveKind.MaxMove or MoveKind.GMaxMove;
+                // The field a landed Max Move changes arrives from its blow (plan 25 · YD4); any other move is the last one now
+                maxBlow = maxMove && !move.Missed && !move.Blocked && move.To != move.From ? move.To : null;
                 // Max Guard goes up for the turn, and a blow that comes to nothing on it rings the dome (plan 25 · YD3)
                 if (move.Move == BattleCore.MaxGuardName && move.To == move.From) Anim.GuardUp(move.From.Side, move.From.Slot);
                 bool onGuard = move.Blocked && move.To != move.From && Anim[move.To.Side, move.To.Slot].MaxGuarded;
@@ -884,7 +930,8 @@ public partial class BattleEngine
             case MegaEvolved mega:
                 // A Mega Evolution or a Primal Reversion (plan 06 · R20): its own look and sound, the form taken inside
                 // its light (plan 25 · Y14)
-                Change(mega.Place, mega.Form, CueKind.Mega, mega.Primal ? "primal_reversion" : "mega_evolve", BattleAnimator.MegaSwapTime, mega.Primal);
+                Change(mega.Place, mega.Form, CueKind.Mega, mega.Primal ? "primal_reversion" : "mega_evolve", BattleAnimator.MegaSwapTime, mega.Primal,
+                    megaMax: showingMegaMax && !mega.Primal);
                 break;
             case ZPowerUsed zPower:
                 // The Z-Power gathered before a Z-Move (plan 06 · R21; plan 25 · Y14): the pose and the frame in the
@@ -931,7 +978,8 @@ public partial class BattleEngine
                 else if (!Scene) Anim.WeatherQuietly(weather.Weather);
                 else
                 {
-                    Anim.WeatherBegins(weather.Weather);
+                    // Brought by a Max Move's blow, it blows out from where the blow landed (plan 25 · YD4)
+                    Anim.WeatherBegins(weather.Weather, maxBlow);
                     AudioManager.PlaySound(SoundBank.WeatherSound(weather.Weather));
                 }
                 break;
@@ -946,8 +994,9 @@ public partial class BattleEngine
                 AudioManager.PlaySound(SoundBank.WeatherSound(goesOn.Weather));
                 break;
             case SideConditionChanged or FieldConditionChanged or PlaceConditionChanged:
-                // What lies on the field (plan 25 · Y2): the line sets the look, which is drawn for as long as it lasts
-                Anim.FieldLook.Tell(happening);
+                // What lies on the field (plan 25 · Y2): the line sets the look, which is drawn for as long as it lasts;
+                // a Max Move's change comes from its blow (plan 25 · YD4), with the scene only
+                Anim.FieldLook.Tell(happening, Scene ? maxBlow : null);
                 break;
             case SubstituteChanged doll:
                 // The doll's swaps (plan 25 · Y1): the line sets the view, never the rules

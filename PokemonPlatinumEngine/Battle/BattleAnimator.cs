@@ -110,6 +110,9 @@ public sealed class CombatantView
     /// <summary>Its Dynamax is a Gigantamax: gold in its wreath.</summary>
     public bool Gigantamax { get; internal set; }
 
+    /// <summary>Its Dynamax is a Mega Dynamax (plan 25 · YD4): its wreath and its pulse in the Mega's four colours.</summary>
+    public bool MegaMax { get; internal set; }
+
     /// <summary>Seconds since it began to grow (<see cref="Dynamaxed"/>) or to shrink back (-1 = standing at its size).</summary>
     public float GiantAge { get; internal set; } = -1f;
 
@@ -259,6 +262,19 @@ public sealed class EffectCue
 
     /// <summary>For <see cref="CueKind.DynamaxEnd"/> (plan 25 · YD3): the giant fainted, and sinks into its clouds rather than shuddering where it stands.</summary>
     public bool Fell { get; init; }
+
+    /// <summary>
+    /// For <see cref="CueKind.Dynamax"/>, <see cref="CueKind.DynamaxEnd"/> and <see cref="CueKind.Mega"/> (plan 25 · YD4):
+    /// a Mega Dynamax, told by its form's kind. Its growth, wreath and end are in the Mega's four colours with the Mega
+    /// mark on the body, and the Mega Evolution before it takes the giant shot and holds it until the growth.
+    /// </summary>
+    public bool MegaMax { get; init; }
+
+    /// <summary>
+    /// For <see cref="CueKind.Weather"/> (plan 25 · YD4): the weather was brought by a Max Move's blow, and blows out
+    /// across the ground from the Pokémon in the cue's "to" place.
+    /// </summary>
+    public bool FromBlow { get; init; }
 
     /// <summary>
     /// For <see cref="CueKind.Move"/> (plan 25 · YD3): a blow that came to nothing on a Pokémon whose Max Guard is up:
@@ -489,6 +505,13 @@ public sealed class BattleAnimator
     /// the layer that lasts eases in and out over <see cref="WeatherFadeTime"/>.
     /// </summary>
     public const float WeatherCueTime = 1.2f;
+
+    /// <summary>
+    /// How long what a Max Move's blow brings takes to come out across the ground from where it landed (plan 25 · YD4):
+    /// the flood of a terrain or a G-Max side's ring, and a weather's rings. Longer than its own coming in
+    /// (<see cref="FieldArriveTime"/>), so the finisher's pull-back (to 1.4 s) sees it run out.
+    /// </summary>
+    public const float BlowArrivalTime = 1.1f;
     public const float WeatherFadeTime = 1.0f;
 
     /// <summary>
@@ -740,10 +763,15 @@ public sealed class BattleAnimator
     public float FadingStrength => FadingAge < 0f ? 0f : Math.Clamp(1f - FadingAge / WeatherFadeTime, 0f, 1f);
 
     /// <summary>A weather begins: its cue plays and its layer comes in (a weather already in the air is taken over at once).</summary>
-    public EffectCue WeatherBegins(Sim.BattleWeather weather)
+    /// <param name="from">The place a Max Move's blow landed on, which the weather blows out from (plan 25 · YD4); null for one that simply comes.</param>
+    public EffectCue WeatherBegins(Sim.BattleWeather weather, Sim.Place? from = null)
     {
         SetSky(weather, instantly: false);
-        return Cue(new EffectCue { Kind = CueKind.Weather, Weather = weather });
+        return Cue(new EffectCue
+        {
+            Kind = CueKind.Weather, Weather = weather, FromBlow = from != null,
+            FromSide = from?.Side ?? BattleSide.Player, FromSlot = from?.Slot ?? 0, ToSide = from?.Side ?? BattleSide.Player, ToSlot = from?.Slot ?? 0
+        });
     }
 
     /// <summary>The weather goes on at the end of a turn: its cue plays again over the layer that lasts.</summary>
@@ -1114,8 +1142,26 @@ public sealed class BattleAnimator
     /// <see cref="MegaSwapTime"/> or <see cref="UltraBurstSwapTime"/> in). Seeded as the move cue it stands in for was,
     /// so a battle's later cues keep the seeds they had under the stand-in.
     /// </summary>
-    public EffectCue Change(BattleSide side, int slot, CueKind kind, bool primal = false, PokemonType type = PokemonType.Normal) =>
-        Cue(new EffectCue { Kind = kind, Primal = primal, Type = type, Move = "Transform", FromSide = side, FromSlot = slot, ToSide = side, ToSlot = slot });
+    /// <param name="megaMax">
+    /// The Mega Evolution of a Mega Dynamax (plan 25 · YD4): it takes the giant shot, which is held on the place from
+    /// its light until the growth (<see cref="MegaMaxHold"/>).
+    /// </param>
+    public EffectCue Change(BattleSide side, int slot, CueKind kind, bool primal = false, PokemonType type = PokemonType.Normal, bool megaMax = false)
+    {
+        var cue = Cue(new EffectCue { Kind = kind, Primal = primal, Type = type, Move = "Transform", FromSide = side, FromSlot = slot, ToSide = side, ToSlot = slot, MegaMax = megaMax && kind == CueKind.Mega });
+        if (cue.MegaMax) MegaMaxHold = cue;
+        return cue;
+    }
+
+    /// <summary>
+    /// The Mega Evolution of a Mega Dynamax whose growth hasn't begun yet (plan 25 · YD4): the camera holds the giant
+    /// shot on its place from the Mega's light to the growth, so the overview never cuts in between the two halves.
+    /// Let go by the growth, a faint or a recall there, and a menu (<see cref="LetGoOfMegaMax"/>).
+    /// </summary>
+    public EffectCue? MegaMaxHold { get; private set; }
+
+    /// <summary>A menu opens: a Mega whose growth never came (its Pokémon fell first) is let go (plan 25 · YD4).</summary>
+    public void LetGoOfMegaMax() => MegaMaxHold = null;
 
     /// <summary>
     /// The Z-Power gathered round the Pokémon here before its Z-Move (plan 25 · Y14): it gathers itself (the charge
@@ -1149,12 +1195,15 @@ public sealed class BattleAnimator
     /// The trainer who calls it (plan 25 · YD1, <see cref="CallerFor"/>): their call comes first, for
     /// <see cref="DynamaxCallTime"/>, and the growth after it; null for the growth alone.
     /// </param>
-    public EffectCue? Dynamax(BattleSide side, int slot, bool gigantamax, bool played = true, string? caller = null)
+    /// <param name="megaMax">A Mega Dynamax (plan 25 · YD4): in the Mega's four colours, with the Mega mark.</param>
+    public EffectCue? Dynamax(BattleSide side, int slot, bool gigantamax, bool played = true, string? caller = null, bool megaMax = false)
     {
         var v = this[side, slot];
         Dynamaxes++;
         v.Dynamaxed = true;
         v.Gigantamax = gigantamax;
+        v.MegaMax = megaMax && !gigantamax;
+        if (MegaMaxHold is { } held && held.ToSide == side && held.ToSlot == slot) MegaMaxHold = null;
         v.DynamaxTurnsLeft = 3;
         v.GiantAge = played ? 0f : -1f;
         float lead = played && caller != null ? DynamaxCallTime : 0f;
@@ -1162,7 +1211,7 @@ public sealed class BattleAnimator
         if (!played) return null;
         var cue = Cue(new EffectCue
         {
-            Kind = CueKind.Dynamax, Gigantamax = gigantamax, Move = "Transform", Type = PokemonType.Normal,
+            Kind = CueKind.Dynamax, Gigantamax = gigantamax, MegaMax = v.MegaMax, Move = "Transform", Type = PokemonType.Normal,
             FromSide = side, FromSlot = slot, ToSide = side, ToSlot = slot, Lead = lead
         });
         if (caller != null) Call = new DynamaxCall(caller, side, slot, cue);
@@ -1199,8 +1248,8 @@ public sealed class BattleAnimator
     {
         var v = this[side, slot];
         if (!v.Dynamaxed) return null;
-        bool gigantamax = v.Gigantamax;
-        v.Dynamaxed = v.Gigantamax = false;
+        bool gigantamax = v.Gigantamax, megaMax = v.MegaMax;
+        v.Dynamaxed = v.Gigantamax = v.MegaMax = false;
         v.DynamaxTurnsLeft = 0;
         v.GiantLead = 0f;
         if (Call is { } call && call.Side == side && call.Slot == slot) Call = null;
@@ -1213,7 +1262,7 @@ public sealed class BattleAnimator
         if (!played || leaving) return null;
         var cue = new EffectCue
         {
-            Kind = CueKind.DynamaxEnd, Gigantamax = gigantamax, Fell = fell, FromSide = side, FromSlot = slot, ToSide = side, ToSlot = slot,
+            Kind = CueKind.DynamaxEnd, Gigantamax = gigantamax, MegaMax = megaMax, Fell = fell, FromSide = side, FromSlot = slot, ToSide = side, ToSlot = slot,
             Seed = ++giantCount * 4583 + slot * 17 + (int)side
         };
         cues.Add(cue);
@@ -1223,13 +1272,14 @@ public sealed class BattleAnimator
     private int giantCount;
 
     /// <summary>A Dynamax as the rules have it once a menu opens, with the turns it has left: nothing played.</summary>
-    public void SettleDynamax(BattleSide side, int slot, bool dynamaxed, int turnsLeft, bool gigantamax)
+    public void SettleDynamax(BattleSide side, int slot, bool dynamaxed, int turnsLeft, bool gigantamax, bool megaMax = false)
     {
         var v = this[side, slot];
         if (v.Dynamaxed != dynamaxed)
         {
             v.Dynamaxed = dynamaxed;
             v.Gigantamax = dynamaxed && gigantamax;
+            v.MegaMax = dynamaxed && megaMax && !gigantamax;
             v.GiantAge = -1f;
             v.GiantLead = 0f;
         }

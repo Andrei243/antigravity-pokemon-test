@@ -240,6 +240,14 @@ internal sealed class BattleCamera
             }
         }
 
+        // A Mega Dynamax between its two halves (plan 25 · YD4): the giant shot held on the Mega until it grows
+        if (motionNow > 0f && MegaMaxHeld(anim) is { } held)
+        {
+            var shot = GiantShot(anim, places, held);
+            if (motionNow >= 1f) return (shot, ShotKind.Giant, held);
+            return (CameraShot.Lerp(Overview(anim.Time), shot, motionNow), motionNow >= 0.5f ? ShotKind.Giant : ShotKind.Overview, held);
+        }
+
         // A Pokémon coming out of its ball
         for (int side = 0; side < 2; side++)
         {
@@ -499,8 +507,21 @@ internal sealed class BattleCamera
         {
             var c = anim.Cues[i];
             if (c.Kind is CueKind.Dynamax or CueKind.DynamaxEnd && c.Age < c.Length - GiantLetGo) return c;
+            // The Mega Evolution of a Mega Dynamax takes the giant shot through its light, and never lets go (plan 25 · YD4)
+            if (c.Kind == CueKind.Mega && c.MegaMax) return c;
         }
         return null;
+    }
+
+    /// <summary>
+    /// The Mega Evolution of a Mega Dynamax whose growth hasn't come yet, held on its place once its own light is over
+    /// (plan 25 · YD4): null once the growth begins, or its Pokémon is gone, fainting or going back.
+    /// </summary>
+    public static EffectCue? MegaMaxHeld(BattleAnimator anim)
+    {
+        if (anim.MegaMaxHold is not { } held) return null;
+        var v = anim[held.ToSide, held.ToSlot];
+        return v.Present && v.FaintAge < 0f && v.RecallAge < 0f && !v.Dynamaxed ? held : null;
     }
 
     /// <summary>

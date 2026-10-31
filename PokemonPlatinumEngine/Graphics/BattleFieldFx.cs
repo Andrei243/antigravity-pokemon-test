@@ -207,12 +207,73 @@ internal static class BattleFieldFx
                 break;
             // What G-Max Moves leave (plan 06 · R22)
             case SideCondition.GMaxSteelsurge:
-                SteelShards(p, view, time, fx);
+                SteelShards(p, view, time, fx, view.ArrivingFromABlow ? places.Body(view.From!.Value.Side, view.From.Value.Slot) : null);
                 break;
             case SideCondition.GMaxWildfire or SideCondition.GMaxCannonade or SideCondition.GMaxVineLash or SideCondition.GMaxVolcalith:
                 GMaxRing(p, what, view, time, fx);
                 break;
         }
+        // Brought by a Max Move's blow, it comes out across the ground from where the blow landed (plan 25 · YD4)
+        if (view.ArrivingFromABlow) Arrival(view, ArrivalColour(what), places, fx, (side, p));
+    }
+
+    // ------------------------------------------------------------------ arriving from a Max Move's blow (plan 25 · YD4)
+
+    /// <summary>The most an arrival from a blow draws, over what it brings (a test holds every arrival to it at every age).</summary>
+    public const int ArrivalCap = 4;
+
+    /// <summary>The colour a side's condition comes out across the ground in.</summary>
+    public static Color ArrivalColour(SideCondition what) => what switch
+    {
+        SideCondition.GMaxSteelsurge or SideCondition.StealthRock or SideCondition.Spikes => Rgba(196, 206, 224),
+        SideCondition.GMaxWildfire or SideCondition.SeaOfFire => Rgba(255, 120, 40),
+        SideCondition.GMaxCannonade or SideCondition.Swamp => Rgba(110, 176, 255),
+        SideCondition.GMaxVineLash => Rgba(112, 212, 96),
+        SideCondition.GMaxVolcalith => Rgba(255, 150, 90),
+        SideCondition.ToxicSpikes => Rgba(186, 120, 236),
+        SideCondition.StickyWeb => Rgba(236, 236, 236),
+        _ => Rgba(255, 236, 200)
+    };
+
+    /// <summary>The colour a field's condition (a terrain) comes out across the ground in: its wash's.</summary>
+    public static Color ArrivalColour(FieldCondition what) => what switch
+    {
+        FieldCondition.ElectricTerrain => Rgba(255, 236, 110),
+        FieldCondition.GrassyTerrain => Rgba(96, 196, 92),
+        FieldCondition.MistyTerrain => Rgba(255, 176, 226),
+        FieldCondition.PsychicTerrain => Rgba(196, 110, 255),
+        _ => Rgba(236, 226, 255)
+    };
+
+    /// <summary>
+    /// What a Max Move's blow brings coming out across the ground from where it landed, over the arrival's
+    /// <see cref="BattleAnimator.FieldArriveTime"/>: a flood of its colour lying on the ground from the struck
+    /// Pokémon's feet out to the platform it settles on (to both for a terrain), a ring at its front, and a glow at the
+    /// feet as it starts. <see cref="ArrivalCap"/> quads, all on or by the ground; none once it has arrived.
+    /// </summary>
+    private static void Arrival(ConditionView view, Color colour, FxPlaces places, FxList fx, (BattleSide Side, Platform P)? onto)
+    {
+        if (!view.ArrivingFromABlow) return;
+        var from = view.From!.Value;
+        var feet = places.Feet(from.Side, from.Slot);
+        float h = places.Height(from.Side, from.Slot);
+        float u = Math.Clamp(view.Age / BattleAnimator.BlowArrivalTime, 0f, 1f);
+        float e = Fx.EaseOut(u);
+        // As far as the far rim of where it settles: its side's platform, or both for what lies over the whole field
+        float reach = 0f;
+        for (int s = 0; s < 2; s++)
+        {
+            if (onto is { } one && (int)one.Side != s) continue;
+            var p = onto?.P ?? PlatformOf((BattleSide)s, places);
+            reach = Math.Max(reach, Vector3.Distance(new Vector3(feet.X, 0f, feet.Z), new Vector3(p.Centre.X, 0f, p.Centre.Z)) + p.R);
+        }
+        float r = Math.Max(0.05f, reach * e);
+        var ground = feet + Vector3.UnitY * 0.02f;
+        // Matter, alpha-blended, so it keeps its colour over the day's grass; the front a band of two rings close together
+        fx.Flat(FxShape.Glow, ground, Vector3.UnitY, r, Fx.Fade(colour, 0.75f * (1f - u * u)), FxBlend.Alpha);
+        fx.Flat(FxShape.Ring, ground + Vector3.UnitY * 0.01f, Vector3.UnitY, r * RingScale, Fx.Fade(colour, 1f - u * u), FxBlend.Alpha);
+        fx.Flat(FxShape.Ring, ground + Vector3.UnitY * 0.012f, Vector3.UnitY, r * RingScale * 0.94f, Fx.Fade(colour, 0.8f * (1f - u * u)), FxBlend.Alpha);
+        if (u < 0.4f) fx.Sprite(FxShape.Glow, feet + Vector3.UnitY * h * 0.3f, h * (0.5f + 0.6f * e), Fx.Fade(colour, 0.7f * (1f - u / 0.4f)));
     }
 
     /// <summary>Trick Room's grid, Gravity's sinking dust (its light is <see cref="ArtLook.UnderGravity"/>), or a terrain on both platforms.</summary>
@@ -225,6 +286,8 @@ internal static class BattleFieldFx
             for (int s = 0; s < 2; s++) Room(what, PlatformOf((BattleSide)s, places), s, view, time, fx);
         else if (FieldState.IsTerrain(what))
             for (int s = 0; s < 2; s++) Terrain(what, PlatformOf((BattleSide)s, places), s, view, time, fx);
+        // A terrain a Max Move brings floods out from its blow across both platforms (plan 25 · YD4)
+        if (view.ArrivingFromABlow) Arrival(view, ArrivalColour(what), places, fx, null);
     }
 
     /// <summary>What waits over a place: a Wish's star, or the mote of an attack sent ahead.</summary>
@@ -816,13 +879,14 @@ internal static class BattleFieldFx
     // ------------------------------------------------------------------ what G-Max Moves leave (plan 06 · R22)
 
     /// <summary>G-Max Steelsurge's steel: five splinters hovering over the rim as Stealth Rock's stones do, each with a glint.</summary>
-    private static void SteelShards(Platform p, ConditionView view, float time, FxList fx)
+    private static void SteelShards(Platform p, ConditionView view, float time, FxList fx, Vector3? from = null)
     {
         float k = view.Strength;
         int seed = view.Seed;
         for (int i = 0; i < Stones; i++)
         {
-            float u = Fx.EaseOut(Math.Clamp((view.Arrival - i * 0.1f) / 0.6f, 0f, 1f));
+            float raw = Math.Clamp((view.Arrival - i * 0.1f) / 0.6f, 0f, 1f);
+            float u = Fx.EaseOut(raw);
             if (u <= 0f) continue;
             float angle = p.Open((i + 0.5f + Fx.Signed(seed, i, 1) * 0.2f) / Stones);
             float size = p.R * (0.08f + 0.03f * Fx.Rand(seed, i, 3));
@@ -830,6 +894,15 @@ internal static class BattleFieldFx
             float turn = Fx.Signed(seed, i, 5) * 0.6f + 0.3f * MathF.Sin(time * 0.6f + i);
             var ground = p.At(angle, p.R * 1.08f, 0.02f);
             var at = ground + Vector3.UnitY * (p.Top + hover * u - (1f - k) * size);
+            // Thrown from a Max Move's blow (plan 25 · YD4): each splinter flies on an arc from the impact to its place,
+            // whole as it flies, spinning, and is where it would be once it lands
+            if (from is { } impact && raw < 1f)
+            {
+                var rest = ground + Vector3.UnitY * (p.Top + hover);
+                at = Vector3.Lerp(impact, rest, u) + Vector3.UnitY * (p.R * 0.5f * MathF.Sin(u * MathF.PI));
+                u = 1f;
+                turn += (1f - raw) * 9f;
+            }
             fx.Flat(FxShape.Glow, ground, Vector3.UnitY, size * 1.2f, Rgba(18, 20, 28, 70f * k * u), FxBlend.Alpha);
             fx.Sprite(FxShape.Shard, at, size, Rgba(176, 188, 206, 255f * k * u), FxBlend.Alpha, turn, depth: true);
             fx.Sprite(FxShape.Spark, at + Vector3.UnitY * size * 0.3f, size * 0.35f, Rgba(236, 242, 250, 200f * k * u * (0.5f + 0.5f * MathF.Sin(time * 2.5f + i))), FxBlend.Alpha, 0f, depth: true);

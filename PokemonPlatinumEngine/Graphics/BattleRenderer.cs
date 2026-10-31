@@ -558,7 +558,7 @@ public sealed class BattleRenderer
         if (anim.Call != null) PlaceCallBall(anim, anim.Call);
     }
 
-    private static readonly Color CallGlow = new(210, 40, 120, 255), CallBand = new(255, 70, 110, 255);
+    private static readonly Color CallGlow = new(210, 40, 120, 255), CallBand = new(255, 70, 110, 255), CallKeyStone = new(186, 96, 255, 255);
 
     /// <summary>
     /// The ball of a trainer's call before a Dynamax (plan 25 · YD1): in the hand, drawing the Pokémon back in its red
@@ -582,7 +582,12 @@ public sealed class BattleRenderer
         // The band at the wrist, flaring as the ball swells
         float band = age < 0.3f ? 0f : 0.5f + 0.5f * swell;
         if (band > 0f && age < CallRelease + 0.1f)
+        {
             fx.Sprite(FxShape.Glow, hand, 0.18f * scale * (0.6f + 0.6f * swell), Fx.Fade(CallBand, band * 0.9f));
+            // A Mega Dynamax's call lights the Key Stone beside the band (plan 25 · YD4): both halves at the wrist
+            if (call.Cue.MegaMax)
+                fx.Sprite(FxShape.Spark, hand + Vector3.UnitY * 0.06f * scale, 0.14f * scale * (0.6f + 0.6f * swell), Fx.Fade(CallKeyStone, band), rotation: MathF.PI / 4f + anim.Time * 2f);
+        }
 
         if (age < CallRelease)
         {

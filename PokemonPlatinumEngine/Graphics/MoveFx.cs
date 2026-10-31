@@ -95,7 +95,9 @@ internal static partial class MoveFx
                 SealFx.Play(c, fx, SealScratch);
                 break;
             case CueKind.Weather:
-                ArenaFx.WeatherCue(cue.Weather, c.Age, c.Seed, places, fx);
+                ArenaFx.WeatherCue(cue.Weather, c.Age, c.Seed, places, fx, cue.FromBlow ? ArenaFx.WeatherArrivalCap : 0);
+                // Brought by a Max Move's blow, it blows out from where the blow landed (plan 25 · YD4)
+                if (cue.FromBlow) ArenaFx.WeatherArrival(cue.Weather, c.Age, c.Seed, c.ToFeet, c.ToSize, fx);
                 break;
             case CueKind.Moment:
                 Moment(c, fx);

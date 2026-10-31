@@ -134,13 +134,58 @@ internal static partial class ArenaFx
         }
     }
 
+    /// <summary>The most a weather's arrival from a blow draws (plan 25 · YD4): two rings and the pieces thrown out.</summary>
+    public const int WeatherArrivalCap = 2 + WeatherArrivalPieces;
+    public const int WeatherArrivalPieces = 6;
+
+    /// <summary>How long a weather's arrival from a blow takes, and how far its ring runs out across the ground (world units).</summary>
+    public const float WeatherArrivalTime = BattleAnimator.BlowArrivalTime, WeatherArrivalReach = 14f;
+
+    /// <summary>
+    /// A weather brought by a Max Move's blow, blowing out from where it landed (plan 25 · YD4; style guide, "Max Moves on
+    /// the field"): a ring of the weather's colour running out across the ground from the struck Pokémon's feet to
+    /// <see cref="WeatherArrivalReach"/>, a second fainter one 0.1 s behind it, and six of the weather's own pieces
+    /// (sparks of sun, drops of rain, puffs of sand, hailstones, flakes, wisps) thrown out level from its body. A pure
+    /// function of the age and the seed, over by <see cref="WeatherArrivalTime"/>; <see cref="WeatherArrivalCap"/> quads.
+    /// </summary>
+    public static void WeatherArrival(BattleWeather weather, float age, int seed, Vector3 feet, float h, FxList fx)
+    {
+        if (age < 0f || age >= WeatherArrivalTime) return;
+        var (colour, shape, blend) = weather switch
+        {
+            BattleWeather.Sun or BattleWeather.HarshSun => (Rgba(255, 214, 120, 255), FxShape.Spark, FxBlend.Add),
+            BattleWeather.Rain or BattleWeather.HeavyRain => (Rgba(150, 196, 255, 255), FxShape.Drop, FxBlend.Alpha),
+            BattleWeather.Sandstorm => (Rgba(226, 196, 140, 255), FxShape.Smoke, FxBlend.Alpha),
+            BattleWeather.Hail => (Rgba(220, 240, 255, 255), FxShape.Shard, FxBlend.Alpha),
+            BattleWeather.Snow => (Rgba(246, 250, 255, 255), FxShape.Dot, FxBlend.Alpha),
+            _ => (Rgba(232, 240, 246, 255), FxShape.Smoke, FxBlend.Alpha)
+        };
+        var ground = feet + Vector3.UnitY * 0.03f;
+        for (int ring = 0; ring < 2; ring++)
+        {
+            float u = (age - ring * 0.1f) / (WeatherArrivalTime - 0.1f);
+            if (u < 0f || u >= 1f) continue;
+            float r = Math.Max(0.05f, WeatherArrivalReach * (ring == 0 ? 1f : 0.8f) * Fx.EaseOut(u));
+            fx.Flat(FxShape.Ring, ground, Vector3.UnitY, r, Fx.Fade(colour, (ring == 0 ? 0.85f : 0.5f) * (1f - u)), FxBlend.Alpha);
+        }
+        for (int i = 0; i < WeatherArrivalPieces; i++)
+        {
+            float u = age / WeatherArrivalTime;
+            float a = i * MathF.Tau / WeatherArrivalPieces + Fx.Rand(seed, i, 41) * 0.6f;
+            var way = new Vector3(MathF.Cos(a), 0f, MathF.Sin(a) * 0.6f);
+            var p = feet + Vector3.UnitY * h * (0.4f + 0.25f * MathF.Sin(u * MathF.PI)) + way * (h * 0.4f + WeatherArrivalReach * 0.5f * Fx.EaseOut(u));
+            fx.Sprite(shape, p, Math.Max(0.12f, h * 0.12f), Fx.Fade(colour, 1f - u * u), blend, a + u * 4f);
+        }
+    }
+
     /// <summary>
     /// The weather's cue (<see cref="CueKind.Weather"/>, <see cref="BattleAnimator.WeatherCueTime"/> long): a gust of
     /// it over the layer as it begins and on each turn it goes on. Rain sweeps in heavier and splashes on both
     /// platforms; the sun flares warm with rays slanting down; sand comes across in a wall; hail comes down in a
     /// flurry that bounces; fog rolls in from the left.
     /// </summary>
-    public static void WeatherCue(BattleWeather weather, float age, int seed, FxPlaces places, FxList fx)
+    /// <param name="spare">Pieces the shower leaves out for what is drawn with it (a blow's arrival, plan 25 · YD4), so the cue keeps its cap.</param>
+    public static void WeatherCue(BattleWeather weather, float age, int seed, FxPlaces places, FxList fx, int spare = 0)
     {
         float env = Fx.Envelope(age, 0f, 0.15f, 0.75f, BattleAnimator.WeatherCueTime);
         if (env <= 0f) return;
@@ -166,7 +211,7 @@ internal static partial class ArenaFx
             case BattleWeather.Rain:
             {
                 // A heavier shower over the layer, and drops bursting on both platforms
-                for (int i = 0; i < 80; i++)
+                for (int i = 0; i < 80 - spare; i++)
                 {
                     var speed = new Vector3(2.2f, -19f, 0.8f);
                     var p = Drift(i, age + Fx.Rand(seed, i, 1) * 3f, RainMin, RainMax, speed, 300 + seed % 97);
