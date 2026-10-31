@@ -24,7 +24,8 @@ partial class Harness
     //   8. Mega Dynamax's double change (plan 25 · YD4): the player's own Garchomp (gi45_* to gi47_*) and Cynthia's (gi48_*).
     //   9. the Champions with the Mega Max Band (plan 25 · YD6): the bands (gi60 to gi64), Cynthia's fight under the boss box (gi65 to gi75), the Battle Scene off (gi78, gi79).
     //  10. the Gigantamax signatures, part a (plan 25 · YD7): the five's growths and set pieces (gi80 to gi84), a foe's G-Max Replenish (gi85).
-    // GIANTS_PART=cynthia|dynamax|double|own|finisher|guard|field|megamax|champions|signatures runs one part.
+    //      Part b: Chi Strike, Gold Rush, Cuddle, Befuddle and Depletion the same way (gi86 to gi90).
+    // GIANTS_PART=cynthia|dynamax|double|own|finisher|guard|field|megamax|champions|signatures runs one part; signaturesb part b alone with Resonance again.
     public void GiantsMode()
     {
         string only = Environment.GetEnvironmentVariable("GIANTS_PART") ?? "";
@@ -914,18 +915,36 @@ partial class Harness
         // ---- 10. the Gigantamax signatures, part a (plan 25 · YD7): the player's own Gigantamax of each of the five,
         // its growth in its G-Max Move's colours (as it gathers and as it settles), then its signature from the stop
         // through its set piece (gi80 to gi84), and a foe's Gigantamax Snorlax through a trainer's AI (gi85)
-        if (only is "" or "signatures")
+        // Part b (gi86 to gi90: Chi Strike, Gold Rush, Cuddle, Befuddle, Depletion) follows part a's five in the same
+        // way; GIANTS_PART=signaturesb shoots part b alone with Resonance again (gi83, its curtains remade in part b).
+        if (only is "" or "signatures" or "signaturesb")
         {
-            var five = new (string Prefix, string Species, string Move, string Foe)[]
+            var partA = new (string Prefix, string Species, string Move, string Foe)[]
             {
                 ("gi80_wildfire", "Charizard", "Flamethrower", "Snorlax"), ("gi81_volt_crash", "Pikachu", "Thunderbolt", "Snorlax"),
                 ("gi82_terror", "Gengar", "Shadow Ball", "Slowbro"), ("gi83_resonance", "Lapras", "Ice Beam", "Snorlax"),
                 ("gi84_replenish", "Snorlax", "Body Slam", "Blissey")
             };
-            uint seed = 380;
-            foreach (var (prefix, species, move, foe) in five)
+            var partB = new (string Prefix, string Species, string Move, string Foe)[]
             {
-                var b = OwnBattle(Giant(species, true, 50, move, "Growl"), seed++, Sitter(foe, 70));
+                ("gi86_chi_strike", "Machamp", "Cross Chop", "Snorlax"), ("gi87_gold_rush", "Meowth", "Slash", "Snorlax"),
+                ("gi88_cuddle", "Eevee", "Quick Attack", "Snorlax"), ("gi89_befuddle", "Butterfree", "Bug Buzz", "Snorlax"),
+                ("gi90_depletion", "Duraludon", "Dragon Pulse", "Snorlax")
+            };
+            // Part a's seeds stay as they were (380 on) and its shots come first, so they stand as part a shot them;
+            // part b's seeds go on from 386, after the foe's battle
+            if (only == "signaturesb")
+            {
+                Signature(partA[3].Prefix, partA[3].Species, partA[3].Move, partA[3].Foe, 383u);
+                for (int i = 0; i < partB.Length; i++) Signature(partB[i].Prefix, partB[i].Species, partB[i].Move, partB[i].Foe, 386u + (uint)i);
+                game.State = GameState.Overworld;
+                return;
+            }
+            for (int i = 0; i < partA.Length; i++) Signature(partA[i].Prefix, partA[i].Species, partA[i].Move, partA[i].Foe, 380u + (uint)i);
+
+            void Signature(string prefix, string species, string move, string foe, uint seed)
+            {
+                var b = OwnBattle(Giant(species, true, 50, move, "Growl"), seed, Sitter(foe, 70));
                 ToMainMenu(b);
                 b.SelectMainMenuOption(0);
                 Frames(5);
@@ -933,12 +952,12 @@ partial class Harness
                 b.SelectMove(0);
                 Frames(1);
                 var growth = Until(b, c => c.Kind == CueKind.Dynamax, 400);
-                if (growth == null) { Console.WriteLine($"  !! no growth for {prefix}"); continue; }
+                if (growth == null) { Console.WriteLine($"  !! no growth for {prefix}"); return; }
                 double found = growth.Age, lead = growth.Lead;
                 Console.WriteLine($"  {prefix}: the growth's G-Max Move {growth.GMax ?? "none"}, the call {(lead > 0 ? "played" : "not played")}");
                 Beat(b, prefix + "_growth", lead + 0.35 - found, lead + 1.45 - found);
                 var max = Until(b, c => c.MaxMove, 400);
-                if (max == null) { Console.WriteLine($"  !! no G-Max Move for {prefix}"); continue; }
+                if (max == null) { Console.WriteLine($"  !! no G-Max Move for {prefix}"); return; }
                 Console.WriteLine($"  {prefix}: {max.Move}");
                 Finisher(b, prefix, max, 0.4, 0.62, 0.95, 1.3);
                 // The wreath at the menu in its colours
@@ -967,6 +986,7 @@ partial class Harness
                 Skip(1.0);
                 Watch(fb, "gi85_foe", 4, 3);
             }
+            for (int i = 0; i < partB.Length; i++) Signature(partB[i].Prefix, partB[i].Species, partB[i].Move, partB[i].Foe, 386u + (uint)i);
         }
         game.State = GameState.Overworld;
     }
