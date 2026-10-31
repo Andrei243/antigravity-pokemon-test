@@ -1265,6 +1265,9 @@ public static class ScriptParser
                 return new Condition { Query = Query.NationalDex, Negated = negated };
             case "objective":
                 return new Condition { Query = Query.Objective, Negated = negated };
+            // The chosen Pokémon's master is beaten already (plan 14 · B15, the Masters' Hall)
+            case "titled":
+                return new Condition { Query = Query.Titled, Negated = negated };
             // A rule of the run chosen at NEW GAME (plan 13 · V5)
             case "rule":
             {

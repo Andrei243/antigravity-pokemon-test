@@ -252,11 +252,12 @@ internal static partial class ModernUi
             new CardSide(back ? CardPage.Front : CardPage.Back), flip);
 
     /// <summary>The card on any of its pages (plan 18 · W2): <paramref name="shown"/> as it turns from <paramref name="from"/>.</summary>
-    public static void DrawTrainerCard(int sw, int sh, TrainerCardInfo info, Texture2D? portrait, float appear, CardSide shown, CardSide from, float flip)
+    /// <param name="titleRow">The first row of the Masters' Hall's titles the titles' page shows (plan 14 · B15).</param>
+    public static void DrawTrainerCard(int sw, int sh, TrainerCardInfo info, Texture2D? portrait, float appear, CardSide shown, CardSide from, float flip, int titleRow = 0)
     {
         Backdrop(sw, sh);
         ScreenTitle(Text.Of("card.title"));
-        if (info.RegionPages.Count > 0 || info.Run != null)
+        if (info.RegionPages.Count > 0 || info.Run != null || info.Titles.Count > 0)
             Hints(sw - Margin, 44, Hint("shared.keys.leftRight", "card.page"), Hint("shared.keys.z", "shared.hints.turnOver"), Hint("shared.keys.esc", "shared.hints.back"));
         else Hints(sw - Margin, 44, Hint("shared.keys.z", "shared.hints.turnOver"), Hint("shared.keys.esc", "shared.hints.back"));
 
@@ -289,8 +290,13 @@ internal static partial class ModernUi
             UiShapes.Fill(new Rectangle(band.X + band.Width * 0.56f + 104, band.Y + 6, 26, band.Height - 12), 6, new Color(255, 255, 255, 34), skew: -0.45f);
         }
         float bandY = band.Y + band.Height / 2f;
-        UiFonts.DrawCentered(info.Name, band.X + 44, bandY + 3, 52, new Color(0, 0, 0, 60), UiWeight.Black);
-        UiFonts.DrawCentered(info.Name, band.X + 44, bandY, 52, Color.White, UiWeight.Black);
+        // The latest title of the Masters' Hall under the name, on the front (plan 14 · B15): the name rises to make room
+        bool titled = side.Page == CardPage.Front && info.LatestTitle.Length > 0;
+        float nameY = titled ? bandY - 16 : bandY;
+        UiFonts.DrawCentered(info.Name, band.X + 44, nameY + 3, 52, new Color(0, 0, 0, 60), UiWeight.Black);
+        UiFonts.DrawCentered(info.Name, band.X + 44, nameY, 52, Color.White, UiWeight.Black);
+        if (titled)
+            UiFonts.DrawCentered(info.LatestTitle.ToUpperInvariant(), band.X + 46, bandY + 32, 24, Lighter(colour, 0.7f), UiWeight.Black);
         string id = Text.Of("card.id", ("id", TrainerCardScreen.FormatId(info.TrainerId)));
         float idX = band.X + band.Width - 44 - UiFonts.Measure(id, 32, UiWeight.Black);
         UiFonts.DrawCentered(id, idX, bandY, 32, Color.White, UiWeight.Black);
@@ -307,6 +313,9 @@ internal static partial class ModernUi
                 break;
             case CardPage.Region when side.Region >= 0 && side.Region < info.RegionPages.Count:
                 CardRegionPage(card, info.RegionPages[side.Region]);
+                break;
+            case CardPage.Titles when info.Titles.Count > 0:
+                CardTitlesPage(card, info, titleRow);
                 break;
             default:
                 CardFront(card, info, portrait, colour);
@@ -475,6 +484,51 @@ internal static partial class ModernUi
         {
             string more = Text.Of("card.graveyardMore", ("count", first));
             UiFonts.Draw(more, right - UiFonts.Measure(more, 20, UiWeight.Black), y + 18, 20, Muted, UiWeight.Black);
+        }
+    }
+
+    /// <summary>Where the titles' list begins under the page's top, and how far it reaches (plan 14 · B15).</summary>
+    public const float CardTitleListTop = 160, CardTitleListHeight = 840 - 176 - 160 - 40;
+
+    /// <summary>How far apart the rows of titles stand.</summary>
+    public const float CardTitleRowPitch = 50;
+
+    /// <summary>How many rows of titles the page's panel holds (<see cref="TrainerCardScreen.TitleRows"/> is held to it).</summary>
+    public static int CardTitleRows => (int)(CardTitleListHeight / CardTitleRowPitch);
+
+    /// <summary>
+    /// The page of the Masters' Hall's titles (plan 14 · B15; style guide, "Menu screens (G10)", the Trainer Card): how
+    /// many are won out of how many, and the titles by National Pokédex number, three to a row, a page of rows at a time
+    /// from <paramref name="firstRow"/>, with where the page stands in the list when it doesn't hold them all.
+    /// </summary>
+    private static void CardTitlesPage(Rectangle card, TrainerCardInfo info, int firstRow)
+    {
+        float x = card.X + 72, right = card.X + card.Width - 72, top = card.Y + 176;
+        string heading = Text.Of("card.titles");
+        UiFonts.Draw(heading, x, top, 64, Ink, UiWeight.Black);
+        float after = x + UiFonts.Measure(heading, 64, UiWeight.Black) + 28;
+        UiFonts.Draw(Text.Of("card.outOf", ("count", info.Titles.Count), ("of", info.TitlesOf)), after, top + 22, 36, Muted, UiWeight.Black);
+        UiFonts.Draw(Text.Of("card.titlesSub"), x, top + 82, 28, Muted, UiWeight.ExtraBold);
+        UiShapes.Fill(new Rectangle(x, top + 128, right - x, 3), 1.5f, Rule);
+
+        const int columns = TrainerCardScreen.TitleColumns;
+        int rows = CardTitleRows;
+        float w = (right - x) / columns;
+        int first = Math.Max(0, firstRow) * columns, last = Math.Min(info.Titles.Count, first + rows * columns);
+        for (int i = first; i < last; i++)
+        {
+            int k = i - first;
+            float cx = x + (k % columns) * w, cy = top + CardTitleListTop + (k / columns) * CardTitleRowPitch + CardTitleRowPitch / 2f;
+            var title = info.Titles[i];
+            string number = Text.Of("card.titleNumber", ("number", title.Number.ToString("D4", CultureInfo.InvariantCulture)));
+            UiFonts.DrawCentered(number, cx, cy, 20, Muted, UiWeight.Black);
+            float nameX = cx + UiFonts.Measure(number, 20, UiWeight.Black) + 14;
+            UiFonts.DrawCentered(ClipToWidth(title.Title, cx + w - 20 - nameX, 28, UiWeight.Black), nameX, cy, 28, Ink, UiWeight.Black);
+        }
+        if (info.Titles.Count > rows * columns)
+        {
+            string where = Text.Of("card.titleMore", ("first", first + 1), ("last", last), ("count", info.Titles.Count));
+            UiFonts.Draw(where, right - UiFonts.Measure(where, 24, UiWeight.Black), top + 86, 24, Muted, UiWeight.Black);
         }
     }
 

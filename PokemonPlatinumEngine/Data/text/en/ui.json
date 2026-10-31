@@ -1019,7 +1019,11 @@
     "graveyard": "GRAVEYARD  {count}",
     "graveyardEmpty": "Nobody has fallen yet.",
     "graveyardMore": "and {count} more before",
-    "fallenLine": "{species}  Lv. {level}  ·  {place}"
+    "fallenLine": "{species}  Lv. {level}  ·  {place}",
+    "titles": "MASTER TITLES",
+    "titlesSub": "Won in the Masters' Hall. Up and down scroll the list.",
+    "titleNumber": "No. {number}",
+    "titleMore": "{first}–{last} of {count}"
   },
   "boxes": {
     "title": "PC BOXES",

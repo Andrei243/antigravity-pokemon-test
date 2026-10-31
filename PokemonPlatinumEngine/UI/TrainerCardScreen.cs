@@ -61,7 +61,22 @@ public sealed record TrainerCardInfo(string Name, int TrainerId, int Money, int 
 
     /// <summary>The run has ended (plan 13 · V4): the Run page says so.</summary>
     public bool RunEnded { get; init; }
+
+    /// <summary>
+    /// The Masters' Hall's titles won (plan 14 · B15), by National Pokédex number; empty for none, which gives the card
+    /// no page for them.
+    /// </summary>
+    public IReadOnlyList<CardTitle> Titles { get; init; } = Array.Empty<CardTitle>();
+
+    /// <summary>How many titles there are to win (a master for every species).</summary>
+    public int TitlesOf { get; init; }
+
+    /// <summary>The title won last, as the class is named ("Bidoof Master"), under the player's name on the front; empty for none.</summary>
+    public string LatestTitle { get; init; } = "";
 }
+
+/// <summary>A title of the Masters' Hall as the card lists it (plan 14 · B15): its species' National Pokédex number and the title, in the language chosen.</summary>
+public sealed record CardTitle(int Number, string Title);
 
 /// <summary>A Pokémon of the run's graveyard as the card shows it: its name, its species, its level and where it fell, all in the language chosen.</summary>
 public sealed record CardFallen(string Name, string Species, int Level, string Place);
@@ -70,7 +85,7 @@ public sealed record CardFallen(string Name, string Species, int Level, string P
 /// The pages of the Trainer Card (plan 18 · W2; plan 13 · V1, V13 add theirs at the end): the front, its back, and a
 /// page for each region the player has been in.
 /// </summary>
-public enum CardPage { Front, Back, Run, Region }
+public enum CardPage { Front, Back, Run, Region, Titles }
 
 /// <summary>
 /// The Trainer Card: who the player is, what they have, how long they have played and the badges they have
@@ -102,8 +117,11 @@ public class TrainerCardScreen
     /// <summary>On a region's page, which of <see cref="TrainerCardInfo.RegionPages"/> it is; -1 elsewhere.</summary>
     public int RegionShown => RegionOf(page);
 
-    // 0 is the front, 1 the back, then the run's page when the game is played some way of its own (plan 13 · V1), then the regions'
-    private int FirstRegionPage => hasRun ? 3 : 2;
+    // 0 is the front, 1 the back, then the run's page when the game is played some way of its own (plan 13 · V1), then
+    // the Masters' Hall's titles once one is won (plan 14 · B15), then the regions'
+    private int RunPageIndex => hasRun ? 2 : -1;
+    private int TitlesPageIndex => titles > 0 ? (hasRun ? 3 : 2) : -1;
+    private int FirstRegionPage => 2 + (hasRun ? 1 : 0) + (titles > 0 ? 1 : 0);
     private int RegionOf(int index) => index >= FirstRegionPage ? index - FirstRegionPage : -1;
     private int LastPage => FirstRegionPage - 1 + RegionPages;
 
@@ -111,10 +129,41 @@ public class TrainerCardScreen
     public bool HasRunPage => hasRun;
     private bool hasRun;
 
+    /// <summary>Whether the card has a page of the Masters' Hall's titles (plan 14 · B15): only once one is won.</summary>
+    public bool HasTitlesPage => titles > 0;
+    private int titles;
+
+    /// <summary>
+    /// The first row of titles the page shows (plan 14 · B15): up and down move it a row while the page is shown, and it
+    /// never runs past the last row that still fills the page.
+    /// </summary>
+    public int TitleRow { get; private set; }
+
+    /// <summary>How many rows of titles the page holds at once, <see cref="TitleColumns"/> to a row; <see cref="ModernUi.CardTitleRows"/> is what its panel holds.</summary>
+    public const int TitleRows = 9;
+
+    /// <summary>How many titles stand side by side in a row of the page.</summary>
+    public const int TitleColumns = 3;
+
+    /// <summary>The last first row the page may show: the rows of titles less a page.</summary>
+    public int LastTitleRow => Math.Max(0, (titles + TitleColumns - 1) / TitleColumns - TitleRows);
+
+    /// <summary>Moves the page of titles a row down or up (plan 14 · B15); false where it is shown in full or at either end.</summary>
+    public bool ScrollTitles(int step)
+    {
+        int to = Math.Clamp(TitleRow + Math.Sign(step), 0, LastTitleRow);
+        if (to == TitleRow) return false;
+        TitleRow = to;
+        AudioManager.PlaySound("cursor");
+        return true;
+    }
+
     /// <summary>Whether the card is turned over to its back (A turns it, as in the original).</summary>
     public bool ShowingBack => Page == CardPage.Back;
 
-    private CardPage PageOf(int index) => index switch { 0 => CardPage.Front, 1 => CardPage.Back, 2 when hasRun => CardPage.Run, _ => CardPage.Region };
+    private CardPage PageOf(int index) =>
+        index == 0 ? CardPage.Front : index == 1 ? CardPage.Back : index == RunPageIndex ? CardPage.Run
+        : index == TitlesPageIndex ? CardPage.Titles : CardPage.Region;
 
     /// <summary>Turns the card over: the front to its back and the back to its front; a region's page goes back to the front.</summary>
     public void Flip() => TurnTo(page == 0 ? 1 : 0);
@@ -138,7 +187,8 @@ public class TrainerCardScreen
 
     /// <param name="portrait">The player's field sprite (baked outside any texture mode); none in tests.</param>
     /// <param name="regionPages">How many regions' pages the card has (<see cref="TrainerCardInfo.RegionPages"/>).</param>
-    public void Open(Texture2D? portrait = null, int regionPages = 0, bool hasRun = false)
+    /// <param name="titles">How many of the Masters' Hall's titles are won (plan 14 · B15); the card has their page with one or more.</param>
+    public void Open(Texture2D? portrait = null, int regionPages = 0, bool hasRun = false, int titles = 0)
     {
         IsActive = true;
         page = from = 0;
@@ -147,6 +197,20 @@ public class TrainerCardScreen
         this.portrait = portrait;
         RegionPages = Math.Max(0, regionPages);
         this.hasRun = hasRun;
+        this.titles = Math.Max(0, titles);
+        TitleRow = 0;
+    }
+
+    /// <summary>Goes straight to a page the card has (a tool's way to it; false where the card has no such page).</summary>
+    public bool GoTo(CardPage to)
+    {
+        for (int i = 0; i <= LastPage; i++)
+            if (PageOf(i) == to)
+            {
+                if (i != page) TurnTo(i);
+                return true;
+            }
+        return false;
     }
 
     public void Close() => IsActive = false;
@@ -168,13 +232,15 @@ public class TrainerCardScreen
         }
         else if (InputManager.IsActionPressed(GameAction.Left)) Turn(-1);
         else if (InputManager.IsActionPressed(GameAction.Right)) Turn(1);
+        else if (Page == CardPage.Titles && InputManager.IsActionPressed(GameAction.Down)) ScrollTitles(1);
+        else if (Page == CardPage.Titles && InputManager.IsActionPressed(GameAction.Up)) ScrollTitles(-1);
     }
 
     public void Draw(int screenWidth, int screenHeight, TrainerCardInfo info)
     {
         if (!IsActive) return;
         ModernUi.DrawTrainerCard(screenWidth, screenHeight, info, portrait, Math.Clamp(openAge / AppearTime, 0f, 1f),
-            new CardSide(Page, RegionShown), new CardSide(PageOf(from), RegionOf(from)), Math.Clamp(flipAge / FlipTime, 0f, 1f));
+            new CardSide(Page, RegionShown), new CardSide(PageOf(from), RegionOf(from)), Math.Clamp(flipAge / FlipTime, 0f, 1f), TitleRow);
     }
 }
 

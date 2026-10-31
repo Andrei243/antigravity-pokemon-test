@@ -768,6 +768,7 @@ public class ScriptTests
               if friendship >= 200 end
               if rule nocenter end
               if not rule monotype end
+              if titled end
             """)[0];
 
         var asked = script.Code.Select(i => i.Condition!.Query).ToHashSet();

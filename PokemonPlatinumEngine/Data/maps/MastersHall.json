@@ -1,0 +1,111 @@
+{
+  "name": "MastersHall",
+  "displayName": "Masters' Hall",
+  "bgmTrack": "sinnoh/veilstone",
+  "interior": "GameHall",
+  "trees": "Round",
+  "battleArena": "Gym",
+  "width": 11,
+  "height": 13,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#####D#####"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "##.......##",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "##.......##",
+    "#####.#####"
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 4,
+      "width": 3,
+      "depth": 6
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 5,
+      "sourceY": 12,
+      "targetMap": "BattleFrontierAnnex",
+      "targetX": 1,
+      "targetY": 6,
+      "targetFacing": "Right"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "masters_receptionist",
+      "name": "Receptionist",
+      "npcType": "Lady",
+      "x": 3,
+      "y": 10,
+      "facing": "Right",
+      "script": "Receptionist",
+      "shownBy": "SinnohHallOfFame"
+    },
+    {
+      "id": "master",
+      "name": "Master",
+      "npcType": "BlackBelt",
+      "x": 5,
+      "y": 4,
+      "facing": "Down",
+      "script": "Master",
+      "shownBy": "SinnohHallOfFame"
+    }
+  ],
+  "wildEncounters": []
+}
