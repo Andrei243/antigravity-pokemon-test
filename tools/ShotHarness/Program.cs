@@ -142,6 +142,7 @@ if (mode == "versus") h.VersusMode();
 if (mode == "clips") h.ClipsMode();
 if (mode == "moves") h.MovesMode();
 if (mode == "later") h.LaterMode();
+if (mode == "giants") h.GiantsMode();
 if (mode == "conditions") h.ConditionsMode();
 if (h.Run("sheets")) h.SheetsMode();
 if (h.Run("story")) h.StoryMode();

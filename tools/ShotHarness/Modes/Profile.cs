@@ -325,6 +325,37 @@ partial class Harness
             for (int guard = 0; guard < 8 && h.HUD.MenuState == BattleMenuState.Message; guard++) { h.ConfirmMessage(); Frames(1); Skip(50 / 60.0); }
             Skip(0.8);
             Profile("horde battle, five at the menu");
+
+            // Giants (plan 25 · YD0, the baseline of Y-dynamax-punch): a battle at its menu with a giant on each side, and
+            // three Max Moves at their landing, started by the animator itself as `later` starts them
+            var giantTeam = new Party();
+            giantTeam.Add(Made("Charizard", 100, 41));
+            var giantB = new BattleEngine(new BattleSetup
+            {
+                PlayerParty = giantTeam, Inventory = inventory, Pokedex = pokedex, WildPokemon = new List<Pokemon> { Made("Snorlax", 100, 42) },
+                Random = new Random(43), Rules = Ruleset.Modern
+            });
+            game.Map = MapDatabase.Get("Sinnoh");
+            game.BattleRenderer.SetArena(BattleArena.Grass);
+            game.Battle = giantB;
+            game.State = GameState.Battle;
+            ToMainMenu(giantB);
+            giantB.Anim.Dynamax(BattleSide.Enemy, 0, false);
+            giantB.Anim.Dynamax(BattleSide.Player, 0, false);
+            Skip(BattleAnimator.DynamaxTime + 0.5);
+            Profile("battle, a giant on each side, at the menu");
+            foreach (string maxMove in new[] { "Max Flare", "Max Quake", "G-Max Wildfire" })
+            {
+                var data = MoveDatabase.Get(maxMove)!;
+                Skip(BattleAnimator.ZMoveTime + 0.4);
+                giantB.Anim.Cue(new EffectCue
+                {
+                    Kind = CueKind.Move, Move = data.Name, Type = data.Type, Category = data.Category, MaxMove = true,
+                    FromSide = BattleSide.Player, ToSide = BattleSide.Enemy
+                });
+                Skip(BattleAnimator.ImpactTime + 0.03);
+                Profile($"{maxMove}, landing, a giant on each side", 120, frozen: true);
+            }
             game.State = GameState.Overworld;
         }
         engine.Settings.Quality = GraphicsQuality.High;
