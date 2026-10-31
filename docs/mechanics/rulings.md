@@ -5789,6 +5789,25 @@ our own on HeartGold's shapes, and the stats are plan 15's decision 6 (our own f
   overworld). Its three doors lead into the lobby (`PokeathlonDome_1F`), where the clerk in the middle of the long desk
   runs `common.AthlonDesk`. *Cut down*: the lobby's ways down to the event rooms and up to the stands stay shut, since
   the events are played on their own board; the owner's welcome on a first visit and Whitney's visits are left out.
+- **Events, batch 3, the courses and the shop** (plan 15 · E8; our own numbers on HeartGold's shapes, `Models/AthlonEvents.Batch3.cs`):
+  **Relay Run** is a minute of laps of 600 units, one runner of the three at a time at a pace by Speed, tiring by a
+  breath of 300 spent at 1.4 − 0.2 × Stamina a frame (a tired runner keeps half its pace, an exhausted one a fifth),
+  each stride ±5% on the event's generator; the button spurts (×1.4 for 15 frames, twice the breath, again after
+  36 − 4 × Skill), a switch hands over (15 frames), four points a lap counted by the quarter. **Circle Push** is forty
+  seconds on a walled floor 140 from its middle to each wall with a circle of 48 at its middle, moving and lunging as
+  in Ring Drop; a frame in the circle counts once for its team, twice alone in it, a point every fifteen; pushing tires
+  (7 − Stamina a frame of 600) and a tired one pushes at half strength. **Goal Roll** is a minute on a pitch 150 from
+  its middle to each side, each team's goal a mouth of 55 either side of its own side's middle; running into the ball
+  knocks it on, a lunge strikes it along the striker's way at 5 + 1.5 × Power, off by up to 0.35 − 0.06 × Skill
+  radians; a goal is fifteen points to whoever touched the ball last, one into their own goal five off. **The
+  courses** are HeartGold's five as it pairs the ten events (`Data/athlon.json`), after E6's Practice Course; one
+  naming an event not built yet is left out of the list. **Medals** are by a course's total, bands of our own: gold
+  from 200, silver from 140, bronze from 80 (an even team of autopilots scores about 115); the best of each course is
+  kept with its best score. *Cut down*: HeartGold's bonuses for what a Pokémon did in an event. **The Athlete Shop**
+  is the stall keeper on the square (`common.AthlonShop`): the shop's screen given the dome's stock of Platinum's
+  items (vitamins, PP Up, Rare Candy, the evolution stones, two berries, a Heart Scale) at prices in Athlete Points of
+  our own, and nothing is sold to it; *cut down*: HeartGold's rotating daily stock and its Aprijuice. **The records
+  board** is the desk east of the course desk (`common.AthlonRecords`).
 
 ## Ways to play (2026-10-24, plan 13 · V1)
 

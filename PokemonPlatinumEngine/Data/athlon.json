@@ -1,0 +1,37 @@
+{
+  // The Pokéathlon's courses, medals and shop (plan 15 · E8; docs/mechanics/rulings.md, "The Pokéathlon"). Written by
+  // hand. The five courses pair the ten events as HeartGold does (the course's text key is athlon.course.<key>; each
+  // event by its AthlonEventKind's name). A course whose events aren't all built yet is left out of the dome's list
+  // (AthlonCourses.All) until they are. The medals' bands are our own, on a course's total score; the shop's goods are
+  // Platinum's items at prices in Athlete Points of our own.
+  "courses": [
+    { "key": "speed", "events": [ "HurdleDash", "PennantCapture", "RelayRun" ] },
+    { "key": "power", "events": [ "BlockSmash", "CirclePush", "GoalRoll" ] },
+    { "key": "skill", "events": [ "SnowThrow", "GoalRoll", "PennantCapture" ] },
+    { "key": "stamina", "events": [ "RingDrop", "RelayRun", "BlockSmash" ] },
+    { "key": "jump", "events": [ "LampJump", "DiscCatch", "HurdleDash" ] }
+  ],
+  "medals": { "gold": 200, "silver": 140, "bronze": 80 },
+  "shop": [
+    { "item": "HP Up", "points": 1000 },
+    { "item": "Protein", "points": 1000 },
+    { "item": "Iron", "points": 1000 },
+    { "item": "Calcium", "points": 1000 },
+    { "item": "Zinc", "points": 1000 },
+    { "item": "Carbos", "points": 1000 },
+    { "item": "PP Up", "points": 2000 },
+    { "item": "Rare Candy", "points": 1500 },
+    { "item": "Heart Scale", "points": 300 },
+    { "item": "Fire Stone", "points": 2500 },
+    { "item": "Water Stone", "points": 2500 },
+    { "item": "Thunder Stone", "points": 2500 },
+    { "item": "Leaf Stone", "points": 2500 },
+    { "item": "Moon Stone", "points": 2500 },
+    { "item": "Sun Stone", "points": 2500 },
+    { "item": "Shiny Stone", "points": 3000 },
+    { "item": "Dusk Stone", "points": 3000 },
+    { "item": "Dawn Stone", "points": 3000 },
+    { "item": "Sitrus Berry", "points": 400 },
+    { "item": "Lum Berry", "points": 600 }
+  ]
+}

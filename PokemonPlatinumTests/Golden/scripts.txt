@@ -9306,6 +9306,18 @@ way 0
 way 1, from answer 1
   Clerk> Come back whenever your Pokémon feel like a run!
   ? Would you like to enter a course? = No
+=== common.AthlonRecords
+from a trainer with lines of their own
+way -
+  Clerk> This desk keeps every course's best score and the best medal won on it. Here are your records!
+  Clerk> Come back and set a new record any time!
+  * open Athlon records
+=== common.AthlonShop
+from a trainer with lines of their own
+way -
+  Stall Keeper> Welcome to the Athlete Shop! Everything here is paid for in Athlete Points.
+  Stall Keeper> Thank you! Earn more points in the dome and come again!
+  * open Athlon shop
 === common.Attendant
 from a trainer with lines of their own
 way -

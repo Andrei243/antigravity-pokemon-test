@@ -903,7 +903,7 @@ public static class ScriptParser
                 };
             // The Pokéathlon (plan 15 · E6)
             case "athlon":
-                return new Instruction { Op = Op.Athlon, Line = line, Name = r.OneOf("able", "open", "points") };
+                return new Instruction { Op = Op.Athlon, Line = line, Name = r.OneOf("able", "open", "points", "records", "shop") };
             // Shoal Cave's tide (plan 21 · H8, part d): FLAG_SYS_SHOAL_TIDE by the hour, when come in from outdoors
             case "tide":
                 return new Instruction { Op = Op.Tide, Line = line };

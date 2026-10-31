@@ -1,7 +1,7 @@
 {
   // The Pokéathlon Dome's lobby (plan 20 · J13): HeartGold's MAP_POKEATHLON_DOME_INTERIOR_1F. The course reception in
-  // the middle of the long desk runs plan 15 · E6's clerk (common.AthlonDesk); the desks beside it (the data card and
-  // the records, HeartGold's other receptionists) only talk until plan 15 · E8. The way down to the event rooms
+  // the middle of the long desk runs plan 15 · E6's clerk (common.AthlonDesk); the desk to its east keeps the records
+  // (common.AthlonRecords, plan 15 · E8); the other desks (the data card, HeartGold's other receptionists) only talk. The way down to the event rooms
   // (warp 1) and the stairs up to the stands (warp 2) stay shut: the events are played on their own board (rulings, "The
   // Pokéathlon"). Whitney, who visits the lobby in HeartGold behind a flag nothing sets here, is left out
   "area": "pokeathlon_dome_interior_1f",
@@ -19,15 +19,13 @@
     "d49r0101_pcwoman1_5": {
       "name": "Clerk",
       "still": true,
-      "dialog": [
-        "This desk keeps every course's best score. Enter a course at the desk beside me and set a record!"
-      ]
+      "script": "AthlonRecords"
     },
     "d49r0101_pcwoman1_4": {
       "name": "Clerk",
       "still": true,
       "dialog": [
-        "Athlete Points are earned in every course. The Athlete Shop on the square will take them once its goods come in."
+        "Athlete Points are earned in every course. Spend them at the Athlete Shop's stall on the square."
       ]
     },
     "d49r0101_pcwoman1_2": {

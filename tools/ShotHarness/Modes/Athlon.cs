@@ -127,6 +127,8 @@ partial class Harness
         ReadOn("Athlete Points", "at07b_clerk_after");
         Console.WriteLine($"  records: points {game.Athlon.Points}, best {game.Athlon.BestOf("practice")}, runs {game.Athlon.Runs}, wins {game.Athlon.Wins}");
 
+        AthlonBatch3(screen, Until, ReadOn);
+
         engine.NewGameRegion = "Sinnoh";
     }
 }

@@ -10,9 +10,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 |---|---|---|---|---|---|
 | The introduction (`intro:`) | 80 | 80 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1276 | 1236 | 40 | 1 | 0 |
-| Scripts (`script:`) | 9120 | 8692 | 428 | 17 | 0 |
-| People of the world (`world:`) | 6773 | 6714 | 59 | 4 | 0 |
-| **All** | 17249 | 16722 | 527 | 22 | 0 |
+| Scripts (`script:`) | 9124 | 8696 | 428 | 17 | 0 |
+| People of the world (`world:`) | 6771 | 6712 | 59 | 4 | 0 |
+| **All** | 17251 | 16724 | 527 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -28,7 +28,7 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 
 ## The cast
 
-- Named characters: 336 voices (299 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
+- Named characters: 337 voices (300 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Cloned from the user's samples: `rival`.
 - Archetypes in use: 224, with 677 voices to cast (V5).
 - Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1854.
@@ -45,9 +45,9 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `rival` | 577 | 17 |
 | `look:lady (any)` | 395 | 1 |
 | `look:youngster (any)` | 373 | 18 |
-| `look:clerk (any)` | 325 | 7 |
+| `look:clerk (any)` | 326 | 7 |
 | `look:lass (any)` | 308 | 11 |
-| `look:nurse (any)` | 247 | 0 |
+| `look:nurse (any)` | 246 | 0 |
 | `look:attendant (any)` | 218 | 7 |
 | `look:scientist (any)` | 184 | 4 |
 | `look:gym_guide (any)` | 182 | 1 |

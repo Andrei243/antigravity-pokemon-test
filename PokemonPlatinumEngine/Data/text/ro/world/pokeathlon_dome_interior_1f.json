@@ -18,14 +18,6 @@
         "text": [
           "Funcționar"
         ]
-      },
-      "dialog": {
-        "en": [
-          "This desk keeps every course's best score. Enter a course at the desk beside me and set a record!"
-        ],
-        "text": [
-          "Biroul acesta păstrează cel mai bun scor al fiecărui traseu. Înscrie-te la un traseu la biroul de lângă mine și stabilește un record!"
-        ]
       }
     },
     "d49r0101_pcwoman1_4": {
@@ -39,10 +31,10 @@
       },
       "dialog": {
         "en": [
-          "Athlete Points are earned in every course. The Athlete Shop on the square will take them once its goods come in."
+          "Athlete Points are earned in every course. Spend them at the Athlete Shop's stall on the square."
         ],
         "text": [
-          "Punctele de Atlet se câștigă la fiecare traseu. Magazinul Atleților din piață le va primi când sosesc mărfurile."
+          "Punctele de Atlet se câștigă la fiecare traseu. Cheltuiește-le la taraba Magazinului Atleților din piață."
         ]
       }
     },

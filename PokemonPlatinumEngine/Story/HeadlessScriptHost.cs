@@ -830,7 +830,13 @@ public sealed class HeadlessScriptHost : IScriptHost
         // The crossing itself, over the dark (plan 18 · W5)
         if (screen == ScriptScreen.Crossing) Cross();
         // The Pokéathlon (plan 15 · E6): the place the test says, the points recorded as a course run would
-        if (screen == ScriptScreen.Athlon)
+        if (screen == ScriptScreen.Athlon && counter is "records" or "shop")
+        {
+            // The records board and the Athlete Shop (plan 15 · E8): read and left
+            Answer = 0;
+            Log[^1] = $"open {screen} {counter}";
+        }
+        else if (screen == ScriptScreen.Athlon)
         {
             Answer = AthlonRun.CanEnter(Party) ? Math.Clamp(AthlonPlace, 0, AthlonRun.TeamCount) : 0;
             if (Answer > 0) Athlon.Record(AthlonCourses.Practice.Key, AthlonScore, Answer);

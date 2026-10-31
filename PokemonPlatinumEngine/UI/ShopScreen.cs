@@ -88,6 +88,7 @@ public class ShopScreen
         openAge = 0f;
         upDown.Release();
         Name = string.IsNullOrWhiteSpace(name) ? Text.Of("shop.title") : name.ToUpperInvariant();
+        pointPrices = null;
         stock.Clear();
         stock.AddRange(sells ?? MartDatabase.Stock(null, 0));
         selling.Clear();
@@ -107,16 +108,19 @@ public class ShopScreen
 
     /// <summary>The most of an item this money buys at once: none if even one is too dear.</summary>
     public static int MostAffordable(ItemData item, int money, Difficulty difficulty = Difficulty.Normal) =>
-        item.Price <= 0 ? MostAtOnce : Math.Clamp(money / DifficultyRules.ShopPrice(item.Price, difficulty), 0, MostAtOnce);
+        MostFor(DifficultyRules.ShopPrice(item.Price, difficulty), money);
+
+    private static int MostFor(int price, int money) => price <= 0 ? MostAtOnce : Math.Clamp(money / price, 0, MostAtOnce);
+
 
     /// <summary>The difficulty the counter charges under (plan 13 · V2): Easy takes a quarter off what it asks, set by the game as the counter opens.</summary>
     public Difficulty Difficulty { get; set; } = Difficulty.Normal;
 
     /// <summary>What the counter asks for one of an item: its price, less a quarter under Easy.</summary>
-    public int PriceOf(ItemData item) => DifficultyRules.ShopPrice(item.Price, Difficulty);
+    public int PriceOf(ItemData item) => pointPrices != null ? (pointPrices.TryGetValue(item.Name, out int pts) ? pts : 0) : DifficultyRules.ShopPrice(item.Price, Difficulty);
 
     private int MostOf(ItemData item, int money, Inventory? inventory) =>
-        Mode == ShopMode.Selling ? Math.Min(MostAtOnce, inventory?.GetQuantity(item) ?? 0) : MostAffordable(item, money, Difficulty);
+        Mode == ShopMode.Selling ? Math.Min(MostAtOnce, inventory?.GetQuantity(item) ?? 0) : MostFor(PriceOf(item), money);
 
     /// <summary>
     /// Up and down the first question or the list; while "how many?" is up, left and right change the number by
@@ -193,9 +197,9 @@ public class ShopScreen
         if (Selected is not { } item) return 0;
         if (!ChoosingQuantity)
         {
-            if (Mode == ShopMode.Buying && MostAffordable(item, money, Difficulty) < 1)
+            if (Mode == ShopMode.Buying && MostFor(PriceOf(item), money) < 1)
             {
-                onNotification(Text.Of("shop.notEnoughMoney"));
+                onNotification(Text.Of(InPoints ? "athlon.shop.notEnough" : "shop.notEnoughMoney"));
                 AudioManager.PlaySound("error");
                 return 0;
             }
@@ -240,6 +244,7 @@ public class ShopScreen
             ChoosingQuantity = false;
             asking.Close();
         }
+        else if (InPoints) Close();
         else if (Mode != ShopMode.Choosing)
         {
             Mode = ShopMode.Choosing;
@@ -248,6 +253,25 @@ public class ShopScreen
         }
         else Close();
         AudioManager.PlaySound("cancel");
+    }
+
+    // ------------------------------------------------------------------ the Athlete Shop (plan 15 · E8)
+
+    private Dictionary<string, int>? pointPrices;
+
+    /// <summary>Whether the counter is paid in Athlete Points (the Pokéathlon Dome's shop) rather than money.</summary>
+    public bool InPoints => pointPrices != null;
+
+    /// <summary>
+    /// The Pokéathlon Dome's Athlete Shop (plan 15 · E8): the counter given the dome's stock at prices in Athlete Points,
+    /// opened on its list (nothing is sold to it). Whatever the counter is handed as money is the points then.
+    /// </summary>
+    public void OpenForPoints(string name, IEnumerable<(ItemData Item, int Points)> goods)
+    {
+        var list = goods.ToList();
+        Open(name, list.Select(g => g.Item), ShopMode.Buying);
+        pointPrices = list.ToDictionary(g => g.Item.Name, g => g.Points);
+        Difficulty = Difficulty.Normal;
     }
 
     public void Update(Inventory playerInventory, ref int playerMoney, Action<string> onNotification, float dt = 1f / 60f)

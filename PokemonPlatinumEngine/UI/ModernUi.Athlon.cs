@@ -39,29 +39,37 @@ internal static partial class ModernUi
             case AthlonPhase.Playing: AthlonPlaying(sw, sh, screen); break;
             case AthlonPhase.EventPoints: AthlonEventPoints(sw, screen, rise); break;
             case AthlonPhase.Scoreboard: AthlonScoreboard(sw, screen, rise); break;
+            case AthlonPhase.Records: AthlonRecordsBoard(sw, screen, rise); break;
         }
     }
 
     // ------------------------------------------------------------------ words
 
-    public static string AthlonEventName(AthlonEventKind kind) => kind switch
+    // An event's words are keyed by its kind's name with a small first letter (athlon.event.hurdleDash), a course's by its key
+    // (plan 15 · E8: every event and course of Data/athlon.json, E7's too, without a case each)
+    private static string AthlonKey(AthlonEventKind kind)
     {
-        AthlonEventKind.HurdleDash => Text.Of("athlon.event.hurdleDash"),
-        AthlonEventKind.BlockSmash => Text.Of("athlon.event.blockSmash"),
-        _ => Text.Of("athlon.event.ringDrop")
-    };
+        string name = kind.ToString();
+        return char.ToLowerInvariant(name[0]) + name[1..];
+    }
 
-    private static string AthlonHowTo(AthlonEventKind kind) => kind switch
+    public static string AthlonEventName(AthlonEventKind kind)
     {
-        AthlonEventKind.HurdleDash => Text.Of("athlon.howTo.hurdleDash"),
-        AthlonEventKind.BlockSmash => Text.Of("athlon.howTo.blockSmash"),
-        _ => Text.Of("athlon.howTo.ringDrop")
-    };
+        string key = AthlonKey(kind);
+        return Text.Of($"athlon.event.{key}");
+    }
 
-    public static string AthlonCourseName(AthlonCourse course) => course.Key switch
+    private static string AthlonHowTo(AthlonEventKind kind)
     {
-        _ => Text.Of("athlon.course.practice")
-    };
+        string key = AthlonKey(kind);
+        return Text.Of($"athlon.howTo.{key}");
+    }
+
+    public static string AthlonCourseName(AthlonCourse course)
+    {
+        string key = course.Key;
+        return Text.Of($"athlon.course.{key}");
+    }
 
     public static string AthlonStatName(AthleteStat stat) => stat switch
     {
@@ -271,6 +279,9 @@ internal static partial class ModernUi
             case HurdleDash h: DrawHurdleDash(sw, h); break;
             case BlockSmash b: DrawBlockSmash(sw, b); break;
             case RingDrop r: DrawRingDrop(sw, r); break;
+            case RelayRun rr: DrawRelayRun(sw, rr); break;
+            case CirclePush cp: DrawCirclePush(sw, cp); break;
+            case GoalRoll g: DrawGoalRoll(sw, g); break;
         }
 
         // The count before it starts, and GO as it does
@@ -493,6 +504,7 @@ internal static partial class ModernUi
         Panel(foot, 30);
         UiFonts.DrawCentered(Text.Of("athlon.earned", ("points", run.Earned), ("all", screen.Records.Points.ToString("N0"))),
             foot.X + 44, foot.Y + foot.Height / 2f, 36, Ink, UiWeight.ExtraBold);
+        AthlonMedalOnFoot(foot, screen.Medal, screen.NewRecord);
         if (screen.NewRecord)
         {
             string tag = Text.Of("athlon.newRecord");

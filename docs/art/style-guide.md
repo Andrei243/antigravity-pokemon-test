@@ -1753,6 +1753,26 @@ own colour is a sky blue (58, 150, 214): an event card's band, a stat's stars an
 - **The scoreboard**: SCOREBOARD; the four in order, each a row 144 tall with its place in Black 64 (gold for the
   first), its chip and three, its points in each event under the events' names and its total in Black 56; along the
   foot the points earned and held, and a gold NEW RECORD! pill when the course's best was beaten.
+- **Events, batch 3** (plan 15 · E8):
+  - **Relay Run**: an oval track 1500 by 600 at the stage's middle in the lanes' brick red with four white lane lines;
+  each team's runner on its own lane, a disc 30 in radius of its team's colour with a white face and its icon on it, a
+  spurt a glow of its colour behind it; at the track's middle each team's laps in Black 56 beside its chip, and its
+  three's breath as bars as in Block Smash.
+  - **Circle Push**: the floor a square 760 across in pale stone (226, 220, 204) with a dark rim; the circle at its middle
+  a gold ring 6 thick round a pale gold wash, brighter while one Pokémon has it alone; the Pokémon as in Ring Drop; each
+  team's corner panel with its chip and its points.
+  - **Goal Roll**: a pitch 760 across in two greens (98, 168, 92) and (88, 156, 84) in bands, white lines, each side's
+  goal a mouth of its team's colour; the ball a white disc 22 in radius with a dark rim; the Pokémon as in Ring Drop;
+  each team's corner panel with its chip and its goals.
+- **Medals** (plan 15 · E8, by score bands of our own, `Data/athlon.json`): gold (232, 184, 48), silver (184, 192, 204)
+  and bronze (196, 128, 72) discs with a darker rim and a white star; on the scoreboard's foot the course's medal at the
+  left of NEW RECORD!, nothing under bronze.
+- **The records board** (`athlon records`): RECORDS; a row 96 tall for each course with its name in Black 40, its best
+  score in Black 48 at the right and its best medal's disc before it (an empty rule-coloured ring where none is won);
+  along the foot the courses run and won and the Athlete Points.
+- **The Athlete Shop** is the shop's screen with the dome's stock: the prices and the purse in Athlete Points, a number
+  with PTS after it in place of the money's sign, the purse captioned ATHLETE POINTS; it opens on its list (there is
+  nothing to sell).
 
 ### Badges
 

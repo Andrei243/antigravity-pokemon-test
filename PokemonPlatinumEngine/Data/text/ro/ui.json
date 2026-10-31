@@ -733,18 +733,37 @@
     "total": "TOTAL",
     "earned": "Ai câștigat {points} Puncte de Atlet. Ai {all} în total.",
     "newRecord": "RECORD NOU!",
+    "laps": "{n} ture",
+    "held": "Puncte: {n}",
+    "goals": "Goluri: {n}",
+    "ownGoals": "Autogoluri: {n}",
+    "records": "RECORDURI",
+    "recordsFoot": "Trasee alergate: {runs}   Câștigate: {wins}   Puncte de Atlet: {points}",
+    "medal": { "gold": "Medalie de aur", "silver": "Medalie de argint", "bronze": "Medalie de bronz", "none": "Nicio medalie" },
+    "shop": { "purse": "PUNCTE DE ATLET", "amount": "{n} PCT", "notEnough": "Nu ai destule Puncte de Atlet.", "name": "MAGAZINUL ATLEȚILOR" },
     "course": {
-      "practice": "Traseu de antrenament"
+      "practice": "Traseu de antrenament",
+      "speed": "Traseul Vitezei",
+      "power": "Traseul Puterii",
+      "skill": "Traseul Abilității",
+      "stamina": "Traseul Rezistenței",
+      "jump": "Traseul Săriturii"
     },
     "event": {
       "hurdleDash": "Sprint cu Obstacole",
       "blockSmash": "Spart Blocuri",
-      "ringDrop": "Ieșit din Ring"
+      "ringDrop": "Ieșit din Ring",
+      "relayRun": "Ștafeta",
+      "circlePush": "Împins în Cerc",
+      "goalRoll": "Mingea la Poartă"
     },
     "howTo": {
       "hurdleDash": "Cei trei aleargă câte o etapă peste șapte obstacole. Apasă {key:confirm} ca să sari chiar înainte de obstacol: cine aterizează pe unul se împiedică. Echipa cea mai rapidă în toate trei etapele câștigă.",
       "blockSmash": "Apasă {key:confirm} ca să spargi blocurile din fața ta, după ce s-a terminat fiecare lovitură. Fiecare lovitură îți obosește Pokémonul: apasă {key:cancel} ca să-l trimiți pe următorul cât timp cel obosit își trage sufletul.",
-      "ringDrop": "Împinge-i pe ceilalți afară din ring cu săgețile și apasă {key:confirm} ca să te repezi. Cine împinge pe cineva afară câștigă puncte, cine cade pierde puncte, iar cel căzut e înlocuit de următorul din echipa lui."
+      "ringDrop": "Împinge-i pe ceilalți afară din ring cu săgețile și apasă {key:confirm} ca să te repezi. Cine împinge pe cineva afară câștigă puncte, cine cade pierde puncte, iar cel căzut e înlocuit de următorul din echipa lui.",
+      "relayRun": "Alergătorul tău dă ture singur și obosește pe drum. Apasă {key:confirm} ca să accelereze și {key:cancel} ca să predea ștafeta următorului cât timp cel obosit se odihnește. Fiecare tură aduce puncte.",
+      "circlePush": "Intră în cerc cu săgețile și ține-i pe ceilalți afară: apasă {key:confirm} ca să te repezi. Fiecare clipă în cerc aduce puncte, de două ori mai multe când ești singur. Apasă {key:cancel} ca să trimiți un Pokémon odihnit.",
+      "goalRoll": "Împinge mingea în porțile celorlalte echipe cu săgețile și apasă {key:confirm} lângă ea ca s-o șutezi. Un gol aduce puncte; unul în propria poartă scade puncte."
     },
     "stat": {
       "speed": "Viteză",

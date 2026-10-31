@@ -2879,6 +2879,22 @@ label Declined
   say "Come back whenever your Pokémon feel like a run!"
   end
 
+# The Pokéathlon's records desk and the Athlete Shop's stall (plan 15 · E8): each course's best score and medal, and
+# Platinum's items for Athlete Points (Data/athlon.json)
+script AthlonRecords
+  speaker "Clerk"
+  say "This desk keeps every course's best score and the best medal won on it. Here are your records!"
+  athlon records
+  say "Come back and set a new record any time!"
+  end
+
+script AthlonShop
+  speaker "Stall Keeper"
+  say "Welcome to the Athlete Shop! Everything here is paid for in Athlete Points."
+  athlon shop
+  say "Thank you! Earn more points in the dome and come again!"
+  end
+
 
 # Hoenn's secret bases (plan 21 · H10; Emerald's data/scripts/secret_base.inc, our own words). A spot faced (a tree that
 # might drop a vine, a clump of grass, an indent in a rock wall): the player's own base is gone into; anywhere else a
