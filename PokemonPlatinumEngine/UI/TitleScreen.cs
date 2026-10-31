@@ -103,7 +103,7 @@ public sealed record TitleNotice(string Heading, string Body)
 /// <see cref="Unreadable"/> (the card of a slot that can't be read) are entries only: neither is ever handed over
 /// by <see cref="TitleScreen.TakeChoice"/>; a deletion is <see cref="TitleScreen.TakeDeletion"/>'s.
 /// </summary>
-public enum TitleChoice { None, Continue, NewGame, Options, Quit, Delete, Unreadable, Migrate, Jukebox }
+public enum TitleChoice { None, Continue, NewGame, Options, Quit, Delete, Unreadable, Migrate, Jukebox, Credits }
 
 /// <summary>
 /// The opening and the title screen: a short notice, fly-over shots of Sinnoh at different times of day, Giratina
@@ -139,7 +139,7 @@ public sealed class TitleScreen
     private readonly List<TitleChoice> entries = new();
     private readonly Queue<TitleNotice> notices = new();
     private TitleChoice chosen = TitleChoice.None;
-    private bool optionsRequested, migrateRequested, jukeboxRequested, noticeOverMenu, migrateOffered;
+    private bool optionsRequested, migrateRequested, jukeboxRequested, creditsRequested, noticeOverMenu, migrateOffered;
     private float phaseTime, totalTime, menuBlend, skipFlash;
     private int warmed;
     // The slot the delete question is about, where the question was asked from, and the slot to be deleted once
@@ -239,6 +239,7 @@ public sealed class TitleScreen
         if (migrateOffered && cards.Any(c => c.Save != null)) entries.Add(TitleChoice.Migrate);
         entries.Add(TitleChoice.Jukebox);
         entries.Add(TitleChoice.Options);
+        entries.Add(TitleChoice.Credits);
         entries.Add(TitleChoice.Quit);
     }
 
@@ -347,6 +348,7 @@ public sealed class TitleScreen
                     case TitleChoice.Options: optionsRequested = true; break;
                     case TitleChoice.Migrate: migrateRequested = true; break;
                     case TitleChoice.Jukebox: jukeboxRequested = true; break;
+                    case TitleChoice.Credits: creditsRequested = true; break;
                     case TitleChoice.Quit: Leave(TitleChoice.Quit); break;
                 }
                 break;
@@ -523,6 +525,11 @@ public sealed class TitleScreen
         {
             jukeboxRequested = false;
             return TitleChoice.Jukebox;
+        }
+        if (creditsRequested)
+        {
+            creditsRequested = false;
+            return TitleChoice.Credits;
         }
         if (migrateRequested)
         {
@@ -748,9 +755,11 @@ public sealed class TitleScreen
     public IReadOnlyList<Rectangle> EntryRects()
     {
         bool saves = cards.Count > 0;
-        // MIGRATE is a fifth row beside the cards, which the column holds by slimming its rows
+        // Beside the cards the column holds its rows by slimming them: six (CREDITS, plan 16 · T1) and seven (MIGRATE too);
+        // with nothing saved there is room for the rows at their full height
         int rowsN = entries.Count - cards.Count;
-        float row = rowsN >= 6 ? 56 : rowsN == 5 ? 64 : saves ? 76 : 92, gap = rowsN >= 6 ? 10 : rowsN == 5 ? 12 : saves ? 18 : 20;
+        float row = !saves ? 92 : rowsN >= 7 ? 48 : rowsN == 6 ? 56 : rowsN == 5 ? 64 : 76;
+        float gap = !saves ? 20 : rowsN >= 7 ? 8 : rowsN == 6 ? 10 : rowsN == 5 ? 12 : 18;
         float card = LoneCard ? LoneCardHeight : ShortCardHeight;
         float total = cards.Count * card + (entries.Count - cards.Count) * row + (entries.Count - 1) * gap;
         float y = saves ? 590 - total / 2f : (1080 - total) / 2f + 40;
@@ -790,9 +799,10 @@ public sealed class TitleScreen
                 TitleChoice.Migrate => Text.Of("title.menu.migrate"),
                 TitleChoice.Jukebox => Text.Of("title.menu.jukebox"),
                 TitleChoice.Options => Text.Of("title.menu.options"),
+                TitleChoice.Credits => Text.Of("title.menu.credits"),
                 _ => Text.Of("title.menu.quit")
             };
-            UiFonts.DrawCentered(label, r.X + 48, r.Y + r.Height / 2f, cards.Count > 0 ? 36 : 40, ModernUi.Ink, UiWeight.Black);
+            UiFonts.DrawCentered(label, r.X + 48, r.Y + r.Height / 2f, cards.Count == 0 ? 40 : r.Height < 56 ? 32 : 36, ModernUi.Ink, UiWeight.Black);
         }
     }
 

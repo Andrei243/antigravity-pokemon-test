@@ -18,6 +18,10 @@
     <None Include="Data\**\*.json" CopyToOutputDirectory="PreserveNewest" />
     <None Include="Data\**\*.mml" CopyToOutputDirectory="PreserveNewest" />
     <None Include="Data\scripts\**\*.txt" CopyToOutputDirectory="PreserveNewest" />
+    <!-- The title's CREDITS reads the repository's two records (plan 16 · T1, Models/TitleCredits.cs) -->
+    <None Include="..\docs\art\CREDITS.md" Link="Credits\CREDITS.md" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\THIRD-PARTY-NOTICES.md" Link="Credits\THIRD-PARTY-NOTICES.md" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\LICENSE" Link="LICENSE" CopyToOutputDirectory="PreserveNewest" />
     <InternalsVisibleTo Include="PokemonPlatinumTests" />
     <InternalsVisibleTo Include="ShotHarness" />
     <InternalsVisibleTo Include="ContentCheck" />

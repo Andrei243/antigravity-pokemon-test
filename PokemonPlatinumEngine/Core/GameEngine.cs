@@ -113,7 +113,9 @@ public enum GameState
     /// <summary>The first start's page of options, before the title's notice on the first run only (plan 16 · T24).</summary>
     FirstStart,
     /// <summary>The World Tournament's events or bracket, a script's <c>tournament events</c> or <c>tournament show</c> waiting on it (plan 14 · B11).</summary>
-    Tournament
+    Tournament,
+    /// <summary>The title's CREDITS: whose work is in the game, read from the repository's two records (plan 16 · T1).</summary>
+    TitleCredits
 }
 
 public partial class GameEngine
@@ -1066,6 +1068,10 @@ public partial class GameEngine
                     case TitleChoice.Jukebox:
                         OpenJukebox(GameState.Title);
                         break;
+                    case TitleChoice.Credits:
+                        flow.TitleCreditsScreen.Open();
+                        flow.State = GameState.TitleCredits;
+                        break;
                     case TitleChoice.Options:
                         flow.OptionsReturn = GameState.Title;
                         flow.State = GameState.Options;
@@ -1375,6 +1381,10 @@ public partial class GameEngine
                 break;
             case GameState.Jukebox:
                 UpdateJukebox(dt);
+                break;
+            case GameState.TitleCredits:
+                flow.TitleCreditsScreen.Update(dt);
+                if (!flow.TitleCreditsScreen.IsActive) flow.State = GameState.Title;
                 break;
             case GameState.Appeals:
                 UpdateAppeals(dt);
@@ -2788,6 +2798,9 @@ public partial class GameEngine
                 break;
             case GameState.Jukebox:
                 flow.JukeboxScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.TitleCredits:
+                flow.TitleCreditsScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.Appeals:
                 flow.AppealScreen.Draw(VirtualWidth, VirtualHeight);

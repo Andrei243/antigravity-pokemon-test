@@ -501,6 +501,35 @@ partial class Harness
         Seconds(1f); Shot("title_50_packs_lone_card");
         save.Packs = null;
 
+        // CREDITS (plan 16 · T1), last so that nothing before it moves: the row under the cursor with nothing saved and
+        // with two saves, then the screen it opens at its top, a section on, and the title it goes back to
+        var plain = NewTitle(null);
+        plain.PressConfirm();
+        Seconds(1.2f);
+        plain.PressConfirm();
+        Seconds(1f);
+        while (plain.Entries[plain.SelectedIndex] != TitleChoice.Credits) plain.Move(1);
+        Seconds(0.3f); Shot("title_51_credits_row");
+        var creditsTitle = TitleScreen.WithSlots(new[] { new TitleSlot(1, save), new TitleSlot(2, second) });
+        game.Title = creditsTitle;
+        creditsTitle.PressConfirm();
+        Seconds(1.2f);
+        creditsTitle.PressConfirm();
+        Seconds(1f);
+        while (creditsTitle.Entries[creditsTitle.SelectedIndex] != TitleChoice.Credits) creditsTitle.Move(1);
+        Seconds(0.3f); Shot("title_52_credits_row_saves");
+        creditsTitle.PressConfirm();
+        Frames(2);
+        Seconds(0.5f); Shot("title_53_credits");
+        Console.WriteLine($"credits: {game.TitleCredits.Sections.Count} sections, {game.TitleCredits.Rows.Count} rows, {TitleCreditsScreen.VisibleRows} at once");
+        game.TitleCredits.Jump(1);
+        game.TitleCredits.Jump(1);
+        Seconds(0.2f); Shot("title_54_credits_section");
+        game.TitleCredits.Cancel();
+        Frames(2);
+        Seconds(0.3f); Shot("title_55_credits_back");
+        Console.WriteLine($"credits closed: state {game.State}, under the cursor {creditsTitle.Entries[creditsTitle.SelectedIndex]}");
+
         game.State = GameState.Overworld;
     }
 

@@ -388,6 +388,7 @@
       "deleteWhich": "CE SALVARE ȘTERGI?",
       "migrate": "MIGRARE",
       "options": "OPȚIUNI",
+      "credits": "CREDITE",
       "quit": "IEȘIRE"
     },
     "notice": {
@@ -633,6 +634,19 @@
       "Waves": "Valuri",
       "Cave": "Peșteră",
       "Underwater": "Sub mare"
+    }
+  },
+  "titleCredits": {
+    "title": "CREDITE",
+    "hint": {
+      "scroll": "Derulează",
+      "section": "Secțiune"
+    },
+    "own": {
+      "heading": "Această refacere a fanilor",
+      "made": "Modelele, texturile, imaginile, interfața, muzica, efectele sonore, strigătele și cuvintele acestui joc sunt făcute pentru acest proiect sau generate de propriul său cod. Nimic nu este luat din jocurile Pokémon: din decompilările și datele publice de mai jos se citesc doar așezările și numerele lor, niciodată grafica, sunetul sau textul.",
+      "code": "Codul jocului este liber, sub licența MIT (fișierul LICENSE de lângă el). Urmează lucrările cu licență liberă pe care le folosește și sursele din care îi sunt citite datele, fiecare cu autorul și licența sa.",
+      "notice": "Acesta este un proiect al fanilor, neafiliat cu și nesusținut de Nintendo, Creatures Inc. sau GAME FREAK inc. Pokémon și personajele sale sunt mărci ale proprietarilor lor. Nimic nu se vinde și nu se primesc donații."
     }
   },
   "packScreen": {
