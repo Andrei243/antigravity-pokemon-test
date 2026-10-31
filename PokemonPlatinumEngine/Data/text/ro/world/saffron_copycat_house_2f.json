@@ -6,7 +6,7 @@
           "Copycat"
         ],
         "text": [
-          ""
+          "Copycat"
         ]
       },
       "dialog": {
@@ -15,8 +15,8 @@
           "I lost my favourite doll somewhere. Copying people cheers me up a little."
         ],
         "text": [
-          "",
-          ""
+          "Salut, {player}! ...Oh, scuze. Exersez să fiu tu. Am sunat bine?",
+          "Mi-am pierdut păpușa preferată undeva. Copiatul oamenilor mă mai înveselește puțin."
         ]
       }
     }
@@ -27,7 +27,7 @@
         "A games console. The Copycat plays it every day."
       ],
       "text": [
-        ""
+        "O consolă de jocuri. Copycat joacă pe ea în fiecare zi."
       ]
     },
     "T11R0802_002+1": {
@@ -35,7 +35,7 @@
         "A games console. The Copycat plays it every day."
       ],
       "text": [
-        ""
+        "O consolă de jocuri. Copycat joacă pe ea în fiecare zi."
       ]
     },
     "T11R0802_006+1": {
@@ -43,7 +43,7 @@
         "There's an empty spot on the shelf, just the size of a doll."
       ],
       "text": [
-        ""
+        "Pe raft e un loc gol, taman cât o păpușă."
       ]
     }
   }

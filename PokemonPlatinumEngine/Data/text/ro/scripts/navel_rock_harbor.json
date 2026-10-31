@@ -5,7 +5,7 @@
         "Sailor"
       ],
       "text": [
-        ""
+        "Marinarul"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "This is Navel Rock. The sea gets rough out here, so I'll wait with the ship."
       ],
       "text": [
-        ""
+        "Asta e Navel Rock. Marea devine agitată pe aici, așa că aștept lângă vas."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Shall we sail back to Lilycove?"
       ],
       "text": [
-        ""
+        "Navigăm înapoi spre Lilycove?"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Aye. Hold on tight."
       ],
       "text": [
-        ""
+        "Da, să trăiți. Ține-te bine."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "{player} sailed back to Lilycove City..."
       ],
       "text": [
-        ""
+        "{player} a navigat înapoi spre Orașul Lilycove..."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "As you like. I'll be here when you're ready."
       ],
       "text": [
-        ""
+        "Cum vrei. Eu sunt aici când ești gata."
       ]
     }
   ]

@@ -5,7 +5,7 @@
         "Sailor"
       ],
       "text": [
-        ""
+        "Marinarul"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "This is Birth Island. Odd place. The sky over it hums some nights."
       ],
       "text": [
-        ""
+        "Asta e Insula Nașterii. Loc ciudat. În unele nopți, cerul de deasupra ei zumzăie."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Shall we sail back to Lilycove?"
       ],
       "text": [
-        ""
+        "Navigăm înapoi spre Lilycove?"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Aye. Hold on tight."
       ],
       "text": [
-        ""
+        "Da, să trăiți. Ține-te bine."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "{player} sailed back to Lilycove City..."
       ],
       "text": [
-        ""
+        "{player} a navigat înapoi spre Orașul Lilycove..."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "As you like. I'll be here when you're ready."
       ],
       "text": [
-        ""
+        "Cum vrei. Eu sunt aici când ești gata."
       ]
     }
   ]

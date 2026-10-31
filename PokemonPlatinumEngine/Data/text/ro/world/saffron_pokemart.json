@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătorul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bun venit! Cu ce vă pot ajuta?"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătorul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bun venit! Cu ce vă pot ajuta?"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Dark types aren't bothered by Psychic moves at all. That's worth knowing before you take on Sabrina."
         ],
         "text": [
-          ""
+          "Tipurile Întuneric nu sunt deranjate deloc de mișcările Psihice. Merită să știi asta înainte s-o înfrunți pe Sabrina."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "I came in for one Potion and I'm leaving with a whole bag. That always happens to me in big cities."
         ],
         "text": [
-          ""
+          "Am intrat după o singură Potion și plec cu un sac întreg. Mi se întâmplă mereu în orașele mari."
         ]
       }
     }

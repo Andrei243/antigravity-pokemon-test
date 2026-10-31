@@ -5,7 +5,7 @@
         "Scientist"
       ],
       "text": [
-        ""
+        "Cercetătorul"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "I've been building a machine that brings Pokémon back from their fossils. And do you know what? It works!"
       ],
       "text": [
-        ""
+        "Am construit o mașină care readuce Pokémonii la viață din fosilele lor. Și știi ce? Funcționează!"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Hold on! Is that a fossil in your bag? An ancient Pokémon is sleeping in it!"
       ],
       "text": [
-        ""
+        "Stai puțin! E o fosilă în rucsacul tău? În ea doarme un Pokémon străvechi!"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Shall my Fossil Regenerator wake it up for you?"
       ],
       "text": [
-        ""
+        "Să-l trezească Fossil Regenerator-ul meu pentru tine?"
       ]
     },
     {
@@ -40,10 +40,10 @@
         "NEITHER"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Două fosile! Mașina poate lucra la una singură odată. Care dintre ele?",
+        "ROOT FOSSIL",
+        "CLAW FOSSIL",
+        "NICIUNA"
       ]
     },
     {
@@ -51,7 +51,7 @@
         "Splendid! Let's get started right away."
       ],
       "text": [
-        ""
+        "Splendid! Să începem imediat."
       ]
     },
     {
@@ -59,7 +59,7 @@
         "{player} handed the fossil to the Devon researcher."
       ],
       "text": [
-        ""
+        "{player} i-a dat fosila cercetătorului de la Devon."
       ]
     },
     {
@@ -67,7 +67,7 @@
         "The Fossil Regenerator is a marvel, but it's a slow one. Why not take a stroll and come back in a while?"
       ],
       "text": [
-        ""
+        "Fossil Regenerator-ul e o minune, dar e lent. Ce-ar fi să te plimbi puțin și să revii peste o vreme?"
       ]
     },
     {
@@ -75,7 +75,7 @@
         "No? Well, Devon's machines will be here whenever you change your mind."
       ],
       "text": [
-        ""
+        "Nu? Ei bine, mașinile de la Devon vor fi aici oricând te răzgândești."
       ]
     },
     {
@@ -83,7 +83,7 @@
         "Thanks for waiting! Your fossil has come back to life. It was an ancient Pokémon all along!"
       ],
       "text": [
-        ""
+        "Mulțumesc că ai așteptat! Fosila ta a revenit la viață. Era un Pokémon străvechi de la bun început!"
       ]
     },
     {
@@ -91,7 +91,7 @@
         "{player} received Lileep from the Devon researcher!"
       ],
       "text": [
-        ""
+        "{player} a primit Lileep de la cercetătorul de la Devon!"
       ]
     },
     {
@@ -99,7 +99,7 @@
         "{player} received Anorith from the Devon researcher!"
       ],
       "text": [
-        ""
+        "{player} a primit Anorith de la cercetătorul de la Devon!"
       ]
     },
     {
@@ -107,7 +107,7 @@
         "Look after it. It has waited a very long time to see the world again."
       ],
       "text": [
-        ""
+        "Ai grijă de el. A așteptat foarte mult să vadă din nou lumea."
       ]
     },
     {
@@ -115,7 +115,7 @@
         "Oh, but your team is full! Make room for it, and come back."
       ],
       "text": [
-        ""
+        "Oh, dar echipa ta e plină! Fă-i loc și revino."
       ]
     }
   ]

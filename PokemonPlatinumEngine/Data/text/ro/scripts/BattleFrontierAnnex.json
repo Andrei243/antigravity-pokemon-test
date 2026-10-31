@@ -605,7 +605,7 @@
         "Receptionist"
       ],
       "text": [
-        ""
+        "Recepționera"
       ]
     },
     {
@@ -613,7 +613,7 @@
         "Welcome to the Pokémon World Tournament! Leaders and Champions battle here, and every Pokémon fights at Level 50."
       ],
       "text": [
-        ""
+        "Bun venit la Turneul Mondial Pokémon! Aici se luptă Liderii și Campionii, iar fiecare Pokémon luptă la Nivelul 50."
       ]
     },
     {
@@ -621,7 +621,7 @@
         "Titles you've won here so far: {number}. The crowd knows your name!"
       ],
       "text": [
-        ""
+        "Titluri câștigate aici până acum: {number}. Mulțimea îți știe numele!"
       ]
     },
     {
@@ -632,10 +632,10 @@
         "No"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Vrei să te înscrii la un turneu?",
+        "Înscrie-mă",
+        "Regulile",
+        "Nu"
       ]
     },
     {
@@ -643,7 +643,7 @@
         "You need three Pokémon that can take part, all of different species and holding different items."
       ],
       "text": [
-        ""
+        "Ai nevoie de trei Pokémoni care pot participa, toți de specii diferite și purtând obiecte diferite."
       ]
     },
     {
@@ -651,7 +651,7 @@
         "An Egg can't take part, and nor can {banned}."
       ],
       "text": [
-        ""
+        "Un Ou nu poate participa, și nici {banned}."
       ]
     },
     {
@@ -659,7 +659,7 @@
         "Which event would you like to enter?"
       ],
       "text": [
-        ""
+        "La ce eveniment vrei să te înscrii?"
       ]
     },
     {
@@ -667,7 +667,7 @@
         "Please choose the three Pokémon you'll enter."
       ],
       "text": [
-        ""
+        "Alege, te rog, cei trei Pokémoni pe care îi înscrii."
       ]
     },
     {
@@ -675,7 +675,7 @@
         "Thank you! The bracket has been drawn. This way to the hall, please!"
       ],
       "text": [
-        ""
+        "Mulțumesc! Tabloul a fost tras la sorți. Pe aici spre sală, te rog!"
       ]
     },
     {
@@ -683,7 +683,7 @@
         "I'm sorry. The three entered must all be of different species."
       ],
       "text": [
-        ""
+        "Îmi pare rău. Cei trei înscriși trebuie să fie toți de specii diferite."
       ]
     },
     {
@@ -691,7 +691,7 @@
         "I'm sorry. No two of the three entered may hold the same item."
       ],
       "text": [
-        ""
+        "Îmi pare rău. Doi dintre cei trei înscriși nu pot purta același obiect."
       ]
     },
     {
@@ -715,7 +715,7 @@
         "Please come again. The Leaders are always ready for another tournament."
       ],
       "text": [
-        ""
+        "Revino oricând. Liderii sunt mereu gata pentru un nou turneu."
       ]
     },
     {
@@ -723,7 +723,7 @@
         "Every Pokémon battles at Level 50 here, raised or lowered to it. Nothing that happens here changes yours."
       ],
       "text": [
-        ""
+        "Aici fiecare Pokémon luptă la Nivelul 50, ridicat sau coborât până la el. Nimic din ce se petrece aici nu le schimbă pe ale tale."
       ]
     },
     {
@@ -731,7 +731,7 @@
         "Eight Trainers enter, and you meet one in each round: three of your Pokémon against three of theirs."
       ],
       "text": [
-        ""
+        "Opt Antrenori se înscriu și întâlnești câte unul în fiecare rundă: trei Pokémoni ai tăi împotriva a trei de-ai lor."
       ]
     },
     {
@@ -739,7 +739,7 @@
         "Win three matches and the title is yours. Lose one, and the tournament is over for you."
       ],
       "text": [
-        ""
+        "Câștigă trei meciuri și titlul e al tău. Pierde unul și turneul s-a terminat pentru tine."
       ]
     }
   ]

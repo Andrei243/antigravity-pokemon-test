@@ -202,12 +202,12 @@
         "NOWHERE"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Încotro vrei să navighezi?",
+        "INSULA SUDICĂ",
+        "BATTLE FRONTIER",
+        "NAVEL ROCK",
+        "BIRTH ISLAND",
+        "NICĂIERI"
       ]
     },
     {
@@ -215,7 +215,7 @@
         "I'm sorry, the Battle Frontier is only for passengers with an S.S. Ticket."
       ],
       "text": [
-        ""
+        "Îmi pare rău, Battle Frontier este doar pentru pasagerii cu un S.S. Ticket."
       ]
     },
     {
@@ -223,7 +223,7 @@
         "{player} showed the Mystic Ticket."
       ],
       "text": [
-        ""
+        "{player} a arătat Mystic Ticket."
       ]
     },
     {
@@ -231,7 +231,7 @@
         "Navel Rock it is! A long way over the open sea. Please come aboard."
       ],
       "text": [
-        ""
+        "Navel Rock, deci! Drum lung peste marea deschisă. Vă rugăm să urcați la bord."
       ]
     },
     {
@@ -239,7 +239,7 @@
         "{player} sailed for Navel Rock..."
       ],
       "text": [
-        ""
+        "{player} a pornit spre Navel Rock..."
       ]
     },
     {
@@ -247,7 +247,7 @@
         "{player} showed the Aurora Ticket."
       ],
       "text": [
-        ""
+        "{player} a arătat Aurora Ticket."
       ]
     },
     {
@@ -255,7 +255,7 @@
         "Birth Island it is! The sea there shines strangely at night. Please come aboard."
       ],
       "text": [
-        ""
+        "Birth Island, deci! Marea de acolo strălucește straniu noaptea. Vă rugăm să urcați la bord."
       ]
     },
     {
@@ -263,7 +263,7 @@
         "{player} sailed for Birth Island..."
       ],
       "text": [
-        ""
+        "{player} a pornit spre Birth Island..."
       ]
     },
     {
@@ -271,7 +271,7 @@
         "I'm sorry, Birth Island is only for passengers with an Aurora Ticket."
       ],
       "text": [
-        ""
+        "Îmi pare rău, Birth Island este doar pentru pasagerii cu un Aurora Ticket."
       ]
     }
   ],
@@ -281,7 +281,7 @@
         "Oh! Word has come from the Battle Frontier: you've won a Frontier Brain's print. Then this is yours."
       ],
       "text": [
-        ""
+        "Oh! Am primit vești de la Battle Frontier: ai câștigat amprenta unui Frontier Brain. Atunci asta e a ta."
       ]
     },
     {
@@ -289,7 +289,7 @@
         "{player} was given the Mystic Ticket!"
       ],
       "text": [
-        ""
+        "{player} a primit Mystic Ticket!"
       ]
     },
     {
@@ -297,7 +297,7 @@
         "It's a pass for Navel Rock, an island far out in the sea where the S.S. Tidal never calls. Some say a legend sleeps there."
       ],
       "text": [
-        ""
+        "E un permis pentru Navel Rock, o insulă departe în larg unde S.S. Tidal nu face escală niciodată. Unii spun că acolo doarme o legendă."
       ]
     },
     {
@@ -305,7 +305,7 @@
         "Prints from two facilities of the Frontier! The harbour master asked me to give you this, too."
       ],
       "text": [
-        ""
+        "Amprente de la două facilități ale Frontier-ului! Căpitanul portului m-a rugat să-ți dau și asta."
       ]
     },
     {
@@ -313,7 +313,7 @@
         "{player} was given the Aurora Ticket!"
       ],
       "text": [
-        ""
+        "{player} a primit Aurora Ticket!"
       ]
     },
     {
@@ -321,7 +321,7 @@
         "It's a pass for Birth Island, where a strange triangle of stone stands on the sand. Nobody knows who put it there."
       ],
       "text": [
-        ""
+        "E un permis pentru Birth Island, unde pe nisip stă un straniu triunghi de piatră. Nimeni nu știe cine l-a pus acolo."
       ]
     }
   ]

@@ -6,7 +6,7 @@
           "Virgil"
         ],
         "text": [
-          ""
+          "Virgil"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Camper Virgil: I've walked every road from Vermilion to Saffron. Have you got the legs for a battle?"
         ],
         "text": [
-          ""
+          "Campist Virgil: Am bătut toate drumurile de la Vermilion la Saffron. Ai picioare pentru o luptă?"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Camper Virgil: My legs are fine. It's my Pokémon that are tired."
         ],
         "text": [
-          ""
+          "Campist Virgil: Picioarele mele sunt bune. Pokémonii mei sunt cei obosiți."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Selina"
         ],
         "text": [
-          ""
+          "Selina"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Picnicker Selina: I came out here for a picnic by the pond. A battle goes nicely with lunch!"
         ],
         "text": [
-          ""
+          "Excursionistă Selina: Am venit aici la un picnic lângă iaz. O luptă merge de minune cu prânzul!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Picnicker Selina: That spoiled my appetite a little."
         ],
         "text": [
-          ""
+          "Excursionistă Selina: Mi-a stricat puțin pofta de mâncare."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Day"
         ],
         "text": [
-          ""
+          "Day"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Twins Day: We do everything together, even battling!"
         ],
         "text": [
-          ""
+          "Gemene Day: Facem totul împreună, chiar și luptele!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Twins Day: We lose together too."
         ],
         "text": [
-          ""
+          "Gemene Day: Pierdem și împreună."
         ]
       }
     },
@@ -84,7 +84,7 @@
           "Dani"
         ],
         "text": [
-          ""
+          "Dani"
         ]
       },
       "before": {
@@ -92,7 +92,7 @@
           "Twins Dani: Two of us against one of you!"
         ],
         "text": [
-          ""
+          "Gemene Dani: Două contra unuia!"
         ]
       },
       "after": {
@@ -100,7 +100,7 @@
           "Twins Dani: One of you was enough for two of us."
         ],
         "text": [
-          ""
+          "Gemene Dani: Unul ca tine a fost de ajuns pentru amândouă."
         ]
       }
     },
@@ -110,7 +110,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -118,7 +118,7 @@
           "The Underground Path runs from here to Route 5, but it's shut while the work on it goes on. Sorry!"
         ],
         "text": [
-          ""
+          "Pasajul Subteran duce de aici la Ruta 5, dar e închis cât timp se lucrează la el. Scuze!"
         ]
       }
     }
@@ -129,7 +129,7 @@
         "Underground Path\nRoute 6 to Route 5"
       ],
       "text": [
-        ""
+        "Pasajul Subteran\nRuta 6 spre Ruta 5"
       ]
     }
   }

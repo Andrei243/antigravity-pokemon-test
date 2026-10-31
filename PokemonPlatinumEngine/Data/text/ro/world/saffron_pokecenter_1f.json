@@ -6,7 +6,7 @@
           "Nurse"
         ],
         "text": [
-          ""
+          "Asistenta"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "Your Trainer Card shows your name, your money and the Pokémon you've seen. Have a look at it from the menu."
         ],
         "text": [
-          ""
+          "Cardul tău de Antrenor arată numele tău, banii și Pokémonii pe care i-ai văzut. Aruncă o privire din meniu."
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "I'm sorry, the link to other players is closed for now."
         ],
         "text": [
-          ""
+          "Îmi pare rău, legătura cu alți jucători este închisă deocamdată."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "I'm sorry, the link to other players is closed for now."
         ],
         "text": [
-          ""
+          "Îmi pare rău, legătura cu alți jucători este închisă deocamdată."
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "My Pokémon got a bit of a scare in the Gym. Sabrina's Pokémon are scary strong!"
         ],
         "text": [
-          ""
+          "Pokémonii mei s-au speriat puțin în Arenă. Pokémonii Sabrinei sunt înfricoșător de puternici!"
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Hiker"
         ],
         "text": [
-          ""
+          "Drumețul"
         ]
       },
       "dialog": {
@@ -96,7 +96,7 @@
           "I walked here all the way from Johto, over the mountains. Next time I'm taking the Magnet Train."
         ],
         "text": [
-          ""
+          "Am venit pe jos tocmai din Johto, peste munți. Data viitoare iau Trenul Magnetic."
         ]
       }
     },
@@ -106,7 +106,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -114,7 +114,7 @@
           "Did you know the Magnet Train and the S.S. Aqua both link Kanto to Johto? I want to ride them both!"
         ],
         "text": [
-          ""
+          "Știai că Trenul Magnetic și S.S. Aqua leagă amândouă Kanto de Johto? Vreau să merg cu ambele!"
         ]
       }
     }

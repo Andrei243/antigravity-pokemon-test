@@ -6,7 +6,7 @@
           "Chairman"
         ],
         "text": [
-          ""
+          "Președintele"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome to the Pokémon Fan Club! I'm the chairman. Shall I tell you about my Rapidash? It runs like the wind..."
         ],
         "text": [
-          ""
+          "Bun venit la Clubul Fanilor Pokémon! Eu sunt președintele. Să-ți povestesc despre Rapidash-ul meu? Aleargă ca vântul..."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "The chairman could talk about his Pokémon all day. We usually let him."
         ],
         "text": [
-          ""
+          "Președintele ar putea vorbi despre Pokémonii lui toată ziua. De obicei îl lăsăm."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "My Bayleef loves it when I brush its leaf. Look how happy it is!"
         ],
         "text": [
-          ""
+          "Bayleef-ului meu îi place când îi perii frunza. Uită-te cât de fericit e!"
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "I joined the Fan Club because everyone here loves their Pokémon as much as I love mine."
         ],
         "text": [
-          ""
+          "M-am alăturat Clubului de Fani pentru că toți de aici își iubesc Pokémonii la fel de mult cum îi iubesc eu pe ai mei."
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Bayleef"
         ],
         "text": [
-          ""
+          "Bayleef"
         ]
       },
       "dialog": {
@@ -86,7 +86,7 @@
           "Bayleef gave a contented cry."
         ],
         "text": [
-          ""
+          "Bayleef a scos un strigăt mulțumit."
         ]
       }
     }
@@ -97,7 +97,7 @@
         "Members: Pokémon lovers of every kind. Rule one: let the chairman finish his stories."
       ],
       "text": [
-        ""
+        "Membri: iubitori de Pokémon de toate felurile. Regula unu: lasă-l pe președinte să-și termine poveștile."
       ]
     },
     "T06R0301_006+1": {
@@ -105,7 +105,7 @@
         "Rule two: never compare one member's Pokémon with another's."
       ],
       "text": [
-        ""
+        "Regula doi: nu compara niciodată Pokémonii unui membru cu ai altuia."
       ]
     }
   }

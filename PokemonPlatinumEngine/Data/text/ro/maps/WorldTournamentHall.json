@@ -4,7 +4,7 @@
       "World Tournament"
     ],
     "text": [
-      ""
+      "Turneul Mondial"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Announcer"
         ],
         "text": [
-          ""
+          "Crainicul"
         ]
       },
       "dialog": {
@@ -22,7 +22,7 @@
           "No tournament is under way. The World Tournament's desk is in the annex's lobby."
         ],
         "text": [
-          ""
+          "Niciun turneu nu este în desfășurare. Biroul Turneului Mondial se află în holul anexei."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Trainer"
         ],
         "text": [
-          ""
+          "Antrenorul"
         ]
       },
       "dialog": {
@@ -40,7 +40,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     },
@@ -50,7 +50,7 @@
           "Spectator"
         ],
         "text": [
-          ""
+          "Spectator"
         ]
       },
       "dialog": {
@@ -58,7 +58,7 @@
           "Gym Leaders from all over Sinnoh, at Level 50! Anyone could win."
         ],
         "text": [
-          ""
+          "Lideri de Arenă din tot Sinnoh-ul, la Nivelul 50! Oricine ar putea câștiga."
         ]
       }
     },
@@ -68,7 +68,7 @@
           "Spectator"
         ],
         "text": [
-          ""
+          "Spectator"
         ]
       },
       "dialog": {
@@ -76,7 +76,7 @@
           "Three against three, and every Pokémon at the same level. Pure skill!"
         ],
         "text": [
-          ""
+          "Trei contra trei, iar fiecare Pokémon la același nivel. Pură pricepere!"
         ]
       }
     },
@@ -86,7 +86,7 @@
           "Spectator"
         ],
         "text": [
-          ""
+          "Spectator"
         ]
       },
       "dialog": {
@@ -94,7 +94,7 @@
           "I came all the way from Hearthome to see Fantina battle."
         ],
         "text": [
-          ""
+          "Am venit tocmai de la Hearthome să o văd pe Fantina luptând."
         ]
       }
     },
@@ -104,7 +104,7 @@
           "Spectator"
         ],
         "text": [
-          ""
+          "Spectator"
         ]
       },
       "dialog": {
@@ -112,7 +112,7 @@
           "Eight Trainers, three rounds. Only one of them leaves with the title."
         ],
         "text": [
-          ""
+          "Opt Antrenori, trei runde. Doar unul pleacă cu titlul."
         ]
       }
     }
