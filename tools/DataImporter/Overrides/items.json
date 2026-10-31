@@ -278,6 +278,23 @@
     "description": "A feather as pale as moonlight on the sea. It is said to call the great bird of the Whirl Islands.",
     "cantBeTossed": true
   },
+  // Johto's HM for Whirlpool, which Lance gives once the Team Rocket Hideout's generator is stopped (plan 20 · J11;
+  // HeartGold's HM05). Platinum's eight HMs keep their numbers and Hoenn's Dive is the ninth, so Whirlpool is the tenth;
+  // the species that learn it are those that learn Whirlpool by a machine in any game PokeAPI lists
+  // (Importer.AddHoennMachines), since HeartGold's own machine table isn't one the importer reads
+  "HM10": {
+    "id": 9204,
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Whirlpool to a compatible Pokémon. It traps the target in a whirlpool, and outside battle it crosses one.",
+    "teachesMove": "Whirlpool",
+    "cantBeTossed": true,
+    "fieldUse": "TmHm"
+  },
   // FireRed's key items of the third chapter (plan 19 · K5, part b), which no game this importer reads has: the
   // Rocket Hideout's Lift Key and the Silph Scope Giovanni leaves, Mr. Fuji's Poké Flute, the Tea Celadon's old lady
   // gives (for the thirsty guards of Saffron City's gates) and Silph Co.'s Card Key

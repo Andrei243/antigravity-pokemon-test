@@ -10,9 +10,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 |---|---|---|---|---|---|
 | The introduction (`intro:`) | 80 | 80 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1276 | 1236 | 40 | 1 | 0 |
-| Scripts (`script:`) | 9198 | 8768 | 430 | 17 | 0 |
+| Scripts (`script:`) | 9200 | 8770 | 430 | 17 | 0 |
 | People of the world (`world:`) | 6882 | 6823 | 59 | 4 | 0 |
-| **All** | 17436 | 16907 | 529 | 22 | 0 |
+| **All** | 17438 | 16909 | 529 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -98,8 +98,8 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `prof_juniper` | 62 | 0 |
 | `underground_man` | 62 | 0 |
 | `class:pokémon_ranger (any)` | 60 | 0 |
+| `lance` | 60 | 0 |
 | `beauty` | 59 | 4 |
-| `lance` | 58 | 0 |
 | `prof_elm` | 58 | 1 |
 | `cheren` | 53 | 1 |
 | `archie` | 52 | 3 |

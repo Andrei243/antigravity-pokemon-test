@@ -5298,9 +5298,8 @@ the Ice Path's scenes, Clair, the Dragon's Den, the Kimono Girls, Ho-Oh and Lugi
 - **The takeover's start**: HeartGold sets `VAR_SCENE_ROCKET_TAKEOVER` as its count of the Storm, Mineral and Glacier
   Badges reaches three. Here the Leader's script that gives the last of the three sets it; Pryce's does now, and part b
   gives Chuck's and Jasmine's the same lines, for a game that wins the Glacier Badge before either.
-- **Left out**: Whirlpool's HM, which HeartGold's Lance gives after the hideout: this game's `HM05` is Platinum's
-  Defog, and HeartGold's HM of Whirlpool is no item of its data yet (the importer must give it a name of its own), so
-  the Whirl Islands' lower floors stay shut with it; the Rage Candy seller at Mahogany's east exit and the
+- **Left out**: (Whirlpool's HM, which HeartGold's Lance gives after the hideout, came on 2026-10-31 as HM10: "HM10,
+  Whirlpool", below); the Rage Candy seller at Mahogany's east exit and the
   saleswoman (the Rage Candy Bar isn't in the data either); Wesley, the fishing guru's record and TM10 at the lake.
 
 ## Johto's fourth chapter, part b (2026-10-20, plan 20 · J11, part b)
@@ -6922,9 +6921,7 @@ The user approved L9's default on 2026-10-26 (docs/plans/decisions/APPROVAL-leve
   level 45, no running, gone for good when caught (`FLAG_JOHTO_CAUGHT_LUGIA`, ours) and back with the next Hall of Fame
   when not (HeartGold's `FLAG_HIDE_WHIRL_ISLAND_LUGIA`). HeartGold's Kimono Girls in the cave are SoulSilver's scene and
   are held back.
-- **Lance's Whirlpool HM is not given**: this game's `HM05` is Platinum's Defog, so HeartGold's Whirlpool HM needs a
-  number and a name of its own, and every species' compatibility from HeartGold's machine table: a decision for the user.
-  Until then a Pokémon that learns Whirlpool by level crosses the whirlpools on the way to the islands.
+- **Lance's Whirlpool HM** is HM10 since 2026-10-31 ("HM10, Whirlpool", below).
 - **Johto's ceremony and credits** have songs of their own (`johto/hall_of_fame`, `johto/credits`, found by
   `MusicDirector.SceneSong`), and the **Safari Zone** a trek of its own (`johto/safari_zone`) in its twelve areas and its
   gate hall. Our own compositions, rendered with no clash; not yet heard by the user.
@@ -6940,6 +6937,29 @@ The user approved L9's default on 2026-10-26 (docs/plans/decisions/APPROVAL-leve
   a fixed team of the walk's own against each trainer's team as the data builds it, the trainer AI on both sides). It is
   the scripts' game with real battles, not the window's game driven by keys (`HeadlessGameTests`' way), which would need an
   itinerary of the whole region (`Itineraries`).
+
+## HM10, Whirlpool (2026-10-31, plan 20 · J11)
+
+The user's decision (a): HeartGold's Whirlpool HM, which Lance gives once the Team Rocket Hideout's generator stops, is
+a new HM of ours.
+
+- **Its number is the tenth**: this game's `HM05` is Platinum's Defog and Platinum's eight keep their numbers, and
+  Hoenn's Dive (Emerald's HM08) took `HM09` in plan 21 · H8, so the user's "HM09 Whirlpool" is `HM10`. It is an item of
+  `tools/DataImporter/Overrides/items.json` (id 9204, the TMs pocket, `fieldUse` `TmHm`), never written by hand into
+  `items.json`.
+- **Who learns it is PokeAPI's**: HeartGold's own machine table is no file the importer reads, so the importer gives
+  `HM10` to every species that learns Whirlpool by a machine in any game PokeAPI lists (`AddHoennMachines`, as `HM09`
+  is made). PokeAPI's machines include Gold, Silver and Crystal's and HeartGold and SoulSilver's own HM05 (Whirlpool in
+  both), so the list is theirs and the later games' together: 241 species, every Water type of Kanto and Johto but
+  Magikarp, and a species of ours that copies its forebear's machines takes it too.
+- **Lance gives it once**, as the generator stops (`team_rocket_headquarters_b2f.AllStopped`, `FLAG_JOHTO_GOT_HM_WHIRLPOOL`,
+  a flag of ours). A game that cleared the hideout before the HM existed is handed it without a word the next time it
+  comes to Mahogany Town (`mahogany.OnEnter`), so no story or save version is raised.
+- **Using it** is J8's field move, unchanged: a whirlpool faced from the water with a Pokémon that knows Whirlpool and
+  Johto's Glacier Badge (`FieldMoveRules.BadgeFor`, `common.Whirlpool`). Whirlpool is now an HM move, so the bag won't
+  have it forgotten to make room (`MoveTeaching.IsHmMove`), as every HM's. It is no field helper's (plan 12 · Q18 helps
+  Platinum's eight HMs; Dive isn't either).
+
 ## HeartGold's Kanto, part j (2026-10-31, plan 20 · J15, part j)
 
 - *The slice*: the north-east of Kanto. Route 9 runs east from Cerulean City's east edge, past trees Cut fells, to Route

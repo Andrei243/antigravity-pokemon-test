@@ -865,6 +865,12 @@ public class JohtoStoryTests
         Assert.True(game.Story.Has("FLAG_UNK_1F9"));
         Assert.Null(game.Present("d35r0103_wataru"));
         Assert.Null(game.Present("d35r0103_tsure_poke_static_electrode_4"));
+        // Lance gives HM10, Whirlpool, as the generator stops (HeartGold's HM05, tenth here), once
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("HM10")!));
+        Assert.True(game.Story.Has("FLAG_JOHTO_GOT_HM_WHIRLPOOL"));
+        var town = Johto.Value.Area("mahogany")!.Warps[0];
+        game.Arrive("Johto", town.X, town.Z + 1);
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("HM10")!));
 
         // The gate house is the guard's again, with TM36 for the player
         game.Arrive("Route43_Gate", 5, 11);

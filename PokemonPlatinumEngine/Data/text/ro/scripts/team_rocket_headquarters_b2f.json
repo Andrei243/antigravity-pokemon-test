@@ -352,10 +352,26 @@
     },
     {
       "en": [
-        "You've done well, {player}. I'll make sure the League hears about this. Until we meet again!"
+        "You've done well, {player}. Take this. It's an HM that teaches Whirlpool."
       ],
       "text": [
-        "Te-ai descurcat bine, {player}. Mă voi asigura că Liga află despre asta. Până ne revedem!"
+        "Te-ai descurcat bine, {player}. Ia asta. E un HM care învață Vâltoarea."
+      ]
+    },
+    {
+      "en": [
+        "With the Glacier Badge, a Pokémon that knows it can cross the whirlpools at sea. They guard the Whirl Islands."
+      ],
+      "text": [
+        "Cu Insigna Ghețar, un Pokémon care o știe poate trece de vârtejurile de pe mare. Ele păzesc Insulele Vârtejurilor."
+      ]
+    },
+    {
+      "en": [
+        "I'll make sure the League hears about this. Until we meet again!"
+      ],
+      "text": [
+        "Mă voi asigura că Liga află despre asta. Până ne revedem!"
       ]
     }
   ]
