@@ -34,6 +34,7 @@ public enum OptionRow
     ReduceFlashes, ReduceMotion,
     MedalNotices,
     RunTimer,
+    Captions, HoldToConfirm,
     BoxTools,
     Controls,
     Jukebox,
@@ -112,13 +113,48 @@ public class OptionsScreen
     }
 
     /// <summary>Moves the reset question's slide-in and slide-out along; call every frame the options are up.</summary>
-    public void Animate(float dt) => resetReveal.Update(dt);
+    public void Animate(float dt)
+    {
+        resetReveal.Update(dt);
+        frameTime = dt;
+    }
+
+    /// <summary>The last frame's time, which the reset's hold counts by (plan 12 · Q9).</summary>
+    private float frameTime;
+
+    /// <summary>The hold the reset's YES waits for while the options' HOLD TO CONFIRM row is on (plan 12 · Q9).</summary>
+    public ConfirmHold ResetHold { get; } = new();
+
+    /// <summary>
+    /// The confirm button on the reset question: NO is answered at once, and so is YES unless the hold is asked for, in
+    /// which case the hold begins and nothing is reset yet (true: the options were reset, as <see cref="AnswerReset"/>).
+    /// </summary>
+    public bool ConfirmReset(GameSettings settings)
+    {
+        if (!ResetAsking) return false;
+        if (ResetYes && !ResetHold.Press()) return false;
+        return AnswerReset(settings, ResetYes);
+    }
+
+    /// <summary>Any arrow on the reset question: the other answer.</summary>
+    public void ToggleReset()
+    {
+        if (!ResetAsking) return;
+        ResetYes = !ResetYes;
+        ResetHold.Stop();
+        AudioManager.PlaySound("cursor");
+    }
+
+    /// <summary>A frame of the reset's hold: <paramref name="down"/> whether the button is still down; true once the hold is done and the options reset.</summary>
+    public bool HoldReset(GameSettings settings, float dt, bool down) =>
+        ResetHold.Advance(dt, down) && AnswerReset(settings, true);
 
     /// <summary>The question that comes before every option is put back (plan 12 · Q3); it opens on NO.</summary>
     public void AskReset()
     {
         ResetAsking = true;
         ResetYes = false;
+        ResetHold.Stop();
         resetReveal.Open();
         AudioManager.PlaySound("menu_open");
     }
@@ -131,6 +167,7 @@ public class OptionsScreen
     {
         if (!ResetAsking) return false;
         ResetAsking = false;
+        ResetHold.Stop();
         resetReveal.Close();
         AudioManager.PlaySound(yes ? "select" : "cancel");
         if (!yes) return false;
@@ -160,14 +197,13 @@ public class OptionsScreen
         // The reset question holds the screen until it is answered: B is NO
         if (ResetAsking)
         {
+            // YES held for the hold (plan 12 · Q9): nothing else is read until it is done or let go
+            if (ResetHold.Holding) return HoldReset(settings, frameTime, InputManager.IsActionDown(GameAction.Confirm));
             if (InputManager.IsActionPressed(GameAction.Left) || InputManager.IsActionPressed(GameAction.Right)
                 || InputManager.IsActionPressed(GameAction.Up) || InputManager.IsActionPressed(GameAction.Down))
-            {
-                ResetYes = !ResetYes;
-                AudioManager.PlaySound("cursor");
-            }
+                ToggleReset();
             else if (InputManager.IsActionPressed(GameAction.Cancel)) AnswerReset(settings, false);
-            else if (InputManager.IsActionPressed(GameAction.Confirm)) return AnswerReset(settings, ResetYes);
+            else if (InputManager.IsActionPressed(GameAction.Confirm)) return ConfirmReset(settings);
             return false;
         }
 
@@ -405,6 +441,12 @@ public class OptionsScreen
                 // Off, the Hall of Fame alone, the Badges, the whole story, and round again (plan 13 · V10)
                 s.RunTimer = (Models.TimerCategory)Wrap((int)s.RunTimer + step, 4);
                 break;
+            case OptionRow.Captions:
+                s.Captions = !s.Captions; // plan 12 · Q9
+                break;
+            case OptionRow.HoldToConfirm:
+                s.HoldToConfirm = !s.HoldToConfirm;
+                break;
         }
     }
 
@@ -486,6 +528,8 @@ public class OptionsScreen
         OptionRow.ReduceMotion => (Text.Of("options.reduceMotion.label"), OnOff(s.ReduceMotion), Text.Of(s.ReduceMotion ? "options.reduceMotion.help.on" : "options.reduceMotion.help.off")),
         OptionRow.MedalNotices => (Text.Of("options.medalNotices.label"), OnOff(s.MedalNotices), Text.Of(s.MedalNotices ? "options.medalNotices.help.on" : "options.medalNotices.help.off")),
         OptionRow.RunTimer => (Text.Of("options.runTimer.label"), Text.Of($"options.runTimer.value.{s.RunTimer}"), Text.Of($"options.runTimer.help.{s.RunTimer}")),
+        OptionRow.Captions => (Text.Of("options.captions.label"), OnOff(s.Captions), Text.Of(s.Captions ? "options.captions.help.on" : "options.captions.help.off")),
+        OptionRow.HoldToConfirm => (Text.Of("options.holdToConfirm.label"), OnOff(s.HoldToConfirm), Text.Of(s.HoldToConfirm ? "options.holdToConfirm.help.on" : "options.holdToConfirm.help.off")),
         OptionRow.ResetDefaults => (Text.Of("options.resetDefaults.label"), Text.Of("options.resetDefaults.value"), Text.Of("options.resetDefaults.help")),
         OptionRow.Controls => (Text.Of("options.controls.label"), Text.Of("options.controls.value"), Text.Of("options.controls.help")),
         OptionRow.Jukebox => (Text.Of("options.jukebox.label"), Text.Of("options.jukebox.value"), Text.Of("options.jukebox.help")),
@@ -547,6 +591,7 @@ public class OptionsScreen
         // The question over everything else (plan 12 · Q3): NO first, YES in Red since it throws the choices away
         if (resetReveal.Visible)
             ModernUi.Prompt(sw, sh, Text.Of("options.reset.heading"), Text.Of("options.reset.body"),
-                new[] { (Text.Of("options.reset.no"), ModernUi.Blue), (Text.Of("options.reset.yes"), ModernUi.Red) }, ResetYes ? 1 : 0, resetReveal.Shown);
+                new[] { (Text.Of("options.reset.no"), ModernUi.Blue), (Text.Of("options.reset.yes"), ModernUi.Red) }, ResetYes ? 1 : 0, resetReveal.Shown,
+                ResetHold.Holding ? (1, ResetHold.Fill) : null);
     }
 }

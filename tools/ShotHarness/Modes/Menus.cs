@@ -1006,11 +1006,22 @@ partial class Harness
             ps.MenuIndex = 1;
             ps.Confirm(party, stored, engine.ShowNotification);
             Frames(20);
-            // (the game's own frame lets the hold drain with nothing pressed, so it is filled after the frames and one more drawn)
-            for (int f = 0; f < 32; f++) ps.HoldRelease(1f / 60f, true, party, stored, engine.ShowNotification);
-            Frames(1); Shot("30v_pc_release_many");
-            Console.WriteLine($"box tools: releasing {ps.Releasing.Count}, the hold at {ps.ReleaseHold:0.00}");
+            // With HOLD TO CONFIRM on (plan 12 · Q9), the yes pressed and held through the game's own frames, about half of the hold
+            var holdBefore = engine.Settings.HoldToConfirm;
+            engine.Settings.HoldToConfirm = true;
+            game.ApplySettings();
+            var press = ActionFrame.Press(GameAction.Confirm);
+            InputManager.Feed(press);
+            Frames(1);
+            InputManager.Feed(press.Next(GameAction.Confirm));
+            Frames(11);
+            Shot("30v_pc_release_many");
+            Console.WriteLine($"box tools: releasing {ps.Releasing.Count}, holding {ps.ReleaseHold.Holding}, the hold at {ps.ReleaseHold.Fill:0.00}, box 2 still holds {stored.Boxes[1].Count}");
+            InputManager.Feed(null);
+            Frames(1);
             ps.Cancel(party, stored);
+            engine.Settings.HoldToConfirm = holdBefore;
+            game.ApplySettings();
             ps.Close();
             game.Boxes = boxesBefore;
             engine.Settings.BoxTools = toolsBefore;

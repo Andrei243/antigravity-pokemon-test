@@ -155,6 +155,7 @@ public sealed class InputBindings
         Set(GameAction.Mute, Of(K(KeyboardKey.M)));
         Set(GameAction.Screenshot, Of(K(KeyboardKey.F12)));
         Set(GameAction.Report, Of(K(KeyboardKey.F8)));
+        Set(GameAction.Photo, Of(K(KeyboardKey.F9), GamepadButton.MiddleLeft));
         return table;
     }
 

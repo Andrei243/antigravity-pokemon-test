@@ -282,4 +282,16 @@ public sealed class AthlonScreen
     {
         if (IsActive) ModernUi.DrawAthlon(sw, sh, this);
     }
+
+    /// <summary>
+    /// For tools (plan 15 · E7): the screen opened on a course of the tool's own (any events in any order) with three of
+    /// the team already chosen, at the first event's briefing. The game opens it only through <see cref="Open"/>.
+    /// </summary>
+    public void OpenOn(AthlonCourse course, Party team, AthlonRecords records, Random random, IReadOnlyList<int> three)
+    {
+        Open(team, records, random);
+        chosen.AddRange(three);
+        Run = new AthlonRun(course, chosen.Select(i => AthleteStats.SpeciesOf(Members[i])).ToList(), random);
+        Enter(AthlonPhase.Briefing);
+    }
 }

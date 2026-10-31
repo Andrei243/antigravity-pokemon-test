@@ -30,14 +30,20 @@ public static partial class SoundBank
     public static string GMaxSound(string move) =>
         move.StartsWith("G-Max ", StringComparison.OrdinalIgnoreCase) ? "gmax_" + MoveKey(move[6..]) : "";
 
-    /// <summary>The G-Max Moves with a sound of their own (plan 25 · YD7, part a). A property: the catalogue is built in the class's static constructor, before a field of this file would be.</summary>
+    /// <summary>The G-Max Moves with a sound of their own (plan 25 · YD7, parts a and b). A property: the catalogue is built in the class's static constructor, before a field of this file would be.</summary>
     private static (string Move, string What)[] GMaxSounds => new[]
     {
         ("G-Max Wildfire", "a roar of fire springing up all round, crackling as the walls burn and dying to a hiss"),
         ("G-Max Volt Crash", "a thunderclap out of the sky on the landing, then six cracks running out along the ground"),
         ("G-Max Terror", "a hollow moan rising under the landing, a whisper of wind circling and a low thrum as the eye opens"),
         ("G-Max Resonance", "a slow chord of bells and a high shimmering drone, as of an aurora, over a cold ringing"),
-        ("G-Max Replenish", "a soft burst, then berries falling and pattering round, and a bright little run as the user's side is given its berries back")
+        ("G-Max Replenish", "a soft burst, then berries falling and pattering round, and a bright little run as the user's side is given its berries back"),
+        // Part b
+        ("G-Max Chi Strike", "four heavy punches landing one after another, a ringing gold chime at the fourth and a bright shimmer as the stars circle"),
+        ("G-Max Gold Rush", "a shower of coins jingling down and chinking as they land in a heap"),
+        ("G-Max Cuddle", "a warm swelling chord as the hearts gather, two soft squeezes and little pops as the hearts rise"),
+        ("G-Max Befuddle", "a fluttering of great wings, a glittering shimmer of falling scales and three little notes as the signs pop up"),
+        ("G-Max Depletion", "an electric hum powering down in steps as the panels go out, with clicks, to a dead low drone")
     };
 
     /// <summary>The sound a Max Move of this type makes (a G-Max Move is heard as its type's; plan 25 · Y15).</summary>
@@ -299,6 +305,60 @@ public static partial class SoundBank
                 for (int i = 0; i < 9; i++) d.Thump(0.62f + i * 0.04f, 0.1f, 420f + (i % 3) * 60f, 220f, 0.3f, 0.6f);
                 d.Notes(0.8f, 0.07f, 0.35f, Wave.Sine, Pitches(79, 83, 86, 91), 0.08f, 0.01f);
                 d.Noise(0.8f, 0.6f, Filter.High, 2500f, 4500f, 0.08f, 0.8f, 0.2f, 1.2f, 9f, 0.5f);
+                return Finish(d.S, 0.44f);
+            // Part b
+            case "gmax_chi_strike":
+                // Four punches landing 0.07 s apart from 0.49 s, a gold chime at the fourth (0.7 s), a shimmer after
+                Base(0xC415u);
+                for (int i = 0; i < 4; i++)
+                {
+                    d.Thump(0.49f + i * 0.07f, 0.22f, 200f - i * 15f, 60f, 0.55f, 0.7f);
+                    d.Noise(0.49f + i * 0.07f, 0.06f, Filter.Band, 1500f, 700f, 0.25f, 1f, 0.005f, 2.5f);
+                }
+                d.Bell(0.7f, 0.8f, N(84), 2.01f, 1.2f, 0.16f, 2.2f);
+                d.Bell(0.72f, 0.75f, N(91), 3.01f, 0.9f, 0.1f, 2.2f);
+                d.Notes(0.9f, 0.06f, 0.3f, Wave.Sine, Pitches(96, 100, 103, 108), 0.04f, 0.01f);
+                return Finish(d.S, 0.48f);
+            case "gmax_gold_rush":
+                // Coins jingling down from 0.37 s (0.035 s apart), each chinking as it lands 0.4 s later
+                Base(0x601Du);
+                for (int i = 0; i < 18; i++)
+                {
+                    float at = 0.77f + i * 0.035f;
+                    d.Bell(at, 0.22f, N(96 + (i * 5) % 9), 2.76f, 1.4f, 0.05f, 3f);
+                }
+                d.Crackle(0.4f, 0.5f, 18, 7000f, 0.12f);
+                d.Noise(0.4f, 0.9f, Filter.High, 5000f, 7000f, 0.05f, 1f, 0.2f, 1.2f, 22f, 0.6f);
+                return Finish(d.S, 0.44f);
+            case "gmax_cuddle":
+                // A warm chord swelling as the hearts gather, two soft squeezes (0.73, 0.9 s), little pops rising from 1.1 s
+                Base(0xC0DDu);
+                d.Tone(0.36f, 1.0f, Wave.Sine, N(64), N(64), 0.1f, 0.4f, 1.0f, vibratoHz: 5f, vibratoDepth: 0.01f);
+                d.Tone(0.36f, 1.0f, Wave.Sine, N(68), N(68), 0.08f, 0.4f, 1.0f, vibratoHz: 5f, vibratoDepth: 0.01f);
+                d.Tone(0.36f, 1.0f, Wave.Triangle, N(71), N(71), 0.05f, 0.4f, 1.0f);
+                d.Thump(0.73f, 0.18f, 260f, 140f, 0.3f, 0f);
+                d.Thump(0.9f, 0.18f, 260f, 140f, 0.3f, 0f);
+                for (int i = 0; i < 4; i++) d.Bubble(1.1f + i * 0.06f, N(84 + i * 3), 0.12f);
+                return Finish(d.S, 0.42f);
+            case "gmax_befuddle":
+                // Wings beating (a fluttering rush), scales glittering as they fall, three notes as the signs pop (0.9 s on)
+                Base(0xBEF0u);
+                d.Noise(0.36f, 0.9f, Filter.Band, 400f, 900f, 0.25f, 1.2f, 0.1f, 1.2f, 3.6f, 0.8f);
+                d.Crackle(0.45f, 0.8f, 24, 8000f, 0.1f);
+                d.Tone(0.45f, 0.8f, Wave.Sine, N(88), N(86), 0.04f, 0.3f, 1f, vibratoHz: 11f, vibratoDepth: 0.03f);
+                d.Notes(0.9f, 0.12f, 0.25f, Wave.Triangle, Pitches(79, 86, 83), 0.1f, 0.01f);
+                return Finish(d.S, 0.44f);
+            case "gmax_depletion":
+                // An electric hum stepping down as the panels go out (0.6 to 1.05 s), a click at each, a dead drone at the end
+                Base(0xDE91u);
+                for (int i = 0; i < 6; i++)
+                {
+                    float at = 0.52f + i * 0.09f;
+                    d.Tone(at, 0.14f, Wave.Saw, 220f - i * 25f, 210f - i * 25f, 0.06f, 0.05f, 0.6f);
+                    d.Crackle(0.6f + i * 0.09f, 0.01f, 1, 3000f, 0.25f);
+                }
+                d.Tone(0.9f, 0.6f, Wave.Saw, 70f, 45f, 0.08f, 0.1f, 1.4f);
+                d.Noise(0.4f, 0.8f, Filter.Band, 2400f, 600f, 0.06f, 2f, 0.1f, 1.4f, 60f, 0.5f);
                 return Finish(d.S, 0.44f);
         }
         return null;

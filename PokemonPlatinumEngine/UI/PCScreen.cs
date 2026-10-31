@@ -94,6 +94,17 @@ public class PCScreen
     /// <summary>A release waiting for its yes (RELEASE asks first).</summary>
     public bool AskingRelease { get; private set; }
 
+    /// <summary>The hold RELEASE's yes waits for while the options' HOLD TO CONFIRM row is on (plan 12 · Q9).</summary>
+    public ConfirmHold ReleaseHold { get; } = new();
+
+    /// <summary>A frame of the release's hold: <paramref name="down"/> whether the button is still down; the Pokémon is let go once the hold is done.</summary>
+    public void HoldRelease(Party party, PcBoxes pc, Action<string> onNotification, float dt, bool down)
+    {
+        if (AskingRelease && ReleaseHold.Advance(dt, down)) AnswerRelease(true, party, pc, onNotification);
+        // Several released at once wait for the same hold (plan 12 · Q26)
+        else if (AskingReleaseMany && ReleaseHold.Advance(dt, down)) ReleaseMany(party, pc, onNotification);
+    }
+
     /// <summary>The box's new name being typed (NAME), or null.</summary>
     public NameEntry? Naming { get; private set; }
 
@@ -139,14 +150,8 @@ public class PCScreen
     public IReadOnlyList<PcSortChoice>? SortMenu { get; private set; }
     private bool sortEvery;
 
-    /// <summary>Releasing the rectangle's Pokémon, which waits for the confirm button held (<see cref="ReleaseHoldSeconds"/>).</summary>
+    /// <summary>Releasing the rectangle's Pokémon: its yes waits for <see cref="ReleaseHold"/> as a single release's does.</summary>
     public bool AskingReleaseMany { get; private set; }
-
-    /// <summary>How far the hold has filled, 0 to 1.</summary>
-    public float ReleaseHold { get; private set; }
-
-    /// <summary>How long the confirm button is held to release several at once.</summary>
-    public const float ReleaseHoldSeconds = 1f;
 
     private List<int> releasing = new();
 
@@ -180,6 +185,7 @@ public class PCScreen
         BoxMenu = null;
         Marking = null;
         AskingRelease = false;
+        ReleaseHold.Stop();
         Naming = null;
         MenuIndex = 0;
         Selecting = false;
@@ -188,7 +194,6 @@ public class PCScreen
         Results = null;
         SortMenu = null;
         AskingReleaseMany = false;
-        ReleaseHold = 0f;
     }
 
     /// <summary>Whether one of the screen's own menus or questions is open over the boxes.</summary>
@@ -318,7 +323,8 @@ public class PCScreen
         if (ConfirmTools(party, pc, onNotification)) return;
         if (AskingRelease)
         {
-            AnswerRelease(true, party, pc, onNotification);
+            // Letting a Pokémon go waits for the hold where the options ask for it (plan 12 · Q9)
+            if (ReleaseHold.Press()) AnswerRelease(true, party, pc, onNotification);
             return;
         }
         if (Marking is { } marks)
@@ -405,7 +411,7 @@ public class PCScreen
         if (CancelTools(pc)) { AudioManager.PlaySound("cancel"); return true; }
         if (Summarizing) Summarizing = false;
         else if (Naming != null) Naming = null;
-        else if (AskingRelease) AskingRelease = false;
+        else if (AskingRelease) { AskingRelease = false; ReleaseHold.Stop(); }
         else if (Marking != null) Marking = null;
         else if (Menu != null || BoxMenu != null) { Menu = null; BoxMenu = null; }
         else if (Held != null) PutBack(party, pc);
@@ -494,6 +500,7 @@ public class PCScreen
     public void AnswerRelease(bool yes, Party party, PcBoxes pc, Action<string> onNotification)
     {
         AskingRelease = false;
+        ReleaseHold.Stop();
         if (!yes || Under(party, pc) is not { } pokemon) return;
         switch (pc.Release(pokemon, party))
         {
@@ -645,6 +652,13 @@ public class PCScreen
         if (!IsActive) return;
         openAge += dt;
 
+        // RELEASE held for the hold (plan 12 · Q9): nothing else is read until it is done or let go
+        if (ReleaseHold.Holding)
+        {
+            HoldRelease(party, pc, onNotification, dt, InputManager.IsActionDown(GameAction.Confirm));
+            return;
+        }
+
         if (Naming is { } naming)
         {
             // The keyboard's own keys while a box is being named
@@ -674,11 +688,11 @@ public class PCScreen
             return;
         }
 
-        // Releasing several waits for the confirm button held (plan 12 · Q26); B keeps them
+        // Releasing several (plan 12 · Q26): A answers yes (the hold, where asked, is followed above), B keeps them
         if (AskingReleaseMany)
         {
             if (InputManager.IsActionPressed(GameAction.Cancel)) Cancel(party, pc);
-            else HoldRelease(dt, InputManager.IsActionDown(GameAction.Confirm), party, pc, onNotification);
+            else if (InputManager.IsActionPressed(GameAction.Confirm)) Confirm(party, pc, onNotification);
             return;
         }
 
@@ -747,7 +761,12 @@ public class PCScreen
     /// <summary>The A button where a tool has it; true when a tool took it.</summary>
     private bool ConfirmTools(Party party, PcBoxes pc, Action<string> onNotification)
     {
-        if (AskingReleaseMany) return true;
+        if (AskingReleaseMany)
+        {
+            // The release's yes: at once, or once the hold is done where the options ask for it (plan 12 · Q9)
+            if (ReleaseHold.Press()) ReleaseMany(party, pc, onNotification);
+            return true;
+        }
         if (Results is { } results)
         {
             if (ResultIndex == 0) PickUpMany(pc, results);
@@ -819,7 +838,7 @@ public class PCScreen
             {
                 releasing = cells;
                 AskingReleaseMany = true;
-                ReleaseHold = 0f;
+                ReleaseHold.Stop();
             }
             AudioManager.PlaySound("select");
             return true;
@@ -843,7 +862,7 @@ public class PCScreen
     /// <summary>The B button where a tool has it: each steps back once; true when a tool took it.</summary>
     private bool CancelTools(PcBoxes pc)
     {
-        if (AskingReleaseMany) { AskingReleaseMany = false; ReleaseHold = 0f; releasing = new(); }
+        if (AskingReleaseMany) { AskingReleaseMany = false; ReleaseHold.Stop(); releasing = new(); }
         else if (Results != null) Results = null;
         else if (Search != null) Search = null;
         else if (SortMenu != null) SortMenu = null;
@@ -907,14 +926,12 @@ public class PCScreen
     }
 
     /// <summary>
-    /// A frame of the hold that releases several (<see cref="ReleaseHoldSeconds"/>): held, it fills, and full it lets them go;
-    /// let go, it empties. A press alone releases nothing.
+    /// Lets the rectangle's Pokémon go, each as RELEASE would (one that holds Mail, or would take a move the field needs
+    /// with it, stays). Reached by the release's yes, at once or after <see cref="ReleaseHold"/> where the options ask for it.
     /// </summary>
-    public void HoldRelease(float dt, bool down, Party party, PcBoxes pc, Action<string> onNotification)
+    private void ReleaseMany(Party party, PcBoxes pc, Action<string> onNotification)
     {
         if (!AskingReleaseMany) return;
-        ReleaseHold = down ? Math.Min(1f, ReleaseHold + dt / ReleaseHoldSeconds) : Math.Max(0f, ReleaseHold - dt / ReleaseHoldSeconds * 2f);
-        if (ReleaseHold < 1f) return;
         int released = 0, stayed = 0;
         foreach (int cell in releasing)
         {
@@ -923,7 +940,7 @@ public class PCScreen
             else stayed++;
         }
         AskingReleaseMany = false;
-        ReleaseHold = 0f;
+        ReleaseHold.Stop();
         releasing = new();
         if (released > 0) Changed = true;
         AudioManager.PlaySound("select");

@@ -222,7 +222,8 @@ internal static partial class ModernUi
 
         if (pc.AskingRelease && under != null)
             Prompt(sw, sh, Text.Of("boxes.release.question", ("name", under.DisplayName)), Text.Of("boxes.release.body"),
-                new[] { (Text.Of("boxes.release.yes"), Red), (Text.Of("boxes.release.no"), Blue) }, -1);
+                new[] { (Text.Of("boxes.release.yes"), Red), (Text.Of("boxes.release.no"), Blue) }, -1, 1f,
+                pc.ReleaseHold.Holding ? (0, pc.ReleaseHold.Fill) : null);
 
         DrawBoxTools(sw, sh, pc, stored, box, plate, detail, cursor, Beside(340), Within(cursor.Y - 8, MenuPanelHeight(3)));
     }
@@ -427,7 +428,7 @@ internal static partial class ModernUi
     private static bool BoxToolHints(int sw, PCScreen pc)
     {
         if (pc.AskingReleaseMany)
-            Hints(sw - Margin, 44, Hint("shared.keys.z", "boxTools.hint.hold"), Hint("shared.keys.esc", "shared.hints.keepIt"));
+            Hints(sw - Margin, 44, Hint("shared.keys.z", "shared.hints.release"), Hint("shared.keys.esc", "shared.hints.keepIt"));
         else if (pc.Results != null)
             Hints(sw - Margin, 44, Hint("shared.keys.upDown", "shared.hints.choose"), Hint("shared.keys.z", "shared.hints.doIt"), Hint("shared.keys.esc", "shared.hints.back"));
         else if (pc.Search != null)
@@ -493,12 +494,8 @@ internal static partial class ModernUi
         if (pc.AskingReleaseMany)
         {
             Prompt(sw, sh, Text.Of("boxTools.many.releaseQuestion", ("count", pc.Releasing.Count)), Text.Of("boxTools.many.releaseBody"),
-                new[] { (Text.Of("boxTools.many.releaseHold"), Red), (Text.Of("boxTools.many.keep"), Blue) }, -1);
-            // The hold's bar, filling while the confirm button is held
-            const float barW = 480, barH = 16;
-            var bar = new Rectangle(sw / 2f - barW / 2f, sh / 2f - 170 + 186, barW, barH);
-            UiShapes.Fill(bar, barH / 2f, Rule);
-            if (pc.ReleaseHold > 0f) UiShapes.Fill(new Rectangle(bar.X, bar.Y, MathF.Max(barH, barW * pc.ReleaseHold), barH), barH / 2f, Selection);
+                new[] { (Text.Of("boxTools.many.releaseHold"), Red), (Text.Of("boxTools.many.keep"), Blue) }, -1, 1f,
+                pc.ReleaseHold.Holding ? (0, pc.ReleaseHold.Fill) : null);
         }
     }
 

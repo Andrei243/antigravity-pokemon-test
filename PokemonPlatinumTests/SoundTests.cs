@@ -456,4 +456,15 @@ public class SoundTests
     {
         Assert.Contains("send_out", Hear(() => Scenario.Battle(Scenario.Mon("Pikachu", 30, "Tackle"), Scenario.Mon("Bidoof", 5))));
     }
+
+    [Fact]
+    public void EverySoundOfTheBankHasACaption()
+    {
+        // Plan 12 · Q9: what the CAPTIONS row names on screen as each plays (CaptionsAndHoldTests holds the words in both languages)
+        foreach (var entry in SoundBank.Entries)
+        {
+            Assert.False(string.IsNullOrWhiteSpace(entry.Caption), entry.Name);
+            Assert.NotEqual(entry.Name, entry.Caption);
+        }
+    }
 }

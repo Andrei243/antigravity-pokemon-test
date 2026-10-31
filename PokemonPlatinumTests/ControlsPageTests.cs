@@ -233,8 +233,8 @@ public class ControlsPageTests
             page.Confirm();
             Assert.False(page.Capture(new CapturedInput(KeyboardKey.K, null)));
             Assert.Equal(ControlsPhase.Capturing, page.Phase);
-            Assert.True(page.Capture(new CapturedInput(null, GamepadButton.MiddleLeft)));
-            Assert.Equal(new[] { GamepadButton.MiddleLeft, GamepadButton.RightFaceUp }, page.Working[GameAction.Poketch].Pad);
+            Assert.True(page.Capture(new CapturedInput(null, GamepadButton.RightTrigger2)));
+            Assert.Equal(new[] { GamepadButton.RightTrigger2, GamepadButton.RightFaceUp }, page.Working[GameAction.Poketch].Pad);
             Assert.Equal(new[] { KeyboardKey.P }, page.Working[GameAction.Poketch].Keys);
 
             page.Confirm();

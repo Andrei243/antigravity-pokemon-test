@@ -111,6 +111,8 @@ public static class AudioManager
         heard?.Add(soundName);
         // The pad trembles with what it stands for, muted or not (plan 12 · Q24)
         Haptics.FromSound(soundName);
+        // And it is named on screen, muted or not, where the options ask (plan 12 · Q9)
+        if (Accessibility.Captions && SoundBank.Exists(soundName)) Accessibility.Caption(SoundBank.CaptionOf(soundName), CaptionKind.Sound);
         if (isMuted || !isInitialized) return;
         var sound = SoundBank.Get(soundName);
         if (sound == null)
@@ -132,6 +134,7 @@ public static class AudioManager
         if (hushed) return;
         string name = species.Form(form)?.Name ?? species.Name;
         heard?.Add(mode == CryMode.Normal ? $"cry {name}" : $"cry {name} {mode}");
+        if (Accessibility.Captions) Accessibility.Caption(SoundBank.CryCaption(species, form), CaptionKind.Cry); // plan 12 · Q9
         if (isMuted || !isInitialized) return;
         mixer.PlaySound(Cries.Get(species, form, mode), AudioBus.Cry, 1f, pan);
     }
@@ -146,6 +149,7 @@ public static class AudioManager
         if (hushed) return;
         string name = species.Form(form)?.Name ?? species.Name;
         heard?.Add($"cry {name} shaped {shape.Clamped().Key}");
+        if (Accessibility.Captions) Accessibility.Caption(SoundBank.CryCaption(species, form), CaptionKind.Cry); // plan 12 · Q9
         if (isMuted || !isInitialized) return;
         mixer.PlaySound(Cries.Shaped(species, form, shape), AudioBus.Cry, 1f, shape.Clamped().PanPosition);
     }

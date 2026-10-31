@@ -92,7 +92,7 @@ public sealed record Athlete(string Species, AthleteStats Stats)
 public sealed record AthlonTeam(string Name, bool IsPlayer, IReadOnlyList<Athlete> Athletes, float Knack);
 
 /// <summary>The events of the Pokéathlon this game has (plan 15 · E6: one of each kind; E7 and E8 add at the end).</summary>
-public enum AthlonEventKind { HurdleDash, BlockSmash, RingDrop }
+public enum AthlonEventKind { HurdleDash, BlockSmash, RingDrop, PennantCapture, SnowThrow, DiscCatch, LampJump }
 
 /// <summary>A course: three events in order, by its text key (<c>athlon.course.&lt;key&gt;</c>).</summary>
 public sealed record AthlonCourse(string Key, IReadOnlyList<AthlonEventKind> Events);
@@ -298,7 +298,8 @@ public abstract class AthlonEvent
     {
         AthlonEventKind.HurdleDash => new HurdleDash(teams, seed),
         AthlonEventKind.BlockSmash => new BlockSmash(teams, seed),
-        _ => new RingDrop(teams, seed)
+        AthlonEventKind.RingDrop => new RingDrop(teams, seed),
+        _ => AthlonEventsBatch2.Create(kind, teams, seed) ?? throw new ArgumentOutOfRangeException(nameof(kind))
     };
 
     /// <summary>One frame, the player's team doing what <paramref name="mine"/> says and the rivals what they think.</summary>

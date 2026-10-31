@@ -373,6 +373,20 @@
         "Story": "Un colț arată timpul jocului; timpi parțiali la fiecare Insignă, fiecare comandant Galactic și Sala Faimei."
       }
     },
+    "captions": {
+      "label": "Subtitrări",
+      "help": {
+        "off": "Sunetele și strigătele se aud, dar nu se scriu.",
+        "on": "Fiecare sunet și strigăt e scris pe ecran când se aude: „Se deschide o ușă”, „Starly strigă”."
+      }
+    },
+    "holdToConfirm": {
+      "label": "Ține ca să confirmi",
+      "help": {
+        "off": "O apăsare răspunde la orice întrebare, chiar și la ștergerea unei salvări sau eliberarea unui Pokémon.",
+        "on": "Ștergerea unei salvări, revenirea la implicit sau eliberarea unui Pokémon așteaptă ca butonul să fie ținut o clipă."
+      }
+    },
     "reduceMotion": {
       "label": "Mai puțină mișcare",
       "help": {
@@ -762,6 +776,24 @@
       "flint": "Echipa Cremene",
       "gale": "Echipa Vijelie",
       "hazel": "Echipa Alun"
+    },
+    "batch2": {
+      "event": {
+        "pennantCapture": "Capturat Fanioane",
+        "snowThrow": "Bulgări de Zăpadă",
+        "discCatch": "Prins Discuri",
+        "lampJump": "Săritura la Lămpi"
+      },
+      "howTo": {
+        "pennantCapture": "Aleargă pe teren cu săgețile și ia fanioanele înaintea celorlalți. Alergatul îți obosește Pokémonul: apasă {key:cancel} ca să-l trimiți pe următorul. Dacă te ciocnești de altcineva, amândoi rămâneți amețiți.",
+        "snowThrow": "Îndreaptă săgețile spre o echipă și apasă {key:confirm} ca să arunci un bulgăre. Ține {key:confirm} apăsat ca să te ferești de un bulgăre care vine spre tine. O lovitură aduce trei puncte, un bulgăre evitat unul.",
+        "discCatch": "Aleargă pe culoarul tău cu săgețile până unde cade un disc și apasă {key:confirm} ca să sari după el. Un disc prins în aer aduce mai mult. Apasă {key:cancel} ca să trimiți un Pokémon odihnit.",
+        "lampJump": "Pokémonul tău sare singur. Apasă {key:confirm} chiar înainte să aterizeze ca să sară mai sus și aprinde lămpile pe lângă care trece vârful fiecărei sărituri. Prea devreme sau prea târziu, și coboară la loc."
+      },
+      "hits": "Lovituri: {n}",
+      "ducked": "Evitate: {n}",
+      "catches": "PRINSE",
+      "lamps": "Lămpi: {n}"
     }
   },
 
@@ -2336,7 +2368,7 @@
     "action": {
       "Up": "Sus", "Down": "Jos", "Left": "Stânga", "Right": "Dreapta", "Confirm": "Confirmă, vorbește, citește", "Cancel": "Înapoi", "Menu": "Meniu",
       "Run": "Fugă (ținut apăsat)", "Item": "Obiect înregistrat", "Poketch": "Scoate sau ascunde Pokétch-ul", "PoketchApp": "Următoarea aplicație Pokétch",
-      "PoketchTouch": "Atinge Pokétch-ul", "PageLeft": "Pagina înapoi", "PageRight": "Pagina înainte", "Fullscreen": "Ecran complet", "Mute": "Sunet pornit sau oprit", "Screenshot": "Fă o captură de ecran", "Report": "Scrie un raport de reluat"
+      "PoketchTouch": "Atinge Pokétch-ul", "PageLeft": "Pagina înapoi", "PageRight": "Pagina înainte", "Fullscreen": "Ecran complet", "Mute": "Sunet pornit sau oprit", "Screenshot": "Fă o captură de ecran", "Report": "Scrie un raport de reluat", "Photo": "Modul foto"
     },
     "page": {
       "title": "COMENZI",
@@ -4633,6 +4665,157 @@
       "help": "Păstrează aceste alegeri și trece la ecranul de titlu. Pagina aceasta nu va mai apărea."
     }
   },
+  "photo": {
+    "title": "FOTO",
+    "row": { "Zoom": "Zoom", "Time": "Ora", "Weather": "Vremea", "Filter": "Filtru", "Frame": "Ramă" },
+    "zoom": "×{zoom}",
+    "time": { "now": "Acum", "Morning": "Dimineața", "Day": "Ziua", "Twilight": "Seara", "Night": "Noaptea", "LateNight": "Târziu în noapte" },
+    "weather": { "Now": "Cum e", "Clear": "Senin", "Rain": "Ploaie", "Snow": "Ninsoare", "Fog": "Ceață" },
+    "notHere": "Nu aici",
+    "filter": { "None": "Fără", "Vivid": "Viu", "Mono": "Alb-negru", "Sepia": "Sepia", "Soft": "Moale" },
+    "frame": { "None": "Fără", "Mat": "Paspartu", "Cinema": "Cinema" },
+    "hint": {
+      "compose": "{key:confirm} Fotografiază   {key:menu} Setări   {out} {in} Zoom   {key:item} Ascunde   {key:cancel} Ieși",
+      "panel": "{key:confirm} Fotografiază   {key:menu} Închide   {key:item} Ascunde   {key:cancel} Înapoi"
+    }
+  },
+  "captions": {
+    "cry": "{name} strigă",
+    "family": {
+      "move": "Se folosește {move}",
+      "moveType": "Pornește o mișcare de tip {type}",
+      "zMove": "Lovește o Mișcare Z de tip {type}",
+      "maxMove": "Lovește o Mișcare Max de tip {type}",
+      "gmax": "Lovește {move}"
+    },
+    "sound": {
+      "cursor": "Un clic ușor",
+      "select": "O alegere făcută",
+      "cancel": "Înapoi",
+      "error": "Un bâzâit: nu acum",
+      "menuOpen": "Se deschide un meniu",
+      "menuClose": "Se închide un meniu",
+      "page": "Se întoarce o pagină",
+      "text": "Un țăcănit ușor",
+      "bump": "O izbitură",
+      "ledge": "Un salt în jos",
+      "grass": "Foșnet de iarbă",
+      "stepSnow": "Scârțâie zăpada",
+      "stepPuddle": "Un plescăit sub picior",
+      "stepShallows": "Apa clipocește",
+      "stepMud": "Plescăie noroiul",
+      "doorOpen": "Se deschide o ușă",
+      "doorClose": "Se închide o ușă",
+      "doorSlide": "Ușile de sticlă se deschid",
+      "stairs": "Pași pe scări",
+      "warp": "Un panou de teleportare zumzăie",
+      "exclaim": "O tresărire",
+      "surf": "Un plescăit pe apă",
+      "dive": "O scufundare în adânc",
+      "bubbles": "Se ridică bule",
+      "bridgeWalk": "Scârțâie scândurile",
+      "crossingHorn": "Sună sirena unei nave",
+      "crossingEngine": "Motoarele urlă",
+      "save": "Jocul e salvat",
+      "pcOn": "Un PC pornește",
+      "pcOff": "Un PC se oprește",
+      "vsSeeker": "Vs. Seeker-ul piuie",
+      "phoneRing": "Sună un telefon",
+      "phoneRegistered": "Un număr e salvat",
+      "heal": "Un clinchet de vindecare",
+      "levelup": "O fanfară veselă",
+      "bikeBell": "Sună clopoțelul bicicletei",
+      "gear": "Țăcăne angrenajul",
+      "boulder": "Un bolovan se târăște",
+      "rockSmash": "O stâncă se sparge",
+      "cut": "Un copac e tăiat",
+      "fishCast": "Se aruncă undița",
+      "fishBite": "Trage ceva!",
+      "fishReel": "Se strânge firul",
+      "shutter": "Țăcăne un aparat foto",
+      "poketch": "Pokétch-ul piuie",
+      "poketchCount": "Contorul țăcăne",
+      "poketchBeep": "Un piuit scurt",
+      "coinFlip": "Se aruncă o monedă",
+      "coinLand": "Moneda cade",
+      "rouletteSpin": "Ruleta se oprește",
+      "timerAlarm": "Sună un cronometru",
+      "dowsingPing": "Detectorul piuie",
+      "lift": "O platformă pornește",
+      "liftStop": "O platformă se oprește",
+      "snowball": "Un bulgăre se sparge",
+      "gears": "Roțile dințate scrâșnesc",
+      "thunder": "Trăsnește",
+      "thunderRumble": "Tunetul bubuie",
+      "effectBurst": "O explozie de lumină",
+      "effectBeam": "O rază de lumină zumzăie",
+      "effectRift": "Aerul se sfâșie",
+      "effectShadow": "O umbră uriașă trece",
+      "effectRipple": "Un tremur adânc",
+      "effectSparkles": "Sclipiri clinchetesc",
+      "machineBall": "O minge e așezată",
+      "liftHum": "Un lift zumzăie",
+      "liftDing": "Un lift sună",
+      "sendOut": "Se deschide o minge",
+      "recall": "Un Pokémon e chemat înapoi",
+      "shiny": "O sclipire",
+      "runAway": "Ai scăpat",
+      "ballThrow": "Se aruncă o minge",
+      "ballShake": "Mingea se clatină",
+      "ballClick": "Mingea se închide",
+      "ballBreak": "Mingea se deschide",
+      "hitNormal": "O lovitură",
+      "hitSuper": "O lovitură grea",
+      "hitWeak": "O lovitură slabă",
+      "statUp": "O statistică crește",
+      "statDown": "O statistică scade",
+      "statusPoison": "Otrăvit",
+      "statusBurn": "Ars",
+      "statusParalysis": "Paralizat",
+      "statusSleep": "Adormit",
+      "statusFreeze": "Înghețat bocnă",
+      "statusConfusion": "Confuz",
+      "faint": "Un Pokémon leșină",
+      "exp": "Experiența se umple",
+      "weatherRain": "Plouă",
+      "weatherSun": "Soare arzător",
+      "weatherSandstorm": "O furtună de nisip",
+      "weatherHail": "Bate grindina",
+      "weatherFog": "Ceața stăruie",
+      "substituteIn": "Cade o păpușă",
+      "substituteOut": "Păpușa dispare",
+      "momentInfatuated": "Îndrăgostit",
+      "momentBagItem": "Se folosește un obiect",
+      "momentEscapeItem": "Un nor de fum",
+      "momentHeldItem": "Un obiect ținut intră în acțiune",
+      "momentHappy": "Un ciripit vesel",
+      "momentEating": "Ronțăie",
+      "momentAngry": "Un pufnet supărat",
+      "momentCurse": "Blestemul mușcă",
+      "momentNightmare": "Un coșmar",
+      "momentLeechSeed": "Leech Seed sărăcește",
+      "momentIngrain": "Rădăcinile trag apă",
+      "momentBind": "O strânsoare",
+      "momentFireSpin": "Flăcări se rotesc",
+      "momentClamp": "O scoică se închide",
+      "momentWhirlpool": "Un vârtej se învârte",
+      "momentSandTomb": "Curge nisipul",
+      "megaEvolve": "Mega Evoluție!",
+      "primalReversion": "Revenire Primordială!",
+      "ultraBurst": "Ultra Explozie!",
+      "zPower": "Se adună Puterea Z",
+      "dynamax": "Un Pokémon se Dynamaxează",
+      "gigantamax": "Un Pokémon se Gigantamaxează",
+      "dynamaxEnd": "Dynamax-ul se încheie",
+      "dynamaxCall": "Se cheamă un Dynamax",
+      "maxGuard": "Max Guard răsună",
+      "maxLand": "O bubuitură adâncă",
+      "maxGuardHit": "O lovitură sună în Max Guard",
+      "giantFall": "Un uriaș cade",
+      "terastallize": "Un Pokémon se Terastalizează",
+      "teraStellar": "O Terastalizare Stelară"
+    }
+  },
   "boxTools": {
     "option": {
       "label": "Uneltele cutiilor",
@@ -4683,10 +4866,10 @@
       "released": "Eliberați: {count}. Pa-pa!",
       "releasedSome": "Eliberați: {count}. {stayed} au rămas cu tine.",
       "releaseQuestion": "Îi eliberezi pe acești {count}?",
-      "releaseBody": "Ține apăsat butonul până se umple bara. Nu se mai întorc.",
-      "releaseHold": "ȚINE  {KEY:confirm}",
+      "releaseBody": "Odată ce se întorc în sălbăticie, nu mai vin înapoi la tine.",
+      "releaseHold": "ELIBEREAZĂ  ({KEY:confirm})",
       "keep": "PĂSTREAZĂ-I  (ESC)"
     },
-    "hint": { "hold": "Ține ca să eliberezi", "stretch": "Întinde" }
+    "hint": { "stretch": "Întinde" }
   }
 }

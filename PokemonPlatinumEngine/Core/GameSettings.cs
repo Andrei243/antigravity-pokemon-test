@@ -340,6 +340,12 @@ public sealed class GameSettings
     /// </summary>
     public Models.TimerCategory RunTimer { get; set; }
 
+    /// <summary>Every sound effect and cry named on screen as it plays (plan 12 · Q9, <see cref="Accessibility.Captions"/>): off unless chosen.</summary>
+    public bool Captions { get; set; }
+
+    /// <summary>A dangerous answer (deleting a save, resetting the options, releasing a Pokémon) taken only after a 0.4 s hold (plan 12 · Q9, <see cref="UI.Kit.ConfirmHold"/>): off unless chosen.</summary>
+    public bool HoldToConfirm { get; set; }
+
     /// <summary>
     /// The boxes' tools (plan 12 · Q26): SEARCH and SORT on a box's menu and SELECT on a Pokémon's, several picked up and
     /// put down together. <see cref="RulesDefault.Rules"/> unless chosen, kept as it is, so a game played by Platinum's

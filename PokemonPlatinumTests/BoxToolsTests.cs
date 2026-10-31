@@ -3,6 +3,7 @@ using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
 using PokemonPlatinumEngine.Overworld;
 using PokemonPlatinumEngine.UI;
+using PokemonPlatinumEngine.UI.Kit;
 
 namespace PokemonPlatinumTests;
 
@@ -200,37 +201,6 @@ public class BoxToolsTests
         Assert.Same(b, pc[2, 7]);
     }
 
-    [Fact]
-    public void ReleasingManyWaitsForTheHold()
-    {
-        var party = PartyOf(Mon("Turtwig", 5));
-        var pc = new PcBoxes();
-        for (int s = 0; s < 3; s++) pc.PutIn(0, s, Mon("Bidoof", 3));
-        var notes = new List<string>();
-        var screen = ToolsOn(pc);
-        screen.Move(1, 0, party.Count);
-        screen.Choose(PcAction.Select, party, pc, notes.Add);
-        screen.Move(1, 0, party.Count); screen.Move(1, 0, party.Count);
-        screen.Confirm(party, pc, notes.Add);
-        screen.MenuIndex = 1;
-        screen.Confirm(party, pc, notes.Add);
-        Assert.True(screen.AskingReleaseMany);
-        Assert.Equal(3, screen.Releasing.Count);
-
-        // A press alone releases nothing, nor half a hold let go
-        screen.Confirm(party, pc, notes.Add);
-        Assert.Equal(3, pc.Count);
-        for (int f = 0; f < 30; f++) screen.HoldRelease(1f / 60f, true, party, pc, notes.Add);
-        Assert.InRange(screen.ReleaseHold, 0.45f, 0.55f);
-        for (int f = 0; f < 60; f++) screen.HoldRelease(1f / 60f, false, party, pc, notes.Add);
-        Assert.Equal(0f, screen.ReleaseHold);
-        Assert.Equal(3, pc.Count);
-        // Held a whole second, all three go
-        for (int f = 0; f < 61 && screen.AskingReleaseMany; f++) screen.HoldRelease(1f / 60f, true, party, pc, notes.Add);
-        Assert.False(screen.AskingReleaseMany);
-        Assert.Equal(0, pc.Count);
-        Assert.Single(party.Members);
-    }
 
     [Fact]
     public void WithTheRowOffThePcIsPlatinums()
@@ -299,5 +269,75 @@ public class BoxToolsTests
         Assert.Equal(Enumerable.Range(2, 18), starlies.Select(p => p!.Level));
         Assert.Equal("Bidoof", pc[0, 7]!.Species.Name);
         Assert.Equal(18, pc.All.Count(p => p.Species.Name == "Bidoof"));
+    }
+}
+
+/// <summary>
+/// Releasing several at once (plan 12 · Q26) behind Q9's hold: the options' HOLD TO CONFIRM is the whole process's
+/// (<see cref="ConfirmHold.Asked"/>), so these run with the other shared state.
+/// </summary>
+[Collection("Shared clocks and dice")]
+public class BoxToolsReleaseTests : IDisposable
+{
+    public void Dispose() => ConfirmHold.Asked = false;
+
+    private static Pokemon Mon(string species, int level) => new(PokemonDatabase.Get(species)!, level, Gender.Male, Nature.Hardy, false);
+
+    // Three Bidoof in a rectangle, its RELEASE chosen: the question up
+    private static (PCScreen Screen, Party Party, PcBoxes Pc, List<string> Notes) Asking()
+    {
+        var party = new Party();
+        party.Add(Mon("Turtwig", 5));
+        var pc = new PcBoxes();
+        for (int s = 0; s < 3; s++) pc.PutIn(0, s, Mon("Bidoof", 3));
+        var notes = new List<string>();
+        var screen = new PCScreen { Tools = true };
+        screen.Open(pc);
+        screen.Move(1, 0, party.Count);
+        screen.Choose(PcAction.Select, party, pc, notes.Add);
+        screen.Move(1, 0, party.Count); screen.Move(1, 0, party.Count);
+        screen.Confirm(party, pc, notes.Add);
+        screen.MenuIndex = 1;
+        screen.Confirm(party, pc, notes.Add);
+        Assert.True(screen.AskingReleaseMany);
+        Assert.Equal(3, screen.Releasing.Count);
+        return (screen, party, pc, notes);
+    }
+
+    [Fact]
+    public void ReleasingManyWaitsForTheHoldWhereTheOptionsAskForIt()
+    {
+        ConfirmHold.Asked = true;
+        var (screen, party, pc, notes) = Asking();
+        // A press only begins the hold; let go early, nothing goes and the question stands
+        screen.Confirm(party, pc, notes.Add);
+        Assert.True(screen.ReleaseHold.Holding);
+        Assert.Equal(3, pc.Count);
+        screen.HoldRelease(party, pc, notes.Add, 0.2f, true);
+        screen.HoldRelease(party, pc, notes.Add, 0.05f, false);
+        Assert.False(screen.ReleaseHold.Holding);
+        Assert.True(screen.AskingReleaseMany);
+        Assert.Equal(3, pc.Count);
+        // Held to the end, all three go
+        screen.Confirm(party, pc, notes.Add);
+        screen.HoldRelease(party, pc, notes.Add, ConfirmHold.Seconds + 0.01f, true);
+        Assert.False(screen.AskingReleaseMany);
+        Assert.Equal(0, pc.Count);
+        Assert.Single(party.Members);
+    }
+
+    [Fact]
+    public void WithTheHoldOffTheYesReleasesThemAsTheSingleReleaseDoes()
+    {
+        ConfirmHold.Asked = false;
+        var (screen, party, pc, notes) = Asking();
+        screen.Confirm(party, pc, notes.Add);
+        Assert.False(screen.AskingReleaseMany);
+        Assert.Equal(0, pc.Count);
+        // B on the question keeps them
+        var (kept, keptParty, keptPc, _) = Asking();
+        Assert.True(kept.Cancel(keptParty, keptPc));
+        Assert.False(kept.AskingReleaseMany);
+        Assert.Equal(3, keptPc.Count);
     }
 }

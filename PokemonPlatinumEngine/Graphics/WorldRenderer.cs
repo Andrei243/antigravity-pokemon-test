@@ -498,6 +498,9 @@ public sealed partial class WorldRenderer
     /// <summary>How far along a pan the camera is, 0 to 1, eased at both ends.</summary>
     public float PanEase => Camera.PanEase;
 
+    /// <summary>The photo being composed (plan 12 · Q16): the hour, weather and filter the picture borrows; null outside photo mode.</summary>
+    public PhotoView? Photo { get; set; }
+
     /// <summary>
     /// The lens a map is looked through this frame: the place's own (<see cref="MapScene.ViewOf"/>) under the rig's
     /// zoom and a held lens (<see cref="CameraRig.Lens"/>), which change its field of view and nothing else. Whatever
@@ -523,7 +526,7 @@ public sealed partial class WorldRenderer
 
     /// <summary>Renders the map and its characters into the offscreen target. Call outside any other texture mode.</summary>
     public void Render(Map map, Player player) =>
-        RenderScene(map, player, player.PixelX / Player.TileSize + 0.5f, player.PixelY / Player.TileSize + 0.5f, GameClock.Hour);
+        RenderScene(map, player, player.PixelX / Player.TileSize + 0.5f, player.PixelY / Player.TileSize + 0.5f, Photo?.Hour ?? GameClock.Hour);
 
     /// <summary>
     /// Renders the map without the player, looking at a point (in tiles) at a given hour: the fly-over shots of
@@ -539,6 +542,8 @@ public sealed partial class WorldRenderer
         lastWasIndoors = indoors;
         // The weather where the player stands changes the light; the opening's fly-overs are always fair
         weather = player != null ? map.WeatherAt(player.GridX, player.GridY) : FieldWeather.Clear;
+        // ... or the weather a photo borrows (plan 12 · Q16), which the place never learns of
+        if (player != null && Photo?.Weather is { } borrowed) weather = borrowed;
         var rig = ArtLook.FieldRig(hour, map);
         // Snow country grades the light colder (style guide, the areas' table), easing in and out at its border
         bool snowbound = player != null && !indoors && !map.IsCave && !map.IsVoid && map.AreaAt(player.GridX, player.GridY)?.Snowbound == true;
@@ -561,6 +566,8 @@ public sealed partial class WorldRenderer
         rig = ArtLook.Weathered(rig, weather);
         // A season's light (Unova's, plan 22 · U3), in the open alone; every other region's map has none
         if (!indoors && !map.IsCave && !map.IsVoid) rig = ArtLook.Seasoned(rig, SeasonOf(map));
+        // A photo's filter, last of all (plan 12 · Q16)
+        if (player != null && Photo != null) rig = PhotoFilters.Filtered(rig, Photo.Filter);
         var light = rig.Light;
         weatherLight = Brightness(rig);
 
