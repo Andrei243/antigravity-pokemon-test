@@ -2517,6 +2517,18 @@ The rules are Pokémon Showdown's at the pinned commit (`data/conditions.ts`' `d
 - **Mega Dynamax** (plan 06 · R20c) is "Mega Dynamax", below: `WhyNotDynamax` lets a Mega through by the Mega Max Band; everything else (the HP, the Max Moves, the end) holds for any form. An -ate ability's type now chooses a Max Move (below), so that item of "Left" is settled.
 - **The screen** (`BattleEngine`): the move menu's item button arms a Mega Evolution where one can be had, the Z-Power where that can, and the Dynamax otherwise (`ToggleLaterMechanic`, `DynamaxArmed`, `CanDynamaxNow`, `MaxMoveAt` for the name the menu may show, `MenuDynamaxed`); the screen's Pokémon takes the HP and the form from `Dynamaxed` and `DynamaxEnded`, with Transform's cue as a stand-in, and the Gigantamax form's model is asked for before the battle (`GameEngine.BattleShapesOf`). The growth, the red clouds, the button and each Max Move's own effect are plan 25 · Y15's.
 
+## When the trainer AI uses the later mechanics, and the run without them (2026-10-31, plan 06 · R30)
+
+The user's decisions of 2026-10-31 (`docs/mechanics/signoff.md`); rules of ours, since Showdown's random player uses each whenever it can. They replace "whenever it can" in the AI's lines of the Mega Evolution, Z-Move, Dynamax and Terastallization rulings.
+
+- **Mega Evolution and Ultra Burst**: at once, as before.
+- **A Z-Move**: only on a damaging move at least neutral against its target (the battle's chart, inverse included; the first foe on the field where the choice names none), or on a status move whose Z-Power helps now: a stat raised by its `zBonus` that stands under +2, a heal below half HP, a fallen stat to put back, the critical-hit boost, a redirection with others on the field, a fainted teammate to restore, Curse's heal for a Ghost under half HP or its Attack under +2 for anyone else. A move with no Z-Power is never one.
+- **A Dynamax**: on the trainer's last Pokémon able to fight, or on its ace (none of its team of a higher level) on its first turn in. A Mega Dynamax with the Mega Max Band keeps R20c's rule, the first turn it can.
+- **A Terastallization**: where the Tera Type turns a super-effective hit of the foe's last damaging move the AI has seen into a neutral or a resisted one (a Stellar Tera Type keeps its types and turns none), or on the trainer's last Pokémon able to fight.
+- Nothing is drawn for any of it, so a battle's rolls are what they were.
+- **"No later mechanics"** (`RunRules.NoLaterMechanics`, a row of the run panel): Mega Evolution, Primal Reversion, Z-Moves, Ultra Burst, Dynamax, Mega Dynamax and Terastallization are refused to **both** sides, the trainers' too (unlike the run's other restrictions, which are the player's alone); a recorded battle keeps the flag, since the trainers chose otherwise under it.
+- **Balance** is a judgement, not a number held by a test; **Platinum's rules** stay the test baseline and are never offered.
+
 ## Mega Dynamax (2026-10-26, plan 06 · R20c)
 
 Our own: no game has it and Showdown has no rule for it. The design is `docs/plans/R20c-mega-dynamax-proposals.md`, which the user approved on 2026-10-25 with every default of its fourteen questions but the fourteenth (a den in Galar, below) and every row of its table (the 36 "yes" and 27 "maybe" of the data's Megas, and R20b's fifteen of ours). It is R22's Dynamax on a Mega, behind `Ruleset.MegaDynamax` (the modern rules have it, Platinum's don't, so `battles-platinum.txt` can't move for it). Code: `Battle/Sim/BattleCore.Dynamax.cs` (`WhyNotMegaDynamax`, `MegaDynamaxFormOf`, `CanMegaDynamax`, `KeepsDynamaxForAMega`, `MegaMaxTeamOf`), `Battle/BattleEngine.Dynamax.cs` and `BattleEngine.Menus.cs` for the menu; tests: `MegaDynamaxTests`.

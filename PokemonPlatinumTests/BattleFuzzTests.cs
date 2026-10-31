@@ -77,10 +77,14 @@ public class BattleFuzzTests(ITestOutputHelper output)
             new[] { nameof(MegaEvolved), nameof(UltraBursted), nameof(ZPowerUsed), nameof(Dynamaxed), nameof(MaxMoveUsed), nameof(Terastallized), nameof(Ended) }
                 .Select(k => $"{k} {counts.GetValueOrDefault(k)}")));
         Assert.True(failures.Count == 0, string.Join("\n", failures.Take(20)));
-        // Forty battles are enough for each of the four mechanics to have happened somewhere
+        // Forty battles are enough for Mega Evolution, Dynamax and Terastallization to have happened somewhere. Since plan 06 ·
+        // R30 the AI keeps its Z-Power for a move at least neutral or a status move whose bonus helps, and a random holder
+        // of a random crystal rarely has such a move of the crystal's type: Z-Moves are rare here
+        // (none in the first 80 battles, 5 in the first 200), so it is asked of a run of 200 (BATTLE_FUZZ=200); LaterMechanicsDecisionsTests holds the rule.
         if (battles >= 40)
-            foreach (string mechanic in new[] { nameof(MegaEvolved), nameof(ZPowerUsed), nameof(Dynamaxed), nameof(Terastallized) })
+            foreach (string mechanic in new[] { nameof(MegaEvolved), nameof(Dynamaxed), nameof(Terastallized) })
                 Assert.True(seen.Contains(mechanic), $"no {mechanic} in {battles} battles");
+        if (battles >= 200) Assert.True(seen.Contains(nameof(ZPowerUsed)), $"no {nameof(ZPowerUsed)} in {battles} battles");
     }
 
     private static void Check(int seed, BattleCore core, Party mine, Trainer foe, List<string> failures)

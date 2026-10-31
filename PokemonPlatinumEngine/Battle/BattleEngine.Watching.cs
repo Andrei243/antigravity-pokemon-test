@@ -88,6 +88,7 @@ public partial class BattleEngine
             Difficulty = rules.Difficulty,
             RunLevelCap = rules.RunLevelCap,
             CrossedExp = rules.CrossedExp,
+            Restrictions = rules.Restrictions,
             Scene = scene
         };
         return new BattleEngine(setup, file);

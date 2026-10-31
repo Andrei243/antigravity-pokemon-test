@@ -102,6 +102,9 @@ public sealed class BattleRecordFile
 
     /// <summary>A crossed region's EXP, half as much again (plan 18 · W4b-3); off, as a file without it.</summary>
     public bool CrossedExp { get; set; }
+
+    /// <summary>The run's "No later mechanics" (plan 06 · R30): both sides were refused them, so the trainers chose otherwise; off, as a file without it.</summary>
+    public bool NoLaterMechanics { get; set; }
     public bool KeyStone { get; set; }
     public bool ZRing { get; set; }
     public bool DynamaxBand { get; set; }
@@ -158,6 +161,7 @@ public sealed class BattleRecordFile
             Difficulty = setup.Difficulty,
             RunLevelCap = setup.RunLevelCap,
             CrossedExp = setup.CrossedExp,
+            NoLaterMechanics = setup.Restrictions?.NoLaterMechanics == true,
             KeyStone = setup.KeyStone,
             ZRing = setup.ZRing,
             DynamaxBand = setup.DynamaxBand,
@@ -202,7 +206,7 @@ public sealed class BattleRecordFile
     /// <summary>The record the rules replay: the seed and the answers, with the two flags a record keeps.</summary>
     [System.Text.Json.Serialization.JsonIgnore]
     public BattleRecord Record => new(Seed, Answers.Select(turn => (IReadOnlyList<BattleChoice>)turn.Select(c => c.ToChoice()).ToList()).ToList(),
-        Conditions.Inverse, OffersSwitch, Difficulty, RunLevelCap, CrossedExp: CrossedExp);
+        Conditions.Inverse, OffersSwitch, Difficulty, RunLevelCap, CrossedExp: CrossedExp, NoLaterMechanics: NoLaterMechanics);
 
     /// <summary>Whom the battle was against: the first trainer's class and name, or the first wild Pokémon's species.</summary>
     [System.Text.Json.Serialization.JsonIgnore]
@@ -261,6 +265,7 @@ public sealed class BattleRecordFile
             Difficulty = Difficulty,
             RunLevelCap = RunLevelCap,
             CrossedExp = CrossedExp,
+            Restrictions = NoLaterMechanics ? new RunTerms(NoLaterMechanics: true) : null,
             KeyStone = KeyStone,
             ZRing = ZRing,
             DynamaxBand = DynamaxBand,

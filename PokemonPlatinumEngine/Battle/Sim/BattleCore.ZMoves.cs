@@ -140,7 +140,7 @@ public sealed partial class BattleCore
     {
         var mine = At(b.Place);
         string no = Text.Of("battle.cantZMove", ("pokemon", mine.Name));
-        if (!Rules.ZMoves || mine.Pokemon is not { } p || !HasZRing(mine) || move < 0 || move >= p.Moves.Count) return no;
+        if (!Rules.ZMoves || LaterMechanicsBarred || mine.Pokemon is not { } p || !HasZRing(mine) || move < 0 || move >= p.Moves.Count) return no;
         if (zUsed.Contains(MegaKey(mine))) return Text.Of("battle.zOnlyOnce");
         if (mine.Volatile.Transformed && (p.FormData?.Kind is FormKind.Mega or FormKind.Primal || p.Form == UltraForm)) return no;
         return ZMoveOf(p, p.Moves[move]) == null ? no : null;
@@ -161,7 +161,7 @@ public sealed partial class BattleCore
     {
         var mine = At(b.Place);
         string no = Text.Of("battle.cantUltraBurst", ("pokemon", mine.Name));
-        if (!Rules.ZMoves || mine.Pokemon is not { } p || !HasZRing(mine) || mine.Volatile.Transformed || UltraBurstFormOf(p) == null) return no;
+        if (!Rules.ZMoves || LaterMechanicsBarred || mine.Pokemon is not { } p || !HasZRing(mine) || mine.Volatile.Transformed || UltraBurstFormOf(p) == null) return no;
         return burstUsed.Contains(MegaKey(mine)) ? Text.Of("battle.ultraBurstOnlyOnce") : null;
     }
 

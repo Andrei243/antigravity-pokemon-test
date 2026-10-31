@@ -325,7 +325,7 @@ public class DynamaxTests
     }
 
     [Fact]
-    public void TheTrainerAiDynamaxesWheneverItCan()
+    public void TheTrainerAiDynamaxesItsLastPokemon()
     {
         var said = Turn(Against(new[] { Mon("Snorlax", 50, "Splash") }, new[] { Dyna(Mon("Bidoof", 50, "Tackle")) }, TrainerAi.Instance));
         Assert.Contains("Foe Bidoof swelled to a giant size with Dynamax energy!", said);
