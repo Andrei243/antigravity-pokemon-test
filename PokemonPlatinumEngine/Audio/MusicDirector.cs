@@ -65,6 +65,8 @@ public enum MusicRole
     FanfareBadge,
     FanfareTM,
     FanfareKeyItem,
+    /// <summary>A medal won (plan 13 · V9), with the options' MEDAL NOTICES row on.</summary>
+    FanfareMedal,
     /// <summary>The World Tournament's hall, its battles and its wins (plan 14 · B11; songs of our own in <c>common/tournament</c>).</summary>
     Tournament, BattleTournament, VictoryTournament
 }
@@ -159,6 +161,7 @@ public static class MusicDirector
         MusicRole.FanfareBadge => "fanfare_badge",
         MusicRole.FanfareTM => "fanfare_tm",
         MusicRole.FanfareKeyItem => "fanfare_keyitem",
+        MusicRole.FanfareMedal => "fanfare_medal",
         MusicRole.Tournament => "tournament/hall",
         MusicRole.BattleTournament => "tournament/battle",
         MusicRole.VictoryTournament => "tournament/victory",
@@ -186,7 +189,7 @@ public static class MusicDirector
         MusicRole.VictoryEliteFour => MusicRole.VictoryGymLeader,
         MusicRole.VictoryChampion => MusicRole.VictoryEliteFour,
         MusicRole.FanfareEvolution => MusicRole.FanfarePokemon,
-        MusicRole.FanfareBadge or MusicRole.FanfareTM or MusicRole.FanfareKeyItem => MusicRole.FanfareItem,
+        MusicRole.FanfareBadge or MusicRole.FanfareTM or MusicRole.FanfareKeyItem or MusicRole.FanfareMedal => MusicRole.FanfareItem,
         MusicRole.BattleTournament => MusicRole.BattleGymLeader,
         MusicRole.VictoryTournament => MusicRole.VictoryGymLeader,
         _ => null

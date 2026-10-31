@@ -86,3 +86,61 @@ public sealed class Toast
         if (Visible) ModernUi.DrawToast(screenWidth, Message, Shown);
     }
 }
+
+/// <summary>
+/// The notice of a medal won (plan 13 · V9; style guide, "Field menus and notices", "A medal won"): a panel with the
+/// medal that drops in under the toasts' place, holds and lifts away; medals won together come one after another.
+/// Its clock runs only while the engine lets it (the field and its text box), so it waits behind any other screen.
+/// </summary>
+public sealed class MedalNotice
+{
+    public const float SlideTime = 0.3f, HoldTime = 3.2f;
+
+    private readonly System.Collections.Generic.Queue<Models.Medal> waiting = new();
+    private float time = -1f;
+
+    /// <summary>The medal on show, or null.</summary>
+    public Models.Medal? Medal { get; private set; }
+
+    public bool Visible => time >= 0f && Medal != null;
+
+    /// <summary>How many medals wait behind the one on show.</summary>
+    public int Waiting => waiting.Count;
+
+    public void Enqueue(Models.Medal medal) => waiting.Enqueue(medal);
+
+    /// <summary>Takes every notice down and forgets those waiting (a game begun or loaded).</summary>
+    public void Clear()
+    {
+        waiting.Clear();
+        Medal = null;
+        time = -1f;
+    }
+
+    /// <summary>Moves the notice on by <paramref name="dt"/>; true when a medal has just begun to drop in (its fanfare's moment).</summary>
+    public bool Update(float dt)
+    {
+        if (Visible)
+        {
+            time += dt;
+            if (time < SlideTime * 2f + HoldTime) return false;
+            Medal = null;
+            time = -1f;
+        }
+        if (waiting.Count == 0) return false;
+        Medal = waiting.Dequeue();
+        time = 0f;
+        return true;
+    }
+
+    public float Shown =>
+        !Visible ? 0f
+        : time < SlideTime ? UiMotion.EaseOut(time / SlideTime)
+        : time < SlideTime + HoldTime ? 1f
+        : 1f - UiMotion.EaseIn((time - SlideTime - HoldTime) / SlideTime);
+
+    public void Draw(int screenWidth)
+    {
+        if (Visible) ModernUi.DrawMedalNotice(screenWidth, Medal!, Shown);
+    }
+}

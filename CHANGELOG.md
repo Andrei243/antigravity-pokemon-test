@@ -5,6 +5,7 @@ What changes from one release to the next, for players. Every session's close-ou
 ## [Unreleased]
 
 ### Added
+- Medals: 120 of them in six categories (journey, battles, catching, growth, the Pokédex and the League), won as you play and kept on a new page of the Trainer Card with how far you are toward each. Turn on MEDAL NOTICES in the options to have each one drop in at the top of the field with a short fanfare of its own.
 - The pseudo-legendaries' big moves and the signature moves of the starters of Unova to Paldea are staged in battle: Outrage circled by the camera, Stone Edge tossing its target among falling shards, Dragon Rush and Glaive Rush lunging in, Meteor Mash's stars, Clanging Scales' rings of sound, Pyro Ball and Snipe Shot followed across the field, Flower Trick's petals and more, each with a brief hold on the heaviest blows (off under REDUCE MOTION).
 - The Trainer Card gains a statistics page once you have played a little: steps (on foot, surfing, cycling, diving), battles won, lost and run from, blackouts, Pokémon met and caught, levels gained and evolutions, in four tabs (up and down change the tab).
 - Johto's Champion can go on through the League gate's west door into Viridian City, up Route 2 and through Viridian Forest to Pewter City, where Brock gives Kanto's Boulder Badge, and east over Route 3 into Mt. Moon, its square and its gift shop. The red-haired boy now waits in Mt. Moon after the League, and beating him there is what starts the Dragon's Den's post-game.

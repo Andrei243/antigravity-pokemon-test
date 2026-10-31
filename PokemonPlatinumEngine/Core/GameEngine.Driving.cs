@@ -301,6 +301,12 @@ public partial class GameEngine
 
         /// <summary>What the game has counted (plan 13 · V8).</summary>
         public Models.Statistics Statistics => game.flow.Statistics;
+
+        /// <summary>The medals won (plan 13 · V9), and the notice that tells of one.</summary>
+        public Models.Medals Medals { get => game.flow.Medals; set => game.flow.Medals = value; }
+        public MedalNotice MedalNotice => game.flow.MedalNotice;
+        /// <summary>What the medals are judged by now (plan 13 · V9).</summary>
+        public Models.MedalFacts MedalFacts => game.MedalFactsNow();
         /// <summary>A Pokémon caught under the Nuzlocke whose name the keyboard will ask once the field is back (plan 13 · V4).</summary>
         public Pokemon? NameAfterBattle { get => game.flow.NameAfterBattle; set => game.flow.NameAfterBattle = value; }
         /// <summary>

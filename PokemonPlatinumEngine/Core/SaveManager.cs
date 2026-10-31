@@ -187,6 +187,14 @@ public class SaveData
     public Dictionary<string, long>? Counters { get; set; }
 
     /// <summary>
+    /// The medals won (plan 13 · V9, <see cref="Models.Medals"/>), by id. Null while none is won and in every save from
+    /// before it, which reads as none won (the game then wins, quietly, those its counters already reach), so no save
+    /// version was raised.
+    /// </summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public List<string>? Medals { get; set; }
+
+    /// <summary>
     /// What the game remembers of its wild Pokémon (plan 06 · R13): the day's numbers, swarms, the Trophy Garden, the
     /// honey trees, the Poké Radar's battery, the roamers. Null in older saves, which are given a new one.
     /// </summary>

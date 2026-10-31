@@ -356,6 +356,13 @@
         "on": "Nicio sclipire nu albește imaginea mai mult de un sfert, iar sclipirile de la intrarea într-o luptă sunt o singură creștere blândă."
       }
     },
+    "medalNotices": {
+      "label": "Anunțuri de medalii",
+      "help": {
+        "off": "Medaliile se câștigă și se păstrează pe Cardul de Antrenor fără niciun anunț.",
+        "on": "O medalie câștigată apare sus pe teren, cu o fanfară."
+      }
+    },
     "reduceMotion": {
       "label": "Mai puțină mișcare",
       "help": {
@@ -1226,6 +1233,12 @@
       "trainerWon": "ANTRENORI ÎNVINȘI", "trainerLost": "PIERDUT ÎN FAȚA ANTRENORILOR", "whiteouts": "LEȘINURI",
       "encounters": "POKÉMONI SĂLBATICI ÎNTÂLNIȚI", "caught": "POKÉMONI PRINȘI", "newSpecies": "SPECII NOI PRINSE",
       "levelled": "NIVELURI CÂȘTIGATE ÎN LUPTĂ", "evolutions": "EVOLUȚII"
+    },
+    "medals": {
+      "category": { "Journey": "DRUM", "Battles": "LUPTE", "Catching": "CAPTURI", "Growth": "CREȘTERE", "Pokedex": "POKéDEX", "League": "LIGĂ" },
+      "count": "MEDALII  {won} / {all}",
+      "progress": "{count} / {goal}",
+      "won": "CÂȘTIGATĂ"
     },
     "fallenLine": "{species}  Nv. {level}  ·  {place}",
     "titles": "TITLURI DE MAESTRU",
@@ -4553,6 +4566,24 @@
     "skill": "ÎNDEMÂNARE",
     "body": "TRUP",
     "total": "TOTAL"
+  },
+  "medals": {
+    "notice": "MEDALIE  ·  {category}",
+    "first": {
+      "wildWon": "Câștigă o luptă sălbatică", "trainerWon": "Învinge un antrenor", "wildRan": "Fugi de un Pokémon sălbatic",
+      "wildFled": "Vezi un Pokémon sălbatic fugind", "trainerLost": "Pierde în fața unui antrenor", "whiteouts": "Leșină și mergi mai departe",
+      "caught": "Prinde un Pokémon", "encounters": "Întâlnește un Pokémon sălbatic", "levelled": "Crește un nivel în luptă",
+      "evolutions": "Vezi un Pokémon evoluând", "badges": "Câștigă o Insignă", "champions": "Devino Campion"
+    },
+    "name": {
+      "stepsFoot": "Mergi {count} pași", "stepsSurf": "Fă {count} pași pe apă", "stepsCycle": "Fă {count} pași cu bicicleta", "stepsDive": "Fă {count} pași sub apă",
+      "wildWon": "Câștigă {count} lupte sălbatice", "trainerWon": "Învinge {count} antrenori", "wildRan": "Fugi de {count} Pokémoni sălbatici",
+      "wildFled": "Vezi {count} Pokémoni sălbatici fugind", "whiteouts": "Leșină de {count} ori",
+      "caught": "Prinde {count} Pokémoni", "newSpecies": "Prinde {count} specii noi", "encounters": "Întâlnește {count} Pokémoni sălbatici",
+      "levelled": "Crește {count} niveluri în luptă", "evolutions": "Vezi {count} evoluții",
+      "dexSeen": "Vezi {count} specii", "dexCaught": "Deține {count} specii",
+      "badges": "Câștigă {count} Insigne", "champions": "Campion în {count} regiuni"
+    }
   },
   "sessionReport": {
     "written": "Un raport de reluat a fost scris în {folder}.",

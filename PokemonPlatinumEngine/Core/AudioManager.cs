@@ -275,7 +275,9 @@ public static class AudioManager
     /// <summary>Pauses the music for a jingle (healing, an item, a level-up), then lets it carry on.</summary>
     public static void PlayFanfare(MusicRole role)
     {
-        if (hushed || !isInitialized) return;
+        if (hushed) return;
+        heard?.Add($"fanfare {role}");
+        if (!isInitialized) return;
         string? id = MusicDirector.Resolve(role, Region, MusicLibrary.Exists);
         var song = id == null ? null : MusicLibrary.Get(id);
         if (song != null) NoteHeard(song.Id);

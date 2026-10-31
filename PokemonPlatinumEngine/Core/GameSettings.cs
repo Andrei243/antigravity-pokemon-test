@@ -330,6 +330,9 @@ public sealed class GameSettings
     /// </summary>
     public bool ReduceMotion { get; set; }
 
+    /// <summary>A medal won told by a notice and its fanfare over the field (plan 13 · V9, <see cref="Models.Medals"/>): off unless chosen; the medals are kept either way.</summary>
+    public bool MedalNotices { get; set; }
+
     /// <summary>The preset the first run's measuring chose on this machine (plan 16 · T23), or null where nothing was measured.</summary>
     public GraphicsQuality? MeasuredQuality { get; set; }
 
