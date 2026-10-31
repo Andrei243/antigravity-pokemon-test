@@ -6,7 +6,7 @@
           "Old man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "The Gym's been locked for years. Its Leader is off somewhere, and nobody knows when he'll be back."
         ],
         "text": [
-          ""
+          "Arena e încuiată de ani de zile. Liderul ei e plecat pe undeva și nimeni nu știe când se întoarce."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Old man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "I've walked these streets every morning since I was a boy. Viridian never changes much, and I like it that way."
         ],
         "text": [
-          ""
+          "Merg pe străzile astea în fiecare dimineață de când eram copil. Viridian nu se schimbă prea mult și îmi place așa."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Route 22 leads west to the League's gate. Only the strongest trainers come back that way."
         ],
         "text": [
-          ""
+          "Ruta 22 duce spre vest, la poarta Ligii. Doar cei mai puternici antrenori se întorc pe acolo."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "There's a forest north of Route 2, full of Bug Pokémon. I'm too scared to go in alone."
         ],
         "text": [
-          ""
+          "La nord de Ruta 2 e o pădure plină de Pokémoni Insectă. Mi-e prea frică să intru singur."
         ]
       }
     }
@@ -79,7 +79,7 @@
         "Viridian City\nThe eternally green paradise."
       ],
       "text": [
-        ""
+        "Orașul Viridian\nParadisul veșnic verde."
       ]
     },
     "T02_005+1": {
@@ -87,7 +87,7 @@
         "Viridian City Pokémon Gym\nThe doors are locked."
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orașul Viridian\nUșile sunt încuiate."
       ]
     },
     "T02_006+1": {
@@ -95,7 +95,7 @@
         "Trainer Tips\nA Pokémon that is asleep or paralysed is easier to catch."
       ],
       "text": [
-        ""
+        "Sfaturi pentru Antrenori\nUn Pokémon adormit sau paralizat se prinde mai ușor."
       ]
     },
     "T02_007+1": {
@@ -103,7 +103,7 @@
         "Trainer House\nThe club for trainers who want a challenge."
       ],
       "text": [
-        ""
+        "Casa Antrenorilor\nClubul pentru antrenorii care vor o provocare."
       ]
     }
   }

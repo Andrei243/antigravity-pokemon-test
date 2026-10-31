@@ -6,7 +6,7 @@
           "Old man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "The museum here has fossils older than anyone can count. I go and look at them when I feel young."
         ],
         "text": [
-          ""
+          "Muzeul de aici are fosile mai vechi decât poate număra cineva. Mă duc să mă uit la ele când vreau să mă simt tânăr."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Brock's back running the Gym. He went off to be a breeder for a while, you know."
         ],
         "text": [
-          ""
+          "Brock s-a întors să conducă Arena. A plecat o vreme să crească Pokémoni, să știi."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "The trees by the north houses grow Apricorns. I'm not allowed to climb them."
         ],
         "text": [
-          ""
+          "Copacii de lângă casele din nord dau Apricorni. Mie nu-mi dă voie să mă urc în ei."
         ]
       }
     }
@@ -61,7 +61,7 @@
         "Pewter City\nA stone-grey city between rugged mountains."
       ],
       "text": [
-        ""
+        "Orașul Pewter\nUn oraș cenușiu ca piatra, între munți aspri."
       ]
     },
     "T03_004+1": {
@@ -69,7 +69,7 @@
         "Pewter City Pokémon Gym\nLeader: Brock\nThe rock-solid Pokémon Trainer."
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orașul Pewter\nLider: Brock\nAntrenorul tare ca piatra."
       ]
     },
     "T03_005+1": {
@@ -77,7 +77,7 @@
         "Pewter Museum of Science\nFossils and space, side by side."
       ],
       "text": [
-        ""
+        "Muzeul de Științe din Pewter\nFosile și spațiu, una lângă alta."
       ]
     },
     "T03_006+1": {
@@ -85,7 +85,7 @@
         "Route 2 is to the south.\nThe road is closed beyond Viridian Forest."
       ],
       "text": [
-        ""
+        "Ruta 2 e spre sud.\nDrumul e închis dincolo de Pădurea Viridian."
       ]
     }
   }

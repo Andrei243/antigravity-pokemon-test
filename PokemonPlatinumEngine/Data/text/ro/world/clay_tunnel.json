@@ -6,7 +6,7 @@
           "Teppei"
         ],
         "text": [
-          ""
+          "Teppei"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "I come down here for the clay. The battles are a bonus!"
         ],
         "text": [
-          ""
+          "Cobor aici după argilă. Luptele sunt un bonus!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Back to the clay, then."
         ],
         "text": [
-          ""
+          "Înapoi la argilă, atunci."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Morgann"
         ],
         "text": [
-          ""
+          "Morgann"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Hard hat on, Pokémon out! This tunnel won't dig itself!"
         ],
         "text": [
-          ""
+          "Casca pe cap, Pokémonii afară! Tunelul ăsta nu se sapă singur!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "That knocked the dust right off me."
         ],
         "text": [
-          ""
+          "M-ai scuturat bine de praf."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Worker"
         ],
         "text": [
-          ""
+          "Muncitorul"
         ]
       }
     },
@@ -68,7 +68,7 @@
           "Worker"
         ],
         "text": [
-          ""
+          "Muncitorul"
         ]
       }
     },
@@ -78,37 +78,7 @@
           "Worker"
         ],
         "text": [
-          ""
-        ]
-      }
-    },
-    "16": {
-      "name": {
-        "en": [
-          "Worker"
-        ],
-        "text": [
-          ""
-        ]
-      }
-    },
-    "17": {
-      "name": {
-        "en": [
-          "Worker"
-        ],
-        "text": [
-          ""
-        ]
-      }
-    },
-    "18": {
-      "name": {
-        "en": [
-          "Worker"
-        ],
-        "text": [
-          ""
+          "Muncitorul"
         ]
       }
     },
@@ -118,7 +88,7 @@
           "Rocks"
         ],
         "text": [
-          ""
+          "Stânci"
         ]
       }
     },
@@ -128,7 +98,7 @@
           "Rocks"
         ],
         "text": [
-          ""
+          "Stânci"
         ]
       }
     },
@@ -138,7 +108,7 @@
           "Rocks"
         ],
         "text": [
-          ""
+          "Stânci"
         ]
       }
     },
@@ -148,7 +118,7 @@
           "Rocks"
         ],
         "text": [
-          ""
+          "Stânci"
         ]
       }
     },
@@ -158,7 +128,7 @@
           "Rocks"
         ],
         "text": [
-          ""
+          "Stânci"
         ]
       }
     },
@@ -168,7 +138,7 @@
           "Rocks"
         ],
         "text": [
-          ""
+          "Stânci"
         ]
       }
     },
@@ -178,7 +148,37 @@
           "Rocks"
         ],
         "text": [
-          ""
+          "Stânci"
+        ]
+      }
+    },
+    "16": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          "Muncitorul"
+        ]
+      }
+    },
+    "17": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          "Muncitorul"
+        ]
+      }
+    },
+    "18": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          "Muncitorul"
         ]
       }
     },
@@ -188,7 +188,7 @@
           "Rocks"
         ],
         "text": [
-          ""
+          "Stânci"
         ]
       }
     },
@@ -198,7 +198,7 @@
           "Rocks"
         ],
         "text": [
-          ""
+          "Stânci"
         ]
       }
     },
@@ -208,7 +208,7 @@
           "Rocks"
         ],
         "text": [
-          ""
+          "Stânci"
         ]
       }
     }

@@ -6,7 +6,7 @@
           "Nurse"
         ],
         "text": [
-          ""
+          "Asistenta"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "Your Trainer Card shows your name, your money and the Pokémon you've seen. Have a look at it from the menu."
         ],
         "text": [
-          ""
+          "Fișa de Antrenor îți arată numele, banii și Pokémonii pe care i-ai văzut. Uită-te la ea din meniu."
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "I'm sorry, the link to other players is closed for now."
         ],
         "text": [
-          ""
+          "Îmi pare rău, legătura cu alți jucători e închisă deocamdată."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "I'm sorry, the link to other players is closed for now."
         ],
         "text": [
-          ""
+          "Îmi pare rău, legătura cu alți jucători e închisă deocamdată."
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "My Jigglypuff sings to the people waiting. Nobody stays awake long!"
         ],
         "text": [
-          ""
+          "Jigglypuff-ul meu le cântă celor care așteaptă. Nimeni nu rămâne treaz mult!"
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Jigglypuff"
         ],
         "text": [
-          ""
+          "Jigglypuff"
         ]
       },
       "dialog": {
@@ -96,7 +96,7 @@
           "Jigglypuff hummed a sleepy tune."
         ],
         "text": [
-          ""
+          "Jigglypuff a fredonat o melodie adormitoare."
         ]
       }
     },
@@ -106,7 +106,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -114,7 +114,7 @@
           "I came from Johto to see the museum. The fossils were worth the journey."
         ],
         "text": [
-          ""
+          "Am venit din Johto să văd muzeul. Fosilele au meritat călătoria."
         ]
       }
     },
@@ -124,7 +124,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -132,7 +132,7 @@
           "Brock used to be away so much, breeding Pokémon. It's good to see the Gym lit again."
         ],
         "text": [
-          ""
+          "Brock lipsea atât de des, crescând Pokémoni. E bine să văd Arena luminată din nou."
         ]
       }
     }

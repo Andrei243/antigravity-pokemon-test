@@ -6,7 +6,7 @@
           "Rob"
         ],
         "text": [
-          ""
+          "Rob"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Bug Catcher Rob: I caught every Bug Pokémon in the forest. Well, nearly every one!"
         ],
         "text": [
-          ""
+          "Vânător de insecte Rob: Am prins toți Pokémonii de tip Insectă din pădure. Ei, aproape pe toți!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Bug Catcher Rob: I'll go and catch a few more."
         ],
         "text": [
-          ""
+          "Vânător de insecte Rob: Mă duc să mai prind câțiva."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Doug"
         ],
         "text": [
-          ""
+          "Doug"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Bug Catcher Doug: Bugs are the best! They're tough and they never give up!"
         ],
         "text": [
-          ""
+          "Vânător de insecte Doug: Insectele sunt cele mai bune! Sunt dure și nu se dau bătute niciodată!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Bug Catcher Doug: My bugs gave up."
         ],
         "text": [
-          ""
+          "Vânător de insecte Doug: Insectele mele s-au dat bătute."
         ]
       }
     }
@@ -59,7 +59,7 @@
         "Route 2\nViridian City - Viridian Forest"
       ],
       "text": [
-        ""
+        "Ruta 2\nOrașul Viridian - Pădurea Viridian"
       ]
     }
   }

@@ -6,7 +6,7 @@
           "Nurse"
         ],
         "text": [
-          ""
+          "Asistenta"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "Your Trainer Card shows your name, your money and the Pokémon you've seen. Have a look at it from the menu."
         ],
         "text": [
-          ""
+          "Fișa de Antrenor îți arată numele, banii și Pokémonii pe care i-ai văzut. Uită-te la ea din meniu."
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "I'm sorry, the link to other players is closed for now."
         ],
         "text": [
-          ""
+          "Îmi pare rău, legătura cu alți jucători e închisă deocamdată."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "I'm sorry, the link to other players is closed for now."
         ],
         "text": [
-          ""
+          "Îmi pare rău, legătura cu alți jucători e închisă deocamdată."
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Hiker"
         ],
         "text": [
-          ""
+          "Drumețul"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "Mt. Moon's only one floor deep these days, but there's a way up to its top. Worth the climb."
         ],
         "text": [
-          ""
+          "Muntele Lunii are azi doar un etaj, dar există o cale spre vârful lui. Merită urcușul."
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Camper"
         ],
         "text": [
-          ""
+          "Campistul"
         ]
       },
       "dialog": {
@@ -96,7 +96,7 @@
           "I came to see the Clefairy dance. They only do it on certain nights, so I'm waiting."
         ],
         "text": [
-          ""
+          "Am venit să văd Clefairy dansând. Dansează doar în anumite nopți, așa că aștept."
         ]
       }
     }
