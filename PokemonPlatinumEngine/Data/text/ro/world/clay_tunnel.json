@@ -82,6 +82,36 @@
         ]
       }
     },
+    "16": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          "Muncitorul"
+        ]
+      }
+    },
+    "17": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          "Muncitorul"
+        ]
+      }
+    },
+    "18": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          "Muncitorul"
+        ]
+      }
+    },
     "9": {
       "name": {
         "en": [
@@ -149,36 +179,6 @@
         ],
         "text": [
           "Stânci"
-        ]
-      }
-    },
-    "16": {
-      "name": {
-        "en": [
-          "Worker"
-        ],
-        "text": [
-          "Muncitorul"
-        ]
-      }
-    },
-    "17": {
-      "name": {
-        "en": [
-          "Worker"
-        ],
-        "text": [
-          "Muncitorul"
-        ]
-      }
-    },
-    "18": {
-      "name": {
-        "en": [
-          "Worker"
-        ],
-        "text": [
-          "Muncitorul"
         ]
       }
     },

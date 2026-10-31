@@ -114,7 +114,27 @@
         ]
       }
     },
+    "13": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          "Muncitorul"
+        ]
+      }
+    },
     "9": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          "Muncitorul"
+        ]
+      }
+    },
+    "12": {
       "name": {
         "en": [
           "Worker"
@@ -135,26 +155,6 @@
       }
     },
     "11": {
-      "name": {
-        "en": [
-          "Worker"
-        ],
-        "text": [
-          "Muncitorul"
-        ]
-      }
-    },
-    "12": {
-      "name": {
-        "en": [
-          "Worker"
-        ],
-        "text": [
-          "Muncitorul"
-        ]
-      }
-    },
-    "13": {
       "name": {
         "en": [
           "Worker"
