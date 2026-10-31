@@ -127,6 +127,27 @@ partial class Harness
         ReadOn("Athlete Points", "at07b_clerk_after");
         Console.WriteLine($"  records: points {game.Athlon.Points}, best {game.Athlon.BestOf("practice")}, runs {game.Athlon.Runs}, wins {game.Athlon.Wins}");
 
+        // ---- The second batch (plan 15 · E7) on a course of the mode's own, the same three, records of their own
+        var batch2 = new AthlonCourse("batch2", new[] { AthlonEventKind.PennantCapture, AthlonEventKind.SnowThrow, AthlonEventKind.DiscCatch, AthlonEventKind.LampJump });
+        screen.OpenOn(batch2, team, new AthlonRecords(), new System.Random(77), new[] { 0, 1, 3 });
+        game.State = GameState.Athlon;
+        // Every athlete's icon baked before the first shot of an event: the rivals are new to this run, and an icon asked
+        // for in the frame of a shot is a stand-in in one run and itself in another
+        foreach (var athlete in screen.Run!.Teams.SelectMany(t => t.Athletes))
+            for (int i = 0; i < 600 && PokemonPlatinumEngine.Graphics.PokemonSprites.GetBaked(athlete.Species, PokemonPlatinumEngine.Graphics.SpriteView.Icon) == null; i++)
+                Frames(1);
+        Frames(30);
+        Shot("at08a_briefing_pennant_capture");
+        PlayEvent("at08_pennant_capture", 600, "at08b_pennant_capture_points");
+        Shot("at09a_briefing_snow_throw");
+        PlayEvent("at09_snow_throw", 420, "at09b_snow_throw_points");
+        Shot("at10a_briefing_disc_catch");
+        PlayEvent("at10_disc_catch", 590, "at10b_disc_catch_points");
+        Shot("at11a_briefing_lamp_jump");
+        PlayEvent("at11_lamp_jump", 700, "at11b_lamp_jump_points");
+        screen.Confirm();
+        Until(() => game.State is GameState.Overworld or GameState.Dialogue, "the field after the second batch", 120);
+
         engine.NewGameRegion = "Sinnoh";
     }
 }

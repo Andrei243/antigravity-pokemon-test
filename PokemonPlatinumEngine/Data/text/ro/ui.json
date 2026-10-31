@@ -762,6 +762,24 @@
       "flint": "Echipa Cremene",
       "gale": "Echipa Vijelie",
       "hazel": "Echipa Alun"
+    },
+    "batch2": {
+      "event": {
+        "pennantCapture": "Capturat Fanioane",
+        "snowThrow": "Bulgări de Zăpadă",
+        "discCatch": "Prins Discuri",
+        "lampJump": "Săritura la Lămpi"
+      },
+      "howTo": {
+        "pennantCapture": "Aleargă pe teren cu săgețile și ia fanioanele înaintea celorlalți. Alergatul îți obosește Pokémonul: apasă {key:cancel} ca să-l trimiți pe următorul. Dacă te ciocnești de altcineva, amândoi rămâneți amețiți.",
+        "snowThrow": "Îndreaptă săgețile spre o echipă și apasă {key:confirm} ca să arunci un bulgăre. Ține {key:confirm} apăsat ca să te ferești de un bulgăre care vine spre tine. O lovitură aduce trei puncte, un bulgăre evitat unul.",
+        "discCatch": "Aleargă pe culoarul tău cu săgețile până unde cade un disc și apasă {key:confirm} ca să sari după el. Un disc prins în aer aduce mai mult. Apasă {key:cancel} ca să trimiți un Pokémon odihnit.",
+        "lampJump": "Pokémonul tău sare singur. Apasă {key:confirm} chiar înainte să aterizeze ca să sară mai sus și aprinde lămpile pe lângă care trece vârful fiecărei sărituri. Prea devreme sau prea târziu, și coboară la loc."
+      },
+      "hits": "Lovituri: {n}",
+      "ducked": "Evitate: {n}",
+      "catches": "PRINSE",
+      "lamps": "Lămpi: {n}"
     }
   },
 
