@@ -40,7 +40,7 @@ Decisions 1 and 2 were taken in D1 (2026-10-01), 3 in D5 (changed in D6), 5 in D
 - **`tools/DataImporter`** (console app): reads a local decomp checkout and the PokeAPI CSVs, normalises names (`SPECIES_PIPLUP` → `Piplup`), writes the JSON. Deterministic and re-runnable; hand corrections live in override files it applies last.
 - **Species model** gains: abilities (two plus hidden), gender ratio, egg groups, EV yield, base friendship, hatch cycles, held items, shape, colour, forms, regional dex numbers (Sinnoh 1–210), evolution methods.
 - **Pokémon** gain: ability, EVs, held item, friendship, form, Pokérus (optional), met location and level.
-- **Battle engine**: what moves, abilities and items *do* is [plan 06](06-game-mechanics.md)'s work. This plan supplies their data.
+- **Battle engine**: what moves, abilities and items *do* is [plan 06](finished/06-game-mechanics.md)'s work. This plan supplies their data.
 - **Pokédex**: Sinnoh and National modes; National hidden until the unlock flag (plan 02 sets it after the Hall of Fame); sort and search; "area" view built from the encounter tables; forms viewer (optional).
 - **Sprites at scale**: bake lazily on first use and cache the PNGs on disk (keyed by species and model version) instead of baking everything at start-up; icons the same.
 - **Save format**: a Pokémon's species by its name, with its national number beside it since D13 (found by the number if the data no longer has the name). Older saves need no migration for it.
@@ -59,7 +59,7 @@ Decisions 1 and 2 were taken in D1 (2026-10-01), 3 in D5 (changed in D6), 5 in D
 - Left for later: TM, tutor and egg learnsets (needed with the TM case and breeding), forms, Z-Moves and Max Moves, Mega Stones and other items from later games that don't matter in battle.
 
 ### D2–D4 · Moved to plan 06
-Move effects, abilities, held items, evolution methods, forms and breeding are now sessions of [plan 06](06-game-mechanics.md): R4–R6 (Platinum's 467 moves), R7 (abilities), R8 (held items and berries), R10 (evolution methods and Platinum's forms; trade evolutions replaced as in decision 4) and R15 (breeding). The numbers D2–D4 stay unused so the later sessions keep theirs.
+Move effects, abilities, held items, evolution methods, forms and breeding are now sessions of [plan 06](finished/06-game-mechanics.md): R4–R6 (Platinum's 467 moves), R7 (abilities), R8 (held items and berries), R10 (evolution methods and Platinum's forms; trade evolutions replaced as in decision 4) and R15 (breeding). The numbers D2–D4 stay unused so the later sessions keep theirs.
 
 ### D5 · Procedural models for everyone (after plan 04 · G7)
 The model generator, built on plan 04's SDF modelling kit, from shape, colour, height, types and feature tags; lazy baking with the disk cache; a harness contact sheet showing every species (extend the `sheets` mode with paging). **Done when** all 1025 species (after D11) have a distinct model and start-up time doesn't grow.

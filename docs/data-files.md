@@ -540,7 +540,7 @@ What the player wears is an `Outfit` (`Core/Outfit.cs`): a garment's id in each 
 
 ## Pokédex entries
 
-`Data/dex-entries.json` (`Data/DexEntries.cs`) is what the Pokédex's INFO page says of a species (plan 08 · P13; the design's "Written entries" in `docs/plans/08-platinum-details.md`). It is hand-written, our own words in the manner of a Pokédex, never the games' text nor a paraphrase of it.
+`Data/dex-entries.json` (`Data/DexEntries.cs`) is what the Pokédex's INFO page says of a species (plan 08 · P13; the design's "Written entries" in `docs/plans/finished/08-platinum-details.md`). It is hand-written, our own words in the manner of a Pokédex, never the games' text nor a paraphrase of it.
 
 ```json
 {
