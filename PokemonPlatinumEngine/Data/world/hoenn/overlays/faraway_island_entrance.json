@@ -1,0 +1,14 @@
+{
+  // Faraway Island's shore (plan 21 · H12, part g): the ferry from Lilycove's harbour sets a Champion with the Old Sea Map
+  // down at 13, 38 (lilycove_city_harbor.txt), and the sailor who brought them waits to sail them back
+  // (faraway_island_entrance.txt). The ship itself is not drawn; the clouds Emerald draws over the path in are left out
+  "area": "faraway_island_entrance",
+  "bgmTrack": "hoenn/sealed_chamber",
+  "trees": "Round",
+  "people": {
+    "faraway_island_sailor": { "name": "Sailor", "script": "Sailor", "still": true }
+  },
+  "signs": {
+    "FarawayIsland_Entrance_EventScript_Sign": "FARAWAY ISLAND\nAn island no chart names. The grass grows tall inland."
+  }
+}

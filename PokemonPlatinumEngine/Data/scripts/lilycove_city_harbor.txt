@@ -77,7 +77,10 @@ label Frontier
   warp "HoennBattleFrontier" 19 67 up
   end
 label Islands
+  # Plan 21 · H12, part g: with the Old Sea Map, Faraway Island is offered after the others
+  if flag FLAG_ENABLE_SHIP_FARAWAY_ISLAND goto Faraway
   choose "Where would you like to sail?" "SOUTHERN ISLAND" "BATTLE FRONTIER" "NAVEL ROCK" "BIRTH ISLAND" "NOWHERE"
+label Chosen
   if result == 0 goto Southern
   if result == 4 goto Stay
   if result == 3 goto Birth
@@ -103,12 +106,45 @@ label Birth
 label NoAurora
   say "I'm sorry, Birth Island is only for passengers with an Aurora Ticket."
   end
+label Faraway
+  choose "Where would you like to sail?" "SOUTHERN ISLAND" "BATTLE FRONTIER" "NAVEL ROCK" "BIRTH ISLAND" "FARAWAY ISLAND" "NOWHERE"
+  if result == 5 goto Stay
+  if result != 4 goto Chosen
+  text "{player} showed the Old Sea Map."
+  say "Faraway Island! It's on no chart of ours, but with this map the captain will find it. Please come aboard."
+  fade out 0.8
+  text "{player} sailed for Faraway Island..."
+  warp "FarawayIsland_Entrance" 13 38 up
+  end
+
+
+# The S.S. Tidal's sailor on the quay (plan 21 · H12, part g; ours: Emerald puts the voyage to Slateport in the ferry
+# desk's choice): with the S.S. Ticket the ship takes the player aboard for Slateport (VAR_SS_TIDAL_STATE 2,
+# ss_tidal_corridor.txt), onto the corridor's gangway at 1, 10.
+script Tidal
+  face self player
+  speaker "Sailor"
+  if not flag FLAG_RECEIVED_SS_TICKET goto NoTicket
+  ask "The S.S. Tidal sails for Slateport City. Coming aboard?"
+  if no goto Later
+  text "{player} showed the S.S. Ticket."
+  say "Welcome aboard! Your cabin's ready."
+  setvar VAR_SS_TIDAL_STATE 2
+  fade out 0.8
+  warp "SSTidalCorridor" 1 10 up
+  end
+label NoTicket
+  say "Ships out of Lilycove go a long way. Some of them cross the whole ocean to lands I've only heard of."
+  end
+label Later
+  say "She sails whenever you're ready."
+  end
 
 
 # The event islands' passes (plan 21 · H12, part f; the plan's decision 5, ours: Emerald gave its tickets only by
 # events). A Champion of Hoenn who has won a Frontier Brain's print is given the Mystic Ticket for Navel Rock
 # (FLAG_ENABLE_SHIP_NAVEL_ROCK), and with prints from two facilities the Aurora Ticket for Birth Island
-# (FLAG_ENABLE_SHIP_BIRTH_ISLAND): flags, as the Southern Island pass is. The Old Sea Map for Faraway Island is left.
+# (FLAG_ENABLE_SHIP_BIRTH_ISLAND): flags, as the Southern Island pass is; with three, the Old Sea Map (part g).
 script Passes
   frontier prints
   if result == 0 return
@@ -120,9 +156,19 @@ script Passes
 label Second
   frontier prints
   if result < 2 return
-  if flag FLAG_ENABLE_SHIP_BIRTH_ISLAND return
+  if flag FLAG_ENABLE_SHIP_BIRTH_ISLAND goto Third
   say "Prints from two facilities of the Frontier! The harbour master asked me to give you this, too."
   setflag FLAG_ENABLE_SHIP_BIRTH_ISLAND
   text "{player} was given the Aurora Ticket!"
   say "It's a pass for Birth Island, where a strange triangle of stone stands on the sand. Nobody knows who put it there."
+# Plan 21 · H12, part g (ours, as the others): prints from three facilities bring the Old Sea Map for Faraway Island
+# (FLAG_ENABLE_SHIP_FARAWAY_ISLAND, Emerald's own flag for the map's voyage)
+label Third
+  frontier prints
+  if result < 3 return
+  if flag FLAG_ENABLE_SHIP_FARAWAY_ISLAND return
+  say "Three of the Frontier's prints! An old sailor left this with the harbour for a trainer like you."
+  setflag FLAG_ENABLE_SHIP_FARAWAY_ISLAND
+  text "{player} was given the Old Sea Map!"
+  say "It's a faded chart with an island drawn on it that no other map shows. The captain says he can find it."
   return

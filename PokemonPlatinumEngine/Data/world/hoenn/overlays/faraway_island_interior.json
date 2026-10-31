@@ -1,0 +1,12 @@
+{
+  // Faraway Island's heart (plan 21 · H12, part g): Mew plays in the tall grass, stepping the other way each time the
+  // player steps, and only onto grass (Emerald's copy_player_opposite_in_grass, PersonMoves.Mirror), until it is cornered
+  // and spoken to; it is met at level 30 (faraway_island_interior.txt). It stands three tiles north of the area file's
+  // tile, in the grass, where Emerald's arrival walks it (FarawayIsland_Interior_Movement_MewMoveAndHide)
+  "area": "faraway_island_interior",
+  "bgmTrack": "hoenn/sealed_chamber",
+  "trees": "Round",
+  "people": {
+    "faraway_island_mew": { "name": "Mew", "npcType": "Pokemon", "species": "Mew", "script": "Mew", "at": [ 13, 14 ] }
+  }
+}

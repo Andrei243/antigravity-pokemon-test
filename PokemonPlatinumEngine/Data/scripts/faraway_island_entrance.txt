@@ -1,0 +1,21 @@
+# Faraway Island's shore (plan 21 · H12, part g). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/FarawayIsland_Entrance/scripts.inc).
+#
+# The S.S. Tidal's sailor, who brought the player on the Old Sea Map's pass, waits on the shore to sail them back to
+# Lilycove's harbour (Emerald's FarawayIsland_Entrance_EventScript_Sailor). The ship itself is not drawn.
+
+
+script Sailor
+  face self player
+  speaker "Sailor"
+  say "This must be the island on that old map. I've never seen grass grow so tall. I'll stay with the ship."
+  ask "Shall we sail back to Lilycove?"
+  if no goto Stay
+  say "Aye. Hold on tight."
+  fade out 0.8
+  text "{player} sailed back to Lilycove City..."
+  warp "LilycoveCity_Harbor" 8 11 down
+  end
+label Stay
+  say "As you like. I'll be here when you're ready."
+  end

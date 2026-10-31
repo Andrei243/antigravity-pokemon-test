@@ -5,5 +5,12 @@
   "hoenn_drake": [ "hoenn_drake_rematch" ],
   "hoenn_wallace": [ "hoenn_wallace_rematch" ],
   "hoenn_wally_vr_2": [ "hoenn_wally_rematch" ],
-  "hoenn_wattson_1": [ "hoenn_wattson_2", "hoenn_wattson_3", "hoenn_wattson_4", "hoenn_wattson_5" ]
+  "hoenn_wattson_1": [ "hoenn_wattson_2", "hoenn_wattson_3", "hoenn_wattson_4", "hoenn_wattson_5" ],
+  "hoenn_roxanne_1": [ "hoenn_roxanne_2", "hoenn_roxanne_3", "hoenn_roxanne_4", "hoenn_roxanne_5" ],
+  "hoenn_brawly_1": [ "hoenn_brawly_2", "hoenn_brawly_3", "hoenn_brawly_4", "hoenn_brawly_5" ],
+  "hoenn_flannery_1": [ "hoenn_flannery_2", "hoenn_flannery_3", "hoenn_flannery_4", "hoenn_flannery_5" ],
+  "hoenn_norman_1": [ "hoenn_norman_2", "hoenn_norman_3", "hoenn_norman_4", "hoenn_norman_5" ],
+  "hoenn_winona_1": [ "hoenn_winona_2", "hoenn_winona_3", "hoenn_winona_4", "hoenn_winona_5" ],
+  "hoenn_tate_and_liza_1": [ "hoenn_tate_and_liza_2", "hoenn_tate_and_liza_3", "hoenn_tate_and_liza_4", "hoenn_tate_and_liza_5" ],
+  "hoenn_juan_1": [ "hoenn_juan_2", "hoenn_juan_3", "hoenn_juan_4", "hoenn_juan_5" ]
 }

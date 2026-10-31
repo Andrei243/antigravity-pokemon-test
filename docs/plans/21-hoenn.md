@@ -1310,3 +1310,18 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
       **Left**: Faraway Island and Mew (and the Old Sea Map), Jirachi, Trainer Hill, Mirage Island, Altering Cave, the S.S.
       Tidal's cabins and Slateport's ferry, the island's halls, the Gold and Silver Shields, the other Gym Leaders' rematches,
       the triangle's and the ship's own looks.
+    - **Part g** (done 2026-10-31: Faraway Island, the S.S. Tidal, the Gym Leaders' rematches and the Tower's shields;
+      docs/mechanics/rulings.md, under that name; tests run with --filter (HoennPostGamePartGTests, HoennEventIslandsTests,
+      StoryTests, SceneSkipTests, ScriptTests, the goldens, ContentTests, VoiceTests, ScriptTranslationTests, WanderingTests,
+      WorldTests, HoennTests, RegionTests, PokegearTests), shots h2c0 to h2ce taken once into a scratch folder and looked at).
+      **Built**: Faraway Island (matrices 406, 407) and the S.S. Tidal's corridor, hold and cabins (336 to 338) in
+      RegionDatabase's Hoenn list; the Old Sea Map for three Frontier prints and the ferry desk's sixth place; Mew in the grass
+      at level 30, moving by a new `PersonMoves.Mirror` (Emerald's copy_player_opposite_in_grass) round the overlay's `at`
+      (`World.PlaceEvents` now keeps a mover's box round the overlay's tile); the S.S. Tidal boarded at Slateport's desk and
+      Lilycove's quay with the S.S. Ticket, brought in by a rest in the cabin's bed (`VAR_SS_TIDAL_STATE`, ours) and left by
+      the gangway's sailor, with Emerald's eight passengers and sailors as trainers; the rematches of Roxanne, Brawly, Flannery,
+      Norman, Winona, Tate and Liza and Juan over Match Call (days of ours, Emerald's teams _2 to _5, doubles), Roxanne and Norman
+      registered when spoken to with their Badge; Scott's Silver and Gold Shields for the Tower's prints (new script word
+      `frontier printed`). **Golden**: scripts.txt (six new blocks: the islands', the ship's and the desks'), levels.txt and
+      levels-crossed.txt (the S.S. Tidal's eight trainers now placed, in two new blocks): accepted. **Left**: Jirachi, Trainer
+      Hill, Mirage Island, Altering Cave, the island's halls, the S.S. Tidal's halfway arrivals, furniture and look, Mew's hiding.

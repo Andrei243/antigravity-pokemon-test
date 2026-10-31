@@ -1,0 +1,24 @@
+{
+  "people": {
+    "faraway_island_sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "FarawayIsland_Entrance_EventScript_Sign": {
+      "en": [
+        "FARAWAY ISLAND\nAn island no chart names. The grass grows tall inland."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

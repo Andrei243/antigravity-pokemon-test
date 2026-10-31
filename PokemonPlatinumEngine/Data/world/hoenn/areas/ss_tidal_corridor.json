@@ -1,0 +1,50 @@
+{
+  "key": "ss_tidal_corridor",
+  "index": 387,
+  "name": "Dynamic",
+  "matrix": 336,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SAILING",
+  "nightMusic": "MUS_SAILING",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 9, "to": "ss_tidal_rooms", "toWarp": 0 },
+    { "x": 7, "z": 9, "to": "ss_tidal_rooms", "toWarp": 2 },
+    { "x": 10, "z": 9, "to": "ss_tidal_rooms", "toWarp": 4 },
+    { "x": 13, "z": 9, "to": "ss_tidal_rooms", "toWarp": 6 },
+    { "x": 4, "z": 3, "to": "ss_tidal_rooms", "toWarp": 8 },
+    { "x": 7, "z": 3, "to": "ss_tidal_rooms", "toWarp": 9 },
+    { "x": 10, "z": 3, "to": "ss_tidal_rooms", "toWarp": 10 },
+    { "x": 13, "z": 3, "to": "ss_tidal_rooms", "toWarp": 11 },
+    { "x": 16, "z": 2, "to": "ss_tidal_lower_deck", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "ss_tidal_exit_sailor", "looks": "sailor", "movement": "look_north", "x": 1, "z": 11, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "SSTidalCorridor_EventScript_ExitSailor" },
+    { "id": "sailor", "looks": "sailor", "movement": "wander_north_and_south", "x": 16, "z": 7, "facing": 0, "rangeX": 0, "rangeZ": 2, "script": "SSTidalCorridor_EventScript_Sailor" },
+    { "id": "expert_m", "looks": "expert_m", "movement": "look_south", "x": 9, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SS_TIDAL_CORRIDOR_MR_BRINEY", "script": "SSTidalCorridor_EventScript_Briney" },
+    { "id": "wingull", "looks": "wingull", "movement": "look_around", "x": 7, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SS_TIDAL_CORRIDOR_MR_BRINEY", "script": "SSTidalCorridor_EventScript_Peeko" },
+    { "id": "ss_tidal_scott", "looks": "scott", "movement": "look_west", "x": 9, "z": 10, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SS_TIDAL_CORRIDOR_SCOTT", "script": "" }
+  ],
+  "signs": [
+    { "x": 2, "z": 1, "type": 0, "script": "SSTidalCorridor_EventScript_Porthole" },
+    { "x": 4, "z": 1, "type": 0, "script": "SSTidalCorridor_EventScript_Porthole" },
+    { "x": 6, "z": 1, "type": 0, "script": "SSTidalCorridor_EventScript_Porthole" },
+    { "x": 8, "z": 1, "type": 0, "script": "SSTidalCorridor_EventScript_Porthole" },
+    { "x": 10, "z": 1, "type": 0, "script": "SSTidalCorridor_EventScript_Porthole" },
+    { "x": 12, "z": 1, "type": 0, "script": "SSTidalCorridor_EventScript_Porthole" },
+    { "x": 14, "z": 1, "type": 0, "script": "SSTidalCorridor_EventScript_Porthole" },
+    { "x": 16, "z": 1, "type": 0, "script": "SSTidalCorridor_EventScript_Porthole" },
+    { "x": 5, "z": 9, "type": 0, "script": "SSTidalCorridor_EventScript_Cabin1Sign" },
+    { "x": 8, "z": 9, "type": 0, "script": "SSTidalCorridor_EventScript_Cabin2Sign" },
+    { "x": 11, "z": 9, "type": 0, "script": "SSTidalCorridor_EventScript_Cabin3Sign" },
+    { "x": 14, "z": 9, "type": 0, "script": "SSTidalCorridor_EventScript_Cabin4Sign" }
+  ],
+  "triggers": []
+}

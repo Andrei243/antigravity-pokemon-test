@@ -1,0 +1,40 @@
+# Faraway Island's heart (plan 21 · H12, part g). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/FarawayIsland_Interior/scripts.inc).
+#
+# Mew plays in the tall grass, a step the other way for each step the player takes and only onto grass (the overlay's
+# movement, Emerald's copy_player_opposite_in_grass), so it has to be cornered against the grass's edge to be spoken
+# to. Spoken to, it is met at level 30 (Emerald's setwildbattle SPECIES_MEW, 30). Run from, it is back in the grass the
+# next time the island's heart is come to; beaten (FLAG_DEFEATED_MEW) or caught (FLAG_CAUGHT_MEW), it is gone for good.
+# Ours: Emerald hides Mew until the player comes close and shows it flickering; here it is seen at once.
+
+
+script OnEnter
+  if flag FLAG_CAUGHT_MEW goto Gone
+  if flag FLAG_DEFEATED_MEW goto Gone
+  clearflag FLAG_HIDE_MEW
+  end
+label Gone
+  setflag FLAG_HIDE_MEW
+  end
+
+
+script Mew
+  scene "Mew in the tall grass"
+  face self player
+  emote self exclaim
+  wait 0.4
+  cry "Mew"
+  wait 0.6
+  endscene
+  wildbattle "Mew" 30
+  hide faraway_island_mew
+  setflag FLAG_HIDE_MEW
+  if result == 3 goto Caught
+  if result == 1 setflag FLAG_DEFEATED_MEW
+  speaker none
+  if result == 1 end
+  text "Mew darted off into the tall grass..."
+  end
+label Caught
+  setflag FLAG_CAUGHT_MEW
+  end

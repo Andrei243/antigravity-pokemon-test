@@ -103,6 +103,38 @@
       "text": [
         "Chiar dacă am pierdut, Pokémonii mei și cu mine vom zbura mai departe. Vântul e mereu acolo să ne ridice din nou."
       ]
+    },
+    {
+      "en": [
+        "You answered the wind's call. My birds fly in pairs now. Two Pokémon each, if you please."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Winona"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You still fly higher than my birds. Thank you, {player}. Call me when the wind is right."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A rematch is two Pokémon against two. Come back with at least two on your team."
+      ],
+      "text": [
+        ""
+      ]
     }
   ],
   "GymGuide": [

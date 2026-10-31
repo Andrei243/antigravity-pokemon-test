@@ -1,0 +1,28 @@
+{
+  "key": "ss_tidal_lower_deck",
+  "index": 388,
+  "name": "Dynamic",
+  "matrix": 337,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SAILING",
+  "nightMusic": "MUS_SAILING",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 15, "z": 2, "to": "ss_tidal_corridor", "toWarp": 8 }
+  ],
+  "objects": [
+    { "id": "sailor", "looks": "sailor", "movement": "walk_sequence_south_east_north_west", "x": 10, "z": 4, "facing": 1, "rangeX": 4, "rangeZ": 4, "trainer": "normal", "sight": 3, "script": "TRAINER_PHILLIP" },
+    { "id": "sailor_2", "looks": "sailor", "movement": "walk_sequence_south_west_north_east", "x": 7, "z": 4, "facing": 1, "rangeX": 7, "rangeZ": 4, "trainer": "normal", "sight": 3, "script": "TRAINER_LEONARD" }
+  ],
+  "signs": [
+    { "x": 0, "z": 2, "type": 2, "script": "", "item": "Leftovers", "flag": "FLAG_HIDDEN_ITEM_SS_TIDAL_LOWER_DECK_LEFTOVERS" }
+  ],
+  "triggers": []
+}

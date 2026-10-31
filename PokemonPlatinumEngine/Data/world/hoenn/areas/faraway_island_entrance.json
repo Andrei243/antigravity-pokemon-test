@@ -1,0 +1,33 @@
+{
+  "key": "faraway_island_entrance",
+  "index": 463,
+  "name": "Faraway Island",
+  "matrix": 406,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ABANDONED_SHIP",
+  "nightMusic": "MUS_ABANDONED_SHIP",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 22, "z": 7, "to": "faraway_island_interior", "toWarp": 0 },
+    { "x": 23, "z": 7, "to": "faraway_island_interior", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "faraway_island_sailor", "looks": "sailor", "movement": "look_north", "x": 13, "z": 39, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "FarawayIsland_Entrance_EventScript_Sailor" },
+    { "id": "faraway_island_ss_tidal", "looks": "ss_tidal", "movement": "look_east", "x": 13, "z": 41, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "" }
+  ],
+  "signs": [
+    { "x": 3, "z": 32, "type": 0, "script": "FarawayIsland_Entrance_EventScript_Sign" }
+  ],
+  "triggers": [
+    { "x": 9, "z": 18, "width": 1, "depth": 1, "script": "FarawayIsland_Entrance_EventScript_SetCloudsWeather", "variable": "TRIGGER_RUN_IMMEDIATELY", "value": "0" },
+    { "x": 10, "z": 20, "width": 1, "depth": 1, "script": "FarawayIsland_Entrance_EventScript_ClearWeather", "variable": "TRIGGER_RUN_IMMEDIATELY", "value": "0" },
+    { "x": 22, "z": 9, "width": 1, "depth": 1, "script": "FarawayIsland_Entrance_EventScript_SetCloudsWeather", "variable": "TRIGGER_RUN_IMMEDIATELY", "value": "0" }
+  ]
+}

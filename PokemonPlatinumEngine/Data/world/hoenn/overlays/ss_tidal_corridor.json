@@ -1,0 +1,20 @@
+{
+  // The S.S. Tidal's corridor (plan 21 · H12, part g): the ferry between Slateport's and Lilycove's harbours, boarded at
+  // either with the S.S. Ticket onto 1, 10 (slateport_city_harbor.txt, lilycove_city_harbor.txt). The sailor by the
+  // gangway lets the player off once the ship has come in (ss_tidal_corridor.txt), which a rest in a cabin's bed brings
+  // about (ss_tidal_rooms.txt). Mr. Briney and Peeko, and Scott's scene on the first voyage, are left out
+  "area": "ss_tidal_corridor",
+  "name": "S.S. Tidal",
+  "bgmTrack": "hoenn/sailing",
+  "people": {
+    "ss_tidal_exit_sailor": { "name": "Sailor", "script": "ExitSailor", "still": true },
+    "sailor": { "name": "Sailor", "dialog": [ "The cabins are along this corridor, and the hold is down the stairs at the end. Mind the step when she rolls." ] }
+  },
+  "signs": {
+    "SSTidalCorridor_EventScript_Porthole": "Through the porthole, the sea rushes past.",
+    "SSTidalCorridor_EventScript_Cabin1Sign": "Cabin 1",
+    "SSTidalCorridor_EventScript_Cabin2Sign": "Cabin 2",
+    "SSTidalCorridor_EventScript_Cabin3Sign": "Cabin 3",
+    "SSTidalCorridor_EventScript_Cabin4Sign": "Cabin 4"
+  }
+}

@@ -10,6 +10,7 @@
 script Roxanne
   face roxanne player
   speaker "Roxanne"
+  if flag FLAG_PHONE_REMATCH_ROXANNE goto Rematch
   if badge stone goto Won
   scene "Roxanne"
   say "Hello! I'm Roxanne, the Leader of the Rustboro Gym. I teach at the Trainers' School, too."
@@ -38,6 +39,39 @@ label Tm
 label Won
   if not flag FLAG_RECEIVED_TM_ROCK_TOMB goto Tm
   say "Battles teach lessons that no textbook can. I'm grateful for ours, {player}."
+  # Spoken to with her Badge, she gives her number for the PokéNav (plan 21 · H12, part g; ours)
+  if flag FLAG_ENABLE_ROXANNE_MATCH_CALL end
+  if not flag FLAG_SYS_POKENAV_GET end
+  setflag FLAG_ENABLE_ROXANNE_MATCH_CALL
+  say "If you'd like a rematch one day, I'll leave you my number. Do call me."
+  addcontact roxanne
+  text "Registered Roxanne in the PokéNav."
+  end
+# The rematch a Match Call asked for (plan 21 · H12, part g; Emerald's RustboroCity_Gym_EventScript_RoxanneRematch, a
+# double battle): each time one team stronger, Emerald's TRAINER_ROXANNE_2 to _5, the last again once all are beaten
+label Rematch
+  if party < 2 goto NeedTwo
+  say "You came! I've prepared a new lesson for us both. Two Pokémon each, this time. Shall we begin?"
+  if not defeated "hoenn_roxanne_2" goto Second
+  if not defeated "hoenn_roxanne_3" goto Third
+  if not defeated "hoenn_roxanne_4" goto Fourth
+  battle self as "hoenn_roxanne_5"
+  goto Rematched
+label Second
+  battle self as "hoenn_roxanne_2"
+  goto Rematched
+label Third
+  battle self as "hoenn_roxanne_3"
+  goto Rematched
+label Fourth
+  battle self as "hoenn_roxanne_4"
+label Rematched
+  speaker "Roxanne"
+  clearflag FLAG_PHONE_REMATCH_ROXANNE
+  say "I lost again... but every battle with you is a page I'll study. Please call again."
+  end
+label NeedTwo
+  say "A rematch is two Pokémon at a time. Please come back with at least two on your team."
   end
 
 

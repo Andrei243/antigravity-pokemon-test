@@ -1,0 +1,52 @@
+{
+  "Sailor": [
+    {
+      "en": [
+        "Sailor"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "This must be the island on that old map. I've never seen grass grow so tall. I'll stay with the ship."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Shall we sail back to Lilycove?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Aye. Hold on tight."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} sailed back to Lilycove City..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "As you like. I'll be here when you're ready."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

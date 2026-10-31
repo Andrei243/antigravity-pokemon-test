@@ -72,5 +72,47 @@
         "Oricând ești gata. Eu sunt aici."
       ]
     }
+  ],
+  "Shields": [
+    {
+      "en": [
+        "You won the Tower Tycoon's silver print! That deserves a trophy for your secret base."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received the {thing}!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And the gold print, too! Nobody has earned this more than you."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received the {thing}!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ah, your PC has no room for it. Make some, and I'll keep it for you until then."
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

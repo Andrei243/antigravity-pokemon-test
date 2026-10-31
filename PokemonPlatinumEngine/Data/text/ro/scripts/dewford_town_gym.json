@@ -103,6 +103,38 @@
       "text": [
         "Mă întorc pe apă să mă antrenez mai tare. Data viitoare nu mai cad așa ușor!"
       ]
+    },
+    {
+      "en": [
+        "You made it! I've been training on waves twice as big. Two Pokémon each this time. Let's ride!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Brawly"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wiped out again! You're a real big-wave rider, {player}. Call me when you want another round."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A rematch is two on two! Come back with at least two Pokémon on your team."
+      ],
+      "text": [
+        ""
+      ]
     }
   ],
   "GymGuide": [
