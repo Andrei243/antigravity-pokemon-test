@@ -23,7 +23,8 @@ partial class Harness
     //   7. Max Moves on the field (plan 25 · YD4): Max Flare's sun, Max Lightning's terrain and G-Max Steelsurge arriving from their blows (gi40_* to gi42_*);
     //   8. Mega Dynamax's double change (plan 25 · YD4): the player's own Garchomp (gi45_* to gi47_*) and Cynthia's (gi48_*).
     //   9. the Champions with the Mega Max Band (plan 25 · YD6): the bands (gi60 to gi64), Cynthia's fight under the boss box (gi65 to gi75), the Battle Scene off (gi78, gi79).
-    // GIANTS_PART=cynthia|dynamax|double|own|finisher|guard|field|megamax|champions runs one part.
+    //  10. the Gigantamax signatures, part a (plan 25 · YD7): the five's growths and set pieces (gi80 to gi84), a foe's G-Max Replenish (gi85).
+    // GIANTS_PART=cynthia|dynamax|double|own|finisher|guard|field|megamax|champions|signatures runs one part.
     public void GiantsMode()
     {
         string only = Environment.GetEnvironmentVariable("GIANTS_PART") ?? "";
@@ -908,6 +909,64 @@ partial class Harness
             }
             engine.Settings.BattleScene = true;
             engine.ApplySettings(window: false);
+        }
+
+        // ---- 10. the Gigantamax signatures, part a (plan 25 · YD7): the player's own Gigantamax of each of the five,
+        // its growth in its G-Max Move's colours (as it gathers and as it settles), then its signature from the stop
+        // through its set piece (gi80 to gi84), and a foe's Gigantamax Snorlax through a trainer's AI (gi85)
+        if (only is "" or "signatures")
+        {
+            var five = new (string Prefix, string Species, string Move, string Foe)[]
+            {
+                ("gi80_wildfire", "Charizard", "Flamethrower", "Snorlax"), ("gi81_volt_crash", "Pikachu", "Thunderbolt", "Snorlax"),
+                ("gi82_terror", "Gengar", "Shadow Ball", "Slowbro"), ("gi83_resonance", "Lapras", "Ice Beam", "Snorlax"),
+                ("gi84_replenish", "Snorlax", "Body Slam", "Blissey")
+            };
+            uint seed = 380;
+            foreach (var (prefix, species, move, foe) in five)
+            {
+                var b = OwnBattle(Giant(species, true, 50, move, "Growl"), seed++, Sitter(foe, 70));
+                ToMainMenu(b);
+                b.SelectMainMenuOption(0);
+                Frames(5);
+                b.ToggleLaterMechanic();
+                b.SelectMove(0);
+                Frames(1);
+                var growth = Until(b, c => c.Kind == CueKind.Dynamax, 400);
+                if (growth == null) { Console.WriteLine($"  !! no growth for {prefix}"); continue; }
+                double found = growth.Age, lead = growth.Lead;
+                Console.WriteLine($"  {prefix}: the growth's G-Max Move {growth.GMax ?? "none"}, the call {(lead > 0 ? "played" : "not played")}");
+                Beat(b, prefix + "_growth", lead + 0.35 - found, lead + 1.45 - found);
+                var max = Until(b, c => c.MaxMove, 400);
+                if (max == null) { Console.WriteLine($"  !! no G-Max Move for {prefix}"); continue; }
+                Console.WriteLine($"  {prefix}: {max.Move}");
+                Finisher(b, prefix, max, 0.4, 0.62, 0.95, 1.3);
+                // The wreath at the menu in its colours
+                for (int i = 0; i < 400 && b.HUD.MenuState != BattleMenuState.Main && !b.IsBattleOver; i++) { if (b.IsWaitingForConfirm) Confirm(b); else Skip(0.05); }
+                Skip(0.4);
+                Shot($"{prefix}_menu");
+                Console.WriteLine($"  {prefix}_menu: the place's G-Max Move {b.Anim.Player.GMax ?? "none"}");
+            }
+
+            var trainer = new Trainer
+            {
+                Id = "harness_gmax", Name = "Ola", TrainerClass = "Ace Trainer", PrizeMoney = 0, DynamaxBand = true,
+                Ai = PokemonPlatinumEngine.Battle.Sim.Ai.AiFlags.Basic | PokemonPlatinumEngine.Battle.Sim.Ai.AiFlags.EvalAttack | PokemonPlatinumEngine.Battle.Sim.Ai.AiFlags.Expert
+            };
+            var lax = new Pokemon(PokemonDatabase.Get("Snorlax")!, 60);
+            lax.Moves.Clear();
+            lax.Moves.Add(new Move(MoveDatabase.Get("Body Slam")));
+            lax.DynamaxLevel = 10;
+            lax.GigantamaxFactor = true;
+            trainer.Party.Add(lax);
+            var fb = Begin(trainer, "Ace Trainer", Tank("Shuckle", "Splash"), Tank("Blissey", "Splash"));
+            if (fb != null)
+            {
+                ToMainMenu(fb);
+                Whole(fb);
+                Skip(1.0);
+                Watch(fb, "gi85_foe", 4, 3);
+            }
         }
         game.State = GameState.Overworld;
     }

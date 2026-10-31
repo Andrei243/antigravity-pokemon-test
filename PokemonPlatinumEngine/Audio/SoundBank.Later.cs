@@ -19,7 +19,26 @@ public static partial class SoundBank
         name is "mega_evolve" or "primal_reversion" or "ultra_burst" or "z_power"
             or "dynamax" or "gigantamax" or "dynamax_end" or "dynamax_call" or "max_guard" or "max_land" or "max_guard_hit" or "giant_fall"
             or "terastallize" or "tera_stellar"
-        || name.StartsWith("z_move_", StringComparison.OrdinalIgnoreCase) || name.StartsWith("max_move_", StringComparison.OrdinalIgnoreCase);
+        || name.StartsWith("z_move_", StringComparison.OrdinalIgnoreCase) || name.StartsWith("max_move_", StringComparison.OrdinalIgnoreCase)
+        || name.StartsWith("gmax_", StringComparison.OrdinalIgnoreCase);
+
+    /// <summary>
+    /// The name a G-Max Move's own sound would go by (plan 25 · YD7): <c>gmax_</c> and its name after "G-Max", as a move's
+    /// key ("G-Max Volt Crash" is <c>gmax_volt_crash</c>); empty for a move that is no G-Max Move. Only the signatures
+    /// have one; the rest are heard as their type's Max Move.
+    /// </summary>
+    public static string GMaxSound(string move) =>
+        move.StartsWith("G-Max ", StringComparison.OrdinalIgnoreCase) ? "gmax_" + MoveKey(move[6..]) : "";
+
+    /// <summary>The G-Max Moves with a sound of their own (plan 25 · YD7, part a). A property: the catalogue is built in the class's static constructor, before a field of this file would be.</summary>
+    private static (string Move, string What)[] GMaxSounds => new[]
+    {
+        ("G-Max Wildfire", "a roar of fire springing up all round, crackling as the walls burn and dying to a hiss"),
+        ("G-Max Volt Crash", "a thunderclap out of the sky on the landing, then six cracks running out along the ground"),
+        ("G-Max Terror", "a hollow moan rising under the landing, a whisper of wind circling and a low thrum as the eye opens"),
+        ("G-Max Resonance", "a slow chord of bells and a high shimmering drone, as of an aurora, over a cold ringing"),
+        ("G-Max Replenish", "a soft burst, then berries falling and pattering round, and a bright little run as the user's side is given its berries back")
+    };
 
     /// <summary>The sound a Max Move of this type makes (a G-Max Move is heard as its type's; plan 25 · Y15).</summary>
     public static string MaxMoveSound(PokemonType type) => "max_move_" + type.ToString().ToLowerInvariant();
@@ -46,6 +65,9 @@ public static partial class SoundBank
         add("max_guard", SoundGroup.Battle, null, "Max Guard: a dome of light closing with a deep ring.");
         foreach (var type in Enum.GetValues<PokemonType>())
             add(MaxMoveSound(type), SoundGroup.Battle, null, $"A Max Move of the {type} type (and a G-Max Move of that type) sets off and lands.");
+        // The Gigantamax signatures (plan 25 · YD7, part a): a G-Max Move with a set piece of its own has a sound of its own
+        foreach (var (move, what) in GMaxSounds)
+            add(GMaxSound(move), SoundGroup.Battle, null, $"{move} sets off and lands: the Max Moves' drone and blow, then {what} (plan 25 · YD7).");
         // The giant's punch (plan Y · YD5): one sub-bass hit under every Max Move's impact, whatever its type
         add("max_land", SoundGroup.Battle, null, "A Max Move lands: a sub-bass hit and a deep boom felt under the type's own sound (plan Y · YD5).");
         // Max Guard struck and a giant's fall (plan 25 · YD3)
@@ -178,6 +200,7 @@ public static partial class SoundBank
             }
         }
         if (name.StartsWith("max_move_", StringComparison.Ordinal)) return MakeMaxMoveSound(name);
+        if (name.StartsWith("gmax_", StringComparison.Ordinal)) return MakeGMaxSound(name);
         if (!name.StartsWith("z_move_", StringComparison.Ordinal)) return null;
         PokemonType? found = null;
         foreach (var type in Enum.GetValues<PokemonType>())
@@ -212,6 +235,73 @@ public static partial class SoundBank
         d.Tone(0.35f, 0.6f, Wave.Sine, 70f, 40f, 0.2f, 0.05f, 1f);
         TypeLayer(d, t);
         return Finish(d.S, 0.48f);
+    }
+
+    /// <summary>
+    /// A G-Max Move's own sound (plan 25 · YD7): the Max Moves' red drone to the landing at 0.35 s and its blow (as
+    /// <see cref="MakeMaxMoveSound"/>), then a layer of its own in place of its type's, timed to its set piece.
+    /// </summary>
+    private static float[]? MakeGMaxSound(string name)
+    {
+        SoundDesign d = null!;
+        void Base(uint seed)
+        {
+            d = new SoundDesign(1.6f, seed);
+            d.Tone(0, 0.36f, Wave.Saw, 40f, 120f, 0.1f, 0.8f, 0.5f, vibratoHz: 6f, vibratoDepth: 0.04f);
+            d.Noise(0, 0.36f, Filter.Low, 300f, 1600f, 0.2f, 1.1f, 0.85f, 0.4f, 8f, 0.4f);
+            d.Thump(0.35f, 0.75f, 90f, 22f, 1.0f, 1.0f);
+            d.Noise(0.35f, 0.14f, Filter.Band, 1200f, 400f, 0.55f, 1f, 0.01f, 2.2f);
+        }
+        switch (name)
+        {
+            case "gmax_wildfire":
+                // The walls springing up one after another, a roar under them, crackling, dying to a hiss by 1.4 s
+                Base(0x6F17u);
+                for (int i = 0; i < 5; i++) d.Noise(0.36f + i * 0.05f, 0.35f, Filter.Band, 500f + i * 120f, 1400f, 0.18f, 1f, 0.02f, 1.6f, 14f, 0.5f);
+                d.Noise(0.4f, 1.0f, Filter.Low, 1800f, 500f, 0.35f, 1f, 0.15f, 1.2f, 20f, 0.5f);
+                d.Crackle(0.45f, 0.9f, 28, 2200f, 0.28f);
+                d.Noise(1.0f, 0.5f, Filter.High, 3500f, 2000f, 0.12f, 1f, 0.05f, 1.4f);
+                return Finish(d.S, 0.48f);
+            case "gmax_volt_crash":
+                // A thunderclap at the landing, then six cracks running out one after another (0.43 s on, 0.05 s apart)
+                Base(0x7C0Au);
+                d.Noise(0.35f, 0.5f, Filter.High, 2500f, 5000f, 0.6f, 1f, 0.005f, 2f, 50f, 0.7f);
+                d.Thump(0.36f, 0.6f, 160f, 35f, 0.7f, 0.8f);
+                for (int i = 0; i < 6; i++)
+                {
+                    d.Noise(0.43f + i * 0.05f, 0.2f, Filter.High, 3500f, 7000f, 0.3f, 1.2f, 0.005f, 2.4f, 60f, 0.7f);
+                    d.Crackle(0.43f + i * 0.05f, 0.25f, 6, 5000f, 0.2f);
+                }
+                d.Noise(0.7f, 0.7f, Filter.Band, 4000f, 2500f, 0.12f, 1.5f, 0.1f, 1.4f, 70f, 0.6f);
+                return Finish(d.S, 0.48f);
+            case "gmax_terror":
+                // A hollow moan rising under the landing, a whisper circling, a low thrum as the eye opens (0.55 s)
+                Base(0x7E44u);
+                d.Tone(0.36f, 1.0f, Wave.Sine, N(48), N(55), 0.2f, 0.3f, 1.0f, vibratoHz: 4f, vibratoDepth: 0.07f);
+                d.Tone(0.36f, 1.0f, Wave.Triangle, N(60), N(67), 0.08f, 0.3f, 1.0f, vibratoHz: 4.5f, vibratoDepth: 0.06f);
+                d.Noise(0.4f, 1.0f, Filter.Band, 900f, 1600f, 0.16f, 3f, 0.3f, 1.2f, 2.6f, 0.6f);
+                d.Tone(0.55f, 0.8f, Wave.Sine, 55f, 50f, 0.3f, 0.1f, 1.2f, vibratoHz: 9f, vibratoDepth: 0.03f);
+                return Finish(d.S, 0.46f);
+            case "gmax_resonance":
+                // A slow chord of bells over a shimmering drone, a cold ring falling in at the end
+                Base(0x2E50u);
+                d.Bell(0.38f, 1.1f, N(79), 2.01f, 0.9f, 0.14f, 1.6f);
+                d.Bell(0.5f, 1.0f, N(83), 2.01f, 0.9f, 0.12f, 1.6f);
+                d.Bell(0.62f, 0.9f, N(86), 2.01f, 0.9f, 0.11f, 1.6f);
+                d.Bell(0.74f, 0.8f, N(91), 3.01f, 0.8f, 0.09f, 1.8f);
+                d.Tone(0.4f, 1.1f, Wave.Sine, N(91), N(91), 0.05f, 0.4f, 0.8f, vibratoHz: 7f, vibratoDepth: 0.02f);
+                d.Crackle(0.6f, 0.8f, 12, 6000f, 0.15f);
+                return Finish(d.S, 0.44f);
+            case "gmax_replenish":
+                // A soft burst, berries pattering as they land (0.6 to 0.95 s), a bright run at the user's side (0.8 s)
+                Base(0x8E91u);
+                d.Noise(0.36f, 0.3f, Filter.Band, 600f, 1500f, 0.2f, 1f, 0.02f, 1.6f);
+                for (int i = 0; i < 9; i++) d.Thump(0.62f + i * 0.04f, 0.1f, 420f + (i % 3) * 60f, 220f, 0.3f, 0.6f);
+                d.Notes(0.8f, 0.07f, 0.35f, Wave.Sine, Pitches(79, 83, 86, 91), 0.08f, 0.01f);
+                d.Noise(0.8f, 0.6f, Filter.High, 2500f, 4500f, 0.08f, 0.8f, 0.2f, 1.2f, 9f, 0.5f);
+                return Finish(d.S, 0.44f);
+        }
+        return null;
     }
 
     /// <summary>A type's own layer of a Z-Move's and a Max Move's sound, after the landing at 0.35 s.</summary>

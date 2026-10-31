@@ -419,7 +419,9 @@ public class LaterMechanicsLookTests
     public void AMaxMoveIsHeardAsItsTypesMaxMoveAndEverySetPieceIsThere()
     {
         Assert.Equal("max_move_fire", SoundBank.MoveSound("Max Flare", PokemonType.Fire));
-        Assert.Equal("max_move_fire", SoundBank.MoveSound("G-Max Wildfire", PokemonType.Fire));
+        // A G-Max Move without a signature is heard as its type's; one with one by its own (plan 25 · YD7)
+        Assert.Equal("max_move_fire", SoundBank.MoveSound("G-Max Centiferno", PokemonType.Fire));
+        Assert.Equal("gmax_wildfire", SoundBank.MoveSound("G-Max Wildfire", PokemonType.Fire));
         Assert.Equal("max_guard", SoundBank.MoveSound("Max Guard", PokemonType.Normal));
         Assert.Equal("z_move_fire", SoundBank.MoveSound("Inferno Overdrive", PokemonType.Fire));
         foreach (var type in Enum.GetValues<PokemonType>()) Assert.True(SoundBank.Exists(SoundBank.MaxMoveSound(type)));

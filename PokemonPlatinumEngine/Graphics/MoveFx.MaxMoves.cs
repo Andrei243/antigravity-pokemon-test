@@ -80,6 +80,13 @@ internal static partial class MoveFx
     public static FxRecipe MaxMoveRecipe(string move, PokemonType type)
     {
         if (string.Equals(move, "Max Guard", StringComparison.OrdinalIgnoreCase)) return MaxGuard;
+        // A signature of its own (plan 25 · YD7, MoveFx.GMaxOwn.cs) in place of its type's piece and its mark
+        if (GMaxSignatures.TryGetValue(move, out var signature))
+            return (in FxCtx c, FxColors col, FxList fx) =>
+            {
+                MaxCommon(c, col, fx);
+                if (c.Cue.Landed) signature(c, col, fx);
+            };
         if (GMaxMarks.TryGetValue(move, out var mark))
             return (in FxCtx c, FxColors col, FxList fx) =>
             {
