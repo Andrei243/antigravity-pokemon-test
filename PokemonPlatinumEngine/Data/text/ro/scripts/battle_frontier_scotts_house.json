@@ -79,7 +79,7 @@
         "You won the Tower Tycoon's silver print! That deserves a trophy for your secret base."
       ],
       "text": [
-        ""
+        "Ai câștigat amprenta de argint a Tower Tycoon! Merită un trofeu pentru baza ta secretă."
       ]
     },
     {
@@ -87,7 +87,7 @@
         "{player} received the {thing}!"
       ],
       "text": [
-        ""
+        "{player} a primit {thing}!"
       ]
     },
     {
@@ -95,7 +95,7 @@
         "And the gold print, too! Nobody has earned this more than you."
       ],
       "text": [
-        ""
+        "Și amprenta de aur, de asemenea! Nimeni n-a meritat-o mai mult decât tine."
       ]
     },
     {
@@ -103,7 +103,7 @@
         "{player} received the {thing}!"
       ],
       "text": [
-        ""
+        "{player} a primit {thing}!"
       ]
     },
     {
@@ -111,7 +111,7 @@
         "Ah, your PC has no room for it. Make some, and I'll keep it for you until then."
       ],
       "text": [
-        ""
+        "Ah, PC-ul tău nu mai are loc pentru ea. Fă loc, iar eu o păstrez pentru tine până atunci."
       ]
     }
   ]

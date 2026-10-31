@@ -6,7 +6,7 @@
           "Cook"
         ],
         "text": [
-          ""
+          "Bucătarul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome! Today's special is berry stew. The secret is to let the berries simmer until they nearly burst."
         ],
         "text": [
-          ""
+          "Bun venit! Specialitatea de azi este tocană de fructe de pădure. Secretul este să le lași să fiarbă la foc mic până aproape crapă."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "I come here every week for lunch. The portions are generous and the view of the street is lovely."
         ],
         "text": [
-          ""
+          "Vin aici în fiecare săptămână la prânz. Porțiile sunt generoase, iar priveliștea străzii e minunată."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Mmm! I'll have one more bowl, and then I'll go and battle Erika. Well, maybe two more bowls."
         ],
         "text": [
-          ""
+          "Mmm! Mai iau un bol, apoi mă duc s-o înfrunt pe Erika. Ei bine, poate încă două boluri."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Diner"
         ],
         "text": [
-          ""
+          "Clientul"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "The food is wonderful, but I came for the quiet. A Gym can be terribly noisy."
         ],
         "text": [
-          ""
+          "Mâncarea e minunată, dar eu am venit pentru liniște. O Arenă poate fi teribil de zgomotoasă."
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -86,7 +86,7 @@
           "This is my third plate! The cook says there's a prize for whoever eats the most. I intend to win it."
         ],
         "text": [
-          ""
+          "Asta e a treia mea farfurie! Bucătarul spune că există un premiu pentru cine mănâncă cel mai mult. Intenționez să-l câștig."
         ]
       }
     },
@@ -96,7 +96,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -104,7 +104,7 @@
           "I can't eat another bite. Battling on a full stomach is no good, so I'll rest here a while."
         ],
         "text": [
-          ""
+          "Nu mai pot mânca nicio îmbucătură. Să lupți cu stomacul plin nu e bine, așa că mă odihnesc puțin aici."
         ]
       }
     }

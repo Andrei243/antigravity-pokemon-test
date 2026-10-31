@@ -421,7 +421,7 @@
         "Yo, {player}! I've been riding bigger waves than ever. Come to my Gym in Dewford and let's go again, two on two!"
       ],
       "text": [
-        ""
+        "Yo, {player}! Am călărit valuri mai mari ca niciodată. Vino la Arena mea din Dewford și s-o luăm de la capăt, doi contra doi!"
       ]
     },
     {
@@ -429,7 +429,7 @@
         "Brawly here! The Gym's still dark and my Pokémon are pumped. Don't leave me hanging, {player}!"
       ],
       "text": [
-        ""
+        "Aici Brawly! Arena e tot întunecată, iar Pokémonii mei sunt în formă maximă. Nu mă lăsa așteptând, {player}!"
       ]
     }
   ],
@@ -489,7 +489,7 @@
         "{player}! Flannery here. My Pokémon are hotter than the springs this week. Come to Lavaridge for a rematch!"
       ],
       "text": [
-        ""
+        "{player}! Flannery pe fir. Pokémonii mei sunt mai fierbinți decât izvoarele termale săptămâna asta. Vino la Lavaridge pentru o revanșă!"
       ]
     },
     {
@@ -497,7 +497,7 @@
         "It's Flannery! I'm waiting in my Gym, and I'm not cooling off one bit until you show up!"
       ],
       "text": [
-        ""
+        "Sunt Flannery! Te aștept în Arenă și nu mă răcoresc deloc până nu apari!"
       ]
     }
   ],
@@ -523,7 +523,7 @@
         "{player}, it's Winona. My birds have learned to ride a fiercer wind. Will you come to Fortree and battle us again?"
       ],
       "text": [
-        ""
+        "{player}, aici Winona. Păsările mele au învățat să zboare pe un vânt mai aprig. Vii la Fortree să ne înfrunți din nou?"
       ]
     },
     {
@@ -531,7 +531,7 @@
         "Winona here. The gates of my Gym are open, and my Pokémon are waiting on the wind for you."
       ],
       "text": [
-        ""
+        "Winona pe fir. Porțile Arenei mele sunt deschise, iar Pokémonii mei te așteaptă pe vânt."
       ]
     }
   ],
@@ -965,7 +965,7 @@
         "Tate"
       ],
       "text": [
-        ""
+        "Tate"
       ]
     },
     {
@@ -973,7 +973,7 @@
         "{player}! The new combination is ready..."
       ],
       "text": [
-        ""
+        "{player}! Noua combinație este gata..."
       ]
     },
     {
@@ -981,7 +981,7 @@
         "Liza"
       ],
       "text": [
-        ""
+        "Liza"
       ]
     },
     {
@@ -989,7 +989,7 @@
         "...so come to Mossdeep's Gym and face it!"
       ],
       "text": [
-        ""
+        "...așa că vino la Arena din Mossdeep și înfruntă-o!"
       ]
     },
     {
@@ -997,7 +997,7 @@
         "Liza"
       ],
       "text": [
-        ""
+        "Liza"
       ]
     },
     {
@@ -1005,7 +1005,7 @@
         "We're still waiting in our Gym..."
       ],
       "text": [
-        ""
+        "Încă așteptăm în Arena noastră..."
       ]
     },
     {
@@ -1013,7 +1013,7 @@
         "Tate"
       ],
       "text": [
-        ""
+        "Tate"
       ]
     },
     {
@@ -1021,7 +1021,7 @@
         "...and we're getting impatient!"
       ],
       "text": [
-        ""
+        "...și ne cam pierdem răbdarea!"
       ]
     }
   ],
@@ -1145,7 +1145,7 @@
         "Ah, {player}. Juan speaking. My Pokémon have polished a new dance, and it wants an audience. Come to Sootopolis's Gym."
       ],
       "text": [
-        ""
+        "Ah, {player}. Vorbește Juan. Pokémonii mei au șlefuit un dans nou, care vrea un public. Vino la Arena din Sootopolis."
       ]
     },
     {
@@ -1153,7 +1153,7 @@
         "Juan here. The ice in my Gym is fresh and the stage is set. I await you, {player}."
       ],
       "text": [
-        ""
+        "Juan pe fir. Gheața din Arena mea e proaspătă, iar scena e pregătită. Te aștept, {player}."
       ]
     }
   ],
@@ -1163,7 +1163,7 @@
         "Roxanne"
       ],
       "text": [
-        ""
+        "Roxanne"
       ]
     },
     {
@@ -1171,7 +1171,7 @@
         "Hello, {player}. It's Roxanne. I've been teaching my students how a rock wears down under water. Fascinating!"
       ],
       "text": [
-        ""
+        "Bună, {player}. Sunt Roxanne. Îi învăț pe elevii mei cum se macină o stâncă sub apă. Fascinant!"
       ]
     },
     {
@@ -1179,7 +1179,7 @@
         "{player}, it's Roxanne. I've studied a great deal since our battle. Would you come to Rustboro's Gym and test me?"
       ],
       "text": [
-        ""
+        "{player}, sunt Roxanne. Am studiat mult de la lupta noastră. Vii la Arena din Rustboro să mă pui la încercare?"
       ]
     },
     {
@@ -1187,7 +1187,7 @@
         "Roxanne here. My notes are ready and so are my Pokémon. I'll be in my Gym until you come."
       ],
       "text": [
-        ""
+        "Roxanne pe fir. Notițele mele sunt gata, la fel și Pokémonii. Voi fi în Arena mea până vii."
       ]
     }
   ],
@@ -1197,7 +1197,7 @@
         "Norman"
       ],
       "text": [
-        ""
+        "Norman"
       ]
     },
     {
@@ -1205,7 +1205,7 @@
         "{player}? It's your dad. Your mother says you never call. Just checking that you're keeping well."
       ],
       "text": [
-        ""
+        "{player}? Sunt tatăl tău. Mama ta spune că nu suni niciodată. Verific doar dacă ești bine."
       ]
     },
     {
@@ -1213,7 +1213,7 @@
         "{player}, it's Dad. I've been training hard, and I'd like to see how far you've come. Come to the Gym in Petalburg."
       ],
       "text": [
-        ""
+        "{player}, sunt tata. M-am antrenat din greu și vreau să văd cât de departe ai ajuns. Vino la Arena din Petalburg."
       ]
     },
     {
@@ -1221,7 +1221,7 @@
         "It's Dad. I'm waiting in the Gym, {player}. Don't keep your old man standing around too long."
       ],
       "text": [
-        ""
+        "Sunt tata. Aștept în Arenă, {player}. Nu-l ține pe bătrânul tău în picioare prea mult."
       ]
     }
   ],

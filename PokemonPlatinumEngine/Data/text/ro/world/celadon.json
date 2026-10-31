@@ -6,7 +6,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "My Poliwrath and I swim in the pond every morning. It's kept us both in shape for years!"
         ],
         "text": [
-          ""
+          "Poliwrath al meu și cu mine înotăm în iaz în fiecare dimineață. Ne-a ținut în formă amândoi ani la rând!"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Poliwrath"
         ],
         "text": [
-          ""
+          "Poliwrath"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Poliwrath flexed its arms, dripping from the pond."
         ],
         "text": [
-          ""
+          "Poliwrath și-a flexat brațele, picurând din iaz."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "The Department Store has everything! I could spend all day just riding up and down the stairs."
         ],
         "text": [
-          ""
+          "Magazinul Universal are de toate! Aș putea petrece o zi întreagă doar urcând și coborând scările."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "People come to Celadon to shop, but they stay for the flowers. Erika's Gym is full of them."
         ],
         "text": [
-          ""
+          "Oamenii vin în Celadon să facă cumpărături, dar rămân pentru flori. Arena Erikăi e plină de ele."
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -86,7 +86,7 @@
           "Erika gives flower arranging lessons. I go every week, but my flowers always end up lopsided."
         ],
         "text": [
-          ""
+          "Erika ține lecții de aranjamente florale. Merg în fiecare săptămână, dar florile mele ies mereu strâmbe."
         ]
       }
     },
@@ -96,7 +96,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -104,7 +104,7 @@
           "The Game Corner is closed for refitting. My husband is quite lost without it."
         ],
         "text": [
-          ""
+          "Game Corner este închis pentru renovare. Soțul meu e complet pierdut fără el."
         ]
       }
     },
@@ -114,7 +114,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -122,7 +122,7 @@
           "There's a tree by the pond that blocks the way to a hidden spot. A Pokémon that knows Cut could clear it."
         ],
         "text": [
-          ""
+          "Lângă iaz e un copac care blochează calea spre un loc ascuns. Un Pokémon care știe Tăiere l-ar putea curăța."
         ]
       }
     },
@@ -132,7 +132,7 @@
           "Old man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       },
       "dialog": {
@@ -140,7 +140,7 @@
           "Hm? The Gym is right behind me. Erika is a kind young lady, but don't underestimate her."
         ],
         "text": [
-          ""
+          "Hm? Arena e chiar în spatele meu. Erika e o domnișoară amabilă, dar să n-o subestimezi."
         ]
       }
     },
@@ -150,7 +150,7 @@
           "Old man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       },
       "dialog": {
@@ -158,7 +158,7 @@
           "The restaurant here serves a fine lunch. The chefs were once trainers themselves, they say."
         ],
         "text": [
-          ""
+          "Restaurantul de aici servește un prânz excelent. Se zice că bucătarii au fost cândva antrenori."
         ]
       }
     }
@@ -169,7 +169,7 @@
         "Celadon City\nWhere the flowers bloom in every colour."
       ],
       "text": [
-        ""
+        "Orașul Celadon\nUnde florile înfloresc în toate culorile."
       ]
     },
     "T07_013+1": {
@@ -177,7 +177,7 @@
         "Celadon Game Corner\nClosed for refitting."
       ],
       "text": [
-        ""
+        "Celadon Game Corner\nÎnchis pentru renovare."
       ]
     },
     "T07_014+1": {
@@ -185,7 +185,7 @@
         "Celadon Prize Corner\nClosed for refitting."
       ],
       "text": [
-        ""
+        "Celadon Prize Corner\nÎnchis pentru renovare."
       ]
     },
     "T07_012+1": {
@@ -193,7 +193,7 @@
         "Celadon Condominiums"
       ],
       "text": [
-        ""
+        "Blocul Celadon"
       ]
     },
     "T07_010+1": {
@@ -201,7 +201,7 @@
         "Celadon City Pokémon Gym\nLeader: Erika\nThe gardener of Grass Pokémon."
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orașul Celadon\nLider: Erika\nGrădinara Pokémonilor de tip Iarbă."
       ]
     },
     "T07_011+1": {
@@ -209,7 +209,7 @@
         "Celadon Department Store\nFind what you need here!"
       ],
       "text": [
-        ""
+        "Magazinul Universal Celadon\nGăsești aici tot ce-ți trebuie!"
       ]
     }
   }

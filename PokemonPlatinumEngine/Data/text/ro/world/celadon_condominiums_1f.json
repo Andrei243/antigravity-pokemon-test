@@ -6,7 +6,7 @@
           "Landlady"
         ],
         "text": [
-          ""
+          "Proprietăreasa"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "I own this building, dear. The tenants upstairs are out, so I can't let you up today. Do mind the Meowth."
         ],
         "text": [
-          ""
+          "Eu dețin clădirea asta, dragă. Chiriașii de sus sunt plecați, așa că nu te pot lăsa sus azi. Ai grijă la Meowth."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Meowth"
         ],
         "text": [
-          ""
+          "Meowth"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Meowth stretched and looked for somewhere sunny to nap."
         ],
         "text": [
-          ""
+          "Meowth s-a întins și a căutat un loc însorit unde să tragă un pui de somn."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Clefairy"
         ],
         "text": [
-          ""
+          "Clefairy"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Clefairy hummed a little tune to itself."
         ],
         "text": [
-          ""
+          "Clefairy fredona o melodie pentru sine."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Nidoran"
         ],
         "text": [
-          ""
+          "Nidoran"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "Nidoran sniffed at the visitor's shoes."
         ],
         "text": [
-          ""
+          "Nidoran a adulmecat pantofii vizitatorului."
         ]
       }
     }
@@ -79,7 +79,7 @@
         "Celadon Condominiums\nResidents only above the ground floor."
       ],
       "text": [
-        ""
+        "Blocul Celadon\nDoar rezidenți la etajele de deasupra parterului."
       ]
     }
   }

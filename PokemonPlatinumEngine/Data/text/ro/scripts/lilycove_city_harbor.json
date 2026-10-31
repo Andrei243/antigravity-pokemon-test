@@ -285,13 +285,13 @@
         "NOWHERE"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Unde ai dori să navighezi?",
+        "SOUTHERN ISLAND",
+        "BATTLE FRONTIER",
+        "NAVEL ROCK",
+        "BIRTH ISLAND",
+        "FARAWAY ISLAND",
+        "NICĂIERI"
       ]
     },
     {
@@ -299,7 +299,7 @@
         "{player} showed the Old Sea Map."
       ],
       "text": [
-        ""
+        "{player} a arătat Old Sea Map."
       ]
     },
     {
@@ -307,7 +307,7 @@
         "Faraway Island! It's on no chart of ours, but with this map the captain will find it. Please come aboard."
       ],
       "text": [
-        ""
+        "Faraway Island! Nu apare pe nicio hartă de-a noastre, dar cu harta asta căpitanul o va găsi. Te rog, urcă la bord."
       ]
     },
     {
@@ -315,7 +315,7 @@
         "{player} sailed for Faraway Island..."
       ],
       "text": [
-        ""
+        "{player} a pornit spre Faraway Island..."
       ]
     }
   ],
@@ -325,7 +325,7 @@
         "Sailor"
       ],
       "text": [
-        ""
+        "Marinarul"
       ]
     },
     {
@@ -333,7 +333,7 @@
         "The S.S. Tidal sails for Slateport City. Coming aboard?"
       ],
       "text": [
-        ""
+        "S.S. Tidal navighează spre Orașul Slateport. Urci la bord?"
       ]
     },
     {
@@ -341,7 +341,7 @@
         "{player} showed the S.S. Ticket."
       ],
       "text": [
-        ""
+        "{player} a arătat S.S. Ticket."
       ]
     },
     {
@@ -349,7 +349,7 @@
         "Welcome aboard! Your cabin's ready."
       ],
       "text": [
-        ""
+        "Bine ai venit la bord! Cabina ta e pregătită."
       ]
     },
     {
@@ -357,7 +357,7 @@
         "Ships out of Lilycove go a long way. Some of them cross the whole ocean to lands I've only heard of."
       ],
       "text": [
-        ""
+        "Vapoarele din Lilycove merg departe. Unele traversează oceanul întreg, spre ținuturi despre care am auzit doar."
       ]
     },
     {
@@ -365,7 +365,7 @@
         "She sails whenever you're ready."
       ],
       "text": [
-        ""
+        "Pleacă oricând ești gata."
       ]
     }
   ],
@@ -423,7 +423,7 @@
         "Three of the Frontier's prints! An old sailor left this with the harbour for a trainer like you."
       ],
       "text": [
-        ""
+        "Trei dintre amprentele Frontier! Un marinar bătrân a lăsat asta la port pentru un Antrenor ca tine."
       ]
     },
     {
@@ -431,7 +431,7 @@
         "{player} was given the Old Sea Map!"
       ],
       "text": [
-        ""
+        "{player} a primit Old Sea Map!"
       ]
     },
     {
@@ -439,7 +439,7 @@
         "It's a faded chart with an island drawn on it that no other map shows. The captain says he can find it."
       ],
       "text": [
-        ""
+        "E o hartă ștearsă, cu o insulă desenată pe care nicio altă hartă n-o arată. Căpitanul spune că o poate găsi."
       ]
     }
   ]

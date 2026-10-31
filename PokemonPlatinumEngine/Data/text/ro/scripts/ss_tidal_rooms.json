@@ -5,7 +5,7 @@
         "A soft bed. Lie down for a rest?"
       ],
       "text": [
-        ""
+        "Un pat moale. Te întinzi să te odihnești?"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "{player} took a rest. The ship's engines hummed below..."
       ],
       "text": [
-        ""
+        "{player} s-a odihnit. Motoarele navei vibrau dedesubt..."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Attention, passengers. We have arrived at Lilycove City."
       ],
       "text": [
-        ""
+        "Atenție, pasageri. Am ajuns în Orașul Lilycove."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Attention, passengers. We have arrived at Slateport City."
       ],
       "text": [
-        ""
+        "Atenție, pasageri. Am ajuns în Orașul Slateport."
       ]
     }
   ]

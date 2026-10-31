@@ -5,7 +5,7 @@
         "Erika"
       ],
       "text": [
-        ""
+        "Erika"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Oh... good afternoon. I must have dozed off among the flowers. The warm air in here is so very soothing."
       ],
       "text": [
-        ""
+        "Oh... bună ziua. Trebuie să fi adormit printre flori. Aerul cald de aici este atât de liniștitor."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "A Champion from Johto, you say? How lovely. I teach flower arranging, but my Grass Pokémon are no mere decoration."
       ],
       "text": [
-        ""
+        "O Campioană din Johto, spui? Ce frumos. Predau aranjamente florale, dar Pokémonii mei de tip Iarbă nu sunt simple decorațiuni."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "If you wish for my Badge, you shall have to earn it. I shan't hold back."
       ],
       "text": [
-        ""
+        "Dacă vrei Insigna mea, va trebui să o câștigi. Nu mă voi da înapoi."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Oh my... I concede. You are every bit as strong as they say. Please, accept the Rainbow Badge."
       ],
       "text": [
-        ""
+        "Oh, vai... mă declar învinsă. Ești la fel de puternic pe cât se spune. Te rog, primește Insigna Curcubeu."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "{player} received the Rainbow Badge from Erika!"
       ],
       "text": [
-        ""
+        "{player} a primit Insigna Curcubeu de la Erika!"
       ]
     },
     {
@@ -53,7 +53,7 @@
         "And this, if you would. It holds a move my Pokémon are fond of."
       ],
       "text": [
-        ""
+        "Și asta, te rog. Conține o mișcare pe care Pokémonii mei o îndrăgesc."
       ]
     },
     {
@@ -61,7 +61,7 @@
         "TM19 is Giga Drain. It drains the foe's strength and gives half of it back to the user."
       ],
       "text": [
-        ""
+        "TM19 este Giga Absorbție. Absoarbe forța adversarului și îi dă jumătate înapoi utilizatorului."
       ]
     },
     {
@@ -69,7 +69,7 @@
         "Losing to someone so strong is rather refreshing. I feel I could arrange a whole garden of flowers today."
       ],
       "text": [
-        ""
+        "Să pierd în fața cuiva atât de puternic e destul de înviorător. Simt că aș putea aranja o grădină întreagă de flori azi."
       ]
     }
   ],
@@ -79,7 +79,7 @@
         "Celadon City Pokémon Gym\nLeader: Erika"
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orașul Celadon\nLider: Erika"
       ]
     },
     {
@@ -87,7 +87,7 @@
         "Celadon City Pokémon Gym\nLeader: Erika\nWinning trainers: {player}"
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orașul Celadon\nLider: Erika\nAntrenori învingători: {player}"
       ]
     }
   ]

@@ -6,7 +6,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome to the Celadon Department Store! I'm sorry, the floors upstairs are closed while we restock."
         ],
         "text": [
-          ""
+          "Bun venit la Magazinul Universal Celadon! Îmi pare rău, etajele de sus sunt închise cât timp reaprovizionăm."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Gentleman"
         ],
         "text": [
-          ""
+          "Gentlemanul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Goldenrod's store is bigger, they say. But Celadon's was here first, and its roof has the best view."
         ],
         "text": [
-          ""
+          "Se spune că magazinul din Goldenrod e mai mare. Dar cel din Celadon a fost primul, iar acoperișul lui are cea mai frumoasă priveliște."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "I'm waiting for the floors upstairs to open again. I've a whole list of things to buy!"
         ],
         "text": [
-          ""
+          "Aștept să se redeschidă etajele de sus. Am o listă întreagă de lucruri de cumpărat!"
         ]
       }
     }
@@ -61,7 +61,7 @@
         "1F: Service Counter\n2F to 5F: closed while we restock."
       ],
       "text": [
-        ""
+        "Parter: Ghișeu de servicii\nEtajele 2–5: închise cât timp reaprovizionăm."
       ]
     }
   }

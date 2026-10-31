@@ -5,7 +5,7 @@
         "Sailor"
       ],
       "text": [
-        ""
+        "Marinarul"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "This must be the island on that old map. I've never seen grass grow so tall. I'll stay with the ship."
       ],
       "text": [
-        ""
+        "Asta trebuie să fie insula de pe harta aceea veche. N-am văzut niciodată iarba crescând atât de înaltă. Eu rămân cu nava."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Shall we sail back to Lilycove?"
       ],
       "text": [
-        ""
+        "Să navigăm înapoi spre Lilycove?"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Aye. Hold on tight."
       ],
       "text": [
-        ""
+        "Da. Ține-te bine."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "{player} sailed back to Lilycove City..."
       ],
       "text": [
-        ""
+        "{player} a navigat înapoi spre Orașul Lilycove..."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "As you like. I'll be here when you're ready."
       ],
       "text": [
-        ""
+        "Cum dorești. Voi fi aici când ești gata."
       ]
     }
   ]

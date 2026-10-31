@@ -5,7 +5,7 @@
         "Receptionist"
       ],
       "text": [
-        ""
+        "Recepționera"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Welcome to the Masters' Hall! A master of every species waits here for a Trainer who has raised one of their own."
       ],
       "text": [
-        ""
+        "Bun venit la Masters' Hall! Un maestru al fiecărei specii așteaptă aici un Antrenor care a crescut un Pokémon de-al lui."
       ]
     },
     {
@@ -24,10 +24,10 @@
         "No"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Vei înainta unul dintre Pokémonii tăi?",
+        "Da",
+        "Regulile",
+        "Nu"
       ]
     },
     {
@@ -35,7 +35,7 @@
         "Please choose the Pokémon you'll put forward."
       ],
       "text": [
-        ""
+        "Te rog, alege Pokémonul pe care îl înaintezi."
       ]
     },
     {
@@ -43,7 +43,7 @@
         "{chosen}! The {master} will see you now. Please step onto the mark."
       ],
       "text": [
-        ""
+        "{chosen}! Maestrul {master} te așteaptă acum. Te rog, urcă pe marcaj."
       ]
     },
     {
@@ -51,7 +51,7 @@
         "You already hold the title of {master}. The master will gladly battle you again, but the title is yours already."
       ],
       "text": [
-        ""
+        "Deții deja titlul de {master}. Maestrul se va lupta cu plăcere din nou cu tine, dar titlul este deja al tău."
       ]
     },
     {
@@ -59,7 +59,7 @@
         "Master"
       ],
       "text": [
-        ""
+        "Maestrul"
       ]
     },
     {
@@ -67,7 +67,7 @@
         "So this is your {chosen}. Every one of its kind I've met has taught me something. Let's see what yours knows."
       ],
       "text": [
-        ""
+        "Deci acesta e {chosen} al tău. Fiecare din specia lui pe care l-am întâlnit m-a învățat ceva. Să vedem ce știe al tău."
       ]
     },
     {
@@ -75,7 +75,7 @@
         "Not this time. Raise {chosen} a little more, and the two of you come back to me."
       ],
       "text": [
-        ""
+        "Nu de data asta. Mai crește-l puțin pe {chosen} și reveniți amândoi la mine."
       ]
     },
     {
@@ -83,7 +83,7 @@
         "Well battled. {chosen} has a Trainer who understands it, and that is what a master looks for."
       ],
       "text": [
-        ""
+        "Bine luptat. {chosen} are un Antrenor care îl înțelege, iar asta caută un maestru."
       ]
     },
     {
@@ -91,7 +91,7 @@
         "{player} holds the title of {master}! Titles held: {number}."
       ],
       "text": [
-        ""
+        "{player} deține titlul de {master}! Titluri deținute: {number}."
       ]
     },
     {
@@ -99,7 +99,7 @@
         "Please come again. The masters are always here."
       ],
       "text": [
-        ""
+        "Te rog, revino. Maestrii sunt mereu aici."
       ]
     },
     {
@@ -107,7 +107,7 @@
         "Choose one of your Pokémon, and the master of its species battles it, one on one. Nothing may be used from the Bag."
       ],
       "text": [
-        ""
+        "Alege unul dintre Pokémonii tăi, iar maestrul speciei lui se luptă cu el, unu la unu. Nimic din Geantă nu poate fi folosit."
       ]
     },
     {
@@ -115,7 +115,7 @@
         "Your own Pokémon battles, so what it learns here stays with it. There's no prize money, only the title."
       ],
       "text": [
-        ""
+        "Pokémonul tău luptă, deci ce învață aici rămâne cu el. Nu există bani ca premiu, doar titlul."
       ]
     },
     {
@@ -123,7 +123,7 @@
         "Win, and the title of that species' master is yours. Lose, and you may try again whenever you like."
       ],
       "text": [
-        ""
+        "Câștigă și titlul de maestru al speciei respective este al tău. Pierde și poți încerca din nou oricând dorești."
       ]
     }
   ],
@@ -133,7 +133,7 @@
         "The receptionist will ask which of your Pokémon you'll put forward. I am the master of whichever it is."
       ],
       "text": [
-        ""
+        "Recepționera te va întreba pe care dintre Pokémonii tăi îl înaintezi. Eu sunt maestrul oricărei specii va fi aceea."
       ]
     }
   ]
