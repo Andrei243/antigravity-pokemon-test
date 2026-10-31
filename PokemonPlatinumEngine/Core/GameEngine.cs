@@ -524,6 +524,8 @@ public partial class GameEngine
         flow.Dialogue.CharactersPerSecond = GameSettings.CharactersPerSecond(Settings.TextSpeed);
         ModernUi.TextFrame = Settings.Frame;
         Haptics.Strength = Settings.Rumble; // plan 12 · Q24
+        // Light and motion (plan 12 · Q9), with the battle camera's one number, BattleCamera.Motion
+        Accessibility.Use(Settings.ReduceFlashes, Settings.ReduceMotion);
         if (window && !WindowLocked) WindowSettings.Apply(Settings);
     }
 

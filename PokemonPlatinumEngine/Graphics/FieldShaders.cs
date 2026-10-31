@@ -86,6 +86,8 @@ uniform float uprightBase;
 
 // How much harder than a breeze the wind blows: 0 on a calm day, 1 in a blizzard
 uniform float wind;
+// 1 under the options' REDUCE MOTION (plan 12 · Q9): nothing sways. Nought, as an unset uniform is, sways as ever
+uniform float still;
 
 // Vertex alpha below 1 marks geometry that sways in the wind (grass tips, leaves). Only static scenery sways,
 // and scenery is drawn with an identity model matrix, so the world-space offset can be added in model space.
@@ -93,7 +95,7 @@ uniform float wind;
 // tips lean a little eastward.
 vec3 SwayOffset(vec3 p, float weight)
 {
-    if (weight <= 0.0) return vec3(0.0);
+    if (weight <= 0.0 || still >= 1.0) return vec3(0.0);
     float t = time * 1.6 + p.x * 0.63 + p.z * 0.41;
     float gust = 0.5 + 0.5 * sin(time * 0.52 - p.x * 0.11 - p.z * 0.045);
     gust *= gust;
@@ -970,7 +972,12 @@ void main()
     /// </summary>
     public void SetWind(float extra)
     {
-        foreach (var shader in FieldPrograms) Set(shader, "wind", extra);
+        foreach (var shader in FieldPrograms)
+        {
+            Set(shader, "wind", extra);
+            // The sway stilled under the options' REDUCE MOTION (plan 12 · Q9), set with the wind by every renderer
+            Set(shader, "still", Core.Accessibility.ReduceMotion ? 1f : 0f);
+        }
     }
 
     /// <summary>How strongly characters receive scene shadows, and how bright their rim light is.</summary>

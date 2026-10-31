@@ -536,7 +536,8 @@ internal sealed partial class FieldLife
         {
             float most = 0f;
             foreach (var e in effects) most = MathF.Max(most, SceneFx.Flash(e.Kind, (float)(Now - e.Born), Until(e)));
-            return most;
+            // At most a quarter under the options' REDUCE FLASHES (plan 12 · Q9)
+            return Core.Accessibility.Flash(most);
         }
     }
 
@@ -546,6 +547,8 @@ internal sealed partial class FieldLife
         get
         {
             SceneRipple most = default;
+            // The picture holds still under the options' REDUCE MOTION (plan 12 · Q9)
+            if (Core.Accessibility.ReduceMotion) return most;
             foreach (var e in effects)
                 if (SceneFx.Ripple(e.Kind, (float)(Now - e.Born), Until(e)) is { Plays: true } r && r.Reach > most.Reach) most = r;
             return most;

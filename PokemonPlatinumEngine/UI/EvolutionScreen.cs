@@ -337,7 +337,8 @@ public sealed class EvolutionScreen
             ModernUi.EvolutionAura(c, size * Math.Max(look.OldScale, look.NewScale), look.White);
         }
         ModernUi.EvolutionMotes(c, time, 0f, look.Scatter);
-        if (look.Flash > 0.004f) Raylib.DrawRectangle(0, 0, sw, sh, new Color(255, 255, 255, (int)(255 * look.Flash)));
+        // (a quarter at most under the options' REDUCE FLASHES, plan 12 · Q9)
+        if (Core.Accessibility.Flash(look.Flash) is > 0.004f and var flash) Raylib.DrawRectangle(0, 0, sw, sh, new Color(255, 255, 255, (int)(255 * flash)));
 
         if (choosing && MoveToLearn != null)
             ModernUi.MoveChoice(new Rectangle(sw - 64 - 820, 64, 820, 716), pokemon!, MoveToLearn, Cursor, Math.Clamp(phaseTime / 0.3f, 0f, 1f));

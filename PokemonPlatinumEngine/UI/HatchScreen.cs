@@ -211,7 +211,8 @@ public sealed class HatchScreen
             ModernUi.EvolutionFigure(picture.Texture, c, size * look.NewScale);
             ModernUi.EvolutionAura(c, size * look.NewScale, look.White);
         }
-        if (look.Flash > 0.004f) Raylib.DrawRectangle(0, 0, sw, sh, new Color(255, 255, 255, (int)(255 * look.Flash)));
+        // (a quarter at most under the options' REDUCE FLASHES, plan 12 · Q9)
+        if (Core.Accessibility.Flash(look.Flash) is > 0.004f and var flash) Raylib.DrawRectangle(0, 0, sw, sh, new Color(255, 255, 255, (int)(255 * flash)));
 
         if (Message.Length > 0 && Phase == HatchPhase.Announce)
         {

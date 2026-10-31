@@ -75,8 +75,7 @@ internal sealed class FxList
         Quads.Clear();
         Ribbons.Clear();
         Flash = 0f;
-        Shake = 0f;
-        Landed = -1f;
+        Shake = 0f;        Landed = -1f;
     }
 
     public void Sprite(FxShape shape, Vector3 at, float size, Color color, FxBlend blend = FxBlend.Add, float rotation = 0f, bool depth = false)
@@ -107,7 +106,8 @@ internal sealed class FxList
 
     public void ScreenFlash(Color color, float amount)
     {
-        amount = Math.Clamp(amount, 0f, 0.5f);
+        // At most a quarter under the options' REDUCE FLASHES (plan 12 · Q9)
+        amount = Core.Accessibility.Flash(Math.Clamp(amount, 0f, 0.5f));
         if (amount <= Flash) return;
         Flash = amount;
         FlashColor = color;

@@ -53,6 +53,14 @@ internal sealed class BattleCamera
     /// <summary>The widest lens a shot may take on to frame a big foe, degrees.</summary>
     public const float WidestFov = 40f;
 
+    /// <summary>
+    /// The one number every camera move of a battle beyond its plain shots hangs on (plan 12 · Q9; plan 25 · Y17 and
+    /// the Dynamax plan's whip, punch-in, pull-back and hit-stop read it too): 1, or nought under the options'
+    /// REDUCE MOTION, when the shake is nought and a critical hit is watched from the ordinary target shot.
+    /// Set by <see cref="Core.Accessibility.Use"/> alone; a test that changes it puts 1 back.
+    /// </summary>
+    public static float Motion { get; set; } = 1f;
+
     public CameraShot Current { get; private set; }
     public ShotKind Kind { get; private set; } = ShotKind.Intro;
     private bool started;
@@ -79,6 +87,7 @@ internal sealed class BattleCamera
         Kind = kind;
 
         var camera = Current.ToCamera();
+        shake *= Math.Clamp(Motion, 0f, 1f);
         if (shake > 0f)
         {
             float t = anim.Time;
@@ -198,7 +207,8 @@ internal sealed class BattleCamera
             if (move.Age < cut && !move.Arriving) return (Close(places, move.FromSide, move.FromSlot, 3.0f), ShotKind.Attacker, move);
             var targets = TargetsOf(anim, move);
             var target = TargetShot(places, targets, move.Category == MoveCategory.Status ? 3.4f : 3.0f);
-            if (move.Critical && move.Age >= BattleAnimator.ImpactTime && move.Age < BattleAnimator.ImpactTime + 0.4f)
+            // A critical hit's punch-in, unless motion is reduced (plan 12 · Q9)
+            if (Motion > 0f && move.Critical && move.Age >= BattleAnimator.ImpactTime && move.Age < BattleAnimator.ImpactTime + 0.4f)
                 return (TargetShot(places, targets, 2.1f), ShotKind.Critical, move);
             return (target, ShotKind.Target, move);
         }

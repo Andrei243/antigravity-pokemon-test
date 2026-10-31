@@ -62,8 +62,10 @@ public sealed class UiReveal
         amount = open ? 1f : 0f;
     }
 
+    /// <summary>Moves the slide along; under the options' REDUCE MOTION (plan 12 · Q9) it is at its end at once.</summary>
     public void Update(float dt) =>
-        amount = UiMotion.Toward(amount, IsOpen ? 1f : 0f, dt / Math.Max(0.001f, IsOpen ? OpenTime : CloseTime));
+        amount = Core.Accessibility.ReduceMotion ? (IsOpen ? 1f : 0f)
+            : UiMotion.Toward(amount, IsOpen ? 1f : 0f, dt / Math.Max(0.001f, IsOpen ? OpenTime : CloseTime));
 
     /// <summary>True while any of it is still on screen.</summary>
     public bool Visible => amount > 0f;

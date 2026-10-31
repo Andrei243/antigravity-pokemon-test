@@ -164,6 +164,8 @@ public static partial class SceneTransition
     public static float Flash(TransitionKind kind, float seconds)
     {
         if (kind == TransitionKind.Fade || seconds < 0f || seconds >= FlashSeconds) return 0f;
+        // Under the options' REDUCE FLASHES (plan 12 · Q9) the two flashes are one soft swell to a quarter and back
+        if (Core.Accessibility.ReduceFlashes) return Core.Accessibility.FlashCap * MathF.Sin(MathF.PI * seconds / FlashSeconds);
         float beat = seconds / (FlashSeconds / 2f);
         return beat - MathF.Floor(beat) < 0.5f ? 0.75f : 0f;
     }
