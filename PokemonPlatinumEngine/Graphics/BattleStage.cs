@@ -29,6 +29,15 @@ internal sealed class BattleStage
     /// <summary>How far off the platform a trainer who steps back to speak sets out from, along the way they left.</summary>
     public const float SpeakerFrom = 7f;
 
+    /// <summary>
+    /// Where the player comes back to call a Dynamax (plan 25 · YD1): at the west edge of their own platform, a little
+    /// toward the lens, so the body and the swelling ball are both in the shot from its right.
+    /// </summary>
+    public static readonly Vector3 CallerSpot = PlayerSpot + new Vector3(-(PlayerPlatformRadius + 0.45f), 0, 0.5f);
+
+    /// <summary>Where the trainer who calls a Dynamax stands on a side (the foe's where a speaker stands).</summary>
+    public static Vector3 CallSpot(bool player) => player ? CallerSpot : SpeakerSpot(false);
+
     /// <summary>Height of the grass platforms' tops; other arenas raise or lower theirs (<see cref="PlatformTopOf"/>).</summary>
     public const float PlatformHeight = 0.16f;
 

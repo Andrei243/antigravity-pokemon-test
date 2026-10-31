@@ -188,10 +188,13 @@ internal static class StageLights
     /// <summary>A cue's light at its age.</summary>
     public static StageLight At(EffectCue cue) => For(cue).Scaled(Envelope(cue.ShownAge, cue.Length));
 
-    /// <summary>The stage's light now: every cue playing, the older under the newer, a signature move's own over its move's (plan 25 · Y17).</summary>
+    /// <summary>
+    /// The stage's light now: a giant's sky under everything while one stands (plan 25 · YD1), every cue playing, the
+    /// older under the newer, a signature move's own over its move's (plan 25 · Y17).
+    /// </summary>
     public static StageLight Of(BattleAnimator anim)
     {
-        var light = StageLight.None;
+        var light = GiantSky.Light(anim);
         foreach (var cue in anim.Cues)
         {
             var lit = StageLight.Compose(light, At(cue));

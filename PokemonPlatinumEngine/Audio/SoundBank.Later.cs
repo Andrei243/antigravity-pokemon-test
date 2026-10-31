@@ -17,7 +17,7 @@ public static partial class SoundBank
     /// <summary>The sounds of the later mechanics' set pieces, which may run to 2 s (a move's own runs to 1).</summary>
     public static bool IsSetPiece(string name) =>
         name is "mega_evolve" or "primal_reversion" or "ultra_burst" or "z_power"
-            or "dynamax" or "gigantamax" or "dynamax_end" or "max_guard" or "terastallize" or "tera_stellar"
+            or "dynamax" or "gigantamax" or "dynamax_end" or "dynamax_call" or "max_guard" or "terastallize" or "tera_stellar"
         || name.StartsWith("z_move_", StringComparison.OrdinalIgnoreCase) || name.StartsWith("max_move_", StringComparison.OrdinalIgnoreCase);
 
     /// <summary>The sound a Max Move of this type makes (a G-Max Move is heard as its type's; plan 25 · Y15).</summary>
@@ -38,6 +38,7 @@ public static partial class SoundBank
         add("dynamax", SoundGroup.Battle, null, "A Pokémon Dynamaxes: a deep swell rising as it grows, and a booming burst of cloud (plan 25 · Y15).");
         add("gigantamax", SoundGroup.Battle, null, "A Pokémon Gigantamaxes: the Dynamax's swell with thunder in its clouds and a bright chord.");
         add("dynamax_end", SoundGroup.Battle, null, "A Dynamax ends: a falling sigh as the Pokémon shrinks back and its clouds blow away.");
+        add("dynamax_call", SoundGroup.Battle, null, "A trainer calls a Dynamax: the red beam drawing the Pokémon back, a hum swelling with the ball, a whoosh as it is thrown (plan 25 · YD1).");
         add("max_guard", SoundGroup.Battle, null, "Max Guard: a dome of light closing with a deep ring.");
         foreach (var type in Enum.GetValues<PokemonType>())
             add(MaxMoveSound(type), SoundGroup.Battle, null, $"A Max Move of the {type} type (and a G-Max Move of that type) sets off and lands.");
@@ -102,6 +103,15 @@ public static partial class SoundBank
                     d.Bell(0.95f, 0.6f, N(86), 3.01f, 0.8f, 0.1f, 2.2f);
                 }
                 return Finish(d.S, 0.48f);
+            case "dynamax_call":
+                // The beam's draw (0.05 to 0.35 s), a hum swelling with the ball (to 0.65 s), the throw's whoosh at 0.82 s
+                d = new SoundDesign(1.0f, 0xCA11u);
+                d.Noise(0.03f, 0.35f, Filter.Band, 3200f, 900f, 0.14f, 2f, 0.3f, 0.6f, 12f, 0.3f);
+                d.Tone(0.05f, 0.3f, Wave.Triangle, N(76), N(64), 0.1f, 0.2f, 0.6f);
+                d.Tone(0.32f, 0.5f, Wave.Saw, N(36), N(43), 0.12f, 0.75f, 0.25f, vibratoHz: 6f, vibratoDepth: 0.04f);
+                d.Tone(0.32f, 0.5f, Wave.Sine, N(48), N(55), 0.14f, 0.75f, 0.25f);
+                d.Noise(0.78f, 0.2f, Filter.Band, 600f, 2400f, 0.2f, 1.2f, 0.4f, 0.8f);
+                return Finish(d.S, 0.42f);
             case "dynamax_end":
                 d = new SoundDesign(1.0f, 0xE4D0u);
                 d.Tone(0, 0.6f, Wave.Sine, N(60), N(43), 0.16f, 0.1f, 0.8f, vibratoHz: 4f, vibratoDepth: 0.03f);

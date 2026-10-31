@@ -94,6 +94,8 @@ public sealed class BattleRenderer
         MoveFx.Conditions(anim, places, fx);
         // And a giant's wreath of red clouds and a Terastallized Pokémon's crown (plan 25 · Y15)
         MoveFx.Giants(anim, places, fx);
+        // While a giant stands, red-violet clouds low on the sky (plan 25 · YD1)
+        GiantSky.Clouds(GiantSky.Presence(anim), anim.Time, Arena.Outdoors, fx);
         ArenaFx.Emit(Arena, anim.Time, night, fx, Math.Max(anim.WeatherStrength, anim.FadingStrength));
         ArenaFx.Weather(anim.FadingWeather, BattleAnimator.WeatherFadeTime, anim.Time, places, fx, anim.FadingStrength);
         ArenaFx.Weather(anim.Weather, anim.WeatherAge, anim.Time, places, fx);
@@ -376,6 +378,61 @@ public sealed class BattleRenderer
         // The player runs back in to throw a ball at a wild Pokémon, and off again
         if (anim.Ball is { } ball && anim.PlayerTrainer == null && ball.Age < CaptureThrowerGone)
             trainers.Add(CaptureThrower(ball, anim.Time));
+
+        // A trainer back at their platform's edge to call a Dynamax (plan 25 · YD1)
+        if (anim.Call is { } call) trainers.Add(Caller(call, platformTop, anim.Time));
+    }
+
+    /// <summary>How tall a trainer who calls a Dynamax stands: the foe's as a speaker, the player's as on their platform.</summary>
+    internal static float CallerScale(bool player) => player ? PlayerTrainerScale : 2.3f;
+
+    /// <summary>How far the ball swells in the caller's hand (plan 25 · YD1): six times on the foe's, four on the player's own.</summary>
+    internal static float CallSwell(bool player) => player ? 4f : 6f;
+
+    /// <summary>
+    /// A trainer's call before a Dynamax (plan 25 · YD1): walking in from beside their platform's edge over 0.3 s,
+    /// turned toward their Pokémon, the arm held back while the ball swells and thrown at <see cref="BattleAnimator.CallThrow"/>,
+    /// walking off the way they came after the call. A function of the call's age alone.
+    /// </summary>
+    internal static (Vector3 Feet, float Yaw, float Scale, CharacterPose Pose) CallerAt(DynamaxCall call, float platformTop, float time)
+    {
+        bool player = call.Side == BattleSide.Player;
+        float scale = CallerScale(player);
+        float direction = player ? -1f : 1f;
+        float age = call.Age, lead = BattleAnimator.DynamaxCallTime;
+        var spot = BattleStage.CallSpot(player);
+        var feet = spot + new Vector3(0, platformTop, 0);
+        float yaw = ThrowYaw(spot, player ? BattleStage.PlayerSpot : BattleStage.EnemySpot);
+        var pose = new CharacterPose { Time = time + 0.4f, Blink = time % 3.7f < 0.12f, Expression = CharacterAnimation.ExpressionOf(Overworld.Mood.Angry) };
+        const float walk = 0.3f;
+        float from = player ? 4f : BattleStage.SpeakerFrom;
+        if (age < walk || age >= lead)
+        {
+            // Walking in, eased to a stop, and off again the way they came
+            float off = age < walk ? 1f - age / walk : Math.Clamp((age - lead) / (BattleAnimator.CallerGone - lead), 0f, 1f);
+            off = age < walk ? off * off : off * off;
+            feet.X += direction * off * from;
+            yaw = (age < walk ? -direction : direction) * MathF.PI / 2f;
+            pose.Walk = age * 2.6f;
+            pose.WalkBlend = Math.Clamp(age < walk ? off * 3f + 0.4f : 1f, 0f, 1f);
+            return (feet, yaw, scale, pose);
+        }
+        // The arm held back through the swell, and the throw
+        pose.Emote = Emote.Throw;
+        pose.EmoteTime = age < BattleAnimator.CallThrow ? Math.Min(WindUp, age - walk) : WindUp + (age - BattleAnimator.CallThrow);
+        return (feet, yaw, scale, pose);
+    }
+
+    /// <summary>How far into the throw the arm is held back while the ball swells.</summary>
+    private const float WindUp = 0.18f;
+
+    /// <summary>When a caller's ball leaves the hand (plan 25 · YD1): the throw's own release after the throw begins.</summary>
+    internal const float CallRelease = BattleAnimator.CallThrow + CharacterAnimation.ThrowRelease - WindUp;
+
+    private static TrainerPlacement Caller(DynamaxCall call, float platformTop, float time)
+    {
+        var (feet, yaw, scale, pose) = CallerAt(call, platformTop, time);
+        return new TrainerPlacement(call.Look, Matrix4x4.CreateScale(scale) * Matrix4x4.CreateRotationY(yaw) * Matrix4x4.CreateTranslation(feet), pose);
     }
 
     /// <summary>
@@ -498,6 +555,57 @@ public sealed class BattleRenderer
                 PlaceRecallBall(anim, (BattleSide)side, slot);
             }
         if (anim.Ball != null) PlaceCaptureBall(anim, anim.Ball);
+        if (anim.Call != null) PlaceCallBall(anim, anim.Call);
+    }
+
+    private static readonly Color CallGlow = new(210, 40, 120, 255), CallBand = new(255, 70, 110, 255);
+
+    /// <summary>
+    /// The ball of a trainer's call before a Dynamax (plan 25 · YD1): in the hand, drawing the Pokémon back in its red
+    /// beam; swelling over the hand in a red-violet glow, the band at the wrist flaring; thrown, and arcing onto the
+    /// place, where it opens (the growth's own recipe bursts it).
+    /// </summary>
+    private void PlaceCallBall(BattleAnimator anim, DynamaxCall call)
+    {
+        float age = call.Age, lead = BattleAnimator.DynamaxCallTime;
+        if (age >= lead) return;
+        bool player = call.Side == BattleSide.Player;
+        var v = anim[call.Side, call.Slot];
+        var model = BattleBall.Get(v.Ball);
+        float h = places.Height(call.Side, call.Slot);
+        var (feet, yaw, scale, pose) = CallerAt(call, platformTop, anim.Time);
+        var root = Matrix4x4.CreateScale(scale) * Matrix4x4.CreateRotationY(yaw) * Matrix4x4.CreateTranslation(feet);
+        var hand = HandOf(call.Look, root, pose);
+        float big = HandBall * CallSwell(player);
+        float swell = Smooth(BattleAnimator.CallDrawEnd, BattleAnimator.CallSwellEnd, age);
+        float size = HandBall + (big - HandBall) * swell;
+        // The band at the wrist, flaring as the ball swells
+        float band = age < 0.3f ? 0f : 0.5f + 0.5f * swell;
+        if (band > 0f && age < CallRelease + 0.1f)
+            fx.Sprite(FxShape.Glow, hand, 0.18f * scale * (0.6f + 0.6f * swell), Fx.Fade(CallBand, band * 0.9f));
+
+        if (age < CallRelease)
+        {
+            var at = hand + Vector3.UnitY * size * 0.45f;
+            // Drawing the Pokémon back: the lid open and the red beam to its body
+            float pull = Fx.Envelope(age, BattleAnimator.CallDrawStart, BattleAnimator.CallDrawStart + 0.08f, BattleAnimator.CallDrawEnd - 0.05f, BattleAnimator.CallDrawEnd + 0.03f);
+            balls.Add(new BallDraw(model, BattleBall.Place(at, size, FaceCamera(at)), pull));
+            BallRecall.Beam(fx, pull, anim.Time, at, places.Body(call.Side, call.Slot), h);
+            if (swell > 0f)
+            {
+                float throb = 0.85f + 0.15f * MathF.Sin(anim.Time * 14f);
+                fx.Sprite(FxShape.Glow, at, size * (1.3f + 0.5f * swell) * throb, Fx.Fade(CallGlow, 0.75f * swell));
+            }
+            return;
+        }
+        // Thrown: arcing over the place, a little smaller as it goes, turning
+        var release = HandOf(call.Look, root, pose with { Emote = Emote.Throw, EmoteTime = CharacterAnimation.ThrowRelease }) + Vector3.UnitY * big * 0.45f;
+        var open = places.Feet(call.Side, call.Slot) + Vector3.UnitY * h * 0.45f;
+        float f = Math.Clamp((age - CallRelease) / (lead - CallRelease), 0f, 1f);
+        var where = BattleBall.Arc(release, open, h * 0.5f + 0.4f, f);
+        float flying = big * (1f - 0.25f * f);
+        balls.Add(new BallDraw(model, BattleBall.Place(where, flying, FaceCamera(where), f * MathF.Tau * 1.5f), 0f));
+        fx.Sprite(FxShape.Glow, where, flying * 1.6f, Fx.Fade(CallGlow, 0.7f));
     }
 
     /// <summary>A Pokémon being sent out: the ball flies from the trainer's hand (or from off the field) and bursts open.</summary>
@@ -739,6 +847,18 @@ public sealed class BattleRenderer
             a.Grow = 0.12f + 0.88f * EaseOutBack(e);
             a.Flash = 1f - e;
             a.Entry = e;
+        }
+
+        // Drawn back into red light by its trainer's call before it grows giant, and out of the ball again (plan 25 · YD1)
+        var (called, callFlash) = BattleAnimator.CalledBack(v);
+        if (called < 1f || callFlash > 0f)
+        {
+            a.Grow *= called;
+            if (callFlash > a.Flash)
+            {
+                a.Flash = callFlash;
+                a.FlashColor = new Color(255, 70, 110, 255);
+            }
         }
 
         // An ally that answered a call hops in from behind the platform and lands on its place (plan 14 · B5): BattleAllies has the curve

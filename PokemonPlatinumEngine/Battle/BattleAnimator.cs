@@ -115,6 +115,39 @@ public sealed class CombatantView
 
     /// <summary>The turns its Dynamax has left, for its HP box (3, 2, 1; 0 when it isn't Dynamaxed).</summary>
     public int DynamaxTurnsLeft { get; internal set; }
+
+    /// <summary>
+    /// How long its trainer's call comes before its growth (plan 25 · YD1: <see cref="BattleAnimator.DynamaxCallTime"/>,
+    /// or nought for a growth alone): <see cref="GiantAge"/> counts from the call, and the growth begins this far in.
+    /// </summary>
+    public float GiantLead { get; internal set; }
+}
+
+/// <summary>
+/// A trainer's call into a swelling ball before their Pokémon grows giant (plan 25 · YD1; style guide, "The giant's
+/// arrival"): who calls, from which side, and the Dynamax cue whose age times it. What it looks like at that age is
+/// the renderer's (<c>BattleRenderer</c>), a function of the cue's age and the trainer's rig.
+/// </summary>
+public sealed class DynamaxCall
+{
+    public DynamaxCall(string look, BattleSide side, int slot, EffectCue cue)
+    {
+        Look = look;
+        Side = side;
+        Slot = slot;
+        Cue = cue;
+    }
+
+    /// <summary>The trainer's look, as they stood on their platform.</summary>
+    public string Look { get; }
+    public BattleSide Side { get; }
+    public int Slot { get; }
+
+    /// <summary>The growth the call comes before: its <see cref="EffectCue.Age"/> is the call's clock.</summary>
+    public EffectCue Cue { get; }
+
+    /// <summary>Seconds since the call began.</summary>
+    public float Age => Cue.Age;
 }
 
 /// <summary>
@@ -182,7 +215,8 @@ public sealed class EffectCue
     /// <summary>
     /// For <see cref="CueKind.Shiny"/> (plan 09 · L1): how long after the cue begins its sparkle does, while the
     /// Pokémon comes out of its ball (<see cref="BattleAnimator.ShinyFromBall"/>) or appears
-    /// (<see cref="BattleAnimator.ShinyFromAppearing"/>).
+    /// (<see cref="BattleAnimator.ShinyFromAppearing"/>). For <see cref="CueKind.Dynamax"/> (plan 25 · YD1): how
+    /// long the trainer's call comes before the growth (<see cref="BattleAnimator.DynamaxCallTime"/>, or nought).
     /// </summary>
     public float Lead { get; init; }
 
@@ -260,7 +294,7 @@ public sealed class EffectCue
     public float Length => Kind switch
     {
         CueKind.Move => ZMove ? BattleAnimator.ZMoveTime : MaxMove ? BattleAnimator.MaxMoveTime : BattleAnimator.EffectTime,
-        CueKind.Dynamax => BattleAnimator.DynamaxTime,
+        CueKind.Dynamax => Lead + BattleAnimator.DynamaxTime,
         CueKind.DynamaxEnd => BattleAnimator.DynamaxEndTime,
         CueKind.Tera => BattleAnimator.TeraTime,
         CueKind.Mega => BattleAnimator.MegaTime,
@@ -365,6 +399,35 @@ public sealed class BattleAnimator
 
     /// <summary>How much bigger a Dynamaxed Pokémon stands: on the foe's platform, and on the player's own, which is near the lens.</summary>
     public const float DynamaxScaleFoe = 1.25f, DynamaxScaleOwn = 1.3f;
+
+    /// <summary>
+    /// The trainer's call before a growth (plan 25 · YD1; style guide, "The giant's arrival"): how long it comes first,
+    /// when the Pokémon is drawn back into red light (from <see cref="CallDrawStart"/> to <see cref="CallDrawEnd"/>),
+    /// when the ball in the hand has swollen (<see cref="CallSwellEnd"/>), when it is thrown (<see cref="CallThrow"/>),
+    /// how long the Pokémon takes to come back to its own size out of the opened ball (<see cref="CallEmerge"/>, after
+    /// the call) and when the trainer has walked off (<see cref="CallerGone"/>, from the call's start).
+    /// </summary>
+    public const float DynamaxCallTime = 1.0f;
+    public const float CallDrawStart = 0.05f, CallDrawEnd = 0.35f, CallSwellEnd = 0.65f, CallThrow = 0.7f, CallEmerge = 0.3f, CallerGone = 1.4f;
+
+    /// <summary>The trainer's call before a growth now playing, or null (plan 25 · YD1).</summary>
+    public DynamaxCall? Call { get; private set; }
+
+    /// <summary>How many Pokémon have Dynamaxed in this battle: only the first is called (plan 25 · YD1, question 3).</summary>
+    public int Dynamaxes { get; private set; }
+
+    /// <summary>
+    /// Whose call a Dynamax here would have (plan 25 · YD1): the trainer's look, or null for a growth alone. Only the
+    /// first Dynamax of a battle, in a single battle, never at the Frontier, about a Pokémon that stands in sight (not
+    /// behind a doll, not out of sight, not on its way in or out), and only where the side has a trainer to call it.
+    /// </summary>
+    public string? CallerFor(BattleSide side, int slot, bool frontier)
+    {
+        if (frontier || Dynamaxes > 0 || SlotsOf(BattleSide.Player) != 1 || SlotsOf(BattleSide.Enemy) != 1) return null;
+        var v = this[side, slot];
+        if (v.Shown == null || !v.Present || v.Away || v.BehindDoll || v.SendOutAge >= 0f || v.FaintAge >= 0f || v.RecallAge >= 0f) return null;
+        return side == BattleSide.Player ? PlayerTrainerLook : EnemyTrainerLook;
+    }
 
     /// <summary>How long a stat change, a heal or a status condition shows on its Pokémon.</summary>
     public const float MarkTime = 1.1f;
@@ -518,7 +581,11 @@ public sealed class BattleAnimator
     public CombatantView Enemy => views[1, 0];
 
     /// <summary>Character type standing on each platform before the Pokémon are sent out (null = none).</summary>
-    public string? PlayerTrainer { get; internal set; } = PlayerIdentity.Character;
+    public string? PlayerTrainer { get => playerTrainer; internal set { playerTrainer = value; if (value != null) PlayerTrainerLook = value; } }
+    private string? playerTrainer = PlayerIdentity.Character;
+
+    /// <summary>The player's look, kept once they have stepped off their platform, so they can come back to call a Dynamax (plan 25 · YD1).</summary>
+    public string? PlayerTrainerLook { get; private set; } = PlayerIdentity.Character;
     public string? EnemyTrainer { get => enemyTrainer; internal set { enemyTrainer = value; if (value != null) EnemyTrainerLook = value; } }
     private string? enemyTrainer;
 
@@ -1032,19 +1099,50 @@ public sealed class BattleAnimator
     /// plays and it grows through it (seeded as the move cue it stands in for was, so later cues keep their seeds);
     /// otherwise (the scene off) it is giant at once.
     /// </summary>
-    public EffectCue? Dynamax(BattleSide side, int slot, bool gigantamax, bool played = true)
+    /// <param name="caller">
+    /// The trainer who calls it (plan 25 · YD1, <see cref="CallerFor"/>): their call comes first, for
+    /// <see cref="DynamaxCallTime"/>, and the growth after it; null for the growth alone.
+    /// </param>
+    public EffectCue? Dynamax(BattleSide side, int slot, bool gigantamax, bool played = true, string? caller = null)
     {
         var v = this[side, slot];
+        Dynamaxes++;
         v.Dynamaxed = true;
         v.Gigantamax = gigantamax;
         v.DynamaxTurnsLeft = 3;
         v.GiantAge = played ? 0f : -1f;
+        float lead = played && caller != null ? DynamaxCallTime : 0f;
+        v.GiantLead = lead;
         if (!played) return null;
-        return Cue(new EffectCue
+        var cue = Cue(new EffectCue
         {
             Kind = CueKind.Dynamax, Gigantamax = gigantamax, Move = "Transform", Type = PokemonType.Normal,
-            FromSide = side, FromSlot = slot, ToSide = side, ToSlot = slot
+            FromSide = side, FromSlot = slot, ToSide = side, ToSlot = slot, Lead = lead
         });
+        if (caller != null) Call = new DynamaxCall(caller, side, slot, cue);
+        return cue;
+    }
+
+    /// <summary>
+    /// How much of the Pokémon here shows through its trainer's call (plan 25 · YD1): drawn back into red light, out
+    /// of sight while the ball swells and flies, and grown back out of the opened ball. 1 and no flash with no call.
+    /// </summary>
+    public static (float Grow, float Flash) CalledBack(CombatantView v)
+    {
+        if (!v.Dynamaxed || v.GiantLead <= 0f || v.GiantAge < 0f) return (1f, 0f);
+        float t = v.GiantAge, lead = v.GiantLead;
+        if (t < CallDrawStart) return (1f, 0f);
+        if (t < CallDrawEnd)
+        {
+            float k = (t - CallDrawStart) / (CallDrawEnd - CallDrawStart);
+            k = k * k * (3f - 2f * k);
+            return (1f - k, Math.Min(1f, k * 1.6f));
+        }
+        if (t < lead) return (0f, 1f);
+        float e = Math.Clamp((t - lead) / CallEmerge, 0f, 1f);
+        const float c1 = 1.70158f, c3 = c1 + 1f;
+        float back = 1f + c3 * MathF.Pow(e - 1f, 3f) + c1 * MathF.Pow(e - 1f, 2f);
+        return (e >= 1f ? 1f : 0.12f + 0.88f * back, 1f - e);
     }
 
     /// <summary>
@@ -1058,6 +1156,8 @@ public sealed class BattleAnimator
         bool gigantamax = v.Gigantamax;
         v.Dynamaxed = v.Gigantamax = false;
         v.DynamaxTurnsLeft = 0;
+        v.GiantLead = 0f;
+        if (Call is { } call && call.Side == side && call.Slot == slot) Call = null;
         // A Pokémon going down or back into its ball shrinks back as it goes, with no cue of its own
         bool leaving = v.FaintAge >= 0f || v.RecallAge >= 0f || !v.Present;
         v.GiantAge = played ? 0f : -1f;
@@ -1082,6 +1182,7 @@ public sealed class BattleAnimator
             v.Dynamaxed = dynamaxed;
             v.Gigantamax = dynamaxed && gigantamax;
             v.GiantAge = -1f;
+            v.GiantLead = 0f;
         }
         v.DynamaxTurnsLeft = dynamaxed ? Math.Clamp(turnsLeft, 1, 3) : 0;
     }
@@ -1096,7 +1197,8 @@ public sealed class BattleAnimator
         if (v.Dynamaxed)
         {
             if (v.GiantAge < 0f) return big;
-            float k = Math.Clamp((v.GiantAge - DynamaxGrowStart) / (DynamaxGrown - DynamaxGrowStart), 0f, 1f);
+            // After the trainer's call, if there was one (plan 25 · YD1)
+            float k = Math.Clamp((v.GiantAge - v.GiantLead - DynamaxGrowStart) / (DynamaxGrown - DynamaxGrowStart), 0f, 1f);
             return 1f + (big - 1f) * (1f - (1f - k) * (1f - k));
         }
         if (v.GiantAge < 0f) return 1f;
@@ -1280,6 +1382,8 @@ public sealed class BattleAnimator
             var cue = cues[i];
             if ((cue.Age += dt) >= cue.Length) cues.RemoveAt(i--);
         }
+        // The trainer who called a Dynamax has walked off (plan 25 · YD1)
+        if (Call != null && (Call.Age >= CallerGone || !cues.Contains(Call.Cue))) Call = null;
         if (Weather != Sim.BattleWeather.None) WeatherAge += dt;
         if (FadingAge >= 0f && (FadingAge += dt) >= WeatherFadeTime)
         {
@@ -1330,7 +1434,11 @@ public sealed class BattleAnimator
             v.SpentAge += dt;
             if (v.SpentAge > EffectTime + 0.3f && v.Shown is { CurrentHP: > 0 }) v.SpentAge = -1f;
         }
-        if (v.GiantAge >= 0f && (v.GiantAge += dt) >= (v.Dynamaxed ? DynamaxTime : DynamaxEndTime)) v.GiantAge = -1f;
+        if (v.GiantAge >= 0f && (v.GiantAge += dt) >= (v.Dynamaxed ? v.GiantLead + DynamaxTime : DynamaxEndTime))
+        {
+            v.GiantAge = -1f;
+            v.GiantLead = 0f;
+        }
 
         if (v.FaintAge >= 0f)
         {
@@ -1381,6 +1489,7 @@ public sealed class BattleAnimator
         // ...and at its own size (a Dynamax ends as its Pokémon leaves: plan 25 · Y15)
         v.Dynamaxed = v.Gigantamax = false;
         v.GiantAge = -1f;
+        v.GiantLead = 0f;
         v.DynamaxTurnsLeft = 0;
         v.DisplayedHp = pokemon.CurrentHP;
         v.DisplayedExp = pokemon.ExpProgressRatio;
