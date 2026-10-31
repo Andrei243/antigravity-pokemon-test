@@ -1,0 +1,34 @@
+{
+  "key": "route_10_power_plant_repaired",
+  "index": 467,
+  "name": "Power Plant",
+  "matrix": 251,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_C_NIBI",
+  "nightMusic": "GS_C_NIBI",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 7, "z": 20, "to": "johto_route_10", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "r10r0201_policeman", "looks": "policeman", "movement": "15", "x": 12, "z": 18, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "R10R0201_001+1" },
+    { "id": "r10r0201_gsassistantm", "looks": "gsassistantm", "movement": "17", "x": 19, "z": 13, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "R10R0201_003+1" },
+    { "id": "r10r0201_gsassistantm_2", "looks": "gsassistantm", "movement": "17", "x": 2, "z": 9, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "R10R0201_002+1" },
+    { "id": "r10r0201_policeman_2", "looks": "policeman", "movement": "15", "x": 15, "z": 3, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "R10R0201_004+1" },
+    { "id": "r10r0201_gsassistantm_3", "looks": "gsassistantm", "movement": "14", "x": 6, "z": 4, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "R10R0201_006+1" },
+    { "id": "r10r0201_gsassistantm_4", "looks": "gsassistantm", "movement": "17", "x": 19, "z": 8, "facing": 3, "rangeX": 0, "rangeZ": 2, "script": "R10R0201_005+1" },
+    { "id": "r10r0201_gsbigman", "looks": "gsbigman", "movement": "15", "x": 13, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 2, "script": "R10R0201_000+1" }
+  ],
+  "signs": [
+    { "x": 11, "z": 17, "type": 0, "script": "R10R0201_008+1" },
+    { "x": 17, "z": 2, "type": 0, "script": "R10R0201_007+1" }
+  ],
+  "triggers": []
+}

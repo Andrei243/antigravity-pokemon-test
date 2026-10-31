@@ -1,0 +1,66 @@
+{
+  "people": {
+    "r10r0101_mount_2": {
+      "name": {
+        "en": [
+          "Jim"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Jim: Just came out of Rock Tunnel. All those ladders have my legs shaking, but not my Pokémon!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Jim: Now my Pokémon are shaking too."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r10r0101_gsmiddleman1": {
+      "name": {
+        "en": [
+          "Robert"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Poké Fan Robert: My Pokémon is the cutest in all of Kanto. Here, let me prove it!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Poké Fan Robert: Still the cutest. Just not the strongest."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "R10R0101_000+1": {
+      "en": [
+        "Rock Tunnel\nThrough to Route 10's north, by the Power Plant."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

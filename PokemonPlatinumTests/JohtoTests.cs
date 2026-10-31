@@ -69,6 +69,9 @@ public class JohtoTests
         // Plan 20 · J15, part i: Route 11 and its gate, Diglett's Cave, Routes 16 to 18 with their gates and Route 16's house
         "johto_route_11", "route_19_route_12_gatehouse", "diglett_cave", "johto_route_16", "johto_route_16_house", "route_16_east",
         "route_16_gatehouse", "johto_route_17", "johto_route_18", "route_18_gatehouse",
+        // Plan 20 · J15, part j: Routes 9 and 10 with Route 10's Pokémon Center and the Power Plant, and Rock Tunnel
+        "johto_route_9", "johto_route_10", "route_10_pokecenter_1f", "route_10_pokecenter_b1f", "route_10_power_plant_repaired",
+        "johto_rock_tunnel_1f", "johto_rock_tunnel_b1f", "route_10_south",
     };
 
     [Fact]
@@ -983,6 +986,33 @@ public class JohtoTests
             Assert.Contains(gate.Triggers, t => t.Script == "NeedBike" && t.X == 5);
             Assert.Contains(gate.Triggers, t => t.Script == "OffTheRoad" && t.X == 6);
         }
+    }
+
+    [Fact]
+    public void Routes9And10RockTunnelAndThePowerPlantAreWalkedTo()
+    {
+        // Plan 20 · J15, part j: Route 9 east of Cerulean City to Route 10's north with its Pokémon Center and the Power
+        // Plant, and Rock Tunnel's two floors under to Route 10's south and Lavender Town
+        var walked = Walked.Value;
+        var outside = walked.Single(kv => kv.Key.Name == "Johto").Value;
+        foreach (string key in new[] { "johto_route_9", "johto_route_10", "route_10_south" })
+            Assert.True(outside.Any(t => Overworld.AreaAt(t.X, t.Y)?.Key == key), $"{key} can't be walked to from the start");
+        foreach (string name in new[] { "Route10North_PokemonCenter_1F", "Route10North_PokemonCenter_B1F", "Route10_PowerPlant", "Rock_Tunnel_1F", "Rock_Tunnel_B1F" })
+        {
+            Assert.True(walked.Keys.Any(m => m.Name == name), $"nobody walks into {name}");
+            Assert.Equal(RegionDatabase.Johto, RegionDatabase.RegionOfMap(name)!.Id);
+        }
+        // The routes' and the tunnel's keys meet FireRed's, so they take Johto's prefix; the rooms' and Route 10's south don't
+        foreach (string key in new[] { "route_9", "route_10", "rock_tunnel_1f", "rock_tunnel_b1f" })
+        {
+            Assert.True(HgWorld.Clashes(key));
+            Assert.Equal("johto_" + key, HgWorld.KeyOf("MAP_" + key.ToUpperInvariant()));
+        }
+        foreach (string key in new[] { "route_10_south", "route_10_pokecenter_1f", "route_10_power_plant_repaired" })
+            Assert.Equal(key, HgWorld.KeyOf("MAP_" + key.ToUpperInvariant()));
+        // Lt. Surge and Zapdos before the plant wait for their sessions
+        Assert.DoesNotContain(Overworld.Everyone, n => n.Key is "r10_gsleader9" or "r10_tsure_poke_static_zapdos");
+        Assert.Equal(InteriorStyle.PokemonCenter, MapNamed("Route10North_PokemonCenter_1F").Interior);
     }
 
     [Fact]

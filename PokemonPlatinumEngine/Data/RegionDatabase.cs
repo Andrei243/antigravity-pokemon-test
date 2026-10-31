@@ -580,6 +580,8 @@ public static class RegionDatabase
                 "Fuchsia_Gym", "Fuchsia_SouthwestHouse", "Fuchsia_WardensHouse", "Viridian_Gym", "Route12_FishingBrotherHouse",
                 // Plan 20 · J15, part i: the gate between Routes 11 and 12, Diglett's Cave, the Cycling Road's two gates and Route 16's house
                 "Route11_Route12Gate", "Diglett_Cave", "Route16_CyclingGate", "Route16_EastHouse", "Route18_CyclingGate",
+                // Plan 20 · J15, part j: Route 10's Pokémon Center and Power Plant, and Rock Tunnel's two floors
+                "Route10North_PokemonCenter_1F", "Route10North_PokemonCenter_B1F", "Route10_PowerPlant", "Rock_Tunnel_1F", "Rock_Tunnel_B1F",
             }
         },
         new()

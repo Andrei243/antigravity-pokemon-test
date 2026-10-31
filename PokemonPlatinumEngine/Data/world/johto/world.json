@@ -344,6 +344,12 @@
     { "name": "Route16_CyclingGate", "matrix": 70, "area": "route_16_gatehouse", "trees": "Round", "setting": "Indoors" },
     { "name": "Route16_EastHouse", "matrix": 66, "area": "johto_route_16_house", "trees": "Round", "setting": "Indoors" },
     { "name": "Route18_CyclingGate", "matrix": 70, "area": "route_18_gatehouse", "trees": "Round", "setting": "Indoors" },
+    // Plan 20 · J15, part j: Route 10's Pokémon Center and Power Plant and Rock Tunnel's floors (named Route10North_PokemonCenter_, Route10_PowerPlant and Rock_Tunnel_: FireRed's are Route10_PokemonCenter_, PowerPlant and RockTunnel_)
+    { "name": "Route10North_PokemonCenter_1F", "matrix": 73, "area": "route_10_pokecenter_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route10North_PokemonCenter_B1F", "matrix": 77, "area": "route_10_pokecenter_b1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route10_PowerPlant", "matrix": 251, "area": "route_10_power_plant_repaired", "trees": "Round", "setting": "Indoors" },
+    { "name": "Rock_Tunnel_1F", "matrix": 6, "area": "johto_rock_tunnel_1f", "trees": "Round", "setting": "Cave" },
+    { "name": "Rock_Tunnel_B1F", "matrix": 7, "area": "johto_rock_tunnel_b1f", "trees": "Round", "setting": "Cave" },
     { "name": "Seafoam_Gym", "matrix": 264, "area": "seafoam_islands_cinnabar_gym", "trees": "Round", "setting": "Cave" }
   ],
   "areas": [
@@ -473,6 +479,10 @@
     // Plan 20 · J15, part i: Route 11 east of Vermilion City with its gate to Route 12 and Diglett's Cave under it to Route 2,
     // and Routes 16 to 18, the Cycling Road from Celadon City down to Fuchsia City, with their gates and Route 16's house
     "johto_route_11", "route_19_route_12_gatehouse", "diglett_cave", "johto_route_16", "johto_route_16_house", "route_16_east",
-    "route_16_gatehouse", "johto_route_17", "johto_route_18", "route_18_gatehouse"
+    "route_16_gatehouse", "johto_route_17", "johto_route_18", "route_18_gatehouse",
+    // Plan 20 · J15, part j: Route 9 east of Cerulean City to Route 10's north with its Pokémon Center and the Power Plant,
+    // and Rock Tunnel's two floors under to Route 10's south, down to Lavender Town
+    "johto_route_9", "johto_route_10", "route_10_pokecenter_1f", "route_10_pokecenter_b1f", "route_10_power_plant_repaired",
+    "johto_rock_tunnel_1f", "johto_rock_tunnel_b1f", "route_10_south"
   ]
 }

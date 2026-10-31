@@ -1,0 +1,62 @@
+{
+  "key": "johto_rock_tunnel_1f",
+  "index": 108,
+  "name": "Rock Tunnel",
+  "matrix": 6,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "11",
+  "camera": "0",
+  "battleBackground": "Cave1",
+  "dayMusic": "GS_D_IWAYAMA",
+  "nightMusic": "GS_D_IWAYAMA",
+  "encounters": "D05R0101",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Cubone", "level": 10 },
+    { "species": "Geodude", "level": 10 },
+    { "species": "Cubone", "level": 10 },
+    { "species": "Geodude", "level": 10 },
+    { "species": "Machop", "level": 12 },
+    { "species": "Machop", "level": 12 },
+    { "species": "Zubat", "level": 8 },
+    { "species": "Zubat", "level": 8 },
+    { "species": "Machoke", "level": 14 },
+    { "species": "Cubone", "level": 13 },
+    { "species": "Machoke", "level": 14 },
+    { "species": "Cubone", "level": 13 }
+  ],
+  "landRate": 15,
+  "swarm": [
+    "Cubone",
+    "Cubone"
+  ],
+  "hoennSounds": [
+    "Absol",
+    "Makuhita"
+  ],
+  "sinnohSounds": [
+    "Bronzor",
+    "Chingling"
+  ],
+  "warps": [
+    { "x": 23, "z": 36, "to": "route_10_south", "toWarp": 0 },
+    { "x": 46, "z": 10, "to": "johto_route_10", "toWarp": 0 },
+    { "x": 8, "z": 34, "to": "johto_rock_tunnel_b1f", "toWarp": 0 },
+    { "x": 10, "z": 18, "to": "johto_rock_tunnel_b1f", "toWarp": 1 },
+    { "x": 8, "z": 7, "to": "johto_rock_tunnel_b1f", "toWarp": 2 },
+    { "x": 37, "z": 17, "to": "johto_rock_tunnel_b1f", "toWarp": 3 }
+  ],
+  "objects": [
+    { "id": "everywhere_monstarball", "looks": "monstarball", "movement": "0", "x": 7, "z": 27, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D05R0101_ELIXIR", "item": "Elixir", "script": "std_itemball_d05r0101_elixir" },
+    { "id": "everywhere_monstarball_2", "looks": "monstarball", "movement": "0", "x": 24, "z": 20, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D05R0101_TM56", "item": "TM56", "script": "std_itemball_d05r0101_tm56" }
+  ],
+  "signs": [
+    { "x": 38, "z": 31, "type": 2, "script": "std_hiddenitem_d05r0101_x_defense", "item": "X Defense", "flag": "FLAG_HIDDEN_ITEM_D05R0101_X_DEFENSE" },
+    { "x": 16, "z": 8, "type": 2, "script": "std_hiddenitem_d05r0101_x_accuracy", "item": "X Accuracy", "flag": "FLAG_HIDDEN_ITEM_D05R0101_X_ACCURACY" }
+  ],
+  "triggers": []
+}

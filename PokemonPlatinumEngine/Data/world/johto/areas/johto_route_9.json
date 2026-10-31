@@ -1,0 +1,104 @@
+{
+  "key": "johto_route_9",
+  "index": 17,
+  "name": "Route 9",
+  "matrix": 0,
+  "kind": "Route",
+  "sign": "Route",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "General",
+  "dayMusic": "GS_R_12_03",
+  "nightMusic": "GS_R_12_03",
+  "encounters": "R09",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Mankey", "level": 13 },
+    { "species": "Rattata", "level": 15 },
+    { "species": "Mankey", "level": 13 },
+    { "species": "Rattata", "level": 15 },
+    { "species": "Spearow", "level": 13, "night": "Raticate" },
+    { "species": "Spearow", "level": 13, "night": "Raticate" },
+    { "species": "Raticate", "level": 15, "night": "Rattata" },
+    { "species": "Raticate", "level": 15, "night": "Rattata" },
+    { "species": "Fearow", "level": 15, "night": "Raticate" },
+    { "species": "Primeape", "level": 15 },
+    { "species": "Fearow", "level": 15, "night": "Raticate" },
+    { "species": "Primeape", "level": 15 }
+  ],
+  "landRate": 20,
+  "swarm": [
+    "Sableye",
+    "Sableye"
+  ],
+  "surfSwarm": "Goldeen",
+  "fishSwarm": "Magikarp",
+  "water": [
+    { "species": "Goldeen", "level": 15, "maxLevel": 15 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 10 },
+    { "species": "Seaking", "level": 15, "maxLevel": 15 },
+    { "species": "Seaking", "level": 15, "maxLevel": 15 },
+    { "species": "Seaking", "level": 15, "maxLevel": 15 }
+  ],
+  "waterRate": 15,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 10 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Goldeen", "level": 40, "maxLevel": 40 },
+    { "species": "Goldeen", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 },
+    { "species": "Seaking", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "hoennSounds": [
+    "Whismur",
+    "Linoone"
+  ],
+  "sinnohSounds": [
+    "Buizel",
+    "Bidoof"
+  ],
+  "warps": [],
+  "objects": [
+    { "id": "r09_campboy_2", "looks": "campboy_2", "movement": "0", "x": 1355, "z": 140, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_CAMPER_SID" },
+    { "id": "r09_picnicgirl_2", "looks": "picnicgirl_2", "movement": "0", "x": 1361, "z": 155, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 2, "script": "TRAINER_PICNICKER_EDNA" },
+    { "id": "r09_campboy_2_2", "looks": "campboy_2", "movement": "0", "x": 1387, "z": 150, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_CAMPER_DEAN" },
+    { "id": "r09_mount_2", "looks": "mount_2", "movement": "0", "x": 1410, "z": 153, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 2, "script": "TRAINER_HIKER_CLARKE" },
+    { "id": "r09_mount_2_2", "looks": "mount_2", "movement": "5", "x": 1402, "z": 137, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_HIKER_EOIN" },
+    { "id": "r09_picnicgirl_2_2", "looks": "picnicgirl_2", "movement": "0", "x": 1412, "z": 144, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "script": "TRAINER_PICNICKER_HEIDI" },
+    { "id": "r09_tree", "looks": "tree", "movement": "0", "x": 1422, "z": 148, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_010", "script": "std_field_cut" },
+    { "id": "r09_tree_2", "looks": "tree", "movement": "0", "x": 1424, "z": 148, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_011", "script": "std_field_cut" },
+    { "id": "r09_tree_3", "looks": "tree", "movement": "0", "x": 1426, "z": 148, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_012", "script": "std_field_cut" },
+    { "id": "r09_tree_4", "looks": "tree", "movement": "0", "x": 1428, "z": 148, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_013", "script": "std_field_cut" },
+    { "id": "r09_tree_5", "looks": "tree", "movement": "0", "x": 1408, "z": 134, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_014", "script": "std_field_cut" },
+    { "id": "r09_tree_6", "looks": "tree", "movement": "0", "x": 1382, "z": 141, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_015", "script": "std_field_cut" },
+    { "id": "r09_tree_7", "looks": "tree", "movement": "0", "x": 1416, "z": 148, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_016", "script": "std_field_cut" },
+    { "id": "r09_monstarball", "looks": "monstarball", "movement": "0", "x": 1415, "z": 136, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_R09_TM91", "item": "TM91", "script": "std_itemball_r09_tm91" },
+    { "id": "r09_monstarball_2", "looks": "monstarball", "movement": "0", "x": 1413, "z": 154, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_R09_FULL_RESTORE", "item": "Full Restore", "script": "std_itemball_r09_full_restore" },
+    { "id": "r09_monstarball_3", "looks": "monstarball", "movement": "0", "x": 1376, "z": 143, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_R09_LIGHT_CLAY", "item": "Light Clay", "script": "std_itemball_r09_light_clay" },
+    { "id": "r09_monstarball_4", "looks": "monstarball", "movement": "0", "x": 1356, "z": 154, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_R09_MAX_POTION", "item": "Max Potion", "script": "std_itemball_r09_max_potion" }
+  ],
+  "signs": [
+    { "x": 1367, "z": 143, "type": 1, "script": "R09_000+1" },
+    { "x": 1422, "z": 140, "type": 2, "script": "std_hiddenitem_r09_ether", "item": "Ether", "flag": "FLAG_HIDDEN_ITEM_R09_ETHER" }
+  ],
+  "triggers": []
+}
