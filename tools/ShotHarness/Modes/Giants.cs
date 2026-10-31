@@ -12,11 +12,15 @@ partial class Harness
     //   2. a foe of the harness's own with the Dynamax Band alone (a Dynamax and a Gigantamax-less Snorlax) (gi10_*);
     //   3. a double battle where one foe grows and the other does not, the player's two beside (gi20_*);
     //   4. the player's own Dynamax through the button, by day and at night, and a Gigantamax with its end (gi3x_*,
-    //      plan 25 · YD1).
+    //      plan 25 · YD1);
+    //   5. the Max Move finisher (plan 25 · YD2): Max Flare, Max Quake and G-Max Wildfire from the user to the set piece,
+    //      and the foe's HP box punched close up (gi21_* to gi24_*);
+    //   6. Max Guard, the countdown and the fall (plan 25 · YD3): a trainer's Max Move on the player's Max Guard (gi33_*),
+    //      the pill ticking (gi34_*_close), the last turn (gi35_*), a Dynamax's fall (gi36_*) and a giant fainting (gi37_*).
     // Every cue that starts is shot at the same moments from its start: gi<part>_<what>_<n>, with its kinds, quads, the
     // camera's shot and the giant's sky printed; a growth with a trainer's call (YD1) has four shots of the call first
     // (_call_1 to _4) and then the growth's at the same moments of the growth as YD0's. Not part of "all".
-    // GIANTS_PART=cynthia|dynamax|double|own runs one part.
+    // GIANTS_PART=cynthia|dynamax|double|own|finisher|guard runs one part.
     public void GiantsMode()
     {
         string only = Environment.GetEnvironmentVariable("GIANTS_PART") ?? "";
@@ -299,6 +303,225 @@ partial class Harness
             }
             if (gb.Anim.Cues.Any(c => c.Kind == CueKind.DynamaxEnd)) Beat(gb, "gi32_own_gmax_end", 0.15, 0.4, 0.8);
             Console.WriteLine($"  a second Dynamax of this battle would be called: {(gb.Anim.CallerFor(BattleSide.Player, 0, false) == null ? "no, the growth alone" : "yes")}");
+        }
+
+        // What a finisher shot prints: the camera, the cue's shown age, the quads, the target's body and its box's punch
+        void Finisher(BattleEngine b, string prefix, EffectCue cue, params double[] ages) => FinisherWith(b, prefix, cue, null, ages);
+
+        // The same, and a crop of the target's HP box after the shot whose number is given (the box punched, close up)
+        void FinisherWith(BattleEngine b, string prefix, EffectCue cue, (int After, string Name)? crop, params double[] ages)
+        {
+            double at = cue.Age;
+            for (int i = 0; i < ages.Length; i++)
+            {
+                if (ages[i] > at) Skip(ages[i] - at);
+                at = Math.Max(at, ages[i]);
+                Shot($"{prefix}_{i + 1}");
+                if (crop is { } c && c.After == i + 1)
+                {
+                    if (cue.ToSide == BattleSide.Enemy) ShotCrop(c.Name, 36, 30, 640, 200, 2);
+                    else ShotCrop(c.Name, 1220, 600, 680, 230, 2);
+                }
+                var to = b.Anim[cue.ToSide, cue.ToSlot];
+                var body = BodyMotions.Of(b.Anim, cue.ToSide, cue.ToSlot);
+                Console.WriteLine($"  {prefix}_{i + 1} age {cue.Age:0.00} shown {cue.ShownAge:0.00}: camera {game.BattleRenderer.Shot}, {game.BattleRenderer.Effects.Count} quads and ribbons; "
+                    + $"target thrown {body.Toward:0.00} h, pressed to {body.Shape.Height:0.00}; box punch {to.PunchAge:0.00} s, bar {to.DisplayedHp:0}, white to {to.GhostHp:0} of {to.Shown?.MaxHP}");
+            }
+        }
+
+        // Plays on until a cue the predicate likes starts, confirming lines; null if none came
+        EffectCue? Until(BattleEngine b, Func<EffectCue, bool> wanted, int frames = 120)
+        {
+            for (int i = 0; i < frames && !b.IsBattleOver; i++)
+            {
+                if (b.Anim.Cues.FirstOrDefault(wanted) is { } c) return c;
+                if (b.IsWaitingForConfirm) Confirm(b);
+                else Skip(0.05);
+            }
+            return b.Anim.Cues.FirstOrDefault(wanted);
+        }
+
+        BattleEngine OwnBattle(Pokemon mine, uint seed, Pokemon foe)
+        {
+            var party = new Party();
+            party.Add(mine);
+            var bag = new Inventory();
+            bag.AddItem(ItemDatabase.Get(PokemonPlatinumEngine.Battle.Sim.BattleCore.DynamaxBandItem)!);
+            game.Map = MapDatabase.Get("Sinnoh");
+            game.BattleRenderer.SetArena(BattleArena.Grass);
+            var b = new BattleEngine(new BattleSetup
+            {
+                PlayerParty = party, Inventory = bag, Pokedex = pokedex, WildPokemon = new List<Pokemon> { foe },
+                Random = new BattleRandom(seed).Force(RollKind.Critical, 1).Force(RollKind.Accuracy, 0), Rules = Ruleset.Modern
+            });
+            game.Battle = b;
+            game.State = GameState.Battle;
+            return b;
+        }
+
+        Pokemon Giant(string species, bool gmax, int level, params string[] moves)
+        {
+            var p = Meet(species, level);
+            p.Moves.Clear();
+            foreach (var m in moves) p.Moves.Add(new Move(MoveDatabase.Get(m)));
+            p.DynamaxLevel = 10;
+            p.GigantamaxFactor = gmax;
+            return p;
+        }
+
+        Pokemon Sitter(string species, int level, string move = "Splash")
+        {
+            var p = Meet(species, level);
+            p.Moves.Clear();
+            p.Moves.Add(new Move(MoveDatabase.Get(move)));
+            return p;
+        }
+
+        // ---- 5. the Max Move finisher (plan 25 · YD2): the player's own Max Flare, Max Quake and G-Max Wildfire, each shot
+        // at the user from below, the whip, the hit-stop, the punch-in, the pull-back and the set piece (gi21_* to gi24_*),
+        // with the foe's HP box punched close up (gi23_punch_close)
+        if (only is "" or "finisher")
+        {
+            var b = OwnBattle(Giant("Charizard", false, 50, "Flamethrower", "Earthquake"), 311, Sitter("Snorlax", 70));
+            ToMainMenu(b);
+            b.SelectMainMenuOption(0);
+            Frames(5);
+            b.ToggleLaterMechanic();
+            b.SelectMove(0);
+            Frames(1);
+            var flare = Until(b, c => c.MaxMove, 400);
+            if (flare == null) Console.WriteLine("  !! no Max Flare");
+            else
+            {
+                // The foe's box punched close up at the screen's own resolution after the fourth: the jolt gone, the white ghost held
+                FinisherWith(b, "gi21_finisher_flare", flare, (3, "gi23_punch_close"), 0.12, 0.28, 0.4, 0.55, 0.62, 0.95, 1.3);
+            }
+            // The next turn, Max Quake
+            for (int i = 0; i < 400 && b.HUD.MenuState != BattleMenuState.Main && !b.IsBattleOver; i++) { if (b.IsWaitingForConfirm) Confirm(b); else Skip(0.05); }
+            if (!b.IsBattleOver)
+            {
+                foreach (var p in b.EnemySlots.Where(s => s.Pokemon != null)) p.Pokemon!.CurrentHP = p.Pokemon.MaxHP;
+                b.SelectMainMenuOption(0);
+                Frames(5);
+                b.SelectMove(1);
+                var quake = Until(b, c => c.MaxMove && c.Move.Contains("Quake"), 400);
+                if (quake != null)
+                {
+                    FinisherWith(b, "gi22_finisher_quake", quake, (3, "gi23_punch_quake_close"), 0.12, 0.28, 0.4, 0.62, 0.95, 1.3);
+                }
+                else Console.WriteLine("  !! no Max Quake");
+            }
+
+            var gb = OwnBattle(Giant("Charizard", true, 50, "Flamethrower", "Growl"), 312, Sitter("Snorlax", 70));
+            ToMainMenu(gb);
+            gb.SelectMainMenuOption(0);
+            Frames(5);
+            gb.ToggleLaterMechanic();
+            gb.SelectMove(0);
+            Frames(1);
+            var wildfire = Until(gb, c => c.MaxMove, 400);
+            if (wildfire != null) Finisher(gb, "gi24_finisher_wildfire", wildfire, 0.12, 0.28, 0.4, 0.62, 0.95, 1.3);
+            else Console.WriteLine("  !! no G-Max Wildfire");
+        }
+
+        // ---- 6. Max Guard, the countdown and the fall (plan 25 · YD3): the player's giant puts up Max Guard against a
+        // trainer's Max Move and a wild Tackle (gi33_*), the pill ticking at the three menus close up (gi34_*), the last
+        // turn (gi35_*), the fall at its three moments (gi36_*), and a foe giant fainting (gi37_*)
+        if (only is "" or "guard")
+        {
+            // A trainer's giant Max Moves into the player's Max Guard
+            game.Bag.AddItem(ItemDatabase.Get(PokemonPlatinumEngine.Battle.Sim.BattleCore.DynamaxBandItem)!);
+            var trainer = new Trainer
+            {
+                Id = "harness_guard", Name = "Ida", TrainerClass = "Ace Trainer", PrizeMoney = 0, DynamaxBand = true,
+                Ai = PokemonPlatinumEngine.Battle.Sim.Ai.AiFlags.Basic | PokemonPlatinumEngine.Battle.Sim.Ai.AiFlags.EvalAttack | PokemonPlatinumEngine.Battle.Sim.Ai.AiFlags.Expert
+            };
+            var foeGiant = Giant("Snorlax", false, 55, "Body Slam", "Earthquake");
+            trainer.Party.Add(foeGiant);
+            var b = Begin(trainer, "Ace Trainer", Giant("Charizard", false, 70, "Growl", "Flamethrower"));
+            if (b != null)
+            {
+                ToMainMenu(b);
+                Whole(b);
+                b.SelectMainMenuOption(0);
+                Frames(5);
+                // The first turn grows it with a Flamethrower (a Max Flare), so its Max Guard of the next turn is put up by a
+                // giant that stands: the call and the growth have played out by then
+                b.ToggleLaterMechanic();
+                b.SelectMove(1);
+                Frames(1);
+                bool shotHit = false;
+                // The pill ticking at each menu, close up, the blow on Max Guard as it comes, and the last turn
+                for (int turn = 0; turn < 4 && !b.IsBattleOver; turn++)
+                {
+                    for (int i = 0; i < 600 && b.HUD.MenuState != BattleMenuState.Main && !b.IsBattleOver
+                        && !b.Anim.Cues.Any(c => c.Kind == CueKind.DynamaxEnd && c.ToSide == BattleSide.Player); i++)
+                    {
+                        if (!shotHit && b.Anim.Cues.FirstOrDefault(c => c.OnGuard) is { } hit)
+                        {
+                            shotHit = true;
+                            Finisher(b, $"gi33_guard_{(hit.MaxMove ? "max" : "plain")}", hit, 0.2, 0.4, 0.55, 0.8);
+                        }
+                        if (b.IsWaitingForConfirm) Confirm(b); else Skip(0.05);
+                    }
+                    if (b.Anim.Cues.Any(c => c.Kind == CueKind.DynamaxEnd && c.ToSide == BattleSide.Player)) break;
+                    if (b.IsBattleOver) break;
+                    var mine = b.Anim.Player;
+                    Skip(0.15);
+                    ShotCrop($"gi34_tick_{turn}_close", 1220, 600, 680, 230, 2);
+                    Console.WriteLine($"  gi34_tick_{turn}: {mine.DynamaxTurnsLeft} turns left, ticking from {mine.TickFrom} ({mine.TickAge:0.00} s); wreath of {MoveFx.WreathClouds(mine.DynamaxTurnsLeft)}, pulse {MoveFx.PulseHz(mine.DynamaxTurnsLeft)} Hz; last turn {b.Anim.GiantOnItsLastTurn}");
+                    // A growth read past at the harness's pace is still playing: let it end, as a player who reads at
+                    // a reader's pace would see it end, before the next turn's choice
+                    for (int i = 0; i < 60 && b.Anim.Cues.Any(c => c.Kind == CueKind.Dynamax); i++) Skip(0.05);
+                    if (mine.DynamaxTurnsLeft == 1) { Skip(0.4); Shot("gi35_last_turn"); }
+                    Whole(b);
+                    b.SelectMainMenuOption(0);
+                    Frames(5);
+                    b.SelectMove(0);
+                    Frames(1);
+                }
+            }
+
+            // The fall, alone: the player's giant against a foe that only Splashes, three turns of Flamethrower and its end
+            var eb = OwnBattle(Giant("Charizard", false, 70, "Flamethrower", "Growl"), 314, Sitter("Blissey", 100));
+            ToMainMenu(eb);
+            eb.SelectMainMenuOption(0);
+            Frames(5);
+            eb.ToggleLaterMechanic();
+            eb.SelectMove(0);
+            Frames(1);
+            EffectCue? fall = null;
+            for (int turn = 0; turn < 4 && fall == null && !eb.IsBattleOver; turn++)
+            {
+                for (int i = 0; i < 600 && eb.HUD.MenuState != BattleMenuState.Main && fall == null && !eb.IsBattleOver; i++)
+                {
+                    fall = eb.Anim.Cues.FirstOrDefault(c => c.Kind == CueKind.DynamaxEnd);
+                    if (fall != null) break;
+                    if (eb.IsWaitingForConfirm) Confirm(eb); else Skip(0.05);
+                }
+                if (fall != null || eb.IsBattleOver) break;
+                eb.SelectMainMenuOption(0);
+                Frames(5);
+                eb.SelectMove(0);
+                Frames(1);
+            }
+            if (fall != null) Finisher(eb, "gi36_fall", fall, 0.15, 0.5, 0.8);
+            else Console.WriteLine("  !! no end of the Dynamax");
+
+            // A wild giant fainting: its HP brought down to one by the harness, the player's Flamethrower felling it
+            var fb = OwnBattle(Giant("Charizard", false, 80, "Flamethrower", "Growl"), 313, Giant("Snorlax", false, 40, "Splash"));
+            ToMainMenu(fb);
+            // The wild one grows by the harness's hand (it has no band), as the scene would show it
+            var wild = fb.EnemySlots[0].Pokemon!;
+            fb.Anim.Dynamax(BattleSide.Enemy, 0, gigantamax: false);
+            Skip(2.0);
+            wild.CurrentHP = 1;
+            fb.SelectMainMenuOption(0);
+            Frames(5);
+            fb.SelectMove(0);
+            var fell = Until(fb, c => c.Kind == CueKind.DynamaxEnd && c.Fell, 600);
+            if (fell != null) Finisher(fb, "gi37_faint", fell, 0.1, 0.3, 0.55, 0.9);
+            else Console.WriteLine($"  !! the giant never fell (faint age {fb.Anim.Enemy.FaintAge:0.00}, fall age {fb.Anim.Enemy.FallAge:0.00})");
         }
         game.State = GameState.Overworld;
     }

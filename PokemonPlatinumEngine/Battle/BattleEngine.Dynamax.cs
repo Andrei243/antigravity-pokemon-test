@@ -118,7 +118,14 @@ public partial class BattleEngine
                 TakeRaisedHp(ended.Place, small, ended.MaxHp, ended.Hp);
                 var v = Anim[ended.Place.Side, ended.Place.Slot];
                 bool standing = v.Dynamaxed && v.Present && v.FaintAge < 0f && v.RecallAge < 0f;
-                if (standing) Sound("dynamax_end", ended.Place.Side);
+                if (standing)
+                {
+                    Sound("dynamax_end", ended.Place.Side);
+                    // The collapse after the shudder (plan 25 · YD3); at once with the scene off
+                    var side = ended.Place.Side;
+                    if (Scene) After(BattleAnimator.DynamaxFallStart, () => Sound("giant_fall", side));
+                    else Sound("giant_fall", side);
+                }
                 Anim.Undynamax(ended.Place.Side, ended.Place.Slot, played: Scene);
                 if (small == null) break;
                 if (Scene && standing && small.Form != ended.Form) After(BattleAnimator.DynamaxEndSwapTime, () => small.Form = ended.Form);

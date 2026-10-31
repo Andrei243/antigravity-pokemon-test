@@ -203,6 +203,8 @@ internal static class BodyMotions
         var motion = BodyMotion.Still;
         foreach (var cue in anim.Cues)
         {
+            // A Dynamax's end shudders before it falls in (plan 25 · YD3)
+            if (cue.Kind == CueKind.DynamaxEnd && !cue.Fell && cue.ToSide == side && cue.ToSlot == slot) motion += Directions.Shudder(cue.Age);
             if (cue.Kind != CueKind.Move || cue.Charging || cue.Arriving) continue;
             // Read at the shown age, which a heavy signature move holds at its impact (plan 25 · Y17)
             float age = cue.ShownAge;
@@ -217,6 +219,8 @@ internal static class BodyMotions
                 motion += OfTarget(cue.Move, age, cue.Length);
         }
         if (v.SpentAge >= 0f) motion += Spent(v.SpentAge, v.Shown is { CurrentHP: <= 0 });
+        // A giant that faints sinks into its clouds before it goes down (plan 25 · YD3)
+        if (v.FallAge >= 0f) motion += new BodyMotion(Sink: BattleAnimator.GiantFallSink * Smooth(v.FallAge / BattleAnimator.GiantFallTime));
         if (v.Away && v.AwayAge >= 0f) motion += Leaving(WayOf(v.AwayMove), v.AwayAge / LeaveTime);
         if (!v.Away && v.BackAge >= 0f) motion += Returning(WayOf(v.AwayMove), v.BackAge / ReturnTime);
         return motion;

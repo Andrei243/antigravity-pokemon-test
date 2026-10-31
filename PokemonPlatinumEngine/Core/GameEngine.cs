@@ -1457,6 +1457,9 @@ public partial class GameEngine
     }
 
     private List<AmbienceLayer> fieldAmbience = new();
+
+    /// <summary>The heartbeat of a giant's last turn (plan 25 · YD3), one list so the mixer is told once.</summary>
+    private static readonly AmbienceLayer[] GiantHeartbeat = { new(AmbienceBed.Giant, 1f, 0f) };
     private (Map? Map, int X, int Y, FieldWeather Weather) ambienceAt;
 
     /// <summary>
@@ -1473,6 +1476,12 @@ public partial class GameEngine
         {
             if (fieldAmbience.Count > 0) fieldAmbience = new List<AmbienceLayer>();
             ambienceAt = default;
+            // A giant's last turn has its heartbeat under the battle's music (plan 25 · YD3)
+            if (flow.Shown == GameState.Battle && flow.Battle is { Result: BattleResult.None } battle && battle.Anim.GiantOnItsLastTurn)
+            {
+                AudioManager.SetAmbience(GiantHeartbeat);
+                return;
+            }
         }
         else
         {

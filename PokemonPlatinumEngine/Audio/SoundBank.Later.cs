@@ -17,7 +17,8 @@ public static partial class SoundBank
     /// <summary>The sounds of the later mechanics' set pieces, which may run to 2 s (a move's own runs to 1).</summary>
     public static bool IsSetPiece(string name) =>
         name is "mega_evolve" or "primal_reversion" or "ultra_burst" or "z_power"
-            or "dynamax" or "gigantamax" or "dynamax_end" or "dynamax_call" or "max_guard" or "max_land" or "terastallize" or "tera_stellar"
+            or "dynamax" or "gigantamax" or "dynamax_end" or "dynamax_call" or "max_guard" or "max_land" or "max_guard_hit" or "giant_fall"
+            or "terastallize" or "tera_stellar"
         || name.StartsWith("z_move_", StringComparison.OrdinalIgnoreCase) || name.StartsWith("max_move_", StringComparison.OrdinalIgnoreCase);
 
     /// <summary>The sound a Max Move of this type makes (a G-Max Move is heard as its type's; plan 25 · Y15).</summary>
@@ -47,6 +48,9 @@ public static partial class SoundBank
             add(MaxMoveSound(type), SoundGroup.Battle, null, $"A Max Move of the {type} type (and a G-Max Move of that type) sets off and lands.");
         // The giant's punch (plan Y · YD5): one sub-bass hit under every Max Move's impact, whatever its type
         add("max_land", SoundGroup.Battle, null, "A Max Move lands: a sub-bass hit and a deep boom felt under the type's own sound (plan Y · YD5).");
+        // Max Guard struck and a giant's fall (plan 25 · YD3)
+        add("max_guard_hit", SoundGroup.Battle, null, "A blow meets Max Guard's dome: a hard ring of struck glass over a short thud (plan 25 · YD3).");
+        add("giant_fall", SoundGroup.Battle, null, "A giant falls in on itself at its Dynamax's end, or sinks into its clouds as it faints: a heavy falling groan and a low crash (plan 25 · YD3).");
         add("terastallize", SoundGroup.Battle, null, "A Pokémon Terastallizes: crystal ringing as it forms, shattering, and a chime as the crown stands.");
         add("tera_stellar", SoundGroup.Battle, null, "A Stellar Terastallization: the crystal's ringing in a rising run of seven notes, and a shimmering chord.");
     }
@@ -139,6 +143,22 @@ public static partial class SoundBank
                 d.Tone(0, 0.5f, Wave.Triangle, 140f, 70f, 0.22f, 0.01f, 2.5f);
                 d.Noise(0, 0.6f, Filter.Low, 700f, 150f, 0.3f, 1.4f, 0.02f, 1.8f);
                 return Finish(d.S, 0.48f);
+            case "max_guard_hit":
+                // Played at the blow's impact: glass struck hard, a ring that dies quickly, and a dull thud under it
+                d = new SoundDesign(0.9f, 0x6A2Eu);
+                d.Thump(0, 0.25f, 180f, 70f, 0.6f, 0.6f);
+                d.Bell(0, 0.8f, N(79), 2.76f, 1.6f, 0.22f, 3.2f);
+                d.Bell(0.01f, 0.7f, N(86), 3.41f, 1.2f, 0.12f, 3.2f);
+                d.Noise(0, 0.25f, Filter.High, 4000f, 2500f, 0.2f, 1.2f, 0.005f, 2.5f);
+                return Finish(d.S, 0.42f);
+            case "giant_fall":
+                // A falling groan under the shudder's end, and the low crash of the collapse 0.15 s in
+                d = new SoundDesign(1.3f, 0xFA11u);
+                d.Tone(0, 0.7f, Wave.Saw, 110f, 40f, 0.12f, 0.1f, 0.8f, vibratoHz: 7f, vibratoDepth: 0.05f);
+                d.Tone(0, 0.7f, Wave.Sine, N(43), N(31), 0.16f, 0.1f, 0.8f);
+                d.Thump(0.15f, 0.7f, 90f, 26f, 1.0f, 0.6f);
+                d.Noise(0.15f, 0.9f, Filter.Low, 900f, 120f, 0.35f, 1.2f, 0.02f, 1.6f, 9f, 0.4f);
+                return Finish(d.S, 0.46f);
             case "terastallize":
             case "tera_stellar":
             {

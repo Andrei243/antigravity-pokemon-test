@@ -3923,7 +3923,8 @@
       "River": "River",
       "Waves": "Waves",
       "Cave": "Cave",
-      "Underwater": "Under the sea"
+      "Underwater": "Under the sea",
+      "Giant": "A giant's last turn"
     }
   },
   "titleCredits": {

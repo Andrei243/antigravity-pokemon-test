@@ -204,7 +204,14 @@ internal readonly struct FxCtx
         Foe = places.Body(otherSide, cue.FromSlot);
         FoeSize = places.Height(otherSide, cue.FromSlot);
         Aim = To;
-        if (cue.Missed)
+        if (cue.OnGuard && !cue.OnSelf)
+        {
+            // Stopped at Max Guard's dome, short of the body by the dome's reach toward the user (plan 25 · YD3)
+            var back = From - To;
+            back.Y = 0f;
+            if (back.LengthSquared() > 1e-6f) Aim = To + Vector3.Normalize(back) * (ToHalfWidth + ToSize * 0.2f);
+        }
+        else if (cue.Missed)
         {
             // Wide of the target and on past it
             var dir = To - From;

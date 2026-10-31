@@ -17,7 +17,7 @@ internal readonly record struct CameraShot(Vector3 Position, Vector3 Target, flo
 }
 
 /// <summary>What the director is showing.</summary>
-internal enum ShotKind { Intro, Overview, SendOut, Attacker, Target, Self, Critical, Throw, Ball, BallClose, Faint, Trainer, Rotation, Push, Follow, Punch, Orbit, Giant }
+internal enum ShotKind { Intro, Overview, SendOut, Attacker, Target, Self, Critical, Throw, Ball, BallClose, Faint, Trainer, Rotation, Push, Follow, Punch, Orbit, Giant, MaxMove }
 
 /// <summary>
 /// The battle's camera director (plan 04 · G8). The overview is the DS-like framing; the director sweeps in at the
@@ -82,6 +82,8 @@ internal sealed class BattleCamera
             // A signature move's snap from its push to the target, and its punch-in (plan 25 · Y17)
             || (kind == ShotKind.Target && lastKind == ShotKind.Push && cue == lastCue)
             || (kind == ShotKind.Punch && lastKind != ShotKind.Punch)
+            // A Max Move's finisher follows its own function frame by frame: its whip is an ease of its own (plan 25 · YD2)
+            || (kind == ShotKind.MaxMove && lastKind == ShotKind.MaxMove && cue == lastCue)
             || CrossesPlayerSide(Current.Position, shot.Position);
         Current = cut ? shot : CameraShot.Lerp(Current, shot, 1f - MathF.Exp(-Math.Max(0f, dt) / Smoothing));
         started = true;
@@ -214,8 +216,16 @@ internal sealed class BattleCamera
 
         if (move != null)
         {
-            // A signature move's own shot (plan 25 · Y17), laid over the ordinary one by the motion number
+            // A Max Move's finisher (plan 25 · YD2), laid over the ordinary shots by the motion number
             float motion = Math.Clamp(Motion, 0f, 1f);
+            if (motion > 0f && move.MaxMove && !move.OnSelf && !move.Arriving && !move.Charging
+                && MaxMoveShot(anim, places, move) is { } max)
+            {
+                if (motion >= 1f) return (max, ShotKind.MaxMove, move);
+                var (plain, plainKind) = move.Age < MoveShotEnd ? MoveShot(anim, places, move) : (Overview(anim.Time), ShotKind.Overview);
+                return (CameraShot.Lerp(plain, max, motion), motion >= 0.5f ? ShotKind.MaxMove : plainKind, move);
+            }
+            // A signature move's own shot (plan 25 · Y17), laid over the ordinary one by the motion number
             if (motion > 0f && SignatureOf(move) is { } signature && move.Age < Directions.ShotEnd)
             {
                 var (sig, sigKind) = SignatureShotOf(signature, anim, places, move);
@@ -386,6 +396,83 @@ internal sealed class BattleCamera
             }
         }
         return MoveShot(anim, places, move);
+    }
+
+    // ------------------------------------------------------------------ a Max Move's finisher (plan 25 · YD2)
+
+    /// <summary>The Max Move finisher's beats (style guide, "Camera (G8)", "A Max Move"), in shown seconds.</summary>
+    public const float MaxWhip = 0.08f, MaxPunchHold = 0.4f, MaxPullTime = 0.5f, MaxLetGo = 1.4f;
+
+    /// <summary>The finisher's frames, in the user's or the target's heights: the user from below, the target held, the punch-in, the pull-back.</summary>
+    public const float MaxUserFrame = 3.2f, MaxTargetFrame = 3.4f, MaxPunchFrame = 2.1f, MaxPullFrame = 4.6f;
+
+    /// <summary>How far below level the user's shot looks up at it, degrees.</summary>
+    public const float MaxUserPitchDeg = -4f;
+
+    /// <summary>The turn of the player's own user shot from the overview's side (radians): to the east of it.</summary>
+    public const float MaxOwnYaw = 0.55f;
+
+    /// <summary>
+    /// A Max Move's finisher at its shown age (plan 25 · YD2): the user from below, the whip across the stage onto the
+    /// target from where the camera stood, a punch-in held through the hit-stop, a pull-back wide enough for the set
+    /// piece, and nothing (null) once it lets go at <see cref="MaxLetGo"/>; a miss is held on its target to the
+    /// ordinary move's end. A pure function of the cue and the places.
+    /// </summary>
+    public static CameraShot? MaxMoveShot(BattleAnimator anim, FxPlaces places, EffectCue move)
+    {
+        float a = move.ShownAge;
+        const float I = BattleAnimator.ImpactTime;
+        var targets = TargetsOf(anim, move);
+        if (a >= MaxLetGo || (!move.Landed && a >= MoveShotEnd)) return null;
+        var user = MaxUserShot(places, move.FromSide, move.FromSlot);
+        if (a < CutTime) return user;
+        // Onto the player's own from across the stage there is no whip: from where the foe's shot stands the player's
+        // platform is too near to look at, and an ease would pass it, so it cuts as an ordinary move's attacker does
+        if (targets.TrueForAll(t => t.Side == BattleSide.Player) && move.FromSide == BattleSide.Enemy && (a < I || !move.Landed))
+            return MaxTargetShot(places, targets, MaxTargetFrame);
+        if (a < I || !move.Landed)
+        {
+            // The whip: the camera stays and swings its aim onto the target, its lens fitting it
+            float h = targets.Count == 1 ? places.Height(targets[0].Side, targets[0].Slot) : places.Height(move.ToSide, move.ToSlot);
+            var aim = targets.Count == 1 ? places.Body(targets[0].Side, targets[0].Slot) : TargetShot(places, targets, MaxTargetFrame).Target;
+            float dist = Math.Max(1f, Vector3.Distance(user.Position, aim));
+            float fit = Math.Clamp(2f * MathF.Atan(h * MaxTargetFrame / (2f * dist)) * 180f / MathF.PI, 12f, WidestFov);
+            float s = Smooth((a - CutTime) / MaxWhip);
+            return new CameraShot(user.Position, Vector3.Lerp(user.Target, aim, s), user.Fov + (fit - user.Fov) * s);
+        }
+        if (a < I + MaxPunchHold) return MaxTargetShot(places, targets, MaxPunchFrame);
+        float pull = Smooth((a - I - MaxPunchHold) / MaxPullTime);
+        return MaxTargetShot(places, targets, MaxPunchFrame + (MaxPullFrame - MaxPunchFrame) * pull);
+    }
+
+    /// <summary>The least a shot of the player's own Pokémon frames in the finisher, world units: so small a body's punch-in keeps the camera clear of the player's platform.</summary>
+    public const float MaxOwnLeast = 2.2f;
+
+    /// <summary>A Max Move's target framed at <paramref name="scale"/> of its height, the player's own never under <see cref="MaxOwnLeast"/>.</summary>
+    private static CameraShot MaxTargetShot(FxPlaces places, List<(BattleSide Side, int Slot)> targets, float scale)
+    {
+        if (targets.Count == 1 && targets[0].Side == BattleSide.Player)
+        {
+            float h = places.Height(BattleSide.Player, targets[0].Slot);
+            return Close(places, BattleSide.Player, targets[0].Slot, Math.Max(scale, MaxOwnLeast / h));
+        }
+        return TargetShot(places, targets, scale);
+    }
+
+    /// <summary>A Max Move's user from below: from its own side (the foe's turn or the player's from its right), pitched up at it, never into the ground.</summary>
+    public static CameraShot MaxUserShot(FxPlaces places, BattleSide side, int slot)
+    {
+        float h = places.Height(side, slot);
+        var feet = places.Feet(side, slot);
+        var focus = feet + Vector3.UnitY * h * 0.5f;
+        float lift = MaxUserPitchDeg * MathF.PI / 180f - BattleStage.PitchDeg * MathF.PI / 180f;
+        var shot = side == BattleSide.Enemy
+            ? Frame(focus, h * MaxUserFrame, -0.18f, lift, limitZ: FoeShotLimit)
+            // The player's own from its left (east), away from where its trainer stands to call a Dynamax: the first
+            // Max Move of a battle comes in the turn of the call, while the trainer still stands at the platform's west
+            : Frame(focus, Math.Max(h * MaxUserFrame, MaxOwnLeast), MaxOwnYaw, lift);
+        float floor = feet.Y + 0.25f;
+        return shot.Position.Y >= floor ? shot : shot with { Position = shot.Position with { Y = floor } };
     }
 
     // ------------------------------------------------------------------ a giant's growth (plan 25 · YD1)

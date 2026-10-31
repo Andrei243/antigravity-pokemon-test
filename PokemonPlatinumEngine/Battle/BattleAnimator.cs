@@ -121,6 +121,25 @@ public sealed class CombatantView
     /// or nought for a growth alone): <see cref="GiantAge"/> counts from the call, and the growth begins this far in.
     /// </summary>
     public float GiantLead { get; internal set; }
+
+    /// <summary>
+    /// Seconds since a Max Move struck it (plan 25 · YD2; -1 = none): its HP box jolts and the share it lost stays
+    /// white (<see cref="GhostHp"/>) a moment before it drains.
+    /// </summary>
+    public float PunchAge { get; internal set; } = -1f;
+
+    /// <summary>The HP the white ghost of the bar reaches: the bar's own as the Max Move struck, draining after a moment.</summary>
+    public float GhostHp { get; internal set; }
+
+    /// <summary>Its Max Guard went up this turn (plan 25 · YD3): a blow that comes to nothing on it rings the dome. Cleared when a menu settles.</summary>
+    public bool MaxGuarded { get; internal set; }
+
+    /// <summary>Seconds since its Dynamax pill began to tick down to a lower count (plan 25 · YD3; -1 = none), and the count it ticks from.</summary>
+    public float TickAge { get; internal set; } = -1f;
+    public int TickFrom { get; internal set; }
+
+    /// <summary>Seconds since it began to fall as a giant that fainted (plan 25 · YD3; -1 = none): it sinks into its clouds before the faint plays.</summary>
+    public float FallAge { get; internal set; } = -1f;
 }
 
 /// <summary>
@@ -237,6 +256,15 @@ public sealed class EffectCue
 
     /// <summary>For <see cref="CueKind.Dynamax"/> and <see cref="CueKind.DynamaxEnd"/> (plan 25 · Y15): a Gigantamax, with gold in its light.</summary>
     public bool Gigantamax { get; init; }
+
+    /// <summary>For <see cref="CueKind.DynamaxEnd"/> (plan 25 · YD3): the giant fainted, and sinks into its clouds rather than shuddering where it stands.</summary>
+    public bool Fell { get; init; }
+
+    /// <summary>
+    /// For <see cref="CueKind.Move"/> (plan 25 · YD3): a blow that came to nothing on a Pokémon whose Max Guard is up:
+    /// it stops at the dome's surface and the dome rings (<see cref="CombatantView.MaxGuarded"/>).
+    /// </summary>
+    public bool OnGuard { get; init; }
 
     /// <summary>For <see cref="CueKind.Tera"/> (plan 25 · Y15): a Stellar Terastallization, in seven colours turning (<see cref="Type"/> is then the Pokémon's own).</summary>
     public bool Stellar { get; init; }
@@ -391,8 +419,26 @@ public sealed class BattleAnimator
     public const float DynamaxGrown = 0.9f;
     public const float DynamaxSwapTime = 0.6f;
     public const float DynamaxEndTime = 1.0f;
-    public const float DynamaxShrinkTime = 0.5f;
-    public const float DynamaxEndSwapTime = 0.25f;
+
+    /// <summary>
+    /// The fall (plan 25 · YD3): an end shudders to <see cref="DynamaxFallStart"/>, falls in to
+    /// <see cref="DynamaxFallLow"/> of its own size by <see cref="DynamaxShrunk"/>, and is back at its own size by
+    /// <see cref="DynamaxShrinkTime"/>; its form goes back <see cref="DynamaxEndSwapTime"/> in.
+    /// </summary>
+    public const float DynamaxFallStart = 0.3f;
+    public const float DynamaxShrunk = 0.75f;
+    public const float DynamaxShrinkTime = 0.9f;
+    public const float DynamaxFallLow = 0.95f;
+    public const float DynamaxEndSwapTime = 0.5f;
+
+    /// <summary>A giant that faints sinks this share of its height into its clouds, over this long, before the faint plays (plan 25 · YD3).</summary>
+    public const float GiantFallSink = 0.25f, GiantFallTime = 0.45f;
+
+    /// <summary>A Max Move's punch on the HP box (plan 25 · YD2): the box's jolt, and how long the lost share stays white before it drains.</summary>
+    public const float PunchTime = 0.3f, GhostHold = 0.3f;
+
+    /// <summary>How long the Dynamax pill takes to tick down (plan 25 · YD3).</summary>
+    public const float TickTime = 0.4f;
     public const float MaxMoveTime = 1.5f;
     public const float TeraTime = 1.7f;
     public const float TeraSwapTime = 0.9f;
@@ -1158,13 +1204,16 @@ public sealed class BattleAnimator
         v.DynamaxTurnsLeft = 0;
         v.GiantLead = 0f;
         if (Call is { } call && call.Side == side && call.Slot == slot) Call = null;
-        // A Pokémon going down or back into its ball shrinks back as it goes, with no cue of its own
-        bool leaving = v.FaintAge >= 0f || v.RecallAge >= 0f || !v.Present;
+        // A Pokémon going back into its ball shrinks back as it goes, with no cue of its own; one that fainted giant falls
+        // into its clouds with one (plan 25 · YD3)
+        bool fell = v.FallAge >= 0f && v.FaintAge >= 0f;
+        bool leaving = !fell && (v.FaintAge >= 0f || v.RecallAge >= 0f || !v.Present);
         v.GiantAge = played ? 0f : -1f;
+        v.TickAge = -1f;
         if (!played || leaving) return null;
         var cue = new EffectCue
         {
-            Kind = CueKind.DynamaxEnd, Gigantamax = gigantamax, FromSide = side, FromSlot = slot, ToSide = side, ToSlot = slot,
+            Kind = CueKind.DynamaxEnd, Gigantamax = gigantamax, Fell = fell, FromSide = side, FromSlot = slot, ToSide = side, ToSlot = slot,
             Seed = ++giantCount * 4583 + slot * 17 + (int)side
         };
         cues.Add(cue);
@@ -1184,7 +1233,48 @@ public sealed class BattleAnimator
             v.GiantAge = -1f;
             v.GiantLead = 0f;
         }
-        v.DynamaxTurnsLeft = dynamaxed ? Math.Clamp(turnsLeft, 1, 3) : 0;
+        int now = dynamaxed ? Math.Clamp(turnsLeft, 1, 3) : 0;
+        // The pill ticks down as the menu settles a lower count, never up (plan 25 · YD3)
+        if (now > 0 && v.DynamaxTurnsLeft > now)
+        {
+            v.TickAge = 0f;
+            v.TickFrom = v.DynamaxTurnsLeft;
+        }
+        else if (now == 0) v.TickAge = -1f;
+        v.DynamaxTurnsLeft = now;
+    }
+
+    /// <summary>
+    /// A Max Move strikes the Pokémon here (plan 25 · YD2): its HP box jolts and the share it is about to lose stays
+    /// white on the bar a moment (from the bar's own HP now, never the rules').
+    /// </summary>
+    public void Punch(BattleSide side, int slot)
+    {
+        var v = this[side, slot];
+        // A second blow while the first's white still shows keeps the white where it is
+        v.GhostHp = v.PunchAge >= 0f ? Math.Max(v.GhostHp, v.DisplayedHp) : v.DisplayedHp;
+        v.PunchAge = 0f;
+    }
+
+    /// <summary>The Pokémon here put up its Max Guard this turn (plan 25 · YD3): a blow that comes to nothing on it rings the dome.</summary>
+    public void GuardUp(BattleSide side, int slot) => this[side, slot].MaxGuarded = true;
+
+    /// <summary>A menu opens: every Max Guard has come down with the turn (plan 25 · YD3).</summary>
+    public void SettleGuard(BattleSide side, int slot) => this[side, slot].MaxGuarded = false;
+
+    /// <summary>A Dynamaxed Pokémon on the field is on its last turn (plan 25 · YD3): the heartbeat under the music.</summary>
+    public bool GiantOnItsLastTurn
+    {
+        get
+        {
+            for (int side = 0; side < 2; side++)
+                for (int slot = 0; slot < SlotsOf((BattleSide)side); slot++)
+                {
+                    var v = views[side, slot];
+                    if (v.Present && v.Dynamaxed && v.DynamaxTurnsLeft == 1 && v.FaintAge < 0f) return true;
+                }
+            return false;
+        }
     }
 
     /// <summary>
@@ -1202,8 +1292,24 @@ public sealed class BattleAnimator
             return 1f + (big - 1f) * (1f - (1f - k) * (1f - k));
         }
         if (v.GiantAge < 0f) return 1f;
-        float s = Math.Clamp(v.GiantAge / DynamaxShrinkTime, 0f, 1f);
-        return big - (big - 1f) * s * s * (3f - 2f * s);
+        return FallOf(v.GiantAge, big);
+    }
+
+    /// <summary>
+    /// The fall's size (plan 25 · YD3): held giant while it shudders, falling in to <see cref="DynamaxFallLow"/> of its
+    /// own size by <see cref="DynamaxShrunk"/>, and back up to its own by <see cref="DynamaxShrinkTime"/>.
+    /// </summary>
+    public static float FallOf(float age, float big)
+    {
+        static float Smooth(float t)
+        {
+            t = Math.Clamp(t, 0f, 1f);
+            return t * t * (3f - 2f * t);
+        }
+        if (age < DynamaxFallStart) return big;
+        if (age < DynamaxShrunk) return big + (DynamaxFallLow - big) * Smooth((age - DynamaxFallStart) / (DynamaxShrunk - DynamaxFallStart));
+        if (age < DynamaxShrinkTime) return DynamaxFallLow + (1f - DynamaxFallLow) * Smooth((age - DynamaxShrunk) / (DynamaxShrinkTime - DynamaxShrunk));
+        return 1f;
     }
 
     /// <summary>
@@ -1322,7 +1428,19 @@ public sealed class BattleAnimator
         var v = this[side, slot];
         v.FaintDelay = delay;
         v.FaintAge = 0f;
+        // A giant falls into its clouds first (plan 25 · YD3): the faint waits for it
+        if (v.Dynamaxed && v.Present && fallsAsGiant)
+        {
+            v.FallAge = 0f;
+            v.FaintDelay += GiantFallTime;
+            // Its end begins with the fall, whenever the rules' line of it comes
+            Undynamax(side, slot);
+        }
     }
+
+    /// <summary>Whether a giant that faints falls into its clouds first (the scene on; plan 25 · YD3). Set by the engine.</summary>
+    public bool FallsAsGiant { get => fallsAsGiant; set => fallsAsGiant = value; }
+    private bool fallsAsGiant = true;
 
     /// <summary>Called back into its ball: a doll standing in front of it goes as it does.</summary>
     public void Recall(BattleSide side, int slot = 0)
@@ -1439,6 +1557,9 @@ public sealed class BattleAnimator
             v.GiantAge = -1f;
             v.GiantLead = 0f;
         }
+        // The Dynamax's finisher and fall (plan 25 · YD2, YD3)
+        v.TickAge = Tick(v.TickAge, dt, TickTime);
+        if (v.FallAge >= 0f) v.FallAge += dt;
 
         if (v.FaintAge >= 0f)
         {
@@ -1469,6 +1590,15 @@ public sealed class BattleAnimator
         if (shown == null) return;
         float hpRate = Math.Max(1f, shown.MaxHP * 0.9f);
         v.DisplayedHp = Toward(v.DisplayedHp, shown.CurrentHP, hpRate * dt);
+        // A Max Move's white ghost of the bar (plan 25 · YD2): held a moment, then draining after the bar at its pace,
+        // and never under it nor over the most
+        if (v.PunchAge >= 0f)
+        {
+            v.PunchAge += dt;
+            if (v.PunchAge > GhostHold) v.GhostHp = Toward(v.GhostHp, v.DisplayedHp, hpRate * dt);
+            v.GhostHp = Math.Clamp(v.GhostHp, v.DisplayedHp, Math.Max(v.DisplayedHp, shown.MaxHP));
+            if (v.PunchAge > Math.Max(PunchTime, GhostHold) && v.GhostHp <= v.DisplayedHp + 0.01f) v.PunchAge = -1f;
+        }
         float exp = shown.ExpProgressRatio;
         v.DisplayedExp = exp < v.DisplayedExp ? exp : Toward(v.DisplayedExp, exp, 0.8f * dt);
         // Tiredness follows the bar, never the HP the rules have (plan 25 · Y5), coming on as the bar crosses into the red
@@ -1491,7 +1621,10 @@ public sealed class BattleAnimator
         v.GiantAge = -1f;
         v.GiantLead = 0f;
         v.DynamaxTurnsLeft = 0;
+        v.PunchAge = v.TickAge = v.FallAge = -1f;
+        v.MaxGuarded = false;
         v.DisplayedHp = pokemon.CurrentHP;
+        v.GhostHp = pokemon.CurrentHP;
         v.DisplayedExp = pokemon.ExpProgressRatio;
         // One that comes in already in the red is tired from the start (plan 25 · Y5)
         v.Tired = InTheRed(v) ? 1f : 0f;

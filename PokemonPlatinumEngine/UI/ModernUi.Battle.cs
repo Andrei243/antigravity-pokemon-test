@@ -267,6 +267,9 @@ internal static partial class ModernUi
     private static void CompactBox(float x, float y, CombatantView view, bool mine, bool turn, float skew, bool caught = false)
     {
         var p = view.Shown!;
+        var (jolt, ghost, thump) = PunchOf(view);
+        x += jolt.X;
+        y += jolt.Y;
         var r = new Rectangle(x, y, 560, mine ? 116 : 104);
         if (turn) UiShapes.Shadow(r, 20, 20, Vector2.Zero, Selection with { A = 200 }, skew);
         Panel(r, 20, skew, turn ? 5f : 4f, turn ? Selection : null);
@@ -276,13 +279,13 @@ internal static partial class ModernUi
         if (caught) nameW += CaughtMark(x + pad + nameW, y + 32, 30);
         StatusPill(x + pad + nameW + 12, y + 17, p.Status, 28);
         Level(x + r.Width - 40, y + 32, p.Level, 30);
-        HpBar(x + pad, y + 62, r.Width - pad - 44, 20, view.DisplayedHp / Math.Max(1, p.MaxHP));
+        HpBar(x + pad, y + 62, r.Width - pad - 44, 20, view.DisplayedHp / Math.Max(1, p.MaxHP), ghost);
         if (mine)
         {
             int hp = (int)MathF.Ceiling(view.DisplayedHp);
             string hpText = $"{hp} / {p.MaxHP}";
-            float hw = UiFonts.Measure(hpText, 24, UiWeight.Black);
-            UiFonts.DrawCentered(hpText, x + r.Width - 40 - hw, y + 94, 24, Ink, UiWeight.Black);
+            float hw = UiFonts.Measure(hpText, 24 * thump, UiWeight.Black);
+            UiFonts.DrawCentered(hpText, x + r.Width - 40 - hw, y + 94, 24 * thump, Ink, UiWeight.Black);
             ExpBar(new Rectangle(x + pad, y + r.Height - 18, 300, 7), view.DisplayedExp);
         }
         GiantTags(r, view);
@@ -301,13 +304,16 @@ internal static partial class ModernUi
     private static void HordeBox(float x, float y, CombatantView view, bool caught)
     {
         var p = view.Shown!;
+        var (jolt, ghost, _) = PunchOf(view);
+        x += jolt.X;
+        y += jolt.Y;
         var r = new Rectangle(x, y, HordeBoxWidth, HordeBoxHeight);
         Panel(r, 18, -0.2f, 4f, null);
         float nameW = NameWithGender(p, x + 30, y + 27, 26);
         if (caught) nameW += CaughtMark(x + 30 + nameW, y + 27, 26);
         StatusPill(x + 30 + nameW + 10, y + 14, p.Status, 24);
         Level(x + r.Width - 34, y + 27, p.Level, 26);
-        HpBar(x + 30, y + 52, r.Width - 30 - 38, 16, view.DisplayedHp / Math.Max(1, p.MaxHP));
+        HpBar(x + 30, y + 52, r.Width - 30 - 38, 16, view.DisplayedHp / Math.Max(1, p.MaxHP), ghost);
         GiantTags(r, view);
     }
 
@@ -325,6 +331,9 @@ internal static partial class ModernUi
     private static void TripleBox(float x, float y, CombatantView view, bool turn)
     {
         var p = view.Shown!;
+        var (jolt, ghost, thump) = PunchOf(view);
+        x += jolt.X;
+        y += jolt.Y;
         var r = new Rectangle(x, y, HordeBoxWidth, HordeBoxHeight);
         if (turn) UiShapes.Shadow(r, 18, 18, Vector2.Zero, Selection with { A = 200 }, 0.2f);
         Panel(r, 18, 0.2f, turn ? 5f : 4f, turn ? Selection : null);
@@ -334,8 +343,8 @@ internal static partial class ModernUi
         int hp = (int)MathF.Ceiling(view.DisplayedHp);
         string hpText = $"{hp}/{p.MaxHP}";
         float hw = UiFonts.Measure(hpText, 20, UiWeight.Black);
-        HpBar(x + 34, y + 52, r.Width - 34 - 34 - hw - 14, 16, view.DisplayedHp / Math.Max(1, p.MaxHP));
-        UiFonts.DrawCentered(hpText, x + r.Width - 34 - hw, y + 60, 20, Ink, UiWeight.Black);
+        HpBar(x + 34, y + 52, r.Width - 34 - 34 - hw - 14, 16, view.DisplayedHp / Math.Max(1, p.MaxHP), ghost);
+        UiFonts.DrawCentered(hpText, x + r.Width - 34 - UiFonts.Measure(hpText, 20 * thump, UiWeight.Black), y + 60, 20 * thump, Ink, UiWeight.Black);
         GiantTags(r, view);
     }
 
@@ -484,6 +493,9 @@ internal static partial class ModernUi
     private static void EnemyBox(float x, float y, CombatantView view, Party? trainerParty, bool caught = false)
     {
         var p = view.Shown!;
+        var (jolt, ghost, _) = PunchOf(view);
+        x += jolt.X;
+        y += jolt.Y;
         var r = new Rectangle(x, y, 580, 120);
 
         // A trainer's team on a tray hanging under the box: a ball for each Pokémon (grey once it has fainted)
@@ -513,7 +525,7 @@ internal static partial class ModernUi
         if (caught) nameW += CaughtMark(x + 38 + nameW, y + 38, 36);
         StatusPill(x + 38 + nameW + 14, y + 22, p.Status, 30);
         Level(x + r.Width - 46, y + 38, p.Level, 34);
-        HpBar(x + 38, y + 72, r.Width - 90, 24, view.DisplayedHp / Math.Max(1, p.MaxHP));
+        HpBar(x + 38, y + 72, r.Width - 90, 24, view.DisplayedHp / Math.Max(1, p.MaxHP), ghost);
         GiantTags(r, view);
     }
 
@@ -533,15 +545,18 @@ internal static partial class ModernUi
     private static void PlayerBox(float x, float y, CombatantView view)
     {
         var p = view.Shown!;
+        var (jolt, ghost, thump) = PunchOf(view);
+        x += jolt.X;
+        y += jolt.Y;
         var r = new Rectangle(x, y, 628, 162);
         Panel(r, 22, skew: 0.2f);
         NameWithGender(p, x + 52, y + 40, 36);
         Level(x + r.Width - 40, y + 40, p.Level, 34);
         int hp = (int)MathF.Ceiling(view.DisplayedHp);
-        HpBar(x + 52, y + 74, r.Width - 96, 24, view.DisplayedHp / Math.Max(1, p.MaxHP));
+        HpBar(x + 52, y + 74, r.Width - 96, 24, view.DisplayedHp / Math.Max(1, p.MaxHP), ghost);
         string hpText = $"{hp} / {p.MaxHP}";
-        float hw = UiFonts.Measure(hpText, 30, UiWeight.Black);
-        UiFonts.DrawCentered(hpText, x + r.Width - 44 - hw, y + 122, 30, Ink, UiWeight.Black);
+        float hw = UiFonts.Measure(hpText, 30 * thump, UiWeight.Black);
+        UiFonts.DrawCentered(hpText, x + r.Width - 44 - hw, y + 122, 30 * thump, Ink, UiWeight.Black);
         StatusPill(x + 52, y + 106, p.Status, 30);
 
         // EXP runs along the bottom edge of the box
