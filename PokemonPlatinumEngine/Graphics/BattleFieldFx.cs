@@ -900,8 +900,17 @@ internal static class BattleFieldFx
             {
                 var rest = ground + Vector3.UnitY * (p.Top + hover);
                 at = Vector3.Lerp(impact, rest, u) + Vector3.UnitY * (p.R * 0.5f * MathF.Sin(u * MathF.PI));
-                u = 1f;
                 turn += (1f - raw) * 9f;
+                // In flight it must read against the set piece's own grey shards (the leftovers of plan 25): drawn
+                // larger, in a cold blue-white with a dark steel rim, and a cyan trail behind it along its way, in
+                // place of its shadow and its glint, so a splinter in the air draws the same three quads as at rest
+                float near = Math.Clamp((u - 0.02f) * 50f, 0f, 1f);
+                var back = Vector3.Lerp(impact, rest, Math.Max(0f, u - 0.08f)) + Vector3.UnitY * (p.R * 0.5f * MathF.Sin(Math.Max(0f, u - 0.08f) * MathF.PI));
+                float big = size * (1.7f - 0.7f * u);
+                fx.Streak(FxShape.Glow, (at + back) * 0.5f, at - back, big * 0.55f, 3.2f, Rgba(120, 214, 255, 210f * k * near), FxBlend.Alpha, depth: true);
+                fx.Sprite(FxShape.Shard, at, big * 1.3f, Rgba(30, 40, 62, 255f * k), FxBlend.Alpha, turn, depth: true);
+                fx.Sprite(FxShape.Shard, at, big, Rgba(222, 236, 255, 255f * k), FxBlend.Alpha, turn, depth: true);
+                continue;
             }
             fx.Flat(FxShape.Glow, ground, Vector3.UnitY, size * 1.2f, Rgba(18, 20, 28, 70f * k * u), FxBlend.Alpha);
             fx.Sprite(FxShape.Shard, at, size, Rgba(176, 188, 206, 255f * k * u), FxBlend.Alpha, turn, depth: true);

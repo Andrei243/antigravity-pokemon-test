@@ -25,7 +25,8 @@ partial class Harness
     //   9. the Champions with the Mega Max Band (plan 25 · YD6): the bands (gi60 to gi64), Cynthia's fight under the boss box (gi65 to gi75), the Battle Scene off (gi78, gi79).
     //  10. the Gigantamax signatures, part a (plan 25 · YD7): the five's growths and set pieces (gi80 to gi84), a foe's G-Max Replenish (gi85).
     //      Part b: Chi Strike, Gold Rush, Cuddle, Befuddle and Depletion the same way (gi86 to gi90).
-    // GIANTS_PART=cynthia|dynamax|double|own|finisher|guard|field|megamax|champions|signatures runs one part; signaturesb part b alone with Resonance again.
+    //  11. doubles (plan 25's leftovers): a Mega Dynamax and a Max Flare's sun in a double (gi91 to gi94), G-Max Steelsurge across a double's foes (gi95).
+    // GIANTS_PART=cynthia|dynamax|double|own|finisher|guard|field|megamax|champions|signatures|doubles runs one part; signaturesb part b alone with Resonance again.
     public void GiantsMode()
     {
         string only = Environment.GetEnvironmentVariable("GIANTS_PART") ?? "";
@@ -987,6 +988,119 @@ partial class Harness
                 Watch(fb, "gi85_foe", 4, 3);
             }
             for (int i = 0; i < partB.Length; i++) Signature(partB[i].Prefix, partB[i].Species, partB[i].Move, partB[i].Foe, 386u + (uint)i);
+        }
+
+        // ---- 11. Doubles (plan 25's leftovers, after YD7): the player's own Garchomp Mega Evolving and Mega Dynamaxing
+        // beside a Blissey against two Snorlax, with a Max Flare whose sun arrives from its blow in the same turn
+        // (gi91_double_mega_*, gi92_double_megamax_*, gi93_double_sun_*, gi94_double_menu), and a Gigantamax Copperajah's
+        // G-Max Steelsurge thrown across the foes' side of a double (gi95_double_steelsurge_*). Last in the mode, so no
+        // shot before it moves. GIANTS_PART=doubles runs it alone.
+        if (only is "" or "doubles")
+        {
+            BattleEngine Double(uint seed, params Pokemon[] mine)
+            {
+                var party = new Party();
+                foreach (var p in mine) party.Add(p);
+                var bag = new Inventory();
+                bag.AddItem(ItemDatabase.Get(PokemonPlatinumEngine.Battle.Sim.BattleCore.KeyStoneItem)!);
+                bag.AddItem(ItemDatabase.Get(PokemonPlatinumEngine.Battle.Sim.BattleCore.DynamaxBandItem)!);
+                bag.AddItem(ItemDatabase.Get(PokemonPlatinumEngine.Battle.Sim.BattleCore.MegaMaxBandItem)!);
+                game.Map = MapDatabase.Get("Sinnoh");
+                game.BattleRenderer.SetArena(BattleArena.Grass);
+                var b = new BattleEngine(new BattleSetup
+                {
+                    PlayerParty = party, Inventory = bag, Pokedex = pokedex, Format = BattleFormat.Double,
+                    WildPokemon = new List<Pokemon> { Sitter("Snorlax", 70), Sitter("Snorlax", 70) },
+                    Random = new BattleRandom(seed).Force(RollKind.Critical, 1).Force(RollKind.Accuracy, 0), Rules = Ruleset.Modern
+                });
+                game.Battle = b;
+                game.State = GameState.Battle;
+                ToMainMenu(b);
+                for (int i = 0; i < 8 && b.HUD.MenuState == BattleMenuState.Message; i++) { Confirm(b); Skip(0.5); }
+                Skip(1.0);
+                return b;
+            }
+
+            // The first Pokémon armed (presses of the item button) onto the first foe, the second's first move
+            void Choose(BattleEngine b, int presses)
+            {
+                b.SelectMainMenuOption(0);
+                Frames(5);
+                for (int i = 0; i < presses; i++) b.ToggleLaterMechanic();
+                Console.WriteLine($"  armed: Mega Dynamax {b.MegaDynamaxArmed}");
+                b.SelectMove(0);
+                Frames(1);
+                if (b.HUD.MenuState == BattleMenuState.SelectTarget) { b.SelectTarget(0); Frames(1); }
+                if (b.HUD.MenuState == BattleMenuState.Main)
+                {
+                    b.SelectMainMenuOption(0);
+                    Frames(2);
+                    b.SelectMove(0);
+                    Frames(1);
+                    if (b.HUD.MenuState == BattleMenuState.SelectTarget) { b.SelectTarget(0); Frames(1); }
+                }
+            }
+
+            void Arrives(BattleEngine b, string prefix, Func<(bool Now, float Age, string What)> seen, params double[] ages)
+            {
+                (bool Now, float Age, string What) found = default;
+                for (int i = 0; i < 800 && !b.IsBattleOver; i++)
+                {
+                    found = seen();
+                    if (found.Now) break;
+                    if (b.IsWaitingForConfirm) Confirm(b); else Skip(0.05);
+                }
+                if (!found.Now) { Console.WriteLine($"  !! never arrived: {prefix}"); return; }
+                Console.WriteLine($"  {prefix}: {found.What} found arriving at {found.Age:0.00} s");
+                double at = found.Age;
+                for (int i = 0; i < ages.Length; i++)
+                {
+                    if (ages[i] > at) Skip(ages[i] - at);
+                    at = Math.Max(at, ages[i]);
+                    Shot($"{prefix}_{i + 1}");
+                    Console.WriteLine($"  {prefix}_{i + 1} +{ages[i]:0.00} s: {game.BattleRenderer.Effects.Count} quads and ribbons; camera {game.BattleRenderer.Shot}; {seen().What}");
+                }
+            }
+
+            void ToMenu(BattleEngine b, string shot)
+            {
+                for (int i = 0; i < 400 && b.HUD.MenuState != BattleMenuState.Main && !b.IsBattleOver; i++) { if (b.IsWaitingForConfirm) Confirm(b); else Skip(0.05); }
+                Skip(1.0);
+                Shot(shot);
+                Console.WriteLine($"  {shot}: {game.BattleRenderer.Effects.Count} quads and ribbons; mine {Side(b, BattleSide.Player)}; theirs {Side(b, BattleSide.Enemy)}; weather {b.Anim.Weather}");
+            }
+
+            var garchomp = Giant("Garchomp", false, 60, "Flamethrower", "Earthquake");
+            garchomp.HeldItem = ItemDatabase.Get("Garchompite");
+            var d = Double(341, garchomp, Sitter("Blissey", 60));
+            Shot("gi91_double_menu");
+            Choose(d, 2);
+            var mega = Until(d, c => c.Kind == CueKind.Mega, 200);
+            if (mega == null) Console.WriteLine("  !! no Mega Evolution in the double");
+            else
+            {
+                Console.WriteLine($"  gi91_double_mega: told a Mega Dynamax {mega.MegaMax}, at {mega.ToSide} {mega.ToSlot}, held {d.Anim.MegaMaxHold != null}");
+                Beat(d, "gi91_double_mega", 0.2, 0.8, 1.3, 1.9, 2.6);
+                var growth = Until(d, c => c.Kind == CueKind.Dynamax, 200);
+                if (growth == null) Console.WriteLine("  !! no growth after the Mega in the double");
+                else
+                {
+                    Console.WriteLine($"  gi92_double_megamax: told a Mega Dynamax {growth.MegaMax}, the call {(growth.Lead > 0f ? "played" : "not played")}");
+                    Growth(d, "gi92_double_megamax", growth);
+                }
+                Arrives(d, "gi93_double_sun", () => d.Anim.Cues.FirstOrDefault(c => c.Kind == CueKind.Weather) is { } w
+                    ? (w.FromBlow, w.Age, $"{w.Weather} from the blow {w.FromBlow} on {w.ToSide} {w.ToSlot}") : (false, 0f, "no weather cue"), 0.08, 0.3, 0.6, 0.95);
+                ToMenu(d, "gi94_double_menu");
+            }
+
+            var s = Double(342, Giant("Copperajah", true, 50, "Iron Head"), Sitter("Blissey", 60));
+            Choose(s, 1);
+            Arrives(s, "gi95_double_steelsurge", () =>
+            {
+                var v = s.Anim.FieldLook.Of(BattleSide.Enemy, SideCondition.GMaxSteelsurge);
+                return (v.ArrivingFromABlow, v.Age, $"Steelsurge from {v.From?.ToString() ?? "nowhere"}, age {v.Age:0.00}, arrival {v.Arrival:0.00}");
+            }, 0.08, 0.3, 0.6, 0.9);
+            ToMenu(s, "gi95_double_steelsurge_settled");
         }
         game.State = GameState.Overworld;
     }
