@@ -1,0 +1,291 @@
+{
+  "people": {
+    "r17_gang": {
+      "name": {
+        "en": [
+          "Reese"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Biker Reese: This road's ours, and so is everyone who rides it. Pay the toll in a battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Biker Reese: Toll waived. This once."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r17_gang_2": {
+      "name": {
+        "en": [
+          "Joel"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Biker Joel: Nice wheels! Mine are faster, and so are my Pokémon!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Biker Joel: Faster isn't everything, I guess."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r17_gang_3": {
+      "name": {
+        "en": [
+          "Markey"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Biker Markey: You rolled all the way down here just to lose to me? Thanks!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Biker Markey: Now I have to ride back up. Ugh."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r17_gang_4": {
+      "name": {
+        "en": [
+          "Dale"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Biker Dale: Hey! Nobody passes me without stopping first!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Biker Dale: Fine. Go on past."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r17_gang_5": {
+      "name": {
+        "en": [
+          "Jacob"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Biker Jacob: My Pokémon breathe in exhaust fumes all day. They're tougher than they look!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Biker Jacob: Cough... they need some fresh air."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r17_gang_6": {
+      "name": {
+        "en": [
+          "Aiden"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Biker Aiden: I ride up and down, up and down. Want to see what the ride did to my team?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Biker Aiden: All that riding, and still not fit enough."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r17_gang_7": {
+      "name": {
+        "en": [
+          "Dan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Biker Dan: You look lost, kid. Lost battles too, I'll bet!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Biker Dan: Okay, okay. You're not lost."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r17_gang_8": {
+      "name": {
+        "en": [
+          "Theron"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Biker Theron: The gang leader said nobody gets by. And I always do what he says!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Biker Theron: He's going to hear about this..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r17_gang_9": {
+      "name": {
+        "en": [
+          "Glenn"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Biker Glenn: Hear that engine? That's my Pokémon revving up!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Biker Glenn: It stalled."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r17_gang_10": {
+      "name": {
+        "en": [
+          "Teddy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Biker Teddy: We bikers stick together. Beat one of us and you've got the rest to deal with!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Biker Teddy: Go on, the rest are waiting."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r17_gang_11": {
+      "name": {
+        "en": [
+          "Ernest"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Biker Ernest: This is the bottom of the road. And the bottom is where you'll stay!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Biker Ernest: Looks like I hit rock bottom instead."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

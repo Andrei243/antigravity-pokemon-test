@@ -1,0 +1,21 @@
+{
+  // The gate house on Route 18 (plan 20 · J15, part i) between the foot of the Cycling Road (warp 0, west) and Fuchsia
+  // City's side (warp 1, east). HeartGold's two triggers across its middle wait on variables of its own; here they are our
+  // own on the same tiles (route_18_gatehouse.txt): the west column turns back whoever has no Bicycle and notes that the
+  // player goes onto the road, the east column that they have come off it
+  "area": "route_18_gatehouse",
+  "bgmTrack": "kanto/route3",
+  "triggers": [
+    { "x": 6, "z": 6, "depth": 3, "script": "OffTheRoad" },
+    { "x": 5, "z": 6, "depth": 3, "script": "NeedBike" }
+  ],
+  "people": {
+    "r18r0101_counterm": {
+      "name": "Guard",
+      "still": true,
+      "dialog": [
+        "The Cycling Road climbs north from here all the way to Celadon City. It's hard going on the way up!"
+      ]
+    }
+  }
+}

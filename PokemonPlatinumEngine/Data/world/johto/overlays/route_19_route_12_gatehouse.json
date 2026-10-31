@@ -1,0 +1,15 @@
+{
+  // The gate house between Route 11 and Route 12 (plan 20 · J15, part i), whose key HeartGold names for Route 19. Its
+  // east door lets out into the clearing where Route 12's Snorlax sleeps, with room to walk round it
+  "area": "route_19_route_12_gatehouse",
+  "bgmTrack": "kanto/route11",
+  "people": {
+    "r11r0101_counterm": {
+      "name": "Guard",
+      "still": true,
+      "dialog": [
+        "There's a Snorlax fast asleep just outside the east door. Nobody can wake it, so folk heading for Lavender tiptoe round."
+      ]
+    }
+  }
+}

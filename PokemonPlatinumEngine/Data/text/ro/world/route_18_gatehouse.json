@@ -1,0 +1,23 @@
+{
+  "people": {
+    "r18r0101_counterm": {
+      "name": {
+        "en": [
+          "Guard"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Cycling Road climbs north from here all the way to Celadon City. It's hard going on the way up!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,23 @@
+{
+  "people": {
+    "d01r0101_gsmiddleman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A whole colony of Diglett dug this tunnel. Walk through and you'll come out near Pewter City, of all places."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

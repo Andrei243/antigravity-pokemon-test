@@ -1,0 +1,64 @@
+{
+  "key": "johto_route_17",
+  "index": 25,
+  "name": "Route 17",
+  "matrix": 0,
+  "kind": "Route",
+  "sign": "Route",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "City",
+  "dayMusic": "PL_BICYCLE",
+  "nightMusic": "PL_BICYCLE",
+  "encounters": "R17",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Fearow", "level": 28, "night": "Grimer" },
+    { "species": "Grimer", "level": 27, "day": "Slugma" },
+    { "species": "Fearow", "level": 28, "night": "Grimer" },
+    { "species": "Grimer", "level": 27, "day": "Slugma" },
+    { "species": "Grimer", "level": 29 },
+    { "species": "Grimer", "level": 29 },
+    { "species": "Fearow", "level": 30, "night": "Muk" },
+    { "species": "Fearow", "level": 30, "night": "Muk" },
+    { "species": "Slugma", "level": 29 },
+    { "species": "Muk", "level": 32 },
+    { "species": "Slugma", "level": 29 },
+    { "species": "Muk", "level": 32 }
+  ],
+  "landRate": 20,
+  "swarm": [
+    "Fearow",
+    "Fearow"
+  ],
+  "hoennSounds": [
+    "Plusle",
+    "Minun"
+  ],
+  "sinnohSounds": [
+    "Shinx",
+    "Shinx"
+  ],
+  "warps": [],
+  "objects": [
+    { "id": "r17_gang", "looks": "gang", "movement": "6", "x": 1136, "z": 318, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "script": "TRAINER_BIKER_REESE" },
+    { "id": "r17_gang_2", "looks": "gang", "movement": "0", "x": 1145, "z": 326, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "script": "TRAINER_BIKER_JOEL" },
+    { "id": "r17_gang_3", "looks": "gang", "movement": "0", "x": 1127, "z": 405, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_BIKER_MARKEY" },
+    { "id": "r17_gang_4", "looks": "gang", "movement": "0", "x": 1138, "z": 309, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 7, "script": "TRAINER_BIKER_DALE" },
+    { "id": "r17_gang_5", "looks": "gang", "movement": "0", "x": 1141, "z": 331, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "script": "TRAINER_BIKER_JACOB" },
+    { "id": "r17_gang_6", "looks": "gang", "movement": "20", "x": 1128, "z": 335, "facing": 0, "rangeX": 0, "rangeZ": 4, "trainer": "sees", "sight": 2, "script": "TRAINER_BIKER_AIDEN" },
+    { "id": "r17_gang_7", "looks": "gang", "movement": "0", "x": 1128, "z": 347, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 7, "script": "TRAINER_BIKER_DAN" },
+    { "id": "r17_gang_8", "looks": "gang", "movement": "0", "x": 1135, "z": 347, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 7, "script": "TRAINER_BIKER_THERON" },
+    { "id": "r17_gang_9", "looks": "gang", "movement": "5", "x": 1130, "z": 379, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_BIKER_GLENN" },
+    { "id": "r17_gang_10", "looks": "gang", "movement": "0", "x": 1133, "z": 402, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 7, "script": "TRAINER_BIKER_TEDDY" },
+    { "id": "r17_gang_11", "looks": "gang", "movement": "0", "x": 1140, "z": 405, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_BIKER_ERNEST" }
+  ],
+  "signs": [
+    { "x": 1133, "z": 355, "type": 2, "script": "std_hiddenitem_r17_max_ether", "item": "Max Ether", "flag": "FLAG_HIDDEN_ITEM_R17_MAX_ETHER" },
+    { "x": 1129, "z": 390, "type": 2, "script": "std_hiddenitem_r17_max_elixir", "item": "Max Elixir", "flag": "FLAG_HIDDEN_ITEM_R17_MAX_ELIXIR" }
+  ],
+  "triggers": []
+}

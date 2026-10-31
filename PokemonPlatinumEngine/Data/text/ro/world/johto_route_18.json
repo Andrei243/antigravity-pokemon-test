@@ -1,0 +1,92 @@
+{
+  "people": {
+    "r18_gsman2": {
+      "name": {
+        "en": [
+          "Bob"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Bob: My birds ride the sea breeze off the Cycling Road. Watch them swoop!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Bob: The breeze dropped."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r18_gsman2_2": {
+      "name": {
+        "en": [
+          "Boris"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Boris: I come here to watch the bikers fly by. You'll make a change!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Boris: You flew past me, too."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r18_gang": {
+      "name": {
+        "en": [
+          "Charles"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Biker Charles: You made it all the way down? Then you've earned a battle with me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Biker Charles: You earned the win, too."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "R18_001+1": {
+      "en": [
+        "Route 18\nCycling Road - Fuchsia City"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

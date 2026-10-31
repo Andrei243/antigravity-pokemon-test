@@ -1,0 +1,23 @@
+{
+  "people": {
+    "r16r0201_counterm": {
+      "name": {
+        "en": [
+          "Guard"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "West of here is the Cycling Road. It's one long slope down to Fuchsia City, so keep a firm grip on your handlebars!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

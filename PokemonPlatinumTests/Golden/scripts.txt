@@ -23417,6 +23417,13 @@ way -
 from Snorlax at 163,143 of Kanto
 way -
   > A sleeping Pokémon blocks the way. It's snoring soundly.
+=== route_16_gatehouse.NeedBike
+from the trigger at 5,6 of Route16_CyclingGate
+way -
+  Guard> Hold on! The Cycling Road is for Bicycles only. Come back when you've got one.
+=== route_16_gatehouse.OffTheRoad
+from the trigger at 6,6 of Route16_CyclingGate
+way -
 === route_16_house.Woman
 from Woman at 4,2 of Route16_House
 way -
@@ -23466,6 +23473,13 @@ from the trigger at 1,7 of Route18_EastEntrance_1F
 from the trigger at 2,6 of Route18_EastEntrance_1F
 way -
   = VAR_MAP_SCENE_ROUTE16 0 -> 1
+=== route_18_gatehouse.NeedBike
+from the trigger at 5,6 of Route18_CyclingGate
+way -
+  Guard> Sorry! The Cycling Road is for Bicycles only. Come back when you've got one.
+=== route_18_gatehouse.OffTheRoad
+from the trigger at 6,6 of Route18_CyclingGate
+way -
 === route_201.Briefcase
 from Professor's Briefcase at 112,854 of Sinnoh
 way 0.0

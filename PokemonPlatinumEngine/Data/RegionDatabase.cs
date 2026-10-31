@@ -578,6 +578,8 @@ public static class RegionDatabase
                 // Plan 20 · J15, part h: Route 19's and Route 15's gates, Fuchsia City's rooms and Janine's Gym, Viridian's Gym and Route 12's house
                 "Route19_FuchsiaGate", "Route15_FuchsiaGate", "Fuchsia_PokemonCenter_1F", "Fuchsia_PokemonCenter_B1F", "Fuchsia_Mart",
                 "Fuchsia_Gym", "Fuchsia_SouthwestHouse", "Fuchsia_WardensHouse", "Viridian_Gym", "Route12_FishingBrotherHouse",
+                // Plan 20 · J15, part i: the gate between Routes 11 and 12, Diglett's Cave, the Cycling Road's two gates and Route 16's house
+                "Route11_Route12Gate", "Diglett_Cave", "Route16_CyclingGate", "Route16_EastHouse", "Route18_CyclingGate",
             }
         },
         new()

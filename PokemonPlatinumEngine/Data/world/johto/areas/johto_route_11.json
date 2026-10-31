@@ -1,0 +1,68 @@
+{
+  "key": "johto_route_11",
+  "index": 19,
+  "name": "Route 11",
+  "matrix": 0,
+  "kind": "Route",
+  "sign": "Route",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "General",
+  "dayMusic": "GS_R_10_11",
+  "nightMusic": "GS_R_10_11",
+  "encounters": "R11",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Drowzee", "level": 14 },
+    { "species": "Rattata", "level": 15 },
+    { "species": "Drowzee", "level": 14 },
+    { "species": "Rattata", "level": 15 },
+    { "species": "Magnemite", "level": 15 },
+    { "species": "Magnemite", "level": 15 },
+    { "species": "Drowzee", "level": 16 },
+    { "species": "Drowzee", "level": 16 },
+    { "species": "Hypno", "level": 16 },
+    { "species": "Hypno", "level": 16 },
+    { "species": "Hypno", "level": 16 },
+    { "species": "Hypno", "level": 16 }
+  ],
+  "landRate": 20,
+  "swarm": [
+    "Drowzee",
+    "Drowzee"
+  ],
+  "hoennSounds": [
+    "Plusle",
+    "Minun"
+  ],
+  "sinnohSounds": [
+    "Shinx",
+    "Shinx"
+  ],
+  "warps": [
+    { "x": 1401, "z": 305, "to": "route_19_route_12_gatehouse", "toWarp": 0 },
+    { "x": 1401, "z": 306, "to": "route_19_route_12_gatehouse", "toWarp": 0 },
+    { "x": 1354, "z": 302, "to": "diglett_cave", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "r11_mystery_2", "looks": "mystery_2", "movement": "9", "x": 1363, "z": 300, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_PSYCHIC_M_FIDEL" },
+    { "id": "r11_mystery_2_2", "looks": "mystery_2", "movement": "44", "x": 1380, "z": 301, "facing": 1, "rangeX": 10, "rangeZ": 5, "trainer": "sees", "sight": 2, "script": "TRAINER_PSYCHIC_M_HERMAN" },
+    { "id": "r11_gsboy2", "looks": "gsboy2", "movement": "4", "x": 1372, "z": 302, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_YOUNGSTER_OWEN" },
+    { "id": "r11_gsboy2_2", "looks": "gsboy2", "movement": "20", "x": 1372, "z": 295, "facing": 3, "rangeX": 9, "rangeZ": 0, "trainer": "sees", "sight": 1, "script": "TRAINER_YOUNGSTER_JASON" },
+    { "id": "r11_kabigon", "looks": "kabigon", "movement": "0", "x": 1354, "z": 304, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_11_SNORLAX", "script": "R11_000+1" },
+    { "id": "r11_bonguri", "looks": "bonguri", "movement": "0", "x": 1378, "z": 305, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "std_apricorn_tree" },
+    { "id": "r11_monstarball", "looks": "monstarball", "movement": "0", "x": 1393, "z": 292, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_R11_TM86", "item": "TM86", "script": "std_itemball_r11_tm86" },
+    { "id": "r11_gsbabyboy1", "looks": "gsbabyboy1", "movement": "53", "x": 1355, "z": 303, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_11_SNORLAX", "script": "R11_000+1" },
+    { "id": "r11_gsbabyboy1_2", "looks": "gsbabyboy1", "movement": "53", "x": 1354, "z": 303, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_11_SNORLAX", "script": "R11_000+1" },
+    { "id": "r11_gsbabyboy1_3", "looks": "gsbabyboy1", "movement": "53", "x": 1355, "z": 304, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_11_SNORLAX", "script": "R11_000+1" }
+  ],
+  "signs": [
+    { "x": 1352, "z": 303, "type": 1, "script": "R11_003+1" },
+    { "x": 1371, "z": 292, "type": 2, "script": "std_hiddenitem_r11_revive", "item": "Revive", "flag": "FLAG_HIDDEN_ITEM_R11_REVIVE" },
+    { "x": 1397, "z": 304, "type": 1, "script": "R11_002+1" }
+  ],
+  "triggers": []
+}

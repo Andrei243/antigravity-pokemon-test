@@ -1,0 +1,11 @@
+# Route 17 as HeartGold has it (plan 20 · J15, part i), the Cycling Road. docs/scripts.md describes the language. Whoever
+# came onto the road through one of its gates (VAR_JOHTO_CYCLING_ROAD 1, route_16_gatehouse.txt, route_18_gatehouse.txt)
+# rides it: on the Bicycle, and kept on it until the next door (FLAG_ON_CYCLING_ROAD), as FireRed's Kanto does
+# (route_17.txt).
+
+
+script OnEnter
+  if var VAR_JOHTO_CYCLING_ROAD != 1 end
+  bicycle on
+  setflag FLAG_ON_CYCLING_ROAD
+  end

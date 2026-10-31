@@ -10,9 +10,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 |---|---|---|---|---|---|
 | The introduction (`intro:`) | 80 | 80 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1276 | 1236 | 40 | 1 | 0 |
-| Scripts (`script:`) | 9120 | 8692 | 428 | 17 | 0 |
-| People of the world (`world:`) | 6773 | 6714 | 59 | 4 | 0 |
-| **All** | 17249 | 16722 | 527 | 22 | 0 |
+| Scripts (`script:`) | 9122 | 8694 | 428 | 17 | 0 |
+| People of the world (`world:`) | 6815 | 6756 | 59 | 4 | 0 |
+| **All** | 17293 | 16766 | 527 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -22,7 +22,7 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 |---|---|
 | a Pokémon's cry | 229 |
 | a question's answers | 551 |
-| a sign | 1508 |
+| a sign | 1512 |
 | the game's own voice (speaker none) | 250 |
 | the game's own voice (text) | 1302 |
 
@@ -40,12 +40,12 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | Voice | Lines | Shown only |
 |---|---|---|
 | `@self` | 1854 | 132 |
-| `look:gentleman (any)` | 683 | 13 |
+| `look:gentleman (any)` | 686 | 13 |
 | `look:grunt (any)` | 582 | 0 |
 | `rival` | 577 | 17 |
 | `look:lady (any)` | 395 | 1 |
 | `look:youngster (any)` | 373 | 18 |
-| `look:clerk (any)` | 325 | 7 |
+| `look:clerk (any)` | 328 | 7 |
 | `look:lass (any)` | 308 | 11 |
 | `look:nurse (any)` | 247 | 0 |
 | `look:attendant (any)` | 218 | 7 |
@@ -62,12 +62,12 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:woman (any)` | 129 | 13 |
 | `class:swimmer_m (any)` | 126 | 0 |
 | `class:picnicker (any)` | 112 | 0 |
+| `class:youngster (any)` | 112 | 0 |
 | `assistant` | 111 | 5 |
 | `class:black_belt (any)` | 110 | 0 |
+| `look:guard (any)` | 110 | 0 |
 | `look:old_man (any)` | 109 | 4 |
 | `class:psychic (any)` | 108 | 0 |
-| `class:youngster (any)` | 108 | 0 |
-| `look:guard (any)` | 108 | 0 |
 | `mom` | 105 | 6 |
 | `look:boy (any)` | 104 | 4 |
 | `class:swimmer_f (any)` | 102 | 0 |
@@ -93,6 +93,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:twins (any)` | 72 | 0 |
 | `class:swimmer (any)` | 70 | 0 |
 | `steven` | 65 | 0 |
+| `class:biker (any)` | 64 | 0 |
 | `class:sailor (any)` | 62 | 0 |
 | `prof_juniper` | 62 | 0 |
 | `underground_man` | 62 | 0 |
@@ -115,16 +116,15 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `maxie` | 46 | 1 |
 | `scott` | 46 | 0 |
 | `wallace` | 46 | 2 |
+| `class:bird_keeper_gs (any)` | 44 | 0 |
 | `class:team_aqua (any)` | 44 | 0 |
 | `class:team_magma (any)` | 44 | 0 |
 | `crasher_wake` | 44 | 1 |
 | `mystery` | 43 | 4 |
 | `buck` | 42 | 1 |
 | `class:battle_girl (any)` | 42 | 0 |
-| `class:biker (any)` | 42 | 0 |
 | `riley` | 42 | 0 |
 | `flint` | 41 | 1 |
-| `class:bird_keeper_gs (any)` | 40 | 0 |
 | `look:host (any)` | 40 | 16 |
 | `volkner` | 40 | 1 |
 | `collector` | 39 | 0 |
@@ -197,6 +197,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:dragon_tamer (any)` | 22 | 0 |
 | `class:pokemaniac (any)` | 22 | 0 |
 | `class:pokémon_breeder (any)` | 22 | 0 |
+| `class:psychic_m (any)` | 22 | 0 |
 | `look:ninja_boy (any)` | 22 | 0 |
 | `marley` | 22 | 0 |
 | `mars` | 22 | 0 |

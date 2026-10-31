@@ -1,0 +1,26 @@
+{
+  "key": "johto_route_16_house",
+  "index": 415,
+  "name": "Route 16",
+  "matrix": 66,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_R_14_03",
+  "nightMusic": "GS_R_14_03",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 8, "to": "route_16_east", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "r16r0101_gsman1", "looks": "gsman1", "movement": "17", "x": 5, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "R16R0101_000+1" },
+    { "id": "r16r0101_gsoldman1", "looks": "gsoldman1", "movement": "16", "x": 8, "z": 5, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "R16R0101_001+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

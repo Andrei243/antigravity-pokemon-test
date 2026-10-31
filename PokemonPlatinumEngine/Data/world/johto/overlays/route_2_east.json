@@ -1,11 +1,9 @@
 {
   // Route 2's northern half as HeartGold has it (plan 20 · J15, part f): from Viridian Forest's northern gate to Pewter
-  // City, with a house and the gate south to Route 2's eastern way. Diglett's Cave (warp 4) waits for its session
+  // City, with a house and the gate south to Route 2's eastern way. Diglett's Cave (warp 4) leads under the hills
+  // to Route 11 since part i
   "area": "route_2_east",
   "bgmTrack": "kanto/route3",
-  "locked": [
-    4
-  ],
   "people": {
     "r02r0101_gsboy3": {
       "name": "Ed",
@@ -16,6 +14,6 @@
     }
   },
   "signs": {
-    "R02R0101_000+1": "Diglett's Cave\nThe cave is closed while its tunnels are shored up."
+    "R02R0101_000+1": "Diglett's Cave\nA tunnel dug by Diglett, through to Route 11 and Vermilion City."
   }
 }

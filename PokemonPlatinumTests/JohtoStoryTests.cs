@@ -2060,4 +2060,26 @@ public class JohtoStoryTests
         Assert.True(game.Story.HasDefeated("johto_double_team_elan_and_ida"));
         Assert.Contains(game.Talk("t02gym0101_sunglasses").Transcript, l => l.Text.Contains("You beat Blue"));
     }
+
+    [Fact]
+    public void TheCyclingRoadsGatesTurnBackWhoeverHasNoBicycleAndTheRoadIsRidden()
+    {
+        // Plan 20 · J15, part i: Route 16's gate between Celadon City's side and the Cycling Road, and Route 18's
+        foreach (string gate in new[] { "Route16_CyclingGate", "Route18_CyclingGate" })
+        {
+            var game = new Game();
+            game.Arrive(gate, 10, 7);
+            Assert.Contains(game.Step("NeedBike").Transcript, l => l.Text.Contains("Bicycles only"));
+            Assert.Equal(0, game.Story.Var("VAR_JOHTO_CYCLING_ROAD"));
+            game.Bag.AddItem(ItemDatabase.Get("Bicycle")!, 1);
+            Assert.Empty(game.Step("NeedBike").Transcript);
+            Assert.Equal(1, game.Story.Var("VAR_JOHTO_CYCLING_ROAD"));
+            // On the road the rider is kept on the Bicycle until the next door
+            game.Arrive("Johto", 1140, 330);
+            Assert.True(game.Story.Has("FLAG_ON_CYCLING_ROAD"));
+            game.Arrive(gate, 1, 7);
+            game.Step("OffTheRoad");
+            Assert.Equal(0, game.Story.Var("VAR_JOHTO_CYCLING_ROAD"));
+        }
+    }
 }

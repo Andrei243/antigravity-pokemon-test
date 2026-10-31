@@ -38,6 +38,7 @@
     { "area": "pewter", "id": "t03_bonguri_2", "colour": "Green" },
     { "area": "route_2_east", "id": "r02r0101_bonguri", "colour": "Yellow" },
     { "area": "johto_route_1", "id": "r01_bonguri", "colour": "Red" },
-    { "area": "fuchsia", "id": "t08_bonguri", "colour": "White" }
+    { "area": "fuchsia", "id": "t08_bonguri", "colour": "White" },
+    { "area": "johto_route_11", "id": "r11_bonguri", "colour": "Green" }
   ]
 }

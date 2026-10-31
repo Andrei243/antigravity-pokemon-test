@@ -1,0 +1,87 @@
+{
+  // Route 17 as HeartGold has it three years on (plan 20 · J15, part i), the Cycling Road: one long deck sloping south over
+  // the sea from Route 16 to Route 18, ruled by bikers, ridden by whoever came through one of its gates (johto_route_17.txt).
+  // Its key meets FireRed's, so it takes Johto's prefix (HgWorld.Clashes). Its trainers battle by their own records
+  // (Johto's trainers.json)
+  "area": "johto_route_17",
+  "bgmTrack": "kanto/route3",
+  "people": {
+    "r17_gang": {
+      "name": "Reese",
+      "trainer": {
+        "dialogueBefore": "Biker Reese: This road's ours, and so is everyone who rides it. Pay the toll in a battle!",
+        "dialogueAfter": "Biker Reese: Toll waived. This once."
+      }
+    },
+    "r17_gang_2": {
+      "name": "Joel",
+      "trainer": {
+        "dialogueBefore": "Biker Joel: Nice wheels! Mine are faster, and so are my Pokémon!",
+        "dialogueAfter": "Biker Joel: Faster isn't everything, I guess."
+      }
+    },
+    "r17_gang_3": {
+      "name": "Markey",
+      "trainer": {
+        "dialogueBefore": "Biker Markey: You rolled all the way down here just to lose to me? Thanks!",
+        "dialogueAfter": "Biker Markey: Now I have to ride back up. Ugh."
+      }
+    },
+    "r17_gang_4": {
+      "name": "Dale",
+      "trainer": {
+        "dialogueBefore": "Biker Dale: Hey! Nobody passes me without stopping first!",
+        "dialogueAfter": "Biker Dale: Fine. Go on past."
+      }
+    },
+    "r17_gang_5": {
+      "name": "Jacob",
+      "trainer": {
+        "dialogueBefore": "Biker Jacob: My Pokémon breathe in exhaust fumes all day. They're tougher than they look!",
+        "dialogueAfter": "Biker Jacob: Cough... they need some fresh air."
+      }
+    },
+    "r17_gang_6": {
+      "name": "Aiden",
+      "trainer": {
+        "dialogueBefore": "Biker Aiden: I ride up and down, up and down. Want to see what the ride did to my team?",
+        "dialogueAfter": "Biker Aiden: All that riding, and still not fit enough."
+      }
+    },
+    "r17_gang_7": {
+      "name": "Dan",
+      "trainer": {
+        "dialogueBefore": "Biker Dan: You look lost, kid. Lost battles too, I'll bet!",
+        "dialogueAfter": "Biker Dan: Okay, okay. You're not lost."
+      }
+    },
+    "r17_gang_8": {
+      "name": "Theron",
+      "trainer": {
+        "dialogueBefore": "Biker Theron: The gang leader said nobody gets by. And I always do what he says!",
+        "dialogueAfter": "Biker Theron: He's going to hear about this..."
+      }
+    },
+    "r17_gang_9": {
+      "name": "Glenn",
+      "trainer": {
+        "dialogueBefore": "Biker Glenn: Hear that engine? That's my Pokémon revving up!",
+        "dialogueAfter": "Biker Glenn: It stalled."
+      }
+    },
+    "r17_gang_10": {
+      "name": "Teddy",
+      "trainer": {
+        "dialogueBefore": "Biker Teddy: We bikers stick together. Beat one of us and you've got the rest to deal with!",
+        "dialogueAfter": "Biker Teddy: Go on, the rest are waiting."
+      }
+    },
+    "r17_gang_11": {
+      "name": "Ernest",
+      "trainer": {
+        "dialogueBefore": "Biker Ernest: This is the bottom of the road. And the bottom is where you'll stay!",
+        "dialogueAfter": "Biker Ernest: Looks like I hit rock bottom instead."
+      }
+    }
+  }
+}

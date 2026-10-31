@@ -1,0 +1,10 @@
+{
+  // Route 16's western half as HeartGold has it three years on (plan 20 · J15, part i): the head of the Cycling Road, west
+  // of its gate house, where the road turns south as Route 17. Whoever came through the gate onto the road rides from here
+  // (johto_route_16.txt). Its key meets FireRed's, so it takes Johto's prefix (HgWorld.Clashes)
+  "area": "johto_route_16",
+  "bgmTrack": "kanto/route3",
+  "signs": {
+    "R16_001+1": "Cycling Road\nRoute 17 - Downhill all the way to Fuchsia City"
+  }
+}

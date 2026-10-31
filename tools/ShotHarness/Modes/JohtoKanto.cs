@@ -426,6 +426,44 @@ partial class Harness
         Frames(30); Shot("jkh26_blues_battle");
         game.State = GameState.Overworld; ReadTo(null); game.Dialogue.Close();
         Console.WriteLine($"  Earth Badge {game.Story.HasBadge(RegionDatabase.Kanto, "Earth")}");
+
+        JohtoKantoSouthShots();
+    }
+
+    /// <summary>
+    /// Plan 20 · J15, part i: Route 11 east of Vermilion City, its gate to Route 12 and Diglett's Cave; Route 16 west of
+    /// Celadon City with its house and gate, the Cycling Road ridden by day and after dark, and Route 18 with its gate
+    /// (<c>jki01</c> to <c>jki14</c>), after part h's, so nothing before them moves. It prints whether the road put the player
+    /// on the Bicycle.
+    /// </summary>
+    void JohtoKantoSouthShots()
+    {
+        void Daylight(TimeOfDay time) { engine.Settings.TimeOfDay = time; engine.ApplySettings(window: false); }
+        game.State = GameState.Overworld;
+        game.Player.SetMode(TravelMode.OnFoot);
+
+        // ---- Route 11, its gate and Diglett's Cave
+        At("Johto", 1380, 304, Direction.Down); game.ArriveOnMap(); Frames(30); Shot("jki01_route_11");
+        At("Johto", 1355, 305, Direction.Up); game.ArriveOnMap(); Frames(30); Shot("jki02_digletts_caves_mouth");
+        At("Route11_Route12Gate", 5, 7, Direction.Up); game.ArriveOnMap(); Frames(10); Shot("jki03_route_11s_gate");
+        At("Diglett_Cave", 5, 6, Direction.Up); game.ArriveOnMap(); Frames(30); Shot("jki04_digletts_cave");
+        At("Diglett_Cave", 33, 84, Direction.Down); game.ArriveOnMap(); Frames(30); Shot("jki05_digletts_cave_below");
+
+        // ---- Route 16 and the Cycling Road
+        At("Johto", 1163, 278, Direction.Left); game.ArriveOnMap(); Frames(30); Shot("jki06_route_16");
+        At("Route16_EastHouse", 4, 7, Direction.Up); game.ArriveOnMap(); Frames(10); Shot("jki07_route_16s_house");
+        At("Route16_CyclingGate", 8, 7, Direction.Left); game.ArriveOnMap(); Frames(10); Shot("jki08_route_16s_gate");
+        if (game.Bag.GetQuantity(ItemDatabase.Get("Bicycle")!) == 0) game.Bag.AddItem(ItemDatabase.Get("Bicycle")!, 1);
+        game.Story.SetVar("VAR_JOHTO_CYCLING_ROAD", 1);
+        At("Johto", 1145, 277, Direction.Left); game.ArriveOnMap(); Frames(30); Shot("jki09_the_cycling_roads_head");
+        At("Johto", 1136, 330, Direction.Down); game.ArriveOnMap(); Frames(30); Shot("jki10_the_cycling_road");
+        Console.WriteLine($"  on the road: {game.Player.Mode}, FLAG_ON_CYCLING_ROAD {game.Story.Has("FLAG_ON_CYCLING_ROAD")}");
+        Daylight(TimeOfDay.Night); Frames(30); Shot("jki11_the_cycling_road_after_dark"); Daylight(TimeOfDay.Day);
+        At("Johto", 1140, 425, Direction.Right); game.ArriveOnMap(); Frames(30); Shot("jki12_route_18");
+        At("Route18_CyclingGate", 3, 7, Direction.Right); game.ArriveOnMap(); Frames(10); Shot("jki13_route_18s_gate");
+        game.Story.SetVar("VAR_JOHTO_CYCLING_ROAD", 0);
+        game.Player.SetMode(TravelMode.OnFoot);
+        At("Johto", 1170, 430, Direction.Right); game.ArriveOnMap(); Frames(30); Shot("jki14_route_18_to_fuchsia");
     }
 
 }
