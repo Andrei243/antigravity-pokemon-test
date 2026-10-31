@@ -1,11 +1,12 @@
 {
   // The Seafoam Islands' first floor as HeartGold has it three years on (plan 20 · J15, part g): the eastern mouth
   // from Route 20 leads to Blaine's Gym, which he set up in the cave after Cinnabar's volcano erupted. The ways down
-  // to the lower floors (warps 2 and 3) are shut: their currents and the bird within wait for their session. Its key
+  // to the lower floors (warps 2 and 3) are shut: their currents and the bird within wait for their session, and so does the western mouth (warp 1), which only the cave's western half reaches and which lets out into a pocket of Route 20 walled in by rock. Its key
   // meets FireRed's, so it takes Johto's prefix (HgWorld.Clashes)
   "area": "johto_seafoam_islands_1f",
   "bgmTrack": "kanto/viridian_forest",
   "locked": [
+    1,
     2,
     3
   ]

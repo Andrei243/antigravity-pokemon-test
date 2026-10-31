@@ -6732,7 +6732,9 @@ The user approved L9's default on 2026-10-26 (docs/plans/APPROVAL-levelling-and-
   leads to Route 1 and south to Pallet Town with Red's house and Blue's house (both floors) and Professor Oak's
   laboratory; Route 21 runs by sea to Cinnabar Island, of which only the Pokémon Center (both floors) stands; Route 20
   runs east by sea to the Seafoam Islands, whose first floor's eastern mouth leads to Blaine's Gym. The first floor's
-  ways down (warps 2 and 3) are locked: the lower floors, their currents and the bird within wait.
+  ways down (warps 2 and 3) are locked: the lower floors, their currents and the bird within wait. So is the western
+  mouth (Route 20's warp 1 and the first floor's warp 1): it lets out into a pocket of the island walled in by rock,
+  which only the cave's western half, beyond those ways down, reaches.
 - *Keys and names*: `route_1`, `route_20`, `cinnabar_island` and the five `seafoam_islands_*` floors meet FireRed's and
   take Johto's prefix (`HgWorld.Clashes`); `pallet`, its rooms (`pallet_town_reds_house_1f`…), `route_21`,
   `cinnabar_island_pokecenter_*` and `seafoam_islands_cinnabar_gym` meet none. The maps are `Pallet_…`, `Cinnabar_…`,
