@@ -4,8 +4,7 @@ partial class Harness
     // the three rows on (wy_run_panel_traits), then a game of its own under them, past the first chapter: a wild battle on
     // Route 201 with the Turtwig's moves open, the moves it learned by its line's new learnset and its types as the card's
     // hints tell them (wy_traits_moves), and Roark's battle, whose copies keep a Rock move each (wy_traits_roark). It prints
-    // the Turtwig's types, ability and moves and Roark's team's moves beside his own. Written, not run, in the session that
-    // built it.
+    // the Turtwig's types, ability and moves and Roark's team's moves beside his own.
     void TraitsMode()
     {
         var run = RunRules.Normal with { Random = new RandomizerOptions { Seed = ShotSeed, Species = false, Items = false, Abilities = true, Moves = true, Types = true } };
