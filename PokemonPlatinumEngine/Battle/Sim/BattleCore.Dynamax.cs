@@ -205,7 +205,7 @@ public sealed partial class BattleCore
 
     /// <summary>
     /// The Champion-level team with a Mega Dynamax ace a trainer fights with once the player holds the Mega Max Band
-    /// under rules that have it (docs/plans/R20c-mega-dynamax-proposals.md, 3.2): a record of <c>our-trainers.json</c>
+    /// under rules that have it (docs/plans/decisions/R20c-mega-dynamax-proposals.md, 3.2): a record of <c>our-trainers.json</c>
     /// named after the team fought, with <c>_megamax</c> in place of <c>_rematch</c> (<c>champion_cynthia_megamax</c>,
     /// <c>kanto_champion_megamax_squirtle</c>) or after it (<c>johto_champion_lance_megamax</c>); null for anyone else.
     /// </summary>
@@ -220,7 +220,7 @@ public sealed partial class BattleCore
     public bool CanMegaDynamax(Battler b) => CanMegaEvolve(b) && CanDynamax(b, withMega: true);
 
     /// <summary>
-    /// The trainer AI's one rule of Mega Dynamax (docs/plans/R20c-mega-dynamax-proposals.md, 1.4): a trainer with the
+    /// The trainer AI's one rule of Mega Dynamax (docs/plans/decisions/R20c-mega-dynamax-proposals.md, 1.4): a trainer with the
     /// Mega Max Band who still has a Pokémon able to Mega Evolve and Mega Dynamax, on the field or in the party and not
     /// fainted, keeps its Dynamax for that one. False under rules without it and with no band, so nothing changes there.
     /// </summary>

@@ -13,7 +13,7 @@ using static PokemonPlatinumTests.Scenario;
 namespace PokemonPlatinumTests;
 
 /// <summary>
-/// Mega Dynamax (plan 06 · R20c, our own; docs/plans/R20c-mega-dynamax-proposals.md, approved 2026-10-25;
+/// Mega Dynamax (plan 06 · R20c, our own; docs/plans/decisions/R20c-mega-dynamax-proposals.md, approved 2026-10-25;
 /// docs/mechanics/rulings.md, "Mega Dynamax"): a Mega that Dynamaxes with the Mega Max Band. One rule to a test, under the
 /// modern rules and on the rules alone, both sides answered for from outside unless the trainer AI is what is tested; the
 /// rolls fixed by kind (<see cref="CoreScenario.Calm"/>). The Pokémon have no IVs, EVs or nature (<see cref="Scenario.Mon"/>):

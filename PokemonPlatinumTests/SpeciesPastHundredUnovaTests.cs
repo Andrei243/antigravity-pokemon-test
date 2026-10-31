@@ -12,7 +12,7 @@ using static PokemonPlatinumTests.Scenario;
 namespace PokemonPlatinumTests;
 
 /// <summary>
-/// Plan 03 · D14, batch 5 (Unova: docs/plans/D14-proposals-unova.md, approved by the user with every default and all
+/// Plan 03 · D14, batch 5 (Unova: docs/plans/decisions/D14-proposals-unova.md, approved by the user with every default and all
 /// 52 designs). What is Unova's own beside <see cref="SpeciesPastHundredTests"/>, which holds every batch to the
 /// proposals' rules: the band within Unova's climb (question 1), the Swords of Justice beside Keldeo (question 2), the
 /// pairs, the stones again past a level, Darmanitan's hidden ability (question 3), and the forms of Basculin, Sawsbuck

@@ -14,7 +14,7 @@ namespace PokemonPlatinumTests;
 /// <summary>
 /// Plan 18 · W4b-3 (Design C, approved 2026-10-26): a region the game crossed into gives half as much EXP again, and a
 /// soft ceiling at 110% of its next milestone's mapped level stops EXP (never a level) in every difficulty, the run's own
-/// cap winning where it is lower. The numbers are <c>docs/plans/W4b-levelling-the-world.md</c>'s table under Design C.
+/// cap winning where it is lower. The numbers are <c>docs/plans/decisions/W4b-levelling-the-world.md</c>'s table under Design C.
 /// </summary>
 public class CrossedExpTests
 {

@@ -8,7 +8,7 @@ using static PokemonPlatinumTests.Scenario;
 namespace PokemonPlatinumTests;
 
 /// <summary>
-/// Plan 03 · D14, batch 6 (Kalos: docs/plans/D14-proposals-kalos.md, all 24 approved by the user on 2026-10-26 with
+/// Plan 03 · D14, batch 6 (Kalos: docs/plans/decisions/D14-proposals-kalos.md, all 24 approved by the user on 2026-10-26 with
 /// every default but question 2, whose Zygarde waits in D14-proposals-kalos-supplement.md). What is new to this batch:
 /// Kalos's own climb as the band (188 to 203), the species whose forms ours don't keep (a Gourgeist's size, a
 /// Furfrou's trim, the female Meowstic), the fossils holding a Rare Bone at their hour, Pangoro with a Pancham, and

@@ -8,7 +8,7 @@ using PokemonPlatinumEngine.Story;
 
 namespace PokemonPlatinumEngine.Battle.Sim;
 
-// The Leagues' teams beyond (plan 03 · D15, design T; docs/plans/D15-species-of-ours-in-the-world.md): a third team
+// The Leagues' teams beyond (plan 03 · D15, design T; docs/plans/decisions/D15-species-of-ours-in-the-world.md): a third team
 // for each region's Elite Four and Champion, of species of our own, found the way a Champion's Mega Dynamax team is
 // (MegaMaxTeamOf) and ready by question 10's default: the region's Hall of Fame entered and a Pokémon of the team at or
 // above the lowest level its batch of ours evolves at.

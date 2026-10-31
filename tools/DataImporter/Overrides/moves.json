@@ -33,7 +33,7 @@
     "statStageAmount": null,
     "statChangeChancePercent": null
   },
-  // Moves of our own past level 100 (plan 06 · R31, approved by the user on 2026-10-25: docs/plans/R31-move-proposals.md).
+  // Moves of our own past level 100 (plan 06 · R31, approved by the user on 2026-10-25: docs/plans/decisions/R31-move-proposals.md).
   // A move of ours has no PokeAPI row, so each is a whole row here, ids 3001 to 3072 in the proposal's order, four to a
   // type (its status move, its physical and its special attack, and an extra). Generation 0 is "ours": the coverage
   // report counts them apart. battleEffect is the Platinum move whose routines the trainer AI weighs it by. Who learns

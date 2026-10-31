@@ -7,7 +7,7 @@ namespace PokemonPlatinumEngine.Graphics;
 
 // The species of our own that evolve past level 100 (plan 03 · D14), batch 2: Johto's, in our numbers' order
 // (2000 + the forebear's National number), sculpted from the user's reference pictures and the looks of
-// docs/plans/D14-proposals-johto.md as batch 1 was (PokemonModels.Ours.Kanto.cs, whose helpers these use): the
+// docs/plans/decisions/D14-proposals-johto.md as batch 1 was (PokemonModels.Ours.Kanto.cs, whose helpers these use): the
 // forebear's build taken whole where the body stays and the new features added, or, where the body changes its plan,
 // built anew in the forebear's colours. The forebears' own sculpts are never touched.
 internal static partial class PokemonModels

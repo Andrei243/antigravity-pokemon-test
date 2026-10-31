@@ -12,7 +12,7 @@ using static PokemonPlatinumTests.Scenario;
 namespace PokemonPlatinumTests;
 
 /// <summary>
-/// The fifteen Megas of our own (plan 06 · R20b: docs/plans/R20b-mega-proposals.md, approved by the user in full on
+/// The fifteen Megas of our own (plan 06 · R20b: docs/plans/decisions/R20b-mega-proposals.md, approved by the user in full on
 /// 2026-10-26): each a form of its species (tools/DataImporter/Overrides/forms.json) brought out by a stone of its own
 /// (Overrides/items.json), with the document's typing, ability and stats; and the gap of R20 the proposal found, closed:
 /// a stone of a species' own works for no regional form of it.

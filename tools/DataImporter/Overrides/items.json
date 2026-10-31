@@ -423,7 +423,7 @@
   "Zygarde Cube": { "description": "Switches Zygarde between its 10% Forme and its 50% Forme." },
   "Rotom Catalog": { "description": "A catalogue of appliances. Rotom slips into the next one in it, or back out." },
   "Reins of Unity": { "description": "Fuses Calyrex with Glastrier or Spectrier, or splits them apart again." },
-  // The Mega Stones of our own (plan 06 · R20b: docs/plans/R20b-mega-proposals.md, approved 2026-10-26), ids 9400 on
+  // The Mega Stones of our own (plan 06 · R20b: docs/plans/decisions/R20b-mega-proposals.md, approved 2026-10-26), ids 9400 on
   // (the document's 9002 to 9016 would meet the Bike Voucher's 9010). Nothing gives them yet: each is given in its
   // starter's home region once that region's chapter stands and the player holds the Key Stone (plan 23)
   "Typhlosionite": { "id": 9400, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Typhlosion, it lets it Mega Evolve in battle.", "megaStone": { "species": "Typhlosion", "form": "Typhlosion-Mega" } },

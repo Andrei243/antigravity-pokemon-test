@@ -7,7 +7,7 @@ namespace PokemonPlatinumEngine.Graphics;
 
 // The species of our own that evolve past level 100 (plan 03 · D14), batch 9 and its supplement: Paldea's, in our
 // numbers' order (2000 + the forebear's National number). Each is sculpted from its forebear's own sculpt as the look
-// of docs/plans/D14-proposals-paldea.md (and -paldea-supplement.md) and the user's reference pictures
+// of docs/plans/decisions/D14-proposals-paldea.md (and -paldea-supplement.md) and the user's reference pictures
 // (docs/art/reference/gemini/paldea) say: the forebear's build is taken whole (renamed, stretched, its colours changed,
 // a part taken away) and the picture's new features are added to it, with the tools of the earlier batches
 // (PokemonModels.Ours.Kanto.cs, .Unova.cs). The forebears' own sculpts are never touched.

@@ -1,4 +1,4 @@
-// Plan 06 · R20c, Mega Dynamax (docs/plans/R20c-mega-dynamax-proposals.md, approved by the user on 2026-10-25, every
+// Plan 06 · R20c, Mega Dynamax (docs/plans/decisions/R20c-mega-dynamax-proposals.md, approved by the user on 2026-10-25, every
 // row of its table): each Mega form that has a Mega Dynamax form of its own, and the height in metres the Pokédex gives
 // that form (12 × the Mega's height, 20 to 60 m, 2 m over a Gigantamax form). The importer (MegaDynamaxForms.cs) writes
 // "<Mega form>-Mmax" after its Mega, with the Mega's types, stats and abilities and a weight of 1000 kg. A row whose

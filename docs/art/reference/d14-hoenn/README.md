@@ -1,7 +1,7 @@
 # Hoenn past 100: reference drawings
 
 Plan 03 · D14, batch 3. One SVG for each of the 51 Hoenn species of our own designed in
-[`docs/plans/D14-proposals-hoenn.md`](../../../plans/D14-proposals-hoenn.md) (Nos. 2262 to 2381),
+[`docs/plans/decisions/D14-proposals-hoenn.md`](../../../plans/decisions/D14-proposals-hoenn.md) (Nos. 2262 to 2381),
 named `<No>-<Name>.svg`, and `index.html`, a contact sheet with every drawing inline (name,
 number, typing, what it evolves from; the shortlist's twelve first, with a red edge).
 

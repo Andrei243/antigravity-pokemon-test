@@ -7,7 +7,7 @@ namespace PokemonPlatinumEngine.Graphics;
 
 // The species of our own that evolve past level 100 (plan 03 Â· D14), batch 1: Kanto's, in our numbers' order
 // (2000 + the forebear's National number). Each is sculpted from its forebear's own sculpt as the look of
-// docs/plans/D14-proposals-kanto.md says: the forebear's build is taken whole where the body stays (renamed,
+// docs/plans/decisions/D14-proposals-kanto.md says: the forebear's build is taken whole where the body stays (renamed,
 // stretched, its colours changed, a part taken away) and the new features are added to it, or, where the body
 // changes its plan, it is built anew from the forebear's parts and colours. The forebears' own sculpts are never
 // touched.

@@ -100,4 +100,10 @@ The short forms work because Claude's memory points to these plans; the long for
 
 Decided 2026-10-01 and changed on 2026-10-12 (plan 18 · W10): the game grows into every generation as a chain of separate regions. Every new game begins in Sinnoh, the region these plans build, and NEW GAME asks nothing about regions; finishing a region's story (its Hall of Fame) opens the way to the next one, like HeartGold and SoulSilver's trip to Kanto but in the other direction, and the chain after Sinnoh runs in generation order: Kanto, Johto, Hoenn, Unova, Kalos, Alola, Galar, Paldea. Sinnoh to Kanto and Kanto to Johto are by boat; how the player reaches each later region is decided when that region is built. Nothing leads back by harbour; Fly goes back to any region already entered (plan 18 · W9). `--region <name>` starts a new game in another region for testing (Kanto is still only a stand-in Pallet Town). The chain lives in `Data/RegionDatabase.cs`, and `RegionTests` checks it.
 
-**Finished plans** (every session built and ticked) live in [finished/](finished/): 01 Sinnoh map, 02 Story, 04 Graphics overhaul, 06 Game mechanics, 08 Platinum's details, 09 Looks, 19 Kanto. The plans in this folder still have sessions open.
+**This folder holds the plans with sessions still open** (and this index and [00 · Overview](00-overview.md), the order of what is left). Everything else is filed by kind:
+
+- [finished/](finished/): plans whose every session was built and ticked (01 Sinnoh map, 02 Story, 04 Graphics overhaul, 06 Game mechanics, 08 Platinum's details, 09 Looks, 19 Kanto).
+- [decisions/](decisions/): proposals and approval sheets written for the user to answer, with the answers recorded and what was built (D14 evolutions past level 100 by region, R20b and R20c Megas of our own, R31 moves past level 100, D15 and W4b levelling and our species in the world, the APPROVAL sheet).
+- [studies/](studies/): research written to inform a decision (W4 level-curve study).
+
+When a plan's last session is ticked, move it to finished/ and fix its links.

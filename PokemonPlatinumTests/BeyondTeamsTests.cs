@@ -11,7 +11,7 @@ using Xunit;
 namespace PokemonPlatinumTests;
 
 /// <summary>
-/// The Leagues' teams beyond (plan 03 · D15, design T; docs/plans/D15-species-of-ours-in-the-world.md): 26 teams of
+/// The Leagues' teams beyond (plan 03 · D15, design T; docs/plans/decisions/D15-species-of-ours-in-the-world.md): 26 teams of
 /// species of our own, one for each Elite Four and Champion of the five built regions, each the rematch team it
 /// replaces slot for slot, found by <see cref="BattleCore.BeyondTeamOf"/> and ready at the region's Hall of Fame with a
 /// Pokémon of the team at the batch's lowest evolution level (question 10's default).

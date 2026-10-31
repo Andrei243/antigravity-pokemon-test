@@ -14,7 +14,7 @@ using static PokemonPlatinumTests.Scenario;
 namespace PokemonPlatinumTests;
 
 /// <summary>
-/// Plan 06 · R31: the 72 moves of our own learned past level 100 (docs/plans/R31-move-proposals.md, approved by the
+/// Plan 06 · R31: the 72 moves of our own learned past level 100 (docs/plans/decisions/R31-move-proposals.md, approved by the
 /// user on 2026-10-25). The data (whole rows of the importer's overrides), the learnsets the importer hands them out
 /// by (<see cref="MovesPastHundred"/>), and a scenario to each kind of machinery they run on: none has code of its
 /// own, every one is its data fields or an effect the core had already. The battles are under the modern rules, the

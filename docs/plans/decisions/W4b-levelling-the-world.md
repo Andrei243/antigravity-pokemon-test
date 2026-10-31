@@ -1,6 +1,6 @@
 # Levelling the world for a team that crosses every region
 
-*Plan 18 · W4b, a proposal. Written 2026-10-26 (wave 62) for the user's decision. It changes no data, no engine and no test. Every number below was worked out by a throwaway script against this repository's data at `bc882e7a` (the region files, `Data/trainers.json`, each `Data/world/<region>/trainers.json`, `Data/our-trainers.json`, the area files, `species.json` and `PokemonPlatinumTests/Golden/levels.txt`); none was typed from memory. Follows [W4-level-curve-study.md](W4-level-curve-study.md), whose option B the user chose on 2026-10-21.*
+*Plan 18 · W4b, a proposal. Written 2026-10-26 (wave 62) for the user's decision. It changes no data, no engine and no test. Every number below was worked out by a throwaway script against this repository's data at `bc882e7a` (the region files, `Data/trainers.json`, each `Data/world/<region>/trainers.json`, `Data/our-trainers.json`, the area files, `species.json` and `PokemonPlatinumTests/Golden/levels.txt`); none was typed from memory. Follows [W4-level-curve-study.md](../studies/W4-level-curve-study.md), whose option B the user chose on 2026-10-21.*
 
 ## The short answer
 

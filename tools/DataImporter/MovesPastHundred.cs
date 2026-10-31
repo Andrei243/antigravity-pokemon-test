@@ -4,7 +4,7 @@ using PokemonPlatinumEngine.Models;
 namespace DataImporter;
 
 /// <summary>
-/// Plan 06 · R31: the moves of our own learned past level 100 (<c>docs/plans/R31-move-proposals.md</c>, approved by the
+/// Plan 06 · R31: the moves of our own learned past level 100 (<c>docs/plans/decisions/R31-move-proposals.md</c>, approved by the
 /// user on 2026-10-25). The 72 are whole rows of <c>Overrides/moves.json</c> (ids <see cref="FirstId"/> to
 /// <see cref="LastId"/>, four to a type: its status move, its physical and its special attack, and an extra, a utility
 /// move or a capstone of 120 power or more). This hands them out by the proposal's rule, appending to every species'

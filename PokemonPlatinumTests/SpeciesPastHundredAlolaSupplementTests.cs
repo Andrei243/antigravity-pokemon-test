@@ -12,7 +12,7 @@ using static PokemonPlatinumTests.Scenario;
 namespace PokemonPlatinumTests;
 
 /// <summary>
-/// Plan 03 · D14, batch 7's supplement (Alola: docs/plans/D14-proposals-alola-supplement.md, all ten designs approved by
+/// Plan 03 · D14, batch 7's supplement (Alola: docs/plans/decisions/D14-proposals-alola-supplement.md, all ten designs approved by
 /// the user on 2026-10-26 with every question at its default): the Ultra Beasts as a legendary set, each at 225 with any
 /// other Ultra Beast in the party (Poipole among them), to 660. The two small changes it needed are held here too: an
 /// evolution row that names several species (<see cref="EvolutionData.AnyOfSpecies"/>) and a row's own

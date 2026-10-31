@@ -12,7 +12,7 @@ using static PokemonPlatinumTests.Scenario;
 namespace PokemonPlatinumTests;
 
 /// <summary>
-/// Plan 03 · D14, batch 9 (Paldea: docs/plans/D14-proposals-paldea.md, approved by the user on 2026-10-26, all 39
+/// Plan 03 · D14, batch 9 (Paldea: docs/plans/decisions/D14-proposals-paldea.md, approved by the user on 2026-10-26, all 39
 /// designs; its questions 3, 4 and 6 answered "b", whose designs wait in D14-proposals-paldea-supplement.md). What is
 /// new for this batch beside what <see cref="SpeciesPastHundredTests"/> holds for every batch: Paldea's climb (244 to
 /// 256, the Treasures of Ruin at 258), the Treasures' ring, Tatsugiri's and Dondozo's pair, Gholdengo's second hoard of
