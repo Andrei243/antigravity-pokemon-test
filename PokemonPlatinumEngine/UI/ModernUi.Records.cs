@@ -253,11 +253,11 @@ internal static partial class ModernUi
 
     /// <summary>The card on any of its pages (plan 18 · W2): <paramref name="shown"/> as it turns from <paramref name="from"/>.</summary>
     /// <param name="titleRow">The first row of the Masters' Hall's titles the titles' page shows (plan 14 · B15).</param>
-    public static void DrawTrainerCard(int sw, int sh, TrainerCardInfo info, Texture2D? portrait, float appear, CardSide shown, CardSide from, float flip, int titleRow = 0, int statTab = 0)
+    public static void DrawTrainerCard(int sw, int sh, TrainerCardInfo info, Texture2D? portrait, float appear, CardSide shown, CardSide from, float flip, int titleRow = 0, int statTab = 0, int medalTab = 0)
     {
         Backdrop(sw, sh);
         ScreenTitle(Text.Of("card.title"));
-        if (info.RegionPages.Count > 0 || info.Run != null || info.Titles.Count > 0 || info.Counts is { IsEmpty: false })
+        if (info.RegionPages.Count > 0 || info.Run != null || info.Titles.Count > 0 || info.Counts is { IsEmpty: false } || info.Medals is { IsEmpty: false })
             Hints(sw - Margin, 44, Hint("shared.keys.leftRight", "card.page"), Hint("shared.keys.z", "shared.hints.turnOver"), Hint("shared.keys.esc", "shared.hints.back"));
         else Hints(sw - Margin, 44, Hint("shared.keys.z", "shared.hints.turnOver"), Hint("shared.keys.esc", "shared.hints.back"));
 
@@ -310,6 +310,9 @@ internal static partial class ModernUi
                 break;
             case CardPage.Statistics when info.Counts != null:
                 CardStatistics(card, info.Counts, statTab);
+                break;
+            case CardPage.Medals when info.Medals != null && info.MedalFacts != null:
+                CardMedals(card, info.Medals, info.MedalFacts, medalTab);
                 break;
             case CardPage.Back:
                 CardBack(card, info, colour);
@@ -453,6 +456,101 @@ internal static partial class ModernUi
             Field(Text.Of($"card.stats.{key}"), counts.Get(key).ToString("N0", CultureInfo.InvariantCulture), cx, cy, 48, 40);
             n++;
         }
+    }
+
+    private static (string Label, UiIcon Icon, Color Color)[] MedalTabs => new[]
+    {
+        (Text.Of("card.medals.category.Journey"), UiIcon.Pin, Blue),
+        (Text.Of("card.medals.category.Battles"), UiIcon.Boost, Red),
+        (Text.Of("card.medals.category.Catching"), UiIcon.Ball, Green),
+        (Text.Of("card.medals.category.Growth"), UiIcon.Star, Gold),
+        (Text.Of("card.medals.category.Pokedex"), UiIcon.Dex, Red),
+        (Text.Of("card.medals.category.League"), UiIcon.Trainer, Blue)
+    };
+
+    /// <summary>A medal's name in the language chosen (plan 13 · V9): its source's words with its goal, or the first's own words for a goal of one.</summary>
+    public static string MedalName(Medal medal)
+    {
+        string form = medal.Goal == 1 && Text.Has($"medals.first.{medal.Source}") ? "first" : "name";
+        string source = medal.Source;
+        return Text.Of($"medals.{form}.{source}", ("count", medal.Goal.ToString("N0", CultureInfo.InvariantCulture)));
+    }
+
+    /// <summary>A category's name, as the card's tab and the notice say it.</summary>
+    public static string MedalCategoryName(MedalCategory category)
+    {
+        string name = category.ToString();
+        return Text.Of($"card.medals.category.{name}");
+    }
+
+    /// <summary>The small medal of the card and the notice: Gold with a star once won, plain before (style guide, "The medals' page").</summary>
+    private static void MedalBadge(Vector2 c, float r, bool won)
+    {
+        if (won)
+        {
+            UiShapes.Circle(c, r, Gold);
+            UiShapes.Ring(c, r, Math.Max(3f, r * 0.13f), Darker(Gold, 0.3f));
+            UiIcons.Draw(UiIcon.Star, c, r * 0.5f, Color.White, Gold);
+        }
+        else
+        {
+            UiShapes.Circle(c, r, Rule);
+            UiShapes.Ring(c, r, Math.Max(3f, r * 0.13f), Muted);
+        }
+    }
+
+    /// <summary>
+    /// The medals' page (plan 13 · V9): six categories on tabs, the category's medals in three columns, each its
+    /// medal, its name and a bar of how far toward it, and the count won of all along the foot.
+    /// </summary>
+    private static void CardMedals(Rectangle card, Medals medals, MedalFacts facts, int tab)
+    {
+        float x = card.X + 72, right = card.X + card.Width - 72, top = card.Y + 156;
+        int category = Math.Clamp(tab, 0, MedalTabs.Length - 1);
+        Tabs(new Rectangle(x, top, right - x, 64), MedalTabs, category);
+        float columnW = (right - x) / 3f;
+        int n = 0;
+        foreach (var medal in Medals.In((MedalCategory)category))
+        {
+            float cx = x + (n % 3) * columnW, cy = top + 104 + (n / 3) * 64;
+            bool won = medals.Has(medal);
+            MedalBadge(new Vector2(cx + 20, cy), 20, won);
+            float textX = cx + 52, barRight = cx + columnW - 24;
+            UiFonts.DrawCentered(MedalName(medal), textX, cy - 10, 24, won ? Ink : Muted, UiWeight.Black);
+            string state = won ? Text.Of("card.medals.won")
+                : Text.Of("card.medals.progress", ("count", medal.Progress(facts).ToString("N0", CultureInfo.InvariantCulture)),
+                    ("goal", medal.Goal.ToString("N0", CultureInfo.InvariantCulture)));
+            float sw = UiFonts.Measure(state, 18, UiWeight.ExtraBold);
+            float barW = Math.Max(40, barRight - textX - sw - 16);
+            Bar(new Rectangle(textX, cy + 12, barW, 10), won ? 1f : medal.Progress(facts) / (float)medal.Goal, Gold);
+            UiFonts.DrawCentered(state, barRight - sw, cy + 17, 18, won ? Darker(Gold, 0.2f) : Muted, UiWeight.ExtraBold);
+            n++;
+        }
+        string count = Text.Of("card.medals.count", ("won", medals.Count.ToString(CultureInfo.InvariantCulture)),
+            ("all", Medals.All.Count.ToString(CultureInfo.InvariantCulture)));
+        UiFonts.DrawCentered(count, right - UiFonts.Measure(count, 24, UiWeight.Black), card.Y + card.Height - 44, 24, Muted, UiWeight.Black);
+    }
+
+    /// <summary>
+    /// The notice of a medal won (plan 13 · V9; style guide, "Field menus and notices", "A medal won"): a dark panel
+    /// under the toasts' place with the medal at its left, the category over the medal's name.
+    /// </summary>
+    public static void DrawMedalNotice(int sw, Medal medal, float shown)
+    {
+        string caption = Text.Of("medals.notice", ("category", MedalCategoryName(medal.Category)));
+        string name = MedalName(medal);
+        float textW = Math.Max(UiFonts.Measure(caption, 20, UiWeight.Black), UiFonts.Measure(name, 30, UiWeight.ExtraBold));
+        float w = Math.Min(sw - 160, Math.Max(420, textW + 168));
+        var r = new Rectangle((sw - w) / 2f, 112 - (1f - shown) * 220, w, 88);
+        UiShapes.Shadow(r, 44, 22, new Vector2(0, 8), ShadowColor);
+        UiShapes.Shape(r, 44, new Color(58, 70, 104, 245), new Color(36, 44, 68, 245), new Color(255, 255, 255, 60), 3);
+        var c = new Vector2(r.X + 52, r.Y + r.Height / 2f - 4);
+        // The ribbon's two tails, behind the medal
+        UiShapes.Fill(new Rectangle(c.X - 16, c.Y + 8, 10, 34), 3, Red, skew: 0.25f);
+        UiShapes.Fill(new Rectangle(c.X + 6, c.Y + 8, 10, 34), 3, Blue, skew: -0.25f);
+        MedalBadge(c, 30, won: true);
+        UiFonts.DrawCentered(caption, r.X + 100, r.Y + 28, 20, Gold, UiWeight.Black);
+        UiFonts.DrawCentered(name, r.X + 100, r.Y + 58, 30, Color.White, UiWeight.ExtraBold);
     }
 
     private static void CardRun(Rectangle card, RunRules run, TrainerCardInfo info)

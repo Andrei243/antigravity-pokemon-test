@@ -93,6 +93,9 @@ public sealed partial class GameFlow
     /// <summary>A line over the field that goes by itself ("Game saved.").</summary>
     public Toast Toast { get; } = new();
 
+    /// <summary>The notice of a medal won (plan 13 · V9), with the options' MEDAL NOTICES row on.</summary>
+    public MedalNotice MedalNotice { get; } = new();
+
     /// <summary>
     /// Hands this thread's reads the frame's actions in place of the keys (<see cref="InputManager.Feed"/>), for a
     /// game steered with no window: the screens, the field and the battle read them as they read the keys. Null gives

@@ -32,6 +32,7 @@ public enum OptionRow
     DynamicResolution,
     TimingAssist, Rumble,
     ReduceFlashes, ReduceMotion,
+    MedalNotices,
     Controls,
     Jukebox,
     Packs,
@@ -391,6 +392,9 @@ public class OptionsScreen
             case OptionRow.ReduceMotion:
                 s.ReduceMotion = !s.ReduceMotion;
                 break;
+            case OptionRow.MedalNotices:
+                s.MedalNotices = !s.MedalNotices; // plan 13 · V9
+                break;
         }
     }
 
@@ -469,6 +473,7 @@ public class OptionsScreen
         OptionRow.Rumble => (Text.Of("options.rumble.label"), Text.Of($"options.rumble.value.{s.Rumble}"), Text.Of($"options.rumble.help.{s.Rumble}")),
         OptionRow.ReduceFlashes => (Text.Of("options.reduceFlashes.label"), OnOff(s.ReduceFlashes), Text.Of(s.ReduceFlashes ? "options.reduceFlashes.help.on" : "options.reduceFlashes.help.off")),
         OptionRow.ReduceMotion => (Text.Of("options.reduceMotion.label"), OnOff(s.ReduceMotion), Text.Of(s.ReduceMotion ? "options.reduceMotion.help.on" : "options.reduceMotion.help.off")),
+        OptionRow.MedalNotices => (Text.Of("options.medalNotices.label"), OnOff(s.MedalNotices), Text.Of(s.MedalNotices ? "options.medalNotices.help.on" : "options.medalNotices.help.off")),
         OptionRow.ResetDefaults => (Text.Of("options.resetDefaults.label"), Text.Of("options.resetDefaults.value"), Text.Of("options.resetDefaults.help")),
         OptionRow.Controls => (Text.Of("options.controls.label"), Text.Of("options.controls.value"), Text.Of("options.controls.help")),
         OptionRow.Jukebox => (Text.Of("options.jukebox.label"), Text.Of("options.jukebox.value"), Text.Of("options.jukebox.help")),

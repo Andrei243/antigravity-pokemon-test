@@ -336,7 +336,7 @@ public class PadInputTests
     {
         var rows = Enum.GetValues<OptionRow>();
         // (The Vs. Recorder's row, plan 08 · P10, the second slot's, P23, the next objective's, plan 12 · Q14, and the season's, plan 22 · U3, went in after them, before CONTROLS, as every new row does)
-        Assert.Equal(new[] { OptionRow.ButtonMode, OptionRow.StickDeadZone, OptionRow.Gamepad, OptionRow.RecordBattles, OptionRow.SlotTwo, OptionRow.NextObjective, OptionRow.Season, OptionRow.FieldHelpers, OptionRow.PartyTools, OptionRow.BoxesAnywhere, OptionRow.Autosave, OptionRow.DynamicResolution, OptionRow.TimingAssist, OptionRow.Rumble, OptionRow.ReduceFlashes, OptionRow.ReduceMotion, OptionRow.Controls, OptionRow.Jukebox, OptionRow.Packs, OptionRow.Help, OptionRow.ResetDefaults }, rows[^21..]);
+        Assert.Equal(new[] { OptionRow.ButtonMode, OptionRow.StickDeadZone, OptionRow.Gamepad, OptionRow.RecordBattles, OptionRow.SlotTwo, OptionRow.NextObjective, OptionRow.Season, OptionRow.FieldHelpers, OptionRow.PartyTools, OptionRow.BoxesAnywhere, OptionRow.Autosave, OptionRow.DynamicResolution, OptionRow.TimingAssist, OptionRow.Rumble, OptionRow.ReduceFlashes, OptionRow.ReduceMotion, OptionRow.MedalNotices, OptionRow.Controls, OptionRow.Jukebox, OptionRow.Packs, OptionRow.Help, OptionRow.ResetDefaults }, rows[^22..]);
 
         var s = new GameSettings();
         OptionsScreen.Change(s, OptionRow.ButtonMode, 1);

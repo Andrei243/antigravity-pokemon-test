@@ -361,6 +361,13 @@
         "on": "No flash whitens the picture by more than a quarter, and the flashes into a battle are one soft swell."
       }
     },
+    "medalNotices": {
+      "label": "Medal notices",
+      "help": {
+        "off": "Medals are won and kept on the Trainer Card without a word.",
+        "on": "A medal won drops in at the top of the field with a fanfare."
+      }
+    },
     "reduceMotion": {
       "label": "Reduce motion",
       "help": {
@@ -1035,6 +1042,12 @@
       "trainerWon": "TRAINERS BEATEN", "trainerLost": "LOST TO TRAINERS", "whiteouts": "BLACKOUTS",
       "encounters": "WILD POKÉMON MET", "caught": "POKÉMON CAUGHT", "newSpecies": "NEW SPECIES CAUGHT",
       "levelled": "LEVELS GAINED IN BATTLE", "evolutions": "EVOLUTIONS"
+    },
+    "medals": {
+      "category": { "Journey": "JOURNEY", "Battles": "BATTLES", "Catching": "CATCHING", "Growth": "GROWTH", "Pokedex": "POKéDEX", "League": "LEAGUE" },
+      "count": "MEDALS  {won} / {all}",
+      "progress": "{count} / {goal}",
+      "won": "WON"
     },
     "fallenLine": "{species}  Lv. {level}  ·  {place}",
     "titles": "MASTER TITLES",
@@ -4259,6 +4272,24 @@
     "skill": "SKILL",
     "body": "BODY",
     "total": "TOTAL"
+  },
+  "medals": {
+    "notice": "MEDAL  ·  {category}",
+    "first": {
+      "wildWon": "Win a wild battle", "trainerWon": "Beat a trainer", "wildRan": "Run from a wild Pokémon",
+      "wildFled": "See a wild Pokémon flee", "trainerLost": "Lose to a trainer", "whiteouts": "Black out and carry on",
+      "caught": "Catch a Pokémon", "encounters": "Meet a wild Pokémon", "levelled": "Grow a level in battle",
+      "evolutions": "Watch a Pokémon evolve", "badges": "Win a Badge", "champions": "Become a Champion"
+    },
+    "name": {
+      "stepsFoot": "Walk {count} steps", "stepsSurf": "Surf {count} steps", "stepsCycle": "Cycle {count} steps", "stepsDive": "Dive {count} steps",
+      "wildWon": "Win {count} wild battles", "trainerWon": "Beat {count} trainers", "wildRan": "Run from {count} wild Pokémon",
+      "wildFled": "See {count} wild Pokémon flee", "whiteouts": "Black out {count} times",
+      "caught": "Catch {count} Pokémon", "newSpecies": "Catch {count} new species", "encounters": "Meet {count} wild Pokémon",
+      "levelled": "Grow {count} levels in battle", "evolutions": "See {count} evolutions",
+      "dexSeen": "See {count} species", "dexCaught": "Own {count} species",
+      "badges": "Win {count} Badges", "champions": "Champion of {count} regions"
+    }
   },
   "sessionReport": {
     "written": "A report to replay was written to {folder}.",

@@ -42,8 +42,11 @@ public sealed class Statistics
 
     public bool IsEmpty => counts.Count == 0;
 
+    /// <summary>How many times a count has changed: whoever judges by the counters (the medals, V9) looks again only when it moved.</summary>
+    public int Revision { get; private set; }
+
     /// <summary>Forgets every count (a tool puts things back as it found them).</summary>
-    public void Clear() => counts.Clear();
+    public void Clear() { counts.Clear(); Revision++; }
 
     public long Get(string key) => counts.TryGetValue(key, out long n) ? n : 0;
 
@@ -53,6 +56,7 @@ public sealed class Statistics
         if (All.All(k => k.Key != key)) throw new ArgumentException($"'{key}' is no statistic", nameof(key));
         if (n <= 0) return;
         counts[key] = Get(key) + n;
+        Revision++;
     }
 
     /// <summary>The steps counter for how the player travels.</summary>

@@ -179,6 +179,19 @@ partial class Harness
         trainerCard.ChangeStatTab(1);
         Frames(4); Shot("28f_trainer_card_statistics_battles");
         trainerCard.Close();
+        // Medals (plan 13 · V9): those the counters reach, won quietly as they are judged, on the medals' page's Catching tab
+        var medalsBefore = game.Medals.ToSaved();
+        game.Medals.Check(game.MedalFacts);
+        game.MedalNotice.Clear();
+        game.ChooseFromStartMenu(StartMenuChoice.Trainer);
+        Frames(40);
+        trainerCard.GoTo(CardPage.Medals);
+        trainerCard.ChangeMedalTab(1); trainerCard.ChangeMedalTab(1);
+        Frames(30); Shot("28d_trainer_card_medals");
+        Console.WriteLine($"medals: {game.Medals.Count} of {Medals.All.Count} won from the counters shown");
+        trainerCard.Close();
+        game.Medals = Medals.From(medalsBefore);
+
         game.Statistics.Clear();
         foreach (var (key, n) in countsBefore ?? new Dictionary<string, long>()) game.Statistics.Count(key, n);
         game.TrainerScore = scoreBefore;

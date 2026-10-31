@@ -56,6 +56,9 @@ public sealed partial class GameFlow
     /// <summary>What the game has counted (plan 13 · V8; saved as <c>SaveData.Counters</c>).</summary>
     public Models.Statistics Statistics { get; set; } = new();
 
+    /// <summary>The medals won (plan 13 · V9; saved as <c>SaveData.Medals</c>).</summary>
+    public Models.Medals Medals { get; set; } = new();
+
     /// <summary>A Pokémon just caught under the Nuzlocke, whose name the keyboard asks once the field is back (plan 13 · V4).</summary>
     public Models.Pokemon? NameAfterBattle { get; set; }
 
