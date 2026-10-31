@@ -419,4 +419,58 @@ public class ReliefTests
         Assert.True(cracked.R > cracked.B + 20);
         Assert.True(Math.Abs(boulder.R - boulder.B) < 20);
     }
+
+    [Fact]
+    public void WhoeverWalksUnderABridgeIsCutOffAtItsDeckAndNobodyOnItOrBesideItIs()
+    {
+        // Route 205's footbridge (206 to 208, 614 to 622) over the grass the way west to the river runs along: the user
+        // saw the player's head poke up through its planks (style guide, "Relief")
+        MapDatabase.Initialize();
+        var sinnoh = MapDatabase.Get("Sinnoh");
+        float deck = Relief.Deck(sinnoh, 207, 618)!.Value, grass = Relief.At(sinnoh, 207.5f, 618.5f);
+        Assert.True(deck - grass > 1f, $"the deck stands {deck - grass} over the grass");
+        // ...lower than a person is tall, which is the whole trouble
+        Assert.True(deck - grass <= 2f, $"the deck stands {deck - grass} over the grass");
+
+        // Under it: cut off inside its boards over the deck's three columns
+        var over = Relief.DeckOver(sinnoh, 207.5f, 618.5f, grass);
+        Assert.NotNull(over);
+        Assert.Equal((206f, 209f), (over!.Value.X0, over.Value.X1));
+        Assert.Equal(deck - Relief.Boards, over.Value.Top, 3);
+        // Stepping in from the west, half a tile short of it: the part of the card over the deck is already under it
+        Assert.Equal(206f, Relief.DeckOver(sinnoh, 205.5f, 618.5f, grass)!.Value.X0);
+        // On the deck nothing is cut off, nor two tiles beside it
+        Assert.Null(Relief.DeckOver(sinnoh, 207.5f, 618.5f, deck));
+        Assert.Null(Relief.DeckOver(sinnoh, 203.5f, 618.5f, Relief.At(sinnoh, 203.5f, 618.5f)));
+        // A flat map has no decks over anyone
+        Assert.Null(Relief.DeckOver(Level(4, 4, 0f), 1.5f, 1.5f, 0f));
+    }
+
+    [Fact]
+    public void ACaveOfOneChunkIsItsFloorAndABandOfRockSoTheCameraCentresIt()
+    {
+        // The Solaceon Ruins' rooms lie in their chunk's corner (style guide, "Caves"): the user found the room off to
+        // the left of the picture and a field of rock that read as floor
+        MapDatabase.Initialize();
+        foreach (string name in new[] { "SolaceonRuinsRoom1", "SolaceonRuinsRoom2", "SolaceonRuinsRoom7", "SolaceonRuinsRoom2NortheastDeadEnd" })
+        {
+            var room = MapDatabase.Get(name);
+            Assert.Equal(name, room.Name);
+            Assert.True(room.Width < WorldChunkFile.Tiles && room.Height < WorldChunkFile.Tiles, $"{name} is {room.Width}×{room.Height}");
+            int minX = int.MaxValue, maxX = -1, minZ = int.MaxValue, maxZ = -1;
+            for (int z = 0; z < room.Height; z++)
+                for (int x = 0; x < room.Width; x++)
+                    if (room.GetGroundTile(x, z) != TileType.CaveWall)
+                    {
+                        minX = Math.Min(minX, x); maxX = Math.Max(maxX, x);
+                        minZ = Math.Min(minZ, z); maxZ = Math.Max(maxZ, z);
+                    }
+            // The floor is the middle of the map across its width, and as much rock lies south of it as north (or the band)
+            Assert.Equal(Math.Max(WorldMapBuilder.CaveRockBand, minX), room.Width - 1 - maxX);
+            Assert.Equal(Math.Max(WorldMapBuilder.CaveRockBand, minZ), room.Height - 1 - maxZ);
+            // Everyone and every way of the room is on it
+            Assert.All(room.Everyone, p => Assert.True(room.InBounds(p.GridX, p.GridY)));
+            Assert.All(room.Warps, w => Assert.True(room.InBounds(w.SourceX, w.SourceY)));
+        }
+    }
 }

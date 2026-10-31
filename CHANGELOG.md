@@ -7,6 +7,7 @@ What changes from one release to the next, for players. Every session's close-ou
 ### Fixed
 - Inside buildings, the low inner walls and the blocks of wall beside staircases no longer have dark navy tops that looked like slabs of furniture: their tops are now in the room's own colours, with a pale rail along the edges you can see.
 - Sabrina in HeartGold's Saffron Gym looks like herself, in the Gym and on her battle's band, where she stood in the plain trainer's clothes. New Mauville is a power plant of steel walls and tiled floors, no longer a wooden house. The packs screen no longer hides a pack that couldn't be read while a change waits (it says both), keeps a long credit from running over the description, and shortens a folder too long for its panel.
+- The Solaceon Ruins' rooms (and other small one-room caves) are now in the middle of the screen with darkness round their walls, instead of tucked into a corner beside a wide field of rock that looked like floor, so the way through each room is easy to see. And walking under the footbridge on Route 205 on the way to Eterna Forest, you now pass under its planks instead of your head poking up through them.
 
 ### Added
 - Photo mode in battle: press F9 (Select on a pad) at any moment of a battle and it stops where it is, the HP boxes and menus disappear, and you can swing the camera round the field, bring it closer, borrow another time of day, nudge the Pokémon's pose, and add a filter or a frame before taking the picture with A. B goes back and the battle carries on exactly as it would have.
