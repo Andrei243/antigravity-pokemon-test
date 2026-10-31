@@ -1,5 +1,7 @@
 using System.Linq;
+using PokemonPlatinumEngine.Audio;
 using PokemonPlatinumEngine.Battle.Sim;
+using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
 
@@ -86,12 +88,27 @@ public partial class BattleEngine
         {
             case Dynamaxed grown:
             {
-                Sound(grown.Gigantamax ? "gigantamax" : "dynamax", grown.Place.Side);
                 var big = At(grown.Place).Pokemon;
                 TakeRaisedHp(grown.Place, big, grown.MaxHp, grown.Hp);
-                Anim.Dynamax(grown.Place.Side, grown.Place.Slot, grown.Gigantamax, played: Scene);
+                // The first Dynamax of a single battle is called by its trainer first (plan 25 · YD1); every sound,
+                // the cry at the burst and the form wait for the call
+                string? caller = Scene ? Anim.CallerFor(grown.Place.Side, grown.Place.Slot, IsFrontier) : null;
+                Anim.Dynamax(grown.Place.Side, grown.Place.Slot, grown.Gigantamax, played: Scene, caller);
+                float lead = caller != null ? BattleAnimator.DynamaxCallTime : 0f;
+                string sound = grown.Gigantamax ? "gigantamax" : "dynamax";
+                var side = grown.Place.Side;
+                if (lead > 0f)
+                {
+                    Sound("dynamax_call", side);
+                    After(lead, () => Sound(sound, side));
+                }
+                else Sound(sound, side);
                 if (big == null) break;
-                if (Scene && big.Form != grown.Form) After(BattleAnimator.DynamaxSwapTime, () => big.Form = grown.Form);
+                // Its own cry, an octave down in a long hall, at the burst; at once with the scene off (plan 25 · YD1)
+                var pan = Pan(side);
+                if (Scene) After(lead + BattleAnimator.DynamaxGrown, () => AudioManager.PlayCry(big, CryMode.Giant, pan));
+                else AudioManager.PlayCry(big, CryMode.Giant, pan);
+                if (Scene && big.Form != grown.Form) After(lead + BattleAnimator.DynamaxSwapTime, () => big.Form = grown.Form);
                 else big.Form = grown.Form;
                 break;
             }

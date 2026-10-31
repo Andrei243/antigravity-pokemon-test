@@ -618,7 +618,8 @@
       "Howl2": "Răget, al doilea",
       "HyperVoice1": "Hiper Voce, primul",
       "HyperVoice2": "Hiper Voce, al doilea",
-      "MidMove": "Urlet"
+      "MidMove": "Urlet",
+      "Giant": "Uriaș"
     },
     "cryNote": {
       "Normal": "Așa cum e: la trimiterea în luptă, la un Pokémon sălbatic care apare, în rezumat, la o evoluție.",
@@ -634,7 +635,8 @@
       "Howl2": "Al doilea: puțin mai sus, cu un ecou mai puternic.",
       "HyperVoice1": "Primul strigăt al Hiper Vocii: mai sus, dublat cu o cvintă deasupra.",
       "HyperVoice2": "Al doilea: și mai sus, dublat și răsunând, tăiat scurt.",
-      "MidMove": "Strigătul lui Urlet, prelungit de un ecou lung."
+      "MidMove": "Strigătul lui Urlet, prelungit de un ecou lung.",
+      "Giant": "Un Pokémon crescut uriaș: mai jos, dublat cu o octavă dedesubt, răsunând ca într-o sală lungă."
     },
     "bed": {
       "Rain": "Ploaie",

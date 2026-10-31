@@ -49,7 +49,8 @@ internal static partial class MoveFx
         switch (cue.Kind)
         {
             case CueKind.Dynamax:
-                return (DynaRed, 0.75f * Fx.Envelope(t, 0f, 0.6f, 0.75f, 1.3f));
+                // After the trainer's call, if there was one (plan 25 · YD1): the call's red is the drawing back's own
+                return (DynaRed, 0.75f * Fx.Envelope(t - cue.Lead, 0f, 0.6f, 0.75f, 1.3f));
             case CueKind.DynamaxEnd:
                 return (DynaPink, 0.4f * Fx.Envelope(t, 0f, 0.05f, 0.3f, 0.6f));
             case CueKind.Tera:
@@ -151,12 +152,18 @@ internal static partial class MoveFx
     /// </summary>
     private static void DynamaxGrowth(in FxCtx c, FxList fx)
     {
-        float t = c.Age, h = c.FromSize, w = c.FromHalfWidth;
+        // The growth comes after the trainer's call (plan 25 · YD1), whose ball and beam are the renderer's; its shown
+        // age holds at the burst (the hit-stop), and the flash keeps the real clock so it is never held
+        float lead = c.Cue.Lead;
+        float t = c.Age - lead, h = c.FromSize, w = c.FromHalfWidth;
+        float real = c.Cue.Age - lead;
         var feet = c.FromFeet;
         var middle = c.From;
         bool gold = c.Cue.Gigantamax;
         const float B = BattleAnimator.DynamaxGrown;
-        fx.Land(B);
+        fx.Land(lead + B);
+        if (t < 0f) return;
+        if (lead > 0f) OpenedBall(c, t, fx);
 
         // The clouds gathering round the feet, turning and drawing in
         float gather = Fx.Envelope(t, 0f, 0.15f, 0.8f, 1.0f);
@@ -193,7 +200,10 @@ internal static partial class MoveFx
         Fx.Shockwave(fx, t, middle, Vector3.Zero, B, 0.5f, h * 1.4f, Fx.Fade(DynaRed, 0.9f));
         Fx.Shockwave(fx, t, feet + Vector3.UnitY * h * 0.03f, Vector3.UnitY, B, 0.55f, h * 1.3f, Fx.Fade(DynaPink, 0.8f));
         Fx.Burst(fx, c.Seed, t, middle, h, B, 0.6f, 10, FxShape.Smoke, CloudRed, DynaPink, 0.18f, 0.8f, 0f, FxBlend.Alpha, salt: 61);
-        fx.ScreenFlash(Rgb(255, 200, 220), 0.25f * Fx.Envelope(t, B - 0.02f, B + 0.03f, B + 0.06f, B + 0.25f));
+        fx.ScreenFlash(Rgb(255, 200, 220), 0.25f * Fx.Envelope(real, B - 0.02f, B + 0.03f, B + 0.06f, B + 0.25f));
+        // The shockwave (plan 25 · YD1): a ring on the ground out across the stage, and dust thrown off the platform's rim
+        Fx.Shockwave(fx, t, feet + Vector3.UnitY * h * 0.02f, Vector3.UnitY, B, 0.7f, h * GiantWaveReach, Fx.Fade(DynaPink, 0.75f));
+        GroundDust(c.Seed, t - B, feet, h, w, fx);
         if (gold)
         {
             Fx.Burst(fx, c.Seed, t, middle, h, B, 0.55f, 10, FxShape.Spark, DynaGold, White, 0.07f, 1.1f, salt: 62);
@@ -210,6 +220,41 @@ internal static partial class MoveFx
         // Settling: the clouds closing over its head into its wreath
         float settle = Fx.Envelope(t, 1.0f, 1.25f, BattleAnimator.DynamaxTime - BattleAnimator.ConditionReturnTime, BattleAnimator.DynamaxTime);
         if (settle > 0f) Wreath(feet, h, w, t, c.Seed, gold, settle, fx);
+    }
+
+    /// <summary>How far the growth's ground ring runs out, in the body's height (plan 25 · YD1).</summary>
+    public const float GiantWaveReach = 3f;
+
+    /// <summary>
+    /// Six puffs of dust thrown off the platform's rim along the ground at the burst (plan 25 · YD1), <paramref name="k"/>
+    /// seconds after it, gone by 0.7 s.
+    /// </summary>
+    private static void GroundDust(int seed, float k, Vector3 feet, float h, float w, FxList fx)
+    {
+        if (k < 0f || k >= 0.7f) return;
+        float e = Fx.EaseOut(k / 0.7f);
+        for (int i = 0; i < 6; i++)
+        {
+            float a = i * MathF.Tau / 6f + 0.4f + Fx.Rand(seed, i, 471) * 0.5f;
+            float r = (w + h * 0.3f) + h * 0.9f * e;
+            var p = feet + new Vector3(MathF.Cos(a) * r, h * (0.05f + 0.06f * e), MathF.Sin(a) * r * 0.6f);
+            fx.Sprite(FxShape.Smoke, p, h * (0.14f + 0.12f * e), Fx.Fade(Rgb(200, 180, 170), 0.6f * (1f - k / 0.7f)), FxBlend.Alpha, a + k * 2f,
+                depth: MathF.Sin(a) < 0f);
+        }
+    }
+
+    /// <summary>
+    /// The ball a trainer threw opening over the place (plan 25 · YD1): red light bursting out of it, the Pokémon rising
+    /// out of the light (its size is the animator's <see cref="BattleAnimator.CalledBack"/>). 3 quads, gone by 0.35 s.
+    /// </summary>
+    private static void OpenedBall(in FxCtx c, float t, FxList fx)
+    {
+        if (t >= 0.35f) return;
+        float k = t / 0.35f, h = c.FromSize;
+        var at = c.FromFeet + Vector3.UnitY * h * 0.45f;
+        fx.Sprite(FxShape.Glow, at, h * (0.5f + 0.6f * k), Fx.Fade(DynaRed, 0.85f * (1f - k)));
+        fx.Sprite(FxShape.Glow, at, h * (0.25f + 0.3f * k), Fx.Fade(DynaRim, 0.9f * (1f - k)));
+        Fx.Shockwave(fx, t, at, Vector3.Zero, 0f, 0.35f, h * 0.9f, Fx.Fade(DynaPink, 0.8f));
     }
 
     /// <summary>A Dynamax's end: its wreath broken into puffs thrown up and out, red motes rising and going out, a ring at its feet.</summary>

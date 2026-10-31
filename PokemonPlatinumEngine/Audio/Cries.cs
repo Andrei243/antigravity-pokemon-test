@@ -44,7 +44,13 @@ public enum CryMode
     /// <summary>Hyper Voice's second: three semitones up, doubled and ringing, cut short.</summary>
     HyperVoice2,
     /// <summary>Howl's: a semitone down, drawn out by a long echo.</summary>
-    MidMove
+    MidMove,
+
+    /// <summary>
+    /// A Pokémon grown giant, at its Dynamax's burst (plan 25 · YD1; our own): a fifth down, doubled an octave below,
+    /// in a long hall.
+    /// </summary>
+    Giant
 }
 
 /// <summary>
@@ -423,6 +429,7 @@ public static partial class Cries
             CryMode.HyperVoice1 => Chorus(Pitched(cry, 2f), Pitched(cry, 9f)),
             CryMode.HyperVoice2 => Shortened(Echoed(Chorus(Pitched(cry, 3f), Pitched(cry, 10f)), 0.06f, 0.4f)),
             CryMode.MidMove => Echoed(Pitched(cry, -1f), 0.16f, 0.5f),
+            CryMode.Giant => Echoed(Chorus(Pitched(cry, -7f), Pitched(cry, -12f)), 0.14f, 0.55f),
             _ => (float[])cry.Clone()
         };
         return Finish(s);

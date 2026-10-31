@@ -17,7 +17,7 @@ internal readonly record struct CameraShot(Vector3 Position, Vector3 Target, flo
 }
 
 /// <summary>What the director is showing.</summary>
-internal enum ShotKind { Intro, Overview, SendOut, Attacker, Target, Self, Critical, Throw, Ball, BallClose, Faint, Trainer, Rotation, Push, Follow, Punch, Orbit }
+internal enum ShotKind { Intro, Overview, SendOut, Attacker, Target, Self, Critical, Throw, Ball, BallClose, Faint, Trainer, Rotation, Push, Follow, Punch, Orbit, Giant }
 
 /// <summary>
 /// The battle's camera director (plan 04 · G8). The overview is the DS-like framing; the director sweeps in at the
@@ -202,6 +202,16 @@ internal sealed class BattleCamera
         EffectCue? move = null;
         for (int i = anim.Cues.Count - 1; i >= 0; i--)
             if (anim.Cues[i].Kind == CueKind.Move) { move = anim.Cues[i]; break; }
+
+        // A giant growing or shrinking back (plan 25 · YD1), newer than any move playing, up to its let-go
+        float motionNow = Math.Clamp(Motion, 0f, 1f);
+        if (motionNow > 0f && GiantCueOf(anim) is { } giant && (move == null || giant.Age <= move.Age))
+        {
+            var shot = GiantShot(anim, places, giant);
+            if (motionNow >= 1f) return (shot, ShotKind.Giant, giant);
+            return (CameraShot.Lerp(Overview(anim.Time), shot, motionNow), motionNow >= 0.5f ? ShotKind.Giant : ShotKind.Overview, giant);
+        }
+
         if (move != null)
         {
             // A signature move's own shot (plan 25 · Y17), laid over the ordinary one by the motion number
@@ -376,6 +386,71 @@ internal sealed class BattleCamera
             }
         }
         return MoveShot(anim, places, move);
+    }
+
+    // ------------------------------------------------------------------ a giant's growth (plan 25 · YD1)
+
+    /// <summary>How long before a growth's or an end's own end the giant shot lets go, eased back to the overview.</summary>
+    public const float GiantLetGo = 0.3f;
+
+    /// <summary>The grown body's frame in the giant shot (its height times this), and where it looks up the body (a share of its height).</summary>
+    public const float GiantFrame = 1.7f, GiantLook = 0.45f;
+
+    /// <summary>The giant shot's pitch: this far below level, looking up (degrees).</summary>
+    public const float GiantPitchDeg = -5f;
+
+    /// <summary>The narrowest lens the giant shot takes (degrees); the widest is <see cref="WidestFov"/>.</summary>
+    public const float GiantNarrowest = 14f;
+
+    /// <summary>A foe's trainer who calls a Dynamax, in the frame: their height times this.</summary>
+    public const float CallFrame = 2.6f;
+
+    /// <summary>The newest Dynamax or end of one still before its let-go, or null.</summary>
+    public static EffectCue? GiantCueOf(BattleAnimator anim)
+    {
+        for (int i = anim.Cues.Count - 1; i >= 0; i--)
+        {
+            var c = anim.Cues[i];
+            if (c.Kind is CueKind.Dynamax or CueKind.DynamaxEnd && c.Age < c.Length - GiantLetGo) return c;
+        }
+        return null;
+    }
+
+    /// <summary>
+    /// The giant shot (style guide, "Camera (G8)", "A giant's growth"): through a trainer's call, the trainer and their
+    /// platform; through the growth, low and looking up the body, the camera where a frame of the grown body would put
+    /// it and its lens widening as the body grows. A pure function of the cue and the places.
+    /// </summary>
+    public static CameraShot GiantShot(BattleAnimator anim, FxPlaces places, EffectCue cue)
+    {
+        var side = cue.ToSide;
+        int slot = cue.ToSlot;
+        bool player = side == BattleSide.Player;
+        if (cue.Kind == CueKind.Dynamax && cue.Age < cue.Lead) return CallShot(places, player, slot);
+
+        var v = anim[side, slot];
+        float h = places.Height(side, slot);
+        float now = BattleAnimator.GiantOf(v, player);
+        float grown = h / Math.Max(0.05f, now) * (player ? BattleAnimator.DynamaxScaleOwn : BattleAnimator.DynamaxScaleFoe);
+        var feet = places.Feet(side, slot);
+        float lift = GiantPitchDeg * MathF.PI / 180f - BattleStage.PitchDeg * MathF.PI / 180f;
+        float yaw = player ? -0.75f : -0.18f;
+        var at = Frame(feet + Vector3.UnitY * grown * GiantLook, grown * GiantFrame, yaw, lift, 30f, player ? float.PositiveInfinity : FoeShotLimit);
+        var target = feet + Vector3.UnitY * h * GiantLook;
+        float dist = Math.Max(1f, Vector3.Distance(at.Position, target));
+        float fov = Math.Clamp(2f * MathF.Atan(h * GiantFrame / (2f * dist)) * 180f / MathF.PI, GiantNarrowest, WidestFov);
+        return new CameraShot(at.Position, target, fov);
+    }
+
+    /// <summary>A trainer's call before a Dynamax: the foe's trainer and their platform from the front, or the player's own platform from its right.</summary>
+    public static CameraShot CallShot(FxPlaces places, bool player, int slot)
+    {
+        if (player) return Close(places, BattleSide.Player, slot, 4.2f, 0.35f);
+        float h = TrainerHeight * BattleRenderer.CallerScale(false);
+        var spot = BattleStage.CallSpot(false);
+        var pokemon = places.Feet(BattleSide.Enemy, slot);
+        var focus = Vector3.Lerp(new Vector3(pokemon.X, 0, pokemon.Z), spot, 0.55f) + Vector3.UnitY * (pokemon.Y + h * 0.55f);
+        return Frame(focus, h * CallFrame, -0.18f, 0.06f, limitZ: FoeShotLimit);
     }
 
     /// <summary>How wide the shot of a turning turntable is, in the Pokémon's heights (a send-out's is 3.6): plan 14 · B7.</summary>

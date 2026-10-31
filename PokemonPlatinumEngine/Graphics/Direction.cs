@@ -79,30 +79,41 @@ internal static class Directions
     public static MoveDirection? For(EffectCue cue) =>
         cue.Kind == CueKind.Move && !cue.Arriving && !cue.ZMove && !cue.MaxMove ? Of(cue.Move) : null;
 
-    /// <summary>How long a cue holds at its impact now: a landed strike of a heavy signature move, under the motion number.</summary>
+    /// <summary>A giant's growth's hold at its burst, seconds (plan 25 · YD1), under the motion number.</summary>
+    public const float GiantStop = 0.12f;
+
+    /// <summary>How long a cue holds at its impact now: a landed strike of a heavy signature move, or a giant's growth at its burst (plan 25 · YD1), under the motion number.</summary>
     public static float StopOf(EffectCue cue)
     {
+        if (cue.Kind == CueKind.Dynamax) return GiantStop * Math.Clamp(BattleCamera.Motion, 0f, 1f);
         if (cue.Charging || !cue.Landed || For(cue) is not { HitStop: > 0f } d) return 0f;
         return d.HitStop * Math.Clamp(BattleCamera.Motion, 0f, 1f);
     }
+
+    /// <summary>Where a cue's hold falls: a move's impact, or a giant's burst after its trainer's call (plan 25 · YD1).</summary>
+    public static float ImpactOf(EffectCue cue) =>
+        cue.Kind == CueKind.Dynamax ? cue.Lead + BattleAnimator.DynamaxGrown : I;
 
     /// <summary>
     /// The age a cue is drawn at (the hit-stop): its own age up to the impact, held there for <paramref name="stop"/>,
     /// then caught up so that it ends at <paramref name="length"/> as it would have. With no stop it is the age itself.
     /// </summary>
-    public static float Remap(float age, float stop, float length)
+    public static float Remap(float age, float stop, float length) => Remap(age, stop, length, I);
+
+    /// <summary>The same, held at <paramref name="impact"/> instead of a move's impact (plan 25 · YD1: a giant's burst).</summary>
+    public static float Remap(float age, float stop, float length, float impact)
     {
-        if (stop <= 0f || age <= I || length <= I + stop) return age;
-        if (age < I + stop) return I;
+        if (stop <= 0f || age <= impact || length <= impact + stop) return age;
+        if (age < impact + stop) return impact;
         if (age >= length) return age;
-        return I + (age - I - stop) * (length - I) / (length - I - stop);
+        return impact + (age - impact - stop) * (length - impact) / (length - impact - stop);
     }
 
     /// <summary>The shown age of a cue (<see cref="EffectCue.ShownAge"/>).</summary>
     public static float ShownAge(EffectCue cue)
     {
         float stop = StopOf(cue);
-        return stop <= 0f ? cue.Age : Remap(cue.Age, stop, cue.Length);
+        return stop <= 0f ? cue.Age : Remap(cue.Age, stop, cue.Length, ImpactOf(cue));
     }
 
     /// <summary>A heavy hit's throw: back from the user and pressed a little at the impact, settling over 0.5 s.</summary>

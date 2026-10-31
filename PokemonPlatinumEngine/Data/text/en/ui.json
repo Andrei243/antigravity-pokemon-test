@@ -3875,7 +3875,8 @@
       "Howl2": "Roar, second",
       "HyperVoice1": "Hyper Voice, first",
       "HyperVoice2": "Hyper Voice, second",
-      "MidMove": "Howl"
+      "MidMove": "Howl",
+      "Giant": "Grown giant"
     },
     "cryNote": {
       "Normal": "As it is: a send-out, a wild Pokémon appearing, the summary, an evolution.",
@@ -3891,7 +3892,8 @@
       "Howl2": "The second: a little higher, with a louder ring.",
       "HyperVoice1": "The first cry of Hyper Voice: higher, doubled a fifth above.",
       "HyperVoice2": "The second: higher still, doubled and ringing, cut short.",
-      "MidMove": "The cry of Howl, drawn out by a long echo."
+      "MidMove": "The cry of Howl, drawn out by a long echo.",
+      "Giant": "A Pokémon grown giant: lower, doubled an octave below, ringing in a long hall."
     },
     "bed": {
       "Rain": "Rain",

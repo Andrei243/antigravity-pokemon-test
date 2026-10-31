@@ -10,9 +10,13 @@ partial class Harness
     //      Max Band), her Garchomp put at the head of the team so it comes out first: the Mega Evolution, the Mega
     //      Dynamax and the Max Move of the AI (gi00_*), the next Max Move, the end at the third turn's (gi01_*);
     //   2. a foe of the harness's own with the Dynamax Band alone (a Dynamax and a Gigantamax-less Snorlax) (gi10_*);
-    //   3. a double battle where one foe grows and the other does not, the player's two beside (gi20_*).
-    // Every cue that starts is shot at the same moments from its start: gi<part>_<what>_<n>, with its kinds and quads
-    // printed. Not part of "all". GIANTS_PART=cynthia|dynamax|double runs one part.
+    //   3. a double battle where one foe grows and the other does not, the player's two beside (gi20_*);
+    //   4. the player's own Dynamax through the button, by day and at night, and a Gigantamax with its end (gi3x_*,
+    //      plan 25 · YD1).
+    // Every cue that starts is shot at the same moments from its start: gi<part>_<what>_<n>, with its kinds, quads, the
+    // camera's shot and the giant's sky printed; a growth with a trainer's call (YD1) has four shots of the call first
+    // (_call_1 to _4) and then the growth's at the same moments of the growth as YD0's. Not part of "all".
+    // GIANTS_PART=cynthia|dynamax|double|own runs one part.
     public void GiantsMode()
     {
         string only = Environment.GetEnvironmentVariable("GIANTS_PART") ?? "";
@@ -69,10 +73,34 @@ partial class Harness
                 Skip(Math.Max(0, times[i] - at));
                 at = times[i];
                 Shot($"{prefix}_{i + 1}");
-                Console.WriteLine($"  {prefix}_{i + 1} +{times[i]:0.00} s: {game.BattleRenderer.Effects.Count} quads and ribbons; playing: {Playing(b)}; "
+                Console.WriteLine($"  {prefix}_{i + 1} +{times[i]:0.00} s: {game.BattleRenderer.Effects.Count} quads and ribbons; camera {game.BattleRenderer.Shot}; sky {GiantSky.Presence(b.Anim):0.00}; playing: {Playing(b)}; "
                     + $"foes {Side(b, BattleSide.Enemy)}; giants own {string.Join("/", Enumerable.Range(0, b.Anim.SlotsOf(BattleSide.Player)).Select(s => b.Anim[BattleSide.Player, s].Dynamaxed))} foe {string.Join("/", Enumerable.Range(0, b.Anim.SlotsOf(BattleSide.Enemy)).Select(s => b.Anim[BattleSide.Enemy, s].Dynamaxed))}");
             }
         }
+
+        // A growth's beats (plan 25 · YD1): with a trainer's call before it, four of the call (<prefix>_call_1 to _4) and
+        // then the growth's own seven at the same moments of the growth as before the call was built, so a shot of YD0's
+        // run and one of this compare the same moment
+        void Growth(BattleEngine b, string prefix, EffectCue c)
+        {
+            if (c.Kind == CueKind.Dynamax && c.Lead > 0f)
+            {
+                double found = c.Age;
+                Beat(b, prefix + "_call", 0.12 - found, 0.3 - found, 0.55 - found, 0.85 - found);
+                double after = 0.85;
+                double lead = c.Lead;
+                Beat(b, prefix, lead + 0.2 - after, lead + 0.5 - after, lead + 0.75 - after, lead + 0.95 - after, lead + 1.3 - after, lead + 1.62 - after, lead + 2.2 - after);
+                PrintCamera(b, prefix);
+            }
+            else
+            {
+                Beat(b, prefix, 0.2, 0.5, 0.75, 0.95, 1.3, 1.62, 2.2);
+                PrintCamera(b, prefix);
+            }
+        }
+
+        void PrintCamera(BattleEngine b, string prefix) =>
+            Console.WriteLine($"  {prefix}: camera {game.BattleRenderer.Shot}, sky {GiantSky.Presence(b.Anim):0.00}, shown age of the growth {b.Anim.Cues.LastOrDefault(x => x.Kind == CueKind.Dynamax)?.ShownAge.ToString("0.00") ?? "-"}");
 
         // Plays the battle on, one turn after another with the player's first move (a Splash), reading each line for a
         // fifth of a second and shooting the beats of every growth, Max Move and end that starts. Returns the beats shot.
@@ -103,7 +131,7 @@ partial class Harness
                         var c = fresh[0];
                         if (c.MaxMove && moves < 3) Beat(b, $"{part}_maxmove{++moves}", 0.15, 0.37, 0.7, 1.1, 1.5);
                         else if (c.Kind == CueKind.DynamaxEnd && ends < 2) Beat(b, $"{part}_end{++ends}", 0.15, 0.4, 0.8);
-                        else if (c.Kind is CueKind.Mega or CueKind.Dynamax && grown < 3) Beat(b, $"{part}_growth{++grown}", 0.2, 0.5, 0.75, 0.95, 1.3, 1.62, 2.2);
+                        else if (c.Kind is CueKind.Mega or CueKind.Dynamax && grown < 3) Growth(b, $"{part}_growth{++grown}", c);
                         beats++;
                         foreach (var d in b.Anim.Cues) seen.Add(d);
                     }
@@ -189,6 +217,88 @@ partial class Harness
                 Shot("gi20_double_intro");
                 Watch(b, "gi20_double", 8, 6);
             }
+        }
+        // ---- 4. the player's own (plan 25 · YD1): a Dynamax through the move menu's button with the trainer's call, by
+        // day (gi30_*) and at night (gi31_*), and a Gigantamax with the call and its end (gi32_*); each in a wild battle
+        // on grass begun as the later mode's are
+        if (only is "" or "own")
+        {
+            BattleEngine Own(Pokemon mine, uint seed, string foe = "Blissey")
+            {
+                var party = new Party();
+                party.Add(mine);
+                var bag = new Inventory();
+                bag.AddItem(ItemDatabase.Get(PokemonPlatinumEngine.Battle.Sim.BattleCore.DynamaxBandItem)!);
+                var enemy = Meet(foe, 100);
+                enemy.Moves.Clear();
+                enemy.Moves.Add(new Move(MoveDatabase.Get("Splash")));
+                game.Map = MapDatabase.Get("Sinnoh");
+                game.BattleRenderer.SetArena(BattleArena.Grass);
+                var b = new BattleEngine(new BattleSetup
+                {
+                    PlayerParty = party, Inventory = bag, Pokedex = pokedex, WildPokemon = new List<Pokemon> { enemy },
+                    Random = new BattleRandom(seed).Force(RollKind.Critical, 1).Force(RollKind.Accuracy, 0), Rules = Ruleset.Modern
+                });
+                game.Battle = b;
+                game.State = GameState.Battle;
+                return b;
+            }
+
+            Pokemon Grower(string species, bool gmax, params string[] moves)
+            {
+                var p = Meet(species, 50);
+                p.Moves.Clear();
+                foreach (var m in moves) p.Moves.Add(new Move(MoveDatabase.Get(m)));
+                p.DynamaxLevel = 10;
+                p.GigantamaxFactor = gmax;
+                return p;
+            }
+
+            void Grow(BattleEngine b, string prefix, int move = 0)
+            {
+                ToMainMenu(b);
+                b.SelectMainMenuOption(0);
+                Frames(5);
+                b.ToggleLaterMechanic();
+                b.SelectMove(move);
+                Frames(1);
+                for (int i = 0; i < 60 && !b.Anim.Cues.Any(c => c.Kind == CueKind.Dynamax); i++)
+                {
+                    if (b.IsWaitingForConfirm) Confirm(b);
+                    else Skip(0.05);
+                }
+                var cue = b.Anim.Cues.LastOrDefault(c => c.Kind == CueKind.Dynamax);
+                if (cue == null) { Console.WriteLine($"  !! no growth for {prefix}"); return; }
+                Console.WriteLine($"  {prefix}: the call {(cue.Lead > 0f ? "played" : "not played")}, the cue found at {cue.Age:0.00} s");
+                Growth(b, prefix, cue);
+            }
+
+            foreach (var (name, time) in new[] { ("gi30_own_day", TimeOfDay.Day), ("gi31_own_night", TimeOfDay.Night) })
+            {
+                engine.Settings.TimeOfDay = time;
+                engine.ApplySettings(window: false);
+                var b = Own(Grower("Charizard", false, "Flamethrower", "Growl"), 301);
+                Grow(b, name);
+            }
+            engine.Settings.TimeOfDay = TimeOfDay.Day;
+            engine.ApplySettings(window: false);
+
+            var gb = Own(Grower("Charizard", true, "Flamethrower", "Growl"), 302);
+            Grow(gb, "gi32_own_gmax");
+            // Its end, and a second Dynamax of the same battle (the growth alone)
+            for (int turn = 0; turn < 4 && !gb.Anim.Cues.Any(c => c.Kind == CueKind.DynamaxEnd); turn++)
+            {
+                ToMainMenu(gb);
+                gb.SelectMainMenuOption(0);
+                gb.SelectMove(1);
+                for (int i = 0; i < 60 && gb.HUD.MenuState != BattleMenuState.Main && !gb.Anim.Cues.Any(c => c.Kind == CueKind.DynamaxEnd); i++)
+                {
+                    if (gb.IsWaitingForConfirm) Confirm(gb);
+                    else Skip(0.05);
+                }
+            }
+            if (gb.Anim.Cues.Any(c => c.Kind == CueKind.DynamaxEnd)) Beat(gb, "gi32_own_gmax_end", 0.15, 0.4, 0.8);
+            Console.WriteLine($"  a second Dynamax of this battle would be called: {(gb.Anim.CallerFor(BattleSide.Player, 0, false) == null ? "no, the growth alone" : "yes")}");
         }
         game.State = GameState.Overworld;
     }
