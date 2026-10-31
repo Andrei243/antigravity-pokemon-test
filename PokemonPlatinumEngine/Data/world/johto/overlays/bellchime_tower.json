@@ -1,0 +1,18 @@
+{
+  // Bellchime Trail (plan 20 · J11, part d): the walk under the trees from the gate's corridor to the Bell Tower's
+  // door, with HeartGold's mushrooms hidden in the grass. Morty waits by the tower until Ho-Oh has come to its roof
+  // (FLAG_JOHTO_HO_OH_CAME, ours, which bell_tower_roof.txt sets; HeartGold's FLAG_UNK_2CA is not used)
+  "area": "bellchime_tower",
+  "bgmTrack": "johto/ecruteak",
+  "people": {
+    "d17r1101_gsleader4": {
+      "name": "Morty",
+      "still": true,
+      "hiddenBy": "FLAG_JOHTO_HO_OH_CAME",
+      "dialog": [
+        "I have trained all my life to be worthy of the bird of the Bell Tower, and still the Kimono Girls chose you.",
+        "No matter. Climb, {player}. I'll keep watch down here, as the Gym Leaders of Ecruteak always have."
+      ]
+    }
+  }
+}

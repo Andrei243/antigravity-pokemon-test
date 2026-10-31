@@ -12,11 +12,33 @@
       "dialog": {
         "en": [
           "Below us lies the deepest cave of the islands. The guardian of the sea sleeps there.",
-          "It will not wake for just anyone. Go back up, young one."
+          "It will not wake for just anyone. Only one who carries the Silver Wing may go down to it."
         ],
         "text": [
+          "",
+          ""
+        ],
+        "was": [
           "Sub noi se află cea mai adâncă peșteră a insulelor. Acolo doarme paznicul mării.",
           "Nu se trezește pentru oricine. Întoarce-te sus, tinere suflet."
+        ]
+      }
+    },
+    "whirl_islands_sage_aside": {
+      "name": {
+        "en": [
+          "Sage"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Silver Wing... Then go down, young one. The guardian of the sea is waiting for you below."
+        ],
+        "text": [
+          ""
         ]
       }
     }

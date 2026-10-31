@@ -4,7 +4,7 @@
   // from (a warp to "the last place"); here it leads back inside the hall's back door, whose arrival asks whether the
   // game is over
   "area": "safari_zone_entrance_exterior",
-  "bgmTrack": "johto/national_park",
+  "bgmTrack": "johto/safari_zone",
   "trees": "Round",
   "doors": [
     { "warp": 0, "map": "SafariZone_Gate", "x": 5, "y": 3, "facing": "Down" },

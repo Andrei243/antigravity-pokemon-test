@@ -1,0 +1,19 @@
+# The room upstairs next door in New Bark Town (plan 20 · J12, part b). docs/scripts.md describes the language; the
+# lines are our own, on HeartGold's beat of the friend at home once all eight Badges are won (its rival's-room scene).
+#
+# From the Rising Badge (FLAG_UNK_0EA, dragons_den_shrine.txt) the friend waits in their room until Johto's Hall of Fame
+# (the overlay's npcs: shown by the one, hidden by the other), and sends the player off toward the League.
+
+
+script FriendAtHome
+  face self player
+  speaker "{assistant}"
+  if flag FLAG_JOHTO_FRIEND_SAW_THE_EIGHTH_BADGE goto Again
+  say "{player}! Mom said you'd come by. Is it true? All eight of Johto's Badges?"
+  say "I knew it. Ever since you chose your first Pokémon in Professor Elm's lab, I knew you'd go all the way."
+  say "The road to the League runs west from here, by Route 27 and Tohjo Falls. Go on. I'll be cheering for you!"
+  setflag FLAG_JOHTO_FRIEND_SAW_THE_EIGHTH_BADGE
+  end
+label Again
+  say "What are you still doing here? The League is waiting for you!"
+  end

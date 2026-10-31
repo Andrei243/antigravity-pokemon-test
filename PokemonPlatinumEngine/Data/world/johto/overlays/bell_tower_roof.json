@@ -1,0 +1,21 @@
+{
+  // The Bell Tower's roof (plan 20 · J11, part d; scripts/bell_tower_roof.txt): the five Kimono Girls stand before
+  // the bell once they have let the player through the gate (FLAG_JOHTO_KIMONO_GIRLS_BEATEN, ours); a step onto
+  // HeartGold's tile before them (its trigger, on VAR_UNK_40FA 1, which their last battle sets) plays their dance and
+  // brings Ho-Oh down to the roof (FLAG_JOHTO_HO_OH_CAME, ours). Ho-Oh is gone once met (HeartGold's
+  // FLAG_HIDE_BELL_TOWER_HO_OH): for good when caught, until Johto's Hall of Fame is next entered when not.
+  // HeartGold plays nothing up here but the wind; the tower's song stands in
+  "area": "bell_tower_roof",
+  "bgmTrack": "johto/sprout_tower",
+  "triggers": [
+    { "trigger": 0, "script": "Dance" }
+  ],
+  "people": {
+    "d17r0110_dancer": { "name": "Kimono Girl", "npcType": "kimono_zuki", "script": "Dancer", "still": true, "hiddenBy": "", "shownBy": "FLAG_JOHTO_KIMONO_GIRLS_BEATEN" },
+    "d17r0110_dancer_2": { "name": "Kimono Girl", "npcType": "kimono_naoko", "script": "Dancer", "still": true, "hiddenBy": "", "shownBy": "FLAG_JOHTO_KIMONO_GIRLS_BEATEN" },
+    "d17r0110_dancer_3": { "name": "Kimono Girl", "npcType": "kimono_miki", "script": "Dancer", "still": true, "hiddenBy": "", "shownBy": "FLAG_JOHTO_KIMONO_GIRLS_BEATEN" },
+    "d17r0110_dancer_4": { "name": "Kimono Girl", "npcType": "kimono_sayo", "script": "Dancer", "still": true, "hiddenBy": "", "shownBy": "FLAG_JOHTO_KIMONO_GIRLS_BEATEN" },
+    "d17r0110_dancer_5": { "name": "Kimono Girl", "npcType": "kimono_kuni", "script": "Dancer", "still": true, "hiddenBy": "", "shownBy": "FLAG_JOHTO_KIMONO_GIRLS_BEATEN" },
+    "d17r0110_hou_obj01": { "name": "Ho-Oh", "npcType": "Pokemon", "species": "Ho-Oh", "script": "HoOh", "still": true, "shownBy": "FLAG_JOHTO_HO_OH_CAME" }
+  }
+}

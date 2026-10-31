@@ -1,0 +1,83 @@
+# The Bell Tower's roof (plan 20 · J11, part d). docs/scripts.md describes the language; the lines are our own, on
+# HeartGold's beats (scr_seq_D17R0110).
+#
+# The five Kimono Girls wait before the bell once they have battled the player in the Dance Theater and let them through
+# the gate (FLAG_JOHTO_KIMONO_GIRLS_BEATEN, ecruteak_dance_theater.txt, which also sets VAR_UNK_40FA 1). A step onto
+# the tile before them (HeartGold's trigger 0) plays their dance: the bell sounds, and Ho-Oh comes down to the roof
+# (FLAG_JOHTO_HO_OH_CAME, ours; VAR_UNK_40FA 2). Ho-Oh is battled where it lands and can't be run from. Caught, it is
+# gone for good (FLAG_JOHTO_CAUGHT_HO_OH, ours); beaten, it flies off and comes back the next time the player enters
+# Johto's Hall of Fame, whose scene clears HeartGold's FLAG_HIDE_BELL_TOWER_HO_OH unless it was caught.
+
+
+# D17R0110_006: the Kimono Girls' dance, and Ho-Oh
+script Dance
+  if var VAR_UNK_40FA != 1 end
+  scene "Ho-Oh comes to the Bell Tower"
+  face d17r0110_dancer player
+  speaker "Kimono Girl"
+  say "You have come. Then we will dance, as the dancers before us danced for the bird of the rainbow."
+  speaker none
+  say "The five Kimono Girls dance before the bell..."
+  sound "use_heal_bell"
+  wait 0.6
+  say "The great bell rings out over Ecruteak City!"
+  cry "Ho-Oh"
+  fade out 0.6
+  setflag FLAG_JOHTO_HO_OH_CAME
+  clearflag FLAG_HIDE_BELL_TOWER_HO_OH
+  show d17r0110_hou_obj01
+  fade in 0.6
+  speaker none
+  say "A Pokémon of rainbow fire has come down to the roof!"
+  setvar VAR_UNK_40FA 2
+  endscene
+  end
+
+
+# D17R0110_000: Ho-Oh on the roof
+script HoOh
+  cry "Ho-Oh"
+  speaker none
+  say "Ho-Oh spreads its burning wings!"
+  wildbattle "Ho-Oh" 45 nofleeing
+  if var RESULT == 3 goto Caught
+  setflag FLAG_HIDE_BELL_TOWER_HO_OH
+  hide self
+  say "Ho-Oh rose into the sky in a trail of rainbow light and was gone..."
+  end
+label Caught
+  setflag FLAG_JOHTO_CAUGHT_HO_OH
+  setflag FLAG_HIDE_BELL_TOWER_HO_OH
+  hide self
+  end
+
+
+# D17R0110_001 and _004: the Kimono Girls. Once Ho-Oh has been met they give the Silver Wing, once (FLAG_JOHTO_GOT_SILVER_WING,
+# ours: HeartGold hands it out in Kanto, and the plan brings it in Johto after Ho-Oh), which calls Lugia in the Whirl
+# Islands (whirl_islands_b3f_lugia_cave.txt)
+script Dancer
+  speaker "Kimono Girl"
+  if not flag FLAG_HIDE_BELL_TOWER_HO_OH goto Before
+  if flag FLAG_JOHTO_GOT_SILVER_WING goto Before
+  scene "The Silver Wing"
+  say "Ho-Oh has seen you. There is one more bird our dances are for: the guardian of the sea, deep in the Whirl Islands."
+  say "This feather was left in our care. Take it to the islands' deepest cave, and the guardian may come to you as well."
+  give "Silver Wing"
+  setflag FLAG_JOHTO_GOT_SILVER_WING
+  endscene
+  end
+label Before
+  if flag FLAG_JOHTO_CAUGHT_HO_OH goto Caught
+  if flag FLAG_HIDE_BELL_TOWER_HO_OH goto Gone
+  if var VAR_UNK_40FA >= 2 goto Waiting
+  say "Step up before the bell when you are ready, and we will begin."
+  end
+label Waiting
+  say "Ho-Oh is waiting for you. Go to it, and show it who you are."
+  end
+label Gone
+  say "Ho-Oh has flown, but it will come back to the Bell Tower. Its kind always does, for someone it has chosen."
+  end
+label Caught
+  say "Ho-Oh has chosen you. Look after it, and it will bring you a rainbow every day of your life."
+  end

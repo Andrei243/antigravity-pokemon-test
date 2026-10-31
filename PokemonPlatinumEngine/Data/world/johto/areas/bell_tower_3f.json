@@ -1,0 +1,57 @@
+{
+  "key": "bell_tower_3f",
+  "index": 333,
+  "name": "Bell Tower",
+  "matrix": 17,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Building3",
+  "dayMusic": "GS_TO_SUZU",
+  "nightMusic": "GS_TO_SUZU",
+  "encounters": "D17R0103",
+  "bike": false,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Rattata", "level": 20, "night": "Gastly" },
+    { "species": "Rattata", "level": 21, "night": "Gastly" },
+    { "species": "Rattata", "level": 20, "night": "Gastly" },
+    { "species": "Rattata", "level": 21, "night": "Gastly" },
+    { "species": "Rattata", "level": 22, "night": "Gastly" },
+    { "species": "Rattata", "level": 22, "night": "Gastly" },
+    { "species": "Rattata", "level": 22 },
+    { "species": "Rattata", "level": 22 },
+    { "species": "Rattata", "level": 23 },
+    { "species": "Rattata", "level": 24 },
+    { "species": "Rattata", "level": 23 },
+    { "species": "Rattata", "level": 24 }
+  ],
+  "landRate": 5,
+  "swarm": [
+    "Rattata",
+    "Rattata"
+  ],
+  "hoennSounds": [
+    "Zigzagoon",
+    "Spinda"
+  ],
+  "sinnohSounds": [
+    "Chatot",
+    "Meditite"
+  ],
+  "warps": [
+    { "x": 15, "z": 25, "to": "bell_tower_2f", "toWarp": 1 },
+    { "x": 24, "z": 8, "to": "bell_tower_4f", "toWarp": 0 },
+    { "x": 24, "z": 7, "to": "bell_tower_4f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "everywhere_monstarball", "looks": "monstarball", "movement": "0", "x": 6, "z": 25, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D17R0103_FULL_HEAL", "item": "Full Heal", "script": "std_itemball_d17r0103_full_heal" }
+  ],
+  "signs": [
+    { "x": 16, "z": 8, "type": 2, "script": "std_hiddenitem_d17r0103_max_potion", "item": "Max Potion", "flag": "FLAG_HIDDEN_ITEM_D17R0103_MAX_POTION" }
+  ],
+  "triggers": []
+}

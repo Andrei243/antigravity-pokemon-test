@@ -1,15 +1,24 @@
 {
-  // The gate before the Bell Tower (plan 20 · J5, part b): its Sages let nobody by. The way on to the tower (warp 1)
-  // stays shut until its chapter
+  // The gate before the Bell Tower (plan 20 · J5, part b): its Sages let nobody by until the Kimono Girls have tested
+  // the holder of the Rainbow Wing in the Dance Theater (plan 20 · J11, part d: FLAG_JOHTO_KIMONO_GIRLS_BEATEN, ours,
+  // opens the north door, warp 1, to the corridor and Bellchime Trail)
   "area": "ecruteak_bell_tower_barrier_station",
   "bgmTrack": "johto/ecruteak",
-  "locked": [
-    1
+  "doors": [
+    { "warp": 1, "map": "Ecruteak_BellTowerCorridor", "x": 3, "y": 18, "facing": "Up", "openedBy": "FLAG_JOHTO_KIMONO_GIRLS_BEATEN" }
+  ],
+  // The Sage in the passage north stands aside once the Kimono Girls have spoken for the player: he is hidden by their
+  // flag, and his double of ours stands beside the passage from then on
+  "npcs": [
+    { "id": "bell_tower_gate_sage", "name": "Sage", "npcType": "sage", "x": 16, "y": 6, "facing": "Left", "script": "Sage",
+      "shownBy": "FLAG_JOHTO_KIMONO_GIRLS_BEATEN" }
   ],
   "people": {
     "t27r0201_bozu": {
       "name": "Sage",
       "still": true,
+      "script": "Sage",
+      "hiddenBy": "FLAG_JOHTO_KIMONO_GIRLS_BEATEN",
       "dialog": [
         "Beyond this gate is the Bell Tower. Only one the tower's Pokémon has chosen may pass."
       ]

@@ -43,6 +43,17 @@ label Tm
   end
 label Won
   if not flag FLAG_GOT_TM23_FROM_JASMINE goto Tm
+  # Her number, for Johto's Champion (plan 20 · J9's leftover; the rematch is the Fighting Dojo's, phone.json)
+  if not flag JohtoHallOfFame goto Amphy
+  if flag FLAG_PHONE_CONTACT_JASMINE goto Amphy
+  say "You became the Champion... Amphy and I were so happy to hear it."
+  ask "Um... would you let me have your number? I'd like to hear how you're doing."
+  if no goto Amphy
+  addcontact jasmine
+  text "Registered Jasmine in the Pokégear."
+  say "Thank you. I'll call you, now and then."
+  end
+label Amphy
   say "Amphy shines every night now. Whenever I see its light out at sea, I think of you."
   end
 

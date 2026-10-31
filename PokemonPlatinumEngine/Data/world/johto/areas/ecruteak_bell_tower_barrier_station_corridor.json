@@ -1,0 +1,24 @@
+{
+  "key": "ecruteak_bell_tower_barrier_station_corridor",
+  "index": 216,
+  "name": "Ecruteak City",
+  "matrix": 130,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_C_ENJU",
+  "nightMusic": "GS_C_ENJU",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 19, "to": "ecruteak_bell_tower_barrier_station", "toWarp": 1 },
+    { "x": 6, "z": 3, "to": "bellchime_tower", "toWarp": 0 }
+  ],
+  "objects": [],
+  "signs": [],
+  "triggers": []
+}

@@ -1,5 +1,16 @@
 {
-  "people": {},
+  "people": {
+    "new_bark_friend_at_home": {
+      "name": {
+        "en": [
+          "{assistant}"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
   "signs": {
     "T20R0402_003+1": {
       "en": [

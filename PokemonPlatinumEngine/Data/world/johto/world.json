@@ -344,7 +344,24 @@
     { "name": "Route16_CyclingGate", "matrix": 70, "area": "route_16_gatehouse", "trees": "Round", "setting": "Indoors" },
     { "name": "Route16_EastHouse", "matrix": 66, "area": "johto_route_16_house", "trees": "Round", "setting": "Indoors" },
     { "name": "Route18_CyclingGate", "matrix": 70, "area": "route_18_gatehouse", "trees": "Round", "setting": "Indoors" },
-    { "name": "Seafoam_Gym", "matrix": 264, "area": "seafoam_islands_cinnabar_gym", "trees": "Round", "setting": "Cave" }
+    { "name": "Seafoam_Gym", "matrix": 264, "area": "seafoam_islands_cinnabar_gym", "trees": "Round", "setting": "Cave" },
+    // Plan 20 · J11, part d: the corridor behind the Bell Tower's gate, Bellchime Trail and the Bell Tower's floors to its roof
+    { "name": "Ecruteak_BellTowerCorridor", "matrix": 130, "area": "ecruteak_bell_tower_barrier_station_corridor", "trees": "Round", "setting": "Indoors" },
+    { "name": "BellchimeTrail", "matrix": 67, "area": "bellchime_tower", "trees": "Round" },
+    { "name": "BellTower_1F", "matrix": 15, "area": "bell_tower_1f", "trees": "Round", "setting": "Cave" },
+    { "name": "BellTower_2F", "matrix": 16, "area": "bell_tower_2f", "trees": "Round", "setting": "Cave" },
+    { "name": "BellTower_3F", "matrix": 17, "area": "bell_tower_3f", "trees": "Round", "setting": "Cave" },
+    { "name": "BellTower_4F", "matrix": 18, "area": "bell_tower_4f", "trees": "Round", "setting": "Cave" },
+    { "name": "BellTower_5F", "matrix": 19, "area": "bell_tower_5f", "trees": "Round", "setting": "Cave" },
+    { "name": "BellTower_6F", "matrix": 20, "area": "bell_tower_6f", "trees": "Round", "setting": "Cave" },
+    { "name": "BellTower_7F", "matrix": 21, "area": "bell_tower_7f", "trees": "Round", "setting": "Cave" },
+    { "name": "BellTower_8F", "matrix": 22, "area": "bell_tower_8f", "trees": "Round", "setting": "Cave" },
+    { "name": "BellTower_9F", "matrix": 23, "area": "bell_tower_9f", "trees": "Round", "setting": "Cave" },
+    { "name": "BellTower_10F", "matrix": 183, "area": "bell_tower_10f", "trees": "Round", "setting": "Cave" },
+    { "name": "BellTower_Roof", "matrix": 24, "area": "bell_tower_roof", "trees": "Round", "setting": "Cave" },
+    // and the Whirl Islands' third basement and Lugia's cave below the second basement's rock step
+    { "name": "WhirlIslands_B3F", "matrix": 275, "area": "whirl_islands_b3f", "trees": "Round", "setting": "Cave" },
+    { "name": "WhirlIslands_LugiaCave", "matrix": 144, "area": "whirl_islands_b3f_lugia_cave", "trees": "Round", "setting": "Cave" }
   ],
   "areas": [
     // Plan 20 · J2: New Bark Town to Route 31's gate house, with their rooms
@@ -473,6 +490,10 @@
     // Plan 20 · J15, part i: Route 11 east of Vermilion City with its gate to Route 12 and Diglett's Cave under it to Route 2,
     // and Routes 16 to 18, the Cycling Road from Celadon City down to Fuchsia City, with their gates and Route 16's house
     "johto_route_11", "route_19_route_12_gatehouse", "diglett_cave", "johto_route_16", "johto_route_16_house", "route_16_east",
-    "route_16_gatehouse", "johto_route_17", "johto_route_18", "route_18_gatehouse"
+    "route_16_gatehouse", "johto_route_17", "johto_route_18", "route_18_gatehouse",
+    // Plan 20 · J11, part d: the Bell Tower's corridor, Bellchime Trail and the tower's eleven floors
+    "ecruteak_bell_tower_barrier_station_corridor", "bellchime_tower", "bell_tower_1f", "bell_tower_2f", "bell_tower_3f",
+    "bell_tower_4f", "bell_tower_5f", "bell_tower_6f", "bell_tower_7f", "bell_tower_8f", "bell_tower_9f", "bell_tower_10f",
+    "bell_tower_roof", "whirl_islands_b3f", "whirl_islands_b3f_lugia_cave"
   ]
 }

@@ -580,6 +580,10 @@ public static class RegionDatabase
                 "Fuchsia_Gym", "Fuchsia_SouthwestHouse", "Fuchsia_WardensHouse", "Viridian_Gym", "Route12_FishingBrotherHouse",
                 // Plan 20 · J15, part i: the gate between Routes 11 and 12, Diglett's Cave, the Cycling Road's two gates and Route 16's house
                 "Route11_Route12Gate", "Diglett_Cave", "Route16_CyclingGate", "Route16_EastHouse", "Route18_CyclingGate",
+                // Plan 20 · J11, part d: the Bell Tower's corridor, Bellchime Trail and the tower's floors
+                "Ecruteak_BellTowerCorridor", "BellchimeTrail", "BellTower_1F", "BellTower_2F", "BellTower_3F", "BellTower_4F",
+                "BellTower_5F", "BellTower_6F", "BellTower_7F", "BellTower_8F", "BellTower_9F", "BellTower_10F", "BellTower_Roof",
+                "WhirlIslands_B3F", "WhirlIslands_LugiaCave",
             }
         },
         new()

@@ -1,0 +1,79 @@
+# Johto's credits (HeartGold's ending): a gentle, travelling theme in F major over thirty-two bars, a clarinet alone over
+# a harp's broken chords and held strings, a flute taking it up an octave higher, a quieter bridge in D minor, and a last
+# statement with the horns and the timpani, then round again for as long as the roll lasts. Original composition for this
+# game (plan 20 · J12; found by MusicDirector.SceneSong before the common song).
+title Credits (Johto)
+tempo 100
+meter 4/4
+reverb 0.38
+night none
+
+track lead clarinet vol=0.74 pan=-0.05 rev=0.38
+  L o4 f4 a4 o5 c2 | o5 d4. c8 o4 a4 g4 | o4 a4. b-8 o5 c4 f4 | o5 e2 c2 |
+  o5 d4. e8 f4 d4 | o5 c4. o4 b-8 a4 f4 | o4 g4 b-4 o5 d4 f4 | o5 c1 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  o5 d4. e8 f2 | o5 e4. d8 c+4 o4 a4 | o4 b-4. o5 c8 d4 f4 | o5 e1 |
+  o5 d4. c8 o4 b-4 g4 | o4 a4. b-8 o5 c4 e4 | o5 d4 c4 o4 b-4 g4 | o4 a2 o5 c2 |
+  o4 f4 a4 o5 c2 | o5 d4. c8 o4 a4 g4 | o4 a4. b-8 o5 c4 f4 | o5 e2 c2 |
+  o5 d4. e8 f4 d4 | o5 c4. o4 b-8 a4 f4 | o4 g4 b-4 o5 d4 e4 | o5 f1 |
+
+track high flute vol=0.6 pan=0.2 rev=0.36
+  L r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  o5 f4 a4 o6 c2 | o6 d4. c8 o5 a4 g4 | o5 a4. b-8 o6 c4 f4 | o6 e2 c2 |
+  o6 d4. e8 f4 d4 | o6 c4. o5 b-8 a4 f4 | o5 g4 a4 b-4 o6 d4 | o6 c1 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  o5 a2 o6 c2 | o5 a2 f2 | o6 c2 f2 | o6 e2 c2 |
+  o5 a2 o6 d2 | o6 c2 o5 a2 | o5 b-2 o6 c2 | o5 a1 |
+
+track harp harp vol=0.42 pan=0.3 rev=0.36
+  L o4 [ f8 a8 >c8 <a8 ]2 | o4 [ d8 f8 a8 f8 ]2 | o4 [ f8 a8 >c8 <a8 ]2 | o4 [ c8 e8 g8 e8 ]2 |
+  o4 [ d8 f8 a8 f8 ]2 | o4 [ f8 a8 >c8 <a8 ]2 | o4 [ g8 b-8 >d8 <b-8 ]2 | o4 [ c8 e8 g8 e8 ]2 |
+  o4 [ f8 a8 >c8 <a8 ]2 | o4 [ d8 f8 a8 f8 ]2 | o4 [ f8 a8 >c8 <a8 ]2 | o4 [ c8 e8 g8 e8 ]2 |
+  o4 [ d8 f8 a8 f8 ]2 | o4 [ f8 a8 >c8 <a8 ]2 | o4 [ g8 b-8 >d8 <b-8 ]2 | o4 [ c8 e8 g8 e8 ]2 |
+  o4 [ d8 f8 a8 f8 ]2 | o4 [ c+8 e8 a8 e8 ]2 | o4 [ g8 b-8 >d8 <b-8 ]2 | o4 [ c+8 e8 a8 e8 ]2 |
+  o4 [ g8 b-8 >d8 <b-8 ]2 | o4 [ f8 a8 >c8 <a8 ]2 | o4 [ g8 b-8 >d8 <b-8 ]2 | o4 [ c8 e8 g8 e8 ]2 |
+  o4 [ f8 a8 >c8 <a8 ]2 | o4 [ d8 f8 a8 f8 ]2 | o4 [ f8 a8 >c8 <a8 ]2 | o4 [ c8 e8 g8 e8 ]2 |
+  o4 [ d8 f8 a8 f8 ]2 | o4 [ f8 a8 >c8 <a8 ]2 | o4 [ c8 e8 g8 e8 ]2 | o4 [ f8 a8 >c8 <a8 ]2 |
+
+track pad strings vol=0.32 pan=-0.35 rev=0.42
+  L o4 (f a >c)1 | (d f a)1 | (f a >c)1 | (c e g)1 |
+  (d f a)1 | (f a >c)1 | (g b- >d)1 | (c e g)1 |
+  (f a >c)1 | (d f a)1 | (f a >c)1 | (c e g)1 |
+  (d f a)1 | (f a >c)1 | (g b- >d)1 | (c e g)1 |
+  (d f a)1 | (c+ e a)1 | (g b- >d)1 | (c+ e a)1 |
+  (g b- >d)1 | (f a >c)1 | (g b- >d)1 | (c e g)1 |
+  (f a >c)1 | (d f a)1 | (f a >c)1 | (c e g)1 |
+  (d f a)1 | (f a >c)1 | (c e g)1 | (f a >c)1 |
+
+track horns horn vol=0.38 pan=0.25 rev=0.38
+  L r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  o4 f1 | d1 | f1 | c1 |
+  d1 | f1 | c1 | f1 |
+
+track bass contrabass vol=0.58 rev=0.25
+  L o3 f2 c2 | d2 a2 | f2 c2 | c2 g2 |
+  d2 a2 | f2 c2 | g2 d2 | c1 |
+  f2 c2 | d2 a2 | f2 c2 | c2 g2 |
+  d2 a2 | f2 c2 | g2 d2 | c1 |
+  d2 a2 | a2 e2 | g2 d2 | a2 e2 |
+  g2 d2 | f2 c2 | g2 d2 | c2 g2 |
+  f2 c2 | d2 a2 | f2 c2 | c2 g2 |
+  d2 a2 | f2 c2 | c2 g2 | f1 |
+
+track timpani timpani vol=0.4 rev=0.3
+  L r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  o2 f4 r4 f4 r4 | d4 r4 d4 r4 | f4 r4 f4 r4 | c4 r4 c4 r4 |
+  d4 r4 d4 r4 | f4 r4 f4 r4 | c4 r4 c4 r4 | f2 r2 |

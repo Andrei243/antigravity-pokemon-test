@@ -1,0 +1,23 @@
+{
+  "people": {
+    "d17r0101_bozu": {
+      "name": {
+        "en": [
+          "Sage"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The tower is old and its floors are many. Climb with care, and the bell at the top will know you."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

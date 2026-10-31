@@ -1,0 +1,6 @@
+{
+  // The Bell Tower's floor 10 (plan 20 · J11, part d): HeartGold's floor, its ladders and its items. Nobody waits
+  // here: the way up is the climb itself
+  "area": "bell_tower_10f",
+  "bgmTrack": "johto/sprout_tower"
+}

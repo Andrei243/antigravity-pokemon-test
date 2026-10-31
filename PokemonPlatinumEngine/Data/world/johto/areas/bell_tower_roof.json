@@ -1,0 +1,32 @@
+{
+  "key": "bell_tower_roof",
+  "index": 340,
+  "name": "Bell Tower",
+  "matrix": 24,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "13",
+  "battleBackground": "City",
+  "dayMusic": "SILENCE_FIELD",
+  "nightMusic": "SILENCE_FIELD",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 15, "z": 24, "to": "bell_tower_10f", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "d17r0110_dancer", "looks": "dancer", "movement": "0", "x": 15, "z": 18, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_BELL_TOWER_SUMMIT_KIMONO_GIRLS", "script": "D17R0110_001+1" },
+    { "id": "d17r0110_dancer_2", "looks": "dancer", "movement": "0", "x": 14, "z": 18, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_BELL_TOWER_SUMMIT_KIMONO_GIRLS", "script": "D17R0110_004+1" },
+    { "id": "d17r0110_dancer_3", "looks": "dancer", "movement": "0", "x": 13, "z": 18, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_BELL_TOWER_SUMMIT_KIMONO_GIRLS", "script": "D17R0110_004+1" },
+    { "id": "d17r0110_dancer_4", "looks": "dancer", "movement": "0", "x": 16, "z": 18, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_BELL_TOWER_SUMMIT_KIMONO_GIRLS", "script": "D17R0110_004+1" },
+    { "id": "d17r0110_dancer_5", "looks": "dancer", "movement": "0", "x": 17, "z": 18, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_BELL_TOWER_SUMMIT_KIMONO_GIRLS", "script": "D17R0110_004+1" },
+    { "id": "d17r0110_hou_obj01", "looks": "hou_obj01", "movement": "0", "x": 15, "z": 16, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_BELL_TOWER_HO_OH", "script": "D17R0110_000+1" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 15, "z": 20, "width": 1, "depth": 1, "script": "D17R0110_006+1", "variable": "VAR_UNK_40FA", "value": "1" }
+  ]
+}
