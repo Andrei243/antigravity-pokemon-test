@@ -150,6 +150,8 @@ public class HeadlessGameTests
                 game.Party.Add(new Pokemon(PokemonDatabase.Get("Turtwig")!, 70));
                 game.State = GameState.Overworld;
                 Assert.Equal(began, game.BuildSave().BeganIn);
+                // A save carries the build that wrote it (plan 16 · T2)
+                Assert.Equal(PokemonPlatinumEngine.Core.Diagnostics.GameVersion.Shown, game.BuildSave().GameVersion);
 
                 game.Place(MapDatabase.Get("Kanto"), 66, 268, Direction.Down);
                 game.StartWildBattle(new WildEncounterEntry { SpeciesName = "Rattata", MinLevel = 3, MaxLevel = 3, Weight = 100 });

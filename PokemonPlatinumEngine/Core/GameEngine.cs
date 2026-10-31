@@ -793,6 +793,7 @@ public partial class GameEngine
             DayCare = DayCareSave.From(flow.DayCare),
             WorldVersion = SaveData.CurrentWorld,
             SaveVersion = SaveData.CurrentSave,
+            GameVersion = Diagnostics.GameVersion.Shown,
             PokemonIdsIssued = flow.PokemonIdsIssued,
             BeganIn = flow.BeganIn,
             LinkBattles = flow.LinkBattles.ToSave(),

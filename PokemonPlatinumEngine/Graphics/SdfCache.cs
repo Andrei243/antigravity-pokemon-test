@@ -33,13 +33,22 @@ internal static class SdfCache
 
     public static bool Enabled { get; set; } = true;
 
+    /// <summary>The folder meshes are written to, and read from first.</summary>
     public static string Folder { get; set; } = CacheFolders.Models;
+
+    /// <summary>
+    /// Folders read after <see cref="Folder"/> and never written to (plan 16 · T2): the meshes a release ships beside its
+    /// executable, which a build published for players reads while it writes its own beside the saves
+    /// (<see cref="CacheFolders.ForShippedBuild"/>). Empty for every other build.
+    /// </summary>
+    public static IReadOnlyList<string> ShippedFolders { get; set; } = Array.Empty<string>();
 
     public static SdfMesh Get(SdfModel model, float cell, float iso = 0f)
     {
         string key = Key(model, cell, iso);
         string name = Safe(model.Name) + (iso != 0f ? "-shell" : "");
-        string path = Path.Combine(Folder, $"{name}-{key}.mesh");
+        string file = $"{name}-{key}.mesh";
+        string path = Path.Combine(Folder, file);
         if (Enabled && File.Exists(path))
         {
             try
@@ -53,6 +62,18 @@ internal static class SdfCache
             }
             catch (Exception e) when (e is IOException or EndOfStreamException or InvalidDataException) { }
         }
+        // The cache the build was shipped with, read as it is
+        if (Enabled)
+            foreach (string folder in ShippedFolders)
+            {
+                string shipped = Path.Combine(folder, file);
+                if (!File.Exists(shipped)) continue;
+                try
+                {
+                    return Read(shipped, out _);
+                }
+                catch (Exception e) when (e is IOException or EndOfStreamException or InvalidDataException or UnauthorizedAccessException) { }
+            }
 
         var mesh = SdfMesher.Mesh(model, cell, iso);
         // Older versions of the same model are of no more use, unless another tree shares the folder

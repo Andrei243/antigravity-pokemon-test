@@ -8,7 +8,22 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <!-- CLAUDE.md's bans as build errors (plan 24 · X1): BannedSymbols.txt lists them -->
     <WarningsAsErrors>$(WarningsAsErrors);RS0030</WarningsAsErrors>
+    <!-- The build's version (plan 16 · T2): a release gives its tag's (-p:Version= in .github/workflows/release.yml);
+         a build made from the source is 0.0.0-dev. GameVersion reads it, with the commit the SDK writes after it -->
+    <Version>0.0.0-dev</Version>
+    <Product>Pokémon Platinum (a fan remake)</Product>
+    <AssemblyTitle>Pokémon Platinum (a fan remake)</AssemblyTitle>
+    <!-- DPI-aware on Windows (the window is sized in real pixels), and the game's own icon once the harness's `icon`
+         mode has written it -->
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon Condition="Exists('Assets\icon.ico')">Assets\icon.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <!-- A build published for players (Properties/PublishProfiles/<rid>.pubxml set ShippedBuild): GameVersion.Shipped
+       keeps its caches beside the saves and reads the cache shipped beside the executable -->
+  <ItemGroup Condition="'$(ShippedBuild)' == 'true'">
+    <AssemblyMetadata Include="Shipped" Value="true" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Raylib-cs" Version="8.1.0" />

@@ -254,7 +254,8 @@ public class OptionsScreen
             case OptionRow.WindowSize:
                 var sizes = GameSettings.WindowSizes;
                 int current = Array.FindIndex(sizes, z => z.Width == s.WindowWidth && z.Height == s.WindowHeight);
-                var next = sizes[Wrap((current < 0 ? 2 : current) + step, sizes.Length)];
+                if (current < 0) current = Array.IndexOf(sizes, GameSettings.DefaultWindow);
+                var next = sizes[Wrap(current + step, sizes.Length)];
                 s.WindowWidth = next.Width;
                 s.WindowHeight = next.Height;
                 break;
@@ -463,7 +464,8 @@ public class OptionsScreen
         OptionRow.Controls => (Text.Of("options.controls.label"), Text.Of("options.controls.value"), Text.Of("options.controls.help")),
         OptionRow.Jukebox => (Text.Of("options.jukebox.label"), Text.Of("options.jukebox.value"), Text.Of("options.jukebox.help")),
         OptionRow.Packs => (Text.Of("options.packs.label"), Text.Of("options.packs.value", ("n", Data.DataLayers.Packs.Count)), Text.Of("options.packs.help")),
-        _ => (Text.Of("options.help.label"), Text.Of("options.help.value"), Text.Of("options.help.help"))
+        // HELP's line names the build too (plan 16 · T2), as the title's corner does
+        _ => (Text.Of("options.help.label"), Text.Of("options.help.value"), Text.Of("options.help.help", ("version", Core.Diagnostics.GameVersion.Shown)))
     };
 
     private static string OnOff(bool on) => Text.Of(on ? "shared.on" : "shared.off");

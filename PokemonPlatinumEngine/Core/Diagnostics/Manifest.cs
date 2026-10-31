@@ -15,7 +15,8 @@ public sealed record Verification(int Code, IReadOnlyList<string> Lines);
 /// begins with <c>#</c> say nothing. Files the list doesn't name are nobody's business (a save, the caches,
 /// <c>overrides/</c>, packs).
 /// <para>
-/// No build writes the list yet, so today the answer is always <see cref="NoManifest"/>, said plainly. No drawing,
+/// The release workflow writes the list into every zip (<c>.github/workflows/release.yml</c>); a build made from the
+/// source has none, and the answer is <see cref="NoManifest"/>, said plainly. No drawing,
 /// no input, and no window: the check runs before one is opened.
 /// </para>
 /// </summary>

@@ -81,7 +81,14 @@ public sealed class GameSettings
 {
     public const string FileName = "settings.json";
 
-    public static readonly (int Width, int Height)[] WindowSizes = { (1280, 720), (1600, 900), (1920, 1080), (2560, 1440), (3840, 2160) };
+    /// <summary>
+    /// The window sizes the options offer, smallest first: the first is safe mode's. 1280×800 is the Steam Deck's screen
+    /// (plan 16 · T2), where the 16:9 picture is letterboxed.
+    /// </summary>
+    public static readonly (int Width, int Height)[] WindowSizes = { (1280, 720), (1280, 800), (1600, 900), (1920, 1080), (2560, 1440), (3840, 2160) };
+
+    /// <summary>The size a window takes in the options when its own isn't listed.</summary>
+    public static (int Width, int Height) DefaultWindow => (1920, 1080);
 
     public GraphicsQuality Quality { get; set; } = GraphicsQuality.High;
     public int WindowWidth { get; set; } = 1920;
@@ -339,12 +346,18 @@ public sealed class GameSettings
     [JsonIgnore]
     public bool FirstRun { get; private set; }
 
-    /// <summary>The largest listed window size a monitor can show with its title bar and the taskbar.</summary>
+    /// <summary>
+    /// The largest listed window size a monitor can show with its title bar and the taskbar. A screen of exactly
+    /// 1280×800 (the Steam Deck's, plan 16 · T2) has no taskbar to leave room for and takes the whole of it.
+    /// </summary>
     public static (int Width, int Height) LargestWindowFor(int monitorWidth, int monitorHeight)
     {
+        if ((monitorWidth, monitorHeight) == (1280, 800)) return (1280, 800);
         var best = WindowSizes[0];
         foreach (var size in WindowSizes)
         {
+            // Only 16:9 sizes stand for a desktop's monitor: the Deck's is taken above, by its own size
+            if (size.Width * 9 != size.Height * 16) continue;
             if (size.Width <= monitorWidth && size.Height <= monitorHeight - 80) best = size;
         }
         return best;

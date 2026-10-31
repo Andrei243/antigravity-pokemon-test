@@ -48,7 +48,9 @@
 //   dotnet run --project tools/ShotHarness -- <output dir> play [minutes] [seed] [--keys] [--past-opening]   the playthrough bot (plan 16 · T7) from the bedroom, a shot at each first arrival and play.md; --keys the key fuzzer
 //   dotnet run --project tools/ShotHarness -- <output dir> run <file.scn> [...]   scenarios (plan 16 · T17), each a written file of lines played on a game afresh; serve keeps the engine warm and plays every file written into <output dir>/inbox; scenarios plays the kept ones
 //   dotnet run --project tools/ShotHarness -- <output dir> replay <folder> [every <s>] [from <s>]   a player's report (F8, or a crash's) played back: rp_<seconds>, rp_end, each with state.json
-//   dotnet run --project tools/ShotHarness -- <dir> diff <other dir>         two runs' shots compared pixel by pixel (exits 1 if any differ)
+//   dotnet run --project tools/ShotHarness -- <output dir> icon               the game's icon (plan 16 · T2): icon_<size>.png and icon.ico, written into PokemonPlatinumEngine/Assets too
+//   dotnet run --project tools/ShotHarness -- <output dir> warm               no shots: the meshes a first start asks for into <output dir>/cache/models, which a release ships
+//   dotnet run --project tools/ShotHarness -- <dir> diff <other dir>        two runs' shots compared pixel by pixel (exits 1 if any differ)
 //   dotnet run --project tools/ShotHarness -- <dir> ab <before> <after> <before again>   three runs of `profile` compared (tools/dev/ab.sh)
 //   dotnet run --project tools/ShotHarness -- <dir> contact [prefix]          every shot of a run on sheets of twenty
 //   dotnet run --project tools/ShotHarness -- <dir> crop <shot> <x> <y> <width> <height> <scale> [other dir ...]   a rectangle of a shot, enlarged
@@ -107,6 +109,10 @@ Dice.Seed(20261004);
 FrameClock.Fixed = 0;
 GameClock.FixedDate = new DateTime(2026, 6, 1);
 WallClock.Fixed = new DateTime(2026, 6, 1, 12, 0, 0);
+
+// What a release is built with (plan 16 · T2, Modes/Release.cs): the icon and the shipped mesh cache, made before any game is
+if (mode == "icon") { ReleaseModes.Icon(outDir, startDir); Raylib.CloseWindow(); return; }
+if (mode == "warm") { ReleaseModes.Warm(outDir); Raylib.CloseWindow(); return; }
 
 var h = new Harness(args, mode, outDir, startDir);
 
