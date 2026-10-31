@@ -434,7 +434,7 @@ public static partial class WorldModels
         // Viridian City (to_: the original's Tokiwa), built as plan 19 · K3 builds FireRed's
         House("to_h02", Architecture.Evergreen, "a house of Viridian City"),
         Built("to_trainer", BuildingKind.Hall, "Viridian City's Trainer House", Architecture.Evergreen, sign: "TRAINERS"),
-        Built("to_gym", BuildingKind.Gym, "the Viridian Gym (locked)"),
+        Built("to_gym", BuildingKind.Gym, "the Viridian Gym"),
         Furniture("table03_3", PropType.Table, "a long table"),
 
         // ---------------------------------------------------------------- plan 20 · J15, part g: Pallet Town (mst_: the
@@ -444,6 +444,18 @@ public static partial class WorldModels
         Door("mst_dr1"),
         Door("mst_dr2"),
         Furniture("o_kido_obj", PropType.LabMachine, "Professor Oak's machine"),
+
+        // ---------------------------------------------------------------- plan 20 · J15, part h: Fuchsia City (sk_, sktk_: the
+        // original's Sekichiku), built as plan 19 · K3 builds FireRed's, and Pal Park's gate where the Safari Zone stood
+        House("sk_h01", Architecture.Wildwood, "a house of Fuchsia City"),
+        House("sk_h02", Architecture.Wildwood, "a house of Fuchsia City"),
+        House("sk_h03", Architecture.Wildwood, "a house of Fuchsia City"),
+        Built("sk_gym", BuildingKind.Gym, "the Fuchsia Gym"),
+        Built("se_palpark", BuildingKind.Hall, "Pal Park's gate in Fuchsia City (locked)", Architecture.Wildwood, sign: "PAL PARK"),
+        Door("sk_door1"),
+        Door("sk_door2"),
+        Ground("sktk_sl", "a flight of steps between Fuchsia City's levels: its tiles draw it"),
+        Ground("a13_anemo", "a tall marker the original stands in a row along Route 15's verge: its tiles draw the ground"),
     };
 
     private static readonly Dictionary<string, WorldModel> JohtoByName = JohtoTable.ToDictionary(m => m.Name, StringComparer.Ordinal);

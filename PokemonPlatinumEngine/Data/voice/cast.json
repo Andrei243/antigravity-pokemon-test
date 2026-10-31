@@ -22,6 +22,10 @@
       "note": "first spoken at floccesy_town.txt(22)",
       "provisional": true
     },
+    "alice": {
+      "note": "first spoken at fuchsia_gym.txt(79)",
+      "provisional": true
+    },
     "ampere": {
       "note": "first spoken at nimbasa_city_gym.txt(74)",
       "provisional": true
@@ -86,6 +90,10 @@
     },
     "baoba": {
       "note": "first spoken at olivine.txt(29)",
+      "provisional": true
+    },
+    "barry": {
+      "note": "first spoken at fuchsia_gym.txt(104)",
       "provisional": true
     },
     "beauty": {
@@ -204,6 +212,10 @@
     "cheryl": {},
     "chuck": {
       "note": "first spoken at cianwood_gym.txt(17)",
+      "provisional": true
+    },
+    "cindy": {
+      "note": "first spoken at fuchsia_gym.txt(129)",
       "provisional": true
     },
     "citizen": {
@@ -508,6 +520,10 @@
       "note": "first spoken at phone.txt(308)",
       "provisional": true
     },
+    "janine": {
+      "note": "first spoken at fuchsia_gym.txt(16)",
+      "provisional": true
+    },
     "jasmine": {
       "note": "first spoken at olivine_gym.txt(23)",
       "provisional": true
@@ -587,6 +603,10 @@
     },
     "librarian": {
       "note": "first spoken at CanalaveLibrary1F.txt(12)",
+      "provisional": true
+    },
+    "linda": {
+      "note": "first spoken at fuchsia_gym.txt(54)",
       "provisional": true
     },
     "little_boy": {
@@ -1249,6 +1269,7 @@
     "Agatha": "agatha",
     "Aide": "look:aide",
     "Alder": "alder",
+    "Alice": "alice",
     "Ampère": "ampere",
     "Announcer": "look:announcer",
     "Apprentice": "look:apprentice",
@@ -1266,6 +1287,7 @@
     "Backer": "backer",
     "Backers": "backers",
     "Baoba": "baoba",
+    "Barry": "barry",
     "Beauty": "beauty",
     "Ben": "ben",
     "Benjamin": "benjamin",
@@ -1304,6 +1326,7 @@
     "Cheren": "cheren",
     "Cheryl": "cheryl",
     "Chuck": "chuck",
+    "Cindy": "cindy",
     "Citizen": "citizen",
     "Clair": "clair",
     "Clay": "clay",
@@ -1399,6 +1422,7 @@
     "Isabel": "isabel",
     "Isaiah": "isaiah",
     "Jackson": "jackson",
+    "Janine": "janine",
     "Jasmine": "jasmine",
     "Jeffrey": "jeffrey",
     "Jerry": "jerry",
@@ -1422,6 +1446,7 @@
     "Lanette": "lanette",
     "Lass": "look:lass",
     "Librarian": "librarian",
+    "Linda": "linda",
     "Little Boy": "little_boy",
     "Little Girl": "look:little_girl",
     "Liz": "liz",

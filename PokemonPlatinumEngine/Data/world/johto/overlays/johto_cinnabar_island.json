@@ -1,7 +1,8 @@
 {
   // Cinnabar Island as HeartGold has it three years on (plan 20 · J15, part g): the volcano's eruption left only its
   // Pokémon Center standing, and Blue looks out over the ruins (johto_cinnabar_island.txt). Blaine, whom HeartGold
-  // stands here only for his phone's meeting, is in his Gym in the Seafoam Islands. Its key meets FireRed's, so it
+  // stands here only for his phone's meeting, is in his Gym in the Seafoam Islands. Blue goes home to his Gym in Viridian once he has seen Kanto's other seven
+  // Badges (FLAG_JOHTO_BLUE_BACK_IN_GYM, part h). Its key meets FireRed's, so it
   // takes Johto's prefix (HgWorld.Clashes)
   "area": "johto_cinnabar_island",
   "bgmTrack": "kanto/cinnabar",
@@ -15,7 +16,7 @@
       "npcType": "blue",
       "script": "Blue",
       "still": true,
-      "hiddenBy": ""
+      "hiddenBy": "FLAG_JOHTO_BLUE_BACK_IN_GYM"
     }
   },
   "signs": {

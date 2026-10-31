@@ -1,0 +1,14 @@
+{
+  // The gate house between Fuchsia City's west edge and Route 15 (plan 20 · J15, part h)
+  "area": "route_15_fuchsia_gatehouse",
+  "bgmTrack": "kanto/fuchsia",
+  "people": {
+    "r15r0101_counterm": {
+      "name": "Guard",
+      "still": true,
+      "dialog": [
+        "Route 15 runs west from here. School trips come this way all the time, so mind the children with Pokémon."
+      ]
+    }
+  }
+}

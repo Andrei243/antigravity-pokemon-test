@@ -61,6 +61,11 @@ public class JohtoTests
         "viridian_route_1_gatehouse", "johto_route_1", "pallet", "pallet_town_reds_house_1f", "pallet_town_reds_house_2f",
         "pallet_town_blues_house_1f", "pallet_town_blues_house_2f", "pallet_town_oaks_lab", "route_21", "johto_cinnabar_island",
         "cinnabar_island_pokecenter_1f", "cinnabar_island_pokecenter_b1f", "johto_route_20", "johto_seafoam_islands_1f",
+        // Plan 20 · J15, part h: Route 19 and its gate, Fuchsia City with its rooms, Route 15 and its gate (Fuchsia's and
+        // Viridian's Gyms play Johto's Gym theme)
+        "johto_route_19", "route_19_fuchsia_gatehouse", "fuchsia", "fuchsia_pokecenter_1f", "fuchsia_pokecenter_b1f",
+        "fuchsia_pokemart", "fuchsia_southwest_house", "fuchsia_safari_zone_warden_house", "route_15_fuchsia_gatehouse",
+        "johto_route_15", "johto_route_14", "johto_route_13", "johto_route_12", "route_12_fishing_brother_house",
     };
 
     [Fact]
@@ -841,14 +846,12 @@ public class JohtoTests
         Assert.Equal("pewter", HgWorld.KeyOf("MAP_PEWTER"));
         Assert.Equal("viridian", HgWorld.KeyOf("MAP_VIRIDIAN"));
         Assert.Equal("mount_moon", HgWorld.KeyOf("MAP_MOUNT_MOON"));
-        // What waits stays shut: the Clefairy's night on the square, Viridian's Gym (its gate to Route 1 opens in part g),
-        // the Trainer House's hall and Diglett's Cave
+        // What waits stays shut: the Clefairy's night on the square, the Trainer House's hall and Diglett's Cave (Viridian's
+        // gate to Route 1 opens in part g, its Gym's door with Blue home in part h)
         Assert.DoesNotContain(walked.Keys, m => m.Name.Contains("Clefairy", StringComparison.Ordinal));
-        var viridian = Johto.Area("viridian")!;
-        Assert.Empty(Overworld.WarpsAt(viridian.Warps[0].X, viridian.Warps[0].Z));
         var east = Johto.Area("route_2_east")!;
         Assert.Empty(Overworld.WarpsAt(east.Warps[4].X, east.Warps[4].Z));
-        Assert.DoesNotContain(walked.Keys, m => m.Name == "Viridian_Gym" || m.Name.StartsWith("Diglett", StringComparison.Ordinal));
+        Assert.DoesNotContain(walked.Keys, m => m.Name.StartsWith("Diglett", StringComparison.Ordinal));
         // Brock stands at the head of his Gym, reached across its floor
         var gym = walked.Single(kv => kv.Key.Name == "Pewter_Gym");
         var brock = gym.Key.Everyone.Single(n => n.Key == "t03gym0101_gsleader14");
@@ -899,6 +902,53 @@ public class JohtoTests
         var blue = Overworld.Everyone.Single(n => n.Key == "t09_gsleader16");
         Assert.Contains(outside, t => Math.Abs(t.X - blue.GridX) + Math.Abs(t.Y - blue.GridY) == 1);
         Assert.Equal(InteriorStyle.PokemonCenter, MapNamed("Cinnabar_PokemonCenter_1F").Interior);
+    }
+
+    [Fact]
+    public void FuchsiaIsWalkedToFromLavenderAndJanineAndBlueAreReachedAtTheHeadsOfTheirGyms()
+    {
+        // Plan 20 · J15, part h: Routes 12 to 15 south from Lavender Town to Fuchsia City, Route 19 south of it over the
+        // sea (whose rocks wall it off from Route 20's south side), and Viridian's Gym, whose door opens once Blue is home
+        var walked = Walked.Value;
+        var outside = walked.Single(kv => kv.Key.Name == "Johto").Value;
+        foreach (string key in new[] { "johto_route_19", "fuchsia", "johto_route_15", "johto_route_14", "johto_route_13", "johto_route_12" })
+            Assert.True(outside.Any(t => Overworld.AreaAt(t.X, t.Y)?.Key == key), $"{key} can't be walked to from the start");
+        foreach (string name in new[] { "Route19_FuchsiaGate", "Route15_FuchsiaGate", "Fuchsia_PokemonCenter_1F", "Fuchsia_PokemonCenter_B1F",
+                     "Fuchsia_Mart", "Fuchsia_Gym", "Fuchsia_SouthwestHouse", "Fuchsia_WardensHouse", "Viridian_Gym", "Route12_FishingBrotherHouse" })
+        {
+            Assert.True(walked.Keys.Any(m => m.Name == name), $"nobody walks into {name}");
+            Assert.Equal(RegionDatabase.Johto, RegionDatabase.RegionOfMap(name)!.Id);
+        }
+        // The routes' keys meet FireRed's, so they take Johto's prefix; the town's and its rooms' don't
+        foreach (string key in new[] { "route_19", "route_15", "route_14", "route_13", "route_12" })
+        {
+            Assert.True(HgWorld.Clashes(key));
+            Assert.Equal("johto_" + key, HgWorld.KeyOf("MAP_" + key.ToUpperInvariant()));
+        }
+        foreach (string key in new[] { "fuchsia", "fuchsia_gym", "route_19_fuchsia_gatehouse", "viridian_gym" })
+            Assert.Equal(key, HgWorld.KeyOf("MAP_" + key.ToUpperInvariant()));
+        // What waits stays shut: Pal Park's gate where the Safari Zone stood, Route 18's gate west of Fuchsia, and the gate
+        // to Route 11 behind Route 12's sleeping Snorlax
+        var fuchsia = Johto.Area("fuchsia")!;
+        Assert.Empty(Overworld.WarpsAt(fuchsia.Warps[5].X, fuchsia.Warps[5].Z));
+        var route12 = Johto.Area("johto_route_12")!;
+        Assert.Empty(Overworld.WarpsAt(route12.Warps[0].X, route12.Warps[0].Z));
+        Assert.DoesNotContain(walked.Keys, m => m.Name.Contains("PalPark", StringComparison.Ordinal) || m.Name.StartsWith("Route18", StringComparison.Ordinal));
+        // The Viridian Gym's door waits for Blue's flag
+        var viridian = Johto.Area("viridian")!;
+        var door = Assert.Single(Overworld.WarpsAt(viridian.Warps[0].X, viridian.Warps[0].Z));
+        Assert.Equal("Viridian_Gym", door.TargetMap);
+        Assert.Equal("FLAG_JOHTO_BLUE_BACK_IN_GYM", door.OpenedBy);
+        // Janine stands in the middle of her floor and Blue at the head of his hall, each reached across it
+        var gym = walked.Single(kv => kv.Key.Name == "Fuchsia_Gym");
+        var janine = gym.Key.Everyone.Single(n => n.Key == "t08gym0101_gsleader13");
+        Assert.Contains(gym.Value, t => Math.Abs(t.X - janine.GridX) + Math.Abs(t.Y - janine.GridY) == 1);
+        Assert.NotNull(TrainerDatabase.Get("johto_leader_janine_janine", RegionDatabase.Johto));
+        var hall = walked.Single(kv => kv.Key.Name == "Viridian_Gym");
+        var blue = hall.Key.Everyone.Single(n => n.Key == "t02gym0101_gsleader16");
+        Assert.Contains(hall.Value, t => Math.Abs(t.X - blue.GridX) + Math.Abs(t.Y - blue.GridY) == 1);
+        Assert.NotNull(TrainerDatabase.Get("johto_leader_blue_blue", RegionDatabase.Johto));
+        Assert.Equal(InteriorStyle.PokemonCenter, MapNamed("Fuchsia_PokemonCenter_1F").Interior);
     }
 
     [Fact]

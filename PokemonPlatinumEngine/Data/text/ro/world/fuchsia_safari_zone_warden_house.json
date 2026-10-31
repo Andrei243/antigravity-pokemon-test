@@ -1,0 +1,77 @@
+{
+  "people": {
+    "t08r0601_gsgirl1": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Grandpa closed the Safari Zone and went travelling. He sends postcards from all over the world. I look after his Aipom while he's gone."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t08r0601_tsure_poke_static_aipom": {
+      "name": {
+        "en": [
+          "Aipom"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Aipom: Ai-ai!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t08r0601_tsure_poke_static_aipom_2": {
+      "name": {
+        "en": [
+          "Aipom"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Aipom: Pom!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t08r0601_tsure_poke_static_aipom_3": {
+      "name": {
+        "en": [
+          "Aipom"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Aipom: Aipom ai!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

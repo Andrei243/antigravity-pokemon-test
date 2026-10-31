@@ -1985,15 +1985,79 @@ public class JohtoStoryTests
     [Fact]
     public void BlueOnCinnabarAsksForKantosOtherSevenBadges()
     {
-        // Plan 20 · J15, part g: Blue by the ruins of Cinnabar, whose Gym in Viridian waits for its session
+        // Plan 20 · J15, part g: Blue by the ruins of Cinnabar; with Kanto's other seven Badges he goes home to Viridian
+        // (part h)
         var game = new Game();
         game.Arrive("Johto", 1037, 494);
         Assert.NotNull(game.Present("t09_gsleader16"));
         Assert.Contains(game.Talk("t09_gsleader16").Transcript, l => l.Text.Contains("other seven Badges"));
+        Assert.False(game.Story.Has("FLAG_JOHTO_BLUE_BACK_IN_GYM"));
         foreach (string badge in new[] { "Boulder", "Cascade", "Thunder", "Rainbow", "Soul", "Marsh", "Volcano" })
             game.Story.GiveBadge(RegionDatabase.Kanto, badge);
         var talk = game.Talk("t09_gsleader16");
-        Assert.Contains(talk.Transcript, l => l.Text.Contains("head back to Viridian"));
+        Assert.Contains(talk.Transcript, l => l.Text.Contains("heading back to Viridian"));
         Assert.DoesNotContain(talk.Log, l => l.StartsWith("battle"));
+        Assert.True(game.Story.Has("FLAG_JOHTO_BLUE_BACK_IN_GYM"));
+        game.Arrive("Johto", 1037, 494);
+        Assert.Null(game.Present("t09_gsleader16"));
+    }
+
+    [Fact]
+    public void JaninesDecoysDropTheirDisguisesAndSheGivesKantosSoulBadge()
+    {
+        // Plan 20 · J15, part h: the Fuchsia Gym's four decoys dressed as Janine, and Janine in the middle of the floor
+        var game = new Game();
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Garchomp")!, 70));
+        game.Arrive("Fuchsia_Gym", 7, 23);
+        Assert.NotNull(game.Present("t08gym0101_gsleader13_4"));
+        Assert.Null(game.Present("t08gym0101_gsgirl1"));
+        Assert.Contains(game.Talk("t08gym0101_sunglasses").Transcript, l => l.Text.Contains("dress up as her"));
+
+        // A decoy drops the disguise, and the trainer under it battles
+        var decoy = game.Talk("t08gym0101_gsleader13_4");
+        Assert.Contains(decoy.Log, l => l.StartsWith("battle johto_lass_linda Won"));
+        Assert.True(game.Story.Has("FLAG_JOHTO_FUCHSIA_GYM_LINDA_REVEALED"));
+        Assert.True(game.Story.HasDefeated("johto_lass_linda"));
+        game.Arrive("Fuchsia_Gym", 7, 23);
+        Assert.Null(game.Present("t08gym0101_gsleader13_4"));
+        Assert.NotNull(game.Present("t08gym0101_gsgirl1"));
+        Assert.DoesNotContain(game.Talk("t08gym0101_gsgirl1").Log, l => l.StartsWith("battle"));
+
+        // Kanto's Soul Badge, not Johto's, and TM84 once; the other three decoys are unmasked
+        int johtoBadges = game.Story.BadgeCount(RegionDatabase.Johto);
+        Assert.Contains(game.Talk("t08gym0101_gsleader13").Log, l => l.StartsWith("battle johto_leader_janine_janine Won"));
+        Assert.True(game.Story.HasBadge(RegionDatabase.Kanto, "Soul"));
+        Assert.Equal(johtoBadges, game.Story.BadgeCount(RegionDatabase.Johto));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM84")!));
+        game.Talk("t08gym0101_gsleader13");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM84")!));
+        Assert.True(game.Story.HasDefeated("johto_picnicker_cindy"));
+        game.Arrive("Fuchsia_Gym", 7, 23);
+        Assert.Null(game.Present("t08gym0101_gsleader13_2"));
+        Assert.NotNull(game.Present("t08gym0101_picnicgirl_2"));
+        Assert.Contains(game.Talk("t08gym0101_sunglasses").Transcript, l => l.Text.Contains("You beat Janine"));
+    }
+
+    [Fact]
+    public void BlueComesHomeToViridiansGymAndGivesKantosEarthBadge()
+    {
+        // Plan 20 · J15, part h: the Viridian Gym, open once Blue is home, and Blue at the far end of its hall
+        var game = new Game();
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Garchomp")!, 70));
+        game.Story.Set("FLAG_JOHTO_BLUE_BACK_IN_GYM");
+        game.Arrive("Viridian_Gym", 5, 46);
+        Assert.NotNull(game.Present("t02gym0101_gsleader16"));
+        Assert.Contains(game.Talk("t02gym0101_sunglasses").Transcript, l => l.Text.Contains("one type"));
+
+        // Kanto's Earth Badge, not Johto's, and TM92 once
+        int johtoBadges = game.Story.BadgeCount(RegionDatabase.Johto);
+        Assert.Contains(game.Talk("t02gym0101_gsleader16").Log, l => l.StartsWith("battle johto_leader_blue_blue Won"));
+        Assert.True(game.Story.HasBadge(RegionDatabase.Kanto, "Earth"));
+        Assert.Equal(johtoBadges, game.Story.BadgeCount(RegionDatabase.Johto));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM92")!));
+        game.Talk("t02gym0101_gsleader16");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM92")!));
+        Assert.True(game.Story.HasDefeated("johto_double_team_elan_and_ida"));
+        Assert.Contains(game.Talk("t02gym0101_sunglasses").Transcript, l => l.Text.Contains("You beat Blue"));
     }
 }

@@ -1,0 +1,36 @@
+{
+  "key": "viridian_gym",
+  "index": 496,
+  "name": "Viridian City",
+  "matrix": 261,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_GYM",
+  "nightMusic": "GS_GYM",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 47, "to": "viridian", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "t02gym0101_gsman3", "looks": "gsman3", "movement": "15", "x": 5, "z": 38, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 1, "hiddenBy": "FLAG_HIDE_VIRIDIAN_GYM_BLUE", "script": "TRAINER_ACE_TRAINER_M_ARABELLA" },
+    { "id": "t02gym0101_gsman3_2", "looks": "gsman3", "movement": "17", "x": 2, "z": 23, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 1, "script": "TRAINER_ACE_TRAINER_M_BONITA" },
+    { "id": "t02gym0101_gswoman3", "looks": "gswoman3", "movement": "17", "x": 2, "z": 37, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 1, "script": "TRAINER_ACE_TRAINER_F_SALMA" },
+    { "id": "t02gym0101_gswoman3_2", "looks": "gswoman3", "movement": "15", "x": 5, "z": 11, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 1, "script": "TRAINER_DOUBLE_TEAM_ELAN_AND_IDA" },
+    { "id": "t02gym0101_sunglasses", "looks": "sunglasses", "movement": "15", "x": 7, "z": 46, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T02GYM0101_001+1" },
+    { "id": "t02gym0101_gsleader16", "looks": "gsleader16", "movement": "15", "x": 5, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_VIRIDIAN_GYM_BLUE", "script": "T02GYM0101_000+1" },
+    { "id": "t02gym0101_gsman3_3", "looks": "gsman3", "movement": "15", "x": 4, "z": 11, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "std_trainer_2(TRAINER_DOUBLE_TEAM_ELAN_AND_IDA)" }
+  ],
+  "signs": [
+    { "x": 3, "z": 45, "type": 0, "script": "T02GYM0101_004+1" },
+    { "x": 7, "z": 45, "type": 0, "script": "T02GYM0101_004+1" }
+  ],
+  "triggers": [
+    { "x": 1, "z": 46, "width": 9, "depth": 1, "script": "T02GYM0101_003+1", "variable": "VAR_UNK_4127", "value": "0" }
+  ]
+}

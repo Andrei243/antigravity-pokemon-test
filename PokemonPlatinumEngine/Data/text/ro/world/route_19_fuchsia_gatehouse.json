@@ -1,0 +1,23 @@
+{
+  "people": {
+    "w19r0101_counterm": {
+      "name": {
+        "en": [
+          "Guard"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Route 19 is open again. The workers cleared away the rocks that fell, so you can swim all the way to the Seafoam Islands."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

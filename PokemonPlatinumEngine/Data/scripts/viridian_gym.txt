@@ -1,0 +1,59 @@
+# The Viridian Gym as HeartGold has it three years on (plan 20 · J15, part h). docs/scripts.md describes the language;
+# the lines are our own, on HeartGold's beats (scr_seq_T02GYM0101).
+#
+# The Gym is open once Blue has come home from Cinnabar Island (FLAG_JOHTO_BLUE_BACK_IN_GYM, a flag of ours that his
+# word on the island sets once the player holds Kanto's other seven Badges: johto_cinnabar_island.txt). He waits at the
+# far end of the hall behind his four trainers and battles for the Earth Badge, which is Kanto's (`givebadge earth of
+# kanto`, as the other Kanto Gyms of HeartGold's: the rulings' "HeartGold's Kanto, part b" to "part h"), counts his
+# trainers beaten and gives TM92, Trick Room. Whether he is beaten here is FLAG_JOHTO_DEFEATED_BLUE, a flag of ours, so
+# a FireRed Champion battles him all the same.
+
+
+script Blue
+  face t02gym0101_gsleader16 player
+  speaker "Blue"
+  if flag FLAG_JOHTO_DEFEATED_BLUE goto Won
+  scene "Blue"
+  say "So you made it. Seven of Kanto's Badges, and a Johto Champion's title on top. You've been busy."
+  say "I was the Champion once, you know. For about five minutes. Then someone from Pallet Town beat me."
+  say "I won't lose that easily again. Let's see what you've got!"
+  battle self as "johto_leader_blue_blue"
+  say "Tch. You're the real thing, all right. Here, take it: the Earth Badge."
+  givebadge earth of kanto
+  text "{player} received the Earth Badge from Blue!"
+  setflag FLAG_JOHTO_DEFEATED_BLUE
+  defeat "johto_ace_trainer_m_arabella"
+  defeat "johto_ace_trainer_m_bonita"
+  defeat "johto_ace_trainer_f_salma"
+  defeat "johto_double_team_elan_and_ida"
+  endscene
+label Tm
+  say "And this. It's a strange move, but in the right hands it turns a battle on its head."
+  give "TM92"
+  setflag FLAG_JOHTO_GOT_TM92_FROM_BLUE
+  say "TM92 is Trick Room. For five turns, the slowest Pokémon move first."
+  end
+label Won
+  if not flag FLAG_JOHTO_GOT_TM92_FROM_BLUE goto Tm
+  say "That's all sixteen Badges, isn't it? If you're heading for Mt. Silver, say hello to someone for me."
+  end
+
+
+# The Gym guide by the door.
+script Guide
+  if flag FLAG_JOHTO_DEFEATED_BLUE goto Won
+  say "Hey, champ in the making! Blue doesn't stick to one type. Bring a team that can handle anything."
+  end
+label Won
+  say "You beat Blue! I knew you had it in you."
+  end
+
+
+# The statues by the door.
+script Statue
+  if flag FLAG_JOHTO_DEFEATED_BLUE goto Won
+  text "Viridian City Pokémon Gym\nLeader: Blue"
+  end
+label Won
+  text "Viridian City Pokémon Gym\nLeader: Blue\nWinning trainers: {player}"
+  end

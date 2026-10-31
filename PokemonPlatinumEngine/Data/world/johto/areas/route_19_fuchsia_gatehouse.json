@@ -1,0 +1,26 @@
+{
+  "key": "route_19_fuchsia_gatehouse",
+  "index": 424,
+  "name": "Route 19",
+  "matrix": 69,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_R_15_03",
+  "nightMusic": "GS_R_15_03",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 2, "to": "fuchsia", "toWarp": 2 },
+    { "x": 5, "z": 12, "to": "johto_route_19", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "w19r0101_counterm", "looks": "counterm", "movement": "0", "x": 1, "z": 7, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "W19R0101_000+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

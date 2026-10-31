@@ -239,9 +239,6 @@ johto_ace_trainer_f_kate 121 (28) [Shellder → Clamspire, Cloyster → Clamspir
 johto_ace_trainer_f_reena_2 128 (38) [Growlithe → Arcanine, Nidorina → Nidoqueen, Staryu → Stellamir]
 johto_ace_trainer_f_reena_3 134 (47) [Arcanine → Kirinine, Starmie → Stellamir]
 johto_ace_trainer_f_reena_4 139 (56) [Arcanine → Kirinine, Starmie → Stellamir]
-johto_ace_trainer_f_salma 138 (53) [Slowking → Slowmonarch, Lickilicky → Lickolossus]
-johto_ace_trainer_m_arabella 138 (53) [Stantler → Wyrdeer, Tauros → Bovarch]
-johto_ace_trainer_m_bonita 137 (52) [Sudowoodo → Mimicedar]
 johto_ace_trainer_m_gaven_2 125 (34) [Kingler → Pincerex, Flareon → Pyreon]
 johto_ace_trainer_m_gaven_3 129 (39) [Kingler → Pincerex, Flareon → Pyreon]
 johto_ace_trainer_m_gaven_4 137 (52) [Kingler → Pincerex, Flareon → Pyreon]
@@ -291,18 +288,12 @@ johto_biker_teddy 133 (46)
 johto_biker_theron 133 (45) [Croagunk → Venomsensei]
 johto_bird_keeper_gs_bob 135 (48) [Noctowl → Noctaugur]
 johto_bird_keeper_gs_boris 130 (41) [Doduo → Tripluma, Doduo → Tripluma, Dodrio → Tripluma]
-johto_bird_keeper_gs_bret 130 (41) [Taillow → Swellow, Fearow → Lancerow]
-johto_bird_keeper_gs_gail 131 (42) [Fearow → Lancerow, Spearow → Lancerow]
 johto_bird_keeper_gs_jose 132 (44) [Farfetch'd → Porrigard]
 johto_bird_keeper_gs_jose_3 133 (45) [Farfetch'd → Porrigard, Farfetch'd → Porrigard]
 johto_bird_keeper_gs_jose_4 138 (53) [Farfetch'd → Porrigard, Farfetch'd → Porrigard, Farfetch'd → Porrigard]
-johto_bird_keeper_gs_josh 127 (37) [Fearow → Lancerow]
 johto_bird_keeper_gs_josh_2 134 (47) [Fearow → Lancerow, Skarmory → Rapierwing]
 johto_bird_keeper_gs_josh_3 137 (51) [Skarmory → Rapierwing, Fearow → Lancerow]
 johto_bird_keeper_gs_josh_4 139 (55) [Skarmory → Rapierwing, Fearow → Lancerow]
-johto_bird_keeper_gs_justin 132 (44) [Xatu → Totemsight, Noctowl → Noctaugur]
-johto_bird_keeper_gs_perry 131 (42) [Farfetch'd → Porrigard]
-johto_bird_keeper_gs_roy 132 (44) [Fearow → Lancerow, Fearow → Lancerow]
 johto_bird_keeper_gs_vance_2 125 (33) [Hoothoot → Noctaugur, Pidgeotto → Pidgeot]
 johto_bird_keeper_gs_vance_3 131 (42) [Pidgeotto → Pidgeot, Noctowl → Noctaugur]
 johto_bird_keeper_gs_vance_4 139 (56) [Noctowl → Noctaugur]
@@ -332,7 +323,6 @@ johto_bug_catcher_wayne 109 (10) [Ledyba → Coccinova, Paras → Parasect]
 johto_burglar_corey 128 (38) [Koffing → Smoglom, Magmar → Magmortar, Koffing → Smoglom, Koffing → Smoglom]
 johto_camper_barry 135 (48)
 johto_camper_bertrand 123 (30) [Fearow → Lancerow, Primeape → Annihilape, Tauros → Bovarch]
-johto_camper_clark 129 (40) [Buizel → Tidestoat]
 johto_camper_dean 132 (44) [Golduck → Psyduke, Sandslash → Sandspire]
 johto_camper_mickey 113 (15) [Nidorino → Nidoking]
 johto_camper_mickey_2 113 (15) [Nidorino → Nidoking]
@@ -342,7 +332,6 @@ johto_camper_mickey_5 131 (42) [Graveler → Golem, Graveler → Golem, Golbat �
 johto_camper_mickey_6 131 (42) [Graveler → Golem, Graveler → Golem, Golbat → Crobat, Golduck → Psyduke]
 johto_camper_mickey_7 127 (36) [Graveler → Golem, Graveler → Golem, Magcargo → Calderon, Golduck → Psyduke]
 johto_camper_sid 131 (43) [Dugtrio → Molemount, Primeape → Annihilape]
-johto_camper_tanner 128 (38) [Sudowoodo → Mimicedar]
 johto_camper_tanner_2 130 (41) [Sudowoodo → Mimicedar, Chinchou → Abyssolux]
 johto_camper_tanner_3 135 (48) [Sudowoodo → Mimicedar, Lanturn → Abyssolux, Skiploom → Jumpluff]
 johto_camper_tanner_4 137 (52) [Sudowoodo → Mimicedar, Lanturn → Abyssolux]
@@ -352,7 +341,6 @@ johto_camper_todd_4 139 (56) [Graveler → Golem, Graveler → Golem, Magcargo �
 johto_castle_valet_darach 106 (5) [Rattata → Ratchisel]
 johto_champion_lance 136 (50) [Gyarados → Typhonarch, Aerodactyl → Azhdarch]
 johto_champion_lance_2 149 (75) [Gyarados → Typhonarch]
-johto_double_team_elan_and_ida 137 (52) [Porygon2 → Porygon-Z]
 johto_elder_li 109 (10) [Bellsprout → Victreebel, Bellsprout → Victreebel, Hoothoot → Noctowl]
 johto_elite_four_bruno_bruno 133 (46) [Hitmontop → Gyrodrill, Hitmonlee → Savateur, Hitmonchan → Pugilord, Onix → Ironwyrm]
 johto_elite_four_bruno_bruno_2 143 (64) [Hitmontop → Gyrodrill, Hitmonlee → Savateur, Hitmonchan → Pugilord, Lucario → Aurasage]
@@ -370,22 +358,17 @@ johto_firebreather_lyle 129 (39) [Koffing → Smoglom, Flareon → Pyreon, Koffi
 johto_firebreather_walt_2 124 (32) [Magmar → Magmortar, Magmar → Magmortar]
 johto_firebreather_walt_3 127 (37) [Magmar → Magmortar, Magmar → Magmortar]
 johto_firebreather_walt_4 140 (58) [Magby → Magmortar, Magmar → Magmortar]
-johto_fisherman_barney 129 (40)
 johto_fisherman_jonah 127 (37) [Shellder → Clamspire, Octillery → Krakannon, Remoraid → Krakannon, Cloyster → Clamspire]
-johto_fisherman_kyle 129 (39) [Goldeen → Sabrefin, Qwilfish → Fugumace, Goldeen → Sabrefin]
 johto_fisherman_kyle_2 131 (43) [Seaking → Sabrefin, Qwilfish → Fugumace, Seaking → Sabrefin]
 johto_fisherman_kyle_3 134 (47) [Seaking → Sabrefin, Qwilfish → Fugumace, Seaking → Sabrefin, Krabby → Pincerex]
 johto_fisherman_kyle_4 137 (52) [Seaking → Sabrefin, Qwilfish → Fugumace, Seaking → Sabrefin, Kingler → Pincerex]
-johto_fisherman_kyler 115 (18) [Magikarp → Gyarados, Magikarp → Gyarados, Magikarp → Gyarados]
 johto_fisherman_kyler_2 115 (18) [Magikarp → Gyarados, Magikarp → Gyarados, Magikarp → Gyarados, Magikarp → Gyarados]
 johto_fisherman_kyler_3 115 (18) [Magikarp → Gyarados, Magikarp → Gyarados, Magikarp → Gyarados, Magikarp → Gyarados, Magikarp → Gyarados]
 johto_fisherman_kyler_4 115 (18) [Magikarp → Gyarados, Magikarp → Gyarados, Magikarp → Gyarados, Magikarp → Gyarados, Magikarp → Gyarados, Magikarp → Gyarados]
-johto_fisherman_martin 131 (42) [Remoraid → Krakannon, Octillery → Krakannon]
 johto_fisherman_mickey 129 (39) [Qwilfish → Fugumace, Seaking → Sabrefin]
 johto_fisherman_ralph_2 129 (40) [Seaking → Sabrefin]
 johto_fisherman_ralph_3 133 (45) [Qwilfish → Fugumace, Seaking → Sabrefin]
 johto_fisherman_ralph_4 139 (56) [Qwilfish → Fugumace, Seaking → Sabrefin]
-johto_fisherman_stephen 131 (43) [Quagsire → Mirelord, Qwilfish → Fugumace, Tentacruel → Medusarch]
 johto_fisherman_tully_2 125 (33) [Qwilfish → Fugumace]
 johto_fisherman_tully_3 128 (38) [Goldeen → Sabrefin, Goldeen → Sabrefin, Qwilfish → Fugumace]
 johto_fisherman_tully_4 138 (53) [Seaking → Sabrefin, Seaking → Sabrefin, Qwilfish → Fugumace]
@@ -405,7 +388,6 @@ johto_hiker_anthony_4 139 (55) [Graveler → Golem]
 johto_hiker_clarke 133 (45) [Onix → Ironwyrm, Dugtrio → Molemount]
 johto_hiker_eoin 131 (42) [Graveler → Golem, Graveler → Golem, Graveler → Golem]
 johto_hiker_jim 133 (45)
-johto_hiker_kenny 125 (33) [Sandslash → Sandspire, Graveler → Golem]
 johto_hiker_kenny_2 127 (37) [Onix → Steelix, Graveler → Golem, Sandslash → Sandspire]
 johto_hiker_kenny_3 133 (46) [Sandslash → Sandspire, Graveler → Golem, Onix → Ironwyrm]
 johto_hiker_kenny_4 138 (54) [Sandslash → Sandspire, Graveler → Golem, Steelix → Ironwyrm]
@@ -486,14 +468,12 @@ johto_picnicker_erin_4 138 (53) [Cherrim → Sakurabloom, Sunflora → Helianthr
 johto_picnicker_gina_2 124 (32) [Hoppip → Jumpluff, Hoppip → Jumpluff, Ivysaur → Venusaur]
 johto_picnicker_gina_3 132 (44) [Skiploom → Jumpluff, Skiploom → Jumpluff, Ivysaur → Venusaur]
 johto_picnicker_gina_4 139 (55) [Skiploom → Jumpluff]
-johto_picnicker_ginger 130 (41) [Whismur → Exploud]
 johto_picnicker_heidi 131 (43) [Skiploom → Jumpluff, Skiploom → Jumpluff]
 johto_picnicker_liz_2 128 (38) [Weepinbell → Victreebel, Nidorina → Nidoqueen]
 johto_picnicker_liz_3 129 (40) [Weepinbell → Victreebel, Nidorino → Nidoking]
 johto_picnicker_liz_4 141 (60)
 johto_picnicker_mickey 124 (32) [Weepinbell → Victreebel]
 johto_picnicker_mickey_2 128 (38)
-johto_picnicker_piper 129 (40) [Spoink → Grumpig]
 johto_picnicker_tiffany_2 125 (34) [Clefairy → Clefable]
 johto_picnicker_tiffany_3 130 (41)
 johto_picnicker_tiffany_4 142 (61)
@@ -511,21 +491,15 @@ johto_poke_maniac_morgan 129 (39) [Rhyhorn → Rhyperior, Rhydon → Rhyperior]
 johto_pokefan_beverly_2 123 (31) [Snubbull → Mastiffang]
 johto_pokefan_beverly_3 131 (43) [Granbull → Mastiffang]
 johto_pokefan_beverly_4 138 (53) [Granbull → Mastiffang]
-johto_pokefan_eleanor 131 (43)
 johto_pokefan_georgia 127 (36) [Sentret → Ermilong, Sentret → Ermilong, Sentret → Ermilong, Furret → Ermilong, Sentret → Ermilong]
-johto_pokefan_m_alex 144 (65) [Slowking → Slowmonarch, Magikarp → Typhonarch]
 johto_pokefan_m_andy 132 (44) [Teddiursa → Ursaluna]
-johto_pokefan_m_boone 131 (43)
-johto_pokefan_m_carter 128 (38) [Bulbasaur → Venusaur, Charmander → Charizard, Squirtle → Blastoise]
 johto_pokefan_m_colin 129 (40) [Delibird → Sleighwing]
 johto_pokefan_m_derek_2 123 (30) [Teddiursa → Ursaluna, Pikachu → Raichu]
 johto_pokefan_m_derek_3 127 (37) [Pichu → Raichu, Teddiursa → Ursaluna, Pikachu → Raichu, Teddiursa → Ursaluna]
 johto_pokefan_m_derek_4 134 (47) [Pichu → Raichu, Teddiursa → Ursaluna, Pikachu → Raichu, Ursaring → Ursaluna]
 johto_pokefan_m_jeremy 127 (36) [Meowth → Regalynx, Meowth → Regalynx, Meowth → Regalynx]
-johto_pokefan_m_joshua 124 (32) [Pikachu → Raichu, Pikachu → Raichu, Pikachu → Raichu, Pikachu → Raichu, Pikachu → Raichu, Pikachu → Raichu]
 johto_pokefan_m_rex 133 (45) [Phanpy → Siegephant]
 johto_pokefan_m_robert 131 (43) [Quagsire → Mirelord]
-johto_pokefan_m_trevor 131 (42) [Psyduck → Psyduke]
 johto_pokefan_marigold 113 (16) [Meowth → Regalynx]
 johto_psychic_m_fidel 131 (43) [Xatu → Totemsight]
 johto_psychic_m_herman 129 (39) [Exeggcute → Palmagus, Exeggcute → Palmagus, Exeggutor → Palmagus]
@@ -567,30 +541,23 @@ johto_sailor_stanly 130 (41) [Machop → Machamp, Machoke → Machamp, Psyduck �
 johto_school_kid_m_alan_2 124 (32) [Tangela → Tanglewood, Yanma → Meganeuron]
 johto_school_kid_m_alan_3 127 (36) [Xatu → Totemsight, Tangrowth → Tanglewood, Quagsire → Mirelord, Yanmega → Meganeuron]
 johto_school_kid_m_alan_4 138 (54) [Xatu → Totemsight, Tangrowth → Tanglewood, Quagsire → Mirelord, Yanmega → Meganeuron]
-johto_school_kid_m_billy 129 (39) [Parasect → Cordyhusk]
 johto_school_kid_m_billy_2 131 (43) [Parasect → Cordyhusk]
 johto_school_kid_m_billy_3 134 (47) [Parasect → Cordyhusk]
 johto_school_kid_m_billy_4 139 (55) [Mr. Mime → Mimestro, Parasect → Cordyhusk]
 johto_school_kid_m_chad_2 123 (30) [Mr. Mime → Mimestro, Magnemite → Magnezone]
 johto_school_kid_m_chad_3 129 (39) [Mr. Mime → Mimestro, Magneton → Magnezone]
 johto_school_kid_m_chad_4 139 (56) [Mr. Mime → Mimestro, Magneton → Magnezone]
-johto_school_kid_m_connor 131 (42) [Zigzagoon → Linoone]
 johto_school_kid_m_jack_2 122 (29) [Voltorb → Dynamorb]
 johto_school_kid_m_jack_3 128 (38) [Electrode → Dynamorb]
 johto_school_kid_m_jack_4 137 (52) [Electrode → Dynamorb, Arcanine → Kirinine]
-johto_school_kid_m_johnny 131 (42) [Bellsprout → Victreebel, Weepinbell → Victreebel]
-johto_school_kid_m_kipp 129 (40) [Voltorb → Dynamorb, Magnemite → Magnezone, Voltorb → Dynamorb, Magneton → Magnezone]
 johto_school_kid_m_mickey 127 (37) [Electrode → Dynamorb, Growlithe → Arcanine]
 johto_school_kid_m_mickey_2 126 (35) [Xatu → Totemsight, Tangela → Tanglewood, Yanma → Meganeuron, Quagsire → Mirelord]
 johto_school_kid_m_mickey_3 128 (38) [Mr. Mime → Mimestro, Magneton → Magnezone]
 johto_school_kid_m_nate 129 (40) [Ledian → Coccinova, Exeggutor → Palmagus]
 johto_school_kid_m_ricky 129 (40) [Aipom → Quadripom]
-johto_school_kid_m_tommy 131 (43) [Xatu → Totemsight]
-johto_school_kid_m_torin 130 (41) [Sandslash → Sandspire, Golbat → Crobat]
 johto_school_kid_m_torin_2 133 (46) [Sandslash → Sandspire, Golbat → Crobat, Vulpix → Kitsunox]
 johto_school_kid_m_torin_3 137 (51) [Sandslash → Sandspire, Golbat → Crobat, Vulpix → Kitsunox]
 johto_school_kid_m_torin_4 138 (53) [Sandslash → Sandspire, Golbat → Crobat, Vulpix → Kitsunox]
-johto_school_kid_m_travis 131 (42) [Budew → Roserade]
 johto_scientist_gs_daniel 136 (50) [Ninetales → Kitsunox]
 johto_scientist_gs_linden 136 (50) [Magmar → Magmortar]
 johto_scientist_gs_lowell 136 (50) [Arcanine → Kirinine]
@@ -605,15 +572,12 @@ johto_super_nerd_mickey_5 121 (27) [Magnemite → Magnezone, Magnemite → Magne
 johto_super_nerd_mickey_6 123 (30) [Porygon → Porygon-Z]
 johto_super_nerd_shawn 130 (41) [Magnemite → Magnezone, Muk → Sludgemire, Magnemite → Magnezone]
 johto_super_nerd_waldo 138 (53) [Numel → Camerupt]
-johto_swimmer_f_debbie 133 (46)
 johto_swimmer_f_katie 130 (41) [Dewgong → Glacitusk]
 johto_swimmer_f_mickey 121 (28) [Jynx → Aurorelle]
 johto_swimmer_f_mickey_2 122 (29) [Dewgong → Glacitusk]
 johto_swimmer_f_mickey_3 116 (20) [Seaking → Sabrefin]
 johto_swimmer_f_mickey_4 116 (20) [Seaking → Sabrefin]
 johto_swimmer_f_mickey_5 116 (20) [Seaking → Sabrefin]
-johto_swimmer_m_harold 131 (42) [Remoraid → Krakannon, Seadra → Kingdra]
-johto_swimmer_m_jerome 129 (40) [Seadra → Kingdra, Tentacool → Medusarch, Tentacruel → Medusarch, Goldeen → Sabrefin]
 johto_swimmer_m_mickey 120 (26) [Seel → Glacitusk, Dewgong → Glacitusk, Seel → Glacitusk]
 johto_swimmer_m_mickey_2 121 (27) [Piloswine → Mamoswine, Piloswine → Mamoswine]
 johto_swimmer_m_mickey_3 119 (25) [Shellder → Cloyster, Shellder → Cloyster]
@@ -623,10 +587,6 @@ johto_swimmer_m_mickey_6 115 (18) [Staryu → Starmie, Horsea → Kingdra]
 johto_swimmer_m_mickey_7 115 (18) [Staryu → Starmie, Horsea → Kingdra]
 johto_swimmer_m_mickey_8 115 (18) [Staryu → Starmie, Horsea → Kingdra]
 johto_swimmer_m_parker 131 (43) [Horsea → Kingdra, Seadra → Kingdra]
-johto_swimmer_m_tucker 132 (44) [Shellder → Clamspire, Cloyster → Clamspire]
-johto_teacher_clarice 131 (43) [Zigzagoon → Linoone, Roselia → Roserade]
-johto_teacher_colette 133 (45) [Clefairy → Clefable]
-johto_teacher_hillary 130 (41) [Sunkern → Helianthra, Aipom → Quadripom]
 johto_teacher_hillary_2 131 (43) [Ambipom → Quadripom, Sunflora → Helianthra]
 johto_teacher_hillary_3 135 (49) [Ambipom → Quadripom, Sunflora → Helianthra]
 johto_teacher_hillary_4 139 (55) [Ambipom → Quadripom, Sunflora → Helianthra]
@@ -648,18 +608,15 @@ johto_tower_tycoon_palmer 106 (5) [Rattata → Ratchisel]
 johto_twins_amy_and_mimi_2 109 (10) [Ledyba → Coccinova, Spinarak → Orbweavix]
 johto_twins_dara_and_dia 113 (16) [Mareep → Ampharos, Marill → Azumarill]
 johto_twins_jo_and_zoe_2 127 (37)
-johto_twins_kay_and_tia 130 (41) [Quagsire → Mirelord, Quagsire → Mirelord]
 johto_twins_kay_and_tia_2 135 (48) [Quagsire → Mirelord, Quagsire → Mirelord]
 johto_twins_kay_and_tia_3 138 (53) [Quagsire → Mirelord, Quagsire → Mirelord]
 johto_twins_kay_and_tia_4 139 (55) [Quagsire → Mirelord, Quagsire → Mirelord]
 johto_twins_meg_and_peg 129 (39) [Teddiursa → Ursaluna, Phanpy → Siegephant]
 johto_twins_meg_and_peg_2 129 (39) [Phanpy → Siegephant, Teddiursa → Ursaluna]
 johto_twins_mickey 128 (38) [Dratini → Dragonite, Dratini → Dragonite]
-johto_young_couple_tim_and_sue 133 (46) [Kadabra → Alakazam, Psyduck → Psyduke]
 johto_young_couple_tim_and_sue_2 136 (50) [Kadabra → Alakazam, Golduck → Psyduke]
 johto_young_couple_tim_and_sue_3 137 (52) [Kadabra → Alakazam, Golduck → Psyduke]
 johto_young_couple_tim_and_sue_4 139 (56) [Golduck → Psyduke]
-johto_young_couple_vic_and_tara 132 (44) [Magmar → Magmortar, Sunflora → Helianthra]
 johto_youngster_ian_2 125 (33) [Mankey → Annihilape, Dugtrio → Molemount]
 johto_youngster_ian_3 129 (40) [Primeape → Annihilape, Dugtrio → Molemount]
 johto_youngster_ian_4 140 (58) [Primeape → Annihilape, Dugtrio → Molemount]
@@ -1996,6 +1953,12 @@ surf 64-88 (own 5-40)
 old rod 64 (own 5)
 good rod 64-71 (own 5-15)
 super rod 71-85 (own 15-35)
+=== fuchsia
+Fuchsia City, Johto
+surf 109-116 (own 10-20)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
 === fuchsia_city
 Fuchsia City, Kanto
 surf 74-88 (own 20-40)
@@ -2155,6 +2118,36 @@ super rod 129 (own 40)
 Route 1, Johto
 grass 104-107 (own 2-6)
 trainers 4, 131-134 (own 43-47): johto_ace_trainer_f_quinn 134 (47) [Ivysaur → Venusaur, Starmie → Stellamir], johto_ace_trainer_m_french 134 (47), johto_school_kid_m_danny 131 (43) [Jynx → Aurorelle, Electabuzz → Electivire, Magmar → Magmortar], johto_school_kid_m_sherman 131 (43) [Furret → Ermilong]
+=== johto_route_12
+Route 12, Johto
+surf 119 (own 25)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+trainers 8, 115-132 (own 18-44): johto_bird_keeper_gs_gail 131 (42) [Fearow → Lancerow, Spearow → Lancerow], johto_bird_keeper_gs_justin 132 (44) [Xatu → Totemsight, Noctowl → Noctaugur], johto_fisherman_barney 129 (40), johto_fisherman_kyle 129 (39) [Goldeen → Sabrefin, Qwilfish → Fugumace, Goldeen → Sabrefin], johto_fisherman_kyler 115 (18) [Magikarp → Gyarados, Magikarp → Gyarados, Magikarp → Gyarados], johto_fisherman_martin 131 (42) [Remoraid → Krakannon, Octillery → Krakannon], johto_fisherman_stephen 131 (43) [Quagsire → Mirelord, Qwilfish → Fugumace, Tentacruel → Medusarch], johto_young_couple_vic_and_tara 132 (44) [Magmar → Magmortar, Sunflora → Helianthra]
+=== johto_route_13
+Route 13, Johto
+grass 117-119 (own 22-25)
+surf 119 (own 25)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+trainers 10, 121-144 (own 27-65): johto_bird_keeper_gs_bret 130 (41) [Taillow → Swellow, Fearow → Lancerow], johto_bird_keeper_gs_perry 131 (42) [Farfetch'd → Porrigard], johto_camper_clark 129 (40) [Buizel → Tidestoat], johto_camper_tanner 128 (38) [Sudowoodo → Mimicedar], johto_hiker_kenny 125 (33) [Sandslash → Sandspire, Graveler → Golem], johto_picnicker_ginger 130 (41) [Whismur → Exploud], johto_picnicker_piper 129 (40) [Spoink → Grumpig], johto_pokefan_m_alex 144 (65) [Slowking → Slowmonarch, Magikarp → Typhonarch], johto_pokefan_m_joshua 124 (32) [Pikachu → Raichu, Pikachu → Raichu, Pikachu → Raichu, Pikachu → Raichu, Pikachu → Raichu, Pikachu → Raichu], johto_young_couple_tim_and_sue 133 (46) [Kadabra → Alakazam, Psyduck → Psyduke]
+=== johto_route_14
+Route 14, Johto
+grass 118-120 (own 23-26)
+trainers 8, 127-132 (own 37-44): johto_bird_keeper_gs_josh 127 (37) [Fearow → Lancerow], johto_bird_keeper_gs_roy 132 (44) [Fearow → Lancerow, Fearow → Lancerow], johto_pokefan_m_carter 128 (38) [Bulbasaur → Venusaur, Charmander → Charizard, Squirtle → Blastoise], johto_pokefan_m_trevor 131 (42) [Psyduck → Psyduke], johto_school_kid_m_connor 131 (42) [Zigzagoon → Linoone], johto_school_kid_m_torin 130 (41) [Sandslash → Sandspire, Golbat → Crobat], johto_school_kid_m_travis 131 (42) [Budew → Roserade], johto_teacher_clarice 131 (43) [Zigzagoon → Linoone, Roselia → Roserade]
+=== johto_route_15
+Route 15, Johto
+grass 117-119 (own 22-25)
+trainers 9, 123-133 (own 31-45): johto_pokefan_eleanor 131 (43), johto_pokefan_m_boone 131 (43), johto_school_kid_m_billy 129 (39) [Parasect → Cordyhusk], johto_school_kid_m_johnny 131 (42) [Bellsprout → Victreebel, Weepinbell → Victreebel], johto_school_kid_m_kipp 129 (40) [Voltorb → Dynamorb, Magnemite → Magnezone, Voltorb → Dynamorb, Magneton → Magnezone], johto_school_kid_m_tommy 131 (43) [Xatu → Totemsight], johto_teacher_colette 133 (45) [Clefairy → Clefable], johto_teacher_hillary 130 (41) [Sunkern → Helianthra, Aipom → Quadripom], johto_twins_kay_and_tia 130 (41) [Quagsire → Mirelord, Quagsire → Mirelord]
+=== johto_route_19
+Route 19, Johto
+surf 123-126 (own 30-35)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+trainers 4, 127-133 (own 36-46): johto_swimmer_f_debbie 133 (46), johto_swimmer_m_harold 131 (42) [Remoraid → Krakannon, Seadra → Kingdra], johto_swimmer_m_jerome 129 (40) [Seadra → Kingdra, Tentacool → Medusarch, Tentacruel → Medusarch, Goldeen → Sabrefin], johto_swimmer_m_tucker 132 (44) [Shellder → Clamspire, Cloyster → Clamspire]
 === johto_route_2
 Route 2, Johto
 grass 105-109 (own 3-10)
@@ -4057,6 +4050,9 @@ trainers 8, 86-90 (own 37-43): kanto_black_belt_atsushi 88 (40) [Machop → Mach
 Viridian Forest, Kanto
 grass 63-65 (own 3-6)
 trainers 5, 65-67 (own 6-9): kanto_bug_catcher_anthony 66 (8) [Caterpie → Butterfree, Caterpie → Butterfree], kanto_bug_catcher_charlie 65 (7) [Metapod → Butterfree, Caterpie → Butterfree, Metapod → Butterfree], kanto_bug_catcher_doug 65 (7) [Weedle → Beedrill, Kakuna → Beedrill, Weedle → Beedrill], kanto_bug_catcher_rick 65 (6) [Weedle → Beedrill, Caterpie → Butterfree], kanto_bug_catcher_sammy 67 (9) [Weedle → Beedrill]
+=== viridian_gym
+Viridian City, Johto
+trainers 4, 136-138 (own 50-53): johto_ace_trainer_f_salma 138 (53) [Slowking → Slowmonarch, Lickilicky → Lickolossus], johto_ace_trainer_m_arabella 138 (53) [Stantler → Wyrdeer, Tauros → Bovarch], johto_ace_trainer_m_bonita 137 (52) [Sudowoodo → Mimicedar], johto_double_team_elan_and_ida 137 (52) [Porygon2 → Porygon-Z]
 === whirl_islands_1f
 Whirl Islands, Johto
 grass 117-119 (own 22-24)

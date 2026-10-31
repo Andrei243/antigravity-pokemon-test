@@ -528,6 +528,12 @@ old rod 5
 good rod 5-15
 super rod 15-35
 ours Glacitusk 112-116, Clamspire 120-124
+=== fuchsia
+Fuchsia City
+surf 10-20
+old rod 10
+good rod 20
+super rod 40
 === fuchsia_city
 Fuchsia City
 surf 20-40
@@ -776,6 +782,36 @@ super rod 40
 Route 1
 grass 2-6
 trainers 4, 43-47: johto_ace_trainer_f_quinn 47, johto_ace_trainer_m_french 47, johto_school_kid_m_danny 43, johto_school_kid_m_sherman 43
+=== johto_route_12
+Route 12
+surf 25
+old rod 10
+good rod 20
+super rod 40
+trainers 8, 18-44: johto_bird_keeper_gs_gail 42, johto_bird_keeper_gs_justin 44, johto_fisherman_barney 40, johto_fisherman_kyle 39, johto_fisherman_kyler 18, johto_fisherman_martin 42, johto_fisherman_stephen 43, johto_young_couple_vic_and_tara 44
+=== johto_route_13
+Route 13
+grass 22-25
+surf 25
+old rod 10
+good rod 20
+super rod 40
+trainers 10, 27-65: johto_bird_keeper_gs_bret 41, johto_bird_keeper_gs_perry 42, johto_camper_clark 40, johto_camper_tanner 38, johto_hiker_kenny 33, johto_picnicker_ginger 41, johto_picnicker_piper 40, johto_pokefan_m_alex 65, johto_pokefan_m_joshua 32, johto_young_couple_tim_and_sue 46
+=== johto_route_14
+Route 14
+grass 23-26
+trainers 8, 37-44: johto_bird_keeper_gs_josh 37, johto_bird_keeper_gs_roy 44, johto_pokefan_m_carter 38, johto_pokefan_m_trevor 42, johto_school_kid_m_connor 42, johto_school_kid_m_torin 41, johto_school_kid_m_travis 42, johto_teacher_clarice 43
+=== johto_route_15
+Route 15
+grass 22-25
+trainers 9, 31-45: johto_pokefan_eleanor 43, johto_pokefan_m_boone 43, johto_school_kid_m_billy 39, johto_school_kid_m_johnny 42, johto_school_kid_m_kipp 40, johto_school_kid_m_tommy 43, johto_teacher_colette 45, johto_teacher_hillary 41, johto_twins_kay_and_tia 41
+=== johto_route_19
+Route 19
+surf 30-35
+old rod 10
+good rod 20
+super rod 40
+trainers 4, 36-46: johto_swimmer_f_debbie 46, johto_swimmer_m_harold 42, johto_swimmer_m_jerome 40, johto_swimmer_m_tucker 44
 === johto_route_2
 Route 2
 grass 3-10
@@ -3365,6 +3401,9 @@ trainers 8, 37-43: kanto_black_belt_atsushi 40, kanto_black_belt_kiyo 43, kanto_
 Viridian Forest
 grass 3-6
 trainers 5, 6-9: kanto_bug_catcher_anthony 8, kanto_bug_catcher_charlie 7, kanto_bug_catcher_doug 7, kanto_bug_catcher_rick 6, kanto_bug_catcher_sammy 9
+=== viridian_gym
+Viridian City
+trainers 4, 50-53: johto_ace_trainer_f_salma 53, johto_ace_trainer_m_arabella 53, johto_ace_trainer_m_bonita 52, johto_double_team_elan_and_ida 52
 === wayward_cave_1f
 Wayward Cave
 grass 17-20

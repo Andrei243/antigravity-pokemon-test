@@ -1,0 +1,416 @@
+{
+  "Janine": [
+    {
+      "en": [
+        "Janine"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "So you found the real me. Not bad! My father taught me every trick a ninja knows, and now this Gym is mine."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A Champion from Johto, is it? Then you won't mind a little poison. Here I come!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ugh... You were too quick for my tricks. All right, you've earned it: the Soul Badge."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Soul Badge from Janine!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Take this as well. It's a move I practised until my arms ached."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "TM84 is Poison Jab. It stabs the foe with a poisoned spike, and it may poison them too."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'll train until no Champion can see through me. Then we'll battle again!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Linda": [
+    {
+      "en": [
+        "Hah! Did you think I was Janine? Look closer!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Linda"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm Linda! Janine lends us her clothes so challengers get lost. Now, battle!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You saw right through me in the end."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "LindaRevealed": [
+    {
+      "en": [
+        "Linda"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm Linda! Janine lends us her clothes so challengers get lost. Now, battle!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You saw right through me in the end."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Linda"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Janine's disguises are better than mine. She can fool anyone."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Alice": [
+    {
+      "en": [
+        "I'm the real Janine! ...Or am I?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Alice"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Fooled you! I'm Alice. And my Pokémon are just as poisonous as hers!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Next time I'll practise standing still like a ninja."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "AliceRevealed": [
+    {
+      "en": [
+        "Alice"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Fooled you! I'm Alice. And my Pokémon are just as poisonous as hers!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Next time I'll practise standing still like a ninja."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Alice"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The real Janine stands in the middle of the floor. Don't tell her I told you."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Barry": [
+    {
+      "en": [
+        "Welcome to my Gym, challenger. ...Hmm, my voice gives me away, doesn't it?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Barry"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's me, Barry! The wig itches, but the battle won't. Let's go!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm taking the wig off for good."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "BarryRevealed": [
+    {
+      "en": [
+        "Barry"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's me, Barry! The wig itches, but the battle won't. Let's go!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm taking the wig off for good."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Barry"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Being a decoy is harder than it looks. You have to keep a straight face."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Cindy": [
+    {
+      "en": [
+        "You've reached the end of the Gym. Prepare to face Janine! ...Gotcha!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Cindy"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm Cindy, and the corner was the perfect hiding place. Battle me!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Even the corner couldn't save me."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "CindyRevealed": [
+    {
+      "en": [
+        "Cindy"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm Cindy, and the corner was the perfect hiding place. Battle me!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Even the corner couldn't save me."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Cindy"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Janine trains in secret every night. That's why she's so strong."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Guide": [
+    {
+      "en": [
+        "Hey, champ in the making! Janine's trainers all dress up as her. Talk to each one to find out who's real."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Her Pokémon use poison, so Ground and Psychic moves will serve you well."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You beat Janine! I never could tell which one was really her."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Statue": [
+    {
+      "en": [
+        "Fuchsia City Pokémon Gym\nLeader: Janine"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Fuchsia City Pokémon Gym\nLeader: Janine\nWinning trainers: {player}"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

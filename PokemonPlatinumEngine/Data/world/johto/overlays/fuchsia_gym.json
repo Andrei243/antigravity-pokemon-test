@@ -1,0 +1,83 @@
+{
+  // The Fuchsia Gym as HeartGold has it (plan 20 · J15, part h): Janine in the middle of the floor and four of her
+  // trainers dressed as her (fuchsia_gym.txt). Each decoy and the trainer under the disguise stand on one tile, the
+  // decoy hidden and the trainer shown by a flag of ours, FLAG_JOHTO_FUCHSIA_GYM_<WHO>_REVEALED, where HeartGold swaps
+  // its own two flags of each. HeartGold hides Janine behind FLAG_HIDE_FUCHSIA_GYM_JANINE only while she is away on her
+  // phone's errand, which this game has not, so she stands here always
+  "area": "fuchsia_gym",
+  "bgmTrack": "johto/gym",
+  "arenaType": "Poison",
+  "people": {
+    "t08gym0101_gsleader13": {
+      "name": "Janine",
+      "npcType": "janine",
+      "script": "Janine",
+      "still": true,
+      "hiddenBy": ""
+    },
+    "t08gym0101_sunglasses": {
+      "name": "Gym guide",
+      "script": "Guide",
+      "still": true
+    },
+    "t08gym0101_gsleader13_4": {
+      "name": "Janine?",
+      "npcType": "janine",
+      "script": "Linda",
+      "still": true,
+      "hiddenBy": "FLAG_JOHTO_FUCHSIA_GYM_LINDA_REVEALED"
+    },
+    "t08gym0101_gsgirl1": {
+      "name": "Linda",
+      "script": "LindaRevealed",
+      "still": true,
+      "hiddenBy": "",
+      "shownBy": "FLAG_JOHTO_FUCHSIA_GYM_LINDA_REVEALED"
+    },
+    "t08gym0101_gsleader13_5": {
+      "name": "Janine?",
+      "npcType": "janine",
+      "script": "Alice",
+      "still": true,
+      "hiddenBy": "FLAG_JOHTO_FUCHSIA_GYM_ALICE_REVEALED"
+    },
+    "t08gym0101_gsgirl1_2": {
+      "name": "Alice",
+      "script": "AliceRevealed",
+      "still": true,
+      "hiddenBy": "",
+      "shownBy": "FLAG_JOHTO_FUCHSIA_GYM_ALICE_REVEALED"
+    },
+    "t08gym0101_gsleader13_3": {
+      "name": "Janine?",
+      "npcType": "janine",
+      "script": "Barry",
+      "still": true,
+      "hiddenBy": "FLAG_JOHTO_FUCHSIA_GYM_BARRY_REVEALED"
+    },
+    "t08gym0101_campboy_2": {
+      "name": "Barry",
+      "script": "BarryRevealed",
+      "still": true,
+      "hiddenBy": "",
+      "shownBy": "FLAG_JOHTO_FUCHSIA_GYM_BARRY_REVEALED"
+    },
+    "t08gym0101_gsleader13_2": {
+      "name": "Janine?",
+      "npcType": "janine",
+      "script": "Cindy",
+      "still": true,
+      "hiddenBy": "FLAG_JOHTO_FUCHSIA_GYM_CINDY_REVEALED"
+    },
+    "t08gym0101_picnicgirl_2": {
+      "name": "Cindy",
+      "script": "CindyRevealed",
+      "still": true,
+      "hiddenBy": "",
+      "shownBy": "FLAG_JOHTO_FUCHSIA_GYM_CINDY_REVEALED"
+    }
+  },
+  "read": {
+    "T08GYM0101_007+1": "Statue"
+  }
+}

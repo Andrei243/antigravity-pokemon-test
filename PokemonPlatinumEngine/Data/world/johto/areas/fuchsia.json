@@ -1,0 +1,82 @@
+{
+  "key": "fuchsia",
+  "index": 56,
+  "name": "Fuchsia City",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "City",
+  "dayMusic": "GS_C_SEKICHIKU",
+  "nightMusic": "GS_C_SEKICHIKU",
+  "encounters": "T08",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "surfSwarm": "Magikarp",
+  "fishSwarm": "Magikarp",
+  "water": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Magikarp", "level": 15, "maxLevel": 15 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 }
+  ],
+  "waterRate": 15,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Gyarados", "level": 20, "maxLevel": 20 },
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 },
+    { "species": "Gyarados", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "warps": [
+    { "x": 1241, "z": 422, "to": "route_15_fuchsia_gatehouse", "toWarp": 0 },
+    { "x": 1241, "z": 423, "to": "route_15_fuchsia_gatehouse", "toWarp": 0 },
+    { "x": 1203, "z": 445, "to": "route_19_fuchsia_gatehouse", "toWarp": 0 },
+    { "x": 1204, "z": 445, "to": "route_19_fuchsia_gatehouse", "toWarp": 0 },
+    { "x": 1197, "z": 416, "to": "fuchsia_pokemart", "toWarp": 0 },
+    { "x": 1214, "z": 403, "to": "fuchsia_pal_park_entrance", "toWarp": 0 },
+    { "x": 1215, "z": 403, "to": "fuchsia_pal_park_entrance", "toWarp": 0 },
+    { "x": 1195, "z": 439, "to": "fuchsia_gym", "toWarp": 0 },
+    { "x": 1200, "z": 439, "to": "fuchsia_southwest_house", "toWarp": 0 },
+    { "x": 1209, "z": 439, "to": "fuchsia_pokecenter_1f", "toWarp": 0 },
+    { "x": 1222, "z": 435, "to": "fuchsia_safari_zone_warden_house", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "t08_gsmiddleman1", "looks": "gsmiddleman1", "movement": "3", "x": 1198, "z": 441, "facing": 1, "rangeX": 2, "rangeZ": 1, "script": "T08_001+1" },
+    { "id": "t08_gswoman1", "looks": "gswoman1", "movement": "3", "x": 1213, "z": 426, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "T08_002+1" },
+    { "id": "t08_gsboy2", "looks": "gsboy2", "movement": "3", "x": 1212, "z": 413, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "T08_000+1" },
+    { "id": "t08_tree", "looks": "tree", "movement": "0", "x": 1211, "z": 424, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_010", "script": "std_field_cut" },
+    { "id": "t08_bonguri", "looks": "bonguri", "movement": "0", "x": 1206, "z": 421, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "std_apricorn_tree" },
+    { "id": "t08_gsmiddleman1_2", "looks": "gsmiddleman1", "movement": "14", "x": 1201, "z": 445, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CAMERON", "script": "T08_006+1" },
+    { "id": "t08_juggrer", "looks": "juggrer", "movement": "0", "x": 1220, "z": 411, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T08_008+1" }
+  ],
+  "signs": [
+    { "x": 1213, "z": 405, "type": 1, "script": "T08_004+1" },
+    { "x": 1220, "z": 435, "type": 1, "script": "T08_005+1" },
+    { "x": 1193, "z": 441, "type": 1, "script": "T08_003+1" },
+    { "x": 1208, "z": 424, "type": 1, "script": "T08_009+1" },
+    { "x": 1232, "z": 413, "type": 2, "script": "std_hiddenitem_t08_nugget", "item": "Nugget", "flag": "FLAG_HIDDEN_ITEM_T08_NUGGET" }
+  ],
+  "triggers": []
+}

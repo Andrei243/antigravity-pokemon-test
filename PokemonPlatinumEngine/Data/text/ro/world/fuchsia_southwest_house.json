@@ -1,0 +1,41 @@
+{
+  "people": {
+    "t08r0401_middlewoman1_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My grandfather used to say the Fuchsia Gym was full of invisible walls. These days it's full of people dressed as Janine."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t08r0401_gsboy1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I want to be a ninja like Koga when I grow up. I've been practising sneaking up on my mum. She always hears me."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

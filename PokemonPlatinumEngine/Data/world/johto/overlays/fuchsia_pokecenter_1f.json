@@ -1,0 +1,53 @@
+{
+  // Fuchsia City's Pokémon Center (plan 20 · J15, part h). The counters for the link say it is closed, as in every
+  // Center (decision 06 · 7)
+  "area": "fuchsia_pokecenter_1f",
+  "bgmTrack": "kanto/fuchsia",
+  "read": {
+    "0": "PC"
+  },
+  "people": {
+    "t08pc0101_pcwoman1": {
+      "name": "Nurse",
+      "script": "Nurse"
+    },
+    "t08pc0101_pcwoman2": {
+      "name": "Receptionist",
+      "dialog": [
+        "Your Trainer Card shows your name, your money and the Pokémon you've seen. Have a look at it from the menu."
+      ]
+    },
+    "t08pc0101_pcwoman2_2": {
+      "name": "Receptionist",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    },
+    "t08pc0101_pcwoman2_3": {
+      "name": "Receptionist",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    },
+    "t08pc0101_gsman3": {
+      "name": "Man",
+      "still": true,
+      "dialog": [
+        "Janine's Pokémon love to poison their foes. I always carry Antidotes before I visit her Gym."
+      ]
+    },
+    "t08pc0101_gswoman3": {
+      "name": "Woman",
+      "dialog": [
+        "I miss the Safari Zone. You could throw bait at a Rhyhorn and watch it eat. Now the warden's off seeing the world."
+      ]
+    },
+    "t08pc0101_gsgirl1": {
+      "name": "Girl",
+      "still": true,
+      "dialog": [
+        "My big sister swims to the Seafoam Islands every summer. I'm still too little."
+      ]
+    }
+  }
+}

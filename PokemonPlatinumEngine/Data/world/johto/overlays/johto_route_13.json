@@ -1,0 +1,96 @@
+{
+  // Route 13 as HeartGold has it three years on (plan 20 · J15, part h): the fenced road west from the foot of Route 12
+  // to Route 14. The woman of a scene (FLAG_MAPTEMP_016) is held back. Its key meets FireRed's, so it takes Johto's
+  // prefix (HgWorld.Clashes). Its trainers battle by their own records (Johto's trainers.json); the Young Couple are
+  // two people with one record
+  "area": "johto_route_13",
+  "bgmTrack": "kanto/route11",
+  "heldBack": [
+    "r13_gswoman1"
+  ],
+  "people": {
+    "r13_mount_2": {
+      "name": "Kenny",
+      "trainer": {
+        "dialogueBefore": "Hiker Kenny: I walked here all the way from Rock Tunnel. My legs are fine; let's battle!",
+        "dialogueAfter": "Hiker Kenny: Now my legs are tired."
+      }
+    },
+    "r13_gsman2": {
+      "name": "Tim",
+      "trainer": {
+        "dialogueBefore": "Young Couple Tim: This road is our favourite date. You've walked right into it!",
+        "dialogueAfter": "Young Couple Tim: Our date isn't ruined. Probably."
+      }
+    },
+    "r13_gswoman2": {
+      "name": "Sue",
+      "trainer": {
+        "id": "johto_young_couple_tim_and_sue",
+        "dialogueBefore": "Young Couple Sue: We battle as a pair. Can you keep up?",
+        "dialogueAfter": "Young Couple Sue: You kept up and then some."
+      }
+    },
+    "r13_gsmiddleman1": {
+      "name": "Joshua",
+      "trainer": {
+        "dialogueBefore": "Pokéfan Joshua: My Pokémon wear matching bows today. Admire them while we battle!",
+        "dialogueAfter": "Pokéfan Joshua: The bows came loose."
+      }
+    },
+    "r13_gsmiddleman1_2": {
+      "name": "Alex",
+      "trainer": {
+        "dialogueBefore": "Pokéfan Alex: I polish my Pokémon every morning. See how they shine!",
+        "dialogueAfter": "Pokéfan Alex: They still shine. Just less."
+      }
+    },
+    "r13_campboy_2": {
+      "name": "Clark",
+      "trainer": {
+        "dialogueBefore": "Camper Clark: I'm pitching my tent by the fence tonight. Battle me first!",
+        "dialogueAfter": "Camper Clark: I'll sleep on that one."
+      }
+    },
+    "r13_campboy_2_2": {
+      "name": "Tanner",
+      "trainer": {
+        "dialogueBefore": "Camper Tanner: These fences make the road a maze. You'll have to get past me!",
+        "dialogueAfter": "Camper Tanner: You found the way, all right."
+      }
+    },
+    "r13_picnicgirl_2": {
+      "name": "Piper",
+      "trainer": {
+        "dialogueBefore": "Picnicker Piper: I brought sandwiches and a strong team. Hungry for a battle?",
+        "dialogueAfter": "Picnicker Piper: I'll eat my sandwiches alone, then."
+      }
+    },
+    "r13_picnicgirl_2_2": {
+      "name": "Ginger",
+      "trainer": {
+        "dialogueBefore": "Picnicker Ginger: The grass here is perfect for a picnic, and for a battle!",
+        "dialogueAfter": "Picnicker Ginger: Picnic it is."
+      }
+    },
+    "r13_gsman2_2": {
+      "name": "Bret",
+      "trainer": {
+        "dialogueBefore": "Bird Keeper Bret: My birds roost on these fence posts. Don't scare them off!",
+        "dialogueAfter": "Bird Keeper Bret: You scared them off anyway."
+      }
+    },
+    "r13_gsman2_3": {
+      "name": "Perry",
+      "trainer": {
+        "dialogueBefore": "Bird Keeper Perry: I've been watching you from the end of the road. Battle time!",
+        "dialogueAfter": "Bird Keeper Perry: I should have kept watching."
+      }
+    }
+  },
+  "signs": {
+    "R13_002+1": "Route 13\nWest to Route 14",
+    "R13_001+1": "Trainer Tips\nA trainer who stands still may still see you coming.",
+    "R13_000+1": "Trainer Tips\nA Pokémon's held item can turn a battle."
+  }
+}

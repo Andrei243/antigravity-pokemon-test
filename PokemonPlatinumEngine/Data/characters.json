@@ -216,6 +216,9 @@
     // white jumper over dark trousers; and K6a's leftovers, the classes in battle: a Tamer, a broad-brimmed brown hat
     // and a khaki shirt with a red neckerchief, a moustache; one of the Twins, dark bunches and a pink dress; one of
     // the Crush Kin, a dark bun and an orange training top over black shorts
+    // Plan 20 · J15, part h (our own take): Janine, Koga's daughter and Fuchsia's Leader three years on, dark violet hair
+    // in a high ponytail, a fitted charcoal top with a magenta sash over dark leggings
+    "janine": { "hairColor": "#4a2e5a", "hair": "Ponytail", "top": "#3a3a44", "accent": "#c8327a", "bottom": "#2a2a32", "shoes": "#22222a", "eyes": "#3a2a40", "shortSleeves": true, "lashes": true, "blush": true },
     "blaine": { "hairColor": "#e6e6ea", "top": "#f2f2f6", "accent": "#c83a2a", "bottom": "#4a4a52", "shoes": "#2a2a30", "eyes": "#3a3040", "glasses": "#1e1e24", "mustache": true, "coat": true, "build": "Adult", "height": 0.94 },
     "burglar": { "hairColor": "#2a2224", "hat": "Cap", "hatColor": "#26262c", "hatBand": "#26262c", "top": "#26262c", "accent": "#e8e8ec", "bottom": "#3a3a44", "shoes": "#1e1e22", "eyes": "#2a2024", "stripes": true, "build": "Adult", "height": 1.0 },
     "tamer": { "hairColor": "#5a3a26", "hat": "Fedora", "hatColor": "#6a4a2a", "hatBand": "#3a2a1a", "top": "#b8955a", "accent": "#c83a2a", "bottom": "#4a3a2a", "shoes": "#3a2a1a", "eyes": "#2a2024", "mustache": true, "build": "Adult", "height": 1.04 },
@@ -606,7 +609,9 @@
     // Plan 22 · U7, part a: Black 2's looks of Route 6 to the Celestial Tower that stand as the nearest of ours until plan 22 · U12
     "scientist_m_52": "scientist", "scientist_f_46": "scientist_f", "psychic_m": "psychic", "psychic_f": "psychic",
     "veteran_m": "veteran", "veteran_f": "veteran", "backpacker_f": "picnicker", "worker_44": "worker", "worker_26": "worker",
-    "clerk_f": "clerk"
+    "clerk_f": "clerk",
+    // Plan 20 · J15, part h: Janine, Fuchsia's Leader, and the decoys of her Gym who wear her look
+    "gsleader13": "janine"
   },
   "fallback": "Trainer",
   // The look a trainer class stands as in battle, as the original shows the class whatever the person in the field

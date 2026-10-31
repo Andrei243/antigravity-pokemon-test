@@ -1,0 +1,23 @@
+{
+  "people": {
+    "r12r0101_fishing_2": {
+      "name": {
+        "en": [
+          "Fisherman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My brother at the Lake of Rage keeps the record for the biggest Magikarp. I fish here to find one that beats it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

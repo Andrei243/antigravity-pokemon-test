@@ -1,0 +1,91 @@
+{
+  "key": "johto_route_19",
+  "index": 91,
+  "name": "Route 19",
+  "matrix": 0,
+  "kind": "Route",
+  "sign": "Route",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "General",
+  "dayMusic": "GS_R_15_03",
+  "nightMusic": "GS_R_15_03",
+  "encounters": "W19",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "surfSwarm": "Clamperl",
+  "fishSwarm": "Magikarp",
+  "water": [
+    { "species": "Tentacool", "level": 35, "maxLevel": 35 },
+    { "species": "Tentacool", "level": 30, "maxLevel": 30 },
+    { "species": "Tentacruel", "level": 35, "maxLevel": 35 },
+    { "species": "Tentacruel", "level": 35, "maxLevel": 35 },
+    { "species": "Tentacruel", "level": 35, "maxLevel": 35 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Krabby", "level": 10, "maxLevel": 10 },
+    { "species": "Krabby", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Krabby", "level": 20, "maxLevel": 20 },
+    { "species": "Krabby", "level": 20, "maxLevel": 20 },
+    { "species": "Corsola", "level": 20, "maxLevel": 20 },
+    { "species": "Krabby", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Krabby", "level": 40, "maxLevel": 40 },
+    { "species": "Corsola", "level": 40, "maxLevel": 40 },
+    { "species": "Krabby", "level": 40, "maxLevel": 40 },
+    { "species": "Kingler", "level": 40, "maxLevel": 40 },
+    { "species": "Krabby", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "rockSmash": [
+    { "species": "Kingler", "level": 28, "maxLevel": 31 },
+    { "species": "Krabby", "level": 24, "maxLevel": 27 }
+  ],
+  "rockSmashRate": 30,
+  "warps": [
+    { "x": 1203, "z": 453, "to": "route_19_fuchsia_gatehouse", "toWarp": 1 },
+    { "x": 1204, "z": 453, "to": "route_19_fuchsia_gatehouse", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "w19_gsswimmerm", "looks": "gsswimmerm", "movement": "2", "x": 1198, "z": 474, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "script": "TRAINER_SWIMMER_M_JEROME" },
+    { "id": "w19_gsswimmerm_2", "looks": "gsswimmerm", "movement": "20", "x": 1194, "z": 485, "facing": 1, "rangeX": 0, "rangeZ": 5, "trainer": "sees", "sight": 3, "script": "TRAINER_SWIMMER_M_HAROLD" },
+    { "id": "w19_gsswimmerm_3", "looks": "gsswimmerm", "movement": "20", "x": 1200, "z": 497, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 0, "script": "TRAINER_SWIMMER_M_TUCKER" },
+    { "id": "w19_gsswimmerw", "looks": "gsswimmerw", "movement": "16", "x": 1201, "z": 497, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 0, "script": "TRAINER_SWIMMER_F_DEBBIE" },
+    { "id": "w19_stop", "looks": "stop", "movement": "0", "x": 1203, "z": 458, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_265", "script": "0" },
+    { "id": "w19_stop_2", "looks": "stop", "movement": "0", "x": 1205, "z": 458, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_265", "script": "0" },
+    { "id": "w19_stop_3", "looks": "stop", "movement": "0", "x": 1204, "z": 458, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_265", "script": "0" },
+    { "id": "w19_stop_4", "looks": "stop", "movement": "0", "x": 1206, "z": 458, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_265", "script": "0" },
+    { "id": "w19_breakrock", "looks": "breakrock", "movement": "0", "x": 1209, "z": 456, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_010", "script": "std_field_rock_smash" },
+    { "id": "w19_breakrock_2", "looks": "breakrock", "movement": "0", "x": 1208, "z": 458, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_011", "script": "std_field_rock_smash" },
+    { "id": "w19_breakrock_3", "looks": "breakrock", "movement": "0", "x": 1210, "z": 455, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_012", "script": "std_field_rock_smash" },
+    { "id": "w19_breakrock_4", "looks": "breakrock", "movement": "0", "x": 1207, "z": 457, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_013", "script": "std_field_rock_smash" },
+    { "id": "w19_breakrock_5", "looks": "breakrock", "movement": "0", "x": 1201, "z": 456, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_014", "script": "std_field_rock_smash" },
+    { "id": "w19_workman", "looks": "workman", "movement": "15", "x": 1203, "z": 457, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_19_WORKMEN_CLOSED", "script": "W19_000+1" },
+    { "id": "w19_workman_2", "looks": "workman", "movement": "5", "x": 1206, "z": 457, "facing": 3, "rangeX": 2, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_19_WORKMEN_CLOSED", "script": "W19_001+1" },
+    { "id": "w19_workman_3", "looks": "workman", "movement": "15", "x": 1201, "z": 468, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_19_WORKMEN_OPEN", "script": "W19_002+1" },
+    { "id": "w19_workman_4", "looks": "workman", "movement": "5", "x": 1204, "z": 468, "facing": 2, "rangeX": 1, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_19_WORKMEN_OPEN", "script": "W19_003+1" },
+    { "id": "w19_monstarball", "looks": "monstarball", "movement": "0", "x": 1210, "z": 505, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_W19_TM55", "item": "TM55", "script": "std_itemball_w19_tm55" }
+  ],
+  "signs": [
+    { "x": 1210, "z": 505, "type": 2, "script": "std_hiddenitem_w19_big_pearl", "item": "Big Pearl", "flag": "FLAG_HIDDEN_ITEM_W19_BIG_PEARL" },
+    { "x": 1198, "z": 468, "type": 2, "script": "std_hiddenitem_w19_pearl_2", "item": "Pearl", "flag": "FLAG_HIDDEN_ITEM_W19_PEARL_2" },
+    { "x": 1207, "z": 467, "type": 2, "script": "std_hiddenitem_w19_pearl", "item": "Pearl", "flag": "FLAG_HIDDEN_ITEM_W19_PEARL" },
+    { "x": 1210, "z": 456, "type": 2, "script": "std_hiddenitem_w19_revive", "item": "Revive", "flag": "FLAG_HIDDEN_ITEM_W19_REVIVE" },
+    { "x": 1209, "z": 460, "type": 2, "script": "std_hiddenitem_w19_max_elixir", "item": "Max Elixir", "flag": "FLAG_HIDDEN_ITEM_W19_MAX_ELIXIR" },
+    { "x": 1208, "z": 453, "type": 1, "script": "W19_005+1" },
+    { "x": 1200, "z": 468, "type": 1, "script": "W19_004+1" }
+  ],
+  "triggers": []
+}

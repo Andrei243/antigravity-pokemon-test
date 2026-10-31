@@ -1,0 +1,23 @@
+{
+  "people": {
+    "r15r0101_counterm": {
+      "name": {
+        "en": [
+          "Guard"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Route 15 runs west from here. School trips come this way all the time, so mind the children with Pokémon."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

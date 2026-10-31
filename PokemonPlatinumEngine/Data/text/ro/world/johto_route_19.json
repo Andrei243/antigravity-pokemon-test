@@ -1,0 +1,162 @@
+{
+  "people": {
+    "w19_workman_3": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "That rockfall took us weeks to clear. The road's open again now, so swim safely!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "w19_workman_4": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We break the leftover rocks with our Pokémon. Machop can lift boulders bigger than I am."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "w19_gsswimmerm": {
+      "name": {
+        "en": [
+          "Jerome"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Jerome: I've swum this route every day for years. Let's see if you can keep up!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Jerome: I'm all out of breath."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "w19_gsswimmerm_2": {
+      "name": {
+        "en": [
+          "Harold"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Harold: The current pulls you east here. Battle me before it pulls you away!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Harold: I'll let the current take me home."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "w19_gsswimmerm_3": {
+      "name": {
+        "en": [
+          "Tucker"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Tucker: My girlfriend and I swim together. I'll show her how strong I am!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Tucker: Please don't tell her about this."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "w19_gsswimmerw": {
+      "name": {
+        "en": [
+          "Debbie"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Debbie: He's showing off again. Let me show him how it's really done!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Debbie: Well, at least he didn't see that."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "W19_005+1": {
+      "en": [
+        "Route 19\nFuchsia City - Seafoam Islands"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "W19_004+1": {
+      "en": [
+        "Notice\nWatch for falling rocks near the shore."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

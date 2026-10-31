@@ -2,8 +2,9 @@
 # the lines are our own, on HeartGold's beats (scr_seq_T09).
 #
 # Blue, the Leader of the Viridian Gym, stands by the ruins looking out to sea. Spoken to, he says what the volcano did
-# and that his Gym waits for a challenger who holds Kanto's other seven Badges; with seven he says he will be home. His
-# going back to Viridian and the Gym's battle wait for their session (the Gym's door stays locked), so nothing is set.
+# and that his Gym waits for a challenger who holds Kanto's other seven Badges; with seven he goes home to
+# Viridian (plan 20 · J15, part h): FLAG_JOHTO_BLUE_BACK_IN_GYM, a flag of ours, takes him off the island and opens the
+# Gym's door, where he battles for the Earth Badge (viridian_gym.txt).
 
 
 script Blue
@@ -16,5 +17,7 @@ script Blue
   end
 label Seven
   say "Seven of Kanto's Badges, huh? Not bad. Not bad at all."
-  say "I'll head back to Viridian soon. Don't keep me waiting when I do."
+  say "Right, I'm heading back to Viridian. Come and find me at my Gym, and don't keep me waiting."
+  setflag FLAG_JOHTO_BLUE_BACK_IN_GYM
+  hide t09_gsleader16
   end

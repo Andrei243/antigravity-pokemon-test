@@ -1,0 +1,48 @@
+{
+  // Fuchsia City as HeartGold has it three years on (plan 20 · J15, part h): Janine's Gym, the Safari Zone warden's
+  // house, a Pokémon Center and a Mart, with Route 19 south over the sea to Route 20 and Route 15 west. The Safari Zone
+  // is gone and Pal Park's gate stands in its place: its door (warps 5 and 6) stays locked, as the Park is Sinnoh's.
+  // Cameron the photographer waits for his session
+  "area": "fuchsia",
+  "bgmTrack": "kanto/fuchsia",
+  "locked": [
+    5,
+    6
+  ],
+  "heldBack": [
+    "t08_gsmiddleman1_2"
+  ],
+  "people": {
+    "t08_gsmiddleman1": {
+      "name": "Man",
+      "dialog": [
+        "The Safari Zone closed down, you know. The warden went off travelling, and now there's a gate to some park there."
+      ]
+    },
+    "t08_gswoman1": {
+      "name": "Woman",
+      "dialog": [
+        "Janine took over the Gym when her father joined the Elite Four. She's every bit as sneaky as he was."
+      ]
+    },
+    "t08_gsboy2": {
+      "name": "Boy",
+      "dialog": [
+        "Route 19 runs south into the sea. Swimmers race all the way to the Seafoam Islands from here."
+      ]
+    },
+    "t08_juggrer": {
+      "name": "Juggler",
+      "still": true,
+      "dialog": [
+        "I practise juggling Poké Balls out here. If I drop one, it pops open, so I never drop one."
+      ]
+    }
+  },
+  "signs": {
+    "T08_004+1": "Pal Park\nThe gate is closed.",
+    "T08_005+1": "Safari Zone Warden's Home",
+    "T08_003+1": "Fuchsia City Pokémon Gym\nLeader: Janine",
+    "T08_009+1": "Fuchsia City\nA town of old gardens and quiet ninjas."
+  }
+}

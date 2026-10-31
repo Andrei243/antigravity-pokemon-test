@@ -84,9 +84,12 @@
     },
     "T02_005+1": {
       "en": [
-        "Viridian City Pokémon Gym\nThe doors are locked."
+        "Viridian City Pokémon Gym\nLeader: Blue"
       ],
       "text": [
+        ""
+      ],
+      "was": [
         "Arena Pokémon din Orașul Viridian\nUșile sunt încuiate."
       ]
     },

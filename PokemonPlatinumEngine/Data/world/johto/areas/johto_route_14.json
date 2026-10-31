@@ -1,0 +1,70 @@
+{
+  "key": "johto_route_14",
+  "index": 22,
+  "name": "Route 14",
+  "matrix": 0,
+  "kind": "Route",
+  "sign": "Route",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "General",
+  "dayMusic": "GS_R_13_11",
+  "nightMusic": "GS_R_13_11",
+  "encounters": "R14",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Nidorina", "level": 23 },
+    { "species": "Nidorino", "level": 23 },
+    { "species": "Nidorina", "level": 23 },
+    { "species": "Nidorino", "level": 23 },
+    { "species": "Pidgeotto", "level": 25, "night": "Noctowl" },
+    { "species": "Pidgeotto", "level": 25, "night": "Noctowl" },
+    { "species": "Hoppip", "level": 24, "night": "Quagsire" },
+    { "species": "Hoppip", "level": 24, "night": "Quagsire" },
+    { "species": "Skiploom", "level": 26, "night": "Quagsire" },
+    { "species": "Skiploom", "level": 26, "night": "Quagsire" },
+    { "species": "Skiploom", "level": 26, "night": "Quagsire" },
+    { "species": "Chansey", "level": 25 }
+  ],
+  "landRate": 20,
+  "swarm": [
+    "Nidorina",
+    "Nidorina"
+  ],
+  "hoennSounds": [
+    "Plusle",
+    "Minun"
+  ],
+  "sinnohSounds": [
+    "Shinx",
+    "Shinx"
+  ],
+  "warps": [],
+  "objects": [
+    { "id": "r14_gsmiddleman1", "looks": "gsmiddleman1", "movement": "4", "x": 1361, "z": 400, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 2, "script": "TRAINER_POKEFAN_M_TREVOR" },
+    { "id": "r14_middlewoman1_2", "looks": "middlewoman1_2", "movement": "16", "x": 1350, "z": 406, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "script": "TRAINER_TEACHER_CLARICE" },
+    { "id": "r14_gsman2", "looks": "gsman2", "movement": "7", "x": 1353, "z": 432, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "script": "TRAINER_BIRD_KEEPER_GS_ROY" },
+    { "id": "r14_gsmiddleman1_2", "looks": "gsmiddleman1", "movement": "16", "x": 1359, "z": 422, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_POKEFAN_M_CARTER" },
+    { "id": "r14_gsman2_2", "looks": "gsman2", "movement": "17", "x": 1354, "z": 396, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_BIRD_KEEPER_GS_JOSH" },
+    { "id": "r14_gsboy1", "looks": "gsboy1", "movement": "0", "x": 1345, "z": 406, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "script": "TRAINER_SCHOOL_KID_M_TORIN" },
+    { "id": "r14_gsboy1_2", "looks": "gsboy1", "movement": "0", "x": 1345, "z": 409, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_SCHOOL_KID_M_CONNOR" },
+    { "id": "r14_gsboy1_3", "looks": "gsboy1", "movement": "0", "x": 1345, "z": 403, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_SCHOOL_KID_M_TRAVIS" },
+    { "id": "r14_tree", "looks": "tree", "movement": "0", "x": 1345, "z": 391, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_010", "script": "std_field_cut" },
+    { "id": "r14_tree_2", "looks": "tree", "movement": "0", "x": 1352, "z": 411, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_011", "script": "std_field_cut" },
+    { "id": "r14_gsmiddleman1_3", "looks": "gsmiddleman1", "movement": "14", "x": 1357, "z": 393, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CAMERON", "script": "R14_000+1" },
+    { "id": "r14_tsure_poke_static_suicune", "looks": "follower_mon_static_suicune", "movement": "0", "x": 1365, "z": 412, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_14_SUICUNE", "script": "0" },
+    { "id": "r14_minaki", "looks": "minaki", "movement": "0", "x": 1358, "z": 424, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_14_EUSINE", "script": "R14_003+1" },
+    { "id": "r14_minaki_2", "looks": "minaki", "movement": "0", "x": 1358, "z": 411, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_14_EUSINE_2", "script": "R14_004+1" },
+    { "id": "r14_tree_3", "looks": "tree", "movement": "0", "x": 1353, "z": 412, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_012", "script": "std_field_cut" },
+    { "id": "r14_tree_4", "looks": "tree", "movement": "0", "x": 1353, "z": 413, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_013", "script": "std_field_cut" },
+    { "id": "r14_tree_5", "looks": "tree", "movement": "0", "x": 1352, "z": 414, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_014", "script": "std_field_cut" },
+    { "id": "r14_gswoman1", "looks": "gswoman1", "movement": "2", "x": 1348, "z": 387, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "R14_005+1" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 1358, "z": 409, "width": 4, "depth": 7, "script": "R14_002+1", "variable": "VAR_UNK_4086", "value": "1" }
+  ]
+}
