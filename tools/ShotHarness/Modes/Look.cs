@@ -268,6 +268,9 @@ partial class Harness
         Console.WriteLine(picture == null ? "!! no screenshot was written" : $"the screenshot: {Path.GetFileName(picture)}, {new FileInfo(picture).Length} bytes");
         Frames(18); Shot("look_21_screenshot_toast");
 
+        // Captions and holding to confirm (plan 12 · Q9, part b), last of all: Modes/LookCaptions.cs
+        LookCaptionsAndHold();
+
         if (args.Length > 2)
             Boards(args[2], new[] { "look_1_twinleaf", "look_2_dialogue", "look_3_battle", "look_3b_moves", "look_4_party", "look_5_route201", "look_6_house", "look_7_lake" });
     }

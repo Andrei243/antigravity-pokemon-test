@@ -40,7 +40,7 @@ public class AthlonBatch3Tests
     /// them and is left out of the dome's list. Once they are events of the game this list must be emptied (the test
     /// below says so), so that a course can never wait for an event nobody is building.
     /// </summary>
-    private static readonly string[] BuiltElsewhere = { "PennantCapture", "SnowThrow", "DiscCatch", "LampJump" };
+    private static readonly string[] BuiltElsewhere = { };
 
     [Fact]
     public void EveryCourseNamesThreeEventsThatExist()
@@ -333,6 +333,7 @@ public class AthlonBatch3Tests
     [InlineData(AthlonEventKind.RelayRun)]
     [InlineData(AthlonEventKind.CirclePush)]
     [InlineData(AthlonEventKind.GoalRoll)]
+    [InlineData(AthlonEventKind.DiscCatch)]
     public void AnEventScoresWithinItsOwnRange(AthlonEventKind kind)
     {
         // Played by the autopilot over twenty seeds, each team's points stay within what a course's medals are made
@@ -347,5 +348,32 @@ public class AthlonBatch3Tests
         output.WriteLine($"{kind}: min {all.Min()}, mean {all.Average():0.0}, max {all.Max()}");
         Assert.True(all.Average() is >= 10 and <= 150, $"{kind}: mean {all.Average()}");
         Assert.True(all.Max() <= 250);
+    }
+
+    [Fact]
+    public void AnEvenTeamOnEveryCourseLandsAboutBronze()
+    {
+        // Four even teams of autopilots (every stat 3, the same knack) over ten seeds: each of the five courses' mean total sits about
+        // the bronze band (80) and under silver (140), so a medal above bronze wants a team that suits the course
+        var means = new Dictionary<string, double>();
+        foreach (var course in AthlonData.Courses)
+        {
+            var totals = new List<int>();
+            for (int seed = 1; seed <= 10; seed++)
+            {
+                var teams = Teams(A(3, 3, 3, 3, 3), A(3, 3, 3, 3, 3, "Bidoof"));
+                var sum = new int[AthlonRun.TeamCount];
+                foreach (var kind in course.Events)
+                {
+                    var ev = AthlonEvent.Create(kind, teams, seed * 31 + (int)kind);
+                    while (!ev.IsDone) ev.Step(ev.Autopilot());
+                    for (int t = 0; t < AthlonRun.TeamCount; t++) sum[t] += ev.Points(t);
+                }
+                totals.AddRange(sum);
+            }
+            output.WriteLine($"{course.Key}: mean {totals.Average():0.0}, max {totals.Max()}");
+            means[course.Key] = totals.Average();
+        }
+        foreach (var (key, mean) in means) Assert.True(mean is >= 60 and < 140, $"{key}: an even team scores {mean:0.0} on average");
     }
 }

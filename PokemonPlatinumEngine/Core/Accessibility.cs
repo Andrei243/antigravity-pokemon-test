@@ -28,6 +28,21 @@ public static class Accessibility
     /// <summary>The share of a motion that plays: 1, or nought under <see cref="ReduceMotion"/>.</summary>
     public static float Motion => ReduceMotion ? 0f : 1f;
 
+    /// <summary>
+    /// Every sound effect and cry named on screen as it plays (the options' CAPTIONS row, plan 12 · Q9): off unless
+    /// chosen. While it is off nothing is put in <see cref="CaptionsShown"/>.
+    /// </summary>
+    public static bool Captions { get; set; }
+
+    /// <summary>The captions standing on the screen: <c>AudioManager</c> fills it, the engine moves it on and draws it.</summary>
+    public static CaptionQueue CaptionsShown { get; } = new();
+
+    /// <summary>A sound or a cry named, where the options ask for captions.</summary>
+    public static void Caption(string text, CaptionKind kind)
+    {
+        if (Captions) CaptionsShown.Push(text, kind);
+    }
+
     /// <summary>Both rows as the options have them, and <see cref="Graphics.BattleCamera.Motion"/> with them.</summary>
     public static void Use(bool reduceFlashes, bool reduceMotion)
     {

@@ -260,6 +260,16 @@ public sealed class TitleScreen
         Phase = phase;
         phaseTime = 0f;
         readyForTheLoop = false;
+        DeleteHold.Stop();
+    }
+
+    /// <summary>The hold DELETE's YES waits for while the options' HOLD TO CONFIRM row is on (plan 12 · Q9).</summary>
+    public ConfirmHold DeleteHold { get; } = new();
+
+    /// <summary>A frame of the delete's hold: <paramref name="down"/> whether the button is still down; the slot is given up once the hold is done.</summary>
+    public void HoldDelete(float dt, bool down)
+    {
+        if (Phase == TitlePhase.ConfirmDelete && DeleteHold.Advance(dt, down)) AnswerDelete();
     }
 
     // How long before the opening plays again its first shot's ground is asked for, and whether it has been
@@ -372,17 +382,25 @@ public sealed class TitleScreen
                 AskDelete(cards[SelectedIndex].Number);
                 break;
             case TitlePhase.ConfirmDelete:
-                AudioManager.PlaySound(ConfirmYes ? "select" : "cancel");
-                if (ConfirmYes)
-                {
-                    // The game deletes the slot and says when it is gone (Forget); the menu waits under its cursor
-                    deletion = deleting;
-                    if (deleteFrom == TitlePhase.ChooseDelete) SelectedIndex = deleteRow;
-                    Enter(TitlePhase.Menu);
-                }
-                else Enter(deleteFrom);
+                // YES waits for the hold where the options ask for it (plan 12 · Q9)
+                if (ConfirmYes && !DeleteHold.Press()) break;
+                AnswerDelete();
                 break;
         }
+    }
+
+    /// <summary>The delete question answered as the cursor stands.</summary>
+    private void AnswerDelete()
+    {
+        AudioManager.PlaySound(ConfirmYes ? "select" : "cancel");
+        if (ConfirmYes)
+        {
+            // The game deletes the slot and says when it is gone (Forget); the menu waits under its cursor
+            deletion = deleting;
+            if (deleteFrom == TitlePhase.ChooseDelete) SelectedIndex = deleteRow;
+            Enter(TitlePhase.Menu);
+        }
+        else Enter(deleteFrom);
     }
 
     /// <summary>The question that comes before a slot is deleted: it names the slot, and No is highlighted.</summary>
@@ -548,6 +566,12 @@ public sealed class TitleScreen
     public void Update(float dt)
     {
         Advance(dt);
+        // YES held for the hold (plan 12 · Q9): nothing else is read until it is done or let go
+        if (DeleteHold.Holding)
+        {
+            HoldDelete(dt, InputManager.IsActionDown(GameAction.Confirm) || InputManager.IsActionDown(GameAction.Menu));
+            return;
+        }
         if (InputManager.IsActionPressed(GameAction.Confirm) || InputManager.IsActionPressed(GameAction.Menu)) PressConfirm();
         else if (InputManager.IsActionPressed(GameAction.Cancel)) PressCancel();
         else if (Phase == TitlePhase.ChooseRun && InputManager.IsActionPressed(GameAction.Left)) Change(-1);
@@ -858,6 +882,7 @@ public sealed class TitleScreen
     {
         var save = cards.FirstOrDefault(c => c.Number == DeletingSlot)?.Save;
         ModernUi.Prompt(sw, sh, DeleteHeading(DeletingSlot), DeleteBlurb(save, save != null ? ModernUi.PlaceOf(save) : null),
-            new[] { (DeleteAnswers[0], ModernUi.Blue), (DeleteAnswers[1], ModernUi.Red) }, ConfirmYes ? 1 : 0);
+            new[] { (DeleteAnswers[0], ModernUi.Blue), (DeleteAnswers[1], ModernUi.Red) }, ConfirmYes ? 1 : 0, 1f,
+            DeleteHold.Holding ? (1, DeleteHold.Fill) : null);
     }
 }

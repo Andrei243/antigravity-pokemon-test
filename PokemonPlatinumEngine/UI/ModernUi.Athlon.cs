@@ -282,6 +282,7 @@ internal static partial class ModernUi
             case RelayRun rr: DrawRelayRun(sw, rr); break;
             case CirclePush cp: DrawCirclePush(sw, cp); break;
             case GoalRoll g: DrawGoalRoll(sw, g); break;
+            default: DrawAthlonBatch2(sw, ev); break;
         }
 
         // The count before it starts, and GO as it does

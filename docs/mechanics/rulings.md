@@ -5802,7 +5802,7 @@ our own on HeartGold's shapes, and the stats are plan 15's decision 6 (our own f
   radians; a goal is fifteen points to whoever touched the ball last, one into their own goal five off. **The
   courses** are HeartGold's five as it pairs the ten events (`Data/athlon.json`), after E6's Practice Course; one
   naming an event not built yet is left out of the list. **Medals** are by a course's total, bands of our own: gold
-  from 200, silver from 140, bronze from 80 (an even team of autopilots scores about 115); the best of each course is
+  from 200, silver from 140, bronze from 80 (an even team of autopilots scores 115 to 135 on each of the five; to put the five level E8 took Hurdle Dash to a point for 24 frames, Snow Throw to two a hit, Disc Catch to one a catch and two in the air with fewer, faster discs and a narrower reach, and Lamp Jump to a point for three lamps); the best of each course is
   kept with its best score. *Cut down*: HeartGold's bonuses for what a Pokémon did in an event. **The Athlete Shop**
   is the stall keeper on the square (`common.AthlonShop`): the shop's screen given the dome's stock of Platinum's
   items (vitamins, PP Up, Rare Candy, the evolution stones, two berries, a Heart Scale) at prices in Athlete Points of

@@ -115,7 +115,9 @@ public enum GameState
     /// <summary>The World Tournament's events or bracket, a script's <c>tournament events</c> or <c>tournament show</c> waiting on it (plan 14 · B11).</summary>
     Tournament,
     /// <summary>The title's CREDITS: whose work is in the game, read from the repository's two records (plan 16 · T1).</summary>
-    TitleCredits
+    TitleCredits,
+    /// <summary>Photo mode in the field: the field stilled under a free camera, a picture taken of it (plan 12 · Q16).</summary>
+    Photo
 }
 
 public partial class GameEngine
@@ -536,6 +538,7 @@ public partial class GameEngine
         Haptics.Strength = Settings.Rumble; // plan 12 · Q24
         // Light and motion (plan 12 · Q9), with the battle camera's one number, BattleCamera.Motion
         Accessibility.Use(Settings.ReduceFlashes, Settings.ReduceMotion);
+        UseCaptionsAndHold(); // and sound and holding (plan 12 · Q9, GameEngine.Captions.cs)
         if (window && !WindowLocked) WindowSettings.Apply(Settings);
     }
 
@@ -983,6 +986,7 @@ public partial class GameEngine
         if (!IsHeadless && !InputManager.CaptureRequested && InputManager.IsActionPressed(GameAction.Fullscreen)) ToggleFullscreen();
         KeepTheReportKey(); // F8: a report of the session (plan 16 · T20)
         KeepTheScreenshotKey(); // F12: a picture of the screen (plan 12 · Q16)
+        if (flow.State == GameState.Overworld) KeepThePhotoKey(); // F9: photo mode (plan 12 · Q16)
         // Behind another window, with the option on, the game waits where it is and its sound drops (plan 16 · T3)
         bool held = HeldForFocus;
         AudioManager.Away = held;
@@ -1005,6 +1009,7 @@ public partial class GameEngine
         KeepTheMedals(dt);
         KeepTheTimer(dt);
         KeepTheAutosave(dt);
+        Accessibility.CaptionsShown.Advance(dt); // plan 12 · Q9
         flow.StartMenu.Animate(dt);
         closePrompt.Animate(dt);
         flow.ScriptFade.Update(dt);
@@ -1128,6 +1133,9 @@ public partial class GameEngine
                 break;
             case GameState.Dialogue:
                 UpdateDialogue(dt * Pace);
+                break;
+            case GameState.Photo:
+                UpdatePhoto(dt);
                 break;
             case GameState.Battle:
                 if (flow.Battle != null)
@@ -2715,7 +2723,7 @@ public partial class GameEngine
         GameState shown = flow.Shown;
         // During a fade, show the screen being left while fading out and the new one while fading in
         GameState scene = flow.Scene;
-        bool showWorld = scene is GameState.Overworld or GameState.Dialogue or GameState.SaveMenu or GameState.Phrases or GameState.RivalNaming or GameState.Nickname;
+        bool showWorld = scene is GameState.Overworld or GameState.Dialogue or GameState.SaveMenu or GameState.Phrases or GameState.RivalNaming or GameState.Nickname or GameState.Photo;
         bool showBattle = scene == GameState.Battle && flow.Battle != null;
         bool showTitle = scene == GameState.Title;
 
@@ -2782,6 +2790,9 @@ public partial class GameEngine
         {
             case GameState.Title:
                 flow.TitleScreen.Draw(VirtualWidth, VirtualHeight, renderContext, world);
+                break;
+            case GameState.Photo:
+                DrawPhoto();
                 break;
             case GameState.Overworld:
             case GameState.Dialogue:
@@ -2999,6 +3010,7 @@ public partial class GameEngine
         if (!screenshotWanted) flow.MedalNotice.Draw(VirtualWidth);
         DrawStandingNotice();
         DrawAutosaveDisc();
+        DrawCaptions(); // plan 12 · Q9
 
         // The scene closing, or the next one opening; a cave's ring closes on the player, wherever the field shows them,
         // and a band is drawn with whose it is and the portraits rendered for it so far

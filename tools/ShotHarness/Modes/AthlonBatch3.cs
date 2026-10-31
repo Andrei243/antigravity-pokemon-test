@@ -27,6 +27,7 @@ partial class Harness
             for (int i = 0; i < index; i++) screen.Move(0, 1);
             Frames(20);
             if (key == "power") Shot("at11z_course_choice_power");
+            if (key == "jump") Shot("at11y_course_choice_jump");
             screen.Confirm();
             Frames(10);
             screen.Confirm();          // Quilava
@@ -77,6 +78,14 @@ partial class Harness
         Shot("at14a_briefing_goal_roll");
         Event("at14_goal_roll", 900);
         Finish("at14c_power_scoreboard");
+
+        // ---- The Jump Course, live once E7's events came in: Lamp Jump, Disc Catch, Hurdle Dash
+        Course("jump");
+        Event(null, 0);
+        Shot("at14d_briefing_disc_catch");
+        Event("at14e_jump_disc_catch", 600);
+        Event(null, 0);
+        Finish("at14f_jump_scoreboard");
 
         // ---- The records desk, east of the course desk
         var desk = game.Map.Everyone.First(n => n.Script == "AthlonRecords");

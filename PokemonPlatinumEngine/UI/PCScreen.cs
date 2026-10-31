@@ -87,6 +87,15 @@ public class PCScreen
     /// <summary>A release waiting for its yes (RELEASE asks first).</summary>
     public bool AskingRelease { get; private set; }
 
+    /// <summary>The hold RELEASE's yes waits for while the options' HOLD TO CONFIRM row is on (plan 12 · Q9).</summary>
+    public ConfirmHold ReleaseHold { get; } = new();
+
+    /// <summary>A frame of the release's hold: <paramref name="down"/> whether the button is still down; the Pokémon is let go once the hold is done.</summary>
+    public void HoldRelease(Party party, PcBoxes pc, Action<string> onNotification, float dt, bool down)
+    {
+        if (AskingRelease && ReleaseHold.Advance(dt, down)) AnswerRelease(true, party, pc, onNotification);
+    }
+
     /// <summary>The box's new name being typed (NAME), or null.</summary>
     public NameEntry? Naming { get; private set; }
 
@@ -116,6 +125,7 @@ public class PCScreen
         BoxMenu = null;
         Marking = null;
         AskingRelease = false;
+        ReleaseHold.Stop();
         Naming = null;
         MenuIndex = 0;
     }
@@ -237,7 +247,8 @@ public class PCScreen
         if (Naming != null) return;
         if (AskingRelease)
         {
-            AnswerRelease(true, party, pc, onNotification);
+            // Letting a Pokémon go waits for the hold where the options ask for it (plan 12 · Q9)
+            if (ReleaseHold.Press()) AnswerRelease(true, party, pc, onNotification);
             return;
         }
         if (Marking is { } marks)
@@ -323,7 +334,7 @@ public class PCScreen
     {
         if (Summarizing) Summarizing = false;
         else if (Naming != null) Naming = null;
-        else if (AskingRelease) AskingRelease = false;
+        else if (AskingRelease) { AskingRelease = false; ReleaseHold.Stop(); }
         else if (Marking != null) Marking = null;
         else if (Menu != null || BoxMenu != null) { Menu = null; BoxMenu = null; }
         else if (Held != null) PutBack(party, pc);
@@ -405,6 +416,7 @@ public class PCScreen
     public void AnswerRelease(bool yes, Party party, PcBoxes pc, Action<string> onNotification)
     {
         AskingRelease = false;
+        ReleaseHold.Stop();
         if (!yes || Under(party, pc) is not { } pokemon) return;
         switch (pc.Release(pokemon, party))
         {
@@ -548,6 +560,13 @@ public class PCScreen
     {
         if (!IsActive) return;
         openAge += dt;
+
+        // RELEASE held for the hold (plan 12 · Q9): nothing else is read until it is done or let go
+        if (ReleaseHold.Holding)
+        {
+            HoldRelease(party, pc, onNotification, dt, InputManager.IsActionDown(GameAction.Confirm));
+            return;
+        }
 
         if (Naming is { } naming)
         {
