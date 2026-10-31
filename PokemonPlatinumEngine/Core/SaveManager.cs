@@ -179,6 +179,14 @@ public class SaveData
     public Models.RunState? RunState { get; set; }
 
     /// <summary>
+    /// What the game has counted (plan 13 · V8, <see cref="Models.Statistics"/>): steps, battles, catches, growth by
+    /// key. Null while nothing is counted and in every save from before it, which reads as nothing counted, so no
+    /// save version was raised.
+    /// </summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public Dictionary<string, long>? Counters { get; set; }
+
+    /// <summary>
     /// What the game remembers of its wild Pokémon (plan 06 · R13): the day's numbers, swarms, the Trophy Garden, the
     /// honey trees, the Poké Radar's battery, the roamers. Null in older saves, which are given a new one.
     /// </summary>

@@ -139,7 +139,7 @@ public partial class GameEngine
         // A horde's others are seen with the first (plan 14 · B3)
         foreach (var other in horde?.Skip(1) ?? Enumerable.Empty<Pokemon>()) flow.Pokedex.RegisterSeen(other);
         // The lesson is fought with a Pokédex of its own (FieldBattleDTO_NewCatchingTutorial): the player's isn't told
-        if (kind != BattleKind.CatchingLesson) flow.Pokedex.RegisterSeen(wildPkmn);
+        if (kind != BattleKind.CatchingLesson) { flow.Pokedex.RegisterSeen(wildPkmn); flow.Statistics.Count(Statistics.Encounters); }
         // The lesson is the assistant's: their own Pokémon, their name, a bag of twenty Poké Balls (FieldBattleDTO_NewCatchingTutorial)
         var party = flow.Party;
         var bag = flow.Bag;
@@ -649,6 +649,12 @@ public partial class GameEngine
         // A battle over, or a Pokémon caught in it, is worth an autosave once the field is free again (plan 12 · Q3)
         AutosaveSoon(flow.Battle?.Caught != null ? AutosaveMoment.Catch : AutosaveMoment.Battle);
         ScoreBattle();
+        // The battle is counted once, as it is over (plan 13 · V8)
+        if (flow.Battle is { Kind: not BattleKind.CatchingLesson } counted)
+        {
+            flow.Statistics.CountBattle(counted.Result, counted.IsTrainerBattle, counted.CaughtNewSpecies);
+            flow.Statistics.Count(Statistics.Levelled, counted.LeveledUp.Count);
+        }
         // The Vs. Recorder keeps a league battle now and asks about any other trainer's once the field is back (plan 08 · P10)
         KeepTheRecord(flow.Battle);
         // A battle stops the Pokégear's radio: the field comes back to its own theme (plan 20 · J3)

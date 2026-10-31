@@ -1218,6 +1218,14 @@
     "graveyard": "CIMITIR  {count}",
     "graveyardEmpty": "Încă nu a leșinat nimeni.",
     "graveyardMore": "și încă {count} dinainte",
+    "stats": {
+      "group": { "Journey": "DRUM", "Battles": "LUPTE", "Catching": "CAPTURI", "Growth": "CREȘTERE" },
+      "stepsFoot": "PAȘI PE JOS", "stepsSurf": "PAȘI PE APĂ", "stepsCycle": "PAȘI CU BICICLETA", "stepsDive": "PAȘI SUB APĂ",
+      "wildWon": "LUPTE SĂLBATICE CÂȘTIGATE", "wildLost": "LUPTE SĂLBATICE PIERDUTE", "wildRan": "FUGI DE POKÉMONI", "wildFled": "AU FUGIT DE TINE",
+      "trainerWon": "ANTRENORI ÎNVINȘI", "trainerLost": "PIERDUT ÎN FAȚA ANTRENORILOR", "whiteouts": "LEȘINURI",
+      "encounters": "POKÉMONI SĂLBATICI ÎNTÂLNIȚI", "caught": "POKÉMONI PRINȘI", "newSpecies": "SPECII NOI PRINSE",
+      "levelled": "NIVELURI CÂȘTIGATE ÎN LUPTĂ", "evolutions": "EVOLUȚII"
+    },
     "fallenLine": "{species}  Nv. {level}  ·  {place}",
     "titles": "TITLURI DE MAESTRU",
     "titlesSub": "Câștigate în Sala Maeștrilor. Sus și jos derulează lista.",

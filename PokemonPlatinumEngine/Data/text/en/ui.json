@@ -1028,6 +1028,14 @@
     "graveyard": "GRAVEYARD  {count}",
     "graveyardEmpty": "Nobody has fallen yet.",
     "graveyardMore": "and {count} more before",
+    "stats": {
+      "group": { "Journey": "JOURNEY", "Battles": "BATTLES", "Catching": "CATCHING", "Growth": "GROWTH" },
+      "stepsFoot": "STEPS ON FOOT", "stepsSurf": "STEPS SURFING", "stepsCycle": "STEPS CYCLING", "stepsDive": "STEPS DIVING",
+      "wildWon": "WILD BATTLES WON", "wildLost": "WILD BATTLES LOST", "wildRan": "RUN FROM", "wildFled": "FLED FROM YOU",
+      "trainerWon": "TRAINERS BEATEN", "trainerLost": "LOST TO TRAINERS", "whiteouts": "BLACKOUTS",
+      "encounters": "WILD POKÉMON MET", "caught": "POKÉMON CAUGHT", "newSpecies": "NEW SPECIES CAUGHT",
+      "levelled": "LEVELS GAINED IN BATTLE", "evolutions": "EVOLUTIONS"
+    },
     "fallenLine": "{species}  Lv. {level}  ·  {place}",
     "titles": "MASTER TITLES",
     "titlesSub": "Won in the Masters' Hall. Up and down scroll the list.",

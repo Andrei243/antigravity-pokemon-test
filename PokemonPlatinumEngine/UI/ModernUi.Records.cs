@@ -253,11 +253,11 @@ internal static partial class ModernUi
 
     /// <summary>The card on any of its pages (plan 18 · W2): <paramref name="shown"/> as it turns from <paramref name="from"/>.</summary>
     /// <param name="titleRow">The first row of the Masters' Hall's titles the titles' page shows (plan 14 · B15).</param>
-    public static void DrawTrainerCard(int sw, int sh, TrainerCardInfo info, Texture2D? portrait, float appear, CardSide shown, CardSide from, float flip, int titleRow = 0)
+    public static void DrawTrainerCard(int sw, int sh, TrainerCardInfo info, Texture2D? portrait, float appear, CardSide shown, CardSide from, float flip, int titleRow = 0, int statTab = 0)
     {
         Backdrop(sw, sh);
         ScreenTitle(Text.Of("card.title"));
-        if (info.RegionPages.Count > 0 || info.Run != null || info.Titles.Count > 0)
+        if (info.RegionPages.Count > 0 || info.Run != null || info.Titles.Count > 0 || info.Counts is { IsEmpty: false })
             Hints(sw - Margin, 44, Hint("shared.keys.leftRight", "card.page"), Hint("shared.keys.z", "shared.hints.turnOver"), Hint("shared.keys.esc", "shared.hints.back"));
         else Hints(sw - Margin, 44, Hint("shared.keys.z", "shared.hints.turnOver"), Hint("shared.keys.esc", "shared.hints.back"));
 
@@ -307,6 +307,9 @@ internal static partial class ModernUi
         {
             case CardPage.Run when info.Run != null:
                 CardRun(card, info.Run, info);
+                break;
+            case CardPage.Statistics when info.Counts != null:
+                CardStatistics(card, info.Counts, statTab);
                 break;
             case CardPage.Back:
                 CardBack(card, info, colour);
@@ -425,6 +428,33 @@ internal static partial class ModernUi
     /// The page for how the game is played (plan 13 · V1; only a game that isn't Normal has one): the preset's name and
     /// every choice that differs from Platinum's, two columns of a caption and its value.
     /// </summary>
+    private static (string Label, UiIcon Icon, Color Color)[] StatTabs => new[]
+    {
+        (Text.Of("card.stats.group.Journey"), UiIcon.Pin, Blue),
+        (Text.Of("card.stats.group.Battles"), UiIcon.Boost, Red),
+        (Text.Of("card.stats.group.Catching"), UiIcon.Ball, Green),
+        (Text.Of("card.stats.group.Growth"), UiIcon.Star, Gold)
+    };
+
+    /// <summary>
+    /// The statistics page (plan 13 · V8): the group chosen on tabs, its counters three to a row, each a caption over
+    /// its number.
+    /// </summary>
+    private static void CardStatistics(Rectangle card, Statistics counts, int tab)
+    {
+        float x = card.X + 72, right = card.X + card.Width - 72, top = card.Y + 164;
+        int group = Math.Clamp(tab, 0, StatTabs.Length - 1);
+        Tabs(new Rectangle(x, top, right - x, 64), StatTabs, group);
+        float columnW = (right - x) / 3f;
+        int n = 0;
+        foreach (string key in Statistics.KeysOf((StatGroup)group))
+        {
+            float cx = x + (n % 3) * columnW, cy = top + 120 + (n / 3) * 140;
+            Field(Text.Of($"card.stats.{key}"), counts.Get(key).ToString("N0", CultureInfo.InvariantCulture), cx, cy, 48, 40);
+            n++;
+        }
+    }
+
     private static void CardRun(Rectangle card, RunRules run, TrainerCardInfo info)
     {
         float x = card.X + 72, right = card.X + card.Width - 72, top = card.Y + 176;
