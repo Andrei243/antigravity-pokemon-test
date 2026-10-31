@@ -69,7 +69,68 @@ internal static class Directions
         ["Fly"] = new(SignatureShot.ImpactPunch, HeavyStop),
         // A cyclone round the target: the camera swings round it; the stage goes the grey-blue of a storm
         ["Hurricane"] = new(SignatureShot.Orbit, Light: new StageLight(new Vector3(0.3f, 0.36f, 0.46f), 0.4f, 0.25f)),
+
+        // ---------------------------------------------------------------- Y17b: the legendaries' and mythicals' own
+        // Sinnoh
+        // Space torn open: a punch-in on the slash; the stage goes pearl and violet; a dark seam left hanging over the target
+        ["Spacial Rend"] = new(SignatureShot.ImpactPunch, HeavyStop, Light: Lit(0.42f, 0.22f, 0.5f, 0.4f), Effect: Rift),
+        // Judgment from above: the camera pushes in on the gathering; a white-gold wash; the target pressed down under a halo
+        ["Judgment"] = new(SignatureShot.ChargePush, HeavyStop, Target: Pressed, Light: Lit(1f, 0.92f, 0.62f, 0.18f), Effect: Halo),
+        // Out of the shadow world: a punch-in on the blow; the stage nearly black
+        ["Shadow Force"] = new(SignatureShot.ImpactPunch, HeavyStop, Light: Lit(0.07f, 0.03f, 0.12f, 0.5f), Effect: Wisps),
+        // A storm of lava round the target: the camera swings round it; the stage a molten red; embers left on the platform
+        ["Magma Storm"] = new(SignatureShot.Orbit, Light: Lit(0.58f, 0.16f, 0.05f, 0.42f), Effect: Embers),
+        // The giant's grip: a punch-in held on the squeeze (Y16 squeezes the body); the stage stone-grey
+        ["Crush Grip"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: Held, Light: Lit(0.32f, 0.27f, 0.22f, 0.3f, 0.25f)),
+        // A flare of seeds and light: the camera rides it; a pale spring green
+        ["Seed Flare"] = new(SignatureShot.FollowProjectile, HeavyStop, Light: Lit(0.72f, 0.95f, 0.62f, 0.15f), Effect: Leaves),
+        // The dark void over the foes: the camera swings round (the move's own stage already goes black)
+        ["Dark Void"] = new(SignatureShot.Orbit),
+        // A dance under the moon on the user alone: its shot stays; the stage turns a night's blue
+        ["Lunar Dance"] = new(SignatureShot.None, Light: Lit(0.26f, 0.32f, 0.62f, 0.42f)),
+        // Kanto
+        // The strike of a mind: the camera rides the lance; the stage a deep psychic violet; the target thrown
+        ["Psystrike"] = new(SignatureShot.FollowProjectile, HeavyStop, Light: Lit(0.5f, 0.18f, 0.55f, 0.42f)),
+        // Johto
+        // A blast of air from the deep: the camera rides it; sky-blue
+        ["Aeroblast"] = new(SignatureShot.FollowProjectile, HeavyStop, Light: Lit(0.55f, 0.76f, 0.96f, 0.32f)),
+        // The sacred flame wound up and loosed: the push; a gold-red light; embers left after
+        ["Sacred Fire"] = new(SignatureShot.ChargePush, HeavyStop, Light: Lit(0.9f, 0.52f, 0.18f, 0.24f), Effect: Embers),
+        // Hoenn
+        // The sea's first light: the camera rides the beams; the stage the deep blue of the ocean floor; spray left
+        ["Origin Pulse"] = new(SignatureShot.FollowProjectile, HeavyStop, Light: Lit(0.05f, 0.14f, 0.44f, 0.48f), Effect: Spray),
+        // Blades of red-hot rock: a punch-in on the eruption; magma's red; the target tossed up, the ground cracked
+        ["Precipice Blades"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: TossedUp, Light: Lit(0.52f, 0.12f, 0.04f, 0.46f), Effect: Cracks),
+        // The dive from the sky: the user rises and hurtles in; a punch-in; green-gold
+        ["Dragon Ascent"] = new(SignatureShot.ImpactPunch, HeavyStop, User: Dive, Light: Lit(0.36f, 0.62f, 0.3f, 0.3f)),
+        // The full power of the mind: the push; violet; the user rocked back by its own blast
+        ["Psycho Boost"] = new(SignatureShot.ChargePush, HeavyStop, User: Recoil, Light: Lit(0.46f, 0.2f, 0.62f, 0.42f)),
+        // The Eon pair's balls of mist and light: the camera rides each, softly washed
+        ["Mist Ball"] = new(SignatureShot.FollowProjectile, Light: Lit(0.86f, 0.6f, 0.76f, 0.16f)),
+        ["Luster Purge"] = new(SignatureShot.FollowProjectile, Light: Lit(0.56f, 0.66f, 0.92f, 0.16f)),
+
+        // ---------------------------------------------------------------- Y17b: the starters' finals
+        // The three ultimate moves: wound up and let go, the user rocked back; what each leaves on the platform
+        ["Blast Burn"] = new(SignatureShot.ChargePush, HeavyStop, User: Recoil, Light: Lit(0.6f, 0.2f, 0.05f, 0.42f), Effect: Embers),
+        ["Hydro Cannon"] = new(SignatureShot.ChargePush, HeavyStop, User: Recoil, Light: Lit(0.1f, 0.3f, 0.6f, 0.36f), Effect: Spray),
+        ["Frenzy Plant"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: TossedUp, Light: Lit(0.16f, 0.4f, 0.12f, 0.36f), Effect: Leaves),
+        // Meteors one after another: the camera swings round the target; a night sky's indigo; craters cracked
+        ["Draco Meteor"] = new(SignatureShot.Orbit, HeavyStop, Light: Lit(0.12f, 0.08f, 0.3f, 0.46f), Effect: Cracks),
+        // Typhlosion's eruption and the fire starters' overheat: the push on the swelling; the air shimmering with heat
+        ["Eruption"] = new(SignatureShot.ChargePush, HeavyStop, User: Heave, Light: Lit(0.62f, 0.26f, 0.08f, 0.36f), Effect: Shimmer),
+        ["Overheat"] = new(SignatureShot.ChargePush, HeavyStop, User: Heave, Light: Lit(0.86f, 0.46f, 0.16f, 0.3f), Effect: Shimmer),
+        // Blaziken's kick, the fire finals' charge, Torterra's hammer, Swampert's and Torterra's quake: punch-ins on the blow
+        ["Blaze Kick"] = new(SignatureShot.ImpactPunch, HeavyStop, Effect: Embers),
+        ["Flare Blitz"] = new(SignatureShot.ImpactPunch, HeavyStop, Light: Lit(0.6f, 0.24f, 0.08f, 0.26f), Effect: Embers),
+        ["Wood Hammer"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: Pressed, Effect: Leaves),
+        ["Earthquake"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: Jolted, Light: Lit(0.36f, 0.28f, 0.18f, 0.24f, 0.2f), Effect: Cracks),
+        // Blastoise's and Empoleon's jet: the camera rides it
+        ["Hydro Pump"] = new(SignatureShot.FollowProjectile, HeavyStop, Effect: Spray),
+        // Sceptile's and Torterra's storm of leaves: the camera swings round it
+        ["Leaf Storm"] = new(SignatureShot.Orbit, Light: Lit(0.2f, 0.44f, 0.16f, 0.3f), Effect: Leaves),
     };
+
+    private static StageLight Lit(float r, float g, float b, float amount, float grey = 0f) => new(new Vector3(r, g, b), amount, grey);
 
     public static MoveDirection? Of(string move) => Table.TryGetValue(move, out var d) ? d : null;
 
@@ -123,6 +184,81 @@ internal static class Directions
         return new BodyMotion(Toward: -0.08f * k);
     }
 
+    /// <summary>A beat of a target's reaction: in over 0.05 s at the impact, out over <paramref name="settle"/>.</summary>
+    private static float Beat(float age, float settle)
+    {
+        if (age < I || age >= I + 0.05f + settle) return 0f;
+        float t = age - I;
+        return t < 0.05f ? Smooth(t / 0.05f) : 1f - Smooth((t - 0.05f) / settle);
+    }
+
+    /// <summary>A target pressed down from above (Judgment's light, Wood Hammer's blow): flattened and sunk a little.</summary>
+    private static BodyMotion Pressed(float age, int seed)
+    {
+        float k = Beat(age, 0.5f);
+        return k <= 0f ? BodyMotion.Still : new BodyMotion(Sink: 0.06f * k, Squash: 0.14f * k);
+    }
+
+    /// <summary>A target held in the grip (Y16 squeezes it): no throw, only a shudder as the grip tightens.</summary>
+    private static BodyMotion Held(float age, int seed)
+    {
+        float k = Beat(age, 0.45f);
+        return k <= 0f ? BodyMotion.Still : new BodyMotion(Spin: 0.08f * k * MathF.Sin((age - I) * 60f));
+    }
+
+    /// <summary>A target tossed up by what bursts under it (Precipice Blades, Frenzy Plant), coming down and settling.</summary>
+    private static BodyMotion TossedUp(float age, int seed)
+    {
+        if (age < I || age >= I + 0.6f) return BodyMotion.Still;
+        float t = (age - I) / 0.6f;
+        float up = 4f * t * (1f - t);
+        return new BodyMotion(Up: 0.22f * up, Toward: -0.05f * up, Squash: t > 0.8f ? 0.08f * (1f - t) / 0.2f : 0f);
+    }
+
+    /// <summary>A target shaken by the ground under it (Earthquake): three quick jolts up and down, settling.</summary>
+    private static BodyMotion Jolted(float age, int seed)
+    {
+        float k = Beat(age, 0.55f);
+        if (k <= 0f) return BodyMotion.Still;
+        float jolt = MathF.Abs(MathF.Sin((age - I) * 26f));
+        return new BodyMotion(Up: 0.06f * k * jolt, Squash: 0.06f * k * (1f - jolt));
+    }
+
+    /// <summary>
+    /// Dragon Ascent's dive: the user rises over its wind-up, hurtles in to meet the target at the impact and goes
+    /// home. Kept under a third of its height up, as Y16's rises are, so the player's own stays in the picture.
+    /// </summary>
+    private static BodyMotion Dive(float age, int seed)
+    {
+        const float start = I - 0.3f, end = I + 0.5f;
+        if (age < start || age >= end) return BodyMotion.Still;
+        if (age < I - 0.1f)
+        {
+            float k = Smooth((age - start) / 0.2f);
+            return new BodyMotion(Up: 0.3f * k, Toward: -0.06f * k);
+        }
+        if (age < I)
+        {
+            float k = Smooth((age - (I - 0.1f)) / 0.1f);
+            return new BodyMotion(Up: 0.3f * (1f - k), Toward: -0.06f + 0.66f * k, Narrow: 0.12f * k);
+        }
+        float back = Smooth((age - I) / (end - I));
+        return new BodyMotion(Toward: 0.6f * (1f - back));
+    }
+
+    /// <summary>The user heaving as fire swells in it and bursts out (Eruption, Overheat): pressed down, then stretched up and settling.</summary>
+    private static BodyMotion Heave(float age, int seed)
+    {
+        if (age < I - 0.25f || age >= I + 0.55f) return BodyMotion.Still;
+        if (age < I)
+        {
+            float k = Smooth((age - (I - 0.25f)) / 0.25f);
+            return new BodyMotion(Squash: 0.12f * k, Grow: 1f + 0.04f * k);
+        }
+        float s = 1f - Smooth((age - I) / 0.55f);
+        return new BodyMotion(Squash: -0.1f * s, Toward: -0.05f * s);
+    }
+
     /// <summary>What a direction does to the user's body at a cue's shown age.</summary>
     public static BodyMotion UserBody(EffectCue cue)
     {
@@ -166,6 +302,141 @@ internal static class Directions
             float grow = 1f - (1f - k) * (1f - k) * (1f - k);
             float alpha = 0.85f * (1f - k);
             fx.Sprite(FxShape.Ring, c.To, c.ToSize * (0.35f + 0.9f * grow), Fx.Fade(Rgb(170, 220, 255), alpha), FxBlend.Alpha);
+        }
+    }
+
+    /// <summary>How far a target's reaction has come at a shown age: nought before the impact and after <paramref name="lasts"/>, a fade in between.</summary>
+    private static float After(in FxCtx c, float delay, float lasts)
+    {
+        if (c.Cue.Missed) return -1f;
+        float k = (c.Age - I - delay) / lasts;
+        return k < 0f || k >= 1f ? -1f : k;
+    }
+
+    /// <summary>The ground's slant toward the battle's cameras, which stand on its +Z side: flat things lie on it and still read.</summary>
+    private static readonly Vector3 GroundToLens = Vector3.Normalize(new Vector3(0f, 1f, 0.3f));
+
+    /// <summary>A halo over a head tilted further toward the lens, so it reads as a ring and not a line.</summary>
+    private static readonly Vector3 HaloTilt = Vector3.Normalize(new Vector3(0f, 1f, 0.7f));
+
+    /// <summary>Embers left on the target's platform (the fire moves): six flecks glowing and lifting a little, gone in a second.</summary>
+    private static void Embers(in FxCtx c, FxColors col, FxList fx)
+    {
+        float k = After(c, 0.05f, 0.85f);
+        if (k < 0f) return;
+        for (int i = 0; i < 6; i++)
+        {
+            float a = Fx.Rand(c.Seed, i, 171) * MathF.Tau;
+            float r = c.ToSize * (0.35f + 0.35f * Fx.Rand(c.Seed, i, 172));
+            var at = c.ToFeet + new Vector3(MathF.Cos(a) * r, c.ToSize * (0.04f + 0.18f * k * Fx.Rand(c.Seed, i, 173)), MathF.Sin(a) * r * 0.6f);
+            float flicker = 0.75f + 0.25f * MathF.Sin(c.Age * 30f + i * 2.1f);
+            fx.Sprite(FxShape.Ember, at, c.ToSize * 0.11f, Fx.Fade(Rgb(255, 150, 50), (1f - k) * flicker), FxBlend.Alpha);
+        }
+    }
+
+    /// <summary>Cracks in the ground at the target's feet (Ground and the heavy blows), dark and fading in a second.</summary>
+    private static void Cracks(in FxCtx c, FxColors col, FxList fx)
+    {
+        float k = After(c, 0f, 0.9f);
+        if (k < 0f) return;
+        float alpha = k < 0.1f ? k / 0.1f : 1f - (k - 0.1f) / 0.9f;
+        for (int i = 0; i < 2; i++)
+        {
+            float off = (i == 0 ? -0.25f : 0.3f) * c.ToSize;
+            var at = c.ToFeet + new Vector3(off, 0.02f, 0.55f * c.ToSize);
+            fx.Flat(FxShape.Crack, at, GroundToLens, c.ToSize * (0.55f - 0.1f * i), Fx.Fade(Rgb(52, 40, 30), 0.9f * alpha), FxBlend.Alpha, Fx.Rand(c.Seed, i, 181) * MathF.Tau);
+        }
+    }
+
+    /// <summary>Leaves settling on the target's platform (the Grass moves), drifting down and gone.</summary>
+    private static void Leaves(in FxCtx c, FxColors col, FxList fx)
+    {
+        float k = After(c, 0.05f, 0.85f);
+        if (k < 0f) return;
+        for (int i = 0; i < 6; i++)
+        {
+            float x = Fx.Signed(c.Seed, i, 191) * c.ToSize * 0.7f;
+            float fall = 1f - Fx.EaseOut(Math.Min(1f, k * 1.5f + Fx.Rand(c.Seed, i, 192) * 0.2f));
+            var at = c.ToFeet + new Vector3(x + MathF.Sin(c.Age * 5f + i) * 0.08f * c.ToSize, c.ToSize * (0.05f + 0.75f * fall), 0.2f * c.ToSize);
+            fx.Sprite(FxShape.Leaf, at, c.ToSize * 0.13f, Fx.Fade(col.Main, 1f - k * k), FxBlend.Alpha, c.Age * 4f + i);
+        }
+    }
+
+    /// <summary>Spray falling back round the target (the Water moves): drops coming down after the splash.</summary>
+    private static void Spray(in FxCtx c, FxColors col, FxList fx)
+    {
+        float k = After(c, 0.05f, 0.7f);
+        if (k < 0f) return;
+        for (int i = 0; i < 7; i++)
+        {
+            float a = Fx.Signed(c.Seed, i, 201);
+            float rise = 4f * k * (1f - k);
+            var at = c.To + new Vector3(a * c.ToSize * (0.4f + 0.5f * k), c.ToSize * (0.35f * rise - 0.4f * k), 0.2f * c.ToSize);
+            fx.Sprite(FxShape.Drop, at, c.ToSize * 0.1f, Fx.Fade(col.Light, 1f - k), FxBlend.Alpha);
+        }
+    }
+
+    /// <summary>Spacial Rend: a dark seam left hanging across the target where space was cut, stars in it, closing.</summary>
+    private static void Rift(in FxCtx c, FxColors col, FxList fx)
+    {
+        float k = After(c, 0f, 0.8f);
+        if (k < 0f) return;
+        float open = k < 0.15f ? k / 0.15f : 1f - Smooth((k - 0.15f) / 0.85f);
+        var a = c.To + new Vector3(-0.75f, 0.6f, 0.3f) * c.ToSize;
+        var b = c.To + new Vector3(0.75f, -0.5f, 0.3f) * c.ToSize;
+        var points = new Vector3[5];
+        for (int i = 0; i < 5; i++)
+        {
+            float t = i / 4f;
+            var p = Vector3.Lerp(a, b, t);
+            float zig = (i % 2 == 0 ? 1f : -1f) * 0.06f * c.ToSize * (i == 0 || i == 4 ? 0f : 1f);
+            points[i] = p + new Vector3(zig, zig, 0f);
+        }
+        fx.Ribbon(points, c.ToSize * 0.09f * open, Fx.Fade(Rgb(40, 16, 60), 0.9f * open), FxBlend.Alpha, depth: false);
+        fx.Ribbon(points, c.ToSize * 0.03f * open, Fx.Fade(Rgb(255, 210, 250), 0.8f * open), FxBlend.Add, depth: false);
+        for (int i = 0; i < 4; i++)
+        {
+            var at = Vector3.Lerp(a, b, 0.15f + 0.23f * i) + new Vector3(0f, 0.05f * c.ToSize * MathF.Sin(c.Age * 9f + i), 0f);
+            fx.Sprite(FxShape.Star, at, c.ToSize * 0.07f * open, Fx.Fade(Rgb(255, 230, 255), open), FxBlend.Alpha, c.Age * 3f + i);
+        }
+    }
+
+    /// <summary>Judgment: a gold halo over the target settling down onto it as the light presses it.</summary>
+    private static void Halo(in FxCtx c, FxColors col, FxList fx)
+    {
+        float k = After(c, -0.1f, 0.9f);
+        if (k < 0f) return;
+        float down = Fx.EaseOut(Math.Min(1f, k * 2f));
+        var at = c.ToFeet + Vector3.UnitY * c.ToSize * (1.25f - 0.35f * down);
+        float alpha = k < 0.1f ? k / 0.1f : 1f - (k - 0.1f) / 0.9f;
+        fx.Flat(FxShape.Ring, at, HaloTilt, c.ToSize * (0.9f - 0.2f * down), Fx.Fade(Rgb(255, 216, 110), 0.9f * alpha), FxBlend.Alpha, depth: false);
+        fx.Flat(FxShape.Ring, at, HaloTilt, c.ToSize * (0.86f - 0.2f * down), Fx.Fade(Rgb(255, 250, 220), 0.6f * alpha), FxBlend.Add, depth: false);
+    }
+
+    /// <summary>Shadow Force: dark wisps rising off the target where the shadow struck it, gone in a second.</summary>
+    private static void Wisps(in FxCtx c, FxColors col, FxList fx)
+    {
+        float k = After(c, 0.02f, 0.85f);
+        if (k < 0f) return;
+        for (int i = 0; i < 5; i++)
+        {
+            float x = Fx.Signed(c.Seed, i, 211) * c.ToHalfWidth * 1.2f;
+            var at = c.ToFeet + new Vector3(x, c.ToSize * (0.2f + 0.9f * k + 0.1f * Fx.Rand(c.Seed, i, 212)), 0.15f * c.ToSize);
+            fx.Sprite(FxShape.Wisp, at, c.ToSize * 0.2f, Fx.Fade(Rgb(52, 26, 78), 0.85f * (1f - k)), FxBlend.Alpha, Fx.Signed(c.Seed, i, 213) * 0.5f);
+        }
+    }
+
+    /// <summary>Eruption, Overheat: the air over the target wavering with heat, pale bands rising and gone.</summary>
+    private static void Shimmer(in FxCtx c, FxColors col, FxList fx)
+    {
+        float k = After(c, 0.05f, 0.85f);
+        if (k < 0f) return;
+        for (int i = 0; i < 3; i++)
+        {
+            float rise = (k + i / 3f) % 1f;
+            var at = c.ToFeet + new Vector3(MathF.Sin(c.Age * 8f + i * 2f) * 0.08f * c.ToSize, c.ToSize * (0.3f + 1.0f * rise), 0.25f * c.ToSize);
+            float alpha = 0.45f * MathF.Sin(rise * MathF.PI) * (1f - k);
+            fx.Sprite(FxShape.Wave, at, c.ToSize * 0.9f, Fx.Fade(Rgb(255, 196, 140), alpha), FxBlend.Alpha);
         }
     }
 }

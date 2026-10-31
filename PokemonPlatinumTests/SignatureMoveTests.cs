@@ -57,6 +57,70 @@ public class SignatureMoveTests
             Assert.Contains(Directions.Table.Values, d => d.Shot == shot);
     }
 
+    /// <summary>Y17b's batch: the legendaries' and mythicals' own moves of Sinnoh, Kanto, Johto and Hoenn, and the starters' finals'.</summary>
+    public static readonly string[] Y17b =
+    {
+        "Spacial Rend", "Judgment", "Shadow Force", "Magma Storm", "Crush Grip", "Seed Flare", "Dark Void", "Lunar Dance",
+        "Psystrike", "Aeroblast", "Sacred Fire", "Origin Pulse", "Precipice Blades", "Dragon Ascent", "Psycho Boost",
+        "Mist Ball", "Luster Purge",
+        "Blast Burn", "Hydro Cannon", "Frenzy Plant", "Draco Meteor", "Eruption", "Overheat", "Blaze Kick", "Flare Blitz",
+        "Wood Hammer", "Earthquake", "Hydro Pump", "Leaf Storm",
+    };
+
+    [Fact]
+    public void Y17bsBatchIsInTheTable()
+    {
+        Assert.DoesNotContain(Y17b, m => !Directions.Has(m));
+        Assert.True(Directions.Table.Count >= 35);
+    }
+
+    [Theory]
+    [MemberData(nameof(Signatures))]
+    public void WhatADirectionLaysOverIsOverByTheCuesEnd(string move)
+    {
+        // Nothing before the impact but on a charge-push's own look, and nothing left once the cue is done
+        var gone = new FxList();
+        Directions.PlayEffect(new FxCtx(Cue(move, BattleAnimator.EffectTime - 0.01f), new FxPlaces()), MoveFx.ColorsOf(MoveDatabase.Get(move)!.Type), gone);
+        Assert.Empty(gone.Quads);
+        Assert.Empty(gone.Ribbons);
+        var missed = new FxList();
+        Directions.PlayEffect(new FxCtx(Cue(move, I + 0.2f, missed: true), new FxPlaces()), MoveFx.ColorsOf(MoveDatabase.Get(move)!.Type), missed);
+        Assert.Empty(missed.Quads);
+        // Every body motion is still again by the cue's end
+        Assert.False(Directions.TargetBody(Cue(move, 1.29f)).Moves);
+        Assert.False(Directions.UserBody(Cue(move, 1.29f)).Moves);
+    }
+
+    [Theory]
+    [MemberData(nameof(Signatures))]
+    public void EveryBodyADirectionMovesStaysInBounds(string move)
+    {
+        for (float age = 0f; age < 1.3f; age += 0.01f)
+            foreach (var body in new[] { Directions.UserBody(Cue(move, age)), Directions.TargetBody(Cue(move, age)) })
+            {
+                Assert.InRange(body.Up, -0.01f, 0.32f);
+                Assert.InRange(body.Toward, -0.2f, BodyMotions.RushReach);
+                Assert.InRange(body.Sink, 0f, 0.1f);
+                Assert.InRange(MathF.Abs(body.Squash), 0f, 0.16f);
+                Assert.InRange(body.Grow, 0.95f, 1.06f);
+                Assert.True(float.IsFinite(body.Spin));
+            }
+    }
+
+    [Fact]
+    public void Y17bsTargetsAnswerTheirBlows()
+    {
+        // Precipice Blades tosses its target up; Earthquake jolts it; Judgment presses it down; Crush Grip only shudders it
+        Assert.True(Directions.TargetBody(Cue("Precipice Blades", I + 0.3f)).Up > 0.1f);
+        Assert.True(Directions.TargetBody(Cue("Earthquake", I + 0.12f)).Moves);
+        var pressed = Directions.TargetBody(Cue("Judgment", I + 0.1f));
+        Assert.True(pressed.Squash > 0f && pressed.Sink > 0f);
+        Assert.Equal(0f, Directions.TargetBody(Cue("Crush Grip", I + 0.1f)).Toward);
+        // Dragon Ascent's user rises before the impact and meets the target at it
+        Assert.True(Directions.UserBody(Cue("Dragon Ascent", I - 0.12f)).Up > 0.2f);
+        Assert.True(Directions.UserBody(Cue("Dragon Ascent", I)).Toward > 0.5f);
+    }
+
     // ------------------------------------------------------------------ the hit-stop
 
     [Theory]
