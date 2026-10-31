@@ -885,5 +885,25 @@ partial class Harness
             engine.Settings.Packs = packsBefore;
             game.State = GameState.Overworld;
         }
+
+        // The title's credits (plan 16 · T1), last of all so that nothing before it moves: the top, a page down, the
+        // records' first section, the licences' text, and the end of the list
+        {
+            var credits = game.TitleCredits;
+            credits.Open();
+            game.State = GameState.TitleCredits;
+            Frames(30); Shot("29d_credits_top");
+            for (int i = 0; i < TitleCreditsScreen.VisibleRows; i++) credits.Move(1);
+            Frames(6); Shot("29d_credits_page");
+            credits.Jump(1);
+            Frames(6); Shot("29d_credits_section");
+            while (credits.First < credits.LastFirst && !credits.Rows[credits.First].Text.Contains("MIT", StringComparison.Ordinal)) credits.Move(1);
+            Frames(6); Shot("29d_credits_licence");
+            while (credits.First < credits.LastFirst) credits.Move(1);
+            Frames(6); Shot("29d_credits_end");
+            Console.WriteLine($"credits: {credits.Sections.Count} sections ({string.Join(" | ", credits.Sections.Select(s => s.Heading))}), {credits.Rows.Count} rows");
+            credits.Close();
+            game.State = GameState.Overworld;
+        }
     }
 }

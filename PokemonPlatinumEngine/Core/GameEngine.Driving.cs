@@ -337,6 +337,8 @@ public partial class GameEngine
         public JukeboxScreen Jukebox => game.flow.JukeboxScreen;
         public void OpenJukebox(GameState returnTo) => game.OpenJukebox(returnTo);
         public void CloseJukebox() => game.CloseJukebox();
+        /// <summary>The title's CREDITS (plan 16 · T1).</summary>
+        public TitleCreditsScreen TitleCredits => game.flow.TitleCreditsScreen;
         /// <summary>The last recording watched broke off before its end (its answers ran out or were refused).</summary>
         public bool ReplayBroke => game.ReplayBroke;
         /// <summary>The game as it stands, as the save screen would write it (plan 24 · X3: the harness's <c>saves</c>).</summary>
