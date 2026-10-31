@@ -172,6 +172,70 @@ public class SignatureMoveTests
         Assert.InRange(during.Quads.Count + during.Ribbons.Count, 1, 10);
     }
 
+    /// <summary>Y17d's batch: the legendaries' and mythicals' own moves of Unova, Kalos, Alola, Galar, Hisui and Paldea.</summary>
+    public static readonly string[] Y17d =
+    {
+        "V-create", "Searing Shot", "Sacred Sword", "Secret Sword", "Bleakwind Storm", "Wildbolt Storm", "Sandsear Storm",
+        "Blue Flare", "Fusion Flare", "Bolt Strike", "Fusion Bolt", "Glaciate", "Freeze Shock", "Ice Burn", "Relic Song", "Techno Blast",
+        "Geomancy", "Oblivion Wing", "Thousand Arrows", "Thousand Waves", "Core Enforcer", "Diamond Storm", "Hyperspace Hole",
+        "Hyperspace Fury", "Steam Eruption",
+        "Nature's Madness", "Sunsteel Strike", "Moongeist Beam", "Photon Geyser", "Prismatic Laser", "Fleur Cannon", "Spectral Thief",
+        "Plasma Fists", "Double Iron Bash",
+        "Behemoth Blade", "Behemoth Bash", "Eternabeam", "Dynamax Cannon", "Wicked Blow", "Surging Strikes", "Jungle Healing",
+        "Thunder Cage", "Dragon Energy", "Glacial Lance", "Astral Barrage", "Fiery Wrath", "Freezing Glare", "Thunderous Kick",
+        "Springtide Storm",
+        "Collision Course", "Electro Drift", "Ruination", "Ivy Cudgel", "Tera Starstorm", "Malignant Chain", "Hydro Steam",
+        "Psyblade", "Thunderclap", "Mighty Cleave", "Tachyon Cutter",
+    };
+
+    [Fact]
+    public void Y17dsBatchIsInTheTable()
+    {
+        Assert.DoesNotContain(Y17d, m => !Directions.Has(m));
+        Assert.Empty(Y17d.Intersect(Y17b));
+        Assert.Empty(Y17d.Intersect(Y17c));
+        Assert.Equal(Y17d.Length, Y17d.Distinct().Count());
+        Assert.True(Directions.Table.Count >= 35 + Y17c.Length + Y17d.Length);
+    }
+
+    [Fact]
+    public void Y17dsBodiesAnswer()
+    {
+        // The charges meet their targets at the impact and never rise
+        foreach (var move in new[] { "V-create", "Bolt Strike", "Sunsteel Strike", "Behemoth Blade", "Behemoth Bash", "Collision Course", "Electro Drift" })
+        {
+            Assert.True(Directions.UserBody(Cue(move, I)).Toward > 0.5f, move);
+            for (float age = 0f; age < 1.3f; age += 0.01f) Assert.Equal(0f, Directions.UserBody(Cue(move, age)).Up);
+        }
+        // The lances and arrows from above press; the waves of earth jolt; the chain only shudders
+        foreach (var move in new[] { "Thousand Arrows", "Glacial Lance", "Double Iron Bash", "Ivy Cudgel" })
+            Assert.True(Directions.TargetBody(Cue(move, I + 0.1f)).Squash > 0f, move);
+        Assert.True(Directions.TargetBody(Cue("Thousand Waves", I + 0.12f)).Moves);
+        Assert.Equal(0f, Directions.TargetBody(Cue("Malignant Chain", I + 0.1f)).Toward);
+        // The beams wound up rock their users back
+        foreach (var move in new[] { "Eternabeam", "Photon Geyser", "Prismatic Laser", "Fleur Cannon", "Blue Flare", "Dragon Energy" })
+            Assert.True(Directions.UserBody(Cue(move, I)).Toward < 0f, move);
+        // Geomancy and Jungle Healing are on their own side: no shot of their own
+        Assert.Equal(SignatureShot.None, Directions.Of("Geomancy")!.Shot);
+        Assert.Equal(SignatureShot.None, Directions.Of("Jungle Healing")!.Shot);
+        // The light multi-hits hold nothing
+        Assert.False(Directions.Of("Surging Strikes")!.Heavy);
+        Assert.False(Directions.Of("Tachyon Cutter")!.Heavy);
+    }
+
+    [Theory]
+    [InlineData("Bolt Strike"), InlineData("Thunder Cage"), InlineData("Diamond Storm"), InlineData("Prismatic Laser"), InlineData("Geomancy")]
+    public void Y17dsReactionsComeAfterTheImpactAndGo(string move)
+    {
+        var col = MoveFx.ColorsOf(MoveDatabase.Get(move)!.Type);
+        var before = new FxList();
+        Directions.PlayEffect(new FxCtx(Cue(move, I - 0.02f), new FxPlaces()), col, before);
+        Assert.Empty(before.Quads);
+        var during = new FxList();
+        Directions.PlayEffect(new FxCtx(Cue(move, I + 0.2f), new FxPlaces()), col, during);
+        Assert.InRange(during.Quads.Count + during.Ribbons.Count, 1, 10);
+    }
+
     // ------------------------------------------------------------------ the hit-stop
 
     [Theory]
