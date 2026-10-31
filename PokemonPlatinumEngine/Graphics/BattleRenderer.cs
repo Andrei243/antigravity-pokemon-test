@@ -44,6 +44,15 @@ public sealed class BattleRenderer
 
     public BattleRenderer(RenderContext context) => this.context = context;
 
+    /// <summary>
+    /// The photo being composed (plan 12 · Q17; style guide, "Camera (G8)", "A held shot"): the director held on its
+    /// shot, the stage lit at its hour and filtered, the Pokémon's idle stepped. Null outside photo mode.
+    /// </summary>
+    internal BattlePhotoView? Photo { get; set; }
+
+    /// <summary>The shot the director has on screen: what a photo begins from (the overview before the first frame).</summary>
+    internal CameraShot CurrentShot => director.Current.Fov > 0f ? director.Current : BattleCamera.Overview(0f);
+
     /// <summary>The stage for a battle starting with the player on (<paramref name="x"/>, <paramref name="y"/>) of <paramref name="map"/>.</summary>
     public void SetArena(Map map, int x, int y) => Arena = ArenaSpec.For(map, x, y);
 
@@ -81,12 +90,14 @@ public sealed class BattleRenderer
 
         platformTop = BattleStage.PlatformTopOf(Arena.Kind);
         UpdatePlaces(anim);
-        var arenaRig = ArtLook.ArenaRig(Arena, GameClock.Hour);
+        var arenaRig = ArtLook.ArenaRig(Arena, Photo?.Hour ?? GameClock.Hour);
         bool night = Arena.Outdoors && arenaRig.Sky.Stars > 0f;
         // The weather's light (plan 25 · Y1): the one clearing away under the one coming in, each by how far it has come
         var rig = ArtLook.InBattleWeather(ArtLook.InBattleWeather(arenaRig, anim.FadingWeather, anim.FadingStrength), anim.Weather, anim.WeatherStrength);
         // Gravity lowers the stage's light for as long as it lasts (plan 25 · Y2)
         rig = ArtLook.UnderGravity(rig, anim.FieldLook.Of(Battle.Sim.FieldCondition.Gravity).Presence);
+        // A photo's filter, laid last (plan 12 · Q17)
+        if (Photo != null) rig = PhotoFilters.Filtered(rig, Photo.Filter);
 
         fx.Clear();
         MoveFx.Emit(anim, places, fx);
@@ -108,6 +119,8 @@ public sealed class BattleRenderer
         PlaceBalls(anim);
 
         float shake = (anim.ShakeAge >= 0f ? (1f - anim.ShakeAge / 0.4f) * anim.ShakeStrength : 0f) + fx.Shake;
+        if (Photo != null) director.Hold(Photo.Shot);
+        else if (director.Held != null) director.LetGo();
         camera = director.Update(dt, anim, places, shake, choosing: battle.HUD.MenuState != BattleMenuState.Message);
 
         // A move's light over the stage alone (plan 25 · Y16): the Pokémon and the effects keep the scene's own
@@ -981,8 +994,9 @@ public sealed class BattleRenderer
         float phase = (isPlayer ? 0.37f : 0f) + slot * 0.53f;
         var pose = new PokePose
         {
-            Time = anim.Time + phase,
-            Blink = (anim.Time + phase * 3f) % 3.3f < 0.12f ? 1f : 0f,
+            // A photo steps the idle and the blink (plan 12 · Q17); 0 otherwise, the same sums as ever
+            Time = Photo?.PoseTime(anim.Time, phase) ?? anim.Time + phase,
+            Blink = (anim.Time + (Photo?.PoseStep ?? 0f) + phase * 3f) % 3.3f < 0.12f ? 1f : 0f,
             Attack = Math.Max(0f, BattleAnimator.Progress(v.AttackAge, BattleAnimator.AttackTime)),
             Kind = v.AttackCategory,
             Hurt = Math.Max(0f, BattleAnimator.Progress(v.HitAge, BattleAnimator.HitTime)),

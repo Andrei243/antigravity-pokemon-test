@@ -4397,8 +4397,9 @@
   },
   "photo": {
     "title": "PHOTO",
-    "row": { "Zoom": "Zoom", "Time": "Time", "Weather": "Weather", "Filter": "Filter", "Frame": "Frame" },
+    "row": { "Zoom": "Zoom", "Time": "Time", "Weather": "Weather", "Filter": "Filter", "Frame": "Frame", "Pose": "Pose" },
     "zoom": "×{zoom}",
+    "pose": { "still": "As it is", "step": "+{seconds} s" },
     "time": { "now": "Now", "Morning": "Morning", "Day": "Day", "Twilight": "Evening", "Night": "Night", "LateNight": "Late night" },
     "weather": { "Now": "As it is", "Clear": "Clear", "Rain": "Rain", "Snow": "Snow", "Fog": "Fog" },
     "notHere": "Not here",

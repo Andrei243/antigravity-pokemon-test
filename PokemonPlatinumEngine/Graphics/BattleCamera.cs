@@ -17,7 +17,7 @@ internal readonly record struct CameraShot(Vector3 Position, Vector3 Target, flo
 }
 
 /// <summary>What the director is showing.</summary>
-internal enum ShotKind { Intro, Overview, SendOut, Attacker, Target, Self, Critical, Throw, Ball, BallClose, Faint, Trainer, Rotation, Push, Follow, Punch, Orbit, Giant, MaxMove }
+internal enum ShotKind { Intro, Overview, SendOut, Attacker, Target, Self, Critical, Throw, Ball, BallClose, Faint, Trainer, Rotation, Push, Follow, Punch, Orbit, Giant, MaxMove, Held }
 
 /// <summary>
 /// The battle's camera director (plan 04 · G8). The overview is the DS-like framing; the director sweeps in at the
@@ -69,10 +69,28 @@ internal sealed class BattleCamera
 
     public void Reset() => started = false;
 
+    /// <summary>The shot a photo holds the camera on (plan 12 · Q17); null while the director directs.</summary>
+    public CameraShot? Held { get; private set; }
+
+    /// <summary>Holds the camera on a shot: the director eases nowhere and shakes nothing until <see cref="LetGo"/>.</summary>
+    public void Hold(CameraShot shot) => Held = shot;
+
+    /// <summary>Lets the director go: it eases from the held shot to whatever it wants.</summary>
+    public void LetGo() => Held = null;
+
     /// <summary>Moves the camera toward what the director wants and returns it, shaken by <paramref name="shake"/> (0..2).</summary>
     /// <param name="choosing">The player is choosing a command: the camera goes back to the overview.</param>
     public Camera3D Update(float dt, BattleAnimator anim, FxPlaces places, float shake, bool choosing = false)
     {
+        // A photo holds the shot: nothing is directed, eased or shaken (plan 12 · Q17)
+        if (Held is { } held)
+        {
+            Current = held;
+            started = true;
+            Kind = lastKind = ShotKind.Held;
+            lastCue = null;
+            return held.ToCamera();
+        }
         var (shot, kind, cue) = Direct(anim, places, choosing);
         // Cut from the attacker to its target, into a critical hit's punch-in, onto the intro's own path, and
         // wherever easing would fly the camera past the player's side of the field; ease everything else

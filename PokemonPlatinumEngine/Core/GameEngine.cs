@@ -990,6 +990,7 @@ public partial class GameEngine
         KeepTheReportKey(); // F8: a report of the session (plan 16 · T20)
         KeepTheScreenshotKey(); // F12: a picture of the screen (plan 12 · Q16)
         if (flow.State == GameState.Overworld) KeepThePhotoKey(); // F9: photo mode (plan 12 · Q16)
+        else if (flow.State == GameState.Battle) KeepTheBattlePhotoKey(); // ... and in battle (plan 12 · Q17)
         // Behind another window, with the option on, the game waits where it is and its sound drops (plan 16 · T3)
         bool held = HeldForFocus;
         AudioManager.Away = held;
@@ -1141,6 +1142,8 @@ public partial class GameEngine
                 UpdatePhoto(dt);
                 break;
             case GameState.Battle:
+                // A photo stills the battle: nothing of it is updated while one is composed (plan 12 · Q17)
+                if (UpdateBattlePhoto(dt)) break;
                 if (flow.Battle != null)
                 {
                     flow.Battle.AutoAdvanceAfter = GameSettings.AutoAdvanceAfter(Settings.AutoAdvance);
@@ -3069,7 +3072,7 @@ public partial class GameEngine
     /// <summary>The 3D battle field and Pokémon, then the HUD and menus on top.</summary>
     private void DrawBattle()
     {
-        if (flow.Battle == null) return;
+        if (flow.Battle == null || DrawBattlePhoto()) return;
         battleRenderer.DrawField(flow.Battle, VirtualWidth, VirtualHeight);
         flow.Battle.Draw(VirtualWidth, VirtualHeight);
     }

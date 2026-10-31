@@ -86,6 +86,9 @@ partial class Harness
         Console.WriteLine($"after: hour {GameClock.Hour:0.00}, date {GameClock.Today:yyyy-MM-dd}, weather {game.Map.WeatherAt(game.Player.GridX, game.Player.GridY)}; state {game.State}; camera at rest {game.World.Camera.AtRest}");
         if (GameClock.Today != dateBefore || game.Map.WeatherAt(game.Player.GridX, game.Player.GridY) != weatherBefore)
             Console.WriteLine("!! the photo changed the date or the place's weather");
+
+        // And in battle (plan 12 · Q17)
+        PhotoBattle();
     }
 
     // Takes a row of the photo's panel a number of values on (or back)
