@@ -333,6 +333,13 @@ public sealed class GameSettings
     /// <summary>A medal won told by a notice and its fanfare over the field (plan 13 · V9, <see cref="Models.Medals"/>): off unless chosen; the medals are kept either way.</summary>
     public bool MedalNotices { get; set; }
 
+    /// <summary>
+    /// The run timer's corner over the field and the battle, and the splits it counts (plan 13 · V10, <see cref="Models.RunTimer"/>):
+    /// off unless chosen. The timer runs and takes its splits in every game either way; with a category chosen the
+    /// corner shows and <c>splits.json</c> is written beside the save at each split.
+    /// </summary>
+    public Models.TimerCategory RunTimer { get; set; }
+
     /// <summary>The preset the first run's measuring chose on this machine (plan 16 · T23), or null where nothing was measured.</summary>
     public GraphicsQuality? MeasuredQuality { get; set; }
 

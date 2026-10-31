@@ -7,8 +7,7 @@ namespace PokemonPlatinumEngine.Models;
 /// <summary>
 /// What a run remembers (plan 13 · V4): the places a wild Pokémon has been met under the Nuzlocke, the graveyard, and
 /// whether the run has ended. Plain data, kept whole in <c>SaveData.RunState</c> (null when nothing is in it, in a
-/// Normal game and in every save from before it, so no save version was raised). Later sessions of plan 13 add the
-/// clears (V11) and the timer (V10) here.
+/// Normal game and in every save from before it, so no save version was raised). The run timer (V10) is here too; a later session adds the clears (V11).
 /// </summary>
 public sealed class RunState
 {
@@ -28,9 +27,13 @@ public sealed class RunState
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string? EndedBy { get; set; }
 
+    /// <summary>The run timer and its splits (plan 13 · V10): kept in every game, whatever the options' RUN TIMER row says; null in a save from before it.</summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public RunTimer? Timer { get; set; }
+
     /// <summary>Whether there is anything to keep: an empty state is saved as nothing.</summary>
     [JsonIgnore]
-    public bool IsEmpty => AreasMet.Count == 0 && Graveyard.Count == 0 && !Ended;
+    public bool IsEmpty => AreasMet.Count == 0 && Graveyard.Count == 0 && !Ended && Timer == null;
 
     public bool HasMet(string place) => AreasMet.Contains(place);
 

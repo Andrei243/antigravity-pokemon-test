@@ -44,7 +44,12 @@ internal static partial class ModernUi
         // ---- The head: the team's number, its day, which of the teams kept it is
         float hx = panel.X + 48;
         float tagW = Tag(hx, panel.Y + 34, Text.Of("hallOfFame.number", ("number", number)), Gold, 56);
-        UiFonts.DrawCentered(Words.Date(entry.Date), hx + tagW + 28, panel.Y + 62, 40, Ink, UiWeight.Black);
+        string day = Words.Date(entry.Date);
+        UiFonts.DrawCentered(day, hx + tagW + 28, panel.Y + 62, 40, Ink, UiWeight.Black);
+        // The run timer's final time beside the day (plan 13 · V10), where the record has one
+        if (entry.RunSeconds is { } run)
+            UiFonts.DrawCentered(Text.Of("hallOfFame.runTime", ("time", RunTimer.Format(run, tenths: false))),
+                hx + tagW + 28 + UiFonts.Measure(day, 40, UiWeight.Black) + 32, panel.Y + 62, 26, Muted, UiWeight.Black);
         string which = Text.Of("hallOfFame.which", ("entry", screen.Entry + 1), ("count", records.Entries.Count));
         UiFonts.DrawCentered(which, panel.X + panel.Width - 48 - UiFonts.Measure(which, 24, UiWeight.Black), panel.Y + 62, 24, Muted, UiWeight.Black);
 

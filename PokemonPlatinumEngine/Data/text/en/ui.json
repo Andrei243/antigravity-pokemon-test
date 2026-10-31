@@ -368,6 +368,16 @@
         "on": "A medal won drops in at the top of the field with a fanfare."
       }
     },
+    "runTimer": {
+      "label": "Run timer",
+      "value": { "Off": "Off", "HallOfFame": "Hall of Fame", "Badges": "Badges", "Story": "Story" },
+      "help": {
+        "Off": "The run is timed in every game, but no corner shows it and no splits are written.",
+        "HallOfFame": "A corner shows the run's time; splits.json beside the save times the Hall of Fame alone.",
+        "Badges": "A corner shows the run's time; splits are taken at every Badge and the Hall of Fame.",
+        "Story": "A corner shows the run's time; splits at every Badge, each Team Galactic commander and the Hall of Fame."
+      }
+    },
     "reduceMotion": {
       "label": "Reduce motion",
       "help": {
@@ -878,6 +888,7 @@
     "title": "HALL OF FAME",
     "empty": "No team has entered the Hall of Fame yet.",
     "number": "No. {number}",
+    "runTime": "TIME {time}",
     "which": "TEAM {entry} OF {count}",
     "level": "Lv. {level}",
     "profile": "PROFILE",
@@ -4272,6 +4283,21 @@
     "skill": "SKILL",
     "body": "BODY",
     "total": "TOTAL"
+  },
+  "timer": {
+    "run": "RUN TIME",
+    "final": "FINAL TIME",
+    "game": "In game {time}",
+    "split": {
+      "badge": "{badge} Badge",
+      "hallOfFame": "Hall of Fame, {region}",
+      "windworks": "Valley Windworks",
+      "eternaBuilding": "Galactic Eterna Building",
+      "valorCavern": "Valor Cavern",
+      "lakeVerity": "Lake Verity",
+      "headquarters": "Galactic HQ",
+      "spearPillar": "Spear Pillar"
+    }
   },
   "medals": {
     "notice": "MEDAL  ·  {category}",
