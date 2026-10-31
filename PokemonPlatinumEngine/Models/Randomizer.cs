@@ -23,6 +23,21 @@ public sealed record RandomizerOptions
 
     /// <summary>Items on the ground and in the hands of people who give them are other items.</summary>
     public bool Items { get; init; } = true;
+
+    /// <summary>Each line's abilities are others (plan 13 · V7), in memory for the game in progress (<see cref="Randomizer.Use"/>).</summary>
+    public bool Abilities { get; init; }
+
+    /// <summary>Each species' moves learned by level are others of their kind and about their power, keeping a move of the species' own type where it had one; trainers' chosen moves follow (plan 13 · V7).</summary>
+    public bool Moves { get; init; }
+
+    /// <summary>Each line's types are others, the line kept a line by one shuffle of the types for all of it (plan 13 · V7).</summary>
+    public bool Types { get; init; }
+
+    /// <summary>Whether anything at all is randomised: a run with none of the halves on has no randomiser.</summary>
+    public bool Any => Species || Items || Abilities || Moves || Types;
+
+    /// <summary>Whether anything of the species themselves changes, which <see cref="Randomizer.Use"/> swaps in.</summary>
+    public bool ChangesSpecies => Abilities || Moves || Types;
 }
 
 /// <summary>
@@ -43,7 +58,7 @@ public sealed record RandomizerOptions
 /// price, decided for each ball by its own flag. Key items, HMs, anything a script asks the bag for and the later games'
 /// Mega Stones and Z-Crystals are never swapped nor given instead.</para>
 /// </summary>
-public sealed class Randomizer
+public sealed partial class Randomizer
 {
     // ------------------------------------------------------------------ one randomiser to a seed
 
@@ -77,6 +92,9 @@ public sealed class Randomizer
 
     public bool MapsSpecies => Options.Species;
     public bool MapsItems => Options.Items;
+    public bool MapsAbilities => Options.Abilities;
+    public bool MapsMoves => Options.Moves;
+    public bool MapsTypes => Options.Types;
 
     /// <summary>The seed as the title and the cards write it: nine digits at most, no separators.</summary>
     public static string SeedText(int seed) => Math.Clamp(seed, 0, RandomizerOptions.MaxSeed).ToString(System.Globalization.CultureInfo.InvariantCulture);
@@ -292,9 +310,16 @@ public sealed class Randomizer
     /// </summary>
     public Trainer ForTrainer(Trainer trainer)
     {
-        if (!Options.Species || Unchanged(trainer)) return trainer;
-        if (trainer.Party.Members.All(p => Species(p.Species.Name) == p.Species.Name)) return trainer;
-        return trainer.WithTeamOf(Reborn);
+        if (Unchanged(trainer)) return trainer;
+        bool reborn = Options.Species && trainer.Party.Members.Any(p => Species(p.Species.Name) != p.Species.Name);
+        // (plan 13 · V7) A team whose species stay is still taught other moves and given its line's other abilities
+        if (!reborn && !Options.Moves && !Options.Abilities) return trainer;
+        int at = 0;
+        return trainer.WithTeamOf(p =>
+        {
+            var made = reborn ? Reborn(p) : p.Clone();
+            return Retaught(made, trainer.Id, at++, sameSpecies: made.Species.Name == p.Species.Name);
+        });
     }
 
     /// <summary>A Pokémon as the species it goes to: itself when nothing changes it.</summary>

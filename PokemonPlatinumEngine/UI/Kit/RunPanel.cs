@@ -11,7 +11,7 @@ namespace PokemonPlatinumEngine.UI.Kit;
 public enum RunRow
 {
     Preset, Difficulty, LevelCap, ScaleTrainers, Nuzlocke, DupesClause, ShinyClause, GiftsCount, Monotype, PartyLimit,
-    NoBattleItems, NoCenter, NoCatching, NoRunning, SetStyle, ShinyOdds, RandomSpecies, RandomItems, Seed, Start
+    NoBattleItems, NoCenter, NoCatching, NoRunning, SetStyle, ShinyOdds, RandomSpecies, RandomItems, RandomAbilities, RandomMoves, RandomTypes, Seed, Start
 }
 
 /// <summary>
@@ -117,11 +117,20 @@ public sealed class RunPanel
     /// <summary>The Start button on the seed's keyboard: the cursor to OK.</summary>
     public void SeedToDone() => SeedEntry?.ToDone();
 
-    private RandomizerOptions? Toggled(RandomizerOptions? options, bool species)
+    /// <summary>One half of the randomiser turned over: turned on alone with a rolled seed when nothing was randomised, and the randomiser gone once no half is on.</summary>
+    private RandomizerOptions? Toggled(RandomizerOptions? options, RunRow row)
     {
-        if (options == null) return new RandomizerOptions { Seed = RollSeed(), Species = species, Items = !species };
-        var changed = species ? options with { Species = !options.Species } : options with { Items = !options.Items };
-        return changed.Species || changed.Items ? changed : null;
+        options ??= new RandomizerOptions { Seed = RollSeed(), Species = false, Items = false };
+        var changed = row switch
+        {
+            RunRow.RandomSpecies => options with { Species = !options.Species },
+            RunRow.RandomItems => options with { Items = !options.Items },
+            RunRow.RandomAbilities => options with { Abilities = !options.Abilities },
+            RunRow.RandomMoves => options with { Moves = !options.Moves },
+            RunRow.RandomTypes => options with { Types = !options.Types },
+            _ => options
+        };
+        return changed.Any ? changed : null;
     }
 
     public void Move(int step)
@@ -174,8 +183,9 @@ public sealed class RunPanel
                 k = ((k + d) % RunRules.ShinyChoices.Length + RunRules.ShinyChoices.Length) % RunRules.ShinyChoices.Length;
                 Rules = r with { ShinyDenominator = RunRules.ShinyChoices[k] };
                 break;
-            case RunRow.RandomSpecies: Rules = r with { Random = Toggled(r.Random, species: true) }; break;
-            case RunRow.RandomItems: Rules = r with { Random = Toggled(r.Random, species: false) }; break;
+            case RunRow.RandomSpecies or RunRow.RandomItems or RunRow.RandomAbilities or RunRow.RandomMoves or RunRow.RandomTypes:
+                Rules = r with { Random = Toggled(r.Random, SelectedRow) };
+                break;
             // Left and right roll another seed; A types one
             case RunRow.Seed when r.Random is { } options: Rules = r with { Random = options with { Seed = RollSeed() } }; break;
             default: return;
@@ -217,6 +227,9 @@ public sealed class RunPanel
         RunRow.SetStyle => OnOff(Rules.SetStyle),
         RunRow.RandomSpecies => OnOff(Rules.Random?.Species == true),
         RunRow.RandomItems => OnOff(Rules.Random?.Items == true),
+        RunRow.RandomAbilities => OnOff(Rules.Random?.Abilities == true),
+        RunRow.RandomMoves => OnOff(Rules.Random?.Moves == true),
+        RunRow.RandomTypes => OnOff(Rules.Random?.Types == true),
         _ => ""
     };
 

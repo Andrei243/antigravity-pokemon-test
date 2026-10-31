@@ -466,7 +466,8 @@ public partial class GameEngine
         if (secondNpc?.TrainerData is { } carried) carried.Look = secondNpc.NpcType;
         // A randomised run's trainers bring the species theirs go to, on copies (plan 13 · V6), the rival's first battle
         // included, so his team is the one the starter taken names, mapped; a Master Trainer's one species stays
-        if (Randomizer.For(flow.Run) is { MapsSpecies: true } random && terms?.Alone == null)
+        // (and with abilities or moves randomised, the copies are taught others and given their line's abilities: plan 13 · V7)
+        if (Randomizer.For(flow.Run) is { } random && (random.MapsSpecies || random.MapsMoves || random.MapsAbilities) && terms?.Alone == null)
         {
             trainers = trainers.Select(random.ForTrainer).ToList();
             trainer = trainers[0];
