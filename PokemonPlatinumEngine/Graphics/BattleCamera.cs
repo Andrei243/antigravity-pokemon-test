@@ -559,8 +559,9 @@ internal sealed class BattleCamera
 
         var v = anim[side, slot];
         float h = places.Height(side, slot);
-        float now = BattleAnimator.GiantOf(v, player);
-        float grown = h / Math.Max(0.05f, now) * (player ? BattleAnimator.DynamaxScaleOwn : BattleAnimator.DynamaxScaleFoe);
+        bool paired = anim.Paired(side);
+        float now = BattleAnimator.GiantOf(v, player, paired);
+        float grown = h / Math.Max(0.05f, now) * BattleAnimator.GiantScale(player, paired);
         var feet = places.Feet(side, slot);
         float lift = GiantPitchDeg * MathF.PI / 180f - BattleStage.PitchDeg * MathF.PI / 180f;
         // The player's own from behind its right shoulder; in a battle of two or more a side an end place's from its outer
