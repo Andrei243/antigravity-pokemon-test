@@ -148,7 +148,13 @@ internal static partial class ModernUi
     // ------------------------------------------------------------------ the boss box (plan 25 · YD6)
 
     /// <summary>The foe's own box, and the boss box it widens into (the style guide's "The boss box"), layout units.</summary>
-    public static readonly Rectangle BossFrom = new(56, 52, 580, 120), BossTo = new(56, 22, 1808, 100);
+    public static readonly Rectangle BossFrom = new(56, 52, 580, 120), BossTo = new(56, 22, 1104, 100);
+
+    /// <summary>
+    /// The boss box's right end stops short of the foe's platform as the overview sees it (x 1180), so the giant's head
+    /// and crown stand clear of it (plan 25's leftovers; a box along the whole top hid them).
+    /// </summary>
+    public const float BossRightLimit = 1160f;
 
     /// <summary>The boss box at a share of its widening (GPU-free): the foe's own box at nought, the whole at one.</summary>
     public static Rectangle BossRect(float share)
