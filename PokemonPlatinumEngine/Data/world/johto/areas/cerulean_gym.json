@@ -1,0 +1,37 @@
+{
+  "key": "cerulean_gym",
+  "index": 427,
+  "name": "Cerulean City",
+  "matrix": 257,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_GYM",
+  "nightMusic": "GS_GYM",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 10, "z": 25, "to": "cerulean", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "t04gym0101_sunglasses", "looks": "sunglasses", "movement": "15", "x": 13, "z": 21, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CERULEAN_GYM_POPULATION", "script": "T04GYM0101_001+1" },
+    { "id": "t04gym0101_gsswimmerw", "looks": "gsswimmerw", "movement": "20", "x": 7, "z": 16, "facing": 3, "rangeX": 6, "rangeZ": 0, "trainer": "sees", "sight": 2, "hiddenBy": "FLAG_HIDE_CERULEAN_GYM_POPULATION", "script": "TRAINER_SWIMMER_F_DIANA" },
+    { "id": "t04gym0101_gsswimmerw_2", "looks": "gsswimmerw", "movement": "20", "x": 6, "z": 13, "facing": 3, "rangeX": 9, "rangeZ": 0, "trainer": "sees", "sight": 1, "hiddenBy": "FLAG_HIDE_CERULEAN_GYM_POPULATION", "script": "TRAINER_SWIMMER_F_JOY" },
+    { "id": "t04gym0101_gsswimmerw_3", "looks": "gsswimmerw", "movement": "20", "x": 14, "z": 10, "facing": 2, "rangeX": 7, "rangeZ": 0, "trainer": "sees", "sight": 2, "hiddenBy": "FLAG_HIDE_CERULEAN_GYM_POPULATION", "script": "TRAINER_SWIMMER_F_BRIANA" },
+    { "id": "t04gym0101_seaman_2", "looks": "seaman_2", "movement": "8", "x": 19, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "hiddenBy": "FLAG_HIDE_CERULEAN_GYM_POPULATION", "script": "TRAINER_SAILOR_EDDIE" },
+    { "id": "t04gym0101_seaman_2_2", "looks": "seaman_2", "movement": "5", "x": 18, "z": 18, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 1, "hiddenBy": "FLAG_HIDE_CERULEAN_GYM_POPULATION", "script": "TRAINER_SAILOR_PARKER" },
+    { "id": "t04gym0101_gsleader11", "looks": "gsleader11", "movement": "0", "x": 10, "z": 1, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CERULEAN_GYM_POPULATION", "script": "T04GYM0101_000+1" },
+    { "id": "t04gym0101_rocketm", "looks": "rocketm", "movement": "15", "x": 10, "z": 19, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CERULEAN_GYM_ROCKET", "script": "0" },
+    { "id": "t04gym0101_stop", "looks": "stop", "movement": "0", "x": 3, "z": 10, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CERULEAN_GYM_MACHINE_PART", "script": "T04GYM0101_005+1" },
+    { "id": "t04gym0101_stop_2", "looks": "stop", "movement": "0", "x": 4, "z": 10, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CERULEAN_GYM_MACHINE_PART", "script": "T04GYM0101_005+1" }
+  ],
+  "signs": [
+    { "x": 8, "z": 21, "type": 0, "script": "T04GYM0101_002+1" },
+    { "x": 12, "z": 21, "type": 0, "script": "T04GYM0101_003+1" }
+  ],
+  "triggers": []
+}

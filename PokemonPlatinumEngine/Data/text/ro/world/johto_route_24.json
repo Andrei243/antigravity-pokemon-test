@@ -1,0 +1,41 @@
+{
+  "people": {
+    "r24_gsman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This bridge used to be lined with trainers. Now it's just us, watching the water."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r24_gswoman2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We come here every evening. The sunset over the river is the best in Kanto."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

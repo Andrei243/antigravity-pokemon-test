@@ -1,0 +1,25 @@
+{
+  "key": "cerulean_bike_maniac_house",
+  "index": 432,
+  "name": "Cerulean City",
+  "matrix": 274,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_C_HANADA",
+  "nightMusic": "GS_C_HANADA",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 11, "to": "cerulean", "toWarp": 6 }
+  ],
+  "objects": [
+    { "id": "t04r0401_gsmiddleman1", "looks": "gsmiddleman1", "movement": "14", "x": 2, "z": 4, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "T04R0401_000+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

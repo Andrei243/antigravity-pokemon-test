@@ -1,0 +1,58 @@
+{
+  "key": "johto_route_5",
+  "index": 13,
+  "name": "Route 5",
+  "matrix": 0,
+  "kind": "Route",
+  "sign": "Route",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "General",
+  "dayMusic": "GS_R_12_03",
+  "nightMusic": "GS_R_12_03",
+  "encounters": "R05",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Pidgey", "level": 13, "night": "Oddish" },
+    { "species": "Bellsprout", "level": 13, "night": "Oddish" },
+    { "species": "Pidgey", "level": 13, "night": "Oddish" },
+    { "species": "Bellsprout", "level": 13, "night": "Oddish" },
+    { "species": "Pidgey", "level": 14, "night": "Bellsprout" },
+    { "species": "Pidgey", "level": 14, "night": "Bellsprout" },
+    { "species": "Pidgey", "level": 15, "night": "Gloom" },
+    { "species": "Pidgey", "level": 15, "night": "Gloom" },
+    { "species": "Abra", "level": 12 },
+    { "species": "Abra", "level": 14 },
+    { "species": "Abra", "level": 12 },
+    { "species": "Abra", "level": 14 }
+  ],
+  "landRate": 20,
+  "swarm": [
+    "Pidgey",
+    "Pidgey"
+  ],
+  "hoennSounds": [
+    "Plusle",
+    "Minun"
+  ],
+  "sinnohSounds": [
+    "Shinx",
+    "Shinx"
+  ],
+  "warps": [
+    { "x": 1300, "z": 189, "to": "route_5_saffron_gatehouse", "toWarp": 1 },
+    { "x": 1301, "z": 189, "to": "route_5_saffron_gatehouse", "toWarp": 1 },
+    { "x": 1306, "z": 185, "to": "route_5_underground_path_gate", "toWarp": 0 },
+    { "x": 1297, "z": 171, "to": "route_5_house", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "r05_gsmiddleman1", "looks": "gsmiddleman1", "movement": "15", "x": 1306, "z": 186, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_258", "script": "R05_000+1" }
+  ],
+  "signs": [
+    { "x": 1308, "z": 186, "type": 1, "script": "R05_001+1" }
+  ],
+  "triggers": []
+}

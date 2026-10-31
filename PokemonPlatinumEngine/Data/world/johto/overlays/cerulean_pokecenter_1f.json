@@ -1,0 +1,45 @@
+{
+  // Cerulean City's Pokémon Center (plan 20 · J15, part e), the Centers' floor with the town's people. The counters for
+  // the link say it is closed, as in every Center (decision 06 · 7)
+  "area": "cerulean_pokecenter_1f",
+  "bgmTrack": "kanto/fuchsia",
+  "read": {
+    "0": "PC"
+  },
+  "people": {
+    "t04pc0101_pcwoman1": {
+      "name": "Nurse",
+      "script": "Nurse"
+    },
+    "t04pc0101_pcwoman2": {
+      "name": "Receptionist",
+      "dialog": [
+        "Your Trainer Card shows your name, your money and the Pokémon you've seen. Have a look at it from the menu."
+      ]
+    },
+    "t04pc0101_pcwoman2_2": {
+      "name": "Receptionist",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    },
+    "t04pc0101_pcwoman2_3": {
+      "name": "Receptionist",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    },
+    "t04pc0101_gsman1": {
+      "name": "Man",
+      "dialog": [
+        "Misty's Pokémon are Water types. Electric and Grass moves are what you want against her."
+      ]
+    },
+    "t04pc0101_gsbigman": {
+      "name": "Man",
+      "dialog": [
+        "The power plant east of here has been having trouble. The whole region felt the lights flicker last week."
+      ]
+    }
+  }
+}

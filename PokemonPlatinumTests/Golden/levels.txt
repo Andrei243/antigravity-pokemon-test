@@ -219,6 +219,12 @@ surf 20-40
 old rod 3-15
 good rod 10-35
 super rod 30-55
+=== cerulean
+Cerulean City
+surf 5-10
+old rod 10
+good rod 20
+super rod 40
 === cerulean_cave_1f
 Cerulean Cave
 grass 46-61
@@ -248,6 +254,9 @@ super rod 15-35
 === cerulean_city_gym
 Cerulean City
 trainers 2, 16-19: kanto_picnicker_diana 19, kanto_swimmer_male_luis 16
+=== cerulean_gym
+Cerulean City
+trainers 5, 43-48: johto_sailor_eddie 48, johto_sailor_parker 43, johto_swimmer_f_briana 46, johto_swimmer_f_diana 48, johto_swimmer_f_joy 48
 === chargestone_cave_2
 Chargestone Cave
 grass 25-28
@@ -739,6 +748,24 @@ surf 5-10
 old rod 10
 good rod 20
 super rod 40
+=== johto_route_24
+Route 24
+grass 8-14
+surf 5-10
+old rod 10
+good rod 20
+super rod 40
+=== johto_route_25
+Route 25
+grass 8-14
+surf 5-10
+old rod 10
+good rod 20
+super rod 40
+trainers 7, 38-47: johto_camper_lloyd 46, johto_lass_ellen 44, johto_lass_laura 41, johto_lass_shannon 42, johto_school_kid_m_dudley 45, johto_school_kid_m_joe 44, johto_super_nerd_pat 47
+=== johto_route_5
+Route 5
+grass 12-15
 === johto_route_6
 Route 6
 grass 12-15

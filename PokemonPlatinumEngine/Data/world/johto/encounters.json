@@ -22,7 +22,7 @@
     { "area": "route_13", "name": "Route 13", "species": "Chansey" },
     { "area": "route_19", "name": "Route 19", "species": "Clamperl", "way": "surf" },
     { "area": "route_32", "name": "Route 32", "species": "Qwilfish", "way": "fish" },
-    { "area": "route_25", "name": "Route 25", "species": "Buneary" },
+    { "area": "johto_route_25", "name": "Route 25", "species": "Buneary" },
     { "area": "route_27", "name": "Route 27", "species": "Luvdisc", "way": "surf" },
     { "area": "route_34", "name": "Route 34", "species": "Ralts" },
     { "area": "route_35", "name": "Route 35", "species": "Yanma" },

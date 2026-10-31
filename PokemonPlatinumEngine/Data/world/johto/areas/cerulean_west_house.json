@@ -1,0 +1,28 @@
+{
+  "key": "cerulean_west_house",
+  "index": 431,
+  "name": "Cerulean City",
+  "matrix": 96,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_C_HANADA",
+  "nightMusic": "GS_C_HANADA",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 8, "to": "cerulean", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "t04r0301_gsoldwoman1", "looks": "gsoldwoman1", "movement": "17", "x": 5, "z": 6, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "T04R0301_000+1" },
+    { "id": "t04r0301_gsoldman1", "looks": "gsoldman1", "movement": "16", "x": 8, "z": 6, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "T04R0301_001+1" },
+    { "id": "t04r0301_tsure_poke_static_zubat", "looks": "follower_mon_static_zubat", "movement": "3", "x": 2, "z": 6, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "T04R0301_003+1" },
+    { "id": "t04r0301_tsure_poke_static_kangaskhan", "looks": "follower_mon_static_kangaskhan", "movement": "5", "x": 5, "z": 3, "facing": 3, "rangeX": 1, "rangeZ": 0, "script": "T04R0301_002+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

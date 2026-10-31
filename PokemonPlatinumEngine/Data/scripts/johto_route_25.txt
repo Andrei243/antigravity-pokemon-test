@@ -1,0 +1,29 @@
+# Route 25 as HeartGold has it three years on (plan 20 · J15, part e). docs/scripts.md describes the language; the
+# lines are our own, on HeartGold's beats (scr_seq_R25).
+#
+# Misty is out on the cape with a young man while her Gym stands without its Leader. Whoever walks onto the cape's way
+# in, or speaks to her, spoils the date: the young man takes his leave, and Misty goes home to Cerulean City, where she
+# waits in her Gym from then on (FLAG_JOHTO_MISTY_BACK_IN_GYM, a flag of ours, as VAR_JOHTO_MISTY_DATE is: the rulings'
+# "HeartGold's Kanto, part e").
+
+
+script MistysDate
+  if flag FLAG_JOHTO_MISTY_BACK_IN_GYM goto Done
+  scene "MistysDate"
+  setvar VAR_JOHTO_MISTY_DATE 1
+  face r25_gsleader11 player
+  speaker "Misty"
+  say "Huh? Who's there? Can't a Gym Leader have one quiet afternoon on the cape?"
+  speaker "Young man"
+  say "Er... I think I'd better be going. See you, Misty!"
+  hide r25_gsman1
+  speaker "Misty"
+  say "He ran off! Honestly. And you're a trainer, aren't you? I can tell. You came to Cerulean for my Badge."
+  say "Fine. If my afternoon's spoiled anyway, I might as well battle. I'll be waiting at the Gym!"
+  setflag FLAG_JOHTO_MISTY_BACK_IN_GYM
+  hide r25_gsleader11
+  endscene
+  end
+label Done
+  setvar VAR_JOHTO_MISTY_DATE 1
+  end

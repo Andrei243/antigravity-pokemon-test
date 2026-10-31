@@ -1,0 +1,81 @@
+{
+  "key": "cerulean",
+  "index": 52,
+  "name": "Cerulean City",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "City",
+  "dayMusic": "GS_C_HANADA",
+  "nightMusic": "GS_C_HANADA",
+  "encounters": "T04",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "surfSwarm": "Goldeen",
+  "fishSwarm": "Magikarp",
+  "water": [
+    { "species": "Goldeen", "level": 10, "maxLevel": 10 },
+    { "species": "Goldeen", "level": 5, "maxLevel": 5 },
+    { "species": "Seaking", "level": 10, "maxLevel": 10 },
+    { "species": "Seaking", "level": 10, "maxLevel": 10 },
+    { "species": "Seaking", "level": 10, "maxLevel": 10 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 10 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Goldeen", "level": 40, "maxLevel": 40 },
+    { "species": "Goldeen", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 },
+    { "species": "Seaking", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "warps": [
+    { "x": 1305, "z": 116, "to": "cerulean_north_house", "toWarp": 0 },
+    { "x": 1319, "z": 123, "to": "cerulean_east_house", "toWarp": 0 },
+    { "x": 1304, "z": 131, "to": "cerulean_west_house", "toWarp": 0 },
+    { "x": 1309, "z": 131, "to": "cerulean_pokecenter_1f", "toWarp": 0 },
+    { "x": 1318, "z": 134, "to": "cerulean_gym", "toWarp": 0 },
+    { "x": 1308, "z": 144, "to": "cerulean_pokemart", "toWarp": 0 },
+    { "x": 1298, "z": 144, "to": "cerulean_bike_maniac_house", "toWarp": 0 },
+    { "x": 1290, "z": 107, "to": "cerulean_cave_1f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "t04_gsman1", "looks": "gsman1", "movement": "3", "x": 1307, "z": 119, "facing": 2, "rangeX": 3, "rangeZ": 1, "script": "T04_000+1" },
+    { "id": "t04_gswoman1", "looks": "gswoman1", "movement": "0", "x": 1297, "z": 127, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "T04_002+1" },
+    { "id": "t04_tsure_poke_static_slowbro", "looks": "follower_mon_static_slowbro", "movement": "2", "x": 1296, "z": 127, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "T04_003+1" },
+    { "id": "t04_gsbigman", "looks": "gsbigman", "movement": "3", "x": 1314, "z": 136, "facing": 1, "rangeX": 2, "rangeZ": 1, "script": "T04_004+1" },
+    { "id": "t04_gsman2", "looks": "gsman2", "movement": "3", "x": 1326, "z": 116, "facing": 2, "rangeX": 2, "rangeZ": 3, "script": "T04_001+1" },
+    { "id": "t04_gsboy1", "looks": "gsboy1", "movement": "2", "x": 1300, "z": 110, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "T04_005+1" },
+    { "id": "t04_gsmiddleman1", "looks": "gsmiddleman1", "movement": "14", "x": 1325, "z": 108, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CAMERON", "script": "T04_011+1" },
+    { "id": "t04_gsman1_2", "looks": "gsman1", "movement": "0", "x": 1290, "z": 108, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CERULEAN_CITY_MAN_OUTSIDE_CAVE", "script": "T04_013+1" }
+  ],
+  "signs": [
+    { "x": 1324, "z": 106, "type": 1, "script": "T04_010+1" },
+    { "x": 1321, "z": 135, "type": 1, "script": "T04_007+1" },
+    { "x": 1309, "z": 137, "type": 1, "script": "T04_006+1" },
+    { "x": 1317, "z": 123, "type": 1, "script": "T04_009+1" },
+    { "x": 1295, "z": 144, "type": 1, "script": "T04_008+1" },
+    { "x": 1298, "z": 110, "type": 2, "script": "std_hiddenitem_t04_nugget", "item": "Nugget", "flag": "FLAG_HIDDEN_ITEM_T04_NUGGET" }
+  ],
+  "triggers": []
+}

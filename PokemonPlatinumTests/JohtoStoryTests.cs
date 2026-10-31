@@ -1858,4 +1858,41 @@ public class JohtoStoryTests
         Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM19")!));
         Assert.Contains(game.Read(9, 44).Transcript, l => l.Text.Contains("Winning"));
     }
+
+    [Fact]
+    public void MistyIsFetchedFromTheCapeAndGivesKantosCascadeBadgeInCeruleansGym()
+    {
+        // Plan 20 · J15, part e: the Cerulean Gym, come to by Route 5 from Saffron City, stands without its Leader
+        var game = new Game();
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Typhlosion")!, 60));
+        game.Arrive("Cerulean_Gym", 10, 24);
+        Assert.Null(game.Present("t04gym0101_gsleader11"));
+        Assert.NotNull(game.Present("t04gym0101_gsswimmerw"));
+        Assert.Contains(game.Talk("t04gym0101_sunglasses").Transcript, l => l.Text.Contains("Route 25"));
+
+        // Misty on Route 25's cape: the date spoiled by a step onto the cape's way in, once
+        game.Arrive("Johto", 1416, 41);
+        Assert.NotNull(game.Present("r25_gsleader11"));
+        Assert.True(game.Fires("MistysDate"));
+        game.Step("MistysDate");
+        Assert.True(game.Story.Has("FLAG_JOHTO_MISTY_BACK_IN_GYM"));
+        Assert.Null(game.Present("r25_gsleader11"));
+        Assert.Null(game.Present("r25_gsman1"));
+        Assert.False(game.Fires("MistysDate"));
+
+        // Misty at home: Kanto's Cascade Badge, not Johto's, her five trainers counted beaten, and TM55 once
+        game.Arrive("Cerulean_Gym", 10, 24);
+        Assert.NotNull(game.Present("t04gym0101_gsleader11"));
+        Assert.DoesNotContain(game.Read(8, 21).Transcript, l => l.Text.Contains("Winning"));
+        int johtoBadges = game.Story.BadgeCount(RegionDatabase.Johto);
+        Assert.Contains(game.Talk("t04gym0101_gsleader11").Log, l => l.StartsWith("battle johto_leader_misty_misty Won"));
+        Assert.True(game.Story.HasBadge(RegionDatabase.Kanto, "Cascade"));
+        Assert.Equal(johtoBadges, game.Story.BadgeCount(RegionDatabase.Johto));
+        foreach (string trainer in new[] { "johto_swimmer_f_diana", "johto_swimmer_f_joy", "johto_swimmer_f_briana", "johto_sailor_eddie", "johto_sailor_parker" })
+            Assert.True(game.Story.HasDefeated(trainer), trainer);
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM55")!));
+        game.Talk("t04gym0101_gsleader11");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM55")!));
+        Assert.Contains(game.Read(12, 21).Transcript, l => l.Text.Contains("Winning"));
+    }
 }

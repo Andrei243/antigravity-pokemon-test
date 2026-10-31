@@ -201,10 +201,13 @@ public sealed class HgWorld
     /// Victory Road takes <c>kanto_</c>, since a script file and the regions' areas are found by the key alone. The
     /// rest of HeartGold's Kanto shares FireRed's keys too (<c>route_1</c>, <c>route_25</c>): the session that opens
     /// it adds them here: Route 6, between Vermilion and Saffron, since plan 20 · J15, part c; Routes 7 and 8, west to
-    /// Celadon and east to Lavender, since part d.
+    /// Celadon and east to Lavender, since part d; Route 5 north to Cerulean, Routes 24 and 25 beyond it and the Sea
+    /// Cottage on the cape, since part e.
     /// </summary>
     public static bool Clashes(string key) =>
-        key.StartsWith("victory_road", StringComparison.Ordinal) || key is "route_22" or "pokemon_league_hall_of_fame" or "route_6" or "route_7" or "route_8";
+        key.StartsWith("victory_road", StringComparison.Ordinal)
+        || key is "route_22" or "pokemon_league_hall_of_fame" or "route_6" or "route_7" or "route_8"
+            or "route_5" or "route_24" or "route_25" or "route_25_sea_cottage";
 
     /// <summary>The area's table of wild Pokémon, by its header's bank (<c>R29</c>); null for none.</summary>
     public HgEncounters? EncountersOf(HgHeader header) => header.Encounters == null ? null : Encounters.FirstOrDefault(e => e.Map == header.Encounters);

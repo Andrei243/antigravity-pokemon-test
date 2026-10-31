@@ -1,0 +1,38 @@
+{
+  // Cerulean City's Poké Mart (plan 20 · J15, part e). Its delivery men are the original's gifts, which this game has
+  // no use for
+  "area": "cerulean_pokemart",
+  "bgmTrack": "kanto/fuchsia",
+  "people": {
+    "t04fs0101_shopm1_2": {
+      "name": "Clerk",
+      "script": "Clerk",
+      "still": true,
+      "dialog": [
+        "Welcome! How can I help you?"
+      ]
+    },
+    "t04fs0101_shopm1_2_2": {
+      "name": "Clerk",
+      "script": "Clerk",
+      "still": true,
+      "dialog": [
+        "Welcome! How can I help you?"
+      ]
+    },
+    "t04fs0101_gsman3": {
+      "name": "Man",
+      "still": true,
+      "dialog": [
+        "I'm stocking up on Repels. The grass by the river is thick with Pokémon this time of year."
+      ]
+    },
+    "t04fs0101_gswoman3": {
+      "name": "Woman",
+      "still": true,
+      "dialog": [
+        "Paralyze Heals, Antidotes, Awakenings... I always forget one, and it's always the one I need."
+      ]
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "people": {
+    "r05r0301_counterm": {
+      "name": {
+        "en": [
+          "Officer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Route 5 runs north to Cerulean City. It's a short walk, and an easy one."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

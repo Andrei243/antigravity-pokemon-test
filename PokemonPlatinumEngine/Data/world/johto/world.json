@@ -279,7 +279,19 @@
     { "name": "Lavender_NameRater", "matrix": 140, "area": "lavender_name_rater", "trees": "Round", "setting": "Indoors" },
     { "name": "Lavender_SouthwestHouse", "matrix": 96, "area": "lavender_southwest_house", "trees": "Round", "setting": "Indoors" },
     { "name": "Lavender_VolunteerHouse", "matrix": 193, "area": "lavender_volunteer_pokemon_house", "trees": "Round", "setting": "Indoors" },
-    { "name": "Lavender_HouseOfMemories", "matrix": 194, "area": "lavender_house_of_memories", "trees": "Round", "setting": "Indoors" }
+    { "name": "Lavender_HouseOfMemories", "matrix": 194, "area": "lavender_house_of_memories", "trees": "Round", "setting": "Indoors" },
+    // Plan 20 · J15, part e: Route 5's gate and house north of Saffron City, Cerulean City's rooms and Gym, and Route 25's Sea Cottage (named for the cape: Kanto's FireRed map has Route25_SeaCottage)
+    { "name": "Route5_SaffronGate", "matrix": 69, "area": "route_5_saffron_gatehouse", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route5_House", "matrix": 66, "area": "route_5_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "Cerulean_PokemonCenter_1F", "matrix": 73, "area": "cerulean_pokecenter_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Cerulean_PokemonCenter_B1F", "matrix": 77, "area": "cerulean_pokecenter_b1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Cerulean_Mart", "matrix": 104, "area": "cerulean_pokemart", "trees": "Round", "setting": "Indoors" },
+    { "name": "Cerulean_NorthHouse", "matrix": 96, "area": "cerulean_north_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "Cerulean_EastHouse", "matrix": 97, "area": "cerulean_east_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "Cerulean_WestHouse", "matrix": 96, "area": "cerulean_west_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "Cerulean_BikeManiacHouse", "matrix": 274, "area": "cerulean_bike_maniac_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "Cerulean_Gym", "matrix": 257, "area": "cerulean_gym", "trees": "Round", "setting": "Indoors" },
+    { "name": "CeruleanCape_SeaCottage", "matrix": 254, "area": "johto_route_25_sea_cottage", "trees": "Round", "setting": "Indoors" }
   ],
   "areas": [
     // Plan 20 · J2: New Bark Town to Route 31's gate house, with their rooms
@@ -384,6 +396,10 @@
     "celadon_department_store_1f", "celadon_condominiums_1f", "celadon_restaurant", "celadon_gym",
     "route_8_saffron_gatehouse", "johto_route_8", "lavender", "lavender_pokecenter_1f", "lavender_pokecenter_b1f",
     "lavender_pokemart", "lavender_name_rater", "lavender_southwest_house", "lavender_volunteer_pokemon_house",
-    "lavender_house_of_memories"
+    "lavender_house_of_memories",
+    // Plan 20 · J15, part e: Route 5 north to Cerulean City with its rooms and Gym, and Routes 24 and 25 to the Sea Cottage on the cape
+    "route_5_saffron_gatehouse", "johto_route_5", "route_5_house", "cerulean", "cerulean_pokecenter_1f", "cerulean_pokecenter_b1f",
+    "cerulean_pokemart", "cerulean_north_house", "cerulean_east_house", "cerulean_west_house", "cerulean_bike_maniac_house",
+    "cerulean_gym", "johto_route_24", "johto_route_25", "johto_route_25_sea_cottage"
   ]
 }

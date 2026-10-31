@@ -1,0 +1,77 @@
+{
+  "people": {
+    "t04r0301_gsoldwoman1": {
+      "name": {
+        "en": [
+          "Old woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Our Kangaskhan has looked after us for years. Now we look after it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t04r0301_gsoldman1": {
+      "name": {
+        "en": [
+          "Old man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "That Zubat flew in from the cave one night and decided to stay. It sleeps upside down on the curtain rail."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t04r0301_tsure_poke_static_zubat": {
+      "name": {
+        "en": [
+          "Zubat"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Zubat fluttered round the room and squeaked."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t04r0301_tsure_poke_static_kangaskhan": {
+      "name": {
+        "en": [
+          "Kangaskhan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Kangaskhan patted the little one in its pouch."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

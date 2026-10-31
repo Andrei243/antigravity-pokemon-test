@@ -8603,6 +8603,52 @@ way 0
 way 1, from answer 1
   * battle kanto_leader_misty Lost
   * scene over, unseen
+=== cerulean_gym.Guide
+from Gym guide at 13,21 of Cerulean_Gym
+way -
+  Gym guide> Hey, champ in the making! Bad news, I'm afraid. Misty isn't here.
+  Gym guide> She slipped out to the cape north of town again. Try Route 25, past Nugget Bridge.
+=== cerulean_gym.Misty
+from Misty at 10,1 of Cerulean_Gym
+way 0
+  Misty> So you came after all. You did spoil my afternoon on the cape, you know.
+  Misty> Still, a Champion from Johto doesn't turn up every day. My Water Pokémon have been itching for a real battle.
+  Misty> Let's make a splash! Show me what you've got!
+  Misty> Wow... you really are strong. All right, you've earned it. Here's the Cascade Badge.
+  > Lucas received the Cascade Badge from Misty!
+  Misty> Take this too. It's a move my Pokémon love to use.
+  > Lucas received the TM55!
+  > TM55 holds the move Brine.
+  > Lucas put it away in the TMs & HMs pocket.
+  Misty> TM55 is Brine. It hits twice as hard when the foe is down to half its HP or less.
+  * scene cerulean_gym.Misty
+  * battle johto_leader_misty_misty Won
+  * fanfare FanfareBadge
+  * defeat johto_swimmer_f_diana
+  * defeat johto_swimmer_f_joy
+  * defeat johto_swimmer_f_briana
+  * defeat johto_sailor_eddie
+  * defeat johto_sailor_parker
+  * endscene
+  * fanfare FanfareTM
+  + FLAG_JOHTO_DEFEATED_MISTY
+  + FLAG_JOHTO_GOT_TM55_FROM_MISTY
+  + beaten johto_leader_misty_misty
+  + beaten johto_sailor_eddie
+  + beaten johto_sailor_parker
+  + beaten johto_swimmer_f_briana
+  + beaten johto_swimmer_f_diana
+  + beaten johto_swimmer_f_joy
+  = badges Kanto 0 -> 10
+  + seen cerulean_gym.Misty
+way 1, from answer 1
+  * battle johto_leader_misty_misty Lost
+  * scene over, unseen
+=== cerulean_gym.Statue
+from the tile read at 12,21 of Cerulean_Gym
+from the tile read at 8,21 of Cerulean_Gym
+way -
+  > Cerulean City Pokémon Gym\nLeader: Misty
 === chargestone_cave_2.BiancaAtTheMouth
 from the trigger at 8,50 of ChargestoneCave
 way -
@@ -16444,6 +16490,19 @@ from the trigger at 21,15 of JaggedPass
 from the trigger at 21,20 of JaggedPass
 from the trigger at 22,20 of JaggedPass
 way -
+=== johto_route_25.MistysDate
+from Misty at 1421,47 of Johto
+from the trigger at 1418,40 of Johto
+way -
+  Misty> Huh? Who's there? Can't a Gym Leader have one quiet afternoon on the cape?
+  Young man> Er... I think I'd better be going. See you, Misty!
+  Misty> He ran off! Honestly. And you're a trainer, aren't you? I can tell. You came to Cerulean for my Badge.
+  Misty> Fine. If my afternoon's spoiled anyway, I might as well battle. I'll be waiting at the Gym!
+  * scene johto_route_25.MistysDate
+  * endscene
+  + FLAG_JOHTO_MISTY_BACK_IN_GYM
+  = VAR_JOHTO_MISTY_DATE 0 -> 1
+  + seen johto_route_25.MistysDate
 === johto_victory_road_3f.Gone
 from {rival} at 33,29 of IndigoVictoryRoad_3F
 way -

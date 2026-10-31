@@ -42,6 +42,11 @@ public class JohtoTests
         "celadon_department_store_1f", "celadon_condominiums_1f", "celadon_restaurant", "route_8_saffron_gatehouse",
         "johto_route_8", "lavender", "lavender_pokecenter_1f", "lavender_pokecenter_b1f", "lavender_pokemart",
         "lavender_name_rater", "lavender_southwest_house", "lavender_volunteer_pokemon_house", "lavender_house_of_memories",
+        // Plan 20 · J15, part e: Route 5 with its gate and house, Cerulean City with its rooms, Routes 24 and 25 and the
+        // Sea Cottage (Cerulean's Gym plays Johto's Gym theme)
+        "route_5_saffron_gatehouse", "johto_route_5", "route_5_house", "cerulean", "cerulean_pokecenter_1f",
+        "cerulean_pokecenter_b1f", "cerulean_pokemart", "cerulean_north_house", "cerulean_east_house", "cerulean_west_house",
+        "cerulean_bike_maniac_house", "johto_route_24", "johto_route_25", "johto_route_25_sea_cottage",
     };
 
     [Fact]
@@ -727,11 +732,11 @@ public class JohtoTests
         }
         Assert.Equal("celadon", HgWorld.KeyOf("MAP_CELADON"));
         Assert.Equal("lavender", HgWorld.KeyOf("MAP_LAVENDER"));
-        // What waits stays shut: the north gate to Route 5 and Silph Co., the Game Corner and its prize corner, the
-        // store's and the condominiums' floors above, and the Radio Tower
+        // What waits stays shut: Silph Co., the Game Corner and its prize corner, the store's and the condominiums'
+        // floors above, and the Radio Tower (the north gate to Route 5 is open since part e)
         var saffron = Johto.Area("saffron")!;
-        foreach (int shut in new[] { 4, 8 }) Assert.Empty(Overworld.WarpsAt(saffron.Warps[shut].X, saffron.Warps[shut].Z));
-        foreach (int open in new[] { 2, 15 }) Assert.NotEmpty(Overworld.WarpsAt(saffron.Warps[open].X, saffron.Warps[open].Z));
+        foreach (int shut in new[] { 8 }) Assert.Empty(Overworld.WarpsAt(saffron.Warps[shut].X, saffron.Warps[shut].Z));
+        foreach (int open in new[] { 2, 4, 15 }) Assert.NotEmpty(Overworld.WarpsAt(saffron.Warps[open].X, saffron.Warps[open].Z));
         var celadon = Johto.Area("celadon")!;
         foreach (int shut in new[] { 3, 4 }) Assert.Empty(Overworld.WarpsAt(celadon.Warps[shut].X, celadon.Warps[shut].Z));
         var lavender = Johto.Area("lavender")!;
@@ -746,6 +751,46 @@ public class JohtoTests
         Assert.Equal(InteriorStyle.PokemonCenter, MapNamed("Lavender_PokemonCenter_1F").Interior);
         // Route 8's Apricorn tree bears its colour
         Assert.Contains(Overworld.Everyone, n => n.IsApricornTree && n.Key == "r08_bonguri");
+    }
+
+    [Fact]
+    public void CeruleanAndTheCapeAreWalkedToFromSaffronAndMistyIsReachedAtTheHeadOfHerPool()
+    {
+        // Plan 20 · J15, part e: Route 5 north to Cerulean City by Saffron's north gate, and Routes 24 and 25 beyond it
+        var walked = Walked.Value;
+        var outside = walked.Single(kv => kv.Key.Name == "Johto").Value;
+        foreach (string key in new[] { "johto_route_5", "cerulean", "johto_route_24", "johto_route_25" })
+            Assert.True(outside.Any(t => Overworld.AreaAt(t.X, t.Y)?.Key == key), $"{key} can't be walked to from the start");
+        foreach (string name in new[] { "Route5_SaffronGate", "Route5_House", "Cerulean_PokemonCenter_1F", "Cerulean_PokemonCenter_B1F",
+                     "Cerulean_Mart", "Cerulean_NorthHouse", "Cerulean_EastHouse", "Cerulean_WestHouse", "Cerulean_BikeManiacHouse",
+                     "Cerulean_Gym", "CeruleanCape_SeaCottage" })
+        {
+            Assert.True(walked.Keys.Any(m => m.Name == name), $"nobody walks into {name}");
+            Assert.Equal(RegionDatabase.Johto, RegionDatabase.RegionOfMap(name)!.Id);
+        }
+        // The roads' keys and the cottage's meet FireRed's, so they take Johto's prefix; the town's own don't
+        foreach (string key in new[] { "route_5", "route_24", "route_25", "route_25_sea_cottage" })
+        {
+            Assert.True(HgWorld.Clashes(key));
+            Assert.Equal("johto_" + key, HgWorld.KeyOf("MAP_" + key.ToUpperInvariant()));
+        }
+        Assert.Equal("cerulean", HgWorld.KeyOf("MAP_CERULEAN"));
+        Assert.Equal("cerulean_gym", HgWorld.KeyOf("MAP_CERULEAN_GYM"));
+        // What waits stays shut: the Underground Path's gate on Route 5 and Cerulean Cave
+        var route5 = Johto.Area("johto_route_5")!;
+        Assert.Empty(Overworld.WarpsAt(route5.Warps[2].X, route5.Warps[2].Z));
+        var cerulean = Johto.Area("cerulean")!;
+        Assert.Empty(Overworld.WarpsAt(cerulean.Warps[7].X, cerulean.Warps[7].Z));
+        Assert.DoesNotContain(walked.Keys, m => m.Name.StartsWith("CeruleanCave", StringComparison.Ordinal));
+        // Misty stands at the head of her pool, reached along its walkways
+        var gym = walked.Single(kv => kv.Key.Name == "Cerulean_Gym");
+        var misty = gym.Key.Everyone.Single(n => n.Key == "t04gym0101_gsleader11");
+        Assert.Contains(gym.Value, t => Math.Abs(t.X - misty.GridX) + Math.Abs(t.Y - misty.GridY) == 1);
+        Assert.NotNull(TrainerDatabase.Get("johto_leader_misty_misty", RegionDatabase.Johto));
+        Assert.Equal(InteriorStyle.PokemonCenter, MapNamed("Cerulean_PokemonCenter_1F").Interior);
+        // Misty's date on the cape, reached along Route 25
+        var cape = Overworld.Everyone.Single(n => n.Key == "r25_gsleader11");
+        Assert.Contains(outside, t => Math.Abs(t.X - cape.GridX) + Math.Abs(t.Y - cape.GridY) == 1);
     }
 
     [Fact]

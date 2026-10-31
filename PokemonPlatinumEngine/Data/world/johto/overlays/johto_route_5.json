@@ -1,0 +1,19 @@
+{
+  // Route 5 as HeartGold has it three years on (plan 20 · J15, part e): the short road north from Saffron City's gate to
+  // Cerulean City. Its key meets FireRed's, so it takes Johto's prefix (HgWorld.Clashes). The gate to the Underground
+  // Path (warp 2) stays shut, and the man HeartGold keeps before it behind FLAG_UNK_258 says so
+  "area": "johto_route_5",
+  "bgmTrack": "kanto/route3",
+  "locked": [ 2 ],
+  "people": {
+    "r05_gsmiddleman1": {
+      "name": "Man",
+      "still": true,
+      "hiddenBy": "",
+      "dialog": [ "The Underground Path is closed while they fix the lights. Walk round by Saffron City instead." ]
+    }
+  },
+  "signs": {
+    "R05_001+1": "Underground Path\nCerulean City - Vermilion City\nClosed for repairs."
+  }
+}

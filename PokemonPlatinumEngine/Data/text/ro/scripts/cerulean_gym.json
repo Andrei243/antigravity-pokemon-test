@@ -1,0 +1,128 @@
+{
+  "Misty": [
+    {
+      "en": [
+        "Misty"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "So you came after all. You did spoil my afternoon on the cape, you know."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Still, a Champion from Johto doesn't turn up every day. My Water Pokémon have been itching for a real battle."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Let's make a splash! Show me what you've got!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wow... you really are strong. All right, you've earned it. Here's the Cascade Badge."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Cascade Badge from Misty!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Take this too. It's a move my Pokémon love to use."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "TM55 is Brine. It hits twice as hard when the foe is down to half its HP or less."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Next time, I'll beat you. Then you can owe me an afternoon on the cape!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Guide": [
+    {
+      "en": [
+        "Hey, champ in the making! Bad news, I'm afraid. Misty isn't here."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "She slipped out to the cape north of town again. Try Route 25, past Nugget Bridge."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Misty's back! Her Pokémon are Water types, so Electric and Grass moves will serve you well."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You beat Misty! What a battle. The whole pool was splashing!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Statue": [
+    {
+      "en": [
+        "Cerulean City Pokémon Gym\nLeader: Misty"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Cerulean City Pokémon Gym\nLeader: Misty\nWinning trainers: {player}"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}
