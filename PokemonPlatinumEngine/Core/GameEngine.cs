@@ -194,7 +194,7 @@ public partial class GameEngine
     public string? NewGameRegion { get; set; }
 
     /// <summary>The record of the region a new game starts in: <see cref="NewGameRegion"/>'s, or the chain's first.</summary>
-    private Region NewGameRegionRecord => (NewGameRegion != null ? RegionDatabase.Get(NewGameRegion) : null) ?? RegionDatabase.First;
+    private Region NewGameRegionRecord => PlusRegion ?? (NewGameRegion != null ? RegionDatabase.Get(NewGameRegion) : null) ?? RegionDatabase.First;
 
     /// <summary>The strip of the party menu and the Pokétch's app: the granted moves nobody on the team knows (plan 12 · Q18).</summary>
     /// <summary>
@@ -455,6 +455,8 @@ public partial class GameEngine
         flow.Teams = new List<SavedTeam>();
 
         InitializeNewGame();
+        // NEW GAME+ (plan 13 · V11): what the finished save carries, before any id is given
+        CarryOver();
         GiveIds();
         flow.Journal.TakenUp(GameClock.Today, PlaceName());
         EnterGame();
@@ -1095,6 +1097,8 @@ public partial class GameEngine
                         // found empty
                         newGameSlot = flow.TitleScreen.Slot;
                         newGameRun = flow.TitleScreen.ChosenRun;
+                        // A NEW GAME+ begins in the region its save finished (plan 13 · V11)
+                        newGamePlus = flow.TitleScreen.ChosenPlus;
                         flow.State = GameState.Intro;
                         flow.IntroScreen.Open(GameSettings.CharactersPerSecond(Settings.TextSpeed), NewGameRegionRecord);
                         AudioManager.PlayMusic(MusicRole.Introduction);
@@ -2558,6 +2562,7 @@ public partial class GameEngine
                 LocalNames.Species(f.Pokemon.SpeciesName), f.Pokemon.Level,
                 PlayerIdentity.Fill(LocalNames.PlaceShown(f.PlaceKey, f.Place)))).ToList(),
             RunEnded = flow.RunState.Ended,
+            Clears = flow.RunState.Clears,
             Score = flow.TrainerScore,
             Stars = stars,
             NextObjective = NextObjectiveLine,

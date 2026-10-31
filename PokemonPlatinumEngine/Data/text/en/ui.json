@@ -497,7 +497,9 @@
         "other": "It will be saved in slot {slot}. The saves you have are kept as they are."
       },
       "no": "NO, GO BACK",
-      "yes": "YES, NEW GAME"
+      "yes": "YES, NEW GAME",
+      "plus": "NEW GAME+",
+      "plusBlurb": "Slot {slot}. NEW GAME+ carries slot {from}'s Pokédex, boxes and half its money from {region} into a harder journey."
     },
     "delete": {
       "heading": "Delete slot {slot}?",
@@ -1070,6 +1072,7 @@
     "stars": "STARS",
     "starsNote": "A star for each of five great feats.",
     "runEnded": "RUN OVER",
+    "clears": "NEW GAME+ {n}",
     "packs": { "one": "PACK: {name}", "other": "{n} PACKS" },
     "graveyard": "GRAVEYARD  {count}",
     "graveyardEmpty": "Nobody has fallen yet.",

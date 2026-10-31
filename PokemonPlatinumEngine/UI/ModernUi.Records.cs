@@ -568,6 +568,12 @@ internal static partial class ModernUi
             string ended = Text.Of("card.runEnded");
             UiFonts.Draw(ended, right - UiFonts.Measure(ended, 40, UiWeight.Black), top + 14, 40, Red, UiWeight.Black);
         }
+        // ... and a journey begun again by New Game+ counts its clears there (plan 13 · V11)
+        else if (info.Clears > 0)
+        {
+            string clears = Text.Of("card.clears", ("n", info.Clears));
+            UiFonts.Draw(clears, right - UiFonts.Measure(clears, 40, UiWeight.Black), top + 14, 40, Darker(Gold, 0.15f), UiWeight.Black);
+        }
         UiFonts.Draw(Text.Of("card.runSub"), x, top + 82, 28, Muted, UiWeight.ExtraBold);
         UiShapes.Fill(new Rectangle(x, top + 128, right - x, 3), 1.5f, Rule);
         var shown = RunPanel.Showing(run);

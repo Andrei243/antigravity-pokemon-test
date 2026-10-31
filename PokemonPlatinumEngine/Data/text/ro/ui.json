@@ -504,7 +504,9 @@
         "other": "Va fi salvat în slotul {slot}. Salvările pe care le ai rămân cum sunt."
       },
       "no": "NU, ÎNAPOI",
-      "yes": "DA, JOC NOU"
+      "yes": "DA, JOC NOU",
+      "plus": "JOC NOU+",
+      "plusBlurb": "Slotul {slot}. JOC NOU+ ia din slotul {from} Pokédexul, cutiile și jumătate din bani din {region}, într-o călătorie mai grea."
     },
     "delete": {
       "heading": "Ștergi slotul {slot}?",
@@ -1294,6 +1296,7 @@
     "debut": "DEBUT ÎN SALA FAIMEI",
     "debutWhen": "{date}   {time}",
     "runEnded": "JOC TERMINAT",
+    "clears": "JOC NOU+ {n}",
     "packs": { "one": "PACHET: {name}", "few": "{n} PACHETE", "other": "{n} DE PACHETE" },
     "graveyard": "CIMITIR  {count}",
     "graveyardEmpty": "Încă nu a leșinat nimeni.",
