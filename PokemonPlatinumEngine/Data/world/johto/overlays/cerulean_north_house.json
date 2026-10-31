@@ -1,0 +1,11 @@
+{
+  // A house in the north of Cerulean City (plan 20 · J15, part e)
+  "area": "cerulean_north_house",
+  "bgmTrack": "kanto/fuchsia",
+  "people": {
+    "t04r0101_gsmiddleman1": {
+      "name": "Man",
+      "dialog": [ "A man who swapped Pokémon with everyone used to live here. He moved away, and I took the house." ]
+    }
+  }
+}

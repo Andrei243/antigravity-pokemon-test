@@ -1,0 +1,26 @@
+{
+  "key": "route_5_house",
+  "index": 517,
+  "name": "Route 5",
+  "matrix": 66,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_R_12_03",
+  "nightMusic": "GS_R_12_03",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 8, "to": "johto_route_5", "toWarp": 3 }
+  ],
+  "objects": [
+    { "id": "r05r0401_gsoldwoman1", "looks": "gsoldwoman1", "movement": "18", "x": 3, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "R05R0401_000+1" },
+    { "id": "r05r0401_gswoman1", "looks": "gswoman1", "movement": "16", "x": 8, "z": 5, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "R05R0401_001+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

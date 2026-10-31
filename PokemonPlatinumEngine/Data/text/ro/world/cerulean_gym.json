@@ -1,0 +1,155 @@
+{
+  "people": {
+    "t04gym0101_gsleader11": {
+      "name": {
+        "en": [
+          "Misty"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t04gym0101_sunglasses": {
+      "name": {
+        "en": [
+          "Gym guide"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t04gym0101_gsswimmerw": {
+      "name": {
+        "en": [
+          "Diana"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Diana: I've swum laps here since before you could walk. Let's see you keep up!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Diana: I've run out of breath."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t04gym0101_gsswimmerw_2": {
+      "name": {
+        "en": [
+          "Joy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Joy: Misty taught me to swim, and to battle. You'll get the lesson too!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Joy: I'll need a few more lessons myself."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t04gym0101_gsswimmerw_3": {
+      "name": {
+        "en": [
+          "Briana"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Briana: The water's lovely today. Come on in, if you can beat me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Briana: I'll just float here for a while."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t04gym0101_seaman_2": {
+      "name": {
+        "en": [
+          "Eddie"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Sailor Eddie: I sailed every sea there is, and I still come back to Misty's pool!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Sailor Eddie: Sunk in a swimming pool. The shame of it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t04gym0101_seaman_2_2": {
+      "name": {
+        "en": [
+          "Parker"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Sailor Parker: Ahoy! No landlubber gets past me without a battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Sailor Parker: You've got your sea legs, all right."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

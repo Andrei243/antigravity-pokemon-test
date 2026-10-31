@@ -564,6 +564,9 @@ public static class RegionDatabase
                 // Plan 20 · J15, part d: Routes 7 and 8's gates, Celadon City's rooms and Gym, Lavender Town's rooms
                 "Route7_SaffronGate", "Route8_SaffronGate", "Celadon_PokemonCenter_1F", "Celadon_PokemonCenter_B1F", "Celadon_DeptStore_1F", "Celadon_Condominiums_1F", "Celadon_Restaurant", "Celadon_Gym",
                 "Lavender_PokemonCenter_1F", "Lavender_PokemonCenter_B1F", "Lavender_Mart", "Lavender_NameRater", "Lavender_SouthwestHouse", "Lavender_VolunteerHouse", "Lavender_HouseOfMemories",
+                // Plan 20 · J15, part e: Route 5's gate and house, Cerulean City's rooms and Gym, Route 25's Sea Cottage
+                "Route5_SaffronGate", "Route5_House", "Cerulean_PokemonCenter_1F", "Cerulean_PokemonCenter_B1F", "Cerulean_Mart", "Cerulean_NorthHouse",
+                "Cerulean_EastHouse", "Cerulean_WestHouse", "Cerulean_BikeManiacHouse", "Cerulean_Gym", "CeruleanCape_SeaCottage",
             }
         },
         new()

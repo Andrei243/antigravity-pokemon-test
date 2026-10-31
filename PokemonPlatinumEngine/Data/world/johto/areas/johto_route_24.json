@@ -1,0 +1,89 @@
+{
+  "key": "johto_route_24",
+  "index": 28,
+  "name": "Route 24",
+  "matrix": 0,
+  "kind": "Route",
+  "sign": "Route",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "General",
+  "dayMusic": "GS_R_12_24",
+  "nightMusic": "GS_R_12_24",
+  "encounters": "R24",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Bellsprout", "level": 8, "night": "Venonat" },
+    { "species": "Bellsprout", "level": 10, "day": "Sunkern", "night": "Oddish" },
+    { "species": "Bellsprout", "level": 8, "night": "Venonat" },
+    { "species": "Bellsprout", "level": 10, "day": "Sunkern", "night": "Oddish" },
+    { "species": "Abra", "level": 9 },
+    { "species": "Abra", "level": 9 },
+    { "species": "Weepinbell", "level": 12 },
+    { "species": "Weepinbell", "level": 12 },
+    { "species": "Venonat", "level": 8, "day": "Bellsprout", "night": "Bellsprout" },
+    { "species": "Weepinbell", "level": 14, "night": "Venomoth" },
+    { "species": "Venonat", "level": 8, "day": "Bellsprout", "night": "Bellsprout" },
+    { "species": "Weepinbell", "level": 14, "night": "Venomoth" }
+  ],
+  "landRate": 20,
+  "swarm": [
+    "Bellsprout",
+    "Bellsprout"
+  ],
+  "surfSwarm": "Goldeen",
+  "fishSwarm": "Magikarp",
+  "water": [
+    { "species": "Goldeen", "level": 10, "maxLevel": 10 },
+    { "species": "Goldeen", "level": 5, "maxLevel": 5 },
+    { "species": "Seaking", "level": 10, "maxLevel": 10 },
+    { "species": "Seaking", "level": 10, "maxLevel": 10 },
+    { "species": "Seaking", "level": 10, "maxLevel": 10 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 10 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Goldeen", "level": 40, "maxLevel": 40 },
+    { "species": "Goldeen", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 },
+    { "species": "Seaking", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "hoennSounds": [
+    "Whismur",
+    "Linoone"
+  ],
+  "sinnohSounds": [
+    "Buizel",
+    "Bidoof"
+  ],
+  "warps": [],
+  "objects": [
+    { "id": "r24_gsman1", "looks": "gsman1", "movement": "16", "x": 1325, "z": 80, "facing": 2, "rangeX": 0, "rangeZ": 0, "y": 196608, "script": "R24_000+1" },
+    { "id": "r24_gswoman2", "looks": "gswoman2", "movement": "16", "x": 1325, "z": 81, "facing": 2, "rangeX": 0, "rangeZ": 0, "y": 196608, "script": "R24_001+1" },
+    { "id": "r24_rocketm", "looks": "rocketm", "movement": "15", "x": 1328, "z": 81, "facing": 1, "rangeX": 0, "rangeZ": 0, "y": 196608, "hiddenBy": "FLAG_HIDE_ROUTE_24_ROCKET", "script": "R24_002+1" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 1325, "z": 76, "width": 4, "depth": 10, "script": "R24_003+1", "variable": "VAR_SCENE_ROUTE_24_ROCKET", "value": "1" }
+  ]
+}

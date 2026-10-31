@@ -1,0 +1,16 @@
+{
+  // The house on Route 5, by the road north of Saffron City (plan 20 · J15, part e)
+  "area": "route_5_house",
+  "bgmTrack": "kanto/route3",
+  "people": {
+    "r05r0401_gsoldwoman1": {
+      "name": "Old woman",
+      "still": true,
+      "dialog": [ "Trainers have come up and down this road for as long as I can remember. Some of them stop for tea." ]
+    },
+    "r05r0401_gswoman1": {
+      "name": "Woman",
+      "dialog": [ "My grandmother says the road was much busier before the Magnet Train. I like it quiet." ]
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  // Cerulean City as HeartGold has it three years on (plan 20 · J15, part e): a town of Johto's own map, come to by
+  // Route 5 from Saffron City. Its Gym gives Kanto's Cascade Badge once Misty is home from Route 25's cape
+  // (cerulean_gym.txt, johto_route_25.txt). Cerulean Cave (warp 7) stays shut, its key meeting FireRed's, and the man
+  // HeartGold keeps before it behind FLAG_HIDE_CERULEAN_CITY_MAN_OUTSIDE_CAVE stands there for good; Routes 4 and 9 share
+  // FireRed's keys and are scenery. Cameron the photographer waits for his session
+  "area": "cerulean",
+  "bgmTrack": "kanto/fuchsia",
+  "trees": "Round",
+  "architecture": "Riverside",
+  "locked": [ 7 ],
+  "heldBack": [ "t04_gsmiddleman1" ],
+  "people": {
+    "t04_gsman1": {
+      "name": "Man",
+      "dialog": [ "Cerulean's water is the clearest in Kanto. Misty says that's why her Pokémon are so strong." ]
+    },
+    "t04_gswoman1": {
+      "name": "Woman",
+      "still": true,
+      "dialog": [ "My Slowbro naps by the water all day. Sometimes I wonder which of us is taking the other for a walk." ]
+    },
+    "t04_tsure_poke_static_slowbro": {
+      "name": "Slowbro",
+      "npcType": "Pokemon",
+      "species": "Slowbro",
+      "still": true,
+      "dialog": [ "Slowbro gazed at the river. After a long while, it yawned." ]
+    },
+    "t04_gsbigman": {
+      "name": "Man",
+      "dialog": [ "The Gym Leader likes to sneak off to the cape north of town. You'll find her there more often than not." ]
+    },
+    "t04_gsman2": {
+      "name": "Man",
+      "dialog": [ "Nugget Bridge is just north of here. The trainers who stood on it have all grown up and moved on." ]
+    },
+    "t04_gsboy1": {
+      "name": "Boy",
+      "still": true,
+      "dialog": [ "I dropped something shiny around here once. I never found it again." ]
+    },
+    "t04_gsman1_2": {
+      "name": "Man",
+      "still": true,
+      "hiddenBy": "",
+      "dialog": [ "The cave behind me is far too dangerous. Nobody goes in without the League's leave, and nobody has it." ]
+    }
+  },
+  "signs": {
+    "T04_010+1": "Route 24\nNugget Bridge ahead.",
+    "T04_007+1": "Cerulean City Pokémon Gym\nLeader: Misty\nShe swims with Water Pokémon.",
+    "T04_006+1": "Cerulean City\nA city of clear water and blue rooftops.",
+    "T04_009+1": "Cerulean City\nThe river runs clear all year round.",
+    "T04_008+1": "The bike shop has moved to Goldenrod City.\nThe house stays, and so does its owner."
+  }
+}

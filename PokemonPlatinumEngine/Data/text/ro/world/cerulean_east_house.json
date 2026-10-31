@@ -1,0 +1,59 @@
+{
+  "people": {
+    "t04r0201_fishing_2": {
+      "name": {
+        "en": [
+          "Fisherman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I fish the river every morning. My Diglett keeps the garden dug for worms while I'm out."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t04r0201_middlewoman1_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Our Diglett came out of the ground one day and never went back. We think it likes the cooking."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t04r0201_tsure_poke_static_diglett": {
+      "name": {
+        "en": [
+          "Diglett"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Diglett popped up, looked around and popped back down."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

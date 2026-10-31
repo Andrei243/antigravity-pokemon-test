@@ -1,0 +1,30 @@
+{
+  // A house in the west of Cerulean City (plan 20 · J15, part e): an old couple with a Zubat and a Kangaskhan
+  "area": "cerulean_west_house",
+  "bgmTrack": "kanto/fuchsia",
+  "people": {
+    "t04r0301_gsoldwoman1": {
+      "name": "Old woman",
+      "dialog": [ "Our Kangaskhan has looked after us for years. Now we look after it." ]
+    },
+    "t04r0301_gsoldman1": {
+      "name": "Old man",
+      "still": true,
+      "dialog": [ "That Zubat flew in from the cave one night and decided to stay. It sleeps upside down on the curtain rail." ]
+    },
+    "t04r0301_tsure_poke_static_zubat": {
+      "name": "Zubat",
+      "npcType": "Pokemon",
+      "species": "Zubat",
+      "still": true,
+      "dialog": [ "Zubat fluttered round the room and squeaked." ]
+    },
+    "t04r0301_tsure_poke_static_kangaskhan": {
+      "name": "Kangaskhan",
+      "npcType": "Pokemon",
+      "species": "Kangaskhan",
+      "still": true,
+      "dialog": [ "Kangaskhan patted the little one in its pouch." ]
+    }
+  }
+}

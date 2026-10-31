@@ -1,0 +1,79 @@
+{
+  // Route 25 as HeartGold has it three years on (plan 20 · J15, part e): the road east from Nugget Bridge to the Sea
+  // Cottage on the cape, where Misty is out on a date (johto_route_25.txt) until the player finds her. Its key meets
+  // FireRed's, so it takes Johto's prefix (HgWorld.Clashes). Suicune and Eusine (the Kanto stops of Suicune's chase) and
+  // the Misty HeartGold keeps for the phone's post-game meeting wait for their sessions. The original's two triggers on
+  // the cape's way in (HeartGold's VAR_UNK_4088 and VAR_SCENE_ROUTE_25) are given no script: ours stands on their tiles
+  "area": "johto_route_25",
+  "bgmTrack": "kanto/route24",
+  "heldBack": [ "r25_tsure_poke_static_suicune", "r25_minaki", "r25_minaki_2", "r25_gsleader11_2" ],
+  "triggers": [
+    { "x": 1418, "z": 40, "depth": 3, "script": "MistysDate", "variable": "VAR_JOHTO_MISTY_DATE", "value": 0 }
+  ],
+  "people": {
+    "r25_gsleader11": { "name": "Misty", "npcType": "misty", "script": "MistysDate", "still": true, "hiddenBy": "FLAG_JOHTO_MISTY_BACK_IN_GYM" },
+    "r25_gsman1": {
+      "name": "Young man",
+      "still": true,
+      "hiddenBy": "FLAG_JOHTO_MISTY_BACK_IN_GYM",
+      "dialog": [ "Uh... hello? We were just talking. About the view. Nothing else." ]
+    },
+    "r25_gsman3": {
+      "name": "Man",
+      "still": true,
+      "dialog": [ "The cottage at the end of the cape belonged to a famous Pokémon researcher. His grandfather lives there now." ]
+    },
+    "r25_gsboy1": {
+      "name": "Dudley",
+      "trainer": {
+        "dialogueBefore": "School Kid Dudley: I'm studying for my exams out here. A battle counts as revision, right?",
+        "dialogueAfter": "School Kid Dudley: I'll have to revise a lot harder."
+      }
+    },
+    "r25_gsgirl1": {
+      "name": "Ellen",
+      "trainer": {
+        "dialogueBefore": "Lass Ellen: This road is my favourite walk. You're in the way of it!",
+        "dialogueAfter": "Lass Ellen: Fine, you can walk here too."
+      }
+    },
+    "r25_gsboy1_2": {
+      "name": "Joe",
+      "trainer": {
+        "dialogueBefore": "School Kid Joe: Our teacher says battling is the best way to learn about Pokémon. Let's learn!",
+        "dialogueAfter": "School Kid Joe: I learned that you're better than me."
+      }
+    },
+    "r25_gsgirl1_2": {
+      "name": "Laura",
+      "trainer": {
+        "dialogueBefore": "Lass Laura: My Pokémon and I picked out matching ribbons today. Aren't we cute?",
+        "dialogueAfter": "Lass Laura: Cute isn't the same as strong, I suppose."
+      }
+    },
+    "r25_gsgirl1_3": {
+      "name": "Shannon",
+      "trainer": {
+        "dialogueBefore": "Lass Shannon: Going to the cape? You'll have to get past me first!",
+        "dialogueAfter": "Lass Shannon: Go on, then. The view's lovely."
+      }
+    },
+    "r25_campboy_2": {
+      "name": "Lloyd",
+      "trainer": {
+        "dialogueBefore": "Camper Lloyd: I'm camping on the cape tonight. A battle will warm me up!",
+        "dialogueAfter": "Camper Lloyd: Brr. I'm colder than before."
+      }
+    },
+    "r25_gsassistantm": {
+      "name": "Pat",
+      "trainer": {
+        "dialogueBefore": "Super Nerd Pat: I came to see where the storage system was invented. Battle me while I'm here!",
+        "dialogueAfter": "Super Nerd Pat: I should have stored my strong Pokémon in my party."
+      }
+    }
+  },
+  "signs": {
+    "R25_002+1": "Sea Cottage\nThe home of Bill's grandfather."
+  }
+}

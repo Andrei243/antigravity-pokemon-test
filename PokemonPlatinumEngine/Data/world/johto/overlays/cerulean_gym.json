@@ -1,0 +1,60 @@
+{
+  // The Cerulean Gym as HeartGold has it (plan 20 · J15, part e): a pool crossed by walkways, Misty at its head once she
+  // is home from Route 25's cape (cerulean_gym.txt). HeartGold hides the whole Gym behind
+  // FLAG_HIDE_CERULEAN_GYM_POPULATION while Team Rocket's grunt stands in it with the Power Plant's part: that scene,
+  // the grunt and the part in the pool wait for the Power Plant, and the Gym's people stand here from the first. Her
+  // five trainers battle by their own records (Johto's trainers.json)
+  "area": "cerulean_gym",
+  "bgmTrack": "johto/gym",
+  "arenaType": "Water",
+  "heldBack": [ "t04gym0101_rocketm", "t04gym0101_stop", "t04gym0101_stop_2" ],
+  "people": {
+    "t04gym0101_gsleader11": { "name": "Misty", "npcType": "misty", "script": "Misty", "still": true, "hiddenBy": "", "shownBy": "FLAG_JOHTO_MISTY_BACK_IN_GYM" },
+    "t04gym0101_sunglasses": { "name": "Gym guide", "script": "Guide", "still": true, "hiddenBy": "" },
+    "t04gym0101_gsswimmerw": {
+      "name": "Diana",
+      "hiddenBy": "",
+      "trainer": {
+        "dialogueBefore": "Swimmer Diana: I've swum laps here since before you could walk. Let's see you keep up!",
+        "dialogueAfter": "Swimmer Diana: I've run out of breath."
+      }
+    },
+    "t04gym0101_gsswimmerw_2": {
+      "name": "Joy",
+      "hiddenBy": "",
+      "trainer": {
+        "dialogueBefore": "Swimmer Joy: Misty taught me to swim, and to battle. You'll get the lesson too!",
+        "dialogueAfter": "Swimmer Joy: I'll need a few more lessons myself."
+      }
+    },
+    "t04gym0101_gsswimmerw_3": {
+      "name": "Briana",
+      "hiddenBy": "",
+      "trainer": {
+        "dialogueBefore": "Swimmer Briana: The water's lovely today. Come on in, if you can beat me!",
+        "dialogueAfter": "Swimmer Briana: I'll just float here for a while."
+      }
+    },
+    "t04gym0101_seaman_2": {
+      "name": "Eddie",
+      "hiddenBy": "",
+      "trainer": {
+        "dialogueBefore": "Sailor Eddie: I sailed every sea there is, and I still come back to Misty's pool!",
+        "dialogueAfter": "Sailor Eddie: Sunk in a swimming pool. The shame of it."
+      }
+    },
+    "t04gym0101_seaman_2_2": {
+      "name": "Parker",
+      "hiddenBy": "",
+      "trainer": {
+        "dialogueBefore": "Sailor Parker: Ahoy! No landlubber gets past me without a battle!",
+        "dialogueAfter": "Sailor Parker: You've got your sea legs, all right."
+      }
+    }
+  },
+  // The statues by the door, read where they stand
+  "read": {
+    "T04GYM0101_002+1": "Statue",
+    "T04GYM0101_003+1": "Statue"
+  }
+}

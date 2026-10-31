@@ -1,0 +1,15 @@
+{
+  // The Sea Cottage on Route 25's cape (plan 20 · J15, part e), where Bill lived before he went home to Goldenrod
+  // City. Its key meets FireRed's, so it takes Johto's prefix (HgWorld.Clashes)
+  "area": "johto_route_25_sea_cottage",
+  "bgmTrack": "kanto/route24",
+  "people": {
+    "r25r0101_gsoldman1": {
+      "name": "Old man",
+      "still": true,
+      "dialog": [
+        "My grandson Bill lived here while he built his storage system. He's gone back to Goldenrod, and I mind the cottage."
+      ]
+    }
+  }
+}

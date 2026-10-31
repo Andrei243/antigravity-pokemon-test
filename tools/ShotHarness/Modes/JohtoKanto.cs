@@ -88,7 +88,7 @@ partial class Harness
         TalkTo("Vermilion_Gym", "t06gym0101_gsleader9");
         ReadTo("came all the way from Johto"); Frames(10); Shot("jk17_lt_surge");
         ReadTo("jolt"); box.Advance();
-        Until(() => game.State == GameState.Battle || BandLit(), "the battle", 600);
+        UntilALeadersBattle();
         Frames(30); Shot("jk18_lt_surges_battle");
         Tell();
         // leave the battle and read the scene to its end, or Surge's box stays over every later shot
@@ -124,7 +124,7 @@ partial class Harness
         talkTo("Saffron_Gym", "t11gym0101_gsleader10", 0, 1);
         ReadTo("I knew you would come"); Frames(10); Shot("jk27_sabrina");
         ReadTo("Show me the strength"); game.Dialogue.Advance();
-        until(() => game.State == GameState.Battle || BandLit(), "the battle", 600);
+        UntilALeadersBattle();
         Frames(30); Shot("jk28_sabrinas_battle");
         Console.WriteLine($"  Marsh Badge {game.Story.HasBadge(RegionDatabase.Kanto, "Marsh")}");
         game.State = GameState.Overworld; ReadTo(null); game.Dialogue.Close();
@@ -166,7 +166,7 @@ partial class Harness
         talkTo("Celadon_Gym", "t07gym0101_gsleader12", 0, 1);
         ReadTo("I must have dozed off"); Frames(10); Shot("jk41_erika");
         ReadTo("I shan't hold back"); game.Dialogue.Advance();
-        until(() => game.State == GameState.Battle || BandLit(), "the battle", 600);
+        UntilALeadersBattle();
         Frames(30); Shot("jk42_erikas_battle");
         Console.WriteLine($"  Rainbow Badge {game.Story.HasBadge(RegionDatabase.Kanto, "Rainbow")}");
         game.State = GameState.Overworld; ReadTo(null); game.Dialogue.Close();
@@ -182,6 +182,72 @@ partial class Harness
         engine.ApplySettings(window: false);
         At("Lavender_HouseOfMemories", 4, 15, Direction.Up); Frames(10); Shot("jk46_the_house_of_memories");
         At("Lavender_VolunteerHouse", 5, 10, Direction.Up); Frames(10); Shot("jk47_the_volunteer_house");
+
+        JohtoKantoCeruleanShots(readTo, talkTo);
+    }
+
+    /// <summary>
+    /// A Leader's battle, waited for while the scene reads on (plan 20 · J15, part e): the wait of parts b to d looked
+    /// only for the battle or its band, so a line still on the box after the one the harness read to (or a question) held
+    /// the script and the battle never came. This one reads such lines on and answers a question with its first answer.
+    /// </summary>
+    void UntilALeadersBattle(int most = 900)
+    {
+        var box = game.Dialogue;
+        for (int i = 0; i < most; i++)
+        {
+            if (game.State == GameState.Battle || BandLit()) return;
+            if (engine.Choice.IsOpen) { Frames(10); engine.Choice.Confirm(); Frames(4); }
+            else if (box.IsActive && box.IsCurrentLineComplete && !box.IsQuestion) { box.Advance(); Frames(2); }
+            else Frames(1);
+        }
+        Console.WriteLine("  !! never happened: the battle");
+    }
+
+    /// <summary>
+    /// Plan 20 · J15, part e: Route 5 north to Cerulean City, its rooms and Gym standing without Misty, Routes 24 and 25,
+    /// Misty's date on the cape and the Sea Cottage, then Misty at home and her battle's band (<c>jk48</c> to <c>jk62</c>),
+    /// after part d's, so nothing before them moves. It prints the flag the cape's scene left and Kanto's Cascade Badge.
+    /// </summary>
+    void JohtoKantoCeruleanShots(Action<string?, int> readTo, Action<string, string, int, int> talkTo)
+    {
+        void ReadTo(string? text) => readTo(text, 2400);
+        game.State = GameState.Overworld;
+        At("Route5_SaffronGate", 5, 7, Direction.Up); Frames(10); Shot("jk48_route_5s_gate");
+        At("Johto", 1300, 180, Direction.Up); game.ArriveOnMap(); Frames(30); Shot("jk49_route_5");
+        At("Johto", 1310, 128, Direction.Down); game.ArriveOnMap(); Frames(30); Shot("jk50_cerulean_city");
+        engine.Settings.TimeOfDay = TimeOfDay.Night;
+        engine.ApplySettings(window: false);
+        Frames(30); Shot("jk51_cerulean_city_after_dark");
+        engine.Settings.TimeOfDay = TimeOfDay.Day;
+        engine.ApplySettings(window: false);
+        At("Cerulean_PokemonCenter_1F", 8, 15, Direction.Up); Frames(10); Shot("jk52_ceruleans_pokemon_center");
+        At("Cerulean_EastHouse", 5, 8, Direction.Up); Frames(10); Shot("jk53_the_fishermans_house");
+
+        // ---- The Gym without its Leader, and the guide's word
+        At("Cerulean_Gym", 10, 24, Direction.Up); game.ArriveOnMap(); Frames(10); Shot("jk54_the_cerulean_gym");
+        talkTo("Cerulean_Gym", "t04gym0101_sunglasses", 0, 1);
+        ReadTo("Route 25"); Frames(10); Shot("jk55_the_guides_word"); ReadTo(null);
+
+        // ---- Nugget Bridge, Route 25 and the cape
+        game.State = GameState.Overworld;
+        At("Johto", 1325, 84, Direction.Up); game.ArriveOnMap(); Frames(30); Shot("jk56_nugget_bridge");
+        At("Johto", 1380, 44, Direction.Right); game.ArriveOnMap(); Frames(30); Shot("jk57_route_25");
+        At("Johto", 1417, 41, Direction.Right); Frames(10); Shot("jk58_misty_on_the_cape");
+        talkTo("Johto", "r25_gsleader11", 0, -1);
+        ReadTo("one quiet afternoon"); Frames(10); Shot("jk59_the_date_spoiled"); ReadTo(null);
+        Console.WriteLine($"  Misty home {game.Story.Has("FLAG_JOHTO_MISTY_BACK_IN_GYM")}");
+        At("CeruleanCape_SeaCottage", 7, 9, Direction.Up); Frames(10); Shot("jk60_the_sea_cottage");
+
+        // ---- Misty at home
+        At("Cerulean_Gym", 10, 24, Direction.Up); game.ArriveOnMap(); Frames(10);
+        talkTo("Cerulean_Gym", "t04gym0101_gsleader11", 0, 1);
+        ReadTo("spoil my afternoon"); Frames(10); Shot("jk61_misty");
+        ReadTo("Let's make a splash"); game.Dialogue.Advance();
+        UntilALeadersBattle();
+        Frames(30); Shot("jk62_mistys_battle");
+        Console.WriteLine($"  Cascade Badge {game.Story.HasBadge(RegionDatabase.Kanto, "Cascade")}");
+        game.State = GameState.Overworld; ReadTo(null); game.Dialogue.Close();
     }
 
 }

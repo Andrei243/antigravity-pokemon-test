@@ -119,9 +119,12 @@
       },
       "dialog": {
         "en": [
-          "The north gate is closed for roadworks. The others take you to Vermilion, Celadon and Lavender."
+          "Saffron's four gates take you anywhere: Vermilion, Celadon, Lavender, and north to Cerulean City."
         ],
         "text": [
+          ""
+        ],
+        "was": [
           "Porțile de ieșire din oraș sunt închise pentru lucrări. Doar drumul spre sud, către Orașul Vermilion, e deschis."
         ]
       }

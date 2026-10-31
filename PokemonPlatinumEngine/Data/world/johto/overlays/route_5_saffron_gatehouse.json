@@ -1,0 +1,11 @@
+{
+  // The gate house between Saffron City and Route 5 (plan 20 · J15, part e)
+  "area": "route_5_saffron_gatehouse",
+  "bgmTrack": "kanto/route3",
+  "people": {
+    "r05r0301_counterm": {
+      "name": "Officer",
+      "dialog": [ "Route 5 runs north to Cerulean City. It's a short walk, and an easy one." ]
+    }
+  }
+}

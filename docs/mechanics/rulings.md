@@ -6558,3 +6558,35 @@ The user approved L9's default on 2026-10-26 (docs/plans/APPROVAL-levelling-and-
   meets FireRed's), the store's and the condominiums' upper floors, the Game Corner, the Radio Tower and the Expn Card,
   Erika's street meeting and the Leaders' rematches, Silph Co., the Underground Path, the Power Plant and the Pass,
   Suicune's stops, the rest of Kanto's Apricorn trees, the rival's Mt. Moon battle, Blue at the gate.
+
+## HeartGold's Kanto, part e (2026-10-31, plan 20 · J15, part e)
+
+- *The slice*: Saffron City's north gate. Route 5 runs north, past its house and the shut gate to the Underground Path,
+  to Cerulean City, with its Pokémon Center (both floors), Mart, three houses, the old bike shop and its Gym; Route 24
+  (Nugget Bridge) and Route 25 run on to the Sea Cottage on the cape. The roads' keys and the cottage's meet FireRed's
+  (`route_5`, `route_24`, `route_25`, `route_25_sea_cottage`) and take Johto's prefix (`HgWorld.Clashes`); the town's
+  (`cerulean`, `cerulean_gym`…) meet none of FireRed's (`cerulean_city*`). The cottage's map is `CeruleanCape_SeaCottage`,
+  since FireRed's Kanto has a `Route25_SeaCottage` and map names are one list for every region.
+- *Misty's date*: HeartGold's Misty is out when the player first comes: on Route 25's cape with a young man. Stepping
+  onto the cape's way in (the tiles of HeartGold's own two triggers, which keep their variables and are given no
+  script), or speaking to her, spoils the date: the young man leaves, Misty goes home, and from then on she stands in
+  her Gym. Both are ours: `FLAG_JOHTO_MISTY_BACK_IN_GYM` (which hides the two on the cape and shows her in the Gym) and
+  `VAR_JOHTO_MISTY_DATE` (the trigger's). The Gym guide says where she went until then.
+- *The Gym*: HeartGold hides the whole Gym behind `FLAG_HIDE_CERULEAN_GYM_POPULATION` while Team Rocket's grunt stands
+  in it with the Power Plant's stolen part; the grunt, the part in the pool and that scene wait for the Power Plant, so
+  the Gym's people stand here from the first. Misty gives Kanto's Cascade Badge (`givebadge cascade of kanto`) and TM55
+  (Brine); whether she is beaten here is `FLAG_JOHTO_DEFEATED_MISTY` (ours), as the other Kanto Leaders of HeartGold's
+  are, and her five trainers are counted beaten by her script.
+- *Held back*: Route 24's grunt and his scene (the Power Plant's), Suicune and Eusine on the cape (Suicune's Kanto
+  stops), the Misty HeartGold keeps for the phone's post-game meeting, and Cameron the photographer. The man before
+  Cerulean Cave stands there for good; the cave (its key meets FireRed's) stays shut, as does Route 5's gate to the
+  Underground Path. Routes 4 and 9 share FireRed's keys and are scenery.
+- *Songs*: Cerulean and its rooms play FireRed's `kanto/fuchsia` (as FireRed's Cerulean does), Route 5 and its rooms
+  `kanto/route3`, Routes 24 and 25 and the cottage `kanto/route24`; the Gym Johto's Gym theme.
+- *The harness*: a Leader's battle in the `johto` mode's Kanto part is waited for by `UntilALeadersBattle`, which reads
+  on whatever line is left on the box and answers a question; the plain wait of parts b to d never fired.
+- *Left*: Pewter (Route 3, Mt. Moon and the rival's battle there, or Route 2 from Viridian), Fuchsia and the south,
+  Viridian and Pallet, Cinnabar's key, the Power Plant (Route 9, Rock Tunnel, Route 10) with the grunts of Cerulean's Gym
+  and Route 24, the Underground Path, Silph Co., the store's and the condominiums' upper floors, the Game Corner, the Radio
+  Tower and the Expn Card, the Leaders' rematches and street meetings, Suicune's stops, the rest of Kanto's Apricorn
+  trees, Blue at the gate; the Celadon Gym's garden beds, which draw as dark wells (not looked into).

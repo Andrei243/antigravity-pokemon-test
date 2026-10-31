@@ -1,0 +1,32 @@
+{
+  "people": {
+    "r05_gsmiddleman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Underground Path is closed while they fix the lights. Walk round by Saffron City instead."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "R05_001+1": {
+      "en": [
+        "Underground Path\nCerulean City - Vermilion City\nClosed for repairs."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

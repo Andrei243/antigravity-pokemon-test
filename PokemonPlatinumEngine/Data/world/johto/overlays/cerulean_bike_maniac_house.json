@@ -1,0 +1,12 @@
+{
+  // Cerulean City's old bike shop, a house now (plan 20 · J15, part e)
+  "area": "cerulean_bike_maniac_house",
+  "bgmTrack": "kanto/fuchsia",
+  "people": {
+    "t04r0401_gsmiddleman1": {
+      "name": "Man",
+      "still": true,
+      "dialog": [ "This was a bike shop once. The owner moved to Goldenrod City, but I loved bikes too much to let the place go." ]
+    }
+  }
+}

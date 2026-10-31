@@ -1,0 +1,18 @@
+{
+  // Route 24 as HeartGold has it three years on (plan 20 · J15, part e): Nugget Bridge north of Cerulean City, its
+  // trainers gone and a couple on it. Its key meets FireRed's, so it takes Johto's prefix (HgWorld.Clashes). The Team
+  // Rocket grunt HeartGold keeps here behind FLAG_HIDE_ROUTE_24_ROCKET, and his scene, wait for the Power Plant's
+  "area": "johto_route_24",
+  "bgmTrack": "kanto/route24",
+  "heldBack": [ "r24_rocketm" ],
+  "people": {
+    "r24_gsman1": {
+      "name": "Man",
+      "dialog": [ "This bridge used to be lined with trainers. Now it's just us, watching the water." ]
+    },
+    "r24_gswoman2": {
+      "name": "Woman",
+      "dialog": [ "We come here every evening. The sunset over the river is the best in Kanto." ]
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "key": "johto_route_25_sea_cottage",
+  "index": 440,
+  "name": "Route 25",
+  "matrix": 254,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_R_12_24",
+  "nightMusic": "GS_R_12_24",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 7, "z": 11, "to": "johto_route_25", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "r25r0101_gsoldman1", "looks": "gsoldman1", "movement": "15", "x": 7, "z": 7, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "R25R0101_000+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

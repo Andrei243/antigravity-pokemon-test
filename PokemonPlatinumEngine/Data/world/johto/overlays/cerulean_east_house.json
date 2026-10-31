@@ -1,0 +1,23 @@
+{
+  // A house in the east of Cerulean City (plan 20 · J15, part e): a fisherman, his wife and their Diglett
+  "area": "cerulean_east_house",
+  "bgmTrack": "kanto/fuchsia",
+  "people": {
+    "t04r0201_fishing_2": {
+      "name": "Fisherman",
+      "still": true,
+      "dialog": [ "I fish the river every morning. My Diglett keeps the garden dug for worms while I'm out." ]
+    },
+    "t04r0201_middlewoman1_2": {
+      "name": "Woman",
+      "dialog": [ "Our Diglett came out of the ground one day and never went back. We think it likes the cooking." ]
+    },
+    "t04r0201_tsure_poke_static_diglett": {
+      "name": "Diglett",
+      "npcType": "Pokemon",
+      "species": "Diglett",
+      "still": true,
+      "dialog": [ "Diglett popped up, looked around and popped back down." ]
+    }
+  }
+}

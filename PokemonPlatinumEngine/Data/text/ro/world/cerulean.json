@@ -1,0 +1,172 @@
+{
+  "people": {
+    "t04_gsman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Cerulean's water is the clearest in Kanto. Misty says that's why her Pokémon are so strong."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t04_gswoman1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Slowbro naps by the water all day. Sometimes I wonder which of us is taking the other for a walk."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t04_tsure_poke_static_slowbro": {
+      "name": {
+        "en": [
+          "Slowbro"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Slowbro gazed at the river. After a long while, it yawned."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t04_gsbigman": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Gym Leader likes to sneak off to the cape north of town. You'll find her there more often than not."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t04_gsman2": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Nugget Bridge is just north of here. The trainers who stood on it have all grown up and moved on."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t04_gsboy1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I dropped something shiny around here once. I never found it again."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t04_gsman1_2": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The cave behind me is far too dangerous. Nobody goes in without the League's leave, and nobody has it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T04_010+1": {
+      "en": [
+        "Route 24\nNugget Bridge ahead."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T04_007+1": {
+      "en": [
+        "Cerulean City Pokémon Gym\nLeader: Misty\nShe swims with Water Pokémon."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T04_006+1": {
+      "en": [
+        "Cerulean City\nA city of clear water and blue rooftops."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T04_009+1": {
+      "en": [
+        "Cerulean City\nThe river runs clear all year round."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T04_008+1": {
+      "en": [
+        "The bike shop has moved to Goldenrod City.\nThe house stays, and so does its owner."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

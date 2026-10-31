@@ -1,0 +1,108 @@
+{
+  "key": "johto_route_25",
+  "index": 29,
+  "name": "Route 25",
+  "matrix": 0,
+  "kind": "Route",
+  "sign": "Route",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "General",
+  "dayMusic": "GS_R_12_24",
+  "nightMusic": "GS_R_12_24",
+  "encounters": "R25",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Pidgey", "level": 8, "night": "Venonat" },
+    { "species": "Bellsprout", "level": 10, "night": "Oddish" },
+    { "species": "Pidgey", "level": 8, "night": "Venonat" },
+    { "species": "Bellsprout", "level": 10, "night": "Oddish" },
+    { "species": "Venonat", "level": 8, "day": "Pidgey", "night": "Venomoth" },
+    { "species": "Venonat", "level": 8, "day": "Pidgey", "night": "Venomoth" },
+    { "species": "Abra", "level": 9 },
+    { "species": "Abra", "level": 9 },
+    { "species": "Pidgeotto", "level": 10, "night": "Weepinbell" },
+    { "species": "Weepinbell", "level": 14, "night": "Bellsprout" },
+    { "species": "Pidgeotto", "level": 10, "night": "Weepinbell" },
+    { "species": "Weepinbell", "level": 14, "night": "Bellsprout" }
+  ],
+  "landRate": 20,
+  "swarm": [
+    "Buneary",
+    "Buneary"
+  ],
+  "surfSwarm": "Goldeen",
+  "fishSwarm": "Magikarp",
+  "water": [
+    { "species": "Goldeen", "level": 10, "maxLevel": 10 },
+    { "species": "Goldeen", "level": 5, "maxLevel": 5 },
+    { "species": "Seaking", "level": 10, "maxLevel": 10 },
+    { "species": "Seaking", "level": 10, "maxLevel": 10 },
+    { "species": "Seaking", "level": 10, "maxLevel": 10 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 10 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Goldeen", "level": 40, "maxLevel": 40 },
+    { "species": "Goldeen", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 },
+    { "species": "Seaking", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "hoennSounds": [
+    "Whismur",
+    "Linoone"
+  ],
+  "sinnohSounds": [
+    "Buizel",
+    "Bidoof"
+  ],
+  "warps": [
+    { "x": 1407, "z": 38, "to": "johto_route_25_sea_cottage", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "r25_gsboy1", "looks": "gsboy1", "movement": "0", "x": 1335, "z": 46, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_SCHOOL_KID_M_DUDLEY" },
+    { "id": "r25_gsgirl1", "looks": "gsgirl1", "movement": "0", "x": 1346, "z": 49, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_LASS_ELLEN" },
+    { "id": "r25_gsboy1_2", "looks": "gsboy1", "movement": "0", "x": 1364, "z": 46, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "script": "TRAINER_SCHOOL_KID_M_JOE" },
+    { "id": "r25_gsgirl1_2", "looks": "gsgirl1", "movement": "0", "x": 1372, "z": 46, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "script": "TRAINER_LASS_LAURA" },
+    { "id": "r25_gsgirl1_3", "looks": "gsgirl1", "movement": "0", "x": 1376, "z": 49, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_LASS_SHANNON" },
+    { "id": "r25_campboy_2", "looks": "campboy_2", "movement": "0", "x": 1367, "z": 38, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 2, "script": "TRAINER_CAMPER_LLOYD" },
+    { "id": "r25_gsassistantm", "looks": "gsassistantm", "movement": "0", "x": 1384, "z": 43, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 1, "script": "TRAINER_SUPER_NERD_PAT" },
+    { "id": "r25_gsman3", "looks": "gsman3", "movement": "0", "x": 1392, "z": 45, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "R25_001+1" },
+    { "id": "r25_gsleader11", "looks": "gsleader11", "movement": "0", "x": 1421, "z": 47, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_25_MISTY", "script": "0" },
+    { "id": "r25_gsman1", "looks": "gsman1", "movement": "0", "x": 1420, "z": 47, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_25_MISTYS_BOYFRIEND", "script": "0" },
+    { "id": "r25_tree", "looks": "tree", "movement": "0", "x": 1388, "z": 40, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_010", "script": "std_field_cut" },
+    { "id": "r25_monstarball", "looks": "monstarball", "movement": "0", "x": 1380, "z": 36, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_R25_PROTEIN", "item": "Protein", "script": "std_itemball_r25_protein" },
+    { "id": "r25_tsure_poke_static_suicune", "looks": "follower_mon_static_suicune", "movement": "0", "x": 1421, "z": 37, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_25_SUICUNE", "script": "R25_007+1" },
+    { "id": "r25_minaki", "looks": "minaki", "movement": "0", "x": 1409, "z": 42, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_25_EUSINE", "script": "R25_005+1" },
+    { "id": "r25_minaki_2", "looks": "minaki", "movement": "0", "x": 1422, "z": 40, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_25_EUSINE_2", "script": "R25_006+1" },
+    { "id": "r25_gsleader11_2", "looks": "gsleader11", "movement": "0", "x": 1422, "z": 46, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_2CD", "script": "R25_009+1" }
+  ],
+  "signs": [
+    { "x": 1405, "z": 38, "type": 1, "script": "R25_002+1" },
+    { "x": 1327, "z": 41, "type": 2, "script": "std_hiddenitem_r25_revive", "item": "Revive", "flag": "FLAG_HIDDEN_ITEM_R25_REVIVE" }
+  ],
+  "triggers": [
+    { "x": 1418, "z": 40, "width": 1, "depth": 3, "script": "R25_000+1", "variable": "VAR_UNK_4088", "value": "1" },
+    { "x": 1418, "z": 40, "width": 1, "depth": 3, "script": "R25_004+1", "variable": "VAR_SCENE_ROUTE_25", "value": "1" }
+  ]
+}

@@ -387,7 +387,7 @@ public static partial class WorldModels
         Built("ya_gym", BuildingKind.Gym, "the Saffron Gym"),
         Built("kn_gate_b", BuildingKind.Gate, "a gate house on a road into Saffron City that runs east and west"),
         Built("kn_chika_x", BuildingKind.Hall, "the Underground Path's entrance on Route 6 (the path is shut)"),
-        House("ha_h01a", Architecture.Boulevard, "a house on Route 5, north of Saffron City (the route is not open)"),
+        House("ha_h01a", Architecture.Riverside, "a house of Cerulean City, and the one on Route 5 north of Saffron City"),
         Door("ha_dr01"), Door("ybc_dor1"), Door("ybc_dor2"), Door("ybc_dor3"),
         Ground("ymbk_sl", "a flight of steps of Saffron City's raised walks: its tiles draw it"),
         Ground("st_board", "a notice board by a road of Kanto: its tiles draw it"),
@@ -411,6 +411,16 @@ public static partial class WorldModels
         Built("si_radio", BuildingKind.TvStation, "the Kanto Radio Tower in Lavender Town (shut)", storeys: 5),
         Door("si_door1"), Door("si_door2"),
         Furniture("soul_f", PropType.Statue, "a memorial stone in Lavender Town's House of Memories"),
+
+        // ---------------------------------------------------------------- plan 20 · J15, part e: Cerulean City (ha_, hnda_: the
+        // original's Hanada), built as plan 19 · K4 builds FireRed's, and the Sea Cottage on Route 25's cape (misaki_)
+        House("ha_h01b", Architecture.Riverside, "a house of Cerulean City"),
+        Built("ha_cycle", BuildingKind.Shop, "Cerulean City's bike shop, now the bike maniac's house", Architecture.Riverside, sign: "BIKES"),
+        Built("ha_gym", BuildingKind.Gym, "the Cerulean Gym"),
+        Ground("ha_j_pool", "the Cerulean Gym's pool: the room's water draws it"),
+        Ground("hnda_sl", "a flight of steps by Cerulean City's river: its tiles draw it"),
+        House("misaki_h01", Architecture.Riverside, "the Sea Cottage on Route 25's cape, where Bill lived"),
+        Door("msk_dr01"),
     };
 
     private static readonly Dictionary<string, WorldModel> JohtoByName = JohtoTable.ToDictionary(m => m.Name, StringComparer.Ordinal);

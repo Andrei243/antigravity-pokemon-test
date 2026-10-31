@@ -1,0 +1,242 @@
+{
+  "people": {
+    "r25_gsleader11": {
+      "name": {
+        "en": [
+          "Misty"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r25_gsman1": {
+      "name": {
+        "en": [
+          "Young man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Uh... hello? We were just talking. About the view. Nothing else."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r25_gsman3": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The cottage at the end of the cape belonged to a famous Pokémon researcher. His grandfather lives there now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r25_gsboy1": {
+      "name": {
+        "en": [
+          "Dudley"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "School Kid Dudley: I'm studying for my exams out here. A battle counts as revision, right?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "School Kid Dudley: I'll have to revise a lot harder."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r25_gsgirl1": {
+      "name": {
+        "en": [
+          "Ellen"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Ellen: This road is my favourite walk. You're in the way of it!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Ellen: Fine, you can walk here too."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r25_gsboy1_2": {
+      "name": {
+        "en": [
+          "Joe"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "School Kid Joe: Our teacher says battling is the best way to learn about Pokémon. Let's learn!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "School Kid Joe: I learned that you're better than me."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r25_gsgirl1_2": {
+      "name": {
+        "en": [
+          "Laura"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Laura: My Pokémon and I picked out matching ribbons today. Aren't we cute?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Laura: Cute isn't the same as strong, I suppose."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r25_gsgirl1_3": {
+      "name": {
+        "en": [
+          "Shannon"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Shannon: Going to the cape? You'll have to get past me first!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Shannon: Go on, then. The view's lovely."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r25_campboy_2": {
+      "name": {
+        "en": [
+          "Lloyd"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Camper Lloyd: I'm camping on the cape tonight. A battle will warm me up!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Camper Lloyd: Brr. I'm colder than before."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r25_gsassistantm": {
+      "name": {
+        "en": [
+          "Pat"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Super Nerd Pat: I came to see where the storage system was invented. Battle me while I'm here!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Super Nerd Pat: I should have stored my strong Pokémon in my party."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "R25_002+1": {
+      "en": [
+        "Sea Cottage\nThe home of Bill's grandfather."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}
