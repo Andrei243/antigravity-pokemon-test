@@ -22,7 +22,8 @@ partial class Harness
     // (_call_1 to _4) and then the growth's at the same moments of the growth as YD0's. Not part of "all".
     //   7. Max Moves on the field (plan 25 · YD4): Max Flare's sun, Max Lightning's terrain and G-Max Steelsurge arriving from their blows (gi40_* to gi42_*);
     //   8. Mega Dynamax's double change (plan 25 · YD4): the player's own Garchomp (gi45_* to gi47_*) and Cynthia's (gi48_*).
-    // GIANTS_PART=cynthia|dynamax|double|own|finisher|guard|field|megamax runs one part.
+    //   9. the Champions with the Mega Max Band (plan 25 · YD6): the bands (gi60 to gi64), Cynthia's fight under the boss box (gi65 to gi75), the Battle Scene off (gi78, gi79).
+    // GIANTS_PART=cynthia|dynamax|double|own|finisher|guard|field|megamax|champions runs one part.
     public void GiantsMode()
     {
         string only = Environment.GetEnvironmentVariable("GIANTS_PART") ?? "";
@@ -660,6 +661,253 @@ partial class Harness
                     Watch(cb, "gi48_foe", 2, 3);
                 }
             }
+        }
+
+        // ---- 9. the Champions with the Mega Max Band (plan 25 · YD6): each Mega Max team's band through the game's own
+        // StartTrainerBattle (gi60 to gi64: lit and as its red has risen; the Kanto Champion's three are one band), then
+        // Cynthia's whole fight in its own order: her five felled by the player's Night Shade, her Garchomp's last-Pokémon
+        // line, its Mega Evolution, the call and the growth under the boss box (gi65 to gi68), her word once it has grown
+        // (gi69), the boss box at the menu (gi70, _close), a Max Move on it punched (gi71), the pips ticking (gi72_close),
+        // the fall narrowing it back (gi73), her line in the red (gi74) and the end (gi75); and the same growth with the
+        // Battle Scene off (gi78, gi79). GIANTS_PART=champions runs it alone.
+        if (only is "" or "champions")
+        {
+            Trainer Champion(string id)
+            {
+                var record = TrainerDatabase.Get(id)!;
+                var t = new Trainer { Id = record.Id };
+                TrainerDatabase.Fill(t, record);
+                return t;
+            }
+
+            Pokemon Tosser() => Tank("Shuckle", "Night Shade", "Splash");
+
+            // Begins a trainer's battle as Begin does, shooting its band: lit (_1) and as its lead ends (_2)
+            BattleEngine? Banded(Trainer trainer, string look, string prefix, params Pokemon[] mine)
+            {
+                team.Members.Clear();
+                foreach (var p in mine) team.Members.Add(p);
+                var (gx, gy) = GrassOf("route_225");
+                At("Sinnoh", gx, gy, Direction.Up);
+                game.EnterArea();
+                game.LocationSign.Hide();
+                Frames(4);
+                game.StartTrainerBattle(new NPC { Name = trainer.Name, NpcType = look, TrainerData = trainer });
+                bool lit = false, late = false;
+                for (int i = 0; i < 900 && game.State != GameState.Battle; i++)
+                {
+                    if (!lit && BandLit()) { lit = true; Shot($"{prefix}_1"); Console.WriteLine($"  {prefix}_1: {game.TransitionSeconds:0.00} s, the band of {game.Band?.Band.Name} (Mega Max {game.Band?.Band.MegaMax}), the red risen {SceneTransition.MegaMaxRise(game.TransitionKind, game.TransitionSeconds):0.00}, {game.BandRendered} portraits"); }
+                    if (lit && !late && game.TransitionClosing && game.TransitionSeconds >= SceneTransition.OutSeconds(game.TransitionKind) - SceneTransition.Beats(game.TransitionKind).Shut - 0.15f)
+                    {
+                        late = true;
+                        Shot($"{prefix}_2");
+                        Console.WriteLine($"  {prefix}_2: {game.TransitionSeconds:0.00} s, the red risen {SceneTransition.MegaMaxRise(game.TransitionKind, game.TransitionSeconds):0.00}");
+                    }
+                    FrameClock.Fixed = ++tick / 60.0;
+                    engine.Update(1f / 60f);
+                    engine.Draw();
+                }
+                if (!lit) Console.WriteLine($"  !! {prefix}: no band was lit (way in {game.TransitionKind})");
+                if (game.State != GameState.Battle) { Console.WriteLine("  !! never happened: the battle"); return null; }
+                return game.Battle;
+            }
+
+            void Leave(BattleEngine b)
+            {
+                game.Battle = null!;
+                game.State = GameState.Overworld;
+            }
+
+            foreach (var (id, look, prefix) in new[] { ("kanto_champion_megamax_squirtle", "Champion", "gi61_band_kanto"), ("johto_champion_lance_megamax", "Lance", "gi62_band_lance"),
+                ("hoenn_steven_megamax", "Steven", "gi63_band_steven"), ("unova_champion_iris_megamax", "Iris", "gi64_band_iris") })
+            {
+                var b = Banded(Champion(id), look, prefix, Tosser());
+                if (b != null) Leave(b);
+            }
+
+            // Cynthia's whole fight
+            var cynthia = Champion("champion_cynthia_megamax");
+            var cb = Banded(cynthia, "Cynthia", "gi60_band_cynthia", Tosser(), Tank("Blissey", "Splash"));
+            if (cb != null)
+            {
+                string Box(BattleEngine b) => $"boss box {b.BossShare(b.Anim.Enemy):0.00}, bar {ModernUi.BossBarShare(b.Anim.Enemy):0.000} ({b.Anim.Enemy.DisplayedHp:0}/{b.Anim.Enemy.Shown?.MaxHP}), pips {ModernUi.BossPips(b.Anim.Enemy)}, hold {b.GrowthHold:0.00}";
+                ToMainMenu(cb);
+                Whole(cb);
+                // Her five felled one after another: each set to one HP at the menu and tossed
+                int felled = 0;
+                for (int turn = 0; turn < 30 && !cb.IsBattleOver; turn++)
+                {
+                    var foe = cb.EnemySlots[0].Pokemon;
+                    if (foe?.Species.Name == "Garchomp") break;
+                    if (cb.HUD.MenuState == BattleMenuState.Main)
+                    {
+                        Whole(cb);
+                        if (foe != null) foe.CurrentHP = 1;
+                        cb.SelectMainMenuOption(0);
+                        cb.SelectMove(0);
+                        Frames(1);
+                        felled++;
+                    }
+                    for (int i = 0; i < 400 && cb.HUD.MenuState != BattleMenuState.Main && !cb.IsBattleOver; i++)
+                    {
+                        if (cb.CurrentSpeaker != null && cb.IsWaitingForConfirm && cb.EnemySlots[0].Pokemon?.Species.Name == "Garchomp")
+                        {
+                            Skip(0.6);
+                            Shot("gi65_cynthia_last_pokemon");
+                            Console.WriteLine($"  gi65_cynthia_last_pokemon: {cb.CurrentSpeaker}: {cb.CurrentMessage}");
+                            Confirm(cb);
+                            continue;
+                        }
+                        if (cb.HUD.MenuState == BattleMenuState.SwitchPokemon) { cb.SelectSwitch(0); continue; }
+                        if (cb.IsWaitingForConfirm) Confirm(cb); else Skip(0.05);
+                    }
+                }
+                Console.WriteLine($"  felled {felled} before Garchomp; foe now {cb.EnemySlots[0].Pokemon?.Form ?? cb.EnemySlots[0].Pokemon?.Species.Name}");
+                if (cb.HUD.MenuState == BattleMenuState.Main)
+                {
+                    Whole(cb);
+                    // A player looks at the giant-to-be a moment before choosing: its send-out over, so its trainer may call it
+                    Skip(1.0);
+                    Shot("gi65_cynthia_garchomp_menu");
+                    { var ev = cb.Anim.Enemy; Console.WriteLine($"  gi65: the call would be {cb.Anim.CallerFor(BattleSide.Enemy, 0, false) ?? "none"} (dynamaxes {cb.Anim.Dynamaxes}, present {ev.Present}, away {ev.Away}, doll {ev.BehindDoll}, send-out {ev.SendOutAge:0.00}, faint {ev.FaintAge:0.00}, recall {ev.RecallAge:0.00}, look {cb.Anim.EnemyTrainerLook})"); }
+                    cb.SelectMainMenuOption(0);
+                    cb.SelectMove(1);
+                    Frames(1);
+                    // The Mega's light, the call and the growth, read at the harness's pace: the lines wait for the growth
+                    var growth = Until(cb, c => c.Kind == CueKind.Dynamax, 600);
+                    if (growth == null) Console.WriteLine("  !! no growth of Cynthia's Garchomp");
+                    else
+                    {
+                        Console.WriteLine($"  gi66: the growth told a Mega Dynamax {growth.MegaMax}, the call {(growth.Lead > 0f ? "played" : "not played")}; {Box(cb)}");
+                        // The call and the growth as the boss box widens at the burst
+                        double lead = growth.Lead, at = growth.Age;
+                        foreach (var (moment, name) in new[] { (0.5, "gi66_growth_call"), (lead + 0.5, "gi66_growth_rising"), (lead + 0.95, "gi67_growth_burst"),
+                            (lead + 1.15, "gi67_growth_widening"), (lead + 1.5, "gi68_growth_grown") })
+                        {
+                            // The line on the box read at once, as a player pressing on would: the next waits for the growth
+                            if (cb.IsWaitingForConfirm) Confirm(cb);
+                            if (moment > at) Skip(moment - at);
+                            at = Math.Max(at, moment);
+                            Shot(name);
+                            Console.WriteLine($"  {name} +{moment:0.00} s: line \"{cb.CurrentMessage}\" waiting for a press {cb.IsWaitingForConfirm}; {Box(cb)}");
+                        }
+                        // Her word once the growth is over
+                        for (int i = 0; i < 200 && cb.CurrentSpeaker == null && cb.HUD.MenuState != BattleMenuState.Main; i++) { if (cb.IsWaitingForConfirm) Confirm(cb); else Skip(0.05); }
+                        if (cb.CurrentSpeaker != null)
+                        {
+                            Skip(0.5);
+                            Shot("gi69_cynthia_word");
+                            Console.WriteLine($"  gi69_cynthia_word: {cb.CurrentSpeaker}: {cb.CurrentMessage}; the growth still playing {cb.Anim.Cues.Contains(growth)}");
+                        }
+                        else Console.WriteLine("  !! Cynthia said nothing as it grew");
+                    }
+                    // The Max Move of the turn, on to the menu
+                    var max = Until(cb, c => c.MaxMove, 400);
+                    if (max != null) FinisherWith(cb, "gi71_cynthia_maxmove", max, null, 0.4, 0.62, 1.1);
+                    for (int i = 0; i < 400 && cb.HUD.MenuState != BattleMenuState.Main && !cb.IsBattleOver; i++) { if (cb.IsWaitingForConfirm) Confirm(cb); else Skip(0.05); }
+                    Skip(0.6);
+                    Shot("gi70_boss_menu");
+                    ShotCrop("gi70_boss_menu_close", 40, 20, 1840, 260, 1);
+                    Console.WriteLine($"  gi70_boss_menu: {Box(cb)}");
+                    // Two turns more: the pips ticking, then the fall narrowing the box back
+                    EffectCue? fall = null;
+                    for (int turn = 0; turn < 4 && fall == null && !cb.IsBattleOver; turn++)
+                    {
+                        Whole(cb);
+                        cb.SelectMainMenuOption(0);
+                        cb.SelectMove(1);
+                        Frames(1);
+                        for (int i = 0; i < 600 && cb.HUD.MenuState != BattleMenuState.Main && !cb.IsBattleOver; i++)
+                        {
+                            fall = cb.Anim.Cues.FirstOrDefault(c => c.Kind == CueKind.DynamaxEnd);
+                            if (fall != null) break;
+                            if (cb.IsWaitingForConfirm) Confirm(cb); else Skip(0.05);
+                        }
+                        if (fall == null && cb.HUD.MenuState == BattleMenuState.Main)
+                        {
+                            Skip(0.15);
+                            ShotCrop($"gi72_pips_{turn}_close", 40, 20, 1840, 260, 1);
+                            Console.WriteLine($"  gi72_pips_{turn}: {Box(cb)}");
+                        }
+                    }
+                    if (fall != null)
+                    {
+                        double at = fall.Age;
+                        foreach (var (moment, name) in new[] { (0.2, "gi73_fall_1"), (0.5, "gi73_fall_2"), (0.85, "gi73_fall_3") })
+                        {
+                            if (moment > at) Skip(moment - at);
+                            at = Math.Max(at, moment);
+                            Shot(name);
+                            Console.WriteLine($"  {name} +{moment:0.00} s: {Box(cb)}");
+                        }
+                    }
+                    else Console.WriteLine("  !! no fall");
+                    // Her line in the red, and the end: the ace brought low by the harness and tossed twice
+                    for (int i = 0; i < 400 && cb.HUD.MenuState != BattleMenuState.Main && !cb.IsBattleOver; i++) { if (cb.IsWaitingForConfirm) Confirm(cb); else Skip(0.05); }
+                    if (cb.HUD.MenuState == BattleMenuState.Main && cb.EnemySlots[0].Pokemon is { } ace)
+                    {
+                        Whole(cb);
+                        ace.CurrentHP = Math.Min(ace.MaxHP, 100 + Math.Max(1, ace.MaxHP / 10));
+                        cb.SelectMainMenuOption(0);
+                        cb.SelectMove(0);
+                        Frames(1);
+                        for (int i = 0; i < 400 && cb.HUD.MenuState != BattleMenuState.Main && !cb.IsBattleOver; i++)
+                        {
+                            if (cb.CurrentSpeaker != null && cb.IsWaitingForConfirm)
+                            {
+                                Skip(0.6);
+                                Shot("gi74_cynthia_in_the_red");
+                                Console.WriteLine($"  gi74_cynthia_in_the_red: {cb.CurrentSpeaker}: {cb.CurrentMessage}");
+                                Confirm(cb);
+                                break;
+                            }
+                            if (cb.IsWaitingForConfirm) Confirm(cb); else Skip(0.05);
+                        }
+                        for (int i = 0; i < 400 && cb.HUD.MenuState != BattleMenuState.Main && !cb.IsBattleOver; i++) { if (cb.IsWaitingForConfirm) Confirm(cb); else Skip(0.05); }
+                        if (cb.HUD.MenuState == BattleMenuState.Main)
+                        {
+                            Whole(cb);
+                            ace.CurrentHP = 1;
+                            cb.SelectMainMenuOption(0);
+                            cb.SelectMove(0);
+                            Frames(1);
+                            for (int i = 0; i < 200 && !cb.IsBattleOver && !(cb.Anim.Enemy.FaintAge > 0.6f); i++) { if (cb.IsWaitingForConfirm) Confirm(cb); else Skip(0.05); }
+                            Shot("gi75_cynthia_down");
+                            Console.WriteLine($"  gi75_cynthia_down: \"{cb.CurrentMessage}\", over {cb.IsBattleOver}");
+                        }
+                    }
+                }
+                Leave(cb);
+            }
+
+            // The same growth with the Battle Scene off: the boss box at once, nothing held
+            engine.Settings.BattleScene = false;
+            engine.ApplySettings(window: false);
+            var quiet = Champion("champion_cynthia_megamax");
+            int at6 = quiet.Party.Members.FindIndex(p => p.Species.Name == "Garchomp");
+            var gq = quiet.Party.Members[at6];
+            quiet.Party.Members.RemoveAt(at6);
+            quiet.Party.Members.Insert(0, gq);
+            var qb = Begin(quiet, "Cynthia", Tosser(), Tank("Blissey", "Splash"));
+            if (qb != null)
+            {
+                ToMainMenu(qb);
+                Whole(qb);
+                qb.SelectMainMenuOption(0);
+                qb.SelectMove(1);
+                Frames(1);
+                for (int i = 0; i < 400 && !qb.Anim.Enemy.Dynamaxed && !qb.IsBattleOver; i++) { if (qb.IsWaitingForConfirm) Confirm(qb); else Skip(0.05); }
+                Skip(0.2);
+                Shot("gi78_scene_off_grown");
+                Console.WriteLine($"  gi78_scene_off_grown: \"{qb.CurrentMessage}\"; boss box {qb.BossShare(qb.Anim.Enemy):0.00}, hold {qb.GrowthHold:0.00}");
+                for (int i = 0; i < 400 && qb.HUD.MenuState != BattleMenuState.Main && !qb.IsBattleOver; i++) { if (qb.IsWaitingForConfirm) Confirm(qb); else Skip(0.05); }
+                Skip(0.3);
+                Shot("gi79_scene_off_menu");
+                Console.WriteLine($"  gi79_scene_off_menu: boss box {qb.BossShare(qb.Anim.Enemy):0.00}");
+                Leave(qb);
+            }
+            engine.Settings.BattleScene = true;
+            engine.ApplySettings(window: false);
         }
         game.State = GameState.Overworld;
     }

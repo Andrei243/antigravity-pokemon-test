@@ -99,7 +99,7 @@ public class GrownNamesTests
         foreach (var (key, set) in TrainerLines.All)
         {
             var ids = Changes.Value.Keys.Where(id => TrainerLines.IsStem(key) ? id.StartsWith(key[..^1], StringComparison.Ordinal) : id == key).ToList();
-            foreach (var line in new[] { set.LastPokemon, set.FirstDown, set.LowHp })
+            foreach (var line in set.Lines)
                 if (line != null) Check($"trainer-lines {key}", line.Text, ids);
         }
 

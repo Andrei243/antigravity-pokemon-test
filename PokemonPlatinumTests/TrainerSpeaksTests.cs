@@ -314,9 +314,9 @@ public class TrainerSpeaksTests
         // player's and the rival's names at their longest (seven), which two lines always hold
         string longest = new('W', PlayerIdentity.MaxNameLength);
         foreach (var (key, set) in TrainerLines.All)
-            foreach (var cue in Enum.GetValues<TrainerCue>())
+            foreach (var line in set.Lines)
             {
-                if (set.For(cue) is not { } line) continue;
+                string cue = line == set.Giant ? "giant" : line == set.LowHp ? "lowHp" : line == set.FirstDown ? "firstDown" : "lastPokemon";
                 string text = PlayerIdentity.Fill(line.Text, longest, PlayerLook.Boy, longest);
                 Assert.False(string.IsNullOrWhiteSpace(text), $"{key} {cue}");
                 Assert.True(text.Length <= 100, $"{key} {cue}: {text.Length} characters won't fit two lines");

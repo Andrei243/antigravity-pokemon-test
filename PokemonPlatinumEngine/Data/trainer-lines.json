@@ -159,5 +159,48 @@
     "firstDown": { "text": "Wonderful. You and your Pokémon truly trust one another.", "mood": "happy", "act": "nod" },
     "lastPokemon": { "text": "My last Pokémon. I've rarely had to call on it... Let's go.", "mood": "neutral", "act": "point" },
     "lowHp": { "text": "This is it... the battle I've been hoping for. Don't hold back!", "mood": "happy" }
+  },
+
+  "champion_cynthia_megamax": {
+    "firstDown": { "text": "Good. You've grown since the League, and so have we.", "mood": "happy", "act": "nod" },
+    "lastPokemon": { "text": "Then let me show you everything. Every last bit of it.", "mood": "neutral", "act": "point" },
+    "lowHp": { "text": "Even a giant can stagger... but it doesn't kneel yet!", "mood": "angry", "act": "cheer" },
+    "giant": { "text": "Garchomp, rise above all of it! Show {player} the sky itself!", "mood": "angry", "act": "point" }
+  },
+  "kanto_champion_megamax_squirtle": {
+    "firstDown": { "text": "Lucky shot, {player}. That's all it was!", "mood": "angry", "act": "shrug" },
+    "lastPokemon": { "text": "You want the real me? Fine. You asked for it!", "mood": "angry", "act": "point" },
+    "lowHp": { "text": "No way... I am NOT losing to you twice!", "mood": "angry", "act": "jump" },
+    "giant": { "text": "This is my ace, {player}! Pidgeot, go huge and blow them right off the map!", "mood": "happy", "act": "point" }
+  },
+  "kanto_champion_megamax_bulbasaur": {
+    "firstDown": { "text": "Lucky shot, {player}. That's all it was!", "mood": "angry", "act": "shrug" },
+    "lastPokemon": { "text": "You want the real me? Fine. You asked for it!", "mood": "angry", "act": "point" },
+    "lowHp": { "text": "No way... I am NOT losing to you twice!", "mood": "angry", "act": "jump" },
+    "giant": { "text": "This is my ace, {player}! Pidgeot, go huge and blow them right off the map!", "mood": "happy", "act": "point" }
+  },
+  "kanto_champion_megamax_charmander": {
+    "firstDown": { "text": "Lucky shot, {player}. That's all it was!", "mood": "angry", "act": "shrug" },
+    "lastPokemon": { "text": "You want the real me? Fine. You asked for it!", "mood": "angry", "act": "point" },
+    "lowHp": { "text": "No way... I am NOT losing to you twice!", "mood": "angry", "act": "jump" },
+    "giant": { "text": "This is my ace, {player}! Pidgeot, go huge and blow them right off the map!", "mood": "happy", "act": "point" }
+  },
+  "johto_champion_lance_megamax": {
+    "firstDown": { "text": "Your Pokémon fight with a dragon's heart. I respect that.", "mood": "neutral", "act": "nod" },
+    "lastPokemon": { "text": "My oldest partner. Few trainers have seen it fight like this.", "mood": "neutral", "act": "point" },
+    "lowHp": { "text": "A dragon is never more dangerous than when it is cornered!", "mood": "angry" },
+    "giant": { "text": "Dragonite! Spread your wings over the whole sky!", "mood": "angry", "act": "point" }
+  },
+  "hoenn_steven_megamax": {
+    "firstDown": { "text": "Fascinating. You've polished that team into something rare.", "mood": "happy", "act": "nod" },
+    "lastPokemon": { "text": "Now for the stone I've been saving. Steel, at its strongest.", "mood": "neutral", "act": "point" },
+    "lowHp": { "text": "Even steel can crack... but not before it's shown its edge!", "mood": "angry" },
+    "giant": { "text": "Metagross! Become a mountain of steel!", "mood": "angry", "act": "point" }
+  },
+  "unova_champion_iris_megamax": {
+    "firstDown": { "text": "Whoa! You hit hard! That's the best kind of battle!", "mood": "surprised", "act": "jump" },
+    "lastPokemon": { "text": "Okay, okay! Now I'm all fired up! Here comes my best!", "mood": "happy", "act": "point" },
+    "lowHp": { "text": "We're not done yet! We're Champions, aren't we?!", "mood": "angry", "act": "cheer" },
+    "giant": { "text": "Aggron! Get super giant and stomp it all flat!", "mood": "happy", "act": "jump" }
   }
 }

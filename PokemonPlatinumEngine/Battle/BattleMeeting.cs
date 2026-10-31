@@ -7,7 +7,7 @@ using PokemonPlatinumEngine.Models;
 namespace PokemonPlatinumEngine.Battle;
 
 /// <summary>A trainer who is met: the class and the name <c>trainers.json</c> gives them (Leader, Roark).</summary>
-public readonly record struct MetTrainer(string Class, string Name);
+public readonly record struct MetTrainer(string Class, string Name, string Id = "");
 
 /// <summary>
 /// Whom a meeting is with, as the original sorts them before it picks the way into the battle and its music
@@ -131,7 +131,7 @@ public sealed record BattleMeeting
 
     /// <summary>The meeting with trainers of the game's data: their classes and names, the first first.</summary>
     public static IReadOnlyList<MetTrainer> Of(IEnumerable<Trainer> trainers) =>
-        trainers.Select(t => new MetTrainer(t.TrainerClass, t.Name)).ToList();
+        trainers.Select(t => new MetTrainer(t.TrainerClass, t.Name, t.Id)).ToList();
 
     /// <summary>
     /// How the first trainer's class is told (<c>EncEffects_TrainerClassEffect</c>): the classes with a way or a
@@ -190,6 +190,9 @@ public sealed record BattleMeeting
             if (WithTrainers)
             {
                 var first = ClassRow(Trainers[0].Class);
+                // A Champion fought with a Mega Max team is met as the Champion whatever their class (Steven's is the
+                // Rival's): a team of our own, which the original's rows never see (plan 25 · YD6)
+                if (!Frontier && !Double && !Link && Data.TrainerDatabase.IsMegaMaxTeam(Trainers[0].Id)) return MeetingRow.Champion;
                 if (Frontier)
                 {
                     if (first == MeetingRow.FrontierBrain) return first;

@@ -213,6 +213,8 @@ public class TextTests
         {
             "Leader", "Elite Four", "Champion", "Roark", "Gardenia", "Wake", "Maylene", "Fantina", "Candice", "Byron", "Volkner",
             "Aaron", "Bertha", "Flint", "Lucian", "Cynthia", "VS",
+            // The Champions of the Mega Max band's own table (plan 25 · YD6)
+            "Steven", "Iris",
             // Kanto's (plan 19 · K8): its Leaders and the Elite Four by name, and the Champion who is the rival
             "Brock", "Misty", "Lt. Surge", "Erika", "Koga", "Sabrina", "Blaine", "Giovanni", "Lorelei", "Bruno", "Agatha", "Lance", "{rival}",
             // Hoenn's (plan 21 · H9, part b): its Leaders, the Elite Four and Wallace by name
@@ -264,8 +266,8 @@ public class TextTests
         ["UI/IntroScreen.cs"] = new[] { "Buneary", "RIVAL", "ROWAN", "Poké Ball" },
         // The keyboard's case key, which shows the letters it turns to (plan 17 · N5 gives each language its keyboard)
         ["UI/ModernUi.Intro.cs"] = new[] { "abc", "ABC" },
-        // The ball whose art the foe's tray and the caught mark draw
-        ["UI/ModernUi.Battle.cs"] = new[] { "Poké Ball" },
+        // The ball whose art the foe's tray and the caught mark draw, and the class the boss box names (plan 25 · YD6)
+        ["UI/ModernUi.Battle.cs"] = new[] { "Poké Ball", "Champion" },
         // The Pokémon, the ball and the trainer the catching lesson is played with, the stages by their names, and the
         // species, abilities and forms the field's weather turns
         ["Core/GameEngine.Battles.cs"] = new[]

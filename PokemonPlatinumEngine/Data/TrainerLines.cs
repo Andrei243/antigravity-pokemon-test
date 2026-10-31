@@ -30,12 +30,21 @@ public sealed class TrainerLineSet
     public TrainerLine? FirstDown { get; set; }
     public TrainerLine? LowHp { get; set; }
 
+    /// <summary>
+    /// What they say as their Pokémon grows into a giant (plan 25 · YD6: each Champion's Mega Max team): no moment of
+    /// the rules (no <see cref="TrainerCue"/>, no event), said by the screen once the growth it saw is over.
+    /// </summary>
+    public TrainerLine? Giant { get; set; }
+
     public TrainerLine? For(TrainerCue cue) => cue switch
     {
         TrainerCue.LastPokemon => LastPokemon,
         TrainerCue.FirstDown => FirstDown,
         _ => LowHp
     };
+
+    /// <summary>Every line of the set, the rules' three moments and the screen's giant.</summary>
+    public IEnumerable<TrainerLine> Lines => new[] { LastPokemon, FirstDown, LowHp, Giant }.Where(l => l is { Text.Length: > 0 }).Select(l => l!);
 }
 
 /// <summary>
@@ -71,4 +80,7 @@ public static class TrainerLines
 
     /// <summary>What a trainer says at a moment, or null when they have nothing to say then.</summary>
     public static TrainerLine? For(string? id, TrainerCue cue) => SetOf(id)?.For(cue) is { Text.Length: > 0 } line ? line : null;
+
+    /// <summary>What a trainer says as their Pokémon grows into a giant (plan 25 · YD6), or null.</summary>
+    public static TrainerLine? GiantFor(string? id) => SetOf(id)?.Giant is { Text.Length: > 0 } line ? line : null;
 }

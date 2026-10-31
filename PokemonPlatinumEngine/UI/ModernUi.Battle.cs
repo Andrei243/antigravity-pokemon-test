@@ -138,7 +138,10 @@ internal static partial class ModernUi
         else
         {
             float enemySlide = BattleHUD.BoxSlide(anim, anim.Enemy);
-            if (enemySlide >= 0f) EnemyBox(56 - 720 * enemySlide, 52, anim.Enemy, battle.EnemyParty, battle.ShowsCaughtMark(anim.Enemy.Shown!));
+            // A Mega Max team's ace once it has Mega Dynamaxed: the boss box (plan 25 · YD6)
+            float boss = enemySlide == 0f ? battle.BossShare(anim.Enemy) : 0f;
+            if (boss > 0f) BossBox(anim.Enemy, boss, battle.EnemyParty, Text.Of("battle.fullTitle", ("class", Trainer.ClassName("Champion")), ("name", PlayerIdentity.Fill(battle.Trainers[0].Name))));
+            else if (enemySlide >= 0f) EnemyBox(56 - 720 * enemySlide, 52, anim.Enemy, battle.EnemyParty, battle.ShowsCaughtMark(anim.Enemy.Shown!));
             float playerSlide = BattleHUD.BoxSlide(anim, anim.Player);
             // The team's cards cover the player's box while switching, and a question about a move to learn takes its place
             if (playerSlide >= 0f && !boxCovered) PlayerBox(1240 + 760 * playerSlide, 650, anim.Player);
@@ -202,7 +205,8 @@ internal static partial class ModernUi
                     DrawChoices(sw + 48, sh + 40, new[] { Text.Of("battleMenu.yes"), Text.Of("battleMenu.no") }, battle.LearnCursor, 1f);
                 break;
             default:
-                MessageBox(new Rectangle(48, 858, MessageBoxWidth, 172), message, null, battle.CurrentSpeaker);
+                // No arrow while a growth holds the lines (plan 25 · YD6): a press would do nothing then
+                MessageBox(new Rectangle(48, 858, MessageBoxWidth, 172), message, null, battle.CurrentSpeaker, arrow: !battle.HeldForAGrowth);
                 // A level's panel stands on the message box's right end, over the line that tells of the level (plan 08 · P5)
                 if (hud.LevelUp is { } level) LevelUp(48 + 1824, 858 - 22, level);
                 // The Battle Palace's commands stand closed, and the Battle Arena's judge shows its card (plan 14 · B9)
@@ -498,11 +502,26 @@ internal static partial class ModernUi
         y += jolt.Y;
         var r = new Rectangle(x, y, 580, 120);
 
-        // A trainer's team on a tray hanging under the box: a ball for each Pokémon (grey once it has fainted)
-        // and a dot for each empty place
+        TrainerTray(x, y + r.Height, trainerParty);
+
+        Panel(r, 22, skew: -0.2f);
+        float nameW = NameWithGender(p, x + 38, y + 38, 36);
+        if (caught) nameW += CaughtMark(x + 38 + nameW, y + 38, 36);
+        StatusPill(x + 38 + nameW + 14, y + 22, p.Status, 30);
+        Level(x + r.Width - 46, y + 38, p.Level, 34);
+        HpBar(x + 38, y + 72, r.Width - 90, 24, view.DisplayedHp / Math.Max(1, p.MaxHP), ghost);
+        GiantTags(r, view);
+    }
+
+    /// <summary>
+    /// A trainer's team on a tray hanging under a box whose foot is at <paramref name="foot"/>: a ball for each Pokémon
+    /// (grey once it has fainted) and a dot for each empty place. Nothing for a wild battle.
+    /// </summary>
+    private static void TrainerTray(float x, float foot, Party? trainerParty)
+    {
         if (trainerParty != null)
         {
-            var tray = new Rectangle(x + 30, y + r.Height - 14, Party.MaxSize * 36 + 26, 62);
+            var tray = new Rectangle(x + 30, foot - 14, Party.MaxSize * 36 + 26, 62);
             UiShapes.Shadow(tray, 22, 14, new Vector2(0, 5), ShadowColor, -0.2f);
             UiShapes.Shape(tray, 22, Lighter(Frame, 0.08f), Frame, Darker(Frame, 0.3f), 3, -0.2f);
             var ball = PixelArtGenerator.GetBallTexture("Poké Ball");
@@ -519,14 +538,6 @@ internal static partial class ModernUi
                     Vector2.Zero, 0f, fainted ? new Color(110, 116, 140, 190) : Color.White);
             }
         }
-
-        Panel(r, 22, skew: -0.2f);
-        float nameW = NameWithGender(p, x + 38, y + 38, 36);
-        if (caught) nameW += CaughtMark(x + 38 + nameW, y + 38, 36);
-        StatusPill(x + 38 + nameW + 14, y + 22, p.Status, 30);
-        Level(x + r.Width - 46, y + 38, p.Level, 34);
-        HpBar(x + 38, y + 72, r.Width - 90, 24, view.DisplayedHp / Math.Max(1, p.MaxHP), ghost);
-        GiantTags(r, view);
     }
 
     /// <summary>
@@ -571,7 +582,7 @@ internal static partial class ModernUi
     /// <summary>The message box's width as the battle's lines are shown in it, and how much of it a line's two rows may take (plan 17 ? N2).</summary>
     public const float MessageBoxWidth = 1824, MessageMargin = 190, MessageSize = 40;
 
-    public static void MessageBox(Rectangle r, string? message, string? prompting, string? speaker = null)
+    public static void MessageBox(Rectangle r, string? message, string? prompting, string? speaker = null, bool arrow = true)
     {
         Panel(r, 28);
         if (prompting == null && !string.IsNullOrEmpty(speaker)) SpeakerPill(r, speaker);
@@ -597,7 +608,7 @@ internal static partial class ModernUi
             UiFonts.DrawCentered(lines[0], x, cy - 28, 40, Ink, UiWeight.ExtraBold);
             UiFonts.DrawCentered(lines[1], x, cy + 28, 40, Ink, UiWeight.ExtraBold);
         }
-        AdvanceArrow(r.X + r.Width - 64, r.Y + r.Height - 52);
+        if (arrow) AdvanceArrow(r.X + r.Width - 64, r.Y + r.Height - 52);
     }
 
     /// <summary>
