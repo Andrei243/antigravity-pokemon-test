@@ -89,6 +89,10 @@ partial class Harness
         // Comes in by a door, as the game does: the room's lift is laid out and its own script runs
         void Enter(string map, int x, int y, bool read = true)
         {
+            // A script still running where the player stands (the bedroom's television after the Hall of Fame) is read
+            // to its end first: arriving in the middle of it, the place come to waited behind it, and the next door
+            // came before its own script ever ran (the Center's, which puts the Four back, was lost that way)
+            if (engine.ScriptRunning) { ReadOn(); Frames(2); }
             At(map, x, y, Direction.Up);
             game.ArriveOnMap();
             Frames(2);
@@ -222,8 +226,11 @@ partial class Harness
             story.Set("SinnohHallOfFame");
             story.Set("FLAG_ARRESTED_CHARON_STARK_MOUNTAIN");
             team.Members.Insert(0, new Pokemon(PokemonDatabase.Get("Garchomp")!, 110));
-            story.Unset("FLAG_DEFEATED_AARON"); // the Center's own OnEnter does this; the mode comes from the Hall of Fame still running its script
             Enter(Center, 11, 11);
+            // The Center's own script puts the Four back (no hand of the harness's: it had to, while Enter came in the
+            // middle of the bedroom's script)
+            Console.WriteLine($"league: beyond: in the Center FLAG_DEFEATED_AARON {story.Has("FLAG_DEFEATED_AARON")}");
+            if (story.Has("FLAG_DEFEATED_AARON")) Console.WriteLine("  !! the Center left Aaron beaten");
             Ride("Aaron", null);
             team.HealAll();
             Enter(RoomOf("Aaron"), 8, 11);

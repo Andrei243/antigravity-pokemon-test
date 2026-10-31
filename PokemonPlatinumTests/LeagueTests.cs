@@ -622,6 +622,37 @@ public class LeagueTests
     }
 
     [Fact]
+    public void AChampionBackFromTheHallOfFameFindsAaronWaitingWithHisRematchTeam()
+    {
+        // The save the Hall of Fame writes at home keeps the Four beaten and their doors as they were left: only the
+        // Center's own script puts them back (the shots' report found Aaron beaten still, from a harness that came
+        // into the Center while the bedroom's own script had the field)
+        var game = Challenger();
+        foreach (string who in Four)
+        {
+            game.Story.Set($"FLAG_DEFEATED_{who.ToUpperInvariant()}");
+            game.Story.Set($"FLAG_HIDE_POKEMON_LEAGUE_{who.ToUpperInvariant()}_ROOM_EXIT_DOOR");
+            game.Story.Unset($"FLAG_HIDE_POKEMON_LEAGUE_{who.ToUpperInvariant()}_ROOM_ENTRANCE_DOOR");
+        }
+        game.Story.Set("FLAG_DEFEATED_CYNTHIA");
+        game.Story.Set("FLAG_GAME_COMPLETED");
+        game.Story.Set(RegionDatabase.Get(RegionDatabase.Sinnoh)!.StoryCompleteFlag);
+        game.Story.Set("FLAG_ARRESTED_CHARON_STARK_MOUNTAIN");
+        game.Arrive("PlayerHouse2F", 4, 6);
+
+        game.Arrive(Center, 11, 11);
+        foreach (string who in Four)
+            Assert.False(game.Story.Has($"FLAG_DEFEATED_{who.ToUpperInvariant()}"), who);
+        game.Arrive(RoomOf("Aaron"), 8, 11);
+        Assert.Contains(game.Map.NPCs, n => n.Key == "exit_door");
+        var rematch = game.Talk("aaron");
+        Assert.Contains(rematch.Log, l => l.StartsWith("battle elite_four_aaron") && l.EndsWith("Won"));
+        Assert.DoesNotContain("battle elite_four_aaron Won", rematch.Log);
+        Assert.True(game.Story.Has("FLAG_DEFEATED_AARON"));
+        Assert.DoesNotContain(game.Map.NPCs, n => n.Key == "exit_door");
+    }
+
+    [Fact]
     public void TheGirlIsShownIntoTheHallOfFameAsOne()
     {
         var game = Challenger();

@@ -613,7 +613,9 @@
     "veteran_m": "veteran", "veteran_f": "veteran", "backpacker_f": "picnicker", "worker_44": "worker", "worker_26": "worker",
     "clerk_f": "clerk",
     // Plan 20 · J15, part h: Janine, Fuchsia's Leader, and the decoys of her Gym who wear her look
-    "gsleader13": "janine"
+    "gsleader13": "janine",
+    // The rest of HeartGold's Kanto Leaders, so that no overlay that forgets one draws them in the plain look
+    "gsleader10": "sabrina", "gsleader11": "misty", "gsleader12": "erika", "gsleader14": "brock", "gsleader15": "blaine", "gsleader16": "blue"
   },
   "fallback": "Trainer",
   // The look a trainer class stands as in battle, as the original shows the class whatever the person in the field

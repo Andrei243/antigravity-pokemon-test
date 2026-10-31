@@ -47,7 +47,9 @@ partial class Harness
         game.World.Layers = DebugLayer.Chunks;
         game.World.ForgetAll();
         game.World.ResetStreamingStats();
-        At("Sinnoh", 175, 760, Direction.Down);
+        // (near the corner of four chunks, so that their borders and labels are in the picture: from the middle of one
+        // chunk, as this stood first, the window the view takes in has its borders off the picture)
+        At("Sinnoh", 188, 764, Direction.Down);
         Shot("lay_jubilife_chunks");
         Tell("lay_jubilife_chunks");
         Console.WriteLine($"    streaming: {game.World.Streaming}");

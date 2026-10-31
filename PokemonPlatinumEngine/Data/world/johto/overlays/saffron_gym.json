@@ -7,7 +7,7 @@
   "bgmTrack": "johto/gym",
   "arenaType": "Psychic",
   "people": {
-    "t11gym0101_gsleader10": { "name": "Sabrina", "script": "Sabrina", "still": true, "hiddenBy": "" },
+    "t11gym0101_gsleader10": { "name": "Sabrina", "npcType": "sabrina", "script": "Sabrina", "still": true, "hiddenBy": "" },
     "t11gym0101_sunglasses": { "name": "Gym Guide", "script": "GymGuy", "still": true },
     "t11gym0101_itako": {
       "name": "Darcy",
