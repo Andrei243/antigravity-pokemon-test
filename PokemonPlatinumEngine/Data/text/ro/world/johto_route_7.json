@@ -1,0 +1,21 @@
+{
+  "people": {},
+  "signs": {
+    "R07_000+1": {
+      "en": [
+        "Route 7\nCeladon City - Saffron City"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "R07_001+1": {
+      "en": [
+        "The Underground Path's entrance is closed for repairs."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

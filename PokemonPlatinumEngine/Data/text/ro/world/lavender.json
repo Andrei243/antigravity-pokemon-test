@@ -1,0 +1,110 @@
+{
+  "people": {
+    "t05_gswoman1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Lavender is a quiet town. People come here to remember the Pokémon they've loved."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t05_gsboy1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The tall building is the radio station. It broadcasts all over Kanto, but they won't let me in to watch."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t05_gsoldman1": {
+      "name": {
+        "en": [
+          "Old man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "There used to be a tower here where Pokémon were laid to rest. Now they rest in the House of Memories."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t05_gsmiddleman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Name Rater lives here in Lavender. He'll tell you what he thinks of your Pokémon's names."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T05_004+1": {
+      "en": [
+        "Lavender Town\nA quiet town where memories rest."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T05_005+1": {
+      "en": [
+        "Kanto Radio Tower\nClosed to visitors."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T05_007+1": {
+      "en": [
+        "House of Memories\nWhere Pokémon are remembered."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T05_006+1": {
+      "en": [
+        "Volunteer Pokémon House"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

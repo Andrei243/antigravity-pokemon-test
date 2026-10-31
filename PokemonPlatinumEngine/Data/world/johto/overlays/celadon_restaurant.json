@@ -1,0 +1,51 @@
+{
+  // Celadon City's restaurant (plan 20 · J15, part d), its cook and its diners. HeartGold's Leader at the table by the
+  // wall stands as a diner here: her own talk waits for the Leaders' rematches
+  "area": "celadon_restaurant",
+  "bgmTrack": "kanto/celadon",
+  "people": {
+    "t07r0701_gsman1": {
+      "name": "Cook",
+      "still": true,
+      "dialog": [
+        "Welcome! Today's special is berry stew. The secret is to let the berries simmer until they nearly burst."
+      ]
+    },
+    "t07r0701_gswoman1": {
+      "name": "Woman",
+      "still": true,
+      "dialog": [
+        "I come here every week for lunch. The portions are generous and the view of the street is lovely."
+      ]
+    },
+    "t07r0701_gsbigman": {
+      "name": "Man",
+      "still": true,
+      "dialog": [
+        "Mmm! I'll have one more bowl, and then I'll go and battle Erika. Well, maybe two more bowls."
+      ]
+    },
+    "t07r0701_leader4": {
+      "name": "Diner",
+      "npcType": "Lady",
+      "still": true,
+      "dialog": [
+        "The food is wonderful, but I came for the quiet. A Gym can be terribly noisy."
+      ]
+    },
+    "t07r0701_gsbigman_2": {
+      "name": "Man",
+      "still": true,
+      "dialog": [
+        "This is my third plate! The cook says there's a prize for whoever eats the most. I intend to win it."
+      ]
+    },
+    "t07r0701_gsbigman_3": {
+      "name": "Man",
+      "still": true,
+      "dialog": [
+        "I can't eat another bite. Battling on a full stomach is no good, so I'll rest here a while."
+      ]
+    }
+  }
+}

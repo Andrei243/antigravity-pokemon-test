@@ -1,0 +1,29 @@
+{
+  "key": "lavender_volunteer_pokemon_house",
+  "index": 435,
+  "name": "Lavender Town",
+  "matrix": 193,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_T_CHION",
+  "nightMusic": "GS_T_CHION",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 12, "to": "lavender", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "t05r0201_gsman1", "looks": "gsman1", "movement": "17", "x": 7, "z": 7, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "T05R0201_000+1" },
+    { "id": "t05r0201_gsgirl1", "looks": "gsgirl1", "movement": "16", "x": 5, "z": 5, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "T05R0201_001+1" },
+    { "id": "t05r0201_tsure_poke_static_pidgey", "looks": "follower_mon_static_pidgey", "movement": "3", "x": 5, "z": 3, "facing": 1, "rangeX": 1, "rangeZ": 0, "script": "T05R0201_004+1" },
+    { "id": "t05r0201_tsure_poke_static_psyduck", "looks": "follower_mon_static_psyduck", "movement": "2", "x": 3, "z": 5, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "T05R0201_002+1" },
+    { "id": "t05r0201_tsure_poke_static_nidorino", "looks": "follower_mon_static_nidorino", "movement": "3", "x": 9, "z": 10, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "T05R0201_003+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

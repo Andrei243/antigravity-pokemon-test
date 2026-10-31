@@ -180,6 +180,9 @@ ours Gemwraith 142-146
 === cave_of_origin_entrance
 Cave Of Origin
 grass 28-36
+=== celadon
+Celadon City
+surf 15-20
 === celadon_city
 Celadon City
 surf 5-40
@@ -192,6 +195,9 @@ trainers 1, 20: kanto_team_rocket_grunt_7 20
 === celadon_city_gym
 Celadon City
 trainers 7, 21-24: kanto_beauty_bridget 21, kanto_beauty_lori 24, kanto_beauty_tamia 24, kanto_cooltrainer_mary 22, kanto_lass_kay 23, kanto_lass_lisa 23, kanto_picnicker_tina 24
+=== celadon_gym
+Celadon City
+trainers 4, 44-49: johto_beauty_julia 47, johto_lass_michelle 46, johto_picnicker_tanya 49, johto_twins_jo_and_zoe 47
 === celestial_tower
 Celestial Tower
 grass 30-33
@@ -741,6 +747,13 @@ old rod 10
 good rod 20
 super rod 40
 trainers 3, 41-43: johto_camper_virgil 43, johto_picnicker_selina 42, johto_twins_day_and_dani 41
+=== johto_route_7
+Route 7
+grass 15-19
+=== johto_route_8
+Route 8
+grass 15-19
+trainers 7, 38-45: johto_biker_dwayne 41, johto_biker_harris 45, johto_biker_zeke 43, johto_gentleman_milton 45, johto_super_nerd_sam 44, johto_super_nerd_tyrone 40, johto_young_couple_moe_and_lulu 43
 === johto_victory_road_1f
 Victory Road Jk
 grass 32-36

@@ -6476,3 +6476,32 @@ The user approved L9's default on 2026-10-26 (docs/plans/APPROVAL-levelling-and-
 - *Left*: the rest of HeartGold's Kanto (its six other Gyms, the roads out of Saffron, Silph Co., the Underground Path,
   the Power Plant and the Pass, Suicune's stops, the Apricorn trees), the Gym Leaders' rematches at the Dojo, Lt. Surge
   at Saffron's station, Cameron the photographer, the rival's Mt. Moon battle, Blue at the gate.
+
+## HeartGold's Kanto, part d (2026-10-31, plan 20 · J15, part d)
+
+- *The slice*: Saffron City's west and east gates. Route 7 runs west to Celadon City, with its Pokémon Center (both
+  floors), the Department Store's and the Condominiums' ground floors, its restaurant and its Gym; Route 8 runs east past
+  a gang of bikers to Lavender Town, with its Pokémon Center (both floors), Mart, Name Rater, the south-west house, the
+  Volunteer Pokémon House and the House of Memories. The two roads' keys meet FireRed's (`route_7`, `route_8`) and take
+  Johto's prefix (`HgWorld.Clashes`: `johto_route_7`, `johto_route_8`); the towns' (`celadon`, `lavender`…) meet none of
+  FireRed's (`celadon_city*`, `lavender_town*`).
+- *What stays shut*: Saffron's north gate to Route 5, Silph Co., Celadon's Game Corner and prize corner (HeartGold's own
+  has no machines to play), the Department Store's floors above the ground, its lift and roof (their counters wait for
+  the session that stocks them), the Condominiums' floors and roof, and the Kanto Radio Tower in Lavender (the Expn Card
+  and the radio's Kanto stations wait). The roads beyond the towns (Route 16 west of Celadon, Routes 10 and 12 by
+  Lavender) share FireRed's keys and are scenery.
+- *The Gym*: HeartGold's garden, its ways closed by three small trees that Cut clears as anywhere (its own local flags).
+  Erika gives Kanto's Rainbow Badge (`givebadge rainbow of kanto`) and TM19 (Giga Drain); whether she is beaten here is
+  `FLAG_JOHTO_DEFEATED_ERIKA` (ours), as Lt. Surge's and Sabrina's are, so a FireRed Champion battles her too. Her four
+  trainers are counted beaten by her script.
+- *Held back*: Erika and the Leader HeartGold stands beside her in Celadon's street (the phone's post-game meeting, on
+  `FLAG_UNK_25D` and `FLAG_UNK_2E1`), Cameron the photographer, and a boy of Route 8's that HeartGold keeps on one of
+  Lavender's tiles behind a map flag. HeartGold's Leader dining in the restaurant stands as a diner until the Leaders'
+  rematches.
+- *Apricorns*: Route 8's tree is the first of Kanto's in `apricorns.json`, Pink (our choice, as Johto's are).
+- *Songs*: Celadon and its rooms play FireRed's `kanto/celadon`, Lavender and its rooms `kanto/lavender`, the two roads
+  and their gates `kanto/route3`, as FireRed's do; the Gym Johto's Gym theme.
+- *Left*: Route 5 and the north (Cerulean, Pewter), Fuchsia and the south, Viridian and Pallet, Cinnabar's key (which
+  meets FireRed's), the store's and the condominiums' upper floors, the Game Corner, the Radio Tower and the Expn Card,
+  Erika's street meeting and the Leaders' rematches, Silph Co., the Underground Path, the Power Plant and the Pass,
+  Suicune's stops, the rest of Kanto's Apricorn trees, the rival's Mt. Moon battle, Blue at the gate.

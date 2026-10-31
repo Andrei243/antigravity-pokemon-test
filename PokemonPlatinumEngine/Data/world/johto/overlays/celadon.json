@@ -1,0 +1,83 @@
+{
+  // Celadon City as HeartGold has it three years on (plan 20 · J15, part d): a town of Johto's own map, come to by
+  // Route 7 from Saffron City. Its Gym gives Kanto's Rainbow Badge (celadon_gym.txt). The Game Corner and its prize
+  // corner (warps 3 and 4) stay shut; Route 16 west shares its key with FireRed's Kanto and waits. Erika and the Leader
+  // beside her in the street are the phone's post-game meeting (HeartGold's FLAG_UNK_25D and FLAG_UNK_2E1), and Cameron
+  // the photographer waits for his session: all three are held back
+  "area": "celadon",
+  "bgmTrack": "kanto/celadon",
+  "trees": "Round",
+  "architecture": "Jade",
+  "locked": [
+    3,
+    4
+  ],
+  "heldBack": [ "t07_gsleader12", "t07_gsleader6", "t07_gsmiddleman1" ],
+  "people": {
+    "t07_gsbigman": {
+      "name": "Man",
+      "still": true,
+      "dialog": [
+        "My Poliwrath and I swim in the pond every morning. It's kept us both in shape for years!"
+      ]
+    },
+    "t07_tsure_poke_static_poliwrath": {
+      "name": "Poliwrath",
+      "npcType": "Pokemon",
+      "species": "Poliwrath",
+      "still": true,
+      "dialog": [ "Poliwrath flexed its arms, dripping from the pond." ]
+    },
+    "t07_gsboy1": {
+      "name": "Boy",
+      "dialog": [
+        "The Department Store has everything! I could spend all day just riding up and down the stairs."
+      ]
+    },
+    "t07_gswoman2": {
+      "name": "Woman",
+      "dialog": [
+        "People come to Celadon to shop, but they stay for the flowers. Erika's Gym is full of them."
+      ]
+    },
+    "t07_gsgirl1": {
+      "name": "Girl",
+      "dialog": [
+        "Erika gives flower arranging lessons. I go every week, but my flowers always end up lopsided."
+      ]
+    },
+    "t07_gswoman1": {
+      "name": "Woman",
+      "dialog": [
+        "The Game Corner is closed for refitting. My husband is quite lost without it."
+      ]
+    },
+    "t07_gsboy2": {
+      "name": "Boy",
+      "dialog": [
+        "There's a tree by the pond that blocks the way to a hidden spot. A Pokémon that knows Cut could clear it."
+      ]
+    },
+    "t07_gsoldman1": {
+      "name": "Old man",
+      "still": true,
+      "dialog": [
+        "Hm? The Gym is right behind me. Erika is a kind young lady, but don't underestimate her."
+      ]
+    },
+    "t07_gsoldman1_2": {
+      "name": "Old man",
+      "dialog": [
+        "The restaurant here serves a fine lunch. The chefs were once trainers themselves, they say."
+      ]
+    }
+  },
+  "signs": {
+    "T07_009+1": "Celadon City\nWhere the flowers bloom in every colour.",
+    "T07_013+1": "Celadon Game Corner\nClosed for refitting.",
+    "T07_014+1": "Celadon Prize Corner\nClosed for refitting.",
+    "T07_012+1": "Celadon Condominiums",
+    "T07_010+1": "Celadon City Pokémon Gym\nLeader: Erika\nThe gardener of Grass Pokémon.",
+    "T07_011+1": "Celadon Department Store\nFind what you need here!"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  // The Celadon Department Store's ground floor (plan 20 · J15, part d). The floors above, its stairs (warp 1) and its
+  // lift (warp 2) stay shut for the session that stocks their counters; its delivery men are the original's gifts,
+  // which this game has no use for
+  "area": "celadon_department_store_1f",
+  "bgmTrack": "kanto/celadon",
+  "locked": [
+    1,
+    2
+  ],
+  "people": {
+    "t07r0101_gswoman6": {
+      "name": "Receptionist",
+      "still": true,
+      "dialog": [
+        "Welcome to the Celadon Department Store! I'm sorry, the floors upstairs are closed while we restock."
+      ]
+    },
+    "t07r0101_gsgentleman": {
+      "name": "Gentleman",
+      "dialog": [
+        "Goldenrod's store is bigger, they say. But Celadon's was here first, and its roof has the best view."
+      ]
+    },
+    "t07r0101_gswoman3": {
+      "name": "Woman",
+      "dialog": [
+        "I'm waiting for the floors upstairs to open again. I've a whole list of things to buy!"
+      ]
+    }
+  },
+  "signs": {
+    "T07R0101_003+1": "1F: Service Counter\n2F to 5F: closed while we restock."
+  }
+}

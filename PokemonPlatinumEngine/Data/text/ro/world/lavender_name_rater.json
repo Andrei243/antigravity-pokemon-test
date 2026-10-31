@@ -1,0 +1,25 @@
+{
+  "people": {
+    "t05r0401_gsoldman1": {
+      "name": {
+        "en": [
+          "Name Rater"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome, welcome! I'm the Name Rater of Kanto. My brother does the same work in Goldenrod.",
+          "My pen is resting just now. Do come back another day, and I'll rate your Pokémon's names!"
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

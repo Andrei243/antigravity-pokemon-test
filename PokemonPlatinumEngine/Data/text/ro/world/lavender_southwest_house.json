@@ -1,0 +1,23 @@
+{
+  "people": {
+    "t05r0301_middlewoman1_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My grandmother remembers when this town was full of ghost stories. Now the loudest thing here is the radio."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

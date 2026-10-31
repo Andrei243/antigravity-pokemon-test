@@ -392,6 +392,25 @@ public static partial class WorldModels
         Ground("ymbk_sl", "a flight of steps of Saffron City's raised walks: its tiles draw it"),
         Ground("st_board", "a notice board by a road of Kanto: its tiles draw it"),
         Ground("y_j_warp", "the Saffron Gym's floor of warp panels: the room's tiles draw it"),
+
+        // ---------------------------------------------------------------- plan 20 · J15, part d: Celadon City (ta_: the
+        // original's Tamamushi) and Lavender Town (si_: Shion), built as plan 19 · K5 builds FireRed's
+        House("ta_h01", Architecture.Jade, "a house of Celadon City"),
+        House("ta_h02", Architecture.Jade, "a house of Celadon City"),
+        House("ta_h03", Architecture.Jade, "a house of Celadon City", storeys: 2),
+        Built("ta_depart", BuildingKind.Shop, "the Celadon Department Store", Architecture.Jade, storeys: 5, sign: "STORE"),
+        Built("ta_mansion", BuildingKind.Apartments, "the Celadon Condominiums", Architecture.Jade, storeys: 3),
+        Built("ta_game", BuildingKind.Shop, "the Celadon Game Corner (shut)", Architecture.Jade, sign: "GAMES"),
+        Built("ta_gift", BuildingKind.Shop, "the Celadon Game Corner's prize corner (shut)", Architecture.Jade, sign: "PRIZES"),
+        Built("ta_restaurant", BuildingKind.Shop, "Celadon City's restaurant", Architecture.Jade, sign: "RESTAURANT"),
+        Built("ta_gym", BuildingKind.Gym, "the Celadon Gym"),
+        Ground("tmms_sl", "a flight of steps between Celadon City's levels: its tiles draw it"),
+        Ground("ta_j_obj1", "the Celadon Gym's garden, its beds and its paths: the room's tiles draw it"),
+        House("si_h01", Architecture.Lilac, "a house of Lavender Town"),
+        Built("si_temp", BuildingKind.Temple, "Lavender Town's House of Memories", Architecture.Lilac),
+        Built("si_radio", BuildingKind.TvStation, "the Kanto Radio Tower in Lavender Town (shut)", storeys: 5),
+        Door("si_door1"), Door("si_door2"),
+        Furniture("soul_f", PropType.Statue, "a memorial stone in Lavender Town's House of Memories"),
     };
 
     private static readonly Dictionary<string, WorldModel> JohtoByName = JohtoTable.ToDictionary(m => m.Name, StringComparer.Ordinal);

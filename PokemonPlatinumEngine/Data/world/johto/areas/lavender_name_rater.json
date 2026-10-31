@@ -1,0 +1,25 @@
+{
+  "key": "lavender_name_rater",
+  "index": 437,
+  "name": "Lavender Town",
+  "matrix": 140,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_T_CHION",
+  "nightMusic": "GS_T_CHION",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 8, "to": "lavender", "toWarp": 3 }
+  ],
+  "objects": [
+    { "id": "t05r0401_gsoldman1", "looks": "gsoldman1", "movement": "15", "x": 5, "z": 3, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T05R0401_000+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

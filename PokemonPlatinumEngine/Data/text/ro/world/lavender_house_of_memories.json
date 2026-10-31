@@ -1,0 +1,77 @@
+{
+  "people": {
+    "t05r0601_gsoldman1": {
+      "name": {
+        "en": [
+          "Caretaker"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome. When the old tower was rebuilt, the memorials were brought here. Take as long as you like."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t05r0601_gsoldwoman1": {
+      "name": {
+        "en": [
+          "Old woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I come every week to tell my old Pokémon how its grandchildren are doing. I'm sure it listens."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t05r0601_gsgirl1": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My first Pokémon is remembered here. I miss it, but I'm not sad any more. It wouldn't want me to be."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t05r0601_gswoman1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "It's quiet here, but not gloomy. The flowers are always fresh."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

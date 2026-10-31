@@ -1,0 +1,33 @@
+{
+  "key": "celadon_department_store_1f",
+  "index": 370,
+  "name": "Celadon City",
+  "matrix": 215,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_FS",
+  "nightMusic": "GS_FS",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 12, "z": 12, "to": "celadon", "toWarp": 0 },
+    { "x": 6, "z": 8, "to": "celadon_department_store_2f", "toWarp": 0 },
+    { "x": 5, "z": 2, "to": "celadon_department_store_elevator", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "t07r0101_gswoman6", "looks": "gswoman6", "movement": "16", "x": 17, "z": 8, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "T07R0101_000+1" },
+    { "id": "t07r0101_gsgentleman", "looks": "gsgentleman", "movement": "3", "x": 14, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "T07R0101_001+1" },
+    { "id": "t07r0101_gswoman3", "looks": "gswoman3", "movement": "3", "x": 3, "z": 5, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "T07R0101_002+1" },
+    { "id": "t07r0101_delivery2", "looks": "delivery2", "movement": "0", "x": 19, "z": 11, "facing": 2, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_MOM_GIFT_DELIVERYMAN", "script": "std_moms_gift_deliveryman" },
+    { "id": "t07r0101_delivery", "looks": "delivery", "movement": "0", "x": 19, "z": 10, "facing": 2, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_MYSTERY_GIFT_DELIVERYMAN", "script": "std_mystery_gift_deliveryman" }
+  ],
+  "signs": [
+    { "x": 7, "z": 2, "type": 0, "script": "T07R0101_003+1" }
+  ],
+  "triggers": []
+}

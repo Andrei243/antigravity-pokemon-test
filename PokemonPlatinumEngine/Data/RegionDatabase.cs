@@ -561,6 +561,9 @@ public static class RegionDatabase
                 "SSAqua_OlivinePort", "SSAqua_1F", "SSAqua_VermilionPort", "Vermilion_PortHall", "Vermilion_PokemonCenter_1F", "Vermilion_PokemonCenter_B1F", "Vermilion_Mart", "Vermilion_FishingGuruHouse", "Vermilion_FanClub", "Vermilion_CentralHouse", "Vermilion_SouthHouse", "Vermilion_Gym",
                 // Plan 20 · J15, part c: the Magnet Train's stations, Route 6's gate and Saffron City's rooms
                 "Goldenrod_MagnetTrainStation", "Saffron_MagnetTrainStation", "Route6_SaffronGate", "Saffron_PokemonCenter_1F", "Saffron_PokemonCenter_2F", "Saffron_Mart", "Saffron_FightingDojo", "Saffron_MrPsychicHouse", "Saffron_CopycatHouse_1F", "Saffron_CopycatHouse_2F", "Saffron_Gym",
+                // Plan 20 · J15, part d: Routes 7 and 8's gates, Celadon City's rooms and Gym, Lavender Town's rooms
+                "Route7_SaffronGate", "Route8_SaffronGate", "Celadon_PokemonCenter_1F", "Celadon_PokemonCenter_B1F", "Celadon_DeptStore_1F", "Celadon_Condominiums_1F", "Celadon_Restaurant", "Celadon_Gym",
+                "Lavender_PokemonCenter_1F", "Lavender_PokemonCenter_B1F", "Lavender_Mart", "Lavender_NameRater", "Lavender_SouthwestHouse", "Lavender_VolunteerHouse", "Lavender_HouseOfMemories",
             }
         },
         new()

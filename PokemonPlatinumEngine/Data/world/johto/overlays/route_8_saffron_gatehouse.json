@@ -1,0 +1,11 @@
+{
+  // The gate house between Saffron City and Route 8 (plan 20 · J15, part d)
+  "area": "route_8_saffron_gatehouse",
+  "bgmTrack": "kanto/route3",
+  "people": {
+    "r08r0201_counterm": {
+      "name": "Officer",
+      "dialog": [ "Route 8 runs east to Lavender Town. There's a gang of bikers on the road, so be careful." ]
+    }
+  }
+}

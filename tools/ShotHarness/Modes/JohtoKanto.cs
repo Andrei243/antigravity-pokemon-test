@@ -136,6 +136,52 @@ partial class Harness
         ReadTo("glided out of Goldenrod"); Frames(10); Shot("jk30_the_magnet_train");
         ReadTo(null); Frames(20); Shot("jk31_saffrons_station");
         Console.WriteLine($"  the ride ended on {game.Map.Name} at {game.Player.GridX},{game.Player.GridY}");
+
+        JohtoKantoCeladonShots(readTo, talkTo, until);
+    }
+
+    /// <summary>
+    /// Plan 20 · J15, part d: Route 7 west to Celadon City, its rooms and Erika's garden Gym, and Route 8 east to
+    /// Lavender Town and its rooms (<c>jk32</c> to <c>jk47</c>), after part c's, so nothing before them moves.
+    /// </summary>
+    void JohtoKantoCeladonShots(Action<string?, int> readTo, Action<string, string, int, int> talkTo, Action<Func<bool>, string, int> until)
+    {
+        void ReadTo(string? text) => readTo(text, 2400);
+        game.State = GameState.Overworld;
+        At("Johto", 1271, 240, Direction.Left); Frames(30); Shot("jk32_route_7");
+        At("Route7_SaffronGate", 5, 7, Direction.Left); Frames(10); Shot("jk33_route_7s_gate");
+        At("Johto", 1231, 240, Direction.Down); Frames(30); Shot("jk34_celadon_city");
+        engine.Settings.TimeOfDay = TimeOfDay.Night;
+        engine.ApplySettings(window: false);
+        Frames(30); Shot("jk35_celadon_city_after_dark");
+        engine.Settings.TimeOfDay = TimeOfDay.Day;
+        engine.ApplySettings(window: false);
+        At("Celadon_PokemonCenter_1F", 8, 15, Direction.Up); Frames(10); Shot("jk36_celadons_pokemon_center");
+        At("Celadon_DeptStore_1F", 12, 10, Direction.Up); Frames(10); Shot("jk37_the_department_store");
+        At("Celadon_Condominiums_1F", 7, 11, Direction.Up); Frames(10); Shot("jk38_the_condominiums");
+        At("Celadon_Restaurant", 5, 9, Direction.Up); Frames(10); Shot("jk39_the_restaurant");
+
+        // ---- The Gym: the garden, then Erika
+        At("Celadon_Gym", 7, 45, Direction.Up); game.ArriveOnMap(); Frames(10); Shot("jk40_the_celadon_gym");
+        talkTo("Celadon_Gym", "t07gym0101_gsleader12", 0, 1);
+        ReadTo("I must have dozed off"); Frames(10); Shot("jk41_erika");
+        ReadTo("I shan't hold back"); game.Dialogue.Advance();
+        until(() => game.State == GameState.Battle || BandLit(), "the battle", 600);
+        Frames(30); Shot("jk42_erikas_battle");
+        Console.WriteLine($"  Rainbow Badge {game.Story.HasBadge(RegionDatabase.Kanto, "Rainbow")}");
+        game.State = GameState.Overworld; ReadTo(null); game.Dialogue.Close();
+
+        // ---- Route 8 east to Lavender Town
+        game.State = GameState.Overworld;
+        At("Johto", 1366, 241, Direction.Right); game.ArriveOnMap(); Frames(30); Shot("jk43_route_8");
+        At("Johto", 1418, 238, Direction.Down); Frames(30); Shot("jk44_lavender_town");
+        engine.Settings.TimeOfDay = TimeOfDay.Night;
+        engine.ApplySettings(window: false);
+        Frames(30); Shot("jk45_lavender_town_after_dark");
+        engine.Settings.TimeOfDay = TimeOfDay.Day;
+        engine.ApplySettings(window: false);
+        At("Lavender_HouseOfMemories", 4, 15, Direction.Up); Frames(10); Shot("jk46_the_house_of_memories");
+        At("Lavender_VolunteerHouse", 5, 10, Direction.Up); Frames(10); Shot("jk47_the_volunteer_house");
     }
 
 }

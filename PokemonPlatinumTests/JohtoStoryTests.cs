@@ -1836,4 +1836,26 @@ public class JohtoStoryTests
         Assert.Equal("Goldenrod_MagnetTrainStation", game.Map.Name);
         Assert.Equal((6, 9), game.Tile);
     }
+
+    [Fact]
+    public void ErikaGivesKantosRainbowBadgeInCeladonsGardenGym()
+    {
+        // Plan 20 · J15, part d: the Celadon Gym, come to by Route 7 from Saffron City
+        var game = new Game();
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Typhlosion")!, 60));
+        game.Arrive("Celadon_Gym", 7, 45);
+        Assert.Contains(game.Read(5, 44).Transcript, l => !l.Text.Contains("Winning"));
+
+        // Erika: Kanto's Rainbow Badge, not Johto's, her four trainers counted beaten, and TM19 once
+        int johtoBadges = game.Story.BadgeCount(RegionDatabase.Johto);
+        Assert.Contains(game.Talk("t07gym0101_gsleader12").Log, l => l.StartsWith("battle johto_leader_erika_erika Won"));
+        Assert.True(game.Story.HasBadge(RegionDatabase.Kanto, "Rainbow"));
+        Assert.Equal(johtoBadges, game.Story.BadgeCount(RegionDatabase.Johto));
+        foreach (string trainer in new[] { "johto_twins_jo_and_zoe", "johto_lass_michelle", "johto_picnicker_tanya", "johto_beauty_julia" })
+            Assert.True(game.Story.HasDefeated(trainer), trainer);
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM19")!));
+        game.Talk("t07gym0101_gsleader12");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM19")!));
+        Assert.Contains(game.Read(9, 44).Transcript, l => l.Text.Contains("Winning"));
+    }
 }

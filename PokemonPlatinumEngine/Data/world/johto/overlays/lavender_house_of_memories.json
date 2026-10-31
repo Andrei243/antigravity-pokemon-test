@@ -1,0 +1,36 @@
+{
+  // The House of Memories in Lavender Town (plan 20 · J15, part d), where Pokémon that have passed on are remembered
+  // since the Pokémon Tower became the Radio Tower
+  "area": "lavender_house_of_memories",
+  "bgmTrack": "kanto/lavender",
+  "people": {
+    "t05r0601_gsoldman1": {
+      "name": "Caretaker",
+      "still": true,
+      "dialog": [
+        "Welcome. When the old tower was rebuilt, the memorials were brought here. Take as long as you like."
+      ]
+    },
+    "t05r0601_gsoldwoman1": {
+      "name": "Old woman",
+      "still": true,
+      "dialog": [
+        "I come every week to tell my old Pokémon how its grandchildren are doing. I'm sure it listens."
+      ]
+    },
+    "t05r0601_gsgirl1": {
+      "name": "Girl",
+      "still": true,
+      "dialog": [
+        "My first Pokémon is remembered here. I miss it, but I'm not sad any more. It wouldn't want me to be."
+      ]
+    },
+    "t05r0601_gswoman1": {
+      "name": "Woman",
+      "still": true,
+      "dialog": [
+        "It's quiet here, but not gloomy. The flowers are always fresh."
+      ]
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  // Lavender Town's Pokémon Center (plan 20 · J15, part d), the Centers' floor with the town's people. The counters for
+  // the link say it is closed, as in every Center (decision 06 · 7)
+  "area": "lavender_pokecenter_1f",
+  "bgmTrack": "kanto/lavender",
+  "read": {
+    "0": "PC"
+  },
+  "people": {
+    "t05pc0101_pcwoman1": {
+      "name": "Nurse",
+      "script": "Nurse"
+    },
+    "t05pc0101_pcwoman2": {
+      "name": "Receptionist",
+      "dialog": [
+        "Your Trainer Card shows your name, your money and the Pokémon you've seen. Have a look at it from the menu."
+      ]
+    },
+    "t05pc0101_pcwoman2_2": {
+      "name": "Receptionist",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    },
+    "t05pc0101_pcwoman2_3": {
+      "name": "Receptionist",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    },
+    "t05pc0101_gswoman1": {
+      "name": "Woman",
+      "still": true,
+      "dialog": [
+        "I listen to the radio from the tower next door every morning. The music always cheers my Pokémon up."
+      ]
+    },
+    "t05pc0101_gsgentleman": {
+      "name": "Gentleman",
+      "dialog": [
+        "The road north leads to the Power Plant. I hear it's had trouble lately, but I don't know what."
+      ]
+    },
+    "t05pc0101_gsboy1": {
+      "name": "Boy",
+      "dialog": [
+        "I came all the way from Saffron on foot. Those bikers on Route 8 nearly scared me home again!"
+      ]
+    }
+  }
+}

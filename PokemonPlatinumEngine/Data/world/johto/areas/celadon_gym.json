@@ -1,0 +1,36 @@
+{
+  "key": "celadon_gym",
+  "index": 395,
+  "name": "Celadon City",
+  "matrix": 258,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_GYM",
+  "nightMusic": "GS_GYM",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 7, "z": 46, "to": "celadon", "toWarp": 5 }
+  ],
+  "objects": [
+    { "id": "t07gym0101_tree", "looks": "tree", "movement": "0", "x": 7, "z": 42, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_010", "script": "std_field_cut" },
+    { "id": "t07gym0101_tree_2", "looks": "tree", "movement": "0", "x": 1, "z": 15, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_011", "script": "std_field_cut" },
+    { "id": "t07gym0101_tree_3", "looks": "tree", "movement": "0", "x": 7, "z": 16, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_012", "script": "std_field_cut" },
+    { "id": "t07gym0101_gsbabygirl1", "looks": "gsbabygirl1", "movement": "15", "x": 2, "z": 30, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 1, "script": "TRAINER_TWINS_JO_AND_ZOE" },
+    { "id": "t07gym0101_gsbabygirl1_2", "looks": "gsbabygirl1", "movement": "15", "x": 3, "z": 30, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "std_trainer_2(TRAINER_TWINS_JO_AND_ZOE)" },
+    { "id": "t07gym0101_gsgirl1", "looks": "gsgirl1", "movement": "15", "x": 13, "z": 34, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_LASS_MICHELLE" },
+    { "id": "t07gym0101_picnicgirl_2", "looks": "picnicgirl_2", "movement": "17", "x": 10, "z": 17, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 1, "script": "TRAINER_PICNICKER_TANYA" },
+    { "id": "t07gym0101_gswoman2", "looks": "gswoman2", "movement": "15", "x": 7, "z": 17, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "script": "TRAINER_BEAUTY_JULIA" },
+    { "id": "t07gym0101_gsleader12", "looks": "gsleader12", "movement": "15", "x": 7, "z": 3, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CELADON_GYM_ERIKA", "script": "T07GYM0101_000+1" }
+  ],
+  "signs": [
+    { "x": 5, "z": 44, "type": 0, "script": "T07GYM0101_001+1" },
+    { "x": 9, "z": 44, "type": 0, "script": "T07GYM0101_001+1" }
+  ],
+  "triggers": []
+}

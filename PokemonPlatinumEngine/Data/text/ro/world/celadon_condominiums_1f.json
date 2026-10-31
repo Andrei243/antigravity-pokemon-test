@@ -1,0 +1,86 @@
+{
+  "people": {
+    "t07r0201_gsoldwoman1": {
+      "name": {
+        "en": [
+          "Landlady"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I own this building, dear. The tenants upstairs are out, so I can't let you up today. Do mind the Meowth."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t07r0201_tsure_poke_static_meowth": {
+      "name": {
+        "en": [
+          "Meowth"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Meowth stretched and looked for somewhere sunny to nap."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t07r0201_tsure_poke_static_clefairy": {
+      "name": {
+        "en": [
+          "Clefairy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clefairy hummed a little tune to itself."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t07r0201_tsure_poke_static_nidoran_f": {
+      "name": {
+        "en": [
+          "Nidoran"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Nidoran sniffed at the visitor's shoes."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T07R0201_004+1": {
+      "en": [
+        "Celadon Condominiums\nResidents only above the ground floor."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

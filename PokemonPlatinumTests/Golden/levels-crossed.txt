@@ -257,7 +257,6 @@ johto_arcade_star_dahlia 106 (5) [Rattata → Ratchisel]
 johto_beauty_caroline 129 (40) [Marill → Azumarill, Seel → Glacitusk, Marill → Azumarill]
 johto_beauty_cassie 131 (42)
 johto_beauty_charlotte 113 (16)
-johto_beauty_julia 134 (47) [Paras → Cordyhusk, Carnivine → Flytrapex, Parasect → Cordyhusk]
 johto_beauty_kimberly 115 (19) [Corsola → Reefcrown]
 johto_beauty_mickey 113 (15) [Sentret → Ermilong]
 johto_beauty_mickey_10 113 (15) [Sentret → Ermilong]
@@ -276,13 +275,11 @@ johto_biker_aiden_4 140 (58) [Tentacruel → Medusarch, Hypno → Mesmeryx, Tent
 johto_biker_charles 131 (42) [Koffing → Smoglom, Charmeleon → Charizard, Weezing → Smoglom]
 johto_biker_dale 134 (47) [Gulpin → Swalot]
 johto_biker_dan 129 (39) [Gulpin → Swalot, Weezing → Smoglom, Weezing → Smoglom]
-johto_biker_dwayne 130 (41) [Koffing → Smoglom, Koffing → Smoglom, Koffing → Smoglom, Koffing → Smoglom]
 johto_biker_ernest 133 (45) [Teddiursa → Ursaluna, Marill → Azumarill]
 johto_biker_ernest_2 134 (47) [Teddiursa → Ursaluna]
 johto_biker_ernest_3 135 (49) [Teddiursa → Ursaluna]
 johto_biker_ernest_4 140 (58) [Ursaring → Ursaluna]
 johto_biker_glenn 131 (43) [Koffing → Smoglom, Magmar → Magmortar, Weezing → Smoglom]
-johto_biker_harris 133 (45) [Flareon → Pyreon]
 johto_biker_jacob 131 (43) [Magmar → Magmortar, Tentacruel → Medusarch]
 johto_biker_joel 131 (43) [Magmar → Magmortar, Magmar → Magmortar]
 johto_biker_markey 134 (47) [Skorupi → Dreadpion]
@@ -294,7 +291,6 @@ johto_biker_reese_3 136 (50) [Arbok → Najarok, Weezing → Smoglom]
 johto_biker_reese_4 139 (56) [Arbok → Najarok, Weezing → Smoglom]
 johto_biker_teddy 133 (46)
 johto_biker_theron 133 (45) [Croagunk → Venomsensei]
-johto_biker_zeke 131 (43) [Koffing → Smoglom, Koffing → Smoglom]
 johto_bird_keeper_gs_bert 133 (46) [Wingull → Pelipper, Fearow → Lancerow]
 johto_bird_keeper_gs_bob 135 (48) [Noctowl → Noctaugur]
 johto_bird_keeper_gs_boris 130 (41) [Doduo → Tripluma, Doduo → Tripluma, Dodrio → Tripluma]
@@ -428,7 +424,6 @@ johto_gentleman_alfred_3 131 (42) [Noctowl → Noctaugur]
 johto_gentleman_alfred_4 140 (58) [Noctowl → Noctaugur]
 johto_gentleman_edward 130 (41) [Persian → Regalynx]
 johto_gentleman_mickey 116 (20) [Ponyta → Solarion]
-johto_gentleman_milton 133 (45) [Growlithe → Kirinine]
 johto_guitarist_clyde 131 (42) [Electabuzz → Electivire]
 johto_hall_matron_argenta 106 (5) [Rattata → Ratchisel]
 johto_hiker_anthony_2 125 (33) [Graveler → Golem, Machoke → Machamp]
@@ -469,7 +464,6 @@ johto_lass_krise_3 128 (38) [Marowak → Ossugard]
 johto_lass_krise_4 138 (54) [Marowak → Ossugard]
 johto_lass_laura 130 (41) [Pidgeotto → Pidgeot]
 johto_lass_linda 133 (45) [Bulbasaur → Venusaur, Ivysaur → Venusaur]
-johto_lass_michelle 133 (46) [Skiploom → Jumpluff, Hoppip → Jumpluff]
 johto_lass_mickey 117 (21) [Marill → Azumarill]
 johto_lass_mickey_2 117 (21) [Marill → Azumarill]
 johto_lass_mickey_3 127 (36) [Golduck → Psyduke]
@@ -537,7 +531,6 @@ johto_picnicker_mickey 124 (32) [Weepinbell → Victreebel]
 johto_picnicker_mickey_2 128 (38)
 johto_picnicker_piper 129 (40) [Spoink → Grumpig]
 johto_picnicker_sharon 131 (43) [Furret → Ermilong, Rapidash → Solarion]
-johto_picnicker_tanya 135 (49) [Exeggutor → Palmagus]
 johto_picnicker_tiffany_2 125 (34) [Clefairy → Clefable]
 johto_picnicker_tiffany_3 130 (41)
 johto_picnicker_tiffany_4 142 (61)
@@ -654,9 +647,7 @@ johto_super_nerd_mickey_4 116 (20) [Magnemite → Magnezone, Magnemite → Magne
 johto_super_nerd_mickey_5 121 (27) [Magnemite → Magnezone, Magnemite → Magnezone, Magnemite → Magnezone]
 johto_super_nerd_mickey_6 123 (30) [Porygon → Porygon-Z]
 johto_super_nerd_pat 134 (47) [Porygon → Porygon-Z]
-johto_super_nerd_sam 132 (44) [Grimer → Sludgemire, Muk → Sludgemire]
 johto_super_nerd_shawn 130 (41) [Magnemite → Magnezone, Muk → Sludgemire, Magnemite → Magnezone]
-johto_super_nerd_tyrone 129 (40) [Magnemite → Magnezone, Magnemite → Magnezone, Magnemite → Magnezone]
 johto_super_nerd_waldo 138 (53) [Numel → Camerupt]
 johto_swimmer_f_briana 133 (46) [Seaking → Sabrefin, Seaking → Sabrefin]
 johto_swimmer_f_chelan 129 (40)
@@ -716,7 +707,6 @@ johto_team_rocket_mickey_7 123 (30) [Golbat → Crobat, Golbat → Crobat, Arbok
 johto_tower_tycoon_palmer 106 (5) [Rattata → Ratchisel]
 johto_twins_amy_and_mimi_2 109 (10) [Ledyba → Coccinova, Spinarak → Orbweavix]
 johto_twins_dara_and_dia 113 (16) [Mareep → Ampharos, Marill → Azumarill]
-johto_twins_jo_and_zoe 134 (47)
 johto_twins_jo_and_zoe_2 127 (37)
 johto_twins_kay_and_tia 130 (41) [Quagsire → Mirelord, Quagsire → Mirelord]
 johto_twins_kay_and_tia_2 135 (48) [Quagsire → Mirelord, Quagsire → Mirelord]
@@ -725,7 +715,6 @@ johto_twins_kay_and_tia_4 139 (55) [Quagsire → Mirelord, Quagsire → Mirelord
 johto_twins_meg_and_peg 129 (39) [Teddiursa → Ursaluna, Phanpy → Siegephant]
 johto_twins_meg_and_peg_2 129 (39) [Phanpy → Siegephant, Teddiursa → Ursaluna]
 johto_twins_mickey 128 (38) [Dratini → Dragonite, Dratini → Dragonite]
-johto_young_couple_moe_and_lulu 131 (43) [Lotad → Ludicolo, Seedot → Shiftry]
 johto_young_couple_tim_and_sue 133 (46) [Kadabra → Alakazam, Psyduck → Psyduke]
 johto_young_couple_tim_and_sue_2 136 (50) [Kadabra → Alakazam, Golduck → Psyduke]
 johto_young_couple_tim_and_sue_3 137 (52) [Kadabra → Alakazam, Golduck → Psyduke]
@@ -1777,6 +1766,9 @@ grass 149-152 (own 30-36)
 === cave_of_origin_entrance
 Cave Of Origin, Hoenn
 grass 148-152 (own 28-36)
+=== celadon
+Celadon City, Johto
+surf 113-116 (own 15-20)
 === celadon_city
 Celadon City, Kanto
 surf 64-88 (own 5-40)
@@ -1789,6 +1781,9 @@ trainers 1, 74 (own 20): kanto_team_rocket_grunt_7 74 (20) [Zubat → Crobat]
 === celadon_city_gym
 Celadon City, Kanto
 trainers 7, 75-77 (own 21-24): kanto_beauty_bridget 75 (21) [Oddish → Gloom, Bellsprout → Victreebel, Oddish → Gloom, Bellsprout → Victreebel], kanto_beauty_lori 77 (24) [Exeggcute → Exeggutor], kanto_beauty_tamia 77 (24) [Bellsprout → Victreebel, Bellsprout → Victreebel], kanto_cooltrainer_mary 76 (22) [Bellsprout → Victreebel, Oddish → Gloom, Weepinbell → Victreebel, Ivysaur → Venusaur], kanto_lass_kay 76 (23) [Bellsprout → Victreebel, Weepinbell → Victreebel], kanto_lass_lisa 76 (23) [Oddish → Gloom], kanto_picnicker_tina 77 (24) [Bulbasaur → Venusaur, Ivysaur → Venusaur]
+=== celadon_gym
+Celadon City, Johto
+trainers 4, 132-135 (own 44-49): johto_beauty_julia 134 (47) [Paras → Cordyhusk, Carnivine → Flytrapex, Parasect → Cordyhusk], johto_lass_michelle 133 (46) [Skiploom → Jumpluff, Hoppip → Jumpluff], johto_picnicker_tanya 135 (49) [Exeggutor → Palmagus], johto_twins_jo_and_zoe 134 (47)
 === celestial_tower
 Celestial Tower, Unova
 grass 173-175 (own 30-33)
@@ -2213,6 +2208,13 @@ old rod 109 (own 10)
 good rod 116 (own 20)
 super rod 129 (own 40)
 trainers 3, 130-131 (own 41-43): johto_camper_virgil 131 (43) [Slakoth → Slaking], johto_picnicker_selina 131 (42) [Cherubi → Sakurabloom], johto_twins_day_and_dani 130 (41)
+=== johto_route_7
+Route 7, Johto
+grass 113-115 (own 15-19)
+=== johto_route_8
+Route 8, Johto
+grass 113-115 (own 15-19)
+trainers 7, 128-133 (own 38-45): johto_biker_dwayne 130 (41) [Koffing → Smoglom, Koffing → Smoglom, Koffing → Smoglom, Koffing → Smoglom], johto_biker_harris 133 (45) [Flareon → Pyreon], johto_biker_zeke 131 (43) [Koffing → Smoglom, Koffing → Smoglom], johto_gentleman_milton 133 (45) [Growlithe → Kirinine], johto_super_nerd_sam 132 (44) [Grimer → Sludgemire, Muk → Sludgemire], johto_super_nerd_tyrone 129 (40) [Magnemite → Magnezone, Magnemite → Magnezone, Magnemite → Magnezone], johto_young_couple_moe_and_lulu 131 (43) [Lotad → Ludicolo, Seedot → Shiftry]
 === johto_victory_road_1f
 Victory Road Jk, Johto
 grass 124-127 (own 32-36)
