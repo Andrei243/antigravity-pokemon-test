@@ -47,6 +47,9 @@ public partial class GameEngine
         public Inventory Bag => Flow.Bag;
         public Pokedex Pokedex => Flow.Pokedex;
         public PcBoxes Boxes { get => Flow.Boxes; set => Flow.Boxes = value; }
+
+        /// <summary>The teams kept at the PC (plan 12 · Q27).</summary>
+        public System.Collections.Generic.List<SavedTeam> Teams { get => Flow.Teams; set => Flow.Teams = value; }
         public int Money { get => Flow.Money; set => Flow.Money = value; }
         public int TrainerScore { get => game.flow.TrainerScore; set => game.flow.TrainerScore = value; }
         public HallOfFame HallOfFame { get => game.flow.HallOfFame; set => game.flow.HallOfFame = value; }

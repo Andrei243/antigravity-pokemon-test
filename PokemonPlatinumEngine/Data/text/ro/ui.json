@@ -4886,5 +4886,35 @@
       "keep": "PĂSTREAZĂ-I  (ESC)"
     },
     "hint": { "stretch": "Întinde" }
+  },
+  "boxTeams": {
+    "menu": "ECHIPE",
+    "action": { "judge": "JUDECĂ" },
+    "title": "ECHIPE",
+    "count": "{count} / {most}",
+    "save": "PĂSTREAZĂ ECHIPA",
+    "defaultName": "Echipa {number}",
+    "teamMenu": { "SwapIn": "SCHIMBĂ", "Delete": "ȘTERGE", "Cancel": "ÎNAPOI" },
+    "kept": "Echipa a fost păstrată ca {team}.",
+    "deleted": "{team} a fost uitată.",
+    "swapped": "{team} e acum echipa ta.",
+    "swappedSome": "{team} e acum echipa ta. {count} din ea nu mai sunt în cutii.",
+    "swap": {
+      "noneHere": "Nimeni din {team} nu mai e în cutii.",
+      "mail": "{name} ține o scrisoare, deci nu poate intra într-o cutie.",
+      "capsule": "{name} are o capsulă pe minge, deci nu poate intra într-o cutie.",
+      "noRoom": "Cutiile n-au loc pentru cei {count} care ar pleca din echipă."
+    },
+    "naming": {
+      "title": "NUMEȘTE ECHIPA",
+      "note": "Echipa e păstrată după cine e în ea. Adu-o înapoi de la orice PC, cu ECHIPE."
+    },
+    "judge": {
+      "title": "JUDECATA",
+      "egg": "Încă nu e nimic de văzut.",
+      "best": "Cel mai bun: {stat}",
+      "alike": "Toate la fel",
+      "grade": { "Nothing": "NIMIC", "Meagre": "SLAB", "Fair": "BINIȘOR", "Good": "BUN", "Splendid": "SPLENDID", "Flawless": "FĂRĂ CUSUR" }
+    }
   }
 }
