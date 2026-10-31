@@ -5,7 +5,7 @@
         "Sabrina"
       ],
       "text": [
-        ""
+        "Sabrina"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "I knew you would come. I saw it three years ago, in a vision: a Champion from Johto, standing where you stand now."
       ],
       "text": [
-        ""
+        "Știam că vei veni. Am văzut asta acum trei ani, într-o viziune: un Campion din Johto, stând exact unde stai tu acum."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "I don't enjoy battling, but it's my duty as a Gym Leader. Show me the strength my vision promised!"
       ],
       "text": [
-        ""
+        "Nu-mi place să lupt, dar e datoria mea de Lider de Arenă. Arată-mi puterea pe care mi-a promis-o viziunea!"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Your power is far beyond what I foresaw. Even my visions can't see everything. Take the Marsh Badge."
       ],
       "text": [
-        ""
+        "Puterea ta depășește cu mult ce am prevăzut. Nici viziunile mele nu văd totul. Ia Insigna Smârc."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "{player} received the Marsh Badge from Sabrina!"
       ],
       "text": [
-        ""
+        "{player} a primit Insigna Smârc de la Sabrina!"
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Take this as well. It holds a move that lets two Pokémon trade their abilities."
       ],
       "text": [
-        ""
+        "Ia și asta. Conține o mișcare prin care doi Pokémoni își schimbă abilitățile."
       ]
     },
     {
@@ -53,7 +53,7 @@
         "TM48 is Skill Swap. Used well, it turns a foe's own ability against it."
       ],
       "text": [
-        ""
+        "TM48 este Schimb de Abilități. Folosită bine, întoarce abilitatea adversarului împotriva lui."
       ]
     },
     {
@@ -61,7 +61,7 @@
         "Psychic power isn't only for battling. I've learned to feel what others feel, too. You feel... happy."
       ],
       "text": [
-        ""
+        "Puterea psihică nu e doar pentru luptă. Am învățat să simt și ce simt alții. Tu te simți... fericit."
       ]
     }
   ],
@@ -71,7 +71,7 @@
         "Gym Guide"
       ],
       "text": [
-        ""
+        "Ghidul Arenei"
       ]
     },
     {
@@ -79,7 +79,7 @@
         "Hey, champ! Sabrina waits in the middle room, but the only way in is by the warp panels."
       ],
       "text": [
-        ""
+        "Hei, campionule! Sabrina te așteaptă în camera din mijloc, dar singura cale înăuntru e prin panourile de teleportare."
       ]
     },
     {
@@ -87,7 +87,7 @@
         "Step on one and it whisks you to another room. Keep trying them, and you'll find the way through!"
       ],
       "text": [
-        ""
+        "Calcă pe unul și te trimite într-o altă cameră. Încearcă-le pe rând și vei găsi drumul!"
       ]
     },
     {
@@ -95,7 +95,7 @@
         "Her Pokémon are Psychic types. Dark types and Bug types are what you want here."
       ],
       "text": [
-        ""
+        "Pokémonii ei sunt de tip Psihic. Aici îți trebuie tipurile Întuneric și Insectă."
       ]
     },
     {
@@ -103,7 +103,7 @@
         "You read Sabrina's mind before she could read yours! What a battle!"
       ],
       "text": [
-        ""
+        "I-ai citit mintea Sabrinei înainte să ți-o citească ea pe a ta! Ce luptă!"
       ]
     }
   ],
@@ -113,7 +113,7 @@
         "Saffron City Pokémon Gym\nLeader: Sabrina"
       ],
       "text": [
-        ""
+        "Arena Pokémon a Orașului Saffron\nLider: Sabrina"
       ]
     },
     {
@@ -121,7 +121,7 @@
         "Saffron City Pokémon Gym\nLeader: Sabrina\nWinning trainers: {player}"
       ],
       "text": [
-        ""
+        "Arena Pokémon a Orașului Saffron\nLider: Sabrina\nAntrenori învingători: {player}"
       ]
     }
   ]

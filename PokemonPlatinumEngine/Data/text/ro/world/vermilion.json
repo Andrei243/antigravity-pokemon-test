@@ -6,7 +6,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "My Machop is stamping the ground flat so I can build on it. It's been at it for years. I'm in no hurry."
         ],
         "text": [
-          ""
+          "Machop-ul meu bate pământul până îl aplatizează ca să pot construi pe el. O face de ani de zile. Eu nu mă grăbesc."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Machop"
         ],
         "text": [
-          ""
+          "Machop"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Machop stamped the ground flat with all its might."
         ],
         "text": [
-          ""
+          "Machop a bătut pământul aplatizându-l din toate puterile."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "East of town is Diglett's Cave, a tunnel the Diglett dug all the way through to Pewter City."
         ],
         "text": [
-          ""
+          "La est de oraș e Peștera Diglett, un tunel pe care Diglett l-au săpat până la Orașul Pewter."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "The sunsets over Vermilion's harbour are the best in Kanto. Stay till evening, and you'll see."
         ],
         "text": [
-          ""
+          "Apusurile peste portul Vermilion sunt cele mai frumoase din Kanto. Rămâi până seara și vei vedea."
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -86,7 +86,7 @@
           "Lt. Surge, the Gym Leader, is a tough one. He hides his Gym's switches in the bins, of all places!"
         ],
         "text": [
-          ""
+          "Lt. Surge, Liderul Arenei, e un tip dur. Își ascunde comutatoarele Arenei tocmai în coșuri de gunoi!"
         ]
       }
     }
@@ -97,7 +97,7 @@
         "Vermilion City\nA harbour where the sunsets glow red."
       ],
       "text": [
-        ""
+        "Orașul Vermilion\nUn port unde apusurile se aprind în roșu."
       ]
     },
     "T06_006+1": {
@@ -105,7 +105,7 @@
         "Vermilion City Pokémon Gym\nLeader: Lt. Surge\nA soldier who fights with thunder."
       ],
       "text": [
-        ""
+        "Arena Pokémon a Orașului Vermilion\nLider: Lt. Surge\nUn soldat care luptă cu tunetul."
       ]
     },
     "T06_007+1": {
@@ -113,7 +113,7 @@
         "Pokémon Fan Club\nAll Pokémon lovers welcome!"
       ],
       "text": [
-        ""
+        "Clubul Fanilor Pokémon\nToți iubitorii de Pokémon sunt bineveniți!"
       ]
     },
     "T06_008+1": {
@@ -121,7 +121,7 @@
         "Diglett's Cave\nThe way through to Pewter City."
       ],
       "text": [
-        ""
+        "Peștera Diglett\nDrumul spre Orașul Pewter."
       ]
     }
   }

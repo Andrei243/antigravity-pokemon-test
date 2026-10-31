@@ -6,7 +6,7 @@
           "Nurse"
         ],
         "text": [
-          ""
+          "Asistenta"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "Your Trainer Card shows your name, your money and the Pokémon you've seen. Have a look at it from the menu."
         ],
         "text": [
-          ""
+          "Cardul tău de Antrenor arată numele tău, banii și Pokémonii pe care i-ai văzut. Aruncă o privire din meniu."
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "I'm sorry, the link to other players is closed for now."
         ],
         "text": [
-          ""
+          "Îmi pare rău, legătura cu alți jucători este închisă deocamdată."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "I'm sorry, the link to other players is closed for now."
         ],
         "text": [
-          ""
+          "Îmi pare rău, legătura cu alți jucători este închisă deocamdată."
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Fisherman"
         ],
         "text": [
-          ""
+          "Pescarul"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "Vermilion's harbour is deep enough for the big ships. Who knows what lives down at the bottom."
         ],
         "text": [
-          ""
+          "Portul Vermilion e destul de adânc pentru vasele mari. Cine știe ce trăiește jos, pe fund."
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Sailor"
         ],
         "text": [
-          ""
+          "Marinarul"
         ]
       },
       "dialog": {
@@ -96,7 +96,7 @@
           "I crew the S.S. Aqua. Kanto to Johto and back again, every day. You get your sea legs fast."
         ],
         "text": [
-          ""
+          "Fac parte din echipajul S.S. Aqua. De la Kanto la Johto și înapoi, zi de zi. Îți faci repede picior de marinar."
         ]
       }
     },
@@ -106,7 +106,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -114,7 +114,7 @@
           "I want to beat Lt. Surge one day. My Pikachu's going to be just as strong as his Raichu!"
         ],
         "text": [
-          ""
+          "Vreau să-l bat pe Lt. Surge într-o zi. Pikachu-ul meu va fi la fel de puternic ca Raichu-ul lui!"
         ]
       }
     }

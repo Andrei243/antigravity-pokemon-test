@@ -5,7 +5,7 @@
         "Nope! There's only rubbish in here."
       ],
       "text": [
-        ""
+        "Nu! Aici sunt doar gunoaie."
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Hey! There's a switch under the rubbish! {player} pressed it.\nThe first electric lock opened!"
       ],
       "text": [
-        ""
+        "Hei! E un comutator sub gunoi! {player} l-a apăsat.\nPrima încuietoare electrică s-a deschis!"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Nope! There's only rubbish in here.\nHey! The electric locks were reset!"
       ],
       "text": [
-        ""
+        "Nu! Aici sunt doar gunoaie.\nHei! Încuietorile electrice au fost resetate!"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "There's another switch under the rubbish! {player} pressed it.\nThe second electric lock opened, and the gates are down!"
       ],
       "text": [
-        ""
+        "E încă un comutator sub gunoi! {player} l-a apăsat.\nA doua încuietoare electrică s-a deschis și porțile au căzut!"
       ]
     }
   ],
@@ -39,7 +39,7 @@
         "Lt. Surge"
       ],
       "text": [
-        ""
+        "Lt. Surge"
       ]
     },
     {
@@ -47,7 +47,7 @@
         "Hey, you! You came all the way from Johto? Ha! You've got guts, I'll give you that."
       ],
       "text": [
-        ""
+        "Hei, tu! Ai venit tocmai din Johto? Ha! Ai curaj, trebuie să recunosc."
       ]
     },
     {
@@ -55,7 +55,7 @@
         "Electricity saved my hide more times than I can count. Now let's see you take a jolt of it!"
       ],
       "text": [
-        ""
+        "Electricitatea mi-a salvat pielea de mai multe ori decât pot număra. Acum să te văd cum încasezi un șoc!"
       ]
     },
     {
@@ -63,7 +63,7 @@
         "Whoa! That's some real power you've got! All right, you've earned it. Take the Thunder Badge!"
       ],
       "text": [
-        ""
+        "Uau! Ai o putere adevărată! Bine, ți-ai meritat-o. Ia Insigna Tunet!"
       ]
     },
     {
@@ -71,7 +71,7 @@
         "{player} received the Thunder Badge from Lt. Surge!"
       ],
       "text": [
-        ""
+        "{player} a primit Insigna Tunet de la Lt. Surge!"
       ]
     },
     {
@@ -79,7 +79,7 @@
         "And take this too. It's a move that charges you up while it hits!"
       ],
       "text": [
-        ""
+        "Și ia și asta. E o mișcare care te încarcă în timp ce lovește!"
       ]
     },
     {
@@ -87,7 +87,7 @@
         "TM57 is Charge Beam. Every hit has a good chance to raise your Pokémon's Special Attack."
       ],
       "text": [
-        ""
+        "TM57 este Rază Încărcată. Fiecare lovitură are șanse mari să crească Atacul Sp. al Pokémonului tău."
       ]
     },
     {
@@ -95,7 +95,7 @@
         "Electricity is mighty, but it's nothing against Ground types. Keep that in mind, and you'll go far!"
       ],
       "text": [
-        ""
+        "Electricitatea e puternică, dar nu face nimic împotriva tipului Pământ. Ține minte asta și vei ajunge departe!"
       ]
     }
   ],
@@ -105,7 +105,7 @@
         "Gym Guide"
       ],
       "text": [
-        ""
+        "Ghidul Arenei"
       ]
     },
     {
@@ -113,7 +113,7 @@
         "Hey, champ! Welcome to Kanto! Lt. Surge has locked himself in behind electric gates."
       ],
       "text": [
-        ""
+        "Hei, campionule! Bun venit în Kanto! Lt. Surge s-a baricadat în spatele unor porți electrice."
       ]
     },
     {
@@ -121,7 +121,7 @@
         "The switches are hidden in the bins round the hall. Find the first, and the second is always right beside it!"
       ],
       "text": [
-        ""
+        "Comutatoarele sunt ascunse în coșurile din jurul sălii. Găsește-l pe primul și al doilea e mereu chiar lângă el!"
       ]
     },
     {
@@ -129,7 +129,7 @@
         "His Pokémon are Electric types, so a Ground type is your best friend here."
       ],
       "text": [
-        ""
+        "Pokémonii lui sunt de tip Electric, deci un Pokémon de tip Pământ e cel mai bun prieten al tău aici."
       ]
     },
     {
@@ -137,7 +137,7 @@
         "What a shocking battle! You really lit Lt. Surge up."
       ],
       "text": [
-        ""
+        "Ce luptă șocantă! Chiar l-ai aprins pe Lt. Surge."
       ]
     }
   ],
@@ -147,7 +147,7 @@
         "Vermilion City Pokémon Gym\nLeader: Lt. Surge"
       ],
       "text": [
-        ""
+        "Arena Pokémon a Orașului Vermilion\nLider: Lt. Surge"
       ]
     },
     {
@@ -155,7 +155,7 @@
         "Vermilion City Pokémon Gym\nLeader: Lt. Surge\nWinning trainers: {player}"
       ],
       "text": [
-        ""
+        "Arena Pokémon a Orașului Vermilion\nLider: Lt. Surge\nAntrenori învingători: {player}"
       ]
     }
   ],
@@ -165,7 +165,7 @@
         "A beam of electricity crackles across the way. It must be switched off somewhere in the Gym."
       ],
       "text": [
-        ""
+        "Un fascicul de electricitate trosnește în cale. Trebuie oprit undeva în Arenă."
       ]
     }
   ]

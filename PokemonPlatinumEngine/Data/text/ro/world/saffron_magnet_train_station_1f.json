@@ -6,7 +6,7 @@
           "Officer"
         ],
         "text": [
-          ""
+          "Polițistul"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "I go to Goldenrod City every week for the Radio Tower's quiz show. The Magnet Train has me there in no time."
         ],
         "text": [
-          ""
+          "Merg în Orașul Goldenrod în fiecare săptămână la emisiunea-concurs de la Turnul Radio. Trenul Magnetic mă duce acolo într-o clipă."
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "When the Power Plant went down, the trains stopped too. It's good to have them running again."
         ],
         "text": [
-          ""
+          "Când Centrala Electrică s-a oprit, s-au oprit și trenurile. E bine că circulă din nou."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "I'm waiting for my friend from Johto. She says the station there is just like this one!"
         ],
         "text": [
-          ""
+          "O aștept pe prietena mea din Johto. Spune că stația de acolo e leită cu asta!"
         ]
       }
     }
@@ -71,7 +71,7 @@
         "Magnet Train\nSaffron City to Goldenrod City"
       ],
       "text": [
-        ""
+        "Tren Magnetic\nOrașul Saffron spre Orașul Goldenrod"
       ]
     }
   }

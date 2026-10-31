@@ -6,7 +6,7 @@
           "Black Belt"
         ],
         "text": [
-          ""
+          "Centura Neagră"
         ]
       },
       "dialog": {
@@ -15,8 +15,8 @@
           "The masters of Kanto and Johto come here to battle one another. You might meet one if you're lucky."
         ],
         "text": [
-          "",
-          ""
+          "Asta a fost Arena din Saffron, până când Sabrina a câștigat dreptul la titlu. Acum e un dojo și ne antrenăm mai din greu ca niciodată!",
+          "Maeștrii din Kanto și Johto vin aici să se lupte între ei. Dacă ai noroc, ai putea întâlni unul."
         ]
       }
     }
@@ -27,7 +27,7 @@
         "\"Fighting spirit!\""
       ],
       "text": [
-        ""
+        "„Spirit de luptă!”"
       ]
     },
     "T11R0101_002+1": {
@@ -35,7 +35,7 @@
         "\"Train your body and your mind!\""
       ],
       "text": [
-        ""
+        "„Antrenează-ți trupul și mintea!”"
       ]
     }
   }

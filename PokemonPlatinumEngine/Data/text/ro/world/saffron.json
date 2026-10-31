@@ -6,7 +6,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "The Magnet Train floats on magnets, so it's quick and quiet. I ride it to Goldenrod City to go shopping!"
         ],
         "text": [
-          ""
+          "Trenul Magnetic plutește pe magneți, așa că e rapid și silențios. Merg cu el în Orașul Goldenrod la cumpărături!"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "There used to be two Gyms here, side by side. The other one's a Fighting Dojo now. Go and have a look!"
         ],
         "text": [
-          ""
+          "Aici erau două Arene, una lângă alta. Cealaltă e acum un Dojo de Luptă. Du-te și aruncă o privire!"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "The Magnet Train station is just over there. The trains run every day, rain or shine."
         ],
         "text": [
-          ""
+          "Stația Trenului Magnetic e chiar acolo. Trenurile circulă în fiecare zi, cu ploaie sau cu soare."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "Silph Co. makes Poké Balls and all kinds of things. They're building something new, but it's a secret."
         ],
         "text": [
-          ""
+          "Silph Co. face Poké Balls și tot felul de lucruri. Construiesc ceva nou, dar e secret."
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -86,7 +86,7 @@
           "Sabrina, the Gym Leader, can read minds. She knew I was coming before I'd even decided to!"
         ],
         "text": [
-          ""
+          "Sabrina, Liderul Arenei, poate citi gândurile. A știut că vin înainte să mă fi hotărât eu!"
         ]
       }
     },
@@ -96,7 +96,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -104,7 +104,7 @@
           "Saffron is the heart of Kanto. Every road in the region seems to meet here sooner or later."
         ],
         "text": [
-          ""
+          "Saffron e inima regiunii Kanto. Parcă toate drumurile din regiune se întâlnesc aici mai devreme sau mai târziu."
         ]
       }
     },
@@ -114,7 +114,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -122,7 +122,7 @@
           "The gates out of town are closed for roadworks. Only the road south to Vermilion City is open."
         ],
         "text": [
-          ""
+          "Porțile de ieșire din oraș sunt închise pentru lucrări. Doar drumul spre sud, către Orașul Vermilion, e deschis."
         ]
       }
     },
@@ -132,7 +132,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -140,7 +140,7 @@
           "Mr. Psychic lives just round the corner. He's a strange fellow, but he's kind to visitors."
         ],
         "text": [
-          ""
+          "Domnul Psihic locuiește chiar după colț. E un tip ciudat, dar e amabil cu vizitatorii."
         ]
       }
     }
@@ -151,7 +151,7 @@
         "Saffron City Station\nMagnet Train service to Goldenrod City in Johto."
       ],
       "text": [
-        ""
+        "Stația Orașului Saffron\nTren Magnetic spre Orașul Goldenrod din Johto."
       ]
     },
     "T11_009+1": {
@@ -159,7 +159,7 @@
         "Saffron City\nShining, golden land of commerce."
       ],
       "text": [
-        ""
+        "Orașul Saffron\nTărâm strălucitor și auriu al comerțului."
       ]
     },
     "T11_010+1": {
@@ -167,7 +167,7 @@
         "Fighting Dojo\nAll comers welcome!"
       ],
       "text": [
-        ""
+        "Dojo de Luptă\nToți sosiții sunt bineveniți!"
       ]
     },
     "T11_011+1": {
@@ -175,7 +175,7 @@
         "Saffron City Pokémon Gym\nLeader: Sabrina\nThe mistress of Psychic Pokémon."
       ],
       "text": [
-        ""
+        "Arena Pokémon a Orașului Saffron\nLider: Sabrina\nStăpâna Pokémonilor Psihici."
       ]
     },
     "T11_012+1": {
@@ -183,7 +183,7 @@
         "Silph Co. Head Office\nClosed to visitors."
       ],
       "text": [
-        ""
+        "Sediul central Silph Co.\nÎnchis vizitatorilor."
       ]
     },
     "T11_013+1": {
@@ -191,7 +191,7 @@
         "Mr. Psychic's House"
       ],
       "text": [
-        ""
+        "Casa Domnului Psihic"
       ]
     }
   }

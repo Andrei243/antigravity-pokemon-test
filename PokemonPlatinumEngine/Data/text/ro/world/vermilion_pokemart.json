@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătorul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bun venit! Cu ce vă pot ajuta?"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătorul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bun venit! Cu ce vă pot ajuta?"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Ground types don't feel Electric moves at all. Bring one if you're going to the Gym."
         ],
         "text": [
-          ""
+          "Tipurile Pământ nu simt deloc mișcările Electrice. Adu unul dacă mergi la Arenă."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "Sailors stock up here before every voyage. The shelves are always half empty when the ship's in."
         ],
         "text": [
-          ""
+          "Marinarii se aprovizionează de aici înainte de fiecare călătorie. Rafturile sunt mereu pe jumătate goale când vasul e în port."
         ]
       }
     }
