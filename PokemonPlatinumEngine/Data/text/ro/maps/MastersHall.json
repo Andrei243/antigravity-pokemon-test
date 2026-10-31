@@ -1,0 +1,33 @@
+{
+  "displayName": {
+    "en": [
+      "Masters' Hall"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "masters_receptionist": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "master": {
+      "name": {
+        "en": [
+          "Master"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}
