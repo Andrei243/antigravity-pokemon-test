@@ -146,7 +146,7 @@ public sealed class BattleRenderer
     /// How much a Pokémon's model is scaled on its platform: the same size rule as the sprites, the sprite frame
     /// spanning the platform's width divided by 158 (opponent) or 150 (player) pixels.
     /// </summary>
-    private static float ModelScale(PokeModel model, bool isPlayer, BattleAnimator anim)
+    internal static float ModelScale(PokeModel model, bool isPlayer, BattleAnimator anim)
     {
         var framing = PokemonSprites.Framing(model, isPlayer ? SpriteView.Back : SpriteView.Front, PokemonSprites.Size);
         float radius = isPlayer ? BattleStage.PlayerPlatformRadius : BattleStage.EnemyPlatformRadius;
@@ -177,7 +177,7 @@ public sealed class BattleRenderer
                 {
                     var model = PokemonModels.Get(shown.LookName);
                     // A Dynamaxed Pokémon stands giant, and the effects are sized for it (plan 25 · Y15)
-                    float scale = ModelScale(model, isPlayer, anim) * BattleAnimator.GiantOf(anim[s, slot], isPlayer);
+                    float scale = ModelScale(model, isPlayer, anim) * BattleAnimator.GiantOf(anim[s, slot], isPlayer, anim.Paired(s));
                     height = model.Height * scale;
                     halfWidth = PokemonSprites.Framing(model, isPlayer ? SpriteView.Back : SpriteView.Front, PokemonSprites.Size).HalfWidth * scale;
                 }
@@ -951,7 +951,7 @@ public sealed class BattleRenderer
         var other = isPlayer ? BattleStage.EnemySpot : BattleStage.PlayerSpot;
 
         // A Dynamaxed Pokémon stands giant (plan 25 · Y15): the lunge and the shake grow with it
-        float scale = ModelScale(model, isPlayer, anim) * BattleAnimator.GiantOf(v, isPlayer);
+        float scale = ModelScale(model, isPlayer, anim) * BattleAnimator.GiantOf(v, isPlayer, anim.Paired(isPlayer ? BattleSide.Player : BattleSide.Enemy));
         float frame = scale * framing.WorldPerPixel * PokemonSprites.Size;
         var toward = Vector3.Normalize(other - spot);
         var feet = spot + new Vector3(0, platformTop, 0)
