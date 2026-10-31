@@ -48,8 +48,10 @@ public static partial class WorldModels
 
         // ---------------------------------------------------------------- the Ruins of Alph (ar_), in view from Violet City's west
         // edge; open since plan 20 · J5
-        Built("ar_center", BuildingKind.Lab, "the research centre at the Ruins of Alph"),
-        Built("ar_study", BuildingKind.Lab, "the scientists' hut at the Ruins of Alph"),
+        // (ar_center stands over the hall's door, the grounds' warps 8 and 9, and ar_study over the research centre's, warp
+        // 10, with ar_study_door in it: the hall's is built as the chambers are and wears no sign; plan 20, wave 77)
+        Built("ar_center", BuildingKind.Shrine, "the hall over the stairs down to the Ruins of Alph's underground hall"),
+        Built("ar_study", BuildingKind.Lab, "the research centre at the Ruins of Alph"),
         Built("ar_shrine1", BuildingKind.Shrine, "a chamber of the Ruins of Alph"),
         Built("ar_shrine1_2", BuildingKind.Shrine, "a chamber of the Ruins of Alph"),
         Built("ar_shrine1_3", BuildingKind.Shrine, "a chamber of the Ruins of Alph"),

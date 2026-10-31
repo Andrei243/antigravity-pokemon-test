@@ -526,7 +526,8 @@ internal sealed class MapScene
     {
         if (!Map.HasRelief) return;
         var earth = batches.For(SceneTextures.BankFace);
-        var rock = batches.For(SceneTextures.RockFace);
+        // A cave that is a building stands its levels on its own faces: dressed stone, charred planks (plan 20, wave 77)
+        var rock = batches.For(Map.CaveLook == CaveLook.Rock ? SceneTextures.RockFace : SceneTextures.CaveFace(Map.CaveLook));
         var beams = batches.For(SceneTextures.White);
         var beam = new Color(104, 74, 54, 255);
         // In the Distortion World an island's edge over the void is its underside, ending in points of rock
@@ -539,8 +540,12 @@ internal sealed class MapScene
         // A room's void is the dark under a Gym's pieces (the Sunyshore Gym's gears): a floor's face beside it runs down
         // to the room's lowest ground, whatever walkway lies level with the floor there, so the floor reads as a deck
         float? dark = Map.IsIndoors ? Darkest() : null;
+        // A wooden tower's and the Violet Gym's floors each stand on WellDepth of posts, whatever the floors round them do
+        // (plan 20, wave 77): their walkways read as decks, not as scaffolds as tall as the hall
+        bool decks = Map.Interior is InteriorStyle.Tower or InteriorStyle.Aerie;
+        float wellFoot = 0f;
         (float NW, float NE, float SW, float SE) Beyond(int x, int y) =>
-            dark is { } d && TypeAt(x, y) == TileType.Void ? (d, d, d, d) : Relief.Corners(Map, x, y);
+            dark is { } d && TypeAt(x, y) == TileType.Void ? decks ? (wellFoot, wellFoot, wellFoot, wellFoot) : (d, d, d, d) : Relief.Corners(Map, x, y);
 
         for (int ty = ground.Y; ty < ground.Bottom; ty++)
             for (int tx = ground.X; tx < ground.Right; tx++)
@@ -550,10 +555,14 @@ internal sealed class MapScene
                 // what stands over it is a Gym's own piece (the Sunyshore Gym's gears), drawn apart
                 if ((under != null || Map.IsIndoors) && TypeAt(tx, ty) == TileType.Void) continue;
                 var (nw, ne, sw, se) = Relief.Corners(Map, tx, ty);
-                var face = IsRocky(Map.GetGroundTile(tx, ty)) ? rock : hall ?? earth;
+                wellFoot = MathF.Min(MathF.Min(nw, ne), MathF.Min(sw, se)) - WellDepth;
+                // (a wooden tower's floors stand on timber and a built cave's on its own face, whatever ground each tile is)
+                var face = Map.CaveLook != CaveLook.Rock ? rock
+                    : Map.Interior is InteriorStyle.Tower or InteriorStyle.Aerie ? hall!
+                    : IsRocky(Map.GetGroundTile(tx, ty)) ? rock : hall ?? earth;
 
                 // Each edge against the matching edge of the tile beyond it; a face that would look north is never seen
-                float wide = face == rock ? NatureArt.RockFaceTiles : 1f;
+                float wide = face == rock && Map.CaveLook == CaveLook.Rock ? NatureArt.RockFaceTiles : 1f;
                 bool island = under != null && TypeAt(tx, ty) != TileType.Void;
                 if (Map.InBounds(tx, ty + 1) && Drawn(tx, ty + 1))
                 {
@@ -599,8 +608,14 @@ internal sealed class MapScene
                 float h = Relief.At(Map, tx + 0.5f, ty + 0.5f);
                 if (low == null || h < low) low = h;
             }
+        // A wooden tower's and the Violet Gym's dark lies two tiles under their lowest floor, so even a floor level with the
+        // rest stands on its posts over it (plan 20, wave 77; style guide, "A wooden tower")
+        if (any && Map.Interior is InteriorStyle.Tower or InteriorStyle.Aerie) return low - WellDepth;
         return any ? low : null;
     }
+
+    /// <summary>How far under its lowest floor the dark of a wooden tower lies, in tiles.</summary>
+    internal const float WellDepth = 2f;
 
     /// <summary>
     /// One face along a tile's edge from <paramref name="a"/> to <paramref name="b"/> (their heights are filled
@@ -1168,8 +1183,13 @@ internal sealed class MapScene
         kit.Origin = Vector3.Zero;
 
         var daylight = batches.For(SceneTextures.WindowLight, MeshPass.Light);
+        // Rails of timber along a wooden tower's and the Violet Gym's floors where they end over the dark (plan 20, wave 77)
+        if (style is InteriorStyle.Tower or InteriorStyle.Aerie) Rails(kit, lx, by);
+
         foreach (var prop in Map.Props)
         {
+            // Sprout Tower's pillar is no columns standing still: it sways, drawn apart (GymPieces)
+            if (style == InteriorStyle.Tower && prop.Type == PropType.Column) continue;
             PropModels.Build(kit, prop, Map);
             if (prop.Type != PropType.Window) continue;
 
@@ -1206,6 +1226,59 @@ internal sealed class MapScene
         return true;
     }
 
+    /// <summary>Texels a rail stands over its floor (style guide, "A wooden tower").</summary>
+    internal const int RailHeight = 18;
+
+    /// <summary>
+    /// A rail of timber along every edge of a floor that ends over the dark (style guide, "A wooden tower"): a post four
+    /// texels square at each end of the edge, a top bar three texels deep along its head and a bar two deep half way up,
+    /// a texel in from the edge, standing on the floor's own height. A floor tile that is a way somewhere has none.
+    /// </summary>
+    private void Rails(KitBuilder kit, int lx, int by)
+    {
+        const int T = GroundBaker.ArtTile, post = 4, top = 3, mid = 2, inset = 1;
+        int w = Map.Width, h = Map.Height;
+        var postSide = kit.Face("rail.post", post, RailHeight, BuiltArt.PaintPost);
+        var cap = kit.Face("rail.cap", post, post, BuiltArt.PaintCap);
+        var barTop = kit.Face("rail.bar.top", T, top, BuiltArt.PaintBar);
+        var barMid = kit.Face("rail.bar.mid", T, mid, BuiltArt.PaintBar);
+        var barCap = kit.Face("rail.bar.cap", T, post - 2, BuiltArt.PaintCap);
+        bool Dark(int x, int y) => Map.InBounds(x, y) && Map.GetGroundTile(x, y) == TileType.Void;
+        for (int ty = by; ty < h - 1; ty++)
+            for (int tx = lx; tx < w - 1; tx++)
+            {
+                var t = Map.GetGroundTile(tx, ty);
+                if (t is TileType.Void or TileType.Wall || Map.GetWarpAt(tx, ty) != null) continue;
+                kit.Origin = new Vector3(0f, Relief.At(Map, tx + 0.5f, ty + 0.5f), 0f);
+                float x0 = tx * T, z0 = ty * T, x1 = x0 + T, z1 = z0 + T;
+                // An edge along x at depth z (north or south) or along z at x (west or east): its two posts and its bars
+                void AlongX(float z)
+                {
+                    float za = z - (post - 2) / 2f, zb = za + post - 2;
+                    kit.Box(x0, x1, za, zb, RailHeight - top, RailHeight, barCap, barTop, null, null, barTop);
+                    kit.Box(x0, x1, za, zb, 7, 7 + mid, null, barMid, null, null, barMid);
+                    foreach (float px in new[] { x0, x1 - post })
+                        kit.Box(px, px + post, z - post / 2f, z + post / 2f, 0, RailHeight, cap, postSide, postSide, postSide, postSide);
+                }
+                void AlongZ(float x)
+                {
+                    float xa = x - (post - 2) / 2f, xb = xa + post - 2;
+                    var side = kit.Face("rail.bar.side", T, top, BuiltArt.PaintBar);
+                    var sideMid = kit.Face("rail.bar.sidemid", T, mid, BuiltArt.PaintBar);
+                    var sideCap = kit.Face("rail.bar.sidecap", post - 2, T, BuiltArt.PaintCap);
+                    kit.Box(xa, xb, z0, z1, RailHeight - top, RailHeight, sideCap, null, side, side);
+                    kit.Box(xa, xb, z0, z1, 7, 7 + mid, null, null, sideMid, sideMid);
+                    foreach (float pz in new[] { z0, z1 - post })
+                        kit.Box(x - post / 2f, x + post / 2f, pz, pz + post, 0, RailHeight, cap, postSide, postSide, postSide, postSide);
+                }
+                if (Dark(tx, ty + 1)) AlongX(z1 - post / 2f - inset);
+                if (Dark(tx, ty - 1)) AlongX(z0 + post / 2f + inset);
+                if (Dark(tx - 1, ty)) AlongZ(x0 + post / 2f + inset);
+                if (Dark(tx + 1, ty)) AlongZ(x1 - post / 2f - inset);
+            }
+        kit.Origin = Vector3.Zero;
+    }
+
     /// <summary>The drawn height an inner wall stands at: the highest of the floor round it.</summary>
     private float InnerWallFoot(int tx, int ty)
     {
@@ -1225,6 +1298,8 @@ internal sealed class MapScene
     {
         // A house with a floor above its floor (the Old Chateau's gallery, plan 01 · M11) stands it on its own wainscot
         if (Map.Interior == InteriorStyle.House) return batches.For(SceneTextures.RoomFace);
+        // A wooden tower's floors and the Violet Gym's walkways stand on posts and braces over the dark (plan 20, wave 77)
+        if (Map.Interior is InteriorStyle.Tower or InteriorStyle.Aerie) return batches.For(SceneTextures.TimberFace);
         if (Map.Interior != InteriorStyle.Gym) return null;
         if (Map.ArenaType == Data.PokemonType.Electric) return batches.For(SceneTextures.PowerFace);
         // The League's rooms stand on dressed stone: marble in the Champion's, basalt over Flint's lava, sandstone under
@@ -1251,7 +1326,10 @@ internal sealed class MapScene
         for (int ty = by; ty < h - 1; ty++)
             for (int tx = lx; tx < w - 1; tx++)
             {
-                var face = IsRocky(Map.GetGroundTile(tx, ty)) ? rock : hall ?? earth;
+                bool decks = Map.Interior is InteriorStyle.Tower or InteriorStyle.Aerie;
+                // (a wooden tower's walls stand over its dark with nothing under them: plan 20, wave 77)
+                if (decks && Map.GetGroundTile(tx, ty) == TileType.Void) continue;
+                var face = decks ? hall! : IsRocky(Map.GetGroundTile(tx, ty)) ? rock : hall ?? earth;
                 float wide = face == rock ? NatureArt.RockFaceTiles : 1f;
                 var (nw, ne, sw, se) = dark is { } d && Map.GetGroundTile(tx, ty) == TileType.Void ? (d, d, d, d) : Relief.Corners(Map, tx, ty);
                 if (ty == by) Face(face, new(tx, 0, ty), foot, nw, new(tx + 1, 0, ty), foot, ne, South, tx, wide);

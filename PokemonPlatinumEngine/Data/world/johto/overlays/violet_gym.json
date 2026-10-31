@@ -3,6 +3,8 @@
   // Abe and Rod battle by their own records (Johto's trainers.json). The guide stands by the door until Sprout Tower is
   // climbed and halfway up the hall after, as in HeartGold
   "area": "violet_gym",
+  "interior": "Aerie",
+  "overTheDark": true,
   "bgmTrack": "johto/gym",
   "people": {
     "t22gym0101_gsleader1": { "name": "Falkner", "npcType": "Falkner", "script": "Falkner", "still": true },

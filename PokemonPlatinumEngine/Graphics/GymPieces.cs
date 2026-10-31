@@ -56,6 +56,10 @@ internal sealed class GymPieces
     // stairs, each drawn on the tiles the ice has them
     private Piece? iceCrack, iceGlaze;
 
+    // Sprout Tower's (plan 20, wave 77): its pillar, built round its foot, and where that foot stands
+    private Piece? pillar;
+    private Vector3 pillarFoot;
+
     // The League's rooms (plan 01 · M9, part 2d): what stands still (carpets, rails, piers, the machine, the Pokémon
     // Center's gate), a door of the back wall shut and open, the gate that shuts the front wall, a lift's platform,
     // and the lava's frames
@@ -96,6 +100,13 @@ internal sealed class GymPieces
 
     private IEnumerable<(Piece Piece, Matrix4x4 Transform)> Placed(Map map)
     {
+        if (pillar != null)
+        {
+            // Sprout Tower's pillar sways on its foot, east and west: a lean of Sway at most, once every Swaying seconds
+            float lean = Sway * MathF.Sin(2f * MathF.PI * (float)(FrameClock.Now / Swaying));
+            yield return (pillar, Matrix4x4.CreateRotationZ(lean) * Matrix4x4.CreateTranslation(pillarFoot));
+            yield break;
+        }
         if (league)
         {
             if (stillParts != null) yield return (stillParts, Matrix4x4.Identity);
@@ -267,11 +278,13 @@ internal sealed class GymPieces
         bool hearthome = map.Name.StartsWith(HearthomeDoors.Entrance, StringComparison.Ordinal) && map.IsIndoors;
         bool snowy = map.Puzzle == null && map.IsIndoors && map.Everyone.Any(n => n.IsSnowball);
         bool leagueRoom = map.IsIndoors && map.Name.StartsWith(LeagueRooms, StringComparison.Ordinal);
-        if (map.Puzzle == null && !hearthome && !snowy && !leagueRoom) return false;
+        bool tower = map.Interior == InteriorStyle.Tower && map.Props.Exists(p => p.Type == PropType.Column);
+        if (map.Puzzle == null && !hearthome && !snowy && !leagueRoom && !tower) return false;
         if (builtFor == map) return true;
         Unload();
         builtFor = map;
-        if (leagueRoom) BuildLeague(map);
+        if (tower) BuildPillar(map);
+        else if (leagueRoom) BuildLeague(map);
         else if (map.Puzzle is EternaClock) BuildEterna(map);
         else if (map.Puzzle is PastoriaWater) BuildPastoria(map);
         else if (map.Puzzle is CanalaveLifts) BuildCanalave(map);
@@ -916,6 +929,43 @@ internal sealed class GymPieces
     /// (the narrow one four by eight) built unturned round the middle of its middle button's tile, from two tiles west
     /// and two north of it, its floor paved and its three buttons on it; the puzzle turns and places it as it draws.
     /// </summary>
+    // ------------------------------------------------------------------ Sprout Tower's pillar
+
+    /// <summary>The pillar's lean at most, in radians, and the seconds of one sway east and back (style guide, "A wooden tower").</summary>
+    internal const float Sway = 0.022f, Swaying = 3.6f;
+
+    /// <summary>Texels the pillar stands over its floor, and how far in from the edge of the columns' tiles its faces are.</summary>
+    internal const int PillarHeight = 104, PillarInset = 10;
+
+    /// <summary>
+    /// Sprout Tower's pillar (style guide, "Rooms", "A wooden tower"): one trunk of dark old timber over the tiles of the
+    /// room's columns (three by three), its faces <see cref="PillarInset"/> texels in from their edge, from the dark under
+    /// the tower's floors up past the walls' top, banded in iron, a rope of straw round it a little over the floor. Built
+    /// round its foot at the floor's height, where it leans from.
+    /// </summary>
+    private void BuildPillar(Map map)
+    {
+        const int T = GroundBaker.ArtTile;
+        var columns = map.Props.Where(p => p.Type == PropType.Column).ToList();
+        int x0 = columns.Min(p => p.X), z0 = columns.Min(p => p.Y);
+        int x1 = columns.Max(p => p.X + Math.Max(1, p.Width)), z1 = columns.Max(p => p.Y + Math.Max(1, p.Depth));
+        float floor = Relief.At(map, (x0 + x1) / 2f, (z0 + z1) / 2f);
+        pillarFoot = new Vector3((x0 + x1) / 2f, floor, (z0 + z1) / 2f);
+
+        var sheet = new ArtSheet();
+        float vs = MapScene.VerticalScaleOf(map);
+        var kit = new KitBuilder(sheet, vs) { Origin = Vector3.Zero };
+        // From the well's floor under the tower (MapScene.WellDepth tiles down) to the pillar's head
+        int below = (int)MathF.Ceiling(MapScene.WellDepth * T / vs);
+        int wide = (x1 - x0) * T - PillarInset * 2, deep = (z1 - z0) * T - PillarInset * 2, high = below + PillarHeight;
+        var across = kit.Face($"pillar.{wide}x{high}", wide, high, BuiltArt.PaintPillar);
+        var along = kit.Face($"pillar.{deep}x{high}", deep, high, BuiltArt.PaintPillar);
+        var top = kit.Face($"pillar.top.{wide}x{deep}", wide, deep, BuiltArt.PaintPillarTop);
+        kit.Box(-wide / 2f, wide / 2f, -deep / 2f, deep / 2f, -below, PillarHeight, top, across, along, along, across);
+        art = Upload(sheet);
+        pillar = Make(kit);
+    }
+
     private void BuildBlackthorn(Map map)
     {
         const int T = GroundBaker.ArtTile;
@@ -1386,6 +1436,7 @@ internal sealed class GymPieces
         gatePost = gateArm = gateLongArm = null;
         slabWide = slabNarrow = null;
         iceCrack = iceGlaze = null;
+        pillar = null;
         league = false;
         doorShut = doorOpen = gate = liftPlatform = machineBall = machineBallLit = null;
         sockets.Clear();

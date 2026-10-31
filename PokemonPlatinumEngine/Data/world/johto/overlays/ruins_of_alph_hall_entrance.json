@@ -5,6 +5,7 @@
   // HeartGold's Arceus event) belongs to that event, which this game doesn't have, and stays shut, with the scientist
   // who stands in it and the photographer (Cameron, the Pokégear's)
   "area": "ruins_of_alph_hall_entrance",
+  "caveLook": "Ruins",
   "bgmTrack": "johto/ruins_of_alph",
   "locked": [ 2, 3 ],
   "signs": {

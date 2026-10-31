@@ -115,6 +115,21 @@ internal static class GroundBaker
             return tone;
         }
 
+        if (style is InteriorStyle.Tower or InteriorStyle.Aerie)
+        {
+            // A wooden tower's dark polished boards running east and west; the Violet Gym's pale boards running north and
+            // south, the way its walkways lead to Falkner. Boards 8 wide, joints staggered, whole boards vary in tone
+            bool tower = style == InteriorStyle.Tower;
+            int across = tower ? y : x, along0 = tower ? x : y;
+            int row = across / 8, along = along0 + row * 23 % 48, board = along / 48, j = along % 48;
+            var (light, mid, dark, groove) = tower
+                ? (Rgb(160, 108, 68), Rgb(148, 98, 60), Rgb(136, 90, 54), Rgb(92, 60, 38))
+                : (Rgb(224, 198, 152), Rgb(214, 186, 140), Rgb(202, 174, 128), Rgb(158, 126, 88));
+            if (across % 8 == 7 || j == 0) return groove;
+            uint pick = Hash(board, row, tower ? 611 : 621) % 5;
+            return pick == 0 ? light : pick == 1 ? dark : mid;
+        }
+
         if (style == InteriorStyle.GameHall)
         {
             // The Game Corner's carpet: deep red, a small gold lozenge in the middle of every tile, a darker seam between them
@@ -287,6 +302,10 @@ internal static class GroundBaker
             InteriorStyle.GameHall => (Rgb(44, 48, 96), Rgb(226, 182, 80), Tone.Of(62, 70, 132), Tone.Of(226, 182, 80), Tone.Of(28, 30, 62)),
             // A covered street's shopfronts: cream stucco with a coral motif over a band of shop glass (plan 22, wave 48)
             InteriorStyle.Street => (Rgb(240, 230, 208), Rgb(226, 104, 92), Tone.Of(110, 168, 196), Tone.Of(226, 104, 92), Tone.Of(72, 86, 110)),
+            // A wooden tower's paper screens in a lattice of timber over a wainscot of dark timber (plan 20, wave 77)
+            InteriorStyle.Tower => (Rgb(236, 226, 200), Rgb(128, 86, 54), Tone.Of(110, 74, 48), Tone.Of(128, 86, 54), Tone.Of(70, 48, 34)),
+            // The Violet Gym's sky with white clouds over a wainscot of timber
+            InteriorStyle.Aerie => (Rgb(196, 222, 244), Rgb(246, 250, 255), Tone.Of(150, 108, 70), Tone.Of(240, 244, 250), Tone.Of(96, 68, 46)),
             _ => (Rgb(246, 232, 200), Rgb(232, 212, 172), Tone.Of(178, 124, 82), Tone.Of(250, 244, 226), Tone.Of(120, 84, 58))
         };
 
@@ -302,7 +321,14 @@ internal static class GroundBaker
                 {
                     // Wallpaper: a four-texel motif on a grid 16 by 14, every other row of them half a step along
                     int row = (y - crown) / 14, my = (y - crown) % 14, mx = (x + row % 2 * 8) % 16;
-                    col = (mx is 7 or 8) && (my is 6 or 7) ? motif : y == crown ? PixelCanvas.Shadow(paper, 0.14f) : paper;
+                    if (style == InteriorStyle.Tower)
+                        // Paper screens: a lattice of timber two texels wide every sixteen across and fourteen down
+                        col = x % 16 is 0 or 1 || my is 0 or 1 ? motif : y == crown ? PixelCanvas.Shadow(paper, 0.14f) : paper;
+                    else if (style == InteriorStyle.Aerie)
+                        // Clouds: a puff six texels wide and three high, on the wallpaper's own grid
+                        col = (mx >= 5 && mx <= 10 && my == 7) || (mx >= 6 && mx <= 9 && my == 6) ? motif : y == crown ? PixelCanvas.Shadow(paper, 0.14f) : paper;
+                    else
+                        col = (mx is 7 or 8) && (my is 6 or 7) ? motif : y == crown ? PixelCanvas.Shadow(paper, 0.14f) : paper;
                 }
                 else if (y < panels) col = y == rail ? trim.Light : y == panels - 1 ? trim.Dark : trim.Base;
                 else if (y < skirt)

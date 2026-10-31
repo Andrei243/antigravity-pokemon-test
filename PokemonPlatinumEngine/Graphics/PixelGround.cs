@@ -335,6 +335,13 @@ internal static class PixelGround
                     if (paving) PaintPaving(c, tx * T, ty * T, tx + seedX, ty + seedY, Paved(-1, 0), Paved(1, 0), Paved(0, -1), Paved(0, 1));
                 }
             }
+        // A cave that is a building is built, tile for tile with straight edges, as decks and paving are (plan 20, wave 77;
+        // style guide, "Caves that are built"): its floor, its sound floor and the top of its rock in its own look
+        if (cave && map.CaveLook != CaveLook.Rock)
+            for (int ty = 0; ty < th; ty++)
+                for (int tx = 0; tx < tw; tx++)
+                    if (GroundAt(tx, ty) is TileType built && built is TileType.CaveFloor or TileType.Paving or TileType.CaveWall)
+                        BuiltArt.PaintGround(c, tx * T, ty * T, tx + originX, ty + originY, map.CaveLook, built);
         // A GBA spin's arrows and stops, painted on the floor (plan 19 · K7; style guide, "Rooms", "Spin arrows")
         if (map.HasSpinStops)
             for (int ty = 0; ty < th; ty++)

@@ -281,6 +281,8 @@ public static class WorldMapBuilder
         // A room whose overlay names its look has it (plan 22, wave 48: Join Avenue, a covered street)
         if (room && entry.Area != null && world.Overlay(entry.Area)?.Interior is { } style) map.Interior = style;
         bool overTheDark = room && entry.Area != null && world.Overlay(entry.Area)?.OverTheDark == true;
+        // A cave that is a building (plan 20, wave 77: the Burned Tower, the Ruins of Alph) has the look its overlay names
+        if (cave && entry.Area != null && world.Overlay(entry.Area)?.CaveLook is { } built) map.CaveLook = built;
         // A place that is a matrix of its own is looked at with its own camera, and may be dark
         if (entry.Area != null && world.Area(entry.Area) is { } own)
         {
@@ -446,6 +448,9 @@ public static class WorldMapBuilder
                         for (int cx = 0; cx * Map.ChunkTiles < map.Width; cx++) ways.Add((cx * Map.ChunkTiles + a[0], cz * Map.ChunkTiles + a[1]));
             }
             CaveRock(map, vague, ways);
+            // A cave that is a building has nothing beyond its walls (style guide, "Caves that are built"): rock with no
+            // floor within two tiles of it is no part of the building, and is the dark round it, not a slab of rock top
+            if (map.CaveLook != CaveLook.Rock) DarkBeyondTheWalls(map);
         }
         else if (nothing)
         {
@@ -824,6 +829,29 @@ public static class WorldMapBuilder
                     break;
             }
         }
+    }
+
+    /// <summary>
+    /// The rock of a cave that is a building (<see cref="CaveLook"/>) that lies more than two tiles from any of its floor:
+    /// no part of the building, so nothing (<see cref="TileType.Void"/>), drawn as the dark round it (plan 20, wave 77: the
+    /// Ruins of Alph's hall, whose chunk runs on south of its walls). No GPU calls.
+    /// </summary>
+    internal static void DarkBeyondTheWalls(Map map)
+    {
+        const int reach = 2;
+        bool Rock(int x, int z) => !map.InBounds(x, z) || map.GetGroundTile(x, z) is TileType.CaveWall or TileType.Void;
+        var beyond = new List<(int X, int Z)>();
+        for (int z = 0; z < map.Height; z++)
+            for (int x = 0; x < map.Width; x++)
+            {
+                if (map.GetGroundTile(x, z) != TileType.CaveWall) continue;
+                bool near = false;
+                for (int dz = -reach; dz <= reach && !near; dz++)
+                    for (int dx = -reach; dx <= reach && !near; dx++)
+                        near = !Rock(x + dx, z + dz);
+                if (!near) beyond.Add((x, z));
+            }
+        foreach (var (x, z) in beyond) map.SetGroundTile(x, z, TileType.Void, isSolid: true);
     }
 
     /// <summary>The look of a room built from a layout, by its map's name (<see cref="MapStructures.KindOfDoor"/>).</summary>

@@ -2,6 +2,8 @@
   // Sprout Tower's ground floor (plan 20 · J4), HeartGold's room: the visitors, two Sages who only talk, and Chow, who
   // battles by his own record (Johto's trainers.json)
   "area": "sprout_tower_1f",
+  "interior": "Tower",
+  "overTheDark": true,
   "bgmTrack": "johto/sprout_tower",
   "people": {
     "d15r0101_gsoldwoman1": {

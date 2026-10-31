@@ -5,6 +5,7 @@
   // tower's legend; all three are gone once the three Pokémon below have fled. Its charred look is still the
   // stand-in a later session paints
   "area": "burned_tower_1f",
+  "caveLook": "Charred",
   "bgmTrack": "johto/burned_tower",
   "triggers": [
     { "trigger": 0, "script": "Eusine" },
