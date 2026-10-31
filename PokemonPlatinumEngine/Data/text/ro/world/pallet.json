@@ -6,7 +6,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Pallet Town is quiet, but some of the greatest trainers grew up here. You can feel it in the breeze."
         ],
         "text": [
-          ""
+          "Orașul Pallet e liniștit, dar unii dintre cei mai mari antrenori au crescut aici. Se simte în adierea vântului."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "The sea south of town runs all the way to Cinnabar Island. You need a Pokémon that can swim to get there."
         ],
         "text": [
-          ""
+          "Marea de la sudul orașului ajunge până la Insula Cinnabar. Ai nevoie de un Pokémon care știe să înoate ca să ajungi acolo."
         ]
       }
     }
@@ -43,7 +43,7 @@
         "Pallet Town\nA quiet town where journeys begin."
       ],
       "text": [
-        ""
+        "Orașul Pallet\nUn oraș liniștit unde încep călătoriile."
       ]
     },
     "T01_003+1": {
@@ -51,7 +51,7 @@
         "Red's house"
       ],
       "text": [
-        ""
+        "Casa lui Red"
       ]
     },
     "T01_004+1": {
@@ -59,7 +59,7 @@
         "Oak Pokémon Research Lab"
       ],
       "text": [
-        ""
+        "Laboratorul de Cercetare Pokémon Oak"
       ]
     },
     "T01_005+1": {
@@ -67,7 +67,7 @@
         "Blue's house"
       ],
       "text": [
-        ""
+        "Casa lui Blue"
       ]
     }
   }

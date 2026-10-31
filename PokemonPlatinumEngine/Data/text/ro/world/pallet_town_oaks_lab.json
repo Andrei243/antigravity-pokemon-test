@@ -6,7 +6,7 @@
           "Professor Oak"
         ],
         "text": [
-          ""
+          "Profesorul Oak"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Well, well! A Champion from Johto, here in my lab! Kanto has eight Gyms of its own, you know. Have you thought of taking them on?"
         ],
         "text": [
-          ""
+          "Ei, ei! Un Campion din Johto, chiar în laboratorul meu! Kanto are opt Arene proprii, să știi. Te-ai gândit să le înfrunți?"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Aide"
         ],
         "text": [
-          ""
+          "Asistentul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "The professor is on the radio most days now. He still finds time to research, somehow."
         ],
         "text": [
-          ""
+          "Profesorul e la radio aproape în fiecare zi acum. Totuși găsește, cumva, timp și pentru cercetare."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Aide"
         ],
         "text": [
-          ""
+          "Asistentul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Some of the greatest trainers in the world started their journeys from this very lab."
         ],
         "text": [
-          ""
+          "Unii dintre cei mai mari antrenori din lume și-au început călătoria chiar din acest laborator."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Aide"
         ],
         "text": [
-          ""
+          "Asistentul"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "I'm sorting the Pokédex data the professor sends back. There's so much of it!"
         ],
         "text": [
-          ""
+          "Sortez datele Pokédex pe care le trimite profesorul. Sunt atât de multe!"
         ]
       }
     }
@@ -79,7 +79,7 @@
         "The shelves are crammed with books about Pokémon."
       ],
       "text": [
-        ""
+        "Rafturile sunt pline de cărți despre Pokémoni."
       ]
     },
     "T01R0301_005+1": {
@@ -87,7 +87,7 @@
         "A PC full of the professor's notes. It's password-protected."
       ],
       "text": [
-        ""
+        "Un PC plin cu notițele profesorului. E protejat cu parolă."
       ]
     },
     "T01R0301_007+1": {
@@ -95,7 +95,7 @@
         "A bare table. Something used to rest here."
       ],
       "text": [
-        ""
+        "O masă goală. Cândva se odihnea ceva aici."
       ]
     },
     "T01R0301_008+1": {
@@ -103,7 +103,7 @@
         "A bare table. Something used to rest here."
       ],
       "text": [
-        ""
+        "O masă goală. Cândva se odihnea ceva aici."
       ]
     },
     "T01R0301_009+1": {
@@ -111,7 +111,7 @@
         "A bare table. Something used to rest here."
       ],
       "text": [
-        ""
+        "O masă goală. Cândva se odihnea ceva aici."
       ]
     }
   }
