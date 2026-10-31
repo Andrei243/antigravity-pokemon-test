@@ -76,6 +76,8 @@ internal static partial class MoveFx
                     // A signature move's own layer over its look (plan 25 · Y17)
                     Directions.PlayEffect(c, ColorsOf(cue.Type), fx);
                 }
+                // A blow that came to nothing on Max Guard rings the dome (plan 25 · YD3)
+                if (cue.OnGuard && !cue.Charging && !cue.Arriving) GuardStruck(c, fx);
                 break;
             case CueKind.StatUp:
                 StatChange(c, fx, up: true);

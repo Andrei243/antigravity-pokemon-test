@@ -67,7 +67,7 @@ internal static partial class MoveFx
     /// </summary>
     public static (Color Color, float Amount) GiantCast(CombatantView v, float time)
     {
-        if (v.Dynamaxed) return (DynaRed, 0.18f + 0.06f * MathF.Sin(time * MathF.Tau * 1.2f));
+        if (v.Dynamaxed) return (DynaRed, 0.18f + 0.06f * MathF.Sin(time * MathF.Tau * PulseHz(v.DynamaxTurnsLeft)));
         if (v.Shown?.Terastallized is { } tera)
             return (TeraColours(tera.IsStellar, tera.Type, time * 0.25f).Light, 0.15f + 0.05f * MathF.Sin(time * MathF.Tau * 0.5f));
         return (default, 0f);
@@ -90,10 +90,16 @@ internal static partial class MoveFx
                 var feet = places.Feet(side, slot);
                 float h = places.Height(side, slot), w = places.HalfWidth(side, slot);
                 int seed = slot * 37 + s * 101 + 7;
-                if (giant) Wreath(feet, h, w, anim.Time, seed, v.Gigantamax, shown, fx);
+                if (giant) Wreath(feet, h, w, anim.Time, seed, v.Gigantamax, shown, fx, v.DynamaxTurnsLeft);
                 else if (v.Shown!.Terastallized is { } type) Crown(feet, h, TeraColours(type.IsStellar, type.Type, anim.Time * 0.25f), anim.Time, type.IsStellar, shown, 0f, fx);
             }
     }
+
+    /// <summary>How many clouds a giant's wreath has with this many turns left (plan 25 · YD3): six, five, four; six while unknown.</summary>
+    public static int WreathClouds(int turns) => turns is >= 1 and <= 3 ? 3 + turns : 6;
+
+    /// <summary>How fast a giant's body pulses with this many turns left (plan 25 · YD3): 1.2, 1.6, 2.2 Hz.</summary>
+    public static float PulseHz(int turns) => turns switch { 1 => 2.2f, 2 => 1.6f, _ => 1.2f };
 
     /// <summary>The red of a Dynamax's clouds, bright enough to read over grass and sand alike.</summary>
     private static Color CloudRed => Fx.Mix(DynaCloud, DynaRed, 0.65f);
@@ -103,13 +109,16 @@ internal static partial class MoveFx
     /// light on three of them, a glow under it and two motes rising up its body (a Gigantamax's gold). At most 12 quads.
     /// Round the feet, never over the head: a giant's head stands near the picture's top, and over it under the HP box.
     /// </summary>
-    private static void Wreath(Vector3 feet, float h, float w, float time, int seed, bool gold, float strength, FxList fx)
+    private static void Wreath(Vector3 feet, float h, float w, float time, int seed, bool gold, float strength, FxList fx, int turns = 3)
     {
         if (strength <= 0f) return;
+        // It thins a cloud a turn, and flickers on the last (plan 25 · YD3)
+        int clouds = WreathClouds(turns);
+        if (turns == 1) strength *= 0.8f + 0.2f * MathF.Sin(time * MathF.Tau * 9f);
         float rx = w + h * 0.12f;
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < clouds; i++)
         {
-            float a = i * MathF.Tau / 6f + time * 0.5f;
+            float a = i * MathF.Tau / clouds + time * 0.5f;
             var p = feet + new Vector3(MathF.Cos(a) * rx, h * (0.07f + 0.02f * MathF.Sin(time * 2f + i)), MathF.Sin(a) * rx * 0.6f);
             bool behind = MathF.Sin(a) < 0f;
             fx.Sprite(FxShape.Smoke, p, h * 0.2f, Fx.Fade(CloudRed, strength * 0.7f), FxBlend.Alpha, a + time * 0.4f, depth: behind);
@@ -257,32 +266,56 @@ internal static partial class MoveFx
         Fx.Shockwave(fx, t, at, Vector3.Zero, 0f, 0.35f, h * 0.9f, Fx.Fade(DynaPink, 0.8f));
     }
 
-    /// <summary>A Dynamax's end: its wreath broken into puffs thrown up and out, red motes rising and going out, a ring at its feet.</summary>
+    /// <summary>
+    /// A Dynamax's end, the fall (plan 25 · YD3; style guide, "Its end, the fall"): while it shudders red light bleeds out
+    /// of it in eight streams and the wreath's clouds are drawn in to it and up; as it falls in they are thrown out off
+    /// the platform as dust, a pink ring on the ground and red motes going out. A giant that fainted (<see cref="EffectCue.Fell"/>)
+    /// sinks into its clouds instead: they close over its feet and are thrown out as it goes. At most 33 quads.
+    /// </summary>
     private static void DynamaxShrink(in FxCtx c, FxList fx)
     {
         float t = c.Age, h = c.FromSize, w = c.FromHalfWidth;
         var feet = c.FromFeet;
-        fx.Land(BattleAnimator.DynamaxShrinkTime);
-        // The wreath round its feet blown up and out
+        const float S = BattleAnimator.DynamaxFallStart, D = BattleAnimator.DynamaxShrunk;
+        float fall = c.Cue.Fell ? 0f : S;
+        fx.Land(c.Cue.Fell ? BattleAnimator.GiantFallTime : D);
         float rx = w + h * 0.12f;
-        for (int i = 0; i < 6; i++)
+        // The wreath's clouds: drawn in and up the body while it shudders (or closing over a falling giant's feet)
+        float draw = Math.Clamp(t / Math.Max(0.2f, fall + 0.15f), 0f, 1f);
+        if (t < fall + 0.15f || c.Cue.Fell && t < BattleAnimator.GiantFallTime)
+            for (int i = 0; i < 6; i++)
+            {
+                float a = i * MathF.Tau / 6f + t * 2.5f;
+                float r = c.Cue.Fell ? rx * (1f - 0.3f * draw) : rx * (1f - 0.75f * draw);
+                float y = c.Cue.Fell ? h * (0.07f + 0.1f * draw) : h * (0.07f + 0.45f * draw);
+                var p = feet + new Vector3(MathF.Cos(a) * r, y, MathF.Sin(a) * r * 0.6f);
+                fx.Sprite(FxShape.Smoke, p, h * 0.2f * (1f + (c.Cue.Fell ? 0.4f * draw : -0.4f * draw)), Fx.Fade(CloudRed, 0.7f * (1f - 0.5f * draw)), FxBlend.Alpha, a, depth: MathF.Sin(a) < 0f);
+            }
+        // Red light bleeding out of it in streams while it shudders
+        if (!c.Cue.Fell && t < S + 0.1f)
         {
-            float k = Math.Clamp(t / 0.7f, 0f, 1f);
-            if (k >= 1f) break;
-            float a = i * MathF.Tau / 6f;
-            var p = feet + new Vector3(MathF.Cos(a) * rx * (1f + 0.8f * k), h * (0.07f + 0.5f * k), MathF.Sin(a) * rx * 0.6f * (1f + 0.8f * k));
-            fx.Sprite(FxShape.Smoke, p, h * 0.2f * (1f + 0.5f * k), Fx.Fade(CloudRed, 0.7f * (1f - k)), FxBlend.Alpha, a + k, depth: MathF.Sin(a) < 0f);
+            float e = Fx.Envelope(t, 0f, 0.06f, S - 0.05f, S + 0.1f);
+            for (int i = 0; i < 8; i++)
+            {
+                float u = (t * 2.4f + Fx.Rand(c.Seed, i, 441)) % 1f;
+                float a = i * MathF.Tau / 8f + 0.3f;
+                var p = feet + new Vector3(MathF.Cos(a) * w * 0.8f, h * (0.25f + 0.85f * u), MathF.Sin(a) * w * 0.5f);
+                fx.Streak(FxShape.Streak, p, Vector3.UnitY, h * 0.06f, 3f, Fx.Fade(i % 2 == 0 ? DynaRed : DynaPink, e * MathF.Sin(u * MathF.PI)), depth: MathF.Sin(a) < 0f);
+            }
         }
-        for (int i = 0; i < 12; i++)
+        // The collapse: the clouds thrown out as dust, a ring on the ground, red motes going out
+        float k = t - fall;
+        GroundDust(c.Seed, k, feet, h, w, fx);
+        Fx.Shockwave(fx, t, feet + Vector3.UnitY * h * 0.03f, Vector3.UnitY, fall + 0.1f, 0.55f, h * 1.6f, Fx.Fade(DynaPink, 0.75f));
+        for (int i = 0; i < 10; i++)
         {
-            float k = (t - 0.05f * Fx.Rand(c.Seed, i, 421) * 6f) / 0.6f;
-            if (k < 0f || k > 1f) continue;
+            float m = (k - 0.05f * Fx.Rand(c.Seed, i, 421) * 4f) / 0.5f;
+            if (m < 0f || m > 1f) continue;
             float a = Fx.Rand(c.Seed, i, 422) * MathF.Tau;
-            var p = feet + new Vector3(MathF.Cos(a) * w, h * (0.3f + 0.9f * k), MathF.Sin(a) * w * 0.6f);
-            fx.Sprite(c.Cue.Gigantamax && i % 3 == 0 ? FxShape.Spark : FxShape.Glow, p, h * 0.05f, Fx.Fade(i % 2 == 0 ? DynaRed : DynaPink, MathF.Sin(k * MathF.PI)),
+            var p = feet + new Vector3(MathF.Cos(a) * w, h * (0.3f + 0.9f * m), MathF.Sin(a) * w * 0.6f);
+            fx.Sprite(c.Cue.Gigantamax && i % 3 == 0 ? FxShape.Spark : FxShape.Glow, p, h * 0.05f, Fx.Fade(i % 2 == 0 ? DynaRed : DynaPink, MathF.Sin(m * MathF.PI)),
                 depth: MathF.Sin(a) < 0f);
         }
-        Fx.Shockwave(fx, t, feet + Vector3.UnitY * h * 0.03f, Vector3.UnitY, 0.05f, 0.6f, h * 1.1f, Fx.Fade(DynaPink, 0.7f));
     }
 
     // ------------------------------------------------------------------ Terastallization

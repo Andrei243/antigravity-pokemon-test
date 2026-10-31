@@ -83,7 +83,7 @@ internal static partial class ModernUi
     public static Color HpColor(float ratio) =>
         ratio > 0.5f ? new Color(70, 214, 110, 255) : ratio > Battle.BattleAnimator.LowHpRatio ? new Color(246, 196, 50, 255) : new Color(240, 72, 64, 255);
 
-    public static void HpBar(float x, float y, float w, float h, float ratio)
+    public static void HpBar(float x, float y, float w, float h, float ratio, float ghost = -1f)
     {
         ratio = Math.Clamp(ratio, 0f, 1f);
         float tagW = h * 2.3f;
@@ -92,14 +92,17 @@ internal static partial class ModernUi
         float ts = h * 0.72f;
         string hp = Text.Of("party.hp");
         UiFonts.DrawCentered(hp, x + (tagW - UiFonts.Measure(hp, ts, UiWeight.Black)) / 2f, y + h / 2f, ts, new Color(110, 60, 16, 255), UiWeight.Black);
-        Bar(new Rectangle(x + tagW + 6, y, w - tagW - 6, h), ratio, HpColor(ratio));
+        Bar(new Rectangle(x + tagW + 6, y, w - tagW - 6, h), ratio, HpColor(ratio), ghost);
     }
 
-    /// <summary>A pill-shaped track with a fill that keeps round ends however short it is.</summary>
-    public static void Bar(Rectangle track, float ratio, Color color)
+    /// <summary>A pill-shaped track with a fill that keeps round ends however short it is (and, plan 25 · YD2, a white ghost behind it to <paramref name="ghost"/>).</summary>
+    public static void Bar(Rectangle track, float ratio, Color color, float ghost = -1f)
     {
         float h = track.Height;
         UiShapes.Fill(track, h / 2f, Track);
+        // A Max Move's lost share, white behind the fill a moment before it drains
+        float gw = (track.Width - 6) * Math.Clamp(ghost, 0f, 1f);
+        if (ghost > ratio && gw > 0.5f) UiShapes.Fill(new Rectangle(track.X + 3, track.Y + 3, Math.Max(gw, h - 6), h - 6), (h - 6) / 2f, Color.White);
         float fw = (track.Width - 6) * Math.Clamp(ratio, 0f, 1f);
         if (fw <= 0.5f) return;
         var fill = new Rectangle(track.X + 3, track.Y + 3, Math.Max(fw, h - 6), h - 6);

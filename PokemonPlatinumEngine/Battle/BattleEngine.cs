@@ -423,6 +423,8 @@ public partial class BattleEngine
             Anim.SettleCharge(place.Side, place.Slot, theirs.IsActive && theirs.Volatile.Charging);
             // A Dynamax and the turns it has left, for the HP box (plan 25 · Y15)
             Anim.SettleDynamax(place.Side, place.Slot, theirs.IsActive && theirs.Volatile.Dynamaxed, 3 - theirs.Volatile.DynamaxTurns, theirs.Volatile.Gigantamaxed);
+            // Every Max Guard came down with the turn (plan 25 · YD3)
+            Anim.SettleGuard(place.Side, place.Slot);
             // What lasts on it (plan 09 · L2): the lines have told all of it already; this catches a Pokémon changed from outside
             Anim.Conditions.Settle(place.Place, ConditionLooks.RulesHave(theirs));
             Anim.Conditions.SettleMarks(place.Place, ConditionLooks.MarksRulesHave(theirs));
@@ -715,6 +717,14 @@ public partial class BattleEngine
                     if (!move.Missed && !move.Blocked && SoundBank.LandsAsAGiant(move.Move))
                         After(ImpactDelay, () => Sound("max_land", move.To.Side));
                 }
+                bool maxMove = MoveDatabase.Get(move.Move)?.Kind is MoveKind.MaxMove or MoveKind.GMaxMove;
+                // Max Guard goes up for the turn, and a blow that comes to nothing on it rings the dome (plan 25 · YD3)
+                if (move.Move == BattleCore.MaxGuardName && move.To == move.From) Anim.GuardUp(move.From.Side, move.From.Slot);
+                bool onGuard = move.Blocked && move.To != move.From && Anim[move.To.Side, move.To.Slot].MaxGuarded;
+                if (onGuard) After(ImpactDelay, () => Sound("max_guard_hit", move.To.Side));
+                // A Max Move's punch on the HP box as it lands (plan 25 · YD2): our own, so none with the scene off
+                if (Scene && maxMove && !move.Missed && !move.Blocked && move.To != move.From)
+                    After(ImpactDelay, () => Anim.Punch(move.To.Side, move.To.Slot));
                 // With the scene off no move's effect plays but Transform's, as the original plays it all the same
                 // (BtlCmd_PlayMoveAnimation; plan 08 · P1); its sound above still does
                 if (Scene || move.Move == "Transform")
@@ -736,7 +746,8 @@ public partial class BattleEngine
                     // A Z-Move plays its own set piece, a little longer than a move's (plan 25 · Y14)
                     ZMove = MoveDatabase.Get(move.Move)?.Kind == MoveKind.ZMove,
                     // And a Max Move or a G-Max Move its own (plan 25 · Y15)
-                    MaxMove = MoveDatabase.Get(move.Move)?.Kind is MoveKind.MaxMove or MoveKind.GMaxMove
+                    MaxMove = maxMove,
+                    OnGuard = onGuard
                 });
                 // A blow that lands on a doll makes it flinch as it lands: the rules say so with no Struck, since the
                 // Pokémon behind it takes nothing (subscript_hit_substitute's flicker)
@@ -969,6 +980,9 @@ public partial class BattleEngine
                 // Its cry, low and slow, as it goes down
                 if (At(fainted.Place).Pokemon is { } fallen) AudioManager.PlayCry(fallen, CryMode.Faint, Pan(fainted.Place.Side));
                 Sound("faint", fainted.Place.Side);
+                // A giant falls into its clouds first, with its sound (plan 25 · YD3); the sound with the scene off too
+                if (Anim[fainted.Place.Side, fainted.Place.Slot].Dynamaxed) Sound("giant_fall", fainted.Place.Side);
+                Anim.FallsAsGiant = Scene;
                 Anim.Faint(fainted.Place.Side, 0.15f, fainted.Place.Slot);
                 break;
             case ExpGained exp:

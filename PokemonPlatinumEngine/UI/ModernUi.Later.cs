@@ -125,9 +125,16 @@ internal static partial class ModernUi
                 UiShapes.Line(at + new Vector2(-5, 0), at + new Vector2(0, -6), 2.5f, Color.White);
                 UiShapes.Line(at + new Vector2(0, -6), at + new Vector2(5, 0), 2.5f, Color.White);
             }
-            string turns = view.DynamaxTurnsLeft.ToString();
-            float tw = UiFonts.Measure(turns, 24, UiWeight.Black);
-            UiFonts.DrawCentered(turns, pill.X + pill.Width - 16 - tw, pill.Y + 15, 24, Color.White, UiWeight.Black);
+            // The count, ticking down as a menu settles a lower one (plan 25 · YD3): the old falls away, the new drops in
+            var (from, to, k) = TickOf(view);
+            float rx = pill.X + pill.Width - 16;
+            if (k < 1f)
+            {
+                string old = from.ToString();
+                UiFonts.DrawCentered(old, rx - UiFonts.Measure(old, 24, UiWeight.Black), pill.Y + 15 + TickFall * k, 24, Color.White with { A = (byte)(255 * (1f - k)) }, UiWeight.Black);
+            }
+            string turns = to.ToString();
+            UiFonts.DrawCentered(turns, rx - UiFonts.Measure(turns, 24, UiWeight.Black), pill.Y + 15 - TickFall * (1f - k), 24, Color.White with { A = (byte)(255 * k) }, UiWeight.Black);
         }
         if (view.Shown?.Terastallized is { } tera)
         {
@@ -136,6 +143,40 @@ internal static partial class ModernUi
             UiShapes.Circle(c, 16.5f, Color.White);
             TeraCrown(c, tera, 0.62f);
         }
+    }
+
+    /// <summary>How far the pill's numbers fall as it ticks, layout units (plan 25 · YD3).</summary>
+    public const float TickFall = 14f;
+
+    /// <summary>The Dynamax pill's tick (plan 25 · YD3; GPU-free): the count it ticks from, the count now, and how far through (1 = settled).</summary>
+    public static (int From, int To, float Progress) TickOf(CombatantView view)
+    {
+        if (view.TickAge < 0f || view.TickFrom <= view.DynamaxTurnsLeft) return (view.DynamaxTurnsLeft, view.DynamaxTurnsLeft, 1f);
+        float k = Math.Clamp(view.TickAge / BattleAnimator.TickTime, 0f, 1f);
+        return (view.TickFrom, view.DynamaxTurnsLeft, k * k * (3f - 2f * k));
+    }
+
+    /// <summary>The box's jolt across and down at most, layout units (plan 25 · YD2).</summary>
+    public const float JoltAcross = 6f, JoltDown = 3f;
+
+    /// <summary>
+    /// A Max Move's punch on a Pokémon's HP box (plan 25 · YD2; GPU-free): how far the box is jolted now (none under
+    /// <see cref="BattleCamera.Motion"/> nought), the HP the bar's white ghost reaches as a share of the most (-1 for
+    /// none), and how much the HP number swells.
+    /// </summary>
+    public static (Vector2 Jolt, float Ghost, float Thump) PunchOf(CombatantView view)
+    {
+        if (view.PunchAge < 0f || view.Shown is not { } p) return (Vector2.Zero, -1f, 1f);
+        float age = view.PunchAge;
+        var jolt = Vector2.Zero;
+        if (age < BattleAnimator.PunchTime)
+        {
+            float k = (1f - age / BattleAnimator.PunchTime) * Math.Clamp(BattleCamera.Motion, 0f, 1f);
+            jolt = new Vector2(JoltAcross * MathF.Sin(age * MathF.Tau * 11f), JoltDown * MathF.Abs(MathF.Cos(age * MathF.Tau * 11f))) * k;
+        }
+        float ghost = view.GhostHp > view.DisplayedHp ? view.GhostHp / Math.Max(1, p.MaxHP) : -1f;
+        float thump = age < 0.25f ? 1f + 0.25f * MathF.Sin(age / 0.25f * MathF.PI) : 1f;
+        return (jolt, ghost, thump);
     }
 
     /// <summary>A crown of three facets in a Tera Type's colour (a Stellar one's in four), 34 wide at a scale of 1 × 0.62 on the box.</summary>

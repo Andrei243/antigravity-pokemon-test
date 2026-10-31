@@ -5,6 +5,8 @@ What changes from one release to the next, for players. Every session's close-ou
 ## [Unreleased]
 
 ### Added
+- Max Moves land like finishers: the camera looks up at the giant, whips across to its target, punches in and holds the blow a moment, then pulls back for the rest; the target is thrown back, pieces of the move's type burst off it, the screen shakes, and its HP box jolts with the lost share flashing white before it drains (REDUCE MOTION keeps the ordinary camera and no jolt).
+- Max Guard rings when a blow meets it: the attack stops at the dome and the hexagons facing it light up. A giant's three turns can be counted at a glance (its clouds thin and its glow quickens each turn, the turn counter ticks down, and a heartbeat sounds on its last turn), and its end is a fall: it shudders, bleeds red light and collapses back to size; a giant that faints sinks into its clouds first.
 - A new way to play at NEW GAME, "No later mechanics": nobody, you or the trainers you meet, can Mega Evolve, use a Z-Move, Dynamax or Terastallize in that run.
 - Trainers use Mega Evolution, Z-Moves, Dynamax and Terastallization with more sense: a Z-Move only when it will hit well or its bonus helps, Dynamax kept for their last Pokémon or their ace, and Terastallization when it turns a weakness to your last move around or on their last Pokémon.
 - Release builds for Windows, Linux and macOS (Intel and Apple silicon): one executable each with everything it needs inside, and the models the first screens show already made, so the first start takes seconds (plan 16 · T2).

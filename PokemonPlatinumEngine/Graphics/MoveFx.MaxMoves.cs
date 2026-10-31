@@ -129,10 +129,108 @@ internal static partial class MoveFx
         float h = c.ToSize;
         Fx.Shockwave(fx, t, c.To, Vector3.Zero, I + 0.04f, 0.5f, h * 1.6f, Fx.Fade(col.Light, 0.85f));
         Fx.Shockwave(fx, t, c.ToFeet + Vector3.UnitY * h * 0.03f, Vector3.UnitY, I, 0.6f, h * 1.8f, Fx.Fade(DynaRed, 0.85f));
+        // The finisher (plan 25 · YD2): the type's pieces thrown out of the blow, a second ring, the stage shaken
+        if (!c.Cue.OnSelf) MaxShatter(c, col, fx);
         float e = SetPiece(t);
         if (e <= 0f) return;
         fx.Sprite(FxShape.Glow, c.To - Vector3.UnitZ * (c.ToHalfWidth + h * 0.25f), h * 1.3f, Fx.Fade(DynaRed, e * 0.4f), depth: true);
         fx.Flat(FxShape.Glow, c.ToFeet + Vector3.UnitY * h * 0.02f, Vector3.UnitY, h * 1.4f, Fx.Fade(Fx.Mix(DynaRed, col.Main, 0.4f), e * 0.45f));
+    }
+
+    /// <summary>How many pieces a Max Move's shatter throws (plan 25 · YD2).</summary>
+    public const int ShatterPieces = 12;
+
+    /// <summary>A Max Move's shake at its impact: a physical one's, at the cap, and a special one's (plan 25 · YD2).</summary>
+    public const float MaxShakePhysical = 0.5f, MaxShakeSpecial = 0.35f;
+
+    /// <summary>The shape a type's shatter is made of.</summary>
+    private static FxShape ShatterShape(PokemonType type) => type switch
+    {
+        PokemonType.Fire => FxShape.Flame,
+        PokemonType.Grass => FxShape.Leaf,
+        PokemonType.Rock or PokemonType.Ground => FxShape.Rock,
+        PokemonType.Water => FxShape.Drop,
+        PokemonType.Electric => FxShape.Spark,
+        PokemonType.Ice or PokemonType.Steel => FxShape.Shard,
+        PokemonType.Fairy or PokemonType.Normal => FxShape.Star,
+        PokemonType.Bug => FxShape.Spore,
+        PokemonType.Ghost or PokemonType.Dark => FxShape.Wisp,
+        PokemonType.Poison => FxShape.Bubble,
+        PokemonType.Fighting => FxShape.Fist,
+        PokemonType.Flying => FxShape.Feather,
+        PokemonType.Dragon => FxShape.Flame,
+        _ => FxShape.Ring
+    };
+
+    /// <summary>
+    /// A Max Move's finisher at its impact (plan 25 · YD2; style guide, "The Max Move finisher"): twelve pieces of the
+    /// type's own shape thrown out of the target's middle on arcs and falling, a second ring of the type's light on the
+    /// ground, and the shake (the cap for a physical move, less for a special one). 13 quads; pure in the shown age.
+    /// </summary>
+    private static void MaxShatter(in FxCtx c, FxColors col, FxList fx)
+    {
+        float t = c.Age, h = c.ToSize;
+        float k = (t - I) / 0.75f;
+        if (k >= 0f && k < 1f)
+        {
+            var shape = ShatterShape(c.Cue.Type);
+            for (int i = 0; i < ShatterPieces; i++)
+            {
+                float a = i * MathF.Tau / ShatterPieces + Fx.Signed(c.Seed, i, 521) * 0.25f;
+                float reach = h * (0.8f + 0.5f * Fx.Rand(c.Seed, i, 522)) * Fx.EaseOut(k);
+                float rise = h * (0.55f + 0.35f * Fx.Rand(c.Seed, i, 523));
+                // Up and out, and falling back under its own weight: an arc
+                float y = rise * (2f * k - 1.6f * k * k);
+                var p = c.To + new Vector3(MathF.Cos(a) * reach, y, MathF.Sin(a) * reach * 0.6f);
+                fx.Sprite(shape, p, h * 0.13f * (1f - 0.35f * k), Fx.Fade(i % 2 == 0 ? col.Main : col.Light, 1f - k * k), FxBlend.Alpha,
+                    a + k * 6f * Fx.Signed(c.Seed, i, 524), depth: MathF.Sin(a) < 0f);
+            }
+        }
+        Fx.Shockwave(fx, t, c.ToFeet + Vector3.UnitY * h * 0.04f, Vector3.UnitY, I + 0.08f, 0.55f, h * 2.4f, Fx.Fade(col.Light, 0.8f));
+        float shake = c.Cue.Category == MoveCategory.Physical ? MaxShakePhysical : MaxShakeSpecial;
+        fx.Shake = Math.Max(fx.Shake, shake * Fx.Envelope(t, I, I + 0.04f, I + 0.18f, I + 0.5f));
+    }
+
+    /// <summary>
+    /// How a G-Max Move throws its target (plan 25 · YD2): -1 pressed down (a mark that falls), 1 tossed up (one that
+    /// rises), 0 thrown back as every Max Move's target is.
+    /// </summary>
+    public static int GMaxWayOf(string move) =>
+        GMaxMarks.TryGetValue(move, out var m) ? m.Motion switch { GMaxMotion.Falling => -1, GMaxMotion.Rising => 1, _ => 0 } : 0;
+
+    // ------------------------------------------------------------------ a blow on Max Guard (plan 25 · YD3)
+
+    /// <summary>
+    /// A blow that came to nothing on Max Guard (plan 25 · YD3; style guide, "Max Guard"): at the impact the dome's
+    /// fourteen hexagons stand round the target again, the half facing the blow lit pink by how squarely it faces it,
+    /// ten sparks and a ring where the blow ended (the dome's surface, <see cref="FxCtx.Aim"/>). 26 quads, gone 0.6 s
+    /// after the impact.
+    /// </summary>
+    private static void GuardStruck(in FxCtx c, FxList fx)
+    {
+        float t = c.Age, h = c.ToSize, w = c.ToHalfWidth;
+        float env = Fx.Envelope(t, I - 0.02f, I + 0.04f, I + 0.25f, I + 0.6f);
+        if (env <= 0f) return;
+        var feet = c.ToFeet;
+        float r = w + h * 0.2f;
+        var blow = c.From - c.To;
+        blow.Y = 0f;
+        blow = blow.LengthSquared() > 1e-6f ? Vector3.Normalize(blow) : Vector3.UnitZ;
+        (float Y, float R, int N)[] rows = { (0.2f, 1f, 8), (0.7f, 0.8f, 5), (1.1f, 0f, 1) };
+        foreach (var row in rows)
+            for (int i = 0; i < row.N; i++)
+            {
+                float a = i * MathF.Tau / row.N + row.Y;
+                var dir = new Vector3(MathF.Cos(a), 0f, MathF.Sin(a));
+                var p = feet + new Vector3(dir.X * r * row.R, h * Math.Min(row.Y, 1.08f), dir.Z * r * row.R * 0.6f);
+                bool behind = row.R > 0f && MathF.Sin(a) < 0f;
+                fx.Sprite(FxShape.Hex, p, h * 0.3f, Fx.Fade(DynaRed, env * 0.45f), FxBlend.Alpha, a * 0.2f, depth: behind);
+                // Lit pink by how squarely it faces the blow
+                float facing = row.R > 0f ? Vector3.Dot(dir, blow) : 0.5f;
+                if (facing > 0.2f) fx.Sprite(FxShape.Hex, p, h * 0.3f, Fx.Fade(DynaPink, env * Math.Min(1f, facing)), rotation: a * 0.2f, depth: behind);
+            }
+        Fx.Burst(fx, c.Seed, t, c.Aim, h, I, 0.45f, 10, FxShape.Spark, White, DynaPink, 0.07f, 0.9f, salt: 531);
+        Fx.Shockwave(fx, t, c.Aim, Vector3.Zero, I, 0.4f, h * 0.9f, Fx.Fade(DynaPink, 0.9f));
     }
 
     /// <summary>Where on a ring round the target's feet the <paramref name="i"/>th of <paramref name="n"/> stands.</summary>

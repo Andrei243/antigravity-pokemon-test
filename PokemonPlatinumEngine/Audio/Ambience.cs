@@ -8,7 +8,7 @@ using static PokemonPlatinumEngine.Audio.SoundDesign;
 namespace PokemonPlatinumEngine.Audio;
 
 /// <summary>A loop of the field's background sound: weather, water, a cave (plan 05 · A7).</summary>
-public enum AmbienceBed { Rain, HeavyRain, Hail, Wind, Blizzard, Sandstorm, Waterfall, River, Waves, Cave, Underwater }
+public enum AmbienceBed { Rain, HeavyRain, Hail, Wind, Blizzard, Sandstorm, Waterfall, River, Waves, Cave, Underwater, Giant }
 
 /// <summary>One bed heard at a moment: how loud (0 to 1, the bed's own level at 1) and from where (-1 left, 1 right).</summary>
 public readonly record struct AmbienceLayer(AmbienceBed Bed, float Gain, float Pan);
@@ -43,7 +43,8 @@ public static class Ambience
         new AmbienceEntry(AmbienceBed.River, null, "Running water is near."),
         new AmbienceEntry(AmbienceBed.Waves, "SEQ_SE_DP_NAMI", "The sea or a lake is near: louder the more water is round the player."),
         new AmbienceEntry(AmbienceBed.Cave, null, "In a cave: a low rumble and drips."),
-        new AmbienceEntry(AmbienceBed.Underwater, null, "On the sea floor (plan 21 · H5): a muffled hum, the sea swelling slowly overhead, now and then a few low bubbles; alone, whatever the weather above.")
+        new AmbienceEntry(AmbienceBed.Underwater, null, "On the sea floor (plan 21 · H5): a muffled hum, the sea swelling slowly overhead, now and then a few low bubbles; alone, whatever the weather above."),
+        new AmbienceEntry(AmbienceBed.Giant, null, "In a battle, while a Dynamaxed Pokémon stands on its last turn (plan 25 · YD3): a slow heartbeat under the music.")
     };
 
     private static readonly ConcurrentDictionary<AmbienceBed, SoundSample> Made = new();
@@ -152,6 +153,16 @@ public static class Ambience
                 }
                 d.Bubbles(0, all, (int)(all * 2), 160f, 480f, 0.12f);
                 d.Echo(0.31f, 0.25f);
+                break;
+            case AmbienceBed.Giant:
+                // A slow heartbeat: two low beats every 0.8 s (ten to the loop, so the join falls between them) and a
+                // soft rumble under them
+                for (float at = 0f; at < all; at += 0.8f)
+                {
+                    d.Thump(at, 0.22f, 70f, 34f, 0.9f, 0.5f);
+                    if (at + 0.2f < all) d.Thump(at + 0.2f, 0.2f, 62f, 30f, 0.6f, 0.5f);
+                }
+                d.Noise(0, all, Filter.Low, 90f, 90f, 0.12f, 0.7f, 0.001f, 0f, flutterHz: 0.1f, flutterDepth: 0.3f);
                 break;
         }
         return Join(d.S, (int)(loop * Rate));

@@ -143,12 +143,59 @@ internal static class Directions
     /// <summary>A giant's growth's hold at its burst, seconds (plan 25 · YD1), under the motion number.</summary>
     public const float GiantStop = 0.12f;
 
-    /// <summary>How long a cue holds at its impact now: a landed strike of a heavy signature move, or a giant's growth at its burst (plan 25 · YD1), under the motion number.</summary>
+    /// <summary>A Max Move's hold at its impact, seconds (plan 25 · YD2), under the motion number.</summary>
+    public const float MaxStop = 0.12f;
+
+    /// <summary>Whether a cue is a Max Move's finisher (plan 25 · YD2): a Max Move or G-Max Move that landed on another.</summary>
+    public static bool IsMaxFinisher(EffectCue cue) =>
+        cue.Kind == CueKind.Move && cue.MaxMove && !cue.OnSelf && !cue.Charging && !cue.Arriving && cue.Landed;
+
+    /// <summary>How long a cue holds at its impact now: a landed strike of a heavy signature move or a Max Move (plan 25 · YD2), or a giant's growth at its burst (plan 25 · YD1), under the motion number.</summary>
     public static float StopOf(EffectCue cue)
     {
         if (cue.Kind == CueKind.Dynamax) return GiantStop * Math.Clamp(BattleCamera.Motion, 0f, 1f);
+        if (IsMaxFinisher(cue)) return MaxStop * Math.Clamp(BattleCamera.Motion, 0f, 1f);
         if (cue.Charging || !cue.Landed || For(cue) is not { HitStop: > 0f } d) return 0f;
         return d.HitStop * Math.Clamp(BattleCamera.Motion, 0f, 1f);
+    }
+
+    /// <summary>How far a Max Move throws its target back, in its height, and how flat it presses it (plan 25 · YD2).</summary>
+    public const float MaxThrowReach = 0.25f, MaxThrowSquash = 0.15f;
+
+    /// <summary>
+    /// A Max Move's target thrown (plan 25 · YD2; style guide, "The Max Move finisher"): back 0.25 of its height and
+    /// pressed to 0.85 at the impact, then staggering home over 0.5 s with a lurch forward as it settles; a G-Max Move
+    /// whose mark falls presses it down, one whose mark rises tosses it up. Still before the impact and after.
+    /// </summary>
+    public static BodyMotion MaxThrown(EffectCue cue, float age)
+    {
+        if (age < I || age >= I + 0.55f) return BodyMotion.Still;
+        float t = age - I;
+        // At its furthest from the impact on, so the hit-stop holds it there, and staggering home after
+        float k = 1f - Smooth((t - 0.05f) / 0.5f);
+        switch (MoveFx.GMaxWayOf(cue.Move))
+        {
+            case -1:
+                return new BodyMotion(Sink: 0.06f * k, Squash: 0.18f * k);
+            case 1:
+            {
+                float u = Math.Clamp(t / 0.55f, 0f, 1f);
+                float up = 4f * u * (1f - u);
+                return new BodyMotion(Up: 0.15f * up, Toward: -0.08f * up, Squash: 0.1f * k * (1f - up));
+            }
+        }
+        // A lurch forward past home as it settles, a fifth of the throw
+        float lurch = t > 0.3f ? 0.2f * MathF.Sin(Math.Clamp((t - 0.3f) / 0.25f, 0f, 1f) * MathF.PI) : 0f;
+        return new BodyMotion(Toward: -MaxThrowReach * k + MaxThrowReach * lurch, Squash: MaxThrowSquash * k);
+    }
+
+    /// <summary>When a Dynamax's end shudders: from its start to <see cref="BattleAnimator.DynamaxFallStart"/> (plan 25 · YD3).</summary>
+    public static BodyMotion Shudder(float age)
+    {
+        const float S = BattleAnimator.DynamaxFallStart;
+        if (age < 0f || age >= S) return BodyMotion.Still;
+        float k = 1f - age / S;
+        return new BodyMotion(Toward: 0.03f * k * MathF.Sin(age * MathF.Tau * 14f));
     }
 
     /// <summary>Where a cue's hold falls: a move's impact, or a giant's burst after its trainer's call (plan 25 · YD1).</summary>
@@ -280,6 +327,7 @@ internal static class Directions
     /// <summary>What a direction does to the target's body at a cue's shown age: its own, or a heavy hit's throw.</summary>
     public static BodyMotion TargetBody(EffectCue cue)
     {
+        if (IsMaxFinisher(cue)) return MaxThrown(cue, cue.ShownAge);
         if (cue.Charging || cue.OnSelf || !cue.Landed || For(cue) is not { } d) return BodyMotion.Still;
         if (d.Target != null) return d.Target(cue.ShownAge, cue.Seed);
         return d.Heavy ? Thrown(cue.ShownAge) : BodyMotion.Still;
