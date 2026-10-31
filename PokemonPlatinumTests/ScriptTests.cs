@@ -569,6 +569,7 @@ public class ScriptTests
           shake rival 3
           flicker self
           flicker player 4
+          photograph
           scene "All of it"
           endscene
           namerival

@@ -1,0 +1,15 @@
+# The first of the Pokéathlon Dome's halls under the lobby (plan 20 · J13, the last part; HeartGold's D49R0104). The
+# guide stands in the way on to the hall of trust until it is open (HeartGold's FLAG_UNK_0EF, which hides her), and a
+# guide of ours stands aside to the west once it is (the overlay's `npcs`, shown by the same flag): the halls open one
+# by one with each course won (common.AthlonDesk; docs/mechanics/rulings.md, "The week siblings and the dome's pieces").
+
+
+# The guide before the way on, and the same guide aside
+script Guide
+  speaker "Guide"
+  if flag FLAG_UNK_0EF goto Open
+  say "Beyond me is the hall of trust. It opens to a Trainer once their team has won a course."
+  end
+label Open
+  say "Go right ahead! Your wins have opened the hall of trust."
+  end

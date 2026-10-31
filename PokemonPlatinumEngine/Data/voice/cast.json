@@ -741,6 +741,10 @@
     "mom": {
       "note": "The player's mother."
     },
+    "monica": {
+      "note": "first spoken at route_40.txt(19)",
+      "provisional": true
+    },
     "morty": {
       "note": "first spoken at burned_tower_1f.txt(33)",
       "provisional": true
@@ -1010,6 +1014,10 @@
       "note": "first spoken at mahogany_souvenir_shop.txt(38)",
       "provisional": true
     },
+    "santos": {
+      "note": "first spoken at blackthorn.txt(66)",
+      "provisional": true
+    },
     "saturn": {},
     "school_kid": {
       "note": "first spoken at CanalaveLibrary2F.txt(9)",
@@ -1097,6 +1105,10 @@
       "note": "first spoken at virbank_city.txt(72)",
       "provisional": true
     },
+    "sunny": {
+      "note": "first spoken at route_37.txt(19)",
+      "provisional": true
+    },
     "tabitha": {
       "note": "first spoken at mossdeep_city_space_center_2f.txt(83)",
       "provisional": true
@@ -1127,6 +1139,10 @@
     },
     "trick_master": {
       "note": "first spoken at route_110_trick_house_end.txt(19)",
+      "provisional": true
+    },
+    "tuscany": {
+      "note": "first spoken at route_29.txt(45)",
       "provisional": true
     },
     "tv": {
@@ -1225,6 +1241,10 @@
     },
     "wattson": {
       "note": "first spoken at mauville_city_gym.txt(86)",
+      "provisional": true
+    },
+    "wesley": {
+      "note": "first spoken at lake_of_rage.txt(84)",
       "provisional": true
     },
     "whitney": {
@@ -1489,6 +1509,7 @@
     "Mira": "mira",
     "Misty": "misty",
     "Mom": "mom",
+    "Monica": "monica",
     "Morty": "morty",
     "Move Deleter": "move_deleter",
     "Move Relearner": "move_relearner",
@@ -1563,6 +1584,7 @@
     "Sailor": "look:sailor",
     "Sailor Eldritch": "sailor_eldritch",
     "Salesman": "salesman",
+    "Santos": "santos",
     "Saturn": "saturn",
     "School Kid": "school_kid",
     "Schoolboy": "schoolboy",
@@ -1588,6 +1610,7 @@
     "Steven": "steven",
     "Storyteller": "storyteller",
     "Studio Hand": "studio_hand",
+    "Sunny": "sunny",
     "Tabitha": "tabitha",
     "Tate": "tate",
     "Teala": "teala",
@@ -1598,6 +1621,7 @@
     "Traveller": "traveller",
     "Treasure Hunter": "treasure_hunter",
     "Trick Master": "trick_master",
+    "Tuscany": "tuscany",
     "TV": "tv",
     "TV Producer": "tv_producer",
     "Ty": "ty",
@@ -1623,6 +1647,7 @@
     "Wanda": "wanda",
     "Warden": "warden",
     "Wattson": "wattson",
+    "Wesley": "wesley",
     "Whitney": "whitney",
     "Wife": "wife",
     "Will": "will",

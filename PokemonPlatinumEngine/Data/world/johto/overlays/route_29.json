@@ -8,6 +8,9 @@
   // The catching lesson at New Bark Town's edge (HeartGold's trigger 0; route_29.txt, plan 20 · J4)
   "triggers": [ { "trigger": 0, "script": "Lesson" } ],
   "people": {
+    // Tuscany of Tuesday, one of the week's seven siblings, here on Tuesdays once the Zephyr Badge is won
+    // (route_29.txt, plan 20 · J13)
+    "r29_gswoman2_2": { "name": "Tuscany", "script": "Tuscany" },
     "r29_var_2": { "name": "{assistant}", "npcType": "Assistant", "still": true, "dialog": [ "Watch closely!" ] },
     "r29_tsure_poke_static_marill": { "name": "Marill", "npcType": "Pokemon", "species": "Marill", "still": true, "dialog": [ "Marill: Rill!" ] },
     "r29_gsboy2": {

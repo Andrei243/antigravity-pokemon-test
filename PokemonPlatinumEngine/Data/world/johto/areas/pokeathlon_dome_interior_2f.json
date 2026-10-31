@@ -1,0 +1,43 @@
+{
+  "key": "pokeathlon_dome_interior_2f",
+  "index": 282,
+  "name": "Pokeathlon Dome",
+  "matrix": 155,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "7",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_PT_ENTR",
+  "nightMusic": "GS_PT_ENTR",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 23, "z": 14, "to": "pokeathlon_dome_interior_2f_entrance", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "d49r0102_thlonowner", "looks": "thlonowner", "movement": "0", "x": 38, "z": 12, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "0" },
+    { "id": "d49r0102_tsure_poke_static_poliwrath", "looks": "follower_mon_static_poliwrath", "movement": "0", "x": 39, "z": 12, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "0" },
+    { "id": "d49r0102_instructor", "looks": "instructor", "movement": "0", "x": 26, "z": 12, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "D49R0102_000+1" },
+    { "id": "d49r0102_gsman1", "looks": "gsman1", "movement": "3", "x": 14, "z": 14, "facing": 0, "rangeX": 1, "rangeZ": 0, "script": "D49R0102_003+1" },
+    { "id": "d49r0102_gsboy2", "looks": "gsboy2", "movement": "0", "x": 14, "z": 11, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "D49R0102_001+1" },
+    { "id": "d49r0102_gsbabygirl1", "looks": "gsbabygirl1", "movement": "0", "x": 22, "z": 11, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "D49R0102_011+1" },
+    { "id": "d49r0102_gsgirl1", "looks": "gsgirl1", "movement": "0", "x": 16, "z": 11, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "D49R0102_002+1" },
+    { "id": "d49r0102_gswoman2", "looks": "gswoman2", "movement": "14", "x": 19, "z": 11, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "D49R0102_008+1" },
+    { "id": "d49r0102_middlewoman1_2", "looks": "middlewoman1_2", "movement": "0", "x": 20, "z": 13, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "D49R0102_013+1" },
+    { "id": "d49r0102_gsbabygirl1_2", "looks": "gsbabygirl1", "movement": "0", "x": 23, "z": 11, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "D49R0102_012+1" },
+    { "id": "d49r0102_gsoldwoman1", "looks": "gsoldwoman1", "movement": "0", "x": 29, "z": 12, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "D49R0102_007+1" },
+    { "id": "d49r0102_gsoldman1", "looks": "gsoldman1", "movement": "0", "x": 30, "z": 12, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "D49R0102_006+1" },
+    { "id": "d49r0102_gsboy1", "looks": "gsboy1", "movement": "0", "x": 32, "z": 11, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "D49R0102_005+1" },
+    { "id": "d49r0102_gsmiddleman1", "looks": "gsmiddleman1", "movement": "0", "x": 10, "z": 12, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "D49R0102_009+1" },
+    { "id": "d49r0102_gsbabyboy1", "looks": "gsbabyboy1", "movement": "0", "x": 11, "z": 12, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "D49R0102_010+1" },
+    { "id": "d49r0102_tsure_poke_static_rattata", "looks": "follower_mon_static_rattata", "movement": "0", "x": 13, "z": 11, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "D49R0102_014+1" },
+    { "id": "d49r0102_tsure_poke_static_butterfree", "looks": "follower_mon_static_butterfree", "movement": "0", "x": 17, "z": 11, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "D49R0102_016+1" },
+    { "id": "d49r0102_tsure_poke_static_machop", "looks": "follower_mon_static_machop", "movement": "2", "x": 19, "z": 13, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "D49R0102_015+1" },
+    { "id": "d49r0102_gsman3", "looks": "gsman3", "movement": "0", "x": 27, "z": 14, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "D49R0102_004+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

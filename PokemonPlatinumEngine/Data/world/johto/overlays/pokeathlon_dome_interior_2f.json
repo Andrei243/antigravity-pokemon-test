@@ -1,0 +1,103 @@
+{
+  // The Pokéathlon Dome's stands (plan 20 · J13, the last part): HeartGold's MAP_POKEATHLON_DOME_INTERIOR_2F, the
+  // crowd that watches the courses, with their Pokémon, in our own words. The courses are played on their own board
+  // from the lobby's desk (rulings, "The Pokéathlon"), so the stands look down on an arena where nothing is run. The
+  // dome's owner and his Poliwrath, whom HeartGold stands at the east end for a scene of its own, are left out: they
+  // greet the player on the square
+  "area": "pokeathlon_dome_interior_2f",
+  "bgmTrack": "johto/route34",
+  "people": {
+    "d49r0102_instructor": {
+      "name": "Coach",
+      "still": true,
+      "dialog": [
+        "Every Pokémon has five Pokéathlon stats: Speed, Power, Skill, Stamina and Jump. Pick a team whose stars cover each other!"
+      ]
+    },
+    "d49r0102_gsman1": {
+      "name": "Man",
+      "dialog": [ "I come every weekend. The roar when a Pokémon clears the last hurdle never gets old." ]
+    },
+    "d49r0102_gsboy2": {
+      "name": "Boy",
+      "still": true,
+      "dialog": [ "My Rattata wants to be down there so badly. One day we'll enter a course together!" ]
+    },
+    "d49r0102_tsure_poke_static_rattata": {
+      "name": "Rattata",
+      "npcType": "Pokemon",
+      "species": "Rattata",
+      "still": true,
+      "dialog": [ "Rattata is squeaking at the arena. It wants to run!" ]
+    },
+    "d49r0102_gsgirl1": {
+      "name": "Girl",
+      "still": true,
+      "dialog": [ "Butterfree and I always sit here. You can see every event from these seats." ]
+    },
+    "d49r0102_tsure_poke_static_butterfree": {
+      "name": "Butterfree",
+      "npcType": "Pokemon",
+      "species": "Butterfree",
+      "still": true,
+      "dialog": [ "Butterfree flutters its wings in time with the cheering." ]
+    },
+    "d49r0102_gswoman2": {
+      "name": "Woman",
+      "still": true,
+      "dialog": [ "Machop, sit down! You'll block the view for everybody behind us." ]
+    },
+    "d49r0102_tsure_poke_static_machop": {
+      "name": "Machop",
+      "npcType": "Pokemon",
+      "species": "Machop",
+      "still": true,
+      "dialog": [ "Machop is shadow-boxing at the edge of the stands." ]
+    },
+    "d49r0102_middlewoman1_2": {
+      "name": "Lady",
+      "still": true,
+      "dialog": [ "My grandchildren dragged me here. Now I'm the loudest one in the row!" ]
+    },
+    "d49r0102_gsbabygirl1": {
+      "name": "Little Girl",
+      "still": true,
+      "dialog": [ "Go, go, go! ...Who are we cheering for? Everybody!" ]
+    },
+    "d49r0102_gsbabygirl1_2": {
+      "name": "Little Girl",
+      "still": true,
+      "dialog": [ "When I'm big I'll win a gold medal. My sister says so." ]
+    },
+    "d49r0102_gsoldwoman1": {
+      "name": "Old Woman",
+      "still": true,
+      "dialog": [ "We used to watch battles together. Now we watch races. Both make my heart pound." ]
+    },
+    "d49r0102_gsoldman1": {
+      "name": "Old Man",
+      "still": true,
+      "dialog": [ "Ho ho! That little one jumped higher than a Pokémon three times its size." ]
+    },
+    "d49r0102_gsboy1": {
+      "name": "Boy",
+      "still": true,
+      "dialog": [ "I keep a notebook of every course's best score. Somebody's going to beat them all one day." ]
+    },
+    "d49r0102_gsmiddleman1": {
+      "name": "Man",
+      "still": true,
+      "dialog": [ "My son wants to enter next year. I'm here to learn the rules before he does." ]
+    },
+    "d49r0102_gsbabyboy1": {
+      "name": "Little Boy",
+      "still": true,
+      "dialog": [ "Daddy, which one is winning? The round one? I like the round one." ]
+    },
+    "d49r0102_gsman3": {
+      "name": "Man",
+      "still": true,
+      "dialog": [ "A Pokémon's friendship doesn't show in its stats, but you can see it in how it runs." ]
+    }
+  }
+}

@@ -7472,6 +7472,10 @@ way -
 from Man at 669,152 of Johto
 way -
   Man> Clair is waiting for challengers. Just don't expect an ordinary trainer to stand a chance against her.
+=== blackthorn.Santos
+from Santos at 674,163 of Johto
+way -
+  Santos> ...It's not Saturday. ...Come back on Saturday.
 === blackthorn_gym.BackToTheDoor
 from the trigger at 23,41 of Blackthorn_Gym
 from the trigger at 3,62 of Blackthorn_Gym
@@ -13513,6 +13517,14 @@ way 1, from answer 1
 from an obstacle, with no field move and no badge
 way -
   > A wall of water comes crashing down.
+=== common.WeekSiblingRibbon
+from a trainer with lines of their own
+way -
+  Anyone> You've met all seven of us! That calls for something special. Let me give your Turtwig a ribbon for today.
+  > Lucas received the Alert Ribbon!
+  > Lucas put the Alert Ribbon on Turtwig.
+  * fanfare FanfareItem
+  + FLAG_DAILY_GOT_SHOCK_RIBBON
 === common.Whirlpool
 from a trainer with lines of their own
 way -
@@ -17347,6 +17359,10 @@ way 0
   + FLAG_HIDE_LAKE_OF_RAGE_RED_GYARADOS
 way 1, from answer 1
   * wildbattle Gyarados 30 Lost
+=== lake_of_rage.Wesley
+from Wesley at 495,48 of Johto
+way -
+  Wesley> Today isn't Wednesday. That's a shame. Wednesdays are mine, you see.
 === lake_verity.Assistant
 from {assistant} at 54,38 of LakeVerityGalactic
 way -
@@ -21496,6 +21512,21 @@ way 0
   + FLAG_UNOVA_FRIGATE_SWITCH_A
 way 1, from answer 1
   ? There's a switch on the wall marked BARRIER. Press it? = No
+=== pokeathlon_dome_interior_b1f_potential_room.Guide
+from Guide at 6,3 of PokeathlonDome_B1F_Potential
+from Guide at 7,3 of PokeathlonDome_B1F_Potential
+way -
+  Guide> Beyond me is the last hall. It opens to a Trainer once their team has won three courses.
+=== pokeathlon_dome_interior_b1f_solidarity_room.Guide
+from Guide at 2,3 of PokeathlonDome_B1F_Solidarity
+from Guide at 3,3 of PokeathlonDome_B1F_Solidarity
+way -
+  Guide> Beyond me is the hall of trust. It opens to a Trainer once their team has won a course.
+=== pokeathlon_dome_interior_b1f_trust_room.Guide
+from Guide at 2,3 of PokeathlonDome_B1F_Trust
+from Guide at 3,3 of PokeathlonDome_B1F_Trust
+way -
+  Guide> Beyond me is the hall of potential. It opens to a Trainer once their team has won two courses.
 === pokemon_league.Statue
 from the tile read at 837,561 of Sinnoh
 from the tile read at 838,561 of Sinnoh
@@ -24305,6 +24336,10 @@ way -
   + FLAG_HIDE_ROUTE_29_MARILL
   = VAR_UNK_408B 0 -> 2
   + seen route_29.The catching lesson
+=== route_29.Tuscany
+from Tuscany at 629,405 of Johto
+way -
+  Tuscany> Today isn't Tuesday, is it? How disappointing. Tuesday is my day.
 === route_2_east_building.Aide
 from Aide at 4,6 of Route2_EastBuilding
 way -
@@ -24422,6 +24457,10 @@ way -
   Officer> The Bug-Catching Contest is held in the park on Tuesdays, Thursdays and Saturdays.
   Officer> Bug Catchers come from all over Johto for it. Do take part!
   = VAR_BUG_CONTEST_GATE 0 -> 1
+=== route_37.Sunny
+from Sunny at 404,200 of Johto
+way -
+  Sunny> It's not Sunday yet. I only get to come out on Sundays!
 === route_39_moomoo_farm_house.Farmer
 from Farmer at 6,4 of Route39_MoomooFarmHouse
 way -
@@ -24467,6 +24506,16 @@ way 0
 way 1, from answer 1
   Black Belt> Come back if you change your mind. My punches aren't going anywhere.
   ? A punch is all in the hips! Shall I teach one of your Pokémon Mega Punch? = No
+=== route_40.Monica
+from Monica at 238,273 of Johto
+way -
+  Monica> Good morning! I'm Monica of Monday. Monday is the start of the week, and the start of my brothers' and sisters' days!
+  > Lucas received the Sharp Beak!
+  > Lucas put it away in the Items pocket.
+  Monica> A Pokémon that holds a Sharp Beak hits harder with Flying-type moves. Have a happy Monday!
+  * fanfare FanfareItem
+  + FLAG_GOT_SHARP_BEAK_FROM_MONICA
+  = VAR_NUM_MET_WEEKDAY_SIBLINGS 0 -> 1
 === route_40_battle_frontier_gatehouse.Guide
 from Guide at 5,3 of Route40_FrontierGate
 way -

@@ -227,6 +227,13 @@
     // Plan 20 · J13: the Pokéathlon Dome's square, west of Route 35's gate house, and its lobby
     { "name": "PokeathlonDome", "matrix": 153, "area": "pokeathlon_dome", "trees": "Round" },
     { "name": "PokeathlonDome_1F", "matrix": 154, "area": "pokeathlon_dome_interior_1f", "trees": "Round", "setting": "Indoors" },
+    // and the lobby's two other ways, up to the stands and down to the four halls of the dome's history (J13, the last part)
+    { "name": "PokeathlonDome_2FEntrance", "matrix": 156, "area": "pokeathlon_dome_interior_2f_entrance", "trees": "Round", "setting": "Indoors" },
+    { "name": "PokeathlonDome_2F", "matrix": 155, "area": "pokeathlon_dome_interior_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "PokeathlonDome_B1F_Solidarity", "matrix": 157, "area": "pokeathlon_dome_interior_b1f_solidarity_room", "trees": "Round", "setting": "Indoors" },
+    { "name": "PokeathlonDome_B1F_Trust", "matrix": 158, "area": "pokeathlon_dome_interior_b1f_trust_room", "trees": "Round", "setting": "Indoors" },
+    { "name": "PokeathlonDome_B1F_Potential", "matrix": 159, "area": "pokeathlon_dome_interior_b1f_potential_room", "trees": "Round", "setting": "Indoors" },
+    { "name": "PokeathlonDome_B1F_Friendship", "matrix": 160, "area": "pokeathlon_dome_interior_b1f_friendship_room", "trees": "Round", "setting": "Indoors" },
     // Plan 20 · J15: Route 28's house, Mt. Silver's Pokémon Center and the cave's floors to the summit, where Red waits
     { "name": "Route28_House", "matrix": 66, "area": "route_28_house", "trees": "Round", "setting": "Indoors" },
     { "name": "MtSilver_PokemonCenter_1F", "matrix": 73, "area": "mount_silver_pokecenter_1f", "trees": "Round", "setting": "Indoors" },
@@ -437,6 +444,9 @@
     "pokemon_league_lance_room", "johto_pokemon_league_hall_of_fame",
     // Plan 20 · J13: the Pokéathlon Dome's square and its lobby
     "pokeathlon_dome", "pokeathlon_dome_interior_1f",
+    "pokeathlon_dome_interior_2f_entrance", "pokeathlon_dome_interior_2f", "pokeathlon_dome_interior_b1f_solidarity_room",
+    "pokeathlon_dome_interior_b1f_trust_room", "pokeathlon_dome_interior_b1f_potential_room",
+    "pokeathlon_dome_interior_b1f_friendship_room",
     // Plan 20 · J15: Route 28, Mt. Silver and its cave to the summit
     "route_28", "route_28_house", "mount_silver", "mount_silver_pokecenter_1f", "mount_silver_pokecenter_b1f",
     "mount_silver_cave_1f", "mount_silver_cave_upper_mountainside", "mount_silver_cave_lower_mountainside",

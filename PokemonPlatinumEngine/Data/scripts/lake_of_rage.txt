@@ -13,6 +13,7 @@
 
 # T29_000's part for the scene: Lance is on the shore only once the Gyarados is gone (HeartGold's new game hides him)
 script OnEnter
+  call WesleyOrNot
   if flag FLAG_HIDE_LAKE_OF_RAGE_RED_GYARADOS end
   setflag FLAG_HIDE_LAKE_OF_RAGE_LANCE
   end
@@ -74,3 +75,39 @@ script Dragonite
   cry "Dragonite"
   text "Dragonite: Graaoh!"
   end
+
+
+# T29_005: Wesley of Wednesday gives a Black Belt once (FLAG_GOT_BLACK_BELT_FROM_WESLEY) and counts himself among the
+# siblings met (VAR_NUM_MET_WEEKDAY_SIBLINGS); once all seven are met he gives the ribbon of the day (plan 20 · J13)
+script Wesley
+  face t29_gsman1_2 player
+  speaker "Wesley"
+  if var VAR_NUM_MET_WEEKDAY_SIBLINGS >= 7 goto All
+  if flag FLAG_GOT_BLACK_BELT_FROM_WESLEY goto Again
+  if not weekday wednesday goto NotToday
+  say "Well, hello! I'm Wesley of Wednesday. Meeting someone on my day is a good sign. Take this, it's for you."
+  give "Black Belt"
+  setflag FLAG_GOT_BLACK_BELT_FROM_WESLEY
+  addvar VAR_NUM_MET_WEEKDAY_SIBLINGS 1
+  say "A Pokémon that holds a Black Belt hits harder with Fighting-type moves. Wednesday's the middle of the week!"
+  end
+label Again
+  say "Since that Gyarados went quiet, the lake's a fine place to spend a Wednesday."
+  end
+label NotToday
+  say "Today isn't Wednesday. That's a shame. Wednesdays are mine, you see."
+  end
+label All
+  if not weekday wednesday goto NotToday
+  call WeekSiblingRibbon
+  end
+
+# T29_000's part for Wesley (plan 20 · J13): he is on the north shore (FLAG_UNK_1FC) only once the Red Scale has been
+# left behind and only on Wednesdays. HeartGold hides him until the scale and shows him after it by a branch that
+# compares a variable of its own; here it is the weekday, as his own script asks (docs/mechanics/rulings.md, "The week
+# siblings and the dome's pieces")
+script WesleyOrNot
+  setflag FLAG_UNK_1FC
+  if not flag FLAG_GOT_RED_SCALE return
+  if weekday wednesday clearflag FLAG_UNK_1FC
+  return

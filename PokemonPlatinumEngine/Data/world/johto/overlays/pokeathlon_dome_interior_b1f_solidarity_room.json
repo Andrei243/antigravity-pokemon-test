@@ -1,0 +1,58 @@
+{
+  // The first of the four halls under the Pokéathlon Dome (plan 20 · J13, the last part): HeartGold's
+  // MAP_POKEATHLON_DOME_INTERIOR_B1F_SOLIDARITY_ROOM, down the lobby's warp 1. Its medals, scrolls and wall of Pokémon
+  // are things HeartGold draws as objects; here they are read where they stand (the signs) and the objects are left
+  // out. Its people talk in our own words
+  "area": "pokeathlon_dome_interior_b1f_solidarity_room",
+  "bgmTrack": "johto/route34",
+  "people": {
+    "d49r0104_pcwoman2": {
+      "name": "Guide",
+      "still": true,
+      "dialog": [ "These four halls tell the story of the Pokéathlon. This first one is about teamwork: three Pokémon, one team." ]
+    },
+    // Before the way on to the next hall until a course is won (pokeathlon_dome_interior_b1f_solidarity_room.txt)
+    "d49r0104_pcwoman2_2": { "name": "Guide", "still": true, "script": "Guide", "hiddenBy": "FLAG_UNK_0EF" },
+    "d49r0104_gsman1": {
+      "name": "Man",
+      "still": true,
+      "dialog": [ "These medals were won by teams that were nothing special alone. Together they were unbeatable." ]
+    },
+    "d49r0104_gsboy2": {
+      "name": "Boy",
+      "still": true,
+      "dialog": [ "Rattata and I are reading every plaque. We want to know how the champions trained!" ]
+    },
+    "d49r0104_tsure_poke_static_rattata": {
+      "name": "Rattata",
+      "npcType": "Pokemon",
+      "species": "Rattata",
+      "still": true,
+      "dialog": [ "Rattata is staring at the medals, its whiskers twitching." ]
+    },
+    "d49r0104_gsgirl1": {
+      "name": "Girl",
+      "still": true,
+      "dialog": [ "Zubat can't see the pictures, but it likes the echo in here." ]
+    },
+    "d49r0104_tsure_poke_static_zubat": {
+      "name": "Zubat",
+      "npcType": "Pokemon",
+      "species": "Zubat",
+      "still": true,
+      "dialog": [ "Zubat flaps about happily." ]
+    }
+  },
+  // The same guide aside once the hall of trust is open (HeartGold moves her to 2, 3 facing east)
+  "npcs": [
+    { "id": "pokeathlon_dome_interior_b1f_solidarity_room.GuideAside", "name": "Guide", "npcType": "Nurse", "x": 2, "y": 3,
+      "facing": "Right", "script": "Guide", "shownBy": "FLAG_UNK_0EF" }
+  ],
+  "signs": {
+    "D49R0104_007+1": "Medals won by teams of three, each with a card naming the Pokémon who shared it.",
+    "D49R0104_008+1": "A wall of pictures: Pokémon of every shape crossing a finish line side by side.",
+    "D49R0104_009+1": "A scroll: \"A course is never won by one. It is won by three who trust each other.\"",
+    "D49R0104_010+1": "A scroll: \"The first course ever run in the dome had three events and only six teams.\"",
+    "D49R0104_013+1": "A bench for visitors. Someone left a programme of last week's courses on it."
+  }
+}

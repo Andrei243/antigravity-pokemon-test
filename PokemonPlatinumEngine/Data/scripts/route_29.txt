@@ -27,3 +27,38 @@ script Lesson
   setvar VAR_UNK_408B 2
   endscene
   end
+
+
+# R29_000, the route's own script as it loads (plan 20 · J13): Tuscany of Tuesday is here on Tuesdays once the Zephyr
+# Badge is won (FLAG_UNK_207)
+script OnEnter
+  setflag FLAG_UNK_207
+  if not badge zephyr end
+  if weekday tuesday clearflag FLAG_UNK_207
+  end
+
+
+# R29_003: Tuscany of Tuesday gives a Twisted Spoon once (FLAG_GOT_TWISTEDSPOON_FROM_TUSCANY) and counts herself among
+# the siblings met (VAR_NUM_MET_WEEKDAY_SIBLINGS); once all seven are met she gives the ribbon of the day
+script Tuscany
+  face r29_gswoman2_2 player
+  speaker "Tuscany"
+  if var VAR_NUM_MET_WEEKDAY_SIBLINGS >= 7 goto All
+  if flag FLAG_GOT_TWISTEDSPOON_FROM_TUSCANY goto Again
+  if not weekday tuesday goto NotToday
+  say "How do you do? I'm Tuscany of Tuesday. Since we've met on my day, please accept this little gift."
+  give "Twisted Spoon"
+  setflag FLAG_GOT_TWISTEDSPOON_FROM_TUSCANY
+  addvar VAR_NUM_MET_WEEKDAY_SIBLINGS 1
+  say "A Pokémon that holds a Twisted Spoon hits harder with Psychic-type moves. Do look after it."
+  end
+label Again
+  say "Have you met my younger brother Wesley? He keeps Wednesdays at the Lake of Rage."
+  end
+label NotToday
+  say "Today isn't Tuesday, is it? How disappointing. Tuesday is my day."
+  end
+label All
+  if not weekday tuesday goto NotToday
+  call WeekSiblingRibbon
+  end

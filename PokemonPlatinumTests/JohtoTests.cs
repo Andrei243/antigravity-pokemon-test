@@ -1050,9 +1050,45 @@ public class JohtoTests
         Assert.NotNull(found);
         Assert.Equal(GameEngine.AthlonDeskScript, $"{found!.File}.{found.Name}");
 
-        // The ways down to the event rooms and up to the stands stay shut: the events are played on their own board
-        foreach (var shut in Johto.Area("pokeathlon_dome_interior_1f")!.Warps.Skip(1))
-            Assert.Null(lobby.GetWarpAt(shut.X, shut.Z));
+        // Since J13's last part the way down leads to the four halls of the dome's history and the stairs up to the
+        // stands, every room walked into from the start and joined both ways
+        var ways = Johto.Area("pokeathlon_dome_interior_1f")!.Warps;
+        Assert.Equal("PokeathlonDome_B1F_Solidarity", lobby.GetWarpAt(ways[1].X, ways[1].Z)?.TargetMap);
+        Assert.Equal("PokeathlonDome_2FEntrance", lobby.GetWarpAt(ways[2].X, ways[2].Z)?.TargetMap);
+        foreach (string name in new[] { "PokeathlonDome_2FEntrance", "PokeathlonDome_2F", "PokeathlonDome_B1F_Solidarity",
+                     "PokeathlonDome_B1F_Trust", "PokeathlonDome_B1F_Potential", "PokeathlonDome_B1F_Friendship" })
+            Assert.True(walked.Keys.Any(m => m.Name == name), $"nobody walks into {name}");
+        Assert.Contains(MapNamed("PokeathlonDome_2F").Everyone, n => n.Name == "Coach");
+        Assert.Contains(MapNamed("PokeathlonDome_B1F_Friendship").Everyone, n => n.Name == "Dome Owner");
+        // The halls beyond the first open one by one with each course won: the guide in the way on is gone and a
+        // guide of ours stands aside
+        foreach (var (room, flag, way) in new[]
+                 {
+                     ("PokeathlonDome_B1F_Solidarity", "FLAG_UNK_0EF", (3, 3)),
+                     ("PokeathlonDome_B1F_Trust", "FLAG_UNK_0F0", (3, 3)),
+                     ("PokeathlonDome_B1F_Potential", "FLAG_UNK_0F1", (7, 3)),
+                 })
+        {
+            var hall = MapNamed(room);
+            var story = new StoryState();
+            hall.ApplyPresence(story.Has);
+            Assert.Contains(hall.NPCs, n => (n.GridX, n.GridY) == way && n.Name == "Guide");
+            story.Set(flag);
+            hall.ApplyPresence(story.Has);
+            Assert.DoesNotContain(hall.NPCs, n => (n.GridX, n.GridY) == way);
+            Assert.Contains(hall.NPCs, n => (n.GridX, n.GridY) == (way.Item1 - 1, way.Item2) && n.Name == "Guide");
+        }
+        // The course desk opens them: a first win, a second, a third
+        var desk = new HeadlessScriptHost { AthlonPlace = 1 };
+        foreach (string species in new[] { "Pikachu", "Machop", "Pidgey" })
+            desk.Party.Add(new Pokemon(PokemonDatabase.Get(species)!, 20));
+        foreach (string flag in new[] { "FLAG_UNK_0EF", "FLAG_UNK_0F0", "FLAG_UNK_0F1" })
+        {
+            var r = new ScriptRunner(ScriptLibrary.Default, desk);
+            r.Start(found);
+            r.RunToEnd();
+            Assert.True(desk.Story.Has(flag));
+        }
 
         // Spoken to, the clerk asks about a course and runs one for a team of three
         var host = new HeadlessScriptHost { AthlonPlace = 1 };
