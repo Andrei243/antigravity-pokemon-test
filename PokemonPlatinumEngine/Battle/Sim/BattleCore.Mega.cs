@@ -88,6 +88,15 @@ public sealed partial class BattleCore
     }
 
     /// <summary>
+    /// The run's "No later mechanics" (plan 06 · R30; <see cref="Models.RunTerms.NoLaterMechanics"/>): Mega Evolution, Primal
+    /// Reversion, Z-Moves, Ultra Burst, Dynamax and Terastallization refused to both sides. Each mechanic's one place of
+    /// enforcement asks it (<see cref="WhyNotMega"/>, <see cref="WhyNotZMove"/>, <see cref="WhyNotUltraBurst"/>,
+    /// <see cref="WhyNotDynamax"/>, <see cref="WhyNotMegaDynamax"/>, <see cref="WhyNotTera"/>), so the trainer AI, which
+    /// only ever asks those, never tries one either.
+    /// </summary>
+    public bool LaterMechanicsBarred => Restrictions is { NoLaterMechanics: true };
+
+    /// <summary>
     /// Why the Pokémon in a place can't Mega Evolve with its move this turn; null when it can. Under rules without it,
     /// with no Key Stone, transformed, without its stone, or once its trainer has Mega Evolved (or chosen to this turn).
     /// </summary>
@@ -95,7 +104,7 @@ public sealed partial class BattleCore
     {
         var mine = At(b.Place);
         string no = Text.Of("battle.cantMegaEvolve", ("pokemon", mine.Name));
-        if (!Rules.MegaEvolution || mine.Pokemon == null || !HasKeyStone(mine) || mine.Volatile.Transformed || MegaFormOf(mine.Pokemon) == null) return no;
+        if (!Rules.MegaEvolution || LaterMechanicsBarred || mine.Pokemon == null || !HasKeyStone(mine) || mine.Volatile.Transformed || MegaFormOf(mine.Pokemon) == null) return no;
         if (megaUsed.Contains(MegaKey(mine))) return Text.Of("battle.megaOnlyOnce");
         return null;
     }
@@ -175,7 +184,7 @@ public sealed partial class BattleCore
     /// </summary>
     private void PrimalReversions(IEnumerable<Battler> order)
     {
-        if (!Rules.MegaEvolution) return;
+        if (!Rules.MegaEvolution || LaterMechanicsBarred) return;
         foreach (var b in order)
         {
             if (!b.IsActive || b.Volatile.Transformed || PrimalFormOf(b.Pokemon!) is not { } form) continue;

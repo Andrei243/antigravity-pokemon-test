@@ -11,7 +11,7 @@ namespace PokemonPlatinumEngine.UI.Kit;
 public enum RunRow
 {
     Preset, Difficulty, LevelCap, ScaleTrainers, Nuzlocke, DupesClause, ShinyClause, GiftsCount, Monotype, PartyLimit,
-    NoBattleItems, NoCenter, NoCatching, NoRunning, SetStyle, ShinyOdds, RandomSpecies, RandomItems, RandomAbilities, RandomMoves, RandomTypes, Seed, Start
+    NoBattleItems, NoCenter, NoCatching, NoRunning, SetStyle, NoLaterMechanics, ShinyOdds, RandomSpecies, RandomItems, RandomAbilities, RandomMoves, RandomTypes, Seed, Start
 }
 
 /// <summary>
@@ -178,6 +178,7 @@ public sealed class RunPanel
             case RunRow.NoCatching: Rules = r with { NoCatching = !r.NoCatching }; break;
             case RunRow.NoRunning: Rules = r with { NoRunning = !r.NoRunning }; break;
             case RunRow.SetStyle: Rules = r with { SetStyle = !r.SetStyle }; break;
+            case RunRow.NoLaterMechanics: Rules = r with { NoLaterMechanics = !r.NoLaterMechanics }; break;
             case RunRow.ShinyOdds:
                 int k = Array.IndexOf(RunRules.ShinyChoices, r.ShinyDenominator);
                 k = ((k + d) % RunRules.ShinyChoices.Length + RunRules.ShinyChoices.Length) % RunRules.ShinyChoices.Length;
@@ -225,6 +226,7 @@ public sealed class RunPanel
         RunRow.NoCatching => OnOff(Rules.NoCatching),
         RunRow.NoRunning => OnOff(Rules.NoRunning),
         RunRow.SetStyle => OnOff(Rules.SetStyle),
+        RunRow.NoLaterMechanics => OnOff(Rules.NoLaterMechanics),
         RunRow.RandomSpecies => OnOff(Rules.Random?.Species == true),
         RunRow.RandomItems => OnOff(Rules.Random?.Items == true),
         RunRow.RandomAbilities => OnOff(Rules.Random?.Abilities == true),

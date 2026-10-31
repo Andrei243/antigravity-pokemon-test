@@ -25,14 +25,16 @@ public sealed class TrainerAi : IBattleController
     public BattleChoice ChooseAction(BattleCore battle, Battler mine) => WithTheLaterMechanics(battle, mine, Choose(battle, mine));
 
     /// <summary>
-    /// The later mechanics laid over the move chosen (plan 06 · R20, the pattern R21 to R23 follow): a trainer who
-    /// can Mega Evolve the Pokémon does so with the move, whenever it can, as Pokémon Showdown's random player does
-    /// with its <c>mega</c> option at 1 (<c>sim/tools/random-player-ai.ts</c>). Nothing is drawn for it, so what the
-    /// AI chose and every roll it made are what they were; under Platinum's rules, or with no Key Stone, nothing changes.
-    /// The same for a Z-Move (plan 06 · R21): the move chosen is used as its Z-Move whenever it has one, and a Necrozma
-    /// that can Ultra Burst does so; with no Z-Ring nothing changes. And Dynamax (plan 06 · R22): the first of its Pokémon
-    /// that can, with whatever move it chose; with no Dynamax Band nothing changes. And Terastallization (plan 06 · R23)
-    /// the same way, where no other mechanic was chosen; with no Tera Orb nothing changes.
+    /// The later mechanics laid over the move chosen (plan 06 · R20 to R23, and their sense of when, R30; the user's
+    /// decision of 2026-10-31): a trainer who can Mega Evolve the Pokémon does so with the move at once, and a Necrozma
+    /// that can Ultra Burst does so at once. A Z-Move is used only where it is worth it (<see cref="ZMoveWorthIt"/>): a
+    /// damaging move at least neutral against its target, or a status move whose Z-Power helps. A Dynamax is kept for
+    /// the trainer's last able Pokémon, or for its ace (the highest level of its team) on its first turn in
+    /// (<see cref="DynamaxNow"/>); a Mega Dynamax with the Mega Max Band keeps its rule of R20c, the first turn it can. A
+    /// Terastallization is made where the Tera Type turns a weakness to the foe's last move seen into a resistance or a
+    /// neutral hit, or on the trainer's last able Pokémon (<see cref="TeraNow"/>). Nothing is drawn for any of it, so what
+    /// the AI chose and every roll it made are what they were; with no item, under rules without the mechanic or under a
+    /// run with no later mechanics (<see cref="BattleCore.LaterMechanicsBarred"/>, which every <c>Can…</c> asks), nothing changes.
     /// </summary>
     private static BattleChoice WithTheLaterMechanics(BattleCore battle, Battler mine, BattleChoice choice)
     {
@@ -40,18 +42,90 @@ public sealed class TrainerAi : IBattleController
         if (choice.Kind != ChoiceKind.Fight || choice.Move == BattleChoice.HeldMove || choice.Rotation != 0) return choice;
         if (battle.CanMegaEvolve(mine)) choice = choice with { Mega = true };
         if (battle.CanUltraBurst(mine)) choice = choice with { UltraBurst = true };
-        if (choice.Move >= 0 && battle.CanUseZMove(mine, choice.Move)) choice = choice with { ZMove = true };
+        if (choice.Move >= 0 && battle.CanUseZMove(mine, choice.Move) && ZMoveWorthIt(battle, mine, choice)) choice = choice with { ZMove = true };
         // A Mega Dynamax (plan 06 · R20c) with the Mega Evolution, the first turn it can
         if (choice.Move >= 0 && choice.Mega && battle.CanMegaDynamax(mine)) choice = choice with { Dynamax = true };
-        // And a Dynamax (plan 06 · R22) where none of those was chosen, with a move of its own, whenever it can; with the
-        // Mega Max Band it is kept for a Pokémon that can still Mega Evolve (R20c), unless this one is a Mega already
+        // And a Dynamax (plan 06 · R22) where none of those was chosen, with a move of its own, on the last or the ace; with
+        // the Mega Max Band it is kept for a Pokémon that can still Mega Evolve (R20c), unless this one is a Mega already
         if (choice.Move >= 0 && !choice.Mega && !choice.ZMove && !choice.UltraBurst && battle.CanDynamax(mine)
-            && (mine.Pokemon?.FormData?.Kind == FormKind.Mega || !battle.KeepsDynamaxForAMega(mine)))
+            && (mine.Pokemon?.FormData?.Kind == FormKind.Mega || !battle.KeepsDynamaxForAMega(mine)) && DynamaxNow(battle, mine))
             choice = choice with { Dynamax = true };
-        // And Terastallization (plan 06 · R23) where none of those was chosen, with any move, whenever it can
-        if (choice.Kind == ChoiceKind.Fight && !choice.Mega && !choice.ZMove && !choice.UltraBurst && !choice.Dynamax && battle.CanTerastallize(mine))
+        // And Terastallization (plan 06 · R23) where none of those was chosen, with any move, when it helps
+        if (choice.Kind == ChoiceKind.Fight && !choice.Mega && !choice.ZMove && !choice.UltraBurst && !choice.Dynamax
+            && battle.CanTerastallize(mine) && TeraNow(battle, mine))
             choice = choice with { Terastallize = true };
         return choice;
+    }
+
+    /// <summary>The trainer's team as the battle has it (the Pokémon itself for one with no roster).</summary>
+    private static IReadOnlyList<Pokemon> TeamOf(Battler mine) =>
+        mine.Roster?.Members ?? (mine.Pokemon != null ? new List<Pokemon> { mine.Pokemon } : new List<Pokemon>());
+
+    /// <summary>The Pokémon is the last of its trainer's team able to fight.</summary>
+    internal static bool LastStanding(Battler mine) =>
+        mine.Pokemon != null && TeamOf(mine).Count(p => !p.IsFainted && !p.IsEgg) <= 1;
+
+    /// <summary>The Pokémon is its trainer's ace: none of the team is of a higher level (R30).</summary>
+    internal static bool IsAce(Battler mine) =>
+        mine.Pokemon is { } p && TeamOf(mine).All(other => other.Level <= p.Level);
+
+    /// <summary>Whom the move is aimed at: the choice's target, else the first foe on the field.</summary>
+    private static Battler? TargetOf(BattleCore battle, Battler mine, BattleChoice choice) =>
+        choice.Target is { } place && place.Side != mine.Side ? battle.At(place) : battle.ActiveFoes(mine).FirstOrDefault();
+
+    /// <summary>A type's hit on a Pokémon's types as the battle's chart has it.</summary>
+    private static float Against(BattleCore battle, PokemonType attack, IReadOnlyList<PokemonType> types) =>
+        TypeChart.GetEffectiveness(attack, types[0], types.Count > 1 ? types[1] : null, battle.Rules, battle.Field.Inverse);
+
+    /// <summary>
+    /// Whether the Z-Move of the move chosen is worth spending the trainer's one Z-Power on (R30): a damaging move only
+    /// where it is at least neutral against its target; a status move only where its Z-Power helps the user now: a stat
+    /// raised that is under +2, a heal under half its HP, a fall of a stat cleared, a critical-hit boost, a redirection in
+    /// a battle with others on the field, a fainted teammate restored. A move with no Z-Power of its own is not worth it.
+    /// </summary>
+    internal static bool ZMoveWorthIt(BattleCore battle, Battler mine, BattleChoice choice)
+    {
+        if (mine.Pokemon is not { } p || choice.Move < 0 || choice.Move >= p.Moves.Count) return false;
+        var data = p.Moves[choice.Move].Data;
+        if (data.Category != MoveCategory.Status)
+            return TargetOf(battle, mine, choice) is { Pokemon: not null } target && Against(battle, data.Type, target.Types) >= 1f;
+        if (data.ZBonus is not { } bonus) return false;
+        if (bonus.Stats is { Length: > 0 } stats && bonus.Stages > 0)
+            return stats.Any(s => p.StatStages.GetValueOrDefault(s) < 2);
+        return bonus.Effect switch
+        {
+            "Heal" => p.CurrentHP * 2 < p.MaxHP,
+            "ClearNegativeBoost" => p.StatStages.Values.Any(v => v < 0),
+            "Crit2" => true,
+            "Redirect" => !battle.IsSingle,
+            "HealReplacement" => TeamOf(mine).Any(other => other != p && other.IsFainted && !other.IsEgg),
+            "Curse" => mine.HasType(PokemonType.Ghost) ? p.CurrentHP * 2 < p.MaxHP : p.StatStages.GetValueOrDefault(StatType.Attack) < 2,
+            _ => false
+        };
+    }
+
+    /// <summary>Whether to Dynamax now (R30): on the trainer's last able Pokémon, or on its ace on its first turn in.</summary>
+    internal static bool DynamaxNow(BattleCore battle, Battler mine) =>
+        LastStanding(mine) || IsAce(mine) && mine.Volatile.FirstTurn >= battle.Turn;
+
+    /// <summary>
+    /// Whether to Terastallize now (R30): where the Tera Type turns a hit of the foe's last move the AI has seen (its
+    /// <see cref="AiMemory"/>), super-effective on the Pokémon's own types, into a resisted or a neutral one; or on the
+    /// trainer's last able Pokémon. A Stellar Tera Type keeps the types it had, so it turns no weakness.
+    /// </summary>
+    internal static bool TeraNow(BattleCore battle, Battler mine)
+    {
+        if (mine.Pokemon is not { } p) return false;
+        if (LastStanding(mine)) return true;
+        var tera = p.TeraType;
+        if (tera.IsStellar) return false;
+        foreach (var foe in battle.ActiveFoes(mine))
+        {
+            var seen = battle.AiMemory.MovesSeen(foe);
+            if (seen.Count == 0 || seen[^1] is not { } last || last.Category == MoveCategory.Status) continue;
+            if (Against(battle, last.Type, mine.Types) > 1f && Against(battle, last.Type, new[] { tera.Type }) <= 1f) return true;
+        }
+        return false;
     }
 
     private static BattleChoice Choose(BattleCore battle, Battler mine)

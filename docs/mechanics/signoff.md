@@ -1,6 +1,6 @@
 # The sign-off of plan 06's mechanics
 
-Plan 06 · R30, the audit part (wave 62, 2026-10-26). What the plan asked R30 for is "AI that uses the four mechanics sensibly, random-battle fuzzing, balance, the options for rules and mechanics, a final coverage report with every exception explained". This page is the evidence for what is done, every exception with its reason and owner, and the one decision the user still has to make: what becomes of Platinum's rules as a baseline. Nothing here removes or changes Platinum's rules or `battles-platinum.txt`.
+Plan 06 · R30, the audit part (wave 62, 2026-10-26). What the plan asked R30 for is "AI that uses the four mechanics sensibly, random-battle fuzzing, balance, the options for rules and mechanics, a final coverage report with every exception explained". This page is the evidence for what is done, every exception with its reason and owner, and the one decision the user still had to make: what becomes of Platinum's rules as a baseline. Nothing here removes or changes Platinum's rules or `battles-platinum.txt`. The user's answers of 2026-10-31 and what they built finish R30: "The user's decisions of 2026-10-31", below.
 
 ## What the audit found
 
@@ -53,13 +53,22 @@ Every one of R19 to R29b is ticked. What each left is listed under its entry in 
 
 None of these breaks a battle; each is a line said a little differently or a rare case decided more simply than Showdown decides it.
 
-## What R30 still owes, and is not this audit's
+## The user's decisions of 2026-10-31, and what was built (R30 finished)
+
+The four questions below were put to the user and answered on 2026-10-31: **1A, 2 yes, 3B, 4A**. With them R30, and plan 06, is done.
+
+1. **The AI's use of the four mechanics: A, the sensible use proposed.** `TrainerAi.WithTheLaterMechanics` now: Mega Evolves (and Ultra Bursts) at once, as before; uses a Z-Move only where it is worth it (`ZMoveWorthIt`: a damaging move at least neutral against its target by the battle's chart, or a status move whose `zBonus` helps now: a stat raised that stands under +2, a heal below half HP, a fallen stat put back, the critical-hit boost, a redirection with others on the field, a fainted teammate restored, Curse's Ghost heal or Attack); Dynamaxes on the trainer's last able Pokémon or on its ace (none of the team of a higher level) on its first turn in (`DynamaxNow`), while a Mega Dynamax with the Mega Max Band keeps R20c's first-turn-it-can rule; Terastallizes where its Tera Type turns a super-effective hit of the foe's last move the AI has seen (`AiMemory.MovesSeen`) into a neutral or resisted one, or on the trainer's last able Pokémon (`TeraNow`; a Stellar Tera Type turns no weakness). Nothing is drawn: `battles-platinum.txt` and `battles-modern.txt` held still without being accepted (no trainer of the corpus carries any of the items). `LaterMechanicsDecisionsTests` holds each decision; `BattleFuzzTests` now asks forty battles for Mega Evolution, Dynamax and Terastallization and a run of 200 for a Z-Move, which is rare there under the new rule (none in the first 80 battles, 5 in the first 200).
+2. **An option to turn them off: yes.** `RunRules.NoLaterMechanics`, a row of the run panel at NEW GAME ("No later mechanics", `RunRow.NoLaterMechanics`, with its words in English and Romanian), saved with the run and false in every older save (no version raised), `if rule nolatermechanics` in a script. It reaches a battle as `RunTerms.NoLaterMechanics` (`RunRules.BattleTerms`), which, unlike the run's other terms, holds for **both** sides: `BattleCore.LaterMechanicsBarred` is asked at each mechanic's one place of enforcement (`WhyNotMega`, `WhyNotZMove`, `WhyNotUltraBurst`, `WhyNotDynamax`, `WhyNotMegaDynamax`, `WhyNotTera`) and by Primal Reversion, so the player's buttons are refused and the trainer AI, which only asks those, tries none of them. Since it changes what the AI chooses, a `BattleRecord` keeps it (`NoLaterMechanics`, checked by `Replay`) and so does the Vs. Recorder's file (`BattleRecordFile.NoLaterMechanics`, through `Opening` and `ToSetup`).
+3. **Balance: B, a judgement to make, not a number to hold.** Nothing is built to measure it. Balance is looked at by playing and by the fuzz's counts when a question comes up, and a measure is added only if the user asks for one.
+4. **Platinum's rules as a baseline: A, kept as the test baseline, never offered.** Nothing to build: `Ruleset.Platinum` and `battles-platinum.txt` stay as they are, as described below.
+
+## What R30 still owed, and was not the audit's (settled on 2026-10-31, above)
 
 1. **The AI's use of the four mechanics.** Today `TrainerAi.WithTheLaterMechanics` uses each whenever it can, as Showdown's random player does: a Mega Evolution at once, a Z-Move on the first move that has one, a Dynamax on the first Pokémon that can (kept for a Mega with the Mega Max Band), a Terastallization on the first that can. Nothing is drawn for it, so no golden file depends on it. In the game only seven trainers carry any of the items (the Champions' Mega Dynamax teams of `our-trainers.json`), so it touches few battles yet; it will touch every later region's important trainers. A sensible use, proposed for the user: a Z-Move only on a damaging move that is at least neutral against the target, or on a status move whose Z-Power helps; Dynamax on the trainer's last Pokémon, or on the ace (the highest level) when it comes in; Terastallize when the Tera Type turns a weakness to the foe's last move into a resistance, or on the ace's last Pokémon; Mega Evolve at once, as now. This needs the user's yes before it is written, since it changes how every later Champion fights.
 2. **Options for rules and mechanics.** Every game is played by the modern rules (the user's ruling of 2026-10-12) and the four mechanics are open to whoever holds the item. There is no option to turn a mechanic off. Proposal: a field of `RunRules` ("No later mechanics": Mega, Z, Dynamax and Tera refused for both sides through `RunTerms`, at the one place of enforcement each has, `WhyNotMega`, `WhyNotZMove`, `WhyNotDynamax`, `WhyNotTera`), so it is chosen with a run and saved with it, not an options row that could change in the middle of a game.
 3. **Balance.** Nothing measures it yet. The fuzz above shows the battles hold together, not that they are fair. What could be measured cheaply: the win rate of the side that uses a mechanic first, per mechanic, over thousands of fuzz battles, and of the moves of our own past 100 (R31) against Showdown's moves of like power. The user decides whether balance is a number to hold or a judgement to make.
 
-## The decision the user must make: Platinum's rules as a baseline
+## The decision the user made: Platinum's rules as a baseline (A, 2026-10-31)
 
 **Where it stands.** Since 2026-10-12 every game is played by the modern rules. `Ruleset.Platinum` is no longer offered in the game; it stays as the baseline the modern rules are written as differences from, `Ruleset.Current` is Platinum's until a game begins (so every test that builds a battle without rules is fought by it), and `battles-platinum.txt` (100 battles, 810 kB) holds that nothing changes it by accident. The plan says R30 decides whether it goes.
 
@@ -73,7 +82,7 @@ None of these breaks a battle; each is a line said a little differently or a rar
 - **B. Keep it and offer it**: a run of `RunRules` ("Platinum's rules") for players who want the original's battles. Small to build (the presets exist; a row of the run panel and its words), but it brings back the question of older saves and of which helps follow the rules.
 - **C. Remove it**: one rule set, the modern one; the Platinum tests rewritten to the modern numbers, `battles-platinum.txt` deleted.
 
-**Recommendation: A.** The baseline is what proves the engine is Platinum's at heart, it costs little to keep, and removing it costs a great deal for no player-visible gain. B is worth doing later only if a player asks for the original's battles.
+**Recommendation: A**, and the user chose A on 2026-10-31. The baseline is what proves the engine is Platinum's at heart, it costs little to keep, and removing it costs a great deal for no player-visible gain. B is worth doing later only if a player asks for the original's battles.
 
 ## Ticked in this audit
 

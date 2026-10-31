@@ -249,7 +249,7 @@ public class ZMoveTests
     }
 
     [Fact]
-    public void TheTrainerAiUsesAZMoveWheneverItCan()
+    public void TheTrainerAiUsesAZMoveOnAMoveAtLeastNeutral()
     {
         var foe = ZBidoof("Tackle");
         var mine = Mon("Snorlax", 50, "Splash");

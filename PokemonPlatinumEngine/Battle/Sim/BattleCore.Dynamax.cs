@@ -139,7 +139,7 @@ public sealed partial class BattleCore
     {
         var mine = At(b.Place);
         string no = Text.Of("battle.cantDynamax", ("pokemon", mine.Name));
-        if (!Rules.Dynamax || mine.Pokemon is not { } p || mine.Volatile.Dynamaxed) return no;
+        if (!Rules.Dynamax || LaterMechanicsBarred || mine.Pokemon is not { } p || mine.Volatile.Dynamaxed) return no;
         // A Mega, or one Mega Evolving with this very move, Dynamaxes by the Mega Max Band (plan 06 · R20c); any other by the Dynamax Band
         string? megaForm = p.FormData?.Kind == FormKind.Mega ? p.Form : withMega ? MegaFormOf(p) : null;
         if (megaForm == null && !HasDynamaxBand(mine)) return no;
@@ -194,7 +194,7 @@ public sealed partial class BattleCore
     {
         var mine = At(b.Place);
         string no = Text.Of("battle.cantMegaDynamax", ("pokemon", mine.Name));
-        if (!Rules.MegaDynamax || mine.Pokemon is not { } p || !HasMegaMaxBand(mine)) return no;
+        if (!Rules.MegaDynamax || LaterMechanicsBarred || mine.Pokemon is not { } p || !HasMegaMaxBand(mine)) return no;
         if (p.Species.Form(megaForm)?.Kind != FormKind.Mega || p.Species.Legendary || p.Species.Mythical) return no;
         return null;
     }

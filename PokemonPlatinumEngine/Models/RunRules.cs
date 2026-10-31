@@ -53,6 +53,13 @@ public sealed record RunRules
     public bool SetStyle { get; init; }
 
     /// <summary>
+    /// No later mechanics (plan 06 · R30): nobody, the player or a trainer, may Mega Evolve, use a Z-Move or Ultra Burst,
+    /// Dynamax (Mega Dynamax too) or Terastallize. Refused for both sides at each mechanic's one place of enforcement
+    /// through <see cref="RunTerms.NoLaterMechanics"/>. False in every save from before it, so no version was raised.
+    /// </summary>
+    public bool NoLaterMechanics { get; init; }
+
+    /// <summary>
     /// The shiny odds as 1 in this many: 0 for the rules' own (what Normal keeps, so nothing moves), else 4096, 1024 or 512
     /// (V5 reads it).
     /// </summary>
@@ -105,7 +112,8 @@ public sealed record RunRules
     /// <summary>The rules a script can ask after with <c>if rule …</c> (plan 13 · V5), by the word it uses.</summary>
     public static readonly string[] RuleNames =
     {
-        "nuzlocke", "monotype", "solo", "noitems", "nocenter", "nocatching", "norunning", "set", "shinyodds", "challenge", "easy", "levelcap"
+        "nuzlocke", "monotype", "solo", "noitems", "nocenter", "nocatching", "norunning", "set", "shinyodds", "challenge", "easy", "levelcap",
+        "nolatermechanics"
     };
 
     /// <summary>Whether the run has a rule on, by its script word (<see cref="RuleNames"/>); false for a word it doesn't know.</summary>
@@ -123,6 +131,7 @@ public sealed record RunRules
         "challenge" => Difficulty == Difficulty.Challenge,
         "easy" => Difficulty == Difficulty.Easy,
         "levelcap" => LevelCap,
+        "nolatermechanics" => NoLaterMechanics,
         _ => false
     };
 
@@ -141,7 +150,8 @@ public sealed record RunRules
 
     /// <summary>What a battle is told of the run's restrictions (the core's <c>Restrictions</c>): null when none touches a battle, which changes nothing.</summary>
     public RunTerms? BattleTerms() =>
-        NoCatching || NoRunning || Monotype != null || NoBattleItems ? new RunTerms(NoCatching, NoRunning, Monotype, NoBattleItems) : null;
+        NoCatching || NoRunning || Monotype != null || NoBattleItems || NoLaterMechanics
+            ? new RunTerms(NoCatching, NoRunning, Monotype, NoBattleItems, NoLaterMechanics) : null;
 
     /// <summary>The ShinyDenominator choices, in the order the panel steps through them.</summary>
     public static readonly int[] ShinyChoices = { 0, 4096, 1024, 512 };
@@ -160,6 +170,8 @@ public sealed record RunRules
 /// What a battle is told of the run's restrictions (plan 13 · V5; <see cref="Battle.Sim.CoreSetup.Restrictions"/>): no ball
 /// at all, no running, a type every Pokémon caught must have, and no item from the bag but a ball. A battle refuses these
 /// for the player's side only; null (a run with none of them) changes nothing. A recorded battle doesn't keep them: they
-/// only refuse choices.
+/// only refuse the player's choices. The one exception is <paramref name="NoLaterMechanics"/> (plan 06 · R30), refused for
+/// both sides, so it changes what the trainer AI chooses: a recorded battle keeps it (<c>BattleRecord.NoLaterMechanics</c>).
 /// </summary>
-public sealed record RunTerms(bool NoCatching = false, bool NoRunning = false, PokemonType? Monotype = null, bool NoItems = false);
+public sealed record RunTerms(bool NoCatching = false, bool NoRunning = false, PokemonType? Monotype = null, bool NoItems = false,
+    bool NoLaterMechanics = false);

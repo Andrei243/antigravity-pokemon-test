@@ -431,7 +431,7 @@ public sealed partial class BattleCore : IBattleContext
     /// given from outside. Null when its numbers aren't a <see cref="BattleRandom"/>'s: nothing else comes out
     /// the same everywhere.
     /// </summary>
-    public BattleRecord? Record => startedFrom is uint seed ? new BattleRecord(seed, answers.ToList(), Inverse, OffersSwitch, Difficulty, RunLevelCap ?? 0, Format, CrossedExp) : null;
+    public BattleRecord? Record => startedFrom is uint seed ? new BattleRecord(seed, answers.ToList(), Inverse, OffersSwitch, Difficulty, RunLevelCap ?? 0, Format, CrossedExp, LaterMechanicsBarred) : null;
 
     /// <summary>
     /// Plays a record through. The battle must be new, between teams as they were when the recorded one began,
@@ -445,6 +445,7 @@ public sealed partial class BattleCore : IBattleContext
         if (OffersSwitch != record.OffersSwitch) throw new ArgumentException("A replay offers a switch where the recorded battle did (plan 08 · P1): Shift's as Shift's");
         if (Difficulty != record.Difficulty) throw new ArgumentException("A replay is fought under the record's own difficulty (plan 13 · V2): Easy's EXP as Easy's");
         if ((RunLevelCap ?? 0) != record.RunLevelCap) throw new ArgumentException("A replay is fought under the record's own level cap (plan 13 · V3): a capped battle's EXP as capped");
+        if (LaterMechanicsBarred != record.NoLaterMechanics) throw new ArgumentException("A replay bars the later mechanics where the recorded battle did (plan 06 · R30): the trainers' choices hang on it");
         if (CrossedExp != record.CrossedExp) throw new ArgumentException("A replay gives the record's own EXP (plan 18 · W4b-3): a crossed region's half again as such");
         if (record.Format is { } format && format != Format) throw new ArgumentException("A replay is fought in the record's own format (plan 14 · B3): a horde's as a horde");
         Start();

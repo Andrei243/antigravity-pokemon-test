@@ -409,7 +409,7 @@ public class TerastallizationTests
     // ---------------------------------------------------------------- the AI, a replay and the screen
 
     [Fact]
-    public void TheTrainerAiTerastallizesWheneverItCan()
+    public void TheTrainerAiTerastallizesItsLastPokemon()
     {
         var said = Turn(Against(new[] { Mon("Snorlax", 50, "Splash") }, new[] { Mon("Bidoof", 50, "Tackle") }, TrainerAi.Instance));
         Assert.Contains("Foe Bidoof Terastallized into the Normal type!", said);
