@@ -1,9 +1,14 @@
 {
   // Route 20 as HeartGold has it three years on (plan 20 · J15, part g): the sea east of Cinnabar Island to the
   // Seafoam Islands, where Blaine keeps his Gym now. Its key meets FireRed's, so it takes Johto's prefix
-  // (HgWorld.Clashes). Its trainers battle by their own records (Johto's trainers.json)
+  // (HgWorld.Clashes). Its trainers battle by their own records (Johto's trainers.json). The Seafoam Islands' western
+  // mouth (warp 1) is locked: it lies in a pocket walled in by rock that only the cave's western half, beyond the first
+  // floor's shut ways down, reaches
   "area": "johto_route_20",
   "bgmTrack": "kanto/route3",
+  "locked": [
+    1
+  ],
   "people": {
     "w20_gsswimmerm": {
       "name": "Frankie",
