@@ -538,6 +538,7 @@ public partial class GameEngine
         Haptics.Strength = Settings.Rumble; // plan 12 · Q24
         // Light and motion (plan 12 · Q9), with the battle camera's one number, BattleCamera.Motion
         Accessibility.Use(Settings.ReduceFlashes, Settings.ReduceMotion);
+        UseCaptionsAndHold(); // and sound and holding (plan 12 · Q9, GameEngine.Captions.cs)
         if (window && !WindowLocked) WindowSettings.Apply(Settings);
     }
 
@@ -1008,6 +1009,7 @@ public partial class GameEngine
         KeepTheMedals(dt);
         KeepTheTimer(dt);
         KeepTheAutosave(dt);
+        Accessibility.CaptionsShown.Advance(dt); // plan 12 · Q9
         flow.StartMenu.Animate(dt);
         closePrompt.Animate(dt);
         flow.ScriptFade.Update(dt);
@@ -3001,6 +3003,7 @@ public partial class GameEngine
         if (!screenshotWanted) flow.MedalNotice.Draw(VirtualWidth);
         DrawStandingNotice();
         DrawAutosaveDisc();
+        DrawCaptions(); // plan 12 · Q9
 
         // The scene closing, or the next one opening; a cave's ring closes on the player, wherever the field shows them,
         // and a band is drawn with whose it is and the portraits rendered for it so far
