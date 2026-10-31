@@ -1,0 +1,36 @@
+# The Iron Chamber (plan 22 · U10, part b). docs/scripts.md describes the language; the lines are our own, on Black 2's beats (the
+# decompilation's res/field/scripts/iron_chamber.s, read for the order alone).
+#
+# Registeel stands as a statue at the chamber's head; spoken to, it stirs and is battled at Black 2's level 65. Caught or beaten it is
+# gone for good (FLAG_UNOVA_FOUGHT_REGISTEEL); run from, it is back the next time the chamber is come to.
+script Registeel
+  speaker none
+  text "The statue of the iron giant began to move!"
+  cry "Registeel"
+  wildbattle "Registeel" 65
+  if result == 2 goto Fled
+  setflag FLAG_UNOVA_FOUGHT_REGISTEEL
+  hide self
+  text "The chamber is still again..."
+  end
+label Fled
+  hide self
+  text "Registeel sank away into the depths of the ruins..."
+  end
+
+
+script Plaque
+  speaker none
+  text "Iron Chamber"
+  end
+
+
+script Inscription
+  speaker none
+  text "Here sleeps the guardian of iron, who keeps watch over these ruins."
+  end
+
+
+script BackToTheDoor
+  call UnovaRuinsWayBack
+  end

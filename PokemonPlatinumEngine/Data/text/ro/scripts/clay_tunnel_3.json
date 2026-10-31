@@ -1,0 +1,46 @@
+{
+  "CartQuestion": [
+    {
+      "en": [
+        "Worker"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You there! Fancy a ride in the mining cart?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Whenever you like, just come and ask me."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "CartRide": [
+    {
+      "en": [
+        "Worker"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hop in and hold on tight!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

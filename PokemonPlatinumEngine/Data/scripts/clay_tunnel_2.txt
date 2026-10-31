@@ -1,0 +1,42 @@
+# Clay Tunnel's second floor (plan 22 · U10, part b). docs/scripts.md describes the language; the lines are our own, on Black 2's
+# beats (the decompilation's res/field/scripts/clay_tunnel_2.s, read for the order alone). The worker by the cart (7) rides the
+# player back to the first floor; the heap of rock before the way down goes with the first floor's (clay_tunnel.txt).
+script DugRocks
+  speaker none
+  text "A heap of broken rock fills the way."
+  end
+
+script CartToFirst
+  call CartQuestion
+  if no end
+  call CartRide
+  warp "ClayTunnel_1" 27 38 left
+  end
+
+script CartQuestion
+  face self player
+  speaker "Worker"
+  ask "You there! Fancy a ride in the mining cart?"
+  if yes return
+  say "Whenever you like, just come and ask me."
+  return
+
+
+script CartRide
+  speaker "Worker"
+  say "Hop in and hold on tight!"
+  return
+
+# The holes of this floor a boulder pushed with Strength fills (Black 2's StrengthHole tiles, 2 by 2; plan 22 · U10, part b), as the
+# Relic Passage's are: each pit's script lets the boulder fall in and the hole is floor from then on
+script FillHole1
+  call BoulderFallsIn
+  setflag FLAG_UNOVA_CLAY_TUNNEL_2_HOLE_1
+  hide self
+  end
+
+script FillHole2
+  call BoulderFallsIn
+  setflag FLAG_UNOVA_CLAY_TUNNEL_2_HOLE_2
+  hide self
+  end

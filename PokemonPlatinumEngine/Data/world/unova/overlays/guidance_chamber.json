@@ -1,0 +1,25 @@
+{
+  // The Guidance Chamber (plan 22 · U10, part b), the deepest room of Mistralton Cave, Black 2's, its boulders (0, 1) moved with
+  // Strength, its balls and hidden things in the area file; our words. The old painter (2) has looked for Cobalion here all his
+  // life (he stands at the chamber's foot: Black 2's ledge of his reads as rock, its floors not joined in the import); with a Cobalion on the team he sees it at last (guidance_chamber.txt). Cobalion itself waits on Route 13 (U10, part a)
+  "area": "guidance_chamber",
+  "bgmTrack": "sinnoh/cave",
+  "battleArena": "Cave",
+  "holes": [
+    { "x": 15, "z": 16, "width": 2, "depth": 2, "filledBy": "FLAG_UNOVA_GUIDANCE_CHAMBER_HOLE_1" },
+    { "x": 12, "z": 21, "width": 2, "depth": 2, "filledBy": "FLAG_UNOVA_GUIDANCE_CHAMBER_HOLE_2" }
+  ],
+  "pits": [
+    { "x": 15, "z": 16, "script": "FillHole1" },
+    { "x": 16, "z": 16, "script": "FillHole1" },
+    { "x": 15, "z": 17, "script": "FillHole1" },
+    { "x": 16, "z": 17, "script": "FillHole1" },
+    { "x": 12, "z": 21, "script": "FillHole2" },
+    { "x": 13, "z": 21, "script": "FillHole2" },
+    { "x": 12, "z": 22, "script": "FillHole2" },
+    { "x": 13, "z": 22, "script": "FillHole2" }
+  ],
+  "people": {
+    "2": { "name": "Artist", "script": "Painter", "still": true, "at": [ 10, 24 ] }
+  }
+}

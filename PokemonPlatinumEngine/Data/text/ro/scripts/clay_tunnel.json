@@ -1,0 +1,124 @@
+{
+  "Diggers": [
+    {
+      "en": [
+        "Worker"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Phew! We've dug and dug at this heap all week, and it won't budge... Hang on. Is one of your Pokémon good at Rock Smash?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It is? Then let's all have a go at once! Ready... smash!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Worker"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We did it! The way through to the next floor is open at last. That's the end of the job. I'll ring the cart man and head home!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "No? Ah well. We'll keep at it with our picks, then..."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Digging": [
+    {
+      "en": [
+        "Worker"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Chip, chip, chip! Chip, chip, chip! This heap is tougher than it looks!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "DugRocks": [
+    {
+      "en": [
+        "A heap of broken rock fills the way."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "CartQuestion": [
+    {
+      "en": [
+        "Worker"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You there! Fancy a ride in the mining cart?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Whenever you like, just come and ask me."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "CartRide": [
+    {
+      "en": [
+        "Worker"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hop in and hold on tight!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

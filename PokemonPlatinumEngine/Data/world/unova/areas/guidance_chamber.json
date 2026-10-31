@@ -1,0 +1,63 @@
+{
+  "key": "guidance_chamber",
+  "index": 335,
+  "name": "Guidance Chamber",
+  "matrix": 112,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave1",
+  "dayMusic": "BGM_D_02",
+  "nightMusic": "BGM_D_02",
+  "encounters": "ENCOUNTERS_GUIDANCE_CHAMBER",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Boldore", "level": 27 },
+    { "species": "Woobat", "level": 27 },
+    { "species": "Boldore", "level": 28 },
+    { "species": "Woobat", "level": 28 },
+    { "species": "Aron", "level": 29 },
+    { "species": "Axew", "level": 29 },
+    { "species": "Aron", "level": 30 },
+    { "species": "Axew", "level": 30 },
+    { "species": "Aron", "level": 30 },
+    { "species": "Axew", "level": 30 },
+    { "species": "Aron", "level": 30 },
+    { "species": "Axew", "level": 30 }
+  ],
+  "landRate": 18,
+  "shakingGrass": [
+    { "species": "Drilbur", "level": 27 },
+    { "species": "Drilbur", "level": 27 },
+    { "species": "Drilbur", "level": 28 },
+    { "species": "Drilbur", "level": 28 },
+    { "species": "Drilbur", "level": 29 },
+    { "species": "Drilbur", "level": 29 },
+    { "species": "Drilbur", "level": 30 },
+    { "species": "Drilbur", "level": 30 },
+    { "species": "Drilbur", "level": 30 },
+    { "species": "Drilbur", "level": 30 },
+    { "species": "Drilbur", "level": 30 },
+    { "species": "Drilbur", "level": 30 }
+  ],
+  "shakingGrassRate": 13,
+  "warps": [
+    { "x": 16, "z": 27, "to": "mistralton_cave_2", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "model_bigrock2", "movement": "none", "x": 12, "z": 20, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "10000" },
+    { "id": "1", "looks": "model_bigrock2", "movement": "none", "x": 15, "z": 15, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "10000" },
+    { "id": "2", "looks": "artist", "movement": "none", "x": 6, "z": 18, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "1" },
+    { "id": "3", "looks": "110", "movement": "none", "x": 23, "z": 3, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x049d", "item": "TM80", "script": "7081" },
+    { "id": "4", "looks": "110", "movement": "none", "x": 20, "z": 20, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x049e", "item": "Escape Rope", "script": "7082" }
+  ],
+  "signs": [
+    { "x": 3, "z": 26, "type": 2, "script": "8154", "item": "Full Heal", "flag": "FLAG_UNOVA_0x0b9e" },
+    { "x": 6, "z": 11, "type": 2, "script": "8155", "item": "Dragon Gem", "flag": "FLAG_UNOVA_0x0b9f" }
+  ],
+  "triggers": []
+}

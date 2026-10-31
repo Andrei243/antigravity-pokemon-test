@@ -1,0 +1,112 @@
+{
+  "key": "clay_tunnel_3",
+  "index": 508,
+  "name": "Clay Tunnel",
+  "matrix": 303,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave1",
+  "dayMusic": "BGM_D_03",
+  "nightMusic": "BGM_D_03",
+  "encounters": "ENCOUNTERS_CLAY_TUNNEL_3",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Boldore", "level": 54 },
+    { "species": "Durant", "level": 54 },
+    { "species": "Boldore", "level": 55 },
+    { "species": "Woobat", "level": 54 },
+    { "species": "Lairon", "level": 55 },
+    { "species": "Nosepass", "level": 55 },
+    { "species": "Lairon", "level": 57 },
+    { "species": "Nosepass", "level": 57 },
+    { "species": "Boldore", "level": 56 },
+    { "species": "Onix", "level": 57 },
+    { "species": "Boldore", "level": 56 },
+    { "species": "Onix", "level": 57 }
+  ],
+  "landRate": 18,
+  "water": [
+    { "species": "Basculin", "level": 45, "maxLevel": 60 },
+    { "species": "Basculin", "level": 45, "maxLevel": 60 },
+    { "species": "Basculin", "level": 50, "maxLevel": 60 },
+    { "species": "Basculin", "level": 50, "maxLevel": 60 },
+    { "species": "Basculin", "level": 50, "maxLevel": 60 }
+  ],
+  "waterRate": 12,
+  "superRod": [
+    { "species": "Poliwag", "level": 50, "maxLevel": 60, "weight": 60 },
+    { "species": "Basculin", "level": 50, "maxLevel": 60, "weight": 30 },
+    { "species": "Poliwag", "level": 60, "maxLevel": 70, "weight": 5 },
+    { "species": "Poliwag", "level": 60, "maxLevel": 70, "weight": 4 },
+    { "species": "Poliwag", "level": 60, "maxLevel": 70, "weight": 1 }
+  ],
+  "superRodRate": 50,
+  "shakingGrass": [
+    { "species": "Excadrill", "level": 54 },
+    { "species": "Onix", "level": 54 },
+    { "species": "Excadrill", "level": 55 },
+    { "species": "Excadrill", "level": 55 },
+    { "species": "Excadrill", "level": 56 },
+    { "species": "Excadrill", "level": 56 },
+    { "species": "Excadrill", "level": 57 },
+    { "species": "Excadrill", "level": 57 },
+    { "species": "Excadrill", "level": 57 },
+    { "species": "Steelix", "level": 57 },
+    { "species": "Excadrill", "level": 57 },
+    { "species": "Steelix", "level": 57 }
+  ],
+  "shakingGrassRate": 13,
+  "ripplingWater": [
+    { "species": "Basculin", "level": 45, "maxLevel": 60 },
+    { "species": "Basculin", "level": 45, "maxLevel": 60 },
+    { "species": "Basculin", "level": 50, "maxLevel": 60 },
+    { "species": "Basculin", "level": 50, "maxLevel": 60 },
+    { "species": "Basculin", "level": 50, "maxLevel": 60 }
+  ],
+  "ripplingWaterRate": 13,
+  "ripplingRod": [
+    { "species": "Poliwhirl", "level": 50, "maxLevel": 60, "weight": 60 },
+    { "species": "Basculin", "level": 50, "maxLevel": 60, "weight": 30 },
+    { "species": "Poliwhirl", "level": 60, "maxLevel": 60, "weight": 5 },
+    { "species": "Poliwrath", "level": 60, "maxLevel": 60, "weight": 4 },
+    { "species": "Poliwrath", "level": 60, "maxLevel": 60, "weight": 1 }
+  ],
+  "ripplingRodRate": 1,
+  "warps": [
+    { "x": 15, "z": 93, "to": "clay_tunnel_2", "toWarp": 1 },
+    { "x": 28, "z": 56, "to": "clay_tunnel_3", "toWarp": 2 },
+    { "x": 36, "z": 88, "to": "clay_tunnel_3", "toWarp": 1 },
+    { "x": 28, "z": 40, "to": "underground_ruins", "toWarp": 0 },
+    { "x": 9, "z": 16, "to": "twist_mountain_6", "toWarp": 1 },
+    { "x": 16, "z": 93, "to": "clay_tunnel_2", "toWarp": 1 },
+    { "x": 17, "z": 93, "to": "clay_tunnel_2", "toWarp": 1 },
+    { "x": 10, "z": 16, "to": "twist_mountain_6", "toWarp": 1 },
+    { "x": 11, "z": 16, "to": "twist_mountain_6", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "pkmn_ranger_m", "movement": "none", "x": 11, "z": 80, "facing": 3, "rangeX": 3, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_PKMN_RANGER_MAXWELL" },
+    { "id": "1", "looks": "worker_26", "movement": "none", "x": 10, "z": 60, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "script": "TRAINER_WORKER_LEO" },
+    { "id": "2", "looks": "worker_26", "movement": "none", "x": 10, "z": 48, "facing": 2, "rangeX": 3, "rangeZ": 7, "trainer": "sees", "sight": 4, "script": "TRAINER_WORKER_BRAND" },
+    { "id": "3", "looks": "pkmn_ranger_f", "movement": "none", "x": 12, "z": 32, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_PKMN_RANGER_KATIE" },
+    { "id": "4", "looks": "model_bigrock2", "movement": "none", "x": 18, "z": 48, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "10000" },
+    { "id": "5", "looks": "model_bigrock2", "movement": "none", "x": 40, "z": 88, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "10000" },
+    { "id": "6", "looks": "110", "movement": "none", "x": 4, "z": 88, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x058c", "item": "Metal Coat", "script": "7320" },
+    { "id": "7", "looks": "110", "movement": "none", "x": 10, "z": 45, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x058d", "item": "Max Revive", "script": "7321" },
+    { "id": "8", "looks": "worker_26", "movement": "none", "x": 19, "z": 34, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x03bc", "script": "1" },
+    { "id": "9", "looks": "worker_26", "movement": "none", "x": 59, "z": 90, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x03b8", "script": "3" },
+    { "id": "10", "looks": "worker_26", "movement": "none", "x": 47, "z": 87, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x03ba", "script": "5" },
+    { "id": "11", "looks": "worker_26", "movement": "none", "x": 27, "z": 48, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x03bb", "script": "6" },
+    { "id": "12", "looks": "worker_26", "movement": "none", "x": 27, "z": 73, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x03b9", "script": "4" },
+    { "id": "13", "looks": "worker_26", "movement": "none", "x": 56, "z": 83, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x03bd", "script": "2" }
+  ],
+  "signs": [
+    { "x": 23, "z": 41, "type": 2, "script": "8121", "item": "ITEM_BIG_NUGGET", "flag": "FLAG_UNOVA_0x0b7d" },
+    { "x": 26, "z": 60, "type": 2, "script": "8122", "item": "Iron", "flag": "FLAG_UNOVA_0x0b7e" }
+  ],
+  "triggers": []
+}

@@ -200,6 +200,7 @@ public static partial class WorldModels
         Thing("c6_plan", PropType.Airplane, "a small aeroplane on Mistralton's apron or runway"),
         Thing("c7_windmill", PropType.WindTurbine, "a windmill on the high ground of Route 7"),
         Thing("drock01", PropType.Boulder, "a rock in Mistralton Cave"),
+        Thing("reji_obj", PropType.Statue, "the carved stone of a chamber of the Regis under Clay Tunnel (plan 22 · U10, part b)"),
         Thing("d6_denkiiwa01", PropType.ChargeStone, "a cluster of charged crystals in Chargestone Cave, which glows"),
         Ground("d6_yuka_biri02", "a patch of Chargestone Cave's floor that crackles with charge (the ground draws it)"),
         Ground("d6_yuka_biri03", "a patch of Chargestone Cave's floor that crackles with charge (the ground draws it)"),

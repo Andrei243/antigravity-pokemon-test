@@ -10,9 +10,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 |---|---|---|---|---|---|
 | The introduction (`intro:`) | 80 | 80 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1276 | 1236 | 40 | 1 | 0 |
-| Scripts (`script:`) | 9045 | 8617 | 428 | 17 | 0 |
-| People of the world (`world:`) | 6552 | 6493 | 59 | 4 | 0 |
-| **All** | 16953 | 16426 | 527 | 22 | 0 |
+| Scripts (`script:`) | 9065 | 8637 | 428 | 17 | 0 |
+| People of the world (`world:`) | 6574 | 6515 | 59 | 4 | 0 |
+| **All** | 16995 | 16468 | 527 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -23,12 +23,12 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | a Pokémon's cry | 225 |
 | a question's answers | 551 |
 | a sign | 1477 |
-| the game's own voice (speaker none) | 249 |
-| the game's own voice (text) | 1266 |
+| the game's own voice (speaker none) | 250 |
+| the game's own voice (text) | 1295 |
 
 ## The cast
 
-- Named characters: 329 voices (292 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
+- Named characters: 330 voices (293 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Cloned from the user's samples: `rival`.
 - Archetypes in use: 222, with 671 voices to cast (V5).
 - Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1843.
@@ -44,7 +44,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:grunt (any)` | 582 | 0 |
 | `rival` | 577 | 17 |
 | `look:lady (any)` | 387 | 1 |
-| `look:youngster (any)` | 378 | 18 |
+| `look:youngster (any)` | 371 | 18 |
 | `look:clerk (any)` | 320 | 7 |
 | `look:lass (any)` | 306 | 11 |
 | `look:nurse (any)` | 235 | 0 |
@@ -53,18 +53,18 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:scientist (any)` | 181 | 4 |
 | `cynthia` | 157 | 1 |
 | `look:receptionist (any)` | 157 | 19 |
+| `class:ace_trainer (any)` | 150 | 0 |
 | `rowan` | 147 | 12 |
-| `class:ace_trainer (any)` | 146 | 0 |
 | `look:sailor (any)` | 135 | 0 |
+| `class:hiker (any)` | 132 | 0 |
 | `class:team_rocket (any)` | 132 | 0 |
 | `look:woman (any)` | 129 | 13 |
-| `class:hiker (any)` | 128 | 0 |
 | `class:fisherman (any)` | 118 | 0 |
-| `class:psychic (any)` | 112 | 0 |
 | `class:swimmer_m (any)` | 112 | 0 |
 | `assistant` | 111 | 5 |
 | `class:black_belt (any)` | 110 | 0 |
 | `look:old_man (any)` | 109 | 4 |
+| `class:psychic (any)` | 108 | 0 |
 | `class:youngster (any)` | 108 | 0 |
 | `look:guard (any)` | 108 | 0 |
 | `class:picnicker (any)` | 104 | 0 |
@@ -84,6 +84,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:bird_keeper (any)` | 82 | 0 |
 | `look:trainer (any)` | 81 | 0 |
 | `prof_oak` | 78 | 3 |
+| `look:worker (any)` | 77 | 0 |
 | `ace_trainer` | 75 | 0 |
 | `look:hiker (any)` | 75 | 0 |
 | `look:old_woman (any)` | 75 | 5 |
@@ -92,21 +93,22 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:twins (any)` | 68 | 0 |
 | `class:camper (any)` | 66 | 0 |
 | `steven` | 65 | 0 |
-| `look:worker (any)` | 63 | 0 |
 | `class:sailor (any)` | 62 | 0 |
 | `prof_juniper` | 62 | 0 |
 | `underground_man` | 62 | 0 |
+| `class:pokémon_ranger (any)` | 60 | 0 |
 | `beauty` | 59 | 4 |
 | `lance` | 58 | 0 |
 | `prof_elm` | 58 | 1 |
-| `class:pokémon_ranger (any)` | 56 | 0 |
 | `cheren` | 53 | 1 |
 | `archie` | 52 | 3 |
 | `class:scientist (any)` | 52 | 0 |
+| `class:worker (any)` | 52 | 0 |
 | `bill` | 50 | 2 |
 | `officer` | 50 | 5 |
 | `look:girl (any)` | 49 | 0 |
 | `class:beauty (any)` | 48 | 0 |
+| `artist` | 47 | 1 |
 | `drayden` | 46 | 0 |
 | `elder` | 46 | 0 |
 | `maxie` | 46 | 1 |
@@ -116,11 +118,9 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:team_magma (any)` | 44 | 0 |
 | `crasher_wake` | 44 | 1 |
 | `mystery` | 43 | 4 |
-| `artist` | 42 | 1 |
 | `buck` | 42 | 1 |
 | `class:battle_girl (any)` | 42 | 0 |
 | `class:biker (any)` | 42 | 0 |
-| `class:worker (any)` | 42 | 0 |
 | `riley` | 42 | 0 |
 | `flint` | 41 | 1 |
 | `look:host (any)` | 40 | 16 |

@@ -1,0 +1,21 @@
+# Mistralton Cave's first floor (plan 22 · U7, part a; U10, part b). docs/scripts.md describes the language.
+
+# The holes of this floor a boulder pushed with Strength fills (Black 2's StrengthHole tiles, 2 by 2; plan 22 · U10, part b), as the
+# Relic Passage's are: each pit's script lets the boulder fall in and the hole is floor from then on
+script FillHole1
+  call BoulderFallsIn
+  setflag FLAG_UNOVA_MISTRALTON_CAVE_2_HOLE_1
+  hide self
+  end
+
+script FillHole2
+  call BoulderFallsIn
+  setflag FLAG_UNOVA_MISTRALTON_CAVE_2_HOLE_2
+  hide self
+  end
+
+script FillHole3
+  call BoulderFallsIn
+  setflag FLAG_UNOVA_MISTRALTON_CAVE_2_HOLE_3
+  hide self
+  end

@@ -1,0 +1,43 @@
+{
+  // Mistralton Cave's upper floor (plan 22 · U10, part b): Black 2's, its three boulders (0 to 2) moved with Strength, its balls
+  // and hidden things in the area file; our words. Its stairs down lead back to the cave's first floor and its way north to the
+  // Guidance Chamber
+  "area": "mistralton_cave_2",
+  "bgmTrack": "sinnoh/cave",
+  "battleArena": "Cave",
+  "holes": [
+    { "x": 23, "z": 14, "width": 2, "depth": 2, "filledBy": "FLAG_UNOVA_MISTRALTON_CAVE_2_HOLE_1" },
+    { "x": 12, "z": 16, "width": 2, "depth": 2, "filledBy": "FLAG_UNOVA_MISTRALTON_CAVE_2_HOLE_2" },
+    { "x": 11, "z": 23, "width": 2, "depth": 2, "filledBy": "FLAG_UNOVA_MISTRALTON_CAVE_2_HOLE_3" }
+  ],
+  "pits": [
+    { "x": 23, "z": 14, "script": "FillHole1" },
+    { "x": 24, "z": 14, "script": "FillHole1" },
+    { "x": 23, "z": 15, "script": "FillHole1" },
+    { "x": 24, "z": 15, "script": "FillHole1" },
+    { "x": 12, "z": 16, "script": "FillHole2" },
+    { "x": 13, "z": 16, "script": "FillHole2" },
+    { "x": 12, "z": 17, "script": "FillHole2" },
+    { "x": 13, "z": 17, "script": "FillHole2" },
+    { "x": 11, "z": 23, "script": "FillHole3" },
+    { "x": 12, "z": 23, "script": "FillHole3" },
+    { "x": 11, "z": 24, "script": "FillHole3" },
+    { "x": 12, "z": 24, "script": "FillHole3" }
+  ],
+  "people": {
+    "3": {
+      "name": "Geoff",
+      "trainer": {
+        "dialogueBefore": "Up here the cave goes quiet. Quiet enough to hear a battle start!",
+        "dialogueAfter": "Quiet again. I'll take it."
+      }
+    },
+    "4": {
+      "name": "Belle",
+      "trainer": {
+        "dialogueBefore": "My Pokémon came out of old fossils. They have been waiting a long time for a good battle!",
+        "dialogueAfter": "Millions of years, and still not long enough to win."
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+# The Guidance Chamber (plan 22 · U10, part b). docs/scripts.md describes the language; the lines are our own, on Black 2's beats
+# (the decompilation's res/field/scripts/guidance_chamber.s, read for the order alone).
+#
+# The old painter has hunted Cobalion through these caves for most of his life. Brought a Cobalion on the team, he sees it at last
+# and is glad of what it says of people and Pokémon; afterwards he wonders what it thinks of the world now.
+script Painter
+  face self player
+  speaker "Artist"
+  if flag FLAG_UNOVA_PAINTER_SAW_COBALION goto After
+  if has "Cobalion" goto Sees
+  say "I have spent my whole life painting caves, hoping one day to paint Cobalion in one. It has never come."
+  end
+label Sees
+  say "That Pokémon of yours... it can't be! Cobalion, here, standing before me!"
+  say "It walks beside you of its own will. So it has found a person it can trust after all."
+  say "That is what I'll paint, then: not the Pokémon alone, but the two of you, side by side."
+  setflag FLAG_UNOVA_PAINTER_SAW_COBALION
+  end
+label After
+  say "My painting of Cobalion is nearly done. I wonder what it would make of it, if it ever came to look."
+  end
+
+# The holes of this floor a boulder pushed with Strength fills (Black 2's StrengthHole tiles, 2 by 2; plan 22 · U10, part b), as the
+# Relic Passage's are: each pit's script lets the boulder fall in and the hole is floor from then on
+script FillHole1
+  call BoulderFallsIn
+  setflag FLAG_UNOVA_GUIDANCE_CHAMBER_HOLE_1
+  hide self
+  end
+
+script FillHole2
+  call BoulderFallsIn
+  setflag FLAG_UNOVA_GUIDANCE_CHAMBER_HOLE_2
+  hide self
+  end

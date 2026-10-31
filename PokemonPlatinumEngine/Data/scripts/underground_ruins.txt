@@ -1,0 +1,64 @@
+# The Underground Ruins (plan 22 · U10, part b). docs/scripts.md describes the language; the lines are our own, on Black 2's
+# beats (the decompilation's res/field/scripts/underground_ruins.s, read for the order alone).
+#
+# The door at the head of the hall (the area's trigger 0) leads somewhere new by the time of day: the hall of the sun while the
+# sun is up (morning and day), the hall of the moon from twilight on. Once the old switch in the floor has been stepped on after
+# Unova's Hall of Fame it leads to the chambers of the Regis instead, the next one at each step on the switch
+# (VAR_UNOVA_RUINS_DOOR: 1 the Rock Peak Chamber, 2 the Iron Chamber, 3 the Iceberg Chamber, 0 the halls again). Black 2 turns
+# the door with the Key System's keys, which come by link; the switch stands in for them.
+script TheDoor
+  speaker none
+  text "The great stone door slid open..."
+  if var VAR_UNOVA_RUINS_DOOR == 1 goto RockPeak
+  if var VAR_UNOVA_RUINS_DOOR == 2 goto Iron
+  if var VAR_UNOVA_RUINS_DOOR == 3 goto Iceberg
+  if time morning goto Sun
+  if time day goto Sun
+  warp "UndergroundRuins_Moon" 15 59 up
+  end
+label Sun
+  warp "UndergroundRuins_Sun" 15 59 up
+  end
+label RockPeak
+  warp "RockPeakChamber" 15 59 up
+  end
+label Iron
+  warp "IronChamber" 15 59 up
+  end
+label Iceberg
+  warp "IcebergChamber" 15 59 up
+  end
+
+
+script Switch
+  speaker none
+  ask "There's an old switch set into the floor right at your feet. Step down on it?"
+  if no end
+  if not flag UnovaHallOfFame goto Nothing
+  if var VAR_UNOVA_RUINS_DOOR == 0 goto ToRock
+  if var VAR_UNOVA_RUINS_DOOR == 1 goto ToIron
+  if var VAR_UNOVA_RUINS_DOOR == 2 goto ToIce
+  setvar VAR_UNOVA_RUINS_DOOR 0
+  text "Something heavy rumbled behind the door and fell quiet. It feels just as it did when you first came in."
+  end
+label ToRock
+  setvar VAR_UNOVA_RUINS_DOOR 1
+  goto Heard
+label ToIron
+  setvar VAR_UNOVA_RUINS_DOOR 2
+  goto Heard
+label ToIce
+  setvar VAR_UNOVA_RUINS_DOOR 3
+label Heard
+  text "Clunk! Something heavy ground into a new place on the far side of the door..."
+  end
+label Nothing
+  text "The switch sank a little under your foot and sprang back up. Nothing seems to have happened..."
+  end
+
+
+script DoorWatcher
+  face self player
+  speaker "Psychic"
+  say "That door puzzles me. Go through it by daylight and you come out in one hall. Go through it by night and it's another!"
+  end

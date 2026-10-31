@@ -1,0 +1,16 @@
+{
+  // The Underground Ruins (plan 22 · U10, part b), off Clay Tunnel's third floor, Black 2's; our words. The door at the head of the
+  // hall (the area's trigger 0, 13 to 17, 2) leads by the time of day to one of two halls, the hall of the sun while the sun is up
+  // and the hall of the moon after it sets, or, once the old switch in the floor (read 6, about 24, 11) has been stepped on after
+  // Unova's Hall of Fame, to one of the three chambers of the Regis in turn (VAR_UNOVA_RUINS_DOOR: 1 Rock Peak, 2 Iron, 3 Iceberg,
+  // 0 the halls again). Black 2 turns the door with the Key System's keys, which come by link; the switch stands in for them
+  // (underground_ruins.txt). The man in the hall (0) wonders at the door
+  "area": "underground_ruins",
+  "bgmTrack": "johto/ruins_of_alph",
+  "battleArena": "Cave",
+  "triggers": [ { "trigger": 0, "script": "TheDoor" } ],
+  "read": { "6": "Switch" },
+  "people": {
+    "0": { "name": "Psychic", "script": "DoorWatcher", "still": true }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "key": "rock_peak_chamber",
+  "index": 611,
+  "name": "Rock Peak Chamber",
+  "matrix": 411,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave1",
+  "dayMusic": "BGM_SW_D_REGI",
+  "nightMusic": "BGM_SW_D_REGI",
+  "encounters": "ENCOUNTERS_ROCK_PEAK_CHAMBER",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Boldore", "level": 54 },
+    { "species": "Durant", "level": 54 },
+    { "species": "Boldore", "level": 55 },
+    { "species": "Woobat", "level": 54 },
+    { "species": "Lairon", "level": 55 },
+    { "species": "Nosepass", "level": 55 },
+    { "species": "Lairon", "level": 57 },
+    { "species": "Nosepass", "level": 57 },
+    { "species": "Boldore", "level": 56 },
+    { "species": "Onix", "level": 57 },
+    { "species": "Boldore", "level": 56 },
+    { "species": "Onix", "level": 57 }
+  ],
+  "landRate": 18,
+  "shakingGrass": [
+    { "species": "Excadrill", "level": 54 },
+    { "species": "Onix", "level": 54 },
+    { "species": "Excadrill", "level": 55 },
+    { "species": "Excadrill", "level": 55 },
+    { "species": "Excadrill", "level": 56 },
+    { "species": "Excadrill", "level": 56 },
+    { "species": "Excadrill", "level": 57 },
+    { "species": "Excadrill", "level": 57 },
+    { "species": "Excadrill", "level": 57 },
+    { "species": "Steelix", "level": 57 },
+    { "species": "Excadrill", "level": 57 },
+    { "species": "Steelix", "level": 57 }
+  ],
+  "shakingGrassRate": 13,
+  "warps": [],
+  "objects": [
+    { "id": "0", "looks": "350", "movement": "none", "x": 15, "z": 14, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x039a", "script": "6" }
+  ],
+  "signs": [
+    { "x": 15, "z": 50, "type": 0, "script": "4" },
+    { "x": 15, "z": 9, "type": 0, "script": "5" }
+  ],
+  "triggers": [
+    { "x": 14, "z": 60, "width": 3, "depth": 1, "script": "2", "variable": "", "value": "0" }
+  ]
+}

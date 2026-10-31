@@ -10,10 +10,12 @@
   // (6, FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL) and Hugh (hugh_gym, FLAG_UNOVA_HIDE_HUGH_GYM) wait outside the Gym; our trigger
   // before its door (212, 401, at 4) plays their scene and Clay's word of the Pokémon World Tournament
   // (driftveil_city.txt). The motorcyclist who explains Triple and Rotation Battles (0) only talks until plan 14 builds
-  // them, and the worker of the shortcut to Twist Mountain (20) is always out
+  // them, and the worker of the shortcut to Twist Mountain (20) is always out. Clay Tunnel's mouth (warp 13) opens once Unova's
+  // Hall of Fame is entered (plan 22 · U10, part b)
   "area": "driftveil_city",
   "bgmTrack": "unova/driftveil",
   "architecture": "Storehouse",
+  "doors": [ { "warp": 13, "map": "ClayTunnel_1", "x": 16, "y": 59, "facing": "Up", "openedBy": "UnovaHallOfFame" } ],
   "triggers": [
     { "script": "PlasmaOnTheBridge", "x": 221, "z": 430, "width": 1, "depth": 5, "variable": "VAR_UNOVA_DRIFTVEIL", "value": 0 },
     { "script": "RoodCalls", "x": 194, "z": 397, "width": 1, "depth": 3, "variable": "VAR_UNOVA_DRIFTVEIL", "value": 1 },

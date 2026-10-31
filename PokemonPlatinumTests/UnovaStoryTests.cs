@@ -42,6 +42,8 @@ public class UnovaStoryTests
         public PlayerLook Look { get; set; } = PlayerLook.Boy;
         /// <summary>The day of the week the game's scripts see (plan 22 · U6, part c: Anville Town's weekend crowd).</summary>
         public DayOfWeek Weekday { get; set; } = DayOfWeek.Monday;
+        /// <summary>The time of day the game's scripts see (plan 22 · U10, part b: the Underground Ruins' door).</summary>
+        public TimeOfDay Time { get; set; } = TimeOfDay.Morning;
         /// <summary>The answers the next script played is given, in the order it asks (plan 22 · U6, part d: the Subway's menus).</summary>
         public List<int> Answers { get; } = new();
         /// <summary>The battle of a script (counting from 1) that is lost, where one is (plan 22 · U6, part d: a Subway run ended early).</summary>
@@ -141,7 +143,8 @@ public class UnovaStoryTests
                 NeedsPokemon = true,
                 BeganInRegion = BeganIn,
                 PlayerLook = Look,
-                Weekday = Weekday
+                Weekday = Weekday,
+                TimeOfDay = Time
             };
             if (Along != null) host.TravelWith(Map.FindPerson("bianca_along") ?? Map.Everyone.First(), Along);
             foreach (int answer in Answers) host.Answers.Enqueue(answer);
@@ -2831,6 +2834,128 @@ public class UnovaStoryTests
         Assert.Equal((10, 12), (lair.X, lair.Y));
     }
 
+    // ---- Plan 22 · U10, part b: the caves of the old roads off the open ones ------------------------------------------------
+
+    [Fact]
+    public void ClayTunnelOpensFromDriftveilOnceTheHallOfFameIsEnteredAndItsWorkersBreakThroughWithRockSmash()
+    {
+        var game = PastTheChasm();
+        game.Arrive("Unova", 167, 392);
+        Assert.True(game.Map.IsSolid(167, 391));
+        game.Story.Set("UnovaHallOfFame");
+        game.Arrive("Unova", 167, 392);
+        Assert.False(game.Map.IsSolid(167, 391));
+        game.Through("ClayTunnel_1");
+        Assert.Equal("ClayTunnel_1", game.Map.Name);
+        // the heap of rock shuts the way to the second floor until the workers break it
+        Assert.NotNull(game.Present("9", "clay_tunnel"));
+        var refused = game.Talk("8", "clay_tunnel");
+        Assert.False(game.Story.Has("FLAG_UNOVA_CLAY_TUNNEL_DUG"));
+        Assert.DoesNotContain(refused.Log, l => l.StartsWith("usemove"));
+        var smasher = new Pokemon(PokemonDatabase.Get("Roggenrola")!, 40); smasher.ReplaceMove(0, "Rock Smash"); game.Party.RemoveAt(game.Party.Count - 1); game.Party.Add(smasher);
+        var dug = game.Talk("8", "clay_tunnel");
+        Assert.Contains(dug.Log, l => l.StartsWith("usemove Rock Smash"));
+        Assert.True(game.Story.Has("FLAG_UNOVA_CLAY_TUNNEL_DUG"));
+        game.Arrive("ClayTunnel_1", 5, 14);
+        Assert.Null(game.Present("9", "clay_tunnel"));
+        Assert.Null(game.Present("8", "clay_tunnel"));
+        game.Arrive("ClayTunnel_2", 22, 46);
+        Assert.Null(game.Present("14", "clay_tunnel_2"));
+    }
+
+    [Theory]
+    [InlineData("ClayTunnel_1", "16", "clay_tunnel", "ClayTunnel_2")]
+    [InlineData("ClayTunnel_1", "17", "clay_tunnel", "ClayTunnel_3")]
+    [InlineData("ClayTunnel_2", "7", "clay_tunnel_2", "ClayTunnel_1")]
+    [InlineData("ClayTunnel_3", "9", "clay_tunnel_3", "ClayTunnel_3")]
+    public void AWorkerByAMiningCartRidesThePlayerToAnotherFloor(string map, string key, string area, string to)
+    {
+        var game = PastTheChasm();
+        game.Story.Set("UnovaHallOfFame");
+        var npc = game.Mapped(map).Everyone.First(n => n.Key == key && n.ScriptFile == area);
+        game.Arrive(map, npc.GridX, npc.GridY + 1);
+        game.Answers.Add(1);
+        var no = game.Talk(key, area);
+        Assert.DoesNotContain(no.Log, l => l.StartsWith("warp "));
+        game.Answers.Add(0);
+        game.Talk(key, area);
+        Assert.Equal(to, game.Map.Name);
+        Assert.True(game.Map.IsWalkable(game.Tile.X, game.Tile.Y), $"{to} {game.Tile}");
+    }
+
+    [Theory]
+    [InlineData(TimeOfDay.Morning, "UndergroundRuins_Sun")]
+    [InlineData(TimeOfDay.Day, "UndergroundRuins_Sun")]
+    [InlineData(TimeOfDay.Twilight, "UndergroundRuins_Moon")]
+    [InlineData(TimeOfDay.Night, "UndergroundRuins_Moon")]
+    public void TheUndergroundRuinsDoorLeadsToTheHallOfTheSunOrTheMoonByTheTimeOfDay(TimeOfDay time, string hall)
+    {
+        var game = PastTheChasm();
+        game.Time = time;
+        game.Arrive("UndergroundRuins", 15, 3);
+        game.Step("TheDoor");
+        Assert.Equal(hall, game.Map.Name);
+        Assert.True(game.Map.IsWalkable(15, 59));
+        game.Step("BackToTheDoor");
+        Assert.Equal(("UndergroundRuins", 15, 3), (game.Map.Name, game.Tile.X, game.Tile.Y));
+    }
+
+    [Fact]
+    public void TheRuinsSwitchTurnsTheDoorToEachChamberOfTheRegisInTurnAfterTheHallOfFame()
+    {
+        var game = PastTheChasm();
+        game.Arrive("UndergroundRuins", 24, 11);
+        var lair = game.Map.TileScripts.First(t => t.Value == "Switch").Key;
+        game.Answers.Add(0);
+        game.Play(Scripts.Find("Switch", "underground_ruins")!);
+        Assert.Equal(0, game.Story.Var("VAR_UNOVA_RUINS_DOOR"));
+        game.Story.Set("UnovaHallOfFame");
+        foreach (var (chamber, area, species) in new[] { ("RockPeakChamber", "rock_peak_chamber", "Regirock"), ("IronChamber", "iron_chamber", "Registeel"), ("IcebergChamber", "iceberg_chamber", "Regice") })
+        {
+            game.Arrive("UndergroundRuins", 24, 11);
+            game.Answers.Add(0);
+            game.Play(Scripts.Find("Switch", "underground_ruins")!);
+            game.Arrive("UndergroundRuins", 15, 3);
+            game.Step("TheDoor");
+            Assert.Equal(chamber, game.Map.Name);
+            Assert.True(game.Map.IsWalkable(15, 59));
+            // run from, it is back the next time; caught or beaten, it is gone for good
+            string fought = $"FLAG_UNOVA_FOUGHT_{species.ToUpperInvariant()}";
+            game.Fight = BattleOutcome.Fled;
+            var fled = game.Talk("0", area);
+            Assert.Contains(fled.Log, l => l.StartsWith($"wildbattle {species} 65"));
+            Assert.False(game.Story.Has(fought));
+            game.Arrive(chamber, 15, 59);
+            game.Fight = BattleOutcome.Won;
+            game.Talk("0", area);
+            Assert.True(game.Story.Has(fought));
+            game.Arrive(chamber, 15, 59);
+            Assert.Null(game.Present("0", area));
+        }
+        // a fourth step brings the halls back
+        game.Arrive("UndergroundRuins", 24, 11);
+        game.Answers.Add(0);
+        game.Play(Scripts.Find("Switch", "underground_ruins")!);
+        Assert.Equal(0, game.Story.Var("VAR_UNOVA_RUINS_DOOR"));
+        Assert.Equal(24, lair.X);
+    }
+
+    [Fact]
+    public void MistraltonCavesUpperFloorAndTheGuidanceChamberAreOpenAndTheWayToClayTunnelStaysShut()
+    {
+        var game = PastTheChasm();
+        game.Arrive("MistraltonCave", 13, 17);
+        Assert.DoesNotContain(game.Map.Warps, w => w.TargetMap.StartsWith("ClayTunnel") && !w.Shut);
+        game.Through("MistraltonCave_2F");
+        game.Through("GuidanceChamber");
+        Assert.Equal("GuidanceChamber", game.Map.Name);
+        var painter = game.Talk("2", "guidance_chamber");
+        Assert.False(game.Story.Has("FLAG_UNOVA_PAINTER_SAW_COBALION"));
+        game.Party.RemoveAt(game.Party.Count - 1); game.Party.Add(new Pokemon(PokemonDatabase.Get("Cobalion")!, 65));
+        game.Talk("2", "guidance_chamber");
+        Assert.True(game.Story.Has("FLAG_UNOVA_PAINTER_SAW_COBALION"));
+        Assert.NotEmpty(painter.Transcript);
+    }
     private static string AreaAt(WorldMatrixFile matrix, int x, int y)
     {
         var cells = matrix.Areas[y].Split(' ', StringSplitOptions.RemoveEmptyEntries);

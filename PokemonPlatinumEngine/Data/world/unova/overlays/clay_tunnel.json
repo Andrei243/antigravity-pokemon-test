@@ -1,0 +1,44 @@
+{
+  // Clay Tunnel's first floor (plan 22 · U10, part b), Black 2's, its mouth in Driftveil City opened once Unova's Hall of Fame is
+  // entered; its boulders, balls and hidden things in the area file, our words. Three workers (6 to 8,
+  // FLAG_UNOVA_CLAY_TUNNEL_DUG) are digging through a heap of rock (9 to 15, 19 to 21) that shuts the way on to the second floor;
+  // with Rock Smash on the team they break it together (clay_tunnel.txt), and the heap on the second floor's side goes with it.
+  // Mining carts run between the floors: the workers by them (16 to 18) take the player for a ride
+  "area": "clay_tunnel",
+  "bgmTrack": "unova/seaside_cave",
+  "battleArena": "Cave",
+  "holes": [
+    { "x": 22, "z": 12, "width": 2, "depth": 2, "filledBy": "FLAG_UNOVA_CLAY_TUNNEL_HOLE_1" },
+    { "x": 17, "z": 26, "width": 2, "depth": 2, "filledBy": "FLAG_UNOVA_CLAY_TUNNEL_HOLE_2" }
+  ],
+  "pits": [
+    { "x": 22, "z": 12, "script": "FillHole1" },
+    { "x": 23, "z": 12, "script": "FillHole1" },
+    { "x": 22, "z": 13, "script": "FillHole1" },
+    { "x": 23, "z": 13, "script": "FillHole1" },
+    { "x": 17, "z": 26, "script": "FillHole2" },
+    { "x": 18, "z": 26, "script": "FillHole2" },
+    { "x": 17, "z": 27, "script": "FillHole2" },
+    { "x": 18, "z": 27, "script": "FillHole2" }
+  ],
+  "people": {
+    "0": { "name": "Teppei", "trainer": { "dialogueBefore": "I come down here for the clay. The battles are a bonus!", "dialogueAfter": "Back to the clay, then." } },
+    "1": { "name": "Morgann", "trainer": { "dialogueBefore": "Hard hat on, Pokémon out! This tunnel won't dig itself!", "dialogueAfter": "That knocked the dust right off me." } },
+    "6": { "name": "Worker", "npcType": "worker", "script": "Digging", "still": true, "hiddenBy": "FLAG_UNOVA_CLAY_TUNNEL_DUG" },
+    "7": { "name": "Worker", "npcType": "worker", "script": "Digging", "still": true, "hiddenBy": "FLAG_UNOVA_CLAY_TUNNEL_DUG" },
+    "8": { "name": "Worker", "npcType": "worker", "script": "Diggers", "still": true, "hiddenBy": "FLAG_UNOVA_CLAY_TUNNEL_DUG" },
+    "16": { "name": "Worker", "npcType": "worker", "script": "CartToSecond", "still": true, "hiddenBy": "" },
+    "17": { "name": "Worker", "npcType": "worker", "script": "CartToThirdEast", "still": true, "hiddenBy": "" },
+    "18": { "name": "Worker", "npcType": "worker", "script": "CartToThirdWest", "still": true, "hiddenBy": "" },
+    "9": { "name": "Rocks", "npcType": "Rubble", "script": "DugRocks", "hiddenBy": "FLAG_UNOVA_CLAY_TUNNEL_DUG", "still": true },
+    "10": { "name": "Rocks", "npcType": "Rubble", "script": "DugRocks", "hiddenBy": "FLAG_UNOVA_CLAY_TUNNEL_DUG", "still": true },
+    "11": { "name": "Rocks", "npcType": "Rubble", "script": "DugRocks", "hiddenBy": "FLAG_UNOVA_CLAY_TUNNEL_DUG", "still": true },
+    "12": { "name": "Rocks", "npcType": "Rubble", "script": "DugRocks", "hiddenBy": "FLAG_UNOVA_CLAY_TUNNEL_DUG", "still": true },
+    "13": { "name": "Rocks", "npcType": "Rubble", "script": "DugRocks", "hiddenBy": "FLAG_UNOVA_CLAY_TUNNEL_DUG", "still": true },
+    "14": { "name": "Rocks", "npcType": "Rubble", "script": "DugRocks", "hiddenBy": "FLAG_UNOVA_CLAY_TUNNEL_DUG", "still": true },
+    "15": { "name": "Rocks", "npcType": "Rubble", "script": "DugRocks", "hiddenBy": "FLAG_UNOVA_CLAY_TUNNEL_DUG", "still": true },
+    "19": { "name": "Rocks", "npcType": "Rubble", "script": "DugRocks", "hiddenBy": "FLAG_UNOVA_CLAY_TUNNEL_DUG", "still": true },
+    "20": { "name": "Rocks", "npcType": "Rubble", "script": "DugRocks", "hiddenBy": "FLAG_UNOVA_CLAY_TUNNEL_DUG", "still": true },
+    "21": { "name": "Rocks", "npcType": "Rubble", "script": "DugRocks", "hiddenBy": "FLAG_UNOVA_CLAY_TUNNEL_DUG", "still": true }
+  }
+}

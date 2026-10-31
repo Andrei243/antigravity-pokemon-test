@@ -1,9 +1,31 @@
 {
   // Mistralton Cave (plan 22 · U7, part a): the cave off Route 6 that Black 2 leads to Clay Tunnel and the Guidance Chamber; both
-  // ways stay shut until the plan's post-game (plan 22 · U10). Its three boulders (0 to 2) move with Strength
+  // ways stay shut until the plan's post-game (plan 22 · U10). Its three boulders (0 to 2) move with Strength. Since U10, part b
+  // its stairs up (warp 1) lead to the upper floor and the Guidance Chamber; the way to Clay Tunnel (warp 2) stays shut, Black 2's
+  // heap of rock standing on its tile at the tunnel's end
   "area": "mistralton_cave",
   "bgmTrack": "sinnoh/cave",
   "battleArena": "Cave",
+  "holes": [
+    { "x": 7, "z": 7, "width": 2, "depth": 2, "filledBy": "FLAG_UNOVA_MISTRALTON_CAVE_HOLE_1" },
+    { "x": 5, "z": 16, "width": 2, "depth": 2, "filledBy": "FLAG_UNOVA_MISTRALTON_CAVE_HOLE_2" },
+    { "x": 17, "z": 25, "width": 2, "depth": 2, "filledBy": "FLAG_UNOVA_MISTRALTON_CAVE_HOLE_3" }
+  ],
+  "pits": [
+    { "x": 7, "z": 7, "script": "FillHole1" },
+    { "x": 8, "z": 7, "script": "FillHole1" },
+    { "x": 7, "z": 8, "script": "FillHole1" },
+    { "x": 8, "z": 8, "script": "FillHole1" },
+    { "x": 5, "z": 16, "script": "FillHole2" },
+    { "x": 6, "z": 16, "script": "FillHole2" },
+    { "x": 5, "z": 17, "script": "FillHole2" },
+    { "x": 6, "z": 17, "script": "FillHole2" },
+    { "x": 17, "z": 25, "script": "FillHole3" },
+    { "x": 18, "z": 25, "script": "FillHole3" },
+    { "x": 17, "z": 26, "script": "FillHole3" },
+    { "x": 18, "z": 26, "script": "FillHole3" }
+  ],
+  "locked": [ 2 ],
   "people": {
     "3": {
       "name": "Jebediah",

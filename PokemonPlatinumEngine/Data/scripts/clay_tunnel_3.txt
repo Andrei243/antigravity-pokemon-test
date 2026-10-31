@@ -1,0 +1,73 @@
+# Clay Tunnel's third floor (plan 22 · U10, part b). docs/scripts.md describes the language; the lines are our own, on Black 2's
+# beats (the decompilation's res/field/scripts/clay_tunnel_3.s, read for the order alone): the workers by the mining carts ride
+# the player up to the first floor or to the cart at the far end of this floor.
+
+script CartUpWest
+  call CartQuestion
+  if no end
+  call CartRide
+  warp "ClayTunnel_1" 16 7 down
+  end
+
+script CartUpEast
+  call CartQuestion
+  if no end
+  call CartRide
+  warp "ClayTunnel_1" 24 14 left
+  end
+
+script CartAcrossSouthEast
+  call CartQuestion
+  if no end
+  call CartRide
+  warp "ClayTunnel_3" 26 73 left
+  end
+
+script CartAcrossMiddle
+  call CartQuestion
+  if no end
+  call CartRide
+  warp "ClayTunnel_3" 58 90 left
+  end
+
+script CartAcrossSouth
+  call CartQuestion
+  if no end
+  call CartRide
+  warp "ClayTunnel_3" 26 48 left
+  end
+
+script CartAcrossNorth
+  call CartQuestion
+  if no end
+  call CartRide
+  warp "ClayTunnel_3" 47 88 down
+  end
+
+script CartQuestion
+  face self player
+  speaker "Worker"
+  ask "You there! Fancy a ride in the mining cart?"
+  if yes return
+  say "Whenever you like, just come and ask me."
+  return
+
+
+script CartRide
+  speaker "Worker"
+  say "Hop in and hold on tight!"
+  return
+
+# The holes of this floor a boulder pushed with Strength fills (Black 2's StrengthHole tiles, 2 by 2; plan 22 · U10, part b), as the
+# Relic Passage's are: each pit's script lets the boulder fall in and the hole is floor from then on
+script FillHole1
+  call BoulderFallsIn
+  setflag FLAG_UNOVA_CLAY_TUNNEL_3_HOLE_1
+  hide self
+  end
+
+script FillHole2
+  call BoulderFallsIn
+  setflag FLAG_UNOVA_CLAY_TUNNEL_3_HOLE_2
+  hide self
+  end

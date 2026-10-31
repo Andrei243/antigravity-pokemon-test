@@ -1,0 +1,63 @@
+{
+  "key": "underground_ruins",
+  "index": 565,
+  "name": "Underground Ruins",
+  "matrix": 351,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave1",
+  "dayMusic": "BGM_SW_D_REGI",
+  "nightMusic": "BGM_SW_D_REGI",
+  "encounters": "ENCOUNTERS_UNDERGROUND_RUINS",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Boldore", "level": 54 },
+    { "species": "Durant", "level": 54 },
+    { "species": "Boldore", "level": 55 },
+    { "species": "Woobat", "level": 54 },
+    { "species": "Lairon", "level": 55 },
+    { "species": "Nosepass", "level": 55 },
+    { "species": "Lairon", "level": 57 },
+    { "species": "Nosepass", "level": 57 },
+    { "species": "Boldore", "level": 56 },
+    { "species": "Onix", "level": 57 },
+    { "species": "Boldore", "level": 56 },
+    { "species": "Onix", "level": 57 }
+  ],
+  "landRate": 18,
+  "shakingGrass": [
+    { "species": "Excadrill", "level": 54 },
+    { "species": "Onix", "level": 54 },
+    { "species": "Excadrill", "level": 55 },
+    { "species": "Excadrill", "level": 55 },
+    { "species": "Excadrill", "level": 56 },
+    { "species": "Excadrill", "level": 56 },
+    { "species": "Excadrill", "level": 57 },
+    { "species": "Excadrill", "level": 57 },
+    { "species": "Excadrill", "level": 57 },
+    { "species": "Steelix", "level": 57 },
+    { "species": "Excadrill", "level": 57 },
+    { "species": "Steelix", "level": 57 }
+  ],
+  "shakingGrassRate": 13,
+  "warps": [
+    { "x": 11, "z": 26, "to": "clay_tunnel_3", "toWarp": 3 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "psychic_m", "movement": "none", "x": 13, "z": 10, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "7" }
+  ],
+  "signs": [
+    { "x": 24, "z": 10, "type": 0, "script": "6" },
+    { "x": 23, "z": 11, "type": 0, "script": "6" },
+    { "x": 24, "z": 12, "type": 0, "script": "6" },
+    { "x": 25, "z": 11, "type": 0, "script": "6" }
+  ],
+  "triggers": [
+    { "x": 13, "z": 2, "width": 5, "depth": 1, "script": "4", "variable": "", "value": "0" }
+  ]
+}

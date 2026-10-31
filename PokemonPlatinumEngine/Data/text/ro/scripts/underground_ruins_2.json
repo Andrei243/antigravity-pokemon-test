@@ -1,0 +1,42 @@
+{
+  "PlaquePlace": [
+    {
+      "en": [
+        "Here waits the one who stands beside the sun to guard this place."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "PlaqueHint": [
+    {
+      "en": [
+        "The way is found by two answers. This hall holds one of them. Seek the other while the moon is in the sky."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "PlaqueWorld": [
+    {
+      "en": [
+        "Day and night, black and white: the world was made in two halves."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "PlaqueGuardians": [
+    {
+      "en": [
+        "The guardians were shaped from stone, from ice and from molten iron..."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

@@ -790,6 +790,8 @@ public static class RegionDatabase
                 "Route23_House1", "Route23_House2", "UnovaVictoryRoad", "UnovaVictoryRoad_PokemonCenter", "UnovaVictoryRoad_Ruins", "UnovaVictoryRoad_Grove", "UnovaVictoryRoad_Falls", "UnovaVictoryRoad_Cave", "UnovaVictoryRoad_Pool", "UnovaVictoryRoad_Summit", "UnovaVictoryRoad_Hollow", "UnovaVictoryRoad_Tunnel", "UnovaPokemonLeague", "UnovaPokemonLeague_PokemonCenter",
                 // Plan 22 · U9, part c: the League's hall, the Elite Four's rooms, the way down, the Champion's room and the Hall of Fame
                 "UnovaPokemonLeague_Hall", "UnovaPokemonLeague_ShauntalsRoom", "UnovaPokemonLeague_GrimsleysRoom", "UnovaPokemonLeague_MarshalsRoom", "UnovaPokemonLeague_CaitlinsRoom", "UnovaPokemonLeague_Descent", "UnovaPokemonLeague_ChampionsRoom", "UnovaPokemonLeague_HallOfFame",
+                // Plan 22 · U10, part b: the caves of the old roads off the open ones
+                "MistraltonCave_2F", "GuidanceChamber", "ClayTunnel_1", "ClayTunnel_2", "ClayTunnel_3", "UndergroundRuins", "UndergroundRuins_Sun", "UndergroundRuins_Moon", "RockPeakChamber", "IcebergChamber", "IronChamber",
             }
         },
         new() { Id = Kalos, Name = "Kalos", Generation = 6 },

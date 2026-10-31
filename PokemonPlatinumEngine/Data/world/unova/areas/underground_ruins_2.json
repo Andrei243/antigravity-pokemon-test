@@ -1,0 +1,59 @@
+{
+  "key": "underground_ruins_2",
+  "index": 609,
+  "name": "Underground Ruins",
+  "matrix": 409,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave1",
+  "dayMusic": "BGM_SW_D_REGI",
+  "nightMusic": "BGM_SW_D_REGI",
+  "encounters": "ENCOUNTERS_UNDERGROUND_RUINS_2",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Boldore", "level": 54 },
+    { "species": "Durant", "level": 54 },
+    { "species": "Boldore", "level": 55 },
+    { "species": "Woobat", "level": 54 },
+    { "species": "Lairon", "level": 55 },
+    { "species": "Nosepass", "level": 55 },
+    { "species": "Lairon", "level": 57 },
+    { "species": "Nosepass", "level": 57 },
+    { "species": "Boldore", "level": 56 },
+    { "species": "Onix", "level": 57 },
+    { "species": "Boldore", "level": 56 },
+    { "species": "Onix", "level": 57 }
+  ],
+  "landRate": 18,
+  "shakingGrass": [
+    { "species": "Excadrill", "level": 54 },
+    { "species": "Onix", "level": 54 },
+    { "species": "Excadrill", "level": 55 },
+    { "species": "Excadrill", "level": 55 },
+    { "species": "Excadrill", "level": 56 },
+    { "species": "Excadrill", "level": 56 },
+    { "species": "Excadrill", "level": 57 },
+    { "species": "Excadrill", "level": 57 },
+    { "species": "Excadrill", "level": 57 },
+    { "species": "Steelix", "level": 57 },
+    { "species": "Excadrill", "level": 57 },
+    { "species": "Steelix", "level": 57 }
+  ],
+  "shakingGrassRate": 13,
+  "warps": [],
+  "objects": [],
+  "signs": [
+    { "x": 20, "z": 50, "type": 0, "script": "3" },
+    { "x": 4, "z": 17, "type": 0, "script": "6" },
+    { "x": 12, "z": 18, "type": 0, "script": "5" },
+    { "x": 18, "z": 18, "type": 0, "script": "4" }
+  ],
+  "triggers": [
+    { "x": 14, "z": 60, "width": 3, "depth": 1, "script": "1", "variable": "", "value": "0" }
+  ]
+}
