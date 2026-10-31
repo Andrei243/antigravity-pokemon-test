@@ -414,11 +414,15 @@ in vec3 fragWorld;
 uniform sampler2D texture0;
 uniform vec3 sunColor;
 uniform vec3 skyAmbient;
+// A bridge's deck over whoever is drawn (Relief.DeckOver): x0, x1 in tiles, the deck's height, and 1 while it holds.
+// Nothing of them is drawn over the deck's tiles above its height, so the boards hide whoever walks under them
+uniform vec4 deckOver;
 out vec4 finalColor;
 " + FogFunctions + CloudFunctions + MirrorFunctions + @"
 void main()
 {
     MirrorClip(fragWorld);
+    if (deckOver.w > 0.5 && fragWorld.y > deckOver.z && fragWorld.x >= deckOver.x && fragWorld.x <= deckOver.y) discard;
     vec4 texel = texture(texture0, fragTexCoord);
     if (texel.a < 0.5) discard;
     vec3 color = texel.rgb * fragColor.rgb * (skyAmbient * 0.62 + sunColor * 0.78 * CloudLight(fragWorld));
@@ -1095,6 +1099,13 @@ void main()
             Set(shader, "mirrorClip", new Vector2(1f, plane - Reflections.Clearance));
         }
     }
+
+    /// <summary>
+    /// The deck over the next person drawn with the sprite program (<see cref="Relief.DeckOver"/>; style guide,
+    /// "Relief"), or null for none: nothing of them is drawn above it over its tiles.
+    /// </summary>
+    public void SetDeckOver((float X0, float X1, float Top)? deck) =>
+        Set(Sprite, "deckOver", deck is { } d ? new Vector4(d.X0, d.X1, d.Top, 1f) : Vector4.Zero);
 
     /// <summary>Ends the mirror pass: nothing is cut off any more. Call <see cref="SetUpright"/> for the scene after it.</summary>
     public void EndMirrorPass()

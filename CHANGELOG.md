@@ -4,6 +4,9 @@ What changes from one release to the next, for players. Every session's close-ou
 
 ## [Unreleased]
 
+### Fixed
+- The Solaceon Ruins' rooms (and other small one-room caves) are now in the middle of the screen with darkness round their walls, instead of tucked into a corner beside a wide field of rock that looked like floor, so the way through each room is easy to see. And walking under the footbridge on Route 205 on the way to Eterna Forest, you now pass under its planks instead of your head poking up through them.
+
 ### Added
 - Auto-battle: turn on the new AUTO-BATTLE option and a battle's commands get an AUTO button (left of FIGHT). Choose it and the battle plays itself, each of your Pokémon using its strongest move and the lines read on by themselves, until one of your Pokémon faints, a move is to be learned or the battle ends; Esc stops it at any time. It never uses the bag, so it never throws a ball.
 - With the box tools on, the PC keeps teams by name: SAVE THIS TEAM under TEAMS on a box's menu remembers who is on your team (up to eight teams), and SWAP IN brings a kept team out of the boxes in one step, healed, with your current team put where they were. A member you have since released is simply left out. JUDGE on a Pokémon's menu shows how good each of its stats is born, in six words from NOTHING to FLAWLESS.
