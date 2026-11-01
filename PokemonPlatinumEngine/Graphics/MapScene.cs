@@ -478,10 +478,11 @@ internal sealed class MapScene
                 {
                     // A bridge: its boards at the deck's height. Water runs on under it (the water's own mesh
                     // draws that); over dry ground the ground under it is drawn in shade. A boardwalk lies a
-                    // hair above the water it rests on.
+                    // hair above the water it rests on. (In a cave the shade is the rock's, not a lawn's: the Seafoam
+                    // Islands' B2F, plan 20 · J15, had a strip of green under its plank bridge.)
                     if (!Map.IsDeepWater(tx, ty) && deck - MathF.Max(MathF.Max(nw, ne), MathF.Max(sw, se)) > 0.3f)
                         flat.Quad(new(tx, sw, ty + 1), new(tx + 1, se, ty + 1), new(tx + 1, ne, ty), new(tx, nw, ty), default, default, default, default,
-                            Map.IsIndoors ? new Color(52, 46, 52, 255) : new Color(70, 96, 78, 255), Up);
+                            Map.IsIndoors || Map.IsCave ? new Color(52, 46, 52, 255) : new Color(70, 96, 78, 255), Up);
                     nw = ne = sw = se = deck + WaterLevel * 3f;
                 }
 

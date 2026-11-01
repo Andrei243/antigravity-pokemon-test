@@ -635,6 +635,8 @@ public static class WorldMapBuilder
         RocksInWater(map);
         foreach (var (key, area) in areas)
             if (area.Open) PlaceEvents(world, map, key, area, people: swap == null);
+        // Whoever a DS game's room stands behind a counter stands on the floor behind it, the counter before them (plan 20 · J15)
+        if (room && !world.Index.BuildingsAtDoors) BehindTheCounters(map);
         // In the Distortion World a way somewhere is a slab set into the island
         if (nothing)
             foreach (var warp in map.Warps)
@@ -783,6 +785,93 @@ public static class WorldMapBuilder
                     maxZ = Math.Max(maxZ, z);
                 }
         return (Math.Min(T, maxX + 2), Math.Min(T, maxZ + 2));
+    }
+
+    /// <summary>The most tiles a counter's back may cover (<see cref="BehindTheCounters"/>): more is a block of wall.</summary>
+    internal const int MostBehindACounter = 30;
+
+    /// <summary>
+    /// Whoever a DS game's room stands behind a counter (plan 20 · J15: the Celadon store's clerks, Silph Co.'s
+    /// receptionist, every Mart's and gate's): the original blocks the counter and the ground behind it alike and marks
+    /// the counter's rim <see cref="TileBehavior.Counter"/>, across which they are spoken to, so a room cut to what is
+    /// reached walled the lot and stood them inside a block of wall. The ground behind is floor, blocked as it was:
+    /// the blocked tiles joined to the person's that no counter and no open floor bound, inside the room's walls (never
+    /// the back wall's rows (<see cref="Map.RoomCorner"/>, which so stays where it was) nor the front wall's foot, and at most <see cref="MostBehindACounter"/> of them), when a
+    /// counter's rim is beside the person; and the rim beside that floor, with the rim it runs on into, is a counter
+    /// (<see cref="PropType.Counter"/>), still blocked and still a counter to be spoken across. No GPU calls.
+    /// </summary>
+    internal static void BehindTheCounters(Map map)
+    {
+        int w = map.Width, h = map.Height;
+        // The room's floor begins where it did (its back wall and side wall stay where they stand)
+        var (left, back) = map.RoomCorner();
+        bool Inside(int x, int z) => x >= Math.Max(1, left) && x <= w - 2 && z >= back && z <= h - 3;
+        bool Wall(int x, int z) => map.InBounds(x, z) && map.IsSolid(x, z) && map.GetGroundTile(x, z) == TileType.Wall;
+        bool Rim(int x, int z) => Wall(x, z) && map.BehaviourAt(x, z) == TileBehavior.Counter;
+        bool Open(int x, int z) => map.InBounds(x, z) && !map.IsSolid(x, z);
+        var ways = new[] { (1, 0), (-1, 0), (0, 1), (0, -1) };
+        bool TouchesOpen(int x, int z) => ways.Any(d => Open(x + d.Item1, z + d.Item2));
+
+        var behind = new HashSet<(int X, int Z)>();
+        foreach (var person in map.Everyone)
+        {
+            if (person.IsThing) continue;
+            int px = person.GridX, pz = person.GridY;
+            if (behind.Contains((px, pz)) || !Wall(px, pz) || !Inside(px, pz) || TouchesOpen(px, pz)) continue;
+            if (!ways.Any(d => Rim(px + d.Item1, pz + d.Item2))) continue;
+            // Someone the original stands on the counter itself (Black 2's gate guards in their booth) stands behind it
+            if (Rim(px, pz)) { behind.Add((px, pz)); continue; }
+            HashSet<(int X, int Z)> Behind(int reach)
+            {
+                var zone = new HashSet<(int X, int Z)>();
+                var open = new Stack<(int X, int Z)>();
+                open.Push((px, pz));
+                while (open.Count > 0 && zone.Count <= MostBehindACounter)
+                {
+                    var (x, z) = open.Pop();
+                    if (Math.Abs(x - px) > reach || Math.Abs(z - pz) > reach) continue;
+                    if (zone.Contains((x, z)) || !Wall(x, z) || Rim(x, z) || !Inside(x, z) || TouchesOpen(x, z)) continue;
+                    zone.Add((x, z));
+                    foreach (var (dx, dz) in ways) open.Push((x + dx, z + dz));
+                }
+                return zone;
+            }
+            // (where the blocked ground runs on into a mass of wall, only the ground round the person: Black 2's Marine Tube)
+            var behindThem = Behind(int.MaxValue);
+            if (behindThem.Count > MostBehindACounter) behindThem = Behind(1);
+            behind.UnionWith(behindThem);
+        }
+        if (behind.Count == 0) return;
+
+        // The rim beside the floor behind, and the rim it runs on into
+        var rim = new HashSet<(int X, int Z)>();
+        var next = new Stack<(int X, int Z)>();
+        foreach (var (x, z) in behind)
+            for (int dz = -1; dz <= 1; dz++)
+                for (int dx = -1; dx <= 1; dx++)
+                    if (Rim(x + dx, z + dz)) next.Push((x + dx, z + dz));
+        while (next.Count > 0)
+        {
+            var (x, z) = next.Pop();
+            if (!Rim(x, z) || behind.Contains((x, z)) || x < Math.Max(1, left) || x > w - 2 || z < back || z > h - 2 || !rim.Add((x, z))) continue;
+            foreach (var (dx, dz) in ways) next.Push((x + dx, z + dz));
+        }
+
+        foreach (var (x, z) in behind) map.SetGroundTile(x, z, TileType.Floor, isSolid: true);
+        foreach (var (x, z) in rim) map.SetGroundTile(x, z, TileType.Floor, isSolid: true);
+        // The counter in lengths: along a row where it runs on, else down a column
+        var laid = new HashSet<(int X, int Z)>();
+        foreach (var (sx, sz) in rim.OrderBy(t => t.Z).ThenBy(t => t.X))
+        {
+            if (laid.Contains((sx, sz))) continue;
+            int across = 1, down = 1;
+            while (rim.Contains((sx + across, sz)) && !laid.Contains((sx + across, sz))) across++;
+            if (across == 1)
+                while (rim.Contains((sx, sz + down)) && !laid.Contains((sx, sz + down))) down++;
+            for (int z = sz; z < sz + down; z++)
+                for (int x = sx; x < sx + across; x++) laid.Add((x, z));
+            map.Props.Add(new Prop { Type = PropType.Counter, X = sx, Y = sz, Width = across, Depth = down });
+        }
     }
 
     /// <summary>The prefix of a chunk's prop that is a piece of a GBA room's furniture (<c>gba:Table</c>; plan 19 · K2).</summary>
