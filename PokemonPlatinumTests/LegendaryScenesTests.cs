@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using PokemonPlatinumEngine.Data;
+using PokemonPlatinumEngine.Overworld;
 using PokemonPlatinumEngine.Story;
 using Xunit;
 
@@ -18,17 +19,6 @@ public class LegendaryScenesTests
     /// </summary>
     private static readonly Dictionary<string, string> StillBare = new()
     {
-        // Unova's legends after the League
-        ["unova_route_13.Cobalion Cobalion"] = "LS8",
-        ["unova_route_11.Virizion Virizion"] = "LS8",
-        ["unova_route_22.Terrakion Terrakion"] = "LS8",
-        ["unova_route_23.Azelf Azelf"] = "LS8",
-        ["celestial_tower.Mesprit Mesprit"] = "LS8",
-        ["giant_chasm_6.KyuremRests Kyurem"] = "LS8",
-        ["reversal_mountain_5.Heatran Heatran"] = "LS8",
-        ["rock_peak_chamber.Regirock Regirock"] = "LS8",
-        ["iceberg_chamber.Regice Regice"] = "LS8",
-        ["iron_chamber.Registeel Registeel"] = "LS8",
     };
 
     /// <summary>Whether a wild battle's species (or form) is a legendary or a mythical one.</summary>
@@ -73,6 +63,43 @@ public class LegendaryScenesTests
                     yield return ($"{script.FullName} {battle.Name}", staged);
                 }
             }
+        }
+    }
+
+    /// <summary>
+    /// FireRed's roaming beast (plan 29 · LS9): a Champion of Kanto with the National Pokédex sees it race over Pallet
+    /// Town, and it roams Kanto's routes from a slot of its own, by FireRed's rule of the starter; once only.
+    /// </summary>
+    [Theory]
+    [InlineData("Bulbasaur", "Entei")]
+    [InlineData("Charmander", "Suicune")]
+    [InlineData("Squirtle", "Raikou")]
+    [InlineData("Turtwig", "Raikou")]
+    public void KantosRoamingBeastIsTheStartersAndRoamsKanto(string starter, string beast)
+    {
+        var host = new HeadlessScriptHost { NationalDex = true };
+        host.Story.ChooseStarter(starter);
+        host.Story.Set("FLAG_SYS_GAME_CLEAR");
+        var runner = new ScriptRunner(ScriptLibrary.Default, host);
+        runner.Start(ScriptLibrary.Default.Find("OnEnter", "pallet_town")!, null);
+        runner.RunToEnd();
+        Assert.Empty(host.Problems);
+
+        int slot = Roamers.SlotOf(beast, "kanto")!.Value;
+        var roamer = host.Encounters.Roamers[slot];
+        Assert.True(roamer.Active);
+        Assert.Equal(50, roamer.Level);
+        Assert.Contains(Roamers.PlaceOf(roamer), Roamers.KantoRoutes);
+        Assert.Equal("VAR_ROAMING_KANTO_" + beast.ToUpperInvariant() + "_STATE", Roamers.StateVariable(slot));
+        // Johto's Raikou and Entei stay where they are
+        Assert.All(host.Encounters.Roamers.Where((r, s) => s != slot), r => Assert.False(r.Active));
+        Assert.True(host.Story.Has("FLAG_KANTO_ROAMER_LOOSE"));
+
+        var rng = new System.Random(3);
+        for (int i = 0; i < 300; i++)
+        {
+            Roamers.PlayerWalkedInto(host.Encounters, i % 2 == 0 ? "route_1" : "route_2", rng);
+            Assert.Contains(Roamers.PlaceOf(roamer), Roamers.KantoRoutes);
         }
     }
 

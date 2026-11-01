@@ -36,8 +36,21 @@ public static class Roamers
         ("Raikou", 40), ("Entei", 40),
         // Emerald's eon roamer (plan 21 · H9, part b; ROAMER_SPECIES at level 40), whichever of the two the player names
         // on the television's report after Hoenn's Hall of Fame
-        ("Latias", 40), ("Latios", 40)
+        ("Latias", 40), ("Latios", 40),
+        // FireRed's roaming beast (plan 29 · LS9; GetRoamerSpecies, CreateInitialRoamerMon at level 50): one of the three,
+        // by the starter chosen, set loose over Kanto once Oak has given the National Pokédex. Slots of their own, so
+        // that a Raikou of Kanto and one of Johto never share their place or their story's variable
+        ("Raikou", 50), ("Entei", 50), ("Suicune", 50)
     };
+
+    /// <summary>The region each slot roams, in <see cref="Slots"/>' order.</summary>
+    private static readonly string[] SlotRegions =
+    {
+        "sinnoh", "sinnoh", "sinnoh", "sinnoh", "sinnoh", "sinnoh", "johto", "johto", "hoenn", "hoenn", "kanto", "kanto", "kanto"
+    };
+
+    /// <summary>The region a slot roams (<c>sinnoh</c>, <c>johto</c>, <c>hoenn</c>, <c>kanto</c>).</summary>
+    public static string RegionOf(int slot) => SlotRegions[slot];
 
     /// <summary>The slots that roam Johto (HeartGold's <c>roamer_idx == ROAMER_RAIKOU || ROAMER_ENTEI</c>): the rest roam Sinnoh.</summary>
     public static bool InJohto(string species) => species is "Raikou" or "Entei";
@@ -46,7 +59,53 @@ public static class Roamers
     public static bool InHoenn(string species) => species is "Latias" or "Latios";
 
     /// <summary>The slots that roam Sinnoh: Platinum's six.</summary>
-    public static bool InSinnoh(string species) => !InJohto(species) && !InHoenn(species);
+    public static bool InSinnoh(string species) => !InJohto(species) && !InHoenn(species) && species != "Suicune";
+
+    /// <summary>Whether a roamer roams Sinnoh, by its slot's region.</summary>
+    public static bool InSinnoh(Roamer roamer) => (roamer.Region ?? RegionBySpecies(roamer.Species)) == "sinnoh";
+
+    private static string RegionBySpecies(string species) => InJohto(species) ? "johto" : InHoenn(species) ? "hoenn" : species == "Suicune" ? "kanto" : "sinnoh";
+
+    /// <summary>
+    /// FireRed's places the roaming beast goes (its <c>sRoamerLocations</c>, the first column: Routes 1 to 25, with
+    /// Route 21's north half alone), by their area keys.
+    /// </summary>
+    public static readonly string[] KantoRoutes =
+    {
+        "route_1", "route_2", "route_3", "route_4", "route_5", "route_6", "route_7", "route_8", "route_9", "route_10",
+        "route_11", "route_12", "route_13", "route_14", "route_15", "route_16", "route_17", "route_18", "route_19",
+        "route_20", "route_21_north", "route_22", "route_23", "route_24", "route_25"
+    };
+
+    // FireRed's sRoamerLocations' other columns, the places beside each, in KantoRoutes' order
+    private static readonly int[][] KantoNearby =
+    {
+        new[] { 1, 20, 21 },          // 1: 2, 21 North, 22
+        new[] { 0, 2, 21 },           // 2: 1, 3, 22
+        new[] { 1, 3 },               // 3: 2, 4
+        new[] { 2, 4, 8, 23 },        // 4: 3, 5, 9, 24
+        new[] { 3, 5, 6, 7, 8, 23 },  // 5: 4, 6, 7, 8, 9, 24
+        new[] { 4, 6, 7, 10 },        // 6: 5, 7, 8, 11
+        new[] { 4, 5, 7, 15 },        // 7: 5, 6, 8, 16
+        new[] { 4, 5, 6, 9, 11 },     // 8: 5, 6, 7, 10, 12
+        new[] { 3, 4, 9, 23 },        // 9: 4, 5, 10, 24
+        new[] { 7, 8, 11 },           // 10: 8, 9, 12
+        new[] { 5, 11 },              // 11: 6, 12
+        new[] { 9, 10, 12 },          // 12: 10, 11, 13
+        new[] { 11, 13 },             // 13: 12, 14
+        new[] { 12, 14 },             // 14: 13, 15
+        new[] { 13, 17, 18 },         // 15: 14, 18, 19
+        new[] { 6, 16 },              // 16: 7, 17
+        new[] { 15, 17 },             // 17: 16, 18
+        new[] { 14, 16, 18 },         // 18: 15, 17, 19
+        new[] { 14, 17, 19 },         // 19: 15, 18, 20
+        new[] { 18, 20 },             // 20: 19, 21 North
+        new[] { 0, 19 },              // 21 North: 1, 20
+        new[] { 0, 1, 22 },           // 22: 1, 2, 23
+        new[] { 21, 1 },              // 23: 22, 2
+        new[] { 3, 4, 8 },            // 24: 4, 5, 9
+        new[] { 23, 8 }               // 25: 24, 9
+    };
 
     /// <summary>
     /// Hoenn's places a roamer goes (Emerald's <c>sRoamerLocations</c>, its first column: Routes 110, 111 and 117 to
@@ -113,9 +172,20 @@ public static class Roamers
     };
 
     /// <summary>The places a species roams: Johto's for Raikou and Entei, Hoenn's for Latias and Latios, Sinnoh's for the rest.</summary>
-    public static string[] RoutesOf(string species) => InJohto(species) ? JohtoRoutes : InHoenn(species) ? HoennRoutes : Routes;
+    public static string[] RoutesOf(string species) => RoutesIn(RegionBySpecies(species));
 
-    private static int[][] NearbyOf(string species) => InJohto(species) ? JohtoNearby : InHoenn(species) ? HoennNearby : Nearby;
+    /// <summary>The places a roamer goes, by its slot's region.</summary>
+    public static string[] RoutesOf(Roamer roamer) => RoutesIn(roamer.Region ?? RegionBySpecies(roamer.Species));
+
+    private static string[] RoutesIn(string region) => region switch
+    {
+        "johto" => JohtoRoutes, "hoenn" => HoennRoutes, "kanto" => KantoRoutes, _ => Routes
+    };
+
+    private static int[][] NearbyOf(Roamer roamer) => (roamer.Region ?? RegionBySpecies(roamer.Species)) switch
+    {
+        "johto" => JohtoNearby, "hoenn" => HoennNearby, "kanto" => KantoNearby, _ => Nearby
+    };
 
     /// <summary>The places roamers go, by the original's numbers (<c>RoamingPokemonRoutes</c>, <c>RI_*</c>).</summary>
     public static readonly string[] Routes =
@@ -165,21 +235,28 @@ public static class Roamers
     /// <summary>The story's variable that tells what became of a roamer (<c>VAR_ROAMING_&lt;SPECIES&gt;_STATE</c>).</summary>
     public static string StateVariable(string species) => $"VAR_ROAMING_{species.ToUpperInvariant()}_STATE";
 
+    /// <summary>The story's variable of a slot: Kanto's beast's is <c>VAR_ROAMING_KANTO_&lt;SPECIES&gt;_STATE</c>, apart from Johto's.</summary>
+    public static string StateVariable(int slot) => RegionOf(slot) == "kanto"
+        ? $"VAR_ROAMING_KANTO_{Slots[slot].Species.ToUpperInvariant()}_STATE"
+        : StateVariable(Slots[slot].Species);
+
     /// <summary>What the variable says (<c>ROAMER_STATE_*</c>).</summary>
     public const int Roaming = 0, Captured = 1, Defeated = 2, Reset = 3;
 
-    /// <summary>The slot of a species, or null for one that doesn't roam.</summary>
-    public static int? SlotOf(string species)
+    /// <summary>The slot of a species (in a region, when one is named; the first otherwise), or null for one that doesn't roam.</summary>
+    public static int? SlotOf(string species, string? region = null)
     {
-        int slot = Array.FindIndex(Slots, s => string.Equals(s.Species, species, StringComparison.OrdinalIgnoreCase));
-        return slot >= 0 ? slot : null;
+        for (int i = 0; i < Slots.Length; i++)
+            if (string.Equals(Slots[i].Species, species, StringComparison.OrdinalIgnoreCase) && (region == null || SlotRegions[i] == region))
+                return i;
+        return null;
     }
 
     /// <summary>The place a roamer is, by its key; null for one that isn't roaming.</summary>
     public static string? PlaceOf(Roamer roamer)
     {
         if (!roamer.Active) return null;
-        var routes = RoutesOf(roamer.Species);
+        var routes = RoutesOf(roamer);
         return routes[Math.Clamp(roamer.Route, 0, routes.Length - 1)];
     }
 
@@ -203,7 +280,7 @@ public static class Roamers
     public static void MoveRandom(SpecialEncounters state, int slot, Random rng)
     {
         var roamer = state.Roamers[slot];
-        var routes = RoutesOf(roamer.Species);
+        var routes = RoutesOf(roamer);
         string current = routes[Math.Clamp(roamer.Route, 0, routes.Length - 1)];
         while (true)
         {
@@ -218,8 +295,8 @@ public static class Roamers
     public static void MoveNearby(SpecialEncounters state, int slot, Random rng)
     {
         var roamer = state.Roamers[slot];
-        var routes = RoutesOf(roamer.Species);
-        var near = NearbyOf(roamer.Species)[Math.Clamp(roamer.Route, 0, routes.Length - 1)];
+        var routes = RoutesOf(roamer);
+        var near = NearbyOf(roamer)[Math.Clamp(roamer.Route, 0, routes.Length - 1)];
         if (near.Length == 1)
         {
             if (routes[near[0]] == state.PreviousPlace) MoveRandom(state, slot, rng);
@@ -287,19 +364,21 @@ public static class Roamers
     /// </summary>
     public static void AfterBattle(SpecialEncounters state, Pokemon foe, bool won, bool caught, string? place, StoryState story, Random rng)
     {
-        int slot = state.Roamers.FindIndex(r => r.Active && r.Species == foe.Species.Name);
+        // (the one of that species where the player stands first: a Raikou of Kanto and one of Johto may both roam)
+        int slot = state.Roamers.FindIndex(r => r.Active && r.Species == foe.Species.Name && PlaceOf(r) == place);
+        if (slot < 0) slot = state.Roamers.FindIndex(r => r.Active && r.Species == foe.Species.Name);
         if (slot >= 0)
         {
             var roamer = state.Roamers[slot];
             if (won && foe.CurrentHP == 0)
             {
                 Gone(roamer);
-                story.SetVar(StateVariable(foe.Species.Name), Defeated);
+                story.SetVar(StateVariable(slot), Defeated);
             }
             else if (caught)
             {
                 Gone(roamer);
-                story.SetVar(StateVariable(foe.Species.Name), Captured);
+                story.SetVar(StateVariable(slot), Captured);
             }
             else if (roamer.Pokemon != null)
             {

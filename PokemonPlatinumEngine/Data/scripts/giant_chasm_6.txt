@@ -9,6 +9,11 @@
 # his reason, and the Shadow Triad (triad_cavern_a to _c) take him away. N thanks the player and points them to the Pokémon League,
 # and leaves on Zekrom; Kyurem goes back into the dark of the cavern. Hugh (hugh_cavern) and Cheren (cheren_cavern) come up
 # afterwards, and Hugh says how to reach Route 23 (4, FLAG_UNOVA_CHASM_CLEARED: the Frigate has flown and the crater is clear).
+#
+# Plan 29 · LS9 gives the scene its camera (style guide, "Legendary scenes"): the bars and the camera on Kyurem, its cold
+# as sparkles and a ripple, Zekrom's coming as a shadow and two strokes of lightning, and the fusion under a burst's
+# white and a ripple where a fade was; the camera is let go before Ghetsis's battle. The fades that hide a walk or the
+# Triad's going stay. Kyurem at rest (KyuremRests) has plan 29 · LS8's beat: sparkles of cold, a ripple, the zoom.
 
 
 script OnEnter
@@ -19,19 +24,33 @@ script OnEnter
 script Ghetsis
   scene "Ghetsis and Kyurem"
   place player 15 24 up
+  letterbox on 0.4
+  camera pan 15 18 1.2
   speaker "Ghetsis"
   say "Ah, the Giant Chasm. Here Kyurem's power answers most strongly. From here its ice will cover all of Unova."
   say "Kyurem, come!"
+  camera zoom 1.4 0.8
+  effect sparkles 15 19
   cry "Kyurem"
+  camera shake 0.5
   say "You again. There is a look in your eyes I find most unpleasant. It reminds me of someone. No matter."
   say "Kyurem! Freeze this child where they stand!"
+  effect ripple 15 19
+  camera shake 0.5
   speaker none
   text "Kyurem breathed out a storm of ice! The cavern froze white..."
+  effect shadow 17 18 1.5 left
+  wait 0.8
   text "...and from somewhere above, a black dragon fell through the cold, scattering the ice with a crack of lightning!"
+  effect burst 18 17
+  camera shake 0.4
   clearflag FLAG_UNOVA_HIDE_ZEKROM_CAVERN
   clearflag FLAG_UNOVA_HIDE_N_CAVERN
   show zekrom
   show n
+  wait 0.4
+  effect burst 18 17
+  camera shake 0.4
   cry "Zekrom"
   speaker "Ghetsis"
   say "So you have come... The boy with no human heart. N!"
@@ -45,14 +64,20 @@ script Ghetsis
   say "No! That is an ugly equation. It won't work!"
   speaker "Ghetsis"
   say "Oh, but it will. Kyurem! Take Zekrom into yourself!"
-  fade out 0.6
+  # (the fusion under the burst's white, where a fade was: plan 29 · LS9)
+  camera pan 16 18 0.6
+  effect sparkles 18 17
+  wait 0.6
+  effect burst 15 19
   setflag FLAG_UNOVA_HIDE_ZEKROM_CAVERN
   setflag FLAG_UNOVA_HIDE_KYUREM_CAVERN
   hide zekrom
   hide kyurem
   clearflag FLAG_UNOVA_HIDE_BLACK_KYUREM
   show kyurem_black
-  fade in
+  effect ripple 15 19
+  camera shake 0.8
+  wait 0.6
   cry "Kyurem-Black"
   face n kyurem_black
   speaker "N"
@@ -60,6 +85,8 @@ script Ghetsis
   speaker "Ghetsis"
   say "Fool. Last time I meant to use you to win people's hearts. This time I will simply take Unova by force."
   say "Come, Trainer. No one will save you now. Let us see whether you can stop THIS Kyurem!"
+  camera release 0.4
+  letterbox off 0.3
   battle ghetsis as "unova_ghetsis_kyurem"
   speaker none
   text "Kyurem shuddered... and Zekrom broke free of it!"
@@ -156,10 +183,23 @@ script Kyurem
 # from, it sinks back into the dark and is there again the next time the cavern is come to.
 script KyuremRests
   if not flag UnovaHallOfFame end
+  scene "Kyurem at rest"
+  music stop
+  face player self
   face self player
+  letterbox on 0.4
+  camera pan 15 17 1.2
+  camera zoom 1.4 0.8
+  effect sparkles 15 17
+  wait 0.6
+  effect ripple 15 17
   cry "Kyurem"
+  camera shake 0.5
   speaker none
   text "Kyurem roared!\nA freezing wind howls through the cavern!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
   wildbattle "Kyurem" 70
   if result == 2 goto Fled
   setflag FLAG_UNOVA_FOUGHT_KYUREM

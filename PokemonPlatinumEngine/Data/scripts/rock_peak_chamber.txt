@@ -4,9 +4,21 @@
 # Regirock stands as a statue at the chamber's head; spoken to, it stirs and is battled at Black 2's level 65. Caught or beaten it is
 # gone for good (FLAG_UNOVA_FOUGHT_REGIROCK); run from, it is back the next time the chamber is come to.
 script Regirock
+  scene "Regirock wakes"
+  music stop
+  face player self
+  letterbox on 0.4
+  camera pan 15 14 1.2
+  camera zoom 1.4 0.8
+  effect beam 15 14
+  shake self 8
+  camera shake 0.8
   speaker none
   text "The statue of the stone giant began to move!"
   cry "Regirock"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
   wildbattle "Regirock" 65
   if result == 2 goto Fled
   setflag FLAG_UNOVA_FOUGHT_REGIROCK

@@ -36,3 +36,51 @@ label Talk
   warp "PalletTown_ProfessorOaksLab" 6 12 up
   endscene
   end
+
+
+# FireRed's roaming beast (plan 29 · LS9; pokefirered's src/roamer.c, InitRoamer): once the player is Kanto's Champion
+# and holds the National Pokédex, the next arrival in Pallet Town sets one of the three beasts loose over Kanto's
+# routes at level 50, by FireRed's rule of the starter chosen (Bulbasaur Entei, Charmander Suicune, anything else
+# Raikou: a game begun in another region falls to Raikou, FireRed's default). FireRed sets it loose without a word as
+# Oak upgrades the Pokédex; here the player sees it go by, plan 29's beat for a roamer: the bars, the camera over the
+# town, its shadow racing across the road, its cry and a line, and nothing more until it is met in the grass (plan 09 ·
+# L14's way in). It keeps a slot of its own (Roamers.Slots' last three, roamer start … kanto) and its own story's
+# variable, VAR_ROAMING_KANTO_<SPECIES>_STATE, apart from Johto's Raikou and Entei.
+script OnEnter
+  if not flag FLAG_SYS_GAME_CLEAR end
+  if not nationaldex end
+  if flag FLAG_KANTO_ROAMER_LOOSE end
+  scene "A beast over Pallet Town"
+  music stop
+  letterbox on 0.4
+  camera pan 71 276 1.2
+  camera zoom 1.4 0.8
+  sound "thunder_rumble"
+  effect shadow 71 276 2 right
+  wait 0.8
+  emote player exclaim
+  speaker none
+  if starter "Bulbasaur" goto Entei
+  if starter "Charmander" goto Suicune
+  cry "Raikou"
+  camera shake 0.4
+  text "A crackle of lightning raced down the road and was gone over the hills!" "Raikou is loose in Kanto!"
+  roamer start "Raikou" kanto
+  goto Gone
+label Entei
+  cry "Entei"
+  camera shake 0.6
+  text "A blast of hot wind tore down the road and was gone over the hills!" "Entei is loose in Kanto!"
+  roamer start "Entei" kanto
+  goto Gone
+label Suicune
+  cry "Suicune"
+  text "A cool, clear wind swept down the road and was gone over the hills!" "Suicune is loose in Kanto!"
+  roamer start "Suicune" kanto
+label Gone
+  setflag FLAG_KANTO_ROAMER_LOOSE
+  camera release 0.4
+  letterbox off 0.3
+  music area
+  endscene
+  end

@@ -4,9 +4,21 @@
 # Registeel stands as a statue at the chamber's head; spoken to, it stirs and is battled at Black 2's level 65. Caught or beaten it is
 # gone for good (FLAG_UNOVA_FOUGHT_REGISTEEL); run from, it is back the next time the chamber is come to.
 script Registeel
+  scene "Registeel wakes"
+  music stop
+  face player self
+  letterbox on 0.4
+  camera pan 15 14 1.2
+  camera zoom 1.4 0.8
+  effect beam 15 14
+  shake self 8
+  camera shake 0.8
   speaker none
   text "The statue of the iron giant began to move!"
   cry "Registeel"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
   wildbattle "Registeel" 65
   if result == 2 goto Fled
   setflag FLAG_UNOVA_FOUGHT_REGISTEEL
