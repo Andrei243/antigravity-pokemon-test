@@ -593,6 +593,8 @@ public static class RegionDatabase
                 "Celadon_DeptStore_Elevator", "Celadon_Condominiums_2F", "Celadon_Condominiums_3F", "Celadon_Condominiums_Roof",
                 "Celadon_Condominiums_RoofRoom", "Celadon_Condominiums_LeftElevator", "Celadon_Condominiums_RightElevator",
                 "Celadon_GameCorner", "Celadon_PrizeCorner",
+                // Plan 20 · J15, part l: the Underground Path with its two gates, and Silph Co.'s lobby
+                "Route5_UndergroundGate", "Route5_UndergroundPath", "Route6_UndergroundGate", "Saffron_SilphCo",
                 // Plan 20 · J5's leftovers: the Ruins of Alph's hall
                 "RuinsOfAlph_HallEntrance", "RuinsOfAlph_UndergroundHall",
             }

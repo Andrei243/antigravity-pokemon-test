@@ -1,30 +1,14 @@
 {
-  "people": {
-    "r05_gsmiddleman1": {
-      "name": {
-        "en": [
-          "Man"
-        ],
-        "text": [
-          "Bărbatul"
-        ]
-      },
-      "dialog": {
-        "en": [
-          "The Underground Path is closed while they fix the lights. Walk round by Saffron City instead."
-        ],
-        "text": [
-          "Pasajul Subteran e închis cât repară luminile. Ocolește prin Orașul Saffron."
-        ]
-      }
-    }
-  },
+  "people": {},
   "signs": {
     "R05_001+1": {
       "en": [
-        "Underground Path\nCerulean City - Vermilion City\nClosed for repairs."
+        "Underground Path\nCerulean City - Vermilion City"
       ],
       "text": [
+        ""
+      ],
+      "was": [
         "Pasajul Subteran\nOrașul Cerulean - Orașul Vermilion\nÎnchis pentru reparații."
       ]
     }

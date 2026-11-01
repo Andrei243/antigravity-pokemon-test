@@ -1,0 +1,50 @@
+{
+  "people": {
+    "t11r0701_gswoman6": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to Silph Co. We make Poké Balls, Potions and much else besides. The offices upstairs are for staff only."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t11r0701_policeman": {
+      "name": {
+        "en": [
+          "Guard"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "That lift goes up to the research floors. Only staff may ride it, I'm afraid."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T11R0701_003+1": {
+      "en": [
+        "Lift\nStaff only beyond this point."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

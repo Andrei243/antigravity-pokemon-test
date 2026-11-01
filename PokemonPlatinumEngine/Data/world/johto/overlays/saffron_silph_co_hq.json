@@ -1,0 +1,29 @@
+{
+  // Silph Co.'s head office in Saffron City (plan 20 · J15, part l): HeartGold's lobby with the company's monument, our
+  // words. Its lift (warp 1) leads to Rotom's room, which waits for its appliances (the rulings' "HeartGold's Kanto, part
+  // l"); the guard beside it turns visitors away. HeartGold hides the receptionist and the guard behind FLAG_UNK_282 and
+  // FLAG_UNK_281, which nothing sets, so both are shown. Steven, who visits the lobby later in HeartGold, is held back
+  "area": "saffron_silph_co_hq",
+  "bgmTrack": "kanto/viridian",
+  "locked": [ 1 ],
+  "heldBack": [ "t11r0701_daigo" ],
+  "people": {
+    "t11r0701_gswoman6": {
+      "name": "Receptionist",
+      "hiddenBy": "",
+      "dialog": [
+        "Welcome to Silph Co. We make Poké Balls, Potions and much else besides. The offices upstairs are for staff only."
+      ]
+    },
+    "t11r0701_policeman": {
+      "name": "Guard",
+      "hiddenBy": "",
+      "dialog": [
+        "That lift goes up to the research floors. Only staff may ride it, I'm afraid."
+      ]
+    }
+  },
+  "signs": {
+    "T11R0701_003+1": "Lift\nStaff only beyond this point."
+  }
+}

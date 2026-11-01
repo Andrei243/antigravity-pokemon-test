@@ -570,6 +570,40 @@ partial class Harness
         Console.WriteLine($"  after '1F': {game.Map.Name} {game.Player.GridX},{game.Player.GridY}");
         Spot("Celadon_GameCorner", 7, 10, Direction.Up, "jkk17_game_corner");
         Spot("Celadon_PrizeCorner", 4, 5, Direction.Up, "jkk18_prize_corner");
+        JohtoKantoUndergroundShots();
+    }
+
+    /// <summary>
+    /// Plan 20 · J15, part l: the Underground Path from Route 5's gate under Saffron City to Route 6's, and Silph Co.'s
+    /// lobby (<c>jkl01</c> to <c>jkl11</c>), after part k's, so nothing before them moves. It prints whether each spot
+    /// stood on is open and what the lobby's warp before the lift leads to (nothing: it stays shut).
+    /// </summary>
+    void JohtoKantoUndergroundShots()
+    {
+        void Spot(string map, int x, int y, Direction way, string shot, int frames = 10)
+        {
+            At(map, x, y, way);
+            if (!game.Map.IsWalkable(x, y))
+                (x, y) = Enumerable.Range(1, 4).SelectMany(r => Enumerable.Range(-r, 2 * r + 1).SelectMany(dy => Enumerable.Range(-r, 2 * r + 1).Select(dx => (X: x + dx, Y: y + dy))))
+                    .First(t => game.Map.IsWalkable(t.X, t.Y));
+            At(map, x, y, way); Frames(frames); Shot(shot);
+            Console.WriteLine($"  {shot}: {map} {x},{y} open {game.Map.IsWalkable(x, y)}, {game.Map.ShownNameAt(x, y)}");
+        }
+        game.State = GameState.Overworld;
+        game.Player.SetMode(TravelMode.OnFoot);
+
+        Spot("Johto", 1306, 187, Direction.Up, "jkl01_route_5_underground_door", 30);
+        Spot("Route5_UndergroundGate", 5, 8, Direction.Up, "jkl02_route_5_underground_gate");
+        Spot("Route5_UndergroundPath", 6, 5, Direction.Down, "jkl03_underground_path_north_end");
+        Spot("Route5_UndergroundPath", 7, 24, Direction.Down, "jkl04_underground_path_middle");
+        Spot("Route5_UndergroundPath", 6, 55, Direction.Down, "jkl05_underground_path_south_end");
+        Spot("Route6_UndergroundGate", 5, 8, Direction.Up, "jkl06_route_6_underground_gate");
+        Spot("Johto", 1309, 267, Direction.Up, "jkl07_route_6_underground_door", 30);
+        Spot("Johto", 1308, 231, Direction.Up, "jkl08_silph_co_from_the_street", 30);
+        Spot("Saffron_SilphCo", 11, 13, Direction.Up, "jkl09_silph_co_lobby");
+        Spot("Saffron_SilphCo", 20, 7, Direction.Up, "jkl10_silph_co_reception");
+        Spot("Saffron_SilphCo", 5, 6, Direction.Up, "jkl11_silph_co_lift_and_guard");
+        Console.WriteLine($"  Silph Co.'s lift warp: {game.Map.GetWarpAt(3, 2)?.TargetMap ?? "shut"}");
     }
 
 }

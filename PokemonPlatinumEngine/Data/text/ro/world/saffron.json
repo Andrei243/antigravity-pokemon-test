@@ -180,9 +180,12 @@
     },
     "T11_012+1": {
       "en": [
-        "Silph Co. Head Office\nClosed to visitors."
+        "Silph Co. Head Office\nVisitors welcome in the lobby."
       ],
       "text": [
+        ""
+      ],
+      "was": [
         "Sediul central Silph Co.\nÎnchis vizitatorilor."
       ]
     },

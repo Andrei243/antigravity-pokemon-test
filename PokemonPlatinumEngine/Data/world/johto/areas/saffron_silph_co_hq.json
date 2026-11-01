@@ -1,0 +1,30 @@
+{
+  "key": "saffron_silph_co_hq",
+  "index": 402,
+  "name": "Saffron City",
+  "matrix": 189,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_C_YAMABUKI",
+  "nightMusic": "GS_C_YAMABUKI",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 11, "z": 14, "to": "saffron", "toWarp": 8 },
+    { "x": 3, "z": 2, "to": "saffron_silph_co_elevator", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "t11r0701_gswoman6", "looks": "gswoman6", "movement": "0", "x": 22, "z": 5, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_282", "script": "T11R0701_000+1" },
+    { "id": "t11r0701_policeman", "looks": "policeman", "movement": "16", "x": 4, "z": 4, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_281", "script": "T11R0701_001+1" },
+    { "id": "t11r0701_daigo", "looks": "daigo", "movement": "0", "x": 14, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SAFFRON_CITY_STEVEN", "script": "T11R0701_004+1" }
+  ],
+  "signs": [
+    { "x": 5, "z": 2, "type": 0, "script": "T11R0701_003+1" }
+  ],
+  "triggers": []
+}

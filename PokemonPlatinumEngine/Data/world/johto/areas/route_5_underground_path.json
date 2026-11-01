@@ -1,0 +1,33 @@
+{
+  "key": "route_5_underground_path",
+  "index": 532,
+  "name": "Route 5",
+  "matrix": 252,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_D_IWAYAMA",
+  "nightMusic": "GS_D_IWAYAMA",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 3, "to": "route_5_underground_path_gate", "toWarp": 2 },
+    { "x": 4, "z": 4, "to": "route_5_underground_path_gate", "toWarp": 2 },
+    { "x": 4, "z": 5, "to": "route_5_underground_path_gate", "toWarp": 2 },
+    { "x": 4, "z": 57, "to": "route_6_underground_path_gate", "toWarp": 2 },
+    { "x": 4, "z": 58, "to": "route_6_underground_path_gate", "toWarp": 2 },
+    { "x": 4, "z": 56, "to": "route_6_underground_path_gate", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "r05r0202_gsmiddleman1", "looks": "gsmiddleman1", "movement": "2", "x": 7, "z": 27, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "R05R0202_000+1" }
+  ],
+  "signs": [
+    { "x": 5, "z": 14, "type": 2, "script": "std_hiddenitem_r05r0202_full_restore", "item": "Full Restore", "flag": "FLAG_HIDDEN_ITEM_R05R0202_FULL_RESTORE" },
+    { "x": 7, "z": 30, "type": 2, "script": "std_hiddenitem_r05r0202_x_special", "item": "X Sp. Atk", "flag": "FLAG_HIDDEN_ITEM_R05R0202_X_SPECIAL" }
+  ],
+  "triggers": []
+}

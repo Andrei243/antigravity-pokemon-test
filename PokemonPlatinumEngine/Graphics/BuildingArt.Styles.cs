@@ -352,7 +352,11 @@ internal static partial class BuildingArt
             };
 
         string? text = b.Sign ?? style.SignText;
-        var sign = text != null && style.Sign == SignKind.None ? SignKind.Text : style.Sign;
+        // An office is the Pokétch Company's unless the catalogue names it otherwise (plan 20 · J15, part l: Silph Co.'s
+        // head office had worn the Pokétch Company's name)
+        var sign = text != null && style.Sign == SignKind.None ? SignKind.Text
+            : b.Sign != null && style.Sign == SignKind.Poketch ? SignKind.Text
+            : style.Sign;
         int portal = style.Portal;
         if (portal > 0 && sign == SignKind.Text) portal = Math.Min(PortalFor(text, portal), FrontWidth(b) - 8);
         return style with { Storeys = storeys, SignText = text, Sign = sign, Portal = portal };
