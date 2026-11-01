@@ -1,0 +1,10 @@
+{
+  // The first flooded passage under the Abandoned Ship (plan 21 · H12, part i): its passage south leads back to the second,
+  // and coming up anywhere in its dark water comes up on the hidden floor (Emerald's setdivewarp:
+  // AbandonedShip_HiddenFloorCorridors at 0, 10, emergeTo)
+  "area": "abandoned_ship_underwater_1",
+  "name": "Underwater",
+  "bgmTrack": "hoenn/underwater",
+  "trees": "Round",
+  "emergeTo": { "area": "abandoned_ship_hidden_floor_corridors", "x": 0, "z": 10, "facing": "Up" }
+}

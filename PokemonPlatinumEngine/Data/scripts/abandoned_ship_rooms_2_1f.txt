@@ -1,0 +1,39 @@
+# Two more cabins of the Abandoned Ship's first deck (plan 21 · H12, part i). docs/scripts.md describes the language;
+# the lines are our own, on Emerald's beats (data/maps/AbandonedShip_Rooms2_1F/scripts.inc).
+#
+# Kira and Dan battle together (a double battle, TRAINER_KIRA_AND_DAN_1) and, beaten, give their number for the PokéNav's
+# Match Call; Kira speaks for both, as in Emerald.
+
+
+script KiraAndDan
+  if not defeated self goto Fight
+  if rematch self goto Rematch
+  if flag FLAG_PHONE_CONTACT_HOENN_KIRA_AND_DAN goto Known
+label Ask
+  speaker "Kira"
+  say "Ooh, you made us look silly! I'm putting you in our PokéNav so we can win it back."
+  ask "Register Kira and Dan in the PokéNav's Match Call?"
+  if no goto Refused
+  addcontact hoenn_kira_and_dan
+  say "Dan, did you hear? We've got a rival now!"
+  end
+label Refused
+  say "Hmph! We'll just have to find you again ourselves."
+  end
+label Known
+  trainerline after
+  end
+label Fight
+  if party < 2 goto NeedTwo
+  trainerline before
+  battle self
+  goto Ask
+label NeedTwo
+  speaker "Kira"
+  say "Only one Pokémon? We battle two at a time, you know. Come back with a partner for it!"
+  end
+label Rematch
+  if party < 2 goto NeedTwo
+  trainerline before
+  battle self rematch
+  end

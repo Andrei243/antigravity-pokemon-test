@@ -1,0 +1,23 @@
+{
+  // The Abandoned Ship's hidden floor (plan 21 · H12, part i), come up into from the flooded passage below (its dark water
+  // dives back down: Emerald's setdivewarp, AbandonedShip_Underwater1 at 5, 4). Six cabins open off it; the doors of
+  // Rooms 1, 2, 4 and 6 are locked until the key found in another cabin is turned in each (FLAG_USED_ROOM_1_KEY and the
+  // rest; Emerald swaps the doors' tiles, here the way through each is shut until its flag,
+  // abandoned_ship_hidden_floor_corridors.txt). The doors of Rooms 4 and 6 are read from the tile before them as well
+  "area": "abandoned_ship_hidden_floor_corridors",
+  "bgmTrack": "hoenn/abandoned_ship",
+  "diveTo": { "area": "abandoned_ship_underwater_1", "x": 5, "z": 4, "facing": "Down" },
+  "switches": [
+    { "warp": 0, "from": "FLAG_USED_ROOM_1_KEY" },
+    { "warp": 1, "from": "FLAG_USED_ROOM_2_KEY" },
+    { "warp": 3, "from": "FLAG_USED_ROOM_4_KEY" },
+    { "warp": 5, "from": "FLAG_USED_ROOM_6_KEY" }
+  ],
+  "read": {
+    "AbandonedShip_HiddenFloorCorridors_EventScript_Room1Door": "Room1",
+    "AbandonedShip_HiddenFloorCorridors_EventScript_Room2Door": "Room2",
+    "AbandonedShip_HiddenFloorCorridors_EventScript_Room4Door": "Room4",
+    "AbandonedShip_HiddenFloorCorridors_EventScript_Room6Door": "Room6"
+  },
+  "readAt": [ { "x": 3, "z": 3, "script": "Room4" }, { "x": 9, "z": 3, "script": "Room6" } ]
+}

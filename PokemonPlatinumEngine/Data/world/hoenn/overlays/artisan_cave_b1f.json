@@ -1,0 +1,7 @@
+{
+  // Artisan Cave's lower floor (plan 21 · H12, part i): the long cave under the Battle Frontier island, its way out on the
+  // west half's shore, with the vitamins Emerald hides in it
+  "area": "artisan_cave_b1f",
+  "bgmTrack": "hoenn/petalburg_woods",
+  "trees": "Round"
+}

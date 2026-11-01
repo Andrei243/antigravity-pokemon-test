@@ -669,7 +669,6 @@ hoenn_catherine_2 149 (30) [Roselia → Roserade]
 hoenn_catherine_3 150 (33) [Roselia → Roserade]
 hoenn_catherine_4 152 (36) [Roselia → Roserade]
 hoenn_catherine_5 153 (39) [Roselia → Roserade]
-hoenn_charlie 147 (26) [Marill → Azumarill]
 hoenn_cindy_2 140 (11) [Zigzagoon → Streakoon]
 hoenn_cindy_3 148 (27) [Linoone → Streakoon]
 hoenn_cindy_4 149 (30) [Linoone → Streakoon]
@@ -692,14 +691,12 @@ hoenn_dalton_2 147 (25) [Magnemite → Magnezone, Whismur → Exploud, Magnemite
 hoenn_dalton_3 148 (28) [Magnemite → Magnezone, Loudred → Exploud, Magnemite → Magnezone]
 hoenn_dalton_4 149 (31) [Magneton → Magnezone, Loudred → Exploud, Magneton → Magnezone]
 hoenn_dalton_5 151 (34) [Magneton → Magnezone, Magneton → Magnezone]
-hoenn_demetrius 147 (25) [Zigzagoon → Streakoon, Electrike → Manectric]
 hoenn_diana_2 147 (25) [Shroomish → Breloom, Swablu → Altaria]
 hoenn_diana_3 148 (28) [Breloom → Sporepugil, Swablu → Altaria]
 hoenn_diana_4 149 (31) [Breloom → Sporepugil, Swablu → Altaria]
 hoenn_diana_5 154 (40) [Breloom → Sporepugil, Altaria → Nimbusong]
 hoenn_drake 161 (55) [Shelgon → Salamence, Altaria → Nimbusong]
 hoenn_dudley 150 (33) [Tentacool → Medusarch, Wingull → Pelicaptain, Tentacruel → Medusarch]
-hoenn_duncan 147 (25) [Spheal → Walrein, Machoke → Machamp]
 hoenn_dusty_2 148 (27) [Sandslash → Sandspire]
 hoenn_dusty_3 149 (30) [Sandslash → Sandspire]
 hoenn_dusty_4 150 (33) [Sandslash → Sandspire]
@@ -744,7 +741,6 @@ hoenn_gabrielle_2 149 (31) [Skitty → Felinelle, Mightyena → Hyaenarch, Zigza
 hoenn_gabrielle_3 150 (33) [Skitty → Felinelle, Mightyena → Hyaenarch, Linoone → Streakoon, Lombre → Ludicolo, Nuzleaf → Shiftry, Taillow → Swiftarrow]
 hoenn_gabrielle_4 151 (35) [Delcatty → Felinelle, Mightyena → Hyaenarch, Linoone → Streakoon, Lombre → Ludicolo, Nuzleaf → Shiftry, Swellow → Swiftarrow]
 hoenn_gabrielle_5 152 (37) [Delcatty → Felinelle, Mightyena → Hyaenarch, Linoone → Streakoon, Swellow → Swiftarrow]
-hoenn_garrison 147 (26) [Sandslash → Sandspire]
 hoenn_georgia 143 (16) [Shroomish → Breloom]
 hoenn_gina_and_mia_2 140 (10) [Duskull → Dusknoir, Shroomish → Breloom]
 hoenn_glacia 160 (53) [Sealeo → Walrein, Glalie → Bergmaw, Sealeo → Walrein, Glalie → Bergmaw]
@@ -786,7 +782,6 @@ hoenn_james_2 148 (27) [Ninjask → Shinobuzz]
 hoenn_james_3 149 (29) [Ninjask → Shinobuzz]
 hoenn_james_4 149 (31) [Surskit → Ocellwing, Ninjask → Shinobuzz]
 hoenn_james_5 150 (33) [Surskit → Ocellwing, Ninjask → Shinobuzz, Ninjask → Shinobuzz]
-hoenn_jani 147 (26) [Marill → Azumarill]
 hoenn_jeffrey_2 149 (31) [Surskit → Ocellwing, Surskit → Ocellwing, Surskit → Ocellwing]
 hoenn_jeffrey_3 151 (34) [Surskit → Ocellwing, Surskit → Ocellwing, Masquerain → Ocellwing]
 hoenn_jeffrey_4 152 (36) [Surskit → Ocellwing, Wurmple → Beautifly, Surskit → Ocellwing, Masquerain → Ocellwing]
@@ -824,7 +819,6 @@ hoenn_katelyn_4 156 (45) [Starmie → Stellamir]
 hoenn_katelyn_5 157 (48) [Starmie → Stellamir]
 hoenn_kaylee 151 (34) [Lanturn → Abyssolux, Pelipper → Pelicaptain]
 hoenn_keira 156 (45) [Lairon → Aggron, Manectric → Fulmenhound]
-hoenn_kira_and_dan_1 147 (25) [Volbeat → Photurion, Illumise → Lampyria]
 hoenn_kira_and_dan_2 149 (30) [Volbeat → Photurion, Illumise → Lampyria]
 hoenn_kira_and_dan_3 150 (33) [Volbeat → Photurion, Illumise → Lampyria]
 hoenn_kira_and_dan_4 152 (36) [Volbeat → Photurion, Illumise → Lampyria]
@@ -953,7 +947,6 @@ hoenn_tate_and_liza_4 164 (60) [Hypno → Mesmeryx, Claydol → Dogunarch, Slowp
 hoenn_tate_and_liza_5 169 (65) [Hypno → Mesmeryx, Claydol → Dogunarch, Slowking → Slowmonarch, Xatu → Totemsight, Lunatone → Selenolith, Solrock → Heliolith]
 hoenn_ted 143 (17) [Ralts → Gardevoir]
 hoenn_terry 152 (37) [Girafarig → Farigiraf]
-hoenn_thalia_1 147 (25) [Wailmer → Wailord, Horsea → Kingdra]
 hoenn_thalia_2 151 (34) [Wailmer → Wailord, Horsea → Kingdra]
 hoenn_thalia_3 152 (36) [Luvdisc → Heartreef, Wailmer → Wailord, Seadra → Kingdra]
 hoenn_thalia_4 153 (38) [Luvdisc → Heartreef, Wailmer → Wailord, Seadra → Kingdra]
@@ -1562,6 +1555,30 @@ unova_youngster_wes 177 (39) [Skorupi → Dreadpion, Seviper → Scimitail]
 === DriftveilCity_Gym
 Driftveil City, Unova
 trainers 7, 173-174 (own 29-31): unova_worker_friedrich 174 (31) [Sandile → Krookodile], unova_worker_maynard 174 (31) [Drilbur → Excadrill], unova_worker_niel 173 (30) [Baltoy → Dogunarch, Sandile → Krookodile], unova_worker_noel 174 (31) [Baltoy → Dogunarch], unova_worker_pasqual 173 (30) [Drilbur → Excadrill, Baltoy → Dogunarch], unova_worker_tavarius 173 (29) [Drilbur → Excadrill, Sandile → Krookodile, Baltoy → Dogunarch], unova_worker_tibor 173 (30) [Sandile → Krookodile, Drilbur → Excadrill]
+=== abandoned_ship_corridors_1f
+Abandoned Ship, Hoenn
+trainers 1, 147 (own 26): hoenn_charlie 147 (26) [Marill → Azumarill]
+=== abandoned_ship_corridors_b1f
+Abandoned Ship, Hoenn
+trainers 1, 147 (own 25): hoenn_duncan 147 (25) [Spheal → Walrein, Machoke → Machamp]
+=== abandoned_ship_hidden_floor_corridors
+Abandoned Ship, Hoenn
+surf 137-151 (own 5-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 144-151 (own 20-35)
+=== abandoned_ship_rooms_1f
+Abandoned Ship, Hoenn
+trainers 2, 147 (own 25): hoenn_demetrius 147 (25) [Zigzagoon → Streakoon, Electrike → Manectric], hoenn_thalia_1 147 (25) [Wailmer → Wailord, Horsea → Kingdra]
+=== abandoned_ship_rooms_2_1f
+Abandoned Ship, Hoenn
+trainers 3, 147 (own 25-26): hoenn_garrison 147 (26) [Sandslash → Sandspire], hoenn_jani 147 (26) [Marill → Azumarill], hoenn_kira_and_dan_1 147 (25) [Volbeat → Photurion, Illumise → Lampyria]
+=== abandoned_ship_rooms_b1f
+Abandoned Ship, Hoenn
+surf 137-151 (own 5-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 144-151 (own 20-35)
 === aqua_hideout_1f
 Aqua Hideout, Hoenn
 trainers 1, 150 (own 32): hoenn_grunt_aqua_hideout_1 150 (32) [Poochyena → Hyaenarch]
@@ -1571,6 +1588,12 @@ trainers 4, 149-150 (own 31-32): hoenn_grunt_aqua_hideout_2 149 (31) [Zubat → 
 === aqua_hideout_b2f
 Aqua Hideout, Hoenn
 trainers 3, 150 (own 32): hoenn_grunt_aqua_hideout_4 150 (32) [Carvanha → Sharpedo], hoenn_grunt_aqua_hideout_6 150 (32) [Zubat → Crobat], hoenn_grunt_aqua_hideout_8 150 (32) [Carvanha → Sharpedo]
+=== artisan_cave_1f
+Artisan Cave, Hoenn
+grass 154-158 (own 40-50)
+=== artisan_cave_b1f
+Artisan Cave, Hoenn
+grass 154-158 (own 40-50)
 === aspertia_city
 Aspertia City, Unova
 surf 163-167 (own 5-15)

@@ -1,0 +1,37 @@
+{
+  "key": "abandoned_ship_corridors_1f",
+  "index": 293,
+  "name": "Abandoned Ship",
+  "matrix": 242,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Cloudy",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ABANDONED_SHIP",
+  "nightMusic": "MUS_ABANDONED_SHIP",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 9, "z": 11, "to": "abandoned_ship_deck", "toWarp": 2 },
+    { "x": 8, "z": 11, "to": "abandoned_ship_deck", "toWarp": 2 },
+    { "x": 0, "z": 11, "to": "abandoned_ship_deck", "toWarp": 3 },
+    { "x": 1, "z": 11, "to": "abandoned_ship_deck", "toWarp": 3 },
+    { "x": 11, "z": 9, "to": "abandoned_ship_rooms_1f", "toWarp": 0 },
+    { "x": 14, "z": 9, "to": "abandoned_ship_rooms_1f", "toWarp": 3 },
+    { "x": 11, "z": 3, "to": "abandoned_ship_rooms_1f", "toWarp": 2 },
+    { "x": 14, "z": 3, "to": "abandoned_ship_rooms_1f", "toWarp": 4 },
+    { "x": 3, "z": 9, "to": "abandoned_ship_rooms_2_1f", "toWarp": 0 },
+    { "x": 16, "z": 2, "to": "abandoned_ship_corridors_b1f", "toWarp": 7 },
+    { "x": 5, "z": 2, "to": "abandoned_ship_corridors_b1f", "toWarp": 6 },
+    { "x": 3, "z": 3, "to": "abandoned_ship_rooms_2_1f", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "youngster", "looks": "youngster", "movement": "wander_around", "x": 17, "z": 7, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "AbandonedShip_Corridors_1F_EventScript_Youngster" },
+    { "id": "tuber_m", "looks": "tuber_m", "movement": "walk_sequence_north_west_south_east", "x": 5, "z": 10, "facing": 0, "rangeX": 4, "rangeZ": 7, "trainer": "normal", "sight": 3, "script": "TRAINER_CHARLIE" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -98,15 +98,15 @@ public class HoennFrontierIslandTests
     }
 
     [Fact]
-    public void TheSevenHallsAndArtisanCaveStayShut()
+    public void TheSevenHallsStayShut()
     {
         var island = Hoenn.Value.BuildMaps().Single(m => m.Name == "HoennBattleFrontier");
         island.ApplyDoors(_ => true);
         foreach (var warp in island.Warps.Where(w => !w.Shut))
-        {
             Assert.DoesNotContain("Lobby", warp.TargetMap);
-            Assert.DoesNotContain("ArtisanCave", warp.TargetMap);
-        }
+        // (Artisan Cave's two ways in are open since plan 21 · H12, part i)
+        Assert.Contains(island.Warps, w => !w.Shut && w.TargetMap == "ArtisanCave_1F");
+        Assert.Contains(island.Warps, w => !w.Shut && w.TargetMap == "ArtisanCave_B1F");
         // The lounges, the Mart, the Pokémon Center and the rest are ways in
         foreach (string room in Rooms.Where(r => !r.EndsWith("2F")))
             Assert.Contains(island.Warps, w => !w.Shut && w.TargetMap == room);

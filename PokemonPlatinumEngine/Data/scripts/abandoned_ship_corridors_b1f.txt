@@ -1,0 +1,24 @@
+# The Abandoned Ship's lower deck (plan 21 · H12, part i). docs/scripts.md describes the language; the lines are our own,
+# on Emerald's beats (data/maps/AbandonedShip_Corridors_B1F/scripts.inc).
+#
+# The storage room's door: locked until the Storage Key from the captain's office is turned in it. The key stays in the
+# lock (Emerald's removeitem) and the door stays open (FLAG_USED_STORAGE_KEY, which opens the way through the overlay's
+# switch).
+
+
+script StorageDoor
+  speaker none
+  if flag FLAG_USED_STORAGE_KEY goto Open
+  if not item "Storage Key" goto Locked
+  text "{player} put the Storage Key in the lock and turned it."
+  sound "door_open"
+  take "Storage Key"
+  setflag FLAG_USED_STORAGE_KEY
+  text "The key stuck fast in the lock, but the door swung open."
+  end
+label Locked
+  text "The door is locked. \"STORAGE\" is painted on it in faded letters."
+  end
+label Open
+  text "The door stands open."
+  end

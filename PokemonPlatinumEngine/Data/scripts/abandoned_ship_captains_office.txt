@@ -1,0 +1,22 @@
+# The Abandoned Ship's captain's office (plan 21 · H12, part i). docs/scripts.md describes the language; the lines are
+# our own, on Emerald's beats (data/maps/AbandonedShip_CaptainsOffice/scripts.inc).
+#
+# Captain Stern's assistant is looking into the wreck for him. He has been asked to find a Scanner too: once the player
+# has it he asks them to take it to Stern in Slateport's harbour (slateport_city_harbor.txt), and once it is given
+# he talks about the ship.
+
+
+script SternsAide
+  face self player
+  speaker "Scientist"
+  if flag FLAG_EXCHANGED_SCANNER goto Ship
+  if item "Scanner" goto Deliver
+  say "I'm going over this wreck for Captain Stern. He asked me to look for a Scanner, too, but I haven't had any luck..."
+  end
+label Deliver
+  say "Is that a Scanner? Wonderful! Could you take it to Captain Stern in Slateport for me?"
+  say "I'd like to stay and look around this ship a little longer."
+  end
+label Ship
+  say "This ship was called the S.S. Cactus. It seems to be from long before my time."
+  end

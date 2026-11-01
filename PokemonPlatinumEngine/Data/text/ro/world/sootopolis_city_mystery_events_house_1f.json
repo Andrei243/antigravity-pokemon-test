@@ -1,0 +1,27 @@
+{
+  "people": {
+    "mystery_events_old_man": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "In my youth I travelled the whole world as a Pokémon trainer.",
+          "These days my only pleasure is watching young trainers battle. Sometimes visitors come to battle downstairs...",
+          "Nobody's come for a while, though. If someone does, I hope you'll show me what you can do!"
+        ],
+        "text": [
+          "",
+          "",
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

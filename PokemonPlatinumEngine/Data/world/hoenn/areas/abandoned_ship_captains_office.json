@@ -1,0 +1,27 @@
+{
+  "key": "abandoned_ship_captains_office",
+  "index": 301,
+  "name": "Abandoned Ship",
+  "matrix": 250,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Cloudy",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ABANDONED_SHIP",
+  "nightMusic": "MUS_ABANDONED_SHIP",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 7, "z": 6, "to": "abandoned_ship_deck", "toWarp": 4 },
+    { "x": 8, "z": 6, "to": "abandoned_ship_deck", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "scientist_1", "looks": "scientist_1", "movement": "look_south", "x": 3, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "AbandonedShip_CaptainsOffice_EventScript_CaptSternAide" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 0, "z": 6, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_ITEM_ABANDONED_SHIP_CAPTAINS_OFFICE_STORAGE_KEY", "item": "Storage Key", "script": "AbandonedShip_CaptainsOffice_EventScript_ItemStorageKey" }
+  ],
+  "signs": [],
+  "triggers": []
+}

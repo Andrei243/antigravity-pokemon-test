@@ -1,0 +1,13 @@
+{
+  // The Abandoned Ship's lower deck (plan 21 · H12, part i): its corridor, the cabins' doors and the storage room's door,
+  // locked until the Storage Key from the captain's office is turned in it (FLAG_USED_STORAGE_KEY; Emerald swaps the
+  // door's tile, here the way through it is shut until the flag, abandoned_ship_corridors_b1f.txt)
+  "area": "abandoned_ship_corridors_b1f",
+  "bgmTrack": "hoenn/abandoned_ship",
+  "switches": [ { "warp": 5, "from": "FLAG_USED_STORAGE_KEY" } ],
+  "read": { "AbandonedShip_Corridors_B1F_EventScript_StorageRoomDoor": "StorageDoor" },
+  "people": {
+    "tuber_m": { "name": "Boy", "dialog": [ "Whee! A real ship! It doesn't even rock!" ] },
+    "sailor": { "name": "Duncan", "trainer": { "dialogueBefore": "Sailor Duncan: A sailor never goes to sea without his Pokémon. Let's see yours!", "dialogueAfter": "Sailor Duncan: The bottom of this ship is under water. A Pokémon that could dive might find a way on..." } }
+  }
+}

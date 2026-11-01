@@ -6543,6 +6543,57 @@ Four more of Emerald's post-game pieces. The lines are our own.
   halfway arrivals, Jirachi, and H11's part c (the contest's stage rooms, the Pokéblock feeders and the Lilycove Lady,
   whose rules are in Emerald's `src/` too).
 
+## The Abandoned Ship, Artisan Cave, the last shut rooms and Match Call's rematches (2026-11-01, plan 21 · H12, part i)
+
+- **The Abandoned Ship** is Emerald's thirteen maps (matrices 241 to 253: the deck, the two decks of corridors and
+  cabins, the captain's office, the storage room, the two flooded passages and the hidden floor), come to by surfing up
+  to the gangway on Route 108 (its warp was `locked`). The deck is in the open, its walked tiles planks
+  (`GbaWorld.ShipDecks`: its tileset is Mt. Pyre's and the Space Center's too, so no row of the tileset could say so);
+  the lower deck's cabins and the hidden floor, which hold water, are built as caves, since a room draws no water
+  (*ours*: a dark hold of the wreck); the rest are rooms. On Route 108 the wreck keeps the look of the stone the import
+  makes of Emerald's hull, a block in the sea. Its song is ours
+  (`hoenn/abandoned_ship`, a lopsided waltz in D minor), the flooded passages play the sea floor's.
+- **The locked doors**: Emerald locks the storage room and Rooms 1, 2, 4 and 6 of the hidden floor by `setmetatile` on
+  load, and opens each once its key is turned (`FLAG_USED_STORAGE_KEY`, `FLAG_USED_ROOM_1_KEY` and the rest, Emerald's own
+  flags). Here each door is a way the overlay's `switches` keep shut until its flag (the tile a wall until then), read
+  with the door's own script, which takes the key out of the bag as Emerald's `removeitem` does. The hidden floor is read
+  in a patched layout with its four doors unlocked (`GbaMaps.Patches`, `FirstLayouts`), since a locked door's metatile
+  has no door behaviour and a warp on it would never be built. The Storage Key is **Platinum's item of the same name**:
+  a player who carries the one from Team Galactic's warehouse opens the storage room with it (*ours*, a quirk accepted
+  rather than a second item of the same name).
+- **The keys and the Scanner** are items of ours (`Room 1 Key` to `Room 6 Key`, `Scanner`; ids 9114 to 9118), hidden
+  where Emerald hides them. Emerald makes the floor sparkle where a key lies as the player walks into each cabin
+  (`dofieldeffectsparkle`); *ours*: they are hidden items found by looking, with nothing to show them.
+- **The flooded passages** are Emerald's `setdivewarp`s: the lower deck's flooded cabin dives to the second passage
+  (17, 4), whose dark water comes up in the cabin again (13, 7); the second's passage north leads to the first, whose dark
+  water comes up on the hidden floor (0, 10), which dives back down to the first (5, 4). Emerald's dive warp on the lower
+  corridor has no dark water under it and is left out.
+- **Captain Stern** on Slateport's quay trades a Deep Sea Tooth or a Deep Sea Scale for the Scanner
+  (`FLAG_EXCHANGED_SCANNER`), at any point of the story once he stands there, as Emerald's; his assistant in the captain's
+  office asks for it.
+- **Thalia and Kira and Dan** give their numbers for Match Call once beaten, as Emerald's do. Kira and Dan battle as a
+  pair and refuse a team of one.
+- **Artisan Cave** (matrices 286, 287) is open from both halves of the Battle Frontier island, its Smeargle and vitamins
+  Emerald's; it plays Petalburg Woods' song, as Emerald's does.
+- **Fortree's decoration shop** sells Emerald's desks and chairs at Emerald's prices into the decoration PC (`openbase
+  buy`), as the Lilycove Department Store's fifth floor does. **Mossdeep's game corner** (Emerald's room of the link
+  games Pokémon Jump and Dodrio Berry Picking) and **Sootopolis's house of mystery events** (an e-Reader card's visiting
+  trainer battled in its basement) are open with their people talking; their basements stay shut, since there is no link
+  and no card to play them with (*ours*).
+- **Match Call's rematches on the routes**: the 26 trainers of the routes and the Abandoned Ship registered in Match Call
+  ask for a rematch on a day and an hour of their own (`phone.json`'s `rematchDay` and `rematchTime`, *ours*, as the Gym
+  Leaders' are) and wait on their route until fought (the Vs. Seeker's way: `if rematch self` in their scripts);
+  their teams are Emerald's `_2` to `_5` (`rematches.json`). Emerald's own rule for when each comes is in its
+  `match_call.c`, which the pinned cache doesn't hold; *ours*: a route trainer asks once five Hoenn Badges are won, the
+  second team then, and each later team a Badge later (`PhoneRematch.HoennBadgesForLevel`, `UnlockedInHoenn`), with no
+  Hall of Fame asked of them; the Gym Leaders, the Four and Wally still ask only of a Champion.
+- **Left**: Trainer Hill (Emerald's `trainer_hill.c` and its floor data are not in the pinned cache), Altering Cave
+  (part a's ruling), the island's seven halls (plan 14 · B8 to B10 build their rules; a Hoenn Champion plays them in
+  Sinnoh's Frontier through Scott), the Lilycove Department Store's lift (Emerald's `MAP_DYNAMIC` car), the Trick House's
+  puzzles after the first (each a mechanism of its own: buttons, switching floors, the Mechadolls' quiz, spinners), the
+  basements of the game corner and the mystery events house, and H11's part c and the Battle Tents (another
+  session's).
+
 ## A crossed region's EXP (2026-10-26, plan 18 · W4b-3)
 
 Design C of [the levelling proposal](../plans/decisions/W4b-levelling-the-world.md), approved by the user on 2026-10-26 with

@@ -1,0 +1,8 @@
+{
+  // Two cabins of the Abandoned Ship's lower deck (plan 21 · H12, part i)
+  "area": "abandoned_ship_rooms_2_b1f",
+  "bgmTrack": "hoenn/abandoned_ship",
+  "people": {
+    "camper": { "name": "Camper", "dialog": [ "What a place to explore! I bet there's real treasure hidden somewhere on board." ] }
+  }
+}

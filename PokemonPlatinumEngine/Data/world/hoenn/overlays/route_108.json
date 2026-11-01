@@ -1,10 +1,9 @@
 {
   // Route 108 (plan 21 · H3): the open sea between Routes 107 and 109, with the wreck of the Abandoned Ship lying in it;
-  // the ship's deck waits for plan 21 · H7
+  // the ship's deck is come to by surfing up to the gangway on its south side (plan 21 · H12, part i)
   "area": "route_108",
   "bgmTrack": "hoenn/route104",
   "trees": "Round",
-  "locked": [ 0 ],
   "people": {
     "swimmer_m": { "name": "Jerome", "trainer": { "dialogueBefore": "Swimmer Jerome: I swim laps around the old wreck. Want to see how fast?", "dialogueAfter": "Swimmer Jerome: Not fast enough, it seems." } },
     "swimmer_f": { "name": "Tara", "trainer": { "dialogueBefore": "Swimmer Tara: Don't go near that old ship. Battle me instead!", "dialogueAfter": "Swimmer Tara: Fine, but I warned you about the ship." } },

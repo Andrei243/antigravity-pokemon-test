@@ -70,133 +70,171 @@
     "type": 0,
     "class": "Tuber",
     "trainer": "hoenn_ricky_1",
-    "area": "route_109"
+    "area": "route_109",
+    "rematchDay": "Monday",
+    "rematchTime": "Morning"
   },
   {
     "id": "hoenn_lola",
     "type": 0,
     "class": "Tuber",
     "trainer": "hoenn_lola_1",
-    "area": "route_109"
+    "area": "route_109",
+    "rematchDay": "Thursday",
+    "rematchTime": "Day"
   },
   {
     "id": "hoenn_edwin",
     "type": 0,
     "class": "Collector",
     "trainer": "hoenn_edwin_1",
-    "area": "route_110"
+    "area": "route_110",
+    "rematchDay": "Sunday",
+    "rematchTime": "Night"
   },
   {
     "id": "hoenn_benjamin",
     "type": 0,
     "class": "Triathlete",
     "trainer": "hoenn_benjamin_1",
-    "area": "route_110"
+    "area": "route_110",
+    "rematchDay": "Wednesday",
+    "rematchTime": "Morning"
   },
   {
     "id": "hoenn_abigail",
     "type": 0,
     "class": "Triathlete",
     "trainer": "hoenn_abigail_1",
-    "area": "route_110"
+    "area": "route_110",
+    "rematchDay": "Saturday",
+    "rematchTime": "Day"
   },
   {
     "id": "hoenn_isabel",
     "type": 0,
     "class": "Pokéfan",
     "trainer": "hoenn_isabel_1",
-    "area": "route_110"
+    "area": "route_110",
+    "rematchDay": "Tuesday",
+    "rematchTime": "Night"
   },
   {
     "id": "hoenn_isaac",
     "type": 0,
     "class": "Pokémon Breeder",
     "trainer": "hoenn_isaac_1",
-    "area": "route_117"
+    "area": "route_117",
+    "rematchDay": "Friday",
+    "rematchTime": "Morning"
   },
   {
     "id": "hoenn_lydia",
     "type": 0,
     "class": "Pokémon Breeder",
     "trainer": "hoenn_lydia_1",
-    "area": "route_117"
+    "area": "route_117",
+    "rematchDay": "Monday",
+    "rematchTime": "Day"
   },
   {
     "id": "hoenn_dylan",
     "type": 0,
     "class": "Triathlete",
     "trainer": "hoenn_dylan_1",
-    "area": "route_117"
+    "area": "route_117",
+    "rematchDay": "Thursday",
+    "rematchTime": "Night"
   },
   {
     "id": "hoenn_maria",
     "type": 0,
     "class": "Triathlete",
     "trainer": "hoenn_maria_1",
-    "area": "route_117"
+    "area": "route_117",
+    "rematchDay": "Sunday",
+    "rematchTime": "Morning"
   },
   {
     "id": "hoenn_rose",
     "type": 0,
     "class": "Aroma Lady",
     "trainer": "hoenn_rose_1",
-    "area": "route_118"
+    "area": "route_118",
+    "rematchDay": "Wednesday",
+    "rematchTime": "Day"
   },
   {
     "id": "hoenn_dalton",
     "type": 0,
     "class": "Guitarist",
     "trainer": "hoenn_dalton_1",
-    "area": "route_118"
+    "area": "route_118",
+    "rematchDay": "Saturday",
+    "rematchTime": "Night"
   },
   {
     "id": "hoenn_jackson",
     "type": 0,
     "class": "Pkmn Ranger",
     "trainer": "hoenn_jackson_1",
-    "area": "route_119"
+    "area": "route_119",
+    "rematchDay": "Tuesday",
+    "rematchTime": "Morning"
   },
   {
     "id": "hoenn_catherine",
     "type": 0,
     "class": "Pkmn Ranger",
     "trainer": "hoenn_catherine_1",
-    "area": "route_119"
+    "area": "route_119",
+    "rematchDay": "Friday",
+    "rematchTime": "Day"
   },
   {
     "id": "hoenn_robert",
     "type": 0,
     "class": "Bird Keeper",
     "trainer": "hoenn_robert_1",
-    "area": "route_120"
+    "area": "route_120",
+    "rematchDay": "Monday",
+    "rematchTime": "Night"
   },
   {
     "id": "hoenn_jeffrey",
     "type": 0,
     "class": "Bug Maniac",
     "trainer": "hoenn_jeffrey_1",
-    "area": "route_120"
+    "area": "route_120",
+    "rematchDay": "Thursday",
+    "rematchTime": "Morning"
   },
   {
     "id": "hoenn_walter",
     "type": 0,
     "class": "Gentleman",
     "trainer": "hoenn_walter_1",
-    "area": "route_121"
+    "area": "route_121",
+    "rematchDay": "Sunday",
+    "rematchTime": "Day"
   },
   {
     "id": "hoenn_jessica",
     "type": 0,
     "class": "Beauty",
     "trainer": "hoenn_jessica_1",
-    "area": "route_121"
+    "area": "route_121",
+    "rematchDay": "Wednesday",
+    "rematchTime": "Night"
   },
   {
     "id": "hoenn_cristin",
     "type": 0,
     "class": "Cooltrainer",
     "trainer": "hoenn_cristin_1",
-    "area": "route_121"
+    "area": "route_121",
+    "rematchDay": "Saturday",
+    "rematchTime": "Morning"
   },
   {
     "id": "tate_and_liza",
@@ -212,35 +250,45 @@
     "type": 0,
     "class": "Sailor",
     "trainer": "hoenn_ernest_1",
-    "area": "route_125"
+    "area": "route_125",
+    "rematchDay": "Tuesday",
+    "rematchTime": "Day"
   },
   {
     "id": "hoenn_pablo",
     "type": 0,
     "class": "Triathlete",
     "trainer": "hoenn_pablo_1",
-    "area": "route_126"
+    "area": "route_126",
+    "rematchDay": "Friday",
+    "rematchTime": "Night"
   },
   {
     "id": "hoenn_koji",
     "type": 0,
     "class": "Black Belt",
     "trainer": "hoenn_koji_1",
-    "area": "route_127"
+    "area": "route_127",
+    "rematchDay": "Monday",
+    "rematchTime": "Morning"
   },
   {
     "id": "hoenn_isaiah",
     "type": 0,
     "class": "Triathlete",
     "trainer": "hoenn_isaiah_1",
-    "area": "route_128"
+    "area": "route_128",
+    "rematchDay": "Thursday",
+    "rematchTime": "Day"
   },
   {
     "id": "hoenn_katelyn",
     "type": 0,
     "class": "Triathlete",
     "trainer": "hoenn_katelyn_1",
-    "area": "route_128"
+    "area": "route_128",
+    "rematchDay": "Sunday",
+    "rematchTime": "Night"
   },
   {
     "id": "juan",
@@ -322,5 +370,23 @@
     "area": "hoenn_victory_road_1f",
     "rematchDay": "Tuesday",
     "rematchTime": "Morning"
+  },
+  {
+    "id": "hoenn_thalia",
+    "type": 0,
+    "class": "Beauty",
+    "trainer": "hoenn_thalia_1",
+    "area": "abandoned_ship_rooms_1f",
+    "rematchDay": "Wednesday",
+    "rematchTime": "Morning"
+  },
+  {
+    "id": "hoenn_kira_and_dan",
+    "type": 0,
+    "class": "Young Couple",
+    "trainer": "hoenn_kira_and_dan_1",
+    "area": "abandoned_ship_rooms_2_1f",
+    "rematchDay": "Saturday",
+    "rematchTime": "Day"
   }
 ]

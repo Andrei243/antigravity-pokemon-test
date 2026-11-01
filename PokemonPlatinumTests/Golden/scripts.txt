@@ -6170,6 +6170,55 @@ way -
   + FLAG_HIDE_VISTA_LIGHTHOUSE_VOLKNER
   + FLAG_VOLKNER_RETURNED_TO_GYM
   + seen VistaLighthouse.Volkner at the lighthouse
+=== abandoned_ship_captains_office.SternsAide
+from Scientist at 3,4 of AbandonedShip_CaptainsOffice
+way -
+  Scientist> I'm going over this wreck for Captain Stern. He asked me to look for a Scanner, too, but I haven't had any luck...
+=== abandoned_ship_corridors_b1f.StorageDoor
+from the tile read at 11,4 of AbandonedShip_Corridors_B1F
+way -
+  > The door is locked. "STORAGE" is painted on it in faded letters.
+=== abandoned_ship_hidden_floor_corridors.Room1
+from the tile read at 3,8 of AbandonedShip_HiddenFloorCorridors
+way -
+  > The door is locked. "RM. 1" is painted on it.
+=== abandoned_ship_hidden_floor_corridors.Room2
+from the tile read at 6,8 of AbandonedShip_HiddenFloorCorridors
+way -
+  > The door is locked. "RM. 2" is painted on it.
+=== abandoned_ship_hidden_floor_corridors.Room4
+from the tile read at 3,3 of AbandonedShip_HiddenFloorCorridors
+from the tile read at 3,4 of AbandonedShip_HiddenFloorCorridors
+way -
+  > The door is locked. "RM. 4" is painted on it.
+=== abandoned_ship_hidden_floor_corridors.Room6
+from the tile read at 9,3 of AbandonedShip_HiddenFloorCorridors
+from the tile read at 9,4 of AbandonedShip_HiddenFloorCorridors
+way -
+  > The door is locked. "RM. 6" is painted on it.
+=== abandoned_ship_rooms_1f.Thalia
+from Thalia at 10,11 of AbandonedShip_Rooms_1F
+way 0.0
+  Beauty Thalia> Beauty Thalia: What brings someone to a wreck like this? Curiosity, I suppose. Mine too!
+  Thalia> Curious and strong, too! I'd like to remember you. Let me take your number.
+  Thalia> Register Thalia in the PokéNav's Match Call?
+  Thalia> There! Now I can tell you whatever else I find on this old ship.
+  ? Register Thalia in the PokéNav's Match Call? = Yes
+  * battle hoenn_thalia_1 Won
+  * addcontact hoenn_thalia
+  + FLAG_PHONE_CONTACT_HOENN_THALIA
+  + beaten hoenn_thalia_1
+way 0.1, from answer 2
+  Thalia> Pity. Well, I'll be poking around these cabins if you change your mind.
+  ? Register Thalia in the PokéNav's Match Call? = No
+  + beaten hoenn_thalia_1
+way 1, from answer 1
+  * battle hoenn_thalia_1 Lost
+=== abandoned_ship_rooms_2_1f.KiraAndDan
+from Kira & Dan at 6,13 of AbandonedShip_Rooms2_1F
+from Kira & Dan at 7,13 of AbandonedShip_Rooms2_1F
+way -
+  Kira> Only one Pokémon? We battle two at a time, you know. Come back with a partner for it!
 === acuity_cavern.Uxie
 from Uxie at 14,10 of AcuityCavern
 way 0
@@ -15482,6 +15531,54 @@ way -
 from Woman at 352,10 of Hoenn
 way -
   Woman> I want to go to the Gym, but something's in the way on the bridge. I can't see anything, yet I can't get past!
+=== fortree_city_decoration_shop.Chairs
+from Clerk at 6,2 of FortreeCity_DecorationShop
+way 0
+  Clerk> Welcome! Every secret base needs somewhere to sit. Have a look at our chairs.
+  Clerk> Which would you like?
+  Clerk> Thank you very much! The Small Chair has been sent to your decoration PC.
+  ? Which would you like? = SMALL CHAIR  2,000
+way 5, from answer 1
+  Clerk> Please come again!
+  ? Which would you like? = NO, THANKS
+way 4.0, from answer 1
+  Clerk> Which would you like?
+  Clerk> Thank you very much! The Comfort Chair has been sent to your decoration PC.
+  ? Which would you like? = MORE
+  ? Which would you like? = COMFORT CHAIR  2,000
+way 3, from answer 1
+  Clerk> Thank you very much! The Ragged Chair has been sent to your decoration PC.
+  ? Which would you like? = RAGGED CHAIR  2,000
+way 2, from answer 1
+  Clerk> Thank you very much! The Heavy Chair has been sent to your decoration PC.
+  ? Which would you like? = HEAVY CHAIR  2,000
+way 1, from answer 1
+  Clerk> Thank you very much! The Pokémon Chair has been sent to your decoration PC.
+  ? Which would you like? = POKéMON CHAIR  2,000
+=== fortree_city_decoration_shop.Desks
+from Clerk at 1,2 of FortreeCity_DecorationShop
+way 0
+  Clerk> Welcome! Our desks will hold up any doll or ornament in your secret base.
+  Clerk> Which would you like?
+  Clerk> Thank you very much! The Small Desk has been sent to your decoration PC.
+  ? Which would you like? = SMALL DESK  3,000
+way 5, from answer 1
+  Clerk> Please come again!
+  ? Which would you like? = NO, THANKS
+way 4.0, from answer 1
+  Clerk> Which would you like?
+  Clerk> I'm terribly sorry, but you haven't enough money for that.
+  ? Which would you like? = MORE
+  ? Which would you like? = COMFORT DESK  6,000
+way 3, from answer 1
+  Clerk> I'm terribly sorry, but you haven't enough money for that.
+  ? Which would you like? = RAGGED DESK  6,000
+way 2, from answer 1
+  Clerk> I'm terribly sorry, but you haven't enough money for that.
+  ? Which would you like? = HEAVY DESK  6,000
+way 1, from answer 1
+  Clerk> Thank you very much! The Pokémon Desk has been sent to your decoration PC.
+  ? Which would you like? = POKéMON DESK  3,000
 === fortree_city_gym.GymGuide
 from Gym Guide at 15,21 of FortreeCity_Gym
 way -

@@ -741,6 +741,13 @@ public static class RegionDatabase
                 "NavelRock_Down07", "NavelRock_Down08", "NavelRock_Down09", "NavelRock_Down10", "NavelRock_Down11", "NavelRock_Bottom",
                 // Plan 21 · H12, part g: Faraway Island and the S.S. Tidal
                 "FarawayIsland_Entrance", "FarawayIsland_Interior", "SSTidalCorridor", "SSTidalLowerDeck", "SSTidalRooms",
+                // Plan 21 · H12, part i: the Abandoned Ship, Artisan Cave and the last rooms of three towns
+                "AbandonedShip_Deck", "AbandonedShip_Corridors_1F", "AbandonedShip_Rooms_1F", "AbandonedShip_Corridors_B1F",
+                "AbandonedShip_Rooms_B1F", "AbandonedShip_Rooms2_B1F", "AbandonedShip_Underwater1", "AbandonedShip_Room_B1F",
+                "AbandonedShip_Rooms2_1F", "AbandonedShip_CaptainsOffice", "AbandonedShip_Underwater2",
+                "AbandonedShip_HiddenFloorCorridors", "AbandonedShip_HiddenFloorRooms", "ArtisanCave_1F", "ArtisanCave_B1F",
+                "FortreeCity_DecorationShop", "MossdeepCity_GameCorner_1F",
+                "SootopolisCity_MysteryEventsHouse_1F",
             }
         },
         new()

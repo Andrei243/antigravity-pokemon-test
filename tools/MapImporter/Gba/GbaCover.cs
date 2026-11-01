@@ -467,6 +467,12 @@ public static class GbaCover
             {
                 (0x20E, 0x20E, TerrainCover.Bridge), (0x218, 0x218, TerrainCover.Bridge), (0x3A0, 0x3A1, TerrainCover.Bridge),
             },
+            // Plan 21 · H12, part i: the Abandoned Ship's door mats (METATILE_InsideShip_DoorIndent_Unlocked, the way into a
+            // cabin south of a corridor, MB_SOUTH_ARROW_WARP), whose label would make each a wall standing in the corridor
+            ["gTileset_InsideShip"] = new (int, int, TerrainCover)[]
+            {
+                (0x21A, 0x21A, TerrainCover.Paving),
+            },
             ["gTileset_Petalburg"] = new (int, int, TerrainCover)[]
             {
                 // The doormat before a house's door, and the earth where the paths meet the towns' edges

@@ -1,0 +1,25 @@
+{
+  "people": {
+    "fat_man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Urgh... I feel seasick just standing in here.",
+          "And the ship isn't even moving. How does that work?"
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

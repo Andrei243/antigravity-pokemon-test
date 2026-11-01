@@ -180,5 +180,8 @@ partial class Harness
         game.State = GameState.Overworld;
         // Part h's (plan 21 · H12): Mirage Island
         HoennMirageIslandShots();
+        // Part i's: the Abandoned Ship, Artisan Cave and the last shut rooms
+        game.State = GameState.Overworld;
+        HoennAbandonedShipShots();
     }
 }

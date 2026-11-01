@@ -1,0 +1,10 @@
+{
+  // The Abandoned Ship's first deck (plan 21 · H12, part i): the corridors under the deck, with the doors of the cabins on
+  // both sides and two flights down to the lower deck
+  "area": "abandoned_ship_corridors_1f",
+  "bgmTrack": "hoenn/abandoned_ship",
+  "people": {
+    "youngster": { "name": "Boy", "dialog": [ "A shipwreck you can walk right into! I've been running up and down these corridors all day!" ] },
+    "tuber_m": { "name": "Charlie", "trainer": { "dialogueBefore": "Tuber Charlie: Laugh at my float ring and you'll be sorry. Battle!", "dialogueAfter": "Tuber Charlie: Throwing a ball while holding on to a float ring is really hard!" } }
+  }
+}

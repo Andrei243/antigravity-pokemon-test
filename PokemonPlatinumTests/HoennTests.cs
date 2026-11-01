@@ -509,9 +509,9 @@ public class HoennTests
         // The eastern sea plays Route 120's song, Route 124's too now that it is written
         Assert.Equal("hoenn/route120", Overworld.BgmTrackAt(647, 91));
         Assert.Equal("route_125", Overworld.AreaAt(647, 91)?.Key);
-        // The Game Corner (Emerald's room of link games) stays shut (Shoal Cave opened with plan 21 · H8, part d); the
-        // treasure hunter's house on Route 124 is open
-        Assert.DoesNotContain(Overworld.Warps, w => w.TargetMap == "MossdeepCity_GameCorner_1F" && !w.Shut);
+        // The Game Corner (Emerald's room of link games) is open since plan 21 · H12, part i (Shoal Cave opened with plan
+        // 21 · H8, part d); the treasure hunter's house on Route 124 is open
+        Assert.Contains(Overworld.Warps, w => w.TargetMap == "MossdeepCity_GameCorner_1F" && !w.Shut);
         Assert.Contains(Overworld.Warps, w => w.TargetMap == "Route124_DivingTreasureHuntersHouse" && !w.Shut);
         // The Space Center's two floors are joined by their stairs
         Assert.Contains(BuiltMaps.Value["MossdeepCity_SpaceCenter_1F"].Warps, w => w.TargetMap == "MossdeepCity_SpaceCenter_2F");

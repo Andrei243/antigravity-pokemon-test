@@ -8,7 +8,8 @@
   "name": "Battle Frontier",
   "bgmTrack": "hoenn/lilycove",
   "trees": "Round",
-  "locked": [ 0, 1, 2, 10 ],
+  // Artisan Cave's way out (10) is open since plan 21 · H12, part i
+  "locked": [ 0, 1, 2 ],
   "people": {
     "frontier_ferry_attendant": { "name": "Attendant", "script": "FerryAttendant", "still": true },
     "boy_2": { "name": "Boy", "dialog": [ "Back home I beat everyone I know. Here I've lost every battle I've had. This island is something else!" ] },

@@ -1,0 +1,9 @@
+{
+  // The Abandoned Ship's captain's office (plan 21 · H12, part i): Captain Stern's assistant looking into the wreck, and
+  // the Storage Key on the floor (abandoned_ship_captains_office.txt)
+  "area": "abandoned_ship_captains_office",
+  "bgmTrack": "hoenn/abandoned_ship",
+  "people": {
+    "scientist_1": { "name": "Scientist", "script": "SternsAide", "still": true }
+  }
+}

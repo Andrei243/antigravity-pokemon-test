@@ -569,6 +569,10 @@
       "note": "first spoken at ecruteak_dance_theater.txt(16)",
       "provisional": true
     },
+    "kira": {
+      "note": "first spoken at abandoned_ship_rooms_2_1f.txt(13)",
+      "provisional": true
+    },
     "kiri": {
       "note": "first spoken at sootopolis_city.txt(159)",
       "provisional": true
@@ -1145,6 +1149,10 @@
       "note": "first spoken at snowpoint_city.txt(36)",
       "provisional": true
     },
+    "thalia": {
+      "note": "first spoken at abandoned_ship_rooms_1f.txt(12)",
+      "provisional": true
+    },
     "thorton": {
       "note": "first spoken at BattleFactoryBattleRoom.txt(47)",
       "provisional": true
@@ -1483,6 +1491,7 @@
     "Katelyn": "katelyn",
     "Keira": "keira",
     "Kimono Girl": "kimono_girl",
+    "Kira": "kira",
     "Kiri": "kiri",
     "Koga": "koga",
     "Koichi": "koichi",
@@ -1645,6 +1654,7 @@
     "Team Aqua Grunt": "look:aqua_grunt",
     "Team Magma Grunt": "look:magma_grunt",
     "Temple Guard": "temple_guard",
+    "Thalia": "thalia",
     "Thorton": "thorton",
     "Traveller": "traveller",
     "Treasure Hunter": "treasure_hunter",

@@ -120,6 +120,30 @@ trainers 2, 11-13: galactic_grunt_valley_windworks_2 13, galactic_grunt_valley_w
 === VeilstoneGym
 Veilstone Gym
 trainers 4, 23-28: black_belt_colby 27, black_belt_darren 25, black_belt_jeffery 28, black_belt_rafael 26
+=== abandoned_ship_corridors_1f
+Abandoned Ship
+trainers 1, 26: hoenn_charlie 26
+=== abandoned_ship_corridors_b1f
+Abandoned Ship
+trainers 1, 25: hoenn_duncan 25
+=== abandoned_ship_hidden_floor_corridors
+Abandoned Ship
+surf 5-35
+old rod 5-10
+good rod 10-30
+super rod 20-35
+=== abandoned_ship_rooms_1f
+Abandoned Ship
+trainers 2, 25: hoenn_demetrius 25, hoenn_thalia_1 25
+=== abandoned_ship_rooms_2_1f
+Abandoned Ship
+trainers 3, 25-26: hoenn_garrison 26, hoenn_jani 26, hoenn_kira_and_dan_1 25
+=== abandoned_ship_rooms_b1f
+Abandoned Ship
+surf 5-35
+old rod 5-10
+good rod 10-30
+super rod 20-35
 === acuity_lakefront
 Acuity Lakefront
 grass 32-35
@@ -132,6 +156,12 @@ trainers 4, 31-32: hoenn_grunt_aqua_hideout_2 31, hoenn_grunt_aqua_hideout_3 32,
 === aqua_hideout_b2f
 Aqua Hideout
 trainers 3, 32: hoenn_grunt_aqua_hideout_4 32, hoenn_grunt_aqua_hideout_6 32, hoenn_grunt_aqua_hideout_8 32
+=== artisan_cave_1f
+Artisan Cave
+grass 40-50
+=== artisan_cave_b1f
+Artisan Cave
+grass 40-50
 === aspertia_city
 Aspertia City
 surf 5-15

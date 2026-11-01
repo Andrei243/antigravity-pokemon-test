@@ -1,0 +1,160 @@
+{
+  "Desks": [
+    {
+      "en": [
+        "Clerk"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome! Our desks will hold up any doll or ornament in your secret base."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which would you like?",
+        "SMALL DESK  3,000",
+        "POKéMON DESK  3,000",
+        "HEAVY DESK  6,000",
+        "RAGGED DESK  6,000",
+        "MORE",
+        "NO, THANKS"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which would you like?",
+        "COMFORT DESK  6,000",
+        "BRICK DESK  9,000",
+        "CAMP DESK  9,000",
+        "HARD DESK  9,000",
+        "BACK TO THE START",
+        "NO, THANKS"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please come again!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Chairs": [
+    {
+      "en": [
+        "Clerk"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome! Every secret base needs somewhere to sit. Have a look at our chairs."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which would you like?",
+        "SMALL CHAIR  2,000",
+        "POKéMON CHAIR  2,000",
+        "HEAVY CHAIR  2,000",
+        "RAGGED CHAIR  2,000",
+        "MORE",
+        "NO, THANKS"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which would you like?",
+        "COMFORT CHAIR  2,000",
+        "BRICK CHAIR  2,000",
+        "CAMP CHAIR  2,000",
+        "HARD CHAIR  2,000",
+        "BACK TO THE START",
+        "NO, THANKS"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please come again!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Told": [
+    {
+      "en": [
+        "Thank you very much! The {thing} has been sent to your decoration PC."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm terribly sorry, but you haven't enough money for that."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry, but your decoration PC has no more room for things of that kind."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

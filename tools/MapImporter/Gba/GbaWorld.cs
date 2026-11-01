@@ -122,6 +122,9 @@ public sealed class GbaWorld
     /// The other layout's chunks are written after every matrix's (<see cref="AlternateOf"/>), so no chunk is numbered
     /// otherwise, and the region's <c>world.json</c> swaps them in by its <c>swaps</c> (<c>Map.ApplySwappedPlaces</c>).
     /// </summary>
+    /// <summary>The maps that are a ship's deck in the open, whose walked tiles no row names: planks (plan 21 · H12, part i).</summary>
+    public static readonly IReadOnlySet<string> ShipDecks = new HashSet<string>(StringComparer.Ordinal) { "AbandonedShip_Deck" };
+
     public static readonly IReadOnlyList<(string Map, string Layout)> Alternates = new[]
     {
         ("MAP_SEAFOAM_ISLANDS_B3F", "LAYOUT_SEAFOAM_ISLANDS_B3F_CURRENT_STOPPED"),
@@ -345,6 +348,10 @@ public sealed class GbaWorld
                     // mountain is open rock, never a cliff (the builder blocks every cliff; Route 119's way up to its
                     // bridge was one, plan 21 · H6)
                     if (cover == TerrainCover.Cliff && !m.Solid[i]) cover = TerrainCover.Rock;
+                    // A ship's deck in the open (plan 21 · H12, part i: the Abandoned Ship's) is planks wherever it is walked
+                    // and nothing else names it: its tileset is shared with Mt. Pyre and the Space Center, so no row of
+                    // the tileset's own could say so
+                    if (cover == TerrainCover.Unknown && !m.Solid[i] && ShipDecks.Contains(map.Name)) cover = TerrainCover.Bridge;
                     m.Cover[i] = cover;
                     if (indoors) m.Furniture[i] = GbaFurniture.Of(name, tileset, metatile, Source.Game);
                     if (!count) continue;

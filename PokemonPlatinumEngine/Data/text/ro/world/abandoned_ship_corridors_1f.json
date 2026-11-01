@@ -1,0 +1,49 @@
+{
+  "people": {
+    "youngster": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A shipwreck you can walk right into! I've been running up and down these corridors all day!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "tuber_m": {
+      "name": {
+        "en": [
+          "Charlie"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Tuber Charlie: Laugh at my float ring and you'll be sorry. Battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Tuber Charlie: Throwing a ball while holding on to a float ring is really hard!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,47 @@
+{
+  "key": "abandoned_ship_hidden_floor_rooms",
+  "index": 304,
+  "name": "Abandoned Ship",
+  "matrix": 253,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Cloudy",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ABANDONED_SHIP",
+  "nightMusic": "MUS_ABANDONED_SHIP",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 14, "to": "abandoned_ship_hidden_floor_corridors", "toWarp": 0 },
+    { "x": 7, "z": 14, "to": "abandoned_ship_hidden_floor_corridors", "toWarp": 0 },
+    { "x": 21, "z": 14, "to": "abandoned_ship_hidden_floor_corridors", "toWarp": 1 },
+    { "x": 22, "z": 14, "to": "abandoned_ship_hidden_floor_corridors", "toWarp": 1 },
+    { "x": 36, "z": 14, "to": "abandoned_ship_hidden_floor_corridors", "toWarp": 2 },
+    { "x": 37, "z": 14, "to": "abandoned_ship_hidden_floor_corridors", "toWarp": 2 },
+    { "x": 6, "z": 1, "to": "abandoned_ship_hidden_floor_corridors", "toWarp": 3 },
+    { "x": 21, "z": 1, "to": "abandoned_ship_hidden_floor_corridors", "toWarp": 4 },
+    { "x": 36, "z": 1, "to": "abandoned_ship_hidden_floor_corridors", "toWarp": 5 }
+  ],
+  "objects": [
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 41, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ITEM_ABANDONED_SHIP_HIDDEN_FLOOR_ROOM_6_LUXURY_BALL", "item": "Luxury Ball", "script": "AbandonedShip_HiddenFloorRooms_EventScript_ItemLuxuryBall" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_around", "x": 16, "z": 10, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ITEM_ABANDONED_SHIP_HIDDEN_FLOOR_ROOM_2_SCANNER", "item": "Scanner", "script": "AbandonedShip_HiddenFloorRooms_EventScript_ItemScanner" },
+    { "id": "item_ball_3", "looks": "item_ball", "movement": "look_around", "x": 5, "z": 11, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_ITEM_ABANDONED_SHIP_HIDDEN_FLOOR_ROOM_1_TM_RAIN_DANCE", "item": "TM18", "script": "AbandonedShip_HiddenFloorRooms_EventScript_ItemTMRainDance" },
+    { "id": "item_ball_4", "looks": "item_ball", "movement": "look_around", "x": 31, "z": 11, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_ITEM_ABANDONED_SHIP_HIDDEN_FLOOR_ROOM_3_WATER_STONE", "item": "Water Stone", "script": "AbandonedShip_HiddenFloorRooms_EventScript_ItemWaterStone" }
+  ],
+  "signs": [
+    { "x": 42, "z": 10, "type": 2, "script": "", "item": "Room 1 Key", "flag": "FLAG_HIDDEN_ITEM_ABANDONED_SHIP_RM_1_KEY" },
+    { "x": 20, "z": 5, "type": 2, "script": "", "item": "Room 2 Key", "flag": "FLAG_HIDDEN_ITEM_ABANDONED_SHIP_RM_2_KEY" },
+    { "x": 1, "z": 12, "type": 2, "script": "", "item": "Room 4 Key", "flag": "FLAG_HIDDEN_ITEM_ABANDONED_SHIP_RM_4_KEY" },
+    { "x": 1, "z": 2, "type": 2, "script": "", "item": "Room 6 Key", "flag": "FLAG_HIDDEN_ITEM_ABANDONED_SHIP_RM_6_KEY" },
+    { "x": 8, "z": 5, "type": 0, "script": "AbandonedShip_HiddenFloorRooms_EventScript_Trash" },
+    { "x": 11, "z": 3, "type": 0, "script": "AbandonedShip_HiddenFloorRooms_EventScript_Trash" },
+    { "x": 10, "z": 10, "type": 0, "script": "AbandonedShip_HiddenFloorRooms_EventScript_Trash" },
+    { "x": 16, "z": 3, "type": 0, "script": "AbandonedShip_HiddenFloorRooms_EventScript_Trash" },
+    { "x": 25, "z": 2, "type": 0, "script": "AbandonedShip_HiddenFloorRooms_EventScript_Trash" },
+    { "x": 24, "z": 6, "type": 0, "script": "AbandonedShip_HiddenFloorRooms_EventScript_Trash" }
+  ],
+  "triggers": []
+}

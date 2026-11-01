@@ -227,6 +227,64 @@
     "cantBeTossed": true,
     "fieldUse": "TmHm"
   },
+  // The Abandoned Ship's key items (plan 21 · H12, part i; Emerald's ITEM_SCANNER and ITEM_ROOM_1_KEY to _6_KEY): the
+  // Scanner, found in a cabin of its hidden floor and taken to Captain Stern, and the keys of four of those cabins,
+  // each left in the cabin before it and used up in its door. The Storage Key is Platinum's, which has the same name
+  "Scanner": {
+    "id": 9114,
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A scanning device found on the Abandoned Ship. Captain Stern in Slateport would like to have it.",
+    "cantBeTossed": true
+  },
+  "Room 1 Key": {
+    "id": 9115,
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A key to a cabin on the Abandoned Ship's hidden floor. \"Rm. 1\" is stamped on its tag.",
+    "cantBeTossed": true
+  },
+  "Room 2 Key": {
+    "id": 9116,
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A key to a cabin on the Abandoned Ship's hidden floor. \"Rm. 2\" is stamped on its tag.",
+    "cantBeTossed": true
+  },
+  "Room 4 Key": {
+    "id": 9117,
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A key to a cabin on the Abandoned Ship's hidden floor. \"Rm. 4\" is stamped on its tag.",
+    "cantBeTossed": true
+  },
+  "Room 6 Key": {
+    "id": 9118,
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A key to a cabin on the Abandoned Ship's hidden floor. \"Rm. 6\" is stamped on its tag.",
+    "cantBeTossed": true
+  },
   // Johto's key item of the second chapter (plan 20 · J7), which no game this importer reads has: Goldenrod's flower
   // shop lends it for the strange tree on Route 36
   "SquirtBottle": {

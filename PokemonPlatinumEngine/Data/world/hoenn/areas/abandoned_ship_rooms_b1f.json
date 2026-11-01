@@ -1,0 +1,56 @@
+{
+  "key": "abandoned_ship_rooms_b1f",
+  "index": 296,
+  "name": "Abandoned Ship",
+  "matrix": 245,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Cloudy",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ABANDONED_SHIP",
+  "nightMusic": "MUS_ABANDONED_SHIP",
+  "encounters": "abandoned_ship_rooms_b1f",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "water": [
+    { "species": "Tentacool", "level": 5, "maxLevel": 35 },
+    { "species": "Tentacool", "level": 5, "maxLevel": 35 },
+    { "species": "Tentacool", "level": 5, "maxLevel": 35 },
+    { "species": "Tentacool", "level": 5, "maxLevel": 35 },
+    { "species": "Tentacruel", "level": 30, "maxLevel": 35 }
+  ],
+  "waterRate": 4,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "maxLevel": 10, "weight": 70 },
+    { "species": "Tentacool", "level": 5, "maxLevel": 10 }
+  ],
+  "oldRodRate": 20,
+  "goodRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 30, "weight": 60 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 30, "weight": 20 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 30, "weight": 20 }
+  ],
+  "goodRodRate": 20,
+  "superRod": [
+    { "species": "Tentacool", "level": 25, "maxLevel": 30 },
+    { "species": "Tentacool", "level": 30, "maxLevel": 35 },
+    { "species": "Tentacruel", "level": 30, "maxLevel": 35 },
+    { "species": "Tentacruel", "level": 25, "maxLevel": 30 },
+    { "species": "Tentacruel", "level": 20, "maxLevel": 25 }
+  ],
+  "superRodRate": 20,
+  "warps": [
+    { "x": 4, "z": 1, "to": "abandoned_ship_corridors_b1f", "toWarp": 2 },
+    { "x": 13, "z": 1, "to": "abandoned_ship_corridors_b1f", "toWarp": 3 },
+    { "x": 22, "z": 1, "to": "abandoned_ship_corridors_b1f", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "fat_man", "looks": "fat_man", "movement": "look_west", "x": 25, "z": 6, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "AbandonedShip_Rooms_B1F_EventScript_FatMan" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 6, "z": 7, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_ITEM_ABANDONED_SHIP_ROOMS_B1F_ESCAPE_ROPE", "item": "Escape Rope", "script": "AbandonedShip_Rooms_B1F_EventScript_ItemEscapeRope" }
+  ],
+  "signs": [],
+  "triggers": []
+}

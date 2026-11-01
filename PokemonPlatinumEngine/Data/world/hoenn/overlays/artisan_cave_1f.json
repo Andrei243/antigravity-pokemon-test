@@ -1,0 +1,7 @@
+{
+  // Artisan Cave's upper floor (plan 21 · H12, part i): the cave under the Battle Frontier island, come to from the east
+  // half's cliff, where Smeargle live and paint the walls. Emerald plays Petalburg Woods' song
+  "area": "artisan_cave_1f",
+  "bgmTrack": "hoenn/petalburg_woods",
+  "trees": "Round"
+}

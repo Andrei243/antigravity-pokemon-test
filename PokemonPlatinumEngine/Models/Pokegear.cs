@@ -199,6 +199,30 @@ public static class PhoneRematch
         _ => false
     };
 
+    /// <summary>
+    /// The Badges of Hoenn each level of a route trainer's row asks for (plan 21 · H12, part i; ours: Emerald's own rule
+    /// is in its <c>match_call.c</c>, which the pinned cache doesn't hold): the second team from five Badges, then a team
+    /// a Badge, the fifth with all eight. Emerald's rows are four teams after the first; a fifth level, should a row ever
+    /// have one, is the Hall of Fame's.
+    /// </summary>
+    public static readonly int[] HoennBadgesForLevel = { 5, 6, 7, 8 };
+
+    /// <summary>Whether a level of a Hoenn route trainer's row (1 to 5) is open.</summary>
+    public static bool UnlockedInHoenn(int level, StoryState story) => level switch
+    {
+        >= 1 and <= 4 => story.BadgeCount(RegionDatabase.Hoenn) >= HoennBadgesForLevel[level - 1],
+        5 => story.Has(RegionDatabase.Get(RegionDatabase.Hoenn)!.StoryCompleteFlag),
+        _ => false
+    };
+
+    /// <summary>
+    /// A trainer of Hoenn's routes in Match Call (plan 21 · H12, part i), told from the Gym Leaders, the Elite Four and
+    /// Wally by their teams: Emerald numbers a route trainer's first team <c>_1</c> and calls them a plain trainer.
+    /// </summary>
+    public static bool IsHoennRouteTrainer(PhoneContact contact) =>
+        string.Equals(contact.Region, RegionDatabase.Hoenn, StringComparison.OrdinalIgnoreCase) && contact.Type == 0
+        && contact.Trainer is { } trainer && trainer.EndsWith("_1", StringComparison.Ordinal);
+
     /// <summary>The wild encounters' time of day (HeartGold's morning, day and night) a moment falls in.</summary>
     public static string TimeOf(TimeOfDay time) => time switch
     {
@@ -219,8 +243,11 @@ public static class PhoneRematch
     public static bool Wants(PhoneContact contact, StoryState story, DateTime day, TimeOfDay time) =>
         contact.Trainer is { } trainer && TrainerDatabase.Get(trainer) is { Rematches.Count: > 0 }
         && story.Has(Pokegear.ContactFlag(contact.Id)) && story.HasDefeated(trainer)
-        // (Hoenn's are the Elite Four's and Wally's, who ask only of a Champion of Hoenn)
-        && (contact.Region != "hoenn" || story.Has(RegionDatabase.Get(RegionDatabase.Hoenn)!.StoryCompleteFlag))
+        // (Hoenn's Gym Leaders, Elite Four and Wally ask only of a Champion of Hoenn; its route trainers once the first of
+        // their rows is open, plan 21 · H12, part i)
+        && (contact.Region != "hoenn" || (IsHoennRouteTrainer(contact)
+            ? UnlockedInHoenn(1, story)
+            : story.Has(RegionDatabase.Get(RegionDatabase.Hoenn)!.StoryCompleteFlag)))
         && !story.Has(WaitingFlag(contact.Id)) && OnItsHour(contact, day, time);
 
     /// <summary>The trainers of the book waiting for a rematch now.</summary>

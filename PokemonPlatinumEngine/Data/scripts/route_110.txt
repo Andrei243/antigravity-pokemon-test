@@ -72,6 +72,7 @@ label Beaten
 # Edwin, beaten, swaps numbers for the PokéNav
 script Edwin
   if not defeated self goto Fight
+  if rematch self goto Rematch
   if flag FLAG_PHONE_CONTACT_HOENN_EDWIN goto Known
 label Ask
   speaker "Edwin"
@@ -91,11 +92,17 @@ label Fight
   trainerline before
   battle self
   goto Ask
+# A rematch Match Call asked for (plan 21 · H12, part i): the team of the level the Badges have reached
+label Rematch
+  trainerline before
+  battle self rematch
+  end
 
 
 # Benjamin, beaten, swaps numbers for the PokéNav
 script Benjamin
   if not defeated self goto Fight
+  if rematch self goto Rematch
   if flag FLAG_PHONE_CONTACT_HOENN_BENJAMIN goto Known
 label Ask
   speaker "Benjamin"
@@ -115,11 +122,17 @@ label Fight
   trainerline before
   battle self
   goto Ask
+# A rematch Match Call asked for (plan 21 · H12, part i): the team of the level the Badges have reached
+label Rematch
+  trainerline before
+  battle self rematch
+  end
 
 
 # Abigail, beaten, swaps numbers for the PokéNav
 script Abigail
   if not defeated self goto Fight
+  if rematch self goto Rematch
   if flag FLAG_PHONE_CONTACT_HOENN_ABIGAIL goto Known
 label Ask
   speaker "Abigail"
@@ -139,11 +152,17 @@ label Fight
   trainerline before
   battle self
   goto Ask
+# A rematch Match Call asked for (plan 21 · H12, part i): the team of the level the Badges have reached
+label Rematch
+  trainerline before
+  battle self rematch
+  end
 
 
 # Isabel, beaten, swaps numbers for the PokéNav
 script Isabel
   if not defeated self goto Fight
+  if rematch self goto Rematch
   if flag FLAG_PHONE_CONTACT_HOENN_ISABEL goto Known
 label Ask
   speaker "Isabel"
@@ -163,4 +182,9 @@ label Fight
   trainerline before
   battle self
   goto Ask
+# A rematch Match Call asked for (plan 21 · H12, part i): the team of the level the Badges have reached
+label Rematch
+  trainerline before
+  battle self rematch
+  end
 

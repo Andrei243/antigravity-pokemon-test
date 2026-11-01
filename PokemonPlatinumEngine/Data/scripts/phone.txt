@@ -299,133 +299,285 @@ script Scott
 # Ricky, the tuber of Route 109
 script HoennRicky
   speaker "Ricky"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
   say "It's Ricky! I put my face in the water today. Next I'm gonna kick my legs!"
+  end
+label Rematch
+  say "Ricky here! I can kick my legs now, really fast! Come and battle me on Route 109!"
+  end
+label Waiting
+  say "It's Ricky. I'm on the beach on Route 109, waiting for you. Hurry!"
   end
 
 
 # Lola, the tuber of Route 109
 script HoennLola
   speaker "Lola"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
   say "Hi! It's Lola! Azumarill and me floated all the way to the rocks and back!"
+  end
+label Rematch
+  say "It's Lola! Azumarill and I practised all week. Battle us again on Route 109's beach!"
+  end
+label Waiting
+  say "Lola here. We're still floating about on Route 109. Come soon!"
   end
 
 
 # Edwin, the collector of Route 110
 script HoennEdwin
   speaker "Edwin"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
   say "Edwin speaking. I found a Nuzleaf with the most elegant leaf. My collection grows ever finer!"
+  end
+label Rematch
+  say "Edwin speaking. My collection has grown, and so have my Pokémon. Meet me on Route 110 for a rematch?"
+  end
+label Waiting
+  say "Edwin here. I'm waiting on Route 110 with my newest finds, ready to battle."
   end
 
 
 # Benjamin, the triathlete of Route 110
 script HoennBenjamin
   speaker "Benjamin"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
   say "It's Benjamin! I rode the Cycling Road twice before breakfast. My legs are on fire!"
+  end
+label Rematch
+  say "Benjamin here! I've cut my times and toughened my team. Race you to a battle on Route 110!"
+  end
+label Waiting
+  say "It's Benjamin. Still on Route 110, still training. Where are you?"
   end
 
 
 # Abigail, the triathlete of Route 110
 script HoennAbigail
   speaker "Abigail"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
   say "Abigail here! My Magnezone and I rode all the way to Mauville and back. It's buzzing with energy!"
+  end
+label Rematch
+  say "Abigail calling! I ran Route 110 twice today and I'm itching for a battle. Come find me!"
+  end
+label Waiting
+  say "Abigail here. I'm stretching on Route 110 while I wait for you."
   end
 
 
 # Isabel, the pokéfan of Route 110
 script HoennIsabel
   speaker "Isabel"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
   say "It's Isabel! Anodion and Cathodion fell asleep holding hands today. I nearly cried, it was so sweet!"
+  end
+label Rematch
+  say "It's Isabel! My Pokémon are fitter than ever. Let's have that rematch on Route 110!"
+  end
+label Waiting
+  say "Isabel here. I'm on Route 110, ready whenever you are!"
   end
 
 
 # Isaac, the pokémon breeder of Route 117
 script HoennIsaac
   speaker "Isaac"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
   say "Isaac here. My Pokémon have all grown a little bigger. Raising them is such a joy!"
+  end
+label Rematch
+  say "Isaac here! My Pokémon got way bigger. Come battle me on Route 117!"
+  end
+label Waiting
+  say "It's Isaac. I'm waiting by the flowers on Route 117. Come on!"
   end
 
 
 # Lydia, the pokémon breeder of Route 117
 script HoennLydia
   speaker "Lydia"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
   say "Hello, it's Lydia! My Azumarill learnt a new move today. I'm so proud of the little dear!"
+  end
+label Rematch
+  say "It's Lydia! I've been raising my Pokémon really well. Let's battle on Route 117 again!"
+  end
+label Waiting
+  say "Lydia here. I'm on Route 117, still waiting for our rematch."
   end
 
 
 # Dylan, the triathlete of Route 117
 script HoennDylan
   speaker "Dylan"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
   say "Dylan here! Huff... huff... I'm running right now. Tripluma's way ahead of me as usual!"
+  end
+label Rematch
+  say "Dylan here. My training on Route 117 has paid off. Fancy another battle?"
+  end
+label Waiting
+  say "It's Dylan. I'm on Route 117, warmed up and waiting."
   end
 
 
 # Maria, the triathlete of Route 117
 script HoennMaria
   speaker "Maria"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
   say "Maria here! Tripluma and I beat our best time on Route 117. Two heads really are better than one!"
+  end
+label Rematch
+  say "Maria calling! I swam, cycled and ran today, and I'm still ready to battle. Route 117!"
+  end
+label Waiting
+  say "Maria here. Route 117, any time now. I'll be waiting!"
   end
 
 
 # Rose, the Aroma Lady of Route 118 (plan 21 · H6)
 script HoennRose
   speaker "Rose"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
   say "Rose here. My Roserade's flowers have opened at last. The whole house smells sweet!"
+  end
+label Rematch
+  say "It's Rose! My Pokémon have bloomed. Come and see them on Route 118!"
+  end
+label Waiting
+  say "Rose here. I'm on Route 118 among the flowers, waiting for you."
   end
 
 
 # Dalton, the guitarist of Route 118
 script HoennDalton
   speaker "Dalton"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
   say "Yo, it's Dalton! I wrote a new song about the river on Route 118. My Exploud hums along!"
+  end
+label Rematch
+  say "Dalton here! My team's tougher now. Come to Route 118 and battle me!"
+  end
+label Waiting
+  say "It's Dalton. I'm on Route 118. Don't keep me waiting too long!"
   end
 
 
 # Jackson, the Pokémon Ranger of Route 119
 script HoennJackson
   speaker "Jackson"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
   say "Jackson speaking. The rain on Route 119 hasn't let up all week. Perfect for training in the tall grass."
+  end
+label Rematch
+  say "Jackson here. The rain on Route 119 has made my team stronger. Shall we battle?"
+  end
+label Waiting
+  say "It's Jackson. I'm out on Route 119 in the long grass, waiting for you."
   end
 
 
 # Catherine, the Pokémon Ranger of Route 119
 script HoennCatherine
   speaker "Catherine"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
   say "Hi, it's Catherine! My Gloom loves the rain. I think it's grown a little since we battled."
+  end
+label Rematch
+  say "Catherine calling! I've been training hard in Route 119's rain. Let's have a rematch!"
+  end
+label Waiting
+  say "Catherine here. I'm still on Route 119. Bring an umbrella!"
   end
 
 
 # Robert, the bird keeper of Route 120
 script HoennRobert
   speaker "Robert"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
   say "Robert here. My Altaria flew all the way to Fortree and back today. Its wings are getting stronger!"
+  end
+label Rematch
+  say "It's Robert. I've found a better way to raise my birds. Come and battle on Route 120!"
+  end
+label Waiting
+  say "Robert here. My birds and I are on Route 120, ready for you."
   end
 
 
 # Jeffrey, the bug maniac of Route 120
 script HoennJeffrey
   speaker "Jeffrey"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
   say "It's Jeffrey! I found a Surskit skating on a puddle in the rain. Bugs are the best, aren't they?"
+  end
+label Rematch
+  say "Jeffrey here. The insects of Route 120 have taught my team a thing or two. Rematch?"
+  end
+label Waiting
+  say "It's Jeffrey. Still on Route 120, still waiting for that battle."
   end
 
 
 # Walter, the gentleman of Route 121 (plan 21 · H6, part b)
 script HoennWalter
   speaker "Walter"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
   say "Good day, this is Walter. My Manectric and I walked to the Safari Zone's gate and back. Splendid exercise."
+  end
+label Rematch
+  say "Walter speaking. My Pokémon have grown splendidly. Shall we meet again on Route 121?"
+  end
+label Waiting
+  say "Walter here. I'm on Route 121 whenever you have a moment."
   end
 
 
 # Jessica, the beauty of Route 121
 script HoennJessica
   speaker "Jessica"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
   say "Hi, it's Jessica! My Chromeleon hid in the curtains all morning. I only found it when it sneezed!"
+  end
+label Rematch
+  say "It's Jessica! My lovely Pokémon are even lovelier now. Battle me on Route 121!"
+  end
+label Waiting
+  say "Jessica here. I'm on Route 121, looking my best and waiting for you."
   end
 
 
 # Cristin, the Cooltrainer of Route 121
 script HoennCristin
   speaker "Cristin"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
   say "Cristin here. I've been training every day since our battle. Don't think I've forgotten!"
+  end
+label Rematch
+  say "Cristin calling! I've been training on Route 121 every day. Let's have that rematch!"
+  end
+label Waiting
+  say "It's Cristin. Route 121, any time. I'm ready!"
   end
 
 
@@ -460,35 +612,105 @@ label Waiting
 # Ernest, the sailor of Route 125
 script HoennErnest
   speaker "Ernest"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
   say "Ahoy, it's Ernest! A Wailmer surfaced right beside my boat today and soaked me through. What a laugh!"
+  end
+label Rematch
+  say "Ernest here. The sea's been rough and my crew's the better for it. Rematch on Route 125?"
+  end
+label Waiting
+  say "Ernest here, still sailing about Route 125. Come and find me."
   end
 
 
 # Pablo, the triathlete of Route 126
 script HoennPablo
   speaker "Pablo"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
   say "Pablo here! I swam round the whole crater this morning. Next time, I'll beat you too!"
+  end
+label Rematch
+  say "Pablo here! I've surfed every wave on Route 126. Ready for a battle?"
+  end
+label Waiting
+  say "It's Pablo. I'm out on Route 126's waves, waiting for you."
   end
 
 
 # Koji, the black belt of Route 127
 script HoennKoji
   speaker "Koji"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
   say "Koji here! I punched a hundred waves today. The sea didn't flinch, but I'm getting stronger. Hah!"
+  end
+label Rematch
+  say "Koji here. My body and my Pokémon are both stronger. Battle me on Route 127!"
+  end
+label Waiting
+  say "It's Koji. I'm training on Route 127. Come when you're ready."
   end
 
 
 # Isaiah, the triathlete of Route 128
 script HoennIsaiah
   speaker "Isaiah"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
   say "Isaiah here! I lapped the reef on Route 128 a hundred and two times today. A new record!"
+  end
+label Rematch
+  say "Isaiah here! New record lap around Route 128, and my team's in top form. Rematch?"
+  end
+label Waiting
+  say "It's Isaiah. I'm treading water on Route 128, waiting for our battle."
   end
 
 
 # Katelyn, the triathlete of Route 128
 script HoennKatelyn
   speaker "Katelyn"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
   say "It's Katelyn! I raced a Wailmer across Route 128 this morning. It won, but only just!"
+  end
+label Rematch
+  say "It's Katelyn! I finally beat that Wailmer across Route 128. Now let's see if I can beat you!"
+  end
+label Waiting
+  say "Katelyn here. I'm still out on Route 128. Swim over when you can!"
+  end
+
+
+# Thalia, the beauty of the Abandoned Ship (plan 21 · H12, part i)
+script HoennThalia
+  speaker "Thalia"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
+  say "It's Thalia. I found a cabin on that old ship whose door won't open. I'm sure there's a key somewhere!"
+  end
+label Rematch
+  say "It's Thalia. I'm still exploring the Abandoned Ship, and my Pokémon are stronger for it. Come battle me there!"
+  end
+label Waiting
+  say "Thalia here. I'm in a cabin on the Abandoned Ship, waiting for you."
+  end
+
+
+# Kira and Dan, the young couple of the Abandoned Ship (plan 21 · H12, part i); Kira does the talking
+script HoennKiraAndDan
+  speaker "Kira"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
+  say "Kira here! Dan wants to go home, but we haven't found a single treasure yet. We're staying!"
+  end
+label Rematch
+  say "Kira here! Dan and I have trained so much. Come to the Abandoned Ship and battle us again!"
+  end
+label Waiting
+  say "It's Kira. We're still on the Abandoned Ship. Dan says hurry up!"
   end
 
 

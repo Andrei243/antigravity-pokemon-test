@@ -107,6 +107,84 @@
       "text": [
         "Dacă ar putea cineva să-i urmeze acolo jos..."
       ]
+    },
+    {
+      "en": [
+        "Oh? {player}, is that a Scanner you've got there? That would be a great help to our explorations!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Would you trade it to me? I could give you a Deep Sea Tooth or a Deep Sea Scale for it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which would you like?",
+        "DEEP SEA TOOTH",
+        "DEEP SEA SCALE",
+        "NO THANKS"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I see. If you change your mind, I'll still be glad of it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Deep Sea Tooth for the Scanner, then?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Deep Sea Scale for the Scanner, then?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} handed the Scanner to Captain Stern."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thank you! With this, the sea floor won't keep its secrets from us much longer."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Then which one would you like?"
+      ],
+      "text": [
+        ""
+      ]
     }
   ],
   "Ferry": [
