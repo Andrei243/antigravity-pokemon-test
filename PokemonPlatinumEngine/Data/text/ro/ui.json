@@ -304,6 +304,13 @@
         "on": "Comenzile au AUTO, care joacă lupta pentru tine cu cea mai puternică mișcare a fiecărui Pokémon până leșină unul de-al tău sau Înapoi o oprește."
       }
     },
+    "requests": {
+      "label": "Rugăminți",
+      "help": {
+        "off": "Meniul nu ține o listă a rugăminților pe care ți le fac oamenii.",
+        "on": "Odată ce cineva îți cere ceva, meniul are RUGĂMINȚI: ce mai trebuie făcut pentru fiecare și una pe care o poți fixa deasupra hărții."
+      }
+    },
     "areaChecklist": {
       "label": "Ce a mai rămas aici",
       "help": {
@@ -526,6 +533,7 @@
     "bag": "RUCSAC",
     "pokegear": "POKéGEAR",
     "pokenav": "POKéNAV",
+    "requests": "RUGĂMINȚI",
     "save": "SALVEAZĂ",
     "options": "OPȚIUNI",
     "close": "ÎNCHIDE",
@@ -4941,5 +4949,35 @@
     "caption": "A RĂMAS AICI",
     "line": "Obiecte {items} · Antrenori {trainers} · Pokémon {species}",
     "nothing": "Nu a mai rămas nimic aici"
+  },
+  "requests": {
+    "title": "RUGĂMINȚI",
+    "tab": { "open": "ÎN CURS", "done": "ÎNCHEIATE", "area": "AICI" },
+    "hint": { "tab": "Filă", "pin": "Fixează", "unpin": "Desprinde" },
+    "from": "De la {giver}, {place}",
+    "steps": "PAȘI",
+    "reward": "RĂSPLATĂ",
+    "pinned": "FIXATĂ",
+    "doneTag": "ÎNCHEIATĂ",
+    "noneOpen": "Nimeni nu-ți cere nimic acum. Când cineva te roagă ceva, apare aici.",
+    "noneDone": "Nicio rugăminte nu e încheiată încă.",
+    "area": {
+      "items": "OBIECTE",
+      "trainers": "ANTRENORI",
+      "pokemon": "POKéMON",
+      "note": "Ce se mai poate găsi de unde stai: obiecte de găsit, antrenori de înfruntat și Pokémoni de prins. Nimic nu e numit."
+    },
+    "poketch": {
+      "title": "Campania Pokétch",
+      "giver": "președintele Companiei Pokétch",
+      "place": "Orașul Jubilife",
+      "reward": "Un Pokétch numai al tău",
+      "step": {
+        "coupon1": "Răspunde la ghicitoarea primului clovn pentru un cupon.",
+        "coupon2": "Răspunde la ghicitoarea celui de-al doilea clovn pentru un cupon.",
+        "coupon3": "Răspunde la ghicitoarea clovnului de lângă Jubilife TV.",
+        "president": "Du-i președintelui cele trei cupoane."
+      }
+    }
   }
 }

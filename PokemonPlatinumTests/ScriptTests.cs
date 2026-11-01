@@ -406,6 +406,7 @@ public class ScriptTests
           broadcast interview
           townmap
           objective roark
+          request poketch 1
           tutor moves "route_212"
           tutor afford
           tutor pay

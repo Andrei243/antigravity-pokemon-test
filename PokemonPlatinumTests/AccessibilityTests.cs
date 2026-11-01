@@ -42,7 +42,8 @@ public class AccessibilityTests : IDisposable
         Assert.Equal(flashes + 1, motion);
         // (plan 13 · V9 put MEDAL NOTICES between Reduce motion and Controls, and V10 the RUN TIMER after it, part b CAPTIONS and HOLD TO CONFIRM after that, and plan 12 · Q26 BOX TOOLS after those, and Q12 AUTO-BATTLE after it)
         // (and Q22's WHAT IS LEFT HERE after that)
-        Assert.Equal(motion + 8, Array.IndexOf(rows, OptionRow.Controls));
+        // (and Q21's REQUESTS after that)
+        Assert.Equal(motion + 9, Array.IndexOf(rows, OptionRow.Controls));
         Assert.True(motion < Array.IndexOf(rows, OptionRow.Help));
     }
 

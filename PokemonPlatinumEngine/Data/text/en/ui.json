@@ -172,6 +172,13 @@
         "on": "The commands have AUTO, which plays the battle for you with each Pokémon's strongest move until one of yours faints or Back stops it."
       }
     },
+    "requests": {
+      "label": "Requests",
+      "help": {
+        "off": "The menu keeps no list of the errands people give you.",
+        "on": "Once someone asks something of you, the menu has REQUESTS: what each errand needs next, and one you can pin over the field."
+      }
+    },
     "areaChecklist": {
       "label": "What is left here",
       "help": {
@@ -525,6 +532,7 @@
     "bag": "BAG",
     "pokegear": "POKéGEAR",
     "pokenav": "POKéNAV",
+    "requests": "REQUESTS",
     "save": "SAVE",
     "options": "OPTIONS",
     "close": "CLOSE",
@@ -4647,5 +4655,35 @@
     "caption": "LEFT HERE",
     "line": "Items {items} · Trainers {trainers} · Pokémon {species}",
     "nothing": "Nothing left here"
+  },
+  "requests": {
+    "title": "REQUESTS",
+    "tab": { "open": "OPEN", "done": "DONE", "area": "THIS AREA" },
+    "hint": { "tab": "Tab", "pin": "Pin", "unpin": "Unpin" },
+    "from": "From {giver}, {place}",
+    "steps": "STEPS",
+    "reward": "REWARD",
+    "pinned": "PINNED",
+    "doneTag": "DONE",
+    "noneOpen": "Nothing is asked of you just now. When someone asks you for something, it is listed here.",
+    "noneDone": "No request is done yet.",
+    "area": {
+      "items": "ITEMS",
+      "trainers": "TRAINERS",
+      "pokemon": "POKéMON",
+      "note": "What can still be had from where you stand: items to find, trainers to battle and Pokémon to catch. Nothing is named."
+    },
+    "poketch": {
+      "title": "The Pokétch campaign",
+      "giver": "the Pokétch Company's president",
+      "place": "Jubilife City",
+      "reward": "A Pokétch of your very own",
+      "step": {
+        "coupon1": "Answer the first clown's quiz for a coupon.",
+        "coupon2": "Answer the second clown's quiz for a coupon.",
+        "coupon3": "Answer the quiz of the clown by Jubilife TV.",
+        "president": "Bring the three coupons to the president."
+      }
+    }
   }
 }

@@ -349,6 +349,12 @@ public partial class GameEngine
         public void OpenMigrate() => game.OpenMigrate();
         /// <summary>The jukebox (plan 12 · Q15), and opening it as the title (or the options) does.</summary>
         public JukeboxScreen Jukebox => game.flow.JukeboxScreen;
+        /// <summary>The start menu's REQUESTS (plan 12 · Q21), the request pinned over the field and whether the menu offers the page.</summary>
+        public RequestsScreen Requests => game.flow.RequestsScreen;
+        public string? PinnedRequest { get => game.flow.PinnedRequest; set => game.flow.PinnedRequest = value; }
+        public bool HasRequests => game.HasRequests;
+        public void OpenRequests() => game.OpenRequests();
+        public void PointOutThePinnedRequest() => game.PointOutThePinnedRequest();
         public void OpenJukebox(GameState returnTo) => game.OpenJukebox(returnTo);
         public void CloseJukebox() => game.CloseJukebox();
         /// <summary>The title's CREDITS (plan 16 · T1).</summary>

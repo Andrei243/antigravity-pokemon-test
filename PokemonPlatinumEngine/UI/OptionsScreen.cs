@@ -38,6 +38,7 @@ public enum OptionRow
     BoxTools,
     AutoBattle,
     AreaChecklist,
+    Requests,
     Controls,
     Jukebox,
     Packs,
@@ -410,6 +411,9 @@ public class OptionsScreen
             case OptionRow.AutoBattle:
                 s.AutoBattle = !s.AutoBattle;
                 break;
+            case OptionRow.Requests:
+                s.Requests = s.Requests == RulesDefault.Off ? RulesDefault.On : RulesDefault.Off;
+                break;
             case OptionRow.AreaChecklist:
                 s.AreaChecklist = !s.AreaChecklist;
                 break;
@@ -526,6 +530,7 @@ public class OptionsScreen
         OptionRow.PartyTools => (Text.Of("options.partyTools.label"), Text.Of($"options.partyTools.value.{s.PartyTools}"), Text.Of($"options.partyTools.help.{s.PartyTools}")),
         OptionRow.BoxTools => (Text.Of("boxTools.option.label"), Text.Of($"boxTools.option.value.{s.BoxTools}"), Text.Of($"boxTools.option.help.{s.BoxTools}")),
         OptionRow.AutoBattle => (Text.Of("options.autoBattle.label"), OnOff(s.AutoBattle), Text.Of(s.AutoBattle ? "options.autoBattle.help.on" : "options.autoBattle.help.off")),
+        OptionRow.Requests => (Text.Of("options.requests.label"), OnOff(s.Requests != RulesDefault.Off), Text.Of(s.Requests != RulesDefault.Off ? "options.requests.help.on" : "options.requests.help.off")),
         OptionRow.AreaChecklist => (Text.Of("options.areaChecklist.label"), OnOff(s.AreaChecklist), Text.Of(s.AreaChecklist ? "options.areaChecklist.help.on" : "options.areaChecklist.help.off")),
         OptionRow.BoxesAnywhere => (Text.Of("options.boxesAnywhere.label"), Text.Of($"options.boxesAnywhere.value.{s.BoxesAnywhere}"), Text.Of($"options.boxesAnywhere.help.{s.BoxesAnywhere}")),
         OptionRow.Autosave => (Text.Of("options.autosave.label"), OnOff(s.Autosave), Text.Of(s.Autosave ? "options.autosave.help.on" : "options.autosave.help.off")),
