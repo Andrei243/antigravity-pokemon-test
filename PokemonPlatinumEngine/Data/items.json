@@ -14259,5 +14259,17 @@
     "canUseInOverworld": false,
     "description": "A Dynamax Band with a Key Stone set into it. It lets a Mega-Evolved Pokémon Dynamax.",
     "cantBeTossed": true
+  },
+  {
+    "id": 9510,
+    "name": "GS Ball",
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A mysterious ball with GS engraved on it. Nobody, not even Kurt, can open it.",
+    "cantBeTossed": true
   }
 ]

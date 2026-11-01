@@ -34,8 +34,14 @@ label Ask
   give "TM27"
   setflag FLAG_RECEIVED_TM_RETURN
 label Thanks
+  if flag HoennHallOfFame goto Comet
   say "With the meteorite back, my research can go on. You've helped me more than you know!"
   end
 label Refused
   say "Oh... I see. I'm crushed, but I understand."
+  end
+# Plan 29 · LS11c (ours): what sends a Champion to Steven's cave at night for Jirachi
+label Comet
+  say "Have you heard? A comet passes over Hoenn once in a thousand years, and it's in our skies right now."
+  say "Steven Stone wrote to say a stone deep in Meteor Falls has begun to hum at night. I'd give anything to hear it!"
   end

@@ -1,0 +1,21 @@
+# Plan 29 · LS11b: Kurt's GS Ball laid on Ilex Forest's shrine, and Celebi's beat at its look, sign and voice
+newgame
+flag JohtoHallOfFame on
+give "GS Ball"
+at IlexForest 16 56 up
+talk
+wait 1
+shot scn_celebi_0_shrine
+answer 0
+wait 1.2
+next
+wait 3.0
+shot scn_celebi_1_look
+wait 1.8
+shot scn_celebi_2_sign
+wait 1.8
+shot scn_celebi_3_voice
+read
+wait 3
+shot scn_celebi_4_battle
+expect state Battle

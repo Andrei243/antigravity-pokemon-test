@@ -1,0 +1,10 @@
+{
+  // Hand-written (plan 08 · P12's file, Hoenn's from plan 29 · LS11c), never by the importer: the Pokémon no table
+  // lists, where they are met and how, for the Pokédex's area page beside habitats.json. Cells are chunks of the
+  // overworld, as there; a place that is a map of its own has none, as in habitats.json.
+  "map": [],
+  "areas": [
+    // Plan 29 · LS11c: Jirachi, which wakes before the stone in Steven's cave at night after the Hall of Fame
+    { "key": "meteor_falls_stevens_cave", "name": "Meteor Falls", "cells": "", "special": [ "Jirachi" ], "how": "Steven's cave, at night" }
+  ]
+}

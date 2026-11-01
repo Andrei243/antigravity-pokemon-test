@@ -33,11 +33,16 @@ public class HoennSpeciesTests
         // Evolved by trading, and Hoenn sells or gives no Linking Cord yet
         "Alakazam", "Golem", "Machamp", "Kingdra", "Huntail", "Gorebyss",
         // Route 119's Feebas tiles, not built for Hoenn
-        "Feebas", "Milotic",
-        // Jirachi, which no island of decision 5 gives (Birth Island's Deoxys and the Devon Corporation's fossils are
-        // given since plan 21 · H12, part f)
-        "Jirachi"
+        "Feebas", "Milotic"
+        // (Jirachi, which no island of decision 5 gave, wakes in Steven's cave since plan 29 · LS11c)
     };
+
+    [Fact]
+    public void JirachiWakesInStevensCave()
+    {
+        Assert.Contains("met", Hoenn.Ways["Jirachi"]);
+        Assert.Contains("meteor_falls_stevens_cave", Hoenn.Ways["Jirachi"]);
+    }
 
     [Fact]
     public void RayquazaIsBattledOnSkyPillarsTopAndNosepassComesOutOfASmashedRock()

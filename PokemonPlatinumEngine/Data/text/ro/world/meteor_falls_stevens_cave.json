@@ -9,6 +9,16 @@
           "Steven"
         ]
       }
+    },
+    "meteor_falls_jirachi": {
+      "name": {
+        "en": [
+          "Jirachi"
+        ],
+        "text": [
+          "Jirachi"
+        ]
+      }
     }
   },
   "signs": {}

@@ -17090,6 +17090,10 @@ way -
   * emote Apprentice Exclaim
   * endscene
   + seen ilex_forest.The apprentice in Ilex Forest
+=== ilex_forest.Celebi
+from Celebi at 16,56 of IlexForest
+way -
+  > Celebi hovers before the shrine, its eyes on Lucas.
 === ilex_forest.FirstFarfetchd
 from Farfetch'd at 25,62 of IlexForest
 way -
@@ -17110,6 +17114,9 @@ way -
   * fade out
   * fade in
   = VAR_FARFETCHD2_PLACE 0 -> 1
+=== ilex_forest.Shrine
+from the sign at 16,55 of IlexForest
+way -
 === indigo_plateau_pokemon_center_1f.DoorGuard
 from Guard at 5,3 of IndigoPlateau_PokemonCenter_1F
 way -
@@ -19341,6 +19348,10 @@ way -
   + FLAG_MET_ARCHIE_METEOR_FALLS
   = VAR_METEOR_FALLS_STATE 0 -> 1
   + seen meteor_falls_1f_1r.Team Magma at Meteor Falls
+=== meteor_falls_stevens_cave.Jirachi
+from Jirachi at 19,4 of MeteorFalls_StevensCave
+way -
+  > Jirachi floats before the humming stone, half asleep.
 === meteor_falls_stevens_cave.Steven
 from Steven at 19,3 of MeteorFalls_StevensCave
 way 0

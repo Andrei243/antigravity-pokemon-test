@@ -7168,3 +7168,40 @@ The user's decision of 2026-10-31: build the room looks J2, J5 and J7 left. The 
   line each a step of 1.25 to 4 below the last (a flight read as cliffs) finds none.
 - *So*: no rule was written and no world file changed. The sage at 36, 30 stands on the switchback's head, which is
   the way down and no workaround: his standing aside for the Silver Wing stays.
+
+## Celebi and Jirachi (2026-11-01, plan 29 · LS11b and LS11c)
+
+The two event-only mythicals of Johto and Hoenn, opened by a post-game condition of our own as the user approved
+(`docs/plans/decisions/LS11-proposals-event-legendaries.md`, rows 6 and 7, questions 1 and 5 and 11 answered as
+recommended: the regions' post-game levels, the area page given a `special.json`, the fallback effects alone).
+
+- *Celebi* (ours; Crystal's GS Ball on our own beats). Kurt hands a Champion of Johto (`JohtoHallOfFame`) the **GS
+  Ball**, a key item of ours (`tools/DataImporter/Overrides/items.json`, id 9510, kept apart from the 9500s other LS11
+  passes may take), once (`FLAG_JOHTO_GOT_GS_BALL`). Ilex Forest's shrine sign (`D36R0101_012+1`, 16, 55) runs the
+  script `Shrine` (an overlay's `signScripts` on a sign event, its words still its own `sayown`: `World.PlaceEvents`
+  learned it, and ContentCheck with it); with the ball in the bag it asks to lay it there
+  (`FLAG_JOHTO_GS_BALL_ON_SHRINE`) and plays the grass row of plan 29's beat. Celebi is a person of ours on the tile
+  before the sign (16, 56), shown only by the scene (`shownBy` `FLAG_JOHTO_SHOW_ILEX_CELEBI`); the player is walked two
+  tiles back first, since anything a tile north of the player stands behind their head, and on the sign's own tile
+  Celebi stood behind the signboard. Level 50 (136 in a game begun elsewhere). Caught or beaten, gone for good
+  (`FLAG_JOHTO_CELEBI_MET`, the ball "crumbled into leaves"); run from, the ball stays on the shrine and the next
+  reading plays the beat again without asking. HeartGold's trip through time with Giovanni is not built.
+- *Jirachi* (ours). Once Prof. Cozmo has his meteorite back (`FLAG_RECEIVED_TM_RETURN`) he tells a Champion of Hoenn of
+  a thousand-year comet and a stone in Meteor Falls that hums at night; Steven, beaten in his cave
+  (`FLAG_DEFEATED_METEOR_FALLS_STEVEN`) and spoken to again, says by day that he is waiting up for it and at night
+  (`if time night`) plays the mind's row of the beat. Steven stands at the end of a passage one tile wide with the stone
+  behind him, so the scene puts him down the passage (18, 7) and the player at 19, 6 behind a fade, and Jirachi, a person
+  of ours (`shownBy` `FLAG_HOENN_SHOW_JIRACHI`), hovers at 19, 4 (`level` 0.5); the player's "!" is left out, since it hid
+  so small a Pokémon. Level 50 (about 158 elsewhere). Caught or beaten, gone for good (`FLAG_HOENN_JIRACHI_MET`), and
+  Steven says so; run from, it comes again the next night. `HoennSpeciesTests.Owed` no longer lists it.
+- *Translations*: the new lines of Kurt's, Cozmo's and Steven's scripts are put after their old ones (a label at the
+  script's end), so the lines before keep their numbers and their Romanian; the Romanian of every new line is written.
+- *Nuzlocke and the randomiser*: both meetings are a plain `wildbattle`, so `Nuzlocke.MeetStatic` and the randomiser's
+  point of use take them as any static legendary: in Ilex Forest, whose grass has its own Pokémon, a Nuzlocke run that
+  met something there first can only fight Celebi; Steven's cave has no wild Pokémon.
+- *The area page*: Johto and Hoenn have a `special.json` now, one row each (`ilex_forest`, Celebi, "The shrine, with the
+  GS Ball"; `meteor_falls_stevens_cave`, Jirachi, "Steven's cave, at night"), with no cells, as their `habitats.json`
+  gives none for a map of its own. The other legendaries of the two regions are still off the page (a later session's).
+- *Shots*: the scenarios `scn_celebi_shrine.scn` and `scn_jirachi_stone.scn` (the harness's `next`, one line of the box
+  put away, is new for them). Both battles open on a cave's stage, Ilex Forest's too, as the place gives it; LS11
+  changes no stage.

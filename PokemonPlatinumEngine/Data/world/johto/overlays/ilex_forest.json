@@ -4,13 +4,19 @@
   // (Union Cave's). The cut tree that blocks the way north is the field's own obstacle. Plan 20 · J7: once the
   // Slowpoke Well is cleared the charcoal maker's apprentice stands by the tree with both his Farfetch'd lost in the
   // wood (scripts/ilex_forest.txt), and finding them brings his master with HM01. The old man of the shrine and
-  // Cameron are later chapters'
+  // Cameron are later chapters'. Plan 29 · LS11b: after Johto's Hall of Fame, Kurt's GS Ball laid before the shrine
+  // (its sign runs the script Shrine, its words still its own) brings Celebi, a person of ours on the tile before the sign,
+  // shown only by the scene
   "area": "ilex_forest",
   "bgmTrack": "johto/union_cave",
   "trees": "Round",
   "locked": [
     4,
     5
+  ],
+  "signScripts": { "D36R0101_012+1": "Shrine" },
+  "npcs": [
+    { "id": "ilex_forest_celebi", "name": "Celebi", "npcType": "Pokemon", "species": "Celebi", "x": 16, "y": 56, "facing": "Down", "level": 0.4, "shownBy": "FLAG_JOHTO_SHOW_ILEX_CELEBI", "script": "Celebi" }
   ],
   "triggers": [
     { "trigger": 8, "script": "ApprenticeStops" }

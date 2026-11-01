@@ -4,6 +4,17 @@
 # Its mouth opens in the first room once Hoenn's Hall of Fame is entered. Steven stands at the far end looking at the
 # rock; spoken to, he starts, turns and battles with his own team (hoenn_steven, Emerald's TRAINER_STEVEN), and after it
 # says what he had foreseen (FLAG_DEFEATED_METEOR_FALLS_STEVEN). He stays, and says it again whenever spoken to.
+#
+# Jirachi (plan 29 · LS11c, ours: the games gave it only by events). Once Prof. Cozmo has his meteorite back
+# (FLAG_RECEIVED_TM_RETURN), he tells a Champion of a comet that passes once in a thousand years and of a stone here
+# that hums at night (fallarbor_town_cozmos_house.txt). Steven, spoken to again by day, says he is waiting up for it;
+# at night the stone's hum wakes Jirachi before it at level 50. Steven stands in the way of the stone at the end of a
+# passage one tile wide, so the scene puts him back down the passage and the player three tiles from it behind a
+# fade, and the beat is the mind's row of plan 29: the bars, the camera to the stone, sparkles and a ripple, Jirachi
+# shown hovering a tile before Steven's old one, flickering awake (no "!" over the player, which would hide so small a
+# Pokémon), its cry and a line, then the battle's own way in. Caught or beaten it is gone for good
+# (FLAG_HOENN_JIRACHI_MET); run from, it comes again the next night Steven is spoken to. Jirachi is a person of ours
+# (the overlay's npcs), shown only by the scene (FLAG_HOENN_SHOW_JIRACHI).
 
 
 script Steven
@@ -21,8 +32,64 @@ script Steven
 label Afterwards
   face self player
   speaker "Steven"
+  if flag FLAG_HOENN_JIRACHI_MET goto Granted
+  if not flag FLAG_RECEIVED_TM_RETURN goto Foreseen
+  if time night goto Humming
+  goto Waiting
 label Foreseen
   say "Ever since we met in Granite Cave, I had a feeling you would become the Champion."
   say "My hunches tend to come true. So where will you go from here?"
   say "...Ha! Even I can't see that far."
+  end
+# (Jirachi's lines come after the old ones, so that those keep their numbers for the translations)
+label Waiting
+  say "Prof. Cozmo tells me this stone hums at night, while the comet passes. I mean to stay up and hear it."
+  say "Come back after dark, {player}. I'd like you to hear it too."
+  end
+label Granted
+  say "A Pokémon that wakes once in a thousand years... and you were the one here to meet it. I'm almost jealous."
+  end
+label Humming
+  say "Shh... Do you hear it? The stone is humming, just as Prof. Cozmo said it would."
+  scene "Jirachi wakes in Steven's cave"
+  music stop
+  fade out 0.3
+  place meteor_falls_steven 18 7 right
+  place player 19 6 up
+  fade in
+  letterbox on 0.4
+  camera pan 19 4 1.2
+  camera zoom 1.4 0.8
+  effect sparkles 19 4
+  effect ripple 19 4
+  wait 0.4
+  setflag FLAG_HOENN_SHOW_JIRACHI
+  show meteor_falls_jirachi
+  flicker meteor_falls_jirachi 6
+  effect sparkles 19 5
+  cry "Jirachi"
+  speaker none
+  text "The stone's hum rose into a chime, and a small Pokémon blinked awake in its glow!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Jirachi" 50
+  hide meteor_falls_jirachi
+  clearflag FLAG_HOENN_SHOW_JIRACHI
+  if result == 1 goto Gone
+  if result == 3 goto Gone
+  speaker none
+  text "Jirachi drifted back into the stone's glow, and the humming stopped..."
+  end
+label Gone
+  setflag FLAG_HOENN_JIRACHI_MET
+  face meteor_falls_steven player
+  speaker "Steven"
+  goto Granted
+
+
+# Jirachi looked at before its battle has begun (it is only shown in the scene)
+script Jirachi
+  speaker none
+  text "Jirachi floats before the humming stone, half asleep."
   end
