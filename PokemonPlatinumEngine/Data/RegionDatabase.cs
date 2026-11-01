@@ -597,6 +597,8 @@ public static class RegionDatabase
                 "Celadon_GameCorner", "Celadon_PrizeCorner",
                 // Plan 20 · J15, part l: the Underground Path with its two gates, and Silph Co.'s lobby
                 "Route5_UndergroundGate", "Route5_UndergroundPath", "Route6_UndergroundGate", "Saffron_SilphCo",
+                // Plan 20 · J15, part m: the Seafoam Islands' four lower floors
+                "Seafoam_B1F", "Seafoam_B2F", "Seafoam_B3F", "Seafoam_B4F",
                 // Plan 20 · J5's leftovers: the Ruins of Alph's hall
                 "RuinsOfAlph_HallEntrance", "RuinsOfAlph_UndergroundHall",
             }

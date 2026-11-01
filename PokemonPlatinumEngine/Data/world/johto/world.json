@@ -400,7 +400,12 @@
     { "name": "Route5_UndergroundGate", "matrix": 253, "area": "route_5_underground_path_gate", "trees": "Round", "setting": "Indoors" },
     { "name": "Route5_UndergroundPath", "matrix": 252, "area": "route_5_underground_path", "trees": "Round", "setting": "Indoors" },
     { "name": "Route6_UndergroundGate", "matrix": 253, "area": "route_6_underground_path_gate", "trees": "Round", "setting": "Indoors" },
-    { "name": "Saffron_SilphCo", "matrix": 189, "area": "saffron_silph_co_hq", "trees": "Round", "setting": "Indoors" }
+    { "name": "Saffron_SilphCo", "matrix": 189, "area": "saffron_silph_co_hq", "trees": "Round", "setting": "Indoors" },
+    // Plan 20 · J15, part m: the Seafoam Islands' four lower floors, down to Articuno's cave (FireRed's are SeafoamIslands_…)
+    { "name": "Seafoam_B1F", "matrix": 82, "area": "johto_seafoam_islands_b1f", "trees": "Round", "setting": "Cave" },
+    { "name": "Seafoam_B2F", "matrix": 83, "area": "johto_seafoam_islands_b2f", "trees": "Round", "setting": "Cave" },
+    { "name": "Seafoam_B3F", "matrix": 84, "area": "johto_seafoam_islands_b3f", "trees": "Round", "setting": "Cave" },
+    { "name": "Seafoam_B4F", "matrix": 85, "area": "johto_seafoam_islands_b4f", "trees": "Round", "setting": "Cave" }
   ],
   "areas": [
     // Plan 20 · J2: New Bark Town to Route 31's gate house, with their rooms
@@ -549,6 +554,8 @@
     "celadon_condominiums_roof", "celadon_condominiums_roof_room", "celadon_condominiums_left_elevator",
     "celadon_condominiums_right_elevator", "celadon_game_corner", "celadon_prize_corner",
     // Plan 20 · J15, part l: the Underground Path from Route 5 to Route 6 with its gates, and Silph Co.'s lobby
-    "route_5_underground_path_gate", "route_5_underground_path", "route_6_underground_path_gate", "saffron_silph_co_hq"
+    "route_5_underground_path_gate", "route_5_underground_path", "route_6_underground_path_gate", "saffron_silph_co_hq",
+    // Plan 20 · J15, part m: the Seafoam Islands' four lower floors, down to Articuno's cave
+    "johto_seafoam_islands_b1f", "johto_seafoam_islands_b2f", "johto_seafoam_islands_b3f", "johto_seafoam_islands_b4f"
   ]
 }

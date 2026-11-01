@@ -14,6 +14,10 @@
     "goldenrod_3f": [ "X Speed", "X Attack", "X Defense", "Guard Spec.", "Dire Hit", "X Accuracy", "X Sp. Atk", "X Sp. Def" ],
     "goldenrod_4f": [ "Protein", "Iron", "Calcium", "Zinc", "Carbos", "HP Up" ],
     "goldenrod_5f": [ "TM70", "TM17", "TM54", "TM83", "TM16", "TM33", "TM22", "TM52", "TM38", "TM25", "TM14", "TM15" ],
+    // The Celadon Department Store's third and fourth floors (plan 20 · J15, part k): lists of ours, HeartGold's being
+    // out of the pinned folders (the second and fifth floors sell Goldenrod's lists)
+    "celadon_3f": [ "TM10", "TM11", "TM16", "TM17", "TM18", "TM20", "TM33" ],
+    "celadon_4f": [ "Poké Doll", "Fluffy Tail", "Bloom Mail", "Heart Mail", "Snow Mail", "Air Mail", "Tunnel Mail" ],
     // Cianwood's pharmacy (plan 20 · J9), in HeartGold's order (src/scrcmd_mart.c's list 11, SpecialMartBuy 11)
     "cianwood_pharmacy": [ "Potion", "Super Potion", "Hyper Potion", "Full Heal", "Revive" ],
     // The two stalls before the Safari Zone's gate (plan 20 · J8, part b; src/scrcmd_mart.c's lists 6 and 14)

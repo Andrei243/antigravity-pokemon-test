@@ -79,6 +79,8 @@ public class JohtoTests
         "celadon_condominiums_right_elevator", "celadon_game_corner", "celadon_prize_corner",
         // Plan 20 · J15, part l: the Underground Path from Route 5 to Route 6 with its two gates, and Silph Co.'s lobby
         "route_5_underground_path_gate", "route_5_underground_path", "route_6_underground_path_gate", "saffron_silph_co_hq",
+        // Plan 20 · J15, part m: the Seafoam Islands' four lower floors
+        "johto_seafoam_islands_b1f", "johto_seafoam_islands_b2f", "johto_seafoam_islands_b3f", "johto_seafoam_islands_b4f",
     };
 
     [Fact]
@@ -929,11 +931,10 @@ public class JohtoTests
         }
         foreach (string key in new[] { "pallet", "route_21", "pallet_town_oaks_lab", "seafoam_islands_cinnabar_gym" })
             Assert.Equal(key, HgWorld.KeyOf("MAP_" + key.ToUpperInvariant()));
-        // What waits stays shut: the Seafoam Islands' lower floors and the bird within
+        // The first floor's two ways down lead to the lower floors (open since part m)
         var seafoam = Johto.Area("johto_seafoam_islands_1f")!;
         Assert.Equal("johto_seafoam_islands_b1f", seafoam.Warps[2].To);
         Assert.Equal("johto_seafoam_islands_b1f", seafoam.Warps[3].To);
-        Assert.DoesNotContain(walked.Keys, m => m.Name.StartsWith("Seafoam_B", StringComparison.Ordinal));
         // Blaine stands at the head of his Gym, reached across its floor; Blue looks out to sea on Cinnabar
         var gym = walked.Single(kv => kv.Key.Name == "Seafoam_Gym");
         var blaine = gym.Key.Everyone.Single(n => n.Key == "d11r0106_gsleader15");
@@ -1111,6 +1112,37 @@ public class JohtoTests
         Assert.Contains(silph.NPCs, n => n.Key == "t11r0701_policeman");
         Assert.Null(silph.GetWarpAt(3, 2));
         Assert.DoesNotContain(walked.Keys, m => m.Name.StartsWith("Saffron_SilphCo_", StringComparison.Ordinal));
+    }
+
+    [Fact]
+    public void TheSeafoamIslandsLowerFloorsAreWalkedDownToArticuno()
+    {
+        // Plan 20 · J15, part m: the first floor's two ways down open onto the four floors below, down to the cold water
+        // where Articuno waits
+        var walked = Walked.Value;
+        foreach (string name in new[] { "Seafoam_B1F", "Seafoam_B2F", "Seafoam_B3F", "Seafoam_B4F" })
+        {
+            Assert.True(walked.Keys.Any(m => m.Name == name), $"nobody walks into {name}");
+            Assert.Equal(RegionDatabase.Johto, RegionDatabase.RegionOfMap(name)!.Id);
+        }
+        // Their keys meet FireRed's, so they take Johto's prefix; their maps are Seafoam_…, FireRed's SeafoamIslands_…
+        foreach (string key in new[] { "seafoam_islands_b1f", "seafoam_islands_b2f", "seafoam_islands_b3f", "seafoam_islands_b4f" })
+            Assert.Equal("johto_" + key, HgWorld.KeyOf("MAP_" + key.ToUpperInvariant()));
+        Assert.Equal(RegionDatabase.Kanto, RegionDatabase.RegionOfMap("SeafoamIslands_B4F")!.Id);
+        // Articuno stands on its island, reached across the floor, with its script; Cameron is held back
+        var b4f = walked.Single(kv => kv.Key.Name == "Seafoam_B4F");
+        var articuno = b4f.Key.Everyone.Single(n => n.Key == "d11r0105_tsure_poke_static_articuno");
+        Assert.Equal("Articuno", articuno.Species);
+        Assert.Equal("Articuno", articuno.Script);
+        Assert.Contains(b4f.Value, t => Math.Abs(t.X - articuno.GridX) + Math.Abs(t.Y - articuno.GridY) == 1);
+        Assert.DoesNotContain(MapNamed("Seafoam_B1F").Everyone, n => n.Key == "d11r0102_gsmiddleman1");
+        // The third basement's blocks of ice are pushed as the Mahogany Gym's, and its trainers are Johto's
+        Assert.Equal(6, MapNamed("Seafoam_B3F").Everyone.Count(n => n.IsIceBlock));
+        foreach (string id in new[] { "johto_boarder_bryce", "johto_boarder_shaun", "johto_skier_cady" })
+            Assert.NotNull(TrainerDatabase.Get(id, RegionDatabase.Johto));
+        // FireRed's Kanto keeps its own floors and Articuno's script, untouched
+        Assert.NotNull(ScriptLibrary.Default.Find("Articuno", "seafoam_islands_b4f"));
+        Assert.NotNull(ScriptLibrary.Default.Find("Articuno", "johto_seafoam_islands_b4f"));
     }
 
     [Fact]

@@ -1,0 +1,16 @@
+{
+  // The Seafoam Islands' third basement as HeartGold has it three years on (plan 20 · J15, part m): its floor of ice,
+  // with blocks of ice the player pushes by walking or sliding into them (npcType IceBlock, as the Mahogany Gym's), and a
+  // boulder Strength pushes. Its boulder is hidden by a flag of the map's own
+  // (FLAG_MAPTEMP_010), a local one here, so it stands whenever the floor is come to. Its key meets FireRed's, so it takes Johto's prefix (HgWorld.Clashes)
+  "area": "johto_seafoam_islands_b3f",
+  "bgmTrack": "kanto/viridian_forest",
+  "people": {
+    "everywhere_ice": { "name": "Block of ice", "npcType": "IceBlock", "still": true, "dialog": [ "A big block of ice. Pushed, it would slide across the floor until something stopped it." ] },
+    "everywhere_ice_2": { "name": "Block of ice", "npcType": "IceBlock", "still": true, "dialog": [ "A big block of ice. Pushed, it would slide across the floor until something stopped it." ] },
+    "everywhere_ice_3": { "name": "Block of ice", "npcType": "IceBlock", "still": true, "dialog": [ "A big block of ice. Pushed, it would slide across the floor until something stopped it." ] },
+    "everywhere_ice_4": { "name": "Block of ice", "npcType": "IceBlock", "still": true, "dialog": [ "A big block of ice. Pushed, it would slide across the floor until something stopped it." ] },
+    "everywhere_ice_5": { "name": "Block of ice", "npcType": "IceBlock", "still": true, "dialog": [ "A big block of ice. Pushed, it would slide across the floor until something stopped it." ] },
+    "everywhere_ice_6": { "name": "Block of ice", "npcType": "IceBlock", "still": true, "dialog": [ "A big block of ice. Pushed, it would slide across the floor until something stopped it." ] }
+  }
+}

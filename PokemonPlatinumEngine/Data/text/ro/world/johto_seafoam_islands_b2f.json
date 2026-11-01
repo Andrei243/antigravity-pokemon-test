@@ -1,0 +1,83 @@
+{
+  "people": {
+    "everywhere_boarder": {
+      "name": {
+        "en": [
+          "Bryce"
+        ],
+        "text": [
+          "Bryce"
+        ]
+      },
+      "before": {
+        "en": [
+          "Boarder Bryce: No snow on the mountain this year, so I came down here. The cold's just right!"
+        ],
+        "text": [
+          "Snowboardist Bryce: Anul ăsta nu e zăpadă pe munte, așa că am coborât aici. Frigul e numai bun!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Boarder Bryce: Wiped out on the ice again."
+        ],
+        "text": [
+          "Snowboardist Bryce: Iar am căzut pe gheață."
+        ]
+      }
+    },
+    "everywhere_boarder_2": {
+      "name": {
+        "en": [
+          "Shaun"
+        ],
+        "text": [
+          "Shaun"
+        ]
+      },
+      "before": {
+        "en": [
+          "Boarder Shaun: I'm carving a line across this whole cave. You're in my way!"
+        ],
+        "text": [
+          "Snowboardist Shaun: Îmi trasez drumul prin toată peștera. Îmi stai în cale!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Boarder Shaun: I'll have to find a new line."
+        ],
+        "text": [
+          "Snowboardist Shaun: Va trebui să-mi găsesc alt drum."
+        ]
+      }
+    },
+    "everywhere_skierw": {
+      "name": {
+        "en": [
+          "Cady"
+        ],
+        "text": [
+          "Cady"
+        ]
+      },
+      "before": {
+        "en": [
+          "Skier Cady: My Pokémon and I train on the ice down here. Let's see how you handle the cold!"
+        ],
+        "text": [
+          "Schior Cady: Eu și Pokémonii mei ne antrenăm pe gheața de aici. Să vedem cum te descurci cu frigul!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Skier Cady: Brrr. That one chilled me to the bone."
+        ],
+        "text": [
+          "Schior Cady: Brrr. M-a înghețat până în oase."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}
