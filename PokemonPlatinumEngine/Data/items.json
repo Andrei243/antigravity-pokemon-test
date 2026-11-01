@@ -14259,5 +14259,17 @@
     "canUseInOverworld": false,
     "description": "A Dynamax Band with a Key Stone set into it. It lets a Mega-Evolved Pokémon Dynamax.",
     "cantBeTossed": true
+  },
+  {
+    "id": 9571,
+    "name": "Liberty Pass",
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A pass for the ferry from Castelia's Liberty Pier to the Liberty Garden, given to champions.",
+    "cantBeTossed": true
   }
 ]

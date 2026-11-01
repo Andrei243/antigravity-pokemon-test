@@ -3513,6 +3513,42 @@ the levels alone). What differs from Black 2, and why:
 - **Music.** No song is new: the caves play `sinnoh/cave` (Mistralton's), `unova/seaside_cave` (Clay Tunnel), `johto/ruins_of_alph`
   (the ruins and chambers).
 
+## Unova's event legendaries: Victini, Keldeo and Meloetta (2026-11-01, plan 29 · LS11d)
+
+Black and White gave Victini, Keldeo, Meloetta and Genesect only through events; Black 2 has nobody to meet for them. They are ours
+after Unova's Hall of Fame, on the proposals of `docs/plans/decisions/LS11-proposals-event-legendaries.md` as the user answered them
+(7a, 8a, 9a, 10a, the scene effects of plan 29's recipe and no new kind), each met through the recipe's five beats and battled at
+level 65, Unova's legends' own after the League (mapped by the region's `levels` in a game begun elsewhere), gone for good once caught
+or beaten (`FLAG_UNOVA_FOUGHT_<SPECIES>`), back the next time its place is come to if run from.
+
+- **Victini in the Liberty Garden.** Black 2's own zone `liberty_garden` and its chunk are in the data: the island is opened from
+  them (`world.json`'s areas, the importer's `--data`), its lighthouse a building of Castelia's way (`d12_tower`, `BuildingKind.
+  Lighthouse`), its door shut (the rooms behind it, `liberty_garden_2` and `_3`, are not opened). Black 2 sets the island apart with
+  no chunk round it, and what has no ground on its own chunk is its background: the importer makes those blocked tiles water
+  (`Bw2World.SeaRound`) and writes a chunk of open sea, blocked, at the island's level (chunk 3000, `Bw2World.SeaChunk`), which
+  `world.json`'s `swaps` lays in the eight cells round it once `UnovaHallOfFame` is set, so the island stands in the sea and not in
+  the forest the world grows where it has no chunk. The way there is a sailor of ours on Castelia's avenue by the Liberty Pier's sign
+  (`CasteliaCity`'s `liberty_sailor`, shown by `UnovaHallOfFame`), who gives a Champion the **Liberty Pass** (a key item of ours,
+  9571, in `tools/DataImporter/Overrides/items.json`; the proposal's "after the World Tournament" is always true by the Hall of
+  Fame, so the Champion is enough) and sails whoever holds it to the jetty (295, 748); the island's pilot sails back. Victini, a person
+  of ours, waits in the walled garden before the lighthouse's door (305, 757). The island has no wild Pokémon, so under a Nuzlocke
+  Victini is its first meeting there.
+- **Keldeo on Route 13**, on Cobalion's tile (684, 190), a person of ours shown by the route's arrival (`FLAG_UNOVA_KELDEO_WAITS`)
+  once the Hall of Fame is entered and Cobalion, Virizion and Terrakion have all three been fought, caught or not. Pledge Grove is
+  not built (plan 22 · U10's Moor of Icirrus), nor Secret Sword's lesson. Route 13 is spent by Cobalion under a Nuzlocke, so Keldeo
+  there can be fought and not kept, as every second meeting of a place.
+- **Meloetta in the Musical Theater's lobby**, before the stage's door between its statues (14, 3), shown by the room's arrival at
+  night and late at night once the Hall of Fame is entered (`FLAG_UNOVA_MELOETTA_SINGS`). The musical itself stays left out; Relic
+  Song and the Pirouette Forme are the rules' and nothing here teaches it.
+- **Seen from in front.** Each of the three stands where the player comes up one tile south of it, where the field's steep camera
+  hides it behind the player's head: a player who speaks to it from there starts, steps back two tiles and faces it again before the
+  camera goes to it (`PLAYER_X`, `PLAYER_Y`); one who speaks from the side is not moved.
+- **Genesect waits** for plan 22 · U10's P2 Laboratory (question 10a): nothing of it is built.
+- **The Pokédex's area page** leaves the three off, as Unova has no `special.json` (question 5a).
+- **Left as it is.** Two beds of the garden whose texture is Black 2's seasonal `kisetu_yuki` are drawn as snow whatever the
+  season, by `Bw2Cover`'s rule for the name; changing the rule would move every open area that has it, so it is left for a session
+  of its own.
+
 ## Kanto's first chapter (2026-10-18, plan 19 · K3)
 
 FireRed's first chapter, from the bedroom in Pallet Town to the Boulder Badge in Pewter City, is scripts of ours on its

@@ -251,6 +251,16 @@
           "Păzesc ușa de la intrarea artiștilor. Unii fani se entuziasmează prea tare după un spectacol!"
         ]
       }
+    },
+    "meloetta": {
+      "name": {
+        "en": [
+          "Meloetta"
+        ],
+        "text": [
+          "Meloetta"
+        ]
+      }
     }
   },
   "signs": {

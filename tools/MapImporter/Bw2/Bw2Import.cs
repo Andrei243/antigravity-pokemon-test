@@ -144,6 +144,9 @@ public static class Bw2Import
         }
         foreach (var (chunk, folder) in wanted) Write("chunks", chunk.ToString("000", CultureInfo.InvariantCulture), world.Chunk(folder));
         foreach (var (chunk, folder) in ice) Write("chunks", chunk.ToString("000", CultureInfo.InvariantCulture), world.IceChunk(folder));
+        // The sea round an island set apart (plan 29 · LS11d), laid in its empty cells by world.json's swaps
+        if (wanted.Values.Any(Bw2World.SeaRound.Contains))
+            Write("chunks", Bw2World.SeaId.ToString("000", CultureInfo.InvariantCulture), Bw2World.SeaChunk());
         Write("", "trainers", world.Trainers);
         Write("", Path.GetFileNameWithoutExtension(WorldHabitatsFile.FileName), world.Habitats());
         return files;

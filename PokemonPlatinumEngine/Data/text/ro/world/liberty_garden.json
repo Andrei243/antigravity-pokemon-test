@@ -1,0 +1,86 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          "Marinar"
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Backpacker"
+        ],
+        "text": [
+          "Drumeț"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "They say a Pokémon that brings victory hides somewhere on this island. I've looked everywhere but behind that wall!"
+        ],
+        "text": [
+          "Se zice că pe insula asta se ascunde un Pokémon care aduce victoria. Am căutat peste tot, în afară de dincolo de zidul ăla!"
+        ]
+      }
+    },
+    "6": {
+      "name": {
+        "en": [
+          "Policeman"
+        ],
+        "text": [
+          "Polițist"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The island's open to pass holders only. Enjoy the garden, but keep off the lighthouse's stairs."
+        ],
+        "text": [
+          "Insula e deschisă doar celor cu permis. Bucură-te de grădină, dar nu urca scările farului."
+        ]
+      }
+    },
+    "victini": {
+      "name": {
+        "en": [
+          "Victini"
+        ],
+        "text": [
+          "Victini"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "8": {
+      "en": [
+        "Liberty Garden\nThe ferry for Castelia City sails from this jetty"
+      ],
+      "text": [
+        "Grădina Libertății\nFeribotul spre Castelia City pleacă de pe acest ponton"
+      ]
+    },
+    "9": {
+      "en": [
+        "Liberty Garden\nA garden in the bay, kept for Unova's champions"
+      ],
+      "text": [
+        "Grădina Libertății\nO grădină în golf, păstrată pentru campionii din Unova"
+      ]
+    },
+    "10": {
+      "en": [
+        "The Lighthouse\nClosed to visitors"
+      ],
+      "text": [
+        "Farul\nÎnchis pentru vizitatori"
+      ]
+    }
+  }
+}

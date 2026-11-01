@@ -1,0 +1,62 @@
+{
+  "Ferry": [
+    {
+      "en": [
+        "Sailor"
+      ],
+      "text": [
+        "Marinar"
+      ]
+    },
+    {
+      "en": [
+        "Ready to sail back to Castelia City?"
+      ],
+      "text": [
+        "Gata să ne întoarcem în Castelia City?"
+      ]
+    },
+    {
+      "en": [
+        "Right you are. We'll be at the Liberty Pier in no time."
+      ],
+      "text": [
+        "Bine zis. Ajungem la Debarcaderul Libertății cât ai clipi."
+      ]
+    },
+    {
+      "en": [
+        "Take your time. The garden's at its best in the sea breeze."
+      ],
+      "text": [
+        "Nu te grăbi. Grădina e cea mai frumoasă în briza mării."
+      ]
+    }
+  ],
+  "Victini": [
+    {
+      "en": [
+        "A small Pokémon bursts out from behind the flowers, blazing with heat!\nIts eyes shine at {player} as if it already knows who will win!"
+      ],
+      "text": [
+        "Un Pokémon mic țâșnește dintre flori, arzând de căldură!\nOchii îi strălucesc spre {player}, de parcă ar ști deja cine va câștiga!"
+      ]
+    },
+    {
+      "en": [
+        "Only the flowers stir in the warm air..."
+      ],
+      "text": [
+        "Doar florile se mișcă în aerul cald..."
+      ]
+    },
+    {
+      "en": [
+        "Victini darted away behind the lighthouse..."
+      ],
+      "text": [
+        "Victini a zbughit-o în spatele farului..."
+      ]
+    }
+  ]
+}

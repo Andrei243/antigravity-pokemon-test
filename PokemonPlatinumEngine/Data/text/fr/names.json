@@ -4678,7 +4678,8 @@
     "Basement Key": "Clé Sous-Sol",
     "Rainbow Wing": "Arc-en-Ci'Aile",
     "Silver Wing": "Argent'Aile",
-    "Pokéblock Case": "Boîte Pokéblocs"
+    "Pokéblock Case": "Boîte Pokéblocs",
+    "Liberty Pass": "Passe Liberté"
   },
   "types": {
     "Normal": "Normal",
@@ -7326,7 +7327,8 @@
       "Basement Key": "HS: Clé du tunnel sous Doublonville. Gén III: Clé pour New Lavandia.",
       "Rainbow Wing": "Invoque Ho-Oh au sommet de la Tour Carillon.",
       "Silver Wing": "Invoque Lugia aux Tourb'Îles.",
-      "Pokéblock Case": "Porte les Pokéblocs."
+      "Pokéblock Case": "Porte les Pokéblocs.",
+      "Liberty Pass": "Permet d'accéder à l'Île Liberté et Victini."
     }
   }
 }

@@ -1,0 +1,31 @@
+{
+  // The Liberty Garden (plan 29 · LS11d): Black 2's island in Castelia's bay, its zone and chunk read by the importer, our
+  // words. Nobody comes here but a Champion of Unova with the Liberty Pass, whom the sailor at Castelia's Liberty Pier
+  // (CasteliaCity.txt, LibertySailor) puts ashore on the jetty beside the ship (295, 748). The pilot (0) sails back. The
+  // lighthouse's door (warp 0) leads into rooms Black 2 has and nobody opens yet, so it stays shut. Victini, a person of
+  // ours, waits in the walled garden before the lighthouse's door (305, 757) and is gone for good once caught or beaten
+  // (FLAG_UNOVA_FOUGHT_VICTINI); run from, it is back the next time the island is come to (liberty_garden.txt)
+  "area": "liberty_garden",
+  "bgmTrack": "unova/undella",
+  "people": {
+    "0": { "name": "Sailor", "npcType": "sailor", "script": "Ferry", "still": true },
+    "1": {
+      "name": "Backpacker",
+      "npcType": "hiker",
+      "dialog": [ "They say a Pokémon that brings victory hides somewhere on this island. I've looked everywhere but behind that wall!" ]
+    },
+    "6": {
+      "name": "Policeman",
+      "npcType": "policeman",
+      "dialog": [ "The island's open to pass holders only. Enjoy the garden, but keep off the lighthouse's stairs." ]
+    }
+  },
+  "npcs": [
+    { "id": "victini", "name": "Victini", "npcType": "Pokemon", "species": "Victini", "x": 305, "y": 757, "facing": "Down", "script": "Victini", "hiddenBy": "FLAG_UNOVA_FOUGHT_VICTINI" }
+  ],
+  "signs": {
+    "8": "Liberty Garden\nThe ferry for Castelia City sails from this jetty",
+    "9": "Liberty Garden\nA garden in the bay, kept for Unova's champions",
+    "10": "The Lighthouse\nClosed to visitors"
+  }
+}

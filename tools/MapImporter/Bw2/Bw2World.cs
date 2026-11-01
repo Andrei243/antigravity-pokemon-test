@@ -213,6 +213,32 @@ public sealed class Bw2World
         "overworld_2_map25_03", "overworld_2_map25_04", "overworld_2_map25_05",
     };
 
+    /// <summary>
+    /// The chunks of an island that Black 2 sets in a place of its own, with no chunk round it (plan 29 · LS11d: the Liberty
+    /// Garden, off Castelia): what has no ground on them is the sea, and <see cref="SeaChunk"/> is laid in the empty cells
+    /// round them by <c>world.json</c>'s <c>swaps</c>, so the island stands in the sea and not in the forest that fills the
+    /// world where no chunk is.
+    /// </summary>
+    public static readonly HashSet<string> SeaRound = new(StringComparer.Ordinal) { "overworld_2_map09_23" };
+
+    /// <summary>The number of <see cref="SeaChunk"/>'s file.</summary>
+    public const int SeaId = 3000;
+
+    /// <summary>A chunk of open sea at the islands' level, blocked (nobody sails it), laid round <see cref="SeaRound"/>'s chunks.</summary>
+    public static WorldChunkFile SeaChunk()
+    {
+        const int T = LandData.Tiles;
+        var file = new WorldChunkFile { Id = SeaId };
+        for (int z = 0; z < T; z++)
+        {
+            file.Behaviours.Add(new string('0', T * 2));
+            file.Solid.Add(new string('#', T));
+            file.Cover.Add(new string(TerrainCoverCodes.CodeOf(TerrainCover.Water), T));
+        }
+        file.Heights.Add(new HeightPlate { X = 0, Z = 0, Width = T, Depth = T, Height = 0f });
+        return file;
+    }
+
     public WorldChunkFile IceChunk(string folder)
     {
         var file = Chunk(folder);
@@ -271,7 +297,9 @@ public sealed class Bw2World
                 else solid[i] = true;
                 behaviours.Append(((byte)behaviour[i]).ToString("X2", CultureInfo.InvariantCulture));
                 blocked.Append(solid[i] ? '#' : '.');
-                row.Append(TerrainCoverCodes.CodeOf(look[i]));
+                // An island Black 2 floats on its own background (plan 29 · LS11d: the Liberty Garden) has nothing under its
+                // blocked edges: there it is the sea
+                row.Append(TerrainCoverCodes.CodeOf(SeaRound.Contains(folder) && solid[i] && look[i] == TerrainCover.Unknown ? TerrainCover.Water : look[i]));
             }
             file.Behaviours.Add(behaviours.ToString());
             file.Solid.Add(blocked.ToString());

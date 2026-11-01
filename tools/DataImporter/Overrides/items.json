@@ -482,5 +482,18 @@
     "canUseInOverworld": false,
     "description": "A Dynamax Band with a Key Stone set into it. It lets a Mega-Evolved Pokémon Dynamax.",
     "cantBeTossed": true
+  },
+  // The Liberty Pass (plan 29 · LS11d, our own after Black and White's event): the sailor at Castelia's Liberty Pier gives
+  // it to a Champion of Unova who has fought in the World Tournament, and sails whoever holds it to the Liberty Garden
+  "Liberty Pass": {
+    "id": 9571,
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A pass for the ferry from Castelia's Liberty Pier to the Liberty Garden, given to champions.",
+    "cantBeTossed": true
   }
 }

@@ -1,0 +1,51 @@
+# The Musical Theater's lobby in Nimbasa City (plan 22 · U6, part b; the room's people are its overlay's). docs/scripts.md
+# describes the language; the lines are our own. Black 2 has nobody to meet here; Meloetta is ours, after Black and White's
+# event (plan 29 · LS11d): after dark, once Unova's Hall of Fame is entered, it sings before the stage's door.
+
+
+# Meloetta is there only at night (FLAG_UNOVA_MELOETTA_SINGS, kept here on every arrival)
+script OnEnter
+  clearflag FLAG_UNOVA_MELOETTA_SINGS
+  if not flag UnovaHallOfFame end
+  if time night setflag FLAG_UNOVA_MELOETTA_SINGS
+  if time latenight setflag FLAG_UNOVA_MELOETTA_SINGS
+  end
+
+
+# Meloetta before the stage's door (meloetta; the recipe's mind and dreams row): a room, so the zoom alone; level 65, as
+# Unova's other legends after the League; caught or beaten it is gone for good (FLAG_UNOVA_FOUGHT_MELOETTA), run from it is
+# back the next night the lobby is come to
+script Meloetta
+  scene "Meloetta in the Musical Theater"
+  music stop
+  face player meloetta
+  face meloetta player
+  letterbox on 0.4
+  # (one tile south of it, the player would hide it: they step back first)
+  if var PLAYER_X != 14 goto Look
+  if var PLAYER_Y != 4 goto Look
+  emote player exclaim
+  walk player down 2
+  face player up
+label Look
+  camera zoom 1.4 0.8
+  effect sparkles 14 3
+  wait 0.4
+  effect ripple 14 3
+  flicker meloetta 6
+  cry "Meloetta"
+  speaker none
+  text "A soft melody fills the quiet lobby, and a Pokémon flickers into sight!\nIt stops singing and turns to {player}!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Meloetta" 65
+  if result == 2 goto Fled
+  setflag FLAG_UNOVA_FOUGHT_MELOETTA
+  hide meloetta
+  text "The lobby is silent. The last note seems to hang in the air..."
+  end
+label Fled
+  hide meloetta
+  text "Meloetta's song faded away behind the stage's door..."
+  end

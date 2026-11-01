@@ -118,5 +118,55 @@
         "Debarcaderul Deget e chiar acolo jos. Grăbește-te!"
       ]
     }
+  ],
+  "LibertySailor": [
+    {
+      "en": [
+        "Sailor"
+      ],
+      "text": [
+        "Marinar"
+      ]
+    },
+    {
+      "en": [
+        "This is the Liberty Pier. The ferry to the Liberty Garden sails only for pass holders."
+      ],
+      "text": [
+        "Ăsta e Debarcaderul Libertății. Feribotul spre Grădina Libertății pleacă doar cu cei care au permis."
+      ]
+    },
+    {
+      "en": [
+        "Wait, you're Unova's new Champion! The garden was made for winners. Here, this pass is yours."
+      ],
+      "text": [
+        "Stai, tu ești noul Campion din Unova! Grădina e făcută pentru învingători. Poftim, permisul ăsta e al tău."
+      ]
+    },
+    {
+      "en": [
+        "Shall we sail across the bay to the Liberty Garden?"
+      ],
+      "text": [
+        "Traversăm golful spre Grădina Libertății?"
+      ]
+    },
+    {
+      "en": [
+        "Hold on tight! It's a short crossing."
+      ],
+      "text": [
+        "Ține-te bine! E o traversare scurtă."
+      ]
+    },
+    {
+      "en": [
+        "The pier's always here. Come back whenever you like."
+      ],
+      "text": [
+        "Debarcaderul e mereu aici. Revino oricând vrei."
+      ]
+    }
   ]
 }

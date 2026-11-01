@@ -5,6 +5,14 @@
 
 script OnEnter
   call UnovaCatchUpB
+  # Keldeo (plan 29 · LS11d) waits where Cobalion stood once Unova's Hall of Fame is entered and all three Swords of Justice
+  # have been fought (FLAG_UNOVA_KELDEO_WAITS, kept here on every arrival)
+  clearflag FLAG_UNOVA_KELDEO_WAITS
+  if not flag UnovaHallOfFame end
+  if not flag FLAG_UNOVA_FOUGHT_COBALION end
+  if not flag FLAG_UNOVA_FOUGHT_VIRIZION end
+  if not flag FLAG_UNOVA_FOUGHT_TERRAKION end
+  setflag FLAG_UNOVA_KELDEO_WAITS
   end
 
 
@@ -55,4 +63,43 @@ script Cobalion
 label Fled
   hide self
   text "Cobalion leapt away beyond the road..."
+  end
+
+
+# Keldeo where Cobalion stood (keldeo, a person of ours shown by FLAG_UNOVA_KELDEO_WAITS; plan 29 · LS11d, after Black and
+# White's event): it has come looking for its teachers and found the road empty. Level 65, as the Swords; caught or beaten it
+# is gone for good (FLAG_UNOVA_FOUGHT_KELDEO), run from it is back the next time the road is come to
+script Keldeo
+  scene "Keldeo on Route 13"
+  music stop
+  face player keldeo
+  face keldeo player
+  letterbox on 0.4
+  # (one tile south of it, the player would hide it: they step back first)
+  if var PLAYER_X != 684 goto Look
+  if var PLAYER_Y != 191 goto Look
+  emote player exclaim
+  walk player down 2
+  face player up
+label Look
+  camera path 684 186 684 190 3
+  camera zoom 1.4 0.8
+  effect sparkles 684 190
+  wait 0.6
+  cry "Keldeo"
+  camera shake 0.4
+  speaker none
+  text "A young Pokémon stands where Cobalion stood, stamping the ground!\nIt sizes {player} up, eager to prove itself!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Keldeo" 65
+  if result == 2 goto Fled
+  setflag FLAG_UNOVA_FOUGHT_KELDEO
+  hide keldeo
+  text "Spray from the sea drifts over the empty road..."
+  end
+label Fled
+  hide keldeo
+  text "Keldeo galloped off along the cliffs..."
   end
