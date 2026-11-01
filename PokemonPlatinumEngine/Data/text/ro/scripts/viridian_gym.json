@@ -5,7 +5,7 @@
         "Blue"
       ],
       "text": [
-        ""
+        "Blue"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "So you made it. Seven of Kanto's Badges, and a Johto Champion's title on top. You've been busy."
       ],
       "text": [
-        ""
+        "Deci ai reușit. Șapte Badge-uri din Kanto și titlul de Campion din Johto pe deasupra. Ai fost ocupat."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "I was the Champion once, you know. For about five minutes. Then someone from Pallet Town beat me."
       ],
       "text": [
-        ""
+        "Am fost Campion odată, să știi. Vreo cinci minute. Apoi cineva din Pallet Town m-a învins."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "I won't lose that easily again. Let's see what you've got!"
       ],
       "text": [
-        ""
+        "Nu voi mai pierde atât de ușor. Hai să vedem ce poți!"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Tch. You're the real thing, all right. Here, take it: the Earth Badge."
       ],
       "text": [
-        ""
+        "Tch. Ești pe bune, într-adevăr. Poftim, ia-l: Earth Badge."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "{player} received the Earth Badge from Blue!"
       ],
       "text": [
-        ""
+        "{player} a primit Earth Badge de la Blue!"
       ]
     },
     {
@@ -53,7 +53,7 @@
         "And this. It's a strange move, but in the right hands it turns a battle on its head."
       ],
       "text": [
-        ""
+        "Și asta. E o mișcare ciudată, dar în mâinile potrivite întoarce o luptă pe dos."
       ]
     },
     {
@@ -61,7 +61,7 @@
         "TM92 is Trick Room. For five turns, the slowest Pokémon move first."
       ],
       "text": [
-        ""
+        "TM92 e Trick Room. Timp de cinci ture, Pokémonii cei mai lenți se mișcă primii."
       ]
     },
     {
@@ -69,7 +69,7 @@
         "That's all sixteen Badges, isn't it? If you're heading for Mt. Silver, say hello to someone for me."
       ],
       "text": [
-        ""
+        "Alea sunt toate cele șaisprezece Badge-uri, nu? Dacă te duci la Mt. Silver, salută pe cineva din partea mea."
       ]
     }
   ],
@@ -79,7 +79,7 @@
         "Hey, champ in the making! Blue doesn't stick to one type. Bring a team that can handle anything."
       ],
       "text": [
-        ""
+        "Hei, viitor campion! Blue nu se ține de un singur tip. Adu o echipă care se descurcă cu orice."
       ]
     },
     {
@@ -87,7 +87,7 @@
         "You beat Blue! I knew you had it in you."
       ],
       "text": [
-        ""
+        "L-ai învins pe Blue! Știam că ai potențial."
       ]
     }
   ],
@@ -97,7 +97,7 @@
         "Viridian City Pokémon Gym\nLeader: Blue"
       ],
       "text": [
-        ""
+        "Gymul Pokémon din Viridian City\nLider: Blue"
       ]
     },
     {
@@ -105,7 +105,7 @@
         "Viridian City Pokémon Gym\nLeader: Blue\nWinning trainers: {player}"
       ],
       "text": [
-        ""
+        "Gymul Pokémon din Viridian City\nLider: Blue\nAntrenori câștigători: {player}"
       ]
     }
   ]
