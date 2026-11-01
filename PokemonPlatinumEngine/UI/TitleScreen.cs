@@ -25,7 +25,7 @@ public enum TitlePhase { Notice, Journey, Reveal, Idle, Menu, ConfirmNewGame, Le
 /// A slot the title has a card for (plan 12 · Q2): its number from 1 and the game saved in it, or no game for a
 /// slot whose save and backup are both damaged, which can only be deleted.
 /// </summary>
-public sealed record TitleSlot(int Number, SaveData? Save, SaveData? Autosave = null, bool AutosaveOnly = false);
+public sealed record TitleSlot(int Number, SaveData? Save, SaveData? Autosave = null, bool AutosaveOnly = false, string? Battle = null);
 
 /// <summary>
 /// Something the title tells the player before its menu opens, as Platinum tells of a damaged save (plan 12 · Q1):
@@ -56,6 +56,10 @@ public sealed record TitleNotice(string Heading, string Body)
 
     /// <summary>What the title says of a lone save as it was read: slot 1's notice.</summary>
     public static TitleNotice? ForSave(SaveLoad load) => ForSlot(1, load);
+
+    /// <summary>A battle suspended beside a slot that can't be taken up (plan 12 · Q25): fought under data that has changed since, or cut short.</summary>
+    public static TitleNotice ForSuspension(int slot) =>
+        new(Text.Of("title.notice.suspension.heading", ("slot", slot)), Text.Of("title.notice.suspension.body"));
 
     /// <summary>NEW GAME with every slot taken: a new game needs a slot of its own.</summary>
     public static TitleNotice NoFreeSlot => new(Text.Of("title.notice.noFreeSlot.heading"), Text.Of("title.notice.noFreeSlot.body"));
@@ -329,7 +333,8 @@ public sealed class TitleScreen
                         Slot = cards[SelectedIndex].Number;
                         UseAutosave = false;
                         // A game that stopped on a crash after an autosave: the player says which to take up (plan 12 · Q3)
-                        if (cards[SelectedIndex].Autosave != null)
+                        // (A battle left beside the slot is taken up whatever else is offered: plan 12 · Q25)
+                        if (cards[SelectedIndex].Autosave != null && cards[SelectedIndex].Battle == null)
                         {
                             ConfirmYes = true;
                             Enter(TitlePhase.ChooseAutosave);
@@ -862,8 +867,8 @@ public sealed class TitleScreen
 
             if (card != null)
             {
-                if (LoneCard) ModernUi.SaveSummary(r, card.Save!, Text.Of("title.menu.continue"), card.Number);
-                else ModernUi.SaveCard(r, card.Number, card.Save);
+                if (LoneCard) ModernUi.SaveSummary(r, card.Save!, Text.Of("title.menu.continue"), card.Number, card.Battle);
+                else ModernUi.SaveCard(r, card.Number, card.Save, card.Battle);
                 continue;
             }
             string label = entries[i] switch

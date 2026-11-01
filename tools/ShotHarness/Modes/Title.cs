@@ -530,6 +530,29 @@ partial class Harness
         Seconds(0.3f); Shot("title_55_credits_back");
         Console.WriteLine($"credits closed: state {game.State}, under the cursor {creditsTitle.Entries[creditsTitle.SelectedIndex]}");
 
+        // A battle left by SUSPEND AND QUIT (plan 12 · Q25), last so that nothing before it moves: its Gold tag on a short
+        // card and on the lone card, and the notice of one that can't be taken up
+        var suspended = TitleScreen.WithSlots(new[] { new TitleSlot(1, save), new TitleSlot(2, second, Battle: "Youngster Tristan") });
+        game.Title = suspended;
+        game.State = GameState.Title;
+        suspended.PressConfirm();
+        Seconds(1.2f);
+        suspended.PressConfirm();
+        Seconds(1f);
+        suspended.Move(1);
+        Seconds(0.3f); Shot("title_60_continue_suspended");
+        ShotCrop("title_60b_continue_suspended_native", 1016, (int)suspended.EntryRects()[1].Y - 8, 824, 160, 2);
+        Console.WriteLine($"a slot with a battle left beside it: \"{ModernUi.BattleMark("Youngster Tristan")}\"");
+        var loneSuspended = TitleScreen.WithSlots(new[] { new TitleSlot(1, save, Battle: "Starly") }, TitleNotice.ForSuspension(2));
+        game.Title = loneSuspended;
+        loneSuspended.PressConfirm();
+        Seconds(1.2f);
+        loneSuspended.PressConfirm();
+        Seconds(0.5f); Shot("title_61_suspension_refused");
+        Console.WriteLine($"a suspension refused: \"{loneSuspended.Notice?.Heading}\": {loneSuspended.Notice?.Body}");
+        loneSuspended.PressConfirm();
+        Seconds(1f); Shot("title_62_suspended_lone_card");
+
         game.State = GameState.Overworld;
     }
 

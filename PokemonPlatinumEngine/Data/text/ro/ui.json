@@ -311,6 +311,13 @@
         "on": "Odată ce cineva îți cere ceva, meniul are RUGĂMINȚI: ce mai trebuie făcut pentru fiecare și una pe care o poți fixa deasupra hărții."
       }
     },
+    "retryBattles": {
+      "label": "Reia luptele",
+      "help": {
+        "off": "O luptă pierdută te trimite înapoi la ultimul Centru Pokémon, cu o parte din bani pierduți.",
+        "on": "O luptă pierdută te întreabă întâi dacă încerci din nou: lupta o ia de la capăt, iar ce ai folosit și cheltuit în ea îți este dat înapoi."
+      }
+    },
     "areaChecklist": {
       "label": "Ce a mai rămas aici",
       "help": {
@@ -466,6 +473,10 @@
       "damaged": {
         "heading": "Slotul {slot} nu poate fi citit",
         "body": "Salvarea lui și cea păstrată înaintea ei sunt amândouă deteriorate, așa că jocul acela nu mai poate fi continuat. ȘTERGE O SALVARE eliberează slotul pentru altul."
+      },
+      "suspension": {
+        "heading": "Lupta din slotul {slot} nu poate fi reluată",
+        "body": "Lupta lăsată acolo a fost dată cu datele jocului de atunci, care s-au schimbat între timp. Salvarea slotului rămâne așa cum este."
       },
       "noFreeSlot": {
         "heading": "Fiecare slot are o salvare",
@@ -886,7 +897,17 @@
 
   "close": {
     "heading": "Închizi jocul?",
-    "cantSave": "Jocul nu poate fi salvat acum: tot ce s-a întâmplat de la ultima salvare se va pierde."
+    "cantSave": "Jocul nu poate fi salvat acum: tot ce s-a întâmplat de la ultima salvare se va pierde.",
+    "suspend": "SUSPENDĂ ȘI IEȘI",
+    "suspendBody": "Suspendă lupta ca s-o reiei din ecranul de titlu exact de unde ai lăsat-o, sau ieși și pierzi tot ce s-a întâmplat de la ultima salvare."
+  },
+
+  "retry": {
+    "heading": "Lupta a fost pierdută",
+    "body": "Încerci din nou împotriva lui {foe}? Lupta o ia de la prima tură, iar tot ce s-a folosit și s-a cheltuit în ea îți este dat înapoi.",
+    "bodyNoFoe": "Încerci din nou? Lupta o ia de la prima tură, iar tot ce s-a folosit și s-a cheltuit în ea îți este dat înapoi.",
+    "tryAgain": "ÎNCEARCĂ DIN NOU",
+    "giveUp": "RENUNȚĂ"
   },
 
   "dexText": {
@@ -1304,6 +1325,7 @@
     "debut": "DEBUT ÎN SALA FAIMEI",
     "debutWhen": "{date}   {time}",
     "runEnded": "JOC TERMINAT",
+    "battle": "LUPTĂ: {foe}",
     "clears": "JOC NOU+ {n}",
     "packs": { "one": "PACHET: {name}", "few": "{n} PACHETE", "other": "{n} DE PACHETE" },
     "graveyard": "CIMITIR  {count}",
@@ -1313,7 +1335,7 @@
       "group": { "Journey": "DRUM", "Battles": "LUPTE", "Catching": "CAPTURI", "Growth": "CREȘTERE" },
       "stepsFoot": "PAȘI PE JOS", "stepsSurf": "PAȘI PE APĂ", "stepsCycle": "PAȘI CU BICICLETA", "stepsDive": "PAȘI SUB APĂ",
       "wildWon": "LUPTE SĂLBATICE CÂȘTIGATE", "wildLost": "LUPTE SĂLBATICE PIERDUTE", "wildRan": "FUGI DE POKÉMONI", "wildFled": "AU FUGIT DE TINE",
-      "trainerWon": "ANTRENORI ÎNVINȘI", "trainerLost": "PIERDUT ÎN FAȚA ANTRENORILOR", "whiteouts": "LEȘINURI",
+      "trainerWon": "ANTRENORI ÎNVINȘI", "trainerLost": "PIERDUT ÎN FAȚA ANTRENORILOR", "whiteouts": "LEȘINURI", "retries": "LUPTE REÎNCERCATE",
       "encounters": "POKÉMONI SĂLBATICI ÎNTÂLNIȚI", "caught": "POKÉMONI PRINȘI", "newSpecies": "SPECII NOI PRINSE",
       "levelled": "NIVELURI CÂȘTIGATE ÎN LUPTĂ", "evolutions": "EVOLUȚII"
     },

@@ -277,4 +277,48 @@ public sealed class BattleSetup
 
     /// <summary>The trainer's first Pokémon when it isn't the first in their party (the old constructor's foe argument).</summary>
     internal Pokemon? FirstTrainerPokemon { get; init; }
+
+    /// <summary>
+    /// The same battle against foes made afresh (plan 12 · Q25: a lost battle fought again, a suspended one taken up):
+    /// everything of this setup but the wild Pokémon, the trainers, the partner and the chance, which are given; a
+    /// <paramref name="random"/> left out is a new one from <see cref="Core.Dice"/>. A field added to this class is added here too.
+    /// </summary>
+    public BattleSetup Again(List<Pokemon> wild, List<Trainer> trainers, Trainer? partner, Pokemon? first, Random? random) => new()
+    {
+        PlayerParty = PlayerParty,
+        Inventory = Inventory,
+        Pokedex = Pokedex,
+        PcStorage = PcStorage,
+        Place = Place,
+        Format = Format,
+        WildPokemon = wild,
+        Trainers = trainers,
+        Random = random,
+        Rules = Rules,
+        Conditions = Conditions,
+        Kind = Kind,
+        Partner = partner,
+        CannotFlee = CannotFlee,
+        FirstBattle = FirstBattle,
+        SpecialBalls = SpecialBalls,
+        PlayerName = PlayerName,
+        PlayerLook = PlayerLook,
+        MoveHints = MoveHints,
+        TrainerLines = TrainerLines,
+        Frontier = Frontier,
+        NoBattleItems = NoBattleItems,
+        OffersSwitch = OffersSwitch,
+        MegaMaxDen = MegaMaxDen,
+        Difficulty = Difficulty,
+        RunLevelCap = RunLevelCap,
+        CrossedExp = CrossedExp,
+        Nuzlocke = Nuzlocke,
+        Restrictions = Restrictions,
+        Scene = Scene,
+        PlayerController = PlayerController,
+        Palace = Palace,
+        TurnLimit = TurnLimit,
+        VictoryMusic = VictoryMusic,
+        FirstTrainerPokemon = first
+    };
 }

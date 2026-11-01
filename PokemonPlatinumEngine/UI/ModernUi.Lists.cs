@@ -347,7 +347,8 @@ internal static partial class ModernUi
     /// played, the Pokédex, badges won and the party. It draws its content only; the caller draws what it is on.
     /// </summary>
     /// <param name="slot">The slot the save is in (plan 12 · Q2), named on a small tag after the heading; nought for none.</param>
-    public static void SaveSummary(Rectangle r, SaveData save, string heading, int slot = 0)
+    /// <param name="battle">Whom a battle suspended beside the save is against (plan 12 · Q25), named on a Gold tag; null for none.</param>
+    public static void SaveSummary(Rectangle r, SaveData save, string heading, int slot = 0, string? battle = null)
     {
         float x = r.X + 48;
         UiFonts.DrawCentered(heading, x, r.Y + 58, 44, Ink, UiWeight.Black);
@@ -386,7 +387,10 @@ internal static partial class ModernUi
         // The party as 2D sprites, like the main games' save panel
         Label(Text.Of("saving.party"), x, r.Y + 340);
         // Played with packs (plan 16 · T15): a tag at the party row's right end
-        if (PacksMark(save) is { } packs) Tag(r.X + r.Width - 48 - UiFonts.Measure(packs, 22, UiWeight.Black) - 31, r.Y + 328, packs, Blue, 38);
+        float partyEnd = r.X + r.Width - 48;
+        if (PacksMark(save) is { } packs) partyEnd -= 12 + Tag(partyEnd - UiFonts.Measure(packs, 22, UiWeight.Black) - 31, r.Y + 328, packs, Blue, 38);
+        // A battle left by SUSPEND AND QUIT (plan 12 · Q25), before the packs
+        if (BattleMark(battle) is { } left) Tag(partyEnd - UiFonts.Measure(left, 22, UiWeight.Black) - 31, r.Y + 328, left, Gold, 38);
         for (int i = 0; i < save.Party.Count && i < 6; i++)
         {
             var icon = PixelArtGenerator.GetPokemonIcon(PokemonLook.Of(save.Party[i].Form ?? save.Party[i].SpeciesName, save.Party[i].Gender == Gender.Female, save.Party[i].IsShiny));
@@ -414,7 +418,8 @@ internal static partial class ModernUi
     /// won, and along its foot the place it was saved in. A slot with no game (<paramref name="save"/> null: it
     /// can't be read) says so instead. It draws its content only; the caller draws the card.
     /// </summary>
-    public static void SaveCard(Rectangle r, int slot, SaveData? save)
+    /// <param name="battle">Whom a battle suspended beside the save is against (plan 12 · Q25); null for none.</param>
+    public static void SaveCard(Rectangle r, int slot, SaveData? save, string? battle = null)
     {
         // (48 from the card's edges, as the rows' labels and the lone card's content are)
         float x = r.X + 48, right = r.X + r.Width - 48;
@@ -448,8 +453,13 @@ internal static partial class ModernUi
         if (SaveMark(save) is var (runMark, markColour))
             tagsEnd -= 12 + Tag(tagsEnd - UiFonts.Measure(runMark, 20, UiWeight.Black) - 26, r.Y + 98, runMark, markColour, 34);
         // Played with packs (plan 16 · T15), before the run's mark
-        if (PacksMark(save) is { } packs) Tag(tagsEnd - UiFonts.Measure(packs, 20, UiWeight.Black) - 26, r.Y + 98, packs, Blue, 34);
+        if (PacksMark(save) is { } packs) tagsEnd -= 12 + Tag(tagsEnd - UiFonts.Measure(packs, 20, UiWeight.Black) - 26, r.Y + 98, packs, Blue, 34);
+        // A battle left by SUSPEND AND QUIT (plan 12 · Q25), before both
+        if (BattleMark(battle) is { } left) Tag(tagsEnd - UiFonts.Measure(left, 20, UiWeight.Black) - 26, r.Y + 98, left, Gold, 34);
     }
+
+    /// <summary>What a save's card says of a battle suspended beside it (plan 12 · Q25): BATTLE: and whom it is against, or null for none.</summary>
+    public static string? BattleMark(string? foe) => foe == null ? null : Text.Of("card.battle", ("foe", foe));
 
     /// <summary>What a save's card says of the packs it was played with (plan 16 · T15): their count, or null for none.</summary>
     public static string? PacksMark(SaveData save) => save.Packs is { Count: > 0 } packs
