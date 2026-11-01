@@ -213,6 +213,8 @@ script Heatran
   music stop
   face player heatran
   letterbox on 0.4
+  # Met from below, it is behind the player's own head from the field's camera: a step back, facing it, shows it
+  if facing up walk player back down 1
   camera pan 7 6 1.2
   camera zoom 1.4 0.8
   effect burst 7 6
@@ -223,6 +225,7 @@ script Heatran
   emote player exclaim
   speaker none
   say "Heatran heaves itself up out of the glow, and the air over its back shimmers with heat!"
+  if facing up walk player up 1
   camera release 0.4
   letterbox off 0.3
   endscene

@@ -19,17 +19,16 @@ script Rift
   music stop
   face player up
   letterbox on 0.4
-  camera pan 29 16 1.2
+  camera pan 33 15 1.2
   camera zoom 1.4 0.8
-  effect rift 29 16 hold
   slowmo 0.5 1.5
-  effect ripple 29 16
+  effect ripple 33 17
   wait 1
+  effect burst 33 17
   cry "Palkia"
   camera shake 0.6
   emote player exclaim
   text "Palkia pushes out of the rift, and the space round it folds!"
-  effect stop 29 16
   camera release 0.4
   letterbox off 0.3
   endscene

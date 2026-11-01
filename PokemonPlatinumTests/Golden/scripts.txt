@@ -6151,6 +6151,7 @@ way 0
   * scene acuity_cavern.Uxie in Acuity Cavern
   * music stop
   * letterbox on
+  * walk player back down
   * camera Pan 14 10
   * camera Zoom 1.4
   * effect Sparkles 14 10
@@ -7696,17 +7697,17 @@ way -
   * effect Burst 14 14
   * camera Shake
   * flicker Raikou 4
-  * effect Shadow 14 14 Left
+  * effect Shadow 6 14 Left
   * camera Pan 16 14
   * effect Burst 16 14
   * camera Shake
   * flicker Entei 4
-  * effect Shadow 16 14 Up
+  * effect Shadow 16 6 Up
   * camera Pan 15 16
   * cry Suicune
   * effect Sparkles 15 16
   * flicker Suicune 4
-  * effect Shadow 15 16 Right
+  * effect Shadow 23 16 Right
   * camera Release
   * letterbox off
   * sound stairs
@@ -9029,10 +9030,10 @@ way 0
   * camera Zoom 1.4
   * cry Suicune
   * effect Sparkles 174 330
-  * walk Suicune onspot up onspot up
+  * walk Suicune onspot right onspot right
   * sound ledge
-  * effect Shadow 174 329 Up
-  * camera Path 174 326 174 322 at 5
+  * effect Shadow 182 330 Right
+  * camera Path 178 330 182 330 at 5
   * camera Release
   * letterbox off
   * music johto/eye_mystery
@@ -15977,13 +15978,14 @@ way -
   * scene fullmoon_island_forest.Cresselia on Fullmoon Island
   * music stop
   * letterbox on
+  * walk player back down
   * camera Pan 16 15
   * camera Zoom 1.4
   * effect Sparkles 16 15
   * cry Cresselia
   * effect Ripple 16 15
   * flicker Cresselia 6
-  * effect Shadow 16 15 Up
+  * effect Shadow 16 7 Up
   * camera Release
   * letterbox off
   * music area
@@ -27113,15 +27115,14 @@ way 0.0
   * scene spear_pillar_dialga.Dialga's rift
   * music stop
   * letterbox on
-  * camera Pan 29 16
+  * camera Pan 29 15
   * camera Zoom 1.4
-  * effect Rift 29 16 hold
   * slowmo 0.5
-  * effect Ripple 29 16
+  * effect Ripple 29 17
+  * effect Burst 29 17
   * cry Dialga
   * camera Shake
   * emote player Exclaim
-  * effect stop 29 16
   * camera Release
   * letterbox off
   * endscene
@@ -27178,15 +27179,14 @@ way 0.0
   * scene spear_pillar_palkia.Palkia's rift
   * music stop
   * letterbox on
-  * camera Pan 29 16
+  * camera Pan 33 15
   * camera Zoom 1.4
-  * effect Rift 29 16 hold
   * slowmo 0.5
-  * effect Ripple 29 16
+  * effect Ripple 33 17
+  * effect Burst 33 17
   * cry Palkia
   * camera Shake
   * emote player Exclaim
-  * effect stop 29 16
   * camera Release
   * letterbox off
   * endscene
@@ -27393,6 +27393,7 @@ way 0
   * scene stark_mountain_room_3.Heatran in the mountain's heart
   * music stop
   * letterbox on
+  * walk player back down
   * camera Pan 7 6
   * camera Zoom 1.4
   * effect Burst 7 6
@@ -29058,6 +29059,7 @@ way 0
   * scene valor_cavern.Azelf in Valor Cavern
   * music stop
   * letterbox on
+  * walk player back down
   * camera Pan 16 14
   * camera Zoom 1.4
   * effect Sparkles 16 14
@@ -29280,6 +29282,7 @@ way -
   * scene verity_cavern.Mesprit
   * music stop
   * letterbox on
+  * walk player back down
   * camera Pan 12 13
   * camera Zoom 1.4
   * effect Sparkles 12 13

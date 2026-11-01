@@ -22,17 +22,22 @@ script Zapdos
   scene "Zapdos at the Power Plant"
   music stop
   letterbox on 0.4
+  # Met from below, it is behind the player's own head from the field's camera: a step back, facing it, shows it
+  if facing up walk player back down 1
   camera pan 5 11 1.2
   camera zoom 1.4 0.8
   effect burst 5 11
   camera shake 0.4
-  wait 0.4
+  # A burst lit again on its own tile takes the place of the one still playing there: the second strike waits for
+  # the first's 0.6 s to end
+  wait 0.6
   effect burst 5 11
   camera shake 0.4
   wait 0.6
   cry "Zapdos"
   emote player exclaim
   text "Gyaaah!\nSparks crackled through the air round the great bird!"
+  if facing up walk player up 1
   camera release 0.4
   letterbox off 0.3
   endscene
