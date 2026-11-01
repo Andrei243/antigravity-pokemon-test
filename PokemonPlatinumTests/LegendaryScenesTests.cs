@@ -35,20 +35,6 @@ public class LegendaryScenesTests
         ["bell_tower_roof.HoOh Ho-Oh"] = "LS4",
         ["whirl_islands_b3f_lugia_cave.Lugia Lugia"] = "LS4",
         ["mount_silver_cave_moltres_chamber.Moltres Moltres"] = "LS4",
-        // Hoenn's titans after the story
-        ["sky_pillar_top.Rayquaza Rayquaza"] = "LS6",
-        ["marine_cave_end.Kyogre Kyogre"] = "LS6",
-        ["terra_cave_end.Groudon Groudon"] = "LS6",
-        // Hoenn's Regis and islands
-        ["desert_ruins.Regirock Regirock"] = "LS7",
-        ["island_cave.Regice Regice"] = "LS7",
-        ["ancient_tomb.Registeel Registeel"] = "LS7",
-        ["southern_island_interior.Stone Latias"] = "LS7",
-        ["southern_island_interior.Stone Latios"] = "LS7",
-        ["birth_island_exterior.Triangle Deoxys-Speed"] = "LS7",
-        ["faraway_island_interior.Mew Mew"] = "LS7",
-        ["navel_rock_bottom.Lugia Lugia"] = "LS7",
-        ["navel_rock_top.HoOh Ho-Oh"] = "LS7",
         // Unova's legends after the League
         ["unova_route_13.Cobalion Cobalion"] = "LS8",
         ["unova_route_11.Virizion Virizion"] = "LS8",

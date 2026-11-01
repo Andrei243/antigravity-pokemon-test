@@ -7,7 +7,9 @@
 # the stone back to its first place when there were too many (sStoneMaxStepCounts); here there is no step count, so the
 # puzzle is to find the stone each time. Coming to the island puts the stone back (Emerald's ON_TRANSITION). Run from,
 # Deoxys flies off and the stone is there again next time; beaten (FLAG_DEFEATED_DEOXYS) or caught
-# (FLAG_BATTLED_DEOXYS, Emerald's flag for the catch), both are gone for good.
+# (FLAG_BATTLED_DEOXYS, Emerald's flag for the catch), both are gone for good. Its meeting is plan 29's beat (style
+# guide, "Legendary scenes", the mind's row): the bars, the camera to the stone first, the stone bursting, Deoxys shown in
+# its place with sparkles and a ripple and flickering, the cry and a line, and then the battle's own way in.
 
 
 script OnEnter
@@ -30,6 +32,11 @@ script Triangle
   if var VAR_DEOXYS_ROCK_LEVEL < 10 goto Move
   setflag FLAG_DEOXYS_ROCK_COMPLETE
   scene "Deoxys on Birth Island"
+  music stop
+  face player self
+  letterbox on 0.4
+  camera pan 15 10 1.2
+  camera zoom 1.4 0.8
   camera shake 0.5
   effect burst 15 10
   wait 0.5
@@ -38,9 +45,15 @@ script Triangle
   clearflag FLAG_HIDE_DEOXYS
   show birth_island_deoxys
   place birth_island_deoxys 15 10
-  wait 0.4
+  effect sparkles 15 10
+  effect ripple 15 10
+  flicker birth_island_deoxys 4
   cry "Deoxys"
-  wait 0.8
+  emote player exclaim
+  speaker none
+  text "The stone shattered, and a strange Pokémon flickered into being where it had stood!"
+  camera release 0.4
+  letterbox off 0.3
   endscene
   wildbattle "Deoxys-Speed" 30
   hide birth_island_deoxys

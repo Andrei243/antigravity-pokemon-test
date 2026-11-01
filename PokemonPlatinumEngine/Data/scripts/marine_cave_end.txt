@@ -6,6 +6,11 @@
 # meets it at level 70. Run from, it dives away and is back the next time the room is come to. Beaten or caught, the rain
 # over the route the cave opened from stops and its way in closes (common.HoennAbnormalWeatherEnd), and the Weather
 # Institute's next report can only be of Terra Cave.
+#
+# Its meeting is plan 29's beat (style guide, "Legendary scenes", the sea's row): the bars, the camera to the pool,
+# sparkles and a ripple over the water as Kyogre stirs in it, the cry with the cave shaken, and then the battle's own way
+# in. The kit has no way to lift a Pokémon out of the water, so "rising" is its stir on the spot (plan 29 · LS10's to
+# better, if it is asked for).
 
 
 script OnEnter
@@ -22,13 +27,21 @@ label Gone
 script Kyogre
   if flag FLAG_DEFEATED_KYOGRE end
   scene "Kyogre in the Marine Cave"
+  music stop
   face player up
-  wait 0.4
+  letterbox on 0.4
+  camera pan 9 22 1.2
+  camera zoom 1.4 0.8
+  effect sparkles 9 22
+  effect ripple 9 22
+  walk marine_cave_kyogre onspot down 1
   cry "Kyogre"
   camera shake 0.6
-  wait 0.8
+  emote player exclaim
   speaker none
   text "Kyogre rose from the depths of the pool!"
+  camera release 0.4
+  letterbox off 0.3
   endscene
   setvar VAR_TEMP_1 0
   wildbattle "Kyogre" 70

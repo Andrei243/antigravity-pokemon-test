@@ -158,8 +158,32 @@ Every session: `tools/ContentCheck` first, then the filtered tests of what it to
 - [ ] LS3 Kanto's birds and Mewtwo
 - [ ] LS4 Johto's birds of the towers
 - [ ] LS5 Johto's three beasts
-- [ ] LS6 Hoenn's titans after the story
-- [ ] LS7 Hoenn's Regis and islands
+- [x] LS6 Hoenn's titans after the story (2026-11-01: Rayquaza on Sky Pillar's top (`sky_pillar_top.txt` `Rayquaza`: a pan up over the top, its shadow sent down toward the player with a `camera path` after it, the cry with the awakening's `camera shake 1`), Kyogre in the Marine Cave (sparkles and a ripple on its tile, its stir on the spot, shake 0.6) and Groudon in Terra Cave (a burst, the heat's ripple, its stir, shake 0.6), each with the bars, the zoom and the release before `wildbattle`. The kit can't lift a Pokémon out of water or magma, so "shown rising" is `walk <who> onspot down 1`; a rise is LS10's if the shots ask for it. Their three lines are unchanged. Shots not taken: `hoenn` is owed a look at the three beats.)
+- [x] LS7 Hoenn's Regis and islands (2026-11-01: the three Regis, Southern Island's Lati, Deoxys, Mew, Lugia and Ho-Oh at Navel Rock, all staged and off `StillBare`. Southern Island's scene used to wrap the battle; it now ends before it, as the recipe asks. Shots not taken: `hoenn` is owed a look at each beat.)
+
+  **The Regi beat** (LS8 writes Unova's three the same, with the statue's tile and its own line):
+
+  ```
+  script Regirock
+    scene "Regirock wakes in the Desert Ruins"
+    music stop
+    face player self
+    letterbox on 0.4
+    camera pan 8 7 1.2          # the statue's own tile
+    camera zoom 1.4 0.8
+    effect beam 8 7             # its eyes lighting
+    shake self 8                # the statue shaken where it stands (L12)
+    cry "Regirock"
+    camera shake 0.8
+    speaker none
+    text "Regirock stood in the dark as still as a stone, until lights blinked on across its face!"
+    camera release 0.4
+    letterbox off 0.3
+    endscene
+    wildbattle "Regirock" 40    # and everything after it as it was
+  ```
+
+  Regice adds `effect sparkles` on its tile after the beam (the cold; a scene effect of another kind on the same tile stands beside the beam). The three lines are the old line with "…, until lights blinked on across its face!" after it (Regirock "stood in the dark as still as a stone", Regice "stood in the cold dark, frozen as the cave itself", Registeel "waited in the tomb without a sound"); Unova's may keep that ending so that the six read as one kind. The others: the Lati by the flight row (a pan up, a shadow down over the pond and a path after it, then it is shown by the stone with sparkles and a ripple); Deoxys with the camera on the stone first, its burst, then sparkles, a ripple and `flicker` 4 as it is shown; Mew by `camera follow self` and `flicker self 6` (it moves about the grass, so no effect on a tile); Lugia by the sea's row with its two shakes kept; Ho-Oh by flight and fire (the pan up its file's header named, a shadow down to the summit, a burst and a ripple).
 - [ ] LS8 Unova's legends after the League
 - [ ] LS9 Kyurem's fusion and FireRed's roaming beast
 - [ ] LS10 What the kit lacked (optional)

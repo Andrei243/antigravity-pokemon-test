@@ -49,10 +49,25 @@ label Done
   end
 
 
+# Its meeting is plan 29's Regi beat (style guide, "Legendary scenes", the stone and steel giants; Unova's three take the
+# same): the bars, the camera to the statue, a beam on its tile as its eyes light, the statue shaken where it stands, the
+# cry with the chamber shaken, one line, and then the battle's own way in.
 script Regirock
+  scene "Regirock wakes in the Desert Ruins"
+  music stop
+  face player self
+  letterbox on 0.4
+  camera pan 8 7 1.2
+  camera zoom 1.4 0.8
+  effect beam 8 7
+  shake self 8
   cry "Regirock"
+  camera shake 0.8
   speaker none
-  text "Regirock stands in the dark, as still as a stone."
+  text "Regirock stood in the dark as still as a stone, until lights blinked on across its face!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
   wildbattle "Regirock" 40
   hide self
   setflag FLAG_HIDE_REGIROCK

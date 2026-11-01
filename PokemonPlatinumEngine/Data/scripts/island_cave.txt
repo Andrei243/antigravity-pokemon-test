@@ -61,10 +61,25 @@ script LapDone
   end
 
 
+# Its meeting is plan 29's Regi beat (style guide, "Legendary scenes"; desert_ruins.txt has it whole), with the cold's
+# sparkles round the statue
 script Regice
+  scene "Regice wakes in the Island Cave"
+  music stop
+  face player self
+  letterbox on 0.4
+  camera pan 8 7 1.2
+  camera zoom 1.4 0.8
+  effect beam 8 7
+  effect sparkles 8 7
+  shake self 8
   cry "Regice"
+  camera shake 0.8
   speaker none
-  text "Regice stands in the cold dark, frozen as the cave itself."
+  text "Regice stood in the cold dark, frozen as the cave itself, until lights blinked on across its face!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
   wildbattle "Regice" 40
   hide self
   setflag FLAG_HIDE_REGICE

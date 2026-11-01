@@ -48,10 +48,23 @@ label Done
   end
 
 
+# Its meeting is plan 29's Regi beat (style guide, "Legendary scenes"; desert_ruins.txt has it whole)
 script Registeel
+  scene "Registeel wakes in the Ancient Tomb"
+  music stop
+  face player self
+  letterbox on 0.4
+  camera pan 8 7 1.2
+  camera zoom 1.4 0.8
+  effect beam 8 7
+  shake self 8
   cry "Registeel"
+  camera shake 0.8
   speaker none
-  text "Registeel waits in the tomb without a sound."
+  text "Registeel waited in the tomb without a sound, until lights blinked on across its face!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
   wildbattle "Registeel" 40
   hide self
   setflag FLAG_HIDE_REGISTEEL
