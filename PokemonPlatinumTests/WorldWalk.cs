@@ -313,14 +313,10 @@ internal static class WorldWalk
     /// City's sailor his ship, and Pal Park's lobby until the same session took Route 221's workers from its doors;
     /// Fullmoon Island's pier until plan 02 · S15, part b gave Canalave City's sailor that answer, and Snowpoint
     /// Temple's hall until the same session opened its door.)
-    /// What is left is Newmoon Island of plan 01 · M10, part b, where the original's Harbor Inn leaves whoever has the
-    /// Member Card of one of its events and where Canalave City's sailor sails afterwards (its TakeShipFromCanalave to
-    /// 152, 277, facing east): the session that brings the event's gifts writes the way there.
+    /// Newmoon Island's pier stood here last, until plan 29 · LS11a opened the Harbor Inn, whose innkeeper's night there
+    /// sets the player down on it. None is left.
     /// </summary>
-    public static readonly MapSpot[] StoryArrivals =
-    {
-        new("Sinnoh", 152, 277, Direction.Right),
-    };
+    public static readonly MapSpot[] StoryArrivals = { };
 
     /// <summary>
     /// Places of a region opened before the way to them: a walk of the whole game sets out from these too, until the

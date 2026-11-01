@@ -195,6 +195,16 @@
           "Înotător Mallory: Tu ai făcut destule valuri."
         ]
       }
+    },
+    "ranger": {
+      "name": {
+        "en": [
+          "Pokémon Ranger"
+        ],
+        "text": [
+          "Pokémon Ranger"
+        ]
+      }
     }
   },
   "signs": {

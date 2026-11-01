@@ -1,0 +1,14 @@
+{
+  "area": "hall_of_origin",
+  // AUS, the original's song of the Hall of Origin, which has none of ours yet (plan 05): Spear Pillar's stands in
+  "bgmTrack": "sinnoh/spear_pillar",
+  // Its battle is fought on bare rock, as the summit's below it
+  "battleArena": "Cave",
+  // Plan 29 · LS11a (scripts/hall_of_origin.txt): the hall above Spear Pillar that the Azure Flute's stair of light
+  // leads to. Arceus waits on its dais (hidden by FLAG_HIDE_HALL_OF_ORIGIN_ARCEUS, which the place's own arrival
+  // script keeps), and the step across the hall before it (trigger 0) is its meeting
+  "triggers": [ { "trigger": 0, "script": "Arceus" } ],
+  "people": {
+    "arceus": { "name": "Arceus", "script": "Arceus", "still": true }
+  }
+}

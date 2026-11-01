@@ -1,5 +1,179 @@
 {
+  "MarleyWalksUp": [
+    {
+      "en": [
+        "Marley"
+      ],
+      "text": [
+        "Marley"
+      ]
+    },
+    {
+      "en": [
+        "...Oh. It's you. The professor is waiting by the white rock."
+      ],
+      "text": [
+        "...A. Tu erai. Profesorul așteaptă lângă roca albă."
+      ]
+    },
+    {
+      "en": [
+        "They say a Pokémon lives past the sea here. It only comes to people who say thank you... I want to see it."
+      ],
+      "text": [
+        "Se spune că dincolo de mare trăiește un Pokémon. Vine doar la cei care spun mulțumesc... Vreau să-l văd."
+      ]
+    }
+  ],
+  "Marley": [
+    {
+      "en": [
+        "Marley"
+      ],
+      "text": [
+        "Marley"
+      ]
+    },
+    {
+      "en": [
+        "Go on. Write something on the rock. I'll be watching."
+      ],
+      "text": [
+        "Hai. Scrie ceva pe rocă. Mă uit."
+      ]
+    },
+    {
+      "en": [
+        "...It came. The Pokémon of gratitude really came."
+      ],
+      "text": [
+        "...A venit. Pokémonul recunoștinței chiar a venit."
+      ]
+    },
+    {
+      "en": [
+        "Thank you."
+      ],
+      "text": [
+        "Mulțumesc."
+      ]
+    }
+  ],
+  "Oak": [
+    {
+      "en": [
+        "Prof. Oak"
+      ],
+      "text": [
+        "Profesorul Oak"
+      ]
+    },
+    {
+      "en": [
+        "Ah, {player}, you came! So this is the rock. Its face is as smooth as glass, and quite blank."
+      ],
+      "text": [
+        "Ah, {player}, ai venit! Deci asta e roca. Fața ei e netedă ca sticla și cu totul goală."
+      ]
+    },
+    {
+      "en": [
+        "It seems one writes one's thanks on it. Go on: have a look at it."
+      ],
+      "text": [
+        "Se pare că pe ea îți scrii mulțumirile. Hai: uită-te la ea."
+      ]
+    },
+    {
+      "en": [
+        "A path across the sea, and a Pokémon that came to see who was thankful! What a day."
+      ],
+      "text": [
+        "O cărare peste mare și un Pokémon venit să vadă cine e recunoscător! Ce zi."
+      ]
+    },
+    {
+      "en": [
+        "Go on, {player}. Follow it. I shall stay and look at this rock a little longer."
+      ],
+      "text": [
+        "Du-te, {player}. Urmează-l. Eu mai rămân puțin să privesc roca asta."
+      ]
+    }
+  ],
   "WhiteRock": [
+    {
+      "en": [
+        "Prof. Oak"
+      ],
+      "text": [
+        "Profesorul Oak"
+      ]
+    },
+    {
+      "en": [
+        "One writes a word of thanks on it, they say. To a person, or to a Pokémon, whoever it may be."
+      ],
+      "text": [
+        "Pe ea îți scrii mulțumirea, se spune. Unui om sau unui Pokémon, oricine ar fi."
+      ]
+    },
+    {
+      "en": [
+        "Would you write something, {player}? Two words will do."
+      ],
+      "text": [
+        "Ai scrie ceva, {player}? Două cuvinte ajung."
+      ]
+    },
+    {
+      "en": [
+        "{player} wrote \"{phrase:TABLET}\" on the white rock."
+      ],
+      "text": [
+        "{player} a scris „{phrase:TABLET}” pe roca albă."
+      ]
+    },
+    {
+      "en": [
+        "Out of the flowers at the head of a new path, a little Pokémon is peeking at {player}!"
+      ],
+      "text": [
+        "Din florile de la capătul unei cărări noi, un Pokémon mititel se uită la {player}!"
+      ]
+    },
+    {
+      "en": [
+        "Prof. Oak"
+      ],
+      "text": [
+        "Profesorul Oak"
+      ]
+    },
+    {
+      "en": [
+        "Did you see that? A path across the sea, and a Pokémon come to see who was thankful!"
+      ],
+      "text": [
+        "Ai văzut? O cărare peste mare și un Pokémon venit să vadă cine e recunoscător!"
+      ]
+    },
+    {
+      "en": [
+        "No? Take your time. A word of thanks is worth getting right."
+      ],
+      "text": [
+        "Nu? Ia-ți timp. Merită să găsești cuvintele potrivite pentru o mulțumire."
+      ]
+    },
+    {
+      "en": [
+        "\"{phrase:TABLET}\" is written on the white rock's face."
+      ],
+      "text": [
+        "Pe fața rocii albe scrie „{phrase:TABLET}”."
+      ]
+    },
     {
       "en": [
         "A great white rock, worn smooth by the sea wind."

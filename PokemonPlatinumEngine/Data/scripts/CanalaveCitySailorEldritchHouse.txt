@@ -20,8 +20,9 @@
 # stands him inside the door, on the original's tile; his own tile in the room's file is a step further in, since the
 # original's is where whoever comes in is put down.
 #
-# Left out: what the original goes on to once the boy is well, for whoever has the Member Card of one of its events
-# (the Harbor Inn's dream, Newmoon Island and Darkrai): docs/mechanics/rulings.md, "After the Hall of Fame, part b".
+# Once the boy is well (plan 29 · LS11a, ours in place of the original's event), he has dreamt again, of a dark island
+# nobody sails to, and gives his father's Member Card for the Harbor Inn, where that dream is dreamt
+# (FLAG_RECEIVED_CANALAVE_CITY_SAILOR_ELDRITCH_HOUSE_MEMBER_CARD, which opens the inn's door; CanalaveHarborInn.txt).
 
 
 # CanalaveCitySailorEldritchHouse_OnTransition
@@ -110,6 +111,26 @@ label Awake
   speaker "Little Boy"
   say "I couldn't wake up... I was somewhere dark, and there was a dark Pokémon, and it kept on looking at me..."
   say "But I could hear you all the time, Dad. And you, Mum. I knew you were there."
+  end
+
+
+# The boy up and about. Once he is well he gives the Member Card (plan 29 · LS11a)
+script LittleBoy
+  face self player
+  if not flag FLAG_WOKE_UP_CANALAVE_CITY_SAILOR_ELDRITCH_HOUSE_LITTLE_BOY goto Own
+  if flag FLAG_RECEIVED_CANALAVE_CITY_SAILOR_ELDRITCH_HOUSE_MEMBER_CARD goto Inn
+  say "I had another dream last night. Not a scary one this time... I think."
+  say "There was an island nobody sails to, all dark, and something stood in the middle of it, waiting for you."
+  say "Dad says the inn on the quay keeps a room for anyone who's dreamt of that island. Here, it's his card!"
+  give "Member Card"
+  setflag FLAG_RECEIVED_CANALAVE_CITY_SAILOR_ELDRITCH_HOUSE_MEMBER_CARD
+  say "Show it at the Harbor Inn. They'll know what it means."
+  end
+label Inn
+  say "The Harbor Inn's just along the quay. Did you dream of the island too?"
+  end
+label Own
+  sayown
   end
 
 

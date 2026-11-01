@@ -1319,6 +1319,12 @@ way -
   * emote Little Boy Sleep
   + FLAG_TALKED_TO_CANALAVE_CITY_SAILOR_ELDRITCH_HOUSE_LITTLE_BOY
   = VAR_LUNAR_WING_EVENT_STATE 0 -> 2
+=== CanalaveCitySailorEldritchHouse.LittleBoy
+from Little Boy at 5,5 of CanalaveCitySailorEldritchHouse
+way -
+  Little Boy> I'm going to be a sailor, just like my dad!
+  Little Boy> He's the bravest man there is. Even the sea doesn't scare him!
+  Little Boy> A Gym Leader would be good too, though. Byron's amazing!
 === CanalaveCitySailorEldritchHouse.Mother
 from Mother at 8,4 of CanalaveCitySailorEldritchHouse
 way -
@@ -1391,6 +1397,11 @@ from the sign at 14,25 of CanalaveGym
 from the sign at 18,25 of CanalaveGym
 way -
   > CANALAVE CITY POKéMON GYM. Leader: Byron. Certified Trainers: Barry
+=== CanalaveHarborInn.Innkeeper
+from Innkeeper at 4,7 of CanalaveHarborInn
+way -
+  Innkeeper> Welcome to the Harbor Inn. I'm afraid every room is taken tonight.
+  Innkeeper> We do keep one room aside, but only for members. Without a card, I can't let it.
 === CanalaveLibrary1F.Lass
 from Lass at 2,5 of CanalaveLibrary1F
 way -
@@ -15439,6 +15450,30 @@ way -
 from Girl at 5,8 of FloccesyTown_AldersHouse
 way -
   Girl> My dream is to train my Pokémon here, and become the strongest Trainer in Unova!
+=== flower_paradise.Shaymin
+from Shaymin at 911,203 of Sinnoh
+way 0
+  > Shaymin pops up out of the flowers with its petals all a-quiver. It seems to want to play!
+  * scene flower_paradise.Shaymin in Flower Paradise
+  * music stop
+  * letterbox on
+  * camera Pan 911 203
+  * camera Zoom 1.4
+  * effect Sparkles 911 203
+  * camera Follow Shaymin
+  * walk Shaymin onspot left onspot right onspot down
+  * cry Shaymin
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Shaymin 30 Won
+  * music area
+  + FLAG_HIDE_FLOWER_PARADISE_SHAYMIN
+  = VAR_SHAYMIN_EVENT_STATE 0 -> 3
+  + seen flower_paradise.Shaymin in Flower Paradise
+way 1, from answer 1
+  * wildbattle Shaymin 30 Lost
+  + seen flower_paradise.Shaymin in Flower Paradise
 === fortree_city.Kecleon
 from Kecleon at 345,8 of Hoenn
 way -
@@ -16795,6 +16830,33 @@ way -
 from Artist at 10,24 of GuidanceChamber
 way -
   Artist> I have spent my whole life painting caves, hoping one day to paint Cobalion in one. It has never come.
+=== hall_of_origin.Arceus
+from Arceus at 31,27 of HallOfOrigin
+from the trigger at 30,35 of HallOfOrigin
+way 0
+  > Arceus looks down from the head of the hall, and the light round it hums like the first morning of the world.
+  * scene hall_of_origin.Arceus in the Hall of Origin
+  * music stop
+  * letterbox on
+  * camera Pan 31 27
+  * camera Zoom 1.4
+  * effect Burst 31 27
+  * slowmo 0.5
+  * effect Ripple 31 27
+  * camera Shake
+  * cry Arceus
+  * emote player Exclaim
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Arceus 80 Won
+  * music area
+  + FLAG_HIDE_HALL_OF_ORIGIN_ARCEUS
+  = VAR_HALL_OF_ORIGIN_STATE 0 -> 2
+  + seen hall_of_origin.Arceus in the Hall of Origin
+way 1, from answer 1
+  * wildbattle Arceus 80 Lost
+  + seen hall_of_origin.Arceus in the Hall of Origin
 === hearthome_city.Buneary
 from the trigger at 461,725 of Sinnoh
 way -
@@ -20661,6 +20723,34 @@ way 0
 way 1, from answer 1
   Sailor> All right, then. Tell me when you want to go. I'll not be wandering off.
   ? Not a place to linger, this. Shall we sail back to Canalave City? = No
+=== newmoon_island_forest.Darkrai
+from Darkrai at 16,13 of NewmoonIslandForest
+way 0
+  > A shadow stands over the dark pool. Something in it is looking straight at Lucas.
+  > The shadow is gone. Only the pool is left, still and dark.
+  * scene newmoon_island_forest.Darkrai on Newmoon Island
+  * music stop
+  * letterbox on
+  * camera Pan 16 13
+  * camera Zoom 1.4
+  * effect Rift 16 11 hold
+  * slowmo 0.5
+  * effect Ripple 16 13
+  * flicker Darkrai 4
+  * cry Darkrai
+  * camera Shake
+  * effect stop 16 11
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Darkrai 50 Won
+  * music area
+  + FLAG_HIDE_NEWMOON_ISLAND_FOREST_DARKRAI
+  + FLAG_NEWMOON_ISLAND_DARKRAI_GONE
+  + seen newmoon_island_forest.Darkrai on Newmoon Island
+way 1, from answer 1
+  * wildbattle Darkrai 50 Lost
+  + seen newmoon_island_forest.Darkrai on Newmoon Island
 === nimbasa_city.Emmet
 from Emmet at 423,461 of Unova
 way -
@@ -24589,6 +24679,22 @@ way -
   Rich Boy> Do remember: a Pokémon holding nothing has nothing to fling, and the move simply fails.
   * fanfare FanfareTM
   + FLAG_RECEIVED_ROUTE_222_TM56
+=== route_224.Marley
+from Marley at 907,493 of Sinnoh
+way -
+  Marley> Go on. Write something on the rock. I'll be watching.
+=== route_224.MarleyWalksUp
+from the trigger at 903,496 of Sinnoh
+way -
+  Marley> ...Oh. It's you. The professor is waiting by the white rock.
+  Marley> They say a Pokémon lives past the sea here. It only comes to people who say thank you... I want to see it.
+  * emote Marley Dots
+  = VAR_ROUTE_224_STATE 0 -> 2
+=== route_224.Oak
+from Prof. Oak at 909,492 of Sinnoh
+way -
+  Prof. Oak> Ah, Lucas, you came! So this is the rock. Its face is as smooth as glass, and quite blank.
+  Prof. Oak> It seems one writes one's thanks on it. Go on: have a look at it.
 === route_224.WhiteRock
 from the tile read at 908,491 of Sinnoh
 way -
@@ -24752,6 +24858,34 @@ from the trigger at 13,91 of Kanto
 way -
   Guard> Halt! Only trainers strong enough to face the Pokémon League may travel this road.
   Guard> You need the Volcano Badge to go any further.
+=== route_230.Ranger
+from Pokémon Ranger at 682,429 of Sinnoh
+way 0
+  Pokémon Ranger> Oh! Hello. I'm a Pokémon Ranger. I found this Egg drifting in the sea this morning, all on its own.
+  Pokémon Ranger> It's no Egg I've ever seen. The old books say the Prince of the Sea leaves its Eggs to the currents...
+  Pokémon Ranger> You've read of it too, haven't you? Would you raise it for me?
+  > The Egg is cool to the touch, and something inside it seems to sway with the waves.
+  > Lucas received the Egg from the Pokémon Ranger!
+  Pokémon Ranger> Thank you! Keep it with you, out by the sea if you can. I'd better get back to my patrol.
+  ? You've read of it too, haven't you? Would you raise it for me? = Yes
+  * scene route_230.The Egg from the sea
+  * letterbox on
+  * camera Follow Pokémon Ranger
+  * camera Zoom 1.4
+  * effect Sparkles 683 431
+  * effect Ripple 683 431
+  * camera Release
+  * letterbox off
+  * endscene
+  * fanfare FanfarePokemon
+  * fade out
+  * fade in
+  + FLAG_HIDE_ROUTE_230_RANGER
+  + FLAG_RECEIVED_ROUTE_230_MANAPHY_EGG
+  + seen route_230.The Egg from the sea
+way 1, from answer 1
+  Pokémon Ranger> No? I'll stay here a while. The sea seems to want it to hatch somewhere near.
+  ? You've read of it too, haven't you? Would you raise it for me? = No
 === route_24.Rocket
 from Man at 288,15 of Kanto
 way 0
@@ -27101,6 +27235,35 @@ way -
 from the tile read at 13,11 of SouthernIsland_Interior
 way -
   > A smooth stone stands here, worn by the years. Whatever once rested on it is gone.
+=== spear_pillar.AzureFlute
+from the trigger at 31,52 of SpearPillar
+way 0
+  > The Azure Flute is humming softly in Lucas's bag. Play it?
+  > A stair of light rises from the pillar's steps, up and up into the sky!
+  ? The Azure Flute is humming softly in Lucas's bag. Play it? = Yes
+  * scene spear_pillar.The stair of light
+  * music stop
+  * letterbox on
+  * sound use_grass_whistle
+  * camera Path 31 48 at 3
+  * effect Beam 31 50
+  * effect Sparkles 31 50
+  * effect Beam 31 48
+  * effect Sparkles 31 48
+  * effect Beam 31 46
+  * effect Sparkles 31 46
+  * effect Beam 31 44
+  * effect Sparkles 31 44
+  * effect Burst 31 44
+  * fade out
+  * camera Release
+  * letterbox off
+  * warp HallOfOrigin 31 52
+  * fade in
+  * endscene
+  + seen spear_pillar.The stair of light
+way 1, from answer 1
+  ? The Azure Flute is humming softly in Lucas's bag. Play it? = No
 === spear_pillar.Grunts
 from Grunt at 30,48 of SpearPillar
 from Grunt at 32,48 of SpearPillar
@@ -27196,6 +27359,35 @@ way 0
 way 1, from answer 1
   * battle commander_mars_spear_pillar and commander_jupiter_spear_pillar with rival_spear_pillar_turtwig Lost
   * scene over, unseen
+=== spear_pillar_dialga.AzureFlute
+from the trigger at 31,52 of SpearPillarDialga
+way 0
+  > The Azure Flute is humming softly in Lucas's bag. Play it?
+  > A stair of light rises from the pillar's steps, up and up into the sky!
+  ? The Azure Flute is humming softly in Lucas's bag. Play it? = Yes
+  * scene spear_pillar_dialga.The stair of light
+  * music stop
+  * letterbox on
+  * sound use_grass_whistle
+  * camera Path 31 48 at 3
+  * effect Beam 31 50
+  * effect Sparkles 31 50
+  * effect Beam 31 48
+  * effect Sparkles 31 48
+  * effect Beam 31 46
+  * effect Sparkles 31 46
+  * effect Beam 31 44
+  * effect Sparkles 31 44
+  * effect Burst 31 44
+  * fade out
+  * camera Release
+  * letterbox off
+  * warp HallOfOrigin 31 52
+  * fade in
+  * endscene
+  + seen spear_pillar_dialga.The stair of light
+way 1, from answer 1
+  ? The Azure Flute is humming softly in Lucas's bag. Play it? = No
 === spear_pillar_dialga.Rift
 from the tile read at 29,16 of SpearPillarDialga
 from the tile read at 29,17 of SpearPillarDialga
@@ -27260,6 +27452,35 @@ way -
 from the tile read at 33,17 of SpearPillarDistorted
 way -
   > A rift hangs in the air. Standing near it, the far wall seems close enough to touch, and your own hand a long way off.
+=== spear_pillar_palkia.AzureFlute
+from the trigger at 31,52 of SpearPillarPalkia
+way 0
+  > The Azure Flute is humming softly in Lucas's bag. Play it?
+  > A stair of light rises from the pillar's steps, up and up into the sky!
+  ? The Azure Flute is humming softly in Lucas's bag. Play it? = Yes
+  * scene spear_pillar_palkia.The stair of light
+  * music stop
+  * letterbox on
+  * sound use_grass_whistle
+  * camera Path 31 48 at 3
+  * effect Beam 31 50
+  * effect Sparkles 31 50
+  * effect Beam 31 48
+  * effect Sparkles 31 48
+  * effect Beam 31 46
+  * effect Sparkles 31 46
+  * effect Beam 31 44
+  * effect Sparkles 31 44
+  * effect Burst 31 44
+  * fade out
+  * camera Release
+  * letterbox off
+  * warp HallOfOrigin 31 52
+  * fade in
+  * endscene
+  + seen spear_pillar_palkia.The stair of light
+way 1, from answer 1
+  ? The Azure Flute is humming softly in Lucas's bag. Play it? = No
 === spear_pillar_palkia.Rift
 from the tile read at 33,16 of SpearPillarPalkia
 from the tile read at 33,17 of SpearPillarPalkia

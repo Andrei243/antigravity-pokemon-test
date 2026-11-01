@@ -1,0 +1,17 @@
+# LS11a: Darkrai in Newmoon Island's wood, at the beat's three moments and the battle's opening
+newgame
+flag FLAG_GAME_COMPLETED on
+pokemon Garchomp 70
+warp NewmoonIslandForest 16 14 up
+wait 1
+shot scn_ls11a_darkrai_0_wood
+talk
+wait 1.0
+shot scn_ls11a_darkrai_1_look
+wait 1.6
+shot scn_ls11a_darkrai_2_sign
+wait 2.0
+shot scn_ls11a_darkrai_3_voice
+read
+wait 4.5
+shot scn_ls11a_darkrai_4_battle

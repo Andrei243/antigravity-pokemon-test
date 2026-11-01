@@ -1,0 +1,58 @@
+# Route 230 (plan 29 · LS11a). docs/scripts.md describes the language; the lines are our own.
+#
+# A Pokémon Ranger of ours on the shore by the Fight Area, in place of the original's Manaphy Egg, which came from
+# another game: she found an Egg drifting in the sea and wants it raised by a trainer who has read of the Prince of the
+# Sea. She is there for a Champion who has read Mr. Backlot's book on Manaphy in the Pokémon Mansion
+# (FLAG_SKIP_POKEMON_MANSION_OFFICE_BOOK_SEEN_MANAPHY_CHECK, PokemonMansionOffice.txt) until the Egg is taken
+# (FLAG_RECEIVED_ROUTE_230_MANAPHY_EGG); her own flag, FLAG_HIDE_ROUTE_230_RANGER, is kept by the route's arrival.
+#
+# Not a battle, so the beat (style guide, "Legendary scenes") has no cry: the bars, the camera on her and the Egg in her
+# hands, the sea's sparkles and its waver on the water before her, a line, and the Egg handed over once the scene is
+# over. A Manaphy bred with a Ditto gives a Phione's Egg, as Platinum's does (Models/Breeding.cs).
+
+
+script OnEnter
+  setflag FLAG_HIDE_ROUTE_230_RANGER
+  if flag FLAG_RECEIVED_ROUTE_230_MANAPHY_EGG end
+  if not flag FLAG_GAME_COMPLETED end
+  if not flag FLAG_SKIP_POKEMON_MANSION_OFFICE_BOOK_SEEN_MANAPHY_CHECK end
+  clearflag FLAG_HIDE_ROUTE_230_RANGER
+  end
+
+
+script Ranger
+  face self player
+  speaker sea_ranger "Pokémon Ranger"
+  say "Oh! Hello. I'm a Pokémon Ranger. I found this Egg drifting in the sea this morning, all on its own."
+  say "It's no Egg I've ever seen. The old books say the Prince of the Sea leaves its Eggs to the currents..."
+  ask "You've read of it too, haven't you? Would you raise it for me?"
+  if no goto NotNow
+  if party >= 6 goto Full
+  scene "The Egg from the sea"
+  letterbox on 0.4
+  camera follow ranger 0.8
+  camera zoom 1.4 0.8
+  effect sparkles 683 431
+  effect ripple 683 431
+  speaker none
+  text "The Egg is cool to the touch, and something inside it seems to sway with the waves."
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  fanfare pokemon
+  giveegg "Manaphy"
+  setflag FLAG_RECEIVED_ROUTE_230_MANAPHY_EGG
+  text "{player} received the Egg from the Pokémon Ranger!"
+  speaker sea_ranger "Pokémon Ranger"
+  say "Thank you! Keep it with you, out by the sea if you can. I'd better get back to my patrol."
+  fade out
+  hide ranger
+  setflag FLAG_HIDE_ROUTE_230_RANGER
+  fade in
+  end
+label NotNow
+  say "No? I'll stay here a while. The sea seems to want it to hatch somewhere near."
+  end
+label Full
+  say "Oh, your team is full. Leave one in a PC Box and come back, and the Egg will be waiting."
+  end

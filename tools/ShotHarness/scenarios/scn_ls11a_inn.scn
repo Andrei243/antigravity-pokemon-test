@@ -1,0 +1,18 @@
+# LS11a: the Harbor Inn from its door, the innkeeper's question, and the dream's landing on Newmoon Island's pier
+newgame
+flag FLAG_GAME_COMPLETED on
+flag FLAG_RECEIVED_CANALAVE_CITY_SAILOR_ELDRITCH_HOUSE_MEMBER_CARD on
+give "Member Card"
+warp Sinnoh 58 714 up
+wait 1.2
+shot scn_ls11a_inn_0_door
+warp CanalaveHarborInn 4 8 up
+wait 1.2
+shot scn_ls11a_inn_1_room
+talk
+answer 0
+wait 1.5
+shot scn_ls11a_inn_2_night
+read
+wait 2.5
+shot scn_ls11a_inn_3_pier

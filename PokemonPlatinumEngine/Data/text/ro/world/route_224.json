@@ -1,5 +1,43 @@
 {
   "people": {
+    "prof_oak": {
+      "name": {
+        "en": [
+          "Prof. Oak"
+        ],
+        "text": [
+          "Profesorul Oak"
+        ]
+      }
+    },
+    "marley": {
+      "name": {
+        "en": [
+          "Marley"
+        ],
+        "text": [
+          "Marley"
+        ]
+      }
+    },
+    "shaymin": {
+      "name": {
+        "en": [
+          "Shaymin"
+        ],
+        "text": [
+          "Shaymin"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "It peeks out of the flowers, then ducks back in."
+        ],
+        "text": [
+          "Se uită dintre flori, apoi se ascunde la loc."
+        ]
+      }
+    },
     "ace_trainer_ruben": {
       "name": {
         "en": [

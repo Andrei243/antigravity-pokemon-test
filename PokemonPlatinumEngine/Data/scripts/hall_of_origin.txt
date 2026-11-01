@@ -1,0 +1,52 @@
+# The Hall of Origin (plan 29 · LS11a), the original's own map above Spear Pillar. docs/scripts.md describes the
+# language; the lines are our own, on the original's beats (scripts_hall_of_origin.s).
+#
+# Nothing leads here but the stair of light the Azure Flute calls from the top of Spear Pillar's steps
+# (the summits' AzureFlute, for whoever Celestic Town's elder gave the flute once Dialga, Palkia and Giratina were all caught:
+# VAR_HALL_OF_ORIGIN_STATE 1). Arceus waits at the head of the hall: the wide step across it (the original's trigger,
+# 30 to 32, 35) is its meeting. Whatever the battle's end but a loss the hall is quiet from then on (the state 2, and
+# Arceus off its dais); a caught Arceus is gone for good (FLAG_CAUGHT_ARCEUS, ours), one beaten or run from is back once
+# the Hall of Fame has next been entered (PokemonLeagueHallOfFame.txt puts the state back to 1). Platinum's own level,
+# 80. The way down at the hall's foot leads back into Mt. Coronet, as the original's does.
+#
+# Its meeting is plan 29's beat (style guide, "Legendary scenes"), the row of time and space without the rift (Arceus
+# is no tear): the bars, the camera up the hall to it, a burst of light and the air wavering under slow motion, the
+# hall shaken, its cry and a line, then the battle's own way in (plan 09 · L14's Legendary).
+
+
+# HallOfOrigin_OnTransition
+script OnEnter
+  setflag FLAG_HIDE_HALL_OF_ORIGIN_ARCEUS
+  if flag FLAG_CAUGHT_ARCEUS end
+  if var VAR_HALL_OF_ORIGIN_STATE != 1 end
+  clearflag FLAG_HIDE_HALL_OF_ORIGIN_ARCEUS
+  end
+
+
+# HallOfOrigin_Arceus: the step across the hall, or Arceus itself
+script Arceus
+  scene "Arceus in the Hall of Origin"
+  music stop
+  face player up
+  letterbox on 0.4
+  camera pan 31 27 1.2
+  camera zoom 1.4 0.8
+  effect burst 31 27
+  slowmo 0.5 1.5
+  effect ripple 31 27
+  camera shake 0.8
+  wait 0.6
+  cry "Arceus"
+  emote player exclaim
+  speaker none
+  text "Arceus looks down from the head of the hall, and the light round it hums like the first morning of the world."
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Arceus" 80
+  setvar VAR_HALL_OF_ORIGIN_STATE 2
+  if result == 3 setflag FLAG_CAUGHT_ARCEUS
+  hide arceus
+  setflag FLAG_HIDE_HALL_OF_ORIGIN_ARCEUS
+  music area
+  end

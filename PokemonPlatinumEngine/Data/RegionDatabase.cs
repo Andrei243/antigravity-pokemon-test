@@ -350,6 +350,8 @@ public static class RegionDatabase
                 // Plan 02 · S15, part c: the Battleground in the Survival Area, on the original's plan, and Spear Pillar
                 // with Dialga's rift and with Palkia's
                 "Battleground", "SpearPillarDialga", "SpearPillarPalkia",
+                // Plan 29 · LS11a: the Hall of Origin and the Harbor Inn
+                "HallOfOrigin", "CanalaveHarborInn",
                 // Plan 01 · M11, the last rooms: the floors over the Pokétch Company's, on the original's plans
                 "PoketchCompany2F", "PoketchCompany3F",
                 // Plan 14 · B8: the Battle Frontier's annex, its lobby and the Battle Dome's hall (maps of ours)

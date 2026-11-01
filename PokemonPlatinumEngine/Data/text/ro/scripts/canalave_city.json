@@ -424,6 +424,30 @@
     },
     {
       "en": [
+        "Where shall I take you?",
+        "Iron Island",
+        "Fullmoon Island",
+        "Newmoon Island",
+        "Nowhere today"
+      ],
+      "text": [
+        "Unde să te duc?",
+        "INSULA DE FIER",
+        "INSULA LUNII PLINE",
+        "Insula Lunii Noi",
+        "NICĂIERI AZI"
+      ]
+    },
+    {
+      "en": [
+        "Newmoon Island? There's a chill about that place... but if you're sure. Anchors aweigh!"
+      ],
+      "text": [
+        "Insula Lunii Noi? Locul ăla te trece un fior... dar dacă ești sigur. Ridicați ancora!"
+      ]
+    },
+    {
+      "en": [
         "No hurry. The boat's here whenever you want it."
       ],
       "text": [

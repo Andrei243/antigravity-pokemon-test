@@ -18,11 +18,11 @@
     { "warp": 7, "map": "Route218GateToCanalaveCity", "x": 1, "y": 7, "facing": "Right" },
     { "warp": 8, "map": "Route218GateToCanalaveCity", "x": 1, "y": 7, "facing": "Right" },
     // The east house, the Move Deleter's, on the original's plan (plan 01 · M11, part d)
-    { "warp": 9, "map": "CanalaveCityEastHouse", "x": 4, "y": 8, "facing": "Up" }
+    { "warp": 9, "map": "CanalaveCityEastHouse", "x": 4, "y": 8, "facing": "Up" },
+    // The Harbor Inn, on the original's plan (plan 29 · LS11a): shut until the sailor's boy gives the Member Card
+    // (CanalaveCitySailorEldritchHouse.txt), whose night there is the dream that leads to Newmoon Island
+    { "warp": 5, "map": "CanalaveHarborInn", "x": 4, "y": 8, "facing": "Up", "openedBy": "FLAG_RECEIVED_CANALAVE_CITY_SAILOR_ELDRITCH_HOUSE_MEMBER_CARD" }
   ],
-  // The Harbor Inn (warp 5) stays shut: nobody is let in before the night Darkrai calls them, which the original
-  // gives by an event of its own (plan 02 · S15b; docs/mechanics/rulings.md, "The rooms of the east and the sea")
-  "locked": [ 5 ],
   // The rival on the bridge over the canal (plan 02 · S9, scripts/canalave_city.txt)
   "triggers": [ { "trigger": 0, "script": "RivalOnTheBridge" } ],
   // Sailor Eldritch, who sails trainers to Iron Island, is written with the ferry

@@ -1,0 +1,66 @@
+# The clearing in Newmoon Island's wood (plan 29 · LS11a). docs/scripts.md describes the language; the lines are our
+# own, on the original's beats (scripts_newmoon_island_forest.s).
+#
+# Darkrai stands over the dark pool in the clearing's middle for whoever the Harbor Inn's dream brings here
+# (CanalaveHarborInn.txt). The wood's own arrival script keeps its flag, as the original's does
+# (FLAG_HIDE_NEWMOON_ISLAND_FOREST_DARKRAI): it stands there until it is caught or beaten (FLAG_NEWMOON_ISLAND_DARKRAI_GONE,
+# ours), and a Darkrai run from is back the next time the wood is come to. Coming here at all ends the dream's hold on
+# the island's pier: its sailor is there again once the player walks back out (FLAG_ENTERED_NEWMOON_ISLAND_FOREST, ours;
+# newmoon_island.txt). Platinum's own level, 50.
+#
+# Its meeting is plan 29's beat (style guide, "Legendary scenes"), the row of time, space and the other world: the bars,
+# the camera on it, a rift held open behind it over a ripple under slow motion, and the Pokémon there and not there,
+# as a dream is (flicker); its cry with the camera shaken, a line, and the battle's own way in (plan 09 · L14's
+# Mythical).
+
+
+# NewmoonIslandForest_OnTransition
+script OnEnter
+  setflag FLAG_ENTERED_NEWMOON_ISLAND_FOREST
+  setflag FLAG_HIDE_NEWMOON_ISLAND_FOREST_DARKRAI
+  if flag FLAG_NEWMOON_ISLAND_DARKRAI_GONE end
+  clearflag FLAG_HIDE_NEWMOON_ISLAND_FOREST_DARKRAI
+  end
+
+
+# NewmoonIslandForest_Darkrai
+script Darkrai
+  scene "Darkrai on Newmoon Island"
+  music stop
+  face player darkrai
+  letterbox on 0.4
+  camera pan 16 13 1.2
+  camera zoom 1.4 0.8
+  if facing up call DrawsBack
+  effect rift 16 11 hold
+  slowmo 0.5 1.5
+  effect ripple 16 13
+  flicker darkrai 4
+  cry "Darkrai"
+  camera shake 0.5
+  speaker none
+  text "A shadow stands over the dark pool. Something in it is looking straight at {player}."
+  effect stop 16 11
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Darkrai" 50
+  if result == 2 goto Fled
+  setflag FLAG_NEWMOON_ISLAND_DARKRAI_GONE
+  hide darkrai
+  setflag FLAG_HIDE_NEWMOON_ISLAND_FOREST_DARKRAI
+  music area
+  speaker none
+  text "The shadow is gone. Only the pool is left, still and dark."
+  end
+label Fled
+  music area
+  end
+
+
+# Spoken to from the south it would stand behind the player's own head: it drifts back a step first, with the rift
+# opening behind it
+script DrawsBack
+  walk darkrai up 1
+  face darkrai down
+  return

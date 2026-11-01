@@ -1,0 +1,33 @@
+# LS11a: the white rock on Route 224, the thanks written, the Seabreak Path laid and Shaymin peeking out of it
+newgame
+flag FLAG_GAME_COMPLETED on
+var VAR_SHAYMIN_EVENT_STATE 1
+var VAR_ROUTE_224_STATE 2
+flag FLAG_HIDE_ROUTE_224_PROF_OAK off
+flag FLAG_HIDE_ROUTE_224_MARLEY off
+warp Sinnoh 908 493 up
+wait 1
+step up 1
+wait 0.5
+talk
+read
+press Confirm
+press Confirm
+press Confirm
+press Confirm
+press Confirm
+press Confirm
+press Confirm
+wait 1.5
+press Confirm
+wait 2.2
+shot scn_ls11a_rock_2_path
+wait 1.0
+shot scn_ls11a_rock_3_shaymin
+wait 1.5
+press Confirm
+wait 1.2
+shot scn_ls11a_rock_4_followed
+read
+wait 1
+shot scn_ls11a_rock_5_after

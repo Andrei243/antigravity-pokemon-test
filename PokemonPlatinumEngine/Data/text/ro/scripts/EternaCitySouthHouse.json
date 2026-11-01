@@ -87,6 +87,38 @@
       "text": [
         "Un Pokédex nu e niciodată gata cu adevărat, {player}. Asta e plăcerea lui. Întâlnește în continuare Pokémoni și vino să-mi povestești."
       ]
+    },
+    {
+      "en": [
+        "Ah, {player}! There is something I've been meaning to ask of you."
+      ],
+      "text": [
+        "Ah, {player}! Voiam de mult să te rog ceva."
+      ]
+    },
+    {
+      "en": [
+        "At the very end of Route 224 stands a great white rock. They say it is where people once gave thanks."
+      ],
+      "text": [
+        "La capătul Rutei 224 se înalță o rocă mare și albă. Se spune că acolo oamenii își aduceau odinioară mulțumirile."
+      ]
+    },
+    {
+      "en": [
+        "I should like to see it for myself. Here: a letter with the way written down. Meet me there, won't you?"
+      ],
+      "text": [
+        "Aș vrea s-o văd cu ochii mei. Poftim: o scrisoare cu drumul scris în ea. Ne vedem acolo, da?"
+      ]
+    },
+    {
+      "en": [
+        "Route 224 lies beyond Victory Road. I'll set off at once. Don't keep an old man waiting too long!"
+      ],
+      "text": [
+        "Ruta 224 e dincolo de Drumul Victoriei. Pornesc chiar acum. Nu lăsa un bătrân să aștepte prea mult!"
+      ]
     }
   ]
 }

@@ -1,0 +1,27 @@
+{
+  "key": "hall_of_origin",
+  "index": 510,
+  "name": "Hall of Origin",
+  "matrix": 241,
+  "kind": "Outdoors",
+  "sign": "Cave",
+  "weather": "Clear13",
+  "camera": "HallOfOrigin",
+  "battleBackground": "Cave1",
+  "dayMusic": "AUS",
+  "nightMusic": "AUS",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 31, "z": 53, "to": "mt_coronet_6f", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "arceus", "looks": "arceus", "movement": "none", "x": 31, "z": 27, "facing": 1, "rangeX": 0, "rangeZ": 0, "y": 16, "hiddenBy": "FLAG_HIDE_HALL_OF_ORIGIN_ARCEUS", "script": "0" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 30, "z": 35, "width": 3, "depth": 1, "script": "2", "variable": "VAR_HALL_OF_ORIGIN_STATE", "value": "1" }
+  ]
+}

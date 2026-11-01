@@ -5,10 +5,17 @@
   "bgmTrack": "sinnoh/route210",
   "trees": "Round",
   "architecture": "Resort",
-  // Professor Oak, Marley and Shaymin at the white rock, and the Seabreak Path that opens north of it once thanks are
-  // written there (the original swaps the route's four chunks for others: MapMatrix_RevealSeabreakPath), wait for the
-  // story and for plan 01 · M10, part b
+  // Professor Oak, Marley and Shaymin at the white rock (plan 29 · LS11a, scripts/route_224.txt): Oak's Letter brings
+  // the two, and the thanks written on the rock open the Seabreak Path north of it (the original swaps the route's
+  // four chunks for others: MapMatrix_RevealSeabreakPath), up which Shaymin runs. Marley walks up as the player comes
+  // along the route (trigger 0, the original's coordinate event)
+  "triggers": [ { "trigger": 0, "script": "MarleyWalksUp" } ],
   "people": {
+    "prof_oak": { "name": "Prof. Oak", "script": "Oak", "still": true },
+    "marley": { "name": "Marley", "script": "Marley", "still": true },
+    // Stood at the path's foot by the rock rather than the original's tile up it (911, 480), which is the sea until the
+    // path is laid: it runs north from there in the scene
+    "shaymin": { "name": "Shaymin", "dialog": [ "It peeks out of the flowers, then ducks back in." ], "still": true, "at": [ 911, 490 ] },
     "ace_trainer_ruben": {
       "name": "Ruben",
       "trainer": {

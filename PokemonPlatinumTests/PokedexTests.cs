@@ -164,8 +164,9 @@ public class PokedexTests
         Assert.NotEmpty(habitats.Of("Wooper").Single(h => h.Name == "Great Marsh").Cells);
 
         // Species met only in other ways (gifts, legends in one spot) have no habitat here
-        Assert.Empty(habitats.Of("Arceus"));
         Assert.Empty(habitats.Of("Turtwig"));
+        // but where special.json names them: Arceus in the Hall of Origin (plan 29 · LS11a)
+        Assert.Equal("Hall of Origin", Assert.Single(habitats.Of("Arceus")).Name);
 
         // Times of day as wild Pokémon know them
         Assert.Equal(HabitatWays.Day, Habitats.GrassAt(TimeOfDay.Twilight));

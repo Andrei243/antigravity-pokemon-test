@@ -1,16 +1,115 @@
-# Route 224 (plan 01 · M10, part a). docs/scripts.md describes the language; the lines are our own, on the original's
-# beats (scripts_route_224.s).
+# Route 224 (plan 01 · M10, part a; its white rock plan 29 · LS11a). docs/scripts.md describes the language; the lines
+# are our own, on the original's beats (scripts_route_224.s).
 #
-# The white rock at the route's end, read where it stands (the original's script 3). In Platinum Professor Oak has the
-# player write someone's name on it in thanks, which brings Shaymin and opens the Seabreak Path
-# (FLAG_WROTE_ON_ROUTE_224_TABLET). All of that hangs on an event gift: the professor comes only to whoever carries
-# Oak's Letter with the Shaymin event on the save (Route224_OnTransition), and Marley, who walks up to the rock and
-# speaks of the Pokémon of gratitude, comes only once the gift has set VAR_SHAYMIN_EVENT_STATE (her coordinate event
-# waits for VAR_ROUTE_224_STATE 1, which nothing else sets). Neither is placed until the event gifts are
-# (docs/mechanics/rulings.md, "After the Hall of Fame, part a"); their flags are set from the start, as the
-# original's are (common.ChapterTwelve), and the path itself is plan 01 · M10, part b's.
+# The white rock at the route's end, read where it stands (the original's script 3). Professor Oak waits beside it for
+# whoever he gave the Oak's Letter (EternaCitySouthHouse.txt sets VAR_SHAYMIN_EVENT_STATE 1 and clears his flag and
+# Marley's, which common.ChapterTwelve sets from the start), and Marley walks up as the player comes along the route
+# (her coordinate event, VAR_ROUTE_224_STATE 1, the original's). At the rock the player writes two words of thanks
+# (plan 08 · P9's phrase picker, kept as TABLET): FLAG_WROTE_ON_ROUTE_224_TABLET, and the Seabreak Path is opened across
+# the sea behind a fade (VAR_HIDDEN_LOCATION_SEABREAK_PATH 4136: world.json's swap). Shaymin peeks out of the flowers
+# where the path begins and runs north up it, to wait in Flower Paradise (VAR_SHAYMIN_EVENT_STATE 2,
+# flower_paradise.txt). No battle here, as in Platinum. Its showing is plan 29's beat by the row of grass and woods:
+# sparkles and the camera following it off.
+#
+# Once the thanks are written the professor and Marley have gone the next time the route is come to. Shaymin of the
+# route stands only in its scene (FLAG_HIDE_ROUTE_224_SHAYMIN, set by the route's arrival).
+
+script OnEnter
+  setflag FLAG_HIDE_ROUTE_224_SHAYMIN
+  if not flag FLAG_WROTE_ON_ROUTE_224_TABLET end
+  setflag FLAG_HIDE_ROUTE_224_PROF_OAK
+  setflag FLAG_HIDE_ROUTE_224_MARLEY
+  end
+
+
+# Route224_Marley, the coordinate event: she walks up as the player comes along the route
+script MarleyWalksUp
+  setvar VAR_ROUTE_224_STATE 2
+  emote marley dots
+  face marley player
+  speaker "Marley"
+  say "...Oh. It's you. The professor is waiting by the white rock."
+  say "They say a Pokémon lives past the sea here. It only comes to people who say thank you... I want to see it."
+  face marley up
+  end
+
+
+script Marley
+  face self player
+  speaker "Marley"
+  if flag FLAG_WROTE_ON_ROUTE_224_TABLET goto After
+  say "Go on. Write something on the rock. I'll be watching."
+  face self up
+  end
+label After
+  say "...It came. The Pokémon of gratitude really came."
+  say "Thank you."
+  end
+
+
+script Oak
+  face self player
+  speaker "Prof. Oak"
+  if flag FLAG_WROTE_ON_ROUTE_224_TABLET goto After
+  say "Ah, {player}, you came! So this is the rock. Its face is as smooth as glass, and quite blank."
+  say "It seems one writes one's thanks on it. Go on: have a look at it."
+  face self left
+  end
+label After
+  say "A path across the sea, and a Pokémon that came to see who was thankful! What a day."
+  say "Go on, {player}. Follow it. I shall stay and look at this rock a little longer."
+  end
+
 
 script WhiteRock
+  if var VAR_SHAYMIN_EVENT_STATE == 0 goto Plain
+  if flag FLAG_WROTE_ON_ROUTE_224_TABLET goto Written
+  speaker "Prof. Oak"
+  say "One writes a word of thanks on it, they say. To a person, or to a Pokémon, whoever it may be."
+  say "Would you write something, {player}? Two words will do."
+  phrase TABLET
+  if result == 0 goto NotYet
+  speaker none
+  text "{player} wrote \"{phrase:TABLET}\" on the white rock."
+  setflag FLAG_WROTE_ON_ROUTE_224_TABLET
+  scene "Shaymin at the white rock"
+  music stop
+  face player up
+  letterbox on 0.4
+  fade out 0.6
+  # MapMatrix_RevealSeabreakPath: the route's four chunks swapped for those that lead onto the path, behind the dark
+  setvar VAR_HIDDEN_LOCATION_SEABREAK_PATH 4136
+  fade in
+  camera pan 911 490 1.2
+  camera zoom 1.4 0.8
+  clearflag FLAG_HIDE_ROUTE_224_SHAYMIN
+  show shaymin
+  effect sparkles 911 490
+  cry "Shaymin"
+  emote player exclaim
+  text "Out of the flowers at the head of a new path, a little Pokémon is peeking at {player}!"
+  camera follow shaymin 0.6
+  walk shaymin up 10
+  hide shaymin
+  setflag FLAG_HIDE_ROUTE_224_SHAYMIN
+  clearflag FLAG_HIDE_FLOWER_PARADISE_SHAYMIN
+  setvar VAR_SHAYMIN_EVENT_STATE 2
+  camera release 0.4
+  letterbox off 0.3
+  music area
+  endscene
+  speaker "Prof. Oak"
+  say "Did you see that? A path across the sea, and a Pokémon come to see who was thankful!"
+  end
+label NotYet
+  say "No? Take your time. A word of thanks is worth getting right."
+  end
+label Written
+  speaker none
+  text "\"{phrase:TABLET}\" is written on the white rock's face."
+  end
+label Plain
+  speaker none
   text "A great white rock, worn smooth by the sea wind."
   text "Its face is unmarked."
   end

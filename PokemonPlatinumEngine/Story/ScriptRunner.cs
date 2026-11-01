@@ -1131,6 +1131,9 @@ public sealed partial class ScriptRunner
                     Result = 0;
                     break;
                 }
+                // A gift's Egg is a gift: a randomised run gives the species it goes to, as givepokemon does (plan 13 · V6;
+                // the Manaphy Egg of plan 29 · LS11a). A bred Egg is the parents', and stays theirs
+                if (Randomizer.For(host.Rules) is { MapsSpecies: true } random) species = PokemonDatabase.Get(random.Given(species.Name)) ?? species;
                 var egg = Breeding.GiftEgg(species, host.TrainerNumber, host.Chance, Ruleset.Current);
                 egg.Met(PlayerIdentity.Fill(speaker ?? Subject?.Name ?? "a stranger"), Core.GameClock.Today);
                 egg.MetLevel = 0;

@@ -38,10 +38,10 @@ public class SinnohSpeciesTests
         "Bulbasaur", "Ivysaur", "Venusaur", "Charmander", "Charmeleon", "Charizard", "Squirtle", "Wartortle", "Blastoise",
         "Chikorita", "Bayleef", "Meganium", "Cyndaquil", "Quilava", "Typhlosion", "Totodile", "Croconaw", "Feraligatr",
         "Treecko", "Grovyle", "Sceptile", "Torchic", "Combusken", "Blaziken", "Mudkip", "Marshtomp", "Swampert",
-        // The legendary and mythical Pokémon of the older regions and Sinnoh's of an event (plan 03 · D12c's quests)
+        // The legendary and mythical Pokémon of the older regions (plan 03 · D12c's quests); Sinnoh's of an event have
+        // ways of their own since plan 29 · LS11a (Darkrai, Shaymin, Arceus, the Manaphy Egg, and Phione bred from it)
         "Mewtwo", "Mew", "Raikou", "Entei", "Suicune", "Lugia", "Ho-Oh", "Celebi", "Regirock", "Regice", "Registeel",
-        "Latias", "Latios", "Kyogre", "Groudon", "Rayquaza", "Jirachi", "Deoxys", "Phione", "Manaphy", "Darkrai", "Shaymin",
-        "Arceus"
+        "Latias", "Latios", "Kyogre", "Groudon", "Rayquaza", "Jirachi", "Deoxys"
     };
 
     [Fact]
@@ -160,7 +160,6 @@ public class SinnohSpeciesTests
         ["Rotom-Frost"] = "Rotom's room and its appliances, plan 03 · D12c",
         ["Rotom-Fan"] = "Rotom's room and its appliances, plan 03 · D12c",
         ["Rotom-Mow"] = "Rotom's room and its appliances, plan 03 · D12c",
-        ["Shaymin-Sky"] = "the Gracidea, with Shaymin's quest, plan 03 · D12c",
     };
 
     [Fact]
@@ -183,6 +182,8 @@ public class SinnohSpeciesTests
         }
         // Giratina's Origin Forme holds the Griseous Orb; Arceus's types are its plates
         if (Sinnoh.Items.ContainsKey("Griseous Orb")) had.Add("Giratina-Origin");
+        // Shaymin takes to the sky with the Gracidea, which Floaroma Town's flower shop gives (plan 29 · LS11a)
+        if (Sinnoh.Has("Shaymin") && Sinnoh.Items.ContainsKey("Gracidea")) had.Add("Shaymin-Sky");
         foreach (var form in PokemonDatabase.Get("Arceus")!.Forms ?? new())
             if (Sinnoh.Items.ContainsKey(form.Name["Arceus-".Length..] switch
                 {

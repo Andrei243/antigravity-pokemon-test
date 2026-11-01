@@ -4,13 +4,16 @@
 # Arriving sets what the original's does: the island counts as come to, and it shows on the maps from then on (the
 # original's EnableHiddenLocation: VAR_HIDDEN_LOCATION_NEW_MOON_ISLAND holds its number for the island, 0x0229).
 #
-# The sailor on the pier sails back to Canalave City. The way here belongs to one of the original's event gifts (the
-# Member Card, the Harbor Inn's dream and Darkrai in the island's wood), and so does the sailor's absence while the
-# dream lasts (FLAG_HIDE_NEWMOON_ISLAND_SAILOR): the session that brings them writes both.
+# The sailor on the pier sails back to Canalave City. The way here is the Harbor Inn's dream (plan 29 · LS11a:
+# CanalaveHarborInn.txt), which sets the player down on the pier with the sailor away
+# (FLAG_HIDE_NEWMOON_ISLAND_SAILOR); he is back once the island's wood has been come to
+# (FLAG_ENTERED_NEWMOON_ISLAND_FOREST, ours, set by newmoon_island_forest.txt), so that whoever walks back out of it,
+# Darkrai met or not, can sail home. Afterwards Canalave City's sailor sails here too (canalave_city.txt's Ferry).
 
 script OnEnter
   setflag FLAG_FIRST_ARRIVAL_NEWMOON_ISLAND
   setvar VAR_HIDDEN_LOCATION_NEW_MOON_ISLAND 553
+  if flag FLAG_ENTERED_NEWMOON_ISLAND_FOREST clearflag FLAG_HIDE_NEWMOON_ISLAND_SAILOR
   end
 
 

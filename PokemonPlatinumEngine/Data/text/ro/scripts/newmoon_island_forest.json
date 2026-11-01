@@ -1,0 +1,20 @@
+{
+  "Darkrai": [
+    {
+      "en": [
+        "A shadow stands over the dark pool. Something in it is looking straight at {player}."
+      ],
+      "text": [
+        "O umbră stă deasupra iazului întunecat. Ceva din ea se uită drept la {player}."
+      ]
+    },
+    {
+      "en": [
+        "The shadow is gone. Only the pool is left, still and dark."
+      ],
+      "text": [
+        "Umbra a dispărut. A rămas doar iazul, nemișcat și întunecat."
+      ]
+    }
+  ]
+}
