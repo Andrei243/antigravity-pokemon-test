@@ -415,6 +415,31 @@
         "on": "Nimic nu se scutură și nu se apropie brusc, meniurile apar pe loc, nimic nu se leagănă, iar fundalul nu e niciodată estompat."
       }
     },
+    "textSize": {
+      "label": "Mărimea textului",
+      "value": { "Normal": "Normală", "Large": "Mare" },
+      "help": {
+        "Normal": "Replicile din caseta de text și din luptă sunt scrise la mărimea obișnuită.",
+        "Large": "Replicile din caseta de text și din luptă sunt scrise mai mari, pe până la patru rânduri pe hartă și trei în luptă."
+      }
+    },
+    "colourVision": {
+      "label": "Vederea culorilor",
+      "value": { "Normal": "Normală", "Protan": "Protan", "Deutan": "Deutan", "Tritan": "Tritan" },
+      "help": {
+        "Normal": "Culorile interfeței sunt desenate așa cum sunt.",
+        "Protan": "Culori mutate pentru ochi care văd puțin roșu. Tipurile își poartă semnele, iar HP-ul scăzut e hașurat.",
+        "Deutan": "Culori mutate pentru ochi care văd puțin verde. Tipurile își poartă semnele, iar HP-ul scăzut e hașurat.",
+        "Tritan": "Culori mutate pentru ochi care văd puțin albastru. Tipurile își poartă semnele, iar HP-ul scăzut e hașurat."
+      }
+    },
+    "highContrast": {
+      "label": "Contrast ridicat",
+      "help": {
+        "off": "Caseta de text e desenată în chenarul ales.",
+        "on": "Caseta de text și mesajele din luptă sunt albe pe negru plin, iar tipurile își poartă semnele."
+      }
+    },
     "controls": {
       "label": "Comenzi",
       "value": "Deschide",

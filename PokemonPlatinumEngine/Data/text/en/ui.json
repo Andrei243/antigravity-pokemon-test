@@ -420,6 +420,31 @@
         "on": "Nothing shakes or punches in, menus appear at once, nothing sways, and the background is never blurred."
       }
     },
+    "textSize": {
+      "label": "Text size",
+      "value": { "Normal": "Normal", "Large": "Large" },
+      "help": {
+        "Normal": "Lines in the text box and in battle are written at their usual size.",
+        "Large": "Lines in the text box and in battle are written larger, on up to four rows in the field and three in battle."
+      }
+    },
+    "colourVision": {
+      "label": "Colour vision",
+      "value": { "Normal": "Normal", "Protan": "Protan", "Deutan": "Deutan", "Tritan": "Tritan" },
+      "help": {
+        "Normal": "The interface's colours are drawn as they are.",
+        "Protan": "Colours shifted for eyes that see little red. Types carry their signs and low HP is hatched.",
+        "Deutan": "Colours shifted for eyes that see little green. Types carry their signs and low HP is hatched.",
+        "Tritan": "Colours shifted for eyes that see little blue. Types carry their signs and low HP is hatched."
+      }
+    },
+    "highContrast": {
+      "label": "High contrast",
+      "help": {
+        "off": "The text box is drawn in the frame you chose.",
+        "on": "The text box and the battle's messages are white on solid black, and types carry their signs."
+      }
+    },
     "resetDefaults": {
       "label": "Reset to defaults",
       "value": "Reset",

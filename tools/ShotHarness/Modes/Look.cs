@@ -271,6 +271,9 @@ partial class Harness
         // Captions and holding to confirm (plan 12 · Q9, part b), last of all: Modes/LookCaptions.cs
         LookCaptionsAndHold();
 
+        // Seeing (plan 12 · Q8), last of all: Modes/LookSeeing.cs
+        LookSeeing();
+
         if (args.Length > 2)
             Boards(args[2], new[] { "look_1_twinleaf", "look_2_dialogue", "look_3_battle", "look_3b_moves", "look_4_party", "look_5_route201", "look_6_house", "look_7_lake" });
     }

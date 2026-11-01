@@ -545,6 +545,7 @@ public partial class GameEngine
         // Light and motion (plan 12 · Q9), with the battle camera's one number, BattleCamera.Motion
         Accessibility.Use(Settings.ReduceFlashes, Settings.ReduceMotion);
         UseCaptionsAndHold(); // and sound and holding (plan 12 · Q9, GameEngine.Captions.cs)
+        Seeing.Use(Settings.ColourVision, Settings.TextSize, Settings.HighContrast); // and seeing (plan 12 · Q8)
         if (window && !WindowLocked) WindowSettings.Apply(Settings);
     }
 

@@ -7289,3 +7289,25 @@ original's; who hands the key item over, and when, is ours. Each meeting is plan
   Darkrai, Shaymin and Arceus are static meetings, the places' one chance under the clause as every legendary's is.
 - **Off Pal Park's list**: the five leave `SinnohSpeciesTests.OnlyInPalPark`, which shrinks the Catching Show's pool by
   five; Shaymin's Sky Forme leaves `FormsAwaiting`. The Pokédex's area page has a row of `special.json` for each.
+
+## Seeing (2026-11-01, plan 12 · Q8)
+
+Three rows of the options, before CONTROLS and on the first start's page after the language, each as Platinum draws
+unless chosen; no option changes a rule.
+
+- **COLOUR VISION** (Normal, Protan, Deutan, Tritan; `Core/Seeing.cs`): every colour `UiShapes` and `UiFonts` draw goes
+  through one remap (`Seeing.Seen`, which `ModernUi.Seen` names): Machado's full-strength matrix (2009) gives what the
+  eye loses, Fidaner's daltonising shift moves the loss onto the channels it keeps, and the result is scaled until that
+  eye sees it as light as an ordinary eye sees the original, so contrast holds (`StyleGuideTests` measures it as the
+  eye sees it). Under Normal a colour is itself to the bit, so no shot moved. The 3D scenes, the sprites and the
+  textures are not remapped: the remap is the interface's.
+- **Signs and hatching** under any remap or high contrast: the eighteen types' signs of our own (`UI/Kit/TypeSigns.cs`,
+  data a test holds inside their square) on every `TypePill` and on the battle's move cards; an HP bar at half or under
+  hatched, crossed in the red. **Decision** (the plan said "the numbers are always shown"): the foe's HP numbers stay
+  hidden as Platinum keeps them, since the hatching already tells the zone without colour and the number would tell
+  what the games never do. The type chart's coloured cells on HELP, the Battle Hall's board and the PC's move dots keep
+  their colour alone (their rows and headers carry pills).
+- **TEXT SIZE** Large: the field's text box writes at 46 on rows 62 apart in a box 300 high (four rows), the battle's
+  message box at 46 in up to three rows; tested so that every line that fits Normal's box fits Large's.
+- **HIGH CONTRAST**: both boxes opaque near-black with a white border and white writing, the red, blue and money runs
+  lightened.
