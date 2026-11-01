@@ -33,6 +33,12 @@ internal static partial class ModernUi
     public static readonly Color Selection = new(240, 104, 70, 255);
     public static readonly Color Rule = new(206, 214, 230, 255);
 
+    /// <summary>
+    /// A colour as the options' colour-vision remap draws it (plan 12 · Q8, <see cref="Seeing.Seen"/>): <c>UiShapes</c> and
+    /// <c>UiFonts</c> apply it to everything they draw, so no screen calls it for its own shapes or text.
+    /// </summary>
+    public static Color Seen(Color c) => Seeing.Seen(c);
+
     internal static Color Lighter(Color c, float t) => PixelCanvas.Mix(c, Color.White, t);
     internal static Color Darker(Color c, float t) => PixelCanvas.Mix(c, new Color(20, 16, 40, 255), t);
 
@@ -92,7 +98,23 @@ internal static partial class ModernUi
         float ts = h * 0.72f;
         string hp = Text.Of("party.hp");
         UiFonts.DrawCentered(hp, x + (tagW - UiFonts.Measure(hp, ts, UiWeight.Black)) / 2f, y + h / 2f, ts, new Color(110, 60, 16, 255), UiWeight.Black);
-        Bar(new Rectangle(x + tagW + 6, y, w - tagW - 6, h), ratio, HpColor(ratio), ghost);
+        var track = new Rectangle(x + tagW + 6, y, w - tagW - 6, h);
+        Bar(track, ratio, HpColor(ratio), ghost);
+        // Under a colour remap or high contrast the zone is told by hatching too (plan 12 · Q8): one way in the yellow, crossed in the red
+        if (Seeing.Signs && ratio > 0f && ratio <= 0.5f) Hatch(track, ratio, crossed: ratio <= Battle.BattleAnimator.LowHpRatio);
+    }
+
+    /// <summary>The stripes over an HP bar's fill (style guide, "Seeing"): 3 wide, 11 apart, slanted 0.6, off the fill's round ends.</summary>
+    private static void Hatch(Rectangle track, float ratio, bool crossed)
+    {
+        float h = track.Height - 6, fw = Math.Max((track.Width - 6) * ratio, h);
+        float left = track.X + 3 + h / 2f, right = track.X + 3 + fw - h / 2f;
+        const float skew = 0.6f, pitch = 11f, stripe = 3f;
+        float lean = skew * h / 2f;
+        var ink = new Color(0, 0, 0, 77);
+        foreach (float way in crossed ? new[] { skew, -skew } : new[] { skew })
+            for (float sx = left + lean; sx + stripe + lean <= right; sx += pitch)
+                UiShapes.Fill(new Rectangle(sx, track.Y + 3, stripe, h), 0f, ink, way);
     }
 
     /// <summary>A pill-shaped track with a fill that keeps round ends however short it is (and, plan 25 · YD2, a white ghost behind it to <paramref name="ghost"/>).</summary>
@@ -160,10 +182,20 @@ internal static partial class ModernUi
         string name = Words.Type(type).ToUpperInvariant();
         float size = height * 0.6f;
         float textW = UiFonts.Measure(name, size, UiWeight.Black);
-        float w = width ?? textW + height * 1.05f;
+        // Under a colour remap or high contrast the type's sign goes before its name (plan 12 · Q8)
+        bool signed = Seeing.Signs;
+        float signW = signed ? height * 0.8f : 0f;
+        float w = width ?? textW + height * 1.05f + signW;
+        if (signed && width.HasValue && textW > w - signW - height * 0.6f)
+        {
+            // A pill of fixed width shrinks its name to fit beside the sign
+            size *= (w - signW - height * 0.6f) / textW;
+            textW = UiFonts.Measure(name, size, UiWeight.Black);
+        }
         var pill = new Rectangle(x, y, w, height);
         UiShapes.Shape(pill, height / 2f, Lighter(color, 0.12f), Darker(color, 0.1f));
-        UiFonts.DrawCentered(name, x + (w - textW) / 2f, y + height / 2f, size, Color.White, UiWeight.Black);
+        if (signed) TypeSigns.Draw(type, new Vector2(x + height * 0.6f, y + height / 2f), height * 0.3f, Color.White, color);
+        UiFonts.DrawCentered(name, x + signW + (w - signW - textW) / 2f, y + height / 2f, size, Color.White, UiWeight.Black);
         return w;
     }
 

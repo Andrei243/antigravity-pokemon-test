@@ -27,6 +27,25 @@ public static class DialogueBox
     /// <summary>How many rows of words the panel holds: the last one that still ends inside it.</summary>
     public const int Rows = (int)((Height - TextTop - TextSize) / RowHeight) + 1;
 
+    // Under the options' large text (plan 12 · Q8; style guide, "Typography"): bigger words on rows further apart, in a
+    // box tall enough for a fourth row, so a line written to fill Normal's three rows still ends inside it
+
+    /// <summary>The words' size, the distance between rows and the panel's height under large text.</summary>
+    public const float LargeTextSize = 46, LargeRowHeight = 62, LargeHeight = 300;
+
+    /// <summary>How many rows of words the panel holds under large text.</summary>
+    public const int LargeRows = (int)((LargeHeight - TextTop - LargeTextSize) / LargeRowHeight) + 1;
+
+    /// <summary>The words' size, the row height, the panel's height and its rows as the options have them now.</summary>
+    public static float SizeNow => Core.Seeing.LargeText ? LargeTextSize : TextSize;
+    public static float RowHeightNow => Core.Seeing.LargeText ? LargeRowHeight : RowHeight;
+    public static float HeightNow => Core.Seeing.LargeText ? LargeHeight : Height;
+    public static int RowsNow => Core.Seeing.LargeText ? LargeRows : Rows;
+
+    /// <summary>A line as the box breaks it into rows at a given size, measured with no window.</summary>
+    public static List<string> RowsOf(string line, int screenWidth, bool large) =>
+        TextMetrics.Wrap(line, TextWidth(screenWidth), large ? LargeTextSize : TextSize, TextWeight);
+
     /// <summary>The width a line is wrapped to on a screen of a given width.</summary>
     public static float TextWidth(int screenWidth) => screenWidth - Side * 2 - TextMargins;
 

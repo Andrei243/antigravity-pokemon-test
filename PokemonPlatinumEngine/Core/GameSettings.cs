@@ -373,6 +373,18 @@ public sealed class GameSettings
     /// </summary>
     public bool AreaChecklist { get; set; }
 
+    /// <summary>
+    /// The colours remapped for a player who tells fewer apart (plan 12 · Q8, <see cref="Seeing"/>), with every type pill
+    /// signed and the HP bar hatched under half: Normal unless chosen.
+    /// </summary>
+    public ColourVision ColourVision { get; set; }
+
+    /// <summary>The lines of the text box and the battle's message box written large (plan 12 · Q8): Normal unless chosen.</summary>
+    public TextSize TextSize { get; set; }
+
+    /// <summary>The text box and the battle's message box drawn opaque, white on black (plan 12 · Q8): off unless chosen.</summary>
+    public bool HighContrast { get; set; }
+
     /// <summary>The preset the first run's measuring chose on this machine (plan 16 · T23), or null where nothing was measured.</summary>
     public GraphicsQuality? MeasuredQuality { get; set; }
 

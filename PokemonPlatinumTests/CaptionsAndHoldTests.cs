@@ -52,7 +52,8 @@ public class CaptionsAndHoldTests : IDisposable
         Assert.Equal(captions + 4, Array.IndexOf(rows, OptionRow.AreaChecklist));
         // (and Q21's REQUESTS after that)
         Assert.Equal(captions + 5, Array.IndexOf(rows, OptionRow.Requests));
-        Assert.Equal(captions + 6, Array.IndexOf(rows, OptionRow.Controls));
+        // (and Q8's three rows of seeing after that)
+        Assert.Equal(captions + 9, Array.IndexOf(rows, OptionRow.Controls));
 
         foreach (var row in new[] { OptionRow.Captions, OptionRow.HoldToConfirm })
         {

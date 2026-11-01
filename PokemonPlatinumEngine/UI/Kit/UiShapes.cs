@@ -121,7 +121,12 @@ void main()
         loaded = true;
     }
 
-    private static Vector4 V(Color c) => new(c.R / 255f, c.G / 255f, c.B / 255f, c.A / 255f);
+    // Every colour of a shape goes out through the colour-vision remap (plan 12 · Q8), which under Normal is the colour itself
+    private static Vector4 V(Color c)
+    {
+        c = Core.Seeing.Seen(c);
+        return new(c.R / 255f, c.G / 255f, c.B / 255f, c.A / 255f);
+    }
 
     /// <summary>A quad around <paramref name="center"/> whose texture coordinates are the offset from it.</summary>
     private static void Quad(Vector2 center, float hx, float hy)

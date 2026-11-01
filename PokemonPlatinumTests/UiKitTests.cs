@@ -365,4 +365,28 @@ public class UiKitTests
             Assert.True(opaque > 80, $"{item.Name}: only {opaque} pixels drawn");
         }
     }
+
+    // ------------------------------------------------------------------ type signs (plan 12 · Q8)
+
+    [Fact]
+    public void EachTypesSignIsDrawnInItsSquareAndNoTwoAreAlike()
+    {
+        var types = System.Enum.GetValues<PokemonType>();
+        Assert.Equal(18, types.Length);
+        var seen = new System.Collections.Generic.HashSet<string>();
+        foreach (var type in types)
+        {
+            var parts = TypeSigns.Parts(type);
+            Assert.True(parts.Count > 0, $"{type} has no sign");
+            // Something of it is drawn in ink, not only cut out
+            Assert.Contains(parts, p => !p.Cut);
+            foreach (var part in parts)
+            {
+                var (min, max) = part.Extent;
+                Assert.True(min.X >= -1f && min.Y >= -1f && max.X <= 1f && max.Y <= 1f, $"{type}: a {part.Kind} reaches out of its square ({min} to {max})");
+                Assert.True(part.Kind is SignPartKind.Triangle or SignPartKind.Box ? max.X > min.X && max.Y > min.Y : part.Size > 0f || part.Width > 0f, $"{type}: a {part.Kind} of no size");
+            }
+            Assert.True(seen.Add(string.Join(";", parts)), $"{type}'s sign is another's");
+        }
+    }
 }

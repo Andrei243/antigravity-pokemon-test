@@ -19,6 +19,8 @@ internal static partial class ModernUi
     /// </summary>
     internal static Color DrawTextBox(Rectangle r, TextFrame frame)
     {
+        // High contrast passes the frame over: opaque, white on black (plan 12 · Q8)
+        if (Seeing.HighContrast) return ContrastBox(r, 32);
         var clear = new Color(0, 0, 0, 0);
         switch (frame)
         {
@@ -56,13 +58,15 @@ internal static partial class ModernUi
     /// </summary>
     public static void DrawRuns(string text, IReadOnlyList<RunSpan>? runs, float x, float y, float width, Color ink)
     {
-        var rows = Wrap(text, width, DialogueBox.TextSize, DialogueBox.TextWeight);
+        // The size and the rows' distance follow the options' text size (plan 12 · Q8)
+        float size = DialogueBox.SizeNow, rowHeight = DialogueBox.RowHeightNow;
+        var rows = Wrap(text, width, size, DialogueBox.TextWeight);
         if (runs == null || runs.Count == 0)
         {
             foreach (var row in rows)
             {
-                if (row.Length > 0) UiFonts.Draw(row, x, y, DialogueBox.TextSize, ink, DialogueBox.TextWeight);
-                y += DialogueBox.RowHeight;
+                if (row.Length > 0) UiFonts.Draw(row, x, y, size, ink, DialogueBox.TextWeight);
+                y += rowHeight;
             }
             return;
         }
@@ -71,21 +75,42 @@ internal static partial class ModernUi
             float px = x;
             foreach (var (piece, colour) in pieces)
             {
-                UiFonts.Draw(piece, px, y, DialogueBox.TextSize, RunInk(colour, ink), DialogueBox.TextWeight);
-                px += UiFonts.Measure(piece, DialogueBox.TextSize, DialogueBox.TextWeight);
+                UiFonts.Draw(piece, px, y, size, RunInk(colour, ink), DialogueBox.TextWeight);
+                px += UiFonts.Measure(piece, size, DialogueBox.TextWeight);
             }
-            y += DialogueBox.RowHeight;
+            y += rowHeight;
         }
     }
 
-    /// <summary>The ink of a run on the box: the name colours are the tag's red and the blue of the buttons, a shade deeper to read on the panel.</summary>
-    public static Color RunInk(RunColour colour, Color ink) => colour switch
+    /// <summary>
+    /// The ink of a run on the box: the name colours are the tag's red and the blue of the buttons, a shade deeper to
+    /// read on the panel; on the high-contrast box (plan 12 · Q8) lighter, to read on black.
+    /// </summary>
+    public static Color RunInk(RunColour colour, Color ink)
     {
-        RunColour.Red or RunColour.Name => Darker(Red, 0.1f),
-        RunColour.Blue => Darker(Blue, 0.12f),
-        RunColour.Money => Darker(Gold, 0.3f),
-        _ => ink
-    };
+        var t = TextTokens;
+        return Seeing.HighContrast ? colour switch
+        {
+            RunColour.Red or RunColour.Name => t.ContrastRed,
+            RunColour.Blue => t.ContrastBlue,
+            RunColour.Money => t.ContrastMoney,
+            _ => ink
+        } : colour switch
+        {
+            RunColour.Red or RunColour.Name => t.RunRed,
+            RunColour.Blue => t.RunBlue,
+            RunColour.Money => t.RunMoney,
+            _ => ink
+        };
+    }
+
+    /// <summary>The colours text is written in and on (plan 12 · Q8: what <c>StyleGuideTests</c> holds the contrast of under each remap).</summary>
+    internal readonly record struct TextColours(Color Ink, Color Muted, Color Frame, Color PanelTop, Color PanelBottom,
+        Color RunRed, Color RunBlue, Color RunMoney, Color ContrastBack, Color ContrastRed, Color ContrastBlue, Color ContrastMoney);
+
+    internal static TextColours TextTokens => new(Ink, Muted, Frame, PanelTop, PanelBottom,
+        Darker(Red, 0.1f), Darker(Blue, 0.12f), Darker(Gold, 0.3f),
+        ContrastBack, Lighter(Red, 0.45f), Lighter(Blue, 0.5f), Lighter(Gold, 0.3f));
 
     /// <summary>
     /// The backlog (plan 09 · L3): over the dimmed field, a panel above the text box with the last lines written, the
@@ -120,7 +145,7 @@ internal static partial class ModernUi
     public static void DrawDialogue(int sw, int sh, string speaker, string visibleText, bool complete, IReadOnlyList<RunSpan>? runs = null)
     {
         // The box's measures are DialogueBox's, which a check with no window reads too (plan 16 · T8)
-        var r = new Rectangle(DialogueBox.Side, sh - DialogueBox.Foot - DialogueBox.Height, sw - DialogueBox.Side * 2, DialogueBox.Height);
+        var r = new Rectangle(DialogueBox.Side, sh - DialogueBox.Foot - DialogueBox.HeightNow, sw - DialogueBox.Side * 2, DialogueBox.HeightNow);
         var ink = DrawTextBox(r, TextFrame);
         if (!string.IsNullOrEmpty(speaker))
         {
@@ -152,7 +177,7 @@ internal static partial class ModernUi
         int rows = Math.Min(options.Count, MostChoiceRows), first = Math.Clamp(selected - MostChoiceRows / 2, 0, options.Count - rows);
         float height = pad * 2 + rows * row;
         // Its right edge is the text box's (96 from the screen's), and it stands 22 above it
-        var panel = new Rectangle(sw - 96 - width + (1f - shown) * (width + 140), sh - 262 - 22 - height, width, height);
+        var panel = new Rectangle(sw - 96 - width + (1f - shown) * (width + 140), sh - DialogueBox.Foot - DialogueBox.HeightNow - 22 - height, width, height);
         Panel(panel, 32);
 
         if (rows < options.Count)

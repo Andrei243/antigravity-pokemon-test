@@ -127,6 +127,7 @@ public static class UiFonts
     public static void Draw(string text, float x, float y, float size, Color color, UiWeight weight = UiWeight.Bold)
     {
         text = Spaced(text);
+        color = Core.Seeing.Seen(color); // the colour-vision remap (plan 12 · Q8), the colour itself under Normal
         float tracking = Tracking(size);
         if (!NeedsExtra(text, weight))
         {

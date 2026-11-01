@@ -54,4 +54,36 @@ public class StyleGuideTests
         double share = isolated / (double)total;
         Assert.True(share < 0.015, $"{mapName}: {share:P2} of ground texels are isolated specks");
     }
+
+    /// <summary>
+    /// Plan 12 · Q8 (style guide, "Shapes and components", "Seeing"): the text tokens keep their contrast on their panels
+    /// as an eye of each kind sees them once the remap for it has drawn them (Machado's simulation of the remapped colour).
+    /// </summary>
+    [Theory]
+    [InlineData(PokemonPlatinumEngine.Core.ColourVision.Normal)]
+    [InlineData(PokemonPlatinumEngine.Core.ColourVision.Protan)]
+    [InlineData(PokemonPlatinumEngine.Core.ColourVision.Deutan)]
+    [InlineData(PokemonPlatinumEngine.Core.ColourVision.Tritan)]
+    public void EveryTextTokenKeepsItsContrastOnItsPanelUnderEachRemap(PokemonPlatinumEngine.Core.ColourVision vision)
+    {
+        Raylib_cs.Color Seen(Raylib_cs.Color c) =>
+            PokemonPlatinumEngine.Core.Seeing.Simulate(PokemonPlatinumEngine.Core.Seeing.Daltonise(c, vision), vision);
+        float On(Raylib_cs.Color ink, Raylib_cs.Color panel) => PokemonPlatinumEngine.Core.Seeing.Contrast(Seen(ink), Seen(panel));
+
+        var t = PokemonPlatinumEngine.UI.ModernUi.TextTokens;
+        var pairs = new (string Name, Raylib_cs.Color Ink, Raylib_cs.Color Panel, float Least)[]
+        {
+            ("Ink on the panel's top", t.Ink, t.PanelTop, 4.5f), ("Ink on the panel's foot", t.Ink, t.PanelBottom, 4.5f),
+            ("Frame on the panel's top", t.Frame, t.PanelTop, 4.5f), ("Frame on the panel's foot", t.Frame, t.PanelBottom, 4.5f),
+            ("white on the high-contrast box", Raylib_cs.Color.White, t.ContrastBack, 4.5f),
+            ("the red run on the high-contrast box", t.ContrastRed, t.ContrastBack, 4.5f),
+            ("the blue run on the high-contrast box", t.ContrastBlue, t.ContrastBack, 4.5f),
+            ("the money run on the high-contrast box", t.ContrastMoney, t.ContrastBack, 4.5f),
+            ("Muted on the panel's top", t.Muted, t.PanelTop, 3f), ("Muted on the panel's foot", t.Muted, t.PanelBottom, 3f),
+            ("the red run on the panel", t.RunRed, t.PanelBottom, 3f), ("the blue run on the panel", t.RunBlue, t.PanelBottom, 3f),
+            ("the money run on the panel", t.RunMoney, t.PanelBottom, 3f)
+        };
+        foreach (var (name, ink, panel, least) in pairs)
+            Assert.True(On(ink, panel) >= least, $"{vision}: {name} is {On(ink, panel):0.00} : 1, under {least}");
+    }
 }

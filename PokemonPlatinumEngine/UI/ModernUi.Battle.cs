@@ -204,7 +204,8 @@ internal static partial class ModernUi
                     MoveChoice(new Rectangle(sw - 64 - 820, 64, 820, 716), learner, wanted, battle.LearnCursor, 1f);
                 else
                     // 22 above the message box, its right edge on the box's
-                    DrawChoices(sw + 48, sh + 40, new[] { Text.Of("battleMenu.yes"), Text.Of("battleMenu.no") }, battle.LearnCursor, 1f);
+                    // (the field's box stands taller under large text, the message box doesn't: plan 12 · Q8)
+                    DrawChoices(sw + 48, sh + 40 + (int)(DialogueBox.HeightNow - DialogueBox.Height), new[] { Text.Of("battleMenu.yes"), Text.Of("battleMenu.no") }, battle.LearnCursor, 1f);
                 break;
             default:
                 // No arrow while a growth holds the lines (plan 25 · YD6): a press would do nothing then
@@ -588,32 +589,62 @@ internal static partial class ModernUi
 
     public static void MessageBox(Rectangle r, string? message, string? prompting, string? speaker = null, bool arrow = true)
     {
-        Panel(r, 28);
+        // High contrast draws the box opaque, white on black (plan 12 · Q8)
+        var ink = Ink;
+        if (Seeing.HighContrast) ink = ContrastBox(r, 28);
+        else Panel(r, 28);
         if (prompting == null && !string.IsNullOrEmpty(speaker)) SpeakerPill(r, speaker);
-        float x = r.X + 52, cy = r.Y + r.Height / 2f;
+        float x = r.X + 52, cy = r.Y + r.Height / 2f, size = MessageSizeNow;
         if (prompting != null)
         {
             // The question around the name, as the table has it: "What will {name} do?", the name in red
             string question = Text.Of("battleMenu.whatWill");
             int at = question.IndexOf("{name}", StringComparison.Ordinal);
             string before = at < 0 ? question : question[..at], after = at < 0 ? "" : question[(at + "{name}".Length)..];
-            UiFonts.DrawCentered(before.TrimEnd(), x, cy, 40, Ink, UiWeight.ExtraBold);
-            float w = UiFonts.Measure(before, 40, UiWeight.ExtraBold);
-            UiFonts.DrawCentered(prompting, x + w, cy, 40, Red, UiWeight.Black);
-            float w2 = UiFonts.Measure(prompting + (after.StartsWith(' ') ? " " : ""), 40, UiWeight.Black);
-            UiFonts.DrawCentered(after.TrimStart(), x + w + w2, cy, 40, Ink, UiWeight.ExtraBold);
+            UiFonts.DrawCentered(before.TrimEnd(), x, cy, size, ink, UiWeight.ExtraBold);
+            float w = UiFonts.Measure(before, size, UiWeight.ExtraBold);
+            UiFonts.DrawCentered(prompting, x + w, cy, size, Seeing.HighContrast ? RunInk(RunColour.Red, ink) : Red, UiWeight.Black);
+            float w2 = UiFonts.Measure(prompting + (after.StartsWith(' ') ? " " : ""), size, UiWeight.Black);
+            UiFonts.DrawCentered(after.TrimStart(), x + w + w2, cy, size, ink, UiWeight.ExtraBold);
             return;
         }
 
-        var lines = Wrap(message ?? "", r.Width - MessageMargin, MessageSize, UiWeight.ExtraBold);
-        if (lines.Count <= 1) UiFonts.DrawCentered(message ?? "", x, cy, 40, Ink, UiWeight.ExtraBold);
+        var lines = Wrap(message ?? "", r.Width - MessageMargin, size, UiWeight.ExtraBold);
+        if (lines.Count <= 1) UiFonts.DrawCentered(message ?? "", x, cy, size, ink, UiWeight.ExtraBold);
         else
         {
-            UiFonts.DrawCentered(lines[0], x, cy - 28, 40, Ink, UiWeight.ExtraBold);
-            UiFonts.DrawCentered(lines[1], x, cy + 28, 40, Ink, UiWeight.ExtraBold);
+            // Two rows 56 apart; under large text up to three, 50 apart
+            float pitch = Seeing.LargeText ? 50f : 56f;
+            int count = Math.Min(lines.Count, Seeing.LargeText ? 3 : 2);
+            for (int i = 0; i < count; i++)
+                UiFonts.DrawCentered(lines[i], x, cy + (i - (count - 1) / 2f) * pitch, size, ink, UiWeight.ExtraBold);
         }
         if (arrow) AdvanceArrow(r.X + r.Width - 64, r.Y + r.Height - 52);
     }
+
+    /// <summary>The message box's writing: 40, or 46 under the options' large text (plan 12 · Q8).</summary>
+    public static float MessageSizeNow => Seeing.LargeText ? LargeMessageSize : MessageSize;
+
+    /// <summary>The message box's writing under large text.</summary>
+    public const float LargeMessageSize = 46;
+
+    /// <summary>A battle line as the message box breaks it, at the size in force, measured with no window.</summary>
+    public static List<string> MessageRows(string message, float boxWidth) =>
+        TextMetrics.Wrap(message, boxWidth - MessageMargin, MessageSizeNow, UiWeight.ExtraBold);
+
+    /// <summary>
+    /// The high-contrast box (plan 12 · Q8; style guide, "Seeing"): an opaque near-black panel with a white border 4
+    /// wide, whatever frame the options chose. Returns the white its writing is in.
+    /// </summary>
+    internal static Color ContrastBox(Rectangle r, float radius)
+    {
+        UiShapes.Shadow(r, radius, 22f, new Vector2(0, 8), ShadowColor);
+        UiShapes.Shape(r, radius, ContrastBack, ContrastBack, Color.White, 4f);
+        return Color.White;
+    }
+
+    /// <summary>The high-contrast box's fill.</summary>
+    public static readonly Color ContrastBack = new(12, 14, 22, 255);
 
     /// <summary>
     /// The name of whoever says the message (style guide, "Battle panels", "A trainer's line"): a pill 44 tall hung on
@@ -652,7 +683,13 @@ internal static partial class ModernUi
             UiShapes.Shape(band, 18, Lighter(type, 0.1f), Darker(type, 0.1f));
             string typeName = Words.Type(move.Type).ToUpperInvariant();
             float tw = UiFonts.Measure(typeName, 20, UiWeight.Black);
-            UiFonts.DrawCentered(typeName, band.X + (band.Width - tw) / 2f, band.Y + band.Height / 2f, 20, Color.White, UiWeight.Black);
+            if (Seeing.Signs && cardName != null)
+            {
+                // The type's sign over its name (plan 12 · Q8)
+                TypeSigns.Draw(move.Type, new Vector2(band.X + band.Width / 2f, band.Y + 19), 12, Color.White, type);
+                UiFonts.DrawCentered(typeName, band.X + (band.Width - tw) / 2f, band.Y + band.Height - 16, 20, Color.White, UiWeight.Black);
+            }
+            else UiFonts.DrawCentered(typeName, band.X + (band.Width - tw) / 2f, band.Y + band.Height / 2f, 20, Color.White, UiWeight.Black);
             string named = cardName ?? move.DisplayName;
             float nameSize = Math.Min(32f, 32f * 250f / Math.Max(1f, UiFonts.Measure(named, 32, UiWeight.Black)));
             UiFonts.DrawCentered(named, r.X + 156, r.Y + r.Height / 2f, nameSize, move.CurrentPP > 0 && cardName != null ? Ink : Muted, UiWeight.Black);

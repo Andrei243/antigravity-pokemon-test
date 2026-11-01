@@ -39,6 +39,7 @@ public enum OptionRow
     AutoBattle,
     AreaChecklist,
     Requests,
+    TextSize, ColourVision, HighContrast,
     Controls,
     Jukebox,
     Packs,
@@ -459,6 +460,16 @@ public class OptionsScreen
             case OptionRow.HoldToConfirm:
                 s.HoldToConfirm = !s.HoldToConfirm;
                 break;
+            case OptionRow.TextSize:
+                s.TextSize = s.TextSize == Core.TextSize.Normal ? Core.TextSize.Large : Core.TextSize.Normal; // plan 12 · Q8
+                break;
+            case OptionRow.ColourVision:
+                // Normal, Protan, Deutan, Tritan, and round again
+                s.ColourVision = (ColourVision)Wrap((int)s.ColourVision + step, 4);
+                break;
+            case OptionRow.HighContrast:
+                s.HighContrast = !s.HighContrast;
+                break;
         }
     }
 
@@ -545,6 +556,9 @@ public class OptionsScreen
         OptionRow.RunTimer => (Text.Of("options.runTimer.label"), Text.Of($"options.runTimer.value.{s.RunTimer}"), Text.Of($"options.runTimer.help.{s.RunTimer}")),
         OptionRow.Captions => (Text.Of("options.captions.label"), OnOff(s.Captions), Text.Of(s.Captions ? "options.captions.help.on" : "options.captions.help.off")),
         OptionRow.HoldToConfirm => (Text.Of("options.holdToConfirm.label"), OnOff(s.HoldToConfirm), Text.Of(s.HoldToConfirm ? "options.holdToConfirm.help.on" : "options.holdToConfirm.help.off")),
+        OptionRow.TextSize => (Text.Of("options.textSize.label"), Text.Of($"options.textSize.value.{s.TextSize}"), Text.Of($"options.textSize.help.{s.TextSize}")),
+        OptionRow.ColourVision => (Text.Of("options.colourVision.label"), Text.Of($"options.colourVision.value.{s.ColourVision}"), Text.Of($"options.colourVision.help.{s.ColourVision}")),
+        OptionRow.HighContrast => (Text.Of("options.highContrast.label"), OnOff(s.HighContrast), Text.Of(s.HighContrast ? "options.highContrast.help.on" : "options.highContrast.help.off")),
         OptionRow.ResetDefaults => (Text.Of("options.resetDefaults.label"), Text.Of("options.resetDefaults.value"), Text.Of("options.resetDefaults.help")),
         OptionRow.Controls => (Text.Of("options.controls.label"), Text.Of("options.controls.value"), Text.Of("options.controls.help")),
         OptionRow.Jukebox => (Text.Of("options.jukebox.label"), Text.Of("options.jukebox.value"), Text.Of("options.jukebox.help")),
