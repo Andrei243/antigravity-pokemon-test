@@ -1,21 +1,14 @@
 {
   // Professor Oak's laboratory in Pallet Town (plan 20 · J15, part g): the professor and his aides. The three Poké
-  // Balls on his table (HeartGold's gift to whoever beats Red) wait for their session
+  // Balls on his table, HeartGold's gift to whoever beats Red, stand there once Red is beaten and until one is taken
+  // (part n: pallet_town_oaks_lab.txt)
   "area": "pallet_town_oaks_lab",
   "bgmTrack": "kanto/oak_lab",
-  "heldBack": [
-    "t01r0301_monstarball",
-    "t01r0301_monstarball_2",
-    "t01r0301_monstarball_3"
-  ],
   "people": {
-    "t01r0301_ookido": {
-      "name": "Professor Oak",
-      "still": true,
-      "dialog": [
-        "Well, well! A Champion from Johto, here in my lab! Kanto has eight Gyms of its own, you know. Have you thought of taking them on?"
-      ]
-    },
+    "t01r0301_ookido": { "name": "Professor Oak", "still": true, "script": "Oak" },
+    "t01r0301_monstarball": { "name": "Poké Ball", "npcType": "ItemBall", "item": "Poké Ball", "script": "Gift", "shownBy": "FLAG_JOHTO_BEAT_RED" },
+    "t01r0301_monstarball_2": { "name": "Poké Ball", "npcType": "ItemBall", "item": "Poké Ball", "script": "Gift", "shownBy": "FLAG_JOHTO_BEAT_RED" },
+    "t01r0301_monstarball_3": { "name": "Poké Ball", "npcType": "ItemBall", "item": "Poké Ball", "script": "Gift", "shownBy": "FLAG_JOHTO_BEAT_RED" },
     "t01r0301_assistantm": {
       "name": "Aide",
       "dialog": [

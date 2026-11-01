@@ -1,0 +1,51 @@
+# The Kanto Radio Tower in Lavender Town as HeartGold has it three years on (plan 20 · J15, part n). docs/scripts.md
+# describes the language; the lines are our own, on HeartGold's beats (scr_seq_T05R0701).
+#
+# The tower runs on the Power Plant's power. While the generator on Route 10 stands still for its stolen part
+# (route_10_power_plant_repaired.txt), the station is off the air and the director has nothing to give. Once the
+# plant runs again (FLAG_JOHTO_POWER_PLANT_FIXED, a flag of ours), he gives the Expn Card, which lets the Pokégear's
+# radio hear Kanto's stations: the Poké Flute's among them, which wakes Route 12's Snorlax (johto_route_12.txt). The
+# card is the bag's only memory of it.
+
+
+script Director
+  face t05r0701_gsgentleman_2 player
+  speaker "Director"
+  if item "Expn Card" goto Given
+  if flag FLAG_JOHTO_POWER_PLANT_FIXED goto Give
+  say "Welcome to the Kanto Radio Tower. I'm the director, and I'm afraid you've caught us at a bad time."
+  say "The Power Plant on Route 10 has stopped. Without its power, we can't send a single song across Kanto."
+  end
+label Give
+  scene "The Expn Card"
+  say "Welcome to the Kanto Radio Tower! We're back on the air, thanks to the Power Plant running again."
+  say "I hear you're the one who brought its missing part back. Then you deserve this."
+  give "Expn Card"
+  say "Slip that card into your Pokégear, and its radio will pick up every station we broadcast here in Kanto."
+  say "Try the Poké Flute channel. Its tune is said to wake even the soundest sleeper."
+  endscene
+  end
+label Given
+  say "Is your Pokégear picking us up all right? The Poké Flute channel is a favourite of ours."
+  end
+
+
+script Receptionist
+  face t05r0701_gswoman6 player
+  speaker "Receptionist"
+  if flag FLAG_JOHTO_POWER_PLANT_FIXED goto OnAir
+  say "Welcome to the Kanto Radio Tower. We're off the air for now, I'm sorry to say. There's no power."
+  end
+label OnAir
+  say "Welcome to the Kanto Radio Tower. We're on the air all day, every day!"
+  end
+
+
+script Listener
+  speaker "Man"
+  if flag FLAG_JOHTO_POWER_PLANT_FIXED goto OnAir
+  say "I came to hear the station's music in person, and there's nothing on! Something about the Power Plant."
+  end
+label OnAir
+  say "Ah, the Poké Flute's tune. They play it on the radio here, you know. It's enough to wake anyone."
+  end

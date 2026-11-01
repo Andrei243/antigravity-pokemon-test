@@ -264,6 +264,16 @@ public enum PropType
     Airplane,
     /// <summary>A cluster of pale charged crystals that glows (Chargestone Cave's, plan 22 · U7).</summary>
     ChargeStone,
+    /// <summary>
+    /// Rotom's appliances on Silph Co.'s research floor (plan 20 · J15, part n: HeartGold's objects of their own look):
+    /// things of the map (<see cref="NPC.MicrowaveType"/> and its four fellows), drawn as cards (<c>ApplianceArt</c>),
+    /// in the way like a person and spoken to like one.
+    /// </summary>
+    Microwave,
+    WashingMachine,
+    Refrigerator,
+    ElectricFan,
+    Lawnmower,
 }
 
 /// <summary>A piece of furniture or decoration placed in a room, covering a rectangle of tiles.</summary>

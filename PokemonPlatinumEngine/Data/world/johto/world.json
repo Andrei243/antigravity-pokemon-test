@@ -405,7 +405,12 @@
     { "name": "Seafoam_B1F", "matrix": 82, "area": "johto_seafoam_islands_b1f", "trees": "Round", "setting": "Cave" },
     { "name": "Seafoam_B2F", "matrix": 83, "area": "johto_seafoam_islands_b2f", "trees": "Round", "setting": "Cave" },
     { "name": "Seafoam_B3F", "matrix": 84, "area": "johto_seafoam_islands_b3f", "trees": "Round", "setting": "Cave" },
-    { "name": "Seafoam_B4F", "matrix": 85, "area": "johto_seafoam_islands_b4f", "trees": "Round", "setting": "Cave" }
+    { "name": "Seafoam_B4F", "matrix": 85, "area": "johto_seafoam_islands_b4f", "trees": "Round", "setting": "Cave" },
+    // Plan 20 · J15, part n: the Kanto Radio Tower in Lavender Town, and Silph Co.'s lift and Rotom's room (FireRed's
+    // Kanto has neither)
+    { "name": "Lavender_RadioTower", "matrix": 195, "area": "lavender_radio_station", "trees": "Round", "setting": "Indoors" },
+    { "name": "Saffron_SilphCo_Elevator", "matrix": 262, "area": "saffron_silph_co_elevator", "trees": "Round", "setting": "Indoors" },
+    { "name": "Saffron_SilphCo_RotomRoom", "matrix": 241, "area": "saffron_silph_co_rotom_room", "trees": "Round", "setting": "Indoors" }
   ],
   "areas": [
     // Plan 20 · J2: New Bark Town to Route 31's gate house, with their rooms
@@ -556,6 +561,8 @@
     // Plan 20 · J15, part l: the Underground Path from Route 5 to Route 6 with its gates, and Silph Co.'s lobby
     "route_5_underground_path_gate", "route_5_underground_path", "route_6_underground_path_gate", "saffron_silph_co_hq",
     // Plan 20 · J15, part m: the Seafoam Islands' four lower floors, down to Articuno's cave
-    "johto_seafoam_islands_b1f", "johto_seafoam_islands_b2f", "johto_seafoam_islands_b3f", "johto_seafoam_islands_b4f"
+    "johto_seafoam_islands_b1f", "johto_seafoam_islands_b2f", "johto_seafoam_islands_b3f", "johto_seafoam_islands_b4f",
+    // Plan 20 · J15, part n: the Kanto Radio Tower, and Silph Co.'s lift and Rotom's room
+    "lavender_radio_station", "saffron_silph_co_elevator", "saffron_silph_co_rotom_room"
   ]
 }

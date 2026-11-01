@@ -1,0 +1,54 @@
+# Route 10's northern half as HeartGold has it three years on (plan 20 · J15, part n). docs/scripts.md describes the
+# language; the lines are our own, on HeartGold's beats (scr_seq_R10).
+#
+# Zapdos comes to the Power Plant's door once the generator turns again (shown by FLAG_JOHTO_POWER_PLANT_FIXED: the
+# plant's story, route_10_power_plant_repaired.txt) and waits until it has been fought (FLAG_JOHTO_FOUGHT_ZAPDOS,
+# ours), as Articuno does in the Seafoam Islands: beaten or caught it is gone for good, run from it flies off
+# (HeartGold's FLAG_HIDE_ROUTE_10_ZAPDOS) and is back on the next visit.
+#
+# Its meeting is plan 29's beat for a bird of lightning (style guide, "Legendary scenes"), as FireRed's Zapdos in its
+# plant: the bars, the camera to it, two bursts of lightning a moment apart with the picture shaken by each, the cry and
+# a line; the scene ends before the battle, so the hold never skips it.
+
+
+script OnEnter
+  if not flag FLAG_JOHTO_FOUGHT_ZAPDOS clearflag FLAG_HIDE_ROUTE_10_ZAPDOS
+  end
+
+# R10_003: Zapdos
+script Zapdos
+  speaker none
+  scene "Zapdos at the Power Plant's door"
+  music stop
+  face player self
+  letterbox on 0.4
+  # Met from below, it is behind the player's own head from the field's camera: a step back, facing it, shows it
+  if facing up walk player back down 1
+  camera pan 1419 184 1.2
+  camera zoom 1.4 0.8
+  effect burst 1419 184
+  camera shake 0.4
+  # A burst lit again on its own tile takes the place of the one still playing there: the second strike waits for
+  # the first's 0.6 s to end
+  wait 0.6
+  effect burst 1419 184
+  camera shake 0.4
+  wait 0.6
+  cry "Zapdos"
+  emote player exclaim
+  text "Sparks crackled through the air as Zapdos spread its jagged wings!"
+  if facing up walk player up 1
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Zapdos" 50
+  if result == 2 goto Fled
+  setflag FLAG_JOHTO_FOUGHT_ZAPDOS
+  setflag FLAG_HIDE_ROUTE_10_ZAPDOS
+  hide self
+  end
+label Fled
+  setflag FLAG_HIDE_ROUTE_10_ZAPDOS
+  hide self
+  text "Zapdos flew off over the river!"
+  end

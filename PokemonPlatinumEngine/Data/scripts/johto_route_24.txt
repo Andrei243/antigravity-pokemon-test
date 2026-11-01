@@ -1,0 +1,22 @@
+# Route 24, Nugget Bridge, as HeartGold has it three years on (plan 20 · J15, part n). docs/scripts.md describes the
+# language; the lines are our own, on HeartGold's beats (scr_seq_R24).
+#
+# The grunt who ran from the Cerulean Gym waits on the bridge (shown by FLAG_JOHTO_CERULEAN_ROCKET_FLED, gone by
+# FLAG_JOHTO_BEAT_ROUTE_24_ROCKET: both ours). Beaten, he lets slip where he hid the Power Plant's Machine Part, the
+# corner of the Gym pool's north bank (cerulean_gym.txt), and leaves. HeartGold stops the player with a trigger on the
+# bridge (VAR_SCENE_ROUTE_24_ROCKET); here he is spoken to, as the rival in Mt. Moon is.
+
+
+script Rocket
+  face r24_rocketm player
+  speaker "Grunt"
+  scene "The grunt on Nugget Bridge"
+  say "You followed me all the way here? Fine! Team Rocket may be gone, but I'm still a Rocket at heart!"
+  battle self as "johto_team_rocket_grunt_24"
+  say "Argh! All right, all right. That part from the Power Plant? I stuffed it in the Cerulean Gym."
+  say "It's wedged in a corner by the edge of the pool, up at the north end. Nobody'd ever look there."
+  say "Ah... I just told you, didn't I? Forget it! I'm out of here!"
+  hide r24_rocketm
+  setflag FLAG_JOHTO_BEAT_ROUTE_24_ROCKET
+  endscene
+  end

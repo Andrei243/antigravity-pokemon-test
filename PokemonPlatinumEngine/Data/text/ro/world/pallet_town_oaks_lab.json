@@ -8,13 +8,35 @@
         "text": [
           "Profesorul Oak"
         ]
-      },
-      "dialog": {
+      }
+    },
+    "t01r0301_monstarball": {
+      "name": {
         "en": [
-          "Well, well! A Champion from Johto, here in my lab! Kanto has eight Gyms of its own, you know. Have you thought of taking them on?"
+          "Poké Ball"
         ],
         "text": [
-          "Ei, ei! Un Campion din Johto, chiar în laboratorul meu! Kanto are opt Arene proprii, să știi. Te-ai gândit să le înfrunți?"
+          "Poké Ball"
+        ]
+      }
+    },
+    "t01r0301_monstarball_2": {
+      "name": {
+        "en": [
+          "Poké Ball"
+        ],
+        "text": [
+          "Poké Ball"
+        ]
+      }
+    },
+    "t01r0301_monstarball_3": {
+      "name": {
+        "en": [
+          "Poké Ball"
+        ],
+        "text": [
+          "Poké Ball"
         ]
       }
     },

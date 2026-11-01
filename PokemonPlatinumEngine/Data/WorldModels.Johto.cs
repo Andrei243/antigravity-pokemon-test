@@ -176,6 +176,10 @@ public static partial class WorldModels
         Furniture("dustbox01", PropType.TrashCan, "a bin"),
         Furniture("machine_l01", PropType.LabMachine, "a machine of the lab"),
         Furniture("machine_l03", PropType.LabMachine, "a machine of the lab"),
+        // Plan 20 · J15, part n: the Kanto Radio Tower's and Silph Co.'s research floor's machines, and books piled up
+        Furniture("machine_l02", PropType.LabMachine, "a machine of the lab"),
+        Furniture("machine_l05", PropType.LabMachine, "a machine of the lab"),
+        Furniture("book01", PropType.BookPile, "books piled on the floor"),
         Furniture("kaifuku_lab01", PropType.HealingMachine, "the lab's healing machine"),
         Furniture("labo_select", PropType.LabMachine, "the lab's machine that keeps the three Poké Balls"),
         Furniture("pc01", PropType.Computer, "a PC"),

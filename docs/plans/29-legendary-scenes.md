@@ -47,7 +47,7 @@ A Pokémon that **roams** (`roamer start`) is met in the grass, where the origin
 | Johto | Lugia | `whirl_islands_b3f_lugia_cave.txt` | Bare | cry, line, battle | everything |
 | Johto | Moltres | `mount_silver_cave_moltres_chamber.txt` | Bare | empty scene marker, cry, line, battle | everything |
 | Johto | Articuno | `johto_seafoam_islands_b4f.txt` | Staged (plan 20 · J15, part m) | bars, camera to its island, zoom, sparkles, ripple, cry with a shake, the step back | none |
-| Johto | Zapdos | Route 10 | Missing (owed) | plan 20 · J15 | built with J15, recipe here |
+| Johto | Zapdos | `johto_route_10.txt` | Staged (plan 20 · J15, part n) | bars, camera to it before the Power Plant's door, zoom, two bursts 0.6 s apart each with a shake, cry, the step back | none |
 | Johto | Kyogre, Groudon, Rayquaza | the Embedded Tower | Missing (owed) | plan 20 · J15 | built with J15, recipe here |
 | Johto | Celebi | Ilex Forest's shrine | Missing (event) | left out by J10's overlays | decision 1 |
 | Johto | Raikou, Entei | grass | Roams | — | none |

@@ -209,6 +209,20 @@ public static class FormChanges
         return new ItemUseResult(true, "") { Wanted = new[] { move } };
     }
 
+    /// <summary>
+    /// The appliances of Silph Co.'s research floor by the word a script names them with (plan 20 · J15, part n:
+    /// <c>team rotom heat</c>), each the page of the catalogue it is: <c>plain</c> its own form, then heat, wash, frost,
+    /// fan and mow in the catalogue's order.
+    /// </summary>
+    public static IReadOnlyList<string> ApplianceWords { get; } = new[] { "plain", "heat", "wash", "frost", "fan", "mow" };
+
+    /// <summary>
+    /// A Rotom sent into an appliance by a script (plan 20 · J15, part n: HeartGold's Rotom room, as the Rotom
+    /// Catalog's page does it): its form and the appliance's move with it, the last appliance's move given up. The
+    /// moves that wouldn't fit are the result's <see cref="ItemUseResult.Wanted"/>.
+    /// </summary>
+    public static ItemUseResult SendRotomInto(Pokemon p, int page) => ToAppliance(p, page);
+
     /// <summary>Sends Rotom into a page of the catalogue, its appliance's move with it (R29's rule).</summary>
     private static ItemUseResult ToAppliance(Pokemon p, int page)
     {

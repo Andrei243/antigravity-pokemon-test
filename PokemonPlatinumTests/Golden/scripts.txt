@@ -8868,6 +8868,10 @@ from Gym guide at 13,21 of Cerulean_Gym
 way -
   Gym guide> Hey, champ in the making! Bad news, I'm afraid. Misty isn't here.
   Gym guide> She slipped out to the cape north of town again. Try Route 25, past Nugget Bridge.
+=== cerulean_gym.MachinePart
+from the tile read at 3,10 of Cerulean_Gym
+from the tile read at 4,10 of Cerulean_Gym
+way -
 === cerulean_gym.Misty
 from Misty at 10,1 of Cerulean_Gym
 way 0
@@ -8904,6 +8908,16 @@ way 0
 way 1, from answer 1
   * battle johto_leader_misty_misty Lost
   * scene over, unseen
+=== cerulean_gym.Rocket
+from Grunt at 10,19 of Cerulean_Gym
+way -
+  Grunt> Whoa! A Trainer! I wasn't doing anything! I definitely didn't hide anything in this Gym!
+  Grunt> And I'm definitely not meeting anyone on Nugget Bridge. Er... see you!
+  * scene cerulean_gym.The grunt in the Cerulean Gym
+  * emote Grunt Exclaim
+  * endscene
+  + FLAG_JOHTO_CERULEAN_ROCKET_FLED
+  + seen cerulean_gym.The grunt in the Cerulean Gym
 === cerulean_gym.Statue
 from the tile read at 12,21 of Cerulean_Gym
 from the tile read at 8,21 of Cerulean_Gym
@@ -17433,6 +17447,52 @@ way -
   Blue> Huh. A Champion from Johto, all the way out here. Look at this place. The volcano blew and the whole town went with it.
   Blue> I'm the Leader of the Viridian Gym. Funny, right? I'm never there. I don't take on just anyone.
   Blue> Come back when you've got Kanto's other seven Badges. Then we'll see if you're worth my time.
+=== johto_route_10.Zapdos
+from Zapdos at 1419,184 of Johto
+way 0
+  > Sparks crackled through the air as Zapdos spread its jagged wings!
+  * scene johto_route_10.Zapdos at the Power Plant's door
+  * music stop
+  * letterbox on
+  * walk player back down
+  * camera Pan 1419 184
+  * camera Zoom 1.4
+  * effect Burst 1419 184
+  * camera Shake
+  * effect Burst 1419 184
+  * camera Shake
+  * cry Zapdos
+  * emote player Exclaim
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Zapdos 50 Won
+  + FLAG_HIDE_ROUTE_10_ZAPDOS
+  + FLAG_JOHTO_FOUGHT_ZAPDOS
+  + seen johto_route_10.Zapdos at the Power Plant's door
+way 1, from answer 1
+  * wildbattle Zapdos 50 Lost
+  + seen johto_route_10.Zapdos at the Power Plant's door
+=== johto_route_12.Snorlax
+from Snorlax at 1411,306 of Johto
+way -
+  > A Snorlax is fast asleep across the way. It doesn't stir, however loudly it is called.
+=== johto_route_24.Rocket
+from Grunt at 1328,81 of Johto
+way 0
+  Grunt> You followed me all the way here? Fine! Team Rocket may be gone, but I'm still a Rocket at heart!
+  Grunt> Argh! All right, all right. That part from the Power Plant? I stuffed it in the Cerulean Gym.
+  Grunt> It's wedged in a corner by the edge of the pool, up at the north end. Nobody'd ever look there.
+  Grunt> Ah... I just told you, didn't I? Forget it! I'm out of here!
+  * scene johto_route_24.The grunt on Nugget Bridge
+  * battle johto_team_rocket_grunt_24 Won
+  * endscene
+  + FLAG_JOHTO_BEAT_ROUTE_24_ROCKET
+  + beaten johto_team_rocket_grunt_24
+  + seen johto_route_24.The grunt on Nugget Bridge
+way 1, from answer 1
+  * battle johto_team_rocket_grunt_24 Lost
+  * scene over, unseen
 === johto_route_25.MistysDate
 from Misty at 1421,47 of Johto
 from the trigger at 1418,40 of Johto
@@ -18032,6 +18092,19 @@ from Zigzagoon at 6,6 of LavaridgeTown_House
 way -
   > Zigzagoon: Pshuu!
   * cry Zigzagoon
+=== lavender_radio_station.Director
+from Director at 9,3 of Lavender_RadioTower
+way -
+  Director> Welcome to the Kanto Radio Tower. I'm the director, and I'm afraid you've caught us at a bad time.
+  Director> The Power Plant on Route 10 has stopped. Without its power, we can't send a single song across Kanto.
+=== lavender_radio_station.Listener
+from Man at 2,6 of Lavender_RadioTower
+way -
+  Man> I came to hear the station's music in person, and there's nothing on! Something about the Power Plant.
+=== lavender_radio_station.Receptionist
+from Receptionist at 7,10 of Lavender_RadioTower
+way -
+  Receptionist> Welcome to the Kanto Radio Tower. We're off the air for now, I'm sorry to say. There's no power.
 === lavender_town_volunteer_pokemon_house.MrFuji
 from Mr. Fuji at 3,3 of LavenderTown_VolunteerPokemonHouse
 way -
@@ -21604,6 +21677,47 @@ way -
   = VAR_MAP_SCENE_PALLET_TOWN_OAK 0 -> 1
   = VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB 0 -> 1
   + seen pallet_town.Oak in the grass
+=== pallet_town_oaks_lab.Gift
+from Poké Ball at 7,3 of Pallet_OaksLab
+way 0
+  > This Poké Ball holds Charmander, the Fire Pokémon. Will you take it?
+  > Lucas received Charmander from Professor Oak!
+  ? This Poké Ball holds Charmander, the Fire Pokémon. Will you take it? = Yes
+  * fanfare FanfarePokemon
+  + FLAG_HIDE_OAKS_LAB_BULBASAUR_BALL
+  + FLAG_HIDE_OAKS_LAB_CHARMANDER_BALL
+  + FLAG_HIDE_OAKS_LAB_SQUIRTLE_BALL
+  + FLAG_JOHTO_GOT_OAKS_GIFT
+way 1, from answer 1
+  ? This Poké Ball holds Charmander, the Fire Pokémon. Will you take it? = No
+from Poké Ball at 8,3 of Pallet_OaksLab
+way 0
+  > This Poké Ball holds Squirtle, the Water Pokémon. Will you take it?
+  > Lucas received Squirtle from Professor Oak!
+  ? This Poké Ball holds Squirtle, the Water Pokémon. Will you take it? = Yes
+  * fanfare FanfarePokemon
+  + FLAG_HIDE_OAKS_LAB_BULBASAUR_BALL
+  + FLAG_HIDE_OAKS_LAB_CHARMANDER_BALL
+  + FLAG_HIDE_OAKS_LAB_SQUIRTLE_BALL
+  + FLAG_JOHTO_GOT_OAKS_GIFT
+way 1, from answer 1
+  ? This Poké Ball holds Squirtle, the Water Pokémon. Will you take it? = No
+from Poké Ball at 9,3 of Pallet_OaksLab
+way 0
+  > This Poké Ball holds Bulbasaur, the Grass Pokémon. Will you take it?
+  > Lucas received Bulbasaur from Professor Oak!
+  ? This Poké Ball holds Bulbasaur, the Grass Pokémon. Will you take it? = Yes
+  * fanfare FanfarePokemon
+  + FLAG_HIDE_OAKS_LAB_BULBASAUR_BALL
+  + FLAG_HIDE_OAKS_LAB_CHARMANDER_BALL
+  + FLAG_HIDE_OAKS_LAB_SQUIRTLE_BALL
+  + FLAG_JOHTO_GOT_OAKS_GIFT
+way 1, from answer 1
+  ? This Poké Ball holds Bulbasaur, the Grass Pokémon. Will you take it? = No
+=== pallet_town_oaks_lab.Oak
+from Professor Oak at 8,6 of Pallet_OaksLab
+way -
+  Professor Oak> Well, well! A Champion from Johto, here in my lab! Kanto has eight Gyms of its own, you know. Have you thought of taking them on?
 === pallet_town_professor_oaks_lab.DontGoYet
 from the trigger at 5,8 of PalletTown_ProfessorOaksLab
 from the trigger at 6,8 of PalletTown_ProfessorOaksLab
@@ -23062,6 +23176,22 @@ way -
 from Aide at 12,5 of Route10_PokemonCenter_1F
 way -
   Aide> I'm studying the Pokémon of Rock Tunnel for Professor Oak.
+=== route_10_power_plant_repaired.Engineer
+from Engineer at 6,4 of Route10_PowerPlant
+way -
+  Engineer> I check every dial on these panels twice a day. Everything reads fine.
+=== route_10_power_plant_repaired.Manager
+from Manager at 13,8 of Route10_PowerPlant
+way -
+  Manager> Grr! Who's there? Oh, a Trainer. Sorry, I'm not myself today. Someone has robbed my plant!
+  Manager> A vital part of the generator was pulled right out of it. Without it, the generator won't turn.
+  Manager> No power for the Magnet Train's lights, none for the radio... Kanto is going dark, bit by bit!
+  Manager> My men saw a man in black running off toward Cerulean City. If you see him, get that part back!
+  * scene route_10_power_plant_repaired.The Power Plant robbed
+  * emote Manager Exclaim
+  * endscene
+  + FLAG_JOHTO_POWER_PLANT_ROBBED
+  + seen route_10_power_plant_repaired.The Power Plant robbed
 === route_110.Abigail
 from Abigail at 230,191 of Hoenn
 way 0.0
@@ -26037,6 +26167,31 @@ way -
   > Lucas put it away in the TMs & HMs pocket.
   * fanfare FanfareTM
   + FLAG_JOHTO_GOT_TM29_FROM_MR_PSYCHIC
+=== saffron_silph_co_hq.Guard
+from Guard at 4,4 of Saffron_SilphCo
+way -
+  Guard> That lift goes up to the research floor. Only staff may ride it, I'm afraid.
+  Guard> Unless you've got a Rotom with you. The researchers up there are always glad to meet one.
+=== saffron_silph_co_rotom_room.Fan
+from Fan at 6,6 of Saffron_SilphCo_RotomRoom
+way -
+  > It's an electric fan, its blades turning slowly by themselves.
+=== saffron_silph_co_rotom_room.Lawnmower
+from Lawnmower at 12,6 of Saffron_SilphCo_RotomRoom
+way -
+  > It's a lawnmower. Bits of cut grass still cling to its wheels.
+=== saffron_silph_co_rotom_room.Microwave
+from Microwave at 4,6 of Saffron_SilphCo_RotomRoom
+way -
+  > It's a microwave oven, plugged in and humming faintly.
+=== saffron_silph_co_rotom_room.Refrigerator
+from Refrigerator at 8,6 of Saffron_SilphCo_RotomRoom
+way -
+  > It's a refrigerator. A chill comes from around its doors.
+=== saffron_silph_co_rotom_room.WashingMachine
+from Washing machine at 10,6 of Saffron_SilphCo_RotomRoom
+way -
+  > It's a washing machine. Its round door stands a little open.
 === sandgem_town.Counterpart
 from {assistant} at 168,845 of Sinnoh
 way -

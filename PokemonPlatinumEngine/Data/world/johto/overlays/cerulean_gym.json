@@ -1,14 +1,18 @@
 {
   // The Cerulean Gym as HeartGold has it (plan 20 · J15, part e): a pool crossed by walkways, Misty at its head once she
   // is home from Route 25's cape (cerulean_gym.txt). HeartGold hides the whole Gym behind
-  // FLAG_HIDE_CERULEAN_GYM_POPULATION while Team Rocket's grunt stands in it with the Power Plant's part: that scene,
-  // the grunt and the part in the pool wait for the Power Plant, and the Gym's people stand here from the first. Her
+  // FLAG_HIDE_CERULEAN_GYM_POPULATION while Team Rocket's grunt stands in it with the Power Plant's part; here the
+  // Gym's people stand from the first. Since part n the grunt stands by the pool once the Power Plant's manager has
+  // told of the theft, and runs off to Nugget Bridge when spoken to; the part lies in the corner of the pool's north
+  // bank, where HeartGold's two markers stand (held back: read on their tiles, cerulean_gym.txt's MachinePart). Her
   // five trainers battle by their own records (Johto's trainers.json)
   "area": "cerulean_gym",
   "bgmTrack": "johto/gym",
   "arenaType": "Water",
-  "heldBack": [ "t04gym0101_rocketm", "t04gym0101_stop", "t04gym0101_stop_2" ],
+  "heldBack": [ "t04gym0101_stop", "t04gym0101_stop_2" ],
+  "readAt": [ { "x": 3, "z": 10, "script": "MachinePart" }, { "x": 4, "z": 10, "script": "MachinePart" } ],
   "people": {
+    "t04gym0101_rocketm": { "name": "Grunt", "script": "Rocket", "still": true, "hiddenBy": "FLAG_JOHTO_CERULEAN_ROCKET_FLED", "shownBy": "FLAG_JOHTO_POWER_PLANT_ROBBED" },
     "t04gym0101_gsleader11": { "name": "Misty", "npcType": "misty", "script": "Misty", "still": true, "hiddenBy": "", "shownBy": "FLAG_JOHTO_MISTY_BACK_IN_GYM" },
     "t04gym0101_sunglasses": { "name": "Gym guide", "script": "Guide", "still": true, "hiddenBy": "" },
     "t04gym0101_gsswimmerw": {

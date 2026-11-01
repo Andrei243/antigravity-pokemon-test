@@ -124,5 +124,41 @@
         "Arena Pokémon din Orașul Cerulean\nLider: Misty\nAntrenori învingători: {player}"
       ]
     }
+  ],
+  "Rocket": [
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        "Soldatul"
+      ]
+    },
+    {
+      "en": [
+        "Whoa! A Trainer! I wasn't doing anything! I definitely didn't hide anything in this Gym!"
+      ],
+      "text": [
+        "Uau! Un Antrenor! Nu făceam nimic! Sigur n-am ascuns nimic în Arena asta!"
+      ]
+    },
+    {
+      "en": [
+        "And I'm definitely not meeting anyone on Nugget Bridge. Er... see you!"
+      ],
+      "text": [
+        "Și sigur nu mă întâlnesc cu nimeni pe Podul Nugget. Ăă... pa!"
+      ]
+    }
+  ],
+  "MachinePart": [
+    {
+      "en": [
+        "There's something wedged in the corner of the pool's edge..."
+      ],
+      "text": [
+        "Ceva e înțepenit în colțul de la marginea bazinului..."
+      ]
+    }
   ]
 }

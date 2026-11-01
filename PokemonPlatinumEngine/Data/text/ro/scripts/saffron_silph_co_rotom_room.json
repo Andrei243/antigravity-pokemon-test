@@ -1,0 +1,252 @@
+{
+  "Microwave": [
+    {
+      "en": [
+        "It's a microwave oven, plugged in and humming faintly."
+      ],
+      "text": [
+        "E un cuptor cu microunde, în priză și bâzâind încet."
+      ]
+    },
+    {
+      "en": [
+        "Will you let your Rotom go into the microwave oven?"
+      ],
+      "text": [
+        "Îl lași pe Rotom să intre în cuptorul cu microunde?"
+      ]
+    },
+    {
+      "en": [
+        "Rotom went into the microwave oven! Rotom learned Overheat!"
+      ],
+      "text": [
+        "Rotom a intrat în cuptorul cu microunde! Rotom a învățat Overheat!"
+      ]
+    },
+    {
+      "en": [
+        "Rotom went into the microwave oven! It wanted to learn Overheat, but it knows four moves already."
+      ],
+      "text": [
+        "Rotom a intrat în cuptorul cu microunde! Voia să învețe Overheat, dar știe deja patru mișcări."
+      ]
+    },
+    {
+      "en": [
+        "Rotom is in the microwave oven already. Will you let it out?"
+      ],
+      "text": [
+        "Rotom e deja în cuptorul cu microunde. Îl lași să iasă?"
+      ]
+    },
+    {
+      "en": [
+        "Rotom came out of the microwave oven and went back to its own form!"
+      ],
+      "text": [
+        "Rotom a ieșit din cuptorul cu microunde și s-a întors la forma lui!"
+      ]
+    }
+  ],
+  "WashingMachine": [
+    {
+      "en": [
+        "It's a washing machine. Its round door stands a little open."
+      ],
+      "text": [
+        "E o mașină de spălat. Ușa ei rotundă e puțin întredeschisă."
+      ]
+    },
+    {
+      "en": [
+        "Will you let your Rotom go into the washing machine?"
+      ],
+      "text": [
+        "Îl lași pe Rotom să intre în mașina de spălat?"
+      ]
+    },
+    {
+      "en": [
+        "Rotom went into the washing machine! Rotom learned Hydro Pump!"
+      ],
+      "text": [
+        "Rotom a intrat în mașina de spălat! Rotom a învățat Hydro Pump!"
+      ]
+    },
+    {
+      "en": [
+        "Rotom went into the washing machine! It wanted to learn Hydro Pump, but it knows four moves already."
+      ],
+      "text": [
+        "Rotom a intrat în mașina de spălat! Voia să învețe Hydro Pump, dar știe deja patru mișcări."
+      ]
+    },
+    {
+      "en": [
+        "Rotom is in the washing machine already. Will you let it out?"
+      ],
+      "text": [
+        "Rotom e deja în mașina de spălat. Îl lași să iasă?"
+      ]
+    },
+    {
+      "en": [
+        "Rotom came out of the washing machine and went back to its own form!"
+      ],
+      "text": [
+        "Rotom a ieșit din mașina de spălat și s-a întors la forma lui!"
+      ]
+    }
+  ],
+  "Refrigerator": [
+    {
+      "en": [
+        "It's a refrigerator. A chill comes from around its doors."
+      ],
+      "text": [
+        "E un frigider. Pe lângă uși iese un aer rece."
+      ]
+    },
+    {
+      "en": [
+        "Will you let your Rotom go into the refrigerator?"
+      ],
+      "text": [
+        "Îl lași pe Rotom să intre în frigider?"
+      ]
+    },
+    {
+      "en": [
+        "Rotom went into the refrigerator! Rotom learned Blizzard!"
+      ],
+      "text": [
+        "Rotom a intrat în frigider! Rotom a învățat Blizzard!"
+      ]
+    },
+    {
+      "en": [
+        "Rotom went into the refrigerator! It wanted to learn Blizzard, but it knows four moves already."
+      ],
+      "text": [
+        "Rotom a intrat în frigider! Voia să învețe Blizzard, dar știe deja patru mișcări."
+      ]
+    },
+    {
+      "en": [
+        "Rotom is in the refrigerator already. Will you let it out?"
+      ],
+      "text": [
+        "Rotom e deja în frigider. Îl lași să iasă?"
+      ]
+    },
+    {
+      "en": [
+        "Rotom came out of the refrigerator and went back to its own form!"
+      ],
+      "text": [
+        "Rotom a ieșit din frigider și s-a întors la forma lui!"
+      ]
+    }
+  ],
+  "Fan": [
+    {
+      "en": [
+        "It's an electric fan, its blades turning slowly by themselves."
+      ],
+      "text": [
+        "E un ventilator electric, cu paletele învârtindu-se încet singure."
+      ]
+    },
+    {
+      "en": [
+        "Will you let your Rotom go into the electric fan?"
+      ],
+      "text": [
+        "Îl lași pe Rotom să intre în ventilatorul electric?"
+      ]
+    },
+    {
+      "en": [
+        "Rotom went into the electric fan! Rotom learned Air Slash!"
+      ],
+      "text": [
+        "Rotom a intrat în ventilatorul electric! Rotom a învățat Air Slash!"
+      ]
+    },
+    {
+      "en": [
+        "Rotom went into the electric fan! It wanted to learn Air Slash, but it knows four moves already."
+      ],
+      "text": [
+        "Rotom a intrat în ventilatorul electric! Voia să învețe Air Slash, dar știe deja patru mișcări."
+      ]
+    },
+    {
+      "en": [
+        "Rotom is in the electric fan already. Will you let it out?"
+      ],
+      "text": [
+        "Rotom e deja în ventilatorul electric. Îl lași să iasă?"
+      ]
+    },
+    {
+      "en": [
+        "Rotom came out of the electric fan and went back to its own form!"
+      ],
+      "text": [
+        "Rotom a ieșit din ventilatorul electric și s-a întors la forma lui!"
+      ]
+    }
+  ],
+  "Lawnmower": [
+    {
+      "en": [
+        "It's a lawnmower. Bits of cut grass still cling to its wheels."
+      ],
+      "text": [
+        "E o mașină de tuns iarba. Încă mai are fire de iarbă tăiată pe roți."
+      ]
+    },
+    {
+      "en": [
+        "Will you let your Rotom go into the lawnmower?"
+      ],
+      "text": [
+        "Îl lași pe Rotom să intre în mașina de tuns iarba?"
+      ]
+    },
+    {
+      "en": [
+        "Rotom went into the lawnmower! Rotom learned Leaf Storm!"
+      ],
+      "text": [
+        "Rotom a intrat în mașina de tuns iarba! Rotom a învățat Leaf Storm!"
+      ]
+    },
+    {
+      "en": [
+        "Rotom went into the lawnmower! It wanted to learn Leaf Storm, but it knows four moves already."
+      ],
+      "text": [
+        "Rotom a intrat în mașina de tuns iarba! Voia să învețe Leaf Storm, dar știe deja patru mișcări."
+      ]
+    },
+    {
+      "en": [
+        "Rotom is in the lawnmower already. Will you let it out?"
+      ],
+      "text": [
+        "Rotom e deja în mașina de tuns iarba. Îl lași să iasă?"
+      ]
+    },
+    {
+      "en": [
+        "Rotom came out of the lawnmower and went back to its own form!"
+      ],
+      "text": [
+        "Rotom a ieșit din mașina de tuns iarba și s-a întors la forma lui!"
+      ]
+    }
+  ]
+}

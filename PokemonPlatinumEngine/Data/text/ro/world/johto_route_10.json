@@ -1,5 +1,16 @@
 {
-  "people": {},
+  "people": {
+    "r10_tsure_poke_static_zapdos": {
+      "name": {
+        "en": [
+          "Zapdos"
+        ],
+        "text": [
+          "Zapdos"
+        ]
+      }
+    }
+  },
   "signs": {
     "R10_005+1": {
       "en": [

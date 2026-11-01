@@ -13772,6 +13772,30 @@
     "cantBeTossed": true
   },
   {
+    "id": 9038,
+    "name": "Machine Part",
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A heavy part of the Power Plant's generator. Without it, the generator can't turn.",
+    "cantBeTossed": true
+  },
+  {
+    "id": 9039,
+    "name": "Expn Card",
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A card for the Pokégear's radio. With it, the radio picks up the stations broadcast from Kanto.",
+    "cantBeTossed": true
+  },
+  {
     "id": 9100,
     "name": "Letter",
     "pocket": "KeyItems",

@@ -1,0 +1,133 @@
+# Silph Co.'s research floor, Rotom's room, in HeartGold's Kanto (plan 20 · J15, part n). docs/scripts.md describes
+# the language; the lines are our own, on HeartGold's beats (scr_seq_T11R0702).
+#
+# Five appliances stand in a row. Each sends the first Rotom of the team into itself, with the appliance's move, as the
+# Rotom Catalog does (`team rotom`, plan 06 · R29's rule: the move of the appliance it leaves is given up for the new
+# one; with no such move and four moves known, the new one isn't learned and a line says so). An appliance with the
+# Rotom in it already lets it out again, back into its own form. The room tells the lift that the player is upstairs
+# (VAR_JOHTO_SILPH_LIFT_FLOOR, a variable of ours).
+
+
+script OnEnter
+  setvar VAR_JOHTO_SILPH_LIFT_FLOOR 1
+  end
+
+script Microwave
+  speaker none
+  text "It's a microwave oven, plugged in and humming faintly."
+  if not has "Rotom" end
+  ask "Will you let your Rotom go into the microwave oven?"
+  if no end
+  team rotom heat
+  if result == 0 goto MicrowaveInside
+  if result == 2 goto MicrowaveFull
+  cry "Rotom-Heat"
+  text "Rotom went into the microwave oven! Rotom learned Overheat!"
+  end
+label MicrowaveFull
+  cry "Rotom-Heat"
+  text "Rotom went into the microwave oven! It wanted to learn Overheat, but it knows four moves already."
+  end
+label MicrowaveInside
+  ask "Rotom is in the microwave oven already. Will you let it out?"
+  if no end
+  team rotom plain
+  cry "Rotom"
+  text "Rotom came out of the microwave oven and went back to its own form!"
+  end
+
+script WashingMachine
+  speaker none
+  text "It's a washing machine. Its round door stands a little open."
+  if not has "Rotom" end
+  ask "Will you let your Rotom go into the washing machine?"
+  if no end
+  team rotom wash
+  if result == 0 goto WashingMachineInside
+  if result == 2 goto WashingMachineFull
+  cry "Rotom-Wash"
+  text "Rotom went into the washing machine! Rotom learned Hydro Pump!"
+  end
+label WashingMachineFull
+  cry "Rotom-Wash"
+  text "Rotom went into the washing machine! It wanted to learn Hydro Pump, but it knows four moves already."
+  end
+label WashingMachineInside
+  ask "Rotom is in the washing machine already. Will you let it out?"
+  if no end
+  team rotom plain
+  cry "Rotom"
+  text "Rotom came out of the washing machine and went back to its own form!"
+  end
+
+script Refrigerator
+  speaker none
+  text "It's a refrigerator. A chill comes from around its doors."
+  if not has "Rotom" end
+  ask "Will you let your Rotom go into the refrigerator?"
+  if no end
+  team rotom frost
+  if result == 0 goto RefrigeratorInside
+  if result == 2 goto RefrigeratorFull
+  cry "Rotom-Frost"
+  text "Rotom went into the refrigerator! Rotom learned Blizzard!"
+  end
+label RefrigeratorFull
+  cry "Rotom-Frost"
+  text "Rotom went into the refrigerator! It wanted to learn Blizzard, but it knows four moves already."
+  end
+label RefrigeratorInside
+  ask "Rotom is in the refrigerator already. Will you let it out?"
+  if no end
+  team rotom plain
+  cry "Rotom"
+  text "Rotom came out of the refrigerator and went back to its own form!"
+  end
+
+script Fan
+  speaker none
+  text "It's an electric fan, its blades turning slowly by themselves."
+  if not has "Rotom" end
+  ask "Will you let your Rotom go into the electric fan?"
+  if no end
+  team rotom fan
+  if result == 0 goto FanInside
+  if result == 2 goto FanFull
+  cry "Rotom-Fan"
+  text "Rotom went into the electric fan! Rotom learned Air Slash!"
+  end
+label FanFull
+  cry "Rotom-Fan"
+  text "Rotom went into the electric fan! It wanted to learn Air Slash, but it knows four moves already."
+  end
+label FanInside
+  ask "Rotom is in the electric fan already. Will you let it out?"
+  if no end
+  team rotom plain
+  cry "Rotom"
+  text "Rotom came out of the electric fan and went back to its own form!"
+  end
+
+script Lawnmower
+  speaker none
+  text "It's a lawnmower. Bits of cut grass still cling to its wheels."
+  if not has "Rotom" end
+  ask "Will you let your Rotom go into the lawnmower?"
+  if no end
+  team rotom mow
+  if result == 0 goto LawnmowerInside
+  if result == 2 goto LawnmowerFull
+  cry "Rotom-Mow"
+  text "Rotom went into the lawnmower! Rotom learned Leaf Storm!"
+  end
+label LawnmowerFull
+  cry "Rotom-Mow"
+  text "Rotom went into the lawnmower! It wanted to learn Leaf Storm, but it knows four moves already."
+  end
+label LawnmowerInside
+  ask "Rotom is in the lawnmower already. Will you let it out?"
+  if no end
+  team rotom plain
+  cry "Rotom"
+  text "Rotom came out of the lawnmower and went back to its own form!"
+  end

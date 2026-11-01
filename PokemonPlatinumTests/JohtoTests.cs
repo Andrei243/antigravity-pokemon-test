@@ -81,6 +81,8 @@ public class JohtoTests
         "route_5_underground_path_gate", "route_5_underground_path", "route_6_underground_path_gate", "saffron_silph_co_hq",
         // Plan 20 · J15, part m: the Seafoam Islands' four lower floors
         "johto_seafoam_islands_b1f", "johto_seafoam_islands_b2f", "johto_seafoam_islands_b3f", "johto_seafoam_islands_b4f",
+        // Plan 20 · J15, part n: the Kanto Radio Tower, and Silph Co.'s lift and Rotom's room
+        "lavender_radio_station", "saffron_silph_co_elevator", "saffron_silph_co_rotom_room",
     };
 
     [Fact]
@@ -801,14 +803,14 @@ public class JohtoTests
         }
         Assert.Equal("celadon", HgWorld.KeyOf("MAP_CELADON"));
         Assert.Equal("lavender", HgWorld.KeyOf("MAP_LAVENDER"));
-        // What waits stays shut: the Radio Tower (the north gate to Route 5 is open since part e; the Game Corner, its
+        // What waits stays shut: nothing since part n opened the Radio Tower (the north gate to Route 5 is open since part e; the Game Corner, its
         // prize corner and the store's and the condominiums' floors above since part k; Silph Co.'s lobby since part l)
         var saffron = Johto.Area("saffron")!;
         foreach (int open in new[] { 2, 4, 8, 9, 15 }) Assert.NotEmpty(Overworld.WarpsAt(saffron.Warps[open].X, saffron.Warps[open].Z));
         var celadon = Johto.Area("celadon")!;
         foreach (int open in new[] { 3, 4 }) Assert.NotEmpty(Overworld.WarpsAt(celadon.Warps[open].X, celadon.Warps[open].Z));
         var lavender = Johto.Area("lavender")!;
-        Assert.Empty(Overworld.WarpsAt(lavender.Warps[6].X, lavender.Warps[6].Z));
+        Assert.NotEmpty(Overworld.WarpsAt(lavender.Warps[6].X, lavender.Warps[6].Z));
         // Erika stands at the top of her garden, reached through its trees
         var gym = walked.Single(kv => kv.Key.Name == "Celadon_Gym");
         var erika = gym.Key.Everyone.Single(n => n.Key == "t07gym0101_gsleader12");
@@ -1046,8 +1048,8 @@ public class JohtoTests
         }
         foreach (string key in new[] { "route_10_south", "route_10_pokecenter_1f", "route_10_power_plant_repaired" })
             Assert.Equal(key, HgWorld.KeyOf("MAP_" + key.ToUpperInvariant()));
-        // Lt. Surge and Zapdos before the plant wait for their sessions
-        Assert.DoesNotContain(Overworld.Everyone, n => n.Key is "r10_gsleader9" or "r10_tsure_poke_static_zapdos");
+        // Lt. Surge before the plant waits for the street meetings; Zapdos stands there since part n, once the plant runs
+        Assert.DoesNotContain(Overworld.Everyone, n => n.Key is "r10_gsleader9");
         Assert.Equal(InteriorStyle.PokemonCenter, MapNamed("Route10North_PokemonCenter_1F").Interior);
     }
 
@@ -1104,14 +1106,51 @@ public class JohtoTests
         // Its two hidden items are there to be found
         Assert.Equal(2, path.Key.HiddenItems.Count);
         // The men HeartGold keeps in the gates' doorways are held back, and so is Steven in the lobby; the lift to
-        // Rotom's room stays shut
+        // Rotom's room is shut until its guard has seen a Rotom (part n)
         Assert.DoesNotContain(Overworld.Everyone, n => n.Key is "r05_gsmiddleman1" or "r06_gsmiddleman1");
         var silph = MapNamed("Saffron_SilphCo");
         Assert.DoesNotContain(silph.Everyone, n => n.Key == "t11r0701_daigo");
         Assert.Contains(silph.NPCs, n => n.Key == "t11r0701_gswoman6");
         Assert.Contains(silph.NPCs, n => n.Key == "t11r0701_policeman");
-        Assert.Null(silph.GetWarpAt(3, 2));
-        Assert.DoesNotContain(walked.Keys, m => m.Name.StartsWith("Saffron_SilphCo_", StringComparison.Ordinal));
+        Assert.Equal("FLAG_JOHTO_SILPH_LIFT_OPEN", silph.GetWarpAt(3, 2)?.OpenedBy);
+    }
+
+    [Fact]
+    public void TheKantoRadioTowerAndSilphCosRotomRoomAreWalkedTo()
+    {
+        // Plan 20 · J15, part n: the Kanto Radio Tower behind Lavender Town's last shut door, and Silph Co.'s lift up to
+        // Rotom's room
+        var walked = Walked.Value;
+        foreach (string name in new[] { "Lavender_RadioTower", "Saffron_SilphCo_Elevator", "Saffron_SilphCo_RotomRoom" })
+        {
+            Assert.True(walked.Keys.Any(m => m.Name == name), $"nobody walks into {name}");
+            Assert.Equal(RegionDatabase.Johto, RegionDatabase.RegionOfMap(name)!.Id);
+        }
+        foreach (string key in new[] { "lavender_radio_station", "saffron_silph_co_elevator", "saffron_silph_co_rotom_room" })
+            Assert.False(HgWorld.Clashes(key));
+        var door = Overworld.Warps.Single(w => w.TargetMap == "Lavender_RadioTower");
+        Assert.NotNull(Overworld.GetWarpAt(door.SourceX, door.SourceY));
+        // The director stands at his desk, the gentleman HeartGold puts on his tile is held back
+        var tower = MapNamed("Lavender_RadioTower");
+        Assert.Contains(tower.NPCs, n => n.Key == "t05r0701_gsgentleman_2");
+        Assert.DoesNotContain(tower.Everyone, n => n.Key == "t05r0701_gsgentleman");
+        // The five appliances stand in Rotom's room as things of the map, each drawn as its own card
+        var room = MapNamed("Saffron_SilphCo_RotomRoom");
+        var appliances = room.NPCs.Where(n => n.GymThing is PropType.Microwave or PropType.WashingMachine or PropType.Refrigerator
+            or PropType.ElectricFan or PropType.Lawnmower).ToList();
+        Assert.Equal(5, appliances.Count);
+        Assert.All(appliances, a => Assert.True(a.IsThing));
+        foreach (var kind in new[] { PropType.Microwave, PropType.WashingMachine, PropType.Refrigerator, PropType.ElectricFan, PropType.Lawnmower })
+        {
+            var card = PokemonPlatinumEngine.Graphics.ThingCards.Paint(kind);
+            Assert.True(card.Width <= 32, $"{kind} is wider than a tile");
+            Assert.Contains(Enumerable.Range(0, card.Width), x => Enumerable.Range(0, card.Height).Any(y => card.Get(x, y).A > 0));
+        }
+        // Zapdos waits before the Power Plant, Route 12's Snorlax by its gate house, Nugget Bridge's grunt and the
+        // Cerulean Gym's: each by a flag of the plant's story
+        Assert.Contains(Overworld.Everyone, n => n.Key == "r10_tsure_poke_static_zapdos" && n.ShownBy == "FLAG_JOHTO_POWER_PLANT_FIXED");
+        Assert.Contains(Overworld.Everyone, n => n.Key == "r24_rocketm" && n.ShownBy == "FLAG_JOHTO_CERULEAN_ROCKET_FLED");
+        Assert.Contains(MapNamed("Cerulean_Gym").Everyone, n => n.Key == "t04gym0101_rocketm" && n.ShownBy == "FLAG_JOHTO_POWER_PLANT_ROBBED");
     }
 
     [Fact]

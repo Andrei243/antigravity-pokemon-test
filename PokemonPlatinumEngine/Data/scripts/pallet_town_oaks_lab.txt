@@ -1,0 +1,60 @@
+# Professor Oak's lab in Pallet Town as HeartGold has it three years on (plan 20 · J15, part n). docs/scripts.md
+# describes the language; the lines are our own, on HeartGold's beats (scr_seq_T01R0301).
+#
+# Once Red has been beaten at Mt. Silver's summit (FLAG_JOHTO_BEAT_RED), three Poké Balls stand on the professor's table
+# (HeartGold's FLAG_HIDE_OAKS_LAB_*_BALL objects, shown by that flag here) and he offers the one who beat Red the choice
+# of Bulbasaur, Charmander or Squirtle, at level 5. One is taken, and then the table is bare again
+# (FLAG_JOHTO_GOT_OAKS_GIFT, ours, with HeartGold's three FLAG_HIDE_OAKS_LAB_*_BALL flags, one to a ball, all set).
+
+
+script Oak
+  face t01r0301_ookido player
+  speaker "Professor Oak"
+  if flag FLAG_JOHTO_GOT_OAKS_GIFT goto After
+  if flag FLAG_JOHTO_BEAT_RED goto Offer
+  say "Well, well! A Champion from Johto, here in my lab! Kanto has eight Gyms of its own, you know. Have you thought of taking them on?"
+  end
+label Offer
+  say "I heard the news from Mt. Silver. You beat Red! Nobody has done that in years."
+  say "A Trainer like you deserves to raise one of the Pokémon I gave Red long ago. Take whichever you like from the table."
+  end
+label After
+  say "Raise that Pokémon well. I'd love to see what a Trainer who beat Red can do with it."
+  end
+
+
+# A Poké Ball on the table: the Pokémon in it, asked about, and given
+script Gift
+  speaker none
+  if flag FLAG_JOHTO_GOT_OAKS_GIFT end
+  if party >= 6 goto Full
+  if subject "t01r0301_monstarball" goto Charmander
+  if subject "t01r0301_monstarball_2" goto Squirtle
+  ask "This Poké Ball holds Bulbasaur, the Grass Pokémon. Will you take it?"
+  if no end
+  givepokemon "Bulbasaur" 5
+  fanfare pokemon
+  text "{player} received Bulbasaur from Professor Oak!"
+  goto Taken
+label Charmander
+  ask "This Poké Ball holds Charmander, the Fire Pokémon. Will you take it?"
+  if no end
+  givepokemon "Charmander" 5
+  fanfare pokemon
+  text "{player} received Charmander from Professor Oak!"
+  goto Taken
+label Squirtle
+  ask "This Poké Ball holds Squirtle, the Water Pokémon. Will you take it?"
+  if no end
+  givepokemon "Squirtle" 5
+  fanfare pokemon
+  text "{player} received Squirtle from Professor Oak!"
+label Taken
+  setflag FLAG_JOHTO_GOT_OAKS_GIFT
+  setflag FLAG_HIDE_OAKS_LAB_CHARMANDER_BALL
+  setflag FLAG_HIDE_OAKS_LAB_SQUIRTLE_BALL
+  setflag FLAG_HIDE_OAKS_LAB_BULBASAUR_BALL
+  end
+label Full
+  text "Your team is full. Make room on it before you take a Pokémon from the table."
+  end

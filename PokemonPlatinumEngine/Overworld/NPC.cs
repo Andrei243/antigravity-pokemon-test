@@ -343,6 +343,14 @@ public class NPC
     /// </summary>
     public const string GymStatueType = "GymStatue";
 
+    /// <summary>
+    /// Rotom's five appliances on Silph Co.'s research floor (plan 20 · J15, part n; HeartGold's <c>rotomf</c>,
+    /// <c>rotomw</c>, <c>rotomi</c>, <c>rotoms</c> and <c>rotomg</c> objects): things of the map, in the way like a person
+    /// and spoken to like one (their scripts send a Rotom of the team in: <c>team rotom</c>). Drawn as cards.
+    /// </summary>
+    public const string MicrowaveType = "Microwave", WashingMachineType = "WashingMachine", RefrigeratorType = "Refrigerator",
+        ElectricFanType = "ElectricFan", LawnmowerType = "Lawnmower";
+
     /// <summary>Which thing of a Gym's puzzle this is; null for anyone and anything else.</summary>
     public PropType? GymThing => NpcType switch
     {
@@ -365,6 +373,11 @@ public class NPC
         TownMapType => PropType.RolledTownMap,
         IceBlockType => PropType.IceBlock,
         GymStatueType => PropType.GymStatue,
+        MicrowaveType => PropType.Microwave,
+        WashingMachineType => PropType.WashingMachine,
+        RefrigeratorType => PropType.Refrigerator,
+        ElectricFanType => PropType.ElectricFan,
+        LawnmowerType => PropType.Lawnmower,
         _ => null
     };
 

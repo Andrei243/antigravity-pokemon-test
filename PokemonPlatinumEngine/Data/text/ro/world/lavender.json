@@ -29,10 +29,10 @@
       },
       "dialog": {
         "en": [
-          "The tall building is the radio station. It broadcasts all over Kanto, but they won't let me in to watch."
+          "The tall building is the radio station. It broadcasts all over Kanto, when the power's on, that is."
         ],
         "text": [
-          "Clădirea înaltă este stația de radio. Emite în tot Kanto, dar nu mă lasă înăuntru să mă uit."
+          "Clădirea înaltă e stația de radio. Emite în tot Kanto, când e curent, adică."
         ]
       }
     },
@@ -84,10 +84,10 @@
     },
     "T05_005+1": {
       "en": [
-        "Kanto Radio Tower\nClosed to visitors."
+        "Kanto Radio Tower\nBroadcasting to all of Kanto."
       ],
       "text": [
-        "Kanto Radio Tower\nÎnchis vizitatorilor."
+        "Turnul Radio Kanto\nEmite pentru tot Kanto."
       ]
     },
     "T05_007+1": {

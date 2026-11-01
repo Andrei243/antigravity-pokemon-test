@@ -1,0 +1,41 @@
+# Route 12 as HeartGold has it three years on (plan 20 · J15, part n). docs/scripts.md describes the language; the
+# lines are our own, on HeartGold's beats (scr_seq_R12, scr_seq_R11's Snorlax).
+#
+# The Snorlax asleep by the gate house wakes to the Poké Flute's tune, which the Pokégear's radio picks up from the
+# Kanto Radio Tower once the Expn Card is in the bag (lavender_radio_station.txt). HeartGold has the player tune the
+# radio's dial to the channel; here the card is the radio's ear and the question is the dial (the rulings'
+# "HeartGold's Kanto, part n"). Woken, it battles at level 50, and beaten or caught it is gone for good
+# (FLAG_JOHTO_FOUGHT_SNORLAX, ours); run from, it lumbers off (HeartGold's FLAG_HIDE_ROUTE_12_SNORLAX) and is back
+# asleep on the next visit.
+
+
+script OnEnter
+  if not flag FLAG_JOHTO_FOUGHT_SNORLAX clearflag FLAG_HIDE_ROUTE_12_SNORLAX
+  end
+
+# R12_005: the Snorlax
+script Snorlax
+  speaker none
+  text "A Snorlax is fast asleep across the way. It doesn't stir, however loudly it is called."
+  if not item "Expn Card" end
+  ask "Will you tune the Pokégear's radio to the Poké Flute channel?"
+  if no end
+  scene "Snorlax woken by the flute"
+  text "{player} turned the Pokégear's radio up loud. A cheerful tune filled the air..."
+  wait 0.5
+  emote self exclaim
+  cry "Snorlax"
+  camera shake 0.3
+  text "Snorlax woke up! It doesn't look happy to be woken!"
+  endscene
+  wildbattle "Snorlax" 50
+  if result == 2 goto Fled
+  setflag FLAG_JOHTO_FOUGHT_SNORLAX
+  setflag FLAG_HIDE_ROUTE_12_SNORLAX
+  hide self
+  end
+label Fled
+  setflag FLAG_HIDE_ROUTE_12_SNORLAX
+  hide self
+  text "Snorlax lumbered off down the pier. It looks as if it's off to find another place to nap."
+  end

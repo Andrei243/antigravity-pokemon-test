@@ -1,0 +1,20 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "The lift has reached the research floor."
+      ],
+      "text": [
+        "Liftul a ajuns la etajul de cercetare."
+      ]
+    },
+    {
+      "en": [
+        "The lift has reached the lobby."
+      ],
+      "text": [
+        "Liftul a ajuns în hol."
+      ]
+    }
+  ]
+}

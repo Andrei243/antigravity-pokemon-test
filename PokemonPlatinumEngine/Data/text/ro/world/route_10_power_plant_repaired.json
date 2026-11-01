@@ -8,14 +8,6 @@
         "text": [
           "Managerul"
         ]
-      },
-      "dialog": {
-        "en": [
-          "I'm the manager of this plant. Every light in Kanto runs on what our generator makes, so I keep an eye on it day and night."
-        ],
-        "text": [
-          "Sunt managerul centralei. Fiecare bec din Kanto funcționează cu ce produce generatorul nostru, așa că îl țin sub ochi zi și noapte."
-        ]
       }
     },
     "r10r0201_policeman": {
@@ -65,10 +57,10 @@
       },
       "dialog": {
         "en": [
-          "The generator spins day and night. If it ever stopped, the Magnet Train would stop with it."
+          "The generator here powers the Magnet Train and every station of Kanto's radio. Everything depends on it."
         ],
         "text": [
-          "Generatorul se învârte zi și noapte. Dacă s-ar opri vreodată, s-ar opri și Trenul Magnetic."
+          "Generatorul de aici alimentează Trenul Magnetic și toate posturile de radio din Kanto. Totul depinde de el."
         ]
       }
     },
@@ -98,14 +90,6 @@
         "text": [
           "Inginerul"
         ]
-      },
-      "dialog": {
-        "en": [
-          "I check every dial on these panels twice a day. Everything reads fine."
-        ],
-        "text": [
-          "Verific fiecare cadran de pe panourile astea de două ori pe zi. Totul arată bine."
-        ]
       }
     },
     "r10r0201_gsassistantm_4": {
@@ -119,10 +103,10 @@
       },
       "dialog": {
         "en": [
-          "There's a radio tower in Lavender Town now. Its music reaches us all the way out here."
+          "There's a radio tower in Lavender Town now. Every song it sends out runs on the power we make here."
         ],
         "text": [
-          "Acum e un turn de radio în Orășelul Lavender. Muzica lui ajunge până aici."
+          "Acum e un turn radio în Orașul Lavender. Fiecare cântec pe care îl emite merge cu curentul făcut aici."
         ]
       }
     }

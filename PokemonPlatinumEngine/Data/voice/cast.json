@@ -365,6 +365,10 @@
       "note": "first spoken at slateport_city.txt(38)",
       "provisional": true
     },
+    "engineer": {
+      "note": "first spoken at route_10_power_plant_repaired.txt(58)",
+      "provisional": true
+    },
     "erika": {
       "note": "first spoken at celadon_city_gym.txt(10)",
       "provisional": true
@@ -910,6 +914,10 @@
       "provisional": true
     },
     "prof_oak": {},
+    "professor_oak": {
+      "note": "first spoken at pallet_town_oaks_lab.txt(12)",
+      "provisional": true
+    },
     "prospector": {
       "note": "first spoken at three_island_dunsparce_tunnel.txt(16)",
       "provisional": true
@@ -1418,6 +1426,7 @@
     "Elesa": "elesa",
     "Emmet": "emmet",
     "Energy Guru": "energy_guru",
+    "Engineer": "engineer",
     "Erika": "erika",
     "Ernest": "ernest",
     "Eusine": "eusine",
@@ -1580,6 +1589,7 @@
     "Prof. Juniper": "prof_juniper",
     "Prof. Oak": "prof_oak",
     "Prof. Rowan": "rowan",
+    "Professor Oak": "professor_oak",
     "Professor Rowan": "rowan",
     "Prospector": "prospector",
     "Proton": "proton",

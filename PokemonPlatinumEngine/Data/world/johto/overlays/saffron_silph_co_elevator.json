@@ -1,0 +1,10 @@
+{
+  // Silph Co.'s lift (plan 20 · J15, part n): HeartGold's car, our words. It carries whoever comes in to the other end
+  // at once (scripts/saffron_silph_co_elevator.txt), as the Glitter Lighthouse's does; its own door, HeartGold's way
+  // back to wherever the player came from, leads to the lobby here, for whoever is ever left standing in it
+  "area": "saffron_silph_co_elevator",
+  "bgmTrack": "kanto/viridian",
+  "doors": [
+    { "warp": 0, "map": "Saffron_SilphCo", "x": 3, "y": 3, "facing": "Down" }
+  ]
+}

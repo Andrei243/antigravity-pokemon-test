@@ -2176,6 +2176,199 @@ public class JohtoStoryTests
     }
 
     [Fact]
+    public void ThePowerPlantsStolenPartIsFoundAndTheRadioTowerZapdosAndSnorlaxFollow()
+    {
+        // Plan 20 · J15, part n: the Power Plant robbed, the grunt in the Cerulean Gym and on Nugget Bridge, the part in
+        // the pool, TM73, the Kanto Radio Tower's Expn Card, Zapdos at the plant's door and Snorlax woken by the radio
+        var game = new Game();
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Typhlosion")!, 60));
+
+        // Before the manager has told of the theft nobody stands in the Gym or on the bridge, and the tower is off the air
+        game.Arrive("Cerulean_Gym", 10, 24);
+        Assert.Null(game.Present("t04gym0101_rocketm"));
+        game.Arrive("Lavender_RadioTower", 3, 11);
+        Assert.Contains(game.Talk("t05r0701_gsgentleman_2").Transcript, l => l.Text.Contains("Power Plant"));
+        Assert.Equal(0, game.Bag.GetQuantity(ItemDatabase.Get("Expn Card")!));
+        game.Arrive("Johto", 1419, 187);
+        Assert.Null(game.Present("r10_tsure_poke_static_zapdos"));
+
+        // The manager tells of the theft, once
+        game.Arrive("Route10_PowerPlant", 7, 19);
+        Assert.Contains(game.Talk("r10r0201_gsbigman").Transcript, l => l.Text.Contains("Cerulean"));
+        Assert.True(game.Story.Has("FLAG_JOHTO_POWER_PLANT_ROBBED"));
+        Assert.Contains(game.Talk("r10r0201_gsassistantm_3").Transcript, l => l.Text.Contains("won't turn"));
+
+        // The grunt in the Cerulean Gym gives himself away and runs to Nugget Bridge
+        game.Arrive("Cerulean_Gym", 10, 24);
+        Assert.NotNull(game.Present("t04gym0101_rocketm"));
+        Assert.Empty(game.Read(3, 10).Transcript);
+        game.Talk("t04gym0101_rocketm");
+        Assert.True(game.Story.Has("FLAG_JOHTO_CERULEAN_ROCKET_FLED"));
+        game.Arrive("Cerulean_Gym", 10, 24);
+        Assert.Null(game.Present("t04gym0101_rocketm"));
+
+        // On the bridge he battles and tells where the part is
+        game.Arrive("Johto", 1328, 84);
+        Assert.NotNull(game.Present("r24_rocketm"));
+        Assert.Contains(game.Talk("r24_rocketm").Log, l => l.StartsWith("battle johto_team_rocket_grunt_24 Won"));
+        Assert.True(game.Story.Has("FLAG_JOHTO_BEAT_ROUTE_24_ROCKET"));
+        Assert.Null(game.Present("r24_rocketm"));
+
+        // The part in the pool's corner, found once
+        game.Arrive("Cerulean_Gym", 10, 24);
+        game.Read(4, 10);
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Machine Part")!));
+        game.Read(3, 10);
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Machine Part")!));
+
+        // Brought back: the generator turns, TM73 once
+        game.Arrive("Route10_PowerPlant", 7, 19);
+        game.Talk("r10r0201_gsbigman");
+        Assert.Equal(0, game.Bag.GetQuantity(ItemDatabase.Get("Machine Part")!));
+        Assert.True(game.Story.Has("FLAG_JOHTO_POWER_PLANT_FIXED"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM73")!));
+        game.Talk("r10r0201_gsbigman");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM73")!));
+
+        // The Radio Tower is back on the air: the Expn Card, once
+        game.Arrive("Lavender_RadioTower", 3, 11);
+        game.Talk("t05r0701_gsgentleman_2");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Expn Card")!));
+        game.Talk("t05r0701_gsgentleman_2");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Expn Card")!));
+
+        // Zapdos at the plant's door: run from, it is back on the next visit; fought, it is gone for good
+        game.Arrive("Johto", 1419, 187);
+        Assert.NotNull(game.Present("r10_tsure_poke_static_zapdos"));
+        game.Fight = BattleOutcome.Fled;
+        game.Talk("r10_tsure_poke_static_zapdos");
+        Assert.Null(game.Present("r10_tsure_poke_static_zapdos"));
+        game.Arrive("Johto", 1419, 187);
+        Assert.NotNull(game.Present("r10_tsure_poke_static_zapdos"));
+        game.Fight = BattleOutcome.Won;
+        game.Talk("r10_tsure_poke_static_zapdos");
+        Assert.True(game.Story.Has("FLAG_JOHTO_FOUGHT_ZAPDOS"));
+        game.Arrive("Johto", 1419, 187);
+        Assert.Null(game.Present("r10_tsure_poke_static_zapdos"));
+
+        // Snorlax wakes to the radio's Poké Flute with the Expn Card, and is gone once fought
+        game.Arrive("Johto", 1411, 308);
+        Assert.NotNull(game.Present("r12_kabigon"));
+        game.Talk("r12_kabigon");
+        Assert.True(game.Story.Has("FLAG_JOHTO_FOUGHT_SNORLAX"));
+        game.Arrive("Johto", 1411, 308);
+        Assert.Null(game.Present("r12_kabigon"));
+    }
+
+    [Theory]
+    [InlineData("t01r0301_monstarball", "Charmander")]
+    [InlineData("t01r0301_monstarball_2", "Squirtle")]
+    [InlineData("t01r0301_monstarball_3", "Bulbasaur")]
+    public void ProfessorOakGivesAKantoStarterToWhoeverBeatRed(string ball, string species)
+    {
+        // Plan 20 · J15, part n: the three Poké Balls stand on Oak's table once Red is beaten, and one is taken
+        var game = new Game();
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Typhlosion")!, 60));
+        game.Arrive("Pallet_OaksLab", 8, 12);
+        Assert.Null(game.Present(ball));
+        game.Story.Set("FLAG_JOHTO_BEAT_RED");
+        game.Arrive("Pallet_OaksLab", 8, 12);
+        Assert.Contains(game.Talk("t01r0301_ookido").Transcript, l => l.Text.Contains("beat Red"));
+        Assert.NotNull(game.Present(ball));
+        game.Answers.Enqueue(1);
+        game.Talk(ball);
+        Assert.Single(game.Party.Members);
+        game.Talk(ball);
+        Assert.Equal(species, game.Party.Members[1].Species.Name);
+        Assert.Equal(5, game.Party.Members[1].Level);
+        Assert.True(game.Story.Has("FLAG_JOHTO_GOT_OAKS_GIFT"));
+        Assert.Null(game.Present("t01r0301_monstarball"));
+        Assert.Null(game.Present("t01r0301_monstarball_2"));
+        Assert.Null(game.Present("t01r0301_monstarball_3"));
+    }
+
+    [Fact]
+    public void SnorlaxSleepsOnWithoutTheExpnCard()
+    {
+        // Plan 20 · J15, part n: without the card the radio has nothing to play it
+        var game = new Game();
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Typhlosion")!, 60));
+        game.Arrive("Johto", 1411, 308);
+        var host = game.Talk("r12_kabigon");
+        Assert.Empty(host.Asked);
+        Assert.False(game.Story.Has("FLAG_JOHTO_FOUGHT_SNORLAX"));
+        Assert.NotNull(game.Present("r12_kabigon"));
+    }
+
+    [Fact]
+    public void SilphCosLiftOpensForARotomWhoseAppliancesChangeItsForm()
+    {
+        // Plan 20 · J15, part n: the guard lets nobody up without a Rotom
+        var game = new Game();
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Typhlosion")!, 60));
+        game.Arrive("Saffron_SilphCo", 11, 13);
+        game.Talk("t11r0701_policeman");
+        Assert.False(game.Story.Has("FLAG_JOHTO_SILPH_LIFT_OPEN"));
+        Assert.True(game.Map.IsSolid(3, 2));
+
+        var rotom = new Pokemon(PokemonDatabase.Get("Rotom")!, 40);
+        while (rotom.Moves.Count > 2) rotom.Moves.RemoveAt(rotom.Moves.Count - 1);
+        game.Party.Add(rotom);
+        game.Talk("t11r0701_policeman");
+        Assert.True(game.Story.Has("FLAG_JOHTO_SILPH_LIFT_OPEN"));
+        Assert.False(game.Map.IsSolid(3, 2));
+
+        // The lift carries the player up to Rotom's room, and back down
+        game.Through("Saffron_SilphCo_Elevator");
+        Assert.Equal("Saffron_SilphCo_RotomRoom", game.Map.Name);
+        Assert.Equal(1, game.Story.Var("VAR_JOHTO_SILPH_LIFT_FLOOR"));
+
+        // The microwave: Rotom-Heat with Overheat
+        game.Talk("t11r0702_rotomf");
+        Assert.Equal("Rotom-Heat", rotom.Form);
+        Assert.True(rotom.Knows("Overheat"));
+        // The fan: Rotom-Fan, Air Slash in Overheat's place
+        game.Talk("t11r0702_rotoms");
+        Assert.Equal("Rotom-Fan", rotom.Form);
+        Assert.True(rotom.Knows("Air Slash"));
+        Assert.False(rotom.Knows("Overheat"));
+        Assert.Equal(3, rotom.Moves.Count);
+        // The fan again lets it out, back into its own form without the appliance's move
+        game.Talk("t11r0702_rotoms");
+        Assert.Null(rotom.Form);
+        Assert.False(rotom.Knows("Air Slash"));
+        // Each appliance is its own: the refrigerator, the washing machine and the mower
+        foreach (var (key, form, move) in new[] { ("t11r0702_rotomi", "Rotom-Frost", "Blizzard"), ("t11r0702_rotomw", "Rotom-Wash", "Hydro Pump"), ("t11r0702_rotomg", "Rotom-Mow", "Leaf Storm") })
+        {
+            game.Talk(key);
+            Assert.Equal(form, rotom.Form);
+            Assert.True(rotom.Knows(move), move);
+        }
+        // Without a Rotom an appliance only says what it is
+        game.Party.Remove(rotom);
+        var host = game.Talk("t11r0702_rotomf");
+        Assert.Empty(host.Asked);
+        Assert.Single(host.Transcript);
+    }
+
+    [Fact]
+    public void ARotomWithFourMovesGoesIntoAnApplianceButLearnsNothing()
+    {
+        var team = new Party();
+        var rotom = new Pokemon(PokemonDatabase.Get("Rotom")!, 50);
+        while (rotom.Moves.Count < 4) rotom.TryLearn(new[] { "Thunder Shock", "Astonish", "Double Team", "Thunder Wave", "Ominous Wind" }.First(m => !rotom.Knows(m)));
+        team.Add(rotom);
+        var host = new HeadlessScriptHost(new StoryState(), team, new Inventory());
+        var runner = new ScriptRunner(Scripts, host);
+        runner.Start(ScriptParser.Parse("test", "script T\n  team rotom wash\n  end\n")[0]);
+        runner.RunToEnd();
+        Assert.Equal("Rotom-Wash", rotom.Form);
+        Assert.Equal(2, runner.Result);
+        Assert.Equal(4, rotom.Moves.Count);
+        Assert.False(rotom.Knows("Hydro Pump"));
+    }
+
+    [Fact]
     public void TheKimonoGirlsBattleFiveInARowAndHoOhComesToTheBellTowersRoof()
     {
         // Plan 20 · J11, part d: before the Rainbow Wing the dancers only talk and the gate's north door is shut; with
