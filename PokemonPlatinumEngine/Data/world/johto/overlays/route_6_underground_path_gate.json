@@ -1,0 +1,5 @@
+{
+  // The Underground Path's gate on Route 6 (plan 20 · J15, part l): the same little hall as Route 5's, with nobody in it
+  "area": "route_6_underground_path_gate",
+  "bgmTrack": "kanto/mt_moon"
+}

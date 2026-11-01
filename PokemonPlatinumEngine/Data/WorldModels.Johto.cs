@@ -369,7 +369,9 @@ public static partial class WorldModels
         Ground("kbc_sl", "a flight of steps down to Vermilion's quays: its tiles draw it"),
         Door("kbc_dr01"), Door("kbc_dr02"), Door("kbc_dr03"),
         Built("kn_gate_a", BuildingKind.Gate, "the gate house at Vermilion City's north edge, to Route 6"),
-        Ground("kn_chika", "the mouth of Diglett's Cave on Route 11 (the route is not open: its tiles draw it)"),
+        // Plan 20 · J15, part l: the little house over the stairs down to the Underground Path on Routes 5 and 6, as
+        // kn_chika_x is the shut one on Routes 7 and 8 (an earlier row had taken it for Diglett's Cave's mouth)
+        Built("kn_chika", BuildingKind.Hall, "the little house over the stairs down to the Underground Path on Routes 5 and 6"),
         Ground("maq_dr01", "a door off the S.S. Aqua's corridor: the warp's tile is the way"),
         Ground("mg09_es1", "the Vermilion Gym's electric fittings on its walls: the room's walls draw them"),
         Ground("mg09_es2", "the Vermilion Gym's electric fittings on its walls: the room's walls draw them"),
@@ -388,7 +390,7 @@ public static partial class WorldModels
         Built("ybc_slf", BuildingKind.Office, "Silph Co.'s head office in Saffron City", Architecture.Boulevard, storeys: 3, sign: "SILPH CO."),
         Built("ya_gym", BuildingKind.Gym, "the Saffron Gym"),
         Built("kn_gate_b", BuildingKind.Gate, "a gate house on a road into Saffron City that runs east and west"),
-        Built("kn_chika_x", BuildingKind.Hall, "the Underground Path's entrance on Route 6 (the path is shut)"),
+        Built("kn_chika_x", BuildingKind.Hall, "the Underground Path's shut entrances on Routes 7 and 8"),
         House("ha_h01a", Architecture.Riverside, "a house of Cerulean City, and the one on Route 5 north of Saffron City"),
         Door("ha_dr01"), Door("ybc_dor1"), Door("ybc_dor2"), Door("ybc_dor3"),
         Ground("ymbk_sl", "a flight of steps of Saffron City's raised walks: its tiles draw it"),
@@ -483,6 +485,9 @@ public static partial class WorldModels
         Ground("tafl04_h01", "the little room on the Condominiums' roof: the roof is a room here, and its blocked tiles stand for the room's walls"),
         Door("tafl04_door1"),
         Ground("tafl_light", "a light on the wall by the Condominiums' lifts on the roof: nothing stands for it"),
+
+        // ---------------------------------------------------------------- plan 20 · J15, part l: Silph Co.'s head office
+        Furniture("obj_sylph", PropType.Statue, "the company's monument in the middle of Silph Co.'s lobby"),
     };
 
     private static readonly Dictionary<string, WorldModel> JohtoByName = JohtoTable.ToDictionary(m => m.Name, StringComparer.Ordinal);

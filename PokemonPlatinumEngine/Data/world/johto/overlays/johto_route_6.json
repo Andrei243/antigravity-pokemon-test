@@ -1,13 +1,11 @@
 {
   // Route 6 as HeartGold has it three years on (plan 20 · J15, part c): the road north from Vermilion City to Saffron
   // City's gate, round a pond. Its key meets FireRed's, so it takes Johto's prefix (HgWorld.Clashes). The Underground
-  // Path's gate (warp 2) stays shut, and the man before it says so (HeartGold hides him by FLAG_UNK_258 once the path
-  // opens, which nothing here sets)
+  // Path's gate (warp 2) is open since part l (route_6_underground_path_gate); the man HeartGold keeps before its door
+  // behind FLAG_UNK_258, which nothing here sets, would stand in the doorway, and is held back
   "area": "johto_route_6",
   "bgmTrack": "kanto/route3",
-  "locked": [
-    2
-  ],
+  "heldBack": [ "r06_gsmiddleman1" ],
   "people": {
     "r06_campboy_2": {
       "name": "Virgil",
@@ -37,14 +35,6 @@
         "dialogueBefore": "Twins Dani: Two of us against one of you!",
         "dialogueAfter": "Twins Dani: One of you was enough for two of us."
       }
-    },
-    "r06_gsmiddleman1": {
-      "name": "Man",
-      "hiddenBy": "",
-      "still": true,
-      "dialog": [
-        "The Underground Path runs from here to Route 5, but it's shut while the work on it goes on. Sorry!"
-      ]
     }
   },
   "signs": {

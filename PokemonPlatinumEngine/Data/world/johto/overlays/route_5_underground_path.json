@@ -1,0 +1,15 @@
+{
+  // The Underground Path (plan 20 · J15, part l): HeartGold's long tunnel under Saffron City from Route 5's gate to
+  // Route 6's, with its two hidden items and one man walking it, our words. FireRed's Kanto has tunnels of its own
+  // (UndergroundPath_…); this is Johto's map of HeartGold's
+  "area": "route_5_underground_path",
+  "bgmTrack": "kanto/mt_moon",
+  "people": {
+    "r05r0202_gsmiddleman1": {
+      "name": "Man",
+      "dialog": [
+        "I walk this tunnel every day to my work in Saffron. The rain never gets down here, and the Magnet Train costs money!"
+      ]
+    }
+  }
+}

@@ -77,6 +77,8 @@ public class JohtoTests
         "celadon_department_store_roof", "celadon_department_store_elevator", "celadon_condominiums_2f", "celadon_condominiums_3f",
         "celadon_condominiums_roof", "celadon_condominiums_roof_room", "celadon_condominiums_left_elevator",
         "celadon_condominiums_right_elevator", "celadon_game_corner", "celadon_prize_corner",
+        // Plan 20 · J15, part l: the Underground Path from Route 5 to Route 6 with its two gates, and Silph Co.'s lobby
+        "route_5_underground_path_gate", "route_5_underground_path", "route_6_underground_path_gate", "saffron_silph_co_hq",
     };
 
     [Fact]
@@ -797,11 +799,10 @@ public class JohtoTests
         }
         Assert.Equal("celadon", HgWorld.KeyOf("MAP_CELADON"));
         Assert.Equal("lavender", HgWorld.KeyOf("MAP_LAVENDER"));
-        // What waits stays shut: Silph Co. and the Radio Tower (the north gate to Route 5 is open since part e; the Game
-        // Corner, its prize corner and the store's and the condominiums' floors above since part k)
+        // What waits stays shut: the Radio Tower (the north gate to Route 5 is open since part e; the Game Corner, its
+        // prize corner and the store's and the condominiums' floors above since part k; Silph Co.'s lobby since part l)
         var saffron = Johto.Area("saffron")!;
-        foreach (int shut in new[] { 8 }) Assert.Empty(Overworld.WarpsAt(saffron.Warps[shut].X, saffron.Warps[shut].Z));
-        foreach (int open in new[] { 2, 4, 15 }) Assert.NotEmpty(Overworld.WarpsAt(saffron.Warps[open].X, saffron.Warps[open].Z));
+        foreach (int open in new[] { 2, 4, 8, 9, 15 }) Assert.NotEmpty(Overworld.WarpsAt(saffron.Warps[open].X, saffron.Warps[open].Z));
         var celadon = Johto.Area("celadon")!;
         foreach (int open in new[] { 3, 4 }) Assert.NotEmpty(Overworld.WarpsAt(celadon.Warps[open].X, celadon.Warps[open].Z));
         var lavender = Johto.Area("lavender")!;
@@ -840,9 +841,9 @@ public class JohtoTests
         }
         Assert.Equal("cerulean", HgWorld.KeyOf("MAP_CERULEAN"));
         Assert.Equal("cerulean_gym", HgWorld.KeyOf("MAP_CERULEAN_GYM"));
-        // What waits stays shut: the Underground Path's gate on Route 5 and Cerulean Cave
+        // What waits stays shut: Cerulean Cave (the Underground Path's gate on Route 5 is open since part l)
         var route5 = Johto.Area("johto_route_5")!;
-        Assert.Empty(Overworld.WarpsAt(route5.Warps[2].X, route5.Warps[2].Z));
+        Assert.NotEmpty(Overworld.WarpsAt(route5.Warps[2].X, route5.Warps[2].Z));
         var cerulean = Johto.Area("cerulean")!;
         Assert.Empty(Overworld.WarpsAt(cerulean.Warps[7].X, cerulean.Warps[7].Z));
         Assert.DoesNotContain(walked.Keys, m => m.Name.StartsWith("CeruleanCave", StringComparison.Ordinal));
@@ -1076,6 +1077,40 @@ public class JohtoTests
         Assert.DoesNotContain(MapNamed("Celadon_DeptStore_4F").Everyone, n => n.Key is "t07r0104_gsleader1" or "t07r0104_gsleader13");
         Assert.DoesNotContain(MapNamed("Celadon_DeptStore_2F").Everyone, n => n.Key is "t07r0102_leader3" or "t07r0102_gsmiddleman1_2");
         Assert.DoesNotContain(MapNamed("Celadon_Condominiums_3F").Everyone, n => n.Key is "t07r0203_var_1" or "t07r0203_tsure_poke_static_marill");
+    }
+
+    [Fact]
+    public void TheUndergroundPathAndSilphCosLobbyAreWalkedTo()
+    {
+        // Plan 20 · J15, part l: the Underground Path from Route 5's gate under Saffron City to Route 6's, and Silph Co.'s
+        // lobby off Saffron's street
+        var walked = Walked.Value;
+        foreach (string name in new[] { "Route5_UndergroundGate", "Route5_UndergroundPath", "Route6_UndergroundGate", "Saffron_SilphCo" })
+        {
+            Assert.True(walked.Keys.Any(m => m.Name == name), $"nobody walks into {name}");
+            Assert.Equal(RegionDatabase.Johto, RegionDatabase.RegionOfMap(name)!.Id);
+        }
+        // None of the keys meets FireRed's (its are underground_path_… and silph_co_…), so none takes Johto's prefix
+        foreach (string key in new[] { "route_5_underground_path_gate", "route_5_underground_path", "route_6_underground_path_gate", "saffron_silph_co_hq" })
+        {
+            Assert.False(HgWorld.Clashes(key));
+            Assert.Equal(key, HgWorld.KeyOf("MAP_" + key.ToUpperInvariant()));
+        }
+        // The path is walked from one gate to the other: both ends of the tunnel are reached
+        var path = walked.Single(kv => kv.Key.Name == "Route5_UndergroundPath");
+        Assert.Contains(path.Value, t => t.Y <= 6);
+        Assert.Contains(path.Value, t => t.Y >= 55);
+        // Its two hidden items are there to be found
+        Assert.Equal(2, path.Key.HiddenItems.Count);
+        // The men HeartGold keeps in the gates' doorways are held back, and so is Steven in the lobby; the lift to
+        // Rotom's room stays shut
+        Assert.DoesNotContain(Overworld.Everyone, n => n.Key is "r05_gsmiddleman1" or "r06_gsmiddleman1");
+        var silph = MapNamed("Saffron_SilphCo");
+        Assert.DoesNotContain(silph.Everyone, n => n.Key == "t11r0701_daigo");
+        Assert.Contains(silph.NPCs, n => n.Key == "t11r0701_gswoman6");
+        Assert.Contains(silph.NPCs, n => n.Key == "t11r0701_policeman");
+        Assert.Null(silph.GetWarpAt(3, 2));
+        Assert.DoesNotContain(walked.Keys, m => m.Name.StartsWith("Saffron_SilphCo_", StringComparison.Ordinal));
     }
 
     [Fact]

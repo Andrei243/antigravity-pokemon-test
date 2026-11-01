@@ -394,7 +394,13 @@
     { "name": "Celadon_Condominiums_LeftElevator", "matrix": 262, "area": "celadon_condominiums_left_elevator", "trees": "Round", "setting": "Indoors" },
     { "name": "Celadon_Condominiums_RightElevator", "matrix": 262, "area": "celadon_condominiums_right_elevator", "trees": "Round", "setting": "Indoors" },
     { "name": "Celadon_GameCorner", "matrix": 286, "area": "celadon_game_corner", "trees": "Round", "setting": "Indoors" },
-    { "name": "Celadon_PrizeCorner", "matrix": 214, "area": "celadon_prize_corner", "trees": "Round", "setting": "Indoors" }
+    { "name": "Celadon_PrizeCorner", "matrix": 214, "area": "celadon_prize_corner", "trees": "Round", "setting": "Indoors" },
+    // Plan 20 · J15, part l: the Underground Path between Routes 5 and 6 with its two gates, and Silph Co.'s head office
+    // (FireRed's Kanto has UndergroundPath_… and SilphCo_…)
+    { "name": "Route5_UndergroundGate", "matrix": 253, "area": "route_5_underground_path_gate", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route5_UndergroundPath", "matrix": 252, "area": "route_5_underground_path", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route6_UndergroundGate", "matrix": 253, "area": "route_6_underground_path_gate", "trees": "Round", "setting": "Indoors" },
+    { "name": "Saffron_SilphCo", "matrix": 189, "area": "saffron_silph_co_hq", "trees": "Round", "setting": "Indoors" }
   ],
   "areas": [
     // Plan 20 · J2: New Bark Town to Route 31's gate house, with their rooms
@@ -541,6 +547,8 @@
     "celadon_department_store_2f", "celadon_department_store_3f", "celadon_department_store_4f", "celadon_department_store_5f",
     "celadon_department_store_roof", "celadon_department_store_elevator", "celadon_condominiums_2f", "celadon_condominiums_3f",
     "celadon_condominiums_roof", "celadon_condominiums_roof_room", "celadon_condominiums_left_elevator",
-    "celadon_condominiums_right_elevator", "celadon_game_corner", "celadon_prize_corner"
+    "celadon_condominiums_right_elevator", "celadon_game_corner", "celadon_prize_corner",
+    // Plan 20 · J15, part l: the Underground Path from Route 5 to Route 6 with its gates, and Silph Co.'s lobby
+    "route_5_underground_path_gate", "route_5_underground_path", "route_6_underground_path_gate", "saffron_silph_co_hq"
   ]
 }

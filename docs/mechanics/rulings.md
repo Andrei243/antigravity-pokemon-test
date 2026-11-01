@@ -7046,6 +7046,43 @@ a new HM of ours.
   dance, the Underground Path, Silph Co., a game to play in the Game Corners and their prizes, the Radio Tower and the
   Expn Card, the Trainer House's battles, the Leaders' rematches and street meetings, Suicune's stops, the rest of
   Kanto's Apricorn trees.
+
+## HeartGold's Kanto, part l (2026-11-01, plan 20 · J15, part l)
+
+- *The slice*: the Underground Path between Route 5 and Route 6, with its two gates (Route 5's warp 2 and Route 6's
+  warp 2, locked since parts e and c), and Silph Co.'s lobby off Saffron City's street (Saffron's warps 8 and 9, locked
+  since part c). Both join places already open and wait on nothing in the story. Rotom's room upstairs was weighed and
+  left: its five appliances are things of HeartGold's map with no art here (no prop stands for a washing machine, a fan
+  or a mower), and sending a Rotom into one wants a word of the script's (a `team rotom` beside `team deoxys`) on
+  `FormChanges`' catalogue rule. It is the next session's, with the lift (HeartGold's car between the lobby and the room,
+  a dynamic warp as the Celadon lifts'), the guard's leave and the receptionist's own scene.
+- *Keys and names*: none of the keys meets FireRed's (its are `underground_path_…` and `silph_co_…`), so none takes
+  Johto's prefix. The maps are `Route5_UndergroundGate`, `Route5_UndergroundPath`, `Route6_UndergroundGate` and
+  `Saffron_SilphCo` (FireRed's are `UndergroundPath_…` and `SilphCo_…`).
+- *The path is open*: HeartGold stands a man in each gate's doorway behind `FLAG_UNK_258`, the path's own flag, which the
+  cache's scripts don't show the setting of. Here the path is open from the first arrival in Kanto, as it is in Gold and
+  Silver, and the two men, who would stand on the doorways' tiles, are held back; the signs say where the path goes.
+- *The lobby*: HeartGold hides the receptionist and the guard behind `FLAG_UNK_282` and `FLAG_UNK_281`, which nothing
+  sets, so both are shown, talking in lines of ours; the guard stands by the lift, whose door (the lobby's warp 1) stays
+  shut, and the sign beside it says the floors above are for staff. Steven, who visits the lobby later in HeartGold
+  (`FLAG_HIDE_SAFFRON_CITY_STEVEN`), is held back with his visits elsewhere.
+- *Models*: the lobby's monument (`obj_sylph`) is a `Statue`. The little house over the path's stairs (`kn_chika`) was a
+  row of the ground's, taken by an earlier session for Diglett's Cave's mouth, so Routes 5 and 6 had a lawn where
+  their gates stand; it is a `Hall` now, as its shut twin on Routes 7 and 8 (`kn_chika_x`) is. An office of the catalogue
+  that names itself (Silph Co.'s, `ybc_slf`, `sign: "SILPH CO."`) wears its own name: the office style's fixed sign had
+  shown POKETCH over Saffron's street since part c (`BuildingArt.StyleOf`; the Pokétch Company names nothing, so it
+  keeps its sign).
+- *Songs*: the gates and the path play `kanto/mt_moon` (HeartGold's `SEQ_GS_D_IWAYAMA`, as Rock Tunnel's), the lobby
+  Saffron's `kanto/viridian`.
+- *Known* (the harness's `jkl01` to `jkl11`): the lobby's reception counter is an island of blocked tiles drawn as a
+  block of wall, and the receptionist stands hidden in it, spoken to across its `Counter` rim, as the Celadon store's
+  clerks (part k's "Known").
+- *Left*: Rotom's room and Silph Co.'s lift, the Power Plant's story, Lt. Surge on Route 10 and Zapdos, the dark of
+  HeartGold's Flash caves, the Seafoam Islands' lower floors and Articuno, the Snorlax woken, Pal Park's gate, Oak's gift
+  after Red, the Clefairy's dance, the Route 7 to 8 underground passage (shut in HeartGold too), a game to play in the
+  Game Corners and their prizes, the Radio Tower and the Expn Card, the Trainer House's battles, the Leaders' rematches
+  and street meetings, Steven's visits, Suicune's stops, the rest of Kanto's Apricorn trees.
+
 ## The week siblings and the dome's pieces (2026-10-31, plan 20 · J13, the last part)
 
 | Subject | HeartGold | This game |

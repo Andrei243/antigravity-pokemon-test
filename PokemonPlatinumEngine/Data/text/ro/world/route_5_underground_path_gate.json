@@ -1,0 +1,23 @@
+{
+  "people": {
+    "r05r0201_gswoman1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Underground Path runs right under Saffron City. It's the quickest way to Vermilion if you don't mind the dark."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

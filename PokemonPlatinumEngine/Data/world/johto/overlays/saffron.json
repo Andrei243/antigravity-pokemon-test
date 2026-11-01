@@ -3,14 +3,10 @@
   // Route 6 from Vermilion City or by the Magnet Train from Goldenrod. Its Gym gives Kanto's Marsh Badge
   // (saffron_gym.txt). The gates to Route 7 west (warps 15 and 16) and Route 8 east (warps 2 and 3) are open since
   // plan 20 · J15, part d (johto_route_7, johto_route_8), and the gate to Route 5 north (warps 4 and 5) since part e
-  // (johto_route_5); Silph Co. (warps 8 and 9) stays shut. Cameron the photographer and the man HeartGold keeps behind
-  // FLAG_UNK_27F wait for theirs
+  // (johto_route_5), and Silph Co.'s lobby (warps 8 and 9) since part l (saffron_silph_co_hq). Cameron the photographer
+  // and the man HeartGold keeps behind FLAG_UNK_27F wait for theirs
   "area": "saffron",
   "bgmTrack": "kanto/viridian",
-  "locked": [
-    8,
-    9
-  ],
   "people": {
     "t11_gsgirl2": {
       "name": "Girl",
@@ -66,7 +62,7 @@
     "T11_009+1": "Saffron City\nShining, golden land of commerce.",
     "T11_010+1": "Fighting Dojo\nAll comers welcome!",
     "T11_011+1": "Saffron City Pokémon Gym\nLeader: Sabrina\nThe mistress of Psychic Pokémon.",
-    "T11_012+1": "Silph Co. Head Office\nClosed to visitors.",
+    "T11_012+1": "Silph Co. Head Office\nVisitors welcome in the lobby.",
     "T11_013+1": "Mr. Psychic's House"
   }
 }

@@ -103,24 +103,6 @@
           "Gemene Dani: Unul ca tine a fost de ajuns pentru amândouă."
         ]
       }
-    },
-    "r06_gsmiddleman1": {
-      "name": {
-        "en": [
-          "Man"
-        ],
-        "text": [
-          "Bărbatul"
-        ]
-      },
-      "dialog": {
-        "en": [
-          "The Underground Path runs from here to Route 5, but it's shut while the work on it goes on. Sorry!"
-        ],
-        "text": [
-          "Pasajul Subteran duce de aici la Ruta 5, dar e închis cât timp se lucrează la el. Scuze!"
-        ]
-      }
     }
   },
   "signs": {
