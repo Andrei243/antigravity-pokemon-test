@@ -15975,11 +15975,28 @@ way 0.0
   Barry> That man told you to go to the Pokémon League? He's right. Right now you're the strongest Trainer in Unova!
   Barry> Remember the cave where we met up? Follow it west and you come out on Route 23. Victory Road and the League are past it.
   * scene giant_chasm_6.Ghetsis and Kyurem
+  * letterbox on
+  * camera Pan 15 18
+  * camera Zoom 1.4
+  * effect Sparkles 15 19
   * cry Kyurem
+  * camera Shake
+  * effect Ripple 15 19
+  * camera Shake
+  * effect Shadow 17 18 Left
+  * effect Burst 18 17
+  * camera Shake
+  * effect Burst 18 17
+  * camera Shake
   * cry Zekrom
-  * fade out
-  * fade in
+  * camera Pan 16 18
+  * effect Sparkles 18 17
+  * effect Burst 15 19
+  * effect Ripple 15 19
+  * camera Shake
   * cry Kyurem-Black
+  * camera Release
+  * letterbox off
   * battle unova_ghetsis_kyurem Won
   * fade out
   * fade in
@@ -16906,11 +16923,25 @@ from Regice at 15,14 of IcebergChamber
 way 0
   > The statue of the ice giant began to move!
   > The chamber is still again...
+  * scene iceberg_chamber.Regice wakes
+  * music stop
+  * letterbox on
+  * camera Pan 15 14
+  * camera Zoom 1.4
+  * effect Beam 15 14
+  * shake Regice 8
+  * camera Shake
+  * effect Sparkles 15 14
   * cry Regice
+  * camera Release
+  * letterbox off
+  * endscene
   * wildbattle Regice 65 Won
   + FLAG_UNOVA_FOUGHT_REGICE
+  + seen iceberg_chamber.Regice wakes
 way 1, from answer 1
   * wildbattle Regice 65 Lost
+  + seen iceberg_chamber.Regice wakes
 === ilex_forest.Apprentice
 from Apprentice at 15,64 of IlexForest
 way -
@@ -16967,11 +16998,24 @@ from Registeel at 15,14 of IronChamber
 way 0
   > The statue of the iron giant began to move!
   > The chamber is still again...
+  * scene iron_chamber.Registeel wakes
+  * music stop
+  * letterbox on
+  * camera Pan 15 14
+  * camera Zoom 1.4
+  * effect Beam 15 14
+  * shake Registeel 8
+  * camera Shake
   * cry Registeel
+  * camera Release
+  * letterbox off
+  * endscene
   * wildbattle Registeel 65 Won
   + FLAG_UNOVA_FOUGHT_REGISTEEL
+  + seen iron_chamber.Registeel wakes
 way 1, from answer 1
   * wildbattle Registeel 65 Lost
+  + seen iron_chamber.Registeel wakes
 === iron_island.Ferry
 from Sailor at 99,502 of Sinnoh
 way 0
@@ -22274,11 +22318,24 @@ from Regirock at 15,14 of RockPeakChamber
 way 0
   > The statue of the stone giant began to move!
   > The chamber is still again...
+  * scene rock_peak_chamber.Regirock wakes
+  * music stop
+  * letterbox on
+  * camera Pan 15 14
+  * camera Zoom 1.4
+  * effect Beam 15 14
+  * shake Regirock 8
+  * camera Shake
   * cry Regirock
+  * camera Release
+  * letterbox off
+  * endscene
   * wildbattle Regirock 65 Won
   + FLAG_UNOVA_FOUGHT_REGIROCK
+  + seen rock_peak_chamber.Regirock wakes
 way 1, from answer 1
   * wildbattle Regirock 65 Lost
+  + seen rock_peak_chamber.Regirock wakes
 === rock_tunnel_b1f.RockSlideTutor
 from Youngster at 2,29 of RockTunnel_B1F
 way 0

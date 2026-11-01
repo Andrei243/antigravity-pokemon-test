@@ -28,10 +28,22 @@ label Left
 # (celestial_tower.s); caught or beaten it is gone for good (FLAG_UNOVA_FOUGHT_MESPRIT), run from, it is back the next time.
 script Mesprit
   if not flag UnovaHallOfFame end
+  scene "Mesprit atop the Celestial Tower"
+  music stop
+  face player self
   face self player
+  letterbox on 0.4
+  camera pan 16 22 1.2
+  camera zoom 1.4 0.8
+  effect sparkles 16 22
+  flicker self 4
+  effect ripple 16 22
   cry "Mesprit"
   speaker none
   text "Mesprit gave a soft cry!\nA warm feeling washes over {player}!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
   wildbattle "Mesprit" 65
   if result == 2 goto Fled
   setflag FLAG_UNOVA_FOUGHT_MESPRIT

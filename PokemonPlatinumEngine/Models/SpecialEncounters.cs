@@ -22,6 +22,8 @@ public sealed class SpecialEncounters : System.Text.Json.Serialization.IJsonOnDe
     {
         for (int slot = Roamers.Count; slot < Overworld.Roamers.Slots.Length; slot++)
             Roamers.Add(new Roamer { Species = Overworld.Roamers.Slots[slot].Species, Level = Overworld.Roamers.Slots[slot].Level });
+        for (int slot = 0; slot < Roamers.Count && slot < Overworld.Roamers.Slots.Length; slot++)
+            Roamers[slot].Region = Overworld.Roamers.RegionOf(slot);
     }
 
     /// <summary>
@@ -64,7 +66,7 @@ public sealed class SpecialEncounters : System.Text.Json.Serialization.IJsonOnDe
     public int RadarCharge { get; set; }
 
     /// <summary>The roaming Pokémon, one to each of the original's slots (<c>ROAMING_SLOT_*</c>), active or not.</summary>
-    public List<Roamer> Roamers { get; set; } = Overworld.Roamers.Slots.Select(s => new Roamer { Species = s.Species, Level = s.Level }).ToList();
+    public List<Roamer> Roamers { get; set; } = Overworld.Roamers.Slots.Select((s, slot) => new Roamer { Species = s.Species, Level = s.Level, Region = Overworld.Roamers.RegionOf(slot) }).ToList();
 
     /// <summary>
     /// The place the player is in and the one before it (<c>PlayerRecentRoutes</c>): an area's key, or a hand-made
@@ -161,4 +163,8 @@ public sealed class Roamer
     public bool Active { get; set; }
     public int Route { get; set; }
     public Core.SavedPokemonData? Pokemon { get; set; }
+
+    /// <summary>The region its slot roams (<see cref="Overworld.Roamers.RegionOf"/>): never saved, given by the slot as the list is made or read.</summary>
+    [System.Text.Json.Serialization.JsonIgnore]
+    public string? Region { get; set; }
 }

@@ -1060,11 +1060,13 @@ public class StarkMountainAndTheLegendaryPokemonTests
         // and after them HeartGold's two, which roam Johto (plan 20 · J7, the Burned Tower)
         Assert.Equal(new[] { ("Raikou", 40), ("Entei", 40) }, Roamers.Slots.Skip(6).Take(2));
         // and Emerald's two, which roam Hoenn (plan 21 · H9, part b)
-        Assert.Equal(new[] { ("Latias", 40), ("Latios", 40) }, Roamers.Slots.Skip(8));
+        Assert.Equal(new[] { ("Latias", 40), ("Latios", 40) }, Roamers.Slots.Skip(8).Take(2));
+        // and FireRed's beast, one of three by the starter, which roams Kanto (plan 29 · LS9)
+        Assert.Equal(new[] { ("Raikou", 50), ("Entei", 50), ("Suicune", 50) }, Roamers.Slots.Skip(10));
         // Each is set loose by a scene of its own: Mesprit's cavern (plan 02 · S13), Cresselia's wood, Professor Oak's
         // three birds in Eterna City (plan 02 · S15, part a). Darkrai's belongs to one of the original's events
         var loosed = Scripts.All.SelectMany(s => s.Everything()).Where(i => i.Op == Op.Roamer).Select(i => i.Name).Distinct().Order().ToList();
-        Assert.Equal(new[] { "Articuno", "Cresselia", "Entei", "Latias", "Latios", "Mesprit", "Moltres", "Raikou", "Zapdos" }, loosed);
+        Assert.Equal(new[] { "Articuno", "Cresselia", "Entei", "Latias", "Latios", "Mesprit", "Moltres", "Raikou", "Suicune", "Zapdos" }, loosed);
     }
 
     // ------------------------------------------------------------------ the Pokédex, the things and the walk

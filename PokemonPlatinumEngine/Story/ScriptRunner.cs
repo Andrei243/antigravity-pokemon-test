@@ -1089,7 +1089,7 @@ public sealed partial class ScriptRunner
                 TrophyGardenRules.AddNew(host.Encounters, SpecialEncounterTables.Sinnoh.TrophyGarden, host.Chance);
                 break;
             case Op.Roamer:
-                Roamers.SetLoose(host.Encounters, Roamers.SlotOf(i.Name) ?? throw Wrong(i, $"'{i.Name}' doesn't roam"), host.Chance);
+                Roamers.SetLoose(host.Encounters, Roamers.SlotOf(i.Name, i.Other) ?? throw Wrong(i, $"'{i.Name}' doesn't roam"), host.Chance);
                 break;
             case Op.SurvivePoison:
             {

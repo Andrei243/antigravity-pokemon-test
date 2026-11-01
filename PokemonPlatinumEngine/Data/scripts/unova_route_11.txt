@@ -12,10 +12,22 @@ script OnEnter
 # (route_11.s), and is gone for good once caught or beaten (FLAG_UNOVA_FOUGHT_VIRIZION); run from, it is back next time.
 script Virizion
   if not flag UnovaHallOfFame end
+  scene "Virizion on Route 11"
+  music stop
+  face player self
   face self player
+  letterbox on 0.4
+  camera path 468 166 468 170 3
+  camera follow self 0.6
+  camera zoom 1.4 0.8
+  effect sparkles 468 170
+  wait 0.8
   cry "Virizion"
   speaker none
   text "Virizion called out, light and sharp!\nIt watches {player} with calm, keen eyes!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
   wildbattle "Virizion" 65
   if result == 2 goto Fled
   setflag FLAG_UNOVA_FOUGHT_VIRIZION

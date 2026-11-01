@@ -40,5 +40,37 @@
         "Fără un Pokémon al tău care să te apere, ai fi în mare pericol. Vino cu mine la laborator. Repede!"
       ]
     }
+  ],
+  "OnEnter": [
+    {
+      "en": [
+        "A crackle of lightning raced down the road and was gone over the hills!",
+        "Raikou is loose in Kanto!"
+      ],
+      "text": [
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A blast of hot wind tore down the road and was gone over the hills!",
+        "Entei is loose in Kanto!"
+      ],
+      "text": [
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A cool, clear wind swept down the road and was gone over the hills!",
+        "Suicune is loose in Kanto!"
+      ],
+      "text": [
+        "",
+        ""
+      ]
+    }
   ]
 }
