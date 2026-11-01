@@ -26820,14 +26820,29 @@ way 0.0
   > Beyond the rift lies a place where nothing is the way it ought to be...
   > And in it, looking back: Dialga!
   > Will you challenge Dialga?
-  > Dialga: Gyugguh-gwaah!
+  > Dialga pushes out of the rift, and time itself stumbles round it!
   ? Will you challenge Dialga? = Yes
+  * scene spear_pillar_dialga.Dialga's rift
+  * music stop
+  * letterbox on
+  * camera Pan 29 16
+  * camera Zoom 1.4
+  * effect Rift 29 16 hold
+  * slowmo 0.5
+  * effect Ripple 29 16
   * cry Dialga
   * camera Shake
+  * emote player Exclaim
+  * effect stop 29 16
+  * camera Release
+  * letterbox off
+  * endscene
   * wildbattle Dialga 70 Won
   = VAR_SPEAR_PILLAR_DIALGA_STATE 0 -> 1
+  + seen spear_pillar_dialga.Dialga's rift
 way 0.1, from answer 2
   * wildbattle Dialga 70 Lost
+  + seen spear_pillar_dialga.Dialga's rift
 way 1, from answer 1
   ? Will you challenge Dialga? = No
 === spear_pillar_distorted.Cynthia
@@ -26870,14 +26885,29 @@ way 0.0
   > Beyond the rift lies a place where nothing is the way it ought to be...
   > And in it, looking back: Palkia!
   > Will you challenge Palkia?
-  > Palkia: Gagyagyaah!
+  > Palkia pushes out of the rift, and the space round it folds!
   ? Will you challenge Palkia? = Yes
+  * scene spear_pillar_palkia.Palkia's rift
+  * music stop
+  * letterbox on
+  * camera Pan 29 16
+  * camera Zoom 1.4
+  * effect Rift 29 16 hold
+  * slowmo 0.5
+  * effect Ripple 29 16
   * cry Palkia
   * camera Shake
+  * emote player Exclaim
+  * effect stop 29 16
+  * camera Release
+  * letterbox off
+  * endscene
   * wildbattle Palkia 70 Won
   = VAR_SPEAR_PILLAR_PALKIA_STATE 0 -> 1
+  + seen spear_pillar_palkia.Palkia's rift
 way 0.1, from answer 2
   * wildbattle Palkia 70 Lost
+  + seen spear_pillar_palkia.Palkia's rift
 way 1, from answer 1
   ? Will you challenge Palkia? = No
 === sprout_tower_3f.Elder
@@ -27824,11 +27854,24 @@ from Giratina at 11,14 of TurnbackCaveGiratinaRoom
 way 0
   > A roar shakes the whole cave!
   > Giratina sank back into the shadows and was gone...
+  * scene turnback_cave_giratina_room.Giratina in Turnback Cave
+  * music stop
+  * letterbox on
+  * camera Pan 11 14
+  * camera Zoom 1.4
+  * effect Shadow 11 14 Left
   * cry Giratina
+  * camera Shake
+  * effect Ripple 11 14
+  * camera Release
+  * letterbox off
+  * endscene
   * wildbattle Giratina 47 nofleeing Won
   + FLAG_HIDE_TURNBACK_CAVE_GIRATINA_ROOM_GIRATINA
+  + seen turnback_cave_giratina_room.Giratina in Turnback Cave
 way 1, from answer 1
   * wildbattle Giratina 47 nofleeing Lost
+  + seen turnback_cave_giratina_room.Giratina in Turnback Cave
 === turnback_cave_giratina_room.Inscription
 from the tile read at 10,12 of TurnbackCaveGiratinaRoom
 from the tile read at 11,12 of TurnbackCaveGiratinaRoom

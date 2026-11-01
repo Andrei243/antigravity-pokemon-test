@@ -8,13 +8,30 @@
 # FLAG_CAUGHT_GIRATINA is unset). Once it is caught, a ball lies here each time the player comes back through Sendoff
 # Spring, and what is in it hangs on how few rooms it took to get here.
 #
+# Its meeting is plan 29's beat (style guide, "Legendary scenes"): the bars, the camera to Giratina, its shadow
+# sweeping across the room, the roar with the cave shaken and the picture wavering, and then the battle's own way in
+# (plan 09 · L14's Mythical).
+#
 # Where Giratina stood a portal hangs once it is gone, into the corner of the Distortion World where the Griseous Orb
 # lies (the original's background event on its tile).
 
 script Giratina
+  scene "Giratina in Turnback Cave"
+  music stop
+  face player self
+  letterbox on 0.4
+  camera pan 11 14 1.2
+  camera zoom 1.4 0.8
+  effect shadow 11 14 2 left
+  wait 1
   cry "Giratina"
+  camera shake 0.8
+  effect ripple 11 14
   speaker none
   say "A roar shakes the whole cave!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
   wildbattle "Giratina" 47 nofleeing
   if var RESULT == 3 goto Caught
   setflag FLAG_HIDE_TURNBACK_CAVE_GIRATINA_ROOM_GIRATINA
