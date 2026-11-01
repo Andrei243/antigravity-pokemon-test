@@ -5,13 +5,31 @@
 # rests, at level 45, with no running. Caught, it is gone for good (FLAG_JOHTO_CAUGHT_LUGIA, ours); beaten, it dives away
 # (HeartGold's FLAG_HIDE_WHIRL_ISLAND_LUGIA) and is back with the next entry into Johto's Hall of Fame, whose scene clears
 # the flag unless it was caught.
+#
+# Its meeting is plan 29's beat (style guide, "Legendary scenes"): the bars, the camera to Lugia, the wing's sparkles
+# between it and the player, the water wavering and the cave shaken twice as it rises with its cry.
 
 
 # D40R0107_000: Lugia
 script Lugia
-  cry "Lugia"
+  scene "Lugia in the Whirl Islands"
+  music stop
+  face player self
+  letterbox on 0.4
+  camera pan 16 17 1.2
+  camera zoom 1.4 0.8
+  effect sparkles 16 17
   speaker none
   say "The Silver Wing glows, and the great bird of the sea opens its eyes!"
+  effect ripple 16 17
+  camera shake 0.5
+  wait 0.6
+  cry "Lugia"
+  camera shake 0.5
+  emote player exclaim
+  camera release 0.4
+  letterbox off 0.3
+  endscene
   wildbattle "Lugia" 45 nofleeing
   if var RESULT == 3 goto Caught
   setflag FLAG_HIDE_WHIRL_ISLAND_LUGIA

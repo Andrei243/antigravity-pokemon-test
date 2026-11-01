@@ -5,7 +5,10 @@
 # movement, Emerald's copy_player_opposite_in_grass), so it has to be cornered against the grass's edge to be spoken
 # to. Spoken to, it is met at level 30 (Emerald's setwildbattle SPECIES_MEW, 30). Run from, it is back in the grass the
 # next time the island's heart is come to; beaten (FLAG_DEFEATED_MEW) or caught (FLAG_CAUGHT_MEW), it is gone for good.
-# Ours: Emerald hides Mew until the player comes close and shows it flickering; here it is seen at once.
+# Ours: Emerald hides Mew until the player comes close and shows it flickering; here it is seen at once, and the flicker
+# is its meeting's: plan 29's beat (style guide, "Legendary scenes", the mind's row), the bars, the camera kept on Mew
+# wherever it stands, its flicker, the cry and a line, and then the battle's own way in. Mew moves about the grass, so no
+# effect is lit on a tile for it.
 
 
 script OnEnter
@@ -20,11 +23,19 @@ label Gone
 
 script Mew
   scene "Mew in the tall grass"
+  music stop
   face self player
+  face player self
+  letterbox on 0.4
+  camera follow self 0.8
+  camera zoom 1.4 0.8
+  flicker self 6
   emote self exclaim
-  wait 0.4
   cry "Mew"
-  wait 0.6
+  speaker none
+  text "Mew flickers in and out of sight among the grass, then peers right back at you!"
+  camera release 0.4
+  letterbox off 0.3
   endscene
   wildbattle "Mew" 30
   hide faraway_island_mew

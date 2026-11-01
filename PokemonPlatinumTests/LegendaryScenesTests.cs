@@ -27,29 +27,6 @@ public class LegendaryScenesTests
         // The room's Arrival has its cry, shake and ripple, but its camera never leaves the player before the battle
         // (its pans are Cynthia's, after it): LS1 found it, LS2 owes its look
         ["distortion_world_giratina_room.Giratina Giratina-Origin"] = "LS2",
-        // Kanto's birds and Mewtwo
-        ["seafoam_islands_b4f.Articuno Articuno"] = "LS3",
-        ["power_plant.Zapdos Zapdos"] = "LS3",
-        ["mt_ember_summit.Moltres Moltres"] = "LS3",
-        ["cerulean_cave_b1f.Mewtwo Mewtwo"] = "LS3",
-        // Johto's birds of the towers
-        ["bell_tower_roof.HoOh Ho-Oh"] = "LS4",
-        ["whirl_islands_b3f_lugia_cave.Lugia Lugia"] = "LS4",
-        ["mount_silver_cave_moltres_chamber.Moltres Moltres"] = "LS4",
-        // Hoenn's titans after the story
-        ["sky_pillar_top.Rayquaza Rayquaza"] = "LS6",
-        ["marine_cave_end.Kyogre Kyogre"] = "LS6",
-        ["terra_cave_end.Groudon Groudon"] = "LS6",
-        // Hoenn's Regis and islands
-        ["desert_ruins.Regirock Regirock"] = "LS7",
-        ["island_cave.Regice Regice"] = "LS7",
-        ["ancient_tomb.Registeel Registeel"] = "LS7",
-        ["southern_island_interior.Stone Latias"] = "LS7",
-        ["southern_island_interior.Stone Latios"] = "LS7",
-        ["birth_island_exterior.Triangle Deoxys-Speed"] = "LS7",
-        ["faraway_island_interior.Mew Mew"] = "LS7",
-        ["navel_rock_bottom.Lugia Lugia"] = "LS7",
-        ["navel_rock_top.HoOh Ho-Oh"] = "LS7",
     };
 
     /// <summary>Whether a wild battle's species (or form) is a legendary or a mythical one.</summary>

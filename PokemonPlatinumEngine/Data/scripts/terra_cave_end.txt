@@ -6,6 +6,9 @@
 # meets it at level 70. Run from, it sinks away and is back the next time the room is come to. Beaten or caught, the
 # drought over the route the cave opened from breaks and its way in closes (common.HoennAbnormalWeatherEnd), and the
 # Weather Institute's next report can only be of the Marine Cave.
+#
+# Its meeting is plan 29's beat (style guide, "Legendary scenes", the fire's row): the bars, the camera to the magma, a
+# burst and the heat's ripple as Groudon stirs in it, the cry with the cave shaken, and then the battle's own way in.
 
 
 script OnEnter
@@ -22,13 +25,22 @@ label Gone
 script Groudon
   if flag FLAG_DEFEATED_GROUDON end
   scene "Groudon in Terra Cave"
+  music stop
   face player up
+  letterbox on 0.4
+  camera pan 17 22 1.2
+  camera zoom 1.4 0.8
+  effect burst 17 22
   wait 0.4
+  effect ripple 17 22
+  walk terra_cave_groudon onspot down 1
   cry "Groudon"
   camera shake 0.6
-  wait 0.8
+  emote player exclaim
   speaker none
   text "Groudon heaved itself up out of the magma!"
+  camera release 0.4
+  letterbox off 0.3
   endscene
   setvar VAR_TEMP_1 0
   wildbattle "Groudon" 70

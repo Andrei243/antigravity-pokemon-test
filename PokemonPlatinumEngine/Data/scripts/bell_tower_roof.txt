@@ -7,6 +7,10 @@
 # (FLAG_JOHTO_HO_OH_CAME, ours; VAR_UNK_40FA 2). Ho-Oh is battled where it lands and can't be run from. Caught, it is
 # gone for good (FLAG_JOHTO_CAUGHT_HO_OH, ours); beaten, it flies off and comes back the next time the player enters
 # Johto's Hall of Fame, whose scene clears HeartGold's FLAG_HIDE_BELL_TOWER_HO_OH unless it was caught.
+#
+# Both are plan 29's beat (style guide, "Legendary scenes"): Ho-Oh comes in over the roof as a shadow from the north
+# with the camera up its way and back, lands in a burst and its sparkles where a fade had hidden it; spoken to, the
+# camera goes to it, its fire bursts, the heat wavers and the roof shakes with its cry before the battle.
 
 
 # D17R0110_006: the Kimono Girls' dance, and Ho-Oh
@@ -21,24 +25,43 @@ script Dance
   sound "use_heal_bell"
   wait 0.6
   say "The great bell rings out over Ecruteak City!"
+  face player up
+  letterbox on 0.4
   cry "Ho-Oh"
-  fade out 0.6
+  effect shadow 15 12 2 down
+  camera path 15 11 15 16 6
   setflag FLAG_JOHTO_HO_OH_CAME
   clearflag FLAG_HIDE_BELL_TOWER_HO_OH
   show d17r0110_hou_obj01
-  fade in 0.6
+  effect burst 15 16 wait
+  effect sparkles 15 16
+  camera shake 0.6
   speaker none
   say "A Pokémon of rainbow fire has come down to the roof!"
   setvar VAR_UNK_40FA 2
+  camera release 0.4
+  letterbox off 0.3
   endscene
   end
 
 
 # D17R0110_000: Ho-Oh on the roof
 script HoOh
+  scene "Ho-Oh on the Bell Tower"
+  music stop
+  face player self
+  letterbox on 0.4
+  camera pan 15 16 1.2
+  camera zoom 1.4 0.8
+  effect burst 15 16 wait
+  effect ripple 15 16
   cry "Ho-Oh"
+  camera shake 0.6
   speaker none
   say "Ho-Oh spreads its burning wings!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
   wildbattle "Ho-Oh" 45 nofleeing
   if var RESULT == 3 goto Caught
   setflag FLAG_HIDE_BELL_TOWER_HO_OH

@@ -3,7 +3,9 @@
 #
 # Lugia rests by the water at the bottom of the ladders until it is beaten (FLAG_DEFEATED_LUGIA) or caught
 # (FLAG_CAUGHT_LUGIA). Spoken to, the cave shakes twice and Lugia is met at level 70; run from, it dives off into the
-# water and is back the next time the foot is come to.
+# water and is back the next time the foot is come to. Its meeting is plan 29's beat (style guide, "Legendary scenes",
+# the sea's row): the bars, the camera to Lugia, the cave shaken twice, sparkles and a ripple as it stirs, the cry and a
+# line, and then the battle's own way in.
 
 
 script OnEnter
@@ -18,13 +20,23 @@ label Gone
 
 script Lugia
   scene "Lugia at the foot of Navel Rock"
-  wait 0.3
+  music stop
+  face player self
+  letterbox on 0.4
+  camera pan 11 13 1.2
+  camera zoom 1.4 0.8
   camera shake 0.5
   wait 0.6
   camera shake 0.5
-  wait 1.0
+  effect sparkles 11 13
+  effect ripple 11 13
+  walk self onspot down 1
   cry "Lugia"
-  wait 0.6
+  emote player exclaim
+  speaker none
+  text "Lugia lifted its head from the dark water, and spray rained down all around!"
+  camera release 0.4
+  letterbox off 0.3
   endscene
   wildbattle "Lugia" 70
   hide navel_rock_lugia

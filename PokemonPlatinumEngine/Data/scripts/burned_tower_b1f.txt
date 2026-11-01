@@ -6,10 +6,17 @@
 # and Suicune runs on ahead of Eusine (where it is next seen is a later chapter's). Eusine comes down the
 # stairs too late, and Morty goes back to his Gym (VAR_UNK_4079 2; the tower's people gone by their flags, and the
 # old man of the town out to tell of it, FLAG_HIDE_ECRUTEAK_OLD_MAN cleared).
+#
+# The waking is plan 29's beat (style guide, "Legendary scenes"): the bars, the camera on the three and then to each in
+# turn as it flickers, two bursts for Raikou, one for Entei, sparkles for Suicune, and a shadow as each leaps away.
 
 
 script Awaken
   scene "The three beasts wake"
+  face player left
+  letterbox on 0.4
+  camera pan 15 15 1.0
+  camera zoom 1.4 0.8
   cry "Raikou"
   wait 0.4
   cry "Entei"
@@ -17,20 +24,36 @@ script Awaken
   cry "Suicune"
   emote player exclaim
   text "The three Pokémon have woken up!"
+  camera pan 14 14 0.5
+  effect burst 14 14
+  camera shake 0.4
+  wait 0.4
+  effect burst 14 14
+  camera shake 0.4
   flicker d18r0102_tsure_poke_static_raikou 4
+  effect shadow 14 14 1.2 left
   hide d18r0102_tsure_poke_static_raikou
   wait 0.3
+  camera pan 16 14 0.5
+  effect burst 16 14
+  camera shake 0.6
   flicker d18r0102_tsure_poke_static_entei 4
+  effect shadow 16 14 1.2 up
   hide d18r0102_tsure_poke_static_entei
   wait 0.3
+  camera pan 15 16 0.5
   cry "Suicune"
+  effect sparkles 15 16
   flicker d18r0102_tsure_poke_static_suicune 4
+  effect shadow 15 16 1.2 right
   hide d18r0102_tsure_poke_static_suicune
   setflag FLAG_HIDE_BURNED_TOWER_B1F_RAIKOU
   setflag FLAG_HIDE_BURNED_TOWER_B1F_ENTEI
   setflag FLAG_HIDE_BURNED_TOWER_B1F_SUICUNE
   roamer start "Raikou"
   roamer start "Entei"
+  camera release 0.4
+  letterbox off 0.3
   wait 0.4
   sound "stairs"
   place d18r0102_minaki 22 16 left
