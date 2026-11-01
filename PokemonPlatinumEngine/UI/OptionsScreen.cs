@@ -39,7 +39,7 @@ public enum OptionRow
     AutoBattle,
     AreaChecklist,
     Requests,
-    TextSize, ColourVision, HighContrast,
+    TextSize, ColourVision, HighContrast, Tips,
     Controls,
     Jukebox,
     Packs,
@@ -418,6 +418,10 @@ public class OptionsScreen
             case OptionRow.AreaChecklist:
                 s.AreaChecklist = !s.AreaChecklist;
                 break;
+            case OptionRow.Tips:
+                // Off, as the rules have it, On (plan 12 · Q23), and round again
+                s.Tips = (RulesDefault)Wrap((int)s.Tips + step, 3);
+                break;
             case OptionRow.BoxesAnywhere:
                 // Off, as the rules have it, On (plan 12 · Q13), and round again
                 s.BoxesAnywhere = (RulesDefault)Wrap((int)s.BoxesAnywhere + step, 3);
@@ -542,6 +546,7 @@ public class OptionsScreen
         OptionRow.BoxTools => (Text.Of("boxTools.option.label"), Text.Of($"boxTools.option.value.{s.BoxTools}"), Text.Of($"boxTools.option.help.{s.BoxTools}")),
         OptionRow.AutoBattle => (Text.Of("options.autoBattle.label"), OnOff(s.AutoBattle), Text.Of(s.AutoBattle ? "options.autoBattle.help.on" : "options.autoBattle.help.off")),
         OptionRow.Requests => (Text.Of("options.requests.label"), OnOff(s.Requests != RulesDefault.Off), Text.Of(s.Requests != RulesDefault.Off ? "options.requests.help.on" : "options.requests.help.off")),
+        OptionRow.Tips => (Text.Of("options.tips.label"), Text.Of($"options.tips.value.{s.Tips}"), Text.Of($"options.tips.help.{s.Tips}")),
         OptionRow.AreaChecklist => (Text.Of("options.areaChecklist.label"), OnOff(s.AreaChecklist), Text.Of(s.AreaChecklist ? "options.areaChecklist.help.on" : "options.areaChecklist.help.off")),
         OptionRow.BoxesAnywhere => (Text.Of("options.boxesAnywhere.label"), Text.Of($"options.boxesAnywhere.value.{s.BoxesAnywhere}"), Text.Of($"options.boxesAnywhere.help.{s.BoxesAnywhere}")),
         OptionRow.Autosave => (Text.Of("options.autosave.label"), OnOff(s.Autosave), Text.Of(s.Autosave ? "options.autosave.help.on" : "options.autosave.help.off")),

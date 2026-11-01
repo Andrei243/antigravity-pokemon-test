@@ -179,6 +179,15 @@
         "on": "Once someone asks something of you, the menu has REQUESTS: what each errand needs next, and one you can pin over the field."
       }
     },
+    "tips": {
+      "label": "Trainer tips",
+      "value": { "Off": "Off", "Rules": "By the rules", "On": "On" },
+      "help": {
+        "Off": "No tips are shown. Those already shown can still be read on the HELP page.",
+        "Rules": "Platinum's rules show no tips; the modern rules show a few words on something the first time you meet it.",
+        "On": "A few words on something the first time you meet it: a status condition, a tree in the way, a Pokémon Center. Each is shown once, and HELP keeps them."
+      }
+    },
     "areaChecklist": {
       "label": "What is left here",
       "help": {
@@ -1384,9 +1393,41 @@
       "3": "IT HITS NORMALLY", "4": "SUPER EFFECTIVE", "5": "EXTREMELY EFFECTIVE"
     }
   },
+  "tips": {
+    "caption": "TIP",
+    "ok": "OK",
+    "none": "No tips yet. They come as you play, while the options' TIPS row is on.",
+    "wild": { "title": "Wild Pokémon", "text": "A wild Pokémon can be fought, caught or run from. Weaken it first: one low on HP, asleep or paralysed is far easier to catch." },
+    "trainer": { "title": "Trainer battles", "text": "A trainer's Pokémon can't be caught, and there is no running from a trainer. Win, and the trainer pays you prize money." },
+    "fainted": { "title": "A fainted Pokémon", "text": "A Pokémon with no HP left has fainted and can't battle. Send in another; a Revive or a Pokémon Center brings it round." },
+    "poison": { "title": "Poison", "text": "A poisoned Pokémon loses HP every turn, and now and then as you walk. An Antidote or a Pokémon Center cures it." },
+    "burn": { "title": "Burns", "text": "A burned Pokémon loses HP every turn, and its physical moves hit only half as hard. A Burn Heal cures it." },
+    "paralysis": { "title": "Paralysis", "text": "A paralysed Pokémon is slowed and may be unable to move on its turn. A Paralyze Heal cures it." },
+    "sleep": { "title": "Sleep", "text": "A sleeping Pokémon can't move until it wakes, which takes a few turns. An Awakening wakes it at once." },
+    "freeze": { "title": "Frozen", "text": "A frozen Pokémon can't move until it thaws, which happens by chance. A Fire move thaws it, and so does an Ice Heal." },
+    "stats": { "title": "Stat changes", "text": "Some moves raise or lower a stat for as long as the Pokémon stays in battle. Switching it out sets every change back." },
+    "weather": { "title": "Weather", "text": "Rain strengthens Water moves and sun Fire moves; a sandstorm or hail wears down every Pokémon not of a type that stands it." },
+    "field": { "title": "On the field", "text": "Screens, spikes and the like lie over one side of the field for several turns. The battle's information panel tells what is in force." },
+    "caught": { "title": "A catch", "text": "A Pokémon caught joins your team and fills in its Pokédex entry. Its summary is in the POKéMON menu." },
+    "toBox": { "title": "The PC's boxes", "text": "Your team holds six. A Pokémon caught with a full team goes to a box of the PC, which any Pokémon Center's PC can reach." },
+    "levelUp": { "title": "Levels", "text": "Pokémon that take part in a battle gain experience, and grow a level when they have enough. Their stats rise with it." },
+    "newMove": { "title": "New moves", "text": "A Pokémon knows four moves at most. To learn a fifth it must forget one, or the new move can be let go." },
+    "evolution": { "title": "Evolution", "text": "Pokémon evolve as they grow, and some by a stone, a trade or other ways. An evolution can be stopped while it happens." },
+    "ledge": { "title": "Ledges", "text": "You can hop down a ledge but not climb back up it. To come back, look for another way round." },
+    "teamFull": { "title": "A full team", "text": "Your team holds six Pokémon at most. Another given to you is sent to a box of the PC instead." },
+    "nurse": { "title": "Pokémon Centers", "text": "A Pokémon Center heals your team for nothing. After a battle lost, you wake at the last one you visited." },
+    "pc": { "title": "The PC", "text": "A Pokémon Center's PC keeps Pokémon in its boxes. Put them in and take them out again whenever you like." },
+    "clerk": { "title": "Poké Marts", "text": "A Mart sells Poké Balls, Potions and more. What its counter stocks grows with the Badges you hold." },
+    "cutTree": { "title": "Trees in the way", "text": "A thin tree can be cut down by a Pokémon that knows Cut, once you hold the Gym Badge that allows it." },
+    "rockSmash": { "title": "Cracked rocks", "text": "Rock Smash breaks a cracked rock outside battle, once you hold the Gym Badge that allows it." },
+    "strength": { "title": "Boulders", "text": "Strength lets your Pokémon push boulders, once you hold the Gym Badge that allows it. It lasts until you leave the place." },
+    "surf": { "title": "Surfing", "text": "Surf carries you over deep water on a Pokémon's back. Wild Pokémon live in the water too." },
+    "rockClimb": { "title": "Rock faces", "text": "Rock Climb takes you up or down a rough wall of rock, once you hold the Gym Badge that allows it." },
+    "waterfall": { "title": "Waterfalls", "text": "Waterfall takes you up a waterfall from the water below it, once you hold the Gym Badge that allows it." }
+  },
   "help": {
     "title": "HELP",
-    "tab": { "types": "TYPES", "controls": "CONTROLS", "notes": "NOTES" },
+    "tab": { "types": "TYPES", "controls": "CONTROLS", "notes": "NOTES", "tips": "TIPS" },
     "short": {
       "Normal": "NOR", "Fire": "FIR", "Water": "WAT", "Grass": "GRS", "Electric": "ELE", "Ice": "ICE",
       "Fighting": "FIG", "Poison": "PSN", "Ground": "GRD", "Flying": "FLY", "Psychic": "PSY", "Bug": "BUG",

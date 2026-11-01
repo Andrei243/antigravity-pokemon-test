@@ -311,6 +311,15 @@
         "on": "Odată ce cineva îți cere ceva, meniul are RUGĂMINȚI: ce mai trebuie făcut pentru fiecare și una pe care o poți fixa deasupra hărții."
       }
     },
+    "tips": {
+      "label": "Sfaturi de antrenor",
+      "value": { "Off": "Nu", "Rules": "După reguli", "On": "Da" },
+      "help": {
+        "Off": "Nu se arată niciun sfat. Cele arătate deja se pot citi în continuare pe pagina AJUTOR.",
+        "Rules": "Regulile din Platinum nu arată sfaturi; regulile moderne spun câteva cuvinte despre un lucru prima dată când îl întâlnești.",
+        "On": "Câteva cuvinte despre un lucru prima dată când îl întâlnești: o stare, un copac în cale, un Centru Pokémon. Fiecare se arată o dată, iar AJUTOR le păstrează."
+      }
+    },
     "areaChecklist": {
       "label": "Ce a mai rămas aici",
       "help": {
@@ -1607,9 +1616,41 @@
       "3": "LOVEȘTE NORMAL", "4": "FOARTE EFICIENTĂ", "5": "EXTREM DE EFICIENTĂ"
     }
   },
+  "tips": {
+    "caption": "SFAT",
+    "ok": "OK",
+    "none": "Încă niciun sfat. Vin pe măsură ce joci, cât timp rândul SFATURI din opțiuni e pornit.",
+    "wild": { "title": "Pokémoni sălbatici", "text": "Un Pokémon sălbatic poate fi înfruntat, prins sau lăsat în urmă. Slăbește-l întâi: unul cu puțin HP, adormit sau paralizat se prinde mult mai ușor." },
+    "trainer": { "title": "Lupte cu antrenori", "text": "Pokémonii unui antrenor nu pot fi prinși, iar de un antrenor nu poți fugi. Dacă învingi, antrenorul îți plătește un premiu." },
+    "fainted": { "title": "Un Pokémon leșinat", "text": "Un Pokémon rămas fără HP a leșinat și nu mai poate lupta. Trimite altul; o Reînviere sau un Centru Pokémon îl pun pe picioare." },
+    "poison": { "title": "Otrava", "text": "Un Pokémon otrăvit pierde HP la fiecare tură și din când în când pe drum. Un Antidot sau un Centru Pokémon îl vindecă." },
+    "burn": { "title": "Arsurile", "text": "Un Pokémon ars pierde HP la fiecare tură, iar mișcările lui fizice lovesc doar pe jumătate. Un Leac de Arsuri îl vindecă." },
+    "paralysis": { "title": "Paralizia", "text": "Un Pokémon paralizat e încetinit și uneori nu se poate mișca la rândul lui. Un Leac de Paralizie îl vindecă." },
+    "sleep": { "title": "Somnul", "text": "Un Pokémon adormit nu se poate mișca până nu se trezește, ceea ce durează câteva ture. O Trezire îl trezește pe loc." },
+    "freeze": { "title": "Înghețat", "text": "Un Pokémon înghețat nu se poate mișca până nu se dezgheață, la întâmplare. O mișcare de Foc îl dezgheață, la fel și un Leac de Gheață." },
+    "stats": { "title": "Schimbări de statistici", "text": "Unele mișcări cresc sau scad o statistică atât cât Pokémonul rămâne în luptă. Retras, pierde toate schimbările." },
+    "weather": { "title": "Vremea", "text": "Ploaia întărește mișcările de Apă, iar soarele pe cele de Foc; furtuna de nisip sau grindina îi macină pe Pokémonii de tipuri care nu le rezistă." },
+    "field": { "title": "Pe teren", "text": "Ecranele, țepii și altele rămân pe o parte a terenului câteva ture. Panoul de informații al luptei spune ce e în vigoare." },
+    "caught": { "title": "O captură", "text": "Un Pokémon prins intră în echipă și își completează fișa din Pokédex. Rezumatul lui e în meniul POKéMON." },
+    "toBox": { "title": "Cutiile PC-ului", "text": "Echipa are loc pentru șase. Un Pokémon prins cu echipa plină merge într-o cutie a PC-ului, la care ajungi de la orice PC al unui Centru Pokémon." },
+    "levelUp": { "title": "Nivelurile", "text": "Pokémonii care iau parte la luptă câștigă experiență și cresc un nivel când au destulă. Statisticile lor cresc odată cu el." },
+    "newMove": { "title": "Mișcări noi", "text": "Un Pokémon știe cel mult patru mișcări. Ca să învețe a cincea trebuie să uite una, sau mișcarea nouă poate fi lăsată." },
+    "evolution": { "title": "Evoluția", "text": "Pokémonii evoluează pe măsură ce cresc, iar unii cu o piatră, la un schimb sau în alte feluri. O evoluție poate fi oprită cât are loc." },
+    "ledge": { "title": "Pervazurile", "text": "Poți sări în jos de pe un pervaz, dar nu poți urca înapoi. Ca să te întorci, caută alt drum." },
+    "teamFull": { "title": "Echipa plină", "text": "Echipa are cel mult șase Pokémoni. Unul primit în plus e trimis într-o cutie a PC-ului." },
+    "nurse": { "title": "Centrele Pokémon", "text": "Un Centru Pokémon îți vindecă echipa pe gratis. După o luptă pierdută, te trezești la ultimul pe care l-ai vizitat." },
+    "pc": { "title": "PC-ul", "text": "PC-ul unui Centru Pokémon ține Pokémoni în cutiile lui. Pune-i și scoate-i de acolo oricând vrei." },
+    "clerk": { "title": "Magazinele Poké", "text": "Un magazin vinde Poké Balluri, Poțiuni și altele. Ce are la tejghea crește odată cu Insignele tale." },
+    "cutTree": { "title": "Copaci în cale", "text": "Un copac subțire poate fi tăiat de un Pokémon care știe Tăiere, odată ce ai Insigna de Sală care o permite." },
+    "rockSmash": { "title": "Pietre crăpate", "text": "Spărgător de Pietre sparge o piatră crăpată în afara luptei, odată ce ai Insigna de Sală care o permite." },
+    "strength": { "title": "Bolovanii", "text": "Forță îi lasă pe Pokémonii tăi să împingă bolovani, odată ce ai Insigna de Sală care o permite. Ține până pleci din loc." },
+    "surf": { "title": "Surful", "text": "Surf te poartă peste apă adâncă pe spatele unui Pokémon. Și în apă trăiesc Pokémoni sălbatici." },
+    "rockClimb": { "title": "Pereți de stâncă", "text": "Cățărare te duce în sus sau în jos pe un perete aspru de stâncă, odată ce ai Insigna de Sală care o permite." },
+    "waterfall": { "title": "Cascadele", "text": "Cascadă te urcă pe o cascadă din apa de dedesubt, odată ce ai Insigna de Sală care o permite." }
+  },
   "help": {
     "title": "AJUTOR",
-    "tab": { "types": "TIPURI", "controls": "COMENZI", "notes": "NOTIȚE" },
+    "tab": { "types": "TIPURI", "controls": "COMENZI", "notes": "NOTIȚE", "tips": "SFATURI" },
     "short": {
       "Normal": "NOR", "Fire": "FOC", "Water": "APĂ", "Grass": "IAR", "Electric": "ELE", "Ice": "GHE",
       "Fighting": "LUP", "Poison": "OTR", "Ground": "PĂM", "Flying": "ZBR", "Psychic": "PSI", "Bug": "INS",

@@ -306,6 +306,9 @@ public partial class GameEngine
     public void InitializeHeadless()
     {
         IsHeadless = true;
+        // A game with no window is a tool's or a test's, which press nothing for a trainer tip: none is shown unless the
+        // tool asks (plan 12 · Q23)
+        ShowsTips = false;
         LoadTheData();
         ApplySettings(window: false);
         ReadTheSlots();
@@ -409,6 +412,8 @@ public partial class GameEngine
         flow.Radar.Clear();
         flow.RegisteredItem = null;
         flow.PinnedRequest = null;
+        flow.Tips.Clear();
+        flow.ShownTip = null;
         flow.ExitSpot = null;
         flow.MapTrail.Clear();
         flow.LastDay = null;
@@ -612,6 +617,8 @@ public partial class GameEngine
         flow.LastDay = save.LastDay;
         flow.RegisteredItem = save.RegisteredItem;
         flow.PinnedRequest = save.PinnedRequest;
+        flow.Tips.Load(save.TipsSeen);
+        flow.ShownTip = null;
         flow.Poketch.Load(save.Poketch);
         flow.PoketchView.Hide();
         if (save.Safari is { } game) flow.Safari.Resume(game.Balls, game.Steps, game.Caught);
@@ -804,6 +811,7 @@ public partial class GameEngine
             LastDay = flow.LastDay,
             RegisteredItem = flow.RegisteredItem,
             PinnedRequest = flow.PinnedRequest,
+            TipsSeen = flow.Tips.ToSave(),
             Partner = partner?.TrainerId,
             PartnerPerson = partner?.Who.Key,
             RepelSteps = flow.EncounterAids.RepelSteps,
@@ -1123,6 +1131,7 @@ public partial class GameEngine
                         flow.OptionsReturn = GameState.Title;
                         flow.State = GameState.Options;
                         flow.OptionsScreen.Open();
+                        flow.OptionsScreen.Help.TipsSeen = flow.Tips.Seen; // plan 12 · Q23: the HELP page's TIPS tab
                         break;
                     case TitleChoice.Quit:
                         QuitRequested = true;
@@ -1139,6 +1148,8 @@ public partial class GameEngine
                 }
                 break;
             case GameState.Overworld:
+                // A trainer tip up holds the field (plan 12 · Q23)
+                if (UpdateTip(dt)) break;
                 UpdateOverworld(dt);
                 // The Catching Show's clock (plan 06 · R16b)
                 TickPalPark(dt);
@@ -1154,6 +1165,8 @@ public partial class GameEngine
             case GameState.Battle:
                 // A photo stills the battle: nothing of it is updated while one is composed (plan 12 · Q17)
                 if (UpdateBattlePhoto(dt)) break;
+                // ...and a trainer tip up holds the battle at its menu (plan 12 · Q23)
+                if (UpdateTip(dt)) break;
                 if (flow.Battle != null)
                 {
                     flow.Battle.AutoAdvanceAfter = GameSettings.AutoAdvanceAfter(Settings.AutoAdvance);
@@ -2012,6 +2025,8 @@ public partial class GameEngine
     private bool PlayEvolutions(IReadOnlyCollection<EvolutionRequest> requests, GameState returnTo)
     {
         if (requests.Count == 0) return false;
+        // The first evolution brings its tip, shown once the field is quiet again (plan 12 · Q23)
+        RaiseTip(Models.Tips.Evolution);
         // The scene shows each Pokémon before and after: their models are built while the screen fades out
         var shown = new List<string>();
         foreach (var request in requests)
@@ -2493,6 +2508,7 @@ public partial class GameEngine
                 flow.OptionsReturn = GameState.Overworld;
                 flow.State = GameState.Options;
                 flow.OptionsScreen.Open();
+                        flow.OptionsScreen.Help.TipsSeen = flow.Tips.Seen; // plan 12 · Q23: the HELP page's TIPS tab
                 break;
             case StartMenuChoice.Save:
                 // A run that has ended is saved no more (plan 13 · V4): the menu says so and stays
@@ -2851,10 +2867,13 @@ public partial class GameEngine
                 DrawSkip();
                 flow.LocationSign.Draw();
                 flow.StartMenu.Draw(VirtualWidth, VirtualHeight);
+                // A trainer tip over all of it (plan 12 · Q23)
+                DrawTip();
                 break;
             case GameState.Battle:
                 DrawBattle();
                 DrawTheTimer();
+                DrawTip();
                 break;
             case GameState.PartyMenu:
                 flow.PartyScreen.Draw(VirtualWidth, VirtualHeight, flow.Party);

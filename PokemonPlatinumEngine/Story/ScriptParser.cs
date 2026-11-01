@@ -898,6 +898,13 @@ public static class ScriptParser
                 if (Requests.Find(name) == null) throw r.Error($"'{name}' is not a request: Story/Requests.cs lists them");
                 return new Instruction { Op = Op.Request, Line = line, Name = name, Number = r.Int("the step's number") };
             }
+            // A trainer tip raised (plan 12 · Q23): "tip cutTree", an id of Models/Tips.cs
+            case "tip":
+            {
+                string name = r.Identifier("the tip's id");
+                if (Models.Tips.Find(name) == null) throw r.Error($"'{name}' is not a tip: Models/Tips.cs lists them");
+                return new Instruction { Op = Op.Tip, Line = line, Name = name };
+            }
             // A region's rival named on the introduction's keyboard (plan 18 · W4, part b)
             case "namerival":
                 return new Instruction { Op = Op.NameRival, Line = line };

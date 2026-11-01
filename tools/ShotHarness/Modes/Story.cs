@@ -660,5 +660,32 @@ partial class Harness
         if (!couponBefore) story.Unset("FLAG_RECEIVED_COUPON_1");
         foreach (string flag in hidesBefore) story.Set(flag);
         Frames(2);
+
+        // ---- a trainer tip (plan 12 · Q23), the very last: the row on, Eterna City's first tree read with no Badge for
+        // Cut, and the tip it brings coming up over the field once the line is put away. Put back after: the row off
+        // (the harness's own), the Badges, the helpers and the tip forgotten
+        var tipsBefore = engine.Settings.Tips;
+        var helpersBefore = engine.Settings.FieldHelpers;
+        int badgesBefore = story.BadgeMask("Sinnoh");
+        engine.Settings.Tips = RulesDefault.On;
+        engine.Settings.FieldHelpers = RulesDefault.Off;
+        story.SetBadges("Sinnoh", 0);
+        var sinnohMap = MapDatabase.Get("Sinnoh");
+        var firstTree = sinnohMap.Everyone.First(n => n.Obstacle == PropType.CutTree && (n.GridX, n.GridY) == (304, 521));
+        var (treeX, treeY, treeFacing) = Beside(sinnohMap, firstTree.GridX, firstTree.GridY);
+        At("Sinnoh", treeX, treeY, treeFacing);
+        Frames(10);
+        Talk(); Whole();
+        Next();
+        Until(() => engine.TipShown, "the tree's tip", 120);
+        Frames(20); Shot("st60_tip_cut_tree");
+        Console.WriteLine($"tip: \"{game.Flow.ShownTip?.Id}\" up {engine.TipShown}, the script running {engine.ScriptRunning}, seen {string.Join(",", game.Flow.Tips.Seen.Select(t => t.Id))}");
+        engine.PutTipAway();
+        Frames(2);
+        game.Flow.Tips.Clear();
+        story.SetBadges("Sinnoh", badgesBefore);
+        engine.Settings.FieldHelpers = helpersBefore;
+        engine.Settings.Tips = tipsBefore;
+        Frames(2);
     }
 }

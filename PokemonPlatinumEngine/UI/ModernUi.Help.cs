@@ -17,7 +17,8 @@ internal static partial class ModernUi
     {
         (Text.Of("help.tab.types"), UiIcon.Boost, new Color(232, 72, 76, 255)),
         (Text.Of("help.tab.controls"), UiIcon.Key, new Color(70, 136, 232, 255)),
-        (Text.Of("help.tab.notes"), UiIcon.Letter, new Color(56, 182, 104, 255))
+        (Text.Of("help.tab.notes"), UiIcon.Letter, new Color(56, 182, 104, 255)),
+        (Text.Of("help.tab.tips"), UiIcon.Star, Gold)
     };
 
     public static void DrawHelp(HelpScreen screen, int sw, int sh)
@@ -25,6 +26,7 @@ internal static partial class ModernUi
         Backdrop(sw, sh);
         ScreenTitle(Text.Of("help.title"));
         if (screen.Page == HelpPage.Types && !screen.OnTabs) Hints(sw - Margin, 44, Hint("shared.keys.arrows", "shared.hints.look"), Hint("shared.keys.esc", "shared.hints.back"));
+        else if (screen.Page == HelpPage.Tips && !screen.OnTabs) Hints(sw - Margin, 44, Hint("shared.keys.upDown", "shared.hints.look"), Hint("shared.keys.leftRight", "shared.hints.page"), Hint("shared.keys.esc", "shared.hints.back"));
         else Hints(sw - Margin, 44, Hint("shared.keys.leftRight", "shared.hints.page"), Hint("shared.keys.esc", "shared.hints.back"));
 
         var strip = new Rectangle(Margin, ContentTop, sw - Margin * 2, 76);
@@ -37,6 +39,9 @@ internal static partial class ModernUi
         {
             case HelpPage.Types:
                 TypeChartPanel(screen, top, sw);
+                break;
+            case HelpPage.Tips:
+                TipsPanel(screen, top, sw);
                 break;
             case HelpPage.Controls:
                 ControlsPanel(top, sw);

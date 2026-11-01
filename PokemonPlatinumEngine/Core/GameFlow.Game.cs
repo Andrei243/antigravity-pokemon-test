@@ -89,6 +89,13 @@ public sealed partial class GameFlow
     /// <summary>The request pinned over the field, by its id (plan 12 · Q21; saved).</summary>
     public string? PinnedRequest { get; set; }
 
+    /// <summary>The trainer tips shown and those waiting for a quiet moment (plan 12 · Q23; the shown are saved).</summary>
+    public Models.TipBook Tips { get; } = new();
+
+    /// <summary>The tip on screen, and how long it has been up; null while none is.</summary>
+    public Models.Tip? ShownTip { get; set; }
+    public float ShownTipAge { get; set; }
+
     /// <summary>The clothes the player owns and wears (plan 11 · C9).</summary>
     public Wardrobe Wardrobe { get; } = new();
 

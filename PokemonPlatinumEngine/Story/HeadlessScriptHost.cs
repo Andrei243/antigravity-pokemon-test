@@ -616,6 +616,11 @@ public sealed class HeadlessScriptHost : IScriptHost
         }
     }
 
+    /// <summary>The trainer tips the scripts raised, in order (plan 12 · Q23); nothing is shown with no screen.</summary>
+    public List<string> TipsRaised { get; } = new();
+
+    public void Tip(string id) => TipsRaised.Add(id);
+
     public void Letterbox(bool on, float seconds)
     {
         Shown("slide the bars");

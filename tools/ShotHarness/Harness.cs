@@ -47,6 +47,9 @@ partial class Harness
         // Muted, and by day whatever the real time is (the "times" mode sets the other times of day)
         engine.Settings.Muted = true;
         engine.Settings.TimeOfDay = TimeOfDay.Day;
+        // No trainer tips (plan 12 · Q23): a card at the first status condition or tree would hold every mode's field and
+        // battles and move every later shot; the modes that shoot one turn the row on for that shot alone (`TipsOn`)
+        engine.Settings.Tips = RulesDefault.Off;
         // ... and in spring whatever the fixed date's month (plan 22 · U3): only Unova has seasons, and the first of June
         // would give every mode its summer (the "seasons" mode sets the others)
         engine.Settings.Season = Season.Spring;

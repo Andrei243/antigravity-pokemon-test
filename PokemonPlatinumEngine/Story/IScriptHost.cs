@@ -432,6 +432,12 @@ public interface IScriptHost
     void Milestone(AutosaveMoment moment) { }
 
     /// <summary>
+    /// A trainer tip raised (plan 12 · Q23, <see cref="Models.Tips"/>): the game's host waits for the next quiet moment
+    /// (the script ended) and shows it once, while the options' TIPS row holds. The default does nothing.
+    /// </summary>
+    void Tip(string id) { }
+
+    /// <summary>
     /// A photograph is taken (plan 20 · J13: Clair's in the Dragon's Den, HeartGold's photo with her): the game writes the
     /// next frame drawn into the player's screenshots, as the screenshot key does, once the line before it is put away.
     /// The default takes none (a host with no screen); a hurry takes none either.

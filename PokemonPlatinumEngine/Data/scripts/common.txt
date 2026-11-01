@@ -576,6 +576,8 @@ script Nurse
   face self down
   heal
   say "There we are! Every one of them is fit and well again."
+  # Plan 12 · Q23: the first visit's tip, shown once the talk is over
+  tip nurse
   call NextHint
   # The first time one of the team has Pokérus, she says what it is (CommonScript_NurseCheckPokerus)
   if flag FLAG_POKECENTER_IDENTIFIED_POKERUS goto Goodbye
@@ -710,6 +712,7 @@ label ChampionB
 script Clerk
   sayown
   shop
+  tip clerk
   say "Thank you! Do come again."
   end
 
@@ -719,6 +722,7 @@ script Clerk
 script PC
   anim pc on
   text "{player} switched the PC on."
+  tip pc
   # With a Seal Case, the PC offers the Ball Capsules too, as the original's own PC does (plan 06 · R17b;
   # CommonScript_BallCapsules: with no Seal at all there is nothing to open)
   if not item "Seal Case" goto Storage
@@ -867,6 +871,7 @@ label Able
   setflag own
   end
 label Cannot
+  tip cutTree
   text "A thin tree stands in the way. A sharp enough move might clear it."
   end
 
@@ -894,9 +899,11 @@ label Able
   smashencounter
   end
 label NoBadge
+  tip rockSmash
   text "The rock is riddled with cracks. Rock Smash could break it, but not outside battle until the right Gym Badge is won."
   end
 label Cannot
+  tip rockSmash
   if item "HM06" goto Teach
   if not movebadge "Rock Smash" goto Early
   text "The rock is riddled with cracks. A Pokémon that knows Rock Smash could break it apart."
@@ -931,6 +938,7 @@ label Ready
   text "With Strength in use, the boulders here can be pushed."
   end
 label Cannot
+  tip strength
   text "A heavy boulder. Only a Pokémon of great power could shift it."
   end
 
@@ -961,6 +969,7 @@ label Able
   climb
   end
 label Cannot
+  tip rockClimb
   text "A steep, rough wall of rock. A Pokémon might be able to scale it."
   end
 
@@ -973,6 +982,7 @@ script UseRockClimb
 # Deep water at the player's feet. The field offers it only to someone who may surf (the move and the region's Badge
 # for it: the Fen Badge in Sinnoh, the Soul Badge in Kanto).
 script Water
+  tip surf
   ask "The water is deep enough to cross on a Pokémon. Use Surf?"
   if no end
   usemove "Surf"
@@ -997,6 +1007,7 @@ label Able
   climb
   end
 label Cannot
+  tip waterfall
   text "A wall of water comes crashing down."
   end
 
