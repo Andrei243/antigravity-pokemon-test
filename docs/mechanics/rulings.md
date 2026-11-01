@@ -7251,6 +7251,40 @@ The user's decision of 2026-10-31: build the room looks J2, J5 and J7 left. The 
   centre's): `ar_center` is now a `Shrine` (the chambers' boards under a hip roof, no sign) and `ar_study` the `Lab`.
 - *Other regions*: nothing they draw asks the new values, and the harness's `rooms`, `interiors twinleaf` and a Sinnoh
   cave (`area oreburgh_gate_1f`) drew the same before and after, shot for shot.
+
+## The Ruins of Alph's second rooms, Johto's Gym halls and the shops under Goldenrod (2026-11-01, plan 20 · J5's leftovers)
+
+- *The chambers' back walls*: each chamber's way through its back wall (warp 1, HeartGold's `MAP_RUINS_OF_ALPH_<WAY>_ENTRANCE_SECOND_ROOM`)
+  is an overlay door behind HeartGold's own flag, `FLAG_OPENED_ALPH_<SECRET>_SECRET_ROOM`, and HeartGold's object on it
+  (`babyboy1_12`, hidden by the same flag) is a thing of the map of our own, `npcType` `UnownWall` (`PropType.UnownWall`,
+  a card like the cave painting's; style guide, "A carved wall of the Ruins of Alph"). HeartGold opens each wall when its
+  secret happens in the room; the pins don't fetch the scripts, and this game opens it when the wall is **read** with the
+  secret brought, as Crystal's and HeartGold's four words say: the Kabuto chamber's ESCAPE an Escape Rope held up to it
+  (asked, one taken), the Aerodactyl chamber's LIGHT a Pokémon that knows Flash (asked; the region's Badge for it if its
+  gates name one), the Omanyte chamber's WATER a Water Stone in the bag (kept), the Ho-Oh chamber's HO-OH a Ho-Oh on the
+  team. The panel need not be solved first. Reading the wall with nothing to bring tells the word and does nothing.
+- *The rooms behind*: one matrix (182) of four areas, a map each (`RuinsOfAlph_<Way>ItemRoom`), with HeartGold's four
+  offerings in their balls each and four carved statues read; the door south leads back to the gap in the chamber's
+  wall. HeartGold's coordinate trigger before the statues (`VAR_UNK_40CC` and its kin) plays a scene the pins don't
+  fetch, and is left without a script. The four "hidden rooms" of HeartGold's (`…_HIDDEN_ROOM`: a trigger and no way in
+  or out, the rooms a panel drops the player through) stay out, as the hall's ruling of 2026-10-31 says.
+- *Johto's Gyms*: the Azalea, Goldenrod, Ecruteak, Cianwood, Olivine, Mahogany and Blackthorn Gyms name their Leader's
+  type in their overlays (`arenaType`), so each is a Gym hall in its colours (`InteriorStyle.Gym`, as Kanto's of
+  HeartGold's are) and its battles are fought on the Gym's stage (`BattleArena.Gym`), where Cianwood's and Olivine's had
+  been fought on an indoor library's. The Violet Gym names Flying too and keeps its walkways (an overlay's `interior`
+  wins over the hall `arenaType` makes), so Falkner is fought on the Gym's stage as well.
+- *The shops and salons under Goldenrod* (the tunnel's first basement): HeartGold's four people behind the corridor's
+  counters, hidden by its `FLAG_UNK_1B0` to `1B3`, which the floor's arrival sets and clears by the weekday. Their days
+  are ours, after Gold and Silver's: the herb shop every day (the herb counter Lavaridge's shop keeps, `marts.json`'s
+  `lavaridge_herb_shop`), the bargain shop on Mondays (one of five treasures a day at a fixed price, `FLAG_DAILY_GOLDENROD_BARGAIN_BOUGHT`),
+  the elder barber on Tuesdays, Thursdays and Saturdays (500, friendship +3 or +5) and the younger on Sundays, Wednesdays
+  and Fridays (300, +1, +3 or +10), one trim a day between them (`FLAG_DAILY_GOLDENROD_HAIRCUT`), the roll made before the
+  Pokémon is chosen (`VAR_GOLDENROD_HAIRCUT_ROLL`), and nobody behind the counters while Team Rocket hold the Radio
+  Tower. The photo studio's backdrops and the Kimono Girl of the passage (`VAR_UNK_40E7`) stay out. The barbers'
+  counters are blocked tiles HeartGold marks a counter that the cover reads as grass, so `World.BehindTheCounters` takes
+  any blocked tile marked a counter beside someone standing in a block of wall as a counter beside them (they stand on
+  the floor behind it), and leaves the tile as it is drawn.
+
 ## The Whirl Islands' stairs that weren't (2026-10-31, plan 20 · J1's decision 8 looked at again)
 
 - *Asked*: an importer rule laying HeartGold's height plates that stand on their edge as slopes, so that the Whirl

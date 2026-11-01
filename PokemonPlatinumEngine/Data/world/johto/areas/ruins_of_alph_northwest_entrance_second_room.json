@@ -1,0 +1,35 @@
+{
+  "key": "ruins_of_alph_northwest_entrance_second_room",
+  "index": 326,
+  "name": "Ruins of Alph",
+  "matrix": 182,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building3",
+  "dayMusic": "GS_D_CHIKATSUURO",
+  "nightMusic": "GS_D_CHIKATSUURO",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 17, "to": "ruins_of_alph_northwest_entrance_first_room", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "d24r0214_monstarball", "looks": "monstarball", "movement": "0", "x": 4, "z": 8, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D24R0214_REVIVAL_HERB", "item": "Revival Herb", "script": "std_itemball_d24r0214_revival_herb" },
+    { "id": "d24r0214_monstarball_2", "looks": "monstarball", "movement": "0", "x": 8, "z": 8, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D24R0214_CHARCOAL", "item": "Charcoal", "script": "std_itemball_d24r0214_charcoal" },
+    { "id": "d24r0214_monstarball_3", "looks": "monstarball", "movement": "0", "x": 4, "z": 12, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D24R0214_LIFE_ORB", "item": "Life Orb", "script": "std_itemball_d24r0214_life_orb" },
+    { "id": "d24r0214_monstarball_4", "looks": "monstarball", "movement": "0", "x": 8, "z": 12, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D24R0214_LEPPA_BERRY", "item": "Leppa Berry", "script": "std_itemball_d24r0214_leppa_berry" }
+  ],
+  "signs": [
+    { "x": 4, "z": 4, "type": 0, "script": "D24R0214_001+1" },
+    { "x": 8, "z": 4, "type": 0, "script": "D24R0214_001+1" },
+    { "x": 4, "z": 3, "type": 0, "script": "D24R0214_001+1" },
+    { "x": 8, "z": 3, "type": 0, "script": "D24R0214_001+1" }
+  ],
+  "triggers": [
+    { "x": 6, "z": 3, "width": 1, "depth": 1, "script": "D24R0214_000+1", "variable": "VAR_UNK_40D7", "value": "0" }
+  ]
+}

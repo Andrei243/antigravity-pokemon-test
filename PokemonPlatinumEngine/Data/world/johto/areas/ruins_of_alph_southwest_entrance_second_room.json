@@ -1,0 +1,35 @@
+{
+  "key": "ruins_of_alph_southwest_entrance_second_room",
+  "index": 327,
+  "name": "Ruins of Alph",
+  "matrix": 182,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building3",
+  "dayMusic": "GS_D_CHIKATSUURO",
+  "nightMusic": "GS_D_CHIKATSUURO",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 17, "to": "ruins_of_alph_southwest_entrance_first_room", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "d24r0215_monstarball", "looks": "monstarball", "movement": "0", "x": 4, "z": 8, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D24R0215_STARDUST", "item": "Stardust", "script": "std_itemball_d24r0215_stardust" },
+    { "id": "d24r0215_monstarball_2", "looks": "monstarball", "movement": "0", "x": 8, "z": 8, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D24R0215_STAR_PIECE", "item": "Star Piece", "script": "std_itemball_d24r0215_star_piece" },
+    { "id": "d24r0215_monstarball_3", "looks": "monstarball", "movement": "0", "x": 4, "z": 12, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D24R0215_LEPPA_BERRY", "item": "Leppa Berry", "script": "std_itemball_d24r0215_leppa_berry" },
+    { "id": "d24r0215_monstarball_4", "looks": "monstarball", "movement": "0", "x": 8, "z": 12, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D24R0215_MYSTIC_WATER", "item": "Mystic Water", "script": "std_itemball_d24r0215_mystic_water" }
+  ],
+  "signs": [
+    { "x": 4, "z": 4, "type": 0, "script": "D24R0215_001+1" },
+    { "x": 8, "z": 4, "type": 0, "script": "D24R0215_001+1" },
+    { "x": 4, "z": 3, "type": 0, "script": "D24R0215_001+1" },
+    { "x": 8, "z": 3, "type": 0, "script": "D24R0215_001+1" }
+  ],
+  "triggers": [
+    { "x": 6, "z": 3, "width": 1, "depth": 1, "script": "D24R0215_000+1", "variable": "VAR_UNK_40D4", "value": "0" }
+  ]
+}

@@ -176,13 +176,16 @@ public class JohtoTests
             Assert.True(walked.Keys.Any(m => m.Name == name), $"nobody walks into {name}");
 
         // The Slowpoke Well and the Gym are open since plan 20 · J7; the Ruins' hall waits for a panel (J5's leftovers:
-        // TheRuinsHallOpensWithAPanelAndHoldsTheUnown), and the rooms behind the chambers' back walls stay shut
+        // TheRuinsHallOpensWithAPanelAndHoldsTheUnown), and the rooms behind the chambers' back walls wait for their walls
+        // (J5's last leftover: JohtoStoryTests.AChambersBackWallOpensOnItsSecretOntoTheRoomOfOfferings)
         var azalea = Johto.Area("azalea")!;
         Assert.Contains(Overworld.WarpsAt(azalea.Warps[2].X, azalea.Warps[2].Z), w => w.TargetMap == "Azalea_GymEntrance");
         Assert.Contains(Overworld.WarpsAt(azalea.Warps[7].X, azalea.Warps[7].Z), w => w.TargetMap == "SlowpokeWell_Entrance");
         var hall = Johto.Area("ruins_of_alph")!.Warps[8];
         Assert.All(Overworld.WarpsAt(hall.X, hall.Z), w => Assert.Equal("FLAG_ALPH_HALL_OPEN", w.OpenedBy));
-        Assert.Null(MapNamed("RuinsOfAlph_NortheastChamber").GetWarpAt(6, 2));
+        Assert.All(MapNamed("RuinsOfAlph_NortheastChamber").WarpsAt(6, 2),
+            w => Assert.Equal("FLAG_OPENED_ALPH_ESCAPE_ROPE_SECRET_ROOM", w.OpenedBy));
+        Assert.True(Walked.Value.Keys.Any(m => m.Name == "RuinsOfAlph_NortheastItemRoom"), "nobody walks into the room behind the wall");
         // ...and Ilex Forest beyond Azalea's gate house is open since J5's part b
         Assert.Equal("IlexForest", MapNamed("Azalea_IlexForestGate").GetWarpAt(1, 7)?.TargetMap);
 

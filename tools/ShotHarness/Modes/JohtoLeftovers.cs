@@ -55,5 +55,35 @@ partial class Harness
         Spot("jl33_alph_hall_entrance", "ruins_of_alph_hall_entrance");
         At("Johto", door.X, door.Z + 2, Direction.Up); game.ArriveOnMap(); Frames(3); Shot("jl34_alph_hall_door_open");
         Console.WriteLine($"jl34: the hall's door {(ruins.IsWalkable(door.X, door.Z) ? "is open" : "!! is shut")}");
+
+        // The chambers' back walls (J5's last leftover): the carved wall standing on the way through, gone once its secret
+        // is brought, and the four rooms of offerings behind them
+        At("RuinsOfAlph_NortheastChamber", 6, 4, Direction.Up); game.ArriveOnMap(); Frames(3); Shot("jl40_alph_wall_standing");
+        var chamber = MapDatabase.Get("RuinsOfAlph_NortheastChamber");
+        Console.WriteLine($"jl40: the wall {(chamber.NPCs.Any(n => n.Name == "Carved wall") ? "stands" : "!! is gone")}, "
+            + $"the way through {(chamber.IsWalkable(6, 2) ? "!! is open" : "is shut")}");
+        foreach (var secret in new[] { "ESCAPE_ROPE", "FLASH", "WATER_STONE", "HO_OH" }) game.Story.Set($"FLAG_OPENED_ALPH_{secret}_SECRET_ROOM");
+        At("RuinsOfAlph_NortheastChamber", 6, 4, Direction.Up); game.ArriveOnMap(); Frames(3); Shot("jl41_alph_wall_gone");
+        Console.WriteLine($"jl41: the wall {(chamber.NPCs.Any(n => n.Name == "Carved wall") ? "!! stands" : "is gone")}, "
+            + $"the way through {(chamber.IsWalkable(6, 2) ? "is open" : "!! is shut")}");
+        Spot("jl42_alph_northeast_room", "ruins_of_alph_northeast_entrance_second_room");
+        Spot("jl43_alph_southeast_room", "ruins_of_alph_southeast_entrance_second_room");
+        Spot("jl44_alph_southwest_room", "ruins_of_alph_southwest_entrance_second_room");
+        Spot("jl45_alph_northwest_room", "ruins_of_alph_northwest_entrance_second_room");
+
+        // Johto's Gyms as halls in their Leaders' colours (the Violet Gym is its own, jl23)
+        Spot("jl50_azalea_gym", "azalea_gym");
+        Spot("jl51_goldenrod_gym", "goldenrod_gym");
+        Spot("jl52_ecruteak_gym", "ecruteak_gym");
+        Spot("jl53_cianwood_gym", "cianwood_gym");
+        Spot("jl54_olivine_gym", "olivine_gym");
+        Spot("jl55_mahogany_gym", "mahogany_gym_room_1");
+        Spot("jl56_blackthorn_gym", "blackthorn_gym");
+
+        // The shops and salons under Goldenrod, behind their counters on the harness's day
+        At("Goldenrod_Underground_B1F", 7, 22, Direction.Right); game.ArriveOnMap(); Frames(3); Shot("jl57_goldenrod_tunnel_shops");
+        var tunnel = MapDatabase.Get("Goldenrod_Underground_B1F");
+        Console.WriteLine($"jl57: {GameClock.Today.DayOfWeek}, behind the counters "
+            + string.Join(", ", tunnel.NPCs.Where(n => n.GridX == 10 && n.GridY is 17 or 21 or 22 or 28).Select(n => $"{n.Name} ({n.GridX}, {n.GridY}) on {tunnel.GetGroundTile(n.GridX, n.GridY)}")));
     }
 }

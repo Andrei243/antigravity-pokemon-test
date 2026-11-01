@@ -3,6 +3,8 @@
   // waterfall, who hears nobody until the winch beside it is turned (scripts/cianwood_gym.txt)
   "area": "cianwood_gym",
   "bgmTrack": "johto/gym",
+  // Chuck's type: the room is a Gym hall in its colours, and its battles are fought on the Gym's stage
+  "arenaType": "Fighting",
   "read": { "T24GYM0101_002+1": "Winch" },
   "people": {
     "t24gym0101_gsleader5": {

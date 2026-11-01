@@ -558,6 +558,69 @@ internal static class OutdoorProps
     }
 
     /// <summary>
+    /// A carved wall of the Ruins of Alph, 32 by 52 (style guide, "A carved wall of the Ruins of Alph"): the cave
+    /// painting's slab in the Ruins' sandstone with its head squared off, carved with four rows of small signs of a script
+    /// that is no letters of ours. The drawing is our own.
+    /// </summary>
+    public static void PaintUnownWall(PixelCanvas c)
+    {
+        var light = Rgb(176, 150, 112);
+        var mid = Rgb(146, 122, 90);
+        var dark = Rgb(108, 88, 66);
+        var edge = Rgb(72, 58, 44);
+        var cut = Rgb(88, 70, 52);
+        var lip = Rgb(198, 176, 138);
+
+        // The slab: a whole tile across but for its outline, its head squared off with its corners knocked back, lit
+        // along its top and its left side and shaded down its right
+        for (int y = 1; y <= 50; y++)
+        {
+            int corner = y switch { 1 => 2, 2 => 1, _ => 0 };
+            int x0 = 1 + corner, x1 = 30 - corner;
+            for (int x = x0; x <= x1; x++)
+                c.Set(x, y, x >= x1 - 1 ? dark : x <= x0 + 1 || y <= 2 ? light : mid);
+        }
+        // The course it stands on, under a joint
+        c.Rect(1, 45, 30, 6, dark);
+        c.HLine(1, 44, 30, edge);
+        c.HLine(2, 45, 27, mid);
+
+        // Four rows of four carved signs, each a few strokes cut in shadow with their lower lip in light
+        void Cut(int x, int y)
+        {
+            c.Set(x, y, cut);
+            if (y + 1 <= 42) c.Set(x, y + 1, lip);
+        }
+        for (int row = 0; row < 4; row++)
+            for (int col = 0; col < 4; col++)
+            {
+                int x = 5 + col * 6, y = 6 + row * 9;
+                // (each row the signs of the one above it turned on by one, so no column repeats)
+                switch ((col + row * 3) % 4)
+                {
+                    case 0: // a ring with a tick
+                        Cut(x + 1, y); Cut(x + 2, y); Cut(x, y + 1); Cut(x + 3, y + 1); Cut(x, y + 2); Cut(x + 3, y + 2);
+                        Cut(x + 1, y + 3); Cut(x + 2, y + 3); Cut(x + 2, y + 4); Cut(x + 2, y + 5);
+                        break;
+                    case 1: // two bars and a stem
+                        for (int i = 0; i < 4; i++) { Cut(x + i, y); Cut(x + i, y + 4); }
+                        Cut(x + 1, y + 1); Cut(x + 1, y + 2); Cut(x + 1, y + 3);
+                        break;
+                    case 2: // a cross with a foot
+                        for (int i = 0; i < 4; i++) Cut(x + i, y + 2);
+                        for (int i = 0; i < 6; i++) Cut(x + 2, y + i);
+                        Cut(x + 3, y + 5);
+                        break;
+                    default: // a hook
+                        for (int i = 0; i < 5; i++) Cut(x, y + i);
+                        Cut(x + 1, y); Cut(x + 2, y); Cut(x + 3, y + 1); Cut(x + 3, y + 2); Cut(x + 2, y + 2);
+                        break;
+                }
+            }
+        Pix.Outline(c);
+    }
+
+    /// <summary>
     /// The cave painting, 32 by 52 (style guide, "The cave painting"): one upright slab with a rounded head in the
     /// rubble's tones, a darker course at its foot, and the painting in ochre and chalk: a ring with three marks round
     /// it in a triangle, and under them two beasts face to face. The drawing is our own.
@@ -869,6 +932,7 @@ public static class ThingCards
             PropType.GalacticDoor => (GalacticArt.DoorWidth, GalacticArt.DoorHeight, GalacticArt.PaintDoor),
             PropType.Rubble => (30, 20, OutdoorProps.PaintRubble),
             PropType.CavePainting => (32, 52, OutdoorProps.PaintCavePainting),
+            PropType.UnownWall => (32, 52, OutdoorProps.PaintUnownWall),
             PropType.MagmaStone => (30, 28, OutdoorProps.PaintMagmaStone),
             PropType.ElectricGate => (32, 30, OutdoorProps.PaintElectricGate),
             PropType.DomeFossil => (24, 16, c => OutdoorProps.PaintFossil(c, helix: false)),
@@ -895,7 +959,7 @@ public static class ThingCards
         // A shutter stands across the middle of its gap
         PropType.GalacticDoor => 0.5f,
         // The painting stands well back in its tile's south half, a slab filling the niche it is set in
-        PropType.CavePainting => 26f / 32f,
+        PropType.CavePainting or PropType.UnownWall => 26f / 32f,
         _ => 0.5f
     };
 }

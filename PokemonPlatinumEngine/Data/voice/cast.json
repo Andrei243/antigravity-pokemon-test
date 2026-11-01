@@ -92,6 +92,10 @@
       "note": "first spoken at olivine.txt(29)",
       "provisional": true
     },
+    "barber": {
+      "note": "first spoken at goldenrod_tunnel_b1f.txt(110)",
+      "provisional": true
+    },
     "barry": {
       "note": "first spoken at fuchsia_gym.txt(104)",
       "provisional": true
@@ -478,6 +482,10 @@
     },
     "harlequin": {
       "note": "first spoken at CasteliaCity.txt(22)",
+      "provisional": true
+    },
+    "herbalist": {
+      "note": "first spoken at goldenrod_tunnel_b1f.txt(47)",
       "provisional": true
     },
     "herdier": {
@@ -1335,6 +1343,7 @@
     "Backer": "backer",
     "Backers": "backers",
     "Baoba": "baoba",
+    "Barber": "barber",
     "Barry": "barry",
     "Beauty": "beauty",
     "Ben": "ben",
@@ -1459,6 +1468,7 @@
     "Gym Guide": "look:gym_guide",
     "Gym Trainer": "gym_trainer",
     "Harlequin": "harlequin",
+    "Herbalist": "herbalist",
     "Herdier": "herdier",
     "Hiker": "look:hiker",
     "Honey Man": "honey_man",

@@ -1,11 +1,16 @@
 {
   // The Ruins of Alph's northeast chamber (plan 20 · J5), HeartGold's room: the stone panel of the Kabuto in its floor.
-  // The way through the back wall (warp 1) opens only when the wall does, which is the chambers' later chapter
+  // The way through the back wall (warp 1) opens only when the wall does: an Escape Rope held up to its carving
+  // (the room's Wall script, HeartGold's FLAG_OPENED_ALPH_ESCAPE_ROPE_SECRET_ROOM)
   "area": "ruins_of_alph_northeast_entrance_first_room",
   "caveLook": "Ruins",
   "bgmTrack": "johto/ruins_of_alph",
-  "locked": [ 1 ],
+  "doors": [
+    { "warp": 1, "map": "RuinsOfAlph_NortheastItemRoom", "x": 6, "y": 16, "facing": "Up", "openedBy": "FLAG_OPENED_ALPH_ESCAPE_ROPE_SECRET_ROOM" }
+  ],
   "people": {
+    // The carved wall standing on the way through, HeartGold's object on warp 1, gone by its own flag
+    "d24r0202_babyboy1_12": { "name": "Carved wall", "npcType": "UnownWall", "script": "Wall" },
     "d24r0202_gswoman6": {
       "name": "Scientist",
       "dialog": [

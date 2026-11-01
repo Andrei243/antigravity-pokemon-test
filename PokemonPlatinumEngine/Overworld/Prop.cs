@@ -264,6 +264,11 @@ public enum PropType
     Airplane,
     /// <summary>A cluster of pale charged crystals that glows (Chargestone Cave's, plan 22 · U7).</summary>
     ChargeStone,
+    /// <summary>
+    /// The carved wall over the way through a Ruins of Alph chamber's back wall until its secret is brought: a thing of
+    /// the map (<see cref="NPC.UnownWallType"/>), drawn as a card like the cave painting (plan 20 · J5's last leftover).
+    /// </summary>
+    UnownWall,
 }
 
 /// <summary>A piece of furniture or decoration placed in a room, covering a rectangle of tiles.</summary>

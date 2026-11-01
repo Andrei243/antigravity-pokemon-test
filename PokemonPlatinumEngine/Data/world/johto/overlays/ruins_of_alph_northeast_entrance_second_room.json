@@ -1,0 +1,12 @@
+{
+  // The room behind the Ruins of Alph's northeast chamber's back wall (plan 20 · J5's last leftover), HeartGold's room:
+  // four statues and the offerings left before them (its item balls, from the import). The way back is the door in its
+  // south wall, which puts the player down before the gap in the chamber's wall
+  "area": "ruins_of_alph_northeast_entrance_second_room",
+  "caveLook": "Ruins",
+  "bgmTrack": "johto/ruins_of_alph",
+  "doors": [
+    { "warp": 0, "map": "RuinsOfAlph_NortheastChamber", "x": 6, "y": 3, "facing": "Down" }
+  ],
+  "read": { "D24R0212_001+1": "Statue" }
+}

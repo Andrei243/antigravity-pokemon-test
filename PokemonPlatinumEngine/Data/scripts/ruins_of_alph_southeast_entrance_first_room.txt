@@ -25,3 +25,21 @@ label Left
 label Whole
   text "The panel shows an Aerodactyl, whole again. The stone around it is warm to the touch."
   end
+
+
+# The back wall (HeartGold's object on warp 1, D24R0204_001): its carving spells LIGHT, and a Pokémon's Flash opens it
+# (the rulings' "The Ruins of Alph's second rooms")
+script Wall
+  if flag FLAG_OPENED_ALPH_FLASH_SECRET_ROOM end
+  speaker none
+  text "Strange shapes are carved across the back wall. Read in a row, they seem to spell one word: LIGHT."
+  if not knows "Flash" end
+  if not movebadge "Flash" end
+  ask "Have a Pokémon light the carving with Flash?"
+  if no end
+  shake self 4
+  sound "boulder"
+  setflag FLAG_OPENED_ALPH_FLASH_SECRET_ROOM
+  hide self
+  text "The carving drank in the light and glowed. With a grinding of stone, the wall slid away into the floor!"
+  end

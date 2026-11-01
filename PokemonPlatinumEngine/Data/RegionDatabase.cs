@@ -601,6 +601,9 @@ public static class RegionDatabase
                 "Seafoam_B1F", "Seafoam_B2F", "Seafoam_B3F", "Seafoam_B4F",
                 // Plan 20 · J5's leftovers: the Ruins of Alph's hall
                 "RuinsOfAlph_HallEntrance", "RuinsOfAlph_UndergroundHall",
+                // Plan 20 · J5's last leftover: the chambers' second rooms behind their back walls
+                "RuinsOfAlph_NortheastItemRoom", "RuinsOfAlph_SoutheastItemRoom",
+                "RuinsOfAlph_NorthwestItemRoom", "RuinsOfAlph_SouthwestItemRoom",
             }
         },
         new()

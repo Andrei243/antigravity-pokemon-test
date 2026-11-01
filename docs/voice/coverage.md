@@ -10,9 +10,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 |---|---|---|---|---|---|
 | The introduction (`intro:`) | 80 | 80 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1276 | 1236 | 40 | 1 | 0 |
-| Scripts (`script:`) | 9270 | 8840 | 430 | 17 | 0 |
+| Scripts (`script:`) | 9294 | 8864 | 430 | 17 | 0 |
 | People of the world (`world:`) | 6930 | 6871 | 59 | 4 | 0 |
-| **All** | 17556 | 17027 | 529 | 22 | 0 |
+| **All** | 17580 | 17051 | 529 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -21,14 +21,14 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | What | Lines |
 |---|---|
 | a Pokémon's cry | 238 |
-| a question's answers | 564 |
+| a question's answers | 570 |
 | a sign | 1556 |
-| the game's own voice (speaker none) | 265 |
-| the game's own voice (text) | 1364 |
+| the game's own voice (speaker none) | 267 |
+| the game's own voice (text) | 1383 |
 
 ## The cast
 
-- Named characters: 348 voices (311 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
+- Named characters: 350 voices (313 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Cloned from the user's samples: `rival`.
 - Archetypes in use: 224, with 677 voices to cast (V5).
 - Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1866.
@@ -45,7 +45,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `rival` | 577 | 17 |
 | `look:lady (any)` | 403 | 1 |
 | `look:youngster (any)` | 383 | 18 |
-| `look:clerk (any)` | 344 | 7 |
+| `look:clerk (any)` | 343 | 7 |
 | `look:lass (any)` | 312 | 11 |
 | `look:nurse (any)` | 255 | 0 |
 | `look:attendant (any)` | 223 | 7 |
@@ -63,9 +63,9 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:swimmer_m (any)` | 126 | 0 |
 | `class:picnicker (any)` | 116 | 0 |
 | `assistant` | 115 | 5 |
+| `look:old_man (any)` | 115 | 4 |
 | `class:youngster (any)` | 112 | 0 |
 | `look:guard (any)` | 110 | 0 |
-| `look:old_man (any)` | 109 | 4 |
 | `class:black_belt (any)` | 108 | 0 |
 | `class:psychic (any)` | 108 | 0 |
 | `mom` | 105 | 6 |

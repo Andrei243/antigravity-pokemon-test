@@ -16678,6 +16678,36 @@ way -
 from Woman at 3,25 of Goldenrod_Underground
 way -
   Woman> There are shops down the stairs, but Trainers too. I'm too nervous to go down.
+=== goldenrod_tunnel_b1f.Bargains
+from Old Man at 10,17 of Goldenrod_Underground_B1F
+way 0
+  Old Man> Psst! Treasures at a fraction of what the collectors pay. One to a customer, mind, and only today.
+  Old Man> What will it be?
+  Old Man> Your purse is a little light for that one, I'm afraid.
+  ? What will it be? = NUGGET  4,500
+way 5, from answer 1
+  Old Man> Suit yourself. These bargains won't wait for ever, though.
+  ? What will it be? = NOTHING
+way 4, from answer 1
+  Old Man> Your purse is a little light for that one, I'm afraid.
+  ? What will it be? = STAR PIECE  4,600
+way 3, from answer 1
+  > Lucas received the Stardust!
+  > Lucas put it away in the Items pocket.
+  Old Man> A pleasure doing business. Not a word to the collectors, eh?
+  ? What will it be? = STARDUST  900
+  * fanfare FanfareItem
+  + FLAG_DAILY_GOLDENROD_BARGAIN_BOUGHT
+way 2, from answer 1
+  Old Man> Your purse is a little light for that one, I'm afraid.
+  ? What will it be? = BIG PEARL  3,500
+way 1, from answer 1
+  > Lucas received the Pearl!
+  > Lucas put it away in the Items pocket.
+  Old Man> A pleasure doing business. Not a word to the collectors, eh?
+  ? What will it be? = PEARL  650
+  * fanfare FanfareItem
+  + FLAG_DAILY_GOLDENROD_BARGAIN_BOUGHT
 === goldenrod_tunnel_b1f.Disguise
 from the trigger at 15,7 of Goldenrod_Underground_B1F
 way -
@@ -16698,10 +16728,50 @@ way -
 from Door at 25,30 of Goldenrod_Underground_B1F
 way -
   > STAFF ONLY BEYOND THIS DOOR
+=== goldenrod_tunnel_b1f.ElderBarber
+from Barber at 10,21 of Goldenrod_Underground_B1F
+way 0
+  Barber> Welcome! I'm the elder of the two barbers down here, and the better, whatever my brother tells you.
+  Barber> A trim for one of your Pokémon is 500. Shall I?
+  Barber> Which one shall it be?
+  > Turtwig looks pleased with its trim.
+  Barber> There we are. Come back another day and I'll do it again.
+  ? A trim for one of your Pokémon is 500. Shall I? = Yes
+  * open ChoosePokemon
+  * fade out
+  * sound heal
+  * fade in
+  + FLAG_DAILY_GOLDENROD_HAIRCUT
+way 1, from answer 1
+  Barber> Another time, then.
+  ? A trim for one of your Pokémon is 500. Shall I? = No
 === goldenrod_tunnel_b1f.Grunt
 from Grunt at 15,6 of Goldenrod_Underground_B1F
 way -
   Grunt> Look at you! Very sharp. Just don't go scaring people in the street dressed like that, all right?
+=== goldenrod_tunnel_b1f.HerbShop
+from Herbalist at 10,28 of Goldenrod_Underground_B1F
+way -
+  Herbalist> Hello, dear. Herbs are bitter, but they do a body good, and they cost next to nothing.
+  Herbalist> Mind your Pokémon pull a face when they take them. It means they're working.
+  * open Shop lavaridge_herb_shop
+=== goldenrod_tunnel_b1f.YoungerBarber
+from Barber at 10,22 of Goldenrod_Underground_B1F
+way 0
+  Barber> Welcome! I'm the younger of the two barbers down here, and the cheaper, whatever my brother tells you.
+  Barber> A trim for one of your Pokémon is 300. Shall I?
+  Barber> Which one shall it be?
+  > Turtwig is overjoyed with its new look!
+  Barber> All done! I'm still learning, so every trim comes out a little different.
+  ? A trim for one of your Pokémon is 300. Shall I? = Yes
+  * open ChoosePokemon
+  * fade out
+  * sound heal
+  * fade in
+  + FLAG_DAILY_GOLDENROD_HAIRCUT
+way 1, from answer 1
+  Barber> Another time, then!
+  ? A trim for one of your Pokémon is 300. Shall I? = No
 === goldenrod_tunnel_b2f.Blue
 from the tile read at 8,8 of Goldenrod_Underground_B2F
 way -
@@ -25316,6 +25386,17 @@ way 0
 way 1, from answer 1
   > The pieces lie where they were.
   ? Try to put the picture back together? = No
+=== ruins_of_alph_northeast_entrance_first_room.Wall
+from Carved wall at 6,2 of RuinsOfAlph_NortheastChamber
+way -
+  > Strange shapes are carved across the back wall. Read in a row, they seem to spell one word: ESCAPE.
+=== ruins_of_alph_northeast_entrance_second_room.Statue
+from the tile read at 4,3 of RuinsOfAlph_NortheastItemRoom
+from the tile read at 4,4 of RuinsOfAlph_NortheastItemRoom
+from the tile read at 8,3 of RuinsOfAlph_NortheastItemRoom
+from the tile read at 8,4 of RuinsOfAlph_NortheastItemRoom
+way -
+  > A statue of rough stone. Rows of Unown are carved down its sides, worn almost smooth.
 === ruins_of_alph_northwest_entrance_first_room.Panel
 from the tile read at 6,6 of RuinsOfAlph_NorthwestChamber
 way 0
@@ -25332,6 +25413,17 @@ way 0
 way 1, from answer 1
   > The pieces lie where they were.
   ? Try to put the picture back together? = No
+=== ruins_of_alph_northwest_entrance_first_room.Wall
+from Carved wall at 6,2 of RuinsOfAlph_NorthwestChamber
+way -
+  > Strange shapes are carved across the back wall. Read in a row, they seem to spell one word: HO-OH.
+=== ruins_of_alph_northwest_entrance_second_room.Statue
+from the tile read at 4,3 of RuinsOfAlph_NorthwestItemRoom
+from the tile read at 4,4 of RuinsOfAlph_NorthwestItemRoom
+from the tile read at 8,3 of RuinsOfAlph_NorthwestItemRoom
+from the tile read at 8,4 of RuinsOfAlph_NorthwestItemRoom
+way -
+  > A statue of rough stone. Rows of Unown are carved down its sides, and a great bird spreads its wings above them.
 === ruins_of_alph_southeast_entrance_first_room.Panel
 from the tile read at 6,6 of RuinsOfAlph_SoutheastChamber
 way 0
@@ -25348,6 +25440,17 @@ way 0
 way 1, from answer 1
   > The pieces lie where they were.
   ? Try to put the picture back together? = No
+=== ruins_of_alph_southeast_entrance_first_room.Wall
+from Carved wall at 6,2 of RuinsOfAlph_SoutheastChamber
+way -
+  > Strange shapes are carved across the back wall. Read in a row, they seem to spell one word: LIGHT.
+=== ruins_of_alph_southeast_entrance_second_room.Statue
+from the tile read at 4,3 of RuinsOfAlph_SoutheastItemRoom
+from the tile read at 4,4 of RuinsOfAlph_SoutheastItemRoom
+from the tile read at 8,3 of RuinsOfAlph_SoutheastItemRoom
+from the tile read at 8,4 of RuinsOfAlph_SoutheastItemRoom
+way -
+  > A statue of rough stone. Rows of Unown are carved down its sides, and a sun is cut deep into its crown.
 === ruins_of_alph_southwest_entrance_first_room.Panel
 from the tile read at 6,6 of RuinsOfAlph_SouthwestChamber
 way 0
@@ -25364,6 +25467,17 @@ way 0
 way 1, from answer 1
   > The pieces lie where they were.
   ? Try to put the picture back together? = No
+=== ruins_of_alph_southwest_entrance_first_room.Wall
+from Carved wall at 6,2 of RuinsOfAlph_SouthwestChamber
+way -
+  > Strange shapes are carved across the back wall. Read in a row, they seem to spell one word: WATER.
+=== ruins_of_alph_southwest_entrance_second_room.Statue
+from the tile read at 4,3 of RuinsOfAlph_SouthwestItemRoom
+from the tile read at 4,4 of RuinsOfAlph_SouthwestItemRoom
+from the tile read at 8,3 of RuinsOfAlph_SouthwestItemRoom
+from the tile read at 8,4 of RuinsOfAlph_SouthwestItemRoom
+way -
+  > A statue of rough stone. Rows of Unown are carved down its sides, under a band of waves.
 === rustboro_city.Boy2
 from Boy at 12,167 of Hoenn
 way -

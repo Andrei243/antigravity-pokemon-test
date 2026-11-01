@@ -3,6 +3,8 @@
   // own records (Johto's trainers.json). Whitney, her guide and the Plain Badge are goldenrod_gym.txt's
   "area": "goldenrod_gym",
   "bgmTrack": "johto/gym",
+  // Whitney's type: the room is a Gym hall in its colours, and its battles are fought on the Gym's stage
+  "arenaType": "Normal",
   "people": {
     "t25gym0101_gsleader3": {
       "name": "Whitney",

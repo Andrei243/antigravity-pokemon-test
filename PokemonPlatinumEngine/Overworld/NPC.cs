@@ -278,6 +278,13 @@ public class NPC
     public const string CavePaintingType = "CavePainting";
 
     /// <summary>
+    /// The carved wall of a Ruins of Alph chamber (plan 20 · J5's last leftover; HeartGold's object on the way through
+    /// the back wall): a thing of the map like the cave painting, in the way and read, gone by its own flag once the
+    /// wall's secret is brought.
+    /// </summary>
+    public const string UnownWallType = "UnownWall";
+
+    /// <summary>
     /// The Magma Stone of Stark Mountain (plan 02 · S15, part b; the original stands it as a boulder nobody pushes,
     /// <c>LOCALID_MAGMA_STONE</c>): a thing of the map on its place at the head of the mountain's last room while its
     /// flag lets it, in the way like a person, which no field move clears. Drawn as a card.
@@ -354,6 +361,7 @@ public class NPC
         GalacticDoorType => PropType.GalacticDoor,
         RubbleType => PropType.Rubble,
         CavePaintingType => PropType.CavePainting,
+        UnownWallType => PropType.UnownWall,
         MagmaStoneType => PropType.MagmaStone,
         FalseRockType => PropType.CrackedRock,
         FallenBoulderType => PropType.StrengthBoulder,

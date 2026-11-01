@@ -42,10 +42,31 @@ public class JohtoRoomLooksTests
     {
         var map = Named("Violet_Gym");
         Assert.Equal(InteriorStyle.Aerie, map.Interior);
+        // Falkner's battles are fought on the Gym's stage all the same (plan 20 · J5's leftovers)
+        Assert.Equal(BattleArena.Gym, map.Arena);
         // Between the walkways, where the import had blocked tiles with nothing drawn, the room has nothing
         Assert.Equal(TileType.Void, map.GetGroundTile(12, 10));
         // and Falkner and his trainers still stand on the walkways
         Assert.All(map.Everyone.Where(n => n.IsTrainer), n => Assert.NotEqual(TileType.Void, map.GetGroundTile(n.GridX, n.GridY)));
+    }
+
+    [Theory]
+    [InlineData("Azalea_Gym", PokemonType.Bug)]
+    [InlineData("Goldenrod_Gym", PokemonType.Normal)]
+    [InlineData("Ecruteak_Gym", PokemonType.Ghost)]
+    [InlineData("Cianwood_Gym", PokemonType.Fighting)]
+    [InlineData("Olivine_Gym", PokemonType.Steel)]
+    [InlineData("Mahogany_Gym", PokemonType.Ice)]
+    [InlineData("Blackthorn_Gym", PokemonType.Dragon)]
+    public void JohtosGymsAreHallsInTheirLeadersColoursAndFightOnTheGymsStage(string name, PokemonType type)
+    {
+        // Plan 20 · J5's leftover (wave 77's "the other Johto Gyms' halls"): each Gym after the Violet Gym, whose walkways
+        // are a look of their own, is a Gym hall of its Leader's type, as Kanto's are since plan 20 · J15, and its battles
+        // are fought on the Gym's stage, not a house's floor
+        var map = Named(name);
+        Assert.Equal(InteriorStyle.Gym, map.Interior);
+        Assert.Equal(type, map.ArenaType);
+        Assert.Equal(BattleArena.Gym, map.Arena);
     }
 
     [Fact]
@@ -54,7 +75,9 @@ public class JohtoRoomLooksTests
         Assert.Equal(CaveLook.Charred, Named("BurnedTower_1F").CaveLook);
         Assert.Equal(CaveLook.Charred, Named("BurnedTower_B1F").CaveLook);
         foreach (string name in new[] { "RuinsOfAlph_NortheastChamber", "RuinsOfAlph_NorthwestChamber", "RuinsOfAlph_SoutheastChamber",
-                     "RuinsOfAlph_SouthwestChamber", "RuinsOfAlph_HallEntrance", "RuinsOfAlph_UndergroundHall" })
+                     "RuinsOfAlph_SouthwestChamber", "RuinsOfAlph_HallEntrance", "RuinsOfAlph_UndergroundHall",
+                     "RuinsOfAlph_NortheastItemRoom", "RuinsOfAlph_SoutheastItemRoom", "RuinsOfAlph_NorthwestItemRoom",
+                     "RuinsOfAlph_SouthwestItemRoom" })
             Assert.Equal(CaveLook.Ruins, Named(name).CaveLook);
         // Every other cave is rock
         Assert.Equal(CaveLook.Rock, Named("UnionCave_1F").CaveLook);

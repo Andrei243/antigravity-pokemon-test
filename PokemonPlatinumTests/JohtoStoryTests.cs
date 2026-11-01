@@ -444,6 +444,105 @@ public class JohtoStoryTests
         Assert.Empty(after.Asked);
     }
 
+    [Fact]
+    public void TheShopsAndSalonsUnderGoldenrodKeepTheirDays()
+    {
+        // Plan 20 · J5's leftovers (the rulings' "The shops and salons under Goldenrod"): the herb shop every day, the
+        // bargain shop on Mondays, the elder barber on Tuesdays, Thursdays and Saturdays, the younger on Sundays,
+        // Wednesdays and Fridays, and nobody behind the counters while Team Rocket hold the Radio Tower
+        const string herbs = "d37r0102_gsoldwoman1", bargains = "d37r0102_gsoldman1", elder = "d37r0102_gsman3", younger = "d37r0102_gsman2";
+        var game = new Game();
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Sentret")!, 20) { Friendship = 70 });
+        foreach (var (day, open) in new (DayOfWeek, string[])[]
+                 {
+                     (DayOfWeek.Monday, new[] { herbs, bargains }), (DayOfWeek.Tuesday, new[] { herbs, elder }),
+                     (DayOfWeek.Wednesday, new[] { herbs, younger }), (DayOfWeek.Thursday, new[] { herbs, elder }),
+                     (DayOfWeek.Friday, new[] { herbs, younger }), (DayOfWeek.Saturday, new[] { herbs, elder }),
+                     (DayOfWeek.Sunday, new[] { herbs, younger })
+                 })
+        {
+            game.Weekday = day;
+            game.Arrive("Goldenrod_Underground_B1F", 9, 20);
+            foreach (string key in new[] { herbs, bargains, elder, younger })
+                Assert.True(open.Contains(key) == (game.Present(key) != null), $"{key} on a {day}");
+        }
+
+        // A trim from the elder barber: the Pokémon friendlier, 500 paid, and one trim a day between the two of them
+        game.Weekday = DayOfWeek.Tuesday;
+        game.Arrive("Goldenrod_Underground_B1F", 9, 20);
+        game.Answers.Enqueue(0);
+        var trim = game.Talk(elder);
+        Assert.Equal(73, game.Party.Members[0].Friendship);
+        Assert.Equal(2500, trim.Money);
+        Assert.True(game.Story.Has("FLAG_DAILY_GOLDENROD_HAIRCUT"));
+        var again = game.Talk(elder);
+        Assert.Empty(again.Asked);
+        Assert.Equal(73, game.Party.Members[0].Friendship);
+
+        // The herbalist's counter opens on the herbs
+        Assert.Contains(game.Talk(herbs).Log, l => l.Contains("lavaridge_herb_shop"));
+
+        // While Team Rocket hold the Radio Tower, nobody stands behind the counters
+        game.Story.SetVar("VAR_SCENE_ROCKET_TAKEOVER", 2);
+        game.Arrive("Goldenrod_Underground_B1F", 9, 20);
+        foreach (string key in new[] { herbs, bargains, elder, younger }) Assert.Null(game.Present(key));
+    }
+
+    [Theory]
+    [InlineData("northeast", "d24r0202", "ESCAPE_ROPE")]
+    [InlineData("southeast", "d24r0204", "FLASH")]
+    [InlineData("southwest", "d24r0206", "WATER_STONE")]
+    [InlineData("northwest", "d24r0208", "HO_OH")]
+    public void AChambersBackWallOpensOnItsSecretOntoTheRoomOfOfferings(string chamber, string events, string secret)
+    {
+        // Plan 20 · J5's last leftover (the rulings' "The Ruins of Alph's second rooms"): each chamber's back wall is
+        // carved with one word, and stands on the way through until what the word asks for is brought before it: an
+        // Escape Rope (taken), a Pokémon that knows Flash, a Water Stone carried, a Ho-Oh on the team
+        string name = char.ToUpperInvariant(chamber[0]) + chamber[1..];
+        string flag = $"FLAG_OPENED_ALPH_{secret}_SECRET_ROOM";
+        string wallKey = events + "_babyboy1_12";
+        var game = new Game();
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Sentret")!, 20));
+        game.Arrive($"RuinsOfAlph_{name}Chamber", 6, 16);
+        Assert.Equal(PropType.UnownWall, game.Present(wallKey)?.GymThing);
+        var card = PokemonPlatinumEngine.Graphics.ThingCards.Paint(PropType.UnownWall);
+        Assert.Equal((32, 52), (card.Width, card.Height));
+        Assert.True(game.Map.IsSolid(6, 2));
+
+        // Read with nothing to bring: the word, and nothing more
+        var bare = game.Talk(wallKey);
+        Assert.Empty(bare.Asked);
+        Assert.False(game.Story.Has(flag));
+        Assert.NotNull(game.Present(wallKey));
+
+        // Brought: the wall slides away and the way through leads into the room behind it
+        switch (secret)
+        {
+            case "ESCAPE_ROPE": game.Bag.AddItem(ItemDatabase.Get("Escape Rope")!, 2); game.Answers.Enqueue(0); break;
+            case "FLASH":
+                game.Party.Members[0].Moves.Add(new Move(MoveDatabase.Get("Flash")!));
+                game.Answers.Enqueue(0);
+                break;
+            case "WATER_STONE": game.Bag.AddItem(ItemDatabase.Get("Water Stone")!); break;
+            default: game.Party.Add(new Pokemon(PokemonDatabase.Get("Ho-Oh")!, 45)); break;
+        }
+        game.Talk(wallKey);
+        Assert.True(game.Story.Has(flag));
+        Assert.Null(game.Present(wallKey));
+        if (secret == "ESCAPE_ROPE") Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Escape Rope")!));
+        if (secret == "WATER_STONE") Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Water Stone")!));
+        Assert.False(game.Map.IsSolid(6, 2));
+        var door = game.Map.GetWarpAt(6, 2);
+        Assert.Equal($"RuinsOfAlph_{name}ItemRoom", door?.TargetMap);
+
+        // The room behind: four offerings in their balls, and its door back to the gap in the chamber's wall
+        game.Arrive(door!.TargetMap, door.TargetX, door.TargetY);
+        Assert.Equal(4, game.Map.NPCs.Count(n => n.IsItemBall));
+        Assert.Equal($"RuinsOfAlph_{name}Chamber", game.Map.GetWarpAt(6, 17)?.TargetMap);
+        Assert.Equal((6, 3), (game.Map.GetWarpAt(6, 17)!.TargetX, game.Map.GetWarpAt(6, 17)!.TargetY));
+        Assert.All(game.Map.TileScripts.Values, s => Assert.Equal("Statue", s));
+    }
+
     [Theory]
     [InlineData(0)]
     [InlineData(1)]

@@ -48,5 +48,31 @@
         "Panoul înfățișează o pasăre uriașă, din nou întreagă. Piatra din jur e caldă la atingere."
       ]
     }
+  ],
+  "Wall": [
+    {
+      "en": [
+        "Strange shapes are carved across the back wall. Read in a row, they seem to spell one word: HO-OH."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ho-Oh's feathers shone with every colour, and the carving lit up to meet them."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "With a grinding of stone, the wall slid away into the floor!"
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }
