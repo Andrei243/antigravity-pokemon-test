@@ -5,6 +5,9 @@
 # run from, it flies off and is back on the next visit, as FireRed's EventScript_MonFlewAway leaves it. The currents
 # that keep a surfer from its ledge are still once the two boulders dropped from B3F lie across them
 # (FLAG_STOPPED_SEAFOAM_B4F_CURRENT, which world.json's swap reads, as FireRed's OnTransition sets it).
+#
+# Its meeting is plan 29's beat (style guide, "Legendary scenes"): the bars, the camera to its ledge, sparkles of cold
+# and a ripple, the cry and a line, and then the battle's own way in (plan 09 · L14's Legendary).
 
 
 script OnEnter
@@ -16,20 +19,30 @@ script OnEnter
   end
 
 script Articuno
-  scene "Articuno"
   speaker none
+  scene "Articuno at the Seafoam Islands"
+  music stop
+  letterbox on 0.4
+  camera pan 9 2 1.2
+  camera zoom 1.4 0.8
+  effect sparkles 9 2
+  effect ripple 9 2
+  wait 1
   cry "Articuno"
+  camera shake 0.5
+  emote player exclaim
   text "Kyaaah!\nThe air turned bitterly cold as the great bird spread its wings!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
   wildbattle "Articuno" 50
   if result == 2 goto Fled
   setflag FLAG_FOUGHT_ARTICUNO
   setflag FLAG_HIDE_ARTICUNO
   hide self
-  endscene
   end
 label Fled
   setflag FLAG_HIDE_ARTICUNO
   hide self
   text "Articuno flew off into the depths of the caves!"
-  endscene
   end

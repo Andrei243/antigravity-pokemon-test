@@ -26,11 +26,6 @@ public class LegendaryScenesTests
         // The room's Arrival has its cry, shake and ripple, but its camera never leaves the player before the battle
         // (its pans are Cynthia's, after it): LS1 found it, LS2 owes its look
         ["distortion_world_giratina_room.Giratina Giratina-Origin"] = "LS2",
-        // Kanto's birds and Mewtwo
-        ["seafoam_islands_b4f.Articuno Articuno"] = "LS3",
-        ["power_plant.Zapdos Zapdos"] = "LS3",
-        ["mt_ember_summit.Moltres Moltres"] = "LS3",
-        ["cerulean_cave_b1f.Mewtwo Mewtwo"] = "LS3",
         // Johto's birds of the towers
         ["bell_tower_roof.HoOh Ho-Oh"] = "LS4",
         ["whirl_islands_b3f_lugia_cave.Lugia Lugia"] = "LS4",
