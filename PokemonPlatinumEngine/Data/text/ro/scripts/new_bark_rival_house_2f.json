@@ -5,7 +5,7 @@
         "{assistant}"
       ],
       "text": [
-        ""
+        "{assistant}"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "{player}! Mom said you'd come by. Is it true? All eight of Johto's Badges?"
       ],
       "text": [
-        ""
+        "{player}! Mama a zis că o să treci pe aici. E adevărat? Toate cele opt Badge-uri din Johto?"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "I knew it. Ever since you chose your first Pokémon in Professor Elm's lab, I knew you'd go all the way."
       ],
       "text": [
-        ""
+        "Știam eu. Din clipa în care ți-ai ales primul Pokémon în laboratorul Profesorului Elm, am știut că ajungi departe."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "The road to the League runs west from here, by Route 27 and Tohjo Falls. Go on. I'll be cheering for you!"
       ],
       "text": [
-        ""
+        "Drumul spre Ligă merge spre vest de aici, pe Route 27 și pe lângă Tohjo Falls. Du-te. Te susțin din tot sufletul!"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "What are you still doing here? The League is waiting for you!"
       ],
       "text": [
-        ""
+        "Ce mai faci aici? Liga te așteaptă!"
       ]
     }
   ]
