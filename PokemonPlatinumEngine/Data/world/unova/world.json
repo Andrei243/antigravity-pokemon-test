@@ -11,7 +11,10 @@
   // numbers plus 2000: the same tiles with made ground ice and bare ground snow), which lie in their cells while the story's flag is
   // set (the mechanism of a season's chunks and of Hoenn's tide), and the city's overlay lays its snow and its cold over it
   "swaps": [
-    { "map": "Unova", "flag": "FLAG_UNOVA_OPELUCID_ICE", "cells": [ { "chunkX": 11, "chunkY": 4, "chunk": 2104 }, { "chunkX": 12, "chunkY": 4, "chunk": 2074 }, { "chunkX": 13, "chunkY": 4, "chunk": 2076 }, { "chunkX": 12, "chunkY": 5, "chunk": 2075 }, { "chunkX": 13, "chunkY": 5, "chunk": 2077 } ] }
+    { "map": "Unova", "flag": "FLAG_UNOVA_OPELUCID_ICE", "cells": [ { "chunkX": 11, "chunkY": 4, "chunk": 2104 }, { "chunkX": 12, "chunkY": 4, "chunk": 2074 }, { "chunkX": 13, "chunkY": 4, "chunk": 2076 }, { "chunkX": 12, "chunkY": 5, "chunk": 2075 }, { "chunkX": 13, "chunkY": 5, "chunk": 2077 } ] },
+    // Plan 29 · LS11d: the Liberty Garden (cell 9, 23) is an island Black 2 sets apart with no chunk round it, where the world grows
+    // forest; the importer's sea (chunk 3000) is laid in the eight cells round it once it can be come to, by Unova's Champion
+    { "map": "Unova", "flag": "UnovaHallOfFame", "cells": [ { "chunkX": 8, "chunkY": 22, "chunk": 3000 }, { "chunkX": 9, "chunkY": 22, "chunk": 3000 }, { "chunkX": 10, "chunkY": 22, "chunk": 3000 }, { "chunkX": 8, "chunkY": 23, "chunk": 3000 }, { "chunkX": 10, "chunkY": 23, "chunk": 3000 }, { "chunkX": 8, "chunkY": 24, "chunk": 3000 }, { "chunkX": 9, "chunkY": 24, "chunk": 3000 }, { "chunkX": 10, "chunkY": 24, "chunk": 3000 } ] }
   ],
   "maps": [
     // The overworld: Black 2's OVERWORLD matrix, 29 by 27 chunks
@@ -314,6 +317,8 @@
     "unova_pokemon_league_2", "unova_pokemon_league_5", "unova_pokemon_league_6", "unova_pokemon_league_7", "unova_pokemon_league_8", "unova_pokemon_league_3", "unova_pokemon_league_9", "unova_pokemon_league_10",
     // plan 22 · U10, part b
     "mistralton_cave_2", "guidance_chamber", "clay_tunnel", "clay_tunnel_2", "clay_tunnel_3",
-    "underground_ruins", "underground_ruins_2", "underground_ruins_3", "rock_peak_chamber", "iceberg_chamber", "iron_chamber"
+    "underground_ruins", "underground_ruins_2", "underground_ruins_3", "rock_peak_chamber", "iceberg_chamber", "iron_chamber",
+    // plan 29 · LS11d: the Liberty Garden, for Victini
+    "liberty_garden"
   ]
 }

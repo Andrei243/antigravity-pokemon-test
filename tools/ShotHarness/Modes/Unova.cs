@@ -102,7 +102,7 @@ partial class Harness
         };
         // UNOVA_FROM=chasm: only the places of plan 22 · U9 (u200 on), for a look at the chapter alone
         // (UNOVA_FROM=league or legends: those of parts b and c on, u208)
-        int fromPlace = Environment.GetEnvironmentVariable("UNOVA_FROM") switch { "chasm" => 200, "league" or "legends" => 208, _ => 0 };
+        int fromPlace = Environment.GetEnvironmentVariable("UNOVA_FROM") switch { "chasm" => 200, "league" or "legends" or "events" => 208, _ => 0 };
         if (fromPlace > 0)
             places = places.Where(p => int.TryParse(new string(p.Day.Skip(1).TakeWhile(char.IsDigit).ToArray()), out int n) && n >= fromPlace).ToArray();
         foreach (var (day, _, map, x, y, facing) in places)

@@ -1,0 +1,28 @@
+{
+  "Meloetta": [
+    {
+      "en": [
+        "A soft melody fills the quiet lobby, and a Pokémon flickers into sight!\nIt stops singing and turns to {player}!"
+      ],
+      "text": [
+        "O melodie blândă umple holul tăcut și un Pokémon apare pâlpâind!\nSe oprește din cântat și se întoarce spre {player}!"
+      ]
+    },
+    {
+      "en": [
+        "The lobby is silent. The last note seems to hang in the air..."
+      ],
+      "text": [
+        "Holul e tăcut. Ultima notă pare să plutească încă în aer..."
+      ]
+    },
+    {
+      "en": [
+        "Meloetta's song faded away behind the stage's door..."
+      ],
+      "text": [
+        "Cântecul lui Meloetta s-a stins dincolo de ușa scenei..."
+      ]
+    }
+  ]
+}

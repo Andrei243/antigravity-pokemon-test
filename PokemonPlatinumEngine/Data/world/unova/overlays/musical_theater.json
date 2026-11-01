@@ -80,6 +80,11 @@
       "dialog": [ "Keeping an eye on the stage door. Some fans get a little too excited after a show!" ]
     }
   },
+  // Meloetta (plan 29 · LS11d), a person of ours before the stage's door between its statues, shown by the room's arrival at
+  // night once Unova's Hall of Fame is entered (FLAG_UNOVA_MELOETTA_SINGS), gone once fought (musical_theater.txt)
+  "npcs": [
+    { "id": "meloetta", "name": "Meloetta", "npcType": "Pokemon", "species": "Meloetta", "x": 14, "y": 3, "facing": "Down", "script": "Meloetta", "shownBy": "FLAG_UNOVA_MELOETTA_SINGS", "hiddenBy": "FLAG_UNOVA_FOUGHT_MELOETTA" }
+  ],
   "signs": {
     "12": "Pokémon Musical\nToday's show: closed for rehearsals",
     "14": "Pokémon Musical\nDress up your Pokémon and take the stage!"

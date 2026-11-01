@@ -10,9 +10,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 |---|---|---|---|---|---|
 | The introduction (`intro:`) | 80 | 80 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1276 | 1236 | 40 | 1 | 0 |
-| Scripts (`script:`) | 9221 | 8791 | 430 | 17 | 0 |
-| People of the world (`world:`) | 6916 | 6857 | 59 | 4 | 0 |
-| **All** | 17493 | 16964 | 529 | 22 | 0 |
+| Scripts (`script:`) | 9229 | 8799 | 430 | 17 | 0 |
+| People of the world (`world:`) | 6918 | 6859 | 59 | 4 | 0 |
+| **All** | 17503 | 16974 | 529 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -22,9 +22,9 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 |---|---|
 | a Pokémon's cry | 237 |
 | a question's answers | 560 |
-| a sign | 1553 |
+| a sign | 1556 |
 | the game's own voice (speaker none) | 261 |
-| the game's own voice (text) | 1340 |
+| the game's own voice (text) | 1349 |
 
 ## The cast
 
@@ -55,8 +55,8 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:receptionist (any)` | 157 | 19 |
 | `class:ace_trainer (any)` | 148 | 0 |
 | `rowan` | 147 | 12 |
+| `look:sailor (any)` | 145 | 0 |
 | `class:hiker (any)` | 140 | 0 |
-| `look:sailor (any)` | 137 | 0 |
 | `class:fisherman (any)` | 134 | 0 |
 | `class:team_rocket (any)` | 132 | 0 |
 | `look:woman (any)` | 129 | 13 |
@@ -86,8 +86,8 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:worker (any)` | 79 | 0 |
 | `prof_oak` | 79 | 3 |
 | `class:camper (any)` | 76 | 0 |
+| `look:hiker (any)` | 76 | 0 |
 | `ace_trainer` | 75 | 0 |
-| `look:hiker (any)` | 75 | 0 |
 | `look:old_woman (any)` | 75 | 5 |
 | `look:fisherman (any)` | 73 | 4 |
 | `class:twins (any)` | 72 | 0 |
@@ -153,11 +153,11 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:pokefan_m (any)` | 32 | 0 |
 | `norman` | 32 | 0 |
 | `candice` | 31 | 0 |
+| `policeman` | 31 | 0 |
 | `breeder` | 30 | 4 |
 | `class:ace_trainer_m (any)` | 30 | 0 |
 | `class:backpacker (any)` | 30 | 0 |
 | `clay` | 30 | 3 |
-| `policeman` | 30 | 0 |
 | `zinzolin` | 30 | 0 |
 | `celio` | 29 | 1 |
 | `jupiter` | 29 | 0 |

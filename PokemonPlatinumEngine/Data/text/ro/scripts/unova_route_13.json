@@ -74,5 +74,31 @@
         "Cobalion a sărit departe, dincolo de drum..."
       ]
     }
+  ],
+  "Keldeo": [
+    {
+      "en": [
+        "A young Pokémon stands where Cobalion stood, stamping the ground!\nIt sizes {player} up, eager to prove itself!"
+      ],
+      "text": [
+        "Un Pokémon tânăr stă acolo unde stătea Cobalion, bătând din copită!\nÎl măsoară pe {player} din ochi, nerăbdător să se dovedească!"
+      ]
+    },
+    {
+      "en": [
+        "Spray from the sea drifts over the empty road..."
+      ],
+      "text": [
+        "Stropi de mare plutesc peste drumul gol..."
+      ]
+    },
+    {
+      "en": [
+        "Keldeo galloped off along the cliffs..."
+      ],
+      "text": [
+        "Keldeo a pornit în galop de-a lungul stâncilor..."
+      ]
+    }
   ]
 }

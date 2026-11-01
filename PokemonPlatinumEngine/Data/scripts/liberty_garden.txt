@@ -1,0 +1,59 @@
+# The Liberty Garden (plan 29 · LS11d). docs/scripts.md describes the language; the lines are our own. Black 2 has the island
+# and nobody to meet on it; Victini is ours, after Black and White's event: the garden is reached only by the ferry from
+# Castelia's Liberty Pier, whose sailor gives a Champion of Unova the Liberty Pass (CasteliaCity.txt, LibertySailor).
+
+
+# The pilot by the ship (0) sails back to the Liberty Pier
+script Ferry
+  face self player
+  speaker "Sailor"
+  ask "Ready to sail back to Castelia City?"
+  if no goto Stay
+  say "Right you are. We'll be at the Liberty Pier in no time."
+  sound "stairs"
+  warp "CasteliaCity" 83 10 down
+  end
+label Stay
+  say "Take your time. The garden's at its best in the sea breeze."
+  end
+
+
+# Victini in the walled garden before the lighthouse's door (ours, plan 29 · LS11d: the recipe's fire row): level 65, as
+# Unova's other legends after the League; caught or beaten it is gone for good (FLAG_UNOVA_FOUGHT_VICTINI), run from it is
+# back the next time the island is come to
+script Victini
+  scene "Victini in the Liberty Garden"
+  music stop
+  face player self
+  face self player
+  letterbox on 0.4
+  # (one tile south of it, the player would hide it: they step back first)
+  if var PLAYER_X != 305 goto Look
+  if var PLAYER_Y != 758 goto Look
+  emote player exclaim
+  walk player down 2
+  face player up
+label Look
+  camera pan 305 757 1.2
+  camera zoom 1.4 0.8
+  effect burst 305 757
+  wait 0.4
+  effect ripple 305 757
+  camera shake 0.6
+  cry "Victini"
+  emote player exclaim
+  speaker none
+  text "A small Pokémon bursts out from behind the flowers, blazing with heat!\nIts eyes shine at {player} as if it already knows who will win!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Victini" 65
+  if result == 2 goto Fled
+  setflag FLAG_UNOVA_FOUGHT_VICTINI
+  hide self
+  text "Only the flowers stir in the warm air..."
+  end
+label Fled
+  hide self
+  text "Victini darted away behind the lighthouse..."
+  end

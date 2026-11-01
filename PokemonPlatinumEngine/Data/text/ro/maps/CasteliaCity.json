@@ -117,6 +117,16 @@
           "Arena lui Burgh e pe Strada Arenei. Se zice că Pokémonii lui de tip Insectă devin mai puternici cu cât îi subestimezi mai mult."
         ]
       }
+    },
+    "liberty_sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          "Marinar"
+        ]
+      }
     }
   },
   "signs": {

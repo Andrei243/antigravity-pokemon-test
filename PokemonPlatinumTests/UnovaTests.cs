@@ -577,7 +577,9 @@ public class UnovaTests
                 // and Opelucid's and Humilau's since plan 22 · U8, part b
                 || m.Name.StartsWith("c8_", StringComparison.Ordinal) || m.Name.StartsWith("c14_", StringComparison.Ordinal)
                 // and Victory Road's Pokémon Center since plan 22 · U9, part b
-                || m.Name == "bg_pc")
+                || m.Name == "bg_pc"
+                // and the Liberty Garden's lighthouse since plan 29 · LS11d
+                || m.Name == "d12_tower")
                 Assert.True(string.IsNullOrEmpty(m.StandInUntil), $"{m.Name} is still a stand-in");
             else Assert.False(string.IsNullOrEmpty(m.StandInUntil), $"{m.Name} is no stand-in");
         }

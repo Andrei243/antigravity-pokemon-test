@@ -1581,6 +1581,22 @@ way -
   + FLAG_UNOVA_HIDE_IRIS_AVENUE
   = VAR_UNOVA_CASTELIA 0 -> 5
   + seen CasteliaCity.Iris on the avenue
+=== CasteliaCity.LibertySailor
+from Sailor at 84,10 of CasteliaCity
+way 0
+  Sailor> This is the Liberty Pier. The ferry to the Liberty Garden sails only for pass holders.
+  Sailor> Wait, you're Unova's new Champion! The garden was made for winners. Here, this pass is yours.
+  > Lucas received the Liberty Pass!
+  > Lucas put it away in the Key Items pocket.
+  Sailor> Shall we sail across the bay to the Liberty Garden?
+  Sailor> Hold on tight! It's a short crossing.
+  ? Shall we sail across the bay to the Liberty Garden? = Yes
+  * fanfare FanfareKeyItem
+  * sound stairs
+  * warp Unova 295 748
+way 1, from answer 1
+  Sailor> The pier's always here. Come back whenever you like.
+  ? Shall we sail across the bay to the Liberty Garden? = No
 === CelesticPokemonCenter.Pokefan
 from Pokéfan at 3,8 of CelesticPokemonCenter
 way -
@@ -17907,6 +17923,42 @@ way 0
 way 1, from answer 1
   Attendant> Of course. Come back any time!
   ? Would you like a seat on the next flight? = No
+=== liberty_garden.Ferry
+from Sailor at 294,748 of Unova
+way 0
+  Sailor> Ready to sail back to Castelia City?
+  Sailor> Right you are. We'll be at the Liberty Pier in no time.
+  ? Ready to sail back to Castelia City? = Yes
+  * sound stairs
+  * warp CasteliaCity 83 10
+way 1, from answer 1
+  Sailor> Take your time. The garden's at its best in the sea breeze.
+  ? Ready to sail back to Castelia City? = No
+=== liberty_garden.Victini
+from Victini at 305,757 of Unova
+way 0
+  > A small Pokémon bursts out from behind the flowers, blazing with heat!\nIts eyes shine at Lucas as if it already knows who will win!
+  > Only the flowers stir in the warm air...
+  * scene liberty_garden.Victini in the Liberty Garden
+  * music stop
+  * letterbox on
+  * emote player Exclaim
+  * camera Pan 305 757
+  * camera Zoom 1.4
+  * effect Burst 305 757
+  * effect Ripple 305 757
+  * camera Shake
+  * cry Victini
+  * emote player Exclaim
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Victini 65 Won
+  + FLAG_UNOVA_FOUGHT_VICTINI
+  + seen liberty_garden.Victini in the Liberty Garden
+way 1, from answer 1
+  * wildbattle Victini 65 Lost
+  + seen liberty_garden.Victini in the Liberty Garden
 === lilycove_city.BerryGentleman
 from Gentleman at 530,77 of Hoenn
 way -
@@ -20347,6 +20399,29 @@ way 1, from answer 1
 from Old Woman at 23,5 of MtPyre_Summit
 way -
   Old Woman> The orbs have been taken from this summit. I pray no harm comes of it.
+=== musical_theater.Meloetta
+from Meloetta at 14,3 of MusicalTheater
+way 0
+  > A soft melody fills the quiet lobby, and a Pokémon flickers into sight!\nIt stops singing and turns to Lucas!
+  > The lobby is silent. The last note seems to hang in the air...
+  * scene musical_theater.Meloetta in the Musical Theater
+  * music stop
+  * letterbox on
+  * emote player Exclaim
+  * camera Zoom 1.4
+  * effect Sparkles 14 3
+  * effect Ripple 14 3
+  * flicker Meloetta 6
+  * cry Meloetta
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Meloetta 65 Won
+  + FLAG_UNOVA_FOUGHT_MELOETTA
+  + seen musical_theater.Meloetta in the Musical Theater
+way 1, from answer 1
+  * wildbattle Meloetta 65 Lost
+  + seen musical_theater.Meloetta in the Musical Theater
 === navel_rock_bottom.Lugia
 from Lugia at 11,13 of NavelRock_Bottom
 way 0
@@ -28558,6 +28633,29 @@ way -
 === unova_route_13.Cobalion
 from Cobalion at 684,190 of Unova
 way -
+=== unova_route_13.Keldeo
+from Keldeo at 684,190 of Unova
+way 0
+  > A young Pokémon stands where Cobalion stood, stamping the ground!\nIt sizes Lucas up, eager to prove itself!
+  > Spray from the sea drifts over the empty road...
+  * scene unova_route_13.Keldeo on Route 13
+  * music stop
+  * letterbox on
+  * emote player Exclaim
+  * camera Path 684 186 684 190 at 3
+  * camera Zoom 1.4
+  * effect Sparkles 684 190
+  * cry Keldeo
+  * camera Shake
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Keldeo 65 Won
+  + FLAG_UNOVA_FOUGHT_KELDEO
+  + seen unova_route_13.Keldeo on Route 13
+way 1, from answer 1
+  * wildbattle Keldeo 65 Lost
+  + seen unova_route_13.Keldeo on Route 13
 === unova_route_13.TreasureHunter
 from Treasure Hunter at 683,237 of Unova
 way -

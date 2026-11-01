@@ -129,7 +129,7 @@ partial class Harness
         // UNOVA_FROM=legends: past the Hall of Fame as well, for U10's legendaries alone (us421 on); UNOVA_FROM=oldroads for U10,
         // part b's caves alone (us451 on)
         string? from = Environment.GetEnvironmentVariable("UNOVA_FROM");
-        if (from is "league" or "legends" or "oldroads")
+        if (from is "league" or "legends" or "oldroads" or "events")
         {
             var unova = RegionDatabase.Get(RegionDatabase.Unova)!;
             story.ChooseStarter(unova.Starters[0]);
@@ -145,6 +145,8 @@ partial class Harness
             foreach (string badge in unova.BadgeNames) story.GiveBadge(RegionDatabase.Unova, badge);
             if (from == "legends") { story.Set("UnovaHallOfFame"); goto legends; }
             if (from == "oldroads") { story.Set("UnovaHallOfFame"); goto oldroads; }
+            // UNOVA_FROM=events: plan 29 · LS11d's event legendaries alone (us470 on)
+            if (from == "events") { story.Set("UnovaHallOfFame"); goto events; }
             goto league;
         }
         StepOnto("AspertiaCity_PlayersHouse", 10, 8, Direction.Left);
@@ -1441,5 +1443,42 @@ partial class Harness
         TalkTo("GuidanceChamber", "2", "guidance_chamber");
         ReadTo("painting caves"); Frames(10); Shot("us469_the_painter");
         ReadTo(null); Frames(10);
-        OldRoads("the Guidance Chamber");    }
+        OldRoads("the Guidance Chamber");
+
+        // Plan 29 · LS11d: the event legendaries of Unova (us470 to us489), in this same game: the Liberty Pier's sailor and his
+        // pass, the Liberty Garden and Victini, Keldeo where Cobalion stood, and Meloetta in the Musical Theater at night; each
+        // beat at its look, sign and voice and the battle's opening
+    events:
+        void Beat(string name, int n, string say)
+        {
+            Frames(45); Shot($"us{n}_{name}_1_look");
+            Frames(70); Shot($"us{n}_{name}_2_sign");
+            ReadTo(say); Frames(10); Shot($"us{n}_{name}_3_voice");
+            IntoBattle(name); Frames(10); Shot($"us{n}_{name}_4_battle");
+            Win(); ReadTo(null); Frames(10);
+            Console.WriteLine($"  {name}: fought {story.Has($"FLAG_UNOVA_FOUGHT_{name.ToUpperInvariant()}")}");
+        }
+        // ---- the Liberty Pier and the garden
+        ComeThrough("CasteliaCity", 82, 10, Direction.Right); Frames(30); Shot("us470_the_liberty_pier");
+        TalkToKey("CasteliaCity", "liberty_sailor", -1, 0);
+        ReadTo("this pass is yours"); Frames(10); Shot("us471_the_liberty_pass");
+        ReadTo("Shall we sail"); Frames(10);
+        ReadTo(null); Frames(30); Shot("us472_the_liberty_garden");
+        Console.WriteLine($"  the pass: {game.Bag.AllItems.Any(s => s.Name == "Liberty Pass")}, map {game.Map.Name} {game.Player.GridX},{game.Player.GridY}");
+        At("Unova", 305, 760, Direction.Up); Frames(20); Shot("us473_the_lighthouse_garden");
+        TalkToKey("Unova", "victini", 0, 1);
+        Beat("victini", 474, "bursts out from behind the flowers");
+        Shot("us475_the_garden_after");
+        // ---- Keldeo on Route 13 (the Swords fought above, or set here when the part is shot alone)
+        foreach (string w in new[] { "COBALION", "VIRIZION", "TERRAKION" }) story.Set($"FLAG_UNOVA_FOUGHT_{w}");
+        ComeThrough("Unova", 684, 193, Direction.Up); Frames(30); Shot("us476_keldeo_waits");
+        TalkToKey("Unova", "keldeo", 0, 1);
+        Beat("keldeo", 477, "stands where Cobalion stood");
+        // ---- Meloetta in the Musical Theater, at night
+        engine.Settings.TimeOfDay = TimeOfDay.Night; engine.ApplySettings(window: false);
+        ComeThrough("MusicalTheater", 14, 5, Direction.Up); Frames(30); Shot("us478_the_theater_at_night");
+        TalkToKey("MusicalTheater", "meloetta", 0, 1);
+        Beat("meloetta", 479, "soft melody fills the quiet lobby");
+        engine.Settings.TimeOfDay = TimeOfDay.Day; engine.ApplySettings(window: false);
+    }
 }

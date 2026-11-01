@@ -949,6 +949,16 @@
       "dialog": [
         "Burgh's Gym is up Gym Street. They say his Bug types get stronger the more you underestimate them."
       ]
+    },
+    {
+      "id": "liberty_sailor",
+      "name": "Sailor",
+      "npcType": "sailor",
+      "x": 84,
+      "y": 10,
+      "facing": "Down",
+      "script": "LibertySailor",
+      "shownBy": "UnovaHallOfFame"
     }
   ],
   "triggers": [

@@ -66,3 +66,24 @@ script IrisAvenue
   speaker "Iris"
   say "Thumb Pier's just down there. Hurry!"
   end
+
+
+# The sailor at the Liberty Pier (liberty_sailor, shown by UnovaHallOfFame; plan 29 · LS11d): the pier is closed to the
+# public, but a Champion of Unova is given the Liberty Pass and sailed to the Liberty Garden (liberty_garden.txt)
+script LibertySailor
+  face liberty_sailor player
+  speaker "Sailor"
+  if item "Liberty Pass" goto Sail
+  say "This is the Liberty Pier. The ferry to the Liberty Garden sails only for pass holders."
+  say "Wait, you're Unova's new Champion! The garden was made for winners. Here, this pass is yours."
+  give "Liberty Pass"
+label Sail
+  ask "Shall we sail across the bay to the Liberty Garden?"
+  if no goto Stay
+  say "Hold on tight! It's a short crossing."
+  sound "stairs"
+  warp "Unova" 295 748 right
+  end
+label Stay
+  say "The pier's always here. Come back whenever you like."
+  end

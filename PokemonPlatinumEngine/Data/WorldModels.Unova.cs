@@ -67,6 +67,8 @@ public static partial class WorldModels
         Ground("c03_cloud", "the clouds over Castelia's piers (no model of its own: the sky is the field's)"),
         Ground("c03_kanban", "a sign on a tower's face: the sign event's tile draws it"),
         Ground("door_bar", "the door of a café on Narrow Street (the warp's tile draws it)"),
+        // Plan 29 · LS11d: the Liberty Garden's island off Castelia, opened for Victini; its lighthouse, the door shut
+        Built("d12_tower", BuildingKind.Lighthouse, "the Liberty Garden's lighthouse", Architecture.Metropolis),
 
         // ---------------------------------------------------------------- Route 4 and Nimbasa City (r4_, c04, c4_)
         // Route 4 opened for Colress's scene (plan 22 · U5, part c); its houses of flats, Join Avenue's gate and Nimbasa
