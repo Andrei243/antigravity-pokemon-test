@@ -40,6 +40,7 @@ public enum OptionRow
     AreaChecklist,
     Requests,
     TextSize, ColourVision, HighContrast, Tips,
+    RetryBattles,
     Controls,
     Jukebox,
     Packs,
@@ -415,6 +416,9 @@ public class OptionsScreen
             case OptionRow.Requests:
                 s.Requests = s.Requests == RulesDefault.Off ? RulesDefault.On : RulesDefault.Off;
                 break;
+            case OptionRow.RetryBattles:
+                s.RetryBattles = !s.RetryBattles;
+                break;
             case OptionRow.AreaChecklist:
                 s.AreaChecklist = !s.AreaChecklist;
                 break;
@@ -545,6 +549,7 @@ public class OptionsScreen
         OptionRow.PartyTools => (Text.Of("options.partyTools.label"), Text.Of($"options.partyTools.value.{s.PartyTools}"), Text.Of($"options.partyTools.help.{s.PartyTools}")),
         OptionRow.BoxTools => (Text.Of("boxTools.option.label"), Text.Of($"boxTools.option.value.{s.BoxTools}"), Text.Of($"boxTools.option.help.{s.BoxTools}")),
         OptionRow.AutoBattle => (Text.Of("options.autoBattle.label"), OnOff(s.AutoBattle), Text.Of(s.AutoBattle ? "options.autoBattle.help.on" : "options.autoBattle.help.off")),
+        OptionRow.RetryBattles => (Text.Of("options.retryBattles.label"), OnOff(s.RetryBattles), Text.Of(s.RetryBattles ? "options.retryBattles.help.on" : "options.retryBattles.help.off")),
         OptionRow.Requests => (Text.Of("options.requests.label"), OnOff(s.Requests != RulesDefault.Off), Text.Of(s.Requests != RulesDefault.Off ? "options.requests.help.on" : "options.requests.help.off")),
         OptionRow.Tips => (Text.Of("options.tips.label"), Text.Of($"options.tips.value.{s.Tips}"), Text.Of($"options.tips.help.{s.Tips}")),
         OptionRow.AreaChecklist => (Text.Of("options.areaChecklist.label"), OnOff(s.AreaChecklist), Text.Of(s.AreaChecklist ? "options.areaChecklist.help.on" : "options.areaChecklist.help.off")),

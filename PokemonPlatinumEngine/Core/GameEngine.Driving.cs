@@ -181,6 +181,17 @@ public partial class GameEngine
             if (game.closePrompt.IsOpen) game.closePrompt.Cancel();
             game.AnswerClose(choice);
         }
+        /// <summary>A battle lost's TRY AGAIN or GIVE UP (plan 12 · Q25): the question, and an answer given as a key would give it.</summary>
+        public RetryPrompt RetryPrompt => game.retryPrompt;
+        public void AnswerRetry(RetryChoice choice)
+        {
+            var given = game.retryPrompt.IsOpen ? (choice == RetryChoice.GiveUp ? game.retryPrompt.Cancel() : game.retryPrompt.Confirm()) : choice;
+            game.AnswerRetry(given);
+        }
+        /// <summary>Whether the close button would offer SUSPEND AND QUIT now (plan 12 · Q25).</summary>
+        public bool CanSuspend => game.CanSuspendNow;
+        /// <summary>A quit answered and then not acted on, as a tool that goes on after showing it must (the harness's suspended battle).</summary>
+        public void ForgetQuit() => game.QuitRequested = false;
         public PartyScreen PartyScreen => game.flow.PartyScreen;
         public StarterSelectScreen StarterSelect => game.flow.StarterSelectScreen;
         public BagScreen BagScreen => game.flow.BagScreen;

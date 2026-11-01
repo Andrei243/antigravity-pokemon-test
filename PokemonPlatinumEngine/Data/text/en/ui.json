@@ -188,6 +188,13 @@
         "On": "A few words on something the first time you meet it: a status condition, a tree in the way, a Pokémon Center. Each is shown once, and HELP keeps them."
       }
     },
+    "retryBattles": {
+      "label": "Retry battles",
+      "help": {
+        "off": "A battle lost sends you back to the last Pokémon Center with some of your money gone.",
+        "on": "A battle lost asks first whether to try again: the battle starts over, with what you used and spent in it given back."
+      }
+    },
     "areaChecklist": {
       "label": "What is left here",
       "help": {
@@ -501,6 +508,10 @@
         "heading": "Slot {slot} can't be read",
         "body": "Its save and the one kept before it are both damaged, so that game can't be continued. DELETE A SAVE frees the slot for another."
       },
+      "suspension": {
+        "heading": "Slot {slot}'s battle can't be taken up",
+        "body": "The battle left there was fought with the game's data as it was then, and that has changed since. The slot's own save is kept as it is."
+      },
       "noFreeSlot": {
         "heading": "Every slot holds a save",
         "body": "A new game needs a slot of its own, and all three are taken. DELETE A SAVE, on this menu, frees one of them."
@@ -620,7 +631,17 @@
 
   "close": {
     "heading": "Close the game?",
-    "cantSave": "The game can't be saved right now: anything since your last save will be lost."
+    "cantSave": "The game can't be saved right now: anything since your last save will be lost.",
+    "suspend": "SUSPEND AND QUIT",
+    "suspendBody": "Suspend the battle to take it up again from the title, just where you left it, or quit and lose anything since your last save."
+  },
+
+  "retry": {
+    "heading": "The battle was lost",
+    "body": "Try again against {foe}? The battle starts over from its first turn, with everything used and spent in it given back.",
+    "bodyNoFoe": "Try again? The battle starts over from its first turn, with everything used and spent in it given back.",
+    "tryAgain": "TRY AGAIN",
+    "giveUp": "GIVE UP"
   },
 
   "dexText": {
@@ -1114,6 +1135,7 @@
     "stars": "STARS",
     "starsNote": "A star for each of five great feats.",
     "runEnded": "RUN OVER",
+    "battle": "BATTLE: {foe}",
     "clears": "NEW GAME+ {n}",
     "packs": { "one": "PACK: {name}", "other": "{n} PACKS" },
     "graveyard": "GRAVEYARD  {count}",
@@ -1123,7 +1145,7 @@
       "group": { "Journey": "JOURNEY", "Battles": "BATTLES", "Catching": "CATCHING", "Growth": "GROWTH" },
       "stepsFoot": "STEPS ON FOOT", "stepsSurf": "STEPS SURFING", "stepsCycle": "STEPS CYCLING", "stepsDive": "STEPS DIVING",
       "wildWon": "WILD BATTLES WON", "wildLost": "WILD BATTLES LOST", "wildRan": "RUN FROM", "wildFled": "FLED FROM YOU",
-      "trainerWon": "TRAINERS BEATEN", "trainerLost": "LOST TO TRAINERS", "whiteouts": "BLACKOUTS",
+      "trainerWon": "TRAINERS BEATEN", "trainerLost": "LOST TO TRAINERS", "whiteouts": "BLACKOUTS", "retries": "BATTLES TRIED AGAIN",
       "encounters": "WILD POKÉMON MET", "caught": "POKÉMON CAUGHT", "newSpecies": "NEW SPECIES CAUGHT",
       "levelled": "LEVELS GAINED IN BATTLE", "evolutions": "EVOLUTIONS"
     },

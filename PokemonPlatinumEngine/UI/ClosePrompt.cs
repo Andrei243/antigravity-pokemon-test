@@ -7,7 +7,7 @@ using PokemonPlatinumEngine.UI.Kit;
 namespace PokemonPlatinumEngine.UI;
 
 /// <summary>An answer to the window's close button.</summary>
-public enum CloseChoice { None, KeepPlaying, SaveAndQuit, Quit }
+public enum CloseChoice { None, KeepPlaying, SaveAndQuit, Quit, SuspendAndQuit }
 
 /// <summary>
 /// The question the window's close button asks (plan 12 · Q1; style guide, "Field menus and notices", "Leaving the
@@ -19,6 +19,11 @@ public sealed class ClosePrompt
 {
     private static readonly CloseChoice[] WithSave = { CloseChoice.KeepPlaying, CloseChoice.SaveAndQuit, CloseChoice.Quit };
     private static readonly CloseChoice[] WithoutSave = { CloseChoice.KeepPlaying, CloseChoice.Quit };
+    // A battle that can be left and taken up again (plan 12 · Q25): SUSPEND AND QUIT where SAVE AND QUIT stands
+    private static readonly CloseChoice[] WithSuspend = { CloseChoice.KeepPlaying, CloseChoice.SuspendAndQuit, CloseChoice.Quit };
+
+    /// <summary>Whether SUSPEND AND QUIT is offered: a battle on screen that can be left and taken up from the title (plan 12 · Q25).</summary>
+    public bool CanSuspend { get; private set; }
 
     private readonly UiReveal reveal = new(0.18f, 0.1f);
 
@@ -32,7 +37,7 @@ public sealed class ClosePrompt
     public int Index { get; private set; }
 
     /// <summary>The answers in button order.</summary>
-    public IReadOnlyList<CloseChoice> Answers => CanSave ? WithSave : WithoutSave;
+    public IReadOnlyList<CloseChoice> Answers => CanSave ? WithSave : CanSuspend ? WithSuspend : WithoutSave;
 
     public bool Visible => reveal.Visible;
 
@@ -47,17 +52,21 @@ public sealed class ClosePrompt
     {
         CloseChoice.SaveAndQuit => StartMenu.QuitAnswers[1],
         CloseChoice.Quit => StartMenu.QuitAnswers[2],
+        CloseChoice.SuspendAndQuit => Text.Of("close.suspend"),
         _ => StartMenu.QuitAnswers[0]
     };
 
     /// <summary>What the question says under its heading.</summary>
     public string Body => CanSave
         ? Text.Of("start.quit.body")
-        : Text.Of("close.cantSave");
+        : CanSuspend ? Text.Of("close.suspendBody") : Text.Of("close.cantSave");
 
-    public void Open(bool canSave)
+    /// <param name="canSave">The game can be saved this moment (SAVE AND QUIT).</param>
+    /// <param name="canSuspend">A battle on screen can be suspended (SUSPEND AND QUIT, plan 12 · Q25); never with <paramref name="canSave"/>.</param>
+    public void Open(bool canSave, bool canSuspend = false)
     {
         CanSave = canSave;
+        CanSuspend = !canSave && canSuspend;
         Index = 0;
         IsOpen = true;
         reveal.Open();
@@ -118,7 +127,7 @@ public sealed class ClosePrompt
         for (int i = 0; i < Answers.Count; i++)
             buttons[i] = (Label(Answers[i]), Answers[i] switch
             {
-                CloseChoice.SaveAndQuit => ModernUi.Green,
+                CloseChoice.SaveAndQuit or CloseChoice.SuspendAndQuit => ModernUi.Green,
                 CloseChoice.Quit => ModernUi.Red,
                 _ => ModernUi.Blue
             });

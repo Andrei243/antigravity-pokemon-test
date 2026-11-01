@@ -600,7 +600,8 @@ public partial class BattleEngine
                     // Battle Style Shift's line is its question: Yes and No come up beside it as it is written, with
                     // no press between (plan 08 · P1; the original's PrintMessage, Wait, YesNoMenu)
                     // (A battle watched shows the line, and the record answers it once it has been read, plan 08 · P11)
-                    if (steps.Count == 0 && interlude.Count == 0 && core.Request is SwitchOfferRequest && playingTheLog && !Watching)
+                    // (and so does a battle catching up, plan 12 · Q25)
+                    if (steps.Count == 0 && interlude.Count == 0 && core.Request is SwitchOfferRequest && playingTheLog && !Watching && catchUp == null)
                         waitingForMessageConfirm = false;
                     break;
                 case Happening happening:
@@ -627,6 +628,8 @@ public partial class BattleEngine
             FeedTheRecord();
             return;
         }
+        // A battle suspended and taken up again plays its record back before any menu opens (plan 12 · Q25)
+        if (FeedTheCatchUp()) return;
         switch (core.Request)
         {
             case ActionRequest:

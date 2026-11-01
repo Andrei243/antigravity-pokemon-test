@@ -253,6 +253,12 @@ public sealed class GameSettings
     public bool Autosave { get; set; }
 
     /// <summary>
+    /// Whether a battle lost asks TRY AGAIN or GIVE UP before the player wakes in a Pokémon Center (plan 12 · Q25): TRY
+    /// AGAIN puts the team, the bag and the money back as the battle began and fights it again. Off unless chosen.
+    /// </summary>
+    public bool RetryBattles { get; set; }
+
+    /// <summary>
     /// Every option back at its default (plan 12 · Q3: the options' last row, behind a question): the settings as
     /// <c>new GameSettings()</c> has them. Not the scenes this machine has seen (<see cref="ScenesSeen"/>), which are
     /// no option but a record of what was played, nor what the first run measured (plan 16 · T23), and not what a switch of the command line set for this run alone,

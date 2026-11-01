@@ -193,7 +193,8 @@ public partial class GameEngine
         StartTransition(GameState.Battle, () =>
         {
             AwaitModels(shown);
-            flow.Battle = new BattleEngine(new BattleSetup
+            // (Kept as it begins, so a loss can be fought again and the battle suspended: plan 12 · Q25)
+            MakeTheBattle(new BattleSetup
             {
                 PlayerParty = party,
                 Inventory = bag,
@@ -541,7 +542,8 @@ public partial class GameEngine
         StartTransition(GameState.Battle, () =>
         {
             AwaitModels(shown);
-            flow.Battle = new BattleEngine(new BattleSetup
+            // (Kept as it begins, so a loss can be fought again and the battle suspended: plan 12 · Q25)
+            MakeTheBattle(new BattleSetup
             {
                 PlayerParty = side,
                 Inventory = flow.Bag,
@@ -648,6 +650,8 @@ public partial class GameEngine
         bool isDefeat = flow.Battle?.Result == BattleResult.PlayerDefeat;
         // The tips its last lines brought wait for the field (plan 12 · Q23)
         if (flow.Battle != null) foreach (string tip in flow.Battle.TakeTips()) RaiseTip(tip);
+        // The battle's start is let go: it can be fought again no more (plan 12 · Q25)
+        ForgetTheBattlesStart();
         // A battle over, or a Pokémon caught in it, is worth an autosave once the field is free again (plan 12 · Q3)
         AutosaveSoon(flow.Battle?.Caught != null ? AutosaveMoment.Catch : AutosaveMoment.Battle);
         ScoreBattle();

@@ -7358,3 +7358,41 @@ Platinum has no tips; these are ours, after the later games' first-time hints, i
 - **When a tip shows.** At the next quiet moment after it is raised: in the field where the game could be saved (no script, no trainer walking up, no fade), the start menu shut and the player not mid-step; in a battle only once its main menu waits for a choice (`BattleEngine.AtItsMenu`), one tip each time the menu opens. A tip raised by a battle's last lines waits for the field. While a tip is up nothing under it is updated; A or B puts it away once it has been up a quarter of a second. A battle watched on the Vs. Recorder and the catching lesson raise none.
 - **The row** (`OptionRow.Tips`, `GameSettings.Tips`): `Rules` unless chosen and kept as it is, as the field helpers' row is, so Platinum's rules show none and the modern rules (every game since R19) show them; Off and On can be chosen. With the row off nothing is raised or kept. The tips shown are saved (`SaveData.TipsSeen`, null in older saves, so no version moved) and listed on HELP's TIPS tab, which is there whatever the row says.
 - **A game with no window shows none** unless its tool asks (`GameEngine.ShowsTips`, false after `InitializeHeadless`): the tests' and the bots' games press nothing for a card. The harness turns the row off for every mode and on for its three shots alone. A recording made in the window with tips up and played back with no window would part at the first tip; the movie player does not ask for them (left for whoever plays such a recording headless).
+## A lost battle fought again, and a battle suspended (2026-11-01, plan 12 · Q25)
+
+Neither is Platinum's: the original whites the player out after any loss and has no way to leave a battle. Both are ours,
+on the newest games' lines (a retry as their difficulty helps offer one, a suspended battle as a handheld's sleep).
+
+- **The row**: RETRY BATTLES, off unless chosen (`GameSettings.RetryBattles`, `OptionRow.RetryBattles`, after REQUESTS).
+  Suspending has no row: it plays nothing differently.
+- **What is kept**: every battle the field or a scene begins (`StartWildBattle`, `StartTrainerBattle`, a script's `battle`
+  and `wildbattle`) is made through `GameEngine.MakeTheBattle`, which keeps its `BattleSetup` and the game as `BuildSave`
+  makes it; the battle keeps its own opening (`BattleEngine.Opening`, plan 08 · P10's file). The Frontier's battles, one
+  watched, a link's and anything else made otherwise keep nothing and offer neither.
+- **When it is asked** (`BattleRetry.Offered`): after a loss, once the battle's last line has been read and before
+  anything of the loss happens (the money, the whiteout, a scene's end), with the row on. Never after a battle a scene
+  says may be lost (`canlose`: its story goes on from the loss), the catching lesson, the Great Marsh, Pal Park, the
+  Bug-Catching Contest, the Battle Frontier or a battle watched; nor under a Nuzlocke or a run's restrictions (no catching,
+  no running, a Monotype, no items). A difficulty alone, and the later mechanics barred (R30), allow it. The battle's own
+  loss lines ("whited out", the money "dropped") are read before the question, as the log has them; TRY AGAIN takes back
+  what they say.
+- **TRY AGAIN**: behind the dark, each Pokémon the battle fought with is put back as the battle's file has it (the same
+  objects, found by their ids, so whoever holds one still does), in the order it went in; the bag and its order and the
+  money as the snapshot has them. The foes are made afresh from the file (`BattleRecordFile.ToSetup`), and the battle is
+  the same setup otherwise (`BattleSetup.Again`) on a fresh seed from `Dice`, so it is the same battle, not the same
+  rolls. A scene's battle is fought again while its script waits on the outcome. The Pokédex is not put back: what was
+  seen was seen. Each retry is counted (`Statistics.Retries`, BATTLES TRIED AGAIN on the Trainer Card's page).
+- **GIVE UP**: the loss goes on as it always has.
+- **SUSPEND AND QUIT** (`BattleRetry.Suspendable`): offered by the close button for a battle on screen that the field
+  began, that no script goes on from (a scene's place can't be kept), that is not over, not under a Nuzlocke (whose catch
+  the file doesn't keep), whose record is whole (`RecordFile` not null: no tool changed it from outside) and whose slot
+  holds a saved game to go back to. It writes `suspend<n>.json` beside the slot (`SavePaths.Suspend`,
+  `BattleSuspension`): the snapshot, the file closed on its answers so far, where it is fought, who of the map is fought,
+  the run's terms and whom it is against. The slot's own save is not written.
+- **Taken up**: CONTINUE on the slot (whose card carries BATTLE: and the foe) deletes the file first, so the battle is
+  played on once and rerolls nothing, loads the snapshot, stands the battle up from the file on its own seed with the
+  file's own conditions (the night and the weather it was fought under), and plays the record's answers back at once
+  with nothing shown and no sound (`BattleEngine.CatchUp`), an item the player chose from the bag leaving it as it did;
+  the menu then opens where the battle was left (or the next question, where it was left mid-turn). One whose data has
+  changed since, or that can't be read, is refused at the title with a notice and taken away; one whose record no
+  longer fits (a move learned mid-battle outside the record) is dropped and the game goes on from where the battle began.

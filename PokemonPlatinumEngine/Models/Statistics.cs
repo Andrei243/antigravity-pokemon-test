@@ -21,6 +21,8 @@ public sealed class Statistics
     // Battles begun in the field, by who and how they ended; the Frontier's and a watched replay are not counted
     public const string WildWon = "wildWon", WildLost = "wildLost", WildRan = "wildRan", WildFled = "wildFled";
     public const string TrainerWon = "trainerWon", TrainerLost = "trainerLost", Whiteouts = "whiteouts";
+    // A battle lost and fought again (plan 12 · Q25)
+    public const string Retries = "retries";
     // Wild Pokémon met, caught, and caught for the first time of their species
     public const string Encounters = "encounters", Catches = "caught", NewSpecies = "newSpecies";
     // Pokémon that grew a level in a battle, and evolutions that happened
@@ -31,7 +33,7 @@ public sealed class Statistics
     {
         (StepsFoot, StatGroup.Journey), (StepsSurf, StatGroup.Journey), (StepsCycle, StatGroup.Journey), (StepsDive, StatGroup.Journey),
         (WildWon, StatGroup.Battles), (WildLost, StatGroup.Battles), (WildRan, StatGroup.Battles), (WildFled, StatGroup.Battles),
-        (TrainerWon, StatGroup.Battles), (TrainerLost, StatGroup.Battles), (Whiteouts, StatGroup.Battles),
+        (TrainerWon, StatGroup.Battles), (TrainerLost, StatGroup.Battles), (Whiteouts, StatGroup.Battles), (Retries, StatGroup.Battles),
         (Encounters, StatGroup.Catching), (Catches, StatGroup.Catching), (NewSpecies, StatGroup.Catching),
         (Levelled, StatGroup.Growth), (Evolutions, StatGroup.Growth),
     };

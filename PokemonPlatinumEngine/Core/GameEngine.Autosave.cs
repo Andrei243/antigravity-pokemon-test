@@ -102,7 +102,8 @@ public partial class GameEngine
     {
         titleAutosave = AutosaveFile.Offer(SavePaths.Current, titleSlots);
         var cards = titleSlots.Where(s => s.Taken)
-            .Select(s => new TitleSlot(s.Number, s.Save, titleAutosave is { Orphan: false } offer && offer.Slot == s.Number ? offer.Save : null))
+            .Select(s => new TitleSlot(s.Number, s.Save, titleAutosave is { Orphan: false } offer && offer.Slot == s.Number ? offer.Save : null,
+                Battle: titleBattles.GetValueOrDefault(s.Number)))
             .ToList();
         if (titleAutosave is { Orphan: true } orphan) cards.Add(new TitleSlot(orphan.Slot, orphan.Save, null, AutosaveOnly: true));
         if (titleAutosave != null)

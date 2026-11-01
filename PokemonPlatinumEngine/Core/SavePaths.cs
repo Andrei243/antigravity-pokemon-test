@@ -155,6 +155,12 @@ public sealed class SavePaths
     public string Migrate => Path.Combine(Folder, MigrateName);
     public string Splits => Path.Combine(Folder, SplitsName);
 
+    /// <summary>A battle suspended beside a slot (plan 12 · Q25, <see cref="BattleSuspension"/>): <c>suspend2.json</c>.</summary>
+    public static string SuspendName(int slot) => IsSlot(slot) ? $"suspend{slot}.json" : throw new ArgumentOutOfRangeException(nameof(slot), slot, $"The slots are 1 to {Slots}.");
+
+    /// <summary>A slot's suspended battle, beside its save.</summary>
+    public string Suspend(int slot) => Path.Combine(Folder, SuspendName(slot));
+
     /// <summary>The game as it stood at a crash (<see cref="CrashReport.SaveName"/>), and the folder of the crash reports.</summary>
     public string CrashSave => Path.Combine(Folder, CrashReport.SaveName);
     public string CrashReports => Path.Combine(Folder, CrashReport.FolderName);

@@ -353,6 +353,8 @@ public partial class GameEngine
             var notices = new List<TitleNotice?> { TitleNotice.ForCrash(crashed, titleSlots.Select(s => s.Outcome).ToList()), TitleNotice.ForOldSave(old) };
             notices.AddRange(titleSlots.Select(s => TitleNotice.ForSlot(s.Number, s.Outcome)));
             notices.AddRange(titleSlots.Select(s => TitleNotice.ForPacks(s.Number, PackRecords.Missing(s.Save?.Packs, DataLayers.Packs))));
+            // A battle suspended beside a slot (plan 12 · Q25): named on its card, or refused with a notice
+            notices.AddRange(ReadTheSuspensions(paths));
             flow.TitleScreen = TitleScreen.WithSlots(TitleCards(), notices.ToArray());
             // The player's own files (plan 08 · P21): MIGRATE is on the menu while the folder holds one the readers know
             using (Log.Phase("migrate folder")) OfferMigration();
@@ -478,6 +480,8 @@ public partial class GameEngine
     public void ContinueGame(int? slot = null, bool fromAutosave = false)
     {
         int from = slot ?? flow.SaveSlot;
+        // A battle left beside the slot by SUSPEND AND QUIT is taken up where it was left, once (plan 12 · Q25)
+        if (!fromAutosave && TakeUpTheBattle(from)) return;
         var save = fromAutosave && AutosaveFor(from) is { } autosaved ? autosaved
             : slot != null ? titleSlots.FirstOrDefault(s => s.Number == from)?.Save : SaveSlots.Read(SavePaths.Current, from).Save;
         if (save == null)
@@ -505,6 +509,8 @@ public partial class GameEngine
         // The log is told where a game begins or is taken up, so a report's last lines say what was being played
         Log.Info($"A game is entered at {PlaceKey()} {flow.Player.GridX},{flow.Player.GridY}, by the {Ruleset.Current.Preset} rules; it is saved in slot {flow.SaveSlot}.");
         gameStarted = true;
+        // No battle of another game can be fought again or suspended (plan 12 · Q25)
+        ForgetTheBattlesStart();
         // Nothing waits to be autosaved from another game, and the first arrival is not held to a gap (plan 12 · Q3)
         autosaveDue = null;
         autosaveDisc = -1f;
@@ -917,6 +923,9 @@ public partial class GameEngine
             // The slot's autosave goes with it: a game deleted at the player's word is not to come back (plan 12 · Q3)
             AutosaveFile.ClearFor(SavePaths.Current, slot);
             if (titleAutosave?.Slot == slot) titleAutosave = null;
+            // ... and so does a battle suspended beside it (plan 12 · Q25)
+            BattleSuspension.Delete(SavePaths.Current, slot);
+            titleBattles.Remove(slot);
             flow.TitleScreen.Forget(slot);
             Log.Info($"Slot {slot} was deleted at the player's word.");
         }
@@ -940,8 +949,10 @@ public partial class GameEngine
             QuitRequested = true;
             return;
         }
+        // (A battle that can be left and taken up again offers SUSPEND AND QUIT: plan 12 · Q25)
+        bool canSuspend = CanSuspendNow;
         flow.AskToClose();
-        closePrompt.Open(CanSaveNow);
+        closePrompt.Open(CanSaveNow, canSuspend);
     }
 
     /// <summary>
@@ -971,6 +982,16 @@ public partial class GameEngine
                 break;
             case CloseChoice.Quit:
                 QuitRequested = true;
+                break;
+            case CloseChoice.SuspendAndQuit when closePrompt.CanSuspend:
+                // A battle left beside the slot, to be taken up from the title (plan 12 · Q25); one that couldn't be
+                // written keeps the game open, as a save that couldn't
+                if (SuspendTheBattle()) QuitRequested = true;
+                else
+                {
+                    flow.KeepPlaying();
+                    ShowNotification(Text.Of("engine.notSaved"));
+                }
                 break;
         }
     }
@@ -1032,6 +1053,7 @@ public partial class GameEngine
         Accessibility.CaptionsShown.Advance(dt); // plan 12 · Q9
         flow.StartMenu.Animate(dt);
         closePrompt.Animate(dt);
+        retryPrompt.Animate(dt);
         flow.ScriptFade.Update(dt);
         flow.Choice.Update(dt);
 
@@ -1165,6 +1187,12 @@ public partial class GameEngine
             case GameState.Battle:
                 // A photo stills the battle: nothing of it is updated while one is composed (plan 12 · Q17)
                 if (UpdateBattlePhoto(dt)) break;
+                // A battle lost waits under TRY AGAIN or GIVE UP (plan 12 · Q25)
+                if (retryPrompt.IsOpen)
+                {
+                    if (retryPrompt.Update() is var retry and not RetryChoice.None) AnswerRetry(retry);
+                    break;
+                }
                 // ...and a trainer tip up holds the battle at its menu (plan 12 · Q23)
                 if (UpdateTip(dt)) break;
                 if (flow.Battle != null)
@@ -1187,6 +1215,10 @@ public partial class GameEngine
                     {
                         // A battle of the Battle Frontier leaves nothing behind but how it went (plan 06 · R18a)
                         EndFrontierBattle();
+                    }
+                    else if (flow.Battle.IsBattleOver && AskToTryAgain(flow.Battle))
+                    {
+                        // Nothing of the loss happens until the question is answered (plan 12 · Q25)
                     }
                     else if (flow.Battle.IsBattleOver)
                     {
@@ -3073,7 +3105,8 @@ public partial class GameEngine
                 flow.Closing && showWorld ? world.PlayerOnPicture * new Vector2(VirtualWidth, VirtualHeight) : null,
                 flow.Closing ? band.Picture : null);
 
-        // The close button's question over all of it, sliding away once answered
+        // A battle lost's question over the battle (plan 12 · Q25), and the close button's over all of it, sliding away once answered
+        retryPrompt.Draw(VirtualWidth, VirtualHeight);
         closePrompt.Draw(VirtualWidth, VirtualHeight);
         // The developer's console and frame time over all of it (plan 16 · T6)
         DrawDev();
