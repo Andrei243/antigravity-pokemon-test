@@ -323,7 +323,7 @@ public sealed partial class ScriptRunner
         Op.Ask or Op.Choose => true,
         // Where the script goes, and what the story remembers
         Op.If or Op.Goto or Op.Call or Op.Return or Op.End => false,
-        Op.SetFlag or Op.ClearFlag or Op.SetVar or Op.AddVar or Op.ClearGreetings or Op.Objective => false,
+        Op.SetFlag or Op.ClearFlag or Op.SetVar or Op.AddVar or Op.ClearGreetings or Op.Objective or Op.Request => false,
         // What is given and taken: the fanfare and the lines are dropped, the bag and the team are as ever
         Op.Give or Op.Find or Op.AddItem or Op.Take or Op.GivePokemon or Op.GiveBadge or Op.GiveMoney or Op.TakeMoney or Op.Heal => false,
         Op.GiveAccessory or Op.GiveEgg or Op.Seen or Op.NationalDex or Op.Trade => false,
@@ -522,6 +522,9 @@ public sealed partial class ScriptRunner
                 break;
             case Op.AddVar:
                 story.AddVar(i.Name, i.Number);
+                break;
+            case Op.Request:
+                story.SetVar(Requests.Variable(i.Name), i.Number);
                 break;
             case Op.Objective:
                 story.SetVar(Objectives.Variable, Objectives.Find(i.Name)!.Id);

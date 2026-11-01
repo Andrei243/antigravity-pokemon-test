@@ -634,5 +634,31 @@ partial class Harness
         console.Close();
         console.Run(engine, "fps off");
         Frames(2);
+
+        // ---- a request pinned (plan 12 · Q21), after the console: the Pokétch campaign told and the first coupon won, the
+        // campaign pinned, Jubilife City come to three tiles south of the second clown, the note over his head as the
+        // sign drops in, and the pinned line at the top left once the sign has lifted away. Everything is put back after
+        string[] campaignHides = { "FLAG_HIDE_JUBILIFE_CITY_CLOWNS_1_AND_2", "FLAG_HIDE_JUBILIFE_CITY_CLOWN_3", "FLAG_HIDE_JUBILIFE_CITY_POKETCH_CO_PRESIDENT", "FLAG_RECEIVED_POKETCH", "FLAG_RECEIVED_COUPON_2" };
+        var hidesBefore = campaignHides.Where(story.Has).ToList();
+        int campaignBefore = story.Var("VAR_POKETCH_CAMPAIGN_STATE");
+        bool couponBefore = story.Has("FLAG_RECEIVED_COUPON_1");
+        foreach (string flag in campaignHides) story.Unset(flag);
+        story.SetVar("VAR_POKETCH_CAMPAIGN_STATE", 2);
+        story.Set("FLAG_RECEIVED_COUPON_1");
+        game.PinnedRequest = "poketch";
+        At("Sinnoh", 143, 757, Direction.Up);
+        // Come to the city as a step across its border comes, with its sign and the bubble
+        game.EnterArea();
+        Frames(20); Shot("st9l_request_giver");
+        Console.WriteLine($"request pinned: {game.PinnedRequest}, the next step {Requests.Next(Requests.Find("poketch")!, story)?.Name}, " +
+            $"the sign \"{game.LocationSign.Name}\" showing {game.LocationSign.Visible}");
+        game.LocationSign.Hide();
+        Frames(100); Shot("st9m_request_pinned");
+        ShotCrop("st9n_request_pinned_native", 30, 20, 760, 160, 2);
+        game.PinnedRequest = null;
+        story.SetVar("VAR_POKETCH_CAMPAIGN_STATE", campaignBefore);
+        if (!couponBefore) story.Unset("FLAG_RECEIVED_COUPON_1");
+        foreach (string flag in hidesBefore) story.Set(flag);
+        Frames(2);
     }
 }

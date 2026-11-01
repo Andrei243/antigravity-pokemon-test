@@ -38,6 +38,8 @@ public sealed partial class GameFlow
     public MigrateScreen MigrateScreen { get; } = new();
     /// <summary>The jukebox (plan 12 · Q15), and where it goes back to.</summary>
     public JukeboxScreen JukeboxScreen { get; } = new();
+    /// <summary>The start menu's REQUESTS (plan 12 · Q21).</summary>
+    public RequestsScreen RequestsScreen { get; } = new();
     public GameState JukeboxReturn { get; set; } = GameState.Title;
     /// <summary>The title's CREDITS (plan 16 · T1): whose work is in the game.</summary>
     public TitleCreditsScreen TitleCreditsScreen { get; } = new();

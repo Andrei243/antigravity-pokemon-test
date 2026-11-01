@@ -890,6 +890,14 @@ public static class ScriptParser
                 if (Objectives.Find(name) == null) throw r.Error($"'{name}' is not an objective: Story/Objectives.cs lists them");
                 return new Instruction { Op = Op.Objective, Line = line, Name = name };
             }
+            // A request's step taken where no flag of the original marks it (plan 12 · Q21): "request poketch 2", an id of
+            // Story/Requests.cs and the step's number, stored in VAR_REQUEST_<ID>
+            case "request":
+            {
+                string name = r.Identifier("the request's id");
+                if (Requests.Find(name) == null) throw r.Error($"'{name}' is not a request: Story/Requests.cs lists them");
+                return new Instruction { Op = Op.Request, Line = line, Name = name, Number = r.Int("the step's number") };
+            }
             // A region's rival named on the introduction's keyboard (plan 18 · W4, part b)
             case "namerival":
                 return new Instruction { Op = Op.NameRival, Line = line };

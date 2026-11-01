@@ -201,7 +201,9 @@ public sealed class ScriptLibrary
 
     /// <summary>The variables any script sets or adds to.</summary>
     public IReadOnlySet<string> VariablesWritten => All.SelectMany(s => s.Everything())
-        .Where(i => i.Op is Op.SetVar or Op.AddVar).Select(i => i.Name).ToHashSet(StringComparer.Ordinal);
+        .Where(i => i.Op is Op.SetVar or Op.AddVar or Op.Request)
+        // (a request's step is kept in a variable of its own, plan 12 · Q21)
+        .Select(i => i.Op == Op.Request ? Requests.Variable(i.Name) : i.Name).ToHashSet(StringComparer.Ordinal);
 
     /// <summary>The variables any script asks about, the game's own left out.</summary>
     public IReadOnlySet<string> VariablesRead => All.SelectMany(s => s.Everything())

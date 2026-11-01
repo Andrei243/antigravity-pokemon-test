@@ -86,6 +86,9 @@ public sealed partial class GameFlow
     /// <summary>The key item kept on the item button (saved).</summary>
     public string? RegisteredItem { get; set; }
 
+    /// <summary>The request pinned over the field, by its id (plan 12 · Q21; saved).</summary>
+    public string? PinnedRequest { get; set; }
+
     /// <summary>The clothes the player owns and wears (plan 11 · C9).</summary>
     public Wardrobe Wardrobe { get; } = new();
 

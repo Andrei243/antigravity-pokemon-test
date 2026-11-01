@@ -1112,6 +1112,44 @@ partial class Harness
             Frames(30); Shot("09h_startmenu_counts");
             startMenu.Hide();
             startMenu.Counts = "";
+
+            // Requests (plan 12 · Q21), after it so nothing before them moves: the Pokétch campaign told and a coupon won,
+            // the start menu with REQUESTS on its row, the page's OPEN tab with the campaign pinned, THIS AREA on Route 202
+            // (the checklist's row still on) and, the Pokétch given, DONE; the story and the pin are put back after
+            var tale = game.Story;
+            int campaignBefore = tale.Var("VAR_POKETCH_CAMPAIGN_STATE");
+            bool couponBefore = tale.Has("FLAG_RECEIVED_COUPON_1"), poketchBefore = tale.Has("FLAG_RECEIVED_POKETCH");
+            tale.SetVar("VAR_POKETCH_CAMPAIGN_STATE", 2);
+            tale.Set("FLAG_RECEIVED_COUPON_1");
+            startMenu.HasRequests = game.HasRequests;
+            startMenu.Open();
+            int toRequests = (startMenu.HasPokedex ? 1 : 0) + (startMenu.HasPokemon ? 1 : 0) + (startMenu.HasBoxes && startMenu.HasPokemon ? 1 : 0)
+                + 1 + (startMenu.HasPokegear ? 1 : 0) + (startMenu.HasPokeNav ? 1 : 0) + 1;
+            startMenu.SelectedIndex = toRequests;
+            Frames(30); Shot("09i_startmenu_requests");
+            Console.WriteLine($"requests: the menu offers them {game.HasRequests}; the entry under the cursor gives {startMenu.Confirm()}");
+            startMenu.Hide();
+            game.PinnedRequest = "poketch";
+            game.OpenRequests();
+            Frames(30); Shot("09j_requests_open");
+            var page = game.Requests;
+            Console.WriteLine($"requests page: {page.OpenList.Count} open, {page.DoneList.Count} done, pinned {page.Pinned}, tabs {page.TabCount}, the next step {Requests.Next(Requests.Find("poketch")!, tale)?.Name}");
+            page.ChangeTab(-1);
+            Frames(20); Shot("09g_requests_this_area");
+            Console.WriteLine($"this area: {page.AreaName}, {page.Counts}");
+            page.Close();
+            tale.Set("FLAG_RECEIVED_POKETCH");
+            game.OpenRequests();
+            page.ChangeTab(1);
+            Frames(30); Shot("09k_requests_done");
+            Console.WriteLine($"requests page, the Pokétch given: {page.OpenList.Count} open, {page.DoneList.Count} done, pinned {page.Pinned ?? "none"}");
+            page.Close();
+            game.State = GameState.Overworld;
+            game.PinnedRequest = null;
+            if (!poketchBefore) tale.Unset("FLAG_RECEIVED_POKETCH");
+            if (!couponBefore) tale.Unset("FLAG_RECEIVED_COUPON_1");
+            tale.SetVar("VAR_POKETCH_CAMPAIGN_STATE", campaignBefore);
+            startMenu.HasRequests = false;
             engine.Settings.AreaChecklist = before;
         }
     }

@@ -135,6 +135,9 @@ public class SaveData
     /// <summary>The key item kept on the item button (the original's registered item), by name; null when none is.</summary>
     public string? RegisteredItem { get; set; }
 
+    /// <summary>The request pinned over the field (plan 12 · Q21, <see cref="Story.Requests"/>), by its id; null when none is, and in older saves.</summary>
+    public string? PinnedRequest { get; set; }
+
     /// <summary>
     /// Whoever travels with the player (plan 02 · S6): the trainer of Platinum's data who battles beside them, and
     /// the person of the map who walks behind, by their key. Null when nobody does, and in older saves.

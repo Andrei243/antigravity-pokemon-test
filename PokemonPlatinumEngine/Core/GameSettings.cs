@@ -212,6 +212,14 @@ public sealed class GameSettings
     private RulesDefault nextObjective = RulesDefault.On;
 
     /// <summary>
+    /// Whether the start menu has REQUESTS (plan 12 · Q21, <see cref="Story.Requests"/>) once an errand is known, with its
+    /// page, the pinned line over the field and the giver's bubble. The newest games keep such a list, so it is on unless
+    /// the player turns it off; <see cref="RulesDefault.Rules"/> reads as on, as for the move hints.
+    /// </summary>
+    public RulesDefault Requests { get => requests; set => requests = Modern(value); }
+    private RulesDefault requests = RulesDefault.On;
+
+    /// <summary>
     /// Whether the eight moves the HMs teach are done by a helper when no Pokémon of the team knows them (plan 12 · Q18):
     /// <see cref="RulesDefault.Rules"/> unless chosen, kept as it is (not turned into on, unlike the rows above), so a
     /// game played by Platinum's rules keeps its HMs and the modern rules give the later games' helpers; either can be chosen.

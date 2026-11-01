@@ -149,6 +149,8 @@ public enum Op
     Tournament,
     // A photograph of the screen as it stands, kept beside the player's screenshots (plan 20 · J13: Clair's in the Dragon's Den)
     Photograph,
+    // A request's step taken (plan 12 · Q21): its number stored as VAR_REQUEST_<ID>, where no flag of the original marks it
+    Request,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

@@ -117,7 +117,9 @@ public enum GameState
     /// <summary>The title's CREDITS: whose work is in the game, read from the repository's two records (plan 16 · T1).</summary>
     TitleCredits,
     /// <summary>Photo mode in the field: the field stilled under a free camera, a picture taken of it (plan 12 · Q16).</summary>
-    Photo
+    Photo,
+    /// <summary>The start menu's REQUESTS: the errands under way and done, and what is left here (plan 12 · Q21, Q22).</summary>
+    Requests
 }
 
 public partial class GameEngine
@@ -406,6 +408,7 @@ public partial class GameEngine
         flow.ContestOutcome = null;
         flow.Radar.Clear();
         flow.RegisteredItem = null;
+        flow.PinnedRequest = null;
         flow.ExitSpot = null;
         flow.MapTrail.Clear();
         flow.LastDay = null;
@@ -607,6 +610,7 @@ public partial class GameEngine
         flow.MapTrail.Restore(save.MapTrail);
         flow.LastDay = save.LastDay;
         flow.RegisteredItem = save.RegisteredItem;
+        flow.PinnedRequest = save.PinnedRequest;
         flow.Poketch.Load(save.Poketch);
         flow.PoketchView.Hide();
         if (save.Safari is { } game) flow.Safari.Resume(game.Balls, game.Steps, game.Caught);
@@ -798,6 +802,7 @@ public partial class GameEngine
             MapTrail = flow.MapTrail.IsEmpty ? null : flow.MapTrail.ToSave(),
             LastDay = flow.LastDay,
             RegisteredItem = flow.RegisteredItem,
+            PinnedRequest = flow.PinnedRequest,
             Partner = partner?.TrainerId,
             PartnerPerson = partner?.Who.Key,
             RepelSteps = flow.EncounterAids.RepelSteps,
@@ -1438,6 +1443,9 @@ public partial class GameEngine
             case GameState.Jukebox:
                 UpdateJukebox(dt);
                 break;
+            case GameState.Requests:
+                UpdateRequests(dt);
+                break;
             case GameState.TitleCredits:
                 flow.TitleCreditsScreen.Update(dt);
                 if (!flow.TitleCreditsScreen.IsActive) flow.State = GameState.Title;
@@ -1680,6 +1688,7 @@ public partial class GameEngine
             flow.StartMenu.HasBoxes = BoxLinkOn;
             flow.StartMenu.HasPokegear = HasPokegear;
             flow.StartMenu.HasPokeNav = HasPokeNav;
+            flow.StartMenu.HasRequests = HasRequests;
             flow.StartMenu.Objective = NextObjectiveLine;
             flow.StartMenu.Counts = AreaCountsLine() ?? "";
             flow.StartMenu.Open();
@@ -1958,6 +1967,7 @@ public partial class GameEngine
         PlayFieldMusic();
         // As the language writes it (plan 17 · N6b): the area's own name was shown in English under every language
         if (!string.IsNullOrEmpty(area.DisplayName)) flow.LocationSign.Show(flow.Map.ShownNameAt(flow.Player.GridX, flow.Player.GridY), SeasonHere, AreaCountsLine());
+        PointOutThePinnedRequest();
         return StartEnterScript();
     }
 
@@ -2428,6 +2438,7 @@ public partial class GameEngine
         NoteArrival();
         if (flow.Map.IsIndoors) flow.LocationSign.Hide();
         else flow.LocationSign.Show(flow.Map.ShownNameAt(flow.Player.GridX, flow.Player.GridY), SeasonHere, AreaCountsLine());
+        PointOutThePinnedRequest();
     }
 
     private void HandleStartMenuChoice(StartMenuChoice choice)
@@ -2466,6 +2477,9 @@ public partial class GameEngine
                 break;
             case StartMenuChoice.PokeNav:
                 OpenPokeNav();
+                break;
+            case StartMenuChoice.Requests:
+                OpenRequests();
                 break;
             case StartMenuChoice.Trainer:
                 flow.State = GameState.TrainerCard;
@@ -2826,6 +2840,8 @@ public partial class GameEngine
                 DrawParkCount();
                 DrawBattlePoints();
                 DrawCastlePoints();
+                // A request pinned (plan 12 · Q21), at the top left while the location sign isn't there and no script runs
+                DrawPinnedRequest(shown);
                 flow.Dialogue.Draw(VirtualWidth, VirtualHeight);
                 DrawChoice();
                 // The run timer's corner (plan 13 · V10), under the start menu and the skip's pill
@@ -2887,6 +2903,9 @@ public partial class GameEngine
                 break;
             case GameState.Jukebox:
                 flow.JukeboxScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.Requests:
+                flow.RequestsScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.TitleCredits:
                 flow.TitleCreditsScreen.Draw(VirtualWidth, VirtualHeight);
