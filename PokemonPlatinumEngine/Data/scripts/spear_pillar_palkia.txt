@@ -3,7 +3,8 @@
 #
 # As spear_pillar_dialga.txt, for whoever holds the Lustrous Orb: Palkia at level 70 behind its rift, quiet once it has
 # been battled (VAR_SPEAR_PILLAR_PALKIA_STATE 1) until the Hall of Fame is next entered, and gone for good once caught
-# (FLAG_CAUGHT_PALKIA). A game that holds both orbs is led to Dialga's pillar first.
+# (FLAG_CAUGHT_PALKIA). A game that holds both orbs is led to Dialga's pillar first. Its meeting is the same beat of plan 29
+# as Dialga's (style guide, "Legendary scenes").
 
 
 # SpearPillarPalkia_Rift
@@ -14,9 +15,24 @@ script Rift
   text "Beyond the rift lies a place where nothing is the way it ought to be..." "And in it, looking back: Palkia!"
   ask "Will you challenge Palkia?"
   if no end
+  scene "Palkia's rift"
+  music stop
+  face player up
+  letterbox on 0.4
+  camera pan 29 16 1.2
+  camera zoom 1.4 0.8
+  effect rift 29 16 hold
+  slowmo 0.5 1.5
+  effect ripple 29 16
+  wait 1
   cry "Palkia"
   camera shake 0.6
-  text "Palkia: Gagyagyaah!"
+  emote player exclaim
+  text "Palkia pushes out of the rift, and the space round it folds!"
+  effect stop 29 16
+  camera release 0.4
+  letterbox off 0.3
+  endscene
   wildbattle "Palkia" 70
   setvar VAR_SPEAR_PILLAR_PALKIA_STATE 1
   if result == 3 setflag FLAG_CAUGHT_PALKIA

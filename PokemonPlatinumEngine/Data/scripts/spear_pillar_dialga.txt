@@ -10,8 +10,9 @@
 # it is gone for good (FLAG_CAUGHT_DIALGA).
 #
 # The Hall of Origin's step before the way down (VAR_HALL_OF_ORIGIN_STATE 1, for whoever carries the Azure Flute of an
-# event) is left dead: plan 03 · D12c. Stood in for until plan 09 · L14 gives the legendary Pokémon their ways in: the
-# cry, a shake of the picture and the battle's own opening.
+# event) is left dead: plan 03 · D12c. Its meeting is plan 29's beat (style guide, "Legendary scenes"): the bars, the
+# camera up to the rift held open over a ripple under slow motion, the cry, a line, and then the battle's own way in
+# (plan 09 · L14's Legendary).
 
 
 # SpearPillarDialga_Rift
@@ -22,9 +23,24 @@ script Rift
   text "Beyond the rift lies a place where nothing is the way it ought to be..." "And in it, looking back: Dialga!"
   ask "Will you challenge Dialga?"
   if no end
+  scene "Dialga's rift"
+  music stop
+  face player up
+  letterbox on 0.4
+  camera pan 29 16 1.2
+  camera zoom 1.4 0.8
+  effect rift 29 16 hold
+  slowmo 0.5 1.5
+  effect ripple 29 16
+  wait 1
   cry "Dialga"
   camera shake 0.6
-  text "Dialga: Gyugguh-gwaah!"
+  emote player exclaim
+  text "Dialga pushes out of the rift, and time itself stumbles round it!"
+  effect stop 29 16
+  camera release 0.4
+  letterbox off 0.3
+  endscene
   wildbattle "Dialga" 70
   setvar VAR_SPEAR_PILLAR_DIALGA_STATE 1
   if result == 3 setflag FLAG_CAUGHT_DIALGA

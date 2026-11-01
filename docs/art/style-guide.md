@@ -727,6 +727,34 @@ A burst whitens the whole picture over the composite, as lightning does: 85 % wh
   - *A flicker*: whoever flickers is not drawn for a fifth of a second, then drawn for a fifth, changing so many times in all (Cresselia six: gone, back, gone, back, gone, back, and then it is taken off the map). Nothing fades: they are there or they are not.
   - *A lift's shudder*: while a car is between floors the whole picture is thrown a texel up for a thirtieth of a second in every four, and as it stops two texels down for a fifteenth. It is the car that moves, so nothing in it moves against anything else.
 
+### Legendary scenes
+
+Plan 29. Every legendary or mythical Pokémon met in a place of its own is met through a short staged beat before its battle, written in the place's own script with the camera kit, the scene effects and the set pieces above, and nothing else: no picture or sound made outside the engine. `LegendaryScenesTests.EveryLegendaryBattleOfAPlaceHasItsBeat` holds it: before every `wildbattle` of a species whose data says `Legendary` or `Mythical` stands a `scene` of the same script with a camera line that looks somewhere (`pan`, `zoom`, `path` or `follow`) and a sign (`effect`, `shake`, `flicker` or `anim`), but for the meetings its `StillBare` list names with the session that owes them.
+
+**The five beats.** Six to nine seconds in all, never more than ten once the cry and the line are read:
+
+| Beat | Time | What it is |
+|---|---|---|
+| 1. Hush | 0.5 s | `scene "<Name> at <place>"`, `music stop`, the player faced to the Pokémon, `letterbox on 0.4`. A question the original asks first ("Will you challenge…?") is asked before the scene, so a no leaves nothing to skip. |
+| 2. Look | 1 to 2 s | `camera pan` to the Pokémon's tile (`camera path` for one met high above or far off), then `camera zoom 1.4 0.8`. A room is seen whole: the zoom alone, the pan moving only within its slack. |
+| 3. Sign | 1 to 3 s | one scene effect by the Pokémon's kind (the table below), on its tile or between it and the player, and a set piece on the Pokémon where it fits. |
+| 4. Voice | 1 to 1.5 s | `cry` with `camera shake` where the Pokémon is loud, an `emote player exclaim` where the player would start, and one line of our own (two at most) saying what the player sees; never the games' line. |
+| 5. Hand over | 0.7 s | a held effect stopped, `camera release 0.4`, `letterbox off 0.3`, `endscene`, then `wildbattle` exactly as before. The release comes before the battle, so plan 09 · L14's way in widens from the place's own lens. |
+
+| Kind of Pokémon | Effect | Set piece and camera |
+|---|---|---|
+| Time, space, the other world (Dialga, Palkia, Giratina, Darkrai) | `rift` held, `ripple` (a shadow for Giratina, which is met in its own form) | `slowmo 0.5 1.5` |
+| Fire, lava, the sun (Moltres, Ho-Oh, Heatran, Groudon, Reshiram) | `burst`, then `ripple` (heat) | `camera shake 0.6` |
+| Lightning (Zapdos, Raikou, Thundurus, Zekrom) | two `burst`s 0.4 s apart | `camera shake 0.4` on each |
+| Ice, sea, rain (Articuno, Lugia, Kyogre, Suicune, Kyurem, Regice) | `sparkles`, `ripple` | `camera shake 0.5` for the sea's ones |
+| Stone and steel giants (the Regis, Regigigas, Terrakion, Cobalion) | `beam` on the statue's tile, its eyes lighting | `shake <who> 8`, `camera shake 0.8` |
+| Mind, dreams, the lakes (Mewtwo, Mew, Uxie, Mesprit, Azelf, Cresselia, Latias, Latios, Deoxys, Jirachi) | `sparkles`, `ripple` | `flicker <who>` for one that is there and not there |
+| Flight overhead (Rayquaza, Lugia, Ho-Oh, the forces of nature) | `shadow` crossing the ground toward the player | `camera path` up the shadow's way |
+| Grass and woods (Virizion, Celebi, Shaymin) | `sparkles` | `camera follow <who>` |
+| Ghost in a machine (Rotom) | `sparkles` on the set's tile | the set's own face: a flicker or a sound of the set |
+
+Rules: the scene ends before the battle, so the hold skips the beat and never the battle (plan 12 · Q20); what the scene leaves (flags, variables, `hide`, `show`, the battle and its options) is what the bare script left, line for line; effects only on the Pokémon's tile and the tiles between it and the player, never through a wall; a roamer's grass meeting is L14's alone, and only the scene that sets it roaming is staged. A beat the kit can't write is asked of plan 29 · LS10 as a new effect kind, here first.
+
 ### Light, shadow and grading (day)
 
 | Setting | Value |
