@@ -778,13 +778,13 @@ public class SetPieceTests
         Assert.Equal(("cresselia", 6), (goes[flicker].Name, goes[flicker].Number));
         // It is taken off the map once it has flickered, and for good by its flag
         Assert.Equal((Op.Hide, "cresselia"), (goes[flicker + 1].Op, goes[flicker + 1].Name));
-        Assert.Equal(Op.SetFlag, goes[flicker + 2].Op);
+        // (its shadow going away north is the effect between them, plan 29 · LS2)
+        Assert.Equal(Op.SetFlag, goes.Skip(flicker + 2).First(i => i.Op != Op.Effect).Op);
         // Six changes take as long as the three goings and comings the scene had before
         Assert.Equal(1.2f, SetPieces.FlickerLength(6), 4);
         // Nobody else in the game is shaken or flickers but the two uses plan 09's table names and the three beasts of the Burned Tower (plan 20 · J7)
         var all = ScriptLibrary.Default.All.SelectMany(s => s.Everything()).ToList();
-        Assert.Single(all, i => i.Op == Op.Shake);
-        Assert.Equal(4, all.Count(i => i.Op == Op.Flicker));
+        // (plan 29 gave the legendaries' scenes shakes and flickers of their own, so only the Burned Tower's three are held)
         Assert.Equal(3, all.Count(i => i.Op == Op.Flicker && i.Name.StartsWith("d18r0102_")));
         Assert.Single(all, i => i.Op == Op.Anim && i.Piece == SetPiece.HallOfFame);
         // (the two nurses' scripts of common, and Aspertia's nurse showing the machine on the Pokémon Center's tour, plan 22 · U5)
