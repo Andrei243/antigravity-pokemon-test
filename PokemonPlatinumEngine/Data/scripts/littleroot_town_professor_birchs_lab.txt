@@ -55,10 +55,21 @@ label Pokedex
 
 script Birch
   if flag HoennHallOfFame goto Champion
-  if var VAR_BIRCH_LAB_STATE >= 5 goto Dex
+  if var VAR_BIRCH_LAB_STATE >= 5 goto Register
   if var VAR_BIRCH_LAB_STATE >= 3 goto Rival
   say "Phew, what a morning! Thank you again, {player}."
   end
+# Emerald's EventScript_RegisterProfBirch: once the PokéNav has Match Call, the professor's number, once (plan 21 · H3's
+# last part; FLAG_ENABLE_PROF_BIRCH_MATCH_CALL as Emerald's, FLAG_PHONE_CONTACT_PROF_BIRCH the PokéNav's own)
+label Register
+  if not flag FLAG_SYS_POKENAV_GET goto Dex
+  if flag FLAG_ENABLE_PROF_BIRCH_MATCH_CALL goto Dex
+  face birchs_lab_birch player
+  say "Oh, {player}! Is that a PokéNav? Let me put my number in it, so I can hear about your Pokédex wherever you are."
+  addcontact prof_birch
+  text "Registered Prof. Birch in the PokéNav."
+  setflag FLAG_ENABLE_PROF_BIRCH_MATCH_CALL
+  goto Dex
 label Rival
   say "{rival} is on Route 103, north of Oldale Town. Go and say hello!"
   end

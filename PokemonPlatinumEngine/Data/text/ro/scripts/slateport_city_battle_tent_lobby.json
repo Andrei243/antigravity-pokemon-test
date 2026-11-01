@@ -1,0 +1,100 @@
+{
+  "Attendant": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitor"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Slateport Battle Tent! Here you battle with Pokémon we lend you."
+      ],
+      "text": [
+        "Bun venit la Cortul de Luptă din Slateport! Aici lupți cu Pokémoni pe care ți-i împrumutăm noi."
+      ]
+    },
+    {
+      "en": [
+        "Would you like to take the Battle Tent challenge?",
+        "Enter",
+        "The rules",
+        "No"
+      ],
+      "text": [
+        "Vrei să încerci provocarea Cortului de Luptă?",
+        "Intră",
+        "Regulile",
+        "Nu"
+      ]
+    },
+    {
+      "en": [
+        "Thank you! Your rental Pokémon are ready. Please follow me."
+      ],
+      "text": [
+        "Mulțumesc! Pokémonii închiriați sunt gata. Te rog urmează-mă."
+      ]
+    },
+    {
+      "en": [
+        "Please come again. There's always a new rental waiting to surprise you."
+      ],
+      "text": [
+        "Te mai așteptăm. Mereu te așteaptă un nou Pokémon de închiriat care să te surprindă."
+      ]
+    },
+    {
+      "en": [
+        "You'll choose three of six rental Pokémon, and battle three Trainers in a row with them."
+      ],
+      "text": [
+        "Vei alege trei din șase Pokémoni de închiriat și vei lupta cu ei împotriva a trei Antrenori la rând."
+      ]
+    },
+    {
+      "en": [
+        "After each win, you may swap one of yours for one of the Trainer you just beat."
+      ],
+      "text": [
+        "După fiecare victorie, poți schimba unul dintre ai tăi cu unul al Antrenorului învins."
+      ]
+    },
+    {
+      "en": [
+        "Your own Pokémon stay out of it. Win all three battles for a prize!"
+      ],
+      "text": [
+        "Pokémonii tăi nu participă. Câștigă toate trei luptele pentru un premiu!"
+      ]
+    }
+  ],
+  "TormentGiver": [
+    {
+      "en": [
+        "Sailor"
+      ],
+      "text": [
+        "Marinar"
+      ]
+    },
+    {
+      "en": [
+        "Hey, you! Don't look so worried. I've got something for you."
+      ],
+      "text": [
+        "Hei, tu! Nu te uita așa îngrijorat. Am ceva pentru tine."
+      ]
+    },
+    {
+      "en": [
+        "Torment keeps a foe from using the same move twice in a row. Drives them up the wall!"
+      ],
+      "text": [
+        "Chinul împiedică un adversar să folosească același atac de două ori la rând. Îl scoate din minți!"
+      ]
+    }
+  ]
+}

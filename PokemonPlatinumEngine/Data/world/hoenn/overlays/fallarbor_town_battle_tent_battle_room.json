@@ -1,0 +1,16 @@
+{
+  // The battle room of Fallarbor's Battle Tent (plan 21 · H3's last part): a round of three, the Battle Arena's rules, is
+  // this room's one arrival script (fallarbor_town_battle_tent_battle_room.txt). Emerald hides the player and walks a stand-in
+  // of them in so the camera keeps still: here the player walks in, so the stand-in is left out, and so is the area's
+  // opponent, whose place the opponent of ours below takes (the Frontier's rooms find their trainer as "opponent")
+  "area": "fallarbor_town_battle_tent_battle_room",
+  // The judge stands a row south of Emerald's tile, which is the wall between the arena and the trainers' way in here
+  "bgmTrack": "hoenn/fallarbor",
+  "heldBack": [ "fallarbor_tent_battle_player", "fallarbor_tent_battle_opponent" ],
+  "people": {
+    "fallarbor_tent_battle_attendant": { "name": "Attendant", "still": true, "at": [ 3, 3 ], "dialog": [ "Good luck!" ] }
+  },
+  "npcs": [
+    { "id": "opponent", "name": "Trainer", "npcType": "Youngster", "x": 5, "y": 3, "facing": "Down", "dialog": [ "..." ], "shownBy": "FLAG_HOENN_TENT_OPPONENT" }
+  ]
+}

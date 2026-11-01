@@ -1,0 +1,51 @@
+# Fallarbor's Battle Tent (plan 21 · H3's last part). docs/scripts.md describes the language; the lines are our own, on the
+# beats of Emerald's (data/maps/FallarborTown_BattleTentLobby/scripts.inc): a round of three Trainers on the Battle Arena's
+# rules, three against three with no switching and every bout that lasts three turns judged, and a Hyper Potion for the
+# three won.
+#
+# The round is the Arena's venue in a tent (Models/Frontier/BattleVenue.cs, `venue tent fallarbor`): the three entered go in
+# as copies at their own levels, made whole for every battle, and the Trainers' are at the highest of them, never under
+# thirty as Hoenn's levels map it. The attendant walks the player through the corridor
+# (fallarbor_town_battle_tent_corridor.txt) to the battle room, whose arrival script is the round.
+
+
+script Attendant
+  face self player
+  speaker "Attendant"
+  say "Welcome to the Fallarbor Battle Tent! Every bout here is fought to a finish, or to the judge's verdict."
+label Ask
+  choose "Would you like to take the Battle Tent challenge?" "Enter" "The rules" "No"
+  if result == 1 goto Rules
+  if result == 2 goto Later
+  venue enough
+  if result == 1 goto Choose
+  say "You need three Pokémon that can take part, all of different species and holding different items."
+  say "An Egg can't take part, and nor can {banned}."
+  end
+label Choose
+  say "Please choose the three Pokémon you'll enter."
+  venue choose
+  if result == 0 goto Later
+  venue check
+  if result == 1 goto SameSpecies
+  if result == 2 goto SameItem
+  venue tent fallarbor
+  say "Thank you! Three Trainers are waiting for you. Please follow me."
+  walk self up 3
+  fade out 0.6
+  warp "FallarborTown_BattleTentCorridor" 2 7 up
+  fade in
+  end
+label SameSpecies
+  say "I'm sorry. The three entered must all be of different species."
+  goto Later
+label SameItem
+  say "I'm sorry. No two of the three entered may hold the same item."
+label Later
+  say "Please come again. The judges never tire of a good bout."
+  end
+label Rules
+  say "Your Pokémon fight one on one, and nobody switches out. If neither falls in three turns, the judge decides."
+  say "The judge looks at how boldly each one fought, how well it aimed and how much HP it kept."
+  say "Your three keep their own levels and are made whole after every battle. Win three in a row for a prize!"
+  goto Ask

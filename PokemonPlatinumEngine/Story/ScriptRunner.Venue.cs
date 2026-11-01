@@ -61,6 +61,35 @@ public sealed partial class ScriptRunner
                 records.ChallengesStarted++;
                 lastNumber = host.Venue.StreakBefore;
                 break;
+            case "tent":
+            {
+                // Hoenn's Battle Tents (plan 21 · H3's last part): three trainers, at the highest level of the three
+                // entered and never under Emerald's thirty as the region maps it; Slateport's on rentals, with no three chosen
+                var tent = i.Other switch { "fallarbor" => BattleTent.Fallarbor, "slateport" => BattleTent.Slateport, _ => BattleTent.Verdanturf };
+                if (tent != BattleTent.Slateport && venueSlots.Count != BattleVenueChallenge.TeamSize)
+                    throw Wrong(i, "'venue tent' needs the three to have been chosen ('venue choose')");
+                host.Venue = BattleVenueChallenge.BeginTent(tent, venueSlots, host.Party, host.LevelHere(BattleVenueChallenge.TentMinimumLevel), Draw);
+                lastNumber = host.Venue.FoeLevel;
+                break;
+            }
+            case "rent":
+                // Slateport's six on offer, three to be rented (the Factory's screen); RESULT 1 once three are chosen
+                Result = host.FrontierAct("rent", BattleVenueChallenge.TeamSize, Subject);
+                afterBusy = () =>
+                {
+                    var round = Round();
+                    if (host.Answer == 1 && host.Entered.Count == BattleVenueChallenge.TeamSize) round.Rent(host.Entered);
+                    Result = round.Rented.Count == BattleVenueChallenge.TeamSize ? 1 : 0;
+                };
+                break;
+            case "trade":
+                // After a win in Slateport: one of the three for one of the trainer just beaten; RESULT 1 when one was made
+                Result = host.FrontierAct("trade", 0, Subject);
+                afterBusy = () => Result = host.Entered.Count == 2 && Round().Trade(host.Entered[0], host.Entered[1]) ? 1 : 0;
+                break;
+            case "length":
+                Result = lastNumber = Round().Length;
+                break;
             case "active":
                 Result = host.Venue != null ? 1 : 0;
                 break;

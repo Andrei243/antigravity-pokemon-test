@@ -1,0 +1,14 @@
+# The corridor of Fallarbor's Battle Tent (plan 21 · H3's last part): the attendant walks a challenger to the battle room's
+# door, on the beats of Emerald's FallarborTown_BattleTentCorridor. A
+# game closed in the middle of a round finds none here (the round is the host's Venue, not saved), and nothing happens.
+
+
+script OnEnter
+  venue active
+  if result == 0 end
+  walk fallarbor_tent_corridor_attendant up 4
+  walk player up 4
+  fade out 0.6
+  warp "FallarborTown_BattleTentBattleRoom" 4 8 up
+  fade in
+  end

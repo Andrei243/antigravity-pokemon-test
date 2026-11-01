@@ -1,0 +1,26 @@
+# The corridor of Slateport's Battle Tent (plan 21 · H3's last part): the attendant walks a challenger to the battle room's
+# door, on the beats of Emerald's SlateportCity_BattleTentCorridor, where the six rentals are chosen first. A
+# game closed in the middle of a round finds none here (the round is the host's Venue, not saved), and nothing happens.
+
+
+script OnEnter
+  venue active
+  if result == 0 end
+  speaker "Attendant"
+  say "Here are six rental Pokémon. Please choose the three you'll battle with."
+  venue rent
+  if result == 1 goto Walk
+  say "No rentals? Then the challenge is over. Please come again."
+  venue end
+  fade out 0.6
+  warp "SlateportCity_BattleTentLobby" 6 6 up
+  fade in
+  end
+label Walk
+  say "Right this way, please."
+  walk slateport_tent_corridor_attendant up 4
+  walk player up 4
+  fade out 0.6
+  warp "SlateportCity_BattleTentBattleRoom" 4 8 up
+  fade in
+  end

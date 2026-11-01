@@ -1,0 +1,41 @@
+{
+  "people": {
+    "scientist_1": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitor"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Good luck!"
+        ],
+        "text": [
+          "Mult noroc!"
+        ]
+      }
+    },
+    "opponent": {
+      "name": {
+        "en": [
+          "Trainer"
+        ],
+        "text": [
+          "Antrenor"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

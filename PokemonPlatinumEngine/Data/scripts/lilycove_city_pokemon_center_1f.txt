@@ -1,0 +1,84 @@
+# Lilycove City's Pokémon Center (plan 21 · H11, part c). docs/scripts.md describes the language; the lines are our own, on
+# the beats of Emerald's Favor Lady (data/scripts/lilycove_lady.inc, src/lilycove_lady.c): she is taken with one kind of
+# thing, keeps whatever she is handed, and the fifth thing of her kind, or at once the one she wanted most, earns her
+# favour's prize and a new favour (Models/LilycoveLady.cs, `favorlady`). Emerald waits for a record mix before she asks again;
+# here she asks again the next day (FLAG_DAILY_HOENN_FAVOR_LADY). Emerald's quiz lady and contest lady are not built, so she
+# is the Favor Lady in every game.
+
+
+script LilycoveLady
+  face self player
+  speaker "Lady"
+  say "I'm the Favor Lady! Lilycove is full of lovely things, and I can never have enough of them."
+  if flag FLAG_DAILY_HOENN_FAVOR_LADY goto Thanks
+  favorlady which
+  if result == 1 goto Roundish
+  if result == 2 goto Whamish
+  if result == 3 goto Shiny
+  if result == 4 goto Sticky
+  if result == 5 goto Pointy
+  say "Lately I can't stop thinking about slippery things. Isn't that silly?"
+  goto Ask
+label Roundish
+  say "Lately I can't stop thinking about round things. Isn't that silly?"
+  goto Ask
+label Whamish
+  say "Lately I can't stop thinking about things that go wham. Isn't that silly?"
+  goto Ask
+label Shiny
+  say "Lately I can't stop thinking about shiny things. Isn't that silly?"
+  goto Ask
+label Sticky
+  say "Lately I can't stop thinking about sticky things. Isn't that silly?"
+  goto Ask
+label Pointy
+  say "Lately I can't stop thinking about pointy things. Isn't that silly?"
+label Ask
+  choose "Would you share something like that with me?" "Yes" "No"
+  if result == 1 goto Goodbye
+  say "Oh, how kind! What will you give me?"
+  chooseitem gift
+  if result == 0 goto Goodbye
+  favorlady give
+  setflag FLAG_DAILY_HOENN_FAVOR_LADY
+  if result == 1 goto Liked
+  if result == 2 goto Loved
+  say "Oh... that isn't quite what I had in mind. But I'll look after it all the same."
+  end
+label Liked
+  say "Oh, that's just the kind of thing! I'll cherish it, I promise."
+  end
+label Loved
+  say "This is wonderful! I'll treasure it forever. Please, take this in return."
+  favorlady which
+  if result == 1 goto Nugget
+  if result == 2 goto Protein
+  if result == 3 goto HeartScale
+  if result == 4 goto RareCandy
+  if result == 5 goto PpMax
+  give "Luxury Ball"
+  goto Next
+label Nugget
+  give "Nugget"
+  goto Next
+label Protein
+  give "Protein"
+  goto Next
+label HeartScale
+  give "Heart Scale"
+  goto Next
+label RareCandy
+  give "Rare Candy"
+  goto Next
+label PpMax
+  give "PP Max"
+label Next
+  favorlady new
+  say "Now that I have so many, I find my heart set on something else entirely. Come and see me again!"
+  end
+label Goodbye
+  say "Is that so? Well, goodbye, then."
+  end
+label Thanks
+  say "Thank you for the other day. I treasure what you gave me! Come and see me again tomorrow."
+  end

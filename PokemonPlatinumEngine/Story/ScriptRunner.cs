@@ -395,6 +395,8 @@ public sealed partial class ScriptRunner
         Op.Pike or Op.Pyramid => true,
         // And the World Tournament (plan 14 · B11)
         Op.Tournament => true,
+        // The Lilycove Lady only asks and changes (plan 21 · H11, part c)
+        Op.FavorLady => false,
         _ => throw new ArgumentOutOfRangeException(nameof(i), i.Op, "This command doesn't say what it does in a hurry: name it in ScriptRunner.StopsAHurry.")
     };
 
@@ -1325,6 +1327,10 @@ public sealed partial class ScriptRunner
             // The Battle Palace and the Battle Arena (plan 14 · B9)
             case Op.Venue:
                 VenueRound(i);
+                break;
+            // The Lilycove Lady's favour (plan 21 · H11, part c)
+            case Op.FavorLady:
+                FavorLadyCommand(i);
                 break;
             // The Battle Pike and the Battle Pyramid (plan 14 · B10)
             case Op.Pike:

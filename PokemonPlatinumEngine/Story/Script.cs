@@ -153,6 +153,8 @@ public enum Op
     Request,
     // A trainer tip raised (plan 12 · Q23): shown once, at the next quiet moment, while the options' TIPS row holds
     Tip,
+    // The Lilycove Lady's favour (plan 21 · H11, part c): the kind of thing she wants, an item handed over and counted
+    FavorLady,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

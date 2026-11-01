@@ -10,6 +10,13 @@ namespace PokemonPlatinumEngine.Models.Frontier;
 public enum AnnexVenue { Palace, Arena }
 
 /// <summary>
+/// Hoenn's three Battle Tents (plan 21 · H3's last part; <c>docs/mechanics/rulings.md</c>, "Hoenn's Battle Tents"):
+/// Emerald's small rounds of three on the rules of a facility. Verdanturf's is the Palace's, Fallarbor's the Arena's,
+/// Slateport's the Factory's, on rentals.
+/// </summary>
+public enum BattleTent { Verdanturf, Fallarbor, Slateport }
+
+/// <summary>
 /// What the Battle Palace and the Battle Arena each keep beside the Frontier's other records (plan 14 · B9;
 /// <see cref="FrontierRecords.Palace"/>, <see cref="FrontierRecords.Arena"/>): the battles won in a row and the most
 /// ever, the rounds of seven won, and whether a round was walked out on, which ends the streak the next time one is begun.
@@ -65,6 +72,99 @@ public sealed class BattleVenueChallenge
         StreakBefore = streakBefore;
     }
 
+    // ---- Hoenn's Battle Tents (plan 21 · H3's last part) ----
+
+    /// <summary>A Battle Tent's round (Emerald's <c>TENT_STAGES_PER_CHALLENGE</c>): three trainers.</summary>
+    public const int TentLength = 3;
+
+    /// <summary>The lowest level a tent's trainers are met at (Emerald's <c>TENT_MIN_LEVEL</c>), before a region's levels map it.</summary>
+    public const int TentMinimumLevel = 30;
+
+    /// <summary>The prize a round won in each tent hands over (Emerald's <c>sVerdanturfTentRewards</c> and its two fellows).</summary>
+    public static string TentPrize(BattleTent tent) => tent switch
+    {
+        BattleTent.Verdanturf => "Nest Ball",
+        BattleTent.Fallarbor => "Hyper Potion",
+        _ => "Full Heal"
+    };
+
+    /// <summary>The tent this round is played in, or null for a round of the annex.</summary>
+    public BattleTent? Tent { get; private init; }
+
+    /// <summary>How many battles the round is: seven in the annex, three in a tent.</summary>
+    public int Length => Tent == null ? RoundLength : TentLength;
+
+    /// <summary>The level the round's trainers' Pokémon are made at.</summary>
+    public int FoeLevel { get; private init; } = FrontierRules.Level;
+
+    /// <summary>Slateport's six rentals on offer at the start of the round (none in any other round).</summary>
+    public List<Pokemon> Offer { get; } = new();
+
+    /// <summary>Slateport's three rented, as the Factory lends them; the player's own stay out of it.</summary>
+    public List<Pokemon> Rented { get; } = new();
+
+    /// <summary>
+    /// A tent's round begun (Emerald's <c>InitVerdanturfTentChallenge</c> and its fellows, <c>SetTentPtrsGetLevel</c>):
+    /// three trainers drawn from the Frontier's first row, met at the highest level of the three entered and never under
+    /// <paramref name="minimumLevel"/> (Emerald's thirty, mapped by the region's levels); Slateport's rentals and trainers
+    /// at the minimum alone, with six offered to rent from. The player's own go in as copies at their own levels. A tent
+    /// keeps no streak on any board.
+    /// </summary>
+    public static BattleVenueChallenge BeginTent(BattleTent tent, IReadOnlyList<int> slots, Party party, int minimumLevel, Func<int> next16)
+    {
+        int level = minimumLevel;
+        if (tent != BattleTent.Slateport)
+            foreach (int slot in slots)
+                if (slot >= 0 && slot < party.Count) level = Math.Max(level, party.Members[slot].Level);
+        int[] row = FrontierDatabase.TowerRooms[0];
+        var foes = new List<FrontierOpponent>();
+        var taken = new HashSet<int>();
+        while (foes.Count < TentLength)
+        {
+            int trainer = row[0] + (next16() & 0xFFFF) % (row[1] - row[0] + 1);
+            if (!taken.Add(trainer)) continue;
+            foes.Add(FrontierTrainers.ForTrainers(TeamSize, trainer, trainer, false, next16, level)[0]);
+        }
+        var venue = tent == BattleTent.Fallarbor ? AnnexVenue.Arena : AnnexVenue.Palace;
+        var round = new BattleVenueChallenge(venue, tent == BattleTent.Slateport ? Array.Empty<int>() : slots.ToList(), foes, 0)
+        {
+            Tent = tent, FoeLevel = level
+        };
+        if (tent == BattleTent.Slateport)
+        {
+            var pool = FrontierDatabase.Factory.Level50[0];
+            foreach (var (set, ivs) in BattleFactoryChallenge.SelectFromPool(Array.Empty<FactoryRental>(), 6, pool, null, 0, next16))
+            {
+                uint otId = ((uint)next16() & 0xFFFF) | ((uint)next16() & 0xFFFF) << 16;
+                var record = FrontierDatabase.Set(set);
+                round.Offer.Add(LevelScaling.At(FrontierTrainers.Build(record, FrontierTrainers.PersonalityFor(record.Nature, otId, next16), ivs, level), level));
+            }
+        }
+        return round;
+    }
+
+    /// <summary>Slateport's three rented, by their places among the six offered.</summary>
+    public void Rent(IReadOnlyList<int> chosen)
+    {
+        Rented.Clear();
+        foreach (int place in chosen)
+            if (place >= 0 && place < Offer.Count) Rented.Add(Offer[place]);
+    }
+
+    /// <summary>The trainer just beaten, whose three may be traded for after a win in Slateport.</summary>
+    public FrontierOpponent? Beaten => Battle > 0 && Battle <= Foes.Count ? Foes[Battle - 1] : null;
+
+    /// <summary>
+    /// A trade after a win in Slateport (Emerald's <c>SwapRentalMons</c>): the rental at <paramref name="mine"/> goes, the beaten
+    /// trainer's Pokémon at <paramref name="theirs"/> comes over as it was. False where either place is not there.
+    /// </summary>
+    public bool Trade(int mine, int theirs)
+    {
+        if (Beaten is not { } beaten || mine < 0 || mine >= Rented.Count || theirs < 0 || theirs >= beaten.Pokemon.Count) return false;
+        Rented[mine] = beaten.Pokemon[theirs].Clone();
+        return true;
+    }
+
     /// <summary>The venue's own part of the records.</summary>
     public static VenueRecord RecordOf(FrontierRecords records, AnnexVenue venue) => venue == AnnexVenue.Palace ? records.Palace : records.Arena;
 
@@ -95,10 +195,22 @@ public sealed class BattleVenueChallenge
     public FrontierOpponent? Opponent => Battle < Foes.Count ? Foes[Battle] : null;
 
     /// <summary>The round is won: all seven beaten.</summary>
-    public bool RoundWon => Battle >= RoundLength;
+    public bool RoundWon => Battle >= Length;
 
-    /// <summary>The team the battle is fought with: copies at level 50 of the three entered, whole, in the order they were entered.</summary>
-    public Party TeamForBattle(Party party) => FrontierRules.TeamFor(party, Slots);
+    /// <summary>
+    /// The team the battle is fought with: copies at level 50 of the three entered, whole, in the order they were entered;
+    /// in a tent copies at their own levels, or Slateport's three rentals.
+    /// </summary>
+    public Party TeamForBattle(Party party)
+    {
+        if (Tent == BattleTent.Slateport)
+        {
+            var team = new Party();
+            foreach (var rental in Rented) team.Add(FrontierRules.ForBattle(rental, FoeLevel));
+            return team;
+        }
+        return FrontierRules.TeamFor(party, Slots, Tent == null ? FrontierRules.Level : int.MaxValue);
+    }
 
     /// <summary>The trainer of the battle to come as a trainer of the battle, with their three as copies.</summary>
     public Trainer OpponentAsTrainer()
@@ -114,11 +226,17 @@ public sealed class BattleVenueChallenge
     }
 
     /// <summary>What the venue's rules hand the battle: the Palace's choosing by nature, or the Arena's three-turn bouts.</summary>
-    public FrontierConditions Conditions => Venue == AnnexVenue.Palace ? new FrontierConditions(Palace: true) : new FrontierConditions(TurnLimit: ArenaJudge.Turns);
+    public FrontierConditions Conditions => Tent == BattleTent.Slateport ? new FrontierConditions()
+        : Venue == AnnexVenue.Palace ? new FrontierConditions(Palace: true) : new FrontierConditions(TurnLimit: ArenaJudge.Turns);
 
-    /// <summary>The battle was won: the streak lengthens, and the next trainer is the one to come. True when it was the seventh.</summary>
+    /// <summary>The battle was won: the streak lengthens, and the next trainer is the one to come. True when it was the seventh (a tent's third).</summary>
     public bool Won(FrontierRecords records)
     {
+        if (Tent != null)
+        {
+            Battle++;
+            return RoundWon;
+        }
         var record = RecordOf(records, Venue);
         record.Streak = Math.Min(FrontierRecords.Most, record.Streak + 1);
         record.Best = Math.Max(record.Best, record.Streak);
@@ -132,6 +250,7 @@ public sealed class BattleVenueChallenge
     /// </summary>
     public void Finish(FrontierRecords records, bool won)
     {
+        if (Tent != null) return;
         var record = RecordOf(records, Venue);
         record.InProgress = false;
         if (!won)
@@ -143,5 +262,5 @@ public sealed class BattleVenueChallenge
     }
 
     /// <summary>The Battle Points a round won earns: the Dome's rule of ours, by the rounds won in a row before it.</summary>
-    public int PointsEarned => RoundWon ? BattleDomeChallenge.PointsFor(StreakBefore / RoundLength) : 0;
+    public int PointsEarned => RoundWon && Tent == null ?BattleDomeChallenge.PointsFor(StreakBefore / RoundLength) : 0;
 }

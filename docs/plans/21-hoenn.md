@@ -336,6 +336,22 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
     **Still left of H3**: the three Battle Tents' bouts (Slateport's on R18b's Factory rules with Emerald's level-30
     rentals; Verdanturf's and Fallarbor's wait for plan 14 · B9's Palace and Arena), Emerald's own slot machine and
     roulette, the Cycling Road's timed challenge, the move tutors, Birch's number on Route 110, the cracked floors (H12).
+  - **Part d, the Battle Tents** (done 2026-11-01, wave 58; rulings, "Hoenn's Battle Tents"): the three tents' corridors and
+    battle rooms opened (matrices 31, 32, 38, 39, 63, 64, in `RegionDatabase`'s Hoenn list) and played by scripts of ours on
+    Emerald's beats: the attendant's question, the three chosen (Verdanturf, Fallarbor) or six rentals offered in the
+    corridor (Slateport), the walk to the battle room, three trainers one after another on the Palace's, the Arena's or the
+    Factory's rules (`BattleVenueChallenge.BeginTent`, `venue tent|rent|trade|length`; plan 14 · B9's venues and R18b's
+    rental screen), a swap after each win in Slateport, going on or retiring between battles, and the prize (Nest Ball,
+    Hyper Potion, Full Heal). The player's three at their own levels, the trainers at the highest of them and never under
+    thirty as the region maps it; Slateport's at thirty. The lobbies' TM45 and TM41 givers. Tests (`--filter`, run):
+    `HoennBattleTentTests` (12). Harness: `hoenntents` mode (`Modes/HoennTents.cs`, not part of `all`): `ht01` to `ht09`
+    the three lobbies, corridors and battle rooms with a trainer of the round, `ht10_slateport_rentals`, and the Lilycove
+    Lady (`ht11`, H11 part c). **Birch's number**: registered in his lab once the PokéNav has Match Call (Emerald's
+    `EventScript_RegisterProfBirch`, `FLAG_ENABLE_PROF_BIRCH_MATCH_CALL`; the book's `prof_birch`, whose call rates the
+    Pokédex by `CAUGHT`); Emerald's own scene of him running up on Route 110 is not played. **Left**: Emerald's own tent
+    tables (ours draw the Frontier's), the REST between battles, a paused round, the tent rooms' own looks (their floors
+    and walls stand as a plain room: no cover rows of the tents' tileset yet); Emerald's own slot machine and roulette and
+    the Cycling Road's timed challenge, as above where no later part did them.
 - [x] H4 The desert, Mt. Chimney and Lavaridge (part a done 2026-10-20, wave 34: Route 111 to Meteor Falls; part b
   done 2026-10-20, wave 35: the cable car to Norman, its record below part a's)
   - **Played**: the Winstrates one after another at their door (Victor, Victoria, Vivi, Vicky; a family lost to part
@@ -1195,6 +1211,16 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
       painting drawn on the gallery's wall itself in place of the viewer (Emerald's metatile swap needs an alternate
       chunk each); the museum's first scene on the stairs (`ShowExhibitHall`); the PokéNav's condition page already shows
       the sheen the Pokéblock's feel raises.
+    - **Part c built** (2026-11-01, wave 58; rulings, "The Lilycove Lady"): Emerald's **Favor Lady** in Lilycove's Pokémon
+      Center (`Models/LilycoveLady.cs`, `lilycove_city_pokemon_center_1f.txt`, `favorlady which|give|new`, `chooseitem gift`):
+      her six kinds of thing with Emerald's lists and prizes, the one she wants most, the fifth of her kind or that one
+      earning the prize and a new favour, once a day (`FLAG_DAILY_HOENN_FAVOR_LADY`, where Emerald waits for a record mix);
+      she is every game's lady. Emerald's `src/` is read from the pinned commit through the cache's partial clone (`git
+      cat-file`), which part b took to be out of reach. Tests (`--filter`, run): `HoennLilycoveLadyTests` (7). Harness:
+      `ht11_lilycove_lady` of the `hoenntents` mode. **Still left**: the stage rooms (a backdrop, as above), the quiz lady
+      and the contest lady, the Pokéblock feeders (the Safari Zone's, its other session's), contests and the blender with
+      friends (plan 07), the contest's music, cheers, voices and per-move animations, the painting on the wall, the
+      museum's first scene.
 - [ ] H12 The Frontier island and the post-game (part a done 2026-10-26, wave 52: the Regis, the Sealed Chamber and Southern Island; `docs/mechanics/rulings.md`, "The Regis, the Sealed Chamber and Southern Island"; tests written and run with `--filter` (`HoennPostGameTests`), shots `h240` to `h268` written and not taken; part b done 2026-10-26, wave 56: the Battle Frontier island and the rooms of its grounds; part c done 2026-10-26, wave 57: Rayquaza on Sky Pillar cracked, Steven at Meteor Falls and Hoenn's species check)
     - **Built**: nine maps opened (matrices 193, 254, 256 to 259, 362, 363: Desert Ruins, Island Cave, the floor under Route
       134, the Sealed Chamber's corridor, outer room and inner room, Southern Island's beach and garden; the Ancient Tomb was

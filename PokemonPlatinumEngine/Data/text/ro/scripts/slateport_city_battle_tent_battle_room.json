@@ -1,0 +1,132 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitor"
+      ]
+    },
+    {
+      "en": [
+        "Battle {number} of three! Show us what your rentals can do."
+      ],
+      "text": [
+        "Lupta {number} din trei! Arată-ne ce pot Pokémonii închiriați."
+      ]
+    },
+    {
+      "en": [
+        "{foe} steps forward!"
+      ],
+      "text": [
+        "{foe} pășește în față!"
+      ]
+    },
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitor"
+      ]
+    },
+    {
+      "en": [
+        "Well fought! Your Pokémon have been made whole again."
+      ],
+      "text": [
+        "Bine luptat! Pokémonii tăi au fost refăcuți complet."
+      ]
+    },
+    {
+      "en": [
+        "Would you like to swap one of your Pokémon for one of theirs?",
+        "Yes",
+        "No"
+      ],
+      "text": [
+        "Vrei să schimbi unul dintre Pokémonii tăi cu unul de-al lor?",
+        "Da",
+        "Nu"
+      ]
+    },
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitor"
+      ]
+    },
+    {
+      "en": [
+        "Your swap is complete."
+      ],
+      "text": [
+        "Schimbul s-a încheiat."
+      ]
+    },
+    {
+      "en": [
+        "Are you ready for the next Trainer?",
+        "Go on",
+        "Retire"
+      ],
+      "text": [
+        "Ești gata pentru următorul Antrenor?",
+        "Continuă",
+        "Renunță"
+      ]
+    },
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitor"
+      ]
+    },
+    {
+      "en": [
+        "You'll retire? Very well. The challenge ends here."
+      ],
+      "text": [
+        "Renunți? Foarte bine. Provocarea se încheie aici."
+      ]
+    },
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitor"
+      ]
+    },
+    {
+      "en": [
+        "Three wins in a row! Congratulations! Please accept this prize."
+      ],
+      "text": [
+        "Trei victorii la rând! Felicitări! Te rog primește acest premiu."
+      ]
+    },
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitor"
+      ]
+    },
+    {
+      "en": [
+        "The challenge ends here. Please try again another time!"
+      ],
+      "text": [
+        "Provocarea se încheie aici. Mai încearcă altă dată!"
+      ]
+    }
+  ]
+}

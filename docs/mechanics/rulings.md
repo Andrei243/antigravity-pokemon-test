@@ -6256,6 +6256,61 @@ Emerald's `LilycoveCity_LilycoveMuseum_2F`, `SlateportCity_PokemonFanClub`, `Mos
   nothing to build them from honestly; the reader's chunks carry no such tile yet either. **The Lilycove Lady's contest**
   is the same (her rules are in source the import does not read); both are left.
 
+## The Lilycove Lady (2026-11-01, plan 21 · H11, part c)
+
+Emerald's `data/scripts/lilycove_lady.inc`, `src/lilycove_lady.c` and its tables `src/data/lilycove_lady.h`, read from the
+pinned commit (the cache's clone fetches a file of `src/` when it is asked for by `git cat-file`); the lines are our own.
+
+- **She is the Favor Lady in every game.** Emerald gives each save one of three ladies by its trainer number (the low half,
+  modulo six, halved: the quiz, the favour, the contest; `LilycoveLady.EmeraldLadyOf`), and only the favour is built: the
+  quiz is made of Emerald's easy-chat words (plan 08 · P9's phrases are another list), and the contest lady's own contest is
+  the record mix's. So every game meets her, rather than two games in three meeting a lady who only talks.
+- **Her favour and its rules are Emerald's** (`Models/LilycoveLady.cs`): six kinds of thing (slippery, roundish, whamish,
+  shiny, sticky, pointy) with Emerald's lists of what she takes for each, by our items' names, and each kind's prize (a Luxury
+  Ball, a Nugget, a Protein, a Heart Scale, a Rare Candy, PP Max). A favour and the one item she wants most in it are drawn on
+  the script's die the first time she is asked (`FavorLadyPickFavorAndBestItem`). She keeps whatever she is handed
+  (`chooseitem gift`: any item but a key item, a TM or an HM); a thing of her kind counts one, the one she wants most counts
+  the threshold at once, and the fifth (`LILYCOVE_LADY_GIFT_THRESHOLD`) earns the prize and a new favour drawn with the
+  count back at nought (`SetFavorLadyState_Complete`). What she remembers is the story's variables (`VAR_HOENN_FAVOR_LADY`,
+  `_BEST`, `_GIVEN`), so no save field or version was needed.
+- **She asks once a day.** Emerald's lady is ready again only after a record mix, which a game of one player never has, so
+  her count could never pass one but by the item she wants most. Here she is ready again the next day
+  (`FLAG_DAILY_HOENN_FAVOR_LADY`, cleared with the other daily flags), and thanks the player for the day's gift meanwhile.
+- **Not here**: the quiz lady and the contest lady (above), the name of the last player who gave her something (another
+  player's, by a record mix), and her Pokémon by the window (`lilycove_ladys_mon`, the contest lady's, which stays hidden).
+
+## Hoenn's Battle Tents (2026-11-01, plan 21 · H3's last part)
+
+Emerald's `VerdanturfTown_BattleTent*`, `FallarborTown_BattleTent*` and `SlateportCity_BattleTent*` (their lobbies,
+corridors and battle rooms) and `src/battle_tent.c` with `src/battle_tower.c`'s tent part; the lines are our own.
+
+- **A tent is a venue's round of three** (`BattleVenueChallenge.BeginTent`, `venue tent …`): Verdanturf's on the Battle
+  Palace's rules (plan 14 · B9: every Pokémon choosing by its nature), Fallarbor's on the Battle Arena's (no switching, a bout
+  judged after three turns), Slateport's on the Battle Factory's (three of six rentals, a swap after each win). Three
+  trainers (`TENT_STAGES_PER_CHALLENGE`), each with three Pokémon, met one after another; a loss or a retirement between
+  battles ends the round, three wins earn the tent's prize (Emerald's `sVerdanturfTentRewards` and its fellows: a Nest Ball,
+  a Hyper Potion, a Full Heal), given in the battle room before the walk back to the lobby.
+- **Levels**: the player's own three go in as copies at their own levels, made whole for every battle (the Frontier's frame,
+  nothing a battle does reaching them), and the trainers' at the highest level of the three entered, never under thirty
+  (Emerald's `SetTentPtrsGetLevel`: `GetHighestLevelInPlayerParty`, `TENT_MIN_LEVEL`), the thirty mapped by the region's
+  levels in a region crossed into (`IScriptHost.LevelHere`). Slateport's rentals and trainers are made at that thirty alone
+  (`FillFactoryTentTrainerParty`). Who may enter is the Frontier's rule (no Egg, none of the banlist, no two of a species or
+  holding the same item).
+- **Whose trainers**: Emerald's tents have tables of their own (`battle_tent.h`); ours draw from the Frontier's table
+  (`frontier.json`), the first row the Battle Tower's rooms use, and Slateport's rentals from the Factory's first row, as
+  every other venue built here does, so no new table was imported. A trainer of the round wears the look of their class.
+- **No board and no Battle Points**: a tent keeps no streak (`Won` counts the round only, `Finish` writes nothing, `points`
+  is nothing), and nothing is put down: Emerald's REST (save and quit between battles) is not offered, only going on or
+  retiring.
+- **The rooms**: Emerald hides the player in the battle room and walks a stand-in for them so the camera keeps still; here
+  the player walks in themselves and the stand-in is left out (the overlay's `heldBack`), and the opponent is a person of
+  ours named `opponent` (`FLAG_HOENN_TENT_OPPONENT`), as the Frontier's rooms find theirs. In Fallarbor's and Slateport's
+  rooms the trainer comes through the arena's north door from the row behind it (Emerald walks them through the wall from
+  the row above). Slateport's six are chosen in the corridor and a swap is offered in the battle room after each win, both
+  on the Factory's own screen (`venue rent`, `venue trade`), where Emerald goes back to the corridor between battles.
+- **The lobbies' gifts**: Verdanturf's girl gives TM45 (Attract, `FLAG_RECEIVED_TM_ATTRACT`) and Slateport's sailor TM41
+  (Torment, `FLAG_RECEIVED_TM_TORMENT`), once each, as Emerald's do.
+
 ## The Regis, the Sealed Chamber and Southern Island (2026-10-26, plan 21 · H12, part a)
 
 Emerald's post-game places that need no new facility, as ours: the three Regis' riddles and caves, the sea floor under

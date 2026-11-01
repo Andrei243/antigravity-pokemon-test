@@ -1,0 +1,140 @@
+{
+  "Attendant": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitor"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Verdanturf Battle Tent! Here, your Pokémon battle by their own judgement."
+      ],
+      "text": [
+        "Bun venit la Cortul de Luptă din Verdanturf! Aici Pokémonii tăi luptă după propria judecată."
+      ]
+    },
+    {
+      "en": [
+        "Would you like to take the Battle Tent challenge?",
+        "Enter",
+        "The rules",
+        "No"
+      ],
+      "text": [
+        "Vrei să încerci provocarea Cortului de Luptă?",
+        "Intră",
+        "Regulile",
+        "Nu"
+      ]
+    },
+    {
+      "en": [
+        "You need three Pokémon that can take part, all of different species and holding different items."
+      ],
+      "text": [
+        "Ai nevoie de trei Pokémoni care pot participa, toți de specii diferite și ținând obiecte diferite."
+      ]
+    },
+    {
+      "en": [
+        "An Egg can't take part, and nor can {banned}."
+      ],
+      "text": [
+        "Un Ou nu poate participa, și nici {banned}."
+      ]
+    },
+    {
+      "en": [
+        "Please choose the three Pokémon you'll enter."
+      ],
+      "text": [
+        "Te rog alege cei trei Pokémoni pe care îi înscrii."
+      ]
+    },
+    {
+      "en": [
+        "Thank you! Three Trainers are waiting for you. Please follow me."
+      ],
+      "text": [
+        "Mulțumesc! Trei Antrenori te așteaptă. Te rog urmează-mă."
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry. The three entered must all be of different species."
+      ],
+      "text": [
+        "Îmi pare rău. Cei trei înscriși trebuie să fie toți de specii diferite."
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry. No two of the three entered may hold the same item."
+      ],
+      "text": [
+        "Îmi pare rău. Doi dintre cei trei înscriși nu pot ține același obiect."
+      ]
+    },
+    {
+      "en": [
+        "Please come again. Your Pokémon are welcome to show us their hearts."
+      ],
+      "text": [
+        "Te mai așteptăm. Pokémonii tăi sunt bineveniți să ne arate ce au în suflet."
+      ]
+    },
+    {
+      "en": [
+        "You give no orders here. Each Pokémon picks its own moves, the way its nature leans."
+      ],
+      "text": [
+        "Aici nu dai ordine. Fiecare Pokémon își alege atacurile după cum îl îndeamnă natura."
+      ]
+    },
+    {
+      "en": [
+        "Your three keep their own levels, and they're made whole after every battle."
+      ],
+      "text": [
+        "Cei trei își păstrează nivelul și sunt refăcuți complet după fiecare luptă."
+      ]
+    },
+    {
+      "en": [
+        "Beat three Trainers in a row and a prize is yours. Lose once, and the challenge ends."
+      ],
+      "text": [
+        "Învinge trei Antrenori la rând și premiul e al tău. Pierzi o dată și provocarea se încheie."
+      ]
+    }
+  ],
+  "AttractGiver": [
+    {
+      "en": [
+        "Girl"
+      ],
+      "text": [
+        "Fată"
+      ]
+    },
+    {
+      "en": [
+        "A Pokémon's feelings can run deeper than any move. Here, I want you to have this."
+      ],
+      "text": [
+        "Sentimentele unui Pokémon pot fi mai adânci decât orice atac. Uite, vreau să ai asta."
+      ]
+    },
+    {
+      "en": [
+        "Attract can leave a foe too smitten to fight. Feelings go both ways, though!"
+      ],
+      "text": [
+        "Atracția poate lăsa un adversar prea îndrăgostit ca să lupte. Dar sentimentele sunt reciproce!"
+      ]
+    }
+  ]
+}

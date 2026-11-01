@@ -1,0 +1,63 @@
+# Verdanturf's Battle Tent (plan 21 · H3's last part). docs/scripts.md describes the language; the lines are our own, on the
+# beats of Emerald's (data/maps/VerdanturfTown_BattleTentLobby/scripts.inc): a round of three Trainers on the Battle Palace's
+# rules, every Pokémon choosing its moves by its nature, and a Nest Ball for the three won.
+#
+# The round is the Palace's venue in a tent (Models/Frontier/BattleVenue.cs, `venue tent verdanturf`): the three entered go
+# in as copies at their own levels, made whole for every battle, and the Trainers' are at the highest of them, never under
+# thirty as Hoenn's levels map it. The attendant walks the player through the corridor
+# (verdanturf_town_battle_tent_corridor.txt) to the battle room, whose arrival script is the round.
+
+
+script Attendant
+  face self player
+  speaker "Attendant"
+  say "Welcome to the Verdanturf Battle Tent! Here, your Pokémon battle by their own judgement."
+label Ask
+  choose "Would you like to take the Battle Tent challenge?" "Enter" "The rules" "No"
+  if result == 1 goto Rules
+  if result == 2 goto Later
+  venue enough
+  if result == 1 goto Choose
+  say "You need three Pokémon that can take part, all of different species and holding different items."
+  say "An Egg can't take part, and nor can {banned}."
+  end
+label Choose
+  say "Please choose the three Pokémon you'll enter."
+  venue choose
+  if result == 0 goto Later
+  venue check
+  if result == 1 goto SameSpecies
+  if result == 2 goto SameItem
+  venue tent verdanturf
+  say "Thank you! Three Trainers are waiting for you. Please follow me."
+  walk self up 3
+  fade out 0.6
+  warp "VerdanturfTown_BattleTentCorridor" 2 7 up
+  fade in
+  end
+label SameSpecies
+  say "I'm sorry. The three entered must all be of different species."
+  goto Later
+label SameItem
+  say "I'm sorry. No two of the three entered may hold the same item."
+label Later
+  say "Please come again. Your Pokémon are welcome to show us their hearts."
+  end
+label Rules
+  say "You give no orders here. Each Pokémon picks its own moves, the way its nature leans."
+  say "Your three keep their own levels, and they're made whole after every battle."
+  say "Beat three Trainers in a row and a prize is yours. Lose once, and the challenge ends."
+  goto Ask
+
+
+# The girl who hands out Attract (Emerald's AttractGiver, FLAG_RECEIVED_TM_ATTRACT, TM45)
+script AttractGiver
+  face self player
+  speaker "Girl"
+  if flag FLAG_RECEIVED_TM_ATTRACT goto Given
+  say "A Pokémon's feelings can run deeper than any move. Here, I want you to have this."
+  give "TM45"
+  setflag FLAG_RECEIVED_TM_ATTRACT
+label Given
+  say "Attract can leave a foe too smitten to fight. Feelings go both ways, though!"
+  end

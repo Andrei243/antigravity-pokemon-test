@@ -21,7 +21,7 @@ public partial class GameEngine
     /// <summary>The six on offer are opened for three to be chosen (<c>OpenBattleFactoryAppInitial</c>); the script waits.</summary>
     private void OpenFactoryRentals(int count)
     {
-        if (flow.Factory == null) return;
+        if (flow.Factory == null) { OpenTentRentals(count); return; }
         flow.ScriptAnswer = 0;
         flow.EnteredSlots = Array.Empty<int>();
         flow.FactoryScreen.OpenToRent(flow.Factory.Offer.Select(flow.Factory.Build).ToList(), count);
@@ -31,7 +31,7 @@ public partial class GameEngine
     /// <summary>A trade is offered after a battle won (<c>OpenBattleFactoryAppForTrade</c>): the three in hand and the beaten trainer's three.</summary>
     private void OpenFactoryTrade()
     {
-        if (flow.Factory == null) return;
+        if (flow.Factory == null) { OpenTentTrade(); return; }
         flow.ScriptAnswer = 0;
         flow.EnteredSlots = Array.Empty<int>();
         // The trainer just beaten is the one before the battle to come
@@ -51,6 +51,40 @@ public partial class GameEngine
         {
             flow.WantModel(rental.Species);
             Graphics.PokemonSprites.Request(rental.Species);
+        }
+    }
+
+/// <summary>
+    /// Slateport's Battle Tent (plan 21 · H3's last part): its six on offer opened on the Factory's own screen for three to
+    /// be rented. The round is the host's <c>Venue</c>, a tent's (<see cref="BattleVenueChallenge.Offer"/>).
+    /// </summary>
+    private void OpenTentRentals(int count)
+    {
+        if (flow.Venue is not { Tent: BattleTent.Slateport } tent || tent.Offer.Count == 0) return;
+        AskForPicturesOf(tent.Offer);
+        flow.ScriptAnswer = 0;
+        flow.EnteredSlots = Array.Empty<int>();
+        flow.FactoryScreen.OpenToRent(tent.Offer, count);
+        flow.State = GameState.FactoryRentals;
+    }
+
+    /// <summary>A trade after a win in Slateport's tent: the three rented and the beaten trainer's three.</summary>
+    private void OpenTentTrade()
+    {
+        if (flow.Venue is not { Tent: BattleTent.Slateport, Beaten: { } beaten } tent) return;
+        AskForPicturesOf(beaten.Pokemon);
+        flow.ScriptAnswer = 0;
+        flow.EnteredSlots = Array.Empty<int>();
+        flow.FactoryScreen.OpenToTrade(tent.Rented.ToList(), beaten.Pokemon.ToList(), beaten.Record.Name);
+        flow.State = GameState.FactoryRentals;
+    }
+
+    private void AskForPicturesOf(IEnumerable<Pokemon> pokemon)
+    {
+        foreach (var p in pokemon)
+        {
+            flow.WantModel(p.Species.Name);
+            Graphics.PokemonSprites.Request(p.Species.Name);
         }
     }
 

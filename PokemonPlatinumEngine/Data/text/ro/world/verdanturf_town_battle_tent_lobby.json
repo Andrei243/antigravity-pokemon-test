@@ -11,10 +11,10 @@
       },
       "dialog": {
         "en": [
-          "Welcome to the Battle Tent! Here, Pokémon choose their own moves. Our challenge isn't ready yet, I'm afraid."
+          "Welcome to the Battle Tent!"
         ],
         "text": [
-          "Bine ai venit la Cortul de Luptă! Aici, Pokémonii își aleg singuri mișcările. Din păcate, provocarea noastră nu e gata încă."
+          "Bun venit la Cortul de Luptă!"
         ]
       }
     },

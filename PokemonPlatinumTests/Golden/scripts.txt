@@ -14940,6 +14940,62 @@ way -
 from Old Man at 91,9 of Hoenn
 way -
   Old Man> Some shady characters in red were hanging around Professor Cozmo's house. He went off with them, you know.
+=== fallarbor_town_battle_tent_lobby.Attendant
+from Attendant at 6,5 of FallarborTown_BattleTentLobby
+way 0
+  Attendant> Welcome to the Fallarbor Battle Tent! Every bout here is fought to a finish, or to the judge's verdict.
+  Attendant> Would you like to take the Battle Tent challenge?
+  Attendant> You need three Pokémon that can take part, all of different species and holding different items.
+  Attendant> An Egg can't take part, and nor can certain rare Pokémon.
+  ? Would you like to take the Battle Tent challenge? = Enter
+  * frontier seen 150
+  * frontier seen 151
+  * frontier seen 249
+  * frontier seen 250
+  * frontier seen 251
+  * frontier seen 382
+  * frontier seen 383
+  * frontier seen 384
+  * frontier seen 385
+  * frontier seen 386
+  * frontier seen 483
+  * frontier seen 484
+  * frontier seen 487
+  * frontier seen 489
+  * frontier seen 490
+  * frontier seen 491
+  * frontier seen 492
+  * frontier seen 493
+way 2, from answer 1
+  Attendant> Please come again. The judges never tire of a good bout.
+  ? Would you like to take the Battle Tent challenge? = No
+way 1.0, from answer 1
+  Attendant> Your Pokémon fight one on one, and nobody switches out. If neither falls in three turns, the judge decides.
+  Attendant> The judge looks at how boldly each one fought, how well it aimed and how much HP it kept.
+  Attendant> Your three keep their own levels and are made whole after every battle. Win three in a row for a prize!
+  Attendant> Would you like to take the Battle Tent challenge?
+  Attendant> You need three Pokémon that can take part, all of different species and holding different items.
+  Attendant> An Egg can't take part, and nor can certain rare Pokémon.
+  ? Would you like to take the Battle Tent challenge? = The rules
+  ? Would you like to take the Battle Tent challenge? = Enter
+  * frontier seen 150
+  * frontier seen 151
+  * frontier seen 249
+  * frontier seen 250
+  * frontier seen 251
+  * frontier seen 382
+  * frontier seen 383
+  * frontier seen 384
+  * frontier seen 385
+  * frontier seen 386
+  * frontier seen 483
+  * frontier seen 484
+  * frontier seen 487
+  * frontier seen 489
+  * frontier seen 490
+  * frontier seen 491
+  * frontier seen 492
+  * frontier seen 493
 === fallarbor_town_cozmos_house.Cozmo
 from Prof. Cozmo at 6,4 of FallarborTown_CozmosHouse
 way -
@@ -18930,6 +18986,23 @@ way 0.1.1, from answer 3
 way 1, from answer 1
   Move Deleter> Come again if there are moves you'd like forgotten.
   ? Shall I make one of your Pokémon forget a move? = No
+=== lilycove_city_pokemon_center_1f.LilycoveLady
+from Lady at 1,3 of LilycoveCity_PokemonCenter_1F
+way 0
+  Lady> I'm the Favor Lady! Lilycove is full of lovely things, and I can never have enough of them.
+  Lady> Lately I can't stop thinking about shiny things. Isn't that silly?
+  Lady> Would you share something like that with me?
+  Lady> Oh, how kind! What will you give me?
+  Lady> Is that so? Well, goodbye, then.
+  ? Would you share something like that with me? = Yes
+  * open ChooseItem gift none
+  = VAR_HOENN_FAVOR_LADY 0 -> 4
+  = VAR_HOENN_FAVOR_LADY_BEST 0 -> 4
+way 1, from answer 1
+  Lady> Is that so? Well, goodbye, then.
+  ? Would you share something like that with me? = No
+  = VAR_HOENN_FAVOR_LADY 0 -> 4
+  = VAR_HOENN_FAVOR_LADY_BEST 0 -> 4
 === littleroot_town.GoSaveBirch
 from the trigger at 131,283 of Hoenn
 way -
@@ -26755,6 +26828,40 @@ from Gabby at 228,274 of Hoenn
 from Ty at 229,273 of Hoenn
 way -
   Gabby> Shh! We're rolling! The captain's telling us all about the sea floor.
+=== slateport_city_battle_tent_lobby.Attendant
+from Attendant at 6,5 of SlateportCity_BattleTentLobby
+way 0
+  Attendant> Welcome to the Slateport Battle Tent! Here you battle with Pokémon we lend you.
+  Attendant> Would you like to take the Battle Tent challenge?
+  Attendant> Thank you! Your rental Pokémon are ready. Please follow me.
+  ? Would you like to take the Battle Tent challenge? = Enter
+  * fade out
+  * warp SlateportCity_BattleTentCorridor 2 7
+  * fade in
+way 2, from answer 1
+  Attendant> Please come again. There's always a new rental waiting to surprise you.
+  ? Would you like to take the Battle Tent challenge? = No
+way 1.0, from answer 1
+  Attendant> You'll choose three of six rental Pokémon, and battle three Trainers in a row with them.
+  Attendant> After each win, you may swap one of yours for one of the Trainer you just beat.
+  Attendant> Your own Pokémon stay out of it. Win all three battles for a prize!
+  Attendant> Would you like to take the Battle Tent challenge?
+  Attendant> Thank you! Your rental Pokémon are ready. Please follow me.
+  ? Would you like to take the Battle Tent challenge? = The rules
+  ? Would you like to take the Battle Tent challenge? = Enter
+  * fade out
+  * warp SlateportCity_BattleTentCorridor 2 7
+  * fade in
+=== slateport_city_battle_tent_lobby.TormentGiver
+from Sailor at 1,5 of SlateportCity_BattleTentLobby
+way -
+  Sailor> Hey, you! Don't look so worried. I've got something for you.
+  > Lucas received the TM41!
+  > TM41 holds the move Torment.
+  > Lucas put it away in the TMs & HMs pocket.
+  Sailor> Torment keeps a foe from using the same move twice in a row. Drives them up the wall!
+  * fanfare FanfareTM
+  + FLAG_RECEIVED_TM_TORMENT
 === slateport_city_harbor.AquaEscape0
 from the trigger at 8,11 of SlateportCity_Harbor
 way -
@@ -29585,6 +29692,72 @@ way -
 from Girl at 129,142 of Hoenn
 way -
   Girl> There's a man digging a tunnel all the way from Rustboro, they say. Why would anyone do that?
+=== verdanturf_town_battle_tent_lobby.Attendant
+from Attendant at 6,5 of VerdanturfTown_BattleTentLobby
+way 0
+  Attendant> Welcome to the Verdanturf Battle Tent! Here, your Pokémon battle by their own judgement.
+  Attendant> Would you like to take the Battle Tent challenge?
+  Attendant> You need three Pokémon that can take part, all of different species and holding different items.
+  Attendant> An Egg can't take part, and nor can certain rare Pokémon.
+  ? Would you like to take the Battle Tent challenge? = Enter
+  * frontier seen 150
+  * frontier seen 151
+  * frontier seen 249
+  * frontier seen 250
+  * frontier seen 251
+  * frontier seen 382
+  * frontier seen 383
+  * frontier seen 384
+  * frontier seen 385
+  * frontier seen 386
+  * frontier seen 483
+  * frontier seen 484
+  * frontier seen 487
+  * frontier seen 489
+  * frontier seen 490
+  * frontier seen 491
+  * frontier seen 492
+  * frontier seen 493
+way 2, from answer 1
+  Attendant> Please come again. Your Pokémon are welcome to show us their hearts.
+  ? Would you like to take the Battle Tent challenge? = No
+way 1.0, from answer 1
+  Attendant> You give no orders here. Each Pokémon picks its own moves, the way its nature leans.
+  Attendant> Your three keep their own levels, and they're made whole after every battle.
+  Attendant> Beat three Trainers in a row and a prize is yours. Lose once, and the challenge ends.
+  Attendant> Would you like to take the Battle Tent challenge?
+  Attendant> You need three Pokémon that can take part, all of different species and holding different items.
+  Attendant> An Egg can't take part, and nor can certain rare Pokémon.
+  ? Would you like to take the Battle Tent challenge? = The rules
+  ? Would you like to take the Battle Tent challenge? = Enter
+  * frontier seen 150
+  * frontier seen 151
+  * frontier seen 249
+  * frontier seen 250
+  * frontier seen 251
+  * frontier seen 382
+  * frontier seen 383
+  * frontier seen 384
+  * frontier seen 385
+  * frontier seen 386
+  * frontier seen 483
+  * frontier seen 484
+  * frontier seen 487
+  * frontier seen 489
+  * frontier seen 490
+  * frontier seen 491
+  * frontier seen 492
+  * frontier seen 493
+=== verdanturf_town_battle_tent_lobby.AttractGiver
+from Girl at 0,5 of VerdanturfTown_BattleTentLobby
+way -
+  Girl> A Pokémon's feelings can run deeper than any move. Here, I want you to have this.
+  > Lucas received the TM45!
+  > TM45 holds the move Attract.
+  > Lucas put it away in the TMs & HMs pocket.
+  Girl> Attract can leave a foe too smitten to fight. Feelings go both ways, though!
+  * fanfare FanfareTM
+  + FLAG_RECEIVED_TM_ATTRACT
 === verdanturf_town_friendship_raters_house.FriendshipRater
 from Woman at 3,4 of VerdanturfTown_FriendshipRatersHouse
 way -
