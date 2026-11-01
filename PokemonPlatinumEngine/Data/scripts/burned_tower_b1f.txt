@@ -9,6 +9,8 @@
 #
 # The waking is plan 29's beat (style guide, "Legendary scenes"): the bars, the camera on the three and then to each in
 # turn as it flickers, two bursts for Raikou, one for Entei, sparkles for Suicune, and a shadow as each leaps away.
+# A shadow is lit in the middle of the sixteen tiles it crosses, so each is lit eight tiles on from the Pokémon the
+# way it goes: it sets off from the Pokémon and not from the far side of the room.
 
 
 script Awaken
@@ -27,25 +29,26 @@ script Awaken
   camera pan 14 14 0.5
   effect burst 14 14
   camera shake 0.4
-  wait 0.4
+  # A burst lit again on its own tile takes the place of the one still playing there: the second waits out the first
+  wait 0.6
   effect burst 14 14
   camera shake 0.4
   flicker d18r0102_tsure_poke_static_raikou 4
-  effect shadow 14 14 1.2 left
+  effect shadow 6 14 1.2 left
   hide d18r0102_tsure_poke_static_raikou
   wait 0.3
   camera pan 16 14 0.5
   effect burst 16 14
   camera shake 0.6
   flicker d18r0102_tsure_poke_static_entei 4
-  effect shadow 16 14 1.2 up
+  effect shadow 16 6 1.2 up
   hide d18r0102_tsure_poke_static_entei
   wait 0.3
   camera pan 15 16 0.5
   cry "Suicune"
   effect sparkles 15 16
   flicker d18r0102_tsure_poke_static_suicune 4
-  effect shadow 15 16 1.2 right
+  effect shadow 23 16 1.2 right
   hide d18r0102_tsure_poke_static_suicune
   setflag FLAG_HIDE_BURNED_TOWER_B1F_RAIKOU
   setflag FLAG_HIDE_BURNED_TOWER_B1F_ENTEI

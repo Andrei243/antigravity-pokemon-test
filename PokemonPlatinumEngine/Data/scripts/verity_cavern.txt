@@ -31,6 +31,8 @@ script Mesprit
   music stop
   face player mesprit
   letterbox on 0.4
+  # Met from below, it is behind the player's own head from the field's camera: a step back, facing it, shows it
+  if facing up walk player back down 1
   camera pan 12 13 1.2
   camera zoom 1.4 0.8
   effect sparkles 12 13
@@ -45,6 +47,7 @@ script Mesprit
   flicker mesprit 6
   hide mesprit
   setflag FLAG_HIDE_VERITY_CAVERN_MESPRIT
+  if facing up walk player up 1
   roamer start "Mesprit"
   say "Mesprit darted round {player} once, and flew off somewhere far away..."
   camera release 0.4

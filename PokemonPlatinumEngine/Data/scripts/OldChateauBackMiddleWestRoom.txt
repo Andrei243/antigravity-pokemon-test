@@ -33,6 +33,8 @@ label Inside
   music stop
   face player up
   letterbox on 0.4
+  # A step back, facing the set, so the player stands clear of its screen from the room's camera
+  walk player back down 1
   camera zoom 1.4 0.8
   text "{player} thumped the television!"
   sound "use_spark"
@@ -41,6 +43,7 @@ label Inside
   cry "Rotom"
   emote player exclaim
   text "Sparks race across the screen, and something made of crackling light comes spilling out of it!"
+  walk player up 1
   camera release 0.4
   letterbox off 0.3
   endscene

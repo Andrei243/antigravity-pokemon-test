@@ -30,6 +30,8 @@ script Azelf
   music stop
   face player azelf
   letterbox on 0.4
+  # Met from below, it is behind the player's own head from the field's camera: a step back, facing it, shows it
+  if facing up walk player back down 1
   camera pan 16 14 1.2
   camera zoom 1.4 0.8
   effect sparkles 16 14
@@ -39,6 +41,7 @@ script Azelf
   emote player exclaim
   speaker none
   say "Azelf darts once round {player} and stops dead before them, its eyes blazing with will!"
+  if facing up walk player up 1
   camera release 0.4
   letterbox off 0.3
   endscene

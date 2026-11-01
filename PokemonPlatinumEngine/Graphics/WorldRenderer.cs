@@ -999,8 +999,12 @@ public sealed partial class WorldRenderer
         // A cave ends at its rock and the Distortion World at its edge: the view stays inside them. The open country
         // shows a few tiles of forest past its edge
         float overscan = map.IsCave || map.IsVoid ? 0f : 4f;
+        // The cinema bars hide the picture's top and bottom: while they are in, the view may run past the map's
+        // edge by what they cover, or a Pokémon at the edge of a cave (Articuno on the Seafoam Islands' top row)
+        // stands under the bar (plan 29)
+        float barred = Camera.Bars / GameEngine.VirtualHeight * (nearOff - farOff);
         t.X = ClampOrCenter(t.X, -overscan + halfW, map.Width + overscan - halfW);
-        t.Z = ClampOrCenter(t.Z, -overscan - farOff, map.Height + overscan - nearOff);
+        t.Z = ClampOrCenter(t.Z, -overscan - farOff - barred, map.Height + overscan - nearOff + barred);
 
         // Scroll in whole texels of the pixel art, so textures and sprites don't shimmer as the view moves
         t.X = SnapToTexel(t.X);

@@ -231,6 +231,18 @@ partial class Harness
             case "read":
                 ReadToTheEnd(say);
                 return null;
+            case "next":
+            {
+                // One line of the text box on (finished first if it is still being written), and the scene goes on
+                // from there: a shot between two lines of one scene (plan 29's beats)
+                var box = game.Dialogue;
+                if (!box.IsActive) return "no line is on the screen";
+                if (!box.IsCurrentLineComplete) box.FinishLine();
+                say("  " + box.CurrentLine);
+                box.Advance();
+                Frames(1);
+                return null;
+            }
             case "wait":
                 Frames(Math.Max(1, (int)Math.Round(ShotScenario.SecondsOf(a[0])!.Value * 60.0)));
                 return null;

@@ -65,10 +65,12 @@ script Suicune
   effect sparkles 174 330
   face player up
   text "Suicune is looking this way!"
-  walk t24_tsure_poke_static_suicune onspot up 2 fast
+  # The sea is east of where it stands (the cliff of the town's upper ground is north of it): it turns and bounds
+  # off that way, its shadow out over the beach and the water, and the camera after it
+  walk t24_tsure_poke_static_suicune onspot right 2 fast
   sound "ledge"
-  effect shadow 174 329 1.5 up
-  camera path 174 326 174 322 5
+  effect shadow 182 330 1.5 right
+  camera path 178 330 182 330 5
   text "Suicune bounded off across the sea!"
   hide t24_tsure_poke_static_suicune
   setflag FLAG_HIDE_CIANWOOD_SUICUNE

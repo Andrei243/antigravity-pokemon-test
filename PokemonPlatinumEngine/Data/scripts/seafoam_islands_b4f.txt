@@ -23,6 +23,8 @@ script Articuno
   scene "Articuno at the Seafoam Islands"
   music stop
   letterbox on 0.4
+  # Met from below, it is behind the player's own head from the field's camera: a step back, facing it, shows it
+  if facing up walk player back down 1
   camera pan 9 2 1.2
   camera zoom 1.4 0.8
   effect sparkles 9 2
@@ -32,6 +34,7 @@ script Articuno
   camera shake 0.5
   emote player exclaim
   text "Kyaaah!\nThe air turned bitterly cold as the great bird spread its wings!"
+  if facing up walk player up 1
   camera release 0.4
   letterbox off 0.3
   endscene
