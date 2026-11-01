@@ -44,7 +44,8 @@ public class LegendaryScenesTests
             for (int n = 0; n < code.Count; n++)
             {
                 var lines = code[n].Then == null ? new[] { code[n] } : new[] { code[n], code[n].Then! };
-                foreach (var battle in lines.Where(i => i.Op == Op.WildBattle && IsLegend(i.Name)))
+                // A wild battle, or (plan 29 · LS11a) an Egg of a legendary or mythical handed over: Route 230's Manaphy
+                foreach (var battle in lines.Where(i => i.Op is Op.WildBattle or Op.GiveEgg && IsLegend(i.Name)))
                 {
                     int start = -1;
                     for (int k = n - 1; k >= 0; k--)
@@ -102,6 +103,15 @@ public class LegendaryScenesTests
             Assert.Contains(Roamers.PlaceOf(roamer), Roamers.KantoRoutes);
         }
     }
+
+    /// <summary>Plan 29 · LS11a: Sinnoh's event Pokémon each have a meeting of their own, held to the beat by the test below.</summary>
+    [Theory]
+    [InlineData("newmoon_island_forest.Darkrai Darkrai")]
+    [InlineData("flower_paradise.Shaymin Shaymin")]
+    [InlineData("hall_of_origin.Arceus Arceus")]
+    [InlineData("route_230.Ranger Manaphy")]
+    public void SinnohsEventPokemonAreMetAfterTheirBeat(string key) =>
+        Assert.Contains(Meetings(), m => m.Key == key && m.Staged);
 
     [Fact]
     public void EveryLegendaryBattleOfAPlaceHasItsBeat()

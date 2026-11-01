@@ -328,5 +328,23 @@
         "Umbra s-a închis peste Cyrus și s-a scufundat în podea. Acolo unde a coborât, piatra Coloanei Suliței a dispărut."
       ]
     }
+  ],
+  "AzureFlute": [
+    {
+      "en": [
+        "The Azure Flute is humming softly in {player}'s bag. Play it?"
+      ],
+      "text": [
+        "Fluierul Azuriu vibrează încet în rucsacul lui {player}. Cânți din el?"
+      ]
+    },
+    {
+      "en": [
+        "A stair of light rises from the pillar's steps, up and up into the sky!"
+      ],
+      "text": [
+        "Din treptele stâlpului se înalță o scară de lumină, tot mai sus, până în cer!"
+      ]
+    }
   ]
 }

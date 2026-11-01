@@ -109,6 +109,7 @@ public class RoomPlanTests
         new object[] { "Route221House", 1, 3, 4, 8 },
         new object[] { "CanalaveCitySoutheastHouse", 1, 3, 4, 8 },
         new object[] { "CanalaveCitySailorEldritchHouse", 1, 3, 4, 8 },
+        new object[] { "CanalaveHarborInn", 1, 3, 4, 8 },
         new object[] { "CanalaveCityWestHouse", 1, 3, 4, 8 },
         new object[] { "IronIslandHouse", 1, 3, 4, 8 },
         // Plan 01 · M11, part c: the rooms of the north and of the Battle Zone
@@ -698,6 +699,7 @@ public class RoomPlanTests
         new object[] { "CanalaveCitySoutheastHouse", "lass", 2, 4, Direction.Down },
         new object[] { "CanalaveCitySoutheastHouse", "ace_trainer_f", 8, 7, Direction.Down },
         new object[] { "CanalaveCitySailorEldritchHouse", "little_boy", 5, 5, Direction.Up },
+        new object[] { "CanalaveHarborInn", "innkeeper", 4, 7, Direction.Down },
         new object[] { "CanalaveCitySailorEldritchHouse", "pokefan_f", 8, 4, Direction.Up },
         // The Battle Factory's lobby, plan 06 · R18b (events_battle_factory)
         new object[] { "BattleFactory", "single_attendant", 21, 6, Direction.Down },

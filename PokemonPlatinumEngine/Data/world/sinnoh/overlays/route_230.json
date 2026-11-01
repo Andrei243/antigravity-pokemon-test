@@ -78,5 +78,11 @@
   },
   "signs": {
     "arrow_signpost": "Rt. 230\nWest: Fight Area"
-  }
+  },
+  // A Pokémon Ranger of ours on the shore with the Manaphy Egg she found in the sea (plan 29 · LS11a,
+  // scripts/route_230.txt), for a Champion who has read Mr. Backlot's book (FLAG_HIDE_ROUTE_230_RANGER, kept by the
+  // route's arrival)
+  "npcs": [
+    { "id": "ranger", "name": "Pokémon Ranger", "npcType": "ranger_f", "x": 681, "y": 433, "facing": "Right", "script": "Ranger", "hiddenBy": "FLAG_HIDE_ROUTE_230_RANGER" }
+  ]
 }

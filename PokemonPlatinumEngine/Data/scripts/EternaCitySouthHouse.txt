@@ -17,6 +17,8 @@
 script Oak
   face self player
   speaker "Prof. Oak"
+  if flag FLAG_RECEIVED_ETERNA_CITY_SOUTH_HOUSE_UPGRADE goto Letter
+label Birds
   if flag FLAG_CAUGHT_ROAMING_LEGENDARY_BIRDS goto Pokedex
   # EternaCitySouthHouse_CheckCaughtAllRoamingLegendaryBirds: 1 is a roamer caught (Roamers.Captured)
   if var VAR_ROAMING_MOLTRES_STATE != 1 goto NotAll
@@ -53,6 +55,24 @@ label Again
   end
 label Pokedex
   say "A Pokédex is never truly finished, {player}. That is the pleasure of it. Go on meeting Pokémon, and come and tell me of them."
+  end
+# Plan 29 · LS11a, ours in place of the original's event: once he has met the player here, Oak writes the Oak's
+# Letter that asks them to meet him at the white rock on Route 224 (FLAG_RECEIVED_OAKS_LETTER). The original's
+# Route224_OnTransition shows him and Marley there for whoever carries the letter; here giving it does that
+# (VAR_SHAYMIN_EVENT_STATE 1, and VAR_ROUTE_224_STATE 1 for Marley's walk up to the rock: route_224.txt)
+label Letter
+  if flag FLAG_RECEIVED_OAKS_LETTER goto Birds
+  if not nationaldex goto Birds
+  say "Ah, {player}! There is something I've been meaning to ask of you."
+  say "At the very end of Route 224 stands a great white rock. They say it is where people once gave thanks."
+  say "I should like to see it for myself. Here: a letter with the way written down. Meet me there, won't you?"
+  give "Oak's Letter"
+  setflag FLAG_RECEIVED_OAKS_LETTER
+  setvar VAR_SHAYMIN_EVENT_STATE 1
+  setvar VAR_ROUTE_224_STATE 1
+  clearflag FLAG_HIDE_ROUTE_224_PROF_OAK
+  clearflag FLAG_HIDE_ROUTE_224_MARLEY
+  say "Route 224 lies beyond Victory Road. I'll set off at once. Don't keep an old man waiting too long!"
   end
 
 script MoltresAgain

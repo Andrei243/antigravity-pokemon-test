@@ -37,7 +37,17 @@ label Tomorrow
   end
 
 
+# The girl among the flowers also gives a Gracidea, once, to whoever comes in with a Shaymin on the team
+# (FLAG_RECEIVED_FLOWER_SHOP_GRACIDEA; plan 29 · LS11a), as Platinum's does: the flower Shaymin takes to the sky with
 script Sprayduck
+  if flag FLAG_RECEIVED_FLOWER_SHOP_GRACIDEA goto Watering
+  if not has "Shaymin" goto Watering
+  say "Oh! That Pokémon with you... it's a Shaymin, isn't it? Every flower in the shop has turned to look at it!"
+  say "Please take this. It's a Gracidea, a flower people give to say thank you. Shaymin love them."
+  give "Gracidea"
+  setflag FLAG_RECEIVED_FLOWER_SHOP_GRACIDEA
+  end
+label Watering
   if flag FLAG_RECEIVED_FLOWER_SHOP_SPRAYDUCK goto Explain
   say "You're a Trainer, aren't you? Please, water your berries with this. It's a watering can called the Sprayduck."
   give "Sprayduck"

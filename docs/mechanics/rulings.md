@@ -1183,7 +1183,7 @@ Decision 06 · 7 leaves local wireless and the online play of the Underground ou
 
 Stark Mountain, Snowpoint Temple, Fullmoon and Newmoon Island, the Seabreak Path, Flower Paradise, the Battle Frontier's grounds and the Ribbon Syndicate's ground floor. The places are the original's, tile for tile; what follows is where this game does something else for now.
 
-- **The Seabreak Path is revealed by its variable alone.** The original's `MapMatrix_RevealSeabreakPath` writes four other chunks into Route 224's cells of the matrix while `VAR_HIDDEN_LOCATION_SEABREAK_PATH` holds 0x1028, and so does this game (`world.json`'s `swaps`, `Map.ApplySwappedPlaces`). Nothing sets the variable: the scene that does (Oak's Letter on Route 224) belongs to an event gift.
+- **The Seabreak Path is revealed by its variable alone.** The original's `MapMatrix_RevealSeabreakPath` writes four other chunks into Route 224's cells of the matrix while `VAR_HIDDEN_LOCATION_SEABREAK_PATH` holds 0x1028, and so does this game (`world.json`'s `swaps`, `Map.ApplySwappedPlaces`). The scene at Route 224's white rock sets it behind a fade (plan 29 · LS11a).
 - **Arriving on an island puts it on the maps**, as the original's `EnableHiddenLocation` does: `VAR_HIDDEN_LOCATION_FULL_MOON_ISLAND` takes 0x0208 and `VAR_HIDDEN_LOCATION_NEW_MOON_ISLAND` 0x0229. Nothing reads them until the Town Map (plan 01 · M12).
 - **The Ribbon Syndicate's door is kept inside**, as the original's is: the room's arrival script counts the team's ribbons, and whoever has fewer than ten is told so and put back on the tile before the door, facing south (the original's `Warp MAP_HEADER_RESORT_AREA, 824, 454, DIR_SOUTH`). A member finds the hostess one tile to the east. This supersedes the rows of "Ball Capsules, Seals and ribbons" that say the two scripts are started by nobody.
 - **Snowpoint Temple's doors stay shut** until the story opens them, where the original keeps them open behind its guard and her trigger (`VAR_SNOWPOINT_CITY_STATE` 0): the eighth chapter has them so, and nobody is in the temple before the Hall of Fame either way.
@@ -1195,7 +1195,7 @@ Stark Mountain, Snowpoint Temple, Fullmoon and Newmoon Island, the Seabreak Path
 | Regigigas | Stands in the temple's lowest floor and wakes for whoever brings Regirock, Regice and Registeel | In the area file under its flag; not on the map | Plan 02 · S15 |
 | Cresselia and the Lunar Wing, Darkrai, Shaymin | Each on its island or in its meadow, for the story or an event gift | In the area files under their flags; not on the maps. The Lunar Wing is held back | Plan 02 · S15b, the event gifts' session |
 | The ships to the islands | Canalave's sailor takes the player to Fullmoon Island during the sailor's son's nightmare, and the Harbor Inn's bed to Newmoon Island | The islands' own sailors sail back; nobody sails out | Plan 02 · S15b |
-| Newmoon Island's sailor | Away while the dream lasts (`FLAG_HIDE_NEWMOON_ISLAND_SAILOR`) | Always there | The event gifts' session |
+| Newmoon Island's sailor | Away while the dream lasts (`FLAG_HIDE_NEWMOON_ISLAND_SAILOR`) | Away from the inn's night until the island's wood has been come to | Done (plan 29 · LS11a) |
 | The Battle Frontier's five facilities | The Battle Tower, Factory, Hall, Castle and Arcade behind their doors | Buildings seen from outside; their fourteen ways in are shut | Plan 06 · R18 |
 | The Exchange Service Corner | Two booths trade Battle Points for prizes, a third sells scratch-off cards for them | The three attendants say they wait for the halls to open | Plan 06 · R18a |
 | The gate house to the Battle Frontier | A room with a receptionist | Walked through | Plan 01 · M11 |
@@ -1470,7 +1470,7 @@ The houses the areas of M7 still kept shut, on the original's plans, made as par
 | No room for a Pokémon at the counter | The attendant turns away whoever has a full team and full boxes | Not asked | A script can ask the boxes |
 | The game director's diplomas | He shows the diploma on the spot, for Sinnoh's Pokédex and for the National one | He knows a complete Pokédex of Sinnoh and sends the player to open the Pokédex, which hands its diplomas out itself (plan 03 · D10's ruling) | The ceremony moved to him, if it is wanted |
 | "The National Pokédex" in these rooms' scripts | Mr. Backlot's and his butler's second lines wait for it | `FLAG_GAME_COMPLETED` stands for it, as in part a's rooms | Plan 02 · S15 |
-| The Harbor Inn | Opens for the night Darkrai calls the player, given by a distribution of its own (the Member Card) | Its door in Canalave City stays shut, and its room is not built | Plan 02 · S15b, if the event is given |
+| The Harbor Inn | Opens for the night Darkrai calls the player, given by a distribution of its own (the Member Card) | Built on the original's plan, its door opened by the Member Card the sailor's boy gives | Done (plan 29 · LS11a) |
 | Sailor Eldritch at home, Byron in Iron Island's cabin | The sailor comes in once his son is woken with the Lunar Wing; Byron waits with a Metal Coat once the National Pokédex is had | Left out of the rooms; the boy and his mother say what they say before the nightmare, and the cabin is empty | Plan 02 · S15 and S15b |
 | The reporter in Canalave's west house | There while one of Jubilife TV's programmes wants an interview | Left out: the house is empty | Plan 08 |
 | Pal Park's viewing gallery | An upper level reached by an escalator, with four spectators | Roped off, as plan 06 · R16b left it | Plan 01 · M11, part d, with the escalators of the Pokémon Centers and the Department Store |
@@ -1623,7 +1623,7 @@ The houses the areas of M8 and M10 still kept shut, with Celestic Town's and Rou
 - **Route 227**: the rival and Crasher Wake stand at the foot of the road from the start, and are met by whoever steps onto either tile below them (`VAR_ROUTE_227_WAKE_RIVAL_STATE`); Crasher Wake walks off down the road and the rival runs after him for the Battle Frontier. Further up Buck steps down to whoever comes, asks them to look round Stark Mountain and asks again until the answer is yes (`VAR_ROUTE_227_BUCK_STATE` 1); he stays on the road until the mountain's first room is come into.
 - **The Survival Area's Buck and rival are hidden from the start** and shown by Stark Mountain's last scene (part b). Buck says the Battleground is his place and goes in at its door. The rival battles on Saturdays and Sundays, once a day (`FLAG_DAILY_DEFEATED_SURVIVAL_AREA_RIVAL`), with `rival_survival_area_1_*` and, once the team has entered the Hall of Fame twenty times, `rival_survival_area_2_*`; on other days he has one of three things to say.
 - **Marley waits in Victory Road's long back room.** Stepping into the column before her (rows 55 to 60) has her come up, ask to be taken through and follow as `marley_victory_road`; stepping back into the column before the way in sends her back to her place; the row at the room's far end has her thank the player and go on to the way out, which sets `FLAG_TRAVELED_WITH_MARLEY` (the Battle Tower's Battle Salon reads it). Spoken to on the way she has two things to say.
-- **Route 224's people come only with an event gift.** Professor Oak stands by the white rock only for a Champion with the National Pokédex who carries Oak's Letter with the Shaymin event on the save, and Marley's walk up to the rock waits for `VAR_ROUTE_224_STATE` 1, which only that gift's `VAR_SHAYMIN_EVENT_STATE` sets. Without the gift the rock is unmarked and nobody is there.
+- **Route 224's people come with Oak's Letter**, which since plan 29 · LS11a Professor Oak gives in Eterna City ("Sinnoh's event Pokémon, by ways of our own", below). Until then the rock is unmarked and nobody is there.
 - **Lucian reads on the library's first floor after every victory** (the Hall of Fame clears his flag each time): spoken to, he names one of five books by a roll of five, says he will see the player at the League and goes out by the door.
 - **Looker is back at the Game Corner once Charon is caught** at Stark Mountain, with other words (`FLAG_ARRESTED_CHARON_STARK_MOUNTAIN`).
 - **A new game hides** Palmer at the Fight Area, Buck and the rival in the Survival Area, Professor Oak and Marley on Route 224, Byron in Iron Island's cabin, and whoever Stark Mountain, the Battleground, Canalave's sailor's house and Rotom's room bring on later, with the Lunar Wing; everyone else of the Battle Zone's story stands there from the start.
@@ -1656,7 +1656,7 @@ The houses the areas of M8 and M10 still kept shut, with Celestic Town's and Rou
 | The professors' PC in a Pokémon Center | The same ratings from any PC (`PokedexRatings_CheckPC`), and `FLAG_SHOWN_COMPLETE_LOCAL_DEX`, which spares the professor his question | Not offered; he always asks | Plan 08 (the PC's other entries) |
 | The assistant's words for a full National Pokédex | `CheckNationalDexCompleted` | Not said | Nothing can fill it yet (plan 03 · D12, D13) |
 | The lab's two scientists | Each with other words once the Pokédex is upgraded | Not in the room | Plan 01 · M11, part d (the lab rebuilt to the original's plan) |
-| Route 224: Professor Oak, Marley, Shaymin, the name written on the rock | An event gift (Oak's Letter) | Nobody; the rock is unmarked | The event gifts (plan 08); plan 01 · M10, part b has the Seabreak Path's swap ready |
+| Route 224: Professor Oak, Marley, Shaymin, the name written on the rock | An event gift (Oak's Letter) | Oak's Letter from Oak in Eterna City; two words of thanks by the phrase picker | Done (plan 29 · LS11a) |
 | Rivals' and Leaders' words in battle | Spoken during the battle | Nothing | Plan 11 · C12 |
 | Later mechanics | (not in Platinum) | Flint and Volkner, the rival and Marley use none | Decision 06 · 2: after their own sessions (plan 06 · R20 to R23) |
 
@@ -1817,7 +1817,7 @@ The last rooms of Sinnoh that had none: the fifteen gate houses that were walked
 
 - **Heatran is written and waits for part c.** Its condition is the original's, and the flag it asks for is the Battleground's to set, a room that part c builds: until then Heatran's room is empty after the scene, as it is in Platinum before Buck has been visited. `StoryTests.AskedAheadOfTheirScenes` keeps `FLAG_TALKED_TO_BATTLEGROUND_BUCK` until that scene exists.
 - **The three Regis' rooms stay shut.** The Rock Peak Ruins (Route 228), the Iceberg Ruins (Mt. Coronet's northern hall) and the Iron Ruins (Iron Island's lowest floor) are each two ways on one tile, of which the original keeps one: an empty chamber for everyone, or the one whose statue answers, for whoever travels with a Regigigas "met in a fateful encounter" (an event's gift). Neither chamber is built here and all six ways stay `locked` in their overlays; so the three are had by trade or from another region, and a team that has them wakes Regigigas all the same. What would open them: the two maps each (plan 01), and a way to the gift Regigigas or a quest in its place (plan 03 · D12c).
-- **Newmoon Island, the Harbor Inn and Darkrai are left as they are.** The original opens the inn and sails to Newmoon Island only for a Champion who has woken the boy and carries the Member Card of an event. The inn's door stays `locked`, Canalave's sailor never offers the island, and its landing is the one place the walk of the whole game still sets out from on the story's word alone (`WorldWalk.StoryArrivals`). Shaymin's and Arceus's places are the same kind of gift (plan 03 · D12c; plan 08 for the gifts).
+- **Newmoon Island, the Harbor Inn and Darkrai** were left as they were here, and are plan 29 · LS11a's since 2026-11-01 ("Sinnoh's event Pokémon, by ways of our own", below): the boy, once woken, gives the Member Card himself.
 - **The Magma Stone and Looker's rock are things of the story's own.** The original draws them as a Strength boulder and a cracked rock that happen to do nothing; laid out as such here they would be pushed and smashed. Its two objects stay held back, and the story stands a `MagmaStone` and a `FalseRock` on their tiles behind their flags: things of the map that are in the way like a person and that no field move clears (style guide, "The Magma Stone").
 - **The temple's east door stays a door painted on the wall.** The guard stands before it for good, so nothing could ever walk into it, and a way nobody can come to fails the walk of the whole game.
 - **Where the picture would hide someone, they stand a tile aside.** From the field's steep camera whoever stands right behind the player is behind the player's own head, and the text box covers the lowest rows of the picture. So Looker, before the mountain's mouth, stands east of the tile the player is put down on (752, 233; the original's 751, 232 is north of it), and Buck comes back out to his own tile beside them, a step further than the original's; Mars steps back before her beaten line where the original has her speak first; and Candice comes eight tiles up Snowpoint's street where the original's seven leave her under the text box.
@@ -1963,7 +1963,7 @@ The map of the region as one set of data and one screen, for the Town Map out of
 **Left shut, with what would open each**
 
 - **Rotom's room** behind Team Galactic's building in Eterna City, with the five appliances and the professor (`FLAG_HIDE_ROTOMS_ROOM_PROF_ROWAN`, set for every game): the Secret Key of an event opens its wall. Rotom's forms exist and are had by `FormRules`; nothing changes one in play. Plan 03 · D12c for a way to the forms, plan 08 for the gift.
-- **The Hall of Origin**: the step before each pillar's way down waits for the Azure Flute of an event (`VAR_HALL_OF_ORIGIN_STATE`). Plan 03 · D12c.
+- **The Hall of Origin**: the step before each pillar's way down plays the Azure Flute (`VAR_HALL_OF_ORIGIN_STATE` 1), which Celestic Town's elder gives once Dialga, Palkia and Giratina are caught: plan 29 · LS11a ("Sinnoh's event Pokémon, by ways of our own", below).
 - **Maniac Tunnel**: the Ruin Maniac digs his cave on as more of Unown's forms are seen (ten for the long cave, twenty-six for the tunnel and the ruins' room beyond it), a count the Pokédex doesn't keep yet. Route 214's two further ways and Solaceon Town's stay `locked`; the gate man of Route 214 keeps his first line. Plan 08 · P19, which brings the forms seen, opens the three maps with it (Route 214's three ways on one tile are switched as Mt. Coronet's four are).
 
 **Stand-ins for what this game lacks**
@@ -2462,7 +2462,7 @@ The user's decision 4 (2026-10-12): a region holds every species of its own game
 | Cranidos or Shieldon by the trainer's number | The Underground digs one kind of fossil for an odd number and the other for an even one | The museum's collector gives one of each, once, with the National Pokédex |
 | Leafeon at the Moss Rock | Eterna Forest | Eterna Forest's overlay names the Moss Rock (it was missing) |
 | A second game in the console's species (the dual slots), the other regions' first partners, the older regions' legendaries | Migrated from the GBA games to Pal Park, or an event | Pal Park, where the original brought the GBA games' species over (the user kept it): its Catching Show brings six visitors from the species nothing else gives, by a fixed rotation by the date (`PalParkState.VisitorSpecies`: the pool in National order read as a ring, each day the next six, so one date always brings the same six and the whole pool comes round in turn; no chance decides who comes), at levels 47 to 55. Another day's six that still wait make way for today's whenever no show is under way (`PalParkState.Welcome`) |
-| Rotom's appliances, Shaymin's Sky Forme, the event legendaries' places | The Secret Key, the Gracidea, the Member Card, the Azure Flute, the Oak's Letter | Plan 03 · D12c; until then the legendaries come to Pal Park |
+| Rotom's appliances, Shaymin's Sky Forme, the event legendaries' places | The Secret Key, the Gracidea, the Member Card, the Azure Flute, the Oak's Letter | Rotom's appliances: plan 03 · D12c. The rest: plan 29 · LS11a ("Sinnoh's event Pokémon, by ways of our own") |
 | Unown's ! and ? | The room past Maniac Tunnel | Plan 08 · P19 |
 
 ## Mega Evolution and Primal Reversion (2026-10-17, plan 06 · R20)
@@ -5958,7 +5958,7 @@ Our own, off under Normal (`RunRules.Random` is null, `Randomizer.For` answers n
 - **An item** found, hidden or given (`find`, `give`; not `additem`, shops, fossils or prizes) goes to another of its pocket and about its price (a half to twice, widening until four are found; a price of nothing only to another of nothing; a TM to another TM, one at a time), among Platinum's own (`Id` up to 467), decided by the seed and the place: **the ball's or hidden item's own flag**, else the script and its line, so a ball is one item every time and another ball another. **Never swapped, in or out**: a key item, an HM, anything that can't be tossed, a Mega Stone or Z-Crystal, and every item a script takes, asks for or asks a Pokémon to hold (`ScriptLibrary.ItemsAsked`: the Coin Case, the Card Key, the Orbs, and Poké Balls and Oran Berries too, which one script or another asks for).
 - **Completable**: a Sinnoh Pokédex of other species can never be seen whole, so a run that randomises species counts it all seen once Sinnoh's Hall of Fame is entered (`Randomizer.SinnohSeen`, the professor's `SEEN`), which is what opens the National Pokédex there. The field moves need a Pokémon that can learn them, which a randomised party may lack: the options' Field helpers row (on unless turned off) lends a wild helper once the Badge and the HM are held, and the HMs are never swapped. The area page of the Pokédex shows where the species that stand for a species live (`Randomizer.Sources`, `Habitats.Of(sources)`).
 - **Shown**: the card's mark reads the preset and the seed (`ModernUi.RunMark`), the Trainer Card's Run page lists the three rows.
-- **Left**: abilities, moves and types are V7's; random evolutions (the plan's switch to loosen lines) are not built; trades, Eggs, fossils, the roamers and the story's fixed Pokémon stay, and a randomised Nuzlocke counts the species met.
+- **Left**: abilities, moves and types are V7's; random evolutions (the plan's switch to loosen lines) are not built; trades, bred Eggs, fossils, the roamers and the story's fixed Pokémon stay, and a randomised Nuzlocke counts the species met. An Egg a script hands over (`giveegg`: Cynthia's Togepi, Riley's Riolu, Route 230's Manaphy) is a gift and goes to its species' mapped one as `givepokemon` does, since plan 29 · LS11a.
 
 ### The randomiser: abilities, moves and types (plan 13 · V7)
 
@@ -7168,3 +7168,52 @@ The user's decision of 2026-10-31: build the room looks J2, J5 and J7 left. The 
   line each a step of 1.25 to 4 below the last (a flight read as cliffs) finds none.
 - *So*: no rule was written and no world file changed. The sage at 36, 30 stands on the switchback's head, which is
   the way down and no workaround: his standing aside for the Silver Wing stays.
+
+## Sinnoh's event Pokémon, by ways of our own (2026-11-01, plan 29 · LS11a)
+
+Platinum gave Darkrai, Shaymin, Arceus and the Manaphy Egg only by distributions of its own (the Member Card, Oak's
+Letter, the Azure Flute, a Manaphy Egg from another game). The user opened them on 2026-10-31 (plan 29, decision 1) and
+took the proposal's answers on 2026-11-01 (`docs/plans/decisions/LS11-proposals-event-legendaries.md`): Platinum's own
+event levels, the key items from people the post-game already has, the Hall of Origin as a map of its own, Manaphy as a
+Ranger's Egg, and the fallback effects (no new scene effect of LS10). The places, flags and variables are the
+original's; who hands the key item over, and when, is ours. Each meeting is plan 29's five beats.
+
+- **Darkrai**: Sailor Eldritch's boy, once woken (`FLAG_WOKE_UP_CANALAVE_CITY_SAILOR_ELDRITCH_HOUSE_LITTLE_BOY`), tells
+  of a dream of a dark island and gives the Member Card (`FLAG_RECEIVED_CANALAVE_CITY_SAILOR_ELDRITCH_HOUSE_MEMBER_CARD`,
+  ours), which opens the Harbor Inn's door (an overlay `openedBy`). The inn is the original's room
+  (`CanalaveHarborInn`, the same plan as the sailor's house, as the original builds both from one model); its innkeeper
+  stands at the door for everyone, where the original's is hidden until the card is held. A night there sets the player
+  down on Newmoon Island's pier, with the island's sailor away (`FLAG_HIDE_NEWMOON_ISLAND_SAILOR`) until the wood has
+  been come to (`FLAG_ENTERED_NEWMOON_ISLAND_FOREST`, ours): so whoever walks back out of the wood, Darkrai met or not,
+  can sail home. Darkrai stands in the wood's dry hollow at the original's tile and level (50); caught or beaten it is
+  gone for good (`FLAG_NEWMOON_ISLAND_DARKRAI_GONE`, ours), run from it is back the next time the wood is come to.
+  Canalave's sailor sails to Newmoon Island once it has been come to. The original's waking in the inn afterwards is
+  not played: the island's sailor sails the player back to the quay.
+- **Shaymin**: Professor Oak, in Eterna City after the Upgrade's visit and with the National Pokédex, gives Oak's Letter
+  (`FLAG_RECEIVED_OAKS_LETTER`, ours), which does what the original's `Route224_OnTransition` reads off the letter:
+  `VAR_SHAYMIN_EVENT_STATE` 1, Oak and Marley shown, and Marley's coordinate event armed (`VAR_ROUTE_224_STATE` 1). The
+  original's player writes a name on the white rock; here two words of thanks by the phrase picker (`phrase TABLET`),
+  which `{phrase:TABLET}` reads back from the rock afterwards. The Seabreak Path's chunks are laid behind a fade, and
+  Shaymin of the route is a guest of the scene only (its flag kept by the route's arrival). Flower Paradise's arrival
+  shows its Shaymin while `VAR_SHAYMIN_EVENT_STATE` is 2; Platinum's level, 30; caught or beaten, gone (3); run from, it
+  stays. The flower shop's girl in Floaroma Town gives the Gracidea once to whoever comes in with a Shaymin on the team
+  (`FLAG_RECEIVED_FLOWER_SHOP_GRACIDEA`), as Platinum's does.
+- **Arceus**: Celestic Town's elder, after her book, reads one page more to whoever has caught Dialga, Palkia and
+  Giratina (`FLAG_CAUGHT_*`) and gives the Azure Flute (`FLAG_RECEIVED_AZURE_FLUTE`, ours; `VAR_HALL_OF_ORIGIN_STATE`
+  1). The step before the way down of all three summits (the original's trigger at 31, 52) plays it
+  (`the summits' AzureFlute`): beams lit one after another up the pillar's steps stand in for the stair of light, then the
+  Hall of Origin, the original's matrix 241 (`HallOfOrigin`, imported as every map; Spear Pillar's song and its cave
+  stage stand in for its own). The wide step across the hall (the original's trigger) is the meeting; Platinum's level,
+  80. Whatever its end but a loss the state is 2 and Arceus is off its dais; caught it is gone for good
+  (`FLAG_CAUGHT_ARCEUS`, ours), beaten or run from it is back once the Hall of Fame is next entered
+  (`PokemonLeagueHallOfFame.Victory`). The hall's way down leads back into Mt. Coronet, as the original's does.
+- **Manaphy and Phione**: a Pokémon Ranger of ours on Route 230's shore by the Fight Area, for a Champion who has read
+  Mr. Backlot's book (`FLAG_SKIP_POKEMON_MANSION_OFFICE_BOOK_SEEN_MANAPHY_CHECK`), hands over a Manaphy Egg
+  (`FLAG_RECEIVED_ROUTE_230_MANAPHY_EGG`), and leaves. A Manaphy bred with a Ditto lays a Phione's Egg, as Platinum's
+  does (`Breeding.EggSpecies`; `SpeciesSources` counts it).
+- **Under a run**: an Egg a script hands over is a gift, and a randomised run hands over the species it maps to (the
+  rule `givepokemon` had; it also moves Cynthia's Togepi Egg and Riley's Riolu Egg, which no run had swapped). The
+  Nuzlocke's gifts clause is `GivePokemon`'s alone, so an Egg spends no place, as the Togepi and Riolu Eggs never have;
+  Darkrai, Shaymin and Arceus are static meetings, the places' one chance under the clause as every legendary's is.
+- **Off Pal Park's list**: the five leave `SinnohSpeciesTests.OnlyInPalPark`, which shrinks the Catching Show's pool by
+  five; Shaymin's Sky Forme leaves `FormsAwaiting`. The Pokédex's area page has a row of `special.json` for each.

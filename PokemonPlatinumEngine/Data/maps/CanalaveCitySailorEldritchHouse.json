@@ -133,6 +133,7 @@
         "He's the bravest man there is. Even the sea doesn't scare him!",
         "A Gym Leader would be good too, though. Byron's amazing!"
       ],
+      "script": "LittleBoy",
       "hiddenBy": "FLAG_CANALAVE_CITY_SAILOR_ELDRITCH_HOUSE_LITTLE_BOY_IN_BED",
       "movement": "wander_west_and_east",
       "rangeX": 3,

@@ -269,12 +269,24 @@ label IronIsland
   warp "Sinnoh" 100 502 right
   end
 label Where
+  if flag FLAG_FIRST_ARRIVAL_NEWMOON_ISLAND goto WhereAll
   choose "Where shall I take you?" "Iron Island" "Fullmoon Island" "Nowhere today"
   if result == 0 goto IronIsland
   if result == 2 goto Stay
+label Fullmoon
   say "Fullmoon Island it is. Anchors aweigh!"
   sound "stairs"
   warp "Sinnoh" 39 277 left
+  end
+# Plan 29 · LS11a: once the Harbor Inn's dream has shown the player Newmoon Island, he sails there too
+label WhereAll
+  choose "Where shall I take you?" "Iron Island" "Fullmoon Island" "Newmoon Island" "Nowhere today"
+  if result == 0 goto IronIsland
+  if result == 1 goto Fullmoon
+  if result == 3 goto Stay
+  say "Newmoon Island? There's a chill about that place... but if you're sure. Anchors aweigh!"
+  sound "stairs"
+  warp "Sinnoh" 152 277 down
   end
 label Stay
   say "No hurry. The boat's here whenever you want it."

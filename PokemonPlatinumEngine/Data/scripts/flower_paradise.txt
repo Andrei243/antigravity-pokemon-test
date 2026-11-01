@@ -1,9 +1,41 @@
-# Flower Paradise (plan 01 · M10, part b). docs/scripts.md describes the language (scripts_flower_paradise.s).
+# Flower Paradise (plan 01 · M10, part b; Shaymin plan 29 · LS11a). docs/scripts.md describes the language; the lines
+# are our own, on the original's beats (scripts_flower_paradise.s).
 #
-# Arriving sets what the original's does for the place itself. Shaymin, which the original's arrival shows only to
-# whoever carries Oak's Letter and has the National Pokédex (FLAG_HIDE_FLOWER_PARADISE_SHAYMIN), is one of its event
-# gifts: the session that brings them places it and writes its battle.
+# Arriving sets what the original's does for the place itself, and decides whether Shaymin is there: from the moment
+# it ran up the Seabreak Path from Route 224's white rock (VAR_SHAYMIN_EVENT_STATE 2, route_224.txt) until it is caught
+# or beaten (3); run from, it stays. Platinum's own level, 30. Its meeting is plan 29's beat by the row of grass and
+# woods: the bars, the camera on it, sparkles among the flowers and the camera following it as it turns about, its
+# cry and a line, then the battle's own way in (plan 09 · L14's Mythical).
 
 script OnEnter
   setflag FLAG_FIRST_ARRIVAL_FLOWER_PARADISE
+  setflag FLAG_HIDE_FLOWER_PARADISE_SHAYMIN
+  if var VAR_SHAYMIN_EVENT_STATE == 2 clearflag FLAG_HIDE_FLOWER_PARADISE_SHAYMIN
+  end
+
+
+# FlowerParadise_Shaymin
+script Shaymin
+  scene "Shaymin in Flower Paradise"
+  music stop
+  face player shaymin
+  letterbox on 0.4
+  camera pan 911 203 1.2
+  camera zoom 1.4 0.8
+  effect sparkles 911 203
+  camera follow shaymin 0.6
+  walk shaymin onspot left 1 onspot right 1 onspot down 1
+  cry "Shaymin"
+  speaker none
+  text "Shaymin pops up out of the flowers with its petals all a-quiver. It seems to want to play!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Shaymin" 30
+  if result == 2 goto Fled
+  setvar VAR_SHAYMIN_EVENT_STATE 3
+  hide shaymin
+  setflag FLAG_HIDE_FLOWER_PARADISE_SHAYMIN
+label Fled
+  music area
   end

@@ -1,0 +1,20 @@
+{
+  "Darkrai": [
+    {
+      "en": [
+        "A shadow stands in the dry hollow. Something in it is looking straight at {player}."
+      ],
+      "text": [
+        "O umbră stă în scobitura uscată. Ceva din ea se uită drept la {player}."
+      ]
+    },
+    {
+      "en": [
+        "The shadow is gone. The hollow is only a hollow now."
+      ],
+      "text": [
+        "Umbra a dispărut. Scobitura e acum doar o scobitură."
+      ]
+    }
+  ]
+}

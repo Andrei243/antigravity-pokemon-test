@@ -46,4 +46,19 @@ label Research
   say "\"Carry the Adamant Orb, bright as the day it was made, up to the Spear Pillar, and Dialga will come to it: the Pokémon that keeps watch over time.\""
   say "\"Carry the Lustrous Orb there in the same way, and Palkia will come: the Pokémon that holds all of space together.\""
   say "So it seems the people of long ago met them both: Dialga and Palkia, the Pokémon of time and of space."
+  # Plan 29 · LS11a, ours in place of the original's event: to whoever has caught Dialga, Palkia and Giratina all
+  # three, she reads the book's last page and gives the Azure Flute (FLAG_RECEIVED_AZURE_FLUTE), which calls the
+  # stair of light from the top of Spear Pillar's steps (VAR_HALL_OF_ORIGIN_STATE 1: the summits' AzureFlute,
+  # hall_of_origin.txt)
+  if flag FLAG_RECEIVED_AZURE_FLUTE end
+  if not flag FLAG_CAUGHT_DIALGA end
+  if not flag FLAG_CAUGHT_PALKIA end
+  if not flag FLAG_CAUGHT_GIRATINA end
+  say "...Wait. There is one page more, stuck to the back cover. I never noticed it."
+  say "\"Whoever has met all three it made may play the flute of the sky's own blue, and climb to where everything began.\""
+  say "You have met them, haven't you? Time, space and the world behind. Then I think this was waiting for you."
+  give "Azure Flute"
+  setflag FLAG_RECEIVED_AZURE_FLUTE
+  setvar VAR_HALL_OF_ORIGIN_STATE 1
+  say "The book says to play it at the top of Spear Pillar's steps. Go carefully, and tell me what you find."
   end

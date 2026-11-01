@@ -70,6 +70,7 @@ public class EastInteriorTests
         new object[] { "route_221", 0, "Route221House", 4, 8 },
         new object[] { "canalave_city", 4, "CanalaveCitySoutheastHouse", 4, 8 },
         new object[] { "canalave_city", 6, "CanalaveCitySailorEldritchHouse", 4, 8 },
+        new object[] { "canalave_city", 5, "CanalaveHarborInn", 4, 8 },
         new object[] { "canalave_city", 10, "CanalaveCityWestHouse", 4, 8 },
         new object[] { "iron_island", 0, "IronIslandHouse", 4, 8 },
     };
@@ -110,19 +111,18 @@ public class EastInteriorTests
     public void WhatIsStillShutInTheseAreasIsSomeoneElses()
     {
         // Part d built Veilstone's Department Store, the Move Relearner's house in Pastoria, the Move Deleter's in
-        // Canalave and the two tutors' on Routes 210 and 212 (FinalInteriorTests). Canalave's Harbor Inn waits for the
-        // night Darkrai calls (plan 02 · S15b); the Iron Ruins are the story's; Lake Valor's two are warps the original
-        // leaves on its shore that no way leads to
-        Assert.Equal(new[] { 5 }, Sinnoh.Overlay("canalave_city")!.Locked);
-        foreach (string area in new[] { "veilstone_city", "pastoria_city", "route_210_north", "route_212_south" })
+        // Canalave and the two tutors' on Routes 210 and 212 (FinalInteriorTests), and plan 29 · LS11a Canalave's Harbor
+        // Inn, behind the Member Card; the Iron Ruins are the story's; Lake Valor's two are warps the original leaves on
+        // its shore that no way leads to
+        foreach (string area in new[] { "canalave_city", "veilstone_city", "pastoria_city", "route_210_north", "route_212_south" })
             Assert.True(Sinnoh.Overlay(area)!.Locked is not { Count: > 0 }, $"{area} still has a door shut");
         Assert.Equal(new[] { 2, 3 }, Sinnoh.Overlay("iron_island_b3f")!.Locked);
         Assert.Equal(new[] { 0, 2 }, Sinnoh.Overlay("lake_valor")!.Locked);
         foreach (string area in new[] { "route_210_south", "valor_lakefront", "route_213", "route_212_north", "route_221", "iron_island", "great_marsh_6", "trophy_garden" })
             Assert.True(Sinnoh.Overlay(area)!.Locked is not { Count: > 0 }, $"{area} still has a door shut");
-        // The rooms left shut are not built by this part either
-        foreach (string left in new[] { "CanalaveCityHarborInn" })
-            Assert.False(File.Exists(GameDataFiles.PathOf(Path.Combine(MapDatabase.Folder, left + ".json"))), left);
+        // The Harbor Inn, the last room of this part's areas left shut, opens with the Member Card (plan 29 · LS11a)
+        Assert.Equal("FLAG_RECEIVED_CANALAVE_CITY_SAILOR_ELDRITCH_HOUSE_MEMBER_CARD",
+            Assert.Single(Sinnoh.Overlay("canalave_city")!.Doors!, d => d.Warp == 5).OpenedBy);
     }
 
     [Fact]

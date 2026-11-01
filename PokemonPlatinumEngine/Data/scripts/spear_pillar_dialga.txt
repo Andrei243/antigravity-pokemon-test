@@ -9,8 +9,8 @@
 # rift again once the Hall of Fame has next been entered (PokemonLeagueHallOfFame.txt puts the state back to 0). Caught,
 # it is gone for good (FLAG_CAUGHT_DIALGA).
 #
-# The Hall of Origin's step before the way down (VAR_HALL_OF_ORIGIN_STATE 1, for whoever carries the Azure Flute of an
-# event) is left dead: plan 03 · D12c. Its meeting is plan 29's beat (style guide, "Legendary scenes"): the bars, the
+# The Hall of Origin's step before the way down (VAR_HALL_OF_ORIGIN_STATE 1, for whoever carries the Azure Flute) plays
+# the flute: the summits' AzureFlute (plan 29 · LS11a). The rift's meeting is plan 29's beat (style guide, "Legendary scenes"): the bars, the
 # camera up to the rift held open over a ripple under slow motion, the cry, a line, and then the battle's own way in
 # (plan 09 · L14's Legendary).
 
@@ -47,4 +47,38 @@ script Rift
   end
 label Quiet
   text "Time itself seems to pour out of the rift, more of it than anyone could stand in for long." "Where does it lead?"
+  end
+
+
+# The Azure Flute played on the top step (plan 29 · LS11a): the original's trigger before the way down, at 31, 52 of
+# each of the summit's three maps, while VAR_HALL_OF_ORIGIN_STATE is 1, which Celestic Town's elder sets as she gives
+# the flute. Coming up from the mountain is stepping onto it, so the question is asked as the summit is come to. Yes is
+# a stair of light up the pillar's steps (beams lit one after another up the way; ours, with LS10's own stair still to
+# come) and the climb to the Hall of Origin (hall_of_origin.txt). The three summits' files each hold this script.
+script AzureFlute
+  speaker none
+  ask "The Azure Flute is humming softly in {player}'s bag. Play it?"
+  if no end
+  scene "The stair of light"
+  music stop
+  face player up
+  letterbox on 0.4
+  sound "use_grass_whistle"
+  wait 0.8
+  camera path 31 48 31 42 2
+  effect beam 31 50
+  wait 0.3
+  effect beam 31 48
+  wait 0.3
+  effect beam 31 46
+  wait 0.3
+  effect beam 31 44
+  wait 0.6
+  text "A stair of light rises from the pillar's steps, up and up into the sky!"
+  fade out 0.6
+  camera release 0.1
+  letterbox off 0.1
+  warp "HallOfOrigin" 31 52 up
+  fade in
+  endscene
   end

@@ -173,6 +173,9 @@
     // Hall of Fame, with Dialga's rift or Palkia's over the altar (matrices of their own in the original)
     { "name": "SpearPillarDialga", "matrix": 280, "area": "spear_pillar_dialga" },
     { "name": "SpearPillarPalkia", "matrix": 281, "area": "spear_pillar_palkia" },
+    // Plan 29 · LS11a: the Hall of Origin, up the stair of light the Azure Flute calls from Spear Pillar's top step
+    // (the original's matrix 241)
+    { "name": "HallOfOrigin", "matrix": 241, "area": "hall_of_origin" },
   ],
   "areas": [
     "twinleaf_town",
@@ -373,5 +376,7 @@
     // Plan 02 · S15, part c
     "spear_pillar_dialga",
     "spear_pillar_palkia",
+    // Plan 29 · LS11a
+    "hall_of_origin",
   ]
 }

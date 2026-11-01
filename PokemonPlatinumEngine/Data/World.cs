@@ -2453,6 +2453,10 @@ public static class WorldMapBuilder
         "heatran" => "Heatran",
         "regigigas" => "Regigigas",
         "cresselia" => "Cresselia",
+        // Plan 29 · LS11a: the event Pokémon of Platinum's Sinnoh
+        "darkrai" => "Darkrai",
+        "shaymin" => "Shaymin",
+        "arceus" => "Arceus",
         // Plan 21 · H2, part b: Mr. Briney's Peeko, the Pokémon of Rustboro's flats, and Walda's dolls (stood as the
         // Pokémon they are made after, small as they are: a doll has no look of its own yet)
         "wingull" => "Wingull",

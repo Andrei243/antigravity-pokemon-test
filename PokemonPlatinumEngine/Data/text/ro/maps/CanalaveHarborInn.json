@@ -1,0 +1,23 @@
+{
+  "displayName": {
+    "en": [
+      "Canalave City"
+    ],
+    "text": [
+      "Orașul Canalave"
+    ]
+  },
+  "people": {
+    "innkeeper": {
+      "name": {
+        "en": [
+          "Innkeeper"
+        ],
+        "text": [
+          "Hangiul"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

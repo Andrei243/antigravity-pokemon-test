@@ -191,3 +191,18 @@ Every session: `tools/ContentCheck` first, then the filtered tests of what it to
 ### LS11 (added with decision 1): the event legendaries
 Open each event-only species named in decision 1 by a post-game condition of our own (a region's Hall of Fame plus a place-specific step), with a staged scene by the five-beat recipe and the unchanged wildbattle; one proposal per region for the user's approval first. Tests: LegendaryScenesTests covers them.
 The proposals, all four regions with their questions, are [decisions/LS11-proposals-event-legendaries.md](decisions/LS11-proposals-event-legendaries.md) (2026-11-01, waiting for the user's answers).
+
+- [x] LS11a Sinnoh (2026-11-01, the user's answers 1 to 4, 6 and 11 as recommended: Platinum's levels, the key items
+  from the sailor's boy, Oak and the elder, the Hall of Origin a new map, Manaphy a Ranger's Egg, all three caught for
+  the flute, the fallback effects). Darkrai: the boy's Member Card, the Harbor Inn built on the original's plan
+  (`CanalaveHarborInn`, behind an `openedBy`), its night to Newmoon Island's pier, Darkrai in the wood's hollow (rift,
+  ripple, slow motion, `flicker`), Canalave's sailor sailing there afterwards; `WorldWalk.StoryArrivals` is empty.
+  Shaymin: Oak's Letter in Eterna City, Marley's walk up and Oak at the white rock, the thanks as `phrase TABLET`, the
+  Seabreak Path laid behind a fade, Shaymin shown with sparkles and followed up the path, its battle in Flower Paradise
+  (sparkles, followed as it turns), the Gracidea from Floaroma's flower shop. Arceus: the Azure Flute from the elder,
+  `the summits' AzureFlute` on the three summits' top step (beams up the steps for the stair), the Hall of Origin imported from
+  matrix 241, Arceus's beat (burst, ripple, slow motion, a shake) on the hall's wide step, back with the Hall of Fame
+  unless caught. Manaphy: a Ranger of ours on Route 230's shore with the Egg (sparkles and a ripple on the water, no
+  cry); `LegendaryScenesTests` holds a mythical `giveegg` to the beat; `giveegg` asks the randomiser as `givepokemon`
+  does. Phione: `SpeciesSources` counts Manaphy's Egg. Off `OnlyInPalPark`: the five; off `FormsAwaiting`: Shaymin-Sky.
+  `EventLegendariesSinnohTests` plays each through. Rulings: "Sinnoh's event Pokémon, by ways of our own".

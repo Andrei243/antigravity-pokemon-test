@@ -1,0 +1,41 @@
+# The Harbor Inn in Canalave City (plan 29 · LS11a), on the original's plan: the same room as Sailor Eldritch's house,
+# as the original builds both from one model. docs/scripts.md describes the language; the lines are our own, on the
+# original's beats (scripts_canalave_city_harbor_inn.s).
+#
+# The door is shut until the sailor's boy gives the Member Card (canalave_city's overlay opens it on
+# FLAG_RECEIVED_CANALAVE_CITY_SAILOR_ELDRITCH_HOUSE_MEMBER_CARD). The innkeeper keeps one room for whoever carries the
+# card: a night there is the dream that sets the player down on Newmoon Island's pier, with the island's sailor away
+# until the island's wood has been come to (FLAG_HIDE_NEWMOON_ISLAND_SAILOR, cleared by newmoon_island.txt once
+# FLAG_ENTERED_NEWMOON_ISLAND_FOREST, ours, is set). Ours: the original's card came by an event of its own, and its
+# innkeeper is hidden until it is held; here he stands at the door for everyone.
+
+
+# Whoever a night here sent off is put back at the door
+script OnEnter
+  place innkeeper 4 7 down
+  end
+
+
+script Innkeeper
+  face self player
+  if item "Member Card" goto Member
+  say "Welcome to the Harbor Inn. I'm afraid every room is taken tonight."
+  say "We do keep one room aside, but only for members. Without a card, I can't let it."
+  end
+label Member
+  say "Ah, a Member Card! Then the room by the window is yours, for as long as you like."
+  ask "Will you stay the night?"
+  if no goto Later
+  scene "A night at the Harbor Inn"
+  say "Right this way. Sleep well... and mind your dreams."
+  fade out
+  speaker none
+  text "{player} lay down and drifted off to the sound of the sea..."
+  setflag FLAG_HIDE_NEWMOON_ISLAND_SAILOR
+  clearflag FLAG_ENTERED_NEWMOON_ISLAND_FOREST
+  warp "Sinnoh" 152 277 down
+  endscene
+  end
+label Later
+  say "Whenever you're ready. The room will keep."
+  end

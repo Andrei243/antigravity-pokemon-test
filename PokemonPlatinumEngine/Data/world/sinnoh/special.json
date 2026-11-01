@@ -18,6 +18,13 @@
     { "key": "old_chateau_rotom", "name": "Old Chateau", "cells": "6,18 8,16", "special": [ "Rotom" ], "how": "The television, after dark" },
     { "key": "spear_pillar", "name": "Spear Pillar", "cells": "11,16", "special": [ "Dialga", "Palkia" ], "how": "With its orb, after the Hall of Fame" },
     { "key": "turnback_cave_giratina", "name": "Turnback Cave", "cells": "23,22", "special": [ "Giratina" ], "how": "Its last room" },
+    // Plan 29 · LS11a: the event Pokémon of Platinum's, each with a way of our own after the Hall of Fame: Darkrai in
+    // Newmoon Island's wood by the Harbor Inn's dream, Shaymin in Flower Paradise, Arceus in the Hall of Origin above
+    // Spear Pillar, and the Manaphy Egg a Pokémon Ranger brings ashore on Route 230 (Phione is bred from it)
+    { "key": "newmoon_island", "name": "Newmoon Island", "cells": "4,8", "special": [ "Darkrai" ], "how": "The island's wood, by the Harbor Inn's dream" },
+    { "key": "flower_paradise", "name": "Flower Paradise", "cells": "28,6", "special": [ "Shaymin" ], "how": "After thanks at Route 224's white rock" },
+    { "key": "hall_of_origin", "name": "Hall of Origin", "cells": "11,16", "special": [ "Arceus" ], "how": "By the Azure Flute, from Spear Pillar" },
+    { "key": "route_230_manaphy", "name": "Route 230", "cells": "21,13", "special": [ "Manaphy" ], "how": "An Egg from a Pokémon Ranger" },
     // Plan 03 · D12a: Diamond's and Pearl's species that Platinum's tables leave out, met where those two versions
     // have them (grass, and Clamperl on the Super Rod) once the National Pokédex is had: the overlays' "national"
     { "key": "eterna_forest", "name": "Eterna Forest", "cells": "6,18 8,16", "special": [ "Murkrow", "Misdreavus" ], "how": "With the National Pokédex" },

@@ -1111,8 +1111,8 @@ public class StarkMountainAndTheLegendaryPokemonTests
     [Fact]
     public void TheWholeGamesWalkFindsFullmoonIslandByTheSailorAndTheTempleByItsDoor()
     {
-        // Only Newmoon Island is still come to by the story alone (the original's event)
-        Assert.Equal(new[] { ("Sinnoh", 152, 277) }, WorldWalk.StoryArrivals.Select(s => (s.Map, s.X, s.Y)));
+        // Nothing is come to by the story alone any more: Newmoon Island was, until plan 29 · LS11a's Harbor Inn
+        Assert.Empty(WorldWalk.StoryArrivals);
         var maps = MapDatabase.Fresh();
         var reached = WorldWalk.From(maps, RegionDatabase.Get(RegionDatabase.Sinnoh)!.Start!);
         var sinnoh = maps("Sinnoh");
@@ -1122,9 +1122,9 @@ public class StarkMountainAndTheLegendaryPokemonTests
         Assert.Contains((11, 13), reached[maps("SnowpointTempleB5F")]);
         Assert.Contains((7, 7), reached[maps("StarkMountainRoom3")]);
         Assert.Contains((750, 232), reached[sinnoh]);
-        // Newmoon Island is not
-        Assert.DoesNotContain(reached[sinnoh], t => AreaKey(sinnoh, t.X, t.Y) == "newmoon_island");
-        Assert.False(reached.ContainsKey(maps("NewmoonIslandForest")));
+        // and Newmoon Island by the Harbor Inn's night (plan 29 · LS11a)
+        Assert.Contains(reached[sinnoh], t => AreaKey(sinnoh, t.X, t.Y) == "newmoon_island");
+        Assert.Contains((16, 17), reached[maps("NewmoonIslandForest")]);
     }
 
     // ------------------------------------------------------------------ the part in order, and saves from before

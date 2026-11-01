@@ -256,10 +256,10 @@ public class BattleZoneTests
         runner.RunToEnd();
         Assert.Contains(host.Transcript, line => line.Text.Contains("Members only"));
 
-        // The story's people are placed since plan 02 · S15, part a (TheNationalPokedexAndTheBattleZoneTests), but
-        // those of Route 224, who come only with an event gift. The boy who gives the Villa away and those who wait at
-        // its door are the Resort Area's own (plan 06 · R16b)
-        Assert.DoesNotContain(PeopleOf(map, "route_224"), n => n.Key is "marley" or "prof_oak" or "shaymin");
+        // The story's people are placed since plan 02 · S15, part a (TheNationalPokedexAndTheBattleZoneTests), and those
+        // of Route 224, whom Oak's Letter brings, since plan 29 · LS11a. The boy who gives the Villa away and those who
+        // wait at its door are the Resort Area's own (plan 06 · R16b)
+        Assert.Equal(3, PeopleOf(map, "route_224").Count(n => n.Key is "marley" or "prof_oak" or "shaymin"));
         Assert.Contains(PeopleOf(map, "resort_area"), n => n.Key == "school_kid_m" && n.Script == "SchoolKid");
     }
 

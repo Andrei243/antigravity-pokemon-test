@@ -190,10 +190,11 @@ public class PostGameTests
         // A swap over a building is accepted only where the same building stands in both layouts (plan 22 · U8, Opelucid's ice); a map swapped with itself is such a case
         Assert.Single(map.SwappedPlaces);
 
-        // The path and the meadow at its end: Floaroma's theme stands in for the original's, nobody stands there (Shaymin
-        // is an event gift's), and arriving at the meadow counts as coming to it
+        // The path and the meadow at its end: Floaroma's theme stands in for the original's, nobody stands on the path and
+        // Shaymin in the meadow (plan 29 · LS11a), and arriving at the meadow counts as coming to it
         Assert.All(Revealed, key => Assert.Equal("sinnoh/floaroma", map.FindArea(key)!.BgmTrack));
-        Assert.All(Revealed, key => Assert.Empty(PeopleOf(map, key)));
+        Assert.Empty(PeopleOf(map, "seabreak_path"));
+        Assert.Equal("shaymin", Assert.Single(PeopleOf(map, "flower_paradise")).Key);
         var story = new StoryState();
         Run(ScriptLibrary.OnEnter, "flower_paradise", new HeadlessScriptHost(story));
         Assert.True(story.Has("FLAG_FIRST_ARRIVAL_FLOWER_PARADISE"));
@@ -209,11 +210,11 @@ public class PostGameTests
         var map = Overworld;
         // Where the original's TakeShipFromCanalave puts the player down: on the island's pier, beside its sailor.
         // Fullmoon Island's is where Canalave City's sailor lands whoever he takes there (plan 02 · S15, part b);
-        // Newmoon Island's is still the story's alone, one of the original's events
-        if (island == "fullmoon_island")
-            Assert.Contains(ScriptLibrary.Default.Find("Ferry", "canalave_city")!.Everything(), i => i.Op == Op.Warp && (i.Name, i.X, i.Y) == ("Sinnoh", landX, landY));
-        else
-            Assert.Contains(WorldWalk.StoryArrivals, s => (s.Map, s.X, s.Y) == ("Sinnoh", landX, landY));
+        // and Newmoon Island's is where the Harbor Inn's dream sets the player down, and he sails there afterwards too
+        // (plan 29 · LS11a)
+        Assert.Contains(ScriptLibrary.Default.Find("Ferry", "canalave_city")!.Everything(), i => i.Op == Op.Warp && (i.Name, i.X, i.Y) == ("Sinnoh", landX, landY));
+        if (island == "newmoon_island")
+            Assert.Contains(ScriptLibrary.Default.Find("Innkeeper", "CanalaveHarborInn")!.Everything(), i => i.Op == Op.Warp && (i.Name, i.X, i.Y) == ("Sinnoh", landX, landY));
         Assert.Equal(island, AreaKey(map, landX, landY));
         Assert.True(map.IsWalkable(landX, landY));
         var sailor = Assert.Single(PeopleOf(map, island));
@@ -239,13 +240,13 @@ public class PostGameTests
         Assert.Equal(number, story.Var(shown));
 
         // The wood in the island's middle: two tiles in, two tiles out; Cresselia and her Lunar Wing in Fullmoon
-        // Island's (plan 02 · S15, part b), and nobody in Newmoon Island's until its Pokémon's session
+        // Island's (plan 02 · S15, part b), and Darkrai in Newmoon Island's (plan 29 · LS11a)
         var wood = BuiltMaps.Value[Sinnoh.MapOf(island + "_forest")!.Name];
         var doors = map.Warps.Where(w => AreaKey(map, w.SourceX, w.SourceY) == island).ToList();
         Assert.Equal(2, doors.Count);
         Assert.All(doors, d => Assert.Equal(wood.Name, d.TargetMap));
         Assert.Equal(2, wood.Warps.Count(w => w.TargetMap == "Sinnoh" && AreaKey(map, w.TargetX, w.TargetY) == island && map.IsWalkable(w.TargetX, w.TargetY)));
-        Assert.Equal(island == "fullmoon_island" ? new[] { "cresselia", "item_lunar_wing" } : Array.Empty<string>(), wood.Everyone.Select(n => n.Key!).Order());
+        Assert.Equal(island == "fullmoon_island" ? new[] { "cresselia", "item_lunar_wing" } : new[] { "darkrai" }, wood.Everyone.Select(n => n.Key!).Order());
         Assert.Equal(island == "fullmoon_island" ? "sinnoh/forest" : "sinnoh/turnback_cave", wood.Areas.Single(a => a.Open).BgmTrack);
     }
 
@@ -534,9 +535,9 @@ public class PostGameTests
             var tile = (area, id) == ("stark_mountain_outside", "looker") ? (752, 233) : (file.X, file.Z);
             Assert.Equal((tile.Item1, tile.Item2, flag), (there.GridX, there.GridY, there.HiddenBy));
         }
+        // (Darkrai and Shaymin stood here until plan 29 · LS11a gave them their meetings: EventLegendariesSinnohTests)
         var waiting = new (string Area, string Id, string Flag)[]
         {
-            ("newmoon_island_forest", "darkrai", "FLAG_HIDE_NEWMOON_ISLAND_FOREST_DARKRAI"), ("flower_paradise", "shaymin", "FLAG_HIDE_FLOWER_PARADISE_SHAYMIN"),
             ("battle_frontier", "reporter", "FLAG_HIDE_BATTLE_FRONTIER_REPORTER")
         };
         foreach (var (area, id, flag) in waiting)

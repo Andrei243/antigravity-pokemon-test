@@ -424,10 +424,37 @@
     },
     {
       "en": [
+        "Where shall I take you?",
+        "Iron Island",
+        "Fullmoon Island",
+        "Newmoon Island",
+        "Nowhere today"
+      ],
+      "text": [
+        "Unde să te duc?",
+        "INSULA DE FIER",
+        "INSULA LUNII PLINE",
+        "Insula Lunii Noi",
+        "NICĂIERI AZI"
+      ]
+    },
+    {
+      "en": [
+        "Newmoon Island? There's a chill about that place... but if you're sure. Anchors aweigh!"
+      ],
+      "text": [
+        "Insula Lunii Noi? Locul ăla te trece un fior... dar dacă ești sigur. Ridicați ancora!"
+      ]
+    },
+    {
+      "en": [
         "No hurry. The boat's here whenever you want it."
       ],
       "text": [
         "Nicio grabă. Barca e aici oricând o vrei."
+      ],
+      "was": [
+        "Mama lui și cu mine contăm pe tine! Doar tu îl poți scoate din coșmarul acela."
       ]
     },
     {
@@ -436,6 +463,9 @@
       ],
       "text": [
         "...Tu. Te-ai duce pe Insula Lunii Pline, pentru băiatul meu?"
+      ],
+      "was": [
+        "Pe Insula Lunii Pline e ceva numit Pana Lunii și se zice că îl va trezi. M-am dus și eu. N-am găsit-o..."
       ]
     },
     {
@@ -444,6 +474,9 @@
       ],
       "text": [
         "Mama lui și cu mine contăm pe tine! Doar tu îl poți scoate din coșmarul acela."
+      ],
+      "was": [
+        "Ai mai întâi treburi de rezolvat? Eu sunt aici, cu barca pregătită."
       ]
     },
     {
@@ -452,6 +485,9 @@
       ],
       "text": [
         "Pe Insula Lunii Pline e ceva numit Pana Lunii și se zice că îl va trezi. M-am dus și eu. N-am găsit-o..."
+      ],
+      "was": [
+        "Te rog. Nu știm pe cine altcineva să rugăm."
       ]
     },
     {
@@ -460,6 +496,9 @@
       ],
       "text": [
         "Ai mai întâi treburi de rezolvat? Eu sunt aici, cu barca pregătită."
+      ],
+      "was": [
+        "Pana aia... E Pana Lunii? Atunci du-o la fiul meu! Te rog, cât poți de repede!"
       ]
     },
     {

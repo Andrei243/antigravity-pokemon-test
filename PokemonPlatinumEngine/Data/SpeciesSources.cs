@@ -248,6 +248,8 @@ public sealed class SpeciesSources
                     if (e.Region == null && e.FromForm == null && CanEvolve(e, f))
                         f.Species(e.TargetSpecies, $"evolves from {name} ({e.Method})");
                 if (species.Offspring != null && Breeds(species, f)) f.Species(species.Offspring, $"hatches from {name}'s Egg");
+                // Manaphy's own Egg is a Phione's, as Breeding.EggSpecies has it (plan 29 · LS11a gives Manaphy a way)
+                if (name == "Manaphy" && Breeds(species, f)) f.Species("Phione", "hatches from Manaphy's Egg");
             }
         } while (f.Changed);
         return f;

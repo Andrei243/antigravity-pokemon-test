@@ -1,0 +1,60 @@
+{
+  "Innkeeper": [
+    {
+      "en": [
+        "Welcome to the Harbor Inn. I'm afraid every room is taken tonight."
+      ],
+      "text": [
+        "Bine ai venit la Hanul Portului. Din păcate, toate camerele sunt ocupate în seara asta."
+      ]
+    },
+    {
+      "en": [
+        "We do keep one room aside, but only for members. Without a card, I can't let it."
+      ],
+      "text": [
+        "Păstrăm o cameră deoparte, dar doar pentru membri. Fără card, nu ți-o pot da."
+      ]
+    },
+    {
+      "en": [
+        "Ah, a Member Card! Then the room by the window is yours, for as long as you like."
+      ],
+      "text": [
+        "Ah, un Card de Membru! Atunci camera de la fereastră e a ta, cât vrei."
+      ]
+    },
+    {
+      "en": [
+        "Will you stay the night?"
+      ],
+      "text": [
+        "Rămâi peste noapte?"
+      ]
+    },
+    {
+      "en": [
+        "Right this way. Sleep well... and mind your dreams."
+      ],
+      "text": [
+        "Pe aici, te rog. Somn ușor... și ai grijă ce visezi."
+      ]
+    },
+    {
+      "en": [
+        "{player} lay down and drifted off to the sound of the sea..."
+      ],
+      "text": [
+        "{player} s-a întins și a adormit în sunetul mării..."
+      ]
+    },
+    {
+      "en": [
+        "Whenever you're ready. The room will keep."
+      ],
+      "text": [
+        "Când ești gata. Camera te așteaptă."
+      ]
+    }
+  ]
+}
