@@ -198,6 +198,7 @@ if (mode == "kanto") h.KantoMode();
 if (mode == "johto") h.JohtoMode();
 if (mode == "hoenn") h.HoennMode();
 if (mode == "unova") h.UnovaMode();
+if (mode == "beats") h.LegendBeatsMode();
 if (mode == "seasons") h.SeasonsMode();
 if (mode == "pokegear") h.PokegearMode();
 if (mode == "skips") h.SkipsMode();

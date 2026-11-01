@@ -30,7 +30,7 @@ script Kyogre
   music stop
   face player up
   letterbox on 0.4
-  camera pan 9 22 1.2
+  camera pan 9 23 1.2
   camera zoom 1.4 0.8
   effect sparkles 9 22
   effect ripple 9 22

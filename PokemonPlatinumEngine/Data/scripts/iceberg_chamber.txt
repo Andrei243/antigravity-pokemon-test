@@ -7,6 +7,7 @@ script Regice
   scene "Regice wakes"
   music stop
   face player self
+  walk player back down 1
   letterbox on 0.4
   camera pan 15 14 1.2
   camera zoom 1.4 0.8

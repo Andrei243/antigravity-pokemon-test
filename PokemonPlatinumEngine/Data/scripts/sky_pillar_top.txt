@@ -29,10 +29,10 @@ script Rayquaza
   music stop
   face player up
   letterbox on 0.4
-  camera pan 14 3 1.2
+  camera pan 14 5 1.2
   camera zoom 1.4 0.8
-  effect shadow 14 5 2 down
-  camera path 14 4 14 6 2
+  effect shadow 14 6 2 down
+  camera path 14 4 14 7 2
   cry "Rayquaza"
   camera shake 1
   emote player exclaim

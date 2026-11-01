@@ -3,9 +3,10 @@
 #
 # Ho-Oh waits over the peak until it is beaten (FLAG_DEFEATED_HO_OH) or caught (FLAG_CAUGHT_HO_OH). The peak's arrival
 # shows it and readies the step before the summit (the area's trigger 0, VAR_TEMP_1 0), as Emerald's OnTransition does;
-# that step meets it at level 70. Emerald's camera pans up to it and it flies down; ours perches it on the summit, the
-# path's last tile, and its meeting is plan 29's beat (style guide, "Legendary scenes", flight and fire): the bars, the
-# camera up over the rock, Ho-Oh's shadow sweeping down toward the player with the camera after it to the summit, a burst
+# that step meets it at level 70. As Emerald's, it perches high over the rock (the area's own tile, 12, 4) and flies
+# down; its meeting is plan 29's beat (style guide, "Legendary scenes", flight and fire): the bars, the camera up over
+# the rock, Ho-Oh taking off (the sky over the rock is solid ground to a walk) and its shadow sweeping down with the
+# camera after it to the summit, the path's last tile, where it lands in a burst
 # and the heat's ripple, the cry with the picture shaken, and then the battle's own way in. Run from, it flies off and is
 # back the next time the peak is come to.
 
@@ -29,11 +30,16 @@ script HoOh
   scene "Ho-Oh at the peak of Navel Rock"
   music stop
   face player up
+  walk player back down 1
   letterbox on 0.4
-  camera pan 12 4 1.2
+  camera pan 12 5 1.2
   camera zoom 1.4 0.8
-  effect shadow 12 6 2 down
-  camera path 12 7 12 9 2
+  wait 0.4
+  hide navel_rock_ho_oh
+  effect shadow 12 9 1.2 down
+  camera path 12 5 12 9 1.2
+  place navel_rock_ho_oh 12 9 down
+  show navel_rock_ho_oh
   effect burst 12 9
   wait 0.4
   effect ripple 12 9

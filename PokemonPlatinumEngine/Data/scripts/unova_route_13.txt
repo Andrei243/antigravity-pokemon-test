@@ -37,7 +37,7 @@ script Cobalion
   letterbox on 0.4
   camera path 684 186 684 190 3
   camera zoom 1.4 0.8
-  effect beam 684 190
+  effect beam 684 190 0.8
   shake self 8
   camera shake 0.8
   cry "Cobalion"

@@ -34,14 +34,15 @@ script Triangle
   scene "Deoxys on Birth Island"
   music stop
   face player self
+  walk player back down 1
   letterbox on 0.4
   camera pan 15 10 1.2
   camera zoom 1.4 0.8
   camera shake 0.5
   effect burst 15 10
-  wait 0.5
   hide birth_island_exterior_rock
   setflag FLAG_HIDE_BIRTH_ISLAND_DEOXYS_TRIANGLE
+  wait 0.5
   clearflag FLAG_HIDE_DEOXYS
   show birth_island_deoxys
   place birth_island_deoxys 15 10
