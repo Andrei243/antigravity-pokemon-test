@@ -15,6 +15,42 @@ internal static class PokemonAnimation
     /// <summary>Radians per second of the idle loop: one breath every 1.7 s at tempo 1.</summary>
     internal const float Beat = MathF.Tau / 1.7f;
 
+    /// <summary>
+    /// The clips by name, in the order the studio, the harness and the gallery list them (plan 12 · Q30): the seven of
+    /// plan 04 · G7 and the four of a battle's answers (plan 25 · Y5).
+    /// </summary>
+    internal static readonly string[] Clips =
+        { "idle", "physical", "special", "status", "hit", "faint", "entry", "dodge", "tired", "cheer", "charge" };
+
+    /// <summary>
+    /// The pose for one moment of a clip named as <see cref="Clips"/> names it: "idle" at <paramref name="t"/> seconds of
+    /// its loop, a move, a hit, a faint, an entry, a dodge or a cheer at progress <paramref name="t"/> (0 to 1), tiredness
+    /// and a charge held at full at <paramref name="t"/> seconds. Shared by the studio's boards and the gallery (plan 12 · Q30).
+    /// </summary>
+    internal static PokePose ClipPose(string clip, float t, bool blink = false)
+    {
+        var pose = new PokePose { Time = 0.4f, Blink = blink ? 1f : 0f };
+        switch (clip.ToLowerInvariant())
+        {
+            case "idle": pose.Time = t; break;
+            case "physical": pose.Attack = t; pose.Kind = MoveCategory.Physical; break;
+            case "special": pose.Attack = t; pose.Kind = MoveCategory.Special; break;
+            case "status": pose.Attack = t; pose.Kind = MoveCategory.Status; break;
+            case "hit": pose.Hurt = t; break;
+            case "faint": pose.Faint = t; break;
+            case "entry": pose.Entry = t; break;
+            // A battle's answers (plan 25 · Y5): tiredness and a charge held at full, at time t of their own loops
+            case "dodge": pose.Dodge = t; break;
+            case "tired": pose.Time = t; pose.Tired = 1f; break;
+            case "cheer": pose.Cheer = t; break;
+            case "charge": pose.Time = t; pose.Charge = 1f; break;
+        }
+        return pose;
+    }
+
+    /// <summary>Whether a clip loops in time (the idle loop, tiredness, a charge) rather than playing once from 0 to 1.</summary>
+    internal static bool ClipLoops(string clip) => clip is "idle" or "tired" or "charge";
+
     /// <summary>The seconds of one breath of a model's idle loop: 1.7 s at tempo 1 (plan 09 · L5's strip spans one).</summary>
     internal static float BreathSeconds(PokeModel m) => MathF.Tau / Beat / MathF.Max(0.1f, m.Tempo);
 

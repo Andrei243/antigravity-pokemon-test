@@ -9,7 +9,11 @@ using Raylib_cs;
 namespace PokemonPlatinumEngine.Graphics;
 
 /// <summary>Which way a Pokémon sprite looks: the opponent faces the camera, the player's Pokémon shows its back.</summary>
-internal enum SpriteView { Front, Back, Icon }
+/// <remarks>
+/// <see cref="Turntable"/> is the gallery's (plan 12 · Q30): the front's light and pitch, framed by the model's height and
+/// its widest reach from its middle in any direction, so the model fits the frame at every turn. Nothing is baked in it.
+/// </remarks>
+internal enum SpriteView { Front, Back, Icon, Turntable }
 
 /// <summary>Camera placement that frames one model for one view.</summary>
 internal sealed class SpriteFraming
@@ -68,6 +72,7 @@ internal static class PokemonSprites
     public static SpriteFraming Framing(PokeModel model, SpriteView view, int size)
     {
         if (model.Framings.TryGetValue((view, size), out var f)) return f;
+        if (view == SpriteView.Turntable) return model.Framings.GetOrAdd((view, size), TurntableFraming(model, size));
 
         float yaw = view == SpriteView.Back ? 2.55f : -0.5f;
         float pitch = (view == SpriteView.Back ? 20f : 10f) * MathF.PI / 180f;
@@ -105,27 +110,69 @@ internal static class PokemonSprites
         return model.Framings.GetOrAdd((view, size), f);
     }
 
+    /// <summary>
+    /// The gallery's framing (plan 12 · Q30; style guide, "Pokémon in menus"): the front's yaw and pitch, the frame wide
+    /// enough for the model's widest reach from its upright axis and tall enough for its height seen at that pitch from
+    /// any side, so no turn takes any of it out of the picture. No GPU calls.
+    /// </summary>
+    private static SpriteFraming TurntableFraming(PokeModel model, int size)
+    {
+        float pitch = 10f * MathF.PI / 180f;
+        float cos = MathF.Cos(pitch), sin = MathF.Sin(pitch);
+        var up = new Vector3(0, cos, -sin);
+        var forward = new Vector3(0, -sin, -cos);
+        float reach = 0f, minY = float.MaxValue, maxY = float.MinValue;
+        foreach (var p in model.Mesh.Positions)
+        {
+            reach = MathF.Max(reach, MathF.Sqrt(p.X * p.X + p.Z * p.Z));
+            minY = MathF.Min(minY, p.Y);
+            maxY = MathF.Max(maxY, p.Y);
+        }
+        // Seen at the pitch, a point's height on the picture is y·cos − z·sin, and z ranges over ±reach as the model turns
+        float minV = minY * cos - reach * sin, maxV = maxY * cos + reach * sin;
+        const float margin = 0.06f;
+        float frame = MathF.Max(2f * reach, maxV - minV) * (1f + 2f * margin);
+        float centerV = (minV + maxV) / 2f;
+        var target = up * centerV;
+        return new SpriteFraming
+        {
+            Camera = new Camera3D(target - forward * 40f, target, up, frame, CameraProjection.Orthographic),
+            Yaw = -0.5f,
+            FeetRow = 0.5f + (centerV - minV) / frame,
+            WorldPerPixel = frame / size,
+            HalfWidth = reach
+        };
+    }
+
     /// <summary>Renders one frame of a Pokémon into <paramref name="target"/>. Call outside any other texture mode.</summary>
     /// <param name="flash">Blends the body toward a flat colour by this much (the white of an evolving Pokémon).</param>
+    /// <param name="turn">
+    /// Radians the model is turned by over the view's own yaw (plan 12 · Q30's gallery). Nought, as every bake leaves it,
+    /// draws exactly what was drawn before it was there.
+    /// </param>
+    /// <param name="zoom">How many times closer than the view's frame, toward its middle (the gallery's zoom); 1 leaves the frame as it is.</param>
     public static void Render(RenderContext context, PokeModel model, SpriteView view, PokePose pose, RenderTexture2D target, bool hullOutline = true,
-        (Color Color, float Amount)? flash = null, int stripFrame = -1)
+        (Color Color, float Amount)? flash = null, int stripFrame = -1, float turn = 0f, float zoom = 1f)
     {
         context.EnsureLoaded();
         int size = target.Texture.Width;
         var framing = Framing(model, view, size);
         var shaders = context.Shaders;
+        var camera = framing.Camera;
+        if (zoom != 1f) camera.FovY /= MathF.Max(0.1f, zoom);
 
         Raylib.BeginTextureMode(target);
         Raylib.ClearBackground(new Color(0, 0, 0, 0));
         Rlgl.SetClipPlanes(1.0, 100.0);
-        Raylib.BeginMode3D(framing.Camera);
+        Raylib.BeginMode3D(camera);
 
         shaders.SetLighting(Matrix4x4.Identity, Light, framing.Camera.Position, 1f);
         shaders.SetCharacterStyle(shadowStrength: 0f, rimStrength: 0.32f);
         shaders.SetStudio();
         if (flash is { } f) shaders.SetFlash(f.Color, f.Amount);
 
-        var turn = Matrix4x4.CreateRotationY(framing.Yaw);
+        // (A turn of nought adds nothing to the yaw: the matrix every bake had)
+        var turned = Matrix4x4.CreateRotationY(turn == 0f ? framing.Yaw : framing.Yaw + turn);
         Rlgl.DisableBackfaceCulling();
         // A frame of the strip (plan 09 · L5) is posed once, and both passes draw it as it stands
         bool posed = stripFrame >= 0;
@@ -134,9 +181,9 @@ internal static class PokemonSprites
             PokemonRenderer.EnsureUploaded(model, shaders);
             model.AnimateStrip(stripFrame, StripFrames, StripStart);
         }
-        PokemonRenderer.Draw(context, model, pose, turn, CharacterPass.Color, posed);
+        PokemonRenderer.Draw(context, model, pose, turned, CharacterPass.Color, posed);
         if (flash != null) shaders.SetFlash(default, 0f);
-        if (hullOutline) PokemonRenderer.Draw(context, model, pose, turn, CharacterPass.Outline, posed);
+        if (hullOutline) PokemonRenderer.Draw(context, model, pose, turned, CharacterPass.Outline, posed);
         Rlgl.EnableBackfaceCulling();
 
         Raylib.EndMode3D();

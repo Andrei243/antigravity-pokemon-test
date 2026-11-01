@@ -43,6 +43,9 @@ public sealed partial class GameFlow
     /// <summary>The start menu's REQUESTS (plan 12 · Q21).</summary>
     public RequestsScreen RequestsScreen { get; } = new();
     public GameState JukeboxReturn { get; set; } = GameState.Title;
+    /// <summary>The gallery (plan 12 · Q30), and where it goes back to: the title or the Pokédex.</summary>
+    public GalleryScreen GalleryScreen { get; } = new();
+    public GameState GalleryReturn { get; set; } = GameState.Title;
     /// <summary>The title's CREDITS (plan 16 · T1): whose work is in the game.</summary>
     public TitleCreditsScreen TitleCreditsScreen { get; } = new();
     /// <summary>The first start's page of options (plan 16 · T24).</summary>

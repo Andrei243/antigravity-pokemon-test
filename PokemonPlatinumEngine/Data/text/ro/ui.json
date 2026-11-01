@@ -491,6 +491,7 @@
     "menu": {
       "continue": "CONTINUĂ",
       "jukebox": "TONOMAT",
+      "gallery": "GALERIE",
       "newGame": "JOC NOU",
       "delete": "ȘTERGE O SALVARE",
       "deleteWhich": "CE SALVARE ȘTERGI?",
@@ -761,6 +762,64 @@
       "Cave": "Peșteră",
       "Underwater": "Sub mare",
       "Giant": "Ultima tură a unui uriaș"
+    }
+  },
+  "gallery": {
+    "title": "GALERIE",
+    "tab": {
+      "pokemon": "POKéMON",
+      "people": "OAMENI"
+    },
+    "hint": {
+      "cry": "Strigăt",
+      "turn": "Rotește",
+      "clip": "Mișcare",
+      "emote": "Gest",
+      "view": "Față / spate",
+      "zoom": "Zoom",
+      "tab": "Filă",
+      "open": "Galerie"
+    },
+    "keys": {
+      "p": "P",
+      "shoulders": "Q / E"
+    },
+    "number": "Nr. {n}",
+    "view": {
+      "front": "FAȚĂ",
+      "back": "SPATE"
+    },
+    "zoom": {
+      "0": "1×",
+      "1": "1,5×",
+      "2": "2×"
+    },
+    "building": "SE CONSTRUIEȘTE…",
+    "empty": "Încă n-ai văzut nimic.",
+    "clip": {
+      "idle": "REPAUS",
+      "physical": "FIZIC",
+      "special": "SPECIAL",
+      "status": "STARE",
+      "hit": "LOVIT",
+      "faint": "LEȘIN",
+      "entry": "INTRARE",
+      "dodge": "EVITARE",
+      "tired": "OBOSIT",
+      "cheer": "BUCURIE",
+      "charge": "ÎNCĂRCARE"
+    },
+    "emote": {
+      "None": "ÎN PICIOARE",
+      "Wave": "SALUT",
+      "Surprised": "SURPRIZĂ",
+      "Nod": "ÎNCUVIINȚARE",
+      "Cheer": "BUCURIE",
+      "Throw": "ARUNCARE",
+      "Bow": "PLECĂCIUNE",
+      "Shrug": "RIDICARE DIN UMERI",
+      "Point": "ARĂTARE",
+      "Laugh": "RÂS"
     }
   },
   "titleCredits": {
