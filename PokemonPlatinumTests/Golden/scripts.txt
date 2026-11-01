@@ -8547,16 +8547,27 @@ way 1, from answer 1
 from Mewtwo at 7,12 of CeruleanCave_B1F
 way 0
   > Myuu...\nA cold, sharp will pressed against Lucas's mind!
-  * scene cerulean_cave_b1f.Mewtwo
+  * scene cerulean_cave_b1f.Mewtwo in Cerulean Cave
+  * music stop
+  * letterbox on
+  * camera Pan 7 12
+  * camera Zoom 1.8
+  * effect Sparkles 7 12
+  * effect Ripple 7 12
+  * flicker Mewtwo 4
   * cry Mewtwo
-  * wildbattle Mewtwo 70 Won
+  * camera Shake
+  * emote player Exclaim
+  * camera Release
+  * letterbox off
   * endscene
+  * wildbattle Mewtwo 70 Won
   + FLAG_FOUGHT_MEWTWO
   + FLAG_HIDE_MEWTWO
-  + seen cerulean_cave_b1f.Mewtwo
+  + seen cerulean_cave_b1f.Mewtwo in Cerulean Cave
 way 1, from answer 1
   * wildbattle Mewtwo 70 Lost
-  * scene over, unseen
+  + seen cerulean_cave_b1f.Mewtwo in Cerulean Cave
 === cerulean_city.Grunt
 from Grunt at 297,46 of Kanto
 way 0
@@ -19964,16 +19975,26 @@ way -
 from Moltres at 9,6 of MtEmber_Summit
 way 0
   > Gyaoo!\nFlames swirled round the great bird as it spread its wings!
-  * scene mt_ember_summit.Moltres
+  * scene mt_ember_summit.Moltres at Mt Ember
+  * music stop
+  * letterbox on
+  * camera Pan 9 6
+  * camera Zoom 1.4
+  * effect Burst 9 6
+  * camera Shake
+  * effect Ripple 9 6
   * cry Moltres
-  * wildbattle Moltres 50 Won
+  * emote player Exclaim
+  * camera Release
+  * letterbox off
   * endscene
+  * wildbattle Moltres 50 Won
   + FLAG_FOUGHT_MOLTRES
   + FLAG_HIDE_MOLTRES
-  + seen mt_ember_summit.Moltres
+  + seen mt_ember_summit.Moltres at Mt Ember
 way 1, from answer 1
   * wildbattle Moltres 50 Lost
-  * scene over, unseen
+  + seen mt_ember_summit.Moltres at Mt Ember
 === mt_moon_b2f.DomeFossil
 from Dome Fossil at 13,7 of MtMoon_B2F
 way -
@@ -22033,16 +22054,27 @@ way 1, from answer 1
 from Zapdos at 5,11 of PowerPlant
 way 0
   > Gyaaah!\nSparks crackled through the air round the great bird!
-  * scene power_plant.Zapdos
+  * scene power_plant.Zapdos at the Power Plant
+  * music stop
+  * letterbox on
+  * camera Pan 5 11
+  * camera Zoom 1.4
+  * effect Burst 5 11
+  * camera Shake
+  * effect Burst 5 11
+  * camera Shake
   * cry Zapdos
-  * wildbattle Zapdos 50 Won
+  * emote player Exclaim
+  * camera Release
+  * letterbox off
   * endscene
+  * wildbattle Zapdos 50 Won
   + FLAG_FOUGHT_ZAPDOS
   + FLAG_HIDE_ZAPDOS
-  + seen power_plant.Zapdos
+  + seen power_plant.Zapdos at the Power Plant
 way 1, from answer 1
   * wildbattle Zapdos 50 Lost
-  * scene over, unseen
+  + seen power_plant.Zapdos at the Power Plant
 === pwt.PlasmaAtThePier
 from the trigger at 196,476 of Unova
 way -
@@ -25584,16 +25616,26 @@ way -
 from Articuno at 9,2 of SeafoamIslands_B4F
 way 0
   > Kyaaah!\nThe air turned bitterly cold as the great bird spread its wings!
-  * scene seafoam_islands_b4f.Articuno
+  * scene seafoam_islands_b4f.Articuno at the Seafoam Islands
+  * music stop
+  * letterbox on
+  * camera Pan 9 2
+  * camera Zoom 1.4
+  * effect Sparkles 9 2
+  * effect Ripple 9 2
   * cry Articuno
-  * wildbattle Articuno 50 Won
+  * camera Shake
+  * emote player Exclaim
+  * camera Release
+  * letterbox off
   * endscene
+  * wildbattle Articuno 50 Won
   + FLAG_FOUGHT_ARTICUNO
   + FLAG_HIDE_ARTICUNO
-  + seen seafoam_islands_b4f.Articuno
+  + seen seafoam_islands_b4f.Articuno at the Seafoam Islands
 way 1, from answer 1
   * wildbattle Articuno 50 Lost
-  * scene over, unseen
+  + seen seafoam_islands_b4f.Articuno at the Seafoam Islands
 === seafoam_islands_cinnabar_gym.Blaine
 from Blaine at 13,12 of Seafoam_Gym
 way 0
