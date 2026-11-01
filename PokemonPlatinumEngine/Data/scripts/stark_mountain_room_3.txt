@@ -21,7 +21,10 @@
 # 50, and the battle may be run from. Lost, the player wakes in a Pokémon Center and Heatran waits here still. Caught,
 # it is gone for good (FLAG_CAUGHT_HEATRAN). Knocked out or run from, it sinks back into the volcano (state 2) until
 # the Hall of Fame is next entered, whose script brings it back while it hasn't been caught
-# (PokemonLeagueHallOfFame.txt). Any battle not lost unlocks the Vs. Seeker's last level of rematches.
+# (PokemonLeagueHallOfFame.txt). Any battle not lost unlocks the Vs. Seeker's last level of rematches. Its meeting is
+# plan 29's beat (style guide, "Legendary scenes"): the bars, the camera up the hall to the heart, a burst of light and
+# the heat's ripple, its cry with the picture shaken, a line, and then the battle's own way in (plan 09 · L14's
+# Mythical).
 #
 # The tremor is the picture's shake and a rumble, as it is in the original (its ScrCmd_29F shakes the camera from side
 # to side for two seconds; nobody in the room is shaken, so plan 09 · L12's shake has no part in it). Stood in for:
@@ -206,9 +209,23 @@ script Charon
 # StarkMountainRoom3_Heatran
 script Heatran
   setflag FLAG_BATTLED_STARK_MOUNTAIN_ROOM_3_HEATRAN
+  scene "Heatran in the mountain's heart"
+  music stop
+  face player heatran
+  letterbox on 0.4
+  camera pan 7 6 1.2
+  camera zoom 1.4 0.8
+  effect burst 7 6
+  wait 0.6
+  effect ripple 7 6
   cry "Heatran"
+  camera shake 0.6
+  emote player exclaim
   speaker none
-  say "Gwooh... grrrohh!"
+  say "Heatran heaves itself up out of the glow, and the air over its back shimmers with heat!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
   wildbattle "Heatran" 50
   setvar VAR_STARK_MOUNTAIN_ROOM_3_STATE 2
   setflag FLAG_UNLOCKED_VS_SEEKER_LVL_5

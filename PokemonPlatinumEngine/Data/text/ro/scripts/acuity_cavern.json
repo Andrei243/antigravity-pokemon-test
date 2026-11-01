@@ -2,9 +2,12 @@
   "Uxie": [
     {
       "en": [
-        "Kyuuuhn!"
+        "Uxie's eyes stay shut, yet {player} feels it looking straight through them..."
       ],
       "text": [
+        ""
+      ],
+      "was": [
         "Kyuuuhn!"
       ]
     },

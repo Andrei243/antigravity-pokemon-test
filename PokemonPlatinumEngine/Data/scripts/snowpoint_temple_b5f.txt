@@ -15,7 +15,10 @@
 # Fame, part b"). A team that has the three by trade or from another region wakes it all the same.
 #
 # As it wakes the statue itself shakes, eight times, with a rumble: the original's own set piece (plan 09 · L12:
-# ShakeObject). Stood in for until plan 09 · L14: the way into its battle is the wild Pokémon's.
+# ShakeObject). Its meeting is plan 29's beat (style guide, "Legendary scenes"): the bars, the camera to the dais, a
+# beam of light on the statue as its eyes kindle, the shake with the picture shaken, its cry, a line, and then the
+# battle's own way in (plan 09 · L14's Mythical). Awake already (a battle lost or run from before the Hall of Fame
+# brings it back), it is met through the same beat.
 
 
 # SnowpointTempleB5F_Regigigas
@@ -28,14 +31,26 @@ script Regigigas
   if not has "Regice" end
   if not has "Registeel" end
   setflag FLAG_AWAKENED_REGIGIGAS
+label Wakes
+  scene "Regigigas wakes"
+  music stop
+  face player regigigas
+  letterbox on 0.4
+  camera pan 11 12 1.2
+  camera zoom 1.4 0.8
+  # Light kindles in its eyes, and (ShakeObject LOCALID_REGIGIGAS, 8) the statue shakes where it stands
+  effect beam 11 12
   wait 0.4
-  # ShakeObject LOCALID_REGIGIGAS, 8: the statue shakes where it stands
   sound "thunder_rumble"
   shake regigigas 8
-  wait 0.3
-label Wakes
+  camera shake 0.8
   cry "Regigigas"
-  say "Zu... zut... gigigi!"
+  emote player exclaim
+  speaker none
+  say "Light kindles in the statue's eyes, one after another, and the ice groans under its weight. It moves!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
   wildbattle "Regigigas" 1
   setflag FLAG_HIDE_SNOWPOINT_TEMPLE_B5F_REGIGIGAS
   hide regigigas

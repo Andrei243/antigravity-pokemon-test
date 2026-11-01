@@ -7,7 +7,9 @@
 # it, and whoever agrees to thump it is met by a Rotom of level 20; the battle may be run from. It comes once a day
 # (FLAG_DAILY_BATTLED_OLD_CHATEAU_ROTOM, set before the battle, so a battle lost has used the day up too) until it is
 # caught (FLAG_CAUGHT_OLD_CHATEAU_ROTOM). The original asks for nothing else: not the Hall of Fame, not the National
-# Pokédex, so the television answers from the first night the chateau can be come to.
+# Pokédex, so the television answers from the first night the chateau can be come to. Its meeting is plan 29's beat
+# (style guide, "Legendary scenes", the ghost in a machine): the bars, the room's own zoom, a crackle of the set and
+# sparkles on its screen, the cry, a line, and then the battle's own way in (plan 09 · L14's Mythical).
 #
 # Rotom's five appliances stand in the room behind Team Galactic's building in Eterna City, which the Secret Key of an
 # event opens: left shut (docs/mechanics/rulings.md; plan 03 · D12c, plan 08).
@@ -27,8 +29,21 @@ label Inside
   text "Something is moving inside the television... Is that a Pokémon?"
   ask "It looks as if it might come out. Give the set a thump?"
   if no end
+  scene "Rotom in the television"
+  music stop
+  face player up
+  letterbox on 0.4
+  camera zoom 1.4 0.8
   text "{player} thumped the television!"
+  sound "use_spark"
+  effect sparkles 11 3
+  wait 0.6
   cry "Rotom"
+  emote player exclaim
+  text "Sparks race across the screen, and something made of crackling light comes spilling out of it!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
   setflag FLAG_DAILY_BATTLED_OLD_CHATEAU_ROTOM
   wildbattle "Rotom" 20
   if result == 3 goto Caught

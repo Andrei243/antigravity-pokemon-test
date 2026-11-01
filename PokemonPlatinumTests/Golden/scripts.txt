@@ -6146,13 +6146,26 @@ way -
 === acuity_cavern.Uxie
 from Uxie at 14,10 of AcuityCavern
 way 0
-  > Kyuuuhn!
+  > Uxie's eyes stay shut, yet Lucas feels it looking straight through them...
   > Uxie slipped away into the depths of its cavern...
+  * scene acuity_cavern.Uxie in Acuity Cavern
+  * music stop
+  * letterbox on
+  * camera Pan 14 10
+  * camera Zoom 1.4
+  * effect Sparkles 14 10
+  * effect Ripple 14 10
   * cry Uxie
+  * emote player Exclaim
+  * camera Release
+  * letterbox off
+  * endscene
   * wildbattle Uxie 50 Won
   + FLAG_HIDE_ACUITY_CAVERN_UXIE
+  + seen acuity_cavern.Uxie in Acuity Cavern
 way 1, from answer 1
   * wildbattle Uxie 50 Lost
+  + seen acuity_cavern.Uxie in Acuity Cavern
 === acuity_lakefront.RivalCallsDown
 from the trigger at 310,244 of Sinnoh
 way -
@@ -14090,12 +14103,17 @@ way 1, from answer 1
 from the trigger at 15,14 of DistortionWorldGiratinaRoom
 way -
   > Giratina hangs in the dark before Lucas, and its eyes do not leave them.
+  * scene distortion_world_giratina_room.Giratina comes down
   * fade out
   * cry Giratina-Origin
   * camera Shake
   * fade in
+  * camera Pan 15 13
   * effect Ripple 15 13
+  * camera Release
+  * endscene
   = VAR_DISTORTION_WORLD_PROGRESS 0 -> 13
+  + seen distortion_world_giratina_room.Giratina comes down
 === distortion_world_giratina_room.Cynthia
 from Cynthia at 15,17 of DistortionWorldGiratinaRoom
 from the tile read at 15,15 of DistortionWorldGiratinaRoom
@@ -14103,7 +14121,7 @@ way -
 === distortion_world_giratina_room.Giratina
 from Giratina at 15,13 of DistortionWorldGiratinaRoom
 way 0
-  > Gshrrraaaoooh!
+  > Giratina spreads its shadowy tendrils over the stones, and the whole torn world shudders with its roar!
   Cynthia> It's gone quiet. You stood up to it and it understood: we came to stop what was being done to it, not to do more.
   Cynthia> Beaten, it has slipped away to somewhere in our own world to rest. I shouldn't wonder if it lets itself be found again one day.
   Cyrus> The shadow Pokémon is calmed. Then this world stands, and the other with it. A new world cannot be made.
@@ -14114,8 +14132,21 @@ way 0
   Cynthia> He can't feel glad of anything. Not even of being alive. I hope he learns to, wherever he goes.
   Cynthia> Look, a way out, where Giratina was. Come on, Lucas. Let's go home.
   * scene distortion_world_giratina_room.Giratina
+  * music stop
+  * letterbox on
+  * camera Pan 15 13
+  * camera Zoom 1.4
+  * effect Shadow 15 13 Left
+  * slowmo 0.5
+  * effect Ripple 15 13
   * cry Giratina-Origin
+  * camera Shake
+  * emote player Exclaim
+  * camera Release
+  * letterbox off
+  * endscene
   * wildbattle Giratina 47 Won
+  * scene distortion_world_giratina_room.Giratina gone quiet
   * camera Pan 15 19
   * emote Cynthia Exclaim
   * emote player Exclaim
@@ -14124,9 +14155,10 @@ way 0
   * endscene
   = VAR_DISTORTION_WORLD_PROGRESS 0 -> 14
   + seen distortion_world_giratina_room.Giratina
+  + seen distortion_world_giratina_room.Giratina gone quiet
 way 1, from answer 1
   * wildbattle Giratina 47 Lost
-  * scene over, unseen
+  + seen distortion_world_giratina_room.Giratina
 === distortion_world_giratina_room.Portal
 from Portal at 15,13 of DistortionWorldGiratinaRoom
 way 0
@@ -15858,10 +15890,23 @@ from Cresselia at 16,15 of FullmoonIslandForest
 way -
   > The Pokémon rose over the trees and flew away...
   > Where it was resting, something is glittering.
+  * scene fullmoon_island_forest.Cresselia on Fullmoon Island
+  * music stop
+  * letterbox on
+  * camera Pan 16 15
+  * camera Zoom 1.4
+  * effect Sparkles 16 15
   * cry Cresselia
+  * effect Ripple 16 15
   * flicker Cresselia 6
+  * effect Shadow 16 15 Up
+  * camera Release
+  * letterbox off
+  * music area
+  * endscene
   + FLAG_HIDE_FULLMOON_ISLAND_FOREST_CRESSELIA
   + FLAG_MET_CRESSELIA
+  + seen fullmoon_island_forest.Cresselia on Fullmoon Island
 === giant_chasm_2.Guard
 from Grunt at 2,22 of GiantChasm_Cave
 from Grunt at 2,23 of GiantChasm_Cave
@@ -27100,17 +27145,31 @@ way -
 === stark_mountain_room_3.Heatran
 from Heatran at 7,6 of StarkMountainRoom3
 way 0
-  > Gwooh... grrrohh!
+  > Heatran heaves itself up out of the glow, and the air over its back shimmers with heat!
   > Heatran sank back into the depths of the volcano...
+  * scene stark_mountain_room_3.Heatran in the mountain's heart
+  * music stop
+  * letterbox on
+  * camera Pan 7 6
+  * camera Zoom 1.4
+  * effect Burst 7 6
+  * effect Ripple 7 6
   * cry Heatran
+  * camera Shake
+  * emote player Exclaim
+  * camera Release
+  * letterbox off
+  * endscene
   * wildbattle Heatran 50 Won
   + FLAG_BATTLED_STARK_MOUNTAIN_ROOM_3_HEATRAN
   + FLAG_HIDE_STARK_MOUNTAIN_ROOM_3_HEATRAN
   + FLAG_UNLOCKED_VS_SEEKER_LVL_5
   = VAR_STARK_MOUNTAIN_ROOM_3_STATE 0 -> 2
+  + seen stark_mountain_room_3.Heatran in the mountain's heart
 way 1, from answer 1
   * wildbattle Heatran 50 Lost
   + FLAG_BATTLED_STARK_MOUNTAIN_ROOM_3_HEATRAN
+  + seen stark_mountain_room_3.Heatran in the mountain's heart
 === stark_mountain_room_3.MagmaStone
 from Magma Stone at 7,8 of StarkMountainRoom3
 way -
@@ -28741,13 +28800,26 @@ way 1, from answer 1
 === valor_cavern.Azelf
 from Azelf at 16,14 of ValorCavern
 way 0
-  > Kyuuoh...
+  > Azelf darts once round Lucas and stops dead before them, its eyes blazing with will!
   > Azelf slipped away into the depths of the cavern...
+  * scene valor_cavern.Azelf in Valor Cavern
+  * music stop
+  * letterbox on
+  * camera Pan 16 14
+  * camera Zoom 1.4
+  * effect Sparkles 16 14
+  * effect Ripple 16 14
   * cry Azelf
+  * emote player Exclaim
+  * camera Release
+  * letterbox off
+  * endscene
   * wildbattle Azelf 50 Won
   + FLAG_HIDE_VALOR_CAVERN_AZELF
+  + seen valor_cavern.Azelf in Valor Cavern
 way 1, from answer 1
   * wildbattle Azelf 50 Lost
+  + seen valor_cavern.Azelf in Valor Cavern
 === valor_cavern.Saturn
 from Saturn at 14,19 of ValorCavern
 way 0
@@ -28940,7 +29012,7 @@ way -
 === verity_cavern.Mesprit
 from Mesprit at 12,13 of VerityCavern
 way -
-  > Kyuoon!
+  > Mesprit hangs before Lucas, and a warmth like a remembered kindness fills the cave.
   > Mesprit darted round Lucas once, and flew off somewhere far away...
   Prof. Rowan> ... ...
   Prof. Rowan> Lucas. So that was Mesprit. Then what I asked of you in Canalave's library is done.
@@ -28953,7 +29025,18 @@ way -
   Prof. Rowan> Off you go, Lucas. The road ahead is full of Pokémon and people you have yet to meet, and not one meeting will be like another.
   Prof. Rowan> Make the most of them all. Look after yourself.
   * scene verity_cavern.Mesprit
+  * music stop
+  * letterbox on
+  * camera Pan 12 13
+  * camera Zoom 1.4
+  * effect Sparkles 12 13
+  * effect Ripple 12 13
   * cry Mesprit
+  * emote player Exclaim
+  * flicker Mesprit 6
+  * camera Release
+  * letterbox off
+  * music area
   * endscene
   + FLAG_HIDE_VERITY_CAVERN_MESPRIT
   + FLAG_HIDE_VERITY_CAVERN_PROF_OAK

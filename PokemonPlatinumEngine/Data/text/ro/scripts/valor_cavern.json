@@ -2,9 +2,12 @@
   "Azelf": [
     {
       "en": [
-        "Kyuuoh..."
+        "Azelf darts once round {player} and stops dead before them, its eyes blazing with will!"
       ],
       "text": [
+        ""
+      ],
+      "was": [
         "Kiuuoh..."
       ]
     },

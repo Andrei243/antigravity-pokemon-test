@@ -16,10 +16,11 @@
 # leads out at Sendoff Spring, and stepping into it shows the Spring Path on the map of Sinnoh
 # (VAR_HIDDEN_LOCATION_SPRING_PATH) and leaves VAR_EXITED_DISTORTION_WORLD_STATE 1 for the scene there.
 #
-# Stood in for until plan 09 lands (L14): the shadows are a shadow sweeping across the room (plan 09 · L11's effect),
-# Giratina's cry and a shake of the picture; its coming down out of the dark (the original's
-# EVENT_CMD_PLAY_GIRATINA_ARRIVAL, the sky darkening as it descends) is the script's fade and the air wavering; the stones that rise and sink as the player comes and goes are there all the time. The Griseous Orb
-# is in the room Turnback Cave's portal leads to, as in the original.
+# The shadows are a shadow sweeping across the room (plan 09 · L11's effect), Giratina's cry and a shake of the
+# picture; its coming down out of the dark (the original's EVENT_CMD_PLAY_GIRATINA_ARRIVAL, the sky darkening as it
+# descends) is the script's fade, the camera rising to it and the air wavering, and the battle's own beat is plan 29's
+# (below); the stones that rise and sink as the player comes and goes are there all the time. The Griseous Orb is in
+# the room Turnback Cave's portal leads to, as in the original.
 
 
 # Who is here, by how far the story has come.
@@ -53,26 +54,49 @@ script SecondShadow
 # The original's DistortionWorldGiratinaRoom_CoordEvent_GiratinaArrival, on the last stone.
 script Arrival
   setvar VAR_DISTORTION_WORLD_PROGRESS 13
+  scene "Giratina comes down"
   face player up
   fade out 0.6
   cry "Giratina-Origin"
   camera shake 1.0
   show giratina
   fade in 0.8
+  # The camera rises to where it hangs over the head of the stones
+  camera pan 15 13 1.2
   effect ripple 15 13
   wait 0.5
   speaker none
   say "Giratina hangs in the dark before {player}, and its eyes do not leave them."
+  camera release 0.6
+  endscene
   end
 
 
-# Giratina (the original's DistortionWorldGiratinaRoom_Giratina).
+# Giratina (the original's DistortionWorldGiratinaRoom_Giratina). Its meeting is plan 29's beat (style guide,
+# "Legendary scenes"): the bars, the camera up to it, its shadow across the stones and the air wavering under slow
+# motion, its roar with the picture shaken, a line, and then the battle's own way in (plan 09 · L14's Mythical). What
+# follows the battle is a scene of its own.
 script Giratina
   scene "Giratina"
+  music stop
+  face player giratina
+  letterbox on 0.4
+  camera pan 15 13 1.2
+  camera zoom 1.4 0.8
+  effect shadow 15 13 2 left
+  slowmo 0.5 1.5
+  effect ripple 15 13
+  wait 1
   cry "Giratina-Origin"
+  camera shake 0.8
+  emote player exclaim
   speaker none
-  say "Gshrrraaaoooh!"
+  say "Giratina spreads its shadowy tendrils over the stones, and the whole torn world shudders with its roar!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
   wildbattle "Giratina-Origin" 47
+  scene "Giratina gone quiet"
   setvar VAR_DISTORTION_WORLD_PROGRESS 14
   hide giratina
   if result == 3 goto Caught
