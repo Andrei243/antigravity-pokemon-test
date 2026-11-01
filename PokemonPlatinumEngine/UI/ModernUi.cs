@@ -369,8 +369,10 @@ internal static partial class ModernUi
 
         const float gap = 32;
         float bw = (r.Width - 112 - gap * (buttons.Length - 1)) / buttons.Length;
+        // The buttons stand where the pointer finds them (plan 12 · Q6)
+        var rects = PromptButtons(sw, sh, buttons.Length, appear);
         for (int i = 0; i < buttons.Length; i++)
-            Button(new Rectangle(r.X + 56 + i * (bw + gap), r.Y + 216, bw, 84), 42, buttons[i].Color, buttons[i].Label, 32, i == selected);
+            Button(rects[i], 42, buttons[i].Color, buttons[i].Label, 32, i == selected);
         // A dangerous answer being held (plan 12 · Q9): its ring at the button's right end
         if (hold is { } h && h.Button >= 0 && h.Button < buttons.Length)
             HoldRing(new Vector2(r.X + 56 + h.Button * (bw + gap) + bw - 24 - HoldRingRadius, r.Y + 216 + 42), h.Fill);

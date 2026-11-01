@@ -213,6 +213,7 @@ if (mode == "scenarios") h.ScenariosMode();
 if (mode == "venues") h.VenuesMode();
 if (mode == "layers") h.LayersMode();
 if (mode == "soak") h.SoakMode();
+if (mode == "pointer") h.PointerMode();
 if (mode == "levelling") h.LevellingMode();
 if (mode == "photo") h.PhotoMode();
 

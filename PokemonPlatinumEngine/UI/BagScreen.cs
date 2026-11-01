@@ -598,6 +598,64 @@ public class BagScreen
         AudioManager.PlaySound("select");
     }
 
+    // ---------------------------------------------------------------- the pointer (plan 12 · Q6)
+
+    /// <summary>The first index of the pocket tabs in <see cref="HitTest"/>'s answers, and of the item's actions.</summary>
+    public const int TabHits = 100, ActionHits = 200;
+
+    /// <summary>
+    /// What lies under a point: a row of the pocket's list (its index), a pocket's tab (<see cref="TabHits"/> + the
+    /// pocket), a row of the item's menu (<see cref="ActionHits"/> + the row), a card of the team while an item is
+    /// aimed at one; anywhere while a level's panel waits. The rest (throwing away, a move to choose) is the keys'.
+    /// </summary>
+    public int? HitTest(System.Numerics.Vector2 at, Inventory inventory, Party party)
+    {
+        if (!IsActive || Tossing) return null;
+        if (choosingFor != null)
+        {
+            if (LevelUp != null) return UiPointer.Anywhere;
+            if (teaching != null || ChoosingMove || Options != null) return null;
+            for (int i = 0; i < party.Count; i++)
+                if (UiPointer.Inside(ModernUi.PartyCardRect(i), at)) return i;
+            return null;
+        }
+        if (Actions != null)
+            return ModernUi.HitRow(ModernUi.BagActionRows(GameEngine.VirtualWidth, Actions.Count), at) is int row ? ActionHits + row : null;
+        if (UiPointer.Hit(ModernUi.TabRects(ModernUi.BagTabStrip(GameEngine.VirtualWidth), Pockets.Length), at) is int tab) return TabHits + tab;
+        var items = inventory.GetPocketItems(CurrentPocket);
+        return ModernUi.HitRow(ModernUi.ListRows(ModernUi.BagList(), FirstRow, VisibleRows, items.Count, 26, items.Count > VisibleRows), at);
+    }
+
+    /// <summary>A hover: the cursor onto the row, the action or the Pokémon under the pointer (a tab waits for a click).</summary>
+    public void PointAt(int index, Inventory inventory, Party party)
+    {
+        if (choosingFor != null)
+        {
+            if (index < party.Count && index != TargetIndex && LevelUp == null)
+            {
+                TargetIndex = index;
+                AudioManager.PlaySound("cursor");
+            }
+            return;
+        }
+        if (index >= ActionHits)
+        {
+            if (Actions != null && index - ActionHits != ActionIndex) MoveCursor(index - ActionHits - ActionIndex, 0);
+            return;
+        }
+        if (index >= TabHits) return;
+        int count = inventory.GetPocketItems(CurrentPocket).Count;
+        if (index < count && index != SelectedIndex) MoveCursor(index - SelectedIndex, count);
+    }
+
+    /// <summary>A click on a pocket's tab opens the pocket, and is no Confirm; everything else a click is.</summary>
+    public bool Press(int index)
+    {
+        if (choosingFor != null || index < TabHits || index >= ActionHits) return false;
+        MovePocket(index - TabHits - PocketIndex);
+        return true;
+    }
+
     public void MoveTarget(int dx, int dy, int count)
     {
         // The cursor stays on the Pokémon whose level is being shown

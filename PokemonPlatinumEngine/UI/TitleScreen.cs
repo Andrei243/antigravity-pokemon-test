@@ -569,6 +569,53 @@ public sealed class TitleScreen
         AudioManager.PlaySound("cursor");
     }
 
+    // ------------------------------------------------------------------ the pointer (plan 12 · Q6)
+
+    /// <summary>
+    /// What lies under a point: a card or a row of the menu (only the cards while one is chosen to delete), a button
+    /// of a question; anywhere while the opening plays or a notice waits, where a click is the A button; nothing on the
+    /// panel of the ways to play, whose rows are the keys'.
+    /// </summary>
+    public int? HitTest(Vector2 at)
+    {
+        int sw = GameEngine.VirtualWidth, sh = GameEngine.VirtualHeight;
+        switch (Phase)
+        {
+            case TitlePhase.Notice when HoldNotice:
+                return null;
+            case TitlePhase.Notice or TitlePhase.Journey or TitlePhase.Reveal or TitlePhase.Idle or TitlePhase.Warning:
+                return UiPointer.Anywhere;
+            case TitlePhase.Menu:
+                return UiPointer.Hit(EntryRects(), at);
+            case TitlePhase.ChooseDelete:
+                return UiPointer.Hit(EntryRects(), at) is int card && card < cards.Count ? card : null;
+            case TitlePhase.ConfirmNewGame:
+                return UiPointer.Hit(ModernUi.PromptButtons(sw, sh, PlusCard?.Save != null ? 3 : 2), at);
+            case TitlePhase.ConfirmDelete or TitlePhase.ChooseAutosave:
+                return UiPointer.Hit(ModernUi.PromptButtons(sw, sh, 2), at);
+            default:
+                return null;
+        }
+    }
+
+    /// <summary>The cursor to what the pointer is over: an entry, or an answer of the question up.</summary>
+    public void PointAt(int index)
+    {
+        switch (Phase)
+        {
+            case TitlePhase.Menu or TitlePhase.ChooseDelete when index != SelectedIndex:
+                Move(index - SelectedIndex);
+                break;
+            case TitlePhase.ConfirmNewGame when PlusCard?.Save != null && index != NewGameAnswer:
+                SetNewGameAnswer(index);
+                AudioManager.PlaySound("cursor");
+                break;
+            case TitlePhase.ConfirmNewGame or TitlePhase.ConfirmDelete or TitlePhase.ChooseAutosave when PlusCard?.Save == null || Phase != TitlePhase.ConfirmNewGame:
+                if ((index == 1) != ConfirmYes) Move(1);
+                break;
+        }
+    }
+
     private void Leave(TitleChoice choice)
     {
         chosen = choice;

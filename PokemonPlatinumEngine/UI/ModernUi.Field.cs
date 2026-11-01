@@ -224,14 +224,15 @@ internal static partial class ModernUi
         // What is left here (plan 12 · Q22): one more under the last
         if (counts.Length > 0) LeftHerePanel(new Rectangle(panel.X, below, width, LeftHereHeight), counts);
 
+        // The rows stand where the pointer finds them (plan 12 · Q6)
+        var rows = StartMenuRows(sw, entries.Count, shown);
         for (int i = 0; i < entries.Count; i++)
         {
             bool last = i == entries.Count - 1;
-            float y = panel.Y + 20 + i * row + (last ? 18 : 0);
-            if (last) UiShapes.Fill(new Rectangle(panel.X + 36, y - 11, width - 72, 3), 1.5f, Rule);
+            var r = rows[i];
+            if (last) UiShapes.Fill(new Rectangle(panel.X + 36, r.Y - 11, width - 72, 3), 1.5f, Rule);
 
             var (label, icon, color) = entries[i];
-            var r = new Rectangle(panel.X + 16, y, width - 32, row - 8);
             var chip = new Vector2(r.X + 40, r.Y + r.Height / 2f);
             if (i == selected)
             {

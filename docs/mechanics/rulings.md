@@ -7396,3 +7396,31 @@ on the newest games' lines (a retry as their difficulty helps offer one, a suspe
   the menu then opens where the battle was left (or the next question, where it was left mid-turn). One whose data has
   changed since, or that can't be read, is refused at the title with a notice and taken away; one whose record no
   longer fits (a move learned mid-battle outside the record) is dropped and the game goes on from where the battle began.
+
+## The pointer (2026-11-01, plan 12 · Q6 and Q7)
+
+Platinum had a stylus on its lower screen; this game has a mouse. Nothing the mouse does is a rule of its own: it stands
+for the buttons, so no screen, battle or script can be played differently with it.
+
+- **A click is the A button**, on whatever the pointer is over: the screen's cursor is first brought there (the same
+  step a hover takes, through the screen's own cursor), then the frame's actions are given the Confirm press. A right
+  click is the B button, and in the field with no menu, script or Pokétch in hand it is the menu's button instead. The
+  wheel is the arrows up and down. The left button kept down after a click is Confirm kept down, so the held answers of
+  plan 12 · Q9 (deleting a save, the reset, releasing) are held with the mouse as with a key.
+- **Nothing but a pointable thing answers a click**: a target that can't be aimed at, an empty card of the team, a
+  place of the screen with nothing on it is nothing, and a click there does nothing (the menu's cursor stays where it
+  was). Where a line waits to be read (the field's text, a battle's line, the opening, a notice) a click anywhere reads
+  it on. A tab of the bag and the arrows beside a box's name act on a click and never on a hover, which would turn pages
+  as the pointer crosses them.
+- **The mouse is part of the recorded frame** (`InputFrame.Pointer`, a recording's format 2, read in the layout's
+  1920×1080 units), so a session played with it replays to the same picture in a window of any size; a recording of
+  format 1 has no mouse in it. Only `Program.Main` reads the computer's mouse (`InputManager.ReadsTheMouse`): a test,
+  the harness and a tool point with frames of their own (`Driver.Point`), and their pictures never move with the mouse
+  on the desk.
+- **No options row.** The plan named none, and the pointer changes nothing until the mouse is moved, so a Platinum
+  player who never touches it plays as before; the system's arrow is hidden over the window and the game draws its own.
+- **What is the keys' alone** (a later session's, plan 12 · Q6 and Q7's outcome lists them): the name keyboard's keys
+  are pointed at in the introduction only; the summary's pages, the Pokédex's entry pages and search, the PC's menus,
+  marks and tools, a shop's "how many?", the ways to play's panel, the move to use an item on and the bag's choice of a
+  move to forget, the battle's information panel's rows, the Mega, Z, Dynamax and Tera buttons and AUTO's hold, and
+  the other screens of the game (the Pokégear, the contests, the Frontier's boards and the rest).

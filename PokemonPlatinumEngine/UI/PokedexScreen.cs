@@ -291,6 +291,28 @@ public class PokedexScreen
     /// A step that comes from a key kept down (<paramref name="held"/>) stops at either end instead of wrapping,
     /// so holding a key brings the cursor to the end of the list and leaves it there.
     /// </summary>
+    // ---------------------------------------------------------------- the pointer (plan 12 · Q6)
+
+    /// <summary>The list's panel once it has slid in (<c>ModernUi.DrawPokedex</c>), and where its rows begin in it.</summary>
+    public static Rectangle ListPanel => new(ModernUi.Margin, ModernUi.ContentTop, 760, ModernUi.ContentBottom - ModernUi.ContentTop);
+    public const float ListTop = 132;
+
+    /// <summary>What lies under a point: a row of the list (its index; a click opens the entry); the entry's pages and the search are the keys'.</summary>
+    public int? HitTest(System.Numerics.Vector2 at)
+    {
+        if (!IsActive || Focus != PokedexFocus.List) return null;
+        return ModernUi.HitRow(ModernUi.ListRows(ListPanel, FirstRow, VisibleRows, rows.Count, ListTop, scrolls: true), at);
+    }
+
+    /// <summary>A hover: the cursor onto the row under the pointer.</summary>
+    public void PointAt(int index)
+    {
+        if (Focus != PokedexFocus.List || index < 0 || index >= rows.Count || index == SelectedIndex) return;
+        SelectedIndex = index;
+        Follow();
+        Tick(false);
+    }
+
     public void Move(int step, bool held = false)
     {
         if (step == 0) return;

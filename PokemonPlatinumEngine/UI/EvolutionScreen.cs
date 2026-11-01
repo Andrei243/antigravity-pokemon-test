@@ -202,6 +202,26 @@ public sealed class EvolutionScreen
         }
     }
 
+    /// <summary>
+    /// What lies under a point (plan 12 · Q7): a row of the move to forget while the choice is up, anywhere while a line
+    /// waits to be read (a click is the A button), nothing while the scene plays.
+    /// </summary>
+    public int? HitTest(System.Numerics.Vector2 at) => Phase switch
+    {
+        EvolutionPhase.MoveChoice when pokemon != null => ModernUi.HitMoveChoice(ChoicePanel, pokemon.Moves.Count, at),
+        EvolutionPhase.Notice or EvolutionPhase.Congratulate or EvolutionPhase.MoveNotice or EvolutionPhase.Stopped => UiPointer.Anywhere,
+        _ => null
+    };
+
+    /// <summary>The cursor onto the row the pointer is over.</summary>
+    public void PointAt(int index)
+    {
+        if (Phase == EvolutionPhase.MoveChoice && index is >= 0 and <= 4 && index != Cursor) MoveCursor(index - Cursor);
+    }
+
+    /// <summary>Where the choice of a move to forget stands once it has slid in.</summary>
+    private static Rectangle ChoicePanel => new(GameEngine.VirtualWidth - 64 - 820, 64, 820, 716);
+
     public void MoveCursor(int dy)
     {
         if (Phase != EvolutionPhase.MoveChoice || dy == 0) return;

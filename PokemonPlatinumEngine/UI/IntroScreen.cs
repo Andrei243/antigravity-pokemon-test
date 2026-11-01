@@ -322,6 +322,51 @@ public class IntroScreen
         else if (Phase == IntroPhase.EnterRival) RivalEntry!.ToDone();
     }
 
+    // ---------------------------------------------------------------- the pointer (plan 12 · Q6)
+
+    /// <summary>
+    /// What lies under a point: anywhere while the professor speaks (a click reads on); the boy (0) or the girl (1)
+    /// while the player chooses; YES (0) or the other answer (1) of a question; a key of the keyboard (its row times
+    /// 16 plus its column) while a name is typed.
+    /// </summary>
+    public int? HitTest(System.Numerics.Vector2 at)
+    {
+        if (!IsActive) return null;
+        if (talk.IsActive) return UiPointer.Anywhere;
+        int sw = GameEngine.VirtualWidth, sh = GameEngine.VirtualHeight;
+        switch (Phase)
+        {
+            case IntroPhase.ChooseLook:
+                for (int i = 0; i < 2; i++)
+                    if (UiPointer.Inside(new Rectangle(sw / 2f + (i == 0 ? -500 - 30 : 30), 96, 500, 640), at)) return i;
+                return null;
+            case IntroPhase.ConfirmLook or IntroPhase.ConfirmName or IntroPhase.ConfirmRival:
+                return UiPointer.Hit(ModernUi.PromptButtons(sw, sh, 2), at);
+            case IntroPhase.EnterName or IntroPhase.EnterRival when (Phase == IntroPhase.EnterName ? Entry : RivalEntry) is { } entry:
+                return ModernUi.HitRow(ModernUi.KeyboardKeys(ModernUi.NameBoardRect(sw), entry), at);
+            default:
+                return null;
+        }
+    }
+
+    /// <summary>A hover: the character, the answer or the key under the pointer.</summary>
+    public void PointAt(int index)
+    {
+        if (!IsActive || talk.IsActive || index == UiPointer.Anywhere) return;
+        switch (Phase)
+        {
+            case IntroPhase.ChooseLook when (index == 1 ? PlayerLook.Girl : PlayerLook.Boy) != Look:
+                Move(index == 1 ? 1 : -1, 0);
+                break;
+            case IntroPhase.ConfirmLook or IntroPhase.ConfirmName or IntroPhase.ConfirmRival when (index == 0) != AnswerYes:
+                Move(index == 0 ? -1 : 1, 0);
+                break;
+            case IntroPhase.EnterName or IntroPhase.EnterRival:
+                if ((Phase == IntroPhase.EnterName ? Entry : RivalEntry)?.PointAt(index / 16, index % 16) == true) AudioManager.PlaySound("cursor");
+                break;
+        }
+    }
+
     /// <summary>The arrows: between the two characters, over the keyboard, between the answers.</summary>
     public void Move(int dx, int dy)
     {

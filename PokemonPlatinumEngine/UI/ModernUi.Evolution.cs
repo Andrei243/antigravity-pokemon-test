@@ -123,10 +123,11 @@ internal static partial class ModernUi
         MoveRow(new Rectangle(x, r.Y + 64, w, 86), MoveDatabase.Get(newMove), null, false, Gold);
 
         Label(Text.Of("evolution.forgetWhichMove"), r.X + 44, r.Y + 178);
+        // The rows stand where the pointer finds them (plan 12 · Q7)
         for (int i = 0; i < p.Moves.Count && i < 4; i++)
-            MoveRow(new Rectangle(x, r.Y + 212 + i * 96, w, 86), p.Moves[i].Data, p.Moves[i].CurrentPP, cursor == i, Selection, p.Moves[i].MaxPP);
+            MoveRow(MoveChoiceRow(r, i), p.Moves[i].Data, p.Moves[i].CurrentPP, cursor == i, Selection, p.Moves[i].MaxPP);
 
-        var keep = new Rectangle(x, r.Y + 212 + 4 * 96 + 14, w, 78);
+        var keep = MoveChoiceRow(r, 4);
         Button(keep, 39, Blue, Text.Of("evolution.dontLearn", ("newMove", LocalNames.Move(newMove))), 30, cursor == 4);
     }
 

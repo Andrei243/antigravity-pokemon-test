@@ -180,6 +180,40 @@ public class OptionsScreen
         return true;
     }
 
+    // ---------------------------------------------------------------- the pointer (plan 12 · Q6)
+
+    /// <summary>A row of the list as it stands on the screen: the <paramref name="k"/>th shown.</summary>
+    public Rectangle RowRect(int k)
+    {
+        const float pitch = 86, height = 78;
+        float width = GameEngine.VirtualWidth - 128 - (Rows.Count > VisibleRows ? 36 : 0);
+        return new Rectangle(64, ModernUi.ContentTop + k * pitch, width, height);
+    }
+
+    /// <summary>
+    /// What lies under a point: a row of the list (its index among the rows; a click is the A button, which steps a
+    /// setting on or opens a page), or NO and YES while the reset question is up. The pages opened from here are the keys'.
+    /// </summary>
+    public int? HitTest(System.Numerics.Vector2 at)
+    {
+        if (!IsActive || Help.IsActive || Controls.IsActive || Packs.IsActive) return null;
+        if (ResetAsking) return UiPointer.Hit(ModernUi.PromptButtons(GameEngine.VirtualWidth, GameEngine.VirtualHeight, 2), at);
+        for (int k = 0; k < Math.Min(VisibleRows, Rows.Count); k++)
+            if (UiPointer.Inside(RowRect(k), at)) return FirstRow + k;
+        return null;
+    }
+
+    /// <summary>A hover: the cursor onto the row (or the reset question's answer) under the pointer.</summary>
+    public void PointAt(int index)
+    {
+        if (ResetAsking)
+        {
+            if ((index == 1) != ResetYes) ToggleReset();
+            return;
+        }
+        if (index != SelectedIndex && index >= 0 && index < Rows.Count) Move(index - SelectedIndex);
+    }
+
     /// <summary>One step of the cursor up or down the rows, wrapping round; the window follows it.</summary>
     public void Move(int dy)
     {
@@ -611,7 +645,7 @@ public class OptionsScreen
         {
             int i = FirstRow + k;
             var (label, value, _) = Described(settings, Rows[i]);
-            ModernUi.ValueRow(new Rectangle(64, ModernUi.ContentTop + k * pitch, width, height), label, value, i == SelectedIndex);
+            ModernUi.ValueRow(RowRect(k), label, value, i == SelectedIndex);
         }
         if (scrolls)
         {
