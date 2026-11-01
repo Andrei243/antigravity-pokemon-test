@@ -636,7 +636,7 @@ public static class RegionDatabase
                 "DewfordTown_House1", "DewfordTown_PokemonCenter_1F", "DewfordTown_PokemonCenter_2F", "DewfordTown_Gym",
                 "DewfordTown_Hall", "DewfordTown_House2", "GraniteCave_1F", "GraniteCave_B1F", "GraniteCave_B2F",
                 "GraniteCave_StevensRoom", "Route109_SeashoreHouse", "SlateportCity_SternsShipyard_1F",
-                "SlateportCity_SternsShipyard_2F", "SlateportCity_BattleTentLobby", "SlateportCity_NameRatersHouse",
+                "SlateportCity_SternsShipyard_2F", "SlateportCity_BattleTentLobby", "SlateportCity_BattleTentCorridor", "SlateportCity_BattleTentBattleRoom", "SlateportCity_NameRatersHouse",
                 "SlateportCity_PokemonFanClub", "SlateportCity_OceanicMuseum_1F", "SlateportCity_OceanicMuseum_2F",
                 "SlateportCity_Harbor", "SlateportCity_House", "SlateportCity_PokemonCenter_1F",
                 "SlateportCity_PokemonCenter_2F", "SlateportCity_Mart",
@@ -645,14 +645,14 @@ public static class RegionDatabase
                 "Route110_TrickHouseEntrance", "Route110_TrickHouseEnd", "Route110_TrickHousePuzzle1",
                 "MauvilleCity_Gym", "MauvilleCity_BikeShop", "MauvilleCity_House1", "MauvilleCity_House2",
                 "MauvilleCity_PokemonCenter_1F", "MauvilleCity_PokemonCenter_2F", "MauvilleCity_Mart",
-                "Route117_PokemonDayCare", "VerdanturfTown_BattleTentLobby", "VerdanturfTown_Mart",
+                "Route117_PokemonDayCare", "VerdanturfTown_BattleTentLobby", "VerdanturfTown_BattleTentCorridor", "VerdanturfTown_BattleTentBattleRoom", "VerdanturfTown_Mart",
                 "VerdanturfTown_PokemonCenter_1F", "VerdanturfTown_PokemonCenter_2F", "VerdanturfTown_WandasHouse",
                 "VerdanturfTown_FriendshipRatersHouse", "VerdanturfTown_House",
                 // Plan 21 · H3, part c, and H4, part a: Mauville's Game Corner, Fiery Path, Meteor Falls' first room and the rooms
                 // of Routes 111 to 114 and Fallarbor Town
                 "MauvilleCity_GameCorner", "FieryPath", "MeteorFalls_1F_1R", "Route111_WinstrateFamilysHouse",
                 "Route111_OldLadysRestStop", "Route112_CableCarStation", "Route113_GlassWorkshop", "Route114_FossilManiacsHouse",
-                "Route114_FossilManiacsTunnel", "Route114_LanettesHouse", "FallarborTown_Mart", "FallarborTown_BattleTentLobby",
+                "Route114_FossilManiacsTunnel", "Route114_LanettesHouse", "FallarborTown_Mart", "FallarborTown_BattleTentLobby", "FallarborTown_BattleTentCorridor", "FallarborTown_BattleTentBattleRoom",
                 "FallarborTown_PokemonCenter_1F", "FallarborTown_PokemonCenter_2F", "FallarborTown_CozmosHouse",
                 "FallarborTown_MoveRelearnersHouse",
                 // Plan 21 · H4, part b: Meteor Falls' other rooms, Mt. Chimney, Jagged Pass, Lavaridge Town's rooms and

@@ -11,10 +11,10 @@
       },
       "dialog": {
         "en": [
-          "Welcome to the Battle Tent! Here, the judges decide a battle after three turns. Our challenge isn't ready yet, I'm afraid."
+          "Welcome to the Battle Tent!"
         ],
         "text": [
-          "Bun venit la Cortul de Luptă! Aici, judecătorii hotărăsc lupta după trei ture. Provocarea noastră nu e încă pregătită, din păcate."
+          "Bun venit la Cortul de Luptă!"
         ]
       }
     },

@@ -1,0 +1,59 @@
+# The battle room of Verdanturf's Battle Tent (plan 21 · H3's last part): the round, three Trainers one after another on the
+# Battle Palace's rules, is this one arrival script, on the beats of Emerald's VerdanturfTown_BattleTentBattleRoom. The
+# player walks in (Emerald walks a stand-in), each Trainer walks down to face them, and the round ends in the lobby. The
+# opponent is ours (the overlay's "opponent", shown by FLAG_HOENN_TENT_OPPONENT while a Trainer stands in the room).
+
+
+script OnEnter
+  venue active
+  if result == 0 end
+  clearflag FLAG_HOENN_TENT_OPPONENT
+  hide opponent
+  walk player up 3
+  face player right
+label Battle
+  venue next
+  speaker "Attendant"
+  say "Battle {number} of three! Your Pokémon will choose their own moves."
+  venue opponent
+  place opponent 11 1 down
+  setflag FLAG_HOENN_TENT_OPPONENT
+  show opponent
+  walk opponent down 4
+  face opponent left
+  text "{foe} steps forward!"
+  venue fight
+  if result == 0 goto Lost
+  walk opponent up 4
+  call Leaves
+  venue won
+  if result == 1 goto Won
+  speaker "Attendant"
+  say "Well fought! Your Pokémon have been made whole again."
+  choose "Are you ready for the next Trainer?" "Go on" "Retire"
+  if result == 0 goto Battle
+  speaker "Attendant"
+  say "You'll retire? Very well. The challenge ends here."
+  goto Home
+label Won
+  speaker "Attendant"
+  say "Three wins in a row! Congratulations! Please accept this prize."
+  give "Nest Ball"
+  goto Home
+label Lost
+  call Leaves
+  speaker "Attendant"
+  say "The challenge ends here. Please try again another time!"
+label Home
+  venue end
+  fade out 0.6
+  warp "VerdanturfTown_BattleTentLobby" 6 6 up
+  fade in
+  end
+
+
+# The opponent goes off the floor again
+script Leaves
+  clearflag FLAG_HOENN_TENT_OPPONENT
+  hide opponent
+  return

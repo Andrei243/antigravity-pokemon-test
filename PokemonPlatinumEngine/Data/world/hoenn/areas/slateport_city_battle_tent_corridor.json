@@ -1,0 +1,23 @@
+{
+  "key": "slateport_city_battle_tent_corridor",
+  "index": 114,
+  "name": "Slateport City",
+  "matrix": 63,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_B_TOWER_RS",
+  "nightMusic": "MUS_B_TOWER_RS",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [],
+  "objects": [
+    { "id": "slateport_tent_corridor_attendant", "looks": "scientist_1", "movement": "look_north", "x": 2, "z": 6, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "" }
+  ],
+  "signs": [],
+  "triggers": []
+}

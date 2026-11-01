@@ -1,0 +1,15 @@
+{
+  // The battle room of Verdanturf's Battle Tent (plan 21 · H3's last part): a round of three, the Battle Palace's rules, is
+  // this room's one arrival script (verdanturf_town_battle_tent_battle_room.txt). Emerald hides the player and walks a stand-in
+  // of them in so the camera keeps still: here the player walks in, so the stand-in is left out, and so is the area's
+  // opponent, whose place the opponent of ours below takes (the Frontier's rooms find their trainer as "opponent")
+  "area": "verdanturf_town_battle_tent_battle_room",
+  "bgmTrack": "hoenn/verdanturf",
+  "heldBack": [ "verdanturf_tent_battle_player", "verdanturf_tent_battle_opponent" ],
+  "people": {
+    "verdanturf_tent_battle_attendant": { "name": "Attendant", "still": true, "dialog": [ "Good luck!" ] }
+  },
+  "npcs": [
+    { "id": "opponent", "name": "Trainer", "npcType": "Youngster", "x": 11, "y": 1, "facing": "Down", "dialog": [ "..." ], "shownBy": "FLAG_HOENN_TENT_OPPONENT" }
+  ]
+}

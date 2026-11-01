@@ -1,0 +1,46 @@
+# Slateport's Battle Tent (plan 21 · H3's last part). docs/scripts.md describes the language; the lines are our own, on the
+# beats of Emerald's (data/maps/SlateportCity_BattleTentLobby/scripts.inc): a round of three Trainers on the Battle Factory's
+# rules, on three Pokémon rented from six offered, a swap after each win, and a Full Heal for the three won.
+#
+# The round is a tent's venue on rentals (Models/Frontier/BattleVenue.cs, `venue tent slateport`): the six offered and the
+# Trainers' three are made at thirty as Hoenn's levels map it, and the player's own team stays out of it. The rentals are
+# chosen in the corridor (slateport_city_battle_tent_corridor.txt) on the Factory's own screen; the battle room's arrival
+# script is the round.
+
+
+script Attendant
+  face self player
+  speaker "Attendant"
+  say "Welcome to the Slateport Battle Tent! Here you battle with Pokémon we lend you."
+label Ask
+  choose "Would you like to take the Battle Tent challenge?" "Enter" "The rules" "No"
+  if result == 1 goto Rules
+  if result == 2 goto Later
+  venue tent slateport
+  say "Thank you! Your rental Pokémon are ready. Please follow me."
+  walk self up 3
+  fade out 0.6
+  warp "SlateportCity_BattleTentCorridor" 2 7 up
+  fade in
+  end
+label Later
+  say "Please come again. There's always a new rental waiting to surprise you."
+  end
+label Rules
+  say "You'll choose three of six rental Pokémon, and battle three Trainers in a row with them."
+  say "After each win, you may swap one of yours for one of the Trainer you just beat."
+  say "Your own Pokémon stay out of it. Win all three battles for a prize!"
+  goto Ask
+
+
+# The sailor who hands out Torment (Emerald's TormentGiver, FLAG_RECEIVED_TM_TORMENT, TM41)
+script TormentGiver
+  face self player
+  speaker "Sailor"
+  if flag FLAG_RECEIVED_TM_TORMENT goto Given
+  say "Hey, you! Don't look so worried. I've got something for you."
+  give "TM41"
+  setflag FLAG_RECEIVED_TM_TORMENT
+label Given
+  say "Torment keeps a foe from using the same move twice in a row. Drives them up the wall!"
+  end

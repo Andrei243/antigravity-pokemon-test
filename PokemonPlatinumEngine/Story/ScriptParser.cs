@@ -620,7 +620,7 @@ public static class ScriptParser
                 return new Instruction { Op = Op.Apricorn, Line = line, Name = what, Other = colour };
             }
             case "chooseitem":
-                return new Instruction { Op = Op.ChooseItem, Line = line, Name = r.OneOf("berries", "mulch") };
+                return new Instruction { Op = Op.ChooseItem, Line = line, Name = r.OneOf("berries", "mulch", "gift") };
             case "swarms":
                 r.OneOf("on");
                 return new Instruction { Op = Op.Swarms, Line = line };
@@ -1045,11 +1045,17 @@ public static class ScriptParser
                 string which = what == "finish" ? r.OneOf("won", "lost") : "";
                 return new Instruction { Op = Op.Bracket, Line = line, Name = what, Other = which };
             }
+            // The Lilycove Lady's favour (plan 21 · H11, part c)
+            case "favorlady":
+                return new Instruction { Op = Op.FavorLady, Line = line, Name = r.OneOf("which", "give", "new") };
             // The Battle Palace's and the Battle Arena's rounds (plan 14 · B9)
             case "venue":
             {
-                string what = r.OneOf("enough", "choose", "check", "begin", "active", "next", "opponent", "fight", "won", "finish", "points", "streak", "best", "end");
-                string which = what is "begin" or "streak" or "best" ? r.OneOf("palace", "arena") : what == "finish" ? r.OneOf("won", "lost") : "";
+                string what = r.OneOf("enough", "choose", "check", "begin", "active", "next", "opponent", "fight", "won", "finish", "points", "streak", "best", "end",
+                    "tent", "rent", "trade", "length");
+                // Hoenn's Battle Tents (plan 21 · H3's last part): a round of three begun in a tent, Slateport's rentals and trades
+                string which = what is "begin" or "streak" or "best" ? r.OneOf("palace", "arena") : what == "finish" ? r.OneOf("won", "lost")
+                    : what == "tent" ? r.OneOf("verdanturf", "fallarbor", "slateport") : "";
                 return new Instruction { Op = Op.Venue, Line = line, Name = what, Other = which };
             }
             // The Battle Pike's rooms and the Battle Pyramid's floors (plan 14 · B10)

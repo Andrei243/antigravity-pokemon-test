@@ -1,0 +1,36 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitor"
+      ]
+    },
+    {
+      "en": [
+        "Here are six rental Pokémon. Please choose the three you'll battle with."
+      ],
+      "text": [
+        "Iată șase Pokémoni de închiriat. Te rog alege-i pe cei trei cu care vei lupta."
+      ]
+    },
+    {
+      "en": [
+        "No rentals? Then the challenge is over. Please come again."
+      ],
+      "text": [
+        "Niciun Pokémon închiriat? Atunci provocarea s-a încheiat. Te mai așteptăm."
+      ]
+    },
+    {
+      "en": [
+        "Right this way, please."
+      ],
+      "text": [
+        "Pe aici, te rog."
+      ]
+    }
+  ]
+}

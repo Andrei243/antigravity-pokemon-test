@@ -1,0 +1,25 @@
+{
+  "key": "slateport_city_battle_tent_battle_room",
+  "index": 115,
+  "name": "Slateport City",
+  "matrix": 64,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_B_TOWER_RS",
+  "nightMusic": "MUS_B_TOWER_RS",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [],
+  "objects": [
+    { "id": "scientist_1", "looks": "scientist_1", "movement": "look_east", "x": 1, "z": 4, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "" },
+    { "id": "slateport_tent_battle_opponent", "looks": "var_0", "movement": "look_south", "x": 5, "z": 1, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "" },
+    { "id": "slateport_tent_battle_player", "looks": "var_1", "movement": "look_north", "x": 4, "z": 8, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "" }
+  ],
+  "signs": [],
+  "triggers": []
+}

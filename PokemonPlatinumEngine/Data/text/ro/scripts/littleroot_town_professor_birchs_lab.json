@@ -156,6 +156,22 @@
     },
     {
       "en": [
+        "Oh, {player}! Is that a PokéNav? Let me put my number in it, so I can hear about your Pokédex wherever you are."
+      ],
+      "text": [
+        "Oh, {player}! Ăla e un PokéNav? Lasă-mă să-mi trec numărul în el, ca să aflu de Pokédexul tău oriunde ai fi."
+      ]
+    },
+    {
+      "en": [
+        "Registered Prof. Birch in the PokéNav."
+      ],
+      "text": [
+        "Prof. Birch a fost înregistrat în PokéNav."
+      ]
+    },
+    {
+      "en": [
         "{rival} is on Route 103, north of Oldale Town. Go and say hello!"
       ],
       "text": [

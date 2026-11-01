@@ -163,12 +163,19 @@ public class BagScreen
     {
         Open();
         PickingFor = what;
-        CurrentPocket = what == "mulch" ? ItemPocket.Items : ItemPocket.Berries;
+        CurrentPocket = what is "mulch" or "gift" ? ItemPocket.Items : ItemPocket.Berries;
     }
 
-    /// <summary>Whether an item is what a script asked for: a berry that grows, or a mulch.</summary>
-    public static bool Fits(string what, ItemData item) =>
-        what == "mulch" ? Overworld.BerryPatches.MulchOf(item.Name) != Overworld.Mulch.None : item.Berry != null;
+    /// <summary>
+    /// Whether an item is what a script asked for: a berry that grows, a mulch, or a gift (anything that can be handed over:
+    /// no key item, TM or HM, plan 21 · H11, part c's Lilycove Lady).
+    /// </summary>
+    public static bool Fits(string what, ItemData item) => what switch
+    {
+        "mulch" => Overworld.BerryPatches.MulchOf(item.Name) != Overworld.Mulch.None,
+        "gift" => item.Pocket is not (ItemPocket.KeyItems or ItemPocket.TMsAndHMs),
+        _ => item.Berry != null
+    };
 
     /// <summary>Once the bag has closed on a script's choice: true, and the item chosen (null for none). Once.</summary>
     public bool TakePick(out ItemData? item)

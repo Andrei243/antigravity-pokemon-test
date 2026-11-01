@@ -1,0 +1,23 @@
+{
+  "people": {
+    "slateport_tent_corridor_attendant": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitor"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This way, please."
+        ],
+        "text": [
+          "Pe aici, te rog."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

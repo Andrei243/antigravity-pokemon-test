@@ -1,0 +1,114 @@
+{
+  "Attendant": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitor"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Fallarbor Battle Tent! Every bout here is fought to a finish, or to the judge's verdict."
+      ],
+      "text": [
+        "Bun venit la Cortul de Luptă din Fallarbor! Fiecare luptă se duce până la capăt sau până la verdictul arbitrului."
+      ]
+    },
+    {
+      "en": [
+        "Would you like to take the Battle Tent challenge?",
+        "Enter",
+        "The rules",
+        "No"
+      ],
+      "text": [
+        "Vrei să încerci provocarea Cortului de Luptă?",
+        "Intră",
+        "Regulile",
+        "Nu"
+      ]
+    },
+    {
+      "en": [
+        "You need three Pokémon that can take part, all of different species and holding different items."
+      ],
+      "text": [
+        "Ai nevoie de trei Pokémoni care pot participa, toți de specii diferite și ținând obiecte diferite."
+      ]
+    },
+    {
+      "en": [
+        "An Egg can't take part, and nor can {banned}."
+      ],
+      "text": [
+        "Un Ou nu poate participa, și nici {banned}."
+      ]
+    },
+    {
+      "en": [
+        "Please choose the three Pokémon you'll enter."
+      ],
+      "text": [
+        "Te rog alege cei trei Pokémoni pe care îi înscrii."
+      ]
+    },
+    {
+      "en": [
+        "Thank you! Three Trainers are waiting for you. Please follow me."
+      ],
+      "text": [
+        "Mulțumesc! Trei Antrenori te așteaptă. Te rog urmează-mă."
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry. The three entered must all be of different species."
+      ],
+      "text": [
+        "Îmi pare rău. Cei trei înscriși trebuie să fie toți de specii diferite."
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry. No two of the three entered may hold the same item."
+      ],
+      "text": [
+        "Îmi pare rău. Doi dintre cei trei înscriși nu pot ține același obiect."
+      ]
+    },
+    {
+      "en": [
+        "Please come again. The judges never tire of a good bout."
+      ],
+      "text": [
+        "Te mai așteptăm. Arbitrii nu se satură niciodată de o luptă bună."
+      ]
+    },
+    {
+      "en": [
+        "Your Pokémon fight one on one, and nobody switches out. If neither falls in three turns, the judge decides."
+      ],
+      "text": [
+        "Pokémonii luptă unul contra unul și nimeni nu e schimbat. Dacă niciunul nu cade în trei ture, decide arbitrul."
+      ]
+    },
+    {
+      "en": [
+        "The judge looks at how boldly each one fought, how well it aimed and how much HP it kept."
+      ],
+      "text": [
+        "Arbitrul se uită cât de îndrăzneț a luptat fiecare, cât de bine a țintit și câte PV i-au rămas."
+      ]
+    },
+    {
+      "en": [
+        "Your three keep their own levels and are made whole after every battle. Win three in a row for a prize!"
+      ],
+      "text": [
+        "Cei trei își păstrează nivelul și sunt refăcuți după fiecare luptă. Câștigă trei la rând pentru un premiu!"
+      ]
+    }
+  ]
+}

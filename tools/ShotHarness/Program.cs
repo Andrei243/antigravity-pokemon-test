@@ -206,6 +206,7 @@ if (mode == "skips") h.SkipsMode();
 if (mode == "contest") h.BugContestMode();
 if (mode == "athlon") h.AthlonMode();
 if (mode == "hoenncontest") h.HoennContestMode();
+if (mode == "hoenntents") h.HoennTentsMode();
 if (mode == "play") h.PlayMode();
 if (mode == "budgets") h.BudgetsMode();
 if (mode == "run") h.RunScenariosMode();

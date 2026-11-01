@@ -196,6 +196,24 @@ script MrStone
   end
 
 
+# Professor Birch, registered in his lab once the PokéNav has Match Call (plan 21 · H3's last part; Emerald's
+# EventScript_RegisterProfBirch): Emerald's call rates the Pokédex, and so does ours, by the species caught
+script ProfBirch
+  speaker "Prof. Birch"
+  if var CAUGHT >= 60 goto Many
+  if var CAUGHT >= 20 goto Some
+  say "Hello, {player}! How's the Pokédex coming along? Every Pokémon you catch is a new page of Hoenn!"
+  say "Get out there and meet more of them. The grass is always full of surprises!"
+  end
+label Some
+  say "{player}! Look at all you've caught already. You're turning into a real field researcher!"
+  say "Try fishing, surfing and the grass at night. Hoenn hides a lot of Pokémon from people who stay on the roads."
+  end
+label Many
+  say "So many kinds of Pokémon caught! {player}, your Pokédex is better than my notes. I'm almost embarrassed!"
+  end
+
+
 # The rival, the hero the player isn't
 script HoennRival
   speaker "{rival}"

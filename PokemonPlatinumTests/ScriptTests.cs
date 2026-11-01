@@ -650,6 +650,16 @@ public class ScriptTests
           venue streak palace
           venue best arena
           venue end
+          venue tent verdanturf
+          venue tent fallarbor
+          venue tent slateport
+          venue rent
+          venue trade
+          venue length
+          favorlady which
+          favorlady give
+          favorlady new
+          chooseitem gift
           pike enough
           pike choose
           pike check

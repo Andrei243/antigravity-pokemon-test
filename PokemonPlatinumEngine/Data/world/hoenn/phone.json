@@ -12,6 +12,12 @@
     "area": "rustboro_city_devon_corp_3f"
   },
   {
+    "id": "prof_birch",
+    "type": 2,
+    "class": "Pokémon Professor",
+    "area": "littleroot_town_professor_birchs_lab"
+  },
+  {
     "id": "hoenn_rival",
     "type": 11,
     "class": "Pokémon Trainer",

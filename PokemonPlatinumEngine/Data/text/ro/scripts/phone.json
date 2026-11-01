@@ -415,6 +415,56 @@
       ]
     }
   ],
+  "ProfBirch": [
+    {
+      "en": [
+        "Prof. Birch"
+      ],
+      "text": [
+        "Prof. Birch"
+      ]
+    },
+    {
+      "en": [
+        "Hello, {player}! How's the Pokédex coming along? Every Pokémon you catch is a new page of Hoenn!"
+      ],
+      "text": [
+        "Salut, {player}! Cum merge Pokédexul? Fiecare Pokémon pe care-l prinzi e o pagină nouă din Hoenn!"
+      ]
+    },
+    {
+      "en": [
+        "Get out there and meet more of them. The grass is always full of surprises!"
+      ],
+      "text": [
+        "Ieși și cunoaște-i și pe alții. Iarba e mereu plină de surprize!"
+      ]
+    },
+    {
+      "en": [
+        "{player}! Look at all you've caught already. You're turning into a real field researcher!"
+      ],
+      "text": [
+        "{player}! Uite câți ai prins deja. Devii un adevărat cercetător de teren!"
+      ]
+    },
+    {
+      "en": [
+        "Try fishing, surfing and the grass at night. Hoenn hides a lot of Pokémon from people who stay on the roads."
+      ],
+      "text": [
+        "Încearcă pescuitul, surfingul și iarba noaptea. Hoenn ascunde mulți Pokémoni de cei care rămân pe drumuri."
+      ]
+    },
+    {
+      "en": [
+        "So many kinds of Pokémon caught! {player}, your Pokédex is better than my notes. I'm almost embarrassed!"
+      ],
+      "text": [
+        "Atâtea feluri de Pokémoni prinși! {player}, Pokédexul tău e mai bun decât notițele mele. Aproape că mi-e rușine!"
+      ]
+    }
+  ],
   "HoennRival": [
     {
       "en": [
