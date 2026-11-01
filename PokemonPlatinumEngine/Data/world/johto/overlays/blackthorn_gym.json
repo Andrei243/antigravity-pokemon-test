@@ -6,6 +6,8 @@
   // Hall of Fame, which this game has not yet: she is always home
   "area": "blackthorn_gym",
   "bgmTrack": "johto/gym",
+  // Clair's type: the room is a Gym hall in its colours, and its battles are fought on the Gym's stage
+  "arenaType": "Dragon",
   "triggers": [
     { "trigger": 0, "script": "BackToTheDoor" },
     { "trigger": 1, "script": "BackToTheDoor" },

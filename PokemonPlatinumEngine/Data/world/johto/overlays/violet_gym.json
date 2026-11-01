@@ -5,6 +5,9 @@
   "area": "violet_gym",
   "interior": "Aerie",
   "overTheDark": true,
+  // Falkner's type: the walkways keep their own look (the interior above wins), and his battles are fought on the Gym's
+  // stage, as every Gym of Johto's are (plan 20 · J5's leftovers)
+  "arenaType": "Flying",
   "bgmTrack": "johto/gym",
   "people": {
     "t22gym0101_gsleader1": { "name": "Falkner", "npcType": "Falkner", "script": "Falkner", "still": true },

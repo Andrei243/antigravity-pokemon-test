@@ -7,21 +7,210 @@
 # in words and the count moves on to 3, which the grunt at the tower's stairs asks (goldenrod_radio_tower_1f.txt).
 # The door at the east end of the long corridor is locked until the Basement Key from the fifth floor's false
 # Director opens it (FLAG_UNK_1C0): it leads up into the nook of the passage that goes down to the warehouse.
-# HeartGold's shops, salons and photo studio, open on their days of the week, and the Kimono Girl's scene are a later
-# part's, and the floor's arrival leaves them be.
+# Since plan 20 · J5's leftovers the shops and salons along the corridor keep their days (HeartGold's FLAG_UNK_1B0 to
+# 1B3, which the arrival sets and clears by the weekday; the rulings' "The shops and salons under Goldenrod"): the herb
+# shop every day, the bargain shop on Mondays, the elder of the two barbers on Tuesdays, Thursdays and Saturdays and the
+# younger on Sundays, Wednesdays and Fridays, and none of them while Team Rocket hold the Radio Tower. The photo
+# studio's backdrops and the Kimono Girl's scene are left out.
 
 
 # D37R0102_008
 script OnEnter
   setflag FLAG_UNK_1B4
   setflag FLAG_HIDE_ROCKET_TAKEOVER_2
+  setflag FLAG_UNK_1B0
+  setflag FLAG_UNK_1B1
+  setflag FLAG_UNK_1B2
+  setflag FLAG_UNK_1B3
   if var VAR_SCENE_ROCKET_TAKEOVER == 2 goto Takeover
   if var VAR_SCENE_ROCKET_TAKEOVER == 3 goto Takeover
   if var VAR_SCENE_ROCKET_TAKEOVER == 4 end
   clearflag FLAG_HIDE_ROCKET_TAKEOVER_2
+  clearflag FLAG_UNK_1B1
+  if weekday monday clearflag FLAG_UNK_1B0
+  if weekday tuesday clearflag FLAG_UNK_1B2
+  if weekday thursday clearflag FLAG_UNK_1B2
+  if weekday saturday clearflag FLAG_UNK_1B2
+  if weekday sunday clearflag FLAG_UNK_1B3
+  if weekday wednesday clearflag FLAG_UNK_1B3
+  if weekday friday clearflag FLAG_UNK_1B3
   end
 label Takeover
   clearflag FLAG_UNK_1B4
+  end
+
+
+# The herb shop (HeartGold's old woman at its counter): the four herbs, bitter and cheap (marts.json's herb counter,
+# the one Lavaridge Town's shop keeps too)
+script HerbShop
+  face self player
+  speaker "Herbalist"
+  say "Hello, dear. Herbs are bitter, but they do a body good, and they cost next to nothing."
+  shop "lavaridge_herb_shop"
+  say "Mind your Pokémon pull a face when they take them. It means they're working."
+  end
+
+
+# The bargain shop (HeartGold's old man at his counter, on Mondays): one treasure a day at a bargain
+script Bargains
+  face self player
+  speaker "Old Man"
+  if flag FLAG_DAILY_GOLDENROD_BARGAIN_BOUGHT goto SoldOut
+  say "Psst! Treasures at a fraction of what the collectors pay. One to a customer, mind, and only today."
+  choose "What will it be?" "NUGGET  4,500" "PEARL  650" "BIG PEARL  3,500" "STARDUST  900" "STAR PIECE  4,600" "NOTHING"
+  if result == 0 goto Nugget
+  if result == 1 goto Pearl
+  if result == 2 goto BigPearl
+  if result == 3 goto Stardust
+  if result == 4 goto StarPiece
+  goto Later
+label Nugget
+  takemoney 4500
+  if result == 0 goto Short
+  give "Nugget"
+  goto Sold
+label Pearl
+  takemoney 650
+  if result == 0 goto Short
+  give "Pearl"
+  goto Sold
+label BigPearl
+  takemoney 3500
+  if result == 0 goto Short
+  give "Big Pearl"
+  goto Sold
+label Stardust
+  takemoney 900
+  if result == 0 goto Short
+  give "Stardust"
+  goto Sold
+label StarPiece
+  takemoney 4600
+  if result == 0 goto Short
+  give "Star Piece"
+label Sold
+  setflag FLAG_DAILY_GOLDENROD_BARGAIN_BOUGHT
+  say "A pleasure doing business. Not a word to the collectors, eh?"
+  end
+label Short
+  say "Your purse is a little light for that one, I'm afraid."
+  end
+label Later
+  say "Suit yourself. These bargains won't wait for ever, though."
+  end
+label SoldOut
+  say "That's all I'll part with today. Come by again on a Monday."
+  end
+
+
+# The elder of the two barbers (HeartGold's man at the north salon, on Tuesdays, Thursdays and Saturdays): a trim for
+# 500, after which the Pokémon is a good deal friendlier
+script ElderBarber
+  face self player
+  speaker "Barber"
+  if flag FLAG_DAILY_GOLDENROD_HAIRCUT goto Tomorrow
+  say "Welcome! I'm the elder of the two barbers down here, and the better, whatever my brother tells you."
+  ask "A trim for one of your Pokémon is 500. Shall I?"
+  if no goto NotToday
+  if not money >= 500 goto Short
+  # How the trim comes out is rolled first, since RESULT names the Pokémon from the choice on
+  random 2
+  setvar VAR_GOLDENROD_HAIRCUT_ROLL RESULT
+  say "Which one shall it be?"
+  choosepokemon
+  if result == 255 goto NotToday
+  if result == 254 goto Egg
+  if var VAR_GOLDENROD_HAIRCUT_ROLL == 0 goto Good
+  team befriend 5
+  fade out
+  sound "heal"
+  wait 1
+  fade in
+  text "{member:RESULT} is delighted with its new look!"
+  goto Done
+label Good
+  team befriend 3
+  fade out
+  sound "heal"
+  wait 1
+  fade in
+  text "{member:RESULT} looks pleased with its trim."
+label Done
+  takemoney 500
+  setflag FLAG_DAILY_GOLDENROD_HAIRCUT
+  say "There we are. Come back another day and I'll do it again."
+  end
+label Egg
+  say "An Egg? There's nothing on it to trim!"
+  end
+label Short
+  say "Oh dear, that's not quite enough. Another time."
+  end
+label NotToday
+  say "Another time, then."
+  end
+label Tomorrow
+  say "One trim a day is plenty. Come again another day."
+  end
+
+
+# The younger barber (HeartGold's man at the south salon, on Sundays, Wednesdays and Fridays): a trim for 300, which
+# goes better some days than others
+script YoungerBarber
+  face self player
+  speaker "Barber"
+  if flag FLAG_DAILY_GOLDENROD_HAIRCUT goto Tomorrow
+  say "Welcome! I'm the younger of the two barbers down here, and the cheaper, whatever my brother tells you."
+  ask "A trim for one of your Pokémon is 300. Shall I?"
+  if no goto NotToday
+  if not money >= 300 goto Short
+  # How the trim comes out is rolled first, since RESULT names the Pokémon from the choice on
+  random 3
+  setvar VAR_GOLDENROD_HAIRCUT_ROLL RESULT
+  say "Which one shall it be?"
+  choosepokemon
+  if result == 255 goto NotToday
+  if result == 254 goto Egg
+  if var VAR_GOLDENROD_HAIRCUT_ROLL == 0 goto Overjoyed
+  if var VAR_GOLDENROD_HAIRCUT_ROLL == 1 goto Pleased
+  team befriend 1
+  fade out
+  sound "heal"
+  wait 1
+  fade in
+  text "{member:RESULT} looks a little happier."
+  goto Done
+label Pleased
+  team befriend 3
+  fade out
+  sound "heal"
+  wait 1
+  fade in
+  text "{member:RESULT} looks pleased with its trim."
+  goto Done
+label Overjoyed
+  team befriend 10
+  fade out
+  sound "heal"
+  wait 1
+  fade in
+  text "{member:RESULT} is overjoyed with its new look!"
+label Done
+  takemoney 300
+  setflag FLAG_DAILY_GOLDENROD_HAIRCUT
+  say "All done! I'm still learning, so every trim comes out a little different."
+  end
+label Egg
+  say "An Egg? There's nothing on it to trim!"
+  end
+label Short
+  say "Oh, that's not quite enough. Another time!"
+  end
+label NotToday
+  say "Another time, then!"
+  end
+label Tomorrow
+  say "My brother and I share one chair: one trim a day. Come again another day!"
   end
 
 

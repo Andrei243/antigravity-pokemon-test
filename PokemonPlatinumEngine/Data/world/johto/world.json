@@ -362,6 +362,12 @@
     // underground hall with the Unown)
     { "name": "RuinsOfAlph_HallEntrance", "matrix": 181, "area": "ruins_of_alph_hall_entrance", "trees": "Round", "setting": "Cave" },
     { "name": "RuinsOfAlph_UndergroundHall", "matrix": 37, "area": "ruins_of_alph_underground_hall", "trees": "Round", "setting": "Cave" },
+    // Plan 20 · J5's last leftover: the four chambers' second rooms behind their back walls (one matrix, a map to each),
+    // come into once a chamber's wall opens (its own Wall script, on HeartGold's four secrets)
+    { "name": "RuinsOfAlph_NortheastItemRoom", "matrix": 182, "area": "ruins_of_alph_northeast_entrance_second_room", "trees": "Round", "setting": "Cave" },
+    { "name": "RuinsOfAlph_SoutheastItemRoom", "matrix": 182, "area": "ruins_of_alph_southeast_entrance_second_room", "trees": "Round", "setting": "Cave" },
+    { "name": "RuinsOfAlph_NorthwestItemRoom", "matrix": 182, "area": "ruins_of_alph_northwest_entrance_second_room", "trees": "Round", "setting": "Cave" },
+    { "name": "RuinsOfAlph_SouthwestItemRoom", "matrix": 182, "area": "ruins_of_alph_southwest_entrance_second_room", "trees": "Round", "setting": "Cave" },
     // Plan 20 · J11, part d: the corridor behind the Bell Tower's gate, Bellchime Trail and the Bell Tower's floors to its roof
     { "name": "Ecruteak_BellTowerCorridor", "matrix": 130, "area": "ecruteak_bell_tower_barrier_station_corridor", "trees": "Round", "setting": "Indoors" },
     { "name": "BellchimeTrail", "matrix": 67, "area": "bellchime_tower", "trees": "Round" },
@@ -549,6 +555,9 @@
     "johto_rock_tunnel_1f", "johto_rock_tunnel_b1f", "route_10_south",
     // Plan 20 · J5's leftovers: the Ruins of Alph's hall
     "ruins_of_alph_hall_entrance", "ruins_of_alph_underground_hall",
+    // Plan 20 · J5's last leftover: the chambers' second rooms
+    "ruins_of_alph_northeast_entrance_second_room", "ruins_of_alph_southeast_entrance_second_room",
+    "ruins_of_alph_northwest_entrance_second_room", "ruins_of_alph_southwest_entrance_second_room",
     // Plan 20 · J11, part d: the Bell Tower's corridor, Bellchime Trail and the tower's eleven floors
     "ecruteak_bell_tower_barrier_station_corridor", "bellchime_tower", "bell_tower_1f", "bell_tower_2f", "bell_tower_3f",
     "bell_tower_4f", "bell_tower_5f", "bell_tower_6f", "bell_tower_7f", "bell_tower_8f", "bell_tower_9f", "bell_tower_10f",

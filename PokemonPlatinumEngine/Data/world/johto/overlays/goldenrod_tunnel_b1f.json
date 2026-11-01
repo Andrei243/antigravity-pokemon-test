@@ -3,7 +3,9 @@
   // Trainers keep away while Team Rocket hold the Radio Tower, and a grunt by the photo studio hands the player a
   // uniform; the locked door at the east end of the long corridor opens to the Basement Key
   // (scripts/goldenrod_tunnel_b1f.txt). The door is a thing of the map behind HeartGold's own flag, FLAG_UNK_1C0.
-  // HeartGold's shops, salons, photo studio and Kimono Girl are a later part's and are left out
+  // Since plan 20 · J5's leftovers its shops and salons keep their days behind their counters (HeartGold's FLAG_UNK_1B0
+  // to 1B3, laid by the floor's arrival): the herb shop, the bargain shop and the two barbers. The photo studio's
+  // backdrops and the Kimono Girl are left out
   "area": "goldenrod_tunnel_b1f",
   "bgmTrack": "johto/goldenrod",
   "triggers": [
@@ -11,6 +13,10 @@
   ],
   "people": {
     "d37r0102_rocketm": { "name": "Grunt", "script": "Grunt", "still": true },
+    "d37r0102_gsoldwoman1": { "name": "Herbalist", "script": "HerbShop", "still": true },
+    "d37r0102_gsoldman1": { "name": "Old Man", "script": "Bargains", "still": true },
+    "d37r0102_gsman3": { "name": "Barber", "script": "ElderBarber", "still": true },
+    "d37r0102_gsman2": { "name": "Barber", "script": "YoungerBarber", "still": true },
     "d37r0102_babyboy1_8": { "name": "Door", "npcType": "GalacticDoor", "script": "Door", "still": true },
     "d37r0102_mania": {
       "name": "Donald",

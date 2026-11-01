@@ -25,3 +25,19 @@ label Left
 label Whole
   text "The panel shows an Omanyte, whole again. The stone around it is warm to the touch."
   end
+
+
+# The back wall (HeartGold's object on warp 1, D24R0206_001): its carving spells WATER, and a Water Stone carried
+# opens it (the rulings' "The Ruins of Alph's second rooms")
+script Wall
+  if flag FLAG_OPENED_ALPH_WATER_STONE_SECRET_ROOM end
+  speaker none
+  text "Strange shapes are carved across the back wall. Read in a row, they seem to spell one word: WATER."
+  if not item "Water Stone" end
+  text "The Water Stone in your Bag grew cool, and the carving answered it with a soft blue shimmer."
+  shake self 4
+  sound "boulder"
+  setflag FLAG_OPENED_ALPH_WATER_STONE_SECRET_ROOM
+  hide self
+  text "With a grinding of stone, the wall slid away into the floor!"
+  end

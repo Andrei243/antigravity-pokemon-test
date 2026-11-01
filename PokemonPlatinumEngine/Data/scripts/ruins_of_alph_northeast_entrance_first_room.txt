@@ -26,3 +26,21 @@ label Left
 label Whole
   text "The panel shows a Kabuto, whole again. The stone around it is warm to the touch."
   end
+
+
+# The back wall (HeartGold's object on warp 1, D24R0202_001), read from before it: its carving spells ESCAPE, and an
+# Escape Rope held up to it opens it on the room behind (the rulings' "The Ruins of Alph's second rooms")
+script Wall
+  if flag FLAG_OPENED_ALPH_ESCAPE_ROPE_SECRET_ROOM end
+  speaker none
+  text "Strange shapes are carved across the back wall. Read in a row, they seem to spell one word: ESCAPE."
+  if not item "Escape Rope" end
+  ask "Hold up an Escape Rope to the carving?"
+  if no end
+  take "Escape Rope" 1
+  shake self 4
+  sound "boulder"
+  setflag FLAG_OPENED_ALPH_ESCAPE_ROPE_SECRET_ROOM
+  hide self
+  text "The rope went taut on its own, then slack. With a grinding of stone, the wall slid away into the floor!"
+  end

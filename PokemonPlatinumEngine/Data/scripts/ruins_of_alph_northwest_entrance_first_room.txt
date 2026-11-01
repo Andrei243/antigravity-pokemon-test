@@ -25,3 +25,19 @@ label Left
 label Whole
   text "The panel shows a great bird, whole again. The stone around it is warm to the touch."
   end
+
+
+# The back wall (HeartGold's object on warp 1, D24R0208_001): its carving spells HO-OH, and a Ho-Oh on the team opens
+# it (the rulings' "The Ruins of Alph's second rooms")
+script Wall
+  if flag FLAG_OPENED_ALPH_HO_OH_SECRET_ROOM end
+  speaker none
+  text "Strange shapes are carved across the back wall. Read in a row, they seem to spell one word: HO-OH."
+  if not has "Ho-Oh" end
+  text "Ho-Oh's feathers shone with every colour, and the carving lit up to meet them."
+  shake self 4
+  sound "boulder"
+  setflag FLAG_OPENED_ALPH_HO_OH_SECRET_ROOM
+  hide self
+  text "With a grinding of stone, the wall slid away into the floor!"
+  end

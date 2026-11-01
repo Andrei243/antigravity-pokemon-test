@@ -818,7 +818,11 @@ public static class WorldMapBuilder
             if (person.IsThing) continue;
             int px = person.GridX, pz = person.GridY;
             if (behind.Contains((px, pz)) || !Wall(px, pz) || !Inside(px, pz) || TouchesOpen(px, pz)) continue;
-            if (!ways.Any(d => Rim(px + d.Item1, pz + d.Item2))) continue;
+            // (a counter the cover took for something else, blocked and marked a counter all the same, is one beside them
+            // too: the barbers' chairs under Goldenrod, which read as grass; it is left as it is drawn)
+            if (!ways.Any(d => Rim(px + d.Item1, pz + d.Item2)
+                    || map.InBounds(px + d.Item1, pz + d.Item2) && map.IsSolid(px + d.Item1, pz + d.Item2)
+                       && map.BehaviourAt(px + d.Item1, pz + d.Item2) == TileBehavior.Counter)) continue;
             // Someone the original stands on the counter itself (Black 2's gate guards in their booth) stands behind it
             if (Rim(px, pz)) { behind.Add((px, pz)); continue; }
             HashSet<(int X, int Z)> Behind(int reach)

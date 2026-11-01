@@ -603,6 +603,9 @@ public static class RegionDatabase
                 "Lavender_RadioTower", "Saffron_SilphCo_Elevator", "Saffron_SilphCo_RotomRoom",
                 // Plan 20 · J5's leftovers: the Ruins of Alph's hall
                 "RuinsOfAlph_HallEntrance", "RuinsOfAlph_UndergroundHall",
+                // Plan 20 · J5's last leftover: the chambers' second rooms behind their back walls
+                "RuinsOfAlph_NortheastItemRoom", "RuinsOfAlph_SoutheastItemRoom",
+                "RuinsOfAlph_NorthwestItemRoom", "RuinsOfAlph_SouthwestItemRoom",
             }
         },
         new()

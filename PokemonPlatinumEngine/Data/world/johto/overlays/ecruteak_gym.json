@@ -5,6 +5,8 @@
   // out (FLAG_HIDE_ECRUTEAK_GYM_MORTY); his four Mediums battle by their own records (Johto's trainers.json)
   "area": "ecruteak_gym",
   "bgmTrack": "johto/gym",
+  // Morty's type: the room is a Gym hall in its colours, and its battles are fought on the Gym's stage
+  "arenaType": "Ghost",
   "triggers": [
     { "trigger": 0, "script": "Fall" },
     { "trigger": 1, "script": "Fall" },

@@ -4,6 +4,8 @@
   // (scripts/olivine_gym.txt). The Gym has no trainers of its own
   "area": "olivine_gym",
   "bgmTrack": "johto/gym",
+  // Jasmine's type: the room is a Gym hall in its colours, and its battles are fought on the Gym's stage
+  "arenaType": "Steel",
   "people": {
     "t26gym0101_gsleader6": {
       "name": "Jasmine",

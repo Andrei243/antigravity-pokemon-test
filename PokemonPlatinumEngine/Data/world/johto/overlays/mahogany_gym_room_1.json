@@ -4,6 +4,8 @@
   // until something stops them, and are back where they stood when the room is next come into)
   "area": "mahogany_gym_room_1",
   "bgmTrack": "johto/gym",
+  // Pryce's type: the Gym's one map (its three rooms) is a Gym hall in its colours, its battles fought on the Gym's stage
+  "arenaType": "Ice",
   "people": {
     "t28gym0103_ice": { "name": "Block of ice", "npcType": "IceBlock", "still": true, "dialog": [ "A big block of ice. Pushed, it would slide across the floor until something stopped it." ] },
     "t28gym0103_ice_2": { "name": "Block of ice", "npcType": "IceBlock", "still": true, "dialog": [ "A big block of ice. Pushed, it would slide across the floor until something stopped it." ] },

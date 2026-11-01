@@ -1,0 +1,35 @@
+{
+  "key": "ruins_of_alph_southeast_entrance_second_room",
+  "index": 325,
+  "name": "Ruins of Alph",
+  "matrix": 182,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building3",
+  "dayMusic": "GS_D_CHIKATSUURO",
+  "nightMusic": "GS_D_CHIKATSUURO",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 17, "to": "ruins_of_alph_southeast_entrance_first_room", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "d24r0213_monstarball", "looks": "monstarball", "movement": "0", "x": 4, "z": 8, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D24R0213_HEAL_POWDER", "item": "Heal Powder", "script": "std_itemball_d24r0213_heal_powder" },
+    { "id": "d24r0213_monstarball_2", "looks": "monstarball", "movement": "0", "x": 8, "z": 8, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D24R0213_ENERGY_ROOT", "item": "Energy Root", "script": "std_itemball_d24r0213_energy_root" },
+    { "id": "d24r0213_monstarball_3", "looks": "monstarball", "movement": "0", "x": 4, "z": 12, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D24R0213_SITRUS_BERRY", "item": "Sitrus Berry", "script": "std_itemball_d24r0213_sitrus_berry" },
+    { "id": "d24r0213_monstarball_4", "looks": "monstarball", "movement": "0", "x": 8, "z": 12, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D24R0213_MOON_STONE", "item": "Moon Stone", "script": "std_itemball_d24r0213_moon_stone" }
+  ],
+  "signs": [
+    { "x": 4, "z": 4, "type": 0, "script": "D24R0213_001+1" },
+    { "x": 8, "z": 4, "type": 0, "script": "D24R0213_001+1" },
+    { "x": 4, "z": 3, "type": 0, "script": "D24R0213_001+1" },
+    { "x": 8, "z": 3, "type": 0, "script": "D24R0213_001+1" }
+  ],
+  "triggers": [
+    { "x": 6, "z": 3, "width": 1, "depth": 1, "script": "D24R0213_000+1", "variable": "VAR_UNK_40D0", "value": "0" }
+  ]
+}

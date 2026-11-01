@@ -6,6 +6,8 @@
   // trainers battle by their own records (Johto's trainers.json)
   "area": "azalea_gym",
   "bgmTrack": "johto/gym",
+  // Bugsy's type: the room is a Gym hall in its colours, and its battles are fought on the Gym's stage
+  "arenaType": "Bug",
   "triggers": [
     { "trigger": 0, "script": "Cart0" },
     { "trigger": 1, "script": "Cart1" },

@@ -48,5 +48,31 @@
         "Panoul înfățișează un Aerodactyl, din nou întreg. Piatra din jur e caldă la atingere."
       ]
     }
+  ],
+  "Wall": [
+    {
+      "en": [
+        "Strange shapes are carved across the back wall. Read in a row, they seem to spell one word: LIGHT."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Have a Pokémon light the carving with Flash?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The carving drank in the light and glowed. With a grinding of stone, the wall slid away into the floor!"
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }
