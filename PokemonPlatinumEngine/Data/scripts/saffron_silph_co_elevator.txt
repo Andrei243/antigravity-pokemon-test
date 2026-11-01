@@ -1,0 +1,23 @@
+# Silph Co.'s lift in HeartGold's Kanto (plan 20 · J15, part n). docs/scripts.md describes the language; the lines are
+# our own, on HeartGold's beats (scr_seq_T11R0703).
+#
+# The lift joins the lobby and the research floor, Rotom's room, and carries whoever comes in to the other end at once,
+# as the Glitter Lighthouse's does: the two ends each say so as they are come to (VAR_JOHTO_SILPH_LIFT_FLOOR, a
+# variable of ours: 0 set by the lobby's arrival script, 1 by Rotom's room's).
+
+
+script OnEnter
+  walk player up 2
+  face player down
+  if var VAR_JOHTO_SILPH_LIFT_FLOOR == 1 goto Down
+  anim elevator up 4
+  text "The lift has reached the research floor."
+  sound "stairs"
+  warp "Saffron_SilphCo_RotomRoom" 7 3 down
+  end
+label Down
+  anim elevator down 4
+  text "The lift has reached the lobby."
+  sound "stairs"
+  warp "Saffron_SilphCo" 3 3 down
+  end

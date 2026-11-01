@@ -1,0 +1,88 @@
+{
+  "people": {
+    "t05r0701_gsgentleman_2": {
+      "name": {
+        "en": [
+          "Director"
+        ],
+        "text": [
+          "Directorul"
+        ]
+      }
+    },
+    "t05r0701_gswoman6": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      }
+    },
+    "t05r0701_policeman": {
+      "name": {
+        "en": [
+          "Guard"
+        ],
+        "text": [
+          "Paznicul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The studios upstairs are for staff only. The director's desk is as far as visitors go."
+        ],
+        "text": [
+          "Studiourile de sus sunt doar pentru personal. Vizitatorii ajung doar până la biroul directorului."
+        ]
+      }
+    },
+    "t05r0701_gsman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      }
+    },
+    "t05r0701_gsman1_2": {
+      "name": {
+        "en": [
+          "Engineer"
+        ],
+        "text": [
+          "Inginerul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Every station in Kanto goes out from this tower. Johto's radios can't hear a word of it without the right card, mind."
+        ],
+        "text": [
+          "Toate posturile din Kanto pleacă din turnul ăsta. Dar radiourile din Johto nu prind nimic fără cardul potrivit."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T05R0701_005+1": {
+      "en": [
+        "Kanto Radio Tower\nOn the air from Lavender Town."
+      ],
+      "text": [
+        "Turnul Radio Kanto\nÎn eter din Orașul Lavender."
+      ]
+    },
+    "T05R0701_006+1": {
+      "en": [
+        "Today's programmes:\nPokémon Music, Pokémon Talk and the Poké Flute."
+      ],
+      "text": [
+        "Programul de azi:\nMuzică Pokémon, Discuții Pokémon și Poké Flautul."
+      ]
+    }
+  }
+}

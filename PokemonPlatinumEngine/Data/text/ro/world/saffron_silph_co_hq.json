@@ -11,10 +11,10 @@
       },
       "dialog": {
         "en": [
-          "Welcome to Silph Co. We make Poké Balls, Potions and much else besides. The offices upstairs are for staff only."
+          "Welcome to Silph Co. We make Poké Balls, Potions and much else besides. Upstairs, our researchers study Rotom."
         ],
         "text": [
-          "Bun venit la Silph Co. Producem Poké Ball-uri, Potion-uri și multe altele. Birourile de la etaj sunt doar pentru personal."
+          "Bine ai venit la Silph Co. Facem Poké Balls, Poțiuni și multe altele. Sus, cercetătorii noștri îl studiază pe Rotom."
         ]
       }
     },
@@ -26,24 +26,16 @@
         "text": [
           "Paznicul"
         ]
-      },
-      "dialog": {
-        "en": [
-          "That lift goes up to the research floors. Only staff may ride it, I'm afraid."
-        ],
-        "text": [
-          "Liftul ăla urcă la etajele de cercetare. Doar personalul îl poate folosi, mă tem."
-        ]
       }
     }
   },
   "signs": {
     "T11R0701_003+1": {
       "en": [
-        "Lift\nStaff only beyond this point."
+        "Lift\nTo the research floor."
       ],
       "text": [
-        "Liftul\nDoar pentru personal dincolo de acest punct."
+        "Liftul\nSpre etajul de cercetare."
       ]
     }
   }

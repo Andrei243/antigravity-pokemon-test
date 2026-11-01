@@ -7181,6 +7181,60 @@ a new HM of ours.
   open country's shade, a dark green, which showed as a strip of lawn under the plank bridge. A cave takes a room's dark
   shade (`MapScene`), as every cave's bridge over a passage now does.
 
+## HeartGold's Kanto, part n (2026-11-01, plan 20 · J15, part n)
+
+- *The slice*: the Power Plant's story, the Kanto Radio Tower and its Expn Card, Zapdos, Route 12's Snorlax woken, Silph
+  Co.'s lift and Rotom's room, and Professor Oak's gift after Red. Three rooms open (`world.json`, `RegionDatabase`'s
+  Johto list, `--game heartgold --data`): `Lavender_RadioTower` (`lavender_radio_station`, HeartGold's `T05R0701`, behind
+  Lavender's last shut door, warp 6), `Saffron_SilphCo_Elevator` and `Saffron_SilphCo_RotomRoom`
+  (`saffron_silph_co_elevator`, `_rotom_room`). None of the keys meets FireRed's; the maps' names meet no other region's.
+  Two key items of our own join the data's overrides (ids 9038 and 9039): the **Machine Part** and the **Expn Card**.
+- *The Power Plant's story* (HeartGold's beats, our words; every flag ours): the manager tells the first Champion of
+  Johto who speaks to him that a part was pulled out of the generator (`FLAG_JOHTO_POWER_PLANT_ROBBED`); the engineer by
+  the panels says whether the generator turns. That shows Team Rocket's grunt by the Cerulean Gym's pool, who gives
+  himself away and runs (`FLAG_JOHTO_CERULEAN_ROCKET_FLED`); on Nugget Bridge he battles (`johto_team_rocket_grunt_24`,
+  HeartGold's team on no map until now, `battle self as`), tells where the part is and leaves
+  (`FLAG_JOHTO_BEAT_ROUTE_24_ROCKET`). The part is read in the corner of the pool's north bank, on the two tiles of
+  HeartGold's markers (`t04gym0101_stop`, held back; the overlay's `readAt`), once. Brought back, the generator turns
+  (`FLAG_JOHTO_POWER_PLANT_FIXED`) and the manager gives TM73, Thunder Wave: what HeartGold's manager gives couldn't be read,
+  and Lt. Surge gives TM57 already (part b). HeartGold stops the player on the bridge with a
+  trigger (`VAR_SCENE_ROUTE_24_ROCKET`) and on the Gym's floor with a scene; here both grunts are spoken to. HeartGold
+  shows the plant broken (`R10R0202`) on a map of its own while the part is gone; the room stays the plant at work
+  (part j's decision) and only its people say otherwise.
+- *The Radio Tower*: its director (HeartGold's second gentleman, whose hiding flag nothing sets here; the first, on the
+  same tile behind `FLAG_UNK_258`, is held back) says the station is off the air until the plant runs, and then gives the
+  Expn Card once (the bag's own memory of it). Its people say whether the station broadcasts. The upper floors are not in
+  HeartGold's Kanto.
+- *Zapdos* stands before the Power Plant's door once the generator turns (`shownBy` `FLAG_JOHTO_POWER_PLANT_FIXED`): the
+  rulings' timing, since what shows it in HeartGold couldn't be read from the pinned folders. It waits until fought
+  (`FLAG_JOHTO_FOUGHT_ZAPDOS`, ours), level 50, run from it flies off (HeartGold's `FLAG_HIDE_ROUTE_10_ZAPDOS`) and is
+  back on the next visit, as Articuno and Moltres. Its meeting is plan 29's beat for a bird of lightning, as FireRed's
+  Zapdos in its plant: the bars, the camera to it, two bursts 0.6 s apart each with a shake of 0.4, the cry and a line.
+- *Snorlax*: HeartGold's player tunes the Pokégear's radio to the Poké Flute channel beside it; here the Expn Card in the
+  bag is the radio's ear and a question is the dial (the radio's dial gains no Kanto station: plan 20 · J3's left list
+  keeps "the Poké Flute's channel"). Woken, it battles at level 50 and is gone once fought (`FLAG_JOHTO_FOUGHT_SNORLAX`,
+  ours); run from, it lumbers off (HeartGold's `FLAG_HIDE_ROUTE_12_SNORLAX`) and is back asleep on the next visit. Route
+  12's Snorlax is the one woken, as part h stood it; Route 11's stays held back.
+- *Silph Co.'s lift*: its guard lets nobody ride until he has seen a Rotom on the visitor's team, and then for good
+  (`FLAG_JOHTO_SILPH_LIFT_OPEN`, ours, the lobby's door's `openedBy`). What HeartGold asks before the lift couldn't be
+  read; this is our condition. The car carries whoever comes in to the other end at once, as the Glitter Lighthouse's
+  (`VAR_JOHTO_SILPH_LIFT_FLOOR`, ours, set by each end's arrival).
+- *Rotom's room*: HeartGold's five objects (`rotomf`, `rotoms`, `rotomi`, `rotomw`, `rotomg`) are the five appliances,
+  things of the map drawn as cards of our own (`ApplianceArt`; style guide, "Rotom's appliances"), the hiding flags
+  HeartGold gives them left unset. Each sends the first Rotom of the team in by the new `team rotom <appliance>`, the
+  Rotom Catalog's rule (plan 06 · R29): the appliance's form and move, the move of the appliance it leaves given up; an
+  appliance with the Rotom in it already lets it out into its own form. Where the move doesn't fit four moves and no
+  appliance's move is there to give up, the form changes and a line says the move wasn't learned: HeartGold asks which
+  move to forget there, which the script has no screen for yet. The little boy is a researcher's son.
+- *Professor Oak's gift*: once Red is beaten (`FLAG_JOHTO_BEAT_RED`), the three Poké Balls on his table stand (HeartGold's
+  `monstarball` objects as item balls on the table, each asking before it gives) and one of Bulbasaur, Charmander and
+  Squirtle is taken at level 5; then all three are gone (`FLAG_JOHTO_GOT_OAKS_GIFT`, ours). With a full team the ball
+  says to make room.
+- *Songs*: the tower plays `kanto/lavender`, the lift and Rotom's room `kanto/viridian`, as Saffron's rooms.
+- *Left*: Lt. Surge on Route 10 and the Leaders' rematches and street meetings, the dark of HeartGold's Flash caves, Pal
+  Park's gate, the Clefairy's dance, a game in the Game Corners and their prizes, the Trainer House's battles, Steven's
+  visits, Suicune's stops, a Kanto station on the Pokégear's dial, and the screen that forgets a move for Rotom.
+
 ## The week siblings and the dome's pieces (2026-10-31, plan 20 · J13, the last part)
 
 | Subject | HeartGold | This game |

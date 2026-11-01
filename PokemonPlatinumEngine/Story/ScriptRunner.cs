@@ -2060,6 +2060,20 @@ public sealed partial class ScriptRunner
                 Result = changed;
                 break;
             }
+            // Plan 20 · J15, part n: Silph Co.'s Rotom room (HeartGold's scr_seq_T11R0702, the Rotom Catalog's rule):
+            // the first Rotom of the team, no Egg, goes into the appliance named. RESULT is 255 with no Rotom, 0 where it
+            // is in that appliance already, 1 when it changed and knows the appliance's move, and 2 when it changed but
+            // the move didn't fit four moves with no appliance's move to give up
+            case "rotom":
+            {
+                int slot = team.FindIndex(p => !p.IsEgg && p.Species.Name == "Rotom");
+                if (slot < 0) { Result = 255; break; }
+                int page = FormChanges.ApplianceWords.ToList().IndexOf(i.Other);
+                if (page == Math.Max(0, FormChanges.CatalogPage(team[slot]))) { Result = 0; break; }
+                var done = FormChanges.SendRotomInto(team[slot], page);
+                Result = done.Wanted is { Count: > 0 } ? 2 : 1;
+                break;
+            }
             // ScrCmd_TryGetRandomMassageGirlAccessory and Common_GiveAccessory: one of her sixteen, drawn among those the
             // Fashion Case still has room for
             case "massage":

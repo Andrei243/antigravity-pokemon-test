@@ -821,9 +821,11 @@ public static class ScriptParser
             // What a room's people ask of the team (plan 01 · M11, part b)
             case "team":
             {
-                string what = r.OneOf("befriend", "level", "combee", "condition", "massage", "first", "nature", "size", "record", "holds", "deoxys", "ends");
+                string what = r.OneOf("befriend", "level", "combee", "condition", "massage", "first", "nature", "size", "record", "holds", "deoxys", "ends", "rotom");
                 return what switch
                 {
+                    // Plan 20 · J15, part n: Silph Co.'s Rotom room, an appliance by its word (`team rotom heat`)
+                    "rotom" => new Instruction { Op = Op.Team, Line = line, Name = what, Other = r.OneOf(PokemonPlatinumEngine.Models.FormChanges.ApplianceWords.ToArray()) },
                     // Plan 21 · H12, part a: the Sealed Chamber's riddle (CheckRelicanthWailord): the first of the team of one
                     // species and the last of another, `team ends "Wailord" "Relicanth"`
                     "ends" => new Instruction { Op = Op.Team, Line = line, Name = what, Other = r.Text("the first Pokémon's species"), Record = r.Text("the last Pokémon's species") },

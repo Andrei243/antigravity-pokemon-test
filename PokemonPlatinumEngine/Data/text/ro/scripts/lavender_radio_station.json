@@ -1,0 +1,120 @@
+{
+  "Director": [
+    {
+      "en": [
+        "Director"
+      ],
+      "text": [
+        "Directorul"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Kanto Radio Tower. I'm the director, and I'm afraid you've caught us at a bad time."
+      ],
+      "text": [
+        "Bine ai venit la Turnul Radio Kanto. Sunt directorul și mă tem că ne-ai prins într-un moment prost."
+      ]
+    },
+    {
+      "en": [
+        "The Power Plant on Route 10 has stopped. Without its power, we can't send a single song across Kanto."
+      ],
+      "text": [
+        "Centrala Electrică de pe Ruta 10 s-a oprit. Fără curentul ei, nu putem trimite niciun cântec prin Kanto."
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Kanto Radio Tower! We're back on the air, thanks to the Power Plant running again."
+      ],
+      "text": [
+        "Bine ai venit la Turnul Radio Kanto! Emitem din nou, datorită Centralei Electrice care merge iar."
+      ]
+    },
+    {
+      "en": [
+        "I hear you're the one who brought its missing part back. Then you deserve this."
+      ],
+      "text": [
+        "Am auzit că tu ai adus înapoi piesa lipsă. Atunci meriți asta."
+      ]
+    },
+    {
+      "en": [
+        "Slip that card into your Pokégear, and its radio will pick up every station we broadcast here in Kanto."
+      ],
+      "text": [
+        "Pune cardul în Pokégear și radioul lui va prinde toate posturile pe care le emitem aici în Kanto."
+      ]
+    },
+    {
+      "en": [
+        "Try the Poké Flute channel. Its tune is said to wake even the soundest sleeper."
+      ],
+      "text": [
+        "Încearcă postul Poké Flautului. Se zice că melodia lui trezește și pe cel mai adânc adormit."
+      ]
+    },
+    {
+      "en": [
+        "Is your Pokégear picking us up all right? The Poké Flute channel is a favourite of ours."
+      ],
+      "text": [
+        "Ne prinde bine Pokégear-ul tău? Postul Poké Flautului e unul dintre preferatele noastre."
+      ]
+    }
+  ],
+  "Receptionist": [
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        "Recepționera"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Kanto Radio Tower. We're off the air for now, I'm sorry to say. There's no power."
+      ],
+      "text": [
+        "Bine ai venit la Turnul Radio Kanto. Din păcate, nu emitem deocamdată. Nu e curent."
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Kanto Radio Tower. We're on the air all day, every day!"
+      ],
+      "text": [
+        "Bine ai venit la Turnul Radio Kanto. Emitem toată ziua, în fiecare zi!"
+      ]
+    }
+  ],
+  "Listener": [
+    {
+      "en": [
+        "Man"
+      ],
+      "text": [
+        "Bărbatul"
+      ]
+    },
+    {
+      "en": [
+        "I came to hear the station's music in person, and there's nothing on! Something about the Power Plant."
+      ],
+      "text": [
+        "Am venit să ascult muzica postului pe viu, și nu se dă nimic! Ceva cu Centrala Electrică."
+      ]
+    },
+    {
+      "en": [
+        "Ah, the Poké Flute's tune. They play it on the radio here, you know. It's enough to wake anyone."
+      ],
+      "text": [
+        "Ah, melodia Poké Flautului. O dau la radio aici, știi. E de ajuns ca să trezească pe oricine."
+      ]
+    }
+  ]
+}

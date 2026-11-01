@@ -1,0 +1,73 @@
+{
+  "people": {
+    "t11r0702_rotomf": {
+      "name": {
+        "en": [
+          "Microwave"
+        ],
+        "text": [
+          "Cuptorul cu microunde"
+        ]
+      }
+    },
+    "t11r0702_rotoms": {
+      "name": {
+        "en": [
+          "Fan"
+        ],
+        "text": [
+          "Ventilatorul"
+        ]
+      }
+    },
+    "t11r0702_rotomi": {
+      "name": {
+        "en": [
+          "Refrigerator"
+        ],
+        "text": [
+          "Frigiderul"
+        ]
+      }
+    },
+    "t11r0702_rotomw": {
+      "name": {
+        "en": [
+          "Washing machine"
+        ],
+        "text": [
+          "Mașina de spălat"
+        ]
+      }
+    },
+    "t11r0702_rotomg": {
+      "name": {
+        "en": [
+          "Lawnmower"
+        ],
+        "text": [
+          "Mașina de tuns iarba"
+        ]
+      }
+    },
+    "t11r0702_babyboy1_2": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My dad works here. He says a Rotom can hop into a machine and make it its own body. Isn't that weird?"
+        ],
+        "text": [
+          "Tata lucrează aici. Zice că un Rotom poate sări într-un aparat și să-l facă trupul lui. Nu-i ciudat?"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

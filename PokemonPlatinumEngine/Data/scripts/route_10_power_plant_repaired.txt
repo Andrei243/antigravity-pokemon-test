@@ -1,0 +1,68 @@
+# The Power Plant on Route 10 as HeartGold has it three years on (plan 20 · J15, part n). docs/scripts.md describes
+# the language; the lines are our own, on HeartGold's beats (scr_seq_R10R0201 and R10R0202).
+#
+# A part has been stolen from the generator. The manager tells the first Champion of Johto who speaks to him
+# (FLAG_JOHTO_POWER_PLANT_ROBBED); that brings Team Rocket's grunt to the Cerulean Gym (cerulean_gym.txt), who runs
+# off to Nugget Bridge (johto_route_24.txt), whose battle tells where the part was hidden: the Gym's pool, where it is
+# found (FLAG_JOHTO_FOUND_MACHINE_PART). Brought back, it sets the generator turning again
+# (FLAG_JOHTO_POWER_PLANT_FIXED), which puts the Kanto Radio Tower back on the air (lavender_radio_station.txt) and
+# brings Zapdos to the plant's door (johto_route_10.txt), and the manager gives TM73, Thunder Wave. All the flags are
+# ours. HeartGold shows the plant broken (R10R0202) on a map of its own while the part is gone; here the room is the
+# plant at work throughout (the rulings' "HeartGold's Kanto, part j") and its people say whether the generator turns.
+
+
+script Manager
+  face r10r0201_gsbigman player
+  speaker "Manager"
+  if flag FLAG_JOHTO_POWER_PLANT_FIXED goto Thanks
+  if item "Machine Part" goto Returned
+  if flag FLAG_JOHTO_POWER_PLANT_ROBBED goto Waiting
+  scene "The Power Plant robbed"
+  emote r10r0201_gsbigman exclaim
+  say "Grr! Who's there? Oh, a Trainer. Sorry, I'm not myself today. Someone has robbed my plant!"
+  say "A vital part of the generator was pulled right out of it. Without it, the generator won't turn."
+  say "No power for the Magnet Train's lights, none for the radio... Kanto is going dark, bit by bit!"
+  say "My men saw a man in black running off toward Cerulean City. If you see him, get that part back!"
+  setflag FLAG_JOHTO_POWER_PLANT_ROBBED
+  endscene
+  end
+label Waiting
+  say "The thief ran toward Cerulean City. Please, find that Machine Part and bring it back to me!"
+  end
+label Returned
+  scene "The Machine Part returned"
+  say "Is that... my Machine Part? You found it! Hand it over, quick!"
+  take "Machine Part"
+  text "{player} handed over the Machine Part."
+  say "Right, back in its place it goes... There! Listen to that hum. The generator's turning again!"
+  setflag FLAG_JOHTO_POWER_PLANT_FIXED
+  say "You've saved all of Kanto from the dark. Here, take this as my thanks. It's electrifying!"
+  give "TM73"
+  setflag FLAG_JOHTO_GOT_TM73_FROM_MANAGER
+  say "TM73 is Thunder Wave. It paralyses the target, so it may not be able to move."
+  endscene
+  end
+label Thanks
+  if not flag FLAG_JOHTO_GOT_TM73_FROM_MANAGER goto Tm
+  say "The generator's humming like it never stopped. The Radio Tower in Lavender is back on the air, too."
+  end
+label Tm
+  say "I still owe you my thanks for that Machine Part. Here you go."
+  give "TM73"
+  setflag FLAG_JOHTO_GOT_TM73_FROM_MANAGER
+  end
+
+
+# The engineer by the generator's panels, who says whether it turns.
+script Engineer
+  speaker "Engineer"
+  if flag FLAG_JOHTO_POWER_PLANT_FIXED goto Turning
+  if flag FLAG_JOHTO_POWER_PLANT_ROBBED goto Stopped
+  say "I check every dial on these panels twice a day. Everything reads fine."
+  end
+label Stopped
+  say "Every dial reads nothing. The generator won't turn a single time without that part."
+  end
+label Turning
+  say "Every dial's back in the green. The generator's turning as sweetly as ever!"
+  end

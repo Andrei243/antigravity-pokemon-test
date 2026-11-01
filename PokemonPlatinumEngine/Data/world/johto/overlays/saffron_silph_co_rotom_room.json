@@ -1,0 +1,22 @@
+{
+  // Silph Co.'s research floor, Rotom's room (plan 20 · J15, part n): HeartGold's five appliances in a row, each a
+  // thing of the map drawn as a card of our own (style guide, "Rotom's appliances"), which sends a Rotom of the team in
+  // (`team rotom`, scripts/saffron_silph_co_rotom_room.txt). HeartGold hides each appliance behind a flag of its own
+  // (FLAG_HIDE_SILPH_ROTOM_HEAT and the rest), which nothing here sets: all five stand. The boy is a researcher's son, stood a tile south of the desk HeartGold puts him in (the import
+  // blocks the desk's tiles)
+  "area": "saffron_silph_co_rotom_room",
+  "bgmTrack": "kanto/viridian",
+  "people": {
+    "t11r0702_rotomf": { "name": "Microwave", "npcType": "Microwave", "script": "Microwave", "still": true, "hiddenBy": "" },
+    "t11r0702_rotoms": { "name": "Fan", "npcType": "ElectricFan", "script": "Fan", "still": true, "hiddenBy": "" },
+    "t11r0702_rotomi": { "name": "Refrigerator", "npcType": "Refrigerator", "script": "Refrigerator", "still": true, "hiddenBy": "" },
+    "t11r0702_rotomw": { "name": "Washing machine", "npcType": "WashingMachine", "script": "WashingMachine", "still": true, "hiddenBy": "" },
+    "t11r0702_rotomg": { "name": "Lawnmower", "npcType": "Lawnmower", "script": "Lawnmower", "still": true, "hiddenBy": "" },
+    "t11r0702_babyboy1_2": {
+      "name": "Boy",
+      "still": true,
+      "at": [ 11, 10 ],
+      "dialog": [ "My dad works here. He says a Rotom can hop into a machine and make it its own body. Isn't that weird?" ]
+    }
+  }
+}

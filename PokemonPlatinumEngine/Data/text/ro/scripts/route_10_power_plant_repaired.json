@@ -1,0 +1,142 @@
+{
+  "Manager": [
+    {
+      "en": [
+        "Manager"
+      ],
+      "text": [
+        "Managerul"
+      ]
+    },
+    {
+      "en": [
+        "Grr! Who's there? Oh, a Trainer. Sorry, I'm not myself today. Someone has robbed my plant!"
+      ],
+      "text": [
+        "Grr! Cine-i acolo? A, un Antrenor. Scuze, nu-s în apele mele azi. Cineva mi-a jefuit centrala!"
+      ]
+    },
+    {
+      "en": [
+        "A vital part of the generator was pulled right out of it. Without it, the generator won't turn."
+      ],
+      "text": [
+        "O piesă vitală a fost smulsă din generator. Fără ea, generatorul nu se mai învârte."
+      ]
+    },
+    {
+      "en": [
+        "No power for the Magnet Train's lights, none for the radio... Kanto is going dark, bit by bit!"
+      ],
+      "text": [
+        "Fără curent pentru luminile Trenului Magnetic, nici pentru radio... Kanto se întunecă, bucată cu bucată!"
+      ]
+    },
+    {
+      "en": [
+        "My men saw a man in black running off toward Cerulean City. If you see him, get that part back!"
+      ],
+      "text": [
+        "Oamenii mei au văzut un bărbat în negru fugind spre Orașul Cerulean. Dacă îl vezi, ia piesa înapoi!"
+      ]
+    },
+    {
+      "en": [
+        "The thief ran toward Cerulean City. Please, find that Machine Part and bring it back to me!"
+      ],
+      "text": [
+        "Hoțul a fugit spre Orașul Cerulean. Te rog, găsește Piesa de Mașină și adu-mi-o înapoi!"
+      ]
+    },
+    {
+      "en": [
+        "Is that... my Machine Part? You found it! Hand it over, quick!"
+      ],
+      "text": [
+        "Aia e... Piesa mea de Mașină? Ai găsit-o! Dă-mi-o, repede!"
+      ]
+    },
+    {
+      "en": [
+        "{player} handed over the Machine Part."
+      ],
+      "text": [
+        "{player} a predat Piesa de Mașină."
+      ]
+    },
+    {
+      "en": [
+        "Right, back in its place it goes... There! Listen to that hum. The generator's turning again!"
+      ],
+      "text": [
+        "Gata, înapoi la locul ei... Asta e! Ascultă bâzâitul. Generatorul se învârte din nou!"
+      ]
+    },
+    {
+      "en": [
+        "You've saved all of Kanto from the dark. Here, take this as my thanks. It's electrifying!"
+      ],
+      "text": [
+        "Ai salvat tot Kanto de întuneric. Uite, ia asta ca mulțumire. E electrizant!"
+      ]
+    },
+    {
+      "en": [
+        "TM73 is Thunder Wave. It paralyses the target, so it may not be able to move."
+      ],
+      "text": [
+        "TM73 e Thunder Wave. Paralizează ținta, așa că s-ar putea să nu se mai poată mișca."
+      ]
+    },
+    {
+      "en": [
+        "The generator's humming like it never stopped. The Radio Tower in Lavender is back on the air, too."
+      ],
+      "text": [
+        "Generatorul bâzâie de parcă nici nu s-ar fi oprit. Și Turnul Radio din Lavender emite din nou."
+      ]
+    },
+    {
+      "en": [
+        "I still owe you my thanks for that Machine Part. Here you go."
+      ],
+      "text": [
+        "Încă îți datorez mulțumiri pentru Piesa de Mașină. Poftim."
+      ]
+    }
+  ],
+  "Engineer": [
+    {
+      "en": [
+        "Engineer"
+      ],
+      "text": [
+        "Inginerul"
+      ]
+    },
+    {
+      "en": [
+        "I check every dial on these panels twice a day. Everything reads fine."
+      ],
+      "text": [
+        "Verific fiecare cadran de pe panourile astea de două ori pe zi. Totul arată bine."
+      ]
+    },
+    {
+      "en": [
+        "Every dial reads nothing. The generator won't turn a single time without that part."
+      ],
+      "text": [
+        "Toate cadranele arată zero. Generatorul nu se învârte nici măcar o dată fără piesa aia."
+      ]
+    },
+    {
+      "en": [
+        "Every dial's back in the green. The generator's turning as sweetly as ever!"
+      ],
+      "text": [
+        "Toate cadranele sunt iar pe verde. Generatorul se învârte mai frumos ca oricând!"
+      ]
+    }
+  ]
+}

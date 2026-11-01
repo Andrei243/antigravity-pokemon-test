@@ -10,9 +10,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 |---|---|---|---|---|---|
 | The introduction (`intro:`) | 80 | 80 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1276 | 1236 | 40 | 1 | 0 |
-| Scripts (`script:`) | 9270 | 8840 | 430 | 17 | 0 |
-| People of the world (`world:`) | 6930 | 6871 | 59 | 4 | 0 |
-| **All** | 17556 | 17027 | 529 | 22 | 0 |
+| Scripts (`script:`) | 9310 | 8880 | 430 | 17 | 0 |
+| People of the world (`world:`) | 6929 | 6870 | 59 | 4 | 0 |
+| **All** | 17595 | 17066 | 529 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -20,15 +20,15 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 
 | What | Lines |
 |---|---|
-| a Pokémon's cry | 238 |
+| a Pokémon's cry | 237 |
 | a question's answers | 564 |
-| a sign | 1556 |
-| the game's own voice (speaker none) | 265 |
-| the game's own voice (text) | 1364 |
+| a sign | 1558 |
+| the game's own voice (speaker none) | 279 |
+| the game's own voice (text) | 1398 |
 
 ## The cast
 
-- Named characters: 348 voices (311 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
+- Named characters: 350 voices (313 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Cloned from the user's samples: `rival`.
 - Archetypes in use: 224, with 677 voices to cast (V5).
 - Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1866.
@@ -41,18 +41,18 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 |---|---|---|
 | `@self` | 1866 | 134 |
 | `look:gentleman (any)` | 708 | 13 |
-| `look:grunt (any)` | 582 | 0 |
+| `look:grunt (any)` | 588 | 0 |
 | `rival` | 577 | 17 |
 | `look:lady (any)` | 403 | 1 |
-| `look:youngster (any)` | 383 | 18 |
+| `look:youngster (any)` | 384 | 18 |
 | `look:clerk (any)` | 344 | 7 |
 | `look:lass (any)` | 312 | 11 |
 | `look:nurse (any)` | 255 | 0 |
 | `look:attendant (any)` | 223 | 7 |
-| `look:scientist (any)` | 194 | 4 |
 | `look:gym_guide (any)` | 191 | 1 |
+| `look:scientist (any)` | 187 | 4 |
+| `look:receptionist (any)` | 159 | 19 |
 | `cynthia` | 157 | 1 |
-| `look:receptionist (any)` | 157 | 19 |
 | `class:ace_trainer (any)` | 148 | 0 |
 | `rowan` | 147 | 12 |
 | `look:sailor (any)` | 145 | 0 |
@@ -63,21 +63,21 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:swimmer_m (any)` | 126 | 0 |
 | `class:picnicker (any)` | 116 | 0 |
 | `assistant` | 115 | 5 |
+| `look:guard (any)` | 115 | 0 |
 | `class:youngster (any)` | 112 | 0 |
-| `look:guard (any)` | 110 | 0 |
 | `look:old_man (any)` | 109 | 4 |
 | `class:black_belt (any)` | 108 | 0 |
 | `class:psychic (any)` | 108 | 0 |
 | `mom` | 105 | 6 |
 | `look:boy (any)` | 104 | 4 |
+| `look:man (any)` | 103 | 4 |
 | `class:swimmer_f (any)` | 102 | 0 |
-| `look:man (any)` | 101 | 4 |
 | `bianca` | 99 | 3 |
 | `black_belt` | 97 | 14 |
 | `class:cooltrainer (any)` | 96 | 0 |
 | `class:lass (any)` | 96 | 0 |
 | `looker` | 91 | 1 |
-| `prof_oak` | 91 | 3 |
+| `prof_oak` | 90 | 3 |
 | `class:bug_catcher (any)` | 84 | 0 |
 | `class:galactic (any)` | 84 | 0 |
 | `cyrus` | 83 | 7 |
@@ -167,6 +167,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `saturn` | 28 | 0 |
 | `school_kid` | 28 | 0 |
 | `chairman` | 27 | 0 |
+| `director` | 27 | 1 |
 | `kimono_girl` | 27 | 0 |
 | `look:expert_m (any)` | 27 | 0 |
 | `marley` | 27 | 0 |
@@ -209,6 +210,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `fantina` | 21 | 0 |
 | `look:bug_catcher (any)` | 21 | 0 |
 | `look:gymstatue (any)` | 21 | 0 |
+| `manager` | 21 | 0 |
 | `backers` | 20 | 0 |
 | `class:collector (any)` | 20 | 0 |
 | `class:double_team (any)` | 20 | 0 |
@@ -216,7 +218,6 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:poke_maniac (any)` | 20 | 0 |
 | `class:pokefan (any)` | 20 | 0 |
 | `class:tuber (any)` | 20 | 0 |
-| `director` | 20 | 1 |
 | `juan` | 20 | 0 |
 | `look:announcer (any)` | 20 | 12 |
 | `look:pokemon_breeder_f (any)` | 20 | 0 |

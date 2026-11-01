@@ -876,6 +876,11 @@ public static class ThingCards
             PropType.OldAmber => (20, 20, OutdoorProps.PaintOldAmber),
             PropType.DeskPokedex => (16, 12, OutdoorProps.PaintDeskPokedex),
             PropType.RolledTownMap => (20, 12, OutdoorProps.PaintRolledTownMap),
+            PropType.Microwave => (30, 22, ApplianceArt.PaintMicrowave),
+            PropType.WashingMachine => (28, 30, ApplianceArt.PaintWashingMachine),
+            PropType.Refrigerator => (24, 40, ApplianceArt.PaintRefrigerator),
+            PropType.ElectricFan => (26, 32, ApplianceArt.PaintElectricFan),
+            PropType.Lawnmower => (30, 22, ApplianceArt.PaintLawnmower),
             _ => (OutdoorProps.ItemBallCard, OutdoorProps.ItemBallCard, OutdoorProps.PaintItemBall)
         };
         var art = new PixelCanvas(w, h);

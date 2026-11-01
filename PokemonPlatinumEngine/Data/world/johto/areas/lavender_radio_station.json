@@ -1,0 +1,33 @@
+{
+  "key": "lavender_radio_station",
+  "index": 439,
+  "name": "Lavender Town",
+  "matrix": 195,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_T_CHION",
+  "nightMusic": "GS_T_CHION",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 12, "to": "lavender", "toWarp": 6 }
+  ],
+  "objects": [
+    { "id": "t05r0701_gswoman6", "looks": "gswoman6", "movement": "14", "x": 7, "z": 10, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "T05R0701_000+1" },
+    { "id": "t05r0701_policeman", "looks": "policeman", "movement": "15", "x": 16, "z": 3, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T05R0701_001+1" },
+    { "id": "t05r0701_gsgentleman", "looks": "gsgentleman", "movement": "20", "x": 9, "z": 3, "facing": 3, "rangeX": 2, "rangeZ": 0, "hiddenBy": "FLAG_UNK_258", "script": "T05R0701_003+1" },
+    { "id": "t05r0701_gsman1", "looks": "gsman1", "movement": "3", "x": 2, "z": 6, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "T05R0701_002+1" },
+    { "id": "t05r0701_gsman1_2", "looks": "gsman1", "movement": "17", "x": 15, "z": 10, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "T05R0701_004+1" },
+    { "id": "t05r0701_gsgentleman_2", "looks": "gsgentleman", "movement": "15", "x": 9, "z": 3, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_LAVENDER_RADIO_TOWER_DIRECTOR", "script": "T05R0701_003+1" }
+  ],
+  "signs": [
+    { "x": 12, "z": 2, "type": 0, "script": "T05R0701_005+1" },
+    { "x": 6, "z": 2, "type": 0, "script": "T05R0701_006+1" }
+  ],
+  "triggers": []
+}

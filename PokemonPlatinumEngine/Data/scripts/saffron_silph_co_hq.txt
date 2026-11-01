@@ -1,0 +1,33 @@
+# Silph Co.'s lobby in HeartGold's Kanto (plan 20 · J15, part n). docs/scripts.md describes the language; the lines
+# are our own, on HeartGold's beats (scr_seq_T11R0701).
+#
+# The lift goes up to the research floor, where Silph Co. studies how Rotom gets into machines. Its guard lets nobody
+# ride it until he has seen a Rotom on the visitor's team; from then on the lift's door is open for good
+# (FLAG_JOHTO_SILPH_LIFT_OPEN, a flag of ours, the door's own `openedBy`). The lobby tells the lift which end the player
+# is at (VAR_JOHTO_SILPH_LIFT_FLOOR, ours: 0 here, 1 upstairs), as the Glitter Lighthouse's ends do.
+
+
+script OnEnter
+  setvar VAR_JOHTO_SILPH_LIFT_FLOOR 0
+  end
+
+
+script Guard
+  face t11r0701_policeman player
+  speaker "Guard"
+  if flag FLAG_JOHTO_SILPH_LIFT_OPEN goto Open
+  if has "Rotom" goto Rotom
+  say "That lift goes up to the research floor. Only staff may ride it, I'm afraid."
+  say "Unless you've got a Rotom with you. The researchers up there are always glad to meet one."
+  end
+label Rotom
+  scene "The lift to Rotom's room"
+  emote t11r0701_policeman exclaim
+  say "Is that a Rotom on your team? Then you'll want to see the research floor!"
+  say "Our researchers built machines a Rotom can slip right into. Go on up. The lift's yours to use."
+  setflag FLAG_JOHTO_SILPH_LIFT_OPEN
+  endscene
+  end
+label Open
+  say "The research floor is just up the lift. Mind you don't let your Rotom wander off into the photocopiers."
+  end

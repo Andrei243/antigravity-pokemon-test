@@ -429,6 +429,7 @@ public class ScriptTests
           team holds "Adamant Orb"
           team deoxys "Deoxys-Speed"
           team ends "Wailord" "Relicanth"
+          team rotom heat
           setvar VAR_X RESULT
           nationaldex
           hall enough single

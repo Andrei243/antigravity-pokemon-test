@@ -672,6 +672,136 @@ partial class Harness
         int n = 0;
         foreach (var house in houses.Take(2))
             Spot("Johto", (house.X0 + house.X1) / 2, house.Y1 + 2, Direction.Up, $"jkm{12 + n++}_route_{(n == 1 ? 7 : 8)}_shut_underground_house", 30);
+        JohtoKantoPartNShots();
+    }
+
+    /// <summary>
+    /// Plan 20 · J15, part n: the Power Plant's stolen part (the manager's tale, the grunt in the Cerulean Gym and his
+    /// battle on Nugget Bridge, the part in the pool, the generator turning), the Kanto Radio Tower and its Expn Card,
+    /// Zapdos's beat and battle at the plant's door, Snorlax woken by the radio, and Silph Co.'s lift up to Rotom's room
+    /// with its five appliances and a Rotom sent into one (<c>jkn01</c> to <c>jkn22</c>), after part m's, so nothing before
+    /// them moves. It prints the flags each step left and the Rotom's form and moves.
+    /// </summary>
+    void JohtoKantoPartNShots()
+    {
+        var box = game.Dialogue;
+        void ReadTo(string? text, int most = 2400)
+        {
+            for (int i = 0; i < most; i++)
+            {
+                if (text != null && box.IsActive && box.CurrentLine.Contains(text, StringComparison.Ordinal) && box.IsCurrentLineComplete) return;
+                if (text == null && !engine.ScriptRunning && !box.IsActive && game.State == GameState.Overworld) return;
+                if (game.State == GameState.Battle) { Frames(1); continue; }
+                if (engine.Choice.IsOpen) { Frames(10); engine.Choice.Confirm(); Frames(4); }
+                else if (box.IsActive && box.IsCurrentLineComplete && !box.IsQuestion) { box.Advance(); Frames(2); }
+                else Frames(1);
+            }
+            Console.WriteLine($"  !! never said: {text ?? "the script's end"}");
+        }
+        void TalkTo(string map, string key, int dx = 0, int dy = 1)
+        {
+            var npc = MapDatabase.Get(map).NPCs.First(n => n.Key == key);
+            At(map, npc.GridX + dx, npc.GridY + dy, dy > 0 ? Direction.Up : dy < 0 ? Direction.Down : dx > 0 ? Direction.Left : Direction.Right);
+            game.ArriveOnMap(); Frames(10);
+            game.Interact();
+        }
+        void Battle(string shot)
+        {
+            for (int i = 0; i < 1500 && game.State != GameState.Battle; i++) { if (box.IsActive && box.IsCurrentLineComplete && !box.IsQuestion) box.Advance(); Frames(1); }
+            if (game.State != GameState.Battle) { Console.WriteLine($"  !! never happened: {shot}"); return; }
+            Skip(1.0); ToMainMenu(game.Battle); Shot(shot);
+            game.State = GameState.Overworld; ReadTo(null); box.Close();
+        }
+        void Tell() => Console.WriteLine($"  robbed {game.Story.Has("FLAG_JOHTO_POWER_PLANT_ROBBED")}, fled {game.Story.Has("FLAG_JOHTO_CERULEAN_ROCKET_FLED")}, "
+            + $"bridge {game.Story.Has("FLAG_JOHTO_BEAT_ROUTE_24_ROCKET")}, part {game.Bag.GetQuantity(ItemDatabase.Get("Machine Part")!)}, fixed {game.Story.Has("FLAG_JOHTO_POWER_PLANT_FIXED")}, "
+            + $"TM73 {game.Bag.GetQuantity(ItemDatabase.Get("TM73")!)}, Expn Card {game.Bag.GetQuantity(ItemDatabase.Get("Expn Card")!)}");
+        game.State = GameState.Overworld;
+        game.Player.SetMode(TravelMode.OnFoot);
+        foreach (string flag in new[] { "FLAG_JOHTO_POWER_PLANT_ROBBED", "FLAG_JOHTO_CERULEAN_ROCKET_FLED", "FLAG_JOHTO_BEAT_ROUTE_24_ROCKET", "FLAG_JOHTO_FOUND_MACHINE_PART", "FLAG_JOHTO_POWER_PLANT_FIXED" })
+            game.Story.Unset(flag);
+
+        // ---- The Power Plant robbed
+        TalkTo("Route10_PowerPlant", "r10r0201_gsbigman");
+        ReadTo("robbed my plant"); Frames(10); Shot("jkn01_the_manager_robbed");
+        ReadTo(null); Tell();
+
+        // ---- The grunt in the Cerulean Gym, and his flight
+        At("Cerulean_Gym", 10, 24, Direction.Up); game.ArriveOnMap(); Frames(10); Shot("jkn02_a_grunt_in_the_cerulean_gym");
+        TalkTo("Cerulean_Gym", "t04gym0101_rocketm");
+        ReadTo("didn't hide anything"); Frames(10); Shot("jkn03_the_grunt_gives_himself_away");
+        ReadTo(null); Frames(20); Shot("jkn04_the_grunt_gone");
+        Tell();
+
+        // ---- On Nugget Bridge
+        TalkTo("Johto", "r24_rocketm");
+        ReadTo("Rocket at heart"); Frames(10); Shot("jkn05_the_grunt_on_nugget_bridge");
+        Battle("jkn06_the_grunts_battle");
+        Tell();
+
+        // ---- The part in the pool's corner
+        At("Cerulean_Gym", 4, 9, Direction.Down); game.ArriveOnMap(); Frames(10); Shot("jkn07_the_pools_north_corner");
+        game.Interact();
+        ReadTo("Machine Part"); Frames(10); Shot("jkn08_the_machine_part_found");
+        ReadTo(null); Tell();
+
+        // ---- Brought back: the generator turns
+        TalkTo("Route10_PowerPlant", "r10r0201_gsbigman");
+        ReadTo("turning again"); Frames(10); Shot("jkn09_the_generator_turning_again");
+        ReadTo(null); Tell();
+
+        // ---- The Kanto Radio Tower and its Expn Card
+        At("Lavender_RadioTower", 3, 11, Direction.Up); game.ArriveOnMap(); Frames(10); Shot("jkn10_the_kanto_radio_tower");
+        TalkTo("Lavender_RadioTower", "t05r0701_gsgentleman_2");
+        ReadTo("deserve this"); Frames(10); Shot("jkn11_the_director");
+        ReadTo(null); Tell();
+
+        // ---- Zapdos at the plant's door, met from below
+        game.Story.Unset("FLAG_HIDE_ROUTE_10_ZAPDOS");
+        game.Story.Unset("FLAG_JOHTO_FOUGHT_ZAPDOS");
+        At("Johto", 1419, 187, Direction.Up); game.EnterArea(); Frames(20); Shot("jkn12_zapdos_at_the_plants_door");
+        At("Johto", 1419, 185, Direction.Up); Frames(10);
+        game.Interact();
+        Frames(90); Shot("jkn13_zapdos_beat_first_strike");
+        ReadTo("jagged wings"); Frames(10); Shot("jkn14_zapdos_cry");
+        box.Advance();
+        Battle("jkn15_zapdos_battle");
+        Console.WriteLine($"  Zapdos fought {game.Story.Has("FLAG_JOHTO_FOUGHT_ZAPDOS")}");
+
+        // ---- Snorlax woken by the radio
+        game.Story.Unset("FLAG_HIDE_ROUTE_12_SNORLAX");
+        game.Story.Unset("FLAG_JOHTO_FOUGHT_SNORLAX");
+        TalkTo("Johto", "r12_kabigon");
+        ReadTo("Poké Flute channel"); Frames(10); Shot("jkn16_snorlax_and_the_radio");
+        ReadTo("woke up"); Frames(10); Shot("jkn17_snorlax_woken");
+        box.Advance();
+        Battle("jkn18_snorlaxs_battle");
+        Console.WriteLine($"  Snorlax fought {game.Story.Has("FLAG_JOHTO_FOUGHT_SNORLAX")}");
+
+        // ---- Silph Co.'s lift and Rotom's room
+        var rotom = new Pokemon(PokemonDatabase.Get("Rotom")!, 40);
+        while (rotom.Moves.Count > 2) rotom.Moves.RemoveAt(rotom.Moves.Count - 1);
+        game.Party.Add(rotom);
+        game.Story.Unset("FLAG_JOHTO_SILPH_LIFT_OPEN");
+        TalkTo("Saffron_SilphCo", "t11r0701_policeman", 1, 0);
+        ReadTo("Is that a Rotom"); Frames(10); Shot("jkn19_the_guard_sees_a_rotom");
+        ReadTo(null);
+        Console.WriteLine($"  lift open {game.Story.Has("FLAG_JOHTO_SILPH_LIFT_OPEN")}, warp {game.Map.GetWarpAt(3, 2)?.TargetMap ?? "none"}, solid {game.Map.IsSolid(3, 2)}");
+        At("Saffron_SilphCo_RotomRoom", 7, 3, Direction.Down); game.ArriveOnMap(); Frames(10); Shot("jkn20_rotoms_room");
+        At("Saffron_SilphCo_RotomRoom", 8, 8, Direction.Up); Frames(10); Shot("jkn21_the_five_appliances");
+        TalkTo("Saffron_SilphCo_RotomRoom", "t11r0702_rotomf");
+        ReadTo("learned Overheat"); Frames(10); Shot("jkn22_rotom_into_the_microwave");
+        ReadTo(null);
+        Console.WriteLine($"  Rotom: {rotom.Form}, {string.Join(", ", rotom.Moves.Select(m => m.Name))}");
+        game.Party.Remove(rotom);
+        At("Saffron_SilphCo_RotomRoom", 11, 12, Direction.Up); Frames(10); Shot("jkn23_the_researchers_boy");
+
+        // ---- Professor Oak's gift once Red is beaten
+        game.Story.Set("FLAG_JOHTO_BEAT_RED");
+        At("Pallet_OaksLab", 8, 8, Direction.Up); game.ArriveOnMap(); Frames(10); Shot("jkn24_oaks_three_poke_balls");
+        TalkTo("Pallet_OaksLab", "t01r0301_monstarball_3");
+        ReadTo("Bulbasaur, the Grass"); Frames(10); Shot("jkn25_bulbasaurs_ball");
+        Frames(10); engine.Choice.Move(1); engine.Choice.Confirm(); Frames(4); ReadTo(null);
+        Console.WriteLine($"  Oak's gift taken {game.Story.Has("FLAG_JOHTO_GOT_OAKS_GIFT")}");
     }
 
 }

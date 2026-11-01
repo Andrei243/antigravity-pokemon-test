@@ -1,0 +1,102 @@
+{
+  "Oak": [
+    {
+      "en": [
+        "Professor Oak"
+      ],
+      "text": [
+        "Profesorul Oak"
+      ]
+    },
+    {
+      "en": [
+        "Well, well! A Champion from Johto, here in my lab! Kanto has eight Gyms of its own, you know. Have you thought of taking them on?"
+      ],
+      "text": [
+        "Ei, ei! Un Campion din Johto, chiar în laboratorul meu! Kanto are opt Arene proprii, să știi. Te-ai gândit să le înfrunți?"
+      ]
+    },
+    {
+      "en": [
+        "I heard the news from Mt. Silver. You beat Red! Nobody has done that in years."
+      ],
+      "text": [
+        "Am auzit veștile de pe Muntele Silver. L-ai învins pe Red! Nimeni n-a mai reușit asta de ani de zile."
+      ]
+    },
+    {
+      "en": [
+        "A Trainer like you deserves to raise one of the Pokémon I gave Red long ago. Take whichever you like from the table."
+      ],
+      "text": [
+        "Un Antrenor ca tine merită să crească unul dintre Pokémonii pe care i i-am dat lui Red demult. Ia-l pe care vrei de pe masă."
+      ]
+    },
+    {
+      "en": [
+        "Raise that Pokémon well. I'd love to see what a Trainer who beat Red can do with it."
+      ],
+      "text": [
+        "Crește-l bine pe Pokémonul ăla. Aș vrea tare mult să văd ce poate face cu el un Antrenor care l-a învins pe Red."
+      ]
+    }
+  ],
+  "Gift": [
+    {
+      "en": [
+        "This Poké Ball holds Bulbasaur, the Grass Pokémon. Will you take it?"
+      ],
+      "text": [
+        "În Poké Ball-ul ăsta e Bulbasaur, Pokémonul de tip Iarbă. Îl iei?"
+      ]
+    },
+    {
+      "en": [
+        "{player} received Bulbasaur from Professor Oak!"
+      ],
+      "text": [
+        "{player} l-a primit pe Bulbasaur de la Profesorul Oak!"
+      ]
+    },
+    {
+      "en": [
+        "This Poké Ball holds Charmander, the Fire Pokémon. Will you take it?"
+      ],
+      "text": [
+        "În Poké Ball-ul ăsta e Charmander, Pokémonul de tip Foc. Îl iei?"
+      ]
+    },
+    {
+      "en": [
+        "{player} received Charmander from Professor Oak!"
+      ],
+      "text": [
+        "{player} l-a primit pe Charmander de la Profesorul Oak!"
+      ]
+    },
+    {
+      "en": [
+        "This Poké Ball holds Squirtle, the Water Pokémon. Will you take it?"
+      ],
+      "text": [
+        "În Poké Ball-ul ăsta e Squirtle, Pokémonul de tip Apă. Îl iei?"
+      ]
+    },
+    {
+      "en": [
+        "{player} received Squirtle from Professor Oak!"
+      ],
+      "text": [
+        "{player} l-a primit pe Squirtle de la Profesorul Oak!"
+      ]
+    },
+    {
+      "en": [
+        "Your team is full. Make room on it before you take a Pokémon from the table."
+      ],
+      "text": [
+        "Echipa ta e plină. Fă loc în ea înainte să iei un Pokémon de pe masă."
+      ]
+    }
+  ]
+}

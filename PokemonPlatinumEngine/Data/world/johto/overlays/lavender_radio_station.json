@@ -1,0 +1,29 @@
+{
+  // The Kanto Radio Tower in Lavender Town as HeartGold has it three years on (plan 20 · J15, part n): the station's
+  // ground floor, our words. Its director gives the Expn Card once the Power Plant on Route 10 runs again
+  // (lavender_radio_station.txt); until then the station can't broadcast. HeartGold's second gentleman on the
+  // director's tile (FLAG_UNK_258, which nothing here sets) is held back, and the director, whom HeartGold hides behind
+  // FLAG_HIDE_LAVENDER_RADIO_TOWER_DIRECTOR while he is away, always stands at his desk
+  "area": "lavender_radio_station",
+  "bgmTrack": "kanto/lavender",
+  "heldBack": [ "t05r0701_gsgentleman" ],
+  "people": {
+    "t05r0701_gsgentleman_2": { "name": "Director", "npcType": "radio_director", "script": "Director", "still": true, "hiddenBy": "" },
+    "t05r0701_gswoman6": { "name": "Receptionist", "script": "Receptionist", "still": true },
+    "t05r0701_policeman": {
+      "name": "Guard",
+      "still": true,
+      "dialog": [ "The studios upstairs are for staff only. The director's desk is as far as visitors go." ]
+    },
+    "t05r0701_gsman1": { "name": "Man", "script": "Listener" },
+    "t05r0701_gsman1_2": {
+      "name": "Engineer",
+      "still": true,
+      "dialog": [ "Every station in Kanto goes out from this tower. Johto's radios can't hear a word of it without the right card, mind." ]
+    }
+  },
+  "signs": {
+    "T05R0701_005+1": "Kanto Radio Tower\nOn the air from Lavender Town.",
+    "T05R0701_006+1": "Today's programmes:\nPokémon Music, Pokémon Talk and the Poké Flute."
+  }
+}

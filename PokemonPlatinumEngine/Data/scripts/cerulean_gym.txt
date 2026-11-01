@@ -63,3 +63,31 @@ script Statue
 label Won
   text "Cerulean City Pokémon Gym\nLeader: Misty\nWinning trainers: {player}"
   end
+
+# Team Rocket's grunt by the pool (plan 20 · J15, part n; HeartGold's T04GYM0101 scene with the grunt): there once the
+# Power Plant's manager has told of the theft (FLAG_JOHTO_POWER_PLANT_ROBBED), he gives himself away and runs off to
+# Nugget Bridge (FLAG_JOHTO_CERULEAN_ROCKET_FLED, which shows him on Route 24: johto_route_24.txt).
+script Rocket
+  face t04gym0101_rocketm player
+  scene "The grunt in the Cerulean Gym"
+  emote t04gym0101_rocketm exclaim
+  speaker "Grunt"
+  say "Whoa! A Trainer! I wasn't doing anything! I definitely didn't hide anything in this Gym!"
+  say "And I'm definitely not meeting anyone on Nugget Bridge. Er... see you!"
+  walk t04gym0101_rocketm right 4
+  hide t04gym0101_rocketm
+  setflag FLAG_JOHTO_CERULEAN_ROCKET_FLED
+  endscene
+  end
+
+
+# The Power Plant's Machine Part, hidden in the corner of the pool's north bank (HeartGold's T04GYM0101_005 on its two
+# markers): there to be found once the grunt on Nugget Bridge has told where (FLAG_JOHTO_BEAT_ROUTE_24_ROCKET), once.
+script MachinePart
+  if flag FLAG_JOHTO_FOUND_MACHINE_PART end
+  if not flag FLAG_JOHTO_BEAT_ROUTE_24_ROCKET end
+  speaker none
+  text "There's something wedged in the corner of the pool's edge..."
+  setflag FLAG_JOHTO_FOUND_MACHINE_PART
+  find "Machine Part"
+  end
