@@ -6427,6 +6427,7 @@ way 0
   > Registeel waited in the tomb without a sound, until lights blinked on across its face!
   * scene ancient_tomb.Registeel wakes in the Ancient Tomb
   * music stop
+  * walk player back down
   * letterbox on
   * camera Pan 8 7
   * camera Zoom 1.4
@@ -13777,6 +13778,7 @@ way 0
   > Regirock stood in the dark as still as a stone, until lights blinked on across its face!
   * scene desert_ruins.Regirock wakes in the Desert Ruins
   * music stop
+  * walk player back down
   * letterbox on
   * camera Pan 8 7
   * camera Zoom 1.4
@@ -17054,6 +17056,7 @@ way 0
   > The chamber is still again...
   * scene iceberg_chamber.Regice wakes
   * music stop
+  * walk player back down
   * letterbox on
   * camera Pan 15 14
   * camera Zoom 1.4
@@ -17129,6 +17132,7 @@ way 0
   > The chamber is still again...
   * scene iron_chamber.Registeel wakes
   * music stop
+  * walk player back down
   * letterbox on
   * camera Pan 15 14
   * camera Zoom 1.4
@@ -17231,6 +17235,7 @@ way 0
   > Regice stood in the cold dark, frozen as the cave itself, until lights blinked on across its face!
   * scene island_cave.Regice wakes in the Island Cave
   * music stop
+  * walk player back down
   * letterbox on
   * camera Pan 8 7
   * camera Zoom 1.4
@@ -19008,7 +19013,7 @@ way 0
   * scene marine_cave_end.Kyogre in the Marine Cave
   * music stop
   * letterbox on
-  * camera Pan 9 22
+  * camera Pan 9 23
   * camera Zoom 1.4
   * effect Sparkles 9 22
   * effect Ripple 9 22
@@ -20376,11 +20381,12 @@ way 0
   > Ho-Oh spread its wings and flew off into the sky...
   * scene navel_rock_top.Ho-Oh at the peak of Navel Rock
   * music stop
+  * walk player back down
   * letterbox on
-  * camera Pan 12 4
+  * camera Pan 12 5
   * camera Zoom 1.4
-  * effect Shadow 12 6 Down
-  * camera Path 12 7 12 9 at 2
+  * effect Shadow 12 9 Down
+  * camera Path 12 5 12 9 at 1.2
   * effect Burst 12 9
   * effect Ripple 12 9
   * cry Ho-Oh
@@ -20399,7 +20405,7 @@ way 1, from answer 1
   = VAR_TEMP_1 0 -> 1
   + seen navel_rock_top.Ho-Oh at the peak of Navel Rock
 === navel_rock_top.Waiting
-from Ho-Oh at 12,9 of NavelRock_Top
+from Ho-Oh at 12,4 of NavelRock_Top
 way -
   > A Pokémon of rainbow colours is perched high on the rock above the peak.
 === new_bark.Friend
@@ -22527,6 +22533,7 @@ way 0
   > The chamber is still again...
   * scene rock_peak_chamber.Regirock wakes
   * music stop
+  * walk player back down
   * letterbox on
   * camera Pan 15 14
   * camera Zoom 1.4
@@ -26426,10 +26433,10 @@ way 0
   * scene sky_pillar_top.Rayquaza on the top of Sky Pillar
   * music stop
   * letterbox on
-  * camera Pan 14 3
+  * camera Pan 14 5
   * camera Zoom 1.4
-  * effect Shadow 14 5 Down
-  * camera Path 14 4 14 6 at 2
+  * effect Shadow 14 6 Down
+  * camera Path 14 4 14 7 at 2
   * cry Rayquaza
   * camera Shake
   * emote player Exclaim
@@ -28012,7 +28019,7 @@ way 0
   * scene terra_cave_end.Groudon in Terra Cave
   * music stop
   * letterbox on
-  * camera Pan 17 22
+  * camera Pan 17 23
   * camera Zoom 1.4
   * effect Burst 17 22
   * effect Ripple 17 22

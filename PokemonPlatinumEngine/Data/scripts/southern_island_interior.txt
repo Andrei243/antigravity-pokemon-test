@@ -30,9 +30,9 @@ script Stone
   music stop
   face player up
   letterbox on 0.4
-  camera pan 13 5 1.2
+  camera pan 13 8 1.2
   camera zoom 1.4 0.8
-  effect shadow 13 7 2 down
+  effect shadow 13 10 2 down
   camera path 13 8 13 10 2
   clearflag FLAG_HIDE_SOUTHERN_ISLAND_LATIAS
   show southern_island_latias
@@ -59,9 +59,9 @@ label Latios
   music stop
   face player up
   letterbox on 0.4
-  camera pan 13 5 1.2
+  camera pan 13 8 1.2
   camera zoom 1.4 0.8
-  effect shadow 13 7 2 down
+  effect shadow 13 10 2 down
   camera path 13 8 13 10 2
   clearflag FLAG_HIDE_SOUTHERN_ISLAND_LATIOS
   show southern_island_latios

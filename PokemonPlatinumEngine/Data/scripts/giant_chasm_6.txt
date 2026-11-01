@@ -187,6 +187,7 @@ script KyuremRests
   music stop
   face player self
   face self player
+  walk player back down 1
   letterbox on 0.4
   camera pan 15 17 1.2
   camera zoom 1.4 0.8

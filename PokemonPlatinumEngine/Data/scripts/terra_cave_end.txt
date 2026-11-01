@@ -28,7 +28,7 @@ script Groudon
   music stop
   face player up
   letterbox on 0.4
-  camera pan 17 22 1.2
+  camera pan 17 23 1.2
   camera zoom 1.4 0.8
   effect burst 17 22
   wait 0.4

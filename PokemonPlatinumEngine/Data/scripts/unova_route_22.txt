@@ -62,7 +62,7 @@ script Terrakion
   letterbox on 0.4
   camera path 725 134 725 138 3
   camera zoom 1.4 0.8
-  effect beam 725 138
+  effect beam 725 138 0.8
   shake self 8
   sound "use_earthquake"
   camera shake 0.8
