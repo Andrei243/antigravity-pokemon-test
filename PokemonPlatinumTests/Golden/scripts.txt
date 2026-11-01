@@ -7450,11 +7450,24 @@ from Ho-Oh at 15,16 of BellTower_Roof
 way 0
   > Ho-Oh spreads its burning wings!
   > Ho-Oh rose into the sky in a trail of rainbow light and was gone...
+  * scene bell_tower_roof.Ho-Oh on the Bell Tower
+  * music stop
+  * letterbox on
+  * camera Pan 15 16
+  * camera Zoom 1.4
+  * effect Burst 15 16
+  * effect Ripple 15 16
   * cry Ho-Oh
+  * camera Shake
+  * camera Release
+  * letterbox off
+  * endscene
   * wildbattle Ho-Oh 45 nofleeing Won
   + FLAG_HIDE_BELL_TOWER_HO_OH
+  + seen bell_tower_roof.Ho-Oh on the Bell Tower
 way 1, from answer 1
   * wildbattle Ho-Oh 45 nofleeing Lost
+  + seen bell_tower_roof.Ho-Oh on the Bell Tower
 === birth_island_exterior.Deoxys
 from Deoxys at 15,3 of BirthIsland_Exterior
 way -
@@ -7644,14 +7657,32 @@ way -
   Eusine> I'm Eusine. I've spent years tracking Suicune. Now that it's awake, it'll roam all over Johto.
   Eusine> Lucas, was it? I'll catch up with Suicune one day. Until then, farewell!
   * scene burned_tower_b1f.The three beasts wake
+  * letterbox on
+  * camera Pan 15 15
+  * camera Zoom 1.4
   * cry Raikou
   * cry Entei
   * cry Suicune
   * emote player Exclaim
+  * camera Pan 14 14
+  * effect Burst 14 14
+  * camera Shake
+  * effect Burst 14 14
+  * camera Shake
   * flicker Raikou 4
+  * effect Shadow 14 14 Left
+  * camera Pan 16 14
+  * effect Burst 16 14
+  * camera Shake
   * flicker Entei 4
+  * effect Shadow 16 14 Up
+  * camera Pan 15 16
   * cry Suicune
+  * effect Sparkles 15 16
   * flicker Suicune 4
+  * effect Shadow 15 16 Right
+  * camera Release
+  * letterbox off
   * sound stairs
   * sound stairs
   * endscene
@@ -8956,9 +8987,17 @@ way 0
   Eusine> I'll keep searching. Suicune won't be far. Next time, I'll be the one it waits for!
   * scene cianwood.Suicune and Eusine in Cianwood
   * emote player Exclaim
+  * letterbox on
+  * camera Pan 174 330
+  * camera Zoom 1.4
   * cry Suicune
+  * effect Sparkles 174 330
   * walk Suicune onspot up onspot up
   * sound ledge
+  * effect Shadow 174 329 Up
+  * camera Path 174 326 174 322 at 5
+  * camera Release
+  * letterbox off
   * music johto/eye_mystery
   * battle johto_mystery_man_eusine Won
   * music area
@@ -19760,17 +19799,27 @@ way 1, from answer 1
 === mount_silver_cave_moltres_chamber.Moltres
 from Moltres at 10,9 of MtSilverCave_MoltresChamber
 way 0
-  > Gyaoo!\nThe chamber blazed as Moltres spread its wings of fire!
-  * scene mount_silver_cave_moltres_chamber.Moltres
+  > The chamber blazed as Moltres spread its wings of fire!
+  * scene mount_silver_cave_moltres_chamber.Moltres in Mt Silver
+  * music stop
+  * letterbox on
+  * camera Pan 10 9
+  * camera Zoom 1.4
+  * effect Burst 10 9
+  * effect Ripple 10 9
   * cry Moltres
-  * wildbattle Moltres 50 Won
+  * camera Shake
+  * emote player Exclaim
+  * camera Release
+  * letterbox off
   * endscene
+  * wildbattle Moltres 50 Won
   + FLAG_HIDE_MT_SILVER_CAVE_MOLTRES
   + FLAG_JOHTO_FOUGHT_MOLTRES
-  + seen mount_silver_cave_moltres_chamber.Moltres
+  + seen mount_silver_cave_moltres_chamber.Moltres in Mt Silver
 way 1, from answer 1
   * wildbattle Moltres 50 Lost
-  * scene over, unseen
+  + seen mount_silver_cave_moltres_chamber.Moltres in Mt Silver
 === mount_silver_cave_summit.Red
 from Red at 30,11 of MtSilverCave_Summit
 way 0
@@ -29773,8 +29822,23 @@ from Lugia at 16,17 of WhirlIslands_LugiaCave
 way 0
   > The Silver Wing glows, and the great bird of the sea opens its eyes!
   > Lugia slipped beneath the dark water and was gone...
+  * scene whirl_islands_b3f_lugia_cave.Lugia in the Whirl Islands
+  * music stop
+  * letterbox on
+  * camera Pan 16 17
+  * camera Zoom 1.4
+  * effect Sparkles 16 17
+  * effect Ripple 16 17
+  * camera Shake
   * cry Lugia
+  * camera Shake
+  * emote player Exclaim
+  * camera Release
+  * letterbox off
+  * endscene
   * wildbattle Lugia 45 nofleeing Won
   + FLAG_HIDE_WHIRL_ISLAND_LUGIA
+  + seen whirl_islands_b3f_lugia_cave.Lugia in the Whirl Islands
 way 1, from answer 1
   * wildbattle Lugia 45 nofleeing Lost
+  + seen whirl_islands_b3f_lugia_cave.Lugia in the Whirl Islands

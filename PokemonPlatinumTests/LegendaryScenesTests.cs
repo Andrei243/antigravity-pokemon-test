@@ -31,10 +31,6 @@ public class LegendaryScenesTests
         ["power_plant.Zapdos Zapdos"] = "LS3",
         ["mt_ember_summit.Moltres Moltres"] = "LS3",
         ["cerulean_cave_b1f.Mewtwo Mewtwo"] = "LS3",
-        // Johto's birds of the towers
-        ["bell_tower_roof.HoOh Ho-Oh"] = "LS4",
-        ["whirl_islands_b3f_lugia_cave.Lugia Lugia"] = "LS4",
-        ["mount_silver_cave_moltres_chamber.Moltres Moltres"] = "LS4",
         // Hoenn's titans after the story
         ["sky_pillar_top.Rayquaza Rayquaza"] = "LS6",
         ["marine_cave_end.Kyogre Kyogre"] = "LS6",
