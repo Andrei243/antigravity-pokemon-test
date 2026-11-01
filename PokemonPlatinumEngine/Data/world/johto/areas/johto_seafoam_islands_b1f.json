@@ -1,0 +1,68 @@
+{
+  "key": "johto_seafoam_islands_b1f",
+  "index": 453,
+  "name": "Seafoam Islands",
+  "matrix": 82,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave2",
+  "dayMusic": "GS_D_KOORINONUKE",
+  "nightMusic": "GS_D_KOORINONUKE",
+  "encounters": "D11R0102",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Seel", "level": 32 },
+    { "species": "Golbat", "level": 34 },
+    { "species": "Psyduck", "level": 28 },
+    { "species": "Seel", "level": 34 },
+    { "species": "Golbat", "level": 32 },
+    { "species": "Golduck", "level": 34 },
+    { "species": "Zubat", "level": 29 },
+    { "species": "Zubat", "level": 28 },
+    { "species": "Golduck", "level": 32 },
+    { "species": "Psyduck", "level": 28 },
+    { "species": "Psyduck", "level": 27 },
+    { "species": "Psyduck", "level": 26 }
+  ],
+  "landRate": 5,
+  "swarm": [
+    "Seel",
+    "Seel"
+  ],
+  "hoennSounds": [
+    "Absol",
+    "Makuhita"
+  ],
+  "sinnohSounds": [
+    "Bronzor",
+    "Chingling"
+  ],
+  "warps": [
+    { "x": 45, "z": 21, "to": "johto_seafoam_islands_1f", "toWarp": 2 },
+    { "x": 2, "z": 8, "to": "johto_seafoam_islands_1f", "toWarp": 3 },
+    { "x": 32, "z": 22, "to": "johto_seafoam_islands_b2f", "toWarp": 0 },
+    { "x": 13, "z": 18, "to": "johto_seafoam_islands_b2f", "toWarp": 1 },
+    { "x": 17, "z": 9, "to": "johto_seafoam_islands_b2f", "toWarp": 2 },
+    { "x": 7, "z": 20, "to": "johto_seafoam_islands_b2f", "toWarp": 3 }
+  ],
+  "objects": [
+    { "id": "d11r0102_rock", "looks": "rock", "movement": "0", "x": 38, "z": 15, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "std_field_strength" },
+    { "id": "d11r0102_rock_2", "looks": "rock", "movement": "0", "x": 39, "z": 15, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "std_field_strength" },
+    { "id": "d11r0102_rock_3", "looks": "rock", "movement": "0", "x": 40, "z": 16, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "std_field_strength" },
+    { "id": "d11r0102_rock_4", "looks": "rock", "movement": "0", "x": 11, "z": 13, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "std_field_strength" },
+    { "id": "d11r0102_rock_5", "looks": "rock", "movement": "0", "x": 6, "z": 16, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "std_field_strength" },
+    { "id": "d11r0102_rock_6", "looks": "rock", "movement": "0", "x": 12, "z": 22, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "std_field_strength" },
+    { "id": "d11r0102_monstarball", "looks": "monstarball", "movement": "0", "x": 22, "z": 4, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D11R0102_GRIP_CLAW", "item": "Grip Claw", "script": "std_itemball_d11r0102_grip_claw" },
+    { "id": "d11r0102_monstarball_2", "looks": "monstarball", "movement": "0", "x": 29, "z": 9, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D11R0102_ICE_HEAL", "item": "Ice Heal", "script": "std_itemball_d11r0102_ice_heal" },
+    { "id": "d11r0102_gsmiddleman1", "looks": "gsmiddleman1", "movement": "14", "x": 33, "z": 13, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CAMERON", "script": "D11R0102_000+1" }
+  ],
+  "signs": [
+    { "x": 19, "z": 17, "type": 2, "script": "std_hiddenitem_d11r0102_ice_heal", "item": "Ice Heal", "flag": "FLAG_HIDDEN_ITEM_D11R0102_ICE_HEAL" }
+  ],
+  "triggers": []
+}

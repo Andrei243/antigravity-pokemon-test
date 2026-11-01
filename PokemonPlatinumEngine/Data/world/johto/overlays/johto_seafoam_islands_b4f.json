@@ -1,0 +1,10 @@
+{
+  // The Seafoam Islands' lowest floor as HeartGold has it three years on (plan 20 · J15, part m): the cold water at the
+  // bottom of the islands, where Articuno waits until it has been fought (johto_seafoam_islands_b4f.txt). Its key meets
+  // FireRed's, so it takes Johto's prefix (HgWorld.Clashes)
+  "area": "johto_seafoam_islands_b4f",
+  "bgmTrack": "kanto/viridian_forest",
+  "people": {
+    "d11r0105_tsure_poke_static_articuno": { "name": "Articuno", "npcType": "Pokemon", "species": "Articuno", "script": "Articuno", "still": true }
+  }
+}

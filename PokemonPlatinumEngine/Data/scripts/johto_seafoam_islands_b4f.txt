@@ -1,0 +1,50 @@
+# The Seafoam Islands' lowest floor as HeartGold has it three years on (plan 20 · J15, part m). docs/scripts.md
+# describes the language; the lines are our own, on HeartGold's beats (scr_seq_D11R0105). FireRed's Kanto has its own
+# floor and script (seafoam_islands_b4f.txt), which this one does not touch.
+#
+# Articuno waits on its ledge until it has been fought (FLAG_JOHTO_FOUGHT_ARTICUNO, ours), as Moltres does in Mt. Silver:
+# beaten or caught it is gone for good, run from it flies off (HeartGold's FLAG_HIDE_SEAFOAM_ISLAND_ARTICUNO) and is back
+# on the next visit.
+#
+# Its meeting is plan 29's beat (style guide, "Legendary scenes"): the bars, the camera to Articuno, sparkles of cold and
+# the air wavering, the cave shaken with its cry as the sea's birds are; the scene ends before the battle, so the hold
+# never skips it.
+
+
+script OnEnter
+  if not flag FLAG_JOHTO_FOUGHT_ARTICUNO clearflag FLAG_HIDE_SEAFOAM_ISLAND_ARTICUNO
+  end
+
+# D11R0105_000: Articuno
+script Articuno
+  scene "Articuno in the Seafoam Islands"
+  music stop
+  face player self
+  letterbox on 0.4
+  # Met from below, it is behind the player's own head from the field's camera: a step back, facing it, shows it
+  if facing up walk player back down 1
+  camera pan 27 22 1.2
+  camera zoom 1.4 0.8
+  effect sparkles 27 22
+  effect ripple 27 22
+  wait 1
+  cry "Articuno"
+  camera shake 0.5
+  emote player exclaim
+  speaker none
+  text "The air turned bitterly cold as Articuno spread its icy wings!"
+  if facing up walk player up 1
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Articuno" 50
+  if result == 2 goto Fled
+  setflag FLAG_JOHTO_FOUGHT_ARTICUNO
+  setflag FLAG_HIDE_SEAFOAM_ISLAND_ARTICUNO
+  hide self
+  end
+label Fled
+  setflag FLAG_HIDE_SEAFOAM_ISLAND_ARTICUNO
+  hide self
+  text "Articuno flew off into the depths of the caves!"
+  end

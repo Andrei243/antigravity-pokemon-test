@@ -17390,6 +17390,31 @@ way -
   + FLAG_JOHTO_MISTY_BACK_IN_GYM
   = VAR_JOHTO_MISTY_DATE 0 -> 1
   + seen johto_route_25.MistysDate
+=== johto_seafoam_islands_b4f.Articuno
+from Articuno at 27,22 of Seafoam_B4F
+way 0
+  > The air turned bitterly cold as Articuno spread its icy wings!
+  * scene johto_seafoam_islands_b4f.Articuno in the Seafoam Islands
+  * music stop
+  * letterbox on
+  * walk player back down
+  * camera Pan 27 22
+  * camera Zoom 1.4
+  * effect Sparkles 27 22
+  * effect Ripple 27 22
+  * cry Articuno
+  * camera Shake
+  * emote player Exclaim
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Articuno 50 Won
+  + FLAG_HIDE_SEAFOAM_ISLAND_ARTICUNO
+  + FLAG_JOHTO_FOUGHT_ARTICUNO
+  + seen johto_seafoam_islands_b4f.Articuno in the Seafoam Islands
+way 1, from answer 1
+  * wildbattle Articuno 50 Lost
+  + seen johto_seafoam_islands_b4f.Articuno in the Seafoam Islands
 === johto_victory_road_3f.Gone
 from {rival} at 33,29 of IndigoVictoryRoad_3F
 way -

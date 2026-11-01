@@ -11,8 +11,8 @@ A **line** is one string a character says in a text box (a script's `say` and th
 | The introduction (`intro:`) | 80 | 80 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1276 | 1236 | 40 | 1 | 0 |
 | Scripts (`script:`) | 9270 | 8840 | 430 | 17 | 0 |
-| People of the world (`world:`) | 6918 | 6859 | 59 | 4 | 0 |
-| **All** | 17544 | 17015 | 529 | 22 | 0 |
+| People of the world (`world:`) | 6930 | 6871 | 59 | 4 | 0 |
+| **All** | 17556 | 17027 | 529 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -24,7 +24,7 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | a question's answers | 564 |
 | a sign | 1556 |
 | the game's own voice (speaker none) | 265 |
-| the game's own voice (text) | 1362 |
+| the game's own voice (text) | 1364 |
 
 ## The cast
 
@@ -201,6 +201,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:pokemaniac (any)` | 22 | 0 |
 | `class:pokémon_breeder (any)` | 22 | 0 |
 | `class:psychic_m (any)` | 22 | 0 |
+| `class:skier (any)` | 22 | 0 |
 | `look:ninja_boy (any)` | 22 | 0 |
 | `mars` | 22 | 0 |
 | `schoolboy` | 22 | 0 |
@@ -214,7 +215,6 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:juggler (any)` | 20 | 0 |
 | `class:poke_maniac (any)` | 20 | 0 |
 | `class:pokefan (any)` | 20 | 0 |
-| `class:skier (any)` | 20 | 0 |
 | `class:tuber (any)` | 20 | 0 |
 | `director` | 20 | 1 |
 | `juan` | 20 | 0 |

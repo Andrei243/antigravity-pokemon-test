@@ -1,0 +1,102 @@
+{
+  "key": "johto_seafoam_islands_b4f",
+  "index": 456,
+  "name": "Seafoam Islands",
+  "matrix": 85,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave3",
+  "dayMusic": "GS_D_KOORINONUKE",
+  "nightMusic": "GS_D_KOORINONUKE",
+  "encounters": "D11R0105",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Dewgong", "level": 37 },
+    { "species": "Golbat", "level": 40 },
+    { "species": "Psyduck", "level": 34 },
+    { "species": "Seel", "level": 34 },
+    { "species": "Jynx", "level": 38 },
+    { "species": "Golduck", "level": 38 },
+    { "species": "Golbat", "level": 39 },
+    { "species": "Golbat", "level": 38 },
+    { "species": "Golduck", "level": 37 },
+    { "species": "Dewgong", "level": 38 },
+    { "species": "Jynx", "level": 40 },
+    { "species": "Jynx", "level": 40 }
+  ],
+  "landRate": 10,
+  "swarm": [
+    "Seel",
+    "Seel"
+  ],
+  "surfSwarm": "Seel",
+  "fishSwarm": "Magikarp",
+  "water": [
+    { "species": "Seel", "level": 30, "maxLevel": 40 },
+    { "species": "Horsea", "level": 30, "maxLevel": 40 },
+    { "species": "Slowbro", "level": 35, "maxLevel": 45 },
+    { "species": "Slowbro", "level": 50, "maxLevel": 50 },
+    { "species": "Slowbro", "level": 35, "maxLevel": 45 }
+  ],
+  "waterRate": 5,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Krabby", "level": 10, "maxLevel": 10 },
+    { "species": "Krabby", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Psyduck", "level": 20, "maxLevel": 20 },
+    { "species": "Krabby", "level": 20, "maxLevel": 20 },
+    { "species": "Horsea", "level": 20, "maxLevel": 20 },
+    { "species": "Krabby", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Gyarados", "level": 40, "maxLevel": 40 },
+    { "species": "Horsea", "level": 40, "maxLevel": 40 },
+    { "species": "Kingler", "level": 40, "maxLevel": 40 },
+    { "species": "Seadra", "level": 40, "maxLevel": 40 },
+    { "species": "Seadra", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "hoennSounds": [
+    "Absol",
+    "Makuhita"
+  ],
+  "sinnohSounds": [
+    "Bronzor",
+    "Chingling"
+  ],
+  "warps": [
+    { "x": 45, "z": 22, "to": "johto_seafoam_islands_b3f", "toWarp": 4 },
+    { "x": 38, "z": 23, "to": "johto_seafoam_islands_b3f", "toWarp": 5 },
+    { "x": 33, "z": 4, "to": "johto_seafoam_islands_b3f", "toWarp": 6 },
+    { "x": 28, "z": 13, "to": "johto_seafoam_islands_b3f", "toWarp": 7 },
+    { "x": 12, "z": 19, "to": "johto_seafoam_islands_b3f", "toWarp": 8 },
+    { "x": 6, "z": 5, "to": "johto_seafoam_islands_b3f", "toWarp": 9 },
+    { "x": 38, "z": 22, "to": "johto_seafoam_islands_b3f", "toWarp": 5 },
+    { "x": 33, "z": 3, "to": "johto_seafoam_islands_b3f", "toWarp": 6 },
+    { "x": 28, "z": 12, "to": "johto_seafoam_islands_b3f", "toWarp": 7 },
+    { "x": 12, "z": 18, "to": "johto_seafoam_islands_b3f", "toWarp": 8 },
+    { "x": 6, "z": 4, "to": "johto_seafoam_islands_b3f", "toWarp": 9 },
+    { "x": 45, "z": 21, "to": "johto_seafoam_islands_b3f", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "d11r0105_monstarball", "looks": "monstarball", "movement": "0", "x": 29, "z": 4, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D11R0105_ULTRA_BALL", "item": "Ultra Ball", "script": "std_itemball_d11r0105_ultra_ball" },
+    { "id": "d11r0105_monstarball_2", "looks": "monstarball", "movement": "0", "x": 42, "z": 8, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D11R0105_TM13", "item": "TM13", "script": "std_itemball_d11r0105_tm13" },
+    { "id": "d11r0105_tsure_poke_static_articuno", "looks": "follower_mon_static_articuno", "movement": "15", "x": 27, "z": 22, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SEAFOAM_ISLAND_ARTICUNO", "script": "D11R0105_000+1" }
+  ],
+  "signs": [
+    { "x": 27, "z": 22, "type": 2, "script": "std_hiddenitem_d11r0105_zinc", "item": "Zinc", "flag": "FLAG_HIDDEN_ITEM_D11R0105_ZINC" }
+  ],
+  "triggers": []
+}

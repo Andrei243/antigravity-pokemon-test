@@ -1,0 +1,70 @@
+{
+  "key": "johto_seafoam_islands_b2f",
+  "index": 454,
+  "name": "Seafoam Islands",
+  "matrix": 83,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave3",
+  "dayMusic": "GS_D_KOORINONUKE",
+  "nightMusic": "GS_D_KOORINONUKE",
+  "encounters": "D11R0103",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Seel", "level": 33 },
+    { "species": "Golbat", "level": 35 },
+    { "species": "Psyduck", "level": 30 },
+    { "species": "Seel", "level": 35 },
+    { "species": "Golbat", "level": 33 },
+    { "species": "Golduck", "level": 35 },
+    { "species": "Zubat", "level": 30 },
+    { "species": "Zubat", "level": 29 },
+    { "species": "Golduck", "level": 33 },
+    { "species": "Psyduck", "level": 29 },
+    { "species": "Psyduck", "level": 28 },
+    { "species": "Psyduck", "level": 27 }
+  ],
+  "landRate": 5,
+  "swarm": [
+    "Seel",
+    "Seel"
+  ],
+  "hoennSounds": [
+    "Absol",
+    "Makuhita"
+  ],
+  "sinnohSounds": [
+    "Bronzor",
+    "Chingling"
+  ],
+  "warps": [
+    { "x": 34, "z": 25, "to": "johto_seafoam_islands_b1f", "toWarp": 2 },
+    { "x": 15, "z": 21, "to": "johto_seafoam_islands_b1f", "toWarp": 3 },
+    { "x": 18, "z": 12, "to": "johto_seafoam_islands_b1f", "toWarp": 4 },
+    { "x": 9, "z": 23, "to": "johto_seafoam_islands_b1f", "toWarp": 5 },
+    { "x": 43, "z": 12, "to": "johto_seafoam_islands_b3f", "toWarp": 0 },
+    { "x": 42, "z": 23, "to": "johto_seafoam_islands_b3f", "toWarp": 1 },
+    { "x": 23, "z": 14, "to": "johto_seafoam_islands_b3f", "toWarp": 2 },
+    { "x": 5, "z": 24, "to": "johto_seafoam_islands_b3f", "toWarp": 3 },
+    { "x": 34, "z": 24, "to": "johto_seafoam_islands_b1f", "toWarp": 2 },
+    { "x": 18, "z": 11, "to": "johto_seafoam_islands_b1f", "toWarp": 4 },
+    { "x": 15, "z": 20, "to": "johto_seafoam_islands_b1f", "toWarp": 3 },
+    { "x": 9, "z": 22, "to": "johto_seafoam_islands_b1f", "toWarp": 5 }
+  ],
+  "objects": [
+    { "id": "everywhere_boarder", "looks": "boarder", "movement": "14", "x": 33, "z": 14, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 2, "script": "TRAINER_BOARDER_BRYCE" },
+    { "id": "everywhere_boarder_2", "looks": "boarder", "movement": "20", "x": 25, "z": 8, "facing": 2, "rangeX": 4, "rangeZ": 0, "trainer": "sees", "sight": 2, "script": "TRAINER_BOARDER_SHAUN" },
+    { "id": "everywhere_skierw", "looks": "skierw", "movement": "16", "x": 17, "z": 7, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 1, "script": "TRAINER_SKIER_CADY" },
+    { "id": "everywhere_monstarball", "looks": "monstarball", "movement": "0", "x": 19, "z": 25, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D11R0103_WATER_STONE", "item": "Water Stone", "script": "std_itemball_d11r0103_water_stone" }
+  ],
+  "signs": [
+    { "x": 5, "z": 7, "type": 2, "script": "std_hiddenitem_d11r0103_pearl", "item": "Pearl", "flag": "FLAG_HIDDEN_ITEM_D11R0103_PEARL" },
+    { "x": 42, "z": 18, "type": 2, "script": "std_hiddenitem_d11r0103_pearl_2", "item": "Pearl", "flag": "FLAG_HIDDEN_ITEM_D11R0103_PEARL_2" }
+  ],
+  "triggers": []
+}

@@ -941,6 +941,23 @@ trainers 6, 40-45: johto_camper_dean 44, johto_camper_sid 43, johto_hiker_clarke
 === johto_seafoam_islands_1f
 Seafoam Islands
 grass 26-32
+=== johto_seafoam_islands_b1f
+Seafoam Islands
+grass 26-34
+=== johto_seafoam_islands_b2f
+Seafoam Islands
+grass 27-35
+trainers 3, 50-55: johto_boarder_bryce 55, johto_boarder_shaun 55, johto_skier_cady 53
+=== johto_seafoam_islands_b3f
+Seafoam Islands
+grass 31-36
+=== johto_seafoam_islands_b4f
+Seafoam Islands
+grass 34-40
+surf 30-50
+old rod 10
+good rod 20
+super rod 40
 === johto_victory_road_1f
 Victory Road Jk
 grass 32-36

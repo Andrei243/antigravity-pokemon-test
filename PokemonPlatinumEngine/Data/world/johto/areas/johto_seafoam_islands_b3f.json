@@ -1,0 +1,77 @@
+{
+  "key": "johto_seafoam_islands_b3f",
+  "index": 455,
+  "name": "Seafoam Islands",
+  "matrix": 84,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave3",
+  "dayMusic": "GS_D_KOORINONUKE",
+  "nightMusic": "GS_D_KOORINONUKE",
+  "encounters": "D11R0104",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Dewgong", "level": 35 },
+    { "species": "Golbat", "level": 36 },
+    { "species": "Psyduck", "level": 32 },
+    { "species": "Seel", "level": 34 },
+    { "species": "Golbat", "level": 34 },
+    { "species": "Golduck", "level": 36 },
+    { "species": "Zubat", "level": 32 },
+    { "species": "Zubat", "level": 31 },
+    { "species": "Golduck", "level": 34 },
+    { "species": "Dewgong", "level": 36 },
+    { "species": "Psyduck", "level": 32 },
+    { "species": "Psyduck", "level": 31 }
+  ],
+  "landRate": 10,
+  "swarm": [
+    "Dewgong",
+    "Dewgong"
+  ],
+  "hoennSounds": [
+    "Absol",
+    "Makuhita"
+  ],
+  "sinnohSounds": [
+    "Bronzor",
+    "Chingling"
+  ],
+  "warps": [
+    { "x": 43, "z": 13, "to": "johto_seafoam_islands_b2f", "toWarp": 4 },
+    { "x": 42, "z": 25, "to": "johto_seafoam_islands_b2f", "toWarp": 5 },
+    { "x": 23, "z": 15, "to": "johto_seafoam_islands_b2f", "toWarp": 6 },
+    { "x": 4, "z": 25, "to": "johto_seafoam_islands_b2f", "toWarp": 7 },
+    { "x": 44, "z": 22, "to": "johto_seafoam_islands_b4f", "toWarp": 0 },
+    { "x": 37, "z": 23, "to": "johto_seafoam_islands_b4f", "toWarp": 1 },
+    { "x": 32, "z": 4, "to": "johto_seafoam_islands_b4f", "toWarp": 2 },
+    { "x": 27, "z": 13, "to": "johto_seafoam_islands_b4f", "toWarp": 3 },
+    { "x": 11, "z": 20, "to": "johto_seafoam_islands_b4f", "toWarp": 4 },
+    { "x": 5, "z": 5, "to": "johto_seafoam_islands_b4f", "toWarp": 5 },
+    { "x": 42, "z": 24, "to": "johto_seafoam_islands_b2f", "toWarp": 5 },
+    { "x": 43, "z": 12, "to": "johto_seafoam_islands_b2f", "toWarp": 4 },
+    { "x": 23, "z": 14, "to": "johto_seafoam_islands_b2f", "toWarp": 6 },
+    { "x": 4, "z": 24, "to": "johto_seafoam_islands_b2f", "toWarp": 7 }
+  ],
+  "objects": [
+    { "id": "everywhere_rock", "looks": "rock", "movement": "0", "x": 30, "z": 12, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_010", "script": "std_field_strength" },
+    { "id": "everywhere_ice", "looks": "ice", "movement": "15", "x": 28, "z": 23, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "0" },
+    { "id": "everywhere_ice_2", "looks": "ice", "movement": "15", "x": 30, "z": 23, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "0" },
+    { "id": "everywhere_ice_3", "looks": "ice", "movement": "15", "x": 32, "z": 23, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "0" },
+    { "id": "everywhere_ice_4", "looks": "ice", "movement": "15", "x": 12, "z": 12, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "0" },
+    { "id": "everywhere_ice_5", "looks": "ice", "movement": "15", "x": 15, "z": 12, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "0" },
+    { "id": "everywhere_ice_6", "looks": "ice", "movement": "15", "x": 14, "z": 15, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "0" },
+    { "id": "everywhere_monstarball", "looks": "monstarball", "movement": "0", "x": 21, "z": 22, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D11R0104_REVIVE", "item": "Revive", "script": "std_itemball_d11r0104_revive" },
+    { "id": "everywhere_monstarball_2", "looks": "monstarball", "movement": "0", "x": 21, "z": 11, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D11R0104_BIG_PEARL", "item": "Big Pearl", "script": "std_itemball_d11r0104_big_pearl" }
+  ],
+  "signs": [
+    { "x": 38, "z": 27, "type": 2, "script": "std_hiddenitem_d11r0104_max_revive", "item": "Max Revive", "flag": "FLAG_HIDDEN_ITEM_D11R0104_MAX_REVIVE" },
+    { "x": 10, "z": 9, "type": 2, "script": "std_hiddenitem_d11r0104_rare_candy", "item": "Rare Candy", "flag": "FLAG_HIDDEN_ITEM_D11R0104_RARE_CANDY" }
+  ],
+  "triggers": []
+}

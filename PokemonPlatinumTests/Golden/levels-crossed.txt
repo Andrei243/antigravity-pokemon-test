@@ -288,8 +288,6 @@ johto_black_belt_kenji_3 130 (41) [Onix → Ironwyrm, Onix → Ironwyrm, Hitmonl
 johto_black_belt_kenji_4 138 (53) [Onix → Ironwyrm, Onix → Ironwyrm, Hitmonlee → Savateur]
 johto_black_belt_kiyo 125 (34) [Hitmonlee → Savateur, Hitmonchan → Pugilord]
 johto_black_belt_wai 131 (42) [Machoke → Machamp, Machoke → Machamp, Meditite → Medicham]
-johto_boarder_bryce 139 (55) [Dewgong → Glacitusk, Lapras → Ferrisle]
-johto_boarder_shaun 139 (55) [Cloyster → Clamspire, Dewgong → Glacitusk]
 johto_bug_catcher_arnie_2 127 (36) [Venonat → Somnimoth]
 johto_bug_catcher_arnie_3 131 (43) [Venomoth → Somnimoth]
 johto_bug_catcher_arnie_4 139 (56) [Nincada → Ninjask, Venomoth → Somnimoth]
@@ -537,7 +535,6 @@ johto_school_kid_m_torin_4 138 (53) [Sandslash → Sandspire, Golbat → Crobat,
 johto_scientist_gs_daniel 136 (50) [Ninetales → Kitsunox]
 johto_scientist_gs_linden 136 (50) [Magmar → Magmortar]
 johto_scientist_gs_lowell 136 (50) [Arcanine → Kirinine]
-johto_skier_cady 138 (53) [Delibird → Sleighwing]
 johto_super_nerd_cary 138 (53)
 johto_super_nerd_merle 138 (53) [Magcargo → Calderon]
 johto_super_nerd_mickey 116 (20) [Grimer → Sludgemire]
@@ -2251,6 +2248,23 @@ trainers 6, 129-133 (own 40-45): johto_camper_dean 132 (44) [Golduck → Psyduke
 === johto_seafoam_islands_1f
 Seafoam Islands, Johto
 grass 120-124 (own 26-32)
+=== johto_seafoam_islands_b1f
+Seafoam Islands, Johto
+grass 120-125 (own 26-34)
+=== johto_seafoam_islands_b2f
+Seafoam Islands, Johto
+grass 121-126 (own 27-35)
+trainers 3, 136-139 (own 50-55): johto_boarder_bryce 139 (55) [Dewgong → Glacitusk, Lapras → Ferrisle], johto_boarder_shaun 139 (55) [Cloyster → Clamspire, Dewgong → Glacitusk], johto_skier_cady 138 (53) [Delibird → Sleighwing]
+=== johto_seafoam_islands_b3f
+Seafoam Islands, Johto
+grass 123-127 (own 31-36)
+=== johto_seafoam_islands_b4f
+Seafoam Islands, Johto
+grass 125-129 (own 34-40)
+surf 123-136 (own 30-50)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
 === johto_victory_road_1f
 Victory Road Jk, Johto
 grass 124-127 (own 32-36)

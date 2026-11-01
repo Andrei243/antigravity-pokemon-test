@@ -7119,6 +7119,44 @@ a new HM of ours.
   Game Corners and their prizes, the Radio Tower and the Expn Card, the Trainer House's battles, the Leaders' rematches
   and street meetings, Steven's visits, Suicune's stops, the rest of Kanto's Apricorn trees.
 
+## HeartGold's Kanto, part m (2026-11-01, plan 20 · J15, part m)
+
+- *The slice*: the Seafoam Islands' four lower floors (HeartGold's `D11R0102` to `D11R0105`), reached by the first
+  floor's two ways down (its warps 2 and 3, locked since part g), and Articuno on the lowest. The first floor's western
+  mouth (warp 1) and Route 20's door to it (Route 20's warp 1) are open too: the western half of the first floor is come
+  to by way of the floors below, as in HeartGold. Silph Co.'s floors above the lobby were weighed and left: HeartGold has
+  only Rotom's room and the lift's car up there (`MAP_SAFFRON_SILPH_CO_ROTOM_ROOM`, `_ELEVATOR`), and the room wants the
+  appliances' art and a `team rotom` of the script's (part l's reason, unchanged).
+- *Keys and names*: the keys meet FireRed's (`seafoam_islands_b1f` to `_b4f`), so they take Johto's prefix, as part g
+  already wrote into `HgWorld.Clashes`; the maps are `Seafoam_B1F` to `Seafoam_B4F` (FireRed's are `SeafoamIslands_…`).
+  FireRed's Kanto keeps its own floors, overlays and Articuno's script (`seafoam_islands_b4f.txt`, plan 29 · LS3's beat),
+  which this part doesn't touch.
+- *The floors*: the import's own, as a cave (`setting` `Cave`): B1F's Strength boulders, B2F's two boarders and skier
+  by their records (Johto's `trainers.json`, in lines of ours), B3F's six blocks of ice pushed over its ice as the
+  Mahogany Gym's (`npcType` `IceBlock`) and its boulder (HeartGold hides it behind `FLAG_MAPTEMP_010`, a flag of the map
+  its scripts set: a local flag here, so it stands whenever the floor is come to), B4F's water, every item ball and
+  hidden item. Cameron the photographer on B1F (`FLAG_HIDE_CAMERON`) is held back, as elsewhere.
+- *Articuno*: on its island of B4F (27, 22), the follower object of HeartGold's made a Pokémon of the map. It waits
+  until it has been fought (`FLAG_JOHTO_FOUGHT_ARTICUNO`, ours), as Moltres does in Mt. Silver: beaten or caught it is
+  gone for good, run from it flies off (HeartGold's `FLAG_HIDE_SEAFOAM_ISLAND_ARTICUNO`) and is back on the next visit.
+  Level 50, as HeartGold's. Its meeting is plan 29's beat (the bars, the camera to it, a zoom, sparkles and a ripple,
+  the cry with a shake, the step back when met from below), and the scene ends before the battle. HeartGold's hidden
+  Zinc under it is found once it is gone.
+- *Songs*: every floor plays `kanto/viridian_forest`, as the first floor.
+- *Routes 7 and 8's little houses* (`kn_chika_x`, a `Hall` since part l): checked. HeartGold puts no warp on them, so
+  they are scenery in both games; the harness's `jkm12` and `jkm13` look at them.
+- *Part l's receptionist*: still stands inside the reception counter's block of wall (the harness prints her tile as
+  solid), spoken to across its `Counter` rim. Unchanged: laying a counter's island as a counter round open floor is the
+  builder's rule left to a session of its own (part k's "Known").
+- *Seen* (the harness's `jkm01` to `jkm13`): the floors, the blocks of ice on B3F's ice, Articuno on its island met from
+  below with the step back, its battle at level 50 in a cave's stage, and the two little houses of Routes 7 and 8, drawn as
+  small halls with glass doors and a sign, which lead nowhere (a wall to the feet), as in HeartGold. *Known*: B2F's plank
+  bridge has a strip of dark green under its deck where the import leaves the hollow below it, not looked into.
+- *Left*: Rotom's room and Silph Co.'s lift, the Power Plant's story, Lt. Surge on Route 10 and Zapdos, the dark of
+  HeartGold's Flash caves, the Snorlax woken, Pal Park's gate, Oak's gift after Red, the Clefairy's dance, a game to play
+  in the Game Corners and their prizes, the Radio Tower and the Expn Card, the Trainer House's battles, the Leaders'
+  rematches and street meetings, Steven's visits, Suicune's stops, the rest of Kanto's Apricorn trees.
+
 ## The week siblings and the dome's pieces (2026-10-31, plan 20 · J13, the last part)
 
 | Subject | HeartGold | This game |

@@ -604,6 +604,74 @@ partial class Harness
         Spot("Saffron_SilphCo", 20, 7, Direction.Up, "jkl10_silph_co_reception");
         Spot("Saffron_SilphCo", 5, 6, Direction.Up, "jkl11_silph_co_lift_and_guard");
         Console.WriteLine($"  Silph Co.'s lift warp: {game.Map.GetWarpAt(3, 2)?.TargetMap ?? "shut"}");
+        var receptionist = game.Map.NPCs.FirstOrDefault(n => n.Key == "t11r0701_gswoman6");
+        if (receptionist != null)
+            Console.WriteLine($"  Silph Co.'s receptionist at {receptionist.GridX},{receptionist.GridY}: tile open {game.Map.IsWalkable(receptionist.GridX, receptionist.GridY)}, "
+                + $"solid {game.Map.IsSolid(receptionist.GridX, receptionist.GridY)}");
+        JohtoKantoSeafoamShots();
+    }
+
+    /// <summary>
+    /// Plan 20 · J15, part m: the Seafoam Islands' four lower floors, Articuno's beat and its battle, and the shut
+    /// little houses of the Underground Path on Routes 7 and 8 (<c>jkm01</c> to <c>jkm12</c>), after part l's, so nothing
+    /// before them moves. It prints where each spot stood on is, what Articuno's fight left, and where the houses stand.
+    /// </summary>
+    void JohtoKantoSeafoamShots()
+    {
+        void Spot(string map, int x, int y, Direction way, string shot, int frames = 10)
+        {
+            At(map, x, y, way);
+            if (!game.Map.IsWalkable(x, y))
+                (x, y) = Enumerable.Range(1, 4).SelectMany(r => Enumerable.Range(-r, 2 * r + 1).SelectMany(dy => Enumerable.Range(-r, 2 * r + 1).Select(dx => (X: x + dx, Y: y + dy))))
+                    .First(t => game.Map.IsWalkable(t.X, t.Y));
+            At(map, x, y, way); game.ArriveOnMap(); Frames(frames); Shot(shot);
+            Console.WriteLine($"  {shot}: {map} {x},{y} open {game.Map.IsWalkable(x, y)}, {game.Map.ShownNameAt(x, y)}");
+        }
+        void ReadTo(string? text, int most = 2400)
+        {
+            var box = game.Dialogue;
+            for (int i = 0; i < most; i++)
+            {
+                if (text != null && box.IsActive && box.CurrentLine.Contains(text, StringComparison.Ordinal) && box.IsCurrentLineComplete) return;
+                if (text == null && !engine.ScriptRunning && !box.IsActive && game.State == GameState.Overworld) return;
+                if (game.State == GameState.Battle) { Frames(1); continue; }
+                if (engine.Choice.IsOpen) { Frames(10); engine.Choice.Confirm(); Frames(4); }
+                else if (box.IsActive && box.IsCurrentLineComplete && !box.IsQuestion) { box.Advance(); Frames(2); }
+                else Frames(1);
+            }
+            Console.WriteLine($"  !! never said: {text ?? "the script's end"}");
+        }
+        game.State = GameState.Overworld;
+        game.Player.SetMode(TravelMode.OnFoot);
+
+        Spot("Seafoam_1F", 52, 21, Direction.Up, "jkm01_seafoam_1f_way_down");
+        Spot("Seafoam_B1F", 40, 20, Direction.Up, "jkm02_seafoam_b1f");
+        Spot("Seafoam_B1F", 12, 18, Direction.Up, "jkm03_seafoam_b1f_west");
+        Spot("Seafoam_B2F", 30, 22, Direction.Up, "jkm04_seafoam_b2f");
+        Spot("Seafoam_B2F", 22, 10, Direction.Up, "jkm05_seafoam_b2f_ice_and_trainers");
+        Spot("Seafoam_B3F", 30, 25, Direction.Up, "jkm06_seafoam_b3f_ice_blocks");
+        Spot("Seafoam_B3F", 13, 17, Direction.Up, "jkm07_seafoam_b3f_west");
+        Spot("Seafoam_B4F", 27, 25, Direction.Up, "jkm08_seafoam_b4f_articuno");
+
+        // ---- Articuno's beat, met from below
+        game.Story.Unset("FLAG_HIDE_SEAFOAM_ISLAND_ARTICUNO");
+        game.Story.Unset("FLAG_JOHTO_FOUGHT_ARTICUNO");
+        At("Seafoam_B4F", 27, 23, Direction.Up); game.ArriveOnMap(); Frames(10);
+        game.Interact();
+        Frames(150); Shot("jkm09_articunos_beat");
+        ReadTo("bitterly cold"); Frames(10); Shot("jkm10_articunos_cry");
+        game.Dialogue.Advance();
+        for (int i = 0; i < 1500 && game.State != GameState.Battle; i++) Frames(1);
+        if (game.State != GameState.Battle) Console.WriteLine("  !! never happened: Articuno's battle");
+        else { Skip(1.0); ToMainMenu(game.Battle); Shot("jkm11_articunos_battle"); }
+        game.State = GameState.Overworld; ReadTo(null); game.Dialogue.Close();
+
+        // ---- The Underground Path's shut little houses on Routes 7 and 8
+        var houses = (game.Map.Name == "Johto" ? game.Map : MapDatabase.Get("Johto")).PlacedBuildings?.Where(b => b.Model == "kn_chika_x").OrderBy(b => b.X0).ToList() ?? new();
+        Console.WriteLine($"  kn_chika_x: {string.Join("; ", houses.Select(b => $"{b.X0},{b.Y0}-{b.X1},{b.Y1} {b.Kind}"))}");
+        int n = 0;
+        foreach (var house in houses.Take(2))
+            Spot("Johto", (house.X0 + house.X1) / 2, house.Y1 + 2, Direction.Up, $"jkm{12 + n++}_route_{(n == 1 ? 7 : 8)}_shut_underground_house", 30);
     }
 
 }
