@@ -127,7 +127,9 @@ label Guardians
   if not flag FLAG_CAUGHT_UXIE clearflag FLAG_HIDE_ACUITY_CAVERN_UXIE
   if not flag FLAG_CAUGHT_GIRATINA clearflag FLAG_HIDE_TURNBACK_CAVE_GIRATINA_ROOM_GIRATINA
   # Arceus in the Hall of Origin (plan 29 · LS11a): back on its dais unless it was caught (hall_of_origin.txt)
-  if var VAR_HALL_OF_ORIGIN_STATE == 2 call ArceusAgain
+  if flag FLAG_CAUGHT_ARCEUS goto ArceusKept
+  if var VAR_HALL_OF_ORIGIN_STATE == 2 setvar VAR_HALL_OF_ORIGIN_STATE 1
+label ArceusKept
   # The roamers: one that was knocked out (ROAMER_STATE_DEFEATED, 2) can be set loose again (ROAMER_STATE_RESET, 3).
   # Mesprit is back in its cavern for that, which Verity Cavern's script reads, and Cresselia on Fullmoon Island
   if var VAR_ROAMING_MESPRIT_STATE == 2 clearflag FLAG_HIDE_VERITY_CAVERN_MESPRIT
@@ -150,8 +152,3 @@ label Guardians
   setflag FLAG_HIDE_SENDOFF_SPRING_CYNTHIA
   return
 
-
-# An Arceus beaten or run from in the Hall of Origin waits there again (plan 29 · LS11a); one caught never does
-script ArceusAgain
-  if not flag FLAG_CAUGHT_ARCEUS setvar VAR_HALL_OF_ORIGIN_STATE 1
-  return
