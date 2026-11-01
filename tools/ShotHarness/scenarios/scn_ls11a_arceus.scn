@@ -1,0 +1,27 @@
+# LS11a: the Azure Flute on Spear Pillar's top step, the stair of light, the Hall of Origin and Arceus's beat
+newgame
+flag FLAG_GAME_COMPLETED on
+pokemon Garchomp 80
+give "Azure Flute"
+var VAR_HALL_OF_ORIGIN_STATE 1
+warp SpearPillar 31 51 down
+wait 1
+step down 1
+answer 0
+wait 1.5
+shot scn_ls11a_flute_1_stair
+wait 0.6
+shot scn_ls11a_flute_2_light
+read
+wait 4.5
+shot scn_ls11a_hall_0_foot
+step up 17
+wait 1.0
+shot scn_ls11a_arceus_1_look
+wait 1.6
+shot scn_ls11a_arceus_2_sign
+wait 2.4
+shot scn_ls11a_arceus_3_voice
+read
+wait 4.5
+shot scn_ls11a_arceus_4_battle

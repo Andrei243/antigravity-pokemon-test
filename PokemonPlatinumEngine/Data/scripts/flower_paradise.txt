@@ -22,6 +22,9 @@ script Shaymin
   letterbox on 0.4
   camera pan 911 203 1.2
   camera zoom 1.4 0.8
+  # Spoken to from the south it would be behind the player's own head, so it hops back a step first, as Cresselia
+  # draws back (fullmoon_island_forest.txt)
+  if facing up call HopsBack
   effect sparkles 911 203
   camera follow shaymin 0.6
   walk shaymin onspot left 1 onspot right 1 onspot down 1
@@ -39,3 +42,9 @@ script Shaymin
 label Fled
   music area
   end
+
+
+script HopsBack
+  walk shaymin up 1
+  face shaymin down
+  return

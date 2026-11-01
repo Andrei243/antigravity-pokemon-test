@@ -83,6 +83,6 @@
   // scripts/route_230.txt), for a Champion who has read Mr. Backlot's book (FLAG_HIDE_ROUTE_230_RANGER, kept by the
   // route's arrival)
   "npcs": [
-    { "id": "ranger", "name": "Pokémon Ranger", "npcType": "ranger_f", "x": 681, "y": 433, "facing": "Right", "script": "Ranger", "hiddenBy": "FLAG_HIDE_ROUTE_230_RANGER" }
+    { "id": "ranger", "name": "Pokémon Ranger", "npcType": "ranger_f", "x": 682, "y": 429, "facing": "Right", "script": "Ranger", "hiddenBy": "FLAG_HIDE_ROUTE_230_RANGER" }
   ]
 }

@@ -205,4 +205,8 @@ The proposals, all four regions with their questions, are [decisions/LS11-propos
   unless caught. Manaphy: a Ranger of ours on Route 230's shore with the Egg (sparkles and a ripple on the water, no
   cry); `LegendaryScenesTests` holds a mythical `giveegg` to the beat; `giveegg` asks the randomiser as `givepokemon`
   does. Phione: `SpeciesSources` counts Manaphy's Egg. Off `OnlyInPalPark`: the five; off `FormsAwaiting`: Shaymin-Sky.
-  `EventLegendariesSinnohTests` plays each through. Rulings: "Sinnoh's event Pokémon, by ways of our own".
+  `EventLegendariesSinnohTests` plays each through. Rulings: "Sinnoh's event Pokémon, by ways of our own". Shots: the
+  scenarios `tools/ShotHarness/scenarios/scn_ls11a_*.scn` (look, sign, voice and the battle's opening of each), looked at;
+  they moved Darkrai and Flower Paradise's Shaymin back a step when met from the south (else hidden behind the player's
+  head), the stair's beams onto a camera path that doesn't wait, and the Ranger to the shore (682, 429). Left: LS10's own
+  stair, petals and dream mist if wanted; the Harbor Inn is the original's house plan, furniture and all.

@@ -20632,20 +20632,20 @@ way 1, from answer 1
 === newmoon_island_forest.Darkrai
 from Darkrai at 16,13 of NewmoonIslandForest
 way 0
-  > A shadow stands in the dry hollow. Something in it is looking straight at Lucas.
-  > The shadow is gone. The hollow is only a hollow now.
+  > A shadow stands over the dark pool. Something in it is looking straight at Lucas.
+  > The shadow is gone. Only the pool is left, still and dark.
   * scene newmoon_island_forest.Darkrai on Newmoon Island
   * music stop
   * letterbox on
   * camera Pan 16 13
   * camera Zoom 1.4
-  * effect Rift 16 13 hold
+  * effect Rift 16 11 hold
   * slowmo 0.5
   * effect Ripple 16 13
   * flicker Darkrai 4
   * cry Darkrai
   * camera Shake
-  * effect stop 16 13
+  * effect stop 16 11
   * camera Release
   * letterbox off
   * endscene
@@ -24764,7 +24764,7 @@ way -
   Guard> Halt! Only trainers strong enough to face the Pokémon League may travel this road.
   Guard> You need the Volcano Badge to go any further.
 === route_230.Ranger
-from Pokémon Ranger at 681,433 of Sinnoh
+from Pokémon Ranger at 682,429 of Sinnoh
 way 0
   Pokémon Ranger> Oh! Hello. I'm a Pokémon Ranger. I found this Egg drifting in the sea this morning, all on its own.
   Pokémon Ranger> It's no Egg I've ever seen. The old books say the Prince of the Sea leaves its Eggs to the currents...
@@ -24777,8 +24777,8 @@ way 0
   * letterbox on
   * camera Follow Pokémon Ranger
   * camera Zoom 1.4
-  * effect Sparkles 682 433
-  * effect Ripple 682 433
+  * effect Sparkles 683 431
+  * effect Ripple 683 431
   * camera Release
   * letterbox off
   * endscene
@@ -27150,11 +27150,16 @@ way 0
   * music stop
   * letterbox on
   * sound use_grass_whistle
-  * camera Path 31 48 31 42 at 2
+  * camera Path 31 48 at 3
   * effect Beam 31 50
+  * effect Sparkles 31 50
   * effect Beam 31 48
+  * effect Sparkles 31 48
   * effect Beam 31 46
+  * effect Sparkles 31 46
   * effect Beam 31 44
+  * effect Sparkles 31 44
+  * effect Burst 31 44
   * fade out
   * camera Release
   * letterbox off
@@ -27269,11 +27274,16 @@ way 0
   * music stop
   * letterbox on
   * sound use_grass_whistle
-  * camera Path 31 48 31 42 at 2
+  * camera Path 31 48 at 3
   * effect Beam 31 50
+  * effect Sparkles 31 50
   * effect Beam 31 48
+  * effect Sparkles 31 48
   * effect Beam 31 46
+  * effect Sparkles 31 46
   * effect Beam 31 44
+  * effect Sparkles 31 44
+  * effect Burst 31 44
   * fade out
   * camera Release
   * letterbox off
@@ -27358,11 +27368,16 @@ way 0
   * music stop
   * letterbox on
   * sound use_grass_whistle
-  * camera Path 31 48 31 42 at 2
+  * camera Path 31 48 at 3
   * effect Beam 31 50
+  * effect Sparkles 31 50
   * effect Beam 31 48
+  * effect Sparkles 31 48
   * effect Beam 31 46
+  * effect Sparkles 31 46
   * effect Beam 31 44
+  * effect Sparkles 31 44
+  * effect Burst 31 44
   * fade out
   * camera Release
   * letterbox off

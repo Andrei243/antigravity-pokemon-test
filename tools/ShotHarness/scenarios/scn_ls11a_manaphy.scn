@@ -1,0 +1,19 @@
+# LS11a: the Pokémon Ranger on Route 230's shore with the Manaphy Egg, at the beat's look, sign and line
+newgame
+flag FLAG_GAME_COMPLETED on
+flag FLAG_SKIP_POKEMON_MANSION_OFFICE_BOOK_SEEN_MANAPHY_CHECK on
+flag FLAG_HIDE_FIGHT_AREA_BLOCKADE on
+warp Sinnoh 682 427 down
+wait 1
+step down 1
+wait 0.5
+shot scn_ls11a_manaphy_0_shore
+talk
+answer 0
+wait 1.2
+shot scn_ls11a_manaphy_1_look
+wait 1.0
+shot scn_ls11a_manaphy_2_sign
+read
+wait 1
+shot scn_ls11a_manaphy_3_after

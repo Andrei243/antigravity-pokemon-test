@@ -32,8 +32,8 @@ script Ranger
   letterbox on 0.4
   camera follow ranger 0.8
   camera zoom 1.4 0.8
-  effect sparkles 682 433
-  effect ripple 682 433
+  effect sparkles 683 431
+  effect ripple 683 431
   speaker none
   text "The Egg is cool to the touch, and something inside it seems to sway with the waves."
   camera release 0.4

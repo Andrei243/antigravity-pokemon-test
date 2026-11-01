@@ -57,14 +57,20 @@ script AzureFlute
   letterbox on 0.4
   sound "use_grass_whistle"
   wait 0.8
-  camera path 31 48 31 42 2
+  camera path 31 48 3 nowait
   effect beam 31 50
+  effect sparkles 31 50
   wait 0.3
   effect beam 31 48
+  effect sparkles 31 48
   wait 0.3
   effect beam 31 46
+  effect sparkles 31 46
   wait 0.3
   effect beam 31 44
+  effect sparkles 31 44
+  wait 0.3
+  effect burst 31 44
   wait 0.6
   text "A stair of light rises from the pillar's steps, up and up into the sky!"
   fade out 0.6

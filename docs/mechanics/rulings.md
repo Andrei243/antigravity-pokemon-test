@@ -7185,7 +7185,7 @@ original's; who hands the key item over, and when, is ours. Each meeting is plan
   stands at the door for everyone, where the original's is hidden until the card is held. A night there sets the player
   down on Newmoon Island's pier, with the island's sailor away (`FLAG_HIDE_NEWMOON_ISLAND_SAILOR`) until the wood has
   been come to (`FLAG_ENTERED_NEWMOON_ISLAND_FOREST`, ours): so whoever walks back out of the wood, Darkrai met or not,
-  can sail home. Darkrai stands in the wood's dry hollow at the original's tile and level (50); caught or beaten it is
+  can sail home. Darkrai stands over the wood's dark pool at the original's tile and level (50), drifting back a step with its rift opening behind it when spoken to from the south (else the player's own head hides it); caught or beaten it is
   gone for good (`FLAG_NEWMOON_ISLAND_DARKRAI_GONE`, ours), run from it is back the next time the wood is come to.
   Canalave's sailor sails to Newmoon Island once it has been come to. The original's waking in the inn afterwards is
   not played: the island's sailor sails the player back to the quay.

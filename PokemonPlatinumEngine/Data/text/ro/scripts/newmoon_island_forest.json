@@ -2,18 +2,18 @@
   "Darkrai": [
     {
       "en": [
-        "A shadow stands in the dry hollow. Something in it is looking straight at {player}."
+        "A shadow stands over the dark pool. Something in it is looking straight at {player}."
       ],
       "text": [
-        "O umbră stă în scobitura uscată. Ceva din ea se uită drept la {player}."
+        "O umbră stă deasupra iazului întunecat. Ceva din ea se uită drept la {player}."
       ]
     },
     {
       "en": [
-        "The shadow is gone. The hollow is only a hollow now."
+        "The shadow is gone. Only the pool is left, still and dark."
       ],
       "text": [
-        "Umbra a dispărut. Scobitura e acum doar o scobitură."
+        "Umbra a dispărut. A rămas doar iazul, nemișcat și întunecat."
       ]
     }
   ]
