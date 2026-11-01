@@ -83,6 +83,11 @@ Every sound effect of the game (plan 05 · A3), what it stands for in the origin
 | `effect_shadow` | — | A great shadow sweeps over the ground (`effect shadow`): a low rush of air swelling and dying over a deep note. |
 | `effect_ripple` | — | The picture wavers (`effect ripple`): two soft tones a little apart, wobbling against each other. |
 | `effect_sparkles` | — | Points of light rise round a tile (`effect sparkles`): high bells struck here and there, ringing out. |
+| `effect_geyser` | — | A column of water heaves up out of a tile (`effect geyser`, plan 29 · LS10: Kyogre rising): a low thump, a surge of water swelling and spray hissing as it falls. |
+| `effect_eruption` | — | A column of magma heaves up out of a tile (`effect eruption`: Groudon rising): a deeper thump and surge, embers crackling as it falls. |
+| `effect_stair` | — | A stair of light climbs away from a tile (`effect stair`: the Azure Flute): eight bells climbing a step at a time over a rising tone. |
+| `effect_petals` | — | Petals are blown up round a tile (`effect petals`: Shaymin): a soft breath of air and three light chimes. |
+| `effect_mist` | — | A dark mist gathers low round a tile (`effect mist`: Darkrai's dream): a low breath slow to swell over a hollow, wavering note. |
 | `machine_ball` | `SEQ_SE_DP_BOWA` | A Poké Ball is laid on a Pokémon Center's machine (`anim heal`, plan 09 · L12): one to each Pokémon of the team that is no Egg, a soft pop and a small round note, before the heal's fanfare as the balls light. |
 | `lift_hum` | `SEQ_SE_DP_ELEBETA2` | A lift's car between floors (`anim elevator`, plan 09 · L12): half a second of a motor's even hum, played once to each round of the indicator's lights (four in every lift but the Battle Tower's, which has three), where the original loops its sound until the lights have gone round. |
 | `lift_ding` | `SEQ_SE_DP_PINPON` | A lift arrives at its floor (`anim elevator`): two notes of a chime, the second a third below the first. |

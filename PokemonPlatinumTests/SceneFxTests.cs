@@ -178,10 +178,10 @@ public class SceneFxTests
     [Fact]
     public void ComingToAnotherPlaceClearsEveryEffect()
     {
-        var map = new Map(9, 9) { Name = "Lab" };
+        var map = new Map(16, 9) { Name = "Lab" };
         var life = new FieldLife();
         foreach (var kind in Enum.GetValues<SceneEffect>()) life.Effect(map, kind, (int)kind, 2, 1f, Direction.Right, hold: kind == SceneEffect.Beam);
-        Assert.Equal(6, life.EffectCount);
+        Assert.Equal(Enum.GetValues<SceneEffect>().Length, life.EffectCount);
         life.ClearEffects();
         Assert.Equal(0, life.EffectCount);
         Assert.Empty(Quads(life));
@@ -273,7 +273,7 @@ public class SceneFxTests
             Assert.Contains(name, SoundBank.Names);
             Assert.NotNull(SoundBank.Get(name));
         }
-        Assert.Equal(6, Enum.GetValues<SceneEffect>().Select(SceneEffects.SoundOf).Distinct().Count());
+        Assert.Equal(Enum.GetValues<SceneEffect>().Length, Enum.GetValues<SceneEffect>().Select(SceneEffects.SoundOf).Distinct().Count());
     }
 
     [Fact]
@@ -297,5 +297,77 @@ public class SceneFxTests
             Assert.True(Painted(SceneFx.Shadow + frame * 6 + 1), $"the shadow's frame {frame} has no head");
             Assert.True(Painted(SceneFx.Shadow + frame * 6 + 4), $"the shadow's frame {frame} has no tail");
         }
+        // And every cell plan 29 · LS10's kinds draw
+        for (int cell = SceneFx.Column; cell <= SceneFx.MagmaCrown + 1; cell++) Assert.True(Painted(cell), $"cell {cell} of the scene atlas is empty");
+    }
+
+    [Fact]
+    public void NoKindDrawsMoreThanItsShare()
+    {
+        foreach (var kind in Drawn)
+            foreach (var way in new[] { Direction.Up, Direction.Right })
+                for (float t = 0f; t < SceneEffects.Length(kind); t += 0.02f)
+                    Assert.InRange(At(kind, t, 5, way).Count, 0, SceneFx.MostQuads);
+    }
+
+    [Fact]
+    public void AGeyserStandsOverItsTileAndFallsBack()
+    {
+        // Plan 29 · LS10: the column hides what lies on the tile while it stands, three tiles tall, and is down by 1.2 s
+        foreach (var kind in new[] { SceneEffect.Geyser, SceneEffect.Eruption })
+        {
+            float Tallest(float age) => At(kind, age).Where(q => !q.Flat && q.Cell is >= SceneFx.Column and < SceneFx.Ring or SceneFx.MagmaCrown or SceneFx.MagmaCrown + 1).Select(q => q.Lift + 1f).DefaultIfEmpty(0f).Max();
+            Assert.Equal(1f, Tallest(0.05f));
+            Assert.Equal(3f, Tallest(0.7f));
+            Assert.Equal(0f, Tallest(1.25f));
+            // In front of the tile and two tiles wide
+            var standing = At(kind, 0.7f).Where(q => q.Cell is >= SceneFx.Column and < SceneFx.Ring or SceneFx.MagmaCrown or SceneFx.MagmaCrown + 1).ToList();
+            Assert.All(standing, q => Assert.True(q.At.Z > 0f));
+            Assert.Equal(new[] { -0.5f, 0.5f }, standing.Select(q => q.At.X).Distinct().OrderBy(x => x));
+            // Its drops are thrown as it falls
+            Assert.Contains(At(kind, 1.2f), q => q.Cell is >= SceneFx.Spark and < SceneFx.Spark + 3);
+        }
+        Assert.NotEqual(At(SceneEffect.Geyser, 0.7f).Select(q => q.Tint), At(SceneEffect.Eruption, 0.7f).Select(q => q.Tint));
+    }
+
+    [Fact]
+    public void AStairClimbsNorthAndUpAStepAtATime()
+    {
+        int Steps(float age) => At(SceneEffect.Stair, age).Count(q => q.Cell == SceneFx.Step);
+        Assert.Equal(1, Steps(0f));
+        Assert.Equal(4, Steps(0.35f));
+        Assert.Equal(SceneFx.StairSteps, Steps(1.5f));
+        var steps = At(SceneEffect.Stair, 1.5f).Where(q => q.Cell == SceneFx.Step).OrderBy(q => q.Lift).ToList();
+        for (int i = 1; i < steps.Count; i++)
+        {
+            Assert.True(steps[i].At.Z < steps[i - 1].At.Z, "each step stands further north");
+            Assert.True(steps[i].Lift > steps[i - 1].Lift, "and higher");
+        }
+        // Held, it stands whole long after its length
+        var held = new List<SceneQuad>();
+        SceneFx.Quads(SceneEffect.Stair, 9f, 3f, float.PositiveInfinity, 5, Direction.Up, Vector3.Zero, held);
+        Assert.Equal(SceneFx.StairSteps, held.Count(q => q.Cell == SceneFx.Step));
+    }
+
+    [Fact]
+    public void TheMistLiesDarkOnTheGroundAndCreepsOut()
+    {
+        var early = At(SceneEffect.Mist, 0.3f);
+        var late = At(SceneEffect.Mist, 2f);
+        Assert.All(late, q => Assert.True(q.Flat && q.Tint.R < 40 && q.Tint.A <= 110));
+        float Reach(List<SceneQuad> qs) => qs.Max(q => MathF.Abs(q.At.X) + MathF.Abs(q.At.Z));
+        Assert.True(Reach(late) > Reach(early));
+        // It gathers in two steps of alpha
+        Assert.True(At(SceneEffect.Mist, 0.05f)[0].Tint.A < At(SceneEffect.Mist, 0.5f)[0].Tint.A);
+    }
+
+    [Fact]
+    public void PetalsAreBlownUpAndOut()
+    {
+        var petals = At(SceneEffect.Petals, SceneEffects.Height(SceneEffect.Petals));
+        Assert.True(petals.Count >= 5);
+        Assert.All(petals, q => Assert.True(!q.Flat && q.Cell is SceneFx.Petal or SceneFx.Petal + 1));
+        Assert.Contains(petals, q => q.Tint.G > 200);
+        Assert.Contains(petals, q => q.Tint.G < 200);
     }
 }

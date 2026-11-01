@@ -33,11 +33,17 @@ public readonly record struct SceneRipple(int Reach, float Phase)
 /// </summary>
 internal static class SceneFx
 {
-    public const int Cell = 32, Columns = 8, Rows = 5;
+    public const int Cell = 32, Columns = 8, Rows = 6;
 
     // Cells of the atlas: the burst's three frames, a spark's three, the beam's four widths and the glow at its
-    // foot, the rift's six frames (top and bottom half each) and the shadow's two frames (three cells by two each)
-    public const int Burst = 0, Spark = 3, Beam = 6, Glow = 10, Rift = 11, Shadow = 23;
+    // foot, the rift's six frames (top and bottom half each) and the shadow's two frames (three cells by two each);
+    // then plan 29 · LS10's: the geyser's column and crown (two frames each) and its ring, a step of the stair, a
+    // petal's two frames, the mist's two puffs and the eruption's crown (two frames)
+    public const int Burst = 0, Spark = 3, Beam = 6, Glow = 10, Rift = 11, Shadow = 23,
+        Column = 35, Crown = 37, Ring = 39, Step = 40, Petal = 41, Mist = 43, MagmaCrown = 45;
+
+    /// <summary>The most pieces any kind draws at a moment (style guide, "Scene effects"): a test holds every kind under it.</summary>
+    public const int MostQuads = 24;
 
     /// <summary>
     /// The ripple's grid: a row is a texel of the field at the picture's height (a 1080p picture has three pixels
@@ -54,6 +60,13 @@ internal static class SceneFx
 
     private static readonly Color BurstTint = Rgb(255, 244, 208), SparkTint = Rgb(255, 246, 196), RiftMote = Rgb(214, 110, 246);
     private static readonly Color ShadowTint = new(20, 14, 36, 120);
+    private static readonly Color Water = Rgb(110, 180, 240), Foam = Rgb(230, 244, 255);
+    private static readonly Color Magma = Rgb(240, 100, 40), Ember = Rgb(255, 236, 140);
+    private static readonly Color PetalPink = Rgb(255, 170, 205), PetalPale = Rgb(255, 214, 230);
+
+    /// <summary>How many steps a stair of light has.</summary>
+    public const int StairSteps = 12;
+    private static readonly Color MistTint = new(24, 16, 40, 110);
 
     /// <summary>A tile's seed, from whole numbers alone (never a string's hash, which changes from run to run).</summary>
     public static int SeedOf(int x, int y) => (int)(((uint)x * 73856093u) ^ ((uint)y * 19349663u)) & 0x7FFFFFFF;
@@ -192,6 +205,108 @@ internal static class SceneFx
                     float x = (Hash(seed, i * 31 + n, 966) * 2f - 1f) * 0.75f;
                     float up = Hash(seed, i * 31 + n, 967) - 0.4f + MathF.Floor(t * 16f) * Texel;
                     into.Add(new SceneQuad(front + new Vector3(Snap(x), 0f, 0f), 1f, 1f, Spark + frame, SparkTint with { A = alpha }, false, Lift: Snap(up)));
+                }
+                break;
+            }
+            case SceneEffect.Geyser:
+            case SceneEffect.Eruption:
+            {
+                // Each round of a held one is the same column again: up a tile at a time, standing, back down
+                float t = age % seconds;
+                bool hot = kind == SceneEffect.Eruption;
+                Color body = (hot ? Magma : Water) with { A = alpha }, crown = (hot ? Ember : Foam) with { A = alpha };
+                int tall = t < 0.11f ? 1 : t < 0.22f ? 2 : t < 1f ? 3 : t < 1.1f ? 2 : t < 1.2f ? 1 : 0;
+                int frame = (int)(t * 8f) % 2;
+                for (int side = 0; side < 2; side++)
+                {
+                    var at = front + new Vector3(side == 0 ? -0.5f : 0.5f, 0f, 0f);
+                    int f = (frame + side) % 2;
+                    for (int r = 0; r < tall - 1; r++) into.Add(new SceneQuad(at, 1f, 1f, Column + f, body, false, Lift: r));
+                    // The crown is painted in its own colours, the column's top under its band of foam
+                    if (tall > 0) into.Add(new SceneQuad(at, 1f, 1f, (hot ? MagmaCrown : Crown) + f, Color.White with { A = alpha }, false, Lift: tall - 1));
+                }
+                // The ring spreads on the ground under it
+                float across = Snap(1f + 2f * MathF.Min(1f, t / seconds));
+                into.Add(new SceneQuad(foot + new Vector3(0f, 0.015f, 0f), across, across, Ring, (hot ? Magma : Foam) with { A = (byte)(alpha * 2 / 3) }, true));
+                // As it falls its crown is thrown out in drops, arcing out and down to the ground
+                if (t >= 1f && t < 1.5f)
+                {
+                    float p = (t - 1f) / 0.5f;
+                    int dot = p < 0.3f ? 0 : p < 0.6f ? 1 : 2;
+                    for (int i = 0; i < 10; i++)
+                    {
+                        float side = i % 2 == 0 ? -1f : 1f, out1 = 0.4f + Hash(seed, i, 971) * 1.2f;
+                        float x = side * (0.5f + out1 * p), up = 2.5f + (0.5f + Hash(seed, i, 972)) * p - 3.5f * p * p;
+                        if (up < 0f) continue;
+                        into.Add(new SceneQuad(front + new Vector3(Snap(x), 0f, Texel), 1f, 1f, Spark + dot, crown, false, Lift: Snap(up)));
+                    }
+                }
+                break;
+            }
+            case SceneEffect.Stair:
+            {
+                // Twelve steps lit one after another a tenth of a second apart, each a quarter of a tile further north
+                // and higher, so that they stand on one another; a spark blinks on each as it comes. Held, it stands as
+                // it is once every step is lit. The furthest is drawn first, so the nearer stand in front
+                int lit = Math.Min(StairSteps, (int)(age / 0.1f) + 1);
+                for (int i = lit - 1; i >= 0; i--)
+                {
+                    var at = front + new Vector3(0f, 0f, -0.25f * i);
+                    into.Add(new SceneQuad(at, 1f, 1f, Step, Color.White with { A = alpha }, false, Lift: 0.25f * i));
+                    float since = age - i * 0.1f;
+                    if (since < 0.3f)
+                        into.Add(new SceneQuad(at + new Vector3(Snap((Hash(seed, i, 973) - 0.5f) * 0.5f), 0f, Texel), 1f, 1f, Spark + (int)(since / 0.1f), SparkTint with { A = alpha }, false, Lift: 0.25f * i + 0.25f));
+                }
+                into.Add(new SceneQuad(foot + new Vector3(0f, 0.015f, 0f), 1f, 1f, Glow, Color.White with { A = (byte)(alpha / 2) }, true));
+                // Two motes climb it a step every tenth of a second, on the steps already lit
+                for (int i = 0; i < 2; i++)
+                {
+                    int s = ((int)(age * 10f) + i * 6) % StairSteps;
+                    if (s >= lit) continue;
+                    into.Add(new SceneQuad(front + new Vector3(0f, 0f, -0.25f * s + Texel), 1f, 1f, Spark + 2, Color.White with { A = alpha }, false, Lift: 0.25f * s + 0.25f));
+                }
+                break;
+            }
+            case SceneEffect.Petals:
+            {
+                // Ten petals, each a round of 0.9 s begun in its own tenth of the round (the first at once), blown up
+                // and out from the tile, turning broad side and edge on four times a second
+                const float round = 0.9f;
+                for (int i = 0; i < 10; i++)
+                {
+                    float first = round / 10f * (i + (i == 0 ? 0f : Hash(seed, i, 974)));
+                    if (age < first) continue;
+                    int n = (int)((age - first) / round);
+                    float start = first + n * round, t = age - start;
+                    if (start + round > ends && start > first) continue;
+                    float x0 = (Hash(seed, i * 31 + n, 975) * 2f - 1f) * 0.75f;
+                    float x = x0 * (1f + t / round) + ((int)(t * 4f) % 2 == 0 ? 0f : Texel);
+                    float up = 0.15f + Hash(seed, i * 31 + n, 976) * 0.6f + MathF.Floor(t * 12f) * Texel;
+                    var tint = (i % 3 == 2 ? PetalPale : PetalPink) with { A = alpha };
+                    into.Add(new SceneQuad(front + new Vector3(Snap(x), 0f, 0f), 1f, 1f, Petal + (int)(t * 8f) % 2, tint, false, Lift: Snap(up)));
+                }
+                break;
+            }
+            case SceneEffect.Mist:
+            {
+                // Seven puffs lying flat round the tile, one on it, creeping out to about a tile away over the effect's
+                // length (held, they stay there), close enough to run together, wavering a texel twice a second and
+                // gathering in two steps
+                float spread = MathF.Min(age, seconds) / seconds;
+                byte gather = age < 0.1f ? (byte)90 : age < 0.2f ? (byte)170 : (byte)255;
+                var tint = MistTint with { A = Times(Times(MistTint.A, alpha), gather) };
+                for (int i = 0; i < 7; i++)
+                {
+                    float x = 0f, z = 0f;
+                    if (i > 0)
+                    {
+                        float angle = i * MathF.Tau / 6f + (Hash(seed, i, 977) - 0.5f) * 0.6f;
+                        float d = (0.35f + 0.75f * spread) * (0.75f + 0.25f * Hash(seed, i, 978));
+                        x = MathF.Cos(angle) * d;
+                        z = MathF.Sin(angle) * d * 0.8f;
+                    }
+                    if (((int)(age * 2f) + i) % 2 == 1) x += Texel;
+                    into.Add(new SceneQuad(foot + new Vector3(Snap(x), 0.015f, Snap(z)), 1f, 1f, Mist + i % 2, tint, true));
                 }
                 break;
             }
@@ -379,6 +494,103 @@ internal static partial class LifeArt
                         || !shape[x - 1, y] || !shape[x + 1, y] || !shape[x, y - 1] || !shape[x, y + 1];
                     var (ox, oy) = Origin(SceneFx.Shadow + f * 6 + y / cell * 3 + x / cell);
                     c.SetRaw(ox + x % cell, oy + y % cell, edge ? rimTint : white);
+                }
+        }
+
+        // The geyser's column, grey to be tinted water or magma: the whole cell wide, so two side by side are one
+        // column, with lighter streaks in dashes that have crawled three rows up in the second frame
+        var light = Rgb(232, 232, 236);
+        var mid = Rgb(176, 176, 184);
+        bool Streak(int x, int y, int f)
+        {
+            int lane = x / 4;
+            return x % 4 < 2 && (y + 3 * f + lane * 5) % 8 < 5 && GroundBaker.Rand01(lane, f, 981) < 0.6f;
+        }
+        for (int f = 0; f < 2; f++)
+        {
+            var (ox, oy) = Origin(SceneFx.Column + f);
+            for (int y = 0; y < cell; y++)
+                for (int x = 0; x < cell; x++)
+                    c.SetRaw(ox + x, oy + y, Streak(x, y, f) ? light : mid);
+        }
+        // Its crown, in its own colours for water and for magma: the column's top under a band of foam (or of glowing
+        // magma) whose bumps climb out of the cell's lower half, a few flecks thrown above; the bumps stand elsewhere
+        // in the second frame
+        static Color Times(Color a, Color k) => new(a.R * k.R / 255, a.G * k.G / 255, a.B * k.B / 255, 255);
+        foreach (var (first, liquid, froth) in new[] { (SceneFx.Crown, Rgb(110, 180, 240), Rgb(230, 244, 255)), (SceneFx.MagmaCrown, Rgb(240, 100, 40), Rgb(255, 236, 140)) })
+            for (int f = 0; f < 2; f++)
+            {
+                var (ox, oy) = Origin(first + f);
+                for (int y = 0; y < cell; y++)
+                    for (int x = 0; x < cell; x++)
+                    {
+                        float bump = 18f - 6f * MathF.Abs(MathF.Sin((x + 4f * f) * MathF.PI / 8f));
+                        if (y < bump) continue;
+                        Color col = y >= bump + 6f ? Times(liquid, Streak(x, y, f) ? light : mid)
+                            : y < bump + 2f || (x + y + f) % 7 != 0 ? froth : Times(froth, grey);
+                        c.SetRaw(ox + x, oy + y, col);
+                    }
+                for (int i = 0; i < 4; i++)
+                {
+                    int fx = 3 + (int)(GroundBaker.Rand01(i, f, 982) * 25f), fy = 3 + (int)(GroundBaker.Rand01(i, f, 983) * 7f);
+                    c.Rect(ox + fx, oy + fy, 2, 2, froth);
+                }
+            }
+        // Its ring: an ellipse's rim, 28 by 14 texels, two texels thick
+        var (rx, ry) = Origin(SceneFx.Ring);
+        for (int y = 0; y < cell; y++)
+            for (int x = 0; x < cell; x++)
+            {
+                float u = (x + 0.5f - 16f) / 14f, v = (y + 0.5f - 16f) / 7f, d = MathF.Sqrt(u * u + v * v);
+                if (d <= 1f && d >= 0.72f) c.SetRaw(rx + x, ry + y, d > 0.9f ? grey : white);
+            }
+
+        // A step of the stair, in the beam's colours: 28 texels wide on the cell's lower half, a tread of white light
+        // four texels deep over a riser of the beam's blue, rimmed; a quarter of a tile tall in all at the field's
+        // stretch, so twelve stand on one another
+        var (px, py) = Origin(SceneFx.Step);
+        var stepShade = Rgb(104, 150, 220);
+        for (int y = 16; y < 32; y++)
+            for (int x = 2; x < 30; x++)
+            {
+                bool rimmed = x == 2 || x == 29 || y == 16 || y == 31;
+                bool tread = y < 20;
+                c.SetRaw(px + x, py + y, rimmed ? stepShade : tread ? beamCore : x < 5 || x > 26 || y > 28 ? stepShade : beamRim);
+            }
+
+        // A petal: broad side on, a lozenge seven texels by five with a grey edge to be tinted a deeper pink; edge on,
+        // a sliver of six by two
+        var (lx, ly) = Origin(SceneFx.Petal);
+        foreach (var (row, w) in new[] { (13, 3), (14, 5), (15, 7), (16, 5), (17, 3) })
+        {
+            int x0 = 16 - w / 2;
+            c.Rect(lx + x0, ly + row, w, 1, grey);
+            if (w > 3) c.Rect(lx + x0 + 1, ly + row, w - 2, 1, white);
+        }
+        var (ex, ey) = Origin(SceneFx.Petal + 1);
+        c.Rect(ex + 13, ey + 15, 6, 1, white);
+        c.Rect(ex + 13, ey + 16, 6, 1, grey);
+
+        // The mist: two puffs a tile across, ragged at their edges, white to be tinted dark with their rim at half alpha
+        for (int f = 0; f < 2; f++)
+        {
+            var (ox, oy) = Origin(SceneFx.Mist + f);
+            var shape = new bool[cell, cell];
+            for (int y = 0; y < cell; y++)
+                for (int x = 0; x < cell; x++)
+                {
+                    float u = (x + 0.5f - 16f) / 15f, v = (y + 0.5f - 16f) / 10f;
+                    float ragged = 0.8f + 0.2f * GroundBaker.Rand01(x / 3, y / 3 + 11 * f, 984);
+                    shape[x, y] = u * u + v * v <= ragged;
+                }
+            var rimTint = new Color(255, 255, 255, 128);
+            for (int y = 0; y < cell; y++)
+                for (int x = 0; x < cell; x++)
+                {
+                    if (!shape[x, y]) continue;
+                    bool edge = x == 0 || y == 0 || x == cell - 1 || y == cell - 1
+                        || !shape[x - 1, y] || !shape[x + 1, y] || !shape[x, y - 1] || !shape[x, y + 1];
+                    c.SetRaw(ox + x, oy + y, edge ? rimTint : white);
                 }
         }
         return c;

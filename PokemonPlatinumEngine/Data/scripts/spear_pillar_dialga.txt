@@ -53,8 +53,9 @@ label Quiet
 # The Azure Flute played on the top step (plan 29 · LS11a): the original's trigger before the way down, at 31, 52 of
 # each of the summit's three maps, while VAR_HALL_OF_ORIGIN_STATE is 1, which Celestic Town's elder sets as she gives
 # the flute. Coming up from the mountain is stepping onto it, so the question is asked as the summit is come to. Yes is
-# a stair of light up the pillar's steps (beams lit one after another up the way; ours, with LS10's own stair still to
-# come) and the climb to the Hall of Origin (hall_of_origin.txt). The three summits' files each hold this script.
+# a stair of light up the pillar's steps (plan 29 · LS10's `stair`, held, climbing away north from the steps' foot as
+# the camera goes up after it) and the climb to the Hall of Origin (hall_of_origin.txt). The three summits' files each
+# hold this script.
 script AzureFlute
   speaker none
   ask "The Azure Flute is humming softly in {player}'s bag. Play it?"
@@ -66,22 +67,12 @@ script AzureFlute
   sound "use_grass_whistle"
   wait 0.8
   camera path 31 48 3 nowait
-  effect beam 31 50
+  effect stair 31 50 hold
   effect sparkles 31 50
-  wait 0.3
-  effect beam 31 48
-  effect sparkles 31 48
-  wait 0.3
-  effect beam 31 46
-  effect sparkles 31 46
-  wait 0.3
-  effect beam 31 44
-  effect sparkles 31 44
-  wait 0.3
-  effect burst 31 44
-  wait 0.6
+  wait 1.2
   text "A stair of light rises from the pillar's steps, up and up into the sky!"
   fade out 0.6
+  effect stop 31 50
   camera release 0.1
   letterbox off 0.1
   warp "HallOfOrigin" 31 52 up

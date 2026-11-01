@@ -9,7 +9,8 @@
 # newmoon_island.txt). Platinum's own level, 50.
 #
 # Its meeting is plan 29's beat (style guide, "Legendary scenes"), the row of time, space and the other world: the bars,
-# the camera on it, a rift held open behind it over a ripple under slow motion, and the Pokémon there and not there,
+# the camera on it, a dream's dark mist held round it (plan 29 · LS10's `mist`, in the rift's place) over a ripple under
+# slow motion, and the Pokémon there and not there,
 # as a dream is (flicker); its cry with the camera shaken, a line, and the battle's own way in (plan 09 · L14's
 # Mythical).
 
@@ -32,7 +33,7 @@ script Darkrai
   camera pan 16 13 1.2
   camera zoom 1.4 0.8
   if facing up call DrawsBack
-  effect rift 16 11 hold
+  effect mist 16 12 hold
   slowmo 0.5 1.5
   effect ripple 16 13
   flicker darkrai 4
@@ -40,7 +41,7 @@ script Darkrai
   camera shake 0.5
   speaker none
   text "A shadow stands over the dark pool. Something in it is looking straight at {player}."
-  effect stop 16 11
+  effect stop 16 12
   camera release 0.4
   letterbox off 0.3
   endscene
@@ -58,8 +59,7 @@ label Fled
   end
 
 
-# Spoken to from the south it would stand behind the player's own head: it drifts back a step first, with the rift
-# opening behind it
+# Spoken to from the south it would stand behind the player's own head: it drifts back a step first, into the mist
 script DrawsBack
   walk darkrai up 1
   face darkrai down

@@ -8,9 +8,8 @@
 # Institute's next report can only be of Terra Cave.
 #
 # Its meeting is plan 29's beat (style guide, "Legendary scenes", the sea's row): the bars, the camera to the pool,
-# sparkles and a ripple over the water as Kyogre stirs in it, the cry with the cave shaken, and then the battle's own way
-# in. The kit has no way to lift a Pokémon out of the water, so "rising" is its stir on the spot (plan 29 · LS10's to
-# better, if it is asked for).
+# a geyser heaving up out of the pool over Kyogre with a ripple and falling back to show it risen (plan 29 · LS10's
+# `geyser`), the cry with the cave shaken, and then the battle's own way in.
 
 
 script OnEnter
@@ -32,8 +31,9 @@ script Kyogre
   letterbox on 0.4
   camera pan 9 23 1.2
   camera zoom 1.4 0.8
-  effect sparkles 9 22
+  effect geyser 9 22
   effect ripple 9 22
+  wait 1.1
   walk marine_cave_kyogre onspot down 1
   cry "Kyogre"
   camera shake 0.6

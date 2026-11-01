@@ -7,8 +7,9 @@
 # drought over the route the cave opened from breaks and its way in closes (common.HoennAbnormalWeatherEnd), and the
 # Weather Institute's next report can only be of the Marine Cave.
 #
-# Its meeting is plan 29's beat (style guide, "Legendary scenes", the fire's row): the bars, the camera to the magma, a
-# burst and the heat's ripple as Groudon stirs in it, the cry with the cave shaken, and then the battle's own way in.
+# Its meeting is plan 29's beat (style guide, "Legendary scenes", the fire's row): the bars, the camera to the magma, an
+# eruption heaving up over Groudon with the heat's ripple and falling back to show it risen (plan 29 · LS10's
+# `eruption`), the cry with the cave shaken, and then the battle's own way in.
 
 
 script OnEnter
@@ -30,9 +31,9 @@ script Groudon
   letterbox on 0.4
   camera pan 17 23 1.2
   camera zoom 1.4 0.8
-  effect burst 17 22
-  wait 0.4
+  effect eruption 17 22
   effect ripple 17 22
+  wait 1.1
   walk terra_cave_groudon onspot down 1
   cry "Groudon"
   camera shake 0.6

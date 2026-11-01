@@ -4,7 +4,8 @@
 # Arriving sets what the original's does for the place itself, and decides whether Shaymin is there: from the moment
 # it ran up the Seabreak Path from Route 224's white rock (VAR_SHAYMIN_EVENT_STATE 2, route_224.txt) until it is caught
 # or beaten (3); run from, it stays. Platinum's own level, 30. Its meeting is plan 29's beat by the row of grass and
-# woods: the bars, the camera on it, sparkles among the flowers and the camera following it as it turns about, its
+# woods: the bars, the camera on it, petals blown up out of the flowers (plan 29 · LS10's `petals`) and the camera
+# following it as it turns about, its
 # cry and a line, then the battle's own way in (plan 09 · L14's Mythical).
 
 script OnEnter
@@ -25,7 +26,7 @@ script Shaymin
   # Spoken to from the south it would be behind the player's own head, so it hops back a step first, as Cresselia
   # draws back (fullmoon_island_forest.txt)
   if facing up call HopsBack
-  effect sparkles 911 203
+  effect petals 911 202 2.5
   camera follow shaymin 0.6
   walk shaymin onspot left 1 onspot right 1 onspot down 1
   cry "Shaymin"

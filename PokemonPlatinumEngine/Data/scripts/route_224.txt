@@ -9,7 +9,7 @@
 # the sea behind a fade (VAR_HIDDEN_LOCATION_SEABREAK_PATH 4136: world.json's swap). Shaymin peeks out of the flowers
 # where the path begins and runs north up it, to wait in Flower Paradise (VAR_SHAYMIN_EVENT_STATE 2,
 # flower_paradise.txt). No battle here, as in Platinum. Its showing is plan 29's beat by the row of grass and woods:
-# sparkles and the camera following it off.
+# petals blown up round it (plan 29 · LS10's `petals`) and the camera following it off.
 #
 # Once the thanks are written the professor and Marley have gone the next time the route is come to. Shaymin of the
 # route stands only in its scene (FLAG_HIDE_ROUTE_224_SHAYMIN, set by the route's arrival).
@@ -84,7 +84,7 @@ script WhiteRock
   camera zoom 1.4 0.8
   clearflag FLAG_HIDE_ROUTE_224_SHAYMIN
   show shaymin
-  effect sparkles 911 490
+  effect petals 911 490
   cry "Shaymin"
   emote player exclaim
   text "Out of the flowers at the head of a new path, a little Pokémon is peeking at {player}!"
