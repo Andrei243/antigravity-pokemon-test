@@ -374,6 +374,16 @@ public partial class GameEngine
         public bool ReplayBroke => game.ReplayBroke;
         /// <summary>The game as it stands, as the save screen would write it (plan 24 · X3: the harness's <c>saves</c>).</summary>
         public SaveData BuildSave() => game.BuildSave();
+        /// <summary>The title's HOME (plan 12 · Q28, Q29).</summary>
+        public HomeScreen Home => game.flow.HomeScreen;
+        /// <summary>Opens HOME on the slots as their files now stand, as the title's row does.</summary>
+        public void OpenHome()
+        {
+            game.titleSlots = SaveSlots.Read(SavePaths.Current);
+            game.OpenHome();
+        }
+        /// <summary>The trades a continued save still has to welcome.</summary>
+        public int TradesWaiting => game.TradesWaiting;
         /// <summary>Every Pokémon of the player's given its own id, as a save gives them (plan 07 · O2); how many were.</summary>
         public int GiveIds() => game.GiveIds();
         /// <summary>Every Pokémon of the player's: the team, the PC, the Day Care.</summary>

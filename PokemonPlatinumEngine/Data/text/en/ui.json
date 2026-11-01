@@ -494,6 +494,7 @@
       "delete": "DELETE A SAVE",
       "deleteWhich": "DELETE WHICH SAVE?",
       "migrate": "MIGRATE",
+      "home": "HOME",
       "jukebox": "JUKEBOX",
       "options": "OPTIONS",
       "credits": "CREDITS",
@@ -1624,6 +1625,64 @@
     "putOut": "The {thing} was put out.",
     "takenAway": "The {thing} was taken away.",
     "putAway": "The {thing} was put away."
+  },
+  "homeBox": {
+    "title": "HOME",
+    "hints": { "move": "Move" },
+    "menu": {
+      "trade": "TRADE BETWEEN SAVES",
+      "box": "THE HOME BOX",
+      "tradeBody": "Set two of your saves side by side and choose a Pokémon on each. They change places, and each arrives as a traded Pokémon: it is welcomed, and evolves if trading is its way, when its save is next continued.",
+      "tradeNone": "A trade needs two saves. Start another game in a free slot first.",
+      "boxBody": "Boxes every save shares. Put a Pokémon in from one save and take it out into another. {n} of {of} places are taken."
+    },
+    "choose": {
+      "first": "Trade from which save?",
+      "second": "And with which save?",
+      "with": "Trading from {name}'s save, slot {slot}.",
+      "box": "Open the Home box beside which save?"
+    },
+    "slot": "SLOT {slot}",
+    "sideSave": "{name} · SLOT {slot}",
+    "sideHome": "HOME BOX · {n} / {of}",
+    "team": "TEAM",
+    "box": "BOX {n}",
+    "row": "{where}  Lv. {level}",
+    "rowRandom": "RANDOM  {where}  Lv. {level}",
+    "empty": "No Pokémon here.",
+    "emptyHome": "The Home box is empty. Choose a Pokémon on the left to put it here.",
+    "confirm": {
+      "title": "Trade these two?",
+      "body": "{mine} goes to {right}'s save and {theirs} comes to {left}'s. Both saves are written at once.",
+      "no": "NO",
+      "yes": "YES, TRADE"
+    },
+    "working": { "title": "Writing the saves", "body": "Don't close the game." },
+    "done": {
+      "Trade": "Traded",
+      "Deposit": "Put in the Home box",
+      "Withdraw": "Taken out of the Home box",
+      "body": "Both files are written. Nothing is in two places."
+    },
+    "refused": "That can't be done",
+    "ok": "OK",
+    "why": {
+      "unreadable": "That save can't be read whole, so nothing in it can be moved.",
+      "newer": "That save was made by a newer version of the game.",
+      "otherData": "The Home box was written by another version of the game's data, so it can't be opened here. Nothing in it is lost.",
+      "damaged": "The Home box's file and its backup are both damaged.",
+      "suspended": "A battle is suspended in that save. Finish it first.",
+      "sameSlot": "Choose two different saves.",
+      "egg": "An Egg can't be traded.",
+      "noId": "Continue that save once first, so that its Pokémon can be told apart.",
+      "already": "This very Pokémon is already on the other side.",
+      "run": "This save's run is still under way: nothing leaves it and nothing comes in until it ends.",
+      "last": "The team would be left with nobody able to battle.",
+      "room": "There is no room for it.",
+      "cross": "That save's region can't take it yet.",
+      "save": "A file couldn't be written. Nothing was moved.",
+      "notFound": "That Pokémon isn't there any more."
+    }
   },
   "migrate": {
     "title": "MIGRATE",

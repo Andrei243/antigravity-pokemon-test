@@ -495,6 +495,7 @@
       "delete": "ȘTERGE O SALVARE",
       "deleteWhich": "CE SALVARE ȘTERGI?",
       "migrate": "MIGRARE",
+      "home": "HOME",
       "options": "OPȚIUNI",
       "credits": "CREDITE",
       "quit": "IEȘIRE"
@@ -4021,6 +4022,64 @@
         "hello": "salut",
         "goodbye": "pa"
       }
+    }
+  },
+  "homeBox": {
+    "title": "HOME",
+    "hints": { "move": "Mută" },
+    "menu": {
+      "trade": "SCHIMB ÎNTRE SALVĂRI",
+      "box": "CUTIA HOME",
+      "tradeBody": "Pune două dintre salvările tale una lângă alta și alege câte un Pokémon în fiecare. Își schimbă locurile și fiecare sosește ca Pokémon schimbat: e primit, și evoluează dacă schimbul e calea lui, când salvarea lui e continuată.",
+      "tradeNone": "Un schimb are nevoie de două salvări. Începe întâi un alt joc într-un loc liber.",
+      "boxBody": "Cutii pe care le împart toate salvările. Pune un Pokémon dintr-o salvare și scoate-l în alta. {n} din {of} locuri sunt ocupate."
+    },
+    "choose": {
+      "first": "Schimbi din ce salvare?",
+      "second": "Și cu ce salvare?",
+      "with": "Schimbi din salvarea lui {name}, locul {slot}.",
+      "box": "Deschizi cutia Home lângă ce salvare?"
+    },
+    "slot": "LOCUL {slot}",
+    "sideSave": "{name} · LOCUL {slot}",
+    "sideHome": "CUTIA HOME · {n} / {of}",
+    "team": "ECHIPĂ",
+    "box": "CUTIA {n}",
+    "row": "{where}  Nv. {level}",
+    "rowRandom": "ALEATORIU  {where}  Nv. {level}",
+    "empty": "Niciun Pokémon aici.",
+    "emptyHome": "Cutia Home e goală. Alege un Pokémon în stânga ca să-l pui aici.",
+    "confirm": {
+      "title": "Schimbi acești doi?",
+      "body": "{mine} merge în salvarea lui {right}, iar {theirs} vine în a lui {left}. Ambele salvări sunt scrise deodată.",
+      "no": "NU",
+      "yes": "DA, SCHIMBĂ"
+    },
+    "working": { "title": "Se scriu salvările", "body": "Nu închide jocul." },
+    "done": {
+      "Trade": "Schimbat",
+      "Deposit": "Pus în cutia Home",
+      "Withdraw": "Scos din cutia Home",
+      "body": "Ambele fișiere sunt scrise. Nimic nu e în două locuri."
+    },
+    "refused": "Asta nu se poate",
+    "ok": "OK",
+    "why": {
+      "unreadable": "Salvarea aceea nu poate fi citită întreagă, deci nimic din ea nu poate fi mutat.",
+      "newer": "Salvarea aceea a fost făcută de o versiune mai nouă a jocului.",
+      "otherData": "Cutia Home a fost scrisă de o altă versiune a datelor jocului, deci nu poate fi deschisă aici. Nimic din ea nu se pierde.",
+      "damaged": "Fișierul cutiei Home și copia lui sunt amândouă deteriorate.",
+      "suspended": "O luptă e suspendată în salvarea aceea. Termin-o întâi.",
+      "sameSlot": "Alege două salvări diferite.",
+      "egg": "Un Ou nu poate fi schimbat.",
+      "noId": "Continuă întâi o dată salvarea aceea, ca Pokémonii ei să poată fi deosebiți.",
+      "already": "Chiar acest Pokémon e deja de cealaltă parte.",
+      "run": "Aventura acestei salvări e încă în desfășurare: nimic nu pleacă și nimic nu vine până se termină.",
+      "last": "Echipa ar rămâne fără nimeni în stare să lupte.",
+      "room": "Nu e loc pentru el.",
+      "cross": "Regiunea salvării aceleia nu-l poate primi încă.",
+      "save": "Un fișier nu a putut fi scris. Nimic nu a fost mutat.",
+      "notFound": "Pokémonul acela nu mai e acolo."
     }
   },
   "migrate": {

@@ -153,7 +153,7 @@ public static class SlotMoves
         var open = new Dictionary<string, MoveReceipt>();
         for (int slot = 1; slot <= SavePaths.Slots; slot++)
             if (SaveSlots.Read(paths, slot).Save?.Receipts is { } receipts)
-                foreach (var r in receipts) open.TryAdd(r.Id, r);
+                foreach (var r in receipts.Where(r => r.Kind == ReceiptKind.Move)) open.TryAdd(r.Id, r);
         int finished = 0;
         foreach (var receipt in open.Values)
             if (Finish(paths, receipt)) finished++;

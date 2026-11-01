@@ -265,6 +265,14 @@ public class SaveData
     public List<Models.MoveReceipt>? Receipts { get; set; }
 
     /// <summary>
+    /// The Pokémon that came into this save by a trade with another of this game's saves and haven't been taken up yet
+    /// (plan 12 · Q28, <see cref="HomeMoves"/>): as the save is continued each is handed to
+    /// <c>GameEngine.ReceiveTradedPokemon</c>, which registers it and plays its trade evolution. Null, left out, with none.
+    /// </summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public List<Models.TradeArrival>? ArrivedByTrade { get; set; }
+
+    /// <summary>
     /// The Battle Frontier (plan 06 · R18a): every facility's streaks, the Battle Points, and the Battle Tower's own
     /// part, a challenge put down between two battles among it. Null in saves from before it, which are given a new one.
     /// </summary>

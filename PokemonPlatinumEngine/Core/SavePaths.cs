@@ -121,6 +121,12 @@ public sealed class SavePaths
     /// <summary>The run timer's splits (plan 13 · V10, <see cref="Models.RunTimer"/>), written while the options' RUN TIMER row is on, in a plain shape a spreadsheet or an autosplitter reads.</summary>
     public const string SplitsName = "splits.json";
 
+    /// <summary>The Home box (plan 12 · Q29, <see cref="Models.HomeBank"/>): boxes of Pokémon every slot shares, with its own receipts and backup.</summary>
+    public const string HomeBoxName = "home.json";
+
+    /// <summary>The Home box's file, beside the slots.</summary>
+    public string HomeBox => Path.Combine(Folder, HomeBoxName);
+
     /// <summary>The folder everything is in, as a full path.</summary>
     public string Folder { get; }
 
@@ -183,6 +189,7 @@ public sealed class SavePaths
         }
         yield return AutosaveName;
         yield return GameSettings.FileName;
+        yield return HomeBoxName;
     }
 
     /// <summary>

@@ -28,7 +28,7 @@ public partial class GameEngine
 
     /// <summary>The states the timer stands still in: the title and its screens, the options, the close button's question.</summary>
     internal static bool TimerStandsStill(GameState state) => state is GameState.Title or GameState.Options or GameState.WindowClosing
-        or GameState.Jukebox or GameState.TitleCredits or GameState.FirstStart or GameState.Migrate or GameState.Intro;
+        or GameState.Jukebox or GameState.TitleCredits or GameState.FirstStart or GameState.Migrate or GameState.Intro or GameState.Home;
 
     /// <summary>
     /// A frame of the run: the timer moves on (real time from <see cref="WallClock.UtcNow"/>, never the system's clock),
