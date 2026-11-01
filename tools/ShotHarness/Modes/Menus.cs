@@ -875,6 +875,29 @@ partial class Harness
             game.State = GameState.Overworld;
         }
 
+        // The gallery from a Pokédex entry (plan 12 · Q30), after the jukebox so that nothing before it moves: the entry's
+        // hint that A opens it, the gallery on the entry's species, and the entry again after B. (The plan named the
+        // first 26x, which the entry's hop had taken.)
+        {
+            var dex = game.PokedexScreen;
+            game.State = GameState.PokedexMenu;
+            dex.Open(game.Pokedex, game.World.Portrait(PlayerIdentity.Character));
+            dex.SelectedIndex = dex.Rows.ToList().FindIndex(r => r.Species.Name == "Starly");
+            dex.Confirm();
+            Frames(20); Shot("26zd_pokedex_gallery_hint");
+            dex.Confirm();
+            Frames(2);
+            Console.WriteLine($"gallery from the Pokédex: state {game.State}, on {game.Gallery.Selected?.Look}, {game.Gallery.Pokemon.Count} rows");
+            int waited = 0;
+            while (game.Gallery.PictureShows != "Starly" && waited < 600) { Frames(1); waited++; }
+            Frames(60); Shot("26ze_pokedex_gallery");
+            game.Gallery.Cancel();
+            Frames(2); Shot("26zf_pokedex_gallery_back");
+            Console.WriteLine($"gallery closed: state {game.State}, the entry's focus {dex.Focus}, Starly held {PokemonModels.Holds("Starly")}");
+            dex.Close();
+            game.State = GameState.Overworld;
+        }
+
         // The packs screen (plan 16 · T15), last of all so that nothing before it moves: the options' row, the screen with
         // no pack found, then the repository's sample and the tests' fixture packs (one of which can't be read) as if
         // they lay beside the game, a pack turned off and moved in the order, and the word that the change waits for the

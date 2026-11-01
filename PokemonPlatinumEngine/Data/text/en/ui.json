@@ -495,6 +495,7 @@
       "deleteWhich": "DELETE WHICH SAVE?",
       "migrate": "MIGRATE",
       "jukebox": "JUKEBOX",
+      "gallery": "GALLERY",
       "options": "OPTIONS",
       "credits": "CREDITS",
       "quit": "QUIT"
@@ -4111,6 +4112,64 @@
       "Cave": "Cave",
       "Underwater": "Under the sea",
       "Giant": "A giant's last turn"
+    }
+  },
+  "gallery": {
+    "title": "GALLERY",
+    "tab": {
+      "pokemon": "POKéMON",
+      "people": "PEOPLE"
+    },
+    "hint": {
+      "cry": "Cry",
+      "turn": "Turn",
+      "clip": "Clip",
+      "emote": "Emote",
+      "view": "Front / back",
+      "zoom": "Zoom",
+      "tab": "Tab",
+      "open": "Gallery"
+    },
+    "keys": {
+      "p": "P",
+      "shoulders": "Q / E"
+    },
+    "number": "No. {n}",
+    "view": {
+      "front": "FRONT",
+      "back": "BACK"
+    },
+    "zoom": {
+      "0": "1×",
+      "1": "1.5×",
+      "2": "2×"
+    },
+    "building": "BUILDING…",
+    "empty": "Nothing seen yet.",
+    "clip": {
+      "idle": "IDLE",
+      "physical": "PHYSICAL",
+      "special": "SPECIAL",
+      "status": "STATUS",
+      "hit": "HIT",
+      "faint": "FAINT",
+      "entry": "ENTRY",
+      "dodge": "DODGE",
+      "tired": "TIRED",
+      "cheer": "CHEER",
+      "charge": "CHARGE"
+    },
+    "emote": {
+      "None": "STANDING",
+      "Wave": "WAVE",
+      "Surprised": "SURPRISED",
+      "Nod": "NOD",
+      "Cheer": "CHEER",
+      "Throw": "THROW",
+      "Bow": "BOW",
+      "Shrug": "SHRUG",
+      "Point": "POINT",
+      "Laugh": "LAUGH"
     }
   },
   "titleCredits": {

@@ -368,6 +368,10 @@ public partial class GameEngine
         public void PointOutThePinnedRequest() => game.PointOutThePinnedRequest();
         public void OpenJukebox(GameState returnTo) => game.OpenJukebox(returnTo);
         public void CloseJukebox() => game.CloseJukebox();
+        /// <summary>The gallery (plan 12 · Q30), opened as the title's GALLERY or a Pokédex entry's A does, and closed as B does.</summary>
+        public GalleryScreen Gallery => game.flow.GalleryScreen;
+        public void OpenGallery(GameState returnTo, string? openOn = null) => game.OpenGallery(returnTo, openOn);
+        public void CloseGallery() => game.CloseGallery();
         /// <summary>The title's CREDITS (plan 16 · T1).</summary>
         public TitleCreditsScreen TitleCredits => game.flow.TitleCreditsScreen;
         /// <summary>The last recording watched broke off before its end (its answers ran out or were refused).</summary>

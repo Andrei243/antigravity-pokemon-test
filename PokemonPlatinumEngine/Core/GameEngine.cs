@@ -119,7 +119,9 @@ public enum GameState
     /// <summary>Photo mode in the field: the field stilled under a free camera, a picture taken of it (plan 12 · Q16).</summary>
     Photo,
     /// <summary>The start menu's REQUESTS: the errands under way and done, and what is left here (plan 12 · Q21, Q22).</summary>
-    Requests
+    Requests,
+    /// <summary>The gallery: the models of the Pokémon seen and of people, from the title or a Pokédex entry (plan 12 · Q30).</summary>
+    Gallery
 }
 
 public partial class GameEngine
@@ -1145,6 +1147,9 @@ public partial class GameEngine
                     case TitleChoice.Jukebox:
                         OpenJukebox(GameState.Title);
                         break;
+                    case TitleChoice.Gallery:
+                        OpenGallery(GameState.Title);
+                        break;
                     case TitleChoice.Credits:
                         flow.TitleCreditsScreen.Open();
                         flow.State = GameState.TitleCredits;
@@ -1325,7 +1330,9 @@ public partial class GameEngine
                 break;
             case GameState.PokedexMenu:
                 flow.PokedexScreen.Update(dt);
-                if (!flow.PokedexScreen.IsActive) flow.State = GameState.Overworld;
+                // An entry's A opens the gallery on its species (plan 12 · Q30), and B there comes back to the entry
+                if (flow.PokedexScreen.TakeGalleryRequest() is { } shown) OpenGallery(GameState.PokedexMenu, shown);
+                else if (!flow.PokedexScreen.IsActive) flow.State = GameState.Overworld;
                 break;
             case GameState.TrainerCard:
                 flow.TrainerCardScreen.Update(dt);
@@ -1488,6 +1495,9 @@ public partial class GameEngine
                 break;
             case GameState.Jukebox:
                 UpdateJukebox(dt);
+                break;
+            case GameState.Gallery:
+                UpdateGallery(dt);
                 break;
             case GameState.Requests:
                 UpdateRequests(dt);
@@ -2852,6 +2862,11 @@ public partial class GameEngine
         {
             flow.Credits.Render(renderContext);
         }
+        else if (scene == GameState.Gallery)
+        {
+            // The gallery's model, a scene of its own like the evolution's (plan 12 · Q30)
+            flow.GalleryScreen.Render(renderContext);
+        }
         // (The field and the battle have told the profiler of their own passes; this takes whatever else was rendered)
         FrameProfiler.Lap(FrameSection.Scene);
 
@@ -2955,6 +2970,9 @@ public partial class GameEngine
                 break;
             case GameState.Jukebox:
                 flow.JukeboxScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.Gallery:
+                flow.GalleryScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.Requests:
                 flow.RequestsScreen.Draw(VirtualWidth, VirtualHeight);

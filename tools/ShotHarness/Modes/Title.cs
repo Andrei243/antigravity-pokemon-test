@@ -553,6 +553,51 @@ partial class Harness
         loneSuspended.PressConfirm();
         Seconds(1f); Shot("title_62_suspended_lone_card");
 
+        // The gallery (plan 12 · Q30), last so that nothing before it moves: the title's row beside a save that has seen
+        // something, the model turning on its own, a clip under way from behind, and the people's tab. (The plan named
+        // these title_36 to title_38, which the slots' shots had taken.)
+        save.SeenSpecies = new() { 387, 390, 393, 396, 403, 448, 479 };
+        var galleryTitle = TitleScreen.WithSlots(new[] { new TitleSlot(1, save), new TitleSlot(2, second) });
+        game.Title = galleryTitle;
+        game.State = GameState.Title;
+        galleryTitle.PressConfirm();
+        Seconds(1.2f);
+        galleryTitle.PressConfirm();
+        Seconds(1f);
+        while (galleryTitle.Entries[galleryTitle.SelectedIndex] != TitleChoice.Gallery) galleryTitle.Move(1);
+        Seconds(0.3f); Shot("title_70_gallery_row");
+        var gallery = game.Gallery;
+        gallery.Open(save.SeenSpecies, GalleryScreen.PeopleFor("PLAYER", "Lucas", "DAWN", "Dawn", RegionDatabase.First.Professor), "Lucario");
+        game.State = GameState.Gallery;
+        Frames(2); Shot("title_70b_gallery_building");
+        // Never a frame waits for a model: the harness waits for it here, a frame at a time
+        int waited = 0;
+        while (gallery.PictureShows != "Lucario" && waited < 600) { Frames(1); waited++; }
+        Seconds(1.5f); Shot("title_71_gallery_turning");
+        Console.WriteLine($"gallery: {gallery.Pokemon.Count} rows from {save.SeenSpecies.Count} species seen, the model after {waited} frames, turn {gallery.Turn:0.00}, owned [{string.Join(", ", gallery.Owned)}]");
+        gallery.NextClip(1);
+        if (!gallery.Back) gallery.ToggleBack();
+        gallery.ChangeZoom(1);
+        Seconds(0.5f); Shot("title_72_gallery_clip");
+        Console.WriteLine($"gallery: clip {gallery.Clip} at {gallery.ClipAge:0.00} s, back {gallery.Back}, zoom {gallery.Zoom}");
+        int rotomWash = gallery.Pokemon.ToList().FindIndex(e => e.Look == "Rotom-Wash");
+        gallery.Move(rotomWash - gallery.Cursor);
+        Frames(2); Shot("title_72b_gallery_form_standing_in");
+        waited = 0;
+        while (gallery.PictureShows != "Rotom-Wash" && waited < 600) { Frames(1); waited++; }
+        Seconds(0.3f); Shot("title_72c_gallery_form");
+        Console.WriteLine($"gallery: Rotom-Wash after {waited} frames, owned [{string.Join(", ", gallery.Owned)}]");
+        gallery.ChangeTab();
+        waited = 0;
+        while (gallery.PictureShows != "PLAYER" && waited < 600) { Frames(1); waited++; }
+        gallery.NextClip(1);
+        Seconds(0.6f); Shot("title_73_gallery_people");
+        Console.WriteLine($"gallery: the people's tab, {gallery.People.Count} people, emote {gallery.Emote}");
+        gallery.Cancel();
+        game.State = GameState.Title;
+        Console.WriteLine($"gallery closed: owned [{string.Join(", ", gallery.Owned)}], Lucario held {PokemonModels.Holds("Lucario")}, Rotom-Wash held {PokemonModels.Holds("Rotom-Wash")}");
+        save.SeenSpecies = new();
+
         game.State = GameState.Overworld;
     }
 

@@ -107,7 +107,7 @@ public sealed record TitleNotice(string Heading, string Body)
 /// <see cref="Unreadable"/> (the card of a slot that can't be read) are entries only: neither is ever handed over
 /// by <see cref="TitleScreen.TakeChoice"/>; a deletion is <see cref="TitleScreen.TakeDeletion"/>'s.
 /// </summary>
-public enum TitleChoice { None, Continue, NewGame, Options, Quit, Delete, Unreadable, Migrate, Jukebox, Credits }
+public enum TitleChoice { None, Continue, NewGame, Options, Quit, Delete, Unreadable, Migrate, Jukebox, Credits, Gallery }
 
 /// <summary>
 /// The opening and the title screen: a short notice, fly-over shots of Sinnoh at different times of day, Giratina
@@ -143,7 +143,7 @@ public sealed class TitleScreen
     private readonly List<TitleChoice> entries = new();
     private readonly Queue<TitleNotice> notices = new();
     private TitleChoice chosen = TitleChoice.None;
-    private bool optionsRequested, migrateRequested, jukeboxRequested, creditsRequested, noticeOverMenu, migrateOffered;
+    private bool optionsRequested, migrateRequested, jukeboxRequested, creditsRequested, galleryRequested, noticeOverMenu, migrateOffered;
     private float phaseTime, totalTime, menuBlend, skipFlash;
     private int warmed;
     // The slot the delete question is about, where the question was asked from, and the slot to be deleted once
@@ -242,6 +242,8 @@ public sealed class TitleScreen
         // Pal Park's migration (plan 08 · P21) needs a save to bring the Pokémon to, and something to bring them from
         if (migrateOffered && cards.Any(c => c.Save != null)) entries.Add(TitleChoice.Migrate);
         entries.Add(TitleChoice.Jukebox);
+        // The gallery (plan 12 · Q30) shows what the saves have seen: with nothing seen there is nothing to show
+        if (cards.Any(c => c.Save is { SeenSpecies.Count: > 0 })) entries.Add(TitleChoice.Gallery);
         entries.Add(TitleChoice.Options);
         entries.Add(TitleChoice.Credits);
         entries.Add(TitleChoice.Quit);
@@ -364,6 +366,7 @@ public sealed class TitleScreen
                     case TitleChoice.Options: optionsRequested = true; break;
                     case TitleChoice.Migrate: migrateRequested = true; break;
                     case TitleChoice.Jukebox: jukeboxRequested = true; break;
+                    case TitleChoice.Gallery: galleryRequested = true; break;
                     case TitleChoice.Credits: creditsRequested = true; break;
                     case TitleChoice.Quit: Leave(TitleChoice.Quit); break;
                 }
@@ -589,6 +592,11 @@ public sealed class TitleScreen
         {
             jukeboxRequested = false;
             return TitleChoice.Jukebox;
+        }
+        if (galleryRequested)
+        {
+            galleryRequested = false;
+            return TitleChoice.Gallery;
         }
         if (creditsRequested)
         {
@@ -834,11 +842,11 @@ public sealed class TitleScreen
     public IReadOnlyList<Rectangle> EntryRects()
     {
         bool saves = cards.Count > 0;
-        // Beside the cards the column holds its rows by slimming them: six (CREDITS, plan 16 · T1) and seven (MIGRATE too);
-        // with nothing saved there is room for the rows at their full height
+        // Beside the cards the column holds its rows by slimming them: six (CREDITS, plan 16 · T1), seven (MIGRATE or
+        // GALLERY too, plan 12 · Q30) and eight (both); with nothing saved there is room for the rows at their full height
         int rowsN = entries.Count - cards.Count;
-        float row = !saves ? 92 : rowsN >= 7 ? 48 : rowsN == 6 ? 56 : rowsN == 5 ? 64 : 76;
-        float gap = !saves ? 20 : rowsN >= 7 ? 8 : rowsN == 6 ? 10 : rowsN == 5 ? 12 : 18;
+        float row = !saves ? 92 : rowsN >= 8 ? 44 : rowsN == 7 ? 48 : rowsN == 6 ? 56 : rowsN == 5 ? 64 : 76;
+        float gap = !saves ? 20 : rowsN >= 8 ? 6 : rowsN == 7 ? 8 : rowsN == 6 ? 10 : rowsN == 5 ? 12 : 18;
         float card = LoneCard ? LoneCardHeight : ShortCardHeight;
         float total = cards.Count * card + (entries.Count - cards.Count) * row + (entries.Count - 1) * gap;
         float y = saves ? 590 - total / 2f : (1080 - total) / 2f + 40;
@@ -877,6 +885,7 @@ public sealed class TitleScreen
                 TitleChoice.Delete => Text.Of(Phase == TitlePhase.ChooseDelete ? "title.menu.deleteWhich" : "title.menu.delete"),
                 TitleChoice.Migrate => Text.Of("title.menu.migrate"),
                 TitleChoice.Jukebox => Text.Of("title.menu.jukebox"),
+                TitleChoice.Gallery => Text.Of("title.menu.gallery"),
                 TitleChoice.Options => Text.Of("title.menu.options"),
                 TitleChoice.Credits => Text.Of("title.menu.credits"),
                 _ => Text.Of("title.menu.quit")

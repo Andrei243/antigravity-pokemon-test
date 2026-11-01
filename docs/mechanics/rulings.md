@@ -7396,3 +7396,12 @@ on the newest games' lines (a retry as their difficulty helps offer one, a suspe
   the menu then opens where the battle was left (or the next question, where it was left mid-turn). One whose data has
   changed since, or that can't be read, is refused at the title with a notice and taken away; one whose record no
   longer fits (a move learned mid-battle outside the record) is dropped and the game goes on from where the battle began.
+
+## The gallery (2026-11-01, plan 12 · Q30)
+
+Platinum has no gallery; this is ours, after the later games' model viewers (`UI/GalleryScreen.cs`; style guide, "Pokémon in menus" and "Menu screens", "Gallery").
+
+- **What it shows** is what the Pokédex has seen and nothing more: on the title the species any readable slot has seen (GALLERY is offered only while one has seen something), from a Pokédex entry the game's own. Every form of a species seen is shown with it, seen or not, since a form is the species in another shape: the Pokédex's FORMS page keeps telling which looks were met. Nothing is saved for it.
+- **The people** are the player's two looks and the region's professor, as the plan's fallback has it: the game's greetings (plan 08 · P12) remember people by who they are, not by the look they are drawn in.
+- **Models are never kept for good.** The gallery asks for the model under the cursor once, shows the still sprite until it is built, and lets go of every model it was the first to ask for as the cursor moves on and as it closes; a model the game already held stays the game's.
+- **The bakes are untouched**: the turn and the zoom the gallery renders with are nought and one for every sprite, strip and portrait, so no baked sprite changes and nothing is baked again.

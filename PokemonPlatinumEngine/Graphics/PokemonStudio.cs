@@ -21,26 +21,8 @@ internal static class PokemonStudio
             : PokemonModels.Get(name);
 
     /// <summary>The pose for one frame of a clip: "idle", "physical", "special", "status", "hit", "faint" or "entry" at progress <paramref name="t"/>.</summary>
-    private static PokePose PoseOf(string clip, float t, bool blink = false)
-    {
-        var pose = new PokePose { Time = 0.4f, Blink = blink ? 1f : 0f };
-        switch (clip.ToLowerInvariant())
-        {
-            case "idle": pose.Time = t; break;
-            case "physical": pose.Attack = t; pose.Kind = MoveCategory.Physical; break;
-            case "special": pose.Attack = t; pose.Kind = MoveCategory.Special; break;
-            case "status": pose.Attack = t; pose.Kind = MoveCategory.Status; break;
-            case "hit": pose.Hurt = t; break;
-            case "faint": pose.Faint = t; break;
-            case "entry": pose.Entry = t; break;
-            // A battle's answers (plan 25 · Y5): tiredness and a charge held at full, at time t of their own loops
-            case "dodge": pose.Dodge = t; break;
-            case "tired": pose.Time = t; pose.Tired = 1f; break;
-            case "cheer": pose.Cheer = t; break;
-            case "charge": pose.Time = t; pose.Charge = 1f; break;
-        }
-        return pose;
-    }
+    // (The clips by name are PokemonAnimation's since plan 12 · Q30, which the gallery shares)
+    private static PokePose PoseOf(string clip, float t, bool blink = false) => PokemonAnimation.ClipPose(clip, t, blink);
 
     /// <summary>
     /// One view per frame, side by side, each <paramref name="w"/> × <paramref name="h"/> pixels: the model turned by

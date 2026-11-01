@@ -73,7 +73,8 @@ internal static partial class ModernUi
                     Hint("shared.keys.leftRight", "shared.hints.change"), Hint("shared.keys.upDown", "shared.hints.choose"), Hint("shared.keys.esc", "shared.hints.back"));
                 break;
             case PokedexFocus.Entry:
-                Hints(sw - Margin, 44, Hint("shared.keys.leftRight", "shared.hints.page"), Hint("shared.keys.upDown", "shared.hints.species"), Hint("shared.keys.esc", "shared.hints.back"));
+                // A opens the gallery on the species (plan 12 · Q30)
+                Hints(sw - Margin, 44, Hint("shared.keys.z", "gallery.hint.open"), Hint("shared.keys.leftRight", "shared.hints.page"), Hint("shared.keys.upDown", "shared.hints.species"), Hint("shared.keys.esc", "shared.hints.back"));
                 break;
             case PokedexFocus.Search:
                 Hints(sw - Margin, 44, Hint("shared.keys.leftRight", "shared.hints.change"), Hint("shared.keys.enter", "shared.hints.search"), Hint("shared.keys.esc", "shared.hints.close"));

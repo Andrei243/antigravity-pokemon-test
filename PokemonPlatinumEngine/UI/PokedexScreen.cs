@@ -482,7 +482,22 @@ public class PokedexScreen
             case PokedexFocus.Diploma:
                 CloseDiploma();
                 break;
+            case PokedexFocus.Entry when Selected is { } shown:
+                // A on the INFO, AREA or SIZE page opens the gallery on the species (plan 12 · Q30)
+                galleryRequested = shown.Species.Name;
+                AudioManager.PlaySound("select");
+                break;
         }
+    }
+
+    private string? galleryRequested;
+
+    /// <summary>The species an entry's A asked the gallery to be opened on (plan 12 · Q30), once.</summary>
+    public string? TakeGalleryRequest()
+    {
+        var asked = galleryRequested;
+        galleryRequested = null;
+        return asked;
     }
 
     public void Cancel()
