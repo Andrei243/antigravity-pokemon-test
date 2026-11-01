@@ -6411,13 +6411,26 @@ way 1, from answer 1
 === ancient_tomb.Registeel
 from Registeel at 8,7 of AncientTomb
 way 0
-  > Registeel waits in the tomb without a sound.
+  > Registeel waited in the tomb without a sound, until lights blinked on across its face!
+  * scene ancient_tomb.Registeel wakes in the Ancient Tomb
+  * music stop
+  * letterbox on
+  * camera Pan 8 7
+  * camera Zoom 1.4
+  * effect Beam 8 7
+  * shake Registeel 8
   * cry Registeel
+  * camera Shake
+  * camera Release
+  * letterbox off
+  * endscene
   * wildbattle Registeel 40 Won
   + FLAG_DEFEATED_REGISTEEL
   + FLAG_HIDE_REGISTEEL
+  + seen ancient_tomb.Registeel wakes in the Ancient Tomb
 way 1, from answer 1
   * wildbattle Registeel 40 Lost
+  + seen ancient_tomb.Registeel wakes in the Ancient Tomb
 === ancient_tomb.Wall
 from Wall at 7,20 of AncientTomb
 from Wall at 8,20 of AncientTomb
@@ -13748,13 +13761,26 @@ way -
 === desert_ruins.Regirock
 from Regirock at 8,7 of DesertRuins
 way 0
-  > Regirock stands in the dark, as still as a stone.
+  > Regirock stood in the dark as still as a stone, until lights blinked on across its face!
+  * scene desert_ruins.Regirock wakes in the Desert Ruins
+  * music stop
+  * letterbox on
+  * camera Pan 8 7
+  * camera Zoom 1.4
+  * effect Beam 8 7
+  * shake Regirock 8
   * cry Regirock
+  * camera Shake
+  * camera Release
+  * letterbox off
+  * endscene
   * wildbattle Regirock 40 Won
   + FLAG_DEFEATED_REGIROCK
   + FLAG_HIDE_REGIROCK
+  + seen desert_ruins.Regirock wakes in the Desert Ruins
 way 1, from answer 1
   * wildbattle Regirock 40 Lost
+  + seen desert_ruins.Regirock wakes in the Desert Ruins
 === desert_ruins.Wall
 from Wall at 7,20 of DesertRuins
 from Wall at 8,20 of DesertRuins
@@ -14892,9 +14918,17 @@ way 1, from answer 1
 === faraway_island_interior.Mew
 from Mew at 13,14 of FarawayIsland_Interior
 way 0
+  > Mew flickers in and out of sight among the grass, then peers right back at you!
   * scene faraway_island_interior.Mew in the tall grass
+  * music stop
+  * letterbox on
+  * camera Follow Mew
+  * camera Zoom 1.4
+  * flicker Mew 6
   * emote Mew Exclaim
   * cry Mew
+  * camera Release
+  * letterbox off
   * endscene
   * wildbattle Mew 30 Won
   + FLAG_DEFEATED_MEW
@@ -17105,13 +17139,27 @@ way -
 === island_cave.Regice
 from Regice at 8,7 of IslandCave
 way 0
-  > Regice stands in the cold dark, frozen as the cave itself.
+  > Regice stood in the cold dark, frozen as the cave itself, until lights blinked on across its face!
+  * scene island_cave.Regice wakes in the Island Cave
+  * music stop
+  * letterbox on
+  * camera Pan 8 7
+  * camera Zoom 1.4
+  * effect Beam 8 7
+  * effect Sparkles 8 7
+  * shake Regice 8
   * cry Regice
+  * camera Shake
+  * camera Release
+  * letterbox off
+  * endscene
   * wildbattle Regice 40 Won
   + FLAG_DEFEATED_REGICE
   + FLAG_HIDE_REGICE
+  + seen island_cave.Regice wakes in the Island Cave
 way 1, from answer 1
   * wildbattle Regice 40 Lost
+  + seen island_cave.Regice wakes in the Island Cave
 === island_cave.Wall
 from Wall at 7,20 of IslandCave
 from Wall at 8,20 of IslandCave
@@ -18869,8 +18917,18 @@ from the trigger at 9,26 of MarineCave_End
 way 0
   > Kyogre rose from the depths of the pool!
   * scene marine_cave_end.Kyogre in the Marine Cave
+  * music stop
+  * letterbox on
+  * camera Pan 9 22
+  * camera Zoom 1.4
+  * effect Sparkles 9 22
+  * effect Ripple 9 22
+  * walk Kyogre onspot down
   * cry Kyogre
   * camera Shake
+  * emote player Exclaim
+  * camera Release
+  * letterbox off
   * endscene
   * wildbattle Kyogre 70 Won
   + FLAG_DEFEATED_KYOGRE
@@ -20185,11 +20243,22 @@ way -
 === navel_rock_bottom.Lugia
 from Lugia at 11,13 of NavelRock_Bottom
 way 0
+  > Lugia lifted its head from the dark water, and spray rained down all around!
   > Lugia dived into the dark water and was gone...
   * scene navel_rock_bottom.Lugia at the foot of Navel Rock
+  * music stop
+  * letterbox on
+  * camera Pan 11 13
+  * camera Zoom 1.4
   * camera Shake
   * camera Shake
+  * effect Sparkles 11 13
+  * effect Ripple 11 13
+  * walk Lugia onspot down
   * cry Lugia
+  * emote player Exclaim
+  * camera Release
+  * letterbox off
   * endscene
   * wildbattle Lugia 70 Won
   + FLAG_DEFEATED_LUGIA
@@ -20214,10 +20283,22 @@ way 1, from answer 1
 === navel_rock_top.HoOh
 from the trigger at 12,10 of NavelRock_Top
 way 0
+  > Ho-Oh swept down over the peak, and the air blazed with rainbow light!
   > Ho-Oh spread its wings and flew off into the sky...
   * scene navel_rock_top.Ho-Oh at the peak of Navel Rock
+  * music stop
+  * letterbox on
+  * camera Pan 12 4
+  * camera Zoom 1.4
+  * effect Shadow 12 6 Down
+  * camera Path 12 7 12 9 at 2
+  * effect Burst 12 9
+  * effect Ripple 12 9
   * cry Ho-Oh
   * camera Shake
+  * emote player Exclaim
+  * camera Release
+  * letterbox off
   * endscene
   * wildbattle Ho-Oh 70 Won
   + FLAG_DEFEATED_HO_OH
@@ -26240,12 +26321,26 @@ way -
 from Rayquaza at 14,6 of SkyPillar_Top
 way 0
   > Rayquaza glares down from the top of the pillar!
+  * scene sky_pillar_top.Rayquaza on the top of Sky Pillar
+  * music stop
+  * letterbox on
+  * camera Pan 14 3
+  * camera Zoom 1.4
+  * effect Shadow 14 5 Down
+  * camera Path 14 4 14 6 at 2
   * cry Rayquaza
+  * camera Shake
+  * emote player Exclaim
+  * camera Release
+  * letterbox off
+  * endscene
   * wildbattle Rayquaza 70 Won
   + FLAG_DEFEATED_RAYQUAZA
   + FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_STILL
+  + seen sky_pillar_top.Rayquaza on the top of Sky Pillar
 way 1, from answer 1
   * wildbattle Rayquaza 70 Lost
+  + seen sky_pillar_top.Rayquaza on the top of Sky Pillar
 === sky_pillar_top.Sleeping
 from Rayquaza at 14,7 of SkyPillar_Top
 way -
@@ -27799,8 +27894,18 @@ from the trigger at 17,26 of TerraCave_End
 way 0
   > Groudon heaved itself up out of the magma!
   * scene terra_cave_end.Groudon in Terra Cave
+  * music stop
+  * letterbox on
+  * camera Pan 17 22
+  * camera Zoom 1.4
+  * effect Burst 17 22
+  * effect Ripple 17 22
+  * walk Groudon onspot down
   * cry Groudon
   * camera Shake
+  * emote player Exclaim
+  * camera Release
+  * letterbox off
   * endscene
   * wildbattle Groudon 70 Won
   + FLAG_DEFEATED_GROUDON

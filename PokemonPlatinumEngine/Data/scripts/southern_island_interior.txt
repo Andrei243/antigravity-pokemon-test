@@ -7,7 +7,9 @@
 # (Emerald's SetUpLatios and SetUpLatias), at level 50, holding a Soul Dew. Run from, it flies off and is back with
 # the next visit (FLAG_MAP_LOCAL_SOUTHERN_ISLAND_LATI_MET lasts only while the player stays); beaten, it is gone
 # (FLAG_DEFEATED_LATIAS_OR_LATIOS); caught, FLAG_CAUGHT_LATIAS_OR_LATIOS. Emerald walks it down from the north over a pan
-# of the camera; here it comes down at once to the tile before the stone, 13, 10.
+# of the camera; here its meeting is plan 29's beat (style guide, "Legendary scenes", flight and the mind's rows): the
+# bars, the camera up over the garden, its shadow crossing the pond toward the stone with the camera after it, and it
+# shown on the tile before the stone, 13, 10, with sparkles and a ripple; then the battle's own way in.
 
 
 script OnEnter
@@ -25,42 +27,66 @@ script Stone
   scene "Latias comes down to the stone"
   setflag FLAG_ENCOUNTERED_LATIAS_OR_LATIOS
   setflag FLAG_MAP_LOCAL_SOUTHERN_ISLAND_LATI_MET
+  music stop
+  face player up
+  letterbox on 0.4
+  camera pan 13 5 1.2
+  camera zoom 1.4 0.8
+  effect shadow 13 7 2 down
+  camera path 13 8 13 10 2
   clearflag FLAG_HIDE_SOUTHERN_ISLAND_LATIAS
   show southern_island_latias
+  effect sparkles 13 10
+  effect ripple 13 10
   cry "Latias"
-  wait 1
+  emote player exclaim
+  speaker none
+  text "A shadow swept over the pond, and Latias came down to land by the stone!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
   wildbattle "Latias" 50 holding "Soul Dew"
   hide southern_island_latias
   setflag FLAG_HIDE_SOUTHERN_ISLAND_LATIAS
   if result == 3 goto CaughtOne
   if result == 1 goto BeatenOne
   text "Latias flew off over the sea..."
-  endscene
   end
 label Latios
   scene "Latios comes down to the stone"
   setflag FLAG_ENCOUNTERED_LATIAS_OR_LATIOS
   setflag FLAG_MAP_LOCAL_SOUTHERN_ISLAND_LATI_MET
+  music stop
+  face player up
+  letterbox on 0.4
+  camera pan 13 5 1.2
+  camera zoom 1.4 0.8
+  effect shadow 13 7 2 down
+  camera path 13 8 13 10 2
   clearflag FLAG_HIDE_SOUTHERN_ISLAND_LATIOS
   show southern_island_latios
+  effect sparkles 13 10
+  effect ripple 13 10
   cry "Latios"
-  wait 1
+  emote player exclaim
+  speaker none
+  text "A shadow swept over the pond, and Latios came down to land by the stone!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
   wildbattle "Latios" 50 holding "Soul Dew"
   hide southern_island_latios
   setflag FLAG_HIDE_SOUTHERN_ISLAND_LATIOS
   if result == 3 goto CaughtOne
   if result == 1 goto BeatenOne
   text "Latios flew off over the sea..."
-  endscene
   end
 label CaughtOne
   setflag FLAG_CAUGHT_LATIAS_OR_LATIOS
-  endscene
   end
 label BeatenOne
   setflag FLAG_DEFEATED_LATIAS_OR_LATIOS
   text "The eon Pokémon flew off over the sea, and was gone for good..."
-  endscene
   end
 label Plain
   text "A smooth stone stands here, worn by the years. Whatever once rested on it is gone."

@@ -21,10 +21,26 @@ script OnEnter
 # SkyPillar_Top_EventScript_TryShowRayquaza) it waits here, awake, until beaten or caught, and is battled at level 70
 # (Emerald's SkyPillar_Top_EventScript_Rayquaza). Run from, it flies off and is back the next time the top is come to,
 # as Emerald's OnTransition shows it again. The floors below are cracked meanwhile (FLAG_HOENN_SKY_PILLAR_CRACKED).
+# Its meeting is plan 29's beat (style guide, "Legendary scenes", flight overhead): the bars, the camera up over the top,
+# Rayquaza's shadow sweeping down toward the player with the camera after it, the roar with the tower shaken as the
+# awakening shakes it, and then the battle's own way in (plan 09 · L14's Legendary).
 script Rayquaza
+  scene "Rayquaza on the top of Sky Pillar"
+  music stop
+  face player up
+  letterbox on 0.4
+  camera pan 14 3 1.2
+  camera zoom 1.4 0.8
+  effect shadow 14 5 2 down
+  camera path 14 4 14 6 2
   cry "Rayquaza"
+  camera shake 1
+  emote player exclaim
   speaker none
   text "Rayquaza glares down from the top of the pillar!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
   wildbattle "Rayquaza" 70
   hide self
   setflag FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_STILL
