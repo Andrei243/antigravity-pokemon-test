@@ -81,6 +81,11 @@ public static partial class SoundBank
         Add("effect_shadow", SoundGroup.Field, null, "A great shadow sweeps over the ground (`effect shadow`): Giratina's, in the Distortion World.");
         Add("effect_ripple", SoundGroup.Field, null, "The picture wavers (`effect ripple`): a weight in the air at Spear Pillar, an explosion felt far off.");
         Add("effect_sparkles", SoundGroup.Field, null, "Points of light rise round a tile (`effect sparkles`): the lake guardians set free and appearing.");
+        Add("effect_geyser", SoundGroup.Field, null, "A column of water heaves up out of a tile (`effect geyser`, plan 29 · LS10): Kyogre rising from its pool.");
+        Add("effect_eruption", SoundGroup.Field, null, "A column of magma heaves up out of a tile (`effect eruption`): Groudon rising from the magma.");
+        Add("effect_stair", SoundGroup.Field, null, "A stair of light climbs away from a tile (`effect stair`): the Azure Flute played on Spear Pillar.");
+        Add("effect_petals", SoundGroup.Field, null, "Petals are blown up round a tile (`effect petals`): Shaymin among the flowers.");
+        Add("effect_mist", SoundGroup.Field, null, "A dark mist gathers low round a tile (`effect mist`): Darkrai's dream.");
         Add("machine_ball", SoundGroup.Field, "SEQ_SE_DP_BOWA", "A Poké Ball is laid on a Pokémon Center's machine (`anim heal`): one to each Pokémon of the team.");
         Add("lift_hum", SoundGroup.Field, "SEQ_SE_DP_ELEBETA2", "A lift's car between floors (`anim elevator`): one hum to each round of its indicator's lights.");
         Add("lift_ding", SoundGroup.Field, "SEQ_SE_DP_PINPON", "A lift arrives at its floor (`anim elevator`): two notes of a chime.");
@@ -393,6 +398,41 @@ public static partial class SoundBank
                 d.Bell(0.28f, 0.4f, N(98), 3f, 1.4f, 0.22f);
                 d.Bell(0.38f, 0.4f, N(108), 3f, 1.4f, 0.24f);
                 d.Bell(0.45f, 0.38f, N(105), 3f, 1.4f, 0.2f);
+                return Finish(d.S, 0.36f);
+            case "effect_geyser":
+                // Water heaving up: a deep surge of noise swelling out of a low thump, spray hissing as it falls
+                d = new SoundDesign(0.95f, 0x6E15u);
+                d.Thump(0, 0.35f, 90f, 40f, 0.7f, 0.5f);
+                d.Noise(0, 0.75f, Filter.Low, 500f, 1500f, 0.8f, 0.9f, 0.15f, 1.3f, flutterHz: 5f, flutterDepth: 0.35f);
+                d.Noise(0.5f, 0.42f, Filter.High, 3600f, 2000f, 0.4f, 0.8f, 0.05f, 1.6f);
+                return Finish(d.S, 0.4f);
+            case "effect_eruption":
+                // Magma heaving up: a deeper surge with a rumble under it, crackling embers as it falls
+                d = new SoundDesign(0.95f, 0xE7A1u);
+                d.Thump(0, 0.4f, 70f, 32f, 0.8f, 0.5f);
+                d.Noise(0, 0.75f, Filter.Low, 300f, 800f, 0.85f, 0.9f, 0.15f, 1.3f, flutterHz: 7f, flutterDepth: 0.45f);
+                d.Crackle(0.5f, 0.42f, 26, 2400f, 0.35f);
+                return Finish(d.S, 0.4f);
+            case "effect_stair":
+                // A stair of light: a bright tone climbing a step at a time, a shimmer on each step
+                d = new SoundDesign(0.98f, 0x57A1u);
+                for (int i = 0; i < 8; i++)
+                    d.Bell(i * 0.06f, 0.5f, N(76 + 2 * i + (i > 3 ? 1 : 0)), 2.01f, 1.6f, 0.2f);
+                d.Tone(0, 0.95f, Wave.Sine, 330f, 660f, 0.15f, 0.3f, 0.6f, vibratoHz: 5f, vibratoDepth: 0.015f);
+                return Finish(d.S, 0.36f);
+            case "effect_petals":
+                // Petals blown up: a soft breath of air and a few light chimes, low and close
+                d = new SoundDesign(0.95f, 0x9E7Au);
+                d.Noise(0, 0.85f, Filter.Band, 1600f, 2600f, 0.35f, 1.2f, 0.2f, 1.2f, flutterHz: 4f, flutterDepth: 0.5f);
+                d.Bell(0.1f, 0.4f, N(88), 2f, 1.2f, 0.16f);
+                d.Bell(0.3f, 0.4f, N(91), 2f, 1.2f, 0.14f);
+                d.Bell(0.5f, 0.4f, N(86), 2f, 1.2f, 0.12f);
+                return Finish(d.S, 0.34f);
+            case "effect_mist":
+                // A dark mist gathering: a low breath of noise, slow to swell, with a hollow note wavering under it
+                d = new SoundDesign(0.98f, 0x0D15u);
+                d.Noise(0, 0.95f, Filter.Low, 380f, 260f, 0.6f, 0.8f, 0.5f, 1.2f, flutterHz: 2f, flutterDepth: 0.4f);
+                d.Tone(0, 0.95f, Wave.Triangle, N(43), N(42), 0.2f, 0.5f, 1f, vibratoHz: 3f, vibratoDepth: 0.03f);
                 return Finish(d.S, 0.36f);
             case "machine_ball":
                 // A ball set down in its socket: a soft pop of air and a small round note under it

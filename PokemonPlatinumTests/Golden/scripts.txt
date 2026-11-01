@@ -15459,7 +15459,7 @@ way 0
   * letterbox on
   * camera Pan 911 203
   * camera Zoom 1.4
-  * effect Sparkles 911 203
+  * effect Petals 911 202
   * camera Follow Shaymin
   * walk Shaymin onspot left onspot right onspot down
   * cry Shaymin
@@ -19163,7 +19163,7 @@ way 0
   * letterbox on
   * camera Pan 9 23
   * camera Zoom 1.4
-  * effect Sparkles 9 22
+  * effect Geyser 9 22
   * effect Ripple 9 22
   * walk Kyogre onspot down
   * cry Kyogre
@@ -20758,13 +20758,13 @@ way 0
   * letterbox on
   * camera Pan 16 13
   * camera Zoom 1.4
-  * effect Rift 16 11 hold
+  * effect Mist 16 12 hold
   * slowmo 0.5
   * effect Ripple 16 13
   * flicker Darkrai 4
   * cry Darkrai
   * camera Shake
-  * effect stop 16 11
+  * effect stop 16 12
   * camera Release
   * letterbox off
   * endscene
@@ -27271,16 +27271,10 @@ way 0
   * letterbox on
   * sound use_grass_whistle
   * camera Path 31 48 at 3
-  * effect Beam 31 50
+  * effect Stair 31 50 hold
   * effect Sparkles 31 50
-  * effect Beam 31 48
-  * effect Sparkles 31 48
-  * effect Beam 31 46
-  * effect Sparkles 31 46
-  * effect Beam 31 44
-  * effect Sparkles 31 44
-  * effect Burst 31 44
   * fade out
+  * effect stop 31 50
   * camera Release
   * letterbox off
   * warp HallOfOrigin 31 52
@@ -27395,16 +27389,10 @@ way 0
   * letterbox on
   * sound use_grass_whistle
   * camera Path 31 48 at 3
-  * effect Beam 31 50
+  * effect Stair 31 50 hold
   * effect Sparkles 31 50
-  * effect Beam 31 48
-  * effect Sparkles 31 48
-  * effect Beam 31 46
-  * effect Sparkles 31 46
-  * effect Beam 31 44
-  * effect Sparkles 31 44
-  * effect Burst 31 44
   * fade out
+  * effect stop 31 50
   * camera Release
   * letterbox off
   * warp HallOfOrigin 31 52
@@ -27488,16 +27476,10 @@ way 0
   * letterbox on
   * sound use_grass_whistle
   * camera Path 31 48 at 3
-  * effect Beam 31 50
+  * effect Stair 31 50 hold
   * effect Sparkles 31 50
-  * effect Beam 31 48
-  * effect Sparkles 31 48
-  * effect Beam 31 46
-  * effect Sparkles 31 46
-  * effect Beam 31 44
-  * effect Sparkles 31 44
-  * effect Burst 31 44
   * fade out
+  * effect stop 31 50
   * camera Release
   * letterbox off
   * warp HallOfOrigin 31 52
@@ -28354,7 +28336,7 @@ way 0
   * letterbox on
   * camera Pan 17 23
   * camera Zoom 1.4
-  * effect Burst 17 22
+  * effect Eruption 17 22
   * effect Ripple 17 22
   * walk Groudon onspot down
   * cry Groudon
