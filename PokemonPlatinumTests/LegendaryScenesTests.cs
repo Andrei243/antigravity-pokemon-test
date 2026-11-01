@@ -26,10 +26,6 @@ public class LegendaryScenesTests
         // The room's Arrival has its cry, shake and ripple, but its camera never leaves the player before the battle
         // (its pans are Cynthia's, after it): LS1 found it, LS2 owes its look
         ["distortion_world_giratina_room.Giratina Giratina-Origin"] = "LS2",
-        // Johto's birds of the towers
-        ["bell_tower_roof.HoOh Ho-Oh"] = "LS4",
-        ["whirl_islands_b3f_lugia_cave.Lugia Lugia"] = "LS4",
-        ["mount_silver_cave_moltres_chamber.Moltres Moltres"] = "LS4",
         // Hoenn's titans after the story
         ["sky_pillar_top.Rayquaza Rayquaza"] = "LS6",
         ["marine_cave_end.Kyogre Kyogre"] = "LS6",
