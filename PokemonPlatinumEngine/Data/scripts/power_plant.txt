@@ -5,6 +5,10 @@
 # for good, run from it flies off and is back on the next visit. Two of the Poké Balls lying about are Electrode,
 # which wake when touched and are gone however their battle ends (FLAG_FOUGHT_POWER_PLANT_ELECTRODE_1 and _2, as
 # FireRed's own). Each is shown again by the plant's arrival while it hasn't been fought.
+#
+# Zapdos's meeting is plan 29's beat (style guide, "Legendary scenes"): the bars, the camera to its corner, two bursts
+# of lightning a moment apart with the picture shaken by each, the cry and a line, and then the battle's own way in
+# (plan 09 · L14's Legendary).
 
 
 script OnEnter
@@ -14,22 +18,34 @@ script OnEnter
   end
 
 script Zapdos
-  scene "Zapdos"
   speaker none
+  scene "Zapdos at the Power Plant"
+  music stop
+  letterbox on 0.4
+  camera pan 5 11 1.2
+  camera zoom 1.4 0.8
+  effect burst 5 11
+  camera shake 0.4
+  wait 0.4
+  effect burst 5 11
+  camera shake 0.4
+  wait 0.6
   cry "Zapdos"
+  emote player exclaim
   text "Gyaaah!\nSparks crackled through the air round the great bird!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
   wildbattle "Zapdos" 50
   if result == 2 goto Fled
   setflag FLAG_FOUGHT_ZAPDOS
   setflag FLAG_HIDE_ZAPDOS
   hide self
-  endscene
   end
 label Fled
   setflag FLAG_HIDE_ZAPDOS
   hide self
   text "Zapdos flew off somewhere in the plant!"
-  endscene
   end
 
 script Electrode

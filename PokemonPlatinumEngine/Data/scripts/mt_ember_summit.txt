@@ -3,6 +3,10 @@
 #
 # Moltres waits in the crater until it has been fought (FLAG_FOUGHT_MOLTRES), as Zapdos in the Power Plant: beaten or
 # caught it is gone for good, run from it flies off and is back on the next visit.
+#
+# Its meeting is plan 29's beat (style guide, "Legendary scenes"): the bars, the camera to the crater, a burst of fire
+# with the picture shaken and the heat's ripple after it, the cry and a line, and then the battle's own way in (plan
+# 09 · L14's Legendary).
 
 
 script OnEnter
@@ -10,20 +14,31 @@ script OnEnter
   end
 
 script Moltres
-  scene "Moltres"
   speaker none
+  scene "Moltres at Mt Ember"
+  music stop
+  letterbox on 0.4
+  camera pan 9 6 1.2
+  camera zoom 1.4 0.8
+  effect burst 9 6
+  camera shake 0.6
+  wait 0.4
+  effect ripple 9 6
+  wait 0.8
   cry "Moltres"
+  emote player exclaim
   text "Gyaoo!\nFlames swirled round the great bird as it spread its wings!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
   wildbattle "Moltres" 50
   if result == 2 goto Fled
   setflag FLAG_FOUGHT_MOLTRES
   setflag FLAG_HIDE_MOLTRES
   hide self
-  endscene
   end
 label Fled
   setflag FLAG_HIDE_MOLTRES
   hide self
   text "Moltres flew off over the crater's rim!"
-  endscene
   end

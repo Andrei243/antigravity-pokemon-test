@@ -7463,11 +7463,24 @@ from Ho-Oh at 15,16 of BellTower_Roof
 way 0
   > Ho-Oh spreads its burning wings!
   > Ho-Oh rose into the sky in a trail of rainbow light and was gone...
+  * scene bell_tower_roof.Ho-Oh on the Bell Tower
+  * music stop
+  * letterbox on
+  * camera Pan 15 16
+  * camera Zoom 1.4
+  * effect Burst 15 16
+  * effect Ripple 15 16
   * cry Ho-Oh
+  * camera Shake
+  * camera Release
+  * letterbox off
+  * endscene
   * wildbattle Ho-Oh 45 nofleeing Won
   + FLAG_HIDE_BELL_TOWER_HO_OH
+  + seen bell_tower_roof.Ho-Oh on the Bell Tower
 way 1, from answer 1
   * wildbattle Ho-Oh 45 nofleeing Lost
+  + seen bell_tower_roof.Ho-Oh on the Bell Tower
 === birth_island_exterior.Deoxys
 from Deoxys at 15,3 of BirthIsland_Exterior
 way -
@@ -7657,14 +7670,32 @@ way -
   Eusine> I'm Eusine. I've spent years tracking Suicune. Now that it's awake, it'll roam all over Johto.
   Eusine> Lucas, was it? I'll catch up with Suicune one day. Until then, farewell!
   * scene burned_tower_b1f.The three beasts wake
+  * letterbox on
+  * camera Pan 15 15
+  * camera Zoom 1.4
   * cry Raikou
   * cry Entei
   * cry Suicune
   * emote player Exclaim
+  * camera Pan 14 14
+  * effect Burst 14 14
+  * camera Shake
+  * effect Burst 14 14
+  * camera Shake
   * flicker Raikou 4
+  * effect Shadow 14 14 Left
+  * camera Pan 16 14
+  * effect Burst 16 14
+  * camera Shake
   * flicker Entei 4
+  * effect Shadow 16 14 Up
+  * camera Pan 15 16
   * cry Suicune
+  * effect Sparkles 15 16
   * flicker Suicune 4
+  * effect Shadow 15 16 Right
+  * camera Release
+  * letterbox off
   * sound stairs
   * sound stairs
   * endscene
@@ -8560,16 +8591,27 @@ way 1, from answer 1
 from Mewtwo at 7,12 of CeruleanCave_B1F
 way 0
   > Myuu...\nA cold, sharp will pressed against Lucas's mind!
-  * scene cerulean_cave_b1f.Mewtwo
+  * scene cerulean_cave_b1f.Mewtwo in Cerulean Cave
+  * music stop
+  * letterbox on
+  * camera Pan 7 12
+  * camera Zoom 1.8
+  * effect Sparkles 7 12
+  * effect Ripple 7 12
+  * flicker Mewtwo 4
   * cry Mewtwo
-  * wildbattle Mewtwo 70 Won
+  * camera Shake
+  * emote player Exclaim
+  * camera Release
+  * letterbox off
   * endscene
+  * wildbattle Mewtwo 70 Won
   + FLAG_FOUGHT_MEWTWO
   + FLAG_HIDE_MEWTWO
-  + seen cerulean_cave_b1f.Mewtwo
+  + seen cerulean_cave_b1f.Mewtwo in Cerulean Cave
 way 1, from answer 1
   * wildbattle Mewtwo 70 Lost
-  * scene over, unseen
+  + seen cerulean_cave_b1f.Mewtwo in Cerulean Cave
 === cerulean_city.Grunt
 from Grunt at 297,46 of Kanto
 way 0
@@ -8969,9 +9011,17 @@ way 0
   Eusine> I'll keep searching. Suicune won't be far. Next time, I'll be the one it waits for!
   * scene cianwood.Suicune and Eusine in Cianwood
   * emote player Exclaim
+  * letterbox on
+  * camera Pan 174 330
+  * camera Zoom 1.4
   * cry Suicune
+  * effect Sparkles 174 330
   * walk Suicune onspot up onspot up
   * sound ledge
+  * effect Shadow 174 329 Up
+  * camera Path 174 326 174 322 at 5
+  * camera Release
+  * letterbox off
   * music johto/eye_mystery
   * battle johto_mystery_man_eusine Won
   * music area
@@ -19805,17 +19855,27 @@ way 1, from answer 1
 === mount_silver_cave_moltres_chamber.Moltres
 from Moltres at 10,9 of MtSilverCave_MoltresChamber
 way 0
-  > Gyaoo!\nThe chamber blazed as Moltres spread its wings of fire!
-  * scene mount_silver_cave_moltres_chamber.Moltres
+  > The chamber blazed as Moltres spread its wings of fire!
+  * scene mount_silver_cave_moltres_chamber.Moltres in Mt Silver
+  * music stop
+  * letterbox on
+  * camera Pan 10 9
+  * camera Zoom 1.4
+  * effect Burst 10 9
+  * effect Ripple 10 9
   * cry Moltres
-  * wildbattle Moltres 50 Won
+  * camera Shake
+  * emote player Exclaim
+  * camera Release
+  * letterbox off
   * endscene
+  * wildbattle Moltres 50 Won
   + FLAG_HIDE_MT_SILVER_CAVE_MOLTRES
   + FLAG_JOHTO_FOUGHT_MOLTRES
-  + seen mount_silver_cave_moltres_chamber.Moltres
+  + seen mount_silver_cave_moltres_chamber.Moltres in Mt Silver
 way 1, from answer 1
   * wildbattle Moltres 50 Lost
-  * scene over, unseen
+  + seen mount_silver_cave_moltres_chamber.Moltres in Mt Silver
 === mount_silver_cave_summit.Red
 from Red at 30,11 of MtSilverCave_Summit
 way 0
@@ -20009,16 +20069,26 @@ way -
 from Moltres at 9,6 of MtEmber_Summit
 way 0
   > Gyaoo!\nFlames swirled round the great bird as it spread its wings!
-  * scene mt_ember_summit.Moltres
+  * scene mt_ember_summit.Moltres at Mt Ember
+  * music stop
+  * letterbox on
+  * camera Pan 9 6
+  * camera Zoom 1.4
+  * effect Burst 9 6
+  * camera Shake
+  * effect Ripple 9 6
   * cry Moltres
-  * wildbattle Moltres 50 Won
+  * emote player Exclaim
+  * camera Release
+  * letterbox off
   * endscene
+  * wildbattle Moltres 50 Won
   + FLAG_FOUGHT_MOLTRES
   + FLAG_HIDE_MOLTRES
-  + seen mt_ember_summit.Moltres
+  + seen mt_ember_summit.Moltres at Mt Ember
 way 1, from answer 1
   * wildbattle Moltres 50 Lost
-  * scene over, unseen
+  + seen mt_ember_summit.Moltres at Mt Ember
 === mt_moon_b2f.DomeFossil
 from Dome Fossil at 13,7 of MtMoon_B2F
 way -
@@ -22078,16 +22148,27 @@ way 1, from answer 1
 from Zapdos at 5,11 of PowerPlant
 way 0
   > Gyaaah!\nSparks crackled through the air round the great bird!
-  * scene power_plant.Zapdos
+  * scene power_plant.Zapdos at the Power Plant
+  * music stop
+  * letterbox on
+  * camera Pan 5 11
+  * camera Zoom 1.4
+  * effect Burst 5 11
+  * camera Shake
+  * effect Burst 5 11
+  * camera Shake
   * cry Zapdos
-  * wildbattle Zapdos 50 Won
+  * emote player Exclaim
+  * camera Release
+  * letterbox off
   * endscene
+  * wildbattle Zapdos 50 Won
   + FLAG_FOUGHT_ZAPDOS
   + FLAG_HIDE_ZAPDOS
-  + seen power_plant.Zapdos
+  + seen power_plant.Zapdos at the Power Plant
 way 1, from answer 1
   * wildbattle Zapdos 50 Lost
-  * scene over, unseen
+  + seen power_plant.Zapdos at the Power Plant
 === pwt.PlasmaAtThePier
 from the trigger at 196,476 of Unova
 way -
@@ -25629,16 +25710,26 @@ way -
 from Articuno at 9,2 of SeafoamIslands_B4F
 way 0
   > Kyaaah!\nThe air turned bitterly cold as the great bird spread its wings!
-  * scene seafoam_islands_b4f.Articuno
+  * scene seafoam_islands_b4f.Articuno at the Seafoam Islands
+  * music stop
+  * letterbox on
+  * camera Pan 9 2
+  * camera Zoom 1.4
+  * effect Sparkles 9 2
+  * effect Ripple 9 2
   * cry Articuno
-  * wildbattle Articuno 50 Won
+  * camera Shake
+  * emote player Exclaim
+  * camera Release
+  * letterbox off
   * endscene
+  * wildbattle Articuno 50 Won
   + FLAG_FOUGHT_ARTICUNO
   + FLAG_HIDE_ARTICUNO
-  + seen seafoam_islands_b4f.Articuno
+  + seen seafoam_islands_b4f.Articuno at the Seafoam Islands
 way 1, from answer 1
   * wildbattle Articuno 50 Lost
-  * scene over, unseen
+  + seen seafoam_islands_b4f.Articuno at the Seafoam Islands
 === seafoam_islands_cinnabar_gym.Blaine
 from Blaine at 13,12 of Seafoam_Gym
 way 0
@@ -29856,8 +29947,23 @@ from Lugia at 16,17 of WhirlIslands_LugiaCave
 way 0
   > The Silver Wing glows, and the great bird of the sea opens its eyes!
   > Lugia slipped beneath the dark water and was gone...
+  * scene whirl_islands_b3f_lugia_cave.Lugia in the Whirl Islands
+  * music stop
+  * letterbox on
+  * camera Pan 16 17
+  * camera Zoom 1.4
+  * effect Sparkles 16 17
+  * effect Ripple 16 17
+  * camera Shake
   * cry Lugia
+  * camera Shake
+  * emote player Exclaim
+  * camera Release
+  * letterbox off
+  * endscene
   * wildbattle Lugia 45 nofleeing Won
   + FLAG_HIDE_WHIRL_ISLAND_LUGIA
+  + seen whirl_islands_b3f_lugia_cave.Lugia in the Whirl Islands
 way 1, from answer 1
   * wildbattle Lugia 45 nofleeing Lost
+  + seen whirl_islands_b3f_lugia_cave.Lugia in the Whirl Islands
