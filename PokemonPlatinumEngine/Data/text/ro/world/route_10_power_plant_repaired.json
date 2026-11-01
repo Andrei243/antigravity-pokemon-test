@@ -6,7 +6,7 @@
           "Manager"
         ],
         "text": [
-          ""
+          "Managerul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "I'm the manager of this plant. Every light in Kanto runs on what our generator makes, so I keep an eye on it day and night."
         ],
         "text": [
-          ""
+          "Sunt managerul centralei. Fiecare bec din Kanto funcționează cu ce produce generatorul nostru, așa că îl țin sub ochi zi și noapte."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Policeman"
         ],
         "text": [
-          ""
+          "Polițistul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "I'm posted here to keep the plant safe. Nobody touches that generator on my watch."
         ],
         "text": [
-          ""
+          "Sunt aici ca să păzesc centrala. Nimeni nu se atinge de generatorul ăla cât sunt eu de pază."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Policeman"
         ],
         "text": [
-          ""
+          "Polițistul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "All quiet at the back of the plant. Just the hum of the machines."
         ],
         "text": [
-          ""
+          "Liniște în spatele centralei. Doar bâzâitul mașinilor."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Engineer"
         ],
         "text": [
-          ""
+          "Inginerul"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "The generator spins day and night. If it ever stopped, the Magnet Train would stop with it."
         ],
         "text": [
-          ""
+          "Generatorul se învârte zi și noapte. Dacă s-ar opri vreodată, s-ar opri și Trenul Magnetic."
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Engineer"
         ],
         "text": [
-          ""
+          "Inginerul"
         ]
       },
       "dialog": {
@@ -86,7 +86,7 @@
           "Electric Pokémon love it here. Some of them wander in from Route 10 just to bask in the hum."
         ],
         "text": [
-          ""
+          "Pokémonilor de tip Electric le place aici. Unii vin de pe Ruta 10 doar ca să se bucure de bâzâit."
         ]
       }
     },
@@ -96,7 +96,7 @@
           "Engineer"
         ],
         "text": [
-          ""
+          "Inginerul"
         ]
       },
       "dialog": {
@@ -104,7 +104,7 @@
           "I check every dial on these panels twice a day. Everything reads fine."
         ],
         "text": [
-          ""
+          "Verific fiecare cadran de pe panourile astea de două ori pe zi. Totul arată bine."
         ]
       }
     },
@@ -114,7 +114,7 @@
           "Engineer"
         ],
         "text": [
-          ""
+          "Inginerul"
         ]
       },
       "dialog": {
@@ -122,7 +122,7 @@
           "There's a radio tower in Lavender Town now. Its music reaches us all the way out here."
         ],
         "text": [
-          ""
+          "Acum e un turn de radio în Orășelul Lavender. Muzica lui ajunge până aici."
         ]
       }
     }

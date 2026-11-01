@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătorul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome to the Gift Corner! Something for someone special?"
         ],
         "text": [
-          ""
+          "Bun venit la Colțul cadourilor! Ceva pentru cineva special?"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiat"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "I'm writing to my friend in Johto. Which mail is nicer, do you think: the hearts or the snow?"
         ],
         "text": [
-          ""
+          "Îi scriu unui prieten din Johto. Care e mai frumoasă, după tine: scrisoarea cu inimi sau cea cu zăpadă?"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbat"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "A Poké Doll is a fine thing to carry. Toss it, and a wild Pokémon forgets all about you."
         ],
         "text": [
-          ""
+          "O Poké Doll e un lucru bun de purtat la tine. Aruncă-o și un Pokémon sălbatic uită complet de tine."
         ]
       }
     }
@@ -61,7 +61,7 @@
         "4F: Gift Corner\nDolls and mail for every occasion."
       ],
       "text": [
-        ""
+        "4F: Colțul cadourilor\nPăpuși și scrisori pentru orice ocazie."
       ]
     }
   }

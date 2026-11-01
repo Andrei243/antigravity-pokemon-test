@@ -6,7 +6,7 @@
           "Nurse"
         ],
         "text": [
-          ""
+          "Asistenta"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "Your Trainer Card shows your name, your money and the Pokémon you've seen. Have a look at it from the menu."
         ],
         "text": [
-          ""
+          "Trainer Card-ul îți arată numele, banii și Pokémonii pe care i-ai văzut. Aruncă o privire în meniu."
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "I'm sorry, the link to other players is closed for now."
         ],
         "text": [
-          ""
+          "Îmi pare rău, legătura cu alți jucători e închisă deocamdată."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "I'm sorry, the link to other players is closed for now."
         ],
         "text": [
-          ""
+          "Îmi pare rău, legătura cu alți jucători e închisă deocamdată."
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbat"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "Janine's Pokémon love to poison their foes. I always carry Antidotes before I visit her Gym."
         ],
         "text": [
-          ""
+          "Pokémonii lui Janine adoră să-și otrăvească adversarii. Port mereu Antidote înainte să vizitez Arena ei."
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeie"
         ]
       },
       "dialog": {
@@ -96,7 +96,7 @@
           "I miss the Safari Zone. You could throw bait at a Rhyhorn and watch it eat. Now the warden's off seeing the world."
         ],
         "text": [
-          ""
+          "Îmi lipsește Safari Zone. Puteai arunca momeală unui Rhyhorn și să-l privești mâncând. Acum paznicul e plecat să vadă lumea."
         ]
       }
     },
@@ -106,7 +106,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fată"
         ]
       },
       "dialog": {
@@ -114,7 +114,7 @@
           "My big sister swims to the Seafoam Islands every summer. I'm still too little."
         ],
         "text": [
-          ""
+          "Sora mea mare înoată în fiecare vară până la Insulele Seafoam. Eu sunt încă prea mică."
         ]
       }
     }

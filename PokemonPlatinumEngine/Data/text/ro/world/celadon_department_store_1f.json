@@ -14,7 +14,7 @@
           "Welcome to the Celadon Department Store! The directory is on the wall behind me. Do enjoy your shopping."
         ],
         "text": [
-          ""
+          "Bun venit la Celadon Department Store! Directorul e pe peretele din spatele meu. Cumpărături plăcute!"
         ]
       }
     },
@@ -50,7 +50,7 @@
           "I've a whole list of things to buy! I'll start at the top floor and work my way down."
         ],
         "text": [
-          ""
+          "Am o listă întreagă de cumpărat! Încep de la ultimul etaj și cobor."
         ]
       }
     }
@@ -61,7 +61,7 @@
         "1F: Service Counter   2F: Trainer's Market\n3F: TM Corner   4F: Gift Corner\n5F: Drugstore   Roof: Rooftop Square"
       ],
       "text": [
-        ""
+        "1F: Ghișeu servicii   2F: Piața Antrenorilor\n3F: Colțul TM   4F: Colțul cadourilor\n5F: Drogherie   Acoperiș: Piața de sus"
       ]
     }
   }

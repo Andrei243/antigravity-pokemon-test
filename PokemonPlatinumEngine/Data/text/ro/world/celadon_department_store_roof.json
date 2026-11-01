@@ -6,7 +6,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbat"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "From up here you can see the whole of Celadon. On a clear day you can see Saffron's tower too."
         ],
         "text": [
-          ""
+          "De aici de sus se vede tot Celadon-ul. Într-o zi senină se vede și turnul din Saffron."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiat"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "My mum bought me a Soda Pop. My Pokémon wanted it more than I did, so I shared!"
         ],
         "text": [
-          ""
+          "Mama mi-a cumpărat un Soda Pop. Pokémonul meu îl voia mai mult decât mine, așa că l-am împărțit!"
         ]
       }
     }
@@ -43,7 +43,7 @@
         "Rooftop Square\nA place to rest your feet."
       ],
       "text": [
-        ""
+        "Piața de sus\nUn loc unde să-ți odihnești picioarele."
       ]
     }
   }

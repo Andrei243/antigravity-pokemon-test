@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătorul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome to the Drugstore! Our vitamins make Pokémon stronger."
         ],
         "text": [
-          ""
+          "Bun venit la Drogherie! Vitaminele noastre fac Pokémonii mai puternici."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătorul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Welcome! Our items give a Pokémon an edge in battle."
         ],
         "text": [
-          ""
+          "Bun venit! Obiectele noastre îi dau unui Pokémon un avantaj în luptă."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Gentleman"
         ],
         "text": [
-          ""
+          "Gentlemanul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Vitamins are dear, but they last. Battle items are cheap, but gone when the battle is."
         ],
         "text": [
-          ""
+          "Vitaminele sunt scumpe, dar țin. Obiectele de luptă sunt ieftine, dar dispar odată cu lupta."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Sailor"
         ],
         "text": [
-          ""
+          "Marinarul"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "My ship docks in Vermilion. Whenever we're in port I come up here for Carbos. Fast Pokémon win at sea!"
         ],
         "text": [
-          ""
+          "Nava mea acostează la Vermilion. Când suntem în port, vin aici după Carbos. Pokémonii rapizi câștigă pe mare!"
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeie"
         ]
       },
       "dialog": {
@@ -86,7 +86,7 @@
           "I give my Pokémon an Iron every birthday. It's become a family tradition."
         ],
         "text": [
-          ""
+          "Îi dau Pokémonului meu un Iron la fiecare zi de naștere. A devenit o tradiție în familie."
         ]
       }
     }
@@ -97,7 +97,7 @@
         "5F: Drugstore\nVitamins and battle items."
       ],
       "text": [
-        ""
+        "5F: Drogherie\nVitamine și obiecte de luptă."
       ]
     }
   }

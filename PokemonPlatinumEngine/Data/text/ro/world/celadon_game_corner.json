@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătorul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome to the Celadon Game Corner! The tables are being changed over to a new game, I'm afraid."
         ],
         "text": [
-          ""
+          "Bun venit la Celadon Game Corner! Mesele se schimbă pe un joc nou, din păcate."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbat"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "This place was a hideout for Team Rocket once, if you can believe it. Now it's just quiet."
         ],
         "text": [
-          ""
+          "Locul ăsta a fost cândva ascunzătoarea Team Rocket, dacă îți vine să crezi. Acum e doar liniște."
         ]
       }
     }
@@ -43,7 +43,7 @@
         "A game table. Its screen is dark and a cloth has been laid over it."
       ],
       "text": [
-        ""
+        "O masă de joc. Ecranul îi e stins și are un pled aruncat peste ea."
       ]
     },
     "T07SP0101_002+1": {
@@ -51,7 +51,7 @@
         "A game table, switched off for now."
       ],
       "text": [
-        ""
+        "O masă de joc, oprită deocamdată."
       ]
     }
   }

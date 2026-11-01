@@ -6,7 +6,7 @@
           "Guide"
         ],
         "text": [
-          ""
+          "Ghidul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "This hall is about trust. A Pokémon runs its best when it knows its Trainer believes in it."
         ],
         "text": [
-          ""
+          "Sala asta e despre încredere. Un Pokémon aleargă cel mai bine când știe că Antrenorul lui crede în el."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Guide"
         ],
         "text": [
-          ""
+          "Ghidul"
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Black Belt"
         ],
         "text": [
-          ""
+          "Centură Neagră"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "I came to study how Pokémon train their bodies. Their footwork in Ring Drop is better than mine!"
         ],
         "text": [
-          ""
+          "Am venit să studiez cum își antrenează Pokémonii corpul. Mișcările lor la Ring Drop sunt mai bune decât ale mele!"
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbat"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "My Dratini isn't strong yet, but its Jump is something else. We'll enter a course soon."
         ],
         "text": [
-          ""
+          "Dratini al meu nu e încă puternic, dar săritura lui e ceva de speță. Vom intra curând într-un traseu."
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Dratini"
         ],
         "text": [
-          ""
+          "Dratini"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "Dratini curls and uncurls, as if practising a jump."
         ],
         "text": [
-          ""
+          "Dratini se încolăcește și se desfășoară, de parcă ar exersa o săritură."
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeie"
         ]
       },
       "dialog": {
@@ -96,7 +96,7 @@
           "Abra teleports away when it's nervous. In here it's calm. I think it likes the quiet."
         ],
         "text": [
-          ""
+          "Abra se teleportează când e emoționat. Aici e calm. Cred că îi place liniștea."
         ]
       }
     },
@@ -106,7 +106,7 @@
           "Abra"
         ],
         "text": [
-          ""
+          "Abra"
         ]
       },
       "dialog": {
@@ -114,7 +114,7 @@
           "Abra is fast asleep... or is it?"
         ],
         "text": [
-          ""
+          "Abra doarme adânc... sau nu?"
         ]
       }
     },
@@ -124,7 +124,7 @@
           "Guide"
         ],
         "text": [
-          ""
+          "Ghidul"
         ]
       }
     }
@@ -135,7 +135,7 @@
         "A row of trophies, one for each course, polished to a shine."
       ],
       "text": [
-        ""
+        "Un rând de trofee, câte unul pentru fiecare traseu, lustruite până strălucesc."
       ]
     },
     "D49R0105_008+1": {
@@ -143,7 +143,7 @@
         "An empty space on the wall, waiting for something a great athlete will one day earn."
       ],
       "text": [
-        ""
+        "Un loc gol pe perete, care așteaptă ceva ce un mare atlet va câștiga într-o zi."
       ]
     },
     "D49R0105_009+1": {
@@ -151,7 +151,7 @@
         "An empty space on the wall, waiting for something a great athlete will one day earn."
       ],
       "text": [
-        ""
+        "Un loc gol pe perete, care așteaptă ceva ce un mare atlet va câștiga într-o zi."
       ]
     },
     "D49R0105_010+1": {
@@ -159,7 +159,7 @@
         "Pictures of Trainers and Pokémon after a course, tired and smiling."
       ],
       "text": [
-        ""
+        "Poze cu Antrenori și Pokémoni după un traseu, obosiți și zâmbitori."
       ]
     },
     "D49R0105_013+1": {
@@ -167,7 +167,7 @@
         "A display case of worn-out running shoes from the dome's first season."
       ],
       "text": [
-        ""
+        "O vitrină cu adidași tociți din primul sezon al domului."
       ]
     }
   }

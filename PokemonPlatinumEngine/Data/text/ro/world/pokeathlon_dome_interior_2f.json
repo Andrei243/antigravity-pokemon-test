@@ -6,7 +6,7 @@
           "Coach"
         ],
         "text": [
-          ""
+          "Antrenorul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Every Pokémon has five Pokéathlon stats: Speed, Power, Skill, Stamina and Jump. Pick a team whose stars cover each other!"
         ],
         "text": [
-          ""
+          "Fiecare Pokémon are cinci statistici Pokéathlon: Viteză, Forță, Îndemânare, Rezistență și Săritură. Alege o echipă ale cărei stele se completează!"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbat"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "I come every weekend. The roar when a Pokémon clears the last hurdle never gets old."
         ],
         "text": [
-          ""
+          "Vin în fiecare weekend. Urletul mulțimii când un Pokémon trece ultima barieră nu se învechește niciodată."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiat"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "My Rattata wants to be down there so badly. One day we'll enter a course together!"
         ],
         "text": [
-          ""
+          "Rattata al meu vrea atât de mult să fie acolo jos. Într-o zi vom intra împreună într-un traseu!"
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Rattata"
         ],
         "text": [
-          ""
+          "Rattata"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "Rattata is squeaking at the arena. It wants to run!"
         ],
         "text": [
-          ""
+          "Rattata piuie spre arenă. Vrea să alerge!"
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fată"
         ]
       },
       "dialog": {
@@ -86,7 +86,7 @@
           "Butterfree and I always sit here. You can see every event from these seats."
         ],
         "text": [
-          ""
+          "Eu și Butterfree stăm mereu aici. Se vede fiecare probă de pe locurile astea."
         ]
       }
     },
@@ -96,7 +96,7 @@
           "Butterfree"
         ],
         "text": [
-          ""
+          "Butterfree"
         ]
       },
       "dialog": {
@@ -104,7 +104,7 @@
           "Butterfree flutters its wings in time with the cheering."
         ],
         "text": [
-          ""
+          "Butterfree își flutură aripile în ritmul aclamațiilor."
         ]
       }
     },
@@ -114,7 +114,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeie"
         ]
       },
       "dialog": {
@@ -122,7 +122,7 @@
           "Machop, sit down! You'll block the view for everybody behind us."
         ],
         "text": [
-          ""
+          "Machop, așază-te! Le blochezi vederea tuturor celor din spatele nostru."
         ]
       }
     },
@@ -132,7 +132,7 @@
           "Machop"
         ],
         "text": [
-          ""
+          "Machop"
         ]
       },
       "dialog": {
@@ -140,7 +140,7 @@
           "Machop is shadow-boxing at the edge of the stands."
         ],
         "text": [
-          ""
+          "Machop se luptă cu umbra la marginea tribunelor."
         ]
       }
     },
@@ -150,7 +150,7 @@
           "Lady"
         ],
         "text": [
-          ""
+          "Doamna"
         ]
       },
       "dialog": {
@@ -158,7 +158,7 @@
           "My grandchildren dragged me here. Now I'm the loudest one in the row!"
         ],
         "text": [
-          ""
+          "Nepoții m-au târât aici. Acum sunt cea mai gălăgioasă din rând!"
         ]
       }
     },
@@ -168,7 +168,7 @@
           "Little Girl"
         ],
         "text": [
-          ""
+          "Fetiță"
         ]
       },
       "dialog": {
@@ -176,7 +176,7 @@
           "Go, go, go! ...Who are we cheering for? Everybody!"
         ],
         "text": [
-          ""
+          "Hai, hai, hai! ...Pe cine aclamăm? Pe toți!"
         ]
       }
     },
@@ -186,7 +186,7 @@
           "Little Girl"
         ],
         "text": [
-          ""
+          "Fetiță"
         ]
       },
       "dialog": {
@@ -194,7 +194,7 @@
           "When I'm big I'll win a gold medal. My sister says so."
         ],
         "text": [
-          ""
+          "Când o să fiu mare, o să câștig o medalie de aur. Așa zice sora mea."
         ]
       }
     },
@@ -204,7 +204,7 @@
           "Old Woman"
         ],
         "text": [
-          ""
+          "Bătrâna"
         ]
       },
       "dialog": {
@@ -212,7 +212,7 @@
           "We used to watch battles together. Now we watch races. Both make my heart pound."
         ],
         "text": [
-          ""
+          "Obișnuiam să ne uităm împreună la lupte. Acum ne uităm la curse. Amândouă îmi fac inima să bată tare."
         ]
       }
     },
@@ -222,7 +222,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrân"
         ]
       },
       "dialog": {
@@ -230,7 +230,7 @@
           "Ho ho! That little one jumped higher than a Pokémon three times its size."
         ],
         "text": [
-          ""
+          "Ho ho! Cel mic a sărit mai sus decât un Pokémon de trei ori mai mare."
         ]
       }
     },
@@ -240,7 +240,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiat"
         ]
       },
       "dialog": {
@@ -248,7 +248,7 @@
           "I keep a notebook of every course's best score. Somebody's going to beat them all one day."
         ],
         "text": [
-          ""
+          "Țin un carnet cu cel mai bun scor al fiecărui traseu. Într-o zi cineva le va bate pe toate."
         ]
       }
     },
@@ -258,7 +258,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbat"
         ]
       },
       "dialog": {
@@ -266,7 +266,7 @@
           "My son wants to enter next year. I'm here to learn the rules before he does."
         ],
         "text": [
-          ""
+          "Fiul meu vrea să intre anul viitor. Eu sunt aici să învăț regulile înaintea lui."
         ]
       }
     },
@@ -276,7 +276,7 @@
           "Little Boy"
         ],
         "text": [
-          ""
+          "Băiețel"
         ]
       },
       "dialog": {
@@ -284,7 +284,7 @@
           "Daddy, which one is winning? The round one? I like the round one."
         ],
         "text": [
-          ""
+          "Tati, care câștigă? Cel rotund? Mie îmi place cel rotund."
         ]
       }
     },
@@ -294,7 +294,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbat"
         ]
       },
       "dialog": {
@@ -302,7 +302,7 @@
           "A Pokémon's friendship doesn't show in its stats, but you can see it in how it runs."
         ],
         "text": [
-          ""
+          "Prietenia unui Pokémon nu se vede în statistici, dar se vede în felul în care aleargă."
         ]
       }
     }

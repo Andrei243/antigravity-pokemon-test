@@ -6,7 +6,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome to Silph Co. We make Poké Balls, Potions and much else besides. The offices upstairs are for staff only."
         ],
         "text": [
-          ""
+          "Bun venit la Silph Co. Producem Poké Ball-uri, Potion-uri și multe altele. Birourile de la etaj sunt doar pentru personal."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Guard"
         ],
         "text": [
-          ""
+          "Paznicul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "That lift goes up to the research floors. Only staff may ride it, I'm afraid."
         ],
         "text": [
-          ""
+          "Liftul ăla urcă la etajele de cercetare. Doar personalul îl poate folosi, mă tem."
         ]
       }
     }
@@ -43,7 +43,7 @@
         "Lift\nStaff only beyond this point."
       ],
       "text": [
-        ""
+        "Liftul\nDoar pentru personal dincolo de acest punct."
       ]
     }
   }

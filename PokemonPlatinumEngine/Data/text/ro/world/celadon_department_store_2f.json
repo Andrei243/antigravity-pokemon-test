@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătorul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bun venit! Cu ce vă pot ajuta?"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătorul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bun venit! Cu ce vă pot ajuta?"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbat"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "I stock up on Revives before every long trip. You never know what's waiting in a cave."
         ],
         "text": [
-          ""
+          "Fac stoc de Revive înainte de fiecare drum lung. Nu știi niciodată ce te așteaptă într-o peșteră."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiat"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "My big brother says Ultra Balls are the best. I'm saving up for one!"
         ],
         "text": [
-          ""
+          "Fratele meu mare zice că Ultra Ball-urile sunt cele mai bune. Strâng bani pentru una!"
         ]
       }
     }
@@ -79,7 +79,7 @@
         "2F: Trainer's Market\nMedicine and Poké Balls."
       ],
       "text": [
-        ""
+        "2F: Piața Antrenorilor\nMedicamente și Poké Ball-uri."
       ]
     }
   }

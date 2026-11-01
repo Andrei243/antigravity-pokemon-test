@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătorul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome to the TM Corner! Which would you like?"
         ],
         "text": [
-          ""
+          "Bun venit la Colțul TM! Pe care îl doriți?"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiat"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Shh! I'm about to beat my best score. Don't make me look up!"
         ],
         "text": [
-          ""
+          "Șșt! Sunt pe cale să-mi bat recordul. Nu mă face să ridic privirea!"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiat"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "We come here after school to try the new games. The staff don't seem to mind."
         ],
         "text": [
-          ""
+          "Venim aici după școală să încercăm jocurile noi. Personalului nu pare să-i pese."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiat"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "A TM can be used again and again now. I'm going to teach Protect to my whole team!"
         ],
         "text": [
-          ""
+          "Un TM poate fi folosit iar și iar acum. O să-i învăț Protect întregii mele echipe!"
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbat"
         ]
       },
       "dialog": {
@@ -86,7 +86,7 @@
           "Sunny Day and Rain Dance change a whole battle. Choose your weather and build round it."
         ],
         "text": [
-          ""
+          "Sunny Day și Rain Dance schimbă o luptă întreagă. Alege-ți vremea și construiește totul în jurul ei."
         ]
       }
     }
@@ -97,7 +97,7 @@
         "3F: TM Corner\nMoves to teach, as often as you like."
       ],
       "text": [
-        ""
+        "3F: Colțul TM\nAtacuri de învățat, de câte ori vrei."
       ]
     }
   }

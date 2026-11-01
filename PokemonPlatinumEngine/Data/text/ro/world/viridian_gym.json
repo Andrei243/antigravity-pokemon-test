@@ -6,7 +6,7 @@
           "Blue"
         ],
         "text": [
-          ""
+          "Blue"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Gym guide"
         ],
         "text": [
-          ""
+          "Ghidul Arenei"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Arabella"
         ],
         "text": [
-          ""
+          "Arabella"
         ]
       },
       "before": {
@@ -34,7 +34,7 @@
           "Ace Trainer Arabella: Blue picked every one of us himself. Show me why you're here!"
         ],
         "text": [
-          ""
+          "Antrenoarea As Arabella: Blue ne-a ales personal pe fiecare. Arată-mi de ce ești aici!"
         ]
       },
       "after": {
@@ -42,7 +42,7 @@
           "Ace Trainer Arabella: I see why, now."
         ],
         "text": [
-          ""
+          "Antrenoarea As Arabella: Acum văd de ce."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Bonita"
         ],
         "text": [
-          ""
+          "Bonita"
         ]
       },
       "before": {
@@ -60,7 +60,7 @@
           "Ace Trainer Bonita: Blue never gives up a lead. Neither do I!"
         ],
         "text": [
-          ""
+          "Antrenoarea As Bonita: Blue nu renunță niciodată la un avantaj. Nici eu!"
         ]
       },
       "after": {
@@ -68,7 +68,7 @@
           "Ace Trainer Bonita: Well, I gave that one up."
         ],
         "text": [
-          ""
+          "Antrenoarea As Bonita: Ei bine, la ăsta am renunțat."
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Salma"
         ],
         "text": [
-          ""
+          "Salma"
         ]
       },
       "before": {
@@ -86,7 +86,7 @@
           "Ace Trainer Salma: You've come all this way for the last Badge? Then you'll have to earn it!"
         ],
         "text": [
-          ""
+          "Antrenoarea As Salma: Ai venit până aici pentru ultimul Badge? Atunci trebuie să-l câștigi!"
         ]
       },
       "after": {
@@ -94,7 +94,7 @@
           "Ace Trainer Salma: You earned that much, at least."
         ],
         "text": [
-          ""
+          "Antrenoarea As Salma: Măcar atât ți-ai câștigat."
         ]
       }
     },
@@ -104,7 +104,7 @@
           "Ida"
         ],
         "text": [
-          ""
+          "Ida"
         ]
       },
       "before": {
@@ -112,7 +112,7 @@
           "Double Team Ida: Two of us guard the way to Blue. Can you handle both?"
         ],
         "text": [
-          ""
+          "Echipa dublă Ida: Doi dintre noi păzesc drumul spre Blue. Te descurci cu amândoi?"
         ]
       },
       "after": {
@@ -120,7 +120,7 @@
           "Double Team Ida: Both of us, beaten at once."
         ],
         "text": [
-          ""
+          "Echipa dublă Ida: Amândoi, învinși deodată."
         ]
       }
     },
@@ -130,7 +130,7 @@
           "Elan"
         ],
         "text": [
-          ""
+          "Elan"
         ]
       },
       "before": {
@@ -138,7 +138,7 @@
           "Double Team Elan: We train side by side every day. Ready?"
         ],
         "text": [
-          ""
+          "Echipa dublă Elan: Ne antrenăm unul lângă altul în fiecare zi. Gata?"
         ]
       },
       "after": {
@@ -146,7 +146,7 @@
           "Double Team Elan: We'll train harder, side by side."
         ],
         "text": [
-          ""
+          "Echipa dublă Elan: Ne vom antrena mai tare, unul lângă altul."
         ]
       }
     }

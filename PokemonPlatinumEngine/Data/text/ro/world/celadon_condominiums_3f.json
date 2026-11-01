@@ -6,7 +6,7 @@
           "Programmer"
         ],
         "text": [
-          ""
+          "Programatorul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "I'm testing the new battle screens. Every move has to land at exactly the right moment!"
         ],
         "text": [
-          ""
+          "Testez noile ecrane de luptă. Fiecare atac trebuie să lovească exact la momentul potrivit!"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Artist"
         ],
         "text": [
-          ""
+          "Artistul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "I draw the towns. I walk through every one of them first, to get the feel of the place."
         ],
         "text": [
-          ""
+          "Eu desenez orașele. Mă plimb întâi prin fiecare, ca să simt locul."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Composer"
         ],
         "text": [
-          ""
+          "Compozitorul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Each route has a song of its own. The trick is a tune you can hear a hundred times and still hum."
         ],
         "text": [
-          ""
+          "Fiecare rută are cântecul ei. Secretul e o melodie pe care o poți auzi de o sută de ori și tot o fredonezi."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Designer"
         ],
         "text": [
-          ""
+          "Designerul"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "How many kinds of Pokémon are there? Every time I think I've counted them all, someone finds another."
         ],
         "text": [
-          ""
+          "Câte feluri de Pokémon există? De fiecare dată când cred că i-am numărat pe toți, cineva mai găsește unul."
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiat"
         ]
       },
       "dialog": {
@@ -86,7 +86,7 @@
           "My dad works here. He says I can test the next game if I finish my homework first."
         ],
         "text": [
-          ""
+          "Tata lucrează aici. Zice că pot testa următorul joc dacă îmi termin întâi temele."
         ]
       }
     },
@@ -96,7 +96,7 @@
           "Director"
         ],
         "text": [
-          ""
+          "Directorul"
         ]
       },
       "dialog": {
@@ -104,7 +104,7 @@
           "Ah, a Trainer! Fill your Pokédex, every page of it. The Pokédex itself knows when you've done it."
         ],
         "text": [
-          ""
+          "A, un Antrenor! Completează-ți Pokédex-ul, fiecare pagină. Pokédex-ul însuși știe când ai terminat."
         ]
       }
     }
@@ -115,7 +115,7 @@
         "A busy office. Please knock quietly."
       ],
       "text": [
-        ""
+        "Un birou aglomerat. Vă rugăm, bateți încet."
       ]
     },
     "T07R0203_007+1": {
@@ -123,7 +123,7 @@
         "A computer. Lines of code scroll past, far too fast to read."
       ],
       "text": [
-        ""
+        "Un calculator. Rânduri de cod defilează mult prea repede ca să le poți citi."
       ]
     },
     "T07R0203_005+1": {
@@ -131,7 +131,7 @@
         "A shelf full of thick binders, each labelled with the name of a town."
       ],
       "text": [
-        ""
+        "Un raft plin de bibliorafturi groase, fiecare etichetat cu numele unui oraș."
       ]
     },
     "T07R0203_006+1": {
@@ -139,7 +139,7 @@
         "Sketches of Pokémon are pinned up in rows. Some of them look brand new."
       ],
       "text": [
-        ""
+        "Schițe de Pokémon sunt prinse pe perete, în rânduri. Unele par proaspete."
       ]
     },
     "T07R0203_013+1": {
@@ -147,7 +147,7 @@
         "A whiteboard with a map of a region nobody has heard of."
       ],
       "text": [
-        ""
+        "O tablă albă cu harta unei regiuni despre care nimeni n-a auzit."
       ]
     }
   }

@@ -6,7 +6,7 @@
           "Guide"
         ],
         "text": [
-          ""
+          "Ghidul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "These four halls tell the story of the Pokéathlon. This first one is about teamwork: three Pokémon, one team."
         ],
         "text": [
-          ""
+          "Cele patru săli spun povestea Pokéathlon-ului. Prima e despre lucrul în echipă: trei Pokémon, o singură echipă."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Guide"
         ],
         "text": [
-          ""
+          "Ghidul"
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbat"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "These medals were won by teams that were nothing special alone. Together they were unbeatable."
         ],
         "text": [
-          ""
+          "Medaliile astea au fost câștigate de echipe care, singure, nu erau nimic deosebit. Împreună au fost de neînvins."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiat"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "Rattata and I are reading every plaque. We want to know how the champions trained!"
         ],
         "text": [
-          ""
+          "Eu și Rattata citim fiecare plăcuță. Vrem să aflăm cum s-au antrenat campionii!"
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Rattata"
         ],
         "text": [
-          ""
+          "Rattata"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "Rattata is staring at the medals, its whiskers twitching."
         ],
         "text": [
-          ""
+          "Rattata se uită la medalii, cu mustățile mișcându-i-se."
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fată"
         ]
       },
       "dialog": {
@@ -96,7 +96,7 @@
           "Zubat can't see the pictures, but it likes the echo in here."
         ],
         "text": [
-          ""
+          "Zubat nu vede pozele, dar îi place ecoul de aici."
         ]
       }
     },
@@ -106,7 +106,7 @@
           "Zubat"
         ],
         "text": [
-          ""
+          "Zubat"
         ]
       },
       "dialog": {
@@ -114,7 +114,7 @@
           "Zubat flaps about happily."
         ],
         "text": [
-          ""
+          "Zubat zboară vesel de colo-colo."
         ]
       }
     },
@@ -124,7 +124,7 @@
           "Guide"
         ],
         "text": [
-          ""
+          "Ghidul"
         ]
       }
     }
@@ -135,7 +135,7 @@
         "Medals won by teams of three, each with a card naming the Pokémon who shared it."
       ],
       "text": [
-        ""
+        "Medalii câștigate de echipe de trei, fiecare cu un card care numește Pokémonii care au împărțit-o."
       ]
     },
     "D49R0104_008+1": {
@@ -143,7 +143,7 @@
         "A wall of pictures: Pokémon of every shape crossing a finish line side by side."
       ],
       "text": [
-        ""
+        "Un perete de poze: Pokémoni de orice formă trecând linia de sosire unul lângă altul."
       ]
     },
     "D49R0104_009+1": {
@@ -151,7 +151,7 @@
         "A scroll: \"A course is never won by one. It is won by three who trust each other.\""
       ],
       "text": [
-        ""
+        "Un sul: „Un traseu nu e câștigat niciodată de unul singur. Este câștigat de trei care au încredere unul în celălalt.”"
       ]
     },
     "D49R0104_010+1": {
@@ -159,7 +159,7 @@
         "A scroll: \"The first course ever run in the dome had three events and only six teams.\""
       ],
       "text": [
-        ""
+        "Un sul: „Primul traseu alergat vreodată în dom a avut trei probe și doar șase echipe.”"
       ]
     },
     "D49R0104_013+1": {
@@ -167,7 +167,7 @@
         "A bench for visitors. Someone left a programme of last week's courses on it."
       ],
       "text": [
-        ""
+        "O bancă pentru vizitatori. Cineva a lăsat pe ea programul traseelor din săptămâna trecută."
       ]
     }
   }
