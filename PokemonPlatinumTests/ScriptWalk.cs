@@ -370,6 +370,10 @@ internal sealed class ScriptWalk
                         while (host.Party.Count < c.Number) host.Party.Add(new Pokemon(PokemonDatabase.Get("Bidoof")!, 5, new Random(host.Party.Count)));
                     });
                     break;
+                // The hour: a scene kept for the night (plan 29 · LS2: Rotom's television after dark)
+                case Query.Time:
+                    Add($"the time {c.Name}", host => host.TimeOfDay = Enum.Parse<PokemonPlatinumEngine.Core.TimeOfDay>(c.Name));
+                    break;
                 case Query.Facing:
                     Add($"facing {c.Name}", host => host.PlayerFacing = Enum.Parse<Direction>(c.Name));
                     break;

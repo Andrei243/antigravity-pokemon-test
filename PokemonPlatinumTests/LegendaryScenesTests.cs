@@ -18,14 +18,6 @@ public class LegendaryScenesTests
     /// </summary>
     private static readonly Dictionary<string, string> StillBare = new()
     {
-        // Sinnoh's lakes, Heatran and Regigigas
-        ["acuity_cavern.Uxie Uxie"] = "LS2",
-        ["valor_cavern.Azelf Azelf"] = "LS2",
-        ["stark_mountain_room_3.Heatran Heatran"] = "LS2",
-        ["snowpoint_temple_b5f.Regigigas Regigigas"] = "LS2",
-        // The room's Arrival has its cry, shake and ripple, but its camera never leaves the player before the battle
-        // (its pans are Cynthia's, after it): LS1 found it, LS2 owes its look
-        ["distortion_world_giratina_room.Giratina Giratina-Origin"] = "LS2",
         // Unova's legends after the League
         ["unova_route_13.Cobalion Cobalion"] = "LS8",
         ["unova_route_11.Virizion Virizion"] = "LS8",

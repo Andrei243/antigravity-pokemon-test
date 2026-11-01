@@ -13,7 +13,9 @@
 # It battles whoever speaks to it, at level 50, and the battle may be run from. Lost, the player wakes in a Pokémon
 # Center and Azelf waits here still. Caught, it is gone for good (FLAG_CAUGHT_AZELF). Knocked out or run from, it is
 # gone into the cavern (the original hides it as the cavern loads again after the battle) until the Hall of Fame is
-# next entered, whose script brings it back while it hasn't been caught (PokemonLeagueHallOfFame.txt).
+# next entered, whose script brings it back while it hasn't been caught (PokemonLeagueHallOfFame.txt). Its meeting is
+# plan 29's beat (style guide, "Legendary scenes"): the bars, the camera to Azelf, sparkles and the air wavering, its
+# cry, a line, and then the battle's own way in (plan 09 · L14's Legendary).
 
 
 # ValorCavern_OnTransition
@@ -24,9 +26,22 @@ script OnEnter
 
 # ValorCavern_Azelf
 script Azelf
+  scene "Azelf in Valor Cavern"
+  music stop
+  face player azelf
+  letterbox on 0.4
+  camera pan 16 14 1.2
+  camera zoom 1.4 0.8
+  effect sparkles 16 14
+  wait 0.6
+  effect ripple 16 14
   cry "Azelf"
+  emote player exclaim
   speaker none
-  say "Kyuuoh..."
+  say "Azelf darts once round {player} and stops dead before them, its eyes blazing with will!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
   wildbattle "Azelf" 50
   setflag FLAG_HIDE_VALOR_CAVERN_AZELF
   hide azelf

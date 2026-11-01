@@ -7,6 +7,9 @@
 # Caught, it is gone for good (FLAG_CAUGHT_UXIE). Knocked out or run from, it is gone into the cavern (the original
 # hides it as the cavern loads again after the battle) until the Hall of Fame is next entered, whose script brings it
 # back while it hasn't been caught (PokemonLeagueHallOfFame.txt).
+#
+# Its meeting is plan 29's beat (style guide, "Legendary scenes"): the bars, the camera to Uxie, sparkles and the
+# air wavering round it, its cry, a line, and then the battle's own way in (plan 09 · L14's Legendary).
 
 
 # AcuityCavern_OnTransition
@@ -17,9 +20,22 @@ script OnEnter
 
 # AcuityCavern_Uxie
 script Uxie
+  scene "Uxie in Acuity Cavern"
+  music stop
+  face player uxie
+  letterbox on 0.4
+  camera pan 14 10 1.2
+  camera zoom 1.4 0.8
+  effect sparkles 14 10
+  wait 0.6
+  effect ripple 14 10
   cry "Uxie"
+  emote player exclaim
   speaker none
-  say "Kyuuuhn!"
+  say "Uxie's eyes stay shut, yet {player} feels it looking straight through them..."
+  camera release 0.4
+  letterbox off 0.3
+  endscene
   wildbattle "Uxie" 50
   setflag FLAG_HIDE_ACUITY_CAVERN_UXIE
   hide uxie

@@ -12,9 +12,11 @@
 # A Mesprit knocked out is back here once the Hall of Fame is next entered (PokemonLeagueHallOfFame.txt:
 # VAR_ROAMING_MESPRIT_STATE 3): it flies off again, and that time the professor doesn't come.
 #
-# Its flicker is the script's own, as the original's is (it takes Mesprit off the map and puts it back by its flag,
-# three times over; no FlickerObject, so plan 09 · L12's flicker has no part in it). Not here: the original shows
-# Mesprit's picture over the field before its cry (DrawPokemonPreview), which no chapter has a screen for yet.
+# Its meeting is plan 29's beat (style guide, "Legendary scenes"): the bars, the camera to Mesprit, sparkles and the
+# air wavering, its cry and a line, and its going a flicker, three times seen and unseen (plan 09 · L12's, where the
+# original takes it off the map and puts it back by its flag). The camera comes home before the professor walks in.
+# Not here: the original shows Mesprit's picture over the field before its cry (DrawPokemonPreview), which no chapter
+# has a screen for yet.
 
 
 # VerityCavern_OnTransition
@@ -26,26 +28,28 @@ script OnEnter
 # VerityCavern_Mesprit
 script Mesprit
   scene "Mesprit"
+  music stop
+  face player mesprit
+  letterbox on 0.4
+  camera pan 12 13 1.2
+  camera zoom 1.4 0.8
+  effect sparkles 12 13
+  wait 0.6
+  effect ripple 12 13
   cry "Mesprit"
+  emote player exclaim
   speaker none
-  say "Kyuoon!"
-  # It flickers three times and is gone (the original takes it off the map and puts it back by its flag)
-  hide mesprit
-  wait 0.25
-  show mesprit
-  wait 0.25
-  hide mesprit
-  wait 0.25
-  show mesprit
-  wait 0.25
-  hide mesprit
-  wait 0.25
-  show mesprit
-  wait 0.25
+  say "Mesprit hangs before {player}, and a warmth like a remembered kindness fills the cave."
+  # It flickers three times and is gone (plan 09 · L12's flicker, where the original takes it off the map and puts
+  # it back by its flag)
+  flicker mesprit 6
   hide mesprit
   setflag FLAG_HIDE_VERITY_CAVERN_MESPRIT
   roamer start "Mesprit"
   say "Mesprit darted round {player} once, and flew off somewhere far away..."
+  camera release 0.4
+  letterbox off 0.3
+  music area
   if var VAR_ROAMING_MESPRIT_STATE == 3 goto Again
   wait 1.0
   # The professor comes up the cave to where the player stands (VerityCavern_EnterProfRowan*)

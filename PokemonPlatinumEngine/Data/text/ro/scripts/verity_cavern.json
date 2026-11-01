@@ -2,9 +2,12 @@
   "Mesprit": [
     {
       "en": [
-        "Kyuoon!"
+        "Mesprit hangs before {player}, and a warmth like a remembered kindness fills the cave."
       ],
       "text": [
+        ""
+      ],
+      "was": [
         "Kyuoon!"
       ]
     },
