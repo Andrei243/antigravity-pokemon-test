@@ -7157,6 +7157,30 @@ a new HM of ours.
   in the Game Corners and their prizes, the Radio Tower and the Expn Card, the Trainer House's battles, the Leaders'
   rematches and street meetings, Steven's visits, Suicune's stops, the rest of Kanto's Apricorn trees.
 
+## Whoever stands behind a counter, and the Seafoam Islands' bridge (2026-11-01, plan 20 · J15, parts k to m's "Known")
+
+- *The rule* (`WorldMapBuilder.BehindTheCounters`, run on every DS game's room once its people are placed): HeartGold
+  and Black 2 block a counter and the ground behind it alike and mark only the counter's rim `Counter`, so a room cut to
+  what its ways reach walled the lot, and the clerk, nurse, receptionist or guard behind it stood inside a block of
+  wall (part k's Celadon clerks and part l's Silph Co. receptionist; a scan found 258 people so, in every Pokémon
+  Center, Mart and gate house of Johto, HeartGold's Kanto and Unova). Now the blocked ground joined to such a person's
+  tile, bounded by the counter, by open floor and by the room's walls (never the back wall's rows, so `Map.RoomCorner`
+  stays where it was, nor the front wall's foot), is floor, still blocked; and the rim beside it, with the rim it runs on
+  into, is a `Counter` prop in lengths, still blocked and still `Counter` underfoot, so the person is spoken to across it
+  as before. Ground that runs on into a mass of wall (more than 30 tiles) is laid only round the person (the Marine
+  Tube's receptionist); someone the original stands on the counter itself (Black 2's gate guards) stands on its back.
+- *Left as they were*: the Day-Care Lady of Route 34, whose ground behind the counter is the room's back wall's rows
+  (laying it would move the back wall), the Pokéathlon Dome's desk clerks (their desk is no wall), and people standing
+  in walls with no counter beside them (the Rocket Hideout's Persian statues, Clair at the Dragon Shrine's altar, a few
+  of Black 2's), which are no counter's business.
+- *Seen* (a scenario of the harness, before and after, and `JOHTO_FROM=kanto`: 30 of its 194 shots moved, every one a
+  room with a counter): the Celadon store's clerks behind their blue counters, Goldenrod's, Silph Co.'s receptionist in
+  her booth, a Pokémon Center's nurse behind hers with the machine at her side, a Mart's clerks, the gate houses' guards,
+  Celadon's restaurant's cook and diners, Unova's Pokémon Center clerks and gate guards.
+- *The Seafoam Islands' B2F bridge*: the ground under a bridge over dry ground is drawn in shade, and a cave took the
+  open country's shade, a dark green, which showed as a strip of lawn under the plank bridge. A cave takes a room's dark
+  shade (`MapScene`), as every cave's bridge over a passage now does.
+
 ## The week siblings and the dome's pieces (2026-10-31, plan 20 · J13, the last part)
 
 | Subject | HeartGold | This game |

@@ -1146,6 +1146,45 @@ public class JohtoTests
     }
 
     [Fact]
+    public void WhoeverStandsBehindACounterStandsOnTheFloorBehindIt()
+    {
+        // Plan 20 · J15: HeartGold blocks a counter and the ground behind it alike, so the clerks of Celadon's store,
+        // Silph Co.'s receptionist and every Mart's, Pokémon Center's and gate's stood inside a block of wall. The ground
+        // behind is floor now, still blocked, and the rim they are spoken across a counter, still a counter
+        foreach (var (map, key) in new[]
+                 {
+                     ("Celadon_DeptStore_1F", "t07r0101_gswoman6"), ("Celadon_DeptStore_2F", "t07r0102_shopm1_2"),
+                     ("Celadon_DeptStore_2F", "t07r0102_shopm1_2_2"), ("Celadon_DeptStore_3F", "t07r0103_shopm1_2"),
+                     ("Celadon_DeptStore_5F", "t07r0105_shopm1_2"), ("Saffron_SilphCo", "t11r0701_gswoman6"),
+                     ("Goldenrod_DeptStore_2F", "t25r1002_shopm1_2"), ("Cherrygrove_PokemonCenter_1F", "t21pc0101_pcwoman1"),
+                     ("Cherrygrove_Mart", "t21fs0101_shopm1_2"), ("Route29_Route46Gate", "r29r0101_counterm"),
+                 })
+        {
+            var room = MapNamed(map);
+            var who = room.Everyone.Single(n => n.Key == key);
+            Assert.True(room.IsSolid(who.GridX, who.GridY), $"{key} in {map} stands on open floor");
+            Assert.Equal(TileType.Floor, room.GetGroundTile(who.GridX, who.GridY));
+            // The counter before them is still a counter to be spoken across, and is drawn as one
+            var (dx, dy) = who.Facing switch { Direction.Up => (0, -1), Direction.Down => (0, 1), Direction.Left => (-1, 0), _ => (1, 0) };
+            Assert.True(room.IsCounter(who.GridX + dx, who.GridY + dy), $"{key} in {map} faces no counter");
+            Assert.True(room.IsSolid(who.GridX + dx, who.GridY + dy));
+            Assert.Contains(room.Props, p => p.Type == PropType.Counter && p.Covers(who.GridX + dx, who.GridY + dy));
+        }
+        // Nobody of Johto's rooms who is spoken to across a counter stands in a block of wall, but the Day-Care Lady,
+        // whose ground behind the counter is the room's back wall's rows
+        var walls = new List<string>();
+        foreach (var room in BuiltMaps.Value.Values.Where(m => m.IsIndoors))
+            foreach (var who in room.Everyone.Where(n => !n.IsThing))
+            {
+                bool counter = new[] { (1, 0), (-1, 0), (0, 1), (0, -1) }.Any(d => room.InBounds(who.GridX + d.Item1, who.GridY + d.Item2)
+                    && room.BehaviourAt(who.GridX + d.Item1, who.GridY + d.Item2) == TileBehavior.Counter);
+                if (counter && room.InBounds(who.GridX, who.GridY) && room.GetGroundTile(who.GridX, who.GridY) == TileType.Wall)
+                    walls.Add($"{room.Name} {who.Key}");
+            }
+        Assert.Equal(new[] { "Route34_DayCare r34r0101_gsoldwoman1" }, walls.Where(w => !w.StartsWith("PokeathlonDome_1F", StringComparison.Ordinal)).ToArray());
+    }
+
+    [Fact]
     public void ADsRoomOfSeveralChunksIsAsLargeAsWhatItsWaysInReach()
     {
         // Plan 20 · J15, part i: the Viridian Gym's matrix is two chunks tall, and its hall nine tiles wide at the chunks'
