@@ -7,5 +7,10 @@
   "trees": "Round",
   "people": {
     "meteor_falls_steven": { "name": "Steven", "npcType": "steven", "script": "Steven", "still": true }
-  }
+  },
+  // Plan 29 · LS11c: Jirachi, a person of ours hovering a tile before Steven's own, shown only by the
+  // night's scene once he has been put back down the passage
+  "npcs": [
+    { "id": "meteor_falls_jirachi", "name": "Jirachi", "npcType": "Pokemon", "species": "Jirachi", "x": 19, "y": 4, "facing": "Down", "level": 0.5, "shownBy": "FLAG_HOENN_SHOW_JIRACHI", "script": "Jirachi" }
+  ]
 }

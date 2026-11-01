@@ -231,6 +231,15 @@ partial class Harness
             case "read":
                 ReadToTheEnd(say);
                 return null;
+            case "next":
+            {
+                var box = game.Dialogue;
+                if (!box.IsActive) return "no line is on the text box";
+                string line = box.CurrentLine;
+                say("  " + line);
+                for (int i = 0; i < 600 && box.IsActive && box.CurrentLine == line && !game.Choice.IsOpen; i++) ReadOneFrame();
+                return null;
+            }
             case "wait":
                 Frames(Math.Max(1, (int)Math.Round(ShotScenario.SecondsOf(a[0])!.Value * 60.0)));
                 return null;

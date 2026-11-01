@@ -1,0 +1,21 @@
+# Plan 29 · LS11c: the humming stone in Steven's cave at night, and Jirachi's beat at its look, sign and voice
+newgame
+time night
+flag HoennHallOfFame on
+flag FLAG_DEFEATED_METEOR_FALLS_STEVEN on
+flag FLAG_RECEIVED_TM_RETURN on
+at MeteorFalls_StevensCave 19 4 up
+talk
+wait 1.2
+shot scn_jirachi_0_steven
+next
+wait 2.8
+shot scn_jirachi_1_look
+wait 1.2
+shot scn_jirachi_2_sign
+wait 2.4
+shot scn_jirachi_3_voice
+read
+wait 3
+shot scn_jirachi_4_battle
+expect state Battle

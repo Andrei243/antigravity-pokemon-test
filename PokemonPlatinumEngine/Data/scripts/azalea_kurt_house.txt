@@ -42,6 +42,11 @@ script Kurt
   endscene
   end
 label Thanked
+  # The GS Ball (plan 29 · LS11b, ours, on Crystal's beat): a Champion of Johto is handed the ball Kurt can't open,
+  # to take to Ilex Forest's shrine (ilex_forest.txt, Shrine). Its lines are at the script's end, so that the lines
+  # before keep their numbers for the translations
+  if flag JohtoHallOfFame goto GsBall
+label Workshop
   # The workshop (plan 20 · J6): one order at a time, every Apricorn of a colour turned into a ball of its kind, ready
   # on the next day (Models/Apricorns.cs)
   apricorn status
@@ -130,6 +135,15 @@ label Ready
   say "There you are, {apricorns} × {ball}, finished today. A fine batch, if I do say so myself."
   text "{apricorns} × {ball} went into the bag."
   say "Bring me more Apricorns whenever you like."
+  end
+label GsBall
+  if flag FLAG_JOHTO_GOT_GS_BALL goto Workshop
+  say "Ah, the new Champion! Just the trainer I hoped to see. Look at this ball, with GS engraved on it."
+  say "It came to me from who knows where. I've tried every tool in the workshop, and it won't open for anything."
+  say "The old folk say the forest's protector rests at the shrine in Ilex Forest. Take it there for me, would you?"
+  give "GS Ball"
+  setflag FLAG_JOHTO_GOT_GS_BALL
+  say "If anything comes of it, you must tell me. I'll be wondering about that ball for the rest of my days!"
   end
 
 

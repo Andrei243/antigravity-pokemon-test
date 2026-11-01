@@ -66,6 +66,8 @@ public sealed class ShotScenario
         new("talk", "talk", 0, 0, _ => null),
         new("answer", "answer <n>", 1, 1, a => DevCommands.Int(a[0], "the answer (0 is the first)", 0, 99)),
         new("read", "read", 0, 0, _ => null),
+        // One line of the text box put away, and no more: a scene's beats shot after the line that starts it (plan 29 · LS11)
+        new("next", "next", 0, 0, _ => null),
         new("wait", "wait <seconds>", 1, 1, a => SecondsOf(a[0]) != null ? null : $"the wait must be a number of seconds from 0 to 600, not '{a[0]}'"),
         new("wild", "wild <species or form> <level>", 2, 2, a => DevCommands.Int(a[1], "the level", 1, 260)),
         new("trainer", "trainer <id>", 1, 1, _ => null),

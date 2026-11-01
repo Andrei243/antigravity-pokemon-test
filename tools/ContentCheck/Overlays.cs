@@ -210,7 +210,14 @@ public static class Overlays
         foreach (var (id, script) in overlay.SignScripts ?? new())
         {
             string name = $"signScripts.{id}";
-            if (!objects.TryGetValue(id, out var o)) Add(Kind.Place, name, $"the area has no sign called '{id}'{Nearest(id)}");
+            // A sign event of the area's own that runs a script (plan 29 · LS11b, Ilex Forest's shrine): its tiles must run it
+            var events = area.Signs.Where(s => s.Type != AreaSign.HiddenItem && s.Script == id).ToList();
+            if (events.Count > 0)
+            {
+                if (map != null && events.Any(s => !map.SignScripts.ContainsKey((s.X, s.Z))))
+                    Add(Kind.Place, name, $"'{id}' is read on a tile that runs no script: its words have no sign of the overlay's");
+            }
+            else if (!objects.TryGetValue(id, out var o)) Add(Kind.Place, name, $"the area has no sign called '{id}'{Nearest(id)}");
             else if (map != null && !map.SignScripts.ContainsKey((o.X, o.Z))) Add(Kind.Place, name, $"'{id}' is no signpost and no mailbox: its script never starts");
             Script(content, found, file, name, script, key, needed: true);
         }

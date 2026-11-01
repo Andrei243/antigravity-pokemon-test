@@ -172,5 +172,65 @@
         "Mulțumesc încă o dată că ai găsit păsările."
       ]
     }
+  ],
+  "Shrine": [
+    {
+      "en": [
+        "Lay the GS Ball before the shrine?"
+      ],
+      "text": [
+        "Așezi Ball-ul GS în fața altarului?"
+      ]
+    },
+    {
+      "en": [
+        "{player} laid the GS Ball before the shrine. The forest went very quiet..."
+      ],
+      "text": [
+        "{player} a așezat Ball-ul GS în fața altarului. Pădurea s-a făcut foarte tăcută..."
+      ]
+    },
+    {
+      "en": [
+        "The GS Ball still lies before the shrine. The forest goes very quiet..."
+      ],
+      "text": [
+        "Ball-ul GS stă încă în fața altarului. Pădurea se face foarte tăcută..."
+      ]
+    },
+    {
+      "en": [
+        "Light spilled from the GS Ball, and a small green Pokémon flickered into the shrine's glow!"
+      ],
+      "text": [
+        "Lumină s-a revărsat din Ball-ul GS, și un mic Pokémon verde a pâlpâit în strălucirea altarului!"
+      ]
+    },
+    {
+      "en": [
+        "Celebi flickered and was gone... The GS Ball still lies before the shrine."
+      ],
+      "text": [
+        "Celebi a pâlpâit și a dispărut... Ball-ul GS stă încă în fața altarului."
+      ]
+    },
+    {
+      "en": [
+        "Celebi faded into the trees, and the GS Ball crumbled into leaves."
+      ],
+      "text": [
+        "Celebi s-a pierdut printre copaci, iar Ball-ul GS s-a fărâmițat în frunze."
+      ]
+    }
+  ],
+  "Celebi": [
+    {
+      "en": [
+        "Celebi hovers before the shrine, its eyes on {player}."
+      ],
+      "text": [
+        "Celebi plutește în fața altarului, cu ochii pe {player}."
+      ]
+    }
   ]
 }

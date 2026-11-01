@@ -29,6 +29,7 @@ public class ShotScenarioTests
             talk
             answer 1
             read
+            next
             wait 0.5
             wild Starly 4
             trainer youngster_tristan
@@ -47,7 +48,7 @@ public class ShotScenarioTests
             flag FLAG_HAS_POKEDEX on
             var VAR_SPAWN_LOCATION 2
             """, File);
-        string[] verbs = { "newgame", "load", "at", "step", "press", "talk", "answer", "read", "wait", "wild", "trainer", "menu", "move", "shot", "shot", "state", "expect",
+        string[] verbs = { "newgame", "load", "at", "step", "press", "talk", "answer", "read", "next", "wait", "wild", "trainer", "menu", "move", "shot", "shot", "state", "expect",
                            "warp", "time", "weather", "give", "pokemon", "heal", "flag", "var" };
         Assert.Equal(verbs, scenario.Steps.Select(s => s.Verb));
         Assert.Equal(2, scenario.Steps[0].Line);

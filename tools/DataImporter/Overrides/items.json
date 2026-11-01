@@ -482,5 +482,18 @@
     "canUseInOverworld": false,
     "description": "A Dynamax Band with a Key Stone set into it. It lets a Mega-Evolved Pokémon Dynamax.",
     "cantBeTossed": true
+  },
+  // Plan 29 · LS11b, our own: the strange ball Kurt can't open, handed over after Johto's Hall of Fame to be laid on Ilex
+  // Forest's shrine, where Celebi comes for it. Its id stands apart from the other event key items of LS11 (9500 and on)
+  "GS Ball": {
+    "id": 9510,
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A mysterious ball with GS engraved on it. Nobody, not even Kurt, can open it.",
+    "cantBeTossed": true
   }
 }

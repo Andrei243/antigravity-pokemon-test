@@ -63,6 +63,72 @@
       "text": [
         "...Ha! Nici eu nu văd atât de departe."
       ]
+    },
+    {
+      "en": [
+        "Prof. Cozmo tells me this stone hums at night, while the comet passes. I mean to stay up and hear it."
+      ],
+      "text": [
+        "Prof. Cozmo îmi spune că piatra asta zumzăie noaptea, cât trece cometa. Vreau să stau treaz s-o aud."
+      ]
+    },
+    {
+      "en": [
+        "Come back after dark, {player}. I'd like you to hear it too."
+      ],
+      "text": [
+        "Întoarce-te după ce se întunecă, {player}. Aș vrea s-o auzi și tu."
+      ]
+    },
+    {
+      "en": [
+        "A Pokémon that wakes once in a thousand years... and you were the one here to meet it. I'm almost jealous."
+      ],
+      "text": [
+        "Un Pokémon care se trezește o dată la o mie de ani... și tu ai fost cel care l-a întâlnit. Aproape că te invidiez."
+      ]
+    },
+    {
+      "en": [
+        "Shh... Do you hear it? The stone is humming, just as Prof. Cozmo said it would."
+      ],
+      "text": [
+        "Șșt... O auzi? Piatra zumzăie, exact cum spunea Prof. Cozmo."
+      ]
+    },
+    {
+      "en": [
+        "The stone's hum rose into a chime, and a small Pokémon blinked awake in its glow!"
+      ],
+      "text": [
+        "Zumzetul pietrei s-a făcut clinchet, și un mic Pokémon a deschis ochii în strălucirea ei!"
+      ]
+    },
+    {
+      "en": [
+        "Jirachi drifted back into the stone's glow, and the humming stopped..."
+      ],
+      "text": [
+        "Jirachi a plutit înapoi în strălucirea pietrei, iar zumzetul s-a oprit..."
+      ]
+    },
+    {
+      "en": [
+        "Steven"
+      ],
+      "text": [
+        "Steven"
+      ]
+    }
+  ],
+  "Jirachi": [
+    {
+      "en": [
+        "Jirachi floats before the humming stone, half asleep."
+      ],
+      "text": [
+        "Jirachi plutește în fața pietrei care zumzăie, pe jumătate adormit."
+      ]
     }
   ]
 }

@@ -10,9 +10,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 |---|---|---|---|---|---|
 | The introduction (`intro:`) | 80 | 80 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1276 | 1236 | 40 | 1 | 0 |
-| Scripts (`script:`) | 9211 | 8781 | 430 | 17 | 0 |
+| Scripts (`script:`) | 9221 | 8791 | 430 | 17 | 0 |
 | People of the world (`world:`) | 6916 | 6857 | 59 | 4 | 0 |
-| **All** | 17483 | 16954 | 529 | 22 | 0 |
+| **All** | 17493 | 16964 | 529 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -23,8 +23,8 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | a Pokémon's cry | 237 |
 | a question's answers | 560 |
 | a sign | 1553 |
-| the game's own voice (speaker none) | 260 |
-| the game's own voice (text) | 1331 |
+| the game's own voice (speaker none) | 261 |
+| the game's own voice (text) | 1340 |
 
 ## The cast
 
@@ -91,8 +91,8 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:old_woman (any)` | 75 | 5 |
 | `look:fisherman (any)` | 73 | 4 |
 | `class:twins (any)` | 72 | 0 |
+| `steven` | 69 | 0 |
 | `class:swimmer (any)` | 68 | 0 |
-| `steven` | 65 | 0 |
 | `class:biker (any)` | 64 | 0 |
 | `class:sailor (any)` | 62 | 0 |
 | `prof_juniper` | 62 | 0 |
@@ -136,6 +136,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `depot_agent` | 36 | 5 |
 | `look:magma_grunt (any)` | 36 | 0 |
 | `iris` | 35 | 0 |
+| `kurt` | 35 | 6 |
 | `look:pokefan_f (any)` | 35 | 0 |
 | `class:veteran (any)` | 34 | 0 |
 | `maylene` | 34 | 1 |
@@ -152,7 +153,6 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:pokefan_m (any)` | 32 | 0 |
 | `norman` | 32 | 0 |
 | `candice` | 31 | 0 |
-| `kurt` | 31 | 6 |
 | `breeder` | 30 | 4 |
 | `class:ace_trainer_m (any)` | 30 | 0 |
 | `class:backpacker (any)` | 30 | 0 |

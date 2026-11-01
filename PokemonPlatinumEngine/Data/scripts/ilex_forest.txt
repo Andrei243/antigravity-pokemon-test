@@ -165,3 +165,74 @@ script Master
   speaker "Charcoal Maker"
   say "Thanks again for finding those birds."
   end
+
+
+# The shrine (plan 29 · LS11b, ours; Crystal's GS Ball on our own beats). Its sign is read as ever, but with Kurt's GS
+# Ball in the bag (azalea_kurt_house.txt, after Johto's Hall of Fame) it may be laid before the shrine
+# (FLAG_JOHTO_GS_BALL_ON_SHRINE), and Celebi comes for it at level 50: plan 29's beat, the grass and woods' row, the
+# bars, the camera to the shrine, sparkles, Celebi shown on the tile before the sign flickering in through time with the
+# camera kept on it, its cry and a line, then the battle's own way in. Caught or beaten it is gone for good
+# (FLAG_JOHTO_CELEBI_MET); run from, the ball stays on the shrine and Celebi comes again at the next reading.
+script Shrine
+  speaker none
+  if flag FLAG_JOHTO_CELEBI_MET goto Plain
+  if flag FLAG_JOHTO_GS_BALL_ON_SHRINE goto Waiting
+  if not item "GS Ball" goto Plain
+  sayown
+  ask "Lay the GS Ball before the shrine?"
+  if no end
+  take "GS Ball"
+  setflag FLAG_JOHTO_GS_BALL_ON_SHRINE
+  text "{player} laid the GS Ball before the shrine. The forest went very quiet..."
+  goto Comes
+label Waiting
+  text "The GS Ball still lies before the shrine. The forest goes very quiet..."
+label Comes
+  scene "Celebi at the Ilex Forest shrine"
+  music stop
+  walk player down 2
+  face player up
+  letterbox on 0.4
+  camera pan 16 55 1.2
+  camera zoom 1.4 0.8
+  effect sparkles 16 55
+  effect sparkles 16 56
+  wait 0.5
+  setflag FLAG_JOHTO_SHOW_ILEX_CELEBI
+  show ilex_forest_celebi
+  camera follow ilex_forest_celebi
+  flicker ilex_forest_celebi 6
+  effect sparkles 16 56
+  cry "Celebi"
+  emote player exclaim
+  speaker none
+  text "Light spilled from the GS Ball, and a small green Pokémon flickered into the shrine's glow!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Celebi" 50
+  hide ilex_forest_celebi
+  clearflag FLAG_JOHTO_SHOW_ILEX_CELEBI
+  if result == 1 goto Gone
+  if result == 3 goto Caught
+  speaker none
+  text "Celebi flickered and was gone... The GS Ball still lies before the shrine."
+  end
+label Gone
+  setflag FLAG_JOHTO_CELEBI_MET
+  speaker none
+  text "Celebi faded into the trees, and the GS Ball crumbled into leaves."
+  end
+label Caught
+  setflag FLAG_JOHTO_CELEBI_MET
+  end
+label Plain
+  sayown
+  end
+
+
+# Celebi looked at before its battle has begun (it is only shown in the scene)
+script Celebi
+  speaker none
+  text "Celebi hovers before the shrine, its eyes on {player}."
+  end

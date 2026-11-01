@@ -2742,6 +2742,9 @@ public static class WorldMapBuilder
                     map.SetGroundTile(s.X, s.Z, TileType.Signpost, isSolid: true);
                 map.Signboards[(s.X, s.Z)] = text;
                 map.SignKeys[(s.X, s.Z)] = s.Script;
+                // A sign event that runs a script of ours, its words still its own (`sayown`): Ilex Forest's shrine,
+                // where the GS Ball is laid (plan 29 · LS11b)
+                if (overlay?.SignScripts?.GetValueOrDefault(s.Script) is { Length: > 0 } runs) map.SignScripts[(s.X, s.Z)] = runs;
             }
         }
 

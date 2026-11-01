@@ -1,0 +1,10 @@
+{
+  // Hand-written (plan 08 · P12's file, Johto's from plan 29 · LS11b), never by the importer: the Pokémon no table
+  // lists, where they are met and how, for the Pokédex's area page beside habitats.json. Cells are chunks of the
+  // overworld, as there; a place that is a map of its own has none, as in habitats.json.
+  "map": [],
+  "areas": [
+    // Plan 29 · LS11b: Celebi, which comes to Ilex Forest's shrine for Kurt's GS Ball after the Hall of Fame
+    { "key": "ilex_forest", "name": "Ilex Forest", "cells": "", "special": [ "Celebi" ], "how": "The shrine, with the GS Ball" }
+  ]
+}
