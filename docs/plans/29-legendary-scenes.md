@@ -190,3 +190,4 @@ Every session: `tools/ContentCheck` first, then the filtered tests of what it to
 
 ### LS11 (added with decision 1): the event legendaries
 Open each event-only species named in decision 1 by a post-game condition of our own (a region's Hall of Fame plus a place-specific step), with a staged scene by the five-beat recipe and the unchanged wildbattle; one proposal per region for the user's approval first. Tests: LegendaryScenesTests covers them.
+The proposals, all four regions with their questions, are [decisions/LS11-proposals-event-legendaries.md](decisions/LS11-proposals-event-legendaries.md) (2026-11-01, waiting for the user's answers).
