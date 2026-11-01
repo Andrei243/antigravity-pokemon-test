@@ -1,0 +1,138 @@
+{
+  "Room1": [
+    {
+      "en": [
+        "{player} put the Room 1 Key in the lock and turned it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The key stuck fast in the lock, but the door swung open."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The door is locked. \"RM. 1\" is painted on it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The door stands open."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Room2": [
+    {
+      "en": [
+        "{player} put the Room 2 Key in the lock and turned it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The key stuck fast in the lock, but the door swung open."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The door is locked. \"RM. 2\" is painted on it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The door stands open."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Room4": [
+    {
+      "en": [
+        "{player} put the Room 4 Key in the lock and turned it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The key stuck fast in the lock, but the door swung open."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The door is locked. \"RM. 4\" is painted on it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The door stands open."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Room6": [
+    {
+      "en": [
+        "{player} put the Room 6 Key in the lock and turned it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The key stuck fast in the lock, but the door swung open."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The door is locked. \"RM. 6\" is painted on it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The door stands open."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

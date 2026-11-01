@@ -1,0 +1,35 @@
+{
+  "key": "abandoned_ship_corridors_b1f",
+  "index": 295,
+  "name": "Abandoned Ship",
+  "matrix": 244,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Cloudy",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ABANDONED_SHIP",
+  "nightMusic": "MUS_ABANDONED_SHIP",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 4, "to": "abandoned_ship_rooms_2_b1f", "toWarp": 2 },
+    { "x": 3, "z": 4, "to": "abandoned_ship_rooms_2_b1f", "toWarp": 0 },
+    { "x": 5, "z": 7, "to": "abandoned_ship_rooms_b1f", "toWarp": 0 },
+    { "x": 8, "z": 7, "to": "abandoned_ship_rooms_b1f", "toWarp": 1 },
+    { "x": 11, "z": 7, "to": "abandoned_ship_rooms_b1f", "toWarp": 2 },
+    { "x": 11, "z": 4, "to": "abandoned_ship_room_b1f", "toWarp": 0 },
+    { "x": 0, "z": 2, "to": "abandoned_ship_corridors_1f", "toWarp": 10 },
+    { "x": 8, "z": 2, "to": "abandoned_ship_corridors_1f", "toWarp": 9 }
+  ],
+  "objects": [
+    { "id": "tuber_m", "looks": "tuber_m", "movement": "wander_around", "x": 2, "z": 8, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "AbandonedShip_Corridors_B1F_EventScript_TuberM" },
+    { "id": "sailor", "looks": "sailor", "movement": "look_west_and_east", "x": 9, "z": 6, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_DUNCAN" }
+  ],
+  "signs": [
+    { "x": 11, "z": 4, "type": 0, "script": "AbandonedShip_Corridors_B1F_EventScript_StorageRoomDoor" }
+  ],
+  "triggers": []
+}

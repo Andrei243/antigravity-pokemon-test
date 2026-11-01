@@ -1,0 +1,29 @@
+{
+  "key": "abandoned_ship_rooms_2_b1f",
+  "index": 297,
+  "name": "Abandoned Ship",
+  "matrix": 246,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Cloudy",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ABANDONED_SHIP",
+  "nightMusic": "MUS_ABANDONED_SHIP",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 7, "to": "abandoned_ship_corridors_b1f", "toWarp": 1 },
+    { "x": 5, "z": 7, "to": "abandoned_ship_corridors_b1f", "toWarp": 1 },
+    { "x": 13, "z": 7, "to": "abandoned_ship_corridors_b1f", "toWarp": 0 },
+    { "x": 14, "z": 7, "to": "abandoned_ship_corridors_b1f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "camper", "looks": "camper", "movement": "wander_around", "x": 3, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "AbandonedShip_Rooms2_B1F_EventScript_Camper" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 13, "z": 3, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_ITEM_ABANDONED_SHIP_ROOMS_2_B1F_DIVE_BALL", "item": "Dive Ball", "script": "AbandonedShip_Rooms2_B1F_EventScript_ItemDiveBall" }
+  ],
+  "signs": [],
+  "triggers": []
+}

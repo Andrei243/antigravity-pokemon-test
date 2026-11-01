@@ -1,0 +1,61 @@
+{
+  "key": "abandoned_ship_hidden_floor_corridors",
+  "index": 303,
+  "name": "Abandoned Ship",
+  "matrix": 252,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Cloudy",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ABANDONED_SHIP",
+  "nightMusic": "MUS_ABANDONED_SHIP",
+  "encounters": "abandoned_ship_hidden_floor_corridors",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "water": [
+    { "species": "Tentacool", "level": 5, "maxLevel": 35 },
+    { "species": "Tentacool", "level": 5, "maxLevel": 35 },
+    { "species": "Tentacool", "level": 5, "maxLevel": 35 },
+    { "species": "Tentacool", "level": 5, "maxLevel": 35 },
+    { "species": "Tentacruel", "level": 30, "maxLevel": 35 }
+  ],
+  "waterRate": 4,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "maxLevel": 10, "weight": 70 },
+    { "species": "Tentacool", "level": 5, "maxLevel": 10 }
+  ],
+  "oldRodRate": 20,
+  "goodRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 30, "weight": 60 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 30, "weight": 20 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 30, "weight": 20 }
+  ],
+  "goodRodRate": 20,
+  "superRod": [
+    { "species": "Tentacool", "level": 25, "maxLevel": 30 },
+    { "species": "Tentacool", "level": 30, "maxLevel": 35 },
+    { "species": "Tentacruel", "level": 30, "maxLevel": 35 },
+    { "species": "Tentacruel", "level": 25, "maxLevel": 30 },
+    { "species": "Tentacruel", "level": 20, "maxLevel": 25 }
+  ],
+  "superRodRate": 20,
+  "warps": [
+    { "x": 3, "z": 8, "to": "abandoned_ship_hidden_floor_rooms", "toWarp": 0 },
+    { "x": 6, "z": 8, "to": "abandoned_ship_hidden_floor_rooms", "toWarp": 2 },
+    { "x": 9, "z": 8, "to": "abandoned_ship_hidden_floor_rooms", "toWarp": 4 },
+    { "x": 3, "z": 3, "to": "abandoned_ship_hidden_floor_rooms", "toWarp": 6 },
+    { "x": 6, "z": 3, "to": "abandoned_ship_hidden_floor_rooms", "toWarp": 7 },
+    { "x": 9, "z": 3, "to": "abandoned_ship_hidden_floor_rooms", "toWarp": 8 }
+  ],
+  "objects": [],
+  "signs": [
+    { "x": 3, "z": 8, "type": 0, "script": "AbandonedShip_HiddenFloorCorridors_EventScript_Room1Door" },
+    { "x": 6, "z": 8, "type": 0, "script": "AbandonedShip_HiddenFloorCorridors_EventScript_Room2Door" },
+    { "x": 3, "z": 4, "type": 0, "script": "AbandonedShip_HiddenFloorCorridors_EventScript_Room4Door" },
+    { "x": 9, "z": 4, "type": 0, "script": "AbandonedShip_HiddenFloorCorridors_EventScript_Room6Door" }
+  ],
+  "triggers": []
+}

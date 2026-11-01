@@ -22,6 +22,13 @@ partial class Harness
         // HOENN_FROM=sea runs Dive's shots and the secret bases' alone, HOENN_FROM=bases the bases' alone, HOENN_FROM=postgame the
         // post-game's places' alone (plan 21 · H12, part a), in a new game
         string from = Environment.GetEnvironmentVariable("HOENN_FROM") ?? "";
+        // (HOENN_FROM=ship the Abandoned Ship's, Artisan Cave's and the last rooms' alone: plan 21 · H12, part i)
+        if (from == "ship")
+        {
+            HoennAbandonedShipShots();
+            engine.NewGameRegion = "Sinnoh";
+            return;
+        }
         if (from is "sea" or "bases" or "postgame")
         {
             if (from == "sea") HoennSeaShots();

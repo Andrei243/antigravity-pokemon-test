@@ -38,6 +38,7 @@ script GruntsMoveOut
 # Walter, beaten, swaps numbers for the PokéNav
 script Walter
   if not defeated self goto Fight
+  if rematch self goto Rematch
   if flag FLAG_PHONE_CONTACT_HOENN_WALTER goto Known
 label Ask
   speaker "Walter"
@@ -57,11 +58,17 @@ label Fight
   trainerline before
   battle self
   goto Ask
+# A rematch Match Call asked for (plan 21 · H12, part i): the team of the level the Badges have reached
+label Rematch
+  trainerline before
+  battle self rematch
+  end
 
 
 # Jessica, beaten, swaps numbers for the PokéNav
 script Jessica
   if not defeated self goto Fight
+  if rematch self goto Rematch
   if flag FLAG_PHONE_CONTACT_HOENN_JESSICA goto Known
 label Ask
   speaker "Jessica"
@@ -81,11 +88,17 @@ label Fight
   trainerline before
   battle self
   goto Ask
+# A rematch Match Call asked for (plan 21 · H12, part i): the team of the level the Badges have reached
+label Rematch
+  trainerline before
+  battle self rematch
+  end
 
 
 # Cristin, beaten, swaps numbers for the PokéNav
 script Cristin
   if not defeated self goto Fight
+  if rematch self goto Rematch
   if flag FLAG_PHONE_CONTACT_HOENN_CRISTIN goto Known
 label Ask
   speaker "Cristin"
@@ -105,3 +118,8 @@ label Fight
   trainerline before
   battle self
   goto Ask
+# A rematch Match Call asked for (plan 21 · H12, part i): the team of the level the Badges have reached
+label Rematch
+  trainerline before
+  battle self rematch
+  end

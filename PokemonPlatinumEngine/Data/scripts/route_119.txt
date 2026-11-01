@@ -163,6 +163,7 @@ script Kecleon2
 # Jackson, beaten, swaps numbers for the PokéNav
 script Jackson
   if not defeated self goto Fight
+  if rematch self goto Rematch
   if flag FLAG_PHONE_CONTACT_HOENN_JACKSON goto Known
 label Ask
   speaker "Jackson"
@@ -182,11 +183,17 @@ label Fight
   trainerline before
   battle self
   goto Ask
+# A rematch Match Call asked for (plan 21 · H12, part i): the team of the level the Badges have reached
+label Rematch
+  trainerline before
+  battle self rematch
+  end
 
 
 # Catherine, beaten, swaps numbers for the PokéNav
 script Catherine
   if not defeated self goto Fight
+  if rematch self goto Rematch
   if flag FLAG_PHONE_CONTACT_HOENN_CATHERINE goto Known
 label Ask
   speaker "Catherine"
@@ -206,3 +213,8 @@ label Fight
   trainerline before
   battle self
   goto Ask
+# A rematch Match Call asked for (plan 21 · H12, part i): the team of the level the Badges have reached
+label Rematch
+  trainerline before
+  battle self rematch
+  end

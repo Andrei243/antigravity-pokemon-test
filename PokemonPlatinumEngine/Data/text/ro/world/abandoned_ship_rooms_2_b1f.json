@@ -1,0 +1,23 @@
+{
+  "people": {
+    "camper": {
+      "name": {
+        "en": [
+          "Camper"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "What a place to explore! I bet there's real treasure hidden somewhere on board."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

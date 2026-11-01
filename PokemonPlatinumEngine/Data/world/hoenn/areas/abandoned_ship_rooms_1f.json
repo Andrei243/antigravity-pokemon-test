@@ -1,0 +1,33 @@
+{
+  "key": "abandoned_ship_rooms_1f",
+  "index": 294,
+  "name": "Abandoned Ship",
+  "matrix": 243,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Cloudy",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ABANDONED_SHIP",
+  "nightMusic": "MUS_ABANDONED_SHIP",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 16, "to": "abandoned_ship_corridors_1f", "toWarp": 4 },
+    { "x": 5, "z": 16, "to": "abandoned_ship_corridors_1f", "toWarp": 4 },
+    { "x": 4, "z": 1, "to": "abandoned_ship_corridors_1f", "toWarp": 6 },
+    { "x": 13, "z": 16, "to": "abandoned_ship_corridors_1f", "toWarp": 5 },
+    { "x": 13, "z": 1, "to": "abandoned_ship_corridors_1f", "toWarp": 7 },
+    { "x": 14, "z": 16, "to": "abandoned_ship_corridors_1f", "toWarp": 5 }
+  ],
+  "objects": [
+    { "id": "gentleman", "looks": "gentleman", "movement": "wander_around", "x": 12, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "AbandonedShip_Rooms_1F_EventScript_Gentleman" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 4, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_ITEM_ABANDONED_SHIP_ROOMS_1F_HARBOR_MAIL", "item": "Harbor Mail", "script": "AbandonedShip_Rooms_1F_EventScript_ItemHarborMail" },
+    { "id": "beauty", "looks": "beauty", "movement": "look_south", "x": 10, "z": 11, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "script": "TRAINER_THALIA_1" },
+    { "id": "youngster", "looks": "youngster", "movement": "look_north_and_east", "x": 10, "z": 16, "facing": 0, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "script": "TRAINER_DEMETRIUS" }
+  ],
+  "signs": [],
+  "triggers": []
+}

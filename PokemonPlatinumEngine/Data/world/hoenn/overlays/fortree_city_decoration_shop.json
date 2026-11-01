@@ -1,0 +1,13 @@
+{
+  // Fortree City's decoration shop (plan 21 · H12, part i): two counters selling desks and chairs for a secret base, at
+  // Emerald's prices (FortreeCity_DecorationShop_PokemartDecor_Desks and _Chairs, decorations.json); what is bought goes
+  // into the decoration PC (fortree_city_decoration_shop.txt)
+  "area": "fortree_city_decoration_shop",
+  "bgmTrack": "hoenn/fortree",
+  "people": {
+    "mart_employee": { "name": "Clerk", "script": "Desks", "still": true },
+    "mart_employee_2": { "name": "Clerk", "script": "Chairs", "still": true },
+    "pokefan_m": { "name": "Man", "dialog": [ "Whatever you buy here is sent straight to your own PC. Marvellous!", "I wish they'd send me home the same way. It's a long walk across those bridges." ] },
+    "girl_3": { "name": "Girl", "dialog": [ "I'm buying a pretty desk to put my dolls on.", "If they sit on the floor of my secret base, they'll get dusty, or catch splinters!" ] }
+  }
+}

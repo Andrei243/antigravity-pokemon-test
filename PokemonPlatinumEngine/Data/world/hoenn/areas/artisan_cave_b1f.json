@@ -1,0 +1,47 @@
+{
+  "key": "artisan_cave_b1f",
+  "index": 337,
+  "name": "Artisan Cave",
+  "matrix": 286,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_PETALBURG_WOODS",
+  "nightMusic": "MUS_PETALBURG_WOODS",
+  "encounters": "artisan_cave_b1f",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Smeargle", "level": 40 },
+    { "species": "Smeargle", "level": 41 },
+    { "species": "Smeargle", "level": 42 },
+    { "species": "Smeargle", "level": 43 },
+    { "species": "Smeargle", "level": 44 },
+    { "species": "Smeargle", "level": 45 },
+    { "species": "Smeargle", "level": 46 },
+    { "species": "Smeargle", "level": 47 },
+    { "species": "Smeargle", "level": 48 },
+    { "species": "Smeargle", "level": 49 },
+    { "species": "Smeargle", "level": 50 },
+    { "species": "Smeargle", "level": 50 }
+  ],
+  "landRate": 10,
+  "warps": [
+    { "x": 8, "z": 48, "to": "battle_frontier_outside_west", "toWarp": 10 },
+    { "x": 38, "z": 5, "to": "artisan_cave_1f", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 32, "z": 38, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_ITEM_ARTISAN_CAVE_B1F_HP_UP", "item": "HP Up", "script": "ArtisanCave_B1F_EventScript_ItemHPUp" }
+  ],
+  "signs": [
+    { "x": 32, "z": 29, "type": 2, "script": "", "item": "Zinc", "flag": "FLAG_HIDDEN_ITEM_ARTISAN_CAVE_B1F_ZINC" },
+    { "x": 27, "z": 8, "type": 2, "script": "", "item": "Calcium", "flag": "FLAG_HIDDEN_ITEM_ARTISAN_CAVE_B1F_CALCIUM" },
+    { "x": 7, "z": 5, "type": 2, "script": "", "item": "Protein", "flag": "FLAG_HIDDEN_ITEM_ARTISAN_CAVE_B1F_PROTEIN" },
+    { "x": 19, "z": 43, "type": 2, "script": "", "item": "Iron", "flag": "FLAG_HIDDEN_ITEM_ARTISAN_CAVE_B1F_IRON" }
+  ],
+  "triggers": []
+}

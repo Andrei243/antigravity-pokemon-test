@@ -13972,6 +13972,66 @@
     "fieldUse": "TmHm"
   },
   {
+    "id": 9114,
+    "name": "Scanner",
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A scanning device found on the Abandoned Ship. Captain Stern in Slateport would like to have it.",
+    "cantBeTossed": true
+  },
+  {
+    "id": 9115,
+    "name": "Room 1 Key",
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A key to a cabin on the Abandoned Ship's hidden floor. \"Rm. 1\" is stamped on its tag.",
+    "cantBeTossed": true
+  },
+  {
+    "id": 9116,
+    "name": "Room 2 Key",
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A key to a cabin on the Abandoned Ship's hidden floor. \"Rm. 2\" is stamped on its tag.",
+    "cantBeTossed": true
+  },
+  {
+    "id": 9117,
+    "name": "Room 4 Key",
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A key to a cabin on the Abandoned Ship's hidden floor. \"Rm. 4\" is stamped on its tag.",
+    "cantBeTossed": true
+  },
+  {
+    "id": 9118,
+    "name": "Room 6 Key",
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A key to a cabin on the Abandoned Ship's hidden floor. \"Rm. 6\" is stamped on its tag.",
+    "cantBeTossed": true
+  },
+  {
     "id": 9200,
     "name": "SquirtBottle",
     "pocket": "KeyItems",

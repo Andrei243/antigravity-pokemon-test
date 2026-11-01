@@ -1,0 +1,42 @@
+{
+  "key": "artisan_cave_1f",
+  "index": 338,
+  "name": "Artisan Cave",
+  "matrix": 287,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_PETALBURG_WOODS",
+  "nightMusic": "MUS_PETALBURG_WOODS",
+  "encounters": "artisan_cave_1f",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Smeargle", "level": 40 },
+    { "species": "Smeargle", "level": 41 },
+    { "species": "Smeargle", "level": 42 },
+    { "species": "Smeargle", "level": 43 },
+    { "species": "Smeargle", "level": 44 },
+    { "species": "Smeargle", "level": 45 },
+    { "species": "Smeargle", "level": 46 },
+    { "species": "Smeargle", "level": 47 },
+    { "species": "Smeargle", "level": 48 },
+    { "species": "Smeargle", "level": 49 },
+    { "species": "Smeargle", "level": 50 },
+    { "species": "Smeargle", "level": 50 }
+  ],
+  "landRate": 10,
+  "warps": [
+    { "x": 10, "z": 17, "to": "battle_frontier_outside_east", "toWarp": 13 },
+    { "x": 6, "z": 5, "to": "artisan_cave_b1f", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 14, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_ITEM_ARTISAN_CAVE_1F_CARBOS", "item": "Carbos", "script": "ArtisanCave_1F_EventScript_ItemCarbos" }
+  ],
+  "signs": [],
+  "triggers": []
+}

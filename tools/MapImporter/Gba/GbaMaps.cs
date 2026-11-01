@@ -201,7 +201,10 @@ public sealed class GbaMaps
         ["MAP_SKY_PILLAR_3F"] = "LAYOUT_SKY_PILLAR_3F_CLEAN",
         ["MAP_SKY_PILLAR_4F"] = "LAYOUT_SKY_PILLAR_4F_CLEAN",
         ["MAP_SKY_PILLAR_5F"] = "LAYOUT_SKY_PILLAR_5F_CLEAN",
-        ["MAP_SKY_PILLAR_TOP"] = "LAYOUT_SKY_PILLAR_TOP_CLEAN"
+        ["MAP_SKY_PILLAR_TOP"] = "LAYOUT_SKY_PILLAR_TOP_CLEAN",
+        // (plan 21 · H12, part i: the Abandoned Ship's hidden floor with its four locked doors unlocked, Patches; the
+        // overlay's switches keep each shut until its key is turned)
+        ["MAP_ABANDONED_SHIP_HIDDEN_FLOOR_CORRIDORS"] = "LAYOUT_ABANDONED_SHIP_HIDDEN_FLOOR_CORRIDORS_UNLOCKED"
     };
 
     /// <summary>
@@ -243,7 +246,13 @@ public sealed class GbaMaps
         new GbaPatch("LAYOUT_NEW_MAUVILLE_INSIDE_GREEN", "LAYOUT_NEW_MAUVILLE_INSIDE", NewMauvilleBarriers(blue: false)),
         new GbaPatch("LAYOUT_NEW_MAUVILLE_INSIDE_GENERATOR_OFF", "LAYOUT_NEW_MAUVILLE_INSIDE",
             new[] { (33, 6, 0x24F, false), (32, 2, 0x2F0, true), (33, 2, 0x2F1, true), (34, 2, 0x2F2, true), (35, 2, 0x2F3, true),
-                (32, 3, 0x2F4, true), (33, 3, 0x2F5, true), (34, 3, 0x2F6, true), (35, 3, 0x2F7, true) })
+                (32, 3, 0x2F4, true), (33, 3, 0x2F5, true), (34, 3, 0x2F6, true), (35, 3, 0x2F7, true) }),
+        // Plan 21 · H12, part i: the Abandoned Ship's hidden floor with the doors of Rooms 1, 2, 4 and 6 unlocked
+        // (AbandonedShip_HiddenFloorCorridors_EventScript_UnlockRoom1 to _6: METATILE_InsideShip_IntactDoor_Bottom_Unlocked
+        // and _DoorIndent_Unlocked). The floor is read in it (FirstLayouts), so each door is a way, which the overlay's
+        // switches shut until its key has been turned in it
+        new GbaPatch("LAYOUT_ABANDONED_SHIP_HIDDEN_FLOOR_CORRIDORS_UNLOCKED", "LAYOUT_ABANDONED_SHIP_HIDDEN_FLOOR_CORRIDORS",
+            new[] { (3, 8, 0x22B, true), (6, 8, 0x22B, true), (3, 3, 0x21A, false), (9, 3, 0x21A, false) })
     };
 
     /// <summary>

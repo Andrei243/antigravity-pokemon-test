@@ -1,0 +1,27 @@
+{
+  "key": "abandoned_ship_deck",
+  "index": 292,
+  "name": "Abandoned Ship",
+  "matrix": 241,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ABANDONED_SHIP",
+  "nightMusic": "MUS_ABANDONED_SHIP",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 13, "z": 15, "to": "route_108", "toWarp": 0 },
+    { "x": 14, "z": 15, "to": "route_108", "toWarp": 0 },
+    { "x": 13, "z": 9, "to": "abandoned_ship_corridors_1f", "toWarp": 1 },
+    { "x": 8, "z": 9, "to": "abandoned_ship_corridors_1f", "toWarp": 2 },
+    { "x": 12, "z": 5, "to": "abandoned_ship_captains_office", "toWarp": 0 }
+  ],
+  "objects": [],
+  "signs": [],
+  "triggers": []
+}

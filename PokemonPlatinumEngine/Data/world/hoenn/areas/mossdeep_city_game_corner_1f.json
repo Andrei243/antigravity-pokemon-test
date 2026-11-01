@@ -1,0 +1,32 @@
+{
+  "key": "mossdeep_city_game_corner_1f",
+  "index": 194,
+  "name": "Mossdeep City",
+  "matrix": 143,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_RUSTBORO",
+  "nightMusic": "MUS_RUSTBORO",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 9, "to": "mossdeep_city", "toWarp": 9 },
+    { "x": 6, "z": 9, "to": "mossdeep_city", "toWarp": 9 },
+    { "x": 2, "z": 0, "to": "", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "expert_m", "looks": "expert_m", "movement": "look_south", "x": 6, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "MossdeepCity_GameCorner_1F_EventScript_OldMan" },
+    { "id": "man_4", "looks": "man_4", "movement": "look_south", "x": 4, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "MossdeepCity_GameCorner_1F_EventScript_InfoMan" }
+  ],
+  "signs": [
+    { "x": 3, "z": 0, "type": 0, "script": "RS_MysteryEventsHouse_EventScript_Door" },
+    { "x": 0, "z": 1, "type": 0, "script": "MossdeepCity_GameCorner_1F_EventScript_DodrioBerryPickingRecords" },
+    { "x": 1, "z": 1, "type": 0, "script": "MossdeepCity_GameCorner_1F_EventScript_PokemonJumpRecords" }
+  ],
+  "triggers": []
+}

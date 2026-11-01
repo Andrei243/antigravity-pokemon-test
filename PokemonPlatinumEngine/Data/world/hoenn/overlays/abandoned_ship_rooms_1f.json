@@ -1,0 +1,11 @@
+{
+  // Four cabins of the Abandoned Ship's first deck (plan 21 · H12, part i). Thalia gives her number for the PokéNav once
+  // beaten (abandoned_ship_rooms_1f.txt)
+  "area": "abandoned_ship_rooms_1f",
+  "bgmTrack": "hoenn/abandoned_ship",
+  "people": {
+    "gentleman": { "name": "Gentleman", "dialog": [ "A ship of this make is a rare sight these days. I'm only having a look around, you understand.", "Hm. There seem to be more cabins than the plans on the wall show..." ] },
+    "beauty": { "name": "Thalia", "script": "Thalia", "trainer": { "dialogueBefore": "Beauty Thalia: What brings someone to a wreck like this? Curiosity, I suppose. Mine too!", "dialogueAfter": "Beauty Thalia: The man in the next cabin says he's sightseeing. I'm not so sure." } },
+    "youngster": { "name": "Demetrius", "trainer": { "dialogueBefore": "Youngster Demetrius: Aaah! Found already! ...Wait, you're not my mom.", "dialogueAfter": "Youngster Demetrius: I ran away from home for a bit. Don't tell anyone I'm here!" } }
+  }
+}

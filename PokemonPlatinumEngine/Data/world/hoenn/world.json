@@ -453,7 +453,29 @@
     { "name": "FarawayIsland_Interior", "matrix": 407, "area": "faraway_island_interior", "trees": "Round" },
     { "name": "SSTidalCorridor", "matrix": 336, "area": "ss_tidal_corridor", "trees": "Round", "setting": "Indoors" },
     { "name": "SSTidalLowerDeck", "matrix": 337, "area": "ss_tidal_lower_deck", "trees": "Round", "setting": "Indoors" },
-    { "name": "SSTidalRooms", "matrix": 338, "area": "ss_tidal_rooms", "trees": "Round", "setting": "Indoors" }
+    { "name": "SSTidalRooms", "matrix": 338, "area": "ss_tidal_rooms", "trees": "Round", "setting": "Indoors" },
+    // Plan 21 · H12, part i: the Abandoned Ship off Route 108 (its deck in the open, its two decks of corridors and
+    // cabins (the two that hold water built as caves, since a room draws none), the captain's office, the two flooded passages dived through and the hidden floor they come up into),
+    // Artisan Cave under the Battle Frontier, and the last shut rooms of the towns: Fortree's decoration shop,
+    // Mossdeep's game corner and Sootopolis's house of mystery events (their basements, rooms of link play and of e-Reader's visiting trainers, stay shut)
+    { "name": "AbandonedShip_Deck", "matrix": 241, "area": "abandoned_ship_deck", "trees": "Round" },
+    { "name": "AbandonedShip_Corridors_1F", "matrix": 242, "area": "abandoned_ship_corridors_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "AbandonedShip_Rooms_1F", "matrix": 243, "area": "abandoned_ship_rooms_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "AbandonedShip_Corridors_B1F", "matrix": 244, "area": "abandoned_ship_corridors_b1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "AbandonedShip_Rooms_B1F", "matrix": 245, "area": "abandoned_ship_rooms_b1f", "trees": "Round", "setting": "Cave" },
+    { "name": "AbandonedShip_Rooms2_B1F", "matrix": 246, "area": "abandoned_ship_rooms_2_b1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "AbandonedShip_Underwater1", "matrix": 247, "area": "abandoned_ship_underwater_1", "trees": "Round", "setting": "Underwater" },
+    { "name": "AbandonedShip_Room_B1F", "matrix": 248, "area": "abandoned_ship_room_b1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "AbandonedShip_Rooms2_1F", "matrix": 249, "area": "abandoned_ship_rooms_2_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "AbandonedShip_CaptainsOffice", "matrix": 250, "area": "abandoned_ship_captains_office", "trees": "Round", "setting": "Indoors" },
+    { "name": "AbandonedShip_Underwater2", "matrix": 251, "area": "abandoned_ship_underwater_2", "trees": "Round", "setting": "Underwater" },
+    { "name": "AbandonedShip_HiddenFloorCorridors", "matrix": 252, "area": "abandoned_ship_hidden_floor_corridors", "trees": "Round", "setting": "Cave" },
+    { "name": "AbandonedShip_HiddenFloorRooms", "matrix": 253, "area": "abandoned_ship_hidden_floor_rooms", "trees": "Round", "setting": "Indoors" },
+    { "name": "ArtisanCave_1F", "matrix": 287, "area": "artisan_cave_1f", "trees": "Round", "setting": "Cave" },
+    { "name": "ArtisanCave_B1F", "matrix": 286, "area": "artisan_cave_b1f", "trees": "Round", "setting": "Cave" },
+    { "name": "FortreeCity_DecorationShop", "matrix": 108, "area": "fortree_city_decoration_shop", "trees": "Round", "setting": "Indoors" },
+    { "name": "MossdeepCity_GameCorner_1F", "matrix": 143, "area": "mossdeep_city_game_corner_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "SootopolisCity_MysteryEventsHouse_1F", "matrix": 158, "area": "sootopolis_city_mystery_events_house_1f", "trees": "Round", "setting": "Indoors" }
   ],
   "areas": [
     // Plan 21 · H1: Littleroot Town, Route 101, Oldale Town, Routes 102 and 103 and Petalburg City, with their rooms
@@ -607,6 +629,13 @@
     "navel_rock_down_01", "navel_rock_down_02", "navel_rock_down_03", "navel_rock_down_04", "navel_rock_down_05", "navel_rock_down_06",
     "navel_rock_down_07", "navel_rock_down_08", "navel_rock_down_09", "navel_rock_down_10", "navel_rock_down_11", "navel_rock_bottom",
     // Plan 21 · H12, part g: Faraway Island and the S.S. Tidal
-    "faraway_island_entrance", "faraway_island_interior", "ss_tidal_corridor", "ss_tidal_lower_deck", "ss_tidal_rooms"
+    "faraway_island_entrance", "faraway_island_interior", "ss_tidal_corridor", "ss_tidal_lower_deck", "ss_tidal_rooms",
+    // Plan 21 · H12, part i: the Abandoned Ship, Artisan Cave and the last rooms of Fortree, Mossdeep and Sootopolis
+    "abandoned_ship_deck", "abandoned_ship_corridors_1f", "abandoned_ship_rooms_1f", "abandoned_ship_corridors_b1f",
+    "abandoned_ship_rooms_b1f", "abandoned_ship_rooms_2_b1f", "abandoned_ship_underwater_1", "abandoned_ship_room_b1f",
+    "abandoned_ship_rooms_2_1f", "abandoned_ship_captains_office", "abandoned_ship_underwater_2",
+    "abandoned_ship_hidden_floor_corridors", "abandoned_ship_hidden_floor_rooms", "artisan_cave_1f", "artisan_cave_b1f",
+    "fortree_city_decoration_shop", "mossdeep_city_game_corner_1f",
+    "sootopolis_city_mystery_events_house_1f"
   ]
 }

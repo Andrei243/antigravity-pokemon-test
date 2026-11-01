@@ -1365,3 +1365,23 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
       **Golden**: scripts.txt (two new blocks, common.HoennMirageIsland and the old man's): accepted. **Left**: Jirachi,
       Trainer Hill (its floors are Emerald's `trainer_hill.c`, not in the pinned cache), Altering Cave (decided in part a),
       the island's halls, the S.S. Tidal's halfway arrivals, furniture and look, Mew's hiding; and H11's part c.
+    - **Part i** (done 2026-11-01: the Abandoned Ship, Artisan Cave, the last shut rooms and Match Call's rematches on the
+      routes; docs/mechanics/rulings.md, "The Abandoned Ship, Artisan Cave, the last shut rooms and Match Call's
+      rematches"; tests run with --filter (HoennAbandonedShipTests, the Hoenn, Story, Script, Content, Golden, Region,
+      Pokegear, Music, LocalNames, Coverage, DataFile, Voice, ScriptTranslation, SceneSkip, World, MapIndex and SecretBase
+      tests), shots h2e0 to h2em). **Built**: the Abandoned Ship's thirteen maps (matrices 241 to 253) in RegionDatabase's
+      Hoenn list, Route 108's way aboard unlocked, its storage room and four cabins of the hidden floor locked by switches
+      until their keys are turned (Emerald's flags; the hidden floor read in a patched layout with its doors unlocked,
+      `GbaMaps.Patches` and `FirstLayouts`; the ship's door mats a `GbaCover.HoennRanges` row of `gTileset_InsideShip`), the
+      flooded cabin and the two passages under it by `diveTo` and `emergeTo`, the Scanner and four Room Keys as key items
+      of ours (9114 to 9118), Stern's Deep Sea Tooth or Scale for the Scanner, his assistant in the captain's office,
+      Thalia and Kira and Dan in Match Call, and the song `hoenn/abandoned_ship` (MusicRender: no clashes, −18.5 LUFS, not
+      yet heard by the user); Artisan Cave's two floors (286, 287) from both halves of the Frontier island; Fortree's
+      decoration shop (desks and chairs into the decoration PC), Mossdeep's game corner and Sootopolis's house of mystery
+      events, their basements shut; and the 26 route trainers of Match Call asking for rematches on days of ours, their
+      teams Emerald's `_2` to `_5` by the Hoenn Badges (`PhoneRematch.IsHoennRouteTrainer`, `UnlockedInHoenn`;
+      `VsSeeker.RematchTeam`'s Hoenn rows). **Golden**: scripts.txt (new blocks for the ship's, the shop's and the
+      harbour's scripts), levels.txt and levels-crossed.txt (the ship's seven trainers now placed, its water's tables):
+      accepted. **Left**: Trainer Hill, Altering Cave, the island's halls, the Department Store's lift, the Trick House's
+      puzzles 2 to 8, the two basements, the S.S. Tidal's halfway arrivals and Mew's hiding; and H11's part c and
+      the Battle Tents (another session's).

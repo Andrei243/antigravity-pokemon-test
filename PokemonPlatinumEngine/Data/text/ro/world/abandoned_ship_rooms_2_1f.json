@@ -1,0 +1,109 @@
+{
+  "people": {
+    "man_4": {
+      "name": {
+        "en": [
+          "Kira & Dan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Young Couple Kira & Dan: We came looking for buried treasure and found a trainer instead!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Young Couple Kira & Dan: No treasure anywhere. Somebody must have got here first."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_4": {
+      "name": {
+        "en": [
+          "Kira & Dan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Young Couple Kira & Dan: Treasure can wait. A battle first!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Young Couple Kira & Dan: I've already planned what to buy with the treasure, too..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Garrison"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Garrison: A trainer's true treasures are strength and a kind heart. Show me yours!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Garrison: Somewhere aboard, in a cabin, I saw something glitter."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "tuber_f": {
+      "name": {
+        "en": [
+          "Jani"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Tuber Jani: I can't swim very well, but I can battle very well!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Tuber Jani: Walking on this floor in bare feet is kind of yucky."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

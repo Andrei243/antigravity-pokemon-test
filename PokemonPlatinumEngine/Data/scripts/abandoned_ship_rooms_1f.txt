@@ -1,0 +1,32 @@
+# Four cabins of the Abandoned Ship's first deck (plan 21 · H12, part i). docs/scripts.md describes the language; the
+# lines are our own, on Emerald's beats (data/maps/AbandonedShip_Rooms_1F/scripts.inc).
+#
+# Thalia, beaten, gives her number for the PokéNav's Match Call (Emerald's register_matchcall TRAINER_THALIA_1).
+
+
+script Thalia
+  if not defeated self goto Fight
+  if rematch self goto Rematch
+  if flag FLAG_PHONE_CONTACT_HOENN_THALIA goto Known
+label Ask
+  speaker "Thalia"
+  say "Curious and strong, too! I'd like to remember you. Let me take your number."
+  ask "Register Thalia in the PokéNav's Match Call?"
+  if no goto Refused
+  addcontact hoenn_thalia
+  say "There! Now I can tell you whatever else I find on this old ship."
+  end
+label Refused
+  say "Pity. Well, I'll be poking around these cabins if you change your mind."
+  end
+label Known
+  trainerline after
+  end
+label Fight
+  trainerline before
+  battle self
+  goto Ask
+label Rematch
+  trainerline before
+  battle self rematch
+  end

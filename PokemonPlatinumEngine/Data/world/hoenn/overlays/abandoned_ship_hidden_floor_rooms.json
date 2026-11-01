@@ -1,0 +1,10 @@
+{
+  // The six cabins of the Abandoned Ship's hidden floor (plan 21 · H12, part i), each behind its own door from the corridor.
+  // The keys to four of them lie hidden in the others, and the Scanner Captain Stern wants lies in Room 2. Emerald makes the
+  // floor sparkle where a key lies as the player walks in; here they are hidden items found by looking, as any other
+  "area": "abandoned_ship_hidden_floor_rooms",
+  "bgmTrack": "hoenn/abandoned_ship",
+  "signs": {
+    "AbandonedShip_HiddenFloorRooms_EventScript_Trash": "Something glints in the rubbish. It's shiny, but it's only rubbish."
+  }
+}

@@ -10,7 +10,7 @@
   // titans' weather. Steven leads the player to the Cave of Origin, where Wallace waits. The houses' doors stay shut while
   // the titans are in the city (switches until FLAG_LEGENDARIES_IN_SOOTOPOLIS); Juan's Gym (part c) is shut until Archie and Maxie
   // have left (the overlay's door, opened by FLAG_SOOTOPOLIS_ARCHIE_MAXIE_LEAVE, as Emerald's LockGymDoor), and the
-  // Mystery Events house stays shut. Part c: Rayquaza comes down over the harbour the first time the city is come to
+  // Mystery Events house is open since plan 21 · H12, part i. Part c: Rayquaza comes down over the harbour the first time the city is come to
   // after its waking (VAR_SKY_PILLAR_STATE 1), the titans go and the weather clears, and Wallace, Steven, Archie and Maxie
   // wait by the Gym
   "area": "sootopolis_city",
@@ -18,7 +18,6 @@
   "trees": "Round",
   "architecture": "Crater",
   "diveTo": { "area": "underwater_sootopolis_city", "x": 9, "z": 6, "facing": "Up" },
-  "locked": [ 12 ],
   "doors": [ { "warp": 2, "map": "SootopolisCity_Gym_1F", "x": 8, "y": 24, "facing": "Up", "openedBy": "FLAG_SOOTOPOLIS_ARCHIE_MAXIE_LEAVE" } ],
   "switches": [
     { "warp": 4, "until": "FLAG_LEGENDARIES_IN_SOOTOPOLIS" }, { "warp": 5, "until": "FLAG_LEGENDARIES_IN_SOOTOPOLIS" },

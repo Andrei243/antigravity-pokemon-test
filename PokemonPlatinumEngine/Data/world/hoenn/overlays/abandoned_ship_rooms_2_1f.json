@@ -1,0 +1,12 @@
+{
+  // Two more cabins of the first deck (plan 21 · H12, part i): Kira and Dan battle together (TRAINER_KIRA_AND_DAN_1, a
+  // double battle) and give their number for the PokéNav once beaten (abandoned_ship_rooms_2_1f.txt)
+  "area": "abandoned_ship_rooms_2_1f",
+  "bgmTrack": "hoenn/abandoned_ship",
+  "people": {
+    "man_4": { "name": "Kira & Dan", "script": "KiraAndDan", "trainer": { "dialogueBefore": "Young Couple Kira & Dan: We came looking for buried treasure and found a trainer instead!", "dialogueAfter": "Young Couple Kira & Dan: No treasure anywhere. Somebody must have got here first." } },
+    "woman_4": { "name": "Kira & Dan", "script": "KiraAndDan", "trainer": { "dialogueBefore": "Young Couple Kira & Dan: Treasure can wait. A battle first!", "dialogueAfter": "Young Couple Kira & Dan: I've already planned what to buy with the treasure, too..." } },
+    "hiker": { "name": "Garrison", "trainer": { "dialogueBefore": "Hiker Garrison: A trainer's true treasures are strength and a kind heart. Show me yours!", "dialogueAfter": "Hiker Garrison: Somewhere aboard, in a cabin, I saw something glitter." } },
+    "tuber_f": { "name": "Jani", "trainer": { "dialogueBefore": "Tuber Jani: I can't swim very well, but I can battle very well!", "dialogueAfter": "Tuber Jani: Walking on this floor in bare feet is kind of yucky." } }
+  }
+}

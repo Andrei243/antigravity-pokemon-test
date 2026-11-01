@@ -77,6 +77,7 @@ script Zigzagoon
 # Ricky, beaten, gives his number for the PokéNav
 script Ricky
   if not defeated self goto Fight
+  if rematch self goto Rematch
   if flag FLAG_PHONE_CONTACT_HOENN_RICKY goto Known
   speaker "Ricky"
   say "You're really strong! Can I have your number? I'll call when I can swim. And battle better!"
@@ -95,11 +96,17 @@ label Fight
   trainerline before
   battle self
   end
+# A rematch Match Call asked for (plan 21 · H12, part i): the team of the level the Badges have reached
+label Rematch
+  trainerline before
+  battle self rematch
+  end
 
 
 # Lola, beaten, gives her number for the PokéNav
 script Lola
   if not defeated self goto Fight
+  if rematch self goto Rematch
   if flag FLAG_PHONE_CONTACT_HOENN_LOLA goto Known
   speaker "Lola"
   say "Azumarill liked you! Let's be friends. I'll tell you everything about floating!"
@@ -117,4 +124,9 @@ label Known
 label Fight
   trainerline before
   battle self
+  end
+# A rematch Match Call asked for (plan 21 · H12, part i): the team of the level the Badges have reached
+label Rematch
+  trainerline before
+  battle self rematch
   end

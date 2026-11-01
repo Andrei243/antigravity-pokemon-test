@@ -1,0 +1,10 @@
+{
+  // The second flooded passage under the Abandoned Ship (plan 21 · H12, part i), dived to from the lower deck's flooded
+  // cabin: its passage north leads on to the first, and coming up in its dark water comes up in that cabin again
+  // (Emerald's setdivewarp: AbandonedShip_Rooms_B1F at 13, 7, emergeTo)
+  "area": "abandoned_ship_underwater_2",
+  "name": "Underwater",
+  "bgmTrack": "hoenn/underwater",
+  "trees": "Round",
+  "emergeTo": { "area": "abandoned_ship_rooms_b1f", "x": 13, "z": 7, "facing": "Up" }
+}

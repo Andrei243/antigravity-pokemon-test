@@ -147,6 +147,7 @@ script Kecleon5
 # Robert, beaten, swaps numbers for the PokéNav
 script Robert
   if not defeated self goto Fight
+  if rematch self goto Rematch
   if flag FLAG_PHONE_CONTACT_HOENN_ROBERT goto Known
 label Ask
   speaker "Robert"
@@ -166,11 +167,17 @@ label Fight
   trainerline before
   battle self
   goto Ask
+# A rematch Match Call asked for (plan 21 · H12, part i): the team of the level the Badges have reached
+label Rematch
+  trainerline before
+  battle self rematch
+  end
 
 
 # Jeffrey, beaten, swaps numbers for the PokéNav
 script Jeffrey
   if not defeated self goto Fight
+  if rematch self goto Rematch
   if flag FLAG_PHONE_CONTACT_HOENN_JEFFREY goto Known
 label Ask
   speaker "Jeffrey"
@@ -190,3 +197,8 @@ label Fight
   trainerline before
   battle self
   goto Ask
+# A rematch Match Call asked for (plan 21 · H12, part i): the team of the level the Badges have reached
+label Rematch
+  trainerline before
+  battle self rematch
+  end

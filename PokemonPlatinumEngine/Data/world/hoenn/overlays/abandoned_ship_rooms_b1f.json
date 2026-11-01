@@ -1,0 +1,10 @@
+{
+  // Three cabins of the Abandoned Ship's lower deck (plan 21 · H12, part i), the middle one flooded. Its dark water dives
+  // down into the second flooded passage (Emerald's setdivewarp: AbandonedShip_Underwater2 at 17, 4)
+  "area": "abandoned_ship_rooms_b1f",
+  "bgmTrack": "hoenn/abandoned_ship",
+  "diveTo": { "area": "abandoned_ship_underwater_2", "x": 17, "z": 4, "facing": "Down" },
+  "people": {
+    "fat_man": { "name": "Man", "dialog": [ "Urgh... I feel seasick just standing in here.", "And the ship isn't even moving. How does that work?" ] }
+  }
+}

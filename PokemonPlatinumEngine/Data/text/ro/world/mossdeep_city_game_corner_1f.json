@@ -1,0 +1,70 @@
+{
+  "people": {
+    "expert_m": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Downstairs, trainers play games with their Pokémon together: jumping rope, picking berries...",
+          "But it takes friends with their own games to play. Nobody has come by to play in a long while."
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    },
+    "man_4": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The record boards on the wall show the best scores at the games downstairs.",
+          "They're all blank. Maybe one day someone will set a score worth writing up!"
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "MossdeepCity_GameCorner_1F_EventScript_DodrioBerryPickingRecords": {
+      "en": [
+        "Dodrio Berry Picking: the best scores. Nothing has been written up yet."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "MossdeepCity_GameCorner_1F_EventScript_PokemonJumpRecords": {
+      "en": [
+        "Pokémon Jump: the best scores. Nothing has been written up yet."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "RS_MysteryEventsHouse_EventScript_Door": {
+      "en": [
+        "The door appears to be locked."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

@@ -1,0 +1,78 @@
+# The Abandoned Ship's hidden floor (plan 21 · H12, part i). docs/scripts.md describes the language; the lines are our
+# own, on Emerald's beats (data/maps/AbandonedShip_HiddenFloorCorridors/scripts.inc).
+#
+# The doors of Rooms 1, 2, 4 and 6 are locked until their keys, hidden in the other cabins, are turned in them. Each key
+# stays in its lock (Emerald's removeitem) and its door stays open (FLAG_USED_ROOM_1_KEY and the rest, which open the way
+# through each door by the overlay's switches). Rooms 3 and 5 are never locked.
+
+
+script Room1
+  speaker none
+  if flag FLAG_USED_ROOM_1_KEY goto Open
+  if not item "Room 1 Key" goto Locked
+  text "{player} put the Room 1 Key in the lock and turned it."
+  sound "door_open"
+  take "Room 1 Key"
+  setflag FLAG_USED_ROOM_1_KEY
+  text "The key stuck fast in the lock, but the door swung open."
+  end
+label Locked
+  text "The door is locked. \"RM. 1\" is painted on it."
+  end
+label Open
+  text "The door stands open."
+  end
+
+
+script Room2
+  speaker none
+  if flag FLAG_USED_ROOM_2_KEY goto Open
+  if not item "Room 2 Key" goto Locked
+  text "{player} put the Room 2 Key in the lock and turned it."
+  sound "door_open"
+  take "Room 2 Key"
+  setflag FLAG_USED_ROOM_2_KEY
+  text "The key stuck fast in the lock, but the door swung open."
+  end
+label Locked
+  text "The door is locked. \"RM. 2\" is painted on it."
+  end
+label Open
+  text "The door stands open."
+  end
+
+
+script Room4
+  speaker none
+  if flag FLAG_USED_ROOM_4_KEY goto Open
+  if not item "Room 4 Key" goto Locked
+  text "{player} put the Room 4 Key in the lock and turned it."
+  sound "door_open"
+  take "Room 4 Key"
+  setflag FLAG_USED_ROOM_4_KEY
+  text "The key stuck fast in the lock, but the door swung open."
+  end
+label Locked
+  text "The door is locked. \"RM. 4\" is painted on it."
+  end
+label Open
+  text "The door stands open."
+  end
+
+
+script Room6
+  speaker none
+  if flag FLAG_USED_ROOM_6_KEY goto Open
+  if not item "Room 6 Key" goto Locked
+  text "{player} put the Room 6 Key in the lock and turned it."
+  sound "door_open"
+  take "Room 6 Key"
+  setflag FLAG_USED_ROOM_6_KEY
+  text "The key stuck fast in the lock, but the door swung open."
+  end
+label Locked
+  text "The door is locked. \"RM. 6\" is painted on it."
+  end
+label Open
+  text "The door stands open."
+  end

@@ -1,0 +1,5 @@
+{
+  // The Abandoned Ship's storage room (plan 21 · H12, part i), behind the door the Storage Key opens
+  "area": "abandoned_ship_room_b1f",
+  "bgmTrack": "hoenn/abandoned_ship"
+}

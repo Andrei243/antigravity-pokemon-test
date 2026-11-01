@@ -72,6 +72,7 @@ script OnEnter
 # Isaiah, the triathlete who laps the reef
 script Isaiah
   if not defeated self goto Fight
+  if rematch self goto Rematch
   if flag FLAG_PHONE_CONTACT_HOENN_ISAIAH goto Known
 label Ask
   speaker "Isaiah"
@@ -91,11 +92,17 @@ label Fight
   trainerline before
   battle self
   goto Ask
+# A rematch Match Call asked for (plan 21 · H12, part i): the team of the level the Badges have reached
+label Rematch
+  trainerline before
+  battle self rematch
+  end
 
 
 # Katelyn, the triathlete who races the sea
 script Katelyn
   if not defeated self goto Fight
+  if rematch self goto Rematch
   if flag FLAG_PHONE_CONTACT_HOENN_KATELYN goto Known
 label Ask
   speaker "Katelyn"
@@ -115,3 +122,8 @@ label Fight
   trainerline before
   battle self
   goto Ask
+# A rematch Match Call asked for (plan 21 · H12, part i): the team of the level the Badges have reached
+label Rematch
+  trainerline before
+  battle self rematch
+  end

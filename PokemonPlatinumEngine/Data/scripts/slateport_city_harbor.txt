@@ -108,6 +108,7 @@ script SternSpeaks
 script Stern
   face self player
   speaker "Captain Stern"
+  if item "Scanner" goto Scanner
   if flag FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE goto Gone
   if var VAR_SLATEPORT_HARBOR_STATE == 2 goto Stolen
   say "Those people tried to rob the museum, and now they've taken my submarine. I'll never forgive them!"
@@ -119,6 +120,35 @@ label Gone
   say "They took the submarine out of their hideout in Lilycove and dived away, you say? Then it's somewhere at the bottom of the sea."
   say "If only somebody could follow them down there..."
   end
+# The Scanner from the Abandoned Ship (plan 21 · H12, part i; Emerald's SlateportCity_Harbor_EventScript_AskToTradeScanner):
+# Stern trades it for a Deep Sea Tooth or a Deep Sea Scale (FLAG_EXCHANGED_SCANNER)
+label Scanner
+  say "Oh? {player}, is that a Scanner you've got there? That would be a great help to our explorations!"
+  say "Would you trade it to me? I could give you a Deep Sea Tooth or a Deep Sea Scale for it."
+label Choose
+  choose "Which would you like?" "DEEP SEA TOOTH" "DEEP SEA SCALE" "NO THANKS"
+  if result == 0 goto Tooth
+  if result == 1 goto Scale
+  say "I see. If you change your mind, I'll still be glad of it."
+  end
+label Tooth
+  ask "The Deep Sea Tooth for the Scanner, then?"
+  if no goto Again
+  give "Deep Sea Tooth"
+  goto Traded
+label Scale
+  ask "The Deep Sea Scale for the Scanner, then?"
+  if no goto Again
+  give "Deep Sea Scale"
+label Traded
+  take "Scanner"
+  setflag FLAG_EXCHANGED_SCANNER
+  text "{player} handed the Scanner to Captain Stern."
+  say "Thank you! With this, the sea floor won't keep its secrets from us much longer."
+  end
+label Again
+  say "Then which one would you like?"
+  goto Choose
 
 
 # The ferry desk (plan 21 · H12, part g; Emerald's SlateportCity_Harbor_EventScript_FerryAttendant): with the S.S. Ticket

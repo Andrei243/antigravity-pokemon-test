@@ -1,0 +1,36 @@
+{
+  "StorageDoor": [
+    {
+      "en": [
+        "{player} put the Storage Key in the lock and turned it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The key stuck fast in the lock, but the door swung open."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The door is locked. \"STORAGE\" is painted on it in faded letters."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The door stands open."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

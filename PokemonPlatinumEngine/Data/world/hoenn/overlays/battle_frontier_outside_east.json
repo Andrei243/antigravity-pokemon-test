@@ -9,7 +9,8 @@
   "name": "Battle Frontier",
   "bgmTrack": "hoenn/lilycove",
   "trees": "Round",
-  "locked": [ 0, 1, 2, 3, 13 ],
+  // Artisan Cave's way in (13) is open since plan 21 · H12, part i
+  "locked": [ 0, 1, 2, 3 ],
   "people": {
     "ninja_boy": { "name": "Ninja Boy", "dialog": [ "The Battle Tower's the tallest thing on the island. You can see it from the ferry!" ] },
     "man_3": { "name": "Man", "dialog": [ "I came to see the Tower's famous Trainer battle. They say she never loses at home." ] },

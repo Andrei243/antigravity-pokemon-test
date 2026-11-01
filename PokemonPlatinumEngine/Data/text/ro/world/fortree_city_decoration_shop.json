@@ -1,0 +1,65 @@
+{
+  "people": {
+    "mart_employee": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "mart_employee_2": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "pokefan_m": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Whatever you buy here is sent straight to your own PC. Marvellous!",
+          "I wish they'd send me home the same way. It's a long walk across those bridges."
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    },
+    "girl_3": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm buying a pretty desk to put my dolls on.",
+          "If they sit on the floor of my secret base, they'll get dusty, or catch splinters!"
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,12 +1,11 @@
 {
   // Fortree City (plan 21 · H6): the city in the treetops, its houses built round the trunks and joined by rope
   // bridges, with Winona's Gym on its east side behind a Kecleon nobody can see (fortree_city.txt). The decoration shop
-  // stays shut for part b
+  // sells desks and chairs for a secret base (plan 21 · H12, part i)
   "area": "fortree_city",
   "bgmTrack": "hoenn/fortree",
   "trees": "Round",
   "architecture": "Treetop",
-  "locked": [ 8 ],
   "people": {
     "man_2": { "name": "Man", "dialog": [ "Nobody believes me, but I saw an enormous Pokémon high in the sky, twisting as it flew out to sea." ] },
     "girl_1": { "name": "Girl", "dialog": [ "The trees here drink up the rain and grow taller every year. That's why we build our houses up in them!" ] },

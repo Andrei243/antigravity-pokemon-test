@@ -2,7 +2,7 @@
   // Mossdeep City (plan 21 · H8, part a): the flowering island of the Space Center, with Tate and Liza's Gym and
   // Steven's house (mossdeep_city.txt). Once the Mind Badge is won, Maxie and four grunts gather before the Space
   // Center and file in at the first step onto the triggers (4 to 9, VAR_MOSSDEEP_CITY_STATE 1). Emerald's Game Corner
-  // here is a room of link games and stays shut
+  // here is a room of link games, open since plan 21 · H12, part i with nobody to play them against
   "area": "mossdeep_city",
   "bgmTrack": "hoenn/rustboro",
   "zones": [
@@ -10,7 +10,6 @@
   ],
   "trees": "Round",
   "architecture": "Starward",
-  "locked": [ 9 ],
   "triggers": [
     { "trigger": 0, "script": "Visited" },
     { "trigger": 1, "script": "Visited" },

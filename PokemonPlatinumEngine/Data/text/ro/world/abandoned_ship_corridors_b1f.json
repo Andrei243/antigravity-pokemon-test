@@ -1,0 +1,49 @@
+{
+  "people": {
+    "tuber_m": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Whee! A real ship! It doesn't even rock!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "sailor": {
+      "name": {
+        "en": [
+          "Duncan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Sailor Duncan: A sailor never goes to sea without his Pokémon. Let's see yours!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Sailor Duncan: The bottom of this ship is under water. A Pokémon that could dive might find a way on..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

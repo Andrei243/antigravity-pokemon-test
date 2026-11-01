@@ -1,0 +1,31 @@
+{
+  "key": "abandoned_ship_rooms_2_1f",
+  "index": 300,
+  "name": "Abandoned Ship",
+  "matrix": 249,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Cloudy",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ABANDONED_SHIP",
+  "nightMusic": "MUS_ABANDONED_SHIP",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 16, "to": "abandoned_ship_corridors_1f", "toWarp": 8 },
+    { "x": 5, "z": 16, "to": "abandoned_ship_corridors_1f", "toWarp": 8 },
+    { "x": 4, "z": 1, "to": "abandoned_ship_corridors_1f", "toWarp": 11 }
+  ],
+  "objects": [
+    { "id": "man_4", "looks": "man_4", "movement": "look_south", "x": 7, "z": 13, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 1, "script": "TRAINER_KIRA_AND_DAN_1" },
+    { "id": "woman_4", "looks": "woman_4", "movement": "look_south", "x": 6, "z": 13, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 1, "script": "TRAINER_KIRA_AND_DAN_1" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 4, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_ITEM_ABANDONED_SHIP_ROOMS_2_1F_REVIVE", "item": "Revive", "script": "AbandonedShip_Rooms2_1F_EventScript_ItemRevive" },
+    { "id": "hiker", "looks": "hiker", "movement": "look_east", "x": 3, "z": 2, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_GARRISON" },
+    { "id": "tuber_f", "looks": "tuber_f", "movement": "look_west", "x": 7, "z": 2, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_JANI" }
+  ],
+  "signs": [],
+  "triggers": []
+}

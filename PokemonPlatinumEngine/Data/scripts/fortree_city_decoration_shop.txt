@@ -1,0 +1,121 @@
+# Fortree City's decoration shop (plan 21 · H12, part i). docs/scripts.md describes the language; the lines are our
+# own, on Emerald's beats (data/maps/FortreeCity_DecorationShop/scripts.inc): the left counter sells desks and the right
+# chairs (Emerald's pokemartdecoration lists, at Emerald's prices, decorations.json). What is bought goes into the
+# decoration PC (`openbase buy`: RESULT 1 bought, 0 short of money, 2 no room for its kind), as on the Lilycove
+# Department Store's fifth floor. A question takes six answers, so a long list is asked a page at a time.
+
+
+# The left counter: desks
+script Desks
+  speaker "Clerk"
+  say "Welcome! Our desks will hold up any doll or ornament in your secret base."
+label Page1
+  choose "Which would you like?" "SMALL DESK  3,000" "POKéMON DESK  3,000" "HEAVY DESK  6,000" "RAGGED DESK  6,000" "MORE" "NO, THANKS"
+  if result == 0 goto Small
+  if result == 1 goto Pokemon
+  if result == 2 goto Heavy
+  if result == 3 goto Ragged
+  if result == 4 goto Page2
+  goto Bye
+label Page2
+  choose "Which would you like?" "COMFORT DESK  6,000" "BRICK DESK  9,000" "CAMP DESK  9,000" "HARD DESK  9,000" "BACK TO THE START" "NO, THANKS"
+  if result == 0 goto Comfort
+  if result == 1 goto Brick
+  if result == 2 goto Camp
+  if result == 3 goto Hard
+  if result == 4 goto Page1
+  goto Bye
+label Small
+  openbase buy "Small Desk"
+  goto Sold
+label Pokemon
+  openbase buy "Pokémon Desk"
+  goto Sold
+label Heavy
+  openbase buy "Heavy Desk"
+  goto Sold
+label Ragged
+  openbase buy "Ragged Desk"
+  goto Sold
+label Comfort
+  openbase buy "Comfort Desk"
+  goto Sold
+label Brick
+  openbase buy "Brick Desk"
+  goto Sold
+label Camp
+  openbase buy "Camp Desk"
+  goto Sold
+label Hard
+  openbase buy "Hard Desk"
+label Sold
+  call Told
+  end
+label Bye
+  say "Please come again!"
+  end
+
+
+# The right counter: chairs
+script Chairs
+  speaker "Clerk"
+  say "Welcome! Every secret base needs somewhere to sit. Have a look at our chairs."
+label Page1
+  choose "Which would you like?" "SMALL CHAIR  2,000" "POKéMON CHAIR  2,000" "HEAVY CHAIR  2,000" "RAGGED CHAIR  2,000" "MORE" "NO, THANKS"
+  if result == 0 goto Small
+  if result == 1 goto Pokemon
+  if result == 2 goto Heavy
+  if result == 3 goto Ragged
+  if result == 4 goto Page2
+  goto Bye
+label Page2
+  choose "Which would you like?" "COMFORT CHAIR  2,000" "BRICK CHAIR  2,000" "CAMP CHAIR  2,000" "HARD CHAIR  2,000" "BACK TO THE START" "NO, THANKS"
+  if result == 0 goto Comfort
+  if result == 1 goto Brick
+  if result == 2 goto Camp
+  if result == 3 goto Hard
+  if result == 4 goto Page1
+  goto Bye
+label Small
+  openbase buy "Small Chair"
+  goto Sold
+label Pokemon
+  openbase buy "Pokémon Chair"
+  goto Sold
+label Heavy
+  openbase buy "Heavy Chair"
+  goto Sold
+label Ragged
+  openbase buy "Ragged Chair"
+  goto Sold
+label Comfort
+  openbase buy "Comfort Chair"
+  goto Sold
+label Brick
+  openbase buy "Brick Chair"
+  goto Sold
+label Camp
+  openbase buy "Camp Chair"
+  goto Sold
+label Hard
+  openbase buy "Hard Chair"
+label Sold
+  call Told
+  end
+label Bye
+  say "Please come again!"
+  end
+
+
+# What a counter says once `openbase buy` has been answered
+script Told
+  if result == 0 goto Poor
+  if result == 2 goto Full
+  say "Thank you very much! The {thing} has been sent to your decoration PC."
+  return
+label Poor
+  say "I'm terribly sorry, but you haven't enough money for that."
+  return
+label Full
+  say "I'm sorry, but your decoration PC has no more room for things of that kind."
+  return

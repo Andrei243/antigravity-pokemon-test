@@ -1,0 +1,8 @@
+{
+  // The Abandoned Ship's deck (plan 21 · H12, part i): the wreck of the S.S. Cactus in the sea of Route 108, its stern sunk
+  // and its bow above the water. A surfer comes aboard by the gangway on its south side; the two hatches lead down to the
+  // first deck's corridors and the door at the bow into the captain's office (Emerald's AbandonedShip_Deck)
+  "area": "abandoned_ship_deck",
+  "bgmTrack": "hoenn/abandoned_ship",
+  "trees": "Round"
+}
