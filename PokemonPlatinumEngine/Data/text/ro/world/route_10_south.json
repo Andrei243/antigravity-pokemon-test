@@ -6,7 +6,7 @@
           "Jim"
         ],
         "text": [
-          ""
+          "Jim"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Hiker Jim: Just came out of Rock Tunnel. All those ladders have my legs shaking, but not my Pokémon!"
         ],
         "text": [
-          ""
+          "Drumețul Jim: Tocmai am ieșit din Tunelul de Piatră. Scările alea mi-au făcut picioarele să tremure, dar nu și Pokémonii!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Hiker Jim: Now my Pokémon are shaking too."
         ],
         "text": [
-          ""
+          "Drumețul Jim: Acum tremură și Pokémonii mei."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Robert"
         ],
         "text": [
-          ""
+          "Robert"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Poké Fan Robert: My Pokémon is the cutest in all of Kanto. Here, let me prove it!"
         ],
         "text": [
-          ""
+          "Pokéfanul Robert: Pokémonul meu e cel mai drăgălaș din tot Kanto. Stai să-ți demonstrez!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Poké Fan Robert: Still the cutest. Just not the strongest."
         ],
         "text": [
-          ""
+          "Pokéfanul Robert: Tot cel mai drăgălaș. Doar că nu cel mai puternic."
         ]
       }
     }
@@ -59,7 +59,7 @@
         "Rock Tunnel\nThrough to Route 10's north, by the Power Plant."
       ],
       "text": [
-        ""
+        "Tunelul de Piatră\nCătre nordul Rutei 10, lângă Power Plant."
       ]
     }
   }

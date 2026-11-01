@@ -6,7 +6,7 @@
           "Kenny"
         ],
         "text": [
-          ""
+          "Kenny"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Hiker Kenny: I walked here all the way from Rock Tunnel. My legs are fine; let's battle!"
         ],
         "text": [
-          ""
+          "Drumețul Kenny: Am venit pe jos tot drumul de la Tunelul de Piatră. Picioarele sunt bine; să ne luptăm!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Hiker Kenny: Now my legs are tired."
         ],
         "text": [
-          ""
+          "Drumețul Kenny: Acum mi s-au obosit picioarele."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Tim"
         ],
         "text": [
-          ""
+          "Tim"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Young Couple Tim: This road is our favourite date. You've walked right into it!"
         ],
         "text": [
-          ""
+          "Cuplul tânăr Tim: Drumul ăsta e întâlnirea noastră preferată. Ai intrat direct în ea!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Young Couple Tim: Our date isn't ruined. Probably."
         ],
         "text": [
-          ""
+          "Cuplul tânăr Tim: Întâlnirea noastră nu e stricată. Probabil."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Sue"
         ],
         "text": [
-          ""
+          "Sue"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Young Couple Sue: We battle as a pair. Can you keep up?"
         ],
         "text": [
-          ""
+          "Cuplul tânăr Sue: Ne luptăm în pereche. Poți ține pasul?"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Young Couple Sue: You kept up and then some."
         ],
         "text": [
-          ""
+          "Cuplul tânăr Sue: Ai ținut pasul și chiar mai mult."
         ]
       }
     },
@@ -84,7 +84,7 @@
           "Joshua"
         ],
         "text": [
-          ""
+          "Joshua"
         ]
       },
       "before": {
@@ -92,7 +92,7 @@
           "Pokéfan Joshua: My Pokémon wear matching bows today. Admire them while we battle!"
         ],
         "text": [
-          ""
+          "Pokéfanul Joshua: Pokémonii mei poartă astăzi funde asortate. Admiră-i cât ne luptăm!"
         ]
       },
       "after": {
@@ -100,7 +100,7 @@
           "Pokéfan Joshua: The bows came loose."
         ],
         "text": [
-          ""
+          "Pokéfanul Joshua: Fundele s-au desfăcut."
         ]
       }
     },
@@ -110,7 +110,7 @@
           "Alex"
         ],
         "text": [
-          ""
+          "Alex"
         ]
       },
       "before": {
@@ -118,7 +118,7 @@
           "Pokéfan Alex: I polish my Pokémon every morning. See how they shine!"
         ],
         "text": [
-          ""
+          "Pokéfanul Alex: Îmi lustruiesc Pokémonii în fiecare dimineață. Vezi cum strălucesc!"
         ]
       },
       "after": {
@@ -126,7 +126,7 @@
           "Pokéfan Alex: They still shine. Just less."
         ],
         "text": [
-          ""
+          "Pokéfanul Alex: Tot strălucesc. Doar că mai puțin."
         ]
       }
     },
@@ -136,7 +136,7 @@
           "Clark"
         ],
         "text": [
-          ""
+          "Clark"
         ]
       },
       "before": {
@@ -144,7 +144,7 @@
           "Camper Clark: I'm pitching my tent by the fence tonight. Battle me first!"
         ],
         "text": [
-          ""
+          "Campistul Clark: Îmi montez cortul lângă gard în seara asta. Luptă-te întâi cu mine!"
         ]
       },
       "after": {
@@ -152,7 +152,7 @@
           "Camper Clark: I'll sleep on that one."
         ],
         "text": [
-          ""
+          "Campistul Clark: Dorm pe gândul ăsta."
         ]
       }
     },
@@ -162,7 +162,7 @@
           "Tanner"
         ],
         "text": [
-          ""
+          "Tanner"
         ]
       },
       "before": {
@@ -170,7 +170,7 @@
           "Camper Tanner: These fences make the road a maze. You'll have to get past me!"
         ],
         "text": [
-          ""
+          "Campistul Tanner: Gardurile astea fac din drum un labirint. Va trebui să treci de mine!"
         ]
       },
       "after": {
@@ -178,7 +178,7 @@
           "Camper Tanner: You found the way, all right."
         ],
         "text": [
-          ""
+          "Campistul Tanner: Ai găsit drumul, ce să zic."
         ]
       }
     },
@@ -188,7 +188,7 @@
           "Piper"
         ],
         "text": [
-          ""
+          "Piper"
         ]
       },
       "before": {
@@ -196,7 +196,7 @@
           "Picnicker Piper: I brought sandwiches and a strong team. Hungry for a battle?"
         ],
         "text": [
-          ""
+          "Excursionista Piper: Am adus sandvișuri și o echipă puternică. Ți-e poftă de luptă?"
         ]
       },
       "after": {
@@ -204,7 +204,7 @@
           "Picnicker Piper: I'll eat my sandwiches alone, then."
         ],
         "text": [
-          ""
+          "Excursionista Piper: Atunci o să-mi mănânc sandvișurile singură."
         ]
       }
     },
@@ -214,7 +214,7 @@
           "Ginger"
         ],
         "text": [
-          ""
+          "Ginger"
         ]
       },
       "before": {
@@ -222,7 +222,7 @@
           "Picnicker Ginger: The grass here is perfect for a picnic, and for a battle!"
         ],
         "text": [
-          ""
+          "Excursionista Ginger: Iarba de aici e perfectă pentru un picnic și pentru o luptă!"
         ]
       },
       "after": {
@@ -230,7 +230,7 @@
           "Picnicker Ginger: Picnic it is."
         ],
         "text": [
-          ""
+          "Excursionista Ginger: Atunci rămâne picnicul."
         ]
       }
     },
@@ -240,7 +240,7 @@
           "Bret"
         ],
         "text": [
-          ""
+          "Bret"
         ]
       },
       "before": {
@@ -248,7 +248,7 @@
           "Bird Keeper Bret: My birds roost on these fence posts. Don't scare them off!"
         ],
         "text": [
-          ""
+          "Crescătorul de păsări Bret: Păsările mele se odihnesc pe stâlpii gardului. Să nu le sperii!"
         ]
       },
       "after": {
@@ -256,7 +256,7 @@
           "Bird Keeper Bret: You scared them off anyway."
         ],
         "text": [
-          ""
+          "Crescătorul de păsări Bret: Le-ai speriat oricum."
         ]
       }
     },
@@ -266,7 +266,7 @@
           "Perry"
         ],
         "text": [
-          ""
+          "Perry"
         ]
       },
       "before": {
@@ -274,7 +274,7 @@
           "Bird Keeper Perry: I've been watching you from the end of the road. Battle time!"
         ],
         "text": [
-          ""
+          "Crescătorul de păsări Perry: Te urmăresc de la capătul drumului. E timpul pentru luptă!"
         ]
       },
       "after": {
@@ -282,7 +282,7 @@
           "Bird Keeper Perry: I should have kept watching."
         ],
         "text": [
-          ""
+          "Crescătorul de păsări Perry: Mai bine continuam să mă uit."
         ]
       }
     }
@@ -293,7 +293,7 @@
         "Route 13\nWest to Route 14"
       ],
       "text": [
-        ""
+        "Ruta 13\nSpre vest, către Ruta 14"
       ]
     },
     "R13_001+1": {
@@ -301,7 +301,7 @@
         "Trainer Tips\nA trainer who stands still may still see you coming."
       ],
       "text": [
-        ""
+        "Sfaturi pentru Antrenori\nUn Antrenor care stă pe loc te poate vedea totuși venind."
       ]
     },
     "R13_000+1": {
@@ -309,7 +309,7 @@
         "Trainer Tips\nA Pokémon's held item can turn a battle."
       ],
       "text": [
-        ""
+        "Sfaturi pentru Antrenori\nUn obiect ținut de un Pokémon poate schimba o luptă."
       ]
     }
   }

@@ -6,7 +6,7 @@
           "Gentleman"
         ],
         "text": [
-          ""
+          "Gentlemanul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "I won a whole TM here once. These days I just come in to look at the prize shelves."
         ],
         "text": [
-          ""
+          "Am câștigat odată un TM întreg aici. Acum vin doar să mă uit la rafturile cu premii."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbat"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Coins? Not today. Not until the tables next door are running again."
         ],
         "text": [
-          ""
+          "Monede? Nu azi. Nu până nu funcționează iar mesele de alături."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătorul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Welcome to the Prize Corner. I'm sorry, we can't exchange any coins until the Game Corner opens again."
         ],
         "text": [
-          ""
+          "Bun venit la Prize Corner. Îmi pare rău, nu putem schimba monede până nu se redeschide Game Corner."
         ]
       }
     }
@@ -61,7 +61,7 @@
         "A list of prizes. Every one of them is marked out of stock."
       ],
       "text": [
-        ""
+        "O listă de premii. Toate sunt marcate ca fiind epuizate."
       ]
     },
     "T07R0501_004+1": {
@@ -69,7 +69,7 @@
         "A glass case of prizes, locked."
       ],
       "text": [
-        ""
+        "O vitrină cu premii, încuiată."
       ]
     }
   }

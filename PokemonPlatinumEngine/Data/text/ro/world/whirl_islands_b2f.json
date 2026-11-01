@@ -15,8 +15,8 @@
           "It will not wake for just anyone. Only one who carries the Silver Wing may go down to it."
         ],
         "text": [
-          "",
-          ""
+          "Sub noi se află cea mai adâncă peșteră a insulelor. Acolo doarme păzitorul mării.",
+          "Nu se va trezi pentru oricine. Doar cel care poartă Silver Wing poate coborî la el."
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Sage"
         ],
         "text": [
-          ""
+          "Înțeleptul"
         ]
       },
       "dialog": {
@@ -34,7 +34,7 @@
           "The Silver Wing... Then go down, young one. The guardian of the sea is waiting for you below."
         ],
         "text": [
-          ""
+          "Silver Wing... Atunci coboară, tinere. Păzitorul mării te așteaptă jos."
         ]
       }
     }

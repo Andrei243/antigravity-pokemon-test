@@ -6,7 +6,7 @@
           "Morty"
         ],
         "text": [
-          ""
+          "Morty"
         ]
       },
       "dialog": {
@@ -15,8 +15,8 @@
           "No matter. Climb, {player}. I'll keep watch down here, as the Gym Leaders of Ecruteak always have."
         ],
         "text": [
-          "",
-          ""
+          "Am antrenat toată viața ca să fiu vrednic de pasărea din Turnul Clopotului, și totuși Fetele în kimono te-au ales pe tine.",
+          "N-are importanță. Urcă, {player}. Eu veghez aici, jos, cum au făcut mereu Liderii de Arenă din Ecruteak."
         ]
       }
     }

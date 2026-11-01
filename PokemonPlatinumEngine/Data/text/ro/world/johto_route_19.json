@@ -6,7 +6,7 @@
           "Worker"
         ],
         "text": [
-          ""
+          "Muncitorul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "That rockfall took us weeks to clear. The road's open again now, so swim safely!"
         ],
         "text": [
-          ""
+          "Căderea aia de stânci ne-a luat săptămâni să o curățăm. Drumul e iar deschis, deci înoată în siguranță!"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Worker"
         ],
         "text": [
-          ""
+          "Muncitorul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "We break the leftover rocks with our Pokémon. Machop can lift boulders bigger than I am."
         ],
         "text": [
-          ""
+          "Spargem stâncile rămase cu Pokémonii noștri. Machop poate ridica bolovani mai mari decât mine."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Jerome"
         ],
         "text": [
-          ""
+          "Jerome"
         ]
       },
       "before": {
@@ -50,7 +50,7 @@
           "Swimmer Jerome: I've swum this route every day for years. Let's see if you can keep up!"
         ],
         "text": [
-          ""
+          "Înotătorul Jerome: Am înotat pe ruta asta în fiecare zi ani la rând. Să vedem dacă ții pasul!"
         ]
       },
       "after": {
@@ -58,7 +58,7 @@
           "Swimmer Jerome: I'm all out of breath."
         ],
         "text": [
-          ""
+          "Înotătorul Jerome: Mi-a rămas fără suflare."
         ]
       }
     },
@@ -68,7 +68,7 @@
           "Harold"
         ],
         "text": [
-          ""
+          "Harold"
         ]
       },
       "before": {
@@ -76,7 +76,7 @@
           "Swimmer Harold: The current pulls you east here. Battle me before it pulls you away!"
         ],
         "text": [
-          ""
+          "Înotătorul Harold: Curentul te trage spre est aici. Luptă-te cu mine înainte să te ducă!"
         ]
       },
       "after": {
@@ -84,7 +84,7 @@
           "Swimmer Harold: I'll let the current take me home."
         ],
         "text": [
-          ""
+          "Înotătorul Harold: Las curentul să mă ducă acasă."
         ]
       }
     },
@@ -94,7 +94,7 @@
           "Tucker"
         ],
         "text": [
-          ""
+          "Tucker"
         ]
       },
       "before": {
@@ -102,7 +102,7 @@
           "Swimmer Tucker: My girlfriend and I swim together. I'll show her how strong I am!"
         ],
         "text": [
-          ""
+          "Înotătorul Tucker: Eu și prietena mea înotăm împreună. Îi arăt cât de puternic sunt!"
         ]
       },
       "after": {
@@ -110,7 +110,7 @@
           "Swimmer Tucker: Please don't tell her about this."
         ],
         "text": [
-          ""
+          "Înotătorul Tucker: Te rog, nu-i spune despre asta."
         ]
       }
     },
@@ -120,7 +120,7 @@
           "Debbie"
         ],
         "text": [
-          ""
+          "Debbie"
         ]
       },
       "before": {
@@ -128,7 +128,7 @@
           "Swimmer Debbie: He's showing off again. Let me show him how it's really done!"
         ],
         "text": [
-          ""
+          "Înotătoarea Debbie: Iar se dă mare. Lasă-mă să-i arăt cum se face cu adevărat!"
         ]
       },
       "after": {
@@ -136,7 +136,7 @@
           "Swimmer Debbie: Well, at least he didn't see that."
         ],
         "text": [
-          ""
+          "Înotătoarea Debbie: Măcar el n-a văzut asta."
         ]
       }
     }
@@ -147,7 +147,7 @@
         "Route 19\nFuchsia City - Seafoam Islands"
       ],
       "text": [
-        ""
+        "Ruta 19\nOrașul Fuchsia - Insulele Seafoam"
       ]
     },
     "W19_004+1": {
@@ -155,7 +155,7 @@
         "Notice\nWatch for falling rocks near the shore."
       ],
       "text": [
-        ""
+        "Avertisment\nAtenție la căderile de stânci de lângă țărm."
       ]
     }
   }

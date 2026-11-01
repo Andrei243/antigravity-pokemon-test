@@ -6,7 +6,7 @@
           "Fidel"
         ],
         "text": [
-          ""
+          "Fidel"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Psychic Fidel: I saw this battle in a dream last night. Shall we see how it ends?"
         ],
         "text": [
-          ""
+          "Mediumul Fidel: Am văzut lupta asta într-un vis azi-noapte. Să vedem cum se termină?"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Psychic Fidel: My dream ended differently."
         ],
         "text": [
-          ""
+          "Mediumul Fidel: Visul meu s-a terminat altfel."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Herman"
         ],
         "text": [
-          ""
+          "Herman"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Psychic Herman: I can read your next move before you make it. Go on, try me!"
         ],
         "text": [
-          ""
+          "Mediumul Herman: Îți citesc următoarea mutare înainte s-o faci. Haide, încearcă-mă!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Psychic Herman: I read it. I just couldn't stop it."
         ],
         "text": [
-          ""
+          "Mediumul Herman: Am citit-o. Doar că n-am putut-o opri."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Owen"
         ],
         "text": [
-          ""
+          "Owen"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Youngster Owen: My dad works at the harbour. I trained my Pokémon on the docks!"
         ],
         "text": [
-          ""
+          "Puștiul Owen: Tata lucrează în port. Mi-am antrenat Pokémonii pe docuri!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Youngster Owen: I'll go back to the docks and train some more."
         ],
         "text": [
-          ""
+          "Puștiul Owen: Mă întorc la docuri să mă antrenez mai mult."
         ]
       }
     },
@@ -84,7 +84,7 @@
           "Jason"
         ],
         "text": [
-          ""
+          "Jason"
         ]
       },
       "before": {
@@ -92,7 +92,7 @@
           "Youngster Jason: I run up and down this road every day. Bet you can't keep up!"
         ],
         "text": [
-          ""
+          "Puștiul Jason: Alerg pe drumul ăsta în fiecare zi. Pun pariu că nu ții pasul!"
         ]
       },
       "after": {
@@ -100,7 +100,7 @@
           "Youngster Jason: You kept up, all right."
         ],
         "text": [
-          ""
+          "Puștiul Jason: Ai ținut pasul, ce să zic."
         ]
       }
     }
@@ -111,7 +111,7 @@
         "Diglett's Cave\nA tunnel dug by Diglett, through to Route 2."
       ],
       "text": [
-        ""
+        "Peștera Diglett\nUn tunel săpat de Diglett, până la Ruta 2."
       ]
     },
     "R11_002+1": {
@@ -119,7 +119,7 @@
         "Route 11\nVermilion City - Route 12"
       ],
       "text": [
-        ""
+        "Ruta 11\nOrașul Vermilion - Ruta 12"
       ]
     }
   }

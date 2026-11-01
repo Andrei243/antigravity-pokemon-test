@@ -6,7 +6,7 @@
           "Tourist"
         ],
         "text": [
-          ""
+          "Turistul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "I came for the carvings and found these Pokémon floating between them. They look like the carvings come to life!"
         ],
         "text": [
-          ""
+          "Am venit pentru sculpturi și am găsit Pokémonii ăștia plutind printre ele. Parcă sunt sculpturile aduse la viață!"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Tourist"
         ],
         "text": [
-          ""
+          "Turistul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Every one of them is a different shape. I'm trying to see one of each, but I keep losing count."
         ],
         "text": [
-          ""
+          "Fiecare e de altă formă. Încerc să văd câte unul din fiecare, dar mă încurc la numărat."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Old man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "When I was young the Ruins were only stones in a field. Now there's a whole hall under them. Who'd have thought?"
         ],
         "text": [
-          ""
+          "Când eram tânăr, Ruinele erau doar pietre într-un câmp. Acum e o sală întreagă sub ele. Cine ar fi crezut?"
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Scientist"
         ],
         "text": [
-          ""
+          "Omul de știință"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "We're copying out every carving on these pillars. There are more shapes than letters in any alphabet we know."
         ],
         "text": [
-          ""
+          "Copiem fiecare sculptură de pe pilonii ăștia. Sunt mai multe forme decât litere în orice alfabet cunoscut de noi."
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Scientist"
         ],
         "text": [
-          ""
+          "Omul de știință"
         ]
       },
       "dialog": {
@@ -86,7 +86,7 @@
           "The Pokémon here are called Unown. They seem to gather wherever the carvings are thickest."
         ],
         "text": [
-          ""
+          "Pokémonii de aici se numesc Unown. Par să se adune oriunde sculpturile sunt mai dese."
         ]
       }
     },
@@ -96,7 +96,7 @@
           "Scientist"
         ],
         "text": [
-          ""
+          "Omul de știință"
         ]
       },
       "dialog": {
@@ -104,7 +104,7 @@
           "Each panel that was solved seems to have woken more of them. I wonder what solving all four would do."
         ],
         "text": [
-          ""
+          "Fiecare panou rezolvat pare să fi trezit mai mulți dintre ei. Mă întreb ce ar face rezolvarea tuturor celor patru."
         ]
       }
     },
@@ -114,7 +114,7 @@
           "Scientist"
         ],
         "text": [
-          ""
+          "Omul de știință"
         ]
       },
       "dialog": {
@@ -122,7 +122,7 @@
           "Careful where you step. We've only just begun to map this place, and it may go deeper still."
         ],
         "text": [
-          ""
+          "Ai grijă pe unde calci. Abia am început să cartografiem locul ăsta și poate coborî și mai adânc."
         ]
       }
     }
@@ -133,7 +133,7 @@
         "Strange shapes are carved in rows down the pillar. They look a little like the Pokémon floating in the hall."
       ],
       "text": [
-        ""
+        "Forme ciudate sunt sculptate în rânduri pe pilon. Seamănă puțin cu Pokémonii care plutesc în sală."
       ]
     }
   }

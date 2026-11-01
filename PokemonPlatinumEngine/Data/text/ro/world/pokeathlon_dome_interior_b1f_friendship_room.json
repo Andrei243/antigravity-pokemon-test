@@ -6,7 +6,7 @@
           "Dome Owner"
         ],
         "text": [
-          ""
+          "Proprietarul domului"
         ]
       },
       "dialog": {
@@ -15,8 +15,8 @@
           "Battles aren't everything. Friendship is what makes a Pokémon run, jump and push with all it has."
         ],
         "text": [
-          "",
-          ""
+          "Ai găsit ultima sală! Am construit domul dintr-un singur motiv: ca fiecare Pokémon să simtă ce înseamnă să fii aclamat.",
+          "Luptele nu sunt totul. Prietenia e cea care face un Pokémon să alerge, să sară și să împingă cu tot ce are."
         ]
       }
     }
@@ -27,7 +27,7 @@
         "An empty pedestal. Its plaque says a statue will stand here for the Trainer who wins gold on every course."
       ],
       "text": [
-        ""
+        "Un piedestal gol. Plăcuța spune că aici va sta o statuie pentru Antrenorul care câștigă aurul la fiecare traseu."
       ]
     },
     "D49R0107_002+1": {
@@ -35,7 +35,7 @@
         "The dome's motto in big letters: \"Every Pokémon can shine.\""
       ],
       "text": [
-        ""
+        "Deviza domului, cu litere mari: „Fiecare Pokémon poate străluci.”"
       ]
     },
     "D49R0107_003+1": {
@@ -43,7 +43,7 @@
         "A picture of the dome being built, with the owner and his Poliwrath carrying a beam."
       ],
       "text": [
-        ""
+        "O poză cu domul în construcție, cu proprietarul și Poliwrath-ul lui purtând o grindă."
       ]
     },
     "D49R0107_004+1": {
@@ -51,7 +51,7 @@
         "A picture of the dome's first winners, three small Pokémon holding up a trophy together."
       ],
       "text": [
-        ""
+        "O poză cu primii câștigători ai domului, trei Pokémon mici ținând împreună un trofeu."
       ]
     }
   }

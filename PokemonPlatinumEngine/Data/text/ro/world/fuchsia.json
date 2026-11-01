@@ -6,7 +6,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbat"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "The Safari Zone closed down, you know. The warden went off travelling, and now there's a gate to some park there."
         ],
         "text": [
-          ""
+          "Safari Zone s-a închis, să știi. Paznicul a plecat în călătorii, iar acum e o poartă spre un parc de acolo."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeie"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Janine took over the Gym when her father joined the Elite Four. She's every bit as sneaky as he was."
         ],
         "text": [
-          ""
+          "Janine a preluat Arena când tatăl ei s-a alăturat Elitei celor Patru. E la fel de șireată ca el."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiat"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Route 19 runs south into the sea. Swimmers race all the way to the Seafoam Islands from here."
         ],
         "text": [
-          ""
+          "Ruta 19 duce spre sud, în mare. Înotătorii fac curse de aici până la Insulele Seafoam."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Juggler"
         ],
         "text": [
-          ""
+          "Jonglerul"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "I practise juggling Poké Balls out here. If I drop one, it pops open, so I never drop one."
         ],
         "text": [
-          ""
+          "Mă antrenez aici cu jonglatul cu Poké Ball-uri. Dacă scap una, se deschide, așa că nu scap niciuna."
         ]
       }
     }
@@ -79,7 +79,7 @@
         "Pal Park\nThe gate is closed."
       ],
       "text": [
-        ""
+        "Pal Park\nPoarta este închisă."
       ]
     },
     "T08_005+1": {
@@ -87,7 +87,7 @@
         "Safari Zone Warden's Home"
       ],
       "text": [
-        ""
+        "Casa Paznicului din Safari Zone"
       ]
     },
     "T08_003+1": {
@@ -95,7 +95,7 @@
         "Fuchsia City Pokémon Gym\nLeader: Janine"
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orașul Fuchsia\nLider: Janine"
       ]
     },
     "T08_009+1": {
@@ -103,7 +103,7 @@
         "Fuchsia City\nA town of old gardens and quiet ninjas."
       ],
       "text": [
-        ""
+        "Orașul Fuchsia\nUn oraș cu grădini vechi și ninja liniștiți."
       ]
     }
   }

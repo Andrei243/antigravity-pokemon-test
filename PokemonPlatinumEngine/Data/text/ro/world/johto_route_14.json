@@ -6,7 +6,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeie"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "The grass on this route grows so tall you can lose sight of the road. Keep your Repels handy."
         ],
         "text": [
-          ""
+          "Iarba de pe ruta asta crește așa de înaltă încât poți pierde drumul din ochi. Ține Repel-urile la îndemână."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Trevor"
         ],
         "text": [
-          ""
+          "Trevor"
         ]
       },
       "before": {
@@ -32,7 +32,7 @@
           "Pokéfan Trevor: I've raised my Pokémon like my own children. They'll show you!"
         ],
         "text": [
-          ""
+          "Pokéfanul Trevor: Mi-am crescut Pokémonii ca pe propriii copii. O să-ți arate ei!"
         ]
       },
       "after": {
@@ -40,7 +40,7 @@
           "Pokéfan Trevor: My children did their best."
         ],
         "text": [
-          ""
+          "Pokéfanul Trevor: Copiii mei au făcut tot ce-au putut."
         ]
       }
     },
@@ -50,7 +50,7 @@
           "Clarice"
         ],
         "text": [
-          ""
+          "Clarice"
         ]
       },
       "before": {
@@ -58,7 +58,7 @@
           "Teacher Clarice: My class is out on a nature walk. Let's give them a lesson to watch!"
         ],
         "text": [
-          ""
+          "Profesoara Clarice: Clasa mea e la o plimbare în natură. Să le dăm o lecție de privit!"
         ]
       },
       "after": {
@@ -66,7 +66,7 @@
           "Teacher Clarice: That was a lesson for me, I think."
         ],
         "text": [
-          ""
+          "Profesoara Clarice: Cred că asta a fost o lecție pentru mine."
         ]
       }
     },
@@ -76,7 +76,7 @@
           "Roy"
         ],
         "text": [
-          ""
+          "Roy"
         ]
       },
       "before": {
@@ -84,7 +84,7 @@
           "Bird Keeper Roy: My birds fly ahead and tell me who's coming. They told me about you!"
         ],
         "text": [
-          ""
+          "Crescătorul de păsări Roy: Păsările mele zboară înainte și îmi spun cine vine. Mi-au spus de tine!"
         ]
       },
       "after": {
@@ -92,7 +92,7 @@
           "Bird Keeper Roy: They didn't tell me you were this strong."
         ],
         "text": [
-          ""
+          "Crescătorul de păsări Roy: Nu mi-au spus că ești atât de puternic."
         ]
       }
     },
@@ -102,7 +102,7 @@
           "Carter"
         ],
         "text": [
-          ""
+          "Carter"
         ]
       },
       "before": {
@@ -110,7 +110,7 @@
           "Pokéfan Carter: I'm the president of a fan club. Members only, but battles are open!"
         ],
         "text": [
-          ""
+          "Pokéfanul Carter: Sunt președintele unui fan club. Doar pentru membri, dar luptele sunt deschise!"
         ]
       },
       "after": {
@@ -118,7 +118,7 @@
           "Pokéfan Carter: Would you like to join the club?"
         ],
         "text": [
-          ""
+          "Pokéfanul Carter: Ai vrea să te alături clubului?"
         ]
       }
     },
@@ -128,7 +128,7 @@
           "Josh"
         ],
         "text": [
-          ""
+          "Josh"
         ]
       },
       "before": {
@@ -136,7 +136,7 @@
           "Bird Keeper Josh: The wind blows straight down this route. My birds love it!"
         ],
         "text": [
-          ""
+          "Crescătorul de păsări Josh: Vântul bate drept de-a lungul rutei ăsteia. Păsările mele îl adoră!"
         ]
       },
       "after": {
@@ -144,7 +144,7 @@
           "Bird Keeper Josh: The wind changed."
         ],
         "text": [
-          ""
+          "Crescătorul de păsări Josh: Vântul s-a schimbat."
         ]
       }
     },
@@ -154,7 +154,7 @@
           "Torin"
         ],
         "text": [
-          ""
+          "Torin"
         ]
       },
       "before": {
@@ -162,7 +162,7 @@
           "School Kid Torin: We're on a nature walk. Battling counts as nature, right?"
         ],
         "text": [
-          ""
+          "Școlarul Torin: Suntem la o plimbare în natură. Lupta se pune la natură, nu?"
         ]
       },
       "after": {
@@ -170,7 +170,7 @@
           "School Kid Torin: Back in line, I suppose."
         ],
         "text": [
-          ""
+          "Școlarul Torin: Înapoi în rând, presupun."
         ]
       }
     },
@@ -180,7 +180,7 @@
           "Connor"
         ],
         "text": [
-          ""
+          "Connor"
         ]
       },
       "before": {
@@ -188,7 +188,7 @@
           "School Kid Connor: I'm at the back of the line, so I get to battle you first!"
         ],
         "text": [
-          ""
+          "Școlarul Connor: Sunt la coada șirului, așa că mă lupt eu primul cu tine!"
         ]
       },
       "after": {
@@ -196,7 +196,7 @@
           "School Kid Connor: I'll stay at the back."
         ],
         "text": [
-          ""
+          "Școlarul Connor: Rămân la coadă."
         ]
       }
     },
@@ -206,7 +206,7 @@
           "Travis"
         ],
         "text": [
-          ""
+          "Travis"
         ]
       },
       "before": {
@@ -214,7 +214,7 @@
           "School Kid Travis: Teacher said no battling. She's not looking. Quick!"
         ],
         "text": [
-          ""
+          "Școlarul Travis: Doamna profesoară a interzis luptele. Acum nu se uită. Repede!"
         ]
       },
       "after": {
@@ -222,7 +222,7 @@
           "School Kid Travis: Don't tell her about this."
         ],
         "text": [
-          ""
+          "Școlarul Travis: Să nu-i spui despre asta."
         ]
       }
     }

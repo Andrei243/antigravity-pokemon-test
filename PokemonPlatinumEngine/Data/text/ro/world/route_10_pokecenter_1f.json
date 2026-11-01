@@ -6,7 +6,7 @@
           "Nurse"
         ],
         "text": [
-          ""
+          "Asistenta"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "Your Trainer Card shows your name, your money and the Pokémon you've seen. Have a look at it from the menu."
         ],
         "text": [
-          ""
+          "Trainer Card-ul îți arată numele, banii și Pokémonii pe care i-ai văzut. Aruncă o privire în meniu."
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "I'm sorry, the link to other players is closed for now."
         ],
         "text": [
-          ""
+          "Îmi pare rău, legătura cu alți jucători e închisă deocamdată."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "I'm sorry, the link to other players is closed for now."
         ],
         "text": [
-          ""
+          "Îmi pare rău, legătura cu alți jucători e închisă deocamdată."
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Gentleman"
         ],
         "text": [
-          ""
+          "Gentlemanul"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "Rock Tunnel winds back and forth between two floors. Keep to the ladders and you'll come out by Lavender Town."
         ],
         "text": [
-          ""
+          "Tunelul de Piatră șerpuiește între două etaje. Ține-te de scări și vei ieși lângă Orășelul Lavender."
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeie"
         ]
       },
       "dialog": {
@@ -96,7 +96,7 @@
           "The Power Plant down the river keeps the lights on all over Kanto. And the Magnet Train running, too."
         ],
         "text": [
-          ""
+          "Power Plant din josul râului ține luminile aprinse în tot Kanto. Și Trenul Magnetic în mișcare, de asemenea."
         ]
       }
     },
@@ -106,7 +106,7 @@
           "Engineer"
         ],
         "text": [
-          ""
+          "Inginerul"
         ]
       },
       "dialog": {
@@ -114,7 +114,7 @@
           "I work at the Power Plant. I only came in here for a rest, so don't tell the manager."
         ],
         "text": [
-          ""
+          "Lucrez la Power Plant. Am intrat aici doar să mă odihnesc, așa că nu-i spune managerului."
         ]
       }
     }

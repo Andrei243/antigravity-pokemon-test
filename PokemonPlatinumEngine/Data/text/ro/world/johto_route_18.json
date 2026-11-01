@@ -6,7 +6,7 @@
           "Bob"
         ],
         "text": [
-          ""
+          "Bob"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Bird Keeper Bob: My birds ride the sea breeze off the Cycling Road. Watch them swoop!"
         ],
         "text": [
-          ""
+          "Crescătorul de păsări Bob: Păsările mele călăresc briza mării de pe Drumul Bicicliștilor. Vezi-le cum plonjează!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Bird Keeper Bob: The breeze dropped."
         ],
         "text": [
-          ""
+          "Crescătorul de păsări Bob: Briza a scăzut."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Boris"
         ],
         "text": [
-          ""
+          "Boris"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Bird Keeper Boris: I come here to watch the bikers fly by. You'll make a change!"
         ],
         "text": [
-          ""
+          "Crescătorul de păsări Boris: Vin aici să privesc motocicliștii cum zboară. Tu ești o schimbare!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Bird Keeper Boris: You flew past me, too."
         ],
         "text": [
-          ""
+          "Crescătorul de păsări Boris: Și tu ai zburat pe lângă mine."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Charles"
         ],
         "text": [
-          ""
+          "Charles"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Biker Charles: You made it all the way down? Then you've earned a battle with me!"
         ],
         "text": [
-          ""
+          "Motociclistul Charles: Ai ajuns tot drumul în jos? Atunci ți-ai câștigat o luptă cu mine!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Biker Charles: You earned the win, too."
         ],
         "text": [
-          ""
+          "Motociclistul Charles: Ți-ai câștigat și victoria."
         ]
       }
     }
@@ -85,7 +85,7 @@
         "Route 18\nCycling Road - Fuchsia City"
       ],
       "text": [
-        ""
+        "Ruta 18\nDrumul Bicicliștilor - Orașul Fuchsia"
       ]
     }
   }

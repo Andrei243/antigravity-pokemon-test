@@ -6,7 +6,7 @@
           "Sid"
         ],
         "text": [
-          ""
+          "Sid"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Camper Sid: I pitched my tent right on the road. Anyone who passes has to battle me!"
         ],
         "text": [
-          ""
+          "Campistul Sid: Mi-am pus cortul chiar pe drum. Oricine trece trebuie să se lupte cu mine!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Camper Sid: I should have pitched it somewhere quieter."
         ],
         "text": [
-          ""
+          "Campistul Sid: Trebuia să-l pun într-un loc mai liniștit."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Edna"
         ],
         "text": [
-          ""
+          "Edna"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Picnicker Edna: I walk this road every weekend. My Pokémon know every bump in it!"
         ],
         "text": [
-          ""
+          "Excursionista Edna: Merg pe drumul ăsta în fiecare weekend. Pokémonii mei îi știu fiecare hop!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Picnicker Edna: We tripped over the last bump."
         ],
         "text": [
-          ""
+          "Excursionista Edna: Ne-am împiedicat de ultimul hop."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Dean"
         ],
         "text": [
-          ""
+          "Dean"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Camper Dean: I'm on my way to Rock Tunnel. You look like a good warm-up!"
         ],
         "text": [
-          ""
+          "Campistul Dean: Merg spre Tunelul de Piatră. Arăți ca o încălzire bună!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Camper Dean: Some warm-up. I'm worn out."
         ],
         "text": [
-          ""
+          "Campistul Dean: Ce încălzire. Sunt epuizat."
         ]
       }
     },
@@ -84,7 +84,7 @@
           "Clarke"
         ],
         "text": [
-          ""
+          "Clarke"
         ]
       },
       "before": {
@@ -92,7 +92,7 @@
           "Hiker Clarke: These hills have nothing on the mountains of Johto. Let's see what you've brought!"
         ],
         "text": [
-          ""
+          "Drumețul Clarke: Dealurile astea nu se compară cu munții din Johto. Să vedem ce ai adus!"
         ]
       },
       "after": {
@@ -100,7 +100,7 @@
           "Hiker Clarke: You'd make a fine climber."
         ],
         "text": [
-          ""
+          "Drumețul Clarke: Ai fi un alpinist bun."
         ]
       }
     },
@@ -110,7 +110,7 @@
           "Eoin"
         ],
         "text": [
-          ""
+          "Eoin"
         ]
       },
       "before": {
@@ -118,7 +118,7 @@
           "Hiker Eoin: I've been pacing up and down here all day. A battle will settle my legs!"
         ],
         "text": [
-          ""
+          "Drumețul Eoin: Mă plimb de colo-colo toată ziua. O luptă îmi va liniști picioarele!"
         ]
       },
       "after": {
@@ -126,7 +126,7 @@
           "Hiker Eoin: My legs are settled. So is the battle."
         ],
         "text": [
-          ""
+          "Drumețul Eoin: Picioarele mi s-au liniștit. La fel și lupta."
         ]
       }
     },
@@ -136,7 +136,7 @@
           "Heidi"
         ],
         "text": [
-          ""
+          "Heidi"
         ]
       },
       "before": {
@@ -144,7 +144,7 @@
           "Picnicker Heidi: I brought sandwiches for my Pokémon. They battle better full!"
         ],
         "text": [
-          ""
+          "Excursionista Heidi: Am adus sandvișuri pentru Pokémonii mei. Se luptă mai bine sătui!"
         ]
       },
       "after": {
@@ -152,7 +152,7 @@
           "Picnicker Heidi: I'll bring more sandwiches next time."
         ],
         "text": [
-          ""
+          "Excursionista Heidi: Data viitoare aduc mai multe sandvișuri."
         ]
       }
     }
@@ -163,7 +163,7 @@
         "Route 9\nCerulean City - Rock Tunnel"
       ],
       "text": [
-        ""
+        "Ruta 9\nOrașul Cerulean - Tunelul de Piatră"
       ]
     }
   }
