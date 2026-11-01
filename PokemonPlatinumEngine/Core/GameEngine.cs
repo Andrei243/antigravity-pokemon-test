@@ -1016,8 +1016,14 @@ public partial class GameEngine
         // The frame's actions are read once, as a frame (plan 16 · T11f), unless a tool or a test hands the game its own
         if (InputManager.Fed != null) { UpdateFrame(dt); return; }
         InputManager.Feed(InputManager.ReadKeys());
+        // The mouse's frame (plan 12 · Q6)
+        InputManager.FeedPointer(InputManager.ReadPointer());
         try { UpdateFrame(dt); }
-        finally { InputManager.Feed(null); }
+        finally
+        {
+            InputManager.Feed(null);
+            InputManager.FeedPointer(default);
+        }
     }
 
     private void UpdateFrame(float dt)
@@ -1116,6 +1122,9 @@ public partial class GameEngine
             Settings.Save();
             ShowNotification(Settings.Muted ? Text.Of("engine.sound.off") : Text.Of("engine.sound.on"));
         }
+
+        // The mouse (plan 12 · Q6, Q7): a hover moves the screen's cursor, a click is its Confirm, a right click its Cancel
+        KeepThePointer(dt);
 
         switch (flow.State)
         {
@@ -3110,6 +3119,8 @@ public partial class GameEngine
         closePrompt.Draw(VirtualWidth, VirtualHeight);
         // The developer's console and frame time over all of it (plan 16 · T6)
         DrawDev();
+        // The pointer's arrow over everything, while the mouse is in use (plan 12 · Q6)
+        if (pointer.Shown) ModernUi.PointerArrow(pointer.At);
 
         Raylib.EndMode2D();
         // (Ending the 2D mode drew what was batched; every other target is written whole)
@@ -3130,6 +3141,9 @@ public partial class GameEngine
         int destH = (int)(VirtualHeight * scale);
         int destX = (screenW - destW) / 2;
         int destY = (screenH - destH) / 2;
+        // Kept, so the mouse is read in the layout's units (plan 12 · Q6; Viewport.Fit is the same sum)
+        Viewport = new Viewport(destX, destY, scale);
+        InputManager.Viewport = Viewport;
 
         Raylib.BeginDrawing();
         Raylib.ClearBackground(Color.Black);

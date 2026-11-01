@@ -487,6 +487,41 @@ public class PartyScreen
         else Close();
     }
 
+    // ---------------------------------------------------------------- the pointer (plan 12 · Q6)
+
+    /// <summary>The first index of the Pokémon's menu in <see cref="HitTest"/>'s answers.</summary>
+    public const int ActionHits = 100;
+
+    /// <summary>
+    /// What lies under a point: a card of the team (its place), or a row of the chosen Pokémon's menu while it is up
+    /// (<see cref="ActionHits"/> + the row). The summary, the list of moves to remember and the helpers' strip are the keys'.
+    /// </summary>
+    public int? HitTest(System.Numerics.Vector2 at, Party party)
+    {
+        if (!IsActive || ShowSummary || Remembering) return null;
+        if (Actions != null)
+            return ModernUi.HitRow(ModernUi.PartyActionRows(GameEngine.VirtualWidth, SelectedIndex, Actions.Count), at) is int row ? ActionHits + row : null;
+        for (int i = 0; i < party.Count; i++)
+            if (UiPointer.Inside(ModernUi.PartyCardRect(i), at)) return i;
+        return null;
+    }
+
+    /// <summary>A hover: the cursor onto the card or the menu's row under the pointer.</summary>
+    public void PointAt(int index, Party party)
+    {
+        if (index >= ActionHits)
+        {
+            if (Actions != null && index - ActionHits != ActionIndex) MoveAction(index - ActionHits - ActionIndex);
+            return;
+        }
+        if (Actions != null || index >= party.Count || index == SelectedIndex) return;
+        OnStrip = false;
+        Message = null;
+        SelectedIndex = index;
+        View.PutCursorsAway();
+        AudioManager.PlaySound("cursor");
+    }
+
     /// <summary>Moves the cursor of the open menu up or down.</summary>
     public void MoveAction(int dy)
     {

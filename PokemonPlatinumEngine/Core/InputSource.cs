@@ -19,7 +19,7 @@ public enum WindowEvents : byte
 /// (after its tenth of a second's cap), the computer's clock read at the frame's start (UTC ticks), the actions held
 /// and pressed (<see cref="ActionFrame"/>, two bitmasks) and what happened to the window. Twenty-one bytes.
 /// </summary>
-public readonly record struct InputFrame(float Dt, long UtcTicks, ActionFrame Actions, WindowEvents Window = WindowEvents.None)
+public readonly record struct InputFrame(float Dt, long UtcTicks, ActionFrame Actions, WindowEvents Window = WindowEvents.None, PointerFrame Pointer = default)
 {
     public DateTime Utc => new(UtcTicks, DateTimeKind.Utc);
 }
@@ -43,7 +43,7 @@ public sealed class LiveInput : IInputSource
     /// <summary>What the window did this frame, which the loop sets before asking for the frame.</summary>
     public WindowEvents Window { get; set; }
 
-    public InputFrame? Next(float dt) => new InputFrame(dt, WallClock.Reading().Ticks, InputManager.ReadKeys(), Window);
+    public InputFrame? Next(float dt) => new InputFrame(dt, WallClock.Reading().Ticks, InputManager.ReadKeys(), Window, InputManager.ReadPointer());
 }
 
 /// <summary>A recording's frames, one after another, as they were played (plan 16 · T19).</summary>

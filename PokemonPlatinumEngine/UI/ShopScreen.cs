@@ -157,6 +157,33 @@ public class ShopScreen
         if (tick.Sounds(held)) AudioManager.PlaySound("cursor");
     }
 
+    // ---------------------------------------------------------------- the pointer (plan 12 · Q6)
+
+    /// <summary>What lies under a point: BUY, SELL or SEE YA! on the first question, a row of the list after it; "how many?" is the keys'.</summary>
+    public int? HitTest(System.Numerics.Vector2 at)
+    {
+        if (!IsActive || ChoosingQuantity) return null;
+        if (Mode == ShopMode.Choosing) return UiPointer.Hit(ModernUi.ShopQuestionButtons(GameEngine.VirtualWidth, GameEngine.VirtualHeight), at);
+        return ModernUi.HitRow(ModernUi.ListRows(ModernUi.ShopList(), FirstRow, VisibleRows, Listed.Count, 40, Listed.Count > VisibleRows), at);
+    }
+
+    /// <summary>A hover: the cursor onto the answer or the row under the pointer.</summary>
+    public void PointAt(int index)
+    {
+        if (Mode == ShopMode.Choosing)
+        {
+            if (index == ChoiceIndex || index < 0 || index >= Choices.Length) return;
+            ChoiceIndex = index;
+        }
+        else
+        {
+            if (ChoosingQuantity || index == SelectedIndex || index < 0 || index >= Listed.Count) return;
+            SelectedIndex = index;
+            FirstRow = UiNav.Window(FirstRow, SelectedIndex, Listed.Count, VisibleRows);
+        }
+        AudioManager.PlaySound("cursor");
+    }
+
     /// <summary>
     /// The A button: on the first question, goes to the stock, to the bag's items or out; on an item, asks how many
     /// (or says the money doesn't reach); on the number, buys or sells them. Returns what the player's money

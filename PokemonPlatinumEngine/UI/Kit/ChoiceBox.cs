@@ -46,6 +46,14 @@ public sealed class ChoiceBox
         AudioManager.PlaySound("cursor");
     }
 
+    /// <summary>The cursor to an answer the pointer is over (plan 12 · Q6).</summary>
+    public void PointAt(int index)
+    {
+        if (!IsOpen || index == Cursor || index < 0 || index >= Options.Count) return;
+        Cursor = index;
+        AudioManager.PlaySound("cursor");
+    }
+
     /// <summary>The A button: the answer under the cursor.</summary>
     public void Confirm()
     {

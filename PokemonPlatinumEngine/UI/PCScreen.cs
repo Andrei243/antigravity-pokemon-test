@@ -293,6 +293,58 @@ public partial class PCScreen
         if (tick.Sounds(held)) AudioManager.PlaySound(Box != boxBefore ? "page" : "cursor");
     }
 
+    // ---------------------------------------------------------------- the pointer (plan 12 · Q6)
+
+    /// <summary>The indices <see cref="HitTest"/> gives beside a card of the team (0 to 5): the box's name, the arrows and a place.</summary>
+    public const int NameHit = 50, BoxBefore = 60, BoxAfter = 61, CellHits = 100;
+
+    /// <summary>
+    /// What lies under a point while nothing is open over the boxes: a card of the team, the box's name, an arrow to
+    /// the box before or after, a place of the box (<see cref="CellHits"/> + the place). A click is the A button where
+    /// the cursor stands (an arrow changes the box instead); the menus, the marks and the tools are the keys'.
+    /// </summary>
+    public int? HitTest(System.Numerics.Vector2 at, int partyCount)
+    {
+        if (!IsActive || Busy || TeamsOpen) return null;
+        // Among the team's cards only those with a Pokémon, and the first empty one while one is carried
+        for (int i = 0; i < Party.MaxSize; i++)
+            if (UiPointer.Inside(ModernUi.StorageTeamCard(i), at)) return i < partyCount + (Held != null ? 1 : 0) ? i : null;
+        if (UiPointer.Inside(ModernUi.StorageArrow(-1), at)) return BoxBefore;
+        if (UiPointer.Inside(ModernUi.StorageArrow(1), at)) return BoxAfter;
+        if (UiPointer.Inside(ModernUi.StoragePlate(), at)) return NameHit;
+        for (int i = 0; i < BoxSize; i++)
+            if (UiPointer.Inside(ModernUi.StorageCell(i), at)) return CellHits + i;
+        return null;
+    }
+
+    /// <summary>A hover: the cursor onto the card, the name or the place under the pointer.</summary>
+    public void PointAt(int index, int partyCount)
+    {
+        // Among the team's cards only those with a Pokémon, and the first empty one while one is carried, can be pointed at
+        if (index < Party.MaxSize && index >= partyCount + (Held != null ? 1 : 0)) return;
+        var (zone, party, cell) = index switch
+        {
+            < Party.MaxSize => (StorageZone.Party, index, Cell),
+            NameHit => (StorageZone.BoxName, PartyIndex, Cell),
+            >= CellHits => (StorageZone.Box, PartyIndex, index - CellHits),
+            _ => (Zone, PartyIndex, Cell)
+        };
+        if (zone == Zone && party == PartyIndex && cell == Cell) return;
+        Zone = zone;
+        PartyIndex = party;
+        Cell = cell;
+        View.PutCursorsAway();
+        AudioManager.PlaySound("cursor");
+    }
+
+    /// <summary>A click on an arrow beside the box's name changes the box, and is no A button.</summary>
+    public bool Press(int index, int partyCount)
+    {
+        if (index is not (BoxBefore or BoxAfter)) return false;
+        ChangeBox(index == BoxBefore ? -1 : 1, partyCount);
+        return true;
+    }
+
     /// <summary>The page buttons (plan 12 · Q5): the previous or the next box, wherever the cursor is, unless a menu or a question is open.</summary>
     public bool ChangeBox(int step, int partyCount)
     {

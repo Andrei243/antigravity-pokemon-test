@@ -179,6 +179,23 @@ public class StartMenu
         return StartMenuChoice.None;
     }
 
+    // ------------------------------------------------------------------ the pointer (plan 12 · Q6)
+
+    /// <summary>The entry (or, while "Quit the game?" is up, the answer) under a point; null for none.</summary>
+    public int? HitTest(System.Numerics.Vector2 at)
+    {
+        if (!IsActive) return null;
+        if (AskingToQuit) return UiPointer.Hit(ModernUi.PromptButtons(GameEngine.VirtualWidth, GameEngine.VirtualHeight, QuitAnswers.Length), at);
+        return UiPointer.Hit(ModernUi.StartMenuRows(GameEngine.VirtualWidth, EntryCount), at);
+    }
+
+    /// <summary>The cursor to an entry or an answer, as the arrows would bring it there.</summary>
+    public void PointAt(int index)
+    {
+        int now = AskingToQuit ? QuitIndex : SelectedIndex;
+        if (index != now) Move(index - now);
+    }
+
     // ------------------------------------------------------------------ drawing
 
     private (string Label, UiIcon Icon, Color Color) Describe(Entry entry) => entry switch

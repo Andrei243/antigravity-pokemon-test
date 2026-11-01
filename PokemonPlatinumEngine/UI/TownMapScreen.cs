@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Raylib_cs;
 using PokemonPlatinumEngine.Audio;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
@@ -134,6 +135,50 @@ public sealed class TownMapScreen
         sinceMove = 0f;
         if (tick.Sounds(held)) AudioManager.PlaySound("cursor");
         return true;
+    }
+
+    // ---------------------------------------------------------------- the pointer (plan 12 · Q6)
+
+    /// <summary>Where the map's picture stands on the screen once the screen has slid in (<c>ModernUi.DrawTownMap</c>).</summary>
+    public Rectangle PictureRect()
+    {
+        var view = State!.Region.View;
+        const float MapWidth = 960, MapHeight = 768, Pad = 32;
+        float whole = MathF.Floor(Math.Min(MapWidth / view.Width, MapHeight / view.Height));
+        return new Rectangle(ModernUi.Margin + Pad + (MapWidth - view.Width * whole) / 2f, ModernUi.ContentTop + Pad + (MapHeight - view.Height * whole) / 2f,
+            view.Width * whole, view.Height * whole);
+    }
+
+    /// <summary>
+    /// The cell of the map under a point, as its column and row from the view's top left times 4096 (row) and 1 (column);
+    /// null off the map's picture. A click is the A button on it: Fly's choice there, or the zoom while looking.
+    /// </summary>
+    public int? HitTest(System.Numerics.Vector2 at)
+    {
+        if (!IsActive || State == null) return null;
+        var picture = PictureRect();
+        if (!UiPointer.Inside(picture, at)) return null;
+        var view = State.Region.View;
+        var (zx, zy) = ZoomShown;
+        float shownW = Zoomed ? view.Width / (float)Zoom : view.Width, shownH = Zoomed ? view.Height / (float)Zoom : view.Height;
+        float originX = Zoomed ? zx : 0f, originY = Zoomed ? zy : 0f;
+        float cell = picture.Width / shownW;
+        int cx = (int)MathF.Floor(originX + (at.X - picture.X) / cell), cy = (int)MathF.Floor(originY + (at.Y - picture.Y) / cell);
+        if (cx < 0 || cy < 0 || cx >= view.Width || cy >= view.Height) return null;
+        return cy * 4096 + cx;
+    }
+
+    /// <summary>A hover: the cursor onto the cell under the pointer, held inside the region's bounds.</summary>
+    public void PointAt(int index)
+    {
+        if (State == null || index < 0) return;
+        var view = State.Region.View;
+        var b = State.Region.Bounds;
+        int x = Math.Clamp(view.X + index % 4096, b.Left, b.Right), y = Math.Clamp(view.Y + index / 4096, b.Top, b.Bottom);
+        if (x == CursorX && y == CursorY) return;
+        (CursorX, CursorY) = (x, y);
+        sinceMove = 0f;
+        if (tick.Sounds(false)) AudioManager.PlaySound("cursor");
     }
 
     /// <summary>

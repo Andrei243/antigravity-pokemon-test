@@ -116,6 +116,20 @@ public class SaveScreen
     /// <summary>True while any of the panel is still on screen (it slides away after it closes).</summary>
     public bool Visible => reveal.Visible;
 
+    /// <summary>What lies under a point (plan 12 · Q6): SAVE or CANCEL; anywhere once it says "saved", where any press sends it away.</summary>
+    public int? HitTest(System.Numerics.Vector2 at)
+    {
+        if (!IsActive) return null;
+        if (Saved) return Kit.UiPointer.Anywhere;
+        return Kit.UiPointer.Hit(ModernUi.SaveButtons(GameEngine.VirtualWidth, Objective), at);
+    }
+
+    /// <summary>A hover: the cursor onto the button under the pointer.</summary>
+    public void PointAt(int index)
+    {
+        if (index is 0 or 1 && index != AnswerIndex) Move(index - AnswerIndex);
+    }
+
     public void Update(float dt)
     {
         Advance(dt);

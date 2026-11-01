@@ -25,8 +25,13 @@ public static class Movie
         engine.WindowFocused = (frame.Window & WindowEvents.Unfocused) == 0;
         if ((frame.Window & WindowEvents.CloseAsked) != 0) engine.RequestClose();
         InputManager.Feed(frame.Actions);
+        InputManager.FeedPointer(frame.Pointer); // the mouse's frame too (plan 12 · Q6)
         try { engine.Update(frame.Dt); }
-        finally { InputManager.Feed(null); }
+        finally
+        {
+            InputManager.Feed(null);
+            InputManager.FeedPointer(default);
+        }
     }
 
     /// <summary>Lets go of everything a frame held: the clock, the picture's clock and the fed actions.</summary>

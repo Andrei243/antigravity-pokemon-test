@@ -156,12 +156,12 @@ internal static partial class ModernUi
                 MessageBox(new Rectangle(48, 858, 1060, 172), null, balls ? PlayerIdentity.Name : battle.IsRotation ? battle.Fighter.DisplayName : active.DisplayName);
                 var (big, labels) = CommandLabels(battle);
                 Color[] colors = { Gold, Green, Blue };
-                Button(new Rectangle(1140, 848, 432, 190), balls ? 30 : 34, Red, big, balls ? 40 : 60, hud.MainMenuIndex == 0);
+                Button(CommandRect(0), balls ? 30 : 34, Red, big, balls ? 40 : 60, hud.MainMenuIndex == 0);
                 if (battle.IsRotation) RotationArrows(new Rectangle(1140, 848, 432, 190), battle.RotationArmed, battle.Fighter.DisplayName);
                 // The bag closed (plan 14 · B14): BAG stands greyed in its place, and choosing it says why
                 if (battle.BagClosed) colors[0] = Closed;
                 for (int i = 0; i < 3; i++)
-                    if (labels[i].Length > 0) Button(new Rectangle(1600, 848 + i * 66, 272, 58), 29, colors[i], labels[i], 28, hud.MainMenuIndex == i + 1);
+                    if (labels[i].Length > 0) Button(CommandRect(i + 1), 29, colors[i], labels[i], 28, hud.MainMenuIndex == i + 1);
                 // AUTO beside FIGHT, on the prompt's corner (plan 12 · Q12)
                 if (battle.AutoOffered && !battle.AutoRunning) AutoButton(lit: false, hud.MainMenuIndex == BattleEngine.AutoIndex);
                 break;
@@ -664,7 +664,7 @@ internal static partial class ModernUi
     {
         for (int i = 0; i < 4; i++)
         {
-            var r = new Rectangle(48 + (i % 2) * 556, 848 + (i / 2) * 100, 536, 88);
+            var r = MoveCardRect(i);
             bool selected = hud.MoveMenuIndex == i;
             if (i >= p.Moves.Count)
             {
@@ -710,7 +710,7 @@ internal static partial class ModernUi
                 : battle.EnemySlots[0];
             for (int i = 0; i < Math.Min(4, p.Moves.Count); i++)
             {
-                var r = new Rectangle(48 + (i % 2) * 556, 848 + (i / 2) * 100, 536, 88);
+                var r = MoveCardRect(i);
                 if (left != null) HintPill(r.X + 150, r.Y, battle.HintFor(p.Moves[i], left), alignRight: false);
                 HintPill(r.X + r.Width - 24, r.Y, battle.HintFor(p.Moves[i], right), alignRight: true);
             }
@@ -763,7 +763,7 @@ internal static partial class ModernUi
 
         for (int i = 0; i < Party.MaxSize; i++)
         {
-            var r = new Rectangle(48 + (i % 3) * 616, 648 + (i / 3) * 196, 592, 180);
+            var r = TeamCardRect(i);
             if (i >= party.Count)
             {
                 EmptySlot(r, 30);
@@ -829,14 +829,14 @@ internal static partial class ModernUi
 
         for (int i = 0; i < BattleBag.Pockets.Length; i++)
         {
-            var r = new Rectangle(48 + (i % 2) * 920, 648 + (i / 2) * 132, 904, 116);
+            var r = PocketButtonRect(i);
             int count = BattleBag.Items(battle.PlayerInventory, i).Count;
             Button(r, 34, PocketColors[i], BattleBag.Pockets[i], 38, hud.BagPocketIndex == i);
             string held = Text.Of("battleMenu.kinds", ("n", count));
             UiFonts.DrawCentered(held, r.X + r.Width - 40 - UiFonts.Measure(held, 24, UiWeight.Black), r.Y + r.Height / 2f, 24,
                 new Color(255, 255, 255, 220), UiWeight.Black);
         }
-        var last = new Rectangle(48, 912, 1824, 108);
+        var last = PocketButtonRect(BattleBag.Pockets.Length);
         Button(last, 34, new Color(126, 132, 156, 255), battle.LastUsedItem is { } name ? Text.Of("battleMenu.lastItemUsedWas", ("item", name.ToUpperInvariant())) : Text.Of("battleMenu.lastItemUsed"),
             34, hud.BagPocketIndex == BattleBag.LastUsed);
     }
@@ -859,7 +859,7 @@ internal static partial class ModernUi
         for (int slot = 0; slot < BattleEngine.BagRows * BattleEngine.BagColumns; slot++)
         {
             int i = first + slot;
-            var r = new Rectangle(48 + (slot % 2) * 584, 648 + (slot / 2) * 96, 568, 86);
+            var r = BagCardRect(slot);
             if (i >= listed.Count)
             {
                 EmptySlot(r, 26);
@@ -901,7 +901,7 @@ internal static partial class ModernUi
 
         for (int i = 0; i < Party.MaxSize; i++)
         {
-            var r = new Rectangle(48 + (i % 3) * 616, 648 + (i / 3) * 196, 592, 180);
+            var r = TeamCardRect(i);
             if (i >= party.Count)
             {
                 EmptySlot(r, 30);

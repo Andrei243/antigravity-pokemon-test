@@ -203,6 +203,9 @@ public static class Program
         // Main Game Loop: the window's close button asks first (plan 12 · Q1), and the game ends once it is answered
         long frames = 0;
         var live = new LiveInput();
+        // The mouse is read in the game's own window alone, and drawn as the game's own arrow (plan 12 · Q6)
+        InputManager.ReadsTheMouse = true;
+        Raylib.HideCursor();
         try
         {
             while (!engine.QuitRequested)

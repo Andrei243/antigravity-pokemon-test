@@ -24,7 +24,7 @@ public sealed record MovieCheckpoint(int Frame, double Seconds, uint[] Hash);
 public sealed class InputRecording
 {
     /// <summary>The file's shape; a file of a newer one is refused.</summary>
-    public const int FormatVersion = 1;
+    public const int FormatVersion = 2; // 2: each frame keeps the mouse's too (plan 12 · Q6)
 
     private const string Magic = "PPMOVIE";
 
@@ -114,6 +114,13 @@ public sealed class InputRecording
             w.Write(f.Actions.Down);
             w.Write(f.Actions.Pressed);
             w.Write((byte)f.Window);
+            if (Format >= 2)
+            {
+                w.Write(f.Pointer.X);
+                w.Write(f.Pointer.Y);
+                w.Write((byte)f.Pointer.Buttons);
+                w.Write(f.Pointer.Wheel);
+            }
         }
         w.Write(Checkpoints.Count);
         foreach (var c in Checkpoints)
@@ -153,7 +160,11 @@ public sealed class InputRecording
         int frames = r.ReadInt32();
         recording.Frames.Capacity = frames;
         for (int i = 0; i < frames; i++)
-            recording.Frames.Add(new InputFrame(r.ReadSingle(), r.ReadInt64(), new ActionFrame(r.ReadUInt32(), r.ReadUInt32()), (WindowEvents)r.ReadByte()));
+        {
+            var frame = new InputFrame(r.ReadSingle(), r.ReadInt64(), new ActionFrame(r.ReadUInt32(), r.ReadUInt32()), (WindowEvents)r.ReadByte());
+            if (format >= 2) frame = frame with { Pointer = new PointerFrame(r.ReadSingle(), r.ReadSingle(), (PointerButtons)r.ReadByte(), r.ReadSingle()) };
+            recording.Frames.Add(frame);
+        }
         int checkpoints = r.ReadInt32();
         for (int i = 0; i < checkpoints; i++)
         {

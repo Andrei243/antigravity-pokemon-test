@@ -739,10 +739,24 @@ internal static partial class ModernUi
         }
 
         UiFonts.DrawCentered(SaveScreen.Question(slot), r.X + 56, cy, 44, Ink, UiWeight.Black);
+        // The buttons stand where the pointer finds them (plan 12 · Q6)
+        var buttons = SaveButtons(sw, next, shown);
+        Button(buttons[0], 42, Green, SaveScreen.Answers[0], 32, answer == 0);
+        Button(buttons[1], 42, Blue, SaveScreen.Answers[1], 32, answer == 1);
+    }
+
+    /// <summary>SAVE and CANCEL under the saving panel's question (<see cref="DrawSave"/>).</summary>
+    public static Rectangle[] SaveButtons(int sw, string next = "", float shown = 1f)
+    {
+        float band = next.Length > 0 ? NextPanelHeight(next, 1080 - 96) - 12 : 0;
+        var r = new Rectangle(sw / 2f - 540, 140 + (1f - shown) * 60f, 1080, 780 + band);
         const float gap = 32;
         float bw = (r.Width - 112 - gap) / 2f;
-        Button(new Rectangle(r.X + 56, r.Y + r.Height - 56 - 84, bw, 84), 42, Green, SaveScreen.Answers[0], 32, answer == 0);
-        Button(new Rectangle(r.X + 56 + bw + gap, r.Y + r.Height - 56 - 84, bw, 84), 42, Blue, SaveScreen.Answers[1], 32, answer == 1);
+        return new[]
+        {
+            new Rectangle(r.X + 56, r.Y + r.Height - 56 - 84, bw, 84),
+            new Rectangle(r.X + 56 + bw + gap, r.Y + r.Height - 56 - 84, bw, 84)
+        };
     }
 
     // ------------------------------------------------------------------ the Vs. Recorder (plan 08 · P11)

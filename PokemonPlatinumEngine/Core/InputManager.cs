@@ -139,6 +139,49 @@ public static class InputManager
     /// <summary>The frame this thread is fed, if any.</summary>
     public static ActionFrame? Fed => fed;
 
+    // ------------------------------------------------------------------ the mouse (plan 12 · Q6)
+
+    /// <summary>
+    /// Whether the mouse is read at all: set by <c>Program.Main</c> alone, so a test, the harness and a tool that makes
+    /// an engine of its own never read the computer's mouse, and their pictures can't move with it.
+    /// </summary>
+    public static bool ReadsTheMouse { get; set; }
+
+    /// <summary>Where the picture stands in the window, as the last frame drawn fitted it (<c>GameEngine.Draw</c>).</summary>
+    public static Viewport Viewport { get; set; } = Viewport.Identity;
+
+    [ThreadStatic] private static PointerFrame fedPointer;
+    private static Vector2 lastMouse;
+    private static bool sawTheMouse;
+
+    /// <summary>The mouse's frame this thread is handed (plan 12 · Q6): a recording's, a tool's, or the window's as read; none otherwise.</summary>
+    public static PointerFrame Pointer => fedPointer;
+
+    /// <summary>Hands this thread's reads a frame of the mouse; the default is a mouse that did nothing.</summary>
+    public static void FeedPointer(PointerFrame pointer) => fedPointer = pointer;
+
+    /// <summary>
+    /// The mouse as raylib reports it this frame, in the layout's units (plan 12 · Q6): nothing unless
+    /// <see cref="ReadsTheMouse"/>. A pointer that moves or clicks makes the keyboard the device in hand, so the hints
+    /// show key caps while the mouse is used.
+    /// </summary>
+    public static PointerFrame ReadPointer()
+    {
+        if (!ReadsTheMouse || !Raylib.IsWindowReady()) return default;
+        var at = Viewport.ToLayout(Raylib.GetMousePosition());
+        var buttons = PointerButtons.None;
+        if (sawTheMouse && Vector2.DistanceSquared(at, lastMouse) > 0.25f) buttons |= PointerButtons.Moved;
+        if (Raylib.IsMouseButtonPressed(MouseButton.Left)) buttons |= PointerButtons.Click;
+        if (Raylib.IsMouseButtonPressed(MouseButton.Right)) buttons |= PointerButtons.RightClick;
+        if (Raylib.IsMouseButtonDown(MouseButton.Left)) buttons |= PointerButtons.Held;
+        if (Viewport.OnThePicture(at)) buttons |= PointerButtons.Inside;
+        sawTheMouse = true;
+        lastMouse = at;
+        var frame = new PointerFrame(at.X, at.Y, buttons, Raylib.GetMouseWheelMove());
+        if (frame.Any) LastDevice = InputDevice.Keyboard;
+        return frame;
+    }
+
     /// <summary>
     /// The keys and the pad as a frame (plan 16 · T11f): every action down now, and every action whose key or button
     /// went down this frame, as raylib reports them. The engine reads it once a frame and feeds it to its update.

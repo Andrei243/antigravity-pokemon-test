@@ -80,6 +80,18 @@ public sealed class NameEntry
         else Column = WideStarts[UiNav.Wrap(WideIndex, Math.Sign(dx), WideKeys.Length)];
     }
 
+    /// <summary>The cursor onto a key the pointer is over (plan 12 · Q6): a letter's row and column, or the wide row and a wide key's first column.</summary>
+    public bool PointAt(int row, int column)
+    {
+        if (Done || row < 0 || row > RowCount) return false;
+        if (row < RowCount && (column < 0 || column >= KeysIn(row))) return false;
+        if (row == RowCount) column = WideStarts[Math.Clamp(Array.IndexOf(WideStarts, column), 0, WideStarts.Length - 1)];
+        if (row == Row && column == Column) return false;
+        Row = row;
+        Column = column;
+        return true;
+    }
+
     /// <summary>The A button: presses the key under the cursor. Returns what the key was.</summary>
     public NameKey Press()
     {
