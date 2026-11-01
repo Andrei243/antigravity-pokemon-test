@@ -7396,3 +7396,42 @@ on the newest games' lines (a retry as their difficulty helps offer one, a suspe
   the menu then opens where the battle was left (or the next question, where it was left mid-turn). One whose data has
   changed since, or that can't be read, is refused at the title with a notice and taken away; one whose record no
   longer fits (a move learned mid-battle outside the record) is dropped and the game goes on from where the battle began.
+
+## Trades between saves and the Home box (2026-11-01, plan 12 · Q28, Q29)
+
+Neither is Platinum's: the original trades over a cable or the Nintendo Wi-Fi Connection, and keeps nothing between
+cartridges but what Pal Park brings over. Both are ours, on the newest games' lines (a trade between two of one's own
+games, and Pokémon HOME's boxes), behind the title's HOME row, which is there whenever a save can be read.
+
+- **No game is loaded.** The slots are read as the title read them (`SaveSlots.Read`) and written with Q1's writer; the
+  Home box is `home.json` beside them (`SavePaths.HomeBox`, `Models/Bank.cs`'s `HomeBank`: eight boxes of thirty, written
+  as a save is, a temporary file, the old file kept as `home.bak`, a checksum).
+- **Four writes and a receipt** (`Core/HomeMoves.cs`), as plan 08 · P22's moves of six (`SlotMoves`), sharing its
+  `MoveReceipt` (`Kind` Trade or Home; a trade's other half is its `Back`). A trade: the first save with its Pokémon
+  swapped and the receipt, the second the same, the receipt closed in the first, then in the second. A move to or from
+  the Home box: the side that takes it, with it and the receipt; the side that gives it, without it and with the
+  receipt; the receipt closed in the taker, then in the giver. `HomeMoves.Resolve` runs at every start beside
+  `SlotMoves.Resolve` and before every new move: a trade stopped after its first write is carried forward (the second
+  save made the same) unless that save is gone or another game, when the first is put back; a move whose taker is gone
+  goes back to the giver. Whatever is stopped, each Pokémon is in exactly one place afterwards. The plan spoke of three
+  writes; the fourth is the receipt closed in the second file, which a stop after the third finishes.
+- **Each Pokémon arrives as a traded one**: into the team if there is room (and the run lets it carry it), else the
+  first free box place; with the giving save's player as its original trainer if it had none; and none again where that
+  is the receiving save's own player (`TrainerMark.Is`), so a Pokémon traded back is its first player's own. It is listed
+  in the receiving save's `ArrivedByTrade` with the species it was traded for; continuing that save hands each, once the
+  field is up and no script runs, to `GameEngine.ReceiveTradedPokemon` where it already is: it is registered, its
+  friendship starts afresh at its species' base, it joins the region, and it evolves if trading is its way (an Everstone
+  stops it as anywhere, but for Platinum's own Kadabra, which evolves through one). The next save no longer lists it. **Decision (the plan's default)**: one that lands in a box
+  doesn't evolve, since `FindEvolutions` asks only the team, as every evolution of the game does.
+- **Refused** (said as the Pokémon is chosen): an Egg in a trade (the friendship's reset would undo its cycles); a
+  Pokémon with no id (a save not continued since ids were given is brought up to date in memory first, `SaveMigration`);
+  the same id already on the other side; a save whose run holds it (a Nuzlocke or a challenge's restrictions under way,
+  `HomeMoves.RunHolds`: nothing leaves and nothing comes in until it ends, by its whiteout or its Hall of Fame); the team
+  left with nobody able to battle; no room; a save a newer game wrote; a slot with a battle suspended beside it (Q25's
+  file restores its Pokémon by id); a Home box written under another `GameDataFiles.Version`, refused whole with a
+  notice and nothing in it touched; plan 18's `Crossing.CanTake`, which under option B lets every one in.
+- **The autosave** of a slot that gives or takes is taken away (`AutosaveFile.ClearFor`), or it could offer back a
+  Pokémon that has left.
+- **A randomised run's mark** (plan 13 · V6) is kept in the Home box (`BankedPokemon.Randomised`, RANDOM on its row);
+  a Pokémon carries no mark of its own, so it is lost once taken out into a save.
+- **Moved one at a time**: Q26's selection of many isn't offered in the Home box yet.

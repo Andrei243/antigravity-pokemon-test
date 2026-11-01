@@ -36,6 +36,8 @@ public sealed partial class GameFlow
     public JournalScreen JournalScreen { get; } = new();
     public ReplayListScreen ReplayListScreen { get; } = new();
     public MigrateScreen MigrateScreen { get; } = new();
+    /// <summary>The title's HOME (plan 12 · Q28, Q29).</summary>
+    public HomeScreen HomeScreen { get; } = new();
     /// <summary>The jukebox (plan 12 · Q15), and where it goes back to.</summary>
     public JukeboxScreen JukeboxScreen { get; } = new();
     /// <summary>The start menu's REQUESTS (plan 12 · Q21).</summary>

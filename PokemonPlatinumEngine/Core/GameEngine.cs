@@ -119,7 +119,9 @@ public enum GameState
     /// <summary>Photo mode in the field: the field stilled under a free camera, a picture taken of it (plan 12 · Q16).</summary>
     Photo,
     /// <summary>The start menu's REQUESTS: the errands under way and done, and what is left here (plan 12 · Q21, Q22).</summary>
-    Requests
+    Requests,
+    /// <summary>The title's HOME: trades between the player's own saves and the Home box they share (plan 12 · Q28, Q29).</summary>
+    Home
 }
 
 public partial class GameEngine
@@ -344,6 +346,8 @@ public partial class GameEngine
             // A move between slots cut short by a crash is finished (or undone) before any slot is read (plan 08 · P22)
             int finished = SlotMoves.Resolve(paths);
             if (finished > 0) Log.Info($"{finished} move(s) of Pokémon between slots, cut short by the last run, were finished or undone.");
+            // and so is a trade between slots, or a move to or from the Home box (plan 12 · Q28, Q29)
+            HomeMoves.Resolve(paths);
 
             titleSlots = SaveSlots.Read(paths);
             var crashed = CrashReport.TakePending(paths.Folder);
@@ -492,6 +496,8 @@ public partial class GameEngine
 
         flow.SaveSlot = from;
         ApplySaveData(save);
+        // Pokémon traded in from another of the player's saves are welcomed once the field is up (plan 12 · Q28)
+        TakeUpTheTrades(save);
         // The Journal opens by itself on a game left two days or more (Journal_CheckOpenOnContinue), and today's page is begun
         bool showJournal = flow.Bag.GetQuantity(ItemDatabase.Get("Journal")!) > 0 && flow.Journal.OpensOnContinue(GameClock.Today);
         flow.Journal.TakenUp(GameClock.Today, PlaceName());
@@ -1142,6 +1148,9 @@ public partial class GameEngine
                     case TitleChoice.Migrate:
                         OpenMigrate();
                         break;
+                    case TitleChoice.Home:
+                        OpenHome();
+                        break;
                     case TitleChoice.Jukebox:
                         OpenJukebox(GameState.Title);
                         break;
@@ -1486,6 +1495,9 @@ public partial class GameEngine
             case GameState.Migrate:
                 UpdateMigrate(dt);
                 break;
+            case GameState.Home:
+                UpdateHome(dt);
+                break;
             case GameState.Jukebox:
                 UpdateJukebox(dt);
                 break;
@@ -1628,6 +1640,8 @@ public partial class GameEngine
         RefreshPresence();
         // A Pokémon caught under the Nuzlocke is named before the field goes on (plan 13 · V4)
         if (NameTheCatch()) return;
+        // A Pokémon traded in from another of the player's saves is welcomed, and evolves if trading was its way (plan 12 · Q28)
+        if (!flow.Runner.IsRunning && HandOverATrade()) return;
 
         // Whoever travels with the player keeps up, whatever else has the field
         flow.Along?.Update(fieldDt, flow.Player.Stride);
@@ -2121,14 +2135,18 @@ public partial class GameEngine
     /// goes into the Pokédex, and evolves there and then if trading is what it was waiting for, which can't be
     /// stopped. Saving and what the other side receives are the caller's.
     /// </summary>
-    public bool ReceiveTradedPokemon(Pokemon received, Pokemon? given = null)
+    public bool ReceiveTradedPokemon(Pokemon received, Pokemon? given = null, PokemonSpecies? tradedFor = null)
     {
+        // One already in the team or the boxes is a trade between the player's own saves (plan 12 · Q28): the save
+        // that was continued put it there, and only its welcome is left to give
+        bool alreadyHere = OwnedPokemon().Any(p => ReferenceEquals(p, received));
         // A Pokémon whose id the player holds already is one received before (a receipt played twice): it is
         // refused, and nothing changes (plan 07 · O2). One that comes with no id (a character's) is given one.
-        if (received.Id != Guid.Empty && OwnedPokemon().Any(p => p != given && p.Id == received.Id)) return false;
+        if (received.Id != Guid.Empty && OwnedPokemon().Any(p => p != given && !ReferenceEquals(p, received) && p.Id == received.Id)) return false;
 
         int place = given != null ? flow.Party.Members.IndexOf(given) : -1;
-        if (place >= 0) flow.Party.Members[place] = received;
+        if (alreadyHere) { }
+        else if (place >= 0) flow.Party.Members[place] = received;
         else
         {
             if (given != null) flow.Boxes.Remove(given);
@@ -2143,7 +2161,7 @@ public partial class GameEngine
         GiveIds();
 
         var returnTo = flow.State == GameState.Transition ? flow.After : flow.State;
-        PlayEvolutions(FindEvolutions(new[] { received }, EvolutionTrigger.Trade, cancellable: false, given?.Species), returnTo);
+        PlayEvolutions(FindEvolutions(new[] { received }, EvolutionTrigger.Trade, cancellable: false, tradedFor ?? given?.Species), returnTo);
         return true;
     }
 
@@ -2952,6 +2970,9 @@ public partial class GameEngine
                 break;
             case GameState.Migrate:
                 flow.MigrateScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.Home:
+                flow.HomeScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.Jukebox:
                 flow.JukeboxScreen.Draw(VirtualWidth, VirtualHeight);

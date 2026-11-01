@@ -191,6 +191,7 @@ if (mode == "townmap") h.RegionMapMode();
 if (mode == "epilogue") h.EpilogueMode();
 if (mode == "amity") h.AmityMode();
 if (mode == "saves") h.SavesMode();
+if (mode == "home") h.HomeMode();
 if (mode == "crash") h.CrashMode();
 if (mode == "formats") h.FormatsMode();
 if (mode == "ways") h.WaysMode();
