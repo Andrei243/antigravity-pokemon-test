@@ -151,6 +151,8 @@ public enum Op
     Photograph,
     // A request's step taken (plan 12 · Q21): its number stored as VAR_REQUEST_<ID>, where no flag of the original marks it
     Request,
+    // A trainer tip raised (plan 12 · Q23): shown once, at the next quiet moment, while the options' TIPS row holds
+    Tip,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

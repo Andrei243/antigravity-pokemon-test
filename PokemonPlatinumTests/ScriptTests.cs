@@ -407,6 +407,7 @@ public class ScriptTests
           townmap
           objective roark
           request poketch 1
+          tip nurse
           tutor moves "route_212"
           tutor afford
           tutor pay

@@ -93,6 +93,50 @@ partial class Harness
 
         // Auto-battle (plan 12 · Q12), last of all for the same reason
         AutoShots();
+
+        // A trainer tip (plan 12 · Q23), after everything, with its own team and chance
+        BattleTip();
+    }
+
+    // The first status condition's tip: the row on for this battle alone, the wild battle's own tip counted as shown, Toxic
+    // landing on the foe, and the tip up over the main menu as it opens again (23j_battle_tip)
+    void BattleTip()
+    {
+        var tipsBefore = engine.Settings.Tips;
+        engine.Settings.Tips = RulesDefault.On;
+        game.Flow.Tips.Load(new[] { "wild" });
+        try
+        {
+            var team = new Party();
+            var lead = new Pokemon(PokemonDatabase.Get("Roserade")!, 40, new Random(51));
+            lead.Moves.Clear();
+            lead.Moves.Add(new Move(MoveDatabase.Get("Toxic")));
+            team.Add(lead);
+            var foe = new Pokemon(PokemonDatabase.Get("Bibarel")!, 20, new Random(52));
+            game.Map = MapDatabase.Get("Sinnoh");
+            var e = new BattleEngine(new BattleSetup
+            {
+                PlayerParty = team, Inventory = new Inventory(), Pokedex = new Pokedex(),
+                WildPokemon = new List<Pokemon> { foe }, Random = new PokemonPlatinumEngine.Battle.Sim.BattleRandom(15)
+            });
+            game.BattleRenderer.SetArena(game.Map);
+            game.Battle = e;
+            game.State = GameState.Battle;
+            ToMainMenu(e);
+            e.SelectMove(0);
+            for (int guard = 0; guard < 30 && e.HUD.MenuState != BattleMenuState.Main && !e.IsBattleOver; guard++) { Confirm(e); Skip(25 / 60.0); }
+            for (int guard = 0; guard < 120 && !engine.TipShown; guard++) Frames(1);
+            if (!engine.TipShown) Console.WriteLine("!! the poison's tip never came up");
+            Frames(20); Shot("23j_battle_tip");
+            Console.WriteLine($"  tip: \"{game.Flow.ShownTip?.Id}\" over the menu {e.HUD.MenuState}, the foe {e.EnemyPokemon.Status}, waiting {string.Join(",", game.Flow.Tips.Waiting)}");
+            engine.PutTipAway();
+            Frames(2);
+        }
+        finally
+        {
+            game.Flow.Tips.Clear();
+            engine.Settings.Tips = tipsBefore;
+        }
     }
 
     // A trainer's first Pokémon knocked out under Battle Style Shift: the offer's question with the next one named

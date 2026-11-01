@@ -109,7 +109,7 @@ internal sealed partial class Autoplayer
 
     /// <summary>The field is the player's: nothing running, shown or open over it.</summary>
     public bool FieldIsFree => game.State == GameState.Overworld && !engine.ScriptRunning && game.Flow.TrainerApproach == null
-        && !game.StartMenu.IsActive && !game.Dialogue.IsActive;
+        && !game.StartMenu.IsActive && !game.Dialogue.IsActive && !engine.TipShown;
 
     private bool settling;
 
@@ -153,6 +153,12 @@ internal sealed partial class Autoplayer
         stateSeconds += dt;
 
         if (state != GameState.Overworld) engine.Steering = null;
+        // A trainer tip up over the field or a battle is read and put away (plan 12 · Q23)
+        if (engine.TipShown)
+        {
+            engine.Steering = null;
+            return Pulse(GameAction.Confirm);
+        }
         switch (state)
         {
             case GameState.Overworld:

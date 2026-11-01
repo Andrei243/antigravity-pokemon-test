@@ -271,6 +271,28 @@ partial class Harness
         // Captions and holding to confirm (plan 12 · Q9, part b), last of all: Modes/LookCaptions.cs
         LookCaptionsAndHold();
 
+        // The trainer tips' row and HELP's TIPS tab (plan 12 · Q23), last of all: the row, then the tab with three tips
+        // counted as shown and the second under the cursor. Put back after
+        game.State = GameState.Options;
+        options.Open();
+        GoToRow(OptionRow.Tips);
+        Frames(1); Shot("look_16_options_tips");
+        game.Flow.Tips.Load(new[] { "poison", "cutTree", "nurse" });
+        options.Help.TipsSeen = game.Flow.Tips.Seen;
+        options.Help.Open();
+        options.Help.Move(0, -1);
+        options.Help.Move(0, -1);
+        for (int i = 0; i < 3; i++) options.Help.Move(1, 0);
+        options.Help.Move(0, 1);
+        options.Help.Move(0, 1);
+        Frames(1); Shot("look_16_help_tips");
+        Console.WriteLine($"help's tips: {string.Join(", ", options.Help.TipsSeen.Select(t => t.Id))}, the cursor on {options.Help.TipsSeen[options.Help.TipCursor].Id}");
+        options.Help.Cancel();
+        game.Flow.Tips.Clear();
+        options.Help.TipsSeen = game.Flow.Tips.Seen;
+        game.State = GameState.Overworld;
+        Frames(1);
+
         if (args.Length > 2)
             Boards(args[2], new[] { "look_1_twinleaf", "look_2_dialogue", "look_3_battle", "look_3b_moves", "look_4_party", "look_5_route201", "look_6_house", "look_7_lake" });
     }

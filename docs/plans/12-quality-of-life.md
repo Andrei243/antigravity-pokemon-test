@@ -280,6 +280,7 @@ Written 2026-10-06, before any session.
 - Tests: every tip is named by a trigger in the code or a script, and every trigger names a tip; a tip shows once in a game; none shows while a script runs or the log plays; a Platinum game under `Rules` shows none.
 - Shots: `st60_tip_cut_tree` in `story`, `23j_battle_tip` (the first status condition) in `battle`, `look_16_help_tips`.
 - **Done when** a Modern game explains the first status condition and the first tree in the way, once each, and `diff` of a Platinum game with the defaults is empty.
+- **As built (2026-11-01).** `Models/Tips.cs` (27 tips: `Tips.All` with each one's `TipTrigger`, `Tips.ForBattle`, and `TipBook`, the shown and the waiting), `SaveData.TipsSeen`, `GameEngine.Tips.cs` (`RaiseTip`, `UpdateTip` in the field's and the battle's update, `QuietForATip`, `DrawTip`, `PutTipAway`), `BattleEngine.TakeTips` and `AtItsMenu`, the field's triggers (`PlayEvolutions`, a ledge's landing in `StepLeavesItsMark`, `givepokemon` to the PC), the `tip` command (`Op.Tip`, parser, runner, `IScriptHost.Tip` a default member, both hosts) in `common.txt`'s `CutTree`, `Rock`, `Boulder`, `RockFace` and `Waterfall` `Cannot` labels, `Water`, `Nurse`, `PC` and `Clerk`; `ModernUi.TipCard`, `OptionRow.Tips` after REQUESTS (`Rules` kept, as FIELD HELPERS), HELP's fourth tab `HelpPage.Tips`; words `options.tips.*`, `tips.*`, `help.tab.tips` (en, ro). Tests: `TipsTests`, `TipsInAGameTests`. Shots: `st60_tip_cut_tree` at the end of `story`, `23j_battle_tip` at the end of `battle`, `look_16_options_tips` and `look_16_help_tips` at the end of `look`, all looked at. **Choices**: the plan's "full bag" is a full team (the bag has no limit; rulings, "Trainer tips"); the harness turns the row off for every mode (every harness game is a modern one, where `Rules` shows tips) and on for its three shots, so no earlier shot moves; a game with no window shows none unless its tool asks (`GameEngine.ShowsTips`), since the tests' and bots' games press nothing for a card. **Left**: no full `diff` of `all` was run (the three modes' new shots stand after every old one); a recording made with tips up and played back with no window would part at the first tip.
 
 ### Q24 · Timing assists and rumble
 - After Q5, whose `LastDevice` names the pad. The timing half needs nothing first and can run earlier, beside Q9, leaving the rumble for after Q5.
@@ -398,7 +399,7 @@ Written 2026-10-06, before any session.
 - [x] Q20 Skipping a scene already seen (2026-10-12)
 - [x] Q21 Requests (2026-11-01; the Pokétch campaign the first, the page with OPEN, DONE and Q22's THIS AREA, a request pinned over the field and its giver's note, the row REQUESTS on unless turned off)
 - [x] Q22 What is left here (2026-10-31; the sign's and the start menu's counts, the row WHAT IS LEFT HERE, off unless chosen; the THIS AREA tab came with Q21's page)
-- [ ] Q23 Trainer tips
+- [x] Q23 Trainer tips
 - [x] Q24 Timing assists and rumble (2026-10-26, wave 68; the strengths wait for the user's hands on a pad)
 - [ ] Q25 A lost battle fought again, and a battle suspended
 - [x] Q26 Searching, sorting and moving many in the boxes

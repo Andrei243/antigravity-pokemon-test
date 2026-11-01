@@ -1,12 +1,15 @@
 using System;
+using System.Collections.Generic;
 using PokemonPlatinumEngine.Battle;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
+using PokemonPlatinumEngine.Models;
+using PokemonPlatinumEngine.UI.Kit;
 
 namespace PokemonPlatinumEngine.UI;
 
 /// <summary>The help pages' tabs, in their order.</summary>
-public enum HelpPage { Types, Controls, Notes }
+public enum HelpPage { Types, Controls, Notes, Tips }
 
 /// <summary>
 /// The help pages under OPTIONS (plan 12 · Q10; style guide, "Menu screens"): the type chart the game is played by,
@@ -37,6 +40,16 @@ public sealed class HelpScreen
     public bool IsActive { get; private set; }
     public HelpPage Page { get; private set; }
 
+    /// <summary>The tips the game has shown (plan 12 · Q23), which the TIPS page lists; the game hands them over as it opens the options.</summary>
+    public IReadOnlyList<Tip> TipsSeen { get; set; } = Array.Empty<Tip>();
+
+    /// <summary>The TIPS page's rows on its panel at once (<c>ModernUi.RowsIn</c> of the panel's height).</summary>
+    public const int VisibleTipRows = 8;
+
+    /// <summary>The TIPS page's cursor and the first row in its window.</summary>
+    public int TipCursor { get; private set; }
+    public int FirstTip { get; private set; }
+
     /// <summary>The cursor is on the tabs rather than in the chart.</summary>
     public bool OnTabs { get; private set; }
 
@@ -52,6 +65,8 @@ public sealed class HelpScreen
         OnTabs = false;
         Attack = (int)PokemonType.Fire;
         Defend = (int)PokemonType.Grass;
+        TipCursor = 0;
+        FirstTip = 0;
     }
 
     public void Close() => IsActive = false;
@@ -74,12 +89,21 @@ public sealed class HelpScreen
             Defend = (Defend + dx + Types.Length) % Types.Length;
             return;
         }
+        // The TIPS page's list (plan 12 · Q23): up from its first row to the tabs, its window following the cursor
+        if (Page == HelpPage.Tips && !OnTabs && dx == 0)
+        {
+            if (dy < 0 && TipCursor == 0) OnTabs = true;
+            else TipCursor = Math.Clamp(TipCursor + dy, 0, Math.Max(0, TipsSeen.Count - 1));
+            if (TipCursor < FirstTip) FirstTip = TipCursor;
+            else if (TipCursor >= FirstTip + VisibleTipRows) FirstTip = TipCursor - VisibleTipRows + 1;
+            return;
+        }
         if (dx != 0)
         {
             Page = Pages[(Array.IndexOf(Pages, Page) + dx + Pages.Length) % Pages.Length];
             OnTabs = true;
         }
-        else if (dy > 0 && Page == HelpPage.Types) OnTabs = false;
+        else if (dy > 0 && (Page == HelpPage.Types || Page == HelpPage.Tips && TipsSeen.Count > 0)) OnTabs = false;
     }
 
     /// <summary>B: back to the options.</summary>

@@ -646,6 +646,8 @@ public partial class GameEngine
     private void EndBattle()
     {
         bool isDefeat = flow.Battle?.Result == BattleResult.PlayerDefeat;
+        // The tips its last lines brought wait for the field (plan 12 · Q23)
+        if (flow.Battle != null) foreach (string tip in flow.Battle.TakeTips()) RaiseTip(tip);
         // A battle over, or a Pokémon caught in it, is worth an autosave once the field is free again (plan 12 · Q3)
         AutosaveSoon(flow.Battle?.Caught != null ? AutosaveMoment.Catch : AutosaveMoment.Battle);
         ScoreBattle();

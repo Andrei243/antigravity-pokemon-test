@@ -239,6 +239,13 @@ public sealed class GameSettings
     public RulesDefault BoxesAnywhere { get; set; } = RulesDefault.Rules;
 
     /// <summary>
+    /// Whether the game shows a trainer tip the first time it shows something (plan 12 · Q23, <see cref="Models.Tips"/>):
+    /// <see cref="RulesDefault.Rules"/> unless chosen, kept as it is, so a game played by Platinum's rules shows none and the
+    /// modern rules show them; either can be chosen.
+    /// </summary>
+    public RulesDefault Tips { get; set; } = RulesDefault.Rules;
+
+    /// <summary>
     /// Whether the game writes itself quietly now and then (plan 12 · Q3): after a battle, a heal, a Badge, a catch and
     /// on coming to a place, into the autosave file beside the slots, never over a slot's own save. Off unless chosen,
     /// as in Platinum; a game that stopped on a crash then offers the autosave when it is continued.

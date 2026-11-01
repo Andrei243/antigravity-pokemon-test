@@ -901,6 +901,8 @@ public partial class GameEngine
         if (flow.Player.JustRodeOut) world.Life.Splash(flow.Map, flow.Player.GridX, flow.Player.GridY);
         else world.Life.Footstep(flow.Map, flow.Player.GridX, flow.Player.GridY, flow.Player.Facing, flow.Player.IsRunning, flow.Player.Mode);
         if (flow.Player.JustLanded && flow.Player.Mode != TravelMode.Surfing) world.Life.Landing(flow.Map, flow.Player.GridX, flow.Player.GridY);
+        // A ledge's hop brings its tip the first time (plan 12 · Q23)
+        if (flow.Player.JustLanded) RaiseTip(Models.Tips.Ledge);
     }
 
     /// <summary>Goes to a tile of a map through a fade, as a door does: a script's warp.</summary>

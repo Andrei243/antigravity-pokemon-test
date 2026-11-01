@@ -654,9 +654,29 @@ public partial class BattleEngine
         return CharacterStyles.Default.InBattle(trainerClass, look);
     }
 
+    /// <summary>
+    /// The trainer tips this battle's lines have brought as they were shown (plan 12 · Q23, <see cref="Models.Tips.ForBattle"/>),
+    /// the first first; the game takes them (<see cref="TakeTips"/>) and shows each at a quiet moment. None while a recording is watched.
+    /// </summary>
+    private readonly List<string> tipsRaised = new();
+
+    /// <summary>The main menu is open and waits for the player's choice: nothing of the log is being shown (plan 12 · Q23's quiet moment).</summary>
+    public bool AtItsMenu => HUD.MenuState == BattleMenuState.Main && core.Request is ActionRequest && Result == BattleResult.None;
+
+    /// <summary>The tips raised since the game last asked, handed over once.</summary>
+    public IReadOnlyList<string> TakeTips()
+    {
+        if (tipsRaised.Count == 0) return Array.Empty<string>();
+        var taken = tipsRaised.ToArray();
+        tipsRaised.Clear();
+        return taken;
+    }
+
     /// <summary>One thing the log says happened, as the screen shows it.</summary>
     private void Show(BattleEvent happening)
     {
+        // A trainer tip, as the screen meets the line (plan 12 · Q23): the game shows it once the main menu opens
+        if (!Watching && Kind != BattleKind.CatchingLesson && Models.Tips.ForBattle(happening) is { } tip && !tipsRaised.Contains(tip)) tipsRaised.Add(tip);
         // What lasts on a Pokémon (plan 09 · L2): a condition given or cured, a confusion or a love begun or ended,
         // what a newcomer brings, a faint, a leaving. The line sets the look, which is drawn for as long as it lasts
         Anim.Conditions.Tell(happening);
