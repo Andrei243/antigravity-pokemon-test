@@ -1,0 +1,14 @@
+{
+  "id": "burned",
+  "goal": "Win",
+  "turns": 1,
+  "player": [ { "species": "Salamence", "level": 50, "nature": "Naive", "ability": "Intimidate", "moves": ["Dragon Claw", "Draco Meteor"], "status": "Burn" } ],
+  "foe": [ { "species": "Garchomp", "level": 50, "nature": "Jolly", "ability": "Sand Veil", "moves": ["Swords Dance"], "hp": 150 } ],
+  "foeMoves": ["Swords Dance"],
+  "rolls": [
+    { "kind": "Critical", "values": [1] }, { "kind": "Damage", "values": [15] }, { "kind": "Accuracy", "values": [0] },
+    { "kind": "SideEffect", "values": [99] }, { "kind": "AbilityChance", "values": [99] }
+  ],
+  "solution": [ { "move": "Draco Meteor" } ],
+  "decoy": [ { "move": "Dragon Claw" } ]
+}

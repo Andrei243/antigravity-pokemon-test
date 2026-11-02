@@ -1,0 +1,14 @@
+{
+  "id": "priority",
+  "goal": "Win",
+  "turns": 1,
+  "player": [ { "species": "Lucario", "level": 50, "nature": "Adamant", "ability": "Inner Focus", "moves": ["Close Combat", "Extreme Speed"], "hp": 30 } ],
+  "foe": [ { "species": "Garchomp", "level": 50, "nature": "Jolly", "ability": "Sand Veil", "moves": ["Earthquake"], "hp": 20 } ],
+  "foeMoves": ["Earthquake"],
+  "rolls": [
+    { "kind": "Critical", "values": [1] }, { "kind": "Damage", "values": [15] }, { "kind": "Accuracy", "values": [0] },
+    { "kind": "SideEffect", "values": [99] }, { "kind": "AbilityChance", "values": [99] }
+  ],
+  "solution": [ { "move": "Extreme Speed" } ],
+  "decoy": [ { "move": "Close Combat" } ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "focusSash",
+  "goal": "Win",
+  "turns": 1,
+  "player": [ { "species": "Breloom", "level": 50, "nature": "Adamant", "ability": "Technician", "moves": ["Seed Bomb", "Bullet Seed"] } ],
+  "foe": [ { "species": "Alakazam", "level": 30, "nature": "Timid", "ability": "Synchronize", "item": "Focus Sash", "moves": ["Calm Mind"] } ],
+  "foeMoves": ["Calm Mind"],
+  "rolls": [
+    { "kind": "Critical", "values": [1] }, { "kind": "Damage", "values": [15] }, { "kind": "Accuracy", "values": [0] },
+    { "kind": "SideEffect", "values": [99] }, { "kind": "AbilityChance", "values": [99] }, { "kind": "HitCount", "values": [99] }
+  ],
+  "solution": [ { "move": "Bullet Seed" } ],
+  "decoy": [ { "move": "Seed Bomb" } ]
+}

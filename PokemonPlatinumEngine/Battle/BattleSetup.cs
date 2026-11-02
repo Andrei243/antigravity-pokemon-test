@@ -266,6 +266,12 @@ public sealed class BattleSetup
     /// </summary>
     public Sim.IBattleController? PlayerController { get; init; }
 
+    /// <summary>
+    /// Who chooses for the other side, where it isn't the trainer AI (<see cref="Sim.CoreSetup.EnemyController"/>): a battle
+    /// puzzle's foe, which uses the moves its file names (plan 13 · V26, <see cref="Models.PuzzleFoe"/>). Null keeps the AI.
+    /// </summary>
+    public Sim.IBattleController? EnemyController { get; init; }
+
     /// <summary>A battle of the Battle Palace (plan 14 · B9; <see cref="Sim.CoreSetup.Palace"/>): the menus never open.</summary>
     public bool Palace { get; init; }
 

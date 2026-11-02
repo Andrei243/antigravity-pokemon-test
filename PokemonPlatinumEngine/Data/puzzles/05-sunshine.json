@@ -1,0 +1,15 @@
+{
+  "id": "sunshine",
+  "goal": "Win",
+  "turns": 1,
+  "weather": "Sun",
+  "player": [ { "species": "Venusaur", "level": 50, "nature": "Modest", "ability": "Chlorophyll", "moves": ["Solar Beam", "Sludge Bomb"] } ],
+  "foe": [ { "species": "Swampert", "level": 50, "nature": "Relaxed", "ability": "Torrent", "moves": ["Earthquake"], "hp": 90 } ],
+  "foeMoves": ["Earthquake"],
+  "rolls": [
+    { "kind": "Critical", "values": [1] }, { "kind": "Damage", "values": [15] }, { "kind": "Accuracy", "values": [0] },
+    { "kind": "SideEffect", "values": [99] }, { "kind": "AbilityChance", "values": [99] }
+  ],
+  "solution": [ { "move": "Solar Beam" } ],
+  "decoy": [ { "move": "Sludge Bomb" } ]
+}

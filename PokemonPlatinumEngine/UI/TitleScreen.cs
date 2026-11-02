@@ -107,7 +107,7 @@ public sealed record TitleNotice(string Heading, string Body)
 /// <see cref="Unreadable"/> (the card of a slot that can't be read) are entries only: neither is ever handed over
 /// by <see cref="TitleScreen.TakeChoice"/>; a deletion is <see cref="TitleScreen.TakeDeletion"/>'s.
 /// </summary>
-public enum TitleChoice { None, Continue, NewGame, Options, Quit, Delete, Unreadable, Migrate, Jukebox, Credits, Home, Gallery }
+public enum TitleChoice { None, Continue, NewGame, Options, Quit, Delete, Unreadable, Migrate, Jukebox, Credits, Home, Gallery, BattleRoom }
 
 /// <summary>
 /// The opening and the title screen: a short notice, fly-over shots of Sinnoh at different times of day, Giratina
@@ -143,7 +143,7 @@ public sealed class TitleScreen
     private readonly List<TitleChoice> entries = new();
     private readonly Queue<TitleNotice> notices = new();
     private TitleChoice chosen = TitleChoice.None;
-    private bool optionsRequested, migrateRequested, jukeboxRequested, creditsRequested, noticeOverMenu, migrateOffered, homeRequested, galleryRequested;
+    private bool optionsRequested, migrateRequested, jukeboxRequested, creditsRequested, noticeOverMenu, migrateOffered, homeRequested, galleryRequested, battleRoomRequested;
     private float phaseTime, totalTime, menuBlend, skipFlash;
     private int warmed;
     // The slot the delete question is about, where the question was asked from, and the slot to be deleted once
@@ -243,6 +243,8 @@ public sealed class TitleScreen
         if (migrateOffered && cards.Any(c => c.Save != null)) entries.Add(TitleChoice.Migrate);
         // HOME (plan 12 · Q28, Q29): trades between the saves and the Home box they share, with a save to open it on
         if (cards.Any(c => c.Save != null)) entries.Add(TitleChoice.Home);
+        // The battle room (plan 13 · V13, V26): its teams are built from nothing, so it needs no save
+        entries.Add(TitleChoice.BattleRoom);
         entries.Add(TitleChoice.Jukebox);
         // The gallery (plan 12 · Q30) shows what the saves have seen: with nothing seen there is nothing to show
         if (cards.Any(c => c.Save is { SeenSpecies.Count: > 0 })) entries.Add(TitleChoice.Gallery);
@@ -370,6 +372,7 @@ public sealed class TitleScreen
                     case TitleChoice.Home: homeRequested = true; break;
                     case TitleChoice.Jukebox: jukeboxRequested = true; break;
                     case TitleChoice.Gallery: galleryRequested = true; break;
+                    case TitleChoice.BattleRoom: battleRoomRequested = true; break;
                     case TitleChoice.Credits: creditsRequested = true; break;
                     case TitleChoice.Quit: Leave(TitleChoice.Quit); break;
                 }
@@ -642,6 +645,11 @@ public sealed class TitleScreen
         {
             jukeboxRequested = false;
             return TitleChoice.Jukebox;
+        }
+        if (battleRoomRequested)
+        {
+            battleRoomRequested = false;
+            return TitleChoice.BattleRoom;
         }
         if (galleryRequested)
         {
@@ -942,6 +950,7 @@ public sealed class TitleScreen
                 TitleChoice.Home => Text.Of("title.menu.home"),
                 TitleChoice.Jukebox => Text.Of("title.menu.jukebox"),
                 TitleChoice.Gallery => Text.Of("title.menu.gallery"),
+                TitleChoice.BattleRoom => Text.Of("title.menu.battleRoom"),
                 TitleChoice.Options => Text.Of("title.menu.options"),
                 TitleChoice.Credits => Text.Of("title.menu.credits"),
                 _ => Text.Of("title.menu.quit")

@@ -1,0 +1,14 @@
+{
+  "id": "levitate",
+  "goal": "Win",
+  "turns": 1,
+  "player": [ { "species": "Garchomp", "level": 50, "nature": "Jolly", "ability": "Sand Veil", "moves": ["Earthquake", "Fire Fang"] } ],
+  "foe": [ { "species": "Bronzong", "level": 50, "nature": "Relaxed", "ability": "Levitate", "moves": ["Gyro Ball"], "hp": 25 } ],
+  "foeMoves": ["Gyro Ball"],
+  "rolls": [
+    { "kind": "Critical", "values": [1] }, { "kind": "Damage", "values": [15] }, { "kind": "Accuracy", "values": [0] },
+    { "kind": "SideEffect", "values": [99] }, { "kind": "AbilityChance", "values": [99] }
+  ],
+  "solution": [ { "move": "Fire Fang" } ],
+  "decoy": [ { "move": "Earthquake" } ]
+}
