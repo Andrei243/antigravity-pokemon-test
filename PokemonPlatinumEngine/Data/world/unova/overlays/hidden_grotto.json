@@ -1,0 +1,18 @@
+{
+  // The Hidden Grotto (plan 22 · U11): Black 2's one room under the trees that every grotto's mouth leads into
+  // (Data/world/unova/grottoes.json; common.GrottoMouth), its zone and chunk read by the importer, our words. Which grotto
+  // it is is the story's VAR_UNOVA_GROTTO (hidden_grotto.txt). What the grotto holds stands at the far end on the tile
+  // Black 2 keeps for it (15, 12): a Pokémon (grotto_mon, stood as its species as the grotto is come to) or an item's
+  // ball (grotto_item). The import leaves Black 2's tunnel in from the foot (rows 18 to 31) under the trees, so the player
+  // comes in at the clearing's south end (15, 17) and goes out by the tunnel's mouth there (15, 18, read facing south),
+  // which puts them back before the grotto's own mouth. Black 2's sign at the tunnel's foot and its two triggers (the step
+  // in and the thing's tile) are its code's and run nothing here.
+  "area": "hidden_grotto",
+  "bgmTrack": "unova/lostlorn_forest",
+  "battleArena": "Forest",
+  "readAt": [ { "x": 15, "z": 18, "script": "Leave" } ],
+  "npcs": [
+    { "id": "grotto_mon", "name": "Pokémon", "npcType": "Pokemon", "species": "Audino", "x": 15, "y": 12, "facing": "Down", "script": "Mon", "shownBy": "FLAG_UNOVA_GROTTO_SHOW_MON" },
+    { "id": "grotto_item", "name": "Item", "npcType": "ItemBall", "item": "Oran Berry", "x": 15, "y": 12, "facing": "Down", "script": "Item", "shownBy": "FLAG_UNOVA_GROTTO_SHOW_ITEM", "hiddenBy": "FLAG_UNOVA_GROTTO_ITEM_TAKEN" }
+  ]
+}

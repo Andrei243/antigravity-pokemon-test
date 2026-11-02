@@ -537,6 +537,8 @@ public class ScriptTests
           arcade end
           subway enough
           subway begin double
+          subway opened single
+          subway super
           subway choose
           subway check
           subway active
@@ -551,6 +553,11 @@ public class ScriptTests
           subway finish lost
           subway points
           subway end
+          grotto mouth
+          grotto which
+          grotto visit
+          grotto battle
+          grotto take
           amity arrive
           amity may
           amity next

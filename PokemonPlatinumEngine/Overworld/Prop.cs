@@ -278,6 +278,8 @@ public enum PropType
     /// the map (<see cref="NPC.UnownWallType"/>), drawn as a card like the cave painting (plan 20 · J5's last leftover).
     /// </summary>
     UnownWall,
+    /// <summary>The mouth of a Hidden Grotto in a tree wall (plan 22 · U11): a thing of the map (<see cref="NPC.GrottoHollowType"/>), drawn as a card.</summary>
+    GrottoHollow,
 }
 
 /// <summary>A piece of furniture or decoration placed in a room, covering a rectangle of tiles.</summary>

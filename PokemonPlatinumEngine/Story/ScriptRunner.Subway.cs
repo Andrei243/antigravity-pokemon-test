@@ -17,7 +17,7 @@ public sealed partial class ScriptRunner
     // The Subway Bosses of the battle made ready, where there are some (the trainers of the Frontier's table stand in towerFoes)
     private List<Trainer> subwayBosses = new();
 
-    private SubwayTrain TrainOfTheRun => (SubwayTrain)Math.Clamp(host.Story.Var(BattleSubway.Vars.Train), 0, 2);
+    private SubwayTrain TrainOfTheRun => (SubwayTrain)Math.Clamp(host.Story.Var(BattleSubway.Vars.Train), 0, (int)SubwayTrain.SuperMulti);
 
     /// <summary>
     /// <c>enough</c> is 1 when the team holds that many Pokémon (three, four in the Double Train, two in the Multi
@@ -25,7 +25,10 @@ public sealed partial class ScriptRunner
     /// (<c>{banned}</c> lists the species of the banlist the Pokédex has seen); <c>begin single|double|multi</c> starts
     /// a run (none of the Pokémon chosen yet); <c>choose</c> has them chosen (RESULT 1, or 0 when backed out of) and
     /// <c>check</c> is 0, or 1 for two of a species and 2 for two holding the same item; <c>active</c> is 1 while a run
-    /// is under way, <c>mode</c> is its train (0 single, 1 double, 2 multi) and <c>end</c> lets go of it. In the cars:<c>next</c> is the number of the battle to come
+    /// is under way, <c>mode</c> is its line (0 single, 1 double, 2 multi, a Super train's too) and <c>end</c> lets go of it.
+    /// Since plan 22 · U11 <c>begin supersingle|superdouble|supermulti</c> starts a Super train, <c>opened single|double|multi</c>
+    /// is 1 once that line's Super train is open (its Boss at the 21st car beaten) and <c>super</c> is 1 on a Super train.
+    /// In the cars:<c>next</c> is the number of the battle to come
     /// (<c>{number}</c>); <c>boss</c> is 0, or 1 when Ingo waits at it and 2 when Emmet does; <c>opponent</c> makes the
     /// trainers of the car ready and stands them in it (<c>{foe}</c>; the bosses' own teams at a boss's car);
     /// <c>battle</c> is fought with the Pokémon entered (RESULT 1 won, 0 lost); <c>won</c> counts the win (RESULT 1
@@ -79,7 +82,16 @@ public sealed partial class ScriptRunner
                 Result = story.Var(BattleSubway.Vars.State);
                 break;
             case "mode":
-                Result = (int)TrainOfTheRun;
+                // The line, whichever of its trains: a Super Multi Train is fought beside a partner as the Multi is
+                Result = (int)BattleSubway.LineOf(TrainOfTheRun);
+                break;
+            case "super":
+                // 1 while the run under way is on a Super train
+                Result = BattleSubway.IsSuper(TrainOfTheRun) ? 1 : 0;
+                break;
+            case "opened":
+                // 1 once the line's Super train is open (its Boss at the 21st car beaten)
+                Result = BattleSubway.SuperOpen(story, Enum.Parse<SubwayTrain>(i.Other, ignoreCase: true)) ? 1 : 0;
                 break;
             case "end":
                 story.SetVar(BattleSubway.Vars.State, 0);
@@ -93,7 +105,7 @@ public sealed partial class ScriptRunner
                 Result = lastNumber = story.Var(BattleSubway.Vars.Wins) + 1;
                 break;
             case "boss":
-                Result = BattleSubway.BossAt(story.Var(BattleSubway.Vars.Wins) + 1);
+                Result = BattleSubway.BossAt(story.Var(BattleSubway.Vars.Wins) + 1, TrainOfTheRun);
                 break;
             case "opponent":
             {
@@ -145,7 +157,7 @@ public sealed partial class ScriptRunner
                     if (subwayBosses.Count == 0) towerFoes = BattleSubway.MakeOpponents(train, battle, Draw);
                 }
                 var foes = subwayBosses.Count > 0 ? subwayBosses : towerFoes.Select(f => f.AsTrainer()).ToList();
-                Trainer? partner = train == SubwayTrain.Multi
+                Trainer? partner = BattleSubway.Multi(train)
                     ? BattleSubway.MakePartner(story.Var(BattleSubway.Vars.Seed)).AsTrainer()
                     : null;
                 subwayBosses = new List<Trainer>();
@@ -179,7 +191,7 @@ public sealed partial class ScriptRunner
             }
             case "points":
             {
-                int points = BattleSubway.PointsFor(story.Var(BattleSubway.Vars.Wins));
+                int points = BattleSubway.PointsFor(story.Var(BattleSubway.Vars.Wins), TrainOfTheRun);
                 if (points > 0)
                 {
                     host.Frontier.GivePoints(points);

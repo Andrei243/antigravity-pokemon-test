@@ -358,9 +358,16 @@ public class NPC
     public const string MicrowaveType = "Microwave", WashingMachineType = "WashingMachine", RefrigeratorType = "Refrigerator",
         ElectricFanType = "ElectricFan", LawnmowerType = "Lawnmower";
 
+    /// <summary>
+    /// The mouth of a Hidden Grotto (plan 22 · U11): a thing of the map in a notch of a tree wall, in the way like a person and
+    /// spoken to like one (<c>common.GrottoMouth</c> asks whether to go in). Drawn as a card.
+    /// </summary>
+    public const string GrottoHollowType = "GrottoHollow";
+
     /// <summary>Which thing of a Gym's puzzle this is; null for anyone and anything else.</summary>
     public PropType? GymThing => NpcType switch
     {
+        GrottoHollowType => PropType.GrottoHollow,
         PunchingBagType => PropType.PunchingBag,
         TireStackType => PropType.TireStack,
         BollardType => PropType.Bollard,

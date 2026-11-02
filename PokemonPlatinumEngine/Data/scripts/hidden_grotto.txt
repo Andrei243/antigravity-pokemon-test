@@ -1,0 +1,93 @@
+# The Hidden Grotto (plan 22 · U11). docs/scripts.md describes the language; the lines are our own. Black 2's one room
+# that every grotto's mouth leads into (Data/world/unova/grottoes.json; common.GrottoMouth), so which grotto it is is the
+# story's VAR_UNOVA_GROTTO. What it holds (Models/HiddenGrotto.cs) stands at the far end on the tile Black 2 keeps for it:
+# a Pokémon (grotto_mon, stood as its species) or an item's ball (grotto_item). The way out at the foot puts the player
+# back on the tile south of the grotto's own mouth.
+
+
+# What the grotto holds, rolled as it is come to: shown on its tile, or nothing
+script OnEnter
+  clearflag FLAG_UNOVA_GROTTO_SHOW_MON
+  clearflag FLAG_UNOVA_GROTTO_SHOW_ITEM
+  clearflag FLAG_UNOVA_GROTTO_ITEM_TAKEN
+  grotto visit
+  if result == 1 goto Mon
+  if result == 2 goto Item
+  end
+label Mon
+  setflag FLAG_UNOVA_GROTTO_SHOW_MON
+  end
+label Item
+  setflag FLAG_UNOVA_GROTTO_SHOW_ITEM
+  end
+
+
+# Its Pokémon: met with its hidden ability, and gone whatever comes of the battle
+script Mon
+  # (asked again for its name: a grotto that is full is only read, never rolled again)
+  grotto visit
+  if result != 1 end
+  scene "A wild one in the grotto"
+  face self player
+  cry own
+  text "A wild {foe} is sitting quietly at the back of the grotto!"
+  endscene
+  grotto battle
+  clearflag FLAG_UNOVA_GROTTO_SHOW_MON
+  hide self
+  end
+
+
+# Its item, picked up
+script Item
+  grotto take
+  clearflag FLAG_UNOVA_GROTTO_SHOW_ITEM
+  setflag FLAG_UNOVA_GROTTO_ITEM_TAKEN
+  hide self
+  end
+
+
+# The way out, back before the grotto's own mouth (the tiles grottoes.json gives: GrottoTests holds the two together)
+script Leave
+  text "The tunnel leads back out under the trees."
+  ask "Will you leave the grotto?"
+  if no end
+  fade out 0.4
+  sound "stairs"
+  grotto which
+  if result == 1 goto One
+  if result == 2 goto Two
+  if result == 3 goto Three
+  if result == 4 goto Four
+  if result == 5 goto Five
+  if result == 6 goto Six
+  if result == 7 goto Seven
+  if result == 8 goto Eight
+  warp "Unova" 152 367 down
+  goto Out
+label One
+  warp "FloccesyRanch" 50 21 down
+  goto Out
+label Two
+  warp "Unova" 152 367 down
+  goto Out
+label Three
+  warp "Unova" 475 419 down
+  goto Out
+label Four
+  warp "LostlornForest" 29 15 down
+  goto Out
+label Five
+  warp "Unova" 366 180 down
+  goto Out
+label Six
+  warp "Unova" 699 272 down
+  goto Out
+label Seven
+  warp "Unova" 720 137 down
+  goto Out
+label Eight
+  warp "Unova" 576 75 down
+label Out
+  fade in
+  end

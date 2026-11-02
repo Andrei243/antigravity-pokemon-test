@@ -47,18 +47,34 @@ script SingleTrain
   if result == 1 goto Info
   if result == 2 goto Record
   if result == 3 goto Bye
+  subway opened single
+  if result == 0 goto Normal
+  choose "Which train will you ride?" "SINGLE TRAIN" "SUPER SINGLE TRAIN"
+  if result == 1 goto Super
+label Normal
   subway begin single
+  goto Ride
+label Super
+  say "The Super Single Train! Its trainers are the toughest on the line, and Ingo waits in the 49th car."
+  subway begin supersingle
   goto Ride
 label Info
   say "A trainer waits in every car. Clear seven and you may get off with Battle Points, or go on to the next set."
   say "The Single Train takes three Pokémon, all of different species and holding different items. They battle at Level 50 or under, and nothing from the Bag may be used."
   say "The Subway Bosses, Ingo and Emmet, wait for those who ride on to the 21st car and the 49th."
+  say "Beat Ingo in the 21st car and the Super Single Train opens to you, with tougher trainers and more Battle Points."
   end
 label Record
   subway begin single
   subway best
   subway end
   say "Your longest streak on the Single Train is {number} cars."
+  subway opened single
+  if result == 0 end
+  subway begin supersingle
+  subway best
+  subway end
+  say "And on the Super Single Train, {number} cars."
   end
 label Ride
   call Board
@@ -78,18 +94,34 @@ script DoubleTrain
   if result == 1 goto Info
   if result == 2 goto Record
   if result == 3 goto Bye
+  subway opened double
+  if result == 0 goto Normal
+  choose "Which train will you ride?" "DOUBLE TRAIN" "SUPER DOUBLE TRAIN"
+  if result == 1 goto Super
+label Normal
   subway begin double
+  goto Ride
+label Super
+  say "The Super Double Train! Its trainers are the toughest on the line, and Emmet waits in the 49th car."
+  subway begin superdouble
   goto Ride
 label Info
   say "Every car holds a trainer with four Pokémon, and two of them battle two of yours at once. Clear seven cars for a set."
   say "The Double Train takes four Pokémon, all of different species and holding different items, at Level 50 or under."
   say "The Subway Bosses wait for those who ride on to the 21st car and the 49th."
+  say "Beat the Boss in the 21st car and the Super Double Train opens to you, with tougher trainers and more Battle Points."
   end
 label Record
   subway begin double
   subway best
   subway end
   say "Your longest streak on the Double Train is {number} cars."
+  subway opened double
+  if result == 0 end
+  subway begin superdouble
+  subway best
+  subway end
+  say "And on the Super Double Train, {number} cars."
   end
 label Ride
   call Board
@@ -110,11 +142,21 @@ script MultiTrain
   if result == 1 goto Info
   if result == 2 goto Record
   if result == 3 goto Bye
+  subway opened multi
+  if result == 0 goto Normal
+  choose "Which train will you ride?" "MULTI TRAIN" "SUPER MULTI TRAIN"
+  if result == 1 goto Super
+label Normal
   subway begin multi
+  goto Ride
+label Super
+  say "The Super Multi Train! Its pairs are the toughest on the line, and Ingo and Emmet wait together in the 49th car."
+  subway begin supermulti
   goto Ride
 label Info
   say "You bring two Pokémon and a partner from our own staff brings two more. Every car holds a pair of trainers."
   say "The two Pokémon must be of different species and hold different items, at Level 50 or under. Ingo and Emmet ride together in the 21st car and the 49th."
+  say "Beat them in the 21st car and the Super Multi Train opens to you, with tougher pairs and more Battle Points."
   say "A partner from a friend over a link is not on the line yet. We're sorry!"
   end
 label Record
@@ -122,6 +164,12 @@ label Record
   subway best
   subway end
   say "Your longest streak on the Multi Train is {number} cars."
+  subway opened multi
+  if result == 0 end
+  subway begin supermulti
+  subway best
+  subway end
+  say "And on the Super Multi Train, {number} cars."
   end
 label Ride
   call Board

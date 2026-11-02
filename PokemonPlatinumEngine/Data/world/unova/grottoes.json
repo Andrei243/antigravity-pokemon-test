@@ -1,0 +1,91 @@
+{
+  // Unova's Hidden Grottoes (plan 22 · U11; Models/HiddenGrotto.cs; docs/mechanics/rulings.md, "The Hidden Grottoes"),
+  // written by hand. The decompilation holds the grotto's own room (hidden_grotto) but not where Black 2 puts the mouths
+  // nor what each holds, which its code keeps: so every mouth stands where we put it, in a notch of a tree wall of an open
+  // area (a thing of the map, npcType GrottoHollow, which each area's overlay stands on the tile), and every table is
+  // ours, a few Pokémon of the area's kind met with their hidden ability and a few items, each with its weight.
+  // The player comes in from the tile south of the mouth and is put back there (hidden_grotto.txt's Leave, which names
+  // every grotto's tile again: GrottoTests holds the two together).
+  "grottoes": [
+    {
+      "id": 1, "area": "floccesy_ranch_2", "map": "FloccesyRanch", "x": 50, "y": 20,
+      "table": [
+        { "species": "Hoppip", "minLevel": 9, "maxLevel": 12, "weight": 3 },
+        { "species": "Mareep", "minLevel": 9, "maxLevel": 12, "weight": 3 },
+        { "species": "Azurill", "minLevel": 9, "maxLevel": 12, "weight": 2 },
+        { "item": "Oran Berry", "weight": 2 },
+        { "item": "Pecha Berry", "weight": 2 }
+      ]
+    },
+    {
+      "id": 2, "area": "unova_route_6", "map": "Unova", "x": 152, "y": 366,
+      "table": [
+        { "species": "Deerling", "minLevel": 28, "maxLevel": 31, "weight": 3 },
+        { "species": "Foongus", "minLevel": 28, "maxLevel": 31, "weight": 3 },
+        { "species": "Karrablast", "minLevel": 28, "maxLevel": 31, "weight": 2 },
+        { "item": "Big Mushroom", "weight": 2 },
+        { "item": "Miracle Seed", "weight": 1 }
+      ]
+    },
+    {
+      "id": 3, "area": "unova_route_16", "map": "Unova", "x": 475, "y": 418,
+      "table": [
+        { "species": "Gothita", "minLevel": 24, "maxLevel": 27, "weight": 3 },
+        { "species": "Solosis", "minLevel": 24, "maxLevel": 27, "weight": 3 },
+        { "species": "Cottonee", "minLevel": 24, "maxLevel": 27, "weight": 2 },
+        { "item": "Pearl", "weight": 2 },
+        { "item": "Moon Stone", "weight": 1 }
+      ]
+    },
+    {
+      "id": 4, "area": "lostlorn_forest", "map": "LostlornForest", "x": 29, "y": 14,
+      "table": [
+        { "species": "Combee", "minLevel": 24, "maxLevel": 28, "weight": 3 },
+        { "species": "Pinsir", "minLevel": 24, "maxLevel": 28, "weight": 2 },
+        { "species": "Leavanny", "minLevel": 24, "maxLevel": 28, "weight": 2 },
+        { "item": "Tiny Mushroom", "weight": 2 },
+        { "item": "Honey", "weight": 2 }
+      ]
+    },
+    {
+      "id": 5, "area": "unova_route_9", "map": "Unova", "x": 366, "y": 179,
+      "table": [
+        { "species": "Pawniard", "minLevel": 38, "maxLevel": 42, "weight": 3 },
+        { "species": "Garbodor", "minLevel": 38, "maxLevel": 42, "weight": 2 },
+        { "species": "Bouffalant", "minLevel": 38, "maxLevel": 42, "weight": 2 },
+        { "item": "Nugget", "weight": 1 },
+        { "item": "Dusk Stone", "weight": 1 }
+      ]
+    },
+    {
+      "id": 6, "area": "unova_route_13", "map": "Unova", "x": 699, "y": 271,
+      "table": [
+        { "species": "Pelipper", "minLevel": 40, "maxLevel": 44, "weight": 3 },
+        { "species": "Gurdurr", "minLevel": 40, "maxLevel": 44, "weight": 2 },
+        { "species": "Frillish", "minLevel": 40, "maxLevel": 44, "weight": 2 },
+        { "item": "Heart Scale", "weight": 2 },
+        { "item": "Star Piece", "weight": 1 }
+      ]
+    },
+    {
+      "id": 7, "area": "unova_route_22", "map": "Unova", "x": 720, "y": 136,
+      "table": [
+        { "species": "Heracross", "minLevel": 50, "maxLevel": 54, "weight": 3 },
+        { "species": "Sawk", "minLevel": 50, "maxLevel": 54, "weight": 2 },
+        { "species": "Throh", "minLevel": 50, "maxLevel": 54, "weight": 2 },
+        { "item": "Big Pearl", "weight": 2 },
+        { "item": "Rare Bone", "weight": 1 }
+      ]
+    },
+    {
+      "id": 8, "area": "unova_route_23", "map": "Unova", "x": 576, "y": 74,
+      "table": [
+        { "species": "Mienfoo", "minLevel": 52, "maxLevel": 56, "weight": 3 },
+        { "species": "Rufflet", "minLevel": 52, "maxLevel": 56, "weight": 2 },
+        { "species": "Vullaby", "minLevel": 52, "maxLevel": 56, "weight": 2 },
+        { "item": "Max Revive", "weight": 1 },
+        { "item": "PP Up", "weight": 1 }
+      ]
+    }
+  ]
+}

@@ -3299,3 +3299,22 @@ label Has
 label Given
   say "One ribbon a day is all we give. Come and see whoever's day it is tomorrow!"
   return
+
+
+# The mouth of a Hidden Grotto (plan 22 · U11; Models/HiddenGrotto.cs): a hollow in a notch of a tree wall, which any of
+# Unova's grottoes (Data/world/unova/grottoes.json) stands as. The grotto is told by the mouth's tile; inside,
+# hidden_grotto.txt shows what it holds and puts the player back before this mouth on the way out.
+script GrottoMouth
+  grotto mouth
+  if result == 0 goto Nothing
+  text "There's a hollow in the trees here, just big enough to crawl into."
+  ask "Will you go in?"
+  if no end
+  fade out 0.4
+  sound "stairs"
+  warp "HiddenGrotto" 15 17 up
+  fade in
+  end
+label Nothing
+  text "The trees grow too thick here to see through."
+  end

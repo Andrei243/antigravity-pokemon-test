@@ -155,6 +155,8 @@ public enum Op
     Tip,
     // The Lilycove Lady's favour (plan 21 · H11, part c): the kind of thing she wants, an item handed over and counted
     FavorLady,
+    // A Hidden Grotto (plan 22 · U11): its mouth found, what it holds, its Pokémon met or its item taken
+    Grotto,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

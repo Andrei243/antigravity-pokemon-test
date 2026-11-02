@@ -4,6 +4,10 @@
   // once Unova's Hall of Fame is entered and is gone once fought (plan 22 · U10, part a: FLAG_UNOVA_FOUGHT_AZELF;
   // unova_route_23.txt); the three things of the Shards (36 to 38) are plan 22 · U10's later parts'
   "area": "unova_route_23",
+  // A Hidden Grotto's mouth in a notch of the trees (plan 22 · U11: grottoes.json, common.GrottoMouth)
+  "npcs": [
+    { "id": "grotto_mouth_8", "name": "Hollow", "npcType": "GrottoHollow", "x": 576, "y": 74, "facing": "Down", "script": "GrottoMouth" }
+  ],
   "bgmTrack": "unova/route23",
   "heldBack": [ "36", "37", "38" ],
   "people": {

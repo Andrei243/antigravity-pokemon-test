@@ -335,6 +335,14 @@ internal sealed class ScriptWalk
                     foreach (string species in new[] { "Starly", "Shinx", "Kricketot", "Bidoof" })
                         host.Party.Add(new Pokemon(PokemonDatabase.Get(species)!, 5, new Random(host.Party.Count)));
                 });
+            // A Hidden Grotto gone into that holds a Pokémon (plan 22 · U11), which only the steps walked and the dice can make so
+            if (i.Op == Op.Grotto && i.Name == "visit")
+                Add("a grotto with a Pokémon in it", host =>
+                {
+                    var grotto = PokemonPlatinumEngine.Models.HiddenGrottoes.All[0];
+                    host.Story.SetVar(PokemonPlatinumEngine.Models.HiddenGrottoes.Vars.Current, grotto.Id);
+                    host.Story.SetVar(PokemonPlatinumEngine.Models.HiddenGrottoes.Vars.Content(grotto.Id), grotto.Table.FindIndex(e => e.IsPokemon) + 1);
+                });
             if (i.Condition is not { } c) continue;
             switch (c.Query)
             {

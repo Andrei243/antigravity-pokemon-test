@@ -269,7 +269,11 @@
     { "name": "UndergroundRuins_Moon", "matrix": 410, "area": "underground_ruins_3", "trees": "Round", "setting": "Cave", "arrivals": [ [ 15, 59 ] ] },
     { "name": "RockPeakChamber", "matrix": 411, "area": "rock_peak_chamber", "trees": "Round", "setting": "Cave", "arrivals": [ [ 15, 59 ] ] },
     { "name": "IcebergChamber", "matrix": 412, "area": "iceberg_chamber", "trees": "Round", "setting": "Cave", "arrivals": [ [ 15, 59 ] ] },
-    { "name": "IronChamber", "matrix": 413, "area": "iron_chamber", "trees": "Round", "setting": "Cave", "arrivals": [ [ 15, 59 ] ] }
+    { "name": "IronChamber", "matrix": 413, "area": "iron_chamber", "trees": "Round", "setting": "Cave", "arrivals": [ [ 15, 59 ] ] },
+    // Plan 22 · U10, part c: the P2 Laboratory's hall (its matrix of its own); plan 22 · U11: the Hidden Grotto, one hollow
+    // under the trees that every grotto's mouth leads into (hidden_grotto.txt tells which grotto it is)
+    { "name": "P2Laboratory", "matrix": 191, "area": "p2_laboratory_2", "trees": "Round", "setting": "Indoors" },
+    { "name": "HiddenGrotto", "matrix": 314, "area": "hidden_grotto", "trees": "Round" }
   ],
   "areas": [
     "aspertia_city", "aspertia_city_2", "aspertia_city_3", "aspertia_city_4", "aspertia_city_5", "aspertia_city_6",
@@ -319,6 +323,8 @@
     "mistralton_cave_2", "guidance_chamber", "clay_tunnel", "clay_tunnel_2", "clay_tunnel_3",
     "underground_ruins", "underground_ruins_2", "underground_ruins_3", "rock_peak_chamber", "iceberg_chamber", "iron_chamber",
     // plan 29 · LS11d: the Liberty Garden, for Victini
-    "liberty_garden"
+    "liberty_garden",
+    // plan 22 · U10, part c: Routes 17 and 18 and the P2 Laboratory (for Genesect, plan 29 · LS11d); U11: the Hidden Grotto
+    "unova_route_17", "unova_route_18", "p2_laboratory", "p2_laboratory_2", "hidden_grotto"
   ]
 }

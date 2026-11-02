@@ -1018,15 +1018,23 @@ public static class ScriptParser
             case "subway":
             {
                 string what = r.OneOf("enough", "begin", "choose", "check", "active", "end", "next", "boss", "opponent", "battle", "won", "streak",
-                    "best", "finish", "points", "mode", "foe");
+                    "best", "finish", "points", "mode", "foe", "super", "opened");
                 string which = what switch
                 {
-                    "begin" => r.OneOf("single", "double", "multi"),
+                    "begin" => r.OneOf("single", "double", "multi", "supersingle", "superdouble", "supermulti"),
+                    "opened" => r.OneOf("single", "double", "multi"),
                     "finish" => r.OneOf("won", "lost"),
                     "foe" => r.Text("a trainer's id"),
                     _ => ""
                 };
                 return new Instruction { Op = Op.Subway, Line = line, Name = what, Other = which };
+            }
+
+            // A Hidden Grotto (plan 22 · U11): the mouth stood before, what it holds, its Pokémon battled, its item taken
+            case "grotto":
+            {
+                string what = r.OneOf("mouth", "which", "visit", "battle", "take");
+                return new Instruction { Op = Op.Grotto, Line = line, Name = what };
             }
 
             // Hoenn's contests (plan 21 · H11): the rank and quality set, the Pokémon checked, the appeals held, what a win gave

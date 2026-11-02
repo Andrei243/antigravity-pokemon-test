@@ -1,0 +1,73 @@
+{
+  "key": "unova_route_17",
+  "index": 423,
+  "name": "Route 17",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Water",
+  "dayMusic": "BGM_R_D_SP",
+  "nightMusic": "BGM_R_D_SP",
+  "encounters": "ENCOUNTERS_ROUTE_17",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "water": [
+    { "species": "Frillish", "level": 45, "maxLevel": 60 },
+    { "species": "Frillish", "level": 45, "maxLevel": 60 },
+    { "species": "Frillish", "level": 50, "maxLevel": 60 },
+    { "species": "Frillish", "level": 50, "maxLevel": 60 },
+    { "species": "Frillish", "level": 50, "maxLevel": 60 }
+  ],
+  "waterRate": 12,
+  "superRod": [
+    { "species": "Finneon", "level": 50, "maxLevel": 60, "weight": 60 },
+    { "species": "Horsea", "level": 50, "maxLevel": 60, "weight": 30 },
+    { "species": "Finneon", "level": 60, "maxLevel": 70, "weight": 5 },
+    { "species": "Finneon", "level": 60, "maxLevel": 70, "weight": 4 },
+    { "species": "Finneon", "level": 60, "maxLevel": 70, "weight": 1 }
+  ],
+  "superRodRate": 80,
+  "ripplingWater": [
+    { "species": "Alomomola", "level": 45, "maxLevel": 60 },
+    { "species": "Alomomola", "level": 45, "maxLevel": 60 },
+    { "species": "Alomomola", "level": 50, "maxLevel": 60 },
+    { "species": "Jellicent", "level": 50, "maxLevel": 60 },
+    { "species": "Jellicent", "level": 50, "maxLevel": 60 }
+  ],
+  "ripplingWaterRate": 13,
+  "ripplingRod": [
+    { "species": "Horsea", "level": 50, "maxLevel": 60, "weight": 60 },
+    { "species": "Lumineon", "level": 50, "maxLevel": 60, "weight": 30 },
+    { "species": "Seadra", "level": 60, "maxLevel": 70, "weight": 5 },
+    { "species": "Kingdra", "level": 60, "maxLevel": 70, "weight": 4 },
+    { "species": "Kingdra", "level": 60, "maxLevel": 70, "weight": 1 }
+  ],
+  "ripplingRodRate": 1,
+  "warps": [
+    { "x": 735, "z": 747, "to": "unova_route_gate_gate", "toWarp": 1 },
+    { "x": 735, "z": 748, "to": "unova_route_gate_gate", "toWarp": 1 },
+    { "x": 735, "z": 749, "to": "unova_route_gate_gate", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "fisherman", "movement": "none", "x": 691, "z": 752, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "talks", "sight": 0, "script": "TRAINER_FISHERMAN_BUCKY" },
+    { "id": "1", "looks": "fisherman", "movement": "none", "x": 717, "z": 751, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "talks", "sight": 0, "script": "TRAINER_FISHERMAN_LYDON" },
+    { "id": "2", "looks": "swimmer_f", "movement": "none", "x": 681, "z": 750, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 2, "script": "TRAINER_SWIMMER_F_RUTH" },
+    { "id": "3", "looks": "swimmer_m", "movement": "none", "x": 687, "z": 722, "facing": 3, "rangeX": 4, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_SWIMMER_M_WRIGHT" },
+    { "id": "4", "looks": "swimmer_m", "movement": "none", "x": 703, "z": 754, "facing": 1, "rangeX": 0, "rangeZ": 6, "trainer": "sees", "sight": 3, "script": "TRAINER_SWIMMER_M_JEFFERY" },
+    { "id": "5", "looks": "swimmer_f", "movement": "look_around", "x": 683, "z": 729, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "script": "TRAINER_SWIMMER_F_DARA" },
+    { "id": "6", "looks": "110", "movement": "none", "x": 710, "z": 747, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0582", "item": "Blue Shard", "script": "7310" },
+    { "id": "7", "looks": "110", "movement": "none", "x": 691, "z": 748, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0583", "item": "Dive Ball", "script": "7311" },
+    { "id": "8", "looks": "110", "movement": "none", "x": 706, "z": 741, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0584", "item": "ITEM_PEARL_STRING", "script": "7312" }
+  ],
+  "signs": [
+    { "x": 712, "z": 755, "type": 2, "script": "8205", "item": "Blue Shard", "flag": "FLAG_UNOVA_0x0bd1" },
+    { "x": 701, "z": 720, "type": 2, "script": "8206", "item": "Shoal Salt", "flag": "FLAG_UNOVA_0x0bd2" },
+    { "x": 707, "z": 737, "type": 2, "script": "8207", "item": "Shoal Shell", "flag": "FLAG_UNOVA_0x0bd3" },
+    { "x": 730, "z": 746, "type": 0, "script": "1" }
+  ],
+  "triggers": []
+}

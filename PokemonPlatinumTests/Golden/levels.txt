@@ -1519,6 +1519,11 @@ grass 4-8
 Oreburgh Mine
 grass 5-9
 trainers 2, 6-9: worker_colin 8, worker_mason 9
+=== p2_laboratory
+P2 Laboratory
+grass 56-59
+surf 45-60
+super rod 35-55
 === pacifidlog_town
 Pacifidlog Town
 surf 5-35
@@ -3357,6 +3362,17 @@ trainers 11, 39-41: unova_ace_trainer_angi 41, unova_ace_trainer_miguel 41, unov
 Route 16
 grass 21-24
 trainers 6, 24-25: unova_backers_stu_art 24, unova_backpacker_blossom 25, unova_backpacker_ivan 25, unova_cyclist_hector 25, unova_cyclist_krissa 25, unova_depot_agent_hank 25
+=== unova_route_17
+Route 17
+surf 45-60
+super rod 50-70
+trainers 6, 64-65: unova_fisherman_bucky 64, unova_fisherman_lydon 64, unova_swimmer_f_dara 65, unova_swimmer_f_ruth 65, unova_swimmer_m_jeffery 65, unova_swimmer_m_wright 65
+=== unova_route_18
+Route 18
+grass 56-59
+surf 45-60
+super rod 50-70
+trainers 7, 64-70: unova_battle_girl_wendy 65, unova_black_belt_zachary 65, unova_hiker_stephen 64, unova_veteran_chester 68, unova_veteran_gina 68, unova_veteran_maya 70, unova_veteran_vincent 70
 === unova_route_19
 Route 19
 grass 2-4

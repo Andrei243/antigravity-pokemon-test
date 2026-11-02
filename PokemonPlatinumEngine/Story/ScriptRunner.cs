@@ -360,6 +360,8 @@ public sealed partial class ScriptRunner
         Op.Fossil or Op.GameCorner or Op.Villa or Op.PalPark => true,
         Op.Frontier or Op.Tower or Op.Factory or Op.Hall or Op.Castle or Op.Arcade or Op.Subway => true,
         Op.Tutor or Op.Amity => true,
+        // A grotto's Pokémon is battled and its item is handed over with its lines; what it holds is asked without a screen
+        Op.Grotto => i.Name is "battle" or "take",
         // A scene's own two lines
         Op.Scene or Op.EndScene => false,
         // A number registered: the flag is set and the notice dropped
@@ -1323,6 +1325,10 @@ public sealed partial class ScriptRunner
             // The Battle Subway (plan 22 · U6, part d)
             case Op.Subway:
                 Subway(i);
+                break;
+            // A Hidden Grotto (plan 22 · U11)
+            case Op.Grotto:
+                GrottoCommand(i);
                 break;
             // The Battle Dome (plan 14 · B8)
             case Op.Bracket:

@@ -121,6 +121,7 @@
     }
   },
   "npcs": [
+    { "id": "grotto_mouth_2", "name": "Hollow", "npcType": "GrottoHollow", "x": 152, "y": 366, "facing": "Down", "script": "GrottoMouth" },
     {
       "id": "cobalion",
       "name": "Cobalion",

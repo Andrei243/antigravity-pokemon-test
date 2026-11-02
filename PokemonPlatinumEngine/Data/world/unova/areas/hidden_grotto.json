@@ -1,0 +1,26 @@
+{
+  "key": "hidden_grotto",
+  "index": 518,
+  "name": "Hidden Grotto",
+  "matrix": 314,
+  "kind": "Outdoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Forest",
+  "dayMusic": "BGM_KEMONOMICHI",
+  "nightMusic": "BGM_KEMONOMICHI",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [],
+  "objects": [],
+  "signs": [
+    { "x": 15, "z": 31, "type": 0, "script": "3" }
+  ],
+  "triggers": [
+    { "x": 15, "z": 27, "width": 1, "depth": 1, "script": "5", "variable": "VAR_UNOVA_0x4000", "value": "0" },
+    { "x": 15, "z": 12, "width": 1, "depth": 1, "script": "2000", "variable": "", "value": "0" }
+  ]
+}

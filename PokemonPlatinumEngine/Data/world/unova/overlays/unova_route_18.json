@@ -1,0 +1,23 @@
+{
+  // Route 18 (plan 22 · U10, part c): Black 2's rocky coast west of Route 17, its zone, trainers, balls, hidden things and
+  // two Strength boulders (0, 1: Black 2's global script 10000) read by the importer, our words. Its veterans and fighters
+  // stand where Black 2 has them. Black 2's person on the cliff (2) and the ball that runs a script of the route's own (10)
+  // belong to scenes of the old roads not written yet, and are held back. The cave's mouth at its north (warp 0) leads into
+  // a room of Twist Mountain's that is not open, and stays shut.
+  "area": "unova_route_18",
+  "bgmTrack": "unova/route13",
+  "heldBack": [ "2", "10", "8190" ],
+  "locked": [ 0 ],
+  "people": {
+    "3": { "name": "Gina", "trainer": { "dialogueBefore": "I've battled on every shore of Unova. This one's my favourite!", "dialogueAfter": "And now it's my least favourite. Just for today." } },
+    "4": { "name": "Vincent", "trainer": { "dialogueBefore": "The sea air keeps an old Trainer sharp. Let me show you!", "dialogueAfter": "Sharp, but not sharp enough." } },
+    "5": { "name": "Zachary", "trainer": { "dialogueBefore": "I train on these rocks with the waves crashing all round. Hyah!", "dialogueAfter": "Washed out!" } },
+    "6": { "name": "Stephen", "trainer": { "dialogueBefore": "I came down from the mountain to see the sea. And to battle!", "dialogueAfter": "The sea's still nice, at least." } },
+    "7": { "name": "Chester", "trainer": { "dialogueBefore": "From up here I can see every Trainer coming. Including you!", "dialogueAfter": "I should have looked harder." } },
+    "8": { "name": "Wendy", "trainer": { "dialogueBefore": "My Pokémon and I run this coast every day. Ready?", "dialogueAfter": "Time for another lap to cool off." } },
+    "9": { "name": "Maya", "trainer": { "dialogueBefore": "Few Trainers come this far south. Let's make it worth the trip!", "dialogueAfter": "It was worth it. For you, anyway." } }
+  },
+  "signs": {
+    "10814": "Route 18\nThe coast road to Route 17 and the sea"
+  }
+}

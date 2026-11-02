@@ -1,0 +1,18 @@
+{
+  // The P2 Laboratory's hall (plan 22 · U10, part c), Black 2's room on Route 17's island, our words. Black 2 leaves it
+  // empty but for a researcher (0) and a Dubious Disc's ball (1). Genesect is ours (plan 29 · LS11d, question 10a's
+  // "with U10"): a person of ours at the back of the hall, shown by Unova's Hall of Fame and gone for good once caught or
+  // beaten (FLAG_UNOVA_FOUGHT_GENESECT); run from, it is back the next time the hall is come to. The researcher, stood
+  // aside by the window (10, 7), gives whoever has met it the Shock Drive (p2_laboratory_2.txt).
+  "area": "p2_laboratory_2",
+  "bgmTrack": "unova/plasma_frigate",
+  "people": {
+    "0": { "name": "Scientist", "npcType": "scientist_m", "hiddenBy": "", "script": "Scientist", "still": true, "at": [ 10, 7 ] }
+  },
+  "npcs": [
+    { "id": "genesect", "name": "Genesect", "npcType": "Pokemon", "species": "Genesect", "x": 5, "y": 2, "facing": "Down", "script": "Genesect", "shownBy": "UnovaHallOfFame", "hiddenBy": "FLAG_UNOVA_FOUGHT_GENESECT" }
+  ],
+  "signs": {
+    "2": "P2 Laboratory\nProject records: sealed by order of Team Plasma"
+  }
+}

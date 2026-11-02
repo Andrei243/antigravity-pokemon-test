@@ -5,6 +5,9 @@ What changes from one release to the next, for players. Every session's close-ou
 ## [Unreleased]
 
 ### Added
+- Unova has Hidden Grottoes: hollows in the trees on Floccesy Ranch, Routes 6, 9, 13, 16, 22 and 23 and in the Lostlorn Forest. Crawl into one to find a Pokémon with its hidden ability or an item waiting in a quiet clearing; once it is taken, the grotto may fill again as you walk.
+- The Battle Subway has its Super trains: beat the Subway Boss in the 21st car of a line and its desk offers the Super train, whose trainers are tougher from the first car, whose Boss waits in the 49th, and whose sets pay more Battle Points.
+- Routes 17 and 18 and the P2 Laboratory are open across the sea south of Unova, with their trainers; once you are Unova's Champion, Genesect waits in the laboratory, and its researcher gives you the Shock Drive after you have faced it.
 - The Trick House on Route 110 has all eight of its puzzles. After each new Badge the Trick Master hides somewhere else in his front room; find him and a new puzzle opens behind the scroll: buttons that cover holes, red and blue doors that swap at every button, a room of boulders, five Mechadolls with quiz questions, rotating gates, floor arrows that carry trainers and statues round, and a slippery floor, the last once you are Champion. Each has its own trainers, its scroll and its code, and its own reward at the end, ending with a tent for your secret base. Seven more kinds of mail are found in them.
 
 ### Fixed

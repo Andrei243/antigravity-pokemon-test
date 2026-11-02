@@ -1,0 +1,89 @@
+{
+  "key": "p2_laboratory",
+  "index": 238,
+  "name": "P2 Laboratory",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "",
+  "dayMusic": "BGM_R_D_SP",
+  "nightMusic": "BGM_R_D_SP",
+  "encounters": "ENCOUNTERS_P2_LABORATORY",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Watchog", "level": 56 },
+    { "species": "Herdier", "level": 56 },
+    { "species": "Weezing", "level": 57 },
+    { "species": "Magneton", "level": 57 },
+    { "species": "Klang", "level": 57 },
+    { "species": "Scrafty", "level": 57 },
+    { "species": "Magneton", "level": 59 },
+    { "species": "Klang", "level": 59 },
+    { "species": "Scrafty", "level": 58 },
+    { "species": "Weezing", "level": 58 },
+    { "species": "Scrafty", "level": 58 },
+    { "species": "Weezing", "level": 58 }
+  ],
+  "landRate": 13,
+  "water": [
+    { "species": "Frillish", "level": 45, "maxLevel": 60 },
+    { "species": "Frillish", "level": 45, "maxLevel": 60 },
+    { "species": "Frillish", "level": 50, "maxLevel": 60 },
+    { "species": "Frillish", "level": 50, "maxLevel": 60 },
+    { "species": "Frillish", "level": 50, "maxLevel": 60 }
+  ],
+  "waterRate": 12,
+  "superRod": [
+    { "species": "Finneon", "level": 35, "maxLevel": 55, "weight": 60 },
+    { "species": "Horsea", "level": 35, "maxLevel": 55, "weight": 30 },
+    { "species": "Horsea", "level": 35, "maxLevel": 55, "weight": 5 },
+    { "species": "Finneon", "level": 35, "maxLevel": 55, "weight": 4 },
+    { "species": "Finneon", "level": 35, "maxLevel": 55, "weight": 1 }
+  ],
+  "superRodRate": 80,
+  "shakingGrass": [
+    { "species": "Audino", "level": 56 },
+    { "species": "Audino", "level": 56 },
+    { "species": "Audino", "level": 57 },
+    { "species": "Audino", "level": 57 },
+    { "species": "Audino", "level": 58 },
+    { "species": "Audino", "level": 58 },
+    { "species": "Audino", "level": 59 },
+    { "species": "Magnezone", "level": 59 },
+    { "species": "Klinklang", "level": 59 },
+    { "species": "Stoutland", "level": 59 },
+    { "species": "Klinklang", "level": 59 },
+    { "species": "Stoutland", "level": 59 }
+  ],
+  "shakingGrassRate": 13,
+  "ripplingWater": [
+    { "species": "Alomomola", "level": 45, "maxLevel": 60 },
+    { "species": "Alomomola", "level": 45, "maxLevel": 60 },
+    { "species": "Alomomola", "level": 50, "maxLevel": 60 },
+    { "species": "Jellicent", "level": 50, "maxLevel": 60 },
+    { "species": "Jellicent", "level": 50, "maxLevel": 60 }
+  ],
+  "ripplingWaterRate": 13,
+  "ripplingRod": [
+    { "species": "Seadra", "level": 35, "maxLevel": 60, "weight": 60 },
+    { "species": "Qwilfish", "level": 35, "maxLevel": 60, "weight": 30 },
+    { "species": "Lumineon", "level": 35, "maxLevel": 70, "weight": 5 },
+    { "species": "Kingdra", "level": 45, "maxLevel": 70, "weight": 4 },
+    { "species": "Kingdra", "level": 45, "maxLevel": 70, "weight": 1 }
+  ],
+  "ripplingRodRate": 1,
+  "warps": [
+    { "x": 725, "z": 711, "to": "p2_laboratory_2", "toWarp": 0 },
+    { "x": 729, "z": 716, "to": "plasma_frigate", "toWarp": 7 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "team_plasma_grunt_m", "movement": "wander_around", "x": 721, "z": 713, "facing": 2, "rangeX": 2, "rangeZ": 2, "script": "1" }
+  ],
+  "signs": [],
+  "triggers": []
+}
