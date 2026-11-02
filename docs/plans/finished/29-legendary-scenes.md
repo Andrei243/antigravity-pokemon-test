@@ -113,7 +113,7 @@ Rules that hold the recipe to the rest of the game:
 ### Shots and sound
 
 - Each session shoots its scenes through the harness mode that already plays the place (named in each session), at three moments of the beat (look, sign, voice: `<prefix>_<species>_1_look` to `_3_voice`) and the battle's opening after it, and looks at each with the Read tool before calling it done; before/after pairs go to the user.
-- The sounds are the kit's own: each effect brings its sound (L11), cries are `cry`, a rumble is `sound "use_earthquake"` and far thunder `sound "thunder_rumble"` (names from [`docs/sound-effects.md`](../sound-effects.md)). A new sound is plan 05's to make (`docs/sound-effects.md` first), never this plan's.
+- The sounds are the kit's own: each effect brings its sound (L11), cries are `cry`, a rumble is `sound "use_earthquake"` and far thunder `sound "thunder_rumble"` (names from [`docs/sound-effects.md`](../../sound-effects.md)). A new sound is plan 05's to make (`docs/sound-effects.md` first), never this plan's.
 - `dotnet run --project tools/VoiceTool -- catalogue --add-missing` and `tools/TextTool report` after the lines change: the Romanian of a rewritten line goes stale and is plan 17 · N6's next slice.
 
 ## Sessions
@@ -200,7 +200,7 @@ Every session: `tools/ContentCheck` first, then the filtered tests of what it to
 
 ### LS11 (added with decision 1): the event legendaries
 Open each event-only species named in decision 1 by a post-game condition of our own (a region's Hall of Fame plus a place-specific step), with a staged scene by the five-beat recipe and the unchanged wildbattle; one proposal per region for the user's approval first. Tests: LegendaryScenesTests covers them.
-The proposals, all four regions with their questions, are [decisions/LS11-proposals-event-legendaries.md](decisions/LS11-proposals-event-legendaries.md) (2026-11-01, waiting for the user's answers).
+The proposals, all four regions with their questions, are [decisions/LS11-proposals-event-legendaries.md](../decisions/LS11-proposals-event-legendaries.md) (2026-11-01, waiting for the user's answers).
 
 ### LS10 and LS11 seen on screen (2026-11-02)
 
