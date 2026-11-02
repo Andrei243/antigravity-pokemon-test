@@ -8005,3 +8005,19 @@ Plan 10 · F2 to F5 (2026-11-02). Neither is Platinum's: both are rows of the op
   what a figure that isn't chibi needs). Their looks are our own designs, not X and Y's.
 - **Music.** Vaniville's and Aquacorde's songs (`Data/music/kalos/`) are original compositions for this game; Route 1
   plays Vaniville's.
+
+## How the player moves, region by region (2026-11-02, plan 30 · FM1)
+
+Not Platinum's: Platinum and every game before X and Y walk four ways a tile at a time (`src/player_move.c`), and
+so does every region of this game before Kalos.
+
+- **The region's word.** A region file's `movement` record (`directions`, `speed`, `modes`; `RegionMovement`) says
+  how the player moves there; Sinnoh to Unova say nothing and are the four-way grid. Kalos says `Eight` (plan 30's
+  stage 1) and lists its skates; it becomes `Free` once stage 2 is built. A place may keep the grid inside a free
+  region with a `movement` of its own in `world.json` (none does yet).
+- **The options' MOVEMENT row** (the user's decision 6): AS THE REGION, unless chosen, or FOUR WAYS, which makes
+  every region the grid's four ways at Platinum's paces and keeps the region's own modes (the skates).
+- **What FM1 changes of play: nothing.** The keys' two direction keys and the stick's diagonal are read as an
+  eight-way `Heading` (`Player.WantedHeading`), from the same four direction bits a recording already keeps, so no
+  movie format changed. What is walked is still the grid's four-way answer (the stronger axis, a tie the vertical one)
+  in every region, Kalos's included, until plan 30 · FM2 builds the diagonal step.

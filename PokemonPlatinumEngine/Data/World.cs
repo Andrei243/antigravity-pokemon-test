@@ -318,6 +318,8 @@ public static class WorldMapBuilder
         if (room) map.Interior = RoomStyleOf(entry.Name);
         // A room whose entry names a puzzle has it, as a map file's does (plan 21 · H6: Fortree's rotating gates)
         map.Puzzle = GymPuzzle.Create(entry.Puzzle);
+        // A place that keeps its own word on movement inside a free region (plan 30 · FM1)
+        map.Movement = entry.Movement;
         // A room whose overlay names its Leader's type is that type's Gym hall (plan 19 · K4: Pewter's of rock)
         if (room && entry.Area != null && world.Overlay(entry.Area)?.ArenaType is { } arena)
         {

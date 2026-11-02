@@ -246,6 +246,13 @@ public partial class GameEngine
     /// </summary>
     public Region Here => (flow.Map != null ? RegionDatabase.RegionOfMap(flow.Map.Name) : null) ?? RegionDatabase.First;
 
+    /// <summary>
+    /// How the player moves where they stand (plan 30 · FM1): the region's record (<see cref="Region.Movement"/>), the
+    /// place's laid over it (<see cref="Map.Movement"/>), then the options' MOVEMENT row (FOUR WAYS makes it the grid's).
+    /// Every region before Kalos says nothing, so it is the grid's four ways there whatever the row says.
+    /// </summary>
+    public RegionMovement MovementHere => Here.Movement.Under(flow.Map?.Movement).AsChosen(Settings.Movement);
+
     // The band a Gym Leader's, an Elite Four's or the Champion's battle opens on, and its portraits (plan 09 · L15):
     // begun with the transition, rendered offscreen as its frames find the rigs ready, ended at the midpoint
     private readonly BandPortraits band = new();
@@ -1850,6 +1857,7 @@ public partial class GameEngine
         flow.Player.Moves = FieldMovement.MovesOf(flow.Party) | FieldHelp.Moves(GrantedMoves);
         flow.Player.Autorun = Settings.Autorun;
         flow.Player.CanSkate = SkateRules.Allowed(Here, flow.Story);
+        flow.Player.Directions = MovementHere.Directions;
         flow.Player.Lead = WildLead.Of(flow.Party, flow.EncounterAids);
         flow.Player.Moment = momentOf ??= EncounterMomentNow;
         if (Steering is { } steer) flow.Player.Advance(dt, flow.Map, steer.Want, steer.Run, MeetInTheField, HandleWarp, OnStep);

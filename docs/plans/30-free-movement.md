@@ -287,7 +287,7 @@ In all: 13 to 20 sessions before FM11, and 4 to 5 more for Paldea's mount (FM12 
 ## Status
 
 - [ ] FM0 The prototype: one scene, three looks
-- [ ] FM1 The region's word and the input
+- [x] FM1 The region's word and the input (2026-11-02; "FM1 as built", below)
 - [ ] FM2 Eight directions on the grid
 - [ ] FM3 Live rigs in the field, and their budget
 - [ ] FM4 The grown kit: sculpt, clothes, hair, faces
@@ -323,3 +323,12 @@ All seventeen answered; every one is the recommended answer, with two notes.
 15. The mount is not a party member while ridden. **Note:** it is not in the party until the end of the game, where it is battled and officially caught.
 16. Plan 23 · Z14's order, each power granted after a Titan.
 17. No table rolls while riding; only Pokémon seen in the field.
+
+## FM1 as built (2026-11-02)
+
+- **The record.** `RegionFile.Movement` (a `RegionMovement`: `Directions` `Four`/`Eight`/`Free`, `Speed` `Paces`/`Analog`, `Modes` a list of `RegionMode` `Skates`/`Ride`/`RotomBike`/`Mount`, null where the record says nothing of them) and `RegionFile.Kit` (`CharacterKit` `Chibi`/`Grown`) in `Data/RegionFiles.cs`; `Region.Movement` (`RegionMovement.Grid` where the file says nothing) and `Region.Kit`. Kalos's file says `{ "directions": "Eight", "speed": "Paces", "modes": [ "Skates" ] }`; its kit stays `Chibi` until FM3 and FM4. The older `skates` flag stays beside it (plan 23 · Z1 reads it), and a test holds the two to agree.
+- **A place's record** is `WorldMapEntry.Movement`, copied to `Map.Movement` as the map is built; `RegionMovement.Under(place)` lays it over the region's (its directions and speed; its modes where it lists any, an empty list barring them). No place says anything yet.
+- **`GameEngine.MovementHere`** is `Here.Movement.Under(Map.Movement).AsChosen(Settings.Movement)`, set on `Player.Directions` every frame of the field. Nothing reads `Directions` until FM2.
+- **The row**: `OptionRow.Movement` after `WildPokemon`, before `Controls`; `GameSettings.Movement` (`MovementChoice.AsTheRegion` unless chosen, `FourWays`), which `AsChosen` turns into four ways at the paces with the region's modes kept. The first start's page doesn't ask for it.
+- **The input**: `Overworld/Heading.cs` (`Heading` N to NW; `Headings`: `Cardinal`, `Parts`, `Delta`, `Yaw`, `FromVector`, `FromStick`, `Of(ActionFrame)`, and `FourWay`, the grid's answer the player always had: the stronger axis, a tie vertical). `Player.Update` keeps `WantedHeading` and walks `FourWay` as before; `InputManager.GetHeading()`. **No `MoveX`/`MoveY` and no movie format 3**: stage 1 reads the four direction bits a recording already keeps (the stick's eight ways are already two bits on a diagonal), so the format stays 2; FM7 or FM9, which need the tilt, add them.
+- **Tests**: `RegionMovementTests`; the option rows' positions moved by one in `PadInputTests`, `FocusAndFrameCapTests`, `AccessibilityTests`, `AutoBattleTests`, `CaptionsAndHoldTests`, `SeeingTests`; `docs/localisation.md` regenerated for the row's words. No shot taken (the harness wasn't run): the row is drawn by the options' own code, and nothing in the field changed.

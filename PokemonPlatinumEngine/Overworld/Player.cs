@@ -429,19 +429,26 @@ public class Player
     public void Update(float dt, Map map, Action<WildEncounterEntry> onWildEncounter, Action<Warp> onWarpTrigger, Func<bool>? onArrive = null)
     {
         Vector2 dir = InputManager.GetMovementVector();
-        Direction? want = null;
-        if (dir != Vector2.Zero)
-        {
-            want = Math.Abs(dir.X) > Math.Abs(dir.Y)
-                ? (dir.X > 0 ? Direction.Right : Direction.Left)
-                : (dir.Y > 0 ? Direction.Down : Direction.Up);
-        }
+        // The eight ways the keys or the stick hold (plan 30 · FM1), kept for the diagonal step of FM2; the grid's
+        // four-way answer below is what is walked whatever the region says, until FM2 walks the diagonal
+        WantedHeading = Headings.FromVector(dir);
+        Direction? want = Headings.FourWay(dir);
         // With Autorun (plan 08 · P2) the run button walks and its absence runs; Advance itself is unchanged
         Advance(dt, map, want, InputManager.IsActionDown(GameAction.Run) != Autorun, onWildEncounter, onWarpTrigger, onArrive);
     }
 
     /// <summary>Whether the keys' run button is read the other way round (the options' Autorun, plan 08 · P2); running still needs the Running Shoes.</summary>
     public bool Autorun { get; set; }
+
+    /// <summary>
+    /// Which ways the player may step where they stand (plan 30 · FM1): the engine sets it every frame from
+    /// <c>GameEngine.MovementHere</c>. Four everywhere before Kalos and under the options' FOUR WAYS; nothing reads more
+    /// than four until FM2 builds the diagonal step.
+    /// </summary>
+    public MovementDirections Directions { get; set; } = MovementDirections.Four;
+
+    /// <summary>The eight-way heading the keys or the stick held at the last <see cref="Update"/> (plan 30 · FM1); null for none.</summary>
+    public PokemonPlatinumEngine.Overworld.Heading? WantedHeading { get; private set; }
 
     /// <summary>
     /// One frame of the player's movement with the steering given rather than read from the keys, which is how

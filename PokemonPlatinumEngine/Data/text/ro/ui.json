@@ -342,6 +342,14 @@
         "visible": "Pokémonii sălbatici se văd în iarbă și pe apă, și îi întâlnești doar pe cei peste care dai."
       }
     },
+    "movement": {
+      "label": "Mișcare",
+      "value": { "region": "CA REGIUNEA", "fourWays": "PATRU DIRECȚII" },
+      "help": {
+        "region": "Te miști cum îți permite fiecare regiune: în patru direcții pe cărările ei, sau în mai multe acolo unde regiunea le permite.",
+        "fourWays": "Te miști mereu în patru direcții, câte un pas pe cărări, orice ar permite regiunea."
+      }
+    },
     "areaChecklist": {
       "label": "Ce a mai rămas aici",
       "help": {

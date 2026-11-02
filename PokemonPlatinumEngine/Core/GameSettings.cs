@@ -69,6 +69,9 @@ public enum SkipScenes { Off, Seen, Any }
 /// </summary>
 public enum SlotTwoGame { None, Ruby, Sapphire, Emerald, FireRed, LeafGreen }
 
+/// <summary>The options' MOVEMENT row (plan 30 · FM1): as the region says, or the grid's four ways everywhere.</summary>
+public enum MovementChoice { AsTheRegion, FourWays }
+
 public static class RulesDefaults
 {
     /// <summary>Whether the help is on in a game played by these rules.</summary>
@@ -269,6 +272,13 @@ public sealed class GameSettings
     /// hidden rolls (plan 10 · F5). Off (Platinum's hidden encounters) unless chosen.
     /// </summary>
     public bool WildInSight { get; set; }
+
+    /// <summary>
+    /// How the player moves where a region lets them move in more ways than four (plan 30 · FM1, decision 6): as the
+    /// region says (unless chosen), or on the grid's four ways everywhere. Nothing before Kalos moves otherwise, so the
+    /// row changes nothing there.
+    /// </summary>
+    public MovementChoice Movement { get; set; } = MovementChoice.AsTheRegion;
 
     /// <summary>
     /// Every option back at its default (plan 12 · Q3: the options' last row, behind a question): the settings as
