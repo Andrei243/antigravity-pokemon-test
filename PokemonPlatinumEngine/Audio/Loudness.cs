@@ -40,10 +40,14 @@ public static class Loudness
 
     public static double Db(double linear) => 20 * Math.Log10(Math.Max(linear, 1e-9));
 
-    /// <summary>The gated level of mono samples, or of interleaved stereo ones when <paramref name="channels"/> is 2.</summary>
-    public static double Of(ReadOnlySpan<float> samples, int channels = 1) => Of(samples, channels, Synthesizer.SampleRate);
+    /// <summary>
+    /// The gated level of mono samples, or of interleaved stereo ones when <paramref name="channels"/> is 2, at the DS's
+    /// rate: a sound effect, a cry or a bed as it is made, or a song from a DS player. What the mixer renders is at its
+    /// own rate (<see cref="AudioMixer.Rate"/>) and is measured with the rate given.
+    /// </summary>
+    public static double Of(ReadOnlySpan<float> samples, int channels = 1) => Of(samples, channels, Synthesizer.DsRate);
 
-    /// <summary>The gated level of samples at another rate (plan 31: the modern sound's 48 kHz), in blocks of 100 ms of that rate.</summary>
+    /// <summary>The gated level of samples at another rate (plan 31: the mix's and the modern sound's 48 kHz), in blocks of 100 ms of that rate.</summary>
     public static double Of(ReadOnlySpan<float> samples, int channels, int rate)
     {
         int frames = samples.Length / channels;

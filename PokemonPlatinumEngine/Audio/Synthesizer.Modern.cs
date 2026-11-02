@@ -76,7 +76,7 @@ public sealed partial class Synthesizer
     /// A per-sample filter coefficient written for the DS's rate, moved to this synthesiser's rate so the filter keeps its
     /// corner. At the DS's rate it is the very number given, so the DS sound doesn't move a sample.
     /// </summary>
-    private float K(float c) => Rate == SampleRate ? c : 1f - MathF.Pow(1f - c, SampleRate / (float)Rate);
+    private float K(float c) => Rate == DsRate ? c : 1f - MathF.Pow(1f - c, DsRate / (float)Rate);
 
     private sealed partial class Voice
     {

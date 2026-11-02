@@ -4,6 +4,9 @@ What changes from one release to the next, for players. Every session's close-ou
 
 ## [Unreleased]
 
+### Changed
+- The game's sound is now mixed at your sound card's own 48 kHz, with a clean resampler taking the DS-style music, sounds, cries and ambience into it, in place of the simple one the audio device used before. Everything is meant to sound just as it did.
+
 ### Added
 - A MOVEMENT row in the options: AS THE REGION (the default) or FOUR WAYS, for whoever wants to keep walking four ways, a step at a time, in the regions that will let you move more freely from Kalos on. Nothing moves differently yet.
 - A BATTLE ROOM on the title screen, with or without a save. Build teams from nothing (any species, form, level, nature, ability, held item and up to four moves it can learn; a Pokémon that can't battle says why), then take one against the gauntlet of Sinnoh's eight Gym Leaders, the Elite Four and Cynthia one after another, or into an endless streak of Battle Frontier trainers at level 50. And ten battle puzzles: a battle stopped halfway with a goal (win this turn, survive the turn, catch it within two turns), each turning on a rule of the battles, with a star once solved. Your best gauntlet, longest streak and solved puzzles are kept on this machine, and nothing in the room touches your saves.

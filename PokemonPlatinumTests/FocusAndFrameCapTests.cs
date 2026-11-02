@@ -115,7 +115,7 @@ public class FocusAndFrameCapTests
 
     private static float[] Render(AudioMixer mixer, double seconds)
     {
-        var buffer = new float[(int)(seconds * Synthesizer.SampleRate) * 2];
+        var buffer = new float[(int)(seconds * AudioMixer.Rate) * 2];
         for (int done = 0; done < buffer.Length; done += 2048)
             mixer.Render(buffer.AsSpan(done, Math.Min(2048, buffer.Length - done)));
         return buffer;

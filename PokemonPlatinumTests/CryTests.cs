@@ -45,7 +45,7 @@ public class CryTests
                 var voice = CryVoice.Of(species, form);
                 var s = Cries.Play(Cries.Make(voice), CryMode.Normal);
                 string name = form ?? species.Name;
-                Assert.InRange(s.Length / (double)Synthesizer.SampleRate, 0.3, 1.5);
+                Assert.InRange(s.Length / (double)Synthesizer.DsRate, 0.3, 1.5);
                 Assert.InRange(voice.Pitch, 65f, 1500f);
                 Assert.InRange(voice.Syllables.Length, 1, 4);
                 Assert.All(s, x => Assert.True(float.IsFinite(x)));
@@ -62,10 +62,10 @@ public class CryTests
                 // In its bus's window as the mixer plays it
                 var mixer = new AudioMixer();
                 mixer.PlaySound(new SoundSample("cry " + name, s), AudioBus.Cry);
-                var heard = new float[(s.Length + Synthesizer.SampleRate / 10) * 2];
+                var heard = new float[((int)(s.Length / (double)Synthesizer.DsRate * AudioMixer.Rate) + AudioMixer.Rate / 10) * 2];
                 for (int done = 0; done < heard.Length; done += 2048)
                     mixer.Render(heard.AsSpan(done, Math.Min(2048, heard.Length - done)));
-                double loud = Loudness.Of(heard, 2);
+                double loud = Loudness.Of(heard, 2, AudioMixer.Rate);
                 Assert.True(loud >= low && loud <= high, $"{name} cries at {loud:0.0} dB, outside {low} to {high}");
 
                 // No two cries are the same
@@ -135,8 +135,8 @@ public class CryTests
         Assert.Equal(normal * Math.Pow(2, 3.5 / 12), Length(CryMode.Faint), normal * 0.002);
         Assert.Equal(normal * Math.Pow(2, 1.5 / 12), Length(CryMode.Pinch), normal * 0.002);
         // Twenty frames of sixty
-        Assert.Equal(Synthesizer.SampleRate / 3, Length(CryMode.Half));
-        Assert.Equal(Synthesizer.SampleRate / 3, Length(CryMode.PinchHalf));
+        Assert.Equal(Synthesizer.DsRate / 3, Length(CryMode.Half));
+        Assert.Equal(Synthesizer.DsRate / 3, Length(CryMode.PinchHalf));
         // A semitone up with its echo a third of a semitone up beside it: the echo is the longer
         Assert.Equal(normal / Math.Pow(2, 0.3125 / 12), Length(CryMode.FieldEvent), normal * 0.002);
         Assert.Equal(normal, Length(CryMode.Pokedex));
@@ -231,10 +231,10 @@ public class CryTests
             Assert.True(Loudness.Of(s) <= Loudness.CryCeiling + 0.05, shape.Key);
             var mixer = new AudioMixer();
             mixer.PlaySound(new SoundSample("shaped", s), AudioBus.Cry);
-            var heard = new float[(s.Length + Synthesizer.SampleRate / 10) * 2];
+            var heard = new float[((int)(s.Length / (double)Synthesizer.DsRate * AudioMixer.Rate) + AudioMixer.Rate / 10) * 2];
             for (int done = 0; done < heard.Length; done += 2048)
                 mixer.Render(heard.AsSpan(done, Math.Min(2048, heard.Length - done)));
-            double loud = Loudness.Of(heard, 2);
+            double loud = Loudness.Of(heard, 2, AudioMixer.Rate);
             Assert.True(loud >= low && loud <= high, $"{shape.Key} cries at {loud:0.0} dB, outside {low} to {high}");
         }
         // The same shape is the same cry every time

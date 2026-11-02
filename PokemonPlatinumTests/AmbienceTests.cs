@@ -16,7 +16,7 @@ public class AmbienceTests
 {
     private static float[] Render(AudioMixer mixer, double seconds)
     {
-        var buffer = new float[(int)(seconds * Synthesizer.SampleRate) * 2];
+        var buffer = new float[(int)(seconds * AudioMixer.Rate) * 2];
         for (int done = 0; done < buffer.Length; done += 2048)
             mixer.Render(buffer.AsSpan(done, Math.Min(2048, buffer.Length - done)));
         return buffer;
@@ -32,7 +32,7 @@ public class AmbienceTests
         {
             var s = Ambience.Get(bed).Samples;
             Assert.Same(Ambience.Get(bed), Ambience.Get(bed));
-            Assert.Equal((int)(Ambience.LoopSeconds(bed) * Synthesizer.SampleRate), s.Length);
+            Assert.Equal((int)(Ambience.LoopSeconds(bed) * Synthesizer.DsRate), s.Length);
             Assert.All(s, x => Assert.True(float.IsFinite(x)));
             Assert.True(s.Max(MathF.Abs) < 0.9f, $"{bed} peaks too high");
             Assert.True(MathF.Abs(s.Average()) < 0.002f, $"{bed} has an offset");
@@ -46,9 +46,9 @@ public class AmbienceTests
             var mixer = new AudioMixer();
             mixer.SetAmbience(new[] { new AmbienceLayer(bed, 1f, 0f) });
             var sound = Render(mixer, AudioMixer.AmbienceFade + 3);
-            int settled = (int)((AudioMixer.AmbienceFade + 0.1) * Synthesizer.SampleRate) * 2;
+            int settled = (int)((AudioMixer.AmbienceFade + 0.1) * AudioMixer.Rate) * 2;
             var (low, high) = Loudness.Target(AudioBus.Ambience);
-            double loud = Loudness.Of(sound.AsSpan(settled), 2);
+            double loud = Loudness.Of(sound.AsSpan(settled), 2, AudioMixer.Rate);
             Assert.True(loud >= low && loud <= high, $"{bed} measures {loud:0.0} dB, outside {low} to {high}");
             Assert.True(high < Loudness.Target(AudioBus.Music).Low);
         }
@@ -308,7 +308,7 @@ public class AmbienceTests
             var mixer = new AudioMixer();
             var cry = Cries.Get(PokemonDatabase.Get(name)!);
             mixer.PlaySound(cry, AudioBus.Cry);
-            double loud = Loudness.Of(Render(mixer, cry.Duration + 0.1), 2);
+            double loud = Loudness.Of(Render(mixer, cry.Duration + 0.1), 2, AudioMixer.Rate);
             Assert.True(loud >= low && loud <= high, $"{name} cries at {loud:0.0} dB, outside {low} to {high}");
         }
     }
@@ -317,9 +317,9 @@ public class AmbienceTests
     public void TheLoudnessMeasureLeavesOutSilence()
     {
         // Ten blocks of a tone, then ten of silence
-        int block = Synthesizer.SampleRate / 10;
+        int block = Synthesizer.DsRate / 10;
         var tone = new float[block * 20];
-        for (int i = 0; i < block * 10; i++) tone[i] = 0.5f * MathF.Sin(MathF.Tau * 440f * i / Synthesizer.SampleRate);
+        for (int i = 0; i < block * 10; i++) tone[i] = 0.5f * MathF.Sin(MathF.Tau * 440f * i / Synthesizer.DsRate);
         // A sine of amplitude 0.5 is about -9 dB; the second of silence after it doesn't pull that down
         Assert.Equal(Loudness.Db(0.5 / Math.Sqrt(2)), Loudness.Of(tone), 1);
         Assert.Equal(-120, Loudness.Of(new float[4096]));

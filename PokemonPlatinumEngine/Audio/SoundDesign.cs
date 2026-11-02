@@ -11,7 +11,7 @@ namespace PokemonPlatinumEngine.Audio;
 /// </summary>
 internal sealed class SoundDesign
 {
-    public const int Rate = Synthesizer.SampleRate;
+    public const int Rate = Synthesizer.DsRate;
 
     public enum Wave { Sine, Pulse, Triangle, Saw }
 

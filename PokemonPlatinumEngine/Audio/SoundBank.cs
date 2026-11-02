@@ -7,7 +7,7 @@ using PokemonPlatinumEngine.Overworld;
 
 namespace PokemonPlatinumEngine.Audio;
 
-/// <summary>A sound effect: mono samples in [-1, 1] at the synthesiser's rate, ready for the mixer.</summary>
+/// <summary>A sound effect, a cry or an ambience bed: mono samples in [-1, 1] at the DS's rate (<see cref="Synthesizer.DsRate"/>), which the mixer takes into the mix's own.</summary>
 public sealed class SoundSample
 {
     public string Name { get; }
@@ -19,7 +19,7 @@ public sealed class SoundSample
         Samples = samples;
     }
 
-    public double Duration => Samples.Length / (double)Synthesizer.SampleRate;
+    public double Duration => Samples.Length / (double)Synthesizer.DsRate;
 }
 
 /// <summary>Where in the game a sound belongs: what <c>docs/sound-effects.md</c> lists it under.</summary>
@@ -151,8 +151,8 @@ public static partial class SoundBank
             max = MathF.Max(max, MathF.Abs(s[i]));
         }
         float gain = max > 0f ? peak / max : 0f;
-        int fadeIn = Math.Min(s.Length / 2, (int)(Synthesizer.SampleRate * 0.0015f));
-        int fadeOut = Math.Min(s.Length / 2, (int)(Synthesizer.SampleRate * 0.004f));
+        int fadeIn = Math.Min(s.Length / 2, (int)(Synthesizer.DsRate * 0.0015f));
+        int fadeOut = Math.Min(s.Length / 2, (int)(Synthesizer.DsRate * 0.004f));
         for (int i = 0; i < s.Length; i++)
         {
             float g = gain;

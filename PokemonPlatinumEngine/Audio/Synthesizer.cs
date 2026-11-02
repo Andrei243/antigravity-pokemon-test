@@ -11,8 +11,12 @@ namespace PokemonPlatinumEngine.Audio;
 /// </summary>
 public sealed partial class Synthesizer
 {
-    /// <summary>The DS mixes its sound at about 32.7 kHz: the rate of the DS sound, and of the game's mixer until plan 31 · MU1.</summary>
-    public const int SampleRate = 32768;
+    /// <summary>
+    /// The DS mixes its sound at about 32.7 kHz: the rate of the DS sound, and of every sound effect, cry and ambience
+    /// bed, whose numbers are all at it. Since plan 31 · MU1 the game's mix runs at <see cref="AudioMixer.Rate"/> and
+    /// takes all of it in through a <see cref="Resampler"/>.
+    /// </summary>
+    public const int DsRate = 32768;
 
     /// <summary>The DS sound's voices.</summary>
     public const int MaxVoices = 40;
@@ -22,7 +26,7 @@ public sealed partial class Synthesizer
     /// <summary>Which sound this synthesiser makes (plan 31): the DS one, or the modern one at its own rate and voices.</summary>
     public SynthSound Sound { get; }
 
-    /// <summary>The rate this synthesiser renders at: <see cref="SampleRate"/> for the DS sound, <see cref="ModernRate"/> for the modern one.</summary>
+    /// <summary>The rate this synthesiser renders at: <see cref="DsRate"/> for the DS sound, <see cref="ModernRate"/> for the modern one.</summary>
     public int Rate { get; }
 
     private readonly float Dt;
@@ -41,7 +45,7 @@ public sealed partial class Synthesizer
     public Synthesizer(SynthSound sound)
     {
         Sound = sound;
-        Rate = sound == SynthSound.Modern ? ModernRate : SampleRate;
+        Rate = sound == SynthSound.Modern ? ModernRate : DsRate;
         Dt = 1f / Rate;
         voices = new Voice[sound == SynthSound.Modern ? ModernVoices : MaxVoices];
         reverb = new Reverb(Rate);

@@ -22,7 +22,7 @@ public class ModernMusicTests
     {
         var player = new SongPlayer { Agitated = lowHp };
         player.Start(MusicLibrary.Get(id)!, night);
-        var buffer = new float[Synthesizer.SampleRate * 2 * 6];
+        var buffer = new float[Synthesizer.DsRate * 2 * 6];
         for (int done = 0; done < buffer.Length; done += 2048) player.Render(buffer.AsSpan(done, Math.Min(2048, buffer.Length - done)), 1f);
         return Hash(buffer);
     }
@@ -71,7 +71,7 @@ public class ModernMusicTests
         Assert.Equal(Synthesizer.ModernVoices, modern.VoiceCount);
         Assert.True(modern.VoiceCount > ds.VoiceCount);
         Assert.Equal(48000, new SongPlayer(SynthSound.Modern).Rate);
-        Assert.Equal(Synthesizer.SampleRate, new SongPlayer().Rate);
+        Assert.Equal(Synthesizer.DsRate, new SongPlayer().Rate);
     }
 
     private static Song TestTune() =>

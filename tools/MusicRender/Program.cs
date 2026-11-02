@@ -6,6 +6,10 @@
 //   dotnet run --project tools/MusicRender -- <out dir> --sounds [name ...]
 //   dotnet run --project tools/MusicRender -- <out dir> --cries [species or form ...] [--all] [--modes]
 //   dotnet run --project tools/MusicRender -- <out dir> --ambience [bed ...] [--handheld]
+//   dotnet run --project tools/MusicRender -- <out dir> --mix     (plan 31 · MU1: the resampler, the audio thread's cost, each bus before and after)
+//
+// Everything played through the mixer is rendered at the mix's 48 kHz (AudioMixer.Rate); --sound ds|modern renders a
+// song at that sound's own rate, with no mixer.
 //
 // Every report gives the loudness each bus is held to (Audio/Loudness: gated, in dBFS) and flags what falls outside
 // its bus's window.
@@ -64,7 +68,7 @@ SynthSound? soundAsked = null;
 var filters = new List<string>();
 for (int i = 1; i < args.Length; i++)
 {
-    if (args[i] is "--night" or "--stems" or "--spectrogram" or "--sounds" or "--lowhp" or "--giant" or "--cries" or "--all" or "--modes" or "--ambience" or "--handheld" or "--wide") continue;
+    if (args[i] is "--night" or "--stems" or "--spectrogram" or "--sounds" or "--lowhp" or "--giant" or "--cries" or "--all" or "--modes" or "--ambience" or "--handheld" or "--wide" or "--mix") continue;
     if (args[i] == "--passes") { passes = int.Parse(args[++i]); continue; }
     if (args[i] == "--sound")
     {
@@ -77,6 +81,9 @@ for (int i = 1; i < args.Length; i++)
 Directory.CreateDirectory(outDir);
 bool handheld = args.Contains("--handheld");
 
+// Plan 31 · MU1: the resampler's and the audio thread's measurements, and each bus before and after the mix at 48 kHz
+if (args.Contains("--mix")) return MixCheck.Run(outDir, (path, samples, rate) => WriteWav(path, samples, rate));
+
 // The bus's window for a loudness, or a flag saying how far outside it is
 string Target(double loudness, AudioBus bus)
 {
@@ -87,9 +94,10 @@ string Target(double loudness, AudioBus bus)
 // Renders one sound as the mixer plays it on its bus, with a tenth of a second after; prints its numbers and says whether it is sound
 bool Check(string label, SoundSample sound, AudioBus bus, string file, bool write)
 {
+    // The sound is made at the DS's rate and heard through the mix at its own (plan 31 · MU1)
     var mixer = new AudioMixer { Handheld = handheld };
     mixer.PlaySound(sound, bus);
-    int frames = sound.Samples.Length + Synthesizer.SampleRate / 10;
+    int frames = (int)(sound.Duration * AudioMixer.Rate) + AudioMixer.Rate / 10;
     var samples = new float[frames * 2];
     for (int done = 0; done < frames; done += 1024) mixer.Render(samples.AsSpan(done * 2, Math.Min(1024, frames - done) * 2));
 
@@ -113,7 +121,7 @@ bool Check(string label, SoundSample sound, AudioBus bus, string file, bool writ
         loudest = WriteSpectrogram(file + ".png", samples, 640, 256, 8192f);
     }
     bool clicks = head > 0.02f || tail > 0.02f;
-    double loud = Loudness.Of(samples, 2);
+    double loud = Loudness.Of(samples, 2, AudioMixer.Rate);
     Console.WriteLine($"{label,-12} {sound.Duration * 1000,5:0} ms  peak {Db(peak),6:0.0} dB  rms {Db((float)rms),6:0.0} dB  loud {loud,6:0.0} dB  loudest {loudest,5:0} Hz  ends {head:0.000}/{tail:0.000}  dc {dc,6:0.000}{(clicks ? "  CLICKS" : "")}{(nans > 0 ? $"  NaN {nans}" : "")}{Target(loud, bus)}");
     return nans == 0 && peak < 0.999f && !clicks;
 }
@@ -138,11 +146,11 @@ if (args.Contains("--ambience"))
         var mixer = new AudioMixer { Handheld = handheld };
         mixer.SetAmbience(new[] { new AmbienceLayer(bed, 1f, 0f) });
         double seconds = AudioMixer.AmbienceFade + sample.Duration * 2;
-        int frames = (int)(seconds * Synthesizer.SampleRate);
+        int frames = (int)(seconds * AudioMixer.Rate);
         var samples = new float[frames * 2];
         for (int done = 0; done < frames; done += 1024) mixer.Render(samples.AsSpan(done * 2, Math.Min(1024, frames - done) * 2));
-        int settled = (int)(AudioMixer.AmbienceFade * Synthesizer.SampleRate) + 1024;
-        double loud = Loudness.Of(samples.AsSpan(settled * 2), 2);
+        int settled = (int)(AudioMixer.AmbienceFade * AudioMixer.Rate) + 1024;
+        double loud = Loudness.Of(samples.AsSpan(settled * 2), 2, AudioMixer.Rate);
         float peak = samples.Max(MathF.Abs);
         var data = sample.Samples;
         float seam = MathF.Abs(data[0] - data[^1]), step = 0f;
@@ -219,7 +227,8 @@ foreach (var song in songs)
 {
     // The intro, then the loop enough times to hear the seam, then a fade; a fanfare once and its ring
     double seconds = song.Loops ? song.Duration(night) + song.LoopDuration(night) * (passes - 1) + 2.5 : song.Duration(night) + 1.5;
-    int rate = soundAsked == SynthSound.Modern ? Synthesizer.ModernRate : Synthesizer.SampleRate;
+    // With a sound asked for, the song at that sound's own rate (no mixer); without, the game's mix at its rate
+    int rate = soundAsked == SynthSound.Modern ? Synthesizer.ModernRate : soundAsked == SynthSound.Ds ? Synthesizer.DsRate : AudioMixer.Rate;
     int frames = (int)(seconds * rate);
     float[] samples;
     SongPlayer? voices = null;
@@ -376,7 +385,7 @@ static string NoteName(int key)
     return names[((key % 12) + 12) % 12] + (key / 12 - 1);
 }
 
-static void WriteWav(string path, float[] samples, int rate = Synthesizer.SampleRate)
+static void WriteWav(string path, float[] samples, int rate = AudioMixer.Rate)
 {
     using var w = new BinaryWriter(File.Create(path));
     int dataBytes = samples.Length * 2;
@@ -397,7 +406,7 @@ static void WriteWav(string path, float[] samples, int rate = Synthesizer.Sample
 
 // A spectrogram of interleaved stereo (mixed to mono): time left to right, 0 Hz at the bottom and maxHz at the top,
 // black through blue, magenta and orange to white over 80 dB. Returns the frequency with the most energy overall.
-static float WriteSpectrogram(string path, float[] stereo, int width, int height, float maxHz, int rate = Synthesizer.SampleRate)
+static float WriteSpectrogram(string path, float[] stereo, int width, int height, float maxHz, int rate = AudioMixer.Rate)
 {
     const int window = 1024;
     int n = stereo.Length / 2;

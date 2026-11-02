@@ -18,7 +18,7 @@ public class MusicTests
     {
         var mixer = new AudioMixer();
         start(mixer);
-        var buffer = new float[(int)(seconds * Synthesizer.SampleRate) * 2];
+        var buffer = new float[(int)(seconds * AudioMixer.Rate) * 2];
         for (int done = 0; done < buffer.Length; done += 2048)
             mixer.Render(buffer.AsSpan(done, Math.Min(2048, buffer.Length - done)));
         return buffer;
@@ -165,7 +165,7 @@ public class MusicTests
             Assert.True(samples.Max(MathF.Abs) < 1f, $"{song.Id} clips");
             Assert.True(Rms(samples) > 0.01, $"{song.Id} is nearly silent");
             var (low, high) = Loudness.Target(song.Loops ? AudioBus.Music : AudioBus.Fanfare);
-            double loud = Loudness.Of(samples, 2);
+            double loud = Loudness.Of(samples, 2, AudioMixer.Rate);
             Assert.True(loud >= low && loud <= high, $"{song.Id} measures {loud:0.0} dB, outside {low} to {high}");
         }
     }
@@ -178,7 +178,7 @@ public class MusicTests
 
         var player = new SongPlayer();
         player.Start(song, atNight: false);
-        int frames = (int)((song.Duration() + 1.0) * Synthesizer.SampleRate);
+        int frames = (int)((song.Duration() + 1.0) * Synthesizer.DsRate);
         var buffer = new float[2048];
         for (int done = 0; done < frames; done += 1024) player.Render(buffer, 1f);
 
@@ -196,7 +196,7 @@ public class MusicTests
         var buffer = new float[2048];
         void Run(double seconds)
         {
-            for (int done = 0; done < seconds * Synthesizer.SampleRate; done += 1024) mixer.Render(buffer);
+            for (int done = 0; done < seconds * AudioMixer.Rate; done += 1024) mixer.Render(buffer);
         }
 
         mixer.Play(twinleaf, night: false);
@@ -220,7 +220,7 @@ public class MusicTests
         var buffer = new float[2048];
         void Run(double seconds)
         {
-            for (int done = 0; done < seconds * Synthesizer.SampleRate; done += 1024) mixer.Render(buffer);
+            for (int done = 0; done < seconds * AudioMixer.Rate; done += 1024) mixer.Render(buffer);
         }
 
         mixer.Play(twinleaf, night: false);
@@ -332,7 +332,7 @@ public class MusicTests
         var buffer = new float[2048];
         void Run(double seconds)
         {
-            for (int done = 0; done < seconds * Synthesizer.SampleRate; done += 1024) player.Render(buffer, 1f);
+            for (int done = 0; done < seconds * Synthesizer.DsRate; done += 1024) player.Render(buffer, 1f);
         }
 
         // Switched on in the middle: the song keeps its place and goes on half as fast again
@@ -357,7 +357,7 @@ public class MusicTests
             var song = Mml.Parse("test", "tempo 120\n" + track + "\n  L c4 e4 g4 >c4 |\n");
             var player = new SongPlayer { Agitated = agitated };
             player.Start(song, atNight: false);
-            var buffer = new float[Synthesizer.SampleRate * 2];
+            var buffer = new float[Synthesizer.DsRate * 2];
             player.Render(buffer, 1f);
             return buffer.Sum(x => Math.Abs(x));
         }
@@ -447,7 +447,7 @@ public class MusicTests
             var song = Mml.Parse("test", "tempo 120\n" + track + "\n  L c4 e4 g4 >c4 |\n");
             var player = new SongPlayer { Giant = giant, Agitated = agitated };
             player.Start(song, atNight: false);
-            var buffer = new float[Synthesizer.SampleRate * 2];
+            var buffer = new float[Synthesizer.DsRate * 2];
             player.Render(buffer, 1f);
             return buffer.Sum(x => Math.Abs(x));
         }
@@ -471,7 +471,7 @@ public class MusicTests
         var buffer = new float[2048];
         void Run(double seconds)
         {
-            for (int done = 0; done < seconds * Synthesizer.SampleRate; done += 1024) player.Render(buffer, 1f);
+            for (int done = 0; done < seconds * Synthesizer.DsRate; done += 1024) player.Render(buffer, 1f);
         }
         player.Start(song, atNight: false);
         Run(1.0);
@@ -543,7 +543,7 @@ public class MusicTests
             {
                 var player = new SongPlayer();
                 player.Start(s, atNight: false);
-                var buffer = new float[Synthesizer.SampleRate * 2 * 6];
+                var buffer = new float[Synthesizer.DsRate * 2 * 6];
                 for (int done = 0; done < buffer.Length; done += 2048) player.Render(buffer.AsSpan(done, Math.Min(2048, buffer.Length - done)), 1f);
                 return buffer;
             }

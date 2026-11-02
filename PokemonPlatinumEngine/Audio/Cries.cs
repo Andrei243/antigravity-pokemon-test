@@ -244,7 +244,7 @@ public sealed class CryRandom
 /// </summary>
 public static partial class Cries
 {
-    private const int Rate = Synthesizer.SampleRate;
+    private const int Rate = Synthesizer.DsRate;
 
     /// <summary>The peak a cry is brought to, unless that would make it too loud (<see cref="Loudness.CryCeiling"/>): louder than any sound effect, as the original's are.</summary>
     public const float Peak = 0.6f;
