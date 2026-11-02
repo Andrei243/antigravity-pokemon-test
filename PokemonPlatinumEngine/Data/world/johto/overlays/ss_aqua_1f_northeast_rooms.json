@@ -1,0 +1,36 @@
+{
+  // The S.S. Aqua's north-east cabins (plan 20 · J15, part o): the day's passengers (FLAG_UNK_22A, 22B and 22C, which
+  // the deck's arrival sets by the weekday: ss_aqua_1f.txt), each by their own record
+  "area": "ss_aqua_1f_northeast_rooms",
+  "bgmTrack": "kanto/ss_anne",
+  "people": {
+    "p01r0305_fire": {
+      "name": "Lyle",
+      "trainer": {
+        "dialogueBefore": "Firebreather Lyle: They told me no fire on the ship. A battle doesn't count, does it?",
+        "dialogueAfter": "Firebreather Lyle: My flame's gone out. Probably for the best, on a boat."
+      }
+    },
+    "p01r0305_gswoman2": {
+      "name": "Cassie",
+      "trainer": {
+        "dialogueBefore": "Beauty Cassie: A sea voyage is so glamorous. A battle would make it perfect!",
+        "dialogueAfter": "Beauty Cassie: Not so glamorous after all."
+      }
+    },
+    "p01r0305_gsman2": {
+      "name": "Clyde",
+      "trainer": {
+        "dialogueBefore": "Guitarist Clyde: I'm playing the ship's lounge tonight. Here's a warm-up battle!",
+        "dialogueAfter": "Guitarist Clyde: That was a bum note. Back to rehearsing."
+      }
+    },
+    "p01r0305_gsboy3": {
+      "name": "Ken",
+      "trainer": {
+        "dialogueBefore": "Bug Catcher Ken: I'm taking my Bug Pokémon to see Kanto! Let's battle on the way!",
+        "dialogueAfter": "Bug Catcher Ken: My Bug Pokémon are seasick now."
+      }
+    }
+  }
+}

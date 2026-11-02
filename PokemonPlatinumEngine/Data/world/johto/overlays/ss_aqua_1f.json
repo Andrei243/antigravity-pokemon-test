@@ -2,8 +2,9 @@
   // The S.S. Aqua's deck (plan 20 · J15, part b). The gangway's one tile is two ways, as HeartGold's is: down to
   // Olivine's quay until the ship has made the crossing to Vermilion (FLAG_JOHTO_SS_AQUA_AT_VERMILION, a flag of ours),
   // down to Vermilion's from then on. The crewman at the head of the gangway makes the crossing either way
-  // (ss_aqua_1f.txt). The cabins, the hold and the captain's room behind him wait for a later session, with the
-  // passengers and trainers in them
+  // (ss_aqua_1f.txt). Since part o he stands beside the gangway's head, where HeartGold stands him in the one way up to
+  // the cabins until the ship sails: here the ship is walked through at the quay, and the cabins, the hold and the
+  // captain's room are open, their passengers by the day (ss_aqua_1f.txt)
   "area": "ss_aqua_1f",
   "bgmTrack": "kanto/ss_anne",
   "switches": [
@@ -14,6 +15,7 @@
     "p01r0301_seaman_2_2": {
       "name": "Sailor",
       "script": "Crewman",
+      "at": [ 25, 18 ],
       "still": true
     }
   }

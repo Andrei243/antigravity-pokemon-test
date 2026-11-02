@@ -175,6 +175,10 @@
       "note": "first spoken at unova_pokemon_league_8.txt(12)",
       "provisional": true
     },
+    "cal": {
+      "note": "first spoken at viridian_trainer_house_b1f.txt(24)",
+      "provisional": true
+    },
     "cameraman": {
       "note": "first spoken at Route212GateToHearthomeCity.txt(13)",
       "provisional": true
@@ -561,6 +565,10 @@
       "provisional": true
     },
     "jupiter": {},
+    "kanto_attendant": {
+      "note": "first spoken at PalParkLobby.txt(210)",
+      "provisional": true
+    },
     "karate_master": {
       "note": "first spoken at mount_mortar_b1f.txt(12)",
       "provisional": true
@@ -1410,6 +1418,7 @@
     "Butler": "look:butler",
     "Byron": "byron",
     "Caitlin": "caitlin",
+    "Cal": "cal",
     "Cameraman": "cameraman",
     "Candice": "candice",
     "Captain": "captain",
@@ -1529,6 +1538,7 @@
     "Joey": "joey",
     "Juan": "juan",
     "Jupiter": "jupiter",
+    "Kanto Attendant": "kanto_attendant",
     "Karate Master": "karate_master",
     "Karen": "karen",
     "Katelyn": "katelyn",

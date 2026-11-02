@@ -1,0 +1,85 @@
+{
+  // The S.S. Aqua's hold (plan 20 · J15, part o): its crew and the day's passengers (FLAG_UNK_22A, 22B and 22C, which
+  // the deck's arrival sets by the weekday: ss_aqua_1f.txt). The little girl HeartGold leaves down here on her
+  // wanderings (FLAG_UNK_219) is held back, and so is its trigger by the engines (VAR_UNK_40CB), part of its night aboard
+  "area": "ss_aqua_b1f",
+  "bgmTrack": "kanto/ss_anne",
+  "heldBack": [ "p01r0307_gsbabygirl1" ],
+  "people": {
+    "p01r0307_seaman_2": {
+      "name": "Sailor",
+      "hiddenBy": "",
+      "dialog": [ "That's the engine room. Hear her purr? The S.S. Aqua's the fastest ship between Johto and Kanto." ]
+    },
+    "p01r0307_picnicgirl_2": {
+      "name": "Debra",
+      "trainer": {
+        "dialogueBefore": "Picnicker Debra: I got lost looking for the dining room. Since you're here, let's battle!",
+        "dialogueAfter": "Picnicker Debra: Now I'm lost and I've lost."
+      }
+    },
+    "p01r0307_seaman_2_2": {
+      "name": "Jeff",
+      "trainer": {
+        "dialogueBefore": "Sailor Jeff: Passengers aren't meant to be down here! You'll have to battle your way past me.",
+        "dialogueAfter": "Sailor Jeff: Fine, fine. Just don't touch the engines."
+      }
+    },
+    "p01r0307_juggrer": {
+      "name": "Fritz",
+      "trainer": {
+        "dialogueBefore": "Juggler Fritz: I practise juggling down here, where the ship rocks most. Try battling me like this!",
+        "dialogueAfter": "Juggler Fritz: I dropped everything. Again."
+      }
+    },
+    "p01r0307_fishing_2": {
+      "name": "Jonah",
+      "trainer": {
+        "dialogueBefore": "Fisherman Jonah: I'm not fishing in the hold. I'm only resting my rod. Let's battle!",
+        "dialogueAfter": "Fisherman Jonah: Back to resting, then."
+      }
+    },
+    "p01r0307_seaman_2_3": {
+      "name": "Garrett",
+      "trainer": {
+        "dialogueBefore": "Sailor Garrett: A sailor's battles are as rough as the sea! Ready?",
+        "dialogueAfter": "Sailor Garrett: Calm waters for you, rough ones for me."
+      }
+    },
+    "p01r0307_gsfighter": {
+      "name": "Wai",
+      "trainer": {
+        "dialogueBefore": "Black Belt Wai: I train my balance in the hold. A battle on a rolling deck is the best training!",
+        "dialogueAfter": "Black Belt Wai: I lost my balance and my battle."
+      }
+    },
+    "p01r0307_seaman_2_4": {
+      "name": "Kenneth",
+      "trainer": {
+        "dialogueBefore": "Sailor Kenneth: I keep watch down here all crossing long. A battle helps the time go by!",
+        "dialogueAfter": "Sailor Kenneth: Time went by quickly. So did my Pokémon."
+      }
+    },
+    "p01r0307_gsboy1": {
+      "name": "Nate",
+      "trainer": {
+        "dialogueBefore": "School Kid Nate: Our class trip is to Kanto! I'll practise battling on you!",
+        "dialogueAfter": "School Kid Nate: I'll have to practise more in Kanto."
+      }
+    },
+    "p01r0307_gsboy1_2": {
+      "name": "Ricky",
+      "trainer": {
+        "dialogueBefore": "School Kid Ricky: Teacher said not to wander off. Battling's not wandering, is it?",
+        "dialogueAfter": "School Kid Ricky: I'd better go back before Teacher notices."
+      }
+    },
+    "p01r0307_middlewoman1_2": {
+      "name": "Shirley",
+      "trainer": {
+        "dialogueBefore": "Teacher Shirley: Have you seen two of my pupils? No? Then a battle, while I look!",
+        "dialogueAfter": "Teacher Shirley: A lesson for me, then. Now, where are those two?"
+      }
+    }
+  }
+}

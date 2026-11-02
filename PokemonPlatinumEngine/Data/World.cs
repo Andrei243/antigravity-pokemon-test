@@ -336,7 +336,9 @@ public static class WorldMapBuilder
         if (entry.Area != null && world.Area(entry.Area) is { } own)
         {
             map.Camera = CameraOf(world.Overlay(entry.Area)?.Camera ?? own.Camera);
-            map.IsDark = own.Weather == "DarkFlash";
+            // (HeartGold's caves that want Flash carry its weather 11, the same weather as Platinum's DarkFlash: the Dark
+            // Cave, Rock Tunnel and the Whirl Islands' upper floors; plan 20 · J15, part o)
+            map.IsDark = own.Weather is "DarkFlash" or "11";
         }
 
         // Until a chunk says otherwise the world is forest nobody can enter, on Sinnoh's usual ground level; a

@@ -1,0 +1,39 @@
+{
+  // Pal Park's gate in Fuchsia City (plan 20 · J15, part o), where the Safari Zone's gate stood. HeartGold's gate leads to
+  // a Pal Park of its own; this game has one Pal Park, Sinnoh's (plan 06 · R16b), so the attendant in the doorway to the gate's gallery takes
+  // the player there, a crossing as Route 40's guide takes them to the Battle Frontier (fuchsia_pal_park_entrance.txt;
+  // the way back is the Kanto attendant in Pal Park's lobby, PalParkLobby.txt)
+  "area": "fuchsia_pal_park_entrance",
+  "bgmTrack": "kanto/fuchsia",
+  "people": {
+    "t08r0201_middlewoman1_2": {
+      "name": "Woman",
+      "still": true,
+      "dialog": [ "These pictures show Pal Park in Sinnoh. Everyone says it's even lovelier than the paintings." ]
+    },
+    "t08r0201_gsboy1": {
+      "name": "Boy",
+      "still": true,
+      "dialog": [ "The Safari Zone used to be right here. Now the gate goes all the way to Pal Park in Sinnoh!" ]
+    },
+    "t08r0201_gorggeousw": {
+      "name": "Lady",
+      "still": true,
+      "dialog": [ "My Pokémon from long ago are waiting in the park. I go to see them whenever I can." ]
+    },
+    "t08r0201_gsboy2": {
+      "name": "Boy",
+      "still": true,
+      "dialog": [ "In the Catching Show you catch six Pokémon as fast as you can. I'm practising my throw!" ]
+    },
+    "t08r0201_gswoman2": {
+      "name": "Woman",
+      "dialog": [ "I used to catch Pokémon in the Safari Zone with nothing but bait and Safari Balls. Those were the days." ]
+    },
+    "t08r0201_gsman1": {
+      "name": "Man",
+      "dialog": [ "The old warden went off travelling when the Safari Zone closed. I hear he's having the time of his life." ]
+    },
+    "t08r0201_workman": { "name": "Attendant", "script": "Attendant", "still": true }
+  }
+}

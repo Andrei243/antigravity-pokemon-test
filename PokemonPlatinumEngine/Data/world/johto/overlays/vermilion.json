@@ -2,10 +2,14 @@
   // Vermilion City as HeartGold has it three years on (plan 20 · J15, part b): a town of Johto's own map, come to by
   // the S.S. Aqua from Olivine. Its Gym gives Kanto's Thunder Badge (vermilion_gym.txt). Route 6 north to Saffron is
   // open since plan 20 · J15, part c (johto_route_6); Route 11 east to Diglett's Cave shares its key with FireRed's
-  // Kanto and waits (HgWorld.Clashes); Suicune's stop, Eusine, Steven and the photographer wait for theirs
+  // Kanto and waits (HgWorld.Clashes); Suicune's stop is part o's (vermilion.txt); Eusine, Steven and the photographer
+  // wait for theirs
   "area": "vermilion",
   "bgmTrack": "kanto/vermilion",
+  // Suicune's first Kanto stop (part o, vermilion.txt): HeartGold's two triggers either side of it, on VAR_UNK_4070 1
+  "triggers": [ { "trigger": 0, "script": "SuicuneByTheHarbour" }, { "trigger": 2, "script": "SuicuneByTheHarbour" } ],
   "people": {
+    "t06_tsure_poke_static_suicune": { "name": "Suicune", "npcType": "Pokemon", "species": "Suicune", "script": "SuicuneByTheHarbour", "still": true },
     "t06_gsoldman1": {
       "name": "Old Man",
       "still": true,

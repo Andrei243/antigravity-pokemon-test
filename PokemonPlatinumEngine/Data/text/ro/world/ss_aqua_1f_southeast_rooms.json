@@ -1,0 +1,75 @@
+{
+  "people": {
+    "p01r0303_seaman_2": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "These cabins are for the passengers. We crew sleep down in the hold, nearer the engines."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "p01r0303_gsgentleman": {
+      "name": {
+        "en": [
+          "Edward"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Gentleman Edward: I always book this cabin for the view of the sea. And for the battles, of course."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Gentleman Edward: Splendid. Quite splendid. I shall need another cup of tea."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "p01r0303_thief": {
+      "name": {
+        "en": [
+          "Corey"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Burglar Corey: Hey! I wasn't sneaking around the cabins! Er... battle me and forget you saw me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Burglar Corey: All right, all right! I'll go back to my own cabin."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,39 @@
+# Route 14 as HeartGold has it three years on (plan 20 · J15, part o). docs/scripts.md describes the language; the lines
+# are our own, on HeartGold's beats (scr_seq_R14).
+#
+# Suicune's second stop in Kanto: once it has bounded off from Vermilion City (VAR_UNK_4086 1, vermilion.txt) it stands
+# in the grass (HeartGold's FLAG_HIDE_ROUTE_14_SUICUNE cleared) until the player walks into HeartGold's trigger before
+# it: it bounds away north, and the cape on Route 25 is its last stop (VAR_UNK_4088 1, johto_route_25.txt).
+
+
+script OnEnter
+  setflag FLAG_HIDE_ROUTE_14_SUICUNE
+  if var VAR_UNK_4086 == 1 clearflag FLAG_HIDE_ROUTE_14_SUICUNE
+  end
+
+# R14_002: Suicune in the grass
+script SuicuneInTheGrass
+  if var VAR_UNK_4086 != 1 end
+  scene "Suicune on Route 14"
+  emote player exclaim
+  face player right
+  letterbox on 0.4
+  camera pan 1365 412 1.0
+  camera zoom 1.4 0.8
+  cry "Suicune"
+  effect sparkles 1365 412
+  speaker none
+  text "Suicune stopped and looked straight at {player}!"
+  walk r14_tsure_poke_static_suicune onspot up 2 fast
+  sound "ledge"
+  effect shadow 1365 406 1.5 up
+  camera path 1365 409 1365 406 5
+  text "Suicune bounded off to the north!"
+  hide r14_tsure_poke_static_suicune
+  setflag FLAG_HIDE_ROUTE_14_SUICUNE
+  setvar VAR_UNK_4086 2
+  setvar VAR_UNK_4088 1
+  camera release 0.6
+  letterbox off 0.3
+  endscene
+  end

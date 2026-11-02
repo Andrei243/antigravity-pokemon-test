@@ -36,6 +36,21 @@
     ]
   },
   {
+    "id": "johto_trainer_house_cal",
+    "name": "Cal",
+    "class": "Ace Trainer M",
+    "ai": [
+      "Basic",
+      "Expert"
+    ],
+    "prizeMoney": 0,
+    "party": [
+      { "species": "Meganium", "level": 60, "ivScale": 200, "personality": 5203877 },
+      { "species": "Typhlosion", "level": 60, "ivScale": 200, "personality": 7731942 },
+      { "species": "Feraligatr", "level": 60, "ivScale": 200, "personality": 2984613 }
+    ]
+  },
+  {
     "id": "hoenn_sidney_rematch",
     "name": "Sidney",
     "class": "Elite Four",

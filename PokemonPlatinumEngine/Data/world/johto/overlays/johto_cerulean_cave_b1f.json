@@ -1,0 +1,10 @@
+{
+  // Cerulean Cave's lowest floor as HeartGold has it three years on (plan 20 · J15, part o): Mewtwo waits at the back
+  // until it has been fought (johto_cerulean_cave_b1f.txt). Its key meets FireRed's, so it takes Johto's prefix
+  // (HgWorld.Clashes); FireRed's own floor and Mewtwo (cerulean_cave_b1f) are untouched
+  "area": "johto_cerulean_cave_b1f",
+  "bgmTrack": "kanto/mt_moon",
+  "people": {
+    "d03r0103_tsure_poke_static_mewtwo": { "name": "Mewtwo", "npcType": "Pokemon", "species": "Mewtwo", "script": "Mewtwo", "still": true }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  // Cerulean Cave's first floor as HeartGold has it three years on (plan 20 · J15, part o): the dark cave behind
+  // Cerulean City's north-west water, open once Red has been beaten (cerulean.txt), its ways up and down joining the
+  // floors above and below. Its key meets FireRed's, so it takes Johto's prefix (HgWorld.Clashes); HeartGold's weather
+  // 11 makes it dark until Flash is used
+  "area": "johto_cerulean_cave_1f",
+  "bgmTrack": "kanto/mt_moon"
+}

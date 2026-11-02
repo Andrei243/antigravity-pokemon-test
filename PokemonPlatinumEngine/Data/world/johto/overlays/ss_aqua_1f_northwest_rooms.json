@@ -1,0 +1,66 @@
+{
+  // The S.S. Aqua's north-west cabins (plan 20 · J15, part o): the captain's granddaughter's grandfather, who talks, and
+  // the day's passengers (FLAG_UNK_22A, 22B and 22C, which the deck's arrival sets by the weekday: ss_aqua_1f.txt).
+  // The little girl HeartGold leaves here on her wanderings (FLAG_UNK_218) is held back: she is with the captain
+  "area": "ss_aqua_1f_northwest_rooms",
+  "bgmTrack": "kanto/ss_anne",
+  "heldBack": [ "p01r0306_gsbabygirl1_3" ],
+  "people": {
+    "p01r0306_gsgentleman": {
+      "name": "Gentleman",
+      "hiddenBy": "",
+      "still": true,
+      "dialog": [ "My granddaughter loves to wander the ship. I've stopped worrying: she always ends up with the captain." ]
+    },
+    "p01r0306_gsmiddleman1": {
+      "name": "Colin",
+      "trainer": {
+        "dialogueBefore": "Pokéfan Colin: Look at my lovely Pokémon! Aren't they the best? Let's battle and you'll see!",
+        "dialogueAfter": "Pokéfan Colin: They're still the best. You're just better."
+      }
+    },
+    "p01r0306_gsbabygirl1": {
+      "name": "Meg",
+      "trainer": {
+        "dialogueBefore": "Twins Meg: We're going on holiday! Battle us first!",
+        "dialogueAfter": "Twins Meg: We'll battle better after our holiday."
+      }
+    },
+    "p01r0306_gsbabygirl1_2": {
+      "name": "Peg",
+      "trainer": {
+        "id": "johto_twins_meg_and_peg",
+        "dialogueBefore": "Twins Peg: Two of us on a boat, ready to battle!",
+        "dialogueAfter": "Twins Peg: Two of us, beaten on a boat."
+      }
+    },
+    "p01r0306_gsassistantm": {
+      "name": "Shawn",
+      "trainer": {
+        "dialogueBefore": "Super Nerd Shawn: I've worked out the ship's speed to three decimal places. Now, your team's chances...",
+        "dialogueAfter": "Super Nerd Shawn: My sums were off. Way off."
+      }
+    },
+    "p01r0306_mystery_2": {
+      "name": "Rodney",
+      "trainer": {
+        "dialogueBefore": "Psychic Rodney: I foresaw that you would come into this cabin. I also foresee a battle.",
+        "dialogueAfter": "Psychic Rodney: I didn't foresee losing."
+      }
+    },
+    "p01r0306_middlewoman1_2": {
+      "name": "Georgia",
+      "trainer": {
+        "dialogueBefore": "Pokéfan Georgia: My darlings and I take this ship every season. Would you care to battle them?",
+        "dialogueAfter": "Pokéfan Georgia: My poor darlings! They need a nap now."
+      }
+    },
+    "p01r0306_gsmiddleman1_2": {
+      "name": "Jeremy",
+      "trainer": {
+        "dialogueBefore": "Pokéfan Jeremy: You can't come in here without admiring my Pokémon. Battle them and admire them!",
+        "dialogueAfter": "Pokéfan Jeremy: You admired them a bit too hard."
+      }
+    }
+  }
+}

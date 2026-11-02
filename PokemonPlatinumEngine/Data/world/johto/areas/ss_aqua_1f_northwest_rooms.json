@@ -1,0 +1,34 @@
+{
+  "key": "ss_aqua_1f_northwest_rooms",
+  "index": 328,
+  "name": "S.S. Aqua",
+  "matrix": 176,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_KOUSOKUSEN",
+  "nightMusic": "GS_KOUSOKUSEN",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 9, "z": 11, "to": "ss_aqua_1f", "toWarp": 5 },
+    { "x": 23, "z": 11, "to": "ss_aqua_1f", "toWarp": 6 }
+  ],
+  "objects": [
+    { "id": "p01r0306_gsgentleman", "looks": "gsgentleman", "movement": "0", "x": 9, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_216", "script": "P01R0306_000+1" },
+    { "id": "p01r0306_gsmiddleman1", "looks": "gsmiddleman1", "movement": "17", "x": 17, "z": 10, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 6, "hiddenBy": "FLAG_UNK_22A", "script": "TRAINER_POKEFAN_M_COLIN" },
+    { "id": "p01r0306_gsbabygirl1", "looks": "gsbabygirl1", "movement": "15", "x": 24, "z": 7, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 1, "hiddenBy": "FLAG_UNK_22A", "script": "TRAINER_TWINS_MEG_AND_PEG" },
+    { "id": "p01r0306_gsbabygirl1_2", "looks": "gsbabygirl1", "movement": "15", "x": 25, "z": 7, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_22A", "script": "std_trainer_2(TRAINER_TWINS_MEG_AND_PEG)" },
+    { "id": "p01r0306_gsbabygirl1_3", "looks": "gsbabygirl1", "movement": "0", "x": 8, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_218", "script": "P01R0306_002+1" },
+    { "id": "p01r0306_gsassistantm", "looks": "gsassistantm", "movement": "0", "x": 10, "z": 6, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "hiddenBy": "FLAG_UNK_22B", "script": "TRAINER_SUPER_NERD_SHAWN" },
+    { "id": "p01r0306_mystery_2", "looks": "mystery_2", "movement": "0", "x": 17, "z": 9, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 6, "hiddenBy": "FLAG_UNK_22B", "script": "TRAINER_PSYCHIC_M_RODNEY" },
+    { "id": "p01r0306_middlewoman1_2", "looks": "middlewoman1_2", "movement": "0", "x": 17, "z": 8, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "hiddenBy": "FLAG_UNK_22C", "script": "TRAINER_POKEFAN_GEORGIA" },
+    { "id": "p01r0306_gsmiddleman1_2", "looks": "gsmiddleman1", "movement": "0", "x": 22, "z": 6, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 2, "hiddenBy": "FLAG_UNK_22C", "script": "TRAINER_POKEFAN_M_JEREMY" }
+  ],
+  "signs": [],
+  "triggers": []
+}

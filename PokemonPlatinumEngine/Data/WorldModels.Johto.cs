@@ -377,6 +377,8 @@ public static partial class WorldModels
         // kn_chika_x is the shut one on Routes 7 and 8 (an earlier row had taken it for Diglett's Cave's mouth)
         Built("kn_chika", BuildingKind.Hall, "the little house over the stairs down to the Underground Path on Routes 5 and 6"),
         Ground("maq_dr01", "a door off the S.S. Aqua's corridor: the warp's tile is the way"),
+        // Plan 20 · J15, part o: the S.S. Aqua's hold
+        Furniture("maq_eng", PropType.LabMachine, "the S.S. Aqua's engines in the hold"),
         Ground("mg09_es1", "the Vermilion Gym's electric fittings on its walls: the room's walls draw them"),
         Ground("mg09_es2", "the Vermilion Gym's electric fittings on its walls: the room's walls draw them"),
         Ground("mp3_sb", "the timetable board of Vermilion's port hall: the wall draws it"),

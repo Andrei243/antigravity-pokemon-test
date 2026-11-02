@@ -1,14 +1,13 @@
 {
   // Cerulean City as HeartGold has it three years on (plan 20 · J15, part e): a town of Johto's own map, come to by
   // Route 5 from Saffron City. Its Gym gives Kanto's Cascade Badge once Misty is home from Route 25's cape
-  // (cerulean_gym.txt, johto_route_25.txt). Cerulean Cave (warp 7) stays shut, its key meeting FireRed's, and the man
-  // HeartGold keeps before it behind FLAG_HIDE_CERULEAN_CITY_MAN_OUTSIDE_CAVE stands there for good; Routes 4 and 9 share
-  // FireRed's keys and are scenery. Cameron the photographer waits for his session
+  // (cerulean_gym.txt, johto_route_25.txt). Cerulean Cave (warp 7, johto_cerulean_cave_1f since part o) is open, and the man
+  // HeartGold keeps before it (FLAG_HIDE_CERULEAN_CITY_MAN_OUTSIDE_CAVE) stands aside once Red has been beaten on Mt.
+  // Silver (cerulean.txt). Cameron the photographer waits for his session
   "area": "cerulean",
   "bgmTrack": "kanto/fuchsia",
   "trees": "Round",
   "architecture": "Riverside",
-  "locked": [ 7 ],
   "heldBack": [ "t04_gsmiddleman1" ],
   "people": {
     "t04_gsman1": {
@@ -43,8 +42,7 @@
     "t04_gsman1_2": {
       "name": "Man",
       "still": true,
-      "hiddenBy": "",
-      "dialog": [ "The cave behind me is far too dangerous. Nobody goes in without the League's leave, and nobody has it." ]
+      "dialog": [ "The cave behind me is far too dangerous. Nobody goes in until they've beaten the Trainer on Mt. Silver's summit." ]
     }
   },
   "signs": {

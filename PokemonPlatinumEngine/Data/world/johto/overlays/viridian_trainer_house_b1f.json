@@ -1,0 +1,12 @@
+{
+  // The Trainer House's battle hall (plan 20 · J15, part o). HeartGold battles here a Trainer of its link records, or
+  // Cal when it has none; this game has no link records, so it is always Cal, once a day (viridian_trainer_house_b1f.txt).
+  // The records' ten stand-ins HeartGold shows in his place (t02r0302_var_2 to _11) are left out, and so is the
+  // trigger before the referee (VAR_UNK_412E), which HeartGold uses for a link battle
+  "area": "viridian_trainer_house_b1f",
+  "bgmTrack": "kanto/viridian",
+  "people": {
+    "t02r0302_gswoman6": { "name": "Referee", "script": "Referee", "still": true },
+    "t02r0302_gsman3": { "name": "Cal", "script": "Cal", "still": true }
+  }
+}

@@ -416,7 +416,21 @@
     // Kanto has neither)
     { "name": "Lavender_RadioTower", "matrix": 195, "area": "lavender_radio_station", "trees": "Round", "setting": "Indoors" },
     { "name": "Saffron_SilphCo_Elevator", "matrix": 262, "area": "saffron_silph_co_elevator", "trees": "Round", "setting": "Indoors" },
-    { "name": "Saffron_SilphCo_RotomRoom", "matrix": 241, "area": "saffron_silph_co_rotom_room", "trees": "Round", "setting": "Indoors" }
+    { "name": "Saffron_SilphCo_RotomRoom", "matrix": 241, "area": "saffron_silph_co_rotom_room", "trees": "Round", "setting": "Indoors" },
+    // Plan 20 · J15, part o: Cerulean Cave's three floors to Mewtwo, the Trainer House's hall, Pal Park's gate in Fuchsia,
+    // and the S.S. Aqua's cabins, hold and captain's room (FireRed's are CeruleanCave_…; nothing else of these meets
+    // another region's)
+    { "name": "Cerulean_Cave_1F", "matrix": 78, "area": "johto_cerulean_cave_1f", "trees": "Round", "setting": "Cave" },
+    { "name": "Cerulean_Cave_2F", "matrix": 79, "area": "johto_cerulean_cave_2f", "trees": "Round", "setting": "Cave" },
+    { "name": "Cerulean_Cave_B1F", "matrix": 80, "area": "johto_cerulean_cave_b1f", "trees": "Round", "setting": "Cave" },
+    { "name": "Viridian_TrainerHouse_B1F", "matrix": 245, "area": "viridian_trainer_house_b1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Fuchsia_PalParkGate", "matrix": 243, "area": "fuchsia_pal_park_entrance", "trees": "Round", "setting": "Indoors" },
+    { "name": "SSAqua_CaptainRoom", "matrix": 172, "area": "ss_aqua_captain_room", "trees": "Round", "setting": "Indoors" },
+    { "name": "SSAqua_1F_SoutheastRooms", "matrix": 173, "area": "ss_aqua_1f_southeast_rooms", "trees": "Round", "setting": "Indoors" },
+    { "name": "SSAqua_1F_SouthwestRooms", "matrix": 174, "area": "ss_aqua_1f_southwest_rooms", "trees": "Round", "setting": "Indoors" },
+    { "name": "SSAqua_1F_NortheastRooms", "matrix": 175, "area": "ss_aqua_1f_northeast_rooms", "trees": "Round", "setting": "Indoors" },
+    { "name": "SSAqua_1F_NorthwestRooms", "matrix": 176, "area": "ss_aqua_1f_northwest_rooms", "trees": "Round", "setting": "Indoors" },
+    { "name": "SSAqua_B1F", "matrix": 177, "area": "ss_aqua_b1f", "trees": "Round", "setting": "Indoors" }
   ],
   "areas": [
     // Plan 20 · J2: New Bark Town to Route 31's gate house, with their rooms
@@ -572,6 +586,10 @@
     // Plan 20 · J15, part m: the Seafoam Islands' four lower floors, down to Articuno's cave
     "johto_seafoam_islands_b1f", "johto_seafoam_islands_b2f", "johto_seafoam_islands_b3f", "johto_seafoam_islands_b4f",
     // Plan 20 · J15, part n: the Kanto Radio Tower, and Silph Co.'s lift and Rotom's room
-    "lavender_radio_station", "saffron_silph_co_elevator", "saffron_silph_co_rotom_room"
+    "lavender_radio_station", "saffron_silph_co_elevator", "saffron_silph_co_rotom_room",
+    // Plan 20 · J15, part o: Cerulean Cave, the Trainer House's hall, Pal Park's gate and the S.S. Aqua's rooms
+    "johto_cerulean_cave_1f", "johto_cerulean_cave_2f", "johto_cerulean_cave_b1f", "viridian_trainer_house_b1f",
+    "fuchsia_pal_park_entrance", "ss_aqua_captain_room", "ss_aqua_1f_southeast_rooms", "ss_aqua_1f_southwest_rooms",
+    "ss_aqua_1f_northeast_rooms", "ss_aqua_1f_northwest_rooms", "ss_aqua_b1f"
   ]
 }

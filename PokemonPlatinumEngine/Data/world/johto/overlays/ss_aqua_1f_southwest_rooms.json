@@ -1,0 +1,37 @@
+{
+  // The S.S. Aqua's south-west cabins (plan 20 · J15, part o). HeartGold's passengers change with the day of the
+  // voyage (FLAG_UNK_22A, 22B and 22C, which the deck's arrival sets by the weekday here: ss_aqua_1f.txt); each
+  // battles by their own record (Johto's trainers.json), in lines of ours
+  "area": "ss_aqua_1f_southwest_rooms",
+  "bgmTrack": "kanto/ss_anne",
+  "people": {
+    "p01r0304_mount_2": {
+      "name": "Noland",
+      "trainer": {
+        "dialogueBefore": "Hiker Noland: Mountains, caves, and now the open sea! A hiker goes everywhere. Let's battle!",
+        "dialogueAfter": "Hiker Noland: I've lost my sea legs and my battle, both at once."
+      }
+    },
+    "p01r0304_gsman3": {
+      "name": "Shaye",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Shaye: A voyage is a fine time to test a team. Will you be my test?",
+        "dialogueAfter": "Ace Trainer Shaye: Test failed. There's a lot of sea left to think it over."
+      }
+    },
+    "p01r0304_gswoman3": {
+      "name": "Carol",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Carol: I train on every crossing. The rocking keeps my Pokémon on their toes!",
+        "dialogueAfter": "Ace Trainer Carol: Maybe the rocking kept me off mine."
+      }
+    },
+    "p01r0304_mania": {
+      "name": "Morgan",
+      "trainer": {
+        "dialogueBefore": "Poké Maniac Morgan: My cabin is full of rare Pokémon! Want to see them? In battle, I mean!",
+        "dialogueAfter": "Poké Maniac Morgan: Rare, yes. Strong, apparently not."
+      }
+    }
+  }
+}

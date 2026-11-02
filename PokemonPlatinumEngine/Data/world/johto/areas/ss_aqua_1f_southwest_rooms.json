@@ -1,0 +1,29 @@
+{
+  "key": "ss_aqua_1f_southwest_rooms",
+  "index": 310,
+  "name": "S.S. Aqua",
+  "matrix": 174,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_KOUSOKUSEN",
+  "nightMusic": "GS_KOUSOKUSEN",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 9, "z": 2, "to": "ss_aqua_1f", "toWarp": 1 },
+    { "x": 23, "z": 2, "to": "ss_aqua_1f", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "p01r0304_mount_2", "looks": "mount_2", "movement": "14", "x": 21, "z": 8, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "hiddenBy": "FLAG_UNK_22A", "script": "TRAINER_HIKER_NOLAND" },
+    { "id": "p01r0304_gsman3", "looks": "gsman3", "movement": "0", "x": 5, "z": 4, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "hiddenBy": "FLAG_UNK_22B", "script": "TRAINER_ACE_TRAINER_M_SHAYE" },
+    { "id": "p01r0304_gswoman3", "looks": "gswoman3", "movement": "0", "x": 10, "z": 8, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "hiddenBy": "FLAG_UNK_22B", "script": "TRAINER_ACE_TRAINER_F_CAROL" },
+    { "id": "p01r0304_mania", "looks": "mania", "movement": "0", "x": 10, "z": 9, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 0, "hiddenBy": "FLAG_UNK_22C", "script": "TRAINER_POKE_MANIAC_MORGAN" }
+  ],
+  "signs": [],
+  "triggers": []
+}

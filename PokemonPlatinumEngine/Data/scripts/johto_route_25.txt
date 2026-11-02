@@ -27,3 +27,77 @@ script MistysDate
 label Done
   setvar VAR_JOHTO_MISTY_DATE 1
   end
+
+
+# Suicune's last stop, and its battle (plan 20 · J15, part o; plan 29's owed row). Once it has bounded off from Route 14
+# (VAR_UNK_4088 1, johto_route_14.txt), Suicune waits at the head of the cape and Eusine has followed it here (HeartGold's
+# FLAG_HIDE_ROUTE_25_SUICUNE and FLAG_HIDE_ROUTE_25_EUSINE cleared by the arrival). HeartGold's trigger on the cape's way in
+# brings Eusine over to the player (VAR_UNK_4088 2); Suicune, spoken to, is battled at level 40, as HeartGold's. Beaten or
+# caught it is gone for good (FLAG_JOHTO_FOUGHT_SUICUNE, ours) and Eusine with it; run from, it is back on the next visit.
+script OnEnter
+  setflag FLAG_HIDE_ROUTE_25_SUICUNE
+  setflag FLAG_HIDE_ROUTE_25_EUSINE
+  if flag FLAG_JOHTO_FOUGHT_SUICUNE end
+  if var VAR_UNK_4088 == 0 end
+  clearflag FLAG_HIDE_ROUTE_25_SUICUNE
+  clearflag FLAG_HIDE_ROUTE_25_EUSINE
+  end
+
+# R25_000: Eusine comes over as the player steps onto the cape
+script EusineOnTheCape
+  if var VAR_UNK_4088 != 1 end
+  if flag FLAG_JOHTO_FOUGHT_SUICUNE end
+  scene "Eusine on the cape"
+  setvar VAR_UNK_4088 2
+  emote r25_minaki exclaim
+  face r25_minaki player
+  face player r25_minaki
+  speaker "Eusine"
+  say "{player}! So you followed it here too. Suicune went all the way to the end of the cape, and it won't move from there."
+  say "I think it's waiting for someone. And I'm beginning to believe that someone is you."
+  say "Go on. It's what you came for. I'll watch from here."
+  endscene
+  end
+
+# R25_005: Eusine, after
+script Eusine
+  face self player
+  speaker "Eusine"
+  say "Suicune is waiting at the end of the cape. Go to it, {player}."
+  end
+
+# R25_007: Suicune at the head of the cape
+script Suicune
+  scene "Suicune on the cape"
+  music stop
+  face player self
+  letterbox on 0.4
+  # Met from below, it is behind the player's own head from the field's camera: a step back, facing it, shows it
+  if facing up walk player back down 1
+  camera pan 1421 37 1.2
+  camera zoom 1.4 0.8
+  effect sparkles 1421 37
+  effect ripple 1421 37
+  wait 1
+  cry "Suicune"
+  camera shake 0.5
+  emote player exclaim
+  speaker none
+  text "The wind off the sea fell still as Suicune turned to face {player}!"
+  if facing up walk player up 1
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Suicune" 40
+  if result == 2 goto Fled
+  setflag FLAG_JOHTO_FOUGHT_SUICUNE
+  setflag FLAG_HIDE_ROUTE_25_SUICUNE
+  hide self
+  setflag FLAG_HIDE_ROUTE_25_EUSINE
+  hide r25_minaki
+  end
+label Fled
+  setflag FLAG_HIDE_ROUTE_25_SUICUNE
+  hide self
+  text "Suicune bounded away over the sea!"
+  end

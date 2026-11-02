@@ -29,10 +29,10 @@
       },
       "dialog": {
         "en": [
-          "Coins? Not today. Not until the tables next door are running again."
+          "I've had my eye on that prize up there for a week. A few more good spins and it's mine."
         ],
         "text": [
-          "Monede? Nu azi. Nu până nu funcționează iar mesele de alături."
+          ""
         ]
       }
     },
@@ -44,32 +44,24 @@
         "text": [
           "Vânzătorul"
         ]
-      },
-      "dialog": {
-        "en": [
-          "Welcome to the Prize Corner. I'm sorry, we can't exchange any coins until the Game Corner opens again."
-        ],
-        "text": [
-          "Bun venit la Prize Corner. Îmi pare rău, nu putem schimba monede până nu se redeschide Game Corner."
-        ]
       }
     }
   },
   "signs": {
     "T07R0501_003+1": {
       "en": [
-        "A list of prizes. Every one of them is marked out of stock."
+        "A list of prizes and what each costs in coins. The clerk at the counter exchanges them."
       ],
       "text": [
-        "O listă de premii. Toate sunt marcate ca fiind epuizate."
+        ""
       ]
     },
     "T07R0501_004+1": {
       "en": [
-        "A glass case of prizes, locked."
+        "A glass case of prizes, polished to a shine."
       ],
       "text": [
-        "O vitrină cu premii, încuiată."
+        ""
       ]
     }
   }

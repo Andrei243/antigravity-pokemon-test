@@ -200,3 +200,23 @@ label No
 label All
   say "Are you putting on a Catching Show today? I'll be cheering!"
   end
+
+
+# The attendant from Pal Park's gate in Fuchsia City (plan 20 · J15, part o): shown once Johto's Hall of Fame is
+# entered, beside the lobby's door, and the way back to Kanto, a crossing as every region's is (`travel to`,
+# GameEngine.CrossTo). The way here is the gate's attendant (fuchsia_pal_park_entrance.txt).
+script KantoAttendant
+  face self player
+  speaker "Kanto Attendant"
+  say "I look after the way between Pal Park and its gate in Fuchsia City, in Kanto."
+  ask "Shall I take you back to Fuchsia City?"
+  if no goto KantoStay
+  say "Right this way, please. Mind the step!"
+  fade out 0.8
+  text "{player} was shown back along the long way to Fuchsia City..."
+  travel to "Fuchsia_PalParkGate" 7 17 up
+  fade in 0.8
+  end
+label KantoStay
+  say "Take your time. I'll be here whenever you'd like to go back."
+  end

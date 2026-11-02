@@ -1,0 +1,123 @@
+{
+  "people": {
+    "t08r0201_middlewoman1_2": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t08r0201_gsboy1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Safari Zone used to be right here. Now the gate goes all the way to Pal Park in Sinnoh!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t08r0201_gorggeousw": {
+      "name": {
+        "en": [
+          "Lady"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Pokémon from long ago are waiting in the park. I go to see them whenever I can."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t08r0201_gsboy2": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "In the Catching Show you catch six Pokémon as fast as you can. I'm practising my throw!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t08r0201_gswoman2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I used to catch Pokémon in the Safari Zone with nothing but bait and Safari Balls. Those were the days."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t08r0201_gsman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The old warden went off travelling when the Safari Zone closed. I hear he's having the time of his life."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t08r0201_workman": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We built this gate in a hurry. The paint on the walls is still wet in places, so mind your sleeves!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

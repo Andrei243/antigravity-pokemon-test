@@ -1,0 +1,74 @@
+# Mt. Moon Square as HeartGold has it three years on (plan 20 · J15, part o). docs/scripts.md describes the language;
+# the lines are our own, on HeartGold's beats (scr_seq_D02R0104).
+#
+# On Monday nights the Clefairy gather on the square and dance round in a ring. HeartGold lays the square out a second
+# time for the night (D02R0104) with six Clefairy and a Moon Stone; here the six stand on the square itself
+# (FLAG_JOHTO_CLEFAIRY_DANCING, ours), and the night's trigger is HeartGold's, on the row below the ring
+# (VAR_JOHTO_CLEFAIRY_DANCE, ours): coming up to it, the player watches the dance until the Clefairy notice them and
+# scatter, and finds the Moon Stone they leave behind. Once a night (FLAG_DAILY_JOHTO_CLEFAIRY_DANCE, ours, which the
+# day's turn clears).
+
+
+script OnEnter
+  setvar VAR_JOHTO_CLEFAIRY_DANCE 0
+  clearflag FLAG_JOHTO_CLEFAIRY_DANCING
+  if not weekday monday end
+  if flag FLAG_DAILY_JOHTO_CLEFAIRY_DANCE end
+  if time night goto Night
+  if time latenight goto Night
+  end
+label Night
+  setflag FLAG_JOHTO_CLEFAIRY_DANCING
+  setvar VAR_JOHTO_CLEFAIRY_DANCE 1
+  end
+
+script Dance
+  scene "The Clefairy dance on Mt Moon Square"
+  setvar VAR_JOHTO_CLEFAIRY_DANCE 2
+  face player up
+  emote player exclaim
+  letterbox on 0.4
+  camera pan 9 9 1.2
+  speaker none
+  text "Clefairy are dancing in a ring under the moon!"
+  effect sparkles 9 9
+  cry "Clefairy"
+  walk clefairy_1 onspot right 1
+  walk clefairy_2 onspot up 1
+  walk clefairy_3 onspot left 1
+  walk clefairy_4 onspot down 1
+  walk clefairy_5 onspot up 1
+  walk clefairy_6 onspot down 1
+  wait 0.6
+  walk clefairy_1 onspot left 1
+  walk clefairy_2 onspot down 1
+  walk clefairy_3 onspot right 1
+  walk clefairy_4 onspot up 1
+  walk clefairy_5 onspot down 1
+  walk clefairy_6 onspot up 1
+  wait 0.6
+  face clefairy_1 down
+  face clefairy_2 down
+  face clefairy_3 down
+  face clefairy_4 down
+  face clefairy_5 down
+  face clefairy_6 down
+  emote clefairy_1 exclaim
+  cry "Clefairy"
+  text "The Clefairy noticed {player}!" "They scattered into the dark!"
+  fade out 0.4
+  hide clefairy_1
+  hide clefairy_2
+  hide clefairy_3
+  hide clefairy_4
+  hide clefairy_5
+  hide clefairy_6
+  clearflag FLAG_JOHTO_CLEFAIRY_DANCING
+  setflag FLAG_DAILY_JOHTO_CLEFAIRY_DANCE
+  fade in 0.4
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  text "Something was left where the Clefairy had danced..."
+  find "Moon Stone"
+  end

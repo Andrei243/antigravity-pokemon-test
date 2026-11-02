@@ -1,0 +1,30 @@
+# The Celadon Prize Corner as HeartGold has it three years on (plan 20 · J15, part o). docs/scripts.md describes the
+# language; the lines are our own, on HeartGold's beats (scr_seq_T07R0501).
+#
+# The counter exchanges the Game Corner's coins for prizes: plan 06 · R16b's list (gamecorner prize, gamecorner buy),
+# the same as Veilstone's and FireRed's Celadon's. HeartGold's own list (and its Pokémon prizes) isn't in the pinned
+# folders.
+
+
+# T07R0501_002: the clerk
+script Prizes
+  speaker "Clerk"
+  if not item "Coin Case" goto NoCase
+  gamecorner coins
+  say "Welcome to the Prize Corner! You have {coins} coins. Which prize would you like?"
+  gamecorner prize
+  if result == 0 goto Bye
+  ask "The {item} for {price} coins?"
+  if no goto Bye
+  gamecorner buy
+  if result == 0 goto Poor
+  text "{player} received the {item}!"
+label Bye
+  say "Please come again!"
+  end
+label NoCase
+  say "Prizes are exchanged for coins. The Game Corner next door will give you a Coin Case."
+  end
+label Poor
+  say "I'm sorry, you don't have enough coins."
+  end

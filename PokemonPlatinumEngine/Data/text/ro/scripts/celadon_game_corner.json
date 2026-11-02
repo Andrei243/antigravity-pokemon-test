@@ -1,0 +1,86 @@
+{
+  "Slots": [
+    {
+      "en": [
+        "A game table set up with a slot machine. Play it?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A game table set up with a slot machine. Without a Coin Case there is nothing to play with."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Clerk": [
+    {
+      "en": [
+        "Clerk"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Celadon Game Corner! The tables take coins, and coins need a case to carry them in."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Here, have one of ours. Every new player gets one."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We sell coins for the machines: 50 for $1,000. Would you like some?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} bought 50 coins."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please come again!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your Coin Case is full already!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry, you don't have enough money."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

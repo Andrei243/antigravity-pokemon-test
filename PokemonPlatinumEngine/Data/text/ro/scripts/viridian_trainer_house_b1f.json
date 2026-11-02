@@ -1,0 +1,94 @@
+{
+  "Referee": [
+    {
+      "en": [
+        "Referee"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Trainer House's hall! One battle a day, against the Trainer of the day."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Today it's Cal. He's waiting at the far end of the hall. Speak to him when you're ready."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's today's battle fought. Come back tomorrow, and there'll be another!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Cal": [
+    {
+      "en": [
+        "Cal"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm Cal, today's Trainer of the house. Want to battle me?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Then let's make it a good one!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What a battle! You're as strong as they say. Come back tomorrow for another."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That was close! Come back tomorrow and try me again."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Whenever you like. I'm here all day."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "One battle a day, those are the house rules. See you tomorrow!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

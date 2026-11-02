@@ -1,0 +1,50 @@
+# Cerulean Cave's lowest floor as HeartGold has it three years on (plan 20 · J15, part o). docs/scripts.md describes
+# the language; the lines are our own, on HeartGold's beats (scr_seq_D03R0103). FireRed's Kanto has its own floor and
+# Mewtwo (cerulean_cave_b1f.txt), which this one does not touch.
+#
+# Mewtwo waits at the back until it has been fought (FLAG_JOHTO_FOUGHT_MEWTWO, ours), at level 70 as HeartGold's: beaten
+# or caught it is gone for good, run from it vanishes (HeartGold's FLAG_HIDE_CERULEAN_CAVE_MEWTWO) and is back on the
+# next visit, as Articuno and Moltres are.
+#
+# Its meeting is plan 29's beat for a Pokémon of the mind (style guide, "Legendary scenes"): the bars, the camera pushed
+# in on it, sparkles and a ripple, Mewtwo there and not there, the cry and its will pressed on the player; the scene
+# ends before the battle, so the hold never skips it.
+
+
+script OnEnter
+  if not flag FLAG_JOHTO_FOUGHT_MEWTWO clearflag FLAG_HIDE_CERULEAN_CAVE_MEWTWO
+  end
+
+# D03R0103_000: Mewtwo
+script Mewtwo
+  scene "Mewtwo in Cerulean Cave"
+  music stop
+  face player self
+  letterbox on 0.4
+  # Met from below, it is behind the player's own head from the field's camera: a step back, facing it, shows it
+  if facing up walk player back down 1
+  camera pan 56 24 1.2
+  camera zoom 1.8 1.4
+  effect sparkles 56 24
+  effect ripple 56 24
+  flicker self 4
+  cry "Mewtwo"
+  camera shake 0.4
+  emote player exclaim
+  speaker none
+  text "A cold, sharp will pressed against {player}'s mind!"
+  if facing up walk player up 1
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Mewtwo" 70
+  if result == 2 goto Fled
+  setflag FLAG_JOHTO_FOUGHT_MEWTWO
+  setflag FLAG_HIDE_CERULEAN_CAVE_MEWTWO
+  hide self
+  end
+label Fled
+  setflag FLAG_HIDE_CERULEAN_CAVE_MEWTWO
+  hide self
+  text "Mewtwo vanished into the dark of the cave!"
+  end

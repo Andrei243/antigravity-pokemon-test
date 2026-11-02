@@ -1,0 +1,12 @@
+# Cerulean City as HeartGold has it three years on (plan 20 · J15, part o). docs/scripts.md describes the language;
+# the lines are our own, on HeartGold's beats (scr_seq_T04).
+#
+# The man before Cerulean Cave's mouth keeps everyone out until Red has been beaten on Mt. Silver's summit
+# (FLAG_JOHTO_BEAT_RED, mount_silver_cave_summit.txt); from then on he is gone from the way in
+# (FLAG_HIDE_CERULEAN_CITY_MAN_OUTSIDE_CAVE, HeartGold's own flag), as HeartGold opens the cave after Red.
+
+
+script OnEnter
+  clearflag FLAG_HIDE_CERULEAN_CITY_MAN_OUTSIDE_CAVE
+  if flag FLAG_JOHTO_BEAT_RED setflag FLAG_HIDE_CERULEAN_CITY_MAN_OUTSIDE_CAVE
+  end

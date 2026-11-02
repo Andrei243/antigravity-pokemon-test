@@ -1,0 +1,42 @@
+# The Trainer House's battle hall in Viridian City (plan 20 · J15, part o). docs/scripts.md describes the language; the
+# lines are our own, on HeartGold's beats (scr_seq_T02R0302).
+#
+# HeartGold's hall battles a Trainer of its link records once a day, or Cal when it has none. This game has no link
+# records, so it is always Cal (johto_trainer_house_cal, a team of ours in our-trainers.json: HeartGold's own couldn't be
+# read from the pinned folders), once a day (FLAG_DAILY_JOHTO_TRAINER_HOUSE, ours, which the day's turn clears).
+
+
+# T02R0302_000: the referee
+script Referee
+  face self player
+  speaker "Referee"
+  if flag FLAG_DAILY_JOHTO_TRAINER_HOUSE goto Done
+  say "Welcome to the Trainer House's hall! One battle a day, against the Trainer of the day."
+  say "Today it's Cal. He's waiting at the far end of the hall. Speak to him when you're ready."
+  end
+label Done
+  say "That's today's battle fought. Come back tomorrow, and there'll be another!"
+  end
+
+# The day's Trainer
+script Cal
+  face self player
+  speaker "Cal"
+  if flag FLAG_DAILY_JOHTO_TRAINER_HOUSE goto Done
+  ask "I'm Cal, today's Trainer of the house. Want to battle me?"
+  if no goto Later
+  say "Then let's make it a good one!"
+  battle self as "johto_trainer_house_cal" canlose
+  setflag FLAG_DAILY_JOHTO_TRAINER_HOUSE
+  if lost goto Lost
+  say "What a battle! You're as strong as they say. Come back tomorrow for another."
+  end
+label Lost
+  say "That was close! Come back tomorrow and try me again."
+  end
+label Later
+  say "Whenever you like. I'm here all day."
+  end
+label Done
+  say "One battle a day, those are the house rules. See you tomorrow!"
+  end
