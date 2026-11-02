@@ -114,6 +114,13 @@ public sealed class Follower
         crowded = false;
 
         var (tx, ty) = trail.Dequeue();
+        // A tile left diagonally (plan 30 · FM2): the follower treads the diagonal the player trod, never a hop
+        if (Math.Abs(tx - Who.GridX) == 1 && Math.Abs(ty - Who.GridY) == 1)
+        {
+            step = NpcWalk.Diagonal(Who, tx - Who.GridX, ty - Who.GridY, ty > Who.GridY ? Direction.Down : Direction.Up,
+                Math.Max(NpcWalk.WalkPace, tilesPerSecond));
+            return;
+        }
         var path = new List<Direction>();
         for (int x = Who.GridX; x != tx; x += Math.Sign(tx - x)) path.Add(tx > x ? Direction.Right : Direction.Left);
         for (int y = Who.GridY; y != ty; y += Math.Sign(ty - y)) path.Add(ty > y ? Direction.Down : Direction.Up);

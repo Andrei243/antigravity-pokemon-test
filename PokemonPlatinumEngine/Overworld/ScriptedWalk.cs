@@ -75,6 +75,18 @@ public sealed class NpcWalk
         this.pace = pace;
     }
 
+    // A follower's one diagonal step behind a player who stepped diagonally (plan 30 · FM2): its way across, which the
+    // queue of cardinal steps can't say
+    private (int Dx, int Dy, Direction Face)? slant;
+
+    /// <summary>
+    /// A follower treading the diagonal the player trod (plan 30 · FM2, for a follower alone: everyone else keeps to
+    /// four ways), one tile across and one along, facing <paramref name="face"/>, √2 times as long as a step at
+    /// <paramref name="pace"/> so it keeps the player's speed over the ground.
+    /// </summary>
+    internal static NpcWalk Diagonal(NPC who, int dx, int dy, Direction face, float pace)
+        => new(who, new[] { new ScriptStep(face) }, pace / MathF.Sqrt(2f)) { slant = (dx, dy, face) };
+
     public void Update(float dt)
     {
         if (IsDone) return;
@@ -124,8 +136,10 @@ public sealed class NpcWalk
         if (!stepping) return;
 
         var step = steps.Dequeue();
-        // A step on the spot turns them and walks the legs where they stand; a step back keeps their facing
-        (dx, dy) = step.Moves ? FieldMovement.Delta(step.Way) : (0, 0);
+        // A step on the spot turns them and walks the legs where they stand; a step back keeps their facing; a
+        // follower's diagonal goes across and along at once
+        (dx, dy) = slant is { } across ? (across.Dx, across.Dy) : step.Moves ? FieldMovement.Delta(step.Way) : (0, 0);
+        slant = null;
         if (step.Turns) Who.Facing = step.Way;
         Who.GridX += dx;
         Who.GridY += dy;

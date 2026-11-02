@@ -429,6 +429,73 @@ public static class FieldMovement
     }
 
     /// <summary>
+    /// A step one of the eight ways (plan 30 · FM2, stage 1): a cardinal heading is <see cref="Step"/> itself; a
+    /// diagonal is open only where it is plain walking all round the corner it cuts, the user's ruling of 2026-11-02
+    /// (decision 8). Each of its two cardinal neighbours must be a plain <see cref="StepKind.Walk"/> from here, the
+    /// diagonal tile a plain walk on from each of them, both ways landing at the same height, and none of the four
+    /// tiles one whose rule is more than walking (<see cref="RefusesDiagonal"/>: a ledge, ice, a moving floor, a stair,
+    /// a ramp, a plank, a rail, a warp panel, a hole), nor a slope, nor a warp on the diagonal tile (a door is walked
+    /// into from its front), nor anywhere a Gym's puzzle lays its pieces. So a diagonal reaches nothing two cardinal
+    /// steps don't, and cuts no corner past a wall, a tree, a person, water or a cliff. Each leg is asked of
+    /// <see cref="Step"/>, so every rule of <c>player_move.c</c> a cardinal step obeys holds for both halves of the
+    /// diagonal: there is no second rule of collision. Refused, the step is <see cref="StepKind.Blocked"/> at
+    /// (<paramref name="x"/>, <paramref name="y"/>); the player then tries the cardinal parts (<see cref="Player"/>).
+    /// </summary>
+    public static FieldStep StepDiagonal(Map map, int x, int y, Heading heading, Walker walker)
+    {
+        if (heading.Cardinal() is { } cardinal) return Step(map, x, y, cardinal, walker);
+        var (vertical, horizontal) = heading.Parts();
+        var (dx, dy) = heading.Delta();
+        int tx = x + dx, ty = y + dy;
+        FieldStep No(Obstacle why) => new(StepKind.Blocked, x, y, walker.Height, Pace.Walk, walker.Mode, why);
+
+        if (!map.InBounds(tx, ty)) return No(Obstacle.MapEdge);
+        // A Gym's puzzle turns, floods and lifts its tiles a cardinal step at a time: none of its rooms is crossed slantwise
+        if (map.Puzzle != null) return No(Obstacle.Solid);
+        // The four tiles of the corner: here, the two neighbours and the diagonal tile itself
+        (int X, int Y)[] corner = { (x, y), (x, y + dy), (x + dx, y), (tx, ty) };
+        foreach (var (cx, cy) in corner)
+        {
+            if (!map.InBounds(cx, cy)) return No(Obstacle.MapEdge);
+            if (RefusesDiagonal(map.BehaviourAt(cx, cy))) return No(Obstacle.Solid);
+            if (map.SlopeAt(cx, cy) != (0f, 0f)) return No(Obstacle.Cliff);
+        }
+        if (map.GetWarpAt(tx, ty) != null) return No(Obstacle.Solid);
+
+        // Round the corner both ways, each leg a plain walk
+        var first = Step(map, x, y, vertical, walker);
+        var across = Step(map, x, y, horizontal, walker);
+        if (first.Kind != StepKind.Walk) return No(first.Obstacle == Obstacle.None ? Obstacle.Solid : first.Obstacle);
+        if (across.Kind != StepKind.Walk) return No(across.Obstacle == Obstacle.None ? Obstacle.Solid : across.Obstacle);
+        var thenAcross = Step(map, first.X, first.Y, horizontal, walker with { Height = first.Height, Mode = first.Mode });
+        var thenUp = Step(map, across.X, across.Y, vertical, walker with { Height = across.Height, Mode = across.Mode });
+        if (thenAcross.Kind != StepKind.Walk) return No(thenAcross.Obstacle == Obstacle.None ? Obstacle.Solid : thenAcross.Obstacle);
+        if (thenUp.Kind != StepKind.Walk) return No(thenUp.Obstacle == Obstacle.None ? Obstacle.Solid : thenUp.Obstacle);
+        if ((thenAcross.X, thenAcross.Y) != (tx, ty) || (thenUp.X, thenUp.Y) != (tx, ty)) return No(Obstacle.Solid);
+        // The two ways round must agree on the ground they come to: a deck over a road is no diagonal from one side only
+        if (MathF.Abs(thenAcross.Height - thenUp.Height) > 0.01f || thenAcross.Mode != thenUp.Mode) return No(Obstacle.Cliff);
+        // Water's edge, a skater's refusal and every change of travel are cardinal steps alone
+        if (first.Mode != walker.Mode || across.Mode != walker.Mode || thenAcross.Mode != walker.Mode) return No(Obstacle.Solid);
+
+        return new FieldStep(StepKind.Walk, tx, ty, thenAcross.Height, first.Pace, walker.Mode, Obstacle.None);
+    }
+
+    /// <summary>
+    /// A tile no diagonal step goes onto, off or past (plan 30 · FM2, decision 8): one whose rule is more than plain
+    /// walking. Ledges and the Distortion World's gaps, ice and every moving floor and current, the Cycling Road's
+    /// pull, stairs and escalators, a Bicycle's ramp, plank or muddy slope, a GBA rail or bumpy slope, waterfalls,
+    /// whirlpools and rock faces, warp panels, holes and doors.
+    /// </summary>
+    public static bool RefusesDiagonal(TileBehavior behaviour) =>
+        LedgeDirection(behaviour) != null || LongJumpDirection(behaviour) != null || RampDirection(behaviour) != null
+        || BikePlankRunsNorthSouth(behaviour) != null || RailRunsNorthSouth(behaviour) != null || IsMudSlope(behaviour)
+        || Carries(behaviour, Direction.Down) != null || Pulls(behaviour, TravelMode.Cycling) != null
+        || behaviour is TileBehavior.BumpySlope or TileBehavior.Waterfall or TileBehavior.WaterfallLip or TileBehavior.Whirlpool
+            or TileBehavior.RockClimbNorthSouth or TileBehavior.RockClimbEastWest or TileBehavior.StairsEast or TileBehavior.StairsWest
+            or TileBehavior.Escalator or TileBehavior.EscalatorFacingBack or TileBehavior.WarpPanel or TileBehavior.Hole
+            or TileBehavior.Door or TileBehavior.Spinner;
+
+    /// <summary>
     /// Whether a step from one tile to the next is no ground for skates (plan 23 · Z1): either tile tall grass, deep
     /// snow or mud, or a stair: a slope met along its fall, or a tile of the side stairs.
     /// </summary>

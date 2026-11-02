@@ -322,6 +322,7 @@ public class Player
         PixelY = gy * TileSize;
         HopHeight = 0f;
         IsMoving = false;
+        DiagonalStep = null;
         JustLanded = false;
         JustRodeOut = false;
         IsHoppingLedge = false;
@@ -429,13 +430,48 @@ public class Player
     public void Update(float dt, Map map, Action<WildEncounterEntry> onWildEncounter, Action<Warp> onWarpTrigger, Func<bool>? onArrive = null)
     {
         Vector2 dir = InputManager.GetMovementVector();
-        // The eight ways the keys or the stick hold (plan 30 · FM1), kept for the diagonal step of FM2; the grid's
-        // four-way answer below is what is walked whatever the region says, until FM2 walks the diagonal
+        // The eight ways the keys or the stick hold (plan 30 · FM1): two directions held at once are a diagonal, read
+        // here from the frame's four direction actions and nowhere else. Where the place moves four ways the grid's
+        // four-way answer is walked, as it always was (the stronger axis, a tie the vertical one); where it moves
+        // eight, the diagonal itself (plan 30 · FM2)
         WantedHeading = Headings.FromVector(dir);
-        Direction? want = Headings.FourWay(dir);
+        bool run = InputManager.IsActionDown(GameAction.Run) != Autorun;
         // With Autorun (plan 08 · P2) the run button walks and its absence runs; Advance itself is unchanged
-        Advance(dt, map, want, InputManager.IsActionDown(GameAction.Run) != Autorun, onWildEncounter, onWarpTrigger, onArrive);
+        if (Directions != MovementDirections.Four && WantedHeading is { } heading && heading.IsDiagonal())
+            Steer(dt, map, heading, run, onWildEncounter, onWarpTrigger, onArrive);
+        else
+            Advance(dt, map, Headings.FourWay(dir), run, onWildEncounter, onWarpTrigger, onArrive);
     }
+
+    /// <summary>
+    /// One frame of the player's movement steered one of the eight ways (plan 30 · FM2), as a tool or a test hands it:
+    /// a cardinal heading is <see cref="Advance"/>'s own; a diagonal is walked as a diagonal only where
+    /// <see cref="Directions"/> allows eight, and is its vertical part where the place moves four ways.
+    /// </summary>
+    public void Steer(float dt, Map map, PokemonPlatinumEngine.Overworld.Heading? want, bool run, Action<WildEncounterEntry>? onWildEncounter, Action<Warp>? onWarpTrigger, Func<bool>? onArrive = null)
+    {
+        if (want is { } heading && heading.IsDiagonal() && Directions != MovementDirections.Four)
+            Move(dt, map, null, heading, run, onWildEncounter, onWarpTrigger, onArrive);
+        else
+            Advance(dt, map, want is { } h ? h.Cardinal() ?? h.Parts().Vertical : null, run, onWildEncounter, onWarpTrigger, onArrive);
+    }
+
+    /// <summary>
+    /// The cardinal a diagonal leaves the player facing (plan 30 · FM2): the part of the two they already face, so
+    /// adding a second direction to the first keeps the body turned as it was; otherwise the vertical part, as the
+    /// grid's four-way answer takes a tie. Until FM3 and FM4 draw eight facings the sprite faces this cardinal too.
+    /// </summary>
+    public static Direction DiagonalFacing(PokemonPlatinumEngine.Overworld.Heading heading, Direction facing)
+    {
+        var (vertical, horizontal) = heading.Parts();
+        return facing == horizontal ? horizontal : vertical;
+    }
+
+    /// <summary>
+    /// The heading of the step under way when it is a diagonal (plan 30 · FM2); null between steps and for a cardinal
+    /// step. <see cref="Facing"/> stays the cardinal <see cref="DiagonalFacing"/> gives, which is what everything else reads.
+    /// </summary>
+    public PokemonPlatinumEngine.Overworld.Heading? DiagonalStep { get; private set; }
 
     /// <summary>Whether the keys' run button is read the other way round (the options' Autorun, plan 08 · P2); running still needs the Running Shoes.</summary>
     public bool Autorun { get; set; }
@@ -461,6 +497,10 @@ public class Player
     /// <param name="onWildEncounter">Null for a walk nothing may interrupt (a script's): no wild Pokémon appears.</param>
     /// <param name="onWarpTrigger">Null for a walk that takes no door: stepping onto one only stands on it.</param>
     public void Advance(float dt, Map map, Direction? want, bool run, Action<WildEncounterEntry>? onWildEncounter, Action<Warp>? onWarpTrigger, Func<bool>? onArrive = null)
+        => Move(dt, map, want, null, run, onWildEncounter, onWarpTrigger, onArrive);
+
+    // A frame of movement steered by a cardinal (want) or, where eight ways are walked, a diagonal (slant); never both
+    private void Move(float dt, Map map, Direction? want, PokemonPlatinumEngine.Overworld.Heading? slant, bool run, Action<WildEncounterEntry>? onWildEncounter, Action<Warp>? onWarpTrigger, Func<bool>? onArrive)
     {
         if (bumpCooldown > 0f) bumpCooldown -= dt;
         bool walkingInPlace = false;
@@ -532,7 +572,7 @@ public class Player
                 else { IsSliding = false; spinning = null; }
             }
         }
-        else if (Mode == TravelMode.Skating && want == null && !coasted
+        else if (Mode == TravelMode.Skating && want == null && slant == null && !coasted
                  && FieldMovement.Coast(map, GridX, GridY, Facing, WalkerOn(map)) is { } glide)
         {
             // Skates let go of glide a tile on (plan 23 · Z1)
@@ -545,10 +585,29 @@ public class Player
             IsSliding = false;
             skating = CanSkate && run && Mode is TravelMode.OnFoot or TravelMode.Skating;
             // Standing still, or the button let go, the skates are off (plan 23 · Z1)
-            if (Mode == TravelMode.Skating && (want == null || !skating)) Mode = TravelMode.OnFoot;
+            if (Mode == TravelMode.Skating && ((want == null && slant == null) || !skating)) Mode = TravelMode.OnFoot;
             IsRunning = Mode == TravelMode.OnFoot && run && HasRunningShoes && !skating;
 
-            if (want is { } desiredDir)
+            if (slant is { } diagonal)
+            {
+                // A diagonal (plan 30 · FM2): turned to neither of its parts, the player turns first, as to a cardinal
+                var face = DiagonalFacing(diagonal, Facing);
+                if (Facing != face)
+                {
+                    Facing = face;
+                }
+                else
+                {
+                    TryDiagonal(diagonal, map);
+                    if (!IsMoving)
+                    {
+                        walkingInPlace = true;
+                        PushedAgainst = true;
+                        WalkCycle += dt * 1.1f;
+                    }
+                }
+            }
+            else if (want is { } desiredDir)
             {
                 if (Facing != desiredDir)
                 {
@@ -592,6 +651,7 @@ public class Player
         PixelY = GridY * TileSize;
         HopHeight = 0f;
         IsMoving = false;
+        DiagonalStep = null;
         JustLanded = IsHoppingLedge;
         JustRodeOut = mounting;
         IsHoppingLedge = false;
@@ -728,6 +788,33 @@ public class Player
     }
 
     /// <summary>
+    /// Takes a diagonal step where the field's rules allow one (<see cref="FieldMovement.StepDiagonal"/>, plan 30 · FM2).
+    /// Refused, the player slides along what is in the way: the cardinal part they face first, then the other, and
+    /// with neither open the part faced is tried as a cardinal step is (a bump, a boulder pushed, a block of ice).
+    /// </summary>
+    private void TryDiagonal(PokemonPlatinumEngine.Overworld.Heading heading, Map map)
+    {
+        // With the skates on hand a skater's diagonal first, as TryStep takes a skater's step (plan 23 · Z1)
+        bool skate = skating && Mode is TravelMode.OnFoot or TravelMode.Skating;
+        var walker = WalkerOn(map) with { Mode = skate ? TravelMode.Skating : Mode, Running = !skate && IsRunning };
+        var step = FieldMovement.StepDiagonal(map, GridX, GridY, heading, walker);
+        if (step.Moves)
+        {
+            if (skate) { Mode = TravelMode.Skating; coasted = false; IsRunning = false; }
+            Begin(map, step, Facing, diagonal: heading);
+            return;
+        }
+        var (vertical, horizontal) = heading.Parts();
+        var faced = Facing == horizontal ? horizontal : vertical;
+        var other = faced == vertical ? horizontal : vertical;
+        if (!FieldMovement.Step(map, GridX, GridY, faced, WalkerOn(map)).Moves
+            && FieldMovement.Step(map, GridX, GridY, other, WalkerOn(map)).Moves)
+            faced = other;
+        Facing = faced;
+        TryStep(faced, map);
+    }
+
+    /// <summary>
     /// The next step on ice (<see cref="IceSlide"/>): a snowball ahead breaks if the slide is fast enough, then the
     /// tile's tilt says whether the player slides on, faster or slower, slips back down, or stands.
     /// </summary>
@@ -758,10 +845,12 @@ public class Player
         }
     }
 
-    private void Begin(Map map, FieldStep step, Direction dir, bool sliding = false, float? tilesPerSecond = null)
+    private void Begin(Map map, FieldStep step, Direction dir, bool sliding = false, float? tilesPerSecond = null,
+        PokemonPlatinumEngine.Overworld.Heading? diagonal = null)
     {
         int tiles = Math.Max(1, Math.Abs(step.X - GridX) + Math.Abs(step.Y - GridY));
         float speed = tilesPerSecond ?? FieldMovement.TilesPerSecond(sliding ? Pace.Fast : step.Pace);
+        DiagonalStep = diagonal;
 
         targetGridX = step.X;
         targetGridY = step.Y;
@@ -773,6 +862,8 @@ public class Player
         // A hop over a ledge takes as long as a step; a climb takes as long as the tiles it covers, and a jump from
         // a ramp, which flies, two thirds as long
         stepRate = step.Kind switch { StepKind.Climb => speed / tiles, StepKind.Jump => speed * 1.5f / tiles, _ => speed };
+        // A diagonal crosses √2 of a tile at the same speed over the ground (plan 30 · FM2)
+        if (diagonal != null) stepRate = speed / MathF.Sqrt(2f);
         stride = speed;
         hopArc = step.Kind switch { StepKind.Hop => 16f, StepKind.Land => 9f, StepKind.Jump => 8f + 6f * tiles, _ => 0f };
         IsHoppingLedge = hopArc > 0f;
