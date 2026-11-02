@@ -4,8 +4,40 @@ using System.Linq;
 
 namespace PokemonPlatinumEngine.Core;
 
-/// <summary>What a caption names: a sound effect or a Pokémon's cry (the sign beside its words differs).</summary>
-public enum CaptionKind { Sound, Cry }
+/// <summary>What a caption names: a sound effect, a Pokémon's cry or an ambience bed coming in (the sign beside its words differs).</summary>
+public enum CaptionKind { Sound, Cry, Ambience }
+
+/// <summary>
+/// Which of the field's ambience beds are sounding, for the captions (plan 12 · Q9): a bed is named once as it comes in
+/// (its gain rising past <see cref="In"/>) and not again until it has gone (under <see cref="Out"/>), so walking along a
+/// river's bank or out of the rain's edge doesn't name it at every step. GPU-free; told the beds each frame.
+/// </summary>
+public sealed class BedWatch
+{
+    /// <summary>The gain at which a bed counts as come in, and the gain under which it counts as gone.</summary>
+    public const float In = 0.2f, Out = 0.05f;
+
+    private readonly HashSet<Audio.AmbienceBed> sounding = new();
+
+    /// <summary>The beds sounding now, as far as the captions know.</summary>
+    public IReadOnlyCollection<Audio.AmbienceBed> Sounding => sounding;
+
+    /// <summary>Takes the beds asked for this frame and gives back those that have just come in, in the order asked.</summary>
+    public List<Audio.AmbienceBed> Notice(IReadOnlyList<Audio.AmbienceLayer> layers)
+    {
+        var come = new List<Audio.AmbienceBed>();
+        var gains = new Dictionary<Audio.AmbienceBed, float>();
+        foreach (var layer in layers)
+            gains[layer.Bed] = Math.Max(gains.GetValueOrDefault(layer.Bed), layer.Gain);
+        sounding.RemoveWhere(bed => gains.GetValueOrDefault(bed) < Out);
+        foreach (var layer in layers)
+            if (gains[layer.Bed] >= In && sounding.Add(layer.Bed)) come.Add(layer.Bed);
+        return come;
+    }
+
+    /// <summary>Forgets every bed, so the next frame names whatever is sounding then.</summary>
+    public void Clear() => sounding.Clear();
+}
 
 /// <summary>One caption standing: its words, what it names, how long it has stood and how many times its sound played.</summary>
 public sealed record CaptionLine(string Text, CaptionKind Kind, float Age, int Times);

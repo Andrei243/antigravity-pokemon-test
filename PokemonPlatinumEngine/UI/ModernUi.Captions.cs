@@ -60,13 +60,29 @@ internal static partial class ModernUi
         var ink = line.Kind == CaptionKind.Cry ? Gold : Selection;
         ink = ink with { A = A(255) };
         float cy = r.Y + CaptionHeight / 2f, x = r.X + 20;
-        UiShapes.Fill(new Rectangle(x - 6, cy - 4, 5, 8), 1, ink);
-        UiShapes.Triangle(new Vector2(x - 2, cy - 4), new Vector2(x + 5, cy - 9), new Vector2(x + 5, cy + 9), ink);
-        UiShapes.Triangle(new Vector2(x - 2, cy - 4), new Vector2(x + 5, cy + 9), new Vector2(x - 2, cy + 4), ink);
-        for (int k = -3; k < 3; k++)
+        if (line.Kind == CaptionKind.Ambience)
         {
-            float a0 = k * 0.25f, a1 = (k + 1) * 0.25f;
-            UiShapes.Line(new Vector2(x + 9 + MathF.Cos(a0) * 5, cy + MathF.Sin(a0) * 7), new Vector2(x + 9 + MathF.Cos(a1) * 5, cy + MathF.Sin(a1) * 7), 2.5f, ink);
+            // A bed's sign: two waves, one over the other, across the sign's square
+            for (int row = 0; row < 2; row++)
+            {
+                float wy = cy - 4 + row * 8;
+                for (int k = 0; k < 8; k++)
+                {
+                    float x0 = x - 8 + k * 2.5f, x1 = x0 + 2.5f;
+                    UiShapes.Line(new Vector2(x0, wy + MathF.Sin(k * 0.8f) * 2.5f), new Vector2(x1, wy + MathF.Sin((k + 1) * 0.8f) * 2.5f), 2.5f, ink);
+                }
+            }
+        }
+        else
+        {
+            UiShapes.Fill(new Rectangle(x - 6, cy - 4, 5, 8), 1, ink);
+            UiShapes.Triangle(new Vector2(x - 2, cy - 4), new Vector2(x + 5, cy - 9), new Vector2(x + 5, cy + 9), ink);
+            UiShapes.Triangle(new Vector2(x - 2, cy - 4), new Vector2(x + 5, cy + 9), new Vector2(x - 2, cy + 4), ink);
+            for (int k = -3; k < 3; k++)
+            {
+                float a0 = k * 0.25f, a1 = (k + 1) * 0.25f;
+                UiShapes.Line(new Vector2(x + 9 + MathF.Cos(a0) * 5, cy + MathF.Sin(a0) * 7), new Vector2(x + 9 + MathF.Cos(a1) * 5, cy + MathF.Sin(a1) * 7), 2.5f, ink);
+            }
         }
 
         UiFonts.DrawCentered(line.Text, r.X + 52, cy, 26, Color.White with { A = A(255) }, UiWeight.Bold);

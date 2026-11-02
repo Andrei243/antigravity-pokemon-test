@@ -4995,6 +4995,20 @@
   },
   "captions": {
     "cry": "{name} strigă",
+    "bed": {
+      "Rain": "Plouă",
+      "HeavyRain": "Plouă torențial",
+      "Hail": "Cade grindină",
+      "Wind": "Bate vântul",
+      "Blizzard": "Urlă viscolul",
+      "Sandstorm": "Bate o furtună de nisip",
+      "Waterfall": "Vuiește o cascadă",
+      "River": "Curge un râu",
+      "Waves": "Se sparg valurile",
+      "Cave": "Peștera răsună încet",
+      "Underwater": "Marea murmură",
+      "Giant": "Bate inima unui uriaș"
+    },
     "family": {
       "move": "Se folosește {move}",
       "moveType": "Pornește o mișcare de tip {type}",
