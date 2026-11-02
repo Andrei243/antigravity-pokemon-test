@@ -86,6 +86,7 @@ label Letter
   hide rival
   setflag FLAG_KALOS_HIDE_RIVAL_AQUACORDE
   setvar VAR_KALOS_STORY 3
+  objective kalosHome
   endscene
   end
 

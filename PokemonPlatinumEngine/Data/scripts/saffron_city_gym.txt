@@ -17,6 +17,7 @@ script Sabrina
   battle self as "kanto_leader_sabrina"
   say "This loss... It shocks me. But I won't deny it. Take the Marsh Badge."
   givebadge marsh
+  objective kantoBlaine
   text "{player} received the Marsh Badge from Sabrina!"
   say "With the Marsh Badge, your Pokémon can use Rock Smash outside of battle."
   setflag FLAG_DEFEATED_SABRINA

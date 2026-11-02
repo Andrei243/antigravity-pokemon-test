@@ -22,6 +22,7 @@ script Cheren
   say "That battle made me really glad you were my first challenger."
   say "Here is your first Gym Badge, the Basic Badge. It's an important first step. Wear it with pride!"
   givebadge basic
+  objective unovaRoxie
   text "{player} received the Basic Badge from Cheren!"
   defeat "unova_youngster_pedro"
   defeat "unova_lass_serena"

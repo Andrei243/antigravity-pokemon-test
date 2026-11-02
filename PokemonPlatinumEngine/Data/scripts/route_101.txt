@@ -73,6 +73,7 @@ script BirchsBag
   starter
   text "{player} chose the {starter}!"
   setflag FLAG_RESCUED_BIRCH
+  objective hoennRival
   setflag FLAG_HIDE_ROUTE_101_BIRCH_ZIGZAGOON_BATTLE
   setflag FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG
   clearflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH

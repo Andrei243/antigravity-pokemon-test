@@ -20,6 +20,7 @@ script Roxanne
   say "So I lost... I see now that there's still so much I have to learn."
   say "You've earned this. Please accept the Stone Badge, the official proof of your victory here."
   givebadge stone
+  objective hoennDevon
   text "{player} received the Stone Badge from Roxanne!"
   say "With the Stone Badge, your Pokémon can use Cut outside of battle, to clear small trees from your path."
   setflag FLAG_DEFEATED_RUSTBORO_GYM

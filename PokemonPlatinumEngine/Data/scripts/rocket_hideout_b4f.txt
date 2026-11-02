@@ -76,6 +76,7 @@ script Giovanni
   fade out 0.4
   setflag FLAG_HIDE_HIDEOUT_GIOVANNI
   setflag FLAG_DEFEATED_ROCKET_HIDEOUT_GIOVANNI
+  objective kantoTower
   setflag FLAG_HIDE_CELADON_ROCKETS
   hide self
   fade in 0.4

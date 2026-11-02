@@ -45,6 +45,7 @@ script Morty
   battle self as "johto_leader_morty_morty"
   say "I'm not good enough yet... All right. You've earned this. The Fog Badge is yours."
   givebadge fog
+  objective johtoChuck
   text "{player} received the Fog Badge from Morty!"
   say "With the Fog Badge, Pokémon up to level fifty will obey you, and you can use Surf outside of battle."
   if var VAR_UNK_410C >= 3 setvar VAR_UNK_4079 3

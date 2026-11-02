@@ -50,6 +50,7 @@ label Gym
   clearflag FLAG_KALOS_HIDE_SHAUNA_SANTALUNE
   clearflag FLAG_KALOS_HIDE_FRIENDS_SANTALUNE
   setvar VAR_KALOS_STORY 8
+  objective kalosViola
   endscene
   end
 

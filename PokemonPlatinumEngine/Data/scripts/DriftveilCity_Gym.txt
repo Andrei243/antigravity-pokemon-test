@@ -24,6 +24,7 @@ script Clay
   battle clay as "unova_leader_clay"
   say "Well, I'll be. You struck a seam I never saw comin'. Here, you earned it fair and square."
   givebadge quake
+  objective unovaSkyla
   text "{player} received the Quake Badge from Clay!"
   if var VAR_UNOVA_DRIFTVEIL < 4 setvar VAR_UNOVA_DRIFTVEIL 4
   clearflag FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL

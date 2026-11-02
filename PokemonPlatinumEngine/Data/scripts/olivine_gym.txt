@@ -28,6 +28,7 @@ script Jasmine
   battle self as "johto_leader_jasmine_jasmine"
   say "Your Pokémon cut through steel... You're stronger than I imagined. The Mineral Badge is yours."
   givebadge mineral
+  objective johtoMahogany
   text "{player} received the Mineral Badge from Jasmine!"
   if not badge storm goto Said
   if not badge glacier goto Said

@@ -31,6 +31,7 @@ script OnEnter
   text "{player} received the PokéNav!"
   setflag FLAG_SYS_POKENAV_GET
   setflag FLAG_RECEIVED_POKENAV
+  objective hoennBrawly
   say "It has a map of Hoenn, and much more besides. I hope it serves you well on your travels."
   say "Now, I hate to ask more of you, but might I trouble you with two errands?"
   say "First, this letter. It is for my son, Steven. He is somewhere in Dewford Town, across the sea."

@@ -45,6 +45,7 @@ script Giovanni
   fade in 0.4
   music area
   setvar VAR_MAP_SCENE_SILPH_CO_11F 1
+  objective kantoSabrina
   endscene
   end
 

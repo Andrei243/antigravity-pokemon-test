@@ -113,6 +113,7 @@ script Drayden
   say "Wonderful. I'm grateful that we had a chance to meet and battle. It reminded me that Pokémon battles are about working with others, whether Pokémon or people."
   say "Here, take this. It is the Legend Badge, proof that you have beaten me."
   givebadge legend
+  objective unovaMarlon
   text "{player} received the Legend Badge from Drayden!"
   say "Well, now. You have obtained seven of Unova's Gym Badges. Take this too, so that you remember how a dragon fights."
   give "TM82"

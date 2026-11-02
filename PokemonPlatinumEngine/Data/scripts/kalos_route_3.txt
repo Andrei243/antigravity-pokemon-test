@@ -38,6 +38,7 @@ label After
   setflag FLAG_KALOS_HIDE_FRIENDS_ROUTE_3
   clearflag FLAG_KALOS_HIDE_RIVAL_SANTALUNE
   setvar VAR_KALOS_STORY 7
+  objective kalosSantalune
   endscene
   end
 

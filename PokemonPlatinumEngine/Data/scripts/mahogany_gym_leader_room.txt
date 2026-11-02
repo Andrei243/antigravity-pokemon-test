@@ -19,6 +19,7 @@ script Pryce
   battle self as "johto_leader_pryce_pryce"
   say "Hmm. Your Pokémon carried you through the cold. You have earned this: the Glacier Badge."
   givebadge glacier
+  objective johtoRadioTower
   text "{player} received the Glacier Badge from Pryce!"
   defeat "johto_boarder_deandre"
   defeat "johto_boarder_gerardo"

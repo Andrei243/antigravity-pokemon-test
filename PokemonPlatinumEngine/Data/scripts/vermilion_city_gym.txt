@@ -249,6 +249,7 @@ script LtSurge
   battle self as "kanto_leader_lt_surge"
   say "Whoa! You're the real deal, kid! Fine then, take the Thunder Badge!"
   givebadge thunder
+  objective kantoErika
   text "{player} received the Thunder Badge from Lt. Surge!"
   say "The Thunder Badge lets your Pokémon use Fly outside of battle, once you have the move."
   setflag FLAG_DEFEATED_LT_SURGE

@@ -21,6 +21,7 @@ script Chuck
   battle self as "johto_leader_chuck_chuck"
   say "Whoa! What power! I've got no excuse. You beat me fair and square. Take the Storm Badge!"
   givebadge storm
+  objective johtoJasmine
   text "{player} received the Storm Badge from Chuck!"
   defeat "johto_black_belt_yoshi"
   defeat "johto_black_belt_lao"

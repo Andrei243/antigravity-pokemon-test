@@ -30,6 +30,7 @@ script OnEnter
   fade out 0.8
   halloffame
   setflag HoennHallOfFame
+  objective hoennFree
   setflag FLAG_IS_CHAMPION
   call ClearGame
   halloffame show

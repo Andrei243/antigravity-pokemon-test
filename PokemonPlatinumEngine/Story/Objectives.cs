@@ -46,7 +46,7 @@ public static class Objectives
     private static Func<StoryState, bool> Badge(string name) => s => s.HasBadge(RegionDatabase.Sinnoh, name);
 
     /// <summary>Every objective of every region, in the order each region's story is played. Sinnoh's ids are 1 to 99.</summary>
-    public static IReadOnlyList<Objective> All { get; } = new[]
+    public static IReadOnlyList<Objective> All { get; } = new Objective[]
     {
         // Plan 02 · S4: the opening
         S(1, "downstairs", F("FLAG_TALKED_TO_MOM")),
@@ -93,7 +93,140 @@ public static class Objectives
         S(33, "afterwards", F("FLAG_ARRESTED_CHARON_STARK_MOUNTAIN")),
         // Nothing presses any more
         S(34, "free", null),
-    };
+    }
+    .Concat(Kanto).Concat(Johto).Concat(Hoenn).Concat(Unova).Concat(Kalos).ToArray();
+
+    // The later regions (plan 12 · Q14, their part). Each has a block of a hundred numbers of its own, its derived
+    // conditions read from what only its own chapters set (its badges, its own flags and counts, never a flag another
+    // region's game sets too, such as FLAG_HAS_POKEDEX), and its chapters' scenes end with `objective <next>` besides.
+    // An objective of the opening is also done once anything after it is (a Champion who crossed in may come to a
+    // region past a scene its own new game plays); a badge and a beat between badges are done by themselves alone,
+    // so a Gym won out of turn leaves the one before it to do, as in Sinnoh.
+
+    private static Func<StoryState, bool> RegionBadge(string region, string name) => s => s.HasBadge(region, name);
+
+    private static Func<StoryState, bool> AtLeast(string variable, int value) => s => s.Var(variable) >= value;
+
+    /// <summary>
+    /// A region's list: (number, name, done, opening). An opening objective is also done once any objective after it
+    /// in the region is; the last, with nothing to say it is done, is the region's "nothing presses".
+    /// </summary>
+    private static Objective[] Region(string region, params (int Id, string Name, Func<StoryState, bool>? Done, bool Opening)[] entries)
+    {
+        var own = entries.Select(e => e.Done).ToArray();
+        var list = new Objective[entries.Length];
+        for (int i = 0; i < entries.Length; i++)
+        {
+            var e = entries[i];
+            Func<StoryState, bool>? done = e.Done;
+            if (e.Opening && done != null)
+            {
+                int from = i + 1;
+                var self = done;
+                done = s => self(s) || own.Skip(from).Any(d => d != null && d(s));
+            }
+            list[i] = new Objective(e.Id, e.Name, region, done);
+        }
+        return list;
+    }
+
+    private static Objective[] Kanto => Region(RegionDatabase.Kanto,
+        // Plan 19 · K3 to K5: Pallet Town, Oak's lab and the Parcel (FireRed's scene counts)
+        (100, "kantoSetOut", AtLeast("VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB", 1), true),
+        (101, "kantoStarter", AtLeast("VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB", 3), true),
+        (102, "kantoRivalLab", AtLeast("VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB", 4), true),
+        (103, "kantoParcel", AtLeast("VAR_MAP_SCENE_VIRIDIAN_CITY_MART", 1), true),
+        (104, "kantoParcelHome", AtLeast("VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB", 6), true),
+        // The Gyms, and what stands between them
+        (105, "kantoBrock", RegionBadge(RegionDatabase.Kanto, "Boulder"), false),
+        (106, "kantoMisty", RegionBadge(RegionDatabase.Kanto, "Cascade"), false),
+        (107, "kantoBill", F("FLAG_GOT_SS_TICKET"), false),
+        (108, "kantoSurge", RegionBadge(RegionDatabase.Kanto, "Thunder"), false),
+        (109, "kantoErika", RegionBadge(RegionDatabase.Kanto, "Rainbow"), false),
+        (110, "kantoHideout", F("FLAG_DEFEATED_ROCKET_HIDEOUT_GIOVANNI"), false),
+        (111, "kantoTower", F("FLAG_RESCUED_MR_FUJI"), false),
+        (112, "kantoKoga", RegionBadge(RegionDatabase.Kanto, "Soul"), false),
+        (113, "kantoSilph", AtLeast("VAR_MAP_SCENE_SILPH_CO_11F", 1), false),
+        (114, "kantoSabrina", RegionBadge(RegionDatabase.Kanto, "Marsh"), false),
+        (115, "kantoBlaine", RegionBadge(RegionDatabase.Kanto, "Volcano"), false),
+        (116, "kantoGiovanni", RegionBadge(RegionDatabase.Kanto, "Earth"), false),
+        (117, "kantoLeague", F("KantoHallOfFame"), false),
+        // Plan 19 · K9: the Sevii Islands
+        (118, "kantoSevii", F("FLAG_SYS_CAN_LINK_WITH_RS"), false),
+        (119, "kantoFree", null, false));
+
+    private static Objective[] Johto => Region(RegionDatabase.Johto,
+        // Plan 20 · J4: New Bark Town, Elm's errand and the Egg
+        (200, "johtoMom", F("FLAG_GOT_POKEGEAR"), true),
+        (201, "johtoElm", F("FLAG_GOT_STARTER"), true),
+        (202, "johtoMrPokemon", F("FLAG_GOT_MYSTERY_EGG"), true),
+        (203, "johtoBackToElm", F("FLAG_GAVE_MYSTERY_EGG_TO_ELM"), true),
+        // J4 to J12: the Gyms, the Rockets and the League
+        (204, "johtoFalkner", RegionBadge(RegionDatabase.Johto, "Zephyr"), false),
+        (205, "johtoBugsy", RegionBadge(RegionDatabase.Johto, "Hive"), false),
+        (206, "johtoWhitney", RegionBadge(RegionDatabase.Johto, "Plain"), false),
+        (207, "johtoMorty", RegionBadge(RegionDatabase.Johto, "Fog"), false),
+        (208, "johtoChuck", RegionBadge(RegionDatabase.Johto, "Storm"), false),
+        (209, "johtoJasmine", RegionBadge(RegionDatabase.Johto, "Mineral"), false),
+        (210, "johtoMahogany", F("FLAG_ROCKET_HIDEOUT_CLEARED"), false),
+        (211, "johtoPryce", RegionBadge(RegionDatabase.Johto, "Glacier"), false),
+        (212, "johtoRadioTower", AtLeast("VAR_SCENE_ROCKET_TAKEOVER", 5), false),
+        (213, "johtoClair", RegionBadge(RegionDatabase.Johto, "Rising"), false),
+        (214, "johtoLeague", F("JohtoHallOfFame"), false),
+        // J15: HeartGold's Kanto, its Badges Kanto's own
+        (215, "johtoKanto", s => s.BadgeCount(RegionDatabase.Kanto) >= 8, false),
+        (216, "johtoFree", null, false));
+
+    private static Objective[] Hoenn => Region(RegionDatabase.Hoenn,
+        // Plan 21 · H2: Littleroot Town, the professor on Route 101 and the rival
+        (300, "hoennNeighbours", F("FLAG_MET_RIVAL_MOM"), true),
+        (301, "hoennBirch", F("FLAG_RESCUED_BIRCH"), true),
+        (302, "hoennRival", F("FLAG_DEFEATED_RIVAL_ROUTE103"), true),
+        (303, "hoennPokedex", AtLeast("VAR_BIRCH_LAB_STATE", 5), true),
+        // H2 to H9: the Gyms and the League
+        (304, "hoennRoxanne", RegionBadge(RegionDatabase.Hoenn, "Stone"), false),
+        (305, "hoennDevon", F("FLAG_RECEIVED_POKENAV"), false),
+        (306, "hoennBrawly", RegionBadge(RegionDatabase.Hoenn, "Knuckle"), false),
+        (307, "hoennWattson", RegionBadge(RegionDatabase.Hoenn, "Dynamo"), false),
+        (308, "hoennFlannery", RegionBadge(RegionDatabase.Hoenn, "Heat"), false),
+        (309, "hoennNorman", RegionBadge(RegionDatabase.Hoenn, "Balance"), false),
+        (310, "hoennWinona", RegionBadge(RegionDatabase.Hoenn, "Feather"), false),
+        (311, "hoennTateLiza", RegionBadge(RegionDatabase.Hoenn, "Mind"), false),
+        (312, "hoennJuan", RegionBadge(RegionDatabase.Hoenn, "Rain"), false),
+        (313, "hoennLeague", F("HoennHallOfFame"), false),
+        (314, "hoennFree", null, false));
+
+    private static Objective[] Unova => Region(RegionDatabase.Unova,
+        // Plan 22 · U5: Aspertia City (VAR_UNOVA_ASPERTIA, aspertia_city.txt's count)
+        (400, "unovaHugh", AtLeast("VAR_UNOVA_ASPERTIA", 1), true),
+        (401, "unovaOutlook", AtLeast("VAR_UNOVA_ASPERTIA", 5), true),
+        (402, "unovaCenter", AtLeast("VAR_UNOVA_ASPERTIA", 6), true),
+        // U5 to U9: the Gyms, the Giant Chasm and the League
+        (403, "unovaCheren", RegionBadge(RegionDatabase.Unova, "Basic"), false),
+        (404, "unovaRoxie", RegionBadge(RegionDatabase.Unova, "Toxic"), false),
+        (405, "unovaBurgh", RegionBadge(RegionDatabase.Unova, "Insect"), false),
+        (406, "unovaElesa", RegionBadge(RegionDatabase.Unova, "Bolt"), false),
+        (407, "unovaClay", RegionBadge(RegionDatabase.Unova, "Quake"), false),
+        (408, "unovaSkyla", RegionBadge(RegionDatabase.Unova, "Jet"), false),
+        (409, "unovaDrayden", RegionBadge(RegionDatabase.Unova, "Legend"), false),
+        (410, "unovaMarlon", RegionBadge(RegionDatabase.Unova, "Wave"), false),
+        (411, "unovaChasm", AtLeast("VAR_UNOVA_CHASM", 4), false),
+        (412, "unovaLeague", F("UnovaHallOfFame"), false),
+        (413, "unovaFree", null, false));
+
+    private static Objective[] Kalos => Region(RegionDatabase.Kalos,
+        // Plan 23 · Z1: VAR_KALOS_STORY, vaniville_town.txt's count, to the Bug Badge
+        (500, "kalosDownstairs", AtLeast("VAR_KALOS_STORY", 1), true),
+        (501, "kalosDoor", AtLeast("VAR_KALOS_STORY", 2), true),
+        (502, "kalosAquacorde", AtLeast("VAR_KALOS_STORY", 3), true),
+        (503, "kalosHome", AtLeast("VAR_KALOS_STORY", 4), true),
+        (504, "kalosRoute2", AtLeast("VAR_KALOS_STORY", 5), true),
+        (505, "kalosForest", AtLeast("VAR_KALOS_STORY", 6), true),
+        (506, "kalosRoute3", AtLeast("VAR_KALOS_STORY", 7), true),
+        (507, "kalosSantalune", AtLeast("VAR_KALOS_STORY", 8), true),
+        (508, "kalosViola", s => s.Var("VAR_KALOS_STORY") >= 9 || s.HasBadge(RegionDatabase.Kalos, "Bug"), false),
+        // What comes after the Bug Badge is a later session's
+        (509, "kalosFree", null, false));
 
     private static readonly Dictionary<string, Objective> ByName = All.ToDictionary(o => o.Name, StringComparer.Ordinal);
 

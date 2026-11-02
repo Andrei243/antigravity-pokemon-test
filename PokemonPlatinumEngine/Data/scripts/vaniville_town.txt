@@ -23,6 +23,7 @@ label CrossedIn
   if var CROSSED_IN != 1 end
   namerival
   setvar VAR_KALOS_STORY 2
+  objective kalosAquacorde
   clearflag FLAG_KALOS_HIDE_RIVAL_AQUACORDE
   end
 label AtTheDoor
@@ -58,6 +59,7 @@ label AtTheDoor
   setflag FLAG_KALOS_HIDE_RIVAL_VANIVILLE
   clearflag FLAG_KALOS_HIDE_RIVAL_AQUACORDE
   setvar VAR_KALOS_STORY 2
+  objective kalosAquacorde
   endscene
   end
 

@@ -20,6 +20,7 @@ script OnEnter
   fade out 0.8
   halloffame
   setflag JohtoHallOfFame
+  objective johtoKanto
   # Johto's swarms begin with the Champion (plan 20 · J13, part c; HeartGold turns them on in Professor Oak's lab)
   swarms on
   # Red is back on Mt. Silver's summit for every new entry (plan 20 · J15)

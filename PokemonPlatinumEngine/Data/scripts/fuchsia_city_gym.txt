@@ -16,6 +16,7 @@ script Koga
   battle self as "kanto_leader_koga"
   say "Hmph! You have proven your worth. Take the Soul Badge."
   givebadge soul
+  objective kantoSilph
   text "{player} received the Soul Badge from Koga!"
   say "With the Soul Badge, your Pokémon can use Surf outside of battle, to ride across the water."
   setflag FLAG_DEFEATED_KOGA

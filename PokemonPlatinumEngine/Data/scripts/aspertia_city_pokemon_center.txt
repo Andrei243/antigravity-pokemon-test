@@ -37,6 +37,7 @@ script OnEnter
   clearflag FLAG_UNOVA_HIDE_HUGHS_SISTER
   setflag FLAG_UNOVA_HIDE_MOM_HOME
   setvar VAR_UNOVA_ASPERTIA 6
+  objective unovaCheren
   fade in
   endscene
   end

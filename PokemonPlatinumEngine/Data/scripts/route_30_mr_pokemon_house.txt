@@ -18,6 +18,7 @@ script OnEnter
   say "It's an Egg! Or at least, everyone I've asked says it must be. Nobody can tell me what's inside."
   say "Elm is the man for Pokémon Eggs. Would you take it back to him?"
   setflag FLAG_GOT_MYSTERY_EGG
+  objective johtoBackToElm
   fanfare keyitem
   text "{player} received the Mystery Egg!"
   face r30r0201_ookido player

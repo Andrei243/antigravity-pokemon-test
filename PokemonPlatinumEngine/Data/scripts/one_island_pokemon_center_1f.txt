@@ -178,6 +178,7 @@ label Complete
   face celio player
   say "{player}, thank you. With your help the islands are linked with Kanto and with Hoenn too. I'll never forget it."
   setflag FLAG_SYS_CAN_LINK_WITH_RS
+  objective kantoFree
   setflag FLAG_HIDE_CERULEAN_CAVE_GUARD
   setflag FLAG_HIDE_LORELEI_IN_HER_HOUSE
   setvar VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F 6

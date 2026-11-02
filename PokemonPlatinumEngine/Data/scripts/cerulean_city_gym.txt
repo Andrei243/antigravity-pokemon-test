@@ -15,6 +15,7 @@ script Misty
   battle self as "kanto_leader_misty"
   say "Wow, you're too much! All right, you can have the Cascade Badge to show you beat me."
   givebadge cascade
+  objective kantoBill
   text "{player} received the Cascade Badge from Misty!"
   say "With the Cascade Badge, your Pokémon can use Cut outside of battle, to clear away small trees."
   setflag FLAG_DEFEATED_MISTY

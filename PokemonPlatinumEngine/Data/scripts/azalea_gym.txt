@@ -17,6 +17,7 @@ script Bugsy
   battle self as "johto_leader_bugsy_bugsy"
   say "Whoa, amazing! You really know your stuff. Okay, you win. This is yours: the Hive Badge!"
   givebadge hive
+  objective johtoWhitney
   text "{player} received the Hive Badge from Bugsy!"
   defeat "johto_bug_catcher_al"
   defeat "johto_bug_catcher_benny"

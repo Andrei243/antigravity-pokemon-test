@@ -19,6 +19,7 @@ script Flannery
   say "Oh... I lost. I think I was trying so hard to act like a Leader that I forgot to just be myself."
   say "Thank you. You've reminded me of something important. Please, take the Heat Badge."
   givebadge heat
+  objective hoennNorman
   text "{player} received the Heat Badge from Flannery!"
   say "With the Heat Badge, your Pokémon can use Strength outside of battle to shove big boulders around."
   setflag FLAG_DEFEATED_LAVARIDGE_GYM
