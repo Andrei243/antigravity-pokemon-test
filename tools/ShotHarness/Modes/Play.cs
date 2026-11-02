@@ -36,6 +36,8 @@ partial class Harness
         // --badge: on the story's way to the Coal Badge (plan 16 · T13); --field: the field fuzzer's random walk instead
         var bot = field ? new Autoplayer(engine, new FieldFuzzer(seed)) : new Autoplayer(engine, seed, keys);
         if (badge) bot.Itinerary = new Itinerary(Itineraries.TwinleafToCoalBadge);
+        // A question met again is answered otherwise (plan 16 · T7); an itinerary's legs keep the first answer
+        bot.VaryAnswers = !keys && !field;
         int shots = 0;
         // A place is noted only once the field is the player's again, so the shot is never of a fade
         bot.FirstArrival = place => Shot($"play_{shots++:00}_{place}");
@@ -51,7 +53,10 @@ partial class Harness
         bot.Release();
 
         var report = bot.Report;
-        File.WriteAllText(Path.Combine(outDir, "play.md"), report.ToMarkdown());
+        // What a walk of the whole game reaches from where Sinnoh begins, which the run is held against (plan 16 · T7)
+        var reachable = PokemonPlatinumEngine.Overworld.WorldWalk.From(PokemonPlatinumEngine.Data.MapDatabase.Get, PokemonPlatinumEngine.Data.RegionDatabase.First.Start!)
+            .Keys.Select(m => m.Name).ToList();
+        File.WriteAllText(Path.Combine(outDir, "play.md"), report.ToMarkdown(reachable));
         Console.WriteLine($"play: {report.Seconds:0} s, {report.Tiles} tiles, {report.Maps.Count} maps, {report.Places.Count} places, {report.Spoken.Count} spoken to, {report.Items.Count} items, {report.Warps.Count} ways, {report.Battles} battles");
         foreach (string finding in report.Exceptions.Concat(report.Softlocks).Concat(report.OutOfRange).Concat(report.ScriptsGoneWrong))
             Console.WriteLine("!! " + finding.Split('\n')[0]);

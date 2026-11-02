@@ -3,6 +3,7 @@
 //
 //   dotnet run --project tools/ContentCheck                                  check the game's own files; ends with 1 on a finding
 //   dotnet run --project tools/ContentCheck -- --data <dir>                  check another folder laid out like Data/
+//   dotnet run --project tools/ContentCheck -- --pack <folder> [--pack ...]  the game with packs laid on it, in that order: what the packs add
 //   dotnet run --project tools/ContentCheck -- --plan <out dir> <name>...    plans of rooms (by map name) and open areas (by key), as PNGs
 //   dotnet run --project tools/ContentCheck -- --plan <out dir> <name>@x,y,w,h   a rectangle of a map's tiles alone
 //   ... --tile <pixels>                                                      how large a plan draws a tile (8, 16, 32, 48, 64 or 96; fitted unless said)
@@ -20,6 +21,7 @@ string root = GameDataFiles.Directory;
 string? planDir = null;
 int? tile = null;
 var names = new List<string>();
+var packFolders = new List<string>();
 for (int i = 0; i < args.Length; i++)
 {
     string Value() => i + 1 < args.Length ? args[++i] : throw new ArgumentException($"{args[i]} needs a value");
@@ -28,6 +30,7 @@ for (int i = 0; i < args.Length; i++)
         switch (args[i])
         {
             case "--data": root = Value(); break;
+            case "--pack": packFolders.Add(Value()); break;
             case "--plan": planDir = Value(); break;
             case "--tile": tile = int.Parse(Value(), CultureInfo.InvariantCulture); break;
             case "--rows":
@@ -56,9 +59,32 @@ if (!Directory.Exists(root))
 }
 if (planDir == null && names.Count > 0)
 {
-    Console.Error.WriteLine($"What is '{names[0]}'? The switches are --data <dir>, --plan <out dir> <name>... and --tile <pixels>.");
+    Console.Error.WriteLine($"What is '{names[0]}'? The switches are --data <dir>, --pack <folder>, --plan <out dir> <name>... and --tile <pixels>.");
     return 2;
 }
+
+if (packFolders.Count > 0)
+{
+    // The game with these packs laid on it, in the order given (plan 16 · T15): only what the packs add is told
+    List<DataLayer> packs;
+    try
+    {
+        packs = PackContent.Read(packFolders);
+    }
+    catch (PackException e)
+    {
+        Console.Error.WriteLine(e.Message);
+        return 2;
+    }
+    string scratch = Path.Combine(Path.GetTempPath(), "contentcheck-packs-" + Environment.ProcessId.ToString(CultureInfo.InvariantCulture));
+    var added = PackContent.Check(root, packs, scratch);
+    foreach (var finding in added) Console.WriteLine(finding);
+    if (added.Count > 0) Console.WriteLine();
+    Console.WriteLine($"Checked {string.Join(", ", packs.Select(p => $"{p.Pack!.Name} {p.Pack.Version}"))} laid over {root} ({clock.Elapsed.TotalSeconds:F1} s): "
+        + (added.Count == 0 ? "the packs add nothing to find." : $"{added.Count} finding{(added.Count == 1 ? "" : "s")} the packs add."));
+    return added.Count == 0 ? 0 : 1;
+}
+
 var content = GameContent.Load(root);
 
 if (planDir != null)

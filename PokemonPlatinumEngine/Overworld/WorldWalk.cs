@@ -1,7 +1,6 @@
 using PokemonPlatinumEngine.Data;
-using PokemonPlatinumEngine.Overworld;
 
-namespace PokemonPlatinumTests;
+namespace PokemonPlatinumEngine.Overworld;
 
 /// <summary>
 /// The game walked through from where it starts: every tile of every map that a player can come to who has

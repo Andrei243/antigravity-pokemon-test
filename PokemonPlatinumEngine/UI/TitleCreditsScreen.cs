@@ -77,10 +77,34 @@ public sealed class TitleCreditsScreen
         return rows;
     }
 
-    /// <summary>Opens at the top, with the records read from <paramref name="folder"/> (the build's own when null).</summary>
-    public void Open(string? folder = null)
+    /// <summary>
+    /// A section for each pack in use, in load order (plan 16 · T15): its name and version, then the credit its
+    /// manifest must carry, who made it and what it says it is, each as written, and a line that it is its maker's work.
+    /// </summary>
+    public static List<CreditsSection> OfPacks(IEnumerable<PokemonPlatinumEngine.Data.DataLayer> packs)
+    {
+        var sections = new List<CreditsSection>();
+        foreach (var layer in packs)
+        {
+            if (layer.Pack is not { } pack) continue;
+            var lines = new List<string>();
+            if (!string.IsNullOrWhiteSpace(pack.Credits)) lines.Add(pack.Credits!.Trim());
+            if (!string.IsNullOrWhiteSpace(pack.Author)) lines.Add(Text.Of("titleCredits.pack.by", ("author", pack.Author!.Trim())));
+            if (!string.IsNullOrWhiteSpace(pack.Description)) lines.Add(pack.Description!.Trim());
+            lines.Add(Text.Of("titleCredits.pack.own"));
+            sections.Add(new CreditsSection(Text.Of("titleCredits.pack.heading", ("name", pack.Name), ("version", pack.Version)), lines));
+        }
+        return sections;
+    }
+
+    /// <summary>
+    /// Opens at the top, with the records read from <paramref name="folder"/> (the build's own when null) and a section
+    /// for each pack in use after the project's own (<paramref name="packs"/>; the packs the game started with when null).
+    /// </summary>
+    public void Open(string? folder = null, IEnumerable<PokemonPlatinumEngine.Data.DataLayer>? packs = null)
     {
         var sections = new List<CreditsSection> { OwnWork() };
+        sections.AddRange(OfPacks(packs ?? PokemonPlatinumEngine.Data.DataLayers.Packs));
         sections.AddRange(TitleCredits.Read(folder));
         Sections = sections;
         Rows = Lay(sections);

@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Numerics;
+using System.Threading;
 using System.Threading.Tasks;
 using PokemonPlatinumEngine.Data;
 using Raylib_cs;
@@ -511,8 +512,21 @@ internal static partial class PokemonModels
     public static PokeModel Get(string species)
     {
         Borrowed.TryRemove(species, out _);
-        return Models.GetOrAdd(species, s => new Lazy<PokeModel>(() => Build(s))).Value;
+        var lazy = Models.GetOrAdd(species, s => new Lazy<PokeModel>(() => Build(s)));
+        if (lazy.IsValueCreated) return lazy.Value;
+        // Not ready: the caller meshes it now, or waits for the worker already meshing it (plan 16 · T21, for T22's causes)
+        var model = lazy.Value;
+        Interlocked.Increment(ref waitedFor);
+        return model;
     }
+
+    private static int waitedFor;
+
+    /// <summary>
+    /// How many times <see cref="Get"/> was asked for a model that wasn't ready, so the asking thread meshed it or
+    /// waited for it (plan 16 · T21): what the soak run names as a frame's cause when it moves within the frame.
+    /// </summary>
+    public static int WaitedFor => Volatile.Read(ref waitedFor);
 
     /// <summary>Species preloaded at start-up, which <see cref="Trim"/> never lets go of.</summary>
     private static readonly ConcurrentDictionary<string, bool> Pinned = new(StringComparer.OrdinalIgnoreCase);

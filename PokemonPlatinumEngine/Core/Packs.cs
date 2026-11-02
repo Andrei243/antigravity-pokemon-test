@@ -22,12 +22,15 @@ public static class Packs
         if (none || !Overrides.Enabled)
         {
             DataLayers.Use(null);
+            Overrides.PackRoots.Clear();
             return DataLayers.Packs;
         }
         var problems = new List<string>();
         var layers = DataLayers.Discover(DataLayers.PackFolders(saveFolder), settings.Packs, problems);
         foreach (string problem in problems) Log.Warn($"A pack was left out: {problem}");
         DataLayers.Use(layers);
+        Overrides.PackRoots.Clear();
+        Overrides.PackRoots.AddRange(layers.AsEnumerable().Reverse().Select(l => l.Root));
         foreach (var layer in layers.AsEnumerable().Reverse())
         {
             string models = Path.Combine(layer.Root, "overrides", "models");

@@ -38,6 +38,9 @@ public sealed class AutoplayReport
     public List<string> Legs { get; } = new();
     public List<string> LegsGivenUp { get; } = new();
 
+    /// <summary>The questions met and the answer given each, in order, when answers are varied (plan 16 · T7).</summary>
+    public List<string> Answers { get; } = new();
+
     /// <summary>Nothing went wrong: no exception, softlock, value out of range or script gone wrong (a dropped goal is no finding).</summary>
     public bool Clean => Exceptions.Count == 0 && Softlocks.Count == 0 && OutOfRange.Count == 0 && ScriptsGoneWrong.Count == 0;
 
@@ -77,6 +80,7 @@ public sealed class AutoplayReport
             Section(md, "Itinerary: legs given up", LegsGivenUp);
             Section(md, "Itinerary: legs done", Legs);
         }
+        if (Answers.Count > 0) Section(md, "Questions and the answer given", Answers);
         Section(md, "Places, in the order come to", Places);
         if (reachable != null) Section(md, "Maps a walk of the whole game reaches that the run did not", NotReached(reachable).ToList());
         return md.ToString();

@@ -83,4 +83,27 @@ public sealed class FieldFuzzer : IFuzzer
         }
         return spots;
     }
+
+    /// <summary>
+    /// Spots over many maps (plan 16 · T13's leftover: the rooms, the caves and the other regions, beyond Sinnoh's
+    /// overworld): the maps taken in an order drawn by the seed, one spot on each (<see cref="Spots"/>), until there
+    /// are <paramref name="count"/>; a map with no spot to give is passed over.
+    /// </summary>
+    public static List<(Map Map, int X, int Y)> Places(IEnumerable<Map> maps, int count, int seed)
+    {
+        var random = new Random(seed);
+        var order = new List<Map>(maps);
+        for (int i = order.Count - 1; i > 0; i--)
+        {
+            int j = random.Next(i + 1);
+            (order[i], order[j]) = (order[j], order[i]);
+        }
+        var places = new List<(Map, int, int)>();
+        for (int i = 0; i < order.Count && places.Count < count; i++)
+        {
+            var spot = Spots(order[i], 1, seed * 7919 + i);
+            if (spot.Count > 0) places.Add((order[i], spot[0].X, spot[0].Y));
+        }
+        return places;
+    }
 }

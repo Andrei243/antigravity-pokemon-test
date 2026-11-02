@@ -5,6 +5,7 @@ Reads the files of the game that are written by hand (the overlays of the import
 ```bash
 dotnet run --project tools/ContentCheck                                  # check the game's own files; ends with 1 on a finding
 dotnet run --project tools/ContentCheck -- --data <dir>                  # check another folder laid out like Data/
+dotnet run --project tools/ContentCheck -- --pack <folder> [--pack ...]  # the game with packs laid on it in that order (plan 16 · T15): only what the packs add is told
 dotnet run --project tools/ContentCheck -- --plan <out dir> <name>...    # plans of rooms (PlayerHouse) and open areas (twinleaf_town), as PNGs
 dotnet run --project tools/ContentCheck -- --plan <out dir> Sinnoh@96,864,20,12   # a rectangle of a map's tiles alone: x, y, width, height
 dotnet run --project tools/ContentCheck -- --plan <out dir> --tile 64 <name>      # a tile drawn 8, 16, 32, 48, 64 or 96 pixels wide (fitted unless said)

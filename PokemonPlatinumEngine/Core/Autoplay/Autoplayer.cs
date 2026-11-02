@@ -151,6 +151,7 @@ internal sealed partial class Autoplayer
             stateSeconds = 0f;
         }
         stateSeconds += dt;
+        if (!game.Choice.IsOpen) question = null;
 
         if (state != GameState.Overworld) engine.Steering = null;
         // A trainer tip up over the field or a battle is read and put away (plan 12 · Q23)
@@ -167,6 +168,8 @@ internal sealed partial class Autoplayer
                 return InBattle(battle);
             case GameState.Transition:
                 return ActionFrame.None;
+            case GameState.Dialogue when game.Choice.IsOpen && VaryAnswers && Itinerary is not { Finished: false }:
+                return Answer();
             case GameState.Dialogue:
                 return Pulse(GameAction.Confirm);
             case GameState.StarterSelect:
@@ -182,6 +185,36 @@ internal sealed partial class Autoplayer
 
     // An action pressed every sixth frame: a press needs the frames between with nothing down
     private ActionFrame Pulse(GameAction action) => frame % 6 == 0 ? ActionFrame.Press(action) : ActionFrame.None;
+
+    /// <summary>
+    /// Whether a question asked again is answered otherwise (plan 16 · T7: "the first answer, then the others on a
+    /// revisit"): the first time a question is met (by its map, line and answers) its first answer, the next time its
+    /// second, and so on round. Off unless asked for, and never while an itinerary is followed, whose legs count on the
+    /// first answer (a nurse's yes).
+    /// </summary>
+    public bool VaryAnswers { get; set; }
+
+    // How often each question has been met, and the one open now with the answer it is to have
+    private readonly Dictionary<string, int> asked = new(StringComparer.Ordinal);
+    private (string Key, int Target)? question;
+
+    /// <summary>The question met and the answer given each time, in order (<c>map: line → answer</c>): the report's.</summary>
+    public List<string> Answers => Report.Answers;
+
+    private ActionFrame Answer()
+    {
+        var choice = game.Choice;
+        string key = $"{game.Map.Name}|{game.Dialogue.CurrentLine}|{string.Join("|", choice.Options)}";
+        if (question?.Key != key)
+        {
+            int times = asked.GetValueOrDefault(key);
+            asked[key] = times + 1;
+            int target = choice.Options.Count == 0 ? 0 : times % choice.Options.Count;
+            question = (key, target);
+            if (choice.Options.Count > 0) Answers.Add($"{game.Map.Name}: {game.Dialogue.CurrentLine} → {choice.Options[target]}");
+        }
+        return choice.Cursor != question.Value.Target ? Pulse(GameAction.Down) : Pulse(GameAction.Confirm);
+    }
 
     private ActionFrame InTheField(float dt)
     {

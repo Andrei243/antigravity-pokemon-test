@@ -63,6 +63,63 @@ public class FieldFuzzTests
         });
     }
 
+    /// <summary>
+    /// Beyond Sinnoh's overworld (plan 16 · T13's leftover): one spot on each of maps drawn by the seed from every map
+    /// the game has but the overworld of Sinnoh, the rooms, the caves and the other regions' maps among them, ten
+    /// seconds each. <c>FIELD_FUZZ_ROOMS_SECONDS</c> is how long in all (120 unless said), <c>FIELD_FUZZ_SEED</c> the walk.
+    /// </summary>
+    [Fact]
+    public void TheFieldFuzzerWalksTheRoomsCavesAndOtherRegionsAndFindsNothingWrong()
+    {
+        double seconds = double.TryParse(Environment.GetEnvironmentVariable("FIELD_FUZZ_ROOMS_SECONDS"), out double s) ? s : 120;
+        int seed = int.TryParse(Environment.GetEnvironmentVariable("FIELD_FUZZ_SEED"), out int n) ? n : 3;
+        Headless.Play(engine =>
+        {
+            Headless.PastTheOpening(engine);
+            var game = engine.Drive;
+            var maps = MapDatabase.MapNames.Where(name => name != "Sinnoh").OrderBy(name => name, StringComparer.Ordinal)
+                .Select(MapDatabase.TryGet).OfType<Map>().ToList();
+            var places = FieldFuzzer.Places(maps, (int)Math.Ceiling(seconds / SecondsASpot), seed);
+            Assert.NotEmpty(places);
+            var fuzzer = new Autoplayer(engine, new FieldFuzzer(seed));
+            string? unsettled = null;
+            const float dt = 1f / 60f;
+            foreach (var (map, x, y) in places)
+            {
+                if (fuzzer.Stopped) break;
+                if (!fuzzer.Settle(60)) { unsettled = $"{game.State} on {game.Map.Name} at {game.Player.GridX},{game.Player.GridY}, script {game.ScriptNow}, line '{game.Dialogue.CurrentLine}'"; break; }
+                foreach (var p in game.Party.Members) p.HealFull();
+                game.Place(map, x, y, Direction.Down);
+                game.ArriveOnMap();
+                for (double t = 0; t < SecondsASpot && !fuzzer.Stopped; t += dt) fuzzer.Frame(dt);
+            }
+            fuzzer.Release();
+            var report = fuzzer.Report;
+            output.WriteLine($"{report.Seconds:0} s of game time at {places.Count} places: {string.Join(", ", places.Select(p => $"{p.Map.Name} {p.X},{p.Y}"))}");
+            output.WriteLine(report.ToMarkdown());
+            Assert.Empty(report.Exceptions);
+            Assert.Empty(report.Softlocks);
+            Assert.Empty(report.OutOfRange);
+            Assert.Empty(report.ScriptsGoneWrong);
+            Assert.Null(unsettled);
+        });
+    }
+
+    [Fact]
+    public void ThePlacesBeyondTheOverworldAreOneSpotAMapAndTheSameForASeed()
+    {
+        var maps = MapDatabase.MapNames.Where(name => name != "Sinnoh").OrderBy(name => name, StringComparer.Ordinal)
+            .Select(MapDatabase.TryGet).OfType<Map>().ToList();
+        var places = FieldFuzzer.Places(maps, 30, 4);
+        Assert.Equal(30, places.Count);
+        Assert.Equal(30, places.Select(p => p.Map.Name).Distinct().Count());
+        Assert.Equal(places.Select(p => (p.Map.Name, p.X, p.Y)), FieldFuzzer.Places(maps, 30, 4).Select(p => (p.Map.Name, p.X, p.Y)));
+        Assert.All(places, p => Assert.True(p.Map.IsWalkable(p.X, p.Y) && p.Map.GetWarpAt(p.X, p.Y) == null));
+        // Rooms and maps of other regions among them, not Sinnoh's overworld alone
+        Assert.Contains(places, p => !p.Map.IsStreamed);
+        Assert.Contains(places, p => RegionDatabase.RegionOfMap(p.Map.Name) is { } r && r.Id != RegionDatabase.First.Id);
+    }
+
     [Fact]
     public void TheFieldFuzzerIsTheSameForTheSameSeedAndMostlyWalks()
     {

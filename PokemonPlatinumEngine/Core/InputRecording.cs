@@ -24,7 +24,7 @@ public sealed record MovieCheckpoint(int Frame, double Seconds, uint[] Hash);
 public sealed class InputRecording
 {
     /// <summary>The file's shape; a file of a newer one is refused.</summary>
-    public const int FormatVersion = 2; // 2: each frame keeps the mouse's too (plan 12 · Q6)
+    public const int FormatVersion = 3; // 2: each frame keeps the mouse's too (plan 12 · Q6); 3: the packs in use and the first run (plan 16 · T14, T24)
 
     private const string Magic = "PPMOVIE";
 
@@ -43,6 +43,18 @@ public sealed class InputRecording
     public string? Region { get; init; }
     /// <summary>The files the title read, by name in the save folder (<see cref="SavePaths.OwnFiles"/> and the autosave's backup).</summary>
     public Dictionary<string, byte[]> Saves { get; init; } = new();
+    /// <summary>
+    /// The packs in use as the session began, in load order, each "name version" (plan 16 · T14): a pack's scripts,
+    /// rooms and songs are no part of <see cref="GameDataFiles.Version"/>, so a recording names them and is refused
+    /// where other packs are in use. Empty for none, and in a recording of an older shape.
+    /// </summary>
+    public List<string> Packs { get; init; } = new();
+    /// <summary>Whether the session began on the game's first run (plan 16 · T24), which opens on the first start's page.</summary>
+    public bool FirstRun { get; init; }
+
+    /// <summary>The packs in use now, as a recording names them.</summary>
+    public static List<string> PacksInUse(IReadOnlyList<DataLayer>? packs = null) =>
+        (packs ?? DataLayers.Packs).Where(l => l.Pack != null).Select(l => $"{l.Pack!.Name} {l.Pack.Version}").ToList();
 
     public List<InputFrame> Frames { get; } = new();
     public List<MovieCheckpoint> Checkpoints { get; } = new();
@@ -54,11 +66,17 @@ public sealed class InputRecording
     /// Why this recording can't be played by this build, or null when it can: a newer file than this build reads,
     /// or a recording of other data, which would be played wrong rather than not at all.
     /// </summary>
-    public string? Refusal(string? dataVersion = null)
+    public string? Refusal(string? dataVersion = null, IReadOnlyList<string>? packsInUse = null)
     {
         if (Format > FormatVersion) return $"The recording is of a newer shape ({Format}) than this build reads ({FormatVersion}).";
         string here = dataVersion ?? GameDataFiles.Version;
         if (DataVersion != here) return $"The recording was made with other data ({DataVersion}) than this build has ({here}): it would play otherwise, so it isn't played.";
+        var packs = packsInUse ?? PacksInUse();
+        if (!packs.SequenceEqual(Packs, StringComparer.Ordinal))
+        {
+            string Named(IReadOnlyList<string> list) => list.Count == 0 ? "none" : string.Join(", ", list);
+            return $"The recording was made with the packs {Named(Packs)} and this game has {Named(packs)} in use: it would play otherwise, so it isn't played.";
+        }
         return null;
     }
 
@@ -106,6 +124,12 @@ public sealed class InputRecording
             w.Write(bytes.Length);
             w.Write(bytes);
         }
+        if (Format >= 3)
+        {
+            w.Write(Packs.Count);
+            foreach (string pack in Packs) w.Write(pack);
+            w.Write(FirstRun);
+        }
         w.Write(Frames.Count);
         foreach (var f in Frames)
         {
@@ -140,23 +164,38 @@ public sealed class InputRecording
         int format = r.ReadInt32();
         if (format > FormatVersion) return new InputRecording { Format = format };
         var saves = new Dictionary<string, byte[]>(StringComparer.Ordinal);
-        var recording = new InputRecording
-        {
-            Format = format,
-            GameVersion = r.ReadString(),
-            DataVersion = r.ReadString(),
-            Seed = r.ReadInt32(),
-            Settings = r.ReadString(),
-            Offset = TimeSpan.FromTicks(r.ReadInt64()),
-            Region = r.ReadString() is { Length: > 0 } region ? region : null,
-            Saves = saves
-        };
+        string gameVersion = r.ReadString(), dataVersion = r.ReadString();
+        int seed = r.ReadInt32();
+        string settings = r.ReadString();
+        var offset = TimeSpan.FromTicks(r.ReadInt64());
+        string? region = r.ReadString() is { Length: > 0 } named ? named : null;
         int files = r.ReadInt32();
         for (int i = 0; i < files; i++)
         {
             string name = r.ReadString();
             saves[name] = r.ReadBytes(r.ReadInt32());
         }
+        var packs = new List<string>();
+        bool firstRun = false;
+        if (format >= 3)
+        {
+            int count = r.ReadInt32();
+            for (int i = 0; i < count; i++) packs.Add(r.ReadString());
+            firstRun = r.ReadBoolean();
+        }
+        var recording = new InputRecording
+        {
+            Format = format,
+            GameVersion = gameVersion,
+            DataVersion = dataVersion,
+            Seed = seed,
+            Settings = settings,
+            Offset = offset,
+            Region = region,
+            Saves = saves,
+            Packs = packs,
+            FirstRun = firstRun
+        };
         int frames = r.ReadInt32();
         recording.Frames.Capacity = frames;
         for (int i = 0; i < frames; i++)

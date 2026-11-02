@@ -82,7 +82,9 @@ public sealed class MovieRecorder
             Settings = settings.InForce(),
             Offset = WallClock.Offset(),
             Region = region,
-            Saves = InputRecording.SavesIn(saveFolder)
+            Saves = InputRecording.SavesIn(saveFolder),
+            Packs = InputRecording.PacksInUse(),
+            FirstRun = settings.FirstRun
         };
         return new MovieRecorder(recording, fixFrameClock);
     }
@@ -166,7 +168,10 @@ public sealed class MoviePlayer
         recording.LaySaves(saveFolder);
         SavePaths.Current = SavePaths.In(saveFolder, "A recording is being played back here.");
         Dice.Seed(recording.Seed);
-        var engine = new GameEngine(GameSettings.FromJson(recording.Settings)) { NewGameRegion = recording.Region };
+        // A session begun on the first run opened on the first start's page (plan 16 · T24), and so does its replay
+        var settings = GameSettings.FromJson(recording.Settings);
+        settings.FirstRun = recording.FirstRun;
+        var engine = new GameEngine(settings) { NewGameRegion = recording.Region };
         if (headless) engine.InitializeHeadless();
         return engine;
     }

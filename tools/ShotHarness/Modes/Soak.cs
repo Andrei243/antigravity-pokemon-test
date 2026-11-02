@@ -194,7 +194,7 @@ partial class Harness
         long allocated = GC.GetAllocatedBytesForCurrentThread();
         int gen0 = GC.CollectionCount(0), gen1 = GC.CollectionCount(1), gen2 = GC.CollectionCount(2);
         var paused = GC.GetTotalPauseDuration();
-        int models = PokemonModels.BuiltCount;
+        int models = PokemonModels.BuiltCount, waited = PokemonModels.WaitedFor;
         long start = System.Diagnostics.Stopwatch.GetTimestamp();
         engine.Update(1f / 60f);
         double update = System.Diagnostics.Stopwatch.GetElapsedTime(start).TotalMilliseconds;
@@ -208,7 +208,7 @@ partial class Harness
         w.Count(new SoakFrameReading(update, drawn, draw, GC.GetAllocatedBytesForCurrentThread() - allocated,
             GC.CollectionCount(0) - gen0, GC.CollectionCount(1) - gen1, GC.CollectionCount(2) - gen2,
             (GC.GetTotalPauseDuration() - paused).TotalMilliseconds,
-            draw ? game.World.Streaming.LastFrameMs : 0, draw ? PokemonSprites.LastServiceMs : 0, PokemonModels.BuiltCount > models));
+            draw ? game.World.Streaming.LastFrameMs : 0, draw ? PokemonSprites.LastServiceMs : 0, PokemonModels.WaitedFor > waited || PokemonModels.BuiltCount > models));
         // A walk's frames are held to the screen's refresh, as in play: the chunks ahead get the time to bake they get there
         if (w.Paced)
             while (System.Diagnostics.Stopwatch.GetElapsedTime(start).TotalMilliseconds < 1000.0 / 60.0) Thread.Sleep(1);

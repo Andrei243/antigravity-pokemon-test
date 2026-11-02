@@ -130,6 +130,40 @@ public class PlaythroughBotTests
     }
 
     [Fact]
+    public void AQuestionMetAgainIsAnsweredOtherwiseWhenAnswersAreVaried()
+    {
+        Headless(engine =>
+        {
+            PastTheOpening(engine);
+            var game = engine.Drive;
+            var script = ScriptParser.Parse("twinleaf_town", "script AskAgain\n  choose \"Which colour?\" \"Red\" \"Blue\" \"Green\"\n  setvar VAR_PLAYBOT_ANSWER RESULT\n  end\n").Single();
+            var bot = new Autoplayer(engine, seed: 4) { VaryAnswers = true };
+            var given = new List<int>();
+            for (int round = 0; round < 4; round++)
+            {
+                engine.StartScript(script);
+                for (int f = 0; f < 600 && engine.ScriptRunning; f++) bot.Frame(1f / 60f);
+                Assert.False(engine.ScriptRunning);
+                given.Add(game.Story.Var("VAR_PLAYBOT_ANSWER"));
+            }
+            bot.Release();
+            // The first time its first answer, then the others in turn, and round again
+            Assert.Equal(new[] { 0, 1, 2, 0 }, given);
+            Assert.Equal(4, bot.Report.Answers.Count);
+            Assert.EndsWith("→ Blue", bot.Report.Answers[1]);
+            Assert.Contains("## Questions and the answer given (4)", bot.Report.ToMarkdown());
+
+            // Not varied, the first answer every time, as before
+            var plain = new Autoplayer(engine, seed: 4);
+            engine.StartScript(script);
+            for (int f = 0; f < 600 && engine.ScriptRunning; f++) plain.Frame(1f / 60f);
+            plain.Release();
+            Assert.Equal(0, game.Story.Var("VAR_PLAYBOT_ANSWER"));
+            Assert.Empty(plain.Report.Answers);
+        });
+    }
+
+    [Fact]
     public void SuggestPicksTheMoveThatHitsHardestAndDrawsNothing()
     {
         var battle = Scenario.Battle(Scenario.Mon("Squirtle", 20, "Growl", "Tackle", "Water Gun"), Scenario.Mon("Charmander", 20, "Growl"));

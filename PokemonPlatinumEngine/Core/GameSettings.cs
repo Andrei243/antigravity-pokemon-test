@@ -449,7 +449,7 @@ public sealed class GameSettings
 
     /// <summary>True when there was no settings file to load, so the window still has to be sized for the monitor.</summary>
     [JsonIgnore]
-    public bool FirstRun { get; private set; }
+    public bool FirstRun { get; internal set; }
 
     /// <summary>
     /// The largest listed window size a monitor can show with its title bar and the taskbar. A screen of exactly
