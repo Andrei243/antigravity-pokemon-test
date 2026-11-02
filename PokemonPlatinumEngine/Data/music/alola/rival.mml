@@ -1,0 +1,29 @@
+# Hau comes running (the friend from Iki Town): a happy-go-lucky steel drum in G over the ukulele, a bouncing
+# bass, congas and claps; at night a marimba.
+# Original composition for this game (plan 31 · MU4), in the modern sound.
+title Hau (Alola)
+tempo 140
+meter 4/4
+reverb 0.24
+nighttempo 0.94
+room chamber 1.2
+
+track lead steeldrum night=marimba vol=0.64 pan=0.05 rev=0.24
+  o5 g8 b8 o6 d8 g8 r2 | L o5 b8 a8 g8 a8 b4 o6 d4 | o6 c8 o5 b8 a8 g8 e4 g4 | o5 a4 f+8 a8 o6 d4 o5 a4 |
+  o5 g2 b4 d4 | o5 e8 g8 b8 o6 d8 e4 o5 b4 | o5 c4 e8 g8 o6 c4 o5 g4 | o5 a4 o6 c+8 e8 c+4 o5 a4 |
+  o5 f+2 a4 d4 |
+
+track uke ukulele vol=0.34 pan=-0.3 rev=0.22
+  o4 (g b > d)4 (g b > d)8 (g b > d)8 r8 (g b > d)8 (g b > d)4 | L o4 (g b > d)4 (g b > d)8 (g b > d)8 r8 (g b > d)8 (g b > d)4 | o4 (c e g)4 (c e g)8 (c e g)8 r8 (c e g)8 (c e g)4 | o4 (d f+ a)4 (d f+ a)8 (d f+ a)8 r8 (d f+ a)8 (d f+ a)4 |
+  o4 (g b > d)4 (g b > d)8 (g b > d)8 r8 (g b > d)8 (g b > d)4 | o4 (e g b)4 (e g b)8 (e g b)8 r8 (e g b)8 (e g b)4 | o4 (c e g)4 (c e g)8 (c e g)8 r8 (c e g)8 (c e g)4 | o4 (a > c+ e)4 (a > c+ e)8 (a > c+ e)8 r8 (a > c+ e)8 (a > c+ e)4 |
+  o4 (d f+ a)4 (d f+ a)8 (d f+ a)8 r8 (d f+ a)8 (d f+ a)4 |
+
+track bass bass vol=0.52 rev=0.06
+  o3 g4 d4 g4 d4 | L o3 g4. g8 d4 g4 | o3 c4. c8 g4 c4 | o3 d4. d8 a4 d4 |
+  o3 g4. g8 d4 g4 | o3 e4. e8 b4 e4 | o3 c4. c8 g4 c4 | o3 a4. a8 e4 a4 |
+  o3 d4. d8 a4 d4 |
+
+track drums kit vol=0.32 rev=0.1
+  v70 b8 s8 b8 s8 x4 x4 | L v68 b8 v50 g8 v58 x8 v50 g8 v62 b8 v56 n8 v58 x8 v50 g8 | v68 b8 v50 g8 v58 x8 v50 g8 v62 b8 v56 n8 v58 x8 v50 g8 | v68 b8 v50 g8 v58 x8 v50 g8 v62 b8 v56 n8 v58 x8 v50 g8 |
+  v68 b8 v50 g8 v58 x8 v50 g8 v62 b8 v56 n8 v58 x8 v50 g8 | v68 b8 v50 g8 v58 x8 v50 g8 v62 b8 v56 n8 v58 x8 v50 g8 | v68 b8 v50 g8 v58 x8 v50 g8 v62 b8 v56 n8 v58 x8 v50 g8 | v68 b8 v50 g8 v58 x8 v50 g8 v62 b8 v56 n8 v58 x8 v50 g8 |
+  v68 b8 v50 g8 v58 x8 v50 g8 v62 b8 v56 n8 v58 x8 v50 g8 |

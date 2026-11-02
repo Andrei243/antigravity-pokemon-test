@@ -1,0 +1,66 @@
+# Melemele's first route: the road up from the beach in the morning, a bamboo flute in F over an ukulele's
+# island strum, log drums on the offbeats and congas, the slide guitar answering in the second half; at night an
+# ocarina, a harp and a softer pad.
+# Original composition for this game (plan 31 · MU4), in the modern sound.
+title Route 1 (Alola)
+tempo 112
+meter 4/4
+reverb 0.3
+nighttempo 0.9
+room hall 1.8
+
+track lead bambooflute night=ocarina vol=0.62 pan=0.05 rev=0.32
+  o5 f2. r4 | L o5 c4 f8 g8 a4 c4 | o5 g4. e8 c4 e4 | o5 f4 a8 g8 f4 d4 |
+  o5 d2 f4 b-4 | o5 a4 o6 c8 o5 a8 f4 c4 | o5 g4 e8 d8 c2 | o5 d4 f8 b-8 o6 d4 o5 b-4 |
+  o5 c2. r4 | o5 a4. g8 f4 a4 | o5 b-4 o6 d8 c8 o5 b-4 f4 | o5 a4 f8 a8 o6 c4 o5 a4 |
+  o5 g2 e4 g4 | o5 f4 d8 f8 b-4 f4 | o5 g4 e8 g8 o6 c4 o5 g4 | o5 f2 a4 c4 |
+  o5 f2. r4 |
+
+track uke ukulele night=harp vol=0.3 pan=-0.3 rev=0.25
+  o4 (f a > c)4 (f a > c)8 (f a > c)8 r8 (f a > c)8 (f a > c)4 | L o4 (f a > c)4 (f a > c)8 (f a > c)8 r8 (f a > c)8 (f a > c)4 | o4 (c e g)4 (c e g)8 (c e g)8 r8 (c e g)8 (c e g)4 | o4 (d f a)4 (d f a)8 (d f a)8 r8 (d f a)8 (d f a)4 |
+  o4 (b- > d f)4 (b- > d f)8 (b- > d f)8 r8 (b- > d f)8 (b- > d f)4 | o4 (f a > c)4 (f a > c)8 (f a > c)8 r8 (f a > c)8 (f a > c)4 | o4 (c e g)4 (c e g)8 (c e g)8 r8 (c e g)8 (c e g)4 | o4 (b- > d f)4 (b- > d f)8 (b- > d f)8 r8 (b- > d f)8 (b- > d f)4 |
+  o4 (c e g)4 (c e g)8 (c e g)8 r8 (c e g)8 (c e g)4 | o4 (d f a)4 (d f a)8 (d f a)8 r8 (d f a)8 (d f a)4 | o4 (b- > d f)4 (b- > d f)8 (b- > d f)8 r8 (b- > d f)8 (b- > d f)4 | o4 (f a > c)4 (f a > c)8 (f a > c)8 r8 (f a > c)8 (f a > c)4 |
+  o4 (c e g)4 (c e g)8 (c e g)8 r8 (c e g)8 (c e g)4 | o4 (b- > d f)4 (b- > d f)8 (b- > d f)8 r8 (b- > d f)8 (b- > d f)4 | o4 (c e g)4 (c e g)8 (c e g)8 r8 (c e g)8 (c e g)4 | o4 (f a > c)4 (f a > c)8 (f a > c)8 r8 (f a > c)8 (f a > c)4 |
+  o4 (f a > c)4 (f a > c)8 (f a > c)8 r8 (f a > c)8 (f a > c)4 |
+
+track slide slideguitar night=horn vol=0.46 pan=0.35 rev=0.4
+  o4 a1 | L r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  r1 | o4 a1 | o4 b-1 | o4 a1 |
+  o4 g1 | o4 f1 | o4 g1 | o4 a1 |
+  o4 a1 |
+
+track pad warmpad night=pad vol=0.2 rev=0.5
+  o3 (f a > c)1 | L o3 (f a > c)1 | o3 (c e g)1 | o3 (d f a)1 |
+  o3 (b- > d f)1 | o3 (f a > c)1 | o3 (c e g)1 | o3 (b- > d f)1 |
+  o3 (c e g)1 | o3 (d f a)1 | o3 (b- > d f)1 | o3 (f a > c)1 |
+  o3 (c e g)1 | o3 (b- > d f)1 | o3 (c e g)1 | o3 (f a > c)1 |
+  o3 (f a > c)1 |
+
+track bass bass vol=0.56 rev=0.08
+  o3 f4. f8 c4 f4 | L o3 f4. f8 c4 f4 | o3 c4. c8 g4 c4 | o3 d4. d8 a4 d4 |
+  o3 b-4. b-8 f4 b-4 | o3 f4. f8 c4 f4 | o3 c4. c8 g4 c4 | o3 b-4. b-8 f4 b-4 |
+  o3 c4. c8 g4 c4 | o3 d4. d8 a4 d4 | o3 b-4. b-8 f4 b-4 | o3 f4. f8 c4 f4 |
+  o3 c4. c8 g4 c4 | o3 b-4. b-8 f4 b-4 | o3 c4. c8 g4 c4 | o3 f4. f8 c4 f4 |
+  o3 f4. f8 c4 f4 |
+
+track log logdrum vol=0.42 pan=-0.12 rev=0.18
+  o4 r8 f8 r8 f8 r8 c8 r8 f8 | L o4 r8 f8 r8 f8 r8 c8 r8 f8 | o4 r8 c8 r8 c8 r8 g8 r8 c8 | o4 r8 d8 r8 d8 r8 a8 r8 d8 |
+  o4 r8 b-8 r8 b-8 r8 f8 r8 b-8 | o4 r8 f8 r8 f8 r8 c8 r8 f8 | o4 r8 c8 r8 c8 r8 g8 r8 c8 | o4 r8 b-8 r8 b-8 r8 f8 r8 b-8 |
+  o4 r8 c8 r8 c8 r8 g8 r8 c8 | o4 r8 d8 r8 d8 r8 a8 r8 d8 | o4 r8 b-8 r8 b-8 r8 f8 r8 b-8 | o4 r8 f8 r8 f8 r8 c8 r8 f8 |
+  o4 r8 c8 r8 c8 r8 g8 r8 c8 | o4 r8 b-8 r8 b-8 r8 f8 r8 b-8 | o4 r8 c8 r8 c8 r8 g8 r8 c8 | o4 r8 f8 r8 f8 r8 c8 r8 f8 |
+  o4 r8 f8 r8 f8 r8 c8 r8 f8 |
+
+track hands kit vol=0.4 pan=-0.18 rev=0.2
+  v90 d4 v70 g8 g8 v80 n8 v70 g8 v86 d8 v70 g8 | L v90 d4 v70 g8 g8 v80 n8 v70 g8 v86 d8 v70 g8 | v90 d4 v70 g8 g8 v80 n8 v70 g8 v86 d8 v70 g8 | v90 d4 v70 g8 g8 v80 n8 v70 g8 v86 d8 v70 g8 |
+  v90 d4 v70 g8 g8 v80 n8 v70 g8 v86 d8 v70 g8 | v90 d4 v70 g8 g8 v80 n8 v70 g8 v86 d8 v70 g8 | v90 d4 v70 g8 g8 v80 n8 v70 g8 v86 d8 v70 g8 | v90 d4 v70 g8 g8 v80 n8 v70 g8 v86 d8 v70 g8 |
+  v90 d4 v70 g8 g8 v80 n8 v70 g8 v86 d8 v70 g8 | v90 d4 v70 g8 g8 v80 n8 v70 g8 v86 d8 v70 g8 | v90 d4 v70 g8 g8 v80 n8 v70 g8 v86 d8 v70 g8 | v90 d4 v70 g8 g8 v80 n8 v70 g8 v86 d8 v70 g8 |
+  v90 d4 v70 g8 g8 v80 n8 v70 g8 v86 d8 v70 g8 | v90 d4 v70 g8 g8 v80 n8 v70 g8 v86 d8 v70 g8 | v90 d4 v70 g8 g8 v80 n8 v70 g8 v86 d8 v70 g8 | v90 d4 v70 g8 g8 v80 n8 v70 g8 v86 d8 v70 g8 |
+  v90 d4 v70 g8 g8 v80 n8 v70 g8 v86 d8 v70 g8 |
+
+track shaker kit vol=0.36 pan=0.3 rev=0.15
+  v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 | L v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 | v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 | v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 |
+  v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 | v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 | v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 | v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 |
+  v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 | v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 | v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 | v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 |
+  v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 | v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 | v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 | v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 |
+  v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 |

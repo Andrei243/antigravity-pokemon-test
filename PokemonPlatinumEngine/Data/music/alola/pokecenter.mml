@@ -1,0 +1,44 @@
+# A Pokémon Center of Alola: an easy tune in G on the vibraphone over an ukulele picked softly and a warm
+# pad, a wood block keeping time like a clock on the wall; at night a bamboo flute and a harp.
+# Original composition for this game (plan 31 · MU4), in the modern sound.
+title Pokémon Center (Alola)
+tempo 98
+meter 4/4
+reverb 0.26
+nighttempo 0.95
+room room 0.9
+
+track lead vibraphone night=bambooflute vol=0.81 pan=0 rev=0.26
+  o5 g2. r4 | L o5 d4 g8 b8 o6 d4 o5 b4 | o5 b4. a8 g4 e4 | o5 e4 g8 o6 c8 e4 c4 |
+  o5 a2. r4 | o5 b4 a8 g8 d4 g4 | o5 g4 b8 o6 e8 d8 o5 b8 g4 | o5 a4 o6 c8 e8 c4 o5 a4 |
+  o5 f+2 a4 d4 | o5 g4. e8 c4 e4 | o5 f+4. e8 d4 a4 | o5 b4 d8 f+8 b4 f+4 |
+  o5 g2 e4 b4 | o6 c4 o5 g8 e8 c4 g4 | o5 a4 f+8 a8 o6 d4 o5 a4 | o5 b4 g8 d8 g4 b4 |
+  o5 g2. r4 |
+
+track uke ukulele night=harp vol=0.43 pan=-0.3 rev=0.24
+  o4 g8 o4 b8 o5 d8 o4 b8 o4 g8 o4 b8 o5 d8 o4 b8 | L o4 g8 o4 b8 o5 d8 o4 b8 o4 g8 o4 b8 o5 d8 o4 b8 | o4 e8 o4 g8 o4 b8 o4 g8 o4 e8 o4 g8 o4 b8 o4 g8 | o4 c8 o4 e8 o4 g8 o4 e8 o4 c8 o4 e8 o4 g8 o4 e8 |
+  o4 d8 o4 f+8 o4 a8 o4 f+8 o4 d8 o4 f+8 o4 a8 o4 f+8 | o4 g8 o4 b8 o5 d8 o4 b8 o4 g8 o4 b8 o5 d8 o4 b8 | o4 e8 o4 g8 o4 b8 o4 g8 o4 e8 o4 g8 o4 b8 o4 g8 | o4 a8 o5 c8 o5 e8 o5 c8 o4 a8 o5 c8 o5 e8 o5 c8 |
+  o4 d8 o4 f+8 o4 a8 o4 f+8 o4 d8 o4 f+8 o4 a8 o4 f+8 | o4 c8 o4 e8 o4 g8 o4 e8 o4 c8 o4 e8 o4 g8 o4 e8 | o4 d8 o4 f+8 o4 a8 o4 f+8 o4 d8 o4 f+8 o4 a8 o4 f+8 | o4 b8 o5 d8 o5 f+8 o5 d8 o4 b8 o5 d8 o5 f+8 o5 d8 |
+  o4 e8 o4 g8 o4 b8 o4 g8 o4 e8 o4 g8 o4 b8 o4 g8 | o4 c8 o4 e8 o4 g8 o4 e8 o4 c8 o4 e8 o4 g8 o4 e8 | o4 d8 o4 f+8 o4 a8 o4 f+8 o4 d8 o4 f+8 o4 a8 o4 f+8 | o4 g8 o4 b8 o5 d8 o4 b8 o4 g8 o4 b8 o5 d8 o4 b8 |
+  o4 g8 o4 b8 o5 d8 o4 b8 o4 g8 o4 b8 o5 d8 o4 b8 |
+
+track pad warmpad vol=0.24 pan=0.25 rev=0.35
+  o3 (g b > d)1 | L o3 (g b > d)1 | o3 (e g b)1 | o3 (c e g)1 |
+  o3 (d f+ a)1 | o3 (g b > d)1 | o3 (e g b)1 | o3 (a > c e)1 |
+  o3 (d f+ a)1 | o3 (c e g)1 | o3 (d f+ a)1 | o3 (b > d f+)1 |
+  o3 (e g b)1 | o3 (c e g)1 | o3 (d f+ a)1 | o3 (g b > d)1 |
+  o3 (g b > d)1 |
+
+track bass bass vol=0.65 rev=0.06
+  o3 g2 d2 | L o3 g2 d2 | o3 e2 b2 | o3 c2 g2 |
+  o3 d2 a2 | o3 g2 d2 | o3 e2 b2 | o3 a2 e2 |
+  o3 d2 a2 | o3 c2 g2 | o3 d2 a2 | o3 b2 f+2 |
+  o3 e2 b2 | o3 c2 g2 | o3 d2 a2 | o3 g2 d2 |
+  o3 g2 d2 |
+
+track clock kit vol=0.14 pan=0.3 rev=0.15
+  v40 w4 v28 w4 v34 w4 v28 w4 | L v40 w4 v28 w4 v34 w4 v28 w4 | v40 w4 v28 w4 v34 w4 v28 w4 | v40 w4 v28 w4 v34 w4 v28 w4 |
+  v40 w4 v28 w4 v34 w4 v28 w4 | v40 w4 v28 w4 v34 w4 v28 w4 | v40 w4 v28 w4 v34 w4 v28 w4 | v40 w4 v28 w4 v34 w4 v28 w4 |
+  v40 w4 v28 w4 v34 w4 v28 w4 | v40 w4 v28 w4 v34 w4 v28 w4 | v40 w4 v28 w4 v34 w4 v28 w4 | v40 w4 v28 w4 v34 w4 v28 w4 |
+  v40 w4 v28 w4 v34 w4 v28 w4 | v40 w4 v28 w4 v34 w4 v28 w4 | v40 w4 v28 w4 v34 w4 v28 w4 | v40 w4 v28 w4 v34 w4 v28 w4 |
+  v40 w4 v28 w4 v34 w4 v28 w4 |

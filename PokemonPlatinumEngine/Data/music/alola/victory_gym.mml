@@ -1,0 +1,37 @@
+# Victory over a Trial Captain or a kahuna of Alola: a brass fanfare in C and a loop that sails home on the
+# ukulele and the log drum. Original composition for this game (plan 31 · MU4), in the modern sound.
+title Victory! Trial Captain (Alola)
+tempo 128
+meter 4/4
+reverb 0.22
+room hall 1.3
+
+track lead brass vol=0.62 pan=0 rev=0.24
+  o5 c8 r16 c16 c8 r8 e4 g4 | o6 c2. r4 | L o5 g4 o6 c8 e8 g4 e4 | o6 f4 c8 o5 a8 o6 c4 f4 |
+  o6 d4 o5 b8 g8 b4 o6 d4 | o6 e2 c4 o5 g4 | o5 a4 o6 c8 e8 a4 e4 | o6 f4 c8 o5 a8 f4 a4 |
+  o5 g4 b8 o6 d8 g4 d4 | o6 e2. r4 |
+
+track uke ukulele vol=0.34 pan=0.3 rev=0.24
+  o4 (c e g)2 r2 | o4 (c e g)2 r2 | L o4 (c e g)4 (c e g)8 (c e g)8 r8 (c e g)8 (c e g)4 | o4 (f a > c)4 (f a > c)8 (f a > c)8 r8 (f a > c)8 (f a > c)4 |
+  o4 (g b > d)4 (g b > d)8 (g b > d)8 r8 (g b > d)8 (g b > d)4 | o4 (c e g)4 (c e g)8 (c e g)8 r8 (c e g)8 (c e g)4 | o4 (a > c e)4 (a > c e)8 (a > c e)8 r8 (a > c e)8 (a > c e)4 | o4 (f a > c)4 (f a > c)8 (f a > c)8 r8 (f a > c)8 (f a > c)4 |
+  o4 (g b > d)4 (g b > d)8 (g b > d)8 r8 (g b > d)8 (g b > d)4 | o4 (c e g)4 (c e g)8 (c e g)8 r8 (c e g)8 (c e g)4 |
+
+track pad warmpad vol=0.2 pan=-0.3 rev=0.3
+  r1 | r1 | L o4 (c e g)1 | o4 (f a > c)1 |
+  o4 (g b > d)1 | o4 (c e g)1 | o4 (a > c e)1 | o4 (f a > c)1 |
+  o4 (g b > d)1 | o4 (c e g)1 |
+
+track bass bass vol=0.6 rev=0.08
+  o3 c8 r8 c8 r8 c4 g4 | o3 c8 r8 c8 r8 c4 g4 | L o3 c4. c8 g4 c4 | o3 f4. f8 c4 f4 |
+  o3 g4. g8 d4 g4 | o3 c4. c8 g4 c4 | o3 a4. a8 e4 a4 | o3 f4. f8 c4 f4 |
+  o3 g4. g8 d4 g4 | o3 c4. c8 g4 c4 |
+
+track log logdrum vol=0.4 pan=-0.15 rev=0.18
+  r1 | r1 | L o4 r8 c8 r8 c8 r8 g8 r8 c8 | o4 r8 f8 r8 f8 r8 c8 r8 f8 |
+  o4 r8 g8 r8 g8 r8 d8 r8 g8 | o4 r8 c8 r8 c8 r8 g8 r8 c8 | o4 r8 a8 r8 a8 r8 e8 r8 a8 | o4 r8 f8 r8 f8 r8 c8 r8 f8 |
+  o4 r8 g8 r8 g8 r8 d8 r8 g8 | o4 r8 c8 r8 c8 r8 g8 r8 c8 |
+
+track drums kit vol=0.38 rev=0.12
+  v88 b8 s16 s16 s8 r8 b4 b4 | (b c)2. r4 | L b4 v70 d8 g8 v88 s4 v70 n8 n8 | b4 v70 d8 g8 v88 s4 v70 n8 n8 |
+  b4 v70 d8 g8 v88 s4 v70 n8 n8 | b4 v70 d8 g8 v88 s4 v70 n8 n8 | b4 v70 d8 g8 v88 s4 v70 n8 n8 | b4 v70 d8 g8 v88 s4 v70 n8 n8 |
+  b4 v70 d8 g8 v88 s4 v70 n8 n8 | b4 s4 s16 s16 s16 s16 s8 s8 |

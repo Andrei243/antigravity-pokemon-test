@@ -1,0 +1,51 @@
+# Iki Town: the village on the hill round its festival stage, an unhurried bamboo flute in C over a log drum
+# and an ukulele, the hand drums keeping time as at a festival heard from far off; at night an ocarina and a harp.
+# Original composition for this game (plan 31 · MU4), in the modern sound.
+title Iki Town
+tempo 92
+meter 4/4
+reverb 0.3
+nighttempo 0.9
+room chamber 1.5
+
+track lead bambooflute night=ocarina vol=0.71 pan=0 rev=0.32
+  o5 c2. r4 | L o5 e4. g8 e4 c4 | o5 a4 o6 c8 o5 a8 e2 | o5 f4 a8 o6 c8 o5 a4 f4 |
+  o5 g2 d4 b4 | o6 c4. o5 b8 g4 e4 | o5 e4 a8 g8 e4 c4 | o5 d4 f8 a8 o6 d4 o5 a4 |
+  o5 g2. r4 | o5 a4. g8 f4 c4 | o5 b4. a8 g4 d4 | o5 e4 g8 b8 o6 e4 o5 b4 |
+  o5 a2 e4 a4 | o6 c4 o5 a8 f8 c4 f4 | o5 d4 g8 b8 o6 d4 o5 b4 | o6 c4 o5 g8 e8 c4 e4 |
+  o5 c2. r4 |
+
+track uke ukulele night=harp vol=0.34 pan=-0.3 rev=0.26
+  o4 (c e g)4 (c e g)8 (c e g)8 r8 (c e g)8 (c e g)4 | L o4 (c e g)4 (c e g)8 (c e g)8 r8 (c e g)8 (c e g)4 | o4 (a > c e)4 (a > c e)8 (a > c e)8 r8 (a > c e)8 (a > c e)4 | o4 (f a > c)4 (f a > c)8 (f a > c)8 r8 (f a > c)8 (f a > c)4 |
+  o4 (g b > d)4 (g b > d)8 (g b > d)8 r8 (g b > d)8 (g b > d)4 | o4 (c e g)4 (c e g)8 (c e g)8 r8 (c e g)8 (c e g)4 | o4 (a > c e)4 (a > c e)8 (a > c e)8 r8 (a > c e)8 (a > c e)4 | o4 (d f a)4 (d f a)8 (d f a)8 r8 (d f a)8 (d f a)4 |
+  o4 (g b > d)4 (g b > d)8 (g b > d)8 r8 (g b > d)8 (g b > d)4 | o4 (f a > c)4 (f a > c)8 (f a > c)8 r8 (f a > c)8 (f a > c)4 | o4 (g b > d)4 (g b > d)8 (g b > d)8 r8 (g b > d)8 (g b > d)4 | o4 (e g b)4 (e g b)8 (e g b)8 r8 (e g b)8 (e g b)4 |
+  o4 (a > c e)4 (a > c e)8 (a > c e)8 r8 (a > c e)8 (a > c e)4 | o4 (f a > c)4 (f a > c)8 (f a > c)8 r8 (f a > c)8 (f a > c)4 | o4 (g b > d)4 (g b > d)8 (g b > d)8 r8 (g b > d)8 (g b > d)4 | o4 (c e g)4 (c e g)8 (c e g)8 r8 (c e g)8 (c e g)4 |
+  o4 (c e g)4 (c e g)8 (c e g)8 r8 (c e g)8 (c e g)4 |
+
+track log logdrum vol=0.53 pan=0.25 rev=0.2
+  o4 c4 r8 g8 c4 r4 | L o4 c4 r8 g8 c4 r4 | o4 a4 r8 e8 a4 r4 | o4 f4 r8 c8 f4 r4 |
+  o4 g4 r8 d8 g4 r4 | o4 c4 r8 g8 c4 r4 | o4 a4 r8 e8 a4 r4 | o4 d4 r8 a8 d4 r4 |
+  o4 g4 r8 d8 g4 r4 | o4 f4 r8 c8 f4 r4 | o4 g4 r8 d8 g4 r4 | o4 e4 r8 b8 e4 r4 |
+  o4 a4 r8 e8 a4 r4 | o4 f4 r8 c8 f4 r4 | o4 g4 r8 d8 g4 r4 | o4 c4 r8 g8 c4 r4 |
+  o4 c4 r8 g8 c4 r4 |
+
+track pad warmpad vol=0.23 pan=0.1 rev=0.45
+  o3 (c e g)1 | L o3 (c e g)1 | o3 (a > c e)1 | o3 (f a > c)1 |
+  o3 (g b > d)1 | o3 (c e g)1 | o3 (a > c e)1 | o3 (d f a)1 |
+  o3 (g b > d)1 | o3 (f a > c)1 | o3 (g b > d)1 | o3 (e g b)1 |
+  o3 (a > c e)1 | o3 (f a > c)1 | o3 (g b > d)1 | o3 (c e g)1 |
+  o3 (c e g)1 |
+
+track bass contrabass vol=0.55 rev=0.1
+  o3 c2 g2 | L o3 c2 g2 | o3 a2 e2 | o3 f2 c2 |
+  o3 g2 d2 | o3 c2 g2 | o3 a2 e2 | o3 d2 a2 |
+  o3 g2 d2 | o3 f2 c2 | o3 g2 d2 | o3 e2 b2 |
+  o3 a2 e2 | o3 f2 c2 | o3 g2 d2 | o3 c2 g2 |
+  o3 c2 g2 |
+
+track hands kit vol=0.36 pan=-0.2 rev=0.24
+  v88 d4 v60 g8 g8 v80 d4 v66 n8 n8 | L v88 d4 v60 g8 g8 v80 d4 v66 n8 n8 | v88 d4 v60 g8 g8 v80 d4 v66 n8 n8 | v88 d4 v60 g8 g8 v80 d4 v66 n8 n8 |
+  v88 d4 v60 g8 g8 v80 d4 v66 n8 n8 | v88 d4 v60 g8 g8 v80 d4 v66 n8 n8 | v88 d4 v60 g8 g8 v80 d4 v66 n8 n8 | v88 d4 v60 g8 g8 v80 d4 v66 n8 n8 |
+  v88 d4 v60 g8 g8 v80 d4 v66 n8 n8 | v88 d4 v60 g8 g8 v80 d4 v66 n8 n8 | v88 d4 v60 g8 g8 v80 d4 v66 n8 n8 | v88 d4 v60 g8 g8 v80 d4 v66 n8 n8 |
+  v88 d4 v60 g8 g8 v80 d4 v66 n8 n8 | v88 d4 v60 g8 g8 v80 d4 v66 n8 n8 | v88 d4 v60 g8 g8 v80 d4 v66 n8 n8 | v88 d4 v60 g8 g8 v80 d4 v66 n8 n8 |
+  v88 d4 v60 g8 g8 v80 d4 v66 n8 n8 |

@@ -214,6 +214,7 @@ public class ModernMusicTests
     [InlineData("nylonguitar")]
     [InlineData("cello")]
     [InlineData("orchestra")]
+    [InlineData("bambooflute")]
     public void TestEachAlolaInstrumentPlaysCleanlyAtTheBanksLevelInBothSounds(string name)
     {
         // As MusicRender --calibrate measures: quarter notes round middle C, dry; every instrument of the bank sits near −21 dB
@@ -278,5 +279,64 @@ public class ModernMusicTests
         }
         Assert.True(Bright(SynthSound.Modern, 1f) > Bright(SynthSound.Modern, 0.3f) * 1.1);
         Assert.Equal(Bright(SynthSound.Ds, 1f), Bright(SynthSound.Ds, 0.3f), 6);
+    }
+
+    /// <summary>Alola's songs (plan 31 · MU4): every file of <c>music/alola/</c>.</summary>
+    public static IEnumerable<object[]> AlolaSongs() =>
+        MusicLibrary.All.Where(s => s.Id.StartsWith("alola/")).Select(s => s.Id).OrderBy(id => id).Select(id => new object[] { id });
+
+    [Fact]
+    public void TestAlolaHasItsSongsAndPlaysThemInTheModernSoundOnceItsRegionNamesIt()
+    {
+        // The roles a region needs, and its first field songs. There is no Alola region file yet: plan 23's Alola
+        // sessions write it with "sound": "modern", so until then the folder names no sound and no song names its own
+        var ids = MusicLibrary.All.Where(s => s.Id.StartsWith("alola/")).Select(s => s.Id).ToHashSet();
+        foreach (var role in new[] { "battle_wild", "battle_trainer", "battle_gym", "battle_rival", "victory_wild", "victory_trainer",
+                     "victory_gym", "eye_boy", "eye_girl", "rival", "pokecenter", "pokemart", "route1", "hauoli", "iki_town", "trial" })
+            Assert.Contains("alola/" + role, ids);
+        Assert.All(MusicLibrary.All.Where(s => s.Id.StartsWith("alola/")), s => Assert.Null(s.Sound));
+        var sounds = MusicLibrary.RegionSounds(new[] { new RegionFile { Id = "Alola", Folder = "alola", Sound = "modern" } });
+        Assert.Equal(SynthSound.Modern, MusicLibrary.SoundOfFolder("alola/route1", sounds));
+    }
+
+    [Theory]
+    [MemberData(nameof(AlolaSongs))]
+    public void TestEachAlolaSongRendersCleanlyInTheModernSoundInEveryArrangement(string id)
+    {
+        var song = MusicLibrary.Get(id)!;
+        bool battle = id.StartsWith("alola/battle_");
+        var arrangements = new List<(bool Night, bool LowHp, bool Giant)> { (false, false, false) };
+        if (song.Tracks.Any(t => t.NightInstrument != null)) arrangements.Add((true, false, false));
+        if (battle)
+        {
+            Assert.True(song.LowHpTempo > 1.0);
+            Assert.Contains(song.Tracks, t => t.When == TrackWhen.LowHp);
+            Assert.True(song.HasGiant);
+            arrangements.Add((false, true, false));
+            arrangements.Add((false, false, true));
+            arrangements.Add((false, true, true));
+        }
+        var (low, high) = Loudness.Target(AudioBus.Music);
+        foreach (var (night, lowHp, giant) in arrangements)
+        {
+            string what = $"{id}{(night ? " at night" : "")}{(lowHp ? " in the red" : "")}{(giant ? " with a giant" : "")}";
+            var samples = OfflineMaster.Render(song, SynthSound.Modern, 10, out var player, night, lowHp, giant);
+            Assert.All(samples, s => Assert.True(float.IsFinite(s)));
+            Assert.True(samples.Max(MathF.Abs) < 1f, $"{what} clips");
+            double loud = Loudness.Of(samples, 2, Synthesizer.ModernRate);
+            Assert.True(loud >= low && loud <= high, $"{what} measures {loud:0.0} dB, outside {low} to {high}");
+            Assert.Equal(0, player.VoicesStolen);
+            // MusicRender's clash check, in the arrangement played
+            var pitched = song.Tracks.Where(t => !t.IsDrums && t.When != (lowHp ? TrackWhen.NotLowHp : TrackWhen.LowHp)
+                && t.When != (giant ? TrackWhen.NotGiant : TrackWhen.Giant)).ToList();
+            foreach (var a in pitched)
+                foreach (var na in a.Notes.Where(n => n.Tick % Song.TicksPerQuarter == 0 && n.Length >= Song.TicksPerWhole / 8))
+                    foreach (var b in pitched.Where(b => !ReferenceEquals(a, b)))
+                        foreach (var nb in b.Notes.Where(n => n.Tick <= na.Tick && n.Tick + n.Gate > na.Tick))
+                        {
+                            int iv = Math.Abs(na.Key + 12 * a.Instrument.OctaveShift - nb.Key - 12 * b.Instrument.OctaveShift);
+                            Assert.False(iv % 12 == 1 && iv < 24, $"{what}: {a.Name} clashes with {b.Name} at tick {na.Tick}");
+                        }
+        }
     }
 }
