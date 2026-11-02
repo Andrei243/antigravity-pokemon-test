@@ -15,7 +15,7 @@ public enum BattleOutcome { None, Won, Lost, Fled, Caught }
 public sealed record LessonCatcher(string Name, Pokemon Own);
 
 /// <summary>The screens a script can open and wait for.</summary>
-public enum ScriptScreen { Starter, Shop, Pc, Travel, ChoosePokemon, HallOfFame, Wardrobe, ChooseItem, PoffinCooking, BallCapsules, SealShop, ContestPhoto, Ceremony, Credits, AlphPuzzle, TownMap, Phrase, NameRival, Crossing, BugContestResults, Athlon, Apricorns, ContestPainting, Bracket, Tournament }
+public enum ScriptScreen { Starter, Shop, Pc, Travel, ChoosePokemon, HallOfFame, Wardrobe, ChooseItem, PoffinCooking, BallCapsules, SealShop, ContestPhoto, Ceremony, Credits, AlphPuzzle, TownMap, Phrase, NameRival, Crossing, BugContestResults, Athlon, Apricorns, ContestPainting, Bracket, Tournament, Jobs }
 
 /// <summary>
 /// What a script needs of the game it runs in. The <see cref="ScriptRunner"/> decides what happens and in what
@@ -42,6 +42,12 @@ public interface IScriptHost
     /// <c>if badges</c> and <c>BADGE_COUNT</c> mean. Sinnoh's unless a host says otherwise.
     /// </summary>
     string Region => RegionDatabase.Sinnoh;
+
+    /// <summary>
+    /// Whether the game is played by the modern rules (plan 15 · E3): the script's <c>modern</c>, which the PC asks before
+    /// it offers Poké Jobs. The rules in force, unless a host says otherwise (a test's).
+    /// </summary>
+    bool Modern => Ruleset.Current.Preset == RulesPreset.Modern;
 
     /// <summary>
     /// The region the game began in, by its id (plan 18 · W5): the built-in variable <c>CROSSED_IN</c> is 1 where the

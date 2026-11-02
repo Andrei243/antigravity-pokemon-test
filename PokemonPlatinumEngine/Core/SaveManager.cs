@@ -193,6 +193,29 @@ public class SaveData
     public Dictionary<string, long>? Counters { get; set; }
 
     /// <summary>
+    /// The Pokédex's research (plan 15 · E1, <see cref="Models.Research"/>): each species' counts by task key, by National
+    /// number. Null while nothing is counted and in every save from before it, which reads as nothing counted, so no
+    /// save version was raised.
+    /// </summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public Dictionary<int, Dictionary<string, int>>? Research { get; set; }
+
+    /// <summary>Whether the research certificate was given (plan 15 · E1): the Sinnoh Pokédex's 210 at research level 10.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]
+    public bool ResearchComplete { get; set; }
+
+    /// <summary>
+    /// The Pokémon away on Poké Jobs (plan 15 · E3, <see cref="Models.JobBoard"/>), each held whole in its job. Null
+    /// with none and in every save from before, which reads as no jobs, so no save version was raised.
+    /// </summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public List<Models.Job>? Jobs { get; set; }
+
+    /// <summary>When the save was written, in UTC (plan 15 · E3; <see cref="WallClock.UtcNow"/>); null in saves from before.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public DateTime? LastSaved { get; set; }
+
+    /// <summary>
     /// The medals won (plan 13 · V9, <see cref="Models.Medals"/>), by id. Null while none is won and in every save from
     /// before it, which reads as none won (the game then wins, quietly, those its counters already reach), so no save
     /// version was raised.

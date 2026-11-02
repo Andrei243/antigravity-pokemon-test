@@ -59,6 +59,9 @@ public sealed partial class GameFlow
     /// <summary>What the game has counted (plan 13 · V8; saved as <c>SaveData.Counters</c>).</summary>
     public Models.Statistics Statistics { get; set; } = new();
 
+    /// <summary>The Pokémon away on Poké Jobs (plan 15 · E3; saved as <c>SaveData.Jobs</c>).</summary>
+    public Models.JobBoard Jobs { get; set; } = new();
+
     /// <summary>The medals won (plan 13 · V9; saved as <c>SaveData.Medals</c>).</summary>
     public Models.Medals Medals { get; set; } = new();
 

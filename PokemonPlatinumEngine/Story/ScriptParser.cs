@@ -588,6 +588,9 @@ public static class ScriptParser
             case "pc":
                 // "pc halloffame" opens the Hall of Fame's records instead of the boxes (plan 06 · R12)
                 return new Instruction { Op = Op.Pc, Line = line, Name = r.More ? r.OneOf("halloffame") : "" };
+            case "jobs":
+                // The Poké Jobs board (plan 15 · E3)
+                return new Instruction { Op = Op.Jobs, Line = line };
             case "halloffame":
                 // "halloffame show" is the scene of the team's entry instead of the record (plan 02 · S14)
                 return new Instruction { Op = Op.HallOfFame, Line = line, Name = r.More ? r.OneOf("show") : "" };
@@ -1305,6 +1308,8 @@ public static class ScriptParser
             // Mirage Island stands today for this team (plan 21 · H12, part h; Emerald's IsMirageIslandPresent)
             case "mirage":
                 return new Condition { Query = Query.Mirage, Negated = negated };
+            case "modern":
+                return new Condition { Query = Query.Modern, Negated = negated };
             // A rule of the run chosen at NEW GAME (plan 13 · V5)
             case "rule":
             {

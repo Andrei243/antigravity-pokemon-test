@@ -43,6 +43,9 @@ public class Pokedex
     public HashSet<int> SeenSpecies { get; } = new();
     public HashSet<int> CaughtSpecies { get; } = new();
 
+    /// <summary>What the player has done with each species, and the levels it comes to (plan 15 · E1).</summary>
+    public Research Research { get; } = new();
+
     /// <summary>The species caught shiny, by National number (plan 09 · L1): an entry can show their shiny look. Saved as a list of numbers.</summary>
     public HashSet<int> CaughtShiny { get; } = new();
 
@@ -164,6 +167,7 @@ public class Pokedex
         Diplomas.Clear();
         entered.Clear();
         entered.Add(Sinnoh);
+        Research.Clear();
     }
 
     public bool IsSeen(int dexNumber) => SeenSpecies.Contains(dexNumber);

@@ -5,6 +5,8 @@ What changes from one release to the next, for players. Every session's close-ou
 ## [Unreleased]
 
 ### Added
+- Pokédex research: every species has a TASKS page (times met, caught and beaten, two of its moves used, levels gained, evolving it, making one a close friend), each a ladder of goals that raises its research level from 0 to 10. The level shows on the list, a toast tells you when one rises, and studying every species of the Sinnoh Pokédex to level 10 earns a research certificate.
+- Poké Jobs: a PC now offers POKé JOBS beside the boxes. Send up to three Pokémon from your boxes on an errand, to an orchard or to a hot spring for 1 to 24 hours, even with the game shut; they come back with EXP (up to a level), effort, friendship and berries.
 - The Trick House on Route 110 has all eight of its puzzles. After each new Badge the Trick Master hides somewhere else in his front room; find him and a new puzzle opens behind the scroll: buttons that cover holes, red and blue doors that swap at every button, a room of boulders, five Mechadolls with quiz questions, rotating gates, floor arrows that carry trainers and statues round, and a slippery floor, the last once you are Champion. Each has its own trainers, its scroll and its code, and its own reward at the end, ending with a tent for your secret base. Seven more kinds of mail are found in them.
 
 ### Fixed

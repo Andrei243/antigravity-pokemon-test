@@ -85,6 +85,9 @@ partial class Harness
         game.Interact();
         Whole(); Shot("in_v20_center_the_pc");
         Box().Advance(); Frames(20);
+        // Under the modern rules the PC asks first which to open (plan 15 · E3): the boxes
+        for (int i = 0; i < 120 && game.State == GameState.Dialogue && !engine.Choice.IsOpen; i++) { if (Box().IsActive) Box().FinishLine(); Frames(1); }
+        if (engine.Choice.IsOpen) { engine.Choice.Confirm(); Frames(20); }
         Console.WriteLine($"center: the pc opened {game.State}");
         game.PcScreen.Close(); Frames(6);
         ReadTo(null);

@@ -3686,6 +3686,8 @@
     {"key":"script:common.Rumour#19.0","voice":"@self","en":"They say there's a ship at Snowpoint now that goes somewhere none of us has been. Odd, isn't it?","hash":"55dc671e","spoken":"They say there's a ship at Snowpoint now that goes somewhere none of us has been. Odd, isn't it?","status":"spoken"},
     {"key":"script:common.Clerk#0.0","voice":"@self","en":"Thank you! Do come again.","hash":"f8faca7e","spoken":"Thank you! Do come again.","status":"spoken"},
     {"key":"script:common.PC#1.0","voice":"@self","en":"Which should be opened?","hash":"e0fa59f0","spoken":"Which should be opened?","status":"spoken"},
+    {"key":"script:common.PC#3.0","voice":"@self","en":"Which should be opened?","hash":"e0fa59f0","spoken":"Which should be opened?","status":"spoken"},
+    {"key":"script:common.PC#4.0","voice":"@self","en":"Which should be opened?","hash":"e0fa59f0","spoken":"Which should be opened?","status":"spoken"},
     {"key":"script:common.RibbonSyndicateEntry#0.0","voice":"@self","en":"Ten ribbons, and more! {player}, you simply must join us. Welcome to the Ribbon Syndicate.","hash":"f44bdddf","spoken":"Ten ribbons, and more! You simply must join us. Welcome to the Ribbon Syndicate.","status":"spoken"},
     {"key":"script:common.RibbonSyndicateEntry#1.0","voice":"@self","en":"The Ribbon Syndicate is for those who have collected a great many ribbons. Do come back when you have.","hash":"bfd4d506","spoken":"The Ribbon Syndicate is for those who have collected a great many ribbons. Do come back when you have.","status":"spoken"},
     {"key":"script:common.RibbonSyndicateCashier#0.0","voice":"@self","en":"Welcome, {player}. For your {wearer}, may I suggest the Gorgeous Ribbon? It is a mere 10,000.","hash":"55cbf5fd","status":"shownOnly"},

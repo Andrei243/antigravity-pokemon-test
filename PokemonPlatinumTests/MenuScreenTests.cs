@@ -94,6 +94,8 @@ public class MenuScreenTests
         // The bag's list sits under its tabs; the Pokédex's under its counts
         Assert.Equal(BagScreen.VisibleRows, ModernUi.RowsIn(height - 100));
         Assert.Equal(PokedexScreen.VisibleRows, ModernUi.RowsIn(height - 132 + 24));
+        // The Poké Jobs board's choosing list fills its panel (plan 15 · E3)
+        Assert.Equal(JobsScreen.VisibleRows, ModernUi.RowsIn(height));
         Assert.True(ModernUi.RowPitch > ModernUi.RowHeight);
     }
 
@@ -619,7 +621,7 @@ public class MenuScreenTests
     }
 
     [Fact]
-    public void APokedexEntryHasFourPagesAndStepsThroughTheSpeciesSeen()
+    public void APokedexEntryHasFivePagesAndStepsThroughTheSpeciesSeen()
     {
         var pokedex = new Pokedex();
         foreach (int n in new[] { 387, 396, 399 }) pokedex.RegisterSeen(n);   // Turtwig, Starly, Bidoof
@@ -642,8 +644,12 @@ public class MenuScreenTests
         dex.Sideways(1);
         Assert.Equal(PokedexPage.Size, dex.Page);
         dex.Sideways(1);
+        Assert.Equal(PokedexPage.Tasks, dex.Page);
+        dex.Sideways(1);
         Assert.Equal(PokedexPage.Info, dex.Page);
-        Assert.Equal(new[] { PokedexPage.Info, PokedexPage.Area, PokedexPage.Cry, PokedexPage.Size }, dex.PagesOf(dex.Selected));
+        Assert.Equal(new[] { PokedexPage.Info, PokedexPage.Area, PokedexPage.Cry, PokedexPage.Size, PokedexPage.Tasks }, dex.PagesOf(dex.Selected));
+        dex.Sideways(-1);
+        Assert.Equal(PokedexPage.Tasks, dex.Page);
         dex.Sideways(-1);
         Assert.Equal(PokedexPage.Size, dex.Page);
 
@@ -782,8 +788,8 @@ public class MenuScreenTests
         Pick("Shellos");
         dex.Confirm();
 
-        // Before the upgrade there are four pages and none is FORMS
-        Assert.Equal(4, dex.PagesOf(dex.Selected).Count);
+        // Before the upgrade there are five pages (TASKS last) and none is FORMS
+        Assert.Equal(5, dex.PagesOf(dex.Selected).Count);
         Assert.DoesNotContain(PokedexPage.Forms, dex.PagesOf(dex.Selected));
         dex.Cancel();
 
@@ -792,7 +798,7 @@ public class MenuScreenTests
         dex.Open(pokedex);
         Pick("Shellos");
         dex.Confirm();
-        Assert.Equal(new[] { PokedexPage.Info, PokedexPage.Area, PokedexPage.Cry, PokedexPage.Size, PokedexPage.Forms }, dex.PagesOf(dex.Selected));
+        Assert.Equal(new[] { PokedexPage.Info, PokedexPage.Area, PokedexPage.Cry, PokedexPage.Size, PokedexPage.Forms, PokedexPage.Tasks }, dex.PagesOf(dex.Selected));
         for (int i = 0; i < 4; i++) dex.Sideways(1);
         Assert.Equal(PokedexPage.Forms, dex.Page);
 

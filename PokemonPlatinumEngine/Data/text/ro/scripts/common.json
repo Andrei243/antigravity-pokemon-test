@@ -561,6 +561,36 @@
       "text": [
         "Nu e niciun Sticker în Cutia de Stickere."
       ]
+    },
+    {
+      "en": [
+        "Which should be opened?",
+        "POKéMON STORAGE",
+        "POKé JOBS",
+        "SWITCH OFF"
+      ],
+      "text": [
+        "Ce deschizi?",
+        "DEPOZIT POKéMON",
+        "SLUJBE POKé",
+        "OPREȘTE"
+      ]
+    },
+    {
+      "en": [
+        "Which should be opened?",
+        "POKéMON STORAGE",
+        "POKé JOBS",
+        "BALL CAPSULES",
+        "SWITCH OFF"
+      ],
+      "text": [
+        "Ce deschizi?",
+        "DEPOZIT POKéMON",
+        "SLUJBE POKé",
+        "CAPSULE DE BALL",
+        "OPREȘTE"
+      ]
     }
   ],
   "RibbonSyndicateEntry": [

@@ -397,6 +397,8 @@ public sealed partial class ScriptRunner
         Op.Tournament => true,
         // The Lilycove Lady only asks and changes (plan 21 · H11, part c)
         Op.FavorLady => false,
+        // The Poké Jobs board is the player's to work (plan 15 · E3)
+        Op.Jobs => true,
         _ => throw new ArgumentOutOfRangeException(nameof(i), i.Op, "This command doesn't say what it does in a hurry: name it in ScriptRunner.StopsAHurry.")
     };
 
@@ -949,6 +951,9 @@ public sealed partial class ScriptRunner
                 break;
             case Op.Pc:
                 host.Open(i.Name == "halloffame" ? ScriptScreen.HallOfFame : ScriptScreen.Pc, Subject);
+                break;
+            case Op.Jobs:
+                host.Open(ScriptScreen.Jobs, Subject);
                 break;
             case Op.HallOfFame:
                 // "halloffame show": the scene of the team's entry, which the script waits for (plan 02 · S14; FieldTask_StartHallOfFame)
@@ -2282,6 +2287,7 @@ public sealed partial class ScriptRunner
             Query.Titled => chosenMember is { IsEgg: false } titled && MasterTitles.Holds(story, titled.Species.Name),
             // IsMirageIslandPresent (plan 21 · H12, part h)
             Query.Mirage => Overworld.MirageIsland.Present(host.Party, host.Encounters),
+            Query.Modern => host.Modern,
             _ => throw Wrong(at, $"the runner can't answer '{c.Query}'")
         };
         return yes != c.Negated;

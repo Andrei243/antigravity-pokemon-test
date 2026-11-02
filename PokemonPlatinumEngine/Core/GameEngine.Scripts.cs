@@ -1237,6 +1237,10 @@ public partial class GameEngine
                 case ScriptScreen.Tournament:
                     game.OpenTournament(counter == "events");
                     break;
+                // The Poké Jobs board (plan 15 · E3)
+                case ScriptScreen.Jobs:
+                    game.OpenJobs();
+                    break;
                 case ScriptScreen.Pc:
                     game.flow.State = GameState.PCStorage;
                     game.flow.PCScreen.Open(game.flow.Boxes);

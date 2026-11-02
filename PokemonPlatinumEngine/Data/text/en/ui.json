@@ -900,7 +900,18 @@
   },
   "pokedex": {
     "title": "POKÉDEX",
-    "page": { "Info": "INFO", "Area": "AREA", "Cry": "CRY", "Size": "SIZE", "Forms": "FORMS" },
+    "page": { "Info": "INFO", "Area": "AREA", "Cry": "CRY", "Size": "SIZE", "Forms": "FORMS", "Tasks": "TASKS" },
+    "tasks": {
+      "level": "RESEARCH LEVEL",
+      "points": "{points} / {of} points",
+      "count": "{count} / {next}",
+      "toast": "Research on {name}: level {level}!",
+      "kind": {
+        "Met": "Times met", "Caught": "Times caught", "Defeated": "Times beaten", "MoveUsed": "Times it used {move}",
+        "Leveled": "Levels gained in battle", "Evolved": "Times it evolved", "Befriended": "Made a close friend"
+      }
+    },
+    "certificate": { "title": "CERTIFICATE" },
     "forms": { "front": "FRONT", "back": "BACK", "male": "Male", "female": "Female", "looks": "{n} seen" },
     "cry": {
       "pitch": "Pitch", "chorus": "Chorus", "pan": "Pan", "reverb": "Reverb", "filter": "Filter", "loop": "Loop", "play": "Play",
@@ -972,7 +983,9 @@
       "sinnoh": "SINNOH POKÉDEX",
       "kanto": "KANTO POKÉDEX",
       "national": "NATIONAL POKÉDEX",
+      "research": "SINNOH RESEARCH",
       "line": {
+        "research": "has studied every one of the {count} Pokémon of the Sinnoh Pokédex to research level 10. Nothing about them is left unwritten.",
         "sinnoh": "has seen every one of the {count} Pokémon of the Sinnoh Pokédex. A full record of the region's wild life, kept with care.",
         "kanto": "has seen every one of the {count} Pokémon of the Kanto Pokédex. A full record of the region's wild life, kept with care.",
         "national": "has caught every Pokémon of the National Pokédex that a trainer can meet. The work of a true Pokémon Master."
@@ -4881,6 +4894,40 @@
     "caption": "LEFT HERE",
     "line": "Items {items} · Trainers {trainers} · Pokémon {species}",
     "nothing": "Nothing left here"
+  },
+  "jobs": {
+    "title": "POKé JOBS",
+    "post": "POST A JOB",
+    "back": "BACK",
+    "level": "Lv. {level}",
+    "left": "{hours} h {minutes} min",
+    "hours": "HOURS",
+    "hoursValue": "{n} h",
+    "dueBack": "DUE BACK",
+    "hoursDone": "{done} of {of} hours",
+    "kind": { "Errand": "ERRAND", "Orchard": "ORCHARD", "HotSpring": "HOT SPRING" },
+    "pays": {
+      "errand": "Runs errands about town: a level's worth of EXP in eight hours, Speed's effort, and now and then a berry.",
+      "orchard": "Helps with the harvest: half an errand's EXP, HP's effort, and a berry every two hours.",
+      "hotSpring": "Soaks in a hot spring: half an errand's EXP, Sp. Def's effort, and twice the friendship."
+    },
+    "hint": { "bringBack": "Bring back", "send": "Send" },
+    "about": "Pokémon of your boxes can take jobs while you are away, even with the game shut. Choose an empty place to send one.",
+    "boardNote": "Up to three Pokémon can be away at once. They are paid for the whole hours they spend on the job.",
+    "noneInTheBoxes": "There are no Pokémon in your boxes to send.",
+    "boxesFull": "Your boxes are full. Make room before bringing a Pokémon back.",
+    "clockBack": "The clock reads earlier than when it set off. It isn't back yet.",
+    "sent": "{name} set off on the {job} job.",
+    "result": {
+      "title": "{name} is back!",
+      "hours": "Paid for {n} hours.",
+      "exp": "Gained {exp} EXP.",
+      "level": "Grew to Lv. {level}!",
+      "move": "Learned {move}!",
+      "effort": "Gained {n} effort in {stat}.",
+      "friendship": "Grew fonder of you.",
+      "berry": "Brought back {item} ×{n}."
+    }
   },
   "requests": {
     "title": "REQUESTS",
