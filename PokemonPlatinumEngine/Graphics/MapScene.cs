@@ -154,9 +154,16 @@ internal sealed class MapScene
             FieldCamera.CoronetSouth => new FieldView(CoronetSouthPitchDeg, CoronetSouthFovYDeg, CoronetSouthDistance),
             FieldCamera.StarkMountain => new FieldView(StarkMountainPitchDeg, StarkMountainFovYDeg, StarkMountainDistance),
             FieldCamera.Drawbridge => new FieldView(DrawbridgePitchDeg, DrawbridgeFovYDeg, DrawbridgeDistance),
-            _ => FieldView.Outdoor
+            _ => OutdoorOverride ?? FieldView.Outdoor
         };
     }
+
+    /// <summary>
+    /// The lens the open field is looked through in place of Platinum's (plan 30 · FM0's prototype of a Kalos camera):
+    /// only the harness sets it, and forgets every scene before and after (their upright things are stretched by the
+    /// pitch they were built under). Null in the game.
+    /// </summary>
+    internal static FieldView? OutdoorOverride;
 
     public static float PitchOf(Map map) => ViewOf(map).PitchDeg;
 

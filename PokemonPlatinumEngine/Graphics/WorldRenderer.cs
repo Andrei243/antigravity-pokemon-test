@@ -665,6 +665,7 @@ public sealed partial class WorldRenderer
         VerticalScale = vs;
         GatherActors(map, player, px, pz, groundY, lift, time);
         foreach (var actor in actors) CharacterSprites.Prepare(context, actor.Rig, actor.Pose, actor.Yaw);
+        PreparePeople(camera);
         foreach (var p in pokemon)
         {
             FieldSprites.Prepare(context, p.Name, p.Facing, ref fieldBakes);
@@ -704,7 +705,7 @@ public sealed partial class WorldRenderer
         foreach (var scene in scenes)
             if (Reaches(scene, casters)) scene.DrawDepth(casters);
         gymPieces.DrawDepth(map, viewer);
-        DrawActors(CharacterPass.Depth);
+        DrawPeople(CharacterPass.Depth);
         DrawThings(CharacterPass.Depth);
         DrawPokemon(CharacterPass.Depth);
         Rlgl.EnableBackfaceCulling();
@@ -762,7 +763,7 @@ public sealed partial class WorldRenderer
         // "Climates"); the things of the map, drawn before them, are lit as the rock they stand among is
         if (rig.PeopleWash > 0f) shaders.SetPeopleLight(ArtLook.ForPeople(light, rig.PeopleWash));
         DrawPokemon(CharacterPass.Color);
-        DrawActors(CharacterPass.Color);
+        DrawPeople(CharacterPass.Color);
         DrawLife(map, camera, rig, upright: true);
         DrawBubbles(map, player, camera, rig, indoors, pitchDeg, vs);
         // The field's rules as layers, when a developer has turned any on (plan 16 · T18)
@@ -1747,7 +1748,7 @@ public sealed partial class WorldRenderer
             if (Reaches(scene, reach)) scene.DrawStanding(reach);
         DrawThings(CharacterPass.Color);
         DrawPokemon(CharacterPass.Color);
-        DrawActors(CharacterPass.Color);
+        DrawPeople(CharacterPass.Color);
 
         shaders.EndMirrorPass();
         context.UnbindShadowMap();
