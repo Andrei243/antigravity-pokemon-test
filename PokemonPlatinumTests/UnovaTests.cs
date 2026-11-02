@@ -579,7 +579,9 @@ public class UnovaTests
                 // and Victory Road's Pokémon Center since plan 22 · U9, part b
                 || m.Name == "bg_pc"
                 // and the Liberty Garden's lighthouse since plan 29 · LS11d
-                || m.Name == "d12_tower")
+                || m.Name == "d12_tower"
+                // and the P2 Laboratory since plan 22 · U10, part c
+                || m.Name == "d13_house")
                 Assert.True(string.IsNullOrEmpty(m.StandInUntil), $"{m.Name} is still a stand-in");
             else Assert.False(string.IsNullOrEmpty(m.StandInUntil), $"{m.Name} is no stand-in");
         }

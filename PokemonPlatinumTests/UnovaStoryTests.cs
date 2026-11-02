@@ -1418,6 +1418,57 @@ public class UnovaStoryTests
         Assert.NotNull(pair.Partner);
     }
 
+    [Theory]
+    [InlineData("single_desk", SubwayTrain.Single, SubwayTrain.SuperSingle, "subway_ingo")]
+    [InlineData("double_desk", SubwayTrain.Double, SubwayTrain.SuperDouble, "subway_emmet")]
+    [InlineData("multi_desk", SubwayTrain.Multi, SubwayTrain.SuperMulti, "subway_ingo")]
+    public void ALinesBossBeatenOpensItsSuperTrain(string desk, SubwayTrain line, SubwayTrain super, string boss)
+    {
+        // Shut until the line's best streak reaches the Boss's car: the desk asks no question of trains
+        var shut = Rider();
+        shut.Story.SetVar(BattleSubway.Vars.Best(line), 20);
+        var first = shut.TalkTo(desk);
+        Assert.DoesNotContain(first.Asked, q => q.Question.Contains("Which train"));
+        Assert.Equal(0, shut.Story.Var(BattleSubway.Vars.Best(super)));
+
+        // Open once it has: the second answer of "which train" is the Super, which rides to the 49th car and its Boss
+        var game = Rider();
+        game.Story.SetVar(BattleSubway.Vars.Best(line), 21);
+        game.Answers.AddRange(new[] { 0, 1 }.Concat(Enumerable.Repeat(1, 6)).Concat(new[] { 0 }));
+        var desks = game.TalkTo(desk);
+        Assert.Contains(desks.Asked, q => q.Question.Contains("Which train"));
+        var car = Car(game);
+        Assert.Equal(49, car.FrontierBattles.Count);
+        // No Boss in the 21st car of a Super train, and its Boss in the 49th
+        Assert.All(car.FrontierBattles.Take(48), b => Assert.All(b.Foes, f => Assert.StartsWith("frontier_", f.Id)));
+        Assert.Equal(boss, car.FrontierBattles[48].Foes[0].Id);
+        if (BattleSubway.Multi(super)) Assert.Equal(2, car.FrontierBattles[48].Foes.Count);
+        Assert.All(car.FrontierBattles, b => Assert.Equal(BattleSubway.PartySize(line), b.Team.Count));
+        // Its own best and the Super's points: 6 + 7 + 8 + 9 + 10 + 10 + 10
+        Assert.Equal(49, game.Story.Var(BattleSubway.Vars.Best(super)));
+        Assert.Equal(21, game.Story.Var(BattleSubway.Vars.Best(line)));
+        Assert.Equal(60, car.Frontier.BattlePoints);
+    }
+
+    [Fact]
+    public void ASuperTrainsTrainersBeginThreeRoomsOn()
+    {
+        Assert.Equal(new[] { SubwayTrain.Single, SubwayTrain.Double, SubwayTrain.Multi },
+            new[] { SubwayTrain.SuperSingle, SubwayTrain.SuperDouble, SubwayTrain.SuperMulti }.Select(BattleSubway.LineOf));
+        Assert.Equal(new[] { 0, 0, 1 }, new[] { 21, 48, 49 }.Select(b => BattleSubway.BossAt(b, SubwayTrain.SuperSingle)));
+        Assert.Equal(2, BattleSubway.BossAt(49, SubwayTrain.SuperDouble));
+        Assert.Equal(new[] { 0, 6, 13 }, new[] { 6, 7, 14 }.Select(w => BattleSubway.PointsFor(w, SubwayTrain.SuperSingle)));
+        // A Super train's car is drawn as its line's car three rooms on, on the same draws
+        for (int battle = 1; battle <= 14; battle++)
+        {
+            var a = new Random(battle); var b = new Random(battle);
+            var super = BattleSubway.MakeOpponents(SubwayTrain.SuperSingle, battle, () => a.Next(0x10000));
+            var line = BattleSubway.MakeOpponents(SubwayTrain.Single, battle + BattleSubway.SuperRooms * BattleSubway.Cars, () => b.Next(0x10000));
+            Assert.Equal(line.Select(f => f.Record.Name), super.Select(f => f.Record.Name));
+            Assert.Equal(line.SelectMany(f => f.Pokemon).Select(p => p.Species.Name), super.SelectMany(f => f.Pokemon).Select(p => p.Species.Name));
+        }
+    }
+
     [Fact]
     public void TheSubwaysRulesAreTheFrontiersOnATrain()
     {

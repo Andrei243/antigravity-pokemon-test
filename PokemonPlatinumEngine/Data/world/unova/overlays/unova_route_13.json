@@ -103,6 +103,7 @@
   // Keldeo (plan 29 · LS11d), a person of ours on Cobalion's tile, shown by the route's arrival once Unova's Hall of Fame is
   // entered and the three Swords have been fought (FLAG_UNOVA_KELDEO_WAITS), gone once fought itself
   "npcs": [
+    { "id": "grotto_mouth_6", "name": "Hollow", "npcType": "GrottoHollow", "x": 699, "y": 271, "facing": "Down", "script": "GrottoMouth" },
     { "id": "keldeo", "name": "Keldeo", "npcType": "Pokemon", "species": "Keldeo", "x": 684, "y": 190, "facing": "Down", "script": "Keldeo", "shownBy": "FLAG_UNOVA_KELDEO_WAITS", "hiddenBy": "FLAG_UNOVA_FOUGHT_KELDEO" }
   ],
   "signs": {

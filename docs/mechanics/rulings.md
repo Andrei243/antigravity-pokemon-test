@@ -3543,11 +3543,73 @@ or beaten (`FLAG_UNOVA_FOUGHT_<SPECIES>`), back the next time its place is come 
 - **Seen from in front.** Each of the three stands where the player comes up one tile south of it, where the field's steep camera
   hides it behind the player's head: a player who speaks to it from there starts, steps back two tiles and faces it again before the
   camera goes to it (`PLAYER_X`, `PLAYER_Y`); one who speaks from the side is not moved.
-- **Genesect waits** for plan 22 · U10's P2 Laboratory (question 10a): nothing of it is built.
+- **Genesect waits** for plan 22 · U10's P2 Laboratory (question 10a): built since with it ("Routes 17 and 18, the P2 Laboratory
+  and Genesect", below).
 - **The Pokédex's area page** leaves the three off, as Unova has no `special.json` (question 5a).
 - **Left as it is.** Two beds of the garden whose texture is Black 2's seasonal `kisetu_yuki` are drawn as snow whatever the
   season, by `Bw2Cover`'s rule for the name; changing the rule would move every open area that has it, so it is left for a session
   of its own.
+
+## Routes 17 and 18, the P2 Laboratory and Genesect (2026-11-02, plan 22 · U10, part c)
+
+- **The places.** Black 2's `route_17`, `route_18` and `p2_laboratory` zones (one area record of Black 2's, three zones of the
+  overworld) and the lab's hall (`p2_laboratory_2`, its matrix 191, the map `P2Laboratory`) are opened from the data
+  (`world.json`, `--game black2 --data`), with Black 2's trainers, balls and hidden things; their words are ours. They are come to by
+  sea, as Black 2 has it: Routes 17 and 18 lie on the open water south of Unova, and the walk of the whole game reaches them. Route
+  17's gate to Route 1 and Route 18's cave into Twist Mountain lead to places not open, and are shut; the island's second way, where
+  Black 2 moors the Plasma Frigate in a scene of its own, is shut too. Black 2's person on Route 18's cliff and a ball of the route's
+  own script belong to the old roads' scenes and are held back. Route 18's Pearl String and Route 17's are items this game's data
+  hasn't (the importer leaves them out).
+- **Genesect** (plan 29 · LS11d, question 10a) is a person of ours at the back of the hall (5, 2), shown by `UnovaHallOfFame`, met
+  by the recipe's lightning row (two bursts 0.4 s apart, each with a shake; its cry; one line) and battled at level 65; caught or
+  beaten it is gone for good (`FLAG_UNOVA_FOUGHT_GENESECT`), run from it is back the next time the hall is come to. Met from the tile
+  south of it, the player steps back two tiles first. Black 2's researcher of the hall (0) is stood aside by the window (10, 7) and,
+  once Genesect has been fought, gives the **Shock Drive** (in the data already) once (`FLAG_UNOVA_GOT_SHOCK_DRIVE`); the other three
+  drives are not given (the proposal). The Pokédex's area page leaves Genesect off, as Unova has no `special.json`.
+
+## The Hidden Grottoes (2026-11-02, plan 22 · U11)
+
+Black 2's Hidden Grottoes are hollows in the trees that hold one thing at a time. The decompilation has the grotto's own room
+(`hidden_grotto`, one zone that every grotto shares) but not where Black 2 puts the mouths nor what each holds, which its code keeps.
+So the room is Black 2's and the rest is ours.
+
+- **Eight grottoes**, numbered 1 to 8 in `Data/world/unova/grottoes.json` (hand-written): Floccesy Ranch, Routes 6, 16, 9, 13, 22
+  and 23 and the Lostlorn Forest, each mouth standing in a notch of a tree wall of the open area (a thing of the map,
+  `NPC.GrottoHollowType`, drawn as the style guide's "A grotto's hollow"), spoken to from the tile south of it (`common.GrottoMouth`:
+  in, or not). Each table is a few Pokémon of the area's kind and a few items, each with a weight; the levels are the area's. Every
+  table is ours.
+- **What a grotto holds** (`Models/HiddenGrotto.cs`): a grotto never come to is full, its thing drawn from its table by weight as it
+  is first come to. Once its Pokémon is met (whatever comes of the battle: caught, beaten or run from) or its item picked up, it is
+  empty, and the steps the player has walked (the game's record, `Pastimes.Steps`) count from there: for every 256 walked anywhere it
+  has five chances in a hundred of filling again, rolled as it is next come to, the first that comes up filling it. Black 2 rolls as
+  the steps are walked; ours rolls the same number of times at the coming, which comes to the same chance and needs nothing kept.
+  Every roll is the game's own chance (`Dice` through the script's host).
+- **Its Pokémon has its species' hidden ability** (the form's where the form has its own), at a level between the entry's two. A run
+  that randomises species meets the species the grotto's maps to (plan 13 · V6), with that species' hidden ability.
+- **Nothing new is saved.** What each grotto holds and the step count it was emptied at are the story's own variables
+  (`VAR_UNOVA_GROTTO_<n>`, `VAR_UNOVA_GROTTO_<n>_STEPS`, and `VAR_UNOVA_GROTTO`, the one gone into), as the Battle Subway's run is, so
+  a save keeps them and an older save has every grotto full. The plan's `SaveData.Grottoes` is not needed.
+- **The room.** The import leaves Black 2's tunnel in from the foot of the room under the trees (its tiles are blocked), so the
+  player comes in at the clearing's south end (15, 17) and goes out by reading the tunnel's mouth there (15, 18), which puts them back
+  on the tile before the grotto's own mouth (`hidden_grotto.txt`'s `Leave`, which names each grotto's tile again; `HiddenGrottoTests`
+  holds the two together). What the grotto holds stands on the tile Black 2 keeps for it (15, 12): the Pokémon as its field sprite
+  (the person `grotto_mon` stood as its species as the grotto is come to) or an item's ball.
+- **Nothing of it reaches another region**: the grottoes are Unova's maps' alone, and a grotto's Pokémon is a wild Pokémon of the
+  place, levelled as Unova's are in a game begun elsewhere.
+
+## The Battle Subway's Super trains (2026-11-02, plan 22 · U11)
+
+- **Each line has its Super train** (`SubwayTrain.SuperSingle`, `SuperDouble`, `SuperMulti`): open once the line's Subway Boss
+  has been beaten in its 21st car (the line's best streak 21 or more), offered by the line's desk as a second question ("Which
+  train will you ride?"), and ridden in the same cars by the same rules (`FrontierRules`, copies at level 50, the team's size and
+  format the line's).
+- **Its trainers begin three rooms on**: the Super train's first car is drawn as its line's 22nd (the Battle Tower's rows, as the
+  Subway's trainers are), so its sets are the Tower's harder rooms from the start.
+- **Its Boss waits at the 49th car alone**: Ingo on the Super Single Train, Emmet on the Super Double, the two together on the Super
+  Multi, with their own teams of our data (no Boss in its 21st car).
+- **Its Battle Points** are its line's from the fourth set on: six for the first set, one more a set, up to ten (Black 2 pays the
+  Super lines more; the numbers are ours). Its best streak is kept apart from its line's (`VAR_UNOVA_SUBWAY_BEST_SUPERSINGLE` and
+  its fellows), and the desk's RECORD tells both once the Super train is open.
 
 ## Kanto's first chapter (2026-10-18, plan 19 · K3)
 

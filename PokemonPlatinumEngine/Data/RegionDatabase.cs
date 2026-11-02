@@ -841,6 +841,8 @@ public static class RegionDatabase
                 "UnovaPokemonLeague_Hall", "UnovaPokemonLeague_ShauntalsRoom", "UnovaPokemonLeague_GrimsleysRoom", "UnovaPokemonLeague_MarshalsRoom", "UnovaPokemonLeague_CaitlinsRoom", "UnovaPokemonLeague_Descent", "UnovaPokemonLeague_ChampionsRoom", "UnovaPokemonLeague_HallOfFame",
                 // Plan 22 · U10, part b: the caves of the old roads off the open ones
                 "MistraltonCave_2F", "GuidanceChamber", "ClayTunnel_1", "ClayTunnel_2", "ClayTunnel_3", "UndergroundRuins", "UndergroundRuins_Sun", "UndergroundRuins_Moon", "RockPeakChamber", "IcebergChamber", "IronChamber",
+                // Plan 22 · U10, part c: the P2 Laboratory's hall; U11: the Hidden Grotto every grotto's mouth leads into
+                "P2Laboratory", "HiddenGrotto",
             }
         },
         new() { Id = Kalos, Name = "Kalos", Generation = 6 },

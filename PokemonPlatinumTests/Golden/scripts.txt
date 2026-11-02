@@ -3244,6 +3244,7 @@ way 1, from answer 1
   Depot Agent> Every car holds a trainer with four Pokémon, and two of them battle two of yours at once. Clear seven cars for a set.
   Depot Agent> The Double Train takes four Pokémon, all of different species and holding different items, at Level 50 or under.
   Depot Agent> The Subway Bosses wait for those who ride on to the 21st car and the 49th.
+  Depot Agent> Beat the Boss in the 21st car and the Super Double Train opens to you, with tougher trainers and more Battle Points.
   ? What would you like to do? = INFO
 === GearStation.MultiTrain
 from Depot Agent at 11,3 of GearStation
@@ -3284,6 +3285,7 @@ way 2, from answer 1
 way 1, from answer 1
   Depot Agent> You bring two Pokémon and a partner from our own staff brings two more. Every car holds a pair of trainers.
   Depot Agent> The two Pokémon must be of different species and hold different items, at Level 50 or under. Ingo and Emmet ride together in the 21st car and the 49th.
+  Depot Agent> Beat them in the 21st car and the Super Multi Train opens to you, with tougher pairs and more Battle Points.
   Depot Agent> A partner from a friend over a link is not on the line yet. We're sorry!
   ? What would you like to do? = INFO
 === GearStation.SingleTrain
@@ -3324,6 +3326,7 @@ way 1, from answer 1
   Depot Agent> A trainer waits in every car. Clear seven and you may get off with Battle Points, or go on to the next set.
   Depot Agent> The Single Train takes three Pokémon, all of different species and holding different items. They battle at Level 50 or under, and nothing from the Bag may be used.
   Depot Agent> The Subway Bosses, Ingo and Emmet, wait for those who ride on to the 21st car and the 49th.
+  Depot Agent> Beat Ingo in the 21st car and the Super Single Train opens to you, with tougher trainers and more Battle Points.
   ? What would you like to do? = INFO
 === GlobalTerminal1F.Favourite
 from Beauty at 15,10 of GlobalTerminal1F
@@ -10671,6 +10674,10 @@ way -
 === common.GabbyAndTyUpdateLocation
 from a trainer with lines of their own
 way -
+=== common.GrottoMouth
+from a trainer with lines of their own
+way -
+  > The trees grow too thick here to see through.
 === common.Grown0
 from a trainer with lines of their own
 way -
@@ -17171,6 +17178,25 @@ from Gym Guide at 499,698 of Sinnoh
 way -
   Gym Guide> Hey there, champ in the making! Here to take on Fantina? Bad timing, I'm afraid. She's out.
   Gym Guide> When she's not in her Gym, you'll usually find her at the Contest Hall, watching the Pokémon on stage. Try there!
+=== hidden_grotto.Item
+from Item at 15,12 of HiddenGrotto
+way -
+  + FLAG_UNOVA_GROTTO_ITEM_TAKEN
+=== hidden_grotto.Leave
+from the tile read at 15,18 of HiddenGrotto
+way 0
+  > The tunnel leads back out under the trees.
+  > Will you leave the grotto?
+  ? Will you leave the grotto? = Yes
+  * fade out
+  * sound stairs
+  * warp Unova 152 367
+  * fade in
+way 1, from answer 1
+  ? Will you leave the grotto? = No
+=== hidden_grotto.Mon
+from Pokémon at 15,12 of HiddenGrotto
+way -
 === hoenn_safari_zone_south.ExitAttendant
 from Attendant at 72,74 of HoennSafariZone
 way -
@@ -21930,6 +21956,37 @@ way -
   + FLAG_HIDE_OREBURGH_MINE_B2F_ROARK
   + FLAG_ROARK_RETURNED_TO_OREBURGH_GYM
   + seen oreburgh_mine_b2f.Roark down the mine
+=== p2_laboratory_2.Genesect
+from Genesect at 5,2 of P2Laboratory
+way 0
+  > Sparks race along the old pod's casing, and the Pokémon inside it unfolds!\nIts cannon swings round to lock on to Lucas!
+  > The pod stands open and empty, still humming faintly...
+  * scene p2_laboratory_2.Genesect in the P2 Laboratory
+  * music stop
+  * letterbox on
+  * emote player Exclaim
+  * camera Pan 5 2
+  * camera Zoom 1.4
+  * effect Burst 5 2
+  * camera Shake
+  * effect Burst 5 2
+  * camera Shake
+  * cry Genesect
+  * emote player Exclaim
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Genesect 65 Won
+  + FLAG_UNOVA_FOUGHT_GENESECT
+  + seen p2_laboratory_2.Genesect in the P2 Laboratory
+way 1, from answer 1
+  * wildbattle Genesect 65 Lost
+  + seen p2_laboratory_2.Genesect in the P2 Laboratory
+=== p2_laboratory_2.Scientist
+from Scientist at 10,7 of P2Laboratory
+way -
+  Scientist> Team Plasma rebuilt an ancient Pokémon here. They called it a weapon. I call it a crime.
+  Scientist> It still sleeps in its pod at the back. I don't dare go near it.
 === pacifidlog_town_house_2.FanClubYoungerBrother
 from Gentleman at 3,5 of PacifidlogTown_House2
 way -

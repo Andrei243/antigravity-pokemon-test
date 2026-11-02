@@ -102,7 +102,7 @@ partial class Harness
         };
         // UNOVA_FROM=chasm: only the places of plan 22 · U9 (u200 on), for a look at the chapter alone
         // (UNOVA_FROM=league or legends: those of parts b and c on, u208)
-        int fromPlace = Environment.GetEnvironmentVariable("UNOVA_FROM") switch { "chasm" => 200, "league" or "legends" or "events" => 208, _ => 0 };
+        int fromPlace = Environment.GetEnvironmentVariable("UNOVA_FROM") switch { "chasm" => 200, "league" or "legends" or "events" => 208, "grottoes" => 238, _ => 0 };
         if (fromPlace > 0)
             places = places.Where(p => int.TryParse(new string(p.Day.Skip(1).TakeWhile(char.IsDigit).ToArray()), out int n) && n >= fromPlace).ToArray();
         foreach (var (day, _, map, x, y, facing) in places)
@@ -250,6 +250,11 @@ partial class Harness
             ("u235_league_descent", "UnovaPokemonLeague_Descent", 31, 84, Direction.Up),
             ("u236_champions_room", "UnovaPokemonLeague_ChampionsRoom", 16, 44, Direction.Up),
             ("u237_hall_of_fame", "UnovaPokemonLeague_HallOfFame", 8, 15, Direction.Up),
+            // Plan 22 · U10, part c: Routes 18 and 17 and the P2 Laboratory; U11: the Hidden Grotto
+            ("u238_route18", "Unova", 645, 744, Direction.Up),
+            ("u239_p2_laboratory_island", "Unova", 725, 714, Direction.Up),
+            ("u240_p2_laboratory", "P2Laboratory", 6, 8, Direction.Up),
+            ("u241_hidden_grotto", "HiddenGrotto", 15, 17, Direction.Up),
         };
         if (fromPlace > 0)
             more = more.Where(m => int.TryParse(new string(m.Name.Skip(1).TakeWhile(char.IsDigit).ToArray()), out int n) && n >= fromPlace).ToArray();

@@ -278,6 +278,11 @@ public static partial class WorldModels
         Ground("outwarp03", "the pad inside the gate of the Pokémon League's hall"),
         Furniture("warp04", PropType.WarpPanel, "the light in the corner of an Elite Four's room that carries a challenger back to the hall (the room's trigger)"),
         Thing("c09_dendo", PropType.Statue, "the monument at the head of Unova's Hall of Fame"),
+
+        // ---------------------------------------------------------------- Routes 17 and 18 and the P2 Laboratory (d13, plan 22 · U10, part c)
+        Built("d13_house", BuildingKind.Lab, "the P2 Laboratory on Route 17's island", Architecture.Airfield, sign: "P2 LAB"),
+        Furniture("d4pillar01", PropType.Column, "a pillar of the P2 Laboratory's hall"),
+        Furniture("table02", PropType.Table, "a long table of the P2 Laboratory's hall"),
     };
 
     private static readonly Dictionary<string, WorldModel> UnovaByName = UnovaTable.ToDictionary(m => m.Name, StringComparer.Ordinal);

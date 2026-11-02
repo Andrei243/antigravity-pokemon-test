@@ -129,7 +129,7 @@ partial class Harness
         // UNOVA_FROM=legends: past the Hall of Fame as well, for U10's legendaries alone (us421 on); UNOVA_FROM=oldroads for U10,
         // part b's caves alone (us451 on)
         string? from = Environment.GetEnvironmentVariable("UNOVA_FROM");
-        if (from is "league" or "legends" or "oldroads" or "events")
+        if (from is "league" or "legends" or "oldroads" or "events" or "grottoes")
         {
             var unova = RegionDatabase.Get(RegionDatabase.Unova)!;
             story.ChooseStarter(unova.Starters[0]);
@@ -147,6 +147,8 @@ partial class Harness
             if (from == "oldroads") { story.Set("UnovaHallOfFame"); goto oldroads; }
             // UNOVA_FROM=events: plan 29 · LS11d's event legendaries alone (us470 on)
             if (from == "events") { story.Set("UnovaHallOfFame"); goto events; }
+            // UNOVA_FROM=grottoes: plan 22 · U11's grottoes and Super trains and U10, part c's Genesect alone (us480 on)
+            if (from == "grottoes") { story.Set("UnovaHallOfFame"); goto grottoes; }
             goto league;
         }
         StepOnto("AspertiaCity_PlayersHouse", 10, 8, Direction.Left);
@@ -1480,5 +1482,63 @@ partial class Harness
         TalkToKey("MusicalTheater", "meloetta", 0, 1);
         Beat("meloetta", 479, "soft melody fills the quiet lobby");
         engine.Settings.TimeOfDay = TimeOfDay.Day; engine.ApplySettings(window: false);
+
+        // Plan 22 · U11 and U10, part c (us480 to us493): a Hidden Grotto's mouth on Route 6, in and what it holds, out again;
+        // Genesect in the P2 Laboratory and the researcher's drive; and a Subway line's Super train once its Boss is beaten
+    grottoes:
+        void Grotto(string what) =>
+            Console.WriteLine($"  {what}: grotto {story.Var(PokemonPlatinumEngine.Models.HiddenGrottoes.Vars.Current)}, "
+                + $"holds {story.Var(PokemonPlatinumEngine.Models.HiddenGrottoes.Vars.Content(2))}, map {game.Map.Name} {game.Player.GridX},{game.Player.GridY}");
+        ComeThrough("Unova", 152, 368, Direction.Up); Frames(30); Shot("us480_a_grotto_mouth");
+        TalkToKey("Unova", "grotto_mouth_2", 0, 1);
+        ReadTo("Will you go in?"); Frames(10); Shot("us481_the_hollows_question");
+        ReadTo(null); Frames(30); Shot("us482_inside_the_grotto");
+        Grotto("in the grotto");
+        if (game.Map.NPCs.FirstOrDefault(n => n.Key == "grotto_mon") is { } grottoMon)
+        {
+            Console.WriteLine($"  the grotto holds a {grottoMon.Species}");
+            TalkToKey("HiddenGrotto", "grotto_mon", 0, 1);
+            ReadTo("sitting quietly"); Frames(10); Shot("us483_what_the_grotto_holds");
+            IntoBattle("the grotto's Pokémon");
+            ToMainMenu(game.Battle); Shot("us484_the_grottos_pokemon_in_battle");
+            Console.WriteLine($"  met: {game.Battle.EnemyPokemon?.Species.Name} with {game.Battle.EnemyPokemon?.AbilityName} (hidden {game.Battle.EnemyPokemon?.HiddenAbilityName})");
+            Win(); ReadTo(null); Frames(10);
+        }
+        else if (game.Map.NPCs.FirstOrDefault(n => n.Key == "grotto_item") is { } grottoItem)
+        {
+            Console.WriteLine("  the grotto holds an item");
+            TalkToKey("HiddenGrotto", "grotto_item", 0, 1);
+            ReadTo("put the"); Frames(10); Shot("us483_what_the_grotto_holds");
+            ReadTo(null); Frames(10);
+        }
+        Shot("us485_the_grotto_emptied");
+        Grotto("emptied");
+        At("HiddenGrotto", 15, 17, Direction.Down); game.Interact();
+        ReadTo(null); Frames(30); Shot("us486_out_before_the_mouth");
+        Grotto("out again");
+
+        // ---- Genesect in the P2 Laboratory
+        ComeThrough("P2Laboratory", 6, 8, Direction.Up); Frames(30); Shot("us487_the_p2_laboratory");
+        TalkToKey("P2Laboratory", "genesect", 0, 1);
+        Beat("genesect", 488, "Sparks race along");
+        TalkTo("P2Laboratory", "0", "p2_laboratory_2");
+        ReadTo("You faced Genesect?"); Frames(10); Shot("us489_the_shock_drive");
+        ReadTo(null); Frames(10);
+        Console.WriteLine($"  the Shock Drive: {game.Bag.AllItems.Any(s => s.Name == "Shock Drive")}");
+
+        // ---- the Battle Subway's Super Single Train, once Ingo is beaten in the 21st car
+        story.SetVar(PokemonPlatinumEngine.Models.Frontier.BattleSubway.Vars.Best(PokemonPlatinumEngine.Models.Frontier.SubwayTrain.Single), 21);
+        ComeThrough("GearStation", 11, 4, Direction.Up); Frames(30);
+        TalkToKey("GearStation", "single_desk");
+        ReadTo("Which train will you ride?"); Frames(10); Shot("us490_the_super_line_offered");
+        engine.Choice.Move(1); Frames(6); Shot("us491_the_super_single_train");
+        engine.Choice.Confirm(); Frames(4);
+        ReadTo("Please choose the Pokémon you will take aboard.");
+        EnterTheTeam(); Frames(30);
+        ReadTo("Car 1"); Frames(20); Shot("us492_a_super_car");
+        IntoBattle("the Super train's first car");
+        ToMainMenu(game.Battle); Shot("us493_a_super_battle");
+        Console.WriteLine($"  the Super train: train {story.Var(PokemonPlatinumEngine.Models.Frontier.BattleSubway.Vars.Train)}, "
+            + $"foe {string.Join(", ", game.Battle.EnemyParty?.Members.Select(p => $"{p.Species.Name} {p.Level}") ?? Array.Empty<string>())}");
     }
 }

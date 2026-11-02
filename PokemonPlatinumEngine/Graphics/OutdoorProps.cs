@@ -945,6 +945,7 @@ public static class ThingCards
             PropType.Refrigerator => (24, 40, ApplianceArt.PaintRefrigerator),
             PropType.ElectricFan => (26, 32, ApplianceArt.PaintElectricFan),
             PropType.Lawnmower => (30, 22, ApplianceArt.PaintLawnmower),
+            PropType.GrottoHollow => (32, 30, GrottoArt.PaintHollow),
             _ => (OutdoorProps.ItemBallCard, OutdoorProps.ItemBallCard, OutdoorProps.PaintItemBall)
         };
         var art = new PixelCanvas(w, h);

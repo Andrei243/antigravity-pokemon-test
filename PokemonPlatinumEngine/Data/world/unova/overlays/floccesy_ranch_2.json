@@ -3,6 +3,10 @@
   // Pokémon, Team Plasma's grunt and the field's triggers are plan 22 · U4's. The Pokémon that roam the field stand as
   // Mareep, the ranch's own flock in our telling
   "area": "floccesy_ranch_2",
+  // A Hidden Grotto's mouth in a notch of the trees (plan 22 · U11: grottoes.json, common.GrottoMouth)
+  "npcs": [
+    { "id": "grotto_mouth_1", "name": "Hollow", "npcType": "GrottoHollow", "x": 50, "y": 20, "facing": "Down", "script": "GrottoMouth" }
+  ],
   "bgmTrack": "unova/route19",
   "trees": "Round",
   // Plan 22 · U5: Hugh's battle, the owners and their lost Herdier, found in the grove with Team Plasma's first grunt

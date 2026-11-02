@@ -157,6 +157,8 @@ public enum Op
     FavorLady,
     // The Poké Jobs board (plan 15 · E3): a PC's board of the boxes' Pokémon sent on jobs while the game is shut
     Jobs,
+    // A Hidden Grotto (plan 22 · U11): its mouth found, what it holds, its Pokémon met or its item taken
+    Grotto,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

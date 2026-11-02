@@ -13,6 +13,7 @@
     "7": { "name": "Traveller", "npcType": "hiker", "script": "Traveller", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_LOSTLORN_TRAVELLER" }
   },
   "npcs": [
+    { "id": "grotto_mouth_4", "name": "Hollow", "npcType": "GrottoHollow", "x": 29, "y": 14, "facing": "Down", "script": "GrottoMouth" },
     { "id": "zoroark", "name": "Zoroark", "npcType": "Pokemon", "species": "Zoroark", "x": 8, "y": 11, "facing": "Down", "hiddenBy": "FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK" }
   ],
   "signs": {

@@ -9,7 +9,10 @@
 # whether to get off or go on; a battle lost or getting off ends the run and hands over the Battle Points of the sets
 # cleared, and the player is back in the Gear Station.
 #
-# Not here: the run's pause, the Super trains and the records' board (plan 22 · U6's next part and U11).
+# The Super trains (plan 22 · U11) ride the same cars: their trainers from three rooms further on, their Boss at the
+# 49th car alone (Ingo on the Super Single, Emmet on the Super Double, the two together on the Super Multi).
+#
+# Not here: the run's pause and the records' board.
 
 
 script OnEnter

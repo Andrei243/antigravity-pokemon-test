@@ -1,0 +1,21 @@
+{
+  // Route 17 (plan 22 · U10, part c): Black 2's stretch of sea south of Unova with the P2 Laboratory's island at its east
+  // end, its zone, trainers, balls and hidden things read by the importer, our words. Its trainers swim or fish where
+  // Black 2 stands them. The gate house at its east end leads to Route 1, which is not open yet, and stays shut.
+  "area": "unova_route_17",
+  "bgmTrack": "unova/route13",
+  "locked": [ 0, 1, 2 ],
+  // (its ball of a Pearl String is an item this game's data hasn't)
+  "heldBack": [ "8" ],
+  "people": {
+    "0": { "name": "Bucky", "trainer": { "dialogueBefore": "The currents out here bring the big ones right to my line. And the battles!", "dialogueAfter": "That one got away. So did the battle." } },
+    "1": { "name": "Lydon", "trainer": { "dialogueBefore": "Shh! You'll scare the fish. ...Oh, fine, let's battle instead.", "dialogueAfter": "At least the fish didn't see that." } },
+    "2": { "name": "Ruth", "trainer": { "dialogueBefore": "I swim round the old lab's island every morning. Can you keep up?", "dialogueAfter": "I'm going to need a longer swim to get over that." } },
+    "3": { "name": "Wright", "trainer": { "dialogueBefore": "The current's strong here. Don't let it carry you off before we battle!", "dialogueAfter": "It carried me off instead." } },
+    "4": { "name": "Jeffery", "trainer": { "dialogueBefore": "Nobody swims this far out without wanting a battle!", "dialogueAfter": "I think I'll float for a bit." } },
+    "5": { "name": "Dara", "trainer": { "dialogueBefore": "Looking for the lab? You'll have to get past me first!", "dialogueAfter": "Go on, then. The island's just east of here." } }
+  },
+  "signs": {
+    "1": "Route 17\nThe currents run strong. Swimmers, take care!"
+  }
+}

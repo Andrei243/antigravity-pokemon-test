@@ -837,13 +837,30 @@ by the Tower's rooms, with the Subway Bosses at the 21st battle (Ingo) and the 4
 |---|---|
 | `subway enough` | `RESULT` 1 when the team holds as many Pokémon as the train takes (three before a run is begun) that could go in together. `{number}` how many, `{banned}` the species of the banlist the Pokédex has seen. |
 | `subway begin single`, `subway begin double`, `subway begin multi` | Starts a run: the train kept, no battle won, no Pokémon chosen yet. |
+| `subway begin supersingle`, `subway begin superdouble`, `subway begin supermulti` | Starts a run on a Super train (plan 22 · U11): its trainers from three rooms further on, its Boss at the 49th car alone, its sets paid from 6 Battle Points up. |
+| `subway opened single`, `subway opened double`, `subway opened multi`, `subway super` | `RESULT` 1 once that line's Super train is open (its best streak 21 or more: the Boss at the 21st car beaten); 1 while the run under way is on a Super train. |
 | `subway choose`, `subway check` | Opens the team for the train's number to be chosen, and waits: `RESULT` 1, or 0 when backed out of. Then 0, or 1 for two of one species and 2 for two holding the same item. |
-| `subway active`, `subway mode`, `subway end` | `RESULT` 1 while a run is under way; its train (0 single, 1 double, 2 multi); lets go of it, the streak and the Pokémon chosen. |
+| `subway active`, `subway mode`, `subway end` | `RESULT` 1 while a run is under way; its line (0 single, 1 double, 2 multi, a Super train's too); lets go of it, the streak and the Pokémon chosen. |
 | `subway next`, `subway boss` | The number of the battle to come (`{number}`); 0, or 1 when Ingo waits at it and 2 when Emmet does. |
 | `subway opponent` | Makes the trainers of the car ready, or the Bosses, and stands the trainers of the Frontier's table in the room as `opponent` and `opponent_2`. `{foe}` names them. |
 | `subway battle` | The battle with the Pokémon chosen, as copies (`RESULT` 1 won, 0 lost). The Multi Train's partner is drawn on the run's seed, the same two Pokémon every car. |
 | `subway won`, `subway streak`, `subway best` | Counts the win (`RESULT` 1 once a set of seven is through); the streak as it stands and the longest of the run's train (`{number}`). |
 | `subway finish won`, `subway finish lost`, `subway points` | Writes the best streak of the train; hands over the Battle Points of the sets cleared (3 for the first, one more for each set after it, up to 10; `RESULT` and `{number}`). |
+
+### The Hidden Grottoes
+
+Plan 22 · U11; `docs/mechanics/rulings.md`, "The Hidden Grottoes". A grotto's mouth (`npcType` `GrottoHollow`) runs
+`common.GrottoMouth`, which takes the player into Black 2's one grotto room (`HiddenGrotto`, `hidden_grotto.txt`); what each
+grotto holds is `Models/HiddenGrotto.cs` over `Data/world/unova/grottoes.json`, kept in the story's own variables
+(`VAR_UNOVA_GROTTO`, `VAR_UNOVA_GROTTO_<n>`, `VAR_UNOVA_GROTTO_<n>_STEPS`).
+
+| Command | What it does |
+|---|---|
+| `grotto mouth` | The grotto whose mouth the script's person stands as becomes the one gone into (`RESULT` 1, or 0 for no grotto). |
+| `grotto which` | `RESULT` the number of the grotto gone into (0 for none): the way out puts the player before its mouth. |
+| `grotto visit` | The grotto as it is come to: full the first time, refilled by a roll for every 256 steps walked since it was emptied. `RESULT` 0 empty, 1 a Pokémon (`{foe}` its species, and the person `grotto_mon` of the place stood as it), 2 an item (`{item}`). |
+| `grotto battle` | Its Pokémon met with its species' hidden ability, as a `wildbattle` (its `RESULT`); the grotto is empty whatever comes of it. |
+| `grotto take` | Its item handed over with the found lines, and the grotto empty. |
 
 ### The Battle Dome and its bracket
 
