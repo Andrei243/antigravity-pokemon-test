@@ -10,9 +10,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 |---|---|---|---|---|---|
 | The introduction (`intro:`) | 96 | 96 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1305 | 1263 | 42 | 1 | 0 |
-| Scripts (`script:`) | 10163 | 9704 | 459 | 17 | 0 |
-| People of the world (`world:`) | 7141 | 7079 | 62 | 4 | 0 |
-| **All** | 18705 | 18142 | 563 | 22 | 0 |
+| Scripts (`script:`) | 10186 | 9728 | 458 | 17 | 0 |
+| People of the world (`world:`) | 7138 | 7076 | 62 | 4 | 0 |
+| **All** | 18725 | 18163 | 562 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -21,17 +21,17 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | What | Lines |
 |---|---|
 | a Pokémon's cry | 244 |
-| a question's answers | 768 |
+| a question's answers | 774 |
 | a sign | 1576 |
 | the game's own voice (speaker none) | 282 |
-| the game's own voice (text) | 1632 |
+| the game's own voice (text) | 1634 |
 
 ## The cast
 
-- Named characters: 387 voices (350 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
+- Named characters: 388 voices (351 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Cloned from the user's samples: `rival`.
 - Archetypes in use: 223, with 674 voices to cast (V5).
-- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1882.
+- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1890.
 
 ## Lines by voice
 
@@ -39,7 +39,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 
 | Voice | Lines | Shown only |
 |---|---|---|
-| `@self` | 1882 | 135 |
+| `@self` | 1890 | 136 |
 | `look:gentleman (any)` | 724 | 15 |
 | `rival` | 598 | 18 |
 | `look:grunt (any)` | 588 | 0 |
@@ -111,9 +111,9 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `elder` | 50 | 0 |
 | `officer` | 50 | 5 |
 | `artist` | 49 | 1 |
+| `depot_agent` | 49 | 3 |
 | `clair` | 48 | 4 |
 | `class:battle_girl (any)` | 48 | 0 |
-| `depot_agent` | 48 | 8 |
 | `crasher_wake` | 46 | 1 |
 | `drayden` | 46 | 0 |
 | `maxie` | 46 | 1 |
@@ -133,6 +133,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `volkner` | 40 | 1 |
 | `collector` | 39 | 0 |
 | `colress` | 39 | 1 |
+| `owner` | 39 | 5 |
 | `prof_birch` | 38 | 3 |
 | `wally` | 38 | 0 |
 | `baoba` | 37 | 0 |
@@ -163,7 +164,6 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:backpacker (any)` | 30 | 0 |
 | `class:school_kid_m (any)` | 30 | 0 |
 | `clay` | 30 | 3 |
-| `owner` | 30 | 2 |
 | `zinzolin` | 30 | 0 |
 | `celio` | 29 | 1 |
 | `jupiter` | 29 | 0 |
