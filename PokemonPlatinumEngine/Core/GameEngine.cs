@@ -123,7 +123,11 @@ public enum GameState
     /// <summary>The title's HOME: trades between the player's own saves and the Home box they share (plan 12 · Q28, Q29).</summary>
     Home,
     /// <summary>The gallery: the models of the Pokémon seen and of people, from the title or a Pokédex entry (plan 12 · Q30).</summary>
-    Gallery
+    Gallery,
+    /// <summary>The title's BATTLE ROOM: the gauntlet, the streak and the puzzles (plan 13 · V13, V26).</summary>
+    BattleRoom,
+    /// <summary>The battle room's team builder (plan 13 · V13).</summary>
+    TeamBuilder
 }
 
 public partial class GameEngine
@@ -1168,6 +1172,9 @@ public partial class GameEngine
                     case TitleChoice.Gallery:
                         OpenGallery(GameState.Title);
                         break;
+                    case TitleChoice.BattleRoom:
+                        OpenBattleRoom();
+                        break;
                     case TitleChoice.Credits:
                         flow.TitleCreditsScreen.Open();
                         flow.State = GameState.TitleCredits;
@@ -1233,6 +1240,10 @@ public partial class GameEngine
                     if (flow.Battle.Watching)
                     {
                         if (flow.Battle.WatchOver) EndWatching();
+                    }
+                    else if (KeepTheRoomsBattle())
+                    {
+                        // A battle of the battle room ends back in the room, leaving nothing behind (plan 13 · V13, V26)
                     }
                     else if (flow.Battle.IsBattleOver && flow.Battle.IsFrontier)
                     {
@@ -1521,6 +1532,12 @@ public partial class GameEngine
                 break;
             case GameState.Gallery:
                 UpdateGallery(dt);
+                break;
+            case GameState.BattleRoom:
+                UpdateBattleRoom(dt);
+                break;
+            case GameState.TeamBuilder:
+                UpdateTeamBuilder(dt);
                 break;
             case GameState.Requests:
                 UpdateRequests(dt);
@@ -2948,6 +2965,7 @@ public partial class GameEngine
                 break;
             case GameState.Battle:
                 DrawBattle();
+                DrawRoomGoal();
                 DrawTheTimer();
                 DrawTip();
                 break;
@@ -3005,6 +3023,12 @@ public partial class GameEngine
                 break;
             case GameState.Gallery:
                 flow.GalleryScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.BattleRoom:
+                flow.BattleRoomScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.TeamBuilder:
+                flow.TeamBuilderScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.Requests:
                 flow.RequestsScreen.Draw(VirtualWidth, VirtualHeight);

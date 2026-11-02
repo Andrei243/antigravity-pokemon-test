@@ -497,6 +497,7 @@
       "deleteWhich": "CE SALVARE ȘTERGI?",
       "migrate": "MIGRARE",
       "home": "HOME",
+      "battleRoom": "SALA DE LUPTĂ",
       "options": "OPȚIUNI",
       "credits": "CREDITE",
       "quit": "IEȘIRE"
@@ -5204,6 +5205,159 @@
         "coupon3": "Răspunde la ghicitoarea clovnului de lângă Jubilife TV.",
         "president": "Du-i președintelui cele trei cupoane."
       }
+    }
+  },
+  "battleRoom": {
+    "title": "Sala de luptă",
+    "menu": {
+      "teams": "ECHIPE",
+      "gauntlet": "ÎNCERCAREA",
+      "streak": "ȘIRUL",
+      "puzzles": "ENIGME",
+      "teamsCount": "{n} păstrate",
+      "gauntletBest": "Record {n}/{of}",
+      "streakBest": "Record {n}",
+      "puzzlesSolved": "{n}/{of} rezolvate"
+    },
+    "blurb": {
+      "teams": "Construiește echipe de la zero: orice specie, cu nivelul, firea, abilitatea, obiectul și patru atacuri pe care le poate ști. Echipele sunt păstrate pe acest calculator, separat de orice salvare.",
+      "gauntlet": "Du o echipă împotriva celor opt lideri de sală din Sinnoh, a Celor Patru și a Campioanei, unul după altul, fiecare cu echipa și nivelurile din poveste. Echipa ta e refăcută înaintea fiecărei lupte.",
+      "streak": "Luptă cu antrenorii Frontierei de Luptă unul după altul, la nivelul 50, cât timp echipa ta continuă să câștige. La fiecare șapte lupte devin mai puternici.",
+      "puzzles": "O luptă oprită la jumătate, cu un scop: câștigă tura aceasta, rezistă unui atac, prinde un Pokémon. Fiecare aruncare a zarului e fixată, așa că doar ideea bună merge."
+    },
+    "clears": "Terminată de {n} ori",
+    "pick": {
+      "gauntlet": "Ce echipă înfruntă încercarea?",
+      "streak": "Ce echipă începe un șir?",
+      "speciesTitle": "Alege o specie",
+      "itemTitle": "Alege un obiect de ținut",
+      "moveTitle": "Alege un atac"
+    },
+    "hint": {
+      "begin": "Începe",
+      "play": "Joacă",
+      "pick": "Alege",
+      "change": "Schimbă",
+      "jump": "Sari"
+    },
+    "noTeams": "Nicio echipă nu e construită încă. Construiește una mai întâi la ECHIPE.",
+    "members": "{n} Pokémon",
+    "level": "Nv. {level}",
+    "cannot": "NU POATE LUPTA",
+    "ready": "GATA",
+    "solved": "REZOLVATĂ",
+    "rules": {
+      "platinum": "REGULILE PLATINUM",
+      "modern": "REGULI MODERNE"
+    },
+    "puzzle": {
+      "theirs": "ADVERSARUL",
+      "yours": "PARTEA TA",
+      "solved": "Rezolvată!",
+      "failed": "Nu de data asta",
+      "solvedBlurb": "Asta era. Enigma își păstrează steaua pe acest calculator.",
+      "again": "ÎNCEARCĂ DIN NOU",
+      "back": "ÎNAPOI LA ENIGME"
+    },
+    "goal": {
+      "winOne": "Câștigă tura aceasta",
+      "win": "Câștigă în {n} ture",
+      "surviveOne": "Rezistă tura aceasta",
+      "survive": "Rezistă {n} ture",
+      "catchOne": "Prinde-l tura aceasta",
+      "catch": "Prinde-l în {n} ture",
+      "turn": "Tura {n} din {of}"
+    },
+    "run": {
+      "cleared": "Încercarea e terminată!",
+      "over": "Drumul se încheie după {n} victorii",
+      "won": "Luptă câștigată! Victorii până acum: {n}",
+      "progress": "{n} din {of} câștigate",
+      "streak": "Șir de {n}",
+      "newBest": "RECORD NOU",
+      "team": "ECHIPA TA",
+      "next": "Urmează: {who}",
+      "continue": "LUPTA URMĂTOARE",
+      "giveUp": "RENUNȚĂ",
+      "ok": "OK"
+    },
+    "builder": {
+      "title": "Constructorul de echipe",
+      "defaultName": "ECHIPA {n}",
+      "newTeam": "ECHIPĂ NOUĂ",
+      "add": "ADAUGĂ UN POKéMON",
+      "rename": "REDENUMEȘTE",
+      "delete": "ȘTERGE ECHIPA",
+      "deleteAgain": "APASĂ DIN NOU CA S-O ȘTERGI",
+      "none": "Niciunul",
+      "noMove": "—",
+      "nameTitle": "Numește echipa",
+      "stats": "PV {hp} · Atc {atk} · Ap {def} · AtS {spa} · ApS {spd} · Vit {spe}",
+      "moveLine": "Putere {power} · Precizie {accuracy} · PP {pp}"
+    },
+    "row": {
+      "species": "SPECIE",
+      "form": "FORMĂ",
+      "level": "NIVEL",
+      "nature": "FIRE",
+      "ability": "ABILITATE",
+      "item": "OBIECT",
+      "move": "ATAC",
+      "remove": "SCOATE"
+    },
+    "illegal": {
+      "species": "{value} nu e o specie pe care jocul s-o cunoască.",
+      "form": "{value} nu e o formă în care se poate construi această specie.",
+      "level": "Nivelul {value} nu e între 1 și 100.",
+      "moveCount": "Un Pokémon știe între unul și patru atacuri, nu {value}.",
+      "twice": "Știe {value} de două ori.",
+      "move": "Nu poate învăța {value}.",
+      "ability": "Nu poate avea abilitatea {value}.",
+      "item": "{value} nu poate fi ținut.",
+      "empty": "Nu e nimeni în echipă încă.",
+      "tooMany": "O echipă are cel mult șase, nu {value}."
+    }
+  },
+  "puzzles": {
+    "priority": {
+      "title": "Prima lovitură",
+      "hint": "Garchomp e mai rapid, iar un singur Earthquake îl termină pe Lucario. Și Garchomp abia mai stă în picioare."
+    },
+    "trickRoom": {
+      "title": "Camera se întoarce",
+      "hint": "Trick Room e activ, iar Alakazam e gata să arunce un Focus Blast. Amândoi sunteți obosiți."
+    },
+    "levitate": {
+      "title": "Cu picioarele pe pământ?",
+      "hint": "Bronzong e aproape terminat. Cel mai puternic atac al lui Garchomp pare răspunsul evident."
+    },
+    "focusSash": {
+      "title": "Atârnă de un fir",
+      "hint": "Alakazam e neatins și ține un Focus Sash. E ocupat cu Calm Mind."
+    },
+    "sunshine": {
+      "title": "Sub soare",
+      "hint": "Soarele arde. Swampert a încasat multe, dar atacul de încărcare al lui Venusaur cere de obicei o tură."
+    },
+    "paralysis": {
+      "title": "O scânteie mai lentă",
+      "hint": "Jolteon e mult mai rapid decât Machamp, iar Thunderbolt-ul lui va încheia totul. Dar Jolteon e paralizat."
+    },
+    "burned": {
+      "title": "Prin arsură",
+      "hint": "Salamence e ars, iar Garchomp se pregătește cu Swords Dance. O singură lovitură va ajunge."
+    },
+    "wonderGuard": {
+      "title": "Carapacea goală",
+      "hint": "Shedinja are un PV și Wonder Guard. Earthquake e cea mai mare lovitură a lui Tyranitar."
+    },
+    "protect": {
+      "title": "Ține linia",
+      "hint": "Surf-ul lui Starmie îl va doborî pe Blaziken înainte să se miște. Rămâi în picioare la sfârșitul turei."
+    },
+    "lullaby": {
+      "title": "Cântec de leagăn",
+      "hint": "Un singur Poké Ball și un Dratini cu viața plină. Fă aruncarea să conteze în două ture."
     }
   }
 }

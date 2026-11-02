@@ -1,0 +1,15 @@
+{
+  "id": "trickRoom",
+  "goal": "Win",
+  "turns": 1,
+  "trickRoom": true,
+  "player": [ { "species": "Snorlax", "level": 50, "nature": "Brave", "ability": "Thick Fat", "moves": ["Body Slam", "Rest"], "hp": 30 } ],
+  "foe": [ { "species": "Alakazam", "level": 50, "nature": "Timid", "ability": "Synchronize", "moves": ["Focus Blast"], "hp": 20 } ],
+  "foeMoves": ["Focus Blast"],
+  "rolls": [
+    { "kind": "Critical", "values": [1] }, { "kind": "Damage", "values": [15] }, { "kind": "Accuracy", "values": [0] },
+    { "kind": "SideEffect", "values": [99] }, { "kind": "AbilityChance", "values": [99] }
+  ],
+  "solution": [ { "move": "Body Slam" } ],
+  "decoy": [ { "move": "Rest" } ]
+}

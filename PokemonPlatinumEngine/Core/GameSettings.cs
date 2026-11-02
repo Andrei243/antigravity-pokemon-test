@@ -268,7 +268,7 @@ public sealed class GameSettings
     {
         var fresh = new GameSettings();
         foreach (var property in typeof(GameSettings).GetProperties())
-            if (property.GetSetMethod() is { IsPublic: true } && property.Name is not (nameof(ScenesSeen) or nameof(MeasuredQuality) or nameof(MeasuredMilliseconds)))
+            if (property.GetSetMethod() is { IsPublic: true } && property.Name is not (nameof(ScenesSeen) or nameof(BattleRoom) or nameof(MeasuredQuality) or nameof(MeasuredMilliseconds)))
                 property.SetValue(this, property.GetValue(fresh));
         forThisRun.Clear();
     }
@@ -360,6 +360,12 @@ public sealed class GameSettings
     /// corner shows and <c>splits.json</c> is written beside the save at each split.
     /// </summary>
     public Models.TimerCategory RunTimer { get; set; }
+
+    /// <summary>
+    /// The battle room's records (plan 13 · V13, V26): the furthest a gauntlet came, the longest streak and the puzzles
+    /// solved. Per machine, never per save; no row of the options, and kept when the options are reset.
+    /// </summary>
+    public Models.BattleRoomRecords BattleRoom { get; set; } = new();
 
     /// <summary>Every sound effect and cry named on screen as it plays (plan 12 · Q9, <see cref="Accessibility.Captions"/>): off unless chosen.</summary>
     public bool Captions { get; set; }

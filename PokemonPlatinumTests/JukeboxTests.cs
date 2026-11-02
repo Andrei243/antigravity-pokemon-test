@@ -211,11 +211,11 @@ public class JukeboxTests
     public void TheTitleOffersTheJukeboxBeforeOptionsAndAsksForItAtOnce()
     {
         var title = new TitleScreen(null);
-        Assert.Equal(new[] { TitleChoice.NewGame, TitleChoice.Jukebox, TitleChoice.Options, TitleChoice.Credits, TitleChoice.Quit }, title.Entries);
+        Assert.Equal(new[] { TitleChoice.NewGame, TitleChoice.BattleRoom, TitleChoice.Jukebox, TitleChoice.Options, TitleChoice.Credits, TitleChoice.Quit }, title.Entries);
         title.PressConfirm();
         title.PressConfirm();
         Assert.Equal(TitlePhase.Menu, title.Phase);
-        title.Move(1);
+        title.Move(2);
         title.PressConfirm();
         Assert.Equal(TitleChoice.Jukebox, title.TakeChoice());
         Assert.Equal(TitleChoice.None, title.TakeChoice());

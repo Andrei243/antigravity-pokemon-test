@@ -7,6 +7,8 @@ partial class Harness
     // item, which it prints, since the menu shows only the first Pokémon out). Later V sessions add their shots below.
     public void WaysMode()
     {
+        // WAYS_ONLY=room: the battle room alone (plan 13 · V13, V26), which begins no run of its own
+        if (Environment.GetEnvironmentVariable("WAYS_ONLY") == "room") { BattleRoomMode(); return; }
         LevelCapMode();
         RoarkMode();
         NuzlockeMode();
@@ -16,6 +18,7 @@ partial class Harness
         MedalsMode();
         TimerMode();
         NewGamePlusMode();
+        BattleRoomMode();
     }
 
     // V4, the Nuzlocke: wy_nuzlocke_ball_refused (a second wild Pokémon met on Route 201, whose catch the run has had, and

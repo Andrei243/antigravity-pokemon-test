@@ -175,7 +175,7 @@ public class GalleryTests
         var blind = new TitleScreen(new SaveData { PlayerName = "Lucas" });
         Assert.DoesNotContain(TitleChoice.Gallery, blind.Entries);
         var seeing = new TitleScreen(new SaveData { PlayerName = "Lucas", SeenSpecies = new() { 387 } });
-        Assert.Equal(new[] { TitleChoice.Continue, TitleChoice.NewGame, TitleChoice.Delete, TitleChoice.Home, TitleChoice.Jukebox, TitleChoice.Gallery, TitleChoice.Options, TitleChoice.Credits, TitleChoice.Quit }, seeing.Entries);
+        Assert.Equal(new[] { TitleChoice.Continue, TitleChoice.NewGame, TitleChoice.Delete, TitleChoice.Home, TitleChoice.BattleRoom, TitleChoice.Jukebox, TitleChoice.Gallery, TitleChoice.Options, TitleChoice.Credits, TitleChoice.Quit }, seeing.Entries);
         // The column still clears the disclaimer with its eighth row
         var rects = seeing.EntryRects();
         Assert.True(rects[^1].Y + rects[^1].Height <= 1040);

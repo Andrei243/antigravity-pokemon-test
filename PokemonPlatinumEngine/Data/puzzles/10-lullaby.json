@@ -1,0 +1,17 @@
+{
+  "id": "lullaby",
+  "goal": "Catch",
+  "turns": 2,
+  "wild": true,
+  "balls": 1,
+  "player": [ { "species": "Breloom", "level": 50, "nature": "Adamant", "ability": "Effect Spore", "moves": ["Spore", "Seed Bomb"] } ],
+  "foe": [ { "species": "Dratini", "level": 20, "nature": "Calm", "ability": "Shed Skin", "moves": ["Leer"] } ],
+  "foeMoves": ["Leer"],
+  "rolls": [
+    { "kind": "Critical", "values": [1] }, { "kind": "Damage", "values": [15] }, { "kind": "Accuracy", "values": [0] },
+    { "kind": "SideEffect", "values": [99] }, { "kind": "AbilityChance", "values": [99] }, { "kind": "SleepTurns", "values": [9] },
+    { "kind": "CatchShake", "values": [36000] }
+  ],
+  "solution": [ { "move": "Spore" }, { "item": "Poké Ball" } ],
+  "decoy": [ { "item": "Poké Ball" }, { "item": "Poké Ball" } ]
+}

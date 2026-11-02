@@ -5,6 +5,7 @@ What changes from one release to the next, for players. Every session's close-ou
 ## [Unreleased]
 
 ### Added
+- A BATTLE ROOM on the title screen, with or without a save. Build teams from nothing (any species, form, level, nature, ability, held item and up to four moves it can learn; a Pokémon that can't battle says why), then take one against the gauntlet of Sinnoh's eight Gym Leaders, the Elite Four and Cynthia one after another, or into an endless streak of Battle Frontier trainers at level 50. And ten battle puzzles: a battle stopped halfway with a goal (win this turn, survive the turn, catch it within two turns), each turning on a rule of the battles, with a star once solved. Your best gauntlet, longest streak and solved puzzles are kept on this machine, and nothing in the room touches your saves.
 - The Trick House on Route 110 has all eight of its puzzles. After each new Badge the Trick Master hides somewhere else in his front room; find him and a new puzzle opens behind the scroll: buttons that cover holes, red and blue doors that swap at every button, a room of boulders, five Mechadolls with quiz questions, rotating gates, floor arrows that carry trainers and statues round, and a slippery floor, the last once you are Champion. Each has its own trainers, its scroll and its code, and its own reward at the end, ending with a tent for your secret base. Seven more kinds of mail are found in them.
 
 ### Fixed

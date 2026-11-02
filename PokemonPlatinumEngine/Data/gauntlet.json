@@ -1,0 +1,18 @@
+{
+  "_comment": "The battle room's gauntlet (plan 13 · V13): Sinnoh's eight Gym Leaders in Platinum's order, the Elite Four and the Champion, each fought with the team trainers.json gives the id, at its own levels, and drawn with the look named.",
+  "order": [
+    { "id": "leader_roark", "look": "roark" },
+    { "id": "leader_gardenia", "look": "gardenia" },
+    { "id": "leader_fantina", "look": "fantina" },
+    { "id": "leader_maylene", "look": "maylene" },
+    { "id": "leader_wake", "look": "crasher_wake" },
+    { "id": "leader_byron", "look": "byron" },
+    { "id": "leader_candice", "look": "candice" },
+    { "id": "leader_volkner", "look": "volkner" },
+    { "id": "elite_four_aaron", "look": "aaron" },
+    { "id": "elite_four_bertha", "look": "bertha" },
+    { "id": "elite_four_flint", "look": "flint" },
+    { "id": "elite_four_lucian", "look": "lucian" },
+    { "id": "champion_cynthia", "look": "cynthia" }
+  ]
+}

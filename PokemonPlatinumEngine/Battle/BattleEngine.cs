@@ -308,6 +308,8 @@ public partial class BattleEngine
             Restrictions = setup.Restrictions,
             // The Battle Palace and the Battle Arena (plan 14 · B9); a battle watched has what the recorded one had
             PlayerController = setup.PlayerController,
+            // A battle puzzle's foe uses the moves its file names (plan 13 · V26)
+            EnemyController = setup.EnemyController ?? TrainerAi.Instance,
             Palace = watched?.Palace ?? setup.Palace,
             TurnLimit = watched?.TurnLimit ?? setup.TurnLimit,
             // A Key Stone in the bag lets one of the player's Pokémon Mega Evolve (plan 06 · R20); a battle watched

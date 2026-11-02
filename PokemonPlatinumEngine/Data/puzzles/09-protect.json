@@ -1,0 +1,14 @@
+{
+  "id": "protect",
+  "goal": "Survive",
+  "turns": 1,
+  "player": [ { "species": "Blaziken", "level": 50, "nature": "Adamant", "ability": "Blaze", "moves": ["Flare Blitz", "Protect"], "hp": 10 } ],
+  "foe": [ { "species": "Starmie", "level": 50, "nature": "Timid", "ability": "Natural Cure", "moves": ["Surf"] } ],
+  "foeMoves": ["Surf"],
+  "rolls": [
+    { "kind": "Critical", "values": [1] }, { "kind": "Damage", "values": [15] }, { "kind": "Accuracy", "values": [0] },
+    { "kind": "SideEffect", "values": [99] }, { "kind": "AbilityChance", "values": [99] }, { "kind": "Protect", "values": [0] }
+  ],
+  "solution": [ { "move": "Protect" } ],
+  "decoy": [ { "move": "Flare Blitz" } ]
+}

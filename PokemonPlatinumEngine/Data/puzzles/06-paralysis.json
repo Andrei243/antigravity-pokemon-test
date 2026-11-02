@@ -1,0 +1,14 @@
+{
+  "id": "paralysis",
+  "goal": "Win",
+  "turns": 1,
+  "player": [ { "species": "Machamp", "level": 50, "nature": "Jolly", "ability": "Guts", "moves": ["Close Combat", "Bullet Punch"], "hp": 30 } ],
+  "foe": [ { "species": "Jolteon", "level": 50, "nature": "Timid", "ability": "Volt Absorb", "moves": ["Thunderbolt"], "hp": 60, "status": "Paralyze" } ],
+  "foeMoves": ["Thunderbolt"],
+  "rolls": [
+    { "kind": "Critical", "values": [1] }, { "kind": "Damage", "values": [15] }, { "kind": "Accuracy", "values": [0] },
+    { "kind": "SideEffect", "values": [99] }, { "kind": "AbilityChance", "values": [99] }, { "kind": "FullParalysis", "values": [1] }
+  ],
+  "solution": [ { "move": "Close Combat" } ],
+  "decoy": [ { "move": "Bullet Punch" } ]
+}

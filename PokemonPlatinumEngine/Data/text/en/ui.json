@@ -495,6 +495,7 @@
       "deleteWhich": "DELETE WHICH SAVE?",
       "migrate": "MIGRATE",
       "home": "HOME",
+      "battleRoom": "BATTLE ROOM",
       "jukebox": "JUKEBOX",
       "gallery": "GALLERY",
       "options": "OPTIONS",
@@ -4910,6 +4911,159 @@
         "coupon3": "Answer the quiz of the clown by Jubilife TV.",
         "president": "Bring the three coupons to the president."
       }
+    }
+  },
+  "battleRoom": {
+    "title": "Battle Room",
+    "menu": {
+      "teams": "TEAMS",
+      "gauntlet": "GAUNTLET",
+      "streak": "STREAK",
+      "puzzles": "PUZZLES",
+      "teamsCount": "{n} kept",
+      "gauntletBest": "Best {n}/{of}",
+      "streakBest": "Best {n}",
+      "puzzlesSolved": "{n}/{of} solved"
+    },
+    "blurb": {
+      "teams": "Build teams from nothing: any species, its level, nature, ability, item and four moves it can know. Teams are kept on this machine, apart from every save.",
+      "gauntlet": "Take a team against Sinnoh's eight Gym Leaders, the Elite Four and the Champion, one after another, each with the team and levels they have in the story. Your team is made whole before every battle.",
+      "streak": "Battle trainers of the Battle Frontier one after another at level 50 for as long as your team keeps winning. Every seven battles they grow stronger.",
+      "puzzles": "A battle stopped halfway, with a goal: win this turn, outlast an attack, make a catch. Every roll is fixed, so only the right idea works."
+    },
+    "clears": "Cleared {n} times",
+    "pick": {
+      "gauntlet": "Which team takes on the gauntlet?",
+      "streak": "Which team starts a streak?",
+      "speciesTitle": "Choose a species",
+      "itemTitle": "Choose an item to hold",
+      "moveTitle": "Choose a move"
+    },
+    "hint": {
+      "begin": "Begin",
+      "play": "Play",
+      "pick": "Pick",
+      "change": "Change",
+      "jump": "Jump"
+    },
+    "noTeams": "No team is built yet. Build one under TEAMS first.",
+    "members": "{n} Pokémon",
+    "level": "Lv. {level}",
+    "cannot": "CAN'T BATTLE",
+    "ready": "READY",
+    "solved": "SOLVED",
+    "rules": {
+      "platinum": "PLATINUM'S RULES",
+      "modern": "MODERN RULES"
+    },
+    "puzzle": {
+      "theirs": "THE FOE",
+      "yours": "YOUR SIDE",
+      "solved": "Solved!",
+      "failed": "Not this time",
+      "solvedBlurb": "That was it. The puzzle keeps its star on this machine.",
+      "again": "TRY AGAIN",
+      "back": "BACK TO THE PUZZLES"
+    },
+    "goal": {
+      "winOne": "Win this turn",
+      "win": "Win within {n} turns",
+      "surviveOne": "Survive this turn",
+      "survive": "Survive {n} turns",
+      "catchOne": "Catch it this turn",
+      "catch": "Catch it within {n} turns",
+      "turn": "Turn {n} of {of}"
+    },
+    "run": {
+      "cleared": "The gauntlet is cleared!",
+      "over": "The run ends after {n} wins",
+      "won": "Battle won! Wins so far: {n}",
+      "progress": "{n} of {of} won",
+      "streak": "Streak of {n}",
+      "newBest": "NEW BEST",
+      "team": "YOUR TEAM",
+      "next": "Next: {who}",
+      "continue": "NEXT BATTLE",
+      "giveUp": "GIVE UP",
+      "ok": "OK"
+    },
+    "builder": {
+      "title": "Team Builder",
+      "defaultName": "TEAM {n}",
+      "newTeam": "NEW TEAM",
+      "add": "ADD A POKéMON",
+      "rename": "RENAME",
+      "delete": "DELETE TEAM",
+      "deleteAgain": "PRESS AGAIN TO DELETE",
+      "none": "None",
+      "noMove": "—",
+      "nameTitle": "Name the team",
+      "stats": "HP {hp} · Atk {atk} · Def {def} · SpA {spa} · SpD {spd} · Spe {spe}",
+      "moveLine": "Power {power} · Accuracy {accuracy} · PP {pp}"
+    },
+    "row": {
+      "species": "SPECIES",
+      "form": "FORM",
+      "level": "LEVEL",
+      "nature": "NATURE",
+      "ability": "ABILITY",
+      "item": "ITEM",
+      "move": "MOVE",
+      "remove": "REMOVE"
+    },
+    "illegal": {
+      "species": "{value} is no species the game knows.",
+      "form": "{value} is no form this species can be built in.",
+      "level": "Level {value} is outside 1 to 100.",
+      "moveCount": "A Pokémon knows one to four moves, not {value}.",
+      "twice": "It knows {value} twice.",
+      "move": "It can't learn {value}.",
+      "ability": "It can't have the ability {value}.",
+      "item": "{value} can't be held.",
+      "empty": "There is nobody on the team yet.",
+      "tooMany": "A team holds six at most, not {value}."
+    }
+  },
+  "puzzles": {
+    "priority": {
+      "title": "First Strike",
+      "hint": "Garchomp is faster, and one Earthquake will finish Lucario. Garchomp is barely standing too."
+    },
+    "trickRoom": {
+      "title": "The Room Turns",
+      "hint": "Trick Room is up and Alakazam is about to throw a Focus Blast. Both of you are worn down."
+    },
+    "levitate": {
+      "title": "Grounded?",
+      "hint": "Bronzong is nearly out. Garchomp's strongest move looks like the obvious answer."
+    },
+    "focusSash": {
+      "title": "Hanging By a Thread",
+      "hint": "Alakazam is untouched and holds a Focus Sash. It is busy with Calm Mind."
+    },
+    "sunshine": {
+      "title": "Under the Sun",
+      "hint": "The sun is harsh. Swampert has taken a beating, but Venusaur's charge move usually needs a turn."
+    },
+    "paralysis": {
+      "title": "A Slower Spark",
+      "hint": "Jolteon is far faster than Machamp, and its Thunderbolt will end this. But Jolteon is paralysed."
+    },
+    "burned": {
+      "title": "Through the Burn",
+      "hint": "Salamence is burned and Garchomp is setting up with Swords Dance. Only one hit will land."
+    },
+    "wonderGuard": {
+      "title": "The Hollow Shell",
+      "hint": "Shedinja has one HP and Wonder Guard. Tyranitar's Earthquake is its biggest hit."
+    },
+    "protect": {
+      "title": "Hold the Line",
+      "hint": "Starmie's Surf will knock Blaziken out before it can move. Still be standing when the turn ends."
+    },
+    "lullaby": {
+      "title": "Lullaby",
+      "hint": "One Poké Ball, and a Dratini at full health. Make the throw count within two turns."
     }
   }
 }

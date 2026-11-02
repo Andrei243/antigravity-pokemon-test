@@ -1,0 +1,14 @@
+{
+  "id": "wonderGuard",
+  "goal": "Win",
+  "turns": 1,
+  "player": [ { "species": "Tyranitar", "level": 50, "nature": "Adamant", "ability": "Unnerve", "moves": ["Earthquake", "Crunch"] } ],
+  "foe": [ { "species": "Shedinja", "level": 50, "nature": "Adamant", "ability": "Wonder Guard", "moves": ["Shadow Sneak"] } ],
+  "foeMoves": ["Shadow Sneak"],
+  "rolls": [
+    { "kind": "Critical", "values": [1] }, { "kind": "Damage", "values": [15] }, { "kind": "Accuracy", "values": [0] },
+    { "kind": "SideEffect", "values": [99] }, { "kind": "AbilityChance", "values": [99] }
+  ],
+  "solution": [ { "move": "Crunch" } ],
+  "decoy": [ { "move": "Earthquake" } ]
+}
