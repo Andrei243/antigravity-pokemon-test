@@ -788,7 +788,7 @@ public class MovePresentationTests
             Assert.True(MathF.Abs(s[0]) < 0.02f && MathF.Abs(s[^1]) < 0.02f, $"{mode} clicks");
             Assert.True(s.Max(MathF.Abs) <= Cries.Peak + 0.01f, $"{mode} peaks over the cry's peak");
             Assert.True(Loudness.Of(s) <= Loudness.CryCeiling + 0.05, $"{mode} is too loud");
-            Assert.InRange(s.Length / (double)Synthesizer.SampleRate, 0.2, 2.0);
+            Assert.InRange(s.Length / (double)Synthesizer.DsRate, 0.2, 2.0);
         }
         Assert.Equal(modes.Length, made.Select(s => $"{s.Length}:{s[s.Length / 3]:0.0000}").Distinct().Count());
         foreach (var move in new[] { "Growl", "Roar", "Hyper Voice", "Howl", "Chatter" }) Assert.NotNull(SoundBank.CryModesOf(move));

@@ -11,9 +11,44 @@ public enum AudioBus { Music, Fanfare, Sound, Cry, Ambience }
 /// fanfare (healing, an item, a level-up) silences the music, plays, and lets the music come back where it left
 /// off, sound effects play over the music, and the music dips under a cry. Rendering runs on the audio thread,
 /// commands on the game thread, so both take the lock.
+/// <para>
+/// Plan 31 · MU1: the mix runs at <see cref="Rate"/>, the device's own 48 kHz. Everything in the DS sound (its songs,
+/// fanfares, sound effects, cries and ambience beds, whose numbers are all at <see cref="Synthesizer.DsRate"/>) is
+/// mixed as it always was, bus by bus at the DS's rate, and that one stream is taken into the mix's rate by a
+/// <see cref="Resampler"/>; the last stage (the high-pass, the handheld's speakers, mono, the volume, the glide behind
+/// another window, the limiter) runs at the mix's rate. A mixer made at the DS's rate
+/// (<c>new AudioMixer(Synthesizer.DsRate)</c>) resamples nothing and renders the very samples the mixer rendered
+/// before MU1, which <c>MixRateTests</c> hold.
+/// </para>
 /// </summary>
 public sealed class AudioMixer
 {
+    /// <summary>The rate of the mix and of the audio stream raylib's device pulls from: the device's 48 kHz.</summary>
+    public const int Rate = 48000;
+
+    /// <summary>The rate this mixer renders at: <see cref="Rate"/>, or the DS's for the old path.</summary>
+    public int OutputRate { get; }
+
+    private readonly Resampler? resampler;
+    private float[] dsBuffer = new float[4096];
+    private int dsQueued;
+
+    /// <summary>The DS stage's chunk: what it mixes at once, with one step of its fades and ducks.</summary>
+    private const int DsChunk = 256;
+    private readonly float highPassCoef;
+
+    /// <summary>A mixer at the mix's rate, as the game has.</summary>
+    public AudioMixer() : this(Rate) { }
+
+    /// <summary>A mixer at <paramref name="rate"/>: <see cref="Rate"/>, or <see cref="Synthesizer.DsRate"/> for the path before MU1, which resamples nothing.</summary>
+    public AudioMixer(int rate)
+    {
+        if (rate != Rate && rate != Synthesizer.DsRate) throw new ArgumentOutOfRangeException(nameof(rate), rate, "the mix runs at 48 kHz or, unresampled, at the DS's rate");
+        OutputRate = rate;
+        if (rate != Synthesizer.DsRate) resampler = Resampler.ForMix();
+        highPassCoef = 1f / (1f + MathF.Tau * 30f / rate);
+    }
+
     private const float FadeOutTime = 0.45f;
     private const float FanfareDuckTime = 0.12f;
     private const float ResumeTime = 0.6f;
@@ -54,7 +89,6 @@ public sealed class AudioMixer
     private float duck = 1f;
     private bool fanfareActive;
     private float fanfareTail;
-    private static readonly float HighPassCoef = 1f / (1f + MathF.Tau * 30f / Synthesizer.SampleRate);
     private readonly float[] highPass = new float[2];
     private readonly float[] lastInput = new float[2];
 
@@ -308,11 +342,41 @@ public sealed class AudioMixer
         fadeTarget = musicGain;
     }
 
-    /// <summary>Fills <paramref name="output"/> (interleaved stereo) with the next stretch of sound.</summary>
+    /// <summary>Fills <paramref name="output"/> (interleaved stereo, at <see cref="OutputRate"/>) with the next stretch of sound.</summary>
     public void Render(Span<float> output)
     {
-        output.Clear();
         lock (gate)
+        {
+            int frames = output.Length / 2;
+            if (resampler == null)
+            {
+                RenderDs(output);
+            }
+            else
+            {
+                // The DS's buses are mixed at their own rate, as far ahead as the resampler's taps reach, and taken into
+                // the mix's. They are always mixed a whole chunk at a time, however many frames the device asks for, so
+                // the DS stage keeps the grid it always had: a song's notes start on the same samples as before MU1
+                int needed = resampler.InputFor(frames);
+                while (dsQueued < needed)
+                {
+                    if (dsBuffer.Length < (dsQueued + DsChunk) * 2) Array.Resize(ref dsBuffer, (dsQueued + DsChunk) * 4);
+                    RenderDs(dsBuffer.AsSpan(dsQueued * 2, DsChunk * 2));
+                    dsQueued += DsChunk;
+                }
+                resampler.Push(dsBuffer.AsSpan(0, needed * 2));
+                dsQueued -= needed;
+                Array.Copy(dsBuffer, needed * 2, dsBuffer, 0, dsQueued * 2);
+                resampler.Pull(output);
+            }
+            Finish(output, frames);
+        }
+    }
+
+    /// <summary>The DS sound's buses mixed at <see cref="Synthesizer.DsRate"/> into <paramref name="output"/>, overwriting it: the music, the fanfare, the sounds and the beds, with their fades and ducks.</summary>
+    private void RenderDs(Span<float> output)
+    {
+        output.Clear();
         {
             int frames = output.Length / 2;
             const int chunk = 256;
@@ -320,7 +384,7 @@ public sealed class AudioMixer
             {
                 int n = Math.Min(chunk, frames - done);
                 var o = output.Slice(done * 2, n * 2);
-                float dt = n / (float)Synthesizer.SampleRate;
+                float dt = n / (float)Synthesizer.DsRate;
 
                 // Fade towards the target; a finished fade-out hands over to the next song
                 if (musicGain < fadeTarget) musicGain = MathF.Min(fadeTarget, musicGain + fadeRate * dt);
@@ -362,7 +426,13 @@ public sealed class AudioMixer
                 RenderSounds(o);
                 RenderBeds(o, dt);
             }
+        }
+    }
 
+    /// <summary>The mix's last stage, at <see cref="OutputRate"/>: the handheld's speakers, mono, the volume, the glide behind another window, the high-pass and the limiter.</summary>
+    private void Finish(Span<float> output, int frames)
+    {
+        {
             if (handheld) Speakers(output);
             if (mono) Fold(output);
             float gain = Muted ? 0f : Volume;
@@ -371,7 +441,7 @@ public sealed class AudioMixer
             float awayFrom = awayGain, awayTarget = away ? AwayLevel : 1f;
             if (awayGain != awayTarget)
             {
-                float step = frames / (float)Synthesizer.SampleRate / AwayTime * (1f - AwayLevel);
+                float step = frames / (float)OutputRate / AwayTime * (1f - AwayLevel);
                 awayGain = awayGain < awayTarget ? MathF.Min(awayTarget, awayGain + step) : MathF.Max(awayTarget, awayGain - step);
             }
             bool gliding = awayFrom != 1f || awayGain != 1f;
@@ -380,7 +450,7 @@ public sealed class AudioMixer
                 // A high-pass at ~30 Hz keeps rumble the speakers can't play out of the mix
                 int ch = i & 1;
                 float input = output[i];
-                highPass[ch] = HighPassCoef * (highPass[ch] + input - lastInput[ch]);
+                highPass[ch] = highPassCoef * (highPass[ch] + input - lastInput[ch]);
                 lastInput[ch] = input;
 
                 // Gentle limiter: transparent below ±0.8, rounding off peaks above it
@@ -427,8 +497,8 @@ public sealed class AudioMixer
     /// <summary>The handheld's speakers: the sides drawn together and the band narrowed (the ten bits come after the limiter).</summary>
     private void Speakers(Span<float> output)
     {
-        float hp = 1f / (1f + MathF.Tau * HandheldLow / Synthesizer.SampleRate);
-        float lp = 1f - MathF.Exp(-MathF.Tau * HandheldHigh / Synthesizer.SampleRate);
+        float hp = 1f / (1f + MathF.Tau * HandheldLow / OutputRate);
+        float lp = 1f - MathF.Exp(-MathF.Tau * HandheldHigh / OutputRate);
         for (int i = 0; i + 1 < output.Length; i += 2)
         {
             float mid = (output[i] + output[i + 1]) * 0.5f;

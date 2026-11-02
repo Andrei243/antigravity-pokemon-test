@@ -19,7 +19,7 @@ public class SoundTests
 {
     private static float[] Render(AudioMixer mixer, double seconds)
     {
-        var buffer = new float[(int)(seconds * Synthesizer.SampleRate) * 2];
+        var buffer = new float[(int)(seconds * AudioMixer.Rate) * 2];
         for (int done = 0; done < buffer.Length; done += 2048)
             mixer.Render(buffer.AsSpan(done, Math.Min(2048, buffer.Length - done)));
         return buffer;
@@ -33,7 +33,7 @@ public class SoundTests
         return Math.Sqrt(sum / Math.Max(1, to - from));
     }
 
-    private static int Frames(double seconds) => (int)(seconds * Synthesizer.SampleRate) * 2;
+    private static int Frames(double seconds) => (int)(seconds * AudioMixer.Rate) * 2;
 
     [Fact]
     public void EverySoundRendersCleanlyAndNeverClicks()
@@ -63,7 +63,7 @@ public class SoundTests
             var mixer = new AudioMixer();
             mixer.PlaySound(sound, AudioBus.Sound);
             var (low, high) = Loudness.Target(AudioBus.Sound);
-            double loud = Loudness.Of(Render(mixer, sound.Duration + 0.1), 2);
+            double loud = Loudness.Of(Render(mixer, sound.Duration + 0.1), 2, AudioMixer.Rate);
             Assert.True(loud >= low && loud <= high, $"{name} measures {loud:0.0} dB, outside {low} to {high}");
         }
     }
@@ -155,7 +155,7 @@ public class SoundTests
         var plain = Render(reference, 4.0);
 
         // A silent "cry" a second long: what it does to the music is all that is heard
-        var silentCry = new SoundSample("silence", new float[Synthesizer.SampleRate]);
+        var silentCry = new SoundSample("silence", new float[Synthesizer.DsRate]);
         var mixer = new AudioMixer();
         mixer.Play(twinleaf, night: false);
         Render(mixer, 2.0);

@@ -60,8 +60,10 @@ public static class AudioManager
     {
         try
         {
-            Raylib.SetAudioStreamBufferSizeDefault(1024);
-            stream = Raylib.LoadAudioStream((uint)Synthesizer.SampleRate, 32, 2);
+            // The stream runs at the device's own rate (plan 31 · MU1), so raylib passes the mix through untouched; 1,536
+            // frames at 48 kHz is the 32 ms that 1,024 were at the DS's rate
+            Raylib.SetAudioStreamBufferSizeDefault(1536);
+            stream = Raylib.LoadAudioStream((uint)AudioMixer.Rate, 32, 2);
             Raylib.SetAudioStreamCallback(stream, &FillStream);
             Raylib.PlayAudioStream(stream);
         }
