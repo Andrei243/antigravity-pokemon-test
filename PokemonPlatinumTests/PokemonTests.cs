@@ -250,7 +250,9 @@ public class PokemonTests
             // (and the Battle Pyramid's floor, left by its stairs' script and its own arrival's, plan 14 · B10)
             && mapName != "BattlePyramidFloor"
             // (and the Battle Tents' corridors and battle rooms, left by the round's own script, plan 21 · H3)
-            && !mapName.Contains("_BattleTent"))
+            && !mapName.Contains("_BattleTent")
+            // (and Black 2's hidden grotto, left by reading its tunnel mouth, plan 22 · U11)
+            && mapName != "HiddenGrotto")
             Assert.True(map.Warps.Count > 0, $"{mapName} has no warps");
         // A map of the imported world is many places, and not every one leads to every other: a cave lies between
         // the two halves of a route, rocks wait for Rock Smash. The test below walks the whole game instead.
