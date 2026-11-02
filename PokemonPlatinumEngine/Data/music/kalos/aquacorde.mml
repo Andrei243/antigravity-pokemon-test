@@ -1,0 +1,35 @@
+# Aquacorde Town (and its rooms): the riverside town of the old bridge and the café on the waterfront, a bright
+# clarinet tune in D over a plucked guitar and a light brushed step, the water going by under it, with a softer middle
+# section in G before it comes round again. Original composition for this game (plan 23 · Z1).
+title Aquacorde Town
+tempo 112
+meter 4/4
+reverb 0.3
+nighttempo 0.92
+
+track lead clarinet night=oboe vol=0.72 pan=0 rev=0.3
+  L o5 d4 f+8 a8 b4 a4 | o5 g4 e8 f+8 g4 b4 | o5 a4 f+8 d8 e4 f+4 | o5 e2. r4 |
+  o5 f+4 a8 o6 d8 c+4 o5 b4 | o5 a4 g8 f+8 e4 g4 | o5 f+4 d8 e8 f+4 e4 | o5 d2. r4 |
+  o5 b4 a8 g8 a4 b4 | o5 a4 f+8 e8 d4 f+4 | o5 g4 a8 b8 o6 c+4 o5 a4 | o5 b2. r4 |
+  o5 g4 b8 o6 d8 c+4 o5 b4 | o5 a4 f+8 a8 g4 e4 | o5 f+4 e8 d8 e4 c+4 | o5 d2. r4 |
+
+track guitar guitar night=harp vol=0.48 pan=-0.3 rev=0.28
+  L o4 d4 f+4 a4 f+4 | o4 e4 g4 b4 g4 | o4 d4 f+4 a4 f+4 | o4 c+4 e4 a4 e4 |
+  o4 d4 f+4 a4 f+4 | o4 e4 g4 b4 g4 | o4 c+4 e4 a4 e4 | o4 d4 f+4 a4 f+4 |
+  o4 g4 b4 d4 b4 | o4 d4 f+4 a4 f+4 | o4 e4 g4 b4 g4 | o4 e4 g4 b4 g4 |
+  o4 g4 b4 d4 b4 | o4 d4 f+4 a4 f+4 | o4 c+4 e4 a4 e4 | o4 d4 f+4 a4 f+4 |
+
+track pad strings night=pad vol=0.2 pan=0.25 rev=0.4
+  L o4 (d f+ a)1 | (e g b)1 | (d f+ a)1 | (c+ e a)1 |
+  (d f+ a)1 | (e g b)1 | (c+ e a)1 | (d f+ a)1 |
+  (g b d)1 | (d f+ a)1 | (e g b)1 | (e g b)1 |
+  (g b d)1 | (d f+ a)1 | (c+ e a)1 | (d f+ a)1 |
+
+track bass bass vol=0.62 rev=0.1
+  L o3 d4 a4 d4 a4 | o3 e4 b4 e4 b4 | o3 d4 a4 d4 a4 | o3 a4 e4 a4 e4 |
+  o3 d4 a4 d4 a4 | o3 e4 b4 e4 b4 | o3 a4 e4 a4 e4 | o3 d4 a4 d2 |
+  o3 g4 d4 g4 d4 | o3 d4 a4 d4 a4 | o3 e4 b4 e4 b4 | o3 e4 b4 e4 b4 |
+  o3 g4 d4 g4 d4 | o3 d4 a4 d4 a4 | o3 a4 e4 a4 e4 | o3 d4 a4 d2 |
+
+track step kit vol=0.28 pan=0.1 rev=0.12
+  L v60 [ b4 v38 h8 h8 v52 s4 v38 h8 h8 v60 | ]16

@@ -1505,6 +1505,12 @@ unova_youngster_kevin 186 (60) [Venonat → Somnimoth, Raticate → Ratchisel, V
 unova_youngster_mikey 187 (61) [Volbeat → Photurion, Mothim → Nocturmoth]
 unova_youngster_nicholas 186 (60) [Phanpy → Siegephant, Doduo → Tripluma, Fearow → Lancerow]
 unova_youngster_wes 177 (39) [Skorupi → Dreadpion, Seviper → Scimitail]
+=== region Kalos
+levels 2 → 185, 68 → 205, 76 → 222
+caps 188 192 194 195 196 197 199 202 205 (own 12 25 32 34 37 42 48 59 68)
+kalos_shauna_1 186 (5) [Froakie → Greninja]
+kalos_shauna_2 186 (5) [Chespin → Chesnaught]
+kalos_shauna_3 186 (5) [Fennekin → Delphox]
 === DriftveilCity_Gym
 Driftveil City, Unova
 trainers 7, 173-174 (own 29-31): unova_worker_friedrich 174 (31) [Sandile → Krookodile], unova_worker_maynard 174 (31) [Drilbur → Excadrill], unova_worker_niel 173 (30) [Baltoy → Dogunarch, Sandile → Krookodile], unova_worker_noel 174 (31) [Baltoy → Dogunarch], unova_worker_pasqual 173 (30) [Drilbur → Excadrill, Baltoy → Dogunarch], unova_worker_tavarius 173 (29) [Drilbur → Excadrill, Sandile → Krookodile, Baltoy → Dogunarch], unova_worker_tibor 173 (30) [Sandile → Krookodile, Drilbur → Excadrill]

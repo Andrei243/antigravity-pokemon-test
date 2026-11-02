@@ -39,7 +39,7 @@ public class LevelLadderTests
             59, 185, 80, 203, new[] { 166, 168, 171, 173, 175, 177, 181, 182, 185 })
     };
 
-    /// <summary>Cynthia's strongest, where the climb starts; and Kalos's Champion as the W4 study placed it, until plan 23 builds Kalos.</summary>
+    /// <summary>Cynthia's strongest, where the climb starts; and Kalos's Champion as the W4 study placed it, until Kalos's League is built (plan 23 · Z1 drew its first towns, with no trainers' Leaders yet).</summary>
     private const int SinnohChampion = 62, KalosChampion = 205;
 
     private static Region RegionOf(string id) => RegionDatabase.Get(id) ?? throw new ArgumentException(id);
@@ -121,8 +121,8 @@ public class LevelLadderTests
         Assert.Equal(new[] { 14, 22, 26, 32, 37, 41, 44, 50, 62 }, LevelCaps.TableOf(RegionDatabase.Sinnoh));
         Assert.Equal(LevelCaps.TableOf(RegionDatabase.Sinnoh), LevelCaps.TableOf(RegionDatabase.Sinnoh, crossed: true));
         // A region with no table yet has none either way
-        Assert.Null(LevelCaps.TableOf(RegionDatabase.Kalos));
-        Assert.Null(LevelCaps.TableOf(RegionDatabase.Kalos, crossed: true));
+        Assert.Null(LevelCaps.TableOf(RegionDatabase.Alola));
+        Assert.Null(LevelCaps.TableOf(RegionDatabase.Alola, crossed: true));
     }
 
     [Fact]

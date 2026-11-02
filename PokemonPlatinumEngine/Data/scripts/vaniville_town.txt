@@ -1,0 +1,72 @@
+# Vaniville Town (plan 23 · Z1). docs/scripts.md describes the language; the lines are our own, on X and Y's beats as
+# they are publicly described (docs/mechanics/rulings.md, "Kalos's first chapter"): no script of the original is read.
+#
+# VAR_KALOS_STORY, Kalos's first chapter's count: 0 a new game, in the bedroom; 1 Mom has said the neighbours are
+# waiting; 2 met the neighbour and Shauna at the door, off to Aquacorde Town; 3 the first Pokémon, the Pokédex and
+# Shauna's battle had at the café, off home to show Mom; 4 Mom has handed over the roller skates.
+#
+# The people: rival, the neighbour who is the rival (FLAG_KALOS_HIDE_RIVAL_VANIVILLE), shauna (FLAG_KALOS_HIDE_SHAUNA_VANIVILLE).
+
+
+# Out of the front door for the first time: the neighbour and Shauna come to meet the player
+script OnEnter
+  if var VAR_KALOS_STORY == 0 goto CrossedIn
+  if var VAR_KALOS_STORY != 1 end
+  if var PLAYER_X != 242 end
+  if var PLAYER_Y != 722 end
+  goto AtTheDoor
+# A Champion come across from another region lands before the house's door with nothing of the story done: they are
+# met as a new neighbour is, and sent to the café where the friends wait
+label CrossedIn
+  if var CROSSED_IN != 1 end
+  namerival
+  setvar VAR_KALOS_STORY 2
+  clearflag FLAG_KALOS_HIDE_RIVAL_AQUACORDE
+  end
+label AtTheDoor
+  scene "The neighbours at the door"
+  clearflag FLAG_KALOS_HIDE_RIVAL_VANIVILLE
+  clearflag FLAG_KALOS_HIDE_SHAUNA_VANIVILLE
+  place rival 247 722 left
+  place shauna 247 723 left
+  show rival
+  show shauna
+  speaker "Shauna"
+  say "Hellooo! Are you the one who just moved in?"
+  move shauna left 2
+  walk rival left 3
+  waitmoves
+  face player right
+  speaker "{rival}"
+  say "Hi. I'm {rival}, from the house next door. Welcome to Vaniville."
+  speaker "Shauna"
+  say "And I'm Shauna! We came to fetch you. A professor wants to meet some new Trainers, and you're one of them!"
+  speaker "{rival}"
+  say "Our friends are waiting at the café in Aquacorde Town. It's just up Route 1, north of here."
+  speaker "Shauna"
+  say "Don't be long! Something exciting is waiting for you there!"
+  walk shauna right 9 up 23 fast
+  hide shauna
+  setflag FLAG_KALOS_HIDE_SHAUNA_VANIVILLE
+  speaker "{rival}"
+  face rival player
+  say "She's always like that. I'll see you in Aquacorde, {player}."
+  walk rival down 1 right 10 up 23 fast
+  hide rival
+  setflag FLAG_KALOS_HIDE_RIVAL_VANIVILLE
+  clearflag FLAG_KALOS_HIDE_RIVAL_AQUACORDE
+  setvar VAR_KALOS_STORY 2
+  endscene
+  end
+
+
+# The two, should they be spoken to while they stand there (they leave in the same scene)
+script Rival
+  speaker "{rival}"
+  say "Aquacorde Town is just north of here. Our friends are waiting."
+  end
+
+script Shauna
+  speaker "Shauna"
+  say "Come on, come on! Aquacorde's this way!"
+  end

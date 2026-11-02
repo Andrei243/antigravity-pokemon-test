@@ -1,0 +1,11 @@
+{
+  // Route 1, the Vaniville Pathway (plan 23 · Z1): drawn by hand, a short lane between flower beds with no grass and no
+  // wild Pokémon, as X and Y's first route has none
+  "area": "kalos_route_1",
+  "bgmTrack": "kalos/vaniville",
+  "trees": "Round",
+  "architecture": "Hamlet",
+  "signs": {
+    "RouteSign": "Route 1 · Vaniville Pathway\nNorth: Aquacorde Town\nSouth: Vaniville Town"
+  }
+}

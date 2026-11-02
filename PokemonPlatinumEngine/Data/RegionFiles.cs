@@ -109,6 +109,12 @@ public sealed class RegionFile
     /// </summary>
     public bool HasSeasons { get; set; }
 
+    /// <summary>
+    /// Whether the region's people get about on roller skates (plan 23 · Z1: Kalos's): once the skates are had
+    /// (<see cref="Overworld.SkateRules.Flag"/>) the run button puts them on (<see cref="Overworld.TravelMode.Skating"/>).
+    /// </summary>
+    public bool Skates { get; set; }
+
     /// <summary>The name the introduction offers for the rival; null where the region's rival is its other hero.</summary>
     public string? Rival { get; set; }
 

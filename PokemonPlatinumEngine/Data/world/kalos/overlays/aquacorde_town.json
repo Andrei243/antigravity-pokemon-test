@@ -1,0 +1,60 @@
+{
+  // Aquacorde Town (plan 23 · Z1): drawn by hand, our words. The first chapter's scene at the café on the waterfront
+  // (aquacorde_town.txt): the neighbour and the three friends at their table, the first Pokémon, the Pokédex and the first
+  // battle. The friends stay at their table until Route 2 is drawn; the neighbour, hidden by a flag of ours until the scene
+  // at the door, goes home once it is over. The way north over the bridge, Route 2,
+  // is not drawn yet: the trigger before the trees turns the player back
+  "area": "aquacorde_town",
+  "bgmTrack": "kalos/aquacorde",
+  "trees": "Round",
+  "architecture": "Canalside",
+  "doors": [
+    { "warp": 0, "map": "AquacordeTown_WestHouse", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 1, "map": "AquacordeTown_SouthwestHouse", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 2, "map": "AquacordeTown_EastHouse", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 3, "map": "AquacordeTown_SoutheastHouse", "x": 4, "y": 8, "facing": "Up" }
+  ],
+  "triggers": [
+    { "script": "Cafe0", "x": 254, "z": 661, "width": 1, "depth": 1, "variable": "VAR_KALOS_STORY", "value": 2 },
+    { "script": "Cafe1", "x": 255, "z": 661, "width": 1, "depth": 1, "variable": "VAR_KALOS_STORY", "value": 2 },
+    { "script": "Cafe2", "x": 256, "z": 661, "width": 1, "depth": 1, "variable": "VAR_KALOS_STORY", "value": 2 },
+    { "script": "Cafe3", "x": 257, "z": 661, "width": 1, "depth": 1, "variable": "VAR_KALOS_STORY", "value": 2 },
+    { "script": "NotYet", "x": 254, "z": 648, "width": 4, "depth": 1, "variable": "VAR_KALOS_ROUTE_2", "value": 0 }
+  ],
+  "props": [
+    { "type": "Table", "x": 250, "y": 657, "width": 2, "depth": 1 },
+    { "type": "Table", "x": 243, "y": 657, "width": 1, "depth": 1 },
+    { "type": "Table", "x": 246, "y": 657, "width": 1, "depth": 1 },
+    { "type": "Booth", "x": 264, "y": 656, "width": 3, "depth": 2 },
+    { "type": "Planter", "x": 260, "y": 660, "width": 1, "depth": 1 },
+    { "type": "Planter", "x": 247, "y": 660, "width": 1, "depth": 1 },
+    { "type": "Bench", "x": 270, "y": 659, "width": 2, "depth": 1 }
+  ],
+  "people": {
+    "shauna": { "name": "Shauna", "npcType": "shauna", "script": "Shauna", "still": true },
+    "tierno": { "name": "Tierno", "npcType": "tierno", "script": "Tierno", "still": true },
+    "trevor": { "name": "Trevor", "npcType": "trevor", "script": "Trevor", "still": true },
+    "rival": { "name": "{rival}", "npcType": "Rival:SERENA:CALEM", "script": "Rival", "still": true, "hiddenBy": "FLAG_KALOS_HIDE_RIVAL_AQUACORDE" },
+    "clerk": { "name": "Clerk", "npcType": "Clerk", "script": "Clerk", "still": true, "dialog": [ "Welcome to the market stall! What can I get for you?" ] },
+    "waiter": {
+      "name": "Waiter",
+      "npcType": "waiter",
+      "still": true,
+      "dialog": [ "The café's tables look over the river. Trainers come from all over to plan their journeys here." ]
+    },
+    "fisherman": {
+      "name": "Fisherman",
+      "npcType": "fisherman",
+      "still": true,
+      "dialog": [ "The river's too lively for fishing today. I just like watching the water go under the bridge." ]
+    },
+    "girl": {
+      "name": "Girl",
+      "npcType": "Lass",
+      "dialog": [ "The bridge here is older than anyone can remember. They say it was built for a king's carriages!" ]
+    }
+  },
+  "signs": {
+    "TownSign": "Aquacorde Town\nA riverside town where journeys meet."
+  }
+}

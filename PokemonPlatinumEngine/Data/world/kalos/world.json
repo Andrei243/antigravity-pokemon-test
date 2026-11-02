@@ -1,0 +1,20 @@
+{
+  // What is built of Kalos so far (plan 23 · Z1). X and Y have no decompilation and no dump, so Kalos is drawn by hand on
+  // the four-direction tile grid (the user's decision of 2026-11-02): the drawings are tools/MapDraw/kalos, and
+  // `dotnet run --project tools/MapDraw -- kalos` writes the chunks, the matrix and the habitats here from them. The area
+  // files, the overlays and this index are written by hand. The rooms are hand-made map files (Data/maps), reached by the
+  // overlays' doors. Kalos's keys are the places' names in lower case, a route's taking the region's name, since Kanto's
+  // routes have the same numbers (kalos_route_1).
+  "region": "Kalos",
+  // The houses are drawn into the tiles, each found at its door (WorldMapBuilder.BuildingsAtDoors), as a GBA region's are
+  "buildingsAtDoors": true,
+  "maps": [
+    // The overworld: 24 chunks by 24, Vaniville Town in its south-west
+    { "name": "Kalos", "matrix": 0, "trees": "Round" }
+  ],
+  "areas": [
+    "vaniville_town",
+    "kalos_route_1",
+    "aquacorde_town"
+  ]
+}

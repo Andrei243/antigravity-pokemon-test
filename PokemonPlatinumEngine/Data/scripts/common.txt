@@ -2668,6 +2668,20 @@ label Bye
   end
 
 
+# ------------------------------------------------------------------ Kalos (plan 23 · Z1)
+
+# What every game starts with in Kalos: the neighbour and Shauna, who come to the door in the first scene, and the
+# neighbour at the café, who goes ahead in it, hidden until then. Run with no screen
+# after NewGame for every new game (Story/StoryMigration.BeginNewGame runs each region's <Region>NewGame). It may only
+# set flags and variables, and ends in return.
+script KalosNewGame
+  setflag FLAG_KALOS_HIDE_RIVAL_VANIVILLE
+  setflag FLAG_KALOS_HIDE_SHAUNA_VANIVILLE
+  setflag FLAG_KALOS_HIDE_RIVAL_AQUACORDE
+  setflag FLAG_KALOS_STORY_BEGUN
+  return
+
+
 # ------------------------------------------------------------------ Unova (plan 22 · U5)
 
 # What every game starts with in Unova, as Black 2's new game leaves its first chapter's people: Mom at home, Hugh and

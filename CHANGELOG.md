@@ -5,6 +5,7 @@ What changes from one release to the next, for players. Every session's close-ou
 ## [Unreleased]
 
 ### Added
+- Kalos's first places: a new game begun in Kalos wakes in your room in Vaniville Town, a little town in a clearing of the woods. Your neighbour and their friend Shauna come to the door, Route 1 takes you north to Aquacorde Town on its river, and at the café on the waterfront your new friends hand over your first Pokémon (Chespin, Fennekin or Froakie) and a Pokédex before Shauna asks for a battle. Back home Mom gives you roller skates: hold the run button to skate at a run's pace and glide a tile when you stop (not through tall grass or up stairs). A Champion who flies over from Unova now lands in Vaniville Town. The way on north of Aquacorde's bridge is not open yet.
 - The Trick House on Route 110 has all eight of its puzzles. After each new Badge the Trick Master hides somewhere else in his front room; find him and a new puzzle opens behind the scroll: buttons that cover holes, red and blue doors that swap at every button, a room of boulders, five Mechadolls with quiz questions, rotating gates, floor arrows that carry trainers and statues round, and a slippery floor, the last once you are Champion. Each has its own trainers, its scroll and its code, and its own reward at the end, ending with a tent for your secret base. Seven more kinds of mail are found in them.
 
 ### Fixed

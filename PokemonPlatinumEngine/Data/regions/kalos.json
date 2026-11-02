@@ -1,0 +1,59 @@
+{
+  "id": "Kalos",
+  "folder": "kalos",
+  "models": "kalos",
+  "map": "Kalos",
+  // Kalos's first places as they are drawn by hand (plan 23 · Z1; tools/MapDraw/kalos): X and Y have no decompilation
+  // and no dump, so the region is laid in its shape on the four-direction grid. Kalos-Central, the first of its three
+  // Pokédexes, until plan 23's later sessions list all three
+  "dex": "kalos-central",
+  "nationalUnlock": "HallOfFame",
+  // A new game begun here (--region Kalos) wakes in the player's room in Vaniville Town with nothing, and the friends
+  // in Aquacorde Town hand over the first Pokémon (plan 23 · Z1)
+  "hasStory": true,
+  // Kalos's people get about on roller skates (plan 23 · Z1: TravelMode.Skating, once the story gives them)
+  "skates": true,
+  // The rival is the hero the player isn't, who lives next door (X and Y's neighbour): Serena beside the boy, Calem
+  // beside the girl
+  "rivals": { "boy": "Serena", "girl": "Calem" },
+  "heroes": { "boy": "PLAYER", "girl": "DAWN" },
+  "starters": [ "Chespin", "Fennekin", "Froakie" ],
+  "badges": [ "Bug", "Cliff", "Rumble", "Plant", "Voltage", "Fairy", "Psychic", "Iceberg" ],
+  // X and Y ask no badge of a field move outside battle; a gate a later session finds it needs goes here
+  "gates": {},
+  "professor": {
+    "name": "Prof. Sycamore",
+    "look": "SYCAMORE",
+    "species": "Fletchling",
+    "lines": {
+      "hello": "Bonjour! You made it. Come in, come in, let me look at you.",
+      "welcome": "Welcome to the world of Pokémon!",
+      "myName": "I'm Sycamore. I study how some Pokémon change so much, all at once, when the bond with their Trainer is strong enough.",
+      "world": "Pokémon live in every corner of Kalos: in the meadows, the forests and the rivers, in the cities and out on the cold mountains.",
+      "oneOfThem": "This little one sings on my windowsill every morning. Say hello!",
+      "liveAlongside": "People and Pokémon here share everything: the work, the fun, and sometimes a battle side by side.",
+      "study": "My research is about that change, and about what it is between a Trainer and a Pokémon that makes it happen.",
+      "enough": "But that's quite enough about me. Tell me about yourself.",
+      "boyOrGirl": "Are you a boy, or are you a girl?",
+      "askName": "And what shall I call you?",
+      "nextDoor": "You've just moved in next to a young Trainer who has been looking forward to meeting you.",
+      "neverStill": "Your new neighbour's friends are just as eager. I think you'll get along famously.",
+      "fineName": "{name}! A lovely name.",
+      "ofCourse": "I'm sure the two of you will make a fine pair of rivals.",
+      "story": "{name}, your journey through Kalos begins in Vaniville Town, a quiet little place in the south of the region.",
+      "offYouGo": "Allez! Kalos is waiting for you!"
+    }
+  },
+  // The heal places of the towns drawn so far: the player's house in Vaniville Town, where a white-out goes until a
+  // Pokémon Center is drawn (Santalune City's, plan 23 · Z1's next part)
+  "spawns": [
+    { "id": 1, "area": "vaniville_town", "x": 242, "y": 722, "room": "VanivilleTown_PlayersHouse_1F" }
+  ],
+  // Plan 18 · W4: X and Y's levels for a team that crossed from Unova, from Iris's 185 on the first route to Diantha at
+  // 205, as the W4 study placed Kalos's Champion; W4b-1: the post-game's strongest (about 76, approximate until the
+  // region's post-game is built) at 222, min(1.15 × 205, Alola's 224 − 2, 260)
+  "levels": [[2, 185], [68, 205], [76, 222]],
+  // Plan 18 · W4b-1: the level cap by Badges held, X and Y's own levels (the Leaders' best in rising order, then
+  // Diantha's); mapped by "levels" where the region is crossed into
+  "caps": [12, 25, 32, 34, 37, 42, 48, 59, 68]
+}

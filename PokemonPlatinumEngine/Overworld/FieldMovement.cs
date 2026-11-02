@@ -14,7 +14,13 @@ public enum TravelMode
     /// Under the sea after a dive (plan 21 · H5): swimming along the sea floor at walking pace, never running, as
     /// Emerald's <c>PLAYER_AVATAR_FLAG_UNDERWATER</c> walks; Dive takes them back up.
     /// </summary>
-    Diving
+    Diving,
+    /// <summary>
+    /// On roller skates (plan 23 · Z1, Kalos's): at a run's pace, never in tall grass or on stairs, and a tile's
+    /// glide on stopping (<see cref="FieldMovement.Coast"/>). Taken with the Run button where the region skates and
+    /// the skates are had, as the Bicycle's gear is changed with it.
+    /// </summary>
+    Skating
 }
 
 /// <summary>
@@ -102,7 +108,9 @@ public enum Obstacle
     /// <summary>A whirlpool that needs Whirlpool, or that has no open water beyond it (plan 20 · J8).</summary>
     Whirlpool,
     /// <summary>A rail or a bumpy slope (the GBA's): taken only on the Acro Bike, a rail only along its length (plan 21 · H3).</summary>
-    AcroBike
+    AcroBike,
+    /// <summary>Ground skates don't take (plan 23 · Z1): tall grass and stairs; the step is taken on foot instead.</summary>
+    Skates
 }
 
 /// <summary>
@@ -414,7 +422,35 @@ public static class FieldMovement
         }
         else if (plank != null) return No(Obstacle.BicyclesOnly);
 
+        // Skates take no tall grass and no stairs (plan 23 · Z1): X and Y's skater steps off them there
+        if (walker.Mode == TravelMode.Skating && RefusesSkates(map, x, y, nx, ny, dir)) return No(Obstacle.Skates);
+
         return new FieldStep(StepKind.Walk, nx, ny, height, PaceOn(here, walker), walker.Mode, Obstacle.None);
+    }
+
+    /// <summary>
+    /// Whether a step from one tile to the next is no ground for skates (plan 23 · Z1): either tile tall grass, deep
+    /// snow or mud, or a stair: a slope met along its fall, or a tile of the side stairs.
+    /// </summary>
+    public static bool RefusesSkates(Map map, int x, int y, int nx, int ny, Direction dir)
+    {
+        var there = map.BehaviourAt(nx, ny);
+        if (map.IsTallGrass(nx, ny) || StopsBicycles(there)) return true;
+        if (there is TileBehavior.StairsEast or TileBehavior.StairsWest || map.BehaviourAt(x, y) is TileBehavior.StairsEast or TileBehavior.StairsWest) return true;
+        return SlopedAlong(map, x, y, dir) || SlopedAlong(map, nx, ny, dir);
+    }
+
+    /// <summary>
+    /// The glide of skates let go of (plan 23 · Z1): one tile on the way the skater was going, as ice's
+    /// <see cref="Carries"/> takes a slider, if a skater could take that step; null where the way is shut, which only
+    /// stops them. Never onto a warp, so a glide never takes a door by itself.
+    /// </summary>
+    public static FieldStep? Coast(Map map, int x, int y, Direction dir, Walker walker)
+    {
+        if (walker.Mode != TravelMode.Skating) return null;
+        var step = Step(map, x, y, dir, walker);
+        if (step.Kind != StepKind.Walk || map.GetWarpAt(step.X, step.Y) != null) return null;
+        return step;
     }
 
     // The first tile past a run of tiles of one kind, going one way
@@ -438,6 +474,8 @@ public static class FieldMovement
         // Under the sea nobody runs (Emerald's PlayerNotOnBikeMoving walks a diver at the normal pace)
         TravelMode.Diving => Pace.Walk,
         TravelMode.Cycling => walker.AtFullSpeed ? Pace.Fastest : Pace.Fast,
+        // Skates go at a run's pace wherever they go at all (plan 23 · Z1)
+        TravelMode.Skating => Pace.Fast,
         _ => underfoot switch
         {
             TileBehavior.DeepestSnow => Pace.Slowest,

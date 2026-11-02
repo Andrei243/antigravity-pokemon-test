@@ -5513,6 +5513,16 @@ way -
 from Scientist at 21,3 of ValleyWindworksBuilding
 way -
   Scientist> They've taken over the controls... Please, you have to stop them!
+=== VanivilleTown_PlayersHouse_1F.Mom
+from Mom at 7,8 of VanivilleTown_PlayersHouse_1F
+way -
+  Mom> Mom: Welcome home, dear! You all look worn out.
+  Mom> Mom: ...There! Everyone's fit and well again.
+  * fanfare FanfareHeal
+=== VanivilleTown_PlayersHouse_2F.Wardrobe
+from the sign at 5,4 of VanivilleTown_PlayersHouse_2F
+way -
+  * open Wardrobe
 === VeilstoneCityNortheastHouse.Porygon
 from Pokéfan at 5,5 of VeilstoneCityNortheastHouse
 way 0
@@ -6681,6 +6691,202 @@ from the trigger at 28,17 of AquaHideout_B2F
 way -
   * emote Matt Exclaim
   = VAR_TEMP_1 0 -> 1
+=== aquacorde_town.Cafe0
+from the trigger at 254,661 of Kalos
+way 0
+  Shauna> There you are! Everybody, this is Lucas, the one who just moved to Vaniville!
+  Tierno> Hey there! I'm Tierno. Nice to meet you! I love dancing, and I'm going to have a Pokémon dance team one day.
+  Trevor> I-I'm Trevor. Um. Hello.
+  Barry> The four of us were asked to come here. And you too, Lucas. Tierno, show them.
+  Tierno> Right! A professor in Lumiose City sent us Pokémon to start our journeys with. Three of them are for you guys!
+  Tierno> Go on, Lucas. You pick first!
+  > Lucas chose Chespin!
+  Shauna> Ooh, good pick! Then I'll take this one. We'll be the best of partners, won't we?
+  Trevor> And, um, the professor sent these as well. They're Pokédexes. It writes down every Pokémon you see.
+  > Lucas received the Pokédex!
+  Trevor> He wants us to see as many Pokémon as we can, all over Kalos. I-I'm going to see them all.
+  Shauna> Now we've all got Pokémon... Lucas, let's have a battle! Right here, right now!
+  Shauna> Wow, you're strong! Battling's so much fun when your Pokémon are trying their hardest!
+  Barry> There's one more thing. The professor sent a letter for your family, Lucas. Here.
+  > Lucas received the professor's letter.
+  Barry> Take it home and show your mum before you set off. The road north over the bridge goes on toward Santalune.
+  Tierno> We'll be right here when you get back!
+  * scene aquacorde_town.The friends at the cafe
+  * open Starter
+  * fanfare FanfareKeyItem
+  * battle kalos_shauna_1 Won
+  * endscene
+  + FLAG_HAS_POKEDEX
+  + FLAG_KALOS_HIDE_RIVAL_AQUACORDE
+  = VAR_KALOS_STORY 0 -> 3
+  + beaten kalos_shauna_1
+  = starters none/none -> Chespin/Fennekin
+  + seen aquacorde_town.The friends at the cafe
+way 1, from answer 1
+  Shauna> We won? We won! You did great too, though. That was so much fun!
+  Barry> There's one more thing. The professor sent a letter for your family, Lucas. Here.
+  > Lucas received the professor's letter.
+  Barry> Take it home and show your mum before you set off. The road north over the bridge goes on toward Santalune.
+  Tierno> We'll be right here when you get back!
+  * battle kalos_shauna_1 Lost
+  * endscene
+  + FLAG_HAS_POKEDEX
+  + FLAG_KALOS_HIDE_RIVAL_AQUACORDE
+  = VAR_KALOS_STORY 0 -> 3
+  = starters none/none -> Chespin/Fennekin
+  + seen aquacorde_town.The friends at the cafe
+=== aquacorde_town.Cafe1
+from the trigger at 255,661 of Kalos
+way 0
+  Shauna> There you are! Everybody, this is Lucas, the one who just moved to Vaniville!
+  Tierno> Hey there! I'm Tierno. Nice to meet you! I love dancing, and I'm going to have a Pokémon dance team one day.
+  Trevor> I-I'm Trevor. Um. Hello.
+  Barry> The four of us were asked to come here. And you too, Lucas. Tierno, show them.
+  Tierno> Right! A professor in Lumiose City sent us Pokémon to start our journeys with. Three of them are for you guys!
+  Tierno> Go on, Lucas. You pick first!
+  > Lucas chose Chespin!
+  Shauna> Ooh, good pick! Then I'll take this one. We'll be the best of partners, won't we?
+  Trevor> And, um, the professor sent these as well. They're Pokédexes. It writes down every Pokémon you see.
+  > Lucas received the Pokédex!
+  Trevor> He wants us to see as many Pokémon as we can, all over Kalos. I-I'm going to see them all.
+  Shauna> Now we've all got Pokémon... Lucas, let's have a battle! Right here, right now!
+  Shauna> Wow, you're strong! Battling's so much fun when your Pokémon are trying their hardest!
+  Barry> There's one more thing. The professor sent a letter for your family, Lucas. Here.
+  > Lucas received the professor's letter.
+  Barry> Take it home and show your mum before you set off. The road north over the bridge goes on toward Santalune.
+  Tierno> We'll be right here when you get back!
+  * scene aquacorde_town.The friends at the cafe
+  * open Starter
+  * fanfare FanfareKeyItem
+  * battle kalos_shauna_1 Won
+  * endscene
+  + FLAG_HAS_POKEDEX
+  + FLAG_KALOS_HIDE_RIVAL_AQUACORDE
+  = VAR_KALOS_STORY 0 -> 3
+  + beaten kalos_shauna_1
+  = starters none/none -> Chespin/Fennekin
+  + seen aquacorde_town.The friends at the cafe
+way 1, from answer 1
+  Shauna> We won? We won! You did great too, though. That was so much fun!
+  Barry> There's one more thing. The professor sent a letter for your family, Lucas. Here.
+  > Lucas received the professor's letter.
+  Barry> Take it home and show your mum before you set off. The road north over the bridge goes on toward Santalune.
+  Tierno> We'll be right here when you get back!
+  * battle kalos_shauna_1 Lost
+  * endscene
+  + FLAG_HAS_POKEDEX
+  + FLAG_KALOS_HIDE_RIVAL_AQUACORDE
+  = VAR_KALOS_STORY 0 -> 3
+  = starters none/none -> Chespin/Fennekin
+  + seen aquacorde_town.The friends at the cafe
+=== aquacorde_town.Cafe2
+from the trigger at 256,661 of Kalos
+way 0
+  Shauna> There you are! Everybody, this is Lucas, the one who just moved to Vaniville!
+  Tierno> Hey there! I'm Tierno. Nice to meet you! I love dancing, and I'm going to have a Pokémon dance team one day.
+  Trevor> I-I'm Trevor. Um. Hello.
+  Barry> The four of us were asked to come here. And you too, Lucas. Tierno, show them.
+  Tierno> Right! A professor in Lumiose City sent us Pokémon to start our journeys with. Three of them are for you guys!
+  Tierno> Go on, Lucas. You pick first!
+  > Lucas chose Chespin!
+  Shauna> Ooh, good pick! Then I'll take this one. We'll be the best of partners, won't we?
+  Trevor> And, um, the professor sent these as well. They're Pokédexes. It writes down every Pokémon you see.
+  > Lucas received the Pokédex!
+  Trevor> He wants us to see as many Pokémon as we can, all over Kalos. I-I'm going to see them all.
+  Shauna> Now we've all got Pokémon... Lucas, let's have a battle! Right here, right now!
+  Shauna> Wow, you're strong! Battling's so much fun when your Pokémon are trying their hardest!
+  Barry> There's one more thing. The professor sent a letter for your family, Lucas. Here.
+  > Lucas received the professor's letter.
+  Barry> Take it home and show your mum before you set off. The road north over the bridge goes on toward Santalune.
+  Tierno> We'll be right here when you get back!
+  * scene aquacorde_town.The friends at the cafe
+  * open Starter
+  * fanfare FanfareKeyItem
+  * battle kalos_shauna_1 Won
+  * endscene
+  + FLAG_HAS_POKEDEX
+  + FLAG_KALOS_HIDE_RIVAL_AQUACORDE
+  = VAR_KALOS_STORY 0 -> 3
+  + beaten kalos_shauna_1
+  = starters none/none -> Chespin/Fennekin
+  + seen aquacorde_town.The friends at the cafe
+way 1, from answer 1
+  Shauna> We won? We won! You did great too, though. That was so much fun!
+  Barry> There's one more thing. The professor sent a letter for your family, Lucas. Here.
+  > Lucas received the professor's letter.
+  Barry> Take it home and show your mum before you set off. The road north over the bridge goes on toward Santalune.
+  Tierno> We'll be right here when you get back!
+  * battle kalos_shauna_1 Lost
+  * endscene
+  + FLAG_HAS_POKEDEX
+  + FLAG_KALOS_HIDE_RIVAL_AQUACORDE
+  = VAR_KALOS_STORY 0 -> 3
+  = starters none/none -> Chespin/Fennekin
+  + seen aquacorde_town.The friends at the cafe
+=== aquacorde_town.Cafe3
+from the trigger at 257,661 of Kalos
+way 0
+  Shauna> There you are! Everybody, this is Lucas, the one who just moved to Vaniville!
+  Tierno> Hey there! I'm Tierno. Nice to meet you! I love dancing, and I'm going to have a Pokémon dance team one day.
+  Trevor> I-I'm Trevor. Um. Hello.
+  Barry> The four of us were asked to come here. And you too, Lucas. Tierno, show them.
+  Tierno> Right! A professor in Lumiose City sent us Pokémon to start our journeys with. Three of them are for you guys!
+  Tierno> Go on, Lucas. You pick first!
+  > Lucas chose Chespin!
+  Shauna> Ooh, good pick! Then I'll take this one. We'll be the best of partners, won't we?
+  Trevor> And, um, the professor sent these as well. They're Pokédexes. It writes down every Pokémon you see.
+  > Lucas received the Pokédex!
+  Trevor> He wants us to see as many Pokémon as we can, all over Kalos. I-I'm going to see them all.
+  Shauna> Now we've all got Pokémon... Lucas, let's have a battle! Right here, right now!
+  Shauna> Wow, you're strong! Battling's so much fun when your Pokémon are trying their hardest!
+  Barry> There's one more thing. The professor sent a letter for your family, Lucas. Here.
+  > Lucas received the professor's letter.
+  Barry> Take it home and show your mum before you set off. The road north over the bridge goes on toward Santalune.
+  Tierno> We'll be right here when you get back!
+  * scene aquacorde_town.The friends at the cafe
+  * open Starter
+  * fanfare FanfareKeyItem
+  * battle kalos_shauna_1 Won
+  * endscene
+  + FLAG_HAS_POKEDEX
+  + FLAG_KALOS_HIDE_RIVAL_AQUACORDE
+  = VAR_KALOS_STORY 0 -> 3
+  + beaten kalos_shauna_1
+  = starters none/none -> Chespin/Fennekin
+  + seen aquacorde_town.The friends at the cafe
+way 1, from answer 1
+  Shauna> We won? We won! You did great too, though. That was so much fun!
+  Barry> There's one more thing. The professor sent a letter for your family, Lucas. Here.
+  > Lucas received the professor's letter.
+  Barry> Take it home and show your mum before you set off. The road north over the bridge goes on toward Santalune.
+  Tierno> We'll be right here when you get back!
+  * battle kalos_shauna_1 Lost
+  * endscene
+  + FLAG_HAS_POKEDEX
+  + FLAG_KALOS_HIDE_RIVAL_AQUACORDE
+  = VAR_KALOS_STORY 0 -> 3
+  = starters none/none -> Chespin/Fennekin
+  + seen aquacorde_town.The friends at the cafe
+=== aquacorde_town.NotYet
+from the trigger at 254,648 of Kalos
+way -
+  > The trail north to Santalune Forest is closed off for now.
+=== aquacorde_town.Rival
+from {rival} at 251,656 of Kalos
+way -
+  Barry> Everyone's here. Come and sit down, Lucas.
+=== aquacorde_town.Shauna
+from Shauna at 249,657 of Kalos
+way -
+  Shauna> Hi! Pull up a chair!
+=== aquacorde_town.Tierno
+from Tierno at 252,657 of Kalos
+way -
+  Tierno> Welcome to Aquacorde! The pastries here are the best.
+=== aquacorde_town.Trevor
+from Trevor at 250,656 of Kalos
+way -
+  Trevor> Um... hello.
 === aspertia_city.Bianca
 from Bianca at 36,709 of Unova
 way -
@@ -11273,6 +11479,13 @@ way -
   + FLAG_ROCKET_TAKEOVER_ACTIVE
   + FLAG_UNK_0C5
   = VAR_SCENE_ROCKET_TAKEOVER 0 -> 2
+=== common.KalosNewGame
+from a trainer with lines of their own
+way -
+  + FLAG_KALOS_HIDE_RIVAL_AQUACORDE
+  + FLAG_KALOS_HIDE_RIVAL_VANIVILLE
+  + FLAG_KALOS_HIDE_SHAUNA_VANIVILLE
+  + FLAG_KALOS_STORY_BEGUN
 === common.KantoNewGame
 from a trainer with lines of their own
 way -
@@ -30582,6 +30795,14 @@ way -
   Galactic Grunt> You just don't quit, do you? I'm completely worn out... but I'm still not... battling... you...
   * emote Grunt Exclaim
   + FLAG_TALKED_TO_VALOR_LAKEFRONT_GRUNT_M
+=== vaniville_town.Rival
+from {rival} at 245,722 of Kalos
+way -
+  Barry> Aquacorde Town is just north of here. Our friends are waiting.
+=== vaniville_town.Shauna
+from Shauna at 246,723 of Kalos
+way -
+  Shauna> Come on, come on! Aquacorde's this way!
 === veilstone_city.Assistant
 from {assistant} at 682,614 of Sinnoh
 way -

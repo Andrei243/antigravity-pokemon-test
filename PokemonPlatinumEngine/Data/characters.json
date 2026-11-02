@@ -301,6 +301,19 @@
     "grimsley": { "hairColor": "#2e2a36", "hair": "Swept", "top": "#22222a", "accent": "#e8c040", "bottom": "#22222a", "shoes": "#1c1c22", "eyes": "#4a3a2a", "scarf": true, "coat": true, "build": "Adult", "height": 1.08 },
     // and Professor Juniper's father, Cedric, who calls on the new Champion: grey hair swept back, glasses and a tan coat
     "cedric_juniper": { "hairColor": "#a8a8b0", "hair": "Swept", "top": "#5a7a5a", "accent": "#f0e8d8", "bottom": "#4a4a52", "shoes": "#3a2e28", "eyes": "#3a3a4a", "glasses": "#3a3a46", "mustache": true, "coat": true, "build": "Adult", "height": 1.06 },
+    // Kalos's first chapter (plan 23 · Z1; our own designs, stand-ins until plan 30 rebuilds the kit for people who aren't
+    // chibi): from Kalos on nobody is chibi, so the whole cast is on the Adult build, the kit's longest body and smallest
+    // head (style guide, "Characters", "From Kalos on, not chibi"). The neighbour who is the rival, a girl beside the boy
+    // and a boy beside the girl: Serena, honey hair under a teal beret, a cream blouse and a navy skirt; Calem, dark hair
+    // under a grey cap and a moss-green jacket. Their friends: Shauna, brown hair in two tails, a coral top and a white
+    // skirt; Tierno, big and cheerful under a wide straw-yellow hat in a plum top; Trevor, small and careful, ginger hair
+    // and a grey waistcoat. The professor of Lumiose: Sycamore, swept dark hair and a long white coat over a blue shirt
+    "serena": { "hairColor": "#d8b47a", "hair": "Long", "hat": "Beret", "hatColor": "#2e8a8a", "hatBand": "#f2f2f4", "top": "#f2ead8", "accent": "#2e8a8a", "bottom": "#2c3458", "shoes": "#5a3a2a", "eyes": "#3a5a7a", "skirt": true, "lashes": true, "build": "Adult", "height": 1.0 },
+    "calem": { "hairColor": "#2e2420", "hair": "Short", "hat": "Cap", "hatColor": "#6a6a74", "hatBand": "#f2f2f4", "top": "#4a6a3a", "accent": "#f2f2f4", "bottom": "#2a2a36", "shoes": "#3a2a2a", "eyes": "#3a3a4a", "jacket": true, "build": "Adult", "height": 1.02 },
+    "shauna": { "hairColor": "#6a3e26", "hair": "Bunches", "top": "#ee8a6a", "accent": "#f6f0e8", "bottom": "#f2f2ee", "shoes": "#d86a5a", "eyes": "#4a8a5a", "skirt": true, "lashes": true, "blush": true, "build": "Adult", "height": 1.0 },
+    "tierno": { "skin": "#d8a078", "hairColor": "#2a2a30", "hat": "WideHat", "hatColor": "#e8cc6a", "hatBand": "#6a3a5a", "top": "#6a3a5a", "accent": "#f2f2ee", "bottom": "#3a3a46", "shoes": "#2a2a30", "eyes": "#2a2a30", "build": "Adult", "height": 1.06 },
+    "trevor": { "hairColor": "#c8703a", "hair": "Swept", "top": "#f2f2ee", "accent": "#6a6a74", "bottom": "#4a4a58", "shoes": "#3a2e28", "eyes": "#3a5a3a", "vest": "#6a6a74", "build": "Adult", "height": 1.0 },
+    "sycamore": { "hairColor": "#2a2630", "hair": "Swept", "top": "#f4f4f6", "accent": "#4a6ab0", "bottom": "#2a2a36", "shoes": "#2a2420", "eyes": "#3a3a4a", "coat": true, "build": "Adult", "height": 1.1 },
     // The first trainers of the open areas (plan 11 · C2), each our own take. The school kids: navy with a white collar, the boy in a bowl cut and grey shorts with a satchel, the girl with a ponytail tied in red and a red skirt
     "school_kid_m": { "hairColor": "#4a3428", "hair": "Bowl", "top": "#34467a", "accent": "#f4f4f6", "bottom": "#8a8c96", "shoes": "#4a3428", "shorts": true, "bag": "#b4864e", "blush": true },
     "school_kid_f": { "hairColor": "#3c2a26", "hair": "Ponytail", "hatBand": "#d8434a", "top": "#34467a", "accent": "#f4f4f6", "bottom": "#c4464c", "shoes": "#3c2c2a", "skirt": true, "bag": "#b4864e", "lashes": true, "blush": true },
@@ -777,6 +790,7 @@
     "Subway Boss Emmet": "emmet",
     "Pokémon Trainer Rosa": "rosa",
     "Pokémon Trainer Nate": "nate",
+    "Pokémon Trainer Shauna": "shauna",
     // Plan 22 · U6, part b: Route 5's and Driftveil's classes, folded onto the nearest looks until plan 22 · U12, and
     // Driftveil's cast as themselves
     "Baker": "waitress",

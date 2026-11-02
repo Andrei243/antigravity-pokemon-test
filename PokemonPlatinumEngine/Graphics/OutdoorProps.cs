@@ -67,6 +67,11 @@ internal static class OutdoorProps
                 case PropType.Mailbox:
                     kit.Sprite(kit.Face("mailbox", 16, 30, PaintMailbox), 16, 16);
                     break;
+                // A café's table out in the street (plan 23 · Z1, Aquacorde's waterfront): a room's tables are its furniture
+                case PropType.Table when !map.IsIndoors:
+                    for (int i = 0; i < prop.Width; i++)
+                        kit.Sprite(kit.Face("cafe_table", 28, 26, PaintCafeTable), 16 + 32 * i, 18);
+                    break;
                 case PropType.Planter:
                     kit.Sprite(kit.Face("planter", 30, 28, PaintPlanter), 16, 18);
                     break;
@@ -279,6 +284,35 @@ internal static class OutdoorProps
     }
 
     /// <summary>A wooden tub with a clipped bush in flower, 30 by 28.</summary>
+    /// <summary>
+    /// A café's table in the street (plan 23 · Z1; style guide, "Props"): a round cream top with its rim in shade, a cup
+    /// on it, on a dark iron stem and a cross of a foot.
+    /// </summary>
+    public static void PaintCafeTable(PixelCanvas c)
+    {
+        var top = Tone.Of(232, 222, 198, 248, 242, 226, 196, 182, 156);
+        const float cx = 14f, cy = 6f, rx = 12.5f, ry = 5.5f;
+        for (int y = 0; y <= 12; y++)
+            for (int x = 1; x <= 27; x++)
+            {
+                float u = (x + 0.5f - cx) / rx, v = (y + 0.5f - cy) / ry;
+                float r = u * u + v * v;
+                if (r > 1f) continue;
+                c.Set(x, y, r > 0.72f && v > 0f ? top.Dark : u + v < -0.6f ? top.Light : top.Base);
+            }
+        // The rim's edge, a texel of shade under the top
+        for (int x = 4; x <= 24; x++) c.Set(x, 12, top.Dark);
+        // A cup and its saucer
+        c.Rect(15, 3, 4, 3, Rgb(250, 250, 250));
+        c.Rect(19, 4, 1, 1, Rgb(250, 250, 250));
+        c.HLine(14, 6, 6, Rgb(214, 214, 220));
+        // The stem and the foot
+        c.Rect(13, 13, 3, 10, Iron.Base);
+        c.Rect(13, 13, 1, 10, Iron.Light);
+        c.HLine(7, 23, 15, Iron.Dark);
+        c.HLine(8, 24, 13, Iron.Dark);
+    }
+
     public static void PaintPlanter(PixelCanvas c)
     {
         // The bush: a round clump in three greens, lightest on the upper left

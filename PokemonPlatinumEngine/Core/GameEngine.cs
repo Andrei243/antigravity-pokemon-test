@@ -1811,6 +1811,7 @@ public partial class GameEngine
         // Overworld Player Movement
         flow.Player.Moves = FieldMovement.MovesOf(flow.Party) | FieldHelp.Moves(GrantedMoves);
         flow.Player.Autorun = Settings.Autorun;
+        flow.Player.CanSkate = SkateRules.Allowed(Here, flow.Story);
         flow.Player.Lead = WildLead.Of(flow.Party, flow.EncounterAids);
         flow.Player.Moment = momentOf ??= EncounterMomentNow;
         if (Steering is { } steer) flow.Player.Advance(dt, flow.Map, steer.Want, steer.Run, MeetInTheField, HandleWarp, OnStep);
