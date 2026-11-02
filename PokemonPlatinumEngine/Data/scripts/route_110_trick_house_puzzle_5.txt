@@ -1,0 +1,249 @@
+# The Trick House's fifth puzzle (plan 21 · H12, part j). docs/scripts.md describes the language; the lines and the
+# questions are our own, on Emerald's beats (data/maps/Route110_TrickHousePuzzle5/scripts.inc).
+#
+# Five Mechadolls each guard a corridor: walking into it, or speaking to the doll, starts its quiz, one question of three
+# drawn on the game's die. A right answer lets the player by (VAR_TEMP_1 to VAR_TEMP_5, one a doll: the room's triggers
+# wait for theirs to be 0, as Emerald's do); a wrong one sends the player back to the room's start, which sets them all
+# back. Emerald's dolls walk up to the player first; *ours*: they call out from where they stand. Emerald's questions
+# are about its own Hoenn (where a species lives, a shop's prices, how many people a house holds); ours ask what a
+# player who has won the Feather Badge has seen. VAR_TRICK_HOUSE_PUZZLE_5_STATE and FLAG_HOENN_TRICK_HOUSE_PUZZLE_5_UNLOCKED
+# as the other puzzles'.
+
+
+script OnTransition
+  setvar VAR_TEMP_1 0
+  setvar VAR_TEMP_2 0
+  setvar VAR_TEMP_3 0
+  setvar VAR_TEMP_4 0
+  setvar VAR_TEMP_5 0
+  end
+
+script Mechadoll1
+  if var VAR_TEMP_1 == 1 goto Passed
+  call Quiz1
+  end
+label Passed
+  face mechadoll_1 player
+  speaker "Mechadoll 1"
+  say "Beep. Quiz complete. You may pass."
+  end
+
+
+script Quiz1
+  setvar VAR_TEMP_1 1
+  emote mechadoll_1 exclaim
+  face mechadoll_1 player
+  speaker "Mechadoll 1"
+  say "Beep! Mechadoll 1 quiz! Answer correctly, and you may pass."
+  random 3
+  if var RESULT == 1 goto Second
+  if var RESULT == 2 goto Third
+  choose "Which of these is a Water type?" "Wingull" "Taillow" "Poochyena"
+  if var RESULT == 0 goto Right
+  goto Wrong
+label Second
+  choose "Which of these is not a Bug type?" "Wurmple" "Nincada" "Zubat"
+  if var RESULT == 2 goto Right
+  goto Wrong
+label Third
+  choose "Which of these does Lotad evolve into?" "Nuzleaf" "Lombre" "Marill"
+  if var RESULT == 1 goto Right
+  goto Wrong
+label Right
+  call Correct
+  return
+label Wrong
+  call Incorrect
+  return
+
+script Mechadoll2
+  if var VAR_TEMP_2 == 1 goto Passed
+  call Quiz2
+  end
+label Passed
+  face mechadoll_2 player
+  speaker "Mechadoll 2"
+  say "Beep. Quiz complete. You may pass."
+  end
+
+
+script Quiz2
+  setvar VAR_TEMP_2 1
+  emote mechadoll_2 exclaim
+  face mechadoll_2 player
+  speaker "Mechadoll 2"
+  say "Beep! Mechadoll 2 quiz! Answer correctly, and you may pass."
+  random 3
+  if var RESULT == 1 goto Second
+  if var RESULT == 2 goto Third
+  choose "Who leads the Gym of Rustboro City?" "Roxanne" "Brawly" "Wattson"
+  if var RESULT == 0 goto Right
+  goto Wrong
+label Second
+  choose "Whose bag did you open on Route 101?" "Mr. Stone" "Professor Birch" "Norman"
+  if var RESULT == 1 goto Right
+  goto Wrong
+label Third
+  choose "Which Pokémon did Wally catch with your help?" "Zigzagoon" "Wurmple" "Ralts"
+  if var RESULT == 2 goto Right
+  goto Wrong
+label Right
+  call Correct
+  return
+label Wrong
+  call Incorrect
+  return
+
+script Mechadoll3
+  if var VAR_TEMP_3 == 1 goto Passed
+  call Quiz3
+  end
+label Passed
+  face mechadoll_3 player
+  speaker "Mechadoll 3"
+  say "Beep. Quiz complete. You may pass."
+  end
+
+
+script Quiz3
+  setvar VAR_TEMP_3 1
+  emote mechadoll_3 exclaim
+  face mechadoll_3 player
+  speaker "Mechadoll 3"
+  say "Beep! Mechadoll 3 quiz! Answer correctly, and you may pass."
+  random 3
+  if var RESULT == 1 goto Second
+  if var RESULT == 2 goto Third
+  choose "How many Pokémon can travel in a team?" "4" "6" "8"
+  if var RESULT == 1 goto Right
+  goto Wrong
+label Second
+  choose "How many moves can one Pokémon know at once?" "4" "5" "6"
+  if var RESULT == 0 goto Right
+  goto Wrong
+label Third
+  choose "How many Badges open the way to the League?" "6" "7" "8"
+  if var RESULT == 2 goto Right
+  goto Wrong
+label Right
+  call Correct
+  return
+label Wrong
+  call Incorrect
+  return
+
+script Mechadoll4
+  if var VAR_TEMP_4 == 1 goto Passed
+  call Quiz4
+  end
+label Passed
+  face mechadoll_4 player
+  speaker "Mechadoll 4"
+  say "Beep. Quiz complete. You may pass."
+  end
+
+
+script Quiz4
+  setvar VAR_TEMP_4 1
+  emote mechadoll_4 exclaim
+  face mechadoll_4 player
+  speaker "Mechadoll 4"
+  say "Beep! Mechadoll 4 quiz! Answer correctly, and you may pass."
+  random 3
+  if var RESULT == 1 goto Second
+  if var RESULT == 2 goto Third
+  choose "Where did your journey in Hoenn begin?" "Littleroot Town" "Oldale Town" "Petalburg City"
+  if var RESULT == 0 goto Right
+  goto Wrong
+label Second
+  choose "Which route runs under the Cycling Road?" "Route 104" "Route 110" "Route 113"
+  if var RESULT == 1 goto Right
+  goto Wrong
+label Third
+  choose "Where does the Weather Institute stand?" "Route 112" "Route 104" "Route 119"
+  if var RESULT == 2 goto Right
+  goto Wrong
+label Right
+  call Correct
+  return
+label Wrong
+  call Incorrect
+  return
+
+script Mechadoll5
+  if var VAR_TEMP_5 == 1 goto Passed
+  call Quiz5
+  end
+label Passed
+  face mechadoll_5 player
+  speaker "Mechadoll 5"
+  say "Beep. Quiz complete. You may pass."
+  end
+
+
+script Quiz5
+  setvar VAR_TEMP_5 1
+  emote mechadoll_5 exclaim
+  face mechadoll_5 player
+  speaker "Mechadoll 5"
+  say "Beep! Mechadoll 5 quiz! Answer correctly, and you may pass."
+  random 3
+  if var RESULT == 1 goto Second
+  if var RESULT == 2 goto Third
+  choose "Which Gym Leader trains Fire types?" "Brawly" "Flannery" "Wattson"
+  if var RESULT == 1 goto Right
+  goto Wrong
+label Second
+  choose "Which Gym Leader trains Flying types?" "Winona" "Norman" "Roxanne"
+  if var RESULT == 0 goto Right
+  goto Wrong
+label Third
+  choose "Which Gym Leader is your own father?" "Wattson" "Brawly" "Norman"
+  if var RESULT == 2 goto Right
+  goto Wrong
+label Right
+  call Correct
+  return
+label Wrong
+  call Incorrect
+  return
+
+script Correct
+  sound "select"
+  say "Ding! Correct! Go on through."
+  return
+
+
+script Incorrect
+  say "Bzzt! Wrong answer!"
+  say "Ha ha ha! Back to the start with you, challenger!"
+  warp "Route110_TrickHousePuzzle5" 0 20 up
+  return
+
+script Scroll
+  if var VAR_TRICK_HOUSE_PUZZLE_5_STATE != 0 goto Again
+  setvar VAR_TRICK_HOUSE_PUZZLE_5_STATE 1
+  fanfare item
+  text "{player} found a scroll!"
+  text "{player} learnt the secret code written on it by heart."
+  end
+label Again
+  text "The secret code is written on it: \"The Trick Master is beloved by all.\""
+  end
+
+
+script Door
+  if var VAR_TRICK_HOUSE_PUZZLE_5_STATE == 2 goto Open
+  if var VAR_TRICK_HOUSE_PUZZLE_5_STATE == 1 goto Write
+  text "The door is locked. Something is written on it: \"Write the secret code here.\""
+  end
+label Write
+  text "{player} wrote the secret code on the door. \"The Trick Master is beloved by all.\""
+  sound "door_open"
+  text "Click! The lock opened!"
+  setvar VAR_TRICK_HOUSE_PUZZLE_5_STATE 2
+  setflag FLAG_HOENN_TRICK_HOUSE_PUZZLE_5_UNLOCKED
+  end
+label Open
+  text "The door stands open."
+  end

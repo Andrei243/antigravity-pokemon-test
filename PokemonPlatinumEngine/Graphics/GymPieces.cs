@@ -883,13 +883,14 @@ internal sealed class GymPieces
         var sheet = new ArtSheet();
         float vs = MapScene.VerticalScaleOf(map);
         var still = new KitBuilder(sheet, vs);
-        foreach (var a in MossdeepTiles.Arrows)
+        var room = (MossdeepTiles)map.Puzzle!;
+        foreach (var a in room.RoomArrows)
         {
             still.Origin = new Vector3(a.X, Relief.At(map, a.X + 0.5f, a.Y + 0.5f), a.Y);
             var face = still.Face($"arrow.{a.Colour}.{a.Way}", 28, 28, c => GymArt.PaintFloorArrow(c, a.Colour, a.Way));
             still.Decal(2, 30, 2, 30, 0.012f, face);
         }
-        foreach (var (x, y, colour) in MossdeepTiles.Switches)
+        foreach (var (x, y, colour) in room.RoomSwitches)
         {
             still.Origin = new Vector3(x, Relief.At(map, x + 0.5f, y + 0.5f), y);
             var face = still.Face($"switch.{colour}", 24, 24, c => GymArt.PaintFloorSwitch(c, colour));

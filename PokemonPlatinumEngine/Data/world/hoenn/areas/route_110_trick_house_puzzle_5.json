@@ -1,0 +1,56 @@
+{
+  "key": "route_110_trick_house_puzzle_5",
+  "index": 506,
+  "name": "Route 110",
+  "matrix": 449,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_TRICK_HOUSE",
+  "nightMusic": "MUS_TRICK_HOUSE",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 0, "z": 21, "to": "route_110_trick_house_entrance", "toWarp": 2 },
+    { "x": 1, "z": 21, "to": "route_110_trick_house_entrance", "toWarp": 2 },
+    { "x": 13, "z": 1, "to": "", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "mechadoll_1", "looks": "man_1", "movement": "look_west", "x": 6, "z": 17, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "Route110_TrickHousePuzzle5_EventScript_Mechadoll1" },
+    { "id": "mechadoll_2", "looks": "man_1", "movement": "look_east", "x": 0, "z": 7, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "Route110_TrickHousePuzzle5_EventScript_Mechadoll2" },
+    { "id": "mechadoll_3", "looks": "man_1", "movement": "look_west", "x": 14, "z": 10, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "Route110_TrickHousePuzzle5_EventScript_Mechadoll3" },
+    { "id": "mechadoll_4", "looks": "man_1", "movement": "look_west", "x": 14, "z": 19, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "Route110_TrickHousePuzzle5_EventScript_Mechadoll4" },
+    { "id": "mechadoll_5", "looks": "man_1", "movement": "look_east", "x": 10, "z": 4, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "Route110_TrickHousePuzzle5_EventScript_Mechadoll5" }
+  ],
+  "signs": [
+    { "x": 11, "z": 21, "type": 0, "script": "Route110_TrickHousePuzzle5_EventScript_Scroll" }
+  ],
+  "triggers": [
+    { "x": 5, "z": 17, "width": 1, "depth": 1, "script": "Route110_TrickHousePuzzle5_EventScript_Mechadoll1Trigger0", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 4, "z": 17, "width": 1, "depth": 1, "script": "Route110_TrickHousePuzzle5_EventScript_Mechadoll1Trigger1", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 3, "z": 17, "width": 1, "depth": 1, "script": "Route110_TrickHousePuzzle5_EventScript_Mechadoll1Trigger2", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 2, "z": 17, "width": 1, "depth": 1, "script": "Route110_TrickHousePuzzle5_EventScript_Mechadoll1Trigger3", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 1, "z": 7, "width": 1, "depth": 1, "script": "Route110_TrickHousePuzzle5_EventScript_Mechadoll2Trigger0", "variable": "VAR_TEMP_2", "value": "0" },
+    { "x": 2, "z": 7, "width": 1, "depth": 1, "script": "Route110_TrickHousePuzzle5_EventScript_Mechadoll2Trigger1", "variable": "VAR_TEMP_2", "value": "0" },
+    { "x": 13, "z": 10, "width": 1, "depth": 1, "script": "Route110_TrickHousePuzzle5_EventScript_Mechadoll3Trigger0", "variable": "VAR_TEMP_3", "value": "0" },
+    { "x": 12, "z": 10, "width": 1, "depth": 1, "script": "Route110_TrickHousePuzzle5_EventScript_Mechadoll3Trigger1", "variable": "VAR_TEMP_3", "value": "0" },
+    { "x": 11, "z": 10, "width": 1, "depth": 1, "script": "Route110_TrickHousePuzzle5_EventScript_Mechadoll3Trigger2", "variable": "VAR_TEMP_3", "value": "0" },
+    { "x": 13, "z": 19, "width": 1, "depth": 1, "script": "Route110_TrickHousePuzzle5_EventScript_Mechadoll4Trigger0", "variable": "VAR_TEMP_4", "value": "0" },
+    { "x": 12, "z": 19, "width": 1, "depth": 1, "script": "Route110_TrickHousePuzzle5_EventScript_Mechadoll4Trigger1", "variable": "VAR_TEMP_4", "value": "0" },
+    { "x": 11, "z": 4, "width": 1, "depth": 1, "script": "Route110_TrickHousePuzzle5_EventScript_Mechadoll5Trigger0", "variable": "VAR_TEMP_5", "value": "0" },
+    { "x": 1, "z": 17, "width": 1, "depth": 1, "script": "Route110_TrickHousePuzzle5_EventScript_Mechadoll1Trigger4", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 3, "z": 7, "width": 1, "depth": 1, "script": "Route110_TrickHousePuzzle5_EventScript_Mechadoll2Trigger2", "variable": "VAR_TEMP_2", "value": "0" },
+    { "x": 4, "z": 7, "width": 1, "depth": 1, "script": "Route110_TrickHousePuzzle5_EventScript_Mechadoll2Trigger3", "variable": "VAR_TEMP_2", "value": "0" },
+    { "x": 5, "z": 7, "width": 1, "depth": 1, "script": "Route110_TrickHousePuzzle5_EventScript_Mechadoll2Trigger4", "variable": "VAR_TEMP_2", "value": "0" },
+    { "x": 6, "z": 7, "width": 1, "depth": 1, "script": "Route110_TrickHousePuzzle5_EventScript_Mechadoll2Trigger5", "variable": "VAR_TEMP_2", "value": "0" },
+    { "x": 10, "z": 10, "width": 1, "depth": 1, "script": "Route110_TrickHousePuzzle5_EventScript_Mechadoll3Trigger3", "variable": "VAR_TEMP_3", "value": "0" },
+    { "x": 9, "z": 10, "width": 1, "depth": 1, "script": "Route110_TrickHousePuzzle5_EventScript_Mechadoll3Trigger4", "variable": "VAR_TEMP_3", "value": "0" },
+    { "x": 11, "z": 19, "width": 1, "depth": 1, "script": "Route110_TrickHousePuzzle5_EventScript_Mechadoll4Trigger2", "variable": "VAR_TEMP_4", "value": "0" },
+    { "x": 10, "z": 19, "width": 1, "depth": 1, "script": "Route110_TrickHousePuzzle5_EventScript_Mechadoll4Trigger3", "variable": "VAR_TEMP_4", "value": "0" },
+    { "x": 9, "z": 19, "width": 1, "depth": 1, "script": "Route110_TrickHousePuzzle5_EventScript_Mechadoll4Trigger4", "variable": "VAR_TEMP_4", "value": "0" }
+  ]
+}

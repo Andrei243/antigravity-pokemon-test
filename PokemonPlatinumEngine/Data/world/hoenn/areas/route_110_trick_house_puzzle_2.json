@@ -1,0 +1,38 @@
+{
+  "key": "route_110_trick_house_puzzle_2",
+  "index": 503,
+  "name": "Route 110",
+  "matrix": 446,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_TRICK_HOUSE",
+  "nightMusic": "MUS_TRICK_HOUSE",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 0, "z": 21, "to": "route_110_trick_house_entrance", "toWarp": 2 },
+    { "x": 1, "z": 21, "to": "route_110_trick_house_entrance", "toWarp": 2 },
+    { "x": 13, "z": 1, "to": "", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "school_kid_m", "looks": "school_kid_m", "movement": "look_east", "x": 13, "z": 10, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 1, "script": "TRAINER_TED" },
+    { "id": "school_kid_m_2", "looks": "school_kid_m", "movement": "look_south", "x": 10, "z": 17, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_PAUL" },
+    { "id": "girl_3", "looks": "girl_3", "movement": "look_west", "x": 11, "z": 9, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_GEORGIA" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 8, "z": 17, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ITEM_TRICK_HOUSE_PUZZLE_2_WAVE_MAIL", "item": "Wave Mail", "script": "Route110_TrickHousePuzzle2_EventScript_ItemWaveMail" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_around", "x": 3, "z": 13, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ITEM_TRICK_HOUSE_PUZZLE_2_HARBOR_MAIL", "item": "Harbor Mail", "script": "Route110_TrickHousePuzzle2_EventScript_ItemHarborMail" }
+  ],
+  "signs": [
+    { "x": 14, "z": 14, "type": 0, "script": "Route110_TrickHousePuzzle2_EventScript_Scroll" }
+  ],
+  "triggers": [
+    { "x": 11, "z": 12, "width": 1, "depth": 1, "script": "Route110_TrickHousePuzzle2_EventScript_Button1", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 0, "z": 4, "width": 1, "depth": 1, "script": "Route110_TrickHousePuzzle2_EventScript_Button2", "variable": "VAR_TEMP_2", "value": "0" },
+    { "x": 14, "z": 5, "width": 1, "depth": 1, "script": "Route110_TrickHousePuzzle2_EventScript_Button3", "variable": "VAR_TEMP_3", "value": "0" },
+    { "x": 7, "z": 11, "width": 1, "depth": 1, "script": "Route110_TrickHousePuzzle2_EventScript_Button4", "variable": "VAR_TEMP_4", "value": "0" }
+  ]
+}

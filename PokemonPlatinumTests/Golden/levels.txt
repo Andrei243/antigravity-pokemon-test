@@ -1804,6 +1804,24 @@ trainers 14, 6-16: hoenn_abigail_1 16, hoenn_alyssa 15, hoenn_anthony 14, hoenn_
 === route_110_trick_house_puzzle_1
 Route 110
 trainers 3, 14-16: hoenn_eddie 16, hoenn_robin 14, hoenn_sally 16
+=== route_110_trick_house_puzzle_2
+Route 110
+trainers 3, 15-17: hoenn_georgia 16, hoenn_paul 15, hoenn_ted 17
+=== route_110_trick_house_puzzle_3
+Route 110
+trainers 3, 22-24: hoenn_alan 22, hoenn_justin 24, hoenn_martha 23
+=== route_110_trick_house_puzzle_4
+Route 110
+trainers 3, 26-27: hoenn_cora 27, hoenn_paula 27, hoenn_yuji 26
+=== route_110_trick_house_puzzle_6
+Route 110
+trainers 3, 36-39: hoenn_benny 36, hoenn_sebastian 39, hoenn_sophia 38
+=== route_110_trick_house_puzzle_7
+Route 110
+trainers 6, 41: hoenn_alexis 41, hoenn_alvaro 41, hoenn_everett 41, hoenn_joshua 41, hoenn_mariela 41, hoenn_patricia 41
+=== route_110_trick_house_puzzle_8
+Route 110
+trainers 3, 44-46: hoenn_keira 45, hoenn_leroy 46, hoenn_vincent 44
 === route_111
 Route 111
 grass 19-22

@@ -19,7 +19,29 @@ public sealed class FortreeGates : GymPuzzle
 {
     public const string PuzzleName = "FortreeGates";
 
-    public override string Name => PuzzleName;
+    public override string Name => name;
+
+    /// <summary>
+    /// The Trick House's sixth puzzle (plan 21 · H12, part j): the same rule with Emerald's other table,
+    /// <c>sRotatingGate_TrickHousePuzzleConfig</c> (eleven gates, laid out afresh as the room is come into).
+    /// </summary>
+    public const string TrickHouseName = "TrickHouseGates";
+
+    /// <summary>The Trick House's eleven gates (<c>sRotatingGate_TrickHousePuzzleConfig</c>), in the original's order.</summary>
+    public static readonly Gate[] TrickHouseLayout =
+    {
+        new(14, 5, Shape.T1, 1), new(10, 6, Shape.L2, 2), new(6, 6, Shape.L4, 1), new(14, 8, Shape.T1, 1),
+        new(3, 10, Shape.L3, 3), new(9, 14, Shape.L1, 1), new(3, 15, Shape.T3, 0), new(2, 17, Shape.L2, 2),
+        new(12, 18, Shape.T3, 3), new(5, 18, Shape.L4, 1), new(10, 19, Shape.L3, 2),
+    };
+
+    private readonly string name = PuzzleName;
+
+    /// <summary>A room of gates by its name (<see cref="PuzzleName"/> or <see cref="TrickHouseName"/>).</summary>
+    public static FortreeGates Named(string room) =>
+        room == TrickHouseName ? new FortreeGates(TrickHouseLayout, TrickHouseName) : new FortreeGates();
+
+    private FortreeGates(Gate[] layout, string room) : this(layout) => name = room;
 
     /// <summary>The shapes of gate, by their arms (north, east, south, west at no turn, each short and long): the original's order.</summary>
     public enum Shape { L1, L2, L3, L4, T1, T2, T3, T4 }

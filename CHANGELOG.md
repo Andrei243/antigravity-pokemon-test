@@ -4,6 +4,9 @@ What changes from one release to the next, for players. Every session's close-ou
 
 ## [Unreleased]
 
+### Added
+- The Trick House on Route 110 has all eight of its puzzles. After each new Badge the Trick Master hides somewhere else in his front room; find him and a new puzzle opens behind the scroll: buttons that cover holes, red and blue doors that swap at every button, a room of boulders, five Mechadolls with quiz questions, rotating gates, floor arrows that carry trainers and statues round, and a slippery floor, the last once you are Champion. Each has its own trainers, its scroll and its code, and its own reward at the end, ending with a tent for your secret base. Seven more kinds of mail are found in them.
+
 ### Fixed
 - In the rooms of Johto, HeartGold's Kanto and Unova, whoever stands behind a counter is seen standing behind it: the clerks of Celadon's and Goldenrod's department stores, Silph Co.'s receptionist, every Mart's clerks, Pokémon Center's nurse and receptionists and gate house's guard had stood hidden inside a block of wall. You still talk to them across the counter. And the plank bridge on the Seafoam Islands' second basement stands on the cave's rock, where a strip of grassy bank showed under its deck.
 - The legendary Pokémon's meetings show the Pokémon: Uxie, Azelf, Mesprit, Heatran, Cresselia, Articuno and Zapdos are no longer hidden behind your own head while the camera looks at them, Rotom's television is no longer behind you, and Articuno is no longer under the black bar at the top of the picture. Palkia's rift lights up on its own pillar rather than an empty spot of floor, the beasts' and Cresselia's shadows now race away from them, and Suicune at Cianwood bounds off over the sea instead of over the town.

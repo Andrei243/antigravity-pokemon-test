@@ -1,9 +1,13 @@
-# The Trick House's last room (plan 21 · H3, part b). docs/scripts.md describes the language; the lines are our own, on
-# Emerald's beats (data/maps/Route110_TrickHouseEnd/scripts.inc).
+# The Trick House's last room (plan 21 · H3, part b; plan 21 · H12, part j). docs/scripts.md describes the language; the
+# lines are our own, on Emerald's beats (data/maps/Route110_TrickHouseEnd/scripts.inc and the rewards of
+# Route110_TrickHouseEntrance/scripts.inc).
 #
-# The Trick Master stands here while a puzzle is under way (VAR_TRICK_HOUSE_ENTRANCE_STATE 1), gives its reward (the
-# first: a Rare Candy), counts it solved (VAR_TRICK_HOUSE_LEVEL) and runs off to plan the next. The puzzle's door is
-# shut behind him (FLAG_HOENN_TRICK_HOUSE_PUZZLE_1_DONE, a flag of ours).
+# The Trick Master stands here while a puzzle is under way (VAR_TRICK_HOUSE_ENTRANCE_STATE 1), gives its reward (Emerald's:
+# a Rare Candy, a Timer Ball, a Hard Stone, a Smoke Ball, TM12, a Magnet, a PP Max and last a tent for the secret base),
+# counts it solved (VAR_TRICK_HOUSE_LEVEL) and runs off to plan the next, the way behind the scroll shut
+# (FLAG_HOENN_TRICK_HOUSE_OPEN cleared; FLAG_HOENN_TRICK_HOUSE_PUZZLE_1_DONE kept for the first, as before). Emerald gives
+# the reward in the front room after a word here; *ours*: here, at once. A tent the decoration PC has no room for is
+# owed (FLAG_HOENN_TRICK_HOUSE_TENT_OWED) and given in the front room.
 
 
 script OnEnter
@@ -18,14 +22,65 @@ script TrickMaster
   face trick_master_end player
   speaker "Trick Master"
   say "Bravo! You made it all the way to me! My puzzle was no match for you."
+  if var VAR_TRICK_HOUSE_LEVEL == 1 goto Two
+  if var VAR_TRICK_HOUSE_LEVEL == 2 goto Three
+  if var VAR_TRICK_HOUSE_LEVEL == 3 goto Four
+  if var VAR_TRICK_HOUSE_LEVEL == 4 goto Five
+  if var VAR_TRICK_HOUSE_LEVEL == 5 goto Six
+  if var VAR_TRICK_HOUSE_LEVEL == 6 goto Seven
+  if var VAR_TRICK_HOUSE_LEVEL == 7 goto Eight
   say "Do you know, I stayed up all night planting those trees? And you cut through them like they were nothing!"
   say "A deal's a deal. You've earned this reward."
   give "Rare Candy"
+  setflag FLAG_HOENN_TRICK_HOUSE_PUZZLE_1_DONE
+  goto Farewell
+label Two
+  say "Those holes took me a week to dig! And you just pressed every button in the right order."
+  give "Timer Ball"
+  goto Farewell
+label Three
+  say "Red doors, blue doors, open, shut... I get lost in there myself, you know!"
+  give "Hard Stone"
+  goto Farewell
+label Four
+  say "All those boulders, shoved about like cushions! Your Pokémon are strong."
+  give "Smoke Ball"
+  goto Farewell
+label Five
+  say "My Mechadolls asked their hardest questions, and you knew every answer!"
+  give "TM12"
+  goto Farewell
+label Six
+  say "Round and round the gates you went, and out the other side. Dizzying!"
+  give "Magnet"
+  goto Farewell
+label Seven
+  say "My statues danced to your switches! I never taught them that."
+  give "PP Max"
+  goto Farewell
+label Eight
+  say "My finest puzzle of all, and you slid straight through it. I have nothing left to trick you with!"
+  say "For my last reward, a tent for your secret base. Which colour would you like?"
+  choose "Which tent?" "Red Tent" "Blue Tent"
+  if var RESULT == 1 goto Blue
+  openbase give "Red Tent"
+  if var RESULT == 0 goto Owed
+  text "{player} sent the Red Tent to the decoration PC."
+  goto Farewell
+label Blue
+  openbase give "Blue Tent"
+  if var RESULT == 0 goto Owed
+  text "{player} sent the Blue Tent to the decoration PC."
+  goto Farewell
+label Owed
+  say "Your decoration PC is full! I'll keep the tent at the front of the house until there's room."
+  setflag FLAG_HOENN_TRICK_HOUSE_TENT_OWED
+label Farewell
   say "Next time I'll come up with something truly baffling. Until then... Farewell!"
   walk trick_master_end left 2 fast
   hide trick_master_end
-  setvar VAR_TRICK_HOUSE_LEVEL 1
+  addvar VAR_TRICK_HOUSE_LEVEL 1
   setvar VAR_TRICK_HOUSE_ENTRANCE_STATE 3
-  setflag FLAG_HOENN_TRICK_HOUSE_PUZZLE_1_DONE
+  clearflag FLAG_HOENN_TRICK_HOUSE_OPEN
   endscene
   end

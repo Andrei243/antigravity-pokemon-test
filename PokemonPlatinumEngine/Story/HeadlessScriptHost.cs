@@ -1203,7 +1203,7 @@ public sealed class HeadlessScriptHost : IScriptHost
         Log.Add($"rotatetiles {colour.ToString().ToLowerInvariant()}");
         if (Map?.Puzzle is not MossdeepTiles tiles) return;
         // Everyone steps at once: where each is going is worked out before anyone moves
-        foreach (var (who, step, facing) in MossdeepTiles.Turns(colour, (x, y) => Map.NPCs.At(x, y)))
+        foreach (var (who, step, facing) in tiles.TurnsHere(colour, (x, y) => Map.NPCs.At(x, y)))
         {
             tiles.Remember(who);
             var (dx, dy) = FieldMovement.Delta(step);

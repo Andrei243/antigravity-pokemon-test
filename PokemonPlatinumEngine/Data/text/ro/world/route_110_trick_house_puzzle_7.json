@@ -1,0 +1,197 @@
+{
+  "people": {
+    "psychic_m": {
+      "name": {
+        "en": [
+          "Joshua"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Joshua: When the switch is pressed, I move. I can't help it!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Joshua: I move whether I win or not."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Alexis"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Alexis: The floor carries us round like a carousel. Dizzy yet?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Alexis: I am, a little."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hex_maniac": {
+      "name": {
+        "en": [
+          "Patricia"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Hex Maniac Patricia: The statues watch... and turn... and watch again..."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Hex Maniac Patricia: They saw me lose. How embarrassing."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "psychic_m_2": {
+      "name": {
+        "en": [
+          "Alvaro"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Alvaro: I foresaw you coming this way. Did I foresee who wins?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Alvaro: Apparently not."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lass_2": {
+      "name": {
+        "en": [
+          "Mariela"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Mariela: Every switch you press, I end up somewhere new. It's like a holiday!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Mariela: A holiday with a lost battle in it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "gentleman": {
+      "name": {
+        "en": [
+          "Everett"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Gentleman Everett: Ah, a fellow guest. The Trick Master's hospitality is... unusual."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Gentleman Everett: Most unusual indeed."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "trick_house_statue": {
+      "name": {
+        "en": [
+          "Statue"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A stone statue of the Trick Master, striking a grand pose."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "trick_house_statue_2": {
+      "name": {
+        "en": [
+          "Statue"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A stone statue of the Trick Master, striking a grand pose."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

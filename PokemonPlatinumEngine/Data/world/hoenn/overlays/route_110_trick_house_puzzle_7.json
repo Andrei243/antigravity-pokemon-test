@@ -1,0 +1,28 @@
+{
+  // The Trick House's seventh puzzle (plan 21 · H12, part j): loops of coloured arrows that carry the trainers and the two
+  // stone statues standing on them a step round whenever a switch of their colour is stepped on (world.json's puzzle,
+  // TrickHouseTiles: Emerald's initrotatingtilepuzzle TRUE on the Mossdeep Gym's rule), warp pads between its islands,
+  // six trainers, a scroll and the locked door to the last room (route_110_trick_house_puzzle_7.txt)
+  "area": "route_110_trick_house_puzzle_7",
+  "bgmTrack": "hoenn/trick_house",
+  "doors": [ { "warp": 2, "map": "Route110_TrickHouseEnd", "x": 10, "y": 2, "facing": "Down" } ],
+  "switches": [ { "warp": 2, "from": "FLAG_HOENN_TRICK_HOUSE_PUZZLE_7_UNLOCKED" } ],
+  "readAt": [ { "x": 13, "z": 1, "script": "Door" } ],
+  "read": { "Route110_TrickHousePuzzle7_EventScript_Scroll": "Scroll" },
+  "triggers": [
+    { "trigger": 0, "script": "YellowSwitch" },
+    { "trigger": 1, "script": "BlueSwitch" },
+    { "trigger": 2, "script": "GreenSwitch" },
+    { "trigger": 3, "script": "PurpleSwitch" }
+  ],
+  "people": {
+    "psychic_m": { "name": "Joshua", "trainer": { "dialogueBefore": "Psychic Joshua: When the switch is pressed, I move. I can't help it!", "dialogueAfter": "Psychic Joshua: I move whether I win or not." } },
+    "lass": { "name": "Alexis", "trainer": { "dialogueBefore": "Psychic Alexis: The floor carries us round like a carousel. Dizzy yet?", "dialogueAfter": "Psychic Alexis: I am, a little." } },
+    "hex_maniac": { "name": "Patricia", "trainer": { "dialogueBefore": "Hex Maniac Patricia: The statues watch... and turn... and watch again...", "dialogueAfter": "Hex Maniac Patricia: They saw me lose. How embarrassing." } },
+    "psychic_m_2": { "name": "Alvaro", "trainer": { "dialogueBefore": "Psychic Alvaro: I foresaw you coming this way. Did I foresee who wins?", "dialogueAfter": "Psychic Alvaro: Apparently not." } },
+    "lass_2": { "name": "Mariela", "trainer": { "dialogueBefore": "Psychic Mariela: Every switch you press, I end up somewhere new. It's like a holiday!", "dialogueAfter": "Psychic Mariela: A holiday with a lost battle in it." } },
+    "gentleman": { "name": "Everett", "trainer": { "dialogueBefore": "Gentleman Everett: Ah, a fellow guest. The Trick Master's hospitality is... unusual.", "dialogueAfter": "Gentleman Everett: Most unusual indeed." } },
+    "trick_house_statue": { "name": "Statue", "npcType": "GymStatue", "still": true, "dialog": [ "A stone statue of the Trick Master, striking a grand pose." ] },
+    "trick_house_statue_2": { "name": "Statue", "npcType": "GymStatue", "still": true, "dialog": [ "A stone statue of the Trick Master, striking a grand pose." ] }
+  }
+}

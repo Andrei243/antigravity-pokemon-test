@@ -159,7 +159,7 @@ public sealed class GbaMaps
                 Layouts[layout.Id] = layout;
             }
         // The layouts a map's own script patches block by block (plan 21 · H12, part c): written as layouts of their own
-        foreach (var patch in Patches)
+        foreach (var patch in Patches.Concat(game == GbaGame.Emerald ? GbaTrickHouse.Patches(dir) : Array.Empty<GbaPatch>()))
             if (Layouts.TryGetValue(patch.Base, out var under))
                 Layouts[patch.Id] = patch.Apply(under);
 
@@ -204,7 +204,9 @@ public sealed class GbaMaps
         ["MAP_SKY_PILLAR_TOP"] = "LAYOUT_SKY_PILLAR_TOP_CLEAN",
         // (plan 21 · H12, part i: the Abandoned Ship's hidden floor with its four locked doors unlocked, Patches; the
         // overlay's switches keep each shut until its key is turned)
-        ["MAP_ABANDONED_SHIP_HIDDEN_FLOOR_CORRIDORS"] = "LAYOUT_ABANDONED_SHIP_HIDDEN_FLOOR_CORRIDORS_UNLOCKED"
+        ["MAP_ABANDONED_SHIP_HIDDEN_FLOOR_CORRIDORS"] = "LAYOUT_ABANDONED_SHIP_HIDDEN_FLOOR_CORRIDORS_UNLOCKED",
+        // (plan 21 · H12, part j: the Trick House's third puzzle with its doors as its arrival lays them, GbaTrickHouse)
+        ["MAP_ROUTE110_TRICK_HOUSE_PUZZLE3"] = GbaTrickHouse.Puzzle3First
     };
 
     /// <summary>

@@ -473,6 +473,18 @@ public static class GbaCover
             {
                 (0x21A, 0x21A, TerrainCover.Paving),
             },
+            // Plan 21 · H12, part j: the Trick House's puzzles, whose doors' labels would make every piece of them a wall
+            // standing in the room. What is walked over (a door's upper half, an open door, the shadow before one, a
+            // button, a hole covered) is floor; what stands in the way (a shut door's lower half, a door on end, its base)
+            // a fence, a barrier the room's own colour, as the blocked bit has it
+            ["gTileset_TrickHousePuzzle"] = new (int, int, TerrainCover)[]
+            {
+                (0x238, 0x239, TerrainCover.Paving), (0x23B, 0x23C, TerrainCover.Paving), (0x248, 0x249, TerrainCover.Paving),
+                (0x24B, 0x24C, TerrainCover.Paving), (0x250, 0x255, TerrainCover.Paving), (0x258, 0x259, TerrainCover.Paving),
+                (0x26A, 0x26A, TerrainCover.Paving),
+                (0x23A, 0x23A, TerrainCover.Fence), (0x23D, 0x23D, TerrainCover.Fence), (0x240, 0x245, TerrainCover.Fence),
+                (0x24A, 0x24A, TerrainCover.Fence), (0x24D, 0x24D, TerrainCover.Fence),
+            },
             ["gTileset_Petalburg"] = new (int, int, TerrainCover)[]
             {
                 // The doormat before a house's door, and the earth where the paths meet the towns' edges

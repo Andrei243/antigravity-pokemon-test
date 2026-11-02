@@ -54,6 +54,9 @@ public static class GbaBehaviours
         ["MB_ICE"] = TileBehavior.Ice,
         ["MB_THIN_ICE"] = TileBehavior.ThinIce,
         ["MB_CRACKED_ICE"] = TileBehavior.ThinIce,
+        // The Trick House's eighth puzzle's slippery floor slides as ice does (Emerald's IsTrickHouseSlipperyFloor;
+        // plan 21 · H12, part j)
+        ["MB_TRICK_HOUSE_PUZZLE_8_FLOOR"] = TileBehavior.Ice,
         ["MB_SAND"] = TileBehavior.Sand,
         ["MB_DEEP_SAND"] = TileBehavior.Sand,
         ["MB_FOOTPRINTS"] = TileBehavior.Sand,

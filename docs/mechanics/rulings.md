@@ -6649,6 +6649,47 @@ Four more of Emerald's post-game pieces. The lines are our own.
   basements of the game corner and the mystery events house, and H11's part c and the Battle Tents (another
   session's).
 
+## The Trick House's eight puzzles (2026-11-02, plan 21 · H12, part j)
+
+- **The puzzles after the first** are Emerald's rooms (matrices 446 to 452), each waiting for its Badge as Emerald's
+  `CheckReadyForPuzzle2` to `8` do: the Dynamo, Heat, Balance, Feather, Mind and Rain Badges, and the Hall of Fame for the
+  eighth. While the next isn't ready the Trick Master stands by the scroll at work on it (`VAR_TRICK_HOUSE_ENTRANCE_STATE`
+  3); once it is, he hides in the front room, in a place of his own for each puzzle (Emerald's `SetHidingSpotPuzzle1` to
+  `8`: the desk, the potted tree, the dresser, the window, the planter, the cupboard, the other window, the cushion),
+  read there to find him. After all eight he has run out of tricks (state 4).
+- **The way behind the scroll** is one flag of ours, `FLAG_HOENN_TRICK_HOUSE_OPEN`, set as he is found and cleared as the
+  reward is given (an older save half way through the first puzzle is given it as the room is come into). Emerald's
+  warp leads to the puzzle the level names; here the warp leads to the first, and triggers of ours on its tile, by
+  `VAR_TRICK_HOUSE_LEVEL`, send the player into the second to the eighth. The last room's door back is every puzzle's, so
+  it is locked (*ours*: Emerald's leads back into the puzzle just solved).
+- **The rewards** are Emerald's (a Rare Candy, a Timer Ball, a Hard Stone, a Smoke Ball, TM12, a Magnet, a PP Max, and a
+  Red or Blue Tent for the secret base), given in the last room at once (*ours*: Emerald gives them in the front room
+  after a word); a tent the decoration PC has no room for is owed (`FLAG_HOENN_TRICK_HOUSE_TENT_OWED`) and given in the
+  front room. Each puzzle has its scroll and its code (*ours*, a line each) and its door that the code unlocks
+  (`FLAG_HOENN_TRICK_HOUSE_PUZZLE_<n>_UNLOCKED`, ours, as the first's).
+- **The second puzzle's holes** are covered by its four buttons (Emerald's `setmetatile`), each a hole of its own in any
+  order; **the third's** red and blue doors swap at every button. Both are layouts of their own read from Emerald's
+  scripts (`tools/MapImporter/Gba/GbaTrickHouse.cs`) and swapped in by a variable of the room (`world.json`'s `swaps`: the
+  second's `VAR_TEMP_5` the sum of the buttons pressed, the third's `VAR_TEMP_7` five times its doors' state and the last
+  button), which each room's `OnTransition` sets back as Emerald's arrival does. The puzzles' doors look as fences where
+  they stand in the way and as floor where they are walked (`GbaCover.HoennRanges`' row of `gTileset_TrickHousePuzzle`,
+  whose labels would have made every piece a wall).
+- **The fourth's boulders** are the field's Strength boulders, put back as the room is come into.
+- **The fifth's Mechadolls** quiz whoever walks into the corridor each guards, or speaks to it, a question of three drawn
+  on the game's die; a wrong answer sends the player back to the room's start. *Ours*: the questions (Emerald's ask
+  about its own Hoenn: where a species lives, a shop's prices, how many people a house holds; ours ask what a player
+  with the Feather Badge has seen: types, Gym Leaders, places), and the dolls call out from where they stand rather
+  than walking up first.
+- **The sixth's gates** are the Fortree Gym's rule on Emerald's other table (`FortreeGates.TrickHouseName`,
+  `sRotatingGate_TrickHousePuzzleConfig`), drawn as the Fortree Gym's rails; **the seventh's arrows** the Mossdeep Gym's
+  rule on the puzzle's own tiles (`MossdeepTiles.TrickHouseName`, loops read from its layout), moving its six trainers and
+  two statues, with its warp pads Emerald's own warps. Emerald's leftover switches of Ruby and Sapphire's version are
+  never called and are not here.
+- **The eighth's slippery floor** (`MB_TRICK_HOUSE_PUZZLE_8_FLOOR`) is ice to the field, slid across until something
+  stops the slide.
+- **Emerald's mail** found in the puzzles (Wave, Wood, Shadow, Mech, Glitter, Tropic and Bead Mail) are items of ours (ids
+  9140 to 9146), as Orange and Harbor Mail were.
+
 ## A crossed region's EXP (2026-10-26, plan 18 · W4b-3)
 
 Design C of [the levelling proposal](../plans/decisions/W4b-levelling-the-world.md), approved by the user on 2026-10-26 with

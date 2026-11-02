@@ -21,7 +21,7 @@ public sealed class MossdeepTiles : GymPuzzle
 {
     public const string PuzzleName = "MossdeepTiles";
 
-    public override string Name => PuzzleName;
+    public override string Name => name;
 
     /// <summary>The five colours, in the original's order of its arrows' metatiles (<c>METATILE_MossdeepGym_YellowArrow_Right</c> and on).</summary>
     public enum Colour { Yellow, Blue, Green, Purple, Red }
@@ -47,12 +47,12 @@ public sealed class MossdeepTiles : GymPuzzle
     };
 
     /// <summary>Every arrow tile of the room.</summary>
-    public static IReadOnlyList<Arrow> Arrows { get; } = MakeArrows();
+    public static IReadOnlyList<Arrow> Arrows { get; } = MakeArrows(Loops);
 
-    private static List<Arrow> MakeArrows()
+    private static List<Arrow> MakeArrows((int X, int Y, Colour Colour)[] loops)
     {
         var arrows = new List<Arrow>();
-        foreach (var (x, y, colour) in Loops)
+        foreach (var (x, y, colour) in loops)
         {
             arrows.Add(new Arrow(x, y, colour, Direction.Down));
             arrows.Add(new Arrow(x + 1, y, colour, Direction.Left));
@@ -88,6 +88,58 @@ public sealed class MossdeepTiles : GymPuzzle
     {
         var turns = new List<(NPC, Direction, Direction)>();
         foreach (var a in Arrows)
+        {
+            if (a.Colour != colour || at(a.X, a.Y) is not { } who) continue;
+            turns.Add((who, a.Way, Anticlockwise(who.Facing)));
+        }
+        return turns;
+    }
+
+    /// <summary>
+    /// The Trick House's seventh puzzle (plan 21 · H12, part j): Emerald's <c>initrotatingtilepuzzle TRUE</c>, the same
+    /// rule on the puzzle's own tileset (<c>METATILE_TrickHousePuzzle_Arrow_YellowOnWhite_Right</c> and on), whose loops
+    /// and switches are read from <c>LAYOUT_ROUTE110_TRICK_HOUSE_PUZZLE7</c>'s blocks: a yellow, a blue, a green and a
+    /// purple loop moving its statues and trainers.
+    /// </summary>
+    public const string TrickHouseName = "TrickHouseTiles";
+
+    private static readonly (int X, int Y, Colour Colour)[] TrickHouseLoops =
+    {
+        (8, 17, Colour.Yellow), (8, 20, Colour.Yellow), (3, 17, Colour.Blue), (3, 6, Colour.Green), (10, 2, Colour.Purple),
+    };
+
+    /// <summary>The Trick House's floor switches (the seventh puzzle's coordinate events).</summary>
+    public static readonly (int X, int Y, Colour Colour)[] TrickHouseSwitches =
+    {
+        (8, 19, Colour.Yellow), (0, 14, Colour.Blue), (6, 6, Colour.Green), (9, 7, Colour.Purple),
+    };
+
+    private readonly string name = PuzzleName;
+    private readonly List<Arrow> roomArrows;
+    private readonly (int X, int Y, Colour Colour)[] roomSwitches;
+
+    /// <summary>The Mossdeep Gym's floor.</summary>
+    public MossdeepTiles() : this(PuzzleName) { }
+
+    /// <summary>A floor of turning arrows by its room's name (<see cref="PuzzleName"/> or <see cref="TrickHouseName"/>).</summary>
+    public MossdeepTiles(string room)
+    {
+        name = room;
+        roomArrows = room == TrickHouseName ? MakeArrows(TrickHouseLoops) : (List<Arrow>)Arrows;
+        roomSwitches = room == TrickHouseName ? TrickHouseSwitches : Switches;
+    }
+
+    /// <summary>This room's arrow tiles.</summary>
+    public IReadOnlyList<Arrow> RoomArrows => roomArrows;
+
+    /// <summary>This room's floor switches.</summary>
+    public IReadOnlyList<(int X, int Y, Colour Colour)> RoomSwitches => roomSwitches;
+
+    /// <summary>What a switch of a colour does in this room (<see cref="Turns"/>, on this room's arrows).</summary>
+    public List<(NPC Who, Direction Step, Direction Facing)> TurnsHere(Colour colour, Func<int, int, NPC?> at)
+    {
+        var turns = new List<(NPC, Direction, Direction)>();
+        foreach (var a in roomArrows)
         {
             if (a.Colour != colour || at(a.X, a.Y) is not { } who) continue;
             turns.Add((who, a.Way, Anticlockwise(who.Facing)));

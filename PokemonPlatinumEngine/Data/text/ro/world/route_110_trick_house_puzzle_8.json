@@ -1,0 +1,83 @@
+{
+  "people": {
+    "man_3": {
+      "name": {
+        "en": [
+          "Vincent"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cooltrainer Vincent: The floor here is slick as glass. Slide too far and you start all over!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cooltrainer Vincent: I slid straight into a loss."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_3_2": {
+      "name": {
+        "en": [
+          "Leroy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cooltrainer Leroy: The last of the Trick Master's puzzles. Only the best get this far."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cooltrainer Leroy: And you're the best, it seems."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_5": {
+      "name": {
+        "en": [
+          "Keira"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cooltrainer Keira: I've been skating round this room for an hour. Battle me while I find my feet!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cooltrainer Keira: Still a little wobbly."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

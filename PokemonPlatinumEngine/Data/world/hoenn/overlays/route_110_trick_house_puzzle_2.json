@@ -1,0 +1,23 @@
+{
+  // The Trick House's second puzzle (plan 21 · H12, part j): a maze cut by four holes, each covered by stepping on a
+  // button somewhere else in it (Emerald's PressButton1 to 4; here the room's layouts swapped in by VAR_TEMP_5, the sum
+  // of the buttons pressed: world.json's swaps, GbaTrickHouse). The holes open again whenever the room is left. Three
+  // trainers, a scroll with the code and the locked door to the last room (route_110_trick_house_puzzle_2.txt)
+  "area": "route_110_trick_house_puzzle_2",
+  "bgmTrack": "hoenn/trick_house",
+  "doors": [ { "warp": 2, "map": "Route110_TrickHouseEnd", "x": 10, "y": 2, "facing": "Down" } ],
+  "switches": [ { "warp": 2, "from": "FLAG_HOENN_TRICK_HOUSE_PUZZLE_2_UNLOCKED" } ],
+  "readAt": [ { "x": 13, "z": 1, "script": "Door" } ],
+  "read": { "Route110_TrickHousePuzzle2_EventScript_Scroll": "Scroll" },
+  "triggers": [
+    { "trigger": 0, "script": "Button1" },
+    { "trigger": 1, "script": "Button2" },
+    { "trigger": 2, "script": "Button3" },
+    { "trigger": 3, "script": "Button4" }
+  ],
+  "people": {
+    "school_kid_m": { "name": "Ted", "trainer": { "dialogueBefore": "School Kid Ted: Which button fills which hole? I keep pressing them and getting nowhere!", "dialogueAfter": "School Kid Ted: I could use a map. Or a hint. Or both." } },
+    "school_kid_m_2": { "name": "Paul", "trainer": { "dialogueBefore": "School Kid Paul: Oh, your second puzzle? I'm on my fourth try at this one.", "dialogueAfter": "School Kid Paul: Fifth try, then." } },
+    "girl_3": { "name": "Georgia", "trainer": { "dialogueBefore": "School Kid Georgia: One day I'll run a Gym full of traps like these. Practise on me!", "dialogueAfter": "School Kid Georgia: Note to self: traps need better Pokémon behind them." } }
+  }
+}

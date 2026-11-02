@@ -138,6 +138,14 @@
     "description": "Writing paper with a pattern of Zigzagoon. A Pokémon can carry it in a trade.",
     "fieldUse": "Mail"
   },
+  // Plan 21 · H12, part j: the rest of Emerald's mail, found in the Trick House's later puzzles
+  "Wave Mail": { "id": 9140, "pocket": "Mail", "effectType": "None", "effectValue": 0, "price": 50, "canUseInBattle": false, "canUseInOverworld": true, "description": "Writing paper with Wailmer spouting in the open sea. A Pokémon can carry it in a trade.", "fieldUse": "Mail" },
+  "Wood Mail": { "id": 9141, "pocket": "Mail", "effectType": "None", "effectValue": 0, "price": 50, "canUseInBattle": false, "canUseInOverworld": true, "description": "Writing paper with Slakoth dozing among the trees. A Pokémon can carry it in a trade.", "fieldUse": "Mail" },
+  "Shadow Mail": { "id": 9142, "pocket": "Mail", "effectType": "None", "effectValue": 0, "price": 50, "canUseInBattle": false, "canUseInOverworld": true, "description": "Writing paper with Duskull drifting through the dark. A Pokémon can carry it in a trade.", "fieldUse": "Mail" },
+  "Mech Mail": { "id": 9143, "pocket": "Mail", "effectType": "None", "effectValue": 0, "price": 50, "canUseInBattle": false, "canUseInOverworld": true, "description": "Writing paper with Magnemite among cogs and bolts. A Pokémon can carry it in a trade.", "fieldUse": "Mail" },
+  "Glitter Mail": { "id": 9144, "pocket": "Mail", "effectType": "None", "effectValue": 0, "price": 50, "canUseInBattle": false, "canUseInOverworld": true, "description": "Writing paper with Pikachu on a sparkling ground. A Pokémon can carry it in a trade.", "fieldUse": "Mail" },
+  "Tropic Mail": { "id": 9145, "pocket": "Mail", "effectType": "None", "effectValue": 0, "price": 50, "canUseInBattle": false, "canUseInOverworld": true, "description": "Writing paper with Bellossom among bright flowers. A Pokémon can carry it in a trade.", "fieldUse": "Mail" },
+  "Bead Mail": { "id": 9146, "pocket": "Mail", "effectType": "None", "effectValue": 0, "price": 50, "canUseInBattle": false, "canUseInOverworld": true, "description": "Writing paper strung with beads, showing the icon of the Pokémon that carries it.", "fieldUse": "Mail" },
   // Hoenn's items of plan 21 · H4 (part a) and H3 (part c), which no game this importer reads has: the goggles that
   // let their wearer cross the desert's sandstorm, the sack that gathers volcanic ash, and the mail Slateport sells,
   // which the woman of Mauville trades her Coin Case for

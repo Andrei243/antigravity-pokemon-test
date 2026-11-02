@@ -31,6 +31,32 @@
     { "map": "NewMauville_Inside", "var": "VAR_TEMP_1", "value": 1, "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 830 }, { "chunkX": 0, "chunkY": 1, "chunk": 832 }, { "chunkX": 1, "chunkY": 1, "chunk": 833 } ] },
     { "map": "NewMauville_Inside", "var": "VAR_TEMP_2", "value": 1, "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 834 }, { "chunkX": 0, "chunkY": 1, "chunk": 836 }, { "chunkX": 1, "chunkY": 1, "chunk": 837 } ] },
     { "map": "NewMauville_Inside", "var": "VAR_NEW_MAUVILLE_STATE", "value": 2, "cells": [ { "chunkX": 1, "chunkY": 0, "chunk": 839 } ] },
+    // Plan 21 · H12, part j: the Trick House's second puzzle, a hole covered for each button stepped on (VAR_TEMP_5 the
+    // sum of the buttons pressed, 1, 2, 4 and 8), and its third, its red and blue doors swapped at each press (VAR_TEMP_7
+    // five times the doors' state and the last button pressed); each room's OnTransition sets them back to 0 (GbaTrickHouse)
+    { "map": "Route110_TrickHousePuzzle2", "var": "VAR_TEMP_5", "value": 1, "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 846 } ] },
+    { "map": "Route110_TrickHousePuzzle2", "var": "VAR_TEMP_5", "value": 2, "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 847 } ] },
+    { "map": "Route110_TrickHousePuzzle2", "var": "VAR_TEMP_5", "value": 3, "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 848 } ] },
+    { "map": "Route110_TrickHousePuzzle2", "var": "VAR_TEMP_5", "value": 4, "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 849 } ] },
+    { "map": "Route110_TrickHousePuzzle2", "var": "VAR_TEMP_5", "value": 5, "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 850 } ] },
+    { "map": "Route110_TrickHousePuzzle2", "var": "VAR_TEMP_5", "value": 6, "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 851 } ] },
+    { "map": "Route110_TrickHousePuzzle2", "var": "VAR_TEMP_5", "value": 7, "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 852 } ] },
+    { "map": "Route110_TrickHousePuzzle2", "var": "VAR_TEMP_5", "value": 8, "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 853 } ] },
+    { "map": "Route110_TrickHousePuzzle2", "var": "VAR_TEMP_5", "value": 9, "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 854 } ] },
+    { "map": "Route110_TrickHousePuzzle2", "var": "VAR_TEMP_5", "value": 10, "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 855 } ] },
+    { "map": "Route110_TrickHousePuzzle2", "var": "VAR_TEMP_5", "value": 11, "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 856 } ] },
+    { "map": "Route110_TrickHousePuzzle2", "var": "VAR_TEMP_5", "value": 12, "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 857 } ] },
+    { "map": "Route110_TrickHousePuzzle2", "var": "VAR_TEMP_5", "value": 13, "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 858 } ] },
+    { "map": "Route110_TrickHousePuzzle2", "var": "VAR_TEMP_5", "value": 14, "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 859 } ] },
+    { "map": "Route110_TrickHousePuzzle2", "var": "VAR_TEMP_5", "value": 15, "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 860 } ] },
+    { "map": "Route110_TrickHousePuzzle3", "var": "VAR_TEMP_7", "value": 1, "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 861 } ] },
+    { "map": "Route110_TrickHousePuzzle3", "var": "VAR_TEMP_7", "value": 2, "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 862 } ] },
+    { "map": "Route110_TrickHousePuzzle3", "var": "VAR_TEMP_7", "value": 3, "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 863 } ] },
+    { "map": "Route110_TrickHousePuzzle3", "var": "VAR_TEMP_7", "value": 4, "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 864 } ] },
+    { "map": "Route110_TrickHousePuzzle3", "var": "VAR_TEMP_7", "value": 6, "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 865 } ] },
+    { "map": "Route110_TrickHousePuzzle3", "var": "VAR_TEMP_7", "value": 7, "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 866 } ] },
+    { "map": "Route110_TrickHousePuzzle3", "var": "VAR_TEMP_7", "value": 8, "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 867 } ] },
+    { "map": "Route110_TrickHousePuzzle3", "var": "VAR_TEMP_7", "value": 9, "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 868 } ] },
     // Plan 21 · H12, part h: Mirage Island off Route 130 (Emerald's LAYOUT_ROUTE130_MIRAGE_ISLAND, laid by its
     // ON_TRANSITION on a day the team's personalities match; here by FLAG_HOENN_MIRAGE_ISLAND, which common.HoennMirageIsland
     // sets or clears as Routes 129 to 131 and Pacifidlog are come to)
@@ -119,6 +145,15 @@
     { "name": "Route110_TrickHouseEntrance", "matrix": 442, "area": "route_110_trick_house_entrance", "trees": "Round", "setting": "Indoors" },
     { "name": "Route110_TrickHouseEnd", "matrix": 443, "area": "route_110_trick_house_end", "trees": "Round", "setting": "Indoors" },
     { "name": "Route110_TrickHousePuzzle1", "matrix": 445, "area": "route_110_trick_house_puzzle_1", "trees": "Round", "setting": "Indoors" },
+    // Plan 21 · H12, part j: the Trick House's seven later puzzles (the sixth's gates and the seventh's arrows are Gym
+    // puzzles of their own, on Emerald's other tables of the Fortree and Mossdeep rules)
+    { "name": "Route110_TrickHousePuzzle2", "matrix": 446, "area": "route_110_trick_house_puzzle_2", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route110_TrickHousePuzzle3", "matrix": 447, "area": "route_110_trick_house_puzzle_3", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route110_TrickHousePuzzle4", "matrix": 448, "area": "route_110_trick_house_puzzle_4", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route110_TrickHousePuzzle5", "matrix": 449, "area": "route_110_trick_house_puzzle_5", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route110_TrickHousePuzzle6", "matrix": 450, "area": "route_110_trick_house_puzzle_6", "trees": "Round", "setting": "Indoors", "puzzle": "TrickHouseGates" },
+    { "name": "Route110_TrickHousePuzzle7", "matrix": 451, "area": "route_110_trick_house_puzzle_7", "trees": "Round", "setting": "Indoors", "puzzle": "TrickHouseTiles" },
+    { "name": "Route110_TrickHousePuzzle8", "matrix": 452, "area": "route_110_trick_house_puzzle_8", "trees": "Round", "setting": "Indoors" },
     { "name": "MauvilleCity_Gym", "matrix": 74, "area": "mauville_city_gym", "trees": "Round", "setting": "Indoors" },
     { "name": "MauvilleCity_BikeShop", "matrix": 75, "area": "mauville_city_bike_shop", "trees": "Round", "setting": "Indoors" },
     { "name": "MauvilleCity_House1", "matrix": 76, "area": "mauville_city_house_1", "trees": "Round", "setting": "Indoors" },
@@ -507,6 +542,9 @@
     "route_110", "mauville_city", "route_117", "verdanturf_town",
     "route_110_seaside_cycling_road_south_entrance", "route_110_seaside_cycling_road_north_entrance",
     "route_110_trick_house_entrance", "route_110_trick_house_end", "route_110_trick_house_puzzle_1",
+    "route_110_trick_house_puzzle_2", "route_110_trick_house_puzzle_3", "route_110_trick_house_puzzle_4",
+    "route_110_trick_house_puzzle_5", "route_110_trick_house_puzzle_6", "route_110_trick_house_puzzle_7",
+    "route_110_trick_house_puzzle_8",
     "mauville_city_gym", "mauville_city_bike_shop", "mauville_city_house_1", "mauville_city_house_2",
     "mauville_city_pokemon_center_1f", "mauville_city_pokemon_center_2f", "mauville_city_mart",
     "route_117_pokemon_day_care",

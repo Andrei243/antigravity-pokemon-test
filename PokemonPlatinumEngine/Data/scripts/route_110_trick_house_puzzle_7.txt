@@ -1,0 +1,57 @@
+# The Trick House's seventh puzzle (plan 21 · H12, part j). docs/scripts.md describes the language; the lines are our own,
+# on Emerald's beats (data/maps/Route110_TrickHousePuzzle7/scripts.inc).
+#
+# Each switch moves whoever stands on its colour's arrows a step round the loop and turns them (`rotatetiles`; the room's
+# puzzle, TrickHouseTiles: Emerald's initrotatingtilepuzzle TRUE, the Mossdeep Gym's rule on the puzzle's own tiles),
+# trainers and the two statues alike; leaving the room puts everyone back. Emerald's leftover switches of Ruby and
+# Sapphire's version are never called and are not here. VAR_TRICK_HOUSE_PUZZLE_7_STATE and
+# FLAG_HOENN_TRICK_HOUSE_PUZZLE_7_UNLOCKED as the other puzzles'.
+
+
+script YellowSwitch
+  sound "select"
+  rotatetiles yellow
+  end
+
+script BlueSwitch
+  sound "select"
+  rotatetiles blue
+  end
+
+script GreenSwitch
+  sound "select"
+  rotatetiles green
+  end
+
+script PurpleSwitch
+  sound "select"
+  rotatetiles purple
+  end
+
+script Scroll
+  if var VAR_TRICK_HOUSE_PUZZLE_7_STATE != 0 goto Again
+  setvar VAR_TRICK_HOUSE_PUZZLE_7_STATE 1
+  fanfare item
+  text "{player} found a scroll!"
+  text "{player} learnt the secret code written on it by heart."
+  end
+label Again
+  text "The secret code is written on it: \"The Trick Master is the finest in Hoenn.\""
+  end
+
+
+script Door
+  if var VAR_TRICK_HOUSE_PUZZLE_7_STATE == 2 goto Open
+  if var VAR_TRICK_HOUSE_PUZZLE_7_STATE == 1 goto Write
+  text "The door is locked. Something is written on it: \"Write the secret code here.\""
+  end
+label Write
+  text "{player} wrote the secret code on the door. \"The Trick Master is the finest in Hoenn.\""
+  sound "door_open"
+  text "Click! The lock opened!"
+  setvar VAR_TRICK_HOUSE_PUZZLE_7_STATE 2
+  setflag FLAG_HOENN_TRICK_HOUSE_PUZZLE_7_UNLOCKED
+  end
+label Open
+  text "The door stands open."
+  end

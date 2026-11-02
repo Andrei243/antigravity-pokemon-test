@@ -1,0 +1,34 @@
+# The Trick House's sixth puzzle (plan 21 · H12, part j). docs/scripts.md describes the language; the lines are our own,
+# on Emerald's beats (data/maps/Route110_TrickHousePuzzle6/scripts.inc).
+#
+# Rotating gates, pushed round a quarter turn by walking into their arms (the room's puzzle, world.json's
+# TrickHouseGates: Emerald's sRotatingGate_TrickHousePuzzleConfig on the Fortree Gym's rule), laid out afresh as the
+# room is come into. VAR_TRICK_HOUSE_PUZZLE_6_STATE and FLAG_HOENN_TRICK_HOUSE_PUZZLE_6_UNLOCKED as the other puzzles'.
+
+script Scroll
+  if var VAR_TRICK_HOUSE_PUZZLE_6_STATE != 0 goto Again
+  setvar VAR_TRICK_HOUSE_PUZZLE_6_STATE 1
+  fanfare item
+  text "{player} found a scroll!"
+  text "{player} learnt the secret code written on it by heart."
+  end
+label Again
+  text "The secret code is written on it: \"The Trick Master never sleeps.\""
+  end
+
+
+script Door
+  if var VAR_TRICK_HOUSE_PUZZLE_6_STATE == 2 goto Open
+  if var VAR_TRICK_HOUSE_PUZZLE_6_STATE == 1 goto Write
+  text "The door is locked. Something is written on it: \"Write the secret code here.\""
+  end
+label Write
+  text "{player} wrote the secret code on the door. \"The Trick Master never sleeps.\""
+  sound "door_open"
+  text "Click! The lock opened!"
+  setvar VAR_TRICK_HOUSE_PUZZLE_6_STATE 2
+  setflag FLAG_HOENN_TRICK_HOUSE_PUZZLE_6_UNLOCKED
+  end
+label Open
+  text "The door stands open."
+  end
