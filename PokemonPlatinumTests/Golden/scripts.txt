@@ -3237,10 +3237,9 @@ way 3, from answer 1
   Depot Agent> Please ride with us again!
   ? What would you like to do? = EXIT
 way 2, from answer 1
-  Depot Agent> Your longest streak on the Double Train is 0 cars.
+  Depot Agent> Here are your records on the Battle Subway's lines.
   ? What would you like to do? = RECORD
-  = VAR_UNOVA_SUBWAY_SEED 0 -> 47596
-  = VAR_UNOVA_SUBWAY_TRAIN 0 -> 1
+  * frontier subwayrecords 0
 way 1, from answer 1
   Depot Agent> Every car holds a trainer with four Pokémon, and two of them battle two of yours at once. Clear seven cars for a set.
   Depot Agent> The Double Train takes four Pokémon, all of different species and holding different items, at Level 50 or under.
@@ -3255,6 +3254,7 @@ way 0
   Depot Agent> I'm sorry. You need 2 Pokémon that can take part, all of different species and holding different items.
   Depot Agent> An Egg can't take part, and nor can certain rare Pokémon.
   ? What would you like to do? = RIDE
+  * frontier subwaypartner 0
   * frontier seen 150
   * frontier seen 151
   * frontier seen 249
@@ -3279,15 +3279,14 @@ way 3, from answer 1
   Depot Agent> Please ride with us again!
   ? What would you like to do? = EXIT
 way 2, from answer 1
-  Depot Agent> Your longest streak on the Multi Train is 0 cars.
+  Depot Agent> Here are your records on the Battle Subway's lines.
   ? What would you like to do? = RECORD
-  = VAR_UNOVA_SUBWAY_SEED 0 -> 47596
-  = VAR_UNOVA_SUBWAY_TRAIN 0 -> 2
+  * frontier subwayrecords 0
 way 1, from answer 1
-  Depot Agent> You bring two Pokémon and a partner from our own staff brings two more. Every car holds a pair of trainers.
+  Depot Agent> You bring two Pokémon and a partner brings two more. Every car holds a pair of trainers.
   Depot Agent> The two Pokémon must be of different species and hold different items, at Level 50 or under. Ingo and Emmet ride together in the 21st car and the 49th.
   Depot Agent> Beat them in the 21st car and the Super Multi Train opens to you, with tougher pairs and more Battle Points.
-  Depot Agent> A partner from a friend over a link is not on the line yet. We're sorry!
+  Depot Agent> A partner from our own staff rides with anyone. Friends of yours who have seen Unova's League may ride with you too.
   ? What would you like to do? = INFO
 === GearStation.SingleTrain
 from Depot Agent at 3,3 of GearStation
@@ -3320,14 +3319,15 @@ way 3, from answer 1
   Depot Agent> Please ride with us again!
   ? What would you like to do? = EXIT
 way 2, from answer 1
-  Depot Agent> Your longest streak on the Single Train is 0 cars.
+  Depot Agent> Here are your records on the Battle Subway's lines.
   ? What would you like to do? = RECORD
-  = VAR_UNOVA_SUBWAY_SEED 0 -> 47596
+  * frontier subwayrecords 0
 way 1, from answer 1
   Depot Agent> A trainer waits in every car. Clear seven and you may get off with Battle Points, or go on to the next set.
   Depot Agent> The Single Train takes three Pokémon, all of different species and holding different items. They battle at Level 50 or under, and nothing from the Bag may be used.
   Depot Agent> The Subway Bosses, Ingo and Emmet, wait for those who ride on to the 21st car and the 49th.
   Depot Agent> Beat Ingo in the 21st car and the Super Single Train opens to you, with tougher trainers and more Battle Points.
+  Depot Agent> After a set you may also put your run down. The game is saved here, and you can ride on later.
   ? What would you like to do? = INFO
 === GlobalTerminal1F.Favourite
 from Beauty at 15,10 of GlobalTerminal1F
@@ -17749,7 +17749,7 @@ way 0
   > Will you leave the grotto?
   ? Will you leave the grotto? = Yes
   * fade out
-  * sound stairs
+  * sound grotto_enter
   * warp Unova 152 367
   * fade in
 way 1, from answer 1
@@ -18478,6 +18478,29 @@ way -
 from the tile read at 7,27 of JoinAvenue
 way -
   > Join Avenue Market\nEverything for the road ahead!
+=== join_avenue.Owner
+from Owner at 15,70 of JoinAvenue
+way 0
+  Owner> Welcome to Join Avenue! As you see, the street is quiet yet. One day it will be the liveliest in Unova!
+  Owner> What it needs is a manager: someone to bring the visitors in, so the shops can grow with them.
+  Owner> You have the look of a Trainer people follow. Will you be Join Avenue's manager?
+  Owner> Splendid! From today the avenue is yours to run.
+  Owner> Visitors will come by each day you drop in. The more come, the higher the avenue's rank, and the better its shops!
+  ? You have the look of a Trainer people follow. Will you be Join Avenue's manager? = Yes
+  + FLAG_DAILY_UNOVA_JOIN_AVENUE_VISITORS
+  + FLAG_UNOVA_JOIN_AVENUE_MANAGER
+  = VAR_UNOVA_JOIN_AVENUE_VISITORS 0 -> 3
+way 1, from answer 1
+  Owner> No? Well, the offer stands. Come and see me if you change your mind.
+  ? You have the look of a Trainer people follow. Will you be Join Avenue's manager? = No
+=== join_avenue.Stones
+from Shop Girl at 16,70 of JoinAvenue
+way -
+  Shop Girl> Our shop isn't open yet. Come back once the avenue's up and running!
+=== join_avenue.Vitamins
+from Shop Girl at 14,70 of JoinAvenue
+way -
+  Shop Girl> I'm practising my welcome. ...Welcome! How was that? The shop opens when the avenue is busy enough.
 === jubilife_city.Cameraman
 from Cameraman at 169,753 of Sinnoh
 way -

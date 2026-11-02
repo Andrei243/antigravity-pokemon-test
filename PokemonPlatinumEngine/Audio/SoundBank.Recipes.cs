@@ -41,6 +41,8 @@ public static partial class SoundBank
         Add("surf", SoundGroup.Field, null, "A Pokémon is ridden out onto the water.");
         Add("dive", SoundGroup.Field, null, "Dive taken down under the sea, or back up from its floor: a plunge and a stream of bubbles (plan 21 · H5).");
         Add("bubbles", SoundGroup.Field, null, "A diver on the sea floor breathes out: three low bubbles, every 2.8 seconds (plan 21 · H5).");
+        Add("grotto_enter", SoundGroup.Field, null, "Crawling into a Hidden Grotto or back out of it: branches pushed aside, a brush of leaves and a soft thud of earth (plan 22 · U11).");
+        Add("grotto_rustle", SoundGroup.Field, null, "A Hidden Grotto near the player that may hold something: a quick rustle of leaves from its side, every 2.4 seconds while it is within five tiles (plan 22 · U11).");
         Add("bridge_walk", SoundGroup.Field, null, "A step on, along or off a plank bridge of Hoenn: a dry wooden knock and a short creak as the plank gives (Emerald's SE_BRIDGE_WALK; plan 21 · H6, part c).");
         Add("crossing_horn", SoundGroup.Field, null, "A ship or a ferry leaves for another region: two long, low blasts of its horn over the engine's throb, as the crossing's dark begins (plan 18 · W5).");
         Add("crossing_engine", SoundGroup.Field, null, "A plane leaves for another region: its engines spool up from a low rumble to a steady roar as the crossing's dark begins (plan 18 · W5).");
@@ -316,6 +318,19 @@ public static partial class SoundBank
                 d.Bubble(0.12f, 410f, 0.42f);
                 d.Bubble(0.22f, 290f, 0.36f);
                 return Finish(d.S, 0.36f);
+            case "grotto_enter":
+                // Branches pushed aside: a long brush of leaves falling away, a twig's snap and a soft thud of earth under it
+                d = new SoundDesign(0.55f, 0x6A07u);
+                d.Noise(0, 0.42f, Filter.Band, 3200f, 1400f, 0.55f, 1.2f, 0.06f, 1.6f, flutterHz: 14f, flutterDepth: 0.6f);
+                d.Noise(0.12f, 0.03f, Filter.Band, 2600f, 2000f, 0.6f, 3f, 0.004f, 2.5f);
+                d.Thump(0.3f, 0.16f, 140f, 70f, 0.5f, 0.45f);
+                return Finish(d.S, 0.32f);
+            case "grotto_rustle":
+                // A quick rustle of leaves, two shakes close together, hushed and high
+                d = new SoundDesign(0.4f, 0x6A11u);
+                d.Noise(0, 0.14f, Filter.Band, 4200f, 3000f, 0.5f, 1.4f, 0.02f, 1.8f, flutterHz: 22f, flutterDepth: 0.7f);
+                d.Noise(0.17f, 0.18f, Filter.Band, 3800f, 2600f, 0.42f, 1.4f, 0.02f, 1.8f, flutterHz: 18f, flutterDepth: 0.7f);
+                return Finish(d.S, 0.3f);
             case "bridge_walk":
                 // A plank that gives: a dry knock of wood, a low thud under it and a short creak that falls away
                 d = new SoundDesign(0.2f, 0xB21D6Eu);

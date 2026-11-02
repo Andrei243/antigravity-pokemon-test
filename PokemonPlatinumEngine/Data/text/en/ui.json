@@ -1934,9 +1934,13 @@
   },
   "records": {
     "title": "BATTLE RECORDS",
-    "facility": { "tower": "Battle Tower", "factory": "Battle Factory", "castle": "Battle Castle", "hall": "Battle Hall", "arcade": "Battle Arcade" },
+    "facility": { "tower": "Battle Tower", "factory": "Battle Factory", "castle": "Battle Castle", "hall": "Battle Hall", "arcade": "Battle Arcade", "subway": "Battle Subway" },
     "row": {
       "single": "Single Battle", "double": "Double Battle", "multi": "Multi Battle",
+      "subway": {
+        "single": "Single Train", "double": "Double Train", "multi": "Multi Train",
+        "supersingle": "Super Single Train", "superdouble": "Super Double Train", "supermulti": "Super Multi Train"
+      },
       "lv50Single": "Lv. 50 Single", "lv50Double": "Lv. 50 Double", "openSingle": "Open Level Single", "openDouble": "Open Level Double"
     },
     "counted": { "trades": "TRADES", "points": "CP" },
@@ -4687,6 +4691,8 @@
       "johtoLeaders": "JOHTO LEADERS", "johtoChampion": "JOHTO'S LEAGUE",
       "hoennLeaders": "HOENN LEADERS", "hoennChampion": "HOENN'S LEAGUE",
       "unovaLeaders": "UNOVA LEADERS", "unovaChampion": "UNOVA'S LEAGUE",
+      "unovaTriples": "UNOVA TRIPLES", "unovaRotation": "UNOVA ROTATION", "unovaRental": "UNOVA RENTAL",
+      "unovaTypeStoneSteelSting": "STONE, STEEL AND STING", "unovaTypeSkySeaSpirit": "SKY, SEA AND SPIRIT",
       "worldLeaders": "WORLD LEADERS", "worldChampions": "WORLD CHAMPIONS", "worldBeyond": "BEYOND THE LEAGUE",
       "worldDoubles": "DOUBLE BATTLES", "worldTriples": "TRIPLE BATTLES", "worldRotation": "ROTATION BATTLES",
       "worldMix": "MIX", "worldRental": "RENTAL",
@@ -4705,6 +4711,11 @@
       "hoennChampion": "Wallace and Hoenn's Elite Four, with two Gym Leaders drawn to make seven.",
       "unovaLeaders": "Unova's eight Gym Leaders, with the teams they bring to a rematch.",
       "unovaChampion": "Iris and Unova's Elite Four, with two Gym Leaders drawn to make seven.",
+      "unovaTriples": "Unova's Gym Leaders, with three Pokémon out on each side.",
+      "unovaRotation": "Unova's Gym Leaders, with three Pokémon on a turntable each.",
+      "unovaRental": "Unova's Gym Leaders, and you, battle with three Pokémon lent at the desk.",
+      "unovaTypeStoneSteelSting": "Unova's League in Normal, Bug, Poison, Electric, Ground, Rock, Steel and Fighting types.",
+      "unovaTypeSkySeaSpirit": "Unova's League in Flying, Water, Dragon, Psychic, Ghost, Dark, Ice, Fire and Grass types.",
       "worldLeaders": "Gym Leaders of every region. Seven of them are drawn to meet you.",
       "worldChampions": "Every region's Champion, with two of the Elite Four drawn to make seven.",
       "worldBeyond": "The Champions and the Elite Four with the teams they keep for those who come back.",
@@ -4866,6 +4877,8 @@
       "dive": "A plunge into the deep",
       "bubbles": "Bubbles rise",
       "bridgeWalk": "Planks creak",
+      "grottoEnter": "Branches rustle aside",
+      "grottoRustle": "Leaves rustle nearby",
       "crossingHorn": "A ship's horn sounds",
       "crossingEngine": "Engines roar",
       "save": "The game is saved",

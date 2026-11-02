@@ -1,4 +1,94 @@
 {
+  "Owner": [
+    {
+      "en": [
+        "Owner"
+      ],
+      "text": [
+        "Proprietar"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to Join Avenue! As you see, the street is quiet yet. One day it will be the liveliest in Unova!"
+      ],
+      "text": [
+        "Bine ai venit pe Join Avenue! Cum vezi, strada e încă liniștită. Într-o zi va fi cea mai plină de viață din Unova!"
+      ]
+    },
+    {
+      "en": [
+        "What it needs is a manager: someone to bring the visitors in, so the shops can grow with them."
+      ],
+      "text": [
+        "Îi trebuie un administrator: cineva care să aducă vizitatorii, ca magazinele să crească odată cu ei."
+      ]
+    },
+    {
+      "en": [
+        "You have the look of a Trainer people follow. Will you be Join Avenue's manager?"
+      ],
+      "text": [
+        "Arăți ca un Antrenor pe care oamenii îl urmează. Vrei să fii administratorul Join Avenue?"
+      ]
+    },
+    {
+      "en": [
+        "Splendid! From today the avenue is yours to run."
+      ],
+      "text": [
+        "Splendid! De azi, bulevardul e al tău."
+      ]
+    },
+    {
+      "en": [
+        "Visitors will come by each day you drop in. The more come, the higher the avenue's rank, and the better its shops!"
+      ],
+      "text": [
+        "Vizitatorii vor veni în fiecare zi în care treci pe aici. Cu cât vin mai mulți, cu atât crește rangul bulevardului și cu atât mai bune sunt magazinele!"
+      ]
+    },
+    {
+      "en": [
+        "No? Well, the offer stands. Come and see me if you change your mind."
+      ],
+      "text": [
+        "Nu? Ei bine, oferta rămâne. Treci pe la mine dacă te răzgândești."
+      ]
+    },
+    {
+      "en": [
+        "Manager! Join Avenue has had {number} visitors so far."
+      ],
+      "text": [
+        "Domnule administrator! Join Avenue a avut până acum {number} vizitatori."
+      ]
+    },
+    {
+      "en": [
+        "That makes it a rank {number} avenue."
+      ],
+      "text": [
+        "Asta îl face un bulevard de rangul {number}."
+      ]
+    },
+    {
+      "en": [
+        "{number} more visitors and it will rank up. Keep dropping in!"
+      ],
+      "text": [
+        "Încă {number} vizitatori și urcă în rang. Mai treci pe aici!"
+      ]
+    },
+    {
+      "en": [
+        "That's as high as an avenue goes. Unova has never seen a street like it!"
+      ],
+      "text": [
+        "Mai sus de atât un bulevard nu poate ajunge. Unova n-a mai văzut o asemenea stradă!"
+      ]
+    }
+  ],
   "Market": [
     {
       "en": [
@@ -74,6 +164,58 @@
       ],
       "text": [
         "Savurează! Și ai grijă la aglomerație pe drumul spre oraș."
+      ]
+    }
+  ],
+  "Stones": [
+    {
+      "en": [
+        "Shop Girl"
+      ],
+      "text": [
+        "Vânzătoare"
+      ]
+    },
+    {
+      "en": [
+        "Thank you! Every stone of Unova's, and they all shine just as they should."
+      ],
+      "text": [
+        "Mulțumesc! Toate pietrele din Unova, și strălucesc toate exact cum trebuie."
+      ]
+    },
+    {
+      "en": [
+        "Our shop isn't open yet. Come back once the avenue's up and running!"
+      ],
+      "text": [
+        "Magazinul nostru nu e încă deschis. Revino când bulevardul e pornit!"
+      ]
+    }
+  ],
+  "Vitamins": [
+    {
+      "en": [
+        "Shop Girl"
+      ],
+      "text": [
+        "Vânzătoare"
+      ]
+    },
+    {
+      "en": [
+        "Thank you! Your Pokémon will feel the difference, I promise."
+      ],
+      "text": [
+        "Mulțumesc! Pokémonii tăi vor simți diferența, promit."
+      ]
+    },
+    {
+      "en": [
+        "I'm practising my welcome. ...Welcome! How was that? The shop opens when the avenue is busy enough."
+      ],
+      "text": [
+        "Îmi exersez salutul. ...Bine ați venit! Cum a fost? Magazinul se deschide când bulevardul e destul de aglomerat."
       ]
     }
   ],

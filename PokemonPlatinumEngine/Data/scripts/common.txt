@@ -3379,7 +3379,7 @@ script GrottoMouth
   ask "Will you go in?"
   if no end
   fade out 0.4
-  sound "stairs"
+  sound "grotto_enter"
   warp "HiddenGrotto" 15 17 up
   fade in
   end

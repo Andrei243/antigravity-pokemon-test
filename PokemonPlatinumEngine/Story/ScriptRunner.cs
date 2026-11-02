@@ -364,6 +364,8 @@ public sealed partial class ScriptRunner
         Op.Tutor or Op.Amity => true,
         // A grotto's Pokémon is battled and its item is handed over with its lines; what it holds is asked without a screen
         Op.Grotto => i.Name is "battle" or "take",
+        // Join Avenue's numbers are counted with no screen; a shop is opened
+        Op.JoinAvenue => i.Name == "shop",
         // The Cycling Road's run judged or read is numbers only (plan 21 · H12, part k)
         Op.CyclingRoad => false,
         // A scene's own two lines
@@ -1356,6 +1358,10 @@ public sealed partial class ScriptRunner
             // A Hidden Grotto (plan 22 · U11)
             case Op.Grotto:
                 GrottoCommand(i);
+                break;
+            // Join Avenue's growth (plan 22 · U11)
+            case Op.JoinAvenue:
+                JoinAvenueCommand(i);
                 break;
             // The Battle Dome (plan 14 · B8)
             case Op.Bracket:

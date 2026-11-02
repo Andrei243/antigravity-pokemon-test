@@ -1450,6 +1450,127 @@ public class UnovaStoryTests
         Assert.Equal(60, car.Frontier.BattlePoints);
     }
 
+    private static HeadlessScriptHost LastCar(Game game) => game.Played.Last(p => p.Script.Contains("BattleSubwayTrain")).Host;
+
+    [Fact]
+    public void ARunPutDownIsTakenUpAgainFromTheNextCar()
+    {
+        // RIDE; after the first set REST and yes: back in the Gear Station with the run put down and the game saved
+        var game = Rider();
+        game.Answers.AddRange(new[] { 0, 2, 0 });
+        game.TalkTo("single_desk");
+        var first = LastCar(game);
+        Assert.Equal(7, first.FrontierBattles.Count);
+        Assert.Equal(BattleSubway.PutDown, game.Story.Var(BattleSubway.Vars.State));
+        Assert.Equal(7, game.Story.Var(BattleSubway.Vars.Wins));
+        Assert.Equal(0, first.Frontier.BattlePoints);
+        Assert.Contains(first.Transcript, l => l.Text.Contains("saved the game"));
+        Assert.Equal("GearStation", game.Map.Name);
+
+        // Any desk takes it up again: yes, and the cars go on from the 8th to the end of the second set, then off
+        var desk = game.TalkTo("double_desk");
+        Assert.Contains(desk.Asked, q => q.Question.Contains("car 8"));
+        var second = LastCar(game);
+        Assert.NotSame(first, second);
+        Assert.Equal(7, second.FrontierBattles.Count);
+        Assert.All(second.FrontierBattles, b => Assert.Equal(3, b.Team.Count));
+        Assert.Equal(14, game.Story.Var(BattleSubway.Vars.Best(SubwayTrain.Single)));
+        Assert.Equal(14, game.Story.Var(BattleSubway.Vars.Latest(SubwayTrain.Single)));
+        // both sets are paid as one run's: 3 + 4
+        Assert.Equal(7, second.Frontier.BattlePoints);
+        Assert.Equal(BattleSubway.NoRun, game.Story.Var(BattleSubway.Vars.State));
+    }
+
+    [Fact]
+    public void ARunPutDownIsEndedAtTheDeskOrByAChangedTeam()
+    {
+        // Put down, then given up at the desk: the set cleared is paid, the streak kept
+        var game = Rider();
+        game.Answers.AddRange(new[] { 0, 2, 0 });
+        game.TalkTo("single_desk");
+        game.Answers.AddRange(new[] { 1, 0 });
+        var desk = game.TalkTo("single_desk");
+        Assert.Contains(desk.Transcript, l => l.Text.Contains("received 3 BP"));
+        Assert.Equal(BattleSubway.NoRun, game.Story.Var(BattleSubway.Vars.State));
+        Assert.Equal(7, game.Story.Var(BattleSubway.Vars.Latest(SubwayTrain.Single)));
+        // no, then no: the run waits, and the desk says nothing more
+        var kept = Rider();
+        kept.Answers.AddRange(new[] { 0, 2, 0 });
+        kept.TalkTo("single_desk");
+        kept.Answers.AddRange(new[] { 1, 1 });
+        var waits = kept.TalkTo("single_desk");
+        Assert.DoesNotContain(waits.Asked, q => q.Question.Contains("What would you like"));
+        Assert.Equal(BattleSubway.PutDown, kept.Story.Var(BattleSubway.Vars.State));
+
+        // A team changed since: the run can't go on and ends
+        var changed = Rider();
+        changed.Answers.AddRange(new[] { 0, 2, 0 });
+        changed.TalkTo("single_desk");
+        while (changed.Party.Count > 2) changed.Party.RemoveAt(2);
+        var refused = changed.TalkTo("single_desk");
+        Assert.Contains(refused.Transcript, l => l.Text.Contains("can't go on"));
+        Assert.DoesNotContain(refused.Log, l => l.StartsWith("warp BattleSubwayTrain"));
+        Assert.Equal(BattleSubway.NoRun, changed.Story.Var(BattleSubway.Vars.State));
+    }
+
+    [Fact]
+    public void TheSubwaysBoardTellsEachTrainsStreaks()
+    {
+        var story = new StoryState();
+        var board = FrontierBoard.ForSubway(new FrontierRecords(), story);
+        Assert.Equal(3, board.Rows.Count);
+        Assert.Equal(FrontierPrint.None, board.Print);
+        story.SetVar(BattleSubway.Vars.Best(SubwayTrain.Single), 21);
+        story.SetVar(BattleSubway.Vars.Latest(SubwayTrain.Single), 9);
+        story.SetVar(BattleSubway.Vars.Best(SubwayTrain.SuperSingle), 30);
+        // a run under way on the Double Train is counted as it stands
+        story.SetVar(BattleSubway.Vars.State, BattleSubway.Riding);
+        story.SetVar(BattleSubway.Vars.Train, (int)SubwayTrain.Double);
+        story.SetVar(BattleSubway.Vars.Wins, 5);
+        board = FrontierBoard.ForSubway(new FrontierRecords(), story);
+        // the Super Single Train's row once it is open
+        Assert.Equal(4, board.Rows.Count);
+        Assert.Equal((21, 9, false), (board.Rows[0].Record, board.Rows[0].Latest, board.Rows[0].Running));
+        Assert.Equal((0, 5, true), (board.Rows[1].Record, board.Rows[1].Latest, board.Rows[1].Running));
+        Assert.Equal(30, board.Rows[3].Record);
+        Assert.All(board.Rows, r => Assert.DoesNotContain("[records", r.Label));
+
+        // The desk's RECORD opens it
+        var game = Rider();
+        game.Answers.AddRange(new[] { 2 });
+        var desk = game.TalkTo("single_desk");
+        Assert.Contains(desk.Log, l => l.Contains("subwayrecords"));
+    }
+
+    [Fact]
+    public void AFriendRidesTheMultiTrainOnceTheLeagueIsSeen()
+    {
+        // Before Unova's Hall of Fame: no question of partners, the staff's own
+        var plain = Rider();
+        Assert.DoesNotContain(plain.TalkTo("multi_desk").Asked, q => q.Question.Contains("ride beside you"));
+        Assert.All(Car(plain).FrontierBattles, b => Assert.StartsWith("frontier_", b.Partner!.Id));
+
+        // After it: Cheren rides beside the player, with two of his own at level 50 that share nothing with the two entered
+        var game = Rider();
+        game.Story.Set(BattleSubway.FriendsFlag);
+        game.Answers.AddRange(new[] { 0, 1 });
+        var desk = game.TalkTo("multi_desk");
+        Assert.Contains(desk.Asked, q => q.Question.Contains("ride beside you"));
+        var car = Car(game);
+        Assert.Equal(1, car.SubwayPartner);
+        Assert.All(car.FrontierBattles, b =>
+        {
+            Assert.Equal("unova_cheren_4", b.Partner!.Id);
+            Assert.Equal(2, b.Partner.Party.Count);
+            Assert.All(b.Partner.Party.Members, p => Assert.Equal(50, p.Level));
+            Assert.Empty(b.Partner.Party.Members.Select(p => p.Species.Name).Intersect(b.Team.Members.Select(p => p.Species.Name)));
+        });
+        // The friend is the model's: two of the highest level of Cheren's team kept clear of the entered
+        var friend = BattleSubway.MakeFriend(1, new[] { new Pokemon(PokemonDatabase.Get("Haxorus")!, 50) });
+        Assert.DoesNotContain(friend.Party.Members, p => p.Species.Name == "Haxorus");
+        Assert.Equal(2, friend.Party.Count);
+    }
+
     [Fact]
     public void ASuperTrainsTrainersBeginThreeRoomsOn()
     {

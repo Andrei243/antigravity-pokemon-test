@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using PokemonPlatinumEngine.Battle.Sim;
 using PokemonPlatinumEngine.Data;
 
 namespace PokemonPlatinumEngine.Models.Frontier;
@@ -29,8 +30,10 @@ public enum SubwayTrain
 /// and a seed for the partner's team. The trainers of the Frontier's own table stand in for Black 2's Subway
 /// trainers (whom the import doesn't hold), drawn by the rooms of the Battle Tower's rows, and the Subway Bosses
 /// stand at the 21st and the 49th battle in every train; a Super train (plan 22 · U11) begins three rooms further on and
-/// has its Boss at the 49th alone. What is left (the run's pause, Wi-Fi, the
-/// Subway's own records and prints and its Battle Point counter) is listed in plan 22. No drawing or input; every
+/// has its Boss at the 49th alone, and a run may be put down between two sets and taken up again
+/// (<see cref="PutDown"/>), its streaks told on a records' board (<see cref="FrontierBoard.ForSubway"/>) and its Multi
+/// lines ridden beside a friend (<see cref="Friends"/>). What is left (Wi-Fi, the Subway's own trainers and prints and
+/// its Battle Point counter) is listed in plan 22. No drawing or input; every
 /// draw is on the sixteen-bit draw the caller hands over.
 /// </summary>
 public static class BattleSubway
@@ -62,7 +65,80 @@ public static class BattleSubway
         public static string Slot(int n) => $"VAR_UNOVA_SUBWAY_SLOT_{n}";
         /// <summary>The longest streak of each train.</summary>
         public static string Best(SubwayTrain train) => $"VAR_UNOVA_SUBWAY_BEST_{train.ToString().ToUpperInvariant()}";
+        /// <summary>The streak of each train's last run, as it ended (plan 22 · U11: the records' board).</summary>
+        public static string Latest(SubwayTrain train) => $"VAR_UNOVA_SUBWAY_LATEST_{train.ToString().ToUpperInvariant()}";
+        /// <summary>Who rides beside the player on a Multi line: 0 the Subway's staff, or a friend of <see cref="Friends"/> plus one.</summary>
+        public const string Partner = "VAR_UNOVA_SUBWAY_PARTNER";
     }
+
+    /// <summary>What <see cref="Vars.State"/> holds: no run, a run under way, a run put down between two sets (plan 22 · U11).</summary>
+    public const int NoRun = 0, Riding = 1, PutDown = 2;
+
+    /// <summary>
+    /// The friends who ride the Multi lines beside the player in place of a friend over a link (plan 22 · U11; plan 06's
+    /// decision 7 holds no link): Cheren and Bianca with the teams of their last battles, once Unova's Hall of Fame has
+    /// been entered. Each brings the two of the highest level of their team that keep clear of the player's species and
+    /// items, at level 50.
+    /// </summary>
+    public static readonly (string Trainer, string Name, string Look)[] Friends =
+    {
+        ("unova_cheren_4", "Cheren", "cheren"),
+        ("unova_bianca_3", "Bianca", "bianca")
+    };
+
+    /// <summary>The story flag the friends wait for.</summary>
+    public const string FriendsFlag = "UnovaHallOfFame";
+
+    /// <summary>How many friends may be asked along as the story stands: none before Unova's Hall of Fame.</summary>
+    public static int FriendsOffered(Story.StoryState story) => story.Has(FriendsFlag) ? Friends.Length : 0;
+
+    /// <summary>
+    /// A friend (<paramref name="friend"/> from 1) as the partner of a battle: the two of the highest level of their team
+    /// (the later among equals) that share no species and no held item with the player's Pokémon entered or with each
+    /// other, in the team's order, at level 50; the trainer AI thinks for them with their own flags.
+    /// </summary>
+    public static Trainer MakeFriend(int friend, IReadOnlyList<Pokemon> entered)
+    {
+        var (id, name, look) = Friends[Math.Clamp(friend - 1, 0, Friends.Length - 1)];
+        var record = TrainerDatabase.Get(id) ?? throw new InvalidOperationException($"No trainer '{id}' for the Subway's friend");
+        var team = TrainerDatabase.PartyOf(record).Members.ToList();
+        var species = entered.Select(p => p.Species.Name).ToHashSet();
+        var items = entered.Where(p => p.HeldItem != null).Select(p => p.HeldItem!.Name).ToHashSet();
+        var picked = new List<(Pokemon p, int i)>();
+        foreach (var x in team.Select((p, i) => (p, i)).OrderByDescending(x => x.p.Level).ThenByDescending(x => x.i))
+        {
+            if (species.Contains(x.p.Species.Name) || x.p.HeldItem != null && items.Contains(x.p.HeldItem.Name)) continue;
+            picked.Add(x);
+            species.Add(x.p.Species.Name);
+            if (x.p.HeldItem != null) items.Add(x.p.HeldItem.Name);
+            if (picked.Count == PartySize(SubwayTrain.Multi)) break;
+        }
+        var trainer = new Trainer
+        {
+            Id = record.Id, Name = name, TrainerClass = record.Class, PrizeMoney = 0,
+            Ai = Battle.Sim.Ai.AiFlagNames.Parse(record.Ai), Items = new List<string>(), Look = look
+        };
+        foreach (var (p, _) in picked.OrderBy(x => x.i)) trainer.Party.Add(LevelScaling.At(p, Level));
+        return trainer;
+    }
+
+    /// <summary>
+    /// Whether a run put down can be taken up again: the Pokémon entered are still on the team, each one that may go in,
+    /// and together under the species and item clauses. A team changed since ends the run instead.
+    /// </summary>
+    public static bool CanResume(Story.StoryState story, Party party)
+    {
+        var train = (SubwayTrain)Math.Clamp(story.Var(Vars.Train), 0, (int)SubwayTrain.SuperMulti);
+        var slots = SlotsOf(story, train);
+        if (slots.Count != PartySize(train) || slots.Any(s => s < 0 || s >= party.Count)) return false;
+        var chosen = slots.Select(s => party.Members[s]).ToList();
+        return chosen.All(FrontierRules.MayEnter) && FrontierRules.WhyNot(chosen) == FrontierRefusal.None;
+    }
+
+    /// <summary>The trains the records' board shows: the three lines, and each line's Super train once it is open.</summary>
+    public static IEnumerable<SubwayTrain> TrainsOnTheBoard(Story.StoryState story) =>
+        new[] { SubwayTrain.Single, SubwayTrain.Double, SubwayTrain.Multi }
+            .Concat(new[] { SubwayTrain.SuperSingle, SubwayTrain.SuperDouble, SubwayTrain.SuperMulti }.Where(t => SuperOpen(story, t)));
 
     /// <summary>Whether the train is one of the Super lines (plan 22 · U11).</summary>
     public static bool IsSuper(SubwayTrain train) => train >= SubwayTrain.SuperSingle;

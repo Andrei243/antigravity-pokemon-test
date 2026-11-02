@@ -1,0 +1,25 @@
+{
+  "people": {
+    "grotto_mon": {
+      "name": {
+        "en": [
+          "Pokémon"
+        ],
+        "text": [
+          "Pokémon"
+        ]
+      }
+    },
+    "grotto_item": {
+      "name": {
+        "en": [
+          "Item"
+        ],
+        "text": [
+          "Obiect"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

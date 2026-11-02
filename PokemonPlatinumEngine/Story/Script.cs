@@ -165,6 +165,8 @@ public enum Op
     TrainerHill,
     // Cameron's photographs (plan 20, part q): one taken for the album, the album looked through, how many it holds
     Photo,
+    // Join Avenue's growth (plan 22 · U11): the day's visitors, the avenue's rank and its shops' stock by it
+    JoinAvenue,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

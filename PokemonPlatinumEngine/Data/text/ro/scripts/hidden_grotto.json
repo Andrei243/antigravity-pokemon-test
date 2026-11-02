@@ -1,0 +1,30 @@
+{
+  "Mon": [
+    {
+      "en": [
+        "A wild {foe} is sitting quietly at the back of the grotto!"
+      ],
+      "text": [
+        "Un {foe} sălbatic stă liniștit în fundul grotei!"
+      ]
+    }
+  ],
+  "Leave": [
+    {
+      "en": [
+        "The tunnel leads back out under the trees."
+      ],
+      "text": [
+        "Tunelul duce înapoi afară, pe sub copaci."
+      ]
+    },
+    {
+      "en": [
+        "Will you leave the grotto?"
+      ],
+      "text": [
+        "Ieși din grotă?"
+      ]
+    }
+  ]
+}

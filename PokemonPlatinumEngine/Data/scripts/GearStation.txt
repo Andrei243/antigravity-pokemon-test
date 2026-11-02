@@ -41,7 +41,8 @@ script ToAnville
 script SingleTrain
   face self player
   speaker "Depot Agent"
-  subway end
+  call Waiting
+  if result == 1 end
   say "Welcome to the Battle Subway! On the Single Train you battle one on one, car after car, seven to a set."
   choose "What would you like to do?" "RIDE" "INFO" "RECORD" "EXIT"
   if result == 1 goto Info
@@ -63,18 +64,11 @@ label Info
   say "The Single Train takes three Pokémon, all of different species and holding different items. They battle at Level 50 or under, and nothing from the Bag may be used."
   say "The Subway Bosses, Ingo and Emmet, wait for those who ride on to the 21st car and the 49th."
   say "Beat Ingo in the 21st car and the Super Single Train opens to you, with tougher trainers and more Battle Points."
+  say "After a set you may also put your run down. The game is saved here, and you can ride on later."
   end
 label Record
-  subway begin single
-  subway best
-  subway end
-  say "Your longest streak on the Single Train is {number} cars."
-  subway opened single
-  if result == 0 end
-  subway begin supersingle
-  subway best
-  subway end
-  say "And on the Super Single Train, {number} cars."
+  say "Here are your records on the Battle Subway's lines."
+  subway records
   end
 label Ride
   call Board
@@ -88,7 +82,8 @@ label Bye
 script DoubleTrain
   face self player
   speaker "Depot Agent"
-  subway end
+  call Waiting
+  if result == 1 end
   say "Welcome to the Battle Subway! On the Double Train two of your Pokémon battle two at a time, car after car."
   choose "What would you like to do?" "RIDE" "INFO" "RECORD" "EXIT"
   if result == 1 goto Info
@@ -112,16 +107,8 @@ label Info
   say "Beat the Boss in the 21st car and the Super Double Train opens to you, with tougher trainers and more Battle Points."
   end
 label Record
-  subway begin double
-  subway best
-  subway end
-  say "Your longest streak on the Double Train is {number} cars."
-  subway opened double
-  if result == 0 end
-  subway begin superdouble
-  subway best
-  subway end
-  say "And on the Super Double Train, {number} cars."
+  say "Here are your records on the Battle Subway's lines."
+  subway records
   end
 label Ride
   call Board
@@ -131,12 +118,14 @@ label Bye
   end
 
 
-# The Multi Train: a pair against a pair, beside a partner from the Subway's own staff (a friend over a link, which the
-# Subway asks for in Black 2, is not held: plan 06's decision 7)
+# The Multi Train: a pair against a pair, beside a partner from the Subway's own staff, or since plan 22 · U11 beside
+# Cheren or Bianca once Unova's Hall of Fame has been entered (the stand-in for a friend over a link, which plan 06's
+# decision 7 doesn't hold)
 script MultiTrain
   face self player
   speaker "Depot Agent"
-  subway end
+  call Waiting
+  if result == 1 end
   say "Welcome to the Battle Subway! The Multi Train is for two Trainers who battle side by side, a pair against a pair."
   choose "What would you like to do?" "RIDE" "INFO" "RECORD" "EXIT"
   if result == 1 goto Info
@@ -154,30 +143,82 @@ label Super
   subway begin supermulti
   goto Ride
 label Info
-  say "You bring two Pokémon and a partner from our own staff brings two more. Every car holds a pair of trainers."
+  say "You bring two Pokémon and a partner brings two more. Every car holds a pair of trainers."
   say "The two Pokémon must be of different species and hold different items, at Level 50 or under. Ingo and Emmet ride together in the 21st car and the 49th."
   say "Beat them in the 21st car and the Super Multi Train opens to you, with tougher pairs and more Battle Points."
-  say "A partner from a friend over a link is not on the line yet. We're sorry!"
+  say "A partner from our own staff rides with anyone. Friends of yours who have seen Unova's League may ride with you too."
   end
 label Record
-  subway begin multi
-  subway best
-  subway end
-  say "Your longest streak on the Multi Train is {number} cars."
-  subway opened multi
-  if result == 0 end
-  subway begin supermulti
-  subway best
-  subway end
-  say "And on the Super Multi Train, {number} cars."
+  say "Here are your records on the Battle Subway's lines."
+  subway records
   end
 label Ride
+  call Partner
   call Board
   end
 label Bye
   say "Please ride with us again!"
   end
 
+
+# Who rides beside the player on a Multi line: the staff's partner, or a friend once the friends are about
+script Partner
+  subway friends
+  if result == 0 goto Staff
+  choose "Who will ride beside you?" "OUR STAFF" "CHEREN" "BIANCA"
+  if result == 1 goto Cheren
+  if result == 2 goto Bianca
+label Staff
+  subway partner staff
+  return
+label Cheren
+  subway partner cheren
+  say "Cheren is waiting on the platform. He says he'll keep a cool head for both of you!"
+  return
+label Bianca
+  subway partner bianca
+  say "Bianca is waiting on the platform. She says she can't wait to get going!"
+  return
+
+
+# A run put down after a set (plan 22 · U11): ridden on from the car it was put down at, or ended here with the Battle
+# Points of the sets cleared. RESULT is 1 when the desk has nothing more to say (the player is aboard, or the run is
+# still waiting), 0 when it goes on to its own welcome.
+script Waiting
+  subway paused
+  if result == 0 goto Nothing
+  ask "Your run is waiting where you put it down. Will you ride on from car {number} now?"
+  if no goto GiveUp
+  subway resume
+  if result == 0 goto Changed
+  say "All aboard! Mind the doors."
+  fade out 0.6
+  sound "crossing_engine"
+  warp "BattleSubwayTrain" 3 5 right
+  fade in
+  subway active
+  return
+label GiveUp
+  ask "Then shall I end the run here? The sets you cleared will be paid in Battle Points."
+  if no goto Keep
+  subway finish won
+  goto Pay
+label Changed
+  say "I'm sorry. The Pokémon you took aboard aren't as they were, so the run can't go on. It ends here."
+  subway finish lost
+label Pay
+  subway points
+  if result == 0 goto Nothing
+  text "{player} received {number} BP!"
+  fanfare item
+label Nothing
+  subway end
+  subway active
+  return
+label Keep
+  say "Very well. Your run will wait for you here."
+  subway paused
+  return
 
 # The Pokémon for the run are chosen and the player goes down to the train. A run begun is let go of if backed out of.
 script Board

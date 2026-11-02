@@ -123,6 +123,31 @@ public static class HiddenGrottoes
         return Holds(story, grotto);
     }
 
+    // ------------------------------------------------------------------ the rustle (plan 22 · U11)
+
+    /// <summary>How near the player, in tiles each way, a grotto's rustle is heard and its leaves seen to stir.</summary>
+    public const int RustleReach = 5;
+
+    /// <summary>The seconds of the field's clock between one rustle and the next.</summary>
+    public const double RustleEvery = 2.4;
+
+    /// <summary>
+    /// Whether a grotto rustles: one never come to (it is full), one that holds something, and an empty one once enough
+    /// steps have been walked since it was emptied that a roll could have filled it (a rustle says it may hold something,
+    /// not that it does: the roll is still made as it is come to, so nothing is drawn here).
+    /// </summary>
+    public static bool Rustles(StoryState story, Grotto grotto, int steps)
+    {
+        int content = story.Var(Vars.Content(grotto.Id));
+        if (content != Empty) return true;
+        return steps - story.Var(Vars.EmptiedAt(grotto.Id)) >= StepsPerRoll;
+    }
+
+    /// <summary>The nearest grotto of a map within <see cref="RustleReach"/> of a tile that rustles, or null (the lowest number among equals).</summary>
+    public static Grotto? RustlingNear(StoryState story, string map, int x, int y, int steps) =>
+        All.Where(g => g.Map == map && Math.Abs(g.X - x) <= RustleReach && Math.Abs(g.Y - y) <= RustleReach && Rustles(story, g, steps))
+            .OrderBy(g => Math.Max(Math.Abs(g.X - x), Math.Abs(g.Y - y))).ThenBy(g => g.Id).FirstOrDefault();
+
     /// <summary>What a grotto holds as the story stands, without a roll: null when it is empty or never come to.</summary>
     public static GrottoEntry? Holds(StoryState story, Grotto grotto)
     {

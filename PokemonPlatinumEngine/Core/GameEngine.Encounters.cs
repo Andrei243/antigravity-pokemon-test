@@ -122,6 +122,25 @@ public partial class GameEngine
             if (HoneyTrees.IdOf(flow.Map.AreaAt(x, y)?.Key) is { } id && HoneyTrees.Shaking(flow.Encounters.Trees[id]))
                 life.ShakeTree(flow.Map, x, y, CrownTexels / 32f * Graphics.MapScene.VerticalScaleOf(flow.Map), flow.Encounters.Trees[id].Shakes);
         }
+        RustleTheGrottoes(life);
+    }
+
+    // When a grotto near the player last rustled, by the field's own clock (plan 22 · U11)
+    private double nextGrottoRustle;
+
+    /// <summary>
+    /// A grotto near the player that may hold something rustles (plan 22 · U11; <see cref="HiddenGrottoes.Rustles"/>):
+    /// every <see cref="HiddenGrottoes.RustleEvery"/> seconds of the field's clock while one is within reach, leaves stir
+    /// on the tile before its hollow and <c>grotto_rustle</c> is heard from its side. Nothing is drawn from the dice.
+    /// </summary>
+    private void RustleTheGrottoes(Graphics.FieldLife life)
+    {
+        if (ScriptRunning || life.Now < nextGrottoRustle) return;
+        var grotto = HiddenGrottoes.RustlingNear(flow.Story, flow.Map.Name, flow.Player.GridX, flow.Player.GridY, flow.Pastimes.Steps);
+        if (grotto == null) return;
+        nextGrottoRustle = life.Now + HiddenGrottoes.RustleEvery;
+        life.Rustle(flow.Map, grotto.X, grotto.Y + 1, hard: false, sparkle: false);
+        AudioManager.PlaySound("grotto_rustle", PanAt(grotto.X));
     }
 
     /// <summary>The field's purple flash as poison bites, in two flat steps.</summary>

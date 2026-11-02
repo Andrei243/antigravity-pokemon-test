@@ -217,6 +217,56 @@
           ],
           "kind": "league",
           "after": "unovaLeaders"
+        },
+        {
+          "id": "unovaTriples",
+          "points": 4,
+          "always": [],
+          "pool": [],
+          "kind": "leaders",
+          "after": "unovaLeaders",
+          "format": "triple",
+          "from": [ "unovaLeaders" ]
+        },
+        {
+          "id": "unovaRotation",
+          "points": 4,
+          "always": [],
+          "pool": [],
+          "kind": "leaders",
+          "after": "unovaLeaders",
+          "format": "rotation",
+          "from": [ "unovaLeaders" ]
+        },
+        {
+          "id": "unovaRental",
+          "points": 4,
+          "always": [],
+          "pool": [],
+          "kind": "leaders",
+          "after": "unovaLeaders",
+          "rental": true,
+          "from": [ "unovaLeaders" ]
+        },
+        {
+          "id": "unovaTypeStoneSteelSting",
+          "points": 4,
+          "always": [],
+          "pool": [],
+          "kind": "league",
+          "after": "unovaLeaders",
+          "types": [ "Normal", "Bug", "Poison", "Electric", "Ground", "Rock", "Steel", "Fighting" ],
+          "from": [ "unovaChampion" ]
+        },
+        {
+          "id": "unovaTypeSkySeaSpirit",
+          "points": 4,
+          "always": [],
+          "pool": [],
+          "kind": "league",
+          "after": "unovaLeaders",
+          "types": [ "Flying", "Water", "Dragon", "Psychic", "Ghost", "Dark", "Ice", "Fire", "Grass" ],
+          "from": [ "unovaChampion" ]
         }
       ]
     },

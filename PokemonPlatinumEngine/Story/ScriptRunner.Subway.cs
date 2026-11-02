@@ -57,6 +57,7 @@ public sealed partial class ScriptRunner
                 story.SetVar(BattleSubway.Vars.Train, (int)train);
                 story.SetVar(BattleSubway.Vars.Wins, 0);
                 story.SetVar(BattleSubway.Vars.Seed, 1 + Draw());
+                story.SetVar(BattleSubway.Vars.Partner, 0);
                 BattleSubway.KeepSlots(story, Array.Empty<int>());
                 lastNumber = BattleSubway.PartySize(train);
                 break;
@@ -79,8 +80,46 @@ public sealed partial class ScriptRunner
                 break;
             }
             case "active":
-                Result = story.Var(BattleSubway.Vars.State);
+                // 1 only while a run is being ridden: a run put down is no run in the cars
+                Result = story.Var(BattleSubway.Vars.State) == BattleSubway.Riding ? 1 : 0;
                 break;
+            case "pause":
+                // Plan 22 · U11: the run put down between two sets, kept as it stands (the streak, the train, the Pokémon)
+                story.SetVar(BattleSubway.Vars.State, BattleSubway.PutDown);
+                break;
+            case "paused":
+                Result = story.Var(BattleSubway.Vars.State) == BattleSubway.PutDown ? 1 : 0;
+                lastNumber = story.Var(BattleSubway.Vars.Wins) + 1;
+                break;
+            case "resume":
+                // Taken up again only with the Pokémon entered still on the team and fit to go in together
+                Result = BattleSubway.CanResume(story, host.Party) ? 1 : 0;
+                if (Result == 1) story.SetVar(BattleSubway.Vars.State, BattleSubway.Riding);
+                lastNumber = story.Var(BattleSubway.Vars.Wins) + 1;
+                break;
+            case "records":
+                Result = host.FrontierAct("subwayrecords", 0, Subject);
+                break;
+            case "friends":
+                // How many friends may be asked along on a Multi line (none before Unova's Hall of Fame)
+                Result = BattleSubway.FriendsOffered(story);
+                break;
+            case "partner":
+            {
+                // 0 the Subway's staff, or a friend from 1; whoever stands as the partner in the car takes their look
+                int who = i.Other switch
+                {
+                    "again" => story.Var(BattleSubway.Vars.Partner),
+                    "staff" => 0,
+                    _ => 1 + Array.FindIndex(BattleSubway.Friends, f => f.Name.Equals(i.Other, StringComparison.OrdinalIgnoreCase))
+                };
+                if (who < 0 || who > BattleSubway.FriendsOffered(story)) who = 0;
+                story.SetVar(BattleSubway.Vars.Partner, who);
+                lastFoe = who == 0 ? "" : BattleSubway.Friends[who - 1].Name;
+                host.FrontierAct("subwaypartner", who, Subject);
+                Result = who;
+                break;
+            }
             case "mode":
                 // The line, whichever of its trains: a Super Multi Train is fought beside a partner as the Multi is
                 Result = (int)BattleSubway.LineOf(TrainOfTheRun);
@@ -157,9 +196,10 @@ public sealed partial class ScriptRunner
                     if (subwayBosses.Count == 0) towerFoes = BattleSubway.MakeOpponents(train, battle, Draw);
                 }
                 var foes = subwayBosses.Count > 0 ? subwayBosses : towerFoes.Select(f => f.AsTrainer()).ToList();
-                Trainer? partner = BattleSubway.Multi(train)
-                    ? BattleSubway.MakePartner(story.Var(BattleSubway.Vars.Seed)).AsTrainer()
-                    : null;
+                int friend = story.Var(BattleSubway.Vars.Partner);
+                Trainer? partner = !BattleSubway.Multi(train) ? null
+                    : friend > 0 && friend <= BattleSubway.Friends.Length ? BattleSubway.MakeFriend(friend, team.Members)
+                    : BattleSubway.MakePartner(story.Var(BattleSubway.Vars.Seed)).AsTrainer();
                 subwayBosses = new List<Trainer>();
                 towerFoes = new List<FrontierOpponent>();
                 host.FrontierBattle(team, foes, partner, doubles: BattleSubway.Doubles(train));
@@ -187,6 +227,7 @@ public sealed partial class ScriptRunner
                 // A streak that is the longest of its train is kept, whether the run ended in a loss or by getting off; the
                 // run itself is let go of by 'end', after the points are handed over
                 if (wins > story.Var(BattleSubway.Vars.Best(train))) story.SetVar(BattleSubway.Vars.Best(train), wins);
+                story.SetVar(BattleSubway.Vars.Latest(train), wins);
                 break;
             }
             case "points":
