@@ -57,7 +57,15 @@ partial class Harness
         Shot("h2f0_trick_house_hiding");
         game.Interact(); Frames(3);
         Until(() => Box().IsActive, "the find");
-        for (int i = 0; i < 4; i++) { Frames(30); Box().FinishLine(); Frames(2); if (Box().IsActive) Box().Advance(); Frames(4); }
+        // (read on past the find's line to the Trick Master's first words, while he stands by the scroll: four confirms
+        // went past all three of his lines and shot the room after he had vanished)
+        bool Shown() => game.Map.NPCs.Any(n => n.Key == "trick_master");
+        for (int i = 0; i < 1200 && !(Shown() && Box().IsActive); i++)
+        {
+            if (Box().IsActive && Box().IsCurrentLineComplete && !Box().IsQuestion) { Frames(20); Box().Advance(); Frames(2); }
+            else Frames(1);
+        }
+        if (!Shown()) Console.WriteLine("  !! never happened: the Trick Master shown");
         Frames(30); Box().FinishLine(); Frames(4);
         Shot("h2f1_trick_house_found");
         ReadOn();

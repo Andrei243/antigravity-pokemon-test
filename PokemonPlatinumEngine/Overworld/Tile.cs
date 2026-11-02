@@ -352,6 +352,11 @@ public enum InteriorStyle
     /// timber on trestles, walls of the sky's blue over timber (style guide, "Rooms", "Walkways over the dark").
     /// </summary>
     Aerie,
+    /// <summary>
+    /// A Battle Tent's canvas (plan 21: Hoenn's three tents): packed sand underfoot and walls of red and cream stripes
+    /// (style guide, "Rooms", "A Battle Tent").
+    /// </summary>
+    Tent,
 }
 
 /// <summary>

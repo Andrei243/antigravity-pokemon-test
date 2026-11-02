@@ -1,6 +1,7 @@
 {
   // The Goldenrod Game Corner (plan 20 · J5, part b). HeartGold's own has no slot machines to play, and neither has
   // ours: its people talk, and the prize counter is shut
+  "interior": "GameHall",
   "area": "goldenrod_game_corner",
   "bgmTrack": "johto/game_corner",
   "people": {

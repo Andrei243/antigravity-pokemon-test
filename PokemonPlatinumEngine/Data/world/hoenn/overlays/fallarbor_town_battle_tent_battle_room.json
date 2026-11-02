@@ -3,6 +3,7 @@
   // this room's one arrival script (fallarbor_town_battle_tent_battle_room.txt). Emerald hides the player and walks a stand-in
   // of them in so the camera keeps still: here the player walks in, so the stand-in is left out, and so is the area's
   // opponent, whose place the opponent of ours below takes (the Frontier's rooms find their trainer as "opponent")
+  "interior": "Tent",
   "area": "fallarbor_town_battle_tent_battle_room",
   // The judge stands a row south of Emerald's tile, which is the wall between the arena and the trainers' way in here
   "bgmTrack": "hoenn/fallarbor",

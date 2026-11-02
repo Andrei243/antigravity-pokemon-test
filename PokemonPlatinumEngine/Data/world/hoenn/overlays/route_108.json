@@ -11,5 +11,8 @@
     "swimmer_f_2": { "name": "Missy", "trainer": { "dialogueBefore": "Swimmer Missy: The sea's so wide, and still we bumped into each other!", "dialogueAfter": "Swimmer Missy: I should have swum the other way." } },
     "woman_5": { "name": "Carolina", "trainer": { "dialogueBefore": "Cooltrainer Carolina: I sail out here to train where nobody bothers us. Except you.", "dialogueAfter": "Cooltrainer Carolina: You've earned your place out here." } },
     "sailor": { "name": "Cory", "trainer": { "dialogueBefore": "Sailor Cory: Ahoy! A sailor never turns down a battle at sea!", "dialogueAfter": "Sailor Cory: Sunk without a trace!" } }
-  }
+  },
+  // The wreck itself, over the hull's tiles (Emerald draws it into Route 108's metatiles, which the import reads as sea):
+  // its gangway's warp is the tile south of the boat's middle
+  "props": [ { "type": "Boat", "x": 167, "y": 363, "width": 6, "depth": 3 } ]
 }

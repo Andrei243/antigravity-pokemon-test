@@ -2,6 +2,7 @@
   // The Celadon Game Corner (plan 20 · J15, part k; its tables at work since part o). HeartGold's tables play a card
   // game this one hasn't: here they are plan 06 · R16b's slot machines (celadon_game_corner.txt), and the clerk sells
   // coins and hands a Coin Case to whoever has none
+  "interior": "GameHall",
   "area": "celadon_game_corner",
   "bgmTrack": "kanto/game_corner",
   "people": {

@@ -1404,3 +1404,11 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
       Fortree's clerks behind tall counters (`World.BehindTheCounters` runs only for the DS games' rooms: running it for
       GBA rooms would move FireRed's too), the Route 108 wreck drawn as stone, Emerald's slot machine and roulette, the
       Cycling Road's timed challenge, the Fortree bridge swap, the tents' look; and H11's part c.
+    - **The look at parts i and j** (2026-11-02, shots only; the harness's `HOENN_FROM=trickhouse`, `ship` and
+      `hoenntents`). Fixed: the found shot `h2f1` is taken while the Trick Master stands by the scroll; the eighth
+      puzzle's floor is drawn as the field's ice in a room of planks (`GroundBaker.BakeInterior`); the tents are
+      `InteriorStyle.Tent` by their overlays (style guide, "Rooms", "A Battle Tent"); Route 108's hull metatiles are
+      sea (`GbaCover.HoennRanges`, gTileset_Slateport) under an overlay `Boat` prop; and Fortree's clerks behind their
+      counters are seen, by `World.Furnish` counting the floor behind a counter as the room's first row (FireRed's
+      Celadon prize room, the only other GBA room it changes, shows its three clerks too). Still left: the Abandoned
+      Ship's deck reads as grey stone, the Mechadolls stand as grey-haired people, and the wreck is an intact ferry.
