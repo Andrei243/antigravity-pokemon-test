@@ -9,10 +9,10 @@ A **line** is one string a character says in a text box (a script's `say` and th
 | Kind | Lines | Spoken | Shown only | With variants | Written by hand |
 |---|---|---|---|---|---|
 | The introduction (`intro:`) | 96 | 96 | 0 | 0 | 0 |
-| People of the hand-made maps (`map:`) | 1300 | 1258 | 42 | 1 | 0 |
-| Scripts (`script:`) | 10128 | 9671 | 457 | 17 | 0 |
-| People of the world (`world:`) | 7126 | 7064 | 62 | 4 | 0 |
-| **All** | 18650 | 18089 | 561 | 22 | 0 |
+| People of the hand-made maps (`map:`) | 1305 | 1263 | 42 | 1 | 0 |
+| Scripts (`script:`) | 10158 | 9699 | 459 | 17 | 0 |
+| People of the world (`world:`) | 7141 | 7079 | 62 | 4 | 0 |
+| **All** | 18700 | 18137 | 563 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -21,14 +21,14 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | What | Lines |
 |---|---|
 | a Pokémon's cry | 244 |
-| a question's answers | 765 |
-| a sign | 1568 |
+| a question's answers | 768 |
+| a sign | 1576 |
 | the game's own voice (speaker none) | 286 |
-| the game's own voice (text) | 1629 |
+| the game's own voice (text) | 1636 |
 
 ## The cast
 
-- Named characters: 384 voices (347 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
+- Named characters: 387 voices (350 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Cloned from the user's samples: `rival`.
 - Archetypes in use: 222, with 671 voices to cast (V5).
 - Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1880.
@@ -40,13 +40,13 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | Voice | Lines | Shown only |
 |---|---|---|
 | `@self` | 1880 | 135 |
-| `look:gentleman (any)` | 718 | 15 |
+| `look:gentleman (any)` | 721 | 15 |
 | `rival` | 598 | 18 |
 | `look:grunt (any)` | 588 | 0 |
-| `look:lady (any)` | 425 | 1 |
-| `look:youngster (any)` | 393 | 21 |
-| `look:clerk (any)` | 365 | 10 |
-| `look:lass (any)` | 325 | 11 |
+| `look:lady (any)` | 427 | 1 |
+| `look:youngster (any)` | 394 | 21 |
+| `look:clerk (any)` | 366 | 10 |
+| `look:lass (any)` | 327 | 11 |
 | `look:attendant (any)` | 321 | 12 |
 | `look:nurse (any)` | 255 | 0 |
 | `look:scientist (any)` | 198 | 4 |
@@ -60,18 +60,18 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:fisherman (any)` | 140 | 0 |
 | `look:woman (any)` | 133 | 14 |
 | `class:team_rocket (any)` | 132 | 0 |
-| `look:old_man (any)` | 130 | 4 |
+| `look:old_man (any)` | 132 | 4 |
 | `class:swimmer_m (any)` | 126 | 0 |
-| `class:picnicker (any)` | 120 | 0 |
-| `class:youngster (any)` | 118 | 0 |
+| `class:picnicker (any)` | 122 | 0 |
+| `class:youngster (any)` | 120 | 0 |
 | `look:man (any)` | 118 | 4 |
 | `mom` | 116 | 7 |
 | `assistant` | 115 | 5 |
 | `look:guard (any)` | 115 | 0 |
 | `class:black_belt (any)` | 112 | 0 |
 | `class:psychic (any)` | 112 | 0 |
+| `class:lass (any)` | 104 | 0 |
 | `look:boy (any)` | 104 | 4 |
-| `class:lass (any)` | 102 | 0 |
 | `class:swimmer_f (any)` | 102 | 0 |
 | `class:cooltrainer (any)` | 100 | 0 |
 | `bianca` | 99 | 3 |
@@ -83,7 +83,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:galactic (any)` | 84 | 0 |
 | `cyrus` | 83 | 7 |
 | `look:aqua_grunt (any)` | 83 | 3 |
-| `look:hiker (any)` | 81 | 0 |
+| `look:hiker (any)` | 82 | 0 |
 | `look:worker (any)` | 79 | 0 |
 | `class:camper (any)` | 78 | 0 |
 | `look:old_woman (any)` | 77 | 5 |
@@ -111,7 +111,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:young_couple (any)` | 50 | 0 |
 | `elder` | 50 | 0 |
 | `officer` | 50 | 5 |
-| `artist` | 48 | 1 |
+| `artist` | 49 | 1 |
 | `clair` | 48 | 4 |
 | `class:battle_girl (any)` | 48 | 0 |
 | `depot_agent` | 48 | 8 |
@@ -157,6 +157,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `kimono_girl` | 31 | 0 |
 | `look:expert_m (any)` | 31 | 0 |
 | `policeman` | 31 | 0 |
+| `prof_sycamore` | 31 | 0 |
 | `breeder` | 30 | 4 |
 | `captain` | 30 | 0 |
 | `class:backpacker (any)` | 30 | 0 |
