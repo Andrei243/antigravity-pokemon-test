@@ -184,6 +184,15 @@ public class Player
     /// </summary>
     public Func<EncounterMoment?>? Moment { get; set; }
 
+    /// <summary>
+    /// Wild Pokémon are seen in the field (plan 10 · F5, the options' WILD POKéMON row): a step into tall grass or on
+    /// the water rolls nothing, since what lives there stands in sight and is met by touching it. Caves roll as ever.
+    /// </summary>
+    public bool WildInSight { get; set; }
+
+    /// <summary>The player walked on the spot this frame against something in their way (plan 10 · F5: a wild Pokémon walked into).</summary>
+    public bool PushedAgainst { get; private set; }
+
     private float moveProgress = 0f;
     private int targetGridX = 0;
     private int targetGridY = 0;
@@ -436,6 +445,7 @@ public class Player
     {
         if (bumpCooldown > 0f) bumpCooldown -= dt;
         bool walkingInPlace = false;
+        PushedAgainst = false;
 
         // Leaning into a boulder as it slides: the player walks on the spot until it has come to rest
         if (pushing > 0f)
@@ -523,6 +533,7 @@ public class Player
                     {
                         // Blocked: walk in place against the obstacle, a little slower than walking
                         walkingInPlace = true;
+                        PushedAgainst = true;
                         WalkCycle += dt * 1.1f;
                     }
                 }
@@ -590,7 +601,9 @@ public class Player
         bool diving = Mode == TravelMode.Diving;
         bool onWater = Mode == TravelMode.Surfing || diving;
         bool where = diving ? underfoot is TileBehavior.Seaweed or TileBehavior.SeaweedNoSurfacing : onWater == TileBehaviors.IsSurfable(underfoot);
-        if (onWildEncounter != null && !interrupted && TileBehaviors.HasEncounters(underfoot) && where)
+        // With wild Pokémon in sight (plan 10 · F5) the tall grass and the water roll nothing: what is seen there is what is met
+        bool seenInstead = WildInSight && !diving && (onWater || InTallGrass);
+        if (onWildEncounter != null && !interrupted && TileBehaviors.HasEncounters(underfoot) && where && !seenInstead)
         {
             bool thick = underfoot is TileBehavior.VeryTallGrass or TileBehavior.VeryTallDarkGrass || Mode == TravelMode.Cycling;
             var wild = map.RollWildEncounter(GridX, GridY, Encounters, onWater, thick, Lead, Moment?.Invoke());

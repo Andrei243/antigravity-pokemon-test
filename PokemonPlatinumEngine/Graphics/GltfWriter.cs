@@ -222,6 +222,8 @@ internal static class GltfWriter
         yield return ("dodge", BattleAnimator.DodgeTime, t => new PokePose { Time = 0.4f, Dodge = Math.Clamp(t / BattleAnimator.DodgeTime, 0.001f, 0.999f) });
         yield return ("tired", PokemonAnimation.TiredBreath * 2f, t => new PokePose { Time = t, Tired = 1f });
         yield return ("cheer", BattleAnimator.CheerTime, t => new PokePose { Time = 0.4f, Cheer = Math.Clamp(t / BattleAnimator.CheerTime, 0.001f, 0.999f) });
+        // The walk in the field (plan 10 · F2): one stride, a second long
+        yield return ("walk", 1f, t => new PokePose { Time = t, Walk = Math.Clamp(t, 0f, 0.999f), Moving = 1f });
     }
 
     /// <summary>One clip baked from the body plan's motion: a translation, rotation and scale key for every bone at every frame.</summary>

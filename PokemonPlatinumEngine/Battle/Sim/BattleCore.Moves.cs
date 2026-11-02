@@ -444,6 +444,15 @@ public sealed partial class BattleCore
             return false;
         }
 
+        // A wild Pokémon met from behind loses its first turn under the later rules (plan 10 · F5; Legends: Arceus's
+        // back strike): the first turn alone, the wild side alone, said where a flinch would be
+        if (Turn == 0 && Rules.BackStrikes && Conditions.Surprised && !user.IsPlayerSide)
+        {
+            Say(Text.Of("battle.caughtOffGuard", ("user", user.Name)));
+            Unlock(user);
+            return Lost(user);
+        }
+
         if (user.Flinched)
         {
             user.Flinched = false;

@@ -665,7 +665,12 @@ public sealed partial class WorldRenderer
         VerticalScale = vs;
         GatherActors(map, player, px, pz, groundY, lift, time);
         foreach (var actor in actors) CharacterSprites.Prepare(context, actor.Rig, actor.Pose, actor.Yaw);
-        foreach (var p in pokemon) FieldSprites.Prepare(context, p.Name, p.Facing, ref fieldBakes);
+        foreach (var p in pokemon)
+        {
+            FieldSprites.Prepare(context, p.Name, p.Facing, ref fieldBakes);
+            // A walk strip is asked for only once its Pokémon is seen on the move (plan 10 · F2)
+            if (p.Moving) FieldSprites.PrepareWalk(context, p.Name, p.Facing, ref fieldBakes);
+        }
         fieldBakes = 1;
 
         // Grass leans away from everyone on the map (set after the sprite bakes, which clear it)
@@ -1163,8 +1168,11 @@ public sealed partial class WorldRenderer
     private (Vector3 At, float Yaw, FieldSprites.Strip? Own)? mount;
 
     // The Pokémon standing in the field in view (plan 10 · F1), and how many field sprites a frame may still bake
-    private readonly List<(Vector3 At, string Name, int Facing, int Frame)> pokemon = new();
+    private readonly List<(Vector3 At, string Name, int Facing, int Frame, bool Moving)> pokemon = new();
     private int fieldBakes = 1;
+
+    /// <summary>How many rows of the card a hop over a ledge lifts a Pokémon of the map at its height (plan 10 · F3): a quarter of a tile, as the player's.</summary>
+    internal const float HopRows = 8f;
 
     /// <summary>Whether someone is drawn this frame (nobody is the player): not at the moments a flicker has them unseen (plan 09 · L12).</summary>
     private bool Seen(NPC? who) => !Pieces.AnyoneMoved || Pieces.Seen(who, Life.Now);
@@ -1200,11 +1208,16 @@ public sealed partial class WorldRenderer
                 // A Pokémon of the map stands on its tile as a person does; on the move it hops a texel or two, a hop to
                 // each tile, and shows its second frame while it is off the ground (style guide, "Pokémon in the field")
                 float sx = npc.DrawX + 0.5f, sz = npc.DrawY + 0.5f;
-                bool moving = npc.WalkBlend >= 0.5f, up = moving && MathF.Sin(npc.WalkCycle * MathF.Tau * 2f) > 0f;
-                float hop = up ? Rows(2f) : 0f;
-                float ground = (npc.Level is { } deck ? Relief.Under(map, sx, sz, deck) : Relief.At(map, sx, sz)) - SinkAt(map, sx, sz);
-                pokemon.Add((new Vector3(sx + nudge, ground + hop, sz), species, CharacterSprites.FacingIndex(Player.YawOf(npc.Facing)),
-                    moving ? (up ? 1 : 0) : FieldSprites.FrameAt(time + SeedOf(npc.Name + npc.Key) * 10f)));
+                int facingIndex = CharacterSprites.FacingIndex(Player.YawOf(npc.Facing));
+                bool moving = npc.WalkBlend >= 0.5f;
+                // On the move it walks once its walk strip is baked (plan 10 · F2), and hops until then
+                bool walks = moving && FieldSprites.GetWalk(species, facingIndex) != null;
+                bool up = moving && !walks && MathF.Sin(npc.WalkCycle * MathF.Tau * 2f) > 0f;
+                // A hop a script or the follower's ledge gives it (plan 10 · F3), and a Pokémon in the water half under it
+                float hop = (up ? Rows(2f) : 0f) + Rows(npc.Hop * HopRows);
+                float ground = (npc.Level is { } deck ? Relief.Under(map, sx, sz, deck) : Relief.At(map, sx, sz)) - SinkAt(map, sx, sz) - Rows(npc.Wading);
+                pokemon.Add((new Vector3(sx + nudge, ground + hop, sz), species, facingIndex,
+                    walks ? FieldSprites.WalkFrameAt(npc.WalkCycle) : moving ? (up ? 1 : 0) : FieldSprites.FrameAt(time + SeedOf(npc.Name + npc.Key) * 10f), moving));
                 continue;
             }
             if (npc.IsBerrySoil)
@@ -1454,8 +1467,14 @@ public sealed partial class WorldRenderer
     /// </summary>
     private void DrawPokemon(CharacterPass pass)
     {
-        foreach (var (at, name, facing, frame) in pokemon)
+        foreach (var (at, name, facing, frame, moving) in pokemon)
         {
+            // The walk strip once it is baked and the Pokémon is on the move (plan 10 · F2)
+            if (moving && FieldSprites.GetWalk(name, facing) is { } walk)
+            {
+                CharacterSprites.DrawCard(walk.Frames[frame % walk.Frames.Length], at - new Vector3(0, Rows(FieldSprites.FootRows), 0), VerticalScale, pass);
+                continue;
+            }
             if (FieldSprites.Get(name, facing) is { } strip)
             {
                 CharacterSprites.DrawCard(strip.Frames[frame], at - new Vector3(0, Rows(FieldSprites.FootRows), 0), VerticalScale, pass);

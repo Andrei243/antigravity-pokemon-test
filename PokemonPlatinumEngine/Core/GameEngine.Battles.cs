@@ -21,20 +21,13 @@ namespace PokemonPlatinumEngine.Core;
 /// </summary>
 public partial class GameEngine
 {
-    private void StartWildBattle(WildEncounterEntry entry)
+    /// <summary>
+    /// The Pokémon a row of a place's table is met as (the grass's, the water's, or one seen in the field, plan 10 ·
+    /// F5): its species (a randomised run's), its level, personality, form and coat, drawn on the field's own chance in
+    /// the order a step in the grass draws them.
+    /// </summary>
+    private Pokemon MakeWild(WildEncounterEntry entry, MapArea? area)
     {
-        // No wild Pokémon is met by a player with none able to fight: the story gives the first before the grass is
-        // ever reached, and a game where that went wrong must not start a battle it can't play (it ended the game)
-        if (!flow.Party.HasUsablePokemon) return;
-        // Met in the field: the roamers and the Poké Radar hear how it ends (plan 06 · R13)
-        flow.FieldEncounter = true;
-        // A roamer is battled as it is, and runs (AddRoamerToEnemyParty)
-        if (entry.Roamer is { } roamer)
-        {
-            var met = RoamerToBattle(roamer);
-            MeetWildPokemon(met, BattleKind.Roamer, nuzlockeCatch: MeetUnderTheRun(met));
-            return;
-        }
         // A randomised run meets the species its table's species go to (plan 13 · V6); every other run, the table's own
         var random = Randomizer.For(flow.Run);
         var wildSpecies = PokemonDatabase.Get(random?.Species(entry.SpeciesName) ?? entry.SpeciesName)!;
@@ -51,12 +44,33 @@ public partial class GameEngine
         // The Shiny Charm's two extra rolls (plan 13 · V5), keeping what the lead's ability chose; none without the charm
         if (!entry.Shiny) ShinyCharm.Roll(wild, flow.Bag, rng, entry.Gender, entry.Nature);
         // Shellos and Gastrodon east of Mt. Coronet, Unown in their room's letters (AddWildMonToParty; plan 06 · R10)
-        var area =flow.Map.AreaAt(flow.Player.GridX, flow.Player.GridY);
         if (FormRules.WildForm(wildSpecies, area?.EastSea ?? false, area?.UnownTable ?? 0, rng) is { } form) wild.ChangeForm(form);
         // Met at or past an evolution of ours, one time in four it is met as it, by its own personality (plan 03 · D15-A)
         OursGrowth.GrowWild(wild);
         // Deerling and Sawsbuck in the season's coat where the region has seasons (plan 22 · U4)
         DressForTheSeason(wild);
+        return wild;
+    }
+
+    private void StartWildBattle(WildEncounterEntry entry)
+    {
+        // No wild Pokémon is met by a player with none able to fight: the story gives the first before the grass is
+        // ever reached, and a game where that went wrong must not start a battle it can't play (it ended the game)
+        if (!flow.Party.HasUsablePokemon) return;
+        // Met in the field: the roamers and the Poké Radar hear how it ends (plan 06 · R13)
+        flow.FieldEncounter = true;
+        // A roamer is battled as it is, and runs (AddRoamerToEnemyParty)
+        if (entry.Roamer is { } roamer)
+        {
+            var met = RoamerToBattle(roamer);
+            MeetWildPokemon(met, BattleKind.Roamer, nuzlockeCatch: MeetUnderTheRun(met));
+            return;
+        }
+        var area = flow.Map.AreaAt(flow.Player.GridX, flow.Player.GridY);
+        var wild = MakeWild(entry, area);
+        var random = Randomizer.For(flow.Run);
+        var wildSpecies = PokemonDatabase.Get(random?.Species(entry.SpeciesName) ?? entry.SpeciesName)!;
+        Random rng = fieldRandom;
         // A horde (plan 14 · B3): the slot's species again for each of the others, each at the level drawn for it, met
         // one against all of them. Not beside a partner, on the water, in the Great Marsh's game or in the Contest
         if (entry.Count > 1 && partner == null && flow.Player.Mode != TravelMode.Surfing && !flow.Safari.Active && !InBugContest)
@@ -246,7 +260,9 @@ public partial class GameEngine
         Money = flow.Money,
         Player = PlayerMark,
         // The Bug-Catching Contest throws its Sport Balls and nothing else (plan 15 · E5)
-        OnlyBall = InBugContest ? Battle.Sim.BattleCore.BugContestBall : null
+        OnlyBall = InBugContest ? Battle.Sim.BattleCore.BugContestBall : null,
+        // A wild Pokémon seen in the field and walked into from behind (plan 10 · F5)
+        Surprised = wildSurprised
     };
 
     /// <summary>
@@ -648,6 +664,8 @@ public partial class GameEngine
     private void EndBattle()
     {
         bool isDefeat = flow.Battle?.Result == BattleResult.PlayerDefeat;
+        // A back strike was for the battle just fought alone (plan 10 · F5)
+        wildSurprised = false;
         // The tips its last lines brought wait for the field (plan 12 · Q23)
         if (flow.Battle != null) foreach (string tip in flow.Battle.TakeTips()) RaiseTip(tip);
         // The battle's start is let go: it can be fought again no more (plan 12 · Q25)

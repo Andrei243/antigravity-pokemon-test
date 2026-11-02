@@ -301,6 +301,13 @@ public sealed class Ruleset
     public bool SosCalls { get; private init; }
 
     /// <summary>
+    /// A wild Pokémon seen in the field and met from behind loses its first turn (plan 10 · F5; Legends: Arceus's back
+    /// strike, <see cref="Battle.Sim.BattleConditions.Surprised"/>). Platinum has no Pokémon seen in the grass, and
+    /// under its rules none is surprised, so <c>battles-platinum.txt</c> never moves for it.
+    /// </summary>
+    public bool BackStrikes { get; private init; }
+
+    /// <summary>
     /// Triple battles (plan 14 · B6; Black and White's): a battle asked for as a <see cref="Battle.BattleFormat.Triple"/> is
     /// fought three against three, reach by position. Platinum has none, and under its rules such a battle is the double
     /// or single the sides can field (<see cref="Battle.BattleFormats.FallBack"/>), so <c>battles-platinum.txt</c> never moves for it.
@@ -376,6 +383,7 @@ public sealed class Ruleset
         LaterBalls = true,
         Hordes = true,
         SosCalls = true,
+        BackStrikes = true,
         Triples = true,
         Rotations = true,
         MegaDynamax = true

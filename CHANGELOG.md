@@ -5,6 +5,9 @@ What changes from one release to the next, for players. Every session's close-ou
 ## [Unreleased]
 
 ### Added
+- A FOLLOWER row in the options: the first Pokémon of your team that can fight walks behind you in the field, hops ledges after you, follows you through doors, and goes back in its ball while you surf, cycle, dive or are in a dark cave. Talk to it to see how it feels about you; now and then it has found something for you.
+- A WILD POKéMON row in the options: set to VISIBLE, wild Pokémon stand in the tall grass and on the water and you meet only those you walk into (or that walk into you). Caught from behind, under the modern rules, one loses its first turn.
+- Pokémon in the field now walk with their legs, wings and tails on the move, instead of hopping.
 - The Trick House on Route 110 has all eight of its puzzles. After each new Badge the Trick Master hides somewhere else in his front room; find him and a new puzzle opens behind the scroll: buttons that cover holes, red and blue doors that swap at every button, a room of boulders, five Mechadolls with quiz questions, rotating gates, floor arrows that carry trainers and statues round, and a slippery floor, the last once you are Champion. Each has its own trainers, its scroll and its code, and its own reward at the end, ending with a tent for your secret base. Seven more kinds of mail are found in them.
 
 ### Fixed

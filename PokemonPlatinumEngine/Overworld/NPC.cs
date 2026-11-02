@@ -74,6 +74,12 @@ public class NPC
     /// </summary>
     public int Wading { get; set; }
 
+    /// <summary>
+    /// How high they are off the ground in a hop, 0..1 of its height: a follower hopping a ledge after the player
+    /// (plan 10 · F3). Nought on the ground.
+    /// </summary>
+    public float Hop { get; set; }
+
     public int GridY
     {
         get => gridY;

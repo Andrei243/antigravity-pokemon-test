@@ -72,6 +72,14 @@ internal struct PokePose
 
     /// <summary>A stat's change within its 0.6 s: above nought while one rises, below while one falls, else nought.</summary>
     public float Stat;
+
+    // The walk (plan 10 · F2; style guide, "Clips")
+
+    /// <summary>0..1 phase of a stride (two steps): the same phase is the same pose, whatever came before.</summary>
+    public float Walk;
+
+    /// <summary>0..1 how much of the walk shows: nought standing, one on the move.</summary>
+    public float Moving;
 }
 
 /// <summary>Which eye texture shows (see <see cref="PokemonDecals"/>). <see cref="Smile"/> is a cheer's (plan 25 · Y5).</summary>

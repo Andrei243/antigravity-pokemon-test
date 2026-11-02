@@ -325,4 +325,10 @@ public sealed class BattleConditions
     /// catch is the contest's, not the team's. Null in every other battle, where that ball is refused.
     /// </summary>
     public string? OnlyBall { get; init; }
+
+    /// <summary>
+    /// The wild Pokémon was met from behind (plan 10 · F5: one seen in the grass, walked into while it faced away).
+    /// Under rules with <see cref="Ruleset.BackStrikes"/> it loses its first turn (Legends: Arceus); Platinum's never read it.
+    /// </summary>
+    public bool Surprised { get; init; }
 }

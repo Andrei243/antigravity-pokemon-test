@@ -374,6 +374,15 @@ script Pokemon
   end
 
 
+# The Pokémon walking behind the player has found something (plan 10 · F4): it cries, says so, and the find is the
+# player's. What it said and what it found are the game's to hand over (LeadFollower).
+script FollowerFound
+  cry own
+  sayown
+  find own
+  end
+
+
 # A signboard: its text, under the word "Sign".
 script Sign
   speaker "Sign"

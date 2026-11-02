@@ -41,6 +41,7 @@ public enum OptionRow
     Requests,
     TextSize, ColourVision, HighContrast, Tips,
     RetryBattles,
+    Follower, WildPokemon,
     Controls,
     Jukebox,
     Packs,
@@ -453,6 +454,12 @@ public class OptionsScreen
             case OptionRow.RetryBattles:
                 s.RetryBattles = !s.RetryBattles;
                 break;
+            case OptionRow.Follower:
+                s.Follower = !s.Follower;
+                break;
+            case OptionRow.WildPokemon:
+                s.WildInSight = !s.WildInSight;
+                break;
             case OptionRow.AreaChecklist:
                 s.AreaChecklist = !s.AreaChecklist;
                 break;
@@ -584,6 +591,8 @@ public class OptionsScreen
         OptionRow.BoxTools => (Text.Of("boxTools.option.label"), Text.Of($"boxTools.option.value.{s.BoxTools}"), Text.Of($"boxTools.option.help.{s.BoxTools}")),
         OptionRow.AutoBattle => (Text.Of("options.autoBattle.label"), OnOff(s.AutoBattle), Text.Of(s.AutoBattle ? "options.autoBattle.help.on" : "options.autoBattle.help.off")),
         OptionRow.RetryBattles => (Text.Of("options.retryBattles.label"), OnOff(s.RetryBattles), Text.Of(s.RetryBattles ? "options.retryBattles.help.on" : "options.retryBattles.help.off")),
+        OptionRow.Follower => (Text.Of("options.follower.label"), OnOff(s.Follower), Text.Of(s.Follower ? "options.follower.help.on" : "options.follower.help.off")),
+        OptionRow.WildPokemon => (Text.Of("options.wildPokemon.label"), Text.Of(s.WildInSight ? "options.wildPokemon.value.visible" : "options.wildPokemon.value.hidden"), Text.Of(s.WildInSight ? "options.wildPokemon.help.visible" : "options.wildPokemon.help.hidden")),
         OptionRow.Requests => (Text.Of("options.requests.label"), OnOff(s.Requests != RulesDefault.Off), Text.Of(s.Requests != RulesDefault.Off ? "options.requests.help.on" : "options.requests.help.off")),
         OptionRow.Tips => (Text.Of("options.tips.label"), Text.Of($"options.tips.value.{s.Tips}"), Text.Of($"options.tips.help.{s.Tips}")),
         OptionRow.AreaChecklist => (Text.Of("options.areaChecklist.label"), OnOff(s.AreaChecklist), Text.Of(s.AreaChecklist ? "options.areaChecklist.help.on" : "options.areaChecklist.help.off")),

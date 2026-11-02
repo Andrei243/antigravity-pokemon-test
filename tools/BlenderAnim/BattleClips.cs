@@ -21,6 +21,7 @@ internal static class BattleClips
         ("dodge", "dodge"),
         ("tired", "tired"),
         ("cheer", "victory"),
+        ("walk", "walk"),
     };
 
     public static ClipRole RoleOf(string role) => Enum.Parse<ClipRole>(role, ignoreCase: true);

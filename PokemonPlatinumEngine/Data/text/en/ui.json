@@ -195,6 +195,21 @@
         "on": "A battle lost asks first whether to try again: the battle starts over, with what you used and spent in it given back."
       }
     },
+    "follower": {
+      "label": "Follower",
+      "help": {
+        "off": "Your Pokémon stay in their balls in the field.",
+        "on": "The first Pokémon of your team that can fight walks behind you. Talk to it to see how it feels."
+      }
+    },
+    "wildPokemon": {
+      "label": "Wild Pokémon",
+      "value": { "hidden": "HIDDEN", "visible": "VISIBLE" },
+      "help": {
+        "hidden": "Wild Pokémon hide in the grass and the water until they jump out at you.",
+        "visible": "Wild Pokémon are seen in the grass and on the water, and you meet only those you walk into."
+      }
+    },
     "areaChecklist": {
       "label": "What is left here",
       "help": {
@@ -644,6 +659,17 @@
     "bodyNoFoe": "Try again? The battle starts over from its first turn, with everything used and spent in it given back.",
     "tryAgain": "TRY AGAIN",
     "giveUp": "GIVE UP"
+  },
+
+  "followerTalk": {
+    "band": {
+      "0": "{name} is keeping its distance. It doesn't seem sure of you yet.",
+      "1": "{name} looks up at you, wondering what you'll do next.",
+      "2": "{name} is walking along happily beside you.",
+      "3": "{name} hums to itself. It's enjoying the walk with you.",
+      "4": "{name} gazes at you fondly. It would follow you anywhere!"
+    },
+    "found": "{name} is holding something in its mouth. It wants you to have it!"
   },
 
   "dexText": {
@@ -2798,6 +2824,7 @@
     "isLoafingAround": "{user} is loafing around!",
     "mustRecharge": "{user} must recharge!",
     "flinched": "{user} flinched!",
+    "caughtOffGuard": "{user} was caught off guard and couldn't move!",
     "snappedOutOfConfusion": "{user} snapped out of confusion!",
     "isConfused": "{user} is confused!",
     "itHurtItselfIn": "It hurt itself in its confusion!",

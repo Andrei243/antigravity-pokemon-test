@@ -279,7 +279,7 @@ The baseline is Platinum's own code (`Pokemon_GetEvolutionTargetSpecies`, `Evolu
 | Inkay | Level 30 with the console upside down | Level 30 | No console to turn |
 | Finizen | Level 38 while playing with another player | Level 38 | No shared field; can be tightened once plan 07 exists |
 | Tandemaus | Level 25, gained inside a battle | Level 25 | Evolution is checked after battles anyway |
-| Pawmo, Bramblin, Rellor | 1000 steps walking beside the player (Let's Go), then a level | 1000 steps at the head of the party, then a level | No Pokémon walk beside the player |
+| Pawmo, Bramblin, Rellor | 1000 steps walking beside the player (Let's Go), then a level | 1000 steps at the head of the party, then a level | The steps are counted at the head of the party whether or not it walks beside the player: with the options' FOLLOWER row on (plan 10 · F3) it does, literally |
 | Stantler, Primeape | A move used 20 times (in Legends: Arceus, in the agile style) | The move used 20 times in battle, then a level | No battle styles |
 | Bisharp | Knock out three Bisharp that hold a Leader's Crest | Be on the field when three Bisharp are knocked out, then a level | No leader Bisharp with their followers; the battle doesn't record who struck the last blow |
 | Gimmighoul | 999 Gimmighoul Coins, then a level | The same: 999 in the bag, used up | |
@@ -7858,3 +7858,14 @@ Platinum has no gallery; this is ours, after the later games' model viewers (`UI
   its tile. Run on 2026-11-02: 498 tiles, 9 waits, all on arriving and none while walking, so no streaming fault. One
   frame while walking took 1.3 s (on the Ice Path's first floor at 39, 26) with no chunk waited for: something else
   is made on the main thread there the first time, not looked into yet.
+
+## The follower and wild Pokémon in sight
+
+Plan 10 · F2 to F5 (2026-11-02). Neither is Platinum's: both are rows of the options, off unless chosen, and with both off the field is Platinum's to the bit (no follower object, no Pokémon in the grass, every roll as before).
+
+- **The walk** (F2) is ours: one stride of the body plan over two tiles (`PokePose.Walk`, `Moving`; style guide, "Clips"). Every bird hops along the ground, whatever it does at rest, since every bird model hovers in its idle; anything else that hovers glides.
+- **Who follows** (F3): the team's first Pokémon that can stand (`Party.FirstUsable`: no Egg, nobody fainted), so a swap in the party screen or a faint changes it at once. It is the game's one follower (`GameEngine.along`), so a partner of the story or Amity Square's walk takes its place, and it goes back in its ball until they leave.
+- **Where it may** (F3, `LeadFollower.MayWalk`): only with the player on foot (never surfing, cycling or diving), never in a cave still dark, below ground or in Amity Square (whose walk is its own). Rooms and lit caves are allowed, as in HeartGold and SoulSilver. Nothing of it is saved: a game loaded calls it out again behind the player.
+- **What it says** (F4, `LeadFollower`): a line by five bands of friendship (0, 50, 100, 150, 220), each with a bubble, and its cry. After 256 steps walked with it, one talk in three finds something from a table of our own (berries, a Potion, balls, an Antidote, an Ether), drawn on the field's own generator; the count starts again after a find and is not saved. Amity Square keeps the original's moods by chance.
+- **Wild Pokémon in sight** (F5, `FieldPokemon`): up to six, in the tall grass and on open water within 11 tiles across and 8 down of the player, each drawn as Sweet Scent draws one (`Map.DrawOutWild`: the place's table and the moment's, the lead's ability having its say) and made at once as the grass would make it (`GameEngine.MakeWild`), so the battle is with the one seen. With the row at VISIBLE the tall grass and the water roll nothing; caves, rods, Sweet Scent, Honey, the Poké Radar and the Bug-Catching Contest's park are as ever (none stands in a room or below ground). A roamer is never seen standing about. Walked into (or walking into the player), or faced and spoken to, it is met.
+- **The back strike** (F5): met while it faced the way the player faces, a wild Pokémon loses its first turn (Legends: Arceus), said where a flinch is (`battle.caughtOffGuard`), under `Ruleset.BackStrikes` alone, which only the modern rules have. It is `BattleConditions.Surprised`, kept in the Vs. Recorder's file.
