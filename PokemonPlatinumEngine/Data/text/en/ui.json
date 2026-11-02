@@ -3964,6 +3964,7 @@
     }
   },
   "cyclingRoad": { "seconds": "{time} seconds", "minute": "a minute or more", "times": "{count} times", "many": "99 times or more" },
+  "trainerHill": { "time": "{minutes} min. {seconds}.{hundredths} sec.", "none": "no time yet" },
   "roulette": { "square": "the {colour} {pokemon}", "colour": { "0": "orange", "1": "green", "2": "purple" } },
   "phrases": {
     "title": "Your words",

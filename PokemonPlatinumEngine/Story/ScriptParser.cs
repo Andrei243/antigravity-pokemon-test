@@ -1039,6 +1039,14 @@ public static class ScriptParser
                 return new Instruction { Op = Op.Subway, Line = line, Name = what, Other = which };
             }
 
+            // The Trainer Hill's climb (plan 21, part l)
+            case "trainerhill":
+            {
+                string what = r.OneOf("begin", "active", "mode", "floor", "laid", "opponent", "fight", "lost", "climb", "down", "prize", "record", "end");
+                string which = what == "begin" ? r.OneOf("normal", "variety", "unique", "expert") : "";
+                return new Instruction { Op = Op.TrainerHill, Line = line, Name = what, Other = which };
+            }
+
             // A Hidden Grotto (plan 22 · U11): the mouth stood before, what it holds, its Pokémon battled, its item taken
             case "grotto":
             {

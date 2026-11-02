@@ -161,6 +161,8 @@ public enum Op
     Grotto,
     // The Seaside Cycling Road's timed run (plan 21 · H12, part k): judged at its end and its record read
     CyclingRoad,
+    // The Trainer Hill's climb on Route 111 (plan 21, part l): begun at its counter, its floors' trainers, the roof's prize
+    TrainerHill,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

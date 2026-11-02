@@ -23,7 +23,9 @@ public partial class GameEngine
     public static IEnumerable<string> PyramidScripts => new[] { "Wild", "Trainer", "HiddenItem" }.Select(name => $"{PyramidFloor.MapName}.{name}");
 
     /// <summary>The map a script's warp goes to: the Pyramid's floor of the round under way, or the map of that name.</summary>
-    private Map MapNamed(string name) => name == PyramidFloor.MapName && flow.Pyramid?.FloorMap is { } floor ? floor : MapDatabase.Get(name);
+    private Map MapNamed(string name) => name == PyramidFloor.MapName && flow.Pyramid?.FloorMap is { } floor ? floor
+        // A floor of the Trainer Hill is laid from the story's variables of the climb under way (plan 21, part l)
+        : name == TrainerHillFloor.MapName && TrainerHillFloor.Make(flow.Story) is { } hill ? hill : MapDatabase.Get(name);
 
     /// <summary>
     /// A wild Pokémon met on a floor of the Pyramid (Emerald's <c>GenerateBattlePyramidWildMon</c>): not a battle of the

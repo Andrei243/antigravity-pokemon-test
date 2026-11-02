@@ -1201,6 +1201,7 @@ public class RoomPlanTests
             RivalsRoom,
             PlayersRoom,
             FrontierAnnex,
+            TrainerHillTests.Rooms,
         }.SelectMany(names => names).ToHashSet();
         foreach (string path in Directory.GetFiles(GameDataFiles.PathOf(MapDatabase.Folder), "*.json"))
         {

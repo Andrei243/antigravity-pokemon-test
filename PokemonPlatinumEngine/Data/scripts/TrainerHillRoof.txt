@@ -1,0 +1,28 @@
+# The Trainer Hill's roof (plan 21, part l). docs/scripts.md describes the language; the lines are our own, on the beats
+# of Emerald's Trainer Hill (TrainerHill_Roof), read for the order alone: the owner holds the climb's time against the
+# challenge's best and gives Emerald's prize for it (Models/Frontier/TrainerHill.cs, PrizeFor). The lift in the south
+# wall goes back down to the lobby, where the climb ends.
+
+
+script Owner
+  face self player
+  speaker "Owner"
+  trainerhill active
+  if result == 3 goto Climbed
+  say "Quite a view from up here, isn't it? Climb all four floors and you'll find me waiting with a prize."
+  end
+label Climbed
+  trainerhill record
+  if result == 2 goto Again
+  say "You made it to the roof! All four floors in {hill:TIME}."
+  if result == 0 goto Record
+  say "A fine climb, though your best for this challenge still stands at {hill:BEST}."
+  goto Prize
+label Record
+  say "That's a new record for this challenge! I'll have it put up on the board downstairs."
+label Prize
+  say "Here, this is for your trouble. The faster you climb, the better the prize."
+  trainerhill prize
+label Again
+  say "Take the lift down whenever you're ready, and come and climb again!"
+  end

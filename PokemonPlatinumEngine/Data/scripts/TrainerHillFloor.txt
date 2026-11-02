@@ -1,0 +1,86 @@
+# A floor of the Trainer Hill (plan 21, part l). docs/scripts.md describes the language; the lines are our own, on the
+# beats of Emerald's Trainer Hill (TrainerHill_1F to _4F, data/scripts/trainer_hill.inc), read for the order alone.
+#
+# Every floor is laid on this one map from the climb's own variables (Models/Frontier/TrainerHill.cs, TrainerHillFloor:
+# Emerald's sixteen by sixteen of each challenge's floor under a strip whose middle is walled off), by the warp of a
+# script to it. Data/maps/TrainerHillFloor.json is only the floor before any climb. A game saved on a floor finds the
+# floor's trainers gone when it is loaded, and the floor is laid again round the player.
+
+
+script OnEnter
+  trainerhill active
+  if result == 1 goto Climbing
+  fade out 0.6
+  warp "TrainerHillLobby" 7 5 up
+  fade in
+  end
+label Climbing
+  trainerhill laid
+  if result == 1 goto Laid
+  fade out 0.4
+  warp "TrainerHillFloor" 3 4 down
+  fade in
+  end
+label Laid
+  trainerhill floor
+  text "Trainer Hill, floor {number}. The clock reads {hill:TIME}."
+  end
+
+
+# A trainer of the floor who saw the player, or was spoken to
+script Trainer
+  trainerhill opponent
+  if result == 0 goto Beaten
+  text "{foe} is ready for a battle!"
+  trainerhill fight
+  if result == 0 goto Lost
+  text "{foe} stepped aside. On to the next floor!"
+  end
+label Beaten
+  text "{foe} is cheering you on to the roof."
+  end
+label Lost
+  trainerhill lost
+  text "{player}'s climb ended here..."
+  fade out 0.6
+  warp "TrainerHillLobby" 7 5 up
+  fade in
+  end
+
+
+# The stairs up: the next floor, or the roof after the fourth
+script Stairs
+  trainerhill active
+  if result == 1 goto Up
+  end
+label Up
+  trainerhill climb
+  if result == 1 goto Roof
+  fade out 0.4
+  warp "TrainerHillFloor" 3 4 down
+  fade in
+  end
+label Roof
+  fade out 0.4
+  warp "TrainerHillRoof" 6 8 up
+  fade in
+  end
+
+
+# The stairs down: the floor below, or the lobby from the first (the climb and its clock go on)
+script Down
+  trainerhill active
+  if result == 1 goto Go
+  end
+label Go
+  trainerhill down
+  if result == 0 goto Lobby
+  fade out 0.4
+  warp "TrainerHillFloor" 13 4 down
+  fade in
+  end
+label Lobby
+  fade out 0.4
+  warp "TrainerHillLobby" 7 5 up
+  fade in
+  end

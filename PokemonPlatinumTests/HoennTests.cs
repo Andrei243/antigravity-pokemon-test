@@ -62,7 +62,8 @@ public class HoennTests
             Assert.NotNull(Hoenn.Area(key));
             Assert.NotNull(Hoenn.Overlay(key));
         }
-        foreach (string map in hoenn.Maps) Assert.Contains(Hoenn.Index.Maps, e => e.Name == map);
+        // (but the Trainer Hill's rooms of ours, which are map files, plan 21, part l)
+        foreach (string map in hoenn.Maps.Except(TrainerHillTests.Rooms)) Assert.Contains(Hoenn.Index.Maps, e => e.Name == map);
     }
 
     [Fact]

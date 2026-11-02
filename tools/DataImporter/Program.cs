@@ -7,6 +7,7 @@
 //   dotnet run --project tools/DataImporter -- --decomp <dir> --pokeapi <dir/data/v2/csv>   use existing checkouts
 //   dotnet run --project tools/DataImporter -- --last-species 493   stop after Platinum's National Pokédex
 //   dotnet run --project tools/DataImporter -- --check-entries      the written Pokédex entries against the games' own (plan 08 · P13)
+//   dotnet run --project tools/DataImporter -- --trainer-hill       Emerald's Trainer Hill alone into trainer-hill.json (plan 21, part l)
 
 using System.Text.Json.Nodes;
 using DataImporter;
@@ -37,6 +38,13 @@ if (args.Contains("--hoenn-contest"))
 {
     // Emerald's contest tables alone (plan 21 · H11): hoenn-contest.json, from three headers of pret/pokeemerald
     Write(Path.Combine(outDir, HoennContestDatabase.FileName), GameDataFiles.Serialize(HoennContestImport.Build(repo, cache)));
+    return 0;
+}
+
+if (args.Contains("--trainer-hill"))
+{
+    // Emerald's Trainer Hill alone (plan 21, part l): trainer-hill.json, from its header, its source and its floors' collision rows
+    Write(Path.Combine(outDir, TrainerHillDatabase.FileName), GameDataFiles.Serialize(TrainerHillImport.Build(repo, cache)));
     return 0;
 }
 

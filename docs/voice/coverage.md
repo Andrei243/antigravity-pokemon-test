@@ -9,10 +9,10 @@ A **line** is one string a character says in a text box (a script's `say` and th
 | Kind | Lines | Spoken | Shown only | With variants | Written by hand |
 |---|---|---|---|---|---|
 | The introduction (`intro:`) | 96 | 96 | 0 | 0 | 0 |
-| People of the hand-made maps (`map:`) | 1298 | 1256 | 42 | 1 | 0 |
-| Scripts (`script:`) | 9976 | 9525 | 451 | 17 | 0 |
+| People of the hand-made maps (`map:`) | 1300 | 1258 | 42 | 1 | 0 |
+| Scripts (`script:`) | 10003 | 9548 | 455 | 17 | 0 |
 | People of the world (`world:`) | 7128 | 7066 | 62 | 4 | 0 |
-| **All** | 18498 | 17943 | 555 | 22 | 0 |
+| **All** | 18527 | 17968 | 559 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -21,10 +21,10 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | What | Lines |
 |---|---|
 | a Pokémon's cry | 244 |
-| a question's answers | 701 |
+| a question's answers | 711 |
 | a sign | 1573 |
 | the game's own voice (speaker none) | 286 |
-| the game's own voice (text) | 1605 |
+| the game's own voice (text) | 1610 |
 
 ## The cast
 
@@ -40,14 +40,14 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | Voice | Lines | Shown only |
 |---|---|---|
 | `@self` | 1878 | 135 |
-| `look:gentleman (any)` | 715 | 13 |
+| `look:gentleman (any)` | 718 | 15 |
 | `rival` | 598 | 18 |
 | `look:grunt (any)` | 588 | 0 |
 | `look:lady (any)` | 425 | 1 |
 | `look:youngster (any)` | 393 | 21 |
 | `look:clerk (any)` | 365 | 10 |
-| `look:lass (any)` | 321 | 11 |
-| `look:attendant (any)` | 282 | 12 |
+| `look:lass (any)` | 323 | 11 |
+| `look:attendant (any)` | 300 | 12 |
 | `look:nurse (any)` | 255 | 0 |
 | `look:scientist (any)` | 198 | 4 |
 | `look:gym_guide (any)` | 193 | 1 |
@@ -162,6 +162,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:backpacker (any)` | 30 | 0 |
 | `class:school_kid_m (any)` | 30 | 0 |
 | `clay` | 30 | 3 |
+| `owner` | 30 | 2 |
 | `zinzolin` | 30 | 0 |
 | `celio` | 29 | 1 |
 | `jupiter` | 29 | 0 |
@@ -198,7 +199,6 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:plasma_grunt (any)` | 24 | 0 |
 | `marlon` | 24 | 0 |
 | `move_deleter` | 24 | 3 |
-| `owner` | 24 | 0 |
 | `blaine` | 23 | 0 |
 | `cook` | 23 | 0 |
 | `fishing_guru` | 23 | 3 |

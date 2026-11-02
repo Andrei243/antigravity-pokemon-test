@@ -1,0 +1,74 @@
+{
+  "name": "TrainerHillRoof",
+  "displayName": "Trainer Hill",
+  "bgmTrack": "sinnoh/veilstone",
+  "interior": "GameHall",
+  "trees": "Round",
+  "width": 13,
+  "height": 11,
+  "ground": [
+    "#############",
+    "#############",
+    "#############",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "######D######"
+  ],
+  "solid": [
+    "#############",
+    "#############",
+    "#############",
+    "##.........##",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "######.######"
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 11,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 6,
+      "sourceY": 10,
+      "targetMap": "TrainerHillLobby",
+      "targetX": 7,
+      "targetY": 9,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "hill_owner",
+      "name": "Owner",
+      "npcType": "Gentleman",
+      "x": 6,
+      "y": 4,
+      "facing": "Down",
+      "script": "Owner"
+    }
+  ],
+  "wildEncounters": []
+}
