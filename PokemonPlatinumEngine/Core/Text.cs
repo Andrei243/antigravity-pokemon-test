@@ -176,14 +176,30 @@ public static partial class Text
         return built.ToString();
     }
 
-    /// <summary>A language's <c>ui.json</c>, its sections flattened into dotted keys; nothing for a language with no file.</summary>
-    private static Dictionary<string, Entry> Read(string tag)
+    /// <summary>
+    /// A language's <c>ui.json</c>, its sections flattened into dotted keys; nothing for a language with no file. A pack
+    /// in use that carries the language's <c>ui.json</c> is laid over it key by key (plan 16 · T14): a key it has
+    /// replaces the game's, every key it leaves out stays the game's, and a later pack wins over an earlier one.
+    /// </summary>
+    private static Dictionary<string, Entry> Read(string tag) => Read(tag, null);
+
+    /// <summary>A language's plain lines as the packs <paramref name="over"/> lay them over the game's (for tests).</summary>
+    internal static IReadOnlyDictionary<string, string> PlainLinesOf(string tag, IReadOnlyList<DataLayer> over) =>
+        Read(tag, over).Where(kv => kv.Value.Plain != null).ToDictionary(kv => kv.Key, kv => kv.Value.Plain!, StringComparer.Ordinal);
+
+    private static Dictionary<string, Entry> Read(string tag, IReadOnlyList<DataLayer>? over)
     {
         var table = new Dictionary<string, Entry>(StringComparer.Ordinal);
-        string path = GameDataFiles.PathOf(Path.Combine("text", tag, "ui.json"));
-        if (!File.Exists(path)) return table;
-        using var document = JsonDocument.Parse(File.ReadAllText(path), new JsonDocumentOptions { CommentHandling = JsonCommentHandling.Skip, AllowTrailingCommas = true });
-        Walk(document.RootElement, "", table, path);
+        string relative = Path.Combine("text", tag, "ui.json");
+        var roots = new List<string> { GameDataFiles.Directory };
+        roots.AddRange((over ?? DataLayers.Packs).Select(l => l.Root));
+        foreach (string root in roots)
+        {
+            string path = Path.Combine(root, relative);
+            if (!File.Exists(path)) continue;
+            using var document = JsonDocument.Parse(File.ReadAllText(path), new JsonDocumentOptions { CommentHandling = JsonCommentHandling.Skip, AllowTrailingCommas = true });
+            Walk(document.RootElement, "", table, path);
+        }
         return table;
     }
 

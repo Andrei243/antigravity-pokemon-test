@@ -134,6 +134,47 @@ public class BudgetTests
         Hold("SaveManager.Read and Write of " + Path.GetFileName(biggest), 1.5, 5, () => SaveManager.Write(SaveManager.Read(json)!));
     }
 
+    /// <summary>
+    /// The start-up's phases (plan 16 · T3) as a game with no window goes through them (plan 16 · T12), written into the
+    /// nightly's file a line a phase (<c>start-up: moves</c>, <c>start-up: maps</c>, …) for the month's rule to hold
+    /// (plan 16 · T10). No budget of its own: nothing here was measured on the Windows machine, and in a test process
+    /// the databases' first reads may have happened already, so these are the start-up as a runner repeats it, not a
+    /// player's cold one; the screen's phases (render targets, menu sprites) are the harness's and stay out.
+    /// </summary>
+    [Fact]
+    public void TheHeadlessStartUpsPhasesGoIntoTheNightlysFile()
+    {
+        if (Mode == "off") return;
+        string folder = Path.Combine(Path.GetTempPath(), "budget-startup-" + Guid.NewGuid().ToString("N"));
+        Directory.CreateDirectory(folder);
+        var paths = SavePaths.Current;
+        try
+        {
+            SavePaths.Current = SavePaths.In(folder);
+            int before = PokemonPlatinumEngine.Core.Diagnostics.Log.Phases.Count;
+            var watch = Stopwatch.StartNew();
+            var engine = new GameEngine(new GameSettings { Muted = true });
+            engine.InitializeHeadless();
+            double all = watch.Elapsed.TotalMilliseconds;
+            var phases = PokemonPlatinumEngine.Core.Diagnostics.Log.Phases.Skip(before).ToList();
+            engine.Close();
+            Assert.Contains(phases, p => p.Name == "maps");
+            Assert.Contains(phases, p => p.Name == "scripts");
+            foreach (var phase in phases)
+            {
+                output.WriteLine($"start-up: {phase.Name}: {phase.Milliseconds:F1} ms");
+                Record($"start-up: {phase.Name}", phase.Milliseconds);
+            }
+            output.WriteLine($"headless start-up, in all: {all:F1} ms");
+            Record("headless start-up, in all", all);
+        }
+        finally
+        {
+            SavePaths.Current = paths;
+            Directory.Delete(folder, recursive: true);
+        }
+    }
+
     [Fact]
     public void TheWorldsMapsStayUnderTheMemoryCeiling()
     {

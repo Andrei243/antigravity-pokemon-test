@@ -55,8 +55,18 @@ A pack is laid out like the game's `Data` folder. A file at the same path replac
 | `world/<region>/areas/…`, `chunks/…` | An area's events and a chunk's tiles. |
 | `maps/<Room>.json` | A hand-made room. |
 | `music/<folder>/<song>.mml` | A song (`docs/music-format.md`). A new id is a new song an overlay's `bgmTrack` can name. |
-| `text/<language>/…` | Words; a pack's `ui.json` replaces the game's whole, so copy it first. |
+| `text/<language>/ui.json` | Words of the interface, **by key**: write only the keys you change, in their sections, and every other key stays the game's (a later pack's key wins). |
+| `text/<language>/…` (the other files) | Words; such a file replaces the game's whole, so copy it first. |
 | `overrides/models/<species>.glb` | A model (`docs/model-files.md`); a later pack's is looked at first. |
+| `overrides/sprites/<look>/<frame>.png` | A person's hand-drawn field sprite, as `overrides/sprites` beside the game takes it; a later pack's is looked at first, and both before the game's own folder. |
+| `overrides/sprites/pokemon/<SPECIES>/<frame>.png` | A Pokémon's hand-drawn field sprite frames, the same way: the first pack that has a folder for the species is the one read. |
+
+Sounds, cries and the ambience are made by the game's own code and have no files to replace yet; a pack's songs are
+its `.mml` files above.
+
+The title's CREDITS shows a section for each pack in use, after the game's own: its name and version, the credit its
+manifest carries, who made it and what it is. A recording of play (`--record`, F8's report) names the packs in use,
+and a replay with other packs, or none, is refused rather than played wrong.
 
 ### Patches
 
@@ -89,6 +99,15 @@ checks every pack beside the game and the saves without starting it: the manifes
 over the game's file and read as the game reads it, the overlays and rooms, every script (with the same checks the
 game's own scripts get: a song, an item or a species nobody has heard of) and every song. It says a line for each
 finding and exits with 6 when there is one, 0 when all pass. Nothing is put in use.
+
+```bash
+dotnet run --project tools/ContentCheck -- --pack <your pack> [--pack <another> ...]
+```
+
+holds the game with your packs laid on it (in the order given) to the content check the game's own files are held
+to (`tools/ContentCheck/README.md`): someone an overlay names who isn't there, a door to nowhere, a line that runs out
+of the text box, a flag nothing sets. It tells only what your packs add (what is found with them and not without),
+and exits with 1 when there is something.
 
 ## The sample
 

@@ -63,6 +63,16 @@ internal static class FieldSprites
 
     public static string OverrideFolder { get; set; } = Path.Combine(AppContext.BaseDirectory, "overrides", "sprites", "pokemon");
 
+    /// <summary>
+    /// The folder a species' hand-drawn frames are read from (plan 16 · T14): the first pack's in use that has a folder
+    /// for it, the latest pack first, else the game's own (<see cref="OverrideFolder"/>), whether or not it is there.
+    /// </summary>
+    internal static string DrawnFolder(string name)
+    {
+        string species = name.ToUpperInvariant();
+        return Overrides.FindFolder(Overrides.FoldersFor(OverrideFolder, "sprites", "pokemon"), species) ?? Path.Combine(OverrideFolder, species);
+    }
+
     /// <summary>One facing's frames, and how many rows of its first frame the Pokémon fills above the card's foot.</summary>
     internal sealed record Strip(CharacterSprites.Card[] Frames, int Size, int Rows);
 
@@ -127,7 +137,7 @@ internal static class FieldSprites
         for (int facing = 0; facing < 4; facing++)
         {
             if (Baked.ContainsKey((name, facing))) continue;
-            string folder = Path.Combine(OverrideFolder, name.ToUpperInvariant());
+            string folder = DrawnFolder(name);
             bool drawn = true;
             for (int f = 0; f < IdleFrames && drawn; f++) drawn = File.Exists(Path.Combine(folder, OverrideName(facing, f)));
             if (drawn) continue;
@@ -152,7 +162,7 @@ internal static class FieldSprites
     private static bool TryOverride(RenderContext context, string name, int facing, bool walk)
     {
         if (!Overrides.Enabled) return false;
-        string folder = Path.Combine(OverrideFolder, name.ToUpperInvariant());
+        string folder = DrawnFolder(name);
         if (!Directory.Exists(folder)) return false;
         PixelCanvas? sheet = null;
         int frames = walk ? WalkFrames : IdleFrames;

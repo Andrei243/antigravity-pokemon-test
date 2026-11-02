@@ -37,7 +37,7 @@ public partial class GameEngine
     private void MeasureOnTheFirstRun()
     {
         OptionsScreen.DynamicResolutionUsable = Gl.Available;
-        if (measuring != null || IsHeadless || !Settings.FirstRun || !Gl.Available) return;
+        if (measuring != null || IsHeadless || WindowLocked || !Settings.FirstRun || !Gl.Available) return; // a replay keeps the recording's options
         measuring = new QualityProbe.Measurement();
         qualityBeforeMeasuring = Settings.Quality;
         flow.TitleScreen.HoldNotice = true;
