@@ -30,6 +30,17 @@ label Tm
   say "TM80 is Rock Slide. It sends rocks tumbling down on the foe, and it may make them flinch."
   end
 label Won
+  # Their number, for Johto's Champion (Johto's leftovers; the rematch is the Fighting Dojo's on their day, phone.json)
+  if not flag JohtoHallOfFame goto NumberDone
+  if flag FLAG_PHONE_CONTACT_BROCK goto NumberDone
+  say "Let's keep in touch. I'd like a rematch someday, once I've trained a little harder."
+  ask "Swap numbers with Brock?"
+  if no goto NumberDone
+  addcontact brock
+  text "Registered Brock in the Pokégear."
+  say "On Saturday nights I'll be at the Fighting Dojo in Saffron City. Come and battle me there!"
+  end
+label NumberDone
   if not flag FLAG_JOHTO_GOT_TM80_FROM_BROCK goto Tm
   say "There's more to rock than hardness. Patience, too. I'll be ready for you next time."
   end

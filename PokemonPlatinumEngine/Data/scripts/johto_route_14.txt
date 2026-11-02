@@ -9,6 +9,28 @@
 script OnEnter
   setflag FLAG_HIDE_ROUTE_14_SUICUNE
   if var VAR_UNK_4086 == 1 clearflag FLAG_HIDE_ROUTE_14_SUICUNE
+  # Eusine, on Suicune's trail (Johto's leftovers): in the grass while it waits there, and further north once it has
+  # bounded off to the cape, until it is met there
+  setflag FLAG_HIDE_ROUTE_14_EUSINE
+  setflag FLAG_HIDE_ROUTE_14_EUSINE_2
+  if var VAR_UNK_4086 == 1 clearflag FLAG_HIDE_ROUTE_14_EUSINE
+  if var VAR_UNK_4088 == 1 clearflag FLAG_HIDE_ROUTE_14_EUSINE_2
+  end
+
+
+# R14_003: Eusine in the grass, watching Suicune
+script Eusine
+  face r14_minaki player
+  speaker "Eusine"
+  say "Shh! Suicune is resting in the grass up ahead. It let me come this close... but I think it's waiting for you."
+  end
+
+
+# R14_004: Eusine further north, after Suicune has gone
+script EusineNorth
+  face r14_minaki_2 player
+  speaker "Eusine"
+  say "North again! It ran towards Cerulean, to the cape. That's where it will make its stand, I'm sure of it!"
   end
 
 # R14_002: Suicune in the grass

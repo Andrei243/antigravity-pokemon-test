@@ -16,3 +16,25 @@ script OnEnter
 label Takeover
   if var VAR_SCENE_ROCKET_TAKEOVER == 1 call JohtoTakeoverCall
   end
+
+
+# T28_000: the man who sells Rage Candy Bars by the street's east end (Johto's leftovers; HeartGold's seller, our
+# words). He stands on its north row, so the way east to Route 44 stays open, and sells one bar at a time for 300
+script RageCandySeller
+  face t28_gsmiddleman1 player
+  speaker "Man"
+  say "Mahogany's famous Rage Candy Bars! Every tourist takes one home. Crunchy, sweet, and good for what ails your Pokémon!"
+  choose "One Rage Candy Bar for $300?" "Yes, please" "No, thanks"
+  if result == 0 goto Buy
+  say "Your loss! They're the talk of Johto, you know."
+  end
+label Buy
+  takemoney 300
+  if result == 0 goto Short
+  sound "select"
+  give "Rage Candy Bar"
+  say "Thanks! Come back for another any time."
+  end
+label Short
+  say "Hm? You're a little short. Come back when you've got $300."
+  end

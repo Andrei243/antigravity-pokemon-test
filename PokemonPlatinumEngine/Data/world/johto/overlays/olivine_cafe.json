@@ -3,6 +3,7 @@
   "area": "olivine_cafe",
   "bgmTrack": "johto/olivine",
   "people": {
+    "t26r0701_gsleader6": { "name": "Jasmine", "script": "MeetJasmine", "still": true },
     "t26r0701_fishing_2": {
       "name": "Fisherman",
       "dialog": [

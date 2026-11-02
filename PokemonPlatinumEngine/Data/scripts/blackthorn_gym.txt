@@ -88,7 +88,22 @@ label Badge
   say "That's Dragon Pulse. It's... a sort of great surge of energy. You don't have to use it if you don't want to."
   end
 label Said
+  # Her number, for Johto's Champion (Johto's leftovers; the rematch is the Fighting Dojo's on her day, phone.json)
+  if not flag JohtoHallOfFame goto NumberDone
+  if flag FLAG_PHONE_CONTACT_CLAIR goto NumberDone
+  say "So you really did become Champion. ...Fine. Take my number. I'll call when I'm ready to beat you."
+  ask "Swap numbers with Clair?"
+  if no goto NumberDone
+  addcontact clair
+  text "Registered Clair in the Pokégear."
+  say "Friday nights I train at the Fighting Dojo in Saffron City. Don't you dare keep me waiting."
+  end
+label NumberDone
+  if flag JohtoHallOfFame goto Champion
   say "Aren't you off to the Pokémon League? Something in your face says you've unfinished business first."
   say "You came from New Bark Town, didn't you, where Professor Elm's lab is? Maybe you should go back there."
   say "Whatever comes next will be harder. Don't you dare give up, or I'll feel even worse about losing to you!"
+  end
+label Champion
+  say "The Champion, back in my Gym. Don't think I've stopped training for one day."
   end

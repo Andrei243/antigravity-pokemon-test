@@ -21,3 +21,28 @@ label Seven
   setflag FLAG_JOHTO_BLUE_BACK_IN_GYM
   hide t09_gsleader16
   end
+
+
+# The place's arrival lays who of the Gym Leaders is here today (Johto's leftovers)
+script OnEnter
+  # Blaine's street meeting (Johto's leftovers): Mondays, once Blaine's number is in the Pokégear
+  setflag FLAG_UNK_27D
+  if weekday monday call ShowMeetBlaine
+  end
+
+
+script ShowMeetBlaine
+  if flag FLAG_PHONE_CONTACT_BLAINE clearflag FLAG_UNK_27D
+  return
+
+# Blaine, out on Monday (the Leaders' street meetings, Johto's leftovers)
+script MeetBlaine
+  face t09_gsleader15 player
+  speaker "Blaine"
+  random 2
+  if result == 1 goto Two
+  say "Hah! I come back to the island on Mondays. My Gym stood right here, you know."
+  end
+label Two
+  say "One day I'll build it again, quizzes and all. Hah!"
+  end

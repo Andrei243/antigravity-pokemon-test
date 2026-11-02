@@ -14213,6 +14213,18 @@
     }
   },
   {
+    "id": 9232,
+    "name": "Blue Card",
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A card from Buena's Password show. A right password earns a point, which the Radio Tower trades for prizes.",
+    "cantBeTossed": true
+  },
+  {
     "id": 9300,
     "name": "Pokéblock Case",
     "pocket": "KeyItems",

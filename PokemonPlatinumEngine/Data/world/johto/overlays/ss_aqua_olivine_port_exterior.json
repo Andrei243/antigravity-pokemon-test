@@ -5,6 +5,7 @@
   "area": "ss_aqua_olivine_port_exterior",
   "bgmTrack": "johto/olivine",
   "people": {
+    "p01r0102_gsleader10": { "name": "Sabrina", "script": "MeetSabrina", "still": true },
     // HeartGold stands him across the foot of the gangway and has him step aside for a ticket; the port hall's sailor
     // keeps the way here, so he stands a step east of it
     "p01r0102_seaman_2": {

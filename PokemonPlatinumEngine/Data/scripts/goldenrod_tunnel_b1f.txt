@@ -16,6 +16,9 @@
 
 # D37R0102_008
 script OnEnter
+  # The Kimono Girl the Basement Key sent down (VAR_UNK_40E7 2) waits until she has been spoken to (3)
+  setflag FLAG_HIDE_UNDERGROUND_KIMONO_GIRL
+  if var VAR_UNK_40E7 == 2 clearflag FLAG_HIDE_UNDERGROUND_KIMONO_GIRL
   setflag FLAG_UNK_1B4
   setflag FLAG_HIDE_ROCKET_TAKEOVER_2
   setflag FLAG_UNK_1B0
@@ -37,6 +40,25 @@ script OnEnter
   end
 label Takeover
   clearflag FLAG_UNK_1B4
+  end
+
+
+# A Kimono Girl of Ecruteak's Dance Theater, lost in the passage while Team Rocket held the city (HeartGold's
+# VAR_UNK_40E7, which the Basement Key sets to 2; our words on its beat): she asks the player to free the city, or,
+# once it is free, thanks them, and goes home
+script KimonoGirl
+  face d37r0102_dancer player
+  speaker "Kimono Girl"
+  if var VAR_SCENE_ROCKET_TAKEOVER == 4 goto Takeover
+  say "Oh, it's you! I came to Goldenrod to dance, and in all the confusion I lost my way down here."
+  say "Now that the city is safe again, I can find my way back to Ecruteak. Thank you. Your Pokémon shine brighter every time."
+  setvar VAR_UNK_40E7 3
+  setflag FLAG_HIDE_UNDERGROUND_KIMONO_GIRL
+  hide d37r0102_dancer
+  end
+label Takeover
+  say "Team Rocket are everywhere up there... I came to dance, and now I'm afraid to go back up."
+  say "You have the look of someone who could set things right. Please, free the Radio Tower!"
   end
 
 

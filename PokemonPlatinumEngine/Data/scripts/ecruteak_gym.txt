@@ -56,6 +56,17 @@ label Tm
   say "TM30 is Shadow Ball. It may lower the foe's Special Defense. A fine move for any trainer who walks among ghosts."
   end
 label Won
+  # Their number, for Johto's Champion (Johto's leftovers; the rematch is the Fighting Dojo's on their day, phone.json)
+  if not flag JohtoHallOfFame goto NumberDone
+  if flag FLAG_PHONE_CONTACT_MORTY goto NumberDone
+  say "I sensed the Champion coming. Let us keep in touch. I will call when I wish to battle again."
+  ask "Swap numbers with Morty?"
+  if no goto NumberDone
+  addcontact morty
+  text "Registered Morty in the Pokégear."
+  say "On Tuesday nights I'll be at the Fighting Dojo in Saffron City. Come and battle me there!"
+  end
+label NumberDone
   if not flag FLAG_GOT_TM30_FROM_MORTY goto Tm
   say "I see now. The legend is about the bond between a trainer and Pokémon. I'll keep training until I understand it."
   end

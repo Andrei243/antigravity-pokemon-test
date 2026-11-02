@@ -1,0 +1,38 @@
+# The Olivine Lighthouse's second floor (Johto's leftovers: the phone's gifts). docs/scripts.md describes the
+# language; the lines are our own, on HeartGold's beats.
+#
+# Sailor Huey, beaten, gives his number; once he has rung about a present (phone.txt's Huey,
+# FLAG_JOHTO_PHONE_GIFT_HUEY, ours) he hands over a Protein here.
+
+
+script Huey
+  if not defeated self goto Fight
+  if rematch self goto Rematch
+  speaker "Huey"
+  if flag FLAG_JOHTO_PHONE_GIFT_HUEY goto Gift
+  if flag FLAG_PHONE_CONTACT_HUEY goto Known
+  say "Ahoy, you're a fine sailor of a Trainer! Let's swap numbers, and I'll tell you what the ships bring in."
+  ask "Register Huey's number in your Pokégear?"
+  if no goto Refused
+  addcontact huey
+  say "Aye! I'll ring you from the lighthouse."
+  end
+label Refused
+  say "No? Then fair winds to you, matey."
+  end
+label Known
+  trainerline after
+  end
+label Gift
+  say "Ahoy! Here's what came in on the ship. A sailor's strength, in a bottle!"
+  give "Protein"
+  clearflag FLAG_JOHTO_PHONE_GIFT_HUEY
+  end
+label Fight
+  trainerline before
+  battle self
+  end
+label Rematch
+  trainerline before
+  battle self rematch
+  end

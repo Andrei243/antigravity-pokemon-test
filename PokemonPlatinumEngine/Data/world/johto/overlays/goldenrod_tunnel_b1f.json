@@ -5,13 +5,15 @@
   // (scripts/goldenrod_tunnel_b1f.txt). The door is a thing of the map behind HeartGold's own flag, FLAG_UNK_1C0.
   // Since plan 20 · J5's leftovers its shops and salons keep their days behind their counters (HeartGold's FLAG_UNK_1B0
   // to 1B3, laid by the floor's arrival): the herb shop, the bargain shop and the two barbers. The photo studio's
-  // backdrops and the Kimono Girl are left out
+  // backdrops are left out. The Kimono Girl the Basement Key sends down here (VAR_UNK_40E7 2) stands by the long corridor
+  // until spoken to (Johto's leftovers)
   "area": "goldenrod_tunnel_b1f",
   "bgmTrack": "johto/goldenrod",
   "triggers": [
     { "trigger": 0, "script": "Disguise" }
   ],
   "people": {
+    "d37r0102_dancer": { "name": "Kimono Girl", "script": "KimonoGirl", "still": true },
     "d37r0102_rocketm": { "name": "Grunt", "script": "Grunt", "still": true },
     "d37r0102_gsoldwoman1": { "name": "Herbalist", "script": "HerbShop", "still": true },
     "d37r0102_gsoldman1": { "name": "Old Man", "script": "Bargains", "still": true },

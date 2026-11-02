@@ -375,6 +375,19 @@
     "description": "A red, shining scale the raging Gyarados of the Lake of Rage left behind. Someone might want it.",
     "cantBeTossed": true
   },
+  // Buena's card (plan 20, Johto's leftovers): the points a right password earns, kept in VAR_JOHTO_BLUE_CARD_POINTS,
+  // which the woman beside Buena trades for prizes (HeartGold's Blue Card)
+  "Blue Card": {
+    "id": 9232,
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A card from Buena's Password show. A right password earns a point, which the Radio Tower trades for prizes.",
+    "cantBeTossed": true
+  },
   "Rage Candy Bar": {
     "id": 9231,
     "pocket": "Medicine",

@@ -343,6 +343,16 @@ public static class RadioShows
         return Text.OfData(all[rng.Next(all.Count)]).Replace("{swarm}", species).Replace("{swarmplace}", place);
     }
 
+    /// <summary>
+    /// Buena's show on the air (plan 20, Johto's leftovers): a line that says tonight's word (<see cref="BuenasPassword"/>),
+    /// drawn from the English and said in the language's own words.
+    /// </summary>
+    public static string PasswordLine(Random rng, string word)
+    {
+        if (!lines.Value.TryGetValue("BuenasPasswordTonight", out var all) || all.Count == 0) return "";
+        return Text.OfData(all[rng.Next(all.Count)]).Replace("{password}", word);
+    }
+
     /// <summary>Every line of every station, as its English is written: a language translates them in its <c>data.json</c> (plan 17 · N6f).</summary>
     public static IEnumerable<string> AllLines => lines.Value.Values.SelectMany(l => l).Where(l => l.Length > 0);
 

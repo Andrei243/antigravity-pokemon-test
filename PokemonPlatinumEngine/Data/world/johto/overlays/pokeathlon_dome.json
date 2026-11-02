@@ -1,8 +1,8 @@
 {
   // The Pokéathlon Dome's square (plan 20 · J13), west of Route 35's gate house: HeartGold's own map of it
   // (MAP_POKEATHLON_DOME), the dome at its head and its lobby behind the three doors. The dome's owner stands by the
-  // way in with his Poliwrath, where HeartGold has him greet a first visit (his scene and its flag, FLAG_UNK_225, are
-  // left out: he stays to talk). The stall's keeper runs the Athlete Shop (common.AthlonShop, plan 15 · E8). The square's song
+  // way in with his Poliwrath, where HeartGold has him greet a first visit (his scene, scripts/pokeathlon_dome.txt, on
+  // HeartGold's flag FLAG_UNK_225: Johto's leftovers); afterwards he stays to talk. The stall's keeper runs the Athlete Shop (common.AthlonShop, plan 15 · E8). The square's song
   // is Route 34's, as HeartGold's is
   "area": "pokeathlon_dome",
   "bgmTrack": "johto/route34",

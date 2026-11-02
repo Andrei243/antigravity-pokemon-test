@@ -47,3 +47,28 @@ label Lemonade
 label Poor
   text "Not enough money..."
   end
+
+
+# The place's arrival lays who of the Gym Leaders is here today (Johto's leftovers)
+script OnEnter
+  # Whitney's street meeting (Johto's leftovers): Sundays, once Whitney's number is in the Pokégear
+  setflag FLAG_UNK_26F
+  if weekday sunday call ShowMeetWhitney
+  end
+
+
+script ShowMeetWhitney
+  if flag FLAG_PHONE_CONTACT_WHITNEY clearflag FLAG_UNK_26F
+  return
+
+# Whitney, out on Sunday (the Leaders' street meetings, Johto's leftovers)
+script MeetWhitney
+  face t25r1006_gsleader3 player
+  speaker "Whitney"
+  random 2
+  if result == 1 goto Two
+  say "Oh! It's you! I come here every Sunday for a fizzy drink from the machines. Isn't it the best?"
+  end
+label Two
+  say "Shopping makes me so happy. Don't tell anyone, but sometimes I buy two!"
+  end

@@ -15,3 +15,38 @@ label Night
   clearflag FLAG_UNK_1D2
   setflag FLAG_UNK_1D1
   end
+
+
+# Youngster Ian (Johto's leftovers: the phone's gifts): beaten, he gives his number; once he has rung about a present
+# (phone.txt's Ian, FLAG_JOHTO_PHONE_GIFT_IAN) he hands over a Cheri Berry here
+script Ian
+  if not defeated self goto Fight
+  if rematch self goto Rematch
+  speaker "Ian"
+  if flag FLAG_JOHTO_PHONE_GIFT_IAN goto Gift
+  if flag FLAG_PHONE_CONTACT_IAN goto Known
+  say "You beat me fair and square! Hey, let's trade numbers. My Pokémon dig up all sorts of things."
+  ask "Register Ian's number in your Pokégear?"
+  if no goto Refused
+  addcontact ian
+  say "Cool! I'll call you if we find anything good."
+  end
+label Refused
+  say "Aw. Well, I'll be here digging if you change your mind."
+  end
+label Known
+  trainerline after
+  end
+label Gift
+  say "There you are! My Pokémon dug this up. Here, it's for you!"
+  give "Cheri Berry"
+  clearflag FLAG_JOHTO_PHONE_GIFT_IAN
+  end
+label Fight
+  trainerline before
+  battle self
+  end
+label Rematch
+  trainerline before
+  battle self rematch
+  end

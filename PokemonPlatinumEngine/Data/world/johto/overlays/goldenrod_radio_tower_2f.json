@@ -1,8 +1,8 @@
 {
   // The Radio Tower's second floor (plan 20 · J11, part b): HeartGold's floor, our words. Team Rocket's four hold it
   // while the takeover lasts, and a policeman keeps the stairs up the rest of the time
-  // (scripts/goldenrod_radio_tower_2f.txt). Buena, who reads out her password show's word, and the woman who trades
-  // her Blue Card's points are a later part's and are left out
+  // (scripts/goldenrod_radio_tower_2f.txt). Buena takes back her show's password in the evening, and the woman beside
+  // her trades the Blue Card's points for prizes (Johto's leftovers)
   "area": "goldenrod_radio_tower_2f",
   "bgmTrack": "johto/goldenrod",
   "people": {
@@ -16,6 +16,8 @@
     "d23r0102_gswoman2": { "name": "Woman", "script": "Woman", "still": true },
     "d23r0102_tsure_poke_static_jigglypuff": { "name": "Jigglypuff", "npcType": "Pokemon", "species": "Jigglypuff", "script": "Jigglypuff", "still": true },
     "d23r0102_policeman": { "name": "Policeman", "script": "Policeman", "still": true },
+    "d23r0102_gswoman2_2": { "name": "Buena", "script": "Buena", "still": true },
+    "d23r0102_gswoman1": { "name": "Woman", "script": "BlueCardPrizes", "still": true },
     "d23r0102_rocketm": {
       "name": "Grunt",
       "trainer": {

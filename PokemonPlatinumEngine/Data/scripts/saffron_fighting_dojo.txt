@@ -1,0 +1,168 @@
+# Saffron City's Fighting Dojo (Johto's leftovers). docs/scripts.md describes the language; the lines are our own, on
+# HeartGold's beats.
+#
+# The Gym Leaders who rang the player on their day (Models.PhoneRematch, phone.txt) wait here until fought, each by
+# the flag that keeps their rematch waiting (FLAG_PHONE_REMATCH_<ID>, saffron_fighting_dojo.json's shownBy). Each
+# battles as their second team (Johto's trainers.json, the rows of rematches.json) and, beaten, clears the flag and
+# is gone, until their next call asks again. A Leader is battled as a team (`battle self as`), never as a trainer of
+# the map.
+
+
+script Falkner
+  face t11r0101_gsleader1 player
+  speaker "Falkner"
+  say "My birds have trained in every wind. Let's see if they can catch you now!"
+  battle self as "johto_leader_falkner_falkner_2"
+  say "Grounded again... but my birds will soar higher next time."
+  clearflag FLAG_PHONE_REMATCH_FALKNER
+  end
+
+
+script Bugsy
+  face t11r0101_gsleader2 player
+  speaker "Bugsy"
+  say "I've learned so much more about bug Pokémon since we last met. Time to put it to the test!"
+  battle self as "johto_leader_bugsy_bugsy_2"
+  say "Fascinating... I'll write this one up in my notes."
+  clearflag FLAG_PHONE_REMATCH_BUGSY
+  end
+
+
+script Whitney
+  face t11r0101_gsleader3 player
+  speaker "Whitney"
+  say "No crying this time, I promise! Miltank and I have been practising!"
+  battle self as "johto_leader_whitney_2"
+  say "Waaah! ...No, I'm fine. I'm not crying. Really!"
+  clearflag FLAG_PHONE_REMATCH_WHITNEY
+  end
+
+
+script Morty
+  face t11r0101_gsleader4 player
+  speaker "Morty"
+  say "I have seen this battle many times in my mind. Now let us see the true one."
+  battle self as "johto_leader_morty_morty_2"
+  say "So that is how it ends. My vision was clouded."
+  clearflag FLAG_PHONE_REMATCH_MORTY
+  end
+
+
+script Jasmine
+  face t11r0101_gsleader6 player
+  speaker "Jasmine"
+  say "My steel Pokémon have grown even harder... Please, let us battle."
+  battle self as "johto_leader_jasmine_jasmine_2"
+  say "You're... still so strong. Thank you for the battle."
+  clearflag FLAG_PHONE_REMATCH_JASMINE
+  end
+
+
+script Pryce
+  face t11r0101_gsleader7 player
+  speaker "Pryce"
+  say "Winter teaches patience. Let us see whether you have learned it too."
+  battle self as "johto_leader_pryce_pryce_2"
+  say "The ice melts, as it must. Well fought."
+  clearflag FLAG_PHONE_REMATCH_PRYCE
+  end
+
+
+script Clair
+  face t11r0101_gsleader8 player
+  speaker "Clair"
+  say "I've been waiting for this. My dragons won't lose a second time!"
+  battle self as "johto_leader_clair_clair_2"
+  say "...I lost again. Don't you dare think this is over."
+  clearflag FLAG_PHONE_REMATCH_CLAIR
+  end
+
+
+script Brock
+  face t11r0101_gsleader14 player
+  speaker "Brock"
+  say "My rock Pokémon are harder than ever. Let's go!"
+  battle self as "johto_leader_brock_brock_2"
+  say "Rock-solid, and still not enough. You're something else."
+  clearflag FLAG_PHONE_REMATCH_BROCK
+  end
+
+
+script Misty
+  face t11r0101_gsleader11 player
+  speaker "Misty"
+  say "I've been looking forward to this! My water Pokémon won't hold back!"
+  battle self as "johto_leader_misty_misty_2"
+  say "Ugh, you got me again! Next time I'm winning!"
+  clearflag FLAG_PHONE_REMATCH_MISTY
+  end
+
+
+script LtSurge
+  face t11r0101_gsleader9 player
+  speaker "Lt. Surge"
+  say "Hey, kid! Ready for a real shock? Let's go!"
+  battle self as "johto_leader_lt_surge_lt__surge_2"
+  say "Whoa! You're still the real deal. Ha!"
+  clearflag FLAG_PHONE_REMATCH_LT_SURGE
+  end
+
+
+script Erika
+  face t11r0101_gsleader12 player
+  speaker "Erika"
+  say "The flowers have bloomed again, and so has my resolve. Shall we?"
+  battle self as "johto_leader_erika_erika_2"
+  say "Oh my... You are as wonderful as ever."
+  clearflag FLAG_PHONE_REMATCH_ERIKA
+  end
+
+
+script Janine
+  face t11r0101_gsleader13 player
+  speaker "Janine"
+  say "A ninja never lets her guard down. Prepare yourself!"
+  battle self as "johto_leader_janine_janine_2"
+  say "My training is not yet complete... Well fought."
+  clearflag FLAG_PHONE_REMATCH_JANINE
+  end
+
+
+script Sabrina
+  face t11r0101_gsleader10 player
+  speaker "Sabrina"
+  say "I foresaw this battle. I did not foresee how it ends. Let us find out."
+  battle self as "johto_leader_sabrina_sabrina_2"
+  say "So the future can still surprise me."
+  clearflag FLAG_PHONE_REMATCH_SABRINA
+  end
+
+
+script Blaine
+  face t11r0101_gsleader15 player
+  speaker "Blaine"
+  say "My fire's burning hot again! Let's have a battle to remember!"
+  battle self as "johto_leader_blaine_blaine_2"
+  say "Hah! Burned out again! I'll quiz you next time instead!"
+  clearflag FLAG_PHONE_REMATCH_BLAINE
+  end
+
+
+script Blue
+  face t11r0101_gsleader16 player
+  speaker "Blue"
+  say "So you came. Don't think I've been sitting around. Let's go!"
+  battle self as "johto_leader_blue_blue_2"
+  say "Tch. You're good. ...Don't let it go to your head."
+  clearflag FLAG_PHONE_REMATCH_BLUE
+  end
+
+
+script Chuck
+  face t11r0101_gsleader5 player
+  speaker "Chuck"
+  say "HWAAAH! My fists are itching! Let's settle this!"
+  battle self as "johto_leader_chuck_chuck_2"
+  say "Ha! You win again! Back to the waterfall for me!"
+  clearflag FLAG_PHONE_REMATCH_CHUCK
+  end

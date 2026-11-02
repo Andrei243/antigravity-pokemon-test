@@ -37,6 +37,17 @@ label Tm
   say "TM45 is Attract. It makes a Pokémon of the other gender fall for yours, so it hardly fights back. Isn't that cute?"
   end
 label Won
+  # Their number, for Johto's Champion (Johto's leftovers; the rematch is the Fighting Dojo's on their day, phone.json)
+  if not flag JohtoHallOfFame goto NumberDone
+  if flag FLAG_PHONE_CONTACT_WHITNEY goto NumberDone
+  say "Oh, it's the Champion! Let's be phone friends! I'll call you when I want a rematch, okay?"
+  ask "Swap numbers with Whitney?"
+  if no goto NumberDone
+  addcontact whitney
+  text "Registered Whitney in the Pokégear."
+  say "On Saturday afternoons I'll be at the Fighting Dojo in Saffron City. Come and battle me there!"
+  end
+label NumberDone
   if not flag FLAG_GOT_TM45_FROM_WHITNEY goto Tm
   say "Ah, that was fun! Even though I lost. Come and battle me again when you're stronger. I'll be stronger too!"
   end

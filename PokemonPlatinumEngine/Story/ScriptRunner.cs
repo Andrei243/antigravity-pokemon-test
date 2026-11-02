@@ -2226,6 +2226,8 @@ public sealed partial class ScriptRunner
         // Whether the script plays in a region the game didn't begin in (plan 18 · W5): a region's opening names its
         // rival with namerival for a Champion who crossed into it, whose introduction named another region's
         "CROSSED_IN" => string.Equals(host.Region, host.BeganIn, StringComparison.OrdinalIgnoreCase) ? 0 : 1,
+        // Where tonight's word of Buena's Password stands among her three, 0 to 2 (plan 20, Johto's leftovers)
+        "PASSWORD" => BuenasPassword.RightPlace(GameClock.Today),
         _ => host.Story.Var(variable)
     };
 
@@ -2379,6 +2381,10 @@ public sealed partial class ScriptRunner
             "user" => lastUser,
             "money" => host.Money.ToString(),
             "result" => Result.ToString(),
+            // Buena's three words tonight, {password:1} to {password:3}, and the Blue Card's points (plan 20, Johto's leftovers)
+            "password" when int.TryParse(argument, out int word) && word >= 1 && word <= 3 =>
+                BuenasPassword.Shown(BuenasPassword.Choices(GameClock.Today)[word - 1]),
+            "bluecard" => host.Story.Var(BuenasPassword.PointsVar).ToString(),
             // The Pokémon choosepokemon chose last (plan 14 · B14)
             "chosen" => chosenMember?.DisplayName ?? "",
             // The title of the chosen one's master, as the class is named (plan 14 · B15: "Bidoof Master")

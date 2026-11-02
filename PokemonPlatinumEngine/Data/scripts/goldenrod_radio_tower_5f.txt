@@ -57,6 +57,8 @@ label Takeover
   say "All right, all right, listen. We locked the real Director in the warehouse under the city, at the far end of the Goldenrod Tunnel."
   say "And since I'm such a nice guy, you can have the Basement Key. Take it, and say thank you!"
   give "Basement Key"
+  # (HeartGold's Basement Key also sends a Kimono Girl to the passage under the city: goldenrod_tunnel_b1f.txt)
+  setvar VAR_UNK_40E7 2
   endscene
   end
 label Lost
