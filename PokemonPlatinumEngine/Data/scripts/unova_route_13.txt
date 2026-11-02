@@ -75,12 +75,13 @@ script Keldeo
   face player keldeo
   face keldeo player
   letterbox on 0.4
-  # (one tile south of it, the player would hide it: they step back first)
+  # (one tile south of it, the player would hide it: they step back first, and the "!" over their head, which hid it
+  # too, comes once it is in sight)
   if var PLAYER_X != 684 goto Look
   if var PLAYER_Y != 191 goto Look
-  emote player exclaim
   walk player down 2
   face player up
+  emote player exclaim
 label Look
   camera path 684 186 684 190 3
   camera zoom 1.4 0.8

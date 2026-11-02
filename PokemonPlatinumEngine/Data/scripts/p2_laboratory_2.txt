@@ -12,10 +12,10 @@ script Genesect
   face player self
   face self player
   letterbox on 0.4
-  # (one tile south of it, the player would hide it: they step back first)
+  # (one tile south of it, the player would hide it: they step back first, with no "!" over their head, which hid it
+  # too; the "!" comes once it is in sight)
   if var PLAYER_X != 5 goto Look
   if var PLAYER_Y != 3 goto Look
-  emote player exclaim
   walk player down 2
   face player up
 label Look

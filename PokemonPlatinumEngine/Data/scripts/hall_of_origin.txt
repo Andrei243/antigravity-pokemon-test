@@ -29,8 +29,9 @@ script Arceus
   music stop
   face player up
   letterbox on 0.4
-  camera pan 31 27 1.2
-  camera zoom 1.4 0.8
+  # (the camera between Arceus and the step, eight tiles apart, so that both are in the picture)
+  camera pan 31 31 1.2
+  camera zoom 0.85 0.8
   effect burst 31 27
   slowmo 0.5 1.5
   effect ripple 31 27
