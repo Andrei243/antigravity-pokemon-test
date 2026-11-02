@@ -219,7 +219,9 @@ public class TextTests
             "Brock", "Misty", "Lt. Surge", "Erika", "Koga", "Sabrina", "Blaine", "Giovanni", "Lorelei", "Bruno", "Agatha", "Lance", "{rival}",
             // Hoenn's (plan 21 · H9, part b): its Leaders, the Elite Four and Wallace by name
             "Roxanne", "Brawly", "Wattson", "Flannery", "Norman", "Winona", "Tate & Liza", "Juan", "Sidney", "Phoebe", "Glacia",
-            "Drake", "Wallace"
+            "Drake", "Wallace",
+            // Johto's (plan 20 · J14): its Leaders, Will, Karen and the Champion by name
+            "Falkner", "Bugsy", "Whitney", "Morty", "Chuck", "Jasmine", "Pryce", "Clair", "Will", "Karen"
         },
         // The region and the rooms the Journal goes by, the Gyms' towns it keeps in the save, the items' uses the bag goes by, the move Surf and the bicycles
         ["Core/GameEngine.Scripts.cs"] = new[]

@@ -103,18 +103,10 @@
     "t08r0201_workman": {
       "name": {
         "en": [
-          "Worker"
+          "Attendant"
         ],
         "text": [
-          ""
-        ]
-      },
-      "dialog": {
-        "en": [
-          "We built this gate in a hurry. The paint on the walls is still wet in places, so mind your sleeves!"
-        ],
-        "text": [
-          ""
+          "Însoțitor"
         ]
       }
     }
