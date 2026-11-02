@@ -464,6 +464,7 @@ Plan 21 · H11. Hoenn's contest is a different game from the Super Contest: `Mod
 | `pokeblock taste` | `RESULT` 1 when the first of the team's nature likes a flavour, and `{taste}` is the colour of Pokéblock of it (Mossdeep's black belt, `GetPokeblockNameByMonNature`); 0 for the five natures with no taste. |
 | `pokeblock blend 2` | The Berry Blender with so many others (1 to 3) at the drum: the bag chooses the player's berry, the blender plays and the script waits; `RESULT` 1 when a Pokéblock went into the case, 0 when the player backed out or the case was full. |
 | `pokeblock count` | How many Pokéblocks the Pokéblock Case holds. |
+| `pokeblock lady` | Lilycove's Contest Lady (plan 21 · H12, part n; `Models/ContestLady.cs`): asks which of the case's Pokéblocks to give her Pokémon, takes it out of the case and judges it by the condition in `VAR_HOENN_CONTEST_LADY` (1 to 5), counting a good one or another; `RESULT` 0 backed out, 1 not its flavour, 2 its flavour. |
 | `pokeblock full` | `RESULT` 1 when the case can take no more (forty). |
 
 `{contestant}` is the Pokémon checked, `{ribbon}` the ribbon last given. A menu that leads back to a menu is hundreds of ways for the tests that play every way through a script: the receptionist's explanations end the talk.
@@ -569,6 +570,7 @@ own flags and variables (`FLAG_VILLA_FURNITURE_…`, `VAR_RESORT_VILLA_VISITOR`)
 | `gamecorner room 500` | `RESULT` 1 when that many more fit (the case holds 50,000). |
 | `gamecorner add 50`, `gamecorner take 50` | Puts coins in or takes them out, all or none: `RESULT` 1 when it did. |
 | `gamecorner slots 3` | Sits the player at a machine of that number (0 to 11: its mood is the day's deal for it) and waits until they get up. |
+| `gamecorner reels 3` | Sits the player at one of Mauville's machines (plan 21 · H12, part n; `Models/ReelMachine.cs`): Emerald's own, with its bias, Pikachu's gauge and Reel Time, its luck the day's for its number (0 to 11), and waits until they get up. |
 | `gamecorner prize`, `gamecorner prize mauville` | Asks which of the exchange's prizes (Veilstone's, or Mauville's five TMs: plan 21 · H3, part c): `RESULT` 1, or 0 for none. `{item}`, `{price}` in coins, and `{thing}` the move a TM holds. |
 | `gamecorner buy` | Exchanges coins for the prize chosen: `RESULT` 1, or 0 with too few. |
 | `gamecorner hiddenpower` | Reads the Hidden Power of the Pokémon `RESULT` names (after `choosepokemon`): `RESULT` 0 with none chosen, 1 when it knows the move, 2 when it doesn't, 3 for an Egg; `{thing}` is the type. |

@@ -1,13 +1,18 @@
 {
-  // Mossdeep City's game corner (plan 21 · H12, part i): in Emerald a room of the link games Pokémon Jump and Dodrio
-  // Berry Picking, played with friends' consoles downstairs. With no link to play over, the two at the counter only talk,
-  // the records on the wall are bare and the way down stays shut
+  // Mossdeep City's game corner (plan 21 · H12, part i; its basement since part n): in Emerald a room of the link games
+  // Pokémon Jump and Dodrio Berry Picking, played with friends' consoles downstairs. With no link to play over, the
+  // records on the wall are bare; a guide of ours in the hall shows the player down to the basement, where a girl of ours
+  // practises on her own (mossdeep_city_game_corner_1f.txt)
   "area": "mossdeep_city_game_corner_1f",
   "bgmTrack": "hoenn/rustboro",
   "people": {
     "expert_m": { "name": "Old Man", "dialog": [ "Downstairs, trainers play games with their Pokémon together: jumping rope, picking berries...", "But it takes friends with their own games to play. Nobody has come by to play in a long while." ] },
     "man_4": { "name": "Man", "dialog": [ "The record boards on the wall show the best scores at the games downstairs.", "They're all blank. Maybe one day someone will set a score worth writing up!" ] }
   },
+  // The guide of ours in the hall who shows the player down (mossdeep_city_game_corner_1f.txt)
+  "npcs": [
+    { "id": "game_corner_guide", "name": "Guide", "npcType": "gentleman", "x": 9, "y": 4, "facing": "Down", "script": "Attendant" }
+  ],
   "signs": {
     "MossdeepCity_GameCorner_1F_EventScript_DodrioBerryPickingRecords": "Dodrio Berry Picking: the best scores. Nothing has been written up yet.",
     "MossdeepCity_GameCorner_1F_EventScript_PokemonJumpRecords": "Pokémon Jump: the best scores. Nothing has been written up yet.",

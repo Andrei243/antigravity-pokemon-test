@@ -1,0 +1,66 @@
+# Sootopolis City's house of mystery events (plan 21 · H12, part n). docs/scripts.md describes the language; the lines are
+# our own, on the beats of Emerald's SootopolisCity_MysteryEventsHouse_1F_EventScript_OldMan.
+#
+# Emerald's old man asks whether to challenge a trainer read from an e-Reader card and takes the player down to battle
+# them in the basement. This game has no cards: for a Champion of Hoenn one of three visitors of ours comes each day
+# (hoenn_mystery_visitor_ilse, _ronan and _wren in our-trainers.json), drawn on the first talk of the day
+# (FLAG_DAILY_HOENN_MYSTERY_VISITOR_DRAWN into VAR_HOENN_MYSTERY_VISITOR, which shows the visitor downstairs by a flag
+# of each), battled once a day (FLAG_DAILY_HOENN_MYSTERY_VISITOR). The battle and the old man's word on it are the
+# basement's (sootopolis_city_mystery_events_house_b1f.txt).
+
+
+script OldMan
+  face self player
+  speaker "Old Man"
+  say "In my youth I travelled the whole world as a Pokémon trainer."
+  say "These days my only pleasure is watching young trainers battle."
+  if not flag HoennHallOfFame goto Quiet
+  if flag FLAG_DAILY_HOENN_MYSTERY_VISITOR goto Done
+  call Draw
+  if var VAR_HOENN_MYSTERY_VISITOR == 1 goto Ronan
+  if var VAR_HOENN_MYSTERY_VISITOR == 2 goto Wren
+  ask "A trainer named Ilse is staying with me today. Would you like to challenge her downstairs?"
+  goto Answer
+label Ronan
+  ask "A trainer named Ronan is staying with me today. Would you like to challenge him downstairs?"
+  goto Answer
+label Wren
+  ask "A trainer named Wren is staying with me today. Would you like to challenge him downstairs?"
+label Answer
+  if no goto Declined
+  say "Splendid! The old house isn't so sturdy, mind, so keep it to a fair match."
+  say "I'll be watching from the stairs. Show me something good!"
+  fade out 0.3
+  warp "SootopolisCity_MysteryEventsHouse_B1F" 3 2 down
+  fade in 0.3
+  end
+label Declined
+  say "No? What a shame. I'd so looked forward to watching."
+  end
+label Quiet
+  say "Now and then a visitor comes to battle downstairs. Nobody's come for a while, though."
+  end
+label Done
+  say "What a match that was today! Come back tomorrow. Someone else may be staying."
+  end
+
+
+# The day's visitor, drawn once a day: a flag of each shows them downstairs
+script Draw
+  if flag FLAG_DAILY_HOENN_MYSTERY_VISITOR_DRAWN return
+  setflag FLAG_DAILY_HOENN_MYSTERY_VISITOR_DRAWN
+  random 3
+  setvar VAR_HOENN_MYSTERY_VISITOR RESULT
+  clearflag FLAG_HOENN_MYSTERY_VISITOR_ILSE
+  clearflag FLAG_HOENN_MYSTERY_VISITOR_RONAN
+  clearflag FLAG_HOENN_MYSTERY_VISITOR_WREN
+  if var VAR_HOENN_MYSTERY_VISITOR == 1 goto ShowRonan
+  if var VAR_HOENN_MYSTERY_VISITOR == 2 goto ShowWren
+  setflag FLAG_HOENN_MYSTERY_VISITOR_ILSE
+  return
+label ShowRonan
+  setflag FLAG_HOENN_MYSTERY_VISITOR_RONAN
+  return
+label ShowWren
+  setflag FLAG_HOENN_MYSTERY_VISITOR_WREN
+  return

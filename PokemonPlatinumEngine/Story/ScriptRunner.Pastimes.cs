@@ -116,6 +116,10 @@ public sealed partial class ScriptRunner
             case "slots":
                 Result = host.PastimeAct("slots", i.Number, Subject);
                 break;
+            // Mauville's machines, Emerald's own (plan 21 · H12, part n; Models/ReelMachine.cs)
+            case "reels":
+                Result = host.PastimeAct("reels", i.Number, Subject);
+                break;
             case "prize":
             {
                 var prizes = i.Other == "mauville" ? GameCornerPrizes.Mauville : GameCornerPrizes.All;

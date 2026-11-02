@@ -1,0 +1,47 @@
+# The basement of Sootopolis City's house of mystery events (plan 21 · H12, part n). docs/scripts.md describes the
+# language; the lines are our own, on the beats of Emerald's SootopolisCity_MysteryEventsHouse_B1F_EventScript_BattleVisitingTrainer.
+#
+# The day's visitor (sootopolis_city_mystery_events_house_1f.txt draws them) battles once a day with a team of ours
+# (canlose: Emerald's visiting trainer can be lost to); the team is seen to afterwards, as Emerald heals it, and the
+# player is taken up to the old man, who says what he made of it by Emerald's VAR_SOOTOPOLIS_MYSTERY_EVENTS_STATE
+# (1 won, 2 lost), which goes back to nought.
+
+
+script Visitor
+  face self player
+  if flag FLAG_DAILY_HOENN_MYSTERY_VISITOR goto Done
+  if var VAR_HOENN_MYSTERY_VISITOR == 1 goto Ronan
+  if var VAR_HOENN_MYSTERY_VISITOR == 2 goto Wren
+  speaker "Ilse"
+  say "So you're the one the old man keeps talking about. I've come a long way for a battle like this!"
+  battle self as "hoenn_mystery_visitor_ilse" canlose
+  goto After
+label Ronan
+  speaker "Ronan"
+  say "A Champion, here? Then I didn't cross the sea for nothing. Let's see what you've got!"
+  battle self as "hoenn_mystery_visitor_ronan" canlose
+  goto After
+label Wren
+  speaker "Wren"
+  say "I trained every day on the way here. I hope you're ready, because I am!"
+  battle self as "hoenn_mystery_visitor_wren" canlose
+label After
+  setflag FLAG_DAILY_HOENN_MYSTERY_VISITOR
+  setvar VAR_SOOTOPOLIS_MYSTERY_EVENTS_STATE 1
+  if lost setvar VAR_SOOTOPOLIS_MYSTERY_EVENTS_STATE 2
+  heal
+  fade out 0.3
+  warp "SootopolisCity_MysteryEventsHouse_1F" 5 3 down
+  fade in 0.3
+  speaker "Old Man"
+  if var VAR_SOOTOPOLIS_MYSTERY_EVENTS_STATE == 2 goto Lost
+  say "Superb! What a battle that was. These old eyes haven't seen the like in years!"
+  setvar VAR_SOOTOPOLIS_MYSTERY_EVENTS_STATE 0
+  end
+label Lost
+  say "Oh, too bad! Still, you fought well. There's always another day."
+  setvar VAR_SOOTOPOLIS_MYSTERY_EVENTS_STATE 0
+  end
+label Done
+  say "That was a battle to remember! I'll be on my way soon. Thank you."
+  end

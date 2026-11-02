@@ -82,6 +82,7 @@ public sealed partial class GameFlow
     public NicknameScreen NicknameScreen { get; } = new();
     public SuperContestScreen SuperContestScreen { get; } = new();
     public SlotMachineScreen SlotMachineScreen { get; } = new();
+    public ReelMachineScreen ReelMachineScreen { get; } = new();
     public MiningScreen MiningScreen { get; } = new();
     public UndergroundScreen UndergroundScreen { get; } = new();
     public DecorationScreen DecorationScreen { get; } = new();

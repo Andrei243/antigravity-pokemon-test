@@ -1,8 +1,8 @@
 # Mauville City's Game Corner (plan 21 · H3, part c). docs/scripts.md describes the language; the lines are our own, on
 # Emerald's beats (data/maps/MauvilleCity_GameCorner/scripts.inc).
 #
-# Twelve machines (Machine0 to Machine11, gamecorner slots): Platinum's slot machine stands in for Emerald's
-# (docs/mechanics/rulings.md, "The desert, Fallarbor and Mauville's Game Corner"), played by whoever carries a Coin Case,
+# Twelve machines (Machine0 to Machine11, gamecorner reels): Emerald's own since plan 21 · H12, part n (Models/ReelMachine.cs,
+# its Reel Time and Pikachu's gauge; each machine's luck the day's), played by whoever carries a Coin Case,
 # which the woman next door trades for a Harbor Mail. The counter sells Coins as Emerald's does, 50 for $1,000 and 500
 # for $10,000; the TM counter exchanges Emerald's five (gamecorner prize mauville). The man by the machines gives 20
 # Coins once to whoever has a case and none in it (FLAG_RECEIVED_20_COINS).
@@ -11,7 +11,7 @@
 script Machine0
   if not item "Coin Case" goto NoCase
   fade out 0.3
-  gamecorner slots 0
+  gamecorner reels 0
   fade in 0.3
   end
 label NoCase
@@ -22,7 +22,7 @@ label NoCase
 script Machine1
   if not item "Coin Case" goto NoCase
   fade out 0.3
-  gamecorner slots 1
+  gamecorner reels 1
   fade in 0.3
   end
 label NoCase
@@ -33,7 +33,7 @@ label NoCase
 script Machine2
   if not item "Coin Case" goto NoCase
   fade out 0.3
-  gamecorner slots 2
+  gamecorner reels 2
   fade in 0.3
   end
 label NoCase
@@ -44,7 +44,7 @@ label NoCase
 script Machine3
   if not item "Coin Case" goto NoCase
   fade out 0.3
-  gamecorner slots 3
+  gamecorner reels 3
   fade in 0.3
   end
 label NoCase
@@ -55,7 +55,7 @@ label NoCase
 script Machine4
   if not item "Coin Case" goto NoCase
   fade out 0.3
-  gamecorner slots 4
+  gamecorner reels 4
   fade in 0.3
   end
 label NoCase
@@ -66,7 +66,7 @@ label NoCase
 script Machine5
   if not item "Coin Case" goto NoCase
   fade out 0.3
-  gamecorner slots 5
+  gamecorner reels 5
   fade in 0.3
   end
 label NoCase
@@ -77,7 +77,7 @@ label NoCase
 script Machine6
   if not item "Coin Case" goto NoCase
   fade out 0.3
-  gamecorner slots 6
+  gamecorner reels 6
   fade in 0.3
   end
 label NoCase
@@ -88,7 +88,7 @@ label NoCase
 script Machine7
   if not item "Coin Case" goto NoCase
   fade out 0.3
-  gamecorner slots 7
+  gamecorner reels 7
   fade in 0.3
   end
 label NoCase
@@ -99,7 +99,7 @@ label NoCase
 script Machine8
   if not item "Coin Case" goto NoCase
   fade out 0.3
-  gamecorner slots 8
+  gamecorner reels 8
   fade in 0.3
   end
 label NoCase
@@ -110,7 +110,7 @@ label NoCase
 script Machine9
   if not item "Coin Case" goto NoCase
   fade out 0.3
-  gamecorner slots 9
+  gamecorner reels 9
   fade in 0.3
   end
 label NoCase
@@ -121,7 +121,7 @@ label NoCase
 script Machine10
   if not item "Coin Case" goto NoCase
   fade out 0.3
-  gamecorner slots 10
+  gamecorner reels 10
   fade in 0.3
   end
 label NoCase
@@ -132,7 +132,7 @@ label NoCase
 script Machine11
   if not item "Coin Case" goto NoCase
   fade out 0.3
-  gamecorner slots 11
+  gamecorner reels 11
   fade in 0.3
   end
 label NoCase

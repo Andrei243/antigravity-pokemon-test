@@ -266,6 +266,10 @@
       "note": "first spoken at castelia_city_2.txt(29)",
       "provisional": true
     },
+    "contest_lady": {
+      "note": "first spoken at lilycove_city_pokemon_center_1f.txt(272)",
+      "provisional": true
+    },
     "cook": {
       "note": "first spoken at PoffinHouse.txt(13)",
       "provisional": true
@@ -542,6 +546,10 @@
     },
     "ian": {
       "note": "first spoken at phone.txt(253)",
+      "provisional": true
+    },
+    "ilse": {
+      "note": "first spoken at sootopolis_city_mystery_events_house_b1f.txt(15)",
       "provisional": true
     },
     "ingo": {
@@ -1026,6 +1034,10 @@
       "note": "first spoken at cinnabar_island_gym.txt(19)",
       "provisional": true
     },
+    "quiz_lady": {
+      "note": "first spoken at lilycove_city_pokemon_center_1f.txt(95)",
+      "provisional": true
+    },
     "ralph": {
       "note": "first spoken at phone.txt(99)",
       "provisional": true
@@ -1073,6 +1085,10 @@
     },
     "ron": {
       "note": "first spoken at opelucid_city_gym.txt(40)",
+      "provisional": true
+    },
+    "ronan": {
+      "note": "first spoken at sootopolis_city_mystery_events_house_b1f.txt(20)",
       "provisional": true
     },
     "rood": {
@@ -1411,6 +1427,10 @@
       "note": "first spoken at fortree_city_gym.txt(12)",
       "provisional": true
     },
+    "wren": {
+      "note": "first spoken at sootopolis_city_mystery_events_house_b1f.txt(25)",
+      "provisional": true
+    },
     "young_man": {
       "note": "first spoken at rusturf_tunnel.txt(103)",
       "provisional": true
@@ -1515,6 +1535,7 @@
     "Commander Jupiter": "jupiter",
     "Commander Mars": "mars",
     "Commander Saturn": "saturn",
+    "Contest Lady": "contest_lady",
     "Cook": "cook",
     "Cooltrainer": "cooltrainer",
     "Cowgirl": "cowgirl",
@@ -1600,6 +1621,7 @@
     "Hostess": "hostess",
     "Huey": "huey",
     "Ian": "ian",
+    "Ilse": "ilse",
     "Ingo": "ingo",
     "Iris": "iris",
     "Isaac": "isaac",
@@ -1734,6 +1756,7 @@
     "Pryce": "pryce",
     "Psychic": "psychic",
     "Quinn": "quinn",
+    "Quiz Lady": "quiz_lady",
     "Ralph": "ralph",
     "Ramon": "ramon",
     "Receptionist": "look:receptionist",
@@ -1747,6 +1770,7 @@
     "Roark": "roark",
     "Robert": "robert",
     "Ron": "ron",
+    "Ronan": "ronan",
     "Rood": "rood",
     "Rosa": "rosa",
     "Rose": "rose",
@@ -1837,6 +1861,7 @@
     "Winona": "winona",
     "Woman": "look:woman",
     "Worker": "look:worker",
+    "Wren": "wren",
     "Young Man": "young_man",
     "Youngster": "look:youngster",
     "Zac": "zac",

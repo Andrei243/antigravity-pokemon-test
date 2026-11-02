@@ -2787,5 +2787,41 @@
         "item": "Focus Sash"
       }
     ]
+  },
+  {
+    "id": "hoenn_mystery_visitor_ilse",
+    "name": "Ilse",
+    "class": "Cooltrainer",
+    "ai": [ "Basic", "Expert" ],
+    "prizeMoney": 0,
+    "party": [
+      { "species": "Gardevoir", "level": 50, "ivScale": 200, "personality": 3184027 },
+      { "species": "Altaria", "level": 50, "ivScale": 200, "personality": 6620139 },
+      { "species": "Sharpedo", "level": 50, "ivScale": 200, "personality": 1907455 }
+    ]
+  },
+  {
+    "id": "hoenn_mystery_visitor_ronan",
+    "name": "Ronan",
+    "class": "Expert",
+    "ai": [ "Basic", "Expert" ],
+    "prizeMoney": 0,
+    "party": [
+      { "species": "Hariyama", "level": 50, "ivScale": 200, "personality": 4471906 },
+      { "species": "Claydol", "level": 50, "ivScale": 200, "personality": 8025513 },
+      { "species": "Absol", "level": 50, "ivScale": 200, "personality": 2630747 }
+    ]
+  },
+  {
+    "id": "hoenn_mystery_visitor_wren",
+    "name": "Wren",
+    "class": "Cooltrainer",
+    "ai": [ "Basic", "Expert" ],
+    "prizeMoney": 0,
+    "party": [
+      { "species": "Manectric", "level": 50, "ivScale": 200, "personality": 5530281 },
+      { "species": "Whiscash", "level": 50, "ivScale": 200, "personality": 9104476 },
+      { "species": "Swalot", "level": 50, "ivScale": 200, "personality": 7218850 }
+    ]
   }
 ]

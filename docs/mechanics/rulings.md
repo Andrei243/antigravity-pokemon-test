@@ -8292,3 +8292,54 @@ so does every region of this game before Kalos.
   A game saved on a floor is laid again round the player on loading (`trainerhill laid`), from the climb's variables.
 - **Not built**: the e-Reader's challenges and card, the lobby's clerk and her shop, the board as a screen of its own
   (the gentleman reads the four best times out), Emerald's floor art and music.
+  `git cat-file`, against what parts h to j said; it is not built.
+
+## Mauville's slot machines, the two basements and the quiz and contest ladies (2026-11-02, plan 21 · H12, part n)
+
+- **Mauville's twelve machines are Emerald's own** (`Models/ReelMachine.cs`, `src/slot_machine.c` at the pinned commit),
+  in place of Platinum's: three reels of twenty-one symbols at sixty frames a second, one to three coins lighting one,
+  three or five lines, Emerald's payouts (a cherry 2 on the middle line and 4 on the top or bottom, Lotad 6, Azurill 12,
+  Power 3, the mixed sevens 90, three of a seven 300, a replay a spin again on the same coins). The machine draws its bias
+  as the reels start (`DrawMachineBias`: a special bias, the sevens or Reel Time, by the machine's luck and the coins bet;
+  else a regular one), and each reel stopped runs on up to four symbols to line the bias up or, with none or one failed,
+  to keep the lit lines clear (`DecideStop_Bias_*`, `DecideStop_NoBias_*`, quirks kept: the bet-three diagonal skew, the
+  straight sevens' taunting mismatch). Power lines fill Pikachu's gauge to sixteen; a Reel Time bias draws its spins by
+  the gauge and whether the sitting is a lucky game (Emerald's skewed draw kept), the machine may blow up at each of its
+  four checks, a draw spends the gauge, and during its spins the reels run at the speed `ReelTimeSpeed` draws by the
+  coins lost this sitting and stop where they are told. A blue seven's jackpot makes the sitting a lucky game, a red
+  one's not. Every draw is a sixteen-bit one from the generator the machine is given, in Emerald's order.
+  *Ours*: a machine's luck is `GetSlotMachineId`'s table turned by the day's number, where Emerald turns it by Dewford's
+  trend (and the PokéNews of the Game Corner is not played); the coins are the shared Coin Case's, to 50,000, where
+  Emerald stops at 9,999; the waits Emerald spends on its pictures that it counts in no frames (the lines flashing before
+  the payout, a bolt joining the gauge, the smoke after a blow-up) are our own lengths; the screen draws its own symbols.
+- **The roulette's wheel is not built.** Emerald's ball rolls round a wheel whose motion, and Shroomish's and Taillow's
+  tricks, are the sprite callbacks of `roulette.c` in fixed point, frame by frame (where the ball drops depends on them);
+  that is a session of its own. The two tables stay part k's menus and the script's die.
+- **Sootopolis's house of mystery events' basement** (matrix 159): Emerald's old man asks whether to challenge a trainer
+  read from an e-Reader card and takes the player down to battle them. *Ours*: for a Champion of Hoenn one of three
+  visitors of ours (Ilse, Ronan and Wren at level 50, `our-trainers.json`) stays each day, drawn on the first talk of the
+  day (`FLAG_DAILY_HOENN_MYSTERY_VISITOR_DRAWN`, `VAR_HOENN_MYSTERY_VISITOR`, a flag of each showing them downstairs);
+  the old man's question takes the player down, the battle may be lost (Emerald's may), the team is seen to afterwards
+  and the player is taken up to the old man, who says what he made of it by Emerald's `VAR_SOOTOPOLIS_MYSTERY_EVENTS_STATE`
+  (1 won, 2 lost), which goes back to nought; once a day (`FLAG_DAILY_HOENN_MYSTERY_VISITOR`). The stairs down stay shut, as
+  Emerald's layout shuts them, and the basement's stairs lead up before them. Emerald's three-of-six choice is not asked:
+  the whole team battles.
+- **Mossdeep's game corner's basement** (matrix 144): Emerald's room of the link games. *Ours*: a guide of ours in the hall
+  shows the player down to look, where Emerald's other player is a girl of ours practising Pokémon Jump alone; the
+  stairs lead back up before the counter. The games themselves wait for plan 07's link.
+- **The Quiz Lady and the Contest Lady** stand in Lilycove's Pokémon Center beside the Favor Lady in every game (*ours*:
+  Emerald has one of the three a game, by the trainer number, and part c made her the Favor Lady). The Quiz Lady sets a
+  quiz with a prize (`Models/ContestLady.cs`, `QuizLady`): Emerald's sixteen prizes in its order (`sQuizLadyPrizes`), the
+  questions our own, each asked with three answers to choose from where Emerald's are easy-chat sentences answered with
+  one word; she draws a question while none waits (`VAR_HOENN_QUIZ_LADY`, 1 to 16), keeps the prize on a wrong answer, and
+  sets one quiz a day (`FLAG_DAILY_HOENN_QUIZ_LADY`, where Emerald waits for a record mix). A player's own quiz for
+  others is not set (no record mixing). The Contest Lady's Pokémon trains for a contest of one condition (Zigzagoon,
+  Skitty, Poochyena, Kecleon, Pikachu by Emerald's order, shown beside her by a flag of each), drawn as she is first
+  spoken to (`VAR_HOENN_CONTEST_LADY`); a Pokéblock of the case (`pokeblock lady`) with the condition's flavour counts as a
+  good one, its flavour the best kept (`VAR_HOENN_CONTEST_LADY_SHEEN`), anything else as another, once a day
+  (`FLAG_DAILY_HOENN_CONTEST_LADY`); five of either and the Pokémon is ready (`ShouldContestLadyShowGoOnAir`), and a new
+  condition is drawn. Emerald's television show of her is not built.
+- **Still not built of H11**: the contest's stage rooms (Emerald's `ContestHall*` maps are a backdrop with no warps, which
+  would be the contest screen drawn over a 3D stage), the Pokéblock feeders (no map or script of the pinned data uses
+  them), contests and the blender with friends (plan 07), the contest's music, cheers, voices and per-move animations, a
+  painting on the gallery's wall and the museum's first scene.

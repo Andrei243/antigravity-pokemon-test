@@ -1,0 +1,25 @@
+{
+  "key": "mossdeep_city_game_corner_b1f",
+  "index": 195,
+  "name": "Mossdeep City",
+  "matrix": 144,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_RUSTBORO",
+  "nightMusic": "MUS_RUSTBORO",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 1, "to": "mossdeep_city_game_corner_1f", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "var_0", "looks": "var_0", "movement": "look_west", "x": 6, "z": 5, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "" }
+  ],
+  "signs": [],
+  "triggers": []
+}

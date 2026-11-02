@@ -1470,3 +1470,25 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
       (the counter's clerk and the e-Reader's floors are not built); the Frontier island's seven halls; Emerald's own
       slot machine and the roulette's wheel; Jirachi; the two basements; H11's leftovers; and the pictures listed
       after part k.
+    - **Part n** (done 2026-11-02: Emerald's own slot machine, the two basements and the quiz and contest ladies;
+      docs/mechanics/rulings.md, "Mauville's slot machines, the two basements and the quiz and contest ladies"; tests run
+      with --filter (HoennPartNTests 22, and the suites the change touches); no shots taken, no window opened).
+      **Built**: Mauville's twelve machines are Emerald's (`Models/ReelMachine.cs`: the reels, the bias drawn as they start,
+      the stops that line it up or keep the lines clear, the payouts, the replay, Pikachu's gauge, Reel Time and its
+      blow-up, the lucky game; `gamecorner reels`, `GameState.ReelMachine`, `UI/ReelMachineScreen.cs`, drawn by
+      `ModernUi.Reels.cs`; style guide, "Mauville's slot machines"), each machine's luck the day's (`ReelMachine.LuckOf`);
+      the two basements (matrices 144, 159) in RegionDatabase's Hoenn list: Sootopolis's with a visitor of ours each day
+      for a Champion (`hoenn_mystery_visitor_ilse`, `_ronan`, `_wren` in `our-trainers.json`), battled once a day and the
+      old man's word after it, its stairs down shut as Emerald's layout shuts them; Mossdeep's shown by a guide of ours in the
+      hall, a girl of ours practising there; the Quiz Lady (Emerald's sixteen prizes, our own questions, a quiz a day)
+      and the Contest Lady (`pokeblock lady`, `Models/ContestLady.cs`: a Pokéblock of her contest's flavour counted good,
+      five and her Pokémon is ready) beside the Favor Lady in Lilycove's Pokémon Center. **Decided**: the roulette's wheel
+      is left (its ball's motion and Shroomish's and Taillow's tricks are `roulette.c`'s sprite callbacks; no GPU-free
+      state of it was written); the three ladies stand together, where Emerald has one a game. **Golden**: scripts.txt
+      (the new and changed scripts' blocks): accepted. **Not run**: the harness (Mauville's machine and the basements
+      have no shots yet).
+    - **What of Hoenn is left after part n**: Trainer Hill; the Frontier island's seven halls; the roulette's wheel itself
+      (menus stand in); Jirachi; the contest's stage rooms, the Pokéblock feeders and H11's other leftovers (contests and
+      the blender with friends, the contest's music, cheers, voices and per-move animations, the painting on the wall, the
+      museum's first scene, the Contest Lady's television show, a player's own quiz for others); Mossdeep's link games
+      themselves (plan 07); and pictures only, as after part k, with Mauville's machine and the two basements unshot.
