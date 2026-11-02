@@ -853,6 +853,26 @@ by the Tower's rooms, with the Subway Bosses at the 21st battle (Ingo) and the 4
 | `subway won`, `subway streak`, `subway best` | Counts the win (`RESULT` 1 once a set of seven is through); the streak as it stands and the longest of the run's train (`{number}`). |
 | `subway finish won`, `subway finish lost`, `subway points` | Writes the best streak of the train; hands over the Battle Points of the sets cleared (3 for the first, one more for each set after it, up to 10; `RESULT` and `{number}`). |
 
+### The Trainer Hill
+
+Plan 21, part l; `docs/mechanics/rulings.md`, "The Trainer Hill". A climb of Emerald's Trainer Hill on Route 111
+(`Models/Frontier/TrainerHill.cs`), kept in the story's own variables (`VAR_HOENN_TRAINER_HILL_*`), so nothing new is
+saved. A floor is laid on the one map `TrainerHillFloor` from those variables by a script's warp to it
+(`GameEngine.MapNamed`); its two trainers are people of the map (`hill_trainer_1`, `hill_trainer_2`) whose script is the
+floor's `Trainer`. `{hill:TIME}` is the climb's time, `{hill:BEST}` the challenge's best and `{hill:BEST_NORMAL}`,
+`{hill:BEST_VARIETY}`, `{hill:BEST_UNIQUE}`, `{hill:BEST_EXPERT}` each challenge's.
+
+| Command | What it does |
+|---|---|
+| `trainerhill begin normal`, `variety`, `unique`, `expert` | Starts a climb of that challenge: the first floor next, no trainer beaten, the clock running from the play time. |
+| `trainerhill active`, `trainerhill mode`, `trainerhill floor` | `RESULT` the climb's state (0 none, 1 climbing, 2 lost, 3 at the roof), its challenge (0 to 3), its floor (1 to 4, 5 the roof; `{number}`). |
+| `trainerhill laid` | `RESULT` 1 when the floor's trainers stand on the map, 0 on a floor a loaded game came back to (a warp to the floor lays it again). |
+| `trainerhill opponent` | `RESULT` 1 when whoever the script belongs to is a trainer of the floor not yet beaten (`{foe}`). |
+| `trainerhill fight` | Their battle, a battle of the Frontier's on the player's own team at the team's highest level, beside the floor's other trainer when that one too sees the player and is not yet beaten (`RESULT` 1 won, 0 lost). |
+| `trainerhill lost`, `trainerhill end` | Marks the climb lost; lets go of it. |
+| `trainerhill climb`, `trainerhill down` | The stairs up (`RESULT` 1 at the roof, where the clock stops); the stairs down (`RESULT` the floor come to, 0 the lobby). |
+| `trainerhill prize`, `trainerhill record` | Hands over Emerald's prize for the time (`RESULT` 0 given, 2 given already); holds the time against the challenge's best (`RESULT` 0 a new record, kept; 1 not; 2 held already). |
+
 ### The Hidden Grottoes
 
 Plan 22 · U11; `docs/mechanics/rulings.md`, "The Hidden Grottoes". A grotto's mouth (`npcType` `GrottoHollow`) runs

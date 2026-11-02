@@ -1,5 +1,6 @@
 {
   "cyclingRoad": { "seconds": "{time} de secunde", "minute": "un minut sau mai mult", "times": "de {count} ori", "many": "de 99 de ori sau mai mult" },
+  "trainerHill": { "time": "{minutes} min. {seconds},{hundredths} sec.", "none": "încă niciun timp" },
   "roulette": { "square": "{pokemon} {colour}", "colour": { "0": "portocaliu", "1": "verde", "2": "violet" } },
   "shared": {
     "on": "Da",

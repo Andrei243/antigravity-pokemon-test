@@ -1451,3 +1451,22 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
       line say where the halls are fought. Romanian for every changed line. **Golden**: scripts.txt (the seven doors,
       the two boards): accepted. **Left**: Emerald's hall lobbies and Frontier Brains of their own (the island's halls
       use Sinnoh's five Brains and the annex's), the island's own song, and nothing of the halls' rules.
+    - **Part l** (done 2026-11-02: the Trainer Hill; `docs/mechanics/rulings.md`, "The Trainer Hill"). Emerald's tables
+      are read by the data importer (`dotnet run --project tools/DataImporter -- --trainer-hill`, `TrainerHill.cs`: the
+      header `src/data/battle_frontier/trainer_hill.h`, the prize lists of `src/trainer_hill.c`, each floor's
+      `collision.bin` and `metatiles.bin` and the Hill tileset's behaviours, for its south ledges) into
+      `Data/trainer-hill.json` (`TrainerHillDatabase`): the four challenges, sixteen floors, thirty-two trainers with
+      their classes, Emerald's numbers and teams (names of our own), where each stands, faces and sees, and the two sets
+      of ten prize lists. The rules are `Models/Frontier/TrainerHill.cs` (GPU-free: the climb in the story's variables
+      `VAR_HOENN_TRAINER_HILL_*`, the teams at the team's highest level, Emerald's prize by the minutes, the clock and
+      the best; `TrainerHillFloor`, a floor laid as a map of ours from those variables, which `GameEngine.MapNamed` asks
+      for a warp to `TrainerHillFloor`), the script command `trainerhill` (`ScriptRunner.TrainerHill.cs`, `{hill:…}`),
+      three rooms of ours (`TrainerHillLobby`, `TrainerHillFloor`, `TrainerHillRoof`) and their scripts; Route 111's
+      warp 4 is a door into the lobby (no longer `locked`). Battles are the Frontier's on the player's own team, and a
+      floor's two trainers battle together where both see the player. Tests: `TrainerHillTests` (run with `--filter`).
+      Shots: none taken (no harness mode; the floor's look is the Gym hall's, `InteriorStyle.Gym`).
+    - **What of Hoenn is left after part l**: the Trainer Hill's look (its own floors and partitions drawn, the lift's
+      ride, Emerald's music for it), its records' board as a screen (the gentleman reads it out) and its two shops
+      (the counter's clerk and the e-Reader's floors are not built); the Frontier island's seven halls; Emerald's own
+      slot machine and the roulette's wheel; Jirachi; the two basements; H11's leftovers; and the pictures listed
+      after part k.

@@ -358,7 +358,7 @@ public sealed partial class ScriptRunner
         // The pastimes, the Battle Frontier's facilities, the tutors and Amity Square's walk open screens, ask and
         // battle on most of their words: none of them is hurried through
         Op.Fossil or Op.GameCorner or Op.Villa or Op.PalPark => true,
-        Op.Frontier or Op.Tower or Op.Factory or Op.Hall or Op.Castle or Op.Arcade or Op.Subway => true,
+        Op.Frontier or Op.Tower or Op.Factory or Op.Hall or Op.Castle or Op.Arcade or Op.Subway or Op.TrainerHill => true,
         Op.Tutor or Op.Amity => true,
         // A grotto's Pokémon is battled and its item is handed over with its lines; what it holds is asked without a screen
         Op.Grotto => i.Name is "battle" or "take",
@@ -1344,6 +1344,9 @@ public sealed partial class ScriptRunner
             // The Battle Subway (plan 22 · U6, part d)
             case Op.Subway:
                 Subway(i);
+                break;
+            case Op.TrainerHill:
+                TrainerHillCommand(i);
                 break;
             // A Hidden Grotto (plan 22 · U11)
             case Op.Grotto:
@@ -2491,6 +2494,8 @@ public sealed partial class ScriptRunner
             "cycling" when argument == "COLLISIONS" => Models.CyclingRoad.Collisions(host.Story.Var(Models.CyclingRoad.LastCollisions)),
             "cycling" when argument == "BEST_TIME" => Models.CyclingRoad.Time(host.Story.Var(Models.CyclingRoad.RecordFrames)),
             "cycling" when argument == "BEST_COLLISIONS" => Models.CyclingRoad.Collisions(host.Story.Var(Models.CyclingRoad.RecordCollisions)),
+            // The Trainer Hill (plan 21, part l): the climb's time and the challenge's best
+            "hill" when argument is "TIME" or "BEST" or "BEST_NORMAL" or "BEST_VARIETY" or "BEST_UNIQUE" or "BEST_EXPERT" => HillPlaceholder(argument),
             _ => match.Value
         };
     }) : text;

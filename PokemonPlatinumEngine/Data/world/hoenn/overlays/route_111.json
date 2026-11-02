@@ -4,14 +4,14 @@
   // sandstorm (its zones, by the rows and columns Emerald's sandstorm and sun triggers mark) that nobody crosses without
   // Go-Goggles: its edge's triggers turn the player back (route_111.txt). Mirage Tower stands in the sand until its fossil
   // is taken and it falls (plan 21 · H4, part b: FLAG_HOENN_MIRAGE_TOWER_FALLEN shuts its way in); the Desert Ruins are
-  // open (plan 21 · H12, part a: its chamber waits for the Regis' riddles) and the Trainer Hill's door is shut until its
-  // own session; Gabby and Ty come by turns on this
+  // open (plan 21 · H12, part a: its chamber waits for the Regis' riddles) and the Trainer Hill's door leads into its
+  // lobby (plan 21, part l: TrainerHillLobby, a room of ours); Gabby and Ty come by turns on this
   // route, 118 and 120 (plan 21 · H6, part c: GabbyAndTyUpdateLocation in common.txt)
   "area": "route_111",
   "ours": { "land": [ ["Saguarox", 148, 152] ] },
   "bgmTrack": "hoenn/route110",
   "trees": "Round",
-  "locked": [ 4 ],
+  "doors": [ { "warp": 4, "map": "TrainerHillLobby", "x": 7, "y": 10, "facing": "Up" } ],
   "switches": [ { "warp": 3, "until": "FLAG_HOENN_MIRAGE_TOWER_FALLEN" } ],
   "zones": [
     { "x": 215, "z": 37, "width": 24, "depth": 68, "weather": "Sandstorm", "bgmTrack": "hoenn/desert" },
@@ -71,6 +71,6 @@
     "Route111_EventScript_RouteSign113": "Route 111\nWest: Route 113",
     "Route111_EventScript_OldLadysRestStopSign": "Old Lady's Rest Stop\nCome in and put your feet up!",
     "Route111_EventScript_TrainerTipsSpAtkSpDef": "Trainer Tips\nA Pokémon with a high Sp. Atk hits hard with special moves, and a high Sp. Def takes them well.",
-    "Route111_EventScript_TrainerHillSign": "Trainer Hill\nThis way. Closed for building work."
+    "Route111_EventScript_TrainerHillSign": "Trainer Hill\nThis way. Four floors of trainers, and the owner waiting on the roof."
   }
 }

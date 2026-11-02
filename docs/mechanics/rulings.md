@@ -8187,4 +8187,30 @@ so does every region of this game before Kalos.
   Fortree bridge's swap (`STEP_CB_FORTREE_BRIDGE`, whose give underfoot is built since H6, part c) are pictures only, and
   so are Shoal Cave's salt piles shrinking (the salt and shells are found and come back with the day since H8, part d).
   Trainer Hill's tables (`src/data/battle_frontier/trainer_hill.h`) *are* readable from the pinned cache through
-  `git cat-file`, against what parts h to j said; it is not built.
+  `git cat-file`, against what parts h to j said; it is built since part l (below).
+
+## The Trainer Hill (2026-11-02, plan 21, part l)
+
+- **Where it is**: Route 111, as Emerald has it, through the door (warp 4) south of the desert that was `locked`. Its
+  lobby, floors and roof are rooms of ours (`TrainerHillLobby`, `TrainerHillFloor`, `TrainerHillRoof`), not Emerald's
+  layouts; nothing crosses a region, so no `travel to` is needed.
+- **Emerald's**: the four challenges (Normal, Variety, Unique, Expert), their floors' two trainers each with Emerald's
+  facility class, three Pokémon (species, item, moves, effort, IVs, ability, personality) and where they stand, face and
+  how far they see, and each floor's collision with its south ledges, read by `tools/DataImporter -- --trainer-hill`
+  into `Data/trainer-hill.json` (numbers only); the counter open only to a Champion (`FLAG_SYS_GAME_CLEAR`, here
+  `HoennHallOfFame`); the team healed at the counter and again as the climb ends in the lobby, never between floors; a
+  trainer's Pokémon at the highest level of the player's team (`SetTrainerHillMonLevel`, `GetHighestLevelInPlayerParty`;
+  Eggs passed over, up to this game's level 260, so a crossed region's levels follow the player's own); one trainer who
+  sees the player battles alone with their three, both together where both do (`FillHillTrainersParties`); no EXP, no
+  money, nothing seen in the Pokédex and RUN a forfeit, as `BATTLE_TYPE_TRAINER_HILL` has it; the clock in frames with
+  its limit of an hour less a frame, stopped at the roof; the prize (`GetPrizeItemId`: a set by the sum of the trainer
+  numbers, a list by their low bits XORed, Expert one list on, a place by the minutes) given once a climb; the best kept
+  for each challenge and replaced only by a faster time (`CheckFinalTime`).
+- **Ours**: the trainers' names and every line (Emerald's are its names and easy-chat phrases, never read); the battle
+  is a battle of the Frontier's on the player's own team, so the Bag is shut (Emerald lets it be used in the Hill), and
+  the rule against Thief and Trick taking items is not added; the clock counts play time in whole seconds; the floors are
+  Emerald's collision under a strip of our own whose middle is walled off, drawn as a Gym's hall; the stairs down from a
+  floor lead to the floor below or the lobby with the climb going on; the lift on the roof goes straight to the lobby.
+  A game saved on a floor is laid again round the player on loading (`trainerhill laid`), from the climb's variables.
+- **Not built**: the e-Reader's challenges and card, the lobby's clerk and her shop, the board as a screen of its own
+  (the gentleman reads the four best times out), Emerald's floor art and music.

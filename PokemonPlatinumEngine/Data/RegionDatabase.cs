@@ -759,6 +759,8 @@ public static class RegionDatabase
                 "MeteorFalls_StevensCave",
                 // Plan 21 · H12, part d: New Mauville and the Desert Underpass
                 "NewMauville_Entrance", "NewMauville_Inside", "DesertUnderpass",
+                // Plan 21, part l: the Trainer Hill on Route 111 (rooms of ours: the lobby, the floor laid by the climb, the roof)
+                "TrainerHillLobby", "TrainerHillFloor", "TrainerHillRoof",
                 // Plan 21 · H12, part e: the Marine Cave, Terra Cave and the sea floors of Routes 105, 125 and 129
                 "Underwater_Route129", "Underwater_Route105", "Underwater_Route125", "Underwater_MarineCave",
                 "MarineCave_Entrance", "MarineCave_End", "TerraCave_Entrance", "TerraCave_End",

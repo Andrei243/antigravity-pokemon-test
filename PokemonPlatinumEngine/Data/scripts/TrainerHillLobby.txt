@@ -1,0 +1,98 @@
+# The Trainer Hill's lobby on Route 111 (plan 21, part l). docs/scripts.md describes the language; the lines are our own,
+# on the beats of Emerald's Trainer Hill (TrainerHill_Entrance), read for the order alone.
+#
+# The lobby is a room of ours (Data/maps/TrainerHillLobby.json). Its counter opens to Hoenn's Champions, as Emerald's
+# does once FLAG_SYS_GAME_CLEAR is set: a challenge of the four is chosen, the team is seen to and the clock starts as
+# the player goes up to the first floor. A climb lives in the story's variables (Models/Frontier/TrainerHill.cs,
+# `trainerhill`); coming back down here after a loss or from the roof ends it, and the team is seen to again.
+
+
+script OnEnter
+  trainerhill active
+  if result == 2 goto Lost
+  if result == 3 goto Back
+  end
+label Lost
+  speaker "Attendant"
+  say "Welcome back down. That climb is over, but the Hill will be here whenever you're ready to try again."
+  trainerhill end
+  heal
+  say "Your Pokémon are rested and ready."
+  end
+label Back
+  speaker "Attendant"
+  say "Back from the roof! What a climb. Let me see to your Pokémon."
+  trainerhill end
+  heal
+  say "There you go. They're rested and ready."
+  end
+
+
+script Counter
+  face self player
+  speaker "Attendant"
+  trainerhill active
+  if result == 1 goto Climbing
+  if not flag HoennHallOfFame goto Closed
+  say "Welcome to the Trainer Hill! Four floors of trainers stand between you and the owner on the roof."
+  choose "Would you like to take on a challenge?" "YES" "NO" "INFO"
+  if result == 1 goto Bye
+  if result == 2 goto Info
+  choose "Which challenge will you take?" "NORMAL" "VARIETY" "UNIQUE" "EXPERT" "CANCEL"
+  if result == 1 goto Variety
+  if result == 2 goto Unique
+  if result == 3 goto Expert
+  if result == 4 goto Bye
+  trainerhill begin normal
+  goto Go
+label Variety
+  trainerhill begin variety
+  goto Go
+label Unique
+  trainerhill begin unique
+  goto Go
+label Expert
+  trainerhill begin expert
+label Go
+  heal
+  say "Your Pokémon are rested. The clock is running from now on. Good luck up there!"
+  fade out 0.6
+  warp "TrainerHillFloor" 3 4 down
+  fade in
+  end
+label Climbing
+  choose "You're partway through a climb. Will you head back up?" "GO ON" "GIVE UP"
+  if result == 1 goto GiveUp
+  say "Then up you go. The clock never stopped!"
+  fade out 0.6
+  warp "TrainerHillFloor" 3 4 down
+  fade in
+  end
+label GiveUp
+  trainerhill end
+  heal
+  say "That climb is over, then. Your Pokémon are rested for next time."
+  end
+label Info
+  say "Each challenge has four floors, and two trainers wait on every floor. Their Pokémon match your strongest one's level."
+  say "If both trainers on a floor can see you at once, they'll battle you together."
+  say "Nothing is earned in these battles, and your Pokémon aren't healed between floors. Reach the roof as fast as you can!"
+  say "The owner waits up there with a prize. The quicker the climb, the better it is."
+  end
+label Closed
+  say "We aren't quite open yet. The Hill is for trainers who have already beaten Hoenn's League."
+  say "Come back once you've made your name as Champion!"
+  end
+label Bye
+  say "Come back any time you feel like a climb!"
+  end
+
+
+# The board of the best times, read out by the man who keeps it
+script Records
+  face self player
+  speaker "Gentleman"
+  say "I keep the board of the Hill's best times. Here's how yours stand."
+  say "Normal: {hill:BEST_NORMAL}. Variety: {hill:BEST_VARIETY}."
+  say "Unique: {hill:BEST_UNIQUE}. Expert: {hill:BEST_EXPERT}."
+  end

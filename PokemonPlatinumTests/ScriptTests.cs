@@ -553,6 +553,19 @@ public class ScriptTests
           subway finish lost
           subway points
           subway end
+          trainerhill begin expert
+          trainerhill active
+          trainerhill mode
+          trainerhill floor
+          trainerhill laid
+          trainerhill opponent
+          trainerhill fight
+          trainerhill lost
+          trainerhill climb
+          trainerhill down
+          trainerhill prize
+          trainerhill record
+          trainerhill end
           grotto mouth
           grotto which
           grotto visit

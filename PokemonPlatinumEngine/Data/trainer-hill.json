@@ -1,0 +1,3662 @@
+{
+  "modes": [
+    {
+      "name": "Normal",
+      "floors": [
+        {
+          "trainers": [
+            {
+              "number": 17,
+              "class": "Hex Maniac",
+              "look": "hex_maniac",
+              "name": "Morwen",
+              "team": [
+                {
+                  "species": "Misdreavus",
+                  "item": "Bright Powder",
+                  "moves": [
+                    "Shadow Ball",
+                    "Psychic",
+                    "Thunderbolt",
+                    "Confuse Ray"
+                  ],
+                  "evs": [
+                    0,
+                    155,
+                    0,
+                    255,
+                    100,
+                    0
+                  ],
+                  "ivs": [
+                    24,
+                    24,
+                    24,
+                    24,
+                    24,
+                    24
+                  ],
+                  "abilityNum": 0,
+                  "personality": 0
+                },
+                {
+                  "species": "Solrock",
+                  "item": "Focus Band",
+                  "moves": [
+                    "Psychic",
+                    "Flamethrower",
+                    "Rock Slide",
+                    "Calm Mind"
+                  ],
+                  "evs": [
+                    200,
+                    0,
+                    100,
+                    0,
+                    110,
+                    100
+                  ],
+                  "ivs": [
+                    24,
+                    24,
+                    24,
+                    24,
+                    24,
+                    24
+                  ],
+                  "abilityNum": 0,
+                  "personality": 15
+                },
+                {
+                  "species": "Claydol",
+                  "item": "Shell Bell",
+                  "moves": [
+                    "Earthquake",
+                    "Psychic",
+                    "Shadow Ball",
+                    "Ice Beam"
+                  ],
+                  "evs": [
+                    255,
+                    0,
+                    135,
+                    0,
+                    0,
+                    120
+                  ],
+                  "ivs": [
+                    24,
+                    24,
+                    24,
+                    24,
+                    24,
+                    24
+                  ],
+                  "abilityNum": 0,
+                  "personality": 12
+                }
+              ]
+            },
+            {
+              "number": 18,
+              "class": "Cycling Triathlete",
+              "look": "cycling_triathlete_m",
+              "name": "Tobin",
+              "team": [
+                {
+                  "species": "Flareon",
+                  "item": "Charcoal",
+                  "moves": [
+                    "Fire Blast",
+                    "Bite",
+                    "Quick Attack",
+                    "Sand Attack"
+                  ],
+                  "evs": [
+                    0,
+                    0,
+                    0,
+                    255,
+                    255,
+                    0
+                  ],
+                  "ivs": [
+                    15,
+                    15,
+                    15,
+                    15,
+                    15,
+                    15
+                  ],
+                  "abilityNum": 0,
+                  "personality": 40
+                },
+                {
+                  "species": "Magneton",
+                  "item": "Magnet",
+                  "moves": [
+                    "Zap Cannon",
+                    "Thunder Wave",
+                    "Screech",
+                    "Metal Sound"
+                  ],
+                  "evs": [
+                    0,
+                    0,
+                    0,
+                    255,
+                    255,
+                    0
+                  ],
+                  "ivs": [
+                    15,
+                    15,
+                    15,
+                    15,
+                    15,
+                    15
+                  ],
+                  "abilityNum": 0,
+                  "personality": 0
+                },
+                {
+                  "species": "Pinsir",
+                  "item": "Quick Claw",
+                  "moves": [
+                    "Guillotine",
+                    "Brick Break",
+                    "Swagger",
+                    "Feint Attack"
+                  ],
+                  "evs": [
+                    200,
+                    0,
+                    155,
+                    0,
+                    0,
+                    155
+                  ],
+                  "ivs": [
+                    15,
+                    15,
+                    15,
+                    15,
+                    15,
+                    15
+                  ],
+                  "abilityNum": 0,
+                  "personality": 133
+                }
+              ]
+            }
+          ],
+          "spots": [
+            {
+              "x": 11,
+              "y": 1,
+              "facing": "Left",
+              "range": 2
+            },
+            {
+              "x": 13,
+              "y": 2,
+              "facing": "Up",
+              "range": 1
+            }
+          ],
+          "rows": [
+            "......###......#",
+            "..#########..#.#",
+            ".....#.........#",
+            "#.vvv#.vvv#.##.#",
+            "#....#....#..#.#",
+            "##.vvv#vv.#vv#.#",
+            "......#...#....#",
+            ".#vv#vv..#vvv###",
+            "....#..#.#.....#",
+            ".#vv#vv#.vv#vv.#",
+            "....#..#...#...#",
+            ".####vv#vv##.###",
+            ".#.....#.......#",
+            ".#vv#..#vv#vv..#",
+            "....#.........##",
+            "################"
+          ]
+        },
+        {
+          "trainers": [
+            {
+              "number": 19,
+              "class": "Black Belt",
+              "look": "black_belt",
+              "name": "Dariel",
+              "team": [
+                {
+                  "species": "Meditite",
+                  "item": "Focus Band",
+                  "moves": [
+                    "Focus Punch",
+                    "Protect"
+                  ],
+                  "evs": [
+                    252,
+                    252,
+                    0,
+                    0,
+                    0,
+                    6
+                  ],
+                  "ivs": [
+                    20,
+                    20,
+                    20,
+                    20,
+                    20,
+                    20
+                  ],
+                  "abilityNum": 0,
+                  "personality": 128
+                },
+                {
+                  "species": "Heracross",
+                  "item": "Focus Band",
+                  "moves": [
+                    "Focus Punch",
+                    "Protect"
+                  ],
+                  "evs": [
+                    252,
+                    252,
+                    0,
+                    0,
+                    0,
+                    6
+                  ],
+                  "ivs": [
+                    20,
+                    20,
+                    20,
+                    20,
+                    20,
+                    20
+                  ],
+                  "abilityNum": 1,
+                  "personality": 128
+                },
+                {
+                  "species": "Hitmontop",
+                  "item": "Shell Bell",
+                  "moves": [
+                    "Focus Punch",
+                    "Protect"
+                  ],
+                  "evs": [
+                    252,
+                    252,
+                    0,
+                    0,
+                    0,
+                    6
+                  ],
+                  "ivs": [
+                    20,
+                    20,
+                    20,
+                    20,
+                    20,
+                    20
+                  ],
+                  "abilityNum": 0,
+                  "personality": 3
+                }
+              ]
+            },
+            {
+              "number": 20,
+              "class": "Pokémon Breeder",
+              "look": "pkmn_breeder_f",
+              "name": "Ysolde",
+              "team": [
+                {
+                  "species": "Mr. Mime",
+                  "item": "Sitrus Berry",
+                  "moves": [
+                    "Safeguard",
+                    "Reflect",
+                    "Light Screen",
+                    "Psychic"
+                  ],
+                  "evs": [
+                    252,
+                    0,
+                    252,
+                    0,
+                    0,
+                    6
+                  ],
+                  "ivs": [
+                    15,
+                    15,
+                    15,
+                    15,
+                    15,
+                    15
+                  ],
+                  "abilityNum": 0,
+                  "personality": 130
+                },
+                {
+                  "species": "Plusle",
+                  "item": "Sitrus Berry",
+                  "moves": [
+                    "Rain Dance",
+                    "Light Screen",
+                    "Helping Hand",
+                    "Thunder"
+                  ],
+                  "evs": [
+                    252,
+                    0,
+                    252,
+                    0,
+                    0,
+                    6
+                  ],
+                  "ivs": [
+                    15,
+                    15,
+                    15,
+                    15,
+                    15,
+                    15
+                  ],
+                  "abilityNum": 0,
+                  "personality": 5
+                },
+                {
+                  "species": "Togepi",
+                  "item": "Sitrus Berry",
+                  "moves": [
+                    "Light Screen",
+                    "Reflect",
+                    "Follow Me",
+                    "Metronome"
+                  ],
+                  "evs": [
+                    252,
+                    0,
+                    252,
+                    0,
+                    0,
+                    6
+                  ],
+                  "ivs": [
+                    15,
+                    15,
+                    15,
+                    15,
+                    15,
+                    15
+                  ],
+                  "abilityNum": 1,
+                  "personality": 55
+                }
+              ]
+            }
+          ],
+          "spots": [
+            {
+              "x": 4,
+              "y": 11,
+              "facing": "Down",
+              "range": 3
+            },
+            {
+              "x": 9,
+              "y": 14,
+              "facing": "Right",
+              "range": 5
+            }
+          ],
+          "rows": [
+            "......###......#",
+            ".###..#######.##",
+            ".#..........#.##",
+            ".#..........#.##",
+            ".#.#...####.#.##",
+            ".#.#..###...#.##",
+            ".#.#...##.###.##",
+            ".#.#...##...#.##",
+            ".#.#...####.#.##",
+            ".#.#...##...#.##",
+            ".#.#...##.###.##",
+            ".#.#..........##",
+            ".#.#.......#####",
+            "...#.......#####",
+            "...#.......#####",
+            "################"
+          ]
+        },
+        {
+          "trainers": [
+            {
+              "number": 21,
+              "class": "Pokémon Breeder",
+              "look": "pkmn_breeder_m",
+              "name": "Fenwick",
+              "team": [
+                {
+                  "species": "Vaporeon",
+                  "item": "Focus Band",
+                  "moves": [
+                    "Haze",
+                    "Helping Hand",
+                    "Tickle",
+                    "Water Pulse"
+                  ],
+                  "evs": [
+                    250,
+                    0,
+                    130,
+                    0,
+                    0,
+                    130
+                  ],
+                  "ivs": [
+                    20,
+                    15,
+                    15,
+                    15,
+                    15,
+                    15
+                  ],
+                  "abilityNum": 0,
+                  "personality": 55
+                },
+                {
+                  "species": "Dodrio",
+                  "item": "King's Rock",
+                  "moves": [
+                    "Haze",
+                    "Tri Attack",
+                    "Taunt",
+                    "Torment"
+                  ],
+                  "evs": [
+                    252,
+                    0,
+                    0,
+                    252,
+                    0,
+                    6
+                  ],
+                  "ivs": [
+                    20,
+                    15,
+                    15,
+                    15,
+                    15,
+                    15
+                  ],
+                  "abilityNum": 1,
+                  "personality": 138
+                },
+                {
+                  "species": "Omastar",
+                  "item": "Quick Claw",
+                  "moves": [
+                    "Haze",
+                    "Hydro Pump",
+                    "Tickle",
+                    "Attract"
+                  ],
+                  "evs": [
+                    250,
+                    0,
+                    130,
+                    0,
+                    0,
+                    130
+                  ],
+                  "ivs": [
+                    20,
+                    15,
+                    15,
+                    15,
+                    15,
+                    15
+                  ],
+                  "abilityNum": 0,
+                  "personality": 20
+                }
+              ]
+            },
+            {
+              "number": 22,
+              "class": "Pokémon Breeder",
+              "look": "pkmn_breeder_f",
+              "name": "Opaline",
+              "team": [
+                {
+                  "species": "Nidoqueen",
+                  "item": "Salac Berry",
+                  "moves": [
+                    "Superpower",
+                    "Bite",
+                    "Charm",
+                    "Flatter"
+                  ],
+                  "evs": [
+                    252,
+                    252,
+                    0,
+                    0,
+                    0,
+                    6
+                  ],
+                  "ivs": [
+                    15,
+                    20,
+                    15,
+                    15,
+                    15,
+                    15
+                  ],
+                  "abilityNum": 0,
+                  "personality": 3
+                },
+                {
+                  "species": "Ninetales",
+                  "item": "Salac Berry",
+                  "moves": [
+                    "Overheat",
+                    "Quick Attack",
+                    "Spite",
+                    "Tail Whip"
+                  ],
+                  "evs": [
+                    6,
+                    0,
+                    0,
+                    252,
+                    252,
+                    0
+                  ],
+                  "ivs": [
+                    15,
+                    15,
+                    15,
+                    15,
+                    15,
+                    15
+                  ],
+                  "abilityNum": 0,
+                  "personality": 215
+                },
+                {
+                  "species": "Charizard",
+                  "item": "Salac Berry",
+                  "moves": [
+                    "Overheat",
+                    "Beat Up",
+                    "Scary Face",
+                    "Growl"
+                  ],
+                  "evs": [
+                    6,
+                    0,
+                    0,
+                    252,
+                    252,
+                    0
+                  ],
+                  "ivs": [
+                    15,
+                    15,
+                    15,
+                    15,
+                    15,
+                    15
+                  ],
+                  "abilityNum": 0,
+                  "personality": 40
+                }
+              ]
+            }
+          ],
+          "spots": [
+            {
+              "x": 5,
+              "y": 2,
+              "facing": "Left",
+              "range": 3
+            },
+            {
+              "x": 9,
+              "y": 2,
+              "facing": "Right",
+              "range": 3
+            }
+          ],
+          "rows": [
+            "......###......#",
+            ".#####....####.#",
+            ".#...........#.#",
+            ".#...........#.#",
+            ".#...........#.#",
+            ".#.......#...#.#",
+            ".#...........#.#",
+            ".#..#........#.#",
+            ".#...........#.#",
+            ".#.......#...#.#",
+            ".#...........#.#",
+            ".#....#......#.#",
+            ".#...........#.#",
+            ".#.......#...#.#",
+            "...............#",
+            "...............#"
+          ]
+        },
+        {
+          "trainers": [
+            {
+              "number": 23,
+              "class": "Psychic",
+              "look": "psychic_m",
+              "name": "Corvin",
+              "team": [
+                {
+                  "species": "Alakazam",
+                  "item": "Petaya Berry",
+                  "moves": [
+                    "Skill Swap",
+                    "Fire Punch",
+                    "Ice Punch",
+                    "Reflect"
+                  ],
+                  "evs": [
+                    0,
+                    0,
+                    0,
+                    255,
+                    255,
+                    0
+                  ],
+                  "ivs": [
+                    5,
+                    5,
+                    5,
+                    5,
+                    5,
+                    5
+                  ],
+                  "abilityNum": 0,
+                  "personality": 65
+                },
+                {
+                  "species": "Blissey",
+                  "item": "Leftovers",
+                  "moves": [
+                    "Skill Swap",
+                    "Egg Bomb",
+                    "Thunderbolt",
+                    "Sing"
+                  ],
+                  "evs": [
+                    0,
+                    0,
+                    255,
+                    0,
+                    155,
+                    100
+                  ],
+                  "ivs": [
+                    5,
+                    5,
+                    5,
+                    5,
+                    5,
+                    5
+                  ],
+                  "abilityNum": 1,
+                  "personality": 15
+                },
+                {
+                  "species": "Grumpig",
+                  "item": "Twisted Spoon",
+                  "moves": [
+                    "Skill Swap",
+                    "Psychic",
+                    "Confuse Ray",
+                    "Rest"
+                  ],
+                  "evs": [
+                    110,
+                    0,
+                    200,
+                    0,
+                    200,
+                    0
+                  ],
+                  "ivs": [
+                    5,
+                    5,
+                    5,
+                    5,
+                    5,
+                    5
+                  ],
+                  "abilityNum": 0,
+                  "personality": 140
+                }
+              ]
+            },
+            {
+              "number": 24,
+              "class": "Aroma Lady",
+              "look": "aroma_lady",
+              "name": "Liesl",
+              "team": [
+                {
+                  "species": "Tropius",
+                  "item": "White Herb",
+                  "moves": [
+                    "Sunny Day",
+                    "Solar Beam",
+                    "Sweet Scent",
+                    "Aerial Ace"
+                  ],
+                  "evs": [
+                    0,
+                    120,
+                    0,
+                    255,
+                    135,
+                    0
+                  ],
+                  "ivs": [
+                    15,
+                    15,
+                    15,
+                    15,
+                    15,
+                    15
+                  ],
+                  "abilityNum": 0,
+                  "personality": 131
+                },
+                {
+                  "species": "Bellossom",
+                  "item": "Mental Herb",
+                  "moves": [
+                    "Sweet Scent",
+                    "Petal Dance",
+                    "Stun Spore",
+                    "Sludge Bomb"
+                  ],
+                  "evs": [
+                    255,
+                    0,
+                    0,
+                    255,
+                    0,
+                    0
+                  ],
+                  "ivs": [
+                    15,
+                    15,
+                    15,
+                    15,
+                    15,
+                    15
+                  ],
+                  "abilityNum": 0,
+                  "personality": 6
+                },
+                {
+                  "species": "Meganium",
+                  "item": "Miracle Seed",
+                  "moves": [
+                    "Razor Leaf",
+                    "Body Slam",
+                    "Leech Seed",
+                    "Synthesis"
+                  ],
+                  "evs": [
+                    0,
+                    200,
+                    0,
+                    110,
+                    200,
+                    0
+                  ],
+                  "ivs": [
+                    15,
+                    15,
+                    15,
+                    15,
+                    15,
+                    15
+                  ],
+                  "abilityNum": 0,
+                  "personality": 31
+                }
+              ]
+            }
+          ],
+          "spots": [
+            {
+              "x": 7,
+              "y": 4,
+              "facing": "Down",
+              "range": 3
+            },
+            {
+              "x": 7,
+              "y": 10,
+              "facing": "Up",
+              "range": 3
+            }
+          ],
+          "rows": [
+            "......###......#",
+            ".....#####.....#",
+            "#....#...#.....#",
+            "#....#...###.###",
+            "#....#...#.....#",
+            "#.#..#...#.....#",
+            ".....#.........#",
+            "...............#",
+            "#....#.........#",
+            "#....#...##..#.#",
+            ".....#...#...#.#",
+            "...#.#...#.....#",
+            "#....#...#..#..#",
+            "#....#...#..#..#",
+            "#....#####.....#",
+            "################"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Variety",
+      "floors": [
+        {
+          "trainers": [
+            {
+              "number": 41,
+              "class": "Gentleman",
+              "look": "gentleman",
+              "name": "Barnaby",
+              "team": [
+                {
+                  "species": "Delibird",
+                  "item": "Sitrus Berry",
+                  "moves": [
+                    "Present",
+                    "Splash",
+                    "Hail",
+                    "Protect"
+                  ],
+                  "evs": [
+                    0,
+                    255,
+                    0,
+                    255,
+                    0,
+                    0
+                  ],
+                  "ivs": [
+                    15,
+                    15,
+                    15,
+                    15,
+                    15,
+                    15
+                  ],
+                  "abilityNum": 1,
+                  "personality": 138
+                },
+                {
+                  "species": "Clefairy",
+                  "item": "Sitrus Berry",
+                  "moves": [
+                    "Present",
+                    "Cosmic Power",
+                    "Light Screen",
+                    "Moonlight"
+                  ],
+                  "evs": [
+                    0,
+                    255,
+                    0,
+                    255,
+                    0,
+                    0
+                  ],
+                  "ivs": [
+                    15,
+                    15,
+                    15,
+                    15,
+                    15,
+                    15
+                  ],
+                  "abilityNum": 0,
+                  "personality": 13
+                },
+                {
+                  "species": "Pikachu",
+                  "item": "Sitrus Berry",
+                  "moves": [
+                    "Present",
+                    "Growl",
+                    "Tail Whip",
+                    "Agility"
+                  ],
+                  "evs": [
+                    0,
+                    255,
+                    0,
+                    255,
+                    0,
+                    0
+                  ],
+                  "ivs": [
+                    15,
+                    15,
+                    15,
+                    15,
+                    15,
+                    15
+                  ],
+                  "abilityNum": 0,
+                  "personality": 13
+                }
+              ]
+            },
+            {
+              "number": 42,
+              "class": "Lady",
+              "look": "lady",
+              "name": "Clementine",
+              "team": [
+                {
+                  "species": "Corsola",
+                  "item": "Silk Scarf",
+                  "moves": [
+                    "Bubble Beam",
+                    "Rock Blast",
+                    "Reflect",
+                    "Light Screen"
+                  ],
+                  "evs": [
+                    255,
+                    0,
+                    0,
+                    255,
+                    0,
+                    0
+                  ],
+                  "ivs": [
+                    5,
+                    5,
+                    5,
+                    5,
+                    5,
+                    5
+                  ],
+                  "abilityNum": 0,
+                  "personality": 18
+                },
+                {
+                  "species": "Clamperl",
+                  "item": "Silk Scarf",
+                  "moves": [
+                    "Whirlpool",
+                    "Iron Defense",
+                    "Endure",
+                    "Confuse Ray"
+                  ],
+                  "evs": [
+                    255,
+                    0,
+                    0,
+                    255,
+                    0,
+                    0
+                  ],
+                  "ivs": [
+                    5,
+                    5,
+                    5,
+                    5,
+                    5,
+                    5
+                  ],
+                  "abilityNum": 0,
+                  "personality": 10
+                },
+                {
+                  "species": "Starmie",
+                  "item": "Silk Scarf",
+                  "moves": [
+                    "Dive",
+                    "Icy Wind",
+                    "Swift",
+                    "Skill Swap"
+                  ],
+                  "evs": [
+                    255,
+                    0,
+                    0,
+                    255,
+                    0,
+                    0
+                  ],
+                  "ivs": [
+                    5,
+                    5,
+                    5,
+                    5,
+                    5,
+                    5
+                  ],
+                  "abilityNum": 0,
+                  "personality": 10
+                }
+              ]
+            }
+          ],
+          "spots": [
+            {
+              "x": 5,
+              "y": 8,
+              "facing": "Left",
+              "range": 3
+            },
+            {
+              "x": 9,
+              "y": 8,
+              "facing": "Right",
+              "range": 3
+            }
+          ],
+          "rows": [
+            "......###......#",
+            "...............#",
+            "...............#",
+            "...............#",
+            "...............#",
+            "...............#",
+            "...............#",
+            "...............#",
+            "...............#",
+            "...............#",
+            "...............#",
+            "...............#",
+            "...............#",
+            "...............#",
+            "...............#",
+            "...............#"
+          ]
+        },
+        {
+          "trainers": [
+            {
+              "number": 43,
+              "class": "Parasol Lady",
+              "look": "parasol_lady",
+              "name": "Rosamund",
+              "team": [
+                {
+                  "species": "Jigglypuff",
+                  "item": "Bright Powder",
+                  "moves": [
+                    "Sing",
+                    "Hyper Voice",
+                    "Attract"
+                  ],
+                  "evs": [
+                    85,
+                    85,
+                    85,
+                    85,
+                    85,
+                    85
+                  ],
+                  "ivs": [
+                    5,
+                    5,
+                    5,
+                    5,
+                    5,
+                    5
+                  ],
+                  "abilityNum": 0,
+                  "personality": 0
+                },
+                {
+                  "species": "Jynx",
+                  "item": "Bright Powder",
+                  "moves": [
+                    "Perish Song",
+                    "Fake Tears",
+                    "Attract"
+                  ],
+                  "evs": [
+                    85,
+                    85,
+                    85,
+                    85,
+                    85,
+                    85
+                  ],
+                  "ivs": [
+                    5,
+                    5,
+                    5,
+                    5,
+                    5,
+                    5
+                  ],
+                  "abilityNum": 0,
+                  "personality": 0
+                },
+                {
+                  "species": "Exploud",
+                  "item": "Bright Powder",
+                  "moves": [
+                    "Howl",
+                    "Hyper Voice",
+                    "Attract"
+                  ],
+                  "evs": [
+                    85,
+                    85,
+                    85,
+                    85,
+                    85,
+                    85
+                  ],
+                  "ivs": [
+                    5,
+                    5,
+                    5,
+                    5,
+                    5,
+                    5
+                  ],
+                  "abilityNum": 0,
+                  "personality": 150
+                }
+              ]
+            },
+            {
+              "number": 44,
+              "class": "Collector",
+              "look": "collector",
+              "name": "Quill",
+              "team": [
+                {
+                  "species": "Illumise",
+                  "item": "Bright Powder",
+                  "moves": [
+                    "Encore",
+                    "Attract"
+                  ],
+                  "evs": [
+                    252,
+                    0,
+                    6,
+                    252,
+                    0,
+                    0
+                  ],
+                  "ivs": [
+                    5,
+                    5,
+                    5,
+                    5,
+                    5,
+                    5
+                  ],
+                  "abilityNum": 0,
+                  "personality": 10
+                },
+                {
+                  "species": "Spheal",
+                  "item": "Focus Band",
+                  "moves": [
+                    "Encore",
+                    "Attract"
+                  ],
+                  "evs": [
+                    252,
+                    0,
+                    0,
+                    252,
+                    0,
+                    6
+                  ],
+                  "ivs": [
+                    5,
+                    5,
+                    5,
+                    5,
+                    5,
+                    5
+                  ],
+                  "abilityNum": 0,
+                  "personality": 10
+                },
+                {
+                  "species": "Vigoroth",
+                  "item": "Focus Band",
+                  "moves": [
+                    "Encore",
+                    "Attract"
+                  ],
+                  "evs": [
+                    252,
+                    0,
+                    6,
+                    252,
+                    0,
+                    0
+                  ],
+                  "ivs": [
+                    5,
+                    5,
+                    5,
+                    5,
+                    5,
+                    5
+                  ],
+                  "abilityNum": 0,
+                  "personality": 135
+                }
+              ]
+            }
+          ],
+          "spots": [
+            {
+              "x": 3,
+              "y": 8,
+              "facing": "Left",
+              "range": 7
+            },
+            {
+              "x": 11,
+              "y": 8,
+              "facing": "Right",
+              "range": 7
+            }
+          ],
+          "rows": [
+            "......###......#",
+            "...............#",
+            "...............#",
+            "...............#",
+            "...............#",
+            "...............#",
+            "...............#",
+            "...............#",
+            "...............#",
+            "...............#",
+            "...............#",
+            "...............#",
+            "...............#",
+            "...............#",
+            "...............#",
+            "################"
+          ]
+        },
+        {
+          "trainers": [
+            {
+              "number": 45,
+              "class": "Rich Boy",
+              "look": "rich_boy",
+              "name": "Wendeline",
+              "team": [
+                {
+                  "species": "Wooper",
+                  "item": "Figy Berry",
+                  "moves": [
+                    "Rain Dance",
+                    "Yawn",
+                    "Surf",
+                    "Haze"
+                  ],
+                  "evs": [
+                    252,
+                    0,
+                    0,
+                    6,
+                    252,
+                    0
+                  ],
+                  "ivs": [
+                    15,
+                    15,
+                    15,
+                    15,
+                    15,
+                    15
+                  ],
+                  "abilityNum": 0,
+                  "personality": 140
+                },
+                {
+                  "species": "Poliwag",
+                  "item": "Wiki Berry",
+                  "moves": [
+                    "Surf",
+                    "Ice Beam",
+                    "Mist",
+                    "Hypnosis"
+                  ],
+                  "evs": [
+                    252,
+                    0,
+                    0,
+                    6,
+                    252,
+                    0
+                  ],
+                  "ivs": [
+                    15,
+                    15,
+                    15,
+                    15,
+                    15,
+                    15
+                  ],
+                  "abilityNum": 1,
+                  "personality": 3
+                },
+                {
+                  "species": "Psyduck",
+                  "item": "Aguav Berry",
+                  "moves": [
+                    "Hypnosis",
+                    "Surf",
+                    "Disable",
+                    "Seismic Toss"
+                  ],
+                  "evs": [
+                    250,
+                    0,
+                    130,
+                    0,
+                    0,
+                    130
+                  ],
+                  "ivs": [
+                    15,
+                    15,
+                    15,
+                    15,
+                    15,
+                    15
+                  ],
+                  "abilityNum": 0,
+                  "personality": 3
+                }
+              ]
+            },
+            {
+              "number": 46,
+              "class": "Lady",
+              "look": "lady",
+              "name": "Ansel",
+              "team": [
+                {
+                  "species": "Baltoy",
+                  "item": "Silk Scarf",
+                  "moves": [
+                    "Explosion",
+                    "Self-Destruct"
+                  ],
+                  "evs": [
+                    6,
+                    252,
+                    0,
+                    252,
+                    0,
+                    0
+                  ],
+                  "ivs": [
+                    15,
+                    15,
+                    15,
+                    15,
+                    15,
+                    15
+                  ],
+                  "abilityNum": 0,
+                  "personality": 3
+                },
+                {
+                  "species": "Pineco",
+                  "item": "Silk Scarf",
+                  "moves": [
+                    "Explosion",
+                    "Self-Destruct"
+                  ],
+                  "evs": [
+                    252,
+                    252,
+                    0,
+                    6,
+                    0,
+                    0
+                  ],
+                  "ivs": [
+                    15,
+                    15,
+                    15,
+                    15,
+                    15,
+                    15
+                  ],
+                  "abilityNum": 0,
+                  "personality": 3
+                },
+                {
+                  "species": "Voltorb",
+                  "item": "Silk Scarf",
+                  "moves": [
+                    "Explosion",
+                    "Self-Destruct"
+                  ],
+                  "evs": [
+                    6,
+                    252,
+                    0,
+                    252,
+                    0,
+                    0
+                  ],
+                  "ivs": [
+                    15,
+                    15,
+                    15,
+                    15,
+                    15,
+                    15
+                  ],
+                  "abilityNum": 0,
+                  "personality": 128
+                }
+              ]
+            }
+          ],
+          "spots": [
+            {
+              "x": 9,
+              "y": 1,
+              "facing": "Left",
+              "range": 4
+            },
+            {
+              "x": 14,
+              "y": 1,
+              "facing": "Right",
+              "range": 4
+            }
+          ],
+          "rows": [
+            "......###......#",
+            "......###......#",
+            ".vvvvvvvvvvv.vv#",
+            "...............#",
+            ".vvvvvvvvvvv.vv#",
+            "...............#",
+            ".vvvvvvvvvvv.vv#",
+            "...............#",
+            ".vvvvvvvvvvv.vv#",
+            "...............#",
+            ".vvvvvvvvvvv.vv#",
+            "...............#",
+            ".vvvvvvvvvvv.vv#",
+            "...............#",
+            ".vvvvvvvvvvv.vv#",
+            "...............#"
+          ]
+        },
+        {
+          "trainers": [
+            {
+              "number": 47,
+              "class": "Poké Fan",
+              "look": "pokefan_f",
+              "name": "Hollis",
+              "team": [
+                {
+                  "species": "Unown",
+                  "item": "Miracle Seed",
+                  "moves": [
+                    "Hidden Power"
+                  ],
+                  "evs": [
+                    255,
+                    0,
+                    0,
+                    0,
+                    255,
+                    0
+                  ],
+                  "ivs": [
+                    30,
+                    0,
+                    30,
+                    0,
+                    30,
+                    0
+                  ],
+                  "abilityNum": 0,
+                  "personality": 514
+                },
+                {
+                  "species": "Unown",
+                  "item": "Mystic Water",
+                  "moves": [
+                    "Hidden Power"
+                  ],
+                  "evs": [
+                    255,
+                    0,
+                    0,
+                    0,
+                    255,
+                    0
+                  ],
+                  "ivs": [
+                    30,
+                    0,
+                    0,
+                    30,
+                    30,
+                    0
+                  ],
+                  "abilityNum": 0,
+                  "personality": 65537
+                },
+                {
+                  "species": "Unown",
+                  "item": "Black Belt",
+                  "moves": [
+                    "Hidden Power"
+                  ],
+                  "evs": [
+                    255,
+                    0,
+                    0,
+                    0,
+                    255,
+                    0
+                  ],
+                  "ivs": [
+                    30,
+                    30,
+                    30,
+                    30,
+                    30,
+                    30
+                  ],
+                  "abilityNum": 0,
+                  "personality": 258
+                }
+              ]
+            },
+            {
+              "number": 48,
+              "class": "Poké Fan",
+              "look": "pokefan_m",
+              "name": "Peregrin",
+              "team": [
+                {
+                  "species": "Unown",
+                  "item": "Charcoal",
+                  "moves": [
+                    "Hidden Power"
+                  ],
+                  "evs": [
+                    255,
+                    0,
+                    0,
+                    0,
+                    255,
+                    0
+                  ],
+                  "ivs": [
+                    30,
+                    0,
+                    30,
+                    30,
+                    30,
+                    0
+                  ],
+                  "abilityNum": 0,
+                  "personality": 770
+                },
+                {
+                  "species": "Unown",
+                  "item": "Soft Sand",
+                  "moves": [
+                    "Hidden Power"
+                  ],
+                  "evs": [
+                    255,
+                    255,
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "ivs": [
+                    0,
+                    30,
+                    0,
+                    0,
+                    30,
+                    30
+                  ],
+                  "abilityNum": 0,
+                  "personality": 515
+                },
+                {
+                  "species": "Unown",
+                  "item": "Twisted Spoon",
+                  "moves": [
+                    "Hidden Power"
+                  ],
+                  "evs": [
+                    255,
+                    0,
+                    0,
+                    0,
+                    255,
+                    0
+                  ],
+                  "ivs": [
+                    0,
+                    0,
+                    30,
+                    30,
+                    0,
+                    0
+                  ],
+                  "abilityNum": 0,
+                  "personality": 769
+                }
+              ]
+            }
+          ],
+          "spots": [
+            {
+              "x": 10,
+              "y": 2,
+              "facing": "Left",
+              "range": 3
+            },
+            {
+              "x": 14,
+              "y": 2,
+              "facing": "Right",
+              "range": 3
+            }
+          ],
+          "rows": [
+            "......###......#",
+            "...............#",
+            "..#...#........#",
+            "...............#",
+            "#...#...#......#",
+            "...............#",
+            "..#...#...#...##",
+            "...............#",
+            "#...#...#...#..#",
+            "...............#",
+            "..#...#...#...##",
+            "...............#",
+            "#...#...#...#..#",
+            "...............#",
+            "..#...#...#...##",
+            "################"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Unique",
+      "floors": [
+        {
+          "trainers": [
+            {
+              "number": 49,
+              "class": "Pokémon Ranger",
+              "look": "pkmn_ranger_f",
+              "name": "Isaura",
+              "team": [
+                {
+                  "species": "Sunflora",
+                  "item": "Persim Berry",
+                  "moves": [
+                    "Petal Dance",
+                    "Grass Whistle",
+                    "Light Screen",
+                    "Sunny Day"
+                  ],
+                  "evs": [
+                    255,
+                    0,
+                    155,
+                    0,
+                    0,
+                    100
+                  ],
+                  "ivs": [
+                    15,
+                    15,
+                    15,
+                    15,
+                    15,
+                    15
+                  ],
+                  "abilityNum": 0,
+                  "personality": 0
+                },
+                {
+                  "species": "Tangela",
+                  "item": "Quick Claw",
+                  "moves": [
+                    "Giga Drain",
+                    "Sleep Powder",
+                    "Amnesia",
+                    "Sunny Day"
+                  ],
+                  "evs": [
+                    255,
+                    0,
+                    0,
+                    0,
+                    0,
+                    255
+                  ],
+                  "ivs": [
+                    15,
+                    15,
+                    15,
+                    15,
+                    15,
+                    15
+                  ],
+                  "abilityNum": 0,
+                  "personality": 145
+                },
+                {
+                  "species": "Venusaur",
+                  "item": "Leftovers",
+                  "moves": [
+                    "Solar Beam",
+                    "Earthquake",
+                    "Synthesis",
+                    "Sunny Day"
+                  ],
+                  "evs": [
+                    100,
+                    110,
+                    100,
+                    0,
+                    100,
+                    100
+                  ],
+                  "ivs": [
+                    15,
+                    15,
+                    15,
+                    15,
+                    15,
+                    15
+                  ],
+                  "abilityNum": 0,
+                  "personality": 31
+                }
+              ]
+            },
+            {
+              "number": 50,
+              "class": "Kindler",
+              "look": "kindler",
+              "name": "Kestrel",
+              "team": [
+                {
+                  "species": "Magcargo",
+                  "item": "Quick Claw",
+                  "moves": [
+                    "Heat Wave",
+                    "Rock Slide",
+                    "Protect",
+                    "Sunny Day"
+                  ],
+                  "evs": [
+                    255,
+                    0,
+                    0,
+                    0,
+                    0,
+                    255
+                  ],
+                  "ivs": [
+                    15,
+                    15,
+                    15,
+                    15,
+                    15,
+                    15
+                  ],
+                  "abilityNum": 1,
+                  "personality": 147
+                },
+                {
+                  "species": "Rapidash",
+                  "item": "King's Rock",
+                  "moves": [
+                    "Fire Blast",
+                    "Bounce",
+                    "Quick Attack",
+                    "Sunny Day"
+                  ],
+                  "evs": [
+                    0,
+                    0,
+                    0,
+                    255,
+                    255,
+                    0
+                  ],
+                  "ivs": [
+                    15,
+                    15,
+                    15,
+                    15,
+                    15,
+                    15
+                  ],
+                  "abilityNum": 1,
+                  "personality": 15
+                },
+                {
+                  "species": "Moltres",
+                  "item": "Bright Powder",
+                  "moves": [
+                    "Sky Attack",
+                    "Aerial Ace",
+                    "Roar",
+                    "Sunny Day"
+                  ],
+                  "evs": [
+                    0,
+                    0,
+                    0,
+                    255,
+                    255,
+                    0
+                  ],
+                  "ivs": [
+                    15,
+                    15,
+                    15,
+                    15,
+                    15,
+                    15
+                  ],
+                  "abilityNum": 0,
+                  "personality": 15
+                }
+              ]
+            }
+          ],
+          "spots": [
+            {
+              "x": 4,
+              "y": 3,
+              "facing": "Left",
+              "range": 2
+            },
+            {
+              "x": 7,
+              "y": 3,
+              "facing": "Right",
+              "range": 2
+            }
+          ],
+          "rows": [
+            "......###......#",
+            ".#.####........#",
+            ".#.#....########",
+            ".#.#....#.....##",
+            ".#.#......###.##",
+            ".#.########.#.##",
+            "##........#.#.##",
+            ".#.########.#.##",
+            ".#.#........#..#",
+            ".#.#.#########.#",
+            "...#.........#.#",
+            ".###########.#.#",
+            "...........#.#.#",
+            ".###########.#.#",
+            "...............#",
+            "################"
+          ]
+        },
+        {
+          "trainers": [
+            {
+              "number": 51,
+              "class": "Ruin Maniac",
+              "look": "ruin_maniac",
+              "name": "Marlo",
+              "team": [
+                {
+                  "species": "Smeargle",
+                  "item": "Scope Lens",
+                  "moves": [
+                    "Earthquake",
+                    "Shadow Ball",
+                    "Aerial Ace",
+                    "Imprison"
+                  ],
+                  "evs": [
+                    252,
+                    6,
+                    0,
+                    252,
+                    0,
+                    0
+                  ],
+                  "ivs": [
+                    15,
+                    15,
+                    15,
+                    15,
+                    15,
+                    15
+                  ],
+                  "abilityNum": 0,
+                  "personality": 138
+                },
+                {
+                  "species": "Smeargle",
+                  "item": "Chesto Berry",
+                  "moves": [
+                    "Rest",
+                    "Thunder Wave",
+                    "Flamethrower",
+                    "Imprison"
+                  ],
+                  "evs": [
+                    252,
+                    0,
+                    0,
+                    252,
+                    6,
+                    0
+                  ],
+                  "ivs": [
+                    15,
+                    15,
+                    15,
+                    15,
+                    15,
+                    15
+                  ],
+                  "abilityNum": 0,
+                  "personality": 135
+                },
+                {
+                  "species": "Smeargle",
+                  "item": "Quick Claw",
+                  "moves": [
+                    "Teeter Dance",
+                    "Lock-On",
+                    "Sheer Cold",
+                    "Explosion"
+                  ],
+                  "evs": [
+                    252,
+                    6,
+                    0,
+                    252,
+                    0,
+                    0
+                  ],
+                  "ivs": [
+                    15,
+                    15,
+                    15,
+                    15,
+                    15,
+                    15
+                  ],
+                  "abilityNum": 0,
+                  "personality": 13
+                }
+              ]
+            },
+            {
+              "number": 52,
+              "class": "Tuber",
+              "look": "tuber_m",
+              "name": "Tamsin",
+              "team": [
+                {
+                  "species": "Cubone",
+                  "item": "Thick Club",
+                  "moves": [
+                    "Bonemerang"
+                  ],
+                  "evs": [
+                    252,
+                    0,
+                    6,
+                    0,
+                    0,
+                    252
+                  ],
+                  "ivs": [
+                    5,
+                    5,
+                    5,
+                    5,
+                    5,
+                    5
+                  ],
+                  "abilityNum": 1,
+                  "personality": 22
+                },
+                {
+                  "species": "Beedrill",
+                  "item": "Shell Bell",
+                  "moves": [
+                    "Twineedle"
+                  ],
+                  "evs": [
+                    252,
+                    0,
+                    0,
+                    252,
+                    0,
+                    0
+                  ],
+                  "ivs": [
+                    5,
+                    5,
+                    5,
+                    5,
+                    5,
+                    5
+                  ],
+                  "abilityNum": 0,
+                  "personality": 138
+                },
+                {
+                  "species": "Raticate",
+                  "item": "Focus Band",
+                  "moves": [
+                    "Super Fang"
+                  ],
+                  "evs": [
+                    252,
+                    0,
+                    6,
+                    252,
+                    0,
+                    0
+                  ],
+                  "ivs": [
+                    5,
+                    5,
+                    5,
+                    5,
+                    5,
+                    5
+                  ],
+                  "abilityNum": 1,
+                  "personality": 13
+                }
+              ]
+            }
+          ],
+          "spots": [
+            {
+              "x": 9,
+              "y": 6,
+              "facing": "Left",
+              "range": 3
+            },
+            {
+              "x": 13,
+              "y": 6,
+              "facing": "Right",
+              "range": 3
+            }
+          ],
+          "rows": [
+            "......###......#",
+            ".....#####.....#",
+            "#...#.#.#.#....#",
+            "......#.....#..#",
+            ".#.#.#.#.#.#.###",
+            "#.#...#.#......#",
+            "........#......#",
+            ".#.###.#.##.##.#",
+            "..#...#.#.....##",
+            "........#...#..#",
+            "##.###.#.#.#.#.#",
+            "..#.....#.#....#",
+            "....#.#.#......#",
+            ".#####.#.#.###.#",
+            "............#..#",
+            "################"
+          ]
+        },
+        {
+          "trainers": [
+            {
+              "number": 53,
+              "class": "Youngster",
+              "look": "youngster",
+              "name": "Oswin",
+              "team": [
+                {
+                  "species": "Charmeleon",
+                  "item": "Charcoal",
+                  "moves": [
+                    "Fire Spin",
+                    "Dragon Rage",
+                    "Flamethrower",
+                    "Slash"
+                  ],
+                  "evs": [
+                    252,
+                    0,
+                    0,
+                    252,
+                    6,
+                    0
+                  ],
+                  "ivs": [
+                    25,
+                    25,
+                    25,
+                    25,
+                    25,
+                    25
+                  ],
+                  "abilityNum": 0,
+                  "personality": 50
+                },
+                {
+                  "species": "Wartortle",
+                  "item": "Mystic Water",
+                  "moves": [
+                    "Hydro Pump",
+                    "Skull Bash",
+                    "Rain Dance",
+                    "Protect"
+                  ],
+                  "evs": [
+                    250,
+                    0,
+                    130,
+                    0,
+                    0,
+                    0
+                  ],
+                  "ivs": [
+                    25,
+                    25,
+                    25,
+                    25,
+                    25,
+                    25
+                  ],
+                  "abilityNum": 0,
+                  "personality": 0
+                },
+                {
+                  "species": "Ivysaur",
+                  "item": "Miracle Seed",
+                  "moves": [
+                    "Solar Beam",
+                    "Synthesis",
+                    "Growth",
+                    "Sweet Scent"
+                  ],
+                  "evs": [
+                    252,
+                    0,
+                    0,
+                    6,
+                    252,
+                    0
+                  ],
+                  "ivs": [
+                    25,
+                    25,
+                    25,
+                    25,
+                    25,
+                    25
+                  ],
+                  "abilityNum": 0,
+                  "personality": 0
+                }
+              ]
+            },
+            {
+              "number": 54,
+              "class": "Tuber",
+              "look": "tuber_f",
+              "name": "Juniper",
+              "team": [
+                {
+                  "species": "Cleffa",
+                  "item": "Quick Claw",
+                  "moves": [
+                    "Mega Kick",
+                    "Sweet Kiss",
+                    "Sing",
+                    "Metronome"
+                  ],
+                  "evs": [
+                    6,
+                    252,
+                    0,
+                    252,
+                    0,
+                    0
+                  ],
+                  "ivs": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "abilityNum": 0,
+                  "personality": 0
+                },
+                {
+                  "species": "Wynaut",
+                  "item": "Leftovers",
+                  "moves": [
+                    "Encore",
+                    "Counter",
+                    "Mirror Coat",
+                    "Destiny Bond"
+                  ],
+                  "evs": [
+                    250,
+                    0,
+                    130,
+                    0,
+                    0,
+                    130
+                  ],
+                  "ivs": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "abilityNum": 0,
+                  "personality": 132
+                },
+                {
+                  "species": "Magby",
+                  "item": "Scope Lens",
+                  "moves": [
+                    "Fire Blast",
+                    "Confuse Ray",
+                    "Thunder Punch",
+                    "Barrier"
+                  ],
+                  "evs": [
+                    6,
+                    0,
+                    0,
+                    252,
+                    252,
+                    0
+                  ],
+                  "ivs": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "abilityNum": 0,
+                  "personality": 15
+                }
+              ]
+            }
+          ],
+          "spots": [
+            {
+              "x": 6,
+              "y": 9,
+              "facing": "Left",
+              "range": 1
+            },
+            {
+              "x": 8,
+              "y": 9,
+              "facing": "Right",
+              "range": 1
+            }
+          ],
+          "rows": [
+            "......###......#",
+            ".############.##",
+            ".#............##",
+            ".#.#############",
+            ".#............##",
+            ".############.##",
+            ".#............##",
+            ".######.########",
+            ".#...#...#....##",
+            ".#...#...#....##",
+            ".#...#...#....##",
+            ".######.########",
+            ".#.............#",
+            ".#############.#",
+            "...............#",
+            "################"
+          ]
+        },
+        {
+          "trainers": [
+            {
+              "number": 56,
+              "class": "Bird Keeper",
+              "look": "bird_keeper",
+              "name": "Ellery",
+              "team": [
+                {
+                  "species": "Sudowoodo",
+                  "item": "Sitrus Berry",
+                  "moves": [
+                    "Rock Slide",
+                    "Block",
+                    "Toxic",
+                    "Explosion"
+                  ],
+                  "evs": [
+                    100,
+                    255,
+                    0,
+                    0,
+                    0,
+                    155
+                  ],
+                  "ivs": [
+                    15,
+                    15,
+                    15,
+                    15,
+                    15,
+                    15
+                  ],
+                  "abilityNum": 0,
+                  "personality": 128
+                },
+                {
+                  "species": "Slowking",
+                  "item": "Scope Lens",
+                  "moves": [
+                    "Surf",
+                    "Psychic",
+                    "Blizzard",
+                    "Disable"
+                  ],
+                  "evs": [
+                    255,
+                    0,
+                    255,
+                    0,
+                    0,
+                    0
+                  ],
+                  "ivs": [
+                    15,
+                    15,
+                    15,
+                    15,
+                    15,
+                    15
+                  ],
+                  "abilityNum": 1,
+                  "personality": 140
+                },
+                {
+                  "species": "Entei",
+                  "item": "Petaya Berry",
+                  "moves": [
+                    "Flamethrower",
+                    "Calm Mind",
+                    "Fire Spin",
+                    "Roar"
+                  ],
+                  "evs": [
+                    0,
+                    0,
+                    0,
+                    255,
+                    255,
+                    0
+                  ],
+                  "ivs": [
+                    15,
+                    15,
+                    15,
+                    15,
+                    15,
+                    15
+                  ],
+                  "abilityNum": 0,
+                  "personality": 15
+                }
+              ]
+            },
+            {
+              "number": 55,
+              "class": "Swimming Triathlete",
+              "look": "swimming_triathlete_f",
+              "name": "Saffi",
+              "team": [
+                {
+                  "species": "Houndoom",
+                  "item": "Quick Claw",
+                  "moves": [
+                    "Flamethrower",
+                    "Crunch",
+                    "Roar",
+                    "Will-O-Wisp"
+                  ],
+                  "evs": [
+                    0,
+                    0,
+                    0,
+                    255,
+                    255,
+                    0
+                  ],
+                  "ivs": [
+                    15,
+                    15,
+                    15,
+                    15,
+                    15,
+                    15
+                  ],
+                  "abilityNum": 1,
+                  "personality": 15
+                },
+                {
+                  "species": "Stantler",
+                  "item": "Leftovers",
+                  "moves": [
+                    "Confuse Ray",
+                    "Swagger",
+                    "Psych Up",
+                    "Take Down"
+                  ],
+                  "evs": [
+                    0,
+                    255,
+                    0,
+                    255,
+                    0,
+                    0
+                  ],
+                  "ivs": [
+                    15,
+                    15,
+                    15,
+                    15,
+                    15,
+                    15
+                  ],
+                  "abilityNum": 0,
+                  "personality": 3
+                },
+                {
+                  "species": "Articuno",
+                  "item": "Never-Melt Ice",
+                  "moves": [
+                    "Blizzard",
+                    "Sheer Cold",
+                    "Mist",
+                    "Aerial Ace"
+                  ],
+                  "evs": [
+                    255,
+                    0,
+                    0,
+                    0,
+                    255,
+                    0
+                  ],
+                  "ivs": [
+                    15,
+                    15,
+                    15,
+                    15,
+                    15,
+                    15
+                  ],
+                  "abilityNum": 0,
+                  "personality": 15
+                }
+              ]
+            }
+          ],
+          "spots": [
+            {
+              "x": 8,
+              "y": 2,
+              "facing": "Left",
+              "range": 3
+            },
+            {
+              "x": 11,
+              "y": 5,
+              "facing": "Up",
+              "range": 3
+            }
+          ],
+          "rows": [
+            "......###......#",
+            "......#######..#",
+            "####.....#.....#",
+            ".........#.....#",
+            ".#######.#.#####",
+            ".#...#.........#",
+            ".#...#.#.#.....#",
+            ".#.#.#.#.####..#",
+            ".#.#.#.#.#.....#",
+            ".#.#.#.#.#.#####",
+            ".#.#.#.#.#.....#",
+            ".#.#.#.#.#.....#",
+            ".#.#.#.#.#####.#",
+            "...#...#.......#",
+            "...#...#.......#",
+            "################"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Expert",
+      "floors": [
+        {
+          "trainers": [
+            {
+              "number": 57,
+              "class": "Ace Trainer",
+              "look": "cooltrainer_m",
+              "name": "Thaddeus",
+              "team": [
+                {
+                  "species": "Snorlax",
+                  "item": "Quick Claw",
+                  "moves": [
+                    "Mega Kick",
+                    "Shadow Ball",
+                    "Brick Break",
+                    "Earthquake"
+                  ],
+                  "evs": [
+                    6,
+                    252,
+                    252,
+                    0,
+                    0,
+                    0
+                  ],
+                  "ivs": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "abilityNum": 0,
+                  "personality": 53
+                },
+                {
+                  "species": "Miltank",
+                  "item": "Leftovers",
+                  "moves": [
+                    "Double-Edge",
+                    "Shadow Ball",
+                    "Attract",
+                    "Milk Drink"
+                  ],
+                  "evs": [
+                    6,
+                    252,
+                    0,
+                    252,
+                    0,
+                    0
+                  ],
+                  "ivs": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "abilityNum": 0,
+                  "personality": 3
+                },
+                {
+                  "species": "Ursaring",
+                  "item": "Quick Claw",
+                  "moves": [
+                    "Double-Edge",
+                    "Crunch",
+                    "Brick Break",
+                    "Aerial Ace"
+                  ],
+                  "evs": [
+                    252,
+                    252,
+                    0,
+                    0,
+                    6,
+                    0
+                  ],
+                  "ivs": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "abilityNum": 0,
+                  "personality": 127
+                }
+              ]
+            },
+            {
+              "number": 58,
+              "class": "Psychic",
+              "look": "psychic_f",
+              "name": "Brielle",
+              "team": [
+                {
+                  "species": "Gengar",
+                  "item": "Lum Berry",
+                  "moves": [
+                    "Psychic",
+                    "Thunderbolt",
+                    "Fire Punch",
+                    "Ice Punch"
+                  ],
+                  "evs": [
+                    6,
+                    0,
+                    0,
+                    252,
+                    252,
+                    0
+                  ],
+                  "ivs": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "abilityNum": 0,
+                  "personality": 15
+                },
+                {
+                  "species": "Gardevoir",
+                  "item": "Salac Berry",
+                  "moves": [
+                    "Psychic",
+                    "Thunderbolt",
+                    "Magical Leaf",
+                    "Destiny Bond"
+                  ],
+                  "evs": [
+                    6,
+                    0,
+                    0,
+                    252,
+                    252,
+                    0
+                  ],
+                  "ivs": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "abilityNum": 0,
+                  "personality": 15
+                },
+                {
+                  "species": "Alakazam",
+                  "item": "Lum Berry",
+                  "moves": [
+                    "Psychic",
+                    "Recover",
+                    "Thunder Wave",
+                    "Attract"
+                  ],
+                  "evs": [
+                    6,
+                    0,
+                    0,
+                    252,
+                    252,
+                    0
+                  ],
+                  "ivs": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "abilityNum": 0,
+                  "personality": 15
+                }
+              ]
+            }
+          ],
+          "spots": [
+            {
+              "x": 4,
+              "y": 7,
+              "facing": "Left",
+              "range": 5
+            },
+            {
+              "x": 10,
+              "y": 7,
+              "facing": "Right",
+              "range": 5
+            }
+          ],
+          "rows": [
+            "......###......#",
+            "......#........#",
+            "..#####.#####..#",
+            "..#####.#####..#",
+            "..#####.#####..#",
+            "..#.........#..#",
+            "..##.......##..#",
+            "..#.........#..#",
+            "..##.......##..#",
+            "..#.........#..#",
+            "..##.......##..#",
+            "..##.......##..#",
+            "..####...####..#",
+            "...............#",
+            "...............#",
+            "################"
+          ]
+        },
+        {
+          "trainers": [
+            {
+              "number": 59,
+              "class": "Ace Trainer",
+              "look": "cooltrainer_m",
+              "name": "Caspian",
+              "team": [
+                {
+                  "species": "Swellow",
+                  "item": "Leftovers",
+                  "moves": [
+                    "Aerial Ace",
+                    "Agility",
+                    "Facade",
+                    "Attract"
+                  ],
+                  "evs": [
+                    252,
+                    252,
+                    0,
+                    0,
+                    0,
+                    6
+                  ],
+                  "ivs": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "abilityNum": 0,
+                  "personality": 3
+                },
+                {
+                  "species": "Machamp",
+                  "item": "Leftovers",
+                  "moves": [
+                    "Low Kick",
+                    "Rock Slide",
+                    "Facade",
+                    "Attract"
+                  ],
+                  "evs": [
+                    252,
+                    252,
+                    0,
+                    0,
+                    0,
+                    6
+                  ],
+                  "ivs": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "abilityNum": 0,
+                  "personality": 3
+                },
+                {
+                  "species": "Ursaring",
+                  "item": "Leftovers",
+                  "moves": [
+                    "Protect",
+                    "Rock Slide",
+                    "Facade",
+                    "Attract"
+                  ],
+                  "evs": [
+                    252,
+                    252,
+                    0,
+                    0,
+                    0,
+                    6
+                  ],
+                  "ivs": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "abilityNum": 0,
+                  "personality": 3
+                }
+              ]
+            },
+            {
+              "number": 60,
+              "class": "Ace Trainer",
+              "look": "cooltrainer_f",
+              "name": "Odette",
+              "team": [
+                {
+                  "species": "Dusclops",
+                  "item": "Leftovers",
+                  "moves": [
+                    "Pursuit",
+                    "Protect",
+                    "Attract",
+                    "Will-O-Wisp"
+                  ],
+                  "evs": [
+                    252,
+                    0,
+                    252,
+                    0,
+                    0,
+                    6
+                  ],
+                  "ivs": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "abilityNum": 0,
+                  "personality": 130
+                },
+                {
+                  "species": "Ninetales",
+                  "item": "White Herb",
+                  "moves": [
+                    "Overheat",
+                    "Confuse Ray",
+                    "Will-O-Wisp",
+                    "Attract"
+                  ],
+                  "evs": [
+                    6,
+                    0,
+                    0,
+                    252,
+                    252,
+                    0
+                  ],
+                  "ivs": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "abilityNum": 0,
+                  "personality": 210
+                },
+                {
+                  "species": "Banette",
+                  "item": "Focus Band",
+                  "moves": [
+                    "Shadow Ball",
+                    "Feint Attack",
+                    "Attract",
+                    "Will-O-Wisp"
+                  ],
+                  "evs": [
+                    252,
+                    0,
+                    252,
+                    0,
+                    0,
+                    6
+                  ],
+                  "ivs": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "abilityNum": 0,
+                  "personality": 133
+                }
+              ]
+            }
+          ],
+          "spots": [
+            {
+              "x": 7,
+              "y": 10,
+              "facing": "Down",
+              "range": 3
+            },
+            {
+              "x": 7,
+              "y": 14,
+              "facing": "Up",
+              "range": 3
+            }
+          ],
+          "rows": [
+            "......###......#",
+            ".#############.#",
+            ".#.............#",
+            ".#.#############",
+            ".#.............#",
+            ".#############.#",
+            ".#.............#",
+            ".#.#############",
+            ".#.............#",
+            ".#############.#",
+            "...............#",
+            "...............#",
+            "...............#",
+            "...............#",
+            "...............#",
+            "################"
+          ]
+        },
+        {
+          "trainers": [
+            {
+              "number": 61,
+              "class": "Expert",
+              "look": "expert_m",
+              "name": "Lorcan",
+              "team": [
+                {
+                  "species": "Wobbuffet",
+                  "item": "Leftovers",
+                  "moves": [
+                    "Mirror Coat",
+                    "Counter",
+                    "Safeguard",
+                    "Encore"
+                  ],
+                  "evs": [
+                    250,
+                    0,
+                    130,
+                    0,
+                    0,
+                    130
+                  ],
+                  "ivs": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "abilityNum": 0,
+                  "personality": 148
+                },
+                {
+                  "species": "Exploud",
+                  "item": "Chesto Berry",
+                  "moves": [
+                    "Hyper Voice",
+                    "Counter",
+                    "Rest",
+                    "Rock Slide"
+                  ],
+                  "evs": [
+                    250,
+                    0,
+                    130,
+                    0,
+                    0,
+                    130
+                  ],
+                  "ivs": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "abilityNum": 0,
+                  "personality": 133
+                },
+                {
+                  "species": "Crobat",
+                  "item": "King's Rock",
+                  "moves": [
+                    "Mean Look",
+                    "Confuse Ray",
+                    "Aerial Ace",
+                    "Toxic"
+                  ],
+                  "evs": [
+                    250,
+                    0,
+                    130,
+                    0,
+                    0,
+                    130
+                  ],
+                  "ivs": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "abilityNum": 0,
+                  "personality": 0
+                }
+              ]
+            },
+            {
+              "number": 62,
+              "class": "Expert",
+              "look": "expert_f",
+              "name": "Verity",
+              "team": [
+                {
+                  "species": "Dewgong",
+                  "item": "Chesto Berry",
+                  "moves": [
+                    "Ice Beam",
+                    "Signal Beam",
+                    "Rest",
+                    "Perish Song"
+                  ],
+                  "evs": [
+                    252,
+                    0,
+                    0,
+                    252,
+                    6,
+                    0
+                  ],
+                  "ivs": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "abilityNum": 0,
+                  "personality": 20
+                },
+                {
+                  "species": "Politoed",
+                  "item": "Bright Powder",
+                  "moves": [
+                    "Hydro Pump",
+                    "Blizzard",
+                    "Mind Reader",
+                    "Perish Song"
+                  ],
+                  "evs": [
+                    252,
+                    0,
+                    0,
+                    0,
+                    6,
+                    252
+                  ],
+                  "ivs": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "abilityNum": 1,
+                  "personality": 20
+                },
+                {
+                  "species": "Marowak",
+                  "item": "Quick Claw",
+                  "moves": [
+                    "Perish Song",
+                    "Earthquake",
+                    "Counter",
+                    "Protect"
+                  ],
+                  "evs": [
+                    252,
+                    0,
+                    0,
+                    6,
+                    0,
+                    252
+                  ],
+                  "ivs": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "abilityNum": 1,
+                  "personality": 23
+                }
+              ]
+            }
+          ],
+          "spots": [
+            {
+              "x": 7,
+              "y": 6,
+              "facing": "Down",
+              "range": 3
+            },
+            {
+              "x": 7,
+              "y": 10,
+              "facing": "Up",
+              "range": 3
+            }
+          ],
+          "rows": [
+            "......###......#",
+            "......#........#",
+            "....###.###....#",
+            "...####.####...#",
+            "..#####.#####..#",
+            "..#####.#####..#",
+            ".######..#####.#",
+            ".####.....####.#",
+            "......#.#.####.#",
+            ".####.....####.#",
+            ".######..#####.#",
+            "..#####..####..#",
+            "..#####.#####..#",
+            "...####.####...#",
+            "....###.###....#",
+            "......#........#"
+          ]
+        },
+        {
+          "trainers": [
+            {
+              "number": 63,
+              "class": "Pokémon Ranger",
+              "look": "pkmn_ranger_f",
+              "name": "Ambrose",
+              "team": [
+                {
+                  "species": "Forretress",
+                  "item": "Quick Claw",
+                  "moves": [
+                    "Explosion",
+                    "Earthquake",
+                    "Attract",
+                    "Spikes"
+                  ],
+                  "evs": [
+                    110,
+                    200,
+                    0,
+                    0,
+                    0,
+                    200
+                  ],
+                  "ivs": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "abilityNum": 0,
+                  "personality": 3
+                },
+                {
+                  "species": "Electrode",
+                  "item": "Salac Berry",
+                  "moves": [
+                    "Explosion",
+                    "Thunderbolt",
+                    "Swift",
+                    "Light Screen"
+                  ],
+                  "evs": [
+                    0,
+                    255,
+                    0,
+                    0,
+                    255,
+                    0
+                  ],
+                  "ivs": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "abilityNum": 1,
+                  "personality": 12
+                },
+                {
+                  "species": "Exeggutor",
+                  "item": "Shell Bell",
+                  "moves": [
+                    "Explosion",
+                    "Hypnosis",
+                    "Psychic",
+                    "Solar Beam"
+                  ],
+                  "evs": [
+                    0,
+                    255,
+                    0,
+                    0,
+                    255,
+                    0
+                  ],
+                  "ivs": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "abilityNum": 0,
+                  "personality": 127
+                }
+              ]
+            },
+            {
+              "number": 64,
+              "class": "Pokémon Ranger",
+              "look": "pkmn_ranger_m",
+              "name": "Philippa",
+              "team": [
+                {
+                  "species": "Gengar",
+                  "item": "Salac Berry",
+                  "moves": [
+                    "Explosion",
+                    "Mean Look",
+                    "Shadow Ball",
+                    "Confuse Ray"
+                  ],
+                  "evs": [
+                    0,
+                    255,
+                    0,
+                    255,
+                    0,
+                    0
+                  ],
+                  "ivs": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "abilityNum": 0,
+                  "personality": 3
+                },
+                {
+                  "species": "Dusclops",
+                  "item": "Leftovers",
+                  "moves": [
+                    "Mean Look",
+                    "Confuse Ray",
+                    "Will-O-Wisp",
+                    "Shadow Ball"
+                  ],
+                  "evs": [
+                    110,
+                    0,
+                    200,
+                    0,
+                    0,
+                    200
+                  ],
+                  "ivs": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "abilityNum": 0,
+                  "personality": 20
+                },
+                {
+                  "species": "Misdreavus",
+                  "item": "Focus Band",
+                  "moves": [
+                    "Mean Look",
+                    "Confuse Ray",
+                    "Perish Song",
+                    "Shadow Ball"
+                  ],
+                  "evs": [
+                    180,
+                    0,
+                    180,
+                    0,
+                    0,
+                    150
+                  ],
+                  "ivs": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "abilityNum": 0,
+                  "personality": 133
+                }
+              ]
+            }
+          ],
+          "spots": [
+            {
+              "x": 7,
+              "y": 6,
+              "facing": "Down",
+              "range": 3
+            },
+            {
+              "x": 7,
+              "y": 10,
+              "facing": "Up",
+              "range": 3
+            }
+          ],
+          "rows": [
+            "......###......#",
+            ".......#.......#",
+            ".......#.......#",
+            ".....##.##.....#",
+            "....#.....#....#",
+            "...#.##.##.#...#",
+            "..#.#.....#.#..#",
+            "..#.........#..#",
+            "...............#",
+            "..#.........#..#",
+            "..#.#.....#.#..#",
+            "...#.##.##.#...#",
+            "....#.....#....#",
+            ".....##.##.....#",
+            ".......#.......#",
+            ".......#.......#"
+          ]
+        }
+      ]
+    }
+  ],
+  "prizeSets": [
+    [
+      [
+        "Rare Candy",
+        "Ether",
+        "Max Potion",
+        "Revive",
+        "Fluffy Tail",
+        "Great Ball"
+      ],
+      [
+        "Luxury Ball",
+        "Ether",
+        "Max Potion",
+        "Revive",
+        "Fluffy Tail",
+        "Great Ball"
+      ],
+      [
+        "Max Revive",
+        "Ether",
+        "Max Potion",
+        "Revive",
+        "Fluffy Tail",
+        "Great Ball"
+      ],
+      [
+        "Max Ether",
+        "Ether",
+        "Max Potion",
+        "Revive",
+        "Fluffy Tail",
+        "Great Ball"
+      ],
+      [
+        "Elixir",
+        "Ether",
+        "Max Potion",
+        "Revive",
+        "Fluffy Tail",
+        "Great Ball"
+      ],
+      [
+        "TM05",
+        "Ether",
+        "Max Potion",
+        "Revive",
+        "Fluffy Tail",
+        "Great Ball"
+      ],
+      [
+        "TM36",
+        "Ether",
+        "Max Potion",
+        "Revive",
+        "Fluffy Tail",
+        "Great Ball"
+      ],
+      [
+        "TM06",
+        "Ether",
+        "Max Potion",
+        "Revive",
+        "Fluffy Tail",
+        "Great Ball"
+      ],
+      [
+        "TM11",
+        "Ether",
+        "Max Potion",
+        "Revive",
+        "Fluffy Tail",
+        "Great Ball"
+      ],
+      [
+        "TM26",
+        "Ether",
+        "Max Potion",
+        "Revive",
+        "Fluffy Tail",
+        "Great Ball"
+      ]
+    ],
+    [
+      [
+        "Rare Candy",
+        "Ether",
+        "Max Potion",
+        "Revive",
+        "Fluffy Tail",
+        "Great Ball"
+      ],
+      [
+        "Luxury Ball",
+        "Ether",
+        "Max Potion",
+        "Revive",
+        "Fluffy Tail",
+        "Great Ball"
+      ],
+      [
+        "Max Revive",
+        "Ether",
+        "Max Potion",
+        "Revive",
+        "Fluffy Tail",
+        "Great Ball"
+      ],
+      [
+        "Max Ether",
+        "Ether",
+        "Max Potion",
+        "Revive",
+        "Fluffy Tail",
+        "Great Ball"
+      ],
+      [
+        "Elixir",
+        "Ether",
+        "Max Potion",
+        "Revive",
+        "Fluffy Tail",
+        "Great Ball"
+      ],
+      [
+        "TM31",
+        "Ether",
+        "Max Potion",
+        "Revive",
+        "Fluffy Tail",
+        "Great Ball"
+      ],
+      [
+        "TM41",
+        "Ether",
+        "Max Potion",
+        "Revive",
+        "Fluffy Tail",
+        "Great Ball"
+      ],
+      [
+        "TM48",
+        "Ether",
+        "Max Potion",
+        "Revive",
+        "Fluffy Tail",
+        "Great Ball"
+      ],
+      [
+        "TM19",
+        "Ether",
+        "Max Potion",
+        "Revive",
+        "Fluffy Tail",
+        "Great Ball"
+      ],
+      [
+        "TM45",
+        "Ether",
+        "Max Potion",
+        "Revive",
+        "Fluffy Tail",
+        "Great Ball"
+      ]
+    ]
+  ]
+}

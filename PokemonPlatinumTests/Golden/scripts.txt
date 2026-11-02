@@ -5447,6 +5447,27 @@ way 1, from answer 1
 from Manager at 14,9 of TeamGalacticEternaBuilding4F
 way -
   Manager> What is it with this Team Galactic? Why take people's Pokémon? What are they trying to do?
+=== TrainerHillFloor.Down
+from the trigger at 3,3 of TrainerHillFloor
+way -
+=== TrainerHillFloor.Stairs
+from the trigger at 13,3 of TrainerHillFloor
+way -
+=== TrainerHillLobby.Counter
+from Attendant at 7,4 of TrainerHillLobby
+way -
+  Attendant> We aren't quite open yet. The Hill is for trainers who have already beaten Hoenn's League.
+  Attendant> Come back once you've made your name as Champion!
+=== TrainerHillLobby.Records
+from Gentleman at 3,6 of TrainerHillLobby
+way -
+  Gentleman> I keep the board of the Hill's best times. Here's how yours stand.
+  Gentleman> Normal: no time yet. Variety: no time yet.
+  Gentleman> Unique: no time yet. Expert: no time yet.
+=== TrainerHillRoof.Owner
+from Owner at 6,4 of TrainerHillRoof
+way -
+  Owner> Quite a view from up here, isn't it? Climb all four floors and you'll find me waiting with a prize.
 === TrainersSchool.Blackboard
 from the sign at 5,2 of TrainersSchool
 from the sign at 6,2 of TrainersSchool
