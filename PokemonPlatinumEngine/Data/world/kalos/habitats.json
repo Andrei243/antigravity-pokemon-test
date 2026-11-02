@@ -9,13 +9,13 @@
     "                        ",
     "                        ",
     "                        ",
-    "                        ",
-    "                        ",
-    "                        ",
-    "                        ",
-    "                        ",
-    "                        ",
-    "         .T.            ",
+    "          TT.           ",
+    "         TTTT           ",
+    "         TTTT.          ",
+    "         .TTT           ",
+    "          .T.           ",
+    "          .T            ",
+    "         .TT            ",
     "        ..TT            ",
     "       .....            ",
     "       ..               ",
@@ -92,6 +92,38 @@
       "surf": [
         "Azurill",
         "Marill"
+      ]
+    },
+    {
+      "key": "kalos_route_4",
+      "name": "Route 4",
+      "cells": "10,13 11,13 10,14 11,14 11,15",
+      "morning": [
+        "Ledyba",
+        "Flabébé",
+        "Budew",
+        "Combee",
+        "Skitty",
+        "Bunnelby",
+        "Ralts"
+      ],
+      "day": [
+        "Ledyba",
+        "Flabébé",
+        "Budew",
+        "Combee",
+        "Skitty",
+        "Bunnelby",
+        "Ralts"
+      ],
+      "night": [
+        "Ledyba",
+        "Flabébé",
+        "Budew",
+        "Combee",
+        "Skitty",
+        "Bunnelby",
+        "Ralts"
       ]
     },
     {

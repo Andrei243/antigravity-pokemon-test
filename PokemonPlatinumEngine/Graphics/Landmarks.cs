@@ -131,6 +131,13 @@ internal static partial class Landmarks
             case PropType.Drums:
                 kit.Sprite(kit.Face("drums", 42, 40, PaintDrums), w / 2f, d / 2f + 8);
                 return true;
+            case PropType.PrismTower:
+            {
+                // Lumiose City's tower (plan 23 · Z2): four stages of steel lattice, each narrower than the one under it, a
+                // band of lit glass round the foot of each, a crown of light and a spire on top
+                PrismTower(kit, w, d);
+                return true;
+            }
             case PropType.Conveyor:
                 Conveyor(kit, map, prop);
                 return true;
@@ -1262,6 +1269,72 @@ internal static partial class Landmarks
         c.Rect(mid - 2, 0, 4, 6, Rgb(236, 70, 70));
         Pix.Lit(c, mid - 2, 0, 4, 6, ArtSheet.PublicLight);
         Pix.Outline(c);
+    }
+
+    /// <summary>
+    /// Lumiose City's tower (plan 23 · Z2; style guide, "Props"): four boxes of steel lattice stacked, each narrower than
+    /// the one under it, with a crown of light and a spire, centred on its tiles.
+    /// </summary>
+    private static void PrismTower(KitBuilder kit, int w, int d)
+    {
+        float cx = w / 2f, cz = d / 2f;
+        (float Half, float Y0, float Y1)[] stages = { (58, 0, 120), (42, 120, 220), (26, 220, 310), (14, 310, 380) };
+        foreach (var (half, y0, y1) in stages)
+        {
+            int side = (int)(half * 2), tall = (int)(y1 - y0);
+            var face = kit.Face($"prismtower.side.{side}x{tall}", side, tall, c => PaintTowerLattice(c));
+            var top = kit.Face($"prismtower.top.{side}", side, side, c => PaintTowerDeck(c));
+            kit.Box(cx - half, cx + half, cz - half, cz + half, y0, y1, top, face, face, face, face);
+        }
+        var crown = kit.Face("prismtower.crown", 16, 20, c =>
+        {
+            c.Rect(0, 0, 16, 20, Rgb(232, 176, 84));
+            c.Rect(2, 2, 12, 16, Rgb(250, 226, 150));
+            Pix.Lit(c, 0, 0, 16, 20, ArtSheet.PublicLight);
+        });
+        kit.Box(cx - 8, cx + 8, cz - 8, cz + 8, 380, 400, crown, crown, crown, crown, crown);
+        kit.Sprite(kit.Face("prismtower.spire", 6, 48, c =>
+        {
+            c.Rect(2, 8, 2, 40, Rgb(150, 162, 186));
+            c.Rect(0, 0, 6, 8, Rgb(250, 226, 150));
+            Pix.Lit(c, 0, 0, 6, 8, ArtSheet.PublicLight);
+        }), cx, cz, 400);
+    }
+
+    /// <summary>A side of a stage of Lumiose's tower: dark steel crossed by lighter struts, a band of lit glass at its foot.</summary>
+    public static void PaintTowerLattice(PixelCanvas c)
+    {
+        var steel = Tone.Of(104, 114, 138, 150, 162, 186, 62, 68, 90);
+        int w = c.Width, h = c.Height;
+        c.Rect(0, 0, w, h, steel.Dark);
+        for (int y = 0; y < h; y++)
+            for (int x = 0; x < w; x++)
+            {
+                int a = ((x + y) % 10 + 10) % 10, b = ((x - y) % 10 + 10) % 10;
+                if (a < 2 || b < 2) c.Rect(x, y, 1, 1, steel.Base);
+            }
+        // The corner posts and the ledge on top
+        c.Rect(0, 0, 4, h, steel.Light);
+        c.Rect(w - 4, 0, 4, h, steel.Base);
+        c.Rect(0, 0, w, 4, steel.Light);
+        // A band of lit glass round the stage's foot, its mullions in steel
+        int band = Math.Min(14, h / 4);
+        c.Rect(4, h - band - 2, w - 8, band, Rgb(164, 214, 236));
+        Pix.Lit(c, 4, h - band - 2, w - 8, band, ArtSheet.PublicLight);
+        for (int x = 8; x < w - 6; x += 8) c.Rect(x, h - band - 2, 2, band, steel.Dark);
+        c.Rect(0, h - 2, w, 2, steel.Dark);
+    }
+
+    /// <summary>The deck on top of a stage of Lumiose's tower: steel plate with a lighter rim.</summary>
+    public static void PaintTowerDeck(PixelCanvas c)
+    {
+        var steel = Tone.Of(104, 114, 138, 150, 162, 186, 62, 68, 90);
+        int w = c.Width, h = c.Height;
+        c.Rect(0, 0, w, h, steel.Base);
+        c.Rect(0, 0, w, 3, steel.Light);
+        c.Rect(0, 0, 3, h, steel.Light);
+        c.Rect(0, h - 3, w, 3, steel.Dark);
+        c.Rect(w - 3, 0, 3, h, steel.Dark);
     }
 
     // ------------------------------------------------------------------ the Battle Zone (plan 01 · M10)

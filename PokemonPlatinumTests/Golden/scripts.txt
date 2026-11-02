@@ -3572,6 +3572,30 @@ way -
 from Old Woman at 8,9 of LostTower5F
 way -
   Old Woman> Ohh... Who's there? I can hardly see a thing in this fog.
+=== LumioseCity_LysandreCafe.Lysandre
+from Lysandre at 6,5 of LumioseCity_LysandreCafe
+way -
+  Lysandre> The world grows more crowded every year. One day someone will have to choose who it is for.
+=== LumioseCity_LysandreCafe.Sycamore
+from Prof. Sycamore at 7,6 of LumioseCity_LysandreCafe
+way -
+  Prof. Sycamore> Isn't this café wonderful? The best in Lumiose, I'd say.
+=== LumioseCity_LysandreCafe.Waiter
+from Waiter at 8,4 of LumioseCity_LysandreCafe
+way -
+  Waiter> Good day. The gentleman in red owns this café. He takes his coffee very black and very hot.
+=== LumioseCity_SycamoreLab.Dexio
+from Dexio at 10,8 of LumioseCity_SycamoreLab
+way -
+  Dexio> Our research is on a change some Pokémon go through. The professor calls it the greatest mystery of Kalos.
+=== LumioseCity_SycamoreLab.Sina
+from Sina at 4,8 of LumioseCity_SycamoreLab
+way -
+  Sina> The professor's been looking forward to this all week. He's just over there!
+=== LumioseCity_SycamoreLab.Sycamore
+from Prof. Sycamore at 7,4 of LumioseCity_SycamoreLab
+way -
+  Prof. Sycamore> Ah, a visitor! Do look around, but please don't touch the machines.
 === MastersHall.Master
 from Master at 5,4 of MastersHall
 way -
@@ -4998,7 +5022,7 @@ way 0
   > Lucas received the TM89!
   > TM89 holds the move U-turn.
   > Lucas put it away in the TMs & HMs pocket.
-  Viola> The road to Lumiose City starts north-east of town. There's a lot more of Kalos to see through your lens!
+  Viola> The road to Lumiose City starts north of town, past the garden. There's a lot more of Kalos to see through your lens!
   * scene SantaluneCity_Gym.Viola
   * battle kalos_viola_1 Won
   * fanfare FanfareBadge
@@ -11570,6 +11594,11 @@ way -
   + FLAG_ROCKET_TAKEOVER_ACTIVE
   + FLAG_UNK_0C5
   = VAR_SCENE_ROCKET_TAKEOVER 0 -> 2
+=== common.KalosLumiose
+from a trainer with lines of their own
+way -
+  + FLAG_KALOS_HIDE_SYCAMORE_CAFE
+  + FLAG_KALOS_LUMIOSE_BEGUN
 === common.KalosNewGame
 from a trainer with lines of their own
 way -
@@ -11582,6 +11611,8 @@ way -
   + FLAG_KALOS_HIDE_SHAUNA_FOREST
   + FLAG_KALOS_HIDE_SHAUNA_SANTALUNE
   + FLAG_KALOS_HIDE_SHAUNA_VANIVILLE
+  + FLAG_KALOS_HIDE_SYCAMORE_CAFE
+  + FLAG_KALOS_LUMIOSE_BEGUN
   + FLAG_KALOS_SANTALUNE_BEGUN
   + FLAG_KALOS_STORY_BEGUN
 === common.KalosSantalune
@@ -11593,6 +11624,8 @@ way -
   + FLAG_KALOS_HIDE_RIVAL_SANTALUNE
   + FLAG_KALOS_HIDE_SHAUNA_FOREST
   + FLAG_KALOS_HIDE_SHAUNA_SANTALUNE
+  + FLAG_KALOS_HIDE_SYCAMORE_CAFE
+  + FLAG_KALOS_LUMIOSE_BEGUN
   + FLAG_KALOS_SANTALUNE_BEGUN
 === common.KantoNewGame
 from a trainer with lines of their own
@@ -20069,6 +20102,44 @@ way 1, from answer 1
   + FLAG_UNOVA_HIDE_LOSTLORN_TRAVELLER
   + FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK
   + seen lostlorn_forest.The traveller in the Lostlorn Forest
+=== lumiose_city.Assistants
+from the trigger at 358,412 of Kalos
+way -
+  Sina> There you are! You must be Lucas. We've been watching the gate all morning!
+  Dexio> Welcome to Lumiose City. We assist Professor Sycamore with his research. I'm Dexio, and this is Sina.
+  Sina> The professor is waiting for you at his laboratory. It's just up this avenue, on the right. You can't miss it!
+  Dexio> We'll go ahead and tell him you've arrived. Don't get lost among the shops, now.
+  * scene lumiose_city.The professor's assistants
+  * endscene
+  + FLAG_KALOS_HIDE_ASSISTANTS_LUMIOSE
+  = VAR_KALOS_STORY 0 -> 10
+  = VAR_OBJECTIVE 0 -> 510
+  + seen lumiose_city.The professor's assistants
+=== lumiose_city.Dexio
+from Dexio at 360,409 of Kalos
+way -
+  Dexio> Lumiose is a big city. The avenues all lead back to the tower, if you ever lose your way.
+=== lumiose_city.NotYetEast
+from the trigger at 418,358 of Kalos
+way -
+  > The road beyond is closed for repairs. It will open again soon.
+=== lumiose_city.NotYetNorth
+from the trigger at 358,301 of Kalos
+from the trigger at 391,301 of Kalos
+way -
+  > The road beyond is closed for repairs. It will open again soon.
+=== lumiose_city.NotYetSouth
+from the trigger at 391,418 of Kalos
+way -
+  > The road beyond is closed for repairs. It will open again soon.
+=== lumiose_city.NotYetWest
+from the trigger at 301,358 of Kalos
+way -
+  > The road to Route 5 is closed for repairs. It will open again soon.
+=== lumiose_city.Sina
+from Sina at 359,409 of Kalos
+way -
+  Sina> The professor's laboratory is up the avenue on the right!
 === magma_hideout_4f.Maxie
 from Maxie at 16,21 of MagmaHideout_4F
 way 0
@@ -27990,7 +28061,7 @@ way 1, from answer 1
 === santalune_city.NotYet
 from the trigger at 356,499 of Kalos
 way -
-  > Workers are mending the road to Lumiose City. It will open again soon.
+  > A guard stands at the garden gate: only Trainers with a Badge may take the road to Lumiose City.
 === santalune_city.Rival
 from {rival} at 324,527 of Kalos
 way -

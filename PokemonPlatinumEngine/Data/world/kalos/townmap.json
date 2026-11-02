@@ -1,7 +1,7 @@
 // The Town Map of Kalos (plan 23 · Z1, second part; docs/data-files.md, "The region map"): a cell for each chunk of the
 // overworld, the region's 24 by 24, most of it not drawn yet. The blocks are the places drawn so far on the cells their
-// tiles take; every word is ours. Fly lands before the player's house in Vaniville Town and before Santalune City's
-// Pokémon Center, each once it has been come to (the first arrival's flag, set by the area's own "arrival").
+// tiles take; every word is ours. Fly lands before the player's house in Vaniville Town and before
+// Santalune City's and Lumiose City's Pokémon Centers (plan 23 · Z2), each once it has been come to (the first arrival's flag, set by the area's own "arrival").
 {
   "map": "Kalos",
   "columns": 24,
@@ -18,10 +18,36 @@
     { "key": "kalos_route_2", "about": "A trail through the meadows, where the first wild Pokémon hide in the grass." },
     { "key": "santalune_forest", "about": "A green and quiet wood of glades, home to bugs, monkeys and a shy Pikachu or two." },
     { "key": "kalos_route_3", "about": "A broad road east past fields and a pond, from the forest to Santalune City." },
-    { "key": "santalune_city", "flag": "FLAG_FIRST_ARRIVAL_SANTALUNE_CITY", "arrival": [ "santalune_city" ], "about": "An old city of stone round a fountain, whose Gym Leader photographs bugs." }
+    { "key": "santalune_city", "flag": "FLAG_FIRST_ARRIVAL_SANTALUNE_CITY", "arrival": [ "santalune_city" ], "about": "An old city of stone round a fountain, whose Gym Leader photographs bugs." },
+    { "key": "kalos_route_4", "about": "A formal garden of fountains and flower beds on the way north to Lumiose City." },
+    { "key": "lumiose_city", "flag": "FLAG_FIRST_ARRIVAL_LUMIOSE_CITY", "arrival": [ "lumiose_city" ], "about": "The great city of light at the heart of Kalos, its boulevards ringed round a tower." }
   ],
   "landmarks": [],
   "blocks": [
+    { "x": 9, "y": 9, "kind": "Town", "name": "Lumiose City", "area": "lumiose_city" },
+    { "x": 10, "y": 9, "kind": "Town", "name": "Lumiose City", "area": "lumiose_city" },
+    { "x": 11, "y": 9, "kind": "Town", "name": "Lumiose City", "area": "lumiose_city" },
+    { "x": 12, "y": 9, "kind": "Town", "name": "Lumiose City", "area": "lumiose_city" },
+    { "x": 13, "y": 9, "kind": "Town", "name": "Lumiose City", "area": "lumiose_city" },
+    { "x": 9, "y": 10, "kind": "Town", "name": "Lumiose City", "area": "lumiose_city" },
+    { "x": 10, "y": 10, "kind": "Town", "name": "Lumiose City", "area": "lumiose_city" },
+    { "x": 11, "y": 10, "kind": "Town", "name": "Lumiose City", "area": "lumiose_city" },
+    { "x": 12, "y": 10, "kind": "Town", "name": "Lumiose City", "area": "lumiose_city" },
+    { "x": 13, "y": 10, "kind": "Town", "name": "Lumiose City", "area": "lumiose_city" },
+    { "x": 9, "y": 11, "kind": "Town", "name": "Lumiose City", "area": "lumiose_city" },
+    { "x": 10, "y": 11, "kind": "Town", "name": "Lumiose City", "area": "lumiose_city" },
+    { "x": 11, "y": 11, "kind": "Town", "name": "Lumiose City", "area": "lumiose_city" },
+    { "x": 12, "y": 11, "kind": "Town", "name": "Lumiose City", "area": "lumiose_city" },
+    { "x": 13, "y": 11, "kind": "Town", "name": "Lumiose City", "area": "lumiose_city" },
+    { "x": 9, "y": 12, "kind": "Town", "name": "Lumiose City", "area": "lumiose_city" },
+    { "x": 10, "y": 12, "kind": "Town", "name": "Lumiose City", "area": "lumiose_city" },
+    { "x": 11, "y": 12, "kind": "Town", "name": "Lumiose City", "area": "lumiose_city" },
+    { "x": 12, "y": 12, "kind": "Town", "name": "Lumiose City", "area": "lumiose_city" },
+    { "x": 13, "y": 12, "kind": "Town", "name": "Lumiose City", "area": "lumiose_city" },
+    { "x": 10, "y": 13, "kind": "Route", "name": "Route 4", "area": "kalos_route_4" },
+    { "x": 11, "y": 13, "kind": "Route", "name": "Route 4", "area": "kalos_route_4" },
+    { "x": 10, "y": 14, "kind": "Route", "name": "Route 4", "area": "kalos_route_4" },
+    { "x": 11, "y": 14, "kind": "Route", "name": "Route 4", "area": "kalos_route_4" },
     { "x": 10, "y": 15, "kind": "Town", "name": "Santalune City", "area": "santalune_city" },
     { "x": 11, "y": 15, "kind": "Town", "name": "Santalune City", "area": "santalune_city" },
     { "x": 8, "y": 16, "kind": "Route", "name": "Route 3", "area": "kalos_route_3" },
@@ -44,6 +70,7 @@
   ],
   "fly": [
     { "spawn": 1, "cells": "7,22 8,22" },
-    { "spawn": 2, "cells": "10,15 11,15 10,16 11,16" }
+    { "spawn": 2, "cells": "10,15 11,15 10,16 11,16" },
+    { "spawn": 3, "cells": "9,9 10,9 11,9 12,9 13,9 9,10 10,10 11,10 12,10 13,10 9,11 10,11 11,11 12,11 13,11 9,12 10,12 11,12 12,12 13,12" }
   ]
 }

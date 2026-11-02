@@ -1,7 +1,7 @@
 {
   "name": "SantaluneCity_SoutheastHouse",
   "displayName": "Santalune City",
-  "bgmTrack": "kalos/aquacorde",
+  "bgmTrack": "kalos/santalune",
   "interior": "House",
   "trees": "Round",
   "width": 11,

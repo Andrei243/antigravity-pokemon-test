@@ -317,6 +317,12 @@
     // Santalune City's Gym Leader (plan 23 · Z1, second part; our own design): a photographer of bugs, short fair hair, a cream
     // shirt under an olive vest, dark trousers and a camera in her hands
     "viola": { "hairColor": "#e2c88a", "hair": "Short", "top": "#f2ead8", "accent": "#6a7a3a", "bottom": "#2e3040", "shoes": "#4a3428", "eyes": "#3a5a4a", "vest": "#6a7a3a", "holds": "Camera", "lashes": true, "build": "Adult", "height": 1.02 },
+    // Lumiose City (plan 23 · Z2; our own designs, on the Adult build like the rest of Kalos's cast): the professor's two
+    // assistants, Sina with long sky-blue hair over a teal coat and Dexio in glasses under the same coat, and the man
+    // of the café on the north side, Lysandre, tall, a mane of red hair and a red beard over a black suit and coat
+    "sina": { "hairColor": "#86b6dc", "hair": "Long", "top": "#3a9a9a", "accent": "#f2f2ee", "bottom": "#2a2e3a", "shoes": "#2a2a30", "eyes": "#3a5a7a", "coat": true, "lashes": true, "build": "Adult", "height": 1.02 },
+    "dexio": { "hairColor": "#2a2a34", "hair": "Short", "top": "#3a9a9a", "accent": "#f2f2ee", "bottom": "#2a2e3a", "shoes": "#2a2a30", "eyes": "#3a3a4a", "glasses": "#2a2a34", "coat": true, "build": "Adult", "height": 1.06 },
+    "lysandre": { "hairColor": "#c8402a", "hair": "Swept", "top": "#22222a", "accent": "#c8402a", "bottom": "#22222a", "shoes": "#1c1c22", "eyes": "#5a4a3a", "beard": true, "coat": true, "build": "Adult", "height": 1.16 },
     // The first trainers of the open areas (plan 11 · C2), each our own take. The school kids: navy with a white collar, the boy in a bowl cut and grey shorts with a satchel, the girl with a ponytail tied in red and a red skirt
     "school_kid_m": { "hairColor": "#4a3428", "hair": "Bowl", "top": "#34467a", "accent": "#f4f4f6", "bottom": "#8a8c96", "shoes": "#4a3428", "shorts": true, "bag": "#b4864e", "blush": true },
     "school_kid_f": { "hairColor": "#3c2a26", "hair": "Ponytail", "hatBand": "#d8434a", "top": "#34467a", "accent": "#f4f4f6", "bottom": "#c4464c", "shoes": "#3c2c2a", "skirt": true, "bag": "#b4864e", "lashes": true, "blush": true },

@@ -1,10 +1,10 @@
 {
   // Route 2, the Avance Trail (plan 23 · Z1, second part): drawn by hand, our words. A short trail north through a meadow
   // to Santalune Forest, its grass the first wild Pokémon of Kalos. The neighbour waits a little way up it once the
-  // skates are had, to show how a Pokémon is caught (kalos_route_2.txt), hidden by a flag of ours until then. The song
-  // is Vaniville's, until plan 31 writes Kalos's routes their own
+  // skates are had, to show how a Pokémon is caught (kalos_route_2.txt), hidden by a flag of ours until then. Its song
+  // is plan 31 · MU3's Route 2
   "area": "kalos_route_2",
-  "bgmTrack": "kalos/vaniville",
+  "bgmTrack": "kalos/route2",
   "trees": "Round",
   "architecture": "Hamlet",
   "triggers": [

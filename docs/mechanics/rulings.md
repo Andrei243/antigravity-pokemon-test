@@ -8094,6 +8094,51 @@ Plan 10 · F2 to F5 (2026-11-02). Neither is Platinum's: both are rows of the op
   drawn so far as blocks, and Fly's two places, before the player's house in Vaniville Town and before Santalune's
   Pokémon Center, each opened by its first arrival (the area record's `arrival`).
 
+## Lumiose City and Route 4, drawn by hand (2026-11-02, plan 23 · Z2, first part)
+
+- **Route 4, the Parterre Way**, is drawn as a formal garden north from Santalune City: a promenade six tiles wide
+  between clipped trees, two squares across it each with a fountain and a walk across the garden, beds of flowers in
+  the corners and patches of tall grass among them. Its wild Pokémon are Kalos-Central's flower and garden species
+  (Ledyba, Flabébé, Budew, Combee, Skitty, Bunnelby, Ralts) at 7 to 9 in a table of ours; its three trainers are ours.
+  Santalune's guard at the garden gate turns the player back only before the Bug Badge (the trigger now asks
+  `VAR_KALOS_STORY` 8, where it asked a variable nothing set). **Ours**: X and Y's Route 4 grass grows in the colours of
+  its flowers; here it is the field's tall grass.
+- **Lumiose City** is drawn as an octagon on the grid, 120 tiles across, in the middle of the region: the tower of light
+  in the middle of a round central plaza, a ring of boulevard round it, a second ring half way out and a third along
+  the city's edge, avenues from the middle to five plazas (Jaune north, Magenta north-east, Rouge east, Bleu south-east,
+  Vert west, each with a fountain and a sign) and the square at the foot of the avenue from Route 4 in the south.
+  Between the streets stand blocks of eight rows, each cut into buildings of six to thirteen tiles with an alley between
+  each, found at their doors, the town's own way of building (`Architecture.Lumiose`: cream stone, three storeys, steep
+  slate roofs, balconies). The drawing is made by a small script of ours (a city of that size by hand would be all
+  copying mistakes); the drawing is the source and the script is not kept. **Ours**: the city's whole shape (the five
+  plazas' places and the rings are ours, at the level of the city's public description), the diagonal avenues as
+  staircases of the grid, North and South Boulevard as one ring with no power cut closing its north half, and every
+  street open at once; the roads out of the city (to Routes 5, 13, 14, 15 and 16) turn the player back until later
+  sessions draw them (`VAR_KALOS_LUMIOSE_ROADS`, which nothing sets yet).
+- **The tower** is a prop of ours (`PropType.PrismTower`), four stacked boxes of steel lattice about twelve tiles high, blocking its
+  tiles; nobody goes in. Its Gym is plan 23 · Z4's, with Lumiose's second half.
+- **Rooms**: five open, all hand-made map files: the Pokémon Center by the south square (Santalune's plan, the Mart's
+  counter inside), Professor Sycamore's laboratory on the avenue north of it (one room; X and Y's floors and lift are
+  not built), a café across from it, a house, and Lysandre's café in the north. The other thirty-one doors are shut
+  (the overlay's `locked`), the boutique and the hotels among them: the boutique's stock (plan 11 · C10) is a later
+  session's.
+- **The story** (our words on X and Y's beats as they are publicly told; `VAR_KALOS_STORY` 9 to 12): the professor's
+  two assistants meet the player at the south gate and send them up the avenue (10); the professor battles with
+  Kanto's first three (`kalos_sycamore_1`, a class of ours, Pokémon Professor) and gives the one the player picks at
+  level 10 (11); he goes ahead to Lysandre's café, where a tall man of the city speaks of a world shared by fewer hands
+  and of Pokémon that change, and the professor goes back to his laboratory (12). **Ours**: the friends are not at the
+  laboratory, the Kanto Pokémon is chosen from a question and not from balls on a table, and the café's scene plays as
+  the player comes in. `common.KalosLumiose` hides the professor at the café until his scene, run for a new game by
+  `KalosSantalune` and given to an older save by Lumiose's arrival. The objectives go on from Viola's (Kalos's block,
+  509 to 511); "nothing presses" moves from 509 to 599, so a save that stored 509 after the Bug Badge reads it as the
+  road on to Lumiose, which is what it then meant.
+- **Music.** Plan 31 · MU3's songs play where they belong: Route 2's on Routes 2, 3 and 4, the forest's in Santalune
+  Forest, Santalune's in the city and its houses, the Pokémon Center's in the Center and the Gym's in Viola's hall;
+  Kalos's battle, victory and eye songs are found by role. Lumiose has no song of its own yet: the city and its
+  laboratory play Santalune's and the cafés Aquacorde's until a later session of plan 31.
+- **The Town Map and Fly**: Route 4 and Lumiose's twenty cells are blocks of `townmap.json`, and Fly lands before
+  Lumiose's Pokémon Center (spawn 3) once the city has been come to.
+
 ## How the player moves, region by region (2026-11-02, plan 30 · FM1)
 
 Not Platinum's: Platinum and every game before X and Y walk four ways a tile at a time (`src/player_move.c`), and

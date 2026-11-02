@@ -1,7 +1,7 @@
 {
   "name": "SantaluneCity_PokemonCenter_1F",
   "displayName": "Pokémon Center",
-  "bgmTrack": "common/pokecenter",
+  "bgmTrack": "kalos/pokecenter",
   "interior": "PokemonCenter",
   "trees": "Round",
   "width": 17,

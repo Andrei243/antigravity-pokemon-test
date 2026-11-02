@@ -51,10 +51,11 @@
     }
   },
   // The heal places of the towns drawn so far: the player's house in Vaniville Town, and Santalune City's Pokémon
-  // Center (plan 23 · Z1, second part), where Fly lands too
+  // Center (plan 23 · Z1, second part), and Lumiose City's by its south square (plan 23 · Z2), where Fly lands too
   "spawns": [
     { "id": 1, "area": "vaniville_town", "x": 242, "y": 722, "room": "VanivilleTown_PlayersHouse_1F" },
-    { "id": 2, "area": "santalune_city", "x": 325, "y": 520, "room": "SantaluneCity_PokemonCenter_1F" }
+    { "id": 2, "area": "santalune_city", "x": 325, "y": 520, "room": "SantaluneCity_PokemonCenter_1F" },
+    { "id": 3, "area": "lumiose_city", "x": 349, "y": 408, "room": "LumioseCity_PokemonCenter_1F" }
   ],
   // Plan 18 · W4: X and Y's levels for a team that crossed from Unova, from Iris's 185 on the first route to Diantha at
   // 205, as the W4 study placed Kalos's Champion; W4b-1: the post-game's strongest (about 76, approximate until the

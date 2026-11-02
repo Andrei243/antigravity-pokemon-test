@@ -8,7 +8,10 @@ partial class Harness
     /// neighbours at the door, the friends at the café, the choice of three, the Pokédex, Shauna's battle, the letter,
     /// Mom and the roller skates), and on through the second part (<c>wk30</c> to <c>wk48</c>: Route 2, Santalune Forest,
     /// Route 3, Santalune City and its rooms; <c>wks13</c> to <c>wks24</c>: the neighbour's lesson, Shauna in the forest and
-    /// its Pikachu, Tierno's battle, the neighbour's, the friends on the square, Viola and the Bug Badge). It wins every battle a scene starts and prints what each scene left behind.
+    /// its Pikachu, Tierno's battle, the neighbour's, the friends on the square, Viola and the Bug Badge), and plan 23 · Z2's
+    /// first part (<c>wk50</c> to <c>wk67</c>: Route 4's garden and Lumiose City's gate, avenue, tower, boulevard and plazas;
+    /// <c>wk70</c> to <c>wk73</c>: its rooms; <c>wks25</c> to <c>wks29</c>: the assistants at the gate, the professor, his
+    /// battle, Kanto's first three and Lysandre's café). It wins every battle a scene starts and prints what each scene left behind.
     /// </summary>
     public void KalosMode()
     {
@@ -38,10 +41,20 @@ partial class Harness
             ("wk40_santalune_gym_day", "wk41_santalune_gym_night", "Kalos", 341, 513, Direction.Up),
             ("wk42_santalune_center_day", "wk43_santalune_center_night", "Kalos", 325, 524, Direction.Up),
             ("wk44_santalune_south_day", "wk45_santalune_south_night", "Kalos", 340, 540, Direction.Up),
+            // Plan 23 · Z2: Route 4's garden and Lumiose City
+            ("wk50_route4_day", "wk51_route4_night", "Kalos", 358, 482, Direction.Up),
+            ("wk52_route4_fountain_day", "wk53_route4_fountain_night", "Kalos", 358, 443, Direction.Up),
+            ("wk54_lumiose_gate_day", "wk55_lumiose_gate_night", "Kalos", 359, 413, Direction.Up),
+            ("wk56_lumiose_avenue_day", "wk57_lumiose_avenue_night", "Kalos", 360, 392, Direction.Up),
+            ("wk58_lumiose_tower_day", "wk59_lumiose_tower_night", "Kalos", 359, 371, Direction.Up),
+            ("wk60_lumiose_boulevard_day", "wk61_lumiose_boulevard_night", "Kalos", 346, 352, Direction.Up),
+            ("wk62_lumiose_vert_day", "wk63_lumiose_vert_night", "Kalos", 314, 366, Direction.Up),
+            ("wk64_lumiose_magenta_day", "wk65_lumiose_magenta_night", "Kalos", 390, 334, Direction.Up),
+            ("wk66_lumiose_jaune_day", "wk67_lumiose_jaune_night", "Kalos", 360, 322, Direction.Up),
         };
         foreach (var (day, _, map, x, y, facing) in places)
         {
-            At(map, x, y, facing); Frames(2); Shot(day);
+            At(map, x, y, facing); Frames(2); game.LocationSign.Hide(); Shot(day);
             ShotCrop(day + "_native", 640, 300, 640, 360, 2);
         }
         (string Name, string Map, int X, int Y, Direction Facing)[] rooms =
@@ -55,8 +68,23 @@ partial class Harness
             ("wk46_santalune_center_inside", "SantaluneCity_PokemonCenter_1F", 8, 9, Direction.Up),
             ("wk47_santalune_gym_inside", "SantaluneCity_Gym", 6, 13, Direction.Up),
             ("wk48_santalune_house", "SantaluneCity_NorthwestHouse", 4, 8, Direction.Up),
+            ("wk70_lumiose_center_inside", "LumioseCity_PokemonCenter_1F", 8, 9, Direction.Up),
+            ("wk71_sycamore_lab", "LumioseCity_SycamoreLab", 7, 9, Direction.Up),
+            ("wk72_lysandre_cafe", "LumioseCity_LysandreCafe", 6, 8, Direction.Up),
+            ("wk73_lumiose_cafe", "LumioseCity_Cafe", 4, 8, Direction.Up),
         };
         foreach (var (name, map, x, y, facing) in rooms) { At(map, x, y, facing); Frames(2); Shot(name); }
+
+        // Plan 23 · Z2: Lumiose from further off, the camera's lens zoomed out, so the tower and the blocks round it are seen whole
+        var rig = game.World.Camera;
+        foreach (var (name, x, y) in new[] { ("wk68_lumiose_tower_wide", 359, 366), ("wk69_lumiose_blocks_wide", 333, 350) })
+        {
+            At("Kalos", x, y, Direction.Up); Frames(2);
+            rig.ZoomTo(0.45f, 0f);
+            Frames(30); game.LocationSign.Hide(); Shot(name);
+            rig.Reset();
+            Frames(2);
+        }
 
         // A skater on Vaniville's south lane: the skates put on with the run button, mid-step and gliding to a stop
         game.Story.Set(PokemonPlatinumEngine.Overworld.SkateRules.Flag);
@@ -77,7 +105,7 @@ partial class Harness
         engine.ApplySettings(window: false);
         foreach (var (_, night, map, x, y, facing) in places)
         {
-            At(map, x, y, facing); Frames(2); Shot(night);
+            At(map, x, y, facing); Frames(2); game.LocationSign.Hide(); Shot(night);
         }
         engine.Settings.TimeOfDay = TimeOfDay.Day;
         engine.ApplySettings(window: false);
@@ -275,6 +303,39 @@ partial class Harness
         ReadTo(null);
         Left("the Gym");
         Console.WriteLine($"  badges of Kalos: {game.Story.BadgeCount(PokemonPlatinumEngine.Data.RegionDatabase.Kalos)}");
+
+        // ---- plan 23 · Z2: up Route 4 to Lumiose City's south gate, where the professor's assistants wait
+        StepOnto("Kalos", 359, 412, Direction.Up);
+        ReadTo("watching the gate all morning"); Frames(10); Shot("wks25_the_assistants");
+        ReadTo(null);
+        Left("Lumiose's south gate");
+
+        // ---- the laboratory: the professor, his battle and Kanto's first three
+        At("LumioseCity_SycamoreLab", 7, 5, Direction.Up); Frames(2);
+        game.Interact();
+        ReadTo("At last! I'm Sycamore"); Frames(10); Shot("wks26_professor_sycamore");
+        for (int i = 0; i < 1500 && State() != GameState.Battle; i++)
+        {
+            if (Box().IsActive && Box().IsCurrentLineComplete && !Box().IsQuestion) { Box().Advance(); Frames(2); }
+            else Frames(1);
+        }
+        if (State() == GameState.Battle) { Skip(1.0); ToMainMenu(game.Battle); Shot("wks27_sycamores_battle"); Win(); }
+        else Console.WriteLine("  !! never happened: the professor's battle");
+        for (int i = 0; i < 1500 && !engine.Choice.IsOpen; i++)
+        {
+            if (Box().IsActive && Box().IsCurrentLineComplete && !Box().IsQuestion) { Box().Advance(); Frames(2); }
+            else Frames(1);
+        }
+        Frames(10); Shot("wks28_kanto_three");
+        ReadTo(null);
+        Left("the laboratory");
+
+        // ---- Lysandre's café in the north of the city
+        ComeThrough("LumioseCity_LysandreCafe", 6, 8, Direction.Up);
+        ReadTo("My name is Lysandre"); Frames(10); Shot("wks29_lysandre");
+        ReadTo(null);
+        Left("the café");
+        Console.WriteLine($"  what next: {PokemonPlatinumEngine.Story.Objectives.Current(story, PokemonPlatinumEngine.Data.RegionDatabase.Kalos)?.Name}");
         game.DeleteSave();
     }
 }

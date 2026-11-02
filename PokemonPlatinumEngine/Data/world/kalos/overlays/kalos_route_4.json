@@ -1,0 +1,56 @@
+{
+  // Route 4, the Parterre Way (plan 23 · Z2): drawn by hand, our words. A formal garden north from Santalune City to
+  // Lumiose City's south gate: a broad promenade between clipped trees, two squares each with a fountain and a walk
+  // across the garden, beds of flowers in the corners and patches of tall grass among them, where the garden's
+  // flower Pokémon live. Its song is Route 2's (plan 31 · MU3), which Kalos's first routes share, until a later
+  // session of plan 31 writes the garden its own
+  "area": "kalos_route_4",
+  "bgmTrack": "kalos/route2",
+  "trees": "Round",
+  "architecture": "Hamlet",
+  "props": [
+    { "type": "Fountain", "x": 357, "y": 436, "width": 3, "depth": 3 },
+    { "type": "Fountain", "x": 357, "y": 466, "width": 3, "depth": 3 },
+    { "type": "Bench", "x": 352, "y": 434, "width": 2, "depth": 1 },
+    { "type": "Bench", "x": 363, "y": 464, "width": 2, "depth": 1 },
+    { "type": "Topiary", "x": 340, "y": 436, "width": 1, "depth": 1 },
+    { "type": "Topiary", "x": 379, "y": 439, "width": 1, "depth": 1 },
+    { "type": "Topiary", "x": 340, "y": 466, "width": 1, "depth": 1 },
+    { "type": "Topiary", "x": 379, "y": 469, "width": 1, "depth": 1 }
+  ],
+  "people": {
+    "lass": {
+      "name": "Élodie",
+      "npcType": "Lass",
+      "trainer": {
+        "dialogueBefore": "Lass Élodie: Isn't the garden lovely? My Pokémon and I come to see the flowers every day!",
+        "dialogueAfter": "Lass Élodie: I should spend less time smelling flowers and more time training."
+      }
+    },
+    "youngster": {
+      "name": "Théo",
+      "npcType": "Youngster",
+      "trainer": {
+        "dialogueBefore": "Youngster Théo: Lumiose is just up the road! But you'll have to get past me first!",
+        "dialogueAfter": "Youngster Théo: Go on, then. The city won't wait for you forever."
+      }
+    },
+    "picnicker": {
+      "name": "Margaux",
+      "npcType": "picnicker",
+      "trainer": {
+        "dialogueBefore": "Picnicker Margaux: I picked the best spot in the garden for lunch. Want to battle for it?",
+        "dialogueAfter": "Picnicker Margaux: Fine, the spot is yours. I'll share my sandwich, though."
+      }
+    },
+    "gardener": {
+      "name": "Gardener",
+      "npcType": "Gentleman",
+      "still": true,
+      "dialog": [ "I've tended these beds for thirty years. The Flabébé know me, and they choose a flower of their very own." ]
+    }
+  },
+  "signs": {
+    "RouteSign": "Route 4 · Parterre Way\nNorth: Lumiose City\nSouth: Santalune City"
+  }
+}

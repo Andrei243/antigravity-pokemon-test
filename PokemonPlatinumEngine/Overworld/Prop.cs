@@ -280,6 +280,12 @@ public enum PropType
     UnownWall,
     /// <summary>The mouth of a Hidden Grotto in a tree wall (plan 22 · U11): a thing of the map (<see cref="NPC.GrottoHollowType"/>), drawn as a card.</summary>
     GrottoHollow,
+    /// <summary>
+    /// Lumiose City's tower of light in the middle of its central plaza (plan 23 · Z2; our own drawing): four stages of
+    /// steel lattice, each narrower than the one under it, a band of lit glass round each and a crown lit all night. An overlay's prop,
+    /// so it blocks every tile it covers.
+    /// </summary>
+    PrismTower,
 }
 
 /// <summary>A piece of furniture or decoration placed in a room, covering a rectangle of tiles.</summary>
@@ -298,7 +304,8 @@ public sealed class Prop
     public string Model { get; init; } = "";
 
     /// <summary>Whether it blocks every tile it covers. A conveyor and its gantry stand over open ground: the world says which of their tiles block.</summary>
-    public bool IsSolid => Type < PropType.Rug && Type is not (PropType.Conveyor or PropType.Gantry);
+    // Lumiose City's tower (plan 23 · Z2) is appended past the decorations and blocks all the same: nothing walks through it
+    public bool IsSolid => Type < PropType.Rug && Type is not (PropType.Conveyor or PropType.Gantry) || Type == PropType.PrismTower;
 
     /// <summary>Reception and shop counters: you can talk to whoever stands behind them.</summary>
     public bool IsCounter => Type is PropType.Counter or PropType.LabDesk;

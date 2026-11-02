@@ -1,10 +1,10 @@
 {
   // Route 3, the Ouvert Way (plan 23 · Z1, second part): drawn by hand, our words. Out of the forest's north side and east
   // along a broad road between fields and a pond to Santalune City. Tierno and Trevor wait where the way from the
-  // forest meets the road (kalos_route_3.txt), hidden by a flag of ours until then, and Tierno battles. The song is
-  // Vaniville's, until plan 31 writes Kalos's routes their own
+  // forest meets the road (kalos_route_3.txt), hidden by a flag of ours until then, and Tierno battles. Its song is
+  // Route 2's (plan 31 · MU3), which Kalos's first routes share
   "area": "kalos_route_3",
-  "bgmTrack": "kalos/vaniville",
+  "bgmTrack": "kalos/route2",
   "trees": "Round",
   "architecture": "Hamlet",
   "triggers": [

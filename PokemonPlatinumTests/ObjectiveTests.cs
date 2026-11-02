@@ -288,8 +288,8 @@ public class ObjectiveTests
     public void KalosFollowsItsChaptersCount()
     {
         var story = new StoryState();
-        string[] expected = { "kalosDownstairs", "kalosDoor", "kalosAquacorde", "kalosHome", "kalosRoute2", "kalosForest", "kalosRoute3", "kalosSantalune", "kalosViola", "kalosFree" };
-        for (int n = 0; n <= 9; n++)
+        string[] expected = { "kalosDownstairs", "kalosDoor", "kalosAquacorde", "kalosHome", "kalosRoute2", "kalosForest", "kalosRoute3", "kalosSantalune", "kalosViola", "kalosRoute4", "kalosLab", "kalosLysandre", "kalosFree" };
+        for (int n = 0; n <= 12; n++)
         {
             story.SetVar("VAR_KALOS_STORY", n);
             Assert.Equal(expected[n], Objectives.Current(story, RegionDatabase.Kalos)?.Name);

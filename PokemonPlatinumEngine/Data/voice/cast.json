@@ -329,6 +329,10 @@
       "note": "first spoken at rustboro_city.txt(56)",
       "provisional": true
     },
+    "dexio": {
+      "note": "first spoken at LumioseCity_SycamoreLab.txt(70)",
+      "provisional": true
+    },
     "director": {
       "note": "first spoken at goldenrod_radio_tower_5f.txt(28)",
       "provisional": true
@@ -717,6 +721,10 @@
     },
     "lydia": {
       "note": "first spoken at phone.txt(273)",
+      "provisional": true
+    },
+    "lysandre": {
+      "note": "first spoken at LumioseCity_LysandreCafe.txt(16)",
       "provisional": true
     },
     "machop": {
@@ -1188,6 +1196,10 @@
       "note": "first spoken at common.txt(379)",
       "provisional": true
     },
+    "sina": {
+      "note": "first spoken at LumioseCity_SycamoreLab.txt(61)",
+      "provisional": true
+    },
     "skitty": {
       "note": "first spoken at fallarbor_town_mart.txt(5)",
       "provisional": true
@@ -1525,6 +1537,7 @@
     "Depot Agent": "depot_agent",
     "Derek": "derek",
     "Devon Employee": "devon_employee",
+    "Dexio": "dexio",
     "Director": "director",
     "Dock": "dock",
     "Dome Owner": "dome_owner",
@@ -1641,6 +1654,7 @@
     "Lucius": "lucius",
     "Lucy": "lucy",
     "Lydia": "lydia",
+    "Lysandre": "lysandre",
     "Machop": "machop",
     "Maid Belinda": "maid_belinda",
     "Maid Clare": "maid_clare",
@@ -1769,6 +1783,7 @@
     "Shopkeeper": "shopkeeper",
     "Sidney": "sidney",
     "Sign": "sign",
+    "Sina": "sina",
     "Skitty": "skitty",
     "Skyla": "skyla",
     "Slowbro": "slowbro",

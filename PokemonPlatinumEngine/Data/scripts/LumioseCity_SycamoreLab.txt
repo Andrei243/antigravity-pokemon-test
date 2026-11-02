@@ -1,0 +1,72 @@
+# Professor Sycamore's laboratory in Lumiose City (plan 23 · Z2). The lines are our own, on X and Y's beats as they are
+# publicly described (docs/mechanics/rulings.md, "Lumiose City and Route 4, drawn by hand"): the professor meets the
+# player at last, battles with Kanto's first three to see how they and their partner get on, and gives the one the
+# player chooses; then he goes ahead to Lysandre's café in the north of the city (LumioseCity_LysandreCafe.txt).
+# VAR_KALOS_STORY is vaniville_town.txt's count: 10 becomes 11 here. His team is Kalos's trainers.json's
+# kalos_sycamore_1. The room's people: sycamore (FLAG_KALOS_HIDE_SYCAMORE_LAB while he waits at the café), sina, dexio.
+
+
+script Sycamore
+  face sycamore player
+  speaker "Prof. Sycamore"
+  if var VAR_KALOS_STORY >= 12 goto After
+  if var VAR_KALOS_STORY >= 11 goto Cafe
+  if var VAR_KALOS_STORY < 10 goto Early
+  scene "Professor Sycamore"
+  say "Bonjour, {player}! At last! I'm Sycamore. Thank you for coming all this way to see me."
+  say "I asked you and your friends to travel Kalos because I want to know Pokémon, all of them, through your eyes."
+  say "And the best way for me to understand you and your partner is... a battle, of course! Shall we?"
+  battle self as "kalos_sycamore_1" canlose
+  heal
+  speaker "Prof. Sycamore"
+  say "Magnifique! You and your Pokémon already move as one. That's exactly what I hoped to see."
+  say "The three Pokémon I used came all the way from Kanto. I'd like one of them to travel with you. Choose!"
+  choose "Which Pokémon will you take?" "Bulbasaur" "Charmander" "Squirtle"
+  if var RESULT == 0 goto Bulbasaur
+  if var RESULT == 1 goto Charmander
+  givepokemon "Squirtle" 10
+  text "{player} received Squirtle!"
+  goto Given
+label Bulbasaur
+  givepokemon "Bulbasaur" 10
+  text "{player} received Bulbasaur!"
+  goto Given
+label Charmander
+  givepokemon "Charmander" 10
+  text "{player} received Charmander!"
+label Given
+  setflag FLAG_KALOS_RECEIVED_KANTO_STARTER
+  speaker "Prof. Sycamore"
+  say "Take good care of each other. One day I'll tell you about the strange change some Pokémon go through. Not today!"
+  say "Now, there's someone I'd like you to meet. Come to the café in the north of the city, past the tower. I'll go on ahead."
+  hide sycamore
+  setflag FLAG_KALOS_HIDE_SYCAMORE_LAB
+  clearflag FLAG_KALOS_HIDE_SYCAMORE_CAFE
+  setvar VAR_KALOS_STORY 11
+  objective kalosLysandre
+  endscene
+  end
+label Early
+  say "Ah, a visitor! Do look around, but please don't touch the machines."
+  end
+label Cafe
+  say "The café is north of the tower. I'll meet you there!"
+  end
+label After
+  say "Kalos is a big region, {player}. Go and see all of it, and come back and tell me everything!"
+  end
+
+
+script Sina
+  speaker "Sina"
+  if var VAR_KALOS_STORY >= 11 goto After
+  say "The professor's been looking forward to this all week. He's just over there!"
+  end
+label After
+  say "Kanto's first three are very rare in Kalos. Yours is very lucky to have you!"
+  end
+
+script Dexio
+  speaker "Dexio"
+  say "Our research is on a change some Pokémon go through. The professor calls it the greatest mystery of Kalos."
+  end

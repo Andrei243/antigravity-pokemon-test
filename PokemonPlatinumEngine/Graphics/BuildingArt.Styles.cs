@@ -149,7 +149,13 @@ internal static partial class BuildingArt
             // Kalos (plan 23 · Z1): Vaniville's cream stucco under slate-blue gables, Aquacorde's pale stone under terracotta hips
             Architecture.Hamlet => Pitched(WallKind.Stucco, Rgb(78, 96, 134)) with { Shutters = true, FlowerBoxes = true },
             Architecture.Canalside => Pitched(WallKind.PaleStone, Rgb(190, 96, 64), RoofShape.Hip) with { Shutters = true, FlowerBoxes = true },
-            Architecture.Crater => Pitched(WallKind.PaleStone, Rgb(46, 96, 168), RoofShape.Hip) with { Shutters = true },
+            // Lumiose (plan 23 · Z2): blocks of cream stone three storeys high under steep slate roofs, with sash windows,
+            // iron balconies and chimneys, the city of boulevards
+            Architecture.Lumiose => Pitched(WallKind.PaleStone, Rgb(76, 86, 108), RoofShape.Hip) with
+            {
+                Storeys = 3, Window = WindowKind.Sash, Balconies = true, Steep = true, Chimney = true, Accent = roof ?? Rgb(44, 52, 70)
+            },
+            Architecture.Crater =>Pitched(WallKind.PaleStone, Rgb(46, 96, 168), RoofShape.Hip) with { Shutters = true },
             Architecture.Raft => Pitched(WallKind.Log, Rgb(206, 166, 92)) with { Shutters = true },
             Architecture.Bloomstone => Pitched(WallKind.PaleStone, Rgb(190, 92, 132), RoofShape.Hip) with { FlowerBoxes = true },
             _ => Pitched(WallKind.Planks, Teal) with { Chimney = true, Shutters = true, FlowerBoxes = true }

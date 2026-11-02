@@ -1,7 +1,7 @@
 {
   "name": "SantaluneCity_Gym",
   "displayName": "Santalune Gym",
-  "bgmTrack": "common/gym",
+  "bgmTrack": "kalos/gym",
   "interior": "Gym",
   "trees": "Round",
   "battleArena": "Gym",

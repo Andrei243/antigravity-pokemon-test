@@ -22,12 +22,12 @@ script Viola
   defeat "kalos_lass_mireille"
   defeat "kalos_bug_catcher_luc"
   setvar VAR_KALOS_STORY 9
-  objective kalosFree
+  objective kalosRoute4
 label Tm
   say "And take this as well. My bugs use it to strike and slip away before anyone can blink."
   give "TM89"
   setflag FLAG_KALOS_RECEIVED_TM_VIOLA
-  say "The road to Lumiose City starts north-east of town. There's a lot more of Kalos to see through your lens!"
+  say "The road to Lumiose City starts north of town, past the garden. There's a lot more of Kalos to see through your lens!"
   endscene
   end
 label Won
