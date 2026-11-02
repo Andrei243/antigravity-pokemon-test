@@ -66,10 +66,45 @@
     },
     {
       "en": [
+        "Hey, give me your number. I want a rematch, and I won't lose next time!"
+      ],
+      "text": [
+        ""
+      ],
+      "was": [
+        "Data viitoare te înving eu. Și atunci îmi vei datora o după-amiază pe promontoriu!"
+      ]
+    },
+    {
+      "en": [
+        "Swap numbers with Misty?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Registered Misty in the Pokégear."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "On Wednesday mornings I'll be at the Fighting Dojo in Saffron City. Come and battle me there!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
         "Next time, I'll beat you. Then you can owe me an afternoon on the cape!"
       ],
       "text": [
-        "Data viitoare te înving eu. Și atunci îmi vei datora o după-amiază pe promontoriu!"
+        ""
       ]
     }
   ],

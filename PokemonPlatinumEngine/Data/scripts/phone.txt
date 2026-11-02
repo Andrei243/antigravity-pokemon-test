@@ -231,7 +231,7 @@ script Erin
   random 3
   if result == 0 goto Gift
 label Chat
-  say "Hi, it's Erin! My Rapidash and I raced all the way down Route 46 today. We won, of course!"
+  say "Hi, it's Erin! My partner and I raced all the way down Route 46 today. We won, of course!"
   end
 label Gift
   setflag FLAG_JOHTO_PHONE_GIFT_ERIN

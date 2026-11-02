@@ -19,6 +19,166 @@
           "Maeștrii din Kanto și Johto vin aici să se lupte între ei. Dacă ai noroc, ai putea întâlni unul."
         ]
       }
+    },
+    "t11r0101_gsleader1": {
+      "name": {
+        "en": [
+          "Falkner"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t11r0101_gsleader2": {
+      "name": {
+        "en": [
+          "Bugsy"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t11r0101_gsleader3": {
+      "name": {
+        "en": [
+          "Whitney"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t11r0101_gsleader4": {
+      "name": {
+        "en": [
+          "Morty"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t11r0101_gsleader6": {
+      "name": {
+        "en": [
+          "Jasmine"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t11r0101_gsleader7": {
+      "name": {
+        "en": [
+          "Pryce"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t11r0101_gsleader8": {
+      "name": {
+        "en": [
+          "Clair"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t11r0101_gsleader14": {
+      "name": {
+        "en": [
+          "Brock"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t11r0101_gsleader11": {
+      "name": {
+        "en": [
+          "Misty"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t11r0101_gsleader9": {
+      "name": {
+        "en": [
+          "Lt. Surge"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t11r0101_gsleader12": {
+      "name": {
+        "en": [
+          "Erika"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t11r0101_gsleader13": {
+      "name": {
+        "en": [
+          "Janine"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t11r0101_gsleader10": {
+      "name": {
+        "en": [
+          "Sabrina"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t11r0101_gsleader15": {
+      "name": {
+        "en": [
+          "Blaine"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t11r0101_gsleader16": {
+      "name": {
+        "en": [
+          "Blue"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t11r0101_gsleader5": {
+      "name": {
+        "en": [
+          "Chuck"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

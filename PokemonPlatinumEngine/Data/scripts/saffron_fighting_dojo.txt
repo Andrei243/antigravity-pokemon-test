@@ -31,7 +31,7 @@ script Bugsy
 script Whitney
   face t11r0101_gsleader3 player
   speaker "Whitney"
-  say "No crying this time, I promise! Miltank and I have been practising!"
+  say "No crying this time, I promise! My Pokémon and I have been practising!"
   battle self as "johto_leader_whitney_2"
   say "Waaah! ...No, I'm fine. I'm not crying. Really!"
   clearflag FLAG_PHONE_REMATCH_WHITNEY

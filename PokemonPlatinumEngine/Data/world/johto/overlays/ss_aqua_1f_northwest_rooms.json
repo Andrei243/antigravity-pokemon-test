@@ -4,8 +4,8 @@
   // The little girl HeartGold leaves here on her wanderings (FLAG_UNK_218) is held back: she is with the captain
   "area": "ss_aqua_1f_northwest_rooms",
   "bgmTrack": "kanto/ss_anne",
-  "heldBack": [ "p01r0306_gsbabygirl1_3" ],
   "people": {
+    "p01r0306_gsbabygirl1_3": { "name": "Little girl", "script": "Girl", "still": true },
     "p01r0306_gsgentleman": {
       "name": "Gentleman",
       "hiddenBy": "",

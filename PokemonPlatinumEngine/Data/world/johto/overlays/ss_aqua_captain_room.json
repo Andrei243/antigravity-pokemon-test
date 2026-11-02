@@ -1,18 +1,13 @@
 {
-  // The S.S. Aqua's captain's room (plan 20 · J15, part o): the captain, and his granddaughter, who wanders the ship in
-  // HeartGold until she is brought back and is here with him from the first. HeartGold's Metal Coat for finding her is
-  // its night aboard's, which this game hasn't (the rulings' "HeartGold's Kanto, part o")
+  // The S.S. Aqua's captain's room (plan 20 · J15, part o): the captain, and his granddaughter, who hides about the ship
+  // until she is found twice and brought back, for a Metal Coat (Johto's leftovers: scripts/ss_aqua_captain_room.txt;
+  // the night aboard itself is not built)
   "area": "ss_aqua_captain_room",
   "bgmTrack": "kanto/ss_anne",
   "people": {
-    "p01r0302_captain": {
-      "name": "Captain",
-      "still": true,
-      "dialog": [ "Welcome to the bridge! The S.S. Aqua is the fastest ship on these waters. We'll get you where you're going." ]
-    },
+    "p01r0302_captain": { "name": "Captain", "still": true, "script": "Captain" },
     "p01r0302_gsbabygirl1": {
       "name": "Little girl",
-      "hiddenBy": "",
       "dialog": [ "Grandpa is the captain! I'm going to steer the ship too when I'm big." ]
     }
   }

@@ -180,10 +180,32 @@
     },
     {
       "en": [
+        "Joey here! I found something great, but my Ratchisel can't use it. Come and get it from me on Route 30!"
+      ],
+      "text": [
+        ""
+      ],
+      "was": [
+        "Sunt Joey! Ratchisel al meu e într-o formă și mai bună acum. Vino să ne luptăm iar pe Ruta 30!"
+      ]
+    },
+    {
+      "en": [
+        "It's Joey! Did you forget? I've still got that present for you. I'm on Route 30!"
+      ],
+      "text": [
+        ""
+      ],
+      "was": [
+        "Aici Joey. Încă te aștept pe Ruta 30! Ratchisel al meu nu-și mai găsește locul."
+      ]
+    },
+    {
+      "en": [
         "It's Joey! My Ratchisel's in even better shape now. Come and battle me again on Route 30!"
       ],
       "text": [
-        "Sunt Joey! Ratchisel al meu e într-o formă și mai bună acum. Vino să ne luptăm iar pe Ruta 30!"
+        ""
       ]
     },
     {
@@ -191,7 +213,307 @@
         "Joey here. I'm still waiting for you on Route 30! My Ratchisel is getting restless."
       ],
       "text": [
-        "Aici Joey. Încă te aștept pe Ruta 30! Ratchisel al meu nu-și mai găsește locul."
+        ""
+      ]
+    }
+  ],
+  "Kenji": [
+    {
+      "en": [
+        "Kenji"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Kenji here. I've been training on the slope since sunrise. Hyah! My legs are like iron now."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Kenji here. A fellow climber left me something I've no use for. Come up Route 45 and it's yours."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's Kenji. Your present is still waiting for you on Route 45. Don't keep it waiting too long!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Kenji here! My training is finished for today. Come to Route 45 and let us test each other again!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Kenji again. I'm on Route 45, stretching. Come whenever you're ready to battle."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Parry": [
+    {
+      "en": [
+        "Parry"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Parry here! Climbed every inch of Route 45 again today. Nothing like mountain air, eh?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Parry here! I dug up something good on the mountain. Meet me on Route 45 and I'll hand it over!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's Parry! That present's still in my pack. I'm on Route 45, so come and get it!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Parry here! My Pokémon are rock-solid today. Come to Route 45 for a rematch!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's Parry. Still up on Route 45, waiting for our battle. The mountain isn't going anywhere!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Huey": [
+    {
+      "en": [
+        "Huey"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ahoy, it's Huey! The sea was rough today, but the lighthouse kept us all on course."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Huey here! A ship brought in something fine for you. I'm at the lighthouse in Olivine, matey!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's Huey! Your present's waiting at the lighthouse. Don't leave it to the gulls!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ahoy! Huey here. My sea legs are steady again. Come to the lighthouse for a rematch!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Huey again! Still at the lighthouse, ready for battle whenever you come aboard."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Vance": [
+    {
+      "en": [
+        "Vance"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Vance here. My birds flew circles over the Ice Path this morning. What a sight it was!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Vance here. I've got something that makes Pokémon faster. My birds are fast enough, so it's yours! Route 44."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's Vance. Your present's still here on Route 44. My birds are guarding it for you."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Vance here! My birds are ready to fly. Come to Route 44 for a rematch!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Vance again. I'm on Route 44, and my birds are getting impatient!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Erin": [
+    {
+      "en": [
+        "Erin"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hi, it's Erin! My partner and I raced all the way down Route 46 today. We won, of course!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's Erin! I've got a present for you. Come and find me on Route 46, all right?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Erin here! Hey, you still haven't picked up your present. I'm on Route 46!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Erin here! Let's have a rematch! I'll be waiting on Route 46."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's Erin! I'm still on Route 46. Hurry up, or I'll race you there!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Ian": [
+    {
+      "en": [
+        "Ian"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ian here! My Pokémon dug a hole so deep today, I could hardly see the bottom!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's Ian! My Pokémon dug up a berry. You can have it! I'm on Route 34."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ian here! That berry's still waiting for you on Route 34. Come and get it before I eat it!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's Ian! We've been digging and training. Come to Route 34 for a rematch!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ian again! Still on Route 34, waiting to battle!"
+      ],
+      "text": [
+        ""
       ]
     }
   ],
@@ -360,6 +682,482 @@
       ],
       "text": [
         "Ce mai face proprietarul Zonei mele Safari? Visez la moduri noi de joacă. Te sun în clipa în care am unul!"
+      ]
+    }
+  ],
+  "Falkner": [
+    {
+      "en": [
+        "Falkner"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Falkner here. My Pidgeot flew all the way to the sea and back this morning. Isn't that something?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Falkner here. It's Saturday morning, and I'm at the Fighting Dojo in Saffron City. Come and battle me!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Falkner again. I'm still waiting for you at the Fighting Dojo in Saffron City!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Bugsy": [
+    {
+      "en": [
+        "Bugsy"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bugsy here! I found a Pokémon in Ilex Forest I'd only ever read about. Research is the best!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bugsy here. It's Thursday afternoon, and I'm at the Fighting Dojo in Saffron City. Come and battle me!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bugsy again. I'm still waiting for you at the Fighting Dojo in Saffron City!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Whitney": [
+    {
+      "en": [
+        "Whitney"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's Whitney! I just bought the cutest thing at the Department Store. You have to see it!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Whitney here. It's Saturday afternoon, and I'm at the Fighting Dojo in Saffron City. Come and battle me!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Whitney again. I'm still waiting for you at the Fighting Dojo in Saffron City!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Morty": [
+    {
+      "en": [
+        "Morty"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Morty here. The Bell Tower's bells rang by themselves last night. I wonder what they foretell..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Morty here. It's Tuesday night, and I'm at the Fighting Dojo in Saffron City. Come and battle me!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Morty again. I'm still waiting for you at the Fighting Dojo in Saffron City!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Pryce": [
+    {
+      "en": [
+        "Pryce"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Pryce here. The snow on Mahogany's roofs reminds me of my youth. An old man's thoughts, nothing more."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Pryce here. It's Monday morning, and I'm at the Fighting Dojo in Saffron City. Come and battle me!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Pryce again. I'm still waiting for you at the Fighting Dojo in Saffron City!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Clair": [
+    {
+      "en": [
+        "Clair"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's Clair. I trained in the Dragon's Den all day. ...Don't get the idea I called to chat."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Clair here. It's Friday night, and I'm at the Fighting Dojo in Saffron City. Come and battle me!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Clair again. I'm still waiting for you at the Fighting Dojo in Saffron City!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Brock": [
+    {
+      "en": [
+        "Brock"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Brock here! I've been breeding my Pokémon again. Patience pays off, you know."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Brock here. It's Saturday night, and I'm at the Fighting Dojo in Saffron City. Come and battle me!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Brock again. I'm still waiting for you at the Fighting Dojo in Saffron City!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Misty": [
+    {
+      "en": [
+        "Misty"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's Misty! I spent the whole day at Cerulean Cape. The water was perfect!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Misty here. It's Wednesday morning, and I'm at the Fighting Dojo in Saffron City. Come and battle me!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Misty again. I'm still waiting for you at the Fighting Dojo in Saffron City!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "LtSurge": [
+    {
+      "en": [
+        "Lt. Surge"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Lt. Surge here! My Raichu shorted out the whole Gym again. Ha! Good times!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Lt. Surge here. It's Friday morning, and I'm at the Fighting Dojo in Saffron City. Come and battle me!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Lt. Surge again. I'm still waiting for you at the Fighting Dojo in Saffron City!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Erika": [
+    {
+      "en": [
+        "Erika"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Erika speaking. I dozed off in the garden again. The flowers smelled so lovely today..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Erika here. It's Sunday morning, and I'm at the Fighting Dojo in Saffron City. Come and battle me!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Erika again. I'm still waiting for you at the Fighting Dojo in Saffron City!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Janine": [
+    {
+      "en": [
+        "Janine"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Janine here. I practised my ninja arts all day. Father would be proud... I hope."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Janine here. It's Monday afternoon, and I'm at the Fighting Dojo in Saffron City. Come and battle me!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Janine again. I'm still waiting for you at the Fighting Dojo in Saffron City!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Sabrina": [
+    {
+      "en": [
+        "Sabrina"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Sabrina. I sensed you were about to call... no, wait. I called you. How strange."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Sabrina here. It's Sunday afternoon, and I'm at the Fighting Dojo in Saffron City. Come and battle me!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Sabrina again. I'm still waiting for you at the Fighting Dojo in Saffron City!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Blaine": [
+    {
+      "en": [
+        "Blaine"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Blaine here! I've thought up a new quiz for my Gym, once I have a Gym again. Hah!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Blaine here. It's Tuesday afternoon, and I'm at the Fighting Dojo in Saffron City. Come and battle me!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Blaine again. I'm still waiting for you at the Fighting Dojo in Saffron City!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Blue": [
+    {
+      "en": [
+        "Blue"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's Blue. ...What? I just called to see if you're still winning. Don't make it weird."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Blue here. It's Sunday night, and I'm at the Fighting Dojo in Saffron City. Come and battle me!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Blue again. I'm still waiting for you at the Fighting Dojo in Saffron City!"
+      ],
+      "text": [
+        ""
       ]
     }
   ],

@@ -162,6 +162,10 @@
       "provisional": true
     },
     "buck": {},
+    "buena": {
+      "note": "first spoken at goldenrod_radio_tower_2f.txt(57)",
+      "provisional": true
+    },
     "bugsy": {
       "note": "first spoken at azalea_gym.txt(12)",
       "provisional": true
@@ -329,6 +333,10 @@
       "note": "first spoken at slateport_city_sterns_shipyard_1f.txt(11)",
       "provisional": true
     },
+    "dome_owner": {
+      "note": "first spoken at pokeathlon_dome.txt(13)",
+      "provisional": true
+    },
     "dragon_tamer": {
       "note": "first spoken at blackthorn_move_tutor_house.txt(40)",
       "provisional": true
@@ -379,6 +387,10 @@
     },
     "erika": {
       "note": "first spoken at celadon_city_gym.txt(10)",
+      "provisional": true
+    },
+    "erin": {
+      "note": "first spoken at phone.txt(226)",
       "provisional": true
     },
     "ernest": {
@@ -512,6 +524,14 @@
       "note": "first spoken at ResortAreaRibbonSyndicate1F.txt(17)",
       "provisional": true
     },
+    "huey": {
+      "note": "first spoken at olivine_lighthouse_2f.txt(11)",
+      "provisional": true
+    },
+    "ian": {
+      "note": "first spoken at phone.txt(253)",
+      "provisional": true
+    },
     "ingo": {
       "note": "first spoken at nimbasa_city.txt(52)",
       "provisional": true
@@ -583,6 +603,10 @@
     },
     "keira": {
       "note": "first spoken at ContestHallLobby.txt(19)",
+      "provisional": true
+    },
+    "kenji": {
+      "note": "first spoken at phone.txt(118)",
       "provisional": true
     },
     "kimono_girl": {
@@ -899,6 +923,10 @@
     },
     "park_attendant": {
       "note": "first spoken at PalParkLobby.txt(40)",
+      "provisional": true
+    },
+    "parry": {
+      "note": "first spoken at phone.txt(145)",
       "provisional": true
     },
     "paxton": {
@@ -1261,6 +1289,10 @@
       "note": "first spoken at BattleCastleBattleRoom.txt(130)",
       "provisional": true
     },
+    "vance": {
+      "note": "first spoken at phone.txt(199)",
+      "provisional": true
+    },
     "veteran": {
       "note": "first spoken at unova_pokemon_league.txt(22)",
       "provisional": true
@@ -1428,6 +1460,7 @@
     "Brock": "brock",
     "Bruno": "bruno",
     "Buck": "buck",
+    "Buena": "buena",
     "Bug Catcher": "look:bug_catcher",
     "Bugsy": "bugsy",
     "Burgh": "burgh",
@@ -1481,6 +1514,7 @@
     "Devon Employee": "devon_employee",
     "Director": "director",
     "Dock": "dock",
+    "Dome Owner": "dome_owner",
     "Dragon Tamer": "dragon_tamer",
     "Drake": "drake",
     "Drayden": "drayden",
@@ -1494,6 +1528,7 @@
     "Energy Guru": "energy_guru",
     "Engineer": "engineer",
     "Erika": "erika",
+    "Erin": "erin",
     "Ernest": "ernest",
     "Eusine": "eusine",
     "Factory Staff": "factory_staff",
@@ -1540,6 +1575,8 @@
     "Honey Man": "honey_man",
     "Host": "look:host",
     "Hostess": "hostess",
+    "Huey": "huey",
+    "Ian": "ian",
     "Ingo": "ingo",
     "Iris": "iris",
     "Isaac": "isaac",
@@ -1559,6 +1596,7 @@
     "Karen": "karen",
     "Katelyn": "katelyn",
     "Keira": "keira",
+    "Kenji": "kenji",
     "Kimono Girl": "kimono_girl",
     "Kira": "kira",
     "Kiri": "kiri",
@@ -1648,6 +1686,7 @@
     "Palmer": "palmer",
     "Papa": "papa",
     "Park Attendant": "park_attendant",
+    "Parry": "parry",
     "Paxton": "paxton",
     "Petrel": "petrel",
     "Pharmacist": "pharmacist",
@@ -1744,6 +1783,7 @@
     "Ty": "ty",
     "Underground Man": "underground_man",
     "Valet": "valet",
+    "Vance": "vance",
     "Veteran": "veteran",
     "Vicky": "vicky",
     "Victor": "victor",

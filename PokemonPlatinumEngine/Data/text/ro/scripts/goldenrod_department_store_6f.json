@@ -80,5 +80,31 @@
         "Nu ai destui bani..."
       ]
     }
+  ],
+  "MeetWhitney": [
+    {
+      "en": [
+        "Whitney"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh! It's you! I come here every Sunday for a fizzy drink from the machines. Isn't it the best?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Shopping makes me so happy. Don't tell anyone, but sometimes I buy two!"
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

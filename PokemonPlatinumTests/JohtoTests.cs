@@ -528,10 +528,10 @@ public partial class JohtoTests
         Assert.Equal("johto/safari_zone", zone.BgmTrackAt(door.X, door.Z));
         Assert.Equal("johto/union_cave", MapNamed("CliffCave").BgmTrackAt(Johto.Area("cliff_cave")!.Warps[0].X, Johto.Area("cliff_cave")!.Warps[0].Z));
 
-        // The Embedded Tower behind Route 47 waits
+        // The Embedded Tower behind Route 47 is shut until Mr. Pokémon's orbs (Johto's leftovers): its three rooms share the hole's tile
         var route47 = Johto.Area("route_47")!;
-        foreach (int warp in new[] { 4, 5, 6 })
-            Assert.Empty(Overworld.WarpsAt(route47.Warps[warp].X, route47.Warps[warp].Z));
+        Assert.Null(Overworld.GetWarpAt(route47.Warps[4].X, route47.Warps[4].Z));
+        Assert.Equal(3, Overworld.WarpsAt(route47.Warps[4].X, route47.Warps[4].Z).Count());
     }
 
     private static readonly string[] North = { "route_42", "mahogany", "route_43", "lake_of_rage", "route_44", "blackthorn", "route_45", "route_46" };
@@ -1053,8 +1053,8 @@ public partial class JohtoTests
         }
         foreach (string key in new[] { "route_10_south", "route_10_pokecenter_1f", "route_10_power_plant_repaired" })
             Assert.Equal(key, HgWorld.KeyOf("MAP_" + key.ToUpperInvariant()));
-        // Lt. Surge before the plant waits for the street meetings; Zapdos stands there since part n, once the plant runs
-        Assert.DoesNotContain(Overworld.Everyone, n => n.Key is "r10_gsleader9");
+        // Lt. Surge before the plant is a street meeting since Johto's leftovers (Fridays, his number registered); Zapdos stands there since part n
+        Assert.Contains(Overworld.Everyone, n => n.Key is "r10_gsleader9");
         Assert.Equal(InteriorStyle.PokemonCenter, MapNamed("Route10North_PokemonCenter_1F").Interior);
     }
 
@@ -1081,8 +1081,8 @@ public partial class JohtoTests
             Assert.False(HgWorld.Clashes(key));
             Assert.Equal(key, HgWorld.KeyOf("MAP_" + key.ToUpperInvariant()));
         }
-        // The Leaders' meetings, Cameron, Crasher Wake and the third floor's two objects off its floor are held back
-        Assert.DoesNotContain(MapNamed("Celadon_DeptStore_4F").Everyone, n => n.Key is "t07r0104_gsleader1" or "t07r0104_gsleader13");
+        // Falkner's and Janine's street meeting stands (Johto's leftovers); Cameron, Crasher Wake and the third floor's two objects off its floor are held back
+        Assert.Contains(MapNamed("Celadon_DeptStore_4F").Everyone, n => n.Key is "t07r0104_gsleader1");
         Assert.DoesNotContain(MapNamed("Celadon_DeptStore_2F").Everyone, n => n.Key is "t07r0102_leader3" or "t07r0102_gsmiddleman1_2");
         Assert.DoesNotContain(MapNamed("Celadon_Condominiums_3F").Everyone, n => n.Key is "t07r0203_var_1" or "t07r0203_tsure_poke_static_marill");
     }

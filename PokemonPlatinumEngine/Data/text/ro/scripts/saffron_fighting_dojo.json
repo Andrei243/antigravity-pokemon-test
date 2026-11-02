@@ -1,0 +1,418 @@
+{
+  "Falkner": [
+    {
+      "en": [
+        "Falkner"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "My birds have trained in every wind. Let's see if they can catch you now!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Grounded again... but my birds will soar higher next time."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Bugsy": [
+    {
+      "en": [
+        "Bugsy"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I've learned so much more about bug Pokémon since we last met. Time to put it to the test!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Fascinating... I'll write this one up in my notes."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Whitney": [
+    {
+      "en": [
+        "Whitney"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "No crying this time, I promise! My Pokémon and I have been practising!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Waaah! ...No, I'm fine. I'm not crying. Really!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Morty": [
+    {
+      "en": [
+        "Morty"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I have seen this battle many times in my mind. Now let us see the true one."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "So that is how it ends. My vision was clouded."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Jasmine": [
+    {
+      "en": [
+        "Jasmine"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "My steel Pokémon have grown even harder... Please, let us battle."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You're... still so strong. Thank you for the battle."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Pryce": [
+    {
+      "en": [
+        "Pryce"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Winter teaches patience. Let us see whether you have learned it too."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The ice melts, as it must. Well fought."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Clair": [
+    {
+      "en": [
+        "Clair"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I've been waiting for this. My dragons won't lose a second time!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "...I lost again. Don't you dare think this is over."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Brock": [
+    {
+      "en": [
+        "Brock"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "My rock Pokémon are harder than ever. Let's go!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Rock-solid, and still not enough. You're something else."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Misty": [
+    {
+      "en": [
+        "Misty"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I've been looking forward to this! My water Pokémon won't hold back!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ugh, you got me again! Next time I'm winning!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "LtSurge": [
+    {
+      "en": [
+        "Lt. Surge"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hey, kid! Ready for a real shock? Let's go!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Whoa! You're still the real deal. Ha!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Erika": [
+    {
+      "en": [
+        "Erika"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The flowers have bloomed again, and so has my resolve. Shall we?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh my... You are as wonderful as ever."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Janine": [
+    {
+      "en": [
+        "Janine"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A ninja never lets her guard down. Prepare yourself!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "My training is not yet complete... Well fought."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Sabrina": [
+    {
+      "en": [
+        "Sabrina"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I foresaw this battle. I did not foresee how it ends. Let us find out."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "So the future can still surprise me."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Blaine": [
+    {
+      "en": [
+        "Blaine"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "My fire's burning hot again! Let's have a battle to remember!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hah! Burned out again! I'll quiz you next time instead!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Blue": [
+    {
+      "en": [
+        "Blue"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "So you came. Don't think I've been sitting around. Let's go!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Tch. You're good. ...Don't let it go to your head."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Chuck": [
+    {
+      "en": [
+        "Chuck"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "HWAAAH! My fists are itching! Let's settle this!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ha! You win again! Back to the waterfall for me!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

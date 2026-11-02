@@ -8,5 +8,57 @@
         "Mulțumim! Mai poftiți pe la noi."
       ]
     }
+  ],
+  "MeetFalkner": [
+    {
+      "en": [
+        "Falkner"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ah, it's you. Janine dragged me here to look at Poké Dolls. ...Don't tell anyone."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Fine, I'll admit it. The bird dolls are rather well made."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "MeetJanine": [
+    {
+      "en": [
+        "Janine"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A ninja must blend into a crowd. Shopping is training! ...And the dolls are cute."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Falkner says he's only here to keep me company. Hmph."
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

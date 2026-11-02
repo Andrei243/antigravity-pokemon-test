@@ -60,5 +60,157 @@
         "Mergi unde vrei. Directorul e iar cel vesel de altădată, deci totul a revenit la normal."
       ]
     }
+  ],
+  "Buena": [
+    {
+      "en": [
+        "Buena"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hi there! I'm Buena. Every evening I host Buena's Password on the radio. Never played? Then this is for you!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Tune in to my show in the evening. Hear tonight's password, then come and tell me. A right answer is a point!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "My show goes on the air in the evening. Listen in, then come and see me with the password!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hi! Do you know tonight's password?",
+        "{password:1}",
+        "{password:2}",
+        "{password:3}",
+        "I don't know it"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's right! That's one point on your Blue Card, which makes {bluecard}. Come back tomorrow night!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, so close! That isn't tonight's word. Listen to my show tomorrow and try again!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Then tune in to Buena's Password! I say the word on the air every evening."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You've played tonight already! Come back tomorrow night with a new password."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wow, your Blue Card is full! Go and trade some points for a prize, then come and play again."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Team Rocket took over the studio! They won't even let me read my password on the air..."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "BlueCardPrizes": [
+    {
+      "en": [
+        "Woman"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "These prizes are for players of Buena's Password. Ask Buena for a Blue Card first!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your Blue Card holds {bluecard} points. Which prize would you like?",
+        "Ultra Ball (2)",
+        "Full Heal (2)",
+        "Rare Candy (3)",
+        "Protein (5)",
+        "Nugget (10)",
+        "Nothing"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come again whenever you've saved some points!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Sorry, your card doesn't have enough points for that one yet."
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }
