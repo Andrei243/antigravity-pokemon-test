@@ -20086,6 +20086,24 @@ from Clerk at 13,2 of MauvilleCity_GameCorner
 way -
   Clerk> We exchange your Coins for prizes. You have 0 Coins.
   Clerk> Without a Coin Case, you have no Coins to exchange, I'm afraid.
+=== mauville_city_game_corner.Roulette1
+from the tile read at 14,6 of MauvilleCity_GameCorner
+from the tile read at 14,7 of MauvilleCity_GameCorner
+from the tile read at 14,8 of MauvilleCity_GameCorner
+from the tile read at 15,6 of MauvilleCity_GameCorner
+from the tile read at 15,7 of MauvilleCity_GameCorner
+from the tile read at 15,8 of MauvilleCity_GameCorner
+way -
+  > A roulette wheel. Without a Coin Case there's nothing to wager.
+=== mauville_city_game_corner.Roulette2
+from the tile read at 18,6 of MauvilleCity_GameCorner
+from the tile read at 18,7 of MauvilleCity_GameCorner
+from the tile read at 18,8 of MauvilleCity_GameCorner
+from the tile read at 19,6 of MauvilleCity_GameCorner
+from the tile read at 19,7 of MauvilleCity_GameCorner
+from the tile read at 19,8 of MauvilleCity_GameCorner
+way -
+  > A roulette wheel. Without a Coin Case there's nothing to wager.
 === mauville_city_gym.Beam
 from Electric barrier at 1,11 of MauvilleCity_Gym
 from Electric barrier at 2,11 of MauvilleCity_Gym

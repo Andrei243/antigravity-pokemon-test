@@ -670,6 +670,9 @@ public class ScriptTests
           favorlady new
           cyclingroad finish
           cyclingroad record
+          gamecorner roulette 3
+          gamecorner wager
+          gamecorner spin
           jobs
           chooseitem gift
           pike enough

@@ -67,9 +67,12 @@
       },
       "dialog": {
         "en": [
-          "The roulette tables are closed for repairs. Pity. Roulette is pure luck, and I'm feeling lucky!"
+          "Roulette is pure luck, and I'm feeling lucky! The fewer squares are left, the more a win pays."
         ],
         "text": [
+          ""
+        ],
+        "was": [
           "Mesele de ruletă sunt închise pentru reparații. Păcat. Ruleta e noroc curat, iar eu mă simt norocos!"
         ]
       }
@@ -113,9 +116,12 @@
       },
       "dialog": {
         "en": [
-          "The two roulette tables pay out at different rates. When they open again, pick your table wisely!"
+          "The table on the right takes three Coins a ball, but it pays three times as much. Pick your table wisely!"
         ],
         "text": [
+          ""
+        ],
+        "was": [
           "Cele două mese de ruletă plătesc diferit. Când se redeschid, alege-ți masa cu grijă!"
         ]
       }
@@ -193,22 +199,5 @@
       }
     }
   },
-  "signs": {
-    "Roulette_EventScript_Table1": {
-      "en": [
-        "The roulette table is covered with a cloth. A card on it says: \"Closed for repairs.\""
-      ],
-      "text": [
-        "Masa de ruletă e acoperită cu o față de masă. Pe ea stă un bilet: „Închis pentru reparații.”"
-      ]
-    },
-    "Roulette_EventScript_Table2": {
-      "en": [
-        "The roulette table is covered with a cloth. A card on it says: \"Closed for repairs.\""
-      ],
-      "text": [
-        "Masa de ruletă e acoperită cu o față de masă. Pe ea stă un bilet: „Închis pentru reparații.”"
-      ]
-    }
-  }
+  "signs": {}
 }
