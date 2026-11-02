@@ -280,7 +280,7 @@ public class RetryAndSuspendTests
     {
         Until(engine, () => battle.IsBattleOver || battle.HUD.MenuState == BattleMenuState.Main, "the battle's menu", press: true);
         if (battle.IsBattleOver) return;
-        battle.SelectMove(0);
+        var moves = battle.PlayerPokemon!.Moves; int pick = Math.Max(0, moves.FindIndex(m => m != null && m.CurrentPP > 0)); battle.SelectMove(pick);
         Until(engine, () => battle.IsBattleOver || battle.HUD.MenuState == BattleMenuState.Main && !battle.IsWaitingForConfirm, "the next menu", press: true, startWith: 8);
     }
 
@@ -319,6 +319,6 @@ public class RetryAndSuspendTests
             if (done()) return;
             Run(engine, press && f % 8 == 0 ? ActionFrame.Press(GameAction.Confirm) : ActionFrame.None);
         }
-        Assert.Fail($"Waited {most / 60} seconds of game time for {what}; the game is in {engine.Drive.State}.");
+        Assert.Fail($"Waited {most / 60} seconds of game time for {what}; the game is in {engine.Drive.State}, menu {engine.Drive.Battle?.HUD.MenuState}, waiting {engine.Drive.Battle?.IsWaitingForConfirm}, msg {engine.Drive.Battle?.CurrentMessage}, learn {engine.Drive.Battle?.LearnStep}, ended {engine.Drive.Battle?.IsBattleOver}.");
     }
 }
