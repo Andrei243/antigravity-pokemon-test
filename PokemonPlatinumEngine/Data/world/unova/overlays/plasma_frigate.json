@@ -37,7 +37,7 @@
     "10": { "name": "Grunt", "npcType": "plasma_grunt", "still": true, "dialog": [ "I'm not scared of you! I'm just... standing very still." ] },
     "11": { "name": "Grunt", "npcType": "plasma_grunt", "still": true, "dialog": [ "Sniff... You smell like a Trainer. We hate that smell." ] },
     "12": { "name": "Grunt", "npcType": "plasma_grunt", "still": true, "dialog": [ "Intruders on deck! Somebody do something!" ] },
-    "13": { "name": "Grunt", "npcType": "plasma_grunt", "still": true, "dialog": [ "Let them through? Are you mad?" ] },
+    "13": { "name": "Grunt", "npcType": "plasma_grunt_f", "still": true, "dialog": [ "Let them through? Are you mad?" ] },
     "14": { "name": "Grunt", "npcType": "plasma_grunt", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_FRIGATE_GRUNTS", "dialog": [ "Get off our ship!" ] },
     "15": { "name": "Grunt", "npcType": "plasma_grunt", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_FRIGATE_GRUNTS", "dialog": [ "Get off our ship!" ] },
     "16": { "name": "Zinzolin", "npcType": "zinzolin", "still": true, "dialog": [ "Children have no business aboard this ship." ], "hiddenBy": "FLAG_UNOVA_HIDE_ZINZOLIN_FRIGATE" },

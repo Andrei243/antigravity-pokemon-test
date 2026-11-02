@@ -107,7 +107,7 @@
     },
     "20": {
       "name": "Backers",
-      "npcType": "twin",
+      "npcType": "backers_f",
       "dialog": [
         "The Season Research Lab is the building in the fenced garden. They keep every season in glass cases in there!"
       ]

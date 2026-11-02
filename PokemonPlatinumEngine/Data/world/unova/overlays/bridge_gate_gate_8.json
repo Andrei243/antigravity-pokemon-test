@@ -17,7 +17,7 @@
   "people": {
     "0": { "name": "Lady", "npcType": "lady", "dialog": [ "Walking under the sea with dry feet! I come through the tube every day just to watch the fish watch me." ] },
     "2": { "name": "Receptionist", "npcType": "receptionist", "dialog": [ "This is the gate to the Marine Tube. It runs under the sea all the way to Humilau City." ] },
-    "3": { "name": "Worker", "npcType": "worker", "dialog": [ "The glass has never been so clean. You can see right to the bottom of the sea!" ] }
+    "3": { "name": "Worker", "npcType": "janitor", "dialog": [ "The glass has never been so clean. You can see right to the bottom of the sea!" ] }
   },
   "signs": {
     "3": "Marine Tube\nThe walk-through aquarium to Humilau City"

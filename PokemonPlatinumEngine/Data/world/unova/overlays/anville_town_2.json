@@ -11,7 +11,7 @@
     "1": { "name": "Bouffalant", "npcType": "Pokemon", "species": "Bouffalant", "dialog": [ "Bouffalant: Bwuff!" ] },
     "2": {
       "name": "Nursery Aide",
-      "npcType": "Lady",
+      "npcType": "nursery_aide",
       "dialog": [ "Ride a train for an hour and you see forests, rivers and towns go by. It's like a picture book!" ]
     }
   }

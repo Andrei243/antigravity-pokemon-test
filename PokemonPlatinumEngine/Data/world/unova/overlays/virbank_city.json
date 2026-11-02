@@ -30,34 +30,34 @@
     },
     "5": {
       "name": "Man",
-      "npcType": "Gentleman",
+      "npcType": "guitarist",
       "dialog": [ "My Watchog has been with me since the day I was born. Its sharp eyes have got us out of trouble more than once!" ]
     },
     "6": { "name": "Studio Hand", "npcType": "Gentleman", "script": "StudioHand", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_POKESTAR_GUARD" },
     "7": { "name": "Roxie", "npcType": "roxie", "script": "RoxieOnTheDock", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_VIRBANK_DOCK" },
     "8": { "name": "{rival}", "npcType": "hugh", "script": "HughOnTheDock", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_VIRBANK_DOCK" },
     "9": { "name": "Grunt", "npcType": "plasma_grunt", "script": "DockGrunt", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_VIRBANK_DOCK" },
-    "10": { "name": "Grunt", "npcType": "plasma_grunt", "script": "DockGrunts", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_VIRBANK_DOCK" },
+    "10": { "name": "Grunt", "npcType": "plasma_grunt_f", "script": "DockGrunts", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_VIRBANK_DOCK" },
     "11": { "name": "Grunt", "npcType": "plasma_grunt", "script": "DockGrunts", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_VIRBANK_DOCK" },
     "13": {
       "name": "Girl",
-      "npcType": "Lass",
+      "npcType": "backers_f",
       "dialog": [ "Roxie's band plays the club under the Gym. Tickets sell out in minutes these days!" ]
     },
     "14": { "name": "Watchog", "npcType": "Pokemon", "species": "Watchog", "dialog": [ "Watchog: Wah-chog!" ] },
     "15": {
       "name": "Boy",
-      "npcType": "Youngster",
+      "npcType": "backers_m",
       "dialog": [ "The ships come and go from this quay all day. Some of them go as far as Castelia City!" ]
     },
     "16": {
       "name": "Girl",
-      "npcType": "Lass",
+      "npcType": "backers_f",
       "dialog": [ "Look at the smoke over the complex. My grandpa says it's only steam, but it looks like a dragon to me." ]
     },
     "17": {
       "name": "Boy",
-      "npcType": "Youngster",
+      "npcType": "backers_m",
       "dialog": [ "I'm saving up for a ticket to Roxie's next show. Only nine hundred more Poké Dollars to go!" ]
     },
     "18": {

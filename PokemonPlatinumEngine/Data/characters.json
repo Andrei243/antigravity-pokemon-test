@@ -301,6 +301,46 @@
     "grimsley": { "hairColor": "#2e2a36", "hair": "Swept", "top": "#22222a", "accent": "#e8c040", "bottom": "#22222a", "shoes": "#1c1c22", "eyes": "#4a3a2a", "scarf": true, "coat": true, "build": "Adult", "height": 1.08 },
     // and Professor Juniper's father, Cedric, who calls on the new Champion: grey hair swept back, glasses and a tan coat
     "cedric_juniper": { "hairColor": "#a8a8b0", "hair": "Swept", "top": "#5a7a5a", "accent": "#f0e8d8", "bottom": "#4a4a52", "shoes": "#3a2e28", "eyes": "#3a3a4a", "glasses": "#3a3a46", "mustache": true, "coat": true, "build": "Adult", "height": 1.06 },
+    // Plan 22 · U12: Unova's classes, each a design of our own on the kit's parts, named as Black 2's object looks are so
+    // that the field finds them by themselves. The little ones and their minder: a preschooler boy in a yellow cap and a
+    // satchel, a preschooler girl in bunches and a pink smock, and the nursery aide in a mint apron over a coral top
+    "preschooler_m": { "hairColor": "#5a3a2a", "hat": "Cap", "hatColor": "#f2c84a", "hatBand": "#3a8ad0", "top": "#6ab0e8", "accent": "#f6f6f8", "bottom": "#3a5a9a", "shoes": "#e8604a", "shorts": true, "shortSleeves": true, "bag": "#e8604a", "build": "Little", "blush": true },
+    "preschooler_f": { "hairColor": "#7a4a2e", "hair": "Bunches", "top": "#f2a6c0", "accent": "#fcf2f6", "bottom": "#f2a6c0", "shoes": "#f2c84a", "skirt": true, "shortSleeves": true, "apron": "#fcf6e8", "build": "Little", "lashes": true, "blush": true },
+    "nursery_aide": { "hairColor": "#8a4a2e", "hair": "Ponytail", "hatBand": "#f2a6c0", "top": "#ee8a7a", "accent": "#fcf6ee", "bottom": "#5a6a8a", "shoes": "#f6f6f8", "apron": "#a8dcc0", "build": "Adult", "lashes": true, "blush": true },
+    // The city's workers: a janitor in a green cap and grey overalls; a doctor (physician, since Sinnoh's doctor is Rowan) in a white coat over teal scrubs; a baker
+    // in a white bandana and a cream apron; a depot agent in a navy coat buttoned up and a cap banded in brass
+    "janitor": { "hairColor": "#6a6a70", "hat": "Cap", "hatColor": "#4a7a5a", "hatBand": "#4a7a5a", "top": "#d8d4c8", "accent": "#4a7a5a", "bottom": "#7a7e86", "shoes": "#3a3430", "overalls": true, "mustache": true, "build": "Adult", "height": 1.02 },
+    "physician": { "hairColor": "#3a2e2a", "hair": "Swept", "top": "#3a9a9a", "accent": "#f4f6f8", "bottom": "#3a9a9a", "shoes": "#f4f4f6", "coat": true, "build": "Adult", "height": 1.04 },
+    "baker": { "hairColor": "#a8642e", "hair": "Ponytail", "hat": "Bandana", "hatColor": "#f6f4ee", "hatBand": "#f6f4ee", "top": "#e8b0a0", "accent": "#f6f4ee", "bottom": "#8a5a3a", "shoes": "#5a3a2a", "apron": "#f2e8d0", "skirt": true, "build": "Adult", "lashes": true },
+    "depot_agent": { "hairColor": "#3a2e28", "hat": "Cap", "hatColor": "#283656", "hatBand": "#d8b44a", "top": "#283656", "accent": "#d8b44a", "bottom": "#283656", "shoes": "#1e1e22", "buttoned": true, "jacket": true, "mustache": true, "build": "Adult", "height": 1.04 },
+    // Those who perform: the harlequin, masked, in violet and white diamonds; the dancer (street_dancer, since HeartGold's dancer is a Kimono Girl) in a lime vest and a headband; the
+    // musician in a teal coat and a beanie with a guitar
+    "harlequin": { "hairColor": "#26222a", "hat": "Mask", "hatColor": "#f6f6f8", "hatBand": "#7a4ab0", "top": "#7a4ab0", "accent": "#f6f6f8", "bottom": "#f6f6f8", "shoes": "#7a4ab0", "stripes": true, "build": "Adult", "height": 1.04 },
+    "street_dancer": { "hairColor": "#3a2420", "hair": "Spiky", "hat": "Headband", "hatColor": "#d84a9a", "hatBand": "#d84a9a", "top": "#f6f6f8", "accent": "#d84a9a", "bottom": "#2a2a36", "shoes": "#f6f6f8", "vest": "#9ad04a", "shortSleeves": true, "sole": "#d84a9a", "build": "Adult" },
+    "musician": { "hairColor": "#c88a4a", "hair": "Curls", "hat": "Beanie", "hatColor": "#2a2a36", "hatBand": "#e8c45a", "top": "#2e8a8a", "accent": "#26262c", "bottom": "#3a3448", "shoes": "#2a2a30", "coat": true, "holds": "Guitar", "build": "Adult", "height": 1.04 },
+    // The fans who cheer from the stands, in red and white: a boy in a cap and a girl in a ponytail and a pleated skirt
+    "backers_m": { "hairColor": "#4a3022", "hat": "Cap", "hatColor": "#d83a3a", "hatBand": "#f6f6f8", "top": "#f6f6f8", "accent": "#d83a3a", "bottom": "#2e3a5c", "shoes": "#d83a3a", "stripes": true, "shortSleeves": true, "blush": true },
+    "backers_f": { "hairColor": "#c8783a", "hair": "Ponytail", "hatBand": "#d83a3a", "top": "#f6f6f8", "accent": "#d83a3a", "bottom": "#d83a3a", "shoes": "#f6f6f8", "stripes": true, "skirt": true, "shortSleeves": true, "lashes": true, "blush": true },
+    // The sports: the smasher with a racket's white visor and skirt, the hoopster tall in an orange jersey, the striker in a
+    // green striped shirt, the linebacker broad in a helmet, the infielder in a cap and pinstripes
+    "smasher": { "hairColor": "#d8a85a", "hair": "Ponytail", "hat": "Visor", "hatColor": "#f6f6f8", "hatBand": "#3ab06a", "top": "#f6f6f8", "accent": "#3ab06a", "bottom": "#f6f6f8", "shoes": "#f6f6f8", "skirt": true, "shortSleeves": true, "sole": "#3ab06a", "build": "Adult", "lashes": true },
+    "hoopster": { "skin": "#c8906a", "hairColor": "#26222a", "hair": "Short", "hat": "Headband", "hatColor": "#f6f6f8", "hatBand": "#f6f6f8", "top": "#e8782a", "accent": "#26262c", "bottom": "#e8782a", "shoes": "#f6f6f8", "shorts": true, "shortSleeves": true, "stripes": true, "sole": "#26262c", "build": "Adult", "height": 1.12 },
+    "striker": { "hairColor": "#3a2a24", "hair": "Spiky", "top": "#3a9a4a", "accent": "#f6f6f8", "bottom": "#f6f6f8", "shoes": "#26262c", "shorts": true, "shortSleeves": true, "stripes": true, "sole": "#f6f6f8", "build": "Adult" },
+    "linebacker": { "hairColor": "#2a2224", "hat": "Helmet", "hatColor": "#b83a3a", "hatBand": "#f6f6f8", "top": "#b83a3a", "accent": "#f6f6f8", "bottom": "#e8e2d0", "shoes": "#26262c", "shortSleeves": true, "bushyBrows": true, "build": "Adult", "height": 1.12 },
+    "infielder": { "hairColor": "#4a3428", "hat": "Cap", "hatColor": "#2e3a6a", "hatBand": "#2e3a6a", "top": "#f2f2ee", "accent": "#2e3a6a", "bottom": "#f2f2ee", "shoes": "#26262c", "stripes": true, "build": "Adult", "height": 1.04 },
+    // The walkers of the desert and the long routes: a backpacker in a beanie and a pack, and one under a wide sun hat
+    "backpacker_m": { "hairColor": "#5a3a24", "hat": "Beanie", "hatColor": "#3a6a4a", "hatBand": "#e8c45a", "top": "#c86a3a", "accent": "#f2e8d0", "bottom": "#6a5a3a", "shoes": "#4a3428", "shorts": true, "bag": "#3a6a4a", "build": "Adult", "height": 1.04 },
+    "backpacker_f": { "hairColor": "#3a2a24", "hair": "Braids", "hat": "WideHat", "hatColor": "#e8d4a0", "hatBand": "#c86a3a", "top": "#5a9ad0", "accent": "#f6f6f8", "bottom": "#6a5a3a", "shoes": "#4a3428", "shorts": true, "bag": "#c86a3a", "build": "Adult", "lashes": true },
+    // Team Plasma: the women of the grunts in the men's slate hood with a skirt; a sage of the old Plasma in a long robe
+    // of slate banded in pale gold; and those who left it to live with Rood, in plain wheat-coloured clothes
+    // The women of two classes that had only the men's look: a veteran with silver hair in a bun and an olive coat, a psychic
+    // with long dark violet hair and a lilac shawl-collared coat
+    "veteran_f": { "hairColor": "#c8ccd4", "hair": "Bun", "top": "#7a6a4a", "accent": "#d8c87a", "bottom": "#4a4a3a", "shoes": "#2a2420", "coat": true, "skirt": true, "build": "Elder", "lashes": true, "height": 1.0 },
+    "psychic_f": { "hairColor": "#3a2a5a", "hair": "Long", "top": "#9a7ac8", "accent": "#f2ecf8", "bottom": "#4a3a6a", "shoes": "#2e2638", "eyes": "#5a3a7a", "coat": true, "skirt": true, "build": "Adult", "lashes": true, "height": 1.0 },
+    "plasma_grunt_f": { "hairColor": "#5a3a3a", "hat": "Beanie", "hatColor": "#4a5a7a", "hatBand": "#e8e8f0", "top": "#5a6a8a", "accent": "#e8e8f0", "bottom": "#7a8090", "shoes": "#2a2e38", "eyes": "#3a2a3a", "skirt": true, "build": "Adult", "lashes": true },
+    "plasma_sage": { "hairColor": "#c8c8ce", "hair": "Bald", "top": "#4a5a7a", "accent": "#e0cc8a", "bottom": "#4a5a7a", "shoes": "#2a2e38", "beard": true, "robe": true, "build": "Elder", "height": 1.02 },
+    "plasma_former_m": { "hairColor": "#6a5a4a", "hair": "Short", "top": "#d8c8a0", "accent": "#5a6a8a", "bottom": "#6a6458", "shoes": "#3a3028", "build": "Adult" },
+    "plasma_former_f": { "hairColor": "#8a6a4a", "hair": "Long", "top": "#d8c8a0", "accent": "#5a6a8a", "bottom": "#6a6458", "shoes": "#3a3028", "apron": "#f2ecd8", "skirt": true, "build": "Adult", "lashes": true },
     // Kalos's first chapter (plan 23 · Z1; our own designs, stand-ins until plan 30 rebuilds the kit for people who aren't
     // chibi): from Kalos on nobody is chibi, so the whole cast is on the Adult build, the kit's longest body and smallest
     // head (style guide, "Characters", "From Kalos on, not chibi"). The neighbour who is the rival, a girl beside the boy
@@ -596,13 +636,11 @@
     "maniac": "Gentleman",
     // Black 2's looks of the places plan 22 · U2 opens, until plan 22's chapters give Unova's classes and cast their own
     // (Black 2 names most of its people by number: an overlay gives those an npcType of their own)
-    "backers_m": "Youngster", "backers_f": "Lass", "nursery_aide": "Lady", "preschooler_m": "Youngster",
-    "preschooler_f": "Lass", "janitor": "Gentleman", "pkmn_ranger_m": "Youngster", "pkmn_ranger_f": "Lass",
-    "pkmn_breeder_m": "Gentleman", "pkmn_breeder_f": "Lady", "team_plasma_grunt_m": "plasma_grunt", "team_plasma_grunt_f": "plasma_grunt",
-    // Plan 22 · U5, part c: Castelia's Harlequins stand as clowns until plan 22 · U12
-    "harlequin_233": "clown", "harlequin_32": "clown", "harlequin": "clown", "doctor": "scientist",
-    // Plan 22 · U6, part c: the depot agents stand as workers until plan 22 · U12
-    "depot_agent": "worker",
+    // (plan 22 · U12 gave Unova's classes looks of their own under Black 2's names, so only the names that differ are here,
+    // each to the look of the same class; Black 2's numbered looks of trainers to their class's look)
+    "pkmn_ranger_m": "ranger_m", "pkmn_ranger_f": "ranger_f",
+    "pkmn_breeder_m": "pokemon_breeder_m", "pkmn_breeder_f": "pokemon_breeder_f", "team_plasma_grunt_m": "plasma_grunt", "team_plasma_grunt_f": "plasma_grunt_f",
+    "harlequin_233": "harlequin", "harlequin_32": "harlequin", "clerk_m_67": "clerk", "372": "roughneck", "297": "guitarist", "56": "musician",
     // Plan 20 · J5: HeartGold's people of the Ruins of Alph, Union Cave and Azalea Town, until plan 20 · J14's looks
     "gswoman6": "scientist", "gsassistantm": "scientist", "suit": "Gentleman", "gantetsu": "kurt",
     "gsfighter": "blackbelt", "gsbabygirl1": "Lass", "middlewoman1_2": "Lady", "rocketm": "rocket",
@@ -634,8 +672,8 @@
     // Plan 20 · J14, second part: Crasher Wake as the Leader of Route 47 (held back), the Mediums as Mediums, and the dome owner as his own
     "leader3": "crasher_wake", "thlonowner": "athlon_owner",
     // Plan 22 · U7, part a: Black 2's looks of Route 6 to the Celestial Tower that stand as the nearest of ours until plan 22 · U12
-    "scientist_m_52": "scientist", "scientist_f_46": "scientist_f", "psychic_m": "psychic", "psychic_f": "psychic",
-    "veteran_m": "veteran", "veteran_f": "veteran", "backpacker_f": "picnicker", "worker_44": "worker", "worker_26": "worker",
+    "scientist_m_52": "scientist", "scientist_f_46": "scientist_f", "psychic_m": "psychic",
+    "veteran_m": "veteran", "worker_44": "worker", "worker_26": "worker",
     "clerk_f": "clerk",
     // Plan 20 · J15, part h: Janine, Fuchsia's Leader, and the decoys of her Gym who wear her look
     "gsleader13": "janine",
@@ -673,7 +711,7 @@
     "Cyclist": [ "cyclist_m", "cyclist_f" ],
     "Battle Girl": "battle_girl",
     "Ace Trainer": [ "ace_trainer_m", "ace_trainer_f" ],
-    "Psychic": "psychic",
+    "Psychic": [ "psychic", "psychic_f" ],
     "Ninja Boy": "ninja_boy",
     "Ruin Maniac": "ruin_maniac",
     "Artist": "artist",
@@ -690,7 +728,7 @@
     "Cowgirl": "cowgirl",
     "Rancher": "rancher",
     "Aroma Lady": "aroma_lady",
-    "Veteran": "veteran",
+    "Veteran": [ "veteran", "veteran_f" ],
     "Poké Kid": "poke_kid",
     // Plan 11 · C4: the rest of Platinum's classes, and the classes of two as the pair of looks they are
     "Sailor": "sailor",
@@ -714,7 +752,7 @@
     "Belle & Pa": [ "lass", "middle_aged_man" ],
     "Double Team": [ "ace_trainer_f", "ace_trainer_m" ],
     "Young Couple": [ "ace_trainer_m", "ace_trainer_f" ],
-    "Rival": [ "rival", "blue", "may", "brendan", "wally", "silver", "serena", "calem" ],
+    "Rival": [ "rival", "blue", "may", "brendan", "wally", "silver", "hugh", "serena", "calem" ],
     // Plan 20 · J14: the classes HeartGold has that Platinum and FireRed lack, on looks of the kit, and the Johto cast's
     "Team Rocket F": "rocket_f",
     "Rocket Boss": "giovanni",
@@ -790,18 +828,17 @@
     "Old Couple": [ "old_man", "old_woman" ],
     // Plan 21 · H6, part c: Gabby and Ty, whose reporter and cameraman stand as the nearest looks until theirs are made
     "Interviewer": [ "lady", "gentleman" ],
-    // Plan 22 · U2: Black 2's first trainers, folded onto the nearest looks until their own are made
-    "Preschooler": [ "youngster", "lass" ],
-    "Nursery Aide": [ "nurse" ],
-    "Janitor": [ "clerk" ],
-    // Plan 22 · U5, part c: Castelia's classes, folded onto the nearest looks until plan 22 · U12, and its cast as themselves
-    "Harlequin": "clown",
-    "Doctor": [ "scientist" ],
+    // Plan 22 · U2: Black 2's first trainers (looks of their own since plan 22 · U12)
+    "Preschooler": [ "preschooler_m", "preschooler_f" ],
+    "Nursery Aide": "nursery_aide",
+    "Janitor": "janitor",
+    // Plan 22 · U5, part c: Castelia's classes, and its cast as themselves
+    "Harlequin": "harlequin",
+    "Doctor": "physician",
     "Leader Burgh": "burgh",
     "Pokémon Trainer Colress": "colress",
-    // Plan 22 · U6: the desert's and Route 4's classes, folded onto the nearest looks until plan 22 · U12, and Nimbasa's
-    // cast as themselves
-    "Backpacker": [ "hiker", "picnicker" ],
+    // Plan 22 · U6: the desert's and Route 4's classes, and Nimbasa's cast as themselves
+    "Backpacker": [ "backpacker_m", "backpacker_f" ],
     "Nurse": [ "nurse" ],
     "Hooligans": "roughneck",
     "Leader Elesa": "elesa",
@@ -810,16 +847,15 @@
     "Pokémon Trainer Rosa": "rosa",
     "Pokémon Trainer Nate": "nate",
     "Pokémon Trainer Shauna": "shauna",
-    // Plan 22 · U6, part b: Route 5's and Driftveil's classes, folded onto the nearest looks until plan 22 · U12, and
-    // Driftveil's cast as themselves
-    "Baker": "waitress",
-    "Dancer": "jogger",
-    "Backers": "twin",
-    "Musician": "guitarist",
+    // Plan 22 · U6, part b: Route 5's and Driftveil's classes, and Driftveil's cast as themselves
+    "Baker": "baker",
+    "Dancer": "street_dancer",
+    "Backers": [ "backers_f", "backers_m" ],
+    "Musician": "musician",
     "Leader Clay": "clay",
     "Pokémon Trainer Rood": "rood",
-    // Plan 22 · U6, part c: Route 16's and the Relic Passage's depot agents, folded onto the workers until plan 22 · U12
-    "Depot Agent": "worker",
+    // Plan 22 · U6, part c: Route 16's and the Relic Passage's depot agents
+    "Depot Agent": "depot_agent",
     // Plan 22 · U7, part a: Skyla and her pilots
     "Leader Skyla": "skyla",
     "Pilot": "pilot",
@@ -831,6 +867,38 @@
     "Elite Four Marshal": "marshal",
     "Elite Four Grimsley": "grimsley",
     "Elite Four Caitlin": "caitlin",
+    // Plan 22 · U12: the rest of Unova's classes on looks of their own, and its cast in battle as they stand in the field;
+    // a Leader whom no look of the table names (Drayden, Marlon) and the Boss Trainers of the tournament's hall are the
+    // person's own look, as "Leader" is; Team Plasma's grunts by the person's look, the men's first
+    "Team Plasma Grunt": [ "plasma_grunt", "plasma_grunt_f" ],
+    "Team Plasma Zinzolin": "zinzolin",
+    "Team Plasma Colress": "colress",
+    "Smasher": "smasher",
+    "Hoopster": "hoopster",
+    "Striker": "striker",
+    "Linebacker": "linebacker",
+    "Infielder": "infielder",
+    "Motorcyclist": "biker",
+    "Clerk": [ "clerk", "cashier_f" ],
+    "Pokémon Trainer Bianca": "bianca",
+    "Pokémon Trainer Cheren": "cheren",
+    "Pokémon Trainer N": "n",
+    "Pokémon Trainer Alder": "alder",
+    "Leader Cheren": "cheren",
+    "Leader Roxie": "roxie",
+    "Leader Drayden": null,
+    "Leader Marlon": null,
+    "Boss Trainer": null,
+    "Boss Trainer Benga": null, "Boss Trainer Abed": null, "Boss Trainer Abigail": null, "Boss Trainer Bess": null,
+    "Boss Trainer Brent": null, "Boss Trainer Carleigh": null, "Boss Trainer Carlen": null, "Boss Trainer Daneil": null,
+    "Boss Trainer Danelle": null, "Boss Trainer Frederick": null, "Boss Trainer Freira": null, "Boss Trainer Gail": null,
+    "Boss Trainer Gaius": null,
+    "Pokémon Trainer Cynthia": "cynthia",
+    "Pokémon Trainer Cilan": null,
+    "Pokémon Trainer Chili": null,
+    "Pokémon Trainer Cress": null,
+    "Game Freak Morimoto": null,
+    "Game Freak Nishino": null,
     // Plan 14 · B10: the Battle Pike's and the Battle Pyramid's Brains in battle
     "Pike Queen": "lucy",
     "Pyramid King": "brandon"

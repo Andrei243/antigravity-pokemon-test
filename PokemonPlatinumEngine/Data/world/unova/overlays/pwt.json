@@ -24,7 +24,7 @@
   "people": {
     "0": {
       "name": "Backer",
-      "npcType": "Lass",
+      "npcType": "backers_f",
       "dialog": [ "Water, fire and grass Pledges! Use two of them together in a double battle and something special happens!" ]
     },
     "1": {
@@ -64,7 +64,7 @@
     },
     "13": {
       "name": "Smasher",
-      "npcType": "ace_trainer_f",
+      "npcType": "smasher",
       "dialog": [ "In front of a crowd you're supposed to stand firm. But I can't help loving moves with a bit of rhythm!" ]
     },
     "14": {
@@ -84,7 +84,7 @@
     },
     "17": {
       "name": "Backpacker",
-      "npcType": "picnicker",
+      "npcType": "backpacker_f",
       "dialog": [ "A ship is only really a ship out on the open sea. Moored here, they all look a bit lonely." ]
     },
     "18": {

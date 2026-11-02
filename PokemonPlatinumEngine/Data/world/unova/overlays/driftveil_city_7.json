@@ -7,7 +7,7 @@
   "people": {
     "0": {
       "name": "Backers",
-      "npcType": "twin",
+      "npcType": "backers_m",
       "dialog": [ "We come here every week! The market changes with the ships that come in." ]
     },
     "1": {
@@ -24,13 +24,13 @@
     },
     "4": {
       "name": "Nursery Aide",
-      "npcType": "pokemon_breeder_f",
+      "npcType": "nursery_aide",
       "script": "Sweets",
       "still": true
     },
     "6": {
       "name": "Backers",
-      "npcType": "twin",
+      "npcType": "backers_f",
       "dialog": [ "Herbs are bitter, but they work wonders on Pokémon. Grandma swears by them!" ]
     },
     "7": {

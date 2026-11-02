@@ -15,7 +15,7 @@
   "area": "driftveil_city",
   "bgmTrack": "unova/driftveil",
   "architecture": "Storehouse",
-  "doors": [ { "warp": 13, "map": "ClayTunnel_1", "x": 16, "y": 59, "facing": "Up", "openedBy": "UnovaHallOfFame" } ],
+  "doors": [ { "warp": 13, "map": "ClayTunnel_1", "x": 16, "y": 59, "facing": "Up", "openedBy": "UnovaHallOfFame" } ],
   "triggers": [
     { "script": "PlasmaOnTheBridge", "x": 221, "z": 430, "width": 1, "depth": 5, "variable": "VAR_UNOVA_DRIFTVEIL", "value": 0 },
     { "script": "RoodCalls", "x": 194, "z": 397, "width": 1, "depth": 3, "variable": "VAR_UNOVA_DRIFTVEIL", "value": 1 },
@@ -28,7 +28,7 @@
       "dialog": [ "The name's Charles. I learned a battle style with three Pokémon out at once to impress a girl. She wasn't impressed." ]
     },
     "1": { "name": "Worker", "npcType": "worker", "script": "GymWorker", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_DRIFTVEIL_GYM_WORKER" },
-    "2": { "name": "Former Member", "npcType": "middle_aged_man", "script": "FormerMember", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_EXPLASMA_BRIDGE" },
+    "2": { "name": "Former Member", "npcType": "plasma_former_m", "script": "FormerMember", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_EXPLASMA_BRIDGE" },
     "3": {
       "name": "Grunt",
       "npcType": "plasma_grunt",
@@ -41,7 +41,7 @@
     "6": { "name": "Clay", "npcType": "clay", "script": "ClayOutside", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL" },
     "9": {
       "name": "Backers",
-      "npcType": "twin",
+      "npcType": "backers_f",
       "dialog": [ "Welcome to Driftveil! Ships from all over the world tie up at our docks." ]
     },
     "10": {
@@ -61,7 +61,7 @@
     },
     "13": {
       "name": "Backers",
-      "npcType": "twin",
+      "npcType": "backers_f",
       "dialog": [ "Bridges join lands, and battles join people. So Pokémon are a kind of bridge too!" ]
     },
     "14": {
@@ -86,7 +86,7 @@
     },
     "18": {
       "name": "Backers",
-      "npcType": "twin",
+      "npcType": "backers_f",
       "dialog": [ "The Pokémon World Tournament is just south of the city. Trainers from every region battle there!" ]
     },
     "19": { "name": "Lillipup", "npcType": "Pokemon", "species": "Lillipup", "dialog": [ "Lillipup: Yip! Yip!" ] },

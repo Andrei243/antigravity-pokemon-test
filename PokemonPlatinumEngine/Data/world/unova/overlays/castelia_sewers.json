@@ -29,7 +29,7 @@
       "hiddenBy": "FLAG_UNOVA_HIDE_SEWER_GRUNTS",
       "trainer": { "id": "unova_team_plasma_grunt_3", "dialogueBefore": "You won't get in our way!", "dialogueAfter": "Run for it!" }
     },
-    "12": {
+    "12": { "npcType": "physician",
       "name": "Doctor",
       "trainer": {
         "dialogueBefore": "I patrol these tunnels in case anyone gets hurt down here. Let's check your Pokémon's health the hard way!",

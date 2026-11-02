@@ -136,6 +136,7 @@ label Meeting
   say "Wow... It's sooo pretty! You can see all the way to the sea from here."
   face 2 player
   emote 2 exclaim
+  act 2 wave
   say "Oh! Hi there! Isn't this view something?"
   speaker "Bianca"
   say "I'm Bianca! I help Professor Juniper with her Pokémon research."
@@ -154,6 +155,7 @@ label Favour
   say "N-no way. I must have heard that wrong. This is really, really important, you know!"
   goto Favour
 label Thanks
+  act 2 cheer
   say "Yay, thank you! Your help is going to move the professor's research along so much."
   say "And filling in the Pokédex is super fun, I promise! OK then... ta-daaa!"
   say "One of the Pokémon in here is going to be your partner. Go on, choose!"
@@ -171,10 +173,12 @@ label Thanks
   face 0 player
   emote 0 exclaim
   say "So that's your partner? Nice! Like my sister said: look after it really, really well. Got it?"
+  act 0 point
   say "Hey... what's that you're holding?"
   speaker "Bianca"
   say "It's a Pokédex!"
   face 0 2
+  act 0 jump
   speaker "{rival}"
   say "Give me one too! Please! I want to get stronger, and if I know more about Pokémon, I'll be tougher. Right?"
   speaker "Bianca"
@@ -201,6 +205,7 @@ label Fought
   heal
   speaker "{rival}"
   if lost goto HughWon
+  act 0 shrug
   say "I lost... Battling a Trainer is nothing like battling wild Pokémon!"
   say "Whatever. Now I know you're a Trainer I can count on, and that's what matters."
   goto HughOff
@@ -249,6 +254,7 @@ script TheGifts
   speaker "Mom"
   say "What a lovely idea. Even when there's only one road down to the sea, a Town Map is good to have."
   speaker "Bianca"
+  act 2 cheer
   say "Aww, you guys! Just watching this makes me happy!"
   say "OK, next stop: Route 19! I'll show you how to catch a Pokémon. Come find me past the gate!"
   walk 2 right 5 up 3
@@ -271,6 +277,7 @@ script CherenAndHugh
   place 2 39 742 up
   show 2
   speaker "Bianca"
+  act 2 wave
   say "Heeey!"
   walk 2 up 1
   face player down
@@ -301,6 +308,7 @@ script CherenAndHugh
   say "Hey! You there!"
   walk 0 left 3
   face 7 0
+  act 0 point
   say "Are you the Gym Leader? One, two, three, let's battle!"
   speaker "Cheren"
   say "You look like a tough Trainer. Very well. Come into my Gym."

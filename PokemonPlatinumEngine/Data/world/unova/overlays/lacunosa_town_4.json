@@ -5,7 +5,7 @@
   "people": {
     "0": {
       "name": "Backers",
-      "npcType": "twin",
+      "npcType": "backers_f",
       "dialog": [
         "The sun sets early here, and the moon rises soon after. We love the quiet in between."
       ]

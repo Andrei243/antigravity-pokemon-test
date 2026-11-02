@@ -32,7 +32,7 @@
     },
     "3": {
       "name": "Traveller",
-      "npcType": "hiker",
+      "npcType": "backpacker_m",
       "dialog": [
         "Why am I on a journey? I'm sure I had a reason when I set out. Do you remember exactly why you're travelling?"
       ]

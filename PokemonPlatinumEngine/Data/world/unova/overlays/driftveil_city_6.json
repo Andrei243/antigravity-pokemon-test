@@ -10,7 +10,7 @@
     "0": { "name": "Rood", "npcType": "rood", "script": "Rood", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_ROOD_HOME" },
     "5": {
       "name": "Former Member",
-      "npcType": "middle_aged_woman",
+      "npcType": "plasma_former_f",
       "hiddenBy": "",
       "dialog": [ "I wore that uniform for years. Now I wear an apron and look after the Pokémon people bring us." ]
     },
@@ -26,7 +26,7 @@
       "hiddenBy": "",
       "dialog": [ "I left Team Plasma and found work in Clay's mine. He gave me a second chance. Not everyone would." ]
     },
-    "8": { "name": "Former Member", "npcType": "middle_aged_man", "script": "FormerMember", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_EXPLASMA_HOME" },
+    "8": { "name": "Former Member", "npcType": "plasma_former_m", "script": "FormerMember", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_EXPLASMA_HOME" },
     "12": { "name": "{rival}", "npcType": "hugh", "script": "Hugh", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_HUGH_PLASMA_HOUSE" }
   }
 }

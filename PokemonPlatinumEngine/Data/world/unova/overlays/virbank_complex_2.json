@@ -54,7 +54,7 @@
     "7": { "name": "Scientist", "script": "Scientist", "still": true },
     "11": {
       "name": "Girl",
-      "npcType": "Lass",
+      "npcType": "backers_f",
       "dialog": [ "So many Pokémon live round the complex! The Magnemite like the power lines best." ]
     }
   }

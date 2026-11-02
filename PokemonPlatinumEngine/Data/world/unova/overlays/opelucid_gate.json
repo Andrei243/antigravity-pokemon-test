@@ -12,7 +12,7 @@
     },
     "1": {
       "name": "Backers",
-      "npcType": "twin",
+      "npcType": "backers_m",
       "dialog": [
         "Munch, munch... I'm happy when I'm eating. Munch... but when I don't get food I get angry. Hungry and angry are almost the same word, you know."
       ]

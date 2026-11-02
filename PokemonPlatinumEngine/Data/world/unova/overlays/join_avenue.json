@@ -29,7 +29,7 @@
   "people": {
     "0": {
       "name": "Owner",
-      "npcType": "Gentleman",
+      "npcType": "clerk",
       "script": "Owner"
     },
     "1": {

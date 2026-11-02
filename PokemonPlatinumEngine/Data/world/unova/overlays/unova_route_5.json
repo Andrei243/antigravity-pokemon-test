@@ -21,7 +21,7 @@
       "name": "Preston",
       "trainer": { "id": "unova_musician_preston", "dialogueBefore": "Hum along to my battle song! It goes like this!", "dialogueAfter": "You stole the show. Encore some other day!" }
     },
-    "3": { "name": "Brian", "trainer": { "dialogueBefore": "Step, turn, battle! Keep up with my rhythm!", "dialogueAfter": "You tripped me up good and proper." } },
+    "3": { "npcType": "street_dancer", "name": "Brian", "trainer": { "dialogueBefore": "Step, turn, battle! Keep up with my rhythm!", "dialogueAfter": "You tripped me up good and proper." } },
     "4": { "name": "Ava", "trainer": { "dialogueBefore": "Go, go, Trainers! We cheer for everyone, even you!", "dialogueAfter": "Two, four, six, eight! Who do we appreciate? You!" } },
     "5": { "name": "Aya", "trainer": { "dialogueBefore": "Two Backers, two Pokémon! Ready?", "dialogueAfter": "Our cheers weren't loud enough!" } },
     "6": { "name": "Horton", "trainer": { "dialogueBefore": "Hold still! I'm painting the perfect battle!", "dialogueAfter": "A masterpiece... of losing." } },
@@ -40,7 +40,7 @@
     },
     "10": {
       "name": "Backers",
-      "npcType": "twin",
+      "npcType": "backers_f",
       "hiddenBy": "",
       "dialog": [ "We're the audience today! Cheering is a performance too, you know." ]
     },

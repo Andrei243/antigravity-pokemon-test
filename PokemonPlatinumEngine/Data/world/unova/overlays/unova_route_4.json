@@ -120,7 +120,7 @@
     },
     "32": {
       "name": "Girl",
-      "npcType": "Lass",
+      "npcType": "backers_f",
       "dialog": [ "Out in the desert, the sand is swallowing an old castle a little more every year. Isn't that sad?" ]
     }
   },

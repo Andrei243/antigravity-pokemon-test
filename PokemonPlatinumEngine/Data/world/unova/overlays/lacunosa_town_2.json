@@ -27,7 +27,7 @@
     },
     "3": {
       "name": "Backers",
-      "npcType": "twin",
+      "npcType": "backers_f",
       "dialog": [
         "Nobody here stays out late. I hear that's the rule. We follow it to the minute!"
       ]

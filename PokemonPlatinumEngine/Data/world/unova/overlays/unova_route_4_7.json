@@ -10,7 +10,7 @@
     },
     "1": {
       "name": "Boy",
-      "npcType": "Youngster",
+      "npcType": "backers_m",
       "dialog": [ "On Thursdays a big bird Pokémon lands out on the road. I've seen it with my own eyes!" ]
     },
     "2": {

@@ -11,7 +11,7 @@
     "0": { "name": "Sailor", "npcType": "sailor", "script": "Ferry", "still": true },
     "1": {
       "name": "Backpacker",
-      "npcType": "hiker",
+      "npcType": "backpacker_m",
       "dialog": [ "They say a Pokémon that brings victory hides somewhere on this island. I've looked everywhere but behind that wall!" ]
     },
     "6": {

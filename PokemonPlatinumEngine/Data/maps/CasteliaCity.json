@@ -884,7 +884,7 @@
     {
       "id": "harlequin",
       "name": "Harlequin",
-      "npcType": "clown",
+      "npcType": "harlequin",
       "x": 44,
       "y": 8,
       "facing": "Left",

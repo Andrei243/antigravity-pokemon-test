@@ -13,7 +13,7 @@
   ],
   "people": {
     "0": { "name": "{rival}", "npcType": "hugh", "script": "Hugh", "hiddenBy": "FLAG_UNOVA_HIDE_HUGH_HOLD", "still": true },
-    "1": { "name": "Grunt", "npcType": "plasma_grunt", "script": "HoldGrunt", "hiddenBy": "FLAG_UNOVA_HIDE_HOLD_GRUNTS", "still": true, "trainer": { "id": "unova_team_plasma_grunt_50", "dialogueBefore": "Who are you? You don't belong on this ship!", "dialogueAfter": "Ugh! We have to warn the others!" } },
+    "1": { "name": "Grunt", "npcType": "plasma_grunt_f", "script": "HoldGrunt", "hiddenBy": "FLAG_UNOVA_HIDE_HOLD_GRUNTS", "still": true, "trainer": { "id": "unova_team_plasma_grunt_50", "dialogueBefore": "Who are you? You don't belong on this ship!", "dialogueAfter": "Ugh! We have to warn the others!" } },
     "2": { "name": "Grunt", "npcType": "plasma_grunt", "script": "HoldGrunt", "hiddenBy": "FLAG_UNOVA_HIDE_HOLD_GRUNTS", "still": true, "trainer": { "id": "unova_team_plasma_grunt_51", "dialogueBefore": "Two kids? On our ship? Get them!", "dialogueAfter": "Protect the switches! Somebody!" } }
   }
 }

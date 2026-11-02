@@ -39,7 +39,7 @@
         "dialogueAfter": "I should have brought a conductor."
       }
     },
-    "7": {
+    "7": { "npcType": "physician",
       "name": "Kit",
       "trainer": {
         "dialogueBefore": "I'm a doctor of the mind as well as of the body. Lie down and we'll discuss your battle.",

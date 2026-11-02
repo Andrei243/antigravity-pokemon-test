@@ -9,7 +9,7 @@
       "name": "Battle Girl",
       "dialog": [ "A Pokémon that evolves grows stronger and changes its looks. Hold it back, though, and it learns its moves sooner!" ]
     },
-    "1": { "name": "Girl", "npcType": "Lass", "script": "AudinoFan" },
+    "1": { "name": "Girl", "npcType": "backers_f", "script": "AudinoFan" },
     "2": { "name": "Audino", "npcType": "Pokemon", "species": "Audino", "dialog": [ "Audino: Brrrm... brrrm." ] }
   }
 }

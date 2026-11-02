@@ -7,7 +7,7 @@
   "bgmTrack": "unova/plasma_frigate",
   "people": {
     "0": { "name": "Grunt", "npcType": "plasma_grunt", "hiddenBy": "", "trainer": { "dialogueBefore": "The stern is off limits! Especially to you!", "dialogueAfter": "Off limits... to me, now." } },
-    "1": { "name": "Grunt", "npcType": "plasma_grunt", "hiddenBy": "", "trainer": { "dialogueBefore": "Our scientist is busy. Busy beating you!", "dialogueAfter": "Okay, he's still busy. I'm not." } }
+    "1": { "name": "Grunt", "npcType": "plasma_grunt_f", "hiddenBy": "", "trainer": { "dialogueBefore": "Our scientist is busy. Busy beating you!", "dialogueAfter": "Okay, he's still busy. I'm not." } }
   },
   "npcs": [
     { "id": "colress_stern", "name": "Colress", "npcType": "colress", "x": 11, "y": 6, "facing": "Up", "script": "Colress" }

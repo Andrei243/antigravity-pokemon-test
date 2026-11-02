@@ -5,7 +5,7 @@
   "people": {
     "0": {
       "name": "Baseball Player",
-      "npcType": "Youngster",
+      "npcType": "infielder",
       "dialog": [ "A few years back, a Pokémon called Zoroark made its den in the Lostlorn Forest, up off Route 16. Spooky, huh?" ]
     },
     "1": {

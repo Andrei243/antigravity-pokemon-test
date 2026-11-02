@@ -6,8 +6,8 @@
   "bgmTrack": "unova/giant_chasm",
   "people": {
     "7": { "name": "Rood", "npcType": "rood", "script": "Rood", "still": true },
-    "8": { "name": "Sage", "npcType": "sage", "script": "Sage", "still": true },
-    "9": { "name": "Sage", "npcType": "sage", "script": "Sage", "still": true }
+    "8": { "name": "Sage", "npcType": "plasma_sage", "script": "Sage", "still": true },
+    "9": { "name": "Sage", "npcType": "plasma_sage", "script": "Sage", "still": true }
   },
   "signs": {
     "10804": "The Giant Chasm\nWhere a star fell, long ago"

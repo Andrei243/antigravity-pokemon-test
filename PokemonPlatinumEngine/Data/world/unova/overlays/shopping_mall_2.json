@@ -5,7 +5,7 @@
   "people": {
     "0": {
       "name": "Janitor",
-      "npcType": "worker",
+      "npcType": "janitor",
       "dialog": [
         "This mountain of cardboard boxes... they're all full of old appliances we can't sell. They're just going to waste."
       ]

@@ -12,7 +12,7 @@
     },
     "1": {
       "name": "Backers",
-      "npcType": "twin",
+      "npcType": "backers_m",
       "dialog": [
         "We came here to cheer for the swimmers! Even the Pokémon ones!"
       ]

@@ -12,7 +12,7 @@
     },
     "1": {
       "name": "Dancer",
-      "npcType": "beauty",
+      "npcType": "street_dancer",
       "dialog": [
         "I clear my own path with Hidden Moves. Cut, Strength, Surf: they save so much walking!"
       ]

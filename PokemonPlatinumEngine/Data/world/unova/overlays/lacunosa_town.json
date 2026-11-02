@@ -49,7 +49,7 @@
     },
     "1": {
       "name": "Backers",
-      "npcType": "twin",
+      "npcType": "backers_f",
       "hiddenBy": "FLAG_UNOVA_LACUNOSA_NIGHT",
       "dialog": [
         "Welcome to Lacunosa Town! Everyone here lives like clockwork, from morning to night. If you spend the day in the sun, you sleep like a baby at night."
