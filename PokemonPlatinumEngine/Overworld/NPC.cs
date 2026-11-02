@@ -388,6 +388,12 @@ public class NPC
     /// </summary>
     public const string GrottoHollowType = "GrottoHollow";
 
+    /// <summary>
+    /// Birth Island's triangle (plan 21 · H12, part p; Emerald's <c>OBJ_EVENT_GFX_DEOXYS_TRIANGLE</c>): a thing of the map,
+    /// in the way like a person and spoken to like one (its script moves it about the island). Drawn as a card of our own.
+    /// </summary>
+    public const string DeoxysTriangleType = "DeoxysTriangle";
+
     /// <summary>Which thing of a Gym's puzzle this is; null for anyone and anything else.</summary>
     public PropType? GymThing => NpcType switch
     {
@@ -419,6 +425,7 @@ public class NPC
         RefrigeratorType => PropType.Refrigerator,
         ElectricFanType => PropType.ElectricFan,
         LawnmowerType => PropType.Lawnmower,
+        DeoxysTriangleType => PropType.DeoxysTriangle,
         _ => null
     };
 

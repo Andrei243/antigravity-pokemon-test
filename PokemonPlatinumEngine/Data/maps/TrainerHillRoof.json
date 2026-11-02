@@ -2,7 +2,7 @@
   "name": "TrainerHillRoof",
   "displayName": "Trainer Hill",
   "bgmTrack": "sinnoh/veilstone",
-  "interior": "GameHall",
+  "interior": "Aerie",
   "trees": "Round",
   "width": 13,
   "height": 11,

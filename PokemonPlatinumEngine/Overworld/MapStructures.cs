@@ -233,6 +233,11 @@ public static class MapStructures
         string t when t.StartsWith("PokemonTower_") => BuildingKind.Tower,
         // Plan 21 · H9: Hoenn's Pokémon League at the top of Ever Grande City, its hall the Center's counter and the Mart's
         "EverGrandeCity_PokemonLeague_1F" => BuildingKind.League,
+        // Plan 21 · H12, part p: the Trainer Hill on Route 111 (a tall tower of floors), and the Battle Frontier island's
+        // Ranking Hall and Exchange Service Corner
+        "TrainerHillLobby" => BuildingKind.Tower,
+        "BattleFrontier_RankingHall" => BuildingKind.Hall,
+        "BattleFrontier_ExchangeServiceCorner" => BuildingKind.Shop,
         _ => null
     };
 

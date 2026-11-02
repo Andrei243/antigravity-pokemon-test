@@ -345,7 +345,7 @@ public class CharacterTableTests
     public void EveryPersonOfJohtoResolvesAndTheCastAndClassesAreTheirOwnLooks()
     {
         var johto = World.LoadAll().Single(w => w.Index.Region == "Johto");
-        var notPeople = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "Pokemon", "GalacticDoor", "IceBlock", "FallenBoulder", "Assistant", "ElectricGate", "Microwave", "WashingMachine", "Refrigerator", "ElectricFan", "Lawnmower", "ItemBall", "UnownWall", "GrottoHollow", "GymWaterfall", "Crate" };
+        var notPeople = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "Pokemon", "GalacticDoor", "IceBlock", "FallenBoulder", "Assistant", "ElectricGate", "Microwave", "WashingMachine", "Refrigerator", "ElectricFan", "Lawnmower", "ItemBall", "UnownWall", "GrottoHollow", "GymWaterfall", "Crate", "DeoxysTriangle" };
         var unresolved = new List<string>();
         foreach (string key in johto.Index.Areas)
         {

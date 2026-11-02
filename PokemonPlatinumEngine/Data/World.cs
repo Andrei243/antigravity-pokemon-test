@@ -1037,6 +1037,11 @@ public static class WorldMapBuilder
         _ when key.EndsWith("_mart") => BuildingKind.PokeMart,
         _ when key.EndsWith("_gym") || key.Contains("_gym_") => BuildingKind.Gym,
         _ when key.EndsWith("_lab") => BuildingKind.Lab,
+        // Plan 21 · H12, part p: the Battle Frontier island's halls, whose doors stay shut (they cross to Sinnoh's lobbies):
+        // the Battle Tower a tower, the other six halls (the dome, the palace, the arena, the factory, the pike and the
+        // pyramid) halls, not the cottage a door of no kind gave them
+        "battle_frontier_battle_tower_lobby" => BuildingKind.Tower,
+        _ when key.StartsWith("battle_frontier_battle_") && key.EndsWith("_lobby") => BuildingKind.Hall,
         _ => BuildingKind.House
     };
 

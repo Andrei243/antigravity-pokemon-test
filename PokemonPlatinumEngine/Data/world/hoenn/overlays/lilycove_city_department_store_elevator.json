@@ -11,6 +11,8 @@
     { "warp": 1, "map": "LilycoveCity_DepartmentStore_1F", "x": 2, "y": 2, "facing": "Down" }
   ],
   "triggers": [ { "x": 1, "z": 5, "script": "Out" }, { "x": 2, "z": 5, "script": "Out" } ],
+  // The car's floor indicator over its back wall (plan 21 · H12, part p), as Sinnoh's lifts have one
+  "props": [ { "type": "LiftIndicator", "x": 2, "y": 1, "width": 1, "depth": 1 } ],
   "people": {
     "teala": { "name": "Lift Attendant", "script": "Attendant" }
   }

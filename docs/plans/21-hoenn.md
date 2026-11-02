@@ -1492,3 +1492,31 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
       the blender with friends, the contest's music, cheers, voices and per-move animations, the painting on the wall, the
       museum's first scene, the Contest Lady's television show, a player's own quiz for others); Mossdeep's link games
       themselves (plan 07); and pictures only, as after part k, with Mauville's machine and the two basements unshot.
+    - **Part p** (done 2026-11-02: a look at Hoenn's last places in shots, and the picture-only items that could be drawn
+      without the importer; style guide, "Hoenn's last things"; the harness's `hoenn` mode with `HOENN_FROM=look`,
+      `Modes/HoennLook.cs`, shots `h3a0` to `h3j0`, `LOOK_ONLY=<names>` for some; tests `HoennPartPTests`). **Looked at**:
+      the Trainer Hill from Route 111, its lobby, a floor and its roof; the Frontier island's halls' doors; Mauville's
+      slot machine's screen and its room with the roulette tables; the two basements; Lilycove's Pokémon Center with its
+      three ladies; the Department Store's lift; Altering Cave; Faraway Island's grass; the S.S. Tidal's three rooms; the
+      Seaside Cycling Road; the wreck and its deck; the Mechadolls; Route 120's bridge; Shoal Cave; Birth Island.
+      **Fixed**: the island's seven halls, its Ranking Hall and Exchange Service Corner and the Trainer Hill had all stood
+      as the wooden cottage a door of no kind is built as: a hall's shut door is now a hall's (`WorldMapBuilder.KindOfArea`,
+      the Battle Tower a tower) and the Trainer Hill a tower (`MapStructures.KindOfDoor`); the Trainer Hill's trainers
+      and Hoenn's objects of Emerald's looks no table named (triathletes, Hex Maniacs, a few townsfolk) stood as the boy,
+      and now stand as the nearest look of ours (`characters.json`'s `fallbacks`); the Trainer Hill's roof is an
+      `Aerie` room. **Built** (pictures only): the Mechadolls' look (`mechadoll`), Birth Island's triangle as a card of
+      its own (`NPC.DeoxysTriangleType`, `PropType.DeoxysTriangle`, `HoennArt.PaintTriangle`), the wreck in Route 108
+      (`PropType.Wreck`, `HoennArt.Wreck`: its stern sunk, rust, holes in the deck, a funnel's stump) and the lift's
+      floor indicator. Seen and right as they were: the slot machine's screen, the basements, the ladies, Altering
+      Cave, Faraway Island (Mew unseen in the grass), the triangle's island.
+    - **What of Hoenn's pictures is left after part p**: the Abandoned Ship's deck still reads as grey stone (its
+      metatiles are `gTileset_Facility`'s, shared with the Aqua Hideout and Stern's shipyard; the deck's own are 0x2BE,
+      0x2BF, 0x2CE, 0x2CF, 0x333, 0x35D, 0x3B3 and 0x3C8 to 0x3CD, which a `GbaCover.HoennRanges` row and a `--game emerald
+      --data` run would make planks and hull); **the Seaside Cycling Road has no deck in the picture**: Route 110's road
+      over the sea (x 212 to 216, y 196 to 236) is planks in `--plan` but no `Map.DeckAt`, so the 3D field draws the sea
+      over it and its cyclists stand waist-deep (`h3f0`; it wants the GBA reader to lay its metatiles as a bridge's deck,
+      as Route 120's are); the S.S. Tidal's cabins are walled by full-height slabs and beams that hide the rooms from the
+      camera (`h3e5`), and its corridor by a block over its middle (`h3e4`); the roulette tables are plain dining tables
+      (the roulette's wheel is another session's); the Kecleon bridge's and the Fortree bridge's tile swaps, the salt
+      piles shrinking, Mew's grass shaking and the cave mouths' and deep water's looks under the abnormal weather (each a
+      swap of chunks or a field effect, none drawn).

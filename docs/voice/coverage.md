@@ -30,7 +30,7 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 
 - Named characters: 387 voices (350 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Cloned from the user's samples: `rival`.
-- Archetypes in use: 222, with 671 voices to cast (V5).
+- Archetypes in use: 223, with 674 voices to cast (V5).
 - Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1880.
 
 ## Lines by voice
@@ -40,16 +40,16 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | Voice | Lines | Shown only |
 |---|---|---|
 | `@self` | 1880 | 135 |
-| `look:gentleman (any)` | 721 | 15 |
+| `look:gentleman (any)` | 724 | 15 |
 | `rival` | 598 | 18 |
 | `look:grunt (any)` | 588 | 0 |
-| `look:lady (any)` | 427 | 1 |
-| `look:youngster (any)` | 394 | 21 |
+| `look:lady (any)` | 428 | 1 |
+| `look:youngster (any)` | 405 | 21 |
 | `look:clerk (any)` | 366 | 10 |
 | `look:lass (any)` | 327 | 11 |
 | `look:attendant (any)` | 321 | 12 |
-| `look:nurse (any)` | 255 | 0 |
-| `look:scientist (any)` | 198 | 4 |
+| `look:nurse (any)` | 256 | 0 |
+| `look:scientist (any)` | 199 | 4 |
 | `look:gym_guide (any)` | 197 | 1 |
 | `look:receptionist (any)` | 159 | 19 |
 | `cynthia` | 157 | 1 |
@@ -84,10 +84,9 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `cyrus` | 83 | 7 |
 | `look:aqua_grunt (any)` | 83 | 3 |
 | `look:hiker (any)` | 82 | 0 |
+| `look:old_woman (any)` | 79 | 5 |
 | `look:worker (any)` | 79 | 0 |
 | `class:camper (any)` | 78 | 0 |
-| `look:old_woman (any)` | 77 | 5 |
-| `look:trainer (any)` | 77 | 0 |
 | `steven` | 77 | 1 |
 | `class:swimmer (any)` | 76 | 0 |
 | `class:twins (any)` | 76 | 0 |
@@ -123,6 +122,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:team_aqua (any)` | 44 | 0 |
 | `class:team_magma (any)` | 44 | 0 |
 | `jasmine` | 43 | 0 |
+| `look:trainer (any)` | 43 | 0 |
 | `mystery` | 43 | 4 |
 | `buck` | 42 | 1 |
 | `class:bird_keeper_gs (any)` | 42 | 0 |
