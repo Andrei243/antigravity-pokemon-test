@@ -4701,6 +4701,20 @@
   },
   "captions": {
     "cry": "{name} cries",
+    "bed": {
+      "Rain": "Rain falls",
+      "HeavyRain": "Rain pours down",
+      "Hail": "Hail rattles down",
+      "Wind": "The wind blows",
+      "Blizzard": "A blizzard howls",
+      "Sandstorm": "Sand blows hard",
+      "Waterfall": "A waterfall roars",
+      "River": "A river runs",
+      "Waves": "Waves break",
+      "Cave": "The cave hums softly",
+      "Underwater": "The sea murmurs",
+      "Giant": "A giant's heart beats"
+    },
     "family": {
       "move": "{move} is used",
       "moveType": "A {type} move sets off",

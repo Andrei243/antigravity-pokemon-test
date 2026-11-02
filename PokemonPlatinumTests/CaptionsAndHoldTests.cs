@@ -131,6 +131,68 @@ public class CaptionsAndHoldTests : IDisposable
     }
 
     [Fact]
+    public void EveryAmbienceBedHasACaptionInEnglishAndRomanian()
+    {
+        foreach (var tag in new[] { "en", "ro" })
+        {
+            Text.Use(tag);
+            var seen = new HashSet<string>();
+            foreach (var bed in Enum.GetValues<AmbienceBed>())
+            {
+                string caption = SoundBank.BedCaption(bed);
+                Assert.True(tag == "en" ? Text.Has($"captions.bed.{bed}") : Text.HasOwn($"captions.bed.{bed}"), $"{tag}: {bed}");
+                Assert.False(string.IsNullOrWhiteSpace(caption), bed.ToString());
+                Assert.DoesNotContain("[", caption);
+                Assert.True(caption.Length <= 48, $"{bed}: \"{caption}\" is too long for its pill");
+                Assert.True(seen.Add(caption), $"{tag}: two beds are both \"{caption}\"");
+            }
+        }
+        Text.Use("en");
+        Assert.Equal("Rain falls", SoundBank.BedCaption(AmbienceBed.Rain));
+    }
+
+    [Fact]
+    public void ABedIsNamedOnceAsItComesInAndAgainOnlyOnceItHasGone()
+    {
+        var watch = new BedWatch();
+        AmbienceLayer[] Beds(params (AmbienceBed Bed, float Gain)[] beds) => beds.Select(b => new AmbienceLayer(b.Bed, b.Gain, 0f)).ToArray();
+
+        // Too faint to count yet
+        Assert.Empty(watch.Notice(Beds((AmbienceBed.River, 0.1f))));
+        Assert.Equal(new[] { AmbienceBed.River }, watch.Notice(Beds((AmbienceBed.River, 0.3f))));
+        // Walking along the bank, it dips and rises without going: named once
+        Assert.Empty(watch.Notice(Beds((AmbienceBed.River, 0.08f))));
+        Assert.Empty(watch.Notice(Beds((AmbienceBed.River, 0.6f), (AmbienceBed.Rain, 0.1f))));
+        Assert.Equal(new[] { AmbienceBed.Rain }, watch.Notice(Beds((AmbienceBed.River, 0.6f), (AmbienceBed.Rain, 1f))));
+        // Gone, then back: named again
+        Assert.Empty(watch.Notice(Beds((AmbienceBed.Rain, 1f))));
+        Assert.Equal(new[] { AmbienceBed.River }, watch.Notice(Beds((AmbienceBed.Rain, 1f), (AmbienceBed.River, 0.5f))));
+    }
+
+    [Fact]
+    public void TheFieldsAmbienceIsCaptionedOnlyWithTheRowOn()
+    {
+        var rain = new[] { new AmbienceLayer(AmbienceBed.Rain, 1f, 0f) };
+        try
+        {
+            AudioManager.SetAmbience(rain);
+            Assert.Empty(Accessibility.CaptionsShown.Lines);
+
+            // Turned on in the rain, the rain is named at the next frame, and once
+            Accessibility.Captions = true;
+            AudioManager.SetAmbience(rain);
+            AudioManager.SetAmbience(rain);
+            var line = Assert.Single(Accessibility.CaptionsShown.Lines);
+            Assert.Equal(("Rain falls", CaptionKind.Ambience, 1), (line.Text, line.Kind, line.Times));
+        }
+        finally
+        {
+            AudioManager.SetAmbience(Array.Empty<AmbienceLayer>());
+            AudioManager.BedsHeard.Clear();
+        }
+    }
+
+    [Fact]
     public void TheQueueCountsARepeatHoldsThreeAndLetsEachGoAfterItsTime()
     {
         var queue = new CaptionQueue();

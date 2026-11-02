@@ -47,4 +47,11 @@ public static partial class SoundBank
     /// <summary>The caption of a cry: the species named, in the language chosen ("Starly cries").</summary>
     public static string CryCaption(PokemonSpecies species, string? form = null) =>
         Text.Of("captions.cry", ("name", species.DisplayName));
+
+    /// <summary>The caption of an ambience bed as it comes in, in the language chosen ("Rain falls").</summary>
+    public static string BedCaption(AmbienceBed bed)
+    {
+        string name = bed.ToString();
+        return Text.Of($"captions.bed.{name}");
+    }
 }

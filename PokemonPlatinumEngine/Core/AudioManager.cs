@@ -252,6 +252,11 @@ public static class AudioManager
     public static void SetAmbience(IReadOnlyList<AmbienceLayer> layers)
     {
         CurrentAmbience = layers;
+        // A bed coming in is named on screen where the options ask (plan 12 · Q9); with the row off the watch forgets,
+        // so turning it on names what is sounding then
+        if (Accessibility.Captions)
+            foreach (var bed in BedsHeard.Notice(layers)) Accessibility.Caption(SoundBank.BedCaption(bed), CaptionKind.Ambience);
+        else if (BedsHeard.Sounding.Count > 0) BedsHeard.Clear();
         if (!isInitialized) return;
         ready.Clear();
         foreach (var layer in layers)
@@ -262,6 +267,9 @@ public static class AudioManager
         forwardedCount = ready.Count;
         mixer.SetAmbience(ready);
     }
+
+    /// <summary>The beds the captions have named and that still sound (plan 12 · Q9).</summary>
+    public static BedWatch BedsHeard { get; } = new();
 
     private static readonly List<AmbienceLayer> ready = new();
     private static IReadOnlyList<AmbienceLayer>? forwarded;
