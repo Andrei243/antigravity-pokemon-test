@@ -290,7 +290,13 @@ public class RoomEditorTests
     {
         var (document, _) = Sandgem();
         var rows = document.Rows();
-        Assert.Equal(document.Area.Objects.Count + document.Area.Warps.Count + document.Area.Triggers.Count, rows.Count);
+        Assert.Equal(document.Area.Objects.Count, rows.Count(r => r.Kind == OverlayRowKind.Person));
+        Assert.Equal(document.Area.Warps.Count, rows.Count(r => r.Kind == OverlayRowKind.Door));
+        Assert.Equal(document.Area.Triggers.Count, rows.Count(r => r.Kind == OverlayRowKind.Trigger));
+        // The signposts the overlay gives words, by the object's id
+        var signs = rows.Where(r => r.Kind == OverlayRowKind.Sign).ToList();
+        Assert.NotEmpty(signs);
+        Assert.All(document.Overlay.Signs!.Keys, key => Assert.Contains(signs, r => r.Key == key));
         var youngster = rows.Single(r => r.Kind == OverlayRowKind.Person && r.Key == "youngster");
         Assert.Contains("Boy", youngster.Overlay);
         Assert.Contains("2 lines", youngster.Overlay);
@@ -363,5 +369,161 @@ public class RoomEditorTests
         var found = EditorChecks.Overlay(GameContent.OfTheGame, document);
         Assert.Contains(found, f => f.Kind == Kind.Script && f.What.Contains("NoSuchScriptAnywhere"));
         Assert.Contains(found, f => f.Kind == Kind.Way && f.What.Contains("NoSuchMapAnywhere"));
+    }
+
+    // ------------------------------------------------------------------ the overlay's own things
+
+    private static (OverlayDocument Document, string Text) Overlay(string key)
+    {
+        var found = EditorAreas.Find(GameDataFiles.Directory, key)!.Value;
+        string text = File.ReadAllText(found.OverlayPath).Replace("\r\n", "\n");
+        return (new OverlayDocument(key, found.Area, text), text);
+    }
+
+    [Fact]
+    public void ASpliceWritesAValueWrittenOnALineBackOnALine()
+    {
+        string text = Hand.Replace("\r\n", "\n");
+        string changed = JsonSplice.Set(text, "people.two", "{\n  \"name\": \"Deux\",\n  \"dialog\": [\n    \"Hi.\"\n  ]\n}");
+        Assert.Contains("\"two\": { \"name\": \"Deux\", \"dialog\": [ \"Hi.\" ] }", changed);
+        // Beside records of a line each, an added record is a line
+        string added = JsonSplice.Set(text, "people.three", "{\n  \"name\": \"Trois\"\n}");
+        Assert.Contains("\"three\": { \"name\": \"Trois\" }", added);
+        Assert.Equal("{ \"a\": [ 1, 2 ], \"b\": {}, \"c\": \"é\" }", JsonSplice.OneLine("{\"a\":[1,2],\"b\":{},\"c\":\"é\"}"));
+    }
+
+    [Fact]
+    public void AnOverlaysOwnPeoplePropsExitsTriggersAndTilesReadAreAddedChangedAndTakenAway()
+    {
+        var (document, original) = Overlay("ancient_tomb");
+        int people = document.Overlay.Npcs!.Count;
+
+        // A person of the overlay's own, on a line beside the three of rubble, then given lines and moved
+        string person = document.AddPerson(10, 12);
+        Assert.Equal(people.ToString(), person);
+        document.SetField(OverlayRowKind.OwnPerson, person, "dialog", "Ancient.|Very ancient.");
+        document.SetField(OverlayRowKind.OwnPerson, person, "x", "11");
+        var npc = document.Overlay.Npcs![people];
+        Assert.Equal((11, 12), (npc.X, npc.Y));
+        Assert.Equal(new[] { "Ancient.", "Very ancient." }, npc.Dialog);
+        Assert.Single(document.Text.Split('\n'), line => line.Contains("\"Very ancient.\"") && line.TrimStart().StartsWith("{ \"name\": \"Someone\""));
+        Assert.Contains(document.Fields(OverlayRowKind.OwnPerson, person), f => f.Label == "y" && f.Value == "12");
+
+        // A prop, a way out, a trigger and a tile read, each in a list the file hasn't yet
+        string prop = document.AddProp(PropType.Planter, 9, 12);
+        document.SetField(OverlayRowKind.OwnProp, prop, "width", "2");
+        string exit = document.AddExit(8, 13);
+        document.SetField(OverlayRowKind.Exit, exit, "map", "AncientTomb");
+        document.SetField(OverlayRowKind.Exit, exit, "facing", "Down");
+        string trigger = document.AddTrigger(8, 14);
+        document.SetField(OverlayRowKind.OwnTrigger, trigger, "variable", "VAR_TEST");
+        document.SetField(OverlayRowKind.OwnTrigger, trigger, "value", "2");
+        string read = document.AddReadAt(7, 14, "Wall");
+        var overlay = document.Overlay;
+        Assert.Equal(2, overlay.Props!.Single().Width);
+        Assert.Equal(("AncientTomb", Direction.Down), (overlay.Exits!.Single().Map, overlay.Exits!.Single().Facing));
+        Assert.Contains(overlay.Triggers!, t => t.Trigger == null && t.X == 8 && t.Z == 14 && t.Variable == "VAR_TEST" && t.Value == 2);
+        Assert.Equal("Wall", overlay.ReadAt!.Single().Script);
+        var rows = document.Rows();
+        Assert.Contains(rows, r => r.Kind == OverlayRowKind.OwnTrigger && r.Key == trigger && r.Covers(8, 14));
+        Assert.Contains(document.RowsAt(7, 14), r => r.Kind == OverlayRowKind.ReadAt && r.Key == read);
+
+        // The area's signs: what one says, what the overlay reads it as; a door's switch
+        document.SetField(OverlayRowKind.Sign, "AncientTomb_EventScript_CaveEntranceSide", "read", "WallAgain");
+        Assert.Equal("WallAgain", document.Overlay.Read!["AncientTomb_EventScript_CaveEntranceSide"]);
+        document.SetField(OverlayRowKind.Door, "1", "until", "FLAG_TEST");
+        Assert.Equal("FLAG_TEST", document.Overlay.Switches!.Single(s => s.Warp == 1).Until);
+        document.SetField(OverlayRowKind.Door, "1", "until", "");
+        Assert.Empty(document.Overlay.Switches!);
+
+        // Every comment of the file kept; taken away again, and a row of the area's isn't the overlay's to take
+        foreach (string comment in original.Split('\n').Where(l => l.TrimStart().StartsWith("//")))
+            Assert.Contains(comment, document.Text);
+        document.Remove(OverlayRowKind.OwnPerson, person);
+        Assert.Equal(people, document.Overlay.Npcs!.Count);
+        Assert.Throws<ArgumentException>(() => document.Remove(OverlayRowKind.Person, "registeel"));
+        Assert.Throws<FormatException>(() => document.SetField(OverlayRowKind.Exit, exit, "toX", "far"));
+
+        while (document.CanUndo) document.Undo();
+        Assert.Equal(original, document.Text);
+    }
+
+    // ------------------------------------------------------------------ the area view
+
+    [Fact]
+    public void TheAreaViewShowsAChunksLayersAndPlacesTheOverlaysOwnThings()
+    {
+        var (document, original) = Sandgem();
+        var view = AreaView.Open(GameContent.OfTheGame, "sandgem_town");
+        Assert.Equal(Map.ChunkTiles, view.Window.Width);
+        Assert.True(view.InWindow(view.Window.X, view.Window.Y));
+
+        // The layers are the map the game makes of the area's chunks
+        int blocked = 0, behaviours = 0;
+        for (int y = view.Window.Y; y < view.Window.Y + view.Window.Height; y++)
+            for (int x = view.Window.X; x < view.Window.X + view.Window.Width; x++)
+            {
+                Assert.Equal(view.Map.IsSolid(x, y), view.Blocked(x, y));
+                if (view.Blocked(x, y)) blocked++;
+                if (view.Behaviour(x, y) != TileBehavior.None) behaviours++;
+            }
+        Assert.True(blocked > 0 && behaviours > 0);
+        view.Layer = AreaLayer.Behaviour;
+
+        // A door of the area stands on its tile, and is what a pick of the tile finds
+        var warp = document.Area.Warps[2];
+        Assert.Contains(document.RowsAt(warp.X, warp.Z), r => r.Kind == OverlayRowKind.Door && r.Key == "2");
+        Assert.Contains("RowanLab", view.Describe(warp.X, warp.Z, document));
+
+        // A person placed on an open tile of the area is the overlay's own, on that tile
+        var (ox, oy) = Enumerable.Range(0, view.Window.Width * view.Window.Height)
+            .Select(i => (view.Window.X + i % view.Window.Width, view.Window.Y + i / view.Window.Width))
+            .First(t => view.Belongs(t.Item1, t.Item2) && !view.Blocked(t.Item1, t.Item2) && document.RowsAt(t.Item1, t.Item2).Count == 0);
+        var row = view.Place(document, OverlayRowKind.OwnPerson, ox, oy);
+        Assert.Equal((ox, oy), (row.X, row.Z));
+        Assert.Equal((ox, oy), (document.Overlay.Npcs!.Last().X, document.Overlay.Npcs!.Last().Y));
+        var trigger = view.Place(document, OverlayRowKind.OwnTrigger, ox, oy);
+        Assert.Equal(new[] { OverlayRowKind.OwnPerson, OverlayRowKind.OwnTrigger }, document.RowsAt(ox, oy).Select(r => r.Kind).OrderBy(k => k));
+        Assert.Throws<ArgumentException>(() => view.Place(document, OverlayRowKind.Door, ox, oy));
+        Assert.DoesNotContain(EditorChecks.Overlay(GameContent.OfTheGame, document), f => f.What.Contains("Someone"));
+
+        // A tile that isn't the area's is refused
+        Assert.Throws<ArgumentException>(() => view.Place(document, OverlayRowKind.OwnPerson, -5, -5));
+
+        // The content check's plan of the window, and the chunks round from the last to the first
+        var plan = view.Plan(8);
+        Assert.Contains(plan.Marks, m => m.Kind == "warp");
+        var first = view.Window;
+        int chunks = view.Chunks().Count();
+        for (int i = 0; i < chunks; i++) view.NextChunk();
+        Assert.Equal(first, view.Window);
+
+        while (document.CanUndo) document.Undo();
+        Assert.Equal(original, document.Text);
+    }
+
+    // ------------------------------------------------------------------ the round trip (--check, --roundtrip)
+
+    [Fact]
+    public void EveryRoomAndOverlayOfTheGameRoundTripsThroughTheEditor()
+    {
+        var (files, found) = RoundTrip.All(GameDataFiles.Directory);
+        Assert.True(files > 1500, $"only {files} files");
+        Assert.True(found.Count == 0, string.Join("\n", found.Take(20)));
+    }
+
+    [Fact]
+    public void TheRoundTripNamesWhatTheEditorWouldChange()
+    {
+        // A line with a bar in it can't be written back through the field that joins lines with bars
+        var area = EditorAreas.Find(GameDataFiles.Directory, "sandgem_town")!.Value.Area;
+        string overlay = "{\n  \"area\": \"sandgem_town\",\n  \"people\": {\n    \"youngster\": { \"name\": \"Boy\", \"dialog\": [ \"Left | right\" ] }\n  }\n}\n";
+        var found = RoundTrip.Overlay("sandgem.json", "sandgem_town", area, overlay);
+        Assert.Contains(found, f => f.Contains("youngster") && f.Contains("dialog"));
+
+        // A room written otherwise than the game writes it is told, with its line
+        string room = RoomText("OreburghPokemonCenter").Replace("\"name\": ", "\"name\":  ");
+        Assert.Contains(RoundTrip.Room("room.json", room), f => f.Contains("line 2"));
+        Assert.Empty(RoundTrip.Room("room.json", RoomText("OreburghPokemonCenter")));
     }
 }

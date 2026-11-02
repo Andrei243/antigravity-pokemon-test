@@ -1,5 +1,6 @@
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Nodes;
 using PokemonPlatinumEngine.Data;
 
 namespace RoomEditor;
@@ -113,7 +114,7 @@ public static class JsonSplice
             string made = json;
             for (int i = steps.Count - 1; i > taken; i--)
                 made = steps[i] == "+" ? $"[\n  {Indent(made, "  ")}\n]" : $"{{\n  {Quote(steps[i])}: {Indent(made, "  ")}\n}}";
-            result = Add(bytes, parent, steps[taken], made);
+            result = Add(bytes, parent, steps[taken], made, parent == root);
         }
         else
         {
@@ -122,11 +123,13 @@ public static class JsonSplice
             if (at >= 0)
             {
                 var value = parent.Members[at].Value;
+                // A value written on one line by hand is written back on one line
+                if (json != null && SameLine(bytes, value.Start, value.End)) json = OneLine(json);
                 result = json == null
                     ? Remove(bytes, parent, at)
                     : Splice(bytes, value.Start, value.End, Indent(json, LineIndent(bytes, parent.Members[at].NameStart)));
             }
-            else result = json == null ? Encoding.UTF8.GetString(bytes) : Add(bytes, parent, last, json);
+            else result = json == null ? Encoding.UTF8.GetString(bytes) : Add(bytes, parent, last, json, parent == root);
         }
         return bom ? '﻿' + result : result;
     }
@@ -134,7 +137,52 @@ public static class JsonSplice
     /// <summary>A value serialized as the game writes its files, without the closing newline.</summary>
     public static string Serialize<T>(T value) => GameDataFiles.Serialize(value).TrimEnd('\n');
 
-    private static string Quote(string name) => JsonSerializer.Serialize(name);
+    private static string Quote(string name) => JsonSerializer.Serialize(name, Compact);
+
+    private static readonly JsonSerializerOptions Compact = new(GameDataFiles.Json) { WriteIndented = false };
+
+    /// <summary>
+    /// A value on one line, as the one-line records of the game's files are written (<c>{ "warp": 4, "map": "C" }</c>,
+    /// <c>[ 2, 3 ]</c>): what a value written on a line by hand is written back as.
+    /// </summary>
+    public static string OneLine(string json)
+    {
+        var text = new StringBuilder();
+        Write(JsonNode.Parse(json, documentOptions: new JsonDocumentOptions { CommentHandling = JsonCommentHandling.Skip }), text);
+        return text.ToString();
+
+        static void Write(JsonNode? node, StringBuilder into)
+        {
+            switch (node)
+            {
+                case JsonObject o when o.Count == 0: into.Append("{}"); break;
+                case JsonArray a when a.Count == 0: into.Append("[]"); break;
+                case JsonObject o:
+                    into.Append("{ ");
+                    bool first = true;
+                    foreach (var (name, value) in o)
+                    {
+                        if (!first) into.Append(", ");
+                        first = false;
+                        into.Append(Quote(name)).Append(": ");
+                        Write(value, into);
+                    }
+                    into.Append(" }");
+                    break;
+                case JsonArray a:
+                    into.Append("[ ");
+                    for (int i = 0; i < a.Count; i++)
+                    {
+                        if (i > 0) into.Append(", ");
+                        Write(a[i], into);
+                    }
+                    into.Append(" ]");
+                    break;
+                case null: into.Append("null"); break;
+                default: into.Append(node.ToJsonString(Compact)); break;
+            }
+        }
+    }
 
     /// <summary>Every line of a value after its first moved in by the indent of the line it starts on.</summary>
     private static string Indent(string json, string indent) => json.Replace("\n", "\n" + indent);
@@ -152,7 +200,7 @@ public static class JsonSplice
         Encoding.UTF8.GetString(bytes, 0, start) + with + Encoding.UTF8.GetString(bytes, end, bytes.Length - end);
 
     /// <summary>A member put at the end of its object or array, on a line of its own like the one before it.</summary>
-    private static string Add(byte[] bytes, Node container, string name, string json)
+    private static string Add(byte[] bytes, Node container, string name, string json, bool isRoot)
     {
         bool isArray = container.Kind == JsonTokenType.StartArray;
         if (isArray && name != "+" && !int.TryParse(name, out _)) throw new ArgumentException($"'{name}' is no place in an array");
@@ -166,6 +214,9 @@ public static class JsonSplice
         }
         var last = container.Members[^1];
         string indent = LineIndent(bytes, last.NameStart);
+        // Beside records written a line each, a record of a line
+        if (!isRoot && last.Value.Kind is JsonTokenType.StartObject or JsonTokenType.StartArray && SameLine(bytes, last.Value.Start, last.Value.End))
+            json = OneLine(json);
         // An array of one-line records written on one line stays on one line
         bool oneLine = isArray && SameLine(bytes, container.Start, container.End) && !json.Contains('\n');
         string glue = oneLine ? ", " : ",\n" + indent;
