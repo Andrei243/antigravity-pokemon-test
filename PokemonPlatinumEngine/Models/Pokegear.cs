@@ -26,7 +26,7 @@ public enum RadioStation
 }
 
 /// <summary>What the radio picks up where the player is (<c>Radio_GetAvailableChannels</c>, the part Johto has so far).</summary>
-public enum RadioSignal { Johto, NoSignal, Alph }
+public enum RadioSignal { Johto, NoSignal, Alph, Rocket, Mahogany }
 
 /// <summary>
 /// One contact of the phone book (plan 20 · J3; HeartGold's <c>files/tel/pmtel_book.json</c>, which the importer writes
@@ -385,6 +385,10 @@ public sealed class RadioDial
     {
         RadioSignal.Johto => new[] { new Spot(112, 76, 4, 16, 0), new Spot(152, 76, 4, 20, 1), new Spot(96, 108, 4, 16, 2), new Spot(136, 116, 4, 20, 3) },
         RadioSignal.Alph => new[] { new Spot(128, 92, 4, 16, 5) },
+        // Team Rocket's broadcast and the hideout's signal are on every station Johto has (HeartGold's takeover and
+        // Mahogany's "strange signal": each station gives way to them while they last)
+        RadioSignal.Rocket => SpotsOf(RadioSignal.Johto).Select(s => s with { Slot = 6 }).ToArray(),
+        RadioSignal.Mahogany => SpotsOf(RadioSignal.Johto).Select(s => s with { Slot = 7 }).ToArray(),
         _ => Array.Empty<Spot>()
     };
 
@@ -461,6 +465,32 @@ public sealed class RadioDial
     public static RadioSignal SignalAt(string? areaKey, bool cave) =>
         areaKey is { } key && key.StartsWith("ruins_of_alph_", StringComparison.OrdinalIgnoreCase) && key.Contains("hall", StringComparison.OrdinalIgnoreCase) ? RadioSignal.Alph
         : cave ? RadioSignal.NoSignal : RadioSignal.Johto;
+
+    /// <summary>
+    /// What is received where the player is, the story told (Johto's leftovers): while Team Rocket hold the Radio Tower
+    /// (<c>VAR_SCENE_ROCKET_TAKEOVER</c> from 2, Elm's call, to 4, before Archer is beaten) their broadcast is on every
+    /// station anywhere a signal comes in; while the hideout under Mahogany's souvenir shop is still at work (Ariana not
+    /// beaten, <c>FLAG_HIDE_MAHOGANY_SHOP_SHADY_SALESMAN</c> unset) the signal driving the lake's Magikarp drowns the
+    /// stations out in Mahogany Town, on Route 43 and its gate and at the Lake of Rage, once the red Gyarados has been
+    /// met (HeartGold's Mahogany signal). The Ruins of Alph's halls and caves keep what they receive.
+    /// </summary>
+    public static RadioSignal SignalAt(string? areaKey, bool cave, StoryState story)
+    {
+        var signal = SignalAt(areaKey, cave);
+        if (signal != RadioSignal.Johto) return signal;
+        int takeover = story.Var("VAR_SCENE_ROCKET_TAKEOVER");
+        if (takeover >= 2 && takeover <= 4) return RadioSignal.Rocket;
+        if (areaKey is { } key && IsMahogany(key) && story.Has("FLAG_HIDE_LAKE_OF_RAGE_RED_GYARADOS")
+            && !story.Has("FLAG_HIDE_MAHOGANY_SHOP_SHADY_SALESMAN"))
+            return RadioSignal.Mahogany;
+        return signal;
+    }
+
+    /// <summary>The places the hideout's signal is heard in: Mahogany Town and its rooms, Route 43 and its gate, the Lake of Rage and its houses.</summary>
+    public static bool IsMahogany(string areaKey) =>
+        areaKey.StartsWith("mahogany", StringComparison.OrdinalIgnoreCase)
+        || areaKey.StartsWith("route_43", StringComparison.OrdinalIgnoreCase)
+        || areaKey.StartsWith("lake_of_rage", StringComparison.OrdinalIgnoreCase);
 
     /// <summary>The song's file under <c>Data/music/johto</c>.</summary>
     public static string? SongFile(RadioSong song) => song switch

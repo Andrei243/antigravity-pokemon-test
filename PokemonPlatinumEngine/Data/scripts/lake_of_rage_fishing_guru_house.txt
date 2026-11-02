@@ -1,0 +1,48 @@
+# The Fishing Guru's house by the Lake of Rage (plan 20, Johto's leftovers). docs/scripts.md describes the language;
+# the lines are our own, on HeartGold's beats (scr_seq_T29R0201).
+#
+# He measures any Magikarp of the team he is shown and keeps the biggest (Models/SizeContest.cs, the original's own
+# arithmetic) as a record of his own, VAR_JOHTO_MAGIKARP_SIZE_RECORD, which holds nothing until he has measured one, so
+# the first Magikarp shown is always a record, as with Kanto's fishing brother. A record earns an Elixir, every time,
+# as Gold and Silver's guru gives one. Sizes are told in centimetres (docs/mechanics/rulings.md).
+
+
+# T29R0201_000
+script Guru
+  speaker "Fishing Guru"
+  if not has "Magikarp" goto Bring
+  say "Oh! You've brought a Magikarp! Let me see how it measures up."
+  choosepokemon
+  if result == 255 goto Denied
+  team size "Magikarp" VAR_JOHTO_MAGIKARP_SIZE_RECORD
+  if result == 3 goto Other
+  if result == 0 goto Smaller
+  if result == 1 goto Same
+  say "Wow! This one is {size}! That's a new record for this lake!"
+  say "You've earned this. It's my prize for the record holder."
+  give "Elixir"
+  team size keep VAR_JOHTO_MAGIKARP_SIZE_RECORD
+  say "I'll write it on my wall. Come back if you ever land a bigger one!"
+  end
+label Bring
+  team record "Magikarp" VAR_JOHTO_MAGIKARP_SIZE_RECORD
+  if result == 1 goto Record
+  say "I've fished this lake for forty years. The Magikarp here grow bigger than anywhere else."
+  say "Catch a big one and bring it to me. I'll measure it and keep the record on my wall!"
+  end
+label Record
+  say "The biggest Magikarp anyone has shown me measured {record}."
+  say "Catch a bigger one and bring it here. I'll see to it you're rewarded!"
+  end
+label Same
+  say "{size}... The same as the record, to the millimetre! Close, but not quite enough."
+  end
+label Smaller
+  say "Hmm, {size}. A fine Magikarp, but the record is {record}. Keep fishing!"
+  end
+label Other
+  say "That's no Magikarp! I only measure Magikarp, you know."
+  end
+label Denied
+  say "Not today? The tape will be here when you're ready."
+  end

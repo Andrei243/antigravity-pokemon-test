@@ -676,6 +676,24 @@ The drought and the abnormal weather are Emerald's (plan 21 · H8, part b): Grou
   | Drake | dragons, an indigo | `104,72,184` | `52,32,112` | `192,172,244` |
   | Wallace | the Champion's room, a teal of the sea | `40,168,176` | `16,92,100` | `156,228,232` |
 
+  **Johto's thirteen** (plan 20 · J14's last part; `SceneTransition.JohtoBands`, the same beats and the same rules of colour), the eight Leaders, the four of the Elite Four and Lance as the Champion, each after its Gym's type or its room, none the base colour of a Sinnoh, Kanto or Hoenn band but Bruno's: he is the same man in Kanto's League and Johto's, and wears Kanto's band in both. Koga of the Four and Lance the Champion are not Kanto's Leader Koga and member of the Four Lance, and wear bands of their own. The card behind a portrait is the band's light colour for all thirteen:
+
+  | Whose | After | Base | Deep | Light |
+  |---|---|---|---|---|
+  | Falkner | flying, a dove's slate blue | `120,148,196` | `56,72,116` | `200,214,240` |
+  | Bugsy | bugs, a leaf's lime | `168,196,40` | `92,112,16` | `228,240,136` |
+  | Whitney | the normal type, a candy pink | `236,136,168` | `148,60,92` | `252,208,224` |
+  | Morty | ghosts, a twilight indigo | `96,76,140` | `44,32,76` | `188,176,224` |
+  | Chuck | fighting, a weathered ochre | `200,128,60` | `120,68,28` | `248,204,156` |
+  | Jasmine | steel, a sea-polished silver | `140,168,176` | `64,84,92` | `216,230,234` |
+  | Pryce | ice, a winter sky | `156,184,220` | `72,92,140` | `220,232,248` |
+  | Clair | dragons, a cobalt | `72,120,200` | `32,56,124` | `168,200,244` |
+  | Will | the mind, a deep rose | `196,72,120` | `112,28,64` | `244,168,200` |
+  | Koga | poison, a ninja's plum | `112,64,128` | `56,28,68` | `196,160,212` |
+  | Bruno | fighting (Kanto's band) | `188,92,60` | `112,44,28` | `240,184,140` |
+  | Karen | the dark type, a wine black | `136,48,72` | `68,20,36` | `220,148,168` |
+  | Lance | the Champion's room, a cape's crimson | `168,36,64` | `96,12,32` | `236,156,176` |
+
   The card behind a portrait is the band's light colour, but for the two whose hair is that colour: Volkner's is the pale blue of a spark, `196,224,252`, and Cynthia's a moonlit blue, `132,140,196`, between her hair's gold and her coat's night. A band's colours are chosen with its person on it (the harness's `gyms` and `league` shoot all thirteen, `g_band_<name>` and `lg_band_<name>`), never from the table alone.
 
   A Leader or a League member the table doesn't name (another region's, before its band is written) wears a plain band of steel grey (`120,132,152`, `64,72,92`, `204,212,224`).

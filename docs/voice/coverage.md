@@ -10,9 +10,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 |---|---|---|---|---|---|
 | The introduction (`intro:`) | 80 | 80 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1276 | 1236 | 40 | 1 | 0 |
-| Scripts (`script:`) | 9499 | 9063 | 436 | 17 | 0 |
-| People of the world (`world:`) | 6972 | 6910 | 62 | 4 | 0 |
-| **All** | 17827 | 17289 | 538 | 22 | 0 |
+| Scripts (`script:`) | 9523 | 9084 | 439 | 17 | 0 |
+| People of the world (`world:`) | 6970 | 6908 | 62 | 4 | 0 |
+| **All** | 17849 | 17308 | 541 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -28,7 +28,7 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 
 ## The cast
 
-- Named characters: 354 voices (317 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
+- Named characters: 355 voices (318 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Cloned from the user's samples: `rival`.
 - Archetypes in use: 225, with 680 voices to cast (V5).
 - Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1870.
@@ -40,13 +40,13 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | Voice | Lines | Shown only |
 |---|---|---|
 | `@self` | 1870 | 135 |
-| `look:gentleman (any)` | 714 | 13 |
+| `look:gentleman (any)` | 712 | 13 |
 | `look:grunt (any)` | 588 | 0 |
 | `rival` | 577 | 17 |
 | `look:lady (any)` | 418 | 1 |
 | `look:youngster (any)` | 388 | 21 |
 | `look:clerk (any)` | 351 | 7 |
-| `look:lass (any)` | 314 | 11 |
+| `look:lass (any)` | 316 | 11 |
 | `look:attendant (any)` | 277 | 12 |
 | `look:nurse (any)` | 255 | 0 |
 | `look:scientist (any)` | 193 | 4 |
@@ -68,9 +68,9 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:youngster (any)` | 114 | 0 |
 | `class:black_belt (any)` | 108 | 0 |
 | `class:psychic (any)` | 108 | 0 |
+| `look:man (any)` | 108 | 4 |
 | `mom` | 105 | 6 |
 | `look:boy (any)` | 104 | 4 |
-| `look:man (any)` | 103 | 4 |
 | `class:swimmer_f (any)` | 102 | 0 |
 | `bianca` | 99 | 3 |
 | `black_belt` | 97 | 14 |
@@ -194,6 +194,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `move_deleter` | 24 | 3 |
 | `owner` | 24 | 0 |
 | `cook` | 23 | 0 |
+| `fishing_guru` | 23 | 3 |
 | `little_boy` | 23 | 0 |
 | `look:galacticdoor (any)` | 23 | 23 |
 | `look:plasma_grunt (any)` | 23 | 0 |

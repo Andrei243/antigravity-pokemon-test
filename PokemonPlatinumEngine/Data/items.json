@@ -14094,6 +14094,41 @@
     "fieldUse": "TmHm"
   },
   {
+    "id": 9230,
+    "name": "Red Scale",
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A red, shining scale the raging Gyarados of the Lake of Rage left behind. Someone might want it.",
+    "cantBeTossed": true
+  },
+  {
+    "id": 9231,
+    "name": "Rage Candy Bar",
+    "pocket": "Medicine",
+    "effectType": "HealStatus",
+    "effectValue": 0,
+    "price": 300,
+    "canUseInBattle": true,
+    "canUseInOverworld": true,
+    "description": "Mahogany Town's famous candy, which tourists love to buy. It cures any status ailment and confusion.",
+    "flingPower": 30,
+    "fieldUse": "Healing",
+    "battleUse": "Healing",
+    "battlePocket": "RecoverStatus",
+    "use": {
+      "healSleep": 1,
+      "healPoison": 1,
+      "healBurn": 1,
+      "healFreeze": 1,
+      "healParalysis": 1,
+      "healConfusion": 1
+    }
+  },
+  {
     "id": 9300,
     "name": "Pokéblock Case",
     "pocket": "KeyItems",

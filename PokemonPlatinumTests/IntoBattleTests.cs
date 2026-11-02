@@ -232,11 +232,11 @@ public class IntoBattleTests
         Assert.Null(SceneTransition.BandFor(With(BattleTerrain.Building, 14, 20, false, new MetTrainer("Hiker", "Roark"))));
         Assert.Null(SceneTransition.BandFor(With("galactic_boss_cyrus_galactic_hq")));
         Assert.Null(SceneTransition.BandFor(Wild(BattleTerrain.Grass)));
-        // A Leader no table names (another region's, before their band is written: Johto's Falkner) wears the plain band under their own name
-        var falkner = SceneTransition.BandFor(With(BattleTerrain.Building, 12, 14, false, new MetTrainer("Leader", "Falkner")));
-        Assert.Equal(SceneTransition.PlainBand with { Class = "Leader", Name = "Falkner" }, falkner);
-        Assert.DoesNotContain(falkner!.Value, SceneTransition.Bands);
-        Assert.DoesNotContain(falkner.Value, SceneTransition.KantoBands);
+        // A Leader no table names (another region's, before their band is written: Unova's Cheren) wears the plain band under their own name
+        var cheren = SceneTransition.BandFor(With(BattleTerrain.Building, 12, 14, false, new MetTrainer("Leader", "Cheren")));
+        Assert.Equal(SceneTransition.PlainBand with { Class = "Leader", Name = "Cheren" }, cheren);
+        Assert.DoesNotContain(cheren!.Value, SceneTransition.Bands);
+        Assert.DoesNotContain(cheren.Value, SceneTransition.KantoBands);
     }
 
     /// <summary>
@@ -307,6 +307,43 @@ public class IntoBattleTests
         Assert.Equal(Rgb(SceneTransition.HoennBands.Last().Base), Rgb(SceneTransition.BandFor(With("hoenn_wallace", BattleTerrain.Special, 58, 60))!.Value.Base));
         // Wallace keeps his band whoever the player named the rival
         Assert.Equal(SceneTransition.HoennBands.Last(), SceneTransition.BandOf("Champion", "Wallace"));
+    }
+
+    /// <summary>
+    /// Johto's thirteen bands (plan 20 · J14's last part, the style guide's fourth table): every Leader of Johto's own Gyms,
+    /// member of its Elite Four and its Champion has one, found by class and name, and none shares a base colour with a
+    /// band of another region but Bruno's, which is Kanto's. Koga of the Four and the Champion Lance are Johto's entries,
+    /// not Kanto's Leader Koga and member of the Four Lance.
+    /// </summary>
+    [Fact]
+    public void JohtoHasItsOwnThirteenBands()
+    {
+        Assert.Equal(13, SceneTransition.JohtoBands.Count);
+        Assert.Equal((8, 4, 1), (SceneTransition.JohtoBands.Count(b => b.Class == "Leader"), SceneTransition.JohtoBands.Count(b => b.Class == "Elite Four"), SceneTransition.JohtoBands.Count(b => b.Class == "Champion")));
+        int Light(Color c) => c.R * 3 + c.G * 6 + c.B;
+        var johto = TrainerDatabase.OfRegion("johto");
+        foreach (var band in SceneTransition.JohtoBands)
+        {
+            Assert.True(Light(band.Deep) < Light(band.Base) - 300 && Light(band.Light) > Light(band.Base) + 300, $"{band.Name}'s colours");
+            Assert.True(Light(band.Deep) < 1200, $"{band.Name}'s plate is too pale for a white name");
+            Assert.Equal(band.Light, band.Backing);
+            Assert.Contains(johto, t => t.Class == band.Class && t.Name == band.Name);
+            Assert.Equal(band, SceneTransition.BandOf(band.Class, band.Name));
+        }
+        var others = SceneTransition.Bands.Concat(SceneTransition.KantoBands).Concat(SceneTransition.HoennBands).Select(b => Rgb(b.Base)).ToHashSet();
+        Assert.Equal(12, SceneTransition.JohtoBands.Where(b => !others.Contains(Rgb(b.Base))).Select(b => Rgb(b.Base)).Distinct().Count());
+        var bruno = SceneTransition.JohtoBands.Single(b => b.Name == "Bruno");
+        Assert.Equal(SceneTransition.KantoBands.Single(b => b.Name == "Bruno"), bruno);
+        // Every Leader, member of the Four and Champion of Johto's data has a band of its own region's or Kanto's (HeartGold's
+        // Kanto Leaders wear Kanto's), but Janine and Blue, Kanto's two new Leaders, whose bands HeartGold's Kanto writes
+        foreach (var trainer in johto.Where(t => t.Class is "Leader" or "Elite Four" or "Champion" && t.Name is not ("Janine" or "Blue")))
+            Assert.Contains(SceneTransition.JohtoBands.Concat(SceneTransition.KantoBands), b => b.Class == trainer.Class && b.Name == trainer.Name);
+        Assert.Equal("Falkner", SceneTransition.BandFor(With("johto_leader_falkner_falkner", BattleTerrain.Building, 9, 7))!.Value.Name);
+        Assert.Equal(Rgb(SceneTransition.JohtoBands[9].Base), Rgb(SceneTransition.BandFor(With("johto_elite_four_koga_koga", BattleTerrain.Special, 42, 40))!.Value.Base));
+        Assert.Equal(Rgb(SceneTransition.JohtoBands.Last().Base), Rgb(SceneTransition.BandFor(With("johto_champion_lance", BattleTerrain.Special, 50, 40))!.Value.Base));
+        // Kanto's own Koga and Lance keep theirs
+        Assert.Equal(SceneTransition.KantoBands.Single(b => b.Name == "Koga"), SceneTransition.BandOf("Leader", "Koga"));
+        Assert.Equal(SceneTransition.KantoBands.Single(b => b.Name == "Lance"), SceneTransition.BandOf("Elite Four", "Lance"));
     }
 
     /// <summary>

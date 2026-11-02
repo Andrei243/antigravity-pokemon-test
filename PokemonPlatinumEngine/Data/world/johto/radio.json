@@ -47,6 +47,15 @@
     "It's Buena! Tonight's password is about Pokémon. Listen closely, everybody!",
     "Buena's Password: one word, one night only. Don't forget it!"
   ],
+  "TeamRocket": [
+    "This is Team Rocket! We have taken over this station. Team Rocket is back, and all of Johto will hear us!",
+    "Attention, Giovanni! Wherever you are, hear us! Team Rocket is reborn, and waiting for you to lead us again!",
+    "...This is Team Rocket's broadcast. Every radio in Johto is ours now. Stay tuned!"
+  ],
+  "MahoganySignal": [
+    "…a harsh, crackling hum comes through, rising and falling, over and over…",
+    "…the static thrums in a strange, steady beat. It sets your teeth on edge…"
+  ],
   "Unown": [
     "…the signal crackles, and strange sounds come through, like voices with no words…",
     "…something hums on the air, rising and falling, as if it were calling…"

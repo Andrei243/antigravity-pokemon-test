@@ -852,6 +852,7 @@ public class JohtoStoryTests
         Assert.Contains(rage.Log, l => l.StartsWith("wildbattle Gyarados 30"));
         Assert.True(game.Story.Has("FLAG_HIDE_LAKE_OF_RAGE_RED_GYARADOS"));
         Assert.True(game.Story.Has("FLAG_GOT_RED_SCALE"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Red Scale")!));
         Assert.Null(game.Present("t29_rgyaradosu"));
         Assert.NotNull(game.Present("t29_wataru"));
         // Lance asked to wait, then agreed with

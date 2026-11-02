@@ -1,0 +1,108 @@
+{
+  "Guru": [
+    {
+      "en": [
+        "Fishing Guru"
+      ],
+      "text": [
+        "Maestrul Pescar"
+      ]
+    },
+    {
+      "en": [
+        "Oh! You've brought a Magikarp! Let me see how it measures up."
+      ],
+      "text": [
+        "Oh! Mi-ai adus un Magikarp! Ia să văd cât de mare e."
+      ]
+    },
+    {
+      "en": [
+        "Wow! This one is {size}! That's a new record for this lake!"
+      ],
+      "text": [
+        "Uau! Ăsta are {size}! E un nou record pentru lacul ăsta!"
+      ]
+    },
+    {
+      "en": [
+        "You've earned this. It's my prize for the record holder."
+      ],
+      "text": [
+        "Ai meritat-o. E premiul meu pentru cel care deține recordul."
+      ]
+    },
+    {
+      "en": [
+        "I'll write it on my wall. Come back if you ever land a bigger one!"
+      ],
+      "text": [
+        "Îl scriu pe perete. Vino înapoi dacă prinzi vreodată unul mai mare!"
+      ]
+    },
+    {
+      "en": [
+        "I've fished this lake for forty years. The Magikarp here grow bigger than anywhere else."
+      ],
+      "text": [
+        "Pescuiesc în lacul ăsta de patruzeci de ani. Magikarp de aici cresc mai mari decât oriunde."
+      ]
+    },
+    {
+      "en": [
+        "Catch a big one and bring it to me. I'll measure it and keep the record on my wall!"
+      ],
+      "text": [
+        "Prinde unul mare și adu-mi-l. Îl măsor și țin recordul pe perete!"
+      ]
+    },
+    {
+      "en": [
+        "The biggest Magikarp anyone has shown me measured {record}."
+      ],
+      "text": [
+        "Cel mai mare Magikarp pe care mi l-a arătat cineva avea {record}."
+      ]
+    },
+    {
+      "en": [
+        "Catch a bigger one and bring it here. I'll see to it you're rewarded!"
+      ],
+      "text": [
+        "Prinde unul mai mare și adu-l aici. Am eu grijă să fii răsplătit!"
+      ]
+    },
+    {
+      "en": [
+        "{size}... The same as the record, to the millimetre! Close, but not quite enough."
+      ],
+      "text": [
+        "{size}... Exact cât recordul, la milimetru! Aproape, dar nu destul."
+      ]
+    },
+    {
+      "en": [
+        "Hmm, {size}. A fine Magikarp, but the record is {record}. Keep fishing!"
+      ],
+      "text": [
+        "Hmm, {size}. Un Magikarp frumos, dar recordul e {record}. Mai pescuiește!"
+      ]
+    },
+    {
+      "en": [
+        "That's no Magikarp! I only measure Magikarp, you know."
+      ],
+      "text": [
+        "Ăsta nu e Magikarp! Eu măsor doar Magikarp, să știi."
+      ]
+    },
+    {
+      "en": [
+        "Not today? The tape will be here when you're ready."
+      ],
+      "text": [
+        "Nu azi? Ruleta te așteaptă aici când ești gata."
+      ]
+    }
+  ]
+}

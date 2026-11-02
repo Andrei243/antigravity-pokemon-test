@@ -79,6 +79,16 @@ label Found
   end
 
 
+# D35R0101_004: the shop's own saleswoman, back behind her counter once the Radio Tower is freed
+# (FLAG_HIDE_MAHOGANY_SHOP_SALESWOMAN), sells the town's Rage Candy Bars and a few keepsakes
+script Saleswoman
+  speaker "Saleswoman"
+  say "Welcome back to the souvenir shop! Those crooks are gone, so we're open properly again."
+  shop "mahogany_souvenirs"
+  say "A Rage Candy Bar perks up a Pokémon that's feeling poorly. Come again, dear!"
+  end
+
+
 # D35R0101_005
 script Lance
   face d35r0101_wataru player

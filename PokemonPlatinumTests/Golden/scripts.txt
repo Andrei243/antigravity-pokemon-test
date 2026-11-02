@@ -18118,8 +18118,11 @@ from Gyarados at 525,71 of Johto
 way 0
   > Gyaaarados! The red Gyarados is thrashing wildly!
   > The lake has gone still. Something red glints in the water where the Gyarados was.
+  > Lucas received the Red Scale!
+  > Lucas put it away in the Key Items pocket.
   * cry Gyarados
   * wildbattle Gyarados 30 Won
+  * fanfare FanfareKeyItem
   + FLAG_GOT_RED_SCALE
   + FLAG_HIDE_LAKE_OF_RAGE_RED_GYARADOS
 way 1, from answer 1
@@ -18128,6 +18131,22 @@ way 1, from answer 1
 from Wesley at 495,48 of Johto
 way -
   Wesley> Today isn't Wednesday. That's a shame. Wednesdays are mine, you see.
+=== lake_of_rage_fishing_guru_house.Guru
+from Fishing Guru at 5,5 of LakeOfRage_FishingGuruHouse
+way -
+  Fishing Guru> I've fished this lake for forty years. The Magikarp here grow bigger than anywhere else.
+  Fishing Guru> Catch a big one and bring it to me. I'll measure it and keep the record on my wall!
+=== lake_of_rage_hidden_power_house.Man
+from Man at 5,5 of LakeOfRage_HiddenPowerHouse
+way -
+  Man> Every Pokémon has a power hidden inside it. I've spent years meditating on it.
+  Man> You look like someone who understands. Here, let this help you find it.
+  > Lucas received the TM10!
+  > TM10 holds the move Hidden Power.
+  > Lucas put it away in the TMs & HMs pocket.
+  Man> Hidden Power's type depends on the Pokémon that uses it. Try it on all of yours!
+  * fanfare FanfareTM
+  + FLAG_JOHTO_GOT_TM10_FROM_LAKE_OF_RAGE
 === lake_verity.Assistant
 from {assistant} at 54,38 of LakeVerityGalactic
 way -
@@ -19467,6 +19486,12 @@ from Salesman at 6,3 of Mahogany_SouvenirShop
 way -
   Salesman> Welcome, welcome! Rage Candy Bars, fresh today. Well... nearly fresh.
   Salesman> Nothing back there but stock. Customers stay this side of the counter!
+=== mahogany_souvenir_shop.Saleswoman
+from Saleswoman at 2,4 of Mahogany_SouvenirShop
+way -
+  Saleswoman> Welcome back to the souvenir shop! Those crooks are gone, so we're open properly again.
+  Saleswoman> A Rage Candy Bar perks up a Pokémon that's feeling poorly. Come again, dear!
+  * open Shop mahogany_souvenirs
 === marine_cave_end.Kyogre
 from the trigger at 9,26 of MarineCave_End
 way 0
