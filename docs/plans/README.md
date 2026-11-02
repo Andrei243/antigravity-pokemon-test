@@ -1,6 +1,8 @@
-# Roadmap: from demo to the full Platinum
+# Roadmap: the full Platinum and the regions after it
 
-Twenty-six plans, each worked through over several sessions. Plans 01 to 07 build Platinum and play it with friends; plans 08 to 25, written on 2026-10-06 before any of their sessions, add what those seven leave out, the other regions of the chain, and the guards and polish around them; plan 26, written on 2026-10-07 at the user's request, voices the characters' lines; plan 27 moves the game to Unity at the end; plan 28, written on 2026-10-12, makes the battles ready for two players online:
+Thirty-two plans, each worked through over several sessions. Plans 01 to 07 build Platinum and play it with friends; plans 08 to 25, written on 2026-10-06 before any of their sessions, add what those seven leave out, the other regions of the chain, and the guards and polish around them; plan 26, written on 2026-10-07 at the user's request, voices the characters' lines; plan 27 moves the game to Unity at the end; plan 28, written on 2026-10-12, makes the battles ready for two players online; plan Y dresses Dynamax; plan 29 stages the legendaries' meetings; plans 30 and 31, written on 2026-11-02, change how the regions from Kalos on move, look and sound.
+
+**Where things stand (2026-11-02):** seven plans are finished (below). Sinnoh's and Kanto's stories are whole, Johto, Hoenn and Unova are far along, each with what is left in its plan, and Kalos has begun (23 · Z1's first part: Vaniville and Aquacorde, drawn by hand). The Status at the end of [00 · Overview](00-overview.md) has every wave so far and what the next one holds.
 
 | Plan | Delivers | First session | Rough size |
 |---|---|---|---|
@@ -23,13 +25,14 @@ Twenty-six plans, each worked through over several sessions. Plans 01 to 07 buil
 | [16 · Tooling and shipping](16-tooling-and-shipping.md) | A licence and README, release builds for three systems, a crash handler, the harness in CI, live reload and a console, a playthrough bot, a room editor, budgets as tests, a headless engine, a mod loader, cloud and A/B tooling, scenario files, debug layers, recorded play, a soak run and a measured preset | T1 | 24 sessions |
 | [17 · Localisation](17-localisation.md) | A string table and a language option, names and descriptions per language, translated scripts and overlays, fonts beyond Latin-1 | N1 | 6 sessions |
 | [18 · The other regions](18-regions.md) | What every region after Sinnoh needs first: the engine's Sinnoh-only parts made regional, the crossings and the level curve, every regional Pokédex, a reader of the GBA decompilations and the source for Generation 5 onward, the way back between regions and where a journey begins | W1 | 10 sessions |
-| [19 · Kanto](finished/19-kanto.md) | The region a new game starts in, in full from FireRed and LeafGreen, in place of the stand-in Pallet Town | K1 | 9 sessions |
+| [19 · Kanto](finished/19-kanto.md) | The region after Sinnoh, in full from FireRed and LeafGreen, in place of the stand-in Pallet Town | K1 | 9 sessions |
 | [20 · Johto](20-johto.md) | Johto from HeartGold and SoulSilver with the same importer, the Pokégear and Apricorns | J1 | 15 sessions |
 | [21 · Hoenn](21-hoenn.md) | Hoenn from Emerald: Dive and the sea floor, Secret Bases, its contests and its own Frontier | H1 | 12 sessions |
 | [22 · Unova](22-unova.md) | The first region with no decompilation, from Black 2 and White 2, with its seasons | U1 | 12 sessions |
 | [23 · The later regions](23-later-regions.md) | Kalos, Alola, Galar, Paldea, Hisui as Sinnoh's past and Legends: Z-A's Lumiose, on the tile grid | Z1 | 24 sessions |
 | [24 · Guards](24-guards.md) | What must not move, checked by machine: CLAUDE.md's rules as build errors, golden battles, scripts, teams and saves, strict data loading with schemas, and a damage oracle against Showdown's calculator | X1 | 6 sessions |
 | [25 · Battle presentation, second pass](25-battle-presentation.md) | The field's state drawn on the stage (weather, the Substitute, hazards, screens), each Pokémon's own ball, body language, and a picture and a sound of its own for every move | Y1 | 15 sessions |
+| [Y · The Dynamax punch](Y-dynamax-punch.md) | Dynamax made to feel as big as it is: a trainer's call, the giant shot, the Max Move finisher, Max Guard and the fall, the giant layer of the battle themes, the Champions' Mega Max teams and the G-Max signatures | YD0 | 10 sessions |
 | [26 · Voice](26-voice.md) | Every character's lines spoken: the rival Barry in the user's own voice, cloned from a few samples kept in the repository, the player silent as in Platinum, everyone else from synthesised voices the user chooses, the lines in a voice pack outside git, behind an option that gives back today's silent game | V1 | 7+ sessions |
 | [27 · Moving to Unity](27-unity-migration.md) | Porting the game from Raylib to Unity (written 2026-10-08; deferred to the end of the project): what carries over (about 80% of the code, the rules, data and generators), what is rebuilt (renderers, shaders, the interface back end, input, audio output, the harness), the C# version gap until Unity 6.8, a spike and a shared rules library first | Last | 7 sessions |
 | [28 · Battles for two players](28-battles-for-two-players.md) | The battle half of plan 07, in place of its O3 (written 2026-10-12): a log that travels as plain data, what each player may see of it, both sides asked, a link battle's setup with Flat 50, clauses, team preview, forfeit and timer, and a battle's state written out and read back | I1 | 5 sessions |
@@ -70,15 +73,15 @@ Do wave 2 of docs/plans/00-overview.md.
 ```
 
 ```text
-Do session G1 of the roadmap.
+Do session MU0 of the roadmap.
 ```
 
 ```text
-Do the next unchecked session of plan 01.
+Do the next unchecked session of plan 23.
 ```
 
 ```text
-Read docs/plans/README.md and docs/plans/04-graphics-overhaul.md, then do session G1. Verify with the build, the tests and the screenshot harness, show me before/after screenshots, and tick the session off in the plan.
+Read docs/plans/README.md and docs/plans/23-later-regions.md, then do the next unchecked session. Verify with the build, the tests and the screenshot harness, show me before/after screenshots, and tick the session off in the plan.
 ```
 
 The short forms work because Claude's memory points to these plans; the long form spells everything out. At the end of a session, the plan's status checklist is updated and any decision taken is written into the plan, so the next session starts from the truth.
@@ -97,11 +100,11 @@ The short forms work because Claude's memory points to these plans; the long for
 - **Rules**: Platinum's rules come from the decompilation's battle code (`src/battle/`, `res/battle/scripts/`), later generations' from Pokémon Showdown (<https://github.com/smogon/pokemon-showdown>, MIT). Rulings where generations disagree go in `docs/mechanics/rulings.md`; `docs/mechanics/coverage.md` lists what is implemented (both start in 06 · R1).
 - **Reference data**: the pret/pokeplatinum decompilation (<https://github.com/pret/pokeplatinum>) has most of the game's data as JSON: `res/field/events/events_<map>.json` (NPCs, warps, triggers, signs), `res/field/encounters/encounters_<map>.json`, `res/trainers/data/<trainer>.json`, `res/pokemon/<species>/data.json`, map scripts in `res/field/scripts/scripts_<map>.s`, the world grid in `res/field/matrices/`, per-chunk land data in `res/field/maps/data/`, and the names of every music track and sound effect in `res/sound/pl_sound_data.json`. Raw files download from `https://raw.githubusercontent.com/pret/pokeplatinum/main/<path>`. Bulbapedia blocks automated fetching; pokemondb.net and Serebii work.
 - **Assets**: our own art, models, music, sound effects and dialogue (written in our own words, following the original beats), plus free-licensed assets where they help (OFL fonts, CC0 textures, models and sounds, MIT-licensed libraries), each credited in `docs/art/CREDITS.md`. Nothing taken from the games themselves: no sprites, models, textures, music, sound effects, cries or script text. Files the user supplies can go in the `overrides/` folder.
-- **Commits**: the user commits and pushes; don't commit unless asked.
+- **Commits**: commit or push only when the user asks; commit on `main`.
 
 ## Regions
 
-Decided 2026-10-01 and changed on 2026-10-12 (plan 18 · W10): the game grows into every generation as a chain of separate regions. Every new game begins in Sinnoh, the region these plans build, and NEW GAME asks nothing about regions; finishing a region's story (its Hall of Fame) opens the way to the next one, like HeartGold and SoulSilver's trip to Kanto but in the other direction, and the chain after Sinnoh runs in generation order: Kanto, Johto, Hoenn, Unova, Kalos, Alola, Galar, Paldea. Sinnoh to Kanto and Kanto to Johto are by boat; how the player reaches each later region is decided when that region is built. Nothing leads back by harbour; Fly goes back to any region already entered (plan 18 · W9). `--region <name>` starts a new game in another region for testing (Kanto is still only a stand-in Pallet Town). The chain lives in `Data/RegionDatabase.cs`, and `RegionTests` checks it.
+Decided 2026-10-01 and changed on 2026-10-12 (plan 18 · W10): the game grows into every generation as a chain of separate regions. Every new game begins in Sinnoh, and NEW GAME asks nothing about regions; finishing a region's story (its Hall of Fame) opens the way to the next one, like HeartGold and SoulSilver's trip to Kanto but in the other direction, and the chain after Sinnoh runs in generation order: Kanto, Johto, Hoenn, Unova, Kalos, Alola, Galar, Paldea. Sinnoh to Kanto and Kanto to Johto are by boat; how the player reaches each later region is decided when that region is built. Nothing leads back by harbour; Fly goes back to any region already entered (plan 18 · W9). `--region <name>` starts a new game in another region for testing. The chain lives in `Data/RegionDatabase.cs`, and `RegionTests` checks it.
 
 **This folder holds the plans with sessions still open** (and this index and [00 · Overview](00-overview.md), the order of what is left). Everything else is filed by kind:
 

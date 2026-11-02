@@ -70,7 +70,7 @@ dotnet run --project tools/ShotHarness -- <out dir> battle    # a battle at each
 
 ## What is still missing
 
-The roadmap is in [`docs/plans/`](docs/plans/README.md), with [`00-overview.md`](docs/plans/00-overview.md) the order of what is left. In short: Sinnoh's story is whole from the bedroom to the post-game, Kanto, Johto, Hoenn and much of Unova are played from their own decompiled or hand-drawn maps, and the regions after Unova, online play, release builds and part of the polish are still to come. There is no packaged release yet: the game is run from the source as above.
+The roadmap is in [`docs/plans/`](docs/plans/README.md), with [`00-overview.md`](docs/plans/00-overview.md) the order of what is left. In short: Sinnoh's story is whole from the bedroom to the post-game, Kanto, Johto, Hoenn and much of Unova are played from their own decompiled or hand-drawn maps, Kalos has only just begun, and the rest of the regions after Unova, online play and part of the polish are still to come. Release builds can be made (`dotnet publish`, or a `v*` tag), but none has been published yet: the game is run from the source as above.
 
 ## Building and checking
 
