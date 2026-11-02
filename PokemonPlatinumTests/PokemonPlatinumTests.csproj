@@ -38,6 +38,8 @@
     <ProjectReference Include="..\tools\BlenderAnim\BlenderAnim.csproj" />
     <!-- The hand-drawn regions' drawings against the world files they make (plan 23 · Z1) -->
     <ProjectReference Include="..\tools\MapDraw\MapDraw.csproj" />
+    <!-- The room and overlay editor's documents, which need no window (plan 16 · T9) -->
+    <ProjectReference Include="..\tools\RoomEditor\RoomEditor.csproj" />
   </ItemGroup>
 
 </Project>

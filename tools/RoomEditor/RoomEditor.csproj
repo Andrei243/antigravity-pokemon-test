@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Development tool (plan 16 · T9): a window that draws, furnishes and peoples a room's map file and edits an
+       area's overlay, saving with MapFile.FromMap and holding what it saves to the content check. Its model
+       (EditorDocument, OverlayDocument, JsonSplice) needs no window; the test project drives it. -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../../PokemonPlatinumEngine/PokemonPlatinumEngine.csproj" />
+    <ProjectReference Include="../ContentCheck/ContentCheck.csproj" />
+  </ItemGroup>
+
+</Project>
