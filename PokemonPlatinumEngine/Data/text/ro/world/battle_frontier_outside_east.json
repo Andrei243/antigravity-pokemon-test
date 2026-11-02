@@ -472,34 +472,34 @@
   "signs": {
     "BattleFrontier_OutsideEast_EventScript_BattleTowerSign": {
       "en": [
-        "BATTLE TOWER\nTrainers meet in battle after battle. Closed for now."
+        "BATTLE TOWER\nTrainers meet in battle after battle. Held at Sinnoh's Frontier."
       ],
       "text": [
-        "BATTLE TOWER\nLuptă după luptă între Antrenori. Închis deocamdată."
+        "BATTLE TOWER\nAntrenorii se înfruntă luptă după luptă. La Frontier-ul din Sinnoh."
       ]
     },
     "BattleFrontier_OutsideEast_EventScript_BattlePalaceSign": {
       "en": [
-        "BATTLE PALACE\nWhere Pokémon choose their own moves. Closed for now."
+        "BATTLE PALACE\nWhere Pokémon choose their own moves. Held at Sinnoh's Frontier."
       ],
       "text": [
-        "BATTLE PALACE\nUnde Pokémonii își aleg singuri mișcările. Închis deocamdată."
+        "BATTLE PALACE\nUnde Pokémonii își aleg singuri atacurile. La Frontier-ul din Sinnoh."
       ]
     },
     "BattleFrontier_OutsideEast_EventScript_BattleArenaSign": {
       "en": [
-        "BATTLE ARENA\nThree turns to decide a battle. Closed for now."
+        "BATTLE ARENA\nThree turns to decide a battle. Held at Sinnoh's Frontier."
       ],
       "text": [
-        "BATTLE ARENA\nTrei ture ca să se hotărască o luptă. Închis deocamdată."
+        "BATTLE ARENA\nTrei ture ca să decidă o luptă. La Frontier-ul din Sinnoh."
       ]
     },
     "BattleFrontier_OutsideEast_EventScript_BattlePyramidSign": {
       "en": [
-        "BATTLE PYRAMID\nA climb through the dark. Closed for now."
+        "BATTLE PYRAMID\nA climb through the dark. Held at Sinnoh's Frontier."
       ],
       "text": [
-        "BATTLE PYRAMID\nUn urcuș prin întuneric. Închis deocamdată."
+        "BATTLE PYRAMID\nO urcare prin întuneric. La Frontier-ul din Sinnoh."
       ]
     },
     "BattleFrontier_OutsideEast_EventScript_ExchangeCornerSign": {

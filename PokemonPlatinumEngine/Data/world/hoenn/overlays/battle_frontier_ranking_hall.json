@@ -1,24 +1,28 @@
 {
-  // The Battle Frontier island's Ranking Hall (plan 21 · H12, part b): its boards wait for the island's halls (plan 14 ·
-  // B8 to B10); the Frontier's records are read at Sinnoh's halls (battle_frontier_ranking_hall.txt)
+  // The Battle Frontier island's Ranking Hall (plan 21 · H12, part b): the Frontier keeps one set of records, Sinnoh's
+  // (plan 06 · R18), so since part m the Battle Tower's four boards and the Battle Factory's show those records, as the
+  // machines in Sinnoh's lobbies do (battle_frontier_ranking_hall.txt). The annex's venues (the Dome, the Palace, the
+  // Arena, the Pike and the Pyramid) keep no board of records, so theirs still say where they are fought
   "area": "battle_frontier_ranking_hall",
   "bgmTrack": "hoenn/lilycove",
+  "read": {
+    "BattleFrontier_RankingHall_EventScript_TowerSinglesRecords": "TowerRecords",
+    "BattleFrontier_RankingHall_EventScript_TowerDoublesRecords": "TowerRecords",
+    "BattleFrontier_RankingHall_EventScript_TowerMultisRecords": "TowerRecords",
+    "BattleFrontier_RankingHall_EventScript_TowerLinkRecords": "TowerRecords",
+    "BattleFrontier_RankingHall_EventScript_FactoryRecords": "FactoryRecords"
+  },
   "people": {
-    "teala": { "name": "Attendant", "dialog": [ "The Ranking Hall honours the Frontier's best streaks. The boards will fill as the island's halls open." ] },
+    "teala": { "name": "Attendant", "dialog": [ "The Ranking Hall honours the Frontier's best streaks, wherever its halls' battles are fought." ] },
     "ninja_boy": { "name": "Ninja Boy", "dialog": [ "One day my name will be on one of these boards. Then everyone will know it!" ] },
-    "boy_3": { "name": "Boy", "dialog": [ "The boards are empty! I guess nobody's had a long enough streak yet." ] }
+    "boy_3": { "name": "Boy", "dialog": [ "The Tower's boards are full of names from Sinnoh. I'll put a Hoenn name up there!" ] }
   },
   "signs": {
-    "BattleFrontier_RankingHall_EventScript_TowerSinglesRecords": "BATTLE TOWER: SINGLE BATTLES\nNo records yet.",
-    "BattleFrontier_RankingHall_EventScript_TowerDoublesRecords": "BATTLE TOWER: DOUBLE BATTLES\nNo records yet.",
-    "BattleFrontier_RankingHall_EventScript_TowerMultisRecords": "BATTLE TOWER: MULTI BATTLES\nNo records yet.",
-    "BattleFrontier_RankingHall_EventScript_TowerLinkRecords": "BATTLE TOWER: LINK MULTI BATTLES\nNo records yet.",
-    "BattleFrontier_RankingHall_EventScript_ArenaRecords": "BATTLE ARENA\nNo records yet.",
-    "BattleFrontier_RankingHall_EventScript_PalaceRecords": "BATTLE PALACE\nNo records yet.",
-    "BattleFrontier_RankingHall_EventScript_FactoryRecords": "BATTLE FACTORY\nNo records yet.",
-    "BattleFrontier_RankingHall_EventScript_DomeRecords": "BATTLE DOME\nNo records yet.",
-    "BattleFrontier_RankingHall_EventScript_PikeRecords": "BATTLE PIKE\nNo records yet.",
-    "BattleFrontier_RankingHall_EventScript_PyramidRecords": "BATTLE PYRAMID\nNo records yet.",
+    "BattleFrontier_RankingHall_EventScript_ArenaRecords": "BATTLE ARENA\nIts bouts are fought at Sinnoh's Frontier.",
+    "BattleFrontier_RankingHall_EventScript_PalaceRecords": "BATTLE PALACE\nIts battles are fought at Sinnoh's Frontier.",
+    "BattleFrontier_RankingHall_EventScript_DomeRecords": "BATTLE DOME\nIts tournaments are fought at Sinnoh's Frontier.",
+    "BattleFrontier_RankingHall_EventScript_PikeRecords": "BATTLE PIKE\nIts paths are walked at Sinnoh's Frontier.",
+    "BattleFrontier_RankingHall_EventScript_PyramidRecords": "BATTLE PYRAMID\nIts floors are climbed at Sinnoh's Frontier.",
     "BattleFrontier_RankingHall_EventScript_DomePikeFactoryRecordsSign": "The records of the Dome, the Pike and the Factory.",
     "BattleFrontier_RankingHall_EventScript_PalaceArenaPyramidRecordsSIgn": "The records of the Palace, the Arena and the Pyramid."
   }

@@ -418,26 +418,26 @@
   "signs": {
     "BattleFrontier_OutsideWest_EventScript_BattleDomeSign": {
       "en": [
-        "BATTLE DOME\nTournaments for the strongest. Closed for now."
+        "BATTLE DOME\nTournaments for the strongest. Held at Sinnoh's Frontier."
       ],
       "text": [
-        "BATTLE DOME\nTurnee pentru cei mai puternici. Închis deocamdată."
+        "BATTLE DOME\nTurnee pentru cei mai puternici. La Frontier-ul din Sinnoh."
       ]
     },
     "BattleFrontier_OutsideWest_EventScript_BattlePikeSign": {
       "en": [
-        "BATTLE PIKE\nThree paths to choose from. Closed for now."
+        "BATTLE PIKE\nThree paths to choose from. Held at Sinnoh's Frontier."
       ],
       "text": [
-        "BATTLE PIKE\nTrei căi de ales. Închis deocamdată."
+        "BATTLE PIKE\nTrei cărări din care să alegi. La Frontier-ul din Sinnoh."
       ]
     },
     "BattleFrontier_OutsideWest_EventScript_BattleFactorySign": {
       "en": [
-        "BATTLE FACTORY\nBattles with rented Pokémon. Closed for now."
+        "BATTLE FACTORY\nBattles with rented Pokémon. Held at Sinnoh's Frontier."
       ],
       "text": [
-        "BATTLE FACTORY\nLupte cu Pokémon împrumutați. Închis deocamdată."
+        "BATTLE FACTORY\nLupte cu Pokémon închiriați. La Frontier-ul din Sinnoh."
       ]
     },
     "Common_EventScript_ShowPokemartSign": {

@@ -6464,7 +6464,7 @@ Mart, the Exchange Service Corner, Scott's house, the Ranking Hall and eight lou
   the island's quay at 19, 67; without the ticket the desk asks only about Southern Island, as before. The attendant on
   the quay sails back to Lilycove's harbour (8, 11). Emerald's ferry to Slateport and the S.S. Tidal's cabins (its
   Slateport-to-Lilycove cruise) are not built.
-- **The halls stay shut.** The island's seven halls (the Tower, Dome, Palace, Arena, Factory, Pike and Pyramid) are
+- **The halls stay shut** (until part m, "The Battle Frontier island's halls", below, read their doors). The island's seven halls (the Tower, Dome, Palace, Arena, Factory, Pike and Pyramid) are
   `locked` warps, signs saying so, until plan 14 · B8 to B10 build the five of Emerald's own; the Frontier keeps one set
   of records and Battle Points, Sinnoh's (plan 06 · R18; "Scott's way to the Battle Frontier"). **Scott's house** is
   where the island meets them: Scott gives 3 Battle Points the first time (`FLAG_RECEIVED_SCOTTS_BATTLE_POINTS`, ours;
@@ -6482,6 +6482,40 @@ Mart, the Exchange Service Corner, Scott's house, the Ranking Hall and eight lou
 - **Left out**: Emerald's ninth lounge, whose door is a blocked tile nobody reaches; Artisan Cave (its two ways in
   `locked`, Smeargle's cave being plan 21 · H12's later part); the island's own song (it plays Lilycove's, as Sinnoh's
   Frontier plays Veilstone's); the halls' buildings, which the import draws only where a warp leads somewhere.
+
+## The Battle Frontier island's halls (2026-11-02, plan 21 · H12, part m)
+
+The island's seven halls (the Battle Tower, Dome, Palace, Arena, Factory, Pike and Pyramid) were `locked` warps since
+part b. Their rules are all built, as Sinnoh's five facilities (plan 06 · R18) and the annex's venues (plan 14 · B8 to
+B10), whose lobbies, corridors and battle rooms are Sinnoh's maps; plan 18's rule that every map belongs to one region
+and that a warp never crosses regions stands in the way of a plain door.
+
+- **The way chosen: a crossing at each door, as Route 40's and Scott's.** Of the two the brief offered (lobbies of our
+  own in Hoenn whose counters run the same script commands, or doors that cross to the lobbies already built), the
+  crossing is the one that adds no map and copies nothing: a lobby's counter hands the player on by `warp` to its
+  corridor and battle rooms, which are Sinnoh's, so Hoenn lobbies would need every room behind them copied too, with
+  scripts that name their own maps ("Route 40's way to the Battle Frontier" weighed the same for Johto). Each door stays
+  a `locked` warp (a locked door is still its building's door, `Map.BuildingKinds`) and is read where it stands (the
+  overlay's `readAt`, `TowerDoor` and its fellows in `battle_frontier_outside_west.txt` and `_east.txt`): the hall's
+  attendant asks, and `travel to` (`GameEngine.CrossTo`) sets a holder of the Frontier Pass (`FLAG_RECEIVED_FRONTIER_PASS`)
+  down in the lobby: the Tower's at 15, 19, the Factory's at 1, 7, and for the Dome, the Palace, the Arena, the Pike and
+  the Pyramid the annex's, before the desks, at 7, 9. Without the pass the door is only shut, as Emerald's halls refuse
+  anyone without one. *Our ruling*: the attendant speaks from the door itself rather than standing outside it, so no
+  person is added to the island's grounds and none of its tiles changes.
+- **The way back is the Hoenn guide.** A lobby's door leads out onto Sinnoh's grounds as ever, where Scott's ferryman
+  (`battle_frontier.HoennGuide`) now asks, for a player who holds the S.S. Ticket (`FLAG_RECEIVED_SS_TICKET`, what
+  sails Lilycove's ferry to the island), whether to sail to the island or to Lilycove City. The island's landing is the
+  tile before the door last come through, kept in `VAR_HOENN_FRONTIER_HALL` (1 the Tower, 2 the Dome, 3 the Palace, 4
+  the Arena, 5 the Factory, 6 the Pike, 7 the Pyramid; a variable of ours), or the quay (19, 67) for one who came with
+  Scott. Without the ticket he sails to Lilycove alone, as before.
+- **One set of records.** Nothing of a challenge is Hoenn's: a streak, the Battle Points, the prints and the venues'
+  records are the save's one `FrontierRecords` whichever door was used. The Ranking Hall's four Battle Tower boards and
+  its Battle Factory board open the same boards of records as the machines in Sinnoh's lobbies (`frontier records
+  tower`, `factory`; the overlay's `read`, `battle_frontier_ranking_hall.txt`); the annex's venues keep no board, so the
+  Dome's, Palace's, Arena's, Pike's and Pyramid's say where they are fought. Scott's house still offers his crossing to
+  Sinnoh's grounds.
+- **Left out**: Emerald's hall buildings' own lobbies and Brains (Tucker, Spenser, Greta, Noland, Lucy, Brandon, Anabel),
+  whose places are Sinnoh's five Brains and the annex's; the Ranking Hall's link records; Trainer Hill, which is no hall.
 
 ## Rayquaza on Sky Pillar and Steven at Meteor Falls (2026-10-26, plan 21 · H12, part c)
 

@@ -1,0 +1,15 @@
+# The Battle Frontier island's Ranking Hall (plan 21 · H12, part m). docs/scripts.md describes the language.
+#
+# The Frontier keeps one set of records, Sinnoh's (plan 06 · R18; rulings, "The Battle Frontier island's halls"), so the
+# boards of the Battle Tower and the Battle Factory open the same boards of records as the machines in Sinnoh's lobbies
+# (BattleTower.txt's and BattleFactory.txt's RecordsMachine).
+
+script TowerRecords
+  sound "select"
+  frontier records tower
+  end
+
+script FactoryRecords
+  sound "select"
+  frontier records factory
+  end

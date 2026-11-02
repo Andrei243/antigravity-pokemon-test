@@ -10,9 +10,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 |---|---|---|---|---|---|
 | The introduction (`intro:`) | 96 | 96 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1298 | 1256 | 42 | 1 | 0 |
-| Scripts (`script:`) | 9976 | 9525 | 451 | 17 | 0 |
+| Scripts (`script:`) | 9999 | 9548 | 451 | 17 | 0 |
 | People of the world (`world:`) | 7128 | 7066 | 62 | 4 | 0 |
-| **All** | 18498 | 17943 | 555 | 22 | 0 |
+| **All** | 18521 | 17966 | 555 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -21,17 +21,17 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | What | Lines |
 |---|---|
 | a Pokémon's cry | 244 |
-| a question's answers | 701 |
-| a sign | 1573 |
+| a question's answers | 704 |
+| a sign | 1568 |
 | the game's own voice (speaker none) | 286 |
-| the game's own voice (text) | 1605 |
+| the game's own voice (text) | 1620 |
 
 ## The cast
 
 - Named characters: 377 voices (340 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Cloned from the user's samples: `rival`.
 - Archetypes in use: 222, with 671 voices to cast (V5).
-- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1878.
+- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1880.
 
 ## Lines by voice
 
@@ -39,7 +39,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 
 | Voice | Lines | Shown only |
 |---|---|---|
-| `@self` | 1878 | 135 |
+| `@self` | 1880 | 135 |
 | `look:gentleman (any)` | 715 | 13 |
 | `rival` | 598 | 18 |
 | `look:grunt (any)` | 588 | 0 |
@@ -47,7 +47,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:youngster (any)` | 393 | 21 |
 | `look:clerk (any)` | 365 | 10 |
 | `look:lass (any)` | 321 | 11 |
-| `look:attendant (any)` | 282 | 12 |
+| `look:attendant (any)` | 303 | 12 |
 | `look:nurse (any)` | 255 | 0 |
 | `look:scientist (any)` | 198 | 4 |
 | `look:gym_guide (any)` | 193 | 1 |

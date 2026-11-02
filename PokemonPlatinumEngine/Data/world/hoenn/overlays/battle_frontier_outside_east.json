@@ -1,8 +1,8 @@
 {
   // The Battle Frontier island's east half (plan 21 · H12, part b): the Pokémon Center, the Exchange Service Corner, the
   // Ranking Hall and the lounges. Its halls (the Battle Tower, the Battle Arena, the Battle Palace and the Battle Pyramid)
-  // stay shut, as Artisan Cave's way in does (plan 14 · B8 to B10; the Tower's rules are Sinnoh's, reached through Scott,
-  // battle_frontier_scotts_house.txt). Emerald's ninth lounge is a door nobody can reach, and stays out.
+  // are read at their doors since part m, each crossing to its lobby at Sinnoh's Battle Frontier
+  // (battle_frontier_outside_east.txt). Emerald's ninth lounge is a door nobody can reach, and stays out.
   // The strange tree in the south-east is Emerald's Sudowoodo, watered with the Wailmer Pail and battled at level 40
   // (battle_frontier_outside_east.txt)
   "area": "battle_frontier_outside_east",
@@ -11,6 +11,9 @@
   "trees": "Round",
   // Artisan Cave's way in (13) is open since plan 21 · H12, part i
   "locked": [ 0, 1, 2, 3 ],
+  // The halls' doors stay locked warps (their lobbies are Sinnoh's rooms) and are read: each hall's attendant crosses a
+  // holder of the Frontier Pass to its lobby at Sinnoh's Battle Frontier (plan 21 · H12, part m)
+  "readAt": [ { "x": 72, "z": 14, "script": "TowerDoor" }, { "x": 95, "z": 29, "script": "ArenaDoor" }, { "x": 101, "z": 56, "script": "PalaceDoor" }, { "x": 114, "z": 14, "script": "PyramidDoor" } ],
   "people": {
     "ninja_boy": { "name": "Ninja Boy", "dialog": [ "The Battle Tower's the tallest thing on the island. You can see it from the ferry!" ] },
     "man_3": { "name": "Man", "dialog": [ "I came to see the Tower's famous Trainer battle. They say she never loses at home." ] },
@@ -40,10 +43,10 @@
     "camper": { "name": "Camper", "dialog": [ "The Battle Tower is the oldest hall here. Everything else was built around it." ] }
   },
   "signs": {
-    "BattleFrontier_OutsideEast_EventScript_BattleTowerSign": "BATTLE TOWER\nTrainers meet in battle after battle. Closed for now.",
-    "BattleFrontier_OutsideEast_EventScript_BattlePalaceSign": "BATTLE PALACE\nWhere Pokémon choose their own moves. Closed for now.",
-    "BattleFrontier_OutsideEast_EventScript_BattleArenaSign": "BATTLE ARENA\nThree turns to decide a battle. Closed for now.",
-    "BattleFrontier_OutsideEast_EventScript_BattlePyramidSign": "BATTLE PYRAMID\nA climb through the dark. Closed for now.",
+    "BattleFrontier_OutsideEast_EventScript_BattleTowerSign": "BATTLE TOWER\nTrainers meet in battle after battle. Held at Sinnoh's Frontier.",
+    "BattleFrontier_OutsideEast_EventScript_BattlePalaceSign": "BATTLE PALACE\nWhere Pokémon choose their own moves. Held at Sinnoh's Frontier.",
+    "BattleFrontier_OutsideEast_EventScript_BattleArenaSign": "BATTLE ARENA\nThree turns to decide a battle. Held at Sinnoh's Frontier.",
+    "BattleFrontier_OutsideEast_EventScript_BattlePyramidSign": "BATTLE PYRAMID\nA climb through the dark. Held at Sinnoh's Frontier.",
     "BattleFrontier_OutsideEast_EventScript_ExchangeCornerSign": "EXCHANGE SERVICE CORNER\nPrizes for Battle Points.",
     "BattleFrontier_OutsideEast_EventScript_RankingHallSign": "RANKING HALL\nThe Frontier's best streaks.",
     "Common_EventScript_ShowPokemonCenterSign": "POKéMON CENTER\nWe heal your Pokémon."

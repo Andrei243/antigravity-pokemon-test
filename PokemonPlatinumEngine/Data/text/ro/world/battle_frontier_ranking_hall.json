@@ -11,10 +11,10 @@
       },
       "dialog": {
         "en": [
-          "The Ranking Hall honours the Frontier's best streaks. The boards will fill as the island's halls open."
+          "The Ranking Hall honours the Frontier's best streaks, wherever its halls' battles are fought."
         ],
         "text": [
-          "Sala Clasamentelor cinstește cele mai bune serii din Frontier. Panourile se vor umple pe măsură ce se deschid sălile insulei."
+          "Sala Clasamentelor cinstește cele mai bune serii din Frontier, oriunde s-ar lupta sălile ei."
         ]
       }
     },
@@ -47,93 +47,53 @@
       },
       "dialog": {
         "en": [
-          "The boards are empty! I guess nobody's had a long enough streak yet."
+          "The Tower's boards are full of names from Sinnoh. I'll put a Hoenn name up there!"
         ],
         "text": [
-          "Panourile sunt goale! Se pare că nimeni n-a avut încă o serie destul de lungă."
+          "Panourile turnului sunt pline de nume din Sinnoh. Eu o să pun acolo un nume din Hoenn!"
         ]
       }
     }
   },
   "signs": {
-    "BattleFrontier_RankingHall_EventScript_TowerSinglesRecords": {
-      "en": [
-        "BATTLE TOWER: SINGLE BATTLES\nNo records yet."
-      ],
-      "text": [
-        "BATTLE TOWER: LUPTE SIMPLE\nNicio înregistrare încă."
-      ]
-    },
-    "BattleFrontier_RankingHall_EventScript_TowerDoublesRecords": {
-      "en": [
-        "BATTLE TOWER: DOUBLE BATTLES\nNo records yet."
-      ],
-      "text": [
-        "BATTLE TOWER: LUPTE DUBLE\nNicio înregistrare încă."
-      ]
-    },
-    "BattleFrontier_RankingHall_EventScript_TowerMultisRecords": {
-      "en": [
-        "BATTLE TOWER: MULTI BATTLES\nNo records yet."
-      ],
-      "text": [
-        "BATTLE TOWER: LUPTE MULTIPLE\nNicio înregistrare încă."
-      ]
-    },
-    "BattleFrontier_RankingHall_EventScript_TowerLinkRecords": {
-      "en": [
-        "BATTLE TOWER: LINK MULTI BATTLES\nNo records yet."
-      ],
-      "text": [
-        "BATTLE TOWER: LUPTE MULTIPLE ÎN REȚEA\nNicio înregistrare încă."
-      ]
-    },
     "BattleFrontier_RankingHall_EventScript_ArenaRecords": {
       "en": [
-        "BATTLE ARENA\nNo records yet."
+        "BATTLE ARENA\nIts bouts are fought at Sinnoh's Frontier."
       ],
       "text": [
-        "BATTLE ARENA\nNicio înregistrare încă."
+        "BATTLE ARENA\nMeciurile ei se dau la Frontier-ul din Sinnoh."
       ]
     },
     "BattleFrontier_RankingHall_EventScript_PalaceRecords": {
       "en": [
-        "BATTLE PALACE\nNo records yet."
+        "BATTLE PALACE\nIts battles are fought at Sinnoh's Frontier."
       ],
       "text": [
-        "BATTLE PALACE\nNicio înregistrare încă."
-      ]
-    },
-    "BattleFrontier_RankingHall_EventScript_FactoryRecords": {
-      "en": [
-        "BATTLE FACTORY\nNo records yet."
-      ],
-      "text": [
-        "BATTLE FACTORY\nNicio înregistrare încă."
+        "BATTLE PALACE\nLuptele lui se dau la Frontier-ul din Sinnoh."
       ]
     },
     "BattleFrontier_RankingHall_EventScript_DomeRecords": {
       "en": [
-        "BATTLE DOME\nNo records yet."
+        "BATTLE DOME\nIts tournaments are fought at Sinnoh's Frontier."
       ],
       "text": [
-        "BATTLE DOME\nNicio înregistrare încă."
+        "BATTLE DOME\nTurneele lui se dau la Frontier-ul din Sinnoh."
       ]
     },
     "BattleFrontier_RankingHall_EventScript_PikeRecords": {
       "en": [
-        "BATTLE PIKE\nNo records yet."
+        "BATTLE PIKE\nIts paths are walked at Sinnoh's Frontier."
       ],
       "text": [
-        "BATTLE PIKE\nNicio înregistrare încă."
+        "BATTLE PIKE\nCărările lui se străbat la Frontier-ul din Sinnoh."
       ]
     },
     "BattleFrontier_RankingHall_EventScript_PyramidRecords": {
       "en": [
-        "BATTLE PYRAMID\nNo records yet."
+        "BATTLE PYRAMID\nIts floors are climbed at Sinnoh's Frontier."
       ],
       "text": [
-        "BATTLE PYRAMID\nNicio înregistrare încă."
+        "BATTLE PYRAMID\nEtajele ei se urcă la Frontier-ul din Sinnoh."
       ]
     },
     "BattleFrontier_RankingHall_EventScript_DomePikeFactoryRecordsSign": {

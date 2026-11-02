@@ -40,5 +40,205 @@
         "E un copac ciudat. Se zbate de colo-colo, deși nu bate vântul."
       ]
     }
+  ],
+  "TowerDoor": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitoarea"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Battle Tower! Its challenges are held at the Battle Frontier in Sinnoh."
+      ],
+      "text": [
+        "Bine ai venit la Battle Tower! Provocările lui au loc la Battle Frontier din Sinnoh."
+      ]
+    },
+    {
+      "en": [
+        "Shall we take you there? Your team comes along, and your records stay as they are."
+      ],
+      "text": [
+        "Să te ducem acolo? Echipa vine cu tine, iar recordurile tale rămân cum sunt."
+      ]
+    },
+    {
+      "en": [
+        "{player} crossed with the attendant to the Battle Frontier in Sinnoh..."
+      ],
+      "text": [
+        "{player} a trecut cu însoțitoarea la Battle Frontier din Sinnoh..."
+      ]
+    },
+    {
+      "en": [
+        "Whenever you're ready. I'll be at this door."
+      ],
+      "text": [
+        "Când ești gata. Eu voi fi la ușa asta."
+      ]
+    },
+    {
+      "en": [
+        "The door is shut. A sign says that only holders of a Frontier Pass may enter."
+      ],
+      "text": [
+        "Ușa e închisă. Un anunț spune că doar cei cu un Frontier Pass pot intra."
+      ]
+    }
+  ],
+  "PalaceDoor": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitoarea"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Battle Palace! Its battles are held in the annex of the Battle Frontier in Sinnoh."
+      ],
+      "text": [
+        "Bine ai venit la Battle Palace! Luptele lui au loc în anexa Battle Frontier din Sinnoh."
+      ]
+    },
+    {
+      "en": [
+        "Shall we take you there? Your team comes along, and your records stay as they are."
+      ],
+      "text": [
+        "Să te ducem acolo? Echipa vine cu tine, iar recordurile tale rămân cum sunt."
+      ]
+    },
+    {
+      "en": [
+        "{player} crossed with the attendant to the Battle Frontier in Sinnoh..."
+      ],
+      "text": [
+        "{player} a trecut cu însoțitoarea la Battle Frontier din Sinnoh..."
+      ]
+    },
+    {
+      "en": [
+        "Whenever you're ready. I'll be at this door."
+      ],
+      "text": [
+        "Când ești gata. Eu voi fi la ușa asta."
+      ]
+    },
+    {
+      "en": [
+        "The door is shut. A sign says that only holders of a Frontier Pass may enter."
+      ],
+      "text": [
+        "Ușa e închisă. Un anunț spune că doar cei cu un Frontier Pass pot intra."
+      ]
+    }
+  ],
+  "ArenaDoor": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitoarea"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Battle Arena! Its bouts are held in the annex of the Battle Frontier in Sinnoh."
+      ],
+      "text": [
+        "Bine ai venit la Battle Arena! Meciurile ei au loc în anexa Battle Frontier din Sinnoh."
+      ]
+    },
+    {
+      "en": [
+        "Shall we take you there? Your team comes along, and your records stay as they are."
+      ],
+      "text": [
+        "Să te ducem acolo? Echipa vine cu tine, iar recordurile tale rămân cum sunt."
+      ]
+    },
+    {
+      "en": [
+        "{player} crossed with the attendant to the Battle Frontier in Sinnoh..."
+      ],
+      "text": [
+        "{player} a trecut cu însoțitoarea la Battle Frontier din Sinnoh..."
+      ]
+    },
+    {
+      "en": [
+        "Whenever you're ready. I'll be at this door."
+      ],
+      "text": [
+        "Când ești gata. Eu voi fi la ușa asta."
+      ]
+    },
+    {
+      "en": [
+        "The door is shut. A sign says that only holders of a Frontier Pass may enter."
+      ],
+      "text": [
+        "Ușa e închisă. Un anunț spune că doar cei cu un Frontier Pass pot intra."
+      ]
+    }
+  ],
+  "PyramidDoor": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitoarea"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Battle Pyramid! Its dark floors are climbed from the annex of the Battle Frontier in Sinnoh."
+      ],
+      "text": [
+        "Bine ai venit la Battle Pyramid! Etajele ei întunecate se urcă din anexa Battle Frontier din Sinnoh."
+      ]
+    },
+    {
+      "en": [
+        "Shall we take you there? Your team comes along, and your records stay as they are."
+      ],
+      "text": [
+        "Să te ducem acolo? Echipa vine cu tine, iar recordurile tale rămân cum sunt."
+      ]
+    },
+    {
+      "en": [
+        "{player} crossed with the attendant to the Battle Frontier in Sinnoh..."
+      ],
+      "text": [
+        "{player} a trecut cu însoțitoarea la Battle Frontier din Sinnoh..."
+      ]
+    },
+    {
+      "en": [
+        "Whenever you're ready. I'll be at this door."
+      ],
+      "text": [
+        "Când ești gata. Eu voi fi la ușa asta."
+      ]
+    },
+    {
+      "en": [
+        "The door is shut. A sign says that only holders of a Frontier Pass may enter."
+      ],
+      "text": [
+        "Ușa e închisă. Un anunț spune că doar cei cu un Frontier Pass pot intra."
+      ]
+    }
   ]
 }
