@@ -595,6 +595,7 @@ public class ScriptTests
           athlon able
           athlon open
           athlon points
+          athlon earned statue
           tide
           openbase check
           openbase kind

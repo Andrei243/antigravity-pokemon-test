@@ -468,7 +468,27 @@ internal static partial class ModernUi
             UiShapes.Fill(track, 24, Rule);
             UiShapes.Fill(new Rectangle(track.X, track.Y, Math.Max(48, track.Width * pts / most * grow), track.Height), 24, AthlonTeamColors[t]);
             RowValue(row, ((int)MathF.Round(pts * grow)).ToString(), Ink, 56);
+
+            // The bonuses it won (plan 15, its last part): a pill each under the bar, as the bar has grown
+            float px = track.X;
+            foreach (var bonus in run.BonusesOf(e, t))
+            {
+                string word = Text.Of("athlon.bonus.pill", ("name", AthlonBonusName(run.Course.Events[e], bonus.Kind)), ("n", bonus.Points));
+                float w = UiFonts.Measure(word, 22, UiWeight.Black) + 36;
+                var pill = new Rectangle(px, track.Y + track.Height + 8, w, 40);
+                UiShapes.Fill(pill, 20, (bonus.Kind == AthlonBonusKind.Star ? MedalGold : AthlonSky) with { A = (byte)(255 * grow) });
+                TextMiddle(word, pill.X + pill.Width / 2f, pill.Y + pill.Height / 2f, 22, Color.White with { A = (byte)(255 * grow) }, UiWeight.Black);
+                px += w + 12;
+            }
         }
+    }
+
+    /// <summary>A bonus's name, by its event and kind (<c>athlon.bonus.&lt;event&gt;.steady</c> and <c>.star</c>).</summary>
+    public static string AthlonBonusName(AthlonEventKind kind, AthlonBonusKind bonus)
+    {
+        string key = AthlonKey(kind);
+        string which = bonus == AthlonBonusKind.Star ? "star" : "steady";
+        return Text.Of($"athlon.bonus.{key}.{which}");
     }
 
     // ------------------------------------------------------------------ the scoreboard
@@ -482,9 +502,12 @@ internal static partial class ModernUi
         Panel(board, 30);
 
         // The events' names over their columns
-        float firstColumn = board.X + 900, column = 220;
-        for (int e = 0; e < run.Course.Events.Count; e++)
+        // (and the bonuses' column after them, plan 15's last part)
+        float firstColumn = board.X + 760, column = 200;
+        int events = run.Course.Events.Count;
+        for (int e = 0; e < events; e++)
             TextMiddle(AthlonEventName(run.Course.Events[e]), firstColumn + e * column + column / 2f, board.Y + 40, 22, Muted, UiWeight.Black);
+        TextMiddle(Text.Of("athlon.bonusColumn"), firstColumn + events * column + column / 2f, board.Y + 40, 22, Muted, UiWeight.Black);
         TextMiddle(Text.Of("athlon.total"), board.X + board.Width - 130, board.Y + 40, 22, Muted, UiWeight.Black);
 
         var ranking = run.Ranking;
@@ -498,6 +521,8 @@ internal static partial class ModernUi
             for (int a = 0; a < AthlonRun.TeamSize; a++) AthleteIcon(run.Teams[t].Athletes[a].Species, new Vector2(row.X + 170 + a * 100, row.Y + 104));
             for (int e = 0; e < run.Course.Events.Count; e++)
                 TextMiddle(run.PointsOf(e, t).ToString(), firstColumn + e * column + column / 2f, row.Y + row.Height / 2f, 40, Ink, UiWeight.Black);
+            int bonus = run.BonusTotal(t);
+            TextMiddle(bonus > 0 ? $"+{bonus}" : "–", firstColumn + events * column + column / 2f, row.Y + row.Height / 2f, 40, Muted, UiWeight.Black);
             TextMiddle(run.Total(t).ToString(), board.X + board.Width - 130, row.Y + row.Height / 2f, 56, Ink, UiWeight.Black);
         }
 

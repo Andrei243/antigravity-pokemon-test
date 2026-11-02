@@ -4102,6 +4102,20 @@
       "ducked": "Ducked: {n}",
       "catches": "CATCHES",
       "lamps": "Lamps: {n}"
+    },
+    "bonusColumn": "BONUS",
+    "bonus": {
+      "pill": "{name} +{n}",
+      "hurdleDash": { "steady": "Sure Feet", "star": "Clean Sweep" },
+      "blockSmash": { "steady": "On the Beat", "star": "Wrecker" },
+      "ringDrop": { "steady": "Firm Footing", "star": "Bulldozer" },
+      "pennantCapture": { "steady": "Clear Path", "star": "Flag Hunter" },
+      "snowThrow": { "steady": "Dodger", "star": "Sharpshooter" },
+      "discCatch": { "steady": "Safe Hands", "star": "High Flyer" },
+      "lampJump": { "steady": "Good Timing", "star": "Lamplighter" },
+      "relayRun": { "steady": "Even Pace", "star": "Long Haul" },
+      "circlePush": { "steady": "Holding Ground", "star": "Lone Stand" },
+      "goalRoll": { "steady": "Clean Sheet", "star": "Hat Trick" }
     }
   },
   "placeWords": {

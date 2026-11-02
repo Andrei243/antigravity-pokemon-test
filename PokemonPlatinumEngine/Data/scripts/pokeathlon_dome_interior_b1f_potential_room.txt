@@ -12,3 +12,26 @@ script Guide
 label Open
   say "Go right ahead! Your wins have opened the last hall."
   end
+
+# What the hall hangs once it is earned (plan 15, the bonuses; HeartGold's Pokégear's and ball's signs): read where each
+# would hang, the wall's own words until then. A medal on every one of the five courses for the Pokégear's, silver or
+# better on every one for the ball's
+script Pokegear
+  speaker none
+  athlon earned pokegear
+  if result == 0 goto Plain
+  text "A Pokégear in a frame, its screen showing five medals. The plaque reads: \"For {player}, a medal on every course.\""
+  end
+label Plain
+  sayown
+  end
+
+script Ball
+  speaker none
+  athlon earned ball
+  if result == 0 goto Plain
+  text "A silver Poké Ball on a stand. The plaque reads: \"For {player}, silver or better on every course.\""
+  end
+label Plain
+  sayown
+  end

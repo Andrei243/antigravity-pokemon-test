@@ -149,6 +149,7 @@ partial class Harness
         Until(() => game.State is GameState.Overworld or GameState.Dialogue, "the field after the second batch", 120);
 
         AthlonBatch3(screen, Until, ReadOn);
+        AthlonHonours(screen, Until, ReadOn);
 
         engine.NewGameRegion = "Sinnoh";
     }

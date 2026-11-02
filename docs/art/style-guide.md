@@ -1873,6 +1873,11 @@ own colour is a sky blue (58, 150, 214): an event card's band, a stat's stars an
 - **The records board** (`athlon records`): RECORDS; a row 96 tall for each course with its name in Black 40, its best
   score in Black 48 at the right and its best medal's disc before it (an empty rule-coloured ring where none is won);
   along the foot the courses run and won and the Athlete Points.
+- **Bonuses** (plan 15, its last part): on an event's points, under each row's bar, a pill 40 tall for each bonus the
+  team won, the dome's sky blue for a Steady one and gold (232, 184, 48) for a Star one, its name and +2 in white Black
+  22, 12 apart; the bar and its number are the event's points alone. On the scoreboard the events' columns are 200 wide
+  from 760 into the board, and a fourth, BONUS, holds each team's bonus points in Black 40 in the muted ink (a dash where
+  it won none), before TOTAL, which counts them.
 - **The Athlete Shop** is the shop's screen with the dome's stock: the prices and the purse in Athlete Points, a number
   with PTS after it in place of the money's sign, the purse captioned ATHLETE POINTS; it opens on its list (there is
   nothing to sell).

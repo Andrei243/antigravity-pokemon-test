@@ -1,0 +1,15 @@
+# The last of the Pokéathlon Dome's halls under the lobby (plan 20 · J13, the last part; HeartGold's D49R0107).
+
+# The pedestal (plan 15, the bonuses): HeartGold raises a statue of the Trainer who has won every course; here it is
+# read on the pedestal once gold has been won on every one of the five courses (AthlonRecords.Has), the plaque's own
+# words until then (`sayown`)
+script Statue
+  speaker none
+  athlon earned statue
+  if result == 0 goto Plain
+  text "A statue of {player} stands on the pedestal, arms raised, three Pokémon at their feet."
+  text "The plaque reads: \"Gold on every course. Every Pokémon can shine.\""
+  end
+label Plain
+  sayown
+  end

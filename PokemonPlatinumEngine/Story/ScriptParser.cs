@@ -923,7 +923,12 @@ public static class ScriptParser
                 };
             // The Pokéathlon (plan 15 · E6)
             case "athlon":
-                return new Instruction { Op = Op.Athlon, Line = line, Name = r.OneOf("able", "open", "points", "records", "shop") };
+            {
+                string what = r.OneOf("able", "open", "points", "records", "shop", "earned");
+                // `athlon earned <honour>` (plan 15, the bonuses): RESULT 1 where the halls' honour is earned
+                string honour = what == "earned" ? r.OneOf("shoes", "clothes", "flag", "pokegear", "ball", "statue") : "";
+                return new Instruction { Op = Op.Athlon, Line = line, Name = what, Other = honour };
+            }
             // Shoal Cave's tide (plan 21 · H8, part d): FLAG_SYS_SHOAL_TIDE by the hour, when come in from outdoors
             case "tide":
                 return new Instruction { Op = Op.Tide, Line = line };

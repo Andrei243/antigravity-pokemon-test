@@ -24,5 +24,25 @@
         "Treci direct! Victoriile tale au deschis ultima sală."
       ]
     }
+  ],
+  "Pokegear": [
+    {
+      "en": [
+        "A Pokégear in a frame, its screen showing five medals. The plaque reads: \"For {player}, a medal on every course.\""
+      ],
+      "text": [
+        "Un Pokégear înrămat, cu cinci medalii pe ecran. Plăcuța spune: „Pentru {player}, o medalie pe fiecare traseu.”"
+      ]
+    }
+  ],
+  "Ball": [
+    {
+      "en": [
+        "A silver Poké Ball on a stand. The plaque reads: \"For {player}, silver or better on every course.\""
+      ],
+      "text": [
+        "Un Poké Ball argintiu pe un suport. Plăcuța spune: „Pentru {player}, argint sau mai bine pe fiecare traseu.”"
+      ]
+    }
   ]
 }

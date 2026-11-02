@@ -3,11 +3,16 @@
   // the middle of the long desk runs plan 15 · E6's clerk (common.AthlonDesk); the desk to its east keeps the records
   // (common.AthlonRecords, plan 15 · E8); the other desks (the data card, HeartGold's other receptionists) only talk. The
   // way down (warp 1) leads to the four halls of the dome's history and the stairs up (warp 2) to the stands, both open
-  // since J13's last part; the events themselves are played on their own board (rulings, "The Pokéathlon"). Whitney,
-  // who visits the lobby in HeartGold behind a flag nothing sets here, is left out
+  // since J13's last part; the events themselves are played on their own board (rulings, "The Pokéathlon"). Whitney
+  // visits the lobby on Saturdays once her Plain Badge is won (plan 15's last part; the lobby's own OnEnter keeps her flag)
   "area": "pokeathlon_dome_interior_1f",
   "bgmTrack": "johto/route34",
   "people": {
+    "d49r0101_gsleader3": {
+      "name": "Whitney",
+      "still": true,
+      "script": "Whitney"
+    },
     "d49r0101_pcwoman1": {
       "name": "Clerk",
       "still": true,
