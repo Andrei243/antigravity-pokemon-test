@@ -90,6 +90,7 @@ public sealed class BattleRecordFile
     public bool FirstBattle { get; set; }
     public int SpecialBalls { get; set; }
     public bool Frontier { get; set; }
+    public bool NoRewards { get; set; }
     public bool NoBattleItems { get; set; }
     public bool OffersSwitch { get; set; }
     public bool MegaMaxDen { get; set; }
@@ -155,6 +156,7 @@ public sealed class BattleRecordFile
             FirstBattle = setup.FirstBattle,
             SpecialBalls = setup.SpecialBalls,
             Frontier = setup.Frontier,
+            NoRewards = setup.NoRewards,
             NoBattleItems = setup.NoBattleItems,
             OffersSwitch = setup.OffersSwitch,
             MegaMaxDen = setup.MegaMaxDen,
@@ -261,6 +263,7 @@ public sealed class BattleRecordFile
             FirstBattle = FirstBattle,
             SpecialBalls = SpecialBalls,
             Frontier = Frontier,
+            NoRewards = NoRewards,
             NoBattleItems = NoBattleItems,
             OffersSwitch = OffersSwitch,
             MegaMaxDen = MegaMaxDen,

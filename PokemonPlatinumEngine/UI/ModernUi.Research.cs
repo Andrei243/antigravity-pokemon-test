@@ -57,10 +57,10 @@ internal static partial class ModernUi
 
         var tasks = ResearchTasks.For(s);
         var record = research.RecordOf(s.DexNumber);
-        float y = detail.Y + 274;
+        float y = detail.Y + 270;
         foreach (var task in tasks)
         {
-            var row = new Rectangle(detail.X + 44, y, detail.Width - 88, 66);
+            var row = new Rectangle(detail.X + 44, y, detail.Width - 88, 62);
             Card(row, 22, false);
             float cy = row.Y + row.Height / 2f;
             UiFonts.DrawCentered(TaskLine(task), row.X + 32, cy, 28, Ink, UiWeight.Bold);
@@ -80,7 +80,7 @@ internal static partial class ModernUi
                 : count.ToString(CultureInfo.InvariantCulture);
             float vw = UiFonts.Measure(value, 26, UiWeight.Black);
             UiFonts.DrawCentered(value, pipsLeft - 28 - vw, cy, 26, task.NextFor(count) == null ? Green : Muted, UiWeight.Black);
-            y += 78;
+            y += 72;
         }
     }
 }

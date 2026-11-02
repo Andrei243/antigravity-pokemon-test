@@ -1010,6 +1010,10 @@ public sealed partial class WorldRenderer
         // stands under the bar (plan 29)
         float barred = Camera.Bars / GameEngine.VirtualHeight * (nearOff - farOff);
         t.X = ClampOrCenter(t.X, -overscan + halfW, map.Width + overscan - halfW);
+        // A cave whose open ground is narrower than the picture (the Ruins of Alph's chambers, a room in the corner of
+        // its chunk with rock round it) is looked at from the middle of that ground, not pushed against the chunk's edge
+        if (map.IsCave && map.OpenColumns() is { } open && open.Max + 2f - (open.Min - 1f) < 2f * halfW)
+            t.X = (open.Min - 1f + open.Max + 2f) / 2f;
         t.Z = ClampOrCenter(t.Z, -overscan - farOff - barred, map.Height + overscan - nearOff + barred);
 
         // Scroll in whole texels of the pixel art, so textures and sprites don't shimmer as the view moves

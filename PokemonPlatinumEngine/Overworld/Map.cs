@@ -978,6 +978,19 @@ public class Map
     /// <summary>Whether the tile itself blocks movement (walls, water, furniture), ignoring NPCs.</summary>
     public bool IsSolid(int x, int y) => solidGrid[y * Width + x];
 
+    /// <summary>
+    /// The first and last columns with any open tile on them, or null where every tile blocks. A cave of one chunk whose
+    /// floor is a small room in the chunk's corner (the Ruins of Alph's chambers) is framed on these, not on the chunk.
+    /// </summary>
+    public (int Min, int Max)? OpenColumns()
+    {
+        int min = Width, max = -1;
+        for (int y = 0; y < Height; y++)
+            for (int x = 0; x < Width; x++)
+                if (!solidGrid[y * Width + x]) { if (x < min) min = x; if (x > max) max = x; }
+        return max < 0 ? null : (min, max);
+    }
+
     public void SetOverheadTile(int x, int y, TileType type)
     {
         if (!InBounds(x, y)) return;

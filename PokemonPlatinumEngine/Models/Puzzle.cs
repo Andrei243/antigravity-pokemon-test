@@ -245,6 +245,7 @@ public static class Puzzles
             PlayerName = "Player",
             EnemyController = new PuzzleFoe(puzzle.FoeMoves),
             NoBattleItems = puzzle.Balls == 0,
+            NoRewards = true,
             SpecialBalls = 0
         };
     }

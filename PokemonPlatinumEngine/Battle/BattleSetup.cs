@@ -207,6 +207,9 @@ public sealed class BattleSetup
     /// </summary>
     public bool Frontier { get; init; }
 
+    /// <summary>A battle that is no part of a game (the Battle Room's puzzles): no EXP, prize, find or white-out (<see cref="Sim.CoreSetup.NoRewards"/>).</summary>
+    public bool NoRewards { get; init; }
+
     /// <summary>
     /// Nothing may be used from the bag, by either side (plan 14 · B14: a Master Trainer's battle; plan 13 · V5's run
     /// rule sets the same): the BAG command is greyed and says why (<see cref="Sim.CoreSetup.NoBattleItems"/>).
