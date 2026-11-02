@@ -123,7 +123,7 @@
     },
     "16": {
       "name": "Backpacker",
-      "npcType": "picnicker",
+      "npcType": "backpacker_f",
       "dialog": [
         "My Pokémon loves Berries! That's why I wander everywhere looking for them. I dream of a city that overflows with Berries."
       ]

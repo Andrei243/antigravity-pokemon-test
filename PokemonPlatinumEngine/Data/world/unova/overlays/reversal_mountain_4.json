@@ -84,7 +84,7 @@
     },
     "4": {
       "name": "Kumiko",
-      "npcType": "picnicker",
+      "npcType": "backpacker_f",
       "trainer": {
         "dialogueBefore": "My pack is full, but my Pokémon are even fuller of energy! Ready?",
         "dialogueAfter": "My pack is lighter now. And my pride."
@@ -108,7 +108,7 @@
     },
     "7": {
       "name": "Derek",
-      "npcType": "scientist",
+      "npcType": "physician",
       "trainer": {
         "dialogueBefore": "I'm a doctor, so I know exactly how much you can take. Shall we find out?",
         "dialogueAfter": "The patient is fine. The doctor is not."
@@ -123,7 +123,7 @@
     },
     "14": {
       "name": "Kiyo",
-      "npcType": "camper",
+      "npcType": "backpacker_m",
       "trainer": {
         "dialogueBefore": "I follow the cave's air currents wherever they lead. Apparently they lead to a battle!",
         "dialogueAfter": "The wind has changed. Well fought."

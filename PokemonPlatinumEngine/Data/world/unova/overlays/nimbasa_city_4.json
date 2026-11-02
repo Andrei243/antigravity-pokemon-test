@@ -11,7 +11,7 @@
     },
     "2": {
       "name": "Nursery Aide",
-      "npcType": "pokemon_breeder_f",
+      "npcType": "nursery_aide",
       "dialog": [ "I bring the children to every home game. They cheer louder than the fans!" ]
     },
     "3": {

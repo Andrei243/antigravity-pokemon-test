@@ -18,7 +18,7 @@
   "people": {
     "0": { "name": "Grunt", "npcType": "plasma_grunt", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_NIMBASA_PLASMA", "dialog": [ "Mind your own business, kid!" ] },
     "1": { "name": "Grunt", "npcType": "plasma_grunt", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_NIMBASA_PLASMA", "dialog": [ "We're just standing here. Is that a crime now?" ] },
-    "2": { "name": "Grunt", "npcType": "plasma_grunt", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_NIMBASA_PLASMA", "dialog": [ "Team Plasma doesn't take orders from children!" ] },
+    "2": { "name": "Grunt", "npcType": "plasma_grunt_f", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_NIMBASA_PLASMA", "dialog": [ "Team Plasma doesn't take orders from children!" ] },
     "3": { "name": "{rival}", "npcType": "hugh", "script": "Hugh", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_HUGH_NIMBASA" },
     "4": { "name": "Grunt", "npcType": "plasma_grunt", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_NIMBASA_PLASMA", "dialog": [ "What are you staring at?" ] },
     "5": { "name": "Rosa", "npcType": "rosa", "script": "Partner", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_ROSA_NIMBASA" },
@@ -40,12 +40,12 @@
     },
     "10": {
       "name": "Athlete",
-      "npcType": "blackbelt",
+      "npcType": "linebacker",
       "dialog": [ "Athletes and Pokémon playing side by side! See it for yourself at the Big Stadium and the Small Court." ]
     },
     "11": {
       "name": "Harlequin",
-      "npcType": "clown",
+      "npcType": "harlequin",
       "dialog": [ "La la la! Nimbasa is full of places to train your Pokémon! Stadiums, subways and a Gym that sparkles!" ]
     },
     "12": {
@@ -55,7 +55,7 @@
     },
     "14": {
       "name": "Backpacker",
-      "npcType": "picnicker",
+      "npcType": "backpacker_f",
       "dialog": [ "Some battles here need three Pokémon on each side! I've only got two partners so far..." ]
     },
     "15": {

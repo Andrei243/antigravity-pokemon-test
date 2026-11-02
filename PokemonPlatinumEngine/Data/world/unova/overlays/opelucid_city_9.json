@@ -5,7 +5,7 @@
   "people": {
     "0": {
       "name": "Collector",
-      "npcType": "twin",
+      "npcType": "backers_m",
       "dialog": [
         "I love Pokémon more than anyone! If I just had one more Pokémon, they would sing together!"
       ]

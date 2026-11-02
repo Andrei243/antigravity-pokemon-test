@@ -21,11 +21,11 @@
   ],
   "people": {
     "0": { "name": "{rival}", "npcType": "hugh", "script": "Hugh", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_HUGH_RANCH" },
-    "1": { "name": "Owner", "npcType": "Gentleman", "script": "Owner", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_RANCH_OWNERS" },
-    "2": { "name": "Wife", "npcType": "Lady", "script": "Wife", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_RANCH_OWNERS" },
+    "1": { "name": "Owner", "npcType": "pokemon_breeder_m", "script": "Owner", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_RANCH_OWNERS" },
+    "2": { "name": "Wife", "npcType": "pokemon_breeder_f", "script": "Wife", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_RANCH_OWNERS" },
     "3": { "name": "Herdier", "npcType": "Pokemon", "species": "Herdier", "script": "Herdier", "still": true },
     "10": { "name": "Herdier", "npcType": "Pokemon", "species": "Herdier", "script": "Herdier", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_RANCH_OWNERS" },
-    "16": { "name": "Grunt", "npcType": "Grunt", "still": true, "dialog": [ "Get lost, kid!" ], "hiddenBy": "FLAG_UNOVA_HIDE_RANCH_GRUNT" },
+    "16": { "name": "Grunt", "npcType": "plasma_grunt", "still": true, "dialog": [ "Get lost, kid!" ], "hiddenBy": "FLAG_UNOVA_HIDE_RANCH_GRUNT" },
     "4": {
       "name": "Lass",
       "trainer": {

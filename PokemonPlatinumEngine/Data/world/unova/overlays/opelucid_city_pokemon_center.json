@@ -12,7 +12,7 @@
     "4": { "name": "Clerk", "npcType": "Clerk", "script": "Clerk", "dialog": [ "Welcome! How can I help you?" ] },
     "5": { "name": "Clerk", "npcType": "Clerk", "script": "Clerk", "dialog": [ "Welcome! How can I help you?" ] },
     "8": { "name": "Gentleman", "npcType": "gentleman", "dialog": [ "Opelucid is a city of the old and the new. The Pokémon Center is one of the new parts, and I'm very glad of it." ] },
-    "9": { "name": "Backers", "npcType": "twin", "dialog": [ "When Pokémon rest here, they come out looking so much better. I can see a dragon in every one of them." ] },
+    "9": { "name": "Backers", "npcType": "backers_m", "dialog": [ "When Pokémon rest here, they come out looking so much better. I can see a dragon in every one of them." ] },
     "10": { "name": "Youngster", "npcType": "youngster", "dialog": [ "Drayden battled my dad once. He said it was the happiest he'd ever lost." ] },
     "12": { "name": "Breeder", "npcType": "pokemon_breeder_m", "dialog": [ "A Pokémon's happiness shows in how it eats. Mine eats like a dragon. Which is to say, a lot." ] },
     "11": { "name": "Socialite", "npcType": "socialite", "dialog": [ "Iris was only a girl when she came to this city. Now she's the Champion of Unova. Wasn't that quick?" ] }

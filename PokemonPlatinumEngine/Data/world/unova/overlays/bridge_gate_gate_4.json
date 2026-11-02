@@ -12,7 +12,7 @@
     },
     "1": {
       "name": "Backers",
-      "npcType": "twin",
+      "npcType": "backers_m",
       "dialog": [
         "The musicians of the Village Bridge play a little sadly, but I don't mind. You get used to it."
       ]

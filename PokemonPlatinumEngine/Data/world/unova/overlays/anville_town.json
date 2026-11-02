@@ -20,7 +20,7 @@
       "npcType": "guitarist",
       "dialog": [ "Do you hear it? A soft tune drifting over the rooftops... It's the kind that makes you want to sit a while." ]
     },
-    "2": { "name": "Station Agent", "npcType": "worker", "script": "TrainHome", "still": true },
+    "2": { "name": "Station Agent", "npcType": "depot_agent", "script": "TrainHome", "still": true },
     "3": {
       "name": "Rich Boy",
       "npcType": "rich_boy",
@@ -40,11 +40,11 @@
     },
     "6": {
       "name": "Backer",
-      "npcType": "Youngster",
+      "npcType": "backers_m",
       "hiddenBy": "FLAG_UNOVA_HIDE_ANVILLE_WEEKEND",
       "dialog": [ "Weekends here are packed! I came to watch the cars turn round." ]
     },
-    "7": { "name": "Station Agent", "npcType": "worker", "script": "RestingCars", "still": true },
+    "7": { "name": "Station Agent", "npcType": "depot_agent", "script": "RestingCars", "still": true },
     "8": {
       "name": "Hiker",
       "npcType": "hiker",
@@ -53,7 +53,7 @@
     },
     "9": {
       "name": "Backer",
-      "npcType": "Lass",
+      "npcType": "backers_f",
       "hiddenBy": "FLAG_UNOVA_HIDE_ANVILLE_WEEKEND",
       "script": "Swap",
       "still": true
@@ -71,7 +71,7 @@
     },
     "12": {
       "name": "Backpacker",
-      "npcType": "hiker",
+      "npcType": "backpacker_m",
       "hiddenBy": "FLAG_UNOVA_HIDE_ANVILLE_WEEKEND",
       "dialog": [ "I spent everything I had getting here. Worth it, though. Look at those cars!" ]
     },

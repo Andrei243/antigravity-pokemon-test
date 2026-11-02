@@ -15,7 +15,7 @@
     },
     "1": {
       "name": "Backers",
-      "npcType": "twin",
+      "npcType": "backers_f",
       "dialog": [ "The bridge lifts up in the middle when a tall ship comes through. We got stuck halfway across once!" ]
     },
     "2": {

@@ -22,7 +22,7 @@
   "people": {
     "0": {
       "name": "Backers",
-      "npcType": "twin",
+      "npcType": "backers_m",
       "dialog": [
         "Undellaaaaa! This is the best town for a summer cheer!"
       ]

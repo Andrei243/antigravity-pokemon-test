@@ -14,7 +14,7 @@
     },
     "2": {
       "name": "Harlequin",
-      "npcType": "clown",
+      "npcType": "harlequin",
       "dialog": [ "Step right up! The amusement park never sleeps, and neither does this Harlequin!" ]
     },
     "3": {
@@ -29,12 +29,12 @@
     },
     "5": {
       "name": "Boy",
-      "npcType": "Youngster",
+      "npcType": "musician",
       "dialog": [ "We're queuing for the Ferris wheel. We've been queuing a long time." ]
     },
     "6": {
       "name": "Girl",
-      "npcType": "Lass",
+      "npcType": "backers_f",
       "dialog": [ "He promised me a ride on the Ferris wheel! The queue had better move soon..." ]
     },
     "7": {

@@ -10,8 +10,8 @@
   "people": {
     "0": { "name": "Grunt", "npcType": "plasma_grunt", "hiddenBy": "", "dialog": [ "I only just joined, and they won't give me a Pokémon yet. But I know things! There are two switches for the barrier to the bow.", "One is in the west cabin off the forward hall. The other... the scientist at the stern keeps that one to himself." ] },
     "3": { "name": "Grunt", "npcType": "plasma_grunt", "hiddenBy": "", "trainer": { "dialogueBefore": "Intruder in the cabins! You won't get any further!", "dialogueAfter": "You got further. A lot further." } },
-    "4": { "name": "Grunt", "npcType": "plasma_grunt", "hiddenBy": "", "trainer": { "dialogueBefore": "These are our quarters! Out!", "dialogueAfter": "I'll be in my cabin. Sulking." } },
+    "4": { "name": "Grunt", "npcType": "plasma_grunt_f", "hiddenBy": "", "trainer": { "dialogueBefore": "These are our quarters! Out!", "dialogueAfter": "I'll be in my cabin. Sulking." } },
     "5": { "name": "Grunt", "npcType": "plasma_grunt", "hiddenBy": "", "trainer": { "dialogueBefore": "The ship's heart is guarded by the barrier. And by me!", "dialogueAfter": "Just the barrier now, then." } },
-    "6": { "name": "Grunt", "npcType": "plasma_grunt", "hiddenBy": "", "trainer": { "dialogueBefore": "We'll freeze Unova, and you can't stop it!", "dialogueAfter": "You stopped me, at least." } }
+    "6": { "name": "Grunt", "npcType": "plasma_grunt_f", "hiddenBy": "", "trainer": { "dialogueBefore": "We'll freeze Unova, and you can't stop it!", "dialogueAfter": "You stopped me, at least." } }
   }
 }

@@ -27,7 +27,7 @@
   "people": {
     "0": {
       "name": "Owner",
-      "npcType": "Gentleman",
+      "npcType": "clerk",
       "dialog": [ "Welcome to Join Avenue! As you see, there's nothing here yet but empty shopfronts. One day this street will be the liveliest in Unova!" ]
     },
     "1": {

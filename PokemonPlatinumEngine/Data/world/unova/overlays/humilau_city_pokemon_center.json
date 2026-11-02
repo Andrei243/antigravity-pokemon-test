@@ -11,7 +11,7 @@
     "2": { "name": "Clerk", "npcType": "Clerk", "script": "Clerk", "dialog": [ "Welcome! How can I help you?" ] },
     "3": { "name": "Clerk", "npcType": "Clerk", "script": "Clerk", "dialog": [ "Welcome! How can I help you?" ] },
     "4": { "name": "Clerk", "npcType": "Clerk", "script": "Clerk", "dialog": [ "Welcome! How can I help you?" ] },
-    "6": { "name": "Backers", "npcType": "twin", "dialog": [ "Humilau's Pokémon Center has a view of the sea from every window. My Pokémon rest better here, I swear." ] },
+    "6": { "name": "Backers", "npcType": "backers_f", "dialog": [ "Humilau's Pokémon Center has a view of the sea from every window. My Pokémon rest better here, I swear." ] },
     "7": { "name": "Pokémon Ranger", "npcType": "ranger_m", "dialog": [ "I patrol the water between here and Undella. The sea is calm, but the currents round the Seaside Cave are strong." ] },
     "10": { "name": "Breeder", "npcType": "pokemon_breeder_m", "dialog": [ "Water types love this city. So do their Trainers. So do I, come to think of it." ] }
   }

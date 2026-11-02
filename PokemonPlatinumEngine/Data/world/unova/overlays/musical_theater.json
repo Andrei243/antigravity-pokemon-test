@@ -23,7 +23,7 @@
     },
     "1": {
       "name": "Fan",
-      "npcType": "pokefan_m",
+      "npcType": "backers_m",
       "hiddenBy": "",
       "dialog": [ "I've seen every musical this season. My favourite was the one with a Lillipup in a top hat!" ]
     },
@@ -46,7 +46,7 @@
     },
     "7": {
       "name": "Dancer",
-      "npcType": "jogger",
+      "npcType": "street_dancer",
       "dialog": [ "One, two, spin! I'm practising my steps. The Pokémon on stage can't be the only ones who dance!" ]
     },
     "11": {
@@ -56,7 +56,7 @@
     },
     "12": {
       "name": "Little Girl",
-      "npcType": "lass",
+      "npcType": "preschooler_f",
       "dialog": [ "Mummy said if I'm good we can watch the next show from the front row!" ]
     },
     "13": {

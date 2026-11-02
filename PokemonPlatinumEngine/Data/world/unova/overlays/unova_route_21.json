@@ -18,7 +18,7 @@
     "2": { "name": "Harold", "trainer": { "dialogueBefore": "A swimmer's strength is in the shoulders. And the Pokémon!", "dialogueAfter": "My shoulders are fine. My Pokémon aren't." } },
     "3": { "name": "Desiree", "trainer": { "dialogueBefore": "Humilau's sea is the calmest in Unova. Let's make some waves!", "dialogueAfter": "Calm again. Too calm." } },
     "4": { "name": "Kenzo", "trainer": { "dialogueBefore": "I cast my line and a Trainer bit! Let's battle!", "dialogueAfter": "That one got away. Twice." } },
-    "5": { "name": "Braid", "trainer": { "dialogueBefore": "A doctor on holiday is still a doctor. And a Trainer!", "dialogueAfter": "Doctor's orders: rest, for me and my Pokémon." } },
+    "5": { "npcType": "physician", "name": "Braid", "trainer": { "dialogueBefore": "A doctor on holiday is still a doctor. And a Trainer!", "dialogueAfter": "Doctor's orders: rest, for me and my Pokémon." } },
     "6": { "name": "Kenneth", "trainer": { "dialogueBefore": "I train by punching the waves! Now I'll punch through you!", "dialogueAfter": "The waves were easier." } },
     "9": { "name": "{rival}", "npcType": "hugh", "script": "Hugh", "hiddenBy": "FLAG_UNOVA_HIDE_HUGH_ROUTE_21", "still": true, "at": [ 797, 240 ] },
     "10": { "name": "Marlon", "npcType": "swimmer_m_water", "hiddenBy": "FLAG_UNOVA_HIDE_MARLON_ROUTE_21", "still": true, "dialog": [ "Hey, be careful, 'K!" ] },

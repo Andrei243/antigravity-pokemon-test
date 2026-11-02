@@ -10,7 +10,7 @@
     },
     "1": {
       "name": "Nursery Aide",
-      "npcType": "Lady",
+      "npcType": "nursery_aide",
       "dialog": [ "The children teach me something new every day. I think your Pokémon do the same for you." ]
     },
     "2": {
@@ -30,7 +30,7 @@
     },
     "5": {
       "name": "Nursery Aide",
-      "npcType": "Lady",
+      "npcType": "nursery_aide",
       "dialog": [ "The workers drop their children here before their shifts. It's noisy, but I love it." ]
     }
   }

@@ -17,7 +17,7 @@
     "21": { "name": "{rival}", "npcType": "hugh", "script": "Hugh", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_HUGH_ROUTE_20" },
     "23": { "name": "Cheren", "npcType": "cheren", "script": "Cheren", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_CHEREN_ROUTE_20" },
     // Plan 22 · U5, part b: the grunt who fled from Virbank's dock, in the dark grass (unova_route_20.txt)
-    "22": { "name": "Grunt", "npcType": "plasma_grunt", "script": "Grunt", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_ROUTE_20_GRUNT" },
+    "22": { "name": "Grunt", "npcType": "plasma_grunt_f", "script": "Grunt", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_ROUTE_20_GRUNT" },
     "1": {
       "name": "Youngster",
       "trainer": {

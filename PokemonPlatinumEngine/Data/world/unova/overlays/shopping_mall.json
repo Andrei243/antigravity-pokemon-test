@@ -33,7 +33,7 @@
     },
     "4": {
       "name": "Aide",
-      "npcType": "pokemon_breeder_f",
+      "npcType": "nursery_aide",
       "dialog": [
         "The thing I buy most is the item that raises a Pokémon's HP. HP Up! There are plenty of others that catch my eye, too."
       ]
@@ -54,7 +54,7 @@
     },
     "7": {
       "name": "Baker",
-      "npcType": "chef",
+      "npcType": "baker",
       "dialog": [
         "My Lampent isn't much good in a battle, but it makes the most wonderful toast!"
       ]

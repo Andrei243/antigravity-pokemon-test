@@ -76,7 +76,7 @@
     },
     "19": {
       "name": "Backpacker",
-      "npcType": "hiker",
+      "npcType": "backpacker_m",
       "dialog": [ "A whole sea of sand! I've heard of a desert in Hoenn where a tower appears and disappears. Nothing like that here... I hope." ]
     },
     "20": {

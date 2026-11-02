@@ -26,7 +26,7 @@
     },
     "3": {
       "name": "Nursery Aide",
-      "npcType": "nurse",
+      "npcType": "nursery_aide",
       "script": "RestForTheTeam",
       "still": true
     }

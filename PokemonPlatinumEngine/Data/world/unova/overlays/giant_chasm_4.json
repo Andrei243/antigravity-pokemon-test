@@ -13,14 +13,14 @@
     { "script": "RoodAndTheGrunts", "x": 25, "z": 72, "width": 3, "depth": 1, "variable": "VAR_UNOVA_CHASM", "value": 1 }
   ],
   "people": {
-    "0": { "name": "Sage", "npcType": "sage", "script": "Sage", "hiddenBy": "FLAG_UNOVA_HIDE_ROOD_CHASM", "still": true },
-    "1": { "name": "Sage", "npcType": "sage", "script": "Sage", "hiddenBy": "FLAG_UNOVA_HIDE_ROOD_CHASM", "still": true },
+    "0": { "name": "Sage", "npcType": "plasma_sage", "script": "Sage", "hiddenBy": "FLAG_UNOVA_HIDE_ROOD_CHASM", "still": true },
+    "1": { "name": "Sage", "npcType": "plasma_sage", "script": "Sage", "hiddenBy": "FLAG_UNOVA_HIDE_ROOD_CHASM", "still": true },
     "2": { "name": "Rood", "npcType": "rood", "script": "Rood", "hiddenBy": "FLAG_UNOVA_HIDE_ROOD_CHASM", "still": true },
     "4": { "name": "Grunt", "npcType": "plasma_grunt", "script": "Grunt", "hiddenBy": "FLAG_UNOVA_HIDE_CRATER_GRUNTS", "still": true },
     "5": { "name": "Grunt", "npcType": "plasma_grunt", "script": "Grunt", "hiddenBy": "FLAG_UNOVA_HIDE_CRATER_GRUNTS", "still": true },
     "6": { "name": "{rival}", "npcType": "hugh", "hiddenBy": "FLAG_UNOVA_HIDE_HUGH_CRATER", "still": true, "dialog": [ "The grunts won't listen to Rood. Looks like we'll have to make them!" ] },
     "7": { "name": "Grunt", "npcType": "plasma_grunt", "script": "Grunt", "hiddenBy": "FLAG_UNOVA_HIDE_CRATER_GRUNTS", "still": true },
-    "8": { "name": "Grunt", "npcType": "plasma_grunt", "script": "Grunt", "hiddenBy": "FLAG_UNOVA_HIDE_CRATER_GRUNTS", "still": true },
+    "8": { "name": "Grunt", "npcType": "plasma_grunt_f", "script": "Grunt", "hiddenBy": "FLAG_UNOVA_HIDE_CRATER_GRUNTS", "still": true },
     "12": { "name": "Grunt", "npcType": "plasma_grunt", "script": "Grunt", "hiddenBy": "FLAG_UNOVA_HIDE_CRATER_GRUNTS", "still": true }
   }
 }

@@ -4,6 +4,6 @@
   "area": "anville_town_4",
   "bgmTrack": "unova/anville",
   "people": {
-    "0": { "name": "Depot Agent", "npcType": "worker", "script": "LostAndFound" }
+    "0": { "name": "Depot Agent", "npcType": "depot_agent", "script": "LostAndFound" }
   }
 }

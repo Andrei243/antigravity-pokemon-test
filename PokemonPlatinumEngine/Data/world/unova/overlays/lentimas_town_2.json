@@ -19,7 +19,7 @@
     },
     "2": {
       "name": "Backers",
-      "npcType": "twin",
+      "npcType": "backers_f",
       "dialog": [
         "Reversal Mountain is hot on the inside and cool on the outside. Mountains are funny like that."
       ]

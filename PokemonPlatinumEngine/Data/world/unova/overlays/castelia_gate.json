@@ -18,7 +18,7 @@
     },
     "3": {
       "name": "Harlequin",
-      "npcType": "clown",
+      "npcType": "harlequin",
       "dialog": [ "Leaving Castelia already? Come back soon! There's always something new to find in our city." ]
     }
   }

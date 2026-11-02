@@ -10,7 +10,7 @@
   "people": {
     "1": {
       "name": "Harlequin",
-      "npcType": "clown",
+      "npcType": "harlequin",
       "at": [ 13, 7 ],
       "trainer": {
         "dialogueBefore": "Ta-da! The cocoon splits open, and out pops... me! Now, a battle!",
@@ -19,7 +19,7 @@
     },
     "2": {
       "name": "Harlequin",
-      "npcType": "clown",
+      "npcType": "harlequin",
       "at": [ 18, 3 ],
       "trainer": {
         "dialogueBefore": "Honey, cocoons and a Harlequin! Burgh's Gym is a work of art, and so am I!",
@@ -28,7 +28,7 @@
     },
     "3": {
       "name": "Harlequin",
-      "npcType": "clown",
+      "npcType": "harlequin",
       "trainer": {
         "dialogueBefore": "Stuck in the honey? Then I'll battle you right where you stand!",
         "dialogueAfter": "You slipped free of the honey AND of me!"

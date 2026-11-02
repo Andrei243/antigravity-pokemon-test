@@ -10,7 +10,7 @@
     "1": { "name": "Serenity", "trainer": { "dialogueBefore": "A Ranger looks after the forest. Right now I'm looking after it from you!", "dialogueAfter": "All right, the forest is safe with you." } },
     "2": { "name": "Forrest", "trainer": { "dialogueBefore": "Forrest of the forest! Yes, I've heard every joke. Battle!", "dialogueAfter": "The trees are laughing at me now." } },
     "3": { "name": "Murphy", "trainer": { "dialogueBefore": "I've chased bugs through every wood in Unova. This one has the strongest. Come and see!", "dialogueAfter": "Ha! The forest has a new champion of bugs." } },
-    "7": { "name": "Traveller", "npcType": "hiker", "script": "Traveller", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_LOSTLORN_TRAVELLER" }
+    "7": { "name": "Traveller", "npcType": "backpacker_m", "script": "Traveller", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_LOSTLORN_TRAVELLER" }
   },
   "npcs": [
     { "id": "grotto_mouth_4", "name": "Hollow", "npcType": "GrottoHollow", "x": 29, "y": 14, "facing": "Down", "script": "GrottoMouth" },
