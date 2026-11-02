@@ -72,6 +72,20 @@ internal static class GroundBaker
             for (int y = 0; y < c.Height; y++)
                 for (int x = 0; x < c.Width; x++)
                     c.SetRaw(x, y, FloorTexel(map.Interior, x, y));
+            // A room with ice on its floor (the Trick House's eighth puzzle, whose floor slides) shows the ice where it is,
+            // the field's own, over the room's floor: planks under a slide read as a floor that is walked
+            if (HasIce(map))
+            {
+                var ground = PixelGround.Bake(map, new TileWindow(0, 0, map.Width, map.Height), pad: 0, worldSeeds: false, out _);
+                for (int ty = 0; ty < map.Height; ty++)
+                    for (int tx = 0; tx < map.Width; tx++)
+                    {
+                        if (map.GetGroundTile(tx, ty) != TileType.Ice) continue;
+                        for (int y = 0; y < ArtTile; y++)
+                            for (int x = 0; x < ArtTile; x++)
+                                c.SetRaw(tx * ArtTile + x, ty * ArtTile + y, ground.Get(tx * ArtTile + x, ty * ArtTile + y));
+                    }
+            }
         }
 
         // The walls shade the floor beside them: two flat steps
@@ -98,6 +112,14 @@ internal static class GroundBaker
                 for (int tx = 0; tx < map.Width; tx++)
                     PixelGround.SpinMark(c, tx * ArtTile, ty * ArtTile, map.BehaviourAt(tx, ty));
         return c;
+    }
+
+    private static bool HasIce(Map map)
+    {
+        for (int ty = 0; ty < map.Height; ty++)
+            for (int tx = 0; tx < map.Width; tx++)
+                if (map.GetGroundTile(tx, ty) == TileType.Ice) return true;
+        return false;
     }
 
     private static Color FloorTexel(InteriorStyle style, int x, int y)
@@ -128,6 +150,13 @@ internal static class GroundBaker
             if (across % 8 == 7 || j == 0) return groove;
             uint pick = Hash(board, row, tower ? 611 : 621) % 5;
             return pick == 0 ? light : pick == 1 ? dark : mid;
+        }
+
+        if (style == InteriorStyle.Tent)
+        {
+            // A Battle Tent's packed sand: two close tones in patches of eight, a darker grain about one texel in forty
+            if (Hash(x, y, 631) % 40 == 0) return Rgb(184, 156, 112);
+            return Hash(x / 8, y / 8, 632) % 3 == 0 ? Rgb(214, 188, 142) : Rgb(222, 198, 154);
         }
 
         if (style == InteriorStyle.GameHall)
@@ -310,6 +339,9 @@ internal static class GroundBaker
                     if (style == InteriorStyle.Tower)
                         // Paper screens: a lattice of timber two texels wide every sixteen across and fourteen down
                         col = x % 16 is 0 or 1 || my is 0 or 1 ? motif : y == crown ? PixelCanvas.Shadow(paper, 0.14f) : paper;
+                    else if (style == InteriorStyle.Tent)
+                        // Canvas in upright stripes sixteen texels wide, the paper's cream and the motif's red
+                        col = y == crown ? PixelCanvas.Shadow(x / 16 % 2 == 0 ? motif : paper, 0.14f) : x / 16 % 2 == 0 ? motif : paper;
                     else if (style == InteriorStyle.Aerie)
                         // Clouds: a puff six texels wide and three high, on the wallpaper's own grid
                         col = (mx >= 5 && mx <= 10 && my == 7) || (mx >= 6 && mx <= 9 && my == 6) ? motif : y == crown ? PixelCanvas.Shadow(paper, 0.14f) : paper;
@@ -382,6 +414,8 @@ internal static class GroundBaker
             InteriorStyle.Tower => (Rgb(236, 226, 200), Rgb(128, 86, 54), Tone.Of(110, 74, 48), Tone.Of(128, 86, 54), Tone.Of(70, 48, 34)),
             // The Violet Gym's sky with white clouds over a wainscot of timber
             InteriorStyle.Aerie => (Rgb(196, 222, 244), Rgb(246, 250, 255), Tone.Of(150, 108, 70), Tone.Of(240, 244, 250), Tone.Of(96, 68, 46)),
+            // A Battle Tent's canvas: cream and red stripes, a rope-coloured rail over a hem of deep red canvas
+            InteriorStyle.Tent => (Rgb(242, 228, 198), Rgb(200, 70, 60), Tone.Of(150, 50, 44), Tone.Of(214, 180, 120), Tone.Of(96, 64, 40)),
             _ => (Rgb(246, 232, 200), Rgb(232, 212, 172), Tone.Of(178, 124, 82), Tone.Of(250, 244, 226), Tone.Of(120, 84, 58))
         };
 

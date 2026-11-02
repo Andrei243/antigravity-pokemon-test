@@ -895,11 +895,13 @@ public static class WorldMapBuilder
     {
         // (a way out through the back wall, a gate's door north, is no floor)
         bool Walkable(int x, int y) => map.InBounds(x, y) && !map.IsSolid(x, y) && !ways.Contains((x, y));
-        // The first row of the floor: the first that one can walk into from the row below
+        // The first row of the floor: the first that one can walk into from the row below, or that is the floor behind a
+        // counter (Fortree's decoration shop, whose clerks' row behind its two counters is walled otherwise, and they
+        // stood inside the back wall, out of sight)
         int back = -1;
         for (int y = 0; y < map.Height - 2 && back < 0; y++)
             for (int x = 0; x < map.Width; x++)
-                if (Walkable(x, y) && Walkable(x, y + 1)) { back = y; break; }
+                if (Walkable(x, y) && (Walkable(x, y + 1) || map.BehaviourAt(x, y + 1) == TileBehavior.Counter)) { back = y; break; }
         int wallRow = back - 1;
         if (wallRow >= 0)
         {

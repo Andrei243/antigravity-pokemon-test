@@ -2,6 +2,7 @@
   // The lobby of Slateport's Battle Tent (plan 21 · H3): its three bouts on rental Pokémon, the Battle Factory's rules
   // (plan 06 · R18b), played since plan 21 · H3's last part (slateport_city_battle_tent_lobby.txt); the sailor gives
   // TM41 as Emerald's does
+  "interior": "Tent",
   "area": "slateport_city_battle_tent_lobby",
   "bgmTrack": "hoenn/slateport",
   "people": {

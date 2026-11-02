@@ -302,6 +302,11 @@ public static class GbaCover
                 (0x23C, 0x23C, TerrainCover.Fence), (0x245, 0x245, TerrainCover.Fence), (0x24D, 0x24D, TerrainCover.Fence),
                 (0x255, 0x255, TerrainCover.Fence), (0x25D, 0x25D, TerrainCover.Fence), (0x2B8, 0x2BB, TerrainCover.Fence),
                 (0x27E, 0x27E, TerrainCover.Fence), (0x2FE, 0x2FF, TerrainCover.Fence), (0x32D, 0x32D, TerrainCover.Fence),
+                // The Abandoned Ship's hull lying in Route 108's sea (its deck, its sides and the shallows at its foot, all
+                // but the gangway's 0x36A): the sea, under the overlay's boat, where a blocked tile nobody named stood up
+                // as a block of rock with a lawn on its deck
+                (0x351, 0x354, TerrainCover.Water), (0x358, 0x35D, TerrainCover.Water), (0x360, 0x365, TerrainCover.Water),
+                (0x369, 0x369, TerrainCover.Water), (0x36B, 0x36B, TerrainCover.Water),
             },
             // Plan 21 · H3: Dewford Town, read from its layout: the planks of the jetty where Mr. Briney moors, and the
             // palms the island is ringed by

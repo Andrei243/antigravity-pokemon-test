@@ -2,6 +2,7 @@
   // The corridor of Slateport's Battle Tent (plan 21 · H3's last part): the attendant walks a challenger from the lobby to
   // the battle room's door (slateport_city_battle_tent_corridor.txt, OnEnter), as Emerald's corridor does. Nobody walks in here
   // but by the lobby's script
+  "interior": "Tent",
   "area": "slateport_city_battle_tent_corridor",
   "bgmTrack": "hoenn/slateport",
   "people": {

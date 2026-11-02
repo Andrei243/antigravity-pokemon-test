@@ -2,6 +2,7 @@
   // The lobby of Fallarbor's Battle Tent (plan 21 · H4, part a): its three bouts judged after three turns are the
   // Battle Arena's rules (plan 14 · B9), played since plan 21 · H3's last part (fallarbor_town_battle_tent_lobby.txt). Scott watches
   // here only later in Emerald
+  "interior": "Tent",
   "area": "fallarbor_town_battle_tent_lobby",
   "bgmTrack": "hoenn/fallarbor",
   "people": {
