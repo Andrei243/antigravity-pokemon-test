@@ -90,3 +90,7 @@ Hisui and Lumiose take their sound from plan 23's decisions when their sessions 
 - [ ] MU5 · Galar
 - [ ] MU6 · Paldea
 - [ ] MU7 · The later legendaries' themes
+
+## Decision 1, answered (2026-11-02)
+
+The user listened to MU0's six MP3s (the same island-route tune in the DS sound and the modern one, day, night and low HP) and said the modern ones sound better. The plan goes on: MU1 (the mix at 48 kHz) and MU2 (the modern sound in the game) are next; decisions 2 to 5 stay on their recommended answers (96 voices measured on the Windows machine, no samples, generated music only as the user's own sketchpad, the DS-era regions unchanged).
