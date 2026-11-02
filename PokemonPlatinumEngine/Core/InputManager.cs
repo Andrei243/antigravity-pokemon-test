@@ -300,6 +300,12 @@ public static class InputManager
         return (Is(positive) ? 1 : 0) - (Is(negative) ? 1 : 0);
     }
 
+    /// <summary>
+    /// The eight-way heading the direction actions hold this frame (plan 30 · FM1): the keyboard's two keys or the
+    /// stick's diagonal make a diagonal. Read from the same four bits a recording keeps.
+    /// </summary>
+    public static Overworld.Heading? GetHeading() => Overworld.Headings.FromVector(GetMovementVector());
+
     public static Vector2 GetMovementVector()
     {
         Vector2 v = Vector2.Zero;

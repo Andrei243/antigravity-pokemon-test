@@ -804,6 +804,13 @@ public sealed class WorldMapEntry
     /// in, which stay ground at the deck's height (style guide, "Relief", "A bridge over the sea"). Left out, no sea.
     /// </summary>
     public float? SeaBelow { get; set; }
+
+    /// <summary>
+    /// The place's own word on movement inside a free region (plan 30 · FM1: a Gym puzzle, a minigame kept on the grid,
+    /// <c>{ "directions": "Four" }</c>; a place where the region's modes are barred, <c>{ "modes": [] }</c>), which wins
+    /// over the region's there (<see cref="RegionMovement.Under"/>). Left out, the region's.
+    /// </summary>
+    public RegionMovement? Movement { get; set; }
 }
 
 /// <summary>

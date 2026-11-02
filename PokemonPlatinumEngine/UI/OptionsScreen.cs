@@ -42,6 +42,7 @@ public enum OptionRow
     TextSize, ColourVision, HighContrast, Tips,
     RetryBattles,
     Follower, WildPokemon,
+    Movement,
     Controls,
     Jukebox,
     Packs,
@@ -460,6 +461,10 @@ public class OptionsScreen
             case OptionRow.WildPokemon:
                 s.WildInSight = !s.WildInSight;
                 break;
+            case OptionRow.Movement:
+                // As the region says, or the grid's four ways everywhere (plan 30 · FM1)
+                s.Movement = s.Movement == MovementChoice.AsTheRegion ? MovementChoice.FourWays : MovementChoice.AsTheRegion;
+                break;
             case OptionRow.AreaChecklist:
                 s.AreaChecklist = !s.AreaChecklist;
                 break;
@@ -593,6 +598,9 @@ public class OptionsScreen
         OptionRow.RetryBattles => (Text.Of("options.retryBattles.label"), OnOff(s.RetryBattles), Text.Of(s.RetryBattles ? "options.retryBattles.help.on" : "options.retryBattles.help.off")),
         OptionRow.Follower => (Text.Of("options.follower.label"), OnOff(s.Follower), Text.Of(s.Follower ? "options.follower.help.on" : "options.follower.help.off")),
         OptionRow.WildPokemon => (Text.Of("options.wildPokemon.label"), Text.Of(s.WildInSight ? "options.wildPokemon.value.visible" : "options.wildPokemon.value.hidden"), Text.Of(s.WildInSight ? "options.wildPokemon.help.visible" : "options.wildPokemon.help.hidden")),
+        OptionRow.Movement => s.Movement == MovementChoice.FourWays
+            ? (Text.Of("options.movement.label"), Text.Of("options.movement.value.fourWays"), Text.Of("options.movement.help.fourWays"))
+            : (Text.Of("options.movement.label"), Text.Of("options.movement.value.region"), Text.Of("options.movement.help.region")),
         OptionRow.Requests => (Text.Of("options.requests.label"), OnOff(s.Requests != RulesDefault.Off), Text.Of(s.Requests != RulesDefault.Off ? "options.requests.help.on" : "options.requests.help.off")),
         OptionRow.Tips => (Text.Of("options.tips.label"), Text.Of($"options.tips.value.{s.Tips}"), Text.Of($"options.tips.help.{s.Tips}")),
         OptionRow.AreaChecklist => (Text.Of("options.areaChecklist.label"), OnOff(s.AreaChecklist), Text.Of(s.AreaChecklist ? "options.areaChecklist.help.on" : "options.areaChecklist.help.off")),

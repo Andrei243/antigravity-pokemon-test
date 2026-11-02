@@ -380,6 +380,12 @@ public class Map
     /// </summary>
     public GymPuzzle? Puzzle { get; set; }
 
+    /// <summary>
+    /// The place's own word on movement (plan 30 · FM1: its <c>world.json</c> entry's <c>movement</c>), laid over the
+    /// region's by <c>GameEngine.MovementHere</c>; null, the region's.
+    /// </summary>
+    public Data.RegionMovement? Movement { get; set; }
+
     // ------------------------------------------------------------------ areas of a large map
 
     private MapArea?[]? areaGrid;

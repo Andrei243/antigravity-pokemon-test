@@ -13,6 +13,10 @@
   "hasStory": true,
   // Kalos's people get about on roller skates (plan 23 · Z1: TravelMode.Skating, once the story gives them)
   "skates": true,
+  // How the player moves here (plan 30 · FM1): eight ways on the grid (stage 1, FM2 builds the diagonal step), then
+  // free once stage 2 is built (FM7 to FM9). The skates are the region's own mode. The body kit stays chibi until
+  // plan 30 · FM3 and FM4 build the grown one
+  "movement": { "directions": "Eight", "speed": "Paces", "modes": [ "Skates" ] },
   // The rival is the hero the player isn't, who lives next door (X and Y's neighbour): Serena beside the boy, Calem
   // beside the girl
   "rivals": { "boy": "Serena", "girl": "Calem" },

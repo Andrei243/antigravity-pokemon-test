@@ -210,6 +210,14 @@
         "visible": "Wild Pokémon are seen in the grass and on the water, and you meet only those you walk into."
       }
     },
+    "movement": {
+      "label": "Movement",
+      "value": { "region": "AS THE REGION", "fourWays": "FOUR WAYS" },
+      "help": {
+        "region": "You move as each region lets you: four ways on its paths, or more where a region allows it.",
+        "fourWays": "You always move four ways, a step at a time along the paths, whatever the region allows."
+      }
+    },
     "areaChecklist": {
       "label": "What is left here",
       "help": {

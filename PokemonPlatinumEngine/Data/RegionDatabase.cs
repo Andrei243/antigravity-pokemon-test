@@ -66,6 +66,16 @@ public sealed class Region
     /// <summary>Whether the region's people get about on roller skates (plan 23 · Z1: Kalos's).</summary>
     public bool Skates => File?.Skates ?? false;
 
+    /// <summary>
+    /// How the player moves here (plan 30 · FM1): the file's <c>movement</c>, or the four-way grid's
+    /// (<see cref="RegionMovement.Grid"/>) where it says nothing, as Sinnoh to Unova do. Asked through
+    /// <c>GameEngine.MovementHere</c>, which lays a place's record and the options' MOVEMENT row over it.
+    /// </summary>
+    public RegionMovement Movement => File?.Movement ?? RegionMovement.Grid;
+
+    /// <summary>The body kit the region's people are drawn in (plan 30); chibi where the file says nothing.</summary>
+    public CharacterKit Kit => File?.Kit ?? CharacterKit.Chibi;
+
     /// <summary>The name the introduction offers for the rival; null where the region's rival is its other hero.</summary>
     public string? Rival => File?.Rival;
 
