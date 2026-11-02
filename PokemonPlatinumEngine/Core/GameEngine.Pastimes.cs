@@ -51,6 +51,9 @@ public partial class GameEngine
             case "reels":
                 OpenReelMachine(number);
                 return 1;
+            case "wheel":
+                OpenRouletteTable(number);
+                return 1;
             case "furnish":
                 FurnishVilla();
                 // The delivery that leaves the catalogue nothing more to sell (Villa_HasAllFurniture)
@@ -115,6 +118,26 @@ public partial class GameEngine
         if (flow.ReelMachineScreen.IsActive) return;
         // SlotTask_EndGame: the coins come back
         if (flow.ReelMachineScreen.Machine is { } machine) flow.Pastimes.Coins.Set(machine.Coins);
+        flow.State = GameState.Overworld;
+    }
+
+    // ------------------------------------------------------------------ Mauville's roulette (plan 21 · H12, part o)
+
+    // PlayRoulette: the coins go to the table, which reads the hour and whether Shroomish or Taillow is in the team
+    private void OpenRouletteTable(int minBet)
+    {
+        bool Has(string species) => flow.Party.Members.Any(p => !p.IsEgg && p.Species.Name == species);
+        flow.RouletteScreen.Open(minBet, flow.Pastimes.Coins.Coins, (int)GameClock.Hour, Has(RouletteWheel.ShroomishSpecies), Has(RouletteWheel.TaillowSpecies), fieldRandom);
+        flow.Journal.Tell(new JournalEvent(JournalEventKind.GameCorner));
+        flow.State = GameState.RouletteTable;
+    }
+
+    private void UpdateRouletteTable(float dt)
+    {
+        flow.RouletteScreen.Update(dt);
+        if (flow.RouletteScreen.IsActive) return;
+        // ExitRoulette: the coins come back
+        if (flow.RouletteScreen.Wheel is { } wheel) flow.Pastimes.Coins.Set(wheel.Coins);
         flow.State = GameState.Overworld;
     }
 

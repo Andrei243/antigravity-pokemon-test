@@ -288,6 +288,7 @@ public sealed class HeadlessScriptHost : IScriptHost
         {
             case "slots":
             case "reels":
+            case "wheel":
                 if (SlotsLeave is { } coins) Pastimes.Coins.Set(coins);
                 return 1;
             case "boxroom":

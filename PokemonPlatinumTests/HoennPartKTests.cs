@@ -275,47 +275,22 @@ public class HoennPartKTests
         Assert.Equal(3, round.Multiplier(RouletteRound.Kind.Colour, 0, 0));
         Assert.Equal(4, round.Multiplier(RouletteRound.Kind.Pokemon, 0, 1));
         Assert.Equal(12, round.Multiplier(RouletteRound.Kind.Square, 2, 3));
-        // The first free square is the orange Wynaut: a hit on orange pays the wager times three
-        Assert.Equal(9, round.Throw(RouletteRound.Kind.Colour, 0, 0, 0));
+        // The ball lands on the orange Wynaut: a hit on orange pays the wager times three
+        Assert.Equal(9, round.Land(RouletteRound.Kind.Colour, 0, 0, 0));
         Assert.Equal(0, round.Landed);
         Assert.True(round.IsHit(0));
         // Orange has had one hit, so it pays 4 now; Wynaut 6; the square hit pays nothing
         Assert.Equal(4, round.Multiplier(RouletteRound.Kind.Colour, 0, 0));
         Assert.Equal(6, round.Multiplier(RouletteRound.Kind.Pokemon, 0, 0));
         Assert.Equal(0, round.Multiplier(RouletteRound.Kind.Square, 0, 0));
-        // A ball never lands on a square hit already: the next first free square is the orange Azurill; a miss pays nothing
-        Assert.Equal(0, round.Throw(RouletteRound.Kind.Square, 2, 3, 0));
+        // The next lands on the orange Azurill; a miss pays nothing
+        Assert.Equal(0, round.Land(RouletteRound.Kind.Square, 2, 3, 1));
         Assert.Equal(1, round.Landed);
-        for (int ball = 2; ball < RouletteRound.BallsPerRound; ball++) round.Throw(RouletteRound.Kind.Colour, 1, 0, 0);
+        for (int ball = 2; ball < RouletteRound.BallsPerRound; ball++) round.Land(RouletteRound.Kind.Colour, 1, 0, ball);
         Assert.True(round.Over);
-        Assert.Equal(6, round.Free);
+        Assert.False(round.Open(RouletteRound.Kind.Colour, 0, 0));
         // Orange is all hit: a wager on it pays nothing
         Assert.Equal(0, round.Multiplier(RouletteRound.Kind.Colour, 0, 0));
-    }
-
-    [Fact]
-    public void MauvillesRouletteTablesTakeTheirWagerAndPay()
-    {
-        var game = new Game("MauvilleCity_GameCorner", 5, 5);
-        game.Bag.AddItem(ItemDatabase.Get("Coin Case")!, 1);
-        var host = new HeadlessScriptHost(game.Story, game.Party, game.Bag) { Map = game.Map };
-        host.Pastimes.Coins.Add(30);
-        // The right table: a wager on purple, Quit after the first ball
-        foreach (int answer in new[] { 0, 2, 1 }) host.Answers.Enqueue(answer);
-        var runner = new ScriptRunner(Scripts, host);
-        runner.Start(Scripts.Find("Roulette2", "mauville_city_game_corner")!);
-        runner.RunToEnd();
-        Assert.Empty(host.Problems);
-        // Three Coins went on the ball; purple pays nine where it was hit
-        int coins = host.Pastimes.Coins.Coins;
-        Assert.True(coins is 27 or 36, $"{coins}");
-        Assert.Contains(host.Transcript, l => l.Text.Contains("The ball rolled into the "));
-        // With no Coin Case the table only tells what it is
-        var none = new HeadlessScriptHost(new StoryState(), new Party(), new Inventory()) { Map = game.Map };
-        var empty = new ScriptRunner(Scripts, none);
-        empty.Start(Scripts.Find("Roulette1", "mauville_city_game_corner")!);
-        empty.RunToEnd();
-        Assert.Contains(none.Transcript, l => l.Text.Contains("Without a Coin Case"));
     }
 
     [Theory]

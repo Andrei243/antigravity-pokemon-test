@@ -8388,3 +8388,49 @@ so does every region of this game before Kalos.
   would be the contest screen drawn over a 3D stage), the Pokéblock feeders (no map or script of the pinned data uses
   them), contests and the blender with friends (plan 07), the contest's music, cheers, voices and per-move animations, a
   painting on the gallery's wall and the museum's first scene.
+
+## Mauville's roulette wheel, the contest's stage and the museum's first scene (2026-11-02, plan 21 · H12, part o)
+
+- **The wheel is Emerald's** (`src/roulette.c`; `Models/RouletteWheel.cs`, GPU-free): a sitting at a table frame by frame
+  at sixty a second, the console's own rate (the GBA's game runs every frame; the thirty a second of the DS games is
+  Platinum's main loop, not Emerald's). The wheel of twelve slots (`sRouletteSlots`: orange Wynaut, green Azurill,
+  purple Skitty and on round, each slot a square of the board) turns a degree every three frames while the player bets
+  and every two (the left table) or every frame (the right) while the ball rolls (`Task_SpinWheel`). The ball
+  (`Task_InitBallRoll`) starts at the top, bottom, right or left by the hour (before one o'clock the top or bottom four
+  times in five), at ten degrees a frame and 68 pixels out, and runs the table's own distance (360 degrees on the left,
+  270 on the right) plus a spread drawn as it starts (`GetRandomForBallTravelDistance`: by the hour, the balls thrown
+  since the player sat down, and whether Shroomish, Taillow or both are in the team, each making the run more even),
+  slowing in three stages as it falls inward (`SpriteCB_RollBall_Fast`, `_Medium`, `_Slow`, in single-precision floats as
+  Emerald's are), and drops into the slot under it at the slot's middle. A slot already landed on throws it a slot to
+  the right or the left (a draw); if that one has been landed on too it sticks, and by the quarter of the wheel it stuck
+  in (`SetBallStuck`) Shroomish drops onto the wheel, which shakes, or Taillow flies in and carries it off while the wheel
+  turns under it, and it comes down two to six slots on (two to ten for Taillow at the right table) in an empty slot; with
+  that helper in the team, three times in four it is one the player bet on. Every draw is a sixteen-bit one from the
+  generator the table is given, in Emerald's order (`Random()` as the ball starts, as it is thrown aside, and as it
+  sticks). The board and its odds are part k's `RouletteRound`, its throw by a die gone: `Land` counts where the ball came
+  down. The cursor moves as `CanMoveSelectionInDir` moves it (up and down within a column, the Pokémon's head included
+  but not in the colours' column; left and right within a row, the colour's head included but not along the Pokémon's
+  heads), starts on the first square of orange not yet hit (green once orange is all hit), and a wager all hit is
+  refused with a buzz. A hit pays one coin every fourth frame (`Task_GivePayout`); after the sixth ball the board is
+  cleared; a player with fewer coins than the wager is shown out; the table asks after each ball whether to play on.
+- *Ours*: the wait for a stuck ball is for it to be **down and** for its helper to be done, where Emerald's task waits
+  only for the helper (were Shroomish to leave before the ball came down, Emerald would record no square); the length of
+  a helper's flight on screen is our own (Emerald's sprites' pixel paths are pictures); Emerald's two tables are told
+  apart by their felt; Emerald's service-day rate (six coins at the right table) and its record of wins in a row (a game
+  record) are not kept; and a ball that has rolled for 2,400 frames without coming to rest would be laid in the first
+  empty slot (`RescueFrames`), which no seed of the tests reaches. The table's words, the helpers' tokens and every
+  shape on the screen are our own.
+- **The table's script** (`mauville_city_game_corner.txt`, `Roulette1`, `Roulette2`): Emerald's question of whether to
+  play at the table's wager, turned away with too few Coins, and `gamecorner wheel 1|3`, which sits the player down;
+  part k's menus (`gamecorner roulette|wager|spin`, `{roulette:SQUARE}`, `{roulette:WON}`) are gone.
+- **The contest's stage rooms are a backdrop** (`Models/Contest/ContestHallStage.cs`, `ModernUi.ContestHallBackdrop`):
+  Emerald's six `ContestHall*` maps (one to each quality and a plain one, fifteen tiles by eleven, no warps, the player
+  never walked there) are where its contest screen stands, and here they are the stage drawn behind the contest's panels
+  in the quality's colour, laid out on the places of `ContestHall`'s object events (the host and the judge at the back,
+  the four contestants in a row, seven of the audience, the prize's ball and the painter), read as numbers. No map of
+  them is built, nothing of their tiles is read, and nobody on them is drawn as a person.
+- **The museum's first scene** (`lilycove_city_lilycove_museum_2f.txt`, `OnEnter`; Emerald's
+  `LilycoveCity_LilycoveMuseum_2F_EventScript_ShowExhibitHall`, run by its `OnFrame` while
+  `VAR_LILYCOVE_MUSEUM_2F_STATE` is nought): on the first visit to the gallery the curator turns to the player, both look
+  at the frames, and he asks for paintings of contest winners; the variable is then 1. *Ours*: an arrival's script in
+  place of Emerald's frame script, and a game whose frames already hold a painting is given the variable with no scene.

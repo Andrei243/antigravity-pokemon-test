@@ -1492,3 +1492,29 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
       the blender with friends, the contest's music, cheers, voices and per-move animations, the painting on the wall, the
       museum's first scene, the Contest Lady's television show, a player's own quiz for others); Mossdeep's link games
       themselves (plan 07); and pictures only, as after part k, with Mauville's machine and the two basements unshot.
+    - **Part o** (done 2026-11-02: Mauville's roulette wheel, the contest's stage and the museum's first scene;
+      docs/mechanics/rulings.md, "Mauville's roulette wheel, the contest's stage and the museum's first scene"; tests run
+      with --filter (HoennPartOTests 12, and Story, Script, Content, Text, Voice, ScriptTranslation, SceneSkip,
+      Architecture, Sound, HoennContest*, Romanian, HoennPartK, HoennPartN, LocalNames, Objective, Golden); no shots
+      taken, no window opened). **Built**: the roulette's wheel itself, Emerald's `roulette.c` frame by frame at sixty a
+      second (`Models/RouletteWheel.cs`: the wheel's turn, the ball's run drawn by the hour, the balls thrown and
+      Shroomish or Taillow in the team, its three stages in single-precision floats, the drop at a slot's middle, the bounce
+      aside, the stick and Shroomish's drop or Taillow's carry by the quarter it stuck in, a stuck ball put down two to six
+      slots on and toward the wager three times in four with that helper in the team; the cursor over the board as
+      Emerald's moves; every draw on the given generator), `RouletteScreen` (`GameState.RouletteTable`, logic with no
+      input) drawn by `ModernUi.Roulette.cs` from the kit's shapes (style guide, "Mauville's roulette"); the tables'
+      scripts ask Emerald's question and sit the player down (`gamecorner wheel 1|3`), part k's menus and
+      `gamecorner roulette|wager|spin` gone (`RouletteRound.Throw` is `Land`). **The contest's stage rooms** as a backdrop
+      (`Models/Contest/ContestHallStage.cs`: the six halls by quality and the places of `ContestHall`'s object events;
+      `ModernUi.ContestHallBackdrop` behind the contest's panels; style guide, "The stage behind"). **The museum's first
+      scene** (`OnEnter` of the gallery: the curator shows the empty frames once, `VAR_LILYCOVE_MUSEUM_2F_STATE`). Romanian
+      for every new line and word. **Golden**: nothing moved (`scripts.txt` plays no arrival script, and the tables'
+      first way, with no Coin Case, says what it said). **Not run**: the harness (the table, the stage and the scene have
+      no shots yet).
+    - **What of Hoenn is left after part o**: Jirachi (only the Wishmaker disc gives it); the Pokéblock feeders (no map or
+      script of the pinned data uses them: the Safari Zone's are its other session's); contests and the blender with
+      friends, Mossdeep's link games and the link receptionist's records (plan 07); the contest's music, cheers, judges'
+      voices and per-move animations; a painting on the gallery's wall itself (an alternate chunk each); the Contest
+      Lady's television show and a player's own quiz for others (record mixing); Emerald's service-day roulette rate and
+      its record of roulette wins in a row; and pictures only, as after part k, with Mauville's machine and roulette, the
+      contest's stage, the museum's scene and the two basements unshot.

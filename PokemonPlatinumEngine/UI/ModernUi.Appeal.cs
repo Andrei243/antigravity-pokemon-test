@@ -25,7 +25,8 @@ internal static partial class ModernUi
     private static void AppealFrame(int sw, int sh, AppealScreen screen, params HintItem[] hints)
     {
         var round = screen.Round!;
-        Backdrop(sw, sh);
+        // The stage the contest is held on (plan 21 · H12, part o): Emerald's hall of the quality, as a backdrop
+        ContestHallBackdrop(sw, sh, round.Category);
         string title = Text.Of("appeal.title");
         ScreenTitle(title);
         float x = 64 + UiFonts.Measure(title, 52, UiWeight.Black) + 32;

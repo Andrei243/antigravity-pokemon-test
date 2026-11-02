@@ -310,124 +310,52 @@
   "Roulette1": [
     {
       "en": [
+        "A roulette table. A ball here takes 1 Coin. Will you play?"
+      ],
+      "text": [
+        "O masă de ruletă. Aici o bilă costă 1 fisă. Joci?"
+      ]
+    },
+    {
+      "en": [
+        "A roulette table. A ball here takes 1 Coin, and you haven't got one."
+      ],
+      "text": [
+        "O masă de ruletă. Aici o bilă costă 1 fisă, iar tu n-ai niciuna."
+      ]
+    },
+    {
+      "en": [
         "A roulette wheel. Without a Coin Case there's nothing to wager."
       ],
       "text": [
-        ""
+        "O roată de ruletă. Fără o Cutie de Fise nu ai ce paria."
       ]
     }
   ],
   "Roulette2": [
     {
       "en": [
+        "A roulette table. A ball here takes 3 Coins. Will you play?"
+      ],
+      "text": [
+        "O masă de ruletă. Aici o bilă costă 3 fise. Joci?"
+      ]
+    },
+    {
+      "en": [
+        "A roulette table. A ball here takes 3 Coins, and you haven't got enough."
+      ],
+      "text": [
+        "O masă de ruletă. Aici o bilă costă 3 fise, iar tu n-ai destule."
+      ]
+    },
+    {
+      "en": [
         "A roulette wheel. Without a Coin Case there's nothing to wager."
       ],
       "text": [
-        ""
-      ]
-    }
-  ],
-  "Roulette": [
-    {
-      "en": [
-        "Place your wager! You have {coins} Coins."
-      ],
-      "text": [
-        ""
-      ]
-    },
-    {
-      "en": [
-        "What will you wager on?",
-        "A colour",
-        "A Pokémon",
-        "One square",
-        "Quit"
-      ],
-      "text": [
-        "",
-        "",
-        "",
-        "",
-        ""
-      ]
-    },
-    {
-      "en": [
-        "Which colour?",
-        "Orange",
-        "Green",
-        "Purple"
-      ],
-      "text": [
-        "",
-        "",
-        "",
-        ""
-      ]
-    },
-    {
-      "en": [
-        "Which Pokémon?",
-        "Wynaut",
-        "Azurill",
-        "Skitty",
-        "Makuhita"
-      ],
-      "text": [
-        "",
-        "",
-        "",
-        "",
-        ""
-      ]
-    },
-    {
-      "en": [
-        "The ball rolled into {roulette:SQUARE}. No luck this time."
-      ],
-      "text": [
-        ""
-      ]
-    },
-    {
-      "en": [
-        "The ball rolled into {roulette:SQUARE}. It's a hit! {roulette:WON} Coins won!"
-      ],
-      "text": [
-        ""
-      ]
-    },
-    {
-      "en": [
-        "That was the round's last ball. The board is cleared for a new round."
-      ],
-      "text": [
-        ""
-      ]
-    },
-    {
-      "en": [
-        "Wager again? You have {coins} Coins."
-      ],
-      "text": [
-        ""
-      ]
-    },
-    {
-      "en": [
-        "Every square of that wager has been hit this round. Choose another!"
-      ],
-      "text": [
-        ""
-      ]
-    },
-    {
-      "en": [
-        "You don't have enough Coins."
-      ],
-      "text": [
-        ""
+        "O roată de ruletă. Fără o Cutie de Fise nu ai ce paria."
       ]
     }
   ]
