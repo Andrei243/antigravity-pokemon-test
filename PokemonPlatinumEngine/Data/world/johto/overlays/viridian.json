@@ -12,10 +12,10 @@
     { "warp": 0, "map": "Viridian_Gym", "x": 5, "y": 46, "facing": "Up", "openedBy": "FLAG_JOHTO_BLUE_BACK_IN_GYM" }
   ],
   "heldBack": [
-    "t02_gsmiddleman1",
     "t02_gsoldman1_3"
   ],
   "people": {
+    "t02_gsmiddleman1": { "name": "Cameron", "script": "Cameron", "still": true, "hiddenBy": "", "shownBy": "FLAG_JOHTO_MET_CAMERONS_FATHER" },
     "t02_gsoldman1": {
       "name": "Old man",
       "still": true,

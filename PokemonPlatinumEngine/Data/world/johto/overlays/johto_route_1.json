@@ -4,10 +4,8 @@
   // their own records (Johto's trainers.json); Cameron the photographer waits for his session
   "area": "johto_route_1",
   "bgmTrack": "kanto/route1",
-  "heldBack": [
-    "r01_gsmiddleman1"
-  ],
   "people": {
+    "r01_gsmiddleman1": { "name": "Cameron", "script": "Cameron", "still": true, "hiddenBy": "", "shownBy": "FLAG_JOHTO_MET_CAMERONS_FATHER" },
     "r01_gswoman3": {
       "name": "Quinn",
       "trainer": {

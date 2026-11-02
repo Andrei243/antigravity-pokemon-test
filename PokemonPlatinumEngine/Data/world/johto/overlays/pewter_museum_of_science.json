@@ -1,14 +1,16 @@
 {
-  // The Pewter Museum of Science (plan 20 · J15, part f): its fossils and its space wing, read where they stand. Cameron
-  // the photographer and Steven, in both of HeartGold's places, wait for their sessions
+  // The Pewter Museum of Science (plan 20 · J15, part f): its fossils and its space wing, read where they stand. Steven
+  // looks at the space wing once he has given his gift at Silph Co. (plan 20, part q; the museum's arrival,
+  // scripts/pewter_museum_of_science.txt), in the first of HeartGold's two places; the second waits. Cameron the
+  // photographer takes a picture here (common.Cameron)
   "area": "pewter_museum_of_science",
   "bgmTrack": "kanto/viridian",
   "heldBack": [
-    "t03r0101_gsmiddleman1",
-    "t03r0101_daigo",
     "t03r0101_daigo_2"
   ],
   "people": {
+    "t03r0101_daigo": { "name": "Steven", "npcType": "steven", "script": "Steven", "still": true, "hiddenBy": "FLAG_JOHTO_HIDE_PEWTER_MUSEUM_STEVEN" },
+    "t03r0101_gsmiddleman1": { "name": "Cameron", "script": "Cameron", "still": true, "hiddenBy": "", "shownBy": "FLAG_JOHTO_MET_CAMERONS_FATHER" },
     "t03r0101_gsassistantm": {
       "name": "Scientist",
       "still": true,

@@ -54,6 +54,7 @@
     { "species": "Shuckle", "level": 32, "maxLevel": 35 }
   ],
   "rockSmashRate": 40,
+  "homeRegion": "Kanto",
   "warps": [
     { "x": 1292, "z": 294, "to": "vermilion_fishing_dude_house", "toWarp": 0 },
     { "x": 1297, "z": 294, "to": "vermilion_pokecenter_1f", "toWarp": 0 },

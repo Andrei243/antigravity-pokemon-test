@@ -5,10 +5,10 @@
   "area": "route_21",
   "bgmTrack": "kanto/route3",
   "heldBack": [
-    "w21_gsmiddleman1",
     "w21_gsbigman"
   ],
   "people": {
+    "w21_gsmiddleman1": { "name": "Cameron", "script": "Cameron", "still": true, "hiddenBy": "", "shownBy": "FLAG_JOHTO_MET_CAMERONS_FATHER" },
     "w21_fishing_2": {
       "name": "Arnold",
       "trainer": {

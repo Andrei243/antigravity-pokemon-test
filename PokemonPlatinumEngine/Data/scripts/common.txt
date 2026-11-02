@@ -3376,3 +3376,26 @@ script GrottoMouth
 label Nothing
   text "The trees grow too thick here to see through."
   end
+
+# ------------------------------------------------------------------ Cameron the photographer (plan 20, part q)
+
+# Cameron, at the places HeartGold stands him (each overlay's person, shown once his father in Cianwood City's studio has
+# been met: FLAG_JOHTO_MET_CAMERONS_FATHER, ours): he takes a photograph of the player and the team's lead for the
+# album his father keeps (`photo take`), as often as asked, while the album has room. HeartGold's beat, our words.
+script Cameron
+  face self player
+  speaker "Cameron"
+  ask "Hi, I'm Cameron, the photographer! This spot makes a great picture. Shall I take one of you and your team's lead?"
+  if no goto No
+  photo take
+  if result == 0 goto Full
+  sound "select"
+  text "Click! Cameron took a photograph of {player}."
+  say "Lovely shot! I'll send it to my dad's studio in Cianwood City. He keeps your album there."
+  end
+label No
+  say "No? Well, if you change your mind, I'll be right here with my camera."
+  end
+label Full
+  say "Oh! Dad says your album in Cianwood City is full. Throw a photograph or two away there, and I'll take another."
+  end

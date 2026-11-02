@@ -47,6 +47,7 @@
     "Bronzor",
     "Chingling"
   ],
+  "homeRegion": "Kanto",
   "warps": [
     { "x": 38, "z": 14, "to": "indigo_plateau", "toWarp": 0 },
     { "x": 25, "z": 45, "to": "johto_victory_road_2f", "toWarp": 1 },

@@ -49,6 +49,7 @@
     { "species": "Tentacruel", "level": 40, "maxLevel": 40 }
   ],
   "superRodRate": 75,
+  "homeRegion": "Kanto",
   "warps": [
     { "x": 1039, "z": 502, "to": "cinnabar_island_pokecenter_1f", "toWarp": 0 }
   ],

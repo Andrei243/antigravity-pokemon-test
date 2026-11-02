@@ -1083,7 +1083,9 @@ public partial class JohtoTests
         }
         // Falkner's and Janine's street meeting stands (Johto's leftovers); Cameron, Crasher Wake and the third floor's two objects off its floor are held back
         Assert.Contains(MapNamed("Celadon_DeptStore_4F").Everyone, n => n.Key is "t07r0104_gsleader1");
-        Assert.DoesNotContain(MapNamed("Celadon_DeptStore_2F").Everyone, n => n.Key is "t07r0102_leader3" or "t07r0102_gsmiddleman1_2");
+        Assert.DoesNotContain(MapNamed("Celadon_DeptStore_2F").Everyone, n => n.Key is "t07r0102_leader3");
+        // Cameron stands here once his father is met (plan 20, part q)
+        Assert.Equal("FLAG_JOHTO_MET_CAMERONS_FATHER", MapNamed("Celadon_DeptStore_2F").Everyone.Single(n => n.Key == "t07r0102_gsmiddleman1_2").ShownBy);
         Assert.DoesNotContain(MapNamed("Celadon_Condominiums_3F").Everyone, n => n.Key is "t07r0203_var_1" or "t07r0203_tsure_poke_static_marill");
     }
 
@@ -1114,7 +1116,8 @@ public partial class JohtoTests
         // Rotom's room is shut until its guard has seen a Rotom (part n)
         Assert.DoesNotContain(Overworld.Everyone, n => n.Key is "r05_gsmiddleman1" or "r06_gsmiddleman1");
         var silph = MapNamed("Saffron_SilphCo");
-        Assert.DoesNotContain(silph.Everyone, n => n.Key == "t11r0701_daigo");
+        // Steven visits the lobby for a sixteen-Badge Champion (plan 20, part q), laid by its arrival
+        Assert.Contains(silph.Everyone, n => n.Key == "t11r0701_daigo");
         Assert.Contains(silph.NPCs, n => n.Key == "t11r0701_gswoman6");
         Assert.Contains(silph.NPCs, n => n.Key == "t11r0701_policeman");
         Assert.Equal("FLAG_JOHTO_SILPH_LIFT_OPEN", silph.GetWarpAt(3, 2)?.OpenedBy);
@@ -1179,7 +1182,7 @@ public partial class JohtoTests
         Assert.Equal("Articuno", articuno.Species);
         Assert.Equal("Articuno", articuno.Script);
         Assert.Contains(b4f.Value, t => Math.Abs(t.X - articuno.GridX) + Math.Abs(t.Y - articuno.GridY) == 1);
-        Assert.DoesNotContain(MapNamed("Seafoam_B1F").Everyone, n => n.Key == "d11r0102_gsmiddleman1");
+        Assert.Equal("FLAG_JOHTO_MET_CAMERONS_FATHER", MapNamed("Seafoam_B1F").Everyone.Single(n => n.Key == "d11r0102_gsmiddleman1").ShownBy);
         // The third basement's blocks of ice are pushed as the Mahogany Gym's, and its trainers are Johto's
         Assert.Equal(6, MapNamed("Seafoam_B3F").Everyone.Count(n => n.IsIceBlock));
         foreach (string id in new[] { "johto_boarder_bryce", "johto_boarder_shaun", "johto_skier_cady" })

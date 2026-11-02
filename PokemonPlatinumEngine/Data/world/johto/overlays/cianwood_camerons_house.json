@@ -1,15 +1,9 @@
 {
-  // Cianwood's photo studio (plan 20 · J8). Its photographs wait for the photo album of a later session; the man of the
-  // house talks
+  // Cianwood's photo studio (plan 20 · J8). Cameron's father keeps the player's photo album and sends his son out to
+  // his places once met (plan 20, part q; scripts/cianwood_camerons_house.txt)
   "area": "cianwood_camerons_house",
   "bgmTrack": "johto/cianwood",
   "people": {
-    "t24r0601_fishing_2": {
-      "name": "Man",
-      "still": true,
-      "dialog": [
-        "My son takes photos of Trainers all over Johto. He's off on his travels again, camera in hand."
-      ]
-    }
+    "t24r0601_fishing_2": { "name": "Man", "still": true, "script": "Father" }
   }
 }

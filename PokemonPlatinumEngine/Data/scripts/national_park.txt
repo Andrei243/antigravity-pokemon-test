@@ -1,0 +1,25 @@
+# The National Park (plan 20, part q). docs/scripts.md describes the language; the lines are our own, on HeartGold's
+# beats (scr_seq_D22R0101).
+#
+# Bugsy's street meeting: the park's arrival shows him on Sundays once his number is in the Pokégear (HeartGold's
+# FLAG_UNK_288; the day is ours, and no Bug-Catching Contest is held on it).
+
+
+script OnEnter
+  setflag FLAG_UNK_288
+  if not weekday sunday end
+  if flag FLAG_PHONE_CONTACT_BUGSY clearflag FLAG_UNK_288
+  end
+
+
+# Bugsy, out on Sunday (ours)
+script MeetBugsy
+  face d22r0101_gsleader2 player
+  speaker "Bugsy"
+  random 2
+  if result == 1 goto Two
+  say "Sundays there's no contest, so I get the whole park to myself. Well, me and every Bug Pokémon in the grass."
+  end
+label Two
+  say "I come here to watch Bug Pokémon when nobody's trying to catch them. You learn more that way."
+  end

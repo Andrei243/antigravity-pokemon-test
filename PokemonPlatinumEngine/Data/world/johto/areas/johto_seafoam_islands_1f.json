@@ -42,6 +42,7 @@
     "Bronzor",
     "Chingling"
   ],
+  "homeRegion": "Kanto",
   "warps": [
     { "x": 55, "z": 28, "to": "johto_route_20", "toWarp": 0 },
     { "x": 8, "z": 12, "to": "johto_route_20", "toWarp": 1 },

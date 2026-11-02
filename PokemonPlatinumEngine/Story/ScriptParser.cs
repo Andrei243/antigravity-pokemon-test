@@ -623,6 +623,9 @@ public static class ScriptParser
                 string colour = what is "count" or "order" ? r.OneOf("red", "blue", "yellow", "green", "pink", "white", "black") : "";
                 return new Instruction { Op = Op.Apricorn, Line = line, Name = what, Other = colour };
             }
+            // Cameron's photographs (plan 20, part q)
+            case "photo":
+                return new Instruction { Op = Op.Photo, Line = line, Name = r.OneOf("take", "album", "count") };
             case "chooseitem":
                 return new Instruction { Op = Op.ChooseItem, Line = line, Name = r.OneOf("berries", "mulch", "gift") };
             case "swarms":

@@ -3,14 +3,15 @@
   // words. Its lift (warp 1) goes up to Rotom's room (part n): the guard beside it lets nobody up until he has seen a
   // Rotom on the visitor's team, and then for good (FLAG_JOHTO_SILPH_LIFT_OPEN, a flag of ours: the rulings' "HeartGold's
   // Kanto, part n"). HeartGold hides the receptionist and the guard behind FLAG_UNK_282 and FLAG_UNK_281, which nothing
-  // sets, so both are shown. Steven, who visits the lobby later in HeartGold, is held back
+  // sets, so both are shown. Steven visits the lobby for a Champion of Johto with the sixteen Badges and gives one of
+  // Hoenn's first three Pokémon (plan 20, part q; scripts/saffron_silph_co_hq.txt)
   "area": "saffron_silph_co_hq",
   "bgmTrack": "kanto/viridian",
   "doors": [
     { "warp": 1, "map": "Saffron_SilphCo_Elevator", "x": 3, "y": 6, "facing": "Up", "openedBy": "FLAG_JOHTO_SILPH_LIFT_OPEN" }
   ],
-  "heldBack": [ "t11r0701_daigo" ],
   "people": {
+    "t11r0701_daigo": { "name": "Steven", "npcType": "steven", "script": "Steven", "still": true },
     "t11r0701_gswoman6": {
       "name": "Receptionist",
       "hiddenBy": "",

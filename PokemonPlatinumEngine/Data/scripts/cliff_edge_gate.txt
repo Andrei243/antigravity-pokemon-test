@@ -35,3 +35,25 @@ script Board
 label Open
   text "Warden Baoba's Safari Zone\nNOW OPEN! Wild Pokémon to find around every corner!"
   end
+
+
+# The gate's arrival lays Chuck's street meeting (plan 20, part q): Saturdays, once his number is in the Pokégear
+# (HeartGold's FLAG_HIDE_CLIFFS_EDGE_GATE_CHUCK; the day is ours). Route 47's waterfall keeps him on Saturdays.
+script OnEnter
+  setflag FLAG_HIDE_CLIFFS_EDGE_GATE_CHUCK
+  if not weekday saturday end
+  if flag FLAG_PHONE_CONTACT_CHUCK clearflag FLAG_HIDE_CLIFFS_EDGE_GATE_CHUCK
+  end
+
+
+# Chuck, out on Saturday (ours)
+script MeetChuck
+  face d48r0101_gsleader5 player
+  speaker "Chuck"
+  random 2
+  if result == 1 goto Two
+  say "HWAAAH! The wind through this gate is perfect for training my breathing. Saturdays I come and stand in it."
+  end
+label Two
+  say "My Poliwrath can swim against any current. That's not discipline, that's just being stubborn. Like me!"
+  end

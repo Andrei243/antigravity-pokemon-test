@@ -74,5 +74,31 @@
         "Zona Safari a Paznicului Baoba\nDESCHISĂ! Pokémoni sălbatici la fiecare colț!"
       ]
     }
+  ],
+  "MeetChuck": [
+    {
+      "en": [
+        "Chuck"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "HWAAAH! The wind through this gate is perfect for training my breathing. Saturdays I come and stand in it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "My Poliwrath can swim against any current. That's not discipline, that's just being stubborn. Like me!"
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

@@ -76,6 +76,7 @@
     "Buizel",
     "Bidoof"
   ],
+  "homeRegion": "Kanto",
   "warps": [],
   "objects": [
     { "id": "r13_mount_2", "looks": "mount_2", "movement": "5", "x": 1350, "z": 374, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_HIKER_KENNY" },

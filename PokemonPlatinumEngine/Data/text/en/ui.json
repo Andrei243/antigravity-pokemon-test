@@ -1458,6 +1458,7 @@
       "Lullaby": "POKéMON LULLABY",
       "HoennSound": "HOENN SOUND",
       "SinnohSound": "SINNOH SOUND",
+      "PokeFlute": "POKé FLUTE",
       "Unown": "SIGNAL"
     },
     "people": {
@@ -2390,6 +2391,16 @@
     "photo": "CONTEST PHOTO",
     "photoContest": "{category} Contest, {rank} Rank",
     "photoBy": "{trainer}  ·  {date}"
+  },
+  "photoAlbum": {
+    "title": "PHOTO ALBUM",
+    "count": "{n} / {of}",
+    "empty": "No photographs yet. Find Cameron on his travels.",
+    "page": "PAGE {n} OF {of}",
+    "nobody": "Just you, smiling",
+    "taken": "{day} {month} {year}",
+    "removeAsk": "Throw this photograph away?",
+    "hint": { "throwAway": "Throw away", "remove": "Throw it away", "keep": "Keep it" }
   },
   "apricorn": {
     "title": "APRICORN BOX",

@@ -14,6 +14,7 @@
   "running": true,
   "escapeRope": false,
   "fly": false,
+  "homeRegion": "Kanto",
   "warps": [
     { "x": 3, "z": 2, "to": "celadon_condominiums_left_elevator", "toWarp": 0 }
   ],

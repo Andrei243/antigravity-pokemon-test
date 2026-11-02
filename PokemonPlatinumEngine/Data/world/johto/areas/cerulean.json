@@ -49,6 +49,7 @@
     { "species": "Magikarp", "level": 40, "maxLevel": 40 }
   ],
   "superRodRate": 75,
+  "homeRegion": "Kanto",
   "warps": [
     { "x": 1305, "z": 116, "to": "cerulean_north_house", "toWarp": 0 },
     { "x": 1319, "z": 123, "to": "cerulean_east_house", "toWarp": 0 },

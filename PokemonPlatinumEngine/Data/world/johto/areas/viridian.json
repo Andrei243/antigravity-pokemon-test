@@ -49,6 +49,7 @@
     { "species": "Magikarp", "level": 40, "maxLevel": 40 }
   ],
   "superRodRate": 75,
+  "homeRegion": "Kanto",
   "warps": [
     { "x": 1045, "z": 239, "to": "viridian_gym", "toWarp": 0 },
     { "x": 1034, "z": 244, "to": "viridian_northeast_house", "toWarp": 0 },

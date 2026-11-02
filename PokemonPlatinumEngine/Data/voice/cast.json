@@ -125,6 +125,10 @@
       "note": "first spoken at four_island_house_1.txt(9)",
       "provisional": true
     },
+    "bike_shop_owner": {
+      "note": "first spoken at phone.txt(62)",
+      "provisional": true
+    },
     "bill": {
       "note": "first spoken at cinnabar_island.txt(54)",
       "provisional": true
@@ -185,6 +189,10 @@
     },
     "cameraman": {
       "note": "first spoken at Route212GateToHearthomeCity.txt(13)",
+      "provisional": true
+    },
+    "cameron": {
+      "note": "first spoken at common.txt(3387)",
       "provisional": true
     },
     "candice": {},
@@ -1460,6 +1468,7 @@
     "Bertha": "bertha",
     "Bianca": "bianca",
     "Big Man": "big_man",
+    "Bike Shop owner": "bike_shop_owner",
     "Biker": "look:biker",
     "Bill": "bill",
     "Black Belt": "black_belt",
@@ -1481,6 +1490,7 @@
     "Caitlin": "caitlin",
     "Cal": "cal",
     "Cameraman": "cameraman",
+    "Cameron": "cameron",
     "Candice": "candice",
     "Captain": "captain",
     "Captain Stern": "captain_stern",

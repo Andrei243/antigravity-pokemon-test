@@ -15,6 +15,9 @@ script OnEnter
   if badges of kanto < 8 end
   clearflag FLAG_HIDE_ROUTE_47_CHUCK
   clearflag FLAG_HIDE_ROUTE_47_CRASHER_WAKE
+  # Saturdays Chuck is out in the Cliff Edge Gate once his number is registered (plan 20, part q, cliff_edge_gate.txt)
+  if not weekday saturday end
+  if flag FLAG_PHONE_CONTACT_CHUCK setflag FLAG_HIDE_ROUTE_47_CHUCK
   end
 
 

@@ -163,6 +163,8 @@ public enum Op
     CyclingRoad,
     // The Trainer Hill's climb on Route 111 (plan 21, part l): begun at its counter, its floors' trainers, the roof's prize
     TrainerHill,
+    // Cameron's photographs (plan 20, part q): one taken for the album, the album looked through, how many it holds
+    Photo,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

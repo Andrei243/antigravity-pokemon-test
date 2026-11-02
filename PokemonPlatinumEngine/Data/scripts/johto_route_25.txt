@@ -37,6 +37,10 @@ label Done
 script OnEnter
   setflag FLAG_HIDE_ROUTE_25_SUICUNE
   setflag FLAG_HIDE_ROUTE_25_EUSINE
+  # Eusine's second place (plan 20, part q): once Suicune has been fought he stands by the cape's head until spoken to
+  # (HeartGold's FLAG_HIDE_ROUTE_25_EUSINE_2; FLAG_JOHTO_EUSINE_PARTED is ours)
+  setflag FLAG_HIDE_ROUTE_25_EUSINE_2
+  if flag FLAG_JOHTO_FOUGHT_SUICUNE call ShowEusineAfter
   if flag FLAG_JOHTO_FOUGHT_SUICUNE end
   if var VAR_UNK_4088 == 0 end
   clearflag FLAG_HIDE_ROUTE_25_SUICUNE
@@ -58,6 +62,25 @@ script EusineOnTheCape
   say "Go on. It's what you came for. I'll watch from here."
   endscene
   end
+
+script ShowEusineAfter
+  if not flag FLAG_JOHTO_EUSINE_PARTED clearflag FLAG_HIDE_ROUTE_25_EUSINE_2
+  return
+
+
+# R25_006: Eusine at his second place, after Suicune (plan 20, part q, our words on HeartGold's beat): he has seen the
+# battle and takes his leave
+script EusineAfterSuicune
+  face r25_minaki_2 player
+  speaker "Eusine"
+  say "I saw it all from here, {player}. Suicune chose you. I chased it for ten years, and it chose you."
+  say "I'm not bitter. Well... a little. But I'm glad it was someone who followed it as far as I did."
+  say "I'll keep studying the legendary Pokémon. Perhaps one of them is waiting for me somewhere. Farewell!"
+  setflag FLAG_JOHTO_EUSINE_PARTED
+  setflag FLAG_HIDE_ROUTE_25_EUSINE_2
+  hide self
+  end
+
 
 # R25_005: Eusine, after
 script Eusine

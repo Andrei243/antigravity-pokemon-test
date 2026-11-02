@@ -14,6 +14,7 @@
   "running": true,
   "escapeRope": false,
   "fly": false,
+  "homeRegion": "Kanto",
   "warps": [
     { "x": 14, "z": 20, "to": "saffron", "toWarp": 6 },
     { "x": 3, "z": 4, "to": "saffron_magnet_train_station_2f_empty", "toWarp": 0 },

@@ -1,6 +1,7 @@
 # Bill's family's house in Goldenrod City (plan 20 · J7). docs/scripts.md describes the language; the lines are our
 # own, on HeartGold's beats (scr_seq_T25R0401): Bill, home once met in Ecruteak City (VAR_UNK_410D 1), gives an Eevee
-# to a team with room for it (FLAG_GOT_EEVEE_FROM_BILL); his mother tells where he is.
+# to a team with room for it (FLAG_GOT_EEVEE_FROM_BILL) and his number with it (plan 20, part q: he rings each time a box
+# of the PC fills, Models/Pokegear.cs, StoryCalls); his mother tells where he is.
 
 
 script Bill
@@ -13,6 +14,7 @@ script Bill
   if var PARTY_COUNT >= 6 goto Full
   givepokemon "Eevee" 5
   setflag FLAG_GOT_EEVEE_FROM_BILL
+  addcontact bill
   fanfare pokemon
   text "{player} received Eevee!"
   say "Eevee's a funny one. Its genes are unstable, so it can turn into lots of different Pokémon. Take good care of it!"

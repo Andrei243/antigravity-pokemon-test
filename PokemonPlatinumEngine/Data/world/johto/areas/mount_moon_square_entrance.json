@@ -42,6 +42,7 @@
     "Bronzor",
     "Chingling"
   ],
+  "homeRegion": "Kanto",
   "warps": [
     { "x": 5, "z": 4, "to": "mount_moon", "toWarp": 2 },
     { "x": 5, "z": 6, "to": "mount_moon_square", "toWarp": 0 },

@@ -42,6 +42,7 @@
     "Shinx",
     "Shinx"
   ],
+  "homeRegion": "Kanto",
   "warps": [
     { "x": 1028, "z": 138, "to": "route_2_viridian_forest_north_gatehouse", "toWarp": 1 },
     { "x": 1029, "z": 138, "to": "route_2_viridian_forest_north_gatehouse", "toWarp": 1 },

@@ -1,0 +1,25 @@
+# Route 39 (plan 20, part q). docs/scripts.md describes the language; the lines are our own, on HeartGold's beats
+# (scr_seq_R39).
+#
+# Lt. Surge's street meeting: the route's arrival shows him by the Moomoo Farm on Mondays once his number is in the
+# Pokégear (HeartGold's FLAG_HIDE_ROUTE_39_LT_SURGE; the day is ours).
+
+
+script OnEnter
+  setflag FLAG_HIDE_ROUTE_39_LT_SURGE
+  if not weekday monday end
+  if flag FLAG_PHONE_CONTACT_LT_SURGE clearflag FLAG_HIDE_ROUTE_39_LT_SURGE
+  end
+
+
+# Lt. Surge, out on Monday (ours)
+script MeetLtSurge
+  face r39_gsleader9 player
+  speaker "Lt. Surge"
+  random 2
+  if result == 1 goto Two
+  say "Hey, kid! I came out to the farm for a bottle of that famous Moomoo Milk. Best fuel there is, besides electricity!"
+  end
+label Two
+  say "In the army we had powdered milk. Powdered! This stuff's the real deal. Don't tell my Raichu I said that."
+  end

@@ -12,6 +12,8 @@
     6
   ],
   "people": {
+    // Bugsy, out on Sundays once his number is registered (plan 20, part q; scripts/national_park.txt)
+    "d22r0101_gsleader2": { "name": "Bugsy", "script": "MeetBugsy", "still": true },
     "d22r0101_gsgirl1": {
       "name": "Girl",
       "dialog": [

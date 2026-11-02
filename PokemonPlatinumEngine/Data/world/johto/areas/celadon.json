@@ -24,6 +24,7 @@
     { "species": "Muk", "level": 15, "maxLevel": 15 }
   ],
   "waterRate": 15,
+  "homeRegion": "Kanto",
   "warps": [
     { "x": 1201, "z": 237, "to": "celadon_department_store_1f", "toWarp": 0 },
     { "x": 1218, "z": 237, "to": "celadon_condominiums_1f", "toWarp": 0 },

@@ -155,6 +155,9 @@ public sealed partial class GameFlow
     /// <summary>The Apricorn Box, the trees picked and Kurt's order (plan 20 · J6; saved).</summary>
     public ApricornBox Apricorns { get; } = new();
 
+    /// <summary>Cameron's photo album (plan 20, part q).</summary>
+    public PhotoAlbum Photos { get; } = new();
+
     /// <summary>The Underground's own: the bag below ground, the base, the buried Spheres, the day's walls (saved).</summary>
     public UndergroundState Underground { get; set; } = new();
 

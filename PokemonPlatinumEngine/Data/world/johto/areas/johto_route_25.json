@@ -76,6 +76,7 @@
     "Buizel",
     "Bidoof"
   ],
+  "homeRegion": "Kanto",
   "warps": [
     { "x": 1407, "z": 38, "to": "johto_route_25_sea_cottage", "toWarp": 0 }
   ],

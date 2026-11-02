@@ -1,6 +1,7 @@
 # Goldenrod City's Bike Shop (plan 20 · J7). docs/scripts.md describes the language; the lines are our own, on
 # HeartGold's beats (scr_seq_T25R0201): the owner, new in town with no customers, lends the player a Bicycle to ride
-# about Johto and be seen on (FLAG_UNK_089).
+# about Johto and be seen on (FLAG_UNK_089). He gives his number with it (plan 20, part q), and rings a day later to say
+# the Bicycle is the player's to keep (FLAG_DAILY_JOHTO_BIKE_LENT, ours: Models/Pokegear.cs, StoryCalls).
 
 
 script Owner
@@ -14,6 +15,8 @@ script Owner
   if no goto No
   give "Bicycle"
   setflag FLAG_UNK_089
+  setflag FLAG_DAILY_JOHTO_BIKE_LENT
+  addcontact bike_shop
   say "Ride it everywhere you go! When people ask where you got it, tell them about my shop."
   end
 label Lent

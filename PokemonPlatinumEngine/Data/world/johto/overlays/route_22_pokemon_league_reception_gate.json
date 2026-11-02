@@ -18,5 +18,11 @@
     "r22r0101_policeman": { "name": "Guard", "script": "Guard", "still": true },
     "r22r0101_policeman_2": { "name": "Guard", "script": "MtSilverGuard", "still": true },
     "r22r0101_policeman_3": { "name": "Guard", "script": "KantoGuard", "still": true }
-  }
+  },
+  // Blue (plan 20, part q): once beaten in his Gym he comes to the gate to see who heads for Mt. Silver, and stays until
+  // Red is beaten (route_22_pokemon_league_reception_gate.txt; the beat and the tile are ours)
+  "npcs": [
+    { "id": "reception_gate_blue", "name": "Blue", "npcType": "blue", "x": 13, "y": 10, "facing": "Left",
+      "script": "Blue", "hiddenBy": "FLAG_JOHTO_HIDE_RECEPTION_GATE_BLUE" }
+  ]
 }

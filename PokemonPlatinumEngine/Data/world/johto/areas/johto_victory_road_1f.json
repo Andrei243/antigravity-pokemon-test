@@ -42,6 +42,7 @@
     "Bronzor",
     "Chingling"
   ],
+  "homeRegion": "Kanto",
   "warps": [
     { "x": 46, "z": 59, "to": "route_22_pokemon_league_reception_gate", "toWarp": 1 },
     { "x": 19, "z": 7, "to": "johto_victory_road_2f", "toWarp": 0 },

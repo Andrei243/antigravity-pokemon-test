@@ -39,6 +39,16 @@
           "Paznic"
         ]
       }
+    },
+    "reception_gate_blue": {
+      "name": {
+        "en": [
+          "Blue"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {}

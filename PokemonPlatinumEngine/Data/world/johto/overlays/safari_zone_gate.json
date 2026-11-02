@@ -6,8 +6,8 @@
   "area": "safari_zone_gate",
   "bgmTrack": "johto/national_park",
   "trees": "Round",
-  "heldBack": [ "d47_gsmiddleman1" ],
   "people": {
+    "d47_gsmiddleman1": { "name": "Cameron", "script": "Cameron", "still": true, "hiddenBy": "", "shownBy": "FLAG_JOHTO_MET_CAMERONS_FATHER" },
     "d47_gsman1": {
       "name": "Man",
       "dialog": [ "The Safari Zone feels like another country. It gives me the strangest feeling, coming here." ]

@@ -76,6 +76,7 @@
     "Buizel",
     "Bidoof"
   ],
+  "homeRegion": "Kanto",
   "warps": [
     { "x": 740, "z": 396, "to": "tohjo_falls", "toWarp": 0 },
     { "x": 755, "z": 394, "to": "tohjo_falls", "toWarp": 1 },

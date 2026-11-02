@@ -6,10 +6,8 @@
   // Cameron the photographer waits for his session
   "area": "fuchsia",
   "bgmTrack": "kanto/fuchsia",
-  "heldBack": [
-    "t08_gsmiddleman1_2"
-  ],
   "people": {
+    "t08_gsmiddleman1_2": { "name": "Cameron", "script": "Cameron", "still": true, "hiddenBy": "", "shownBy": "FLAG_JOHTO_MET_CAMERONS_FATHER" },
     "t08_gsmiddleman1": {
       "name": "Man",
       "dialog": [

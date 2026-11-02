@@ -14,6 +14,7 @@
   "running": true,
   "escapeRope": false,
   "fly": false,
+  "homeRegion": "Kanto",
   "warps": [
     { "x": 8, "z": 19, "to": "johto_cinnabar_island", "toWarp": 0 },
     { "x": 14, "z": 17, "to": "cinnabar_island_pokecenter_b1f", "toWarp": 0 }

@@ -8,8 +8,8 @@
   "bgmTrack": "kanto/celadon",
   "trees": "Round",
   "architecture": "Jade",
-  "heldBack": [ "t07_gsmiddleman1" ],
   "people": {
+    "t07_gsmiddleman1": { "name": "Cameron", "script": "Cameron", "still": true, "hiddenBy": "", "shownBy": "FLAG_JOHTO_MET_CAMERONS_FATHER" },
     "t07_gsleader6": { "name": "Jasmine", "script": "MeetJasmine", "still": true },
     "t07_gsleader12": { "name": "Erika", "script": "MeetErika", "still": true },
     "t07_gsbigman": {

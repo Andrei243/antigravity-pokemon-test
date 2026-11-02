@@ -14,6 +14,7 @@
   "running": true,
   "escapeRope": false,
   "fly": true,
+  "homeRegion": "Kanto",
   "warps": [
     { "x": 1413, "z": 200, "to": "johto_rock_tunnel_1f", "toWarp": 0 }
   ],

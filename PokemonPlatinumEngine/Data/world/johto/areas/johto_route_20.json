@@ -49,6 +49,7 @@
     { "species": "Tentacruel", "level": 40, "maxLevel": 40 }
   ],
   "superRodRate": 75,
+  "homeRegion": "Kanto",
   "warps": [
     { "x": 1127, "z": 501, "to": "johto_seafoam_islands_1f", "toWarp": 0 },
     { "x": 1113, "z": 495, "to": "johto_seafoam_islands_1f", "toWarp": 1 }

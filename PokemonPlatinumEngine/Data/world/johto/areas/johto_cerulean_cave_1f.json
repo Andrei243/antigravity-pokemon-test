@@ -81,6 +81,7 @@
     "Bronzor",
     "Chingling"
   ],
+  "homeRegion": "Kanto",
   "warps": [
     { "x": 49, "z": 42, "to": "cerulean", "toWarp": 7 },
     { "x": 55, "z": 11, "to": "johto_cerulean_cave_2f", "toWarp": 3 },

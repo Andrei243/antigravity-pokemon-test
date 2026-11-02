@@ -14,6 +14,7 @@
   "running": true,
   "escapeRope": false,
   "fly": false,
+  "homeRegion": "Kanto",
   "warps": [
     { "x": 12, "z": 12, "to": "celadon", "toWarp": 0 },
     { "x": 6, "z": 8, "to": "celadon_department_store_2f", "toWarp": 0 },

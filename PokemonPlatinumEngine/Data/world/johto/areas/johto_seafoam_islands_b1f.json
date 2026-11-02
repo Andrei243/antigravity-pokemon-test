@@ -42,6 +42,7 @@
     "Bronzor",
     "Chingling"
   ],
+  "homeRegion": "Kanto",
   "warps": [
     { "x": 45, "z": 21, "to": "johto_seafoam_islands_1f", "toWarp": 2 },
     { "x": 2, "z": 8, "to": "johto_seafoam_islands_1f", "toWarp": 3 },

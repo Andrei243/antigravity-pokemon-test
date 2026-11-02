@@ -42,6 +42,7 @@
     "Shinx",
     "Shinx"
   ],
+  "homeRegion": "Kanto",
   "warps": [
     { "x": 1172, "z": 102, "to": "mount_moon", "toWarp": 0 },
     { "x": 1167, "z": 106, "to": "route_3_pokecenter_1f", "toWarp": 0 }

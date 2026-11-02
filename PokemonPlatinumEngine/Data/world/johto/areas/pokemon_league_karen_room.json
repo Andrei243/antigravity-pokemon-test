@@ -14,6 +14,7 @@
   "running": true,
   "escapeRope": false,
   "fly": false,
+  "homeRegion": "Kanto",
   "warps": [
     { "x": 6, "z": 22, "to": "pokemon_league_entrance", "toWarp": 1 },
     { "x": 6, "z": 2, "to": "pokemon_league_lance_room", "toWarp": 0 },

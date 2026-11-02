@@ -131,6 +131,16 @@
           "Orașul Cianwood e drept peste mare, la vest de aici. O să-ți trebuiască un Pokémon care știe Surf."
         ]
       }
+    },
+    "route_40_baoba": {
+      "name": {
+        "en": [
+          "Baoba"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

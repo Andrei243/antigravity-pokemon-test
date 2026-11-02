@@ -230,6 +230,8 @@ public class ScriptTests
           berry status
           apricorn tree
           apricorn order red
+          photo take
+          photo count
           poffin check
           poffin cook
           poffin room

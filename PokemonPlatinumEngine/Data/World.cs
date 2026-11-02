@@ -1700,6 +1700,7 @@ public static class WorldMapBuilder
         // What the Pokégear's radio brings in on its days (plan 20 · J3)
         area.HoennSounds.AddRange(file?.HoennSounds ?? new());
         area.SinnohSounds.AddRange(file?.SinnohSounds ?? new());
+        area.InKanto = string.Equals(file?.HomeRegion, "Kanto", StringComparison.OrdinalIgnoreCase);
         // Diamond's and Pearl's species of ours, once the National Pokédex is had (plan 03 · D12a)
         area.NationalSlots.AddRange(overlay?.National?.Land ?? new());
         area.NationalSuperRod.AddRange(overlay?.National?.SuperRod ?? new());

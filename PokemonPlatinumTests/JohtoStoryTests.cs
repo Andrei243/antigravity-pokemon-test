@@ -43,6 +43,7 @@ public partial class JohtoStoryTests
         public SpecialEncounters Encounters { get; } = SpecialEncounters.NewGame(new Random(0));
         public TimeOfDay Time { get; set; } = TimeOfDay.Morning;
         public DayOfWeek Weekday { get; set; } = DayOfWeek.Monday;
+        public PhotoAlbum Photos { get; } = new();
         public List<(string Script, HeadlessScriptHost Host)> Played { get; } = new();
         public HeadlessScriptHost Last => Played[^1].Host;
         public const string Rival = "Silver";
@@ -124,7 +125,8 @@ public partial class JohtoStoryTests
                 PuzzleSolved = PuzzleSolved,
                 Encounters = Encounters,
                 TimeOfDay = Time,
-                Weekday = Weekday
+                Weekday = Weekday,
+                Photos = Photos
             };
             while (Answers.Count > 0) host.Answers.Enqueue(Answers.Dequeue());
             var runner = new ScriptRunner(Scripts, host) { Impatient = Impatient };

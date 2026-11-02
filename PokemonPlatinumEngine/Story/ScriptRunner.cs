@@ -353,6 +353,8 @@ public sealed partial class ScriptRunner
         Op.Seal => i.Name is "capsules" or "shop",
         // The Apricorn Box is a screen the player looks into; the trees and Kurt are asked and changed without one
         Op.Apricorn => i.Name == "box",
+        // Cameron's album is a screen; a photograph taken is the album's, counted with no screen
+        Op.Photo => i.Name == "album",
         // Below ground only what is handed over or counted needs no screen and no tunnel
         Op.Underground => i.Name is not ("give" or "room" or "flags"),
         // The pastimes, the Battle Frontier's facilities, the tutors and Amity Square's walk open screens, ask and
@@ -1104,6 +1106,9 @@ public sealed partial class ScriptRunner
                 host.Encounters.SwarmsOn = true;
                 break;
 
+            case Op.Photo:
+                PhotoCommand(i);
+                break;
             case Op.Apricorn:
                 ApricornCommand(i);
                 break;
@@ -1906,6 +1911,34 @@ public sealed partial class ScriptRunner
     /// <c>apricorn ...</c> (plan 20 · J6): the tree the script belongs to (<c>tree</c>, <c>pick</c>), the Box
     /// (<c>box</c>, <c>held</c>, <c>count</c>) and Kurt's one order (<c>order</c>, <c>status</c>, <c>collect</c>).
     /// </summary>
+    /// <summary>
+    /// Cameron's photographs (plan 20, part q): <c>photo take</c> puts a photograph of the player and the team's first
+    /// Pokémon that is no Egg, here and today, at the album's end (RESULT 1, or 0 with the album full); <c>photo album</c>
+    /// opens the album; <c>photo count</c> is how many it holds. The place is the area of the person the script belongs
+    /// to (Cameron), or the host's own place.
+    /// </summary>
+    private void PhotoCommand(Instruction i)
+    {
+        var album = host.Photos;
+        switch (i.Name)
+        {
+            case "take":
+            {
+                if (album == null) { Result = 0; break; }
+                string place = Subject?.ScriptFile is { Length: > 0 } file ? file : "";
+                var lead = host.Party.Members.FirstOrDefault(p => !p.IsEgg);
+                Result = album.Add(PhotoAlbum.Of(place, lead, host.PlayerLook.ToString(), GameClock.Today)) ? 1 : 0;
+                break;
+            }
+            case "album":
+                host.Open(ScriptScreen.PhotoAlbum, Subject);
+                break;
+            case "count":
+                Result = album?.Count ?? 0;
+                break;
+        }
+    }
+
     private void ApricornCommand(Instruction i)
     {
         var box = host.Apricorns;
