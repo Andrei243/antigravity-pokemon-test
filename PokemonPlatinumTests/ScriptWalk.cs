@@ -553,6 +553,11 @@ internal sealed class ScriptWalk
                 case FieldScripts.Pokemon:
                     yield return new Played("a Pokémon standing in the field", script, EveryWayThrough(script, new Map(8, 8), new NPC { NpcType = NPC.PokemonType, Name = "Machop", Species = "Machop" }, new[] { "Machop!" }));
                     break;
+                // The follower spoken to with something found (plan 10 · F4)
+                case FieldScripts.FollowerFound:
+                    yield return new Played("the follower with something found", script, EveryWayThrough(script, new Map(8, 8),
+                        new NPC { NpcType = NPC.PokemonType, Name = "Turtwig", Species = "Turtwig" }, new[] { "Turtwig is holding something." }, item: ("Oran Berry", 1)));
+                    break;
                 // Two trainers who came together, without anyone and beside whoever travels with the player
                 case FieldScripts.TrainerPair:
                     yield return new Played("two trainers together", script, EveryWayThrough(script, new Map(8, 8), AnyTrainer(), pair: AnyTrainer()));

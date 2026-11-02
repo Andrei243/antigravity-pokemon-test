@@ -10631,6 +10631,14 @@ way -
 from a trainer with lines of their own
 way -
   > Lucas used an Escape Rope.
+=== common.FollowerFound
+from the follower with something found
+way -
+  Turtwig> Turtwig is holding something.
+  > Lucas found the Oran Berry!
+  > Lucas put it away in the Berries pocket.
+  * cry Turtwig
+  * fanfare FanfareItem
 === common.GabbyAndTyAfterTheBattle
 from a trainer with lines of their own
 way 0

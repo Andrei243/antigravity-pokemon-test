@@ -327,6 +327,21 @@
         "on": "O luptă pierdută te întreabă întâi dacă încerci din nou: lupta o ia de la capăt, iar ce ai folosit și cheltuit în ea îți este dat înapoi."
       }
     },
+    "follower": {
+      "label": "Însoțitor",
+      "help": {
+        "off": "Pokémonii tăi rămân în Poké Balluri pe teren.",
+        "on": "Primul Pokémon din echipă care poate lupta merge în urma ta. Vorbește cu el ca să vezi cum se simte."
+      }
+    },
+    "wildPokemon": {
+      "label": "Pokémoni sălbatici",
+      "value": { "hidden": "ASCUNȘI", "visible": "VIZIBILI" },
+      "help": {
+        "hidden": "Pokémonii sălbatici se ascund în iarbă și în apă până sar asupra ta.",
+        "visible": "Pokémonii sălbatici se văd în iarbă și pe apă, și îi întâlnești doar pe cei peste care dai."
+      }
+    },
     "areaChecklist": {
       "label": "Ce a mai rămas aici",
       "help": {
@@ -1017,6 +1032,17 @@
     "bodyNoFoe": "Încerci din nou? Lupta o ia de la prima tură, iar tot ce s-a folosit și s-a cheltuit în ea îți este dat înapoi.",
     "tryAgain": "ÎNCEARCĂ DIN NOU",
     "giveUp": "RENUNȚĂ"
+  },
+
+  "followerTalk": {
+    "band": {
+      "0": "{name} păstrează distanța. Încă nu pare sigur de tine.",
+      "1": "{name} se uită la tine, întrebându-se ce vei face mai departe.",
+      "2": "{name} merge vesel lângă tine.",
+      "3": "{name} fredonează ceva. Îi place să se plimbe cu tine.",
+      "4": "{name} te privește cu drag. Te-ar urma oriunde!"
+    },
+    "found": "{name} ține ceva în gură. Vrea să ți-l dea!"
   },
 
   "dexText": {
@@ -2947,6 +2973,7 @@
     "isLoafingAround": "{user} lenevește!",
     "mustRecharge": "{user} trebuie să-și refacă forțele!",
     "flinched": "{user} a tresărit!",
+    "caughtOffGuard": "{user} a fost luat prin surprindere și nu s-a putut mișca!",
     "snappedOutOfConfusion": "{user} și-a revenit din confuzie!",
     "isConfused": "{user} e confuz!",
     "itHurtItselfIn": "S-a rănit singur din cauza confuziei!",

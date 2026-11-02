@@ -172,6 +172,12 @@ CLIPS = {
               (0.75, p(root={"move": (0, 0.15, 0)}, head={"pitch": -15}, front={"pitch": -14}, back={"pitch": 10}, tail={"yaw": -12})),
               (0.9, p(root={"move": (0, -0.02, 0)})),
               (1.2, p())],
+    # The walk in the field (plan 10 · F2), looped: one stride, the legs in turn, the body rolling over each foot
+    "walk": [(0.0, p(front={"pitch": -14}, back={"pitch": 14}, root={"roll": -3})),
+             (0.25, p(root={"move": (0, 0.01, 0)}, head={"pitch": 3})),
+             (0.5, p(front={"pitch": 14}, back={"pitch": -14}, root={"roll": 3})),
+             (0.75, p(root={"move": (0, 0.01, 0)}, head={"pitch": 3})),
+             (1.0, p(front={"pitch": -14}, back={"pitch": 14}, root={"roll": -3}))],
 }
 
 written = []

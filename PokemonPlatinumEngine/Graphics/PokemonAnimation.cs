@@ -20,7 +20,7 @@ internal static class PokemonAnimation
     /// plan 04 · G7 and the four of a battle's answers (plan 25 · Y5).
     /// </summary>
     internal static readonly string[] Clips =
-        { "idle", "physical", "special", "status", "hit", "faint", "entry", "dodge", "tired", "cheer", "charge" };
+        { "idle", "physical", "special", "status", "hit", "faint", "entry", "dodge", "tired", "cheer", "charge", "walk" };
 
     /// <summary>
     /// The pose for one moment of a clip named as <see cref="Clips"/> names it: "idle" at <paramref name="t"/> seconds of
@@ -44,12 +44,14 @@ internal static class PokemonAnimation
             case "tired": pose.Time = t; pose.Tired = 1f; break;
             case "cheer": pose.Cheer = t; break;
             case "charge": pose.Time = t; pose.Charge = 1f; break;
+            // The walk (plan 10 · F2): at time t of a stride a second, on the move
+            case "walk": pose.Time = t; pose.Walk = t - MathF.Floor(t); pose.Moving = 1f; break;
         }
         return pose;
     }
 
     /// <summary>Whether a clip loops in time (the idle loop, tiredness, a charge) rather than playing once from 0 to 1.</summary>
-    internal static bool ClipLoops(string clip) => clip is "idle" or "tired" or "charge";
+    internal static bool ClipLoops(string clip) => clip is "idle" or "tired" or "charge" or "walk";
 
     /// <summary>The seconds of one breath of a model's idle loop: 1.7 s at tempo 1 (plan 09 · L5's strip spans one).</summary>
     internal static float BreathSeconds(PokeModel m) => MathF.Tau / Beat / MathF.Max(0.1f, m.Tempo);
@@ -153,7 +155,10 @@ internal static class PokemonAnimation
         float down = p.Faint > 0f ? Smooth(0f, 0.7f, p.Faint) : 0f;
         // A tired one's slow, deep breath takes over most of the idle's; a charge stills it (plan 25 · Y5)
         float tired = Math.Clamp(p.Tired, 0f, 1f) * (1f - down), charge = Math.Clamp(p.Charge, 0f, 1f) * (1f - down);
-        if (!m.OwnIdle) Idle(m, IdleTime(p) * m.Tempo, (1f - down) * (1f - 0.6f * tired) * (1f - 0.5f * charge), pose);
+        // On the move the idle shows at half its strength under the walk (plan 10 · F2)
+        float moving = Math.Clamp(p.Moving, 0f, 1f) * (1f - down);
+        if (!m.OwnIdle) Idle(m, IdleTime(p) * m.Tempo, (1f - down) * (1f - 0.6f * tired) * (1f - 0.5f * charge) * (1f - 0.5f * moving), pose);
+        if (moving > 0f && !(m.Imported?.Has(ClipRole.Walk) == true)) Walk(m, p.Walk, moving, pose);
         if (tired > 0f && !(m.Imported?.Has(ClipRole.Tired) == true)) Tired(m, tired, IdleTime(p), pose);
         if (charge > 0f) Charge(m, charge, IdleTime(p), pose);
         if (p.Entry > 0f && p.Entry < 1f) Entry(m, p.Entry, pose);
@@ -259,6 +264,82 @@ internal static class PokemonAnimation
                 case PokeRole.Segment:
                     // A wave travels along the body from the tail to the head
                     pose.Turn(b, 0.04f * MathF.Sin(w * t - ph * 0.8f) * amount, 0.16f * MathF.Sin(w * t * 0.9f - ph * 0.9f) * amount);
+                    break;
+            }
+        }
+    }
+
+    // ------------------------------------------------------------------ walk
+
+    /// <summary>The height of a bird's hop, in its own height: twice a stride, the one time the root leaves the ground.</summary>
+    internal const float BirdHop = 0.05f;
+
+    /// <summary>How far a biped's legs swing either way, in radians.</summary>
+    internal const float Stride = 0.45f;
+
+    /// <summary>
+    /// The walk (plan 10 · F2; style guide, "Clips"): one stride of the body plan at phase <paramref name="phase"/>
+    /// (0..1, two steps), shown by <paramref name="amount"/>. A pure function of the phase: the same phase is the same pose.
+    /// </summary>
+    private static void Walk(PokeModel m, float phase, float amount, SkeletonPose pose)
+    {
+        float a = Frac(phase) * MathF.Tau;
+        float h = m.Height;
+        // A bird hops along the ground however it hovers at rest; anything else that hovers glides
+        bool hops = m.Plan == BodyPlan.Bird;
+        bool floats = !hops && (m.Hovers || m.Plan == BodyPlan.Floating);
+        bool waves = m.Plan is BodyPlan.Serpent or BodyPlan.Fish;
+        // A bird's hop: twice a stride, off the ground and back
+        float hop = hops ? MathF.Max(0f, MathF.Sin(2f * a)) : 0f;
+        for (int b = 0; b < m.Bones.Count; b++)
+        {
+            var info = m.Bones[b];
+            float side = info.Side, ph = info.Phase;
+            switch (info.Role)
+            {
+                case PokeRole.Root:
+                    if (hops) pose.Offset[b].Y += BirdHop * h * hop * amount;
+                    break;
+                case PokeRole.Body:
+                    if (floats) pose.Turn(b, 0.1f * amount);
+                    else if (waves) pose.Turn(b, 0f, 0.1f * MathF.Sin(a) * amount);
+                    else if (m.Plan == BodyPlan.Biped) pose.Turn(b, 0.04f * amount, 0f, 0.05f * MathF.Sin(a) * amount);
+                    else if (m.Plan == BodyPlan.Quadruped) pose.Turn(b, 0.03f * MathF.Sin(2f * a) * amount);
+                    break;
+                case PokeRole.Head:
+                    // The head holds steady against the body's roll, nodding with each step
+                    pose.Turn(b, 0.05f * MathF.Sin(2f * a) * amount);
+                    break;
+                case PokeRole.Arm:
+                    if (!floats) pose.Turn(b, -side * 0.3f * MathF.Sin(a) * amount);
+                    break;
+                case PokeRole.Leg:
+                    if (floats) pose.Turn(b, 0.2f * amount);
+                    else if (hops) pose.Turn(b, -0.4f * hop * amount);
+                    else if (m.Plan == BodyPlan.Quadruped)
+                    {
+                        // A trot: each leg against the one before or behind it, with the one across from it on the other side
+                        float lead = (info.Front ? 0f : MathF.PI) + (side > 0f ? MathF.PI : 0f);
+                        pose.Turn(b, 0.4f * MathF.Sin(a + lead) * amount);
+                    }
+                    else pose.Turn(b, side * Stride * MathF.Sin(a) * amount);
+                    break;
+                case PokeRole.Wing:
+                {
+                    float beat = floats ? 0.45f * MathF.Sin(2f * a + ph) : hops ? 0.35f * hop : 0.08f * MathF.Sin(a);
+                    pose.Turn(b, 0f, 0f, side * beat * amount);
+                    break;
+                }
+                case PokeRole.Tail:
+                    pose.Turn(b, 0f, (waves ? 0.35f : 0.18f) * MathF.Sin(a + ph) * amount);
+                    break;
+                case PokeRole.Fin:
+                    if (side == 0f) pose.Turn(b, 0f, 0.3f * MathF.Sin(a - ph) * amount);
+                    else pose.Turn(b, 0f, 0f, side * 0.25f * MathF.Sin(2f * a) * amount);
+                    break;
+                case PokeRole.Segment:
+                    // A wave travels from the tail to the head, a segment behind the one before it
+                    pose.Turn(b, 0f, 0.22f * MathF.Sin(a - ph) * amount);
                     break;
             }
         }

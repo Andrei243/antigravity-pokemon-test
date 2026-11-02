@@ -28,6 +28,9 @@ partial class Harness
             // Their field sprites (plan 10 · F1): the four facings, two idle frames each, enlarged
             foreach (var species in named)
                 if (Wanted("97_field_" + species.ToLowerInvariant())) Save(FieldSprites.Sheet(context, species, 6), "97_field_" + species.ToLowerInvariant());
+            // and their walk strips (plan 10 · F2): eight frames to a stride, a facing to a row
+            foreach (var species in named)
+                if (Wanted("97_field_walk_" + species.ToLowerInvariant())) Save(FieldSprites.WalkSheet(context, species, 6), "97_field_walk_" + species.ToLowerInvariant());
         }
 
         // Turntables: front, three-quarter, side and back, for every model and each body plan's sample
@@ -51,7 +54,9 @@ partial class Harness
             ("dodge", new[] { 0.15f, 0.3f, 0.44f, 0.7f, 0.85f }),
             ("tired", new[] { 0f, 0.65f, 1.3f, 1.95f, 2.6f }),
             ("cheer", new[] { 0.1f, 0.25f, 0.5f, 0.75f, 0.92f }),
-            ("charge", new[] { 0f, 0.1f, 0.2f, 0.3f, 0.4f })
+            ("charge", new[] { 0f, 0.1f, 0.2f, 0.3f, 0.4f }),
+            // The walk in the field (plan 10 · F2): a stride a second, at each fifth of it
+            ("walk", new[] { 0f, 0.2f, 0.4f, 0.6f, 0.8f })
         };
         foreach (var species in named.Length > 0 ? Array.Empty<string>() : new[] { "Riolu", "Chimchar", "Shinx", "Turtwig", "Starly", "Garchomp", "Giratina", "sample Serpent", "sample Fish", "sample Floating" })
         {

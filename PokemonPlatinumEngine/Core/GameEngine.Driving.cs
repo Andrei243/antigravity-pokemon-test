@@ -303,6 +303,16 @@ public partial class GameEngine
         public bool EnterArea() => game.EnterArea();
         /// <summary>Whoever walks behind the player now (plan 06 · R16c): a partner of the story or a Pokémon out of its ball; null with nobody.</summary>
         public Follower? Along => game.flow.Along;
+        /// <summary>The lead the options' FOLLOWER row has out of its ball now (plan 10 · F3); null when none is.</summary>
+        public Follower? Lead => game.Lead;
+        /// <summary>The lead spoken to as the player faces it (plan 10 · F4): true when it answered.</summary>
+        public bool TalkToTheLead() => game.leadBody is { } body && game.TalkToTheLead(body);
+        /// <summary>The wild Pokémon standing in sight with the WILD POKéMON row at VISIBLE (plan 10 · F5).</summary>
+        public FieldPokemon WildInSight => game.WildInSight;
+        /// <summary>A frame of the wild Pokémon in sight (plan 10 · F5), as the field runs it: true when one was met.</summary>
+        public bool KeepWildInSight(float dt) => game.KeepWildInSight(dt);
+        /// <summary>One in sight met, as walking into it meets it (plan 10 · F5).</summary>
+        public bool MeetSeen(FieldPokemon.Wild seen) => game.MeetSeen(seen);
         /// <summary>A Pokémon of the team walks behind the player as a thing of the map, as <c>amity walk</c> has it (plan 06 · R16c).</summary>
         public void WalkWith(NPC body, Pokemon pokemon) => game.WalkWith(body, pokemon);
         /// <summary>The game written to its slot's save where the player stands, as the save screen writes it.</summary>

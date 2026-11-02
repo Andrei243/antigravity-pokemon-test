@@ -1700,6 +1700,10 @@ public partial class GameEngine
 
         // Whoever travels with the player keeps up, whatever else has the field
         flow.Along?.Update(fieldDt, flow.Player.Stride);
+        // The lead out of its ball, with the options' FOLLOWER row on (plan 10 · F3)
+        KeepTheLeadAlong(fieldDt);
+        // Wild Pokémon in sight, with the options' WILD POKéMON row at VISIBLE (plan 10 · F5)
+        if (KeepWildInSight(fieldDt)) return;
         KeepTheStroll(dt);
 
         // A warp panel has the player: they turn on the spot until the picture closes, and again as it opens
@@ -2332,6 +2336,10 @@ public partial class GameEngine
 
             // What happens next is theirs to say: their own script, or the common one for what they are
             // (a nurse, a clerk, a PC, the briefcase, a trainer, someone with lines)
+            // The lead walking behind the player answers by how it feels (plan 10 · F4)
+            if (npc == leadBody && TalkToTheLead(npc)) return;
+            // A wild Pokémon in sight is met (plan 10 · F5)
+            if (TouchWild(npc)) return;
             if (FieldScripts.For(npc) is { } theirs && StartScript(theirs, npc)) return;
         }
 

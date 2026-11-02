@@ -66,7 +66,7 @@ public class GalleryTests
     [Fact]
     public void TheClipsAreTheStudiosInOrderAndGoRound()
     {
-        Assert.Equal(new[] { "idle", "physical", "special", "status", "hit", "faint", "entry", "dodge", "tired", "cheer", "charge" }, PokemonAnimation.Clips);
+        Assert.Equal(new[] { "idle", "physical", "special", "status", "hit", "faint", "entry", "dodge", "tired", "cheer", "charge", "walk" }, PokemonAnimation.Clips);
         var (screen, _) = Opened(Pikachu);
         var seen = new List<string> { screen.Clip };
         for (int i = 0; i < PokemonAnimation.Clips.Length; i++)
@@ -76,9 +76,9 @@ public class GalleryTests
         }
         Assert.Equal(PokemonAnimation.Clips.Append("idle"), seen);
         screen.NextClip(-1);
-        Assert.Equal("charge", screen.Clip);
+        Assert.Equal("walk", screen.Clip);
         // A move's clip plays to its end and is held there before it plays again
-        screen.NextClip(-9);
+        screen.NextClip(-10);
         Assert.Equal("physical", screen.Clip);
         screen.Advance(GalleryScreen.ClipSeconds + 0.1f);
         Assert.Equal(1f, screen.Pose().Attack);

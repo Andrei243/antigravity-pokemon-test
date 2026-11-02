@@ -10,7 +10,7 @@ using Raylib_cs;
 namespace PokemonPlatinumEngine.Graphics;
 
 /// <summary>What a clip of an imported model is played for.</summary>
-internal enum ClipRole { Idle, Physical, Special, Status, Hit, Faint, Entry, Dodge, Tired, Cheer }
+internal enum ClipRole { Idle, Physical, Special, Status, Hit, Faint, Entry, Dodge, Tired, Cheer, Walk }
 
 /// <summary>
 /// One drawable piece of an imported model: triangles of one material that use at most
@@ -619,7 +619,9 @@ internal static class ImportedModels
         // A battle's answers (plan 25 · Y5); one the file has no clip for plays its body plan's
         (ClipRole.Dodge, new[] { "dodge", "evade" }),
         (ClipRole.Tired, new[] { "lowhp", "low_hp", "tired" }),
-        (ClipRole.Cheer, new[] { "victory", "cheer", "win" })
+        (ClipRole.Cheer, new[] { "victory", "cheer", "win" }),
+        // The walk in the field (plan 10 · F2); a run stands in for one
+        (ClipRole.Walk, new[] { "walk", "run" })
     };
 
     /// <summary>
@@ -674,6 +676,7 @@ internal static class ImportedModels
         if (rig.Has(Action(pose.Kind))) own.Attack = 0f;
         if (rig.Has(ClipRole.Dodge)) own.Dodge = 0f;
         if (rig.Has(ClipRole.Cheer)) own.Cheer = 0f;
+        if (rig.Has(ClipRole.Walk)) own.Moving = 0f;
         PokemonAnimation.Apply(m, own, m.Pose);
         m.Skeleton.Evaluate(m.Pose, rig.BodySkin);
         var body = rig.BodySkin[1];
@@ -706,6 +709,8 @@ internal static class ImportedModels
         // of the idle while the bar is in the red, held as the idle is for a frozen body
         if (p.Dodge > 0f && p.Dodge < 1f && rig.Clips.TryGetValue(ClipRole.Dodge, out c)) return (c, p.Dodge * Length(c));
         if (p.Cheer > 0f && p.Cheer < 1f && rig.Clips.TryGetValue(ClipRole.Cheer, out c)) return (c, p.Cheer * Length(c));
+        // On the move, the file's own walk at the stride's phase (plan 10 · F2)
+        if (p.Moving >= 0.5f && rig.Clips.TryGetValue(ClipRole.Walk, out c)) return (c, (p.Walk - MathF.Floor(p.Walk)) * Length(c));
         if ((p.Tired > 0.5f && rig.Clips.TryGetValue(ClipRole.Tired, out c)) || rig.Clips.TryGetValue(ClipRole.Idle, out c))
         {
             float length = Length(c);

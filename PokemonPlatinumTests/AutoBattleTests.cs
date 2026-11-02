@@ -177,7 +177,7 @@ public class AutoBattleTests
         Assert.Equal(Array.IndexOf(rows, OptionRow.BoxTools) + 1, Array.IndexOf(rows, OptionRow.AutoBattle));
         // (plan 12 · Q22's WHAT IS LEFT HERE went in after it, before Controls)
         // (and Q21's REQUESTS after that, and Q8's three rows of seeing after it, and Q23's TIPS after those)
-        Assert.Equal(Array.IndexOf(rows, OptionRow.AutoBattle) + 8, Array.IndexOf(rows, OptionRow.Controls));
+        Assert.Equal(Array.IndexOf(rows, OptionRow.AutoBattle) + 10, Array.IndexOf(rows, OptionRow.Controls));
 
         var (_, off, helpOff) = OptionsScreen.Describe(settings, OptionRow.AutoBattle);
         OptionsScreen.Change(settings, OptionRow.AutoBattle, 1);

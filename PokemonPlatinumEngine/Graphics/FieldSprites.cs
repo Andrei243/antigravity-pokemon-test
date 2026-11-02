@@ -11,10 +11,11 @@ namespace PokemonPlatinumEngine.Graphics;
 /// Pokémon in the field (plan 10 · F1; style guide, "Pokémon in the field"): a species' or a form's sprites baked
 /// from its 3D model at the characters' density (<see cref="CharacterSprites.TexelsPerUnit"/>), so a Machop stands
 /// shorter than the player and a Steelix taller. Four facings, each with two idle frames, on a square card of 32,
-/// 48 or 64 texels (<see cref="ClassOf"/>) with the Pokémon's lowest point on its bottom row but one (the outline's).
+/// 48 or 64 texels (<see cref="ClassOf"/>) with the Pokémon's lowest point on its bottom row but one (the outline's),
+/// and, baked only once the Pokémon is seen on the move, a walk strip of eight frames (plan 10 · F2).
 /// Kept in <c>cache/sprites</c> beside the menu sprites, keyed by the same signature, and replaced by hand-drawn
-/// frames in <c>overrides/sprites/pokemon/&lt;NAME&gt;/&lt;facing&gt;_idle_&lt;frame&gt;.png</c>. A facing not baked
-/// yet is drawn as a Poké Ball by the caller, as the menus show their stand-in.
+/// frames in <c>overrides/sprites/pokemon/&lt;NAME&gt;/&lt;facing&gt;_idle_&lt;frame&gt;.png</c> (and
+/// <c>_walk_</c>). A facing not baked yet is drawn as a Poké Ball by the caller, as the menus show their stand-in.
 /// </summary>
 internal static class FieldSprites
 {
@@ -24,6 +25,9 @@ internal static class FieldSprites
     public const int BakeVersion = 1;
 
     public const int IdleFrames = CharacterSprites.IdleFrames;
+
+    /// <summary>Frames of a facing's walk strip (plan 10 · F2): one stride over two tiles, as the people's.</summary>
+    public const int WalkFrames = CharacterSprites.WalkFrames;
 
     /// <summary>Rows of the card under the Pokémon's lowest point: the outline's and the half texel the feet stand in.</summary>
     public const float FootRows = 1.5f;
@@ -63,6 +67,7 @@ internal static class FieldSprites
     internal sealed record Strip(CharacterSprites.Card[] Frames, int Size, int Rows);
 
     private static readonly Dictionary<(string Name, int Facing), Strip> Baked = new();
+    private static readonly Dictionary<(string Name, int Facing), Strip> Walks = new();
     private static readonly Dictionary<int, RenderTexture2D> Targets = new();
 
     private static readonly SceneLighting StudioLight = new(Vector3.Normalize(new Vector3(-0.5f, 0.75f, 0.6f)),
@@ -71,15 +76,30 @@ internal static class FieldSprites
     /// <summary>A facing's frames if they are ready; null while they aren't (ask with <see cref="Prepare"/>).</summary>
     public static Strip? Get(string name, int facing) => Baked.GetValueOrDefault((name, facing));
 
+    /// <summary>A facing's walk strip if it is ready (plan 10 · F2); null while it isn't (ask with <see cref="PrepareWalk"/>).</summary>
+    public static Strip? GetWalk(string name, int facing) => Walks.GetValueOrDefault((name, facing));
+
+    /// <summary>The walk frame a walker's stride shows: eight to a stride (two tiles), as the people's.</summary>
+    public static int WalkFrameAt(float walkCycle) =>
+        Math.Clamp((int)MathF.Floor((walkCycle - MathF.Floor(walkCycle)) * WalkFrames), 0, WalkFrames - 1);
+
     /// <summary>
     /// Makes a facing ready if it can be now: from an override or the cache, or baked once its model is built
     /// (asked for in the background meanwhile). Bakes only while <paramref name="bakes"/> is above nothing, and
     /// counts it down, so a frame bakes a facing or two at most. Call outside any texture mode.
     /// </summary>
-    public static void Prepare(RenderContext context, string name, int facing, ref int bakes)
+    public static void Prepare(RenderContext context, string name, int facing, ref int bakes) => Prepare(context, name, facing, ref bakes, walk: false);
+
+    /// <summary>
+    /// Makes a facing's walk strip ready if it can be now (plan 10 · F2): asked for only once the Pokémon is seen on
+    /// the move, and baked from an override, the cache or its model as the idle frames are, against the same bakes.
+    /// </summary>
+    public static void PrepareWalk(RenderContext context, string name, int facing, ref int bakes) => Prepare(context, name, facing, ref bakes, walk: true);
+
+    private static void Prepare(RenderContext context, string name, int facing, ref int bakes, bool walk)
     {
-        if (Baked.ContainsKey((name, facing))) return;
-        if (TryOverride(context, name, facing) || TryLoad(context, name, facing)) return;
+        if ((walk ? Walks : Baked).ContainsKey((name, facing))) return;
+        if (TryOverride(context, name, facing, walk) || TryLoad(context, name, facing, walk)) return;
         if (bakes <= 0 && !Patient) return;
         PokeModel model;
         if (Patient) model = PokemonModels.Get(name);
@@ -89,10 +109,10 @@ internal static class FieldSprites
             return;
         }
         bakes--;
-        var sheet = Bake(context, model, name, facing);
-        Keep(context, name, facing, sheet);
+        var sheet = Bake(context, model, name, facing, walk);
+        Keep(context, name, facing, sheet, walk);
         if (!PokemonSprites.CacheEnabled) return;
-        string file = FileOf(name, facing);
+        string file = FileOf(name, facing, walk);
         string stem = Path.GetFileName(file)[..^(SignatureOf(name).Length + 4)];
         var png = PngWriter.Encode(sheet);
         CacheFolders.Write(file, stream => stream.Write(png), () => Directory.GetFiles(PokemonSprites.CacheFolder, stem + "*.png"), CacheFolders.Prunes);
@@ -118,32 +138,33 @@ internal static class FieldSprites
 
     private static string SignatureOf(string name) => $"{PokemonModels.Signature(name)}{PokemonSprites.BakeVersion}{BakeVersion}";
 
-    private static string FileOf(string name, int facing)
+    private static string FileOf(string name, int facing, bool walk = false)
     {
         var safe = new System.Text.StringBuilder();
         foreach (char c in name) safe.Append(char.IsLetterOrDigit(c) && c < 128 ? char.ToLowerInvariant(c) : '_');
-        return Path.Combine(PokemonSprites.CacheFolder, $"{safe}-field-{facing}-{SignatureOf(name)}.png");
+        return Path.Combine(PokemonSprites.CacheFolder, $"{safe}-{(walk ? "fieldwalk" : "field")}-{facing}-{SignatureOf(name)}.png");
     }
 
-    /// <summary>The name a hand-drawn frame is looked for under, in the species' folder: <c>down_idle_0.png</c>.</summary>
-    public static string OverrideName(int facing, int frame) =>
-        $"{(facing switch { 0 => "down", 1 => "right", 2 => "up", _ => "left" })}_idle_{frame}.png";
+    /// <summary>The name a hand-drawn frame is looked for under, in the species' folder: <c>down_idle_0.png</c>, <c>down_walk_0.png</c>.</summary>
+    public static string OverrideName(int facing, int frame, bool walk = false) =>
+        $"{(facing switch { 0 => "down", 1 => "right", 2 => "up", _ => "left" })}_{(walk ? "walk" : "idle")}_{frame}.png";
 
-    private static bool TryOverride(RenderContext context, string name, int facing)
+    private static bool TryOverride(RenderContext context, string name, int facing, bool walk)
     {
         if (!Overrides.Enabled) return false;
         string folder = Path.Combine(OverrideFolder, name.ToUpperInvariant());
         if (!Directory.Exists(folder)) return false;
         PixelCanvas? sheet = null;
-        for (int f = 0; f < IdleFrames; f++)
+        int frames = walk ? WalkFrames : IdleFrames;
+        for (int f = 0; f < frames; f++)
         {
-            string path = Path.Combine(folder, OverrideName(facing, f));
+            string path = Path.Combine(folder, OverrideName(facing, f, walk));
             if (!File.Exists(path)) return false;
             var image = Raylib.LoadImage(path);
             try
             {
                 if (image.Width != image.Height || image.Width is not (Small or Medium or Large)) return false;
-                sheet ??= new PixelCanvas(image.Width * IdleFrames, image.Height);
+                sheet ??= new PixelCanvas(image.Width * frames, image.Height);
                 if (sheet.Height != image.Height) return false;
                 sheet.Blit(PixelCanvas.FromImage(image), f * image.Width, 0);
             }
@@ -153,20 +174,20 @@ internal static class FieldSprites
             }
         }
         if (sheet == null) return false;
-        Keep(context, name, facing, sheet);
+        Keep(context, name, facing, sheet, walk);
         return true;
     }
 
-    private static bool TryLoad(RenderContext context, string name, int facing)
+    private static bool TryLoad(RenderContext context, string name, int facing, bool walk)
     {
         if (!PokemonSprites.CacheEnabled) return false;
-        string file = FileOf(name, facing);
+        string file = FileOf(name, facing, walk);
         if (!File.Exists(file)) return false;
         var image = Raylib.LoadImage(file);
         try
         {
-            if (image.Width != image.Height * IdleFrames || image.Height is not (Small or Medium or Large)) return false;
-            Keep(context, name, facing, PixelCanvas.FromImage(image));
+            if (image.Width != image.Height * (walk ? WalkFrames : IdleFrames) || image.Height is not (Small or Medium or Large)) return false;
+            Keep(context, name, facing, PixelCanvas.FromImage(image), walk);
             return true;
         }
         finally
@@ -176,12 +197,12 @@ internal static class FieldSprites
     }
 
     /// <summary>Cuts a sheet of a facing's frames into cards and keeps them.</summary>
-    private static void Keep(RenderContext context, string name, int facing, PixelCanvas sheet)
+    private static void Keep(RenderContext context, string name, int facing, PixelCanvas sheet, bool walk)
     {
-        int size = sheet.Height;
-        var frames = new CharacterSprites.Card[IdleFrames];
-        for (int f = 0; f < IdleFrames; f++) frames[f] = CharacterSprites.MakeCard(context, sheet.Crop(f * size, 0, size, size));
-        Baked[(name, facing)] = new Strip(frames, size, RowsFilled(sheet.Crop(0, 0, size, size)));
+        int size = sheet.Height, count = walk ? WalkFrames : IdleFrames;
+        var frames = new CharacterSprites.Card[count];
+        for (int f = 0; f < count; f++) frames[f] = CharacterSprites.MakeCard(context, sheet.Crop(f * size, 0, size, size));
+        (walk ? Walks : Baked)[(name, facing)] = new Strip(frames, size, RowsFilled(sheet.Crop(0, 0, size, size)));
     }
 
     /// <summary>How many rows above the foot the art reaches (its topmost opaque row), for whoever sits on it.</summary>
@@ -235,8 +256,19 @@ internal static class FieldSprites
         return (size, scale);
     }
 
-    /// <summary>Renders a facing's idle frames side by side, outlined. Call outside any texture mode.</summary>
-    internal static PixelCanvas Bake(RenderContext context, PokeModel model, string name, int facing)
+    /// <summary>
+    /// Frame <paramref name="frame"/> of a walk strip (plan 10 · F2): the stride at that eighth of it, the idle held
+    /// a quarter of the way through its breath (the first idle frame's), so the strip changes only by the walk.
+    /// </summary>
+    internal static PokePose WalkPose(PokeModel model, int frame) => new()
+    {
+        Time = 0.25f * MathF.Tau / PokemonAnimation.Beat / MathF.Max(0.1f, model.Tempo),
+        Walk = frame / (float)WalkFrames,
+        Moving = 1f
+    };
+
+    /// <summary>Renders a facing's idle frames (or its walk strip) side by side, outlined. Call outside any texture mode.</summary>
+    internal static PixelCanvas Bake(RenderContext context, PokeModel model, string name, int facing, bool walk = false)
     {
         context.EnsureLoaded();
         var (size, scale) = Fit(model, name);
@@ -259,12 +291,13 @@ internal static class FieldSprites
         var look = up * centre;
         var camera = new Camera3D(look + new Vector3(0, MathF.Sin(pitch), MathF.Cos(pitch)) * 20f, look, Vector3.UnitY, units, CameraProjection.Orthographic);
 
-        var sheet = new PixelCanvas(size * IdleFrames, size);
+        int count = walk ? WalkFrames : IdleFrames;
+        var sheet = new PixelCanvas(size * count, size);
         var shaders = context.Shaders;
-        for (int f = 0; f < IdleFrames; f++)
+        for (int f = 0; f < count; f++)
         {
-            // Breathed out, then in: a quarter and three quarters of the idle's beat
-            var pose = new PokePose { Time = (f == 0 ? 0.25f : 0.75f) * MathF.Tau / PokemonAnimation.Beat / MathF.Max(0.1f, model.Tempo) };
+            // Breathed out, then in: a quarter and three quarters of the idle's beat; a walk's frames an eighth of a stride apart
+            var pose = walk ? WalkPose(model, f) : new PokePose { Time = (f == 0 ? 0.25f : 0.75f) * MathF.Tau / PokemonAnimation.Beat / MathF.Max(0.1f, model.Tempo) };
             Raylib.BeginTextureMode(target);
             Raylib.ClearBackground(new Color(0, 0, 0, 0));
             Rlgl.SetClipPlanes(1.0, 60.0);
@@ -302,6 +335,23 @@ internal static class FieldSprites
             var sheet = Bake(context, model, name, facing);
             all ??= new PixelCanvas(sheet.Width * 4, sheet.Height);
             all.Blit(sheet, facing * sheet.Width, 0);
+        }
+        return all!.ToImage(scale);
+    }
+
+    /// <summary>
+    /// Every facing's walk strip of a species, a facing to a row, enlarged without filtering (the harness's
+    /// <c>97_field_walk_</c> boards, plan 10 · F2). Call outside any texture mode.
+    /// </summary>
+    internal static Image WalkSheet(RenderContext context, string name, int scale)
+    {
+        var model = PokemonModels.Get(name);
+        PixelCanvas? all = null;
+        for (int facing = 0; facing < 4; facing++)
+        {
+            var sheet = Bake(context, model, name, facing, walk: true);
+            all ??= new PixelCanvas(sheet.Width, sheet.Height * 4);
+            all.Blit(sheet, 0, facing * sheet.Height);
         }
         return all!.ToImage(scale);
     }

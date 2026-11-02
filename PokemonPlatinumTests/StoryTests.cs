@@ -696,6 +696,8 @@ public class StoryTests
         started.Add(FieldScripts.TrainerPair);
         // An Egg hatching at the end of a step (plan 06 · R15)
         started.Add(FieldScripts.HatchEgg);
+        // The follower spoken to with something found (plan 10 · F4)
+        started.Add(FieldScripts.FollowerFound);
         // The Underground (plan 06 · R16a): a wall that holds something, a base's PC and the bag's way up, which the game starts
         started.UnionWith(PokemonPlatinumEngine.Core.GameEngine.UndergroundScripts.Select(name => Scripts.Find(name, "underground")!.FullName));
         // What looking at the Villa's furniture says, and the Catching Show's end (plan 06 · R16b)

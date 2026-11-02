@@ -54,7 +54,8 @@ public class CaptionsAndHoldTests : IDisposable
         Assert.Equal(captions + 5, Array.IndexOf(rows, OptionRow.Requests));
         // (and Q8's three rows of seeing after that, and Q23's TIPS after those)
         Assert.Equal(captions + 9, Array.IndexOf(rows, OptionRow.Tips));
-        Assert.Equal(captions + 11, Array.IndexOf(rows, OptionRow.Controls));
+        // (and plan 10 · F3's and F5's FOLLOWER and WILD POKéMON after RETRY BATTLES)
+        Assert.Equal(captions + 13, Array.IndexOf(rows, OptionRow.Controls));
 
         foreach (var row in new[] { OptionRow.Captions, OptionRow.HoldToConfirm })
         {

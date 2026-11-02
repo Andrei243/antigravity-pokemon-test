@@ -259,6 +259,18 @@ public sealed class GameSettings
     public bool RetryBattles { get; set; }
 
     /// <summary>
+    /// Whether the team's first Pokémon that can stand walks behind the player in the field (plan 10 · F3, as in
+    /// HeartGold and SoulSilver). Off unless chosen: Platinum's field has nobody behind the player.
+    /// </summary>
+    public bool Follower { get; set; }
+
+    /// <summary>
+    /// Whether wild Pokémon are seen in the grass and on the water and met by touching them, in place of the grass's
+    /// hidden rolls (plan 10 · F5). Off (Platinum's hidden encounters) unless chosen.
+    /// </summary>
+    public bool WildInSight { get; set; }
+
+    /// <summary>
     /// Every option back at its default (plan 12 · Q3: the options' last row, behind a question): the settings as
     /// <c>new GameSettings()</c> has them. Not the scenes this machine has seen (<see cref="ScenesSeen"/>), which are
     /// no option but a record of what was played, nor what the first run measured (plan 16 · T23), and not what a switch of the command line set for this run alone,

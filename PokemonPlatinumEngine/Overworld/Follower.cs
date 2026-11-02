@@ -118,7 +118,40 @@ public sealed class Follower
         for (int x = Who.GridX; x != tx; x += Math.Sign(tx - x)) path.Add(tx > x ? Direction.Right : Direction.Left);
         for (int y = Who.GridY; y != ty; y += Math.Sign(ty - y)) path.Add(ty > y ? Direction.Down : Direction.Up);
         if (path.Count == 0) return;
+        // Two tiles at once is where the player hopped a ledge: the follower hops it after them, as long as the
+        // player's hop, and lands where they landed (plan 10 · F3)
+        if (path.Count >= 2)
+        {
+            hopLength = path.Count / Math.Max(NpcWalk.WalkPace, tilesPerSecond * 2f);
+            hopAge = 0f;
+            step = new NpcWalk(Who, path, Math.Max(NpcWalk.WalkPace, tilesPerSecond * 2f));
+            return;
+        }
         step = new NpcWalk(Who, path, Math.Max(NpcWalk.WalkPace, tilesPerSecond));
+    }
+
+    // A hop under way over a ledge: how long it lasts and how far through it they are (plan 10 · F3)
+    private float hopLength, hopAge = -1f;
+
+    /// <summary>Whether they are in the air over a ledge.</summary>
+    public bool Hopping => hopAge >= 0f;
+
+    /// <summary>
+    /// Moves a hop over a ledge on and sets how high they are in it (<see cref="NPC.Hop"/>); true on the frame they
+    /// land, so the field raises its dust. Nothing while no hop is under way.
+    /// </summary>
+    public bool KeepHopping(float dt)
+    {
+        if (hopAge < 0f) return false;
+        hopAge += dt;
+        if (hopAge >= hopLength || step == null)
+        {
+            hopAge = -1f;
+            Who.Hop = 0f;
+            return true;
+        }
+        Who.Hop = MathF.Sin(MathF.PI * hopAge / hopLength);
+        return false;
     }
 
     /// <summary>
@@ -140,6 +173,8 @@ public sealed class Follower
         Who.Facing = facing;
         Who.StepOffsetX = Who.StepOffsetY = 0f;
         Who.WalkBlend = 0f;
+        hopAge = -1f;
+        Who.Hop = 0f;
     }
 
     /// <summary>
@@ -160,5 +195,7 @@ public sealed class Follower
         crowded = false;
         step?.Finish();
         step = null;
+        hopAge = -1f;
+        Who.Hop = 0f;
     }
 }
