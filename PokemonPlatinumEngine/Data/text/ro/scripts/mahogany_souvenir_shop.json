@@ -133,6 +133,32 @@
       ]
     }
   ],
+  "Saleswoman": [
+    {
+      "en": [
+        "Saleswoman"
+      ],
+      "text": [
+        "Vânzătoarea"
+      ]
+    },
+    {
+      "en": [
+        "Welcome back to the souvenir shop! Those crooks are gone, so we're open properly again."
+      ],
+      "text": [
+        "Bine ai revenit la magazinul de suveniruri! Pungașii ăia au plecat, așa că suntem deschiși ca lumea iar."
+      ]
+    },
+    {
+      "en": [
+        "A Rage Candy Bar perks up a Pokémon that's feeling poorly. Come again, dear!"
+      ],
+      "text": [
+        "Un Baton Rage înviorează un Pokémon care nu se simte bine. Mai treci pe la noi, dragă!"
+      ]
+    }
+  ],
   "Lance": [
     {
       "en": [

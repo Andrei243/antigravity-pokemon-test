@@ -76,6 +76,18 @@ partial class Harness
             engine.NewGameRegion = "Sinnoh";
             return;
         }
+        // JOHTO_FROM=extras shoots only Johto's own leftovers (the bands, the Lake of Rage's houses, the Red Scale, the
+        // souvenir shop and the radio's broadcasts)
+        if (Environment.GetEnvironmentVariable("JOHTO_FROM") == "extras")
+        {
+            engine.NewGameRegion = "Johto";
+            engine.StartNewGame();
+            game.SaveSlot = 1;
+            game.LocationSign.Hide();
+            JohtoExtrasShots();
+            engine.NewGameRegion = "Sinnoh";
+            return;
+        }
         // JOHTO_FROM=apricorn shoots only plan 20 · J6 (Apricorn trees, the Apricorn Box, Kurt's balls)
         if (Environment.GetEnvironmentVariable("JOHTO_FROM") == "apricorn")
         {

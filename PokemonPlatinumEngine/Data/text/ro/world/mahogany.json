@@ -20,6 +20,26 @@
         ]
       }
     },
+    "t28_gsgirl1": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The souvenir shop is selling Rage Candy Bars again! I came all this way for one.",
+          "Everyone says the shop was strange for a while. I'm glad it's back to normal."
+        ],
+        "text": [
+          "Magazinul de suveniruri vinde iar Batoane Rage! Am venit tocmai până aici pentru unul.",
+          "Toată lumea zice că magazinul a fost ciudat o vreme. Mă bucur că a revenit la normal."
+        ]
+      }
+    },
     "t28_gsoldman1": {
       "name": {
         "en": [

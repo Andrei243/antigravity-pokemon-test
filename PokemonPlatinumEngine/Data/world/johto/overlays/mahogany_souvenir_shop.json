@@ -14,6 +14,9 @@
     "d35r0101_sunglasses": { "name": "Salesman", "npcType": "Gentleman", "script": "Salesman", "still": true },
     "d35r0101_gsfighter": { "name": "Man", "script": "Customer", "still": true },
     "d35r0101_wataru": { "name": "Lance", "script": "Lance", "still": true },
+    // The shop's own saleswoman, back once the Radio Tower is freed (FLAG_HIDE_MAHOGANY_SHOP_SALESWOMAN, cleared by the
+    // observation deck's scene): she sells Rage Candy Bars and keepsakes (marts.json's mahogany_souvenirs)
+    "d35r0101_gsoldwoman1": { "name": "Saleswoman", "script": "Saleswoman", "still": true },
     "d35r0101_tsure_poke_static_dragonite": { "name": "Dragonite", "npcType": "Pokemon", "species": "Dragonite", "still": true, "dialog": [ "Dragonite is glaring at the counter." ] }
   },
   "signs": {

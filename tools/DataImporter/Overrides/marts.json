@@ -59,6 +59,8 @@
     "mall_balls": [ "Poké Ball", "Great Ball", "Ultra Ball", "Repeat Ball", "Timer Ball", "Net Ball", "Nest Ball", "Dive Ball", "Quick Ball", "Luxury Ball" ],
     "mall_vitamins": [ "HP Up", "Protein", "Iron", "Carbos", "Calcium", "Zinc" ],
     "mall_battle": [ "X Attack", "X Defense", "X Speed", "X Accuracy", "X Sp. Atk", "X Sp. Def", "Guard Spec.", "Dire Hit" ],
-    "mall_machines": [ "TM70", "TM17", "TM54", "TM83", "TM16", "TM33", "TM22", "TM52", "TM38", "TM25", "TM14", "TM15" ]
+    "mall_machines": [ "TM70", "TM17", "TM54", "TM83", "TM16", "TM33", "TM22", "TM52", "TM38", "TM25", "TM14", "TM15" ],
+    // Mahogany Town's souvenir shop once Team Rocket is gone (plan 20, Johto's leftovers): its sweets and keepsakes, our own stock
+    "mahogany_souvenirs": [ "Rage Candy Bar", "Tiny Mushroom", "Poké Ball", "Potion", "Antidote", "Ice Heal" ]
   }
 }

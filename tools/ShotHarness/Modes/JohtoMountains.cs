@@ -85,6 +85,9 @@ partial class Harness
         var renderer = game.World;
         double total = 0, worst = 0;
         int frames = 0, tiles = 0;
+        // A leg begins on another map, which the game comes to behind a warp's fade: the chunks in view are waited for
+        // there on purpose (WorldRenderer.ScenesFor), so those waits are counted apart from the walk's
+        int arrivalWaits = 0, walkingWaits = 0;
         string worstAt = "";
         bool first = true;
         var watch = new System.Diagnostics.Stopwatch();
@@ -97,8 +100,10 @@ partial class Harness
             // Neither end is stood on: both are ways out, and standing on one would take it
             if (path.Count > 0 && path[^1] == to) path.RemoveAt(path.Count - 1);
             if (path.Count == 0) continue;
+            int before = renderer.Streaming.Waits;
             At(name, path[0].X, path[0].Y, Direction.Down); Frames(first ? 30 : 4);
             if (first) { renderer.ResetStreamingStats(); first = false; }
+            else arrivalWaits += renderer.Streaming.Waits - before;
             foreach (var (x, y) in path)
             {
                 game.Player.SetPosition(x, y, Direction.Down);
@@ -106,8 +111,11 @@ partial class Harness
                 {
                     watch.Restart();
                     FrameClock.Fixed = ++tick / 60.0;
+                    int waits = renderer.Streaming.Waits;
                     engine.Update(1f / 60f);
                     engine.Draw();
+                    if (renderer.Streaming.Waits > waits) Console.WriteLine($"!! a chunk waited for while walking {name} ({x}, {y})");
+                    walkingWaits += renderer.Streaming.Waits - waits;
                     double ms = watch.Elapsed.TotalMilliseconds;
                     total += ms; frames++;
                     if (ms > worst) { worst = ms; worstAt = $"{name} ({x}, {y})"; }
@@ -119,5 +127,6 @@ partial class Harness
         }
         Console.WriteLine($"walk from Mahogany Town through the Ice Path to Blackthorn City: {tiles} tiles, {total / Math.Max(1, frames):F2} ms/frame, worst frame {worst:F1} ms at {worstAt}");
         Console.WriteLine($"  streaming: {renderer.Streaming}");
+        Console.WriteLine($"  of those waits, {walkingWaits} while walking and {arrivalWaits} on arriving at a leg's map (behind a warp's fade in the game)");
     }
 }

@@ -7711,3 +7711,36 @@ Platinum has no gallery; this is ours, after the later games' model viewers (`UI
 - **The people** are the player's two looks and the region's professor, as the plan's fallback has it: the game's greetings (plan 08 · P12) remember people by who they are, not by the look they are drawn in.
 - **Models are never kept for good.** The gallery asks for the model under the cursor once, shows the still sprite until it is built, and lets go of every model it was the first to ask for as the cursor moves on and as it closes; a model the game already held stays the game's.
 - **The bakes are untouched**: the turn and the zoom the gallery renders with are nought and one for every sprite, strip and portrait, so no baked sprite changes and nothing is baked again.
+
+## Johto's own leftovers: the bands, the Lake of Rage's houses, the Red Scale, the Rage Candy Bar and the radio's broadcasts (2026-11-02, plan 20)
+
+- *The bands*: Johto's thirteen are `SceneTransition.JohtoBands` (the style guide's fourth table), looked through after
+  Hoenn's and before Kanto's, so Koga of Johto's Four and Lance as Johto's Champion wear Johto's bands while Kanto's
+  Leader Koga and Kanto's member of the Four Lance keep theirs. Bruno is the same man in both Leagues and wears Kanto's
+  band in either (Johto's table repeats it). Janine and Blue, the Leaders HeartGold's Kanto adds, are left to that work.
+- *The fishing guru* (`lake_of_rage_fishing_guru_house.txt`) keeps the lake's Magikarp record in a variable of ours,
+  `VAR_JOHTO_MAGIKARP_SIZE_RECORD`, apart from Kanto's fishing brother's `VAR_MAGIKARP_SIZE_RECORD`. It holds nothing
+  until he has measured one, so the first Magikarp shown is a record, as with Kanto's brother. A record pays an Elixir
+  every time, as Gold and Silver's guru does: HeartGold's own prize couldn't be read (no cache of its scripts here).
+- *TM10*: the man of the house beside him gives Hidden Power once (`FLAG_JOHTO_GOT_TM10_FROM_LAKE_OF_RAGE`, ours).
+- *The Red Scale* is a key item of ours (9230), put in the bag by the red Gyarados's scene beside HeartGold's
+  `FLAG_GOT_RED_SCALE`. Mr. Pokémon trades his Exp. Share for it and asks again after a refusal
+  (`FLAG_JOHTO_GOT_EXP_SHARE`, ours). A save already past the scene has the flag and no scale, and is not given one: no
+  story version was raised for it.
+- *The Rage Candy Bar* is an item of ours (9231, Medicine, 300) that cures as a Lava Cookie does. The souvenir shop's
+  saleswoman, back once the Radio Tower is freed (HeartGold's `FLAG_HIDE_MAHOGANY_SHOP_SALESWOMAN`, which the
+  observation deck's scene already cleared), sells it with a few keepsakes (`marts.json`'s `mahogany_souvenirs`, our own
+  stock), and the girl before the shop comes out with her. The man who sells the bars at the street's east end is still
+  left out (`FLAG_UNK_205`, which nothing sets), so the way east stays open.
+- *The radio*: while Team Rocket hold the Radio Tower (`VAR_SCENE_ROCKET_TAKEOVER` 2 to 4) every station Johto receives
+  is their broadcast (`RadioSignal.Rocket`, slot 6); while the hideout under the souvenir shop is at work (the red
+  Gyarados met, Ariana not yet beaten) the stations give way to its signal in Mahogany Town, on Route 43 and its gate and
+  at the Lake of Rage (`RadioSignal.Mahogany`, slot 7). Caves and the Ruins of Alph's halls keep what they receive. The
+  lines are ours (`radio.json`); neither plays a song, so the place's theme goes on.
+- *The Ice Path's waits*: the timed walk from Mahogany Town through the Ice Path to Blackthorn City counted 10 chunks
+  waited for. Each leg of that walk begins on another map, which the harness comes to by putting the player down with
+  no fade, and `WorldRenderer.ScenesFor` waits on purpose for the chunks in view of an arrival (in the game that is
+  behind a warp's fade). The walk now counts those apart (`JohtoMountains.cs`) and prints any wait while walking with
+  its tile. Run on 2026-11-02: 498 tiles, 9 waits, all on arriving and none while walking, so no streaming fault. One
+  frame while walking took 1.3 s (on the Ice Path's first floor at 39, 26) with no chunk waited for: something else
+  is made on the main thread there the first time, not looked into yet.

@@ -50,12 +50,27 @@ script OnEnter
   end
 
 
-# Mr. Pokémon afterwards.
+# Mr. Pokémon afterwards. Shown the Red Scale the Lake of Rage's Gyarados left behind (lake_of_rage.txt), he offers
+# an Exp. Share for it, as HeartGold's does; refused, he asks again the next time (FLAG_JOHTO_GOT_EXP_SHARE, ours).
 script MrPokemon
   speaker "Mr. Pokémon"
+  if item "Red Scale" goto Scale
   if flag FLAG_GOT_MYSTERY_EGG goto After
   say "Hello, hello! Have a look round. Everything in here came from my travels."
   end
 label After
   say "Elm will get to the bottom of that Egg, mark my words. Do come and tell me what hatches!"
+  end
+label Scale
+  say "Hm? What's that you've got there? A scale... a red one! Oh my, I've never seen a Gyarados scale that colour!"
+  ask "I simply must add it to my collection. Would you trade it for my Exp. Share?"
+  if no goto Keep
+  take "Red Scale"
+  say "Wonderful! Here you are, as promised."
+  give "Exp. Share"
+  setflag FLAG_JOHTO_GOT_EXP_SHARE
+  say "A Pokémon holding the Exp. Share earns a share of the experience from every battle, even sitting out."
+  end
+label Keep
+  say "No? Well, I can see why you'd want to keep it. Do bring it back if you change your mind!"
   end

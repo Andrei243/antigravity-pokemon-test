@@ -353,6 +353,42 @@
     "cantBeTossed": true,
     "fieldUse": "TmHm"
   },
+  // Johto's two keepsakes of the Lake of Rage and Mahogany Town (plan 20, Johto's leftovers): the scale the red Gyarados
+  // leaves behind, which Mr. Pokémon trades for an Exp. Share, and the town's famous sweet, which its souvenir shop sells
+  // once Team Rocket is gone and which cures as a Lava Cookie does (HeartGold's Rage Candy Bar)
+  "Red Scale": {
+    "id": 9230,
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A red, shining scale the raging Gyarados of the Lake of Rage left behind. Someone might want it.",
+    "cantBeTossed": true
+  },
+  "Rage Candy Bar": {
+    "id": 9231,
+    "pocket": "Medicine",
+    "effectType": "HealStatus",
+    "effectValue": 0,
+    "price": 300,
+    "canUseInBattle": true,
+    "canUseInOverworld": true,
+    "description": "Mahogany Town's famous candy, which tourists love to buy. It cures any status ailment and confusion.",
+    "flingPower": 30,
+    "fieldUse": "Healing",
+    "battleUse": "Healing",
+    "battlePocket": "RecoverStatus",
+    "use": {
+      "healSleep": 1,
+      "healPoison": 1,
+      "healBurn": 1,
+      "healFreeze": 1,
+      "healParalysis": 1,
+      "healConfusion": 1
+    }
+  },
   // FireRed's key items of the third chapter (plan 19 · K5, part b), which no game this importer reads has: the
   // Rocket Hideout's Lift Key and the Silph Scope Giovanni leaves, Mr. Fuji's Poké Flute, the Tea Celadon's old lady
   // gives (for the thirsty guards of Saffron City's gates) and Silph Co.'s Card Key

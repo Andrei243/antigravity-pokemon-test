@@ -5,8 +5,8 @@
 # HeartGold's WildBattle with its shiny flag (`wildbattle "Gyarados" 30 shiny`); won, caught or run from, it is gone
 # and Lance and his Dragonite stand on the south shore (FLAG_HIDE_LAKE_OF_RAGE_LANCE). Won or caught, it leaves its
 # scale behind (FLAG_GOT_RED_SCALE, which also brings Ace Trainer Lois back to the lake as HeartGold's does): the Red
-# Scale itself is no item of this game's data yet, so the flag is all the scene gives (docs/mechanics/rulings.md,
-# "Johto's fourth chapter, part a"). Caught, FLAG_CAUGHT_RED_GYARADOS. Lance asks the player to look into the
+# Scale goes into the bag, a key item Mr. Pokémon trades an Exp. Share for (route_30_mr_pokemon_house.txt; until
+# Johto's leftovers it was the flag alone). Caught, FLAG_CAUGHT_RED_GYARADOS. Lance asks the player to look into the
 # souvenir shop in Mahogany Town with him: yes sends him on ahead (VAR_UNK_40A8 1, mahogany_souvenir_shop.txt), no
 # keeps him waiting (FLAG_UNK_0C3) to ask again.
 
@@ -33,6 +33,7 @@ script RedGyarados
   if result == 3 setflag FLAG_CAUGHT_RED_GYARADOS
   if flag FLAG_GOT_RED_SCALE end
   text "The lake has gone still. Something red glints in the water where the Gyarados was."
+  give "Red Scale"
   setflag FLAG_GOT_RED_SCALE
   clearflag FLAG_HIDE_LAKE_OF_RAGE_ACE_TRAINER_LOIS
   end

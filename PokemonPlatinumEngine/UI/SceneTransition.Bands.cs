@@ -159,6 +159,29 @@ public static partial class SceneTransition
         new BattleBand("Champion", "Wallace", Rgb(40, 168, 176), Rgb(16, 92, 100), Rgb(156, 228, 232))
     };
 
+    /// <summary>
+    /// Johto's thirteen (plan 20 · J14's last part; the style guide's fourth table): the eight Leaders, the four of the
+    /// Elite Four and Lance as its Champion, none the base colour of a Sinnoh, Kanto or Hoenn band but Bruno's, who is
+    /// the same man in both Leagues and wears Kanto's band in either. Koga as a member of the Four and Lance as the
+    /// Champion are other entries than Kanto's Leader Koga and member of the Four Lance.
+    /// </summary>
+    public static IReadOnlyList<BattleBand> JohtoBands { get; } = new[]
+    {
+        new BattleBand("Leader", "Falkner", Rgb(120, 148, 196), Rgb(56, 72, 116), Rgb(200, 214, 240)),
+        new BattleBand("Leader", "Bugsy", Rgb(168, 196, 40), Rgb(92, 112, 16), Rgb(228, 240, 136)),
+        new BattleBand("Leader", "Whitney", Rgb(236, 136, 168), Rgb(148, 60, 92), Rgb(252, 208, 224)),
+        new BattleBand("Leader", "Morty", Rgb(96, 76, 140), Rgb(44, 32, 76), Rgb(188, 176, 224)),
+        new BattleBand("Leader", "Chuck", Rgb(200, 128, 60), Rgb(120, 68, 28), Rgb(248, 204, 156)),
+        new BattleBand("Leader", "Jasmine", Rgb(140, 168, 176), Rgb(64, 84, 92), Rgb(216, 230, 234)),
+        new BattleBand("Leader", "Pryce", Rgb(156, 184, 220), Rgb(72, 92, 140), Rgb(220, 232, 248)),
+        new BattleBand("Leader", "Clair", Rgb(72, 120, 200), Rgb(32, 56, 124), Rgb(168, 200, 244)),
+        new BattleBand("Elite Four", "Will", Rgb(196, 72, 120), Rgb(112, 28, 64), Rgb(244, 168, 200)),
+        new BattleBand("Elite Four", "Koga", Rgb(112, 64, 128), Rgb(56, 28, 68), Rgb(196, 160, 212)),
+        new BattleBand("Elite Four", "Bruno", Rgb(188, 92, 60), Rgb(112, 44, 28), Rgb(240, 184, 140)),
+        new BattleBand("Elite Four", "Karen", Rgb(136, 48, 72), Rgb(68, 20, 36), Rgb(220, 148, 168)),
+        new BattleBand("Champion", "Lance", Rgb(168, 36, 64), Rgb(96, 12, 32), Rgb(236, 156, 176))
+    };
+
     /// <summary>The name the Champion of Kanto's entry carries: the rival's, whatever the player called him.</summary>
     public const string RivalPlaceholder = "{rival}";
 
@@ -169,7 +192,7 @@ public static partial class SceneTransition
     public static bool IsBand(TransitionKind kind) => kind is TransitionKind.LeaderBand or TransitionKind.EliteBand;
 
     /// <summary>
-    /// The band of a trainer by class and name: Sinnoh's table, Hoenn's, Kanto's, or the plain one under their own class and
+    /// The band of a trainer by class and name: Sinnoh's table, Hoenn's, Johto's, Kanto's, or the plain one under their own class and
     /// name. The rival as Kanto's Champion (named <c>{rival}</c> in the data, or by the name the player gave him) wears
     /// the Champion's band under that name.
     /// </summary>
@@ -179,6 +202,9 @@ public static partial class SceneTransition
             if (band.Class == trainerClass && band.Name == name) return band;
         // Hoenn's before Kanto's, whose Champion is whoever bears the rival's name
         foreach (var band in HoennBands)
+            if (band.Class == trainerClass && band.Name == name) return band;
+        // Johto's before Kanto's: its Champion Lance and its Koga of the Four are not Kanto's entries
+        foreach (var band in JohtoBands)
             if (band.Class == trainerClass && band.Name == name) return band;
         foreach (var band in KantoBands)
             if (band.Class == trainerClass && (band.Name == name || (trainerClass == "Champion" && IsTheRival(name))))

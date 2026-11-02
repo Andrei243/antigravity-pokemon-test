@@ -1,0 +1,19 @@
+# A house by the Lake of Rage (plan 20, Johto's leftovers). docs/scripts.md describes the language; the lines are our
+# own, on HeartGold's beats (scr_seq_T29R0101): the man who meditates on the power hidden in every Pokémon gives TM10,
+# Hidden Power, once (FLAG_JOHTO_GOT_TM10_FROM_LAKE_OF_RAGE, ours).
+
+
+# T29R0101_000
+script Man
+  speaker "Man"
+  if flag FLAG_JOHTO_GOT_TM10_FROM_LAKE_OF_RAGE goto After
+  say "Every Pokémon has a power hidden inside it. I've spent years meditating on it."
+  say "You look like someone who understands. Here, let this help you find it."
+  give "TM10"
+  setflag FLAG_JOHTO_GOT_TM10_FROM_LAKE_OF_RAGE
+  say "Hidden Power's type depends on the Pokémon that uses it. Try it on all of yours!"
+  end
+label After
+  say "Every Pokémon has a power hidden inside it. Its type depends on the Pokémon itself!"
+  say "I sit here and meditate on it. Mostly I just sit here."
+  end
