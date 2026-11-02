@@ -82,5 +82,15 @@
         "Mulțumesc pentru vorba de mai devreme. Mă face să zâmbesc și acum."
       ]
     }
+  ],
+  "Rare": [
+    {
+      "en": [
+        "{phrase:BERRY_MASTERS_WIFE}! My husband used to say that when we were young. That deserves something special."
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

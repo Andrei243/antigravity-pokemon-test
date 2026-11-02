@@ -18,10 +18,24 @@
     },
     {
       "en": [
+        "We're about halfway there. It won't be long now, but your cabin's free if you'd like another rest."
+      ],
+      "text": [
+        ""
+      ],
+      "was": [
+        "Am ajuns în Orașul Lilycove. Ai grijă la pasarelă când cobori!"
+      ]
+    },
+    {
+      "en": [
         "We've arrived at Lilycove City. Mind the gangway on your way down!"
       ],
       "text": [
-        "Am ajuns în Orașul Lilycove. Ai grijă la pasarelă când cobori!"
+        ""
+      ],
+      "was": [
+        "Am ajuns în Orașul Slateport. Ai grijă la pasarelă când cobori!"
       ]
     },
     {
@@ -29,7 +43,25 @@
         "We've arrived at Slateport City. Mind the gangway on your way down!"
       ],
       "text": [
-        "Am ajuns în Orașul Slateport. Ai grijă la pasarelă când cobori!"
+        ""
+      ]
+    }
+  ],
+  "ReachedStepCount": [
+    {
+      "en": [
+        "Attention, passengers. We have arrived at Lilycove City."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Attention, passengers. We have arrived at Slateport City."
+      ],
+      "text": [
+        ""
       ]
     }
   ]

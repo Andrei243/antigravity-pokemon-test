@@ -180,14 +180,6 @@
         "text": [
           "Biciclista"
         ]
-      },
-      "dialog": {
-        "en": [
-          "The Cycling Road's for speed. The fewer things you bump into, the better your time!"
-        ],
-        "text": [
-          "Drumul Bicicliștilor e pentru viteză. Cu cât te lovești de mai puține lucruri, cu atât timpul e mai bun!"
-        ]
       }
     },
     "aqua_member_m": {
@@ -716,14 +708,6 @@
       ],
       "text": [
         "Casa Trucurilor\nMaestrul Trucurilor te așteaptă! Poți să-i rezolvi puzzle-urile?"
-      ]
-    },
-    "Route110_EventScript_CyclingRoadResultsSign": {
-      "en": [
-        "Seaside Cycling Road\nBest times are posted here. Nobody has set one yet."
-      ],
-      "text": [
-        "Drumul Bicicliștilor de pe Malul Mării\nAici se afișează cei mai buni timpi. Încă nu a stabilit nimeni unul."
       ]
     }
   }

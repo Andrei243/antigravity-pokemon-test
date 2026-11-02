@@ -25,7 +25,7 @@ public static class ScriptParser
         "RESULT", "PLAYER_X", "PLAYER_Y", "MONEY", "PARTY_COUNT", "BADGE_COUNT", "GREETINGS", "SEEN", "LEAD_FRIENDSHIP",
         "TURNS", "SAFARI_CAUGHT",
         "LEAGUE_VICTORIES",
-        "CYCLING",
+        "CYCLING", "BIKE",
         "CAUGHT",
         "FAINTED", "LEAD_SPECIES", "SECOND_SPECIES",
         "CROSSED_IN",
@@ -888,6 +888,10 @@ public static class ScriptParser
             }
             case "townmap":
                 return new Instruction { Op = Op.TownMap, Line = line };
+            // The Seaside Cycling Road's timed run (plan 21 · H12, part k): "cyclingroad finish" judges the run just ended,
+            // "cyclingroad record" reads the best (RESULT nought where there is none)
+            case "cyclingroad":
+                return new Instruction { Op = Op.CyclingRoad, Line = line, Name = r.OneOf(new[] { "finish", "record" }) };
             // What to do next (plan 12 · Q14): "objective roark", a name of Story/Objectives.cs
             case "objective":
             {

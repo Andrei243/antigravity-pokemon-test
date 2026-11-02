@@ -279,6 +279,10 @@
       "note": "first spoken at lilycove_city_lilycove_museum_1f.txt(9)",
       "provisional": true
     },
+    "cyclist": {
+      "note": "first spoken at route_110.txt(197)",
+      "provisional": true
+    },
     "cynthia": {},
     "cyrus": {},
     "dahlia": {
@@ -1471,6 +1475,7 @@
     "Crasher Wake": "crasher_wake",
     "Cristin": "cristin",
     "Curator": "curator",
+    "Cyclist": "cyclist",
     "Cynthia": "cynthia",
     "Cyrus": "cyrus",
     "Dahlia": "dahlia",

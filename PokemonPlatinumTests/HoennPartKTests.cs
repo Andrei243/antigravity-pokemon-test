@@ -28,6 +28,9 @@ public class HoennPartKTests
         public Map Map { get; private set; } = null!;
         public (int X, int Y) Tile { get; set; }
         public IReadOnlyList<string>? Phrase { get; set; } = HeadlessScriptHost.DefaultPhrase;
+        public (int Frames, int Collisions) Ride { get; set; }
+        public TravelMode Mode { get; set; } = TravelMode.OnFoot;
+        public int Bike { get; set; } = 3;
         public HeadlessScriptHost Last { get; private set; } = null!;
 
         public Game(string map, int x, int y, bool champion = true)
@@ -71,6 +74,9 @@ public class HoennPartKTests
                 MapNamed = name => maps.GetValueOrDefault(name),
                 Fight = _ => BattleOutcome.Won,
                 PhraseChoice = Phrase,
+                CyclingRun = Ride,
+                PlayerMode = Mode,
+                BikeRidden = Bike,
                 NeedsPokemon = true
             };
             foreach (int answer in answers) host.Answers.Enqueue(answer);
@@ -259,5 +265,56 @@ public class HoennPartKTests
         game.Phrase = HeadlessScriptHost.DefaultPhrase;
         game.Talk("old_woman");
         Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get(berry)!));
+    }
+
+    [Theory]
+    // Emerald's DetermineCyclingRoadResults: five for collisions and five for time
+    [InlineData(600, 0, 10)]
+    [InlineData(601, 0, 10)]
+    [InlineData(660, 3, 8)]
+    [InlineData(900, 9, 7)]
+    [InlineData(1260, 19, 4)]
+    [InlineData(2400, 50, 3)]
+    [InlineData(3599, 99, 2)]
+    [InlineData(3600, 100, 0)]
+    public void TheCyclingRoadsMarkIsEmeralds(int frames, int collisions, int mark) =>
+        Assert.Equal(mark, CyclingRoad.Mark(frames, collisions));
+
+    [Fact]
+    public void TheCyclingRoadTimesAMachBikeRiderAndKeepsTheBest()
+    {
+        // The north gate's step starts a run only on the Mach Bike
+        var game = new Game("Route110_SeasideCyclingRoadNorthEntrance", 4, 4) { Mode = TravelMode.Cycling, Bike = 1 };
+        var check = Scripts.Find("BikeCheck", "route_110_seaside_cycling_road_north_entrance")!;
+        game.Play(check);
+        Assert.Equal(0, game.Story.Var(CyclingRoad.StateVariable));
+        game.Bike = 2;
+        game.Play(check);
+        Assert.Equal(1, game.Story.Var(CyclingRoad.StateVariable));
+
+        // The road's south end judges the run (the game had begun it: state 2)
+        game.Arrive("Hoenn", 228, 252);
+        game.Run("ResultsSign");
+        Assert.Contains(game.Last.Transcript, l => l.Text.Contains("Nobody has set"));
+        game.Story.SetVar(CyclingRoad.StateVariable, 2);
+        game.Ride = (13 * 60 + 30, 2);
+        game.Run("CyclingChallengeEnd");
+        Assert.Equal(3, game.Story.Var(CyclingRoad.StateVariable));
+        Assert.Contains(game.Last.Transcript, l => l.Text.Contains("2 times") && l.Text.Contains("13.50 seconds"));
+        Assert.Contains(game.Last.Transcript, l => l.Text.Contains("great ride"));
+        Assert.Equal(13 * 60 + 30, game.Story.Var(CyclingRoad.RecordFrames));
+        // A slower run is told but not kept; the board shows the best
+        game.Story.SetVar(CyclingRoad.StateVariable, 2);
+        game.Ride = (70 * 60, 120);
+        game.Run("CyclingChallengeEnd");
+        Assert.Contains(game.Last.Transcript, l => l.Text.Contains("99 times or more") && l.Text.Contains("a minute or more"));
+        Assert.Equal(13 * 60 + 30, game.Story.Var(CyclingRoad.RecordFrames));
+        Assert.Equal(2, game.Story.Var(CyclingRoad.RecordCollisions));
+        game.Run("ResultsSign");
+        Assert.Contains(game.Last.Transcript, l => l.Text.Contains("13.50 seconds"));
+        // The end's triggers wait for a run
+        var triggers = game.Map.Triggers.Where(t => t.Variable == CyclingRoad.StateVariable).ToList();
+        Assert.Equal(2, triggers.Count);
+        Assert.All(triggers, t => Assert.Equal(2, t.Value));
     }
 }

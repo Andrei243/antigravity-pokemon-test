@@ -10,6 +10,9 @@
   "bgmTrack": "hoenn/route110",
   "trees": "Round",
   "triggers": [
+    // The Seaside Cycling Road's south end, which judges a run timed from the north gate (plan 21 · H12, part k)
+    { "trigger": 0, "script": "CyclingChallengeEnd" },
+    { "trigger": 1, "script": "CyclingChallengeEnd" },
     { "trigger": 2, "script": "RivalTrigger" },
     { "trigger": 3, "script": "RivalTrigger" },
     { "trigger": 4, "script": "RivalTrigger" }
@@ -25,7 +28,7 @@
     "expert_m": { "name": "Old Man", "dialog": [ "Two roads run side by side here, one up high and one down low. Each has its own view." ] },
     "cycling_triathlete_f": { "name": "Cyclist", "dialog": [ "My hair streams out behind me when I race down the road. It's the best feeling!" ] },
     "boy_3": { "name": "Boy", "dialog": [ "I'm going to ride the Cycling Road flat out, from one end to the other!" ] },
-    "challenge_biker": { "name": "Cyclist", "dialog": [ "The Cycling Road's for speed. The fewer things you bump into, the better your time!" ] },
+    "challenge_biker": { "name": "Cyclist", "script": "ChallengeGuy" },
     "aqua_member_m": { "name": "Team Aqua Grunt", "npcType": "aqua_grunt", "dialog": [ "What we're up to? That's Team Aqua business. Move along." ] },
     "aqua_member_m_2": { "name": "Team Aqua Grunt", "npcType": "aqua_grunt", "dialog": [ "We're just going to stir things up a bit. Nothing to see here." ] },
     "aqua_member_m_3": { "name": "Team Aqua Grunt", "npcType": "aqua_grunt", "dialog": [ "This is my first real job for Team Aqua. I'm a little nervous!" ] },
@@ -55,7 +58,10 @@
     "Route110_EventScript_MauvilleCitySign": "Route 110\nNorth: Mauville City",
     "Route110_EventScript_TrainerTipsPrlzSleep": "Trainer Tips\nA paralysed Pokémon or a sleeping one is far easier to catch.",
     "Route110_EventScript_TrainerTipsRegisterItems": "Trainer Tips\nRegister a key item in the bag, and use it at the press of a single button.",
-    "Route110_EventScript_TrickHouseSign": "Trick House\nThe Trick Master awaits! Can you solve his puzzles?",
-    "Route110_EventScript_CyclingRoadResultsSign": "Seaside Cycling Road\nBest times are posted here. Nobody has set one yet."
+    "Route110_EventScript_TrickHouseSign": "Trick House\nThe Trick Master awaits! Can you solve his puzzles?"
+  },
+  // The board of the Seaside Cycling Road's best run (plan 21 · H12, part k: route_110.txt's ResultsSign)
+  "read": {
+    "Route110_EventScript_CyclingRoadResultsSign": "ResultsSign"
   }
 }

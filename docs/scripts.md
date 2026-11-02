@@ -476,6 +476,8 @@ Plan 21 · H11, part c; `docs/mechanics/rulings.md`, "The Lilycove Lady". Emeral
 | `favorlady which` | The kind of thing she wants, 0 to 5 (slippery, roundish, whamish, shiny, sticky, pointy), drawn on the script's die the first time she is asked. |
 | `favorlady give` | Takes the item last chosen with `chooseitem gift` out of the bag and counts it: `RESULT` 0 when it isn't of her kind, 1 when it is, 2 when it is the fifth of her kind or the one she wants most, which earns the favour's prize. |
 | `favorlady new` | A new favour drawn and the count put back to nought, once the prize is given (`RESULT` the new favour). |
+| `cyclingroad finish` | The Seaside Cycling Road's run judged (plan 21 · H12, part k; Emerald's `FinishCyclingRoadChallenge`): the frames and collisions the game counted since `VAR_CYCLING_CHALLENGE_STATE` 1 began a run, kept as the last run and as the best where faster; `RESULT` Emerald's mark, 0 to 10; the run's state goes to 3. `{cycling:TIME}`, `{cycling:COLLISIONS}`, `{cycling:BEST_TIME}` and `{cycling:BEST_COLLISIONS}` say them. The built-in `BIKE` is the bicycle ridden (1 the Acro Bike, 2 the Mach Bike, 3 Platinum's, 0 on foot). |
+| `cyclingroad record` | `RESULT` 1 when a best run is kept, 0 when none is. |
 
 ### Ball Capsules, Seals and ribbons
 

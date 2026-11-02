@@ -48,5 +48,47 @@
         "Cred că am văzut destule pe azi. Mă întorc la laborator. Hai, tata o să vrea să audă de asta!"
       ]
     }
+  ],
+  "AlteringCaveHiker": [
+    {
+      "en": [
+        "Hiker"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hm? A Champion, out here? Then you'll want to see this. There's a hollow behind this rock wall. I can hear the wind in it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hup! Hah! ... There! I knocked the rock away. That's Altering Cave."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Funny place. The Pokémon in it are never the same two days running. Nobody knows why."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Altering Cave's Pokémon change from day to day. Come back often and you'll meet all sorts!"
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

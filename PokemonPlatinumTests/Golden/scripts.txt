@@ -23920,6 +23920,19 @@ way 0.1, from answer 2
   + beaten hoenn_benjamin_1
 way 1, from answer 1
   * battle hoenn_benjamin_1 Lost
+=== route_110.ChallengeGuy
+from Cyclist at 227,252 of Hoenn
+way -
+  Cyclist> Ride the Cycling Road from the north gate on a Mach Bike, and I'll time you all the way down to here.
+  Cyclist> The fewer things you crash into, and the quicker you are, the better your mark. Give it a go!
+=== route_110.CyclingChallengeEnd
+from the trigger at 228,252 of Hoenn
+from the trigger at 229,252 of Hoenn
+way -
+  Cyclist> You crashed 0 times, and it took you 0.00 seconds.
+  Cyclist> Incredible! A perfect ride! You were born to be on a bike!
+  = VAR_CYCLING_CHALLENGE_STATE 0 -> 3
+  = VAR_CYCLING_ROAD_RECORD_FRAMES 0 -> 1
 === route_110.Edwin
 from Edwin at 234,200 of Hoenn
 way 0.0
@@ -23956,6 +23969,10 @@ way 0.1, from answer 2
   + beaten hoenn_isabel_1
 way 1, from answer 1
   * battle hoenn_isabel_1 Lost
+=== route_110.ResultsSign
+from the tile read at 232,253 of Hoenn
+way -
+  > Seaside Cycling Road: best run. Nobody has set a time yet.
 === route_110.Rival
 from {rival} at 234,214 of Hoenn
 way 0

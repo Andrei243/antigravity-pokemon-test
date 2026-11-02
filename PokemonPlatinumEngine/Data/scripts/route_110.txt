@@ -188,3 +188,48 @@ label Rematch
   battle self rematch
   end
 
+# The Seaside Cycling Road's timed run (plan 21 · H12, part k; Emerald's Route110_EventScript_ChallengeGuy,
+# CyclingChallengeEnd and CyclingRoadResultsSign). A rider on the Mach Bike who leaves the north gate is timed down the
+# road (GameEngine.CyclingRoad.cs counts the frames and the collisions); the step onto its south end, by the cyclist,
+# judges the run (Models/CyclingRoad.cs, Emerald's mark of nought to ten) and keeps the best on the board beside it.
+script ChallengeGuy
+  face self player
+  speaker "Cyclist"
+  say "Ride the Cycling Road from the north gate on a Mach Bike, and I'll time you all the way down to here."
+  say "The fewer things you crash into, and the quicker you are, the better your mark. Give it a go!"
+  end
+
+
+script CyclingChallengeEnd
+  speaker "Cyclist"
+  cyclingroad finish
+  say "You crashed {cycling:COLLISIONS}, and it took you {cycling:TIME}."
+  if result == 10 goto Best
+  if result >= 7 goto Good
+  if result >= 4 goto Fair
+  if result >= 1 goto Poor
+  say "Hm... Were you even trying? Walking would have been quicker!"
+  end
+label Best
+  say "Incredible! A perfect ride! You were born to be on a bike!"
+  end
+label Good
+  say "That was a great ride! You've really got the hang of the Mach Bike."
+  end
+label Fair
+  say "Not bad at all! A little more practice and you'll be flying."
+  end
+label Poor
+  say "You'll get there. Keep your eyes on the road and try again!"
+  end
+
+
+script ResultsSign
+  speaker none
+  cyclingroad record
+  if result == 0 goto None
+  text "Seaside Cycling Road: best run. Collisions: {cycling:BEST_COLLISIONS}. Time: {cycling:BEST_TIME}."
+  end
+label None
+  text "Seaside Cycling Road: best run. Nobody has set a time yet."
+  end

@@ -668,6 +668,8 @@ public class ScriptTests
           favorlady which
           favorlady give
           favorlady new
+          cyclingroad finish
+          cyclingroad record
           jobs
           chooseitem gift
           pike enough

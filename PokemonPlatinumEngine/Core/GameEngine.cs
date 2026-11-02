@@ -1678,6 +1678,8 @@ public partial class GameEngine
         float fieldDt = FieldTime(dt);
         // What field moves left in force (Strength, Flash, Defog), and boulders sliding on from a push
         KeepFieldMovesInForce();
+        // The Seaside Cycling Road's timed run (plan 21 · H12, part k)
+        KeepTheCyclingRun(dt);
         if (flow.Map.Name == DewfordLights.GymMap) DewfordLights.Keep(flow.Map, flow.Story, fieldDt);
         KeepThePyramidsLight(fieldDt);
         KeepPuzzleInForce(fieldDt);

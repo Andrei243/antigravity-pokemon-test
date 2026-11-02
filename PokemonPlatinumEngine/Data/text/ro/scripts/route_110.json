@@ -232,5 +232,107 @@
         "Ooo. Acum Anodion și Cathodion s-au bosumflat."
       ]
     }
+  ],
+  "ChallengeGuy": [
+    {
+      "en": [
+        "Cyclist"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ride the Cycling Road from the north gate on a Mach Bike, and I'll time you all the way down to here."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The fewer things you crash into, and the quicker you are, the better your mark. Give it a go!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "CyclingChallengeEnd": [
+    {
+      "en": [
+        "Cyclist"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You crashed {cycling:COLLISIONS}, and it took you {cycling:TIME}."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hm... Were you even trying? Walking would have been quicker!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Incredible! A perfect ride! You were born to be on a bike!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That was a great ride! You've really got the hang of the Mach Bike."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Not bad at all! A little more practice and you'll be flying."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You'll get there. Keep your eyes on the road and try again!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "ResultsSign": [
+    {
+      "en": [
+        "Seaside Cycling Road: best run. Collisions: {cycling:BEST_COLLISIONS}. Time: {cycling:BEST_TIME}."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Seaside Cycling Road: best run. Nobody has set a time yet."
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

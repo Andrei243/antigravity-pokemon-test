@@ -159,6 +159,8 @@ public enum Op
     Jobs,
     // A Hidden Grotto (plan 22 · U11): its mouth found, what it holds, its Pokémon met or its item taken
     Grotto,
+    // The Seaside Cycling Road's timed run (plan 21 · H12, part k): judged at its end and its record read
+    CyclingRoad,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>
