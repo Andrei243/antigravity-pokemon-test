@@ -4,7 +4,9 @@
   // are left for later (plan 22 · U6, part b), so its owner, his two assistants and the two shop girls only talk, and
   // the trigger at the avenue's south end (Black 2's 0x410b) has no script. Since plan 22 · U6, part c three shops of
   // ours are open in the street's bays, each a shopkeeper behind a counter whose end reads as the shop's sign
-  // (join_avenue.txt): the market (market, 6, 28), the flower shop (florist, 24, 21) and the café (waitress, 6, 42)
+  // (join_avenue.txt): the market (market, 6, 28), the flower shop (florist, 24, 21) and the café (waitress, 6, 42).
+  // Since plan 22 · U11 the avenue grows (Models/JoinAvenue.cs): the owner (0) asks the player to manage it, the day's
+  // visitors raise its rank, and the two shop girls (3, 4) open shops of their own at ranks 7 and 9
   "area": "join_avenue",
   "bgmTrack": "unova/nimbasa",
   // a covered street of shopfronts on its paving (plan 22, wave 48), not a house's room
@@ -28,7 +30,7 @@
     "0": {
       "name": "Owner",
       "npcType": "Gentleman",
-      "dialog": [ "Welcome to Join Avenue! As you see, there's nothing here yet but empty shopfronts. One day this street will be the liveliest in Unova!" ]
+      "script": "Owner"
     },
     "1": {
       "name": "Assistant",
@@ -43,12 +45,12 @@
     "3": {
       "name": "Shop Girl",
       "npcType": "cashier_f",
-      "dialog": [ "Our shop isn't open yet. Come back once the avenue's up and running!" ]
+      "script": "Stones"
     },
     "4": {
       "name": "Shop Girl",
       "npcType": "cashier_f",
-      "dialog": [ "I'm practising my welcome. ...Welcome! How was that?" ]
+      "script": "Vitamins"
     }
   },
   "signs": {

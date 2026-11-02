@@ -2079,9 +2079,13 @@
   },
   "records": {
     "title": "RECORDURI DE LUPTĂ",
-    "facility": { "tower": "Battle Tower", "factory": "Battle Factory", "castle": "Battle Castle", "hall": "Battle Hall", "arcade": "Battle Arcade" },
+    "facility": { "tower": "Battle Tower", "factory": "Battle Factory", "castle": "Battle Castle", "hall": "Battle Hall", "arcade": "Battle Arcade", "subway": "Battle Subway" },
     "row": {
       "single": "Luptă simplă", "double": "Luptă dublă", "multi": "Luptă multiplă",
+      "subway": {
+        "single": "Trenul Simplu", "double": "Trenul Dublu", "multi": "Trenul Multiplu",
+        "supersingle": "Trenul Super Simplu", "superdouble": "Trenul Super Dublu", "supermulti": "Trenul Super Multiplu"
+      },
       "lv50Single": "Simplă Nv. 50", "lv50Double": "Dublă Nv. 50", "openSingle": "Simplă, nivel liber", "openDouble": "Dublă, nivel liber"
     },
     "counted": { "trades": "SCHIMBURI", "points": "PCA" },
@@ -5003,6 +5007,8 @@
       "johtoLeaders": "LIDERII DIN JOHTO", "johtoChampion": "LIGA DIN JOHTO",
       "hoennLeaders": "LIDERII DIN HOENN", "hoennChampion": "LIGA DIN HOENN",
       "unovaLeaders": "LIDERII DIN UNOVA", "unovaChampion": "LIGA DIN UNOVA",
+      "unovaTriples": "TRIPLE DIN UNOVA", "unovaRotation": "ROTATIVE DIN UNOVA", "unovaRental": "ÎNCHIRIERE DIN UNOVA",
+      "unovaTypeStoneSteelSting": "PIATRĂ, OȚEL ȘI AC", "unovaTypeSkySeaSpirit": "CER, MARE ȘI SPIRIT",
       "worldLeaders": "LIDERII LUMII", "worldChampions": "CAMPIONII LUMII", "worldBeyond": "DINCOLO DE LIGĂ",
       "worldDoubles": "LUPTE DUBLE", "worldTriples": "LUPTE TRIPLE", "worldRotation": "LUPTE ROTATIVE",
       "worldMix": "AMESTEC", "worldRental": "ÎNCHIRIERE",
@@ -5021,6 +5027,11 @@
       "hoennChampion": "Wallace și Elita celor Patru din Hoenn, cu doi Lideri de Sală trași la sorți ca să fie șapte.",
       "unovaLeaders": "Cei opt Lideri de Sală din Unova, cu echipele pe care le aduc la revanșă.",
       "unovaChampion": "Iris și Elita celor Patru din Unova, cu doi Lideri de Sală trași la sorți ca să fie șapte.",
+      "unovaTriples": "Liderii de Sală din Unova, cu trei Pokémoni în luptă de fiecare parte.",
+      "unovaRotation": "Liderii de Sală din Unova, fiecare cu trei Pokémoni pe o platformă rotativă.",
+      "unovaRental": "Liderii de Sală din Unova, și tu la fel, luptă cu trei Pokémoni împrumutați la recepție.",
+      "unovaTypeStoneSteelSting": "Liga din Unova cu tipurile Normal, Insectă, Otravă, Electric, Pământ, Rocă, Oțel și Luptă.",
+      "unovaTypeSkySeaSpirit": "Liga din Unova cu tipurile Zbor, Apă, Dragon, Psihic, Fantomă, Întuneric, Gheață, Foc și Iarbă.",
       "worldLeaders": "Lideri de Sală din toate regiunile. Șapte dintre ei sunt trași la sorți să te înfrunte.",
       "worldChampions": "Campionul fiecărei regiuni, cu doi din Elita celor Patru trași la sorți ca să fie șapte.",
       "worldBeyond": "Campionii și Elita celor Patru, cu echipele pe care le păstrează pentru cei care se întorc.",
@@ -5182,6 +5193,8 @@
       "dive": "O scufundare în adânc",
       "bubbles": "Se ridică bule",
       "bridgeWalk": "Scârțâie scândurile",
+      "grottoEnter": "Crengile foșnesc la o parte",
+      "grottoRustle": "Foșnesc frunze în apropiere",
       "crossingHorn": "Sună sirena unei nave",
       "crossingEngine": "Motoarele urlă",
       "save": "Jocul e salvat",

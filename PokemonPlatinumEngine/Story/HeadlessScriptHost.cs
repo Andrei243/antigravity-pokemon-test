@@ -1363,6 +1363,9 @@ public sealed class HeadlessScriptHost : IScriptHost
     public List<(Party Team, IReadOnlyList<Trainer> Foes, Trainer? Partner, bool Doubles)> FrontierBattles { get; } = new();
     public int FrontierScore { get; private set; }
 
+    /// <summary>Who the Battle Subway's car last dressed as the partner (plan 22 · U11): 0 the staff, or a friend from 1; -1 before any.</summary>
+    public int SubwayPartner { get; private set; } = -1;
+
     public int FrontierAct(string what, int number, NPC? subject)
     {
         Log.Add($"frontier {what} {number}");
@@ -1421,7 +1424,12 @@ public sealed class HeadlessScriptHost : IScriptHost
                 FrontierScore += number;
                 return 1;
             case "records":
+            case "subwayrecords":
                 Waits();
+                return 1;
+            case "subwaypartner":
+                // The friend asked along on a Multi line of the Battle Subway, as the test can read it
+                SubwayPartner = number;
                 return 1;
             default:
                 return 1;

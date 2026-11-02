@@ -555,7 +555,20 @@ public class ScriptTests
           subway best
           subway finish lost
           subway points
+          subway pause
+          subway paused
+          subway resume
+          subway records
+          subway friends
+          subway partner staff
+          subway partner cheren
+          subway partner again
           subway end
+          joinavenue visit
+          joinavenue rank
+          joinavenue visitors
+          joinavenue next
+          joinavenue shop market
           trainerhill begin expert
           trainerhill active
           trainerhill mode

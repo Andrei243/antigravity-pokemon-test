@@ -468,6 +468,70 @@
       "Moomoo Milk",
       "Casteliacone"
     ],
+    "join_avenue_market_2": [
+      "Poké Ball",
+      "Great Ball",
+      "Ultra Ball",
+      "Potion",
+      "Super Potion",
+      "Hyper Potion",
+      "Full Heal",
+      "Revive",
+      "Escape Rope",
+      "Repel",
+      "Super Repel"
+    ],
+    "join_avenue_market_3": [
+      "Poké Ball",
+      "Great Ball",
+      "Ultra Ball",
+      "Super Potion",
+      "Hyper Potion",
+      "Max Potion",
+      "Full Restore",
+      "Full Heal",
+      "Revive",
+      "Escape Rope",
+      "Super Repel",
+      "Max Repel"
+    ],
+    "join_avenue_flowers_2": [
+      "Growth Mulch",
+      "Damp Mulch",
+      "Stable Mulch",
+      "Gooey Mulch",
+      "Honey",
+      "Sweet Heart"
+    ],
+    "join_avenue_cafe_2": [
+      "Fresh Water",
+      "Soda Pop",
+      "Lemonade",
+      "Moomoo Milk",
+      "Casteliacone",
+      "Old Gateau",
+      "Lava Cookie",
+      "Rage Candy Bar"
+    ],
+    "join_avenue_stones": [
+      "Fire Stone",
+      "Water Stone",
+      "Thunder Stone",
+      "Leaf Stone",
+      "Moon Stone",
+      "Sun Stone",
+      "Shiny Stone",
+      "Dusk Stone",
+      "Dawn Stone"
+    ],
+    "join_avenue_vitamins": [
+      "HP Up",
+      "Protein",
+      "Iron",
+      "Calcium",
+      "Zinc",
+      "Carbos"
+    ],
     "driftveil_market_herbs": [
       "Energy Powder",
       "Energy Root",

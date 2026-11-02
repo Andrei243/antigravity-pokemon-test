@@ -94,10 +94,39 @@
     },
     {
       "en": [
+        "Which train will you ride?",
+        "SINGLE TRAIN",
+        "SUPER SINGLE TRAIN"
+      ],
+      "text": [
+        "Cu ce tren mergi?",
+        "TRENUL SIMPLU",
+        "TRENUL SUPER SIMPLU"
+      ],
+      "was": [
+        "În fiecare vagon te așteaptă un Antrenor. Învinge șapte și poți coborî cu Puncte de Luptă sau poți continua cu seria următoare."
+      ]
+    },
+    {
+      "en": [
+        "The Super Single Train! Its trainers are the toughest on the line, and Ingo waits in the 49th car."
+      ],
+      "text": [
+        "Trenul Super Simplu! Are cei mai duri antrenori de pe linie, iar Ingo așteaptă în vagonul 49."
+      ],
+      "was": [
+        "Trenul Simplu primește trei Pokémoni, toți de specii diferite și purtând obiecte diferite. Se luptă la Nivelul 50 sau mai jos și nu se poate folosi nimic din Rucsac."
+      ]
+    },
+    {
+      "en": [
         "A trainer waits in every car. Clear seven and you may get off with Battle Points, or go on to the next set."
       ],
       "text": [
-        "În fiecare vagon te așteaptă un Antrenor. Învinge șapte și poți coborî cu Puncte de Luptă sau poți continua cu seria următoare."
+        "În fiecare vagon așteaptă un antrenor. Treci de șapte și poți coborî cu Puncte de Luptă sau poți merge la următorul set."
+      ],
+      "was": [
+        "Șefii Metroului, Ingo și Emmet, îi așteaptă pe cei care ajung până la vagonul 21 și la vagonul 49."
       ]
     },
     {
@@ -105,7 +134,10 @@
         "The Single Train takes three Pokémon, all of different species and holding different items. They battle at Level 50 or under, and nothing from the Bag may be used."
       ],
       "text": [
-        "Trenul Simplu primește trei Pokémoni, toți de specii diferite și purtând obiecte diferite. Se luptă la Nivelul 50 sau mai jos și nu se poate folosi nimic din Rucsac."
+        "Trenul Simplu primește trei Pokémoni, toți de specii diferite și cu obiecte diferite. Luptă la nivelul 50 sau mai jos și nu se folosește nimic din Rucsac."
+      ],
+      "was": [
+        "Cea mai lungă serie a ta în Trenul Simplu este de {number} vagoane."
       ]
     },
     {
@@ -113,15 +145,34 @@
         "The Subway Bosses, Ingo and Emmet, wait for those who ride on to the 21st car and the 49th."
       ],
       "text": [
-        "Șefii Metroului, Ingo și Emmet, îi așteaptă pe cei care ajung până la vagonul 21 și la vagonul 49."
+        "Șefii metroului, Ingo și Emmet, îi așteaptă pe cei care ajung la vagonul 21 și la vagonul 49."
+      ],
+      "was": [
+        "Bun venit la Metroul de Luptă! În Trenul Simplu te lupți unul contra unu, vagon după vagon, șapte pe parcurs."
       ]
     },
     {
       "en": [
-        "Your longest streak on the Single Train is {number} cars."
+        "Beat Ingo in the 21st car and the Super Single Train opens to you, with tougher trainers and more Battle Points."
       ],
       "text": [
-        "Cea mai lungă serie a ta în Trenul Simplu este de {number} vagoane."
+        "Învinge-l pe Ingo în vagonul 21 și ți se deschide Trenul Super Simplu, cu antrenori mai duri și mai multe Puncte de Luptă."
+      ]
+    },
+    {
+      "en": [
+        "After a set you may also put your run down. The game is saved here, and you can ride on later."
+      ],
+      "text": [
+        "După un set poți și să lași cursa deoparte. Jocul se salvează aici și poți continua mai târziu."
+      ]
+    },
+    {
+      "en": [
+        "Here are your records on the Battle Subway's lines."
+      ],
+      "text": [
+        "Iată recordurile tale pe liniile Battle Subway."
       ]
     },
     {
@@ -129,7 +180,7 @@
         "Please ride with us again!"
       ],
       "text": [
-        "Bun venit la Metroul de Luptă! În Trenul Simplu te lupți unul contra unu, vagon după vagon, șapte pe parcurs."
+        "Te mai așteptăm la drum!"
       ]
     }
   ],
@@ -168,10 +219,39 @@
     },
     {
       "en": [
+        "Which train will you ride?",
+        "DOUBLE TRAIN",
+        "SUPER DOUBLE TRAIN"
+      ],
+      "text": [
+        "Cu ce tren mergi?",
+        "TRENUL DUBLU",
+        "TRENUL SUPER DUBLU"
+      ],
+      "was": [
+        "Fiecare vagon are un Antrenor cu patru Pokémoni, dintre care doi se luptă cu doi de-ai tăi deodată. Învinge șapte vagoane pentru o serie."
+      ]
+    },
+    {
+      "en": [
+        "The Super Double Train! Its trainers are the toughest on the line, and Emmet waits in the 49th car."
+      ],
+      "text": [
+        "Trenul Super Dublu! Are cei mai duri antrenori de pe linie, iar Emmet așteaptă în vagonul 49."
+      ],
+      "was": [
+        "Trenul Dublu primește patru Pokémoni, toți de specii diferite și purtând obiecte diferite, la Nivelul 50 sau mai jos."
+      ]
+    },
+    {
+      "en": [
         "Every car holds a trainer with four Pokémon, and two of them battle two of yours at once. Clear seven cars for a set."
       ],
       "text": [
-        "Fiecare vagon are un Antrenor cu patru Pokémoni, dintre care doi se luptă cu doi de-ai tăi deodată. Învinge șapte vagoane pentru o serie."
+        "În fiecare vagon e un antrenor cu patru Pokémoni, iar doi dintre ei luptă deodată cu doi de-ai tăi. Treci de șapte vagoane pentru un set."
+      ],
+      "was": [
+        "Șefii Metroului îi așteaptă pe cei care ajung până la vagonul 21 și la vagonul 49."
       ]
     },
     {
@@ -179,7 +259,10 @@
         "The Double Train takes four Pokémon, all of different species and holding different items, at Level 50 or under."
       ],
       "text": [
-        "Trenul Dublu primește patru Pokémoni, toți de specii diferite și purtând obiecte diferite, la Nivelul 50 sau mai jos."
+        "Trenul Dublu primește patru Pokémoni, toți de specii diferite și cu obiecte diferite, la nivelul 50 sau mai jos."
+      ],
+      "was": [
+        "Cea mai lungă serie a ta în Trenul Dublu este de {number} vagoane."
       ]
     },
     {
@@ -187,15 +270,26 @@
         "The Subway Bosses wait for those who ride on to the 21st car and the 49th."
       ],
       "text": [
-        "Șefii Metroului îi așteaptă pe cei care ajung până la vagonul 21 și la vagonul 49."
+        "Șefii metroului îi așteaptă pe cei care ajung la vagonul 21 și la vagonul 49."
+      ],
+      "was": [
+        "Te rugăm să mai călătorești cu noi!"
       ]
     },
     {
       "en": [
-        "Your longest streak on the Double Train is {number} cars."
+        "Beat the Boss in the 21st car and the Super Double Train opens to you, with tougher trainers and more Battle Points."
       ],
       "text": [
-        "Cea mai lungă serie a ta în Trenul Dublu este de {number} vagoane."
+        "Învinge-l pe Șef în vagonul 21 și ți se deschide Trenul Super Dublu, cu antrenori mai duri și mai multe Puncte de Luptă."
+      ]
+    },
+    {
+      "en": [
+        "Here are your records on the Battle Subway's lines."
+      ],
+      "text": [
+        "Iată recordurile tale pe liniile Battle Subway."
       ]
     },
     {
@@ -203,7 +297,7 @@
         "Please ride with us again!"
       ],
       "text": [
-        "Te rugăm să mai călătorești cu noi!"
+        "Te mai așteptăm la drum!"
       ]
     }
   ],
@@ -242,10 +336,39 @@
     },
     {
       "en": [
-        "You bring two Pokémon and a partner from our own staff brings two more. Every car holds a pair of trainers."
+        "Which train will you ride?",
+        "MULTI TRAIN",
+        "SUPER MULTI TRAIN"
       ],
       "text": [
+        "Cu ce tren mergi?",
+        "TRENUL MULTIPLU",
+        "TRENUL SUPER MULTIPLU"
+      ],
+      "was": [
         "Aduci doi Pokémoni, iar un partener din personalul nostru aduce alți doi. Fiecare vagon are o pereche de Antrenori."
+      ]
+    },
+    {
+      "en": [
+        "The Super Multi Train! Its pairs are the toughest on the line, and Ingo and Emmet wait together in the 49th car."
+      ],
+      "text": [
+        "Trenul Super Multiplu! Are cele mai dure perechi de pe linie, iar Ingo și Emmet așteaptă împreună în vagonul 49."
+      ],
+      "was": [
+        "Cei doi Pokémoni trebuie să fie de specii diferite și să poarte obiecte diferite, la Nivelul 50 sau mai jos. Ingo și Emmet călătoresc împreună în vagonul 21 și în vagonul 49."
+      ]
+    },
+    {
+      "en": [
+        "You bring two Pokémon and a partner brings two more. Every car holds a pair of trainers."
+      ],
+      "text": [
+        "Tu aduci doi Pokémoni, iar un partener mai aduce doi. În fiecare vagon e o pereche de antrenori."
+      ],
+      "was": [
+        "Un partener de la un prieten prin legătură nu este încă disponibil pe linie. Ne pare rău!"
       ]
     },
     {
@@ -253,23 +376,37 @@
         "The two Pokémon must be of different species and hold different items, at Level 50 or under. Ingo and Emmet ride together in the 21st car and the 49th."
       ],
       "text": [
-        "Cei doi Pokémoni trebuie să fie de specii diferite și să poarte obiecte diferite, la Nivelul 50 sau mai jos. Ingo și Emmet călătoresc împreună în vagonul 21 și în vagonul 49."
-      ]
-    },
-    {
-      "en": [
-        "A partner from a friend over a link is not on the line yet. We're sorry!"
+        "Cei doi Pokémoni trebuie să fie de specii diferite și cu obiecte diferite, la nivelul 50 sau mai jos. Ingo și Emmet merg împreună în vagonul 21 și în vagonul 49."
       ],
-      "text": [
-        "Un partener de la un prieten prin legătură nu este încă disponibil pe linie. Ne pare rău!"
-      ]
-    },
-    {
-      "en": [
-        "Your longest streak on the Multi Train is {number} cars."
-      ],
-      "text": [
+      "was": [
         "Cea mai lungă serie a ta în Trenul Multiplu este de {number} vagoane."
+      ]
+    },
+    {
+      "en": [
+        "Beat them in the 21st car and the Super Multi Train opens to you, with tougher pairs and more Battle Points."
+      ],
+      "text": [
+        "Învinge-i în vagonul 21 și ți se deschide Trenul Super Multiplu, cu perechi mai dure și mai multe Puncte de Luptă."
+      ],
+      "was": [
+        "Te rugăm să mai călătorești cu noi!"
+      ]
+    },
+    {
+      "en": [
+        "A partner from our own staff rides with anyone. Friends of yours who have seen Unova's League may ride with you too."
+      ],
+      "text": [
+        "Un partener din personalul nostru merge cu oricine. Prietenii tăi care au văzut Liga din Unova pot merge și ei cu tine."
+      ]
+    },
+    {
+      "en": [
+        "Here are your records on the Battle Subway's lines."
+      ],
+      "text": [
+        "Iată recordurile tale pe liniile Battle Subway."
       ]
     },
     {
@@ -277,7 +414,89 @@
         "Please ride with us again!"
       ],
       "text": [
-        "Te rugăm să mai călătorești cu noi!"
+        "Te mai așteptăm la drum!"
+      ]
+    }
+  ],
+  "Partner": [
+    {
+      "en": [
+        "Who will ride beside you?",
+        "OUR STAFF",
+        "CHEREN",
+        "BIANCA"
+      ],
+      "text": [
+        "Cine merge alături de tine?",
+        "PERSONALUL NOSTRU",
+        "CHEREN",
+        "BIANCA"
+      ]
+    },
+    {
+      "en": [
+        "Cheren is waiting on the platform. He says he'll keep a cool head for both of you!"
+      ],
+      "text": [
+        "Cheren așteaptă pe peron. Spune că își va păstra calmul pentru amândoi!"
+      ]
+    },
+    {
+      "en": [
+        "Bianca is waiting on the platform. She says she can't wait to get going!"
+      ],
+      "text": [
+        "Bianca așteaptă pe peron. Spune că abia așteaptă să pornească!"
+      ]
+    }
+  ],
+  "Waiting": [
+    {
+      "en": [
+        "Your run is waiting where you put it down. Will you ride on from car {number} now?"
+      ],
+      "text": [
+        "Cursa ta te așteaptă unde ai lăsat-o. Continui acum din vagonul {number}?"
+      ]
+    },
+    {
+      "en": [
+        "All aboard! Mind the doors."
+      ],
+      "text": [
+        "Urcarea! Atenție la uși."
+      ]
+    },
+    {
+      "en": [
+        "Then shall I end the run here? The sets you cleared will be paid in Battle Points."
+      ],
+      "text": [
+        "Atunci închei cursa aici? Seturile terminate îți vor fi plătite în Puncte de Luptă."
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry. The Pokémon you took aboard aren't as they were, so the run can't go on. It ends here."
+      ],
+      "text": [
+        "Îmi pare rău. Pokémonii cu care ai urcat nu mai sunt cum erau, așa că cursa nu poate continua. Se termină aici."
+      ]
+    },
+    {
+      "en": [
+        "{player} received {number} BP!"
+      ],
+      "text": [
+        "{player} a primit {number} PL!"
+      ]
+    },
+    {
+      "en": [
+        "Very well. Your run will wait for you here."
+      ],
+      "text": [
+        "Foarte bine. Cursa te va aștepta aici."
       ]
     }
   ],

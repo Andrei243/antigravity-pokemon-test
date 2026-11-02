@@ -181,6 +181,16 @@
           "Eu mă întorc la depou. Te-ai descurca bine în Metrou!"
         ]
       }
+    },
+    "grotto_mouth_3": {
+      "name": {
+        "en": [
+          "Hollow"
+        ],
+        "text": [
+          "Scorbură"
+        ]
+      }
     }
   },
   "signs": {

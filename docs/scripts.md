@@ -854,7 +854,22 @@ by the Tower's rooms, with the Subway Bosses at the 21st battle (Ingo) and the 4
 | `subway opponent` | Makes the trainers of the car ready, or the Bosses, and stands the trainers of the Frontier's table in the room as `opponent` and `opponent_2`. `{foe}` names them. |
 | `subway battle` | The battle with the Pokémon chosen, as copies (`RESULT` 1 won, 0 lost). The Multi Train's partner is drawn on the run's seed, the same two Pokémon every car. |
 | `subway won`, `subway streak`, `subway best` | Counts the win (`RESULT` 1 once a set of seven is through); the streak as it stands and the longest of the run's train (`{number}`). |
-| `subway finish won`, `subway finish lost`, `subway points` | Writes the best streak of the train; hands over the Battle Points of the sets cleared (3 for the first, one more for each set after it, up to 10; `RESULT` and `{number}`). |
+| `subway finish won`, `subway finish lost`, `subway points` | Writes the best streak of the train and its latest run's; hands over the Battle Points of the sets cleared (3 for the first, one more for each set after it, up to 10; `RESULT` and `{number}`). |
+| `subway pause`, `subway paused`, `subway resume` | Plan 22 · U11: puts the run down between two sets (kept as it stands; `subway active` is 0 meanwhile); `RESULT` 1 while one is put down, `{number}` the car it goes on from; takes it up again, `RESULT` 1, or 0 where the Pokémon entered are no longer on the team or no longer fit to go in together (the run is then the script's to end). |
+| `subway records` | Opens the Battle Subway's records' board (`FrontierBoard.ForSubway`: each train's longest and latest streak, the Super trains once open) and waits. |
+| `subway friends`, `subway partner staff`, `subway partner cheren`, `subway partner bianca`, `subway partner again` | `RESULT` how many friends may ride a Multi line (Cheren and Bianca once Unova's Hall of Fame is entered, 0 before); who rides beside the player (the Subway's own staff, or a friend, kept in `VAR_UNOVA_SUBWAY_PARTNER`; one not yet offered is the staff), and the car's `partner` dressed as them; `again` dresses the one kept. A friend brings the two of the highest level of their team that share no species or item with the two entered, at level 50. |
+
+### Join Avenue
+
+Plan 22 · U11; `docs/mechanics/rulings.md`, "Join Avenue's growth". The avenue's growth (`Models/JoinAvenue.cs`) is the
+story's own variables (`VAR_UNOVA_JOIN_AVENUE_VISITORS`) and flags (`FLAG_UNOVA_JOIN_AVENUE_MANAGER`, set by the owner's
+script; the day's `FLAG_DAILY_UNOVA_JOIN_AVENUE_VISITORS`).
+
+| Command | What it does |
+|---|---|
+| `joinavenue visit` | On the first coming of a day, once the player manages the avenue, the day's visitors come (two more than the rank). `RESULT` and `{number}` how many came, 0 for none. |
+| `joinavenue rank`, `joinavenue visitors`, `joinavenue next` | `RESULT` and `{number}`: the avenue's rank (1 to 10, one more for every ten visitors), every visitor it has had, the visitors still wanted for the next rank (0 at the top). |
+| `joinavenue shop market`, `flowers`, `cafe`, `stones`, `vitamins` | Opens that shop with its stock at the avenue's rank (`JoinAvenue.StockOf`, lists of `marts.json`) and waits, `RESULT` 1; 0 where the shop isn't open yet (the stones from rank 7, the vitamins from rank 9). |
 
 ### The Trainer Hill
 

@@ -28,6 +28,10 @@ public partial class GameEngine
     public static readonly string[] TowerOpponentPeople = { "opponent", "opponent_2" };
     public const string TowerPartnerPerson = "partner";
 
+    // The Battle Subway's own partner as the train's map stands them (BattleSubwayTrain.json's partner), kept the first
+    // time a friend is dressed in their place (plan 22 · U11)
+    private (string Type, string Name)? subwayStaff;
+
     /// <summary>The variables the Tower's scripts keep its rooms' states in, which the game only reads; and the print's own.</summary>
     public const string TowerLobbyAction = "VAR_BATTLE_TOWER_LOBBY_LOAD_ACTION";
 
@@ -68,6 +72,28 @@ public partial class GameEngine
             case "records":
                 flow.FrontierRecordsScreen.Open(FrontierBoard.For((FrontierFacility)number, flow.Frontier, flow.Story));
                 flow.State = GameState.FrontierRecords;
+                return 1;
+            case "subwayrecords":
+                // The Battle Subway's board (plan 22 · U11): its trains' streaks, from the story's own variables
+                flow.FrontierRecordsScreen.Open(FrontierBoard.ForSubway(flow.Frontier, flow.Story));
+                flow.State = GameState.FrontierRecords;
+                return 1;
+            case "subwaypartner":
+                // Whoever stands as the partner in a car of the Subway takes the look and the name of the friend asked
+                // along, or the staff's own look for the Subway's partner (plan 22 · U11)
+                if (flow.Map.FindPerson(TowerPartnerPerson) is { } friend)
+                {
+                    // The staff's own look and name, as the car's map stands them, are kept the first time it is dressed
+                    subwayStaff ??= (friend.NpcType, friend.Name);
+                    if (number >= 1 && number <= BattleSubway.Friends.Length)
+                    {
+                        friend.NpcType = BattleSubway.Friends[number - 1].Look;
+                        friend.Name = BattleSubway.Friends[number - 1].Name;
+                    }
+                    else
+                        (friend.NpcType, friend.Name) = subwayStaff.Value;
+                    KeepCharactersNear(trim: false);
+                }
                 return 1;
             case "seen":
                 return flow.Pokedex.IsSeen(number) ? 1 : 0;

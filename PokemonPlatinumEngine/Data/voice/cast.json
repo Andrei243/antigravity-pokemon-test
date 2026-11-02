@@ -1208,6 +1208,10 @@
       "note": "first spoken at EternaCycleShop.txt(30)",
       "provisional": true
     },
+    "shop_girl": {
+      "note": "first spoken at join_avenue.txt(76)",
+      "provisional": true
+    },
     "shopkeeper": {
       "note": "first spoken at join_avenue.txt(11)",
       "provisional": true
@@ -1814,6 +1818,7 @@
     "Shauntal": "shauntal",
     "Shelly": "shelly",
     "Shop Boy": "shop_boy",
+    "Shop Girl": "shop_girl",
     "Shopkeeper": "shopkeeper",
     "Sidney": "sidney",
     "Sign": "sign",

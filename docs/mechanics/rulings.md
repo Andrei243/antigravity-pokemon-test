@@ -2300,6 +2300,7 @@ Black 2's Pokémon World Tournament, Sinnoh's leaders first. Nothing of Black 2'
 - **The other regions** (plan 14 · B12): Kanto, Johto, Hoenn and Unova each have a Leaders event (open from the start) and a League event (the Champion and the Elite Four always in, two Leaders drawn; opened by the region's Leaders title), each **read only once the region's trainers' table exists** (`TournamentDatabase.HasData`, `Tournament.Offered`) and offered only when seven of its kind can be seated from the trainers there are, so a region's events appear the day its table lands. The teams are each region's strongest rematch: Kanto's Leaders are HeartGold's eight (Janine and Blue among them, from Johto's table), its League FireRed's second Elite Four with Terry's rematch team; Johto's HeartGold's `_2` teams with Lance's; Hoenn's Emerald's fifth rematch of each Leader with the League's rematch teams of ours (`hoenn_*_rematch`); Unova's Black 2's `_2` Leaders and the Elite Four's and Iris's fourth teams. A Leader the cast has no look for stands in a class's (Janine as an Ace Trainer, Drayden as a Dragon Tamer, Marlon as a Swimmer; Tate and Liza as Tate; Terry in Blue's). The other regions' moves are their games' own, so the legality check (written from Platinum's lists and the newest) is held only to Platinum's teams and the teams beyond the League.
 - **A team's three** pass over a Pokémon that would repeat a species or a held item of those already picked (Black 2's teams hold several Sitrus Berries), so every entrant keeps the clauses the player keeps.
 - **The world's events** (all ours): **World Leaders** (seven Leaders drawn from every region; opened by Sinnoh Leaders), **World Champions** (the five Champions always in, two of the Elite Four drawn; opened by the Champion's event), **Beyond the League** (the five Champions' and twenty Elite Four's teams beyond the League, `_beyond`, at 50; opened by World Champions); then, opened by World Leaders, **Double**, **Triple** and **Rotation Battles** (the matches in that format, `FrontierConditions.Format`, under rules that have it), **Mix** (before each match each side hands the other one of its three, which ones by a number drawn as the event begins, the round and the seats: `Tournament.ThreesFor`), **Rental** (everyone, the player too, battles with three sets of the Battle Factory's fourth row at 50, drawn as the Factory draws them, `Tournament.RentalThree`; plan 13 · V14's draw is not built) and eight **type brackets** (Water; Fire and Electric; Ice and Dark; Dragon and Flying; Ghost and Psychic; Fighting and Steel; Rock, Ground and Grass; Bug, Poison and Normal), whose entrants are the Leaders and Elite Four with three of the types, who bring those three, and whose entry asks each of the player's three to be of one of them. Black 2's single types gave seven entrants only for Water, so types are paired. Points: 3 a region's Leaders, 6 its League, 6 World Leaders, 10 World Champions, 12 Beyond the League, 4 the rest.
+- **Unova's events of its own** (plan 22 · U11; ours): opened by the Unova Leaders title, three over Unova's eight Leaders (seven drawn), **Unova Triples** and **Unova Rotation** (the matches in that format) and **Unova Rental** (everyone with three of the Factory's rentals, as World Rental), and two **type brackets over Unova's League** (its Leaders, Elite Four and Iris, `from` the Unova League event): **Stone, Steel and Sting** (Normal, Bug, Poison, Electric, Ground, Rock, Steel, Fighting) and **Sky, Sea and Spirit** (Flying, Water, Dragon, Psychic, Ghost, Dark, Ice, Fire, Grass). Unova's thirteen seat seven in no single type or pair, so each bracket is a wide set of types its own trainers bring three of (Cheren, Roxie, Burgh, Elesa, Clay, Grimsley and Marshal in the first; Skyla, Drayden, Marlon, Iris, Shauntal, Grimsley and Caitlin in the second). 4 points each.
 
 ### Master Trainers (plan 14 · B14)
 
@@ -3596,6 +3597,12 @@ So the room is Black 2's and the rest is ours.
   (the person `grotto_mon` stood as its species as the grotto is come to) or an item's ball.
 - **Nothing of it reaches another region**: the grottoes are Unova's maps' alone, and a grotto's Pokémon is a wild Pokémon of the
   place, levelled as Unova's are in a game begun elsewhere.
+- **Found by ear** (ours; Black 2 shows a grotto by nothing but its look): a grotto that may hold something rustles while
+  the player is within five tiles of its mouth each way, every 2.4 seconds of the field's clock, `grotto_rustle` from its
+  side and leaves stirring on the tile before its hollow (`HiddenGrottoes.Rustles`, `RustlingNear`). One never come to or
+  holding something rustles; an emptied one only once 256 steps have been walked since, when a roll could have filled it,
+  so a rustle says it may hold something, not that it does, and nothing is rolled for it. Crawling in or out is heard as
+  `grotto_enter` (in place of the stairs').
 
 ## The Battle Subway's Super trains (2026-11-02, plan 22 · U11)
 
@@ -3610,6 +3617,43 @@ So the room is Black 2's and the rest is ours.
 - **Its Battle Points** are its line's from the fourth set on: six for the first set, one more a set, up to ten (Black 2 pays the
   Super lines more; the numbers are ours). Its best streak is kept apart from its line's (`VAR_UNOVA_SUBWAY_BEST_SUPERSINGLE` and
   its fellows), and the desk's RECORD tells both once the Super train is open.
+
+## The Battle Subway's pause, board and friends (2026-11-02, plan 22 · U11)
+
+- **A run put down** (Black 2's "rest", as the Battle Tower's challenge put down): after a set of seven, the conductor's
+  question has a third answer, REST. The run is kept as it stands (`VAR_UNOVA_SUBWAY_STATE` 2, `BattleSubway.PutDown`:
+  the train, the streak, the Pokémon entered, the partner), the player is taken back to the Gear Station and the game is
+  saved there, never in the car. **Any desk** takes it up again: ride on from the next car, or end it there, which is
+  getting off (the best and latest streaks written, the sets cleared paid). A team changed since (the Pokémon entered
+  no longer in their places, or no longer fit to go in together) ends the run as a loss would, the sets cleared still
+  paid. Black 2 lets a run be put down between any two cars; ours between sets alone, where the original's Tower puts a
+  challenge down, so a set is never paid in halves.
+- **The records' board** (`FrontierBoard.ForSubway`, the desks' RECORD): the Frontier's board with a row for each train,
+  the three lines and each Super train once open, its longest streak and its last run's (`VAR_UNOVA_SUBWAY_LATEST_<TRAIN>`,
+  ours), a run under way or put down counted as it stands. The Subway is no facility of the Frontier's, so the board has
+  no print and counts no victories.
+- **A friend beside the player** (the stand-in for a friend over a link, which plan 06's decision 7 doesn't hold): once
+  Unova's Hall of Fame has been entered, a Multi line's desk asks who rides beside the player: the Subway's own staff (as
+  before), Cheren or Bianca. A friend brings the two of the highest level of the team of their last battle
+  (`unova_cheren_4`, `unova_bianca_3`) that share no species and no held item with the player's two, at level 50, and
+  thinks with their own trainer AI's flags; the car's `partner` takes their look. Who rides is `VAR_UNOVA_SUBWAY_PARTNER`,
+  kept with the run.
+
+## Join Avenue's growth (2026-11-02, plan 22 · U11)
+
+Black 2's avenue grows with the passers-by met over the console's wireless and the people the player invites; with no
+link (plan 06's decision 7), ours grows by days. Every number is ours (`Models/JoinAvenue.cs`).
+
+- **The manager**: the avenue's owner asks the player to manage it (`FLAG_UNOVA_JOIN_AVENUE_MANAGER`); until then nothing
+  grows.
+- **Visitors**: the first coming to the avenue on a day (the day's `FLAG_DAILY_UNOVA_JOIN_AVENUE_VISITORS`, cleared by the
+  game's new day) brings two visitors more than its rank; days not come are not counted. Every ten visitors raise the rank
+  by one, from 1 to 10 (`VAR_UNOVA_JOIN_AVENUE_VISITORS`), so the top takes about fifteen days of visits.
+- **What grows with the rank**: the market sells more from rank 3 (Ultra Balls, Hyper Potions, Full Heals, Revives,
+  Super Repels) and more again from rank 6 (Max Potions, Full Restores, Max Repels); the flower shop adds the Sweet Heart
+  from 4; the café adds Old Gateaux, Lava Cookies and Rage Candy Bars from 5; and the two shop girls open shops of their
+  own, the evolution stones from rank 7 and the vitamins from rank 9 (`marts.json`'s `join_avenue_*`). Black 2's dojo,
+  salon, nursery and the rest, its shop ranks of their own and the visitors' greetings are not built.
 
 ## Kanto's first chapter (2026-10-18, plan 19 · K3)
 

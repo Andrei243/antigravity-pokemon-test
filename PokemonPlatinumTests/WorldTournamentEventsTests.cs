@@ -140,6 +140,39 @@ public class WorldTournamentEventsTests
         Assert.All(unova.Field.Skip(1), e => Assert.Equal(FrontierRefusal.None, FrontierRules.WhyNot(e.Three)));
     }
 
+    [Fact]
+    public void UnovasOwnEventsSeatOnlyUnovasLeagueInTheirFormats()
+    {
+        // Plan 22 · U11: the hall's Unova events of their own, opened by the Unova Leaders' title
+        var offered = TournamentDatabase.Events.Select(e => e.Id).ToList();
+        var own = new[] { "unovaTriples", "unovaRotation", "unovaRental", "unovaTypeStoneSteelSting", "unovaTypeSkySeaSpirit" };
+        foreach (string id in own)
+        {
+            Assert.Contains(id, offered);
+            Assert.Equal("unovaLeaders", Event(id).After);
+        }
+        Assert.Equal(BattleFormat.Triple, Tournament.FormatOf(Event("unovaTriples")));
+        Assert.Equal(BattleFormat.Rotation, Tournament.FormatOf(Event("unovaRotation")));
+        Assert.True(Event("unovaRental").Rental);
+        int seed = 60;
+        foreach (string id in own)
+        {
+            var ev = Event(id);
+            var party = Tournament.TypesOf(ev).Contains(PokemonType.Flying) ? PartyOf("Staraptor", "Gyarados", "Gengar") : PartyOf("Lucario", "Garchomp", "Excadrill");
+            var t = Tournament.Begin(new FrontierRecords(), ev, party, ev.Rental ? Array.Empty<int>() : new[] { 0, 1, 2 }, Draws(++seed));
+            Assert.All(t.Field.Skip(1), e => Assert.StartsWith("unova_", e.Record!.Id));
+            if (ev.Kind == "leaders") Assert.All(t.Field.Skip(1), e => Assert.StartsWith("Leader", e.Record!.Class));
+        }
+        // A triple bracket and a rotation bracket are fought through to a champion
+        foreach (string id in new[] { "unovaTriples", "unovaRotation" })
+        {
+            var records = new FrontierRecords();
+            var t = Tournament.Begin(records, Event(id), PartyOf("Garchomp", "Lucario", "Staraptor"), new[] { 0, 1, 2 }, Draws(++seed));
+            t.PlayHeadless(records, Draws(++seed));
+            Assert.True(t.Bracket.IsOver);
+        }
+    }
+
     // ------------------------------------------------------------------ the special events
 
     [Fact]

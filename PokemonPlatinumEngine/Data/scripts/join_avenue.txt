@@ -1,16 +1,55 @@
-# Join Avenue (plan 22 · U6, part c). docs/scripts.md describes the language; the lines are our own.
+# Join Avenue (plan 22 · U6, part c; its growth plan 22 · U11). docs/scripts.md describes the language; the lines are our
+# own.
 #
 # Three of the avenue's shopfronts are open, each a shopkeeper of ours behind a counter in one of the street's bays:
-# the market (marts.json's join_avenue_market), the flower shop's mulches (join_avenue_flowers) and the café's drinks
-# (join_avenue_cafe). Black 2's shops are opened by the avenue's visitors, ranked up and run by the player as its
-# manager; that is plan 22 · U11's (the rulings, "Unova's second chapter, part c"). The counters' ends read as the
-# shops' signs.
+# the market, the flower shop's mulches and the café's drinks. The counters' ends read as the shops' signs.
+#
+# Its growth (Models/JoinAvenue.cs; the rulings, "Join Avenue's growth"): the owner asks the player to manage the
+# avenue, and from then on the first coming of each day brings visitors (two more than the avenue's rank), and every ten
+# visitors raise its rank, up to 10. The three shops widen their stock at ranks 3 and 6 (the market), 4 (the flowers)
+# and 5 (the café), and the two shop girls open shops of their own at ranks 7 (evolution stones) and 9 (vitamins).
+# Black 2's avenue grows with the passers-by met over the console's wireless; ours grows by days, its numbers ours.
+
+
+script OnEnter
+  joinavenue visit
+  end
+
+
+script Owner
+  face self player
+  speaker "Owner"
+  if flag FLAG_UNOVA_JOIN_AVENUE_MANAGER goto Report
+  say "Welcome to Join Avenue! As you see, the street is quiet yet. One day it will be the liveliest in Unova!"
+  say "What it needs is a manager: someone to bring the visitors in, so the shops can grow with them."
+  ask "You have the look of a Trainer people follow. Will you be Join Avenue's manager?"
+  if no goto Later
+  setflag FLAG_UNOVA_JOIN_AVENUE_MANAGER
+  joinavenue visit
+  say "Splendid! From today the avenue is yours to run."
+  say "Visitors will come by each day you drop in. The more come, the higher the avenue's rank, and the better its shops!"
+  end
+label Later
+  say "No? Well, the offer stands. Come and see me if you change your mind."
+  end
+label Report
+  joinavenue visitors
+  say "Manager! Join Avenue has had {number} visitors so far."
+  joinavenue rank
+  say "That makes it a rank {number} avenue."
+  if result >= 10 goto Top
+  joinavenue next
+  say "{number} more visitors and it will rank up. Keep dropping in!"
+  end
+label Top
+  say "That's as high as an avenue goes. Unova has never seen a street like it!"
+  end
 
 
 script Market
   speaker "Shopkeeper"
   say "Welcome to the avenue's market! Balls, medicine, everything a Trainer needs for the road ahead."
-  shop "join_avenue_market"
+  joinavenue shop market
   say "Thanks for shopping on Join Avenue! Tell your friends!"
   end
 
@@ -18,7 +57,7 @@ script Market
 script Flowers
   speaker "Florist"
   say "Hello there! Mulch for your berries, and sweet honey for the Pokémon who love it. Have a look!"
-  shop "join_avenue_flowers"
+  joinavenue shop flowers
   say "Grow something lovely! Come back and tell me how it turned out."
   end
 
@@ -26,8 +65,33 @@ script Flowers
 script Cafe
   speaker "Waitress"
   say "Welcome to the café! Something cold to drink before you head into Nimbasa?"
-  shop "join_avenue_cafe"
+  joinavenue shop cafe
   say "Enjoy! And mind the crowds on the way into the city."
+  end
+
+
+# The two shop girls: shops of their own once the avenue has grown enough
+script Stones
+  face self player
+  speaker "Shop Girl"
+  joinavenue shop stones
+  if result == 0 goto Closed
+  say "Thank you! Every stone of Unova's, and they all shine just as they should."
+  end
+label Closed
+  say "Our shop isn't open yet. Come back once the avenue's up and running!"
+  end
+
+
+script Vitamins
+  face self player
+  speaker "Shop Girl"
+  joinavenue shop vitamins
+  if result == 0 goto Closed
+  say "Thank you! Your Pokémon will feel the difference, I promise."
+  end
+label Closed
+  say "I'm practising my welcome. ...Welcome! How was that? The shop opens when the avenue is busy enough."
   end
 
 

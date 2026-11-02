@@ -12,7 +12,9 @@
 # The Super trains (plan 22 · U11) ride the same cars: their trainers from three rooms further on, their Boss at the
 # 49th car alone (Ingo on the Super Single, Emmet on the Super Double, the two together on the Super Multi).
 #
-# Not here: the run's pause and the records' board.
+# Since plan 22 · U11 a run may also be put down after a set (REST): the player goes back to the Gear Station with the
+# game saved there, and any desk takes the run up again from the next car (GearStation.txt's Waiting). On a Multi line
+# the partner may be a friend, Cheren or Bianca, dressed in the car by `subway partner again`.
 
 
 script OnEnter
@@ -49,6 +51,7 @@ label OneFoe
   goto Next
 
 label PartnerAboard
+  subway partner again
   setflag FLAG_UNOVA_SUBWAY_SHOW_PARTNER
   show partner
   goto Next
@@ -118,8 +121,10 @@ label SetDone
   speaker "Depot Agent"
   subway streak
   say "That's the end of the line for this set. {number} cars cleared in a row!"
-  choose "Will you get off here, or go on to the next set?" "GET OFF" "GO ON"
+  choose "Will you get off here, or go on to the next set?" "GET OFF" "GO ON" "REST"
   if result == 1 goto Next
+  if result == 2 goto Rest
+label GetOff
   subway finish won
   subway points
   if result == 0 goto NoPoints
@@ -131,6 +136,28 @@ label NoPoints
   say "Thank you for riding the Battle Subway!"
 label Off
   goto Home
+  end
+
+# The run put down (plan 22 · U11): the player is taken back to the Gear Station and the game saved there, and any
+# desk takes the run up again from the next car
+label Rest
+  subway next
+  ask "Put your run down for now? The game will be saved at the Gear Station, and you can ride on from car {number} later."
+  if yes goto PutDown
+  choose "Then will you get off here, or go on to the next set?" "GET OFF" "GO ON"
+  if result == 1 goto Next
+  goto GetOff
+label PutDown
+  subway pause
+  say "Very well. Your seat will be kept for you!"
+  clearflag FLAG_UNOVA_SUBWAY_SHOW_PARTNER
+  hide partner
+  fade out 0.6
+  sound "crossing_engine"
+  warp "GearStation" 11 4 down
+  fade in
+  text "{player} saved the game."
+  frontier save
   end
 
 label Lost

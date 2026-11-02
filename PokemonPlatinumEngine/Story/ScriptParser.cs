@@ -1031,10 +1031,11 @@ public static class ScriptParser
             case "subway":
             {
                 string what = r.OneOf("enough", "begin", "choose", "check", "active", "end", "next", "boss", "opponent", "battle", "won", "streak",
-                    "best", "finish", "points", "mode", "foe", "super", "opened");
+                    "best", "finish", "points", "mode", "foe", "super", "opened", "pause", "paused", "resume", "records", "friends", "partner");
                 string which = what switch
                 {
                     "begin" => r.OneOf("single", "double", "multi", "supersingle", "superdouble", "supermulti"),
+                    "partner" => r.OneOf("staff", "cheren", "bianca", "again"),
                     "opened" => r.OneOf("single", "double", "multi"),
                     "finish" => r.OneOf("won", "lost"),
                     "foe" => r.Text("a trainer's id"),
@@ -1049,6 +1050,14 @@ public static class ScriptParser
                 string what = r.OneOf("begin", "active", "mode", "floor", "laid", "opponent", "fight", "lost", "climb", "down", "prize", "record", "end");
                 string which = what == "begin" ? r.OneOf("normal", "variety", "unique", "expert") : "";
                 return new Instruction { Op = Op.TrainerHill, Line = line, Name = what, Other = which };
+            }
+
+            // Join Avenue's growth (plan 22 · U11): the day's visitors, the rank, a shop's stock by the rank
+            case "joinavenue":
+            {
+                string what = r.OneOf("visit", "rank", "visitors", "next", "shop");
+                string which = what == "shop" ? r.OneOf("market", "flowers", "cafe", "stones", "vitamins") : "";
+                return new Instruction { Op = Op.JoinAvenue, Line = line, Name = what, Other = which };
             }
 
             // A Hidden Grotto (plan 22 · U11): the mouth stood before, what it holds, its Pokémon battled, its item taken

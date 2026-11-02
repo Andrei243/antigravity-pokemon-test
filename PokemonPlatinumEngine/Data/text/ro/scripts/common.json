@@ -2847,7 +2847,7 @@
         "There's a hollow in the trees here, just big enough to crawl into."
       ],
       "text": [
-        ""
+        "Aici e o scorbură între copaci, exact cât să te strecori înăuntru."
       ]
     },
     {
@@ -2855,7 +2855,7 @@
         "Will you go in?"
       ],
       "text": [
-        ""
+        "Intri?"
       ]
     },
     {
@@ -2863,7 +2863,7 @@
         "The trees grow too thick here to see through."
       ],
       "text": [
-        ""
+        "Copacii cresc prea deși aici ca să vezi printre ei."
       ]
     }
   ],
@@ -2873,7 +2873,7 @@
         "Cameron"
       ],
       "text": [
-        ""
+        "Cameron"
       ]
     },
     {
@@ -2881,7 +2881,7 @@
         "Hi, I'm Cameron, the photographer! This spot makes a great picture. Shall I take one of you and your team's lead?"
       ],
       "text": [
-        ""
+        "Salut, sunt Cameron, fotograful! Locul ăsta iese grozav în poză. Să vă fac una ție și primului Pokémon din echipă?"
       ]
     },
     {
@@ -2889,7 +2889,7 @@
         "Click! Cameron took a photograph of {player}."
       ],
       "text": [
-        ""
+        "Clic! Cameron i-a făcut o fotografie lui {player}."
       ]
     },
     {
@@ -2897,7 +2897,7 @@
         "Lovely shot! I'll send it to my dad's studio in Cianwood City. He keeps your album there."
       ],
       "text": [
-        ""
+        "Ce cadru reușit! O trimit la studioul tatălui meu din Cianwood City. El îți păstrează albumul acolo."
       ]
     },
     {
@@ -2905,7 +2905,7 @@
         "No? Well, if you change your mind, I'll be right here with my camera."
       ],
       "text": [
-        ""
+        "Nu? Ei bine, dacă te răzgândești, sunt chiar aici cu aparatul."
       ]
     },
     {
@@ -2913,7 +2913,7 @@
         "Oh! Dad says your album in Cianwood City is full. Throw a photograph or two away there, and I'll take another."
       ],
       "text": [
-        ""
+        "Oh! Tata zice că albumul tău din Cianwood City e plin. Aruncă acolo o fotografie sau două și îți mai fac una."
       ]
     }
   ]

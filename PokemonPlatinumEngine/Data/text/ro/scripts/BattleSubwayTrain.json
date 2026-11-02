@@ -172,9 +172,16 @@
       "en": [
         "Will you get off here, or go on to the next set?",
         "GET OFF",
-        "GO ON"
+        "GO ON",
+        "REST"
       ],
       "text": [
+        "Cobori aici sau mergi mai departe la următorul set?",
+        "COBOR",
+        "MERG MAI DEPARTE",
+        "PAUZĂ"
+      ],
+      "was": [
         "Cobori aici sau continui cu seria următoare?",
         "COBOARĂ",
         "CONTINUĂ"
@@ -206,10 +213,58 @@
     },
     {
       "en": [
+        "Put your run down for now? The game will be saved at the Gear Station, and you can ride on from car {number} later."
+      ],
+      "text": [
+        "Lași cursa deoparte deocamdată? Jocul va fi salvat la Gear Station și poți continua mai târziu din vagonul {number}."
+      ],
+      "was": [
+        "Agentul depoului"
+      ]
+    },
+    {
+      "en": [
+        "Then will you get off here, or go on to the next set?",
+        "GET OFF",
+        "GO ON"
+      ],
+      "text": [
+        "Atunci cobori aici sau mergi mai departe la următorul set?",
+        "COBOR",
+        "MERG MAI DEPARTE"
+      ],
+      "was": [
+        "Oh, ghinion! Aici se termină călătoria. Ai învins {number} vagoane înainte să fii oprit."
+      ]
+    },
+    {
+      "en": [
+        "Very well. Your seat will be kept for you!"
+      ],
+      "text": [
+        "Foarte bine. Locul tău va fi păstrat!"
+      ],
+      "was": [
+        "Seriile învinse se păstrează. Iată Punctele de Luptă câștigate."
+      ]
+    },
+    {
+      "en": [
+        "{player} saved the game."
+      ],
+      "text": [
+        "{player} a salvat jocul."
+      ],
+      "was": [
+        "{player} a primit {number} PL!"
+      ]
+    },
+    {
+      "en": [
         "Depot Agent"
       ],
       "text": [
-        "Agentul depoului"
+        "Agent de depou"
       ]
     },
     {
@@ -217,7 +272,7 @@
         "Oh, bad luck! That's the end of the ride. You cleared {number} cars before you were stopped."
       ],
       "text": [
-        "Oh, ghinion! Aici se termină călătoria. Ai învins {number} vagoane înainte să fii oprit."
+        "Ce ghinion! Aici se termină cursa. Ai trecut de {number} vagoane până să fii oprit."
       ]
     },
     {
@@ -225,7 +280,7 @@
         "The sets you cleared still count. Here are the Battle Points you earned."
       ],
       "text": [
-        "Seriile învinse se păstrează. Iată Punctele de Luptă câștigate."
+        "Seturile terminate tot se pun. Iată Punctele de Luptă câștigate."
       ]
     },
     {
