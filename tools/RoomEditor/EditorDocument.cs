@@ -373,13 +373,7 @@ public sealed class EditorDocument
         switch (kind)
         {
             case ThingKind.Person when f.Npcs.FirstOrDefault(n => n.X == x && n.Y == y) is { } n:
-                return new EditorField[]
-                {
-                    new("id", n.Id ?? ""), new("name", n.Name), new("npcType", n.NpcType), new("facing", n.Facing.ToString()),
-                    new("dialog", string.Join("|", n.Dialog ?? new())), new("script", n.Script ?? ""),
-                    new("hiddenBy", n.HiddenBy ?? ""), new("shownBy", n.ShownBy ?? ""), new("trainer", n.Trainer?.Id ?? ""),
-                    new("nurse", Flag(n.IsHealingNurse)), new("clerk", Flag(n.IsPokeMartClerk)), new("pc", Flag(n.IsPCTerminal)), new("mart", n.Mart ?? "")
-                };
+                return NpcFields.Of(n);
             case ThingKind.Sign when f.Signboards.FirstOrDefault(s => s.X == x && s.Y == y) is { } s:
                 return new EditorField[] { new("text", s.Text), new("script", s.Script ?? "") };
             case ThingKind.Warp when f.Warps.FirstOrDefault(w => w.SourceX == x && w.SourceY == y) is { } w:
@@ -404,11 +398,9 @@ public sealed class EditorDocument
         return Array.Empty<EditorField>();
     }
 
-    private static string Flag(bool? value) => value == true ? "true" : "";
-    private static string Number(int value) => value.ToString(CultureInfo.InvariantCulture);
-    private static string? Optional(string value) => value.Length == 0 ? null : value;
-    private static bool? OptionalFlag(string value) => value.Length == 0 || value.Equals("false", StringComparison.OrdinalIgnoreCase) ? null : bool.Parse(value);
-    private static int ParseNumber(string value) => int.Parse(value, CultureInfo.InvariantCulture);
+    private static string Number(int value) => NpcFields.Number(value);
+    private static string? Optional(string value) => NpcFields.Optional(value);
+    private static int ParseNumber(string value) => NpcFields.ParseNumber(value);
 
     /// <summary>Sets one field of something on a tile, as one step; a value the field can't take throws and changes nothing.</summary>
     public void SetField(int x, int y, ThingKind kind, string label, string value)
@@ -432,26 +424,8 @@ public sealed class EditorDocument
         {
             case ThingKind.Person:
                 var n = f.Npcs.First(p => p.X == x && p.Y == y);
-                switch (label)
-                {
-                    case "id": n.Id = Optional(value); break;
-                    case "name": n.Name = value; break;
-                    case "npcType": n.NpcType = value; break;
-                    case "facing": n.Facing = Enum.Parse<Direction>(value, true); break;
-                    case "dialog": n.Dialog = value.Length == 0 ? null : value.Split('|').ToList(); break;
-                    case "script": n.Script = Optional(value); break;
-                    case "hiddenBy": n.HiddenBy = Optional(value); break;
-                    case "shownBy": n.ShownBy = Optional(value); break;
-                    case "trainer":
-                        n.Trainer = value.Length == 0 ? null : n.Trainer ?? new MapFile.TrainerRecord();
-                        if (n.Trainer != null) n.Trainer.Id = value;
-                        break;
-                    case "nurse": n.IsHealingNurse = OptionalFlag(value); break;
-                    case "clerk": n.IsPokeMartClerk = OptionalFlag(value); break;
-                    case "pc": n.IsPCTerminal = OptionalFlag(value); break;
-                    case "mart": n.Mart = Optional(value); break;
-                    default: Unknown(); break;
-                }
+                if (label is "x" or "y") Unknown();
+                NpcFields.Write(n, label, value);
                 break;
             case ThingKind.Sign:
                 var s = f.Signboards.First(p => p.X == x && p.Y == y);

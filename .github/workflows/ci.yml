@@ -3,7 +3,8 @@
 #   build-and-test  the solution in Release (every tool is in it, the harness and MusicRender too), the tests but
 #                   BudgetTests with a .trx and the ten slowest listed in the run's summary, then BudgetTests alone
 #                   (its memory ceiling is known to fail beside the rest of the suite and to pass alone), and the
-#                   checks that need no window: the content check, the corpus of saves held to the data, and the
+#                   checks that need no window: the content check, the room editor's round trip of every room and
+#                   overlay (tools/RoomEditor --roundtrip), the corpus of saves held to the data, and the
 #                   voice catalogue and the localisation report as the game gives them.
 #   shots           pull requests only: the harness under xvfb with Mesa's llvmpipe (tools/dev/shots.sh's recipe,
 #                   through tools/dev/baseline.sh), a few shots of `field`, `menus`, `battle` and `story` on the PR's
@@ -86,6 +87,11 @@ jobs:
       - name: Content check
         if: always()
         run: dotnet run --project tools/ContentCheck --no-build -c Release
+
+      # No window: every room and overlay opened by the room editor and written back as it writes them (plan 16 · T9)
+      - name: Rooms and overlays round-trip through the editor
+        if: always()
+        run: dotnet run --project tools/RoomEditor --no-build -c Release -- --roundtrip
 
       - name: The corpus of saves held to the data
         if: always()

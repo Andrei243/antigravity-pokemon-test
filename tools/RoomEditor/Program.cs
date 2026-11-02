@@ -5,13 +5,16 @@
 //   ... --area <key>                                                         and an area's overlay on the second tab (twinleaf_town)
 //   ... --data <dir>                                                         another folder laid out like Data/
 //   ... --shot <out dir>                                                     each tab drawn once in a hidden window (editor_*.png), then out
+//   dotnet run --project tools/RoomEditor -- --roundtrip                     no window: every room and overlay opened and written back, what differs told (exit 1)
+//   dotnet run --project tools/RoomEditor -- --check <file>                  the same of one room's or overlay's file
 
 using System.Globalization;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using RoomEditor;
 
-string? data = null, shot = null, area = null, name = null;
+string? data = null, shot = null, area = null, name = null, check = null;
+bool roundTrip = false;
 (string Name, int W, int H)? fresh = null;
 for (int i = 0; i < args.Length; i++)
 {
@@ -23,6 +26,8 @@ for (int i = 0; i < args.Length; i++)
             case "--data": data = Value(); break;
             case "--shot": shot = Value(); break;
             case "--area": area = Value(); break;
+            case "--check": check = Value(); break;
+            case "--roundtrip": roundTrip = true; break;
             case "--new": fresh = (Value(), int.Parse(Value(), CultureInfo.InvariantCulture), int.Parse(Value(), CultureInfo.InvariantCulture)); break;
             default: name = args[i]; break;
         }
@@ -42,8 +47,19 @@ if (!Directory.Exists(data))
     return 2;
 }
 
+// No window: every room and overlay (or one file) opened and written back as the editor does, and what differs told
+if (roundTrip || check != null)
+{
+    var (files, found) = check != null ? (1, RoundTrip.One(data, check)) : RoundTrip.All(data);
+    foreach (string line in found) Console.WriteLine(line);
+    Console.WriteLine($"{files} file{(files == 1 ? "" : "s")} opened and written back: {found.Count} difference{(found.Count == 1 ? "" : "s")}");
+    return found.Count == 0 ? 0 : 1;
+}
+
 EditorDocument room;
 if (fresh is { } f) room = EditorDocument.New(f.Name, f.W, f.H);
+// An area alone: its overlay and its view, beside an empty room nothing saves unless it is drawn
+else if (name == null && area != null) room = EditorDocument.New("Untitled", 10, 8);
 else if (name != null)
 {
     string path = Path.Combine(data, MapDatabase.Folder, name + ".json");

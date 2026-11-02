@@ -13,7 +13,7 @@ namespace RoomEditor;
 /// </summary>
 public sealed class EditorWindow
 {
-    public enum Tab { Room, Overlay, Preview }
+    public enum Tab { Room, Overlay, Preview, Area }
     public enum Tool { Paint, Solid, Overhead, Prop, Warp, Sign, Person, Trigger, Select }
 
     private const int PaletteWidth = 230, FieldsWidth = 420, Bar = 28, FindingsHeight = 120, FontSize = 16;
@@ -44,6 +44,32 @@ public sealed class EditorWindow
     private Texture2D? preview;
     private string previewOf = "";
     private bool stroking;
+    private AreaView? areaView;
+    private bool areaTried, showPlan;
+    private Texture2D? plan;
+    private string planOf = "";
+
+    /// <summary>Whether the tab's file is the overlay: its list, or the area seen from above.</summary>
+    private bool OnOverlay => tab is Tab.Overlay or Tab.Area;
+
+    /// <summary>The area seen from above, made the first time it is asked for (the folder's worlds are read then).</summary>
+    private AreaView? Area
+    {
+        get
+        {
+            if (areaTried || overlay == null) return areaView;
+            areaTried = true;
+            try
+            {
+                areaView = AreaView.Open(content.Value, overlay.Key);
+            }
+            catch (ArgumentException e)
+            {
+                status = "no area view: " + e.Message;
+            }
+            return areaView;
+        }
+    }
 
     public EditorWindow(EditorDocument room, string dataFolder, OverlayDocument? overlay = null, string? overlayPath = null)
     {
@@ -77,7 +103,7 @@ public sealed class EditorWindow
         Raylib.InitWindow(1600, 900, "Room editor");
         foreach (var t in Enum.GetValues<Tab>())
         {
-            if (t == Tab.Overlay && overlay == null) continue;
+            if (t == Tab.Overlay && overlay == null || t == Tab.Area && Area == null) continue;
             tab = t;
             for (int i = 0; i < 2; i++) Draw();
             var image = Raylib.LoadImageFromScreen();
@@ -92,6 +118,7 @@ public sealed class EditorWindow
     private void Close()
     {
         if (preview is { } texture) Raylib.UnloadTexture(texture);
+        if (plan is { } picture) Raylib.UnloadTexture(picture);
         Raylib.CloseWindow();
     }
 
@@ -108,8 +135,9 @@ public sealed class EditorWindow
         if (Raylib.IsKeyPressed(KeyboardKey.F1)) tab = Tab.Room;
         if (Raylib.IsKeyPressed(KeyboardKey.F2) && overlay != null) tab = Tab.Overlay;
         if (Raylib.IsKeyPressed(KeyboardKey.F3)) tab = Tab.Preview;
-        if (ctrl && Raylib.IsKeyPressed(KeyboardKey.Z)) Act(() => { if (tab == Tab.Overlay) overlay?.Undo(); else room.Undo(); });
-        if (ctrl && Raylib.IsKeyPressed(KeyboardKey.Y)) Act(() => { if (tab == Tab.Overlay) overlay?.Redo(); else room.Redo(); });
+        if (Raylib.IsKeyPressed(KeyboardKey.F4) && Area != null) tab = Tab.Area;
+        if (ctrl && Raylib.IsKeyPressed(KeyboardKey.Z)) Act(() => { if (OnOverlay) overlay?.Undo(); else room.Undo(); });
+        if (ctrl && Raylib.IsKeyPressed(KeyboardKey.Y)) Act(() => { if (OnOverlay) overlay?.Redo(); else room.Redo(); });
         if (ctrl && Raylib.IsKeyPressed(KeyboardKey.S)) Act(Save);
         if (!ctrl)
             for (int i = 0; i < 9; i++)
@@ -119,7 +147,62 @@ public sealed class EditorWindow
         float wheel = Raylib.GetMouseWheelMove();
         if (tab == Tab.Room) RoomInput(mouse, wheel);
         else if (tab == Tab.Overlay) OverlayInput(mouse, wheel);
+        else if (tab == Tab.Area) AreaInput(mouse, wheel);
         FieldsInput(mouse);
+    }
+
+    private void AreaInput(Vector2 mouse, float wheel)
+    {
+        if (overlay == null || Area is not { } view) return;
+        if (Raylib.IsKeyPressed(KeyboardKey.PageDown)) Act(() => view.NextChunk(1));
+        if (Raylib.IsKeyPressed(KeyboardKey.PageUp)) Act(() => view.NextChunk(-1));
+        if (Raylib.IsKeyPressed(KeyboardKey.B)) view.Layer = view.Layer == AreaLayer.Blocked ? AreaLayer.Behaviour : AreaLayer.Blocked;
+        if (Raylib.IsKeyPressed(KeyboardKey.P)) showPlan = !showPlan;
+        if (!InGrid(mouse) && mouse.X > PaletteWidth) return;
+        if (mouse.X < PaletteWidth)
+        {
+            // The palette is the furniture an overlay's prop is placed as
+            paletteScroll = Math.Max(0, paletteScroll - (int)wheel * 3);
+            if (Raylib.IsMouseButtonPressed(MouseButton.Left))
+            {
+                int row = (int)(mouse.Y - Bar - 8) / 22 + paletteScroll;
+                var names = Enum.GetNames<PropType>();
+                if (row >= 0 && row < names.Length) prop = Enum.Parse<PropType>(names[row]);
+            }
+            return;
+        }
+        if (wheel != 0)
+        {
+            float before = zoom;
+            zoom = Math.Clamp(zoom * (wheel > 0 ? 1.25f : 0.8f), 6, 96);
+            pan = mouse - (mouse - pan) * (zoom / before);
+        }
+        if (Raylib.IsMouseButtonDown(MouseButton.Middle)) pan += Raylib.GetMouseDelta();
+
+        var (tx, ty) = TileUnder(mouse);
+        int x = view.Window.X + tx, y = view.Window.Y + ty;
+        if (!view.InWindow(x, y)) return;
+        status = view.Describe(x, y, overlay);
+        if (Raylib.IsMouseButtonPressed(MouseButton.Right))
+            Act(() =>
+            {
+                // Right takes away the overlay's own thing on the tile; the area's are the area file's
+                if (overlay.RowsAt(x, y).FirstOrDefault(r => r.IsOwn) is { } own) { overlay.Remove(own.Kind, own.Key); selectedRow = -1; status = $"took away {own.Area}"; }
+            });
+        if (!Raylib.IsMouseButtonPressed(MouseButton.Left)) return;
+        Act(() =>
+        {
+            OverlayRowKind? kind = tool switch
+            {
+                Tool.Person => OverlayRowKind.OwnPerson, Tool.Warp => OverlayRowKind.Exit, Tool.Trigger => OverlayRowKind.OwnTrigger,
+                Tool.Prop => OverlayRowKind.OwnProp, Tool.Sign => OverlayRowKind.ReadAt, _ => null
+            };
+            var row = kind is { } k ? view.Place(overlay, k, x, y, prop) : overlay.RowsAt(x, y).FirstOrDefault();
+            if (row == null) { selectedRow = -1; return; }
+            var rows = overlay.Rows();
+            selectedRow = rows.ToList().FindIndex(r => r.Kind == row.Kind && r.Key == row.Key);
+            editing = -1;
+        });
     }
 
     private void Act(Action action)
@@ -214,11 +297,19 @@ public sealed class EditorWindow
             int row = (int)(mouse.Y - Bar - 8) / 22 + listScroll;
             if (row >= 0 && row < overlay.Rows().Count) { selectedRow = row; editing = -1; }
         }
+        // Right takes the overlay's own thing of a row out of its list
+        if (Raylib.IsMouseButtonPressed(MouseButton.Right) && mouse.Y > Bar)
+        {
+            int row = (int)(mouse.Y - Bar - 8) / 22 + listScroll;
+            var rows = overlay.Rows();
+            if (row >= 0 && row < rows.Count && rows[row].IsOwn)
+                Act(() => { overlay.Remove(rows[row].Kind, rows[row].Key); selectedRow = -1; status = $"took away {rows[row].Area}"; });
+        }
     }
 
     private IReadOnlyList<EditorField> CurrentFields()
     {
-        if (tab == Tab.Overlay && overlay != null)
+        if (OnOverlay && overlay != null)
         {
             var rows = overlay.Rows();
             return selectedRow >= 0 && selectedRow < rows.Count ? overlay.Fields(rows[selectedRow].Kind, rows[selectedRow].Key) : Array.Empty<EditorField>();
@@ -251,7 +342,7 @@ public sealed class EditorWindow
         string label = fields[editing].Label;
         Act(() =>
         {
-            if (tab == Tab.Overlay && overlay != null)
+            if (OnOverlay && overlay != null)
             {
                 var r = overlay.Rows()[selectedRow];
                 overlay.SetField(r.Kind, r.Key, label, typed);
@@ -265,7 +356,7 @@ public sealed class EditorWindow
 
     private void Save()
     {
-        if (tab == Tab.Overlay && overlay != null && overlayPath != null)
+        if (OnOverlay && overlay != null && overlayPath != null)
         {
             findings = EditorChecks.Overlay(content.Value, overlay);
             overlay.Save(overlayPath);
@@ -292,6 +383,7 @@ public sealed class EditorWindow
             case Tab.Room: DrawRoom(); DrawPalette(); break;
             case Tab.Overlay: DrawList(); break;
             case Tab.Preview: DrawPreview(); break;
+            case Tab.Area: DrawArea(); DrawPropPalette(); break;
         }
         DrawFields();
         DrawBars();
@@ -395,11 +487,111 @@ public sealed class EditorWindow
         Raylib.DrawTextureEx(texture, new Vector2(10, Bar + 10), 0, scale, Color.White);
     }
 
+    private void DrawPropPalette()
+    {
+        Raylib.DrawRectangle(0, Bar, PaletteWidth, Raylib.GetScreenHeight() - Bar - FindingsHeight, PanelColor);
+        var names = Enum.GetNames<PropType>();
+        for (int i = paletteScroll; i < names.Length; i++)
+        {
+            int y = Bar + 8 + (i - paletteScroll) * 22;
+            if (y > Raylib.GetScreenHeight() - FindingsHeight - 20) break;
+            Raylib.DrawText(names[i], 30, y, FontSize, names[i] == prop.ToString() ? Accent : Ink);
+        }
+    }
+
+    /// <summary>
+    /// The area's window from above: each tile by what blocks or by its behaviour (B), the content check's plan of it
+    /// under the grid (P), and the overlay's rows on their tiles, its own things ringed. 5 places a way out, 6 a tile
+    /// read, 7 a person, 8 a trigger, 4 a prop; 9 picks; PageUp and PageDown go from chunk to chunk.
+    /// </summary>
+    private void DrawArea()
+    {
+        if (overlay == null || Area is not { } view) return;
+        int s = (int)zoom;
+        var (wx, wy, ww, wh) = view.Window;
+        if (showPlan)
+        {
+            string key = $"{wx},{wy},{ww},{wh}";
+            if (key != planOf)
+            {
+                planOf = key;
+                if (plan is { } old) Raylib.UnloadTexture(old);
+                plan = null;
+                try
+                {
+                    var made = view.Plan(32);
+                    var image = made.Picture.ToImage();
+                    plan = Raylib.LoadTextureFromImage(image);
+                    Raylib.UnloadImage(image);
+                    planLeft = made.Left;
+                    planTop = made.Top;
+                }
+                catch (ArgumentException e)
+                {
+                    status = "no plan: " + e.Message;
+                }
+            }
+            // The plan's first tile laid on the grid's, its 32 pixels a tile scaled to the grid's
+            if (plan is { } picture)
+                Raylib.DrawTextureEx(picture, new Vector2(pan.X - planLeft * zoom / 32f, pan.Y - planTop * zoom / 32f), 0, zoom / 32f, Color.White);
+        }
+        for (int y = 0; y < wh; y++)
+            for (int x = 0; x < ww; x++)
+            {
+                int px = (int)pan.X + x * s, py = (int)pan.Y + y * s, mx = wx + x, my = wy + y;
+                if (!showPlan)
+                {
+                    var colour = view.Layer == AreaLayer.Blocked
+                        ? view.Blocked(mx, my) ? new Color(70, 66, 80, 255) : new Color(196, 206, 170, 255)
+                        : BehaviourColor(view.Behaviour(mx, my));
+                    Raylib.DrawRectangle(px, py, s, s, colour);
+                    if (view.Layer == AreaLayer.Behaviour && view.Blocked(mx, my)) Raylib.DrawLine(px, py + s, px + s, py, Hatch);
+                }
+                if (!view.Belongs(mx, my)) Raylib.DrawRectangle(px, py, s, s, new Color(30, 32, 40, 150));
+                Raylib.DrawRectangleLines(px, py, s, s, new Color(0, 0, 0, 40));
+            }
+        var rows = overlay.Rows();
+        foreach (var row in rows)
+        {
+            if (!view.InWindow(row.X, row.Z)) continue;
+            int px = (int)pan.X + (row.X - wx) * s, py = (int)pan.Y + (row.Z - wy) * s;
+            var (letter, color) = row.Kind switch
+            {
+                OverlayRowKind.Person or OverlayRowKind.OwnPerson => ("P", Plans.PersonColor),
+                OverlayRowKind.Door or OverlayRowKind.Exit => ("W", Plans.WarpColor),
+                OverlayRowKind.Trigger or OverlayRowKind.OwnTrigger => ("T", Plans.TriggerColor),
+                OverlayRowKind.Sign or OverlayRowKind.ReadAt => ("S", Plans.SignColor),
+                _ => ("F", Plans.PropColor)
+            };
+            if (row.Kind is OverlayRowKind.Trigger or OverlayRowKind.OwnTrigger or OverlayRowKind.OwnProp)
+                Raylib.DrawRectangleLinesEx(new Rectangle(px, py, row.Width * s, row.Depth * s), 2, color);
+            else
+            {
+                Raylib.DrawCircle(px + s / 2, py + s / 2, s * 0.35f, color);
+                Raylib.DrawText(letter, px + s / 2 - 4, py + s / 2 - 7, 14, Ink);
+            }
+            // The overlay's own things ringed, and an area row the overlay says nothing of dimmed
+            if (row.IsOwn) Raylib.DrawCircleLines(px + s / 2, py + s / 2, s * 0.45f, Accent);
+            else if (row.Overlay.Length == 0) Raylib.DrawCircle(px + s / 2, py + s / 2, s * 0.35f, Hatch);
+        }
+        if (selectedRow >= 0 && selectedRow < rows.Count && view.InWindow(rows[selectedRow].X, rows[selectedRow].Z))
+            Raylib.DrawRectangleLinesEx(new Rectangle(pan.X + (rows[selectedRow].X - wx) * s - 2, pan.Y + (rows[selectedRow].Z - wy) * s - 2, s + 4, s + 4), 3, Accent);
+        Raylib.DrawText($"{view.Key}: tiles {wx},{wy} to {wx + ww - 1},{wy + wh - 1}, {view.Layer} (B), plan {(showPlan ? "on" : "off")} (P), PageUp/PageDown chunks",
+            PaletteWidth + 10, Raylib.GetScreenHeight() - FindingsHeight - 22, FontSize - 2, Dim);
+    }
+
+    private int planLeft, planTop;
+
+    /// <summary>A behaviour as a flat colour of its own, none as the ground's.</summary>
+    private static Color BehaviourColor(TileBehavior behaviour) => behaviour == TileBehavior.None
+        ? new Color(196, 206, 170, 255)
+        : new Color((byte)(60 + (int)behaviour * 37 % 180), (byte)(60 + (int)behaviour * 71 % 180), (byte)(60 + (int)behaviour * 113 % 180), (byte)255);
+
     private void DrawFields()
     {
         int left = Raylib.GetScreenWidth() - FieldsWidth;
         Raylib.DrawRectangle(left, Bar, FieldsWidth, Raylib.GetScreenHeight() - Bar - FindingsHeight, PanelColor);
-        string title = tab == Tab.Overlay
+        string title = OnOverlay
             ? selectedRow >= 0 && overlay != null && selectedRow < overlay.Rows().Count ? overlay.Rows()[selectedRow].Key : "pick a row"
             : selected is { } at ? $"{selectedKind?.ToString() ?? "nothing"} at {at.X},{at.Y}" : "the room";
         Raylib.DrawText(title, left + 10, Bar + 10, FontSize + 2, Accent);
