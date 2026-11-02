@@ -110,15 +110,6 @@ partial class Harness
         Battle("jko15_cals_battle");
         Console.WriteLine($"  Trainer House fought today {game.Story.Has("FLAG_DAILY_JOHTO_TRAINER_HOUSE")}");
 
-        // ---- Pal Park's gate in Fuchsia City
-        Spot("Johto", 1214, 405, Direction.Up, "jko16_pal_parks_gate_from_the_street", 30);
-        Spot("Fuchsia_PalParkGate", 7, 12, Direction.Up, "jko17_pal_parks_gate_inside");
-        TalkTo("Fuchsia_PalParkGate", "t08r0201_workman");
-        ReadTo("go to Pal Park"); Frames(10); Shot("jko18_the_attendants_question");
-        ReadTo(null);
-        Console.WriteLine($"  after the gate: {game.Map.Name} {game.Player.GridX},{game.Player.GridY}");
-        Frames(30); Shot("jko19_pal_park_lobby_from_kanto");
-
         // ---- The S.S. Aqua's rooms
         Spot("SSAqua_1F", 24, 15, Direction.Up, "jko20_ss_aqua_corridor");
         Spot("SSAqua_1F_NorthwestRooms", 16, 9, Direction.Up, "jko21_ss_aqua_northwest_cabins");
@@ -180,5 +171,16 @@ partial class Harness
         box.Advance();
         Battle("jko37_suicunes_battle");
         Console.WriteLine($"  Suicune: 4070 {game.Story.Var("VAR_UNK_4070")}, 4086 {game.Story.Var("VAR_UNK_4086")}, 4088 {game.Story.Var("VAR_UNK_4088")}, fought {game.Story.Has("FLAG_JOHTO_FOUGHT_SUICUNE")}");
+
+        // (last: the crossing leaves the game in Sinnoh)
+        // ---- Pal Park's gate in Fuchsia City
+        Spot("Johto", 1214, 405, Direction.Up, "jko16_pal_parks_gate_from_the_street", 30);
+        Spot("Fuchsia_PalParkGate", 7, 12, Direction.Up, "jko17_pal_parks_gate_inside");
+        game.Pokedex.UnlockNational();
+        TalkTo("Fuchsia_PalParkGate", "t08r0201_workman");
+        ReadTo("go to Pal Park"); Frames(10); Shot("jko18_the_attendants_question");
+        ReadTo(null);
+        Console.WriteLine($"  after the gate: {game.Map.Name} {game.Player.GridX},{game.Player.GridY}");
+        Frames(30); Shot("jko19_pal_park_lobby_from_kanto");
     }
 }
