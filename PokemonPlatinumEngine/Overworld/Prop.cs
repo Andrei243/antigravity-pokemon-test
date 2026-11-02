@@ -280,6 +280,10 @@ public enum PropType
     UnownWall,
     /// <summary>The mouth of a Hidden Grotto in a tree wall (plan 22 · U11): a thing of the map (<see cref="NPC.GrottoHollowType"/>), drawn as a card.</summary>
     GrottoHollow,
+    /// <summary>The Cianwood Gym's waterfall (plan 20, part r): a thing of the map (<see cref="NPC.GymWaterfallType"/>), drawn falling by <c>GymPieces</c>.</summary>
+    GymWaterfall,
+    /// <summary>A pile of cardboard crates in the Goldenrod Department Store's basement (plan 20, part r): a thing of the map (<see cref="NPC.CrateType"/>), drawn as a card.</summary>
+    CratePile,
 }
 
 /// <summary>A piece of furniture or decoration placed in a room, covering a rectangle of tiles.</summary>

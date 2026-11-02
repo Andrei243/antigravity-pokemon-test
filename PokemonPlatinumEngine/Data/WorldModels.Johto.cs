@@ -63,7 +63,9 @@ public static partial class WorldModels
         Built("ar_shrine3", BuildingKind.Shrine, "a chamber of the Ruins of Alph"),
         Door("ar_study_door"),
         Ground("kk_sky", "the sky over Violet City (no model of its own: the sky is the field's)"),
-        Ground("object01", "an unnamed marker of the original's: nothing to draw"),
+        // A statue of a Gym's pair by its door, in every Gym of Johto and of HeartGold's Kanto (plan 20, part r: the
+        // pair face one another across the way in)
+        Furniture("object01", PropType.Statue, "a Gym's statue by its door"),
 
         // ---------------------------------------------------------------- Azalea Town (hw_: Hiwada), in view from Route 32's south
         // end; the town opens with plan 20 · J5, which gives it its own way of building

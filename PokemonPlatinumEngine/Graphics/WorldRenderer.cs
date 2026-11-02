@@ -1242,7 +1242,7 @@ public sealed partial class WorldRenderer
                 continue;
             }
             // A snowball of the Snowpoint Gym is a card of the scenery, drawn with the room's pieces (GymPieces)
-            if (npc.IsSnowball || npc.IsLeagueDoor) continue;
+            if (npc.IsSnowball || npc.IsLeagueDoor || npc.IsGymWaterfall) continue;
             if (npc.IsThing)
             {
                 // An item in its ball and an obstacle are cards, not people: an obstacle stands a little south of

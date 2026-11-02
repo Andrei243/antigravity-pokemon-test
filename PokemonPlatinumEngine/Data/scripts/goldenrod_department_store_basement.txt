@@ -7,8 +7,59 @@
 # the basement (VAR_GOLDENROD_STORE_LIFT_FLOOR 7; goldenrod_department_store_elevator.txt).
 
 
+#
+# The Machoke shift the crates (plan 20, part r; our own design on HeartGold's beat, whose basement is laid out anew by
+# the day): on Tuesdays, Thursdays and Saturdays each Machoke has pushed its square of crates the way it faces (the west
+# square a tile west, the south one two tiles east, the south-east one a tile south) and stands behind it; the other
+# days the squares stand where HeartGold's objects do. Where they stand, the west square shuts the way to the west room
+# and the south square the way down to the south passage, so the Burn Heal and the Ether are come to only on the days
+# the crates have been shifted.
+
+
 script OnEnter
   setvar VAR_GOLDENROD_STORE_LIFT_FLOOR 7
+  if weekday tuesday goto Shifted
+  if weekday thursday goto Shifted
+  if weekday saturday goto Shifted
+  place d37r0103_babyboy1_5_2 3 14
+  place d37r0103_stop_4 3 13
+  place d37r0103_stop_5 4 13
+  place d37r0103_stop_6 4 14
+  place d37r0103_tsure_poke_static_machoke_2 5 14 left
+  place d37r0103_babyboy1_5_3 19 16
+  place d37r0103_stop 19 15
+  place d37r0103_stop_2 20 15
+  place d37r0103_stop_3 20 16
+  place d37r0103_tsure_poke_static_machoke 19 14 down
+  place d37r0103_babyboy1_5 6 18
+  place d37r0103_stop_7 6 17
+  place d37r0103_stop_8 7 17
+  place d37r0103_stop_9 7 18
+  place d37r0103_tsure_poke_static_machoke_3 5 17 right
+  end
+label Shifted
+  place d37r0103_stop_8 9 17
+  place d37r0103_stop_9 9 18
+  place d37r0103_babyboy1_5 8 18
+  place d37r0103_stop_7 8 17
+  place d37r0103_tsure_poke_static_machoke_3 7 17 right
+  place d37r0103_babyboy1_5_2 2 14
+  place d37r0103_stop_4 2 13
+  place d37r0103_stop_5 3 13
+  place d37r0103_stop_6 3 14
+  place d37r0103_tsure_poke_static_machoke_2 4 14 left
+  place d37r0103_stop_3 20 17
+  place d37r0103_babyboy1_5_3 19 17
+  place d37r0103_stop_2 20 16
+  place d37r0103_stop 19 16
+  place d37r0103_tsure_poke_static_machoke 19 15 down
+  end
+
+
+# A pile of crates: nothing to do but look
+script Crates
+  speaker none
+  text "Crates of stock for the floors upstairs, stacked high. A Machoke must have carried them down."
   end
 
 

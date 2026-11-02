@@ -173,6 +173,82 @@ internal static class GymArt
         Pix.Outline(c, 0.3f);
     }
 
+    /// <summary>The Cianwood Gym's waterfall's size in texels and its frames (style guide, "Chuck's waterfall").</summary>
+    public const int WaterfallWidth = 64, WaterfallHeight = 88, WaterfallFrames = 4;
+
+    /// <summary>The waterfall's frames a second: each frame moves its streaks a quarter of their spacing down.</summary>
+    public const float WaterfallFramesPerSecond = 8f;
+
+    /// <summary>
+    /// One frame of the Cianwood Gym's waterfall, 64 by 88 (plan 20, part r; style guide, "Chuck's waterfall"): a lip of
+    /// grey stone across its top, from which a sheet of water falls straight down into the pool, its streaks moving four
+    /// texels down a frame, edged darker, and white-blue foam churning at its foot. Nothing of it is white.
+    /// </summary>
+    public static void PaintWaterfall(PixelCanvas c, int frame)
+    {
+        var water = Rgb(70, 132, 214);
+        var deep = Rgb(46, 98, 186);
+        var light = Rgb(144, 192, 242);
+        var foamLit = Rgb(222, 238, 252);
+        var foam = Rgb(184, 214, 244);
+        var stone = Tone.Of(134, 132, 128, 170, 168, 162, 92, 90, 88);
+        const int W = WaterfallWidth, H = WaterfallHeight, lip = 9, sheetL = 6, sheetR = W - 7, foot = H - 10;
+        // The lip: a slab of stone wider than the sheet, its top lit and its front in shade
+        for (int y = 0; y < lip; y++)
+            for (int x = 1; x < W - 1; x++)
+                c.Set(x, y, y < 3 ? stone.Light : y == lip - 1 ? stone.Dark : stone.Base);
+        for (int x = 6; x < W - 6; x += 9) c.Set(x, 4, stone.Dark);
+        // The sheet: water with streaks that run down, each column its own phase so they never line up
+        int shift = (frame % WaterfallFrames) * 4;
+        for (int y = lip; y < foot; y++)
+            for (int x = sheetL; x <= sheetR; x++)
+            {
+                bool edge = x <= sheetL + 1 || x >= sheetR - 1;
+                int phase = (x * 7 + x / 3 * 5) % 16;
+                int v = ((y - shift - phase) % 16 + 16) % 16;
+                var col = edge ? deep : v < 2 && x % 3 != 0 ? light : v is 8 or 9 && x % 4 == 1 ? deep : water;
+                c.Set(x, y, col);
+            }
+        // Where it leaves the lip it is smooth and paler for two rows
+        for (int x = sheetL + 2; x <= sheetR - 2; x++) c.Set(x, lip, light);
+        // The foam at its foot: a band of bubbles a little wider than the sheet, churning with the frames
+        for (int y = foot; y < H - 1; y++)
+            for (int x = sheetL - 4; x <= sheetR + 4; x++)
+            {
+                float u = (x - (W - 1) / 2f) / ((sheetR - sheetL) / 2f + 4f);
+                float rise = (y - foot) / (float)(H - 1 - foot);
+                if (u * u + (1f - rise) * (1f - rise) * 0.35f > 1.05f) continue;
+                int churn = (x * 5 + y * 3 + frame * 7) % 9;
+                c.Set(x, y, churn < 3 ? foamLit : churn < 7 ? foam : water);
+            }
+        Pix.Outline(c, 0.3f);
+    }
+
+    /// <summary>
+    /// A pile of cardboard crates, 30 by 34 (plan 20, part r; style guide, "The basement's crates"): a big crate with a
+    /// lighter one on it, both of the storeroom's own cardboard and taped across their lids, as the boxes the room's
+    /// piles are made of. Lit from the upper left; nothing of it is white.
+    /// </summary>
+    public static void PaintCratePile(PixelCanvas c)
+    {
+        var card = Tone.Of(204, 164, 108);
+        var tape = Rgb(226, 206, 160);
+        void Box(int x, int y, int w, int h, int lid)
+        {
+            for (int yy = y; yy < y + h; yy++)
+                for (int xx = x; xx < x + w; xx++)
+                    c.Set(xx, yy, yy < y + lid ? card.Light : xx >= x + w - 3 ? card.Dark : card.Base);
+            // The tape along the lid's seam and down the front
+            for (int xx = x; xx < x + w; xx++) c.Set(xx, y + lid / 2, tape);
+            for (int yy = y + lid; yy < y + Math.Min(h, lid + 6); yy++)
+                for (int xx = x + w / 2 - 2; xx < x + w / 2 + 2; xx++) c.Set(xx, yy, tape);
+            for (int xx = x; xx < x + w; xx++) c.Set(xx, y + lid, card.Dark);
+        }
+        Box(1, 13, 28, 20, 7);
+        Box(6, 2, 18, 12, 5);
+        Pix.Outline(c, 0.3f);
+    }
+
     /// <summary>
     /// A statue of the Mossdeep Gym, 22 by 38 (plan 21 · H8; style guide, "Gyms"): a small figure of pale lilac stone
     /// with its hands joined before it, as someone deep in thought, on a squared plinth of the same stone a step darker.
