@@ -2,7 +2,9 @@
 // ears: levels, clipping, NaNs, clicks, notes that clash (a minor second between two parts on a beat), and a
 // spectrogram picture of each sound (and of each song with --spectrogram) to look at.
 //
-//   dotnet run --project tools/MusicRender -- <out dir> [song id, folder or .mml file ...] [--night] [--lowhp] [--giant] [--stems] [--passes N] [--spectrogram]
+//   dotnet run --project tools/MusicRender -- <out dir> [song id, folder or .mml file ...] [--night] [--lowhp] [--giant] [--stems] [--passes N] [--spectrogram] [--fail-on-clashes]
+//   (exit codes: 0 sound, 1 a bad command line, 2 a render that is broken: NaN, clipping, a click; 3 with
+//   --fail-on-clashes, a song whose notes clash, which the nightly reads: plan 16 · T4)
 //   dotnet run --project tools/MusicRender -- <out dir> --sounds [name ...]
 //   dotnet run --project tools/MusicRender -- <out dir> --cries [species or form ...] [--all] [--modes]
 //   dotnet run --project tools/MusicRender -- <out dir> --ambience [bed ...] [--handheld]
@@ -73,7 +75,7 @@ SynthSound? soundAsked = null;
 var filters = new List<string>();
 for (int i = 1; i < args.Length; i++)
 {
-    if (args[i] is "--night" or "--stems" or "--spectrogram" or "--sounds" or "--lowhp" or "--giant" or "--cries" or "--all" or "--modes" or "--ambience" or "--handheld" or "--wide" or "--mix") continue;
+    if (args[i] is "--night" or "--stems" or "--spectrogram" or "--sounds" or "--lowhp" or "--giant" or "--cries" or "--all" or "--modes" or "--ambience" or "--handheld" or "--wide" or "--mix" or "--fail-on-clashes") continue;
     if (args[i] == "--passes") { passes = int.Parse(args[++i]); continue; }
     if (args[i] == "--sound")
     {
@@ -205,6 +207,9 @@ var songs = MusicLibrary.All
     .ToList();
 
 bool problems = false;
+// Plan 16 · T4: the nightly's --fail-on-clashes ends with 3 when any song has a clash (2 still wins: a broken render)
+bool failOnClashes = args.Contains("--fail-on-clashes");
+int clashing = 0;
 
 // A song named by its file is read from there, so a song being written is checked without building the game
 foreach (var file in filters.Where(f => f.EndsWith(".mml", StringComparison.OrdinalIgnoreCase)))
@@ -284,6 +289,7 @@ foreach (var song in songs)
     if (spectrograms) WriteSpectrogram(Path.Combine(outDir, name + ".png"), samples, 1200, 256, wide ? 16000f : 8192f, rate);
 
     var clashes = Clashes(song, lowHp, giant);
+    if (clashes.Count > 0) clashing++;
     // Loudness is measured before the fade, as the game plays it
     var bus = song.Loops ? AudioBus.Music : AudioBus.Fanfare;
     double loud = Loudness.Of(samples.AsSpan(0, (song.Loops ? frames - (int)(2.5 * rate) : frames) * 2), 2, rate);
@@ -332,7 +338,8 @@ foreach (var song in songs)
     }
     if (nans > 0 || peak >= 0.999f) problems = true;
 }
-return problems ? 2 : 0;
+if (failOnClashes) Console.WriteLine($"{clashing} of {songs.Count} songs have notes that clash.");
+return problems ? 2 : failOnClashes && clashing > 0 ? 3 : 0;
 
 static double Db(float x) => x <= 0 ? -120 : 20 * Math.Log10(x);
 

@@ -1,9 +1,23 @@
-name: Nightly budgets
+# Every night (plan 16 · T4, with T10's budgets): what is too slow for every push.
+#
+#   budgets      T10: the performance budgets under BUDGETS=strict, each median kept as a night's file on the
+#                `budgets` branch (nights/<date>.jsonl), the night failed when an operation is more than 30 % over the
+#                month's median (tools/dev/budgets-month.sh). The harness's `budgets` mode (MapScene.Prepare, which
+#                needs a window) is the Windows machine's: a runner's software GL would time nothing worth keeping.
+#   models-and-battles  every generated model meshed (POKEMON_MODELS_ALL=1) and thousands of random battles
+#                (BATTLE_FUZZ=5000) on the tests' own checks.
+#   music        tools/MusicRender over every song (failing on a clash, --fail-on-clashes), every sound, every
+#                ambience bed and every cry; the reports are the artifact, not the WAVs.
+#   importer     tools/MapImporter against the pinned decompilation (DataImporter's Sources.DecompCommit), its .cache
+#                restored; report.md is the artifact.
+#   harness-all, harness-dex, harness-checks  the harness under xvfb with Mesa's llvmpipe (tools/dev/shots.sh):
+#                `all`, `dex` (the whole National Pokédex meshed and shot), and the playthrough bot (`play 20`), the
+#                kept scenarios (`scenarios`) and a soak (`soak 30`, read for its counts and memory, never its
+#                milliseconds). The mesh cache is kept between nights.
+#   macos        the solution built and tested on macOS (decision 16 · 4: Linux on every push, macOS at night).
+#   oracle       the damage oracle (oracle.yml) answered afresh.
 
-# Plan 16 · T10: the performance budgets every night under BUDGETS=strict, each median kept as a night's file on the
-# `budgets` branch (nights/<date>.jsonl), and the night failed when an operation is more than 30 % over the month's
-# median (tools/dev/budgets-month.sh). The harness's `budgets` mode (MapScene.Prepare, which needs a window) is the
-# Windows machine's: a runner's software GL would time nothing worth keeping.
+name: Nightly
 
 on:
   schedule:
@@ -13,12 +27,14 @@ on:
 permissions:
   contents: write
 
+env:
+  DOTNET_CLI_TELEMETRY_OPTOUT: 1
+  DOTNET_NOLOGO: 1
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
+
 jobs:
   budgets:
     runs-on: ubuntu-latest
-    env:
-      DOTNET_CLI_TELEMETRY_OPTOUT: 1
-      DOTNET_NOLOGO: 1
     steps:
       - uses: actions/checkout@v4
 
@@ -62,3 +78,237 @@ jobs:
           git add nights
           git commit -m "Budgets of $(date -u +%Y-%m-%d)" || exit 0
           git push origin budgets
+
+  models-and-battles:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    env:
+      POKEMON_CACHE: ${{ github.workspace }}/../pokemon-cache
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Mesh cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.POKEMON_CACHE }}/models
+          key: meshes-tests-${{ github.run_id }}
+          restore-keys: meshes-tests-
+
+      - name: Build
+        run: dotnet build PokemonPlatinumTests -c Release
+
+      - name: Every generated model meshes soundly
+        env:
+          POKEMON_MODELS_ALL: "1"
+        run: dotnet test PokemonPlatinumTests --no-build -c Release --filter "FullyQualifiedName~PokemonGeneratorTests"
+
+      - name: Five thousand random battles
+        if: always()
+        env:
+          BATTLE_FUZZ: "5000"
+        run: dotnet test PokemonPlatinumTests --no-build -c Release --filter "FullyQualifiedName~BattleFuzzTests" --logger "console;verbosity=normal"
+
+  music:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Build
+        run: dotnet build tools/MusicRender -c Release
+
+      # Each part ends with 2 on a broken render (NaN, clipping, a click) and the songs with 3 on a clash
+      - name: Every song
+        shell: bash
+        run: dotnet run --project tools/MusicRender --no-build -c Release -- "$RUNNER_TEMP/music/songs" --fail-on-clashes | tee "$RUNNER_TEMP/songs.txt"
+
+      - name: Every sound
+        if: always()
+        shell: bash
+        run: dotnet run --project tools/MusicRender --no-build -c Release -- "$RUNNER_TEMP/music/sounds" --sounds | tee "$RUNNER_TEMP/sounds.txt"
+
+      - name: Every ambience bed
+        if: always()
+        shell: bash
+        run: dotnet run --project tools/MusicRender --no-build -c Release -- "$RUNNER_TEMP/music/ambience" --ambience | tee "$RUNNER_TEMP/ambience.txt"
+
+      - name: Every cry
+        if: always()
+        shell: bash
+        run: dotnet run --project tools/MusicRender --no-build -c Release -- "$RUNNER_TEMP/music/cries" --cries --all | tee "$RUNNER_TEMP/cries.txt"
+
+      - name: Keep the reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: music-reports
+          path: ${{ runner.temp }}/*.txt
+          retention-days: 14
+
+  importer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      # The pinned commits change only in Sources.cs, so its hash is the cache's
+      - name: The decompilations' cache
+        uses: actions/cache@v4
+        with:
+          path: tools/MapImporter/.cache
+          key: decomp-${{ hashFiles('tools/DataImporter/Sources.cs') }}
+
+      - name: Import Sinnoh
+        run: dotnet run --project tools/MapImporter -c Release
+
+      - name: Keep the report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: map-import-report
+          path: tools/MapImporter/out/report.md
+          retention-days: 14
+
+  harness-all:
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    env:
+      POKEMON_CACHE: ${{ github.workspace }}/../pokemon-cache
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - name: Software rendering
+        run: sudo apt-get update && sudo apt-get install -y xvfb libgl1-mesa-dri libglu1-mesa
+      - name: Mesh and sprite cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ${{ env.POKEMON_CACHE }}/models
+            ${{ env.POKEMON_CACHE }}/sprites
+          key: meshes-nightly-all-${{ github.run_id }}
+          restore-keys: |
+            meshes-nightly-all-
+            meshes-
+      - name: all
+        shell: bash
+        run: tools/dev/shots.sh "$RUNNER_TEMP/all" all
+      - name: Contact sheets
+        if: always()
+        shell: bash
+        run: dotnet tools/ShotHarness/bin/Release/net10.0/ShotHarness.dll "$RUNNER_TEMP/all" contact || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: harness-all
+          path: ${{ runner.temp }}/all/contact_*.png
+          retention-days: 7
+          if-no-files-found: warn
+
+  harness-dex:
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    env:
+      POKEMON_CACHE: ${{ github.workspace }}/../pokemon-cache
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - name: Software rendering
+        run: sudo apt-get update && sudo apt-get install -y xvfb libgl1-mesa-dri libglu1-mesa
+      # The dex meshes every species: this is the night that fills the cache the pull requests' shots restore
+      - name: Mesh and sprite cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ${{ env.POKEMON_CACHE }}/models
+            ${{ env.POKEMON_CACHE }}/sprites
+          key: meshes-nightly-dex-${{ github.run_id }}
+          restore-keys: |
+            meshes-nightly-dex-
+            meshes-
+      - name: dex
+        shell: bash
+        run: tools/dev/shots.sh "$RUNNER_TEMP/dex" dex
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: harness-dex
+          path: ${{ runner.temp }}/dex/*.png
+          retention-days: 7
+          if-no-files-found: warn
+
+  harness-checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    env:
+      POKEMON_CACHE: ${{ github.workspace }}/../pokemon-cache
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - name: Software rendering
+        run: sudo apt-get update && sudo apt-get install -y xvfb libgl1-mesa-dri libglu1-mesa
+      - name: Mesh and sprite cache
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            ${{ env.POKEMON_CACHE }}/models
+            ${{ env.POKEMON_CACHE }}/sprites
+          key: meshes-nightly-checks
+          restore-keys: meshes-
+      - name: The playthrough bot, twenty minutes
+        shell: bash
+        run: tools/dev/shots.sh "$RUNNER_TEMP/play" play "" 20
+      - name: The kept scenarios
+        if: always()
+        shell: bash
+        run: tools/dev/shots.sh "$RUNNER_TEMP/scenarios" scenarios
+      # Counts and memory only: a lap's milliseconds under llvmpipe mean nothing
+      - name: A soak of half an hour
+        if: always()
+        shell: bash
+        run: tools/dev/shots.sh "$RUNNER_TEMP/soak" soak "" 30
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: harness-checks
+          path: |
+            ${{ runner.temp }}/play/play.md
+            ${{ runner.temp }}/play/*.png
+            ${{ runner.temp }}/scenarios/**
+            ${{ runner.temp }}/soak/soak.md
+            ${{ runner.temp }}/soak/soak.png
+          retention-days: 14
+          if-no-files-found: warn
+
+  macos:
+    runs-on: macos-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - name: Build
+        run: dotnet build PokemonPlatinum.sln -c Release
+      - name: Test (all but BudgetTests, whose figures are the Linux runner's)
+        run: dotnet test PokemonPlatinumTests --no-build -c Release --filter "FullyQualifiedName!~BudgetTests"
+
+  oracle:
+    uses: ./.github/workflows/oracle.yml
