@@ -872,6 +872,9 @@ public static class RegionDatabase
                 "VanivilleTown_PlayersHouse_1F", "VanivilleTown_PlayersHouse_2F", "VanivilleTown_NeighboursHouse",
                 "VanivilleTown_NorthwestHouse", "VanivilleTown_NortheastHouse", "VanivilleTown_EastHouse",
                 "AquacordeTown_WestHouse", "AquacordeTown_SouthwestHouse", "AquacordeTown_EastHouse", "AquacordeTown_SoutheastHouse",
+                // Plan 23 · Z1, second part: Santalune City's rooms
+                "SantaluneCity_PokemonCenter_1F", "SantaluneCity_Gym", "SantaluneCity_NorthwestHouse", "SantaluneCity_EastHouse",
+                "SantaluneCity_SouthwestHouse", "SantaluneCity_SoutheastHouse",
             }
         },
         new() { Id = Alola, Name = "Alola", Generation = 7 },

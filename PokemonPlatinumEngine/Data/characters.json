@@ -314,6 +314,9 @@
     "tierno": { "skin": "#d8a078", "hairColor": "#2a2a30", "hat": "WideHat", "hatColor": "#e8cc6a", "hatBand": "#6a3a5a", "top": "#6a3a5a", "accent": "#f2f2ee", "bottom": "#3a3a46", "shoes": "#2a2a30", "eyes": "#2a2a30", "build": "Adult", "height": 1.06 },
     "trevor": { "hairColor": "#c8703a", "hair": "Swept", "top": "#f2f2ee", "accent": "#6a6a74", "bottom": "#4a4a58", "shoes": "#3a2e28", "eyes": "#3a5a3a", "vest": "#6a6a74", "build": "Adult", "height": 1.0 },
     "sycamore": { "hairColor": "#2a2630", "hair": "Swept", "top": "#f4f4f6", "accent": "#4a6ab0", "bottom": "#2a2a36", "shoes": "#2a2420", "eyes": "#3a3a4a", "coat": true, "build": "Adult", "height": 1.1 },
+    // Santalune City's Gym Leader (plan 23 · Z1, second part; our own design): a photographer of bugs, short fair hair, a cream
+    // shirt under an olive vest, dark trousers and a camera in her hands
+    "viola": { "hairColor": "#e2c88a", "hair": "Short", "top": "#f2ead8", "accent": "#6a7a3a", "bottom": "#2e3040", "shoes": "#4a3428", "eyes": "#3a5a4a", "vest": "#6a7a3a", "holds": "Camera", "lashes": true, "build": "Adult", "height": 1.02 },
     // The first trainers of the open areas (plan 11 · C2), each our own take. The school kids: navy with a white collar, the boy in a bowl cut and grey shorts with a satchel, the girl with a ponytail tied in red and a red skirt
     "school_kid_m": { "hairColor": "#4a3428", "hair": "Bowl", "top": "#34467a", "accent": "#f4f4f6", "bottom": "#8a8c96", "shoes": "#4a3428", "shorts": true, "bag": "#b4864e", "blush": true },
     "school_kid_f": { "hairColor": "#3c2a26", "hair": "Ponytail", "hatBand": "#d8434a", "top": "#34467a", "accent": "#f4f4f6", "bottom": "#c4464c", "shoes": "#3c2c2a", "skirt": true, "bag": "#b4864e", "lashes": true, "blush": true },
@@ -695,7 +698,7 @@
     "Belle & Pa": [ "lass", "middle_aged_man" ],
     "Double Team": [ "ace_trainer_f", "ace_trainer_m" ],
     "Young Couple": [ "ace_trainer_m", "ace_trainer_f" ],
-    "Rival": [ "rival", "blue", "may", "brendan", "wally", "silver" ],
+    "Rival": [ "rival", "blue", "may", "brendan", "wally", "silver", "serena", "calem" ],
     // Plan 20 · J14: the classes HeartGold has that Platinum and FireRed lack, on looks of the kit, and the Johto cast's
     "Team Rocket F": "rocket_f",
     "Rocket Boss": "giovanni",

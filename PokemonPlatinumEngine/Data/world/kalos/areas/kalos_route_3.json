@@ -1,0 +1,60 @@
+{
+  "key": "kalos_route_3",
+  "index": 5,
+  "name": "Route 3",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "ROUTE_3",
+  "nightMusic": "ROUTE_3",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [],
+  "objects": [
+    { "id": "tierno", "looks": "youngster", "movement": "look_south", "x": 267, "z": 528, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_HIDE_FRIENDS_ROUTE_3", "script": "" },
+    { "id": "trevor", "looks": "youngster", "movement": "look_south", "x": 268, "z": 528, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_HIDE_FRIENDS_ROUTE_3", "script": "" },
+    { "id": "youngster", "looks": "youngster", "movement": "look_west", "x": 280, "z": 540, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_YOUNGSTER_HUGO" },
+    { "id": "lass", "looks": "lass", "movement": "look_south", "x": 288, "z": 524, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_LASS_COLETTE" },
+    { "id": "picnicker", "looks": "picnicker", "movement": "look_north", "x": 306, "z": 542, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_PICNICKER_INES" },
+    { "id": "fisherman", "looks": "fisherman", "movement": "look_east", "x": 288, "z": 538, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 312, "z": 550, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_ROUTE_3_POTION", "item": "Potion", "script": "" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 262, "z": 530, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_ROUTE_3_POKE_BALL", "item": "Poké Ball", "script": "" }
+  ],
+  "signs": [
+    { "x": 271, "z": 550, "type": 0, "script": "RouteSign" }
+  ],
+  "triggers": [],
+  "land": [
+    { "species": "Fletchling", "level": 4 },
+    { "species": "Bidoof", "level": 4 },
+    { "species": "Bunnelby", "level": 4 },
+    { "species": "Pidgey", "level": 5 },
+    { "species": "Burmy", "level": 4 },
+    { "species": "Azurill", "level": 4 },
+    { "species": "Fletchling", "level": 5 },
+    { "species": "Bidoof", "level": 5 },
+    { "species": "Dunsparce", "level": 5 },
+    { "species": "Burmy", "level": 5 },
+    { "species": "Dunsparce", "level": 6 },
+    { "species": "Azurill", "level": 6 }
+  ],
+  "landRate": 20,
+  "water": [
+    { "species": "Azurill", "level": 4, "maxLevel": 6 },
+    { "species": "Marill", "level": 5, "maxLevel": 7 },
+    { "species": "Azurill", "level": 5, "maxLevel": 7 },
+    { "species": "Marill", "level": 6, "maxLevel": 8 },
+    { "species": "Marill", "level": 7, "maxLevel": 9 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Goldeen", "level": 5, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25
+}

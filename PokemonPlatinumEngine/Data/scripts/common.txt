@@ -2706,7 +2706,23 @@ script KalosNewGame
   setflag FLAG_KALOS_HIDE_RIVAL_VANIVILLE
   setflag FLAG_KALOS_HIDE_SHAUNA_VANIVILLE
   setflag FLAG_KALOS_HIDE_RIVAL_AQUACORDE
+  call KalosSantalune
   setflag FLAG_KALOS_STORY_BEGUN
+  return
+
+
+# What the way to Santalune City hides until its scenes (plan 23 · Z1, second part): the neighbour on Route 2, Shauna
+# in Santalune Forest, Tierno and Trevor on Route 3, and the neighbour and the friends in Santalune City. A new game
+# runs it from KalosNewGame; a save made before this part was written is given it by the arrival of Route 2 or of
+# Santalune City. It may only set flags and variables, and ends in return.
+script KalosSantalune
+  setflag FLAG_KALOS_HIDE_RIVAL_ROUTE_2
+  setflag FLAG_KALOS_HIDE_SHAUNA_FOREST
+  setflag FLAG_KALOS_HIDE_FRIENDS_ROUTE_3
+  setflag FLAG_KALOS_HIDE_RIVAL_SANTALUNE
+  setflag FLAG_KALOS_HIDE_SHAUNA_SANTALUNE
+  setflag FLAG_KALOS_HIDE_FRIENDS_SANTALUNE
+  setflag FLAG_KALOS_SANTALUNE_BEGUN
   return
 
 

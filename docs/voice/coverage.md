@@ -9,10 +9,10 @@ A **line** is one string a character says in a text box (a script's `say` and th
 | Kind | Lines | Spoken | Shown only | With variants | Written by hand |
 |---|---|---|---|---|---|
 | The introduction (`intro:`) | 96 | 96 | 0 | 0 | 0 |
-| People of the hand-made maps (`map:`) | 1287 | 1245 | 42 | 1 | 0 |
-| Scripts (`script:`) | 9666 | 9219 | 447 | 17 | 0 |
-| People of the world (`world:`) | 7111 | 7049 | 62 | 4 | 0 |
-| **All** | 18160 | 17609 | 551 | 22 | 0 |
+| People of the hand-made maps (`map:`) | 1298 | 1256 | 42 | 1 | 0 |
+| Scripts (`script:`) | 9709 | 9262 | 447 | 17 | 0 |
+| People of the world (`world:`) | 7130 | 7068 | 62 | 4 | 0 |
+| **All** | 18233 | 17682 | 551 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -20,15 +20,15 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 
 | What | Lines |
 |---|---|
-| a Pokémon's cry | 243 |
+| a Pokémon's cry | 244 |
 | a question's answers | 676 |
-| a sign | 1571 |
+| a sign | 1576 |
 | the game's own voice (speaker none) | 282 |
-| the game's own voice (text) | 1565 |
+| the game's own voice (text) | 1567 |
 
 ## The cast
 
-- Named characters: 366 voices (329 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
+- Named characters: 367 voices (330 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Cloned from the user's samples: `rival`.
 - Archetypes in use: 225, with 680 voices to cast (V5).
 - Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1877.
@@ -40,17 +40,17 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | Voice | Lines | Shown only |
 |---|---|---|
 | `@self` | 1877 | 135 |
-| `look:gentleman (any)` | 713 | 13 |
+| `look:gentleman (any)` | 715 | 13 |
+| `rival` | 598 | 18 |
 | `look:grunt (any)` | 588 | 0 |
-| `rival` | 585 | 18 |
-| `look:lady (any)` | 422 | 1 |
-| `look:youngster (any)` | 392 | 21 |
-| `look:clerk (any)` | 363 | 9 |
-| `look:lass (any)` | 319 | 11 |
+| `look:lady (any)` | 425 | 1 |
+| `look:youngster (any)` | 393 | 21 |
+| `look:clerk (any)` | 364 | 9 |
+| `look:lass (any)` | 321 | 11 |
 | `look:attendant (any)` | 282 | 12 |
 | `look:nurse (any)` | 255 | 0 |
 | `look:scientist (any)` | 198 | 4 |
-| `look:gym_guide (any)` | 191 | 1 |
+| `look:gym_guide (any)` | 193 | 1 |
 | `look:receptionist (any)` | 159 | 19 |
 | `cynthia` | 157 | 1 |
 | `look:sailor (any)` | 149 | 0 |
@@ -61,24 +61,24 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:team_rocket (any)` | 132 | 0 |
 | `look:woman (any)` | 129 | 13 |
 | `class:swimmer_m (any)` | 126 | 0 |
-| `class:picnicker (any)` | 120 | 0 |
-| `look:old_man (any)` | 119 | 4 |
+| `class:picnicker (any)` | 122 | 0 |
+| `class:youngster (any)` | 120 | 0 |
+| `look:old_man (any)` | 120 | 4 |
 | `class:psychic (any)` | 116 | 0 |
 | `mom` | 116 | 7 |
 | `assistant` | 115 | 5 |
 | `look:guard (any)` | 115 | 0 |
 | `class:black_belt (any)` | 114 | 0 |
-| `class:youngster (any)` | 114 | 0 |
 | `look:man (any)` | 108 | 4 |
 | `look:boy (any)` | 104 | 4 |
+| `class:lass (any)` | 102 | 0 |
 | `class:swimmer_f (any)` | 102 | 0 |
 | `class:cooltrainer (any)` | 100 | 0 |
 | `bianca` | 99 | 3 |
 | `black_belt` | 97 | 14 |
-| `class:lass (any)` | 96 | 0 |
 | `looker` | 91 | 1 |
+| `class:bug_catcher (any)` | 90 | 0 |
 | `prof_oak` | 90 | 3 |
-| `class:bug_catcher (any)` | 86 | 0 |
 | `class:bird_keeper (any)` | 84 | 0 |
 | `class:galactic (any)` | 84 | 0 |
 | `cyrus` | 83 | 7 |
@@ -86,12 +86,12 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:trainer (any)` | 82 | 0 |
 | `look:worker (any)` | 79 | 0 |
 | `class:camper (any)` | 78 | 0 |
+| `look:hiker (any)` | 77 | 0 |
 | `look:old_woman (any)` | 77 | 5 |
 | `class:swimmer (any)` | 76 | 0 |
 | `class:twins (any)` | 76 | 0 |
-| `look:hiker (any)` | 76 | 0 |
+| `look:fisherman (any)` | 76 | 4 |
 | `ace_trainer` | 75 | 0 |
-| `look:fisherman (any)` | 75 | 4 |
 | `class:sailor (any)` | 70 | 0 |
 | `steven` | 69 | 0 |
 | `class:biker (any)` | 64 | 0 |

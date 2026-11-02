@@ -90,6 +90,9 @@ trainers 3, 25-35: lady_celeste 35, maid_belinda 25, rich_boy_liam 35
 === Route222WestHouse
 Pikachu Fan Club
 trainers 1, 42: poke_kid_janet 42
+=== SantaluneCity_Gym
+Santalune Gym
+trainers 2, 7-8: kalos_bug_catcher_luc 8, kalos_lass_mireille 8
 === SevenStarsRestaurant
 Seven Stars Restaurant
 trainers 18, 24-31: aroma_lady_alison 28, artist_ismael 28, beauty_gabriella 26, beauty_harley 26, breeder_kaylee 26, cameraman_darryl 26, collector_eugene 28, gentleman_leonardo 27, lady_kylie 26, lass_blythe 25, pi_kendrick 31, pokefan_meredith 26, reporter_valerie 26, rich_boy_roman 26, school_kid_esteban 26, scientist_emilio 27, socialite_rebecca 27, veteran_emanuel 28
@@ -1025,6 +1028,16 @@ trainers 5, 28-60: johto_bug_catcher_abner 44, johto_bug_catcher_dane 48, johto_
 === jubilife_city
 Jubilife City
 trainers 2, 11: galactic_grunt_jubilife_city_1 11, galactic_grunt_jubilife_city_2 11
+=== kalos_route_2
+Route 2
+grass 2-4
+trainers 1, 3: kalos_youngster_milo 3
+=== kalos_route_3
+Route 3
+grass 4-6
+surf 4-9
+old rod 5-10
+trainers 3, 5-6: kalos_lass_colette 6, kalos_picnicker_ines 6, kalos_youngster_hugo 6
 === kanto_victory_road_1f
 Victory Road
 grass 32-46
@@ -2732,6 +2745,10 @@ trainers 7, 31-38: kanto_channeler_amanda 34, kanto_channeler_stacy 38, kanto_ch
 === saffron_gym
 Saffron City
 trainers 4, 42-47: johto_medium_darcy 46, johto_medium_rebecca 45, johto_psychic_m_franklin 47, johto_psychic_m_jared 45
+=== santalune_forest
+Santalune Forest
+grass 3-5
+trainers 3, 3-5: kalos_bug_catcher_remy 4, kalos_lass_amelie 5, kalos_youngster_bastien 5
 === seafloor_cavern_entrance
 Seafloor Cavern
 surf 5-35

@@ -4980,6 +4980,42 @@ way -
   Little Sister> Who are you?
   Little Sister> ... Oh! You're Lucas? You're doing that Pokédex thing for the professor!
   Little Sister> Wow! Just like my big sister! Go for it!
+=== SantaluneCity_Gym.GymGuide
+from Gym Guide at 9,15 of SantaluneCity_Gym
+way -
+  Gym Guide> Hello there, future Champion! Viola's Bug types don't care for fire or wind. Pick your partner well!
+=== SantaluneCity_Gym.Viola
+from Viola at 6,4 of SantaluneCity_Gym
+way 0
+  Viola> Welcome to the Santalune Gym! I'm Viola, its Leader. When I'm not battling, I'm behind a camera.
+  Viola> Through a lens you learn to wait for the right moment. Bug-type Pokémon taught me that.
+  Viola> Let's see if you know when to strike. I'll capture this battle in a single shot!
+  Viola> What a picture! You and your Pokémon were perfectly in focus the whole time.
+  Viola> Here, this is yours. The Bug Badge, proof that you won at the Santalune Gym.
+  > Lucas received the Bug Badge from Viola!
+  Viola> And take this as well. My bugs use it to strike and slip away before anyone can blink.
+  > Lucas received the TM89!
+  > TM89 holds the move U-turn.
+  > Lucas put it away in the TMs & HMs pocket.
+  Viola> The road to Lumiose City starts north-east of town. There's a lot more of Kalos to see through your lens!
+  * scene SantaluneCity_Gym.Viola
+  * battle kalos_viola_1 Won
+  * fanfare FanfareBadge
+  * defeat kalos_lass_mireille
+  * defeat kalos_bug_catcher_luc
+  * fanfare FanfareTM
+  * endscene
+  + FLAG_KALOS_DEFEATED_SANTALUNE_GYM
+  + FLAG_KALOS_RECEIVED_TM_VIOLA
+  = VAR_KALOS_STORY 0 -> 9
+  + beaten kalos_bug_catcher_luc
+  + beaten kalos_lass_mireille
+  + beaten kalos_viola_1
+  = badges Kalos 0 -> 1
+  + seen SantaluneCity_Gym.Viola
+way 1, from answer 1
+  * battle kalos_viola_1 Lost
+  * scene over, unseen
 === SevenStarsRestaurant.DarrylValerie
 from Darryl at 15,8 of SevenStarsRestaurant
 way -
@@ -6870,10 +6906,14 @@ way 1, from answer 1
   = VAR_KALOS_STORY 0 -> 3
   = starters none/none -> Chespin/Fennekin
   + seen aquacorde_town.The friends at the cafe
+=== aquacorde_town.HomeFirst
+from the trigger at 254,648 of Kalos
+way -
+  Tierno> Hey, Lucas! Don't forget the professor's letter. Show your mum first, then we'll all head out!
 === aquacorde_town.NotYet
 from the trigger at 254,648 of Kalos
 way -
-  > The trail north to Santalune Forest is closed off for now.
+  > There are wild Pokémon in the tall grass ahead. Better not go without a Pokémon of your own!
 === aquacorde_town.Rival
 from {rival} at 251,656 of Kalos
 way -
@@ -11497,10 +11537,27 @@ way -
 === common.KalosNewGame
 from a trainer with lines of their own
 way -
+  + FLAG_KALOS_HIDE_FRIENDS_ROUTE_3
+  + FLAG_KALOS_HIDE_FRIENDS_SANTALUNE
   + FLAG_KALOS_HIDE_RIVAL_AQUACORDE
+  + FLAG_KALOS_HIDE_RIVAL_ROUTE_2
+  + FLAG_KALOS_HIDE_RIVAL_SANTALUNE
   + FLAG_KALOS_HIDE_RIVAL_VANIVILLE
+  + FLAG_KALOS_HIDE_SHAUNA_FOREST
+  + FLAG_KALOS_HIDE_SHAUNA_SANTALUNE
   + FLAG_KALOS_HIDE_SHAUNA_VANIVILLE
+  + FLAG_KALOS_SANTALUNE_BEGUN
   + FLAG_KALOS_STORY_BEGUN
+=== common.KalosSantalune
+from a trainer with lines of their own
+way -
+  + FLAG_KALOS_HIDE_FRIENDS_ROUTE_3
+  + FLAG_KALOS_HIDE_FRIENDS_SANTALUNE
+  + FLAG_KALOS_HIDE_RIVAL_ROUTE_2
+  + FLAG_KALOS_HIDE_RIVAL_SANTALUNE
+  + FLAG_KALOS_HIDE_SHAUNA_FOREST
+  + FLAG_KALOS_HIDE_SHAUNA_SANTALUNE
+  + FLAG_KALOS_SANTALUNE_BEGUN
 === common.KantoNewGame
 from a trainer with lines of their own
 way -
@@ -18289,6 +18346,62 @@ way 0
 way 1, from answer 1
   * battle galactic_grunt_jubilife_city_1 and galactic_grunt_jubilife_city_2 with dawn_jubilife_city_turtwig Lost
   * scene over, unseen
+=== kalos_route_2.Lesson
+from the trigger at 254,636 of Kalos
+way -
+  Barry> Lucas! I was hoping to catch you. Your first time in the tall grass?
+  Barry> Wild Pokémon live in there. If you want one on your team, wear it down a little, then throw a Poké Ball. Watch.
+  Barry> Like that. A tired Pokémon gives in to a ball far more easily than a fresh one.
+  Barry> Here, take some Poké Balls. The professor wants us to meet every Pokémon in Kalos, after all.
+  > Lucas received 10 × Poké Ball!
+  > Lucas put them away in the Poké Balls pocket.
+  Barry> The forest is just north of here. The others went on ahead. I'll see you in Santalune City.
+  * scene kalos_route_2.The neighbour's lesson
+  * catcher {rival} Chespin 6
+  * catchinglesson Fletchling 3 Caught
+  * fanfare FanfareItem
+  * endscene
+  + FLAG_KALOS_HIDE_FRIENDS_CAFE
+  + FLAG_KALOS_HIDE_RIVAL_ROUTE_2
+  = VAR_KALOS_STORY 0 -> 5
+  + seen kalos_route_2.The neighbour's lesson
+=== kalos_route_2.Rival
+from {rival} at 255,632 of Kalos
+way -
+  Barry> Watch closely, Lucas.
+=== kalos_route_3.Friends
+from the trigger at 266,531 of Kalos
+way 0
+  Tierno> There you are! We came out of the forest ages ago. Trevor wanted to stop and look at every bug.
+  Trevor> Th-that's how you fill a Pokédex! Every one counts.
+  Tierno> Anyway! My partner and I have been practising our moves. Wanna see them? In a battle, I mean!
+  Tierno> Whoa, that was some groove! You and your Pokémon really move together.
+  Trevor> Santalune City is just east of here. There's a Gym, and the Leader is supposed to be really good.
+  Tierno> Last one to the fountain buys the pastries!
+  * scene kalos_route_3.Tierno and Trevor on Route 3
+  * battle kalos_tierno_1 Won
+  * endscene
+  + FLAG_KALOS_HIDE_FRIENDS_ROUTE_3
+  = VAR_KALOS_STORY 0 -> 7
+  + beaten kalos_tierno_1
+  + seen kalos_route_3.Tierno and Trevor on Route 3
+way 1, from answer 1
+  Tierno> We did it! Don't worry, you and your partner looked great out there too.
+  Trevor> Santalune City is just east of here. There's a Gym, and the Leader is supposed to be really good.
+  Tierno> Last one to the fountain buys the pastries!
+  * battle kalos_tierno_1 Lost
+  * endscene
+  + FLAG_KALOS_HIDE_FRIENDS_ROUTE_3
+  = VAR_KALOS_STORY 0 -> 7
+  + seen kalos_route_3.Tierno and Trevor on Route 3
+=== kalos_route_3.Tierno
+from Tierno at 267,528 of Kalos
+way -
+  Tierno> Ready for a battle?
+=== kalos_route_3.Trevor
+from Trevor at 268,528 of Kalos
+way -
+  Trevor> Um. Hello again.
 === kanto_victory_road_1f.Barrier
 from Rock barrier at 12,14 of VictoryRoad_1F
 from Rock barrier at 12,15 of VictoryRoad_1F
@@ -27354,6 +27467,69 @@ way -
   + FLAG_HIDE_SANDGEM_TOWN_RIVAL
   = VAR_SANDGEM_TOWN_STATE 0 -> 1
   + seen sandgem_town.The assistant
+=== santalune_city.Neighbour
+from the trigger at 319,526 of Kalos
+way 0
+  Barry> You made it, Lucas. I've been waiting. The forest wasn't too much trouble, I hope?
+  Barry> Let's see how far our partners have come since the café. Ready?
+  Barry> You're quick to learn. I'll have to train harder.
+  Barry> The Gym here is north of the fountain. Its Leader, Viola, uses Bug types and she's very patient.
+  Barry> Earn her Badge, and the road to Lumiose City opens up. I'll go on ahead and meet you there.
+  * scene santalune_city.The neighbour in Santalune
+  * battle kalos_rival_santalune_chespin Won
+  * endscene
+  + FLAG_KALOS_HIDE_RIVAL_SANTALUNE
+  = VAR_KALOS_STORY 0 -> 8
+  + beaten kalos_rival_santalune_chespin
+  + seen santalune_city.The neighbour in Santalune
+way 1, from answer 1
+  Barry> A good battle. You'll catch up soon, I'm sure of it.
+  Barry> The Gym here is north of the fountain. Its Leader, Viola, uses Bug types and she's very patient.
+  Barry> Earn her Badge, and the road to Lumiose City opens up. I'll go on ahead and meet you there.
+  * battle kalos_rival_santalune_chespin Lost
+  * endscene
+  + FLAG_KALOS_HIDE_RIVAL_SANTALUNE
+  = VAR_KALOS_STORY 0 -> 8
+  + seen santalune_city.The neighbour in Santalune
+=== santalune_city.NotYet
+from the trigger at 356,499 of Kalos
+way -
+  > Workers are mending the road to Lumiose City. It will open again soon.
+=== santalune_city.Rival
+from {rival} at 324,527 of Kalos
+way -
+  Barry> Over here, Lucas.
+=== santalune_city.Shauna
+from Shauna at 336,514 of Kalos
+way -
+  Shauna> No Pikachu yet... but look at this fountain! Santalune's so pretty. Are you going to take on the Gym?
+=== santalune_city.Tierno
+from Tierno at 344,514 of Kalos
+way -
+  Tierno> Viola's bugs are tough, so go in with a Pokémon that can fly or burn. That's what I heard, anyway!
+=== santalune_city.Trevor
+from Trevor at 345,522 of Kalos
+way -
+  Trevor> Every Pokémon here is in my Pokédex now. Well. Almost every one.
+=== santalune_forest.Meet
+from the trigger at 254,600 of Kalos
+way -
+  Shauna> Lucas! Isn't it amazing in here? It's all green and quiet and full of Pokémon!
+  Shauna> I heard there's a Pikachu living somewhere in these woods. I'm going to find it before anyone else does!
+  Shauna> Want to know a secret? When your Pokémon's tired, you can rest it with a Potion. Here, I've got a spare.
+  > Lucas received the Potion!
+  > Lucas put it away in the Medicine pocket.
+  Shauna> See you on the other side! Last one out of the forest is a Slowpoke!
+  * scene santalune_forest.Shauna in the forest
+  * fanfare FanfareItem
+  * endscene
+  + FLAG_KALOS_HIDE_SHAUNA_FOREST
+  = VAR_KALOS_STORY 0 -> 6
+  + seen santalune_forest.Shauna in the forest
+=== santalune_forest.Shauna
+from Shauna at 256,597 of Kalos
+way -
+  Shauna> Have you seen a Pikachu around here?
 === seafloor_cavern_entrance.Grunt
 from Team Aqua Grunt at 10,2 of SeafloorCavern_Entrance
 way -

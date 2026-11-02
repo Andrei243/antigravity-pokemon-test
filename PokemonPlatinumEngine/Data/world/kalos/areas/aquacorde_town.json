@@ -21,9 +21,9 @@
     { "x": 271, "z": 676, "to": "AquacordeTown_SoutheastHouse", "toWarp": 0 }
   ],
   "objects": [
-    { "id": "shauna", "looks": "lass", "movement": "look_east", "x": 249, "z": 657, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "" },
-    { "id": "tierno", "looks": "youngster", "movement": "look_west", "x": 252, "z": 657, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "" },
-    { "id": "trevor", "looks": "youngster", "movement": "look_south", "x": 250, "z": 656, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "shauna", "looks": "lass", "movement": "look_east", "x": 249, "z": 657, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_HIDE_FRIENDS_CAFE", "script": "" },
+    { "id": "tierno", "looks": "youngster", "movement": "look_west", "x": 252, "z": 657, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_HIDE_FRIENDS_CAFE", "script": "" },
+    { "id": "trevor", "looks": "youngster", "movement": "look_south", "x": 250, "z": 656, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_HIDE_FRIENDS_CAFE", "script": "" },
     { "id": "rival", "looks": "rival", "movement": "look_south", "x": 251, "z": 656, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_HIDE_RIVAL_AQUACORDE", "script": "" },
     { "id": "clerk", "looks": "clerk", "movement": "look_south", "x": 265, "z": 656, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
     { "id": "waiter", "looks": "waiter", "movement": "look_south", "x": 244, "z": 658, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },

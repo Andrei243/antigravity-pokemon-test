@@ -8005,6 +8005,34 @@ Plan 10 · F2 to F5 (2026-11-02). Neither is Platinum's: both are rows of the op
   what a figure that isn't chibi needs). Their looks are our own designs, not X and Y's.
 - **Music.** Vaniville's and Aquacorde's songs (`Data/music/kalos/`) are original compositions for this game; Route 1
   plays Vaniville's.
+- **The way to Santalune, the second part** (2026-11-02, after the user called the first town recognisable). Route 2 (the
+  Avance Trail, a short trail through meadows with the first tall grass), Santalune Forest (glades joined by a west and
+  an east path round a grove of grass), Route 3 (the Ouvert Way, up out of the forest and east along a road between
+  fields and a pond) and Santalune City (a town of stone round a square with a fountain: the Gym north of it, the
+  Pokémon Center west, four houses, the way in from Route 3 in the west and the road north-east to Route 4, which turns
+  the player back until plan 23 · Z2 draws it) are drawn the same way, with seven rooms: the Pokémon Center (Sinnoh's
+  plan of a ground floor, its escalators shut, with **the Mart's counter inside it, as Kalos's centres have**, in place
+  of a Mart of its own), the Gym and four houses. **Ours**: the Gym is one hall with no puzzle (X and Y's web of threads
+  is not built), Viola's two trainers stand in it, and she gives TM89 after her Badge; Santalune builds as Aquacorde
+  does (`Canalside`), and its places play Kalos's two songs (Vaniville's on the routes, Aquacorde's in the forest and
+  the city) until plan 31 writes Kalos's own. The wild Pokémon are Kalos-Central species at X and Y's first levels (2 to
+  9) in tables of our own; Route 2, the forest and Route 3 have trainers of our own, their teams written at X and Y's
+  levels, as every region's are, and mapped when the region is crossed into.
+- **The story to the first Badge** (our words on X and Y's beats as they are publicly told; `VAR_KALOS_STORY` 5 to 9):
+  a little way up Route 2 the neighbour shows how a Pokémon is caught (`catchinglesson`, with the neighbour's own
+  starter, the one strong against the player's) and gives ten Poké Balls, and the friends leave the café; Shauna waits
+  inside Santalune Forest's way in, gives a Potion and runs ahead to look for its Pikachu (a Pikachu stands in the
+  grove, and the forest's grass has more); Tierno and Trevor wait where Route 3's way up meets the road, and Tierno
+  battles (`kalos_tierno_1`); the neighbour waits by Santalune's way in and battles (`kalos_rival_santalune_*`, a
+  Fletchling and the starter), and the three friends gather on the square; Viola battles for the Bug Badge, Kalos's
+  first. **Ours**: Shauna doesn't cross the forest as the player's partner, X and Y's lessons on screens are lines, and
+  the neighbour's battle is in Santalune City. `common.KalosSantalune` hides this part's people for a new game and is
+  given to an older save by Route 2's and Santalune City's arrivals. Aquacorde's trail north turns back whoever has no
+  Pokémon yet, and whoever has not yet taken the letter home. A catching lesson shown by `{rival}` draws the
+  neighbour's own look (the name is filled before the look is found).
+- **Fly and the Town Map.** `Data/world/kalos/townmap.json` is Kalos's map: the region's 24 by 24 cells, the places
+  drawn so far as blocks, and Fly's two places, before the player's house in Vaniville Town and before Santalune's
+  Pokémon Center, each opened by its first arrival (the area record's `arrival`).
 
 ## How the player moves, region by region (2026-11-02, plan 30 · FM1)
 

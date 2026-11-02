@@ -6,7 +6,9 @@ partial class Harness
     /// rooms (<c>wk10</c> to <c>wk15</c>), a skater on Vaniville's lane (<c>wk20</c>, <c>wk21</c>), and the first chapter
     /// played by its own scripts in a new game of its own (<c>wks01</c> to <c>wks12</c>: Mom on the first morning, the
     /// neighbours at the door, the friends at the café, the choice of three, the Pokédex, Shauna's battle, the letter,
-    /// Mom and the roller skates). It wins the battle a scene starts and prints what each scene left behind.
+    /// Mom and the roller skates), and on through the second part (<c>wk30</c> to <c>wk48</c>: Route 2, Santalune Forest,
+    /// Route 3, Santalune City and its rooms; <c>wks13</c> to <c>wks24</c>: the neighbour's lesson, Shauna in the forest and
+    /// its Pikachu, Tierno's battle, the neighbour's, the friends on the square, Viola and the Bug Badge). It wins every battle a scene starts and prints what each scene left behind.
     /// </summary>
     public void KalosMode()
     {
@@ -27,6 +29,15 @@ partial class Harness
             ("wk05_route1_day", "wk06_route1_night", "Kalos", 255, 692, Direction.Up),
             ("wk07_aquacorde_day", "wk08_aquacorde_night", "Kalos", 255, 664, Direction.Up),
             ("wk09_aquacorde_bridge_day", "wk09b_aquacorde_bridge_night", "Kalos", 255, 656, Direction.Up),
+            // Plan 23 · Z1, second part: Route 2, Santalune Forest, Route 3 and Santalune City
+            ("wk30_route2_day", "wk31_route2_night", "Kalos", 255, 624, Direction.Up),
+            ("wk32_forest_way_in_day", "wk33_forest_way_in_night", "Kalos", 255, 596, Direction.Up),
+            ("wk34_forest_grove_day", "wk35_forest_grove_night", "Kalos", 260, 586, Direction.Up),
+            ("wk36_route3_day", "wk37_route3_night", "Kalos", 290, 531, Direction.Right),
+            ("wk38_santalune_square_day", "wk39_santalune_square_night", "Kalos", 340, 524, Direction.Up),
+            ("wk40_santalune_gym_day", "wk41_santalune_gym_night", "Kalos", 341, 513, Direction.Up),
+            ("wk42_santalune_center_day", "wk43_santalune_center_night", "Kalos", 325, 524, Direction.Up),
+            ("wk44_santalune_south_day", "wk45_santalune_south_night", "Kalos", 340, 540, Direction.Up),
         };
         foreach (var (day, _, map, x, y, facing) in places)
         {
@@ -41,6 +52,9 @@ partial class Harness
             ("wk13_vaniville_house", "VanivilleTown_NorthwestHouse", 4, 8, Direction.Up),
             ("wk14_aquacorde_house", "AquacordeTown_WestHouse", 4, 8, Direction.Up),
             ("wk15_aquacorde_house_2", "AquacordeTown_SoutheastHouse", 4, 8, Direction.Up),
+            ("wk46_santalune_center_inside", "SantaluneCity_PokemonCenter_1F", 8, 9, Direction.Up),
+            ("wk47_santalune_gym_inside", "SantaluneCity_Gym", 6, 13, Direction.Up),
+            ("wk48_santalune_house", "SantaluneCity_NorthwestHouse", 4, 8, Direction.Up),
         };
         foreach (var (name, map, x, y, facing) in rooms) { At(map, x, y, facing); Frames(2); Shot(name); }
 
@@ -213,6 +227,54 @@ partial class Harness
         engine.Steering = null;
         Frames(30);
         Console.WriteLine($"  on Route 1: {game.Player.Mode} at ({game.Player.GridX}, {game.Player.GridY})");
+
+        // ---- Route 2 (plan 23 · Z1, second part): the neighbour's lesson and the Poké Balls
+        StepOnto("Kalos", 255, 636, Direction.Up);
+        ReadTo("Wild Pokémon live in there"); Frames(10); Shot("wks13_the_neighbours_lesson");
+        ReadTo("take some Poké Balls"); Frames(10); Shot("wks14_the_poke_balls");
+        ReadTo(null);
+        Left("the lesson on Route 2");
+
+        // ---- Santalune Forest: Shauna at the way in, and the grove's Pikachu
+        StepOnto("Kalos", 255, 600, Direction.Up);
+        ReadTo("Isn't it amazing in here"); Frames(10); Shot("wks15_shauna_in_the_forest");
+        ReadTo(null);
+        At("Kalos", 260, 584, Direction.Up); Frames(2);
+        game.Interact();
+        ReadTo("Pika pika"); Frames(10); Shot("wks16_the_forests_pikachu");
+        ReadTo(null);
+        Left("the forest");
+
+        // ---- Route 3: Tierno and Trevor where the way up meets the road
+        StepOnto("Kalos", 267, 531, Direction.Up);
+        ReadTo("Wanna see them"); Frames(10); Shot("wks17_tierno_on_route3");
+        ReadTo("Santalune City is just east"); Frames(10); Shot("wks18_after_tiernos_battle");
+        ReadTo(null);
+        Left("Route 3");
+
+        // ---- Santalune City: the neighbour's battle, the friends on the square
+        StepOnto("Kalos", 319, 527, Direction.Right);
+        ReadTo("I've been waiting"); Frames(10); Shot("wks19_the_neighbour_in_santalune");
+        ReadTo("The Gym here is north"); Frames(10); Shot("wks20_after_the_neighbours_battle");
+        ReadTo(null);
+        Left("Santalune City");
+        At("Kalos", 340, 524, Direction.Up); Frames(4); Shot("wks21_friends_on_the_square");
+
+        // ---- the Gym: Viola, her battle and the Bug Badge
+        At("SantaluneCity_Gym", 6, 5, Direction.Up); Frames(2);
+        game.Interact();
+        ReadTo("I'm Viola"); Frames(10); Shot("wks22_viola");
+        for (int i = 0; i < 1500 && State() != GameState.Battle; i++)
+        {
+            if (Box().IsActive && Box().IsCurrentLineComplete && !Box().IsQuestion) { Box().Advance(); Frames(2); }
+            else Frames(1);
+        }
+        if (State() == GameState.Battle) { Skip(1.0); ToMainMenu(game.Battle); Shot("wks23_violas_battle"); Win(); }
+        else Console.WriteLine("  !! never happened: Viola's battle");
+        ReadTo("The Bug Badge, proof"); Frames(10); Shot("wks24_the_bug_badge");
+        ReadTo(null);
+        Left("the Gym");
+        Console.WriteLine($"  badges of Kalos: {game.Story.BadgeCount(PokemonPlatinumEngine.Data.RegionDatabase.Kalos)}");
         game.DeleteSave();
     }
 }

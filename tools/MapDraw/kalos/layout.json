@@ -2,7 +2,8 @@
   // Kalos drawn by hand on the tile grid (plan 23 · Z1; the user's decision of 2026-11-02): the order and shape of its
   // places as they are publicly described, in our own drawing, never a picture of the original's. The overworld is 24
   // chunks by 24, the whole region's shape, so a tile keeps its place as more of it is drawn; Vaniville Town lies in the
-  // south-west, the way north from it running through Aquacorde Town toward Santalune and Lumiose City in the middle.
+  // south-west, the way north from it running through Aquacorde Town, Route 2 and Santalune Forest, then east along Route 3 to
+  // Santalune City, from which Route 4 will lead north-east to Lumiose City in the middle.
   // Each drawing's north-west corner is a tile of the region. After changing a drawing run
   // `dotnet run --project tools/MapDraw -- kalos` (`--check` says whether the world files are what the drawings give).
   "region": "Kalos",
@@ -11,11 +12,19 @@
   "pieces": [
     { "file": "vaniville_town.txt", "x": 236, "z": 700 },
     { "file": "kalos_route_1.txt", "x": 249, "z": 682 },
-    { "file": "aquacorde_town.txt", "x": 234, "z": 646 }
+    { "file": "aquacorde_town.txt", "x": 234, "z": 646 },
+    { "file": "kalos_route_2.txt", "x": 244, "z": 606 },
+    { "file": "santalune_forest.txt", "x": 236, "z": 556 },
+    { "file": "kalos_route_3.txt", "x": 260, "z": 520 },
+    { "file": "santalune_city.txt", "x": 316, "z": 496 }
   ],
   "areas": [
     { "key": "vaniville_town", "x": 236, "z": 700, "width": 40, "depth": 30 },
     { "key": "kalos_route_1", "x": 249, "z": 682, "width": 14, "depth": 18 },
-    { "key": "aquacorde_town", "x": 234, "z": 640, "width": 44, "depth": 42 }
+    { "key": "aquacorde_town", "x": 234, "z": 640, "width": 44, "depth": 42 },
+    { "key": "kalos_route_2", "x": 242, "z": 606, "width": 28, "depth": 34 },
+    { "key": "santalune_forest", "x": 232, "z": 556, "width": 56, "depth": 50 },
+    { "key": "kalos_route_3", "x": 258, "z": 516, "width": 58, "depth": 40 },
+    { "key": "santalune_city", "x": 316, "z": 492, "width": 52, "depth": 58 }
   ]
 }
