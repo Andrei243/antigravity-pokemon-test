@@ -1,0 +1,52 @@
+# Santalune Forest: the green dark between Route 2 and Route 3, a flute in A minor over a harp's
+# ostinato and a cello, the celesta catching the light through the leaves and a wood block somewhere off the path;
+# the same by day and by night.
+# Original composition for this game (plan 31 · MU3), in the modern sound.
+title Santalune Forest
+tempo 92
+meter 4/4
+reverb 0.34
+night none
+room hall 2.2
+
+track lead flute vol=0.63 pan=0.05 rev=0.36
+  o5 e2. r4 | L o5 a2 e4 c4 | o5 f4. g8 a4 o6 c4 | o5 g4. a8 b4 o6 d4 |
+  o5 e2. r4 | o6 c4. o5 b8 a4 e4 | o5 a4. g8 f4 c4 | o5 d4. e8 f4 a4 |
+  o5 b2 g+4 e4 | o5 a2 o6 c4 o5 a4 | o5 b2 o6 d4 o5 b4 | o5 g4. f+8 e4 b4 |
+  o5 a2. r4 | o5 f4. e8 d4 a4 | o6 c4. d8 c4 o5 a4 | o5 b4. a8 g+4 b4 |
+  o5 e2. r4 |
+
+track harp harp vol=0.45 pan=-0.3 rev=0.36
+  o4 e8 o4 g+8 o4 b8 o4 g+8 o4 e8 o4 g+8 o4 b8 o4 g+8 | L o4 a8 o5 c8 o5 e8 o5 c8 o4 a8 o5 c8 o5 e8 o5 c8 | o4 f8 o4 a8 o5 c8 o4 a8 o4 f8 o4 a8 o5 c8 o4 a8 | o4 g8 o4 b8 o5 d8 o4 b8 o4 g8 o4 b8 o5 d8 o4 b8 |
+  o4 e8 o4 g8 o4 b8 o4 g8 o4 e8 o4 g8 o4 b8 o4 g8 | o4 a8 o5 c8 o5 e8 o5 c8 o4 a8 o5 c8 o5 e8 o5 c8 | o4 f8 o4 a8 o5 c8 o4 a8 o4 f8 o4 a8 o5 c8 o4 a8 | o4 d8 o4 f8 o4 a8 o4 f8 o4 d8 o4 f8 o4 a8 o4 f8 |
+  o4 e8 o4 g+8 o4 b8 o4 g+8 o4 e8 o4 g+8 o4 b8 o4 g+8 | o4 f8 o4 a8 o5 c8 o4 a8 o4 f8 o4 a8 o5 c8 o4 a8 | o4 g8 o4 b8 o5 d8 o4 b8 o4 g8 o4 b8 o5 d8 o4 b8 | o4 e8 o4 g8 o4 b8 o4 g8 o4 e8 o4 g8 o4 b8 o4 g8 |
+  o4 a8 o5 c8 o5 e8 o5 c8 o4 a8 o5 c8 o5 e8 o5 c8 | o4 d8 o4 f8 o4 a8 o4 f8 o4 d8 o4 f8 o4 a8 o4 f8 | o4 f8 o4 a8 o5 c8 o4 a8 o4 f8 o4 a8 o5 c8 o4 a8 | o4 e8 o4 g+8 o4 b8 o4 g+8 o4 e8 o4 g+8 o4 b8 o4 g+8 |
+  o4 e8 o4 g+8 o4 b8 o4 g+8 o4 e8 o4 g+8 o4 b8 o4 g+8 |
+
+track cello cello vol=0.36 pan=0.3 rev=0.34
+  o3 e2 g+2 | L o3 a1 | o3 f2 a2 | o3 g1 |
+  o3 e2 g2 | o3 a1 | o3 f2 a2 | o3 d1 |
+  o3 e2 g+2 | o3 f1 | o3 g2 b2 | o3 e1 |
+  o3 a2 c2 | o3 d1 | o3 f2 a2 | o3 e1 |
+  o3 e2 g+2 |
+
+track light celesta vol=0.22 pan=0.45 rev=0.5
+  o6 b4 r2. | L r1 | o6 c4 r2. | r1 |
+  o6 b4 r2. | r1 | o6 c4 r2. | r1 |
+  o6 b4 r2. | r1 | o6 d4 r2. | r1 |
+  o6 e4 r2. | r1 | o6 c4 r2. | r1 |
+  o6 b4 r2. |
+
+track pad warmpad vol=0.16 pan=-0.1 rev=0.45
+  o3 (e g+ b)1 | L o3 (a > c e)1 | o3 (f a > c)1 | o3 (g b > d)1 |
+  o3 (e g b)1 | o3 (a > c e)1 | o3 (f a > c)1 | o3 (d f a)1 |
+  o3 (e g+ b)1 | o3 (f a > c)1 | o3 (g b > d)1 | o3 (e g b)1 |
+  o3 (a > c e)1 | o3 (d f a)1 | o3 (f a > c)1 | o3 (e g+ b)1 |
+  o3 (e g+ b)1 |
+
+track woods kit vol=0.16 pan=-0.4 rev=0.4
+  r1 | L v44 w4 r4 r4 v30 w8 w8 | r1 | v44 w4 r4 r4 v30 w8 w8 |
+  r1 | v44 w4 r4 r4 v30 w8 w8 | r1 | v44 w4 r4 r4 v30 w8 w8 |
+  r1 | v44 w4 r4 r4 v30 w8 w8 | r1 | v44 w4 r4 r4 v30 w8 w8 |
+  r1 | v44 w4 r4 r4 v30 w8 w8 | r1 | v44 w4 r4 r4 v30 w8 w8 |
+  r1 |

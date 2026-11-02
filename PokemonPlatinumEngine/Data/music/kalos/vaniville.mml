@@ -1,32 +1,52 @@
-# Vaniville Town (and its rooms, and Route 1): the hamlet in the woods where Kalos's journey begins, a slow waltz in F
-# on an accordion over a harp's broken chords, morning light and nothing in a hurry. Original composition for this game
-# (plan 23 · Z1).
+# Vaniville Town (and its rooms, and Route 1): the hamlet in the woods where Kalos's journey begins, a slow
+# waltz in F (plan 23 · Z1's tune, arranged again) on a musette over a harp's broken chords and a cello, morning
+# light and nothing in a hurry; at night a flute, a horn and a softer pad.
+# Original composition for this game (plan 31 · MU3), in the modern sound.
 title Vaniville Town
 tempo 96
 meter 3/4
 reverb 0.3
 nighttempo 0.9
+room chamber 1.5
 
-track lead accordion night=flute vol=0.78 pan=0 rev=0.3
-  L o5 c4 f4 a4 | g4. f8 e4 | f2 c4 | d2. |
-  o5 d4 g4 b-4 | a4. g8 f4 | e4 g4 c4 | f2. |
-  o5 a4 o6 c4 o5 a4 | g4 f4 d4 | e4 g4 e4 | c2. |
-  o5 f4 a4 o6 c4 | o5 b-4. a8 g4 | a4 g4 e4 | f2. |
+track lead musette night=flute vol=0.69 pan=0 rev=0.3 width=0.6
+  o5 f2. | L o5 c4 f4 a4 | o5 g4. f8 e4 | o5 f2 c4 |
+  o5 d2. | o5 d4 g4 b-4 | o5 a4. g8 f4 | o5 e4 g4 c4 |
+  o5 f2. | o5 a4 o6 c4 o5 a4 | o5 g4 f4 d4 | o5 e4 g4 e4 |
+  o5 c2. | o5 f4 a4 o6 c4 | o5 b-4. a8 g4 | o5 a4 g4 e4 |
+  o5 f2. |
 
-track harp harp vol=0.5 pan=-0.3 rev=0.34
-  L o4 f8 a8 o5 c8 o4 a8 f8 a8 | o4 e8 g8 o5 c8 o4 g8 e8 g8 | o4 f8 a8 o5 c8 o4 a8 f8 a8 | o4 d8 f8 b-8 f8 d8 f8 |
-  o4 d8 g8 b-8 g8 d8 g8 | o4 f8 a8 o5 c8 o4 a8 f8 a8 | o4 e8 g8 o5 c8 o4 g8 e8 g8 | o4 f8 a8 o5 c8 o4 a8 f8 a8 |
-  o4 f8 a8 o5 c8 o4 a8 f8 a8 | o4 d8 g8 b-8 g8 d8 g8 | o4 e8 g8 o5 c8 o4 g8 e8 g8 | o4 e8 g8 o5 c8 o4 g8 e8 g8 |
-  o4 f8 a8 o5 c8 o4 a8 f8 a8 | o4 d8 f8 b-8 f8 d8 f8 | o4 e8 g8 o5 c8 o4 g8 e8 g8 | o4 f8 a8 o5 c8 o4 a8 f8 a8 |
+track harp harp vol=0.47 pan=-0.3 rev=0.34
+  o4 f8 o4 a8 o5 c8 o5 f8 o5 c8 o4 a8 | L o4 f8 o4 a8 o5 c8 o5 f8 o5 c8 o4 a8 | o4 c8 o4 e8 o4 g8 o5 c8 o4 g8 o4 e8 | o4 f8 o4 a8 o5 c8 o5 f8 o5 c8 o4 a8 |
+  o4 b-8 o5 d8 o5 f8 o5 b-8 o5 f8 o5 d8 | o4 g8 o4 b-8 o5 d8 o5 g8 o5 d8 o4 b-8 | o4 f8 o4 a8 o5 c8 o5 f8 o5 c8 o4 a8 | o4 c8 o4 e8 o4 g8 o5 c8 o4 g8 o4 e8 |
+  o4 f8 o4 a8 o5 c8 o5 f8 o5 c8 o4 a8 | o4 f8 o4 a8 o5 c8 o5 f8 o5 c8 o4 a8 | o4 g8 o4 b-8 o5 d8 o5 g8 o5 d8 o4 b-8 | o4 c8 o4 e8 o4 g8 o5 c8 o4 g8 o4 e8 |
+  o4 c8 o4 e8 o4 g8 o5 c8 o4 g8 o4 e8 | o4 f8 o4 a8 o5 c8 o5 f8 o5 c8 o4 a8 | o4 b-8 o5 d8 o5 f8 o5 b-8 o5 f8 o5 d8 | o4 c8 o4 e8 o4 g8 o5 c8 o4 g8 o4 e8 |
+  o4 f8 o4 a8 o5 c8 o5 f8 o5 c8 o4 a8 |
 
-track pad strings night=pad vol=0.26 pan=0.25 rev=0.4
-  L o4 (f a c)2. | (e g c)2. | (f a c)2. | (d f b-)2. |
-  (d g b-)2. | (f a c)2. | (e g c)2. | (f a c)2. |
-  (f a c)2. | (d g b-)2. | (e g c)2. | (e g c)2. |
-  (f a c)2. | (d f b-)2. | (e g c)2. | (f a c)2. |
+track cello cello night=horn vol=0.38 pan=0.3 rev=0.32
+  o3 f2. | L o3 a2. | o3 g2. | o3 a2. |
+  o3 b-2. | o3 b-2. | o3 a2. | o3 g2. |
+  o3 a2. | o4 c2. | o3 b-2. | o3 g2. |
+  o3 e2. | o3 a2. | o3 f2. | o3 e2. |
+  o3 f2. |
 
-track bass bass vol=0.66 rev=0.1
-  L o3 f2. | c2. | f2. | b-2. |
-  g2. | f2. | c2. | f2. |
-  f2. | g2. | c2. | c2. |
-  f2. | b-2. | c2. | f2. |
+track pad orchestra night=warmpad vol=0.18 pan=0.15 rev=0.4 width=0.9
+  o3 (f a > c)2. | L o3 (f a > c)2. | o3 (c e g)2. | o3 (f a > c)2. |
+  o3 (b- > d f)2. | o3 (g b- > d)2. | o3 (f a > c)2. | o3 (c e g)2. |
+  o3 (f a > c)2. | o3 (f a > c)2. | o3 (g b- > d)2. | o3 (c e g)2. |
+  o3 (c e g)2. | o3 (f a > c)2. | o3 (b- > d f)2. | o3 (c e g)2. |
+  o3 (f a > c)2. |
+
+track bass contrabass vol=0.56 rev=0.1
+  o3 f2. | L o3 f2. | o3 c2. | o3 f2. |
+  o3 b-2. | o3 g2. | o3 f2. | o3 c2. |
+  o3 f2. | o3 f2. | o3 g2. | o3 c2. |
+  o3 c2. | o3 f2. | o3 b-2. | o3 c2. |
+  o3 f2. |
+
+track step kit vol=0.16 pan=0.1 rev=0.15
+  v40 r4 k4 k4 | L v40 r4 k4 k4 | v40 r4 k4 k4 | v40 r4 k4 k4 |
+  v40 r4 k4 k4 | v40 r4 k4 k4 | v40 r4 k4 k4 | v40 r4 k4 k4 |
+  v40 r4 k4 k4 | v40 r4 k4 k4 | v40 r4 k4 k4 | v40 r4 k4 k4 |
+  v40 r4 k4 k4 | v40 r4 k4 k4 | v40 r4 k4 k4 | v40 r4 k4 k4 |
+  v40 r4 k4 k4 |

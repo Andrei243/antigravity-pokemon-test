@@ -12,8 +12,8 @@ namespace PokemonPlatinumTests;
 /// Plan 31 · MU2: the modern sound in the game. A region's file or a song's header chooses the sound, the mixer plays a
 /// modern song on its own player at 48 kHz beside the resampled DS stage, hands over between the two sounds as it does
 /// between two songs, switches the arrangements in the middle of a modern song and takes it through the handheld's
-/// speakers and mono; the modern song's compressor keeps it in the music bus's window. No region of the game names a
-/// sound yet (Kalos's waits for MU3), so the songs here are a test region's.
+/// speakers and mono; the modern song's compressor keeps it in the music bus's window. Only Kalos's file names a sound
+/// (since MU3), so the songs here are a test region's.
 /// </summary>
 public class ModernMixTests
 {
@@ -74,12 +74,15 @@ public class ModernMixTests
     }
 
     [Fact]
-    public void NoRegionOfTheGameNamesASoundYetSoEverySongPlaysAsItDid()
+    public void KalosAloneNamesASoundSoEveryOtherSongPlaysAsItDid()
     {
-        // Kalos's file gets "sound": "modern" when MU3 writes its songs; until then every song of the game is the DS sound
-        foreach (var id in new[] { "Sinnoh", "Kanto", "Johto", "Hoenn", "Unova", "Kalos" })
+        // Kalos's file says "sound": "modern" since MU3, and so its folder's songs play in the modern sound; every other
+        // region names none, and every song outside music/kalos/ is the DS sound as before the plan
+        foreach (var id in new[] { "Sinnoh", "Kanto", "Johto", "Hoenn", "Unova" })
             Assert.Null(RegionFiles.Load(id)?.MusicSound);
-        Assert.All(MusicLibrary.All, s => Assert.Equal(SynthSound.Ds, s.PlaysIn));
+        Assert.Equal(SynthSound.Modern, RegionFiles.Load("Kalos")?.MusicSound);
+        Assert.All(MusicLibrary.All, s => Assert.Equal(s.Id.StartsWith("kalos/") ? SynthSound.Modern : SynthSound.Ds, s.PlaysIn));
+        Assert.Contains(MusicLibrary.All, s => s.Id.StartsWith("kalos/"));
     }
 
     [Fact]

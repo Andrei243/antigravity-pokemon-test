@@ -6,6 +6,7 @@ What changes from one release to the next, for players. Every session's close-ou
 
 ### Changed
 - The game's sound is now mixed at your sound card's own 48 kHz, with a clean resampler taking the DS-style music, sounds, cries and ambience into it, in place of the simple one the audio device used before. Everything is meant to sound just as it did.
+- Kalos's music plays in a fuller, more modern sound, with instruments of its own (a musette, a harpsichord, a nylon guitar, a cello and a string orchestra): Vaniville Town and Aquacorde Town are arranged again for it, and Kalos has its own wild, trainer, Gym Leader and friends' battle themes (each changing when your Pokémon is in the red or a giant stands on the field), victory themes, the friends' theme and two trainers' eye themes. Songs for Routes 2 and 3, Santalune Forest, Santalune City, its Pokémon Center, Mart and Gym are ready for when those places open.
 
 ### Added
 - A MOVEMENT row in the options: AS THE REGION (the default) or FOUR WAYS, for whoever wants to keep walking four ways, a step at a time, in the regions that will let you move more freely from Kalos on. Nothing moves differently yet.

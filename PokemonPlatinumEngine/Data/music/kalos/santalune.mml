@@ -1,0 +1,44 @@
+# Santalune City: the first city's boulevards and its cafés, a violin's waltz in B flat over a harpsichord's
+# oom-pah-pah and a string orchestra; at night a flute and a harp.
+# Original composition for this game (plan 31 · MU3), in the modern sound.
+title Santalune City
+tempo 144
+meter 3/4
+reverb 0.28
+nighttempo 0.9
+room hall 1.6
+
+track lead violin night=flute vol=0.67 pan=0.05 rev=0.3
+  o5 b-2. | L o5 f4 b-4 o6 d4 | o6 d2 o5 b-4 | o5 g4 b-4 o6 e-4 |
+  o6 c2. | o6 d4. c8 o5 b-4 | o5 a4 f4 d4 | o5 e-4 g4 b-4 |
+  o5 a2. | o5 g4 b-4 o6 d4 | o6 e-4. d8 o5 b-4 | o6 d4 o5 b-4 f4 |
+  o6 c2 o5 a4 | o5 g4. f8 e-4 | o5 f4 a4 o6 c4 | o6 d4 c4 o5 b-4 |
+  o5 b-2. |
+
+track harpsi harpsichord night=harp vol=0.29 pan=-0.3 rev=0.24
+  o3 b-4 o4 (b- > d f)4 o4 (b- > d f)4 | L o3 b-4 o4 (b- > d f)4 o4 (b- > d f)4 | o3 g4 o4 (g b- > d)4 o4 (g b- > d)4 | o3 e-4 o4 (e- g b-)4 o4 (e- g b-)4 |
+  o3 f4 o4 (f a > c)4 o4 (f a > c)4 | o3 b-4 o4 (b- > d f)4 o4 (b- > d f)4 | o3 d4 o4 (d f a)4 o4 (d f a)4 | o3 e-4 o4 (e- g b-)4 o4 (e- g b-)4 |
+  o3 f4 o4 (f a > c)4 o4 (f a > c)4 | o3 g4 o4 (g b- > d)4 o4 (g b- > d)4 | o3 e-4 o4 (e- g b-)4 o4 (e- g b-)4 | o3 b-4 o4 (b- > d f)4 o4 (b- > d f)4 |
+  o3 f4 o4 (f a > c)4 o4 (f a > c)4 | o3 e-4 o4 (e- g b-)4 o4 (e- g b-)4 | o3 f4 o4 (f a > c)4 o4 (f a > c)4 | o3 b-4 o4 (b- > d f)4 o4 (b- > d f)4 |
+  o3 b-4 o4 (b- > d f)4 o4 (b- > d f)4 |
+
+track pad orchestra night=warmpad vol=0.17 pan=0.25 rev=0.4 width=0.9
+  o3 (b- > d f)2. | L o3 (b- > d f)2. | o3 (g b- > d)2. | o3 (e- g b-)2. |
+  o3 (f a > c)2. | o3 (b- > d f)2. | o3 (d f a)2. | o3 (e- g b-)2. |
+  o3 (f a > c)2. | o3 (g b- > d)2. | o3 (e- g b-)2. | o3 (b- > d f)2. |
+  o3 (f a > c)2. | o3 (e- g b-)2. | o3 (f a > c)2. | o3 (b- > d f)2. |
+  o3 (b- > d f)2. |
+
+track bass contrabass vol=0.55 rev=0.1
+  o3 b-2. | L o3 b-2. | o3 g2. | o3 e-2. |
+  o3 f2. | o3 b-2. | o3 d2. | o3 e-2. |
+  o3 f2. | o3 g2. | o3 e-2. | o3 b-2. |
+  o3 f2. | o3 e-2. | o3 f2. | o3 b-2. |
+  o3 b-2. |
+
+track step kit vol=0.16 pan=0.15 rev=0.15
+  v46 b4 v30 h4 h4 | L v46 b4 v30 h4 h4 | v46 b4 v30 h4 h4 | v46 b4 v30 h4 h4 |
+  v46 b4 v30 h4 h4 | v46 b4 v30 h4 h4 | v46 b4 v30 h4 h4 | v46 b4 v30 h4 h4 |
+  v46 b4 v30 h4 h4 | v46 b4 v30 h4 h4 | v46 b4 v30 h4 h4 | v46 b4 v30 h4 h4 |
+  v46 b4 v30 h4 h4 | v46 b4 v30 h4 h4 | v46 b4 v30 h4 h4 | v46 b4 v30 h4 h4 |
+  v46 b4 v30 h4 h4 |
