@@ -1667,6 +1667,12 @@ public static class WorldMapBuilder
         }
         Fill(area.WildEncounters, file?.Land, WorldAreaFile.LandSlotWeights);
         Fill(area.WaterEncounters, file?.Water, WorldAreaFile.WaterSlotWeights);
+        foreach (var set in file?.LandSets ?? new())
+        {
+            var table = new List<WildEncounterEntry>();
+            Fill(table, set, WorldAreaFile.LandSlotWeights);
+            area.LandSets.Add(table);
+        }
         area.LandRate = file?.LandRate ?? 0;
         // What the time of day, a swarm and the Poké Radar put in the land's slots (plan 06 · R13)
         area.DaySlots.AddRange(file?.Day ?? new());
@@ -2771,6 +2777,8 @@ public static class WorldMapBuilder
             // (drawn there only: they are spoken to from the floor before the furniture, as from beside it)
             if (person.Level is { } above) npc.RaisedBy = above;
             if (person.Stance is { } stance) npc.Stance = stance;
+            // Someone seen only while a flag is set (Faraway Island's Mew in the grass, plan 21 · H12, part k)
+            npc.SeenBy = person.SeenBy;
             // Scripts call them by their id in the area's file, and look their own scripts up in the area's
             npc.Key = o.Id;
             npc.LinesPlace = key;

@@ -5,7 +5,9 @@
 # of ten among Pomeg to Nomel. His wife asks for a good saying, chosen with the phrase picker (`phrase`, two words
 # where Emerald takes an easy-chat phrase of its own), and gives a berry for it once a day (FLAG_DAILY_BERRY_MASTERS_
 # WIFE), drawn among Cheri to Sitrus. Emerald's five sayings that bring a rare berry once (Spelon, Pamtre, Watmel,
-# Durin and Belue) are words of its easy chat that the picker does not have: plan 21 · H7, part b decides them.
+# Durin and Belue) are words of its easy chat that the picker does not have, so five of the picker's own stand in for
+# them (plan 21 · H12, part k; `if phrase`): "great rival", "cute partner", "amazing champion", "cool Latias" (Emerald's own) and "really
+# determined", each once (Emerald's FLAG_RECEIVED_<BERRY>_BERRY); said again, it is a saying like any other.
 
 
 script BerryMaster
@@ -74,8 +76,15 @@ script BerryMastersWife
   say "Have you heard a good saying lately? Tell me one, would you?"
   phrase BERRY_MASTERS_WIFE
   if result != 1 goto Nothing
-  say "{phrase:BERRY_MASTERS_WIFE}... What a lovely saying! It makes me feel young again. Take this."
   setflag FLAG_DAILY_BERRY_MASTERS_WIFE
+  # Five sayings of ours, on Emerald's five, each bringing a rare berry once (plan 21 · H12, part k)
+  if phrase BERRY_MASTERS_WIFE "feelings:great" "people:rival" goto Spelon
+  if phrase BERRY_MASTERS_WIFE "feelings:cute" "people:partner" goto Pamtre
+  if phrase BERRY_MASTERS_WIFE "feelings:amazing" "people:champion" goto Watmel
+  if phrase BERRY_MASTERS_WIFE "feelings:cool" "pokemon:Latias" goto Durin
+  if phrase BERRY_MASTERS_WIFE "small:really" "feelings:determined" goto Belue
+label Common
+  say "{phrase:BERRY_MASTERS_WIFE}... What a lovely saying! It makes me feel young again. Take this."
   random 10
   if result == 1 goto Chesto
   if result == 2 goto Pecha
@@ -115,9 +124,45 @@ label Lum
 label Sitrus
   give "Sitrus Berry"
   end
+label Spelon
+  if flag FLAG_RECEIVED_SPELON_BERRY goto Common
+  setflag FLAG_RECEIVED_SPELON_BERRY
+  call Rare
+  give "Spelon Berry"
+  end
+label Pamtre
+  if flag FLAG_RECEIVED_PAMTRE_BERRY goto Common
+  setflag FLAG_RECEIVED_PAMTRE_BERRY
+  call Rare
+  give "Pamtre Berry"
+  end
+label Watmel
+  if flag FLAG_RECEIVED_WATMEL_BERRY goto Common
+  setflag FLAG_RECEIVED_WATMEL_BERRY
+  call Rare
+  give "Watmel Berry"
+  end
+label Durin
+  if flag FLAG_RECEIVED_DURIN_BERRY goto Common
+  setflag FLAG_RECEIVED_DURIN_BERRY
+  call Rare
+  give "Durin Berry"
+  end
+label Belue
+  if flag FLAG_RECEIVED_BELUE_BERRY goto Common
+  setflag FLAG_RECEIVED_BELUE_BERRY
+  call Rare
+  give "Belue Berry"
+  end
 label Nothing
   say "Ah. Never mind, dear. Joy never seems to leave this house, saying or no saying."
   end
 label Tomorrow
   say "Thank you for that saying earlier. It's still making me smile."
   end
+
+
+# One of her five sayings, said the first time
+script Rare
+  say "{phrase:BERRY_MASTERS_WIFE}! My husband used to say that when we were young. That deserves something special."
+  return

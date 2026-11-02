@@ -197,6 +197,7 @@ What an `if` can ask:
 | `starter "Piplup"` | The species the player took from the briefcase. |
 | `money >= 500`, `facing left`, `boy`, `girl` | |
 | `modern` | The game is played by the modern rules (plan 15 · E3; `IScriptHost.Modern`, the rules in force; a `HeadlessScriptHost` says no unless a test sets it). `common.PC` asks it before it offers POKé JOBS, so a game by Platinum's rules keeps Platinum's PC. |
+| `phrase NAME "group:word" "group:word"` | The phrase kept under `NAME` (`phrase NAME`, plan 08 · P9) is exactly these two words, given by key so every language asks alike (`feelings:great`, `pokemon:Latias`; plan 21 · H12, part k: the Berry Master's wife's five sayings). A key that names no word of the picker is an error. |
 | `mirage` | Mirage Island stands off Route 130 today for this team (plan 21 · H12, part h; Emerald's `IsMirageIslandPresent`, `Overworld/MirageIsland.cs`): the low half of a team member's personality, an Egg's included, is the upper half of the day's number (`SpecialEncounters.DailyNumber`). `common.HoennMirageIsland` and Pacifidlog's old man ask it. |
 | `titled` | The master of the species of the Pokémon the last `choosepokemon` chose is beaten already (plan 14 · B15, the Masters' Hall; `Models/MasterTitles.cs`): its title is the player's. False with nobody chosen or an Egg. |
 | `friendship >= 200` | The friendship of the first of the team that is no Egg (plan 09 · L9; the original's `GetFirstNonEggInParty` and `GetPartyMonFriendship`), 0 to 255; false with no such Pokémon. Dr. Footstep reads his steps with it. |
@@ -475,6 +476,8 @@ Plan 21 · H11, part c; `docs/mechanics/rulings.md`, "The Lilycove Lady". Emeral
 | `favorlady which` | The kind of thing she wants, 0 to 5 (slippery, roundish, whamish, shiny, sticky, pointy), drawn on the script's die the first time she is asked. |
 | `favorlady give` | Takes the item last chosen with `chooseitem gift` out of the bag and counts it: `RESULT` 0 when it isn't of her kind, 1 when it is, 2 when it is the fifth of her kind or the one she wants most, which earns the favour's prize. |
 | `favorlady new` | A new favour drawn and the count put back to nought, once the prize is given (`RESULT` the new favour). |
+| `cyclingroad finish` | The Seaside Cycling Road's run judged (plan 21 · H12, part k; Emerald's `FinishCyclingRoadChallenge`): the frames and collisions the game counted since `VAR_CYCLING_CHALLENGE_STATE` 1 began a run, kept as the last run and as the best where faster; `RESULT` Emerald's mark, 0 to 10; the run's state goes to 3. `{cycling:TIME}`, `{cycling:COLLISIONS}`, `{cycling:BEST_TIME}` and `{cycling:BEST_COLLISIONS}` say them. The built-in `BIKE` is the bicycle ridden (1 the Acro Bike, 2 the Mach Bike, 3 Platinum's, 0 on foot). |
+| `cyclingroad record` | `RESULT` 1 when a best run is kept, 0 when none is. |
 
 ### Ball Capsules, Seals and ribbons
 
@@ -566,6 +569,9 @@ own flags and variables (`FLAG_VILLA_FURNITURE_…`, `VAR_RESORT_VILLA_VISITOR`)
 | `gamecorner prize`, `gamecorner prize mauville` | Asks which of the exchange's prizes (Veilstone's, or Mauville's five TMs: plan 21 · H3, part c): `RESULT` 1, or 0 for none. `{item}`, `{price}` in coins, and `{thing}` the move a TM holds. |
 | `gamecorner buy` | Exchanges coins for the prize chosen: `RESULT` 1, or 0 with too few. |
 | `gamecorner hiddenpower` | Reads the Hidden Power of the Pokémon `RESULT` names (after `choosepokemon`): `RESULT` 0 with none chosen, 1 when it knows the move, 2 when it doesn't, 3 for an Egg; `{thing}` is the type. |
+| `gamecorner roulette 3` | Mauville's roulette (plan 21 · H12, part k; `Models/Roulette.cs`): a round of six balls at a table whose wager is that many Coins, begun afresh where none is under way, the last is over or its wager differs (`RESULT` 1 when a new one began). |
+| `gamecorner wager` | `RESULT` the odds of the wager the script set (`VAR_TEMP_2` 0 a colour, 1 a Pokémon, 2 one square; `VAR_TEMP_3` the row, `VAR_TEMP_4` the column): Emerald's `GetMultiplier`, 0 once nothing of it is left this round. |
+| `gamecorner spin` | Takes the table's wager out of the Coin Case and throws the ball onto a square not yet hit, drawn on the game's chance; a hit pays the wager times its odds. `RESULT` 0 with too few Coins, 1 a miss, 2 a hit, 3 and 4 the same with the round's last ball (the board is cleared). `{roulette:SQUARE}` says where it landed, `{roulette:WON}` what it won. |
 | `gamecorner cointrick` | The Coin Case's clown tosses his coin: `RESULT` 0 or 1, the hand it is in. |
 | `villa catalogue` | Asks which piece of what the catalogue lists now: `RESULT` 1 for one to order, 2 for one already in the room, 0 for none. `{thing}` names it and `{price}` is its price. |
 | `villa choose "Table"` | Names a piece without asking, with the same `RESULT`. |

@@ -742,6 +742,18 @@ public interface IScriptHost
     bool Cycling { get; }
 
     /// <summary>
+    /// Which bicycle is ridden (the built-in variable <c>BIKE</c>; Emerald's <c>GetPlayerAvatarBike</c>: 0 none, 1 the
+    /// Acro Bike, 2 the Mach Bike; Platinum's own Bicycle is 3). The default reads <see cref="Cycling"/> as Platinum's.
+    /// </summary>
+    int Bike => Cycling ? 3 : 0;
+
+    /// <summary>
+    /// The Seaside Cycling Road's run so far (plan 21 · H12, part k; Emerald's <c>FinishCyclingRoadChallenge</c>): the
+    /// frames since it began (sixty a second) and the collisions on the way, at most 100. Nothing where no run is timed.
+    /// </summary>
+    (int Frames, int Collisions) CyclingRun => (0, 0);
+
+    /// <summary>
     /// Puts the player on the Bicycle or takes them off it (<c>bicycle on</c>, <c>bicycle off</c>; plan 19 · K6:
     /// FireRed's <c>ForcePlayerOntoBike</c>, which the Cycling Road does to whoever comes onto it from its gates). Not
     /// on the water. A host with no field does nothing.

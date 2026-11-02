@@ -1506,6 +1506,13 @@ public sealed class HeadlessScriptHost : IScriptHost
 
     public bool Cycling => PlayerMode == TravelMode.Cycling;
 
+    /// <summary>Which bicycle a test rides (Emerald's GetPlayerAvatarBike: 1 the Acro Bike, 2 the Mach Bike; 3 Platinum's), while cycling.</summary>
+    public int BikeRidden { get; set; } = 3;
+    public int Bike => Cycling ? BikeRidden : 0;
+
+    /// <summary>The Seaside Cycling Road's run a test says was ridden (plan 21 · H12, part k): frames and collisions.</summary>
+    public (int Frames, int Collisions) CyclingRun { get; set; }
+
     public void Ride(bool on)
     {
         Log.Add(on ? "bicycle on" : "bicycle off");

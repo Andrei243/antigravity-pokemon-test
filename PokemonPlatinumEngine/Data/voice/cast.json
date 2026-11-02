@@ -283,6 +283,10 @@
       "note": "first spoken at lilycove_city_lilycove_museum_1f.txt(9)",
       "provisional": true
     },
+    "cyclist": {
+      "note": "first spoken at route_110.txt(197)",
+      "provisional": true
+    },
     "cynthia": {},
     "cyrus": {},
     "dahlia": {
@@ -655,6 +659,10 @@
     },
     "librarian": {
       "note": "first spoken at CanalaveLibrary1F.txt(12)",
+      "provisional": true
+    },
+    "lift_attendant": {
+      "note": "first spoken at lilycove_city_department_store_elevator.txt(13)",
       "provisional": true
     },
     "linda": {
@@ -1504,6 +1512,7 @@
     "Crasher Wake": "crasher_wake",
     "Cristin": "cristin",
     "Curator": "curator",
+    "Cyclist": "cyclist",
     "Cynthia": "cynthia",
     "Cyrus": "cyrus",
     "Dahlia": "dahlia",
@@ -1615,6 +1624,7 @@
     "Lanette": "lanette",
     "Lass": "look:lass",
     "Librarian": "librarian",
+    "Lift Attendant": "lift_attendant",
     "Linda": "linda",
     "Little Boy": "little_boy",
     "Little Girl": "look:little_girl",

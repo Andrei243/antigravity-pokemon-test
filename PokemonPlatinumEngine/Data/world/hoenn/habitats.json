@@ -2691,13 +2691,37 @@
       "name": "Altering Cave",
       "cells": "",
       "morning": [
-        "Zubat"
+        "Zubat",
+        "Mareep",
+        "Pineco",
+        "Houndour",
+        "Teddiursa",
+        "Aipom",
+        "Shuckle",
+        "Stantler",
+        "Smeargle"
       ],
       "day": [
-        "Zubat"
+        "Zubat",
+        "Mareep",
+        "Pineco",
+        "Houndour",
+        "Teddiursa",
+        "Aipom",
+        "Shuckle",
+        "Stantler",
+        "Smeargle"
       ],
       "night": [
-        "Zubat"
+        "Zubat",
+        "Mareep",
+        "Pineco",
+        "Houndour",
+        "Teddiursa",
+        "Aipom",
+        "Shuckle",
+        "Stantler",
+        "Smeargle"
       ]
     },
     {

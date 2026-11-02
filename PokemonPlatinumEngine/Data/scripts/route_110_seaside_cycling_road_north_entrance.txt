@@ -2,10 +2,12 @@
 # our own, on Emerald's beats (data/maps/Route110_SeasideCyclingRoadNorthEntrance/scripts.inc).
 #
 # The step past the keeper's counter turns back anyone who comes to it on foot, toward the west door: the road beyond
-# the east door is for bicycles only.
+# the east door is for bicycles only. A rider on the Mach Bike is timed from here (plan 21 · H12, part k: Emerald's
+# OnMachBike, VAR_CYCLING_CHALLENGE_STATE 1, which the first frame out on the road begins; route_110.txt's end judges it).
 
 
 script BikeCheck
+  if var BIKE == 2 setvar VAR_CYCLING_CHALLENGE_STATE 1
   if var CYCLING == 1 end
   speaker "Gate Keeper"
   say "Sorry, nobody walks on the Cycling Road. It's far too dangerous! Come back on a bike."

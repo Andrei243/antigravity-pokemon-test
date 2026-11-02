@@ -8109,3 +8109,48 @@ so does every region of this game before Kalos.
   eight-way `Heading` (`Player.WantedHeading`), from the same four direction bits a recording already keeps, so no
   movie format changed. What is walked is still the grid's four-way answer (the stronger axis, a tie the vertical one)
   in every region, Kalos's included, until plan 30 · FM2 builds the diagonal step.
+
+## The Department Store's lift, Altering Cave, the S.S. Tidal's halfway, Mew's hiding, the Berry Master's wife's sayings, the Cycling Road's run and Mauville's roulette (2026-11-02, plan 21 · H12, part k)
+
+- **The Lilycove Department Store's lift** (matrix 131, `LilycoveCity_DepartmentStoreElevator`): every floor's lift door is open
+  and leads into the car. Emerald's car leads out to whichever floor it stands at (`MAP_DYNAMIC`); here
+  `VAR_DEPT_STORE_FLOOR` (Emerald's own name, 1 to 5, nought the ground floor) is set by each floor's own arrival, since
+  the car is only got into from the floor it stands at, the attendant rides it (`anim elevator`) to the floor chosen, and
+  the step onto the car's doorway (an overlay trigger on each of its two tiles, which goes before the door) puts the player
+  before the lift door of the floor the car stands at (2, 2). *Ours*: the floor menu starts on its first answer, where
+  Emerald's starts on the floor the car is at.
+- **Altering Cave** (matrix 293): Emerald's mouth on Route 103's far bank is a rock wall only its Mystery Gift opens. *Ours*:
+  a hiker stands before it for a Champion of Hoenn (`shownBy HoennHallOfFame`) and breaks the way once
+  (`FLAG_HOENN_ALTERING_CAVE_OPEN`, the overlay's door `openedBy`). The cave meets one of Emerald's nine grass tables
+  (Zubat, Mareep, Pineco, Houndour, Teddiursa, Aipom, Shuckle, Stantler, Smeargle) by Emerald's `VAR_ALTERING_CAVE_WILD_SET`,
+  which nothing but the Mystery Gift ever moved; here the first arrival of each day draws it on the script's die
+  (`FLAG_DAILY_ALTERING_CAVE_DRAWN`). The importer keeps a map's later tables as the area file's `landSets`
+  (`WorldAreaFile.LandSets`, `MapArea.LandSets`), met through `EncounterMoment.LandSet`; the Pokédex and the species check
+  count all nine. `levels.txt` shows the first table's levels only.
+- **The S.S. Tidal's halfway**: a first rest in the cabin's bed takes the ship halfway (`VAR_SS_TIDAL_STATE` 5 bound for
+  Lilycove, 6 bound for Slateport, ours beside 1 to 4) and a second brings her in, as Emerald's does; and every step taken
+  aboard while she is under way counts (`VAR_CRUISE_STEP_COUNT`, from nought at boarding), the 205th (Emerald's
+  `SS_TIDAL_MAX_STEPS`) bringing her in by itself (`GameEngine.CruiseStep`, `ss_tidal_corridor.ReachedStepCount`).
+- **Mew's hiding**: Mew stands in Faraway Island's grass unseen from each arrival (Emerald's `set_invisible`): an overlay
+  person's `seenBy` flag (`FLAG_HOENN_MEW_FOUND`, which the island's arrival clears and talking to Mew sets) keeps it on the
+  map, in the way and stepping, but not drawn (`NPC.OutOfSight`, kept by `Map.ApplyPresence`). *Ours*: Emerald's grass
+  shaking under it every fourth step and its walk up from the shore with an exclamation are not drawn.
+- **The Berry Master's wife's sayings**: Emerald's five easy-chat sayings are words the picker doesn't have, so five of its
+  own stand in: "great rival" (Spelon), "cute partner" (Pamtre), "amazing champion" (Watmel), "cool Latias" (Durin, Emerald's
+  own) and "really determined" (Belue), each once (Emerald's `FLAG_RECEIVED_<BERRY>_BERRY`), asked by the new condition
+  `if phrase NAME "group:word" "group:word"`.
+- **The Seaside Cycling Road's run**: Emerald's own. The north gate's step sets `VAR_CYCLING_CHALLENGE_STATE` 1 for a rider on
+  the Mach Bike (the new built-in `BIKE`, Emerald's `GetPlayerAvatarBike`); the first frame out on the road begins the run
+  (2), counting frames at sixty a second and every collision on the bicycle (`Player.Bumps`) to 100; the step onto the
+  road's south end by the cyclist judges it (`cyclingroad finish`, `Models/CyclingRoad.cs`: Emerald's mark of nought to
+  ten, five for collisions and five for time) and keeps the fastest run with its collisions on the board beside it
+  (`cyclingroad record`). The run's state goes to 3 once judged, where Emerald leaves it to the gate's arrival.
+- **Mauville's roulette**: the two tables are open, Emerald's wagers and odds (`Models/Roulette.cs`: a colour 3, 4, 6, 12, a
+  Pokémon 4, 6, 12, a square 12 by the round's hits; the left table's wager one Coin, the right's three; six balls a round,
+  each on a square not yet hit). *Ours*: the board and the throw are menus and the game's chance, where Emerald's is a
+  wheel the player throws the ball onto with Shroomish and Taillow's tricks; the special rate days are not played.
+- **Looked at and left**: the Kecleon bridge's tiles (Emerald swaps Route 120's bridge metatiles round the Kecleon) and the
+  Fortree bridge's swap (`STEP_CB_FORTREE_BRIDGE`, whose give underfoot is built since H6, part c) are pictures only, and
+  so are Shoal Cave's salt piles shrinking (the salt and shells are found and come back with the day since H8, part d).
+  Trainer Hill's tables (`src/data/battle_frontier/trainer_hill.h`) *are* readable from the pinned cache through
+  `git cat-file`, against what parts h to j said; it is not built.

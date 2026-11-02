@@ -1533,6 +1533,9 @@ surf 137-151 (own 5-35)
 old rod 137-140 (own 5-10)
 good rod 140-149 (own 10-30)
 super rod 144-151 (own 20-35)
+=== altering_cave
+Altering Cave, Hoenn
+grass 138-143 (own 6-16)
 === aqua_hideout_1f
 Aqua Hideout, Hoenn
 trainers 1, 150 (own 32): hoenn_grunt_aqua_hideout_1 150 (32) [Poochyena → Hyaenarch]

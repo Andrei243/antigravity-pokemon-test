@@ -151,6 +151,8 @@ public static class GbaEvents
         {
             area.Encounters = map.Key;
             (area.Land, area.LandRate) = Table(wild.Land, WorldAreaFile.LandSlotWeights, map.Name, problems);
+            if (wild.LandSets.Count > 0)
+                area.LandSets = wild.LandSets.Select(set => Table(set, WorldAreaFile.LandSlotWeights, map.Name, problems).Slots!).ToList();
             (area.Water, area.WaterRate) = Table(wild.Water, WorldAreaFile.WaterSlotWeights, map.Name, problems);
             (area.RockSmash, area.RockSmashRate) = Table(wild.RockSmash, WorldAreaFile.WaterSlotWeights, map.Name, problems);
             (area.OldRod, area.OldRodRate) = Table(wild.OldRod, WorldAreaFile.WaterSlotWeights, map.Name, problems);
@@ -279,6 +281,9 @@ public static class GbaEvents
                 if (!areas.TryGetValue(map.Key, out var area)) continue;
                 static List<string>? Species(List<AreaEncounter>? slots) => slots is { Count: > 0 } ? slots.Select(s => s.Species).Distinct().ToList() : null;
                 var land = Species(area.Land);
+                // Every set of a place's grass where it has several (Altering Cave): the Pokédex tells of all of them
+                if (land != null && area.LandSets != null)
+                    land = land.Concat(area.LandSets.SelectMany(s => s).Select(s => s.Species)).Distinct().ToList();
                 var habitat = new HabitatArea
                 {
                     Key = map.Key, Name = area.Name,

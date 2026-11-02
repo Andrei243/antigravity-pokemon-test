@@ -154,6 +154,7 @@ public sealed class SpeciesSources
             if (area != null)
             {
                 foreach (var e in area.Land ?? new()) f.Species(e.Species, $"{key}: grass", true);
+                foreach (var e in (area.LandSets ?? new()).SelectMany(s => s)) f.Species(e.Species, $"{key}: grass on its day", true);
                 foreach (string s in area.Day ?? new()) f.Species(s, $"{key}: grass by day", true);
                 foreach (string s in area.Night ?? new()) f.Species(s, $"{key}: grass at night", true);
                 foreach (string s in area.Swarm ?? new()) f.Species(s, $"{key}: a swarm", true);

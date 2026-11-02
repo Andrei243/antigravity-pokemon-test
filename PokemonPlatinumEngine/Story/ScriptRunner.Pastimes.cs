@@ -155,7 +155,47 @@ public sealed partial class ScriptRunner
                 Result = pokemon.Moves.Any(m => m.Data.Name == "Hidden Power") ? 1 : 2;
                 break;
             }
+            // Mauville's roulette (plan 21 · H12, part k; Models/Roulette.cs): a round at a table, the wager's odds and a ball
+            case "roulette":
+                Result = roulette == null || roulette.Over || roulette.MinBet != i.Number ? 1 : 0;
+                if (Result == 1) roulette = new Models.RouletteRound(i.Number);
+                break;
+            case "wager":
+                Result = roulette == null ? 0 : roulette.Multiplier(Wager(), Math.Clamp(host.Story.Var("VAR_TEMP_3"), 0, 2), Math.Clamp(host.Story.Var("VAR_TEMP_4"), 0, 3));
+                break;
+            case "spin":
+            {
+                if (roulette == null || roulette.Over || !coins.Take(roulette.MinBet)) { Result = 0; break; }
+                rouletteWon = roulette.Throw(Wager(), Math.Clamp(host.Story.Var("VAR_TEMP_3"), 0, 2), Math.Clamp(host.Story.Var("VAR_TEMP_4"), 0, 3),
+                    host.Chance.Next(roulette.Free));
+                if (rouletteWon > 0) coins.Add(Math.Min(rouletteWon, CoinCase.Most - coins.Coins));
+                // 1 a miss, 2 a hit; 3 and 4 the same with the round's last ball, after which the board is cleared
+                Result = (rouletteWon > 0 ? 2 : 1) + (roulette.Over ? 2 : 0);
+                if (roulette.Over) roulette = new Models.RouletteRound(roulette.MinBet) { Landed = roulette.Landed };
+                break;
+            }
         }
+    }
+
+    // The roulette's round under way, and what its last ball won (plan 21 · H12, part k)
+    private Models.RouletteRound? roulette;
+    private int rouletteWon;
+
+    /// <summary>The wager the script set: VAR_TEMP_2 nought a colour, 1 a Pokémon, 2 one square (VAR_TEMP_3 its row, VAR_TEMP_4 its column).</summary>
+    private Models.RouletteRound.Kind Wager() => host.Story.Var("VAR_TEMP_2") switch
+    {
+        1 => Models.RouletteRound.Kind.Pokemon,
+        2 => Models.RouletteRound.Kind.Square,
+        _ => Models.RouletteRound.Kind.Colour
+    };
+
+    /// <summary>Where the last ball landed, as a line says it: the square's colour and Pokémon.</summary>
+    private string RouletteSquare()
+    {
+        if (roulette is not { Landed: >= 0 } r) return "";
+        int colour = r.Landed / Models.RouletteRound.Pokemon;
+        return Core.Text.Of("roulette.square", ("colour", Core.Text.Of($"roulette.colour.{colour}")),
+            ("pokemon", LocalNames.Species(Models.RouletteRound.Columns[r.Landed % Models.RouletteRound.Pokemon])));
     }
 
     /// <summary>

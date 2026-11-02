@@ -668,6 +668,11 @@ public class ScriptTests
           favorlady which
           favorlady give
           favorlady new
+          cyclingroad finish
+          cyclingroad record
+          gamecorner roulette 3
+          gamecorner wager
+          gamecorner spin
           jobs
           chooseitem gift
           pike enough
@@ -795,6 +800,7 @@ public class ScriptTests
               if titled end
               if mirage end
               if modern end
+              if phrase SAYING "feelings:cool" "pokemon:Latias" end
             """)[0];
 
         var asked = script.Code.Select(i => i.Condition!.Query).ToHashSet();

@@ -25,7 +25,7 @@ public static class ScriptParser
         "RESULT", "PLAYER_X", "PLAYER_Y", "MONEY", "PARTY_COUNT", "BADGE_COUNT", "GREETINGS", "SEEN", "LEAD_FRIENDSHIP",
         "TURNS", "SAFARI_CAUGHT",
         "LEAGUE_VICTORIES",
-        "CYCLING",
+        "CYCLING", "BIKE",
         "CAUGHT",
         "FAINTED", "LEAD_SPECIES", "SECOND_SPECIES",
         "CROSSED_IN",
@@ -765,9 +765,10 @@ public static class ScriptParser
             }
             case "gamecorner":
             {
-                string what = r.OneOf("coins", "room", "add", "take", "slots", "prize", "buy", "hiddenpower", "cointrick");
-                int number = what is "room" or "add" or "take" or "slots" ? r.Int(what == "slots" ? "a machine, 0 to 11" : "a number of coins") : 0;
+                string what = r.OneOf("coins", "room", "add", "take", "slots", "prize", "buy", "hiddenpower", "cointrick", "roulette", "wager", "spin");
+                int number = what is "room" or "add" or "take" or "slots" or "roulette" ? r.Int(what == "slots" ? "a machine, 0 to 11" : "a number of coins") : 0;
                 if (what == "slots" && number is < 0 or > 11) throw r.Error("the Game Corner's machines are 0 to 11");
+                if (what == "roulette" && number < 1) throw r.Error("a roulette table's wager is a coin or more");
                 if (what != "slots" && number < 0) throw r.Error("coins are counted from nought up");
                 // The exchange's list: Veilstone's, or another Game Corner's by its name (plan 21 · H3, part c: mauville)
                 string list = what == "prize" && r.PeekWord("mauville") ? r.OneOf("mauville") : "";
@@ -889,6 +890,10 @@ public static class ScriptParser
             }
             case "townmap":
                 return new Instruction { Op = Op.TownMap, Line = line };
+            // The Seaside Cycling Road's timed run (plan 21 · H12, part k): "cyclingroad finish" judges the run just ended,
+            // "cyclingroad record" reads the best (RESULT nought where there is none)
+            case "cyclingroad":
+                return new Instruction { Op = Op.CyclingRoad, Line = line, Name = r.OneOf(new[] { "finish", "record" }) };
             // What to do next (plan 12 · Q14): "objective roark", a name of Story/Objectives.cs
             case "objective":
             {
@@ -1319,6 +1324,15 @@ public static class ScriptParser
                 return new Condition { Query = Query.Mirage, Negated = negated };
             case "modern":
                 return new Condition { Query = Query.Modern, Negated = negated };
+            // The phrase kept under a name is these two words (plan 21 · H12, part k: the Berry Master's wife)
+            case "phrase":
+            {
+                string name = r.Identifier("the phrase's name");
+                string first = r.Text("a word's key (feelings:great)"), second = r.Text("a word's key (people:rival)");
+                foreach (string key in new[] { first, second })
+                    if (!Data.PhraseGroups.IsWord(key)) throw r.Error($"'{key}' is no word of the phrase picker: a group's tag, ':' and the word's key");
+                return new Condition { Query = Query.Phrase, Negated = negated, Name = name, Other = first + " " + second };
+            }
             // A rule of the run chosen at NEW GAME (plan 13 · V5)
             case "rule":
             {

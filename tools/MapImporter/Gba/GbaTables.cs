@@ -21,6 +21,9 @@ public sealed class GbaWild
     public GbaWildTable? OldRod { get; init; }
     public GbaWildTable? GoodRod { get; init; }
     public GbaWildTable? SuperRod { get; init; }
+
+    /// <summary>The map's later grass tables where it has several (Emerald's Altering Cave, picked by a variable).</summary>
+    public List<GbaWildTable> LandSets { get; } = new();
 }
 
 /// <summary>A place a fainted team wakes in and Fly lands (<c>heal_locations.json</c>): a tile of a map, and the room of the nurse or the mother.</summary>
@@ -139,14 +142,21 @@ public sealed class GbaTables
                 if (field.TryGetProperty("groups", out var groups))
                     foreach (var g in groups.EnumerateObject()) rods[g.Name] = g.Value.EnumerateArray().Select(i => i.GetInt32()).ToArray();
             }
-            var seen = new HashSet<string>(StringComparer.Ordinal);
+            var seen = new Dictionary<string, GbaWild>(StringComparer.Ordinal);
             foreach (var e in group.GetProperty("encounters").EnumerateArray())
             {
                 if (!e.TryGetProperty("map", out var mapProperty)) continue;
                 string map = mapProperty.GetString()!;
                 string label = e.TryGetProperty("base_label", out var l) ? l.GetString()! : "";
                 if (label.EndsWith("_LeafGreen", StringComparison.Ordinal)) continue;
-                if (!seen.Add(map)) { problems.Add($"{map}: a second table of wild Pokémon ({label}) left out: the first is kept"); continue; }
+                if (seen.TryGetValue(map, out var first))
+                {
+                    // A later table of the same place (Emerald's Altering Cave, plan 21 · H12, part k): its grass as a
+                    // set the place's variable picks; anything else of it is told and left out
+                    if (Table("land_mons") is { } set) first.LandSets.Add(set);
+                    else problems.Add($"{map}: a second table of wild Pokémon ({label}) left out: the first is kept");
+                    continue;
+                }
 
                 GbaWildTable? Table(string type, int[]? only = null)
                 {
@@ -163,7 +173,7 @@ public sealed class GbaTables
                     }
                     return new GbaWildTable(t.GetProperty("encounter_rate").GetInt32(), slots);
                 }
-                yield return (map, new GbaWild
+                var wild = new GbaWild
                 {
                     Land = Table("land_mons"),
                     Water = Table("water_mons"),
@@ -171,8 +181,10 @@ public sealed class GbaTables
                     OldRod = rods.TryGetValue("old_rod", out var o) ? Table("fishing_mons", o) : null,
                     GoodRod = rods.TryGetValue("good_rod", out var g2) ? Table("fishing_mons", g2) : null,
                     SuperRod = rods.TryGetValue("super_rod", out var s) ? Table("fishing_mons", s) : null
-                });
+                };
+                seen[map] = wild;
             }
+            foreach (var (map, wild) in seen) yield return (map, wild);
         }
     }
 

@@ -1,10 +1,27 @@
 {
   // Route 103 (plan 21 · H1, H2), north of Oldale Town, where the water begins: the rival watching Pokémon by the shore
   // and their first battle are route_103.txt's. The trainers across the water are reached by Surf, which the Balance Badge lets
-  // a Pokémon use; the way into the cave on the far bank leads nowhere yet
+  // a Pokémon use. The cave's mouth on the far bank is a rock wall in Emerald, opened by its Mystery Gift; here a
+  // hiker of ours who stands before it after the Hall of Fame breaks the way into Altering Cave (plan 21 · H12, part k)
   "area": "route_103",
   "bgmTrack": "hoenn/route101",
   "trees": "Round",
+  "doors": [
+    { "warp": 0, "map": "AlteringCave", "x": 18, "y": 21, "facing": "Up", "openedBy": "FLAG_HOENN_ALTERING_CAVE_OPEN" }
+  ],
+  "npcs": [
+    // The hiker who opens Altering Cave for a Champion of Hoenn (route_103.txt's AlteringCaveHiker)
+    {
+      "id": "altering_cave_hiker",
+      "name": "Hiker",
+      "npcType": "hiker",
+      "x": 164,
+      "y": 227,
+      "facing": "Right",
+      "script": "AlteringCaveHiker",
+      "shownBy": "HoennHallOfFame"
+    }
+  ],
   "people": {
     "route103_rival": { "name": "{rival}", "npcType": "Rival:MAY:BRENDAN", "script": "Rival", "still": true },
     "man_3": {

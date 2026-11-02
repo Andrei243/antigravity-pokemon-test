@@ -689,6 +689,8 @@ public class StoryTests
         started.UnionWith(new[] { FieldScripts.Television, FieldScripts.Bookshelf, FieldScripts.TrashCan, FieldScripts.TownMap });
         // A Repel's last step (plan 06 · R11)
         started.Add(FieldScripts.RepelWoreOff);
+        // The S.S. Tidal's last step of a voyage (plan 21 · H12, part k)
+        started.Add(PokemonPlatinumEngine.Core.GameEngine.CruiseArrives);
         // Wild Pokémon (plan 06 · R13): a honey tree, Honey from the bag and poison's survivors (the assistant's sister's
         // news of swarms is called by her own script since her house was built, plan 01 · M11)
         started.UnionWith(new[] { FieldScripts.HoneyTree, FieldScripts.UseHoney, FieldScripts.PoisonSurvived });

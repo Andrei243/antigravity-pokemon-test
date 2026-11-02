@@ -762,6 +762,8 @@ public static class RegionDatabase
                 // Plan 21 · H12, part e: the Marine Cave, Terra Cave and the sea floors of Routes 105, 125 and 129
                 "Underwater_Route129", "Underwater_Route105", "Underwater_Route125", "Underwater_MarineCave",
                 "MarineCave_Entrance", "MarineCave_End", "TerraCave_Entrance", "TerraCave_End",
+                // Plan 21 · H12, part k: the Department Store's lift and Altering Cave
+                "LilycoveCity_DepartmentStoreElevator", "AlteringCave",
                 // Plan 21 · H12, part f: Birth Island and Navel Rock
                 "BirthIsland_Harbor", "BirthIsland_Exterior", "NavelRock_Harbor", "NavelRock_Exterior", "NavelRock_Entrance", "NavelRock_B1F",
                 "NavelRock_Fork", "NavelRock_Up1", "NavelRock_Up2", "NavelRock_Up3", "NavelRock_Up4", "NavelRock_Top",

@@ -227,6 +227,9 @@ public class HoennPostGamePartGTests
         game.Party.Members[0].CurrentHP = 1;
         game.Arrive("SSTidalRooms", 15, 13);
         game.Play(Scripts.Find("Bed", "ss_tidal_rooms")!, null, 0);
+        // (a first rest takes her halfway, plan 21 · H12, part k; a second brings her in)
+        Assert.Equal(5, game.Story.Var("VAR_SS_TIDAL_STATE"));
+        game.Play(Scripts.Find("Bed", "ss_tidal_rooms")!, null, 0);
         Assert.Equal(3, game.Story.Var("VAR_SS_TIDAL_STATE"));
         Assert.Equal(game.Party.Members[0].MaxHP, game.Party.Members[0].CurrentHP);
         game.Arrive("SSTidalCorridor", 1, 10);
@@ -238,6 +241,8 @@ public class HoennPostGamePartGTests
         game.Talk("sailor", 0);
         Assert.Equal(2, game.Story.Var("VAR_SS_TIDAL_STATE"));
         game.Arrive("SSTidalRooms", 15, 13);
+        game.Play(Scripts.Find("Bed", "ss_tidal_rooms")!, null, 0);
+        Assert.Equal(6, game.Story.Var("VAR_SS_TIDAL_STATE"));
         game.Play(Scripts.Find("Bed", "ss_tidal_rooms")!, null, 0);
         Assert.Equal(4, game.Story.Var("VAR_SS_TIDAL_STATE"));
         game.Arrive("SSTidalCorridor", 1, 10);

@@ -279,6 +279,16 @@
           "Înotător Pete: Treci. Eu doar plutesc aici."
         ]
       }
+    },
+    "altering_cave_hiker": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

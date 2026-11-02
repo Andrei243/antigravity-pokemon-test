@@ -362,6 +362,8 @@ public sealed partial class ScriptRunner
         Op.Tutor or Op.Amity => true,
         // A grotto's Pokémon is battled and its item is handed over with its lines; what it holds is asked without a screen
         Op.Grotto => i.Name is "battle" or "take",
+        // The Cycling Road's run judged or read is numbers only (plan 21 · H12, part k)
+        Op.CyclingRoad => false,
         // A scene's own two lines
         Op.Scene or Op.EndScene => false,
         // A number registered: the flag is set and the notice dropped
@@ -1032,6 +1034,15 @@ public sealed partial class ScriptRunner
                 break;
             // Shoal Cave's tide (plan 21 · H8, part d; Emerald's UpdateShoalTideFlag): read by the hour only when the
             // player has come in from outdoors, so it never turns under them inside the cave
+            // The Seaside Cycling Road's run judged, or its best read (plan 21 · H12, part k)
+            case Op.CyclingRoad:
+                if (i.Name == "finish")
+                {
+                    var (frames, collisions) = host.CyclingRun;
+                    Result = Models.CyclingRoad.Finish(story, frames, collisions);
+                }
+                else Result = story.Var(Models.CyclingRoad.RecordFrames) > 0 ? 1 : 0;
+                break;
             case Op.Tide:
                 if (host.CameInFromOutdoors)
                 {
@@ -2219,6 +2230,8 @@ public sealed partial class ScriptRunner
 
         // Whether the player rides the Bicycle (plan 01 · M11, part d: the Cycling Road's gate keepers)
         "CYCLING" => host.Cycling ? 1 : 0,
+        // Which bicycle (plan 21 · H12, part k; Emerald's GetPlayerAvatarBike: 1 the Acro Bike, 2 the Mach Bike)
+        "BIKE" => host.Bike,
         // How many species are caught (plan 19 · K3: Oak's aides, who hand out a reward for so many)
         "CAUGHT" => host.Caught,
         // How many of the team lie fainted just now, and the National Pokédex numbers of the first two that are no Egg
@@ -2299,6 +2312,8 @@ public sealed partial class ScriptRunner
             // IsMirageIslandPresent (plan 21 · H12, part h)
             Query.Mirage => Overworld.MirageIsland.Present(host.Party, host.Encounters),
             Query.Modern => host.Modern,
+            // The phrase kept is these two words (plan 21 · H12, part k)
+            Query.Phrase => story.PhraseOf(c.Name) is { Count: 2 } said && string.Join(" ", said) == c.Other,
             _ => throw Wrong(at, $"the runner can't answer '{c.Query}'")
         };
         return yes != c.Negated;
@@ -2468,6 +2483,14 @@ public sealed partial class ScriptRunner
             "wall" => lastWinner,
             "wallmon" => lastWinnerMon,
             "taste" => lastTaste,
+            // Mauville's roulette (plan 21 · H12, part k): where the last ball landed and what it won
+            "roulette" when argument == "SQUARE" => RouletteSquare(),
+            "roulette" when argument == "WON" => rouletteWon.ToString(),
+            // The Seaside Cycling Road (plan 21 · H12, part k): the last run's and the best's time and collisions
+            "cycling" when argument == "TIME" => Models.CyclingRoad.Time(host.Story.Var(Models.CyclingRoad.LastFrames)),
+            "cycling" when argument == "COLLISIONS" => Models.CyclingRoad.Collisions(host.Story.Var(Models.CyclingRoad.LastCollisions)),
+            "cycling" when argument == "BEST_TIME" => Models.CyclingRoad.Time(host.Story.Var(Models.CyclingRoad.RecordFrames)),
+            "cycling" when argument == "BEST_COLLISIONS" => Models.CyclingRoad.Collisions(host.Story.Var(Models.CyclingRoad.RecordCollisions)),
             _ => match.Value
         };
     }) : text;

@@ -1641,6 +1641,10 @@ public partial class GameEngine
 
         public bool Cycling => game.flow.Player.Mode == TravelMode.Cycling;
 
+        // Which bicycle, as Emerald's GetPlayerAvatarBike tells it, and the Seaside Cycling Road's run (plan 21 · H12, part k)
+        public int Bike => !Cycling ? 0 : game.flow.Player.Bike switch { BikeKind.Acro => 1, BikeKind.Mach => 2, _ => 3 };
+        public (int Frames, int Collisions) CyclingRun => game.CyclingRun;
+
         // FireRed's ForcePlayerOntoBike (plan 19 · K6): the Cycling Road's riders, with the riding song
         public void Ride(bool on)
         {

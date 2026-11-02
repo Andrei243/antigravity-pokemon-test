@@ -51,3 +51,19 @@ label Beaten
   music area
   endscene
   end
+
+# The hiker of ours before the cave's mouth on the far bank, after the Hall of Fame (plan 21 · H12, part k). Emerald's
+# mouth is a rock wall that only its Mystery Gift opened; he breaks the way through once, and the cave's Pokémon change
+# with the day (altering_cave.txt).
+script AlteringCaveHiker
+  face self player
+  speaker "Hiker"
+  if flag FLAG_HOENN_ALTERING_CAVE_OPEN goto Open
+  say "Hm? A Champion, out here? Then you'll want to see this. There's a hollow behind this rock wall. I can hear the wind in it."
+  say "Hup! Hah! ... There! I knocked the rock away. That's Altering Cave."
+  setflag FLAG_HOENN_ALTERING_CAVE_OPEN
+  say "Funny place. The Pokémon in it are never the same two days running. Nobody knows why."
+  end
+label Open
+  say "Altering Cave's Pokémon change from day to day. Come back often and you'll meet all sorts!"
+  end

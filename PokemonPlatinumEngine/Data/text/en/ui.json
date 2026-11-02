@@ -3963,6 +3963,8 @@
       "close": "\"That's all for now! Gabby and Ty will be back on the road soon. Keep your eyes peeled!\""
     }
   },
+  "cyclingRoad": { "seconds": "{time} seconds", "minute": "a minute or more", "times": "{count} times", "many": "99 times or more" },
+  "roulette": { "square": "the {colour} {pokemon}", "colour": { "0": "orange", "1": "green", "2": "purple" } },
   "phrases": {
     "title": "Your words",
     "prompt": { "slots": "Choose the two words of your answer.", "groups": "What kind of word?", "words": "Which word?", "ready": "Is that what you want to say? Choose OK." },

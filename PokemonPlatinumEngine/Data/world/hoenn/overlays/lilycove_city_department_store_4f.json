@@ -3,7 +3,6 @@
   // defences (marts.json's lilycove_4f_attack and lilycove_4f_defense)
   "area": "lilycove_city_department_store_4f",
   "bgmTrack": "hoenn/lilycove",
-  "locked": [ 2 ],
   "people": {
     "woman_3": { "name": "Clerk", "script": "ClerkLeft" },
     "woman_3_2": { "name": "Clerk", "script": "ClerkRight" },

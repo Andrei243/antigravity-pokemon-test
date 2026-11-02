@@ -844,9 +844,16 @@ public class Player
         return true;
     }
 
+    /// <summary>
+    /// Collisions on a bicycle, counted for good (plan 21 · H12, part k: the Seaside Cycling Road's run counts those since
+    /// it began, Emerald's <c>gBikeCollisions</c>).
+    /// </summary>
+    public int Bumps { get; private set; }
+
     private void Bump()
     {
         if (bumpCooldown > 0f) return;
+        if (Mode == TravelMode.Cycling) Bumps++;
         AudioManager.PlaySound("bump");
         bumpCooldown = BumpInterval;
     }

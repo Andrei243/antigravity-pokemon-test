@@ -1412,3 +1412,28 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
       counters are seen, by `World.Furnish` counting the floor behind a counter as the room's first row (FireRed's
       Celadon prize room, the only other GBA room it changes, shows its three clerks too). Still left: the Abandoned
       Ship's deck reads as grey stone, the Mechadolls stand as grey-haired people, and the wreck is an intact ferry.
+    - **Part k** (done 2026-11-02: the Department Store's lift, Altering Cave, the S.S. Tidal's halfway, Mew's hiding, the
+      Berry Master's wife's sayings, the Cycling Road's run and Mauville's roulette; docs/mechanics/rulings.md, under that
+      name; tests run with --filter (HoennPartKTests 22, and HoennTests, HoennPostGamePartGTests, Story, Script, Content,
+      Golden, Voice, ScriptTranslation, Text, SceneSkip, Architecture, Region, World, DataFile, MapIndex); no shots taken).
+      **Built**: the lift's car (matrix 131) and Altering Cave (293) in RegionDatabase's Hoenn list; the lift's doors open on
+      every floor, `VAR_DEPT_STORE_FLOOR` set by each floor's arrival, the attendant riding the car and the doorway's
+      trigger putting the player out; a hiker of ours on Route 103 after the Hall of Fame opening Altering Cave
+      (`FLAG_HOENN_ALTERING_CAVE_OPEN`), its nine tables by Emerald's `VAR_ALTERING_CAVE_WILD_SET` drawn on the day's first
+      arrival (the importer's `landSets`, `MapArea.LandSets`, `EncounterMoment.LandSet`); the S.S. Tidal halfway after one
+      rest (`VAR_SS_TIDAL_STATE` 5 and 6) and in after a second or after 205 steps aboard (`GameEngine.CruiseStep`); Mew
+      unseen until found (an overlay person's `seenBy`, `NPC.OutOfSight`); the five sayings (`if phrase`); the Cycling Road's
+      run (`BIKE`, `cyclingroad finish|record`, `Models/CyclingRoad.cs`, `Player.Bumps`); the two roulette tables
+      (`gamecorner roulette|wager|spin`, `Models/Roulette.cs`). Gabby and Ty were found built already (part c of H6).
+      **Golden**: scripts.txt (the new and changed scripts), levels.txt and levels-crossed.txt (Altering Cave's first
+      table): accepted.
+    - **What of Hoenn is left after part k**: Trainer Hill (its tables, `src/data/battle_frontier/trainer_hill.h`, are
+      readable from the pinned cache after all; its floors are built by a mechanic of their own and nothing of it is
+      built); the Frontier island's seven halls (still `locked`: their rules exist as Sinnoh's facilities and the annex's
+      venues, which Scott's crossing reaches, but no hall of the island leads to them); Emerald's own slot machine (its
+      Reel Time and bonus; Platinum's machine stands in) and the roulette's wheel itself (menus stand in); Jirachi (only
+      the Wishmaker disc gives it); the two basements (the game corner's in Mossdeep and the house of mystery events'
+      in Sootopolis); the contest's stage rooms, the quiz and contest ladies, the Pokéblock feeders and H11's other
+      leftovers; and pictures only: the Abandoned Ship's deck and wreck, the Mechadolls, the Kecleon bridge's tiles, the
+      Fortree bridge's swap, the salt piles shrinking, Mew's grass shaking, the cave mouths' and deep water's looks, the
+      ship's and the triangle's looks.

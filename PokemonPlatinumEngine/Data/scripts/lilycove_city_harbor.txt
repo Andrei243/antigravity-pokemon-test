@@ -130,6 +130,7 @@ script Tidal
   text "{player} showed the S.S. Ticket."
   say "Welcome aboard! Your cabin's ready."
   setvar VAR_SS_TIDAL_STATE 2
+  setvar VAR_CRUISE_STEP_COUNT 0
   fade out 0.8
   warp "SSTidalCorridor" 1 10 up
   end

@@ -197,6 +197,13 @@ public sealed class MapArea
     public Dictionary<Core.Season, WildTables> SeasonTables { get; } = new();
 
     /// <summary>
+    /// The grass's other tables, picked by a variable of the story (plan 21 · H12, part k: Emerald's Altering Cave,
+    /// <see cref="WorldAreaFile.LandSets"/>): set n is met while <see cref="EncounterMoment.LandSet"/> is n, set 0 being
+    /// <see cref="WildEncounters"/> itself. Empty everywhere else.
+    /// </summary>
+    public List<List<WildEncounterEntry>> LandSets { get; } = new();
+
+    /// <summary>
     /// The tables met in a season (plan 22 · U4): the season's own where the area has them, the area's own otherwise,
     /// which are spring's and those of every place without seasons (<paramref name="season"/> null).
     /// </summary>
@@ -795,6 +802,8 @@ public class Map
         bool settled = true;
         foreach (var npc in NPCs)
         {
+            // Someone seen only by a flag (Faraway Island's Mew in the grass, plan 21 · H12, part k)
+            if (npc.SeenBy != null) npc.OutOfSight = !flagSet(npc.SeenBy);
             if (npc.Order < 0) npc.Order = peopleCounted++;
             if (settled && !npc.IsPresent(flagSet)) settled = false;
         }
@@ -1598,6 +1607,8 @@ public class Map
             if (water) return (EncounterSlots.Surf(area, tables.Water, moment), tables.WaterRate);
             bool dark = tables.DarkGrass.Count > 0 && IsDarkGrass(x, y);
             var land = dark ? tables.DarkGrass : tables.Land;
+            // A place with several tables for its grass meets the one the story's variable names (plan 21 · H12, part k)
+            if (!dark && moment?.LandSet is int set && set > 0 && set <= area.LandSets.Count) land = area.LandSets[set - 1];
             return (moment == null ? land : EncounterSlots.Grass(area, moment, land), dark ? tables.DarkGrassRate : tables.LandRate);
         }
         return water ? (Array.Empty<WildEncounterEntry>(), 0) : (WildEncounters, EncounterRate);

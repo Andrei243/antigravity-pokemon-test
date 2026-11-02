@@ -365,6 +365,13 @@ public sealed class WorldAreaFile
     public static readonly int[] LandSlotWeights = { 20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1 };
 
     /// <summary>
+    /// The grass's other tables where the original has several for one place and picks by a variable (Emerald's Altering
+    /// Cave, <c>VAR_ALTERING_CAVE_WILD_SET</c>; plan 21 · H12, part k): the second table first, each with
+    /// <see cref="Land"/>'s rate and weights. Left out everywhere else.
+    /// </summary>
+    public List<List<AreaEncounter>>? LandSets { get; set; }
+
+    /// <summary>
     /// The two species the day (10:00 to 19:59) and the night (20:00 to 3:59) put in slots 2 and 3 of <see cref="Land"/>,
     /// whose own are the morning's (plan 06 · R13; the original's <c>day</c> and <c>night</c>,
     /// <c>WildEncounters_ReplaceTimedEncounters</c>). Left out with the land table.
@@ -1273,6 +1280,13 @@ public sealed class OverlayPerson
     /// hikers, whom the original stands by a table of its own code as the map is come to).
     /// </summary>
     public int[]? At { get; set; }
+
+    /// <summary>
+    /// A flag they are seen only while it is set (plan 21 · H12, part k: Faraway Island's Mew hiding in the grass,
+    /// Emerald's <c>set_invisible</c>): unset, they are on the map, in the way and spoken to, and not drawn
+    /// (<see cref="Overworld.NPC.OutOfSight"/>). Null for everyone else.
+    /// </summary>
+    public string? SeenBy { get; set; }
 
     /// <summary>
     /// For someone the overlay makes a Pokémon (<c>npcType</c> <c>Pokemon</c>) whose looks the original sets by

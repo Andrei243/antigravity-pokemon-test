@@ -486,6 +486,16 @@ public class NPC
     /// <summary>A flag they wait for: they are on the map only while it is set.</summary>
     public string? ShownBy { get; set; }
 
+    /// <summary>
+    /// A flag they are seen by (plan 21 · H12, part k: Faraway Island's Mew, hiding in the grass until found): while it is
+    /// unset they stand on the map, in the way and spoken to, and are not drawn (<see cref="OutOfSight"/>, kept by
+    /// <see cref="Map.ApplyPresence"/>). Null for everyone else.
+    /// </summary>
+    public string? SeenBy { get; set; }
+
+    /// <summary>Whether they are hidden from sight now (<see cref="SeenBy"/>): never drawn while it holds.</summary>
+    public bool OutOfSight { get; set; }
+
     /// <summary>Set when a script showed or hid them itself: it holds, whatever the flags say, until the map is come to again.</summary>
     public bool? Forced { get; set; }
 

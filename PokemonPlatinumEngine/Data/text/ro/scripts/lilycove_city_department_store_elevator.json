@@ -1,0 +1,56 @@
+{
+  "Attendant": [
+    {
+      "en": [
+        "Lift Attendant"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Lilycove Department Store. Which floor would you like?",
+        "5F",
+        "4F",
+        "3F",
+        "2F",
+        "1F",
+        "Exit"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Here we are. Please enjoy your shopping!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We're on that floor now. Please enjoy your shopping!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please take your time."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}
