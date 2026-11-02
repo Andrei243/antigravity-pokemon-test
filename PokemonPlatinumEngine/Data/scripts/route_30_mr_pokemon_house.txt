@@ -55,6 +55,15 @@ script OnEnter
 script MrPokemon
   speaker "Mr. Pokémon"
   if item "Red Scale" goto Scale
+  # The orbs of the Embedded Tower (Johto's leftovers; our words on HeartGold's beat): the Red and Blue Orbs for Johto's
+  # Champion who holds Kanto's eight Badges too, and the Jade Orb once Groudon and Kyogre have both been met there
+  if not flag JohtoHallOfFame goto NoOrbs
+  if badges of kanto < 8 goto NoOrbs
+  if not flag FLAG_JOHTO_GOT_ORBS goto Orbs
+  if flag FLAG_JOHTO_GOT_JADE_ORB goto NoOrbs
+  if not flag FLAG_JOHTO_FOUGHT_GROUDON goto NoOrbs
+  if flag FLAG_JOHTO_FOUGHT_KYOGRE goto Jade
+label NoOrbs
   if flag FLAG_GOT_MYSTERY_EGG goto After
   say "Hello, hello! Have a look round. Everything in here came from my travels."
   end
@@ -73,4 +82,17 @@ label Scale
   end
 label Keep
   say "No? Well, I can see why you'd want to keep it. Do bring it back if you change your mind!"
+  end
+label Orbs
+  say "Ah, the Champion of Johto and Kanto both! Then you're the one to have these. I found them on my travels in Hoenn."
+  give "Red Orb"
+  give "Blue Orb"
+  setflag FLAG_JOHTO_GOT_ORBS
+  say "They say a tower is buried in the cliffs past Cianwood, on Route 47. Take the orbs there and see what wakes!"
+  end
+label Jade
+  say "You met both of the giants in the tower? Then this must be what the third orb was waiting for."
+  give "Jade Orb"
+  setflag FLAG_JOHTO_GOT_JADE_ORB
+  say "The legend speaks of one who rules the sky and calms the land and the sea. Go back to the tower with that orb!"
   end

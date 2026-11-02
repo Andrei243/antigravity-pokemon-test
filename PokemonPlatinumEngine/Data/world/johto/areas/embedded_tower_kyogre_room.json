@@ -1,0 +1,26 @@
+{
+  "key": "embedded_tower_kyogre_room",
+  "index": 525,
+  "name": "Embedded Tower",
+  "matrix": 284,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave1",
+  "dayMusic": "GS_D_CHIKATSUURO",
+  "nightMusic": "GS_D_CHIKATSUURO",
+  "bike": false,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 16, "z": 29, "to": "route_47", "toWarp": 5 }
+  ],
+  "objects": [
+    { "id": "d52r0102_tsure_poke_static_kyogre", "looks": "follower_mon_static_kyogre", "movement": "0", "x": 16, "z": 11, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_EMBEDDED_TOWER_KYOGRE", "script": "D52R0102_000+1" },
+    { "id": "d52r0102_mount_2", "looks": "mount_2", "movement": "0", "x": 16, "z": 23, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_EMBEDDED_TOWER_KYOGRE_HIKER", "script": "0" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -1,0 +1,48 @@
+# The Embedded Tower's Rayquaza room (Johto's leftovers). docs/scripts.md describes the language; the lines are our own,
+# on HeartGold's beat (scr_seq_D52R0103).
+#
+# Rayquaza waits here once the Jade Orb has been given (route_30_mr_pokemon_house.txt) and until it has been fought
+# (FLAG_JOHTO_FOUGHT_RAYQUAZA, ours): beaten or caught it is gone for good, run from it vanishes (HeartGold's
+# FLAG_HIDE_EMBEDDED_TOWER_RAYQUAZA) and is back on the next visit. Its meeting is plan 29's beat for a Pokémon of
+# legend; the scene ends before the battle, so the hold never skips it.
+
+
+script OnEnter
+  setflag FLAG_HIDE_EMBEDDED_TOWER_RAYQUAZA
+  if flag FLAG_JOHTO_FOUGHT_RAYQUAZA end
+  if flag FLAG_JOHTO_GOT_JADE_ORB clearflag FLAG_HIDE_EMBEDDED_TOWER_RAYQUAZA
+  end
+
+# D52R0103_000: Rayquaza
+script Rayquaza
+  scene "Rayquaza in the Embedded Tower"
+  music stop
+  face player self
+  letterbox on 0.4
+  # Met from below, it is behind the player's own head from the field's camera: a step back, facing it, shows it
+  if facing up walk player back down 1
+  camera pan 16 11 1.2
+  camera zoom 1.4 0.8
+  effect beam 16 11
+  effect burst 16 11
+  wait 1
+  cry "Rayquaza"
+  camera shake 0.5
+  emote player exclaim
+  speaker none
+  text "The Jade Orb in the bag glowed green, and Rayquaza came down from the sky above the tower!"
+  if facing up walk player up 1
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Rayquaza" 50
+  if result == 2 goto Fled
+  setflag FLAG_JOHTO_FOUGHT_RAYQUAZA
+  setflag FLAG_HIDE_EMBEDDED_TOWER_RAYQUAZA
+  hide self
+  end
+label Fled
+  setflag FLAG_HIDE_EMBEDDED_TOWER_RAYQUAZA
+  hide self
+  text "Rayquaza vanished into the tower's depths!"
+  end

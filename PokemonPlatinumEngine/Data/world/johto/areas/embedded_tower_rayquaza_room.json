@@ -1,0 +1,25 @@
+{
+  "key": "embedded_tower_rayquaza_room",
+  "index": 526,
+  "name": "Embedded Tower",
+  "matrix": 285,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave1",
+  "dayMusic": "GS_D_CHIKATSUURO",
+  "nightMusic": "GS_D_CHIKATSUURO",
+  "bike": false,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 16, "z": 29, "to": "route_47", "toWarp": 6 }
+  ],
+  "objects": [
+    { "id": "d52r0103_tsure_poke_static_rayquaza", "looks": "follower_mon_static_rayquaza", "movement": "0", "x": 16, "z": 11, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_EMBEDDED_TOWER_RAYQUAZA", "script": "D52R0103_000+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

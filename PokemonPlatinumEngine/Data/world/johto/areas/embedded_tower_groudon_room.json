@@ -1,0 +1,26 @@
+{
+  "key": "embedded_tower_groudon_room",
+  "index": 524,
+  "name": "Embedded Tower",
+  "matrix": 279,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave1",
+  "dayMusic": "GS_D_CHIKATSUURO",
+  "nightMusic": "GS_D_CHIKATSUURO",
+  "bike": false,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 16, "z": 29, "to": "route_47", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "d52r0101_tsure_poke_static_groudon", "looks": "follower_mon_static_groudon", "movement": "0", "x": 16, "z": 11, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_EMBEDDED_TOWER_GROUDON", "script": "D52R0101_000+1" },
+    { "id": "d52r0101_mount_2", "looks": "mount_2", "movement": "0", "x": 16, "z": 23, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_EMBEDDED_TOWER_GROUDON_HIKER", "script": "0" }
+  ],
+  "signs": [],
+  "triggers": []
+}

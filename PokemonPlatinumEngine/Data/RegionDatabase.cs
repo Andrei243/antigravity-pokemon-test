@@ -618,6 +618,8 @@ public static class RegionDatabase
                 "Cerulean_Cave_1F", "Cerulean_Cave_2F", "Cerulean_Cave_B1F", "Viridian_TrainerHouse_B1F", "Fuchsia_PalParkGate",
                 "SSAqua_CaptainRoom", "SSAqua_1F_SoutheastRooms", "SSAqua_1F_SouthwestRooms", "SSAqua_1F_NortheastRooms",
                 "SSAqua_1F_NorthwestRooms", "SSAqua_B1F",
+                // Johto's leftovers: the Embedded Tower's three rooms behind Route 47's hole in the cliff
+                "EmbeddedTower_GroudonRoom", "EmbeddedTower_KyogreRoom", "EmbeddedTower_RayquazaRoom",
                 // Plan 20 · J5's leftovers: the Ruins of Alph's hall
                 "RuinsOfAlph_HallEntrance", "RuinsOfAlph_UndergroundHall",
                 // Plan 20 · J5's last leftover: the chambers' second rooms behind their back walls

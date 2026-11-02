@@ -388,6 +388,19 @@
     "description": "A card from Buena's Password show. A right password earns a point, which the Radio Tower trades for prizes.",
     "cantBeTossed": true
   },
+  // The third orb of the Embedded Tower (plan 20, Johto's leftovers: HeartGold's Jade Orb), which Mr. Pokémon gives
+  // once Groudon and Kyogre have both been met there, and which calls Rayquaza down to its room
+  "Jade Orb": {
+    "id": 9233,
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A glowing green orb of legend. It is said to be bound to the Pokémon that rules the skies over land and sea.",
+    "cantBeTossed": true
+  },
   "Rage Candy Bar": {
     "id": 9231,
     "pocket": "Medicine",
