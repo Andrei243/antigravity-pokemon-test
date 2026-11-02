@@ -248,8 +248,10 @@ public class PokemonTests
             && mapName != "UndergroundRuins" && mapName != "UndergroundRuins_Sun" && mapName != "UndergroundRuins_Moon"
             && mapName != "RockPeakChamber" && mapName != "IronChamber" && mapName != "IcebergChamber"
             // (and the Battle Pyramid's floor, left by its stairs' script and its own arrival's, plan 14 · B10)
-            && mapName != "BattlePyramidFloor")
-            Assert.NotEmpty(map.Warps);
+            && mapName != "BattlePyramidFloor"
+            // (and the Battle Tents' corridors and battle rooms, left by the round's own script, plan 21 · H3)
+            && !mapName.Contains("_BattleTent"))
+            Assert.True(map.Warps.Count > 0, $"{mapName} has no warps");
         // A map of the imported world is many places, and not every one leads to every other: a cave lies between
         // the two halves of a route, rocks wait for Rock Smash. The test below walks the whole game instead.
         if (map.IsStreamed) return;
