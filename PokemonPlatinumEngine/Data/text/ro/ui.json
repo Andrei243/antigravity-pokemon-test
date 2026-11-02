@@ -1,6 +1,23 @@
 {
   "cyclingRoad": { "seconds": "{time} de secunde", "minute": "un minut sau mai mult", "times": "de {count} ori", "many": "de 99 de ori sau mai mult" },
   "trainerHill": { "time": "{minutes} min. {seconds},{hundredths} sec.", "none": "încă niciun timp" },
+  "rouletteTable": {
+    "coins": "FISE",
+    "balls": "BILE RĂMASE",
+    "wager": "O BILĂ: {coins} FISE",
+    "odds": "PLĂTEȘTE x{odds}",
+    "place": "Alege o culoare, un Pokémon sau un pătrat și pune-ți miza!",
+    "hit": "Bila a căzut în {square}. Ai nimerit!",
+    "jackpot": "Bila a căzut în {square}. Marele câștig!",
+    "miss": "Bila a căzut în {square}. Nimic de data asta...",
+    "won": "Ai câștigat {coins} fise!",
+    "cleared": "A fost a șasea bilă. Tabla va fi golită.",
+    "mostCoins": "Cutia ta de fise e plină!",
+    "ask": "Mai joci?",
+    "broke": "Ai rămas fără fise.",
+    "yes": "DA",
+    "no": "NU"
+  },
   "roulette": { "square": "{pokemon} {colour}", "colour": { "0": "portocaliu", "1": "verde", "2": "violet" } },
   "shared": {
     "on": "Da",

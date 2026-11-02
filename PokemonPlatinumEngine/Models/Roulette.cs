@@ -6,8 +6,8 @@ namespace PokemonPlatinumEngine.Models;
 /// A wager of the table's minimum (1 or 3 coins) is placed on a colour, a Pokémon or one square; the ball lands on a square
 /// not yet hit this round, and a hit pays the minimum times Emerald's <c>GetMultiplier</c>, which grows as the round's
 /// hits leave fewer squares of the wager (a colour 3, 4, 6, 12; a Pokémon 4, 6, 12; a square 12; nought once nothing of
-/// it is left). Ours: the ball is drawn among the free squares on the script's die, where Emerald rolls it round a wheel
-/// the player throws it onto; Shroomish and Taillow's tricks are not played.
+/// it is left). This is the board alone: where the ball lands is <see cref="RouletteWheel"/>'s, the wheel it rolls round
+/// (plan 21 · H12, part o).
 /// </summary>
 public sealed class RouletteRound
 {
@@ -48,14 +48,13 @@ public sealed class RouletteRound
     };
 
     /// <summary>
-    /// The ball thrown: <paramref name="roll"/> (0 to the free squares less one) picks the free square it lands on.
-    /// Returns the coins the wager wins, nought on a miss.
+    /// The ball has landed on <paramref name="square"/> (row * 4 + column; Emerald's <c>RecordHit</c>, which counts a
+    /// square landed on twice twice). Returns the coins the wager wins, nought on a miss: its odds are taken before the
+    /// hit is counted, as <c>Task_PlaceBet</c> takes them before the ball is thrown.
     /// </summary>
-    public int Throw(Kind kind, int row, int column, int roll)
+    public int Land(Kind kind, int row, int column, int square)
     {
         int multiplier = Multiplier(kind, row, column);
-        var free = Enumerable.Range(0, Squares).Where(s => !hit[s]).ToList();
-        int square = free[Math.Clamp(roll, 0, free.Count - 1)];
         hit[square] = true;
         colourHits[square / Pokemon]++;
         pokemonHits[square % Pokemon]++;
@@ -70,6 +69,6 @@ public sealed class RouletteRound
         return won ? MinBet * multiplier : 0;
     }
 
-    /// <summary>How many squares are left free: the die the next ball is drawn on.</summary>
-    public int Free => Squares - Balls;
+    /// <summary>Whether a wager can still be placed: Emerald plays a buzzer for one whose squares have all been hit.</summary>
+    public bool Open(Kind kind, int row, int column) => Multiplier(kind, row, column) > 0;
 }

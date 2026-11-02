@@ -1,4 +1,38 @@
 {
+  "OnEnter": [
+    {
+      "en": [
+        "Curator"
+      ],
+      "text": [
+        "Curatorul"
+      ]
+    },
+    {
+      "en": [
+        "Ah, a visitor upstairs! Welcome. This floor is our exhibit hall, the newest part of the museum."
+      ],
+      "text": [
+        "A, un vizitator la etaj! Bine ai venit. Etajul acesta e sala noastră de expoziții, cea mai nouă parte a muzeului."
+      ]
+    },
+    {
+      "en": [
+        "Those five frames are kept for paintings of Pokémon that win at the Contest Hall: one for each kind of contest."
+      ],
+      "text": [
+        "Cele cinci rame sunt păstrate pentru picturile Pokémonilor care câștigă la Sala Concursurilor: câte una pentru fiecare fel de concurs."
+      ]
+    },
+    {
+      "en": [
+        "As you can see, they hang empty for now. If a Pokémon of yours wins a contest splendidly, please bring us its painting."
+      ],
+      "text": [
+        "După cum vezi, deocamdată stau goale. Dacă un Pokémon de-al tău câștigă strălucit un concurs, te rog să ne aduci pictura lui."
+      ]
+    }
+  ],
   "CoolPainting": [
     {
       "en": [

@@ -768,11 +768,11 @@ public static class ScriptParser
             }
             case "gamecorner":
             {
-                string what = r.OneOf("coins", "room", "add", "take", "slots", "reels", "prize", "buy", "hiddenpower", "cointrick", "roulette", "wager", "spin");
+                string what = r.OneOf("coins", "room", "add", "take", "slots", "reels", "prize", "buy", "hiddenpower", "cointrick", "wheel");
                 bool machine = what is "slots" or "reels";
-                int number = what is "room" or "add" or "take" or "slots" or "reels" or "roulette" ? r.Int(machine ? "a machine, 0 to 11" : "a number of coins") : 0;
+                int number = what is "room" or "add" or "take" or "slots" or "reels" or "wheel" ? r.Int(machine ? "a machine, 0 to 11" : "a number of coins") : 0;
                 if (machine && number is < 0 or > 11) throw r.Error("the Game Corner's machines are 0 to 11");
-                if (what == "roulette" && number < 1) throw r.Error("a roulette table's wager is a coin or more");
+                if (what == "wheel" && number is not (1 or 3)) throw r.Error("Mauville's roulette tables take a wager of 1 or 3 Coins");
                 if (!machine && number < 0) throw r.Error("coins are counted from nought up");
                 // The exchange's list: Veilstone's, or another Game Corner's by its name (plan 21 · H3, part c: mauville)
                 string list = what == "prize" && r.PeekWord("mauville") ? r.OneOf("mauville") : "";

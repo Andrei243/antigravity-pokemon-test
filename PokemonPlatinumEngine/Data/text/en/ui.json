@@ -4002,6 +4002,23 @@
   },
   "cyclingRoad": { "seconds": "{time} seconds", "minute": "a minute or more", "times": "{count} times", "many": "99 times or more" },
   "trainerHill": { "time": "{minutes} min. {seconds}.{hundredths} sec.", "none": "no time yet" },
+  "rouletteTable": {
+    "coins": "COINS",
+    "balls": "BALLS LEFT",
+    "wager": "A BALL: {coins} COINS",
+    "odds": "PAYS x{odds}",
+    "place": "Choose a colour, a Pokémon or a square, and place your wager!",
+    "hit": "The ball dropped into {square}. It's a hit!",
+    "jackpot": "The ball dropped into {square}. Jackpot!",
+    "miss": "The ball dropped into {square}. Nothing doing...",
+    "won": "You've won {coins} Coins!",
+    "cleared": "That was the sixth ball. The board will be cleared.",
+    "mostCoins": "Your Coin Case is full!",
+    "ask": "Keep playing?",
+    "broke": "You've run out of Coins.",
+    "yes": "YES",
+    "no": "NO"
+  },
   "roulette": { "square": "the {colour} {pokemon}", "colour": { "0": "orange", "1": "green", "2": "purple" } },
   "phrases": {
     "title": "Your words",

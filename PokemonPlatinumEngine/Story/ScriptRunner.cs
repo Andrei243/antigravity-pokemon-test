@@ -2519,9 +2519,6 @@ public sealed partial class ScriptRunner
             "wall" => lastWinner,
             "wallmon" => lastWinnerMon,
             "taste" => lastTaste,
-            // Mauville's roulette (plan 21 · H12, part k): where the last ball landed and what it won
-            "roulette" when argument == "SQUARE" => RouletteSquare(),
-            "roulette" when argument == "WON" => rouletteWon.ToString(),
             // The Seaside Cycling Road (plan 21 · H12, part k): the last run's and the best's time and collisions
             "cycling" when argument == "TIME" => Models.CyclingRoad.Time(host.Story.Var(Models.CyclingRoad.LastFrames)),
             "cycling" when argument == "COLLISIONS" => Models.CyclingRoad.Collisions(host.Story.Var(Models.CyclingRoad.LastCollisions)),

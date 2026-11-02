@@ -5,6 +5,33 @@
 # the wall's two metatiles; ours is looked at, in a screen of its own (`appeals view`).
 
 
+# The first visit (plan 21 · H12, part o; Emerald's LilycoveCity_LilycoveMuseum_2F_EventScript_ShowExhibitHall, run by
+# its OnFrame while VAR_LILYCOVE_MUSEUM_2F_STATE is nought): the curator turns to whoever has come up the stairs, shows
+# them the empty frames of the exhibit hall and asks for paintings to fill them; once only
+script OnEnter
+  if var VAR_LILYCOVE_MUSEUM_2F_STATE != 0 end
+  appeals paintings
+  if result != 0 goto Hung
+  scene "The curator shows the exhibit hall"
+  face museum_2f_curator player
+  face player museum_2f_curator
+  speaker "Curator"
+  say "Ah, a visitor upstairs! Welcome. This floor is our exhibit hall, the newest part of the museum."
+  face museum_2f_curator up
+  face player up
+  say "Those five frames are kept for paintings of Pokémon that win at the Contest Hall: one for each kind of contest."
+  face museum_2f_curator player
+  face player museum_2f_curator
+  say "As you can see, they hang empty for now. If a Pokémon of yours wins a contest splendidly, please bring us its painting."
+  setvar VAR_LILYCOVE_MUSEUM_2F_STATE 1
+  endscene
+  end
+# A game whose paintings were hung before this scene was written has nothing to be shown
+label Hung
+  setvar VAR_LILYCOVE_MUSEUM_2F_STATE 1
+  end
+
+
 # A frame, read from before it: the painting (RESULT 1) or the card beneath an empty one
 script CoolPainting
   appeals view cool

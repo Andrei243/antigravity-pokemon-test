@@ -133,7 +133,9 @@ public enum GameState
     /// <summary>Cameron's photo album looked through, a script's <c>photo album</c> waiting on it (plan 20, part q).</summary>
     PhotoAlbum,
     /// <summary>A sitting at one of Mauville's slot machines, Emerald's own with its Reel Time (plan 21 · H12, part n).</summary>
-    ReelMachine
+    ReelMachine,
+    /// <summary>A sitting at one of Mauville's two roulette tables, the wheel and its ball (plan 21 · H12, part o).</summary>
+    RouletteTable
 }
 
 public partial class GameEngine
@@ -1530,6 +1532,9 @@ public partial class GameEngine
                 break;
             case GameState.ReelMachine:
                 UpdateReelMachine(dt);
+                break;
+            case GameState.RouletteTable:
+                UpdateRouletteTable(dt);
                 break;
             case GameState.FrontierRecords:
                 UpdateFrontierRecords(dt);
@@ -3202,6 +3207,9 @@ public partial class GameEngine
                 break;
             case GameState.ReelMachine:
                 flow.ReelMachineScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.RouletteTable:
+                flow.RouletteScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.HallOfFameCeremony:
                 flow.Ceremony.Draw(VirtualWidth, VirtualHeight);

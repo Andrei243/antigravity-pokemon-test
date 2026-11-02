@@ -221,15 +221,22 @@ label NoCase
   say "You need a Coin Case to play. The lady next door might help you out."
   end
 
-# The two roulette tables (plan 21 · H12, part k; Emerald's Roulette_EventScript_Table1 and Table2, roulette.c): the left
-# takes a Coin a ball, the right three, and a hit pays that times the wager's odds (Models/Roulette.cs). A round is six
-# balls; each lands on a square not yet hit, so the odds of what is left grow. The wager is a colour (VAR_TEMP_2 0, its
-# row in VAR_TEMP_3), a Pokémon (1, its column in VAR_TEMP_4) or one square (2, both). Ours: the board and the throw
-# are menus and the script's die, where Emerald's are a wheel the player throws the ball onto.
+# The two roulette tables (plan 21 · H12, part o; Emerald's Roulette_EventScript_Table1 and Table2, roulette.c): the left
+# takes a Coin a ball, the right three. Sitting down opens the table itself (gamecorner wheel, Models/RouletteWheel.cs):
+# the wheel turns, the ball rolls round it and drops into a slot, and a hit pays the wager times its odds. Emerald asks
+# first whether to play at the table's wager, and turns away whoever has too few Coins for it.
 script Roulette1
   if not item "Coin Case" goto NoCase
-  gamecorner roulette 1
-  call Roulette
+  gamecorner coins
+  if result < 1 goto Short
+  ask "A roulette table. A ball here takes 1 Coin. Will you play?"
+  if no end
+  fade out 0.3
+  gamecorner wheel 1
+  fade in 0.3
+  end
+label Short
+  text "A roulette table. A ball here takes 1 Coin, and you haven't got one."
   end
 label NoCase
   text "A roulette wheel. Without a Coin Case there's nothing to wager."
@@ -238,51 +245,17 @@ label NoCase
 
 script Roulette2
   if not item "Coin Case" goto NoCase
-  gamecorner roulette 3
-  call Roulette
+  gamecorner coins
+  if result < 3 goto Short
+  ask "A roulette table. A ball here takes 3 Coins. Will you play?"
+  if no end
+  fade out 0.3
+  gamecorner wheel 3
+  fade in 0.3
+  end
+label Short
+  text "A roulette table. A ball here takes 3 Coins, and you haven't got enough."
   end
 label NoCase
   text "A roulette wheel. Without a Coin Case there's nothing to wager."
-  end
-
-
-script Roulette
-  speaker none
-  gamecorner coins
-  text "Place your wager! You have {coins} Coins."
-label Ball
-  choose "What will you wager on?" "A colour" "A Pokémon" "One square" "Quit"
-  if result == 3 end
-  setvar VAR_TEMP_2 RESULT
-  if result == 1 goto Pokemon
-  choose "Which colour?" "Orange" "Green" "Purple"
-  setvar VAR_TEMP_3 RESULT
-  if var VAR_TEMP_2 == 0 goto Throw
-label Pokemon
-  choose "Which Pokémon?" "Wynaut" "Azurill" "Skitty" "Makuhita"
-  setvar VAR_TEMP_4 RESULT
-label Throw
-  gamecorner wager
-  if result == 0 goto Gone
-  gamecorner spin
-  if result == 0 goto Broke
-  setvar VAR_TEMP_5 RESULT
-  if result == 2 goto Hit
-  if result == 4 goto Hit
-  text "The ball rolled into {roulette:SQUARE}. No luck this time."
-  goto Next
-label Hit
-  text "The ball rolled into {roulette:SQUARE}. It's a hit! {roulette:WON} Coins won!"
-label Next
-  if var VAR_TEMP_5 >= 3 text "That was the round's last ball. The board is cleared for a new round."
-  gamecorner coins
-  if result == 0 end
-  ask "Wager again? You have {coins} Coins."
-  if no end
-  goto Ball
-label Gone
-  text "Every square of that wager has been hit this round. Choose another!"
-  goto Ball
-label Broke
-  text "You don't have enough Coins."
   end
