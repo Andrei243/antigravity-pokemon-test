@@ -23,6 +23,7 @@ label FirstMorning
   say "Professor Elm came by while you were asleep. He said he has a favour to ask you, and that it couldn't wait."
   say "And before I forget, this came back from the repair shop. Your Pokégear!"
   setflag FLAG_GOT_POKEGEAR
+  objective johtoElm
   fanfare keyitem
   text "{player} received the Pokégear!"
   say "It's a phone and a clock and a map all in one. Keep it with you, so I can always reach you."

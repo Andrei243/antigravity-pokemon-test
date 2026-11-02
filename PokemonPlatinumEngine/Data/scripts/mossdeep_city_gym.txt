@@ -42,6 +42,7 @@ script TateAndLiza
   speaker "Liza"
   say "...came apart! You've won. Take this as proof."
   givebadge mind
+  objective hoennJuan
   text "{player} received the Mind Badge from Tate and Liza!"
   speaker "Tate"
   say "The Mind Badge makes your Pokémon's special moves stronger and their guard against them firmer."

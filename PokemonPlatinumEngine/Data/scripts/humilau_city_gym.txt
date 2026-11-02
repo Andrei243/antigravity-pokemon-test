@@ -44,6 +44,7 @@ script Marlon
   say "You don't just look strong, you're strong for real! I got swept right away, yo."
   say "Oh yeah. I was so surprised I almost forgot! I've gotta give you this."
   givebadge wave
+  objective unovaChasm
   text "{player} received the Wave Badge from Marlon!"
   say "That's the Wave Badge, Unova's newest Gym Badge! Pretty sweet, right? Now you've got all eight, so any Pokémon will listen to you."
   say "Oh yeah, I've got a TM for you too."

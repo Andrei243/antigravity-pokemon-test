@@ -157,6 +157,7 @@ script Blaine
   battle self as "kanto_leader_blaine"
   say "I have burned out... You have earned the Volcano Badge!"
   givebadge volcano
+  objective kantoGiovanni
   text "{player} received the Volcano Badge from Blaine!"
   say "With the Volcano Badge, your Pokémon can climb waterfalls with Waterfall outside of battle."
   setflag FLAG_DEFEATED_BLAINE

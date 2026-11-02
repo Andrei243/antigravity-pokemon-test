@@ -43,6 +43,7 @@ label Caught
   setflag FLAG_KALOS_HIDE_FRIENDS_CAFE
   clearflag FLAG_KALOS_HIDE_SHAUNA_FOREST
   setvar VAR_KALOS_STORY 5
+  objective kalosForest
   endscene
   end
 

@@ -19,6 +19,7 @@ script Brawly
   say "Whoa, you knocked me right off my board! You've got some real power."
   say "Here, this is the Knuckle Badge. You've earned it, no question."
   givebadge knuckle
+  objective hoennWattson
   text "{player} received the Knuckle Badge from Brawly!"
   say "With the Knuckle Badge, your Pokémon can use Flash outside of battle to light up dark places."
   setflag FLAG_DEFEATED_DEWFORD_GYM

@@ -21,6 +21,7 @@ script OnEnter
   fade out 0.8
   halloffame
   setflag KantoHallOfFame
+  objective kantoSevii
   setflag FLAG_SYS_GAME_CLEAR
   halloffame show
   heal

@@ -41,6 +41,7 @@ script Burgh
   battle burgh as "unova_leader_burgh"
   say "Oh ho... You're strong, all right. I suppose losing was no surprise. Here, the Insect Badge! I think it suits you!"
   givebadge insect
+  objective unovaElesa
   text "{player} received the Insect Badge from Burgh!"
   defeat "unova_harlequin_clarence"
   defeat "unova_harlequin_gary"

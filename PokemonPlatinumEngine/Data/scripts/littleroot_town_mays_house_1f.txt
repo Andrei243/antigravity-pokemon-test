@@ -15,6 +15,7 @@ script OnEnter
   say "I'm Professor Birch's wife. Our {rival} is about your age, and so excited to have someone new next door."
   say "{rival}'s upstairs. Go on up and say hello!"
   setflag FLAG_MET_RIVAL_MOM
+  objective hoennBirch
   setvar VAR_LITTLEROOT_HOUSES_STATE_MAY 2
   endscene
   end

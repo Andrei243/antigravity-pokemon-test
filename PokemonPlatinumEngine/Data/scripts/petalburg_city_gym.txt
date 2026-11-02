@@ -97,6 +97,7 @@ label Battle
   say "I... lost? To you, {player}? I can hardly believe it."
   say "But rules are rules. You've earned this. Take it."
   givebadge balance
+  objective hoennWinona
   text "{player} received the Balance Badge from Norman!"
   say "With the Balance Badge, your Pokémon can use Surf outside of battle to cross the water."
   setflag FLAG_DEFEATED_PETALBURG_GYM

@@ -16,6 +16,7 @@ script Falkner
   battle self as "johto_leader_falkner_falkner"
   say "...My father's birds, beaten. You've earned this, fair and square. The Zephyr Badge!"
   givebadge zephyr
+  objective johtoBugsy
   text "{player} received the Zephyr Badge from Falkner!"
   say "With it, Pokémon up to level twenty will obey you, even ones you've traded for. And Rock Smash can be used outside battle."
   setflag FLAG_DEFEATED_FALKNER

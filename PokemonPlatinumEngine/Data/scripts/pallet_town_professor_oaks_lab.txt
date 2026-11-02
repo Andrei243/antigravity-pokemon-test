@@ -90,6 +90,7 @@ label Took
   speaker "{rival}"
   say "Heh. Mine looks way tougher than yours, {player}."
   setvar VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB 3
+  objective kantoRivalLab
   endscene
   end
 
@@ -144,6 +145,7 @@ label Gone
   setflag FLAG_HIDE_RIVAL_IN_LAB
   music area
   setvar VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB 4
+  objective kantoParcel
   endscene
   end
 
@@ -255,6 +257,7 @@ label Parcel
   hide oaks_lab_rival
   setflag FLAG_HIDE_RIVAL_IN_LAB
   setvar VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB 6
+  objective kantoBrock
   setvar VAR_MAP_SCENE_VIRIDIAN_CITY_MART 2
   setvar VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN 1
   setvar VAR_MAP_SCENE_PALLET_TOWN_RIVALS_HOUSE 1

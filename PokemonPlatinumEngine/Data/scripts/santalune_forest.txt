@@ -22,6 +22,7 @@ script Meet
   setflag FLAG_KALOS_HIDE_SHAUNA_FOREST
   clearflag FLAG_KALOS_HIDE_FRIENDS_ROUTE_3
   setvar VAR_KALOS_STORY 6
+  objective kalosRoute3
   endscene
   end
 

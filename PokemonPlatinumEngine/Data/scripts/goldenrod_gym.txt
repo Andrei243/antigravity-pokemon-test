@@ -28,6 +28,7 @@ label Calmer
   say "...Sniff... Sorry about that. I just hate losing!"
   say "Oh, right, the Badge. You won it fair and square. Here's the Plain Badge!"
   givebadge plain
+  objective johtoMorty
   text "{player} received the Plain Badge from Whitney!"
   say "With it, Pokémon up to level thirty will obey you, and you can use Strength outside of battle."
 label Tm

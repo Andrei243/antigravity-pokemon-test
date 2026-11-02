@@ -80,6 +80,7 @@ label HughAtTheDoor
   hide 0
   setflag FLAG_UNOVA_HIDE_HUGH_ASPERTIA
   setvar VAR_UNOVA_ASPERTIA 1
+  objective unovaOutlook
   endscene
   end
 
@@ -217,6 +218,7 @@ label HughOff
   fade out
   clearflag FLAG_UNOVA_HIDE_BIANCA_CENTER
   setvar VAR_UNOVA_ASPERTIA 5
+  objective unovaCenter
   warp "AspertiaCity_PokemonCenter" 7 18 up
   endscene
   end

@@ -64,6 +64,7 @@ script Archer
   walk deck_director left 3 down 8 right 3 up 1
   hide deck_director
   setvar VAR_SCENE_ROCKET_TAKEOVER 5
+  objective johtoClair
   clearflag FLAG_HIDE_RADIO_TOWER_5F_OFFICE_DIRECTOR
   setflag FLAG_HIDE_RADIO_TOWER_5F_PETREL_REVEALED
   setvar VAR_UNK_407A 1

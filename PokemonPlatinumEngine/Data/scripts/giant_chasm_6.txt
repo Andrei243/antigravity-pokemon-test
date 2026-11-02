@@ -161,6 +161,7 @@ script Ghetsis
   setflag FLAG_UNOVA_HIDE_ROOD_CHASM
   setflag FLAG_UNOVA_CHASM_CLEARED
   setvar VAR_UNOVA_CHASM 4
+  objective unovaLeague
   fade out 0.3
   setflag FLAG_UNOVA_HIDE_HUGH_CAVERN
   setflag FLAG_UNOVA_HIDE_CHEREN_CAVERN

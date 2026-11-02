@@ -17,6 +17,7 @@ script OnEnter
   # X and Y's player runs from the start: no shoes are handed over in Kalos
   setflag FLAG_HAS_RUNNING_SHOES
   setvar VAR_KALOS_STORY 1
+  objective kalosDoor
   endscene
   end
 
@@ -41,6 +42,7 @@ label Letter
   say "Hold the run button and off you go. Everyone in Kalos skates! Just not through the tall grass, mind, or up stairs."
   say "Come home whenever you're tired. Now go on, your friends will be waiting!"
   setvar VAR_KALOS_STORY 4
+  objective kalosRoute2
   endscene
   end
 label Rest

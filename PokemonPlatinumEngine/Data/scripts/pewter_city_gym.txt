@@ -17,6 +17,7 @@ script Brock
   battle self as "kanto_leader_brock"
   say "...I misjudged you. You and your Pokémon fought as one. That deserves the Boulder Badge."
   givebadge boulder
+  objective kantoMisty
   text "{player} received the Boulder Badge from Brock!"
   say "With it, Flash can be used outside battle, and Pokémon you get in trades will listen to you a little better."
   setflag FLAG_DEFEATED_BROCK

@@ -16,6 +16,7 @@ script Erika
   battle self as "kanto_leader_erika"
   say "Oh... I concede. You are remarkably strong. Please, take the Rainbow Badge."
   givebadge rainbow
+  objective kantoHideout
   text "{player} received the Rainbow Badge from Erika!"
   say "With the Rainbow Badge, your Pokémon can use Strength outside of battle, to push heavy boulders."
   setflag FLAG_DEFEATED_ERIKA

@@ -54,6 +54,7 @@ script MrFuji
   setflag FLAG_HIDE_TOWER_FUJI
   clearflag FLAG_HIDE_POKEHOUSE_FUJI
   setflag FLAG_RESCUED_MR_FUJI
+  objective kantoKoga
   warp "LavenderTown_VolunteerPokemonHouse" 4 6 up
   endscene
   end

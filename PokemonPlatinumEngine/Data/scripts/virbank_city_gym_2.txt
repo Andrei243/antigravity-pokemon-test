@@ -28,6 +28,7 @@ script Roxie
   say "Aaargh! What am I doing, losing like that?! ...Guess that means you're the real deal."
   say "That stank, but I gave it everything I had, and now I feel totally refreshed! Here, the Toxic Badge!"
   givebadge toxic
+  objective unovaBurgh
   text "{player} received the Toxic Badge from Roxie!"
   defeat "unova_roughneck_nicky"
   defeat "unova_guitarist_billy_jo"

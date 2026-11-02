@@ -2459,6 +2459,7 @@ way 0
   * fanfare FanfareTM
   * endscene
   + FLAG_UNOVA_GOT_TM78
+  = VAR_OBJECTIVE 0 -> 408
   = VAR_UNOVA_DRIFTVEIL 0 -> 4
   + beaten unova_leader_clay
   = badges Unova 0 -> 10000
@@ -5008,6 +5009,7 @@ way 0
   + FLAG_KALOS_DEFEATED_SANTALUNE_GYM
   + FLAG_KALOS_RECEIVED_TM_VIOLA
   = VAR_KALOS_STORY 0 -> 9
+  = VAR_OBJECTIVE 0 -> 509
   + beaten kalos_bug_catcher_luc
   + beaten kalos_lass_mireille
   + beaten kalos_viola_1
@@ -5554,10 +5556,15 @@ way -
   Scientist> They've taken over the controls... Please, you have to stop them!
 === VanivilleTown_PlayersHouse_1F.Mom
 from Mom at 7,8 of VanivilleTown_PlayersHouse_1F
-way -
+way 0
   Mom> Mom: Welcome home, dear! You all look worn out.
   Mom> Mom: ...There! Everyone's fit and well again.
+  Mom> By the way, would you like a reminder of what to do next?
+  Mom> Let me see... Go downstairs. Mom wants a word.
+  ? By the way, would you like a reminder of what to do next? = Yes
   * fanfare FanfareHeal
+way 1, from answer 1
+  ? By the way, would you like a reminder of what to do next? = No
 === VanivilleTown_PlayersHouse_2F.Wardrobe
 from the sign at 5,4 of VanivilleTown_PlayersHouse_2F
 way -
@@ -6758,6 +6765,7 @@ way 0
   + FLAG_HAS_POKEDEX
   + FLAG_KALOS_HIDE_RIVAL_AQUACORDE
   = VAR_KALOS_STORY 0 -> 3
+  = VAR_OBJECTIVE 0 -> 503
   + beaten kalos_shauna_1
   = starters none/none -> Chespin/Fennekin
   + seen aquacorde_town.The friends at the cafe
@@ -6772,6 +6780,7 @@ way 1, from answer 1
   + FLAG_HAS_POKEDEX
   + FLAG_KALOS_HIDE_RIVAL_AQUACORDE
   = VAR_KALOS_STORY 0 -> 3
+  = VAR_OBJECTIVE 0 -> 503
   = starters none/none -> Chespin/Fennekin
   + seen aquacorde_town.The friends at the cafe
 === aquacorde_town.Cafe1
@@ -6802,6 +6811,7 @@ way 0
   + FLAG_HAS_POKEDEX
   + FLAG_KALOS_HIDE_RIVAL_AQUACORDE
   = VAR_KALOS_STORY 0 -> 3
+  = VAR_OBJECTIVE 0 -> 503
   + beaten kalos_shauna_1
   = starters none/none -> Chespin/Fennekin
   + seen aquacorde_town.The friends at the cafe
@@ -6816,6 +6826,7 @@ way 1, from answer 1
   + FLAG_HAS_POKEDEX
   + FLAG_KALOS_HIDE_RIVAL_AQUACORDE
   = VAR_KALOS_STORY 0 -> 3
+  = VAR_OBJECTIVE 0 -> 503
   = starters none/none -> Chespin/Fennekin
   + seen aquacorde_town.The friends at the cafe
 === aquacorde_town.Cafe2
@@ -6846,6 +6857,7 @@ way 0
   + FLAG_HAS_POKEDEX
   + FLAG_KALOS_HIDE_RIVAL_AQUACORDE
   = VAR_KALOS_STORY 0 -> 3
+  = VAR_OBJECTIVE 0 -> 503
   + beaten kalos_shauna_1
   = starters none/none -> Chespin/Fennekin
   + seen aquacorde_town.The friends at the cafe
@@ -6860,6 +6872,7 @@ way 1, from answer 1
   + FLAG_HAS_POKEDEX
   + FLAG_KALOS_HIDE_RIVAL_AQUACORDE
   = VAR_KALOS_STORY 0 -> 3
+  = VAR_OBJECTIVE 0 -> 503
   = starters none/none -> Chespin/Fennekin
   + seen aquacorde_town.The friends at the cafe
 === aquacorde_town.Cafe3
@@ -6890,6 +6903,7 @@ way 0
   + FLAG_HAS_POKEDEX
   + FLAG_KALOS_HIDE_RIVAL_AQUACORDE
   = VAR_KALOS_STORY 0 -> 3
+  = VAR_OBJECTIVE 0 -> 503
   + beaten kalos_shauna_1
   = starters none/none -> Chespin/Fennekin
   + seen aquacorde_town.The friends at the cafe
@@ -6904,6 +6918,7 @@ way 1, from answer 1
   + FLAG_HAS_POKEDEX
   + FLAG_KALOS_HIDE_RIVAL_AQUACORDE
   = VAR_KALOS_STORY 0 -> 3
+  = VAR_OBJECTIVE 0 -> 503
   = starters none/none -> Chespin/Fennekin
   + seen aquacorde_town.The friends at the cafe
 === aquacorde_town.HomeFirst
@@ -7210,6 +7225,7 @@ way 0
   * endscene
   * fanfare FanfareTM
   + FLAG_GOT_TM89_FROM_BUGSY
+  = VAR_OBJECTIVE 0 -> 206
   + beaten johto_bug_catcher_al
   + beaten johto_bug_catcher_benny
   + beaten johto_bug_catcher_josh
@@ -8268,6 +8284,7 @@ way 0
   * fanfare FanfareTM
   * endscene
   + FLAG_UNOVA_GOT_TM76
+  = VAR_OBJECTIVE 0 -> 406
   = VAR_UNOVA_CASTELIA 0 -> 10
   + beaten unova_harlequin_anders
   + beaten unova_harlequin_clarence
@@ -8556,6 +8573,7 @@ way 0
   * endscene
   + FLAG_DEFEATED_ERIKA
   + FLAG_GOT_TM19_FROM_ERIKA
+  = VAR_OBJECTIVE 0 -> 110
   + beaten kanto_beauty_bridget
   + beaten kanto_beauty_lori
   + beaten kanto_beauty_tamia
@@ -9194,6 +9212,7 @@ way 0
   * endscene
   + FLAG_DEFEATED_MISTY
   + FLAG_GOT_TM03_FROM_MISTY
+  = VAR_OBJECTIVE 0 -> 107
   + beaten kanto_leader_misty
   + beaten kanto_picnicker_diana
   + beaten kanto_swimmer_male_luis
@@ -9494,6 +9513,7 @@ way 0
   + FLAG_DEFEATED_BLAINE
   + FLAG_GOT_TM38_FROM_BLAINE
   = VAR_MAP_SCENE_CINNABAR_ISLAND 0 -> 1
+  = VAR_OBJECTIVE 0 -> 116
   + beaten kanto_burglar_dusty
   + beaten kanto_burglar_quinn
   + beaten kanto_burglar_ramon
@@ -14301,6 +14321,7 @@ way 0
   * endscene
   + FLAG_DEFEATED_DEWFORD_GYM
   + FLAG_RECEIVED_TM_BULK_UP
+  = VAR_OBJECTIVE 0 -> 307
   = VAR_PETALBURG_GYM_STATE 0 -> 1
   + beaten hoenn_brawly_1
   + beaten hoenn_brenden
@@ -14996,6 +15017,7 @@ way 0
   * endscene
   * fanfare FanfareTM
   + FLAG_GOT_TM30_FROM_MORTY
+  = VAR_OBJECTIVE 0 -> 208
   + beaten johto_leader_morty_morty
   = badges Johto 0 -> 1000
   + seen ecruteak_gym.Morty
@@ -16008,6 +16030,7 @@ way 0
   + FLAG_DEFEATED_FORTREE_GYM
   + FLAG_RECEIVED_TM_AERIAL_ACE
   + FLAG_SCOTT_CALL_FORTREE_GYM
+  = VAR_OBJECTIVE 0 -> 311
   + beaten hoenn_ashley
   + beaten hoenn_darius
   + beaten hoenn_edwardo
@@ -16251,6 +16274,7 @@ way 0
   * endscene
   + FLAG_DEFEATED_KOGA
   + FLAG_GOT_TM06_FROM_KOGA
+  = VAR_OBJECTIVE 0 -> 113
   + beaten kanto_juggler_kayden
   + beaten kanto_juggler_kirk
   + beaten kanto_juggler_nate
@@ -16703,6 +16727,7 @@ way 0.0
   + FLAG_UNOVA_HIDE_ROOD_CHASM
   + FLAG_UNOVA_HIDE_TRIAD_CAVERN
   + FLAG_UNOVA_HIDE_ZEKROM_CAVERN
+  = VAR_OBJECTIVE 0 -> 412
   = VAR_UNOVA_CHASM 0 -> 4
   + beaten unova_ghetsis_kyurem
   + beaten unova_team_plasma_ghetsis
@@ -17158,6 +17183,7 @@ way 0
   + FLAG_HIDE_BLACKTHORN_GYM_GUARD_INFRONT
   + FLAG_HIDE_RADIO_TOWER_5F_PETREL_REVEALED
   + FLAG_UNK_093
+  = VAR_OBJECTIVE 0 -> 213
   = VAR_SCENE_ROCKET_TAKEOVER 0 -> 5
   = VAR_UNK_407A 0 -> 1
   + beaten johto_executive_archer_archer
@@ -17621,6 +17647,7 @@ way 0
   * endscene
   + FLAG_UNOVA_GOT_TM55
   + FLAG_UNOVA_HIDE_MARLON_GYM
+  = VAR_OBJECTIVE 0 -> 411
   = VAR_UNOVA_HUMILAU 0 -> 3
   + beaten unova_leader_marlon
   = badges Unova 0 -> 10000000
@@ -18364,6 +18391,7 @@ way -
   + FLAG_KALOS_HIDE_FRIENDS_CAFE
   + FLAG_KALOS_HIDE_RIVAL_ROUTE_2
   = VAR_KALOS_STORY 0 -> 5
+  = VAR_OBJECTIVE 0 -> 505
   + seen kalos_route_2.The neighbour's lesson
 === kalos_route_2.Rival
 from {rival} at 255,632 of Kalos
@@ -18383,6 +18411,7 @@ way 0
   * endscene
   + FLAG_KALOS_HIDE_FRIENDS_ROUTE_3
   = VAR_KALOS_STORY 0 -> 7
+  = VAR_OBJECTIVE 0 -> 507
   + beaten kalos_tierno_1
   + seen kalos_route_3.Tierno and Trevor on Route 3
 way 1, from answer 1
@@ -18393,6 +18422,7 @@ way 1, from answer 1
   * endscene
   + FLAG_KALOS_HIDE_FRIENDS_ROUTE_3
   = VAR_KALOS_STORY 0 -> 7
+  = VAR_OBJECTIVE 0 -> 507
   + seen kalos_route_3.Tierno and Trevor on Route 3
 === kalos_route_3.Tierno
 from Tierno at 267,528 of Kalos
@@ -18707,6 +18737,7 @@ way 0
   + FLAG_RECEIVED_TM_OVERHEAT
   + FLAG_WHITEOUT_TO_LAVARIDGE
   = VAR_LAVARIDGE_TOWN_STATE 0 -> 1
+  = VAR_OBJECTIVE 0 -> 309
   = VAR_PETALBURG_GYM_STATE 0 -> 1
   + beaten hoenn_axle
   + beaten hoenn_cole
@@ -19929,6 +19960,7 @@ way 0
   * endscene
   * fanfare FanfareTM
   + FLAG_GOT_TM07_FROM_PRYCE
+  = VAR_OBJECTIVE 0 -> 212
   + beaten johto_boarder_deandre
   + beaten johto_boarder_gerardo
   + beaten johto_boarder_patton
@@ -20233,6 +20265,7 @@ way 0
   * endscene
   + FLAG_DEFEATED_MAUVILLE_GYM
   + FLAG_RECEIVED_TM_SHOCK_WAVE
+  = VAR_OBJECTIVE 0 -> 308
   = VAR_PETALBURG_GYM_STATE 0 -> 1
   = VAR_SLATEPORT_OUTSIDE_MUSEUM_STATE 0 -> 3
   + beaten hoenn_angelo
@@ -20540,6 +20573,7 @@ way 0
   * fanfare FanfareTM
   * endscene
   + FLAG_UNOVA_GOT_TM62
+  = VAR_OBJECTIVE 0 -> 409
   = VAR_UNOVA_MISTRALTON 0 -> 2
   + beaten unova_leader_skyla
   = badges Unova 0 -> 100000
@@ -20693,6 +20727,7 @@ way 0
   + FLAG_RECEIVED_TM_CALM_MIND
   = VAR_MOSSDEEP_CITY_STATE 0 -> 1
   = VAR_MOSSDEEP_SPACE_CENTER_STATE 0 -> 1
+  = VAR_OBJECTIVE 0 -> 312
   + beaten hoenn_blake
   + beaten hoenn_clifford
   + beaten hoenn_hannah
@@ -21866,6 +21901,7 @@ way 0
   * endscene
   * fanfare FanfareTM
   + FLAG_GOT_TM23_FROM_JASMINE
+  = VAR_OBJECTIVE 0 -> 210
   + beaten johto_leader_jasmine_jasmine
   = badges Johto 0 -> 100000
   + seen olivine_gym.Jasmine
@@ -22127,6 +22163,7 @@ way 0
   * endscene
   + FLAG_UNOVA_DRAYDEN_AT_HOME
   + FLAG_UNOVA_GOT_TM82
+  = VAR_OBJECTIVE 0 -> 410
   = VAR_UNOVA_OPELUCID 0 -> 2
   + beaten unova_leader_drayden
   = badges Unova 0 -> 1000000
@@ -22403,6 +22440,7 @@ way -
   * endscene
   = VAR_MAP_SCENE_PALLET_TOWN_OAK 0 -> 1
   = VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB 0 -> 1
+  = VAR_OBJECTIVE 0 -> 101
   + seen pallet_town.Oak in the grass
 === pallet_town_oaks_lab.Gift
 from Poké Ball at 7,3 of Pallet_OaksLab
@@ -22476,6 +22514,7 @@ way 0
   + FLAG_BEAT_RIVAL_IN_OAKS_LAB
   + FLAG_HIDE_RIVAL_IN_LAB
   = VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB 0 -> 4
+  = VAR_OBJECTIVE 0 -> 103
   + beaten kanto_rival_oaks_lab_bulbasaur
   + seen pallet_town_professor_oaks_lab.The first battle
 way 1, from answer 1
@@ -22487,6 +22526,7 @@ way 1, from answer 1
   * endscene
   + FLAG_HIDE_RIVAL_IN_LAB
   = VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB 0 -> 4
+  = VAR_OBJECTIVE 0 -> 103
   + seen pallet_town_professor_oaks_lab.The first battle
 === pallet_town_professor_oaks_lab.StarterBall
 from Poké Ball at 10,4 of PalletTown_ProfessorOaksLab
@@ -22777,6 +22817,7 @@ way 0
   + FLAG_GOT_TM39_FROM_BROCK
   + FLAG_HIDE_PEWTER_CITY_GYM_GUIDE
   = VAR_MAP_SCENE_PEWTER_CITY 0 -> 1
+  = VAR_OBJECTIVE 0 -> 106
   + beaten kanto_camper_liam
   + beaten kanto_leader_brock
   = badges Kanto 0 -> 1
@@ -23400,6 +23441,7 @@ way -
   * endscene
   + FLAG_HIDE_TOWER_FUJI
   + FLAG_RESCUED_MR_FUJI
+  = VAR_OBJECTIVE 0 -> 112
   + seen pokemon_tower_7f.Mr Fuji
 === power_plant.Electrode
 from Poké Ball at 30,38 of PowerPlant
@@ -23748,6 +23790,7 @@ way 0
   + FLAG_DEFEATED_ROCKET_HIDEOUT_GIOVANNI
   + FLAG_HIDE_CELADON_ROCKETS
   + FLAG_HIDE_HIDEOUT_GIOVANNI
+  = VAR_OBJECTIVE 0 -> 111
   + beaten kanto_boss_giovanni
   + seen rocket_hideout_b4f.Giovanni
 way 1, from answer 1
@@ -23829,6 +23872,7 @@ way 0
   + FLAG_DEFEATED_RIVAL_ROUTE103
   + FLAG_HIDE_ROUTE_103_RIVAL
   = VAR_BIRCH_LAB_STATE 0 -> 4
+  = VAR_OBJECTIVE 0 -> 303
   = VAR_OLDALE_RIVAL_STATE 0 -> 1
   + beaten hoenn_may_route_103_mudkip
   + seen route_103.The rival on Route 103
@@ -27050,6 +27094,7 @@ way 0
   * endscene
   + FLAG_DEFEATED_RUSTBORO_GYM
   + FLAG_RECEIVED_TM_ROCK_TOMB
+  = VAR_OBJECTIVE 0 -> 305
   = VAR_PETALBURG_GYM_STATE 0 -> 1
   = VAR_RUSTBORO_CITY_STATE 0 -> 1
   + beaten hoenn_josh
@@ -27318,6 +27363,7 @@ way 0
   * endscene
   + FLAG_DEFEATED_SABRINA
   + FLAG_GOT_TM04_FROM_SABRINA
+  = VAR_OBJECTIVE 0 -> 115
   + beaten kanto_channeler_amanda
   + beaten kanto_channeler_stacy
   + beaten kanto_channeler_tasha
@@ -27480,6 +27526,7 @@ way 0
   * endscene
   + FLAG_KALOS_HIDE_RIVAL_SANTALUNE
   = VAR_KALOS_STORY 0 -> 8
+  = VAR_OBJECTIVE 0 -> 508
   + beaten kalos_rival_santalune_chespin
   + seen santalune_city.The neighbour in Santalune
 way 1, from answer 1
@@ -27490,6 +27537,7 @@ way 1, from answer 1
   * endscene
   + FLAG_KALOS_HIDE_RIVAL_SANTALUNE
   = VAR_KALOS_STORY 0 -> 8
+  = VAR_OBJECTIVE 0 -> 508
   + seen santalune_city.The neighbour in Santalune
 === santalune_city.NotYet
 from the trigger at 356,499 of Kalos
@@ -27525,6 +27573,7 @@ way -
   * endscene
   + FLAG_KALOS_HIDE_SHAUNA_FOREST
   = VAR_KALOS_STORY 0 -> 6
+  = VAR_OBJECTIVE 0 -> 506
   + seen santalune_forest.Shauna in the forest
 === santalune_forest.Shauna
 from Shauna at 256,597 of Kalos
@@ -27913,6 +27962,7 @@ way 0
   + FLAG_HIDE_SAFFRON_ROCKETS
   + FLAG_HIDE_SILPH_ROCKETS
   = VAR_MAP_SCENE_SILPH_CO_11F 0 -> 1
+  = VAR_OBJECTIVE 0 -> 114
   + beaten kanto_boss_giovanni_2
   + seen silph_co_11f.Giovanni at Silph
 way 1, from answer 1
@@ -28701,6 +28751,7 @@ way 0
   + FLAG_HIDE_SOOTOPOLIS_CITY_STEVEN
   + FLAG_HIDE_SOOTOPOLIS_CITY_WALLACE
   + FLAG_RECEIVED_TM_WATER_PULSE
+  = VAR_OBJECTIVE 0 -> 313
   = VAR_SOOTOPOLIS_CITY_STATE 0 -> 6
   + beaten hoenn_andrea
   + beaten hoenn_annika
@@ -31442,6 +31493,7 @@ way 0
   * endscene
   + FLAG_DEFEATED_LT_SURGE
   + FLAG_GOT_TM34_FROM_SURGE
+  = VAR_OBJECTIVE 0 -> 109
   + beaten kanto_engineer_baily
   + beaten kanto_gentleman_tucker
   + beaten kanto_leader_lt_surge
@@ -31696,6 +31748,7 @@ way 0
   * endscene
   + FLAG_DEFEATED_FALKNER
   + FLAG_GOT_TM51_FROM_FALKNER
+  = VAR_OBJECTIVE 0 -> 205
   = VAR_SCENE_ELMS_LAB 0 -> 5
   + beaten johto_bird_keeper_gs_abe
   + beaten johto_bird_keeper_gs_rod
@@ -32009,6 +32062,7 @@ way 0
   + FLAG_GOT_TM26_FROM_GIOVANNI
   + FLAG_HIDE_MISC_KANTO_ROCKETS
   = VAR_MAP_SCENE_ROUTE22 0 -> 3
+  = VAR_OBJECTIVE 0 -> 117
   + beaten kanto_black_belt_atsushi
   + beaten kanto_black_belt_kiyo
   + beaten kanto_black_belt_takashi

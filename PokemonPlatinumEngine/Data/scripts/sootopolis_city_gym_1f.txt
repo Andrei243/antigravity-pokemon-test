@@ -22,6 +22,7 @@ script Juan
   say "Ahahaha, splendid! You are a talent as rare as Wallace himself. I yield."
   say "Please, take this Badge. It is yours by right."
   givebadge rain
+  objective hoennLeague
   text "{player} received the Rain Badge from Juan!"
   say "With the Rain Badge, every Pokémon obeys you, whatever its level, and Waterfall can be used to climb a waterfall."
   setflag FLAG_DEFEATED_SOOTOPOLIS_GYM

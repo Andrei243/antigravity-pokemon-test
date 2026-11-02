@@ -16,6 +16,7 @@ script OnEnter
   give "Parcel"
   say "Thank you ever so much! Give him my regards."
   setvar VAR_MAP_SCENE_VIRIDIAN_CITY_MART 1
+  objective kantoParcelHome
   endscene
   end
 

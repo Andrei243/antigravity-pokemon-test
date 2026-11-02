@@ -128,6 +128,7 @@ label Fifth
   face d44r0103_chourou right
   say "Here. This is the Rising Badge. Hurry up and take it!"
   givebadge rising
+  objective johtoLeague
   text "{player} received the Rising Badge from Clair!"
   say "With it your Pokémon can climb waterfalls, and every Pokémon you have will obey you without question."
   move d44r0103_chourou up 1 right 1

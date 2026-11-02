@@ -72,6 +72,7 @@ script Choose
   scene "The starters"
   starter
   setflag FLAG_GOT_STARTER
+  objective johtoMrPokemon
   fanfare pokemon
   text "{player} received the {starter} from Professor Elm!"
   face t20r0101_doctor player
@@ -142,6 +143,7 @@ label Leaves
   say "What a morning! And what did Mr. Pokémon have to show? Something remarkable, he said..."
   text "{player} handed over the Mystery Egg."
   setflag FLAG_GAVE_MYSTERY_EGG_TO_ELM
+  objective johtoFalkner
   emote t20r0101_doctor exclaim
   say "An Egg?! Nobody knows for certain where Pokémon Eggs come from! I'll study it day and night."
   say "And Professor Oak gave you a Pokédex? Then you mustn't stop at errands. Go and see Johto, {player}!"

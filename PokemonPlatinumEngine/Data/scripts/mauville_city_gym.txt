@@ -93,6 +93,7 @@ script Wattson
   say "Wahahahaha! Fine, you win! You've got a spark in you, all right!"
   say "Here, take the Dynamo Badge. You've earned it fair and square."
   givebadge dynamo
+  objective hoennFlannery
   text "{player} received the Dynamo Badge from Wattson!"
   say "With the Dynamo Badge, your Pokémon can use Rock Smash outside of battle to break cracked rocks."
   setflag FLAG_DEFEATED_MAUVILLE_GYM

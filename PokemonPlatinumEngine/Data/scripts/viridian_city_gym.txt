@@ -21,6 +21,7 @@ script Giovanni
   say "Ha! There is no luck in that. You are strong, and I am beaten."
   say "Take the Earth Badge. It is proof that you have beaten the Leader of the Viridian City Gym."
   givebadge earth
+  objective kantoLeague
   text "{player} received the Earth Badge from Giovanni!"
   say "With the Earth Badge, every Pokémon will obey you, whatever its level. It is the last of Kanto's eight."
   setflag FLAG_DEFEATED_LEADER_GIOVANNI

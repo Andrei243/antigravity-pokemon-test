@@ -102,6 +102,7 @@ script Elesa
   battle 4 as "unova_leader_elesa"
   say "Well... You're even more dazzling than I thought. Your battling swept me off my feet. Here, this is yours!"
   givebadge bolt
+  objective unovaClay
   text "{player} received the Bolt Badge from Elesa!"
   if var VAR_UNOVA_NIMBASA < 1 setvar VAR_UNOVA_NIMBASA 1
   clearflag FLAG_UNOVA_HIDE_HUGH_NIMBASA

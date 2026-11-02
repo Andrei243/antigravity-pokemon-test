@@ -45,6 +45,7 @@ script Skyla
   say "You're an amazing Trainer. My Pokémon and I are happy: for the first time in a long while, we battled with everything we had!"
   say "Here, take this. It's the Jet Badge, proof that you beat me!"
   givebadge jet
+  objective unovaDrayden
   text "{player} received the Jet Badge from Skyla!"
   if var VAR_UNOVA_MISTRALTON < 2 setvar VAR_UNOVA_MISTRALTON 2
 label Tm

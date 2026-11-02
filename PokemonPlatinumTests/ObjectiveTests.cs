@@ -121,7 +121,7 @@ public class ObjectiveTests
         Assert.Equal(Objectives.Find("candice")!.Id, h.Story.Var(Objectives.Variable));
         // ...which wins over a derived objective behind it, in the region it belongs to and no other
         Assert.Equal("candice", Objectives.Current(h.Story, Sinnoh)?.Name);
-        Assert.Null(Objectives.Current(h.Story, RegionDatabase.Johto));
+        Assert.Null(Objectives.Current(h.Story, RegionDatabase.Alola));
     }
 
     [Fact]
@@ -143,7 +143,7 @@ public class ObjectiveTests
         Assert.DoesNotContain("{", said);
         Assert.Contains("Go downstairs", Objectives.Line(host.Story, Sinnoh));
         // A region with nothing to say says nothing
-        Assert.Equal("", Objectives.Line(host.Story, RegionDatabase.Johto));
+        Assert.Equal("", Objectives.Line(host.Story, RegionDatabase.Alola));
     }
 
     [Fact]
@@ -185,6 +185,151 @@ public class ObjectiveTests
         Assert.Equal(20, rumour.Everything().Count(i => i.Op == Op.Say));
         foreach (var i in rumour.Everything().Where(i => i.Op == Op.If))
             Assert.True(i.Condition!.Query is Query.Badges or Query.Flag or Query.Result, "a rumour asks only the Badges, the Hall of Fame and its die");
+    }
+
+    // The later regions (plan 12 · Q14, their part): each in a block of a hundred numbers, its first and last objective
+
+    public static TheoryData<string, int, string, string> LaterRegions => new()
+    {
+        { RegionDatabase.Kanto, 100, "kantoSetOut", "kantoFree" },
+        { RegionDatabase.Johto, 200, "johtoMom", "johtoFree" },
+        { RegionDatabase.Hoenn, 300, "hoennNeighbours", "hoennFree" },
+        { RegionDatabase.Unova, 400, "unovaHugh", "unovaFree" },
+        { RegionDatabase.Kalos, 500, "kalosDownstairs", "kalosFree" },
+    };
+
+    [Theory]
+    [MemberData(nameof(LaterRegions))]
+    public void ALaterRegionsObjectivesHaveABlockOfTheirOwn(string region, int block, string first, string last)
+    {
+        var own = Objectives.All.Where(o => o.Region == region).ToList();
+        Assert.NotEmpty(own);
+        Assert.All(own, o => Assert.InRange(o.Id, block, block + 99));
+        Assert.Equal(first, own[0].Name);
+        Assert.Equal(last, own[^1].Name);
+        // Only the last has nothing to say it is done
+        Assert.Null(own[^1].Done);
+        Assert.All(own.Take(own.Count - 1), o => Assert.NotNull(o.Done));
+    }
+
+    [Theory]
+    [MemberData(nameof(LaterRegions))]
+    public void ANewGameOfALaterRegionIsAtItsFirstObjective(string region, int block, string first, string last)
+    {
+        _ = block; _ = last;
+        Assert.Equal(first, Objectives.Current(new StoryState(), region)?.Name);
+    }
+
+    [Theory]
+    [MemberData(nameof(LaterRegions))]
+    public void WhenEverythingALaterRegionsScriptsWriteIsSetNothingPressesThere(string region, int block, string first, string last)
+    {
+        _ = block; _ = first;
+        // Every flag a script writes, every variable as far on as it goes, every Badge of every region
+        var story = new StoryState();
+        foreach (string flag in ScriptLibrary.Default.FlagsWritten) story.Set(flag);
+        foreach (string variable in ScriptLibrary.Default.VariablesWritten.Where(v => v != Objectives.Variable)) story.SetVar(variable, 100);
+        foreach (var r in new[] { RegionDatabase.Kanto, RegionDatabase.Johto, RegionDatabase.Hoenn, RegionDatabase.Unova, RegionDatabase.Kalos })
+            foreach (string badge in RegionDatabase.Get(r)!.BadgeNames) story.GiveBadge(r, badge);
+        Assert.Equal(last, Objectives.Current(story, region)?.Name);
+    }
+
+    [Theory]
+    [MemberData(nameof(LaterRegions))]
+    public void EveryDerivedConditionOfALaterRegionIsSomethingAScriptWrites(string region, int block, string first, string last)
+    {
+        _ = block; _ = first; _ = last;
+        // Each objective but the last, alone of its region's, is done by the flags, variables and Badges the scripts set:
+        // an objective whose flag nobody sets (a misspelling) would never be done
+        var flags = ScriptLibrary.Default.FlagsWritten.ToList();
+        var variables = ScriptLibrary.Default.VariablesWritten.ToList();
+        foreach (var o in Objectives.All.Where(o => o.Region == region && o.Done != null))
+        {
+            bool reached = false;
+            foreach (string flag in flags)
+            {
+                var s = new StoryState();
+                s.Set(flag);
+                if (o.Done!(s)) { reached = true; break; }
+            }
+            if (!reached)
+                foreach (string variable in variables)
+                {
+                    var s = new StoryState();
+                    s.SetVar(variable, 100);
+                    if (o.Done!(s)) { reached = true; break; }
+                }
+            if (!reached)
+            {
+                var s = new StoryState();
+                foreach (var r in new[] { RegionDatabase.Kanto, RegionDatabase.Johto, RegionDatabase.Hoenn, RegionDatabase.Unova, RegionDatabase.Kalos })
+                    foreach (string badge in RegionDatabase.Get(r)!.BadgeNames) s.GiveBadge(r, badge);
+                reached = o.Done!(s);
+            }
+            Assert.True(reached, $"nothing a script writes finishes {o.Name}");
+        }
+    }
+
+    [Fact]
+    public void AnObjectiveOfTheOpeningIsDoneOnceAnythingAfterItIs()
+    {
+        // A Champion who crossed into Hoenn and has won the Stone Badge is past the neighbours and the professor
+        var story = new StoryState();
+        story.GiveBadge(RegionDatabase.Hoenn, "Stone");
+        Assert.Equal("hoennDevon", Objectives.Current(story, RegionDatabase.Hoenn)?.Name);
+        // ...but a Badge won out of turn leaves the Gym before it to do, as in Sinnoh
+        story = new StoryState();
+        story.SetVar("VAR_BIRCH_LAB_STATE", 5);
+        story.GiveBadge(RegionDatabase.Hoenn, "Knuckle");
+        Assert.Equal("hoennRoxanne", Objectives.Current(story, RegionDatabase.Hoenn)?.Name);
+    }
+
+    [Fact]
+    public void KalosFollowsItsChaptersCount()
+    {
+        var story = new StoryState();
+        string[] expected = { "kalosDownstairs", "kalosDoor", "kalosAquacorde", "kalosHome", "kalosRoute2", "kalosForest", "kalosRoute3", "kalosSantalune", "kalosViola", "kalosFree" };
+        for (int n = 0; n <= 9; n++)
+        {
+            story.SetVar("VAR_KALOS_STORY", n);
+            Assert.Equal(expected[n], Objectives.Current(story, RegionDatabase.Kalos)?.Name);
+        }
+    }
+
+    [Fact]
+    public void AScriptStoresAnObjectiveOnlyInTheRegionThePlayerIsIn()
+    {
+        var library = ScriptLibrary.FromSources(("test", "script T\n  objective kantoMisty\n  end\n"));
+        void Run(HeadlessScriptHost h)
+        {
+            var runner = new ScriptRunner(library, h);
+            runner.Start(library.All.First(), null, null);
+            runner.RunToEnd();
+        }
+        var inKanto = new HeadlessScriptHost { Region = RegionDatabase.Kanto };
+        Run(inKanto);
+        Assert.Equal(Objectives.Find("kantoMisty")!.Id, inKanto.Story.Var(Objectives.Variable));
+        Assert.Equal("kantoMisty", Objectives.Current(inKanto.Story, RegionDatabase.Kanto)?.Name);
+        // HeartGold's Kanto Gyms are played from Johto: Johto's stored objective stays
+        var inJohto = new HeadlessScriptHost { Region = RegionDatabase.Johto };
+        inJohto.Story.SetVar(Objectives.Variable, Objectives.Find("johtoClair")!.Id);
+        Run(inJohto);
+        Assert.Equal(Objectives.Find("johtoClair")!.Id, inJohto.Story.Var(Objectives.Variable));
+    }
+
+    [Fact]
+    public void TheChaptersScenesEndByStoringWhatComesNext()
+    {
+        // Every `objective` line of the game's scripts names an objective (the parser holds that too), and the later
+        // regions' chapters end their scenes with one
+        int stored = 0;
+        foreach (var script in ScriptLibrary.Default.All)
+            foreach (var i in script.Everything().Where(i => i.Op == Op.Objective))
+            {
+                stored++;
+                Assert.NotNull(Objectives.Find(i.Name!));
+            }
+        Assert.True(stored >= 70, $"only {stored} scenes store what to do next");
     }
 
     [Fact]

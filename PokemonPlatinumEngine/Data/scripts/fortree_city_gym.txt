@@ -19,6 +19,7 @@ script Winona
   say "I have never seen anyone hold their ground so well against my birds. You fly higher than I thought."
   say "This is the Feather Badge. Take it with my respect."
   givebadge feather
+  objective hoennTateLiza
   text "{player} received the Feather Badge from Winona!"
   say "With the Feather Badge, your Pokémon can use Fly outside of battle to carry you to any town you know."
   setflag FLAG_DEFEATED_FORTREE_GYM

@@ -536,7 +536,10 @@ public sealed partial class ScriptRunner
                 host.Tip(i.Name);
                 break;
             case Op.Objective:
-                story.SetVar(Objectives.Variable, Objectives.Find(i.Name)!.Id);
+                // Only for the region the player is in: a scene of another region's (HeartGold's Kanto Gyms, played
+                // from Johto) must not put the story's one variable over the region the player is in
+                if (Objectives.Find(i.Name) is { } objective && string.Equals(objective.Region, host.Region, StringComparison.OrdinalIgnoreCase))
+                    story.SetVar(Objectives.Variable, objective.Id);
                 break;
 
             case Op.Give:
