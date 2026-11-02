@@ -1,16 +1,43 @@
+# Every push to main and every pull request (plan 16 · T4).
+#
+#   build-and-test  the solution in Release (every tool is in it, the harness and MusicRender too), the tests but
+#                   BudgetTests with a .trx and the ten slowest listed in the run's summary, then BudgetTests alone
+#                   (its memory ceiling is known to fail beside the rest of the suite and to pass alone), and the
+#                   checks that need no window: the content check, the corpus of saves held to the data, and the
+#                   voice catalogue and the localisation report as the game gives them.
+#   shots           pull requests only: the harness under xvfb with Mesa's llvmpipe (tools/dev/shots.sh's recipe,
+#                   through tools/dev/baseline.sh), a few shots of `field`, `menus`, `battle` and `story` on the PR's
+#                   commit and on its merge-base, each pair `diff`ed; the PNGs and the boards are the run's artifact
+#                   and what moved is written in the summary. It fails when a shot moved, unless the PR carries the
+#                   label `shots-change`, and when `field` shot twice on the same commit doesn't `diff` to nothing.
+#                   llvmpipe's pixels are compared only with llvmpipe's, and its milliseconds are never read.
+#
+# Linux only (decision 16 · 4: no Windows runner); macOS builds and tests in the nightly.
+
 name: CI
 
 on:
   push:
     branches: [main]
   pull_request:
+    # labelled and unlabelled too, so adding `shots-change` runs the check again
+    types: [opened, synchronize, reopened, labeled, unlabeled]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  # a pull request's older run is cancelled by its newer push; every push to main runs to its end
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+env:
+  DOTNET_CLI_TELEMETRY_OPTOUT: 1
+  DOTNET_NOLOGO: 1
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
 
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
-    env:
-      DOTNET_CLI_TELEMETRY_OPTOUT: 1
-      DOTNET_NOLOGO: 1
+    timeout-minutes: 150
     steps:
       - uses: actions/checkout@v4
 
@@ -18,16 +45,177 @@ jobs:
         with:
           dotnet-version: 10.0.x
 
+      - name: NuGet cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: nuget-${{ runner.os }}-${{ hashFiles('**/*.csproj', '**/Directory.*.props', '**/Directory.*.targets') }}
+          restore-keys: nuget-${{ runner.os }}-
+
       - name: Restore
         run: dotnet restore PokemonPlatinum.sln
 
       - name: Build
         run: dotnet build PokemonPlatinum.sln --no-restore -c Release
 
-      # The screenshot harness is not in the solution, so build it on its own
-      # to catch engine renames that break it.
-      - name: Build ShotHarness
-        run: dotnet build tools/ShotHarness -c Release
+      - name: Test (all but BudgetTests)
+        run: >
+          dotnet test PokemonPlatinumTests --no-build -c Release
+          --filter "FullyQualifiedName!~BudgetTests"
+          --logger "trx;LogFileName=tests.trx" --results-directory "${{ runner.temp }}/results"
 
-      - name: Test
-        run: dotnet test PokemonPlatinumTests --no-build -c Release --logger "console;verbosity=normal"
+      - name: The ten slowest tests
+        if: always()
+        shell: bash
+        run: |
+          trx="$RUNNER_TEMP/results/tests.trx"
+          [ -f "$trx" ] || { echo "no .trx was written"; exit 0; }
+          # Each <UnitTestResult .../> carries testName and duration="hh:mm:ss.fffffff"
+          grep -o '<UnitTestResult [^>]*>' "$trx" \
+            | sed -n 's/.*testName="\([^"]*\)".*duration="\([0-9]*\):\([0-9]*\):\([0-9.]*\)".*/\2 \3 \4 \1/p' \
+            | awk '{ s = $1 * 3600 + $2 * 60 + $3; $1 = $2 = $3 = ""; sub(/^ +/, ""); printf "%10.2f s  %s\n", s, $0 }' \
+            | sort -rn | head -n 10 > "$RUNNER_TEMP/slowest.txt"
+          cat "$RUNNER_TEMP/slowest.txt"
+          { echo "### The ten slowest tests"; echo '```'; cat "$RUNNER_TEMP/slowest.txt"; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+
+      # Alone, as it must be: its memory ceiling reads the whole process's heap
+      - name: BudgetTests alone
+        if: always()
+        run: dotnet test PokemonPlatinumTests --no-build -c Release --filter "FullyQualifiedName~BudgetTests"
+
+      - name: Content check
+        if: always()
+        run: dotnet run --project tools/ContentCheck --no-build -c Release
+
+      - name: The corpus of saves held to the data
+        if: always()
+        shell: bash
+        run: dotnet run --project tools/SaveTool --no-build -c Release -- validate PokemonPlatinumTests/Fixtures/saves/*.json --errors
+
+      - name: The voice catalogue is what the game gives
+        if: always()
+        run: dotnet run --project tools/VoiceTool --no-build -c Release -- catalogue --check
+
+      - name: The localisation report is what the files give
+        if: always()
+        run: dotnet run --project tools/TextTool --no-build -c Release -- report --check
+
+      - name: Keep the test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: ${{ runner.temp }}/results
+          retention-days: 14
+
+  shots:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      POKEMON_CACHE: ${{ github.workspace }}/../pokemon-cache
+      DEV_SCRATCH: ${{ github.workspace }}/../dev
+      SHOTS_CHANGE: ${{ contains(github.event.pull_request.labels.*.name, 'shots-change') }}
+      # mode:filter, a few shots of each (llvmpipe fills a 4K screen slowly); "" for a whole mode
+      SHOT_SET: >-
+        field:01_twinleaf
+        menus:09_startmenu
+        battle:44_main_menu
+        story:st0
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: NuGet cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: nuget-${{ runner.os }}-${{ hashFiles('**/*.csproj', '**/Directory.*.props', '**/Directory.*.targets') }}
+          restore-keys: nuget-${{ runner.os }}-
+
+      - name: Software rendering
+        run: sudo apt-get update && sudo apt-get install -y xvfb libgl1-mesa-dri libglu1-mesa
+
+      # Meshes are kept by the model's own hash, so an older cache is never wrong, only short of what is new
+      - name: Mesh and sprite cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ${{ env.POKEMON_CACHE }}/models
+            ${{ env.POKEMON_CACHE }}/sprites
+          key: meshes-${{ hashFiles('PokemonPlatinumEngine/Graphics/Sdf*.cs', 'PokemonPlatinumEngine/Graphics/PokemonModels*.cs', 'PokemonPlatinumEngine/Graphics/PokemonGenerator*.cs', 'PokemonPlatinumEngine/Graphics/CharacterModels*.cs', 'PokemonPlatinumEngine/Graphics/Skeleton.cs', 'PokemonPlatinumEngine/**/PokeBuilder*.cs') }}
+          restore-keys: meshes-
+
+      - name: The PR's shots against its merge-base's
+        id: baseline
+        shell: bash
+        run: |
+          set -uo pipefail
+          base="$(git merge-base "origin/$GITHUB_BASE_REF" HEAD)"
+          echo "base=$base" >> "$GITHUB_OUTPUT"
+          moved=0
+          : > "$RUNNER_TEMP/diff.txt"
+          for pair in $SHOT_SET; do
+            mode="${pair%%:*}" filter="${pair#*:}"
+            status=0
+            SHOTS_FILTER="$filter" tools/dev/baseline.sh "$base" "$mode" 2>&1 | tee -a "$RUNNER_TEMP/diff.txt" || status=$?
+            # baseline.sh: 0 the same, 1 a shot moved, anything else a run that broke
+            [ $status -le 1 ] || exit $status
+            [ $status -eq 0 ] || moved=1
+          done
+          echo "moved=$moved" >> "$GITHUB_OUTPUT"
+
+      # Determinism outright: one commit shot twice draws the same
+      - name: field twice on the same commit
+        id: twice
+        shell: bash
+        run: |
+          set -uo pipefail
+          filter="$(for p in $SHOT_SET; do [ "${p%%:*}" = field ] && echo "${p#*:}"; done)"
+          tools/dev/shots.sh "$RUNNER_TEMP/twice/a" field "$filter"
+          tools/dev/shots.sh "$RUNNER_TEMP/twice/b" field "$filter"
+          dotnet tools/ShotHarness/bin/Release/net10.0/ShotHarness.dll "$RUNNER_TEMP/twice/b" diff "$RUNNER_TEMP/twice/a" \
+            | tee "$RUNNER_TEMP/twice.txt"
+
+      - name: Summary
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo "### Shots against ${{ steps.baseline.outputs.base }} (llvmpipe)"
+            echo '```'
+            grep -E '^(---|.*% of its pixels differ|[0-9]+ shots compared|only here|only in the other)' "$RUNNER_TEMP/diff.txt" 2>/dev/null || echo "(no comparison was made)"
+            echo '```'
+            echo "### field shot twice on this commit"
+            echo '```'
+            cat "$RUNNER_TEMP/twice.txt" 2>/dev/null || echo "(not run)"
+            echo '```'
+            echo "The shots and the boards (diff_*.png: the merge-base's, this PR's, their difference x8) are the artifact **shots**."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Keep the shots and the boards
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: shots
+          path: |
+            ${{ env.DEV_SCRATCH }}/shots/**/*.png
+            ${{ runner.temp }}/twice/**/*.png
+          retention-days: 14
+          if-no-files-found: warn
+
+      - name: A moved shot must be said
+        if: steps.baseline.outputs.moved == '1'
+        shell: bash
+        run: |
+          if [ "$SHOTS_CHANGE" = true ]; then
+            echo "::notice::Shots moved, and the PR says so with the label shots-change."
+          else
+            echo "::error::Shots moved against the merge-base. Look at the boards in the artifact; if the change is meant, add the label shots-change."
+            exit 1
+          fi

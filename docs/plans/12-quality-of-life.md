@@ -418,7 +418,4 @@ Written 2026-10-06, before any session.
 - [x] Q27 Saved teams and the judge
 - [x] Q28 Trades between one's own saves
 - [x] Q29 The Home box
-- [ ] Q30 A gallery of the game's models
-- [ ] Q28 Trades between one's own saves
-- [ ] Q29 The Home box
 - [x] Q30 A gallery of the game's models (2026-11-01; the title's GALLERY and a Pokédex entry's A, `profile` not timed)

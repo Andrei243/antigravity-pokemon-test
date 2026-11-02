@@ -25,4 +25,11 @@ Thank you for wanting to help. This remake is built over many sessions toward a 
 
 ## Pull requests
 
-CI builds and runs the tests on every push (`.github/workflows/ci.yml`). Keep a pull request to one session or one fix, say which plan it belongs to, and include the harness's pictures for anything that changes what is on screen.
+CI runs on every push to `main` and every pull request (`.github/workflows/ci.yml`, Linux only). Keep a pull request to one session or one fix, say which plan it belongs to, and include the harness's pictures for anything that changes what is on screen.
+
+**The required checks** (the two jobs of `ci.yml`, to be marked required in `main`'s branch protection):
+
+- **`build-and-test`**: the solution in Release; every test but `BudgetTests`, with the ten slowest in the run's summary and the `.trx` as the artifact `test-results`; `BudgetTests` alone (its memory ceiling fails beside the rest of the suite and passes alone); the content check; every save of `PokemonPlatinumTests/Fixtures/saves` held to the data by `tools/SaveTool validate`; `tools/VoiceTool catalogue --check` and `tools/TextTool report --check` (the voice catalogue and `docs/localisation.md` as the game gives them).
+- **`shots`** (pull requests only): the harness under `xvfb` with Mesa's llvmpipe (`tools/dev/baseline.sh`) shoots a few shots of `field`, `menus`, `battle` and `story` on the pull request and on its merge-base and `diff`s them. The shots and the boards (`diff_*.png`: before, after, the difference eight times stronger) are the artifact `shots`, and the summary lists what moved. **A shot that moved fails the job unless the pull request carries the label `shots-change`**: add it when the change is meant, and say why. The same job shoots `field` twice on the pull request's commit and fails unless the two draw the same. Its pixels are compared only with its own kind of machine's, and its milliseconds are never read.
+
+`.github/workflows/nightly.yml` runs what is too slow for a push, every night and by hand: the strict budgets, every generated model and 5,000 random battles, every song (failing on a clash), sound, ambience bed and cry through `tools/MusicRender`, `tools/MapImporter` against the pinned decompilation, the harness's `all`, `dex`, `play 20`, `scenarios` and `soak 30` under llvmpipe, the build and the tests on macOS, and the damage oracle. A night that fails is looked at, not required.
