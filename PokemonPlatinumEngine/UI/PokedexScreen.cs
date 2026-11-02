@@ -15,7 +15,7 @@ namespace PokemonPlatinumEngine.UI;
 public enum PokedexFocus { List, Entry, Search, Diploma, Cry, Forms }
 
 /// <summary>The pages of an entry.</summary>
-public enum PokedexPage { Info, Area, Cry, Size, Forms }
+public enum PokedexPage { Info, Area, Cry, Size, Forms, Tasks }
 
 /// <summary>The cry page's rows, top to bottom (plan 08 · P18).</summary>
 public enum PokedexCryRow { Pitch, Stereo, Room, Loop, Play }
@@ -43,11 +43,11 @@ public class PokedexScreen
 
     /// <summary>
     /// The pages an entry offers, in order (plan 08 · P18): INFO, AREA, CRY and SIZE for a species seen. The FORMS page
-    /// joins them once the Pokédex can show forms (plan 08 · P19).
+    /// joins them once the Pokédex can show forms (plan 08 · P19), and TASKS (plan 15 · E2) is always the last.
     /// </summary>
     public IReadOnlyList<PokedexPage> PagesOf(PokedexEntry? entry) => FormsKnown
-        ? new[] { PokedexPage.Info, PokedexPage.Area, PokedexPage.Cry, PokedexPage.Size, PokedexPage.Forms }
-        : new[] { PokedexPage.Info, PokedexPage.Area, PokedexPage.Cry, PokedexPage.Size };
+        ? new[] { PokedexPage.Info, PokedexPage.Area, PokedexPage.Cry, PokedexPage.Size, PokedexPage.Forms, PokedexPage.Tasks }
+        : new[] { PokedexPage.Info, PokedexPage.Area, PokedexPage.Cry, PokedexPage.Size, PokedexPage.Tasks };
 
     // ---- The forms page (plan 08 · P19)
 
@@ -272,6 +272,8 @@ public class PokedexScreen
 
         diplomasDue.Clear();
         foreach (var mode in this.pokedex.AwardDiplomas()) diplomasDue.Enqueue(mode);
+        // The research certificate (plan 15 · E1), after the diplomas, once
+        if (this.pokedex.Research.AwardCertificate()) diplomasDue.Enqueue(Research.CertificateMode);
         if (diplomasDue.Count > 0) ShowDiploma(diplomasDue.Dequeue());
     }
 
@@ -573,7 +575,7 @@ public class PokedexScreen
 
     /// <summary>The buttons under the rows: DIPLOMA only once one has been given.</summary>
     public IReadOnlyList<PokedexSearchButton> Buttons =>
-        AllButtons.Where(b => b != PokedexSearchButton.Diploma || pokedex.Diplomas.Count > 0).ToList();
+        AllButtons.Where(b => b != PokedexSearchButton.Diploma || pokedex.Diplomas.Count > 0 || pokedex.Research.Complete).ToList();
 
     /// <summary>The types the search offers: every type a species has.</summary>
     public static readonly PokemonType[] SearchTypes = Enum.GetValues<PokemonType>();
@@ -661,7 +663,9 @@ public class PokedexScreen
                 AudioManager.PlaySound("select");
                 break;
             case PokedexSearchButton.Diploma:
-                ShowDiploma(pokedex.Diplomas.Contains(DraftMode) ? DraftMode : pokedex.Diplomas.Order(StringComparer.Ordinal).First());
+                // The research certificate (plan 15 · E1) where no diploma of the Pokédex chosen is held
+                ShowDiploma(pokedex.Diplomas.Contains(DraftMode) ? DraftMode
+                    : pokedex.Diplomas.Count > 0 ? pokedex.Diplomas.Order(StringComparer.Ordinal).First() : Research.CertificateMode);
                 break;
         }
     }

@@ -218,6 +218,7 @@ if (mode == "soak") h.SoakMode();
 if (mode == "pointer") h.PointerMode();
 if (mode == "levelling") h.LevellingMode();
 if (mode == "photo") h.PhotoMode();
+if (mode == "jobs") h.JobsMode();
 
 h.Close();
 Raylib.CloseWindow();

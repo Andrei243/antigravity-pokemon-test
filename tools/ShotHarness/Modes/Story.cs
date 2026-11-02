@@ -36,6 +36,12 @@ partial class Harness
             for (int i = 0; i < most && Box().IsActive && !Box().IsQuestion; i++) { Whole(); Next(); }
         }
         void Talk() { game.Interact(); Frames(3); }
+        // Under the modern rules the PC asks first which to open (plan 15 · E3): the boxes
+        void IntoTheBoxes()
+        {
+            for (int i = 0; i < 120 && State() == GameState.Dialogue && !engine.Choice.IsOpen; i++) { if (Box().IsActive) Box().FinishLine(); Frames(1); }
+            if (engine.Choice.IsOpen) { engine.Choice.Confirm(); Frames(20); }
+        }
 
         // ---- the nurse: a welcome, a question with its answers, the team made well
         At("PokemonCenter", 8, 6, Direction.Up);
@@ -66,7 +72,7 @@ partial class Harness
         var terminal = center.NPCs.First(n => n.IsPCTerminal);
         At("PokemonCenter", terminal.GridX, terminal.GridY + 1, Direction.Up);
         Talk(); Whole(); Shot("st06_pc_switched_on");
-        Next(); Frames(20);
+        Next(); Frames(20); IntoTheBoxes();
         Console.WriteLine($"pc: state {State()}");
         game.PcScreen.Close(); Frames(6);
         // (The PC's screen goes dark in the field behind the boxes: its script is over once it has, plan 09 · L12)
@@ -422,7 +428,7 @@ partial class Harness
         Until(() => Frame() == SetPieces.PcStarting, "the PC's screen starting", 60); Frames(2); Screen("st71_pc_starting");
         Whole(); Screen("st71_pc_on");
         Console.WriteLine($"pc on: its screen's frame {Frame()} ({SetPieces.PcLit} is on), script running {engine.ScriptRunning}");
-        Next(); Frames(20);
+        Next(); Frames(20); IntoTheBoxes();
         game.PcScreen.Close();
         Until(() => State() == GameState.Overworld && Frame() == SetPieces.PcStarting, "the PC's screen going", 60); Frames(2); Screen("st72_pc_going");
         Until(() => !engine.ScriptRunning, "the PC switched off again", 120);

@@ -127,7 +127,9 @@ public enum GameState
     /// <summary>The title's BATTLE ROOM: the gauntlet, the streak and the puzzles (plan 13 · V13, V26).</summary>
     BattleRoom,
     /// <summary>The battle room's team builder (plan 13 · V13).</summary>
-    TeamBuilder
+    TeamBuilder,
+    /// <summary>A PC's Poké Jobs board: the boxes' Pokémon sent on jobs while the game is shut (plan 15 · E3).</summary>
+    Jobs
 }
 
 public partial class GameEngine
@@ -463,9 +465,11 @@ public partial class GameEngine
         flow.RunState = new RunState { Timer = new RunTimer() };
         timerLookedAt = -1;
         flow.Statistics = new Statistics();
+        flow.Jobs = new JobBoard();
         flow.Medals = new Medals();
         flow.MedalNotice.Clear();
         medalsLookedAt = -1;
+        ForgetTheResearchToTell();
         flow.NameAfterBattle = null;
         flow.TrainerScore = flow.ScoredBadges = 0;
         flow.HallOfFame = new HallOfFame();
@@ -710,6 +714,10 @@ public partial class GameEngine
         foreach (var caught in save.CaughtSpecies) flow.Pokedex.RegisterCaught(caught);
         foreach (var shiny in save.CaughtShiny ?? new List<int>()) flow.Pokedex.RegisterCaughtShiny(shiny);
         flow.Pokedex.Restore(save.NationalPokedex, save.Diplomas.Select(Pokedex.FromDiplomaKey), save.DexesEntered);
+        // The research (plan 15 · E1) and the Pokémon away on jobs (E3): an older save has neither
+        flow.Pokedex.Research.Restore(save.Research, save.ResearchComplete);
+        flow.Jobs = new JobBoard();
+        flow.Jobs.Restore(save.Jobs);
         // A save that had the National Pokédex before the PC grew with it (plan 03 · D13) is given the boxes now
         if (flow.Pokedex.NationalUnlocked) flow.Boxes.Grow();
 
@@ -766,6 +774,7 @@ public partial class GameEngine
         flow.Medals = Medals.From(save.Medals);
         flow.MedalNotice.Clear();
         medalsLookedAt = -1;
+        ForgetTheResearchToTell();
         flow.NameAfterBattle = null;
         flow.TrainerScore = save.TrainerScore;
         flow.HallOfFame = new HallOfFame();
@@ -811,6 +820,10 @@ public partial class GameEngine
             Run = flow.Run.IsNormal ? null : flow.Run,
             RunState = flow.RunState.IsEmpty ? null : flow.RunState,
             Counters = flow.Statistics.ToSaved(),
+            Research = flow.Pokedex.Research.ToSaved(),
+            ResearchComplete = flow.Pokedex.Research.Complete,
+            Jobs = flow.Jobs.ToSaved(),
+            LastSaved = WallClock.UtcNow,
             Medals = flow.Medals.ToSaved(),
             TrainerScore = flow.TrainerScore,
             HallOfFameTotal = flow.HallOfFame.Total,
@@ -1066,6 +1079,7 @@ public partial class GameEngine
 
         flow.Toast.Update(dt);
         KeepTheMedals(dt);
+        KeepTheResearch();
         KeepTheTimer(dt);
         KeepTheAutosave(dt);
         Accessibility.CaptionsShown.Advance(dt); // plan 12 · Q9
@@ -1542,6 +1556,9 @@ public partial class GameEngine
             case GameState.Requests:
                 UpdateRequests(dt);
                 break;
+            case GameState.Jobs:
+                UpdateJobs(dt);
+                break;
             case GameState.TitleCredits:
                 flow.TitleCreditsScreen.Update(dt);
                 if (!flow.TitleCreditsScreen.IsActive) flow.State = GameState.Title;
@@ -1966,7 +1983,14 @@ public partial class GameEngine
         if (++flow.FriendshipSteps >= FriendshipRules.WalkCycleSteps)
         {
             flow.FriendshipSteps = 0;
-            foreach (var p in flow.Party.Members) FriendshipRules.Apply(p, FriendshipEvent.WalkCycle, fieldRandom);
+            foreach (var p in flow.Party.Members)
+            {
+                int before = p.Friendship;
+                FriendshipRules.Apply(p, FriendshipEvent.WalkCycle, fieldRandom);
+                // One made a close friend, for its species' research (plan 15 · E1)
+                if (!p.IsEgg && before < FriendshipRules.EvolveAt && p.Friendship >= FriendshipRules.EvolveAt)
+                    flow.Pokedex.Research.Tell(p.Species, ResearchKind.Befriended);
+            }
         }
         if (flow.Party.Count > 0) Evolution.CountStep(flow.Party.Members[0]);
         flow.Poketch.Step();
@@ -2158,6 +2182,8 @@ public partial class GameEngine
             if (flow.EvolutionScreen.Pokemon is { } evolved) flow.Pokedex.RegisterCaught(evolved);
             else flow.Pokedex.RegisterCaught(outcome.Into.DexNumber);
             flow.Statistics.Count(Statistics.Evolutions);
+            // An evolution out of a species, for its research (plan 15 · E1)
+            flow.Pokedex.Research.Tell(outcome.From, ResearchKind.Evolved);
             if (outcome.Shed != null) flow.Pokedex.RegisterCaught(outcome.Shed);
         }
         if (BeginNextEvolution()) return;
@@ -3032,6 +3058,9 @@ public partial class GameEngine
                 break;
             case GameState.Requests:
                 flow.RequestsScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.Jobs:
+                flow.JobsScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.TitleCredits:
                 flow.TitleCreditsScreen.Draw(VirtualWidth, VirtualHeight);

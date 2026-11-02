@@ -155,6 +155,8 @@ public enum Op
     Tip,
     // The Lilycove Lady's favour (plan 21 · H11, part c): the kind of thing she wants, an item handed over and counted
     FavorLady,
+    // The Poké Jobs board (plan 15 · E3): a PC's board of the boxes' Pokémon sent on jobs while the game is shut
+    Jobs,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>
@@ -194,7 +196,9 @@ public enum Query
     /// Mirage Island stands off Route 130 today for this team (plan 21 · H12, part h; Emerald's <c>IsMirageIslandPresent</c>,
     /// <see cref="Overworld.MirageIsland.Present"/>): <c>mirage</c>.
     /// </summary>
-    Mirage
+    Mirage,
+    /// <summary>The game is played by the modern rules (plan 15 · E3: the PC offers Poké Jobs only then): <c>modern</c>.</summary>
+    Modern
 }
 
 /// <summary>A question a script asks of the game before a line: <c>if [not] ...</c>.</summary>

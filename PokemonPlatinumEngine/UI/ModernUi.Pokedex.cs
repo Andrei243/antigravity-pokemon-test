@@ -23,6 +23,7 @@ internal static partial class ModernUi
         PokedexPage.Cry => (Text.Of("pokedex.page.Cry"), UiIcon.Radio, CryPurple),
         PokedexPage.Size => (Text.Of("pokedex.page.Size"), UiIcon.Size, Gold),
         PokedexPage.Forms => (Text.Of("pokedex.page.Forms"), UiIcon.Letter, FormsTeal),
+        PokedexPage.Tasks => (Text.Of("pokedex.page.Tasks"), UiIcon.Star, ResearchPlum),
         _ => (Text.Of("pokedex.page.Info"), UiIcon.Dex, Blue)
     };
 
@@ -108,6 +109,7 @@ internal static partial class ModernUi
                     case PokedexPage.Size: DexSize(detail, entry.Species, owned, dex.Portrait); break;
                     case PokedexPage.Cry: DexCry(detail, dex); break;
                     case PokedexPage.Forms: DexForms(detail, dex, entry); break;
+                    case PokedexPage.Tasks: DexTasks(detail, entry, pokedex.Research); break;
                     default: DexInfo(detail, entry, owned, dex.EntryShown(entry.Species), dex.LookingAtEntry ? dex.EntriesOpened : -1); break;
                 }
             }
@@ -157,7 +159,12 @@ internal static partial class ModernUi
             if (seen) RowIcon(r, PixelArtGenerator.GetPokemonIcon(s.Name), 1f, selected, hop: Hop(selected));
             else UiShapes.Circle(new Vector2(r.X + 52, r.Y + r.Height / 2f), 8, Rule);
             if (PokedexSearch.SizeLabel(order, s) is { } size) RowValue(r, size, ink, 26);
-            else if (caught)
+            else
+            {
+                // Its research level, once it has one (plan 15 · E2)
+                if (seen) ResearchLevelChip(r, pokedex.Research.LevelOf(s), selected);
+            }
+            if (PokedexSearch.SizeLabel(order, s) == null && caught)
             {
                 var c = new Vector2(r.X + r.Width - 44, r.Y + r.Height / 2f);
                 UiShapes.Circle(c, 18, selected ? Color.White : Red);
@@ -566,12 +573,14 @@ internal static partial class ModernUi
             UiFonts.DrawCentered(text, r.X + (r.Width - w) / 2f, y, size, color, weight);
         }
 
-        Centred(Text.Of("pokedex.diploma.title"), r.Y + 118, 84, DeepGold, UiWeight.Black);
+        // The research certificate (plan 15 · E1) is the same paper with its own heading, counting the Sinnoh Pokédex
+        bool certificate = mode == Research.CertificateMode;
+        Centred(Text.Of(certificate ? "pokedex.certificate.title" : "pokedex.diploma.title"), r.Y + 118, 84, DeepGold, UiWeight.Black);
         string modeKey = Pokedex.KeyOf(mode);
         Centred(Text.Of($"pokedex.diploma.{modeKey}"), r.Y + 196, 34, Ink, UiWeight.Black);
         UiShapes.Fill(new Rectangle(r.X + r.Width / 2f - 160, r.Y + 234, 320, 3), 1.5f, Gold);
         Centred(PlayerIdentity.Name, r.Y + 312, 64, Ink, UiWeight.Black);
-        string line = Text.Of($"pokedex.diploma.line.{modeKey}", ("count", Pokedex.Entries(mode).Count));
+        string line = Text.Of($"pokedex.diploma.line.{modeKey}", ("count", Pokedex.Entries(certificate ? Pokedex.Sinnoh : mode).Count));
         var lines = Wrap(line, 900, 32, UiWeight.ExtraBold);
         for (int i = 0; i < lines.Count; i++) Centred(lines[i], r.Y + 400 + i * 46, 32, Ink, UiWeight.ExtraBold);
 

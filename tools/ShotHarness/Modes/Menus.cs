@@ -1175,5 +1175,8 @@ partial class Harness
             startMenu.HasRequests = false;
             engine.Settings.AreaChecklist = before;
         }
+
+        // The Pokédex's research and its TASKS page (plan 15 · E1, E2), last so that nothing before it moves
+        MenusResearch();
     }
 }

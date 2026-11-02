@@ -7870,3 +7870,25 @@ Platinum has no gallery; this is ours, after the later games' model viewers (`UI
   its tile. Run on 2026-11-02: 498 tiles, 9 waits, all on arriving and none while walking, so no streaming fault. One
   frame while walking took 1.3 s (on the Ice Path's first floor at 39, 26) with no chunk waited for: something else
   is made on the main thread there the first time, not looked into yet.
+
+## Research (2026-11-02, plan 15 · E1, E2)
+
+Legends: Arceus's research tasks, in our own words and numbers; nothing of a game's tables.
+
+- **The tasks are made from the data** (`ResearchTasks.For`): met, caught and beaten for every species; two moves of its own level-up list used (the first it learns and the one halfway down, each a move that runs; one where the list has one: Unown, Ditto); levels gained in battle; evolutions out of it, only where it evolves; one of it made a close friend (friendship to 220, `FriendshipRules.EvolveAt`, counted as the walking pass crosses it). Seven or eight tasks, fewer for what a species lacks.
+- **The ladder** is 1, 2, 5, 10, 25 for every task, a point a rung; meeting, catching, beating, evolving and a friend are a ladder of one for a legendary or a mythical, which a game gives once. A species' level is its points over all its rungs, out of ten, rounded down (`Research.LevelOf`), so every last rung together is level 10 exactly, and a species with fewer ladders climbs each rung more steeply.
+- **What counts** is what the battle's screen shows, through the battle's own Pokédex: `Seen` met, the first `MoveShown` of a `Lunged` from the player's side the move used (a spread move once), `Fainted` on the foe's side beaten, `Caught` caught, `LevelRose` a level; outside battle an evolution's outcome and the walking pass. Nothing counts in a watched recording, the catching lesson or the Battle Frontier, which the Pokédex hears nothing of. The plan's "defeated on the record of the player's active Pokémon" is left out: no task counts it.
+- **A level that rises** is told by the field's toast once the field is the player's again, never in a battle.
+- **The certificate**: every species of the Sinnoh Pokédex at level 10 gives it, once, as the Pokédex next opens (after any diploma), and it can be looked at again from the search panel's DIPLOMA. It changes nothing in play, so it needs no option and no rules choice.
+- **The page** is shown under every rule (decision 1's recommendation): it only reads what the player did. It is the last page, after FORMS where that is there (plan 10 · F11's HERE page isn't built).
+- **Saved** as `SaveData.Research` and `ResearchComplete`, null and false in an older save, so no version was raised.
+
+## Poké Jobs (2026-11-02, plan 15 · E3)
+
+Sun and Moon's islands and Sword and Shield's jobs, in our own words and with our own rates.
+
+- **The door**: a PC's POKé JOBS, offered after `if modern`. Since every game is played by the modern rules (the ruling of 2026-10-12), every game's PC asks STORAGE, POKé JOBS (and BALL CAPSULES with a Seal Case) or SWITCH OFF; only a game or a test under Platinum's rules keeps Platinum's PC as it was. The modern menu is written after Platinum's lines in `common.PC`, so their translations keep their places.
+- **Who**: the boxes' Pokémon only, no Egg, none of the team (decision 2's recommendation); up to three away at once. A Pokémon away is held whole in its job (`SaveData.Jobs`), in no box, team or count, and comes back as it went plus its pay.
+- **The clock**: the computer's (`WallClock.UtcNow`), so a job runs while the game is shut. Only whole hours are paid, never more than asked for (1 to 24), and a clock that reads earlier than the job's start pays nothing and leaves the job as it is. Bringing a Pokémon back early pays the hours so far. `SaveData.LastSaved` is written with every save (UTC).
+- **The rates** (one table, `JobBoard`, which a session can turn down): EXP as a share of the level the Pokémon is at, an errand a level's worth in eight hours, the orchard and the hot spring half that, and never more than one level's worth for one job (so a night pays at most a level); a point of effort an hour (an errand Speed, the orchard HP, the hot spring Sp. Def.), through `EffortRules.Gain` and its limits; friendship an hour, two in the hot spring and one elsewhere; a berry of Platinum's every two hours in the orchard and every six on an errand, drawn from a table of ten on the board's own generator. Moves are learned as a level learns them (one that doesn't fit is passed over), and an evolution the levels allow plays from the board, as the bag's do.
+- **Not built**: the nursery that hatches Eggs (a kind still to come).

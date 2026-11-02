@@ -661,6 +661,7 @@ public class ScriptTests
           favorlady which
           favorlady give
           favorlady new
+          jobs
           chooseitem gift
           pike enough
           pike choose
@@ -786,6 +787,7 @@ public class ScriptTests
               if not rule monotype end
               if titled end
               if mirage end
+              if modern end
             """)[0];
 
         var asked = script.Code.Select(i => i.Condition!.Query).ToHashSet();

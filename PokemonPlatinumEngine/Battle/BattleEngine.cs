@@ -82,6 +82,15 @@ public partial class BattleEngine
     // The places an ally that answered a call is about to come onto: its entry hops in rather than appearing
     private readonly HashSet<Place> arriving = new();
 
+    /// <summary>
+    /// The player's places that have begun a move whose use the research hasn't counted yet (plan 15 · E1): a move is
+    /// counted on the first of its <see cref="MoveShown"/>s, so a spread move counts once.
+    /// </summary>
+    private readonly HashSet<Place> lungedForResearch = new();
+
+    /// <summary>Whether what this battle shows feeds the Pokédex's research: not a watched recording, the catching lesson or the Frontier, which the Pokédex hears nothing of.</summary>
+    private bool Researching => !Watching && Kind != BattleKind.CatchingLesson && !IsFrontier;
+
     /// <summary>The places on each side as the screen has them: one each in a single battle, two in a double.</summary>
     public IReadOnlyList<Battler> PlayerSlots { get; }
     public IReadOnlyList<Battler> EnemySlots { get; }
@@ -698,6 +707,7 @@ public partial class BattleEngine
                     // The first Spinda met gives its spots (the log's event carries the look and not the personality, which only that species needs)
                     uint? spots = Pokedex.KeepsPersonality(seen.Species) ? EnemySlots.Select(b => b.Pokemon).FirstOrDefault(p => p != null && p.Species == seen.Species)?.Personality : null;
                     Pokedex.RegisterSeen(seen.Species, seen.Form, seen.Gender, spots);
+                    if (!Watching) Pokedex.Research.Tell(seen.Species, ResearchKind.Met);
                 }
                 break;
             case Entered entered:
@@ -770,6 +780,8 @@ public partial class BattleEngine
                 break;
             }
             case Lunged lunged:
+                // The research counts the move once, on its first target (plan 15 · E1)
+                if (Researching && lunged.Place.Side == BattleSide.Player) lungedForResearch.Add(lunged.Place);
                 // With the scene off nobody lunges, and the doll stays where it is (plan 08 · P1)
                 if (!Scene) break;
                 Anim.Attack(lunged.Place.Side, lunged.Place.Slot, lunged.Category);
@@ -777,6 +789,9 @@ public partial class BattleEngine
                 Anim.SubstituteAside(lunged.Place.Side, lunged.Place.Slot);
                 break;
             case MoveShown move:
+                // A move of the player's used, for its species' research: once, however many it is aimed at (plan 15 · E1)
+                if (lungedForResearch.Remove(move.From) && At(move.From).Pokemon is { } user)
+                    Pokedex.Research.Tell(user.Species, ResearchKind.MoveUsed, move.Move);
                 // The move's own sound as it sets off, once however many it is aimed at
                 if (Anim.Time != moveSoundAt)
                 {
@@ -1047,6 +1062,9 @@ public partial class BattleEngine
                 break;
             case Fainted fainted:
                 AutoSeesAFaint(fainted.Place);
+                // A foe beaten, for its species' research (plan 15 · E1): once, on its faint
+                if (Researching && fainted.Place.Side == BattleSide.Enemy && At(fainted.Place).Pokemon is { } beaten)
+                    Pokedex.Research.Tell(beaten.Species, ResearchKind.Defeated);
                 if (At(fainted.Place).Pokemon is { } down)
                 {
                     down.Status = StatusCondition.Faint;
@@ -1075,6 +1093,7 @@ public partial class BattleEngine
             {
                 var grown = mirror.Shown(level.Pokemon);
                 if (!leveledUpPokemon.Contains(grown)) leveledUpPokemon.Add(grown);
+                if (Researching) Pokedex.Research.Tell(grown.Species, ResearchKind.Leveled);
                 // The screen's Pokémon reckoned its own level as its EXP was shown, without the effort of the foe
                 // just beaten, which the rules' copy had by then: it takes the rules' numbers, so its HP box and
                 // the panel say the same
@@ -1112,6 +1131,7 @@ public partial class BattleEngine
                 CaughtNewSpecies = !Pokedex.IsCaught(mine.Species.DexNumber);
                 Caught = mine;
                 Pokedex.RegisterCaught(mine);
+                if (!Watching) Pokedex.Research.Tell(mine.Species, ResearchKind.Caught);
                 mine.ResetStatStages();
                 mine.Ball = caught.Ball;
                 // Where, when and at what level it was met (Pokemon_SetCatchData)

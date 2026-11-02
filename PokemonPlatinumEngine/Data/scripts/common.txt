@@ -723,6 +723,8 @@ script PC
   anim pc on
   text "{player} switched the PC on."
   tip pc
+  # A game played by the modern rules offers the Poké Jobs board too (plan 15 · E3); Platinum's rules keep Platinum's PC
+  if modern goto Modern
   # With a Seal Case, the PC offers the Ball Capsules too, as the original's own PC does (plan 06 · R17b;
   # CommonScript_BallCapsules: with no Seal at all there is nothing to open)
   if not item "Seal Case" goto Storage
@@ -742,6 +744,23 @@ label Capsules
   goto Off
 label NoSeals
   text "There are no Seals in the Seal Case."
+  goto Off
+# The modern rules' PC (plan 15 · E3): storage, the jobs board, the Ball Capsules with a Seal Case, and off. Written
+# after the rest so that Platinum's own lines keep their places
+label Modern
+  if item "Seal Case" goto ModernCapsules
+  choose "Which should be opened?" "POKéMON STORAGE" "POKé JOBS" "SWITCH OFF"
+  if result == 1 goto Jobs
+  if result == 2 goto Off
+  goto Storage
+label ModernCapsules
+  choose "Which should be opened?" "POKéMON STORAGE" "POKé JOBS" "BALL CAPSULES" "SWITCH OFF"
+  if result == 1 goto Jobs
+  if result == 2 goto Capsules
+  if result == 3 goto Off
+  goto Storage
+label Jobs
+  jobs
   goto Off
 
 

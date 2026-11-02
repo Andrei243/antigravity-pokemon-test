@@ -1278,7 +1278,18 @@
   },
   "pokedex": {
     "title": "POKÉDEX",
-    "page": { "Info": "INFO", "Area": "ZONĂ", "Cry": "STRIGĂT", "Size": "MĂRIME", "Forms": "FORME" },
+    "page": { "Info": "INFO", "Area": "ZONĂ", "Cry": "STRIGĂT", "Size": "MĂRIME", "Forms": "FORME", "Tasks": "SARCINI" },
+    "tasks": {
+      "level": "NIVEL DE CERCETARE",
+      "points": "{points} / {of} puncte",
+      "count": "{count} / {next}",
+      "toast": "Cercetarea despre {name}: nivelul {level}!",
+      "kind": {
+        "Met": "De câte ori a fost întâlnit", "Caught": "De câte ori a fost prins", "Defeated": "De câte ori a fost învins", "MoveUsed": "De câte ori a folosit {move}",
+        "Leveled": "Niveluri câștigate în luptă", "Evolved": "De câte ori a evoluat", "Befriended": "A devenit un prieten apropiat"
+      }
+    },
+    "certificate": { "title": "CERTIFICAT" },
     "forms": { "front": "DIN FAȚĂ", "back": "DIN SPATE", "male": "Mascul", "female": "Femelă", "looks": "{n} văzute" },
     "cry": {
       "pitch": "Înălțime", "chorus": "Cor", "pan": "Panoramă", "reverb": "Ecou", "filter": "Filtru", "loop": "Repetare", "play": "Redare",
@@ -1352,7 +1363,9 @@
       "sinnoh": "POKÉDEX SINNOH",
       "kanto": "POKÉDEX KANTO",
       "national": "POKÉDEX NAȚIONAL",
+      "research": "CERCETAREA SINNOH",
       "line": {
+        "research": "a studiat fiecare dintre cei {count} Pokémoni ai Pokédexului Sinnoh până la nivelul de cercetare 10. Nimic despre ei nu a rămas nescris.",
         "sinnoh": "a văzut fiecare dintre cei {count} Pokémoni ai Pokédexului Sinnoh. O evidență completă a vieții sălbatice a regiunii, ținută cu grijă.",
         "kanto": "a văzut fiecare dintre cei {count} Pokémoni ai Pokédexului Kanto. O evidență completă a vieții sălbatice a regiunii, ținută cu grijă.",
         "national": "a prins fiecare Pokémon al Pokédexului Național pe care un antrenor îl poate întâlni. Munca unui adevărat Maestru Pokémon."
@@ -5176,6 +5189,40 @@
     "caption": "A RĂMAS AICI",
     "line": "Obiecte {items} · Antrenori {trainers} · Pokémon {species}",
     "nothing": "Nu a mai rămas nimic aici"
+  },
+  "jobs": {
+    "title": "SLUJBE POKé",
+    "post": "TRIMITE LA O SLUJBĂ",
+    "back": "ÎNTORS",
+    "level": "Nv. {level}",
+    "left": "{hours} h {minutes} min",
+    "hours": "ORE",
+    "hoursValue": "{n} h",
+    "dueBack": "SE ÎNTOARCE",
+    "hoursDone": "{done} din {of} ore",
+    "kind": { "Errand": "COMISIOANE", "Orchard": "LIVADĂ", "HotSpring": "IZVOR CALD" },
+    "pays": {
+      "errand": "Face comisioane prin oraș: un nivel de EXP în opt ore, efort la Viteză și din când în când o bacă.",
+      "orchard": "Ajută la cules: jumătate din EXP-ul comisioanelor, efort la HP și o bacă la fiecare două ore.",
+      "hotSpring": "Se odihnește într-un izvor cald: jumătate din EXP-ul comisioanelor, efort la Ap. Sp. și prietenie dublă."
+    },
+    "hint": { "bringBack": "Adu înapoi", "send": "Trimite" },
+    "about": "Pokémonii din cutii pot lua slujbe cât lipsești, chiar și cu jocul închis. Alege un loc gol ca să trimiți unul.",
+    "boardNote": "Cel mult trei Pokémoni pot fi plecați deodată. Sunt plătiți pentru orele întregi petrecute la slujbă.",
+    "noneInTheBoxes": "Nu ai Pokémoni în cutii pe care să-i trimiți.",
+    "boxesFull": "Cutiile tale sunt pline. Fă loc înainte să aduci un Pokémon înapoi.",
+    "clockBack": "Ceasul arată mai devreme decât atunci când a plecat. Nu s-a întors încă.",
+    "sent": "{name} a plecat la slujba {job}.",
+    "result": {
+      "title": "{name} s-a întors!",
+      "hours": "Plătit pentru {n} ore.",
+      "exp": "A câștigat {exp} EXP.",
+      "level": "A crescut la Nv. {level}!",
+      "move": "A învățat {move}!",
+      "effort": "A câștigat {n} efort la {stat}.",
+      "friendship": "Ține mai mult la tine.",
+      "berry": "A adus {item} ×{n}."
+    }
   },
   "requests": {
     "title": "RUGĂMINȚI",

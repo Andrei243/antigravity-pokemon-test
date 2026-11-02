@@ -366,6 +366,10 @@ public partial class GameEngine
         public bool HasRequests => game.HasRequests;
         public void OpenRequests() => game.OpenRequests();
         public void PointOutThePinnedRequest() => game.PointOutThePinnedRequest();
+        /// <summary>A PC's Poké Jobs board (plan 15 · E3), its jobs, and the board opened as the PC's script opens it.</summary>
+        public JobsScreen Jobs => game.flow.JobsScreen;
+        public JobBoard JobBoard => game.flow.Jobs;
+        public void OpenJobs() => game.OpenJobs();
         public void OpenJukebox(GameState returnTo) => game.OpenJukebox(returnTo);
         public void CloseJukebox() => game.CloseJukebox();
         /// <summary>The gallery (plan 12 · Q30), opened as the title's GALLERY or a Pokédex entry's A does, and closed as B does.</summary>
