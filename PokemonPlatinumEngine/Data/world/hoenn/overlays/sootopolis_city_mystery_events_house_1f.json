@@ -1,10 +1,12 @@
 {
-  // Sootopolis City's house of mystery events (plan 21 · H12, part i): an old trainer who likes to watch young ones battle.
-  // In Emerald a trainer read from an e-Reader card visits and is battled in the basement; nobody visits here, so the old
-  // man only talks and the way down stays shut
+  // Sootopolis City's house of mystery events (plan 21 · H12, part i; its basement since part n). An old trainer who
+  // likes to watch young ones battle. In Emerald a trainer read from an e-Reader card visits and is battled in the
+  // basement; here, for a Champion of Hoenn, one of three visitors of ours comes each day (sootopolis_city_mystery_events_house_1f.txt).
+  // The stairs down are shut, as Emerald's layout shuts them, and the old man's own question takes the player down
   "area": "sootopolis_city_mystery_events_house_1f",
   "bgmTrack": "hoenn/sootopolis",
+  "locked": [ 2 ],
   "people": {
-    "mystery_events_old_man": { "name": "Old Man", "dialog": [ "In my youth I travelled the whole world as a Pokémon trainer.", "These days my only pleasure is watching young trainers battle. Sometimes visitors come to battle downstairs...", "Nobody's come for a while, though. If someone does, I hope you'll show me what you can do!" ] }
+    "mystery_events_old_man": { "name": "Old Man", "script": "OldMan", "still": true }
   }
 }

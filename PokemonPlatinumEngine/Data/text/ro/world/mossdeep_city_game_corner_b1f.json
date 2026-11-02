@@ -1,0 +1,25 @@
+{
+  "people": {
+    "var_0": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm practising Pokémon Jump. You count the turns of the rope and jump on the beat. Hup!",
+          "It's really a game for friends, all jumping together. Maybe one day enough people will come to play."
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

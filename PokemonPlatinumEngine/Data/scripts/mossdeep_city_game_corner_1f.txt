@@ -1,0 +1,21 @@
+# Mossdeep City's game corner (plan 21 · H12, part n). docs/scripts.md describes the language; the lines are our own.
+#
+# Emerald's man at the counter is a cable club attendant who seats linked friends downstairs for Pokémon Jump and Dodrio
+# Berry Picking. This game has no link: a guide of ours in the hall shows the player down to look at the room, where a girl of ours practises
+# alone (mossdeep_city_game_corner_b1f's overlay); the stairs there lead back up before the counter.
+
+
+script Attendant
+  face self player
+  speaker "Guide"
+  say "The record boards on the wall show the best scores at the games downstairs. They're all blank so far."
+  ask "Downstairs is where friends play together with their Pokémon. Would you like to take a look?"
+  if no goto Later
+  say "This way, then. Mind the stairs!"
+  fade out 0.3
+  warp "MossdeepCity_GameCorner_B1F" 3 2 down
+  fade in 0.3
+  end
+label Later
+  say "Come back any time. Maybe one day someone will set a score worth writing up!"
+  end

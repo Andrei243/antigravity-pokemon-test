@@ -10,9 +10,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 |---|---|---|---|---|---|
 | The introduction (`intro:`) | 96 | 96 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1298 | 1256 | 42 | 1 | 0 |
-| Scripts (`script:`) | 9976 | 9525 | 451 | 17 | 0 |
-| People of the world (`world:`) | 7128 | 7066 | 62 | 4 | 0 |
-| **All** | 18498 | 17943 | 555 | 22 | 0 |
+| Scripts (`script:`) | 10033 | 9582 | 451 | 17 | 0 |
+| People of the world (`world:`) | 7127 | 7065 | 62 | 4 | 0 |
+| **All** | 18554 | 17999 | 555 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -21,14 +21,14 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | What | Lines |
 |---|---|
 | a Pokémon's cry | 244 |
-| a question's answers | 701 |
+| a question's answers | 749 |
 | a sign | 1573 |
 | the game's own voice (speaker none) | 286 |
-| the game's own voice (text) | 1605 |
+| the game's own voice (text) | 1606 |
 
 ## The cast
 
-- Named characters: 377 voices (340 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
+- Named characters: 382 voices (345 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Cloned from the user's samples: `rival`.
 - Archetypes in use: 222, with 671 voices to cast (V5).
 - Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1878.
@@ -46,11 +46,11 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:lady (any)` | 425 | 1 |
 | `look:youngster (any)` | 393 | 21 |
 | `look:clerk (any)` | 365 | 10 |
-| `look:lass (any)` | 321 | 11 |
+| `look:lass (any)` | 323 | 11 |
 | `look:attendant (any)` | 282 | 12 |
 | `look:nurse (any)` | 255 | 0 |
 | `look:scientist (any)` | 198 | 4 |
-| `look:gym_guide (any)` | 193 | 1 |
+| `look:gym_guide (any)` | 197 | 1 |
 | `look:receptionist (any)` | 159 | 19 |
 | `cynthia` | 157 | 1 |
 | `look:sailor (any)` | 150 | 0 |
@@ -60,9 +60,9 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:fisherman (any)` | 140 | 0 |
 | `look:woman (any)` | 133 | 14 |
 | `class:team_rocket (any)` | 132 | 0 |
+| `look:old_man (any)` | 130 | 4 |
 | `class:swimmer_m (any)` | 126 | 0 |
 | `class:picnicker (any)` | 120 | 0 |
-| `look:old_man (any)` | 120 | 4 |
 | `class:youngster (any)` | 118 | 0 |
 | `class:psychic (any)` | 116 | 0 |
 | `mom` | 116 | 7 |
@@ -206,6 +206,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:galacticdoor (any)` | 23 | 23 |
 | `look:gymstatue (any)` | 23 | 0 |
 | `lt_surge` | 23 | 0 |
+| `quiz_lady` | 23 | 0 |
 | `valet` | 23 | 5 |
 | `wattson` | 23 | 0 |
 | `whitney` | 23 | 0 |

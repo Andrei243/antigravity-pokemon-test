@@ -48,6 +48,9 @@ public partial class GameEngine
             case "slots":
                 OpenSlotMachine(number);
                 return 1;
+            case "reels":
+                OpenReelMachine(number);
+                return 1;
             case "furnish":
                 FurnishVilla();
                 // The delivery that leaves the catalogue nothing more to sell (Villa_HasAllFurniture)
@@ -93,6 +96,25 @@ public partial class GameEngine
             flow.Pastimes.Coins.Set(machine.Coins);
             if (machine.MostRounds > flow.Story.Var(GameCornerPrizes.StreakVariable)) flow.Story.SetVar(GameCornerPrizes.StreakVariable, machine.MostRounds);
         }
+        flow.State = GameState.Overworld;
+    }
+
+    // ------------------------------------------------------------------ Mauville's machines (plan 21 · H12, part n)
+
+    // GetSlotMachineId and PlaySlotMachine: the coins go to the machine, whose luck is the day's for its number
+    private void OpenReelMachine(int machine)
+    {
+        flow.ReelMachineScreen.Open(machine, flow.Pastimes.Coins.Coins, ReelMachine.LuckOf(machine, flow.Encounters.DailyNumber), fieldRandom);
+        flow.Journal.Tell(new JournalEvent(JournalEventKind.GameCorner));
+        flow.State = GameState.ReelMachine;
+    }
+
+    private void UpdateReelMachine(float dt)
+    {
+        flow.ReelMachineScreen.Update(dt);
+        if (flow.ReelMachineScreen.IsActive) return;
+        // SlotTask_EndGame: the coins come back
+        if (flow.ReelMachineScreen.Machine is { } machine) flow.Pastimes.Coins.Set(machine.Coins);
         flow.State = GameState.Overworld;
     }
 

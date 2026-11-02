@@ -129,7 +129,9 @@ public enum GameState
     /// <summary>The battle room's team builder (plan 13 · V13).</summary>
     TeamBuilder,
     /// <summary>A PC's Poké Jobs board: the boxes' Pokémon sent on jobs while the game is shut (plan 15 · E3).</summary>
-    Jobs
+    Jobs,
+    /// <summary>A sitting at one of Mauville's slot machines, Emerald's own with its Reel Time (plan 21 · H12, part n).</summary>
+    ReelMachine
 }
 
 public partial class GameEngine
@@ -1517,6 +1519,9 @@ public partial class GameEngine
                 break;
             case GameState.SlotMachine:
                 UpdateSlotMachine(dt);
+                break;
+            case GameState.ReelMachine:
+                UpdateReelMachine(dt);
                 break;
             case GameState.FrontierRecords:
                 UpdateFrontierRecords(dt);
@@ -3183,6 +3188,9 @@ public partial class GameEngine
                 break;
             case GameState.SlotMachine:
                 flow.SlotMachineScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.ReelMachine:
+                flow.ReelMachineScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.HallOfFameCeremony:
                 flow.Ceremony.Draw(VirtualWidth, VirtualHeight);

@@ -19925,6 +19925,35 @@ way 0.1.1, from answer 3
 way 1, from answer 1
   Move Deleter> Come again if there are moves you'd like forgotten.
   ? Shall I make one of your Pokémon forget a move? = No
+=== lilycove_city_pokemon_center_1f.ContestLady
+from Contest Lady at 12,4 of LilycoveCity_PokemonCenter_1F
+way -
+  Contest Lady> I'm the Contest Lady! My partner and I are getting ready for a contest.
+  Contest Lady> My Zigzagoon is going to show everyone how cool it is. A spicy Pokéblock would do wonders!
+  Contest Lady> Oh, you haven't any Pokéblocks to share? Never mind. Good luck in your own contests!
+  + FLAG_HOENN_CONTEST_LADY_COOL
+  = VAR_HOENN_CONTEST_LADY 0 -> 1
+=== lilycove_city_pokemon_center_1f.ContestLadyMon
+from Kecleon at 13,4 of LilycoveCity_PokemonCenter_1F
+way -
+  > It's practising its poses for the contest.
+  * cry Kecleon
+from Pikachu at 13,4 of LilycoveCity_PokemonCenter_1F
+way -
+  > It's practising its poses for the contest.
+  * cry Pikachu
+from Poochyena at 13,4 of LilycoveCity_PokemonCenter_1F
+way -
+  > It's practising its poses for the contest.
+  * cry Poochyena
+from Skitty at 13,4 of LilycoveCity_PokemonCenter_1F
+way -
+  > It's practising its poses for the contest.
+  * cry Skitty
+from Zigzagoon at 13,4 of LilycoveCity_PokemonCenter_1F
+way -
+  > It's practising its poses for the contest.
+  * cry Zigzagoon
 === lilycove_city_pokemon_center_1f.LilycoveLady
 from Lady at 1,3 of LilycoveCity_PokemonCenter_1F
 way 0
@@ -19942,6 +19971,37 @@ way 1, from answer 1
   ? Would you share something like that with me? = No
   = VAR_HOENN_FAVOR_LADY 0 -> 4
   = VAR_HOENN_FAVOR_LADY_BEST 0 -> 4
+=== lilycove_city_pokemon_center_1f.QuizLady
+from Quiz Lady at 4,6 of LilycoveCity_PokemonCenter_1F
+way 0.0
+  Quiz Lady> I'm the Quiz Lady! I adore quizzes, and anyone who answers mine correctly wins a prize.
+  Quiz Lady> Will you take on today's quiz?
+  Quiz Lady> Which of these does a Grass-type move hit twice as hard?
+  Quiz Lady> That's right! Splendid! You've won my prize. Here you are!
+  > Lucas received the Glitter Mail!
+  > Lucas put it away in the Mail pocket.
+  Quiz Lady> Now I must think up a new quiz. Come back tomorrow and try it!
+  ? Will you take on today's quiz? = Yes
+  ? Which of these does a Grass-type move hit twice as hard? = A Water type
+  * sound select
+  * fanfare FanfareItem
+  + FLAG_DAILY_HOENN_QUIZ_LADY
+way 0.2, from answer 2
+  Quiz Lady> Oh dear, that's not it! I'm afraid the prize stays with me this time.
+  Quiz Lady> Now I must think up a new quiz. Come back tomorrow and try it!
+  ? Which of these does a Grass-type move hit twice as hard? = A Flying type
+  * sound error
+  + FLAG_DAILY_HOENN_QUIZ_LADY
+way 0.1, from answer 2
+  Quiz Lady> Oh dear, that's not it! I'm afraid the prize stays with me this time.
+  Quiz Lady> Now I must think up a new quiz. Come back tomorrow and try it!
+  ? Which of these does a Grass-type move hit twice as hard? = A Fire type
+  * sound error
+  + FLAG_DAILY_HOENN_QUIZ_LADY
+way 1, from answer 1
+  Quiz Lady> Oh, how dull! Do come back if you change your mind.
+  ? Will you take on today's quiz? = No
+  = VAR_HOENN_QUIZ_LADY 0 -> 1
 === littleroot_town.GoSaveBirch
 from the trigger at 131,283 of Hoenn
 way -
@@ -20862,6 +20922,19 @@ from the trigger at 673,127 of Hoenn
 way -
   + FLAG_VISITED_MOSSDEEP_CITY
   = VAR_TEMP_1 0 -> 1
+=== mossdeep_city_game_corner_1f.Attendant
+from Guide at 9,4 of MossdeepCity_GameCorner_1F
+way 0
+  Guide> The record boards on the wall show the best scores at the games downstairs. They're all blank so far.
+  Guide> Downstairs is where friends play together with their Pokémon. Would you like to take a look?
+  Guide> This way, then. Mind the stairs!
+  ? Downstairs is where friends play together with their Pokémon. Would you like to take a look? = Yes
+  * fade out
+  * warp MossdeepCity_GameCorner_B1F 3 2
+  * fade in
+way 1, from answer 1
+  Guide> Come back any time. Maybe one day someone will set a score worth writing up!
+  ? Downstairs is where friends play together with their Pokémon. Would you like to take a look? = No
 === mossdeep_city_gym.BackToTheDoor
 from the trigger at 21,6 of MossdeepCity_Gym
 way -
@@ -29285,6 +29358,32 @@ way -
   Clerk> Welcome! What can I get for you?
   Clerk> Thank you! Do come again.
   * open Shop sootopolis
+=== sootopolis_city_mystery_events_house_1f.OldMan
+from Old Man at 6,4 of SootopolisCity_MysteryEventsHouse_1F
+way -
+  Old Man> In my youth I travelled the whole world as a Pokémon trainer.
+  Old Man> These days my only pleasure is watching young trainers battle.
+  Old Man> Now and then a visitor comes to battle downstairs. Nobody's come for a while, though.
+=== sootopolis_city_mystery_events_house_b1f.Visitor
+from Ilse at 6,5 of SootopolisCity_MysteryEventsHouse_B1F
+from Ronan at 6,5 of SootopolisCity_MysteryEventsHouse_B1F
+from Wren at 6,5 of SootopolisCity_MysteryEventsHouse_B1F
+way 0
+  Ilse> So you're the one the old man keeps talking about. I've come a long way for a battle like this!
+  Old Man> Superb! What a battle that was. These old eyes haven't seen the like in years!
+  * battle hoenn_mystery_visitor_ilse Won
+  * fade out
+  * warp SootopolisCity_MysteryEventsHouse_1F 5 3
+  * fade in
+  + FLAG_DAILY_HOENN_MYSTERY_VISITOR
+  + beaten hoenn_mystery_visitor_ilse
+way 1, from answer 1
+  Old Man> Oh, too bad! Still, you fought well. There's always another day.
+  * battle hoenn_mystery_visitor_ilse Lost
+  * fade out
+  * warp SootopolisCity_MysteryEventsHouse_1F 5 3
+  * fade in
+  + FLAG_DAILY_HOENN_MYSTERY_VISITOR
 === sootopolis_city_pokemon_center_1f.DoubleEdgeTutor
 from Woman at 2,3 of SootopolisCity_PokemonCenter_1F
 way 0

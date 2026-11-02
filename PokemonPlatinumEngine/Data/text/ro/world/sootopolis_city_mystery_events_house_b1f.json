@@ -1,0 +1,35 @@
+{
+  "people": {
+    "var_0": {
+      "name": {
+        "en": [
+          "Ilse"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "mystery_visitor_ronan": {
+      "name": {
+        "en": [
+          "Ronan"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "mystery_visitor_wren": {
+      "name": {
+        "en": [
+          "Wren"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

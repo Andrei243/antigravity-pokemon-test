@@ -39,6 +39,16 @@
           ""
         ]
       }
+    },
+    "game_corner_guide": {
+      "name": {
+        "en": [
+          "Guide"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

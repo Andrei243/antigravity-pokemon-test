@@ -1,0 +1,12 @@
+{
+  // The basement of Mossdeep City's game corner (plan 21 · H12, part n): Emerald's room where friends linked together
+  // play Pokémon Jump and Dodrio Berry Picking. With no link, its one person (Emerald's other player) is a girl of ours
+  // who practises on her own; the stairs lead up into the hall before the counter, where the man who showed the
+  // player down stands
+  "area": "mossdeep_city_game_corner_b1f",
+  "bgmTrack": "hoenn/rustboro",
+  "doors": [ { "warp": 0, "map": "MossdeepCity_GameCorner_1F", "x": 5, "y": 7, "facing": "Down" } ],
+  "people": {
+    "var_0": { "name": "Girl", "npcType": "lass", "still": true, "dialog": [ "I'm practising Pokémon Jump. You count the turns of the rope and jump on the beat. Hup!", "It's really a game for friends, all jumping together. Maybe one day enough people will come to play." ] }
+  }
+}

@@ -63,6 +63,76 @@
           "Lilycove e un oraș al concursurilor și al artei. Caut mereu un Pokémon cu adevărat stilat. Vino să vorbim altă dată!"
         ]
       }
+    },
+    "quiz_lady": {
+      "name": {
+        "en": [
+          "Quiz Lady"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "contest_lady": {
+      "name": {
+        "en": [
+          "Contest Lady"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "contest_lady_zigzagoon": {
+      "name": {
+        "en": [
+          "Zigzagoon"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "contest_lady_skitty": {
+      "name": {
+        "en": [
+          "Skitty"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "contest_lady_poochyena": {
+      "name": {
+        "en": [
+          "Poochyena"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "contest_lady_kecleon": {
+      "name": {
+        "en": [
+          "Kecleon"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "contest_lady_pikachu": {
+      "name": {
+        "en": [
+          "Pikachu"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {}

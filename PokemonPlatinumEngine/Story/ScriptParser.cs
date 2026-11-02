@@ -765,11 +765,12 @@ public static class ScriptParser
             }
             case "gamecorner":
             {
-                string what = r.OneOf("coins", "room", "add", "take", "slots", "prize", "buy", "hiddenpower", "cointrick", "roulette", "wager", "spin");
-                int number = what is "room" or "add" or "take" or "slots" or "roulette" ? r.Int(what == "slots" ? "a machine, 0 to 11" : "a number of coins") : 0;
-                if (what == "slots" && number is < 0 or > 11) throw r.Error("the Game Corner's machines are 0 to 11");
+                string what = r.OneOf("coins", "room", "add", "take", "slots", "reels", "prize", "buy", "hiddenpower", "cointrick", "roulette", "wager", "spin");
+                bool machine = what is "slots" or "reels";
+                int number = what is "room" or "add" or "take" or "slots" or "reels" or "roulette" ? r.Int(machine ? "a machine, 0 to 11" : "a number of coins") : 0;
+                if (machine && number is < 0 or > 11) throw r.Error("the Game Corner's machines are 0 to 11");
                 if (what == "roulette" && number < 1) throw r.Error("a roulette table's wager is a coin or more");
-                if (what != "slots" && number < 0) throw r.Error("coins are counted from nought up");
+                if (!machine && number < 0) throw r.Error("coins are counted from nought up");
                 // The exchange's list: Veilstone's, or another Game Corner's by its name (plan 21 · H3, part c: mauville)
                 string list = what == "prize" && r.PeekWord("mauville") ? r.OneOf("mauville") : "";
                 return new Instruction { Op = Op.GameCorner, Line = line, Name = what, Number = number, Other = list };
@@ -1108,7 +1109,7 @@ public static class ScriptParser
             // The Berry Blender and the Pokéblock Case (plan 21 · H11)
             case "pokeblock":
             {
-                string what = r.OneOf("blend", "count", "full", "taste");
+                string what = r.OneOf("blend", "count", "full", "taste", "lady");
                 int others = 0;
                 if (what == "blend")
                 {

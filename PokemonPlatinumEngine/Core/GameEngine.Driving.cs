@@ -91,6 +91,7 @@ public partial class GameEngine
         public Models.Underground.UndergroundState Underground => game.flow.Underground;
         public Models.Pastimes Pastimes => game.flow.Pastimes;
         public UI.SlotMachineScreen Slots => game.flow.SlotMachineScreen;
+        public UI.ReelMachineScreen Reels => game.flow.ReelMachineScreen;
         /// <summary>A step of Pal Park's Catching Show where the player stands (the engine's own, as a step in the grass takes it).</summary>
         public bool ParkStep() => game.PalParkStep();
         /// <summary>Stands the Villa's furniture in its room as the flags say (the engine's own, as arriving there does).</summary>

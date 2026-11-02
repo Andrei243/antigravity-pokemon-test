@@ -778,6 +778,8 @@ public static class RegionDatabase
                 "AbandonedShip_HiddenFloorCorridors", "AbandonedShip_HiddenFloorRooms", "ArtisanCave_1F", "ArtisanCave_B1F",
                 "FortreeCity_DecorationShop", "MossdeepCity_GameCorner_1F",
                 "SootopolisCity_MysteryEventsHouse_1F",
+                // Plan 21 · H12, part n: the two basements
+                "MossdeepCity_GameCorner_B1F", "SootopolisCity_MysteryEventsHouse_B1F",
             }
         },
         new()

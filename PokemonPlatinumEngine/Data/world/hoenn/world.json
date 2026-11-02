@@ -512,7 +512,11 @@
     { "name": "ArtisanCave_B1F", "matrix": 286, "area": "artisan_cave_b1f", "trees": "Round", "setting": "Cave" },
     { "name": "FortreeCity_DecorationShop", "matrix": 108, "area": "fortree_city_decoration_shop", "trees": "Round", "setting": "Indoors" },
     { "name": "MossdeepCity_GameCorner_1F", "matrix": 143, "area": "mossdeep_city_game_corner_1f", "trees": "Round", "setting": "Indoors" },
-    { "name": "SootopolisCity_MysteryEventsHouse_1F", "matrix": 158, "area": "sootopolis_city_mystery_events_house_1f", "trees": "Round", "setting": "Indoors" }
+    { "name": "SootopolisCity_MysteryEventsHouse_1F", "matrix": 158, "area": "sootopolis_city_mystery_events_house_1f", "trees": "Round", "setting": "Indoors" },
+    // Plan 21 · H12, part n: the two basements, the game corner's (a practice room of ours) and the house of mystery
+    // events' (a visiting trainer of ours, battled as Emerald battles an e-Reader card's)
+    { "name": "MossdeepCity_GameCorner_B1F", "matrix": 144, "area": "mossdeep_city_game_corner_b1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "SootopolisCity_MysteryEventsHouse_B1F", "matrix": 159, "area": "sootopolis_city_mystery_events_house_b1f", "trees": "Round", "setting": "Indoors" }
   ],
   "areas": [
     // Plan 21 · H1: Littleroot Town, Route 101, Oldale Town, Routes 102 and 103 and Petalburg City, with their rooms
@@ -676,6 +680,8 @@
     "abandoned_ship_rooms_2_1f", "abandoned_ship_captains_office", "abandoned_ship_underwater_2",
     "abandoned_ship_hidden_floor_corridors", "abandoned_ship_hidden_floor_rooms", "artisan_cave_1f", "artisan_cave_b1f",
     "fortree_city_decoration_shop", "mossdeep_city_game_corner_1f",
-    "sootopolis_city_mystery_events_house_1f"
+    "sootopolis_city_mystery_events_house_1f",
+    // Plan 21 · H12, part n: the two basements
+    "mossdeep_city_game_corner_b1f", "sootopolis_city_mystery_events_house_b1f"
   ]
 }

@@ -1,0 +1,15 @@
+{
+  // The basement of Sootopolis City's house of mystery events (plan 21 · H12, part n): Emerald's room where an e-Reader
+  // card's trainer is battled. Here the day's visitor of ours stands where Emerald's does, one of three by the old man's
+  // draw (sootopolis_city_mystery_events_house_b1f.txt), and the stairs lead up in front of the shut way down
+  "area": "sootopolis_city_mystery_events_house_b1f",
+  "bgmTrack": "hoenn/sootopolis",
+  "doors": [ { "warp": 0, "map": "SootopolisCity_MysteryEventsHouse_1F", "x": 5, "y": 3, "facing": "Down" } ],
+  "people": {
+    "var_0": { "name": "Ilse", "npcType": "cooltrainer_f", "script": "Visitor", "shownBy": "FLAG_HOENN_MYSTERY_VISITOR_ILSE", "still": true }
+  },
+  "npcs": [
+    { "id": "mystery_visitor_ronan", "name": "Ronan", "npcType": "expert_m", "x": 6, "y": 5, "facing": "Left", "script": "Visitor", "shownBy": "FLAG_HOENN_MYSTERY_VISITOR_RONAN" },
+    { "id": "mystery_visitor_wren", "name": "Wren", "npcType": "cooltrainer_m", "x": 6, "y": 5, "facing": "Left", "script": "Visitor", "shownBy": "FLAG_HOENN_MYSTERY_VISITOR_WREN" }
+  ]
+}

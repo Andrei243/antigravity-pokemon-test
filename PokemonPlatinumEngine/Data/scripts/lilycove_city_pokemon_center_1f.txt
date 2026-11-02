@@ -82,3 +82,283 @@ label Goodbye
 label Thanks
   say "Thank you for the other day. I treasure what you gave me! Come and see me again tomorrow."
   end
+
+
+# Emerald's Quiz Lady (plan 21 · H12, part n; Models/ContestLady.cs, QuizLady): a quiz with a prize. Emerald's sixteen
+# questions are easy-chat sentences answered with one word, and a player may set her one of their own for others; here
+# the questions are ours, each with three answers to choose from, and Emerald's sixteen prizes go with them in its order.
+# She draws a question the first time she is spoken to after the last was answered (VAR_HOENN_QUIZ_LADY, 1 to 16) and
+# sets one quiz a day (FLAG_DAILY_HOENN_QUIZ_LADY, where Emerald waits for a record mix). Ours: she stands beside the
+# Favor Lady in every game, where Emerald has one lady a game.
+script QuizLady
+  face self player
+  speaker "Quiz Lady"
+  say "I'm the Quiz Lady! I adore quizzes, and anyone who answers mine correctly wins a prize."
+  if flag FLAG_DAILY_HOENN_QUIZ_LADY goto Tomorrow
+  if var VAR_HOENN_QUIZ_LADY == 0 call DrawQuiz
+  ask "Will you take on today's quiz?"
+  if no goto Bored
+  if var VAR_HOENN_QUIZ_LADY == 2 goto Q2
+  if var VAR_HOENN_QUIZ_LADY == 3 goto Q3
+  if var VAR_HOENN_QUIZ_LADY == 4 goto Q4
+  if var VAR_HOENN_QUIZ_LADY == 5 goto Q5
+  if var VAR_HOENN_QUIZ_LADY == 6 goto Q6
+  if var VAR_HOENN_QUIZ_LADY == 7 goto Q7
+  if var VAR_HOENN_QUIZ_LADY == 8 goto Q8
+  if var VAR_HOENN_QUIZ_LADY == 9 goto Q9
+  if var VAR_HOENN_QUIZ_LADY == 10 goto Q10
+  if var VAR_HOENN_QUIZ_LADY == 11 goto Q11
+  if var VAR_HOENN_QUIZ_LADY == 12 goto Q12
+  if var VAR_HOENN_QUIZ_LADY == 13 goto Q13
+  if var VAR_HOENN_QUIZ_LADY == 14 goto Q14
+  if var VAR_HOENN_QUIZ_LADY == 15 goto Q15
+  if var VAR_HOENN_QUIZ_LADY == 16 goto Q16
+  choose "Which of these does a Grass-type move hit twice as hard?" "A Water type" "A Fire type" "A Flying type"
+  if result == 0 goto Right
+  goto Wrong
+label Q2
+  choose "What does a Pokémon Center's nurse do for your team?" "She sells it items" "She heals it" "She trains it"
+  if result == 1 goto Right
+  goto Wrong
+label Q3
+  choose "How many Badges does a trainer need to enter the League?" "Six" "Seven" "Eight"
+  if result == 2 goto Right
+  goto Wrong
+label Q4
+  choose "Which of these Pokémon can fly?" "Wurmple" "Wingull" "Zigzagoon"
+  if result == 1 goto Right
+  goto Wrong
+label Q5
+  choose "What colour of Pokéblock is full of spicy flavour?" "Red" "Blue" "Green"
+  if result == 0 goto Right
+  goto Wrong
+label Q6
+  choose "Which field move carries you across the water?" "Cut" "Flash" "Surf"
+  if result == 2 goto Right
+  goto Wrong
+label Q7
+  choose "Which Berry cures a Pokémon of poison?" "A Cheri Berry" "A Pecha Berry" "A Rawst Berry"
+  if result == 1 goto Right
+  goto Wrong
+label Q8
+  choose "Which type takes nothing at all from Electric moves?" "Ground" "Water" "Flying"
+  if result == 0 goto Right
+  goto Wrong
+label Q9
+  choose "Which of these is a Fire-type Pokémon?" "Mudkip" "Treecko" "Torchic"
+  if result == 2 goto Right
+  goto Wrong
+label Q10
+  choose "Into what does Pikachu grow with a Thunder Stone?" "Raichu" "Plusle" "Electrike"
+  if result == 0 goto Right
+  goto Wrong
+label Q11
+  choose "How many Pokémon can travel with you on your team?" "Four" "Six" "Eight"
+  if result == 1 goto Right
+  goto Wrong
+label Q12
+  choose "What makes a contest's crowd cheer the loudest?" "A Pokémon's weight" "Its appeals" "Its speed"
+  if result == 1 goto Right
+  goto Wrong
+label Q13
+  choose "What do you water a Berry tree with?" "A Wailmer Pail" "A Soot Sack" "A Super Rod"
+  if result == 0 goto Right
+  goto Wrong
+label Q14
+  choose "What does a Rare Candy do for a Pokémon?" "It cures it" "It calms it" "It raises its level"
+  if result == 2 goto Right
+  goto Wrong
+label Q15
+  choose "Which of these Pokémon lives in the sea?" "Wailmer" "Numel" "Spinda"
+  if result == 0 goto Right
+  goto Wrong
+label Q16
+  choose "What holds the Pokéblocks you make with the Berry Blender?" "A Coin Case" "A Pokéblock Case" "A Soot Sack"
+  if result == 1 goto Right
+label Wrong
+  sound "error"
+  say "Oh dear, that's not it! I'm afraid the prize stays with me this time."
+  goto Next
+label Right
+  sound "select"
+  say "That's right! Splendid! You've won my prize. Here you are!"
+  call QuizPrize
+label Next
+  setflag FLAG_DAILY_HOENN_QUIZ_LADY
+  setvar VAR_HOENN_QUIZ_LADY 0
+  say "Now I must think up a new quiz. Come back tomorrow and try it!"
+  end
+label Bored
+  say "Oh, how dull! Do come back if you change your mind."
+  end
+label Tomorrow
+  say "I'm still thinking up my next quiz. Come back tomorrow!"
+  end
+
+
+# The day's question, drawn while none is waiting (Emerald's QuizLadyPickQuestion)
+script DrawQuiz
+  random 16
+  setvar VAR_HOENN_QUIZ_LADY RESULT
+  addvar VAR_HOENN_QUIZ_LADY 1
+  return
+
+
+# Emerald's sQuizLadyPrizes, a prize to each question in its order
+script QuizPrize
+  if var VAR_HOENN_QUIZ_LADY == 2 goto P2
+  if var VAR_HOENN_QUIZ_LADY == 3 goto P3
+  if var VAR_HOENN_QUIZ_LADY == 4 goto P4
+  if var VAR_HOENN_QUIZ_LADY == 5 goto P4
+  if var VAR_HOENN_QUIZ_LADY == 6 goto P4
+  if var VAR_HOENN_QUIZ_LADY == 7 goto P7
+  if var VAR_HOENN_QUIZ_LADY == 8 goto P8
+  if var VAR_HOENN_QUIZ_LADY == 9 goto P9
+  if var VAR_HOENN_QUIZ_LADY == 10 goto P10
+  if var VAR_HOENN_QUIZ_LADY == 11 goto P11
+  if var VAR_HOENN_QUIZ_LADY == 12 goto P12
+  if var VAR_HOENN_QUIZ_LADY == 13 goto P13
+  if var VAR_HOENN_QUIZ_LADY == 14 goto P14
+  if var VAR_HOENN_QUIZ_LADY == 15 goto P14
+  if var VAR_HOENN_QUIZ_LADY == 16 goto P16
+  give "Glitter Mail"
+  return
+label P2
+  give "Bead Mail"
+  return
+label P3
+  give "Tropic Mail"
+  return
+label P4
+  give "Max Ether"
+  return
+label P7
+  give "Watmel Berry"
+  return
+label P8
+  give "Belue Berry"
+  return
+label P9
+  give "Durin Berry"
+  return
+label P10
+  give "Luxury Ball"
+  return
+label P11
+  give "TM15"
+  return
+label P12
+  give "Big Pearl"
+  return
+label P13
+  give "Star Piece"
+  return
+label P14
+  give "Rare Candy"
+  return
+label P16
+  give "Premier Ball"
+  return
+
+
+# Emerald's Contest Lady (plan 21 · H12, part n; Models/ContestLady.cs): her Pokémon trains for a contest of one
+# condition (VAR_HOENN_CONTEST_LADY, 1 to 5, drawn the first time she is spoken to, the Pokémon of it shown beside her by
+# a flag of each) and she asks for a Pokéblock to feed it, once a day (FLAG_DAILY_HOENN_CONTEST_LADY, where Emerald waits
+# for a record mix). A Pokéblock with the condition's flavour counts as a good one (pokeblock lady); five good ones, or
+# five of any other, and her Pokémon is ready, and she draws a new condition the next day. Ours: she stands here in
+# every game, beside the Favor Lady and the Quiz Lady.
+script ContestLady
+  face self player
+  speaker "Contest Lady"
+  say "I'm the Contest Lady! My partner and I are getting ready for a contest."
+  if var VAR_HOENN_CONTEST_LADY == 0 call DrawContest
+  if flag FLAG_DAILY_HOENN_CONTEST_LADY goto Thanks
+  if var VAR_HOENN_CONTEST_LADY == 2 goto Beauty
+  if var VAR_HOENN_CONTEST_LADY == 3 goto Cute
+  if var VAR_HOENN_CONTEST_LADY == 4 goto Smart
+  if var VAR_HOENN_CONTEST_LADY == 5 goto Tough
+  say "My Zigzagoon is going to show everyone how cool it is. A spicy Pokéblock would do wonders!"
+  goto Ask
+label Beauty
+  say "My Skitty is going to dazzle everyone with its beauty. A dry Pokéblock would do wonders!"
+  goto Ask
+label Cute
+  say "My Poochyena is going to charm everyone with how cute it is. A sweet Pokéblock would do wonders!"
+  goto Ask
+label Smart
+  say "My Kecleon is going to show everyone how clever it is. A bitter Pokéblock would do wonders!"
+  goto Ask
+label Tough
+  say "My Pikachu is going to show everyone how tough it is. A sour Pokéblock would do wonders!"
+label Ask
+  if not item "Pokéblock Case" goto NoCase
+  pokeblock count
+  if result == 0 goto NoCase
+  ask "Could you spare a Pokéblock for my partner?"
+  if no goto Cheapskate
+  pokeblock lady
+  if result == 0 goto Cheapskate
+  setflag FLAG_DAILY_HOENN_CONTEST_LADY
+  say "Thank you! Here you go, eat up..."
+  if result == 1 goto Plain
+  say "Look how happy it is! That Pokéblock really brought out its best. Thank you!"
+  goto Count
+label Plain
+  say "Hmm... it ate it, but nothing seems to have changed. Thank you all the same."
+label Count
+  if var VAR_HOENN_CONTEST_LADY_GOOD >= 5 goto Ready
+  if var VAR_HOENN_CONTEST_LADY_OTHER >= 5 goto Ready
+  end
+label Ready
+  say "With all the Pokéblocks we've been given, we're ready to enter contests at last! Next time it'll be another contest."
+  setvar VAR_HOENN_CONTEST_LADY 0
+  setvar VAR_HOENN_CONTEST_LADY_GOOD 0
+  setvar VAR_HOENN_CONTEST_LADY_OTHER 0
+  setvar VAR_HOENN_CONTEST_LADY_SHEEN 0
+  end
+label NoCase
+  say "Oh, you haven't any Pokéblocks to share? Never mind. Good luck in your own contests!"
+  end
+label Cheapskate
+  say "Not even one? How stingy!"
+  end
+label Thanks
+  say "Thank you for the Pokéblock the other day! Come and see us again tomorrow."
+  end
+
+
+# The contest drawn (Emerald's ResetContestLadyContestData: a condition of five), and her Pokémon of it shown
+script DrawContest
+  random 5
+  setvar VAR_HOENN_CONTEST_LADY RESULT
+  addvar VAR_HOENN_CONTEST_LADY 1
+  clearflag FLAG_HOENN_CONTEST_LADY_COOL
+  clearflag FLAG_HOENN_CONTEST_LADY_BEAUTY
+  clearflag FLAG_HOENN_CONTEST_LADY_CUTE
+  clearflag FLAG_HOENN_CONTEST_LADY_SMART
+  clearflag FLAG_HOENN_CONTEST_LADY_TOUGH
+  if var VAR_HOENN_CONTEST_LADY == 2 goto ShowBeauty
+  if var VAR_HOENN_CONTEST_LADY == 3 goto ShowCute
+  if var VAR_HOENN_CONTEST_LADY == 4 goto ShowSmart
+  if var VAR_HOENN_CONTEST_LADY == 5 goto ShowTough
+  setflag FLAG_HOENN_CONTEST_LADY_COOL
+  return
+label ShowBeauty
+  setflag FLAG_HOENN_CONTEST_LADY_BEAUTY
+  return
+label ShowCute
+  setflag FLAG_HOENN_CONTEST_LADY_CUTE
+  return
+label ShowSmart
+  setflag FLAG_HOENN_CONTEST_LADY_SMART
+  return
+label ShowTough
+  setflag FLAG_HOENN_CONTEST_LADY_TOUGH
+  return
+
+
+# Her Pokémon
+script ContestLadyMon
+  cry own
+  text "It's practising its poses for the contest."
+  end

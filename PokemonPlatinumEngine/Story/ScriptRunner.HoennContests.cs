@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
 using PokemonPlatinumEngine.Models.Contest;
@@ -164,6 +165,31 @@ public sealed partial class ScriptRunner
             case "full":
                 Result = host.PokeblockCase.IsFull ? 1 : 0;
                 break;
+            // Lilycove's Contest Lady (plan 21 · H12, part n; Models/ContestLady.cs): a Pokéblock of the case chosen and fed
+            // to her Pokémon, judged by the condition it trains for (RESULT 0 backed out, 1 not its flavour, 2 its flavour)
+            case "lady":
+            {
+                var listed = host.PokeblockCase.Listed();
+                var rows = listed.Select(p => Text.Of("scriptLines.pokeblockRow", ("name", p.Block.Name), ("level", p.Block.Level)))
+                    .Append(Text.Of("scriptLines.noThanks")).ToList();
+                host.Ask(speakerShown, Text.Of("scriptLines.whichPokeblock"), rows, cancel: listed.Count);
+                afterBusy = () =>
+                {
+                    if (host.Answer < 0 || host.Answer >= listed.Count) { Result = 0; return; }
+                    var (slot, block) = listed[host.Answer];
+                    host.PokeblockCase.RemoveAt(slot);
+                    int category = Math.Clamp(host.Story.Var(ContestLady.CategoryVariable) - 1, 0, ContestLady.Categories.Length - 1);
+                    var (good, sheen) = ContestLady.Judge(category, block);
+                    if (good)
+                    {
+                        host.Story.SetVar(ContestLady.GoodVariable, host.Story.Var(ContestLady.GoodVariable) + 1);
+                        if (sheen >= host.Story.Var(ContestLady.SheenVariable)) host.Story.SetVar(ContestLady.SheenVariable, sheen);
+                    }
+                    else host.Story.SetVar(ContestLady.OtherVariable, host.Story.Var(ContestLady.OtherVariable) + 1);
+                    Result = good ? 2 : 1;
+                };
+                break;
+            }
         }
     }
 }

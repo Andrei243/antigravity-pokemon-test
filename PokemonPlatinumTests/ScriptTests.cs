@@ -295,6 +295,7 @@ public class ScriptTests
           gamecorner add 50
           gamecorner take 3
           gamecorner slots 11
+          gamecorner reels 11
           gamecorner prize
           gamecorner buy
           gamecorner hiddenpower

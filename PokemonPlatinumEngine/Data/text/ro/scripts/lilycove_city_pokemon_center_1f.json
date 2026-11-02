@@ -132,5 +132,427 @@
         "Mulțumesc pentru data trecută. Păstrez ca pe o comoară ce mi-ai dat! Mai treci pe la mine mâine."
       ]
     }
+  ],
+  "QuizLady": [
+    {
+      "en": [
+        "Quiz Lady"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm the Quiz Lady! I adore quizzes, and anyone who answers mine correctly wins a prize."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Will you take on today's quiz?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which of these does a Grass-type move hit twice as hard?",
+        "A Water type",
+        "A Fire type",
+        "A Flying type"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What does a Pokémon Center's nurse do for your team?",
+        "She sells it items",
+        "She heals it",
+        "She trains it"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "How many Badges does a trainer need to enter the League?",
+        "Six",
+        "Seven",
+        "Eight"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which of these Pokémon can fly?",
+        "Wurmple",
+        "Wingull",
+        "Zigzagoon"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What colour of Pokéblock is full of spicy flavour?",
+        "Red",
+        "Blue",
+        "Green"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which field move carries you across the water?",
+        "Cut",
+        "Flash",
+        "Surf"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which Berry cures a Pokémon of poison?",
+        "A Cheri Berry",
+        "A Pecha Berry",
+        "A Rawst Berry"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which type takes nothing at all from Electric moves?",
+        "Ground",
+        "Water",
+        "Flying"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which of these is a Fire-type Pokémon?",
+        "Mudkip",
+        "Treecko",
+        "Torchic"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Into what does Pikachu grow with a Thunder Stone?",
+        "Raichu",
+        "Plusle",
+        "Electrike"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "How many Pokémon can travel with you on your team?",
+        "Four",
+        "Six",
+        "Eight"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What makes a contest's crowd cheer the loudest?",
+        "A Pokémon's weight",
+        "Its appeals",
+        "Its speed"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What do you water a Berry tree with?",
+        "A Wailmer Pail",
+        "A Soot Sack",
+        "A Super Rod"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What does a Rare Candy do for a Pokémon?",
+        "It cures it",
+        "It calms it",
+        "It raises its level"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which of these Pokémon lives in the sea?",
+        "Wailmer",
+        "Numel",
+        "Spinda"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What holds the Pokéblocks you make with the Berry Blender?",
+        "A Coin Case",
+        "A Pokéblock Case",
+        "A Soot Sack"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh dear, that's not it! I'm afraid the prize stays with me this time."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's right! Splendid! You've won my prize. Here you are!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Now I must think up a new quiz. Come back tomorrow and try it!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, how dull! Do come back if you change your mind."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm still thinking up my next quiz. Come back tomorrow!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "ContestLady": [
+    {
+      "en": [
+        "Contest Lady"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm the Contest Lady! My partner and I are getting ready for a contest."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "My Zigzagoon is going to show everyone how cool it is. A spicy Pokéblock would do wonders!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "My Skitty is going to dazzle everyone with its beauty. A dry Pokéblock would do wonders!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "My Poochyena is going to charm everyone with how cute it is. A sweet Pokéblock would do wonders!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "My Kecleon is going to show everyone how clever it is. A bitter Pokéblock would do wonders!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "My Pikachu is going to show everyone how tough it is. A sour Pokéblock would do wonders!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Could you spare a Pokéblock for my partner?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thank you! Here you go, eat up..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Look how happy it is! That Pokéblock really brought out its best. Thank you!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hmm... it ate it, but nothing seems to have changed. Thank you all the same."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "With all the Pokéblocks we've been given, we're ready to enter contests at last! Next time it'll be another contest."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, you haven't any Pokéblocks to share? Never mind. Good luck in your own contests!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Not even one? How stingy!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thank you for the Pokéblock the other day! Come and see us again tomorrow."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "ContestLadyMon": [
+    {
+      "en": [
+        "It's practising its poses for the contest."
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }
