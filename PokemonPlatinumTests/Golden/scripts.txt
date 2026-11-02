@@ -17348,8 +17348,8 @@ way 0
   * scene hall_of_origin.Arceus in the Hall of Origin
   * music stop
   * letterbox on
-  * camera Pan 31 27
-  * camera Zoom 1.4
+  * camera Pan 31 31
+  * camera Zoom 0.85
   * effect Burst 31 27
   * slowmo 0.5
   * effect Ripple 31 27
@@ -18699,7 +18699,6 @@ way 0
   * scene liberty_garden.Victini in the Liberty Garden
   * music stop
   * letterbox on
-  * emote player Exclaim
   * camera Pan 305 757
   * camera Zoom 1.4
   * effect Burst 305 757
@@ -22185,7 +22184,6 @@ way 0
   * scene p2_laboratory_2.Genesect in the P2 Laboratory
   * music stop
   * letterbox on
-  * emote player Exclaim
   * camera Pan 5 2
   * camera Zoom 1.4
   * effect Burst 5 2

@@ -21,12 +21,13 @@ script Meloetta
   face player meloetta
   face meloetta player
   letterbox on 0.4
-  # (one tile south of it, the player would hide it: they step back first)
+  # (one tile south of it, the player would hide it: they step back first, and the "!" over their head, which hid it
+  # too, comes once it is in sight)
   if var PLAYER_X != 14 goto Look
   if var PLAYER_Y != 4 goto Look
-  emote player exclaim
   walk player down 2
   face player up
+  emote player exclaim
 label Look
   camera zoom 1.4 0.8
   effect sparkles 14 3

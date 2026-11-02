@@ -30,9 +30,9 @@ script Darkrai
   music stop
   face player darkrai
   letterbox on 0.4
+  if facing up call DrawsBack
   camera pan 16 13 1.2
   camera zoom 1.4 0.8
-  if facing up call DrawsBack
   effect mist 16 12 hold
   slowmo 0.5 1.5
   effect ripple 16 13
