@@ -301,3 +301,25 @@ In all: 13 to 20 sessions before FM11, and 4 to 5 more for Paldea's mount (FM12 
 - [ ] FM12 The mount: rules and powers
 - [ ] FM13 The mount as a rig
 - [ ] FM14 The mount in Paldea's story
+
+## The user's answers (2026-11-02)
+
+All seventeen answered; every one is the recommended answer, with two notes.
+
+1. Live 3D rigs, smooth and outlined (FM0 still shoots the three looks, so the choice can be seen).
+2. Adult 1.6 tiles, teenager 1.5, doors 1 wide and 1.75 tall in Kalos.
+3. A Kalos camera: pitch about 50°, the lens a little wider and nearer.
+4. The player's body follows the region. **Note:** a cutscene is needed for the transition, like the opening's scene after the character is named (the change from the chibi body to the grown one, and back, is a scene of ours at the crossing: an FM session of its own, beside FM10).
+5. A `movement` record in each region's file.
+6. One row, MOVEMENT: "As the region" (default) or "Four ways".
+7. A tile entered is one step, whatever the way.
+8. A diagonal needs both cardinal neighbours open.
+9. Everyone else stays on the grid and four-way.
+10. Stage 1 for Kalos's first towns; stage 2 once Kalos is playable to its second Gym.
+11. Nothing yet for the mouse; click to walk is the optional FM11.
+12. A second kit beside the chibi one.
+13. The mount is the species' own battle model, live, with a saddle point and the rider attached.
+14. The player chooses Koraidon or Miraidon at the story's beat.
+15. The mount is not a party member while ridden. **Note:** it is not in the party until the end of the game, where it is battled and officially caught.
+16. Plan 23 · Z14's order, each power granted after a Titan.
+17. No table rolls while riding; only Pokémon seen in the field.
