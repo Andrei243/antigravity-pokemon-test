@@ -1501,6 +1501,7 @@ kalos_rival_santalune_froakie 187 (8) [Fletchling → Talonflame, Froakie → Gr
 kalos_shauna_1 186 (5) [Froakie → Greninja]
 kalos_shauna_2 186 (5) [Chespin → Chesnaught]
 kalos_shauna_3 186 (5) [Fennekin → Delphox]
+kalos_sycamore_1 187 (10) [Bulbasaur → Venusaur, Charmander → Charizard, Squirtle → Blastoise]
 kalos_tierno_1 186 (6) [Corphish → Crayronin]
 kalos_viola_1 188 (12) [Surskit → Ocellwing]
 === DriftveilCity_Gym
@@ -2289,6 +2290,10 @@ grass 186 (own 4-6)
 surf 186-187 (own 4-9)
 old rod 186-187 (own 5-10)
 trainers 3, 186 (own 5-6): kalos_lass_colette 186 (6) [Fletchling → Talonflame], kalos_picnicker_ines 186 (6) [Pansage → Simisylvan, Bunnelby → Diggersby], kalos_youngster_hugo 186 (6) [Bidoof → Dambarel, Pidgey → Pidgeot]
+=== kalos_route_4
+Route 4, Kalos
+grass 187 (own 7-9)
+trainers 3, 187 (own 7-8): kalos_lass_elodie 187 (8) [Flabébé → Florges], kalos_picnicker_margaux 187 (8) [Budew → Roserade, Combee → Hivempress], kalos_youngster_theo 187 (8) [Ledyba → Coccinova, Bunnelby → Diggersby]
 === kanto_victory_road_1f
 Victory Road, Kanto
 grass 83-92 (own 32-46)

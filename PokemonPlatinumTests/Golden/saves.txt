@@ -6,7 +6,7 @@ world 0, story 0, Platinum rules, Boy Lucas, rival Barry, $3000, badges 0
 wakes on Sinnoh 116,886 facing Down, OnFoot
   team #0: Turtwig Lv5 "Turtwig" Male Hardy, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, Absorb 25/25, id 00000000#0
 bag: Potion x5, Poké Ball x10, Revive x2
-upgrade from story 0: 485 changes
+upgrade from story 0: 487 changes
   + FLAG_HAS_POKEDEX
   + FLAG_HAS_RUNNING_SHOES
   + FLAG_HIDE_ACUITY_CAVERN_UXIE
@@ -330,6 +330,8 @@ upgrade from story 0: 485 changes
   + FLAG_KALOS_HIDE_SHAUNA_FOREST
   + FLAG_KALOS_HIDE_SHAUNA_SANTALUNE
   + FLAG_KALOS_HIDE_SHAUNA_VANIVILLE
+  + FLAG_KALOS_HIDE_SYCAMORE_CAFE
+  + FLAG_KALOS_LUMIOSE_BEGUN
   + FLAG_KALOS_SANTALUNE_BEGUN
   + FLAG_KALOS_STORY_BEGUN
   + FLAG_OBTAINED_FULLMOON_ISLAND_FOREST_LUNAR_WING
@@ -1741,7 +1743,7 @@ wakes on Sinnoh 180,777 facing Down, OnFoot
   team #1: Monferno Lv16 "Monferno" Male Hardy, Blaze, holds nothing, HP 49/49, Scratch 35/35, Leer 30/30, Ember 25/25, Mach Punch 30/30, id 00000000#1
 bag: Potion x3, Poké Ball x5
 bag after: Potion x3, Poké Ball x5, HM06 x1
-upgrade from story 0: 486 changes
+upgrade from story 0: 488 changes
   + FLAG_HAS_POKEDEX
   + FLAG_HAS_RUNNING_SHOES
   + FLAG_HIDE_ACUITY_CAVERN_UXIE
@@ -2065,6 +2067,8 @@ upgrade from story 0: 486 changes
   + FLAG_KALOS_HIDE_SHAUNA_FOREST
   + FLAG_KALOS_HIDE_SHAUNA_SANTALUNE
   + FLAG_KALOS_HIDE_SHAUNA_VANIVILLE
+  + FLAG_KALOS_HIDE_SYCAMORE_CAFE
+  + FLAG_KALOS_LUMIOSE_BEGUN
   + FLAG_KALOS_SANTALUNE_BEGUN
   + FLAG_KALOS_STORY_BEGUN
   + FLAG_OBTAINED_FULLMOON_ISLAND_FOREST_LUNAR_WING

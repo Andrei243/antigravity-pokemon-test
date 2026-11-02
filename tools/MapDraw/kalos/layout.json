@@ -3,7 +3,7 @@
   // places as they are publicly described, in our own drawing, never a picture of the original's. The overworld is 24
   // chunks by 24, the whole region's shape, so a tile keeps its place as more of it is drawn; Vaniville Town lies in the
   // south-west, the way north from it running through Aquacorde Town, Route 2 and Santalune Forest, then east along Route 3 to
-  // Santalune City, from which Route 4 will lead north-east to Lumiose City in the middle.
+  // Santalune City, from which Route 4 leads north to Lumiose City in the middle (plan 23 · Z2).
   // Each drawing's north-west corner is a tile of the region. After changing a drawing run
   // `dotnet run --project tools/MapDraw -- kalos` (`--check` says whether the world files are what the drawings give).
   "region": "Kalos",
@@ -16,7 +16,9 @@
     { "file": "kalos_route_2.txt", "x": 244, "z": 606 },
     { "file": "santalune_forest.txt", "x": 236, "z": 556 },
     { "file": "kalos_route_3.txt", "x": 260, "z": 520 },
-    { "file": "santalune_city.txt", "x": 316, "z": 496 }
+    { "file": "santalune_city.txt", "x": 316, "z": 496 },
+    { "file": "kalos_route_4.txt", "x": 336, "z": 420 },
+    { "file": "lumiose_city.txt", "x": 300, "z": 300 }
   ],
   "areas": [
     { "key": "vaniville_town", "x": 236, "z": 700, "width": 40, "depth": 30 },
@@ -25,6 +27,8 @@
     { "key": "kalos_route_2", "x": 242, "z": 606, "width": 28, "depth": 34 },
     { "key": "santalune_forest", "x": 232, "z": 556, "width": 56, "depth": 50 },
     { "key": "kalos_route_3", "x": 258, "z": 516, "width": 58, "depth": 40 },
-    { "key": "santalune_city", "x": 316, "z": 492, "width": 52, "depth": 58 }
+    { "key": "santalune_city", "x": 316, "z": 492, "width": 52, "depth": 58 },
+    { "key": "kalos_route_4", "x": 336, "z": 420, "width": 48, "depth": 72 },
+    { "key": "lumiose_city", "x": 300, "z": 300, "width": 120, "depth": 120 }
   ]
 }

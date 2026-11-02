@@ -728,6 +728,9 @@
     "kalosRoute3": "Follow Route 3 out of the forest toward Santalune City.",
     "kalosSantalune": "Go on into Santalune City.",
     "kalosViola": "Win the Bug Badge from Viola at Santalune City's Gym.",
+    "kalosRoute4": "Take Route 4 north through the garden to Lumiose City.",
+    "kalosLab": "Find Professor Sycamore's laboratory, up the avenue from Lumiose's south gate.",
+    "kalosLysandre": "Meet the professor at the café in the north of Lumiose City, past the tower.",
     "kalosFree": "That is as far as the road runs for now. Kalos is yours to explore."
   },
 
@@ -3783,6 +3786,7 @@
     "Pokemaniac": "Poké Maniac",
     "PokemonBreeder": "Pokémon Breeder",
     "PokemonRanger": "Pokémon Ranger",
+    "PokemonProfessor": "Pokémon Professor",
     "PokemonTrainer": "Pokémon Trainer",
     "Policeman": "Policeman",
     "Psychic": "Psychic",

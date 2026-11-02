@@ -2723,6 +2723,16 @@ script KalosSantalune
   setflag FLAG_KALOS_HIDE_SHAUNA_SANTALUNE
   setflag FLAG_KALOS_HIDE_FRIENDS_SANTALUNE
   setflag FLAG_KALOS_SANTALUNE_BEGUN
+  call KalosLumiose
+  return
+
+
+# What Lumiose City hides until its scenes (plan 23 · Z2): the professor at Lysandre's café, where he waits only once
+# his laboratory's scene is over. KalosSantalune runs it for a new game; a save made before this part was written is
+# given it by Lumiose City's arrival. It may only set flags and variables, and ends in return.
+script KalosLumiose
+  setflag FLAG_KALOS_HIDE_SYCAMORE_CAFE
+  setflag FLAG_KALOS_LUMIOSE_BEGUN
   return
 
 

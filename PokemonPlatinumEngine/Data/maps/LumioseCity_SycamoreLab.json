@@ -1,0 +1,165 @@
+{
+  "name": "LumioseCity_SycamoreLab",
+  "displayName": "Pokémon Lab",
+  "bgmTrack": "kalos/santalune",
+  "interior": "Lab",
+  "trees": "Round",
+  "width": 15,
+  "height": 12,
+  "ground": [
+    "###############",
+    "###############",
+    "###############",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#######D#######"
+  ],
+  "solid": [
+    "###############",
+    "###############",
+    "###############",
+    "##.##.....##.##",
+    "#.............#",
+    "#.............#",
+    "#.##.......##.#",
+    "#.##.......##.#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#######.#######"
+  ],
+  "props": [
+    {
+      "type": "Bookshelf",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 3,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 4,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 10,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 11,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 13,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 6,
+      "y": 2,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "LabDesk",
+      "x": 2,
+      "y": 6,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "LabDesk",
+      "x": 11,
+      "y": 6,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 13,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 7,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 7,
+      "sourceY": 11,
+      "targetMap": "Kalos",
+      "targetX": 368,
+      "targetY": 388,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "sycamore",
+      "name": "Prof. Sycamore",
+      "npcType": "sycamore",
+      "x": 7,
+      "y": 4,
+      "facing": "Down",
+      "script": "Sycamore",
+      "hiddenBy": "FLAG_KALOS_HIDE_SYCAMORE_LAB"
+    },
+    {
+      "id": "sina",
+      "name": "Sina",
+      "npcType": "sina",
+      "x": 4,
+      "y": 8,
+      "facing": "Right",
+      "script": "Sina"
+    },
+    {
+      "id": "dexio",
+      "name": "Dexio",
+      "npcType": "dexio",
+      "x": 10,
+      "y": 8,
+      "facing": "Left",
+      "script": "Dexio"
+    }
+  ],
+  "wildEncounters": []
+}

@@ -1041,6 +1041,10 @@ grass 4-6
 surf 4-9
 old rod 5-10
 trainers 3, 5-6: kalos_lass_colette 6, kalos_picnicker_ines 6, kalos_youngster_hugo 6
+=== kalos_route_4
+Route 4
+grass 7-9
+trainers 3, 7-8: kalos_lass_elodie 8, kalos_picnicker_margaux 8, kalos_youngster_theo 8
 === kanto_victory_road_1f
 Victory Road
 grass 32-46

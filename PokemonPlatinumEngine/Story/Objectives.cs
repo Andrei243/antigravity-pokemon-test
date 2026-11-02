@@ -225,8 +225,13 @@ public static class Objectives
         (506, "kalosRoute3", AtLeast("VAR_KALOS_STORY", 7), true),
         (507, "kalosSantalune", AtLeast("VAR_KALOS_STORY", 8), true),
         (508, "kalosViola", s => s.Var("VAR_KALOS_STORY") >= 9 || s.HasBadge(RegionDatabase.Kalos, "Bug"), false),
-        // What comes after the Bug Badge is a later session's
-        (509, "kalosFree", null, false));
+        // Plan 23 · Z2: Route 4 to Lumiose City, the professor's laboratory and Lysandre's café. 509 was "nothing presses"
+        // until Z2: a save that stored it after Viola now stores the road on to Lumiose, which is what it meant
+        (509, "kalosRoute4", AtLeast("VAR_KALOS_STORY", 10), false),
+        (510, "kalosLab", AtLeast("VAR_KALOS_STORY", 11), false),
+        (511, "kalosLysandre", AtLeast("VAR_KALOS_STORY", 12), false),
+        // What comes after the café is a later session's
+        (599, "kalosFree", null, false));
 
     private static readonly Dictionary<string, Objective> ByName = All.ToDictionary(o => o.Name, StringComparer.Ordinal);
 

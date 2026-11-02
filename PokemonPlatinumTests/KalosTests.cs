@@ -183,11 +183,11 @@ public class KalosTests
                 Assert.InRange(slot.Level, 2, 9);
             }
         // Santalune's Pokémon Center (with the Mart's counter inside), its Gym and four houses, found at their doors
-        var center = Overworld.PlacedBuildings.Single(b => b.Kind == BuildingKind.PokemonCenter && b.X0 >= 316);
+        var center = Overworld.PlacedBuildings.Single(b => b.Kind == BuildingKind.PokemonCenter && b.X0 >= 316 && b.Y0 >= 492);
         Assert.Equal("SantaluneCity_PokemonCenter_1F", Overworld.GetWarpAt(325, 519)?.TargetMap);
         Assert.True(center.X0 <= 325 && center.X1 >= 325);
-        Assert.Contains(Overworld.PlacedBuildings, b => b.Kind == BuildingKind.Gym && b.X0 >= 316);
-        Assert.True(Overworld.PlacedBuildings.Count(b => b.Kind == BuildingKind.House && b.X0 >= 316) >= 4, "Santalune's four houses");
+        Assert.Contains(Overworld.PlacedBuildings, b => b.Kind == BuildingKind.Gym && b.X0 >= 316 && b.Y0 >= 492);
+        Assert.True(Overworld.PlacedBuildings.Count(b => b.Kind == BuildingKind.House && b.X0 >= 316 && b.Y0 >= 492) >= 4, "Santalune's four houses");
         var room = MapNamed("SantaluneCity_PokemonCenter_1F");
         Assert.Contains(room.NPCs, n => n.IsHealingNurse);
         Assert.Contains(room.NPCs, n => n.IsPokeMartClerk);
@@ -213,5 +213,70 @@ public class KalosTests
         Assert.True(Reached("Kalos", 341, 508), "before Santalune's Gym");
         Assert.True(Reached("SantaluneCity_Gym", 6, 5), "Viola's place");
         Assert.True(Reached("SantaluneCity_PokemonCenter_1F", 8, 6), "the Pokémon Center's counter");
+    }
+
+    [Fact]
+    public void Route4AndLumioseAreOpenWithTheirGardenBoulevardsTowerAndRooms()
+    {
+        Assert.Equal("Route 4", Overworld.DisplayNameAt(358, 450));
+        Assert.Equal("Lumiose City", Overworld.DisplayNameAt(360, 380));
+        Assert.Equal(Architecture.Lumiose, Overworld.ArchitectureAt(360, 380));
+        // Route 4's garden: tall grass among the beds, flower Pokémon of Kalos-Central at the region's early levels
+        Assert.Equal(TileBehavior.TallGrass, Overworld.BehaviourAt(345, 450));
+        foreach (var slot in Kalos.Area("kalos_route_4")!.Land!)
+        {
+            Assert.True(PokemonDatabase.Get(slot.Species)!.DexNumbers.ContainsKey("kalos-central"), $"{slot.Species} is no Kalos-Central species");
+            Assert.InRange(slot.Level, 6, 10);
+        }
+        Assert.Contains(Kalos.Area("kalos_route_4")!.Land!, e => e.Species == "Flabébé");
+        // The tower of light stands in the middle of the central plaza and blocks its tiles; the plaza walks round it
+        var tower = Assert.Single(Overworld.Props, p => p.Type == PropType.PrismTower);
+        Assert.Equal((358, 358, 4, 4), (tower.X, tower.Y, tower.Width, tower.Depth));
+        Assert.False(Overworld.IsWalkable(359, 359));
+        Assert.True(Overworld.IsWalkable(359, 363));
+        // Every building of the city is found at its door, a block no wider than a building found at its door may be;
+        // its Pokémon Center, the professor's laboratory and the cafés open, the rest shut until later sessions
+        var city = Overworld.PlacedBuildings.Where(b => b.X0 >= 300 && b.X1 < 420 && b.Y0 >= 300 && b.Y1 < 420).ToList();
+        Assert.True(city.Count >= 36, $"Lumiose has {city.Count} buildings");
+        Assert.Single(city, b => b.Kind == BuildingKind.PokemonCenter);
+        Assert.Single(city, b => b.Kind == BuildingKind.Lab);
+        Assert.Equal("LumioseCity_PokemonCenter_1F", Overworld.GetWarpAt(349, 407)?.TargetMap);
+        Assert.Equal("LumioseCity_SycamoreLab", Overworld.GetWarpAt(368, 387)?.TargetMap);
+        Assert.Equal("LumioseCity_LysandreCafe", Overworld.GetWarpAt(367, 337)?.TargetMap);
+        var center = MapNamed("LumioseCity_PokemonCenter_1F");
+        Assert.Contains(center.NPCs, n => n.IsHealingNurse);
+        Assert.Contains(center.NPCs, n => n.IsPokeMartClerk);
+        Assert.Contains(MapNamed("LumioseCity_SycamoreLab").Everyone, n => n.Name == "Prof. Sycamore");
+        Assert.Contains(MapNamed("LumioseCity_LysandreCafe").Everyone, n => n.Name == "Lysandre");
+        Assert.Equal("Pokémon Professor", TrainerDatabase.Get("kalos_sycamore_1")!.Class);
+        // Fly lands before Lumiose's Pokémon Center once the city has been come to
+        var townMap = RegionMap.Of(RegionDatabase.Kalos)!;
+        Assert.Contains(townMap.FlySpots, f => f.Spawn == 3 && f.Cells.Contains(RegionMap.CellOf(349, 408)));
+        Assert.Contains("FLAG_FIRST_ARRIVAL_LUMIOSE_CITY", townMap.ArrivalFlags("lumiose_city"));
+        var (cx, cy) = RegionMap.CellOf(360, 360);
+        Assert.Equal("Lumiose City", townMap.BlockAt(cx, cy)?.Name);
+    }
+
+    [Fact]
+    public void FromTheBedroomTheWayRunsUpRoute4AndRoundLumiosesRings()
+    {
+        var walked = Walked.Value;
+        bool Reached(string map, int x, int y) => walked.Any(p => p.Key.Name == map && p.Value.Contains((x, y)));
+        Assert.True(Reached("Kalos", 358, 480), "Route 4's promenade");
+        Assert.True(Reached("Kalos", 359, 415), "Lumiose's south gate");
+        // The ring of boulevard round the tower, the ring half way out and the ring along the city's edge, each walked all round
+        foreach (var (x, y, what) in new[]
+                 {
+                     (359, 346, "the boulevard north of the tower"), (373, 359, "the boulevard east"), (359, 373, "the boulevard south"), (346, 359, "the boulevard west"),
+                     (359, 326, "the middle ring north"), (392, 359, "the middle ring east"), (327, 359, "the middle ring west"),
+                     (359, 305, "the outer ring north"), (414, 359, "the outer ring east"), (304, 359, "the outer ring west"),
+                 })
+            Assert.True(Reached("Kalos", x, y), what);
+        // The five plazas
+        foreach (var (x, y, what) in new[] { (355, 313, "Jaune"), (309, 356, "Vert"), (401, 356, "Rouge"), (388, 324, "Magenta"), (388, 390, "Bleu") })
+            Assert.True(Reached("Kalos", x, y), $"{what} Plaza");
+        Assert.True(Reached("LumioseCity_SycamoreLab", 7, 5), "the professor's laboratory");
+        Assert.True(Reached("LumioseCity_LysandreCafe", 6, 7), "Lysandre's café");
+        Assert.True(Reached("LumioseCity_PokemonCenter_1F", 8, 6), "Lumiose's Pokémon Center");
     }
 }

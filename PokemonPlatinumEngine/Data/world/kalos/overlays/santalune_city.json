@@ -1,12 +1,12 @@
 {
   // Santalune City (plan 23 · Z1, second part): drawn by hand, our words. A town of stone round a square with a
   // fountain: the Gym north of it, the Pokémon Center (with the Mart's counter inside, as Kalos's centres have) west of
-  // it, four houses, the way in from Route 3 in the west and the road north-east toward Lumiose City, Route 4, which is
-  // not drawn yet: the trigger at its foot turns the player back. The neighbour waits by the way in for a battle, and the
+  // it, four houses, the way in from Route 3 in the west and the road north to Lumiose City, Route 4 (plan 23 · Z2),
+  // whose foot a guard keeps until the Bug Badge is won (the trigger, on VAR_KALOS_STORY 8). The neighbour waits by the way in for a battle, and the
   // friends gather on the square after it (santalune_city.txt). Its houses are built as Aquacorde's are (Canalside),
-  // and its song is Aquacorde's, until plan 31 writes the city its own
+  // and its song is the city's own (plan 31 · MU3)
   "area": "santalune_city",
-  "bgmTrack": "kalos/aquacorde",
+  "bgmTrack": "kalos/santalune",
   "trees": "Round",
   "architecture": "Canalside",
   "doors": [
@@ -19,7 +19,7 @@
   ],
   "triggers": [
     { "script": "Neighbour", "x": 319, "z": 526, "width": 1, "depth": 4, "variable": "VAR_KALOS_STORY", "value": 7 },
-    { "script": "NotYet", "x": 356, "z": 499, "width": 4, "depth": 1, "variable": "VAR_KALOS_ROUTE_4", "value": 0 }
+    { "script": "NotYet", "x": 356, "z": 499, "width": 4, "depth": 1, "variable": "VAR_KALOS_STORY", "value": 8 }
   ],
   "props": [
     { "type": "Fountain", "x": 340, "y": 517, "width": 3, "depth": 3 },
@@ -58,6 +58,6 @@
   },
   "signs": {
     "CitySign": "Santalune City\nA city of old stone and quiet streets.",
-    "RouteFourSign": "North-east: Route 4\nLumiose City beyond"
+    "RouteFourSign": "North: Route 4\nLumiose City beyond"
   }
 }

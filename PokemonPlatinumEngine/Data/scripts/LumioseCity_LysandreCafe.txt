@@ -1,0 +1,49 @@
+# Lysandre's café in the north of Lumiose City (plan 23 · Z2). The lines are our own, on X and Y's beats as they are
+# publicly described (docs/mechanics/rulings.md, "Lumiose City and Route 4, drawn by hand"): the professor waits there
+# with a tall man of the city who speaks of a better world and of Pokémon that change; the professor goes back to his
+# laboratory after. VAR_KALOS_STORY is vaniville_town.txt's count: 11 becomes 12 here. The room's people: lysandre,
+# sycamore (FLAG_KALOS_HIDE_SYCAMORE_CAFE but while he waits there) and the café's waiter.
+
+
+# Into the café with the professor waiting (VAR_KALOS_STORY 11)
+script OnEnter
+  if var VAR_KALOS_STORY != 11 end
+  scene "Lysandre's cafe"
+  face sycamore player
+  speaker "Prof. Sycamore"
+  say "Ah, {player}, here you are! Come, come. Let me introduce an old friend of mine."
+  face lysandre player
+  speaker "Lysandre"
+  say "So this is the young Trainer the professor speaks of. My name is Lysandre."
+  say "I want this world to be beautiful. To be beautiful, it must be fair, and to be fair, it must be shared by fewer hands."
+  say "Some Pokémon change their very shape when a bond is strong enough. Power like that should go to those who would use it well."
+  speaker "Prof. Sycamore"
+  say "Lysandre helped pay for my research for years. He's a good man, if a little grand about it!"
+  speaker "Lysandre"
+  say "Tell me, {player}: will you use your strength for others, or only for yourself? I'll be watching to find out."
+  speaker "Prof. Sycamore"
+  say "Well! I should get back to the laboratory. Go and see Kalos, {player}. Its roads are opening up again soon!"
+  hide sycamore
+  setflag FLAG_KALOS_HIDE_SYCAMORE_CAFE
+  clearflag FLAG_KALOS_HIDE_SYCAMORE_LAB
+  setvar VAR_KALOS_STORY 12
+  objective kalosFree
+  endscene
+  end
+
+
+script Lysandre
+  face lysandre player
+  speaker "Lysandre"
+  say "The world grows more crowded every year. One day someone will have to choose who it is for."
+  end
+
+script Sycamore
+  speaker "Prof. Sycamore"
+  say "Isn't this café wonderful? The best in Lumiose, I'd say."
+  end
+
+script Waiter
+  speaker "Waiter"
+  say "Good day. The gentleman in red owns this café. He takes his coffee very black and very hot."
+  end

@@ -1,0 +1,45 @@
+{
+  "key": "kalos_route_4",
+  "index": 7,
+  "name": "Route 4",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "ROUTE_4",
+  "nightMusic": "ROUTE_4",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [],
+  "objects": [
+    { "id": "lass", "looks": "lass", "movement": "look_east", "x": 354, "z": 444, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_LASS_ELODIE" },
+    { "id": "youngster", "looks": "youngster", "movement": "look_west", "x": 363, "z": 457, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_YOUNGSTER_THEO" },
+    { "id": "picnicker", "looks": "picnicker", "movement": "look_east", "x": 354, "z": 472, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_PICNICKER_MARGAUX" },
+    { "id": "gardener", "looks": "gentleman", "movement": "look_south", "x": 379, "z": 448, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 378, "z": 433, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_ROUTE_4_ANTIDOTE", "item": "Antidote", "script": "" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 341, "z": 483, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_ROUTE_4_POKE_BALL", "item": "Poké Ball", "script": "" }
+  ],
+  "signs": [
+    { "x": 354, "z": 490, "type": 0, "script": "RouteSign" }
+  ],
+  "triggers": [],
+  "land": [
+    { "species": "Ledyba", "level": 7 },
+    { "species": "Flabébé", "level": 7 },
+    { "species": "Budew", "level": 7 },
+    { "species": "Combee", "level": 7 },
+    { "species": "Skitty", "level": 7 },
+    { "species": "Flabébé", "level": 8 },
+    { "species": "Ledyba", "level": 8 },
+    { "species": "Bunnelby", "level": 8 },
+    { "species": "Ralts", "level": 7 },
+    { "species": "Combee", "level": 8 },
+    { "species": "Skitty", "level": 9 },
+    { "species": "Ralts", "level": 9 }
+  ],
+  "landRate": 20
+}

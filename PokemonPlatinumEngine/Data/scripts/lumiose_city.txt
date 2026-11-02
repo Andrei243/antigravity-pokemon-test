@@ -1,0 +1,71 @@
+# Lumiose City (plan 23 · Z2). The lines are our own, on X and Y's beats as they are publicly described
+# (docs/mechanics/rulings.md, "Lumiose City and Route 4, drawn by hand"): the professor's two assistants meet the
+# player at the south gate and send them up the avenue to the laboratory (LumioseCity_SycamoreLab.txt), the professor
+# battles and gives one of Kanto's first three, and then takes the player to Lysandre's café in the north
+# (LumioseCity_LysandreCafe.txt). VAR_KALOS_STORY is vaniville_town.txt's count: 9, the Bug Badge won, becomes 10 at the
+# gate, 11 in the laboratory and 12 in the café.
+#
+# The people: sina and dexio (FLAG_KALOS_HIDE_ASSISTANTS_LUMIOSE once their scene is over). The roads out of the city
+# wait for later sessions (VAR_KALOS_LUMIOSE_ROADS, which nothing sets yet, keeps their triggers on).
+
+
+# A save from before this part of the story was written finds the people of Lumiose's part of the story as a new game does
+script OnEnter
+  if not flag FLAG_KALOS_LUMIOSE_BEGUN call KalosLumiose
+  end
+
+
+# Into the city from Route 4 (the trigger across the south gate, on VAR_KALOS_STORY 9): the professor's assistants
+script Assistants
+  scene "The professor's assistants"
+  face sina player
+  face dexio player
+  speaker "Sina"
+  say "There you are! You must be {player}. We've been watching the gate all morning!"
+  speaker "Dexio"
+  say "Welcome to Lumiose City. We assist Professor Sycamore with his research. I'm Dexio, and this is Sina."
+  speaker "Sina"
+  say "The professor is waiting for you at his laboratory. It's just up this avenue, on the right. You can't miss it!"
+  speaker "Dexio"
+  say "We'll go ahead and tell him you've arrived. Don't get lost among the shops, now."
+  walk sina up 4 fast
+  walk dexio up 4 fast
+  hide sina
+  hide dexio
+  setflag FLAG_KALOS_HIDE_ASSISTANTS_LUMIOSE
+  setvar VAR_KALOS_STORY 10
+  objective kalosLab
+  endscene
+  end
+
+script Sina
+  speaker "Sina"
+  say "The professor's laboratory is up the avenue on the right!"
+  end
+
+script Dexio
+  speaker "Dexio"
+  say "Lumiose is a big city. The avenues all lead back to the tower, if you ever lose your way."
+  end
+
+
+# The roads out of the city, which later sessions open (plan 23 · Z2's Routes 5 to 7 and Z4's)
+script NotYetNorth
+  text "The road beyond is closed for repairs. It will open again soon."
+  walk player down 1
+  end
+
+script NotYetSouth
+  text "The road beyond is closed for repairs. It will open again soon."
+  walk player up 1
+  end
+
+script NotYetWest
+  text "The road to Route 5 is closed for repairs. It will open again soon."
+  walk player right 1
+  end
+
+script NotYetEast
+  text "The road beyond is closed for repairs. It will open again soon."
+  walk player left 1
+  end

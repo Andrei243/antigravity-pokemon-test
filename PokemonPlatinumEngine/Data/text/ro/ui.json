@@ -1103,6 +1103,9 @@
     "kalosRoute3": "Urmează Drumul 3, ieșind din pădure, spre Orașul Santalune.",
     "kalosSantalune": "Intră în Orașul Santalune.",
     "kalosViola": "Câștigă Insigna Insectă de la Viola, la Arena din Orașul Santalune.",
+    "kalosRoute4": "Ia Drumul 4 spre nord, prin grădină, până în Lumiose City.",
+    "kalosLab": "Găsește laboratorul profesorului Sycamore, în susul bulevardului de la poarta de sud a orașului Lumiose.",
+    "kalosLysandre": "Întâlnește-l pe profesor la cafeneaua din nordul orașului Lumiose, dincolo de turn.",
     "kalosFree": "Până aici merge drumul deocamdată. Kalos îți stă deschis."
   },
 
@@ -3917,6 +3920,7 @@
     "Pokemaniac": "Pasionat Pokémon",
     "PokemonBreeder": "Crescător Pokémon",
     "PokemonRanger": "Ranger Pokémon",
+    "PokemonProfessor": "Profesor Pokémon",
     "PokemonTrainer": "Antrenor Pokémon",
     "Policeman": "Polițist",
     "Psychic": "Medium",

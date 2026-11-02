@@ -2,9 +2,9 @@
   // Santalune Forest (plan 23 · Z1, second part): drawn by hand, our words. A wood of glades joined by paths, a west way
   // and an east way round a grove of grass in its middle; its own Pokémon are the bugs, the three monkeys and Pikachu,
   // and a Pikachu stands in the grove. Shauna meets the player at the way in (santalune_forest.txt), hidden by a flag of
-  // ours until then. The song is Aquacorde's, until plan 31 writes the forest its own
+  // ours until then. Its song is the forest's own (plan 31 · MU3)
   "area": "santalune_forest",
-  "bgmTrack": "kalos/aquacorde",
+  "bgmTrack": "kalos/santalune_forest",
   "trees": "Round",
   "architecture": "Hamlet",
   "battleArena": "Forest",

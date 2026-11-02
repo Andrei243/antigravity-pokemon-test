@@ -316,7 +316,12 @@ public enum Architecture
     /// <summary>Cream stucco under slate-blue gable roofs with shutters and flower boxes: the quiet hamlet in the woods where the journey begins (Vaniville, plan 23 · Z1).</summary>
     Hamlet,
     /// <summary>Warm pale stone under terracotta hip roofs with shutters and flower boxes: the riverside town of the bridge and the café (Aquacorde, plan 23 · Z1).</summary>
-    Canalside
+    Canalside,
+    /// <summary>
+    /// Cream stone of three storeys under steep slate roofs, sash windows, iron balconies and chimneys: the city of
+    /// boulevards round its tower of light (Lumiose, plan 23 · Z2).
+    /// </summary>
+    Lumiose
 }
 
 /// <summary>Visual theme for indoor maps; <see cref="None"/> means the map is outdoors.</summary>

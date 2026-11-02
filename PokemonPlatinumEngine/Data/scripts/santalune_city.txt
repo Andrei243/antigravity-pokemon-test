@@ -85,8 +85,9 @@ script Rival
   end
 
 
-# The road north-east to Route 4 and Lumiose City (plan 23 · Z2 draws it)
+# The road north to Route 4 and Lumiose City (plan 23 · Z2): before the Bug Badge (VAR_KALOS_STORY 8) the guard turns the
+# player back; once Viola is beaten (9) the way is open
 script NotYet
-  text "Workers are mending the road to Lumiose City. It will open again soon."
+  text "A guard stands at the garden gate: only Trainers with a Badge may take the road to Lumiose City."
   walk player down 1
   end

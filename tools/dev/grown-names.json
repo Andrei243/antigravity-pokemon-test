@@ -14,7 +14,10 @@
     "Swimmer Denise: I swim faster than a Seel! Want to see what else I can do?": "any Seel, not one of hers",
     "Fisherman Marvin: The lake up north is full of Gyarados. I raise my own from Magikarp!": "what his Gyarados were before he raised them",
     "Swimmer Nora: Shellder hide in the rocks round here. So do I!": "the place's wild Shellder",
-    "Swimmer Darrin: Horsea love these warm currents. So do I!": "the place's wild Horsea"
+    "Swimmer Darrin: Horsea love these warm currents. So do I!": "the place's wild Horsea",
+    "{player} received Bulbasaur!": "the Pokémon the professor gives (plan 23 · Z2), not one of his team",
+    "{player} received Charmander!": "the Pokémon the professor gives (plan 23 · Z2), not one of his team",
+    "{player} received Squirtle!": "the Pokémon the professor gives (plan 23 · Z2), not one of his team"
   },
   "written": {
     "Tuber Simon: My Azurill and Marill are the best of friends. And the best battlers!": "Tuber Simon: My two Azumarill are the best of friends. And the best battlers!",

@@ -883,6 +883,9 @@ public static class RegionDatabase
                 // Plan 23 · Z1, second part: Santalune City's rooms
                 "SantaluneCity_PokemonCenter_1F", "SantaluneCity_Gym", "SantaluneCity_NorthwestHouse", "SantaluneCity_EastHouse",
                 "SantaluneCity_SouthwestHouse", "SantaluneCity_SoutheastHouse",
+                // Plan 23 · Z2: Lumiose City's rooms
+                "LumioseCity_PokemonCenter_1F", "LumioseCity_SycamoreLab", "LumioseCity_LysandreCafe", "LumioseCity_Cafe",
+                "LumioseCity_SouthHouse",
             }
         },
         new() { Id = Alola, Name = "Alola", Generation = 7 },

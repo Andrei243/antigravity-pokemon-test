@@ -372,5 +372,102 @@
         "personality": 5611520
       }
     ]
+  },
+  {
+    "id": "kalos_lass_elodie",
+    "name": "Élodie",
+    "class": "Lass",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 128,
+    "party": [
+      {
+        "species": "Flabébé",
+        "level": 8,
+        "ivScale": 0,
+        "personality": 6553600
+      }
+    ]
+  },
+  {
+    "id": "kalos_youngster_theo",
+    "name": "Théo",
+    "class": "Youngster",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 128,
+    "party": [
+      {
+        "species": "Ledyba",
+        "level": 7,
+        "ivScale": 0,
+        "personality": 2621440
+      },
+      {
+        "species": "Bunnelby",
+        "level": 8,
+        "ivScale": 0,
+        "personality": 9175040
+      }
+    ]
+  },
+  {
+    "id": "kalos_picnicker_margaux",
+    "name": "Margaux",
+    "class": "Picnicker",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 128,
+    "party": [
+      {
+        "species": "Budew",
+        "level": 7,
+        "ivScale": 0,
+        "personality": 3407872
+      },
+      {
+        "species": "Combee",
+        "level": 8,
+        "ivScale": 0,
+        "personality": 12189696
+      }
+    ]
+  },
+  {
+    "id": "kalos_sycamore_1",
+    "name": "Sycamore",
+    "class": "Pokémon Professor",
+    "ai": [
+      "Basic",
+      "EvalAttack"
+    ],
+    "items": [],
+    "prizeMoney": 1000,
+    "party": [
+      {
+        "species": "Bulbasaur",
+        "level": 10,
+        "ivScale": 0,
+        "personality": 4456448
+      },
+      {
+        "species": "Charmander",
+        "level": 10,
+        "ivScale": 0,
+        "personality": 7340032
+      },
+      {
+        "species": "Squirtle",
+        "level": 10,
+        "ivScale": 0,
+        "personality": 11534336
+      }
+    ]
   }
 ]
