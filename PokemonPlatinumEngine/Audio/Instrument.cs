@@ -402,5 +402,14 @@ public static class InstrumentBank
             Detune = 10f, Unison = 5, Spread = 0.85f, Attack = 0.15f, Decay = 0.9f, Sustain = 0.9f, Release = 0.28f,
             Vibrato = 0.09f, VibratoRate = 5.2f, VibratoDelay = 0.2f, Noise = 0.01f, Gain = 0.6f
         });
+
+        // Plan 31 · MU4: Alola's last instrument, beside MU0's
+        Add(new Instrument
+        {
+            // A bamboo flute: hollower and breathier than the concert flute, sliding up into its notes, a slow wide vibrato
+            Name = "bambooflute", Bright = new[] { 1f, 0.18f, 0.1f, 0.03f }, Mellow = new[] { 1f, 0.1f, 0.03f },
+            BrightDecay = 0.2f, Attack = 0.06f, Decay = 0.5f, Sustain = 0.8f, Release = 0.14f,
+            Vibrato = 0.22f, VibratoRate = 4.4f, VibratoDelay = 0.3f, Noise = 0.11f, PitchStart = -0.6f, PitchTime = 0.06f, Gain = 0.5f
+        });
     }
 }
