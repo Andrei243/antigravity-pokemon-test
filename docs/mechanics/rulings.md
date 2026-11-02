@@ -5843,6 +5843,29 @@ our own on HeartGold's shapes, and the stats are plan 15's decision 6 (our own f
   items (vitamins, PP Up, Rare Candy, the evolution stones, two berries, a Heart Scale) at prices in Athlete Points of
   our own, and nothing is sold to it; *cut down*: HeartGold's rotating daily stock and its Aprijuice. **The records
   board** is the desk east of the course desk (`common.AthlonRecords`).
+- **The bonuses, the halls' honours, the course's song and Whitney** (plan 15, its last part; our own numbers on
+  HeartGold's shapes, `Models/AthlonBonuses.cs`): each event can give each team two bonuses of 2 points, read from what
+  the event counted once it is over (they change nothing of the play and draw nothing): a **Steady** one for keeping
+  its slip down and a **Star** one for its feat. Hurdle Dash: through with at most one trip / with none in 26 seconds;
+  Block Smash: no more than two hits off the beat / 29 blocks; Ring Drop: no fall / two knock-offs; Pennant Capture: no
+  more than 35 bumps / 18 pennants; Snow Throw: hit no more than 15 times / 24 hits; Disc Catch: no more than four discs
+  let fall / 16 caught in the air; Lamp Jump: nine presses in ten in time / 155 lamps; Relay Run: no more than six
+  hand-overs and never past the line of breath / 6,800 units run; Circle Push: 24 seconds in the circle / a second and a
+  half alone in it; Goal Roll: a goal and no own goal / three goals. An even team wins each about one time in three to
+  one in six, and its mean total with them stays under silver. The bonuses count toward the course's total (and so the
+  place, the medal and the points earned), and the save keeps the player's in all (`AthlonRecords.SteadyBonuses`,
+  `StarBonuses`). *Cut down*: HeartGold's bonuses are by Pokémon and by many kinds; ours are by team, two an event.
+  **The halls' honours** (HeartGold's shoes', clothes', flag's, Pokégear's and ball's signs and the hero's statue, shown
+  by its own code): read on the wall where each would hang once earned (`athlon earned`, `AthlonRecords.Has`), the
+  hall's own words until then: the shoes at ten Steady bonuses, the clothes at ten Star bonuses, the flag at ten courses
+  won, the Pokégear's sign at a medal on every one of the five courses, the ball's at silver or better on every one, the
+  statue at gold on every one (the Practice Course counts for none). *Cut down*: they are read, not drawn: nothing is
+  hung on the walls or stood on the pedestal. **The course's song** is `Data/athlon.json`'s `music`: the bicycle's theme
+  (`common/bicycle`) stands in for the dome's own, which waits for a song of ours that the user has heard and approved;
+  the place's song comes back when the screen is left. **The events' sounds** are the game's own, two to an event (a
+  good thing and a slip, `AthlonScreen.Heard`). **Whitney** (HeartGold's `FLAG_HIDE_POKEATHLON_RECEPTION_WHITNEY`, which
+  its own code clears) is in the lobby on Saturdays once her Plain Badge is won: our own rule, kept by the lobby's
+  `OnEnter`, with our own lines.
 
 ## Ways to play (2026-10-24, plan 13 · V1)
 

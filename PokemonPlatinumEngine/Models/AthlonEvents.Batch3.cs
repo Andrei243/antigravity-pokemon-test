@@ -42,6 +42,11 @@ public static class AthlonData
         public List<FileCourse> Courses { get; set; } = new();
         public FileMedals Medals { get; set; } = new();
         public List<FileGood> Shop { get; set; } = new();
+        /// <summary>
+        /// The song a course plays to (plan 15, its last part): a song of the game's own that stands in for the dome's
+        /// theme until one of ours is written and approved; empty for the place's own song to go on.
+        /// </summary>
+        public string Music { get; set; } = "";
     }
 
     // (in two pieces: a literal of a section's name and a dot reads as a text key to TextTests)
@@ -156,6 +161,8 @@ public sealed class RelayRun : AthlonEvent
     public sealed class Relay
     {
         public int Active, Switching, Spurt, SpurtRest, Spurts, Handovers;
+        /// <summary>Frames run past the line of breath (a count for the bonuses, plan 15's last part; it changes nothing run).</summary>
+        public int Breathless;
         public float Distance, Speed;
         /// <summary>The breath at which a rival means to hand over, drawn as each runner starts (NaN: not yet).</summary>
         public float HandAt = float.NaN;
@@ -222,6 +229,7 @@ public sealed class RelayRun : AthlonEvent
             r.Speed = Math.Min(top, r.Speed + top / 15f);
             r.Distance += r.Speed * 0.05f * Wobble(Rng);
             r.Distance += r.Speed;
+            if (r.Fatigue[r.Active] >= Tired) r.Breathless++;
             r.Fatigue[r.Active] = Math.Min(Tired + 60f, r.Fatigue[r.Active] + Drain(stats) * (r.Spurt > 0 ? 2f : 1f));
             if (r.Spurt > 0) r.Spurt--;
         }

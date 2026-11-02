@@ -1288,6 +1288,9 @@ public partial class GameEngine
                     game.flow.ScriptAnswer = 0;
                     game.flow.AthlonScreen.Open(game.flow.Party, game.flow.Athlon, Dice.New());
                     foreach (var p in game.flow.Party.Members) if (!p.IsEgg) PokemonSprites.Request(AthleteStats.SpeciesOf(p).Name);
+                    // The course's song (Data/athlon.json: a song of the game's own stands in for the dome's theme),
+                    // and the place's own back once the screen is left (GameEngine.Update)
+                    if (AthlonData.File.Music is { Length: > 0 } song && MusicLibrary.Exists(song)) AudioManager.PlayMusic(song);
                     game.flow.State = GameState.Athlon;
                     break;
                 case ScriptScreen.Travel:

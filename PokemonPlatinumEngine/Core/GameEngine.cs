@@ -1440,6 +1440,8 @@ public partial class GameEngine
                 {
                     flow.ScriptAnswer = flow.AthlonScreen.Outcome;
                     flow.State = GameState.Overworld;
+                    // The place's own song again after a course's (Data/athlon.json's music)
+                    if (AthlonData.File.Music.Length > 0 && flow.AthlonScreen.Phase != UI.AthlonPhase.Records) PlayFieldMusic();
                 }
                 break;
             case GameState.Phrases:

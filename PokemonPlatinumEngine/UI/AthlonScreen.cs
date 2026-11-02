@@ -200,6 +200,7 @@ public sealed class AthlonScreen
         var run = Run!;
         Outcome = run.PlayerPlace;
         NewRecord = Records.Record(run.Course.Key, run.Earned, Outcome);
+        Records.Count(run.AllBonuses(0));
         Medal = AthlonData.MedalFor(run.Earned);
         Enter(AthlonPhase.Scoreboard);
         AudioManager.PlaySound(Outcome == 1 ? "levelup" : "select");
@@ -245,28 +246,33 @@ public sealed class AthlonScreen
         AudioManager.PlaySound("lift_ding");
     }
 
-    // The player's own team is heard as it plays (the game's own sounds for now; the dome's are plan 15 · E8's):
-    // a jump, a trip, a block broken, a knock-off and a fall
-    private (int Air, int Trips, int Broken, int Knocks, int Falls) heard;
+    // The player's own team is heard as it plays, in every one of the ten events (the game's own sounds stand in: the
+    // dome's own wait for the user's ear, as its theme does; docs/sound-effects.md): two counts of each event, a good
+    // thing and a slip, each heard as it goes up
+    private (int Good, int Slip) heard;
+
+    /// <summary>What the player's team did in an event that is heard: two counts and the sound each goes up with.</summary>
+    public static (int Good, string GoodSound, int Slip, string SlipSound) Heard(AthlonEvent ev) => ev switch
+    {
+        HurdleDash h => (h.Runners[0].Air, "ledge", h.Runners[0].Trips, "bump"),
+        BlockSmash b => (b.Smashers[0].Broken, "rock_smash", 0, ""),
+        RingDrop r => (r.Pushers[0].Knocks, "hit_super", r.Pushers[0].Falls, "run_away"),
+        PennantCapture p => (p.Chasers[0].Flags, "coin_land", p.Chasers[0].Bumps, "bump"),
+        SnowThrow s => (s.Throwers[0].Thrown, "snowball", s.Throwers[0].Taken, "hit_weak"),
+        DiscCatch d => (d.Catchers[0].Caught + d.Catchers[0].CaughtInAir, "coin_land", d.Catchers[0].Missed, "bump"),
+        LampJump l => (l.Jumpers[0].Good, "ledge", l.Jumpers[0].Bounces - l.Jumpers[0].Good, "bump"),
+        RelayRun rr => (rr.Relays[0].Laps, "poketch_count", rr.Relays[0].Handovers, "recall"),
+        CirclePush c => (c.Pushers[0].Alone / AthlonEvent.FramesPerSecond, "poketch_beep", 0, ""),
+        GoalRoll g => (g.Players[0].Goals, "hit_super", g.Players[0].OwnGoals, "run_away"),
+        _ => (0, "", 0, "")
+    };
 
     private void Hear(AthlonEvent ev)
     {
-        (int Air, int Trips, int Broken, int Knocks, int Falls) now = ev switch
-        {
-            HurdleDash h => (h.Runners[0].Air, h.Runners[0].Trips, 0, 0, 0),
-            BlockSmash b => (0, 0, b.Smashers[0].Broken, 0, 0),
-            RingDrop r => (0, 0, 0, r.Pushers[0].Knocks, r.Pushers[0].Falls),
-            // Plan 15 · E8: a lap run, a point of the circle held, a goal scored
-            RelayRun rr => (rr.Relays[0].Laps, 0, 0, 0, 0),
-            GoalRoll g => (0, 0, 0, g.Players[0].Goals, g.Players[0].OwnGoals),
-            _ => default
-        };
-        if (now.Air > heard.Air) AudioManager.PlaySound("ledge");
-        if (now.Trips > heard.Trips) AudioManager.PlaySound("bump");
-        if (now.Broken > heard.Broken) AudioManager.PlaySound("rock_smash");
-        if (now.Knocks > heard.Knocks) AudioManager.PlaySound("hit_super");
-        if (now.Falls > heard.Falls) AudioManager.PlaySound("run_away");
-        heard = now;
+        var now = Heard(ev);
+        if (now.Good > heard.Good && now.GoodSound.Length > 0) AudioManager.PlaySound(now.GoodSound);
+        if (now.Slip > heard.Slip && now.SlipSound.Length > 0) AudioManager.PlaySound(now.SlipSound);
+        heard = (now.Good, now.Slip);
     }
 
     /// <summary>The records board (plan 15 · E8; <c>athlon records</c>): each course's best and its medal; any button closes it.</summary>

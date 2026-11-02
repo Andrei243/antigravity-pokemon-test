@@ -22500,21 +22500,49 @@ way 0
   + FLAG_UNOVA_FRIGATE_SWITCH_A
 way 1, from answer 1
   ? There's a switch on the wall marked BARRIER. Press it? = No
+=== pokeathlon_dome_interior_1f.Whitney
+from Whitney at 23,22 of PokeathlonDome_1F
+way -
+  Whitney> Oh, hi! Saturdays are my day off from the Gym, so I come here to cheer. Have you entered a course yet?
+  Whitney> Battles make Pokémon tough, but races and games make them happy. My Miltank loves Block Smash!
+=== pokeathlon_dome_interior_b1f_friendship_room.Statue
+from the sign at 7,8 of PokeathlonDome_B1F_Friendship
+way -
+=== pokeathlon_dome_interior_b1f_potential_room.Ball
+from the sign at 10,3 of PokeathlonDome_B1F_Potential
+from the sign at 11,3 of PokeathlonDome_B1F_Potential
+way -
 === pokeathlon_dome_interior_b1f_potential_room.Guide
 from Guide at 6,3 of PokeathlonDome_B1F_Potential
 from Guide at 7,3 of PokeathlonDome_B1F_Potential
 way -
   Guide> Beyond me is the last hall. It opens to a Trainer once their team has won three courses.
+=== pokeathlon_dome_interior_b1f_potential_room.Pokegear
+from the sign at 3,3 of PokeathlonDome_B1F_Potential
+way -
 === pokeathlon_dome_interior_b1f_solidarity_room.Guide
 from Guide at 2,3 of PokeathlonDome_B1F_Solidarity
 from Guide at 3,3 of PokeathlonDome_B1F_Solidarity
 way -
   Guide> Beyond me is the hall of trust. It opens to a Trainer once their team has won a course.
+=== pokeathlon_dome_interior_b1f_trust_room.Clothes
+from the sign at 10,3 of PokeathlonDome_B1F_Trust
+from the sign at 9,3 of PokeathlonDome_B1F_Trust
+way -
+=== pokeathlon_dome_interior_b1f_trust_room.Flag
+from the sign at 6,3 of PokeathlonDome_B1F_Trust
+from the sign at 7,3 of PokeathlonDome_B1F_Trust
+way -
 === pokeathlon_dome_interior_b1f_trust_room.Guide
 from Guide at 2,3 of PokeathlonDome_B1F_Trust
 from Guide at 3,3 of PokeathlonDome_B1F_Trust
 way -
   Guide> Beyond me is the hall of potential. It opens to a Trainer once their team has won two courses.
+=== pokeathlon_dome_interior_b1f_trust_room.Shoes
+from the sign at 12,3 of PokeathlonDome_B1F_Trust
+from the sign at 13,3 of PokeathlonDome_B1F_Trust
+from the sign at 14,3 of PokeathlonDome_B1F_Trust
+way -
 === pokemon_league.Statue
 from the tile read at 837,561 of Sinnoh
 from the tile read at 838,561 of Sinnoh

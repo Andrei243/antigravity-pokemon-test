@@ -938,6 +938,20 @@
       "ducked": "Evitate: {n}",
       "catches": "PRINSE",
       "lamps": "Lămpi: {n}"
+    },
+    "bonusColumn": "BONUS",
+    "bonus": {
+      "pill": "{name} +{n}",
+      "hurdleDash": { "steady": "Pas Sigur", "star": "Cursă Curată" },
+      "blockSmash": { "steady": "În Ritm", "star": "Demolatorul" },
+      "ringDrop": { "steady": "Bine Înfipt", "star": "Buldozerul" },
+      "pennantCapture": { "steady": "Drum Liber", "star": "Vânător de Fanioane" },
+      "snowThrow": { "steady": "Eschivă", "star": "Ochi de Vultur" },
+      "discCatch": { "steady": "Mâini Sigure", "star": "Zbor Înalt" },
+      "lampJump": { "steady": "Ritm Bun", "star": "Lampagiul" },
+      "relayRun": { "steady": "Pas Egal", "star": "Drum Lung" },
+      "circlePush": { "steady": "Teren Ținut", "star": "Singur în Cerc" },
+      "goalRoll": { "steady": "Poartă Neatinsă", "star": "Hat-trick" }
     }
   },
 

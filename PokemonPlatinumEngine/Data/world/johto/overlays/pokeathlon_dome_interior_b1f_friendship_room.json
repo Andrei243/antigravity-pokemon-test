@@ -19,5 +19,7 @@
     "D49R0107_002+1": "The dome's motto in big letters: \"Every Pokémon can shine.\"",
     "D49R0107_003+1": "A picture of the dome being built, with the owner and his Poliwrath carrying a beam.",
     "D49R0107_004+1": "A picture of the dome's first winners, three small Pokémon holding up a trophy together."
-  }
+  },
+  // The pedestal tells of the statue once gold is won on every course (plan 15, the bonuses)
+  "signScripts": { "D49R0107_001+1": "Statue" }
 }

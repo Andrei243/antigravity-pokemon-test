@@ -245,7 +245,8 @@ public class AthlonTests
         Assert.Equal(3, run.EventIndex);
         Assert.Equal(Enumerable.Range(0, 4).OrderBy(t => t), run.Ranking.OrderBy(t => t));
         Assert.Equal(run.Total(run.Ranking[0]), Enumerable.Range(0, 4).Max(run.Total));
-        Assert.Equal(Enumerable.Range(0, 3).Sum(e => run.PointsOf(e, 0)), run.Earned);
+        // (the events' points and their bonuses, plan 15's last part)
+        Assert.Equal(Enumerable.Range(0, 3).Sum(e => run.PointsOf(e, 0) + AthlonBonuses.Sum(run.BonusesOf(e, 0))), run.Earned);
         Assert.InRange(run.PlayerPlace, 1, 4);
 
         var records = new AthlonRecords();

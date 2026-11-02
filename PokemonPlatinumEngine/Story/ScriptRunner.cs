@@ -1005,6 +1005,10 @@ public sealed partial class ScriptRunner
                     case "points":
                         Result = host.Athlon.Points;
                         break;
+                    // Whether an honour of the halls under the lobby is earned (plan 15, the bonuses)
+                    case "earned":
+                        Result = Enum.TryParse<Models.AthlonHonour>(i.Other, true, out var honour) && host.Athlon.Has(honour) ? 1 : 0;
+                        break;
                     // The records board and the Athlete Shop (plan 15 · E8): screens the script waits out
                     case "records":
                     case "shop":

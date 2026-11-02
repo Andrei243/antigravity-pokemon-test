@@ -53,5 +53,7 @@
     "D49R0105_009+1": "An empty space on the wall, waiting for something a great athlete will one day earn.",
     "D49R0105_010+1": "Pictures of Trainers and Pokémon after a course, tired and smiling.",
     "D49R0105_013+1": "A display case of worn-out running shoes from the dome's first season."
-  }
+  },
+  // The two empty spaces and the pictures tell of what hangs there once it is earned (plan 15, the bonuses)
+  "signScripts": { "D49R0105_008+1": "Clothes", "D49R0105_009+1": "Shoes", "D49R0105_010+1": "Flag" }
 }

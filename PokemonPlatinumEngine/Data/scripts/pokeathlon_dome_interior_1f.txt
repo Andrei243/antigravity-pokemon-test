@@ -1,0 +1,25 @@
+# The Pokéathlon Dome's lobby (plan 20 · J13; HeartGold's D49R0101). The desks' clerks run common.AthlonDesk and
+# common.AthlonRecords; the rest only talk.
+
+# Whitney's visits (plan 15, its last part): HeartGold stands Goldenrod's Gym Leader in the lobby behind
+# FLAG_HIDE_POKEATHLON_RECEPTION_WHITNEY, which its own code clears. Here she comes on Saturdays once her Plain Badge is
+# won (our own rule, docs/mechanics/rulings.md, "The Pokéathlon"), and the lobby's arrival decides whether she is in
+script OnEnter
+  setflag FLAG_HIDE_POKEATHLON_RECEPTION_WHITNEY
+  if not flag FLAG_DEFEATED_WHITNEY goto Done
+  if not weekday saturday goto Done
+  clearflag FLAG_HIDE_POKEATHLON_RECEPTION_WHITNEY
+label Done
+  end
+
+script Whitney
+  speaker "Whitney"
+  athlon points
+  if result > 0 goto Competes
+  say "Oh, hi! Saturdays are my day off from the Gym, so I come here to cheer. Have you entered a course yet?"
+  say "Battles make Pokémon tough, but races and games make them happy. My Miltank loves Block Smash!"
+  end
+label Competes
+  say "Oh, hi! Saturdays are my day off from the Gym, so I come here to cheer."
+  say "You've been competing too? Then I'll be cheering for you as well! Just don't beat my Miltank's record, OK?"
+  end

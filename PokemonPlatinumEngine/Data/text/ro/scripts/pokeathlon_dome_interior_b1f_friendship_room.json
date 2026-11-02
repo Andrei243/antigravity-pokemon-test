@@ -1,0 +1,20 @@
+{
+  "Statue": [
+    {
+      "en": [
+        "A statue of {player} stands on the pedestal, arms raised, three Pokémon at their feet."
+      ],
+      "text": [
+        "Pe piedestal stă o statuie a lui {player}, cu brațele ridicate și trei Pokémoni la picioare."
+      ]
+    },
+    {
+      "en": [
+        "The plaque reads: \"Gold on every course. Every Pokémon can shine.\""
+      ],
+      "text": [
+        "Plăcuța spune: „Aur pe fiecare traseu. Fiecare Pokémon poate străluci.”"
+      ]
+    }
+  ]
+}

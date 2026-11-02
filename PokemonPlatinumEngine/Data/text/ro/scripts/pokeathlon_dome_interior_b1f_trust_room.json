@@ -24,5 +24,35 @@
         "Treci direct! Victoriile tale au deschis sala potențialului."
       ]
     }
+  ],
+  "Shoes": [
+    {
+      "en": [
+        "A pair of running shoes hangs here, worn thin at the toes. The plaque reads: \"For {player}, who never slipped.\""
+      ],
+      "text": [
+        "Aici atârnă o pereche de pantofi de alergare, tociți la vârf. Plăcuța spune: „Pentru {player}, care n-a călcat niciodată strâmb.”"
+      ]
+    }
+  ],
+  "Clothes": [
+    {
+      "en": [
+        "A team jersey hangs here, its number stitched in gold. The plaque reads: \"For {player}, whose Pokémon shone.\""
+      ],
+      "text": [
+        "Aici atârnă un tricou de echipă, cu numărul cusut cu aur. Plăcuța spune: „Pentru {player}, ai cărui Pokémoni au strălucit.”"
+      ]
+    }
+  ],
+  "Flag": [
+    {
+      "en": [
+        "Beside them hangs a flag in the dome's sky blue. It reads: \"{player}: ten courses won.\""
+      ],
+      "text": [
+        "Lângă ele atârnă un steag în albastrul de cer al domului. Pe el scrie: „{player}: zece trasee câștigate.”"
+      ]
+    }
   ]
 }

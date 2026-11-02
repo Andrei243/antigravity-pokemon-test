@@ -12,6 +12,9 @@
     { "key": "jump", "events": [ "LampJump", "DiscCatch", "HurdleDash" ] }
   ],
   "medals": { "gold": 200, "silver": 140, "bronze": 80 },
+  // The song a course is run to: the bicycle's theme stands in for the dome's own, which waits for a song of ours that
+  // the user has heard and approved (plan 15, its last part). Empty, and the square's song goes on
+  "music": "common/bicycle",
   "shop": [
     { "item": "HP Up", "points": 1000 },
     { "item": "Protein", "points": 1000 },

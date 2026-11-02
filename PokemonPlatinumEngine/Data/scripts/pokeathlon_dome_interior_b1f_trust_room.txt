@@ -12,3 +12,36 @@ script Guide
 label Open
   say "Go right ahead! Your wins have opened the hall of potential."
   end
+
+# What the hall hangs once it is earned (plan 15, the bonuses; HeartGold's shoes', clothes' and flag's signs, which it
+# shows behind flags its own code clears): read where each would hang, the wall's own words until then (`sayown`).
+# Earned by the records (AthlonRecords.Has): ten Steady bonuses for the shoes, ten Star bonuses for the clothes, ten
+# courses won for the flag
+script Shoes
+  speaker none
+  athlon earned shoes
+  if result == 0 goto Plain
+  text "A pair of running shoes hangs here, worn thin at the toes. The plaque reads: \"For {player}, who never slipped.\""
+  end
+label Plain
+  sayown
+  end
+
+script Clothes
+  speaker none
+  athlon earned clothes
+  if result == 0 goto Plain
+  text "A team jersey hangs here, its number stitched in gold. The plaque reads: \"For {player}, whose Pokémon shone.\""
+  end
+label Plain
+  sayown
+  end
+
+script Flag
+  speaker none
+  sayown
+  athlon earned flag
+  if result == 0 goto Done
+  text "Beside them hangs a flag in the dome's sky blue. It reads: \"{player}: ten courses won.\""
+label Done
+  end

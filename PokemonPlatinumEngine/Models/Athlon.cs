@@ -160,8 +160,57 @@ public sealed class AthlonRecords
         if (medal > MedalOf(course)) Medals[course] = medal;
     }
 
-    public AthlonRecords Copy() => new() { Points = Points, Best = new Dictionary<string, int>(Best), Runs = Runs, Wins = Wins, Medals = new Dictionary<string, AthlonMedal>(Medals) };
+    /// <summary>The player's Steady and Star bonuses won in all (plan 15, the bonuses), which the halls' honours read.</summary>
+    public int SteadyBonuses { get; set; }
+    public int StarBonuses { get; set; }
+
+    /// <summary>A course's bonuses of the player's team counted (the screen counts them as the course is recorded).</summary>
+    public void Count(IEnumerable<AthlonBonus> bonuses)
+    {
+        foreach (var b in bonuses)
+        {
+            if (b.Kind == AthlonBonusKind.Steady) SteadyBonuses++;
+            else StarBonuses++;
+        }
+    }
+
+    /// <summary>The counts the trust hall's three signs are earned at: Steady bonuses, Star bonuses, courses won.</summary>
+    public const int ForShoes = 10, ForClothes = 10, ForFlag = 10;
+
+    /// <summary>
+    /// Whether an honour of the halls under the lobby is earned (plan 15, the bonuses; our own rules, the rulings' table):
+    /// the shoes, the clothes and the flag by the counts above, the Pokégear's sign by a medal on every one of the five
+    /// courses, the ball's by silver or better on every one, the statue by gold on every one. The Practice Course counts
+    /// for none of the medals.
+    /// </summary>
+    public bool Has(AthlonHonour honour)
+    {
+        AthlonMedal Least() => AthlonData.Courses.Count == 0 ? AthlonMedal.None : AthlonData.Courses.Min(c => MedalOf(c.Key));
+        return honour switch
+        {
+            AthlonHonour.Shoes => SteadyBonuses >= ForShoes,
+            AthlonHonour.Clothes => StarBonuses >= ForClothes,
+            AthlonHonour.Flag => Wins >= ForFlag,
+            AthlonHonour.Pokegear => Least() >= AthlonMedal.Bronze,
+            AthlonHonour.Ball => Least() >= AthlonMedal.Silver,
+            AthlonHonour.Statue => Least() >= AthlonMedal.Gold,
+            _ => false
+        };
+    }
+
+    public AthlonRecords Copy() => new()
+    {
+        Points = Points, Best = new Dictionary<string, int>(Best), Runs = Runs, Wins = Wins, Medals = new Dictionary<string, AthlonMedal>(Medals),
+        SteadyBonuses = SteadyBonuses, StarBonuses = StarBonuses
+    };
 }
+
+/// <summary>
+/// What the halls under the Pokéathlon Dome's lobby hang once it is earned (plan 15, the bonuses; HeartGold's signs and
+/// statue, its <c>signshoes</c>, <c>signclothes</c>, <c>signflag</c>, <c>signpokegear</c>, <c>signball</c> and the
+/// hero's statue): read on the wall where each stands (<c>athlon earned &lt;name&gt;</c>).
+/// </summary>
+public enum AthlonHonour { Shoes, Clothes, Flag, Pokegear, Ball, Statue }
 
 /// <summary>
 /// A course under way (plan 15 · E6): the player's team and three rivals drawn on the run's own generator, the events
@@ -177,6 +226,7 @@ public sealed class AthlonRun
 
     private readonly Random rng;
     private readonly int[,] points;
+    private readonly IReadOnlyList<AthlonBonus>[,] bonuses;
 
     public AthlonCourse Course { get; }
     public IReadOnlyList<AthlonTeam> Teams { get; }
@@ -193,6 +243,7 @@ public sealed class AthlonRun
         teams.AddRange(Rivals(rng));
         Teams = teams;
         points = new int[course.Events.Count, TeamCount];
+        bonuses = new IReadOnlyList<AthlonBonus>[course.Events.Count, TeamCount];
     }
 
     /// <summary>
@@ -237,7 +288,11 @@ public sealed class AthlonRun
     public void EndEvent()
     {
         if (Current == null) return;
-        for (int t = 0; t < TeamCount; t++) points[EventIndex, t] = Current.Points(t);
+        for (int t = 0; t < TeamCount; t++)
+        {
+            points[EventIndex, t] = Current.Points(t);
+            bonuses[EventIndex, t] = AthlonBonuses.Of(Current, t);
+        }
         EventIndex++;
         Current = null;
     }
@@ -245,11 +300,27 @@ public sealed class AthlonRun
     /// <summary>A team's points in an event that has been played.</summary>
     public int PointsOf(int eventIndex, int team) => points[eventIndex, team];
 
+    /// <summary>The bonuses a team won in an event that has been played (plan 15, the bonuses).</summary>
+    public IReadOnlyList<AthlonBonus> BonusesOf(int eventIndex, int team) => bonuses[eventIndex, team] ?? Array.Empty<AthlonBonus>();
+
+    /// <summary>A team's bonus points over the events played.</summary>
+    public int BonusTotal(int team)
+    {
+        int sum = 0;
+        for (int e = 0; e < Math.Min(EventIndex, Course.Events.Count); e++) sum += AthlonBonuses.Sum(BonusesOf(e, team));
+        return sum;
+    }
+
+    /// <summary>Every bonus a team won over the events played, in their order.</summary>
+    public IEnumerable<AthlonBonus> AllBonuses(int team) =>
+        Enumerable.Range(0, Math.Min(EventIndex, Course.Events.Count)).SelectMany(e => BonusesOf(e, team));
+
+    /// <summary>A team's total: its points in the events played and their bonuses.</summary>
     public int Total(int team)
     {
         int sum = 0;
         for (int e = 0; e < Math.Min(EventIndex, Course.Events.Count); e++) sum += points[e, team];
-        return sum;
+        return sum + BonusTotal(team);
     }
 
     /// <summary>The teams best first; a tie goes to the player, then to the team named first.</summary>
