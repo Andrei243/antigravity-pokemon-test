@@ -648,6 +648,10 @@ public static class RegionDatabase
                 // Plan 21 · H3, part b: the rooms of Route 110, Mauville City, Route 117 and Verdanturf Town
                 "Route110_SeasideCyclingRoadSouthEntrance", "Route110_SeasideCyclingRoadNorthEntrance",
                 "Route110_TrickHouseEntrance", "Route110_TrickHouseEnd", "Route110_TrickHousePuzzle1",
+                // Plan 21 · H12, part j: the Trick House's later puzzles
+                "Route110_TrickHousePuzzle2", "Route110_TrickHousePuzzle3", "Route110_TrickHousePuzzle4",
+                "Route110_TrickHousePuzzle5", "Route110_TrickHousePuzzle6", "Route110_TrickHousePuzzle7",
+                "Route110_TrickHousePuzzle8",
                 "MauvilleCity_Gym", "MauvilleCity_BikeShop", "MauvilleCity_House1", "MauvilleCity_House2",
                 "MauvilleCity_PokemonCenter_1F", "MauvilleCity_PokemonCenter_2F", "MauvilleCity_Mart",
                 "Route117_PokemonDayCare", "VerdanturfTown_BattleTentLobby", "VerdanturfTown_BattleTentCorridor", "VerdanturfTown_BattleTentBattleRoom", "VerdanturfTown_Mart",

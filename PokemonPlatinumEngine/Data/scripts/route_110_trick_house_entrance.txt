@@ -1,24 +1,74 @@
-# The Trick House's front room (plan 21 · H3, part b). docs/scripts.md describes the language; the lines are our own,
-# on Emerald's beats (data/maps/Route110_TrickHouseEntrance/scripts.inc).
+# The Trick House's front room (plan 21 · H3, part b; its later puzzles plan 21 · H12, part j). docs/scripts.md describes
+# the language; the lines are our own, on Emerald's beats (data/maps/Route110_TrickHouseEntrance/scripts.inc).
 #
 # VAR_TRICK_HOUSE_LEVEL counts the puzzles solved, VAR_TRICK_HOUSE_ENTRANCE_STATE says what the Trick Master is doing:
-# 0 hiding (under the desk for the first puzzle; FLAG_HIDE_TRICK_HOUSE_ENTRANCE_MAN keeps him off the map), 1 gone
-# into his puzzle once found, 3 back at the scroll, busy making the next one. Each step in from the door while he
-# hides says the player is being watched (VAR_TRICK_HOUSE_BEING_WATCHED_STATE, once a visit). Finding him opens the
-# way behind the scroll (FLAG_HOENN_TRICK_HOUSE_PUZZLE_1_BEGUN, a flag of ours: Emerald swaps the wall's tiles).
+# 0 hiding (in a place of his own for each puzzle; FLAG_HIDE_TRICK_HOUSE_ENTRANCE_MAN keeps him off the map), 1 gone
+# into his puzzle once found, 3 back at the scroll, busy making the next one (until its Badge: the Dynamo Badge for the
+# second, then Heat, Balance, Feather, Mind and Rain, and the Hall of Fame for the eighth, as Emerald's
+# CheckReadyForPuzzle2 to 8), 4 every puzzle solved. Each step in from the door while he hides says the player is being
+# watched (VAR_TRICK_HOUSE_BEING_WATCHED_STATE, once a visit). Finding him opens the way behind the scroll
+# (FLAG_HOENN_TRICK_HOUSE_OPEN, a flag of ours: Emerald swaps the wall's tiles), into the puzzle the level names.
 
 
 script OnEnter
-  if var VAR_TRICK_HOUSE_LEVEL >= 1 goto Busy
-  setvar VAR_TRICK_HOUSE_BEING_WATCHED_STATE 0
-  end
-label Busy
-  setvar VAR_TRICK_HOUSE_ENTRANCE_STATE 3
+  # A game part way into the first puzzle from before the way was one flag (FLAG_HOENN_TRICK_HOUSE_PUZZLE_1_BEGUN)
+  if not flag FLAG_HOENN_TRICK_HOUSE_PUZZLE_1_BEGUN goto Settle
+  if not flag FLAG_HOENN_TRICK_HOUSE_PUZZLE_1_DONE setflag FLAG_HOENN_TRICK_HOUSE_OPEN
+label Settle
+  if var VAR_TRICK_HOUSE_ENTRANCE_STATE == 1 end
+  call Ready
+  if var VAR_TRICK_HOUSE_ENTRANCE_STATE == 0 goto Hiding
   setvar VAR_TRICK_HOUSE_BEING_WATCHED_STATE 1
   clearflag FLAG_HIDE_TRICK_HOUSE_ENTRANCE_MAN
   place trick_master 4 2 up
   show trick_master
   end
+label Hiding
+  setvar VAR_TRICK_HOUSE_BEING_WATCHED_STATE 0
+  setflag FLAG_HIDE_TRICK_HOUSE_ENTRANCE_MAN
+  hide trick_master
+  end
+
+
+# Whether the next puzzle is built: 0 when it is (he hides), 3 while its Badge isn't won, 4 once all eight are solved
+script Ready
+  setvar VAR_TRICK_HOUSE_ENTRANCE_STATE 0
+  if var VAR_TRICK_HOUSE_LEVEL >= 8 goto Finished
+  if var VAR_TRICK_HOUSE_LEVEL == 1 goto Two
+  if var VAR_TRICK_HOUSE_LEVEL == 2 goto Three
+  if var VAR_TRICK_HOUSE_LEVEL == 3 goto Four
+  if var VAR_TRICK_HOUSE_LEVEL == 4 goto Five
+  if var VAR_TRICK_HOUSE_LEVEL == 5 goto Six
+  if var VAR_TRICK_HOUSE_LEVEL == 6 goto Seven
+  if var VAR_TRICK_HOUSE_LEVEL == 7 goto Eight
+  return
+label Two
+  if not badge dynamo goto NotYet
+  return
+label Three
+  if not badge heat goto NotYet
+  return
+label Four
+  if not badge balance goto NotYet
+  return
+label Five
+  if not badge feather goto NotYet
+  return
+label Six
+  if not badge mind goto NotYet
+  return
+label Seven
+  if not badge rain goto NotYet
+  return
+label Eight
+  if not flag HoennHallOfFame goto NotYet
+  return
+label NotYet
+  setvar VAR_TRICK_HOUSE_ENTRANCE_STATE 3
+  return
+label Finished
+  setvar VAR_TRICK_HOUSE_ENTRANCE_STATE 4
+  return
 
 
 script BeingWatched
@@ -28,19 +78,114 @@ script BeingWatched
   end
 
 
+# His hiding places, one for each puzzle: anywhere else, or once he is found, the furniture is only furniture
 script Desk
   if var VAR_TRICK_HOUSE_ENTRANCE_STATE != 0 goto Nothing
-  scene "The Trick Master found"
+  if var VAR_TRICK_HOUSE_LEVEL != 0 goto Nothing
   emote player exclaim
   text "There's someone squeezed in under the desk!"
+  call Found
+  end
+label Nothing
+  text "An ordinary desk. Nobody under it this time."
+  end
+
+script Tree
+  if var VAR_TRICK_HOUSE_ENTRANCE_STATE != 0 goto Nothing
+  if var VAR_TRICK_HOUSE_LEVEL != 1 goto Nothing
+  emote player exclaim
+  text "A pair of eyes is peering out from between the leaves of the potted tree!"
+  call Found
+  end
+label Nothing
+  text "A potted tree. Its leaves are a little ruffled."
+  end
+
+script Dresser
+  if var VAR_TRICK_HOUSE_ENTRANCE_STATE != 0 goto Nothing
+  if var VAR_TRICK_HOUSE_LEVEL != 2 goto Nothing
+  emote player exclaim
+  text "One of the dresser's drawers is breathing!"
+  call Found
+  end
+label Nothing
+  text "A dresser full of capes, false noses and very long scarves."
+  end
+
+script Window
+  if var VAR_TRICK_HOUSE_ENTRANCE_STATE != 0 goto Nothing
+  if var VAR_TRICK_HOUSE_LEVEL != 3 goto Nothing
+  emote player exclaim
+  text "Someone outside is pressing their nose flat against the window!"
+  call Found
+  end
+label Nothing
+  text "A window. Route 110's grass sways outside."
+  end
+
+script Planter
+  if var VAR_TRICK_HOUSE_ENTRANCE_STATE != 0 goto Nothing
+  if var VAR_TRICK_HOUSE_LEVEL != 4 goto Nothing
+  emote player exclaim
+  text "The flowers in the planter are wearing a hat!"
+  call Found
+  end
+label Nothing
+  text "A planter of bright flowers."
+  end
+
+script Cupboard
+  if var VAR_TRICK_HOUSE_ENTRANCE_STATE != 0 goto Nothing
+  if var VAR_TRICK_HOUSE_LEVEL != 5 goto Nothing
+  emote player exclaim
+  text "The cupboard door creaks open by itself... and someone inside creaks it shut again!"
+  call Found
+  end
+label Nothing
+  text "A cupboard. Only cups inside."
+  end
+
+script BackWindow
+  if var VAR_TRICK_HOUSE_ENTRANCE_STATE != 0 goto Nothing
+  if var VAR_TRICK_HOUSE_LEVEL != 6 goto Nothing
+  emote player exclaim
+  text "The curtain behind the window has a pair of shoes under it!"
+  call Found
+  end
+label Nothing
+  text "A window with a long curtain."
+  end
+
+script Cushion
+  if var VAR_TRICK_HOUSE_ENTRANCE_STATE != 0 goto Nothing
+  if var VAR_TRICK_HOUSE_LEVEL != 7 goto Nothing
+  emote player exclaim
+  text "The cushion on the floor is rather lumpy... and it just said \"ouch\"!"
+  call Found
+  end
+label Nothing
+  text "A flat, comfortable cushion."
+  end
+
+
+# Found: he shows himself by the scroll, says his piece and vanishes into his puzzle
+script Found
+  scene "The Trick Master found"
   place trick_master 6 2 down
   clearflag FLAG_HIDE_TRICK_HOUSE_ENTRANCE_MAN
   show trick_master
   face player trick_master
   speaker "Trick Master"
+  if var VAR_TRICK_HOUSE_LEVEL != 0 goto Again
   say "Curses! Discovered! I am the Trick Master, master of disguise, deviser of devilish puzzles!"
   say "You found me fair and square, so I shall let you take on my house of tricks. Behind the scroll lies my puzzle!"
   say "Solve it and reach the end, and a reward awaits you. Now, watch closely... Vanish!"
+  goto Vanish
+label Again
+  say "Foiled again! Nobody else in Hoenn ever finds me, you know. Nobody!"
+  say "Very well. My newest puzzle waits behind the scroll, and it is more devious than the last!"
+  say "Reach the end and a reward is yours. Now... Vanish!"
+label Vanish
   face trick_master up
   face trick_master left
   face trick_master down
@@ -48,13 +193,11 @@ script Desk
   sound "warp"
   hide trick_master
   setflag FLAG_HIDE_TRICK_HOUSE_ENTRANCE_MAN
-  setflag FLAG_HOENN_TRICK_HOUSE_PUZZLE_1_BEGUN
+  setflag FLAG_HOENN_TRICK_HOUSE_OPEN
+  if var VAR_TRICK_HOUSE_LEVEL == 0 setflag FLAG_HOENN_TRICK_HOUSE_PUZZLE_1_BEGUN
   setvar VAR_TRICK_HOUSE_ENTRANCE_STATE 1
   endscene
-  end
-label Nothing
-  text "An ordinary desk. Nobody under it this time."
-  end
+  return
 
 
 script Door
@@ -70,11 +213,59 @@ label Closed
   end
 
 
+# The way behind the scroll, into the puzzle he has built by now
+script IntoPuzzle2
+  warp "Route110_TrickHousePuzzle2" 0 20 up
+  end
+
+script IntoPuzzle3
+  warp "Route110_TrickHousePuzzle3" 0 20 up
+  end
+
+script IntoPuzzle4
+  warp "Route110_TrickHousePuzzle4" 0 20 up
+  end
+
+script IntoPuzzle5
+  warp "Route110_TrickHousePuzzle5" 0 20 up
+  end
+
+script IntoPuzzle6
+  warp "Route110_TrickHousePuzzle6" 0 20 up
+  end
+
+script IntoPuzzle7
+  warp "Route110_TrickHousePuzzle7" 0 20 up
+  end
+
+script IntoPuzzle8
+  warp "Route110_TrickHousePuzzle8" 0 20 up
+  end
+
+
 script TrickMaster
   face trick_master player
   speaker "Trick Master"
+  if var VAR_TRICK_HOUSE_ENTRANCE_STATE == 4 goto Finished
   say "Ah, my challenger! Patience, patience. My next puzzle needs more time than a single night."
   emote trick_master exclaim
   say "Come back another day, a little stronger. I'll have something truly devious waiting for you!"
   face trick_master up
+  end
+label Finished
+  if flag FLAG_HOENN_TRICK_HOUSE_TENT_OWED goto Tent
+  say "Every puzzle I ever built, solved. Every one! I've run out of tricks..."
+  say "...for now! A master of disguise always has one more up his sleeve. Some day!"
+  face trick_master up
+  end
+label Tent
+  say "Ah, the tent I owe you! Has your PC room for it now?"
+  openbase give "Red Tent"
+  if var RESULT == 0 goto Full
+  text "{player} sent the Red Tent to the decoration PC."
+  clearflag FLAG_HOENN_TRICK_HOUSE_TENT_OWED
+  say "There! Pitch it somewhere I'd never think to hide."
+  end
+label Full
+  say "Still no room! I'll keep it a while longer. Come back once there's space."
   end

@@ -183,5 +183,8 @@ partial class Harness
         // Part i's: the Abandoned Ship, Artisan Cave and the last shut rooms
         game.State = GameState.Overworld;
         HoennAbandonedShipShots();
+        // Part j's: the Trick House's later puzzles
+        game.State = GameState.Overworld;
+        HoennTrickHouseShots();
     }
 }

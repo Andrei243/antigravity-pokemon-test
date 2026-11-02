@@ -1,0 +1,55 @@
+{
+  "people": {
+    "mechadoll_1": {
+      "name": {
+        "en": [
+          "Mechadoll 1"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "mechadoll_2": {
+      "name": {
+        "en": [
+          "Mechadoll 2"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "mechadoll_3": {
+      "name": {
+        "en": [
+          "Mechadoll 3"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "mechadoll_4": {
+      "name": {
+        "en": [
+          "Mechadoll 4"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "mechadoll_5": {
+      "name": {
+        "en": [
+          "Mechadoll 5"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

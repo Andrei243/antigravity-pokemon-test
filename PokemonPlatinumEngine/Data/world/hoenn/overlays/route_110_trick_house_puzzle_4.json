@@ -1,0 +1,16 @@
+{
+  // The Trick House's fourth puzzle (plan 21 · H12, part j): a room of boulders to push with Strength, which roll back
+  // to where they stood whenever the room is left, three trainers, a scroll and the locked door to the last room
+  // (route_110_trick_house_puzzle_4.txt)
+  "area": "route_110_trick_house_puzzle_4",
+  "bgmTrack": "hoenn/trick_house",
+  "doors": [ { "warp": 2, "map": "Route110_TrickHouseEnd", "x": 10, "y": 2, "facing": "Down" } ],
+  "switches": [ { "warp": 2, "from": "FLAG_HOENN_TRICK_HOUSE_PUZZLE_4_UNLOCKED" } ],
+  "readAt": [ { "x": 13, "z": 1, "script": "Door" } ],
+  "read": { "Route110_TrickHousePuzzle4_EventScript_Scroll": "Scroll" },
+  "people": {
+    "girl_3": { "name": "Cora", "trainer": { "dialogueBefore": "Battle Girl Cora: Pushing these boulders is good training. So is battling you!", "dialogueAfter": "Battle Girl Cora: Back to pushing rocks, then." } },
+    "girl_3_2": { "name": "Paula", "trainer": { "dialogueBefore": "Battle Girl Paula: I shoved a boulder into a corner and now I'm stuck behind it!", "dialogueAfter": "Battle Girl Paula: Could your Pokémon shove it back for me?" } },
+    "black_belt": { "name": "Yuji", "trainer": { "dialogueBefore": "Black Belt Yuji: A strong body moves boulders. A strong mind moves them the right way!", "dialogueAfter": "Black Belt Yuji: Your mind is the stronger one." } }
+  }
+}

@@ -1,0 +1,90 @@
+# The Trick House's third puzzle (plan 21 · H12, part j). docs/scripts.md describes the language; the lines are our own,
+# on Emerald's beats (data/maps/Route110_TrickHousePuzzle3/scripts.inc).
+#
+# Every button stepped on swaps the room's doors, the red open and the blue shut or the other way round (VAR_TEMP_9 the
+# doors' state, 0 as the room is come into), and stays pressed until another is (VAR_TEMP_8 the last button pressed,
+# VAR_TEMP_1 to VAR_TEMP_4 which one, for the room's triggers, which wait for theirs to be 0). VAR_TEMP_7 is five times
+# the doors' state and the last button, by which the room's layout is swapped (world.json). Leaving the room sets it
+# all back. VAR_TRICK_HOUSE_PUZZLE_3_STATE and FLAG_HOENN_TRICK_HOUSE_PUZZLE_3_UNLOCKED as the other puzzles' are.
+
+
+script OnTransition
+  setvar VAR_TEMP_1 0
+  setvar VAR_TEMP_2 0
+  setvar VAR_TEMP_3 0
+  setvar VAR_TEMP_4 0
+  setvar VAR_TEMP_7 0
+  setvar VAR_TEMP_8 0
+  setvar VAR_TEMP_9 0
+  end
+
+
+script Button1
+  setvar VAR_TEMP_8 1
+  call Press
+  end
+
+script Button2
+  setvar VAR_TEMP_8 2
+  call Press
+  end
+
+script Button3
+  setvar VAR_TEMP_8 3
+  call Press
+  end
+
+script Button4
+  setvar VAR_TEMP_8 4
+  call Press
+  end
+
+
+script Press
+  setvar VAR_TEMP_1 0
+  setvar VAR_TEMP_2 0
+  setvar VAR_TEMP_3 0
+  setvar VAR_TEMP_4 0
+  if var VAR_TEMP_8 == 1 setvar VAR_TEMP_1 1
+  if var VAR_TEMP_8 == 2 setvar VAR_TEMP_2 1
+  if var VAR_TEMP_8 == 3 setvar VAR_TEMP_3 1
+  if var VAR_TEMP_8 == 4 setvar VAR_TEMP_4 1
+  sound "select"
+  if var VAR_TEMP_9 == 1 goto Back
+  setvar VAR_TEMP_9 1
+  goto Lay
+label Back
+  setvar VAR_TEMP_9 0
+label Lay
+  setvar VAR_TEMP_7 VAR_TEMP_8
+  if var VAR_TEMP_9 == 1 addvar VAR_TEMP_7 5
+  return
+
+
+script Scroll
+  if var VAR_TRICK_HOUSE_PUZZLE_3_STATE != 0 goto Again
+  setvar VAR_TRICK_HOUSE_PUZZLE_3_STATE 1
+  fanfare item
+  text "{player} found a scroll!"
+  text "{player} learnt the secret code written on it by heart."
+  end
+label Again
+  text "The secret code is written on it: \"The Trick Master is dazzling.\""
+  end
+
+
+script Door
+  if var VAR_TRICK_HOUSE_PUZZLE_3_STATE == 2 goto Open
+  if var VAR_TRICK_HOUSE_PUZZLE_3_STATE == 1 goto Write
+  text "The door is locked. Something is written on it: \"Write the secret code here.\""
+  end
+label Write
+  text "{player} wrote the secret code on the door. \"The Trick Master is dazzling.\""
+  sound "door_open"
+  text "Click! The lock opened!"
+  setvar VAR_TRICK_HOUSE_PUZZLE_3_STATE 2
+  setflag FLAG_HOENN_TRICK_HOUSE_PUZZLE_3_UNLOCKED
+  end
+label Open
+  text "The door stands open."
+  end

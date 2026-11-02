@@ -1,0 +1,42 @@
+{
+  "key": "route_110_trick_house_puzzle_4",
+  "index": 505,
+  "name": "Route 110",
+  "matrix": 448,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_TRICK_HOUSE",
+  "nightMusic": "MUS_TRICK_HOUSE",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 0, "z": 21, "to": "route_110_trick_house_entrance", "toWarp": 2 },
+    { "x": 1, "z": 21, "to": "route_110_trick_house_entrance", "toWarp": 2 },
+    { "x": 13, "z": 1, "to": "", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "girl_3", "looks": "girl_3", "movement": "look_south", "x": 2, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 1, "script": "TRAINER_CORA" },
+    { "id": "girl_3_2", "looks": "girl_3", "movement": "look_west", "x": 14, "z": 7, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_PAULA" },
+    { "id": "black_belt", "looks": "black_belt", "movement": "look_east", "x": 2, "z": 14, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_YUJI" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 2, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ITEM_TRICK_HOUSE_PUZZLE_4_MECH_MAIL", "item": "Mech Mail", "script": "Route110_TrickHousePuzzle4_EventScript_ItemMechMail" },
+    { "id": "pushable_boulder", "looks": "pushable_boulder", "movement": "look_around", "x": 13, "z": 3, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_TEMP_11", "script": "EventScript_StrengthBoulder" },
+    { "id": "pushable_boulder_2", "looks": "pushable_boulder", "movement": "look_around", "x": 12, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_TEMP_12", "script": "EventScript_StrengthBoulder" },
+    { "id": "pushable_boulder_3", "looks": "pushable_boulder", "movement": "look_around", "x": 5, "z": 16, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_TEMP_13", "script": "EventScript_StrengthBoulder" },
+    { "id": "pushable_boulder_4", "looks": "pushable_boulder", "movement": "look_around", "x": 4, "z": 6, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_TEMP_14", "script": "EventScript_StrengthBoulder" },
+    { "id": "pushable_boulder_5", "looks": "pushable_boulder", "movement": "look_around", "x": 12, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_TEMP_15", "script": "EventScript_StrengthBoulder" },
+    { "id": "pushable_boulder_6", "looks": "pushable_boulder", "movement": "look_around", "x": 5, "z": 7, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_TEMP_16", "script": "EventScript_StrengthBoulder" },
+    { "id": "pushable_boulder_7", "looks": "pushable_boulder", "movement": "look_around", "x": 9, "z": 3, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_TEMP_17", "script": "EventScript_StrengthBoulder" },
+    { "id": "pushable_boulder_8", "looks": "pushable_boulder", "movement": "look_around", "x": 10, "z": 12, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_TEMP_18", "script": "EventScript_StrengthBoulder" },
+    { "id": "pushable_boulder_9", "looks": "pushable_boulder", "movement": "look_around", "x": 14, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_TEMP_19", "script": "EventScript_StrengthBoulder" },
+    { "id": "pushable_boulder_10", "looks": "pushable_boulder", "movement": "look_around", "x": 10, "z": 15, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_TEMP_1A", "script": "EventScript_StrengthBoulder" }
+  ],
+  "signs": [
+    { "x": 14, "z": 13, "type": 0, "script": "Route110_TrickHousePuzzle4_EventScript_Scroll" }
+  ],
+  "triggers": []
+}

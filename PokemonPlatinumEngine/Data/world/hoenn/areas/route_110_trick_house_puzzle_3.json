@@ -1,0 +1,40 @@
+{
+  "key": "route_110_trick_house_puzzle_3",
+  "index": 504,
+  "name": "Route 110",
+  "matrix": 447,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_TRICK_HOUSE",
+  "nightMusic": "MUS_TRICK_HOUSE",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 0, "z": 21, "to": "route_110_trick_house_entrance", "toWarp": 2 },
+    { "x": 1, "z": 21, "to": "route_110_trick_house_entrance", "toWarp": 2 },
+    { "x": 13, "z": 1, "to": "", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "camper", "looks": "camper", "movement": "look_south", "x": 7, "z": 19, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_JUSTIN" },
+    { "id": "picnicker", "looks": "picnicker", "movement": "look_east", "x": 4, "z": 4, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 1, "script": "TRAINER_MARTHA" },
+    { "id": "hiker", "looks": "hiker", "movement": "look_south", "x": 10, "z": 10, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 1, "script": "TRAINER_ALAN" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 1, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ITEM_TRICK_HOUSE_PUZZLE_3_WOOD_MAIL", "item": "Wood Mail", "script": "Route110_TrickHousePuzzle3_EventScript_ItemWoodMail" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_around", "x": 4, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ITEM_TRICK_HOUSE_PUZZLE_3_SHADOW_MAIL", "item": "Shadow Mail", "script": "Route110_TrickHousePuzzle3_EventScript_ItemShadowMail" },
+    { "id": "breakable_rock", "looks": "breakable_rock", "movement": "look_around", "x": 1, "z": 20, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_15", "script": "EventScript_RockSmash" },
+    { "id": "breakable_rock_2", "looks": "breakable_rock", "movement": "look_around", "x": 2, "z": 21, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_16", "script": "EventScript_RockSmash" }
+  ],
+  "signs": [
+    { "x": 0, "z": 14, "type": 0, "script": "Route110_TrickHousePuzzle3_EventScript_Scroll" }
+  ],
+  "triggers": [
+    { "x": 4, "z": 14, "width": 1, "depth": 1, "script": "Route110_TrickHousePuzzle3_EventScript_Button1", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 3, "z": 11, "width": 1, "depth": 1, "script": "Route110_TrickHousePuzzle3_EventScript_Button2", "variable": "VAR_TEMP_2", "value": "0" },
+    { "x": 12, "z": 5, "width": 1, "depth": 1, "script": "Route110_TrickHousePuzzle3_EventScript_Button3", "variable": "VAR_TEMP_3", "value": "0" },
+    { "x": 8, "z": 2, "width": 1, "depth": 1, "script": "Route110_TrickHousePuzzle3_EventScript_Button4", "variable": "VAR_TEMP_4", "value": "0" }
+  ]
+}

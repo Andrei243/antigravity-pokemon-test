@@ -1,0 +1,70 @@
+# The Trick House's second puzzle (plan 21 · H12, part j). docs/scripts.md describes the language; the lines are our own,
+# on Emerald's beats (data/maps/Route110_TrickHousePuzzle2/scripts.inc).
+#
+# Four buttons each cover a hole of the maze: VAR_TEMP_1 to VAR_TEMP_4 say which are pressed (the room's triggers wait
+# for theirs to be 0, as Emerald's do) and VAR_TEMP_5 is their sum (1, 2, 4 and 8), by which the room's layout is
+# swapped (world.json). Leaving the room opens the holes again. VAR_TRICK_HOUSE_PUZZLE_2_STATE: 0 the scroll not found,
+# 1 the code learnt, 2 written on the door, which opens it (FLAG_HOENN_TRICK_HOUSE_PUZZLE_2_UNLOCKED, ours).
+
+
+script OnTransition
+  setvar VAR_TEMP_1 0
+  setvar VAR_TEMP_2 0
+  setvar VAR_TEMP_3 0
+  setvar VAR_TEMP_4 0
+  setvar VAR_TEMP_5 0
+  end
+
+
+script Button1
+  setvar VAR_TEMP_1 1
+  addvar VAR_TEMP_5 1
+  sound "select"
+  end
+
+script Button2
+  setvar VAR_TEMP_2 1
+  addvar VAR_TEMP_5 2
+  sound "select"
+  end
+
+script Button3
+  setvar VAR_TEMP_3 1
+  addvar VAR_TEMP_5 4
+  sound "select"
+  end
+
+script Button4
+  setvar VAR_TEMP_4 1
+  addvar VAR_TEMP_5 8
+  sound "select"
+  end
+
+
+script Scroll
+  if var VAR_TRICK_HOUSE_PUZZLE_2_STATE != 0 goto Again
+  setvar VAR_TRICK_HOUSE_PUZZLE_2_STATE 1
+  fanfare item
+  text "{player} found a scroll!"
+  text "{player} learnt the secret code written on it by heart."
+  end
+label Again
+  text "The secret code is written on it: \"The Trick Master is ingenious.\""
+  end
+
+
+script Door
+  if var VAR_TRICK_HOUSE_PUZZLE_2_STATE == 2 goto Open
+  if var VAR_TRICK_HOUSE_PUZZLE_2_STATE == 1 goto Write
+  text "The door is locked. Something is written on it: \"Write the secret code here.\""
+  end
+label Write
+  text "{player} wrote the secret code on the door. \"The Trick Master is ingenious.\""
+  sound "door_open"
+  text "Click! The lock opened!"
+  setvar VAR_TRICK_HOUSE_PUZZLE_2_STATE 2
+  setflag FLAG_HOENN_TRICK_HOUSE_PUZZLE_2_UNLOCKED
+  end
+label Open
+  text "The door stands open."
+  end

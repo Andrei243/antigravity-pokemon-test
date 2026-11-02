@@ -1,0 +1,83 @@
+{
+  "people": {
+    "girl_3": {
+      "name": {
+        "en": [
+          "Cora"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Battle Girl Cora: Pushing these boulders is good training. So is battling you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Battle Girl Cora: Back to pushing rocks, then."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "girl_3_2": {
+      "name": {
+        "en": [
+          "Paula"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Battle Girl Paula: I shoved a boulder into a corner and now I'm stuck behind it!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Battle Girl Paula: Could your Pokémon shove it back for me?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "black_belt": {
+      "name": {
+        "en": [
+          "Yuji"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Yuji: A strong body moves boulders. A strong mind moves them the right way!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Yuji: Your mind is the stronger one."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

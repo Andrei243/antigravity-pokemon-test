@@ -1,0 +1,83 @@
+{
+  "people": {
+    "school_kid_m": {
+      "name": {
+        "en": [
+          "Ted"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "School Kid Ted: Which button fills which hole? I keep pressing them and getting nowhere!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "School Kid Ted: I could use a map. Or a hint. Or both."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "school_kid_m_2": {
+      "name": {
+        "en": [
+          "Paul"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "School Kid Paul: Oh, your second puzzle? I'm on my fourth try at this one."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "School Kid Paul: Fifth try, then."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "girl_3": {
+      "name": {
+        "en": [
+          "Georgia"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "School Kid Georgia: One day I'll run a Gym full of traps like these. Practise on me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "School Kid Georgia: Note to self: traps need better Pokémon behind them."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

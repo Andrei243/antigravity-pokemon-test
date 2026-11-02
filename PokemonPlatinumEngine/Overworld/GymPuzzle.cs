@@ -88,6 +88,9 @@ public abstract class GymPuzzle
         FortreeGates.PuzzleName => new FortreeGates(),
         // Emerald's Mossdeep Gym (plan 21 · H8): the floor of turning arrows, moved by the room's switches
         MossdeepTiles.PuzzleName => new MossdeepTiles(),
+        // The Trick House's sixth and seventh puzzles (plan 21 · H12, part j): the same rules with Emerald's other tables
+        FortreeGates.TrickHouseName => FortreeGates.Named(FortreeGates.TrickHouseName),
+        MossdeepTiles.TrickHouseName => new MossdeepTiles(MossdeepTiles.TrickHouseName),
         // Emerald's Sootopolis Gym (plan 21 · H8, part c): the floor of thin ice and its glazed stairs
         SootopolisIce.PuzzleName => new SootopolisIce(),
         // HeartGold's Blackthorn Gym (plan 20 · J11, part c), named by its room's entry in Johto's world.json

@@ -742,6 +742,26 @@
       "provisional": true
     },
     "maylene": {},
+    "mechadoll_1": {
+      "note": "first spoken at route_110_trick_house_puzzle_5.txt(27)",
+      "provisional": true
+    },
+    "mechadoll_2": {
+      "note": "first spoken at route_110_trick_house_puzzle_5.txt(65)",
+      "provisional": true
+    },
+    "mechadoll_3": {
+      "note": "first spoken at route_110_trick_house_puzzle_5.txt(103)",
+      "provisional": true
+    },
+    "mechadoll_4": {
+      "note": "first spoken at route_110_trick_house_puzzle_5.txt(141)",
+      "provisional": true
+    },
+    "mechadoll_5": {
+      "note": "first spoken at route_110_trick_house_puzzle_5.txt(179)",
+      "provisional": true
+    },
     "member": {
       "note": "first spoken at ResortAreaRibbonSyndicate1F.txt(41)",
       "provisional": true
@@ -1561,6 +1581,11 @@
     "Matt": "matt",
     "Maxie": "maxie",
     "Maylene": "maylene",
+    "Mechadoll 1": "mechadoll_1",
+    "Mechadoll 2": "mechadoll_2",
+    "Mechadoll 3": "mechadoll_3",
+    "Mechadoll 4": "mechadoll_4",
+    "Mechadoll 5": "mechadoll_5",
     "Member": "member",
     "Miguel": "miguel",
     "Miki": "miki",

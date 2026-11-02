@@ -23,6 +23,13 @@ partial class Harness
         // post-game's places' alone (plan 21 · H12, part a), in a new game
         string from = Environment.GetEnvironmentVariable("HOENN_FROM") ?? "";
         // (HOENN_FROM=ship the Abandoned Ship's, Artisan Cave's and the last rooms' alone: plan 21 · H12, part i)
+        // (HOENN_FROM=trickhouse the Trick House's later puzzles alone: plan 21 · H12, part j)
+        if (from == "trickhouse")
+        {
+            HoennTrickHouseShots();
+            engine.NewGameRegion = "Sinnoh";
+            return;
+        }
         if (from == "ship")
         {
             HoennAbandonedShipShots();

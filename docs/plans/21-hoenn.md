@@ -1385,3 +1385,22 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
       accepted. **Left**: Trainer Hill, Altering Cave, the island's halls, the Department Store's lift, the Trick House's
       puzzles 2 to 8, the two basements, the S.S. Tidal's halfway arrivals and Mew's hiding; and H11's part c and
       the Battle Tents (another session's).
+    - **Part j** (done 2026-11-02: the Trick House's puzzles 2 to 8; docs/mechanics/rulings.md, "The Trick House's eight
+      puzzles"; tests run with --filter (HoennTrickHouseTests and the suites the change touches), shots `h2f0` to `h2fc`).
+      **Built**: the seven later puzzle rooms (matrices 446 to 452) in RegionDatabase's Hoenn list; the Trick Master's
+      eight hiding places and Badges (`route_110_trick_house_entrance.txt`), the way behind the scroll as
+      `FLAG_HOENN_TRICK_HOUSE_OPEN` with triggers by `VAR_TRICK_HOUSE_LEVEL` into each puzzle; the last room's eight
+      rewards and its back door locked; the second puzzle's holes and the third's red and blue doors as 23 layouts read
+      from Emerald's scripts (`tools/MapImporter/Gba/GbaTrickHouse.cs`, chunks 846 to 868, swapped by `VAR_TEMP_5` and
+      `VAR_TEMP_7`), a `GbaCover.HoennRanges` row for the puzzles' doors; the Mechadolls' quiz (questions ours); the
+      sixth's gates (`FortreeGates.TrickHouseName`, Emerald's other table) and the seventh's arrows and statues
+      (`MossdeepTiles.TrickHouseName`, an instance's own loops and switches); the eighth's floor as ice
+      (`MB_TRICK_HOUSE_PUZZLE_8_FLOOR`); Emerald's seven other mails as items of ours (9140 to 9146). **Golden**:
+      scripts.txt (the entrance's, the last room's and the seven puzzles' scripts), levels.txt and levels-crossed.txt
+      (the puzzles' 21 trainers placed): accepted. **Left**: Trainer Hill (its floors are `trainer_hill.c`'s tables, not
+      read), Altering Cave (part a's ruling stands: its Route 103 warp is a rock wall and its eight other tables are the
+      Mystery Gift's), the island's halls, the Department Store's lift, the two basements, the S.S. Tidal's halfway
+      arrivals, Mew's hiding, Gabby and Ty, the Berry Master's wife, the Kecleon bridge's tiles, Shoal Cave's salt piles,
+      Fortree's clerks behind tall counters (`World.BehindTheCounters` runs only for the DS games' rooms: running it for
+      GBA rooms would move FireRed's too), the Route 108 wreck drawn as stone, Emerald's slot machine and roulette, the
+      Cycling Road's timed challenge, the Fortree bridge swap, the tents' look; and H11's part c.

@@ -1,0 +1,33 @@
+# The Trick House's eighth puzzle (plan 21 · H12, part j). docs/scripts.md describes the language; the lines are our own,
+# on Emerald's beats (data/maps/Route110_TrickHousePuzzle8/scripts.inc).
+#
+# A floor as slippery as ice (Emerald's MB_TRICK_HOUSE_PUZZLE_8_FLOOR, read as ice), slid across until something stops
+# the slide. VAR_TRICK_HOUSE_PUZZLE_8_STATE and FLAG_HOENN_TRICK_HOUSE_PUZZLE_8_UNLOCKED as the other puzzles'.
+
+script Scroll
+  if var VAR_TRICK_HOUSE_PUZZLE_8_STATE != 0 goto Again
+  setvar VAR_TRICK_HOUSE_PUZZLE_8_STATE 1
+  fanfare item
+  text "{player} found a scroll!"
+  text "{player} learnt the secret code written on it by heart."
+  end
+label Again
+  text "The secret code is written on it: \"The Trick Master is unforgettable.\""
+  end
+
+
+script Door
+  if var VAR_TRICK_HOUSE_PUZZLE_8_STATE == 2 goto Open
+  if var VAR_TRICK_HOUSE_PUZZLE_8_STATE == 1 goto Write
+  text "The door is locked. Something is written on it: \"Write the secret code here.\""
+  end
+label Write
+  text "{player} wrote the secret code on the door. \"The Trick Master is unforgettable.\""
+  sound "door_open"
+  text "Click! The lock opened!"
+  setvar VAR_TRICK_HOUSE_PUZZLE_8_STATE 2
+  setflag FLAG_HOENN_TRICK_HOUSE_PUZZLE_8_UNLOCKED
+  end
+label Open
+  text "The door stands open."
+  end

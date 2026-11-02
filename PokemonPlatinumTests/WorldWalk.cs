@@ -225,7 +225,10 @@ internal static class WorldWalk
                 else if (step.Obstacle == Obstacle.Solid && mode == TravelMode.OnFoot && map.FilledHoles.ContainsKey((nx, ny))
                          && MathF.Abs(map.HeightAt(nx, ny) - height) < FieldMovement.StepLimit)
                     Visit(map, nx, ny, mode, map.HeightAt(nx, ny), arrived: false);
-                else if (step.Obstacle == Obstacle.Solid && map.Puzzle is SunyshoreGears or BlackthornPlatforms && mode == TravelMode.OnFoot
+                // and so is a tile the Trick House's sixth puzzle's gates hold shut, which turning them frees (plan 21 ·
+                // H12, part j; HoennTrickHouseTests holds the gates)
+                else if ((step.Obstacle == Obstacle.Solid && map.Puzzle is SunyshoreGears or BlackthornPlatforms
+                          || step.Obstacle == Obstacle.Rail && map.Puzzle is FortreeGates { Name: FortreeGates.TrickHouseName }) && mode == TravelMode.OnFoot
                          && map.InBounds(nx, ny) && !map.IsSolid(nx, ny) && MathF.Abs(map.HeightAt(nx, ny) - height) < FieldMovement.StepLimit)
                     Visit(map, nx, ny, mode, map.HeightAt(nx, ny), arrived: false);
                 // Someone who takes the player somewhere when spoken to (a ferry) is a way there too

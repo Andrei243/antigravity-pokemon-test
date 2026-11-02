@@ -1,0 +1,16 @@
+{
+  // The Trick House's eighth and last puzzle (plan 21 · H12, part j): a floor as slippery as ice, slid across until
+  // something stops the slide, three trainers, a scroll and the locked door to the last room
+  // (route_110_trick_house_puzzle_8.txt)
+  "area": "route_110_trick_house_puzzle_8",
+  "bgmTrack": "hoenn/trick_house",
+  "doors": [ { "warp": 2, "map": "Route110_TrickHouseEnd", "x": 10, "y": 2, "facing": "Down" } ],
+  "switches": [ { "warp": 2, "from": "FLAG_HOENN_TRICK_HOUSE_PUZZLE_8_UNLOCKED" } ],
+  "readAt": [ { "x": 13, "z": 1, "script": "Door" } ],
+  "read": { "Route110_TrickHousePuzzle8_EventScript_Scroll": "Scroll" },
+  "people": {
+    "man_3": { "name": "Vincent", "trainer": { "dialogueBefore": "Cooltrainer Vincent: The floor here is slick as glass. Slide too far and you start all over!", "dialogueAfter": "Cooltrainer Vincent: I slid straight into a loss." } },
+    "man_3_2": { "name": "Leroy", "trainer": { "dialogueBefore": "Cooltrainer Leroy: The last of the Trick Master's puzzles. Only the best get this far.", "dialogueAfter": "Cooltrainer Leroy: And you're the best, it seems." } },
+    "woman_5": { "name": "Keira", "trainer": { "dialogueBefore": "Cooltrainer Keira: I've been skating round this room for an hour. Battle me while I find my feet!", "dialogueAfter": "Cooltrainer Keira: Still a little wobbly." } }
+  }
+}

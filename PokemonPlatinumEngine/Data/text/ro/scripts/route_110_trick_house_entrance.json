@@ -20,10 +20,149 @@
     },
     {
       "en": [
+        "An ordinary desk. Nobody under it this time."
+      ],
+      "text": [
+        ""
+      ],
+      "was": [
+        "Maestrul Trucurilor"
+      ]
+    }
+  ],
+  "Tree": [
+    {
+      "en": [
+        "A pair of eyes is peering out from between the leaves of the potted tree!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A potted tree. Its leaves are a little ruffled."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Dresser": [
+    {
+      "en": [
+        "One of the dresser's drawers is breathing!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A dresser full of capes, false noses and very long scarves."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Window": [
+    {
+      "en": [
+        "Someone outside is pressing their nose flat against the window!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A window. Route 110's grass sways outside."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Planter": [
+    {
+      "en": [
+        "The flowers in the planter are wearing a hat!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A planter of bright flowers."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Cupboard": [
+    {
+      "en": [
+        "The cupboard door creaks open by itself... and someone inside creaks it shut again!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A cupboard. Only cups inside."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "BackWindow": [
+    {
+      "en": [
+        "The curtain behind the window has a pair of shoes under it!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A window with a long curtain."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Cushion": [
+    {
+      "en": [
+        "The cushion on the floor is rather lumpy... and it just said \"ouch\"!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A flat, comfortable cushion."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Found": [
+    {
+      "en": [
         "Trick Master"
       ],
       "text": [
-        "Maestrul Trucurilor"
+        ""
       ]
     },
     {
@@ -31,7 +170,7 @@
         "Curses! Discovered! I am the Trick Master, master of disguise, deviser of devilish puzzles!"
       ],
       "text": [
-        "Blestem! Am fost descoperit! Eu sunt Maestrul Trucurilor, maestrul deghizărilor, născocitorul de puzzle-uri diabolice!"
+        ""
       ]
     },
     {
@@ -39,7 +178,7 @@
         "You found me fair and square, so I shall let you take on my house of tricks. Behind the scroll lies my puzzle!"
       ],
       "text": [
-        "M-ai găsit cinstit, așa că te las să încerci casa mea de trucuri. În spatele sulului stă puzzle-ul meu!"
+        ""
       ]
     },
     {
@@ -47,15 +186,31 @@
         "Solve it and reach the end, and a reward awaits you. Now, watch closely... Vanish!"
       ],
       "text": [
-        "Rezolvă-l și ajungi la capăt: te așteaptă o recompensă. Acum, privește cu atenție... Dispar!"
+        ""
       ]
     },
     {
       "en": [
-        "An ordinary desk. Nobody under it this time."
+        "Foiled again! Nobody else in Hoenn ever finds me, you know. Nobody!"
       ],
       "text": [
-        "Un birou obișnuit. De data asta nu e nimeni sub el."
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Very well. My newest puzzle waits behind the scroll, and it is more devious than the last!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Reach the end and a reward is yours. Now... Vanish!"
+      ],
+      "text": [
+        ""
       ]
     }
   ],
@@ -108,6 +263,54 @@
       ],
       "text": [
         "Revino altă dată, cu o echipă puțin mai puternică. Te va aștepta ceva cu adevărat viclean!"
+      ]
+    },
+    {
+      "en": [
+        "Every puzzle I ever built, solved. Every one! I've run out of tricks..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "...for now! A master of disguise always has one more up his sleeve. Some day!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ah, the tent I owe you! Has your PC room for it now?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} sent the Red Tent to the decoration PC."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There! Pitch it somewhere I'd never think to hide."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Still no room! I'll keep it a while longer. Come back once there's space."
+      ],
+      "text": [
+        ""
       ]
     }
   ]

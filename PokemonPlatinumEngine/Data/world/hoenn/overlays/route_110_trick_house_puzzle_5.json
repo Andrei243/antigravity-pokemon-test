@@ -1,0 +1,29 @@
+{
+  // The Trick House's fifth puzzle (plan 21 · H12, part j): five Mechadolls, each standing beside a corridor it guards,
+  // who quiz whoever walks into their corridor (or speaks to them); a wrong answer sends the player back to the room's
+  // start (route_110_trick_house_puzzle_5.txt). A scroll and the locked door to the last room
+  "area": "route_110_trick_house_puzzle_5",
+  "bgmTrack": "hoenn/trick_house",
+  "doors": [ { "warp": 2, "map": "Route110_TrickHouseEnd", "x": 10, "y": 2, "facing": "Down" } ],
+  "switches": [ { "warp": 2, "from": "FLAG_HOENN_TRICK_HOUSE_PUZZLE_5_UNLOCKED" } ],
+  "readAt": [ { "x": 13, "z": 1, "script": "Door" } ],
+  "read": { "Route110_TrickHousePuzzle5_EventScript_Scroll": "Scroll" },
+  // Each Mechadoll's corridor (Emerald's Mechadoll1Trigger0 to Mechadoll4Trigger4), in the area file's order
+  "triggers": [
+    { "trigger": 0, "script": "Quiz1" }, { "trigger": 1, "script": "Quiz1" }, { "trigger": 2, "script": "Quiz1" },
+    { "trigger": 3, "script": "Quiz1" }, { "trigger": 4, "script": "Quiz2" }, { "trigger": 5, "script": "Quiz2" },
+    { "trigger": 6, "script": "Quiz3" }, { "trigger": 7, "script": "Quiz3" }, { "trigger": 8, "script": "Quiz3" },
+    { "trigger": 9, "script": "Quiz4" }, { "trigger": 10, "script": "Quiz4" }, { "trigger": 11, "script": "Quiz5" },
+    { "trigger": 12, "script": "Quiz1" }, { "trigger": 13, "script": "Quiz2" }, { "trigger": 14, "script": "Quiz2" },
+    { "trigger": 15, "script": "Quiz2" }, { "trigger": 16, "script": "Quiz2" }, { "trigger": 17, "script": "Quiz3" },
+    { "trigger": 18, "script": "Quiz3" }, { "trigger": 19, "script": "Quiz4" }, { "trigger": 20, "script": "Quiz4" },
+    { "trigger": 21, "script": "Quiz4" }
+  ],
+  "people": {
+    "mechadoll_1": { "name": "Mechadoll 1", "script": "Mechadoll1", "still": true },
+    "mechadoll_2": { "name": "Mechadoll 2", "script": "Mechadoll2", "still": true },
+    "mechadoll_3": { "name": "Mechadoll 3", "script": "Mechadoll3", "still": true },
+    "mechadoll_4": { "name": "Mechadoll 4", "script": "Mechadoll4", "still": true },
+    "mechadoll_5": { "name": "Mechadoll 5", "script": "Mechadoll5", "still": true }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "key": "route_110_trick_house_puzzle_7",
+  "index": 508,
+  "name": "Route 110",
+  "matrix": 451,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_TRICK_HOUSE",
+  "nightMusic": "MUS_TRICK_HOUSE",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 0, "z": 21, "to": "route_110_trick_house_entrance", "toWarp": 2 },
+    { "x": 1, "z": 21, "to": "route_110_trick_house_entrance", "toWarp": 2 },
+    { "x": 13, "z": 1, "to": "", "toWarp": 0 },
+    { "x": 13, "z": 4, "to": "route_110_trick_house_puzzle_7", "toWarp": 4 },
+    { "x": 7, "z": 3, "to": "route_110_trick_house_puzzle_7", "toWarp": 3 },
+    { "x": 13, "z": 11, "to": "route_110_trick_house_puzzle_7", "toWarp": 6 },
+    { "x": 4, "z": 3, "to": "route_110_trick_house_puzzle_7", "toWarp": 5 },
+    { "x": 1, "z": 17, "to": "route_110_trick_house_puzzle_7", "toWarp": 8 },
+    { "x": 0, "z": 11, "to": "route_110_trick_house_puzzle_7", "toWarp": 7 },
+    { "x": 2, "z": 3, "to": "route_110_trick_house_puzzle_7", "toWarp": 10 },
+    { "x": 4, "z": 13, "to": "route_110_trick_house_puzzle_7", "toWarp": 9 },
+    { "x": 1, "z": 3, "to": "route_110_trick_house_puzzle_7", "toWarp": 12 },
+    { "x": 8, "z": 12, "to": "route_110_trick_house_puzzle_7", "toWarp": 11 }
+  ],
+  "objects": [
+    { "id": "psychic_m", "looks": "psychic_m", "movement": "look_east", "x": 9, "z": 20, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 1, "script": "TRAINER_JOSHUA" },
+    { "id": "lass", "looks": "lass", "movement": "look_north", "x": 10, "z": 2, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 1, "script": "TRAINER_ALEXIS" },
+    { "id": "hex_maniac", "looks": "hex_maniac", "movement": "look_west", "x": 8, "z": 17, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 1, "script": "TRAINER_PATRICIA" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 5, "z": 12, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ITEM_TRICK_HOUSE_PUZZLE_7_TROPIC_MAIL", "item": "Tropic Mail", "script": "Route110_TrickHousePuzzle7_EventScript_ItemTropicMail" },
+    { "id": "psychic_m_2", "looks": "psychic_m", "movement": "look_south", "x": 9, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_ALVARO" },
+    { "id": "lass_2", "looks": "lass", "movement": "look_north", "x": 8, "z": 13, "facing": 0, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_MARIELA" },
+    { "id": "gentleman", "looks": "gentleman", "movement": "look_west", "x": 9, "z": 12, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_EVERETT" },
+    { "id": "trick_house_statue", "looks": "trick_house_statue", "movement": "look_around", "x": 4, "z": 17, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "" },
+    { "id": "trick_house_statue_2", "looks": "trick_house_statue", "movement": "look_around", "x": 4, "z": 6, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "" }
+  ],
+  "signs": [
+    { "x": 6, "z": 17, "type": 0, "script": "Route110_TrickHousePuzzle7_EventScript_Scroll" }
+  ],
+  "triggers": [
+    { "x": 8, "z": 19, "width": 1, "depth": 1, "script": "Route110_TrickHousePuzzle7_EventScript_YellowButton", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 0, "z": 14, "width": 1, "depth": 1, "script": "Route110_TrickHousePuzzle7_EventScript_BlueButton", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 6, "z": 6, "width": 1, "depth": 1, "script": "Route110_TrickHousePuzzle7_EventScript_GreenButton", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 9, "z": 7, "width": 1, "depth": 1, "script": "Route110_TrickHousePuzzle7_EventScript_PurpleButton", "variable": "VAR_TEMP_1", "value": "0" }
+  ]
+}

@@ -156,7 +156,7 @@ public sealed class GbaWorld
         // Plan 21 · H12, part h: Mirage Island off Route 130 (Emerald's ON_TRANSITION lays this layout on a day the
         // team's personalities match, IsMirageIslandPresent; the map is read in its own, the open sea)
         ("MAP_ROUTE130", "LAYOUT_ROUTE130_MIRAGE_ISLAND")
-    };
+    }.Concat(GbaTrickHouse.Alternates()).ToArray();
 
     /// <summary>
     /// The matrix <paramref name="m"/> with the map <paramref name="mapId"/> laid from another of its layouts (the same

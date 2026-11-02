@@ -1,0 +1,32 @@
+{
+  "key": "route_110_trick_house_puzzle_8",
+  "index": 509,
+  "name": "Route 110",
+  "matrix": 452,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_TRICK_HOUSE",
+  "nightMusic": "MUS_TRICK_HOUSE",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 0, "z": 21, "to": "route_110_trick_house_entrance", "toWarp": 2 },
+    { "x": 1, "z": 21, "to": "route_110_trick_house_entrance", "toWarp": 2 },
+    { "x": 13, "z": 1, "to": "", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "man_3", "looks": "man_3", "movement": "look_north", "x": 1, "z": 10, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 1, "script": "TRAINER_VINCENT" },
+    { "id": "man_3_2", "looks": "man_3", "movement": "look_east", "x": 4, "z": 2, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 1, "script": "TRAINER_LEROY" },
+    { "id": "woman_5", "looks": "woman_5", "movement": "look_west", "x": 8, "z": 17, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 1, "script": "TRAINER_KEIRA" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 2, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ITEM_TRICK_HOUSE_PUZZLE_8_BEAD_MAIL", "item": "Bead Mail", "script": "Route110_TrickHousePuzzle8_EventScript_ItemBeadMail" }
+  ],
+  "signs": [
+    { "x": 3, "z": 21, "type": 0, "script": "Route110_TrickHousePuzzle8_EventScript_Scroll" }
+  ],
+  "triggers": []
+}

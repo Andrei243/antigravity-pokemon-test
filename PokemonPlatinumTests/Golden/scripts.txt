@@ -23546,6 +23546,10 @@ way -
 === route_110_trick_house_end.TrickMaster
 from Trick Master at 4,5 of Route110_TrickHouseEnd
 way -
+=== route_110_trick_house_entrance.BackWindow
+from the tile read at 8,1 of Route110_TrickHouseEntrance
+way -
+  > A window with a long curtain.
 === route_110_trick_house_entrance.BeingWatched
 from the trigger at 4,7 of Route110_TrickHouseEntrance
 from the trigger at 5,6 of Route110_TrickHouseEntrance
@@ -23554,6 +23558,14 @@ from the trigger at 7,7 of Route110_TrickHouseEntrance
 way -
   > Someone is watching... The feeling of eyes on your back is hard to shake.
   = VAR_TRICK_HOUSE_BEING_WATCHED_STATE 0 -> 1
+=== route_110_trick_house_entrance.Cupboard
+from the tile read at 11,1 of Route110_TrickHouseEntrance
+way -
+  > A cupboard. Only cups inside.
+=== route_110_trick_house_entrance.Cushion
+from the tile read at 4,4 of Route110_TrickHouseEntrance
+way -
+  > A flat, comfortable cushion.
 === route_110_trick_house_entrance.Desk
 from the tile read at 6,3 of Route110_TrickHouseEntrance
 from the tile read at 6,4 of Route110_TrickHouseEntrance
@@ -23562,11 +23574,12 @@ way -
   Trick Master> Curses! Discovered! I am the Trick Master, master of disguise, deviser of devilish puzzles!
   Trick Master> You found me fair and square, so I shall let you take on my house of tricks. Behind the scroll lies my puzzle!
   Trick Master> Solve it and reach the end, and a reward awaits you. Now, watch closely... Vanish!
-  * scene route_110_trick_house_entrance.The Trick Master found
   * emote player Exclaim
+  * scene route_110_trick_house_entrance.The Trick Master found
   * sound warp
   * endscene
   + FLAG_HIDE_TRICK_HOUSE_ENTRANCE_MAN
+  + FLAG_HOENN_TRICK_HOUSE_OPEN
   + FLAG_HOENN_TRICK_HOUSE_PUZZLE_1_BEGUN
   = VAR_TRICK_HOUSE_ENTRANCE_STATE 0 -> 1
   + seen route_110_trick_house_entrance.The Trick Master found
@@ -23574,12 +23587,56 @@ way -
 from the tile read at 5,1 of Route110_TrickHouseEntrance
 way -
   > A scroll hangs on the wall. It looks like there might be something behind it...
+=== route_110_trick_house_entrance.Dresser
+from the tile read at 9,1 of Route110_TrickHouseEntrance
+way -
+  > A dresser full of capes, false noses and very long scarves.
+=== route_110_trick_house_entrance.IntoPuzzle2
+from the trigger at 5,2 of Route110_TrickHouseEntrance
+way -
+  * warp Route110_TrickHousePuzzle2 0 20
+=== route_110_trick_house_entrance.IntoPuzzle3
+from the trigger at 5,2 of Route110_TrickHouseEntrance
+way -
+  * warp Route110_TrickHousePuzzle3 0 20
+=== route_110_trick_house_entrance.IntoPuzzle4
+from the trigger at 5,2 of Route110_TrickHouseEntrance
+way -
+  * warp Route110_TrickHousePuzzle4 0 20
+=== route_110_trick_house_entrance.IntoPuzzle5
+from the trigger at 5,2 of Route110_TrickHouseEntrance
+way -
+  * warp Route110_TrickHousePuzzle5 0 20
+=== route_110_trick_house_entrance.IntoPuzzle6
+from the trigger at 5,2 of Route110_TrickHouseEntrance
+way -
+  * warp Route110_TrickHousePuzzle6 0 20
+=== route_110_trick_house_entrance.IntoPuzzle7
+from the trigger at 5,2 of Route110_TrickHouseEntrance
+way -
+  * warp Route110_TrickHousePuzzle7 0 20
+=== route_110_trick_house_entrance.IntoPuzzle8
+from the trigger at 5,2 of Route110_TrickHouseEntrance
+way -
+  * warp Route110_TrickHousePuzzle8 0 20
+=== route_110_trick_house_entrance.Planter
+from the tile read at 0,5 of Route110_TrickHouseEntrance
+way -
+  > A planter of bright flowers.
+=== route_110_trick_house_entrance.Tree
+from the tile read at 11,5 of Route110_TrickHouseEntrance
+way -
+  > A potted tree. Its leaves are a little ruffled.
 === route_110_trick_house_entrance.TrickMaster
 from Trick Master at 6,2 of Route110_TrickHouseEntrance
 way -
   Trick Master> Ah, my challenger! Patience, patience. My next puzzle needs more time than a single night.
   Trick Master> Come back another day, a little stronger. I'll have something truly devious waiting for you!
   * emote Trick Master Exclaim
+=== route_110_trick_house_entrance.Window
+from the tile read at 3,1 of Route110_TrickHouseEntrance
+way -
+  > A window. Route 110's grass sways outside.
 === route_110_trick_house_puzzle_1.Door
 from the tile read at 13,1 of Route110_TrickHousePuzzle1
 way -
@@ -23591,6 +23648,396 @@ way -
   > Lucas learnt the secret code written on it by heart.
   * fanfare FanfareItem
   = VAR_TRICK_HOUSE_PUZZLE_1_STATE 0 -> 1
+=== route_110_trick_house_puzzle_2.Button1
+from the trigger at 11,12 of Route110_TrickHousePuzzle2
+way -
+  * sound select
+  = VAR_TEMP_1 0 -> 1
+  = VAR_TEMP_5 0 -> 1
+=== route_110_trick_house_puzzle_2.Button2
+from the trigger at 0,4 of Route110_TrickHousePuzzle2
+way -
+  * sound select
+  = VAR_TEMP_2 0 -> 1
+  = VAR_TEMP_5 0 -> 2
+=== route_110_trick_house_puzzle_2.Button3
+from the trigger at 14,5 of Route110_TrickHousePuzzle2
+way -
+  * sound select
+  = VAR_TEMP_3 0 -> 1
+  = VAR_TEMP_5 0 -> 4
+=== route_110_trick_house_puzzle_2.Button4
+from the trigger at 7,11 of Route110_TrickHousePuzzle2
+way -
+  * sound select
+  = VAR_TEMP_4 0 -> 1
+  = VAR_TEMP_5 0 -> 8
+=== route_110_trick_house_puzzle_2.Door
+from the tile read at 13,1 of Route110_TrickHousePuzzle2
+way -
+  > The door is locked. Something is written on it: "Write the secret code here."
+=== route_110_trick_house_puzzle_2.Scroll
+from the tile read at 14,14 of Route110_TrickHousePuzzle2
+way -
+  > Lucas found a scroll!
+  > Lucas learnt the secret code written on it by heart.
+  * fanfare FanfareItem
+  = VAR_TRICK_HOUSE_PUZZLE_2_STATE 0 -> 1
+=== route_110_trick_house_puzzle_3.Button1
+from the trigger at 4,14 of Route110_TrickHousePuzzle3
+way -
+  * sound select
+  = VAR_TEMP_1 0 -> 1
+  = VAR_TEMP_7 0 -> 6
+  = VAR_TEMP_8 0 -> 1
+  = VAR_TEMP_9 0 -> 1
+=== route_110_trick_house_puzzle_3.Button2
+from the trigger at 3,11 of Route110_TrickHousePuzzle3
+way -
+  * sound select
+  = VAR_TEMP_2 0 -> 1
+  = VAR_TEMP_7 0 -> 7
+  = VAR_TEMP_8 0 -> 2
+  = VAR_TEMP_9 0 -> 1
+=== route_110_trick_house_puzzle_3.Button3
+from the trigger at 12,5 of Route110_TrickHousePuzzle3
+way -
+  * sound select
+  = VAR_TEMP_3 0 -> 1
+  = VAR_TEMP_7 0 -> 8
+  = VAR_TEMP_8 0 -> 3
+  = VAR_TEMP_9 0 -> 1
+=== route_110_trick_house_puzzle_3.Button4
+from the trigger at 8,2 of Route110_TrickHousePuzzle3
+way -
+  * sound select
+  = VAR_TEMP_4 0 -> 1
+  = VAR_TEMP_7 0 -> 9
+  = VAR_TEMP_8 0 -> 4
+  = VAR_TEMP_9 0 -> 1
+=== route_110_trick_house_puzzle_3.Door
+from the tile read at 13,1 of Route110_TrickHousePuzzle3
+way -
+  > The door is locked. Something is written on it: "Write the secret code here."
+=== route_110_trick_house_puzzle_3.Scroll
+from the tile read at 0,14 of Route110_TrickHousePuzzle3
+way -
+  > Lucas found a scroll!
+  > Lucas learnt the secret code written on it by heart.
+  * fanfare FanfareItem
+  = VAR_TRICK_HOUSE_PUZZLE_3_STATE 0 -> 1
+=== route_110_trick_house_puzzle_4.Door
+from the tile read at 13,1 of Route110_TrickHousePuzzle4
+way -
+  > The door is locked. Something is written on it: "Write the secret code here."
+=== route_110_trick_house_puzzle_4.Scroll
+from the tile read at 14,13 of Route110_TrickHousePuzzle4
+way -
+  > Lucas found a scroll!
+  > Lucas learnt the secret code written on it by heart.
+  * fanfare FanfareItem
+  = VAR_TRICK_HOUSE_PUZZLE_4_STATE 0 -> 1
+=== route_110_trick_house_puzzle_5.Door
+from the tile read at 13,1 of Route110_TrickHousePuzzle5
+way -
+  > The door is locked. Something is written on it: "Write the secret code here."
+=== route_110_trick_house_puzzle_5.Mechadoll1
+from Mechadoll 1 at 6,17 of Route110_TrickHousePuzzle5
+way 0
+  Mechadoll 1> Beep! Mechadoll 1 quiz! Answer correctly, and you may pass.
+  Mechadoll 1> Which of these is a Water type?
+  Mechadoll 1> Ding! Correct! Go on through.
+  ? Which of these is a Water type? = Wingull
+  * emote Mechadoll 1 Exclaim
+  * sound select
+  = VAR_TEMP_1 0 -> 1
+way 2, from answer 1
+  Mechadoll 1> Bzzt! Wrong answer!
+  Mechadoll 1> Ha ha ha! Back to the start with you, challenger!
+  ? Which of these is a Water type? = Poochyena
+  * warp Route110_TrickHousePuzzle5 0 20
+  = VAR_TEMP_1 0 -> 1
+way 1, from answer 1
+  Mechadoll 1> Bzzt! Wrong answer!
+  Mechadoll 1> Ha ha ha! Back to the start with you, challenger!
+  ? Which of these is a Water type? = Taillow
+  * warp Route110_TrickHousePuzzle5 0 20
+  = VAR_TEMP_1 0 -> 1
+=== route_110_trick_house_puzzle_5.Mechadoll2
+from Mechadoll 2 at 0,7 of Route110_TrickHousePuzzle5
+way 0
+  Mechadoll 2> Beep! Mechadoll 2 quiz! Answer correctly, and you may pass.
+  Mechadoll 2> Who leads the Gym of Rustboro City?
+  Mechadoll 2> Ding! Correct! Go on through.
+  ? Who leads the Gym of Rustboro City? = Roxanne
+  * emote Mechadoll 2 Exclaim
+  * sound select
+  = VAR_TEMP_2 0 -> 1
+way 2, from answer 1
+  Mechadoll 2> Bzzt! Wrong answer!
+  Mechadoll 2> Ha ha ha! Back to the start with you, challenger!
+  ? Who leads the Gym of Rustboro City? = Wattson
+  * warp Route110_TrickHousePuzzle5 0 20
+  = VAR_TEMP_2 0 -> 1
+way 1, from answer 1
+  Mechadoll 2> Bzzt! Wrong answer!
+  Mechadoll 2> Ha ha ha! Back to the start with you, challenger!
+  ? Who leads the Gym of Rustboro City? = Brawly
+  * warp Route110_TrickHousePuzzle5 0 20
+  = VAR_TEMP_2 0 -> 1
+=== route_110_trick_house_puzzle_5.Mechadoll3
+from Mechadoll 3 at 14,10 of Route110_TrickHousePuzzle5
+way 0
+  Mechadoll 3> Beep! Mechadoll 3 quiz! Answer correctly, and you may pass.
+  Mechadoll 3> How many Pokémon can travel in a team?
+  Mechadoll 3> Bzzt! Wrong answer!
+  Mechadoll 3> Ha ha ha! Back to the start with you, challenger!
+  ? How many Pokémon can travel in a team? = 4
+  * emote Mechadoll 3 Exclaim
+  * warp Route110_TrickHousePuzzle5 0 20
+  = VAR_TEMP_3 0 -> 1
+way 2, from answer 1
+  Mechadoll 3> Bzzt! Wrong answer!
+  Mechadoll 3> Ha ha ha! Back to the start with you, challenger!
+  ? How many Pokémon can travel in a team? = 8
+  * warp Route110_TrickHousePuzzle5 0 20
+  = VAR_TEMP_3 0 -> 1
+way 1, from answer 1
+  Mechadoll 3> Ding! Correct! Go on through.
+  ? How many Pokémon can travel in a team? = 6
+  * sound select
+  = VAR_TEMP_3 0 -> 1
+=== route_110_trick_house_puzzle_5.Mechadoll4
+from Mechadoll 4 at 14,19 of Route110_TrickHousePuzzle5
+way 0
+  Mechadoll 4> Beep! Mechadoll 4 quiz! Answer correctly, and you may pass.
+  Mechadoll 4> Where did your journey in Hoenn begin?
+  Mechadoll 4> Ding! Correct! Go on through.
+  ? Where did your journey in Hoenn begin? = Littleroot Town
+  * emote Mechadoll 4 Exclaim
+  * sound select
+  = VAR_TEMP_4 0 -> 1
+way 2, from answer 1
+  Mechadoll 4> Bzzt! Wrong answer!
+  Mechadoll 4> Ha ha ha! Back to the start with you, challenger!
+  ? Where did your journey in Hoenn begin? = Petalburg City
+  * warp Route110_TrickHousePuzzle5 0 20
+  = VAR_TEMP_4 0 -> 1
+way 1, from answer 1
+  Mechadoll 4> Bzzt! Wrong answer!
+  Mechadoll 4> Ha ha ha! Back to the start with you, challenger!
+  ? Where did your journey in Hoenn begin? = Oldale Town
+  * warp Route110_TrickHousePuzzle5 0 20
+  = VAR_TEMP_4 0 -> 1
+=== route_110_trick_house_puzzle_5.Mechadoll5
+from Mechadoll 5 at 10,4 of Route110_TrickHousePuzzle5
+way 0
+  Mechadoll 5> Beep! Mechadoll 5 quiz! Answer correctly, and you may pass.
+  Mechadoll 5> Which Gym Leader trains Fire types?
+  Mechadoll 5> Bzzt! Wrong answer!
+  Mechadoll 5> Ha ha ha! Back to the start with you, challenger!
+  ? Which Gym Leader trains Fire types? = Brawly
+  * emote Mechadoll 5 Exclaim
+  * warp Route110_TrickHousePuzzle5 0 20
+  = VAR_TEMP_5 0 -> 1
+way 2, from answer 1
+  Mechadoll 5> Bzzt! Wrong answer!
+  Mechadoll 5> Ha ha ha! Back to the start with you, challenger!
+  ? Which Gym Leader trains Fire types? = Wattson
+  * warp Route110_TrickHousePuzzle5 0 20
+  = VAR_TEMP_5 0 -> 1
+way 1, from answer 1
+  Mechadoll 5> Ding! Correct! Go on through.
+  ? Which Gym Leader trains Fire types? = Flannery
+  * sound select
+  = VAR_TEMP_5 0 -> 1
+=== route_110_trick_house_puzzle_5.Quiz1
+from the trigger at 1,17 of Route110_TrickHousePuzzle5
+from the trigger at 2,17 of Route110_TrickHousePuzzle5
+from the trigger at 3,17 of Route110_TrickHousePuzzle5
+from the trigger at 4,17 of Route110_TrickHousePuzzle5
+from the trigger at 5,17 of Route110_TrickHousePuzzle5
+way 0
+  Mechadoll 1> Beep! Mechadoll 1 quiz! Answer correctly, and you may pass.
+  Mechadoll 1> Which of these is a Water type?
+  Mechadoll 1> Ding! Correct! Go on through.
+  ? Which of these is a Water type? = Wingull
+  * emote Mechadoll 1 Exclaim
+  * sound select
+  = VAR_TEMP_1 0 -> 1
+way 2, from answer 1
+  Mechadoll 1> Bzzt! Wrong answer!
+  Mechadoll 1> Ha ha ha! Back to the start with you, challenger!
+  ? Which of these is a Water type? = Poochyena
+  * warp Route110_TrickHousePuzzle5 0 20
+  = VAR_TEMP_1 0 -> 1
+way 1, from answer 1
+  Mechadoll 1> Bzzt! Wrong answer!
+  Mechadoll 1> Ha ha ha! Back to the start with you, challenger!
+  ? Which of these is a Water type? = Taillow
+  * warp Route110_TrickHousePuzzle5 0 20
+  = VAR_TEMP_1 0 -> 1
+=== route_110_trick_house_puzzle_5.Quiz2
+from the trigger at 1,7 of Route110_TrickHousePuzzle5
+from the trigger at 2,7 of Route110_TrickHousePuzzle5
+from the trigger at 3,7 of Route110_TrickHousePuzzle5
+from the trigger at 4,7 of Route110_TrickHousePuzzle5
+from the trigger at 5,7 of Route110_TrickHousePuzzle5
+from the trigger at 6,7 of Route110_TrickHousePuzzle5
+way 0
+  Mechadoll 2> Beep! Mechadoll 2 quiz! Answer correctly, and you may pass.
+  Mechadoll 2> Who leads the Gym of Rustboro City?
+  Mechadoll 2> Ding! Correct! Go on through.
+  ? Who leads the Gym of Rustboro City? = Roxanne
+  * emote Mechadoll 2 Exclaim
+  * sound select
+  = VAR_TEMP_2 0 -> 1
+way 2, from answer 1
+  Mechadoll 2> Bzzt! Wrong answer!
+  Mechadoll 2> Ha ha ha! Back to the start with you, challenger!
+  ? Who leads the Gym of Rustboro City? = Wattson
+  * warp Route110_TrickHousePuzzle5 0 20
+  = VAR_TEMP_2 0 -> 1
+way 1, from answer 1
+  Mechadoll 2> Bzzt! Wrong answer!
+  Mechadoll 2> Ha ha ha! Back to the start with you, challenger!
+  ? Who leads the Gym of Rustboro City? = Brawly
+  * warp Route110_TrickHousePuzzle5 0 20
+  = VAR_TEMP_2 0 -> 1
+=== route_110_trick_house_puzzle_5.Quiz3
+from the trigger at 10,10 of Route110_TrickHousePuzzle5
+from the trigger at 11,10 of Route110_TrickHousePuzzle5
+from the trigger at 12,10 of Route110_TrickHousePuzzle5
+from the trigger at 13,10 of Route110_TrickHousePuzzle5
+from the trigger at 9,10 of Route110_TrickHousePuzzle5
+way 0
+  Mechadoll 3> Beep! Mechadoll 3 quiz! Answer correctly, and you may pass.
+  Mechadoll 3> How many Pokémon can travel in a team?
+  Mechadoll 3> Bzzt! Wrong answer!
+  Mechadoll 3> Ha ha ha! Back to the start with you, challenger!
+  ? How many Pokémon can travel in a team? = 4
+  * emote Mechadoll 3 Exclaim
+  * warp Route110_TrickHousePuzzle5 0 20
+  = VAR_TEMP_3 0 -> 1
+way 2, from answer 1
+  Mechadoll 3> Bzzt! Wrong answer!
+  Mechadoll 3> Ha ha ha! Back to the start with you, challenger!
+  ? How many Pokémon can travel in a team? = 8
+  * warp Route110_TrickHousePuzzle5 0 20
+  = VAR_TEMP_3 0 -> 1
+way 1, from answer 1
+  Mechadoll 3> Ding! Correct! Go on through.
+  ? How many Pokémon can travel in a team? = 6
+  * sound select
+  = VAR_TEMP_3 0 -> 1
+=== route_110_trick_house_puzzle_5.Quiz4
+from the trigger at 10,19 of Route110_TrickHousePuzzle5
+from the trigger at 11,19 of Route110_TrickHousePuzzle5
+from the trigger at 12,19 of Route110_TrickHousePuzzle5
+from the trigger at 13,19 of Route110_TrickHousePuzzle5
+from the trigger at 9,19 of Route110_TrickHousePuzzle5
+way 0
+  Mechadoll 4> Beep! Mechadoll 4 quiz! Answer correctly, and you may pass.
+  Mechadoll 4> Where did your journey in Hoenn begin?
+  Mechadoll 4> Ding! Correct! Go on through.
+  ? Where did your journey in Hoenn begin? = Littleroot Town
+  * emote Mechadoll 4 Exclaim
+  * sound select
+  = VAR_TEMP_4 0 -> 1
+way 2, from answer 1
+  Mechadoll 4> Bzzt! Wrong answer!
+  Mechadoll 4> Ha ha ha! Back to the start with you, challenger!
+  ? Where did your journey in Hoenn begin? = Petalburg City
+  * warp Route110_TrickHousePuzzle5 0 20
+  = VAR_TEMP_4 0 -> 1
+way 1, from answer 1
+  Mechadoll 4> Bzzt! Wrong answer!
+  Mechadoll 4> Ha ha ha! Back to the start with you, challenger!
+  ? Where did your journey in Hoenn begin? = Oldale Town
+  * warp Route110_TrickHousePuzzle5 0 20
+  = VAR_TEMP_4 0 -> 1
+=== route_110_trick_house_puzzle_5.Quiz5
+from the trigger at 11,4 of Route110_TrickHousePuzzle5
+way 0
+  Mechadoll 5> Beep! Mechadoll 5 quiz! Answer correctly, and you may pass.
+  Mechadoll 5> Which Gym Leader trains Fire types?
+  Mechadoll 5> Bzzt! Wrong answer!
+  Mechadoll 5> Ha ha ha! Back to the start with you, challenger!
+  ? Which Gym Leader trains Fire types? = Brawly
+  * emote Mechadoll 5 Exclaim
+  * warp Route110_TrickHousePuzzle5 0 20
+  = VAR_TEMP_5 0 -> 1
+way 2, from answer 1
+  Mechadoll 5> Bzzt! Wrong answer!
+  Mechadoll 5> Ha ha ha! Back to the start with you, challenger!
+  ? Which Gym Leader trains Fire types? = Wattson
+  * warp Route110_TrickHousePuzzle5 0 20
+  = VAR_TEMP_5 0 -> 1
+way 1, from answer 1
+  Mechadoll 5> Ding! Correct! Go on through.
+  ? Which Gym Leader trains Fire types? = Flannery
+  * sound select
+  = VAR_TEMP_5 0 -> 1
+=== route_110_trick_house_puzzle_5.Scroll
+from the tile read at 11,21 of Route110_TrickHousePuzzle5
+way -
+  > Lucas found a scroll!
+  > Lucas learnt the secret code written on it by heart.
+  * fanfare FanfareItem
+  = VAR_TRICK_HOUSE_PUZZLE_5_STATE 0 -> 1
+=== route_110_trick_house_puzzle_6.Door
+from the tile read at 13,1 of Route110_TrickHousePuzzle6
+way -
+  > The door is locked. Something is written on it: "Write the secret code here."
+=== route_110_trick_house_puzzle_6.Scroll
+from the tile read at 0,10 of Route110_TrickHousePuzzle6
+way -
+  > Lucas found a scroll!
+  > Lucas learnt the secret code written on it by heart.
+  * fanfare FanfareItem
+  = VAR_TRICK_HOUSE_PUZZLE_6_STATE 0 -> 1
+=== route_110_trick_house_puzzle_7.BlueSwitch
+from the trigger at 0,14 of Route110_TrickHousePuzzle7
+way -
+  * sound select
+  * rotatetiles blue
+=== route_110_trick_house_puzzle_7.Door
+from the tile read at 13,1 of Route110_TrickHousePuzzle7
+way -
+  > The door is locked. Something is written on it: "Write the secret code here."
+=== route_110_trick_house_puzzle_7.GreenSwitch
+from the trigger at 6,6 of Route110_TrickHousePuzzle7
+way -
+  * sound select
+  * rotatetiles green
+=== route_110_trick_house_puzzle_7.PurpleSwitch
+from the trigger at 9,7 of Route110_TrickHousePuzzle7
+way -
+  * sound select
+  * rotatetiles purple
+=== route_110_trick_house_puzzle_7.Scroll
+from the tile read at 6,17 of Route110_TrickHousePuzzle7
+way -
+  > Lucas found a scroll!
+  > Lucas learnt the secret code written on it by heart.
+  * fanfare FanfareItem
+  = VAR_TRICK_HOUSE_PUZZLE_7_STATE 0 -> 1
+=== route_110_trick_house_puzzle_7.YellowSwitch
+from the trigger at 8,19 of Route110_TrickHousePuzzle7
+way -
+  * sound select
+  * rotatetiles yellow
+=== route_110_trick_house_puzzle_8.Door
+from the tile read at 13,1 of Route110_TrickHousePuzzle8
+way -
+  > The door is locked. Something is written on it: "Write the secret code here."
+=== route_110_trick_house_puzzle_8.Scroll
+from the tile read at 3,21 of Route110_TrickHousePuzzle8
+way -
+  > Lucas found a scroll!
+  > Lucas learnt the secret code written on it by heart.
+  * fanfare FanfareItem
+  = VAR_TRICK_HOUSE_PUZZLE_8_STATE 0 -> 1
 === route_111.Girl
 from Girl at 223,8 of Hoenn
 way -

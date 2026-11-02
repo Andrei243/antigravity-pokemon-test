@@ -330,7 +330,10 @@ public class PokemonTests
         // added to the low tide's, map by map. Every other swap of a flag is laid in the same walk (plan 21 · H12, part c:
         // Steven's cave, whose mouth Meteor Falls opens only after Hoenn's Hall of Fame, and Sky Pillar cracked)
         var flooded = MapDatabase.Fresh();
-        foreach (string name in MapDatabase.MapNames) flooded(name).ApplySwappedPlaces(_ => 0, _ => true);
+        // (and the Trick House's buttons pressed, plan 21 · H12, part j: the second puzzle's four holes covered, the
+        // third's doors swapped, so the walk takes each state of a room the buttons change)
+        foreach (string name in MapDatabase.MapNames)
+            flooded(name).ApplySwappedPlaces(v => v switch { "VAR_TEMP_5" => 15, "VAR_TEMP_7" => 6, _ => 0 }, _ => true);
         foreach (var (map, tiles) in WorldWalk.FromEveryStart(flooded))
             if (reached.TryGetValue(maps(map.Name), out var had)) had.UnionWith(tiles);
             else reached[maps(map.Name)] = tiles;

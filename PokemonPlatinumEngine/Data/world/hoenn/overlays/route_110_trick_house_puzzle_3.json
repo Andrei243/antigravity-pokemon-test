@@ -1,0 +1,23 @@
+{
+  // The Trick House's third puzzle (plan 21 · H12, part j): a room of red doors and blue ones, every button stepped on
+  // shutting the open colour and opening the shut one (Emerald's SetDoorsState0 and 1; here the room's layouts swapped in
+  // by VAR_TEMP_7, five times the doors' state and the last button pressed: world.json's swaps, GbaTrickHouse). Two rocks
+  // to smash by the way in, three trainers, a scroll and the locked door to the last room (route_110_trick_house_puzzle_3.txt)
+  "area": "route_110_trick_house_puzzle_3",
+  "bgmTrack": "hoenn/trick_house",
+  "doors": [ { "warp": 2, "map": "Route110_TrickHouseEnd", "x": 10, "y": 2, "facing": "Down" } ],
+  "switches": [ { "warp": 2, "from": "FLAG_HOENN_TRICK_HOUSE_PUZZLE_3_UNLOCKED" } ],
+  "readAt": [ { "x": 13, "z": 1, "script": "Door" } ],
+  "read": { "Route110_TrickHousePuzzle3_EventScript_Scroll": "Scroll" },
+  "triggers": [
+    { "trigger": 0, "script": "Button1" },
+    { "trigger": 1, "script": "Button2" },
+    { "trigger": 2, "script": "Button3" },
+    { "trigger": 3, "script": "Button4" }
+  ],
+  "people": {
+    "camper": { "name": "Justin", "trainer": { "dialogueBefore": "Camper Justin: Red doors shut when the blue ones open. Or was it the other way round?", "dialogueAfter": "Camper Justin: I've stopped trying to work it out." } },
+    "picnicker": { "name": "Martha", "trainer": { "dialogueBefore": "Picnicker Martha: I brought a picnic in here days ago. I still haven't found the way out.", "dialogueAfter": "Picnicker Martha: Want a sandwich? I have plenty left." } },
+    "hiker": { "name": "Alan", "trainer": { "dialogueBefore": "Hiker Alan: Mountains I can climb. Doors that change their minds, I cannot!", "dialogueAfter": "Hiker Alan: Give me a nice honest cliff any day." } }
+  }
+}

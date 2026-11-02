@@ -1,0 +1,16 @@
+{
+  // The Trick House's sixth puzzle (plan 21 · H12, part j): eleven rotating gates of rails, turned a quarter by walking
+  // into their arms (world.json's puzzle, TrickHouseGates: Emerald's own table on the Fortree Gym's rule), three
+  // trainers, a scroll and the locked door to the last room (route_110_trick_house_puzzle_6.txt)
+  "area": "route_110_trick_house_puzzle_6",
+  "bgmTrack": "hoenn/trick_house",
+  "doors": [ { "warp": 2, "map": "Route110_TrickHouseEnd", "x": 10, "y": 2, "facing": "Down" } ],
+  "switches": [ { "warp": 2, "from": "FLAG_HOENN_TRICK_HOUSE_PUZZLE_6_UNLOCKED" } ],
+  "readAt": [ { "x": 13, "z": 1, "script": "Door" } ],
+  "read": { "Route110_TrickHousePuzzle6_EventScript_Scroll": "Scroll" },
+  "people": {
+    "picnicker": { "name": "Sophia", "trainer": { "dialogueBefore": "Ranger Sophia: These gates turn whichever way you push them. Think before you walk!", "dialogueAfter": "Ranger Sophia: You thought faster than I battled." } },
+    "man_5": { "name": "Benny", "trainer": { "dialogueBefore": "Bird Keeper Benny: My birds could fly right over these gates. I can't, though.", "dialogueAfter": "Bird Keeper Benny: Round and round I go." } },
+    "camper": { "name": "Sebastian", "trainer": { "dialogueBefore": "Ranger Sebastian: I've gone through this gate four times and come out right here every time.", "dialogueAfter": "Ranger Sebastian: Maybe I'll try pushing the other arm." } }
+  }
+}
