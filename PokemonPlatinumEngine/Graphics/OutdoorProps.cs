@@ -983,6 +983,7 @@ public static class ThingCards
             // The waterfall's first frame (it falls in GymPieces; this is its picture on a plan)
             PropType.GymWaterfall => (GymArt.WaterfallWidth, GymArt.WaterfallHeight, c => GymArt.PaintWaterfall(c, 0)),
             PropType.CratePile => (30, 34, GymArt.PaintCratePile),
+            PropType.DeoxysTriangle => (HoennArt.TriangleWidth, HoennArt.TriangleHeight, HoennArt.PaintTriangle),
             _ => (OutdoorProps.ItemBallCard, OutdoorProps.ItemBallCard, OutdoorProps.PaintItemBall)
         };
         var art = new PixelCanvas(w, h);

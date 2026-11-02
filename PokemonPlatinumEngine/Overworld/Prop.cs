@@ -290,6 +290,13 @@ public enum PropType
     /// so it blocks every tile it covers.
     /// </summary>
     PrismTower,
+    /// <summary>Birth Island's triangle (plan 21 · H12, part p): a thing of the map (<see cref="NPC.DeoxysTriangleType"/>), drawn as a card (<c>HoennArt</c>).</summary>
+    DeoxysTriangle,
+    /// <summary>
+    /// The Abandoned Ship lying in Route 108's sea (plan 21 · H12, part p): the ferry gone to ruin, its stern sunk and its
+    /// hull rusted (<c>HoennArt.Wreck</c>). An overlay's prop over tiles the import blocks already; it blocks nothing by itself.
+    /// </summary>
+    Wreck,
 }
 
 /// <summary>A piece of furniture or decoration placed in a room, covering a rectangle of tiles.</summary>

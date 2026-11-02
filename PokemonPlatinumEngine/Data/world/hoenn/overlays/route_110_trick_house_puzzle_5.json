@@ -20,10 +20,10 @@
     { "trigger": 21, "script": "Quiz4" }
   ],
   "people": {
-    "mechadoll_1": { "name": "Mechadoll 1", "script": "Mechadoll1", "still": true },
-    "mechadoll_2": { "name": "Mechadoll 2", "script": "Mechadoll2", "still": true },
-    "mechadoll_3": { "name": "Mechadoll 3", "script": "Mechadoll3", "still": true },
-    "mechadoll_4": { "name": "Mechadoll 4", "script": "Mechadoll4", "still": true },
-    "mechadoll_5": { "name": "Mechadoll 5", "script": "Mechadoll5", "still": true }
+    "mechadoll_1": { "name": "Mechadoll 1", "npcType": "mechadoll", "script": "Mechadoll1", "still": true },
+    "mechadoll_2": { "name": "Mechadoll 2", "npcType": "mechadoll", "script": "Mechadoll2", "still": true },
+    "mechadoll_3": { "name": "Mechadoll 3", "npcType": "mechadoll", "script": "Mechadoll3", "still": true },
+    "mechadoll_4": { "name": "Mechadoll 4", "npcType": "mechadoll", "script": "Mechadoll4", "still": true },
+    "mechadoll_5": { "name": "Mechadoll 5", "npcType": "mechadoll", "script": "Mechadoll5", "still": true }
   }
 }

@@ -2040,6 +2040,16 @@ Rooms, caves and the Distortion World have their own rigs that ignore the clock.
 - The title keeps Giratina in shadow by design; since G7 its model would hold up fully lit if that is ever wanted. The title music is a placeholder melody until plan 05.
 - The opening's journey shots are only as good as the maps they fly over; choose new shots as the regions are rebuilt (plan 01, G4–G5).
 
+### Hoenn's last things
+
+Plan 21 · H12, part p. Our own drawings: nothing of Emerald's sprites or metatiles is taken.
+
+- **Birth Island's triangle** (`HoennArt.PaintTriangle`, a card 30 by 32 like any thing of the map): an upright triangle of pale violet glass standing in a dark stone foot, its left face lit and its right in shade, a lit rim up its left edge, a cyan seam down its middle and along its foot meeting in a small glowing core, a glint near the point. Never a heap of stone: it is what Deoxys comes down to.
+- **The Abandoned Ship** (`HoennArt.Wreck`, the prop `Wreck` over the hull's tiles in Route 108's sea): the ferry's shape gone to ruin. Its west (stern) half stands half as high above the water as its bow, its hull a stained white with a band of rust at the waterline and rust streaked down from the rail, its portholes and cabin windows dark and empty, its deck of grey weathered planks broken through to the sea in places (more on the sunk stern), its funnel a rusted stump with a dark mouth. Nothing on it is lit after dark.
+- **The Mechadolls** (`characters.json`'s `mechadoll`): clockwork dolls, never people: a bald pewter head, an orange band round it, a cyan visor for eyes, a pewter body with brass trim, dark boots, a little under a grown-up's height.
+- **The Frontier island's halls and the Trainer Hill** are found at their doors as every GBA building is, but by what the door leads into: the Battle Tower and the Trainer Hill are towers of stone, the six other halls and the Ranking Hall public halls, the Exchange Service Corner a shop, never the cottage a door of no kind is built as.
+- **The Trainer Hill's roof** is a room of the airy walkways' look (`InteriorStyle.Aerie`): pale boards under walls of the sky's blue.
+
 ### Hoenn's contests and Pokéblocks
 
 Plan 21 · H11. Our own pictures: nothing of Emerald's stage, judge or Pokéblock sprites is taken.

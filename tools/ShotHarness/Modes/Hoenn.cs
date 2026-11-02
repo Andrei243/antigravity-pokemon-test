@@ -30,6 +30,13 @@ partial class Harness
             engine.NewGameRegion = "Sinnoh";
             return;
         }
+        // (HOENN_FROM=look the last places' and pictures' look alone: plan 21 · H12, part p)
+        if (from == "look")
+        {
+            HoennLookShots();
+            engine.NewGameRegion = "Sinnoh";
+            return;
+        }
         if (from == "ship")
         {
             HoennAbandonedShipShots();

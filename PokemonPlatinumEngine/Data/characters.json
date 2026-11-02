@@ -497,7 +497,10 @@
     // The annex's two Brains of plan 14 · B10, our own takes: Lucy, the Pike Queen, long dark-violet hair over a black
     // coat with a snake-green trim; Brandon, the Pyramid King, a broad explorer in a khaki shirt and a sand-coloured hat
     "lucy": { "hairColor": "#3a2a4a", "hair": "Long", "top": "#26222e", "accent": "#5ab44a", "bottom": "#26222e", "shoes": "#2a2430", "eyes": "#6a3a7a", "coat": true, "build": "Adult", "lashes": true, "height": 1.04 },
-    "brandon": { "hairColor": "#4a3022", "hair": "Short", "hat": "Cap", "hatColor": "#c8a868", "hatBand": "#5a4a2a", "top": "#a88a52", "accent": "#e8dcb8", "bottom": "#5a4a32", "shoes": "#3a2a1e", "eyes": "#3a2a22", "bushyBrows": true, "build": "Adult", "height": 1.12 }
+    "brandon": { "hairColor": "#4a3022", "hair": "Short", "hat": "Cap", "hatColor": "#c8a868", "hatBand": "#5a4a2a", "top": "#a88a52", "accent": "#e8dcb8", "bottom": "#5a4a32", "shoes": "#3a2a1e", "eyes": "#3a2a22", "bushyBrows": true, "build": "Adult", "height": 1.12 },
+    // Plan 21 · H12, part p: the Trick House's Mechadolls, our own clockwork dolls: a bald pewter head under a band of
+    // orange, a cyan visor for eyes, a pewter body with brass trim on dark boots (never a person's skin tone or hair)
+    "mechadoll": { "hairColor": "#9aa2b2", "hair": "Bald", "hat": "Headband", "hatColor": "#e88a3a", "hatBand": "#e8c04a", "skin": "#b8c0cc", "top": "#8a94a8", "accent": "#e8c04a", "bottom": "#6a7286", "shoes": "#2e3240", "eyes": "#2ad0d8", "glasses": "#2ad0d8", "build": "Adult", "height": 0.96 }
   },
   // Names that are another look
   "same": { "trainer": "player", "lucas": "player", "grunt_m": "grunt", "black_belt": "blackbelt", "scientist_m": "scientist" },
@@ -637,7 +640,14 @@
     // Plan 20 · J15, part h: Janine, Fuchsia's Leader, and the decoys of her Gym who wear her look
     "gsleader13": "janine",
     // The rest of HeartGold's Kanto Leaders, so that no overlay that forgets one draws them in the plain look
-    "gsleader10": "sabrina", "gsleader11": "misty", "gsleader12": "erika", "gsleader14": "brock", "gsleader15": "blaine", "gsleader16": "blue"
+    "gsleader10": "sabrina", "gsleader11": "misty", "gsleader12": "erika", "gsleader14": "brock", "gsleader15": "blaine", "gsleader16": "blue",
+    // Plan 21 · H12, part p: Emerald's looks of Hoenn's trainers and townsfolk that no overlay names, and the Trainer Hill's
+    // trainers, which had stood as the boy: the nearest of ours
+    "hex_maniac": "psychic", "kindler": "firebreather", "boy_3": "Youngster", "gameboy_kid": "kid_with_nds",
+    "cycling_triathlete_m": "cyclist_m", "cycling_triathlete_f": "cyclist_f", "running_triathlete_m": "jogger",
+    "running_triathlete_f": "jogger", "swimming_triathlete_m": "swimmer_m", "swimming_triathlete_f": "swimmer_f",
+    "tuber_m_swimming": "tuber_m", "reporter_m": "reporter", "hot_springs_old_woman": "old_woman",
+    "rooftop_sale_woman": "Lady", "scientist_2": "scientist", "link_receptionist": "Nurse", "contest_judge": "Gentleman"
   },
   "fallback": "Trainer",
   // The look a trainer class stands as in battle, as the original shows the class whatever the person in the field

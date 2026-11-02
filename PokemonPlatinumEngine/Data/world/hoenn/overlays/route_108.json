@@ -13,6 +13,7 @@
     "sailor": { "name": "Cory", "trainer": { "dialogueBefore": "Sailor Cory: Ahoy! A sailor never turns down a battle at sea!", "dialogueAfter": "Sailor Cory: Sunk without a trace!" } }
   },
   // The wreck itself, over the hull's tiles (Emerald draws it into Route 108's metatiles, which the import reads as sea):
-  // its gangway's warp is the tile south of the boat's middle
-  "props": [ { "type": "Boat", "x": 167, "y": 363, "width": 6, "depth": 3 } ]
+  // its gangway's warp is the tile south of the boat's middle. Drawn as a wreck, its stern sunk and its hull rusted
+  // (plan 21 · H12, part p)
+  "props": [ { "type": "Wreck", "x": 167, "y": 363, "width": 6, "depth": 3 } ]
 }
