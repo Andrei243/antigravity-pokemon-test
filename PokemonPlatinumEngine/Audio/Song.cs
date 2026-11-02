@@ -83,8 +83,17 @@ public sealed class Song
 
     public float Reverb { get; init; } = 0.3f;
 
-    /// <summary>The sound the song names in its header (<c>sound modern</c>, plan 31); null when it names none, which is the DS sound until a region's file says otherwise (MU2).</summary>
+    /// <summary>The sound the song names in its header (<c>sound modern</c>, plan 31); null when it names none, and its region's (<see cref="RegionSound"/>) is played.</summary>
     public SynthSound? Sound { get; init; }
+
+    /// <summary>
+    /// The sound the region whose folder the song is in names (<c>"sound": "modern"</c> in its region file, plan 31 ·
+    /// MU2); null when the region names none or the song is in <c>common</c>. Set as <see cref="MusicLibrary"/> reads it.
+    /// </summary>
+    public SynthSound? RegionSound { get; init; }
+
+    /// <summary>The sound the song plays in: its header's, else its region's, else the DS sound.</summary>
+    public SynthSound PlaysIn => Sound ?? RegionSound ?? SynthSound.Ds;
 
     /// <summary>The modern sound's room (<c>room hall 2.1</c>); null for <see cref="RoomShape.Default"/>. The DS sound ignores it.</summary>
     public RoomShape? Room { get; init; }

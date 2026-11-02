@@ -7,6 +7,8 @@
 //   dotnet run --project tools/MusicRender -- <out dir> --cries [species or form ...] [--all] [--modes]
 //   dotnet run --project tools/MusicRender -- <out dir> --ambience [bed ...] [--handheld]
 //   dotnet run --project tools/MusicRender -- <out dir> --mix     (plan 31 · MU1: the resampler, the audio thread's cost, each bus before and after)
+//   dotnet run --project tools/MusicRender -- <out dir> --handover <first> <second> [--at s] [--cut]   (plan 31 · MU2: one song handing over to another, of either sound)
+//   dotnet run --project tools/MusicRender -- <out dir> --switch <song> [--lowhp a-b] [--giant a-b] [--night-at s]   (the arrangements switched mid-song)
 //
 // Everything played through the mixer is rendered at the mix's 48 kHz (AudioMixer.Rate); --sound ds|modern renders a
 // song at that sound's own rate, with no mixer.
@@ -55,6 +57,9 @@ if (args[0] == "--calibrate")
 }
 
 string outDir = args[0];
+// Plan 31 · MU2: songs changed through the game's mixer as the game changes them (a handover, the arrangements switched)
+if (args.Length > 1 && args[1] is "--handover" or "--switch")
+    return Handover.Run(outDir, args[1..], (path, samples, rate) => WriteWav(path, samples, rate));
 bool night = args.Contains("--night");
 bool stems = args.Contains("--stems");
 bool spectrograms = args.Contains("--spectrogram");
@@ -296,7 +301,8 @@ foreach (var song in songs)
     }
     Console.WriteLine($"{song.Id,-24} {song.Duration(night),6:0.0}s loop {song.LoopDuration(night),5:0.0}s  peak {Db(peak),6:0.0} dB  rms {Db((float)rms),6:0.0} dB  loud {loud,6:0.0} dB  clashes {clashes.Count}{seam}  cpu {cpu:0.0}%{(nans > 0 ? $"  NaN {nans}" : "")}{Target(loud, bus)}");
     if (voices != null)
-        Console.WriteLine($"    {voices.Rate} Hz, voices: most at once {voices.PeakVoices}, cut short {voices.VoicesStolen}");
+        Console.WriteLine($"    {voices.Rate} Hz, voices: most at once {voices.PeakVoices}, cut short {voices.VoicesStolen}" +
+            (voices.Sound == SynthSound.Modern ? $", compressor: mean {voices.Compression.Mean:0.0} dB, most {voices.Compression.Most:0.0} dB" : ""));
     foreach (var c in clashes.Take(12)) Console.WriteLine("    " + c);
     if (stems)
     {

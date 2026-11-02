@@ -20,6 +20,12 @@ public enum AudioBus { Music, Fanfare, Sound, Cry, Ambience }
 /// (<c>new AudioMixer(Synthesizer.DsRate)</c>) resamples nothing and renders the very samples the mixer rendered
 /// before MU1, which <c>MixRateTests</c> hold.
 /// </para>
+/// <para>
+/// Plan 31 · MU2: a song in the modern sound (<see cref="Song.PlaysIn"/>) plays on a player of its own at the mix's
+/// rate and joins the mix after the resampler, rendered a DS chunk's 375 frames at a time with that chunk's fade, duck
+/// and bus level, so the two sounds keep step and hand over to one another as two songs of one sound do. A mixer at the
+/// DS's rate has no modern player and plays every song in the DS sound.
+/// </para>
 /// </summary>
 public sealed class AudioMixer
 {
@@ -45,7 +51,12 @@ public sealed class AudioMixer
     {
         if (rate != Rate && rate != Synthesizer.DsRate) throw new ArgumentOutOfRangeException(nameof(rate), rate, "the mix runs at 48 kHz or, unresampled, at the DS's rate");
         OutputRate = rate;
-        if (rate != Synthesizer.DsRate) resampler = Resampler.ForMix();
+        if (rate != Synthesizer.DsRate)
+        {
+            resampler = Resampler.ForMix();
+            modernMusic = new SongPlayer(SynthSound.Modern);
+            modernFanfare = new SongPlayer(SynthSound.Modern);
+        }
         highPassCoef = 1f / (1f + MathF.Tau * 30f / rate);
     }
 
@@ -76,6 +87,34 @@ public sealed class AudioMixer
     private readonly object gate = new();
     private readonly SongPlayer music = new();
     private readonly SongPlayer fanfare = new();
+
+    // Plan 31 · MU2: the modern sound's players, at the mix's rate, joining it after the resampler (none at the DS's rate)
+    private readonly SongPlayer? modernMusic, modernFanfare;
+
+    /// <summary>The modern players' output, queued a DS chunk (<see cref="ModernChunk"/> frames) at a time and taken out frame for frame with the resampled DS stage.</summary>
+    private float[] modernQueue = Array.Empty<float>();
+    private int modernQueued;
+    private float modernMusicGain, modernFanfareGain;
+
+    /// <summary>A DS chunk's length at the mix's rate: 256 frames at 32,768 Hz are 375 at 48,000, exactly.</summary>
+    private const int ModernChunk = DsChunk * Rate / Synthesizer.DsRate;
+
+    /// <summary>The player that has the music now: the modern one while it holds a song, the DS one otherwise.</summary>
+    private SongPlayer musicNow => modernMusic?.Song != null ? modernMusic : music;
+
+    /// <summary>The player that has the fanfare now.</summary>
+    private SongPlayer fanfareNow => modernFanfare?.Song != null ? modernFanfare : fanfare;
+
+    /// <summary>The music player a song plays on: the modern one for a song in the modern sound (where this mixer has one).</summary>
+    private SongPlayer MusicFor(Song song) => modernMusic != null && song.PlaysIn == SynthSound.Modern ? modernMusic : music;
+
+    private SongPlayer FanfareFor(Song song) => modernFanfare != null && song.PlaysIn == SynthSound.Modern ? modernFanfare : fanfare;
+
+    /// <summary>The sound the music plays in now (plan 31 · MU2): the modern one while a modern song plays.</summary>
+    public SynthSound MusicSound
+    {
+        get { lock (gate) return musicNow.Sound; }
+    }
     private readonly float[] busVolume = { 1f, 1f, 1f, 1f, 1f };
     private readonly SoundVoice[] sounds = new SoundVoice[MaxSounds];
     private readonly BedVoice[] beds = new BedVoice[MaxBeds];
@@ -161,7 +200,14 @@ public sealed class AudioMixer
     public bool LowHp
     {
         get { lock (gate) return music.Agitated; }
-        set { lock (gate) music.Agitated = value; }
+        set
+        {
+            lock (gate)
+            {
+                music.Agitated = value;
+                if (modernMusic != null) modernMusic.Agitated = value;
+            }
+        }
     }
 
     /// <summary>
@@ -172,7 +218,14 @@ public sealed class AudioMixer
     public bool Giant
     {
         get { lock (gate) return music.Giant; }
-        set { lock (gate) music.Giant = value; }
+        set
+        {
+            lock (gate)
+            {
+                music.Giant = value;
+                if (modernMusic != null) modernMusic.Giant = value;
+            }
+        }
     }
 
     /// <summary>A bus's volume, 0 to 1: what the options set.</summary>
@@ -189,7 +242,7 @@ public sealed class AudioMixer
     /// <summary>The song that is playing or about to, or null.</summary>
     public string? CurrentId
     {
-        get { lock (gate) return (pending ?? music.Song)?.Id; }
+        get { lock (gate) return (pending ?? musicNow.Song)?.Id; }
     }
 
     public bool FanfarePlaying
@@ -222,14 +275,14 @@ public sealed class AudioMixer
         night &= song.HasNight;
         lock (gate)
         {
-            var current = pending ?? music.Song;
+            var current = pending ?? musicNow.Song;
             bool samePending = pending != null && pending.Id == song.Id && pendingNight == night;
-            if (!immediate && (samePending || (pending == null && current?.Id == song.Id && music.Night == night && music.Playing)))
+            if (!immediate && (samePending || (pending == null && current?.Id == song.Id && musicNow.Night == night && musicNow.Playing)))
                 return;
 
             pending = song;
             pendingNight = night;
-            if (immediate || music.Song == null || musicGain <= 0.001f)
+            if (immediate || musicNow.Song == null || musicGain <= 0.001f)
             {
                 StartPending();
             }
@@ -257,7 +310,11 @@ public sealed class AudioMixer
     {
         lock (gate)
         {
-            fanfare.Start(jingle, atNight: false);
+            // A fanfare of the other sound cuts the one still ringing, as a new fanfare of the same sound does
+            var player = FanfareFor(jingle);
+            var other = ReferenceEquals(player, fanfare) ? modernFanfare : fanfare;
+            if (other?.Song != null) other.Stop();
+            player.Start(jingle, atNight: false);
             fanfareActive = true;
             fanfareTail = 0f;
             fadeTarget = 0f;
@@ -336,7 +393,11 @@ public sealed class AudioMixer
 
     private void StartPending()
     {
-        music.Start(pending!, pendingNight);
+        // A song of the other sound takes over from the one before, which has faded out (or is cut, for a battle)
+        var player = MusicFor(pending!);
+        var other = ReferenceEquals(player, music) ? modernMusic : music;
+        if (other?.Song != null) other.Stop();
+        player.Start(pending!, pendingNight);
         pending = null;
         musicGain = fanfareActive ? 0f : 1f;
         fadeTarget = musicGain;
@@ -368,9 +429,50 @@ public sealed class AudioMixer
                 dsQueued -= needed;
                 Array.Copy(dsBuffer, needed * 2, dsBuffer, 0, dsQueued * 2);
                 resampler.Pull(output);
+
+                // The modern sound joins here, never through the resampler: its queue was filled chunk for chunk with
+                // the DS stage, so its first frame is the time of the output's first (plan 31 · MU2)
+                int take = Math.Min(frames, modernQueued);
+                for (int i = 0; i < take * 2; i++) output[i] += modernQueue[i];
+                modernQueued -= take;
+                Array.Copy(modernQueue, take * 2, modernQueue, 0, modernQueued * 2);
             }
             Finish(output, frames);
         }
+    }
+
+    private float[] modernScratch = new float[ModernChunk * 2];
+
+    /// <summary>
+    /// The modern players' share of one DS chunk of <paramref name="dsFrames"/> frames: as many frames at the mix's rate,
+    /// each player rendered at the chunk's level, eased from the level of the chunk before (a level under nought: the
+    /// player holds its place and sounds nothing, as the DS music does under a fanfare).
+    /// </summary>
+    private void QueueModern(int dsFrames, float musicLevel, float fanfareLevel)
+    {
+        int frames = dsFrames * Rate / Synthesizer.DsRate;
+        if (modernQueue.Length < (modernQueued + frames) * 2) Array.Resize(ref modernQueue, (modernQueued + frames) * 4);
+        var q = modernQueue.AsSpan(modernQueued * 2, frames * 2);
+        q.Clear();
+        modernMusicGain = AddModern(modernMusic!, q, frames, modernMusicGain, musicLevel);
+        modernFanfareGain = AddModern(modernFanfare!, q, frames, modernFanfareGain, fanfareLevel);
+        modernQueued += frames;
+    }
+
+    private float AddModern(SongPlayer player, Span<float> q, int frames, float from, float level)
+    {
+        if (level < 0f || player.Song == null) return 0f;
+        if (modernScratch.Length < frames * 2) modernScratch = new float[frames * 2];
+        var s = modernScratch.AsSpan(0, frames * 2);
+        s.Clear();
+        player.Render(s, 1f);
+        for (int i = 0; i < frames; i++)
+        {
+            float g = from + (level - from) * (i + 1) / frames;
+            q[i * 2] += s[i * 2] * g;
+            q[i * 2 + 1] += s[i * 2 + 1] * g;
+        }
+        return level;
     }
 
     /// <summary>The DS sound's buses mixed at <see cref="Synthesizer.DsRate"/> into <paramref name="output"/>, overwriting it: the music, the fanfare, the sounds and the beds, with their fades and ducks.</summary>
@@ -392,7 +494,7 @@ public sealed class AudioMixer
                 if (musicGain <= 0f && !fanfareActive && fadeTarget <= 0f)
                 {
                     if (pending != null) StartPending();
-                    else if (music.Song != null) music.Stop();
+                    else if (musicNow.Song != null) musicNow.Stop();
                 }
 
                 // The music dips while a cry sounds and comes back once it is over
@@ -402,16 +504,24 @@ public sealed class AudioMixer
                 if (duck > duckTarget) duck = MathF.Max(duckTarget, duck - dt / DuckTime);
                 else if (duck < duckTarget) duck = MathF.Min(duckTarget, duck + dt / UnduckTime);
 
-                // The music holds its place while a fanfare plays
-                if (music.Song != null && musicGain > 0f) music.Render(o, musicGain * duck * busVolume[(int)AudioBus.Music]);
-                if (fanfare.Song != null)
+                // The music holds its place while a fanfare plays. A song in the modern sound is rendered at the mix's
+                // rate below, with this chunk's gain, never here
+                var song = musicNow;
+                bool modernSong = ReferenceEquals(song, modernMusic);
+                bool musicSounds = song.Song != null && musicGain > 0f;
+                float musicLevel = musicGain * duck * busVolume[(int)AudioBus.Music];
+                if (musicSounds && !modernSong) song.Render(o, musicLevel);
+                var jingle = fanfareNow;
+                bool modernJingle = ReferenceEquals(jingle, modernFanfare) && jingle.Song != null;
+                float fanfareLevel = duck * busVolume[(int)AudioBus.Fanfare];
+                if (jingle.Song != null)
                 {
-                    fanfare.Render(o, duck * busVolume[(int)AudioBus.Fanfare]);
-                    if (fanfareActive && !fanfare.Playing)
+                    if (!modernJingle) jingle.Render(o, fanfareLevel);
+                    if (fanfareActive && !jingle.Playing)
                     {
                         // The last note rings on for a moment before the music comes back under it
                         fanfareTail += dt;
-                        if (fanfareTail >= FanfareTail || fanfare.Silent)
+                        if (fanfareTail >= FanfareTail || jingle.Silent)
                         {
                             fanfareActive = false;
                             if (pending != null) StartPending();
@@ -420,11 +530,13 @@ public sealed class AudioMixer
                             fadeRate = 1f / ResumeTime;
                         }
                     }
-                    if (!fanfareActive && fanfare.Silent) fanfare.Stop();
+                    if (!fanfareActive && jingle.Silent) jingle.Stop();
                 }
 
                 RenderSounds(o);
                 RenderBeds(o, dt);
+                if (resampler != null)
+                    QueueModern(n, musicSounds && modernSong ? musicLevel : -1f, modernJingle ? fanfareLevel : -1f);
             }
         }
     }

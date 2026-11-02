@@ -47,7 +47,7 @@ The mixer runs at **48,000 Hz** (`AudioMixer.Rate`), the rate raylib's device ru
 - **The resampler** (`Audio/Resampler`) takes that one stream into 48 kHz. The two rates are 256 into 375, so the output's place between two input samples cycles through 375 exact phases and never drifts; each phase is a Kaiser-windowed sinc of 128 input taps (β 11, half down at 16.2 kHz), its taps adding up to exactly one. The output is not delayed: sample *k* is the input at *k* · 256/375, which takes 64 input samples of look-ahead.
 - **The last stage**, at 48 kHz: the handheld's speakers, mono, the volume, the glide behind another window, the 30 Hz high-pass and the limiter.
 
-`new AudioMixer(Synthesizer.DsRate)` is the path before MU1: it resamples nothing and renders the very samples the old mixer did, which `MixRateTests` holds to hashes measured before the change. The modern sound (MU2) renders at 48 kHz and will join the mix after the resampler.
+`new AudioMixer(Synthesizer.DsRate)` is the path before MU1: it resamples nothing and renders the very samples the old mixer did, which `MixRateTests` holds to hashes measured before the change. The modern sound (MU2) renders at 48 kHz and joins the mix after the resampler ("The modern sound in the mixer", below).
 
 What MU1 measured, on the Windows machine (`MusicRender <out dir> --mix` prints all of it):
 
@@ -114,7 +114,7 @@ track drums kit vol=0.5
   r1 | r1 | L [ b4 r4 b4 r4 | ]16
 ```
 
-Two header words belong to the **modern sound** (plan 31; below): `sound modern` (or `sound ds`) names the sound the song is written for, and `room <kind> <seconds> [predelay=<seconds>] [damp=<0 to 1>]` its reverb: a `room`, `chamber`, `hall` or `plate`, how long it rings before falling 60 dB, and, if not its kind's own, the gap before it answers and how quickly its highs die (`room hall 1.8`). The DS sound ignores `room` and keeps its one `reverb`; in the modern sound `reverb` is how much of the room returns. Until plan 31 · MU2 the game plays every song in the DS sound whatever its header says, and no song of `Data/music` names a sound.
+Two header words belong to the **modern sound** (plan 31; below): `sound modern` (or `sound ds`) names the sound the song is written for, and `room <kind> <seconds> [predelay=<seconds>] [damp=<0 to 1>]` its reverb: a `room`, `chamber`, `hall` or `plate`, how long it rings before falling 60 dB, and, if not its kind's own, the gap before it answers and how quickly its highs die (`room hall 1.8`). The DS sound ignores `room` and keeps its one `reverb`; in the modern sound `reverb` is how much of the room returns. A song's `sound` wins over its region's (below, "Which sound a song plays in"); no song of `Data/music` names a sound yet.
 
 Track options: `width=<0 to 1>` (the modern sound: how far the track's unison voices spread across the field; 1 unless written), `night=<instrument>`, `lowhp=<instrument>` (a battle theme in the red), `giant=<instrument>` (a battle theme while a giant stands), `only=lowhp`, `unless=lowhp`, `only=giant` or `unless=giant` (a track of one arrangement alone), `vol` (0–1), `pan` (−1 left to 1 right), `rev` (reverb send). A track may also **double** another (`double=<track>`, a track above it and of the same kind, pitched or drums): it has no body of its own and plays the other's notes, moved by `shift=<semitones>` and, with `beats=<n>`, only those that start on every 1/*n* of a whole note (`beats=4` the beats, `beats=1` the first of each bar in 4/4); it loops where its source does. The giant layers are written so: `track gianttimpani timpani only=giant double=bass beats=4 shift=12 vol=0.5 rev=0.2`.
 
@@ -163,7 +163,44 @@ The later regions' music is to sound like its own era rather than the DS's. [Pla
 
 **Voices** (decision 2, measured in MU1 on the Windows machine): the modern synthesiser with every voice sounding costs from 0.03% of a core a voice (`ukulele`) to 0.15% (`steeldrum`), so its 96 take 3% to 15% of a core at the most, and half a core would hold over 300 of the dearest; MU0's tune needs at most 37 at once. 96 stays.
 
-Not yet (MU2): the region's `sound`, the modern sound in the mixer, the compressor, the handheld speakers and the jukebox in the modern sound. Until then the modern sound is heard only through `MusicRender --sound modern`, which renders with no mixer (`Audio/OfflineMaster`: the song at the music bus's full volume and the mixer's own last stage, its 30 Hz high-pass and its limiter, at the sound's rate). The one tune written for it is `tools/MusicRender/songs/mu0_island_route.mml`, which is no song of the game.
+### Which sound a song plays in (plan 31 · MU2)
+
+- **A region's file** may name its sound: `"sound": "modern"` in `Data/regions/<id>.json` (`RegionFile.Sound`); left out, or `"ds"`, is today's DS sound. Every song in that region's music folder (`music/<folder>/`) plays in it.
+- **A song's header** may name its own (`sound modern`, `sound ds`), which wins over its region's: how a legendary's theme in `common/legendary` joins the region it belongs to, or an old song of a modern region keeps the DS sound. A song of `common` that names none is the DS sound.
+- `Song.Sound` is what the header says, `Song.RegionSound` what its folder's region says (set as `MusicLibrary` reads the songs, `Mml.Parse(id, text, regionSound)`), and `Song.PlaysIn` the one that wins. No song of the game names a sound yet, and no region file either: Kalos's gets `"sound": "modern"` when MU3 writes its songs.
+
+### The modern sound in the mixer
+
+The mixer keeps a player of each sound for the music and for the fanfares. A DS song plays in the DS stage exactly as before (`MixRateTests`' hashes); a modern song plays on the modern player at 48 kHz and goes straight into the last stage, beside the resampled DS stage and never through the resampler. The two are kept in step a DS chunk at a time: each 256 frames of the DS stage are 375 frames at 48 kHz, exactly, so for every chunk the DS stage mixes, the modern players render its 375 frames into a queue with that chunk's fade, cry duck and bus volume (eased across the chunk rather than stepped), and the queue is taken out one frame for one frame of the resampled DS stage. Everything the mixer does to the music is therefore the same in both sounds: a new song fades the old one out first (or cuts in, for a battle), the fanfare pauses the music and lets it back, a cry dips it, the arrangements switch.
+
+- **From one sound to the other**: a song of the other sound waits for the old one to fade out (or cuts in), as any new song does; the old player is stopped once it is silent and the new one starts. A battle theme of one sound over a field theme of the other is no different from two songs of one sound.
+- **The arrangements**: night is chosen as a song starts, the low-HP arrangement and the giant layer switch in the middle of a song, on whichever player has it (`AudioMixer.LowHp`, `Giant` set both).
+- **The last stage**: the handheld's speakers, mono, the volume, the glide behind another window, the 30 Hz high-pass and the limiter act on the sum of the two, at 48 kHz, so both sounds are taken through them alike.
+- A mixer made at the DS's rate (`new AudioMixer(Synthesizer.DsRate)`, the path before MU1) has no modern player: a modern song plays there in the DS sound.
+
+### The compressor
+
+A modern song's own mix goes through a gentle compressor before anything of the mixer touches it (`Audio/Compressor`, in `SongPlayer` for the modern sound alone; the DS sound has none), so a full arrangement holds together inside the music's loudness window without the limiter at the end doing the work:
+
+| | |
+|---|---|
+| Detector | stereo-linked: the larger of the two sides' power, followed by a one-pole of 10 ms rising and 200 ms falling, so it hears the mix's body and not each transient |
+| Threshold | −10 dBFS of that power (a song's body sits under it; its loudest bars reach it) |
+| Ratio | 2 : 1, over a soft knee 8 dB wide (from −14 to −6 dBFS) |
+| Most it takes | 6 dB |
+| Make-up | +0.5 dB, about what it takes on average, so a song measures as loud as it did without |
+| Gain | worked out once every 32 samples (the player's block) and eased across the next, so it costs about one logarithm a block and never steps |
+
+It holds no randomness and no clock: a song renders to the same samples every time. On MU0's island route it takes 0.3 to 0.4 dB on average and 1.4 to 1.7 dB at the most (day, night, low HP), and the route measures −19.2 dB by day as the DS sound's does. `ModernMusicTests` and `ModernMixTests` hold the modern songs to the music bus's window with it, and `MusicRender --sound modern` prints how hard it worked.
+
+The one tune written for the modern sound is still `tools/MusicRender/songs/mu0_island_route.mml`, which is no song of the game. `MusicRender --sound modern` renders a song in the modern sound with no mixer (`Audio/OfflineMaster`: the song at the music bus's full volume and the mixer's own last stage, its 30 Hz high-pass and its limiter, at the sound's rate); without `--sound`, a song plays through the game's mixer in the sound it plays in there. Two modes play songs through the game's mixer as the game changes them (`tools/MusicRender/Handover.cs`), a song named by its id or its `.mml` file, with `@modern` or `@ds` after it to play it in that sound for the render (`common/battle_wild@modern`: a header line read before its own):
+
+```bash
+dotnet run --project tools/MusicRender -- <out dir> --handover <first> <second> [--at 20] [--cut] [--seconds 40] [--night]
+dotnet run --project tools/MusicRender -- <out dir> --switch <song> [--lowhp 16-30] [--giant 16-30] [--night-at 40] [--seconds 60]
+```
+
+`--handover` asks for the second song at `--at` seconds, faded across as a new area's theme is or cut in as a battle's (`--cut`); `--switch` turns the low-HP arrangement or the giant layer on and off at those seconds and asks for the night arrangement at `--night-at`. Each prints the loudness on either side of every change and the largest step between two samples at each change beside the largest anywhere else (`CLICKS` and an exit of 2 where it is over by half again).
 
 ## Rendering and checking
 
