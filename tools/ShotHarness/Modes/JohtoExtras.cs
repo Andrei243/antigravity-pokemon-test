@@ -112,7 +112,7 @@ partial class Harness
         game.Story.Set("FLAG_HIDE_MAHOGANY_SHOP_LANCE");
         game.Story.Unset("FLAG_HIDE_MAHOGANY_SHOP_SALESWOMAN");
         game.Story.SetVar("VAR_UNK_40A8", 2);
-        Talk("Mahogany_SouvenirShop", 3, 4, Direction.Left);
+        Talk("Mahogany_SouvenirShop", 1, 4, Direction.Right);
         ShotAt("Welcome back to the souvenir shop", "jx30_the_saleswoman");
         for (int i = 0; i < 600 && game.State != GameState.Shop; i++)
         {

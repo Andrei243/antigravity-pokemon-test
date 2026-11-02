@@ -64,6 +64,12 @@ public sealed class CoreSetup
     public bool Frontier { get; init; }
 
     /// <summary>
+    /// A battle that is no part of a game (the Battle Room's puzzles, plan 13 · V26): no EXP, no prize and nothing picked
+    /// up, as in the Frontier, with the bag and running left as they are.
+    /// </summary>
+    public bool NoRewards { get; init; }
+
+    /// <summary>
     /// Nothing may be used from the bag by either side (plan 14 · B14, Let's Go's Master Trainers; plan 13 · V5's run
     /// rule of the same name): <see cref="BattleCore.WhyNot"/> refuses every item, and the trainer AI reaches for none.
     /// </summary>
@@ -225,6 +231,9 @@ public sealed partial class BattleCore : IBattleContext
     /// <summary>A battle of the Battle Frontier, with the rules of its own (<see cref="CoreSetup.Frontier"/>).</summary>
     public bool Frontier { get; }
 
+    /// <summary>No EXP, prize or find (<see cref="CoreSetup.NoRewards"/>).</summary>
+    public bool NoRewards { get; }
+
     /// <summary>Nothing may be used from the bag by either side (<see cref="CoreSetup.NoBattleItems"/>).</summary>
     public bool NoBattleItems { get; }
 
@@ -300,6 +309,7 @@ public sealed partial class BattleCore : IBattleContext
         CannotFlee = setup.CannotFlee;
         FirstBattle = setup.FirstBattle;
         Frontier = setup.Frontier;
+        NoRewards = setup.NoRewards;
         OffersSwitch = setup.OffersSwitch;
         MegaMaxDen = setup.MegaMaxDen;
         Difficulty = setup.Difficulty;
@@ -1208,7 +1218,7 @@ public sealed partial class BattleCore : IBattleContext
             // (BtlCmd_PayPrizeMoney), dropped before a wild Pokémon or handed to a trainer
             Say(Text.Of("battle.hasNoPokemonLeft", ("player", playerName)));
             // subscript_battle_lost in the Battle Frontier: no money changes hands and nobody blacks out
-            if (Frontier)
+            if (Frontier || NoRewards)
             {
                 End(BattleResult.PlayerDefeat);
                 return;
@@ -1231,7 +1241,7 @@ public sealed partial class BattleCore : IBattleContext
                 ? Text.Of("battle.defeatedBoth", ("player", playerName), ("trainer", Trainers[0].FullTitle), ("trainer2", Trainers[1].FullTitle))
                 : Text.Of("battle.defeated", ("player", playerName), ("trainer", Trainers[0].FullTitle)));
             // subscript_battle_won skips the prize, what Pay Day scattered and Pickup's find in the Battle Frontier
-            if (Frontier)
+            if (Frontier || NoRewards)
             {
                 End(BattleResult.PlayerVictory);
                 return;
@@ -1263,7 +1273,7 @@ public sealed partial class BattleCore : IBattleContext
         EndTerastallizations();
         foreach (var (pokemon, item) in knockedOff) pokemon.HeldItem ??= item;
         knockedOff.Clear();
-        if (result == BattleResult.PlayerVictory && !Frontier) PickUp();
+        if (result == BattleResult.PlayerVictory && !Frontier && !NoRewards) PickUp();
         // Burmy takes the cloak of the ground it fought on (BattleSystem_SetBurmyForm; not in the Great Marsh or Pal Park)
         if (Kind is not (BattleKind.Safari or BattleKind.PalPark or BattleKind.CatchingLesson) && !Frontier)
             FormRules.CloakBurmy(sentOut, Conditions.Terrain);
@@ -1336,7 +1346,7 @@ public sealed partial class BattleCore : IBattleContext
     private void AwardExp(Battler defeated)
     {
         // BATTLE_TYPE_NO_EXPERIENCE: nothing is gained in the Battle Frontier
-        if (Frontier) return;
+        if (Frontier || NoRewards) return;
         var foe = defeated.Pokemon!;
         var standing = PlayerParty.Members.Where(p => !p.IsFainted).ToList();
         var fought = standing.Where(defeated.FoughtAgainst.Contains).ToList();

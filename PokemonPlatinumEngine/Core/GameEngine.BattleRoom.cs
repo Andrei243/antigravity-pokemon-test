@@ -118,6 +118,8 @@ public partial class GameEngine
                 Conditions = Puzzles.Conditions(puzzle),
                 EnemyController = new PuzzleFoe(puzzle.FoeMoves),
                 NoBattleItems = puzzle.Balls == 0,
+                // A puzzle is no part of a game: no EXP, prize or white-out
+                NoRewards = true,
                 PlayerName = PlayerIdentity.Name,
                 MoveHints = MoveHintsOn,
                 Scene = Settings.BattleScene

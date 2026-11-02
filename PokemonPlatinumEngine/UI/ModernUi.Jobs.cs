@@ -30,6 +30,8 @@ internal static partial class ModernUi
         Backdrop(sw, sh);
         ScreenTitle(Text.Of("jobs.title"));
         var keys = new List<HintItem>();
+        // The setup has two rows, the job and its hours: up and down move between them, the ring at the left says which
+        if (screen.Phase == JobsPhase.Setup) keys.Add(Hint("shared.keys.upDown", "shared.hints.move"));
         if (screen.Phase == JobsPhase.Setup) keys.Add(Hint("shared.keys.leftRight", "shared.hints.change"));
         keys.Add(Hint("shared.keys.z", screen.Phase == JobsPhase.Board && screen.SelectedJob != null ? "jobs.hint.bringBack"
             : screen.Phase == JobsPhase.Setup ? "jobs.hint.send" : "shared.hints.choose"));

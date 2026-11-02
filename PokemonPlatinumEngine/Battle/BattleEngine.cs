@@ -307,6 +307,7 @@ public partial class BattleEngine
             FirstBattle = setup.FirstBattle,
             SpecialBalls = setup.SpecialBalls,
             Frontier = setup.Frontier,
+            NoRewards = setup.NoRewards,
             NoBattleItems = setup.NoBattleItems,
             OffersSwitch = setup.OffersSwitch,
             MegaMaxDen = setup.MegaMaxDen,
