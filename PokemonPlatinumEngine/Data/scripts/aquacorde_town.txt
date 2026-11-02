@@ -2,7 +2,7 @@
 # (docs/mechanics/rulings.md, "Kalos's first chapter"): the friends at the café on the waterfront, the box of three
 # Pokémon a professor sent, the Pokédex, and Shauna's first battle. VAR_KALOS_STORY is vaniville_town.txt's count.
 #
-# The people: shauna, tierno and trevor at their table (there until Route 2 is drawn), rival beside them
+# The people: shauna, tierno and trevor at their table (FLAG_KALOS_HIDE_FRIENDS_CAFE, set by the lesson on Route 2), rival beside them
 # (FLAG_KALOS_HIDE_RIVAL_AQUACORDE). Shauna's teams are Kalos's trainers.json's kalos_shauna_1 to _3: the Pokémon she
 # takes is the one the player's is strong against (Froakie against Chespin, Chespin against Fennekin, Fennekin against
 # Froakie).
@@ -124,8 +124,15 @@ script Rival
   end
 
 
-# The trail north over the bridge, while Route 2 isn't drawn (plan 23 · Z1 stops at Aquacorde Town)
+# The trail north over the bridge, Route 2: nobody goes into the grass without a Pokémon of their own, and the letter
+# goes home to Mom first
 script NotYet
-  text "The trail north to Santalune Forest is closed off for now."
+  text "There are wild Pokémon in the tall grass ahead. Better not go without a Pokémon of your own!"
+  walk player down 1
+  end
+
+script HomeFirst
+  speaker "Tierno"
+  say "Hey, {player}! Don't forget the professor's letter. Show your mum first, then we'll all head out!"
   walk player down 1
   end

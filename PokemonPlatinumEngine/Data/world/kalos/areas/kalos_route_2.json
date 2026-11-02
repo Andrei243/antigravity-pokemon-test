@@ -1,0 +1,42 @@
+{
+  "key": "kalos_route_2",
+  "index": 3,
+  "name": "Route 2",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "ROUTE_2",
+  "nightMusic": "ROUTE_2",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [],
+  "objects": [
+    { "id": "rival", "looks": "rival", "movement": "look_south", "x": 255, "z": 632, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_HIDE_RIVAL_ROUTE_2", "script": "" },
+    { "id": "youngster", "looks": "youngster", "movement": "look_east", "x": 251, "z": 620, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_YOUNGSTER_MILO" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 265, "z": 625, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_ROUTE_2_POTION", "item": "Potion", "script": "" }
+  ],
+  "signs": [
+    { "x": 253, "z": 634, "type": 0, "script": "RouteSign" }
+  ],
+  "triggers": [],
+  "land": [
+    { "species": "Fletchling", "level": 2 },
+    { "species": "Scatterbug", "level": 2 },
+    { "species": "Bunnelby", "level": 2 },
+    { "species": "Zigzagoon", "level": 3 },
+    { "species": "Pidgey", "level": 3 },
+    { "species": "Fletchling", "level": 3 },
+    { "species": "Scatterbug", "level": 3 },
+    { "species": "Bunnelby", "level": 3 },
+    { "species": "Caterpie", "level": 2 },
+    { "species": "Weedle", "level": 2 },
+    { "species": "Zigzagoon", "level": 4 },
+    { "species": "Pidgey", "level": 4 }
+  ],
+  "landRate": 20
+}

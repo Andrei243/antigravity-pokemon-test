@@ -1,0 +1,91 @@
+# Santalune City (plan 23 · Z1, second part). The lines are our own, on X and Y's beats as they are publicly described
+# (docs/mechanics/rulings.md, "Kalos drawn by hand, its first chapter and its roller skates"): the neighbour waits by
+# the way in from Route 3 and battles, the friends gather on the square, and the Gym's Badge (SantaluneCity_Gym.txt)
+# is the first of Kalos. VAR_KALOS_STORY is vaniville_town.txt's count: 7, Tierno's battle had, becomes 8 here, and 9
+# once the Bug Badge is won.
+#
+# The people: rival (FLAG_KALOS_HIDE_RIVAL_SANTALUNE, cleared on Route 3), shauna (FLAG_KALOS_HIDE_SHAUNA_SANTALUNE) and
+# tierno and trevor (FLAG_KALOS_HIDE_FRIENDS_SANTALUNE), shown on the square by the neighbour's scene. The neighbour's
+# teams are Kalos's trainers.json's kalos_rival_santalune_*: the Pokémon the neighbour took at the café is the one strong
+# against the player's (Fennekin against Chespin, Froakie against Fennekin, Chespin against Froakie).
+
+
+# A save from before this part of the story was written finds the people of Santalune's part of the story as a
+# new game does
+script OnEnter
+  if not flag FLAG_KALOS_SANTALUNE_BEGUN call KalosSantalune
+  end
+
+
+# Into the city from Route 3 (the trigger across the way in, on VAR_KALOS_STORY 7): the neighbour wants a battle
+script Neighbour
+  scene "The neighbour in Santalune"
+  face rival player
+  speaker "{rival}"
+  say "You made it, {player}. I've been waiting. The forest wasn't too much trouble, I hope?"
+  say "Let's see how far our partners have come since the café. Ready?"
+  if starter "Chespin" goto AgainstChespin
+  if starter "Fennekin" goto AgainstFennekin
+  battle rival as "kalos_rival_santalune_chespin" canlose
+  goto Fought
+label AgainstChespin
+  battle rival as "kalos_rival_santalune_fennekin" canlose
+  goto Fought
+label AgainstFennekin
+  battle rival as "kalos_rival_santalune_froakie" canlose
+label Fought
+  heal
+  speaker "{rival}"
+  if lost goto RivalWon
+  say "You're quick to learn. I'll have to train harder."
+  goto Gym
+label RivalWon
+  say "A good battle. You'll catch up soon, I'm sure of it."
+label Gym
+  say "The Gym here is north of the fountain. Its Leader, Viola, uses Bug types and she's very patient."
+  say "Earn her Badge, and the road to Lumiose City opens up. I'll go on ahead and meet you there."
+  walk rival right 5 fast
+  hide rival
+  setflag FLAG_KALOS_HIDE_RIVAL_SANTALUNE
+  clearflag FLAG_KALOS_HIDE_SHAUNA_SANTALUNE
+  clearflag FLAG_KALOS_HIDE_FRIENDS_SANTALUNE
+  setvar VAR_KALOS_STORY 8
+  endscene
+  end
+
+
+# The friends on the square
+script Shauna
+  speaker "Shauna"
+  if var VAR_KALOS_STORY >= 9 goto Badge
+  say "No Pikachu yet... but look at this fountain! Santalune's so pretty. Are you going to take on the Gym?"
+  end
+label Badge
+  say "Your very first Badge! Ooh, let me see it! It's so shiny!"
+  end
+
+script Tierno
+  speaker "Tierno"
+  if var VAR_KALOS_STORY >= 9 goto Badge
+  say "Viola's bugs are tough, so go in with a Pokémon that can fly or burn. That's what I heard, anyway!"
+  end
+label Badge
+  say "One Badge down! That deserves a dance. Or a pastry. Or both!"
+  end
+
+script Trevor
+  speaker trevor "Trevor"
+  say "Every Pokémon here is in my Pokédex now. Well. Almost every one."
+  end
+
+script Rival
+  speaker "{rival}"
+  say "Over here, {player}."
+  end
+
+
+# The road north-east to Route 4 and Lumiose City (plan 23 · Z2 draws it)
+script NotYet
+  text "Workers are mending the road to Lumiose City. It will open again soon."
+  walk player down 1
+  end

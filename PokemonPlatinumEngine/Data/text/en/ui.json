@@ -1081,7 +1081,8 @@
     "Boulder": "Boulder", "Cascade": "Cascade", "Thunder": "Thunder", "Rainbow": "Rainbow", "Soul": "Soul", "Marsh": "Marsh", "Volcano": "Volcano", "Earth": "Earth",
     "Zephyr": "Zephyr", "Hive": "Hive", "Plain": "Plain", "Fog": "Fog", "Storm": "Storm", "Mineral": "Mineral", "Glacier": "Glacier", "Rising": "Rising",
     "Stone": "Stone", "Knuckle": "Knuckle", "Dynamo": "Dynamo", "Heat": "Heat", "Balance": "Balance", "Feather": "Feather", "Mind": "Mind", "Rain": "Rain",
-    "Basic": "Basic", "Toxic": "Toxic", "Insect": "Insect", "Bolt": "Bolt", "Quake": "Quake", "Jet": "Jet", "Legend": "Legend", "Wave": "Wave"
+    "Basic": "Basic", "Toxic": "Toxic", "Insect": "Insect", "Bolt": "Bolt", "Quake": "Quake", "Jet": "Jet", "Legend": "Legend", "Wave": "Wave",
+    "Bug": "Bug", "Cliff": "Cliff", "Rumble": "Rumble", "Plant": "Plant", "Voltage": "Voltage", "Fairy": "Fairy", "Psychic": "Psychic", "Iceberg": "Iceberg"
   },
   "run": {
     "heading": "WAYS TO PLAY",

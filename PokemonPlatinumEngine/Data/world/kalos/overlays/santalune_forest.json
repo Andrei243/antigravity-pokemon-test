@@ -1,0 +1,45 @@
+{
+  // Santalune Forest (plan 23 · Z1, second part): drawn by hand, our words. A wood of glades joined by paths, a west way
+  // and an east way round a grove of grass in its middle; its own Pokémon are the bugs, the three monkeys and Pikachu,
+  // and a Pikachu stands in the grove. Shauna meets the player at the way in (santalune_forest.txt), hidden by a flag of
+  // ours until then. The song is Aquacorde's, until plan 31 writes the forest its own
+  "area": "santalune_forest",
+  "bgmTrack": "kalos/aquacorde",
+  "trees": "Round",
+  "architecture": "Hamlet",
+  "battleArena": "Forest",
+  "triggers": [
+    { "script": "Meet", "x": 254, "z": 600, "width": 4, "depth": 1, "variable": "VAR_KALOS_STORY", "value": 5 }
+  ],
+  "people": {
+    "shauna": { "name": "Shauna", "npcType": "shauna", "script": "Shauna", "still": true, "hiddenBy": "FLAG_KALOS_HIDE_SHAUNA_FOREST" },
+    "pikachu": { "name": "Pikachu", "npcType": "Pokemon", "species": "Pikachu", "script": "Pokemon", "dialog": [ "Pikachu: Pika pika!" ] },
+    "bug_catcher": {
+      "name": "Remy",
+      "npcType": "bug_catcher",
+      "trainer": {
+        "dialogueBefore": "Bug Catcher Remy: Shh! You'll scare the bugs away! ...Too late. Battle me, then!",
+        "dialogueAfter": "Bug Catcher Remy: My bugs need to grow up a bit. Then we'll see!"
+      }
+    },
+    "youngster": {
+      "name": "Bastien",
+      "npcType": "Youngster",
+      "trainer": {
+        "dialogueBefore": "Youngster Bastien: I got lost in here an hour ago. Might as well battle while I'm at it!",
+        "dialogueAfter": "Youngster Bastien: Do you know the way out? North, you say? Thanks!"
+      }
+    },
+    "lass": {
+      "name": "Amélie",
+      "npcType": "Lass",
+      "trainer": {
+        "dialogueBefore": "Lass Amélie: I came to see a Pikachu. You'll do instead!",
+        "dialogueAfter": "Lass Amélie: Still no Pikachu, and now no win either. What a day."
+      }
+    }
+  },
+  "signs": {
+    "ForestSign": "Santalune Forest\nMind the tall grass: the forest's Pokémon live there."
+  }
+}

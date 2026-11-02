@@ -1495,12 +1495,20 @@ unova_youngster_wes 177 (39) [Skorupi → Dreadpion, Seviper → Scimitail]
 === region Kalos
 levels 2 → 185, 68 → 205, 76 → 222
 caps 188 192 194 195 196 197 199 202 205 (own 12 25 32 34 37 42 48 59 68)
+kalos_rival_santalune_chespin 187 (8) [Fletchling → Talonflame, Chespin → Chesnaught]
+kalos_rival_santalune_fennekin 187 (8) [Fletchling → Talonflame, Fennekin → Delphox]
+kalos_rival_santalune_froakie 187 (8) [Fletchling → Talonflame, Froakie → Greninja]
 kalos_shauna_1 186 (5) [Froakie → Greninja]
 kalos_shauna_2 186 (5) [Chespin → Chesnaught]
 kalos_shauna_3 186 (5) [Fennekin → Delphox]
+kalos_tierno_1 186 (6) [Corphish → Crayronin]
+kalos_viola_1 188 (12) [Surskit → Ocellwing]
 === DriftveilCity_Gym
 Driftveil City, Unova
 trainers 7, 173-174 (own 29-31): unova_worker_friedrich 174 (31) [Sandile → Krookodile], unova_worker_maynard 174 (31) [Drilbur → Excadrill], unova_worker_niel 173 (30) [Baltoy → Dogunarch, Sandile → Krookodile], unova_worker_noel 174 (31) [Baltoy → Dogunarch], unova_worker_pasqual 173 (30) [Drilbur → Excadrill, Baltoy → Dogunarch], unova_worker_tavarius 173 (29) [Drilbur → Excadrill, Sandile → Krookodile, Baltoy → Dogunarch], unova_worker_tibor 173 (30) [Sandile → Krookodile, Drilbur → Excadrill]
+=== SantaluneCity_Gym
+Santalune Gym, Kalos
+trainers 2, 187 (own 7-8): kalos_bug_catcher_luc 187 (8) [Spewpa → Vivillon, Kakuna → Beedrill], kalos_lass_mireille 187 (8) [Ledyba → Coccinova, Surskit → Ocellwing]
 === abandoned_ship_corridors_1f
 Abandoned Ship, Hoenn
 trainers 1, 147 (own 26): hoenn_charlie 147 (26) [Marill → Azumarill]
@@ -2268,6 +2276,16 @@ grass 124-127 (own 32-36)
 Viridian Forest, Johto
 grass 105-107 (own 3-7)
 trainers 5, 121-141 (own 28-60): johto_bug_catcher_abner 132 (44) [Pikachu → Raichu], johto_bug_catcher_dane 135 (48), johto_bug_catcher_dion 136 (50) [Ariados → Orbweavix], johto_bug_catcher_ellis 133 (46) [Weedle → Beedrill, Kakuna → Beedrill], johto_bug_catcher_stacey 141 (60) [Metapod → Butterfree, Metapod → Butterfree, Metapod → Butterfree]
+=== kalos_route_2
+Route 2, Kalos
+grass 185-186 (own 2-4)
+trainers 1, 185 (own 3): kalos_youngster_milo 185 (3) [Bunnelby → Diggersby]
+=== kalos_route_3
+Route 3, Kalos
+grass 186 (own 4-6)
+surf 186-187 (own 4-9)
+old rod 186-187 (own 5-10)
+trainers 3, 186 (own 5-6): kalos_lass_colette 186 (6) [Fletchling → Talonflame], kalos_picnicker_ines 186 (6) [Pansage → Simisylvan, Bunnelby → Diggersby], kalos_youngster_hugo 186 (6) [Bidoof → Dambarel, Pidgey → Pidgeot]
 === kanto_victory_road_1f
 Victory Road, Kanto
 grass 83-92 (own 32-46)
@@ -3538,6 +3556,10 @@ trainers 7, 82-87 (own 31-38): kanto_channeler_amanda 84 (34) [Gastly → Gengar
 === saffron_gym
 Saffron City, Johto
 trainers 4, 131-134 (own 42-47): johto_medium_darcy 133 (46) [Slowpoke → Slowmantle, Slowbro → Slowmantle], johto_medium_rebecca 133 (45) [Bronzor → Dotakuron, Hypno → Mesmeryx], johto_psychic_m_franklin 134 (47) [Kadabra → Alakazam, Girafarig → Farigiraf], johto_psychic_m_jared 133 (45) [Mr. Mime → Mimestro, Exeggcute → Palmagus, Exeggcute → Palmagus]
+=== santalune_forest
+Santalune Forest, Kalos
+grass 185-186 (own 3-5)
+trainers 3, 185-186 (own 3-5): kalos_bug_catcher_remy 186 (4) [Scatterbug → Vivillon, Weedle → Beedrill], kalos_lass_amelie 186 (5) [Azurill → Azumarill, Pansear → Simiscorch], kalos_youngster_bastien 186 (5) [Fletchling → Talonflame]
 === seafloor_cavern_entrance
 Seafloor Cavern, Hoenn
 surf 137-151 (own 5-35)

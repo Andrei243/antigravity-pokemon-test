@@ -1,0 +1,45 @@
+# Santalune City's Gym (plan 23 · Z1, second part). The lines are our own, on X and Y's beats as they are publicly
+# described (docs/mechanics/rulings.md, "Kalos drawn by hand, its first chapter and its roller skates"): Viola, a
+# photographer of Bug-type Pokémon, battles for the Bug Badge, Kalos's first (`givebadge bug`), and gives a TM. The
+# hall is one room with no puzzle (X and Y's web of threads is not built). VAR_KALOS_STORY is vaniville_town.txt's
+# count: the Badge makes it 9. Her team is Kalos's trainers.json's kalos_viola_1; her two trainers are the hall's own.
+
+
+script Viola
+  face viola player
+  speaker "Viola"
+  if badge bug goto Won
+  scene "Viola"
+  say "Welcome to the Santalune Gym! I'm Viola, its Leader. When I'm not battling, I'm behind a camera."
+  say "Through a lens you learn to wait for the right moment. Bug-type Pokémon taught me that."
+  say "Let's see if you know when to strike. I'll capture this battle in a single shot!"
+  battle self as "kalos_viola_1"
+  say "What a picture! You and your Pokémon were perfectly in focus the whole time."
+  say "Here, this is yours. The Bug Badge, proof that you won at the Santalune Gym."
+  givebadge bug
+  text "{player} received the Bug Badge from Viola!"
+  setflag FLAG_KALOS_DEFEATED_SANTALUNE_GYM
+  defeat "kalos_lass_mireille"
+  defeat "kalos_bug_catcher_luc"
+  setvar VAR_KALOS_STORY 9
+label Tm
+  say "And take this as well. My bugs use it to strike and slip away before anyone can blink."
+  give "TM89"
+  setflag FLAG_KALOS_RECEIVED_TM_VIOLA
+  say "The road to Lumiose City starts north-east of town. There's a lot more of Kalos to see through your lens!"
+  endscene
+  end
+label Won
+  if not flag FLAG_KALOS_RECEIVED_TM_VIOLA goto Tm
+  say "I still can't stop thinking about our battle. I wish I'd taken more photos of it!"
+  end
+
+
+script GymGuide
+  speaker "Gym Guide"
+  if badge bug goto Won
+  say "Hello there, future Champion! Viola's Bug types don't care for fire or wind. Pick your partner well!"
+  end
+label Won
+  say "You beat Viola! Now that's a photo finish I'd have liked to see."
+  end

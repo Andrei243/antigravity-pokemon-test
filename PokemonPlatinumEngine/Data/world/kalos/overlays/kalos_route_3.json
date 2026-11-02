@@ -1,0 +1,49 @@
+{
+  // Route 3, the Ouvert Way (plan 23 · Z1, second part): drawn by hand, our words. Out of the forest's north side and east
+  // along a broad road between fields and a pond to Santalune City. Tierno and Trevor wait where the way from the
+  // forest meets the road (kalos_route_3.txt), hidden by a flag of ours until then, and Tierno battles. The song is
+  // Vaniville's, until plan 31 writes Kalos's routes their own
+  "area": "kalos_route_3",
+  "bgmTrack": "kalos/vaniville",
+  "trees": "Round",
+  "architecture": "Hamlet",
+  "triggers": [
+    { "script": "Friends", "x": 266, "z": 531, "width": 4, "depth": 1, "variable": "VAR_KALOS_STORY", "value": 6 }
+  ],
+  "people": {
+    "tierno": { "name": "Tierno", "npcType": "tierno", "script": "Tierno", "still": true, "hiddenBy": "FLAG_KALOS_HIDE_FRIENDS_ROUTE_3" },
+    "trevor": { "name": "Trevor", "npcType": "trevor", "script": "Trevor", "still": true, "hiddenBy": "FLAG_KALOS_HIDE_FRIENDS_ROUTE_3" },
+    "youngster": {
+      "name": "Hugo",
+      "npcType": "Youngster",
+      "trainer": {
+        "dialogueBefore": "Youngster Hugo: Out of the forest at last? Then you're ready for a real battle!",
+        "dialogueAfter": "Youngster Hugo: That was a real battle all right. A real loss, too."
+      }
+    },
+    "lass": {
+      "name": "Colette",
+      "npcType": "Lass",
+      "trainer": {
+        "dialogueBefore": "Lass Colette: Off to the Gym in Santalune? Let me see if you're ready for it!",
+        "dialogueAfter": "Lass Colette: I think you're ready. Viola had better watch out!"
+      }
+    },
+    "picnicker": {
+      "name": "Inès",
+      "npcType": "picnicker",
+      "trainer": {
+        "dialogueBefore": "Picnicker Inès: My lunch can wait. A battle can't!",
+        "dialogueAfter": "Picnicker Inès: I lost my appetite and my battle. Oh well."
+      }
+    },
+    "fisherman": {
+      "name": "Fisherman",
+      "npcType": "fisherman",
+      "dialog": [ "Marill and Azurill play in this pond all day. Cast a line and you'll pull up something much grumpier." ]
+    }
+  },
+  "signs": {
+    "RouteSign": "Route 3 · Ouvert Way\nEast: Santalune City\nSouth: Santalune Forest"
+  }
+}

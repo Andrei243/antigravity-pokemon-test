@@ -1277,6 +1277,10 @@
       "note": "first spoken at route_111.txt(63)",
       "provisional": true
     },
+    "viola": {
+      "note": "first spoken at SantaluneCity_Gym.txt(10)",
+      "provisional": true
+    },
     "visitor": {
       "note": "first spoken at BattlePikeRoom.txt(86)",
       "provisional": true
@@ -1748,6 +1752,7 @@
     "Vicky": "vicky",
     "Victor": "victor",
     "Victoria": "victoria",
+    "Viola": "viola",
     "Visitor": "visitor",
     "Vivi": "vivi",
     "Volkner": "volkner",

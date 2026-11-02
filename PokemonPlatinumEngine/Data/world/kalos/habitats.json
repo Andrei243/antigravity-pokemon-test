@@ -15,15 +15,128 @@
     "                        ",
     "                        ",
     "                        ",
-    "                        ",
-    "                        ",
-    "                        ",
-    "                        ",
-    "                        ",
+    "         .T.            ",
+    "        ..TT            ",
+    "       .....            ",
+    "       ..               ",
+    "       ..               ",
     "       TT               ",
     "       ..               ",
     "       ..               ",
     "                        "
   ],
-  "areas": []
+  "areas": [
+    {
+      "key": "kalos_route_2",
+      "name": "Route 2",
+      "cells": "7,19 8,19",
+      "morning": [
+        "Fletchling",
+        "Scatterbug",
+        "Bunnelby",
+        "Zigzagoon",
+        "Pidgey",
+        "Caterpie",
+        "Weedle"
+      ],
+      "day": [
+        "Fletchling",
+        "Scatterbug",
+        "Bunnelby",
+        "Zigzagoon",
+        "Pidgey",
+        "Caterpie",
+        "Weedle"
+      ],
+      "night": [
+        "Fletchling",
+        "Scatterbug",
+        "Bunnelby",
+        "Zigzagoon",
+        "Pidgey",
+        "Caterpie",
+        "Weedle"
+      ]
+    },
+    {
+      "key": "kalos_route_3",
+      "name": "Route 3",
+      "cells": "8,16 9,16 9,17",
+      "morning": [
+        "Fletchling",
+        "Bidoof",
+        "Bunnelby",
+        "Pidgey",
+        "Burmy",
+        "Azurill",
+        "Dunsparce"
+      ],
+      "day": [
+        "Fletchling",
+        "Bidoof",
+        "Bunnelby",
+        "Pidgey",
+        "Burmy",
+        "Azurill",
+        "Dunsparce"
+      ],
+      "night": [
+        "Fletchling",
+        "Bidoof",
+        "Bunnelby",
+        "Pidgey",
+        "Burmy",
+        "Azurill",
+        "Dunsparce"
+      ],
+      "surf": [
+        "Azurill",
+        "Marill"
+      ]
+    },
+    {
+      "key": "santalune_forest",
+      "name": "Santalune Forest",
+      "cells": "7,17 8,17 7,18 8,18",
+      "morning": [
+        "Caterpie",
+        "Weedle",
+        "Scatterbug",
+        "Pansage",
+        "Pansear",
+        "Panpour",
+        "Fletchling",
+        "Metapod",
+        "Kakuna",
+        "Pidgey",
+        "Pikachu"
+      ],
+      "day": [
+        "Caterpie",
+        "Weedle",
+        "Scatterbug",
+        "Pansage",
+        "Pansear",
+        "Panpour",
+        "Fletchling",
+        "Metapod",
+        "Kakuna",
+        "Pidgey",
+        "Pikachu"
+      ],
+      "night": [
+        "Caterpie",
+        "Weedle",
+        "Scatterbug",
+        "Pansage",
+        "Pansear",
+        "Panpour",
+        "Fletchling",
+        "Metapod",
+        "Kakuna",
+        "Pidgey",
+        "Pikachu"
+      ]
+    }
+  ]
 }

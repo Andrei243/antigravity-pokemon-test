@@ -52,5 +52,325 @@
         "personality": 9158840
       }
     ]
+  },
+  {
+    "id": "kalos_youngster_milo",
+    "name": "Milo",
+    "class": "Youngster",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 48,
+    "party": [
+      {
+        "species": "Bunnelby",
+        "level": 3,
+        "ivScale": 0,
+        "personality": 7083996
+      }
+    ]
+  },
+  {
+    "id": "kalos_bug_catcher_remy",
+    "name": "Remy",
+    "class": "Bug Catcher",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 64,
+    "party": [
+      {
+        "species": "Scatterbug",
+        "level": 3,
+        "ivScale": 0,
+        "personality": 7561472
+      },
+      {
+        "species": "Weedle",
+        "level": 4,
+        "ivScale": 0,
+        "personality": 11435264
+      }
+    ]
+  },
+  {
+    "id": "kalos_youngster_bastien",
+    "name": "Bastien",
+    "class": "Youngster",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 80,
+    "party": [
+      {
+        "species": "Fletchling",
+        "level": 5,
+        "ivScale": 0,
+        "personality": 6383872
+      }
+    ]
+  },
+  {
+    "id": "kalos_lass_amelie",
+    "name": "Amélie",
+    "class": "Lass",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 80,
+    "party": [
+      {
+        "species": "Azurill",
+        "level": 4,
+        "ivScale": 0,
+        "personality": 7857408
+      },
+      {
+        "species": "Pansear",
+        "level": 5,
+        "ivScale": 0,
+        "personality": 13807872
+      }
+    ]
+  },
+  {
+    "id": "kalos_youngster_hugo",
+    "name": "Hugo",
+    "class": "Youngster",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 96,
+    "party": [
+      {
+        "species": "Bidoof",
+        "level": 5,
+        "ivScale": 0,
+        "personality": 10718528
+      },
+      {
+        "species": "Pidgey",
+        "level": 6,
+        "ivScale": 0,
+        "personality": 2937856
+      }
+    ]
+  },
+  {
+    "id": "kalos_lass_colette",
+    "name": "Colette",
+    "class": "Lass",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 96,
+    "party": [
+      {
+        "species": "Fletchling",
+        "level": 6,
+        "ivScale": 0,
+        "personality": 11432960
+      }
+    ]
+  },
+  {
+    "id": "kalos_picnicker_ines",
+    "name": "Inès",
+    "class": "Picnicker",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 96,
+    "party": [
+      {
+        "species": "Pansage",
+        "level": 5,
+        "ivScale": 0,
+        "personality": 10458112
+      },
+      {
+        "species": "Bunnelby",
+        "level": 6,
+        "ivScale": 0,
+        "personality": 668672
+      }
+    ]
+  },
+  {
+    "id": "kalos_lass_mireille",
+    "name": "Mireille",
+    "class": "Lass",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 128,
+    "party": [
+      {
+        "species": "Ledyba",
+        "level": 7,
+        "ivScale": 0,
+        "personality": 3167296
+      },
+      {
+        "species": "Surskit",
+        "level": 8,
+        "ivScale": 0,
+        "personality": 12554240
+      }
+    ]
+  },
+  {
+    "id": "kalos_bug_catcher_luc",
+    "name": "Luc",
+    "class": "Bug Catcher",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 128,
+    "party": [
+      {
+        "species": "Spewpa",
+        "level": 8,
+        "ivScale": 0,
+        "personality": 7372800
+      },
+      {
+        "species": "Kakuna",
+        "level": 8,
+        "ivScale": 0,
+        "personality": 15118336
+      }
+    ]
+  },
+  {
+    "id": "kalos_viola_1",
+    "name": "Viola",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Potion",
+      "Potion"
+    ],
+    "prizeMoney": 1440,
+    "party": [
+      {
+        "species": "Surskit",
+        "level": 10,
+        "ivScale": 0,
+        "personality": 14229504
+      },
+      {
+        "species": "Vivillon",
+        "level": 12,
+        "ivScale": 0,
+        "personality": 3330048
+      }
+    ]
+  },
+  {
+    "id": "kalos_tierno_1",
+    "name": "Tierno",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 96,
+    "party": [
+      {
+        "species": "Corphish",
+        "level": 6,
+        "ivScale": 0,
+        "personality": 180224
+      }
+    ]
+  },
+  {
+    "id": "kalos_rival_santalune_chespin",
+    "name": "{rival}",
+    "class": "Rival",
+    "ai": [
+      "Basic",
+      "EvalAttack"
+    ],
+    "items": [],
+    "prizeMoney": 240,
+    "party": [
+      {
+        "species": "Fletchling",
+        "level": 6,
+        "ivScale": 0,
+        "personality": 11268096
+      },
+      {
+        "species": "Chespin",
+        "level": 8,
+        "ivScale": 0,
+        "personality": 5595136
+      }
+    ]
+  },
+  {
+    "id": "kalos_rival_santalune_fennekin",
+    "name": "{rival}",
+    "class": "Rival",
+    "ai": [
+      "Basic",
+      "EvalAttack"
+    ],
+    "items": [],
+    "prizeMoney": 240,
+    "party": [
+      {
+        "species": "Fletchling",
+        "level": 6,
+        "ivScale": 0,
+        "personality": 10096640
+      },
+      {
+        "species": "Fennekin",
+        "level": 8,
+        "ivScale": 0,
+        "personality": 7929856
+      }
+    ]
+  },
+  {
+    "id": "kalos_rival_santalune_froakie",
+    "name": "{rival}",
+    "class": "Rival",
+    "ai": [
+      "Basic",
+      "EvalAttack"
+    ],
+    "items": [],
+    "prizeMoney": 240,
+    "party": [
+      {
+        "species": "Fletchling",
+        "level": 6,
+        "ivScale": 0,
+        "personality": 8728576
+      },
+      {
+        "species": "Froakie",
+        "level": 8,
+        "ivScale": 0,
+        "personality": 5611520
+      }
+    ]
   }
 ]

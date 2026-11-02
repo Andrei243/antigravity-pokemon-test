@@ -3,7 +3,9 @@
 #
 # VAR_KALOS_STORY, Kalos's first chapter's count: 0 a new game, in the bedroom; 1 Mom has said the neighbours are
 # waiting; 2 met the neighbour and Shauna at the door, off to Aquacorde Town; 3 the first Pokémon, the Pokédex and
-# Shauna's battle had at the café, off home to show Mom; 4 Mom has handed over the roller skates.
+# Shauna's battle had at the café, off home to show Mom; 4 Mom has handed over the roller skates; 5 the neighbour's
+# lesson on Route 2 had; 6 Shauna met in Santalune Forest; 7 Tierno's battle on Route 3 had; 8 the neighbour's battle
+# in Santalune City had; 9 Viola's Bug Badge won (plan 23 · Z1, second part).
 #
 # The people: rival, the neighbour who is the rival (FLAG_KALOS_HIDE_RIVAL_VANIVILLE), shauna (FLAG_KALOS_HIDE_SHAUNA_VANIVILLE).
 

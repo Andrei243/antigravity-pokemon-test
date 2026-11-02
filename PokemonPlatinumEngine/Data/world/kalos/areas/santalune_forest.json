@@ -1,0 +1,47 @@
+{
+  "key": "santalune_forest",
+  "index": 4,
+  "name": "Santalune Forest",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Forest",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "SANTALUNE_FOREST",
+  "nightMusic": "SANTALUNE_FOREST",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [],
+  "objects": [
+    { "id": "shauna", "looks": "lass", "movement": "look_south", "x": 256, "z": 597, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_HIDE_SHAUNA_FOREST", "script": "" },
+    { "id": "pikachu", "looks": "pikachu", "movement": "look_around", "x": 260, "z": 583, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "bug_catcher", "looks": "bug_catcher", "movement": "look_east", "x": 246, "z": 593, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 5, "script": "TRAINER_BUG_CATCHER_REMY" },
+    { "id": "youngster", "looks": "youngster", "movement": "look_south", "x": 243, "z": 586, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_YOUNGSTER_BASTIEN" },
+    { "id": "lass", "looks": "lass", "movement": "look_south", "x": 276, "z": 580, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_LASS_AMELIE" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 242, "z": 568, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_SANTALUNE_FOREST_POTION", "item": "Potion", "script": "" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 277, "z": 568, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_SANTALUNE_FOREST_POKE_BALL", "item": "Poké Ball", "script": "" },
+    { "id": "item_ball_3", "looks": "item_ball", "movement": "look_south", "x": 269, "z": 586, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_SANTALUNE_FOREST_PARALYZE_HEAL", "item": "Paralyze Heal", "script": "" }
+  ],
+  "signs": [
+    { "x": 258, "z": 602, "type": 0, "script": "ForestSign" }
+  ],
+  "triggers": [],
+  "land": [
+    { "species": "Caterpie", "level": 3 },
+    { "species": "Weedle", "level": 3 },
+    { "species": "Scatterbug", "level": 3 },
+    { "species": "Pansage", "level": 4 },
+    { "species": "Pansear", "level": 4 },
+    { "species": "Panpour", "level": 4 },
+    { "species": "Fletchling", "level": 4 },
+    { "species": "Metapod", "level": 4 },
+    { "species": "Kakuna", "level": 4 },
+    { "species": "Pidgey", "level": 4 },
+    { "species": "Pikachu", "level": 4 },
+    { "species": "Pikachu", "level": 5 }
+  ],
+  "landRate": 25
+}

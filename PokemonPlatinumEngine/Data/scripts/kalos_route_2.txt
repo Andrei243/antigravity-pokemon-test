@@ -1,0 +1,54 @@
+# Route 2, the Avance Trail (plan 23 · Z1, second part). The lines are our own, on X and Y's beats as they are publicly
+# described (docs/mechanics/rulings.md, "Kalos drawn by hand, its first chapter and its roller skates"): a little way up
+# the trail the neighbour shows how a wild Pokémon is caught and hands over Poké Balls, and the friends at the café set
+# off ahead. VAR_KALOS_STORY is vaniville_town.txt's count: 4, the skates had, becomes 5 here.
+#
+# The people: rival, the neighbour (FLAG_KALOS_HIDE_RIVAL_ROUTE_2, shown for the scene alone).
+
+
+# A save from before Santalune's part of the story was written finds its people as a new game does
+script OnEnter
+  if not flag FLAG_KALOS_SANTALUNE_BEGUN call KalosSantalune
+  end
+
+
+# A few steps up the trail with the skates had (the trigger across the trail, on VAR_KALOS_STORY 4)
+script Lesson
+  scene "The neighbour's lesson"
+  clearflag FLAG_KALOS_HIDE_RIVAL_ROUTE_2
+  place rival 255 632 down
+  show rival
+  face player up
+  speaker "{rival}"
+  say "{player}! I was hoping to catch you. Your first time in the tall grass?"
+  say "Wild Pokémon live in there. If you want one on your team, wear it down a little, then throw a Poké Ball. Watch."
+  if starter "Chespin" goto WithFennekin
+  if starter "Fennekin" goto WithFroakie
+  catchinglesson "Fletchling" 3 by "{rival}" "Chespin" 6
+  goto Caught
+label WithFennekin
+  catchinglesson "Fletchling" 3 by "{rival}" "Fennekin" 6
+  goto Caught
+label WithFroakie
+  catchinglesson "Fletchling" 3 by "{rival}" "Froakie" 6
+label Caught
+  speaker "{rival}"
+  say "Like that. A tired Pokémon gives in to a ball far more easily than a fresh one."
+  say "Here, take some Poké Balls. The professor wants us to meet every Pokémon in Kalos, after all."
+  give "Poké Ball" 10
+  say "The forest is just north of here. The others went on ahead. I'll see you in Santalune City."
+  walk rival up 6 fast
+  hide rival
+  setflag FLAG_KALOS_HIDE_RIVAL_ROUTE_2
+  setflag FLAG_KALOS_HIDE_FRIENDS_CAFE
+  clearflag FLAG_KALOS_HIDE_SHAUNA_FOREST
+  setvar VAR_KALOS_STORY 5
+  endscene
+  end
+
+
+# Should the neighbour be spoken to before the scene moves on
+script Rival
+  speaker "{rival}"
+  say "Watch closely, {player}."
+  end

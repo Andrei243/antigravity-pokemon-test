@@ -1,0 +1,27 @@
+{
+  // Route 2, the Avance Trail (plan 23 · Z1, second part): drawn by hand, our words. A short trail north through a meadow
+  // to Santalune Forest, its grass the first wild Pokémon of Kalos. The neighbour waits a little way up it once the
+  // skates are had, to show how a Pokémon is caught (kalos_route_2.txt), hidden by a flag of ours until then. The song
+  // is Vaniville's, until plan 31 writes Kalos's routes their own
+  "area": "kalos_route_2",
+  "bgmTrack": "kalos/vaniville",
+  "trees": "Round",
+  "architecture": "Hamlet",
+  "triggers": [
+    { "script": "Lesson", "x": 254, "z": 636, "width": 4, "depth": 1, "variable": "VAR_KALOS_STORY", "value": 4 }
+  ],
+  "people": {
+    "rival": { "name": "{rival}", "npcType": "Rival:SERENA:CALEM", "script": "Rival", "still": true, "hiddenBy": "FLAG_KALOS_HIDE_RIVAL_ROUTE_2" },
+    "youngster": {
+      "name": "Milo",
+      "npcType": "Youngster",
+      "trainer": {
+        "dialogueBefore": "Youngster Milo: You've got a brand-new Pokémon, haven't you? I can tell! Let's battle!",
+        "dialogueAfter": "Youngster Milo: Okay, okay, I believe you. You're new, but you're good."
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": "Route 2 · Avance Trail\nNorth: Santalune Forest\nSouth: Aquacorde Town"
+  }
+}

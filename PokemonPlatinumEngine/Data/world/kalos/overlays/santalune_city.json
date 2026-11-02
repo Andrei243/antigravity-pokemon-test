@@ -1,0 +1,63 @@
+{
+  // Santalune City (plan 23 · Z1, second part): drawn by hand, our words. A town of stone round a square with a
+  // fountain: the Gym north of it, the Pokémon Center (with the Mart's counter inside, as Kalos's centres have) west of
+  // it, four houses, the way in from Route 3 in the west and the road north-east toward Lumiose City, Route 4, which is
+  // not drawn yet: the trigger at its foot turns the player back. The neighbour waits by the way in for a battle, and the
+  // friends gather on the square after it (santalune_city.txt). Its houses are built as Aquacorde's are (Canalside),
+  // and its song is Aquacorde's, until plan 31 writes the city its own
+  "area": "santalune_city",
+  "bgmTrack": "kalos/aquacorde",
+  "trees": "Round",
+  "architecture": "Canalside",
+  "doors": [
+    { "warp": 0, "map": "SantaluneCity_NorthwestHouse", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 1, "map": "SantaluneCity_Gym", "x": 6, "y": 16, "facing": "Up" },
+    { "warp": 2, "map": "SantaluneCity_EastHouse", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 3, "map": "SantaluneCity_PokemonCenter_1F", "x": 8, "y": 12, "facing": "Up" },
+    { "warp": 4, "map": "SantaluneCity_SouthwestHouse", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 5, "map": "SantaluneCity_SoutheastHouse", "x": 4, "y": 8, "facing": "Up" }
+  ],
+  "triggers": [
+    { "script": "Neighbour", "x": 319, "z": 526, "width": 1, "depth": 4, "variable": "VAR_KALOS_STORY", "value": 7 },
+    { "script": "NotYet", "x": 356, "z": 499, "width": 4, "depth": 1, "variable": "VAR_KALOS_ROUTE_4", "value": 0 }
+  ],
+  "props": [
+    { "type": "Fountain", "x": 340, "y": 517, "width": 3, "depth": 3 },
+    { "type": "Bench", "x": 332, "y": 517, "width": 2, "depth": 1 },
+    { "type": "Bench", "x": 345, "y": 516, "width": 2, "depth": 1 },
+    { "type": "Planter", "x": 334, "y": 508, "width": 1, "depth": 1 },
+    { "type": "Planter", "x": 347, "y": 508, "width": 1, "depth": 1 }
+  ],
+  "people": {
+    "rival": { "name": "{rival}", "npcType": "Rival:SERENA:CALEM", "script": "Rival", "still": true, "hiddenBy": "FLAG_KALOS_HIDE_RIVAL_SANTALUNE" },
+    "shauna": { "name": "Shauna", "npcType": "shauna", "script": "Shauna", "still": true, "hiddenBy": "FLAG_KALOS_HIDE_SHAUNA_SANTALUNE" },
+    "tierno": { "name": "Tierno", "npcType": "tierno", "script": "Tierno", "still": true, "hiddenBy": "FLAG_KALOS_HIDE_FRIENDS_SANTALUNE" },
+    "trevor": { "name": "Trevor", "npcType": "trevor", "script": "Trevor", "still": true, "hiddenBy": "FLAG_KALOS_HIDE_FRIENDS_SANTALUNE" },
+    "painter": {
+      "name": "Painter",
+      "npcType": "Lady",
+      "still": true,
+      "dialog": [ "I come every morning to paint the fountain. The light on the water is never the same twice." ]
+    },
+    "boy": {
+      "name": "Boy",
+      "npcType": "Youngster",
+      "dialog": [ "The Gym Leader here takes photos of bugs! She says a good photo and a good battle both need patience." ]
+    },
+    "gentleman": {
+      "name": "Gentleman",
+      "npcType": "Gentleman",
+      "still": true,
+      "dialog": [ "This road goes on to Lumiose City, the heart of Kalos. You'll want a Badge or two before you get there." ]
+    },
+    "woman": {
+      "name": "Woman",
+      "npcType": "Lady",
+      "dialog": [ "Santalune is an old town. Some of these stones were laid before anyone thought of Poké Balls!" ]
+    }
+  },
+  "signs": {
+    "CitySign": "Santalune City\nA city of old stone and quiet streets.",
+    "RouteFourSign": "North-east: Route 4\nLumiose City beyond"
+  }
+}

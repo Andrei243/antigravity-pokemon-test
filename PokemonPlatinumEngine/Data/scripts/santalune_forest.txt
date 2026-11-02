@@ -1,0 +1,32 @@
+# Santalune Forest (plan 23 · Z1, second part). The lines are our own, on X and Y's beats as they are publicly
+# described (docs/mechanics/rulings.md, "Kalos drawn by hand, its first chapter and its roller skates"): Shauna waits
+# just inside the trees, happy to explore together, and runs on ahead to see what is round the next bend.
+# VAR_KALOS_STORY is vaniville_town.txt's count: 5, the neighbour's lesson had, becomes 6 here.
+#
+# The people: shauna (FLAG_KALOS_HIDE_SHAUNA_FOREST, cleared by the lesson on Route 2); a Pikachu stands in the grove.
+
+
+# Into the trees from Route 2 (the trigger across the way in, on VAR_KALOS_STORY 5)
+script Meet
+  scene "Shauna in the forest"
+  walk player up 1
+  face player up
+  speaker "Shauna"
+  say "{player}! Isn't it amazing in here? It's all green and quiet and full of Pokémon!"
+  say "I heard there's a Pikachu living somewhere in these woods. I'm going to find it before anyone else does!"
+  say "Want to know a secret? When your Pokémon's tired, you can rest it with a Potion. Here, I've got a spare."
+  give "Potion"
+  say "See you on the other side! Last one out of the forest is a Slowpoke!"
+  walk shauna up 5 fast
+  hide shauna
+  setflag FLAG_KALOS_HIDE_SHAUNA_FOREST
+  clearflag FLAG_KALOS_HIDE_FRIENDS_ROUTE_3
+  setvar VAR_KALOS_STORY 6
+  endscene
+  end
+
+
+script Shauna
+  speaker "Shauna"
+  say "Have you seen a Pikachu around here?"
+  end

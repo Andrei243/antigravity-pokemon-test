@@ -1,0 +1,191 @@
+{
+  "name": "SantaluneCity_Gym",
+  "displayName": "Santalune Gym",
+  "bgmTrack": "common/gym",
+  "interior": "Gym",
+  "trees": "Round",
+  "battleArena": "Gym",
+  "arenaType": "Bug",
+  "width": 13,
+  "height": 18,
+  "ground": [
+    "#############",
+    "#############",
+    "#############",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "######D######"
+  ],
+  "solid": [
+    "#############",
+    "#############",
+    "#############",
+    "##.........##",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "##.........##",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...#...#...#",
+    "#...........#",
+    "######.######"
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 11,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 11,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 4,
+      "y": 15,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 8,
+      "y": 15,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 6,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 6,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 3,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 8,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 6,
+      "sourceY": 17,
+      "targetMap": "Kalos",
+      "targetX": 341,
+      "targetY": 508,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "viola",
+      "name": "Viola",
+      "npcType": "viola",
+      "x": 6,
+      "y": 4,
+      "facing": "Down",
+      "script": "Viola"
+    },
+    {
+      "id": "gym_guide",
+      "name": "Gym Guide",
+      "npcType": "Gentleman",
+      "x": 9,
+      "y": 15,
+      "facing": "Down",
+      "script": "GymGuide"
+    },
+    {
+      "id": "kalos_lass_mireille",
+      "name": "Mireille",
+      "npcType": "Lass",
+      "x": 3,
+      "y": 11,
+      "facing": "Right",
+      "trainer": {
+        "id": "kalos_lass_mireille",
+        "name": "Mireille",
+        "trainerClass": "Lass",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Lass Mireille: Viola says a good Trainer never moves too fast. Hold still and battle me!",
+        "dialogueAfter": "Lass Mireille: You moved fast and still won. Viola will like you.",
+        "sightRange": 3
+      }
+    },
+    {
+      "id": "kalos_bug_catcher_luc",
+      "name": "Luc",
+      "npcType": "bug_catcher",
+      "x": 9,
+      "y": 7,
+      "facing": "Left",
+      "trainer": {
+        "id": "kalos_bug_catcher_luc",
+        "name": "Luc",
+        "trainerClass": "Bug Catcher",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Bug Catcher Luc: Nobody reaches Viola without getting past my bugs!",
+        "dialogueAfter": "Bug Catcher Luc: Got past them after all. Go on, she is waiting.",
+        "sightRange": 3
+      }
+    }
+  ],
+  "wildEncounters": []
+}

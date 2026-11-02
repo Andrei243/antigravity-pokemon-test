@@ -25,7 +25,8 @@ public class KalosTests
     private static readonly Lazy<Func<string, Map>> Rooms = new(MapDatabase.Fresh);
     private static Map MapNamed(string name) => BuiltMaps.Value.TryGetValue(name, out var map) ? map : Rooms.Value(name);
 
-    private static readonly string[] Areas = { "vaniville_town", "kalos_route_1", "aquacorde_town" };
+    private static readonly string[] Areas =
+        { "vaniville_town", "kalos_route_1", "aquacorde_town", "kalos_route_2", "santalune_forest", "kalos_route_3", "santalune_city" };
 
     [Fact]
     public void KalosIsBuiltWithItsFileAStartAndMapsOfItsOwn()
@@ -97,7 +98,7 @@ public class KalosTests
     [Fact]
     public void VanivilleRouteOneAndAquacordeAreOpenWithTheirHousesSongsAndSigns()
     {
-        Assert.Equal(Areas, Kalos.Index.Areas.Take(3));
+        Assert.Equal(Areas, Kalos.Index.Areas.Take(Areas.Length));
         foreach (string key in Areas)
         {
             Assert.NotNull(Kalos.Area(key));
@@ -159,5 +160,58 @@ public class KalosTests
         Assert.True(Reached("Kalos", 255, 650), "Aquacorde's bridge");
         foreach (string room in Region.Maps.Where(m => m != "Kalos"))
             Assert.True(walked.Keys.Any(m => m.Name == room), $"{room} is never reached");
+    }
+
+    [Fact]
+    public void Route2TheForestRoute3AndSantaluneAreOpenWithTheirWildPokemonCenterAndGym()
+    {
+        Assert.Equal("Route 2", Overworld.DisplayNameAt(255, 620));
+        Assert.Equal("Santalune Forest", Overworld.DisplayNameAt(255, 590));
+        Assert.Equal("Route 3", Overworld.DisplayNameAt(290, 527));
+        Assert.Equal("Santalune City", Overworld.DisplayNameAt(340, 528));
+        // The first wild Pokémon of Kalos live in Route 2's grass, Pikachu among the forest's, and nobody on the trails
+        Assert.Contains(Kalos.Area("kalos_route_2")!.Land!, e => e.Species == "Fletchling");
+        Assert.Contains(Kalos.Area("santalune_forest")!.Land!, e => e.Species == "Pikachu");
+        Assert.Equal(12, Kalos.Area("kalos_route_3")!.Land!.Count);
+        Assert.Equal(TileBehavior.TallGrass, Overworld.BehaviourAt(248, 608));
+        Assert.Equal(TileBehavior.None, Overworld.BehaviourAt(255, 620));
+        // Every Pokémon met there is one Kalos's own Pokédex lists, at the region's first levels
+        foreach (string key in new[] { "kalos_route_2", "santalune_forest", "kalos_route_3" })
+            foreach (var slot in Kalos.Area(key)!.Land!.Concat(Kalos.Area(key)!.Water ?? new()))
+            {
+                Assert.True(PokemonDatabase.Get(slot.Species)!.DexNumbers.ContainsKey("kalos-central"), $"{key}: {slot.Species} is no Kalos-Central species");
+                Assert.InRange(slot.Level, 2, 9);
+            }
+        // Santalune's Pokémon Center (with the Mart's counter inside), its Gym and four houses, found at their doors
+        var center = Overworld.PlacedBuildings.Single(b => b.Kind == BuildingKind.PokemonCenter && b.X0 >= 316);
+        Assert.Equal("SantaluneCity_PokemonCenter_1F", Overworld.GetWarpAt(325, 519)?.TargetMap);
+        Assert.True(center.X0 <= 325 && center.X1 >= 325);
+        Assert.Contains(Overworld.PlacedBuildings, b => b.Kind == BuildingKind.Gym && b.X0 >= 316);
+        Assert.True(Overworld.PlacedBuildings.Count(b => b.Kind == BuildingKind.House && b.X0 >= 316) >= 4, "Santalune's four houses");
+        var room = MapNamed("SantaluneCity_PokemonCenter_1F");
+        Assert.Contains(room.NPCs, n => n.IsHealingNurse);
+        Assert.Contains(room.NPCs, n => n.IsPokeMartClerk);
+        var gym = MapNamed("SantaluneCity_Gym");
+        Assert.Contains(gym.NPCs, n => n.Name == "Viola");
+        Assert.Equal("Leader", TrainerDatabase.Get("kalos_viola_1")!.Class);
+        // Fly reaches Kalos: its Town Map lands before Santalune's Pokémon Center once the city has been come to
+        var townMap = RegionMap.Of(RegionDatabase.Kalos)!;
+        Assert.Equal("Kalos", townMap.Map);
+        Assert.Contains(townMap.FlySpots, f => f.Spawn == 2 && f.Cells.Contains(RegionMap.CellOf(325, 520)));
+        Assert.Contains("FLAG_FIRST_ARRIVAL_SANTALUNE_CITY", townMap.ArrivalFlags("santalune_city"));
+    }
+
+    [Fact]
+    public void FromTheBedroomTheWayRunsThroughTheForestToSantalunesGym()
+    {
+        var walked = Walked.Value;
+        bool Reached(string map, int x, int y) => walked.Any(p => p.Key.Name == map && p.Value.Contains((x, y)));
+        Assert.True(Reached("Kalos", 255, 630), "Route 2");
+        Assert.True(Reached("Kalos", 255, 600), "the forest's way in");
+        Assert.True(Reached("Kalos", 259, 583), "the forest's grove");
+        Assert.True(Reached("Kalos", 268, 540), "Route 3");
+        Assert.True(Reached("Kalos", 341, 508), "before Santalune's Gym");
+        Assert.True(Reached("SantaluneCity_Gym", 6, 5), "Viola's place");
+        Assert.True(Reached("SantaluneCity_PokemonCenter_1F", 8, 6), "the Pokémon Center's counter");
     }
 }

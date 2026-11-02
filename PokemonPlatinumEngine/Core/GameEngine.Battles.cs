@@ -169,10 +169,10 @@ public partial class GameEngine
             bag.AddItem(ItemDatabase.Get("Poké Ball")!, 20);
             name = catcher != null ? PlayerIdentity.Fill(catcher.Name) : PlayerIdentity.Fill("{assistant}");
             // And someone else's lesson has their figure on the player's platform, made behind the fade: their own look
-            // by their name where the looks have one (plan 21 · H2: Wally's). The assistant's is left as it was
+            // by their name where the looks have one (plan 21 · H2: Wally's; plan 23 · Z1: the neighbour, `{rival}` filled first). The assistant's is left as it was
             if (catcher != null)
             {
-                lessonLook = CharacterStyles.Default.CharacterFor(catcher.Name.ToLowerInvariant());
+                lessonLook = CharacterStyles.Default.CharacterFor(PlayerIdentity.Fill(catcher.Name).ToLowerInvariant());
                 CharacterModels.Preload(new[] { lessonLook });
             }
         }

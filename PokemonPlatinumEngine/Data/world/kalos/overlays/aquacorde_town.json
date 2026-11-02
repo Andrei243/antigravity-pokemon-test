@@ -1,9 +1,10 @@
 {
   // Aquacorde Town (plan 23 · Z1): drawn by hand, our words. The first chapter's scene at the café on the waterfront
   // (aquacorde_town.txt): the neighbour and the three friends at their table, the first Pokémon, the Pokédex and the first
-  // battle. The friends stay at their table until Route 2 is drawn; the neighbour, hidden by a flag of ours until the scene
-  // at the door, goes home once it is over. The way north over the bridge, Route 2,
-  // is not drawn yet: the trigger before the trees turns the player back
+  // battle. The friends stay at their table until the neighbour's lesson on Route 2 (FLAG_KALOS_HIDE_FRIENDS_CAFE),
+  // when they set off ahead; the neighbour, hidden by a flag of ours until the scene at the door, goes home once it is
+  // over. The way north over the bridge, Route 2, turns back whoever comes to it before the first Pokémon, or before
+  // the letter has been taken home
   "area": "aquacorde_town",
   "bgmTrack": "kalos/aquacorde",
   "trees": "Round",
@@ -19,7 +20,8 @@
     { "script": "Cafe1", "x": 255, "z": 661, "width": 1, "depth": 1, "variable": "VAR_KALOS_STORY", "value": 2 },
     { "script": "Cafe2", "x": 256, "z": 661, "width": 1, "depth": 1, "variable": "VAR_KALOS_STORY", "value": 2 },
     { "script": "Cafe3", "x": 257, "z": 661, "width": 1, "depth": 1, "variable": "VAR_KALOS_STORY", "value": 2 },
-    { "script": "NotYet", "x": 254, "z": 648, "width": 4, "depth": 1, "variable": "VAR_KALOS_ROUTE_2", "value": 0 }
+    { "script": "NotYet", "x": 254, "z": 648, "width": 4, "depth": 1, "variable": "VAR_KALOS_STORY", "value": 1 },
+    { "script": "HomeFirst", "x": 254, "z": 648, "width": 4, "depth": 1, "variable": "VAR_KALOS_STORY", "value": 3 }
   ],
   "props": [
     { "type": "Table", "x": 250, "y": 657, "width": 2, "depth": 1 },
@@ -31,9 +33,9 @@
     { "type": "Bench", "x": 270, "y": 659, "width": 2, "depth": 1 }
   ],
   "people": {
-    "shauna": { "name": "Shauna", "npcType": "shauna", "script": "Shauna", "still": true },
-    "tierno": { "name": "Tierno", "npcType": "tierno", "script": "Tierno", "still": true },
-    "trevor": { "name": "Trevor", "npcType": "trevor", "script": "Trevor", "still": true },
+    "shauna": { "name": "Shauna", "npcType": "shauna", "script": "Shauna", "still": true, "hiddenBy": "FLAG_KALOS_HIDE_FRIENDS_CAFE" },
+    "tierno": { "name": "Tierno", "npcType": "tierno", "script": "Tierno", "still": true, "hiddenBy": "FLAG_KALOS_HIDE_FRIENDS_CAFE" },
+    "trevor": { "name": "Trevor", "npcType": "trevor", "script": "Trevor", "still": true, "hiddenBy": "FLAG_KALOS_HIDE_FRIENDS_CAFE" },
     "rival": { "name": "{rival}", "npcType": "Rival:SERENA:CALEM", "script": "Rival", "still": true, "hiddenBy": "FLAG_KALOS_HIDE_RIVAL_AQUACORDE" },
     "clerk": { "name": "Clerk", "npcType": "Clerk", "script": "Clerk", "still": true, "dialog": [ "Welcome to the market stall! What can I get for you?" ] },
     "waiter": {

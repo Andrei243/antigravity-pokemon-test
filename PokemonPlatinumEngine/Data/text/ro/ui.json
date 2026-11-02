@@ -1460,7 +1460,8 @@
     "Boulder": "Bolovan", "Cascade": "Cascadă", "Thunder": "Tunet", "Rainbow": "Curcubeu", "Soul": "Suflet", "Marsh": "Smârc", "Volcano": "Vulcan", "Earth": "Pământ",
     "Zephyr": "Zefir", "Hive": "Stup", "Plain": "Câmpie", "Fog": "Ceață", "Storm": "Furtună", "Mineral": "Mineral", "Glacier": "Ghețar", "Rising": "Înălțare",
     "Stone": "Piatră", "Knuckle": "Pumn", "Dynamo": "Dinam", "Heat": "Arșiță", "Balance": "Echilibru", "Feather": "Pană", "Mind": "Minte", "Rain": "Ploaie",
-    "Basic": "Bază", "Toxic": "Toxic", "Insect": "Insectă", "Bolt": "Fulger", "Quake": "Cutremur", "Jet": "Jet", "Legend": "Legendă", "Wave": "Val"
+    "Basic": "Bază", "Toxic": "Toxic", "Insect": "Insectă", "Bolt": "Fulger", "Quake": "Cutremur", "Jet": "Jet", "Legend": "Legendă", "Wave": "Val",
+    "Bug": "Gândac", "Cliff": "Stâncă", "Rumble": "Tunet", "Plant": "Plantă", "Voltage": "Voltaj", "Fairy": "Zână", "Psychic": "Psihic", "Iceberg": "Aisberg"
   },
   "card": {
     "runSub": "Cum se joacă acest joc. Ales la început și neschimbat apoi.",
