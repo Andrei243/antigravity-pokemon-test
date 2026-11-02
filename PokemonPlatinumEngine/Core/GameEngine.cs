@@ -131,7 +131,7 @@ public enum GameState
     /// <summary>A PC's Poké Jobs board: the boxes' Pokémon sent on jobs while the game is shut (plan 15 · E3).</summary>
     Jobs,
     /// <summary>Cameron's photo album looked through, a script's <c>photo album</c> waiting on it (plan 20, part q).</summary>
-    PhotoAlbum
+    PhotoAlbum,
     /// <summary>A sitting at one of Mauville's slot machines, Emerald's own with its Reel Time (plan 21 · H12, part n).</summary>
     ReelMachine
 }
