@@ -11,8 +11,25 @@ public sealed class SongPlayer
 {
     private const int Block = 32;
 
-    private readonly Synthesizer synth = new();
+    private readonly Synthesizer synth;
     private readonly float[] block = new float[Block * 2];
+
+    /// <summary>A player in the DS sound, as every song has played.</summary>
+    public SongPlayer() : this(SynthSound.Ds) { }
+
+    /// <summary>A player in the sound given (plan 31: the modern one renders at <see cref="Synthesizer.ModernRate"/>).</summary>
+    public SongPlayer(SynthSound sound) => synth = new Synthesizer(sound);
+
+    /// <summary>The rate this player renders at.</summary>
+    public int Rate => synth.Rate;
+
+    public SynthSound Sound => synth.Sound;
+
+    /// <summary>Notes that took a voice still sounding, since the player was made (plan 31: whether the voices suffice).</summary>
+    public int VoicesStolen => synth.Stolen;
+
+    /// <summary>The most voices sounding at once, since the player was made.</summary>
+    public int PeakVoices => synth.PeakVoices;
     private Song? song;
     private bool night;
     private bool agitated;
@@ -58,7 +75,7 @@ public sealed class SongPlayer
 
     private void Retime()
     {
-        if (song != null) ticksPerSample = 1.0 / (song.SecondsPerTick(night, agitated, giant) * Synthesizer.SampleRate);
+        if (song != null) ticksPerSample = 1.0 / (song.SecondsPerTick(night, agitated, giant) * synth.Rate);
     }
 
     /// <summary>True while notes are still being started (a one-shot song that has reached its end is not).</summary>
@@ -79,10 +96,16 @@ public sealed class SongPlayer
         night = atNight && s.HasNight;
         tick = 0;
         Loops = 0;
-        ticksPerSample = 1.0 / (s.SecondsPerTick(night, agitated, giant) * Synthesizer.SampleRate);
+        ticksPerSample = 1.0 / (s.SecondsPerTick(night, agitated, giant) * synth.Rate);
         next = new int[s.Tracks.Count];
         synth.AllNotesOff(immediate: true);
         synth.ReverbLevel = s.Reverb + (night ? 0.08f : 0f);
+        if (synth.Sound == SynthSound.Modern)
+        {
+            // The night's room is a little longer as well as wetter
+            var room = s.Room ?? RoomShape.Default;
+            synth.Room = night ? room with { Seconds = room.Seconds * 1.15f } : room;
+        }
         Playing = true;
     }
 
@@ -141,7 +164,7 @@ public sealed class SongPlayer
                         : giant && track.GiantInstrument != null ? track.GiantInstrument
                         : night ? track.NightInstrument ?? track.Instrument : track.Instrument;
                     float vol = track.Volume * (night && track.IsDrums ? 0.6f : 1f);
-                    synth.NoteOn(inst, note.Key, note.Velocity, (int)(note.Gate * samplesPerTick), track.Pan, vol, track.ReverbSend);
+                    synth.NoteOn(inst, note.Key, note.Velocity, (int)(note.Gate * samplesPerTick), track.Pan, vol, track.ReverbSend, track.Width);
                 }
             }
 

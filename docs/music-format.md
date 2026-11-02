@@ -92,7 +92,9 @@ track drums kit vol=0.5
   r1 | r1 | L [ b4 r4 b4 r4 | ]16
 ```
 
-Track options: `night=<instrument>`, `lowhp=<instrument>` (a battle theme in the red), `giant=<instrument>` (a battle theme while a giant stands), `only=lowhp`, `unless=lowhp`, `only=giant` or `unless=giant` (a track of one arrangement alone), `vol` (0–1), `pan` (−1 left to 1 right), `rev` (reverb send). A track may also **double** another (`double=<track>`, a track above it and of the same kind, pitched or drums): it has no body of its own and plays the other's notes, moved by `shift=<semitones>` and, with `beats=<n>`, only those that start on every 1/*n* of a whole note (`beats=4` the beats, `beats=1` the first of each bar in 4/4); it loops where its source does. The giant layers are written so: `track gianttimpani timpani only=giant double=bass beats=4 shift=12 vol=0.5 rev=0.2`.
+Two header words belong to the **modern sound** (plan 31; below): `sound modern` (or `sound ds`) names the sound the song is written for, and `room <kind> <seconds> [predelay=<seconds>] [damp=<0 to 1>]` its reverb: a `room`, `chamber`, `hall` or `plate`, how long it rings before falling 60 dB, and, if not its kind's own, the gap before it answers and how quickly its highs die (`room hall 1.8`). The DS sound ignores `room` and keeps its one `reverb`; in the modern sound `reverb` is how much of the room returns. Until plan 31 · MU2 the game plays every song in the DS sound whatever its header says, and no song of `Data/music` names a sound.
+
+Track options: `width=<0 to 1>` (the modern sound: how far the track's unison voices spread across the field; 1 unless written), `night=<instrument>`, `lowhp=<instrument>` (a battle theme in the red), `giant=<instrument>` (a battle theme while a giant stands), `only=lowhp`, `unless=lowhp`, `only=giant` or `unless=giant` (a track of one arrangement alone), `vol` (0–1), `pan` (−1 left to 1 right), `rev` (reverb send). A track may also **double** another (`double=<track>`, a track above it and of the same kind, pitched or drums): it has no body of its own and plays the other's notes, moved by `shift=<semitones>` and, with `beats=<n>`, only those that start on every 1/*n* of a whole note (`beats=4` the beats, `beats=1` the first of each bar in 4/4); it loops where its source does. The giant layers are written so: `track gianttimpani timpani only=giant double=bass beats=4 shift=12 vol=0.5 rev=0.2`.
 
 | Write | Means |
 | --- | --- |
@@ -109,7 +111,7 @@ Track options: `night=<instrument>`, `lowhp=<instrument>` (a battle theme in the
 | `L` | The loop point. Every track that has one must put it at the same place; a song without one plays once (fanfares) |
 | `\|` | A bar line. The parser checks that a bar really ends there, which catches most miscounted rhythms |
 
-In the drum kit the letters are drums: `b` kick, `s` snare, `h` closed hi-hat, `o` open hi-hat, `c` crash, `t` `m` `f` high, mid and low toms, `x` clap, `k` shaker. Lengths, `v`, `[ ]`, `( )`, `L` and `|` work as above.
+In the drum kit the letters are drums: `b` kick, `s` snare, `h` closed hi-hat, `o` open hi-hat, `c` crash, `t` `m` `f` high, mid and low toms, `x` clap, `k` shaker, and the hand percussion of plan 31: `g` high conga, `d` low conga, `n` bongo, `w` wood block. Lengths, `v`, `[ ]`, `( )`, `L` and `|` work as above.
 
 Bass instruments (`bass`, `synthbass`, `tuba`, `contrabass`, `timpani`) sound an octave lower than written, `piccolo` and `glockenspiel` an octave higher. All tracks of a song must be the same length.
 
@@ -123,15 +125,32 @@ Bass instruments (`bass`, `synthbass`, `tuba`, `contrabass`, `timpani`) sound an
 | Keys and mallets | `piano`, `epiano`, `organ`, `bell`, `glockenspiel`, `celesta`, `marimba`, `vibraphone`, `timpani` |
 | Synths | `square`, `pulse`, `sawlead`, `pad`, `choir`, `bass`, `synthbass` |
 | Drums | `kit` |
+| Alola (plan 31 · MU0) | `ukulele` and `slideguitar` (plucked strings), `steeldrum` and `logdrum` (struck modes; the log drum sounds an octave lower than written), `warmpad` (a slow pad of four detuned voices spread wide) |
+
+The Alola instruments are open to any song and play in both sounds, but are written for the modern one. They are voices of two new kinds (`VoiceKind` in `Audio/Instrument.cs`): a **plucked string** is Karplus–Strong, a burst of noise as bright as the instrument and the note's velocity make it, hollowed by where the pluck lands, travelling round a loop that dulls it a little each time and reads the string at a fractional length, so a note can slide into place (the slide guitar's glide up, its vibrato); **struck modes** are a few decaying sines at the instrument's own ratios, the upper ones woken more by a harder strike, with a burst of noise for the stick or the mallet. Neither is a sample.
+
+## The modern sound (plan 31)
+
+The later regions' music is to sound like its own era rather than the DS's. [Plan 31](plans/31-later-music.md) adds a second sound to the synthesiser, chosen by data, beside the DS one, which renders every existing song, sound and cry to the sample as before (`ModernMusicTests` holds a sample of songs to hashes measured before the plan).
+
+- **Its own rate and voices**: `new Synthesizer(SynthSound.Modern)` runs at 48,000 Hz (`Synthesizer.ModernRate`) with 96 voices (`ModernVoices`, plan 31's decision 2, to be measured on the Windows machine); `new Synthesizer()` is the DS one, 32,768 Hz and 40 voices. `SongPlayer(sound)` plays a song in either, and its `Rate`, `PeakVoices` and `VoicesStolen` (notes that cut a sounding voice short) say what it needed.
+- **The top end**: its wavetables keep harmonics up to 20 kHz (the DS sound's stop at 14 kHz), and the drum kit's filters are moved to the rate so a drum keeps its colour.
+- **Width**: a unison instrument plays `Unison` detuned voices (2 when not given), spread across the field by its `Spread` and the track's `width`; `strings`, `choir` and `warmpad` play three or four. Every voice sends to the reverb in stereo, from where it stands.
+- **Velocity reaches tone**: a harder note keeps its bright spectrum longer and drives its FM deeper; in the DS sound velocity is level alone.
+- **The room**: a stereo reverb with a pre-delay, early reflections tapped from it (none in a plate), eight damped combs and four all-passes a side whose feedback is set from the room's length and whose spacing grows with its size, the send high-passed at 140 Hz so the bass stays dry. At night the room rings 15% longer.
+
+Not yet (MU2): the region's `sound`, the mixer at 48 kHz, the compressor, the handheld speakers and the jukebox in the modern sound. Until then the modern sound is heard only through `MusicRender --sound modern`, which renders with no mixer (`Audio/OfflineMaster`: the song at the music bus's full volume and the mixer's own last stage, its 30 Hz high-pass and its limiter, at the sound's rate). The one tune written for it is `tools/MusicRender/songs/mu0_island_route.mml`, which is no song of the game.
 
 ## Rendering and checking
 
 Claude can't listen, so songs are checked by numbers and the user listens.
 
 ```bash
-dotnet run --project tools/MusicRender -- <out dir> [song id, folder or .mml file ...] [--night] [--lowhp] [--giant] [--stems] [--passes N] [--spectrogram]
-dotnet run --project tools/MusicRender -- --calibrate
+dotnet run --project tools/MusicRender -- <out dir> [song id, folder or .mml file ...] [--night] [--lowhp] [--giant] [--stems] [--passes N] [--spectrogram] [--wide] [--sound ds|modern]
+dotnet run --project tools/MusicRender -- --calibrate [--sound modern]
 ```
+
+`--sound ds` or `--sound modern` renders the songs in that sound with no mixer (above), at its own rate, the files named `<song>_<sound>`, and adds a line of the rate, the most voices sounding at once and how many notes cut one short; `--wide` draws the spectrogram to 16 kHz, where the two sounds' top ends differ. Every looping song's report also gives its **join**: the largest step between two samples within 3 ms of the place it wraps, beside the same where the loop starts the first time through; a join more than half as large again (and 0.02 over) is told as `CLICKS` and the tool exits with 2.
 
 `MusicRender` writes a WAV per song (the intro, the loop twice and a fade) and prints its length, loop length, peak and RMS level, CPU cost, and any **clashes**: two parts a minor second or minor ninth apart on a beat, which is usually a wrong note, among the tracks of the arrangement rendered (with `--lowhp`, the alarm and not the pad it replaces). A note too short to be checked itself, such as an alarm's pip, is still checked against whatever is struck with it. A song named by its `.mml` file is read from there, so one being written is checked without building the game. `--night`, `--lowhp` and `--giant` render the arrangements (`--giant --lowhp` the two together; with `--giant` the clashes are told among the giant layer's tracks too). `--stems` adds each track's level, for balancing the mix. `--spectrogram` also writes a picture of each song: time left to right, 0 to 8 kHz bottom to top, black through blue, magenta and orange to white over 80 dB, which the Read tool can look at (a quiet intro, the beat, the loop's seam and a part that is too loud all show).
 

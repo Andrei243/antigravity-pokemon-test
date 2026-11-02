@@ -29,6 +29,8 @@ public static class Mml
         bool hasNight = true;
         int beatsPerBar = 4, beatUnit = 4;
         float reverb = 0.3f;
+        SynthSound? sound = null;
+        RoomShape? room = null;
         var trackHeaders = new List<(string Header, StringBuilder Body, int Line)>();
 
         var lines = text.Replace("\r", "").Split('\n');
@@ -64,6 +66,14 @@ public static class Mml
                 case "lowhptempo": lowHpTempo = ParseDouble(rest, id, n); break;
                 case "gianttempo": giantTempo = ParseDouble(rest, id, n); break;
                 case "reverb": reverb = (float)ParseDouble(rest, id, n); break;
+                case "sound":
+                    sound = rest switch
+                    {
+                        "ds" => SynthSound.Ds, "modern" => SynthSound.Modern,
+                        _ => throw Error(id, n, $"'sound' takes 'ds' or 'modern', not '{rest}'")
+                    };
+                    break;
+                case "room": room = ParseRoom(rest, id, n); break;
                 case "meter":
                 {
                     var parts = rest.Split('/');
@@ -117,10 +127,35 @@ public static class Mml
         var song = new Song
         {
             Id = id, Title = title, Tempo = tempo, NightTempo = nightTempo, HasNight = hasNight, LowHpTempo = lowHpTempo, GiantTempo = giantTempo, TicksPerBar = ticksPerBar,
-            LoopTick = loopTick, EndTick = endTick, Reverb = reverb
+            LoopTick = loopTick, EndTick = endTick, Reverb = reverb, Sound = sound, Room = room
         };
         foreach (var t in tracks) song.Tracks.Add(t.Track);
         return song;
+    }
+
+    /// <summary><c>room hall 2.1 [predelay=0.03] [damp=0.4]</c>: a kind, how many seconds it rings, and perhaps its own pre-delay and damping.</summary>
+    private static RoomShape ParseRoom(string rest, string id, int line)
+    {
+        var parts = rest.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+        if (parts.Length < 2) throw Error(id, line, "'room' takes a kind (room, chamber, hall, plate) and its length in seconds");
+        RoomKind kind = parts[0] switch
+        {
+            "room" => RoomKind.Room, "chamber" => RoomKind.Chamber, "hall" => RoomKind.Hall, "plate" => RoomKind.Plate,
+            _ => throw Error(id, line, $"unknown room '{parts[0]}' (room, chamber, hall or plate)")
+        };
+        var shape = RoomShape.Of(kind, (float)ParseDouble(parts[1], id, line));
+        for (int i = 2; i < parts.Length; i++)
+        {
+            var kv = parts[i].Split('=');
+            if (kv.Length != 2) throw Error(id, line, $"bad room option '{parts[i]}'");
+            shape = kv[0] switch
+            {
+                "predelay" => shape with { PreDelay = (float)ParseDouble(kv[1], id, line) },
+                "damp" => shape with { Damping = (float)ParseDouble(kv[1], id, line) },
+                _ => throw Error(id, line, $"unknown room option '{kv[0]}' (predelay or damp)")
+            };
+        }
+        return shape;
     }
 
     private static string Bars(int ticks, int ticksPerBar) => (ticks / (double)ticksPerBar).ToString("0.##", CultureInfo.InvariantCulture);
@@ -135,7 +170,7 @@ public static class Mml
         var inst = InstrumentBank.Get(parts[1]) ?? throw Error(id, line - 1, $"unknown instrument '{parts[1]}'");
         Instrument? night = null, lowHp = null, giant = null;
         var when = TrackWhen.Always;
-        float vol = 0.8f, pan = 0f, rev = 0.3f;
+        float vol = 0.8f, pan = 0f, rev = 0.3f, width = 1f;
         string? source = null;
         int shift = 0, beats = 0;
         bool shifted = false, thinned = false;
@@ -175,6 +210,7 @@ public static class Mml
                 case "vol": vol = (float)ParseDouble(kv[1], id, line - 1); break;
                 case "pan": pan = (float)ParseDouble(kv[1], id, line - 1); break;
                 case "rev": rev = (float)ParseDouble(kv[1], id, line - 1); break;
+                case "width": width = (float)ParseDouble(kv[1], id, line - 1); break;
                 default: throw Error(id, line - 1, $"unknown track option '{kv[0]}'");
             }
         }
@@ -182,7 +218,7 @@ public static class Mml
         var track = new SongTrack
         {
             Name = parts[0], Instrument = inst, NightInstrument = night, LowHpInstrument = lowHp, GiantInstrument = giant,
-            When = when, Volume = vol, Pan = pan, ReverbSend = rev
+            When = when, Volume = vol, Pan = pan, ReverbSend = rev, Width = width
         };
         return (track, source == null ? null : new Doubling(source, shift, beats));
     }
@@ -313,6 +349,7 @@ public static class Mml
             {
                 'b' => Drum.Kick, 's' => Drum.Snare, 'h' => Drum.HiHat, 'o' => Drum.OpenHat, 'c' => Drum.Crash,
                 't' => Drum.HighTom, 'm' => Drum.MidTom, 'f' => Drum.LowTom, 'x' => Drum.Clap, 'k' => Drum.Shaker,
+                'g' => Drum.HighConga, 'd' => Drum.LowConga, 'n' => Drum.Bongo, 'w' => Drum.WoodBlock,
                 _ => null
             };
             if (drum == null) throw fail($"'{c}' is not a drum");

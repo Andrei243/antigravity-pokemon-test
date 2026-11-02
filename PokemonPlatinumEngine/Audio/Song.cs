@@ -32,6 +32,9 @@ public sealed class SongTrack
     public float Pan { get; init; }
     public float ReverbSend { get; init; } = 0.3f;
 
+    /// <summary>The modern sound (plan 31): how wide the track's unison voices spread, 0 to 1; the DS sound has no width.</summary>
+    public float Width { get; init; } = 1f;
+
     /// <summary>Notes in the order they start.</summary>
     public List<NoteEvent> Notes { get; } = new();
 
@@ -79,6 +82,12 @@ public sealed class Song
     public int EndTick { get; init; }
 
     public float Reverb { get; init; } = 0.3f;
+
+    /// <summary>The sound the song names in its header (<c>sound modern</c>, plan 31); null when it names none, which is the DS sound until a region's file says otherwise (MU2).</summary>
+    public SynthSound? Sound { get; init; }
+
+    /// <summary>The modern sound's room (<c>room hall 2.1</c>); null for <see cref="RoomShape.Default"/>. The DS sound ignores it.</summary>
+    public RoomShape? Room { get; init; }
 
     public List<SongTrack> Tracks { get; } = new();
 

@@ -9,18 +9,25 @@ namespace PokemonPlatinumEngine.Audio;
 /// the instruments of <see cref="InstrumentBank"/>, panned into stereo and sent through a plate-like reverb. It runs
 /// at the DS's output rate and needs no audio device, so tests and tools can render music offline.
 /// </summary>
-public sealed class Synthesizer
+public sealed partial class Synthesizer
 {
-    /// <summary>The DS mixes its sound at about 32.7 kHz.</summary>
+    /// <summary>The DS mixes its sound at about 32.7 kHz: the rate of the DS sound, and of the game's mixer until plan 31 · MU1.</summary>
     public const int SampleRate = 32768;
 
+    /// <summary>The DS sound's voices.</summary>
     public const int MaxVoices = 40;
 
-    private const float Dt = 1f / SampleRate;
     private const int TableSize = 2048;
 
-    private readonly Voice[] voices = new Voice[MaxVoices];
-    private readonly Reverb reverb = new();
+    /// <summary>Which sound this synthesiser makes (plan 31): the DS one, or the modern one at its own rate and voices.</summary>
+    public SynthSound Sound { get; }
+
+    /// <summary>The rate this synthesiser renders at: <see cref="SampleRate"/> for the DS sound, <see cref="ModernRate"/> for the modern one.</summary>
+    public int Rate { get; }
+
+    private readonly float Dt;
+    private readonly Voice[] voices;
+    private readonly Reverb reverb;
     private float[] sendBuffer = new float[1024];
     private uint noiseSeed = 0x2545F491;
     private long noteCounter;
@@ -28,10 +35,22 @@ public sealed class Synthesizer
     /// <summary>How much of the reverb returns to the mix.</summary>
     public float ReverbLevel { get; set; } = 0.3f;
 
-    public Synthesizer()
+    /// <summary>The DS sound, exactly as it always was.</summary>
+    public Synthesizer() : this(SynthSound.Ds) { }
+
+    public Synthesizer(SynthSound sound)
     {
+        Sound = sound;
+        Rate = sound == SynthSound.Modern ? ModernRate : SampleRate;
+        Dt = 1f / Rate;
+        voices = new Voice[sound == SynthSound.Modern ? ModernVoices : MaxVoices];
+        reverb = new Reverb(Rate);
         for (int i = 0; i < voices.Length; i++) voices[i] = new Voice();
+        if (sound == SynthSound.Modern) room = new RoomReverb(Rate);
     }
+
+    /// <summary>The voices this synthesiser has.</summary>
+    public int VoiceCount => voices.Length;
 
     public int ActiveVoices
     {
@@ -44,7 +63,11 @@ public sealed class Synthesizer
     }
 
     /// <summary>Starts a note. <paramref name="key"/> is a MIDI note number, or a <see cref="Drum"/> for the kit.</summary>
-    public void NoteOn(Instrument inst, int key, float velocity, int gateSamples, float pan, float volume, float send)
+    public void NoteOn(Instrument inst, int key, float velocity, int gateSamples, float pan, float volume, float send) =>
+        NoteOn(inst, key, velocity, gateSamples, pan, volume, send, 1f);
+
+    /// <summary>Starts a note, with the track's stereo width (the modern sound's; the DS sound has none).</summary>
+    public void NoteOn(Instrument inst, int key, float velocity, int gateSamples, float pan, float volume, float send, float width)
     {
         var v = FreeVoice();
         v.Active = true;
@@ -75,13 +98,18 @@ public sealed class Synthesizer
             int midi = key + 12 * inst.OctaveShift;
             v.Freq = 440f * MathF.Pow(2f, (midi - 69) / 12f);
             int band = Math.Clamp(midi / 12, 0, 10);
-            v.BrightTable = Table(inst.Bright, band);
-            v.MellowTable = inst.Mellow != null ? Table(inst.Mellow, band) : v.BrightTable;
+            float ceiling = Sound == SynthSound.Modern ? ModernCeiling : DsCeiling;
+            v.BrightTable = Table(inst.Bright, band, ceiling);
+            v.MellowTable = inst.Mellow != null ? Table(inst.Mellow, band, ceiling) : v.BrightTable;
         }
 
         // Equal-power pan; the second unison voice sits a little to the other side
         v.PanL = MathF.Cos((p + 1f) * MathF.PI / 4f);
         v.PanR = MathF.Sin((p + 1f) * MathF.PI / 4f);
+        v.Velocity = Math.Clamp(velocity, 0f, 1f);
+        if (Sound == SynthSound.Modern) StartModern(v, inst, p, v.Velocity, width);
+        else if (!inst.IsKit && inst.Kind == VoiceKind.Pluck) StartString(v, inst);
+        else if (!inst.IsKit && inst.Kind == VoiceKind.Modal) Array.Clear(v.ModePhase);
     }
 
     /// <summary>Releases every sounding note, or silences them at once.</summary>
@@ -93,18 +121,38 @@ public sealed class Synthesizer
             if (immediate) v.Active = false;
             else v.Released = true;
         }
-        if (immediate) reverb.Clear();
+        if (immediate)
+        {
+            reverb.Clear();
+            room?.Clear();
+        }
     }
+
+    /// <summary>How many notes have taken a voice that was still sounding (cut short, which can click): plan 31's measure of whether the voices suffice.</summary>
+    public int Stolen { get; private set; }
+
+    /// <summary>The most voices sounding at once when a note started.</summary>
+    public int PeakVoices { get; private set; }
 
     private Voice FreeVoice()
     {
         Voice? oldest = null;
+        int sounding = 0;
+        Voice? free = null;
         foreach (var v in voices)
         {
-            if (!v.Active) return v;
+            if (!v.Active)
+            {
+                free ??= v;
+                continue;
+            }
+            sounding++;
             if (oldest == null || (v.Released && !oldest.Released) || (v.Released == oldest.Released && v.Order < oldest.Order))
                 oldest = v;
         }
+        PeakVoices = Math.Max(PeakVoices, sounding + 1);
+        if (free != null) return free;
+        Stolen++;
         return oldest!;
     }
 
@@ -120,6 +168,11 @@ public sealed class Synthesizer
     /// <summary>Renders interleaved stereo samples into <paramref name="output"/>, overwriting it.</summary>
     public void Render(Span<float> output)
     {
+        if (Sound == SynthSound.Modern)
+        {
+            RenderModern(output);
+            return;
+        }
         int frames = output.Length / 2;
         output.Clear();
         if (sendBuffer.Length < frames) sendBuffer = new float[frames];
@@ -129,6 +182,8 @@ public sealed class Synthesizer
         {
             if (!v.Active) continue;
             if (v.Inst!.IsKit) RenderDrum(v, output, frames);
+            else if (v.Inst.Kind == VoiceKind.Pluck) RenderString(v, output, frames, sendBuffer, sendBuffer);
+            else if (v.Inst.Kind == VoiceKind.Modal) RenderModes(v, output, frames, sendBuffer, sendBuffer);
             else RenderTone(v, output, frames);
         }
 
@@ -229,8 +284,16 @@ public sealed class Synthesizer
         }
     }
 
-    private void RenderDrum(Voice v, Span<float> output, int frames)
+    private void RenderDrum(Voice v, Span<float> output, int frames) => RenderDrum(v, output, frames, sendBuffer, sendBuffer);
+
+    /// <summary>
+    /// The drum kit. Its noise filters are per-sample coefficients written for the DS's rate; at another rate each is
+    /// moved by <see cref="K"/> so the drum keeps its colour, and at the DS's rate each is the very number it was.
+    /// </summary>
+    private void RenderDrum(Voice v, Span<float> output, int frames, float[] sendL, float[] sendR)
     {
+        float k55 = K(0.55f), k08 = K(0.08f), k45 = K(0.45f), k50 = K(0.5f), k10 = K(0.1f);
+        bool stereoSend = !ReferenceEquals(sendL, sendR);
         for (int i = 0; i < frames; i++)
         {
             float t = v.Time * Dt;
@@ -250,9 +313,9 @@ public sealed class Synthesizer
                 case Drum.Snare:
                 {
                     v.Phase0 += 190f * Dt;
-                    v.NoiseLp += (n - v.NoiseLp) * 0.55f;
+                    v.NoiseLp += (n - v.NoiseLp) * k55;
                     hp = v.NoiseLp - v.NoiseHp;
-                    v.NoiseHp += (v.NoiseLp - v.NoiseHp) * 0.08f;
+                    v.NoiseHp += (v.NoiseLp - v.NoiseHp) * k08;
                     s = MathF.Sin(MathF.Tau * v.Phase0) * MathF.Exp(-t * 28f) * 0.55f + hp * MathF.Exp(-t * 15f) * 0.95f;
                     if (t > 0.4f) v.Active = false;
                     break;
@@ -262,7 +325,7 @@ public sealed class Synthesizer
                 case Drum.Crash:
                 case Drum.Shaker:
                 {
-                    v.NoiseLp += (n - v.NoiseLp) * 0.45f;
+                    v.NoiseLp += (n - v.NoiseLp) * k45;
                     hp = n - v.NoiseLp;
                     float decay = v.Drum switch { Drum.HiHat => 45f, Drum.OpenHat => 8f, Drum.Crash => 2.2f, _ => 28f };
                     float attack = v.Drum == Drum.Shaker ? MathF.Min(1f, t / 0.012f) : 1f;
@@ -274,12 +337,36 @@ public sealed class Synthesizer
                 }
                 case Drum.Clap:
                 {
-                    v.NoiseLp += (n - v.NoiseLp) * 0.5f;
+                    v.NoiseLp += (n - v.NoiseLp) * k50;
                     hp = v.NoiseLp - v.NoiseHp;
-                    v.NoiseHp += (v.NoiseLp - v.NoiseHp) * 0.1f;
+                    v.NoiseHp += (v.NoiseLp - v.NoiseHp) * k10;
                     float burst = t < 0.03f ? MathF.Exp(-(t % 0.01f) * 300f) : MathF.Exp(-(t - 0.03f) * 18f);
                     s = hp * burst * 0.8f;
                     if (t > 0.3f) v.Active = false;
+                    break;
+                }
+                case Drum.HighConga:
+                case Drum.LowConga:
+                case Drum.Bongo:
+                {
+                    // A hand on a skin: a tone that settles a little in pitch, and the slap of the fingers
+                    float baseF = v.Drum switch { Drum.HighConga => 330f, Drum.LowConga => 222f, _ => 440f };
+                    float ring = v.Drum == Drum.Bongo ? 22f : 11f;
+                    v.Phase0 += baseF * (1f + 0.12f * MathF.Exp(-t * 40f)) * Dt;
+                    v.NoiseLp += (n - v.NoiseLp) * k45;
+                    hp = n - v.NoiseLp;
+                    s = MathF.Sin(MathF.Tau * v.Phase0) * MathF.Exp(-t * ring) * 0.85f + hp * MathF.Exp(-t * 160f) * 0.5f;
+                    if (t > 0.5f) v.Active = false;
+                    break;
+                }
+                case Drum.WoodBlock:
+                {
+                    // Two hollow modes of a block of wood, gone in a moment
+                    v.Phase0 += 920f * Dt;
+                    v.Phase1 += 2470f * Dt;
+                    if (v.Phase1 >= 1f) v.Phase1 -= 1f;
+                    s = (MathF.Sin(MathF.Tau * v.Phase0) * 0.8f + MathF.Sin(MathF.Tau * v.Phase1) * 0.35f) * MathF.Exp(-t * 55f);
+                    if (t > 0.15f) v.Active = false;
                     break;
                 }
                 default:
@@ -297,7 +384,12 @@ public sealed class Synthesizer
             float a = s * v.Amp;
             output[2 * i] += a * v.PanL;
             output[2 * i + 1] += a * v.PanR;
-            sendBuffer[i] += a * v.Send * 0.5f;
+            if (stereoSend)
+            {
+                sendL[i] += a * v.Send * v.PanL * 0.7f;
+                sendR[i] += a * v.Send * v.PanR * 0.7f;
+            }
+            else sendL[i] += a * v.Send * 0.5f;
             v.Time++;
             if (!v.Active) break;
         }
@@ -327,17 +419,22 @@ public sealed class Synthesizer
         return (noiseSeed & 0xFFFFFF) / (float)0x800000 - 1f;
     }
 
-    // Band-limited wavetables: one per spectrum and octave, with only the harmonics that stay under ~14 kHz
+    // Band-limited wavetables: one per spectrum and octave, with only the harmonics that stay under ~14 kHz (the DS
+    // sound) or ~20 kHz (the modern sound, whose rate leaves room for them)
+    private const float DsCeiling = 14000f;
+    private const float ModernCeiling = 20000f;
     private static readonly Dictionary<(float[] Spectrum, int Band), float[]> tables = new(new TableKeyComparer());
+    private static readonly Dictionary<(float[] Spectrum, int Band), float[]> modernTables = new(new TableKeyComparer());
     private static readonly object tableLock = new();
 
-    private static float[] Table(float[] spectrum, int band)
+    private static float[] Table(float[] spectrum, int band, float ceiling)
     {
         lock (tableLock)
         {
-            if (tables.TryGetValue((spectrum, band), out var cached)) return cached;
+            var cache = ceiling == DsCeiling ? tables : modernTables;
+            if (cache.TryGetValue((spectrum, band), out var cached)) return cached;
             float top = 440f * MathF.Pow(2f, (band * 12 + 11 + 1 - 69) / 12f) * 1.03f;
-            int maxHarmonic = Math.Max(1, (int)(14000f / top));
+            int maxHarmonic = Math.Max(1, (int)(ceiling / top));
             var table = new float[TableSize];
             float peak = 0f;
             for (int i = 0; i < TableSize; i++)
@@ -358,7 +455,7 @@ public sealed class Synthesizer
             float scale = rms > 0 ? 0.5f / rms : 0f;
             if (peak * scale > 1.2f) scale = 1.2f / peak;
             for (int i = 0; i < TableSize; i++) table[i] *= scale;
-            tables[(spectrum, band)] = table;
+            cache[(spectrum, band)] = table;
             return table;
         }
     }
@@ -371,7 +468,7 @@ public sealed class Synthesizer
         public int GetHashCode((float[] Spectrum, int Band) k) => RuntimeHelpers.GetHashCode(k.Spectrum) * 31 + k.Band;
     }
 
-    private sealed class Voice
+    private sealed partial class Voice
     {
         public bool Active;
         public Instrument? Inst;
@@ -397,11 +494,11 @@ public sealed class Synthesizer
         private readonly Comb[] combsL, combsR;
         private readonly AllPass[] allL, allR;
 
-        public Reverb()
+        public Reverb(int rate)
         {
             int[] combLengths = { 1116, 1188, 1277, 1356, 1422, 1491 };
             int[] allLengths = { 556, 441, 341 };
-            const float scale = SampleRate / 44100f;
+            float scale = rate / 44100f;
             combsL = Array.ConvertAll(combLengths, n => new Comb((int)(n * scale)));
             combsR = Array.ConvertAll(combLengths, n => new Comb((int)((n + 23) * scale)));
             allL = Array.ConvertAll(allLengths, n => new AllPass((int)(n * scale)));
