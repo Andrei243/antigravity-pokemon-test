@@ -1,0 +1,26 @@
+{
+  "key": "ss_aqua_captain_room",
+  "index": 308,
+  "name": "S.S. Aqua",
+  "matrix": 172,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_KOUSOKUSEN",
+  "nightMusic": "GS_KOUSOKUSEN",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 9, "z": 11, "to": "ss_aqua_1f", "toWarp": 11 }
+  ],
+  "objects": [
+    { "id": "p01r0302_captain", "looks": "captain", "movement": "15", "x": 9, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "P01R0302_000+1" },
+    { "id": "p01r0302_gsbabygirl1", "looks": "gsbabygirl1", "movement": "16", "x": 10, "z": 4, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_217", "script": "P01R0302_001+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -832,6 +832,27 @@ Jagged Pass
 grass 20-22
 ours Volcamel 150-154, Boarcane 148-152
 trainers 5, 19-21: hoenn_autumn 21, hoenn_diana_1 19, hoenn_eric 20, hoenn_ethan_1 20, hoenn_julio 21
+=== johto_cerulean_cave_1f
+Cerulean Cave
+grass 37-40
+surf 35-40
+old rod 10
+good rod 20
+super rod 40
+=== johto_cerulean_cave_2f
+Cerulean Cave
+grass 39-42
+surf 35-40
+old rod 10
+good rod 20
+super rod 40
+=== johto_cerulean_cave_b1f
+Cerulean Cave
+grass 45-49
+surf 35-40
+old rod 10
+good rod 20
+super rod 40
 === johto_cinnabar_island
 Cinnabar Island
 surf 30-35
@@ -3079,6 +3100,21 @@ surf 5-40
 old rod 5
 good rod 5-15
 super rod 15-35
+=== ss_aqua_1f_northeast_rooms
+S.S. Aqua
+trainers 4, 36-42: johto_beauty_cassie 42, johto_bug_catcher_ken 40, johto_firebreather_lyle 39, johto_guitarist_clyde 42
+=== ss_aqua_1f_northwest_rooms
+S.S. Aqua
+trainers 6, 31-41: johto_pokefan_georgia 36, johto_pokefan_m_colin 40, johto_pokefan_m_jeremy 36, johto_psychic_m_rodney 41, johto_super_nerd_shawn 41, johto_twins_meg_and_peg 39
+=== ss_aqua_1f_southeast_rooms
+S.S. Aqua
+trainers 2, 33-41: johto_burglar_corey 38, johto_gentleman_edward 41
+=== ss_aqua_1f_southwest_rooms
+S.S. Aqua
+trainers 4, 39-43: johto_ace_trainer_f_carol 43, johto_ace_trainer_m_shaye 43, johto_hiker_noland 42, johto_poke_maniac_morgan 39
+=== ss_aqua_b1f
+S.S. Aqua
+trainers 10, 33-43: johto_black_belt_wai 42, johto_fisherman_jonah 37, johto_juggler_fritz 37, johto_picnicker_debra 41, johto_sailor_garrett 42, johto_sailor_jeff 40, johto_sailor_kenneth 36, johto_school_kid_m_nate 40, johto_school_kid_m_ricky 40, johto_teacher_shirley 43
 === ss_tidal_lower_deck
 S.S. Tidal
 trainers 2, 43-44: hoenn_leonard 43, hoenn_phillip 44

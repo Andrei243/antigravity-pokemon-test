@@ -85,6 +85,16 @@
           "Profesorul Oak: A, {player}!"
         ]
       }
+    },
+    "kanto_attendant": {
+      "name": {
+        "en": [
+          "Kanto Attendant"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {}

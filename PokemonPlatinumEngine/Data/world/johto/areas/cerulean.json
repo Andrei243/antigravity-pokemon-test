@@ -57,7 +57,7 @@
     { "x": 1318, "z": 134, "to": "cerulean_gym", "toWarp": 0 },
     { "x": 1308, "z": 144, "to": "cerulean_pokemart", "toWarp": 0 },
     { "x": 1298, "z": 144, "to": "cerulean_bike_maniac_house", "toWarp": 0 },
-    { "x": 1290, "z": 107, "to": "cerulean_cave_1f", "toWarp": 0 }
+    { "x": 1290, "z": 107, "to": "johto_cerulean_cave_1f", "toWarp": 0 }
   ],
   "objects": [
     { "id": "t04_gsman1", "looks": "gsman1", "movement": "3", "x": 1307, "z": 119, "facing": 2, "rangeX": 3, "rangeZ": 1, "script": "T04_000+1" },

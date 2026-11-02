@@ -1,0 +1,39 @@
+{
+  "key": "viridian_trainer_house_b1f",
+  "index": 499,
+  "name": "Viridian City",
+  "matrix": 245,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_C_TOKIWA",
+  "nightMusic": "GS_C_TOKIWA",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 11, "z": 3, "to": "viridian_trainer_house_1f", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "t02r0302_gswoman6", "looks": "gswoman6", "movement": "17", "x": 5, "z": 4, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "0" },
+    { "id": "t02r0302_gsman3", "looks": "gsman3", "movement": "0", "x": 8, "z": 11, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "std_trainer_house_cal_10" },
+    { "id": "t02r0302_var_2", "looks": "var_2", "movement": "2", "x": 4, "z": 10, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_TRAINER_HOUSE_CAL_0", "script": "std_trainer_house_cal_0" },
+    { "id": "t02r0302_var_3", "looks": "var_3", "movement": "0", "x": 12, "z": 9, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_TRAINER_HOUSE_CAL_1", "script": "std_trainer_house_cal_1" },
+    { "id": "t02r0302_var_4", "looks": "var_4", "movement": "0", "x": 4, "z": 15, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_TRAINER_HOUSE_CAL_2", "script": "std_trainer_house_cal_2" },
+    { "id": "t02r0302_var_5", "looks": "var_5", "movement": "5", "x": 11, "z": 13, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_TRAINER_HOUSE_CAL_3", "script": "std_trainer_house_cal_3" },
+    { "id": "t02r0302_var_6", "looks": "var_6", "movement": "2", "x": 9, "z": 8, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_TRAINER_HOUSE_CAL_4", "script": "std_trainer_house_cal_4" },
+    { "id": "t02r0302_var_7", "looks": "var_7", "movement": "0", "x": 2, "z": 13, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_TRAINER_HOUSE_CAL_5", "script": "std_trainer_house_cal_5" },
+    { "id": "t02r0302_var_8", "looks": "var_8", "movement": "0", "x": 9, "z": 15, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_TRAINER_HOUSE_CAL_6", "script": "std_trainer_house_cal_6" },
+    { "id": "t02r0302_var_9", "looks": "var_9", "movement": "0", "x": 3, "z": 7, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_TRAINER_HOUSE_CAL_7", "script": "std_trainer_house_cal_7" },
+    { "id": "t02r0302_var_10", "looks": "var_10", "movement": "2", "x": 6, "z": 13, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_TRAINER_HOUSE_CAL_8", "script": "std_trainer_house_cal_8" },
+    { "id": "t02r0302_var_11", "looks": "var_11", "movement": "9", "x": 6, "z": 9, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_TRAINER_HOUSE_CAL_9", "script": "std_trainer_house_cal_9" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 7, "z": 4, "width": 1, "depth": 1, "script": "T02R0302_000+1", "variable": "VAR_UNK_412E", "value": "3" },
+    { "x": 7, "z": 4, "width": 1, "depth": 1, "script": "T02R0302_001+1", "variable": "VAR_UNK_412E", "value": "4" }
+  ]
+}

@@ -19,7 +19,7 @@ namespace PokemonPlatinumTests;
 /// Badge, the Togepi Egg in Violet City and the man at Route 32's head. Each scene starts as the game starts it (a step
 /// onto its trigger, a door, someone spoken to), on maps of this class's own.
 /// </summary>
-public class JohtoStoryTests
+public partial class JohtoStoryTests
 {
     private static readonly ScriptLibrary Scripts = ScriptLibrary.Default;
     private static readonly Lazy<World> Johto = new(() => World.LoadAll().Single(w => w.Index.Region == RegionDatabase.Johto));
@@ -521,6 +521,8 @@ public class JohtoStoryTests
             case "ESCAPE_ROPE": game.Bag.AddItem(ItemDatabase.Get("Escape Rope")!, 2); game.Answers.Enqueue(0); break;
             case "FLASH":
                 game.Party.Members[0].Moves.Add(new Move(MoveDatabase.Get("Flash")!));
+                // (Flash outside battle asks the Zephyr Badge in Johto since plan 20 · J15, part o, as HeartGold's does)
+                game.Story.GiveBadge(RegionDatabase.Johto, "Zephyr");
                 game.Answers.Enqueue(0);
                 break;
             case "WATER_STONE": game.Bag.AddItem(ItemDatabase.Get("Water Stone")!); break;

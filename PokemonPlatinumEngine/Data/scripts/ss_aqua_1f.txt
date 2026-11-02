@@ -5,6 +5,24 @@
 # lies is FLAG_JOHTO_SS_AQUA_AT_VERMILION (a flag of ours), which the gangway's two ways go by (overlays/ss_aqua_1f.json).
 # HeartGold's voyage is a night aboard, the lost granddaughter found and a sleep in the cabin; here the crossing is
 # told over the dark, as the region's own crossings are (the rulings' "HeartGold's Kanto, part b").
+#
+# The cabins, the hold and the captain's room are open since part o. HeartGold's passengers change with the day of the
+# voyage, in three groups behind FLAG_UNK_22A, 22B and 22C; here the deck's arrival shows one group by the weekday
+# (Monday and Tuesday the first, Wednesday and Thursday the second, Friday to Sunday the third) and hides the others.
+
+
+script OnEnter
+  setflag FLAG_UNK_22A
+  setflag FLAG_UNK_22B
+  setflag FLAG_UNK_22C
+  if weekday monday clearflag FLAG_UNK_22A
+  if weekday tuesday clearflag FLAG_UNK_22A
+  if weekday wednesday clearflag FLAG_UNK_22B
+  if weekday thursday clearflag FLAG_UNK_22B
+  if weekday friday clearflag FLAG_UNK_22C
+  if weekday saturday clearflag FLAG_UNK_22C
+  if weekday sunday clearflag FLAG_UNK_22C
+  end
 
 
 script Crewman

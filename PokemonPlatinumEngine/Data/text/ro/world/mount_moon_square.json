@@ -1,5 +1,114 @@
 {
-  "people": {},
+  "people": {
+    "clefairy_1": {
+      "name": {
+        "en": [
+          "Clefairy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clefairy is twirling round and round in the moonlight!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "clefairy_2": {
+      "name": {
+        "en": [
+          "Clefairy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clefairy is twirling round and round in the moonlight!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "clefairy_3": {
+      "name": {
+        "en": [
+          "Clefairy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clefairy is twirling round and round in the moonlight!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "clefairy_4": {
+      "name": {
+        "en": [
+          "Clefairy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clefairy is twirling round and round in the moonlight!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "clefairy_5": {
+      "name": {
+        "en": [
+          "Clefairy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clefairy is twirling round and round in the moonlight!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "clefairy_6": {
+      "name": {
+        "en": [
+          "Clefairy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clefairy is twirling round and round in the moonlight!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
   "signs": {
     "D02R0103_000+1": {
       "en": [

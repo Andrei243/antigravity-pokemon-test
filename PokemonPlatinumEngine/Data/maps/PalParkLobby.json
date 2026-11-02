@@ -259,6 +259,16 @@
         "Prof. Oak: Ah, {player}!"
       ],
       "hiddenBy": "FLAG_HIDE_PAL_PARK_LOBBY_PROF_OAK"
+    },
+    {
+      "id": "kanto_attendant",
+      "name": "Kanto Attendant",
+      "npcType": "Clerk",
+      "x": 9,
+      "y": 19,
+      "facing": "Left",
+      "script": "KantoAttendant",
+      "shownBy": "JohtoHallOfFame"
     }
   ],
   "wildEncounters": []

@@ -1,0 +1,30 @@
+{
+  "Dance": [
+    {
+      "en": [
+        "Clefairy are dancing in a ring under the moon!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Clefairy noticed {player}!",
+        "They scattered into the dark!"
+      ],
+      "text": [
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Something was left where the Clefairy had danced..."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

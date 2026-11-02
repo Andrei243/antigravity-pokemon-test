@@ -1,0 +1,109 @@
+{
+  "people": {
+    "p01r0304_mount_2": {
+      "name": {
+        "en": [
+          "Noland"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Noland: Mountains, caves, and now the open sea! A hiker goes everywhere. Let's battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Noland: I've lost my sea legs and my battle, both at once."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "p01r0304_gsman3": {
+      "name": {
+        "en": [
+          "Shaye"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Shaye: A voyage is a fine time to test a team. Will you be my test?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Shaye: Test failed. There's a lot of sea left to think it over."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "p01r0304_gswoman3": {
+      "name": {
+        "en": [
+          "Carol"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Carol: I train on every crossing. The rocking keeps my Pokémon on their toes!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Carol: Maybe the rocking kept me off mine."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "p01r0304_mania": {
+      "name": {
+        "en": [
+          "Morgan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Poké Maniac Morgan: My cabin is full of rare Pokémon! Want to see them? In battle, I mean!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Poké Maniac Morgan: Rare, yes. Strong, apparently not."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -3,7 +3,8 @@
 #
 # Five appliances stand in a row. Each sends the first Rotom of the team into itself, with the appliance's move, as the
 # Rotom Catalog does (`team rotom`, plan 06 · R29's rule: the move of the appliance it leaves is given up for the new
-# one; with no such move and four moves known, the new one isn't learned and a line says so). An appliance with the
+# one; with no such move and four moves known, the room asks which move is to go for the new one, as the tutors ask:
+# `tutor learn`, plan 20 · J15, part o). An appliance with the
 # Rotom in it already lets it out again, back into its own form. The room tells the lift that the player is upstairs
 # (VAR_JOHTO_SILPH_LIFT_FLOOR, a variable of ours).
 
@@ -26,7 +27,17 @@ script Microwave
   end
 label MicrowaveFull
   cry "Rotom-Heat"
-  text "Rotom went into the microwave oven! It wanted to learn Overheat, but it knows four moves already."
+  text "Rotom went into the microwave oven! It wants to learn Overheat, but it knows four moves already."
+  tutor learn
+  if result == 3 goto MicrowaveLearned
+  if result == 2 goto MicrowaveKept
+  text "Rotom didn't learn Overheat."
+  end
+label MicrowaveLearned
+  text "1, 2 and... poof! Rotom forgot {forgotten}." "And... Rotom learned Overheat!"
+  end
+label MicrowaveKept
+  text "That move can't be forgotten here. Rotom didn't learn Overheat."
   end
 label MicrowaveInside
   ask "Rotom is in the microwave oven already. Will you let it out?"
@@ -50,7 +61,17 @@ script WashingMachine
   end
 label WashingMachineFull
   cry "Rotom-Wash"
-  text "Rotom went into the washing machine! It wanted to learn Hydro Pump, but it knows four moves already."
+  text "Rotom went into the washing machine! It wants to learn Hydro Pump, but it knows four moves already."
+  tutor learn
+  if result == 3 goto WashingMachineLearned
+  if result == 2 goto WashingMachineKept
+  text "Rotom didn't learn Hydro Pump."
+  end
+label WashingMachineLearned
+  text "1, 2 and... poof! Rotom forgot {forgotten}." "And... Rotom learned Hydro Pump!"
+  end
+label WashingMachineKept
+  text "That move can't be forgotten here. Rotom didn't learn Hydro Pump."
   end
 label WashingMachineInside
   ask "Rotom is in the washing machine already. Will you let it out?"
@@ -74,7 +95,17 @@ script Refrigerator
   end
 label RefrigeratorFull
   cry "Rotom-Frost"
-  text "Rotom went into the refrigerator! It wanted to learn Blizzard, but it knows four moves already."
+  text "Rotom went into the refrigerator! It wants to learn Blizzard, but it knows four moves already."
+  tutor learn
+  if result == 3 goto RefrigeratorLearned
+  if result == 2 goto RefrigeratorKept
+  text "Rotom didn't learn Blizzard."
+  end
+label RefrigeratorLearned
+  text "1, 2 and... poof! Rotom forgot {forgotten}." "And... Rotom learned Blizzard!"
+  end
+label RefrigeratorKept
+  text "That move can't be forgotten here. Rotom didn't learn Blizzard."
   end
 label RefrigeratorInside
   ask "Rotom is in the refrigerator already. Will you let it out?"
@@ -98,7 +129,17 @@ script Fan
   end
 label FanFull
   cry "Rotom-Fan"
-  text "Rotom went into the electric fan! It wanted to learn Air Slash, but it knows four moves already."
+  text "Rotom went into the electric fan! It wants to learn Air Slash, but it knows four moves already."
+  tutor learn
+  if result == 3 goto FanLearned
+  if result == 2 goto FanKept
+  text "Rotom didn't learn Air Slash."
+  end
+label FanLearned
+  text "1, 2 and... poof! Rotom forgot {forgotten}." "And... Rotom learned Air Slash!"
+  end
+label FanKept
+  text "That move can't be forgotten here. Rotom didn't learn Air Slash."
   end
 label FanInside
   ask "Rotom is in the electric fan already. Will you let it out?"
@@ -122,7 +163,17 @@ script Lawnmower
   end
 label LawnmowerFull
   cry "Rotom-Mow"
-  text "Rotom went into the lawnmower! It wanted to learn Leaf Storm, but it knows four moves already."
+  text "Rotom went into the lawnmower! It wants to learn Leaf Storm, but it knows four moves already."
+  tutor learn
+  if result == 3 goto LawnmowerLearned
+  if result == 2 goto LawnmowerKept
+  text "Rotom didn't learn Leaf Storm."
+  end
+label LawnmowerLearned
+  text "1, 2 and... poof! Rotom forgot {forgotten}." "And... Rotom learned Leaf Storm!"
+  end
+label LawnmowerKept
+  text "That move can't be forgotten here. Rotom didn't learn Leaf Storm."
   end
 label LawnmowerInside
   ask "Rotom is in the lawnmower already. Will you let it out?"

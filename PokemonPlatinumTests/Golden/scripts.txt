@@ -3724,6 +3724,20 @@ way -
   Psychic> Hmmm...! Tell me, what kind of Trainer do you like best of all?
   Psychic> No, no, don't answer straight away. It is the sort of thing a person ought to think over.
   Psychic> The way you see yourself is the way others will come to see you. Tell me when you have made up your mind!
+=== PalParkLobby.KantoAttendant
+from Kanto Attendant at 9,19 of PalParkLobby
+way 0
+  Kanto Attendant> I look after the way between Pal Park and its gate in Fuchsia City, in Kanto.
+  Kanto Attendant> Shall I take you back to Fuchsia City?
+  Kanto Attendant> Right this way, please. Mind the step!
+  > Lucas was shown back along the long way to Fuchsia City...
+  ? Shall I take you back to Fuchsia City? = Yes
+  * fade out
+  * travel to Johto Fuchsia_PalParkGate 7 17
+  * fade in
+way 1, from answer 1
+  Kanto Attendant> Take your time. I'll be here whenever you'd like to go back.
+  ? Shall I take you back to Fuchsia City? = No
 === PalParkLobby.PoketchAppLady
 from Lass at 3,16 of PalParkLobby
 way -
@@ -8455,6 +8469,29 @@ way 1, from answer 1
   * sound bump
   * fanfare FanfareItem
   * fanfare FanfareItem
+=== celadon_game_corner.Clerk
+from Clerk at 7,5 of Celadon_GameCorner
+way 0
+  Clerk> Welcome to the Celadon Game Corner! The tables take coins, and coins need a case to carry them in.
+  Clerk> Here, have one of ours. Every new player gets one.
+  > Lucas received the Coin Case!
+  > Lucas put it away in the Key Items pocket.
+  Clerk> We sell coins for the machines: 50 for $1,000. Would you like some?
+  > Lucas bought 50 coins.
+  Clerk> Please come again!
+  ? We sell coins for the machines: 50 for $1,000. Would you like some? = Yes
+  * fanfare FanfareKeyItem
+way 1, from answer 1
+  Clerk> Please come again!
+  ? We sell coins for the machines: 50 for $1,000. Would you like some? = No
+=== celadon_game_corner.Slots
+from the tile read at 6,6 of Celadon_GameCorner
+from the tile read at 6,7 of Celadon_GameCorner
+from the tile read at 7,7 of Celadon_GameCorner
+from the tile read at 8,6 of Celadon_GameCorner
+from the tile read at 8,7 of Celadon_GameCorner
+way -
+  > A game table set up with a slot machine. Without a Coin Case there is nothing to play with.
 === celadon_gym.Erika
 from Erika at 7,3 of Celadon_Gym
 way 0
@@ -8494,6 +8531,10 @@ from the tile read at 5,44 of Celadon_Gym
 from the tile read at 9,44 of Celadon_Gym
 way -
   > Celadon City Pokémon Gym\nLeader: Erika
+=== celadon_prize_corner.Prizes
+from Clerk at 7,3 of Celadon_PrizeCorner
+way -
+  Clerk> Prizes are exchanged for coins. The Game Corner next door will give you a Coin Case.
 === celestial_tower.Mesprit
 from Mesprit at 16,22 of CelestialTower_Summit
 way -
@@ -16157,6 +16198,10 @@ from the tile read at 5,23 of Fuchsia_Gym
 from the tile read at 9,23 of Fuchsia_Gym
 way -
   > Fuchsia City Pokémon Gym\nLeader: Janine
+=== fuchsia_pal_park_entrance.Attendant
+from Attendant at 7,11 of Fuchsia_PalParkGate
+way -
+  Attendant> Pal Park is a place for Pokémon from far away. Only a Trainer with the National Pokédex may go through.
 === fuego_ironworks_building.MrFuego
 from Mr. Fuego at 25,19 of FuegoIronworksBuilding
 way 0
@@ -17608,6 +17653,32 @@ from the trigger at 21,15 of JaggedPass
 from the trigger at 21,20 of JaggedPass
 from the trigger at 22,20 of JaggedPass
 way -
+=== johto_cerulean_cave_b1f.Mewtwo
+from Mewtwo at 56,24 of Cerulean_Cave_B1F
+way 0
+  > A cold, sharp will pressed against Lucas's mind!
+  * scene johto_cerulean_cave_b1f.Mewtwo in Cerulean Cave
+  * music stop
+  * letterbox on
+  * walk player back down
+  * camera Pan 56 24
+  * camera Zoom 1.8
+  * effect Sparkles 56 24
+  * effect Ripple 56 24
+  * flicker Mewtwo 4
+  * cry Mewtwo
+  * camera Shake
+  * emote player Exclaim
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Mewtwo 70 Won
+  + FLAG_HIDE_CERULEAN_CAVE_MEWTWO
+  + FLAG_JOHTO_FOUGHT_MEWTWO
+  + seen johto_cerulean_cave_b1f.Mewtwo in Cerulean Cave
+way 1, from answer 1
+  * wildbattle Mewtwo 70 Lost
+  + seen johto_cerulean_cave_b1f.Mewtwo in Cerulean Cave
 === johto_cinnabar_island.Blue
 from Blue at 1036,494 of Johto
 way -
@@ -17644,6 +17715,10 @@ way 1, from answer 1
 from Snorlax at 1411,306 of Johto
 way -
   > A Snorlax is fast asleep across the way. It doesn't stir, however loudly it is called.
+=== johto_route_14.SuicuneInTheGrass
+from Suicune at 1365,412 of Johto
+from the trigger at 1358,409 of Johto
+way -
 === johto_route_24.Rocket
 from Grunt at 1328,81 of Johto
 way 0
@@ -17660,6 +17735,13 @@ way 0
 way 1, from answer 1
   * battle johto_team_rocket_grunt_24 Lost
   * scene over, unseen
+=== johto_route_25.Eusine
+from Eusine at 1409,42 of Johto
+way -
+  Eusine> Suicune is waiting at the end of the cape. Go to it, Lucas.
+=== johto_route_25.EusineOnTheCape
+from the trigger at 1418,40 of Johto
+way -
 === johto_route_25.MistysDate
 from Misty at 1421,47 of Johto
 from the trigger at 1418,40 of Johto
@@ -17673,6 +17755,32 @@ way -
   + FLAG_JOHTO_MISTY_BACK_IN_GYM
   = VAR_JOHTO_MISTY_DATE 0 -> 1
   + seen johto_route_25.MistysDate
+=== johto_route_25.Suicune
+from Suicune at 1421,37 of Johto
+way 0
+  > The wind off the sea fell still as Suicune turned to face Lucas!
+  * scene johto_route_25.Suicune on the cape
+  * music stop
+  * letterbox on
+  * walk player back down
+  * camera Pan 1421 37
+  * camera Zoom 1.4
+  * effect Sparkles 1421 37
+  * effect Ripple 1421 37
+  * cry Suicune
+  * camera Shake
+  * emote player Exclaim
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Suicune 40 Won
+  + FLAG_HIDE_ROUTE_25_EUSINE
+  + FLAG_HIDE_ROUTE_25_SUICUNE
+  + FLAG_JOHTO_FOUGHT_SUICUNE
+  + seen johto_route_25.Suicune on the cape
+way 1, from answer 1
+  * wildbattle Suicune 40 Lost
+  + seen johto_route_25.Suicune on the cape
 === johto_seafoam_islands_b4f.Articuno
 from Articuno at 27,22 of Seafoam_B4F
 way 0
@@ -20403,6 +20511,44 @@ way 0
 way 1, from answer 1
   * battle johto_rival_silver_14 Lost
   * scene over, unseen
+=== mount_moon_square.Dance
+from the trigger at 8,16 of MountMoon_Square
+way -
+  > Clefairy are dancing in a ring under the moon!
+  > The Clefairy noticed Lucas!
+  > They scattered into the dark!
+  > Something was left where the Clefairy had danced...
+  > Lucas found the Moon Stone!
+  > Lucas put it away in the Items pocket.
+  * scene mount_moon_square.The Clefairy dance on Mt Moon Square
+  * emote player Exclaim
+  * letterbox on
+  * camera Pan 9 9
+  * effect Sparkles 9 9
+  * cry Clefairy
+  * walk Clefairy onspot right
+  * walk Clefairy onspot up
+  * walk Clefairy onspot left
+  * walk Clefairy onspot down
+  * walk Clefairy onspot up
+  * walk Clefairy onspot down
+  * walk Clefairy onspot left
+  * walk Clefairy onspot down
+  * walk Clefairy onspot right
+  * walk Clefairy onspot up
+  * walk Clefairy onspot down
+  * walk Clefairy onspot up
+  * emote Clefairy Exclaim
+  * cry Clefairy
+  * fade out
+  * fade in
+  * camera Release
+  * letterbox off
+  * endscene
+  * fanfare FanfareItem
+  + FLAG_DAILY_JOHTO_CLEFAIRY_DANCE
+  = VAR_JOHTO_CLEFAIRY_DANCE 0 -> 2
+  + seen mount_moon_square.The Clefairy dance on Mt Moon Square
 === mount_mortar_b1f.Karate
 from Karate Master at 41,18 of MtMortar_B1F
 way 0.0
@@ -28070,7 +28216,7 @@ way -
   = VAR_MAP_SCENE_VERMILION_CITY 0 -> 1
   + seen ss_anne_captains_office.The seasick captain
 === ss_aqua_1f.Crewman
-from Sailor at 24,17 of SSAqua_1F
+from Sailor at 25,18 of SSAqua_1F
 way 0
   Sailor> Welcome aboard the S.S. Aqua! We're bound for Vermilion City in Kanto. Shall we cast off?
   Sailor> Anchors aweigh! Make yourself at home. We'll be there before you know it.
@@ -30188,6 +30334,11 @@ way -
   * music common/rival
   * warp LakeVerity 46 53
   = VAR_VERITY_LAKEFRONT_STATE 0 -> 1
+=== vermilion.SuicuneByTheHarbour
+from Suicune at 1330,328 of Johto
+from the trigger at 1323,331 of Johto
+from the trigger at 1334,326 of Johto
+way -
 === vermilion_city.CheckTicket
 from the trigger at 286,233 of Kanto
 from the trigger at 287,233 of Kanto
@@ -30969,6 +31120,28 @@ from the tile read at 3,45 of Viridian_Gym
 from the tile read at 7,45 of Viridian_Gym
 way -
   > Viridian City Pokémon Gym\nLeader: Blue
+=== viridian_trainer_house_b1f.Cal
+from Cal at 8,11 of Viridian_TrainerHouse_B1F
+way 0.0
+  Cal> I'm Cal, today's Trainer of the house. Want to battle me?
+  Cal> Then let's make it a good one!
+  Cal> What a battle! You're as strong as they say. Come back tomorrow for another.
+  ? I'm Cal, today's Trainer of the house. Want to battle me? = Yes
+  * battle johto_trainer_house_cal Won
+  + FLAG_DAILY_JOHTO_TRAINER_HOUSE
+  + beaten johto_trainer_house_cal
+way 0.1, from answer 2
+  Cal> That was close! Come back tomorrow and try me again.
+  * battle johto_trainer_house_cal Lost
+  + FLAG_DAILY_JOHTO_TRAINER_HOUSE
+way 1, from answer 1
+  Cal> Whenever you like. I'm here all day.
+  ? I'm Cal, today's Trainer of the house. Want to battle me? = No
+=== viridian_trainer_house_b1f.Referee
+from Referee at 5,4 of Viridian_TrainerHouse_B1F
+way -
+  Referee> Welcome to the Trainer House's hall! One battle a day, against the Trainer of the day.
+  Referee> Today it's Cal. He's waiting at the far end of the hall. Speak to him when you're ready.
 === wayward_cave_1f.Exit
 from the trigger at 41,53 of WaywardCave1F
 way -

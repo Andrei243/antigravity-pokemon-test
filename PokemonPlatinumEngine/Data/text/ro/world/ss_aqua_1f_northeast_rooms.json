@@ -1,0 +1,109 @@
+{
+  "people": {
+    "p01r0305_fire": {
+      "name": {
+        "en": [
+          "Lyle"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Firebreather Lyle: They told me no fire on the ship. A battle doesn't count, does it?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Firebreather Lyle: My flame's gone out. Probably for the best, on a boat."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "p01r0305_gswoman2": {
+      "name": {
+        "en": [
+          "Cassie"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Beauty Cassie: A sea voyage is so glamorous. A battle would make it perfect!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Beauty Cassie: Not so glamorous after all."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "p01r0305_gsman2": {
+      "name": {
+        "en": [
+          "Clyde"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Guitarist Clyde: I'm playing the ship's lounge tonight. Here's a warm-up battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Guitarist Clyde: That was a bum note. Back to rehearsing."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "p01r0305_gsboy3": {
+      "name": {
+        "en": [
+          "Ken"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Catcher Ken: I'm taking my Bug Pokémon to see Kanto! Let's battle on the way!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Catcher Ken: My Bug Pokémon are seasick now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

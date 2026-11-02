@@ -1,0 +1,60 @@
+{
+  "Attendant": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to Pal Park's gate! The park itself is far away in Sinnoh, but we can take you straight there."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Would you like to go to Pal Park?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Right this way, please. Mind the step!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} was shown through the gate on the long way to Pal Park..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Whenever you're ready. The park's Pokémon aren't going anywhere."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Pal Park is a place for Pokémon from far away. Only a Trainer with the National Pokédex may go through."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

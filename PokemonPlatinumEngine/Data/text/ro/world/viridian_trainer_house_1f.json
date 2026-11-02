@@ -11,10 +11,10 @@
       },
       "dialog": {
         "en": [
-          "Welcome to the Trainer House. The hall downstairs is closed for the moment, I'm afraid."
+          "Welcome to the Trainer House. Downstairs, today's Trainer is waiting for a battle."
         ],
         "text": [
-          "Bine ai venit la Casa Antrenorilor. Sala de la parter e închisă deocamdată, din păcate."
+          ""
         ]
       }
     },
@@ -120,10 +120,10 @@
     },
     "T02R0301_006+1": {
       "en": [
-        "Today's challenger:\nNobody yet."
+        "Today's challenger:\nCal, waiting downstairs."
       ],
       "text": [
-        "Provocatorul de azi:\nÎncă nimeni."
+        ""
       ]
     }
   }

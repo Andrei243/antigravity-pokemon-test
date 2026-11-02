@@ -1,0 +1,29 @@
+{
+  "key": "ss_aqua_1f_northeast_rooms",
+  "index": 311,
+  "name": "S.S. Aqua",
+  "matrix": 175,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_KOUSOKUSEN",
+  "nightMusic": "GS_KOUSOKUSEN",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 9, "z": 11, "to": "ss_aqua_1f", "toWarp": 7 },
+    { "x": 23, "z": 11, "to": "ss_aqua_1f", "toWarp": 8 }
+  ],
+  "objects": [
+    { "id": "p01r0305_fire", "looks": "fire", "movement": "18", "x": 24, "z": 6, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "hiddenBy": "FLAG_UNK_22A", "script": "TRAINER_FIREBREATHER_LYLE" },
+    { "id": "p01r0305_gswoman2", "looks": "gswoman2", "movement": "0", "x": 9, "z": 6, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "hiddenBy": "FLAG_UNK_22B", "script": "TRAINER_BEAUTY_CASSIE" },
+    { "id": "p01r0305_gsman2", "looks": "gsman2", "movement": "0", "x": 7, "z": 6, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "hiddenBy": "FLAG_UNK_22C", "script": "TRAINER_GUITARIST_CLYDE" },
+    { "id": "p01r0305_gsboy3", "looks": "gsboy3", "movement": "0", "x": 19, "z": 7, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 0, "hiddenBy": "FLAG_UNK_22C", "script": "TRAINER_BUG_CATCHER_KEN" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -1,0 +1,6 @@
+{
+  // Cerulean Cave's upper floor as HeartGold has it three years on (plan 20 · J15, part o): six ways down to the first
+  // floor, its cracked rocks and items. Its key meets FireRed's, so it takes Johto's prefix (HgWorld.Clashes)
+  "area": "johto_cerulean_cave_2f",
+  "bgmTrack": "kanto/mt_moon"
+}

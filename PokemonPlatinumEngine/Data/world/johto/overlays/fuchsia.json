@@ -1,14 +1,11 @@
 {
   // Fuchsia City as HeartGold has it three years on (plan 20 · J15, part h): Janine's Gym, the Safari Zone warden's
   // house, a Pokémon Center and a Mart, with Route 19 south over the sea to Route 20 and Route 15 west. The Safari Zone
-  // is gone and Pal Park's gate stands in its place: its door (warps 5 and 6) stays locked, as the Park is Sinnoh's.
+  // is gone and Pal Park's gate stands in its place (warps 5 and 6, fuchsia_pal_park_entrance since part o), whose
+  // attendant takes the player to the Park, which is Sinnoh's.
   // Cameron the photographer waits for his session
   "area": "fuchsia",
   "bgmTrack": "kanto/fuchsia",
-  "locked": [
-    5,
-    6
-  ],
   "heldBack": [
     "t08_gsmiddleman1_2"
   ],

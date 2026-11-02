@@ -1,12 +1,26 @@
 {
-  // Mt. Moon Square (plan 20 · J15, part f): the clearing on the mountain's top with its gift shop. The Clefairy's
-  // Monday-night dance and the stone it leaves wait; HeartGold's stop that keeps the dance's ground is held back
+  // Mt. Moon Square (plan 20 · J15, part f): the clearing on the mountain's top with its gift shop. On Monday nights the
+  // Clefairy dance round the rock (part o, mount_moon_square.txt): HeartGold lays out a second map of the square for
+  // the night (D02R0104) and sends the player there by script; here its six Clefairy stand on the square itself, where
+  // HeartGold's night map has them, and the dance's trigger is that map's, on the square's tiles. HeartGold's stop that
+  // keeps the dance's ground is held back
   "area": "mount_moon_square",
   "bgmTrack": "kanto/mt_moon",
   "heldBack": [
     "d02r0103_stop"
   ],
   "people": {},
+  "triggers": [
+    { "x": 8, "z": 16, "width": 3, "depth": 1, "variable": "VAR_JOHTO_CLEFAIRY_DANCE", "value": 1, "script": "Dance" }
+  ],
+  "npcs": [
+    { "id": "clefairy_1", "name": "Clefairy", "npcType": "Pokemon", "species": "Clefairy", "x": 9, "y": 12, "facing": "Up", "shownBy": "FLAG_JOHTO_CLEFAIRY_DANCING", "dialog": [ "Clefairy is twirling round and round in the moonlight!" ] },
+    { "id": "clefairy_2", "name": "Clefairy", "npcType": "Pokemon", "species": "Clefairy", "x": 12, "y": 9, "facing": "Left", "shownBy": "FLAG_JOHTO_CLEFAIRY_DANCING", "dialog": [ "Clefairy is twirling round and round in the moonlight!" ] },
+    { "id": "clefairy_3", "name": "Clefairy", "npcType": "Pokemon", "species": "Clefairy", "x": 9, "y": 6, "facing": "Down", "shownBy": "FLAG_JOHTO_CLEFAIRY_DANCING", "dialog": [ "Clefairy is twirling round and round in the moonlight!" ] },
+    { "id": "clefairy_4", "name": "Clefairy", "npcType": "Pokemon", "species": "Clefairy", "x": 6, "y": 9, "facing": "Right", "shownBy": "FLAG_JOHTO_CLEFAIRY_DANCING", "dialog": [ "Clefairy is twirling round and round in the moonlight!" ] },
+    { "id": "clefairy_5", "name": "Clefairy", "npcType": "Pokemon", "species": "Clefairy", "x": 14, "y": 9, "facing": "Left", "shownBy": "FLAG_JOHTO_CLEFAIRY_DANCING", "dialog": [ "Clefairy is twirling round and round in the moonlight!" ] },
+    { "id": "clefairy_6", "name": "Clefairy", "npcType": "Pokemon", "species": "Clefairy", "x": 4, "y": 9, "facing": "Right", "shownBy": "FLAG_JOHTO_CLEFAIRY_DANCING", "dialog": [ "Clefairy is twirling round and round in the moonlight!" ] }
+  ],
   "signs": {
     "D02R0103_000+1": "Mt. Moon Square\nThe Clefairy are said to dance here under a full moon."
   }

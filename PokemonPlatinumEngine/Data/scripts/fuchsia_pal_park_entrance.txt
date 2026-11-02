@@ -1,0 +1,29 @@
+# Pal Park's gate in Fuchsia City (plan 20 · J15, part o). docs/scripts.md describes the language; the lines are our
+# own, on HeartGold's beats (scr_seq_T08R0201).
+#
+# HeartGold's gate leads to a Pal Park beyond it. This game has one Pal Park, Sinnoh's on Route 221 (plan 06 · R16b), and
+# a warp never crosses regions, so the attendant in the gate's doorway takes the player there: `travel to` is the crossing every
+# region uses (GameEngine.CrossTo: the whole team along, the region's Pokédex, rival, music and name sign), as Route 40's
+# guide takes them to the Battle Frontier. The way back is the Kanto attendant in Pal Park's lobby (PalParkLobby.txt,
+# KantoAttendant). As Sinnoh's own doors do, the gate lets through only a Trainer with the National Pokédex.
+
+
+script Attendant
+  face self player
+  speaker "Attendant"
+  if not nationaldex goto Shut
+  say "Welcome to Pal Park's gate! The park itself is far away in Sinnoh, but we can take you straight there."
+  ask "Would you like to go to Pal Park?"
+  if no goto Stay
+  say "Right this way, please. Mind the step!"
+  fade out 0.8
+  text "{player} was shown through the gate on the long way to Pal Park..."
+  travel to "PalParkLobby" 8 18 up
+  fade in 0.8
+  end
+label Stay
+  say "Whenever you're ready. The park's Pokémon aren't going anywhere."
+  end
+label Shut
+  say "Pal Park is a place for Pokémon from far away. Only a Trainer with the National Pokédex may go through."
+  end

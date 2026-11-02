@@ -12,7 +12,7 @@ namespace PokemonPlatinumTests;
 /// built from the second DS reader's files, where a new game there begins, its wild Pokémon by the time of day, its
 /// trainers and its catalogue of models. Floors, not counts, wherever a later session opens more (plan 16 · T16).
 /// </summary>
-public class JohtoTests
+public partial class JohtoTests
 {
     // Maps of this class's own, so nothing another test does to the database's maps shows here. Read only.
     private static readonly Lazy<World> LoadedWorld = new(() => World.LoadAll().Single(w => w.Index.Region == "Johto"));
@@ -83,6 +83,10 @@ public class JohtoTests
         "johto_seafoam_islands_b1f", "johto_seafoam_islands_b2f", "johto_seafoam_islands_b3f", "johto_seafoam_islands_b4f",
         // Plan 20 · J15, part n: the Kanto Radio Tower, and Silph Co.'s lift and Rotom's room
         "lavender_radio_station", "saffron_silph_co_elevator", "saffron_silph_co_rotom_room",
+        // Plan 20 · J15, part o: Cerulean Cave, the Trainer House's hall, Pal Park's gate and the S.S. Aqua's rooms
+        "johto_cerulean_cave_1f", "johto_cerulean_cave_2f", "johto_cerulean_cave_b1f", "viridian_trainer_house_b1f",
+        "fuchsia_pal_park_entrance", "ss_aqua_captain_room", "ss_aqua_1f_southeast_rooms", "ss_aqua_1f_southwest_rooms",
+        "ss_aqua_1f_northeast_rooms", "ss_aqua_1f_northwest_rooms", "ss_aqua_b1f",
     };
 
     [Fact]
@@ -848,11 +852,11 @@ public class JohtoTests
         }
         Assert.Equal("cerulean", HgWorld.KeyOf("MAP_CERULEAN"));
         Assert.Equal("cerulean_gym", HgWorld.KeyOf("MAP_CERULEAN_GYM"));
-        // What waits stays shut: Cerulean Cave (the Underground Path's gate on Route 5 is open since part l)
+        // The Underground Path's gate on Route 5 is open since part l, and Cerulean Cave since part o
         var route5 = Johto.Area("johto_route_5")!;
         Assert.NotEmpty(Overworld.WarpsAt(route5.Warps[2].X, route5.Warps[2].Z));
         var cerulean = Johto.Area("cerulean")!;
-        Assert.Empty(Overworld.WarpsAt(cerulean.Warps[7].X, cerulean.Warps[7].Z));
+        Assert.NotEmpty(Overworld.WarpsAt(cerulean.Warps[7].X, cerulean.Warps[7].Z));
         Assert.DoesNotContain(walked.Keys, m => m.Name.StartsWith("CeruleanCave", StringComparison.Ordinal));
         // Misty stands at the head of her pool, reached along its walkways
         var gym = walked.Single(kv => kv.Key.Name == "Cerulean_Gym");
@@ -973,11 +977,9 @@ public class JohtoTests
         }
         foreach (string key in new[] { "fuchsia", "fuchsia_gym", "route_19_fuchsia_gatehouse", "viridian_gym" })
             Assert.Equal(key, HgWorld.KeyOf("MAP_" + key.ToUpperInvariant()));
-        // What waits stays shut: Pal Park's gate where the Safari Zone stood (Route 18's gate west of Fuchsia and the gate to
-        // Route 11 behind Route 12's sleeping Snorlax open in part i)
+        // Pal Park's gate where the Safari Zone stood is open since part o (its attendant crosses to Sinnoh's park)
         var fuchsia = Johto.Area("fuchsia")!;
-        Assert.Empty(Overworld.WarpsAt(fuchsia.Warps[5].X, fuchsia.Warps[5].Z));
-        Assert.DoesNotContain(walked.Keys, m => m.Name.Contains("PalPark", StringComparison.Ordinal));
+        Assert.NotEmpty(Overworld.WarpsAt(fuchsia.Warps[5].X, fuchsia.Warps[5].Z));
         // The Viridian Gym's door waits for Blue's flag
         var viridian = Johto.Area("viridian")!;
         var door = Assert.Single(Overworld.WarpsAt(viridian.Warps[0].X, viridian.Warps[0].Z));

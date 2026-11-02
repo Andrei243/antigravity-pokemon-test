@@ -601,6 +601,10 @@ public static class RegionDatabase
                 "Seafoam_B1F", "Seafoam_B2F", "Seafoam_B3F", "Seafoam_B4F",
                 // Plan 20 · J15, part n: the Kanto Radio Tower, Silph Co.'s lift and Rotom's room
                 "Lavender_RadioTower", "Saffron_SilphCo_Elevator", "Saffron_SilphCo_RotomRoom",
+                // Plan 20 · J15, part o: Cerulean Cave, the Trainer House's hall, Pal Park's gate and the S.S. Aqua's rooms
+                "Cerulean_Cave_1F", "Cerulean_Cave_2F", "Cerulean_Cave_B1F", "Viridian_TrainerHouse_B1F", "Fuchsia_PalParkGate",
+                "SSAqua_CaptainRoom", "SSAqua_1F_SoutheastRooms", "SSAqua_1F_SouthwestRooms", "SSAqua_1F_NortheastRooms",
+                "SSAqua_1F_NorthwestRooms", "SSAqua_B1F",
                 // Plan 20 · J5's leftovers: the Ruins of Alph's hall
                 "RuinsOfAlph_HallEntrance", "RuinsOfAlph_UndergroundHall",
                 // Plan 20 · J5's last leftover: the chambers' second rooms behind their back walls

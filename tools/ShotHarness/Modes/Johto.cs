@@ -98,6 +98,18 @@ partial class Harness
             engine.NewGameRegion = "Sinnoh";
             return;
         }
+        // JOHTO_FROM=kantoo shoots only plan 20 · J15, part o (jko*), in a new game of Johto of its own, with a team to fight with
+        if (Environment.GetEnvironmentVariable("JOHTO_FROM") == "kantoo")
+        {
+            engine.NewGameRegion = "Johto";
+            engine.StartNewGame();
+            game.SaveSlot = 1;
+            game.LocationSign.Hide();
+            game.Party.Add(new PokemonPlatinumEngine.Models.Pokemon(PokemonPlatinumEngine.Data.PokemonDatabase.Get("Typhlosion")!, 80));
+            JohtoKantoPartOShots();
+            engine.NewGameRegion = "Sinnoh";
+            return;
+        }
         // JOHTO_FROM=leftovers shoots only plan 20 · J2, J5 and J8's leftovers (the cliff path and the Safari Zone, the
         // rooms whose looks were left, the Ruins of Alph's hall)
         if (Environment.GetEnvironmentVariable("JOHTO_FROM") == "leftovers")

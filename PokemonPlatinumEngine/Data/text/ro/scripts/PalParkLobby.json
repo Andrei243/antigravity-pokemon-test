@@ -372,5 +372,55 @@
         "Faci azi un Spectacol de Prindere? Eu o să te încurajez!"
       ]
     }
+  ],
+  "KantoAttendant": [
+    {
+      "en": [
+        "Kanto Attendant"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I look after the way between Pal Park and its gate in Fuchsia City, in Kanto."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Shall I take you back to Fuchsia City?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Right this way, please. Mind the step!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} was shown back along the long way to Fuchsia City..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Take your time. I'll be here whenever you'd like to go back."
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

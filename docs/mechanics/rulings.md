@@ -7341,6 +7341,79 @@ a new HM of ours.
   Park's gate, the Clefairy's dance, a game in the Game Corners and their prizes, the Trainer House's battles, Steven's
   visits, Suicune's stops, a Kanto station on the Pokégear's dial, and the screen that forgets a move for Rotom.
 
+## HeartGold's Kanto, part o (2026-11-02, plan 20 · J15, part o)
+
+- *The slice*: what HeartGold's Kanto still had shut or still owed that waits on nothing new: Cerulean Cave with Mewtwo,
+  the Trainer House's hall, Pal Park's gate, the S.S. Aqua's cabins, hold and captain's room, the dark of HeartGold's
+  Flash caves, the Clefairy's dance, a game in the Celadon Game Corner, Suicune's Kanto stops and its battle, and the
+  question Rotom's room asks for a move. Four rooms and three floors open (`world.json`, `RegionDatabase`'s Johto list,
+  `--game heartgold --data`): `Cerulean_Cave_1F`, `_2F`, `_B1F` (keys `johto_cerulean_cave_1f` and the rest: they meet
+  FireRed's and take Johto's prefix, `HgWorld.Clashes`; FireRed's are `CeruleanCave_…`), `Viridian_TrainerHouse_B1F`,
+  `Fuchsia_PalParkGate` (`fuchsia_pal_park_entrance`), `SSAqua_CaptainRoom`, `SSAqua_1F_SoutheastRooms`, `_SouthwestRooms`,
+  `_NortheastRooms`, `_NorthwestRooms` and `SSAqua_B1F`. Their names meet no other region's.
+- *The dark caves*: HeartGold's caves that want Flash carry its weather 11, which is the same weather as Platinum's
+  `DarkFlash`; `World.cs` now reads both (`map.IsDark`), so Rock Tunnel, Cerulean Cave, the Dark Cave and the Whirl
+  Islands' upper floors are dark until Flash is used there, as Wayward Cave is. Johto's `gates` gain Flash behind the
+  Zephyr Badge, HeartGold's own: before, Flash asked no Badge in Johto.
+- *Cerulean Cave*: HeartGold opens it once Red has been beaten on Mt. Silver. Cerulean's arrival (`cerulean.txt`) sets
+  HeartGold's `FLAG_HIDE_CERULEAN_CITY_MAN_OUTSIDE_CAVE` once `FLAG_JOHTO_BEAT_RED` is set, so the man before the mouth
+  stands aside; until then he says what he waits for. The floors are the import's (their items, hidden items and cracked
+  rocks). Mewtwo waits at the back of the lowest floor until fought (`FLAG_JOHTO_FOUGHT_MEWTWO`, ours) at level 70, as
+  Articuno and Moltres: run from, it vanishes (HeartGold's `FLAG_HIDE_CERULEAN_CAVE_MEWTWO`) and is back on the next
+  visit. Its meeting is plan 29's beat for a Pokémon of the mind (sparkles, a ripple, `flicker`, the push-in zoom).
+- *The Trainer House*: HeartGold's hall battles a Trainer of its link records once a day, or Cal when it has none. This
+  game has no link records, so it is always Cal, once a day (`FLAG_DAILY_JOHTO_TRAINER_HOUSE`, ours), and the ten
+  stand-ins HeartGold shows for the records (`t02r0302_var_2` to `_11`) are left out, with the trigger before the referee.
+  Cal's team is ours (`johto_trainer_house_cal` in `our-trainers.json`: the three Johto starters' last stages at level 60,
+  class Ace Trainer M), as HeartGold's couldn't be read from the pinned folders. No prize, as HeartGold gives none.
+- *Pal Park's gate*: HeartGold's gate in Fuchsia leads to a Pal Park of its own. This game has one, Sinnoh's on Route 221,
+  and a warp never crosses regions, so the attendant in the gate's doorway (HeartGold's workman, who stands in the one way on) takes a Trainer with the National Pokédex there
+  by `travel to "PalParkLobby"` (the crossing every region uses, as Route 40's guide takes the player to the Battle
+  Frontier), and a Kanto attendant beside the lobby's door (shown once `JohtoHallOfFame` is set) takes them back to the
+  gate. This is the cheapest honest stand-in: the Catching Show, the migrated Pokémon and the day's visitors are the park's
+  own, the same whichever door the player came by; nothing of HeartGold's park (its own fields and Pokéwalker links) is
+  built.
+- *The S.S. Aqua*: the crewman at the head of the gangway stood in the one way up to the cabins, as HeartGold stands him
+  until the ship sails; here the ship is walked through at the quay, so he stands beside the gangway's head (the overlay's
+  `at`) and still makes the crossing over the dark. HeartGold's passengers change with the day of the voyage in three
+  groups (`FLAG_UNK_22A`, `22B`, `22C`); the deck's arrival shows one group by the weekday (Monday and Tuesday the first,
+  Wednesday and Thursday the second, Friday to Sunday the third). Every passenger battles by their own record (Johto's
+  `trainers.json`), in lines of ours. The captain's granddaughter is with him from the first; her wanderings, the
+  grandfather's search, the Metal Coat, the night aboard and the two triggers of it (`VAR_UNK_4112`, `VAR_UNK_40CB`) are
+  not built.
+- *The Celadon Game Corner*: HeartGold's tables play a card game this one hasn't; here they are plan 06 · R16b's slot
+  machines, as FireRed's Celadon Game Corner and Veilstone's are (`celadon_game_corner.txt`, six machines' moods). The
+  clerk sells coins and hands a Coin Case to whoever has none, since HeartGold's own giver (Goldenrod's underground) is not
+  built; the Prize Corner exchanges coins for R16b's prizes (`celadon_prize_corner.txt`). HeartGold's own prize list and
+  its Pokémon prizes couldn't be read. Goldenrod's Game Corner stays as it was (Johto's own).
+- *The Clefairy's dance*: on Monday nights HeartGold lays Mt. Moon Square out a second time (`D02R0104`) with six Clefairy
+  and a Moon Stone and sends the player there by script. Here the six stand on the square itself, where HeartGold's night
+  map has them (the overlay's `npcs`, `FLAG_JOHTO_CLEFAIRY_DANCING`), and the night map's trigger on the row below the ring
+  is the square's (`VAR_JOHTO_CLEFAIRY_DANCE`); the player watches the dance until the Clefairy notice them and scatter,
+  and finds a Moon Stone. Once a night (`FLAG_DAILY_JOHTO_CLEFAIRY_DANCE`). The night map itself is not opened.
+- *Suicune's Kanto stops*: HeartGold's chase goes on from Cianwood City and Route 42 to Vermilion City, Route 14 and Route
+  25's cape, where it is battled. Each stop goes by HeartGold's own variable and trigger: Vermilion's arrival counts it as
+  the next stop once Cianwood's has been seen (`VAR_UNK_4076` 2 sets `VAR_UNK_4070` 1, which HeartGold's Route 42 sets:
+  Route 42's stop is Johto's own leftover, and a game that saw Cianwood's need not see it first); Suicune bounds off south
+  over the sea and Route 14 is next (`VAR_UNK_4086` 1), then the cape (`VAR_UNK_4088` 1), where Eusine has followed it and
+  steps up to the player on HeartGold's trigger. Suicune, spoken to, is plan 29's beat for a Pokémon of the sea and a
+  battle at level 40; beaten or caught it is gone for good with Eusine (`FLAG_JOHTO_FOUGHT_SUICUNE`, ours), run from it is
+  back on the next visit. Eusine's other places (Vermilion's two, Route 14's two, the cape's second) are held back.
+- *Rotom's room*: where the appliance's move doesn't fit four moves and no appliance's move is there to give up, the room
+  asks which move is to go, with the tutors' question (`tutor learn`: `team rotom` makes the Rotom the tutor's pupil and
+  the move the tutor's move). HeartGold shows its summary screen there; this is the game's one question for a move to
+  forget outside a battle.
+- *Songs*: Cerulean Cave plays `kanto/mt_moon` (HeartGold's `SEQ_GS_D_IWAYAMA`, as Rock Tunnel's), the Trainer House's
+  hall `kanto/viridian`, Pal Park's gate `kanto/fuchsia`, the ship's rooms `kanto/ss_anne`, as the deck.
+- *Weighed and left*: the Magnet Train's platform at Saffron (HeartGold's empty platform, behind the officer who makes the
+  ride: opening it wants him to step aside, and it shows nothing); Lt. Surge on Route 10 and the Leaders' rematches and
+  street meetings (each a day and an hour of a contact's of HeartGold's phone, with rematch teams of HeartGold's that
+  `trainers.json` doesn't hold); Steven's visits (the Hoenn starter, the Lati with the Enigma Stone); a Kanto station on
+  the Pokégear's dial (part n's Expn Card stands for the Poké Flute channel); Blue at the reception gate; the night aboard.
+- *Left*: the Leaders' rematches and street meetings with Lt. Surge on Route 10, Steven's visits, a Kanto station on the
+  Pokégear's dial, the night aboard the S.S. Aqua and the captain's granddaughter's errand, the Magnet Train's platform,
+  Eusine's other places, HeartGold's Game Corner prizes.
+
 ## The week siblings and the dome's pieces (2026-10-31, plan 20 · J13, the last part)
 
 | Subject | HeartGold | This game |

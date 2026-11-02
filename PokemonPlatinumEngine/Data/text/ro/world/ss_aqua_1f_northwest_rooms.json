@@ -1,0 +1,205 @@
+{
+  "people": {
+    "p01r0306_gsgentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My granddaughter loves to wander the ship. I've stopped worrying: she always ends up with the captain."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "p01r0306_gsmiddleman1": {
+      "name": {
+        "en": [
+          "Colin"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokéfan Colin: Look at my lovely Pokémon! Aren't they the best? Let's battle and you'll see!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokéfan Colin: They're still the best. You're just better."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "p01r0306_gsbabygirl1": {
+      "name": {
+        "en": [
+          "Meg"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Twins Meg: We're going on holiday! Battle us first!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Twins Meg: We'll battle better after our holiday."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "p01r0306_gsbabygirl1_2": {
+      "name": {
+        "en": [
+          "Peg"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Twins Peg: Two of us on a boat, ready to battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Twins Peg: Two of us, beaten on a boat."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "p01r0306_gsassistantm": {
+      "name": {
+        "en": [
+          "Shawn"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Super Nerd Shawn: I've worked out the ship's speed to three decimal places. Now, your team's chances..."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Super Nerd Shawn: My sums were off. Way off."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "p01r0306_mystery_2": {
+      "name": {
+        "en": [
+          "Rodney"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Rodney: I foresaw that you would come into this cabin. I also foresee a battle."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Rodney: I didn't foresee losing."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "p01r0306_middlewoman1_2": {
+      "name": {
+        "en": [
+          "Georgia"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokéfan Georgia: My darlings and I take this ship every season. Would you care to battle them?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokéfan Georgia: My poor darlings! They need a nap now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "p01r0306_gsmiddleman1_2": {
+      "name": {
+        "en": [
+          "Jeremy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokéfan Jeremy: You can't come in here without admiring my Pokémon. Battle them and admire them!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokéfan Jeremy: You admired them a bit too hard."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

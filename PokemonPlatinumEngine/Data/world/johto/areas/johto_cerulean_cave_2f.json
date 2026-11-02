@@ -1,0 +1,110 @@
+{
+  "key": "johto_cerulean_cave_2f",
+  "index": 450,
+  "name": "Cerulean Cave",
+  "matrix": 79,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "11",
+  "camera": "0",
+  "battleBackground": "Cave1",
+  "dayMusic": "GS_D_IWAYAMA",
+  "nightMusic": "GS_D_IWAYAMA",
+  "encounters": "D03R0102",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Kadabra", "level": 42 },
+    { "species": "Parasect", "level": 40 },
+    { "species": "Golbat", "level": 41 },
+    { "species": "Machoke", "level": 39 },
+    { "species": "Magneton", "level": 41 },
+    { "species": "Ditto", "level": 42 },
+    { "species": "Electrode", "level": 41 },
+    { "species": "Wobbuffet", "level": 42 },
+    { "species": "Machoke", "level": 41, "night": "Golbat" },
+    { "species": "Machoke", "level": 42, "night": "Golbat" },
+    { "species": "Machoke", "level": 41, "night": "Golbat" },
+    { "species": "Machoke", "level": 42, "night": "Golbat" }
+  ],
+  "landRate": 10,
+  "swarm": [
+    "Kadabra",
+    "Kadabra"
+  ],
+  "surfSwarm": "Poliwag",
+  "fishSwarm": "Magikarp",
+  "water": [
+    { "species": "Psyduck", "level": 40, "maxLevel": 40 },
+    { "species": "Psyduck", "level": 35, "maxLevel": 35 },
+    { "species": "Golduck", "level": 40, "maxLevel": 40 },
+    { "species": "Golduck", "level": 40, "maxLevel": 40 },
+    { "species": "Golduck", "level": 40, "maxLevel": 40 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Poliwag", "level": 40, "maxLevel": 40 },
+    { "species": "Poliwhirl", "level": 40, "maxLevel": 40 },
+    { "species": "Gyarados", "level": 40, "maxLevel": 40 },
+    { "species": "Gyarados", "level": 40, "maxLevel": 40 },
+    { "species": "Gyarados", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "hoennSounds": [
+    "Absol",
+    "Makuhita"
+  ],
+  "sinnohSounds": [
+    "Bronzor",
+    "Chingling"
+  ],
+  "warps": [
+    { "x": 10, "z": 13, "to": "johto_cerulean_cave_1f", "toWarp": 5 },
+    { "x": 15, "z": 19, "to": "johto_cerulean_cave_1f", "toWarp": 6 },
+    { "x": 8, "z": 29, "to": "johto_cerulean_cave_1f", "toWarp": 8 },
+    { "x": 56, "z": 13, "to": "johto_cerulean_cave_1f", "toWarp": 1 },
+    { "x": 46, "z": 27, "to": "johto_cerulean_cave_1f", "toWarp": 3 },
+    { "x": 35, "z": 33, "to": "johto_cerulean_cave_1f", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "everywhere_monstarball", "looks": "monstarball", "movement": "0", "x": 8, "z": 25, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D03R0102_PP_UP", "item": "PP Up", "script": "std_itemball_d03r0102_pp_up" },
+    { "id": "everywhere_monstarball_2", "looks": "monstarball", "movement": "0", "x": 56, "z": 17, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D03R0102_TM24", "item": "TM24", "script": "std_itemball_d03r0102_tm24" },
+    { "id": "everywhere_monstarball_3", "looks": "monstarball", "movement": "0", "x": 12, "z": 32, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D03R0102_ULTRA_BALL", "item": "Ultra Ball", "script": "std_itemball_d03r0102_ultra_ball" },
+    { "id": "everywhere_monstarball_4", "looks": "monstarball", "movement": "0", "x": 39, "z": 33, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D03R0102_ODD_INCENSE", "item": "Odd Incense", "script": "std_itemball_d03r0102_odd_incense" },
+    { "id": "everywhere_breakrock", "looks": "breakrock", "movement": "0", "x": 53, "z": 17, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_010", "script": "std_field_rock_smash" },
+    { "id": "everywhere_breakrock_2", "looks": "breakrock", "movement": "0", "x": 54, "z": 17, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_011", "script": "std_field_rock_smash" },
+    { "id": "everywhere_breakrock_3", "looks": "breakrock", "movement": "0", "x": 26, "z": 19, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_012", "script": "std_field_rock_smash" },
+    { "id": "everywhere_breakrock_4", "looks": "breakrock", "movement": "0", "x": 15, "z": 32, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_013", "script": "std_field_rock_smash" },
+    { "id": "everywhere_breakrock_5", "looks": "breakrock", "movement": "0", "x": 5, "z": 22, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_014", "script": "std_field_rock_smash" },
+    { "id": "everywhere_breakrock_6", "looks": "breakrock", "movement": "0", "x": 20, "z": 41, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_015", "script": "std_field_rock_smash" },
+    { "id": "everywhere_breakrock_7", "looks": "breakrock", "movement": "0", "x": 28, "z": 45, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_016", "script": "std_field_rock_smash" },
+    { "id": "everywhere_breakrock_8", "looks": "breakrock", "movement": "0", "x": 31, "z": 45, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_017", "script": "std_field_rock_smash" }
+  ],
+  "signs": [
+    { "x": 44, "z": 23, "type": 2, "script": "std_hiddenitem_d03r0102_ultra_ball", "item": "Ultra Ball", "flag": "FLAG_HIDDEN_ITEM_D03R0102_ULTRA_BALL" },
+    { "x": 55, "z": 40, "type": 2, "script": "std_hiddenitem_d03r0102_pp_up", "item": "PP Up", "flag": "FLAG_HIDDEN_ITEM_D03R0102_PP_UP" },
+    { "x": 45, "z": 39, "type": 2, "script": "std_hiddenitem_d03r0102_big_pearl", "item": "Big Pearl", "flag": "FLAG_HIDDEN_ITEM_D03R0102_BIG_PEARL" },
+    { "x": 53, "z": 30, "type": 2, "script": "std_hiddenitem_d03r0102_zinc", "item": "Zinc", "flag": "FLAG_HIDDEN_ITEM_D03R0102_ZINC" },
+    { "x": 56, "z": 24, "type": 2, "script": "std_hiddenitem_d03r0102_full_heal", "item": "Full Heal", "flag": "FLAG_HIDDEN_ITEM_D03R0102_FULL_HEAL" },
+    { "x": 6, "z": 18, "type": 2, "script": "std_hiddenitem_d03r0102_protein", "item": "Protein", "flag": "FLAG_HIDDEN_ITEM_D03R0102_PROTEIN" }
+  ],
+  "triggers": []
+}

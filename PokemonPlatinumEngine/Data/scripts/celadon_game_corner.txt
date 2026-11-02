@@ -1,0 +1,54 @@
+# The Celadon Game Corner as HeartGold has it three years on (plan 20 · J15, part o). docs/scripts.md describes the
+# language; the lines are our own, on HeartGold's beats (scr_seq_T07SP0101).
+#
+# HeartGold's tables play a card game this one hasn't; here they are plan 06 · R16b's slot machines, as FireRed's
+# Celadon Game Corner and Veilstone's are, played by whoever carries a Coin Case (the rulings' "HeartGold's Kanto,
+# part o"). The clerk sells coins and, to a Champion of Johto who has none, hands a Coin Case over first: in HeartGold
+# it is Goldenrod's underground that gives it, which this game hasn't built.
+
+
+script Slots
+  speaker none
+  if not item "Coin Case" goto NoCase
+  ask "A game table set up with a slot machine. Play it?"
+  if no end
+  random 6
+  fade out 0.3
+  if result == 0 gamecorner slots 0
+  if result == 1 gamecorner slots 2
+  if result == 2 gamecorner slots 4
+  if result == 3 gamecorner slots 6
+  if result == 4 gamecorner slots 8
+  if result == 5 gamecorner slots 10
+  fade in 0.3
+  end
+label NoCase
+  text "A game table set up with a slot machine. Without a Coin Case there is nothing to play with."
+  end
+
+
+# T07SP0101_003: the clerk, who sells coins 50 for $1,000 as long as they fit in the case
+script Clerk
+  speaker "Clerk"
+  if item "Coin Case" goto Sell
+  say "Welcome to the Celadon Game Corner! The tables take coins, and coins need a case to carry them in."
+  say "Here, have one of ours. Every new player gets one."
+  give "Coin Case"
+label Sell
+  ask "We sell coins for the machines: 50 for $1,000. Would you like some?"
+  if no goto Bye
+  gamecorner room 50
+  if result == 0 goto Full
+  if money < 1000 goto Poor
+  takemoney 1000
+  gamecorner add 50
+  text "{player} bought 50 coins."
+label Bye
+  say "Please come again!"
+  end
+label Full
+  say "Your Coin Case is full already!"
+  end
+label Poor
+  say "I'm sorry, you don't have enough money."
+  end

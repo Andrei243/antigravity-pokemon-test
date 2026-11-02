@@ -119,10 +119,10 @@
       },
       "dialog": {
         "en": [
-          "The cave behind me is far too dangerous. Nobody goes in without the League's leave, and nobody has it."
+          "The cave behind me is far too dangerous. Nobody goes in until they've beaten the Trainer on Mt. Silver's summit."
         ],
         "text": [
-          "Peștera din spatele meu e mult prea periculoasă. Nimeni nu intră fără aprobarea Ligii, și nimeni nu o are."
+          ""
         ]
       }
     }

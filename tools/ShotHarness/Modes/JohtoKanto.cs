@@ -802,6 +802,7 @@ partial class Harness
         ReadTo("Bulbasaur, the Grass"); Frames(10); Shot("jkn25_bulbasaurs_ball");
         Frames(10); engine.Choice.Move(1); engine.Choice.Confirm(); Frames(4); ReadTo(null);
         Console.WriteLine($"  Oak's gift taken {game.Story.Has("FLAG_JOHTO_GOT_OAKS_GIFT")}");
+        JohtoKantoPartOShots();
     }
 
 }

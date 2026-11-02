@@ -1,0 +1,28 @@
+{
+  // The S.S. Aqua's south-east cabins (plan 20 · J15, part o): a sailor who talks, and the day's passengers
+  // (FLAG_UNK_22B and 22C, which the deck's arrival sets by the weekday: ss_aqua_1f.txt). HeartGold's trigger in the
+  // corridor (VAR_UNK_4112), part of its night aboard, is given no script
+  "area": "ss_aqua_1f_southeast_rooms",
+  "bgmTrack": "kanto/ss_anne",
+  "people": {
+    "p01r0303_seaman_2": {
+      "name": "Sailor",
+      "hiddenBy": "",
+      "dialog": [ "These cabins are for the passengers. We crew sleep down in the hold, nearer the engines." ]
+    },
+    "p01r0303_gsgentleman": {
+      "name": "Edward",
+      "trainer": {
+        "dialogueBefore": "Gentleman Edward: I always book this cabin for the view of the sea. And for the battles, of course.",
+        "dialogueAfter": "Gentleman Edward: Splendid. Quite splendid. I shall need another cup of tea."
+      }
+    },
+    "p01r0303_thief": {
+      "name": "Corey",
+      "trainer": {
+        "dialogueBefore": "Burglar Corey: Hey! I wasn't sneaking around the cabins! Er... battle me and forget you saw me!",
+        "dialogueAfter": "Burglar Corey: All right, all right! I'll go back to my own cabin."
+      }
+    }
+  }
+}

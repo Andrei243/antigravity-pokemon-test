@@ -1,0 +1,30 @@
+{
+  "key": "ss_aqua_1f_southeast_rooms",
+  "index": 309,
+  "name": "S.S. Aqua",
+  "matrix": 173,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_KOUSOKUSEN",
+  "nightMusic": "GS_KOUSOKUSEN",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 9, "z": 2, "to": "ss_aqua_1f", "toWarp": 3 },
+    { "x": 23, "z": 2, "to": "ss_aqua_1f", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "p01r0303_seaman_2", "looks": "seaman_2", "movement": "0", "x": 7, "z": 10, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_21A", "script": "P01R0303_000+1" },
+    { "id": "p01r0303_gsgentleman", "looks": "gsgentleman", "movement": "0", "x": 1, "z": 9, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "hiddenBy": "FLAG_UNK_22B", "script": "TRAINER_GENTLEMAN_EDWARD" },
+    { "id": "p01r0303_thief", "looks": "thief", "movement": "0", "x": 9, "z": 7, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "hiddenBy": "FLAG_UNK_22C", "script": "TRAINER_BURGLAR_COREY" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 16, "z": 4, "width": 1, "depth": 1, "script": "P01R0303_001+1", "variable": "VAR_UNK_4112", "value": "0" }
+  ]
+}

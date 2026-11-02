@@ -221,7 +221,9 @@ public sealed class HgWorld
             or "seafoam_islands_b2f" or "seafoam_islands_b3f" or "seafoam_islands_b4f"
             or "route_19" or "route_15" or "route_14" or "route_13" or "route_12"
             or "route_11" or "route_16" or "route_16_house" or "route_17" or "route_18"
-            or "route_9" or "route_10" or "rock_tunnel_1f" or "rock_tunnel_b1f";
+            or "route_9" or "route_10" or "rock_tunnel_1f" or "rock_tunnel_b1f"
+            // Cerulean Cave's three floors, since part o
+            or "cerulean_cave_1f" or "cerulean_cave_2f" or "cerulean_cave_b1f";
 
     /// <summary>The area's table of wild Pokémon, by its header's bank (<c>R29</c>); null for none.</summary>
     public HgEncounters? EncountersOf(HgHeader header) => header.Encounters == null ? null : Encounters.FirstOrDefault(e => e.Map == header.Encounters);

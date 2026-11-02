@@ -1,6 +1,6 @@
 {
-  // The Celadon Prize Corner (plan 20 · J15, part k). With no machines to win coins at, its counter is shut, as the
-  // Goldenrod Game Corner's is; its people talk
+  // The Celadon Prize Corner (plan 20 · J15, part k; its counter open since part o): coins from the Game Corner next
+  // door are exchanged for plan 06 · R16b's prizes (celadon_prize_corner.txt); its people talk
   "area": "celadon_prize_corner",
   "bgmTrack": "kanto/celadon",
   "people": {
@@ -11,16 +11,12 @@
     "t07r0501_sunglasses": {
       "name": "Man",
       "still": true,
-      "dialog": [ "Coins? Not today. Not until the tables next door are running again." ]
+      "dialog": [ "I've had my eye on that prize up there for a week. A few more good spins and it's mine." ]
     },
-    "t07r0501_gsman2": {
-      "name": "Clerk",
-      "still": true,
-      "dialog": [ "Welcome to the Prize Corner. I'm sorry, we can't exchange any coins until the Game Corner opens again." ]
-    }
+    "t07r0501_gsman2": { "name": "Clerk", "still": true, "script": "Prizes" }
   },
   "signs": {
-    "T07R0501_003+1": "A list of prizes. Every one of them is marked out of stock.",
-    "T07R0501_004+1": "A glass case of prizes, locked."
+    "T07R0501_003+1": "A list of prizes and what each costs in coins. The clerk at the counter exchanges them.",
+    "T07R0501_004+1": "A glass case of prizes, polished to a shine."
   }
 }

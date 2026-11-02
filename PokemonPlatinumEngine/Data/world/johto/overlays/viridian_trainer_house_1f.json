@@ -1,17 +1,14 @@
 {
   // Viridian City's Trainer House (plan 20 · J15, part f): the club's ground floor. The way down to its battle hall
-  // (warp 1) stays shut: the battles there are HeartGold's link records, which this game has not
+  // (warp 1) is open since part o: Cal battles there once a day (viridian_trainer_house_b1f.txt)
   "area": "viridian_trainer_house_1f",
   "bgmTrack": "kanto/viridian",
-  "locked": [
-    1
-  ],
   "people": {
     "t02r0301_gswoman6": {
       "name": "Receptionist",
       "still": true,
       "dialog": [
-        "Welcome to the Trainer House. The hall downstairs is closed for the moment, I'm afraid."
+        "Welcome to the Trainer House. Downstairs, today's Trainer is waiting for a battle."
       ]
     },
     "t02r0301_gsman3": {
@@ -50,6 +47,6 @@
   },
   "signs": {
     "T02R0301_005+1": "The Trainer House's rules:\nOne battle a day for each visitor.",
-    "T02R0301_006+1": "Today's challenger:\nNobody yet."
+    "T02R0301_006+1": "Today's challenger:\nCal, waiting downstairs."
   }
 }

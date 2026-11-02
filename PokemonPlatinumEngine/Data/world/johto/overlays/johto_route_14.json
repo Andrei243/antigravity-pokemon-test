@@ -1,17 +1,18 @@
 {
   // Route 14 as HeartGold has it three years on (plan 20 · J15, part h): the grassy road south from Route 13 to Route
-  // 15. Suicune and Eusine, who wait here on Suicune's Kanto stops, are held back with their trigger, and so is
-  // Cameron. Its key meets FireRed's, so it takes Johto's prefix (HgWorld.Clashes). Its trainers battle by their own
-  // records (Johto's trainers.json)
+  // 15. Suicune's second Kanto stop is part o's (johto_route_14.txt, HeartGold's trigger on VAR_UNK_4086 1); Eusine,
+  // who waits here on it, is held back, and so is Cameron. Its key meets FireRed's, so it takes Johto's prefix
+  // (HgWorld.Clashes). Its trainers battle by their own records (Johto's trainers.json)
   "area": "johto_route_14",
   "bgmTrack": "kanto/route11",
   "heldBack": [
-    "r14_tsure_poke_static_suicune",
     "r14_minaki",
     "r14_minaki_2",
     "r14_gsmiddleman1_3"
   ],
+  "triggers": [ { "trigger": 0, "script": "SuicuneInTheGrass" } ],
   "people": {
+    "r14_tsure_poke_static_suicune": { "name": "Suicune", "npcType": "Pokemon", "species": "Suicune", "script": "SuicuneInTheGrass", "still": true },
     "r14_gswoman1": {
       "name": "Woman",
       "dialog": [

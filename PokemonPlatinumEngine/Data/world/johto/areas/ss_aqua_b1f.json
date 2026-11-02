@@ -1,0 +1,40 @@
+{
+  "key": "ss_aqua_b1f",
+  "index": 329,
+  "name": "S.S. Aqua",
+  "matrix": 177,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building3",
+  "dayMusic": "GS_KOUSOKUSEN",
+  "nightMusic": "GS_KOUSOKUSEN",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 24, "z": 3, "to": "ss_aqua_1f", "toWarp": 9 },
+    { "x": 42, "z": 9, "to": "ss_aqua_1f", "toWarp": 10 },
+    { "x": 42, "z": 8, "to": "ss_aqua_1f", "toWarp": 10 }
+  ],
+  "objects": [
+    { "id": "p01r0307_gsbabygirl1", "looks": "gsbabygirl1", "movement": "17", "x": 1, "z": 13, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_219", "script": "P01R0307_003+1" },
+    { "id": "p01r0307_seaman_2", "looks": "seaman_2", "movement": "16", "x": 38, "z": 18, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_22A", "script": "P01R0307_000+1" },
+    { "id": "p01r0307_picnicgirl_2", "looks": "picnicgirl_2", "movement": "3", "x": 49, "z": 4, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "sees", "sight": 2, "hiddenBy": "FLAG_UNK_22A", "script": "TRAINER_PICNICKER_DEBRA" },
+    { "id": "p01r0307_seaman_2_2", "looks": "seaman_2", "movement": "15", "x": 35, "z": 9, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "hiddenBy": "FLAG_UNK_22A", "script": "TRAINER_SAILOR_JEFF" },
+    { "id": "p01r0307_juggrer", "looks": "juggrer", "movement": "14", "x": 8, "z": 4, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 0, "hiddenBy": "FLAG_UNK_22A", "script": "TRAINER_JUGGLER_FRITZ" },
+    { "id": "p01r0307_fishing_2", "looks": "fishing_2", "movement": "0", "x": 14, "z": 12, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "hiddenBy": "FLAG_UNK_22B", "script": "TRAINER_FISHERMAN_JONAH" },
+    { "id": "p01r0307_seaman_2_3", "looks": "seaman_2", "movement": "0", "x": 26, "z": 13, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "hiddenBy": "FLAG_UNK_22B", "script": "TRAINER_SAILOR_GARRETT" },
+    { "id": "p01r0307_gsfighter", "looks": "gsfighter", "movement": "0", "x": 29, "z": 8, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 2, "hiddenBy": "FLAG_UNK_22B", "script": "TRAINER_BLACK_BELT_WAI" },
+    { "id": "p01r0307_seaman_2_4", "looks": "seaman_2", "movement": "0", "x": 10, "z": 17, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "hiddenBy": "FLAG_UNK_22C", "script": "TRAINER_SAILOR_KENNETH" },
+    { "id": "p01r0307_gsboy1", "looks": "gsboy1", "movement": "0", "x": 31, "z": 6, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "hiddenBy": "FLAG_UNK_22C", "script": "TRAINER_SCHOOL_KID_M_NATE" },
+    { "id": "p01r0307_gsboy1_2", "looks": "gsboy1", "movement": "0", "x": 31, "z": 10, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 0, "hiddenBy": "FLAG_UNK_22C", "script": "TRAINER_SCHOOL_KID_M_RICKY" },
+    { "id": "p01r0307_middlewoman1_2", "looks": "middlewoman1_2", "movement": "0", "x": 35, "z": 8, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 0, "hiddenBy": "FLAG_UNK_22C", "script": "TRAINER_TEACHER_SHIRLEY" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 38, "z": 17, "width": 1, "depth": 3, "script": "P01R0307_001+1", "variable": "VAR_UNK_40CB", "value": "2" }
+  ]
+}

@@ -1,0 +1,283 @@
+{
+  "people": {
+    "p01r0307_seaman_2": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "That's the engine room. Hear her purr? The S.S. Aqua's the fastest ship between Johto and Kanto."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "p01r0307_picnicgirl_2": {
+      "name": {
+        "en": [
+          "Debra"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Debra: I got lost looking for the dining room. Since you're here, let's battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Debra: Now I'm lost and I've lost."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "p01r0307_seaman_2_2": {
+      "name": {
+        "en": [
+          "Jeff"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Sailor Jeff: Passengers aren't meant to be down here! You'll have to battle your way past me."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Sailor Jeff: Fine, fine. Just don't touch the engines."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "p01r0307_juggrer": {
+      "name": {
+        "en": [
+          "Fritz"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Juggler Fritz: I practise juggling down here, where the ship rocks most. Try battling me like this!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Juggler Fritz: I dropped everything. Again."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "p01r0307_fishing_2": {
+      "name": {
+        "en": [
+          "Jonah"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Jonah: I'm not fishing in the hold. I'm only resting my rod. Let's battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Jonah: Back to resting, then."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "p01r0307_seaman_2_3": {
+      "name": {
+        "en": [
+          "Garrett"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Sailor Garrett: A sailor's battles are as rough as the sea! Ready?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Sailor Garrett: Calm waters for you, rough ones for me."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "p01r0307_gsfighter": {
+      "name": {
+        "en": [
+          "Wai"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Wai: I train my balance in the hold. A battle on a rolling deck is the best training!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Wai: I lost my balance and my battle."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "p01r0307_seaman_2_4": {
+      "name": {
+        "en": [
+          "Kenneth"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Sailor Kenneth: I keep watch down here all crossing long. A battle helps the time go by!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Sailor Kenneth: Time went by quickly. So did my Pokémon."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "p01r0307_gsboy1": {
+      "name": {
+        "en": [
+          "Nate"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "School Kid Nate: Our class trip is to Kanto! I'll practise battling on you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "School Kid Nate: I'll have to practise more in Kanto."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "p01r0307_gsboy1_2": {
+      "name": {
+        "en": [
+          "Ricky"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "School Kid Ricky: Teacher said not to wander off. Battling's not wandering, is it?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "School Kid Ricky: I'd better go back before Teacher notices."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "p01r0307_middlewoman1_2": {
+      "name": {
+        "en": [
+          "Shirley"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Teacher Shirley: Have you seen two of my pupils? No? Then a battle, while I look!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Teacher Shirley: A lesson for me, then. Now, where are those two?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

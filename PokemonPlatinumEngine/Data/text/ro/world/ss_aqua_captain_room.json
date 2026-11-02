@@ -1,0 +1,41 @@
+{
+  "people": {
+    "p01r0302_captain": {
+      "name": {
+        "en": [
+          "Captain"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the bridge! The S.S. Aqua is the fastest ship on these waters. We'll get you where you're going."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "p01r0302_gsbabygirl1": {
+      "name": {
+        "en": [
+          "Little girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Grandpa is the captain! I'm going to steer the ship too when I'm big."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

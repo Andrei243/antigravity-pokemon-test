@@ -56,5 +56,75 @@
         "Bine. Dacă oricum mi s-a stricat după-amiaza, pot la fel de bine să lupt. Te aștept la Arenă!"
       ]
     }
+  ],
+  "EusineOnTheCape": [
+    {
+      "en": [
+        "Eusine"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! So you followed it here too. Suicune went all the way to the end of the cape, and it won't move from there."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I think it's waiting for someone. And I'm beginning to believe that someone is you."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Go on. It's what you came for. I'll watch from here."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Eusine": [
+    {
+      "en": [
+        "Eusine"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Suicune is waiting at the end of the cape. Go to it, {player}."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Suicune": [
+    {
+      "en": [
+        "The wind off the sea fell still as Suicune turned to face {player}!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Suicune bounded away over the sea!"
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

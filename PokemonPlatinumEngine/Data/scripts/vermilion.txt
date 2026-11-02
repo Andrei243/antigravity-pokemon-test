@@ -1,0 +1,43 @@
+# Vermilion City as HeartGold has it three years on (plan 20 · J15, part o). docs/scripts.md describes the language;
+# the lines are our own, on HeartGold's beats (scr_seq_T06).
+#
+# Suicune's first stop in Kanto. Its chase began at the Burned Tower and went on by Cianwood City (VAR_UNK_4076 2,
+# cianwood.txt) and Route 42; once the chase has come that far, the town's arrival counts Vermilion as its next stop
+# (VAR_UNK_4070 1, which HeartGold's Route 42 sets) and Suicune stands by the harbour (HeartGold's
+# FLAG_HIDE_VERMILION_SUICUNE cleared) until the player comes up to it on either of HeartGold's triggers: it bounds away
+# south over the sea, and Route 14 is its next stop (VAR_UNK_4086 1, the rulings' "HeartGold's Kanto, part o").
+
+
+script OnEnter
+  setflag FLAG_HIDE_VERMILION_SUICUNE
+  if var VAR_UNK_4070 != 0 goto Shown
+  if var VAR_UNK_4076 >= 2 setvar VAR_UNK_4070 1
+label Shown
+  if var VAR_UNK_4070 == 1 clearflag FLAG_HIDE_VERMILION_SUICUNE
+  end
+
+# T06_011: Suicune by the harbour
+script SuicuneByTheHarbour
+  if var VAR_UNK_4070 != 1 end
+  scene "Suicune in Vermilion City"
+  emote player exclaim
+  letterbox on 0.4
+  camera pan 1330 328 1.0
+  camera zoom 1.4 0.8
+  cry "Suicune"
+  effect sparkles 1330 328
+  speaker none
+  text "Suicune is looking this way!"
+  walk t06_tsure_poke_static_suicune onspot down 2 fast
+  sound "ledge"
+  effect shadow 1330 334 1.5 down
+  camera path 1330 331 1330 334 5
+  text "Suicune bounded off over the sea to the south!"
+  hide t06_tsure_poke_static_suicune
+  setflag FLAG_HIDE_VERMILION_SUICUNE
+  setvar VAR_UNK_4070 2
+  setvar VAR_UNK_4086 1
+  camera release 0.6
+  letterbox off 0.3
+  endscene
+  end
