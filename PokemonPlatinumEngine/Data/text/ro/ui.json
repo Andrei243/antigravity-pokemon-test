@@ -1755,6 +1755,7 @@
       "Lullaby": "CÂNTEC DE LEAGĂN POKéMON",
       "HoennSound": "SUNETUL HOENN",
       "SinnohSound": "SUNETUL SINNOH",
+      "PokeFlute": "FLAUTUL POKé",
       "Unown": "SEMNAL"
     },
     "people": {
@@ -2512,6 +2513,16 @@
     "photo": "FOTOGRAFIA CONCURSULUI",
     "photoContest": "Concurs de {category}, Rang {rank}",
     "photoBy": "{trainer}  ·  {date}"
+  },
+  "photoAlbum": {
+    "title": "ALBUM FOTO",
+    "count": "{n} / {of}",
+    "empty": "Încă nicio fotografie. Caută-l pe Cameron în călătoriile lui.",
+    "page": "PAGINA {n} DIN {of}",
+    "nobody": "Doar tu, zâmbind",
+    "taken": "{day} {month} {year}",
+    "removeAsk": "Arunci fotografia aceasta?",
+    "hint": { "throwAway": "Aruncă", "remove": "Arunc-o", "keep": "Păstreaz-o" }
   },
   "apricorn": {
     "title": "CUTIA DE APRICORN",

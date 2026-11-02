@@ -42,6 +42,7 @@
     "Budew",
     "Carnivine"
   ],
+  "homeRegion": "Kanto",
   "warps": [
     { "x": 32, "z": 77, "to": "route_2_viridian_forest_south_gatehouse", "toWarp": 1 },
     { "x": 12, "z": 15, "to": "route_2_viridian_forest_north_gatehouse", "toWarp": 0 },

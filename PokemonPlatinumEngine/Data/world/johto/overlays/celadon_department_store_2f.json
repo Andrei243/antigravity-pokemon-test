@@ -4,8 +4,9 @@
   // of HeartGold's own (FLAG_HIDE_CELADON_DEPT_STORE_2F_CRASHER_WAKE), are held back
   "area": "celadon_department_store_2f",
   "bgmTrack": "kanto/celadon",
-  "heldBack": [ "t07r0102_gsmiddleman1_2", "t07r0102_leader3" ],
+  "heldBack": [ "t07r0102_leader3" ],
   "people": {
+    "t07r0102_gsmiddleman1_2": { "name": "Cameron", "script": "Cameron", "still": true, "hiddenBy": "", "shownBy": "FLAG_JOHTO_MET_CAMERONS_FATHER" },
     "t07r0102_shopm1_2": {
       "name": "Clerk",
       "script": "MedicineClerk",

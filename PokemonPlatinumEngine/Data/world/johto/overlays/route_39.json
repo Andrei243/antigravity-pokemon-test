@@ -8,6 +8,8 @@
   "bgmTrack": "johto/route38",
   "trees": "Round",
   "people": {
+    // Lt. Surge, out on Mondays once his number is registered (plan 20, part q; scripts/route_39.txt)
+    "r39_gsleader9": { "name": "Lt. Surge", "script": "MeetLtSurge", "still": true },
     "r39_seaman_2": {
       "name": "Eugene",
       "trainer": {

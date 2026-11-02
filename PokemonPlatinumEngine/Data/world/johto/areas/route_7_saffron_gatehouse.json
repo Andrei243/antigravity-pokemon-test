@@ -14,6 +14,7 @@
   "running": true,
   "escapeRope": false,
   "fly": false,
+  "homeRegion": "Kanto",
   "warps": [
     { "x": 10, "z": 7, "to": "saffron", "toWarp": 15 },
     { "x": 1, "z": 7, "to": "johto_route_7", "toWarp": 0 }

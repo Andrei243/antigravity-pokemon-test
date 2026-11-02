@@ -76,6 +76,7 @@
     "Buizel",
     "Bidoof"
   ],
+  "homeRegion": "Kanto",
   "warps": [],
   "objects": [
     { "id": "r24_gsman1", "looks": "gsman1", "movement": "16", "x": 1325, "z": 80, "facing": 2, "rangeX": 0, "rangeZ": 0, "y": 196608, "script": "R24_000+1" },

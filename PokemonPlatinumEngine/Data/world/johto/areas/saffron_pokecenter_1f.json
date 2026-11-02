@@ -14,6 +14,7 @@
   "running": true,
   "escapeRope": false,
   "fly": false,
+  "homeRegion": "Kanto",
   "warps": [
     { "x": 8, "z": 19, "to": "saffron", "toWarp": 13 },
     { "x": 14, "z": 17, "to": "saffron_pokecenter_2f", "toWarp": 0 }

@@ -14,6 +14,7 @@
   "running": true,
   "escapeRope": false,
   "fly": false,
+  "homeRegion": "Kanto",
   "warps": [
     { "x": 4, "z": 3, "to": "route_5_underground_path_gate", "toWarp": 2 },
     { "x": 4, "z": 4, "to": "route_5_underground_path_gate", "toWarp": 2 },

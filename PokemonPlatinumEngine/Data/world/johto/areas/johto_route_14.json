@@ -42,6 +42,7 @@
     "Shinx",
     "Shinx"
   ],
+  "homeRegion": "Kanto",
   "warps": [],
   "objects": [
     { "id": "r14_gsmiddleman1", "looks": "gsmiddleman1", "movement": "4", "x": 1361, "z": 400, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 2, "script": "TRAINER_POKEFAN_M_TREVOR" },

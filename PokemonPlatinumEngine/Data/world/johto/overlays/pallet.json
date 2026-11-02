@@ -5,10 +5,8 @@
   "area": "pallet",
   "bgmTrack": "kanto/pallet",
   "architecture": "Clapboard",
-  "heldBack": [
-    "t01_gsmiddleman1"
-  ],
   "people": {
+    "t01_gsmiddleman1": { "name": "Cameron", "script": "Cameron", "still": true, "hiddenBy": "", "shownBy": "FLAG_JOHTO_MET_CAMERONS_FATHER" },
     "t01_gswoman1": {
       "name": "Woman",
       "dialog": [

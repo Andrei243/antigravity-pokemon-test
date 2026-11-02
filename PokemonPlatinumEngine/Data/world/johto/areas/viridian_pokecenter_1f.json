@@ -14,6 +14,7 @@
   "running": true,
   "escapeRope": false,
   "fly": false,
+  "homeRegion": "Kanto",
   "warps": [
     { "x": 8, "z": 19, "to": "viridian", "toWarp": 4 },
     { "x": 14, "z": 17, "to": "viridian_pokecenter_b1f", "toWarp": 0 }

@@ -16,7 +16,7 @@ public enum PokegearCard { Phone, Map, Radio }
 /// What the radio plays over the field (HeartGold's <c>enum RadioMusicPlayingSeq</c>, <c>GetRadioMusicPlayingSeq</c>):
 /// the songs whose playing changes the wild Pokémon.
 /// </summary>
-public enum RadioSong { None, March, Lullaby, HoennSound, SinnohSound, Unown }
+public enum RadioSong { None, March, Lullaby, HoennSound, SinnohSound, Unown, PokeFlute }
 
 /// <summary>The radio's stations, in HeartGold's order (<c>include/constants/radio_station.h</c>).</summary>
 public enum RadioStation
@@ -26,7 +26,7 @@ public enum RadioStation
 }
 
 /// <summary>What the radio picks up where the player is (<c>Radio_GetAvailableChannels</c>, the part Johto has so far).</summary>
-public enum RadioSignal { Johto, NoSignal, Alph, Rocket, Mahogany }
+public enum RadioSignal { Johto, NoSignal, Alph, Rocket, Mahogany, Kanto }
 
 /// <summary>
 /// One contact of the phone book (plan 20 · J3; HeartGold's <c>files/tel/pmtel_book.json</c>, which the importer writes
@@ -399,8 +399,15 @@ public sealed class RadioDial
         // Mahogany's "strange signal": each station gives way to them while they last)
         RadioSignal.Rocket => SpotsOf(RadioSignal.Johto).Select(s => s with { Slot = 6 }).ToArray(),
         RadioSignal.Mahogany => SpotsOf(RadioSignal.Johto).Select(s => s with { Slot = 7 }).ToArray(),
+        // Kanto's stations, once the Expn Card is in the bag (plan 20, part q): the music and Professor Oak's talk where
+        // Johto has them, the Kanto Radio Tower's "That Town, These People" (slot 8) and the Poké Flute (slot 4) where
+        // Johto's lower two are; the spots are ours, HeartGold's sTuningHitboxes_Kanto not being read
+        RadioSignal.Kanto => new[] { new Spot(112, 76, 4, 16, 0), new Spot(152, 76, 4, 20, 1), new Spot(96, 108, 4, 16, 8), new Spot(136, 116, 4, 20, 4) },
         _ => Array.Empty<Spot>()
     };
+
+    /// <summary>The key item by which HeartGold's Kanto hears Kanto's stations (plan 20, part q).</summary>
+    public const string ExpnCard = "Expn Card";
 
     public int X { get; private set; } = CenterX;
     public int Y { get; private set; } = CenterY;
@@ -447,6 +454,7 @@ public sealed class RadioDial
         5 => RadioStation.Unown,
         6 => RadioStation.TeamRocket,
         7 => RadioStation.MahoganySignal,
+        8 => RadioStation.ThatTownThesePeople,
         _ => RadioStation.PokemonMusic
     };
 
@@ -468,6 +476,7 @@ public sealed class RadioDial
     {
         RadioStation.PokemonMusic => MusicOn(day, nationalDex),
         RadioStation.Unown => RadioSong.Unown,
+        RadioStation.PokeFlute => RadioSong.PokeFlute,
         _ => RadioSong.None
     };
 
@@ -484,10 +493,18 @@ public sealed class RadioDial
     /// stations out in Mahogany Town, on Route 43 and its gate and at the Lake of Rage, once the red Gyarados has been
     /// met (HeartGold's Mahogany signal). The Ruins of Alph's halls and caves keep what they receive.
     /// </summary>
-    public static RadioSignal SignalAt(string? areaKey, bool cave, StoryState story)
+    public static RadioSignal SignalAt(string? areaKey, bool cave, StoryState story) => SignalAt(areaKey, cave, story, kanto: false, expnCard: false);
+
+    /// <summary>
+    /// What is received where the player is, in Johto or in HeartGold's Kanto (plan 20, part q): an area whose header
+    /// is Kanto's (<see cref="MapArea.InKanto"/>) takes Kanto's stations once the Expn Card is in the bag, and Johto's
+    /// as before without it. Team Rocket's broadcast and Mahogany's signal are Johto's alone.
+    /// </summary>
+    public static RadioSignal SignalAt(string? areaKey, bool cave, StoryState story, bool kanto, bool expnCard)
     {
         var signal = SignalAt(areaKey, cave);
         if (signal != RadioSignal.Johto) return signal;
+        if (kanto) return expnCard ? RadioSignal.Kanto : RadioSignal.Johto;
         int takeover = story.Var("VAR_SCENE_ROCKET_TAKEOVER");
         if (takeover >= 2 && takeover <= 4) return RadioSignal.Rocket;
         if (areaKey is { } key && IsMahogany(key) && story.Has("FLAG_HIDE_LAKE_OF_RAGE_RED_GYARADOS")
@@ -511,6 +528,53 @@ public sealed class RadioDial
         // (HeartGold's Sinnoh Sound is Route 201's theme: ours is Route 201's own)
         RadioSong.SinnohSound => "sinnoh/route201",
         RadioSong.Unown => "johto/radio_unown",
+        RadioSong.PokeFlute => "kanto/poke_flute",
         _ => null
     };
+}
+
+/// <summary>
+/// HeartGold's calls that the story makes rather than a contact's day (plan 20, part q; the beats HeartGold's, the
+/// conditions and the words ours): Professor Elm once the Egg his aide handed over has hatched, the Goldenrod bike
+/// shop's owner a day after lending the Bicycle, and Bill each time another box of the PC has filled. Each asks for the
+/// caller's number in the Pokégear and is noted as it rings (<see cref="Ring"/>), so it doesn't ring again; its words
+/// are a script of <c>phone.txt</c>. No drawing or input.
+/// </summary>
+public static class StoryCalls
+{
+    /// <summary>The scripts of <c>phone.txt</c> the three calls play.</summary>
+    public const string ElmEgg = "ProfElmEgg", BikeShop = "BikeShopLoan", BillBoxes = "BillBoxFull";
+
+    /// <summary>Flags and the variable of ours the calls keep: Elm has rung, the bike was lent today, the shop has rung, the boxes Bill last rang about.</summary>
+    public const string ElmEggFlag = "FLAG_JOHTO_ELM_EGG_CALL", BikeLentTodayFlag = "FLAG_DAILY_JOHTO_BIKE_LENT",
+        BikeShopFlag = "FLAG_JOHTO_BIKE_SHOP_CALL", BillBoxesVar = "VAR_JOHTO_BILL_FULL_BOXES";
+
+    /// <summary>The species the Mystery Egg hatches into, and what it grows into.</summary>
+    private static readonly string[] EggLine = { "Togepi", "Togetic", "Togekiss" };
+
+    /// <summary>How many of the PC's boxes are full.</summary>
+    public static int FullBoxes(PcBoxes boxes) => boxes.Boxes.Count(b => b.Count >= PcBoxes.BoxSize);
+
+    /// <summary>The script of the call due now, or null: Elm first, then the shop, then Bill.</summary>
+    public static string? Due(StoryState story, Party party, PcBoxes boxes)
+    {
+        if (story.Has(Pokegear.ContactFlag("prof_elm")) && story.Has("FLAG_GOT_TOGEPI_EGG") && !story.Has(ElmEggFlag)
+            && party.Members.Any(p => !p.IsEgg && EggLine.Contains(p.Species.Name)))
+            return ElmEgg;
+        if (story.Has(Pokegear.ContactFlag("bike_shop")) && story.Has("FLAG_UNK_089") && !story.Has(BikeLentTodayFlag) && !story.Has(BikeShopFlag))
+            return BikeShop;
+        if (story.Has(Pokegear.ContactFlag("bill")) && FullBoxes(boxes) > story.Var(BillBoxesVar))
+            return BillBoxes;
+        return null;
+    }
+
+    /// <summary>The call due now (<see cref="Due"/>), noted as rung: its flag set, or the boxes Bill has rung about counted.</summary>
+    public static string? Ring(StoryState story, Party party, PcBoxes boxes)
+    {
+        var script = Due(story, party, boxes);
+        if (script == ElmEgg) story.Set(ElmEggFlag);
+        else if (script == BikeShop) story.Set(BikeShopFlag);
+        else if (script == BillBoxes) story.SetVar(BillBoxesVar, FullBoxes(boxes));
+        return script;
+    }
 }

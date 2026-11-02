@@ -417,6 +417,9 @@ Plan 06 · R13. What the game remembers of its wild Pokémon beyond the tables (
 | `apricorn order red` | Kurt's order (plan 20 · J6): takes every Apricorn of the colour out of the Box to be made into balls, ready from the next calendar day. `RESULT` and `{apricorns}` are how many; 0, and nothing taken, with none of the colour or an order already in hand. |
 | `apricorn status` | `RESULT` is 0 with no order in hand, 1 with Kurt at work, 2 with the balls ready to collect; `{apricorn}`, `{apricorns}` and `{ball}` name the order's colour, count and ball. |
 | `apricorn collect` | Hands over a finished order into the bag, silently: `RESULT` and `{apricorns}` how many (0 if none is ready), `{ball}` and `{item}` the ball. |
+| `photo take` | Cameron's photograph (plan 20, part q; `Models/PhotoAlbum.cs`, `common.Cameron`): puts a photograph of the player and the team's first Pokémon that is no Egg, at the area of the person the script belongs to and today, at the album's end. `RESULT` 1, or 0 with the album full (36) or a host that keeps no album. |
+| `photo album` | Opens the photo album (`UI/PhotoAlbumScreen.cs`, Cianwood City's studio) and waits for it to be put away. |
+| `photo count` | `RESULT` is how many photographs the album holds. |
 | `lottery boxed` | `RESULT` is 1 when the last draw's winner is in the boxes, 0 when on the team (which wins a tie). |
 | `survivepoison VAR_X` | The team's Pokémon at the place the variable gives comes through the poison if it is down to one hit point: cured, `RESULT` 1; otherwise 0. |
 

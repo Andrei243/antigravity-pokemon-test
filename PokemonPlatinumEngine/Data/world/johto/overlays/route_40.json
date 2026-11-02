@@ -44,6 +44,12 @@
       ]
     }
   },
+  // Warden Baoba, whom HeartGold's map doesn't hold (plan 20, part q): on the beach by Olivine City until his Safari
+  // Zone opens and he rings (VAR_UNK_4057 from 1, olivine.txt), laid by the route's arrival (route_40.txt)
+  "npcs": [
+    { "id": "route_40_baoba", "name": "Baoba", "npcType": "gentleman", "x": 250, "y": 271, "facing": "Left",
+      "script": "Baoba", "hiddenBy": "FLAG_JOHTO_HIDE_ROUTE_40_BAOBA" }
+  ],
   "signs": {
     "W40_002+1": "Route 40\nCianwood City lies to the west, across the sea.",
     "W40_009+1": "Battle Frontier\nThe gate to the place where the strongest gather."

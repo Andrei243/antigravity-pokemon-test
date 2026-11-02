@@ -134,6 +134,9 @@ public sealed class MapArea
     public List<string> HoennSounds { get; } = new();
     public List<string> SinnohSounds { get; } = new();
 
+    /// <summary>Whether the original's header puts the area in Kanto (HeartGold's <c>regionNo</c>, plan 20, part q): the radio's Kanto station.</summary>
+    public bool InKanto { get; set; }
+
     /// <summary>
     /// Our own species once the National Pokédex is had (plan 03 · D12a, an overlay's <c>national</c>): two for the
     /// grass's slots 8 and 9, and one for the Super Rod's slot 3. Empty where the area adds none.

@@ -76,6 +76,7 @@
     "Buizel",
     "Bidoof"
   ],
+  "homeRegion": "Kanto",
   "warps": [
     { "x": 1419, "z": 163, "to": "johto_rock_tunnel_1f", "toWarp": 1 },
     { "x": 1423, "z": 184, "to": "route_10_power_plant_repaired", "toWarp": 0 },

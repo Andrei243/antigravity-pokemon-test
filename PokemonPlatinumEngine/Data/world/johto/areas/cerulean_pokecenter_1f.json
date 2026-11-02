@@ -14,6 +14,7 @@
   "running": true,
   "escapeRope": false,
   "fly": false,
+  "homeRegion": "Kanto",
   "warps": [
     { "x": 8, "z": 19, "to": "cerulean", "toWarp": 3 },
     { "x": 14, "z": 17, "to": "cerulean_pokecenter_b1f", "toWarp": 0 }

@@ -14,6 +14,7 @@
   "running": true,
   "escapeRope": true,
   "fly": false,
+  "homeRegion": "Kanto",
   "warps": [
     { "x": 14, "z": 25, "to": "johto_seafoam_islands_1f", "toWarp": 4 }
   ],

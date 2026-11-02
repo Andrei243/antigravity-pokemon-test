@@ -9,6 +9,45 @@
 
 script OnEnter
   setvar VAR_JOHTO_SILPH_LIFT_FLOOR 0
+  # Steven (plan 20, part q): in the lobby for a Champion of Johto with Kanto's eight Badges too, until he has given his
+  # gift (HeartGold's FLAG_HIDE_SAFFRON_CITY_STEVEN; FLAG_JOHTO_GOT_HOENN_STARTER is ours)
+  setflag FLAG_HIDE_SAFFRON_CITY_STEVEN
+  if flag FLAG_JOHTO_GOT_HOENN_STARTER end
+  if not flag JohtoHallOfFame end
+  if badges of kanto < 8 end
+  clearflag FLAG_HIDE_SAFFRON_CITY_STEVEN
+  end
+
+
+# Steven's visit (our words on HeartGold's beat): he has come from Hoenn on Devon business, and gives the sixteen-Badge
+# Champion one of Hoenn's first three Pokémon, at level 5. After it he goes on to Pewter's museum
+# (pewter_museum_of_science.txt)
+script Steven
+  face t11r0701_daigo player
+  speaker "Steven"
+  say "You must be {player}. I'm Steven. I came from Hoenn on business with Silph Co., but I've been hearing about you."
+  say "Sixteen Badges, Johto's and Kanto's both. I'd like to see what you could do with a Pokémon from my home."
+  if var PARTY_COUNT >= 6 goto Full
+  choose "Which would you like to raise?" "Treecko" "Torchic" "Mudkip"
+  if result == 1 goto Torchic
+  if result == 2 goto Mudkip
+  givepokemon "Treecko" 5
+  goto Given
+label Torchic
+  givepokemon "Torchic" 5
+  goto Given
+label Mudkip
+  givepokemon "Mudkip" 5
+label Given
+  fanfare pokemon
+  text "{player} received a Pokémon from Steven!"
+  say "Take good care of it. I'm off to Pewter City. They say its museum has a stone that fell from space."
+  setflag FLAG_JOHTO_GOT_HOENN_STARTER
+  setflag FLAG_HIDE_SAFFRON_CITY_STEVEN
+  hide self
+  end
+label Full
+  say "But your team is full. Make room on it, then come back and talk to me."
   end
 
 

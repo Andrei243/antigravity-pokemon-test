@@ -14,6 +14,7 @@
   "running": true,
   "escapeRope": false,
   "fly": false,
+  "homeRegion": "Kanto",
   "warps": [
     { "x": 11, "z": 23, "to": "route_26", "toWarp": 2 },
     { "x": 11, "z": 2, "to": "johto_victory_road_1f", "toWarp": 0 },

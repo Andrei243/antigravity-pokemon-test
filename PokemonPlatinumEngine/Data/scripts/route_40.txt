@@ -6,10 +6,35 @@
 # (VAR_NUM_MET_WEEKDAY_SIBLINGS); once all seven are met she gives the ribbon of the day (common.WeekSiblingRibbon).
 
 
+#
+# Warden Baoba (plan 20, part q: HeartGold's map holds no object of his here, so he is the overlay's own) waits on the
+# beach by Olivine City until his Safari Zone opens: the route's arrival shows him while his variable is 0
+# (VAR_UNK_4057, safari_zone_entrance_interior.txt) and takes him away once his call has set it (olivine.txt). Spoken
+# to, he tells of the zone he is building beyond Cianwood City and says he will ring (FLAG_JOHTO_MET_BAOBA, ours), which
+# his call then answers ("Sorry to keep you waiting").
+
+
 # W40_000, the route's own script as it loads
 script OnEnter
   setflag FLAG_UNK_206
   if weekday monday clearflag FLAG_UNK_206
+  setflag FLAG_JOHTO_HIDE_ROUTE_40_BAOBA
+  if var VAR_UNK_4057 == 0 clearflag FLAG_JOHTO_HIDE_ROUTE_40_BAOBA
+  end
+
+
+# Warden Baoba, before his Safari Zone opens (ours)
+script Baoba
+  face route_40_baoba player
+  speaker "Baoba"
+  if flag FLAG_JOHTO_MET_BAOBA goto Again
+  say "Hello there, young Trainer! The name's Baoba. I'm the warden of a Safari Zone, or I will be soon."
+  say "I'm building it past the cliffs on the far side of Cianwood City. Wild Pokémon from all over, free for the catching!"
+  say "It isn't quite ready yet. When it is, I'll give you a ring, so don't you go changing your number!"
+  setflag FLAG_JOHTO_MET_BAOBA
+  end
+label Again
+  say "The workmen are still busy at my Safari Zone. I'll ring you the moment its gate opens!"
   end
 
 

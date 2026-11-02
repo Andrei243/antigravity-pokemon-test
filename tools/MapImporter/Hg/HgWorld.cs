@@ -428,6 +428,8 @@ public sealed class HgWorld
             // The radio's Hoenn and Sinnoh Sounds (plan 20 · J3), HeartGold's two species of each
             HoennSounds = land == null ? null : Sounds(wild!.Hoenn, header.Key),
             SinnohSounds = land == null ? null : Sounds(wild!.Sinnoh, header.Key),
+            // The header's regionNo (plan 20, part q): Kanto's areas say so, Johto's say nothing
+            HomeRegion = header.Kanto ? "Kanto" : null,
             Warps = events.Warps.Select(w => new AreaWarp { X = w.X, Z = w.Z, To = KeyOf(w.DestHeaderId), ToWarp = w.DestWarpId }).ToList(),
             Objects = events.Objects.Select(o =>
             {

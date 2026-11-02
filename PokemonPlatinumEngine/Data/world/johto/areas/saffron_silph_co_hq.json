@@ -14,6 +14,7 @@
   "running": true,
   "escapeRope": false,
   "fly": false,
+  "homeRegion": "Kanto",
   "warps": [
     { "x": 11, "z": 14, "to": "saffron", "toWarp": 8 },
     { "x": 3, "z": 2, "to": "saffron_silph_co_elevator", "toWarp": 0 }

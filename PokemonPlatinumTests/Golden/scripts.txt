@@ -9467,6 +9467,12 @@ way 1, from answer 1
   + FLAG_HIDE_CIANWOOD_SUICUNE
   = VAR_UNK_4076 0 -> 1
   = VAR_UNK_4092 0 -> 1
+=== cianwood_camerons_house.Father
+from Man at 4,4 of Cianwood_PhotoStudio
+way -
+  Man> Welcome to my studio! My son Cameron takes photos of Trainers all over Johto, and Kanto too.
+  Man> I'll tell him to look out for you. Every photograph he takes of you comes here, and I keep them in an album.
+  + FLAG_JOHTO_MET_CAMERONS_FATHER
 === cianwood_gym.Chuck
 from Chuck at 13,10 of Cianwood_Gym
 way -
@@ -9940,6 +9946,10 @@ from the tile read at 38,19 of CliffEdgeGate
 from the tile read at 39,19 of CliffEdgeGate
 way -
   > Warden Baoba's Safari Zone\nCOMING SOON! Wild Pokémon to find around every corner!
+=== cliff_edge_gate.MeetChuck
+from Chuck at 35,21 of CliffEdgeGate
+way -
+  Chuck> HWAAAH! The wind through this gate is perfect for training my breathing. Saturdays I come and stand in it.
 === cliff_edge_gate.Woman
 from Woman at 34,19 of CliffEdgeGate
 way -
@@ -10233,6 +10243,17 @@ way -
   * warp Route35_NationalParkGate 23 4
   * open BugContestResults
   = VAR_BUG_CONTEST_PLACE 0 -> 3
+=== common.Cameron
+from a trainer with lines of their own
+way 0
+  Cameron> Hi, I'm Cameron, the photographer! This spot makes a great picture. Shall I take one of you and your team's lead?
+  > Click! Cameron took a photograph of Lucas.
+  Cameron> Lovely shot! I'll send it to my dad's studio in Cianwood City. He keeps your album there.
+  ? Hi, I'm Cameron, the photographer! This spot makes a great picture. Shall I take one of you and your team's lead? = Yes
+  * sound select
+way 1, from answer 1
+  Cameron> No? Well, if you change your mind, I'll be right here with my camera.
+  ? Hi, I'm Cameron, the photographer! This spot makes a great picture. Shall I take one of you and your team's lead? = No
 === common.CampaignOver
 from a trainer with lines of their own
 way -
@@ -16926,6 +16947,9 @@ way 0.0
   ? Say, how would you like a Bicycle? Ride it around Johto and show everyone how great it is! = Yes
   ? Really? You'll help me out? In that case, it's yours. No charge! = Yes
   * fanfare FanfareKeyItem
+  * addcontact bike_shop
+  + FLAG_DAILY_JOHTO_BIKE_LENT
+  + FLAG_PHONE_CONTACT_BIKE_SHOP
   + FLAG_UNK_089
 way 0.1, from answer 2
   Owner> Oh... Well, if you change your mind, I'll be right here.
@@ -16941,8 +16965,10 @@ way 0
   > Lucas received Eevee!
   Bill> Eevee's a funny one. Its genes are unstable, so it can turn into lots of different Pokémon. Take good care of it!
   ? It's a rare one, and it can evolve in all sorts of ways. Would you like to raise it? = Yes
+  * addcontact bill
   * fanfare FanfarePokemon
   + FLAG_GOT_EEVEE_FROM_BILL
+  + FLAG_PHONE_CONTACT_BILL
 way 1, from answer 1
   Bill> No? That's a shame. If you change your mind, come back. Eevee will be here.
   ? It's a rare one, and it can evolve in all sorts of ways. Would you like to raise it? = No
@@ -18207,6 +18233,14 @@ way 1, from answer 1
 from Eusine at 1409,42 of Johto
 way -
   Eusine> Suicune is waiting at the end of the cape. Go to it, Lucas.
+=== johto_route_25.EusineAfterSuicune
+from Eusine at 1422,40 of Johto
+way -
+  Eusine> I saw it all from here, Lucas. Suicune chose you. I chased it for ten years, and it chose you.
+  Eusine> I'm not bitter. Well... a little. But I'm glad it was someone who followed it as far as I did.
+  Eusine> I'll keep studying the legendary Pokémon. Perhaps one of them is waiting for me somewhere. Farewell!
+  + FLAG_HIDE_ROUTE_25_EUSINE_2
+  + FLAG_JOHTO_EUSINE_PARTED
 === johto_route_25.EusineOnTheCape
 from the trigger at 1418,40 of Johto
 way -
@@ -21601,6 +21635,10 @@ way 0
 way 1, from answer 1
   * wildbattle Meloetta 65 Lost
   + seen musical_theater.Meloetta in the Musical Theater
+=== national_park.MeetBugsy
+from Bugsy at 58,39 of NationalPark
+way -
+  Bugsy> Sundays there's no contest, so I get the whole park to myself. Well, me and every Bug Pokémon in the grass.
 === navel_rock_bottom.Lugia
 from Lugia at 11,13 of NavelRock_Bottom
 way 0
@@ -23121,6 +23159,11 @@ from the tile read at 10,25 of Pewter_Gym
 from the tile read at 4,25 of Pewter_Gym
 way -
   > Pewter City Pokémon Gym\nLeader: Brock
+=== pewter_museum_of_science.Steven
+from Steven at 23,7 of Pewter_Museum
+way -
+  Steven> This stone fell from the sky long ago. In Hoenn, people say stones like it carry something of the space between stars.
+  Steven> I collect rare stones, you see. Some people find that dull. I find it endlessly exciting!
 === plasma_frigate_2.Barrier
 from the trigger at 9,7 of PlasmaFrigate_Hold
 way -
@@ -26490,6 +26533,10 @@ from the trigger at 11,16 of Route22_LeagueReceptionGate
 way -
   Guard> Hold on a moment. The road north is for trainers with all eight of Johto's Badges, and you don't have them yet.
   Guard> Come back once you've won the rest.
+=== route_22_pokemon_league_reception_gate.Blue
+from Blue at 13,10 of Route22_LeagueReceptionGate
+way -
+  Blue> I'm watching who comes through here. Everyone wants to be Champion, but hardly anyone looks further than that.
 === route_22_pokemon_league_reception_gate.Guard
 from Guard at 9,16 of Route22_LeagueReceptionGate
 way -
@@ -26875,6 +26922,10 @@ way -
 from Sunny at 404,200 of Johto
 way -
   Sunny> It's not Sunday yet. I only get to come out on Sundays!
+=== route_39.MeetLtSurge
+from Lt. Surge at 263,188 of Johto
+way -
+  Lt. Surge> Hey, kid! I came out to the farm for a bottle of that famous Moomoo Milk. Best fuel there is, besides electricity!
 === route_39_moomoo_farm_house.Farmer
 from Farmer at 6,4 of Route39_MoomooFarmHouse
 way -
@@ -26920,6 +26971,13 @@ way 0
 way 1, from answer 1
   Black Belt> Come back if you change your mind. My punches aren't going anywhere.
   ? A punch is all in the hips! Shall I teach one of your Pokémon Mega Punch? = No
+=== route_40.Baoba
+from Baoba at 250,271 of Johto
+way -
+  Baoba> Hello there, young Trainer! The name's Baoba. I'm the warden of a Safari Zone, or I will be soon.
+  Baoba> I'm building it past the cliffs on the far side of Cianwood City. Wild Pokémon from all over, free for the catching!
+  Baoba> It isn't quite ready yet. When it is, I'll give you a ring, so don't you go changing your number!
+  + FLAG_JOHTO_MET_BAOBA
 === route_40.Monica
 from Monica at 238,273 of Johto
 way -
@@ -27884,6 +27942,10 @@ from the tile read at 13,23 of Saffron_Gym
 from the tile read at 17,23 of Saffron_Gym
 way -
   > Saffron City Pokémon Gym\nLeader: Sabrina
+=== saffron_magnet_train_station_1f.MeetLtSurge
+from Lt. Surge at 19,10 of Saffron_MagnetTrainStation
+way -
+  Lt. Surge> This train's powered by electricity, kid. Every time I ride it, it feels like a little bit of home.
 === saffron_magnet_train_station_1f.Officer
 from Officer at 14,9 of Saffron_MagnetTrainStation
 way 0
@@ -27912,6 +27974,32 @@ from Guard at 4,4 of Saffron_SilphCo
 way -
   Guard> That lift goes up to the research floor. Only staff may ride it, I'm afraid.
   Guard> Unless you've got a Rotom with you. The researchers up there are always glad to meet one.
+=== saffron_silph_co_hq.Steven
+from Steven at 14,8 of Saffron_SilphCo
+way 0
+  Steven> You must be Lucas. I'm Steven. I came from Hoenn on business with Silph Co., but I've been hearing about you.
+  Steven> Sixteen Badges, Johto's and Kanto's both. I'd like to see what you could do with a Pokémon from my home.
+  Steven> Which would you like to raise?
+  > Lucas received a Pokémon from Steven!
+  Steven> Take good care of it. I'm off to Pewter City. They say its museum has a stone that fell from space.
+  ? Which would you like to raise? = Treecko
+  * fanfare FanfarePokemon
+  + FLAG_HIDE_SAFFRON_CITY_STEVEN
+  + FLAG_JOHTO_GOT_HOENN_STARTER
+way 2, from answer 1
+  > Lucas received a Pokémon from Steven!
+  Steven> Take good care of it. I'm off to Pewter City. They say its museum has a stone that fell from space.
+  ? Which would you like to raise? = Mudkip
+  * fanfare FanfarePokemon
+  + FLAG_HIDE_SAFFRON_CITY_STEVEN
+  + FLAG_JOHTO_GOT_HOENN_STARTER
+way 1, from answer 1
+  > Lucas received a Pokémon from Steven!
+  Steven> Take good care of it. I'm off to Pewter City. They say its museum has a stone that fell from space.
+  ? Which would you like to raise? = Torchic
+  * fanfare FanfarePokemon
+  + FLAG_HIDE_SAFFRON_CITY_STEVEN
+  + FLAG_JOHTO_GOT_HOENN_STARTER
 === saffron_silph_co_rotom_room.Fan
 from Fan at 6,6 of Saffron_SilphCo_RotomRoom
 way -

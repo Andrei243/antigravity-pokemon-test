@@ -49,6 +49,7 @@
     { "species": "Magikarp", "level": 40, "maxLevel": 40 }
   ],
   "superRodRate": 75,
+  "homeRegion": "Kanto",
   "warps": [
     { "x": 1408, "z": 305, "to": "route_19_route_12_gatehouse", "toWarp": 1 },
     { "x": 1408, "z": 306, "to": "route_19_route_12_gatehouse", "toWarp": 1 },

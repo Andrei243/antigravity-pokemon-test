@@ -76,6 +76,7 @@
     "Buizel",
     "Bidoof"
   ],
+  "homeRegion": "Kanto",
   "warps": [
     { "x": 887, "z": 266, "to": "route_22_pokemon_league_reception_gate", "toWarp": 3 },
     { "x": 887, "z": 267, "to": "route_22_pokemon_league_reception_gate", "toWarp": 3 },

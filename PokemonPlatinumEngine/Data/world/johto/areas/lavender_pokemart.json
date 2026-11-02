@@ -14,6 +14,7 @@
   "running": true,
   "escapeRope": false,
   "fly": false,
+  "homeRegion": "Kanto",
   "warps": [
     { "x": 4, "z": 11, "to": "lavender", "toWarp": 4 }
   ],

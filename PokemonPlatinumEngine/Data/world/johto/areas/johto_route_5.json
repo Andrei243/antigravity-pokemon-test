@@ -42,6 +42,7 @@
     "Shinx",
     "Shinx"
   ],
+  "homeRegion": "Kanto",
   "warps": [
     { "x": 1300, "z": 189, "to": "route_5_saffron_gatehouse", "toWarp": 1 },
     { "x": 1301, "z": 189, "to": "route_5_saffron_gatehouse", "toWarp": 1 },

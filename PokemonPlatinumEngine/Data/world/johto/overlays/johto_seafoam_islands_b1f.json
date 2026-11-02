@@ -1,10 +1,10 @@
 {
   // The Seafoam Islands' first basement as HeartGold has it three years on (plan 20 · J15, part m): two ladders up to
-  // the first floor's two halves and four down, boulders Strength pushes aside. Cameron the photographer waits for his
-  // session. Its key meets FireRed's, so it takes Johto's prefix (HgWorld.Clashes)
+  // the first floor's two halves and four down, boulders Strength pushes aside. Cameron the photographer takes pictures
+  // here (plan 20, part q, common.Cameron). Its key meets FireRed's, so it takes Johto's prefix (HgWorld.Clashes)
   "area": "johto_seafoam_islands_b1f",
   "bgmTrack": "kanto/viridian_forest",
-  "heldBack": [
-    "d11r0102_gsmiddleman1"
-  ]
+  "people": {
+    "d11r0102_gsmiddleman1": { "name": "Cameron", "script": "Cameron", "still": true, "hiddenBy": "", "shownBy": "FLAG_JOHTO_MET_CAMERONS_FATHER" }
+  }
 }

@@ -1222,6 +1222,10 @@ public partial class GameEngine
                 case ScriptScreen.Apricorns:
                     game.OpenApricornBox(fromBag: false);
                     break;
+                // Cameron's photo album (plan 20, part q)
+                case ScriptScreen.PhotoAlbum:
+                    game.OpenPhotoAlbum();
+                    break;
                 case ScriptScreen.ContestPhoto:
                     if (System.Enum.TryParse<ContestStat>(counter, out var framed)) game.ShowContestPhoto(framed);
                     break;
@@ -1552,6 +1556,7 @@ public partial class GameEngine
 
         public BerryPatches Berries => game.flow.Berries;
         public ApricornBox Apricorns => game.flow.Apricorns;
+        public PhotoAlbum? Photos => game.flow.Photos;
         public string? ChosenItem => game.flow.ScriptItem;
 
         // ---- Poffins (plan 06 · R14c)

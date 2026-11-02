@@ -45,6 +45,45 @@ label Two
   end
 
 
+# The calls the story makes (plan 20, part q: Models/Pokegear.cs, StoryCalls; HeartGold's beats, our words), rung on a
+# step once due; the game notes each as it rings (StoryCalls.Ring), so it doesn't ring again.
+
+# Professor Elm, once the Egg his aide handed over has hatched (FLAG_JOHTO_ELM_EGG_CALL, ours)
+script ProfElmEgg
+  speaker "Prof. Elm"
+  say "{player}? It's Elm! My aide tells me the Egg hatched. A Togepi! I knew it was a Pokémon Egg all along!"
+  say "Togepi are said to share their happiness with those who care for them. Raise it with lots of love, won't you?"
+  end
+
+
+# Goldenrod City's bike shop: the owner, a day after lending the Bicycle, rings to say it's the player's to keep
+# (FLAG_JOHTO_BIKE_SHOP_CALL, ours); rung afterwards he talks of the shop
+script BikeShopLoan
+  speaker "Bike Shop owner"
+  say "Hello, is that {player}? It's the bike shop in Goldenrod! Business is booming since folks saw you riding around."
+  say "That Bicycle I lent you? Keep it! Consider it a thank-you from the shop. Ride safely!"
+  end
+
+script BikeShop
+  speaker "Bike Shop owner"
+  say "Goldenrod Bike Shop! Oh, it's you. We can hardly keep bikes on the shelves now. Thanks again, {player}!"
+  end
+
+
+# Bill, each time another box of the PC has filled (VAR_JOHTO_BILL_FULL_BOXES, ours: the full boxes he last rang about);
+# rung afterwards he talks of his storage system
+script BillBoxFull
+  speaker "Bill"
+  say "Hiya, {player}! It's Bill. I was checking on the storage system, and one of your boxes is chock-full."
+  say "Pokémon you catch will go into the next box with room, but you might want to tidy up. Bye now!"
+  end
+
+script Bill
+  speaker "Bill"
+  say "Bill here! The storage system's running smoothly. If you ever have trouble with it, you know who to call!"
+  end
+
+
 # The trainers who gave their numbers: a word about their Pokémon, or a rematch on their day
 # Chuck, the Cianwood Gym's Leader, registered after Johto's Hall of Fame (cianwood_gym.txt; plan 20 · J9's leftover).
 # His rematch is the Fighting Dojo's on his day (Data/world/johto/phone.json)

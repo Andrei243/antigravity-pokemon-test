@@ -5,11 +5,9 @@
   // (HgWorld.Clashes). Its trainers battle by their own records (Johto's trainers.json)
   "area": "johto_route_14",
   "bgmTrack": "kanto/route11",
-  "heldBack": [
-    "r14_gsmiddleman1_3"
-  ],
   "triggers": [ { "trigger": 0, "script": "SuicuneInTheGrass" } ],
   "people": {
+    "r14_gsmiddleman1_3": { "name": "Cameron", "script": "Cameron", "still": true, "hiddenBy": "", "shownBy": "FLAG_JOHTO_MET_CAMERONS_FATHER" },
     "r14_minaki": { "name": "Eusine", "script": "Eusine", "still": true },
     "r14_minaki_2": { "name": "Eusine", "script": "EusineNorth", "still": true },
     "r14_tsure_poke_static_suicune": { "name": "Suicune", "npcType": "Pokemon", "species": "Suicune", "script": "SuicuneInTheGrass", "still": true },

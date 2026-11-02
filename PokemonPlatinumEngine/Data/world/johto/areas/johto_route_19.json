@@ -54,6 +54,7 @@
     { "species": "Krabby", "level": 24, "maxLevel": 27 }
   ],
   "rockSmashRate": 30,
+  "homeRegion": "Kanto",
   "warps": [
     { "x": 1203, "z": 453, "to": "route_19_fuchsia_gatehouse", "toWarp": 1 },
     { "x": 1204, "z": 453, "to": "route_19_fuchsia_gatehouse", "toWarp": 1 }

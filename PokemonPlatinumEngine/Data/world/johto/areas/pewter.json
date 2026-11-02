@@ -14,6 +14,7 @@
   "running": true,
   "escapeRope": false,
   "fly": true,
+  "homeRegion": "Kanto",
   "warps": [
     { "x": 1048, "z": 78, "to": "pewter_museum_of_science", "toWarp": 0 },
     { "x": 1068, "z": 87, "to": "pewter_northeast_house", "toWarp": 0 },

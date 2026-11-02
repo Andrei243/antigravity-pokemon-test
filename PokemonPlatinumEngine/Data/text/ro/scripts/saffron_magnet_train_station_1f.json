@@ -40,5 +40,31 @@
         "Trenurile circulă toată ziua. Revino când ești gata."
       ]
     }
+  ],
+  "MeetLtSurge": [
+    {
+      "en": [
+        "Lt. Surge"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "This train's powered by electricity, kid. Every time I ride it, it feels like a little bit of home."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm off to Goldenrod for the day. They say the Magnet Train hits top speed in under ten seconds. Shocking!"
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

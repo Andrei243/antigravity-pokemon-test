@@ -14,6 +14,7 @@
   "running": true,
   "escapeRope": false,
   "fly": true,
+  "homeRegion": "Kanto",
   "warps": [
     { "x": 12, "z": 12, "to": "ss_aqua_vermilion_port_interior", "toWarp": 1 },
     { "x": 23, "z": 17, "to": "ss_aqua_1f", "toWarp": 12 }

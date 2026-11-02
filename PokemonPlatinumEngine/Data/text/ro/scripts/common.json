@@ -2840,5 +2840,81 @@
         "Dăm o singură fundă pe zi. Vino mâine la cine are ziua lui!"
       ]
     }
+  ],
+  "GrottoMouth": [
+    {
+      "en": [
+        "There's a hollow in the trees here, just big enough to crawl into."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Will you go in?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The trees grow too thick here to see through."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Cameron": [
+    {
+      "en": [
+        "Cameron"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hi, I'm Cameron, the photographer! This spot makes a great picture. Shall I take one of you and your team's lead?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Click! Cameron took a photograph of {player}."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Lovely shot! I'll send it to my dad's studio in Cianwood City. He keeps your album there."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "No? Well, if you change your mind, I'll be right here with my camera."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh! Dad says your album in Cianwood City is full. Throw a photograph or two away there, and I'll take another."
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

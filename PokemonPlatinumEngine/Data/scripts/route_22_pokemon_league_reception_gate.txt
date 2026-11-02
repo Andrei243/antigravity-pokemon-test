@@ -95,6 +95,32 @@ script OnEnter
   # Janine's street meeting (Johto's leftovers): Tuesdays, once Janine's number is in the Pokégear
   setflag FLAG_UNK_270
   if weekday tuesday call ShowMeetJanine
+  # Blue (plan 20, part q, ours): here once beaten in his Gym, until Red is beaten on Mt. Silver
+  setflag FLAG_JOHTO_HIDE_RECEPTION_GATE_BLUE
+  if not flag FLAG_JOHTO_DEFEATED_BLUE end
+  if flag FLAG_JOHTO_BEAT_RED end
+  clearflag FLAG_JOHTO_HIDE_RECEPTION_GATE_BLUE
+  end
+
+
+# Blue, come to the gate to watch who heads for Mt. Silver (plan 20, part q: HeartGold's visit, our beat and words). Once
+# the player holds the sixteen Badges he points them west; once they have spoken (FLAG_JOHTO_BLUE_TOLD_OF_RED, ours) he
+# keeps it short
+script Blue
+  face reception_gate_blue player
+  speaker "Blue"
+  if flag FLAG_JOHTO_BLUE_TOLD_OF_RED goto Again
+  if badges of kanto < 8 goto Short
+  say "Well, look who it is. Sixteen Badges, and my Earth Badge among them. Don't let it go to your head."
+  say "There's a trainer up on Mt. Silver, past that west door. He went up years ago and never came back down."
+  say "I used to beat him to everything. Then one day I didn't. If you want to know how strong you really are, go and find him."
+  setflag FLAG_JOHTO_BLUE_TOLD_OF_RED
+  end
+label Short
+  say "I'm watching who comes through here. Everyone wants to be Champion, but hardly anyone looks further than that."
+  end
+label Again
+  say "Still here? He won't come down to you. Mt. Silver's through the west door."
   end
 
 

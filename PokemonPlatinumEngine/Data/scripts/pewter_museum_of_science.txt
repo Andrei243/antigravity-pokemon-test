@@ -1,0 +1,27 @@
+# The Pewter Museum of Science in HeartGold's Kanto (plan 20, part q). docs/scripts.md describes the language; the lines
+# are our own, on HeartGold's beats (scr_seq_T03R0101).
+#
+# Steven's second visit: once he has given his gift in Silph Co.'s lobby (FLAG_JOHTO_GOT_HOENN_STARTER, ours,
+# saffron_silph_co_hq.txt) he stands before the space wing's stone and talks of stones. HeartGold's
+# FLAG_HIDE_STEVEN_IN_HOUSE_BEFORE_LATIS waits on the Latias and Latios that aren't built, so the museum's arrival lays
+# him by a flag of ours, FLAG_JOHTO_HIDE_PEWTER_MUSEUM_STEVEN.
+
+
+script OnEnter
+  setflag FLAG_JOHTO_HIDE_PEWTER_MUSEUM_STEVEN
+  if flag FLAG_JOHTO_GOT_HOENN_STARTER clearflag FLAG_JOHTO_HIDE_PEWTER_MUSEUM_STEVEN
+  end
+
+
+# Steven before the space wing (ours)
+script Steven
+  face t03r0101_daigo player
+  speaker "Steven"
+  random 2
+  if result == 1 goto Two
+  say "This stone fell from the sky long ago. In Hoenn, people say stones like it carry something of the space between stars."
+  say "I collect rare stones, you see. Some people find that dull. I find it endlessly exciting!"
+  end
+label Two
+  say "How is the Pokémon I gave you? A Pokémon from far away sees everything with fresh eyes. So does its Trainer."
+  end

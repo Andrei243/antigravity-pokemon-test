@@ -76,6 +76,7 @@
     "Buizel",
     "Bidoof"
   ],
+  "homeRegion": "Kanto",
   "warps": [
     { "x": 923, "z": 345, "to": "route_26_north_house", "toWarp": 0 },
     { "x": 907, "z": 365, "to": "route_26_week_siblings_house", "toWarp": 0 },

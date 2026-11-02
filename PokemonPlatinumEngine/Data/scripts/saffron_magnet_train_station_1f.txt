@@ -19,3 +19,25 @@ script Officer
 label Later
   say "The trains run all day. Come back whenever you're ready."
   end
+
+
+# Lt. Surge's street meeting (plan 20, part q): the station's arrival shows him on Wednesdays once his number is in the
+# Pokégear (HeartGold's FLAG_HIDE_SAFFRON_TRAIN_STATION_LT_SURGE; the day is ours)
+script OnEnter
+  setflag FLAG_HIDE_SAFFRON_TRAIN_STATION_LT_SURGE
+  if not weekday wednesday end
+  if flag FLAG_PHONE_CONTACT_LT_SURGE clearflag FLAG_HIDE_SAFFRON_TRAIN_STATION_LT_SURGE
+  end
+
+
+# Lt. Surge, waiting for a train on Wednesday (ours)
+script MeetLtSurge
+  face t11r0601_gsleader9 player
+  speaker "Lt. Surge"
+  random 2
+  if result == 1 goto Two
+  say "This train's powered by electricity, kid. Every time I ride it, it feels like a little bit of home."
+  end
+label Two
+  say "I'm off to Goldenrod for the day. They say the Magnet Train hits top speed in under ten seconds. Shocking!"
+  end

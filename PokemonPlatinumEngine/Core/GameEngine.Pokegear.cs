@@ -47,7 +47,10 @@ public partial class GameEngine
         screen.Waiting = c => flow.Story.Has(PhoneRematch.WaitingFlag(c.Id));
         screen.PlayerCell = RegionMapNow is { } region ? RegionCellNow(region) : null;
         screen.PlaceHere = PlaceName();
-        screen.Dial.Signal = RadioDial.SignalAt(PlaceKey(), flow.Map.AreaAt(flow.Player.GridX, flow.Player.GridY)?.IsCave ?? flow.Map.IsCave, flow.Story);
+        var areaHere = flow.Map.AreaAt(flow.Player.GridX, flow.Player.GridY);
+        // HeartGold's Kanto takes Kanto's stations with the Expn Card (plan 20, part q)
+        screen.Dial.Signal = RadioDial.SignalAt(PlaceKey(), areaHere?.IsCave ?? flow.Map.IsCave, flow.Story,
+            kanto: areaHere?.InKanto ?? false, expnCard: ItemDatabase.Get(RadioDial.ExpnCard) is { } card && flow.Bag.GetQuantity(card) > 0);
         screen.Open(Pokegear.Cards(flow.Story), Pokegear.Contacts(flow.Story), on);
         flow.State = GameState.Pokegear;
         TuneTheRadio();

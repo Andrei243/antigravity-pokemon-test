@@ -161,6 +161,8 @@ public enum Op
     Grotto,
     // The Seaside Cycling Road's timed run (plan 21 · H12, part k): judged at its end and its record read
     CyclingRoad,
+    // Cameron's photographs (plan 20, part q): one taken for the album, the album looked through, how many it holds
+    Photo,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

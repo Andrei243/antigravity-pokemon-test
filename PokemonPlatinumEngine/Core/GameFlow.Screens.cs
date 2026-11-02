@@ -62,6 +62,7 @@ public sealed partial class GameFlow
     public SealShopScreen SealShopScreen { get; } = new();
     public FashionCaseScreen FashionCaseScreen { get; } = new();
     public ApricornBoxScreen ApricornBoxScreen { get; } = new();
+    public PhotoAlbumScreen PhotoAlbumScreen { get; } = new();
     public PoffinCookingScreen PoffinCookingScreen { get; } = new();
     public PoffinCaseScreen PoffinCaseScreen { get; } = new();
     /// <summary>A Hoenn contest, the Pokéblock Case and the Berry Blender (plan 21 · H11).</summary>

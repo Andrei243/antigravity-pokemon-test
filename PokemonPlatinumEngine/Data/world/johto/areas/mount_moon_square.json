@@ -49,6 +49,7 @@
     { "species": "Poliwag", "level": 40, "maxLevel": 40 }
   ],
   "superRodRate": 75,
+  "homeRegion": "Kanto",
   "warps": [
     { "x": 28, "z": 8, "to": "mount_moon_square_entrance", "toWarp": 1 },
     { "x": 32, "z": 20, "to": "mount_moon_square_entrance", "toWarp": 2 },

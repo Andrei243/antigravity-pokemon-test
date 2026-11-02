@@ -1,0 +1,29 @@
+# Cianwood City's photo studio (plan 20, part q). docs/scripts.md describes the language; the lines are our own, on
+# HeartGold's beats (scr_seq_T24R0601).
+#
+# Cameron's father keeps the player's photo album (Models/PhotoAlbum.cs; HeartGold's album is looked at here too). The
+# first word with him sends Cameron out to his places (FLAG_JOHTO_MET_CAMERONS_FATHER, ours: every Cameron of an overlay
+# is shown by it); after that he offers the album.
+
+
+script Father
+  face t24r0601_fishing_2 player
+  speaker "Man"
+  if flag FLAG_JOHTO_MET_CAMERONS_FATHER goto Album
+  say "Welcome to my studio! My son Cameron takes photos of Trainers all over Johto, and Kanto too."
+  say "I'll tell him to look out for you. Every photograph he takes of you comes here, and I keep them in an album."
+  setflag FLAG_JOHTO_MET_CAMERONS_FATHER
+  end
+label Album
+  photo count
+  if result == 0 goto Empty
+  ask "Would you like to look through your album?"
+  if no goto Later
+  photo album
+  end
+label Empty
+  say "Your album's still empty. Find my son Cameron out on his travels, and he'll take your picture."
+  end
+label Later
+  say "Any time you like. The album isn't going anywhere."
+  end

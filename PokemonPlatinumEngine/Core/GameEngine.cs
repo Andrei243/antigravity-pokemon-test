@@ -129,7 +129,9 @@ public enum GameState
     /// <summary>The battle room's team builder (plan 13 · V13).</summary>
     TeamBuilder,
     /// <summary>A PC's Poké Jobs board: the boxes' Pokémon sent on jobs while the game is shut (plan 15 · E3).</summary>
-    Jobs
+    Jobs,
+    /// <summary>Cameron's photo album looked through, a script's <c>photo album</c> waiting on it (plan 20, part q).</summary>
+    PhotoAlbum
 }
 
 public partial class GameEngine
@@ -425,6 +427,7 @@ public partial class GameEngine
         LoadSecretBase(null, null);
         flow.Pastimes.Clear();
         flow.Apricorns.Clear();
+        flow.Photos.Clear();
         LoadFrontier(null);
         flow.ContestRecords.Load(null);
         flow.PokeblockCase.Clear();
@@ -669,6 +672,7 @@ public partial class GameEngine
         LoadSecretBase(save.SecretBase, save.Decorations);
         flow.Pastimes.Load(save.Pastimes);
         flow.Apricorns.Load(save.Apricorns);
+        flow.Photos.Load(save.Photos);
         LoadFrontier(save.Frontier);
         flow.ContestRecords.Load(save.ContestRecords);
         flow.PokeblockCase.Restore(save.Pokeblocks);
@@ -868,6 +872,7 @@ public partial class GameEngine
             Decorations = flow.Decorations.Count > 0 ? flow.Decorations : null,
             Pastimes = flow.Pastimes.ToSave(),
             Apricorns = flow.Apricorns.ToSave(),
+            Photos = flow.Photos.ToSave(),
             Frontier = flow.Frontier,
             ContestRecords = flow.ContestRecords.IsEmpty ? null : flow.ContestRecords,
             Pokeblocks = flow.PokeblockCase.Count > 0 ? flow.PokeblockCase.ToSaved() : null,
@@ -1503,6 +1508,9 @@ public partial class GameEngine
             case GameState.FashionCase:
                 UpdateFashionCase(dt);
                 break;
+            case GameState.PhotoAlbum:
+                UpdatePhotoAlbum(dt);
+                break;
             case GameState.ApricornBox:
                 UpdateApricornBox(dt);
                 break;
@@ -2061,7 +2069,7 @@ public partial class GameEngine
         if (TryStepTrigger()) return true;
         if (CheckTrainerSight()) return true;
         // Last, a contact may ring the Pokégear (plan 20 · J3)
-        return KurtRingsOnAStep() || PhoneRingsOnAStep();
+        return StoryCallOnAStep() || KurtRingsOnAStep() || PhoneRingsOnAStep();
     }
 
     /// <summary>
@@ -3153,6 +3161,9 @@ public partial class GameEngine
                 break;
             case GameState.FashionCase:
                 flow.FashionCaseScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.PhotoAlbum:
+                flow.PhotoAlbumScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.ApricornBox:
                 flow.ApricornBoxScreen.Draw(VirtualWidth, VirtualHeight);

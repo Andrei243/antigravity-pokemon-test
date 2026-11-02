@@ -7993,6 +7993,61 @@ words on the beats as they are known; where a number or a place is ours, it says
   (`VAR_JOHTO_SS_AQUA_GIRL`, 0 to 3) in place of HeartGold's `VAR_UNK_4112`, whose values couldn't be read. The night
   aboard itself (the trainers' cabins at night, the sleep) is not built.
 
+## Johto's last leftovers, part q: Baoba, Blue, Cameron's album, the Kanto station, the Leaders' places, the story's calls (2026-11-02, plan 20, part q)
+
+Built with no screen, as part p was; HeartGold's scripts still can't be read, so every beat below is in our own words and
+every number, day and tile not said to be HeartGold's is ours.
+
+- *Warden Baoba on Route 40*: HeartGold's map holds no object of his there, so he is the overlay's own person
+  (`route_40_baoba`, the gentleman's look, tile 250, 271 on the beach by Olivine City's west edge). The route's arrival
+  shows him while `VAR_UNK_4057` is 0 and takes him away once his call (Olivine City's arrival after Amphy's cure) has set
+  it. Spoken to, he names himself, tells of the zone he is building past Cianwood City and promises to ring
+  (`FLAG_JOHTO_MET_BAOBA`, which nothing else reads: his call's "sorry to keep you waiting" answers it either way).
+- *Blue at the League's reception gate*: the beat is ours. Once beaten in the Viridian Gym (`FLAG_JOHTO_DEFEATED_BLUE`)
+  he stands in the gate's hall (13, 10, an overlay person behind `FLAG_JOHTO_HIDE_RECEPTION_GATE_BLUE`, laid by the
+  gate's arrival) until Red is beaten on Mt. Silver (`FLAG_JOHTO_BEAT_RED`). To a player with Kanto's eight Badges he
+  speaks of the trainer on the mountain once (`FLAG_JOHTO_BLUE_TOLD_OF_RED`) and briefly after; otherwise he only
+  watches. He doesn't battle here.
+- *Cameron and the photo album* (`Models/PhotoAlbum.cs`, `UI/PhotoAlbumScreen.cs`, `ModernUi.Photos.cs`,
+  `GameState.PhotoAlbum`, the script's `photo take|album|count`): the album is kept by Cameron's father in Cianwood
+  City's studio and looked through there, as HeartGold's is; it holds 36 photographs (ours), one to a page, each the
+  place (the area's key), the team's first Pokémon that is no Egg as its look (form, female and shiny kept), the
+  player's look and the day. A page's photograph can be thrown away (two presses). The first word with the father sends
+  Cameron out (`FLAG_JOHTO_MET_CAMERONS_FATHER`, ours: every Cameron of an overlay is `shownBy` it, HeartGold's
+  `FLAG_HIDE_CAMERON` passed over); he stands at all fourteen of HeartGold's places that are built at once (Pallet,
+  Viridian, Pewter and its museum, Cerulean, Celadon and the store's second floor, Fuchsia, Routes 1, 14 and 21, the
+  Seafoam Islands' first basement, Route 48 and the Safari Zone's gate) and takes a photograph whenever asked while the
+  album has room. HeartGold's frames, poses and the photograph's own picture are not ours to copy: the page draws the
+  lead's menu sprite on a plain sky and ground. Saved as `SaveData.Photos` (null while empty: no version raised).
+- *The Pokégear's Kanto station*: the HeartGold importer writes the header's `regionNo` into each area file
+  (`homeRegion: "Kanto"` on every area of HeartGold's Kanto, nothing on Johto's), which the world reads as `MapArea.InKanto`. In an
+  area of Kanto, with the Expn Card in the bag, the dial is `RadioSignal.Kanto`: the music and Professor Oak's talk where
+  Johto has them, "That Town, These People" (slot 8, the Kanto Radio Tower's Places and People) and the Poké Flute
+  channel (slot 4), whose song is Kanto's `poke_flute`; the spots are ours (HeartGold's Kanto hitboxes weren't read).
+  Without the card Kanto hears Johto's stations as before; Team Rocket's broadcast and Mahogany's signal are Johto's
+  alone. The Poké Flute channel wakes nothing by itself: Route 12's Snorlax keeps its question (part h).
+- *The held-back Leaders' places* follow the street meetings' rule (part p), each on a day of ours once the Leader's
+  number is registered, laid by the place's arrival on HeartGold's own hiding flag: Chuck in the Cliff Edge Gate on
+  Saturdays (`FLAG_HIDE_CLIFFS_EDGE_GATE_CHUCK`; Route 47's waterfall then hides him that day), Bugsy in the National
+  Park on Sundays, never during a contest (`FLAG_UNK_288`), Lt. Surge on Route 39 on Mondays
+  (`FLAG_HIDE_ROUTE_39_LT_SURGE`) and at Saffron's station on Wednesdays (`FLAG_HIDE_SAFFRON_TRAIN_STATION_LT_SURGE`).
+  They only talk.
+- *Eusine's second place on the cape*: once Suicune has been fought he stands by the cape's head
+  (`FLAG_HIDE_ROUTE_25_EUSINE_2`, laid by the arrival) and, spoken to, takes his leave for good
+  (`FLAG_JOHTO_EUSINE_PARTED`, ours).
+- *Steven's visits*: in Silph Co.'s lobby for a Champion of Johto with Kanto's eight Badges (`FLAG_HIDE_SAFFRON_CITY_STEVEN`,
+  laid by the lobby's arrival), he gives one of Treecko, Torchic and Mudkip at level 5, once
+  (`FLAG_JOHTO_GOT_HOENN_STARTER`, ours), as HeartGold's does, and goes; afterwards he stands before the Pewter
+  museum's space wing (`FLAG_JOHTO_HIDE_PEWTER_MUSEUM_STEVEN`, ours) and talks of stones. HeartGold's Pewter visit with
+  Latias or Latios (the Enigma Stone's event) and the museum's second Steven are not built.
+- *The story's calls* (`StoryCalls` in `Models/Pokegear.cs`, rung on a step before Kurt's and the contacts', noted as
+  they ring so each comes once): Professor Elm once a Togepi, Togetic or Togekiss of the team is out of the Egg his aide
+  handed over (`FLAG_JOHTO_ELM_EGG_CALL`); the Goldenrod bike shop's owner, whose number now comes with the Bicycle, on
+  the first step of a day after the lending (`FLAG_DAILY_JOHTO_BIKE_LENT`, `FLAG_JOHTO_BIKE_SHOP_CALL`) to say the bike is
+  the player's; and Bill, whose number now comes with his Eevee, each time one more of the PC's boxes is full
+  (`VAR_JOHTO_BILL_FULL_BOXES`, the full boxes he last rang about). HeartGold's Bill rings for the current box; this
+  game's boxes take a catch into the first with room, so it counts full boxes instead.
+
 ## Research (2026-11-02, plan 15 · E1, E2)
 
 Legends: Arceus's research tasks, in our own words and numbers; nothing of a game's tables.

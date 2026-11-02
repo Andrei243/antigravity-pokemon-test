@@ -3,12 +3,12 @@
   // Cottage on the cape, where Misty is out on a date (johto_route_25.txt) until the player finds her. Its key meets
   // FireRed's, so it takes Johto's prefix (HgWorld.Clashes). Suicune's last stop and battle, with Eusine, are part o's:
   // HeartGold's trigger on the cape's way in on VAR_UNK_4088 1 (trigger 0) brings Eusine, and Suicune waits on the cape
-  // until it has been fought. The Misty HeartGold keeps for the phone's post-game meeting and Eusine's second place wait
-  // for their sessions; HeartGold's other trigger there (VAR_SCENE_ROUTE_25) is given no script: Misty's date stands on its
+  // until it has been fought; Eusine then stands at his second place by the cape's head until spoken to (plan 20, part
+  // q). The Misty HeartGold keeps for the phone's post-game meeting waits for her session; HeartGold's other trigger there (VAR_SCENE_ROUTE_25) is given no script: Misty's date stands on its
   // tiles
   "area": "johto_route_25",
   "bgmTrack": "kanto/route24",
-  "heldBack": [ "r25_minaki_2", "r25_gsleader11_2" ],
+  "heldBack": [ "r25_gsleader11_2" ],
   "triggers": [
     { "x": 1418, "z": 40, "depth": 3, "script": "MistysDate", "variable": "VAR_JOHTO_MISTY_DATE", "value": 0 },
     { "trigger": 0, "script": "EusineOnTheCape" }
@@ -16,6 +16,7 @@
   "people": {
     "r25_tsure_poke_static_suicune": { "name": "Suicune", "npcType": "Pokemon", "species": "Suicune", "script": "Suicune", "still": true },
     "r25_minaki": { "name": "Eusine", "still": true, "script": "Eusine" },
+    "r25_minaki_2": { "name": "Eusine", "still": true, "script": "EusineAfterSuicune" },
     "r25_gsleader11": { "name": "Misty", "npcType": "misty", "script": "MistysDate", "still": true, "hiddenBy": "FLAG_JOHTO_MISTY_BACK_IN_GYM" },
     "r25_gsman1": {
       "name": "Young man",

@@ -449,6 +449,13 @@ public sealed class WorldAreaFile
     public List<string>? SinnohSounds { get; set; }
 
     /// <summary>
+    /// The region the original's own header gives the area (plan 20, part q: HeartGold's <c>regionNo</c>), where a game
+    /// keeps more than one region in one world: <c>Kanto</c> for HeartGold's Kanto, left out for its Johto and for every
+    /// other game. The Pokégear's radio asks it for the Kanto station.
+    /// </summary>
+    public string? HomeRegion { get; set; }
+
+    /// <summary>
     /// For a GBA map with a sea floor under it (plan 18 · W7, the original's <c>dive</c> and <c>emerge</c>
     /// connections): the area Dive goes down into from its deep water, and the area surfacing from its sea floor comes
     /// up into, tile for tile. A join of every such tile, so no warp of <see cref="Warps"/>; plan 21's Dive reads it.

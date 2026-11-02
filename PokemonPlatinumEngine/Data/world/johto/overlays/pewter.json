@@ -7,12 +7,12 @@
   "trees": "Round",
   "architecture": "Granite",
   "heldBack": [
-    "t03_gsmiddleman1",
     "t03_daigo",
     "t03_tsure_poke_static_latios",
     "t03_tsure_poke_static_latias"
   ],
   "people": {
+    "t03_gsmiddleman1": { "name": "Cameron", "script": "Cameron", "still": true, "hiddenBy": "", "shownBy": "FLAG_JOHTO_MET_CAMERONS_FATHER" },
     "t03_gsoldman1": {
       "name": "Old man",
       "still": true,

@@ -14,6 +14,7 @@
   "running": true,
   "escapeRope": false,
   "fly": false,
+  "homeRegion": "Kanto",
   "warps": [
     { "x": 5, "z": 10, "to": "pallet", "toWarp": 1 },
     { "x": 3, "z": 3, "to": "pallet_town_blues_house_2f", "toWarp": 0 }

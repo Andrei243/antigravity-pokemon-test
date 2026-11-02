@@ -8,8 +8,8 @@
   "bgmTrack": "kanto/fuchsia",
   "trees": "Round",
   "architecture": "Riverside",
-  "heldBack": [ "t04_gsmiddleman1" ],
   "people": {
+    "t04_gsmiddleman1": { "name": "Cameron", "script": "Cameron", "still": true, "hiddenBy": "", "shownBy": "FLAG_JOHTO_MET_CAMERONS_FATHER" },
     "t04_gsman1": {
       "name": "Man",
       "dialog": [ "Cerulean's water is the clearest in Kanto. Misty says that's why her Pokémon are so strong." ]

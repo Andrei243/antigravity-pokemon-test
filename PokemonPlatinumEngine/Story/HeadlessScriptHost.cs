@@ -137,6 +137,7 @@ public sealed class HeadlessScriptHost : IScriptHost
 
     public BerryPatches Berries { get; set; } = BerryPatches.NewGame();
     public ApricornBox Apricorns { get; set; } = new();
+    public PhotoAlbum? Photos { get; set; } = new();
 
     /// <summary>
     /// What the bag chooses when a script asks (<c>chooseitem</c>): the item named, or the first in the bag that fits;
