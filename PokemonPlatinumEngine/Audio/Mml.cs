@@ -22,7 +22,10 @@ namespace PokemonPlatinumEngine.Audio;
 /// </summary>
 public static class Mml
 {
-    public static Song Parse(string id, string text)
+    public static Song Parse(string id, string text) => Parse(id, text, null);
+
+    /// <summary>A song whose region names <paramref name="regionSound"/> (plan 31 · MU2: the song's own <c>sound</c> wins over it).</summary>
+    public static Song Parse(string id, string text, SynthSound? regionSound)
     {
         string title = id;
         double tempo = 120, nightTempo = 0.95, lowHpTempo = 1.0, giantTempo = 1.0;
@@ -127,7 +130,7 @@ public static class Mml
         var song = new Song
         {
             Id = id, Title = title, Tempo = tempo, NightTempo = nightTempo, HasNight = hasNight, LowHpTempo = lowHpTempo, GiantTempo = giantTempo, TicksPerBar = ticksPerBar,
-            LoopTick = loopTick, EndTick = endTick, Reverb = reverb, Sound = sound, Room = room
+            LoopTick = loopTick, EndTick = endTick, Reverb = reverb, Sound = sound, Room = room, RegionSound = regionSound
         };
         foreach (var t in tracks) song.Tracks.Add(t.Track);
         return song;

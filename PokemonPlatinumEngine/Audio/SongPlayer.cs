@@ -18,7 +18,20 @@ public sealed class SongPlayer
     public SongPlayer() : this(SynthSound.Ds) { }
 
     /// <summary>A player in the sound given (plan 31: the modern one renders at <see cref="Synthesizer.ModernRate"/>).</summary>
-    public SongPlayer(SynthSound sound) => synth = new Synthesizer(sound);
+    public SongPlayer(SynthSound sound)
+    {
+        synth = new Synthesizer(sound);
+        if (sound == SynthSound.Modern) compressor = new Compressor(synth.Rate);
+    }
+
+    /// <summary>The modern sound's compressor on the song's own mix (plan 31 · MU2); none in the DS sound.</summary>
+    private readonly Compressor? compressor;
+
+    /// <summary>How hard the compressor is working now, in dB (0 when it isn't, or in the DS sound).</summary>
+    public float CompressionDb => compressor?.ReductionDb ?? 0f;
+
+    /// <summary>The compressor's mean and most reduction since the player was made, in dB (both 0 in the DS sound).</summary>
+    public (float Mean, float Most) Compression => compressor == null ? (0f, 0f) : (compressor.MeanDb, compressor.MostDb);
 
     /// <summary>The rate this player renders at.</summary>
     public int Rate => synth.Rate;
@@ -105,6 +118,7 @@ public sealed class SongPlayer
             // The night's room is a little longer as well as wetter
             var room = s.Room ?? RoomShape.Default;
             synth.Room = night ? room with { Seconds = room.Seconds * 1.15f } : room;
+            compressor!.Reset();
         }
         Playing = true;
     }
@@ -133,6 +147,7 @@ public sealed class SongPlayer
             if (Playing) Advance(n);
             var b = block.AsSpan(0, n * 2);
             synth.Render(b);
+            compressor?.Process(b);
             var o = output.Slice(done * 2, n * 2);
             for (int i = 0; i < b.Length; i++) o[i] += b[i] * gain;
         }

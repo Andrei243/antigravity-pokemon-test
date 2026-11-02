@@ -158,6 +158,24 @@ public sealed class RegionFile
 
     /// <summary>The body kit the region's people are drawn in (plan 30 · FM4 builds the grown one); chibi when left out.</summary>
     public CharacterKit Kit { get; set; } = CharacterKit.Chibi;
+
+    /// <summary>
+    /// The sound the region's music plays in (plan 31 · MU2): <c>"modern"</c>, or <c>"ds"</c> and left out for the DS
+    /// sound every region before Kalos has. A song's own header <c>sound</c> wins over it (<see cref="Audio.Song.PlaysIn"/>).
+    /// </summary>
+    public string? Sound { get; set; }
+
+    /// <summary>
+    /// <see cref="Sound"/> read: the modern sound, the DS one, or null when the file names none. Anything but
+    /// <c>modern</c> and <c>ds</c> is refused, so a misspelling can't leave a region in the wrong sound unnoticed.
+    /// </summary>
+    public Audio.SynthSound? MusicSound => Sound?.Trim().ToLowerInvariant() switch
+    {
+        null or "" => null,
+        "modern" => Audio.SynthSound.Modern,
+        "ds" => Audio.SynthSound.Ds,
+        _ => throw new FormatException($"region {Id}: 'sound' is 'modern' or 'ds', not '{Sound}'")
+    };
 }
 
 /// <summary>Which ways the player may step (plan 30): the grid's four, eight on the grid (stage 1), or free (stage 2).</summary>

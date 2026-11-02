@@ -58,12 +58,40 @@ public static class MusicLibrary
     private static Dictionary<string, Song> Load()
     {
         var result = new Dictionary<string, Song>(StringComparer.OrdinalIgnoreCase);
+        var regions = RegionSounds(ReadRegionFiles());
         // The game's own songs and every pack's, a pack's song replacing the game's of the same id (plan 16 · T14)
         foreach (var (key, path) in DataLayers.FilesIn("music", "*.mml", recursive: true))
         {
             string id = key[..^".mml".Length];
-            result[id] = Mml.Parse(id, File.ReadAllText(path));
+            result[id] = Mml.Parse(id, File.ReadAllText(path), SoundOfFolder(id, regions));
         }
         return result;
+    }
+
+    /// <summary>Every region file of the data, as the regions' sounds are read from them.</summary>
+    private static IEnumerable<RegionFile> ReadRegionFiles()
+    {
+        foreach (var (key, _) in DataLayers.FilesIn("regions", "*.json"))
+            if (GameDataFiles.Load<RegionFile>("regions/" + key) is { } file) yield return file;
+    }
+
+    /// <summary>
+    /// The sound each region's music folder plays in (plan 31 · MU2), by the folder's name: only the regions whose files
+    /// name a sound. A region's folder is its file's <c>folder</c>, or its id in lower case.
+    /// </summary>
+    public static Dictionary<string, SynthSound> RegionSounds(IEnumerable<RegionFile> files)
+    {
+        var sounds = new Dictionary<string, SynthSound>(StringComparer.OrdinalIgnoreCase);
+        foreach (var file in files)
+            if (file.MusicSound is { } sound)
+                sounds[file.Folder is { Length: > 0 } f ? f : file.Id.ToLowerInvariant()] = sound;
+        return sounds;
+    }
+
+    /// <summary>The sound a song's folder (the first part of its id, <c>kalos/vaniville</c>) plays in, or null: <c>common</c> and a region that names none.</summary>
+    public static SynthSound? SoundOfFolder(string id, IReadOnlyDictionary<string, SynthSound> regions)
+    {
+        int slash = id.IndexOf('/');
+        return slash > 0 && regions.TryGetValue(id[..slash], out var sound) ? sound : null;
     }
 }
