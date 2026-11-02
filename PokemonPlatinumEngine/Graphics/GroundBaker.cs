@@ -154,8 +154,8 @@ internal static class GroundBaker
 
         if (style == InteriorStyle.Tent)
         {
-            // A Battle Tent's packed sand: two close tones in patches of eight, a darker grain about one texel in forty
-            if (Hash(x, y, 631) % 40 == 0) return Rgb(184, 156, 112);
+            // A Battle Tent's packed sand: two close tones in patches of eight, a darker grain in pairs of texels, so none stands alone
+            if (Hash(x / 2, y, 631) % 90 == 0) return Rgb(184, 156, 112);
             return Hash(x / 8, y / 8, 632) % 3 == 0 ? Rgb(214, 188, 142) : Rgb(222, 198, 154);
         }
 
