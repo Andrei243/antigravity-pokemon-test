@@ -2045,6 +2045,8 @@ public partial class GameEngine
         if (DayCareStep()) return true;
         // A Repel's last step says it has worn off (Repel_UpdateSteps, plan 06 · R11)
         if (flow.EncounterAids.Step() && StartScript(FieldScripts.RepelWoreOff)) return true;
+        // The S.S. Tidal comes in by itself after enough steps aboard (plan 21 · H12, part k; Emerald's CountSSTidalStep)
+        if (CruiseStep()) return true;
 
         // The story comes first: the script of the place walked into, then of the tiles stepped on; only then do trainers
         // look. A step into a place onto a trigger does both, the place's first (as the original runs a map's own

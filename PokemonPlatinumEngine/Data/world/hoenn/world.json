@@ -246,6 +246,7 @@
     { "name": "LilycoveCity_DepartmentStore_4F", "matrix": 128, "area": "lilycove_city_department_store_4f", "trees": "Round", "setting": "Indoors" },
     { "name": "LilycoveCity_DepartmentStore_5F", "matrix": 129, "area": "lilycove_city_department_store_5f", "trees": "Round", "setting": "Indoors" },
     { "name": "LilycoveCity_DepartmentStoreRooftop", "matrix": 130, "area": "lilycove_city_department_store_rooftop", "trees": "Round", "setting": "Indoors" },
+    { "name": "LilycoveCity_DepartmentStoreElevator", "matrix": 131, "area": "lilycove_city_department_store_elevator", "trees": "Round", "setting": "Indoors" },
     { "name": "LilycoveCity_CoveLilyMotel_1F", "matrix": 109, "area": "lilycove_city_cove_lily_motel_1f", "trees": "Round", "setting": "Indoors" },
     { "name": "LilycoveCity_CoveLilyMotel_2F", "matrix": 110, "area": "lilycove_city_cove_lily_motel_2f", "trees": "Round", "setting": "Indoors" },
     { "name": "LilycoveCity_LilycoveMuseum_1F", "matrix": 111, "area": "lilycove_city_lilycove_museum_1f", "trees": "Round", "setting": "Indoors" },
@@ -457,6 +458,7 @@
     { "name": "MarineCave_End", "matrix": 290, "area": "marine_cave_end", "trees": "Round", "setting": "Cave" },
     { "name": "TerraCave_Entrance", "matrix": 291, "area": "terra_cave_entrance", "trees": "Round", "setting": "Cave" },
     { "name": "TerraCave_End", "matrix": 292, "area": "terra_cave_end", "trees": "Round", "setting": "Cave" },
+    { "name": "AlteringCave", "matrix": 293, "area": "altering_cave", "trees": "Round", "setting": "Cave" },
     // Plan 21 · H12, part f: the event islands the ferry sails a Champion to on a pass for the Frontier's prints: Birth
     // Island (Deoxys and its triangle) and Navel Rock (Ho-Oh at its peak, Lugia at its foot)
     { "name": "BirthIsland_Harbor", "matrix": 409, "area": "birth_island_harbor", "trees": "Round" },
@@ -587,7 +589,7 @@
     "lilycove_city", "route_122", "route_123",
     "lilycove_city_pokemon_center_1f", "lilycove_city_pokemon_center_2f",
     "lilycove_city_department_store_1f", "lilycove_city_department_store_2f", "lilycove_city_department_store_3f",
-    "lilycove_city_department_store_4f", "lilycove_city_department_store_5f", "lilycove_city_department_store_rooftop",
+    "lilycove_city_department_store_4f", "lilycove_city_department_store_5f", "lilycove_city_department_store_rooftop", "lilycove_city_department_store_elevator",
     "lilycove_city_cove_lily_motel_1f", "lilycove_city_cove_lily_motel_2f",
     "lilycove_city_lilycove_museum_1f", "lilycove_city_lilycove_museum_2f", "lilycove_city_pokemon_trainer_fan_club",
     "lilycove_city_move_deleters_house", "lilycove_city_house_1", "lilycove_city_house_2", "lilycove_city_house_3",
@@ -660,7 +662,7 @@
     "new_mauville_entrance", "new_mauville_inside", "desert_underpass",
     // Plan 21 · H12, part e: the Marine Cave and Terra Cave, and the sea floors the Marine Cave is dived to from
     "underwater_route_105", "underwater_route_125", "underwater_route_129", "underwater_marine_cave",
-    "marine_cave_entrance", "marine_cave_end", "terra_cave_entrance", "terra_cave_end",
+    "marine_cave_entrance", "marine_cave_end", "terra_cave_entrance", "terra_cave_end", "altering_cave",
     // Plan 21 · H12, part f: Birth Island and Navel Rock
     "birth_island_harbor", "birth_island_exterior", "navel_rock_harbor", "navel_rock_exterior", "navel_rock_entrance",
     "navel_rock_b1f", "navel_rock_fork", "navel_rock_up_1", "navel_rock_up_2", "navel_rock_up_3", "navel_rock_up_4", "navel_rock_top",

@@ -3,7 +3,6 @@
   // dresses up a secret base: dolls, cushions, posters and mats (plan 21 · H10, lilycove_city_department_store_5f.txt)
   "area": "lilycove_city_department_store_5f",
   "bgmTrack": "hoenn/lilycove",
-  "locked": [ 1 ],
   "people": {
     "woman_3": { "name": "Clerk", "script": "Dolls" },
     "woman_3_2": { "name": "Clerk", "script": "Cushions" },

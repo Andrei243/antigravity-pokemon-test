@@ -431,11 +431,11 @@ public class HoennTests
         Assert.True(Overworld.IsWalkable(lilycove.X, lilycove.Y), $"nobody can land at {lilycove.X},{lilycove.Y}");
         Assert.Equal("hoenn/lilycove", Overworld.BgmTrackAt(507, 80));
         Assert.Single(BuiltMaps.Value["LilycoveCity_PokemonCenter_1F"].Everyone, n => n.Script == "Nurse");
-        // The Contest Lobby is open since plan 21 · H11; the store's lift stays shut on every floor (Team Aqua's hideout
-        // opened with part b, and the harbour with plan 21 · H9, part b)
+        // The Contest Lobby is open since plan 21 · H11, and the store's lift on every floor since plan 21 · H12, part k
+        // (Team Aqua's hideout opened with part b, and the harbour with plan 21 · H9, part b)
         Assert.Contains(Overworld.Warps, w => w.TargetMap == "LilycoveCity_ContestLobby" && !w.Shut);
         foreach (string floor in new[] { "1F", "2F", "3F", "4F", "5F" })
-            Assert.DoesNotContain(BuiltMaps.Value[$"LilycoveCity_DepartmentStore_{floor}"].Warps,
+            Assert.Contains(BuiltMaps.Value[$"LilycoveCity_DepartmentStore_{floor}"].Warps,
                 w => w.TargetMap == "LilycoveCity_DepartmentStoreElevator" && !w.Shut);
         // The floors are joined by their stairs, up to the roof
         Assert.Contains(BuiltMaps.Value["LilycoveCity_DepartmentStore_5F"].Warps, w => w.TargetMap == "LilycoveCity_DepartmentStoreRooftop");

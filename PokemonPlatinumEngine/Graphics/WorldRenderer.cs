@@ -1202,7 +1202,8 @@ public sealed partial class WorldRenderer
         foreach (var npc in PeopleInSight(map))
         {
             // (Something in the way that nobody sees is drawn as nothing: plan 21 · H6's Kecleon)
-            if (npc.IsPCTerminal || npc.IsUnseen || !InSight(npc)) continue;
+            // (and so is someone hiding until a flag is set: Faraway Island's Mew, plan 21 · H12, part k)
+            if (npc.IsPCTerminal || npc.IsUnseen || npc.OutOfSight || !InSight(npc)) continue;
             if (map.Puzzle?.Hides(npc.Level ?? map.HeightAt(npc.GridX, npc.GridY), viewer) == true) continue;
             // Whoever a scene shakes is drawn a few texels east or west of their tile, and whoever flickers is not
             // drawn at the moments they don't show (plan 09 · L12; style guide, "Life", "Set pieces")
@@ -1817,7 +1818,7 @@ public sealed partial class WorldRenderer
         {
             // (An item's ball has a smaller patch under it than a person, and an obstacle one a little smaller)
             // (Whoever is shaken takes their patch with them, and whoever flickers has none while they are unseen)
-            if (!npc.IsPCTerminal && !npc.IsUnseen && InSight(npc) && Seen(npc))
+            if (!npc.IsPCTerminal && !npc.IsUnseen && !npc.OutOfSight && InSight(npc) && Seen(npc))
                 Blob(npc.DrawX + 0.5f + NudgeOf(npc), npc.DrawY + 0.52f, npc.Level is { } level ? Relief.Under(map, npc.DrawX + 0.5f, npc.DrawY + 0.5f, level) : Relief.At(map, npc.DrawX + 0.5f, npc.DrawY + 0.5f),
                     npc.IsItemBall ? 0.6f : npc.IsObstacle ? 0.85f : npc.IsPokemon ? 0.75f : 1f);
         }

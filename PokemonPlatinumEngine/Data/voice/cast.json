@@ -633,6 +633,10 @@
       "note": "first spoken at CanalaveLibrary1F.txt(12)",
       "provisional": true
     },
+    "lift_attendant": {
+      "note": "first spoken at lilycove_city_department_store_elevator.txt(13)",
+      "provisional": true
+    },
     "linda": {
       "note": "first spoken at fuchsia_gym.txt(54)",
       "provisional": true
@@ -1573,6 +1577,7 @@
     "Lanette": "lanette",
     "Lass": "look:lass",
     "Librarian": "librarian",
+    "Lift Attendant": "lift_attendant",
     "Linda": "linda",
     "Little Boy": "little_boy",
     "Little Girl": "look:little_girl",

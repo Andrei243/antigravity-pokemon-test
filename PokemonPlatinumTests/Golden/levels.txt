@@ -147,6 +147,9 @@ super rod 20-35
 === acuity_lakefront
 Acuity Lakefront
 grass 32-35
+=== altering_cave
+Altering Cave
+grass 6-16
 === aqua_hideout_1f
 Aqua Hideout
 trainers 1, 32: hoenn_grunt_aqua_hideout_1 32

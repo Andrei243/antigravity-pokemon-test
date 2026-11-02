@@ -1318,6 +1318,15 @@ public static class ScriptParser
                 return new Condition { Query = Query.Mirage, Negated = negated };
             case "modern":
                 return new Condition { Query = Query.Modern, Negated = negated };
+            // The phrase kept under a name is these two words (plan 21 · H12, part k: the Berry Master's wife)
+            case "phrase":
+            {
+                string name = r.Identifier("the phrase's name");
+                string first = r.Text("a word's key (feelings:great)"), second = r.Text("a word's key (people:rival)");
+                foreach (string key in new[] { first, second })
+                    if (!Data.PhraseGroups.IsWord(key)) throw r.Error($"'{key}' is no word of the phrase picker: a group's tag, ':' and the word's key");
+                return new Condition { Query = Query.Phrase, Negated = negated, Name = name, Other = first + " " + second };
+            }
             // A rule of the run chosen at NEW GAME (plan 13 · V5)
             case "rule":
             {

@@ -2294,6 +2294,8 @@ public sealed partial class ScriptRunner
             // IsMirageIslandPresent (plan 21 · H12, part h)
             Query.Mirage => Overworld.MirageIsland.Present(host.Party, host.Encounters),
             Query.Modern => host.Modern,
+            // The phrase kept is these two words (plan 21 · H12, part k)
+            Query.Phrase => story.PhraseOf(c.Name) is { Count: 2 } said && string.Join(" ", said) == c.Other,
             _ => throw Wrong(at, $"the runner can't answer '{c.Query}'")
         };
         return yes != c.Negated;

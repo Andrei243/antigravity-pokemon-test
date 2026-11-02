@@ -200,7 +200,13 @@ public enum Query
     /// </summary>
     Mirage,
     /// <summary>The game is played by the modern rules (plan 15 · E3: the PC offers Poké Jobs only then): <c>modern</c>.</summary>
-    Modern
+    Modern,
+    /// <summary>
+    /// The phrase kept under a name is two words exactly (plan 21 · H12, part k: the Berry Master's wife's sayings, Emerald's
+    /// <c>BerryMastersHouse</c> easy-chat checks): <c>phrase NAME "feelings:great" "people:rival"</c>, the words by key, so
+    /// any language asks alike. <see cref="Condition.Name"/> is the phrase's name and <see cref="Condition.Other"/> the two keys.
+    /// </summary>
+    Phrase
 }
 
 /// <summary>A question a script asks of the game before a line: <c>if [not] ...</c>.</summary>

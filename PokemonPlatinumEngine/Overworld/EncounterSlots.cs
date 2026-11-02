@@ -81,6 +81,15 @@ public sealed record EncounterMoment
     /// once its Hall of Fame is entered, and Sinnoh's once Kanto's is.
     /// </summary>
     public bool OursOpen { get; init; }
+
+    /// <summary>
+    /// Which of a place's grass tables is met where it has several (plan 21 · H12, part k; <see cref="MapArea.LandSets"/>):
+    /// Emerald's <c>VAR_ALTERING_CAVE_WILD_SET</c>, nought the area's own table. Null where the game doesn't say.
+    /// </summary>
+    public int? LandSet { get; init; }
+
+    /// <summary>The story's variable that picks the grass's table (<see cref="LandSet"/>): Emerald's own name.</summary>
+    public const string LandSetVariable = "VAR_ALTERING_CAVE_WILD_SET";
 }
 
 /// <summary>How a swarm is met (plan 20 · J13, part c; HeartGold's <c>sSwarmMapLUT</c> keeps a way beside each place).</summary>

@@ -15383,9 +15383,11 @@ way 0
   * wildbattle Mew 30 Won
   + FLAG_DEFEATED_MEW
   + FLAG_HIDE_MEW
+  + FLAG_HOENN_MEW_FOUND
   + seen faraway_island_interior.Mew in the tall grass
 way 1, from answer 1
   * wildbattle Mew 30 Lost
+  + FLAG_HOENN_MEW_FOUND
   + seen faraway_island_interior.Mew in the tall grass
 === fight_area.Buck
 from Buck at 657,426 of Sinnoh
@@ -19427,6 +19429,47 @@ way 2, from answer 1
 way 1, from answer 1
   Clerk> Thank you very much! The Green Poster has been sent to your decoration PC.
   ? Which would you like? = GREEN POSTER  1,000
+=== lilycove_city_department_store_elevator.Attendant
+from Lift Attendant at 0,5 of LilycoveCity_DepartmentStoreElevator
+way 0
+  Lift Attendant> Welcome to the Lilycove Department Store. Which floor would you like?
+  Lift Attendant> Here we are. Please enjoy your shopping!
+  ? Welcome to the Lilycove Department Store. Which floor would you like? = 5F
+  * anim elevator up 4
+  = VAR_DEPT_STORE_FLOOR 0 -> 5
+  = VAR_TEMP_1 0 -> 5
+way 5, from answer 1
+  Lift Attendant> Please take your time.
+  ? Welcome to the Lilycove Department Store. Which floor would you like? = Exit
+  = VAR_DEPT_STORE_FLOOR 0 -> 1
+way 4, from answer 1
+  Lift Attendant> We're on that floor now. Please enjoy your shopping!
+  ? Welcome to the Lilycove Department Store. Which floor would you like? = 1F
+  = VAR_DEPT_STORE_FLOOR 0 -> 1
+  = VAR_TEMP_1 0 -> 1
+way 3, from answer 1
+  Lift Attendant> Here we are. Please enjoy your shopping!
+  ? Welcome to the Lilycove Department Store. Which floor would you like? = 2F
+  * anim elevator up 4
+  = VAR_DEPT_STORE_FLOOR 0 -> 2
+  = VAR_TEMP_1 0 -> 2
+way 2, from answer 1
+  Lift Attendant> Here we are. Please enjoy your shopping!
+  ? Welcome to the Lilycove Department Store. Which floor would you like? = 3F
+  * anim elevator up 4
+  = VAR_DEPT_STORE_FLOOR 0 -> 3
+  = VAR_TEMP_1 0 -> 3
+way 1, from answer 1
+  Lift Attendant> Here we are. Please enjoy your shopping!
+  ? Welcome to the Lilycove Department Store. Which floor would you like? = 4F
+  * anim elevator up 4
+  = VAR_DEPT_STORE_FLOOR 0 -> 4
+  = VAR_TEMP_1 0 -> 4
+=== lilycove_city_department_store_elevator.Out
+from the trigger at 1,5 of LilycoveCity_DepartmentStoreElevator
+from the trigger at 2,5 of LilycoveCity_DepartmentStoreElevator
+way -
+  * warp LilycoveCity_DepartmentStore_1F 2 2
 === lilycove_city_department_store_rooftop.SubstituteTutor
 from Woman at 15,5 of LilycoveCity_DepartmentStoreRooftop
 way 0
@@ -23700,6 +23743,13 @@ from the trigger at 126,279 of Hoenn
 way -
   ???> W-wait! Don't leave me! Get a Poké Ball from my bag, quick!
   * walk player back right
+=== route_103.AlteringCaveHiker
+from Hiker at 164,227 of Hoenn
+way -
+  Hiker> Hm? A Champion, out here? Then you'll want to see this. There's a hollow behind this rock wall. I can hear the wind in it.
+  Hiker> Hup! Hah! ... There! I knocked the rock away. That's Altering Cave.
+  Hiker> Funny place. The Pokémon in it are never the same two days running. Nobody knows why.
+  + FLAG_HOENN_ALTERING_CAVE_OPEN
 === route_103.Rival
 from {rival} at 130,223 of Hoenn
 way 0

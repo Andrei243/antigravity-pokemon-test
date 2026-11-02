@@ -1,0 +1,17 @@
+{
+  // The Lilycove Department Store's lift (plan 21 · H12, part k). Emerald's car leads out to whichever floor it stands at
+  // (MAP_DYNAMIC); here the step onto its doorway (a trigger of the overlay's on each of its two tiles, which goes before
+  // the door the tile needs to be a way at all) puts the player out on the floor VAR_DEPT_STORE_FLOOR names, and the
+  // attendant moves the car (lilycove_city_department_store_elevator.txt)
+  "area": "lilycove_city_department_store_elevator",
+  "name": "Lilycove Dept. Store",
+  "bgmTrack": "hoenn/lilycove",
+  "doors": [
+    { "warp": 0, "map": "LilycoveCity_DepartmentStore_1F", "x": 2, "y": 2, "facing": "Down" },
+    { "warp": 1, "map": "LilycoveCity_DepartmentStore_1F", "x": 2, "y": 2, "facing": "Down" }
+  ],
+  "triggers": [ { "x": 1, "z": 5, "script": "Out" }, { "x": 2, "z": 5, "script": "Out" } ],
+  "people": {
+    "teala": { "name": "Lift Attendant", "script": "Attendant" }
+  }
+}

@@ -63,3 +63,9 @@ script Whose
 label Boxed
   say "Oh! The ID number of {winner}, in your PC Boxes, is a match!"
   return
+
+# Arriving on the floor (plan 21 · H12, part k): the lift's car can only be got into here, so it stands at this floor
+# (lilycove_city_department_store_elevator.txt)
+script OnEnter
+  setvar VAR_DEPT_STORE_FLOOR 1
+  end

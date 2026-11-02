@@ -1,0 +1,10 @@
+{
+  // Altering Cave (plan 21 · H12, part k), behind the rock on Route 103's far bank that the hiker of ours breaks for a
+  // Champion of Hoenn. Its grass is Emerald's nine tables, one met each day (altering_cave.txt's OnEnter draws
+  // VAR_ALTERING_CAVE_WILD_SET, the area file's landSets). Its way out leads back before the mouth; Emerald plays Route 101's
+  // song in it
+  "area": "altering_cave",
+  "bgmTrack": "hoenn/route101",
+  "trees": "Round",
+  "doors": [ { "warp": 0, "map": "Hoenn", "x": 165, "y": 227, "facing": "Down" } ]
+}

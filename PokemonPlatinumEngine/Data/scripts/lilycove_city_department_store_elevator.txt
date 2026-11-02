@@ -1,0 +1,59 @@
+# The Lilycove Department Store's lift (plan 21 · H12, part k). docs/scripts.md describes the language; the lines are
+# our own, on Emerald's beats (data/maps/LilycoveCity_DepartmentStoreElevator/scripts.inc).
+#
+# The car stands at a floor, VAR_DEPT_STORE_FLOOR (1 to 5; nought, never come to, the ground floor), which each floor's
+# own arrival sets as the player comes onto it, since the car can only be got into from the floor it stands at. The
+# attendant asks which floor, rides the car there (the original's set piece, `anim elevator`, up or down) and the player
+# walks out: the doorway's step (Out) puts them before the lift's door of the floor the car stands at. Emerald's floor
+# menu starts its cursor on the floor the car is at; this question starts on its first answer.
+
+
+script Attendant
+  face self player
+  speaker "Lift Attendant"
+  if var VAR_DEPT_STORE_FLOOR == 0 setvar VAR_DEPT_STORE_FLOOR 1
+  choose "Welcome to the Lilycove Department Store. Which floor would you like?" "5F" "4F" "3F" "2F" "1F" "Exit"
+  if result == 5 goto Stay
+  setvar VAR_TEMP_1 5
+  if result == 1 setvar VAR_TEMP_1 4
+  if result == 2 setvar VAR_TEMP_1 3
+  if result == 3 setvar VAR_TEMP_1 2
+  if result == 4 setvar VAR_TEMP_1 1
+  if var VAR_TEMP_1 == VAR_DEPT_STORE_FLOOR goto Here
+  if var VAR_TEMP_1 < VAR_DEPT_STORE_FLOOR goto Down
+  anim elevator up
+  goto Ride
+label Down
+  anim elevator down
+label Ride
+  setvar VAR_DEPT_STORE_FLOOR VAR_TEMP_1
+  say "Here we are. Please enjoy your shopping!"
+  end
+label Here
+  say "We're on that floor now. Please enjoy your shopping!"
+  end
+label Stay
+  say "Please take your time."
+  end
+
+
+# The doorway: out onto the floor the car stands at, before that floor's lift door
+script Out
+  if var VAR_DEPT_STORE_FLOOR == 5 goto Fifth
+  if var VAR_DEPT_STORE_FLOOR == 4 goto Fourth
+  if var VAR_DEPT_STORE_FLOOR == 3 goto Third
+  if var VAR_DEPT_STORE_FLOOR == 2 goto Second
+  warp "LilycoveCity_DepartmentStore_1F" 2 2 down
+  end
+label Fifth
+  warp "LilycoveCity_DepartmentStore_5F" 2 2 down
+  end
+label Fourth
+  warp "LilycoveCity_DepartmentStore_4F" 2 2 down
+  end
+label Third
+  warp "LilycoveCity_DepartmentStore_3F" 2 2 down
+  end
+label Second
+  warp "LilycoveCity_DepartmentStore_2F" 2 2 down
+  end

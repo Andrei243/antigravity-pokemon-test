@@ -1,10 +1,9 @@
 {
   // The Lilycove Department Store's ground floor (plan 21 · H7, part a): the greeter, the Lottery Corner's counter
-  // (lilycove_city_department_store_1f.txt), the stairs up and the lift, whose doors stay shut until it carries anyone
-  // (Emerald's lift is a menu of floors, which the stairs reach as well)
+  // (lilycove_city_department_store_1f.txt), the stairs up and the lift's car (plan 21 · H12, part k:
+  // lilycove_city_department_store_elevator.txt)
   "area": "lilycove_city_department_store_1f",
   "bgmTrack": "hoenn/lilycove",
-  "locked": [ 3 ],
   "people": {
     "beauty": { "name": "Greeter", "dialog": ["Welcome to the Lilycove Department Store! Five floors and a roof garden of everything a trainer could want."] },
     "lottery_clerk": { "name": "Lottery Clerk", "script": "LotteryClerk" },

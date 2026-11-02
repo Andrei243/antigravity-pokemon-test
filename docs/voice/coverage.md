@@ -10,9 +10,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 |---|---|---|---|---|---|
 | The introduction (`intro:`) | 96 | 96 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1287 | 1245 | 42 | 1 | 0 |
-| Scripts (`script:`) | 9666 | 9219 | 447 | 17 | 0 |
+| Scripts (`script:`) | 9676 | 9229 | 447 | 17 | 0 |
 | People of the world (`world:`) | 7111 | 7049 | 62 | 4 | 0 |
-| **All** | 18160 | 17609 | 551 | 22 | 0 |
+| **All** | 18170 | 17619 | 551 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -21,17 +21,17 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | What | Lines |
 |---|---|
 | a Pokémon's cry | 243 |
-| a question's answers | 676 |
+| a question's answers | 682 |
 | a sign | 1571 |
 | the game's own voice (speaker none) | 282 |
-| the game's own voice (text) | 1565 |
+| the game's own voice (text) | 1569 |
 
 ## The cast
 
-- Named characters: 366 voices (329 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
+- Named characters: 367 voices (330 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Cloned from the user's samples: `rival`.
 - Archetypes in use: 225, with 680 voices to cast (V5).
-- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1877.
+- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1878.
 
 ## Lines by voice
 
@@ -39,7 +39,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 
 | Voice | Lines | Shown only |
 |---|---|---|
-| `@self` | 1877 | 135 |
+| `@self` | 1878 | 135 |
 | `look:gentleman (any)` | 713 | 13 |
 | `look:grunt (any)` | 588 | 0 |
 | `rival` | 585 | 18 |
@@ -53,7 +53,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:gym_guide (any)` | 191 | 1 |
 | `look:receptionist (any)` | 159 | 19 |
 | `cynthia` | 157 | 1 |
-| `look:sailor (any)` | 149 | 0 |
+| `look:sailor (any)` | 150 | 0 |
 | `class:ace_trainer (any)` | 148 | 0 |
 | `rowan` | 147 | 12 |
 | `class:hiker (any)` | 146 | 0 |
@@ -84,12 +84,12 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `cyrus` | 83 | 7 |
 | `look:aqua_grunt (any)` | 83 | 3 |
 | `look:trainer (any)` | 82 | 0 |
+| `look:hiker (any)` | 80 | 0 |
 | `look:worker (any)` | 79 | 0 |
 | `class:camper (any)` | 78 | 0 |
 | `look:old_woman (any)` | 77 | 5 |
 | `class:swimmer (any)` | 76 | 0 |
 | `class:twins (any)` | 76 | 0 |
-| `look:hiker (any)` | 76 | 0 |
 | `ace_trainer` | 75 | 0 |
 | `look:fisherman (any)` | 75 | 4 |
 | `class:sailor (any)` | 70 | 0 |

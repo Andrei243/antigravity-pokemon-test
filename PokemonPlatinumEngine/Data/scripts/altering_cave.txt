@@ -1,0 +1,12 @@
+# Altering Cave (plan 21 · H12, part k). docs/scripts.md describes the language. Emerald's cave meets one of nine tables,
+# by VAR_ALTERING_CAVE_WILD_SET, which only its Mystery Gift ever moved; here the first arrival of each day draws it
+# (the daily flag, which the new day clears), so Zubat, Mareep, Pineco, Houndour, Teddiursa, Aipom, Shuckle, Stantler
+# and Smeargle each have their day.
+
+
+script OnEnter
+  if flag FLAG_DAILY_ALTERING_CAVE_DRAWN end
+  setflag FLAG_DAILY_ALTERING_CAVE_DRAWN
+  random 9
+  setvar VAR_ALTERING_CAVE_WILD_SET RESULT
+  end

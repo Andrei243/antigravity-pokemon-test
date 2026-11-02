@@ -197,6 +197,7 @@ What an `if` can ask:
 | `starter "Piplup"` | The species the player took from the briefcase. |
 | `money >= 500`, `facing left`, `boy`, `girl` | |
 | `modern` | The game is played by the modern rules (plan 15 · E3; `IScriptHost.Modern`, the rules in force; a `HeadlessScriptHost` says no unless a test sets it). `common.PC` asks it before it offers POKé JOBS, so a game by Platinum's rules keeps Platinum's PC. |
+| `phrase NAME "group:word" "group:word"` | The phrase kept under `NAME` (`phrase NAME`, plan 08 · P9) is exactly these two words, given by key so every language asks alike (`feelings:great`, `pokemon:Latias`; plan 21 · H12, part k: the Berry Master's wife's five sayings). A key that names no word of the picker is an error. |
 | `mirage` | Mirage Island stands off Route 130 today for this team (plan 21 · H12, part h; Emerald's `IsMirageIslandPresent`, `Overworld/MirageIsland.cs`): the low half of a team member's personality, an Egg's included, is the upper half of the day's number (`SpecialEncounters.DailyNumber`). `common.HoennMirageIsland` and Pacifidlog's old man ask it. |
 | `titled` | The master of the species of the Pokémon the last `choosepokemon` chose is beaten already (plan 14 · B15, the Masters' Hall; `Models/MasterTitles.cs`): its title is the player's. False with nobody chosen or an Egg. |
 | `friendship >= 200` | The friendship of the first of the team that is no Egg (plan 09 · L9; the original's `GetFirstNonEggInParty` and `GetPartyMonFriendship`), 0 to 255; false with no such Pokémon. Dr. Footstep reads his steps with it. |
