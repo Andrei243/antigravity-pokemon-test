@@ -1,0 +1,29 @@
+# A girl of Kalos spots the player (Lasses and their like): a sweet flute in A, skipping up to the octave,
+# over a harp and plucked strings.
+# Original composition for this game (plan 31 · MU3), in the modern sound.
+title Eyes Meet: Girl (Kalos)
+tempo 138
+meter 4/4
+reverb 0.18
+night none
+room room 1.0
+
+track lead flute vol=0.62 pan=0.05 rev=0.2
+  o5 e8 a8 o6 c+8 e8 r2 | L o5 c+4 e8 a8 o6 c+4 o5 a4 | o5 a4 f+8 a8 o6 c+4 o5 a4 | o5 f+4 a8 o6 d8 f+4 d4 |
+  o5 e4 g+8 b8 o6 e4 o5 b4 | o6 c+4 o5 a8 e8 c+4 e4 | o5 b2 g+4 e4 |
+
+track harp harp vol=0.36 pan=-0.3 rev=0.25
+  o4 a8 o5 c+8 o5 e8 o5 c+8 o4 a8 o5 c+8 o5 e8 o5 c+8 | L o4 a8 o5 c+8 o5 e8 o5 c+8 o4 a8 o5 c+8 o5 e8 o5 c+8 | o4 f+8 o4 a8 o5 c+8 o4 a8 o4 f+8 o4 a8 o5 c+8 o4 a8 | o4 d8 o4 f+8 o4 a8 o4 f+8 o4 d8 o4 f+8 o4 a8 o4 f+8 |
+  o4 e8 o4 g+8 o4 b8 o4 g+8 o4 e8 o4 g+8 o4 b8 o4 g+8 | o4 a8 o5 c+8 o5 e8 o5 c+8 o4 a8 o5 c+8 o5 e8 o5 c+8 | o4 e8 o4 g+8 o4 b8 o4 g+8 o4 e8 o4 g+8 o4 b8 o4 g+8 |
+
+track pad orchestra vol=0.16 pan=-0.25 rev=0.25 width=0.9
+  o4 (a > c+ e)1 | L o4 (a > c+ e)1 | o4 (f+ a > c+)1 | o4 (d f+ a)1 |
+  o4 (e g+ b)1 | o4 (a > c+ e)1 | o4 (e g+ b)1 |
+
+track bass synthbass vol=0.56 rev=0.05
+  [ o2 a8 o3 a8 ]4 | L [ o2 a8 o3 a8 ]4 | [ o2 f+8 o3 f+8 ]4 | [ o2 d8 o3 d8 ]4 |
+  [ o2 e8 o3 e8 ]4 | [ o2 a8 o3 a8 ]4 | [ o2 e8 o3 e8 ]4 |
+
+track drums kit vol=0.38 rev=0.1
+  v88 b8 r8 s8 r8 (b c)4 s4 | L b8 r8 s8 b8 r8 b8 s8 r8 | b8 r8 s8 b8 r8 b8 s8 r8 | b8 r8 s8 b8 r8 b8 s8 r8 |
+  b8 r8 s8 b8 r8 b8 s8 r8 | b8 r8 s8 b8 r8 b8 s8 r8 | b8 r8 s8 b8 s16 s16 s16 s16 s8 s8 |

@@ -367,5 +367,40 @@ public static class InstrumentBank
             BrightSustain = 0.25f, Detune = 14f, Unison = 4, Spread = 0.8f, Attack = 0.6f, Decay = 1.5f, Sustain = 0.9f, Release = 0.9f,
             Vibrato = 0.03f, VibratoRate = 0.8f, VibratoDelay = 0f, Gain = 0.62f
         });
+
+        // Plan 31 · MU3: Kalos's instruments, open to any song, written for the modern sound
+        Add(new Instrument
+        {
+            // Three reeds a few cents apart, the middle one true: the musette's shimmer, fuller and wider than the accordion
+            Name = "musette", Bright = new[] { 1f, 0.75f, 0.55f, 0.45f, 0.35f, 0.25f, 0.16f, 0.1f }, Mellow = new[] { 1f, 0.6f, 0.4f, 0.28f, 0.18f, 0.1f },
+            BrightDecay = 0.25f, BrightSustain = 0.5f, Detune = 13f, Unison = 3, Spread = 0.45f, Attack = 0.025f, Decay = 0.5f,
+            Sustain = 0.85f, Release = 0.08f, Noise = 0.01f, Gain = 0.56f
+        });
+        Add(new Instrument
+        {
+            // A quill plucking near the string's end: bright, thin and quick to fade
+            Name = "harpsichord", Kind = VoiceKind.Pluck, Ring = 1.4f, PluckBright = 0.95f, PluckPosition = 0.07f, PluckDamp = 0.25f,
+            Release = 0.05f, Gain = 5.8f
+        });
+        Add(new Instrument
+        {
+            // Nylon strings under the thumb: warm and round, the light guitar of a café
+            Name = "nylonguitar", Kind = VoiceKind.Pluck, Ring = 1.8f, PluckBright = 0.3f, PluckPosition = 0.22f, PluckDamp = 0.55f,
+            Release = 0.1f, Gain = 3.6f
+        });
+        Add(new Instrument
+        {
+            // One bowed voice, darker than the violin, with a slower vibrato that comes in late
+            Name = "cello", Bright = Falling(14, 1.1f), Mellow = Falling(9, 1.6f), BrightDecay = 0.25f, BrightSustain = 0.4f,
+            Attack = 0.07f, Decay = 0.7f, Sustain = 0.88f, Release = 0.16f, Vibrato = 0.16f, VibratoRate = 5.1f,
+            VibratoDelay = 0.22f, Noise = 0.014f, Gain = 0.48f
+        });
+        Add(new Instrument
+        {
+            // A full string orchestra: five voices spread wide, slower to speak than the section
+            Name = "orchestra", Bright = Falling(14, 1.15f), Mellow = Falling(10, 1.65f), BrightDecay = 0.45f, BrightSustain = 0.4f,
+            Detune = 10f, Unison = 5, Spread = 0.85f, Attack = 0.15f, Decay = 0.9f, Sustain = 0.9f, Release = 0.28f,
+            Vibrato = 0.09f, VibratoRate = 5.2f, VibratoDelay = 0.2f, Noise = 0.01f, Gain = 0.6f
+        });
     }
 }

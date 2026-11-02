@@ -209,6 +209,11 @@ public class ModernMusicTests
     [InlineData("steeldrum")]
     [InlineData("logdrum")]
     [InlineData("warmpad")]
+    [InlineData("musette")]
+    [InlineData("harpsichord")]
+    [InlineData("nylonguitar")]
+    [InlineData("cello")]
+    [InlineData("orchestra")]
     public void TestEachAlolaInstrumentPlaysCleanlyAtTheBanksLevelInBothSounds(string name)
     {
         // As MusicRender --calibrate measures: quarter notes round middle C, dry; every instrument of the bank sits near −21 dB

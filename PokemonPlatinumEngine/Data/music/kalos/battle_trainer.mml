@@ -1,0 +1,50 @@
+# A trainer of Kalos: a brass section in A minor, hammered on the beat and tumbling down the chord, with the
+# harpsichord racing under it. Original composition for this game (plan 31 · MU3), in the modern sound.
+title Battle! Trainer (Kalos)
+tempo 172
+meter 4/4
+lowhptempo 1.08
+reverb 0.2
+room hall 1.4
+
+track lead brass lowhp=sawlead vol=0.7 pan=0.05 rev=0.2
+  o5 a8 r8 a8 r8 o6 c4 e4 | o6 e4 o5 b4 g+4 e4 | L o5 a4 o6 c8 e8 c4 o5 a4 | o5 f4 a8 o6 c8 f4 c4 |
+  o5 g4 b8 o6 d8 g4 d4 | o6 e2 o5 b4 g+4 | o6 e4. d8 c4 o5 a4 | o6 c4 o5 a8 g8 f4 a4 |
+  o5 d4 f8 a8 o6 d4 c4 | o5 b4 g+4 e4 b4 |
+
+track pad orchestra unless=lowhp vol=0.24 pan=-0.25 rev=0.24 width=0.9
+  r1 | r1 | L o4 (a > c e)1 | o4 (f a > c)1 |
+  o4 (g b > d)1 | o4 (e g+ b)1 | o4 (a > c e)1 | o4 (f a > c)1 |
+  o4 (d f a)1 | o4 (e g+ b)1 |
+
+track harpsi harpsichord vol=0.3 pan=0.35 rev=0.2
+  o4 a8 o5 c8 o5 e8 o5 c8 o4 a8 o5 c8 o5 e8 o5 c8 | o4 e8 o4 g+8 o4 b8 o4 g+8 o4 e8 o4 g+8 o4 b8 o4 g+8 | L o4 a8 o5 c8 o5 e8 o5 a8 o5 e8 o5 c8 o4 a8 o5 c8 | o4 f8 o4 a8 o5 c8 o5 f8 o5 c8 o4 a8 o4 f8 o4 a8 |
+  o4 g8 o4 b8 o5 d8 o5 g8 o5 d8 o4 b8 o4 g8 o4 b8 | o4 e8 o4 g+8 o4 b8 o5 e8 o4 b8 o4 g+8 o4 e8 o4 g+8 | o4 a8 o5 c8 o5 e8 o5 a8 o5 e8 o5 c8 o4 a8 o5 c8 | o4 f8 o4 a8 o5 c8 o5 f8 o5 c8 o4 a8 o4 f8 o4 a8 |
+  o4 d8 o4 f8 o4 a8 o5 d8 o4 a8 o4 f8 o4 d8 o4 f8 | o4 e8 o4 g+8 o4 b8 o5 e8 o4 b8 o4 g+8 o4 e8 o4 g+8 |
+
+track bass synthbass vol=0.62 rev=0.05
+  [ o2 a8 o3 a8 ]4 | [ o2 e8 o3 e8 ]4 | L [ o2 a8 o3 a8 ]4 | [ o2 f8 o3 f8 ]4 |
+  [ o2 g8 o3 g8 ]4 | [ o2 e8 o3 e8 ]4 | [ o2 a8 o3 a8 ]4 | [ o2 f8 o3 f8 ]4 |
+  [ o2 d8 o3 d8 ]4 | [ o2 e8 o3 e8 ]4 |
+
+track drums kit vol=0.5 rev=0.1
+  v95 b8 s8 b8 s8 b8 s8 (b c)4 | (b c)4 t8 t8 m8 m8 f8 f8 | L v95 (b c)8 r8 s8 b8 r8 b8 s8 r8 | b8 r8 s8 b8 r8 b8 s8 r8 |
+  b8 r8 s8 b8 r8 b8 s8 r8 | b8 r8 s8 b8 r8 b8 s8 r8 | b8 r8 s8 b8 r8 b8 s8 r8 | b8 r8 s8 b8 r8 b8 s8 r8 |
+  b8 r8 s8 b8 r8 b8 s8 r8 | b8 r8 s8 b8 s16 s16 s16 s16 s8 s8 |
+
+track hats kit vol=0.34 pan=0.15 rev=0.1
+  r1 | r1 | L v60 h8 v38 h8 v60 h8 v38 h8 v60 h8 v38 h8 v60 o8 v38 h8 | v60 h8 v38 h8 v60 h8 v38 h8 v60 h8 v38 h8 v60 o8 v38 h8 |
+  v60 h8 v38 h8 v60 h8 v38 h8 v60 h8 v38 h8 v60 o8 v38 h8 | v60 h8 v38 h8 v60 h8 v38 h8 v60 h8 v38 h8 v60 o8 v38 h8 | v60 h8 v38 h8 v60 h8 v38 h8 v60 h8 v38 h8 v60 o8 v38 h8 | v60 h8 v38 h8 v60 h8 v38 h8 v60 h8 v38 h8 v60 o8 v38 h8 |
+  v60 h8 v38 h8 v60 h8 v38 h8 v60 h8 v38 h8 v60 o8 v38 h8 | v60 h8 v38 h8 v60 h8 v38 h8 v60 h8 v38 h8 v60 o8 v38 h8 |
+
+# Low HP: two pips a beat, only while a Pokémon of the player's is in the red, on each bar's root
+track alarm pulse only=lowhp vol=0.45 pan=0.1 rev=0.08
+  r1 | r1 | L v110 o6 a16 r16 a16 r16 r4 a16 r16 a16 r16 r4 | v110 o6 f16 r16 f16 r16 r4 f16 r16 f16 r16 r4 |
+  v110 o6 g16 r16 g16 r16 r4 g16 r16 g16 r16 r4 | v110 o6 e16 r16 e16 r16 r4 e16 r16 e16 r16 r4 | v110 o6 a16 r16 a16 r16 r4 a16 r16 a16 r16 r4 | v110 o6 f16 r16 f16 r16 r4 f16 r16 f16 r16 r4 |
+  v110 o6 d16 r16 d16 r16 r4 d16 r16 d16 r16 r4 | v110 o6 e16 r16 e16 r16 r4 e16 r16 e16 r16 r4 |
+
+# Giant (plan Y · YD5): while a Dynamaxed Pokémon stands on the field, a choir on the chords,
+# brass on the roots and timpani on the bass's beats
+track giantchoir choir only=giant double=pad vol=0.2 pan=-0.25 rev=0.4
+track giantbrass brass only=giant double=bass beats=4 shift=24 vol=0.2 pan=0.25 rev=0.28
+track gianttimpani timpani only=giant double=bass beats=4 shift=24 vol=0.3 rev=0.2

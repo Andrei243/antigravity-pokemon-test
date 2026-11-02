@@ -1,6 +1,8 @@
 {
   "id": "Kalos",
   "folder": "kalos",
+  // Kalos's songs play in the modern sound (plan 31 · MU3): 48 kHz, its room and width, the region's own instruments
+  "sound": "modern",
   "models": "kalos",
   "map": "Kalos",
   // Kalos's first places as they are drawn by hand (plan 23 · Z1; tools/MapDraw/kalos): X and Y have no decompilation
