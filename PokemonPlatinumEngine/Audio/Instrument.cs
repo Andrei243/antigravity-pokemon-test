@@ -4,7 +4,13 @@ using System.Collections.Generic;
 namespace PokemonPlatinumEngine.Audio;
 
 /// <summary>The drum sounds of the <c>kit</c> instrument. A drum note's key is one of these.</summary>
-public enum Drum { Kick, Snare, HiHat, OpenHat, Crash, HighTom, MidTom, LowTom, Clap, Shaker }
+public enum Drum
+{
+    Kick, Snare, HiHat, OpenHat, Crash, HighTom, MidTom, LowTom, Clap, Shaker,
+
+    // Hand percussion (plan 31 · MU0): open to any song, written for the later regions
+    HighConga, LowConga, Bongo, WoodBlock
+}
 
 /// <summary>
 /// One sound of the instrument bank: a wavetable voice (a bright and a mellow spectrum, crossfaded by a brightness
@@ -67,6 +73,54 @@ public sealed class Instrument
 
     /// <summary>True for the drum kit, whose notes are <see cref="Drum"/> values rather than pitches.</summary>
     public bool IsKit { get; init; }
+
+    // Plan 31 · MU0: what the later instruments add. Every field keeps the old instruments exactly as they were.
+
+    /// <summary>How the voice makes its sound: a wavetable (every instrument before plan 31), a plucked string or struck modes.</summary>
+    public VoiceKind Kind { get; init; } = VoiceKind.Wavetable;
+
+    /// <summary>The modern sound: how many detuned voices a unison instrument plays (2 when 0 and <see cref="Detune"/> is set).</summary>
+    public int Unison { get; init; }
+
+    /// <summary>The modern sound: how far across the stereo field the unison voices spread (0 together, 1 hard left and right).</summary>
+    public float Spread { get; init; } = 0.5f;
+
+    /// <summary>A plucked string: how long it rings before falling 60 dB, in seconds, at middle C (higher notes ring a little less).</summary>
+    public float Ring { get; init; } = 1.5f;
+
+    /// <summary>A plucked string: how bright the pluck is (0 a thumb, 1 a pick).</summary>
+    public float PluckBright { get; init; } = 0.6f;
+
+    /// <summary>A plucked string: where along it the pluck lands (0 to 0.5), which hollows out the harmonics it would not excite.</summary>
+    public float PluckPosition { get; init; } = 0.2f;
+
+    /// <summary>A plucked string: how much the string's loop dulls the tone each round (0 keeps it bright, 1 dulls it at once).</summary>
+    public float PluckDamp { get; init; } = 0.5f;
+
+    /// <summary>Struck modes (steel drum, log drum): each mode's frequency as a ratio of the note's.</summary>
+    public float[] Ratios { get; init; } = Array.Empty<float>();
+
+    /// <summary>Struck modes: each mode's level.</summary>
+    public float[] Amps { get; init; } = Array.Empty<float>();
+
+    /// <summary>Struck modes: each mode's time constant, in seconds.</summary>
+    public float[] Decays { get; init; } = Array.Empty<float>();
+
+    /// <summary>Struck modes: a short burst of noise at the strike (the stick, the hand), as a level.</summary>
+    public float Strike { get; init; }
+}
+
+/// <summary>How an instrument's voice makes its sound (plan 31 · MU0).</summary>
+public enum VoiceKind
+{
+    /// <summary>A band-limited wavetable, crossfading from a bright spectrum to a mellow one: every instrument before plan 31.</summary>
+    Wavetable,
+
+    /// <summary>A plucked string (Karplus–Strong with a fractional delay, so it can slide): the ukulele and the slide guitar.</summary>
+    Pluck,
+
+    /// <summary>A few decaying sine modes struck together: the steel drum and the log drum.</summary>
+    Modal
 }
 
 /// <summary>
@@ -154,7 +208,7 @@ public static class InstrumentBank
         {
             Name = "strings", Bright = Falling(14, 1.2f), Mellow = Falling(10, 1.7f), BrightDecay = 0.4f, BrightSustain = 0.4f,
             Detune = 8f, Attack = 0.12f, Decay = 0.8f, Sustain = 0.9f, Release = 0.22f, Vibrato = 0.1f, VibratoRate = 5.4f,
-            VibratoDelay = 0.2f, Noise = 0.01f, Gain = 0.52f
+            VibratoDelay = 0.2f, Noise = 0.01f, Gain = 0.52f, Unison = 3, Spread = 0.6f
         });
         Add(new Instrument
         {
@@ -249,7 +303,8 @@ public static class InstrumentBank
         Add(new Instrument
         {
             Name = "choir", Bright = new[] { 1f, 0.5f, 0.6f, 0.2f, 0.12f }, Detune = 7f, Attack = 0.18f, Decay = 1f,
-            Sustain = 0.85f, Release = 0.3f, Vibrato = 0.1f, VibratoRate = 5f, VibratoDelay = 0.1f, Noise = 0.02f, Gain = 0.52f
+            Sustain = 0.85f, Release = 0.3f, Vibrato = 0.1f, VibratoRate = 5f, VibratoDelay = 0.1f, Noise = 0.02f, Gain = 0.52f,
+            Unison = 3, Spread = 0.6f
         });
 
         // Basses (written an octave up, as bass parts are)
@@ -281,5 +336,36 @@ public static class InstrumentBank
         });
 
         Add(new Instrument { Name = "kit", IsKit = true, Gain = 1f });
+
+        // Plan 31 · MU0: Alola's instruments, open to any song, written for the modern sound. Plucked strings and struck
+        // modes are voices of their own kinds (VoiceKind); the warm pad is a wavetable spread wide by its unison.
+        Add(new Instrument
+        {
+            Name = "ukulele", Kind = VoiceKind.Pluck, Ring = 1.1f, PluckBright = 0.35f, PluckPosition = 0.18f, PluckDamp = 0.4f,
+            Release = 0.06f, Gain = 4.6f
+        });
+        Add(new Instrument
+        {
+            Name = "slideguitar", Kind = VoiceKind.Pluck, Ring = 2.6f, PluckBright = 0.3f, PluckPosition = 0.12f, PluckDamp = 0.6f,
+            PitchStart = -1.6f, PitchTime = 0.07f, Vibrato = 0.14f, VibratoRate = 4.6f, VibratoDelay = 0.35f, Release = 0.18f, Gain = 3.7f
+        });
+        Add(new Instrument
+        {
+            // A pan's note: the fundamental, its octave and its twelfth, each ringing a little less, and the stick's tick
+            Name = "steeldrum", Kind = VoiceKind.Modal, Ratios = new[] { 1f, 2f, 3.01f, 4.05f }, Amps = new[] { 1f, 0.55f, 0.32f, 0.12f },
+            Decays = new[] { 0.55f, 0.32f, 0.16f, 0.07f }, Strike = 0.12f, PitchStart = 0.12f, PitchTime = 0.02f, Release = 0.15f, Gain = 0.42f
+        });
+        Add(new Instrument
+        {
+            // A slit log: a woody fundamental and two modes far from its harmonics, gone quickly, with the mallet's knock
+            Name = "logdrum", Kind = VoiceKind.Modal, Ratios = new[] { 1f, 2.76f, 5.4f }, Amps = new[] { 1f, 0.35f, 0.12f },
+            Decays = new[] { 0.22f, 0.07f, 0.03f }, Strike = 0.2f, Release = 0.08f, OctaveShift = -1, Gain = 0.62f
+        });
+        Add(new Instrument
+        {
+            Name = "warmpad", Bright = new[] { 1f, 0.45f, 0.22f, 0.12f, 0.06f }, Mellow = new[] { 1f, 0.2f, 0.05f }, BrightDecay = 1.4f,
+            BrightSustain = 0.25f, Detune = 14f, Unison = 4, Spread = 0.8f, Attack = 0.6f, Decay = 1.5f, Sustain = 0.9f, Release = 0.9f,
+            Vibrato = 0.03f, VibratoRate = 0.8f, VibratoDelay = 0f, Gain = 0.62f
+        });
     }
 }

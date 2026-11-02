@@ -1,0 +1,75 @@
+# Plan 31 · MU0: an island route, written for this test alone and for no place of the game. Original: no melody,
+# recording or sequence taken from anything. Rendered in the DS sound and in the modern one by tools/MusicRender
+# (--sound ds|modern), so the same notes on the same instruments can be heard both ways.
+title Island Route (MU0 test)
+tempo 104
+meter 4/4
+reverb 0.28
+nighttempo 0.9
+lowhptempo 1.12
+sound modern
+room hall 1.8
+
+# The tune: steel drum by day, vibraphone by night, a sharper lead in the red
+track melody steeldrum night=vibraphone lowhp=pulse vol=0.62 pan=0.08 rev=0.32
+  r1 | r1 |
+  L v104 o5 a4 o6 c8 o5 v84 a8 v100 g4 f4 | o5 f4. v80 d8 v100 c4 d4 | o5 d4 v84 f8 d8 v100 c4 o4 b-4 | o5 c2 r4 v80 g8 a8 |
+  v108 o5 a4 o6 v86 c8 o5 a8 v104 o6 c4 d4 | o5 e4. v82 c8 v100 o4 a4 o5 c4 | o5 d4 o4 v84 b-8 o5 d8 v100 f4 d4 | o5 e4 v84 d8 c8 v100 c2 |
+  v110 o5 f2 d4 f4 | o5 g2 e4 g4 | o5 a4. v84 g8 v100 e4 c4 | o5 d2 f4 a4 |
+  v108 o5 b-4. v84 a8 v100 g4 f4 | o5 g2 e4 c4 | v104 o5 f4 a8 v84 g8 v100 a4 o6 c4 | o5 g2. r4 |
+
+# The strum: a down, two quick ones and a lift, every bar
+track uke ukulele night=harp vol=0.25 pan=-0.3 rev=0.25
+  o4 (f a > c)4 (f a > c)8 (f a > c)8 r8 (f a > c)8 (f a > c)4 | (e g > c)4 (e g > c)8 (e g > c)8 r8 (e g > c)8 (e g > c)4 |
+  L
+  (f a > c)4 (f a > c)8 (f a > c)8 r8 (f a > c)8 (f a > c)4 | (d f a > c)4 (d f a > c)8 (d f a > c)8 r8 (d f a > c)8 (d f a > c)4 |
+  (f b- > d)4 (f b- > d)8 (f b- > d)8 r8 (f b- > d)8 (f b- > d)4 | (e g > c)4 (e g > c)8 (e g > c)8 r8 (e g > c)8 (e g > c)4 |
+  (f a > c)4 (f a > c)8 (f a > c)8 r8 (f a > c)8 (f a > c)4 | (e a > c)4 (e a > c)8 (e a > c)8 r8 (e a > c)8 (e a > c)4 |
+  (f b- > d)4 (f b- > d)8 (f b- > d)8 r8 (f b- > d)8 (f b- > d)4 | (e g > c)4 (e g > c)8 (e g > c)8 r8 (e g > c)8 (e g > c)4 |
+  (f b- > d)4 (f b- > d)8 (f b- > d)8 r8 (f b- > d)8 (f b- > d)4 | (e g > c)4 (e g > c)8 (e g > c)8 r8 (e g > c)8 (e g > c)4 |
+  (e a > c)4 (e a > c)8 (e a > c)8 r8 (e a > c)8 (e a > c)4 | (d f a)4 (d f a)8 (d f a)8 r8 (d f a)8 (d f a)4 |
+  (f g b- > d)4 (f g b- > d)8 (f g b- > d)8 r8 (f g b- > d)8 (f g b- > d)4 | (e g > c)4 (e g > c)8 (e g > c)8 r8 (e g > c)8 (e g > c)4 |
+  (f a > c)4 (f a > c)8 (f a > c)8 r8 (f a > c)8 (f a > c)4 | (e g > c)4 (e g > c)8 (e g > c)8 r8 (e g > c)8 (e g > c)4 |
+
+# The slide guitar answers the tune in the second half
+track slide slideguitar night=horn vol=0.6 pan=0.35 rev=0.4
+  r1 | r1 |
+  L r1 | r1 | r1 | r1 | r1 | r1 | r1 | r1 |
+  o4 v96 d1 | e1 | c1 | o3 a1 | o4 b-1 | g1 | a1 | g2 r2 |
+
+track bass bass vol=0.62 rev=0.08
+  o3 f4. f8 > c4 < f4 | c4. c8 g4 c4 |
+  L o3 f4. f8 > c4 < f4 | d4. d8 a4 d4 | o2 b-4. b-8 o3 f4 o2 b-4 | o3 c4. c8 g4 c4 |
+  o3 f4. f8 > c4 < f4 | a4. a8 > e4 < a4 | o2 b-4. b-8 o3 f4 o2 b-4 | o3 c4. c8 g4 c4 |
+  o2 b-4. b-8 o3 f4 o2 b-4 | o3 c4. c8 g4 c4 | a4. a8 > e4 < a4 | d4. d8 a4 d4 |
+  o3 g4. g8 > d4 < g4 | c4. c8 g4 c4 | f4. f8 > c4 < f4 | c4. c8 g4 c4 |
+
+# The log drum's offbeats, on the roots and fifths
+track log logdrum vol=0.5 pan=-0.12 rev=0.18
+  o4 r8 f8 r8 f8 r8 > c8 < r8 f8 | r8 c8 r8 c8 r8 g8 r8 c8 |
+  L o4 r8 f8 r8 f8 r8 > c8 < r8 f8 | r8 d8 r8 d8 r8 a8 r8 d8 | o3 r8 b-8 r8 b-8 r8 > f8 < r8 b-8 | o4 r8 c8 r8 c8 r8 g8 r8 c8 |
+  o4 r8 f8 r8 f8 r8 > c8 < r8 f8 | r8 a8 r8 a8 r8 > e8 < r8 a8 | o3 r8 b-8 r8 b-8 r8 > f8 < r8 b-8 | o4 r8 c8 r8 c8 r8 g8 r8 c8 |
+  o3 r8 b-8 r8 b-8 r8 > f8 < r8 b-8 | o4 r8 c8 r8 c8 r8 g8 r8 c8 | r8 a8 r8 a8 r8 > e8 < r8 a8 | r8 d8 r8 d8 r8 a8 r8 d8 |
+  o4 r8 g8 r8 g8 r8 > d8 < r8 g8 | r8 c8 r8 c8 r8 g8 r8 c8 | r8 f8 r8 f8 r8 > c8 < r8 f8 | r8 c8 r8 c8 r8 g8 r8 c8 |
+
+# A warm pad under it all, gone in the red
+track pad warmpad night=pad unless=lowhp vol=0.3 rev=0.5
+  o4 (f a > c)1 | (e g > c)1 |
+  L o4 (f a > c)1 | (d f a > c)1 | (d f b-)1 | (e g > c)1 |
+  (f a > c)1 | (e a > c)1 | (d f b-)1 | (e g > c)1 |
+  (d f b-)1 | (e g > c)1 | (e a > c)1 | (d f a)1 |
+  (d g b-)1 | (e g > c)1 | (f a > c)1 | (e g > c)1 |
+
+# In the red: two pips a beat
+track alarm marimba only=lowhp vol=0.32 pan=0.2 rev=0.1
+  o6 [ [ c16 r16 ]8 | ]2
+  L [ [ c16 r16 ]8 | ]16
+
+# Hand drums: a low conga on the beat, high congas and a bongo between
+track congas kit vol=0.55 pan=-0.18 rev=0.2
+  [ v100 d4 v80 g8 g8 v90 n8 v80 g8 v96 d8 v80 g8 | ]2
+  L [ v100 d4 v80 g8 g8 v90 n8 v80 g8 v96 d8 v80 g8 | ]14 v100 d4 v80 g8 g8 v90 n8 n8 w8 w8 | v100 d4 v80 g8 g8 v90 n8 v80 g8 v96 d8 v80 g8 |
+
+track shaker kit vol=0.5 pan=0.3 rev=0.15
+  [ [ v58 k8 v84 k8 ]4 | ]2
+  L [ [ v58 k8 v84 k8 ]4 | ]16

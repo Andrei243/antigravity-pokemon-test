@@ -28,14 +28,16 @@ if (args.Length < 1)
 if (args[0] == "--calibrate")
 {
     // Each instrument playing a phrase of quarter notes around middle C, to balance their gains
+    // --calibrate --sound modern measures them in the modern sound (plan 31)
+    var calibrated = args.Contains("modern") ? SynthSound.Modern : SynthSound.Ds;
     foreach (var name in InstrumentBank.Names.OrderBy(n => n))
     {
         var inst = InstrumentBank.Get(name)!;
-        var synth = new Synthesizer { ReverbLevel = 0f };
-        int n = Synthesizer.SampleRate * 4;
+        var synth = new Synthesizer(calibrated) { ReverbLevel = 0f };
+        int n = synth.Rate * 4;
         var buf = new float[n * 2];
         int[] keys = inst.IsKit ? new[] { 0, 1, 2, 1 } : new[] { 60, 64, 67, 72 };
-        int step = Synthesizer.SampleRate / 2;
+        int step = synth.Rate / 2;
         for (int done = 0, k = 0; done < n; done += step, k++)
         {
             synth.NoteOn(inst, keys[k % keys.Length], 100 / 127f, step * 7 / 8, 0f, 0.8f, 0f);
@@ -55,11 +57,20 @@ bool spectrograms = args.Contains("--spectrogram");
 bool lowHp = args.Contains("--lowhp");
 bool giant = args.Contains("--giant");
 int passes = 2;
+bool wide = args.Contains("--wide");
+// Plan 31 · MU0: --sound ds|modern renders the songs in that sound, with no mixer (OfflineMaster); without it they
+// play through the game's mixer in the DS sound, as they always have
+SynthSound? soundAsked = null;
 var filters = new List<string>();
 for (int i = 1; i < args.Length; i++)
 {
-    if (args[i] is "--night" or "--stems" or "--spectrogram" or "--sounds" or "--lowhp" or "--giant" or "--cries" or "--all" or "--modes" or "--ambience" or "--handheld") continue;
+    if (args[i] is "--night" or "--stems" or "--spectrogram" or "--sounds" or "--lowhp" or "--giant" or "--cries" or "--all" or "--modes" or "--ambience" or "--handheld" or "--wide") continue;
     if (args[i] == "--passes") { passes = int.Parse(args[++i]); continue; }
+    if (args[i] == "--sound")
+    {
+        soundAsked = args[++i] switch { "ds" => SynthSound.Ds, "modern" => SynthSound.Modern, var x => throw new ArgumentException($"--sound takes ds or modern, not {x}") };
+        continue;
+    }
     filters.Add(args[i]);
 }
 
@@ -206,33 +217,35 @@ foreach (var file in filters.Where(f => f.EndsWith(".mml", StringComparison.Ordi
 }
 foreach (var song in songs)
 {
-    var mixer = new AudioMixer { Volume = 0.8f, LowHp = lowHp, Giant = giant, Handheld = handheld };
-    double seconds;
-    if (song.Loops)
+    // The intro, then the loop enough times to hear the seam, then a fade; a fanfare once and its ring
+    double seconds = song.Loops ? song.Duration(night) + song.LoopDuration(night) * (passes - 1) + 2.5 : song.Duration(night) + 1.5;
+    int rate = soundAsked == SynthSound.Modern ? Synthesizer.ModernRate : Synthesizer.SampleRate;
+    int frames = (int)(seconds * rate);
+    float[] samples;
+    SongPlayer? voices = null;
+    var clock = System.Diagnostics.Stopwatch.StartNew();
+    if (soundAsked is { } sound)
     {
-        mixer.Play(song, night);
-        // The intro, then the loop enough times to hear the seam, then a fade
-        seconds = song.Duration(night) + song.LoopDuration(night) * (passes - 1) + 2.5;
+        // The song in the sound asked for, with no mixer: the same last stage as the mixer's, at the sound's own rate
+        samples = OfflineMaster.Render(song, sound, seconds, out voices, night, lowHp, giant);
     }
     else
     {
-        mixer.PlayFanfare(song);
-        seconds = song.Duration(night) + 1.5;
-    }
-
-    int frames = (int)(seconds * Synthesizer.SampleRate);
-    var samples = new float[frames * 2];
-    const int chunk = 1024;
-    var clock = System.Diagnostics.Stopwatch.StartNew();
-    for (int done = 0; done < frames; done += chunk)
-    {
-        int n = Math.Min(chunk, frames - done);
-        mixer.Render(samples.AsSpan(done * 2, n * 2));
+        var mixer = new AudioMixer { Volume = 0.8f, LowHp = lowHp, Giant = giant, Handheld = handheld };
+        if (song.Loops) mixer.Play(song, night);
+        else mixer.PlayFanfare(song);
+        samples = new float[frames * 2];
+        const int chunk = 1024;
+        for (int done = 0; done < frames; done += chunk)
+        {
+            int n = Math.Min(chunk, frames - done);
+            mixer.Render(samples.AsSpan(done * 2, n * 2));
+        }
     }
     double cpu = clock.Elapsed.TotalSeconds / seconds * 100;
     if (song.Loops)
     {
-        int fade = (int)(2.5 * Synthesizer.SampleRate);
+        int fade = (int)(2.5 * rate);
         for (int i = 0; i < fade; i++)
         {
             float g = 1f - i / (float)fade;
@@ -251,15 +264,30 @@ foreach (var song in songs)
         sum += s * s;
     }
     double rms = Math.Sqrt(sum / samples.Length);
-    string name = song.Id.Replace('/', '_') + (night ? "_night" : "") + (lowHp ? "_lowhp" : "") + (giant ? "_giant" : "") + (handheld ? "_handheld" : "");
-    WriteWav(Path.Combine(outDir, name + ".wav"), samples);
-    if (spectrograms) WriteSpectrogram(Path.Combine(outDir, name + ".png"), samples, 1200, 256, 8192f);
+    string name = song.Id.Replace('/', '_') + (soundAsked is { } named ? "_" + named.ToString().ToLowerInvariant() : "") + (night ? "_night" : "") + (lowHp ? "_lowhp" : "") + (giant ? "_giant" : "") + (handheld ? "_handheld" : "");
+    WriteWav(Path.Combine(outDir, name + ".wav"), samples, rate);
+    // --wide draws the spectrogram to 16 kHz, where the two sounds' top ends differ (the DS's stops at 16.4 kHz)
+    if (spectrograms) WriteSpectrogram(Path.Combine(outDir, name + ".png"), samples, 1200, 256, wide ? 16000f : 8192f, rate);
 
     var clashes = Clashes(song, lowHp, giant);
     // Loudness is measured before the fade, as the game plays it
     var bus = song.Loops ? AudioBus.Music : AudioBus.Fanfare;
-    double loud = Loudness.Of(samples.AsSpan(0, (song.Loops ? frames - (int)(2.5 * Synthesizer.SampleRate) : frames) * 2), 2);
-    Console.WriteLine($"{song.Id,-24} {song.Duration(night),6:0.0}s loop {song.LoopDuration(night),5:0.0}s  peak {Db(peak),6:0.0} dB  rms {Db((float)rms),6:0.0} dB  loud {loud,6:0.0} dB  clashes {clashes.Count}  cpu {cpu:0.0}%{(nans > 0 ? $"  NaN {nans}" : "")}{Target(loud, bus)}");
+    double loud = Loudness.Of(samples.AsSpan(0, (song.Loops ? frames - (int)(2.5 * rate) : frames) * 2), 2, rate);
+    // The loop's join: the largest step between two samples round the place the song wraps, against the same at the
+    // loop point the first time through (the same notes starting): a join that clicks is far over it
+    string seam = "";
+    if (song.Loops && passes >= 2)
+    {
+        double perTick = song.SecondsPerTick(night, lowHp, giant);
+        float atJoin = LargestStep(samples, (int)(song.EndTick * perTick * rate), rate);
+        float atLoop = LargestStep(samples, (int)(song.LoopTick * perTick * rate), rate);
+        bool clicks = atJoin > atLoop * 1.5f + 0.02f;
+        seam = $"  join {atJoin:0.000} (loop start {atLoop:0.000}){(clicks ? "  CLICKS" : "")}";
+        if (clicks) problems = true;
+    }
+    Console.WriteLine($"{song.Id,-24} {song.Duration(night),6:0.0}s loop {song.LoopDuration(night),5:0.0}s  peak {Db(peak),6:0.0} dB  rms {Db((float)rms),6:0.0} dB  loud {loud,6:0.0} dB  clashes {clashes.Count}{seam}  cpu {cpu:0.0}%{(nans > 0 ? $"  NaN {nans}" : "")}{Target(loud, bus)}");
+    if (voices != null)
+        Console.WriteLine($"    {voices.Rate} Hz, voices: most at once {voices.PeakVoices}, cut short {voices.VoicesStolen}");
     foreach (var c in clashes.Take(12)) Console.WriteLine("    " + c);
     if (stems)
     {
@@ -272,14 +300,19 @@ foreach (var song in songs)
             };
             solo.Tracks.Add(track);
             // In the arrangement rendered, so a layer of the red or of a giant is measured too
-            var player = new SongPlayer { Agitated = lowHp, Giant = giant };
+            var player = new SongPlayer(soundAsked ?? SynthSound.Ds) { Agitated = lowHp, Giant = giant };
             player.Start(solo, night);
-            int n = (int)(song.Duration(night) * Synthesizer.SampleRate);
+            int n = (int)(song.Duration(night) * player.Rate);
             var buf = new float[n * 2];
             for (int done = 0; done < n; done += 1024) player.Render(buf.AsSpan(done * 2, Math.Min(1024, n - done) * 2), 0.8f);
             double ss = 0;
-            foreach (float x in buf) ss += x * x;
-            Console.WriteLine($"    {track.Name,-12} rms {Db((float)Math.Sqrt(ss / buf.Length)),6:0.0} dB");
+            float top = 0f;
+            foreach (float x in buf)
+            {
+                ss += x * x;
+                top = MathF.Max(top, MathF.Abs(x));
+            }
+            Console.WriteLine($"    {track.Name,-12} rms {Db((float)Math.Sqrt(ss / buf.Length)),6:0.0} dB  peak {Db(top),6:0.0} dB");
         }
     }
     if (nans > 0 || peak >= 0.999f) problems = true;
@@ -287,6 +320,16 @@ foreach (var song in songs)
 return problems ? 2 : 0;
 
 static double Db(float x) => x <= 0 ? -120 : 20 * Math.Log10(x);
+
+// The largest step between two samples of either side within 3 ms of a frame
+static float LargestStep(float[] stereo, int at, int rate)
+{
+    int reach = rate * 3 / 1000, frames = stereo.Length / 2;
+    float largest = 0f;
+    for (int i = Math.Max(1, at - reach); i < Math.Min(frames, at + reach); i++)
+        for (int ch = 0; ch < 2; ch++) largest = MathF.Max(largest, MathF.Abs(stereo[i * 2 + ch] - stereo[(i - 1) * 2 + ch]));
+    return largest;
+}
 
 // Two pitched parts a minor second (or minor ninth) apart, where one of them starts on a beat and lasts at least an eighth
 // Two parts a minor second or ninth apart on a beat, in the arrangement rendered: the low-HP one's tracks
@@ -333,7 +376,7 @@ static string NoteName(int key)
     return names[((key % 12) + 12) % 12] + (key / 12 - 1);
 }
 
-static void WriteWav(string path, float[] samples)
+static void WriteWav(string path, float[] samples, int rate = Synthesizer.SampleRate)
 {
     using var w = new BinaryWriter(File.Create(path));
     int dataBytes = samples.Length * 2;
@@ -343,8 +386,8 @@ static void WriteWav(string path, float[] samples)
     w.Write(16);
     w.Write((short)1);
     w.Write((short)2);
-    w.Write(Synthesizer.SampleRate);
-    w.Write(Synthesizer.SampleRate * 4);
+    w.Write(rate);
+    w.Write(rate * 4);
     w.Write((short)4);
     w.Write((short)16);
     w.Write(Encoding.ASCII.GetBytes("data"));
@@ -354,14 +397,14 @@ static void WriteWav(string path, float[] samples)
 
 // A spectrogram of interleaved stereo (mixed to mono): time left to right, 0 Hz at the bottom and maxHz at the top,
 // black through blue, magenta and orange to white over 80 dB. Returns the frequency with the most energy overall.
-static float WriteSpectrogram(string path, float[] stereo, int width, int height, float maxHz)
+static float WriteSpectrogram(string path, float[] stereo, int width, int height, float maxHz, int rate = Synthesizer.SampleRate)
 {
     const int window = 1024;
     int n = stereo.Length / 2;
     var mono = new float[Math.Max(n, window)];
     for (int i = 0; i < n; i++) mono[i] = (stereo[i * 2] + stereo[i * 2 + 1]) * 0.5f;
 
-    int bins = Math.Min(window / 2, (int)(maxHz * window / Synthesizer.SampleRate));
+    int bins = Math.Min(window / 2, (int)(maxHz * window / rate));
     int hop = Math.Max(1, (mono.Length - window) / width);
     var hann = new float[window];
     for (int i = 0; i < window; i++) hann[i] = 0.5f - 0.5f * MathF.Cos(MathF.Tau * i / window);
@@ -404,7 +447,7 @@ static float WriteSpectrogram(string path, float[] stereo, int width, int height
 
     int loudest = 0;
     for (int k = 1; k < bins; k++) if (energy[k] > energy[loudest]) loudest = k;
-    return loudest * Synthesizer.SampleRate / (float)window;
+    return loudest * rate / (float)window;
 }
 
 static (byte, byte, byte) Heat(float t)
