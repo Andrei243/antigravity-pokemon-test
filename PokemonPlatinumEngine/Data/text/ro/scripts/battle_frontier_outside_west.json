@@ -48,5 +48,155 @@
         "Bucură-te de Frontier! Voi fi aici când vei vrea să te întorci acasă pe mare."
       ]
     }
+  ],
+  "DomeDoor": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitoarea"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Battle Dome! Its tournaments are held in the annex of the Battle Frontier in Sinnoh."
+      ],
+      "text": [
+        "Bine ai venit la Battle Dome! Turneele lui au loc în anexa Battle Frontier din Sinnoh."
+      ]
+    },
+    {
+      "en": [
+        "Shall we take you there? Your team comes along, and your records stay as they are."
+      ],
+      "text": [
+        "Să te ducem acolo? Echipa vine cu tine, iar recordurile tale rămân cum sunt."
+      ]
+    },
+    {
+      "en": [
+        "{player} crossed with the attendant to the Battle Frontier in Sinnoh..."
+      ],
+      "text": [
+        "{player} a trecut cu însoțitoarea la Battle Frontier din Sinnoh..."
+      ]
+    },
+    {
+      "en": [
+        "Whenever you're ready. I'll be at this door."
+      ],
+      "text": [
+        "Când ești gata. Eu voi fi la ușa asta."
+      ]
+    },
+    {
+      "en": [
+        "The door is shut. A sign says that only holders of a Frontier Pass may enter."
+      ],
+      "text": [
+        "Ușa e închisă. Un anunț spune că doar cei cu un Frontier Pass pot intra."
+      ]
+    }
+  ],
+  "FactoryDoor": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitoarea"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Battle Factory! Its rental battles are held at the Battle Frontier in Sinnoh."
+      ],
+      "text": [
+        "Bine ai venit la Battle Factory! Luptele cu Pokémon închiriați au loc la Battle Frontier din Sinnoh."
+      ]
+    },
+    {
+      "en": [
+        "Shall we take you there? Your team comes along, and your records stay as they are."
+      ],
+      "text": [
+        "Să te ducem acolo? Echipa vine cu tine, iar recordurile tale rămân cum sunt."
+      ]
+    },
+    {
+      "en": [
+        "{player} crossed with the attendant to the Battle Frontier in Sinnoh..."
+      ],
+      "text": [
+        "{player} a trecut cu însoțitoarea la Battle Frontier din Sinnoh..."
+      ]
+    },
+    {
+      "en": [
+        "Whenever you're ready. I'll be at this door."
+      ],
+      "text": [
+        "Când ești gata. Eu voi fi la ușa asta."
+      ]
+    },
+    {
+      "en": [
+        "The door is shut. A sign says that only holders of a Frontier Pass may enter."
+      ],
+      "text": [
+        "Ușa e închisă. Un anunț spune că doar cei cu un Frontier Pass pot intra."
+      ]
+    }
+  ],
+  "PikeDoor": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitoarea"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Battle Pike! Its three paths wind through the annex of the Battle Frontier in Sinnoh."
+      ],
+      "text": [
+        "Bine ai venit la Battle Pike! Cele trei cărări ale lui șerpuiesc prin anexa Battle Frontier din Sinnoh."
+      ]
+    },
+    {
+      "en": [
+        "Shall we take you there? Your team comes along, and your records stay as they are."
+      ],
+      "text": [
+        "Să te ducem acolo? Echipa vine cu tine, iar recordurile tale rămân cum sunt."
+      ]
+    },
+    {
+      "en": [
+        "{player} crossed with the attendant to the Battle Frontier in Sinnoh..."
+      ],
+      "text": [
+        "{player} a trecut cu însoțitoarea la Battle Frontier din Sinnoh..."
+      ]
+    },
+    {
+      "en": [
+        "Whenever you're ready. I'll be at this door."
+      ],
+      "text": [
+        "Când ești gata. Eu voi fi la ușa asta."
+      ]
+    },
+    {
+      "en": [
+        "The door is shut. A sign says that only holders of a Frontier Pass may enter."
+      ],
+      "text": [
+        "Ușa e închisă. Un anunț spune că doar cei cu un Frontier Pass pot intra."
+      ]
+    }
   ]
 }

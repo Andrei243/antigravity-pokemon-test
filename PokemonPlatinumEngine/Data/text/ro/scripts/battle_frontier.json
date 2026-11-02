@@ -146,10 +146,10 @@
   "HoennGuide": [
     {
       "en": [
-        "I run Scott's ferry between the Battle Frontier and Lilycove City, in Hoenn."
+        "I run Scott's ferry between the Battle Frontier and Hoenn."
       ],
       "text": [
-        "Conduc feribotul lui Scott între Battle Frontier și Orașul Lilycove, în Hoenn."
+        "Conduc feribotul lui Scott între Battle Frontier și Hoenn."
       ]
     },
     {
@@ -158,6 +158,36 @@
       ],
       "text": [
         "Să te duc înapoi în Orașul Lilycove?"
+      ]
+    },
+    {
+      "en": [
+        "Where would you like to sail?",
+        "FRONTIER ISLAND",
+        "LILYCOVE CITY",
+        "NOWHERE"
+      ],
+      "text": [
+        "Unde ai vrea să navighezi?",
+        "INSULA FRONTIER",
+        "ORAȘUL LILYCOVE",
+        "NICĂIERI"
+      ]
+    },
+    {
+      "en": [
+        "Very good. Climb aboard, and mind your step."
+      ],
+      "text": [
+        "Foarte bine. Urcă la bord și ai grijă unde calci."
+      ]
+    },
+    {
+      "en": [
+        "{player} sailed back to the Battle Frontier island..."
+      ],
+      "text": [
+        "{player} s-a întors pe mare pe insula Battle Frontier..."
       ]
     },
     {

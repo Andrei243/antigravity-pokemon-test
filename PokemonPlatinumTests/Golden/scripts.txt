@@ -7505,7 +7505,7 @@ way 1, from answer 1
 === battle_frontier.HoennGuide
 from Guide at 50,51 of BattleFrontier
 way 0
-  Guide> I run Scott's ferry between the Battle Frontier and Lilycove City, in Hoenn.
+  Guide> I run Scott's ferry between the Battle Frontier and Hoenn.
   Guide> Shall I take you back to Lilycove City?
   Guide> Very good. Climb aboard, and mind your step.
   > Lucas sailed back to Lilycove City...
@@ -7721,10 +7721,34 @@ way -
   Clerk> Welcome to the Frontier's Mart! What can I get for you?
   Clerk> Thank you! Good luck in the halls.
   * open Shop ever_grande_league
+=== battle_frontier_outside_east.ArenaDoor
+from the tile read at 95,29 of HoennBattleFrontier
+way -
+  > The door is shut. A sign says that only holders of a Frontier Pass may enter.
+=== battle_frontier_outside_east.PalaceDoor
+from the tile read at 101,56 of HoennBattleFrontier
+way -
+  > The door is shut. A sign says that only holders of a Frontier Pass may enter.
+=== battle_frontier_outside_east.PyramidDoor
+from the tile read at 114,14 of HoennBattleFrontier
+way -
+  > The door is shut. A sign says that only holders of a Frontier Pass may enter.
 === battle_frontier_outside_east.Sudowoodo
 from Strange Tree at 110,62 of HoennBattleFrontier
 way -
   > It's an odd tree. It is wiggling about, though there is no wind.
+=== battle_frontier_outside_east.TowerDoor
+from the tile read at 72,14 of HoennBattleFrontier
+way -
+  > The door is shut. A sign says that only holders of a Frontier Pass may enter.
+=== battle_frontier_outside_west.DomeDoor
+from the tile read at 19,17 of HoennBattleFrontier
+way -
+  > The door is shut. A sign says that only holders of a Frontier Pass may enter.
+=== battle_frontier_outside_west.FactoryDoor
+from the tile read at 11,38 of HoennBattleFrontier
+way -
+  > The door is shut. A sign says that only holders of a Frontier Pass may enter.
 === battle_frontier_outside_west.FerryAttendant
 from Attendant at 19,68 of HoennBattleFrontier
 way 0
@@ -7738,6 +7762,23 @@ way 0
 way 1, from answer 1
   Attendant> Enjoy the Frontier! I'll be here when you want to sail home.
   ? Shall I take you back to Lilycove City? = No
+=== battle_frontier_outside_west.PikeDoor
+from the tile read at 42,27 of HoennBattleFrontier
+way -
+  > The door is shut. A sign says that only holders of a Frontier Pass may enter.
+=== battle_frontier_ranking_hall.FactoryRecords
+from the tile read at 10,9 of BattleFrontier_RankingHall
+way -
+  * sound select
+  * frontier records 2
+=== battle_frontier_ranking_hall.TowerRecords
+from the tile read at 23,8 of BattleFrontier_RankingHall
+from the tile read at 26,5 of BattleFrontier_RankingHall
+from the tile read at 26,9 of BattleFrontier_RankingHall
+from the tile read at 29,8 of BattleFrontier_RankingHall
+way -
+  * sound select
+  * frontier records 1
 === battle_frontier_reception_gate.FacilityGuide
 from Guide at 8,11 of BattleFrontier_ReceptionGate
 way 0
@@ -7804,7 +7845,7 @@ way 0
   Scott> Welcome to my home, Lucas! I've watched you since the very start of your journey.
   Scott> A little something to begin your challenges with.
   > Lucas received 3 Battle Points!
-  Scott> The halls of this island aren't ready yet. The Frontier Brains are still at Sinnoh's Battle Frontier.
+  Scott> This island's halls send their challengers on to Sinnoh's Battle Frontier, where the Frontier Brains wait.
   Scott> Shall I take you to the Battle Frontier in Sinnoh?
   Scott> Splendid! Your team comes along, and your records stay as they are.
   > Lucas sailed with Scott for the Battle Frontier...

@@ -120,11 +120,62 @@ label JohtoStay
 # The guide of Scott's ferry in Hoenn (plan 21 · H9, part c), on the Frontier's third door: shown once Hoenn's Hall of
 # Fame is entered, and the way back to Lilycove City's harbour, a crossing as every region's is (`travel to`,
 # GameEngine.CrossTo). The records, the streaks and the Battle Points are the same from every door.
+# Once the S.S. Ticket has opened the way to Hoenn's Battle Frontier island (plan 21 · H12, part m), he also sails back
+# to the island: to the hall door the player came through (VAR_HOENN_FRONTIER_HALL, set by the island's doors,
+# battle_frontier_outside_west.txt and _east.txt), or to its quay for one who came with Scott.
 script HoennGuide
   face self player
-  say "I run Scott's ferry between the Battle Frontier and Lilycove City, in Hoenn."
+  say "I run Scott's ferry between the Battle Frontier and Hoenn."
+  if flag FLAG_RECEIVED_SS_TICKET goto HoennWhere
   ask "Shall I take you back to Lilycove City?"
   if no goto HoennStay
+  goto HoennLilycove
+label HoennWhere
+  choose "Where would you like to sail?" "FRONTIER ISLAND" "LILYCOVE CITY" "NOWHERE"
+  if result == 2 goto HoennStay
+  if result == 1 goto HoennLilycove
+  say "Very good. Climb aboard, and mind your step."
+  fade out 0.8
+  text "{player} sailed back to the Battle Frontier island..."
+  if var VAR_HOENN_FRONTIER_HALL == 1 goto HoennTower
+  if var VAR_HOENN_FRONTIER_HALL == 2 goto HoennDome
+  if var VAR_HOENN_FRONTIER_HALL == 3 goto HoennPalace
+  if var VAR_HOENN_FRONTIER_HALL == 4 goto HoennArena
+  if var VAR_HOENN_FRONTIER_HALL == 5 goto HoennFactory
+  if var VAR_HOENN_FRONTIER_HALL == 6 goto HoennPike
+  if var VAR_HOENN_FRONTIER_HALL == 7 goto HoennPyramid
+  travel to "HoennBattleFrontier" 19 67 up
+  fade in 0.8
+  end
+label HoennTower
+  travel to "HoennBattleFrontier" 72 15 down
+  fade in 0.8
+  end
+label HoennDome
+  travel to "HoennBattleFrontier" 19 18 down
+  fade in 0.8
+  end
+label HoennPalace
+  travel to "HoennBattleFrontier" 101 57 down
+  fade in 0.8
+  end
+label HoennArena
+  travel to "HoennBattleFrontier" 95 30 down
+  fade in 0.8
+  end
+label HoennFactory
+  travel to "HoennBattleFrontier" 11 39 down
+  fade in 0.8
+  end
+label HoennPike
+  travel to "HoennBattleFrontier" 42 28 down
+  fade in 0.8
+  end
+label HoennPyramid
+  travel to "HoennBattleFrontier" 114 15 down
+  fade in 0.8
+  end
+label HoennLilycove
   say "Very good. Climb aboard, and mind your step."
   fade out 0.8
   text "{player} sailed back to Lilycove City..."

@@ -1429,11 +1429,25 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
       table): accepted.
     - **What of Hoenn is left after part k**: Trainer Hill (its tables, `src/data/battle_frontier/trainer_hill.h`, are
       readable from the pinned cache after all; its floors are built by a mechanic of their own and nothing of it is
-      built); the Frontier island's seven halls (still `locked`: their rules exist as Sinnoh's facilities and the annex's
-      venues, which Scott's crossing reaches, but no hall of the island leads to them); Emerald's own slot machine (its
+      built); ~~the Frontier island's seven halls~~ (part m: their doors cross to Sinnoh's lobbies); Emerald's own slot machine (its
       Reel Time and bonus; Platinum's machine stands in) and the roulette's wheel itself (menus stand in); Jirachi (only
       the Wishmaker disc gives it); the two basements (the game corner's in Mossdeep and the house of mystery events'
       in Sootopolis); the contest's stage rooms, the quiz and contest ladies, the Pokéblock feeders and H11's other
       leftovers; and pictures only: the Abandoned Ship's deck and wreck, the Mechadolls, the Kecleon bridge's tiles, the
       Fortree bridge's swap, the salt piles shrinking, Mew's grass shaking, the cave mouths' and deep water's looks, the
       ship's and the triangle's looks.
+    - **Part m** (done 2026-11-02: the Battle Frontier island's seven halls; `docs/mechanics/rulings.md`, "The Battle
+      Frontier island's halls"; tests run with `--filter` (`HoennFrontierHallsTests` 28, `HoennFrontierIslandTests`,
+      Story, Script, Content, Voice, ScriptTranslation, Text, SceneSkip, Golden, Romanian, Region, Frontier); no shots
+      taken). **Decided**: the recommended way of "Route 40's way to the Battle Frontier", a crossing at each door, not
+      lobbies of our own (a lobby's counter warps on to its corridor and battle rooms, which are Sinnoh's maps, so Hoenn
+      lobbies would want every room behind them copied). **Built**: each hall's door stays a `locked` warp and is read
+      (the overlays' `readAt`; `TowerDoor`, `DomeDoor`, `PalaceDoor`, `ArenaDoor`, `FactoryDoor`, `PikeDoor`,
+      `PyramidDoor`): its attendant crosses a holder of the Frontier Pass by `travel to` to the Battle Tower's lobby, the
+      Battle Factory's, or the annex's before the Dome's, Palace's, Arena's, Pike's and Pyramid's desks, keeping the hall
+      in `VAR_HOENN_FRONTIER_HALL`; the Hoenn guide on Sinnoh's grounds asks a holder of the S.S. Ticket whether to sail to
+      the island, landing before the door last come through (the quay for one who came with Scott), or to Lilycove; the
+      Ranking Hall's Tower and Factory boards open the shared records (`frontier records`); the halls' signs and Scott's
+      line say where the halls are fought. Romanian for every changed line. **Golden**: scripts.txt (the seven doors,
+      the two boards): accepted. **Left**: Emerald's hall lobbies and Frontier Brains of their own (the island's halls
+      use Sinnoh's five Brains and the annex's), the island's own song, and nothing of the halls' rules.

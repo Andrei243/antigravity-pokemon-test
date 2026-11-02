@@ -20,3 +20,67 @@ script FerryAttendant
 label Stay
   say "Enjoy the Frontier! I'll be here when you want to sail home."
   end
+
+
+# The halls' doors (plan 21 · H12, part m; docs/mechanics/rulings.md, "The Battle Frontier island's halls"). This game
+# has one Battle Frontier, Sinnoh's, with one set of records, and its facilities and the annex's venues are Sinnoh's
+# rooms; a warp never crosses regions, so each hall's door stays a `locked` warp, and its attendant, read at the door,
+# crosses a holder of the Frontier Pass to the hall's lobby there (`travel to`, GameEngine.CrossTo) as Scott does. The
+# hall is kept (VAR_HOENN_FRONTIER_HALL) so that the Hoenn guide on Sinnoh's grounds sails back to this door.
+
+script DomeDoor
+  if not flag FLAG_RECEIVED_FRONTIER_PASS goto NoPass
+  speaker "Attendant"
+  say "Welcome to the Battle Dome! Its tournaments are held in the annex of the Battle Frontier in Sinnoh."
+  ask "Shall we take you there? Your team comes along, and your records stay as they are."
+  if no goto Later
+  setvar VAR_HOENN_FRONTIER_HALL 2
+  fade out 0.8
+  text "{player} crossed with the attendant to the Battle Frontier in Sinnoh..."
+  travel to "BattleFrontierAnnex" 7 9 up
+  fade in 0.8
+  end
+label Later
+  say "Whenever you're ready. I'll be at this door."
+  end
+label NoPass
+  text "The door is shut. A sign says that only holders of a Frontier Pass may enter."
+  end
+
+script FactoryDoor
+  if not flag FLAG_RECEIVED_FRONTIER_PASS goto NoPass
+  speaker "Attendant"
+  say "Welcome to the Battle Factory! Its rental battles are held at the Battle Frontier in Sinnoh."
+  ask "Shall we take you there? Your team comes along, and your records stay as they are."
+  if no goto Later
+  setvar VAR_HOENN_FRONTIER_HALL 5
+  fade out 0.8
+  text "{player} crossed with the attendant to the Battle Frontier in Sinnoh..."
+  travel to "BattleFactory" 1 7 right
+  fade in 0.8
+  end
+label Later
+  say "Whenever you're ready. I'll be at this door."
+  end
+label NoPass
+  text "The door is shut. A sign says that only holders of a Frontier Pass may enter."
+  end
+
+script PikeDoor
+  if not flag FLAG_RECEIVED_FRONTIER_PASS goto NoPass
+  speaker "Attendant"
+  say "Welcome to the Battle Pike! Its three paths wind through the annex of the Battle Frontier in Sinnoh."
+  ask "Shall we take you there? Your team comes along, and your records stay as they are."
+  if no goto Later
+  setvar VAR_HOENN_FRONTIER_HALL 6
+  fade out 0.8
+  text "{player} crossed with the attendant to the Battle Frontier in Sinnoh..."
+  travel to "BattleFrontierAnnex" 7 9 up
+  fade in 0.8
+  end
+label Later
+  say "Whenever you're ready. I'll be at this door."
+  end
+label NoPass
+  text "The door is shut. A sign says that only holders of a Frontier Pass may enter."
+  end

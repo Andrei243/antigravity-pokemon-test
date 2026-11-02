@@ -1,8 +1,8 @@
 {
   // The Battle Frontier island's west half (plan 21 · H12, part b): the quay where the ferry from Lilycove City moors,
   // the reception gate, the Mart, Scott's house and two lounges. The halls of this half (the Battle Dome, the Battle
-  // Factory and the Battle Pike) are plan 14 · B8 to B10's and stay shut, as Artisan Cave's way in does; a Champion plays
-  // the Frontier's halls through Scott's crossing to Sinnoh's (battle_frontier_scotts_house.txt). The ship itself is not
+  // Factory and the Battle Pike) are read at their doors since part m, each crossing to its lobby at Sinnoh's Battle
+  // Frontier (battle_frontier_outside_west.txt). The ship itself is not
   // drawn, as on Southern Island
   "area": "battle_frontier_outside_west",
   "name": "Battle Frontier",
@@ -10,6 +10,9 @@
   "trees": "Round",
   // Artisan Cave's way out (10) is open since plan 21 · H12, part i
   "locked": [ 0, 1, 2 ],
+  // The halls' doors stay locked warps (their lobbies are Sinnoh's rooms) and are read: each hall's attendant crosses a
+  // holder of the Frontier Pass to its lobby at Sinnoh's Battle Frontier (plan 21 · H12, part m)
+  "readAt": [ { "x": 42, "z": 27, "script": "PikeDoor" }, { "x": 19, "z": 17, "script": "DomeDoor" }, { "x": 11, "z": 38, "script": "FactoryDoor" } ],
   "people": {
     "frontier_ferry_attendant": { "name": "Attendant", "script": "FerryAttendant", "still": true },
     "boy_2": { "name": "Boy", "dialog": [ "Back home I beat everyone I know. Here I've lost every battle I've had. This island is something else!" ] },
@@ -36,9 +39,9 @@
     "pokefan_f": { "name": "Pokéfan", "dialog": [ "I came to see the Dome's champion. Isn't he wonderful? He looked my way, I'm sure of it!" ] }
   },
   "signs": {
-    "BattleFrontier_OutsideWest_EventScript_BattleDomeSign": "BATTLE DOME\nTournaments for the strongest. Closed for now.",
-    "BattleFrontier_OutsideWest_EventScript_BattlePikeSign": "BATTLE PIKE\nThree paths to choose from. Closed for now.",
-    "BattleFrontier_OutsideWest_EventScript_BattleFactorySign": "BATTLE FACTORY\nBattles with rented Pokémon. Closed for now.",
+    "BattleFrontier_OutsideWest_EventScript_BattleDomeSign": "BATTLE DOME\nTournaments for the strongest. Held at Sinnoh's Frontier.",
+    "BattleFrontier_OutsideWest_EventScript_BattlePikeSign": "BATTLE PIKE\nThree paths to choose from. Held at Sinnoh's Frontier.",
+    "BattleFrontier_OutsideWest_EventScript_BattleFactorySign": "BATTLE FACTORY\nBattles with rented Pokémon. Held at Sinnoh's Frontier.",
     "Common_EventScript_ShowPokemartSign": "POKé MART\nFor all your Pokémon needs."
   }
 }
