@@ -7964,3 +7964,44 @@ Plan 10 · F2 to F5 (2026-11-02). Neither is Platinum's: both are rows of the op
 - **What it says** (F4, `LeadFollower`): a line by five bands of friendship (0, 50, 100, 150, 220), each with a bubble, and its cry. After 256 steps walked with it, one talk in three finds something from a table of our own (berries, a Potion, balls, an Antidote, an Ether), drawn on the field's own generator; the count starts again after a find and is not saved. Amity Square keeps the original's moods by chance.
 - **Wild Pokémon in sight** (F5, `FieldPokemon`): up to six, in the tall grass and on open water within 11 tiles across and 8 down of the player, each drawn as Sweet Scent draws one (`Map.DrawOutWild`: the place's table and the moment's, the lead's ability having its say) and made at once as the grass would make it (`GameEngine.MakeWild`), so the battle is with the one seen. With the row at VISIBLE the tall grass and the water roll nothing; caves, rods, Sweet Scent, Honey, the Poké Radar and the Bug-Catching Contest's park are as ever (none stands in a room or below ground). A roamer is never seen standing about. Walked into (or walking into the player), or faced and spoken to, it is met.
 - **The back strike** (F5): met while it faced the way the player faces, a wild Pokémon loses its first turn (Legends: Arceus), said where a flinch is (`battle.caughtOffGuard`), under `Ruleset.BackStrikes` alone, which only the modern rules have. It is `BattleConditions.Surprised`, kept in the Vs. Recorder's file.
+## Kalos drawn by hand, its first chapter and its roller skates (2026-11-02, plan 23 · Z1)
+
+- **Where Kalos's layout comes from.** The user's decision of 2026-11-02: plan 23's option (b). X and Y have no
+  decompilation, and no dump is read: Kalos is drawn by hand on the four-direction tile grid, in its shape as it is
+  publicly described (the order of its places, which way each road runs, what stands in each town: Serebii and
+  Bulbapedia-level knowledge), and never from a picture, a tile, a model, a line of text or a script of the original.
+  The drawings are text files of a character to a tile (`tools/MapDraw/kalos/*.txt`, placed by `layout.json`), and
+  `dotnet run --project tools/MapDraw -- kalos` writes the chunks, the overworld's matrix and the habitats from them;
+  `KalosTests.TheWorldFilesAreWhatTheDrawingsGive` holds the files to the drawings. Houses are drawn into the tiles (a
+  body `H` and a door `D`) and found at their doors as a GBA region's are (`buildingsAtDoors`); rooms are hand-made map
+  files. The overworld is 24 chunks by 24, the whole region's shape, so a tile keeps its place as more is drawn.
+- **What Z1 draws.** Vaniville Town, Route 1 (the Vaniville Pathway) and Aquacorde Town, with their ten rooms. The user
+  asked to judge the first town before the rest is drawn, so Route 2, Santalune Forest, Route 3 and Santalune City wait
+  for that judgement; the trail north of Aquacorde's bridge turns the player back until then (`aquacorde_town.NotYet`).
+  Vaniville is a clearing in the woods with five houses round a green and the way north; Route 1 a short lane between
+  flower beds with no wild Pokémon, as X and Y's first route has none; Aquacorde a river across its north with a stone
+  bridge, a waterfront promenade where the café's tables stand, a market stall and four houses on the main street.
+- **The first chapter** (our words on X and Y's beats as they are publicly told; no script of the original is read):
+  the player wakes in the new house in Vaniville; Mom says the neighbours called; the neighbour (the hero the player
+  isn't: Serena beside the boy, Calem beside the girl, the region file's `rivals`) and Shauna meet the player at the
+  door and send them to Aquacorde; at the café Tierno hands over the three Pokémon a professor sent, Trevor the
+  Pokédex, Shauna battles with the one the player's is strong against (`kalos_shauna_1` to `_3`, our own teams), and
+  the neighbour hands over the professor's letter; at home Mom reads it and gives the roller skates. `VAR_KALOS_STORY`
+  counts it (0 to 4, `vaniville_town.txt`'s header). **Ours**: the skates come from Mom here, where X and Y's are a
+  skater's gift in Santalune City, so that the way to Santalune is skated as plan 23 · Z1's "done when" asks; the
+  Running Shoes' flag is set on the first morning, since X and Y's player runs from the start; the letter is a line,
+  not a key item. A Champion come across from Unova is met as a new neighbour (`namerival`) and sent to the café.
+- **Kalos's roller skates** (`TravelMode.Skating`, `Overworld/SkateRules.cs`): where the region skates (its file's
+  `skates`) and once `FLAG_KALOS_ROLLER_SKATES` is set, a step taken with the run button held is a skater's: at a
+  run's pace (`Pace.Fast`), and on letting go of the steering a glide of one tile on (`FieldMovement.Coast`), never
+  onto a warp. Skates take no tall grass, deep snow or mud and no stairs (a slope met along its fall, or the side
+  stairs; `RefusesSkates`): there the step is taken on foot instead, running, so the skater is never stopped by the
+  ground, only made to walk it. X and Y's skates are the circle pad's; the run button is ours, as it changes the
+  Bicycle's gear. The skater's own pose is plan 30's: until then the field draws the player gliding in the standing
+  pose.
+- **People who are not chibi.** From Kalos on the characters have realistic proportions (the user's ruling of
+  2026-11-02; plan 30 rebuilds the kit for free movement and for them). Z1 draws Kalos's cast on the existing kit's
+  `Adult` build at a height of 1.0 or more (style guide, "Characters", "From Kalos on, not chibi", which also lists
+  what a figure that isn't chibi needs). Their looks are our own designs, not X and Y's.
+- **Music.** Vaniville's and Aquacorde's songs (`Data/music/kalos/`) are original compositions for this game; Route 1
+  plays Vaniville's.

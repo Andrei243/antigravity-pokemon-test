@@ -1,0 +1,36 @@
+{
+  "key": "vaniville_town",
+  "index": 0,
+  "name": "Vaniville Town",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "VANIVILLE",
+  "nightMusic": "VANIVILLE",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 242, "z": 721, "to": "VanivilleTown_PlayersHouse_1F", "toWarp": 0 },
+    { "x": 250, "z": 721, "to": "VanivilleTown_NeighboursHouse", "toWarp": 0 },
+    { "x": 241, "z": 708, "to": "VanivilleTown_NorthwestHouse", "toWarp": 0 },
+    { "x": 267, "z": 708, "to": "VanivilleTown_NortheastHouse", "toWarp": 0 },
+    { "x": 266, "z": 721, "to": "VanivilleTown_EastHouse", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "rival", "looks": "rival", "movement": "look_west", "x": 245, "z": 722, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_HIDE_RIVAL_VANIVILLE", "script": "" },
+    { "id": "shauna", "looks": "lass", "movement": "look_west", "x": 246, "z": 723, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_HIDE_SHAUNA_VANIVILLE", "script": "" },
+    { "id": "gardener", "looks": "old_woman", "movement": "look_around", "x": 252, "z": 708, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "boy", "looks": "youngster", "movement": "wander_around", "x": 262, "z": 714, "facing": 1, "rangeX": 2, "rangeZ": 1, "script": "" },
+    { "id": "neighbour", "looks": "lady", "movement": "look_around", "x": 263, "z": 725, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" }
+  ],
+  "signs": [
+    { "x": 245, "z": 721, "type": 0, "script": "PlayersHouseSign" },
+    { "x": 258, "z": 708, "type": 0, "script": "TownSign" }
+  ],
+  "triggers": []
+}

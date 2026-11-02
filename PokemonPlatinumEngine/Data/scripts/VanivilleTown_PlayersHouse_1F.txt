@@ -1,0 +1,51 @@
+# The player's house in Vaniville Town, downstairs (plan 23 · Z1). The lines are our own, on X and Y's beats as they
+# are publicly described (docs/mechanics/rulings.md, "Kalos's first chapter"). VAR_KALOS_STORY is vaniville_town.txt's
+# count.
+
+
+# Down the stairs on the first morning: Mom says the neighbours came calling
+script OnEnter
+  if var VAR_KALOS_STORY != 0 end
+  if var PLAYER_X != 11 end
+  if var PLAYER_Y != 3 end
+  scene "Mom on the first morning"
+  face mom player
+  speaker "Mom"
+  say "Good morning, sleepyhead! Did you sleep well in the new house?"
+  say "{rival} from next door came by with a friend while you were still asleep. They're waiting for you outside."
+  say "Go on, go and say hello! It's your first day in Vaniville, after all."
+  # X and Y's player runs from the start: no shoes are handed over in Kalos
+  setflag FLAG_HAS_RUNNING_SHOES
+  setvar VAR_KALOS_STORY 1
+  endscene
+  end
+
+
+# Mom: the professor's letter read and the roller skates handed over once the first Pokémon is home; a rest after that
+script Mom
+  if var VAR_KALOS_STORY == 3 goto Letter
+  if party > 0 goto Rest
+  speaker "Mom"
+  say "Your new friends are waiting outside. Don't keep them standing there!"
+  end
+label Letter
+  scene "Mom and the letter"
+  speaker "Mom"
+  say "Oh! Is that your very own Pokémon? It's lovely! And what's this, a letter?"
+  text "{player} handed over the professor's letter."
+  say "...A professor in Lumiose City wants you to travel Kalos and meet all its Pokémon. Well! I'd say that settles it."
+  say "You'll need to get about quickly, then. Here, these are for you. I was saving them for your birthday!"
+  setflag FLAG_KALOS_ROLLER_SKATES
+  fanfare keyitem
+  text "{player} received the roller skates!"
+  say "Hold the run button and off you go. Everyone in Kalos skates! Just not through the tall grass, mind, or up stairs."
+  say "Come home whenever you're tired. Now go on, your friends will be waiting!"
+  setvar VAR_KALOS_STORY 4
+  endscene
+  end
+label Rest
+  sayown
+  heal
+  fanfare heal
+  call NextHint
+  end

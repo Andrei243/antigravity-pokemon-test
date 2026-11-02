@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Development tool (plan 23 · Z1): a region drawn by hand on the tile grid, a character to a tile, written out as the
+       world files the game loads (chunks, the matrix, the habitats). For the regions with no decompilation and no dump. -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../../PokemonPlatinumEngine/PokemonPlatinumEngine.csproj" />
+  </ItemGroup>
+
+</Project>

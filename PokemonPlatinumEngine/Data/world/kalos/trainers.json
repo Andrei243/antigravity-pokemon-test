@@ -1,0 +1,56 @@
+[
+  {
+    "id": "kalos_shauna_1",
+    "name": "Shauna",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 100,
+    "party": [
+      {
+        "species": "Froakie",
+        "level": 5,
+        "ivScale": 0,
+        "personality": 4214305
+      }
+    ]
+  },
+  {
+    "id": "kalos_shauna_2",
+    "name": "Shauna",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 100,
+    "party": [
+      {
+        "species": "Chespin",
+        "level": 5,
+        "ivScale": 0,
+        "personality": 7731022
+      }
+    ]
+  },
+  {
+    "id": "kalos_shauna_3",
+    "name": "Shauna",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 100,
+    "party": [
+      {
+        "species": "Fennekin",
+        "level": 5,
+        "ivScale": 0,
+        "personality": 9158840
+      }
+    ]
+  }
+]

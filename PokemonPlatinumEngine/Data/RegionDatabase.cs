@@ -63,6 +63,9 @@ public sealed class Region
     /// <summary>Whether the region's places change with the seasons (plan 22 · U2: Unova's alone).</summary>
     public bool HasSeasons => File?.HasSeasons ?? false;
 
+    /// <summary>Whether the region's people get about on roller skates (plan 23 · Z1: Kalos's).</summary>
+    public bool Skates => File?.Skates ?? false;
+
     /// <summary>The name the introduction offers for the rival; null where the region's rival is its other hero.</summary>
     public string? Rival => File?.Rival;
 
@@ -845,7 +848,22 @@ public static class RegionDatabase
                 "P2Laboratory", "HiddenGrotto",
             }
         },
-        new() { Id = Kalos, Name = "Kalos", Generation = 6 },
+        new()
+        {
+            Id = Kalos, Name = "Kalos", Generation = 6, File = RegionFiles.Load(Kalos),
+            // Kalos drawn by hand on the tile grid (plan 23 · Z1; tools/MapDraw/kalos). A new game begun there wakes in
+            // the player's room in Vaniville Town; a Champion come across stands before the house's door
+            Start = new MapSpot("VanivilleTown_PlayersHouse_2F", 4, 6, Direction.Down),
+            Arrival = new MapSpot("Kalos", 242, 722, Direction.Down),
+            Maps = new[]
+            {
+                "Kalos",
+                // Plan 23 · Z1: Vaniville Town's rooms and Aquacorde Town's, hand-made map files (Data/maps)
+                "VanivilleTown_PlayersHouse_1F", "VanivilleTown_PlayersHouse_2F", "VanivilleTown_NeighboursHouse",
+                "VanivilleTown_NorthwestHouse", "VanivilleTown_NortheastHouse", "VanivilleTown_EastHouse",
+                "AquacordeTown_WestHouse", "AquacordeTown_SouthwestHouse", "AquacordeTown_EastHouse", "AquacordeTown_SoutheastHouse",
+            }
+        },
         new() { Id = Alola, Name = "Alola", Generation = 7 },
         new() { Id = Galar, Name = "Galar", Generation = 8 },
         new() { Id = Paldea, Name = "Paldea", Generation = 9 }

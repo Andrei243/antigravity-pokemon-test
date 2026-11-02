@@ -1,0 +1,158 @@
+{
+  "name": "VanivilleTown_PlayersHouse_2F",
+  "displayName": "{player}'s Home",
+  "bgmTrack": "kalos/vaniville",
+  "interior": "House",
+  "trees": "Round",
+  "width": 12,
+  "height": 12,
+  "ground": [
+    "############",
+    "############",
+    "############",
+    "############",
+    "#__________#",
+    "#__________#",
+    "#__________#",
+    "#__________#",
+    "#__________#",
+    "#__________#",
+    "#__________#",
+    "############"
+  ],
+  "solid": [
+    "############",
+    "############",
+    "############",
+    "############",
+    "######...###",
+    "#........###",
+    "#..........#",
+    "#..........#",
+    "#........#.#",
+    "##.......#.#",
+    "##.......#.#",
+    "############"
+  ],
+  "props": [
+    {
+      "type": "Clock",
+      "x": 6,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Computer",
+      "x": 1,
+      "y": 4,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 8,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SideStairsDown",
+      "x": 9,
+      "y": 4,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Cushion",
+      "x": 1,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bed",
+      "x": 9,
+      "y": 8,
+      "width": 1,
+      "depth": 3
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Wardrobe",
+      "x": 5,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 6,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Painting",
+      "x": 2,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 3,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 4,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 8,
+      "sourceY": 4,
+      "targetMap": "VanivilleTown_PlayersHouse_1F",
+      "targetX": 11,
+      "targetY": 3,
+      "targetFacing": "Right"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 1,
+      "y": 4,
+      "text": "A note is stuck to the computer in Mom's writing: \"Unpack your boxes before you go exploring!\""
+    },
+    {
+      "x": 3,
+      "y": 4,
+      "text": "Books about Kalos: its old castles, its long rivers and the Pokémon that live along them."
+    },
+    {
+      "x": 5,
+      "y": 4,
+      "text": "It's your wardrobe. Most of your clothes are still in the moving boxes.",
+      "script": "Wardrobe"
+    },
+    {
+      "x": 2,
+      "y": 4,
+      "text": "A map of Kalos is pinned up over the desk. Vaniville Town is circled in red."
+    }
+  ],
+  "npcs": [],
+  "wildEncounters": []
+}

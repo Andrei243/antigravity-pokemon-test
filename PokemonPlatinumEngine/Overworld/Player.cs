@@ -94,6 +94,18 @@ public class Player
     public bool HasRunningShoes { get; set; } = true;
 
     /// <summary>
+    /// Whether the run button puts the skates on here (plan 23 · Z1; the game keeps it up to date): the place's region
+    /// skates and the skates are had. Then a step taken with the button held is a skater's
+    /// (<see cref="TravelMode.Skating"/>), and on ground skates don't take a walker's instead.
+    /// </summary>
+    public bool CanSkate { get; set; }
+
+    // A skater who has stopped steering glides a tile on, once (FieldMovement.Coast)
+    private bool coasted;
+    // The run button held with skates to put on, as the step is chosen
+    private bool skating;
+
+    /// <summary>
     /// A boulder the player has just pushed, and which way, for the game to slide it along (it is already on its
     /// new tile); taken with <see cref="TakePush"/>. Meanwhile the player walks on the spot behind it.
     /// </summary>
@@ -513,11 +525,21 @@ public class Player
                 else { IsSliding = false; spinning = null; }
             }
         }
+        else if (Mode == TravelMode.Skating && want == null && !coasted
+                 && FieldMovement.Coast(map, GridX, GridY, Facing, WalkerOn(map)) is { } glide)
+        {
+            // Skates let go of glide a tile on (plan 23 · Z1)
+            coasted = true;
+            Begin(map, glide, Facing, sliding: true);
+        }
         else
         {
             // Idle state: follow the steering
             IsSliding = false;
-            IsRunning = Mode == TravelMode.OnFoot && run && HasRunningShoes;
+            skating = CanSkate && run && Mode is TravelMode.OnFoot or TravelMode.Skating;
+            // Standing still, or the button let go, the skates are off (plan 23 · Z1)
+            if (Mode == TravelMode.Skating && (want == null || !skating)) Mode = TravelMode.OnFoot;
+            IsRunning = Mode == TravelMode.OnFoot && run && HasRunningShoes && !skating;
 
             if (want is { } desiredDir)
             {
@@ -644,6 +666,24 @@ public class Player
     private void TryStep(Direction dir, Map map)
     {
         var step = FieldMovement.Step(map, GridX, GridY, dir, WalkerOn(map));
+        // With the skates on hand the step is a skater's, and where skates don't go a walker's (plan 23 · Z1)
+        if (skating && Mode == TravelMode.OnFoot)
+        {
+            var skate = FieldMovement.Step(map, GridX, GridY, dir, WalkerOn(map) with { Mode = TravelMode.Skating, Running = false });
+            // (the skates are on from the step's first frame, not from its end as a landing's mode is)
+            if (skate.Moves) { step = skate; coasted = false; Mode = TravelMode.Skating; }
+            else if (skate.Obstacle == Obstacle.Skates) IsRunning = HasRunningShoes;
+        }
+        else if (Mode == TravelMode.Skating)
+        {
+            coasted = false;
+            if (!step.Moves && step.Obstacle == Obstacle.Skates)
+            {
+                Mode = TravelMode.OnFoot;
+                IsRunning = HasRunningShoes;
+                step = FieldMovement.Step(map, GridX, GridY, dir, WalkerOn(map));
+            }
+        }
         if (step.Moves)
         {
             // A step that pushes a gate of the Fortree Gym's turns it as it is taken (plan 21 · H6)

@@ -310,7 +310,13 @@ public enum Architecture
     /// <summary>Pale panels under dragon-violet hip roofs with ribbon windows: the modern city of the Dragon Gym and its mayor (Opelucid, plan 22 · U8, part b).</summary>
     Skyline,
     /// <summary>White boards under lagoon-aqua gable roofs with flower boxes: the city of houses on stilts over the calm sea (Humilau, plan 22 · U8, part b).</summary>
-    Stilts
+    Stilts,
+
+    // Kalos (plan 23 · Z1): drawn by hand, each town's own way of building, a row of the style guide's "Buildings" first
+    /// <summary>Cream stucco under slate-blue gable roofs with shutters and flower boxes: the quiet hamlet in the woods where the journey begins (Vaniville, plan 23 · Z1).</summary>
+    Hamlet,
+    /// <summary>Warm pale stone under terracotta hip roofs with shutters and flower boxes: the riverside town of the bridge and the café (Aquacorde, plan 23 · Z1).</summary>
+    Canalside
 }
 
 /// <summary>Visual theme for indoor maps; <see cref="None"/> means the map is outdoors.</summary>

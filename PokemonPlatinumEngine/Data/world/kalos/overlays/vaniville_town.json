@@ -1,0 +1,39 @@
+{
+  // Vaniville Town (plan 23 · Z1): drawn by hand, our words. The first chapter's scene at the door (vaniville_town.txt):
+  // the neighbour who is the rival and Shauna come to meet the player the first time they step out, and send them on to
+  // Aquacorde Town. Both are hidden by flags of ours until then
+  "area": "vaniville_town",
+  "bgmTrack": "kalos/vaniville",
+  "trees": "Round",
+  "architecture": "Hamlet",
+  "doors": [
+    { "warp": 0, "map": "VanivilleTown_PlayersHouse_1F", "x": 6, "y": 10, "facing": "Up" },
+    { "warp": 1, "map": "VanivilleTown_NeighboursHouse", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 2, "map": "VanivilleTown_NorthwestHouse", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 3, "map": "VanivilleTown_NortheastHouse", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 4, "map": "VanivilleTown_EastHouse", "x": 4, "y": 8, "facing": "Up" }
+  ],
+  "people": {
+    "rival": { "name": "{rival}", "npcType": "Rival:SERENA:CALEM", "script": "Rival", "still": true, "hiddenBy": "FLAG_KALOS_HIDE_RIVAL_VANIVILLE" },
+    "shauna": { "name": "Shauna", "npcType": "shauna", "script": "Shauna", "still": true, "hiddenBy": "FLAG_KALOS_HIDE_SHAUNA_VANIVILLE" },
+    "gardener": {
+      "name": "Old Woman",
+      "npcType": "old_woman",
+      "dialog": [ "Welcome to Vaniville, dear. It's a small town, but the flowers on the green are the finest in all of Kalos." ]
+    },
+    "boy": {
+      "name": "Boy",
+      "npcType": "Youngster",
+      "dialog": [ "Everybody in Vaniville has skates! You can get from one end of town to the other in no time." ]
+    },
+    "neighbour": {
+      "name": "Woman",
+      "npcType": "Lady",
+      "dialog": [ "You're the family who moved in last week, aren't you? The road north leads to Aquacorde Town. It's a lovely walk." ]
+    }
+  },
+  "signs": {
+    "PlayersHouseSign": "{player}'s House",
+    "TownSign": "Vaniville Town\nWhere the road through Kalos begins."
+  }
+}

@@ -1,0 +1,8 @@
+# The player's room in Vaniville Town (plan 23 · Z1), where a new game in Kalos begins: the wardrobe opens the player's
+# own clothes, as the bedroom's in Twinleaf Town does.
+
+
+script Wardrobe
+  sayown
+  wardrobe
+  end

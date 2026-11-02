@@ -954,6 +954,10 @@
       "provisional": true
     },
     "prof_oak": {},
+    "prof_sycamore": {
+      "note": "first spoken at regions/Kalos.json",
+      "provisional": true
+    },
     "professor_oak": {
       "note": "first spoken at pallet_town_oaks_lab.txt(12)",
       "provisional": true
@@ -1120,6 +1124,10 @@
       "note": "first spoken at plasma_frigate.txt(57)",
       "provisional": true
     },
+    "shauna": {
+      "note": "first spoken at aquacorde_town.txt(37)",
+      "provisional": true
+    },
     "shauntal": {
       "note": "first spoken at unova_pokemon_league_5.txt(12)",
       "provisional": true
@@ -1205,12 +1213,20 @@
       "note": "first spoken at BattleFactoryBattleRoom.txt(47)",
       "provisional": true
     },
+    "tierno": {
+      "note": "first spoken at aquacorde_town.txt(39)",
+      "provisional": true
+    },
     "traveller": {
       "note": "first spoken at lostlorn_forest.txt(19)",
       "provisional": true
     },
     "treasure_hunter": {
       "note": "first spoken at route_124_diving_treasure_hunters_house.txt(11)",
+      "provisional": true
+    },
+    "trevor": {
+      "note": "first spoken at aquacorde_town.txt(41)",
       "provisional": true
     },
     "trick_master": {
@@ -1647,6 +1663,7 @@
     "Prof. Juniper": "prof_juniper",
     "Prof. Oak": "prof_oak",
     "Prof. Rowan": "rowan",
+    "Prof. Sycamore": "prof_sycamore",
     "Professor Oak": "professor_oak",
     "Professor Rowan": "rowan",
     "Prospector": "prospector",
@@ -1692,6 +1709,7 @@
     "Seller": "seller",
     "Selphy": "selphy",
     "Shadow Triad": "shadow_triad",
+    "Shauna": "shauna",
     "Shauntal": "shauntal",
     "Shelly": "shelly",
     "Shop Boy": "shop_boy",
@@ -1716,6 +1734,7 @@
     "Temple Guard": "temple_guard",
     "Thalia": "thalia",
     "Thorton": "thorton",
+    "Tierno": "tierno",
     "Traveller": "traveller",
     "Treasure Hunter": "treasure_hunter",
     "Trick Master": "trick_master",

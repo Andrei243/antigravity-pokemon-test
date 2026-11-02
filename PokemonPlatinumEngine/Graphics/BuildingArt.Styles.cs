@@ -146,6 +146,9 @@ internal static partial class BuildingArt
             Architecture.Skyline => Pitched(WallKind.Panel, Rgb(104, 84, 164), RoofShape.Hip) with { Window = WindowKind.Ribbon },
             // Humilau's: white boards under lagoon-aqua gables with flower boxes, the houses on stilts over the sea
             Architecture.Stilts => Pitched(WallKind.Clapboard, Rgb(52, 176, 186)) with { FlowerBoxes = true },
+            // Kalos (plan 23 · Z1): Vaniville's cream stucco under slate-blue gables, Aquacorde's pale stone under terracotta hips
+            Architecture.Hamlet => Pitched(WallKind.Stucco, Rgb(78, 96, 134)) with { Shutters = true, FlowerBoxes = true },
+            Architecture.Canalside => Pitched(WallKind.PaleStone, Rgb(190, 96, 64), RoofShape.Hip) with { Shutters = true, FlowerBoxes = true },
             Architecture.Crater => Pitched(WallKind.PaleStone, Rgb(46, 96, 168), RoofShape.Hip) with { Shutters = true },
             Architecture.Raft => Pitched(WallKind.Log, Rgb(206, 166, 92)) with { Shutters = true },
             Architecture.Bloomstone => Pitched(WallKind.PaleStone, Rgb(190, 92, 132), RoofShape.Hip) with { FlowerBoxes = true },

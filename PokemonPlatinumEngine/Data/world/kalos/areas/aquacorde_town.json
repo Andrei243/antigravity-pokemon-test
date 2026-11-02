@@ -1,0 +1,37 @@
+{
+  "key": "aquacorde_town",
+  "index": 2,
+  "name": "Aquacorde Town",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "AQUACORDE",
+  "nightMusic": "AQUACORDE",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 241, "z": 667, "to": "AquacordeTown_WestHouse", "toWarp": 0 },
+    { "x": 242, "z": 676, "to": "AquacordeTown_SouthwestHouse", "toWarp": 0 },
+    { "x": 270, "z": 667, "to": "AquacordeTown_EastHouse", "toWarp": 0 },
+    { "x": 271, "z": 676, "to": "AquacordeTown_SoutheastHouse", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "shauna", "looks": "lass", "movement": "look_east", "x": 249, "z": 657, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "tierno", "looks": "youngster", "movement": "look_west", "x": 252, "z": 657, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "trevor", "looks": "youngster", "movement": "look_south", "x": 250, "z": 656, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "rival", "looks": "rival", "movement": "look_south", "x": 251, "z": 656, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_HIDE_RIVAL_AQUACORDE", "script": "" },
+    { "id": "clerk", "looks": "clerk", "movement": "look_south", "x": 265, "z": 656, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "waiter", "looks": "waiter", "movement": "look_south", "x": 244, "z": 658, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "fisherman", "looks": "fisherman", "movement": "look_north", "x": 238, "z": 656, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "girl", "looks": "lass", "movement": "wander_around", "x": 248, "z": 670, "facing": 1, "rangeX": 2, "rangeZ": 2, "script": "" }
+  ],
+  "signs": [
+    { "x": 259, "z": 679, "type": 0, "script": "TownSign" }
+  ],
+  "triggers": []
+}

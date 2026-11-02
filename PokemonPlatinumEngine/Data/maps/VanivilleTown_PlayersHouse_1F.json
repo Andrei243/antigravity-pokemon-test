@@ -1,0 +1,183 @@
+{
+  "name": "VanivilleTown_PlayersHouse_1F",
+  "displayName": "{player}'s Home",
+  "bgmTrack": "kalos/vaniville",
+  "interior": "House",
+  "trees": "Round",
+  "width": 13,
+  "height": 12,
+  "ground": [
+    "#############",
+    "#############",
+    "#############",
+    "#_____##____#",
+    "#_____##____#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "######D######"
+  ],
+  "solid": [
+    "#############",
+    "#############",
+    "#############",
+    "###..#####..#",
+    "#.....####..#",
+    "####..##....#",
+    "#...........#",
+    "#...........#",
+    "#..##.......#",
+    "##.##......##",
+    "##.........##",
+    "######.######"
+  ],
+  "behaviours": [
+    { "x": 1, "y": 5, "width": 3, "depth": 1, "behaviour": "Counter" }
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 3,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "KitchenCounter",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Stove",
+      "x": 2,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fridge",
+      "x": 5,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SideStairsUp",
+      "x": 8,
+      "y": 3,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Rug",
+      "x": 10,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Sofa",
+      "x": 6,
+      "y": 5,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 2,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 7,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 3,
+      "y": 8,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 6,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 11,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 1,
+      "y": 5,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Painting",
+      "x": 9,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 6,
+      "sourceY": 11,
+      "targetMap": "Kalos",
+      "targetX": 242,
+      "targetY": 722,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 10,
+      "sourceY": 3,
+      "targetMap": "VanivilleTown_PlayersHouse_2F",
+      "targetX": 7,
+      "targetY": 4,
+      "targetFacing": "Left"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "mom",
+      "name": "Mom",
+      "npcType": "Mom",
+      "x": 7,
+      "y": 8,
+      "facing": "Up",
+      "dialog": [
+        "Mom: Welcome home, dear! You all look worn out.",
+        "Mom: ...There! Everyone's fit and well again."
+      ],
+      "isHealingNurse": true,
+      "script": "Mom"
+    }
+  ],
+  "wildEncounters": []
+}
