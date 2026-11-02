@@ -382,7 +382,7 @@ public static partial class WorldModels
         Built("kn_chika", BuildingKind.Hall, "the little house over the stairs down to the Underground Path on Routes 5 and 6"),
         Ground("maq_dr01", "a door off the S.S. Aqua's corridor: the warp's tile is the way"),
         // Plan 20 · J15, part o: the S.S. Aqua's hold
-        Furniture("maq_eng", PropType.LabMachine, "the S.S. Aqua's engines in the hold"),
+        Furniture("maq_eng", PropType.ShipEngine, "the S.S. Aqua's engines in the hold, on the tiles they block"),
         Ground("mg09_es1", "the Vermilion Gym's electric fittings on its walls: the room's walls draw them"),
         Ground("mg09_es2", "the Vermilion Gym's electric fittings on its walls: the room's walls draw them"),
         Ground("mp3_sb", "the timetable board of Vermilion's port hall: the wall draws it"),
@@ -501,6 +501,39 @@ public static partial class WorldModels
     };
 
     private static readonly Dictionary<string, WorldModel> JohtoByName = JohtoTable.ToDictionary(m => m.Name, StringComparer.Ordinal);
+
+    /// <summary>
+    /// What the blocked tiles inside a Johto room stand for (plan 20 · J15, part s; style guide, "Rooms", "Partitions of
+    /// their own"), by the room's map: HeartGold draws them as the room's own furniture and machinery, which its chunks
+    /// name only as walls. A room not named here keeps its wall cut to the wainscot.
+    /// </summary>
+    private static readonly Dictionary<string, PartitionLook> JohtoPartitions = new(StringComparer.Ordinal)
+    {
+        ["Goldenrod_Gym"] = PartitionLook.Hedge,
+        ["Goldenrod_Underground"] = PartitionLook.Counter,
+        ["Goldenrod_RadioTower_2F"] = PartitionLook.Counter,
+        ["Saffron_SilphCo"] = PartitionLook.Counter,
+        ["Goldenrod_Underground_B1F"] = PartitionLook.Bulkhead,
+        ["Goldenrod_Underground_B2F"] = PartitionLook.Bulkhead,
+        ["Goldenrod_Underground_Warehouse"] = PartitionLook.Bulkhead,
+        ["SSAqua_1F"] = PartitionLook.Bulkhead,
+        ["SSAqua_B1F"] = PartitionLook.Bulkhead,
+        ["Cianwood_Gym"] = PartitionLook.Rock,
+        ["Mahogany_Gym"] = PartitionLook.Ice,
+        ["Mahogany_Gym_2"] = PartitionLook.Ice,
+        ["Mahogany_Gym_3"] = PartitionLook.Ice,
+        ["OlivineLighthouse_1F"] = PartitionLook.Pillar,
+        ["OlivineLighthouse_2F"] = PartitionLook.Pillar,
+        ["OlivineLighthouse_3F"] = PartitionLook.Pillar,
+        ["OlivineLighthouse_4F"] = PartitionLook.Pillar,
+        ["OlivineLighthouse_5F"] = PartitionLook.Pillar,
+    };
+
+    /// <summary>The look of a Johto room's inner walls by its map's name; <see cref="PartitionLook.Wall"/> for every other.</summary>
+    public static PartitionLook JohtoPartitionsOf(string map) => JohtoPartitions.GetValueOrDefault(map, PartitionLook.Wall);
+
+    /// <summary>Every Johto room whose inner walls have a look of their own.</summary>
+    public static IReadOnlyDictionary<string, PartitionLook> JohtoRoomPartitions => JohtoPartitions;
 
     /// <summary>Every model of Johto's own catalogue.</summary>
     public static IReadOnlyList<WorldModel> Johto => JohtoTable;

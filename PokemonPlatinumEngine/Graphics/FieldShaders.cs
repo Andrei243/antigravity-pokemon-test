@@ -1080,6 +1080,22 @@ void main()
         }
     }
 
+    /// <summary>
+    /// Straightens only the people's and the Pokémon's cards (plan 20 · J15, part s; style guide, "Rooms"): a room keeps
+    /// its perspective for its walls, but a card near the picture's edge leaned with it, and a card seen side on (a
+    /// sailor facing west at the end of the S.S. Aqua's hold) read as someone falling over. <see cref="SetUpright"/> puts
+    /// every program back.
+    /// </summary>
+    public void SetUprightCards(float amount, float pitchDeg)
+    {
+        foreach (var shader in new[] { Character, Sprite })
+        {
+            Set(shader, "upright", amount);
+            Set(shader, "pitchSin", MathF.Sin(pitchDeg * MathF.PI / 180f));
+            Set(shader, "uprightBase", 0f);
+        }
+    }
+
     // What the mirror pass draws with (plan 09 · L10): the scenery, the sprites and the cards, and their depth
     private Shader[] MirroredPrograms => new[] { World, Prepass, Character, Sprite };
 

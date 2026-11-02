@@ -316,6 +316,8 @@ public static class WorldMapBuilder
         // A room built from a layout is a room of the kind its name says (plan 19 · K1): a Pokémon Center's floor, a
         // Mart's, a lab's, and a house's for the rest, until the region's plan gives its rooms looks of their own
         if (room) map.Interior = RoomStyleOf(entry.Name);
+        // A Johto room's inner walls may be something of their own (plan 20 · J15, part s: the Goldenrod Gym's hedges)
+        if (room && string.Equals(world.Index.Region, "johto", StringComparison.OrdinalIgnoreCase)) map.Partitions = WorldModels.JohtoPartitionsOf(entry.Name);
         // A room whose entry names a puzzle has it, as a map file's does (plan 21 · H6: Fortree's rotating gates)
         map.Puzzle = GymPuzzle.Create(entry.Puzzle);
         // A place that keeps its own word on movement inside a free region (plan 30 · FM1)
@@ -558,6 +560,14 @@ public static class WorldMapBuilder
                 if (map.Height < matrix.Height * T)
                     for (int x = 0; x < map.Width; x++)
                         if (!walked[(map.Height - 1) * map.Width + x]) map.SetGroundTile(x, map.Height - 1, beyond, isSolid: true);
+                // Its furniture is laid as a room of one chunk's is (plan 20 · J15, part s: the S.S. Aqua's hold had its
+                // engines' tiles drawn as lawn), each piece cut to the room's floor inside its walls
+                // (Johto's alone so far: Black 2's rooms of several chunks have no catalogue of furniture)
+                int top = Enumerable.Range(0, map.Height).FirstOrDefault(z => Enumerable.Range(0, map.Width).Any(x => walked[z * map.Width + x]));
+                // (the Team Rocket Hideout's chunks stand New Bark Town's turbine model in for its generators, which no
+                // room builds: its blocked tiles stay its walls)
+                if (string.Equals(world.Index.Region, "johto", StringComparison.OrdinalIgnoreCase))
+                    LayFurniture(map, furniture.Where(p => p.Type != PropType.WindTurbine).Select(p => ClippedTo(map, p)).OfType<Prop>().Where(p => p.Y >= top).ToList(), top);
             }
             else if (reach != null)
             {
@@ -947,6 +957,15 @@ public static class WorldMapBuilder
     /// row above <paramref name="wallRow"/>, the floor's foot along the wall, where a piece stands on it; a piece this
     /// game builds a tile at a time is laid a tile at a time.
     /// </summary>
+    /// <summary>A piece cut to the room inside its outer walls, or null where nothing of it is inside them.</summary>
+    internal static Prop? ClippedTo(Map map, Prop p)
+    {
+        int x0 = Math.Max(p.X, 1), z0 = Math.Max(p.Y, 0), x1 = Math.Min(p.X + p.Width, map.Width - 1), z1 = Math.Min(p.Y + p.Depth, map.Height - 1);
+        if (x1 <= x0 || z1 <= z0) return null;
+        return x0 == p.X && z0 == p.Y && x1 == p.X + p.Width && z1 == p.Y + p.Depth ? p
+            : new Prop { Type = p.Type, X = x0, Y = z0, Width = x1 - x0, Depth = z1 - z0, Model = p.Model };
+    }
+
     public static void LayFurniture(Map map, IReadOnlyList<Prop> furniture, int wallRow)
     {
         foreach (var piece in furniture)
@@ -983,6 +1002,13 @@ public static class WorldMapBuilder
                              && map.InBounds(x, behind - 1) && map.GetGroundTile(x, behind - 1) != TileType.Wall; behind--)
                             map.SetGroundTile(x, behind, TileType.Floor, isSolid: true);
                     }
+                    break;
+                // A ship's engines (plan 20 · J15, part s: the S.S. Aqua's hold) stand on the tiles their box blocks, the
+                // walkways the box spans over left open
+                case PropType.ShipEngine:
+                    for (int y = piece.Y; y < piece.Y + piece.Depth; y++)
+                        for (int x = piece.X; x < piece.X + piece.Width; x++)
+                            if (map.InBounds(x, y) && map.IsSolid(x, y)) map.Props.Add(new Prop { Type = piece.Type, X = x, Y = y });
                     break;
                 default:
                     for (int y = piece.Y; y < piece.Y + piece.Depth; y++)

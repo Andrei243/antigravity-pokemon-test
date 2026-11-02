@@ -1170,6 +1170,26 @@ internal sealed class MapScene
                 }
                 // (beside a kerb a wall's side shows, as it does beside the floor)
                 bool n = Floor(tx, ty - 1), s = Floor(tx, ty + 1), wst = Floor(tx - 1, ty) || Low(tx - 1, ty), e = Floor(tx + 1, ty) || Low(tx + 1, ty);
+                // A room whose inner walls stand for something of their own (plan 20 · J15, part s: the Goldenrod Gym's
+                // hedges, the S.S. Aqua's bulkheads) builds that, low enough to be seen over, never the back wall come forward
+                if (Map.Partitions != PartitionLook.Wall)
+                {
+                    // (a tile with no floor within two tiles is the solid between the room's halls, not a partition: it is the
+                    // room's dark at the floor's level, as beyond a house's plan, so no hall of floor shows where nobody walks)
+                    bool near = false;
+                    for (int dy = -2; dy <= 2 && !near; dy++)
+                        for (int dx = -2; dx <= 2 && !near; dx++) near = Floor(tx + dx, ty + dy);
+                    if (!near)
+                    {
+                        var dark = kit.Face("partition.beyond", T, T, c => c.Rect(0, 0, T, T, new Color(30, 26, 38, 255)));
+                        kit.Origin = Vector3.Zero;
+                        kit.Box(tx * T, tx * T + T, ty * T, ty * T + T, 0, 1, dark);
+                        continue;
+                    }
+                    kit.Origin = new Vector3(0f, Map.HasRelief ? InnerWallFoot(tx, ty) : 0f, 0f);
+                    PartitionArt.Build(kit, Map.Partitions, tx, ty, n, s, wst, e);
+                    continue;
+                }
                 if (Jog(tx, ty))
                 {
                     jog ??= kit.Face("wall.jog", T, wallH, c => GroundBaker.PaintWall(c, style, 0, theme, look));
