@@ -2,7 +2,7 @@
   // The Department Store's basement (plan 20 · J11, part b): HeartGold's floor, our words. Two Black Belts and their
   // Machoke clear it, and a shutter keeps the way down to the warehouse shut until the Radio Tower's Director has handed
   // over his Card Key (scripts/goldenrod_department_store_basement.txt): the shutter is a thing of the map behind
-  // HeartGold's own flag, FLAG_UNK_1C1. HeartGold's crates, which its Machoke shift about, are left out
+  // HeartGold's own flag, FLAG_UNK_1C1. The crates its Machoke shift about are things of the map too (below)
   "area": "goldenrod_department_store_basement",
   "bgmTrack": "johto/goldenrod",
   "people": {
@@ -28,6 +28,21 @@
       "name": "Machoke", "npcType": "Pokemon", "species": "Machoke", "still": true,
       "dialog": [ "Machoke: Maaa... chok!" ]
     },
-    "d37r0103_babyboy1_9": { "name": "Shutter", "npcType": "GalacticDoor", "script": "Shutter", "still": true }
+    "d37r0103_babyboy1_9": { "name": "Shutter", "npcType": "GalacticDoor", "script": "Shutter", "still": true },
+    // HeartGold's three squares of crates (its babyboy1_5 objects, each with three stop objects filling out its square of
+    // four tiles): a pile of crates on each tile, things of the map that the basement's arrival lays out by the day of
+    // the week (scripts/goldenrod_department_store_basement.txt; plan 20, part r)
+    "d37r0103_babyboy1_5": { "name": "Crates", "npcType": "Crate", "script": "Crates", "still": true },
+    "d37r0103_babyboy1_5_2": { "name": "Crates", "npcType": "Crate", "script": "Crates", "still": true },
+    "d37r0103_babyboy1_5_3": { "name": "Crates", "npcType": "Crate", "script": "Crates", "still": true },
+    "d37r0103_stop": { "name": "Crates", "npcType": "Crate", "script": "Crates", "still": true },
+    "d37r0103_stop_2": { "name": "Crates", "npcType": "Crate", "script": "Crates", "still": true },
+    "d37r0103_stop_3": { "name": "Crates", "npcType": "Crate", "script": "Crates", "still": true },
+    "d37r0103_stop_4": { "name": "Crates", "npcType": "Crate", "script": "Crates", "still": true },
+    "d37r0103_stop_5": { "name": "Crates", "npcType": "Crate", "script": "Crates", "still": true },
+    "d37r0103_stop_6": { "name": "Crates", "npcType": "Crate", "script": "Crates", "still": true },
+    "d37r0103_stop_7": { "name": "Crates", "npcType": "Crate", "script": "Crates", "still": true },
+    "d37r0103_stop_8": { "name": "Crates", "npcType": "Crate", "script": "Crates", "still": true },
+    "d37r0103_stop_9": { "name": "Crates", "npcType": "Crate", "script": "Crates", "still": true }
   }
 }

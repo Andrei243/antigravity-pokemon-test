@@ -31,6 +31,13 @@ internal static partial class Landmarks
     private static readonly Tone Steel = Tone.Of(118, 128, 150, 160, 170, 190, 78, 86, 110);
     private static readonly Color Belt = Rgb(58, 56, 68), BeltJoint = Rgb(40, 38, 50), CoalLump = Rgb(30, 30, 40), CoalGlint = Rgb(120, 120, 136);
 
+    /// <summary>
+    /// Whether a Johto Gym's statue is the east one of the pair by the door (plan 20, part r): another of the pair
+    /// stands west of it on the same row or the next, so it is turned to look west, toward the way in.
+    /// </summary>
+    internal static bool GymStatueFacesWest(Map map, Prop prop) =>
+        map.Props.Exists(o => !ReferenceEquals(o, prop) && o.Type == PropType.Statue && o.Model == prop.Model && o.X < prop.X && Math.Abs(o.Y - prop.Y) <= 1);
+
     /// <summary>Rows of art in a tile of real height: how tall something that stands <c>h</c> tiles is drawn.</summary>
     private static int Rows(KitBuilder kit, float tiles, int least, int most) =>
         Math.Clamp((int)MathF.Round(tiles * GroundBaker.ArtTile / kit.VS), least, most);
@@ -71,7 +78,11 @@ internal static partial class Landmarks
                 float plinth = MathF.Min(22, w / 2f - 2), top = MathF.Min(15, plinth - 7);
                 kit.Block("statue.plinth", Stone, cx - plinth, cx + plinth, cz - 16, cz + 16, 0, 8);
                 kit.Block("statue.plinth2", PaleStone, cx - top, cx + top, cz - 10, cz + 10, 8, grand ? 22 : 14);
-                kit.Sprite(kit.Face(grand ? "statue.figure" : "statue.small", grand ? 40 : 28, grand ? 52 : 36, c => PaintStatue(c)), cx, cz, grand ? 22 : 14);
+                // A Johto Gym's pair by its door (HeartGold's object01; plan 20, part r) face the way in between them: the
+                // figure looks east, so the one east of the door is turned to look west
+                bool turned = !grand && prop.Model == "object01" && GymStatueFacesWest(map, prop);
+                kit.Sprite(kit.Face(grand ? "statue.figure" : turned ? "statue.small.west" : "statue.small", grand ? 40 : 28, grand ? 52 : 36,
+                    c => { PaintStatue(c); if (turned) c.MirrorHorizontal(); }), cx, cz, grand ? 22 : 14);
                 return true;
             }
             case PropType.HoneyTree:

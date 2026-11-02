@@ -416,7 +416,9 @@ public static class WorldMapBuilder
                             int z0 = (int)MathF.Floor(bz - 0.5f) + 1, z1 = (int)MathF.Ceiling(bz + prop.Depth - 0.5f) - 1;
                             if (x1 < x0) x0 = x1 = (int)MathF.Floor(bx + prop.Width / 2f);
                             if (z1 < z0) z0 = z1 = (int)MathF.Floor(bz + prop.Depth / 2f);
-                            furniture.Add(new Prop { Type = piece.Prop, X = x0, Y = z0, Width = x1 - x0 + 1, Depth = z1 - z0 + 1 });
+                            // (a statue keeps its model's name, by which a Johto Gym's pair by the door face each other: plan 20, part r)
+                            furniture.Add(new Prop { Type = piece.Prop, X = x0, Y = z0, Width = x1 - x0 + 1, Depth = z1 - z0 + 1,
+                                Model = piece.Prop == PropType.Statue ? prop.Name : "" });
                         }
                         continue;
                     }
@@ -969,6 +971,18 @@ public static class WorldMapBuilder
                 case PropType.Stairs or PropType.LabMachine:
                     for (int x = piece.X; x < piece.X + piece.Width; x++)
                         map.Props.Add(new Prop { Type = piece.Type, X = x, Y = piece.Y, Depth = piece.Depth });
+                    break;
+                // A Gym's statue by its door (plan 20, part r) stands on its tile with its model's name; the blocked tile
+                // behind it, which the original's statue stands over, is floor under it, so no block of wall shows there
+                case PropType.Statue when piece.Model.Length > 0:
+                    for (int x = piece.X; x < piece.X + piece.Width; x++)
+                    {
+                        int y = piece.Y + piece.Depth - 1;
+                        map.Props.Add(new Prop { Type = piece.Type, X = x, Y = y, Model = piece.Model });
+                        for (int behind = piece.Y - 1; behind >= piece.Y - 1 && map.InBounds(x, behind) && map.GetGroundTile(x, behind) == TileType.Wall
+                             && map.InBounds(x, behind - 1) && map.GetGroundTile(x, behind - 1) != TileType.Wall; behind--)
+                            map.SetGroundTile(x, behind, TileType.Floor, isSolid: true);
+                    }
                     break;
                 default:
                     for (int y = piece.Y; y < piece.Y + piece.Depth; y++)

@@ -41,6 +41,9 @@ internal sealed class GymPieces
     // The Snowpoint Gym's: a snowball's card, drawn on the tile of each one standing
     private Piece? snowball;
 
+    // The Cianwood Gym's (plan 20, part r): its waterfall's frames, drawn on its tile while it runs
+    private readonly List<Piece> waterfall = new();
+
     // The Sunyshore Gym's: a gear of each shape, built on its hub with no turn; a button of each kind (its arrow's way
     // round and whether it is a half turn); the doorways in the back wall are its still parts
     private readonly Dictionary<SunyshoreGears.Shape, Piece> gears = new();
@@ -134,6 +137,14 @@ internal sealed class GymPieces
             // The lava drifts: four frames, three a second
             if (lava.Count > 0)
                 yield return (lava[(int)((long)(FrameClock.Now * LavaFramesPerSecond) % lava.Count)], Matrix4x4.CreateTranslation(0f, LavaLevel - map.GroundLevel, 0f));
+            yield break;
+        }
+        if (waterfall.Count > 0)
+        {
+            // The waterfall falls while it stands on the map (the winch takes it off until the player comes in again)
+            var frame = waterfall[(int)((long)(FrameClock.Now * GymArt.WaterfallFramesPerSecond) % waterfall.Count)];
+            foreach (var npc in map.NPCs)
+                if (npc.IsGymWaterfall) yield return (frame, Matrix4x4.CreateTranslation(npc.GridX, Relief.At(map, npc.GridX + 0.5f, npc.GridY + 0.5f), npc.GridY));
             yield break;
         }
         if (snowball != null)
@@ -279,7 +290,8 @@ internal sealed class GymPieces
         bool snowy = map.Puzzle == null && map.IsIndoors && map.Everyone.Any(n => n.IsSnowball);
         bool leagueRoom = map.IsIndoors && map.Name.StartsWith(LeagueRooms, StringComparison.Ordinal);
         bool tower = map.Interior == InteriorStyle.Tower && map.Props.Exists(p => p.Type == PropType.Column);
-        if (map.Puzzle == null && !hearthome && !snowy && !leagueRoom && !tower) return false;
+        bool falls = map.Puzzle == null && map.IsIndoors && map.Everyone.Any(n => n.IsGymWaterfall);
+        if (map.Puzzle == null && !hearthome && !snowy && !leagueRoom && !tower && !falls) return false;
         if (builtFor == map) return true;
         Unload();
         builtFor = map;
@@ -295,6 +307,7 @@ internal sealed class GymPieces
         else if (map.Puzzle is SootopolisIce) BuildSootopolis(map);
         else if (hearthome) BuildHearthome(map);
         else if (snowy) BuildSnowpoint(map);
+        else if (falls) BuildWaterfall(map);
         return true;
     }
 
@@ -834,6 +847,31 @@ internal sealed class GymPieces
         kit.Sprite(kit.Face("snowball", 30, 30, GymArt.PaintSnowball), GroundBaker.ArtTile / 2f, ThingCards.FootOf(PropType.Snowball) * GroundBaker.ArtTile);
         art = Upload(sheet);
         snowball = Make(kit);
+    }
+
+    // ------------------------------------------------------------------ the Cianwood Gym
+
+    /// <summary>
+    /// The Cianwood Gym's waterfall (style guide, "Chuck's waterfall"): a card of the scenery standing at the north of its
+    /// tile, centred on the tile's east edge so that a sheet two tiles wide falls into the middle of its pool, in
+    /// <see cref="GymArt.WaterfallFrames"/> frames that the clock steps through. The waterfall stays a thing of the map;
+    /// only its picture is here.
+    /// </summary>
+    private void BuildWaterfall(Map map)
+    {
+        var sheet = new ArtSheet();
+        var kits = new List<KitBuilder>();
+        for (int frame = 0; frame < GymArt.WaterfallFrames; frame++)
+        {
+            int f = frame;
+            var kit = new KitBuilder(sheet, MapScene.VerticalScaleOf(map)) { Origin = Vector3.Zero };
+            kit.Sprite(kit.Face($"waterfall.{f}", GymArt.WaterfallWidth, GymArt.WaterfallHeight, c => GymArt.PaintWaterfall(c, f)),
+                GroundBaker.ArtTile / 2f, 4f);
+            kits.Add(kit);
+        }
+        art = Upload(sheet);
+        foreach (var kit in kits)
+            if (Make(kit) is { } piece) waterfall.Add(piece);
     }
 
     // ------------------------------------------------------------------ the Fortree Gym
@@ -1434,6 +1472,7 @@ internal sealed class GymPieces
         Array.Clear(decks);
         platforms.Clear();
         snowball = null;
+        waterfall.Clear();
         gatePost = gateArm = gateLongArm = null;
         slabWide = slabNarrow = null;
         iceCrack = iceGlaze = null;

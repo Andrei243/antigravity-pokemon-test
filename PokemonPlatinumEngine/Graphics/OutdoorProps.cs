@@ -980,6 +980,9 @@ public static class ThingCards
             PropType.ElectricFan => (26, 32, ApplianceArt.PaintElectricFan),
             PropType.Lawnmower => (30, 22, ApplianceArt.PaintLawnmower),
             PropType.GrottoHollow => (32, 30, GrottoArt.PaintHollow),
+            // The waterfall's first frame (it falls in GymPieces; this is its picture on a plan)
+            PropType.GymWaterfall => (GymArt.WaterfallWidth, GymArt.WaterfallHeight, c => GymArt.PaintWaterfall(c, 0)),
+            PropType.CratePile => (30, 34, GymArt.PaintCratePile),
             _ => (OutdoorProps.ItemBallCard, OutdoorProps.ItemBallCard, OutdoorProps.PaintItemBall)
         };
         var art = new PixelCanvas(w, h);
@@ -996,6 +999,8 @@ public static class ThingCards
         PropType.CutTree or PropType.StrengthBoulder or PropType.MagmaStone => 20f / 32f,
         PropType.CrackedRock or PropType.Rubble => 19f / 32f,
         PropType.PunchingBag or PropType.TireStack or PropType.Bollard or PropType.Snowball or PropType.IceBlock or PropType.GymStatue => 18f / 32f,
+        // A pile of crates fills its tile, its foot near the tile's south edge
+        PropType.CratePile => 26f / 32f,
         // A shutter stands across the middle of its gap
         PropType.GalacticDoor => 0.5f,
         // The painting stands well back in its tile's south half, a slab filling the niche it is set in

@@ -350,6 +350,24 @@ public class NPC
     public bool IsIceBlock => NpcType == IceBlockType;
 
     /// <summary>
+    /// The waterfall Chuck trains under in the Cianwood Gym (plan 20, part r; style guide, "Chuck's waterfall"): a thing
+    /// of the map on its pool, hidden by the flag the winch sets (<c>FLAG_MAP_LOCAL_CIANWOOD_GYM_FALLS_STOPPED</c>), so
+    /// it runs again the next time the player comes in. Drawn by <see cref="Graphics.GymPieces"/>, its frames falling.
+    /// </summary>
+    public const string GymWaterfallType = "GymWaterfall";
+
+    /// <summary>Whether this is a Gym's waterfall (<see cref="GymWaterfallType"/>).</summary>
+    public bool IsGymWaterfall => NpcType == GymWaterfallType;
+
+    /// <summary>
+    /// A pile of cardboard crates the Department Store's Machoke shift about its basement (plan 20, part r; HeartGold's
+    /// <c>babyboy1_5</c> object and the three <c>stop</c> objects that fill out its square): a thing of the map on each
+    /// tile of the square, in the way like a person. The basement's arrival lays the squares out by the day of the week.
+    /// Drawn as a card.
+    /// </summary>
+    public const string CrateType = "Crate";
+
+    /// <summary>
     /// A statue of a Gym's puzzle (plan 21 · H8; Emerald's <c>OBJ_EVENT_GFX_TRICK_HOUSE_STATUE</c> in the Mossdeep Gym):
     /// a thing of the map, in the way like a person, which a floor switch moves round its loop of arrows as it moves
     /// the trainers (<see cref="MossdeepTiles"/>). Drawn as a card.
@@ -394,6 +412,8 @@ public class NPC
         TownMapType => PropType.RolledTownMap,
         IceBlockType => PropType.IceBlock,
         GymStatueType => PropType.GymStatue,
+        GymWaterfallType => PropType.GymWaterfall,
+        CrateType => PropType.CratePile,
         MicrowaveType => PropType.Microwave,
         WashingMachineType => PropType.WashingMachine,
         RefrigeratorType => PropType.Refrigerator,

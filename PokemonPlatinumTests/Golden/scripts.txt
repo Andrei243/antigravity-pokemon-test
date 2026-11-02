@@ -17026,6 +17026,21 @@ way 1, from answer 1
   * sound bump
   * fanfare FanfareItem
   * fanfare FanfareItem
+=== goldenrod_department_store_basement.Crates
+from Crates at 19,15 of Goldenrod_DeptStore_Basement
+from Crates at 19,16 of Goldenrod_DeptStore_Basement
+from Crates at 20,15 of Goldenrod_DeptStore_Basement
+from Crates at 20,16 of Goldenrod_DeptStore_Basement
+from Crates at 3,13 of Goldenrod_DeptStore_Basement
+from Crates at 3,14 of Goldenrod_DeptStore_Basement
+from Crates at 4,13 of Goldenrod_DeptStore_Basement
+from Crates at 4,14 of Goldenrod_DeptStore_Basement
+from Crates at 6,17 of Goldenrod_DeptStore_Basement
+from Crates at 6,18 of Goldenrod_DeptStore_Basement
+from Crates at 7,17 of Goldenrod_DeptStore_Basement
+from Crates at 7,18 of Goldenrod_DeptStore_Basement
+way -
+  > Crates of stock for the floors upstairs, stacked high. A Machoke must have carried them down.
 === goldenrod_department_store_basement.Shutter
 from Shutter at 26,8 of Goldenrod_DeptStore_Basement
 way -

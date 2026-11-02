@@ -7993,6 +7993,30 @@ words on the beats as they are known; where a number or a place is ours, it says
   (`VAR_JOHTO_SS_AQUA_GIRL`, 0 to 3) in place of HeartGold's `VAR_UNK_4112`, whose values couldn't be read. The night
   aboard itself (the trainers' cabins at night, the sleep) is not built.
 
+## Johto's pieces that wanted looking at: Chuck's waterfall, the Gyms' statues, the basement's crates (2026-11-02, plan 20, part r)
+
+Each looked at in the harness's pictures before it was called done; what each looks like is the style guide's.
+
+- *Chuck's waterfall*: a thing of the map of ours (`npcType` `GymWaterfall`, an overlay `npcs` entry of the Cianwood
+  Gym) on the pool behind Chuck (13, 7), hidden by the winch's flag local to the room
+  (`FLAG_MAP_LOCAL_CIANWOOD_GYM_FALLS_STOPPED`), so it stops for the visit and falls again the next time the player
+  comes in, as HeartGold's temporary variable does. It is drawn falling by `GymPieces`, in four frames; nothing is
+  heard of it (no bed of the ambience is a waterfall indoors).
+- *The Gyms' statues by their doors*: HeartGold's `object01`, which every Johto Gym and HeartGold's Kanto Gyms place as a
+  pair by the door, is the small statue of Sinnoh's Gyms (`PropType.Statue`), standing on the original's tile with its
+  model's name; the blocked tile behind it, which HeartGold's statue stands over, is floor under it, so no block of wall
+  shows there. The pair face one another across the way in: the west one as the figure is drawn, the east one turned
+  (`Landmarks.GymStatueFacesWest`). The Mahogany Gym's are the same as every other Gym's: HeartGold's facings could not
+  be read, so the facing is ours.
+- *The basement's crates*: HeartGold's three squares (a `babyboy1_5` object with three `stop` objects each) are four
+  things of the map each (`npcType` `Crate`), spoken to for a line of ours. HeartGold lays the basement out anew by the
+  day and its layouts couldn't be read, so the rule is ours: on Tuesdays, Thursdays and Saturdays each Machoke has
+  pushed its square the way it faces (the west square a tile west, the south square two tiles east, the south-east square
+  a tile south) and stands behind it; the other days the squares stand where HeartGold's objects do, which shuts the
+  floor's middle off from the west room, the south passage and the east passage, so the Burn Heal, the Ether and the
+  Ultra Ball are come to only on the days the crates have been shifted (the basement's arrival script lays them out).
+  The shutter to the warehouse is come to every day.
+
 ## Research (2026-11-02, plan 15 · E1, E2)
 
 Legends: Arceus's research tasks, in our own words and numbers; nothing of a game's tables.
