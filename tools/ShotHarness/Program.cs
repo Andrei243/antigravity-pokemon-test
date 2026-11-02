@@ -201,6 +201,7 @@ if (mode == "johto") h.JohtoMode();
 if (mode == "hoenn") h.HoennMode();
 if (mode == "unova") h.UnovaMode();
 if (mode == "kalos") h.KalosMode();
+if (mode == "freemove") h.FreeMoveMode();
 if (mode == "beats") h.LegendBeatsMode();
 if (mode == "seasons") h.SeasonsMode();
 if (mode == "pokegear") h.PokegearMode();

@@ -286,7 +286,7 @@ In all: 13 to 20 sessions before FM11, and 4 to 5 more for Paldea's mount (FM12 
 
 ## Status
 
-- [ ] FM0 The prototype: one scene, three looks
+- [x] FM0 The prototype: one scene, three looks (2026-11-02: the harness's `freemove` mode; findings below)
 - [ ] FM1 The region's word and the input
 - [ ] FM2 Eight directions on the grid
 - [ ] FM3 Live rigs in the field, and their budget
@@ -301,6 +301,24 @@ In all: 13 to 20 sessions before FM11, and 4 to 5 more for Paldea's mount (FM12 
 - [ ] FM12 The mount: rules and powers
 - [ ] FM13 The mount as a rig
 - [ ] FM14 The mount in Paldea's story
+
+## FM0 as built (2026-11-02)
+
+Narrower than the session's line above, by the caller's brief: no grown kit, no `BuildFreeLab`, no `CharacterStyle.Kit`. What there is: the harness's `freemove` mode (`tools/ShotHarness/Modes/FreeMove.cs`, not part of `all`) on Kalos's Aquacorde promenade, and two switches only a tool sets, null in the game: `WorldRenderer.People` (`IFieldPeople`, `Graphics/WorldRenderer.People.cs`: who draws the people in place of their sprites, in the shadow, colour and mirror passes) and `MapScene.OutdoorOverride` (the open field's lens; the harness calls `ForgetAll` round it). The `kalos` mode's 36 shots were diffed before and after: none moved.
+
+The scene: two rows of eight chibi looks, the first at the eight facings exactly, the second 20° past each and mid-stride; beside a wall with a door a tile wide and 1.75 tall (a card painted by the harness, with a ruler of quarter tiles), the chibi player, a chibi Cynthia, and three **grown stand-ins**: the chibi rig's own skin stretched after posing (legs ×1.75 and slimmed, the body ×1.3 over the hips, arms ×1.45 from the shoulder, the head shrunk to 0.6 about the neck) and scaled to 1.6 tiles (Cynthia), 1.5 (the rival) and 1.25 (Cynthia again, today's height). The chibi looks measure 1.27 to 1.44 tiles tall.
+
+What the boards show:
+- **(a) baked eight facings** reads exactly as the field does today, and the eight facings read well (the three-quarter views are an improvement on four). On the second row the 20° turns snap to the nearest eighth; in a still that is invisible, so the pop between facings is the question for a moving picture, not a board. The grown stand-in at 1.6 reads as a person a little shorter than the door, which is right; at 1.25 it reads as a child beside the door. Its face is the chibi stamp (eyes two texels by three) on a head about six texels across: the eyes cover the face, as the plan feared.
+- **(b) the live pixel layer** is (a) at the true yaw, pixel for pixel the same at the eight facings; it draws nothing (a) can't except the in-between angles. Done here per figure with a read-back to the CPU for the stamp and the outline (26 renders and 26 read-backs a frame), which a real (b) would do on the GPU; its cost here says nothing.
+- **(c) smooth live rigs**: the faces are real at last (the battle's face texture, eyes and mouth readable on the chibis at 4K), and they cast true shadows. But from the field's 59° a rig stretched upright as every upright thing is shows **mostly the top of its head**: a chibi is a hat or a head of hair with a face under it, and a grown head is a blob of hair with a face a few pixels across, under the hair. The rigs are **lit brighter than the world** (blond hair blows out to pale yellow, the clothes are more saturated than the paving), since the skinned program isn't graded with the scenery; **they lean** away from the picture's middle (the field's straightening of upright things isn't in the skinned program; the second row leans visibly at the left edge); and against the pixel field they are a different game's look, which is decision 1's risk seen.
+- **The cameras**: 50° with a 20° lens at 520/16 is barely told from 59° on the boards: the rows close up by about a tenth, the walls show a little more. Under (a) it changes nothing of the people (a sprite is seen from 24° whatever the camera); under (c) a little more face shows. A real Kalos camera that shows faces needs to go much lower (35° to 40°), which shows far less ground ahead.
+
+**Cost**, as counts (timings on the shared card mean nothing): today's chibi rig is about 169,000 triangles in the colour pass (body, clothes, face patch and the two outline shells) and 96,000 in the shadow pass, 19 bones. Twelve live rigs are about 2.0 million triangles in colour and 1.15 million in shadow, 228 bone matrices; the frame's 26 were 4.4 million and 2.5 million. Twelve sprites are 24 triangles. The chibi meshes are made for the battle's close-up, so a field rig needs a mesh of its own (a coarser cell, no clothes shell) whatever FM4 does: at 1/160 a grown body will be more triangles still, not fewer.
+
+**Recommendation** (for the user, with the boards): the pictures argue for **(a) at eight facings in the field** and the live rig in battle and on the bands, at least until a grown face has been tried at the field's scale: (c) only gives faces where the camera looks down at them less, its light and lean need work before it fits the pixel world, and it costs four orders of magnitude more geometry than (a) before its levels of detail. If the user still wants (c) (the recorded answer), FM3 must first: grade the skinned program with the scenery's light, put the straightening in it, give field rigs a mesh of their own at a coarser cell, and choose a Kalos pitch of about 40° by a second board; and FM4's grown face must be judged at the field's size, not the battle's.
+
+Boards: `fm_01_looks` (the cast, three looks), `fm_02_looks_close` (the door and the grown stand-ins at the screen's own resolution), `fm_06_facings_close` (the eight facings close up), `fm_04_cameras` (59° and 50°, looks (a) and (c)), `fm_05_heights` (the door group under both cameras).
 
 ## The user's answers (2026-11-02)
 
