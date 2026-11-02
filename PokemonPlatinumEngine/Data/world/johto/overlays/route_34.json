@@ -24,6 +24,7 @@
     },
     "r34_gsboy2_2": {
       "name": "Ian",
+      "script": "Ian",
       "trainer": {
         "dialogueBefore": "Youngster Ian: My Pokémon dig and scratch. Yours had better watch out!",
         "dialogueAfter": "Youngster Ian: Dug ourselves into a hole there..."

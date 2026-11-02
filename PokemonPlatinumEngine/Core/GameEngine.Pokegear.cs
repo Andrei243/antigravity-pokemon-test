@@ -109,6 +109,9 @@ public partial class GameEngine
     private string StationLine(RadioStation station)
     {
         string? species = null, place = null;
+        // Buena's show says tonight's word in the evening (plan 20, Johto's leftovers): the word she asks for
+        if (station == RadioStation.BuenasPassword && BuenasPassword.OnTheAir(GameClock.Now))
+            return PlayerIdentity.Fill(RadioShows.PasswordLine(fieldRandom, BuenasPassword.Shown(BuenasPassword.WordOf(GameClock.Today))));
         // The day's swarm, once swarms have begun, is told one time in two (plan 20 · J13, part c)
         if (station == RadioStation.PokemonTalk && Swarms.PlaceToday(flow.Encounters, RegionDatabase.Johto) is { Species.Length: > 0 } swarm && fieldRandom.Next(2) == 0)
             return PlayerIdentity.Fill(RadioShows.SwarmLine(fieldRandom, LocalNames.Species(swarm.Species), LocalNames.PlaceShown(null, swarm.Name)));

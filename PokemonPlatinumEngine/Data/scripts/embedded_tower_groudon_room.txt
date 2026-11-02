@@ -1,0 +1,48 @@
+# The Embedded Tower's Groudon room (Johto's leftovers). docs/scripts.md describes the language; the lines are our own,
+# on HeartGold's beat (scr_seq_D52R0101).
+#
+# Groudon waits here once the Red Orb has been given (route_30_mr_pokemon_house.txt) and until it has been fought
+# (FLAG_JOHTO_FOUGHT_GROUDON, ours): beaten or caught it is gone for good, run from it vanishes (HeartGold's
+# FLAG_HIDE_EMBEDDED_TOWER_GROUDON) and is back on the next visit. Its meeting is plan 29's beat for a Pokémon of
+# legend; the scene ends before the battle, so the hold never skips it.
+
+
+script OnEnter
+  setflag FLAG_HIDE_EMBEDDED_TOWER_GROUDON
+  if flag FLAG_JOHTO_FOUGHT_GROUDON end
+  if flag FLAG_JOHTO_GOT_ORBS clearflag FLAG_HIDE_EMBEDDED_TOWER_GROUDON
+  end
+
+# D52R0101_000: Groudon
+script Groudon
+  scene "Groudon in the Embedded Tower"
+  music stop
+  face player self
+  letterbox on 0.4
+  # Met from below, it is behind the player's own head from the field's camera: a step back, facing it, shows it
+  if facing up walk player back down 1
+  camera pan 16 11 1.2
+  camera zoom 1.4 0.8
+  effect burst 16 11
+  effect ripple 16 11
+  wait 1
+  cry "Groudon"
+  camera shake 0.5
+  emote player exclaim
+  speaker none
+  text "The Red Orb in the bag blazed with light, and the ground shook as Groudon rose before it!"
+  if facing up walk player up 1
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Groudon" 50
+  if result == 2 goto Fled
+  setflag FLAG_JOHTO_FOUGHT_GROUDON
+  setflag FLAG_HIDE_EMBEDDED_TOWER_GROUDON
+  hide self
+  end
+label Fled
+  setflag FLAG_HIDE_EMBEDDED_TOWER_GROUDON
+  hide self
+  text "Groudon vanished into the tower's depths!"
+  end

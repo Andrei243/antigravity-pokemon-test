@@ -47,6 +47,11 @@
     "It's Buena! Tonight's password is about Pokémon. Listen closely, everybody!",
     "Buena's Password: one word, one night only. Don't forget it!"
   ],
+  "BuenasPasswordTonight": [
+    "Buena's Password is on the air! Tonight's word is... {password}! Bring it to me at the Radio Tower before midnight!",
+    "Hi, everyone, it's Buena! Tonight's password is {password}. Say it to me in Goldenrod and earn a point!",
+    "Listen closely! The password tonight is {password}. That's {password}! See you at the Radio Tower!"
+  ],
   "TeamRocket": [
     "This is Team Rocket! We have taken over this station. Team Rocket is back, and all of Johto will hear us!",
     "Attention, Giovanni! Wherever you are, hear us! Team Rocket is reborn, and waiting for you to lead us again!",

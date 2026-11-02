@@ -3,6 +3,12 @@
 
 
 script OnEnter
+  # Janine's street meeting (Johto's leftovers): Sundays, once Janine's number is in the Pokégear
+  setflag FLAG_UNK_2E2
+  if weekday sunday call ShowMeetJanine
+  # Falkner's street meeting (Johto's leftovers): Sundays, once Falkner's number is in the Pokégear
+  setflag FLAG_UNK_260
+  if weekday sunday call ShowMeetFalkner
   setvar VAR_JOHTO_CELADON_STORE_FLOOR 4
   end
 
@@ -11,4 +17,38 @@ script Clerk
   sayown
   shop "celadon_4f"
   say "Thank you! Do come again."
+  end
+
+
+script ShowMeetFalkner
+  if flag FLAG_PHONE_CONTACT_FALKNER clearflag FLAG_UNK_260
+  return
+
+# Falkner, out on Sunday (the Leaders' street meetings, Johto's leftovers)
+script MeetFalkner
+  face t07r0104_gsleader1 player
+  speaker "Falkner"
+  random 2
+  if result == 1 goto Two
+  say "Ah, it's you. Janine dragged me here to look at Poké Dolls. ...Don't tell anyone."
+  end
+label Two
+  say "Fine, I'll admit it. The bird dolls are rather well made."
+  end
+
+
+script ShowMeetJanine
+  if flag FLAG_PHONE_CONTACT_JANINE clearflag FLAG_UNK_2E2
+  return
+
+# Janine, out on Sunday (the Leaders' street meetings, Johto's leftovers)
+script MeetJanine
+  face t07r0104_gsleader13 player
+  speaker "Janine"
+  random 2
+  if result == 1 goto Two
+  say "A ninja must blend into a crowd. Shopping is training! ...And the dolls are cute."
+  end
+label Two
+  say "Falkner says he's only here to keep me company. Hmph."
   end

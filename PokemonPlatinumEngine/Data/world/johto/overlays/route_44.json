@@ -50,6 +50,7 @@
     },
     "r44_gsman2": {
       "name": "Vance",
+      "script": "Vance",
       "trainer": {
         "dialogueBefore": "Bird Keeper Vance: My birds watch the road to the Ice Path. Nobody gets by without a battle!",
         "dialogueAfter": "Bird Keeper Vance: My birds will let you by."

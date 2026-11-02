@@ -88,3 +88,28 @@ script MtSilverGuard
 label Passed
   say "Mt. Silver is past this door. Not many trainers come back down it the same as they went up."
   end
+
+
+# The place's arrival lays who of the Gym Leaders is here today (Johto's leftovers)
+script OnEnter
+  # Janine's street meeting (Johto's leftovers): Tuesdays, once Janine's number is in the Pokégear
+  setflag FLAG_UNK_270
+  if weekday tuesday call ShowMeetJanine
+  end
+
+
+script ShowMeetJanine
+  if flag FLAG_PHONE_CONTACT_JANINE clearflag FLAG_UNK_270
+  return
+
+# Janine, out on Tuesday (the Leaders' street meetings, Johto's leftovers)
+script MeetJanine
+  face r22r0101_gsleader13 player
+  speaker "Janine"
+  random 2
+  if result == 1 goto Two
+  say "Tuesdays I come to watch the Trainers on their way to the League. A ninja studies every opponent."
+  end
+label Two
+  say "Some day I will walk through that door to the League myself."
+  end

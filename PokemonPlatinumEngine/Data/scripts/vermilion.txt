@@ -14,6 +14,28 @@ script OnEnter
   if var VAR_UNK_4076 >= 2 setvar VAR_UNK_4070 1
 label Shown
   if var VAR_UNK_4070 == 1 clearflag FLAG_HIDE_VERMILION_SUICUNE
+  # Eusine, on Suicune's trail (Johto's leftovers): by the harbour while it waits there, and by the road south once it
+  # has bounded off towards Route 14, until it is met there
+  setflag FLAG_HIDE_VERMILION_EUSINE
+  setflag FLAG_HIDE_VERMILION_EUSINE_2
+  if var VAR_UNK_4070 == 1 clearflag FLAG_HIDE_VERMILION_EUSINE
+  if var VAR_UNK_4086 == 1 clearflag FLAG_HIDE_VERMILION_EUSINE_2
+  end
+
+
+# T06: Eusine by the harbour, watching Suicune
+script EusineByTheHarbour
+  face t06_minaki player
+  speaker "Eusine"
+  say "{player}! Suicune came all the way to Kanto. Look, there by the harbour! I mustn't startle it..."
+  end
+
+
+# T06: Eusine by the road south, after Suicune has gone
+script EusineOnTheTrail
+  face t06_minaki_2 player
+  speaker "Eusine"
+  say "It bounded south, over the water and on towards Route 14. I'll follow it to the ends of Kanto if I must!"
   end
 
 # T06_011: Suicune by the harbour

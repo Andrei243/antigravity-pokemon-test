@@ -1,0 +1,47 @@
+# celadon (Johto's leftovers: the Gym Leaders' street meetings). docs/scripts.md describes the language; the lines
+# are our own, on HeartGold's beats.
+
+
+# The place's arrival lays who of the Gym Leaders is here today (Johto's leftovers)
+script OnEnter
+  # Jasmine's street meeting (Johto's leftovers): Saturdays, once Jasmine's number is in the Pokégear
+  setflag FLAG_UNK_2E1
+  if weekday saturday call ShowMeetJasmine
+  # Erika's street meeting (Johto's leftovers): Saturdays, once Erika's number is in the Pokégear
+  setflag FLAG_UNK_25D
+  if weekday saturday call ShowMeetErika
+  end
+
+
+script ShowMeetErika
+  if flag FLAG_PHONE_CONTACT_ERIKA clearflag FLAG_UNK_25D
+  return
+
+# Erika, out on Saturday (the Leaders' street meetings, Johto's leftovers)
+script MeetErika
+  face t07_gsleader12 player
+  speaker "Erika"
+  random 2
+  if result == 1 goto Two
+  say "Oh, hello. Jasmine and I meet here on Saturdays to look at the flowers in the shops."
+  end
+label Two
+  say "Celadon's air is gentle today. Even my Pokémon are dozing."
+  end
+
+
+script ShowMeetJasmine
+  if flag FLAG_PHONE_CONTACT_JASMINE clearflag FLAG_UNK_2E1
+  return
+
+# Jasmine, out on Saturday (the Leaders' street meetings, Johto's leftovers)
+script MeetJasmine
+  face t07_gsleader6 player
+  speaker "Jasmine"
+  random 2
+  if result == 1 goto Two
+  say "Oh... hello. Erika is showing me Celadon City. It's so big... much bigger than Olivine."
+  end
+label Two
+  say "I bought a present for Amphy. I hope it likes it."
+  end

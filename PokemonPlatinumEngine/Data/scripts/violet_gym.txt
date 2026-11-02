@@ -38,6 +38,17 @@ label Tm
   endscene
   end
 label Won
+  # Their number, for Johto's Champion (Johto's leftovers; the rematch is the Fighting Dojo's on their day, phone.json)
+  if not flag JohtoHallOfFame goto NumberDone
+  if flag FLAG_PHONE_CONTACT_FALKNER goto NumberDone
+  say "The Champion, back to see my birds! Let's swap numbers. I want to know when you're ready for a rematch."
+  ask "Swap numbers with Falkner?"
+  if no goto NumberDone
+  addcontact falkner
+  text "Registered Falkner in the Pokégear."
+  say "On Saturday mornings I'll be at the Fighting Dojo in Saffron City. Come and battle me there!"
+  end
+label NumberDone
   if not flag FLAG_GOT_TM51_FROM_FALKNER goto Tm
   say "I'll train my birds until nobody calls them easy prey again. Come back and see how far we've flown!"
   end

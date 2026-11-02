@@ -4,10 +4,8 @@
   // meeting, waits for it. Its bug catchers battle by their own records
   "area": "johto_viridian_forest",
   "bgmTrack": "kanto/viridian_forest",
-  "heldBack": [
-    "d46r0101_gsleader2"
-  ],
   "people": {
+    "d46r0101_gsleader2": { "name": "Bugsy", "script": "MeetBugsy", "still": true },
     "d46r0101_gsboy3": {
       "name": "Dane",
       "trainer": {

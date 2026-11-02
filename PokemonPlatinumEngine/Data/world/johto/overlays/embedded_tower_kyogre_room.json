@@ -1,0 +1,11 @@
+{
+  // The Embedded Tower's Kyogre room (Johto's leftovers): HeartGold's room behind Route 47's hole in the cliff, our
+  // words (scripts/embedded_tower_kyogre_room.txt). The hiker HeartGold stands by the way in is left out
+  "area": "embedded_tower_kyogre_room",
+  "bgmTrack": "johto/route34",
+  "battleArena": "Cave",
+  "heldBack": [ "d52r0102_mount_2" ],
+  "people": {
+    "d52r0102_tsure_poke_static_kyogre": { "name": "Kyogre", "npcType": "Pokemon", "species": "Kyogre", "script": "Kyogre", "still": true }
+  }
+}

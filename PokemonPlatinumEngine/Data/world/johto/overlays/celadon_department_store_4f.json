@@ -4,8 +4,9 @@
   // (HeartGold's FLAG_UNK_260 and FLAG_UNK_2E2) are held back with the Leaders' street meetings
   "area": "celadon_department_store_4f",
   "bgmTrack": "kanto/celadon",
-  "heldBack": [ "t07r0104_gsleader1", "t07r0104_gsleader13" ],
   "people": {
+    "t07r0104_gsleader13": { "name": "Janine", "script": "MeetJanine", "still": true },
+    "t07r0104_gsleader1": { "name": "Falkner", "script": "MeetFalkner", "still": true },
     "t07r0104_shopm1_2": {
       "name": "Clerk",
       "script": "Clerk",

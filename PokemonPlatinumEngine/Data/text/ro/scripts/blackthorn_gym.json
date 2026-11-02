@@ -126,10 +126,51 @@
     },
     {
       "en": [
+        "So you really did become Champion. ...Fine. Take my number. I'll call when I'm ready to beat you."
+      ],
+      "text": [
+        ""
+      ],
+      "was": [
+        "Nu te îndrepți spre Liga Pokémon? Pe fața ta se vede că ai ceva neterminat mai întâi."
+      ]
+    },
+    {
+      "en": [
+        "Swap numbers with Clair?"
+      ],
+      "text": [
+        ""
+      ],
+      "was": [
+        "Ai venit din New Bark Town, nu-i așa, unde e laboratorul Profesorului Elm? Poate ar trebui să te întorci acolo."
+      ]
+    },
+    {
+      "en": [
+        "Registered Clair in the Pokégear."
+      ],
+      "text": [
+        ""
+      ],
+      "was": [
+        "Ce urmează va fi mai greu. Să nu îndrăznești să renunți, că mă simt și mai rău că am pierdut în fața ta!"
+      ]
+    },
+    {
+      "en": [
+        "Friday nights I train at the Fighting Dojo in Saffron City. Don't you dare keep me waiting."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
         "Aren't you off to the Pokémon League? Something in your face says you've unfinished business first."
       ],
       "text": [
-        "Nu te îndrepți spre Liga Pokémon? Pe fața ta se vede că ai ceva neterminat mai întâi."
+        ""
       ]
     },
     {
@@ -137,7 +178,7 @@
         "You came from New Bark Town, didn't you, where Professor Elm's lab is? Maybe you should go back there."
       ],
       "text": [
-        "Ai venit din New Bark Town, nu-i așa, unde e laboratorul Profesorului Elm? Poate ar trebui să te întorci acolo."
+        ""
       ]
     },
     {
@@ -145,7 +186,15 @@
         "Whatever comes next will be harder. Don't you dare give up, or I'll feel even worse about losing to you!"
       ],
       "text": [
-        "Ce urmează va fi mai greu. Să nu îndrăznești să renunți, că mă simt și mai rău că am pierdut în fața ta!"
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Champion, back in my Gym. Don't think I've stopped training for one day."
+      ],
+      "text": [
+        ""
       ]
     }
   ]

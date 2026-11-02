@@ -3,8 +3,8 @@
   // Gym, built in dark logs under moss-green hips (Upland). Since plan 20 · J11, part a, the big man before the Gym's
   // door keeps everyone out until the Team Rocket Hideout under the souvenir shop is cleared (FLAG_UNK_1F9). The girl
   // before the shop comes out with its saleswoman once the Radio Tower is freed (Johto's leftovers). The man who sells
-  // Rage Candy Bars at the east end of the street is left out (FLAG_UNK_205, which nothing of ours sets), so the way
-  // east to Route 44 is open
+  // Rage Candy Bars stands at the east end of the street on its north row (HeartGold's FLAG_UNK_205 ignored: he is
+  // always there), so the way east to Route 44 stays open
   "area": "mahogany",
   "bgmTrack": "johto/mahogany",
   "trees": "Round",
@@ -26,6 +26,7 @@
         "Everyone says the shop was strange for a while. I'm glad it's back to normal."
       ]
     },
+    "t28_gsmiddleman1": { "name": "Man", "script": "RageCandySeller", "still": true, "hiddenBy": "" },
     "t28_gsoldman1": {
       "name": "Old Man",
       "dialog": [

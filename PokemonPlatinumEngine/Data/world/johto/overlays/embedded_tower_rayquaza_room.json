@@ -1,0 +1,10 @@
+{
+  // The Embedded Tower's Rayquaza room (Johto's leftovers): HeartGold's room behind Route 47's hole in the cliff, our
+  // words (scripts/embedded_tower_rayquaza_room.txt).
+  "area": "embedded_tower_rayquaza_room",
+  "bgmTrack": "johto/route34",
+  "battleArena": "Cave",
+  "people": {
+    "d52r0103_tsure_poke_static_rayquaza": { "name": "Rayquaza", "npcType": "Pokemon", "species": "Rayquaza", "script": "Rayquaza", "still": true }
+  }
+}

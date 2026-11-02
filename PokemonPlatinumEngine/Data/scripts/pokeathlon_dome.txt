@@ -1,0 +1,19 @@
+# The Pokéathlon Dome's square (Johto's leftovers). docs/scripts.md describes the language; the lines are our own, on
+# HeartGold's beat.
+#
+# The first time the square is come to, the dome's owner sees the player and greets them (HeartGold's first-visit
+# scene and its flag, FLAG_UNK_225); afterwards he stays by the way in to talk (the overlay's lines).
+
+
+script OnEnter
+  if flag FLAG_UNK_225 end
+  scene "The dome's owner"
+  emote d49_thlonowner exclaim
+  face d49_thlonowner player
+  speaker "Dome Owner"
+  say "Oh! A new face! Welcome, welcome to the Pokéathlon Dome!"
+  say "I built this place myself. In battle only the strongest shine, but here every Pokémon can show what it's good at."
+  say "Speed, power, skill, stamina, jumps... Bring three Pokémon to the reception inside and enter a course. My Poliwrath and I will cheer you on!"
+  setflag FLAG_UNK_225
+  endscene
+  end

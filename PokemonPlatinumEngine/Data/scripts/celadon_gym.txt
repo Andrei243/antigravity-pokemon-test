@@ -33,6 +33,17 @@ label Tm
   say "TM19 is Giga Drain. It drains the foe's strength and gives half of it back to the user."
   end
 label Won
+  # Their number, for Johto's Champion (Johto's leftovers; the rematch is the Fighting Dojo's on their day, phone.json)
+  if not flag JohtoHallOfFame goto NumberDone
+  if flag FLAG_PHONE_CONTACT_ERIKA goto NumberDone
+  say "Would you like to exchange numbers? I would very much like to battle you again."
+  ask "Swap numbers with Erika?"
+  if no goto NumberDone
+  addcontact erika
+  text "Registered Erika in the Pokégear."
+  say "On Sunday mornings I'll be at the Fighting Dojo in Saffron City. Come and battle me there!"
+  end
+label NumberDone
   if not flag FLAG_JOHTO_GOT_TM19_FROM_ERIKA goto Tm
   say "Losing to someone so strong is rather refreshing. I feel I could arrange a whole garden of flowers today."
   end

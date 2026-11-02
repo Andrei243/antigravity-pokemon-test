@@ -7933,6 +7933,66 @@ Platinum has no gallery; this is ours, after the later games' model viewers (`UI
   frame while walking took 1.3 s (on the Ice Path's first floor at 39, 26) with no chunk waited for: something else
   is made on the main thread there the first time, not looked into yet.
 
+## Johto's last leftovers: Buena, the phone's gifts, the Leaders, the Embedded Tower (2026-11-02, plan 20, part p)
+
+HeartGold's scripts couldn't be read (the pinned cache holds no `scr_seq`), so everything below is written in our own
+words on the beats as they are known; where a number or a place is ours, it says so.
+
+- *Buena's Password* (`Models/BuenasPassword.cs`): a word of the day decided by the date alone (a hash of the day's
+  number, never `Dice`), so the radio and Buena agree and every run of a day is the same. The words are 32 Johto species
+  and 16 moves of the data, shown in the language chosen; HeartGold's own lists (by category) are not used. The show
+  says the word on the air in the twilight and at night (`BuenasPassword.OnTheAir`, ours for HeartGold's 18:00 to
+  midnight); at other hours the station keeps its old lines. Buena offers three words (`{password:1}` to `{password:3}`,
+  the right one at `PASSWORD`), one try a night (`FLAG_DAILY_JOHTO_BUENAS_PASSWORD`), right or wrong; a right one is a
+  point on the Blue Card (a key item of ours, 9232; `VAR_JOHTO_BLUE_CARD_POINTS`, at most 30). The player need not have
+  heard the show to answer: the game doesn't track listening. The woman beside her trades points for our own list
+  (Ultra Ball 2, Full Heal 2, Rare Candy 3, Protein 5, Nugget 10). During the takeover Buena only complains.
+- *The phone's gifts*: the seven callers whose book entry names a gift (Joey's HP Up, Kenji's PP Up, Huey's Protein,
+  Vance's Carbos, Parry's Iron, Erin's Calcium, Ian's Cheri Berry) ring about it on one call in three that they make to
+  talk (`VAR_PHONE_CALL` 1), which sets `FLAG_JOHTO_PHONE_GIFT_<ID>` (ours); spoken to on their route they hand it over
+  and clear it, so a gift may come again. The six besides Joey give their numbers when beaten, as Joey does. The other
+  scripted calls of HeartGold (Elm's about the Egg, the bike shop, Bill's boxes) are not written.
+- *The Gym Leaders' numbers and rematches*: each of the sixteen gives their number in their Gym once the player is
+  Johto's Champion (in Kanto, once beaten; Clair after her TM; Chuck and Jasmine as before). Their rematch is the
+  phone's rule (`PhoneRematch`): a row of `Data/world/johto/rematches.json` (ours) makes their second team of Johto's
+  `trainers.json` the fifth level, open after Johto's Hall of Fame; on their day and hour a call asks, and they then
+  stand in Saffron City's Fighting Dojo (`shownBy` the waiting flag) until fought. They are battled as their second team
+  (`battle self as "<id>_2"`), never as trainers of the map, and clear their waiting flag, so they are gone once beaten,
+  even before the player leaves (HeartGold keeps them standing).
+- *Street meetings*: eleven of HeartGold's held-back Leader objects stand on a weekday of ours once that Leader's number
+  is registered (their place's arrival lays it: Erika and Jasmine in Celadon on Saturdays, Falkner and Janine on the
+  Celadon store's fourth floor on Sundays, Brock in Diglett's Cave on Wednesdays, Whitney on Goldenrod's sixth floor on
+  Sundays, Blaine on Cinnabar on Mondays, Bugsy in Viridian Forest on Fridays, Janine in the League's reception gate on
+  Tuesdays, Sabrina at Olivine's port on Thursdays, Jasmine in Olivine's café on Fridays, Lt. Surge on Route 10 on
+  Fridays). They only talk. Left: Bugsy in the National Park, Lt. Surge on Route 39 and at Saffron's station, Morty on
+  the Bellchime Trail's second spot, Misty's date is as before.
+- *The Kimono Girl under the city*: Petrel's Basement Key sets `VAR_UNK_40E7` 2, as HeartGold's does; the first basement's
+  arrival shows her by it (`FLAG_HIDE_UNDERGROUND_KIMONO_GIRL`). During the takeover she asks the player to free the
+  tower; afterwards she thanks them and goes home (3). She gives nothing.
+- *The Rage Candy seller* stands on the north row of Mahogany's street at its east end, always (HeartGold's
+  `FLAG_UNK_205` is passed over: `hiddenBy ""`), so the street's two other rows keep the way east open. He sells one bar at
+  a time for $300.
+- *Route 47*: Chuck and Crasher Wake stand by the waterfall once Johto's Champion holds Kanto's eight Badges, and only
+  talk. Chuck in the Cliff Edge Gate is still held back.
+- *Eusine's other places*: by Vermilion's harbour while Suicune waits there (`VAR_UNK_4070` 1), by its road south once it
+  has gone (`VAR_UNK_4086` 1); in Route 14's grass while it waits there, further north once it has gone (`VAR_UNK_4088`
+  1). The cape's second place is still held back (he leaves with Suicune there).
+- *The dome's owner* greets the first visit to the Pokéathlon Dome's square on its arrival (HeartGold's `FLAG_UNK_225`).
+- *Celadon's Pokémon prizes*: Mr. Mime 3,333, Eevee 6,666 and Porygon 9,999 coins, at level 15, beside R16b's item
+  prizes: our recollection of HeartGold's counter, whose list the pinned folders don't hold.
+- *The Embedded Tower*: its three rooms are opened from HeartGold's matrices 279, 284 and 285, all behind the one tile of
+  Route 47's hole, switched in turn (`switches`): Groudon's from `FLAG_JOHTO_GOT_ORBS` until it is fought, Kyogre's
+  until it is fought, then Rayquaza's. One Johto with both versions (decision 4): Mr. Pokémon gives the Red and the Blue
+  Orb together to Johto's Champion with Kanto's eight Badges, and the Jade Orb (a key item of ours, 9233) once Groudon and
+  Kyogre have both been fought, where HeartGold wants both caught and has another hand it over. Each is met by plan 29's
+  beat and battled at level 50; beaten or caught it is gone, run from it is back on the next visit. Before the orbs the
+  hole's tile leads nowhere (open ground, no warp). The hikers HeartGold stands in the rooms are left out.
+- *The captain's granddaughter*: HeartGold's errand of the night aboard, played at the quay where the ship is walked
+  through. She hides in a north-west cabin (HeartGold's `FLAG_UNK_218`), runs off to the hold once found (`FLAG_UNK_219`)
+  and goes back to her grandfather once found again (`FLAG_UNK_217`), who gives a Metal Coat; one variable of ours
+  (`VAR_JOHTO_SS_AQUA_GIRL`, 0 to 3) in place of HeartGold's `VAR_UNK_4112`, whose values couldn't be read. The night
+  aboard itself (the trainers' cabins at night, the sleep) is not built.
+
 ## Research (2026-11-02, plan 15 · E1, E2)
 
 Legends: Arceus's research tasks, in our own words and numbers; nothing of a game's tables.

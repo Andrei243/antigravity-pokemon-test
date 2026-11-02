@@ -109,6 +109,8 @@ public static partial class WorldModels
         Thing("d22_funsui", PropType.Fountain, "the National Park's fountain"),
         Ground("d22_mizu", "the water of the National Park's fountain: its own ground draws it"),
         // Plan 20 · J15: Mt. Silver Cave's falls and the backdrop round its summit
+        // Johto's leftovers: the Embedded Tower's three rooms, each one model of the whole room (its own ground draws it)
+        Ground("md52g_01", "the Embedded Tower's Groudon room: its own ground draws it"), Ground("md52k_01", "the Embedded Tower's Kyogre room: its own ground draws it"), Ground("md52r_01", "the Embedded Tower's Rayquaza room: its own ground draws it"),
         Ground("dsm_fal1", "a waterfall in Mt. Silver Cave: its own ground draws the water"), Ground("dsm_fal2", "a waterfall in Mt. Silver Cave: its own ground draws the water"), Ground("dsm_bg1", "the peaks round Mt. Silver's summit (no model of its own: the field's sky stands in)"),
 
         // ---------------------------------------------------------------- Ecruteak City (en_: Enju), plan 20 · J5, part b

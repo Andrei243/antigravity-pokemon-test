@@ -4,8 +4,8 @@
   // wanderings (FLAG_UNK_219) is held back, and so is its trigger by the engines (VAR_UNK_40CB), part of its night aboard
   "area": "ss_aqua_b1f",
   "bgmTrack": "kanto/ss_anne",
-  "heldBack": [ "p01r0307_gsbabygirl1" ],
   "people": {
+    "p01r0307_gsbabygirl1": { "name": "Little girl", "script": "Girl", "still": true },
     "p01r0307_seaman_2": {
       "name": "Sailor",
       "hiddenBy": "",

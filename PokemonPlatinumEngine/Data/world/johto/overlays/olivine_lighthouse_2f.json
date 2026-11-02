@@ -12,6 +12,7 @@
     },
     "everywhere_seaman_2": {
       "name": "Huey",
+      "script": "Huey",
       "trainer": {
         "dialogueBefore": "Sailor Huey: Ahoy! A battle on the stairs keeps a sailor's legs strong!",
         "dialogueAfter": "Sailor Huey: Blown off course, I was."

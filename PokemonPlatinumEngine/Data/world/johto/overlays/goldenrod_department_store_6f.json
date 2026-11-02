@@ -3,6 +3,7 @@
   "area": "goldenrod_department_store_6f",
   "bgmTrack": "johto/goldenrod",
   "people": {
+    "t25r1006_gsleader3": { "name": "Whitney", "script": "MeetWhitney", "still": true },
     "t25r1006_gsman1": {
       "name": "Man",
       "dialog": [

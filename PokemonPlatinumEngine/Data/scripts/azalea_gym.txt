@@ -32,6 +32,17 @@ label Tm
   say "TM89 is U-turn. Your Pokémon hits the foe, then swaps out for another. Hit and run, just like a bug!"
   end
 label Won
+  # Their number, for Johto's Champion (Johto's leftovers; the rematch is the Fighting Dojo's on their day, phone.json)
+  if not flag JohtoHallOfFame goto NumberDone
+  if flag FLAG_PHONE_CONTACT_BUGSY goto NumberDone
+  say "The Champion in my Gym! Can I have your number? I'd love to battle you again, for research."
+  ask "Swap numbers with Bugsy?"
+  if no goto NumberDone
+  addcontact bugsy
+  text "Registered Bugsy in the Pokégear."
+  say "On Thursday afternoons I'll be at the Fighting Dojo in Saffron City. Come and battle me there!"
+  end
+label NumberDone
   if not flag FLAG_GOT_TM89_FROM_BUGSY goto Tm
   say "Bug Pokémon are so deep. There's always something new to learn about them. I'm going to keep studying!"
   end

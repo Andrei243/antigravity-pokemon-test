@@ -1,15 +1,21 @@
 {
   // Route 47 (plan 20 · J8, part b): HeartGold's map, our words. The cliff path west of Cianwood, from the Cliff Edge
   // Gate past Cliff Cave's three ways in to Route 48 and the Safari Zone. The hiker by the hole in the cliff talks of the
-  // Embedded Tower, whose rooms (warps 4 to 6) are a later session's, as are Crasher Wake by the waterfall and Chuck
-  // after the Kanto Badges. Thom and Kae, and Duff and Eda, each battle as one trainer of HeartGold's table
+  // Embedded Tower, whose three rooms (warps 4 to 6, all on the one tile of the hole) open in turn once Mr. Pokémon has
+  // given the orbs (Johto's leftovers: the switches below, scripts/embedded_tower_*_room.txt). Chuck and Crasher Wake train by the waterfall
+  // once the Kanto Badges are won too (scripts/route_47.txt, Johto's leftovers). Thom and Kae, and Duff and Eda, each battle as one trainer of HeartGold's table
   "area": "route_47",
   "ours": { "land": [ ["Noctaugur", 110, 114], ["Sleighwing", 104, 108] ], "superRod": [ ["Abyssolux", 112, 116] ] },
   "bgmTrack": "johto/route38",
   "trees": "Round",
-  "locked": [ 4, 5, 6 ],
-  "heldBack": [ "r47_leader3", "r47_gsleader5" ],
+  "switches": [
+    { "warp": 4, "from": "FLAG_JOHTO_GOT_ORBS", "until": "FLAG_JOHTO_FOUGHT_GROUDON" },
+    { "warp": 5, "from": "FLAG_JOHTO_FOUGHT_GROUDON", "until": "FLAG_JOHTO_FOUGHT_KYOGRE" },
+    { "warp": 6, "from": "FLAG_JOHTO_FOUGHT_KYOGRE" }
+  ],
   "people": {
+    "r47_gsleader5": { "name": "Chuck", "script": "Chuck", "still": true },
+    "r47_leader3": { "name": "Crasher Wake", "script": "CrasherWake", "still": true },
     "r47_mount_2": { "name": "Hiker", "script": "Hiker", "hiddenBy": "" },
     "r47_gsman3": {
       "name": "Thom",

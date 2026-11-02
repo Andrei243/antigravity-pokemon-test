@@ -7,6 +7,32 @@
 
 script OnEnter
   setvar VAR_UNK_40EB 1
+  # Chuck and Crasher Wake train by the waterfall once Johto's Champion holds Kanto's eight Badges too (Johto's
+  # leftovers: HeartGold's FLAG_HIDE_ROUTE_47_CHUCK and _CRASHER_WAKE, laid as the route is come to)
+  setflag FLAG_HIDE_ROUTE_47_CHUCK
+  setflag FLAG_HIDE_ROUTE_47_CRASHER_WAKE
+  if not flag JohtoHallOfFame end
+  if badges of kanto < 8 end
+  clearflag FLAG_HIDE_ROUTE_47_CHUCK
+  clearflag FLAG_HIDE_ROUTE_47_CRASHER_WAKE
+  end
+
+
+# R47_004: Chuck, training beside the waterfall
+script Chuck
+  face r47_gsleader5 player
+  speaker "Chuck"
+  say "HWAAAH! Oh, it's you! This waterfall's spray is perfect for training. A visitor from far away told me about it."
+  say "He's up there on the rocks, roaring louder than the falls! Go and say hello."
+  end
+
+
+# R47_003: Crasher Wake, a Gym Leader of Sinnoh, come to train under Johto's waterfalls (our words on HeartGold's beat)
+script CrasherWake
+  face r47_leader3 player
+  speaker "Crasher Wake"
+  say "Hah! Crasher Wake, Gym Leader of Pastoria City in faraway Sinnoh! I heard Johto's waterfalls were the toughest around."
+  say "Chuck and I have been taking turns under the falls. My Pokémon have never been so fired up! Wahahah!"
   end
 
 

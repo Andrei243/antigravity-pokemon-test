@@ -8435,6 +8435,14 @@ way 1.0, from answer 1
   + FLAG_WALLACE_GOES_TO_SKY_PILLAR
   = VAR_SOOTOPOLIS_CITY_STATE 0 -> 3
   + seen cave_of_origin_b1f.Wallace in the Cave of Origin
+=== celadon.MeetErika
+from Erika at 1200,251 of Johto
+way -
+  Erika> Oh, hello. Jasmine and I meet here on Saturdays to look at the flowers in the shops.
+=== celadon.MeetJasmine
+from Jasmine at 1201,251 of Johto
+way -
+  Jasmine> Oh... hello. Erika is showing me Celadon City. It's so big... much bigger than Olivine.
 === celadon_city_condominiums_1f.TeaWoman
 from Old Woman at 2,9 of CeladonCity_Condominiums_1F
 way -
@@ -8625,6 +8633,14 @@ way -
   Clerk> Welcome to the Gift Corner! Something for someone special?
   Clerk> Thank you! Do come again.
   * open Shop celadon_4f
+=== celadon_department_store_4f.MeetFalkner
+from Falkner at 16,3 of Celadon_DeptStore_4F
+way -
+  Falkner> Ah, it's you. Janine dragged me here to look at Poké Dolls. ...Don't tell anyone.
+=== celadon_department_store_4f.MeetJanine
+from Janine at 15,3 of Celadon_DeptStore_4F
+way -
+  Janine> A ninja must blend into a crowd. Shopping is training! ...And the dolls are cute.
 === celadon_department_store_5f.BattleClerk
 from Clerk at 17,10 of Celadon_DeptStore_5F
 way -
@@ -14364,6 +14380,10 @@ way -
   Boy> If a Pokémon holds it, its Normal-type moves get stronger. That's what Grandpa says.
   * fanfare FanfareItem
   + FLAG_RECEIVED_SILK_SCARF
+=== diglett_cave.MeetBrock
+from Brock at 36,4 of Diglett_Cave
+way -
+  Brock> Hey! I come down here on Wednesdays. The Diglett keep the cave's rocks in great shape.
 === distortion_world_1f.CynthiaBySlab
 from Cynthia at 18,42 of DistortionWorld1F
 way -
@@ -15024,6 +15044,81 @@ way 0
 way 1, from answer 1
   * battle johto_leader_morty_morty Lost
   * scene over, unseen
+=== embedded_tower_groudon_room.Groudon
+from Groudon at 16,11 of EmbeddedTower_GroudonRoom
+way 0
+  > The Red Orb in the bag blazed with light, and the ground shook as Groudon rose before it!
+  * scene embedded_tower_groudon_room.Groudon in the Embedded Tower
+  * music stop
+  * letterbox on
+  * walk player back down
+  * camera Pan 16 11
+  * camera Zoom 1.4
+  * effect Burst 16 11
+  * effect Ripple 16 11
+  * cry Groudon
+  * camera Shake
+  * emote player Exclaim
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Groudon 50 Won
+  + FLAG_HIDE_EMBEDDED_TOWER_GROUDON
+  + FLAG_JOHTO_FOUGHT_GROUDON
+  + seen embedded_tower_groudon_room.Groudon in the Embedded Tower
+way 1, from answer 1
+  * wildbattle Groudon 50 Lost
+  + seen embedded_tower_groudon_room.Groudon in the Embedded Tower
+=== embedded_tower_kyogre_room.Kyogre
+from Kyogre at 16,11 of EmbeddedTower_KyogreRoom
+way 0
+  > The Blue Orb in the bag shone deep blue, and a roar like the sea filled the room as Kyogre rose before it!
+  * scene embedded_tower_kyogre_room.Kyogre in the Embedded Tower
+  * music stop
+  * letterbox on
+  * walk player back down
+  * camera Pan 16 11
+  * camera Zoom 1.4
+  * effect Ripple 16 11
+  * effect Sparkles 16 11
+  * cry Kyogre
+  * camera Shake
+  * emote player Exclaim
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Kyogre 50 Won
+  + FLAG_HIDE_EMBEDDED_TOWER_KYOGRE
+  + FLAG_JOHTO_FOUGHT_KYOGRE
+  + seen embedded_tower_kyogre_room.Kyogre in the Embedded Tower
+way 1, from answer 1
+  * wildbattle Kyogre 50 Lost
+  + seen embedded_tower_kyogre_room.Kyogre in the Embedded Tower
+=== embedded_tower_rayquaza_room.Rayquaza
+from Rayquaza at 16,11 of EmbeddedTower_RayquazaRoom
+way 0
+  > The Jade Orb in the bag glowed green, and Rayquaza came down from the sky above the tower!
+  * scene embedded_tower_rayquaza_room.Rayquaza in the Embedded Tower
+  * music stop
+  * letterbox on
+  * walk player back down
+  * camera Pan 16 11
+  * camera Zoom 1.4
+  * effect Beam 16 11
+  * effect Burst 16 11
+  * cry Rayquaza
+  * camera Shake
+  * emote player Exclaim
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Rayquaza 50 Won
+  + FLAG_HIDE_EMBEDDED_TOWER_RAYQUAZA
+  + FLAG_JOHTO_FOUGHT_RAYQUAZA
+  + seen embedded_tower_rayquaza_room.Rayquaza in the Embedded Tower
+way 1, from answer 1
+  * wildbattle Rayquaza 50 Lost
+  + seen embedded_tower_rayquaza_room.Rayquaza in the Embedded Tower
 === eterna_city.BlockSouth
 from the trigger at 303,565 of Sinnoh
 way -
@@ -16884,6 +16979,10 @@ way -
   Clerk> Welcome! How can I help you?
   Clerk> Thank you! Do come again.
   * open Shop goldenrod_5f
+=== goldenrod_department_store_6f.MeetWhitney
+from Whitney at 3,6 of Goldenrod_DeptStore_6F
+way -
+  Whitney> Oh! It's you! I come here every Sunday for a fizzy drink from the machines. Isn't it the best?
 === goldenrod_department_store_6f.Vending
 from the tile read at 11,3 of Goldenrod_DeptStore_6F
 from the tile read at 12,3 of Goldenrod_DeptStore_6F
@@ -17090,6 +17189,18 @@ way 1, from answer 1
 from Receptionist at 5,12 of Goldenrod_RadioTower_1F
 way -
   Receptionist> Welcome to the Radio Tower! Do look around the ground floor. The staff upstairs are hard at work on today's shows.
+=== goldenrod_radio_tower_2f.BlueCardPrizes
+from Woman at 24,11 of Goldenrod_RadioTower_2F
+way -
+  Woman> These prizes are for players of Buena's Password. Ask Buena for a Blue Card first!
+=== goldenrod_radio_tower_2f.Buena
+from Buena at 18,12 of Goldenrod_RadioTower_2F
+way -
+  Buena> Hi there! I'm Buena. Every evening I host Buena's Password on the radio. Never played? Then this is for you!
+  > Lucas received the Blue Card!
+  > Lucas put it away in the Key Items pocket.
+  Buena> Tune in to my show in the evening. Hear tonight's password, then come and tell me. A right answer is a point!
+  * fanfare FanfareKeyItem
 === goldenrod_radio_tower_2f.Jigglypuff
 from Jigglypuff at 20,5 of Goldenrod_RadioTower_2F
 way -
@@ -17278,6 +17389,13 @@ way -
   Herbalist> Hello, dear. Herbs are bitter, but they do a body good, and they cost next to nothing.
   Herbalist> Mind your Pokémon pull a face when they take them. It means they're working.
   * open Shop lavaridge_herb_shop
+=== goldenrod_tunnel_b1f.KimonoGirl
+from Kimono Girl at 19,31 of Goldenrod_Underground_B1F
+way -
+  Kimono Girl> Oh, it's you! I came to Goldenrod to dance, and in all the confusion I lost my way down here.
+  Kimono Girl> Now that the city is safe again, I can find my way back to Ecruteak. Thank you. Your Pokémon shine brighter every time.
+  + FLAG_HIDE_UNDERGROUND_KIMONO_GIRL
+  = VAR_UNK_40E7 0 -> 3
 === goldenrod_tunnel_b1f.YoungerBarber
 from Barber at 10,22 of Goldenrod_Underground_B1F
 way 0
@@ -18016,6 +18134,15 @@ way -
   Blue> Huh. A Champion from Johto, all the way out here. Look at this place. The volcano blew and the whole town went with it.
   Blue> I'm the Leader of the Viridian Gym. Funny, right? I'm never there. I don't take on just anyone.
   Blue> Come back when you've got Kanto's other seven Badges. Then we'll see if you're worth my time.
+=== johto_cinnabar_island.MeetBlaine
+from Blaine at 1035,505 of Johto
+way -
+  Blaine> Hah! I come back to the island on Mondays. My Gym stood right here, you know.
+=== johto_route_10.LtSurge
+from Lt. Surge at 1430,183 of Johto
+way -
+  Lt. Surge> Hey, kid! I come out here every Friday to check on the Power Plant. No power, no Gym, and no Gym means no fun!
+  Lt. Surge> Friday mornings I'm at the Fighting Dojo in Saffron, too. If I ring you, you'd better show up!
 === johto_route_10.Zapdos
 from Zapdos at 1419,184 of Johto
 way 0
@@ -18046,6 +18173,14 @@ way 1, from answer 1
 from Snorlax at 1411,306 of Johto
 way -
   > A Snorlax is fast asleep across the way. It doesn't stir, however loudly it is called.
+=== johto_route_14.Eusine
+from Eusine at 1358,424 of Johto
+way -
+  Eusine> Shh! Suicune is resting in the grass up ahead. It let me come this close... but I think it's waiting for you.
+=== johto_route_14.EusineNorth
+from Eusine at 1358,411 of Johto
+way -
+  Eusine> North again! It ran towards Cerulean, to the cape. That's where it will make its stand, I'm sure of it!
 === johto_route_14.SuicuneInTheGrass
 from Suicune at 1365,412 of Johto
 from the trigger at 1358,409 of Johto
@@ -18163,6 +18298,10 @@ way 0
 way 1, from answer 1
   * battle johto_rival_silver_5 Lost
   * scene over, unseen
+=== johto_viridian_forest.MeetBugsy
+from Bugsy at 25,71 of Viridian_Forest
+way -
+  Bugsy> Oh, hi! I come to Viridian Forest on Fridays. The bug Pokémon here are so different from Ilex Forest's!
 === join_avenue.Cafe
 from Waitress at 6,42 of JoinAvenue
 way -
@@ -19936,6 +20075,20 @@ way 1, from answer 1
 from Groudon at 16,17 of MagmaHideout_4F
 way -
   > Groudon is sleeping, curled in the magma. It doesn't stir at all.
+=== mahogany.RageCandySeller
+from Man at 540,175 of Johto
+way 0
+  Man> Mahogany's famous Rage Candy Bars! Every tourist takes one home. Crunchy, sweet, and good for what ails your Pokémon!
+  Man> One Rage Candy Bar for $300?
+  > Lucas received the Rage Candy Bar!
+  > Lucas put it away in the Medicine pocket.
+  Man> Thanks! Come back for another any time.
+  ? One Rage Candy Bar for $300? = Yes, please
+  * sound select
+  * fanfare FanfareItem
+way 1, from answer 1
+  Man> Your loss! They're the talk of Johto, you know.
+  ? One Rage Candy Bar for $300? = No, thanks
 === mahogany_gym_leader_room.Pryce
 from Pryce at 7,4 of Mahogany_Gym_3
 way 0
@@ -21869,6 +22022,10 @@ way -
   + FLAG_HIDE_OLIVINE_RIVAL
   = VAR_UNK_4078 0 -> 1
   + seen olivine.The red-haired boy at Olivine's Gym
+=== olivine_cafe.MeetJasmine
+from Jasmine at 9,5 of Olivine_Cafe
+way -
+  Jasmine> Oh... hello. I eat here on Fridays. The sailors' portions are very big...
 === olivine_gym.Gentleman
 from Gentleman at 3,23 of Olivine_Gym
 way -
@@ -21908,6 +22065,14 @@ way 0
 way 1, from answer 1
   * battle johto_leader_jasmine_jasmine Lost
   * scene over, unseen
+=== olivine_lighthouse_2f.Huey
+from Huey at 15,13 of OlivineLighthouse_2F
+way 0
+  Sailor Huey> Sailor Huey: Ahoy! A battle on the stairs keeps a sailor's legs strong!
+  * battle johto_sailor_huey Won
+  + beaten johto_sailor_huey
+way 1, from answer 1
+  * battle johto_sailor_huey Lost
 === olivine_lighthouse_light_room.Amphy
 from Amphy at 8,8 of OlivineLighthouse_LightRoom
 way -
@@ -26252,6 +26417,10 @@ way -
 from the trigger at 14,8 of Route22_LeagueReceptionGate
 way -
   Guard> Sorry, this door to Route 22 is closed. Kanto is open only to trainers who have stood before the League's Champion.
+=== route_22_pokemon_league_reception_gate.MeetJanine
+from Janine at 17,10 of Route22_LeagueReceptionGate
+way -
+  Janine> Tuesdays I come to watch the Trainers on their way to the League. A ninja studies every opponent.
 === route_22_pokemon_league_reception_gate.MtSilverCheck
 from the trigger at 8,8 of Route22_LeagueReceptionGate
 way -
@@ -26571,6 +26740,14 @@ way 0
 way 1, from answer 1
   Fishing Guru> Oh. Well, the fish will still be here if you change your mind.
   ? Would you like a rod of your own? = No
+=== route_34.Ian
+from Ian at 376,418 of Johto
+way 0
+  Youngster Ian> Youngster Ian: My Pokémon dig and scratch. Yours had better watch out!
+  * battle johto_youngster_ian Won
+  + beaten johto_youngster_ian
+way 1, from answer 1
+  * battle johto_youngster_ian Lost
 === route_35_national_park_pokeathalon_gatehouse.Officer
 from Officer at 21,4 of Route35_NationalParkGate
 way -
@@ -26689,6 +26866,48 @@ from Grunt at 3,8 of Route43_Gate
 from Grunt at 7,8 of Route43_Gate
 way -
   Grunt> You've paid. Now beat it before we change our minds about the price.
+=== route_44.Vance
+from Vance at 629,173 of Johto
+way 0
+  Bird Keeper Vance> Bird Keeper Vance: My birds watch the road to the Ice Path. Nobody gets by without a battle!
+  * battle johto_bird_keeper_gs_vance Won
+  + beaten johto_bird_keeper_gs_vance
+way 1, from answer 1
+  * battle johto_bird_keeper_gs_vance Lost
+=== route_45.Kenji
+from Kenji at 662,278 of Johto
+way 0
+  Black Belt Kenji> Black Belt Kenji: I train on this slope from dawn to dusk. Hyah!
+  * battle johto_black_belt_kenji Won
+  + beaten johto_black_belt_kenji
+way 1, from answer 1
+  * battle johto_black_belt_kenji Lost
+=== route_45.Parry
+from Parry at 647,243 of Johto
+way 0
+  Hiker Parry> Hiker Parry: Ironwyrm and I are as solid as the mountain!
+  * battle johto_hiker_parry Won
+  + beaten johto_hiker_parry
+way 1, from answer 1
+  * battle johto_hiker_parry Lost
+=== route_46.Erin
+from Erin at 615,348 of Johto
+way 0
+  Picnicker Erin> Picnicker Erin: My Rapidash can gallop up any hill. Race you!
+  * battle johto_picnicker_erin Won
+  + beaten johto_picnicker_erin
+way 1, from answer 1
+  * battle johto_picnicker_erin Lost
+=== route_47.Chuck
+from Chuck at 80,371 of Johto
+way -
+  Chuck> HWAAAH! Oh, it's you! This waterfall's spray is perfect for training. A visitor from far away told me about it.
+  Chuck> He's up there on the rocks, roaring louder than the falls! Go and say hello.
+=== route_47.CrasherWake
+from Crasher Wake at 99,390 of Johto
+way -
+  Crasher Wake> Hah! Crasher Wake, Gym Leader of Pastoria City in faraway Sinnoh! I heard Johto's waterfalls were the toughest around.
+  Crasher Wake> Chuck and I have been taking turns under the falls. My Pokémon have never been so fired up! Wahahah!
 === route_47.Hiker
 from Hiker at 86,390 of Johto
 way -
@@ -27392,6 +27611,150 @@ way -
   Mr. Psychic> TM29 is Psychic. It strikes with the mind, and it may lower the foe's Special Defense.
   * fanfare FanfareTM
   + FLAG_GOT_TM29_FROM_MR_PSYCHIC
+=== saffron_fighting_dojo.Blaine
+from Blaine at 12,10 of Saffron_FightingDojo
+way 0
+  Blaine> My fire's burning hot again! Let's have a battle to remember!
+  Blaine> Hah! Burned out again! I'll quiz you next time instead!
+  * battle johto_leader_blaine_blaine_2 Won
+  + beaten johto_leader_blaine_blaine_2
+way 1, from answer 1
+  * battle johto_leader_blaine_blaine_2 Lost
+=== saffron_fighting_dojo.Blue
+from Blue at 12,4 of Saffron_FightingDojo
+way 0
+  Blue> So you came. Don't think I've been sitting around. Let's go!
+  Blue> Tch. You're good. ...Don't let it go to your head.
+  * battle johto_leader_blue_blue_2 Won
+  + beaten johto_leader_blue_blue_2
+way 1, from answer 1
+  * battle johto_leader_blue_blue_2 Lost
+=== saffron_fighting_dojo.Brock
+from Brock at 9,8 of Saffron_FightingDojo
+way 0
+  Brock> My rock Pokémon are harder than ever. Let's go!
+  Brock> Rock-solid, and still not enough. You're something else.
+  * battle johto_leader_brock_brock_2 Won
+  + beaten johto_leader_brock_brock_2
+way 1, from answer 1
+  * battle johto_leader_brock_brock_2 Lost
+=== saffron_fighting_dojo.Bugsy
+from Bugsy at 4,9 of Saffron_FightingDojo
+way 0
+  Bugsy> I've learned so much more about bug Pokémon since we last met. Time to put it to the test!
+  Bugsy> Fascinating... I'll write this one up in my notes.
+  * battle johto_leader_bugsy_bugsy_2 Won
+  + beaten johto_leader_bugsy_bugsy_2
+way 1, from answer 1
+  * battle johto_leader_bugsy_bugsy_2 Lost
+=== saffron_fighting_dojo.Chuck
+from Chuck at 6,8 of Saffron_FightingDojo
+way 0
+  Chuck> HWAAAH! My fists are itching! Let's settle this!
+  Chuck> Ha! You win again! Back to the waterfall for me!
+  * battle johto_leader_chuck_chuck_2 Won
+  + beaten johto_leader_chuck_chuck_2
+way 1, from answer 1
+  * battle johto_leader_chuck_chuck_2 Lost
+=== saffron_fighting_dojo.Clair
+from Clair at 5,11 of Saffron_FightingDojo
+way 0
+  Clair> I've been waiting for this. My dragons won't lose a second time!
+  Clair> ...I lost again. Don't you dare think this is over.
+  * battle johto_leader_clair_clair_2 Won
+  + beaten johto_leader_clair_clair_2
+way 1, from answer 1
+  * battle johto_leader_clair_clair_2 Lost
+=== saffron_fighting_dojo.Erika
+from Erika at 11,9 of Saffron_FightingDojo
+way 0
+  Erika> The flowers have bloomed again, and so has my resolve. Shall we?
+  Erika> Oh my... You are as wonderful as ever.
+  * battle johto_leader_erika_erika_2 Won
+  + beaten johto_leader_erika_erika_2
+way 1, from answer 1
+  * battle johto_leader_erika_erika_2 Lost
+=== saffron_fighting_dojo.Falkner
+from Falkner at 2,12 of Saffron_FightingDojo
+way 0
+  Falkner> My birds have trained in every wind. Let's see if they can catch you now!
+  Falkner> Grounded again... but my birds will soar higher next time.
+  * battle johto_leader_falkner_falkner_2 Won
+  + beaten johto_leader_falkner_falkner_2
+way 1, from answer 1
+  * battle johto_leader_falkner_falkner_2 Lost
+=== saffron_fighting_dojo.Janine
+from Janine at 11,6 of Saffron_FightingDojo
+way 0
+  Janine> A ninja never lets her guard down. Prepare yourself!
+  Janine> My training is not yet complete... Well fought.
+  * battle johto_leader_janine_janine_2 Won
+  + beaten johto_leader_janine_janine_2
+way 1, from answer 1
+  * battle johto_leader_janine_janine_2 Lost
+=== saffron_fighting_dojo.Jasmine
+from Jasmine at 2,8 of Saffron_FightingDojo
+way 0
+  Jasmine> My steel Pokémon have grown even harder... Please, let us battle.
+  Jasmine> You're... still so strong. Thank you for the battle.
+  * battle johto_leader_jasmine_jasmine_2 Won
+  + beaten johto_leader_jasmine_jasmine_2
+way 1, from answer 1
+  * battle johto_leader_jasmine_jasmine_2 Lost
+=== saffron_fighting_dojo.LtSurge
+from Lt. Surge at 10,11 of Saffron_FightingDojo
+way 0
+  Lt. Surge> Hey, kid! Ready for a real shock? Let's go!
+  Lt. Surge> Whoa! You're still the real deal. Ha!
+  * battle johto_leader_lt_surge_lt__surge_2 Won
+  + beaten johto_leader_lt_surge_lt__surge_2
+way 1, from answer 1
+  * battle johto_leader_lt_surge_lt__surge_2 Lost
+=== saffron_fighting_dojo.Misty
+from Misty at 8,8 of Saffron_FightingDojo
+way 0
+  Misty> I've been looking forward to this! My water Pokémon won't hold back!
+  Misty> Ugh, you got me again! Next time I'm winning!
+  * battle johto_leader_misty_misty_2 Won
+  + beaten johto_leader_misty_misty_2
+way 1, from answer 1
+  * battle johto_leader_misty_misty_2 Lost
+=== saffron_fighting_dojo.Morty
+from Morty at 5,5 of Saffron_FightingDojo
+way 0
+  Morty> I have seen this battle many times in my mind. Now let us see the true one.
+  Morty> So that is how it ends. My vision was clouded.
+  * battle johto_leader_morty_morty_2 Won
+  + beaten johto_leader_morty_morty_2
+way 1, from answer 1
+  * battle johto_leader_morty_morty_2 Lost
+=== saffron_fighting_dojo.Pryce
+from Pryce at 3,4 of Saffron_FightingDojo
+way 0
+  Pryce> Winter teaches patience. Let us see whether you have learned it too.
+  Pryce> The ice melts, as it must. Well fought.
+  * battle johto_leader_pryce_pryce_2 Won
+  + beaten johto_leader_pryce_pryce_2
+way 1, from answer 1
+  * battle johto_leader_pryce_pryce_2 Lost
+=== saffron_fighting_dojo.Sabrina
+from Sabrina at 10,5 of Saffron_FightingDojo
+way 0
+  Sabrina> I foresaw this battle. I did not foresee how it ends. Let us find out.
+  Sabrina> So the future can still surprise me.
+  * battle johto_leader_sabrina_sabrina_2 Won
+  + beaten johto_leader_sabrina_sabrina_2
+way 1, from answer 1
+  * battle johto_leader_sabrina_sabrina_2 Lost
+=== saffron_fighting_dojo.Whitney
+from Whitney at 3,7 of Saffron_FightingDojo
+way 0
+  Whitney> No crying this time, I promise! My Pokémon and I have been practising!
+  Whitney> Waaah! ...No, I'm fine. I'm not crying. Really!
+  * battle johto_leader_whitney_2 Won
+  + beaten johto_leader_whitney_2
+way 1, from answer 1
+  * battle johto_leader_whitney_2 Lost
 === saffron_gym.GymGuy
 from Gym Guide at 16,23 of Saffron_Gym
 way -
@@ -29232,6 +29595,28 @@ way 0
 way 1, from answer 1
   Sailor> No rush. The gangway's behind you, if you'd rather stay ashore a while longer.
   ? Welcome aboard the S.S. Aqua! We're bound for Vermilion City in Kanto. Shall we cast off? = No
+=== ss_aqua_1f_northwest_rooms.Girl
+from Little girl at 8,8 of SSAqua_1F_NorthwestRooms
+way -
+  Little girl> Eek! You found me! But I'm not going back to Grandpa yet. Catch me if you can!
+  > She ran off towards the stairs down to the hold!
+  + FLAG_UNK_218
+  = VAR_JOHTO_SS_AQUA_GIRL 0 -> 1
+=== ss_aqua_b1f.Girl
+from Little girl at 1,13 of SSAqua_B1F
+way -
+  Little girl> Aww, you found me again! You're good at this. All right, I'll go back to Grandpa now.
+  + FLAG_UNK_219
+  = VAR_JOHTO_SS_AQUA_GIRL 0 -> 2
+=== ss_aqua_captain_room.Captain
+from Captain at 9,4 of SSAqua_CaptainRoom
+way -
+  Captain> Welcome aboard the S.S. Aqua. ...Forgive me, I'm distracted. My granddaughter has slipped away somewhere on the ship again.
+  Captain> She loves to hide. Would you look for her? Try the cabins first.
+=== ss_aqua_olivine_port_exterior.MeetSabrina
+from Sabrina at 18,22 of SSAqua_OlivinePort
+way -
+  Sabrina> I foresaw that we would meet here. I come to watch the ships on Thursdays.
 === ss_aqua_olivine_port_interior.Sailor
 from Sailor at 7,9 of Olivine_PortHall
 way -
@@ -31345,6 +31730,14 @@ way -
   * music common/rival
   * warp LakeVerity 46 53
   = VAR_VERITY_LAKEFRONT_STATE 0 -> 1
+=== vermilion.EusineByTheHarbour
+from Eusine at 1325,321 of Johto
+way -
+  Eusine> Lucas! Suicune came all the way to Kanto. Look, there by the harbour! I mustn't startle it...
+=== vermilion.EusineOnTheTrail
+from Eusine at 1318,332 of Johto
+way -
+  Eusine> It bounded south, over the water and on towards Route 14. I'll follow it to the ends of Kanto if I must!
 === vermilion.SuicuneByTheHarbour
 from Suicune at 1330,328 of Johto
 from the trigger at 1323,331 of Johto

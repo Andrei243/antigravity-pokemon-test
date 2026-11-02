@@ -78,10 +78,19 @@ label Waiting
   end
 
 
+# Joey, like the six callers after him with a gift in the phone book (Data/world/johto/phone.json's "gift"), now and
+# then rings to say he has something for the player (one call in three that he makes to talk), and hands it over on
+# his route once spoken to (route_30.txt): HeartGold's phone gifts, our words. FLAG_JOHTO_PHONE_GIFT_<ID> (ours)
+# keeps a gift waiting; it comes again after it is collected.
 script Joey
   speaker "Joey"
   if var VAR_PHONE_CALL == 2 goto Rematch
   if var VAR_PHONE_CALL == 3 goto Waiting
+  if flag FLAG_JOHTO_PHONE_GIFT_JOEY goto GiftWaiting
+  if var VAR_PHONE_CALL != 1 goto Chat
+  random 3
+  if result == 0 goto Gift
+label Chat
   random 2
   if result == 1 goto Two
   say "Hey, it's Joey! My Ratchisel ate a whole berry by itself today. It's growing up so fast!"
@@ -89,11 +98,180 @@ script Joey
 label Two
   say "Joey here! I was just thinking about our battle. My Ratchisel's been training non-stop since then."
   end
+label Gift
+  setflag FLAG_JOHTO_PHONE_GIFT_JOEY
+  say "Joey here! I found something great, but my Ratchisel can't use it. Come and get it from me on Route 30!"
+  end
+label GiftWaiting
+  say "It's Joey! Did you forget? I've still got that present for you. I'm on Route 30!"
+  end
 label Rematch
   say "It's Joey! My Ratchisel's in even better shape now. Come and battle me again on Route 30!"
   end
 label Waiting
   say "Joey here. I'm still waiting for you on Route 30! My Ratchisel is getting restless."
+  end
+
+
+# Black Belt Kenji of Route 45 (route_45.txt): a PP Up
+script Kenji
+  speaker "Kenji"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
+  if flag FLAG_JOHTO_PHONE_GIFT_KENJI goto GiftWaiting
+  if var VAR_PHONE_CALL != 1 goto Chat
+  random 3
+  if result == 0 goto Gift
+label Chat
+  say "Kenji here. I've been training on the slope since sunrise. Hyah! My legs are like iron now."
+  end
+label Gift
+  setflag FLAG_JOHTO_PHONE_GIFT_KENJI
+  say "Kenji here. A fellow climber left me something I've no use for. Come up Route 45 and it's yours."
+  end
+label GiftWaiting
+  say "It's Kenji. Your present is still waiting for you on Route 45. Don't keep it waiting too long!"
+  end
+label Rematch
+  say "Kenji here! My training is finished for today. Come to Route 45 and let us test each other again!"
+  end
+label Waiting
+  say "Kenji again. I'm on Route 45, stretching. Come whenever you're ready to battle."
+  end
+
+
+# Hiker Parry of Route 45 (route_45.txt): an Iron
+script Parry
+  speaker "Parry"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
+  if flag FLAG_JOHTO_PHONE_GIFT_PARRY goto GiftWaiting
+  if var VAR_PHONE_CALL != 1 goto Chat
+  random 3
+  if result == 0 goto Gift
+label Chat
+  say "Parry here! Climbed every inch of Route 45 again today. Nothing like mountain air, eh?"
+  end
+label Gift
+  setflag FLAG_JOHTO_PHONE_GIFT_PARRY
+  say "Parry here! I dug up something good on the mountain. Meet me on Route 45 and I'll hand it over!"
+  end
+label GiftWaiting
+  say "It's Parry! That present's still in my pack. I'm on Route 45, so come and get it!"
+  end
+label Rematch
+  say "Parry here! My Pokémon are rock-solid today. Come to Route 45 for a rematch!"
+  end
+label Waiting
+  say "It's Parry. Still up on Route 45, waiting for our battle. The mountain isn't going anywhere!"
+  end
+
+
+# Sailor Huey of Olivine's lighthouse (olivine_lighthouse_2f.txt): a Protein
+script Huey
+  speaker "Huey"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
+  if flag FLAG_JOHTO_PHONE_GIFT_HUEY goto GiftWaiting
+  if var VAR_PHONE_CALL != 1 goto Chat
+  random 3
+  if result == 0 goto Gift
+label Chat
+  say "Ahoy, it's Huey! The sea was rough today, but the lighthouse kept us all on course."
+  end
+label Gift
+  setflag FLAG_JOHTO_PHONE_GIFT_HUEY
+  say "Huey here! A ship brought in something fine for you. I'm at the lighthouse in Olivine, matey!"
+  end
+label GiftWaiting
+  say "It's Huey! Your present's waiting at the lighthouse. Don't leave it to the gulls!"
+  end
+label Rematch
+  say "Ahoy! Huey here. My sea legs are steady again. Come to the lighthouse for a rematch!"
+  end
+label Waiting
+  say "Huey again! Still at the lighthouse, ready for battle whenever you come aboard."
+  end
+
+
+# Bird Keeper Vance of Route 44 (route_44.txt): a Carbos
+script Vance
+  speaker "Vance"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
+  if flag FLAG_JOHTO_PHONE_GIFT_VANCE goto GiftWaiting
+  if var VAR_PHONE_CALL != 1 goto Chat
+  random 3
+  if result == 0 goto Gift
+label Chat
+  say "Vance here. My birds flew circles over the Ice Path this morning. What a sight it was!"
+  end
+label Gift
+  setflag FLAG_JOHTO_PHONE_GIFT_VANCE
+  say "Vance here. I've got something that makes Pokémon faster. My birds are fast enough, so it's yours! Route 44."
+  end
+label GiftWaiting
+  say "It's Vance. Your present's still here on Route 44. My birds are guarding it for you."
+  end
+label Rematch
+  say "Vance here! My birds are ready to fly. Come to Route 44 for a rematch!"
+  end
+label Waiting
+  say "Vance again. I'm on Route 44, and my birds are getting impatient!"
+  end
+
+
+# Picnicker Erin of Route 46 (route_46.txt): a Calcium
+script Erin
+  speaker "Erin"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
+  if flag FLAG_JOHTO_PHONE_GIFT_ERIN goto GiftWaiting
+  if var VAR_PHONE_CALL != 1 goto Chat
+  random 3
+  if result == 0 goto Gift
+label Chat
+  say "Hi, it's Erin! My partner and I raced all the way down Route 46 today. We won, of course!"
+  end
+label Gift
+  setflag FLAG_JOHTO_PHONE_GIFT_ERIN
+  say "It's Erin! I've got a present for you. Come and find me on Route 46, all right?"
+  end
+label GiftWaiting
+  say "Erin here! Hey, you still haven't picked up your present. I'm on Route 46!"
+  end
+label Rematch
+  say "Erin here! Let's have a rematch! I'll be waiting on Route 46."
+  end
+label Waiting
+  say "It's Erin! I'm still on Route 46. Hurry up, or I'll race you there!"
+  end
+
+
+# Youngster Ian of Route 34 (route_34.txt): a Cheri Berry
+script Ian
+  speaker "Ian"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
+  if flag FLAG_JOHTO_PHONE_GIFT_IAN goto GiftWaiting
+  if var VAR_PHONE_CALL != 1 goto Chat
+  random 3
+  if result == 0 goto Gift
+label Chat
+  say "Ian here! My Pokémon dug a hole so deep today, I could hardly see the bottom!"
+  end
+label Gift
+  setflag FLAG_JOHTO_PHONE_GIFT_IAN
+  say "It's Ian! My Pokémon dug up a berry. You can have it! I'm on Route 34."
+  end
+label GiftWaiting
+  say "Ian here! That berry's still waiting for you on Route 34. Come and get it before I eat it!"
+  end
+label Rematch
+  say "It's Ian! We've been digging and training. Come to Route 34 for a rematch!"
+  end
+label Waiting
+  say "Ian again! Still on Route 34, waiting to battle!"
   end
 
 script Wade
@@ -167,6 +345,192 @@ label Sandshrew
   end
 label Owner
   say "How's my Safari Zone's owner doing? I'm dreaming up new ways to play. I'll ring you the moment I have one!"
+  end
+
+
+# The Gym Leaders' numbers (Johto's leftovers): each gives it in their Gym once the player is Johto's Champion (or, in
+# Kanto, once beaten), and asks for a rematch at the Fighting Dojo in Saffron City on their day (phone.json), where
+# they then stand until fought (saffron_fighting_dojo.json)
+script Falkner
+  speaker "Falkner"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
+  say "Falkner here. My Pidgeot flew all the way to the sea and back this morning. Isn't that something?"
+  end
+label Rematch
+  say "Falkner here. It's Saturday morning, and I'm at the Fighting Dojo in Saffron City. Come and battle me!"
+  end
+label Waiting
+  say "Falkner again. I'm still waiting for you at the Fighting Dojo in Saffron City!"
+  end
+
+script Bugsy
+  speaker "Bugsy"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
+  say "Bugsy here! I found a Pokémon in Ilex Forest I'd only ever read about. Research is the best!"
+  end
+label Rematch
+  say "Bugsy here. It's Thursday afternoon, and I'm at the Fighting Dojo in Saffron City. Come and battle me!"
+  end
+label Waiting
+  say "Bugsy again. I'm still waiting for you at the Fighting Dojo in Saffron City!"
+  end
+
+script Whitney
+  speaker "Whitney"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
+  say "It's Whitney! I just bought the cutest thing at the Department Store. You have to see it!"
+  end
+label Rematch
+  say "Whitney here. It's Saturday afternoon, and I'm at the Fighting Dojo in Saffron City. Come and battle me!"
+  end
+label Waiting
+  say "Whitney again. I'm still waiting for you at the Fighting Dojo in Saffron City!"
+  end
+
+script Morty
+  speaker "Morty"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
+  say "Morty here. The Bell Tower's bells rang by themselves last night. I wonder what they foretell..."
+  end
+label Rematch
+  say "Morty here. It's Tuesday night, and I'm at the Fighting Dojo in Saffron City. Come and battle me!"
+  end
+label Waiting
+  say "Morty again. I'm still waiting for you at the Fighting Dojo in Saffron City!"
+  end
+
+script Pryce
+  speaker "Pryce"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
+  say "Pryce here. The snow on Mahogany's roofs reminds me of my youth. An old man's thoughts, nothing more."
+  end
+label Rematch
+  say "Pryce here. It's Monday morning, and I'm at the Fighting Dojo in Saffron City. Come and battle me!"
+  end
+label Waiting
+  say "Pryce again. I'm still waiting for you at the Fighting Dojo in Saffron City!"
+  end
+
+script Clair
+  speaker "Clair"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
+  say "It's Clair. I trained in the Dragon's Den all day. ...Don't get the idea I called to chat."
+  end
+label Rematch
+  say "Clair here. It's Friday night, and I'm at the Fighting Dojo in Saffron City. Come and battle me!"
+  end
+label Waiting
+  say "Clair again. I'm still waiting for you at the Fighting Dojo in Saffron City!"
+  end
+
+script Brock
+  speaker "Brock"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
+  say "Brock here! I've been breeding my Pokémon again. Patience pays off, you know."
+  end
+label Rematch
+  say "Brock here. It's Saturday night, and I'm at the Fighting Dojo in Saffron City. Come and battle me!"
+  end
+label Waiting
+  say "Brock again. I'm still waiting for you at the Fighting Dojo in Saffron City!"
+  end
+
+script Misty
+  speaker "Misty"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
+  say "It's Misty! I spent the whole day at Cerulean Cape. The water was perfect!"
+  end
+label Rematch
+  say "Misty here. It's Wednesday morning, and I'm at the Fighting Dojo in Saffron City. Come and battle me!"
+  end
+label Waiting
+  say "Misty again. I'm still waiting for you at the Fighting Dojo in Saffron City!"
+  end
+
+script LtSurge
+  speaker "Lt. Surge"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
+  say "Lt. Surge here! My Raichu shorted out the whole Gym again. Ha! Good times!"
+  end
+label Rematch
+  say "Lt. Surge here. It's Friday morning, and I'm at the Fighting Dojo in Saffron City. Come and battle me!"
+  end
+label Waiting
+  say "Lt. Surge again. I'm still waiting for you at the Fighting Dojo in Saffron City!"
+  end
+
+script Erika
+  speaker "Erika"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
+  say "Erika speaking. I dozed off in the garden again. The flowers smelled so lovely today..."
+  end
+label Rematch
+  say "Erika here. It's Sunday morning, and I'm at the Fighting Dojo in Saffron City. Come and battle me!"
+  end
+label Waiting
+  say "Erika again. I'm still waiting for you at the Fighting Dojo in Saffron City!"
+  end
+
+script Janine
+  speaker "Janine"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
+  say "Janine here. I practised my ninja arts all day. Father would be proud... I hope."
+  end
+label Rematch
+  say "Janine here. It's Monday afternoon, and I'm at the Fighting Dojo in Saffron City. Come and battle me!"
+  end
+label Waiting
+  say "Janine again. I'm still waiting for you at the Fighting Dojo in Saffron City!"
+  end
+
+script Sabrina
+  speaker "Sabrina"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
+  say "Sabrina. I sensed you were about to call... no, wait. I called you. How strange."
+  end
+label Rematch
+  say "Sabrina here. It's Sunday afternoon, and I'm at the Fighting Dojo in Saffron City. Come and battle me!"
+  end
+label Waiting
+  say "Sabrina again. I'm still waiting for you at the Fighting Dojo in Saffron City!"
+  end
+
+script Blaine
+  speaker "Blaine"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
+  say "Blaine here! I've thought up a new quiz for my Gym, once I have a Gym again. Hah!"
+  end
+label Rematch
+  say "Blaine here. It's Tuesday afternoon, and I'm at the Fighting Dojo in Saffron City. Come and battle me!"
+  end
+label Waiting
+  say "Blaine again. I'm still waiting for you at the Fighting Dojo in Saffron City!"
+  end
+
+script Blue
+  speaker "Blue"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
+  say "It's Blue. ...What? I just called to see if you're still winning. Don't make it weird."
+  end
+label Rematch
+  say "Blue here. It's Sunday night, and I'm at the Fighting Dojo in Saffron City. Come and battle me!"
+  end
+label Waiting
+  say "Blue again. I'm still waiting for you at the Fighting Dojo in Saffron City!"
   end
 
 

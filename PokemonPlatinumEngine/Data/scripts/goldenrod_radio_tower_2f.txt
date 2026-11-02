@@ -46,3 +46,94 @@ script Policeman
 label Over
   say "Go wherever you like. The Director's his old cheerful self again, so everything's back to normal."
   end
+
+
+# D23R0102_010: Buena, who hosts Buena's Password in the evening (plan 20, Johto's leftovers; Models/BuenasPassword.cs).
+# She hands a Blue Card to whoever has none; on the air (twilight and night) she offers tonight's three words, once a
+# night (FLAG_DAILY_JOHTO_BUENAS_PASSWORD, ours), and a right one is a point on the card (VAR_JOHTO_BLUE_CARD_POINTS,
+# ours, at most 30). PASSWORD is where the right word stands among her three.
+script Buena
+  face d23r0102_gswoman2_2 player
+  speaker "Buena"
+  if var VAR_SCENE_ROCKET_TAKEOVER == 4 goto Takeover
+  if item "Blue Card" goto Card
+  say "Hi there! I'm Buena. Every evening I host Buena's Password on the radio. Never played? Then this is for you!"
+  give "Blue Card"
+  say "Tune in to my show in the evening. Hear tonight's password, then come and tell me. A right answer is a point!"
+  end
+label Card
+  if time twilight goto OnAir
+  if time night goto OnAir
+  say "My show goes on the air in the evening. Listen in, then come and see me with the password!"
+  end
+label OnAir
+  if flag FLAG_DAILY_JOHTO_BUENAS_PASSWORD goto Done
+  if var VAR_JOHTO_BLUE_CARD_POINTS >= 30 goto Full
+  choose "Hi! Do you know tonight's password?" "{password:1}" "{password:2}" "{password:3}" "I don't know it"
+  if result == 3 goto DontKnow
+  setflag FLAG_DAILY_JOHTO_BUENAS_PASSWORD
+  if var RESULT != PASSWORD goto Wrong
+  addvar VAR_JOHTO_BLUE_CARD_POINTS 1
+  say "That's right! That's one point on your Blue Card, which makes {bluecard}. Come back tomorrow night!"
+  end
+label Wrong
+  say "Oh, so close! That isn't tonight's word. Listen to my show tomorrow and try again!"
+  end
+label DontKnow
+  say "Then tune in to Buena's Password! I say the word on the air every evening."
+  end
+label Done
+  say "You've played tonight already! Come back tomorrow night with a new password."
+  end
+label Full
+  say "Wow, your Blue Card is full! Go and trade some points for a prize, then come and play again."
+  end
+label Takeover
+  say "Team Rocket took over the studio! They won't even let me read my password on the air..."
+  end
+
+
+# D23R0102_009: the woman who trades the Blue Card's points for prizes (our own list: HeartGold's couldn't be read)
+script BlueCardPrizes
+  face d23r0102_gswoman1 player
+  speaker "Woman"
+  if item "Blue Card" goto Card
+  say "These prizes are for players of Buena's Password. Ask Buena for a Blue Card first!"
+  end
+label Card
+  choose "Your Blue Card holds {bluecard} points. Which prize would you like?" "Ultra Ball (2)" "Full Heal (2)" "Rare Candy (3)" "Protein (5)" "Nugget (10)" "Nothing"
+  if result == 0 goto UltraBall
+  if result == 1 goto FullHeal
+  if result == 2 goto RareCandy
+  if result == 3 goto Protein
+  if result == 4 goto Nugget
+  say "Come again whenever you've saved some points!"
+  end
+label UltraBall
+  if var VAR_JOHTO_BLUE_CARD_POINTS < 2 goto Short
+  addvar VAR_JOHTO_BLUE_CARD_POINTS -2
+  give "Ultra Ball"
+  end
+label FullHeal
+  if var VAR_JOHTO_BLUE_CARD_POINTS < 2 goto Short
+  addvar VAR_JOHTO_BLUE_CARD_POINTS -2
+  give "Full Heal"
+  end
+label RareCandy
+  if var VAR_JOHTO_BLUE_CARD_POINTS < 3 goto Short
+  addvar VAR_JOHTO_BLUE_CARD_POINTS -3
+  give "Rare Candy"
+  end
+label Protein
+  if var VAR_JOHTO_BLUE_CARD_POINTS < 5 goto Short
+  addvar VAR_JOHTO_BLUE_CARD_POINTS -5
+  give "Protein"
+  end
+label Nugget
+  if var VAR_JOHTO_BLUE_CARD_POINTS < 10 goto Short
+  addvar VAR_JOHTO_BLUE_CARD_POINTS -10
+  give "Nugget"
+  end
+label Short
+  say "Sorry, your card doesn't have enough points for that one yet."
+  end

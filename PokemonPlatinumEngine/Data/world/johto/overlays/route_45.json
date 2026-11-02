@@ -22,6 +22,7 @@
     },
     "r45_mount_2_2": {
       "name": "Parry",
+      "script": "Parry",
       "trainer": {
         "dialogueBefore": "Hiker Parry: Ironwyrm and I are as solid as the mountain!",
         "dialogueAfter": "Hiker Parry: The mountain cracked."
@@ -36,6 +37,7 @@
     },
     "r45_gsfighter": {
       "name": "Kenji",
+      "script": "Kenji",
       "trainer": {
         "dialogueBefore": "Black Belt Kenji: I train on this slope from dawn to dusk. Hyah!",
         "dialogueAfter": "Black Belt Kenji: Back to training until dusk..."

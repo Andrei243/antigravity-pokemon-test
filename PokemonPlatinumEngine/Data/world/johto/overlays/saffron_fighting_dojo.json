@@ -1,6 +1,7 @@
 {
   // Saffron City's Fighting Dojo (plan 20 · J15, part c). The Gym Leaders HeartGold gathers here for their rematches
-  // (each behind a flag of its own) wait for the session that writes them
+  // (Johto's leftovers): each stands here only while their rematch, asked for over the Pokégear's phone on their day,
+  // waits (Models.PhoneRematch's FLAG_PHONE_REMATCH_<ID>), and battles with their second team (scripts/saffron_fighting_dojo.txt)
   "area": "saffron_fighting_dojo",
   "bgmTrack": "kanto/viridian",
   "people": {
@@ -11,7 +12,23 @@
         "This was Saffron's Gym once, until Sabrina won the right to the title. Now it's a dojo, and we train harder than ever!",
         "The masters of Kanto and Johto come here to battle one another. You might meet one if you're lucky."
       ]
-    }
+    },
+    "t11r0101_gsleader1": { "name": "Falkner", "script": "Falkner", "still": true, "hiddenBy": "", "shownBy": "FLAG_PHONE_REMATCH_FALKNER" },
+    "t11r0101_gsleader2": { "name": "Bugsy", "script": "Bugsy", "still": true, "hiddenBy": "", "shownBy": "FLAG_PHONE_REMATCH_BUGSY" },
+    "t11r0101_gsleader3": { "name": "Whitney", "script": "Whitney", "still": true, "hiddenBy": "", "shownBy": "FLAG_PHONE_REMATCH_WHITNEY" },
+    "t11r0101_gsleader4": { "name": "Morty", "script": "Morty", "still": true, "hiddenBy": "", "shownBy": "FLAG_PHONE_REMATCH_MORTY" },
+    "t11r0101_gsleader6": { "name": "Jasmine", "script": "Jasmine", "still": true, "hiddenBy": "", "shownBy": "FLAG_PHONE_REMATCH_JASMINE" },
+    "t11r0101_gsleader7": { "name": "Pryce", "script": "Pryce", "still": true, "hiddenBy": "", "shownBy": "FLAG_PHONE_REMATCH_PRYCE" },
+    "t11r0101_gsleader8": { "name": "Clair", "script": "Clair", "still": true, "hiddenBy": "", "shownBy": "FLAG_PHONE_REMATCH_CLAIR" },
+    "t11r0101_gsleader14": { "name": "Brock", "script": "Brock", "still": true, "hiddenBy": "", "shownBy": "FLAG_PHONE_REMATCH_BROCK" },
+    "t11r0101_gsleader11": { "name": "Misty", "script": "Misty", "still": true, "hiddenBy": "", "shownBy": "FLAG_PHONE_REMATCH_MISTY" },
+    "t11r0101_gsleader9": { "name": "Lt. Surge", "script": "LtSurge", "still": true, "hiddenBy": "", "shownBy": "FLAG_PHONE_REMATCH_LT_SURGE" },
+    "t11r0101_gsleader12": { "name": "Erika", "script": "Erika", "still": true, "hiddenBy": "", "shownBy": "FLAG_PHONE_REMATCH_ERIKA" },
+    "t11r0101_gsleader13": { "name": "Janine", "script": "Janine", "still": true, "hiddenBy": "", "shownBy": "FLAG_PHONE_REMATCH_JANINE" },
+    "t11r0101_gsleader10": { "name": "Sabrina", "script": "Sabrina", "still": true, "hiddenBy": "", "shownBy": "FLAG_PHONE_REMATCH_SABRINA" },
+    "t11r0101_gsleader15": { "name": "Blaine", "script": "Blaine", "still": true, "hiddenBy": "", "shownBy": "FLAG_PHONE_REMATCH_BLAINE" },
+    "t11r0101_gsleader16": { "name": "Blue", "script": "Blue", "still": true, "hiddenBy": "", "shownBy": "FLAG_PHONE_REMATCH_BLUE" },
+    "t11r0101_gsleader5": { "name": "Chuck", "script": "Chuck", "still": true, "hiddenBy": "", "shownBy": "FLAG_PHONE_REMATCH_CHUCK" }
   },
   "signs": {
     "T11R0101_001+1": "\"Fighting spirit!\"",

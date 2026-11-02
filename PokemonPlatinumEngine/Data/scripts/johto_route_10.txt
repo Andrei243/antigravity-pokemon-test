@@ -13,6 +13,19 @@
 
 script OnEnter
   if not flag FLAG_JOHTO_FOUGHT_ZAPDOS clearflag FLAG_HIDE_ROUTE_10_ZAPDOS
+  # Lt. Surge's street meeting (Johto's leftovers): Fridays, once his number is in the Pokégear
+  setflag FLAG_HIDE_ROUTE_10_LT_SURGE
+  if not flag FLAG_PHONE_CONTACT_LT_SURGE end
+  if weekday friday clearflag FLAG_HIDE_ROUTE_10_LT_SURGE
+  end
+
+
+# R10_002: Lt. Surge, out to see the Power Plant that keeps his Gym running
+script LtSurge
+  face r10_gsleader9 player
+  speaker "Lt. Surge"
+  say "Hey, kid! I come out here every Friday to check on the Power Plant. No power, no Gym, and no Gym means no fun!"
+  say "Friday mornings I'm at the Fighting Dojo in Saffron, too. If I ring you, you'd better show up!"
   end
 
 # R10_003: Zapdos

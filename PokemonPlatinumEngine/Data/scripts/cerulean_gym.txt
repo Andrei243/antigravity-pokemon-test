@@ -35,6 +35,17 @@ label Tm
   say "TM55 is Brine. It hits twice as hard when the foe is down to half its HP or less."
   end
 label Won
+  # Their number, for Johto's Champion (Johto's leftovers; the rematch is the Fighting Dojo's on their day, phone.json)
+  if not flag JohtoHallOfFame goto NumberDone
+  if flag FLAG_PHONE_CONTACT_MISTY goto NumberDone
+  say "Hey, give me your number. I want a rematch, and I won't lose next time!"
+  ask "Swap numbers with Misty?"
+  if no goto NumberDone
+  addcontact misty
+  text "Registered Misty in the Pokégear."
+  say "On Wednesday mornings I'll be at the Fighting Dojo in Saffron City. Come and battle me there!"
+  end
+label NumberDone
   if not flag FLAG_JOHTO_GOT_TM55_FROM_MISTY goto Tm
   say "Next time, I'll beat you. Then you can owe me an afternoon on the cape!"
   end

@@ -1,0 +1,38 @@
+# Route 46 (Johto's leftovers: the phone's gifts). docs/scripts.md describes the language; the lines are our own, on
+# HeartGold's beats.
+#
+# Picnicker Erin, beaten, gives her number; once she has rung about a present (phone.txt's Erin,
+# FLAG_JOHTO_PHONE_GIFT_ERIN, ours) she hands over a Calcium here.
+
+
+script Erin
+  if not defeated self goto Fight
+  if rematch self goto Rematch
+  speaker "Erin"
+  if flag FLAG_JOHTO_PHONE_GIFT_ERIN goto Gift
+  if flag FLAG_PHONE_CONTACT_ERIN goto Known
+  say "You're fast! Let's swap numbers, so we can race again sometime."
+  ask "Register Erin's number in your Pokégear?"
+  if no goto Refused
+  addcontact erin
+  say "Yay! I'll call you, so pick up!"
+  end
+label Refused
+  say "Aww. Well, I'll be right here if you change your mind."
+  end
+label Known
+  trainerline after
+  end
+label Gift
+  say "You came! Here's the present I told you about. Use it well!"
+  give "Calcium"
+  clearflag FLAG_JOHTO_PHONE_GIFT_ERIN
+  end
+label Fight
+  trainerline before
+  battle self
+  end
+label Rematch
+  trainerline before
+  battle self rematch
+  end

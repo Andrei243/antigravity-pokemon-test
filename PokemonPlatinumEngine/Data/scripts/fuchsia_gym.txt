@@ -39,6 +39,17 @@ label Tm
   say "TM84 is Poison Jab. It stabs the foe with a poisoned spike, and it may poison them too."
   end
 label Won
+  # Their number, for Johto's Champion (Johto's leftovers; the rematch is the Fighting Dojo's on their day, phone.json)
+  if not flag JohtoHallOfFame goto NumberDone
+  if flag FLAG_PHONE_CONTACT_JANINE goto NumberDone
+  say "A true ninja keeps in touch with a worthy rival. Take my number, and expect my call."
+  ask "Swap numbers with Janine?"
+  if no goto NumberDone
+  addcontact janine
+  text "Registered Janine in the Pokégear."
+  say "On Monday afternoons I'll be at the Fighting Dojo in Saffron City. Come and battle me there!"
+  end
+label NumberDone
   if not flag FLAG_JOHTO_GOT_TM84_FROM_JANINE goto Tm
   say "I'll train until no Champion can see through me. Then we'll battle again!"
   end

@@ -10,9 +10,15 @@
     },
     {
       "en": [
-        "Welcome to the Prize Corner! You have {coins} coins. Which prize would you like?"
+        "Welcome to the Prize Corner! You have {coins} coins. What would you like?",
+        "An item",
+        "A Pokémon",
+        "Nothing"
       ],
       "text": [
+        "",
+        "",
+        "",
         ""
       ]
     },
@@ -35,6 +41,46 @@
     {
       "en": [
         "Please come again!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which Pokémon? You have {coins} coins.",
+        "Mr. Mime (3,333)",
+        "Eevee (6,666)",
+        "Porygon (9,999)",
+        "Nothing"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received Mr. Mime!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received Eevee!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received Porygon!"
       ],
       "text": [
         ""

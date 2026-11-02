@@ -1,0 +1,25 @@
+# The S.S. Aqua's hold (Johto's leftovers: the captain's granddaughter). docs/scripts.md describes the language; the
+# lines are our own, on HeartGold's beat of the voyage, played at the quay as the ship is walked through there.
+
+
+script OnEnter
+  # Where the captain's granddaughter is (Johto's leftovers: VAR_JOHTO_SS_AQUA_GIRL, ours; HeartGold's own flags for
+  # her three places): 0 hiding in a cabin, 1 run off below decks, 2 and on back with her grandfather
+  setflag FLAG_UNK_217
+  setflag FLAG_UNK_218
+  setflag FLAG_UNK_219
+  if var VAR_JOHTO_SS_AQUA_GIRL == 0 clearflag FLAG_UNK_218
+  if var VAR_JOHTO_SS_AQUA_GIRL == 1 clearflag FLAG_UNK_219
+  if var VAR_JOHTO_SS_AQUA_GIRL >= 2 clearflag FLAG_UNK_217
+  end
+
+
+# P01R0307_003: the captain's granddaughter, found again in the hold, who goes back to her grandfather
+script Girl
+  face p01r0307_gsbabygirl1 player
+  speaker "Little girl"
+  say "Aww, you found me again! You're good at this. All right, I'll go back to Grandpa now."
+  setvar VAR_JOHTO_SS_AQUA_GIRL 2
+  setflag FLAG_UNK_219
+  hide p01r0307_gsbabygirl1
+  end

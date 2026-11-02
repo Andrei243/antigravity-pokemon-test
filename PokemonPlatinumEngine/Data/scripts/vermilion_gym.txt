@@ -264,6 +264,16 @@ label Tm
   end
 label Won
   if not flag FLAG_JOHTO_GOT_TM57_FROM_SURGE goto Tm
+  # His number (Johto's leftovers; the rematch is the Fighting Dojo's on his day, phone.json)
+  if flag FLAG_PHONE_CONTACT_LT_SURGE goto NumberDone
+  say "Hey, kid! Take my number. When I'm itching for a rematch, you'll be the first to hear about it!"
+  ask "Swap numbers with Lt. Surge?"
+  if no goto NumberDone
+  addcontact lt_surge
+  text "Registered Lt. Surge in the Pokégear."
+  say "Friday mornings I'm at the Fighting Dojo in Saffron City. Come and get zapped!"
+  end
+label NumberDone
   say "Electricity is mighty, but it's nothing against Ground types. Keep that in mind, and you'll go far!"
   end
 

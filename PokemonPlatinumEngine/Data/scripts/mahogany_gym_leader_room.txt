@@ -39,6 +39,17 @@ label Tm
   say "TM07 is Hail. It brings down a storm of ice that hurts every Pokémon not of the Ice type, for five turns."
   end
 label Won
+  # Their number, for Johto's Champion (Johto's leftovers; the rematch is the Fighting Dojo's on their day, phone.json)
+  if not flag JohtoHallOfFame goto NumberDone
+  if flag FLAG_PHONE_CONTACT_PRYCE goto NumberDone
+  say "The Champion visits an old man. Take my number, and I will call when my Pokémon wish to battle."
+  ask "Swap numbers with Pryce?"
+  if no goto NumberDone
+  addcontact pryce
+  text "Registered Pryce in the Pokégear."
+  say "On Monday mornings I'll be at the Fighting Dojo in Saffron City. Come and battle me there!"
+  end
+label NumberDone
   if not flag FLAG_GOT_TM07_FROM_PRYCE goto Tm
   say "When the ice breaks, spring comes. Perhaps you are a spring of sorts for these old bones."
   end
