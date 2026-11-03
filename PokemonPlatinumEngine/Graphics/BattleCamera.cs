@@ -362,6 +362,19 @@ internal sealed class BattleCamera
         return t * t * (3f - 2f * t);
     }
 
+    /// <summary>How much lower a ground blow's punch-in looks, in the tallest target's height (plan 25 · Y17g).</summary>
+    public const float LowPunch = 0.3f;
+
+    /// <summary>A shot moved down (camera and look point together) by <see cref="LowPunch"/> of the tallest target's height, when <paramref name="low"/>.</summary>
+    private static CameraShot Lowered(CameraShot shot, bool low, FxPlaces places, List<(BattleSide Side, int Slot)> targets)
+    {
+        if (!low) return shot;
+        float h = 0f;
+        foreach (var (side, slot) in targets) h = Math.Max(h, places.Height(side, slot));
+        var down = Vector3.UnitY * (h * LowPunch);
+        return shot with { Position = shot.Position - down, Target = shot.Target - down };
+    }
+
     /// <summary>
     /// A signature move's shot at its shown age (style guide, "Camera (G8)"): the charge-up push, the follow of the
     /// projectile, the impact punch-in or the orbit. A pure function of the cue and the places.
@@ -404,11 +417,15 @@ internal sealed class BattleCamera
             }
 
             case SignatureShot.ImpactPunch:
+            {
                 if (a < CutTime) return (User(3.0f), ShotKind.Attacker);
                 if (a < I - 0.02f) return (Target(3.0f), ShotKind.Target);
-                if (a < I + 0.4f) return (Target(2.0f), ShotKind.Punch);
+                // A blow whose mark is on the ground looks lower from the impact on, so the feet are in (plan 25 · Y17g)
+                bool low = Directions.For(move) is { Low: true };
+                if (a < I + 0.4f) return (Lowered(Target(2.0f), low, places, targets), ShotKind.Punch);
                 // The late pull-back, wider than the shot it punched in from
-                return (Target(2.0f + 1.8f * Smooth((a - I - 0.4f) / 0.4f)), ShotKind.Target);
+                return (Lowered(Target(2.0f + 1.8f * Smooth((a - I - 0.4f) / 0.4f)), low, places, targets), ShotKind.Target);
+            }
 
             case SignatureShot.Orbit:
             {

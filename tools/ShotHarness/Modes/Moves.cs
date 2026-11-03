@@ -14,8 +14,18 @@ partial class Harness
     {
         // `moves signatures` names every move of the signature table (plan 25 · Y17), in its order; `moves signatures:Outrage`
         // starts there, so a batch added at the table's end is watched by itself
+        // `moves y17g` names plan 25 · Y17g's: the ground blows punched in lower, the weather and terrains spreading,
+        // and a few of the body tints (on the user: Dragon Dance, Recover, Shadow Punch; on the target: Surf,
+        // Thunderbolt, Sing); `moves tints` names the whole tint table (BodyTints.Table)
+        var y17g = Directions.Table.Where(d => d.Value.Low).Select(d => d.Key).Concat(new[]
+        {
+            "Rain Dance", "Sunny Day", "Sandstorm", "Hail", "Snowscape", "Electric Terrain", "Grassy Terrain",
+            "Misty Terrain", "Psychic Terrain", "Dragon Dance", "Recover", "Shadow Punch", "Surf", "Thunderbolt", "Sing",
+        });
         var named = args.Skip(2).SelectMany(a =>
-            a == "signatures" ? Directions.Table.Keys
+            a == "y17g" ? y17g
+            : a == "tints" ? BodyTints.Table.Keys
+            : a == "signatures" ? Directions.Table.Keys
             : a.StartsWith("signatures:") ? Directions.Table.Keys.SkipWhile(k => k != a["signatures:".Length..])
             : new[] { a }).ToArray();
         var mine = new Pokemon(PokemonDatabase.Get("Empoleon")!, 40, new Random(81));

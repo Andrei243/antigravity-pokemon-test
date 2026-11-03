@@ -20,13 +20,15 @@ internal enum SignatureShot { None, ChargePush, FollowProjectile, ImpactPunch, O
 /// <param name="Target">What it does to its target's body at a shown age when it lands (null: a heavy hit's throw, or nothing).</param>
 /// <param name="Light">A stage light laid over the move's own at its full (Y16's envelope eases it in and out).</param>
 /// <param name="Effect">An effect laid over the move's own recipe (null: nothing).</param>
+/// <param name="Low">Its punch-in looks lower, so the target's feet and what lies before them are in the shot (plan 25 · Y17g).</param>
 internal sealed record MoveDirection(
     SignatureShot Shot,
     float HitStop = 0f,
     Func<float, int, BodyMotion>? User = null,
     Func<float, int, BodyMotion>? Target = null,
     StageLight? Light = null,
-    FxRecipe? Effect = null)
+    FxRecipe? Effect = null,
+    bool Low = false)
 {
     /// <summary>Whether its target is thrown back at the impact (every move that stops the picture is heavy).</summary>
     public bool Heavy => HitStop > 0f;
@@ -100,7 +102,7 @@ internal static class Directions
         // The sea's first light: the camera rides the beams; the stage the deep blue of the ocean floor; spray left
         ["Origin Pulse"] = new(SignatureShot.FollowProjectile, HeavyStop, Light: Lit(0.05f, 0.14f, 0.44f, 0.48f), Effect: Spray),
         // Blades of red-hot rock: a punch-in on the eruption; magma's red; the target tossed up, the ground cracked
-        ["Precipice Blades"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: TossedUp, Light: Lit(0.52f, 0.12f, 0.04f, 0.46f), Effect: Cracks),
+        ["Precipice Blades"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: TossedUp, Light: Lit(0.52f, 0.12f, 0.04f, 0.46f), Effect: Cracks, Low: true),
         // The dive from the sky: the user rises and hurtles in; a punch-in; green-gold
         ["Dragon Ascent"] = new(SignatureShot.ImpactPunch, HeavyStop, User: Dive, Light: Lit(0.36f, 0.62f, 0.3f, 0.3f)),
         // The full power of the mind: the push; violet; the user rocked back by its own blast
@@ -123,7 +125,7 @@ internal static class Directions
         ["Blaze Kick"] = new(SignatureShot.ImpactPunch, HeavyStop, Effect: Embers),
         ["Flare Blitz"] = new(SignatureShot.ImpactPunch, HeavyStop, Light: Lit(0.6f, 0.24f, 0.08f, 0.26f), Effect: Embers),
         ["Wood Hammer"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: Pressed, Effect: Leaves),
-        ["Earthquake"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: Jolted, Light: Lit(0.36f, 0.28f, 0.18f, 0.24f, 0.2f), Effect: RingCracks),
+        ["Earthquake"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: Jolted, Light: Lit(0.36f, 0.28f, 0.18f, 0.24f, 0.2f), Effect: RingCracks, Low: true),
         // Blastoise's and Empoleon's jet: the camera rides it
         ["Hydro Pump"] = new(SignatureShot.FollowProjectile, HeavyStop, Effect: Spray),
         // Sceptile's and Torterra's storm of leaves: the camera swings round it
@@ -200,7 +202,7 @@ internal static class Directions
         // Its ring of fire round the foes: the camera swings round
         ["Searing Shot"] = new(SignatureShot.Orbit, Light: Lit(0.62f, 0.3f, 0.08f, 0.28f), Effect: Embers),
         // The Swords of Justice's blade, and Keldeo's: punch-ins on the cut; steel pale, and a deep water blue
-        ["Sacred Sword"] = new(SignatureShot.ImpactPunch, HeavyStop, Light: Lit(0.7f, 0.74f, 0.8f, 0.16f), Effect: Blades),
+        ["Sacred Sword"] = new(SignatureShot.ImpactPunch, HeavyStop, Light: Lit(0.7f, 0.74f, 0.8f, 0.16f), Effect: Blades, Low: true),
         ["Secret Sword"] = new(SignatureShot.ImpactPunch, HeavyStop, Light: Lit(0.22f, 0.32f, 0.56f, 0.28f)),
         // The forces of nature's storms (their Hisuian moves) round the foes: orbits, each its own colour and what it leaves
         ["Bleakwind Storm"] = new(SignatureShot.Orbit, Light: Lit(0.34f, 0.4f, 0.5f, 0.32f, 0.2f), Effect: Frost),
@@ -225,8 +227,8 @@ internal static class Directions
         // Yveltal's wing of oblivion: the camera rides it; a deep red; wisps
         ["Oblivion Wing"] = new(SignatureShot.FollowProjectile, HeavyStop, Light: Lit(0.38f, 0.05f, 0.1f, 0.4f), Effect: Wisps),
         // Zygarde's: arrows of earth from above pressing the target; waves of earth jolting it; its enforcer followed
-        ["Thousand Arrows"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: Pressed, Light: Lit(0.3f, 0.36f, 0.18f, 0.3f), Effect: RingCracks),
-        ["Thousand Waves"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: Jolted, Light: Lit(0.36f, 0.4f, 0.2f, 0.3f), Effect: RingCracks),
+        ["Thousand Arrows"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: Pressed, Light: Lit(0.3f, 0.36f, 0.18f, 0.3f), Effect: RingCracks, Low: true),
+        ["Thousand Waves"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: Jolted, Light: Lit(0.36f, 0.4f, 0.2f, 0.3f), Effect: RingCracks, Low: true),
         ["Core Enforcer"] = new(SignatureShot.FollowProjectile, HeavyStop, Light: Lit(0.2f, 0.44f, 0.24f, 0.3f), Effect: Glints),
         // Diancie's storm of diamonds round the foes: a pale, faint pink; glints
         ["Diamond Storm"] = new(SignatureShot.Orbit, Light: Lit(0.74f, 0.62f, 0.78f, 0.16f), Effect: Glints),
@@ -312,7 +314,7 @@ internal static class Directions
         ["Esper Wing"] = new(SignatureShot.FollowProjectile, Light: Lit(0.5f, 0.22f, 0.5f, 0.24f)),
         // A body flung in: lunges
         ["Brave Bird"] = new(SignatureShot.ImpactPunch, HeavyStop, User: Lunge, Light: Lit(0.5f, 0.6f, 0.76f, 0.22f)),
-        ["Headlong Rush"] = new(SignatureShot.ImpactPunch, HeavyStop, User: Lunge, Light: Lit(0.38f, 0.28f, 0.16f, 0.24f), Effect: RingCracks),
+        ["Headlong Rush"] = new(SignatureShot.ImpactPunch, HeavyStop, User: Lunge, Light: Lit(0.38f, 0.28f, 0.16f, 0.24f), Effect: RingCracks, Low: true),
         ["Wave Crash"] = new(SignatureShot.ImpactPunch, HeavyStop, User: Lunge, Light: Lit(0.14f, 0.32f, 0.56f, 0.26f), Effect: Spray),
         ["Psyshield Bash"] = new(SignatureShot.ImpactPunch, HeavyStop, User: Lunge, Light: Lit(0.5f, 0.24f, 0.5f, 0.22f), Effect: Glints),
         // Blows: punch-ins
@@ -321,7 +323,7 @@ internal static class Directions
         ["Dire Claw"] = new(SignatureShot.ImpactPunch, HeavyStop, Light: Lit(0.3f, 0.1f, 0.34f, 0.26f)),
         ["Mountain Gale"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: Pressed, Light: Lit(0.5f, 0.66f, 0.84f, 0.18f), Effect: Frost),
         // The two-turn moves' strikes: up from under for Dig and Dive, down from above for Bounce
-        ["Dig"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: TossedUp, Effect: RingCracks),
+        ["Dig"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: TossedUp, Effect: RingCracks, Low: true),
         ["Dive"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: TossedUp, Effect: Spray),
         ["Bounce"] = new(SignatureShot.ImpactPunch, HeavyStop, User: Dive, Target: Pressed),
         // The Pledges: a pillar out of the ground under the target, punched in on, no stop
@@ -350,8 +352,18 @@ internal static class Directions
         ["Burning Bulwark"] = new(SignatureShot.None, Light: Lit(0.6f, 0.24f, 0.06f, 0.22f), Effect: Embers),
         ["Shelter"] = new(SignatureShot.None, Effect: Glints),
         // Weather: a light alone; the weather's own look is Y1's
-        ["Rain Dance"] = new(SignatureShot.None, Light: Lit(0.24f, 0.3f, 0.42f, 0.16f, 0.1f)),
-        ["Sunny Day"] = new(SignatureShot.None, Light: Lit(0.9f, 0.7f, 0.36f, 0.05f)),
+        // Y17g: the weather gathers at its user, as its own look has it, and spreads over the field to the foes
+        ["Rain Dance"] = new(SignatureShot.None, Light: Lit(0.24f, 0.3f, 0.42f, 0.16f, 0.1f), Effect: Spreads),
+        ["Sunny Day"] = new(SignatureShot.None, Light: Lit(0.9f, 0.7f, 0.36f, 0.05f), Effect: Spreads),
+        ["Sandstorm"] = new(SignatureShot.None, Effect: Spreads),
+        ["Hail"] = new(SignatureShot.None, Effect: Spreads),
+        ["Snowscape"] = new(SignatureShot.None, Effect: Spreads),
+        ["Chilly Reception"] = new(SignatureShot.None, Effect: Spreads),
+        // Y17g: a terrain runs low over the ground from its user's feet to the foes'
+        ["Electric Terrain"] = new(SignatureShot.None, Effect: Spreads),
+        ["Grassy Terrain"] = new(SignatureShot.None, Effect: Spreads),
+        ["Misty Terrain"] = new(SignatureShot.None, Effect: Spreads),
+        ["Psychic Terrain"] = new(SignatureShot.None, Effect: Spreads),
 
         // ---------------------------------------------------------------- Y17f: the moves of our own past level 100 (plan 06 · R31)
         // Each plays its type's template (no look of its own yet); the direction stages it. Ordinary strength (the
@@ -363,18 +375,18 @@ internal static class Directions
         // Fighting: the kick and the mountain-breaking blow punched in on; the burst of ki followed
         ["Crescent Kick"] = new(SignatureShot.ImpactPunch, HeavyStop, Light: Lit(0.5f, 0.3f, 0.14f, 0.22f)),
         ["Ki Burst"] = new(SignatureShot.FollowProjectile, HeavyStop, Light: Lit(0.66f, 0.36f, 0.12f, 0.24f), Effect: Shards),
-        ["Mountain Breaker"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: Pressed, Light: Lit(0.46f, 0.28f, 0.14f, 0.3f), Effect: RingCracks),
+        ["Mountain Breaker"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: Pressed, Light: Lit(0.46f, 0.28f, 0.14f, 0.3f), Effect: RingCracks, Low: true),
         // Flying: the talons and the plunge from the zenith rise and dive in; the jet stream followed
         ["Talon Dive"] = new(SignatureShot.ImpactPunch, HeavyStop, User: Dive, Light: Lit(0.5f, 0.6f, 0.76f, 0.2f)),
         ["Jet Stream"] = new(SignatureShot.FollowProjectile, Light: Lit(0.56f, 0.72f, 0.92f, 0.2f)),
-        ["Zenith Plunge"] = new(SignatureShot.ImpactPunch, HeavyStop, User: Dive, Target: Pressed, Light: Lit(0.7f, 0.66f, 0.46f, 0.2f), Effect: RingCracks),
+        ["Zenith Plunge"] = new(SignatureShot.ImpactPunch, HeavyStop, User: Dive, Target: Pressed, Light: Lit(0.7f, 0.66f, 0.46f, 0.2f), Effect: RingCracks, Low: true),
         // Poison: the lance punched in on; the torrent of miasma followed, a poison's violet, wisps rising
         ["Venom Lance"] = new(SignatureShot.ImpactPunch, HeavyStop, Light: Lit(0.34f, 0.12f, 0.4f, 0.28f)),
         ["Miasma Torrent"] = new(SignatureShot.FollowProjectile, HeavyStop, Light: Lit(0.3f, 0.1f, 0.36f, 0.32f), Effect: Wisps),
         // Ground: the fault and the rend jolt the target, cracks in a ring; the vein of magma bursts from under it
-        ["Fault Line"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: Jolted, Light: Lit(0.38f, 0.3f, 0.18f, 0.24f, 0.2f), Effect: RingCracks),
+        ["Fault Line"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: Jolted, Light: Lit(0.38f, 0.3f, 0.18f, 0.24f, 0.2f), Effect: RingCracks, Low: true),
         ["Magma Vein"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: TossedUp, Light: Lit(0.56f, 0.16f, 0.05f, 0.34f), Effect: Embers),
-        ["Tectonic Rend"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: Jolted, Light: Lit(0.3f, 0.22f, 0.14f, 0.32f, 0.2f), Effect: RingCracks),
+        ["Tectonic Rend"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: Jolted, Light: Lit(0.3f, 0.22f, 0.14f, 0.32f, 0.2f), Effect: RingCracks, Low: true),
         // Rock: the boulder pressing, shards; the crystal lance followed, glints; stones falling from the sky round the foes
         ["Boulder Crush"] = new(SignatureShot.ImpactPunch, HeavyStop, Target: Pressed, Light: Lit(0.38f, 0.3f, 0.2f, 0.24f), Effect: Shards),
         ["Crystal Lance"] = new(SignatureShot.FollowProjectile, HeavyStop, Light: Lit(0.6f, 0.56f, 0.66f, 0.16f), Effect: Glints),
@@ -1017,6 +1029,80 @@ internal static class Directions
             float spin = c.Age * 5f * (i % 2 == 0 ? 1f : -1f) + i;
             fx.Sprite(FxShape.Shard, at, c.ToSize * 0.18f, Fx.Fade(Rgb(206, 220, 240), alpha), FxBlend.Alpha, spin);
             if (i < 4) fx.Sprite(FxShape.Star, at, c.ToSize * 0.08f, Fx.Fade(Rgb(255, 255, 255), 0.8f * alpha * (1f - k)), FxBlend.Add, spin);
+        }
+    }
+
+    // ------------------------------------------------------------------ Y17g: the weather and the terrains spreading
+
+    /// <summary>When a spread sets off from its user, how long it takes to reach the foes, and how long before its cue's end it is gone.</summary>
+    public const float SpreadFrom = I - 0.1f, SpreadTime = 0.55f, SpreadGone = 0.1f;
+
+    /// <summary>A weather's or a terrain's spreading colours: what glides (or runs), what falls from it, its shape, and whether it is a terrain.</summary>
+    private static (Color Puff, Color Fleck, FxShape Shape, FxShape FleckShape, bool Ground) SpreadOf(string move) => move switch
+    {
+        "Rain Dance" => (Rgb(92, 100, 124), Rgb(120, 170, 240), FxShape.Smoke, FxShape.Drop, false),
+        "Sunny Day" => (Rgb(255, 214, 120), Rgb(255, 240, 180), FxShape.Glow, FxShape.Spark, false),
+        "Sandstorm" => (Rgb(214, 184, 130), Rgb(190, 150, 96), FxShape.Smoke, FxShape.Dot, false),
+        "Hail" => (Rgb(196, 210, 228), Rgb(220, 240, 255), FxShape.Smoke, FxShape.Shard, false),
+        "Snowscape" or "Chilly Reception" => (Rgb(214, 224, 238), Rgb(245, 250, 255), FxShape.Smoke, FxShape.Snowflake, false),
+        "Electric Terrain" => (Rgb(255, 226, 70), Rgb(255, 250, 190), FxShape.Glow, FxShape.Spark, true),
+        "Grassy Terrain" => (Rgb(110, 210, 90), Rgb(190, 245, 150), FxShape.Glow, FxShape.Leaf, true),
+        "Misty Terrain" => (Rgb(255, 160, 210), Rgb(255, 220, 240), FxShape.Glow, FxShape.Dot, true),
+        _ => (Rgb(220, 110, 230), Rgb(250, 200, 255), FxShape.Glow, FxShape.Dot, true),
+    };
+
+    /// <summary>How far a spread has come (0 at its user, 1 over the foes) and how strong it is, at a shown age; a strength under 0 when it doesn't show.</summary>
+    public static (float Way, float Alpha) SpreadAt(float age, float length)
+    {
+        float k = (age - SpreadFrom) / SpreadTime;
+        float end = length - SpreadGone;
+        if (k <= 0f || age >= end) return (0f, -1f);
+        float way = Smooth(k);
+        float alpha = Math.Min(Math.Clamp(k / 0.2f, 0f, 1f), Math.Clamp((end - age) / 0.3f, 0f, 1f));
+        return (way, alpha);
+    }
+
+    /// <summary>
+    /// A weather or a terrain spreading over the field (Rain Dance, Sunny Day, the four terrains…): three puffs of the
+    /// weather's colour gliding from over the user's platform to over the foes' and a few flecks falling from them
+    /// once there; a terrain's five glows running low over the ground from the user's feet to the foes'.
+    /// </summary>
+    private static void Spreads(in FxCtx c, FxColors col, FxList fx)
+    {
+        if (c.Cue.Missed) return;
+        var (way, alpha) = SpreadAt(c.Age, c.Cue.Length);
+        if (alpha <= 0f) return;
+        var (puff, fleck, shape, fleckShape, ground) = SpreadOf(c.Cue.Move);
+        var foeFeet = c.Foe - Vector3.UnitY * (c.FoeSize * 0.5f);
+        float h = c.FromSize + (c.FoeSize - c.FromSize) * way;
+        if (ground)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                float t = Math.Clamp(way * 1.25f - i * 0.06f, 0f, 1f);
+                var at = Vector3.Lerp(c.FromFeet, foeFeet, t) + new Vector3(Fx.Signed(c.Seed, i, 401) * h * 0.4f, h * 0.08f, Fx.Signed(c.Seed, i, 402) * h * 0.3f);
+                fx.Sprite(shape, at, h * (0.35f + 0.1f * Fx.Rand(c.Seed, i, 403)), Fx.Fade(puff, 0.6f * alpha), FxBlend.Alpha);
+            }
+            if (way > 0.9f)
+                for (int i = 0; i < 3; i++)
+                {
+                    var at = foeFeet + new Vector3(Fx.Signed(c.Seed, i, 404) * c.FoeSize * 0.6f, c.FoeSize * (0.1f + 0.3f * Fx.Rand(c.Seed, i, 405)), c.FoeSize * 0.3f);
+                    fx.Sprite(fleckShape, at, c.FoeSize * 0.1f, Fx.Fade(fleck, 0.8f * alpha), FxBlend.Alpha);
+                }
+            return;
+        }
+        var over = Vector3.Lerp(c.From + Vector3.UnitY * (c.FromSize * 0.9f), c.Foe + Vector3.UnitY * (c.FoeSize * 0.9f), way);
+        for (int i = 0; i < 3; i++)
+        {
+            var at = over + new Vector3((i - 1) * h * 0.45f, Fx.Signed(c.Seed, i, 406) * h * 0.08f, Fx.Signed(c.Seed, i, 407) * h * 0.15f);
+            fx.Sprite(shape, at, h * 0.6f, Fx.Fade(puff, 0.75f * alpha), FxBlend.Alpha, i * 1.3f);
+        }
+        if (way < 0.9f) return;
+        for (int i = 0; i < 4; i++)
+        {
+            float fall = (c.Age * 1.6f + Fx.Rand(c.Seed, i, 408)) % 1f;
+            var at = c.Foe + new Vector3((i - 1.5f) * c.FoeSize * 0.3f, c.FoeSize * (0.8f - 0.9f * fall), c.FoeSize * 0.25f);
+            fx.Sprite(fleckShape, at, c.FoeSize * 0.08f, Fx.Fade(fleck, 0.8f * alpha), FxBlend.Alpha);
         }
     }
 }

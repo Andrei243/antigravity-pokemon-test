@@ -1026,8 +1026,11 @@ public sealed class BattleRenderer
             else if (a.Silhouette > 0f) context.Shaders.SetFlash(SilhouetteColor, a.Silhouette * 0.92f);
             else
             {
-                // A condition's cast, blended into its own colours: it gives way to the flashes above
+                // A condition's cast, blended into its own colours: it gives way to the flashes above; a move's tint
+                // on the body (plan 25 · Y17g) shows over it where it is the stronger
                 var cast = MoveFx.Cast(v.Condition);
+                var tint = BodyTints.At(anim, isPlayer ? BattleSide.Player : BattleSide.Enemy, slot);
+                if (tint.Amount > cast.Amount) cast = tint;
                 if (cast.Amount > 0f) context.Shaders.SetFlash(cast.Color, Math.Clamp(cast.Amount, 0f, 1f));
             }
         }
