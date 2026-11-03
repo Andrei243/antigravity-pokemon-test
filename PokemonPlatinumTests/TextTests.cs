@@ -500,7 +500,9 @@ public class TextTests
         ["Battle/Sim/BattleCore.Abilities.cs"] = new[] { "Good as Gold" },
         // The rest of them (plan 06 · R27b): Showdown's lists by name, and Receiver's kin
         ["Battle/Effects/LaterAbilityEffects2.cs"] = new[] { "Zero to Hero", "Power of Alchemy" },
-        ["Battle/Sim/BattleCore.Abilities2.cs"] = new[] { "Power of Alchemy" }
+        ["Battle/Sim/BattleCore.Abilities2.cs"] = new[] { "Power of Alchemy" },
+        // The class a player stands as in a link battle, a class of the data's table (plan 28 · I4)
+        ["Battle/Sim/Link/LinkSetup.cs"] = new[] { "Pokémon Trainer" }
     };
 
     [Fact]

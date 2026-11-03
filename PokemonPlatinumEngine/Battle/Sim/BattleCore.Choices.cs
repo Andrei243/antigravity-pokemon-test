@@ -115,7 +115,12 @@ public sealed partial class BattleCore
             case ChoiceKind.Stay:
                 return Request is SwitchOfferRequest offer && offer.Place == choice.Who ? null : Text.Of("battle.nothingIsBeingOffered");
 
+            case ChoiceKind.Forfeit:
+                return Link ? null : Text.Of("battle.noThereNoRunning");
+
             case ChoiceKind.Run:
+                // A link battle is given up, never run from (plan 28 · I4)
+                if (Link) return Text.Of("battle.noThereNoRunning");
                 // In the Battle Frontier RUN gives the match up, whatever holds the Pokémon
                 if (Frontier && IsTrainerBattle) return null;
                 if (CannotFlee && b.IsPlayerSide) return Text.Of("battle.thereNoRunningFrom");

@@ -158,6 +158,14 @@ public sealed class CoreSetup
     /// not switch, and the next in the team's order comes in. 0 for none, which changes nothing. A record keeps it.
     /// </summary>
     public int TurnLimit { get; init; }
+
+    /// <summary>
+    /// A battle between two players (plan 28 · I4): both sides answered from outside, either of whom may give the match
+    /// up at any question (<see cref="ChoiceKind.Forfeit"/>) and neither of whom may run. Made by
+    /// <see cref="Link.LinkSetup"/> beside <see cref="Frontier"/>, whose rules it takes whole. Off unless given, which
+    /// changes nothing; a record of the battle keeps it.
+    /// </summary>
+    public bool Link { get; init; }
 }
 
 /// <summary>
@@ -309,6 +317,7 @@ public sealed partial class BattleCore : IBattleContext
         CannotFlee = setup.CannotFlee;
         FirstBattle = setup.FirstBattle;
         Frontier = setup.Frontier;
+        Link = setup.Link;
         NoRewards = setup.NoRewards;
         OffersSwitch = setup.OffersSwitch;
         MegaMaxDen = setup.MegaMaxDen;
@@ -399,6 +408,12 @@ public sealed partial class BattleCore : IBattleContext
 
     public void Submit(IReadOnlyList<BattleChoice> choices)
     {
+        // A player of a link battle gives the match up at any question (plan 28 · I4)
+        if (choices.FirstOrDefault(c => c.Kind == ChoiceKind.Forfeit) is { } giving)
+        {
+            Forfeit(giving);
+            return;
+        }
         switch (Request)
         {
             case null:
