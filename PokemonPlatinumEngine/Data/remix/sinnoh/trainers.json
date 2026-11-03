@@ -1,0 +1,329 @@
+{
+  "trainers": [
+    {
+      "id": "rival_route_201_piplup",
+      "batch": "V15",
+      "note": "The first battle stays a fair lesson: the starter alone, as the rival chose it, with a steady nature.",
+      "party": [
+        {"species": "Turtwig", "level": 5, "nature": "Docile", "moves": ["Tackle", "Withdraw"], "ivs": [10,10,10,10,10,10]}
+      ]
+    },
+    {
+      "id": "rival_route_201_turtwig",
+      "batch": "V15",
+      "note": "The first battle stays a fair lesson: the starter alone, as the rival chose it, with a steady nature.",
+      "party": [
+        {"species": "Chimchar", "level": 5, "nature": "Docile", "moves": ["Scratch", "Leer"], "ivs": [10,10,10,10,10,10]}
+      ]
+    },
+    {
+      "id": "rival_route_201_chimchar",
+      "batch": "V15",
+      "note": "The first battle stays a fair lesson: the starter alone, as the rival chose it, with a steady nature.",
+      "party": [
+        {"species": "Piplup", "level": 5, "nature": "Docile", "moves": ["Pound", "Growl"], "ivs": [10,10,10,10,10,10]}
+      ]
+    },
+    {
+      "id": "rival_route_203_piplup",
+      "batch": "V16",
+      "note": "Speed into the starter: a Starly that strikes first, a Buneary that endures, then Turtwig with the type it chose to beat yours.",
+      "party": [
+        {"species": "Starly", "level": 7, "nature": "Jolly", "moves": ["Tackle", "Growl", "Quick Attack"]},
+        {"species": "Buneary", "level": 7, "nature": "Impish", "moves": ["Pound", "Defense Curl", "Endure", "Foresight"]},
+        {"species": "Turtwig", "level": 9, "nature": "Adamant", "item": "Oran Berry", "moves": ["Tackle", "Withdraw", "Absorb"]}
+      ]
+    },
+    {
+      "id": "rival_route_203_turtwig",
+      "batch": "V16",
+      "note": "Speed into the starter: a Starly that strikes first, a Buneary that endures, then Chimchar with the type it chose to beat yours.",
+      "party": [
+        {"species": "Starly", "level": 7, "nature": "Jolly", "moves": ["Tackle", "Growl", "Quick Attack"]},
+        {"species": "Buneary", "level": 7, "nature": "Impish", "moves": ["Pound", "Defense Curl", "Endure", "Foresight"]},
+        {"species": "Chimchar", "level": 9, "nature": "Hasty", "item": "Oran Berry", "moves": ["Scratch", "Leer", "Ember", "Taunt"]}
+      ]
+    },
+    {
+      "id": "rival_route_203_chimchar",
+      "batch": "V16",
+      "note": "Speed into the starter: a Starly that strikes first, a Buneary that endures, then Piplup with the type it chose to beat yours.",
+      "party": [
+        {"species": "Starly", "level": 7, "nature": "Jolly", "moves": ["Tackle", "Growl", "Quick Attack"]},
+        {"species": "Buneary", "level": 7, "nature": "Impish", "moves": ["Pound", "Defense Curl", "Endure", "Foresight"]},
+        {"species": "Piplup", "level": 9, "nature": "Modest", "item": "Oran Berry", "moves": ["Pound", "Growl", "Bubble"]}
+      ]
+    },
+    {
+      "id": "leader_roark",
+      "batch": "V16",
+      "note": "Rock as a wall: Geodude lays Stealth Rock and Rock Tomb slows the challenger, Nosepass and Onix hold on with Sturdy, and Cranidos breaks through last with Mold Breaker. His ace stays at the pacing level of 14.",
+      "party": [
+        {"species": "Geodude", "level": 12, "nature": "Impish", "ability": "Sturdy", "moves": ["Stealth Rock", "Rock Throw", "Defense Curl", "Rock Polish"]},
+        {"species": "Nosepass", "level": 12, "nature": "Bold", "ability": "Sturdy", "moves": ["Rock Tomb", "Harden", "Thunder Wave", "Tackle"]},
+        {"species": "Onix", "level": 12, "nature": "Careful", "ability": "Sturdy", "moves": ["Rock Throw", "Screech", "Bind", "Rock Tomb"]},
+        {"species": "Cranidos", "level": 14, "nature": "Adamant", "ability": "Mold Breaker", "item": "Oran Berry", "moves": ["Headbutt", "Pursuit", "Rock Tomb", "Leer"]}
+      ]
+    },
+    {
+      "id": "commander_mars_valley_windworks",
+      "batch": "V16",
+      "note": "Poison and pressure: Zubat confuses, Croagunk taunts, Stunky blinds and Glameow puts the challenger to sleep before it strikes.",
+      "party": [
+        {"species": "Zubat", "level": 15, "nature": "Timid", "moves": ["Leech Life", "Supersonic", "Astonish", "Bite"]},
+        {"species": "Croagunk", "level": 15, "nature": "Adamant", "ability": "Dry Skin", "moves": ["Mud-Slap", "Poison Sting", "Taunt", "Pursuit"]},
+        {"species": "Stunky", "level": 15, "nature": "Jolly", "ability": "Aftermath", "moves": ["Poison Gas", "Screech", "Fury Swipes", "Smokescreen"]},
+        {"species": "Glameow", "level": 17, "nature": "Jolly", "ability": "Limber", "item": "Oran Berry", "moves": ["Fake Out", "Scratch", "Hypnosis", "Feint Attack"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_jubilife_city_1",
+      "batch": "V16",
+      "note": "A grunt of two poison types.",
+      "party": [
+        {"species": "Stunky", "level": 10, "nature": "Naughty", "moves": ["Scratch", "Poison Gas", "Screech", "Fury Swipes"]},
+        {"species": "Croagunk", "level": 11, "nature": "Brave", "moves": ["Astonish", "Mud-Slap", "Poison Sting", "Taunt"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_jubilife_city_2",
+      "batch": "V16",
+      "note": "A grunt who strikes first.",
+      "party": [
+        {"species": "Glameow", "level": 10, "nature": "Hasty", "moves": ["Fake Out", "Scratch", "Growl"]},
+        {"species": "Zubat", "level": 11, "nature": "Hasty", "moves": ["Leech Life", "Supersonic", "Astonish"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_floaroma_meadow_1",
+      "batch": "V16",
+      "note": "A grunt with a scorpion that knocks items away.",
+      "party": [
+        {"species": "Stunky", "level": 12, "nature": "Naughty", "moves": ["Scratch", "Poison Gas", "Screech", "Fury Swipes"]},
+        {"species": "Skorupi", "level": 13, "nature": "Adamant", "moves": ["Bite", "Poison Sting", "Leer", "Knock Off"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_floaroma_meadow_2",
+      "batch": "V16",
+      "note": "A grunt of fumes and fangs.",
+      "party": [
+        {"species": "Zubat", "level": 11, "nature": "Hasty", "moves": ["Leech Life", "Supersonic", "Astonish"]},
+        {"species": "Koffing", "level": 11, "nature": "Bold", "moves": ["Tackle", "Poison Gas", "Smog", "Smokescreen"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_valley_windworks_1",
+      "batch": "V16",
+      "note": "A grunt who strikes first, then poisons.",
+      "party": [
+        {"species": "Glameow", "level": 12, "nature": "Hasty", "moves": ["Fake Out", "Scratch", "Growl"]},
+        {"species": "Croagunk", "level": 13, "nature": "Brave", "moves": ["Mud-Slap", "Poison Sting", "Taunt", "Astonish"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_valley_windworks_2",
+      "batch": "V16",
+      "note": "A grunt of dark wings.",
+      "party": [
+        {"species": "Zubat", "level": 12, "nature": "Hasty", "moves": ["Leech Life", "Supersonic", "Astonish"]},
+        {"species": "Murkrow", "level": 13, "nature": "Naughty", "moves": ["Peck", "Astonish", "Pursuit", "Haze"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_valley_windworks_3",
+      "batch": "V16",
+      "note": "A grunt with three: the door's last guard before Mars.",
+      "party": [
+        {"species": "Glameow", "level": 11, "nature": "Hasty", "moves": ["Fake Out", "Scratch", "Growl"]},
+        {"species": "Stunky", "level": 11, "nature": "Naughty", "moves": ["Scratch", "Poison Gas", "Screech", "Fury Swipes"]},
+        {"species": "Houndour", "level": 11, "nature": "Rash", "moves": ["Leer", "Ember", "Howl", "Smog"]}
+      ]
+    },
+    {
+      "id": "youngster_tristan",
+      "batch": "V16",
+      "note": "Two birds of the first route.",
+      "party": [
+        {"species": "Starly", "level": 4, "nature": "Hardy", "moves": ["Tackle", "Growl"]},
+        {"species": "Pidgey", "level": 5, "nature": "Jolly", "moves": ["Tackle", "Sand Attack"]}
+      ]
+    },
+    {
+      "id": "lass_natalie",
+      "batch": "V16",
+      "note": "A strike first and a sturdy beaver.",
+      "party": [
+        {"species": "Bidoof", "level": 4, "nature": "Relaxed", "moves": ["Tackle"]},
+        {"species": "Skitty", "level": 5, "nature": "Jolly", "moves": ["Fake Out", "Growl", "Tail Whip", "Tackle"]}
+      ]
+    },
+    {
+      "id": "youngster_logan",
+      "batch": "V16",
+      "note": "Two bugs that wait.",
+      "party": [
+        {"species": "Burmy", "level": 4, "nature": "Bold", "moves": ["Protect"]},
+        {"species": "Kricketot", "level": 5, "nature": "Relaxed", "moves": ["Growl", "Bide"]}
+      ]
+    },
+    {
+      "id": "youngster_michael",
+      "batch": "V16",
+      "note": "Bugs of the cave road.",
+      "party": [
+        {"species": "Kricketot", "level": 6, "nature": "Relaxed", "moves": ["Growl", "Bide"]},
+        {"species": "Nincada", "level": 7, "nature": "Adamant", "moves": ["Scratch", "Harden", "Leech Life"]}
+      ]
+    },
+    {
+      "id": "youngster_dallas",
+      "batch": "V16",
+      "note": "Two electric dogs.",
+      "party": [
+        {"species": "Shinx", "level": 7, "nature": "Adamant", "moves": ["Tackle", "Leer"]},
+        {"species": "Electrike", "level": 8, "nature": "Jolly", "moves": ["Tackle", "Thunder Wave"]}
+      ]
+    },
+    {
+      "id": "youngster_sebastian",
+      "batch": "V16",
+      "note": "Two fighters.",
+      "party": [
+        {"species": "Makuhita", "level": 7, "nature": "Adamant", "moves": ["Tackle", "Focus Energy", "Sand Attack", "Arm Thrust"]},
+        {"species": "Machop", "level": 8, "nature": "Brave", "moves": ["Low Kick", "Leer", "Focus Energy"]}
+      ]
+    },
+    {
+      "id": "lass_madeline",
+      "batch": "V16",
+      "note": "Charm, then water.",
+      "party": [
+        {"species": "Azurill", "level": 7, "nature": "Calm", "moves": ["Splash", "Charm", "Tail Whip"]},
+        {"species": "Psyduck", "level": 8, "nature": "Modest", "moves": ["Water Sport", "Scratch", "Tail Whip"]}
+      ]
+    },
+    {
+      "id": "lass_sarah",
+      "batch": "V16",
+      "note": "A small spark and a bigger one.",
+      "party": [
+        {"species": "Pichu", "level": 6, "nature": "Timid", "moves": ["Thunder Shock", "Charm", "Tail Whip"]},
+        {"species": "Shinx", "level": 7, "nature": "Adamant", "moves": ["Tackle", "Leer"]}
+      ]
+    },
+    {
+      "id": "youngster_tyler",
+      "batch": "V16",
+      "note": "The pond's three.",
+      "party": [
+        {"species": "Magikarp", "level": 6, "nature": "Hardy", "moves": ["Splash"]},
+        {"species": "Goldeen", "level": 7, "nature": "Adamant", "moves": ["Peck", "Tail Whip", "Water Sport", "Supersonic"]},
+        {"species": "Poliwag", "level": 8, "nature": "Modest", "moves": ["Water Sport", "Bubble"]}
+      ]
+    },
+    {
+      "id": "bug_catcher_brandon",
+      "batch": "V16",
+      "note": "A cocoon to wear the challenger down, then two that strike.",
+      "party": [
+        {"species": "Silcoon", "level": 10, "nature": "Bold", "moves": ["Harden"]},
+        {"species": "Nincada", "level": 10, "nature": "Adamant", "moves": ["Scratch", "Harden", "Leech Life"]},
+        {"species": "Kricketune", "level": 11, "nature": "Adamant", "moves": ["Growl", "Bide", "Fury Cutter"]}
+      ]
+    },
+    {
+      "id": "twins_liv_and_liz",
+      "batch": "V16",
+      "note": "A pair that helps each other: Plus and Minus.",
+      "party": [
+        {"species": "Plusle", "level": 11, "nature": "Timid", "ability": "Plus", "moves": ["Growl", "Thunder Wave", "Quick Attack", "Helping Hand"]},
+        {"species": "Minun", "level": 11, "nature": "Timid", "ability": "Minus", "moves": ["Growl", "Thunder Wave", "Quick Attack", "Helping Hand"]}
+      ]
+    },
+    {
+      "id": "aroma_lady_taylor",
+      "batch": "V16",
+      "note": "Spores and seeds.",
+      "party": [
+        {"species": "Budew", "level": 10, "nature": "Calm", "moves": ["Absorb", "Growth", "Water Sport", "Stun Spore"]},
+        {"species": "Oddish", "level": 10, "nature": "Modest", "moves": ["Absorb", "Sweet Scent", "Acid"]},
+        {"species": "Cherubi", "level": 11, "nature": "Bold", "moves": ["Tackle", "Growth", "Leech Seed"]}
+      ]
+    },
+    {
+      "id": "camper_curtis",
+      "batch": "V16",
+      "note": "Two diggers of the gate.",
+      "party": [
+        {"species": "Diglett", "level": 7, "nature": "Jolly", "moves": ["Scratch", "Sand Attack", "Growl", "Astonish"]},
+        {"species": "Sandshrew", "level": 7, "nature": "Impish", "moves": ["Scratch", "Defense Curl", "Sand Attack"]}
+      ]
+    },
+    {
+      "id": "picnicker_diana",
+      "batch": "V16",
+      "note": "A picnic by the water.",
+      "party": [
+        {"species": "Bidoof", "level": 8, "nature": "Relaxed", "moves": ["Tackle", "Growl"]},
+        {"species": "Wooper", "level": 9, "nature": "Relaxed", "moves": ["Water Gun", "Tail Whip", "Mud Sport", "Mud Shot"]}
+      ]
+    },
+    {
+      "id": "worker_colin",
+      "batch": "V16",
+      "note": "The mine's rock, steel and muscle.",
+      "party": [
+        {"species": "Geodude", "level": 7, "nature": "Impish", "moves": ["Tackle", "Defense Curl", "Mud Sport"]},
+        {"species": "Magnemite", "level": 7, "nature": "Modest", "moves": ["Metal Sound", "Tackle", "Thunder Shock"]},
+        {"species": "Machop", "level": 8, "nature": "Brave", "moves": ["Low Kick", "Leer", "Focus Energy"]}
+      ]
+    },
+    {
+      "id": "worker_mason",
+      "batch": "V16",
+      "note": "A wall of rock.",
+      "party": [
+        {"species": "Onix", "level": 8, "nature": "Impish", "moves": ["Tackle", "Harden", "Bind", "Screech"]},
+        {"species": "Geodude", "level": 9, "nature": "Impish", "moves": ["Tackle", "Defense Curl", "Mud Sport", "Rock Polish"]}
+      ]
+    },
+    {
+      "id": "hiker_daniel",
+      "batch": "V16",
+      "note": "Three of rock and steel, each a step up.",
+      "party": [
+        {"species": "Geodude", "level": 11, "nature": "Impish", "moves": ["Tackle", "Defense Curl", "Rock Polish", "Rock Throw"]},
+        {"species": "Nosepass", "level": 11, "nature": "Bold", "moves": ["Tackle", "Harden"]},
+        {"species": "Aron", "level": 12, "nature": "Adamant", "moves": ["Tackle", "Harden", "Mud-Slap", "Headbutt"]}
+      ]
+    },
+    {
+      "id": "picnicker_siena",
+      "batch": "V16",
+      "note": "Charm and a spark.",
+      "party": [
+        {"species": "Azurill", "level": 12, "nature": "Calm", "moves": ["Splash", "Charm", "Tail Whip", "Bubble"]},
+        {"species": "Pachirisu", "level": 12, "nature": "Jolly", "moves": ["Growl", "Bide", "Quick Attack", "Charm"]}
+      ]
+    },
+    {
+      "id": "camper_zackary",
+      "batch": "V16",
+      "note": "A tail that passes the baton to a fist.",
+      "party": [
+        {"species": "Aipom", "level": 13, "nature": "Jolly", "moves": ["Scratch", "Tail Whip", "Astonish", "Baton Pass"]},
+        {"species": "Mankey", "level": 14, "nature": "Adamant", "moves": ["Scratch", "Low Kick", "Fury Swipes", "Karate Chop"]}
+      ]
+    },
+    {
+      "id": "battle_girl_kelsey",
+      "batch": "V16",
+      "note": "Mind and body.",
+      "party": [
+        {"species": "Meditite", "level": 14, "nature": "Adamant", "moves": ["Bide", "Meditate", "Confusion", "Detect"]},
+        {"species": "Machop", "level": 15, "nature": "Brave", "moves": ["Low Kick", "Leer", "Focus Energy", "Karate Chop"]}
+      ]
+    }
+  ]
+}

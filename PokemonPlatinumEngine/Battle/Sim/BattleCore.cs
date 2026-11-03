@@ -33,6 +33,13 @@ public sealed class CoreSetup
     /// <summary>Who chooses for the player's side from inside the core; null when the choices come from outside.</summary>
     public IBattleController? PlayerController { get; init; }
 
+    /// <summary>
+    /// The trainer the player's side thinks as when <see cref="PlayerController"/> is the trainer AI (plan 13 · V15,
+    /// tests and tools only: Remix's balance check plays a reference team with a trainer's flags). Null, the player's
+    /// side thinks with nothing and draws its moves at random, as ever; a recorded battle doesn't keep it.
+    /// </summary>
+    public Trainer? PlayerTrainer { get; init; }
+
     /// <summary>Who chooses for the other side; left out, the opponents' own chooser (<see cref="TrainerAi"/>).</summary>
     public IBattleController? EnemyController { get; init; } = TrainerAi.Instance;
 
@@ -230,6 +237,9 @@ public sealed partial class BattleCore : IBattleContext
     /// <summary>The trainer beside the player in a tag battle, whose Pokémon stand in the player's second place.</summary>
     public Trainer? Partner { get; }
 
+    /// <summary>Whom the player's own places think as under the trainer AI (<see cref="CoreSetup.PlayerTrainer"/>); null for nobody.</summary>
+    public Trainer? PlayerTrainer { get; }
+
     /// <summary>The player can't run from this battle.</summary>
     public bool CannotFlee { get; }
 
@@ -314,6 +324,7 @@ public sealed partial class BattleCore : IBattleContext
         enemyController = Palace ? PalaceController.Instance : setup.EnemyController;
         partnerController = setup.PartnerController;
         Kind = setup.Kind;
+        PlayerTrainer = setup.PlayerTrainer;
         CannotFlee = setup.CannotFlee;
         FirstBattle = setup.FirstBattle;
         Frontier = setup.Frontier;

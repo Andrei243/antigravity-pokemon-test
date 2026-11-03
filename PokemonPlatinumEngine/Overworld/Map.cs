@@ -1598,6 +1598,15 @@ public class Map
     public NPC? NpcIn(int x, int y, float height) =>
         NPCs.At(x, y, (Map: this, Height: height), static (n, at) => MathF.Abs((n.Level ?? at.Map.HeightAt(n.GridX, n.GridY)) - at.Height) < FieldMovement.StepLimit);
 
+    /// <summary>
+    /// Wild tables laid over the areas' own (plan 13 · V15: Remix's in a Remix run, which the engine sets on every map
+    /// as such a game starts, loads and arrives somewhere); null, the default, keeps every area's own. Asked first by
+    /// <see cref="WildAt"/> and <see cref="Fish"/>, so the grass, the water, the rods, Sweet Scent and the Great Marsh all
+    /// read it. A table of its own is met as it is written: no time of day, swarm, radar or slot of the National Pokédex
+    /// is laid into it, those being the area's own table's (docs/mechanics/rulings.md, "Remix").
+    /// </summary>
+    public IWildTables? Tables { get; set; }
+
     /// <summary>Platinum's rate for a small map's own wild Pokémon (see <see cref="EncounterSteps"/>).</summary>
     public int EncounterRate { get; set; } = 30;
 
@@ -1614,6 +1623,9 @@ public class Map
             // The season's tables where the area has them, and on dark grass its own (plan 22 · U4); every other place
             // is met from its own, as ever
             var tables = area.TablesFor(moment?.Season);
+            // Tables laid over the area's own (plan 13 · V15, Remix): met as written, at the area's own rate
+            if (Tables is { } over && (water ? over.Water(area.Key) : over.Land(area.Key)) is { } laid)
+                return (laid, water ? tables.WaterRate : tables.LandRate);
             if (water) return (EncounterSlots.Surf(area, tables.Water, moment), tables.WaterRate);
             bool dark = tables.DarkGrass.Count > 0 && IsDarkGrass(x, y);
             var land = dark ? tables.DarkGrass : tables.Land;
@@ -1639,6 +1651,12 @@ public class Map
         // The Super Rod's of the season, where the area's change with it (plan 22 · U4)
         if (rod == FishingRod.Super && moment?.Season is { } season && area.SeasonTables.TryGetValue(season, out var tables))
             (table, rate) = (tables.SuperRod, tables.SuperRodRate);
+        // A rod's table laid over the area's own (plan 13 · V15, Remix): met as written, at the area's own rate
+        if (Tables?.Rod(area.Key, rod) is { } laid)
+        {
+            if (laid.Count == 0 || rate <= 0 || rng.Next(100) >= rate) return null;
+            return WildEncounterRules.Meet(laid, water: true, lead is { } own ? own with { RepelLevel = null } : null, rng);
+        }
         if (table.Count == 0 || rate <= 0 || rng.Next(100) >= rate) return null;
         if (rod == FishingRod.Super) table = EncounterSlots.SuperRod(area, table, moment);
         table = EncounterSlots.Rod(area, rod, table, moment);

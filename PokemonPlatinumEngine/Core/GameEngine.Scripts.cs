@@ -149,6 +149,8 @@ public partial class GameEngine
     {
         // The first arrival in a place is timed for the log, from here to its first frame (plan 16 · T3)
         TimeTheArrival();
+        // A Remix run's wild tables lie over the place come to, a map made afresh since the game began too (plan 13 · V15)
+        flow.Map.Tables = Remix.For(flow.Run);
         // Coming to a place is the fifth moment of an autosave, written once the place's own script has ended (plan 12 · Q3)
         AutosaveSoon(AutosaveMoment.Arrival);
         // The Pokégear's radio is off once a door has been gone through (plan 20 · J3)

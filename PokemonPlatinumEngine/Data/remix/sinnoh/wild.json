@@ -1,0 +1,615 @@
+{
+  "areas": {
+    "route_201": {
+      "batch": "V15",
+      "land": [
+        {"species": "Pidgey", "level": 2},
+        {"species": "Sentret", "level": 2},
+        {"species": "Starly", "level": 3},
+        {"species": "Kricketot", "level": 3},
+        {"species": "Caterpie", "level": 3},
+        {"species": "Weedle", "level": 3},
+        {"species": "Zigzagoon", "level": 3},
+        {"species": "Poochyena", "level": 3},
+        {"species": "Wurmple", "level": 2},
+        {"species": "Nincada", "level": 2},
+        {"species": "Pichu", "level": 2},
+        {"species": "Ralts", "level": 2}
+      ]
+    },
+    "lake_verity": {
+      "batch": "V16",
+      "land": [
+        {"species": "Lotad", "level": 2},
+        {"species": "Wooper", "level": 2},
+        {"species": "Surskit", "level": 3},
+        {"species": "Azurill", "level": 3},
+        {"species": "Bidoof", "level": 3},
+        {"species": "Spearow", "level": 3},
+        {"species": "Hoppip", "level": 4},
+        {"species": "Seedot", "level": 4},
+        {"species": "Shroomish", "level": 4},
+        {"species": "Taillow", "level": 4},
+        {"species": "Igglybuff", "level": 4},
+        {"species": "Cleffa", "level": 4}
+      ],
+      "water": [
+        {"species": "Wooper", "level": 20, "maxLevel": 30},
+        {"species": "Psyduck", "level": 20, "maxLevel": 30},
+        {"species": "Quagsire", "level": 20, "maxLevel": 40},
+        {"species": "Lombre", "level": 20, "maxLevel": 40},
+        {"species": "Slowpoke", "level": 20, "maxLevel": 40}
+      ],
+      "oldRod": [
+        {"species": "Magikarp", "level": 4, "maxLevel": 6},
+        {"species": "Goldeen", "level": 3, "maxLevel": 7},
+        {"species": "Poliwag", "level": 5, "maxLevel": 10},
+        {"species": "Barboach", "level": 5, "maxLevel": 10},
+        {"species": "Magikarp", "level": 5, "maxLevel": 15}
+      ],
+      "goodRod": [
+        {"species": "Goldeen", "level": 15, "maxLevel": 20},
+        {"species": "Barboach", "level": 15, "maxLevel": 20},
+        {"species": "Poliwag", "level": 10, "maxLevel": 25},
+        {"species": "Corphish", "level": 25, "maxLevel": 35},
+        {"species": "Psyduck", "level": 25, "maxLevel": 35}
+      ],
+      "superRod": [
+        {"species": "Gyarados", "level": 30, "maxLevel": 40},
+        {"species": "Whiscash", "level": 30, "maxLevel": 40},
+        {"species": "Gyarados", "level": 40, "maxLevel": 55},
+        {"species": "Seaking", "level": 40, "maxLevel": 55},
+        {"species": "Crawdaunt", "level": 40, "maxLevel": 55}
+      ]
+    },
+    "lake_verity_low_water": {
+      "batch": "V16",
+      "land": [
+        {"species": "Lotad", "level": 2},
+        {"species": "Wooper", "level": 2},
+        {"species": "Surskit", "level": 3},
+        {"species": "Azurill", "level": 3},
+        {"species": "Bidoof", "level": 3},
+        {"species": "Spearow", "level": 3},
+        {"species": "Hoppip", "level": 4},
+        {"species": "Seedot", "level": 4},
+        {"species": "Shroomish", "level": 4},
+        {"species": "Taillow", "level": 4},
+        {"species": "Igglybuff", "level": 4},
+        {"species": "Cleffa", "level": 4}
+      ],
+      "water": [
+        {"species": "Wooper", "level": 20, "maxLevel": 30},
+        {"species": "Psyduck", "level": 20, "maxLevel": 30},
+        {"species": "Quagsire", "level": 20, "maxLevel": 40},
+        {"species": "Lombre", "level": 20, "maxLevel": 40},
+        {"species": "Slowpoke", "level": 20, "maxLevel": 40}
+      ],
+      "oldRod": [
+        {"species": "Magikarp", "level": 4, "maxLevel": 6},
+        {"species": "Goldeen", "level": 3, "maxLevel": 7},
+        {"species": "Poliwag", "level": 5, "maxLevel": 10},
+        {"species": "Barboach", "level": 5, "maxLevel": 10},
+        {"species": "Magikarp", "level": 5, "maxLevel": 15}
+      ],
+      "goodRod": [
+        {"species": "Goldeen", "level": 15, "maxLevel": 20},
+        {"species": "Barboach", "level": 15, "maxLevel": 20},
+        {"species": "Poliwag", "level": 10, "maxLevel": 25},
+        {"species": "Corphish", "level": 25, "maxLevel": 35},
+        {"species": "Psyduck", "level": 25, "maxLevel": 35}
+      ],
+      "superRod": [
+        {"species": "Gyarados", "level": 30, "maxLevel": 40},
+        {"species": "Whiscash", "level": 30, "maxLevel": 40},
+        {"species": "Gyarados", "level": 40, "maxLevel": 55},
+        {"species": "Seaking", "level": 40, "maxLevel": 55},
+        {"species": "Crawdaunt", "level": 40, "maxLevel": 55}
+      ]
+    },
+    "twinleaf_town": {
+      "batch": "V16",
+      "water": [
+        {"species": "Psyduck", "level": 20, "maxLevel": 30},
+        {"species": "Marill", "level": 20, "maxLevel": 30},
+        {"species": "Quagsire", "level": 20, "maxLevel": 40},
+        {"species": "Lombre", "level": 20, "maxLevel": 40},
+        {"species": "Azumarill", "level": 20, "maxLevel": 40}
+      ],
+      "oldRod": [
+        {"species": "Magikarp", "level": 4, "maxLevel": 6},
+        {"species": "Goldeen", "level": 3, "maxLevel": 7},
+        {"species": "Poliwag", "level": 5, "maxLevel": 10},
+        {"species": "Barboach", "level": 5, "maxLevel": 10},
+        {"species": "Magikarp", "level": 5, "maxLevel": 15}
+      ],
+      "goodRod": [
+        {"species": "Goldeen", "level": 15, "maxLevel": 20},
+        {"species": "Barboach", "level": 15, "maxLevel": 20},
+        {"species": "Poliwag", "level": 10, "maxLevel": 25},
+        {"species": "Corphish", "level": 25, "maxLevel": 35},
+        {"species": "Psyduck", "level": 25, "maxLevel": 35}
+      ],
+      "superRod": [
+        {"species": "Gyarados", "level": 30, "maxLevel": 40},
+        {"species": "Whiscash", "level": 30, "maxLevel": 40},
+        {"species": "Gyarados", "level": 40, "maxLevel": 55},
+        {"species": "Seaking", "level": 40, "maxLevel": 55},
+        {"species": "Crawdaunt", "level": 40, "maxLevel": 55}
+      ]
+    },
+    "route_202": {
+      "batch": "V16",
+      "land": [
+        {"species": "Shinx", "level": 3},
+        {"species": "Rattata", "level": 3},
+        {"species": "Nidoran♀", "level": 4},
+        {"species": "Nidoran♂", "level": 3},
+        {"species": "Ledyba", "level": 4},
+        {"species": "Spinarak", "level": 3},
+        {"species": "Hoothoot", "level": 4},
+        {"species": "Whismur", "level": 4},
+        {"species": "Ekans", "level": 2},
+        {"species": "Meowth", "level": 2},
+        {"species": "Skitty", "level": 2},
+        {"species": "Eevee", "level": 2}
+      ]
+    },
+    "route_203": {
+      "batch": "V16",
+      "land": [
+        {"species": "Mankey", "level": 4},
+        {"species": "Electrike", "level": 4},
+        {"species": "Abra", "level": 5},
+        {"species": "Machop", "level": 4},
+        {"species": "Buneary", "level": 5},
+        {"species": "Plusle", "level": 4},
+        {"species": "Minun", "level": 5},
+        {"species": "Makuhita", "level": 5},
+        {"species": "Meditite", "level": 6},
+        {"species": "Shuppet", "level": 6},
+        {"species": "Riolu", "level": 7},
+        {"species": "Happiny", "level": 7}
+      ],
+      "water": [
+        {"species": "Psyduck", "level": 20, "maxLevel": 30},
+        {"species": "Goldeen", "level": 20, "maxLevel": 30},
+        {"species": "Poliwag", "level": 20, "maxLevel": 40},
+        {"species": "Marill", "level": 20, "maxLevel": 40},
+        {"species": "Slowpoke", "level": 20, "maxLevel": 40}
+      ],
+      "oldRod": [
+        {"species": "Magikarp", "level": 4, "maxLevel": 6},
+        {"species": "Goldeen", "level": 3, "maxLevel": 7},
+        {"species": "Poliwag", "level": 5, "maxLevel": 10},
+        {"species": "Barboach", "level": 5, "maxLevel": 10},
+        {"species": "Feebas", "level": 5, "maxLevel": 15}
+      ],
+      "goodRod": [
+        {"species": "Goldeen", "level": 15, "maxLevel": 20},
+        {"species": "Barboach", "level": 15, "maxLevel": 20},
+        {"species": "Poliwag", "level": 10, "maxLevel": 25},
+        {"species": "Corphish", "level": 10, "maxLevel": 25},
+        {"species": "Psyduck", "level": 10, "maxLevel": 25}
+      ],
+      "superRod": [
+        {"species": "Gyarados", "level": 30, "maxLevel": 40},
+        {"species": "Whiscash", "level": 30, "maxLevel": 40},
+        {"species": "Gyarados", "level": 40, "maxLevel": 55},
+        {"species": "Seaking", "level": 40, "maxLevel": 55},
+        {"species": "Crawdaunt", "level": 40, "maxLevel": 55}
+      ]
+    },
+    "oreburgh_gate_1f": {
+      "batch": "V16",
+      "land": [
+        {"species": "Zubat", "level": 5},
+        {"species": "Diglett", "level": 5},
+        {"species": "Paras", "level": 6},
+        {"species": "Sandshrew", "level": 6},
+        {"species": "Aron", "level": 5},
+        {"species": "Cubone", "level": 5},
+        {"species": "Nosepass", "level": 7},
+        {"species": "Rhyhorn", "level": 7},
+        {"species": "Trapinch", "level": 7},
+        {"species": "Gligar", "level": 8},
+        {"species": "Larvitar", "level": 7},
+        {"species": "Gible", "level": 8}
+      ]
+    },
+    "oreburgh_gate_b1f": {
+      "batch": "V16",
+      "land": [
+        {"species": "Zubat", "level": 6},
+        {"species": "Geodude", "level": 8},
+        {"species": "Onix", "level": 7},
+        {"species": "Numel", "level": 9},
+        {"species": "Baltoy", "level": 6},
+        {"species": "Bronzor", "level": 8},
+        {"species": "Sableye", "level": 10},
+        {"species": "Mawile", "level": 8},
+        {"species": "Swinub", "level": 9},
+        {"species": "Phanpy", "level": 10},
+        {"species": "Bagon", "level": 9},
+        {"species": "Beldum", "level": 10}
+      ],
+      "water": [
+        {"species": "Barboach", "level": 20, "maxLevel": 30},
+        {"species": "Psyduck", "level": 20, "maxLevel": 30},
+        {"species": "Slowpoke", "level": 20, "maxLevel": 40},
+        {"species": "Poliwag", "level": 20, "maxLevel": 40},
+        {"species": "Seel", "level": 20, "maxLevel": 40}
+      ],
+      "oldRod": [
+        {"species": "Magikarp", "level": 4, "maxLevel": 6},
+        {"species": "Barboach", "level": 3, "maxLevel": 7},
+        {"species": "Poliwag", "level": 5, "maxLevel": 10},
+        {"species": "Goldeen", "level": 5, "maxLevel": 10},
+        {"species": "Feebas", "level": 5, "maxLevel": 15}
+      ],
+      "goodRod": [
+        {"species": "Barboach", "level": 15, "maxLevel": 20},
+        {"species": "Corphish", "level": 15, "maxLevel": 20},
+        {"species": "Poliwag", "level": 10, "maxLevel": 25},
+        {"species": "Goldeen", "level": 10, "maxLevel": 25},
+        {"species": "Dratini", "level": 10, "maxLevel": 25}
+      ],
+      "superRod": [
+        {"species": "Gyarados", "level": 30, "maxLevel": 55},
+        {"species": "Whiscash", "level": 30, "maxLevel": 40},
+        {"species": "Gyarados", "level": 40, "maxLevel": 55},
+        {"species": "Crawdaunt", "level": 40, "maxLevel": 55},
+        {"species": "Dragonair", "level": 40, "maxLevel": 55}
+      ]
+    },
+    "oreburgh_mine_b1f": {
+      "batch": "V16",
+      "land": [
+        {"species": "Geodude", "level": 5},
+        {"species": "Magnemite", "level": 6},
+        {"species": "Voltorb", "level": 5},
+        {"species": "Grimer", "level": 6},
+        {"species": "Koffing", "level": 4},
+        {"species": "Slugma", "level": 7},
+        {"species": "Torkoal", "level": 6},
+        {"species": "Onix", "level": 8},
+        {"species": "Hippopotas", "level": 8},
+        {"species": "Croagunk", "level": 7},
+        {"species": "Machop", "level": 8},
+        {"species": "Tyrogue", "level": 7}
+      ]
+    },
+    "oreburgh_mine_b2f": {
+      "batch": "V16",
+      "land": [
+        {"species": "Geodude", "level": 6},
+        {"species": "Magnemite", "level": 7},
+        {"species": "Onix", "level": 6},
+        {"species": "Grimer", "level": 7},
+        {"species": "Koffing", "level": 5},
+        {"species": "Voltorb", "level": 8},
+        {"species": "Elekid", "level": 7},
+        {"species": "Magby", "level": 9},
+        {"species": "Smoochum", "level": 9},
+        {"species": "Rhyhorn", "level": 8},
+        {"species": "Larvitar", "level": 9},
+        {"species": "Shuckle", "level": 8}
+      ]
+    },
+    "ravaged_path": {
+      "batch": "V16",
+      "land": [
+        {"species": "Zubat", "level": 4},
+        {"species": "Psyduck", "level": 4},
+        {"species": "Slowpoke", "level": 5},
+        {"species": "Poliwag", "level": 5},
+        {"species": "Corphish", "level": 3},
+        {"species": "Krabby", "level": 3},
+        {"species": "Duskull", "level": 6},
+        {"species": "Misdreavus", "level": 6},
+        {"species": "Gastly", "level": 6},
+        {"species": "Chingling", "level": 6},
+        {"species": "Wynaut", "level": 6},
+        {"species": "Snorunt", "level": 6}
+      ],
+      "water": [
+        {"species": "Barboach", "level": 20, "maxLevel": 30},
+        {"species": "Psyduck", "level": 20, "maxLevel": 30},
+        {"species": "Slowpoke", "level": 20, "maxLevel": 40},
+        {"species": "Poliwag", "level": 20, "maxLevel": 40},
+        {"species": "Seel", "level": 20, "maxLevel": 40}
+      ],
+      "oldRod": [
+        {"species": "Magikarp", "level": 4, "maxLevel": 6},
+        {"species": "Barboach", "level": 3, "maxLevel": 7},
+        {"species": "Poliwag", "level": 5, "maxLevel": 10},
+        {"species": "Goldeen", "level": 5, "maxLevel": 10},
+        {"species": "Feebas", "level": 5, "maxLevel": 15}
+      ],
+      "goodRod": [
+        {"species": "Barboach", "level": 15, "maxLevel": 20},
+        {"species": "Corphish", "level": 15, "maxLevel": 20},
+        {"species": "Poliwag", "level": 10, "maxLevel": 25},
+        {"species": "Goldeen", "level": 10, "maxLevel": 25},
+        {"species": "Dratini", "level": 10, "maxLevel": 25}
+      ],
+      "superRod": [
+        {"species": "Gyarados", "level": 30, "maxLevel": 55},
+        {"species": "Whiscash", "level": 30, "maxLevel": 40},
+        {"species": "Gyarados", "level": 40, "maxLevel": 55},
+        {"species": "Crawdaunt", "level": 40, "maxLevel": 55},
+        {"species": "Dragonair", "level": 40, "maxLevel": 55}
+      ]
+    },
+    "route_204_south": {
+      "batch": "V16",
+      "land": [
+        {"species": "Budew", "level": 4},
+        {"species": "Wurmple", "level": 4},
+        {"species": "Bellsprout", "level": 4},
+        {"species": "Oddish", "level": 3},
+        {"species": "Sunkern", "level": 4},
+        {"species": "Cherubi", "level": 4},
+        {"species": "Venonat", "level": 5},
+        {"species": "Pineco", "level": 5},
+        {"species": "Volbeat", "level": 5},
+        {"species": "Illumise", "level": 5},
+        {"species": "Bonsly", "level": 6},
+        {"species": "Mime Jr.", "level": 6}
+      ],
+      "water": [
+        {"species": "Lotad", "level": 20, "maxLevel": 30},
+        {"species": "Surskit", "level": 20, "maxLevel": 30},
+        {"species": "Lombre", "level": 20, "maxLevel": 40},
+        {"species": "Psyduck", "level": 20, "maxLevel": 40},
+        {"species": "Quagsire", "level": 20, "maxLevel": 40}
+      ],
+      "oldRod": [
+        {"species": "Magikarp", "level": 4, "maxLevel": 6},
+        {"species": "Goldeen", "level": 3, "maxLevel": 7},
+        {"species": "Poliwag", "level": 5, "maxLevel": 10},
+        {"species": "Barboach", "level": 5, "maxLevel": 10},
+        {"species": "Magikarp", "level": 5, "maxLevel": 15}
+      ],
+      "goodRod": [
+        {"species": "Goldeen", "level": 15, "maxLevel": 20},
+        {"species": "Barboach", "level": 15, "maxLevel": 20},
+        {"species": "Poliwag", "level": 10, "maxLevel": 25},
+        {"species": "Corphish", "level": 10, "maxLevel": 25},
+        {"species": "Psyduck", "level": 10, "maxLevel": 25}
+      ],
+      "superRod": [
+        {"species": "Gyarados", "level": 30, "maxLevel": 40},
+        {"species": "Whiscash", "level": 30, "maxLevel": 40},
+        {"species": "Gyarados", "level": 40, "maxLevel": 55},
+        {"species": "Seaking", "level": 40, "maxLevel": 55},
+        {"species": "Crawdaunt", "level": 40, "maxLevel": 55}
+      ]
+    },
+    "route_204_north": {
+      "batch": "V16",
+      "land": [
+        {"species": "Exeggcute", "level": 9},
+        {"species": "Tangela", "level": 9},
+        {"species": "Doduo", "level": 9},
+        {"species": "Ponyta", "level": 8},
+        {"species": "Snubbull", "level": 9},
+        {"species": "Teddiursa", "level": 9},
+        {"species": "Stantler", "level": 10},
+        {"species": "Girafarig", "level": 10},
+        {"species": "Kecleon", "level": 10},
+        {"species": "Spinda", "level": 10},
+        {"species": "Bulbasaur", "level": 11},
+        {"species": "Treecko", "level": 11}
+      ],
+      "water": [
+        {"species": "Lotad", "level": 20, "maxLevel": 30},
+        {"species": "Surskit", "level": 20, "maxLevel": 30},
+        {"species": "Lombre", "level": 20, "maxLevel": 40},
+        {"species": "Psyduck", "level": 20, "maxLevel": 40},
+        {"species": "Quagsire", "level": 20, "maxLevel": 40}
+      ],
+      "oldRod": [
+        {"species": "Magikarp", "level": 4, "maxLevel": 6},
+        {"species": "Goldeen", "level": 3, "maxLevel": 7},
+        {"species": "Poliwag", "level": 5, "maxLevel": 10},
+        {"species": "Barboach", "level": 5, "maxLevel": 10},
+        {"species": "Magikarp", "level": 5, "maxLevel": 15}
+      ],
+      "goodRod": [
+        {"species": "Goldeen", "level": 15, "maxLevel": 20},
+        {"species": "Barboach", "level": 15, "maxLevel": 20},
+        {"species": "Poliwag", "level": 10, "maxLevel": 25},
+        {"species": "Corphish", "level": 10, "maxLevel": 25},
+        {"species": "Psyduck", "level": 10, "maxLevel": 25}
+      ],
+      "superRod": [
+        {"species": "Gyarados", "level": 30, "maxLevel": 40},
+        {"species": "Whiscash", "level": 30, "maxLevel": 40},
+        {"species": "Gyarados", "level": 40, "maxLevel": 55},
+        {"species": "Seaking", "level": 40, "maxLevel": 55},
+        {"species": "Crawdaunt", "level": 40, "maxLevel": 55}
+      ]
+    },
+    "route_205_south": {
+      "batch": "V16",
+      "land": [
+        {"species": "Shellos", "level": 10},
+        {"species": "Buizel", "level": 11},
+        {"species": "Pachirisu", "level": 10},
+        {"species": "Mareep", "level": 9},
+        {"species": "Slakoth", "level": 10},
+        {"species": "Aipom", "level": 11},
+        {"species": "Glameow", "level": 9},
+        {"species": "Stunky", "level": 11},
+        {"species": "Chatot", "level": 11},
+        {"species": "Swablu", "level": 12},
+        {"species": "Squirtle", "level": 11},
+        {"species": "Mudkip", "level": 12}
+      ],
+      "water": [
+        {"species": "Shellos", "level": 20, "maxLevel": 30},
+        {"species": "Buizel", "level": 20, "maxLevel": 30},
+        {"species": "Tentacool", "level": 20, "maxLevel": 40},
+        {"species": "Mantyke", "level": 20, "maxLevel": 40},
+        {"species": "Wingull", "level": 20, "maxLevel": 40}
+      ],
+      "oldRod": [
+        {"species": "Magikarp", "level": 4, "maxLevel": 6},
+        {"species": "Tentacool", "level": 3, "maxLevel": 7},
+        {"species": "Finneon", "level": 5, "maxLevel": 10},
+        {"species": "Horsea", "level": 5, "maxLevel": 10},
+        {"species": "Remoraid", "level": 5, "maxLevel": 15}
+      ],
+      "goodRod": [
+        {"species": "Finneon", "level": 15, "maxLevel": 20},
+        {"species": "Horsea", "level": 15, "maxLevel": 20},
+        {"species": "Remoraid", "level": 10, "maxLevel": 25},
+        {"species": "Qwilfish", "level": 10, "maxLevel": 25},
+        {"species": "Chinchou", "level": 10, "maxLevel": 25}
+      ],
+      "superRod": [
+        {"species": "Gyarados", "level": 30, "maxLevel": 55},
+        {"species": "Octillery", "level": 30, "maxLevel": 40},
+        {"species": "Gyarados", "level": 20, "maxLevel": 50},
+        {"species": "Lumineon", "level": 40, "maxLevel": 55},
+        {"species": "Lanturn", "level": 40, "maxLevel": 55}
+      ]
+    },
+    "route_205_north": {
+      "batch": "V16",
+      "land": [
+        {"species": "Yanma", "level": 12},
+        {"species": "Scyther", "level": 12},
+        {"species": "Heracross", "level": 13},
+        {"species": "Pinsir", "level": 12},
+        {"species": "Combee", "level": 14},
+        {"species": "Burmy", "level": 14},
+        {"species": "Shroomish", "level": 13},
+        {"species": "Seedot", "level": 14},
+        {"species": "Nincada", "level": 13},
+        {"species": "Natu", "level": 14},
+        {"species": "Charmander", "level": 15},
+        {"species": "Cyndaquil", "level": 15}
+      ],
+      "water": [
+        {"species": "Psyduck", "level": 20, "maxLevel": 30},
+        {"species": "Goldeen", "level": 20, "maxLevel": 30},
+        {"species": "Poliwag", "level": 20, "maxLevel": 40},
+        {"species": "Marill", "level": 20, "maxLevel": 40},
+        {"species": "Azumarill", "level": 20, "maxLevel": 40}
+      ],
+      "oldRod": [
+        {"species": "Magikarp", "level": 4, "maxLevel": 6},
+        {"species": "Goldeen", "level": 3, "maxLevel": 7},
+        {"species": "Poliwag", "level": 5, "maxLevel": 10},
+        {"species": "Barboach", "level": 5, "maxLevel": 10},
+        {"species": "Magikarp", "level": 5, "maxLevel": 15}
+      ],
+      "goodRod": [
+        {"species": "Goldeen", "level": 15, "maxLevel": 20},
+        {"species": "Barboach", "level": 15, "maxLevel": 20},
+        {"species": "Poliwag", "level": 10, "maxLevel": 25},
+        {"species": "Corphish", "level": 10, "maxLevel": 25},
+        {"species": "Psyduck", "level": 10, "maxLevel": 25}
+      ],
+      "superRod": [
+        {"species": "Gyarados", "level": 30, "maxLevel": 40},
+        {"species": "Whiscash", "level": 30, "maxLevel": 40},
+        {"species": "Gyarados", "level": 40, "maxLevel": 55},
+        {"species": "Seaking", "level": 40, "maxLevel": 55},
+        {"species": "Crawdaunt", "level": 40, "maxLevel": 55}
+      ]
+    },
+    "valley_windworks_outside": {
+      "batch": "V16",
+      "land": [
+        {"species": "Drifloon", "level": 9},
+        {"species": "Wingull", "level": 10},
+        {"species": "Natu", "level": 9},
+        {"species": "Murkrow", "level": 10},
+        {"species": "Spoink", "level": 10},
+        {"species": "Castform", "level": 11},
+        {"species": "Smeargle", "level": 9},
+        {"species": "Tropius", "level": 11},
+        {"species": "Absol", "level": 11},
+        {"species": "Zangoose", "level": 12},
+        {"species": "Seviper", "level": 11},
+        {"species": "Lunatone", "level": 12}
+      ],
+      "water": [
+        {"species": "Shellos", "level": 20, "maxLevel": 30},
+        {"species": "Buizel", "level": 20, "maxLevel": 30},
+        {"species": "Tentacool", "level": 20, "maxLevel": 40},
+        {"species": "Mantyke", "level": 20, "maxLevel": 40},
+        {"species": "Wingull", "level": 20, "maxLevel": 40}
+      ],
+      "oldRod": [
+        {"species": "Magikarp", "level": 4, "maxLevel": 6},
+        {"species": "Tentacool", "level": 3, "maxLevel": 7},
+        {"species": "Finneon", "level": 5, "maxLevel": 10},
+        {"species": "Horsea", "level": 5, "maxLevel": 10},
+        {"species": "Remoraid", "level": 5, "maxLevel": 15}
+      ],
+      "goodRod": [
+        {"species": "Finneon", "level": 15, "maxLevel": 20},
+        {"species": "Horsea", "level": 15, "maxLevel": 20},
+        {"species": "Remoraid", "level": 10, "maxLevel": 25},
+        {"species": "Qwilfish", "level": 10, "maxLevel": 25},
+        {"species": "Chinchou", "level": 10, "maxLevel": 25}
+      ],
+      "superRod": [
+        {"species": "Gyarados", "level": 30, "maxLevel": 55},
+        {"species": "Octillery", "level": 30, "maxLevel": 40},
+        {"species": "Gyarados", "level": 20, "maxLevel": 50},
+        {"species": "Lumineon", "level": 40, "maxLevel": 55},
+        {"species": "Lanturn", "level": 40, "maxLevel": 55}
+      ]
+    },
+    "fuego_ironworks_outside": {
+      "batch": "V16",
+      "land": [
+        {"species": "Growlithe", "level": 28},
+        {"species": "Vulpix", "level": 29},
+        {"species": "Houndour", "level": 29},
+        {"species": "Ponyta", "level": 29},
+        {"species": "Magmar", "level": 30},
+        {"species": "Electabuzz", "level": 30},
+        {"species": "Porygon", "level": 28},
+        {"species": "Ditto", "level": 30},
+        {"species": "Lickitung", "level": 31},
+        {"species": "Chansey", "level": 31},
+        {"species": "Kangaskhan", "level": 31},
+        {"species": "Tauros", "level": 31}
+      ],
+      "water": [
+        {"species": "Tentacool", "level": 20, "maxLevel": 30},
+        {"species": "Shellos", "level": 20, "maxLevel": 30},
+        {"species": "Krabby", "level": 20, "maxLevel": 40},
+        {"species": "Staryu", "level": 20, "maxLevel": 40},
+        {"species": "Chinchou", "level": 20, "maxLevel": 40}
+      ],
+      "oldRod": [
+        {"species": "Magikarp", "level": 4, "maxLevel": 6},
+        {"species": "Tentacool", "level": 3, "maxLevel": 7},
+        {"species": "Finneon", "level": 5, "maxLevel": 10},
+        {"species": "Horsea", "level": 5, "maxLevel": 10},
+        {"species": "Remoraid", "level": 5, "maxLevel": 15}
+      ],
+      "goodRod": [
+        {"species": "Finneon", "level": 15, "maxLevel": 20},
+        {"species": "Horsea", "level": 15, "maxLevel": 20},
+        {"species": "Remoraid", "level": 10, "maxLevel": 25},
+        {"species": "Qwilfish", "level": 10, "maxLevel": 25},
+        {"species": "Chinchou", "level": 10, "maxLevel": 25}
+      ],
+      "superRod": [
+        {"species": "Gyarados", "level": 30, "maxLevel": 55},
+        {"species": "Octillery", "level": 30, "maxLevel": 40},
+        {"species": "Gyarados", "level": 20, "maxLevel": 50},
+        {"species": "Lumineon", "level": 40, "maxLevel": 55},
+        {"species": "Lanturn", "level": 40, "maxLevel": 55}
+      ]
+    }
+  }
+}

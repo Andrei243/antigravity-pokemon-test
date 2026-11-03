@@ -217,6 +217,8 @@ public sealed class TrainerAi : IBattleController
         AiFlags flags;
         if (battle.Kind == BattleKind.CatchingLesson && mine.IsPlayerSide) flags = AiFlags.CatchTutorial;
         else if (mine.Trainer != null) flags = mine.Trainer.Ai;
+        // A reference team a tool hands a trainer of its own (plan 13 · V15, CoreSetup.PlayerTrainer)
+        else if (mine.IsPlayerSide && battle.PlayerTrainer is { } own) flags = own.Ai;
         else if (battle.Kind == BattleKind.Roamer && !mine.IsPlayerSide) return AiFlags.Roaming;
         else return null;
         if (battle.IsDouble) flags |= AiFlags.TagStrategy;
