@@ -421,6 +421,8 @@ Plan 06 · R13. What the game remembers of its wild Pokémon beyond the tables (
 | `photo take` | Cameron's photograph (plan 20, part q; `Models/PhotoAlbum.cs`, `common.Cameron`): puts a photograph of the player and the team's first Pokémon that is no Egg, at the area of the person the script belongs to and today, at the album's end. `RESULT` 1, or 0 with the album full (36) or a host that keeps no album. |
 | `photo album` | Opens the photo album (`UI/PhotoAlbumScreen.cs`, Cianwood City's studio) and waits for it to be put away. |
 | `photo count` | `RESULT` is how many photographs the album holds. |
+| `globallink check` | The Global Link counter (plan 07 · O7): `RESULT` 1 when the options name an online server (`OnlineServer` in `settings.json`), else 0. The headless host says 0 unless a test sets `OnlineServerSet`. |
+| `globallink` | Opens the Global Link counter (`UI/GlobalLinkScreen.cs` over `Online/GlobalLinkSession.cs`, plan 07 · O5): the friend code, a link code made or typed, and a trade room whose trades are written into the slot before the server is told. Waits for it to be left. |
 | `lottery boxed` | `RESULT` is 1 when the last draw's winner is in the boxes, 0 when on the team (which wins a tie). |
 | `survivepoison VAR_X` | The team's Pokémon at the place the variable gives comes through the poison if it is down to one hit point: cured, `RESULT` 1; otherwise 0. |
 

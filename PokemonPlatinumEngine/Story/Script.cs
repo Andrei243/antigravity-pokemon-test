@@ -171,6 +171,8 @@ public enum Op
     WaitVoice,
     // A friend's trainer of the friends' hall (plan 13 · V23): beaten today, their two lines, their battle at level 50
     Friend,
+    // The Global Link counter (plan 07 · O5, O7): whether a server is set (RESULT), and the counter's screen opened
+    GlobalLink,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

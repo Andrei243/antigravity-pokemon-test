@@ -139,6 +139,12 @@ public sealed class SavePaths
     /// <summary>The Home box's file, beside the slots.</summary>
     public string HomeBox => Path.Combine(Folder, HomeBoxName);
 
+    /// <summary>The install token the online server knows this game by (plan 07 · O7, <see cref="Online.OnlineIdentity"/>): made once, never shown.</summary>
+    public const string InstallTokenName = "online-token.txt";
+
+    /// <summary>The install token's file, beside <c>settings.json</c>.</summary>
+    public string InstallToken => Path.Combine(Folder, InstallTokenName);
+
     /// <summary>The folder everything is in, as a full path.</summary>
     public string Folder { get; }
 

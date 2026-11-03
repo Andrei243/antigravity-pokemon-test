@@ -11272,6 +11272,10 @@ way -
 === common.GabbyAndTyUpdateLocation
 from a trainer with lines of their own
 way -
+=== common.GlobalLink
+from a trainer with lines of their own
+way -
+  Anyone> A line of its own.
 === common.GrottoMouth
 from a trainer with lines of their own
 way -

@@ -1253,6 +1253,10 @@ public partial class GameEngine
                 case ScriptScreen.PhotoAlbum:
                     game.OpenPhotoAlbum();
                     break;
+                // The Global Link counter (plan 07 · O5, O7)
+                case ScriptScreen.GlobalLink:
+                    game.OpenGlobalLink();
+                    break;
                 case ScriptScreen.ContestPhoto:
                     if (System.Enum.TryParse<ContestStat>(counter, out var framed)) game.ShowContestPhoto(framed);
                     break;
@@ -1600,6 +1604,7 @@ public partial class GameEngine
         public BerryPatches Berries => game.flow.Berries;
         public ApricornBox Apricorns => game.flow.Apricorns;
         public PhotoAlbum? Photos => game.flow.Photos;
+        public bool OnlineServerSet => game.OnlineServer != null;
         public string? ChosenItem => game.flow.ScriptItem;
 
         // ---- Poffins (plan 06 · R14c)

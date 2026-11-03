@@ -420,6 +420,8 @@ public sealed partial class ScriptRunner
         Op.FavorLady => false,
         // The Poké Jobs board is the player's to work (plan 15 · E3)
         Op.Jobs => true,
+        // The Global Link counter is the player's to work; whether a server is set is only asked (plan 07 · O5, O7)
+        Op.GlobalLink => i.Name != "check",
         _ => throw new ArgumentOutOfRangeException(nameof(i), i.Op, "This command doesn't say what it does in a hurry: name it in ScriptRunner.StopsAHurry.")
     };
 
@@ -1410,6 +1412,11 @@ public sealed partial class ScriptRunner
             // A friend's trainer of the friends' hall (plan 13 · V23)
             case Op.Friend:
                 FriendCommand(i);
+                break;
+            // The Global Link counter (plan 07 · O5, O7)
+            case Op.GlobalLink:
+                if (i.Name == "check") Result = host.OnlineServerSet ? 1 : 0;
+                else host.Open(ScriptScreen.GlobalLink, Subject);
                 break;
             case Op.TrainerHill:
                 TrainerHillCommand(i);

@@ -367,6 +367,21 @@ script Talk
   end
 
 
+# The Union Room's desk on every Pokémon Center's upper floor, the Global Link counter (plan 07 · O5, O7; ours, where
+# Platinum's desk ran over the local wireless link): with an online server named in the options it opens the counter's
+# screen (UI/GlobalLinkScreen.cs), and with none the attendant says her own lines, that the link is down.
+script GlobalLink
+  globallink check
+  if result == 0 goto Down
+  say "Welcome to the Global Link! Trainers anywhere trade Pokémon here, by a code one makes and the other types."
+  globallink
+  say "Please come again!"
+  end
+label Down
+  sayown
+  end
+
+
 # A Pokémon standing in the field (plan 10 · F1): it cries, then says its lines, if it has any.
 script Pokemon
   cry own

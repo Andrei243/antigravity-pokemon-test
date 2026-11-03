@@ -5621,5 +5621,84 @@
       "places": "One choice is wanted for each of your places."
     },
     "waiting": "Waiting for {player}…"
+  },
+  "globalLink": {
+    "title": "GLOBAL LINK",
+    "about": "Trade with a friend anywhere: one of you makes a code, the other types it. Your friend code tells them it's you.",
+    "friendCode": "YOUR FRIEND CODE",
+    "server": "SERVER",
+    "theirCode": "YOUR FRIEND'S CODE",
+    "yourCode": "YOUR CODE",
+    "codeLeft": "Works for {minutes}:{seconds} more",
+    "offered": "OFFERED",
+    "youOffer": "YOU OFFER",
+    "theyOffer": "{name} OFFERS",
+    "nothingYet": "Nothing yet",
+    "trainer": "OT {name}",
+    "holding": "Holding {item}",
+    "ready": "READY TO TRADE",
+    "otherCode": "Friend code {code}",
+    "menu": {
+      "makeCode": "MAKE A CODE",
+      "enterCode": "ENTER A CODE",
+      "leave": "LEAVE"
+    },
+    "key": {
+      "ok": "OK",
+      "erase": "ERASE"
+    },
+    "hint": {
+      "type": "Type",
+      "erase": "Erase",
+      "trade": "Trade",
+      "offer": "Offer",
+      "callOff": "Call off",
+      "leave": "Leave"
+    },
+    "line": {
+      "welcome": "You're linked! Make a code for your friend, or type the one they made.",
+      "finishing": "Linked. A trade from your last visit is being finished first.",
+      "making": "Asking for a code…",
+      "typeCode": "Type the {digits} digits of your friend's code.",
+      "joining": "Looking for your friend's room…",
+      "checking": "Checking your Pokémon…",
+      "codeMade": "Tell your friend this code. It works once.",
+      "codeExpired": "Nobody came in time, and the code has gone.",
+      "choose": "You're linked with {name}! Choose a Pokémon to offer.",
+      "waitOffer": "Waiting for {name} to offer a Pokémon…",
+      "mayTrade": "Both are offered. Press A on yours to trade.",
+      "theyOffered": "{name} has offered a Pokémon. Choose one to offer back.",
+      "waitConfirm": "Waiting for {name} to agree…",
+      "theyConfirmed": "{name} wants to trade. Press A on yours to agree.",
+      "cancelled": "The trade was called off. Choose again.",
+      "otherLeft": "Your friend left the room.",
+      "otherAway": "{name}'s link dropped. Waiting {seconds} seconds for them…",
+      "otherBack": "{name} is back.",
+      "notThisSave": "A trade is waiting for another save of yours, not this one.",
+      "finished": "{pokemon} from your last visit has come, and the game was saved.",
+      "traded": "The trade with {name} is done! {pokemon} is yours, and the game was saved."
+    },
+    "refused": {
+      "outdated": "This game is too old for the server. Please update it.",
+      "dataVersion": "This game's data isn't the server's. Please update it to trade.",
+      "badMessage": "That can't be done right now.",
+      "tooFast": "Too much at once. Wait a moment and try again.",
+      "tooManyGuesses": "Too many wrong codes. Wait ten minutes before trying again.",
+      "noSuchRoom": "No room has that code. Check it with your friend.",
+      "roomFull": "That room already has two people in it.",
+      "inARoom": "You're in a room already.",
+      "illegal": "The server says this Pokémon can't be.",
+      "duplicate": "This Pokémon was traded away before, or is in another trade.",
+      "closing": "The server is closing. Please come back later."
+    },
+    "error": {
+      "noServer": "The link is down: no server is set. Add one to the options file as the guide says.",
+      "badServer": "The server's address can't be used.",
+      "unreachable": "The server couldn't be reached. Please try again later.",
+      "dropped": "The link dropped. A trade under way finishes on your next visit.",
+      "closing": "The server is closing. Please come back later.",
+      "notSaved": "The game couldn't be saved, so the trade waits for your next visit.",
+      "runEnded": "This run has ended, so nothing more can come into it."
+    }
   }
 }

@@ -222,6 +222,7 @@ if (mode == "pointer") h.PointerMode();
 if (mode == "levelling") h.LevellingMode();
 if (mode == "photo") h.PhotoMode();
 if (mode == "jobs") h.JobsMode();
+if (mode == "globallink") h.GlobalLinkMode();
 
 h.Close();
 Raylib.CloseWindow();

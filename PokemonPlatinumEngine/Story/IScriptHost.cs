@@ -15,7 +15,7 @@ public enum BattleOutcome { None, Won, Lost, Fled, Caught }
 public sealed record LessonCatcher(string Name, Pokemon Own);
 
 /// <summary>The screens a script can open and wait for.</summary>
-public enum ScriptScreen { Starter, Shop, Pc, Travel, ChoosePokemon, HallOfFame, Wardrobe, ChooseItem, PoffinCooking, BallCapsules, SealShop, ContestPhoto, Ceremony, Credits, AlphPuzzle, TownMap, Phrase, NameRival, Crossing, BugContestResults, Athlon, Apricorns, ContestPainting, Bracket, Tournament, Jobs, PhotoAlbum }
+public enum ScriptScreen { Starter, Shop, Pc, Travel, ChoosePokemon, HallOfFame, Wardrobe, ChooseItem, PoffinCooking, BallCapsules, SealShop, ContestPhoto, Ceremony, Credits, AlphPuzzle, TownMap, Phrase, NameRival, Crossing, BugContestResults, Athlon, Apricorns, ContestPainting, Bracket, Tournament, Jobs, PhotoAlbum, GlobalLink }
 
 /// <summary>
 /// What a script needs of the game it runs in. The <see cref="ScriptRunner"/> decides what happens and in what
@@ -525,6 +525,12 @@ public interface IScriptHost
 
     /// <summary>Cameron's photo album (plan 20, part q); none where a host keeps no album, and <c>photo take</c> then takes nothing.</summary>
     PhotoAlbum? Photos => null;
+
+    /// <summary>
+    /// Whether the options name an online server (plan 07 · O7: <c>globallink check</c>), which the Global Link counter's
+    /// attendant asks before opening it. None unless a host says otherwise.
+    /// </summary>
+    bool OnlineServerSet => false;
 
     /// <summary>The item the bag chose last for <c>chooseitem</c> (<see cref="ScriptScreen.ChooseItem"/>); null for none.</summary>
     string? ChosenItem { get; }

@@ -233,6 +233,8 @@ public class ScriptTests
           apricorn order red
           photo take
           photo count
+          globallink check
+          globallink
           poffin check
           poffin cook
           poffin room

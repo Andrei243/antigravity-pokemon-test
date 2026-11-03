@@ -393,6 +393,9 @@ public partial class GameEngine
         public bool HasCamp => game.HasCamp;
         public JobBoard JobBoard => game.flow.Jobs;
         public void OpenJobs() => game.OpenJobs();
+        /// <summary>The Global Link counter (plan 07 · O5, O7), opened as its attendant's script opens it, on the options' server.</summary>
+        public GlobalLinkScreen GlobalLink => game.flow.GlobalLinkScreen;
+        public void OpenGlobalLink() => game.OpenGlobalLink();
         public void OpenJukebox(GameState returnTo) => game.OpenJukebox(returnTo);
         public void CloseJukebox() => game.CloseJukebox();
         /// <summary>The gallery (plan 12 · Q30), opened as the title's GALLERY or a Pokédex entry's A does, and closed as B does.</summary>

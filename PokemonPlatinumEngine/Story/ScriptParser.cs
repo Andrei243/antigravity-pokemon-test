@@ -1034,6 +1034,10 @@ public static class ScriptParser
             case "friend":
                 return new Instruction { Op = Op.Friend, Line = line, Name = r.OneOf("beaten", "before", "after", "battle") };
 
+            // The Global Link counter (plan 07 · O5, O7): "globallink check" sets RESULT 1 with a server set, "globallink" opens it
+            case "globallink":
+                return new Instruction { Op = Op.GlobalLink, Line = line, Name = r.More ? r.OneOf("check") : "" };
+
             // The Battle Subway (plan 22 · U6, part d)
             case "subway":
             {
