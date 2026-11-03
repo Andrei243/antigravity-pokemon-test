@@ -54,11 +54,64 @@ public class RemixTests
         "galactic_grunt_valley_windworks_1", "galactic_grunt_valley_windworks_2", "galactic_grunt_valley_windworks_3"
     };
 
-    /// <summary>
-    /// The species met under Remix before the Hall of Fame so far, counted with what they evolve into: the floor of
-    /// <see cref="SpeciesMetUnderRemix"/>, raised by each batch as <c>CoverageTests</c> raises its floors.
-    /// </summary>
-    public const int SpeciesFloor = 384;
+    /// <summary>The areas plan 01 · M6 opened that have tables (the centre, V17); every room of the Solaceon Ruins besides.</summary>
+    public static readonly string[] Centre =
+    {
+        "eterna_city", "eterna_forest", "route_206", "route_207", "route_208", "route_209", "route_210_south", "route_211_west",
+        "mt_coronet_1f_south", "wayward_cave_1f", "wayward_cave_b1f"
+    };
+
+    /// <summary>The story's battles of the centre (plan 13 · V17).</summary>
+    public static readonly string[] CentreTeams =
+    {
+        "leader_gardenia", "leader_fantina", "commander_jupiter_team_galactic_eterna_building", "rival_route_209_piplup", "rival_route_209_turtwig",
+        "rival_route_209_chimchar", "galactic_grunt_team_galactic_eterna_building_1f_1", "galactic_grunt_team_galactic_eterna_building_3f"
+    };
+
+    /// <summary>The areas plan 01 · M7 opened that have tables (the east and the sea, V18), the Great Marsh's six among them.</summary>
+    public static readonly string[] East =
+    {
+        "route_210_north", "celestic_town", "route_211_east", "route_212_north", "route_212_south", "trophy_garden", "pastoria_city",
+        "great_marsh_1", "great_marsh_2", "great_marsh_3", "great_marsh_4", "great_marsh_5", "great_marsh_6", "route_213", "route_214",
+        "ruin_maniac_cave_short", "valor_lakefront", "route_215", "lake_valor", "route_218", "canalave_city", "iron_island", "iron_island_1f",
+        "iron_island_b1f_left_room", "iron_island_b1f_right_room", "iron_island_b2f_left_room", "iron_island_b2f_right_room", "iron_island_b3f",
+        "route_219", "route_220", "route_221"
+    };
+
+    /// <summary>The story's battles of the east and the sea (plan 13 · V18), the lakes' chapter's among them.</summary>
+    public static readonly string[] EastTeams =
+    {
+        "leader_maylene", "leader_wake", "leader_byron", "galactic_boss_cyrus_celestic_town_ruins", "commander_saturn_valor_cavern", "commander_mars_lake_verity",
+        "rival_pastoria_city_piplup", "rival_pastoria_city_turtwig", "rival_pastoria_city_chimchar", "rival_canalave_city_piplup", "rival_canalave_city_turtwig",
+        "rival_canalave_city_chimchar", "galactic_grunt_veilstone_city_1", "galactic_grunt_iron_island_1", "galactic_grunt_lake_valor_1", "galactic_grunt_lake_verity_1"
+    };
+
+    /// <summary>The areas plan 01 · M8 opened that have tables and the story reaches before the Hall of Fame (the north and the League, V19).</summary>
+    public static readonly string[] North =
+    {
+        "route_216", "route_217", "acuity_lakefront", "lake_acuity", "mt_coronet_1f_north_room_1", "mt_coronet_1f_north_room_2", "mt_coronet_1f_tunnel_room",
+        "mt_coronet_2f", "mt_coronet_3f", "mt_coronet_4f_rooms_1_and_2", "mt_coronet_4f_room_3", "mt_coronet_5f", "mt_coronet_6f", "mt_coronet_b1f",
+        "mt_coronet_outside_north", "mt_coronet_outside_south", "route_222", "sunyshore_city", "route_223", "victory_road_1f", "victory_road_2f",
+        "victory_road_b1f", "pokemon_league", "sendoff_spring"
+    };
+
+    /// <summary>The story's battles of the north and the League (plan 13 · V19).</summary>
+    public static readonly string[] NorthTeams =
+    {
+        "leader_candice", "leader_volkner", "commander_saturn_galactic_hq", "galactic_boss_cyrus_galactic_hq", "commander_mars_spear_pillar",
+        "commander_jupiter_spear_pillar", "rival_spear_pillar_piplup", "rival_spear_pillar_turtwig", "rival_spear_pillar_chimchar",
+        "galactic_boss_cyrus_distortion_world", "rival_pokemon_league_piplup", "rival_pokemon_league_turtwig", "rival_pokemon_league_chimchar",
+        "elite_four_aaron", "elite_four_bertha", "elite_four_flint", "elite_four_lucian", "champion_cynthia",
+        "galactic_grunt_galactic_hq_1f", "galactic_grunt_mt_coronet_3f_1", "galactic_grunt_spear_pillar_1", "galactic_grunt_spear_pillar_2"
+    };
+
+    /// <summary>The pacing targets' levels each leader's, the Elite Four's and the Champion's ace stays at (plan 02; plan 13, decision 8).</summary>
+    public static readonly Dictionary<string, int> Aces = new()
+    {
+        ["leader_roark"] = 14, ["leader_gardenia"] = 22, ["leader_fantina"] = 26, ["leader_maylene"] = 32, ["leader_wake"] = 37,
+        ["leader_byron"] = 41, ["leader_candice"] = 44, ["leader_volkner"] = 50, ["elite_four_aaron"] = 53, ["elite_four_bertha"] = 55,
+        ["elite_four_flint"] = 57, ["elite_four_lucian"] = 59, ["champion_cynthia"] = 62
+    };
 
     /// <summary>The 458 species of Generations 1 to 4 that are neither legendary nor mythical (plan 13, the Remix design).</summary>
     public static IReadOnlyList<PokemonSpecies> TheSet { get; } = PokemonDatabase.GetAll()
@@ -133,7 +186,7 @@ public class RemixTests
             // A trainer who battles two at a time brings two
             if (own.DoubleBattle) Assert.True(team.Party.Count >= 2, $"{team.Id} battles two at a time.");
         }
-        Assert.Equal(14, R.TeamOf("leader_roark")!.Party.Max(m => m.Level));
+        foreach (var (id, ace) in Aces) Assert.Equal(ace, R.TeamOf(id)!.Party.Max(m => m.Level));
     }
 
     [Fact]
@@ -192,6 +245,58 @@ public class RemixTests
         Assert.True(R.TeamOf("leader_roark")!.Party.Count > TrainerDatabase.Get("leader_roark")!.Party.Count);
     }
 
+    [Theory]
+    [InlineData("V17")]
+    [InlineData("V18")]
+    [InlineData("V19")]
+    public void ALaterBatchIsWrittenWhole(string batch)
+    {
+        var (areas, teams) = batch switch { "V17" => (Centre, CentreTeams), "V18" => (East, EastTeams), _ => (North, NorthTeams) };
+        foreach (string key in areas)
+        {
+            Assert.True(R.HasArea(key), $"{key} has no Remix tables.");
+            Assert.Equal(batch, R.Wild.Areas[key].Batch);
+        }
+        foreach (string id in teams)
+        {
+            Assert.True(R.TeamOf(id) != null, $"{id} has no Remix team.");
+            Assert.Equal(batch, R.Trainers.Trainers.First(t => t.Id == id).Batch);
+        }
+        // Every room of the Solaceon Ruins, the centre's Unown, has its tables
+        if (batch == "V17")
+            foreach (string key in RuinsRooms) Assert.True(R.HasArea(key), $"{key} has no Remix tables.");
+        // A leader's, the Elite Four's and the Champion's teams have more than the table's, or a full six
+        foreach (string id in teams.Where(Aces.ContainsKey))
+        {
+            int mine = R.TeamOf(id)!.Party.Count, theirs = TrainerDatabase.Get(id)!.Party.Count;
+            Assert.True(mine > theirs || mine == Party.MaxSize, $"{id} has {mine}, the table {theirs}.");
+        }
+    }
+
+    /// <summary>Every room of the Solaceon Ruins with a table of its own (V17 writes them all, each Unown's).</summary>
+    public static IEnumerable<string> RuinsRooms =>
+        GameDataFiles.Load<WorldHabitatsFile>("world/sinnoh/" + WorldHabitatsFile.FileName).Areas.Select(a => a.Key)
+            .Where(k => k.StartsWith("solaceon_ruins", StringComparison.Ordinal) && File.Exists(Path.Combine(GameDataFiles.Directory, "world", "sinnoh", "areas", k + ".json"))
+                && GameDataFiles.Load<WorldAreaFile>($"world/sinnoh/areas/{k}.json").Land is { Count: > 0 });
+
+    [Fact]
+    public void ASafariBattleUnderRemixMeetsOnlyRemixsSpecies()
+    {
+        var (map, area) = AreaMap("great_marsh_1");
+        map.Tables = Remix.For(RunRules.Normal with { Remix = true });
+        var designed = R.Wild.Areas["great_marsh_1"].Land!.Select(e => e.Species).ToHashSet();
+        // A Safari Game's moment names the day's marsh species, which a Remix table never takes in
+        var (table, rate) = map.WildAt(5, 5, moment: new EncounterMoment { MarshDaily = 12345 });
+        Assert.Equal(area.LandRate, rate);
+        Assert.Equal(12, table.Count);
+        Assert.All(table, e => Assert.Contains(e.SpeciesName, designed));
+        var met = new HashSet<string>();
+        var dice = new Random(11);
+        for (int i = 0; i < 3000; i++) met.Add(WildEncounterRules.Meet(table, false, null, dice)!.SpeciesName);
+        Assert.Subset(designed, met);
+        Assert.Contains("Carnivine", met);
+    }
+
     // ------------------------------------------------------------------ the points of use
 
     [Fact]
@@ -204,7 +309,7 @@ public class RemixTests
         Assert.Null(Remix.For(RunRules.Normal));
         Assert.Same(trainer, DifficultyRules.Prepare(trainer, RunRules.Normal));
 
-        var (map, area) = Route201();
+        var (map, area) = AreaMap("route_201");
         Assert.Null(map.Tables);
         Assert.Same(area.WildEncounters, map.WildAt(5, 5).Table);
     }
@@ -212,7 +317,7 @@ public class RemixTests
     [Fact]
     public void WithRemixOnRoute201MeetsOnlyRemixsSpecies()
     {
-        var (map, area) = Route201();
+        var (map, area) = AreaMap("route_201");
         map.Tables = Remix.For(RunRules.Normal with { Remix = true });
         var designed = R.Wild.Areas["route_201"].Land!.Select(e => e.Species).ToHashSet();
         var (table, rate) = map.WildAt(5, 5, moment: new EncounterMoment());
@@ -328,15 +433,23 @@ public class RemixTests
         return all;
     }
 
+    /// <summary>
+    /// The completeness test, in the floor's place since V19: each of the 458 is in a Remix table of an area the story
+    /// reaches before the Hall of Fame (the Super Rod's are the post-game's and don't count), or evolves from one that is,
+    /// by any of the data's ways, a trade's too (plan 03, decision 4).
+    /// </summary>
     [Fact]
-    public void SpeciesMetUnderRemix()
+    public void EverySpeciesCanBeMet()
     {
         var met = Batches.SelectMany(MetIn).ToHashSet();
         var reached = WithEvolutions(met);
-        Assert.True(reached.Count >= SpeciesFloor, $"Remix meets {reached.Count} of the 458 so far, under the floor of {SpeciesFloor}.");
-        // The floor starts at what Route 201 gives
+        var missing = TheSet.Where(s => !reached.Contains(s.Name)).Select(s => s.Name).ToList();
+        Assert.True(missing.Count == 0, $"Remix never meets {string.Join(", ", missing)} before the Hall of Fame.");
         Assert.True(WithEvolutions(MetIn("V15")).Count >= 12);
         Assert.All(reached, s => Assert.Contains(s, SetNames));
+        // Every table counted is of an area a batch names, none of the post-game's
+        var named = SouthWest.Concat(Centre).Concat(East).Concat(North).Concat(RuinsRooms).ToHashSet();
+        foreach (string key in R.Wild.Areas.Keys) Assert.True(named.Contains(key), $"{key} is in no batch's list.");
     }
 
     [Fact]
@@ -399,11 +512,11 @@ public class RemixTests
         return trainer;
     }
 
-    /// <summary>A map of its own whose one area is Route 201 with Platinum's table, as the tests of the dual slot make one.</summary>
-    private static (Map Map, MapArea Area) Route201()
+    /// <summary>A map of its own whose one area is an area of Sinnoh with Platinum's table, as the tests of the dual slot make one.</summary>
+    private static (Map Map, MapArea Area) AreaMap(string key)
     {
-        var own = GameDataFiles.Load<WorldAreaFile>("world/sinnoh/areas/route_201.json");
-        var area = new MapArea { Key = "route_201", Open = true, LandRate = own.LandRate ?? 0 };
+        var own = GameDataFiles.Load<WorldAreaFile>($"world/sinnoh/areas/{key}.json");
+        var area = new MapArea { Key = key, Open = true, LandRate = own.LandRate ?? 0 };
         for (int i = 0; i < own.Land!.Count; i++)
             area.WildEncounters.Add(new WildEncounterEntry { SpeciesName = own.Land[i].Species, MinLevel = own.Land[i].Level, MaxLevel = own.Land[i].Level, Weight = WorldAreaFile.LandSlotWeights[i] });
         var map = new Map(32, 32);
@@ -469,6 +582,39 @@ public class RemixGameTests
 
     /// <summary>Roark's band: of twenty battles the reference team wins at least this many and at most that.</summary>
     public const int RoarkLeast = 6, RoarkMost = 17;
+
+    /// <summary>
+    /// The later leaders', the Elite Four's and the Champion's reference teams and bands (plan 13 · V17 to V19): plan 02's
+    /// pacing party at each door, made of what Remix's tables offer by then (the starter's line, and the centre's,
+    /// the east's and the north's finds), its best at the leader's cap, and of twenty battles the share of wins it must
+    /// fall in. The League's references are a whole team of six, as a player's is there.
+    /// </summary>
+    public static readonly Dictionary<string, ((string, int)[] Team, int Least, int Most)> References = new()
+    {
+        ["leader_gardenia"] = (new[] { ("Ponyta", 20), ("Staravia", 21), ("Monferno", 22) }, 4, 18),
+        ["leader_fantina"] = (new[] { ("Kadabra", 24), ("Ponyta", 25), ("Luxio", 25), ("Monferno", 26) }, 4, 18),
+        ["leader_maylene"] = (new[] { ("Kadabra", 30), ("Ponyta", 30), ("Staravia", 31), ("Monferno", 32) }, 4, 18),
+        ["leader_wake"] = (new[] { ("Luxray", 35), ("Roserade", 35), ("Kadabra", 36), ("Staraptor", 36), ("Infernape", 37) }, 4, 18),
+        ["leader_byron"] = (new[] { ("Machoke", 38), ("Quagsire", 39), ("Staraptor", 40), ("Infernape", 41) }, 4, 18),
+        ["leader_candice"] = (new[] { ("Machoke", 41), ("Luxray", 42), ("Staraptor", 43), ("Empoleon", 44) }, 4, 18),
+        ["leader_volkner"] = (new[] { ("Quagsire", 46), ("Machoke", 47), ("Staraptor", 48), ("Golem", 49), ("Infernape", 50) }, 4, 18),
+        ["elite_four_aaron"] = (new[] { ("Golem", 51), ("Gyarados", 51), ("Luxray", 52), ("Staraptor", 52), ("Alakazam", 52), ("Infernape", 53) }, 4, 18),
+        ["elite_four_bertha"] = (new[] { ("Golem", 53), ("Gyarados", 53), ("Luxray", 54), ("Staraptor", 54), ("Alakazam", 54), ("Infernape", 55) }, 4, 18),
+        ["elite_four_flint"] = (new[] { ("Golem", 55), ("Gyarados", 55), ("Luxray", 56), ("Staraptor", 56), ("Alakazam", 56), ("Torterra", 57) }, 4, 18),
+        ["elite_four_lucian"] = (new[] { ("Golem", 57), ("Gyarados", 57), ("Luxray", 58), ("Staraptor", 58), ("Alakazam", 58), ("Infernape", 59) }, 4, 18),
+        ["champion_cynthia"] = (new[] { ("Golem", 60), ("Gyarados", 60), ("Luxray", 61), ("Staraptor", 61), ("Alakazam", 61), ("Infernape", 62) }, 4, 18),
+    };
+
+    public static IEnumerable<object[]> Leaders => References.Keys.Select(k => new object[] { k });
+
+    [Theory]
+    [MemberData(nameof(Leaders))]
+    public void ALaterLeaderIsWithinTheirBand(string id)
+    {
+        var (team, least, most) = References[id];
+        int wins = RemixBalance.Wins(id, team);
+        Assert.InRange(wins, least, most);
+    }
 
     [Fact]
     public void RoarkIsWithinHisBand()
