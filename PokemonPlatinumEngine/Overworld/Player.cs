@@ -202,6 +202,15 @@ public class Player
     /// </summary>
     public bool WildInSight { get; set; }
 
+    /// <summary>
+    /// The run button creeps instead (plan 10 · F12): set by the engine while the DexNav has found a Pokémon in the
+    /// grass nearby, so that Run held walks at <see cref="Pace.Sneak"/> and keeps it there.
+    /// </summary>
+    public bool SneaksInsteadOfRunning { get; set; }
+
+    /// <summary>The player is creeping this step (<see cref="SneaksInsteadOfRunning"/> and the run button held).</summary>
+    public bool IsSneaking { get; private set; }
+
     /// <summary>The player walked on the spot this frame against something in their way (plan 10 · F5: a wild Pokémon walked into).</summary>
     public bool PushedAgainst { get; private set; }
 
@@ -424,7 +433,7 @@ public class Player
         _ => 0f
     };
 
-    private Walker WalkerOn(Map map) => new(Mode, HeightOn(map), IsRunning, FastGear, Moves, Bike: Bike);
+    private Walker WalkerOn(Map map) => new(Mode, HeightOn(map), IsRunning, FastGear, Moves, Bike: Bike, Sneaking: IsSneaking);
 
     /// <summary>One frame of the player's movement, steered by the keys held.</summary>
     public void Update(float dt, Map map, Action<WildEncounterEntry> onWildEncounter, Action<Warp> onWarpTrigger, Func<bool>? onArrive = null)
@@ -586,7 +595,9 @@ public class Player
             skating = CanSkate && run && Mode is TravelMode.OnFoot or TravelMode.Skating;
             // Standing still, or the button let go, the skates are off (plan 23 · Z1)
             if (Mode == TravelMode.Skating && ((want == null && slant == null) || !skating)) Mode = TravelMode.OnFoot;
-            IsRunning = Mode == TravelMode.OnFoot && run && HasRunningShoes && !skating;
+            // With the DexNav's find nearby, the run button creeps instead (plan 10 · F12)
+            IsSneaking = Mode == TravelMode.OnFoot && run && SneaksInsteadOfRunning && !skating;
+            IsRunning = Mode == TravelMode.OnFoot && run && HasRunningShoes && !skating && !IsSneaking;
 
             if (slant is { } diagonal)
             {

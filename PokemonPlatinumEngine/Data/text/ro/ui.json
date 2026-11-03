@@ -1157,6 +1157,22 @@
     "found": "{name} ține ceva în gură. Vrea să ți-l dea!"
   },
 
+  "marks": {
+    "name": "Semnul: {word}",
+    "titled": "{pokemon} cel {word}",
+    "word": {
+      "rare": "Rar", "rowdy": "Gălăgios", "absentMinded": "Visător", "jittery": "Agitat", "excited": "Nerăbdător",
+      "charismatic": "Strălucitor", "calmness": "Calm", "intense": "Intens", "zonedOut": "Absent", "joyful": "Vesel",
+      "angry": "Supărat", "smiley": "Zâmbitor", "teary": "Lăcrimos", "upbeat": "Luminos", "peeved": "Morocănos",
+      "intellectual": "Gânditor", "ferocious": "Sălbatic", "crafty": "Viclean", "scowling": "Încruntat", "kindly": "Blând",
+      "flustered": "Fâstâcit", "pumpedUp": "Înflăcărat", "zeroEnergy": "Obosit", "prideful": "Mândru", "unsure": "Nesigur",
+      "humble": "Modest", "thorny": "Țepos", "vigor": "Viguros", "slump": "Abătut",
+      "lunchtime": "Flămând", "sleepyTime": "Somnoros", "dusk": "Crepuscular", "dawn": "Matinal",
+      "cloudy": "Înnorat", "rainy": "Plouat", "stormy": "Tunător", "snowy": "Înzăpezit", "blizzard": "Înghețat",
+      "dry": "Pârjolit", "sandstorm": "Nisipos", "misty": "Încețoșat", "fishing": "Pescuit", "alpha": "Puternic"
+    }
+  },
+
   "dexText": {
     "entry": "{name} este un {kind}, {types}, descoperit prima dată în {region}. Are {height} m înălțime și cântărește {weight} kg.",
     "typeOne": "de tip {type}",
@@ -2838,6 +2854,11 @@
       "dry": "Bateria s-a descărcat! Încă {steps} pași ca să se încarce.",
       "quiet": "Iarba din jur a rămas liniștită..."
     },
+    "dexNav": {
+      "on": "DexNav-ul a fost pornit. Va asculta după Pokémoni ascunși în iarbă.",
+      "off": "DexNav-ul a fost oprit.",
+      "scared": "Pokémonul ascuns în iarbă a fugit!"
+    },
     "noMapHere": "Nu există o hartă a acestui loc.",
     "noWater": "Nu e apă aici în care să pescuiești.",
     "noWayOut": "Aici nu se găsește nicio ieșire cu el.",
@@ -3375,6 +3396,9 @@
     "restoredALittleHpUsing": "{pokemon} și-a refăcut puțin HP cu {item}!",
     "lostSomeOfIts": "{pokemon} și-a pierdut o parte din HP!",
     "hungOnUsingIts": "{pokemon} a rezistat cu ajutorul obiectului {item}!",
+    "affectionHeldOn": "{pokemon} a rezistat, ca să nu te dezamăgească!",
+    "affectionShookOff": "{pokemon} a scăpat de {condition} de dragul tău!",
+    "affectionDodged": "{pokemon} s-a ferit, dornic să te impresioneze!",
     "ateIts": "{pokemon} a mâncat {item}!",
     "usedItsToGet": "{pokemon} a folosit {item} și s-a încărcat de energie!",
     "usedItsItem": "{pokemon} a folosit obiectul {item}!",

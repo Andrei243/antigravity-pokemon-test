@@ -287,7 +287,7 @@ The baseline is Platinum's own code (`Pokemon_GetEvolutionTargetSpecies`, `Evolu
 | Milcery | The player spins while it holds a Sweet | The same: four quarter turns the same way | Turning takes a step here, so a tight circle counts |
 | Ursaring | Peat Block under a full moon | Peat Block at night | No phases of the moon |
 | Cosmoem | Solgaleo or Lunala by game version | Solgaleo by day, Lunala at night | No versions |
-| (affection) | Pokémon-Amie hearts | Friendship 220 | Generation 8 folded affection into friendship |
+| (affection) | Pokémon-Amie hearts | Friendship 220 | Generation 8 folded affection into friendship; its perks in battle are read from friendship too (plan 10 · F7, "Affection's perks, marks, the camp and the DexNav") |
 | Sliggoo | Rain in the field | The same; battles' rain doesn't count | Done: the field's weather where the player stands (plan 04 · G9) |
 | Own Tempo Rockruff | Level 25 at dusk, 17:00 to 17:59 | Level 25 in Platinum's evening, 17:00 to 19:59 | Platinum's clock has no dusk of its own; its evening is the nearest of its five times of day |
 | Galarian Farfetch'd | Three critical hits in one battle | The same, evolving as the battle ends (not after one that was lost); B can stop it, as it can a level-up | Evolutions wait for the battle's end here anyway |
@@ -8478,3 +8478,47 @@ so does every region of this game before Kalos.
   `VAR_LILYCOVE_MUSEUM_2F_STATE` is nought): on the first visit to the gallery the curator turns to the player, both look
   at the frames, and he asks for paintings of contest winners; the variable is then 1. *Ours*: an arrival's script in
   place of Emerald's frame script, and a game whose frames already hold a painting is given the variable with no scene.
+
+## Affection's perks, marks, the camp and the DexNav (2026-11-03, plan 10 · F6, F7, F9, F11, F12)
+
+The rules of plan 10's companions that need no picture; what they draw waits (plan 10's Status says what).
+
+- **Affection's perks** (`Models/Affection.cs`, `Ruleset.AffectionPerks`, true under the modern rules alone): Generation 6
+  kept affection beside friendship; Generation 8 read the same favours from friendship, and so does this game, where
+  affection was folded into friendship 220 already (the evolution table's row). Two steps: *affectionate* from friendship
+  220, *devoted* at 255. Only the player's own Pokémon (never a partner's, never in the Battle Frontier) have them:
+  a fifth more EXP (`BattleCore.Give`, before the crossed region's half and Easy's three halves); a hit that would knock it
+  out leaves it 1 HP, 10% affectionate and 25% devoted, after its item and ability had their say (`HoldsOnForTheTrainer`);
+  its status condition shaken off at a turn's end, 10% and 20%, after its item's turn end (`ShakesOffForTheTrainer`); and
+  devoted alone, a move that would have hit dodged 10% of the time (`Hits`, after the accuracy roll) and one stage more
+  for critical hits (`DamageCalculator.RollsCritical`). *Ours*: the chances are our own choice in the spirit of
+  Generation 6's table, and the lines are our own words. Each roll is `RollKind.Affection` on the battle's generator,
+  made only where a perk can be given, so a battle where nobody's friendship reaches 220 draws exactly what it drew
+  (`battles-modern.txt` did not move).
+- **Marks** (`Models/EncounterMarks.cs`): a caught wild Pokémon may carry one mark of the moment it was met, tried in the
+  plan's order (rare 1/1000, personality 1/100 with one of the twenty-eight by personality, time 1/50, weather 1/50,
+  fishing 1/25 for one reeled in). *Ours*: nothing is drawn: each try is read from the personality with a salt of its
+  own (`SplitMix.Mix`), so the same Pokémon met at the same moment carries the same mark on every run, and no roll of
+  the game moves. The time marks follow Platinum's five times of day (morning Dawn, day Lunchtime, evening Dusk, night
+  and late night Sleepy-Time); the weather marks the field's weathers (rain and heavy rain Rainy, a thunderstorm
+  Stormy, snow Snowy, a blizzard and hail Blizzard, Emerald's drought Dry, a sandstorm Sandstorm, fog Misty; ash and a
+  clear sky none). The marks' words and titles are ours. They are kept as `Pokemon.EncounterMarks`, not `Marks`,
+  which are the boxes' markings; an older save's Pokémon has none, with no version raised. The title the player chooses
+  (`Pokemon.Title`, one of its marks) goes into the send-out lines alone ("Go! Starly the Sleepy!"); every other line
+  names it as before. Choosing it on the summary, and the marks' row and glyph, wait for their drawing.
+- **The camp** (`Models/Camp.cs`, `UI/CampScreen.cs`): each Pokémon is petted and fed once a visit, by two events of
+  Platinum's table that Platinum hasn't (`FriendshipEvent.Petted` 3/2/1, `Fed` 5/3/2, with the Luxury Ball's and the
+  Soothe Bell's bonus as any event); a meal is one of the bag's berries (decision 4: no cooking). A visit after a
+  battle cures the team's status conditions (not fainting) once per battle (`CampCare`, not saved). Its screen's logic is
+  built; its stage, models, faces and its START menu entry wait for a session that can look at them, so nothing opens
+  it yet.
+- **The DexNav** (`Overworld/DexNav.cs`, `Core/GameEngine.DexNav.cs`; decision 6's recommendation, a key item): its HERE
+  list is the species of the place the player stands in met now (the grass at this hour, the water and the rods),
+  from `Habitats.At`, the region's habitats by cell, with what the Pokédex knows and each species' search level. Switched
+  on with USE, a step on foot finds a Pokémon hiding in the grass in sight one time in twelve (on the field's generator,
+  from the place's own table as Sweet Scent draws one); Run held then creeps (`Pace.Sneak`, 3 tiles a second), and
+  stepping onto it meets it. A run, a Bicycle or a hop in sight, or a walk within three tiles, scares it off and breaks
+  the chain; walking out of sight forgets it. A find beaten or caught raises its species' search level and its chain.
+  *Ours*: its bonus is perfect IVs, one from search level 10 and two from 50, one more from a chain of 5 and two from
+  10, three at most; and under the modern rules its hidden ability, 5% from level 5, 10% from 25, 15% from 50 and 20%
+  from 100. The rustle is not drawn yet and nobody gives the item yet: both wait for the session that draws them.

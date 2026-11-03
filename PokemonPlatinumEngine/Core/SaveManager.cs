@@ -279,6 +279,9 @@ public class SaveData
     /// <summary>The Apricorn Box, the trees picked and Kurt's order (plan 20 · J6). Null in saves from before them, and while none has been picked.</summary>
     public Models.ApricornSave? Apricorns { get; set; }
 
+    /// <summary>The DexNav (plan 10 · F11, F12): switched on or not, the search levels and the chain. Null while it has never been used, and in older saves.</summary>
+    public Overworld.DexNavSave? DexNav { get; set; }
+
     /// <summary>Cameron's photo album (plan 20, part q); null while empty, so an older save needs nothing.</summary>
     public List<Models.Photo>? Photos { get; set; }
 
@@ -719,6 +722,12 @@ public class SavedPokemonData
     /// <summary>The ribbons it has won (plan 06 · R17a), by the original's names; left out for one with none.</summary>
     public List<string>? Ribbons { get; set; }
 
+    /// <summary>The marks it carries from its encounter (plan 10 · F9), by name; left out for one with none, which is every Pokémon of an older save.</summary>
+    public List<string>? EncounterMarks { get; set; }
+
+    /// <summary>The mark chosen as its title (plan 10 · F9); left out for none.</summary>
+    public string? Title { get; set; }
+
     /// <summary>The Ball Capsule on its ball (plan 06 · R17b): its number among the case's twelve and its Seals; left out for one with none.</summary>
     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]
     public int CapsuleId { get; set; }
@@ -793,6 +802,8 @@ public class SavedPokemonData
             Language = p.Language,
             EvolutionProgress = p.EvolutionProgress.Count > 0 ? new Dictionary<string, int>(p.EvolutionProgress) : null,
             Ribbons = p.Ribbons.Count > 0 ? p.Ribbons.ToList() : null,
+            EncounterMarks = p.EncounterMarks.Count > 0 ? p.EncounterMarks.ToList() : null,
+            Title = p.Title,
             CapsuleId = p.CapsuleId,
             Capsule = p.CapsuleId != 0 ? (p.Capsule ?? BallCapsule.Empty).ToSave() : null,
             DynamaxLevel = p.DynamaxLevel,
@@ -866,6 +877,9 @@ public class SavedPokemonData
         if (Personality is { } personality) p.Personality = personality;
         foreach (var (key, count) in EvolutionProgress ?? new()) p.EvolutionProgress[key] = count;
         if (Ribbons != null) p.Ribbons.UnionWith(Ribbons);
+        if (EncounterMarks != null) p.EncounterMarks.UnionWith(EncounterMarks);
+        // A title is one of its marks or nothing
+        p.Title = Title != null && p.EncounterMarks.Contains(Title) ? Title : null;
         if (CapsuleId is > 0 and <= SealCase.Capsules)
         {
             p.CapsuleId = CapsuleId;

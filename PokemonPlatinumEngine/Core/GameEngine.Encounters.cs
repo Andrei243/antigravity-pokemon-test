@@ -180,6 +180,10 @@ public partial class GameEngine
     {
         bool field = flow.FieldEncounter;
         flow.FieldEncounter = flow.Hooked = false;
+        // The DexNav's chain goes on or breaks (plan 10 · F12)
+        DexNavAfterBattle(fought, defeat);
+        // ...and the camp may cure the team once more (plan 10 · F6)
+        flow.CampCare.BattleEnded();
         if (!field) return;
         bool won = fought.Result == BattleResult.PlayerVictory, caught = fought.Result == BattleResult.EnemyCaught;
         if (!defeat && fought.EnemyPokemon is { } foe && fought.Kind is BattleKind.Normal or BattleKind.Roamer)

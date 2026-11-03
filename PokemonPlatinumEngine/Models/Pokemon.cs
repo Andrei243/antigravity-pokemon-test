@@ -537,6 +537,15 @@ public class Pokemon
     public SortedSet<string> Ribbons { get; private set; } = new(StringComparer.Ordinal);
 
     /// <summary>
+    /// The marks it carries from the moment it was met (plan 10 · F9, <see cref="Models.EncounterMarks"/>), each by its
+    /// <see cref="Mark"/>'s name; empty for nearly everyone. Saved.
+    /// </summary>
+    public SortedSet<string> EncounterMarks { get; private set; } = new(StringComparer.Ordinal);
+
+    /// <summary>The mark the player chose as its title (plan 10 · F9), by name, which its send-out lines add to its name; null for none. Saved.</summary>
+    public string? Title { get; set; }
+
+    /// <summary>
     /// The Ball Capsule on its ball (plan 06 · R17b; the original's <c>MON_DATA_BALL_CAPSULE_ID</c> and
     /// <c>MON_DATA_BALL_CAPSULE</c>): the capsule's number among the Seal Case's twelve, from 1, or 0 for none, and a
     /// copy of its Seals, which burst as the Pokémon is sent out in battle (<see cref="CapsuleRules"/>). A trainer's
@@ -1336,6 +1345,7 @@ public class Pokemon
         copy.StatStages = new Dictionary<StatType, int>(StatStages);
         copy.EvolutionProgress = new Dictionary<string, int>(EvolutionProgress);
         copy.Ribbons = new SortedSet<string>(Ribbons, StringComparer.Ordinal);
+        copy.EncounterMarks = new SortedSet<string>(EncounterMarks, StringComparer.Ordinal);
         return copy;
     }
 
@@ -1414,6 +1424,9 @@ public class Pokemon
         foreach (var (key, count) in other.EvolutionProgress) EvolutionProgress[key] = count;
         Ribbons.Clear();
         Ribbons.UnionWith(other.Ribbons);
+        EncounterMarks.Clear();
+        EncounterMarks.UnionWith(other.EncounterMarks);
+        Title = other.Title;
 
         for (int i = 0; i < other.Moves.Count; i++)
         {

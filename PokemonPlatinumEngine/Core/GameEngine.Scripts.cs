@@ -251,6 +251,9 @@ public partial class GameEngine
     {
         bool cave = flow.Map.AreaAt(flow.Player.GridX, flow.Player.GridY)?.IsCave ?? flow.Map.IsCave;
         NoteLeaving(cave);
+        // The DexNav's find stays in its own place (plan 10 · F12)
+        rustle = null;
+        flow.Player.SneaksInsteadOfRunning = false;
         // Going anywhere else ends the rematches the Vs. Seeker found (FieldMapChange_UpdateGameData)
         VsSeeker.Reset(flow.Story);
         foreach (var map in MapDatabase.MapNames.Select(MapDatabase.Get)) foreach (var npc in map.Everyone) npc.ReadyForRematch = false;
@@ -514,6 +517,12 @@ public partial class GameEngine
         if (item.FieldUse == "PokeRadar")
         {
             UsePokeRadar();
+            return;
+        }
+        // The DexNav is switched on or off (plan 10 · F12)
+        if (item.FieldUse == "DexNav")
+        {
+            SwitchDexNav();
             return;
         }
         // Honey from the bag draws out a wild Pokémon as Sweet Scent does, and is used up (UseHoneyFromMenu)

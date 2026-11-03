@@ -760,6 +760,22 @@
     "found": "{name} is holding something in its mouth. It wants you to have it!"
   },
 
+  "marks": {
+    "name": "{word} Mark",
+    "titled": "{pokemon} the {word}",
+    "word": {
+      "rare": "Rare", "rowdy": "Rowdy", "absentMinded": "Dreamy", "jittery": "Jittery", "excited": "Eager",
+      "charismatic": "Dazzling", "calmness": "Calm", "intense": "Intense", "zonedOut": "Faraway", "joyful": "Joyful",
+      "angry": "Cross", "smiley": "Smiling", "teary": "Tearful", "upbeat": "Bright", "peeved": "Grumpy",
+      "intellectual": "Thoughtful", "ferocious": "Wild", "crafty": "Sly", "scowling": "Glaring", "kindly": "Kindly",
+      "flustered": "Flustered", "pumpedUp": "Spirited", "zeroEnergy": "Weary", "prideful": "Proud", "unsure": "Unsure",
+      "humble": "Humble", "thorny": "Prickly", "vigor": "Hardy", "slump": "Glum",
+      "lunchtime": "Peckish", "sleepyTime": "Sleepy", "dusk": "Dusky", "dawn": "Early",
+      "cloudy": "Cloudy", "rainy": "Rain-Soaked", "stormy": "Thunderous", "snowy": "Snowy", "blizzard": "Frosty",
+      "dry": "Sun-Baked", "sandstorm": "Sandy", "misty": "Misty", "fishing": "Hooked", "alpha": "Mighty"
+    }
+  },
+
   "dexText": {
     "entry": "{name} is {article} {kind}, {types}, first found in {region}. It stands {height} m tall and weighs {weight} kg.",
     "typeOne": "{type}-type",
@@ -2685,6 +2701,11 @@
       "dry": "The battery has run dry! {steps} more steps to charge it.",
       "quiet": "The grass around stayed quiet..."
     },
+    "dexNav": {
+      "on": "The DexNav was switched on. It will listen for Pokémon hiding in the grass.",
+      "off": "The DexNav was switched off.",
+      "scared": "The Pokémon hiding in the grass fled!"
+    },
     "noMapHere": "There is no map of this place.",
     "noWater": "There's no water here to fish in.",
     "noWayOut": "There's no way out to be found with it here.",
@@ -3216,6 +3237,9 @@
     "restoredALittleHpUsing": "{pokemon} restored a little HP using its {item}!",
     "lostSomeOfIts": "{pokemon} lost some of its HP!",
     "hungOnUsingIts": "{pokemon} hung on using its {item}!",
+    "affectionHeldOn": "{pokemon} held on, not wanting to let you down!",
+    "affectionShookOff": "{pokemon} shrugged off its {condition} for your sake!",
+    "affectionDodged": "{pokemon} slipped out of the way, keen to impress you!",
     "ateIts": "{pokemon} ate its {item}!",
     "usedItsToGet": "{pokemon} used its {item} to get pumped!",
     "usedItsItem": "{pokemon} used its {item}!",

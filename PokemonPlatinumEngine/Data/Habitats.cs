@@ -34,6 +34,9 @@ public sealed record Habitat(string Name, IReadOnlyList<(int X, int Y)> Cells, H
     public string? How { get; init; }
 }
 
+/// <summary>A species that lives in a cell of the map, the place it lives in there and the ways it is met (plan 10 · F11).</summary>
+public sealed record HabitatHere(string Species, string Place, HabitatWays Ways);
+
 /// <summary>
 /// Where each species lives in a region, for the Pokédex's area page (plan 03 · D10): read from the region's
 /// habitats file (<see cref="WorldHabitatsFile"/>), which <c>tools/MapImporter</c> writes for every area with wild
@@ -106,6 +109,12 @@ public sealed class Habitats
         {
             if (!bySpecies.TryGetValue(species, out var list)) bySpecies[species] = list = new List<Habitat>();
             list.Add(new Habitat(name, cells.ToList(), w));
+            // ...and the other way round, by cell (plan 10 · F11), in the same order
+            foreach (var cell in cells)
+            {
+                if (!byCell.TryGetValue(cell, out var here)) byCell[cell] = here = new List<HabitatHere>();
+                here.Add(new HabitatHere(species, name, w));
+            }
         }
 
         // The Pokémon met in a way of their own, after the tables' places
@@ -119,6 +128,23 @@ public sealed class Habitats
 
     /// <summary>The places a species lives, in the order the region's areas come (empty if none).</summary>
     public IReadOnlyList<Habitat> Of(string species) => bySpecies.TryGetValue(species, out var list) ? list : Array.Empty<Habitat>();
+
+    /// <summary>A habitat's cells are the region map's chunks, so a tile of the overworld is in the cell of its chunk.</summary>
+    public const int CellTiles = 32;
+
+    /// <summary>
+    /// What lives in a cell of the map (plan 10 · F11, the DexNav's HERE list): every species the tables of the areas
+    /// on it give, with the ways each is met there, in the order the region's areas come; the other way round from
+    /// <see cref="Of(string)"/>. Those met in a way of their own (<see cref="HabitatWays.Special"/>) are left out.
+    /// </summary>
+    public IReadOnlyList<HabitatHere> At(int cellX, int cellY) =>
+        byCell.TryGetValue((cellX, cellY), out var list) ? list : Array.Empty<HabitatHere>();
+
+    /// <summary>What lives at a tile of the overworld: <see cref="At(int, int)"/> of its cell.</summary>
+    public IReadOnlyList<HabitatHere> AtTile(int x, int y) =>
+        x < 0 || y < 0 ? Array.Empty<HabitatHere>() : At(x / CellTiles, y / CellTiles);
+
+    private readonly Dictionary<(int, int), List<HabitatHere>> byCell = new();
 
     /// <summary>
     /// The places a species lives in a randomised run (plan 13 · V6), where the species of the tables stand for others: the

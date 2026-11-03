@@ -209,6 +209,8 @@ public sealed partial class BattleCore
             if (b.IsActive) ItemEffectOf(b)?.OnConditionChanged(this, b, null);
             if (b.IsActive) ItemEffectOf(b)?.AtEndOfTurn(this, b);
             Digest(turnEnd: true);
+            // A Pokémon of the player's that loves it may shake off its condition for its sake (plan 10 · F7)
+            if (b.IsActive) ShakesOffForTheTrainer(b);
 
             // Leech Seed: an eighth of its HP goes to whoever stands where the seeder stood
             if (b.IsActive && v.SeededBy is { } to && At(to).IsActive && !guarded)
