@@ -1,0 +1,41 @@
+{
+  // Route 1 and the Hau'oli Outskirts (plan 23 · Z5, first part): drawn by hand, our words. The player's new home stands
+  // on a lane off the road north, and Professor Kukui's laboratory on the beach to the south, where the road turns east
+  // into Hau'oli City. The first chapter's scene at the door (alola_route_1.txt): Professor Kukui comes to meet the
+  // player the first time they step out, and leads the way up to Iki Town. He is hidden by a flag of ours until then.
+  // The houses are the islands' own way of building (Islander)
+  "area": "alola_route_1",
+  "bgmTrack": "alola/route1",
+  "trees": "Round",
+  "architecture": "Islander",
+  "doors": [
+    { "warp": 0, "map": "AlolaRoute1_PlayersHouse", "x": 6, "y": 10, "facing": "Up" },
+    { "warp": 1, "map": "AlolaRoute1_KukuiLab", "x": 7, "y": 10, "facing": "Up" }
+  ],
+  "people": {
+    "kukui": { "name": "Prof. Kukui", "npcType": "kukui", "script": "Kukui", "still": true, "hiddenBy": "FLAG_ALOLA_HIDE_KUKUI_HOME" },
+    "youngster": {
+      "name": "Keoni",
+      "npcType": "Youngster",
+      "trainer": {
+        "dialogueBefore": "Youngster Keoni: Alola! You're new here, aren't you? Let's see what you and your partner can do!",
+        "dialogueAfter": "Youngster Keoni: Whoa, you two are already in tune. I'll have to train harder!"
+      }
+    },
+    "girl": {
+      "name": "Girl",
+      "npcType": "Lass",
+      "dialog": [ "Alola! People here say it for hello and for goodbye. You'll be saying it all day in no time." ]
+    },
+    "surfer": {
+      "name": "Surfer",
+      "npcType": "swimmer_m",
+      "still": true,
+      "dialog": [ "The waves off the outskirts are gentle in the mornings. Perfect for watching the Wingull dive." ]
+    }
+  },
+  "signs": {
+    "RouteSign": "Route 1\nNorth: Iki Town\nSouth: Hau'oli Outskirts",
+    "OutskirtsSign": "Hau'oli Outskirts\nEast: Hau'oli City\nWest: Pokémon Research Lab"
+  }
+}

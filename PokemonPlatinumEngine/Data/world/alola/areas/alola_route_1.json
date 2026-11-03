@@ -1,0 +1,48 @@
+{
+  "key": "alola_route_1",
+  "index": 0,
+  "name": "Route 1",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "ROUTE_1",
+  "nightMusic": "ROUTE_1",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 238, "z": 157, "to": "AlolaRoute1_PlayersHouse", "toWarp": 0 },
+    { "x": 236, "z": 172, "to": "AlolaRoute1_KukuiLab", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "kukui", "looks": "kukui", "movement": "look_west", "x": 240, "z": 158, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_HIDE_KUKUI_HOME", "script": "" },
+    { "id": "youngster", "looks": "youngster", "movement": "look_east", "x": 243, "z": 145, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_YOUNGSTER_KEONI" },
+    { "id": "girl", "looks": "lass", "movement": "wander_around", "x": 244, "z": 162, "facing": 1, "rangeX": 2, "rangeZ": 1, "script": "" },
+    { "id": "surfer", "looks": "swimmer_m", "movement": "look_south", "x": 256, "z": 176, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 258, "z": 166, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_ROUTE_1_POTION", "item": "Potion", "script": "" }
+  ],
+  "signs": [
+    { "x": 247, "z": 141, "type": 0, "script": "RouteSign" },
+    { "x": 264, "z": 175, "type": 0, "script": "OutskirtsSign" }
+  ],
+  "triggers": [],
+  "land": [
+    { "species": "Pikipek", "level": 2 },
+    { "species": "Yungoos", "level": 2 },
+    { "species": "Caterpie", "level": 2 },
+    { "species": "Grubbin", "level": 2 },
+    { "species": "Pikipek", "level": 3 },
+    { "species": "Yungoos", "level": 3 },
+    { "species": "Ledyba", "level": 3 },
+    { "species": "Caterpie", "level": 3 },
+    { "species": "Grubbin", "level": 3 },
+    { "species": "Ledyba", "level": 2 },
+    { "species": "Pikipek", "level": 4 },
+    { "species": "Yungoos", "level": 4 }
+  ],
+  "landRate": 20
+}

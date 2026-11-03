@@ -785,7 +785,15 @@
     "kalosShalour": "Take Route 11 east and north to Shalour City, and climb to the Tower of Mastery on its shore.",
     "kalosKorrina": "Win the Rumble Badge from Korrina at the Gym east of Shalour City's main street.",
     "kalosMastery": "Go back to the Tower of Mastery and see Gurkinn, its master.",
-    "kalosFree": "That is as far as the road runs for now. Kalos is yours to explore."
+    "kalosFree": "That is as far as the road runs for now. Kalos is yours to explore.",
+    "alolaMom": "Head for the door. Mom has something to tell you.",
+    "alolaDoor": "Step outside. Professor Kukui is waiting for you.",
+    "alolaIkiTown": "Go north up Route 1 to Iki Town.",
+    "alolaTrail": "Look for the girl who ran up the Mahalo Trail, north of Iki Town.",
+    "alolaKahuna": "Go back down to Iki Town. The kahuna has come home.",
+    "alolaLab": "Visit Professor Kukui's laboratory on the beach, south of your house.",
+    "alolaHauoli": "Follow the shore east into Hau'oli City.",
+    "alolaFree": "That is as far as the road runs for now. Melemele is yours to explore."
   },
 
   "close": {
@@ -1233,6 +1241,8 @@
     "Basic": "Basic", "Toxic": "Toxic", "Insect": "Insect", "Bolt": "Bolt", "Quake": "Quake", "Jet": "Jet", "Legend": "Legend", "Wave": "Wave"
 ,
     "Bug": "Bug", "Cliff": "Cliff", "Rumble": "Rumble", "Plant": "Plant", "Voltage": "Voltage", "Fairy": "Fairy", "Psychic": "Psychic", "Iceberg": "Iceberg"
+,
+    "Melemele": "Melemele", "Akala": "Akala", "UlaUla": "Ula'ula", "Poni": "Poni"
   },
   "run": {
     "heading": "WAYS TO PLAY",

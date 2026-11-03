@@ -1,0 +1,26 @@
+{
+  // Alola drawn by hand on the tile grid (plan 23 · Z5, first part; the user's decision of 2026-11-02 for Kalos, which
+  // Alola follows: Sun and Moon have no decompilation that holds their maps and no dump is read): the order and shape of
+  // Melemele Island's places as they are publicly described, in our own drawing, never a picture of the original's.
+  // Each island is a matrix of its own (plan 23's Alola decisions); this is Melemele, the first, 16 chunks by 16, so a
+  // tile keeps its place as more of it is drawn. The way north from Hau'oli City's west end runs up Route 1, past the
+  // player's new home and Professor Kukui's laboratory on the beach of the Hau'oli Outskirts, to Iki Town on its hill,
+  // and on up the Mahalo Trail over a plank bridge to the island guardian's ruins.
+  // Each drawing's north-west corner is a tile of the island. After changing a drawing run
+  // `dotnet run --project tools/MapDraw -- alola` (`--check` says whether the world files are what the drawings give).
+  "region": "Alola",
+  "width": 16,
+  "height": 16,
+  "pieces": [
+    { "file": "mahalo_trail.txt", "x": 236, "z": 72 },
+    { "file": "iki_town.txt", "x": 230, "z": 112 },
+    { "file": "alola_route_1.txt", "x": 228, "z": 139 },
+    { "file": "hauoli_city.txt", "x": 272, "z": 160 }
+  ],
+  "areas": [
+    { "key": "alola_route_1", "x": 228, "z": 139, "width": 44, "depth": 42 },
+    { "key": "iki_town", "x": 230, "z": 112, "width": 40, "depth": 27 },
+    { "key": "mahalo_trail", "x": 236, "z": 72, "width": 28, "depth": 40 },
+    { "key": "hauoli_city", "x": 272, "z": 160, "width": 40, "depth": 21 }
+  ]
+}

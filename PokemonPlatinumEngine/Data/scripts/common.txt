@@ -2770,6 +2770,23 @@ script KalosLumiose
   return
 
 
+# ------------------------------------------------------------------ Alola (plan 23 · Z5)
+
+# What every game starts with in Alola: the professor at the door, in Iki Town and in his laboratory, the kahuna and
+# Hau in Iki Town and the girl on the Mahalo Trail, each hidden until a scene brings them on. Run with no screen after
+# NewGame for every new game (Story/StoryMigration.BeginNewGame runs each region's <Region>NewGame). It may only set
+# flags and variables, and ends in return.
+script AlolaNewGame
+  setflag FLAG_ALOLA_HIDE_KUKUI_HOME
+  setflag FLAG_ALOLA_HIDE_KUKUI_IKI
+  setflag FLAG_ALOLA_HIDE_KUKUI_LAB
+  setflag FLAG_ALOLA_HIDE_HALA_IKI
+  setflag FLAG_ALOLA_HIDE_HAU_IKI
+  setflag FLAG_ALOLA_HIDE_LILLIE_TRAIL
+  setflag FLAG_ALOLA_STORY_BEGUN
+  return
+
+
 # ------------------------------------------------------------------ Unova (plan 22 · U5)
 
 # What every game starts with in Unova, as Black 2's new game leaves its first chapter's people: Mom at home, Hugh and

@@ -94,7 +94,7 @@ public static class Objectives
         // Nothing presses any more
         S(34, "free", null),
     }
-    .Concat(Kanto).Concat(Johto).Concat(Hoenn).Concat(Unova).Concat(Kalos).ToArray();
+    .Concat(Kanto).Concat(Johto).Concat(Hoenn).Concat(Unova).Concat(Kalos).Concat(Alola).ToArray();
 
     // The later regions (plan 12 · Q14, their part). Each has a block of a hundred numbers of its own, its derived
     // conditions read from what only its own chapters set (its badges, its own flags and counts, never a flag another
@@ -246,6 +246,17 @@ public static class Objectives
         (521, "kalosMastery", AtLeast("VAR_KALOS_STORY", 22), false),
         // What comes after the Key Stone is a later session's
         (599, "kalosFree", null, false));
+    private static Objective[] Alola => Region(RegionDatabase.Alola,
+        // Plan 23 · Z5: VAR_ALOLA_STORY, alola_route_1.txt's count, from the new home to Hau'oli City
+        (600, "alolaMom", AtLeast("VAR_ALOLA_STORY", 1), true),
+        (601, "alolaDoor", AtLeast("VAR_ALOLA_STORY", 2), true),
+        (602, "alolaIkiTown", AtLeast("VAR_ALOLA_STORY", 3), true),
+        (603, "alolaTrail", AtLeast("VAR_ALOLA_STORY", 4), true),
+        (604, "alolaKahuna", AtLeast("VAR_ALOLA_STORY", 5), true),
+        (605, "alolaLab", AtLeast("VAR_ALOLA_STORY", 6), true),
+        (606, "alolaHauoli", AtLeast("VAR_ALOLA_STORY", 7), true),
+        // What comes after Hau'oli City is a later session's
+        (699, "alolaFree", null, false));
 
     private static readonly Dictionary<string, Objective> ByName = All.ToDictionary(o => o.Name, StringComparer.Ordinal);
 

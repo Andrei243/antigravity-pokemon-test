@@ -1,0 +1,35 @@
+{
+  "key": "iki_town",
+  "index": 1,
+  "name": "Iki Town",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "IKI_TOWN",
+  "nightMusic": "IKI_TOWN",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 237, "z": 118, "to": "IkiTown_HalasHouse", "toWarp": 0 },
+    { "x": 261, "z": 118, "to": "IkiTown_NortheastHouse", "toWarp": 0 },
+    { "x": 235, "z": 131, "to": "IkiTown_SouthwestHouse", "toWarp": 0 },
+    { "x": 264, "z": 131, "to": "IkiTown_SoutheastHouse", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "kukui", "looks": "kukui", "movement": "look_south", "x": 250, "z": 128, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_HIDE_KUKUI_IKI", "script": "" },
+    { "id": "hala", "looks": "hala", "movement": "look_south", "x": 249, "z": 121, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_HIDE_HALA_IKI", "script": "" },
+    { "id": "hau", "looks": "hau", "movement": "look_west", "x": 252, "z": 124, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_HIDE_HAU_IKI", "script": "" },
+    { "id": "elder", "looks": "old_woman", "movement": "look_around", "x": 243, "z": 116, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "boy", "looks": "youngster", "movement": "wander_around", "x": 256, "z": 133, "facing": 1, "rangeX": 2, "rangeZ": 1, "script": "" },
+    { "id": "vendor", "looks": "clerk", "movement": "look_south", "x": 266, "z": 124, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" }
+  ],
+  "signs": [
+    { "x": 254, "z": 128, "type": 0, "script": "TownSign" }
+  ],
+  "triggers": []
+}

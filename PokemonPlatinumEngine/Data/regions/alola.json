@@ -1,0 +1,68 @@
+{
+  "id": "Alola",
+  "folder": "alola",
+  // Alola's songs play in the modern sound (plan 31 · MU2, MU4): its own instruments, written before the region was
+  "sound": "modern",
+  "models": "alola",
+  // Melemele Island, the first of the four islands, each a matrix of its own (plan 23's Alola decisions); the others
+  // are later sessions' maps
+  "map": "Melemele",
+  // Alola's first places as they are drawn by hand (plan 23 · Z5; tools/MapDraw/alola): Sun and Moon have no
+  // decompilation that holds their maps and no dump is read, so the island is laid in its shape on the grid. Sun and
+  // Moon's own Alola Pokédex, until a later session decides between it and Ultra Sun and Ultra Moon's
+  "dex": "original-alola",
+  "nationalUnlock": "HallOfFame",
+  // A new game begun here (--region Alola) wakes in the player's new home on Route 1 with nothing, and the kahuna of
+  // Iki Town hands over the first Pokémon (plan 23 · Z5)
+  "hasStory": true,
+  // How the player moves here (plan 30 · FM1): eight ways on the grid, as Kalos does, until plan 30's gate lets the
+  // later regions move freely (stage 2, FM7 to FM9). The body kit stays chibi until plan 30 · FM3 and FM4 build the
+  // grown one
+  "movement": { "directions": "Eight", "speed": "Paces" },
+  // The rival is the kahuna's grandson, who has the same name in every game
+  "rival": "Hau",
+  "heroes": { "boy": "PLAYER", "girl": "DAWN" },
+  "starters": [ "Rowlet", "Litten", "Popplio" ],
+  // Alola has trials in place of Gyms (plan 23's Alola decisions): a stamp on the card for each island's grand trial,
+  // won from its kahuna. The trials themselves are plan 23 · Z6's
+  "badges": [ "Melemele", "Akala", "UlaUla", "Poni" ],
+  // Sun and Moon ask no badge of a field move: there are none, and the Ride Pager's grants are plan 23 · Z5's later part
+  "gates": {},
+  "professor": {
+    "name": "Prof. Kukui",
+    "look": "KUKUI",
+    "species": "Rockruff",
+    "lines": {
+      "hello": "Alola! You're the new family from Kanto? Welcome, welcome!",
+      "welcome": "Welcome to the world of Pokémon!",
+      "myName": "I'm Kukui, the professor of these islands. I study the moves Pokémon use, by taking them full on, if you want to know!",
+      "world": "Pokémon live all over the four islands: in the tall grass, on the beaches, out in the warm sea and up on the volcano.",
+      "oneOfThem": "This little pup goes everywhere with me. Say alola!",
+      "liveAlongside": "Here people and Pokémon live side by side, every day. They work together, they celebrate together, and they battle together.",
+      "study": "And when they battle, the moves they put everything into teach me more than any book.",
+      "enough": "But that's enough about me, yeah? Tell me about you.",
+      "boyOrGirl": "Are you a boy, or are you a girl?",
+      "askName": "And what's your name, cousin?",
+      "nextDoor": "There's a boy up in Iki Town who's been waiting for someone new to battle. You'll like him.",
+      "neverStill": "He's always hungry, and always smiling.",
+      "fineName": "{name}! Woo! A fine name.",
+      "ofCourse": "I'd say the two of you are going to have quite the island challenge.",
+      "story": "{name}, your new life in Alola begins on Melemele Island, in a house on Route 1 a short walk from the beach.",
+      "offYouGo": "Alola! Let's go!"
+    }
+  },
+  // The heal places of the places drawn so far: the player's house on Route 1, where a white-out goes before any
+  // Pokémon Center, and Hau'oli City's Pokémon Center
+  "spawns": [
+    { "id": 1, "area": "alola_route_1", "x": 238, "y": 158, "room": "AlolaRoute1_PlayersHouse" },
+    { "id": 2, "area": "hauoli_city", "x": 281, "y": 166, "room": "HauoliCity_PokemonCenter_1F" }
+  ],
+  // Plan 18 · W4: Sun and Moon's levels for a team that crossed from Kalos, from Kalos's Champion's 205 on the first
+  // route to Alola's Champion at 224 (the W4 study's place for it, beside Kalos's post-game at 222 = 224 − 2); W4b-1:
+  // the post-game's strongest (about 70, approximate until the region's post-game is built) at 238, min(1.15 × 224,
+  // Galar's 240 − 2, 260)
+  "levels": [[2, 205], [58, 224], [70, 238]],
+  // Plan 18 · W4b-1: the level cap by stamps held, Sun and Moon's own levels (each kahuna's best in rising order, then
+  // the Champion's); mapped by "levels" where the region is crossed into. Plan 23 · Z6 counts the stamps
+  "caps": [15, 27, 39, 54, 58]
+}

@@ -328,7 +328,13 @@ public enum Architecture
     /// </summary>
     Lumiose,
     /// <summary>White stucco under sun-baked ochre hip roofs with shutters and flower boxes: the seaside town of terraces on the cliffs (Cyllage, plan 23 · Z2, second part).</summary>
-    Cyllage
+    Cyllage,
+
+    // Alola (plan 23 · Z5): drawn by hand, each place's own way of building, a row of the style guide's "Buildings" first
+    /// <summary>Weathered boards under deep thatch-brown hip roofs with shutters: the island village on its hill and the homes along Route 1 (Iki Town, plan 23 · Z5).</summary>
+    Islander,
+    /// <summary>Pastel clapboard under coral hip roofs with flower boxes: the city of the beaches and shops (Hau'oli, plan 23 · Z5).</summary>
+    Shoreline
 }
 
 /// <summary>Visual theme for indoor maps; <see cref="None"/> means the map is outdoors.</summary>

@@ -1,0 +1,107 @@
+# Iki Town, Melemele Island (plan 23 · Z5). The lines are our own, on Sun and Moon's beats as they are publicly
+# described (docs/mechanics/rulings.md, "Alola's first chapter"): the kahuna found away, and his return with the three
+# Pokémon, his grandson Hau and the first battle. VAR_ALOLA_STORY is alola_route_1.txt's count.
+#
+# The people: kukui (FLAG_ALOLA_HIDE_KUKUI_IKI, cleared at the door on Route 1), hala and hau (FLAG_ALOLA_HIDE_HALA_IKI,
+# FLAG_ALOLA_HIDE_HAU_IKI, cleared as the kahuna comes home). Hau's teams are Alola's trainers.json's alola_hau_1 to _3:
+# the Pokémon he takes is the one strong against the player's (Litten against Rowlet, Popplio against Litten, Rowlet
+# against Popplio).
+
+
+# Up from Route 1 into the village for the first time: the professor finds the kahuna out
+script KahunaAway
+  scene "The kahuna away"
+  walk kukui down 6
+  waitmoves
+  face kukui player
+  face player up
+  speaker "Prof. Kukui"
+  say "Welcome to Iki Town! This is where the island's festival is held, right on that stage."
+  say "Bad news, though: the kahuna's gone off somewhere. He does that. He's a busy man."
+  say "Oh, and a girl I know just ran up the Mahalo Trail, north of the village, in an awful hurry. Would you go and check on her for me?"
+  clearflag FLAG_ALOLA_HIDE_LILLIE_TRAIL
+  walk kukui up 6
+  waitmoves
+  face kukui down
+  setvar VAR_ALOLA_STORY 3
+  objective alolaTrail
+  endscene
+  end
+
+
+# Back down from the trail: the kahuna comes home, with three Pokémon for a new Trainer
+script KahunaHome
+  scene "The kahuna comes home"
+  clearflag FLAG_ALOLA_HIDE_HALA_IKI
+  place hala 249 116 up
+  place kukui 251 116 up
+  show hala
+  face player down
+  speaker "Hala"
+  say "Ho ho! So you're the new face Kukui told me about. And it seems the island's guardian has taken an interest in you as well!"
+  speaker "Prof. Kukui"
+  say "Hala's the kahuna of Melemele, the one who watches over the whole island. Kahuna, this is {player}."
+  speaker "Hala"
+  say "Every child in Alola goes out into the world with a partner. Here are three who have been waiting. Choose the one you like!"
+  starter
+  text "{player} chose {starter}!"
+  speaker "Hala"
+  say "A fine choice. May the two of you grow strong together."
+  speaker "Hau"
+  say "Tutu! Wait for me! Did I miss it?"
+  clearflag FLAG_ALOLA_HIDE_HAU_IKI
+  place hau 249 125 up
+  show hau
+  walk hau up 8 fast
+  waitmoves
+  face hau player
+  say "Alola! I'm Hau. That's my grandpa, the kahuna! You got your Pokémon already? Then this one's mine!"
+  speaker "Hala"
+  say "You were off eating again, weren't you? Very well, very well."
+  speaker "Hau"
+  say "Hey, {player}! We've both got Pokémon now, so let's battle! The first battle's the best one!"
+  if starter "Rowlet" goto AgainstRowlet
+  if starter "Litten" goto AgainstLitten
+  battle hau as "alola_hau_3" canlose
+  goto Fought
+label AgainstRowlet
+  battle hau as "alola_hau_1" canlose
+  goto Fought
+label AgainstLitten
+  battle hau as "alola_hau_2" canlose
+label Fought
+  heal
+  speaker "Hau"
+  if lost goto HauWon
+  say "Aw, you're really good! That was so much fun. Your Pokémon looked like it was having fun too!"
+  goto Lab
+label HauWon
+  say "We won! But that was so close. Let's battle again sometime, okay?"
+label Lab
+  speaker "Prof. Kukui"
+  say "Woo! What a battle! Now, {player}, come by my laboratory on the beach south of your house. I've got something for you."
+  walk kukui down 4 fast
+  hide kukui
+  setflag FLAG_ALOLA_HIDE_KUKUI_IKI
+  clearflag FLAG_ALOLA_HIDE_KUKUI_LAB
+  setvar VAR_ALOLA_STORY 5
+  objective alolaLab
+  endscene
+  end
+
+
+# The people of the village, after their scenes
+script Kukui
+  speaker "Prof. Kukui"
+  say "The kahuna might be back soon. Have a look around the village while you wait."
+  end
+
+script Hala
+  speaker "Hala"
+  say "The island watches over all of us, and the guardian watches over the island. Take good care of your partner."
+  end
+
+script Hau
+  speaker "Hau"
+  say "Have you tried the malasadas in Hau'oli City? They're the best thing in Alola! Well, after Pokémon."
+  end

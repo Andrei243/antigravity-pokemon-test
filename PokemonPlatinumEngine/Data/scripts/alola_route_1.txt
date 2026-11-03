@@ -1,0 +1,54 @@
+# Route 1 and the Hau'oli Outskirts, Melemele Island (plan 23 · Z5). docs/scripts.md describes the language; the lines
+# are our own, on Sun and Moon's beats as they are publicly described (docs/mechanics/rulings.md, "Alola's first
+# chapter"): no script of the original is read.
+#
+# VAR_ALOLA_STORY, Alola's first chapter's count: 0 a new game, in the house; 1 Mom has said the professor is waiting;
+# 2 Professor Kukui met at the door, off to Iki Town; 3 the kahuna found away, the girl gone up the Mahalo Trail; 4 the
+# guardian seen at the bridge, back down to Iki Town; 5 the first Pokémon from the kahuna and Hau's battle had; 6 the
+# Pokédex from the professor at his laboratory; 7 Hau'oli City reached.
+#
+# The people: kukui at the door (FLAG_ALOLA_HIDE_KUKUI_HOME).
+
+
+# Out of the front door for the first time: Professor Kukui comes to meet the player
+script OnEnter
+  if var VAR_ALOLA_STORY == 0 goto CrossedIn
+  if var VAR_ALOLA_STORY != 1 end
+  if var PLAYER_X != 238 end
+  if var PLAYER_Y != 158 end
+  goto AtTheDoor
+# A Champion come across from another region lands before the house's door with nothing of the story done: they are
+# met by the professor's word and sent up to Iki Town, where the kahuna is found away
+label CrossedIn
+  if var CROSSED_IN != 1 end
+  setvar VAR_ALOLA_STORY 2
+  objective alolaIkiTown
+  clearflag FLAG_ALOLA_HIDE_KUKUI_IKI
+  end
+label AtTheDoor
+  scene "The professor at the door"
+  clearflag FLAG_ALOLA_HIDE_KUKUI_HOME
+  place kukui 241 158 left
+  show kukui
+  speaker "Prof. Kukui"
+  say "Alola, cousin! You must be the new arrival. I'm Kukui, the Pokémon professor of these islands."
+  walk kukui left 1
+  waitmoves
+  face player right
+  say "Here in Alola, every kid gets a partner Pokémon from the island's kahuna. And Melemele's kahuna lives just up the road!"
+  say "Iki Town is north up Route 1. I'll go on ahead and find him. Come on up whenever you're ready, yeah?"
+  walk kukui right 8 up 14 fast
+  hide kukui
+  setflag FLAG_ALOLA_HIDE_KUKUI_HOME
+  clearflag FLAG_ALOLA_HIDE_KUKUI_IKI
+  setvar VAR_ALOLA_STORY 2
+  objective alolaIkiTown
+  endscene
+  end
+
+
+# The professor, should he be spoken to while he stands there (he leaves in the same scene)
+script Kukui
+  speaker "Prof. Kukui"
+  say "Iki Town is just north of here. The kahuna's waiting!"
+  end

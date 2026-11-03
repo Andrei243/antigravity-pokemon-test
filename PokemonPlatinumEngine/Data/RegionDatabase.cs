@@ -940,7 +940,23 @@ public static class RegionDatabase
                 "CoumarineCity_PokemonCenter_1F", "CoumarineCity_GardenHouse", "CoumarineCity_EastHouse",
             }
         },
-        new() { Id = Alola, Name = "Alola", Generation = 7 },
+        new()
+        {
+            Id = Alola, Name = "Alola", Generation = 7, File = RegionFiles.Load(Alola),
+            // Alola drawn by hand on the tile grid (plan 23 · Z5; tools/MapDraw/alola), Melemele Island first. A new game
+            // begun there wakes in the player's new home on Route 1; a Champion come across stands before its door
+            Start = new MapSpot("AlolaRoute1_PlayersHouse", 6, 6, Direction.Down),
+            Arrival = new MapSpot("Melemele", 238, 158, Direction.Down),
+            Maps = new[]
+            {
+                "Melemele",
+                // Plan 23 · Z5, first part: the player's house and Professor Kukui's laboratory on Route 1, Iki Town's four
+                // houses and the west end of Hau'oli City, hand-made map files (Data/maps)
+                "AlolaRoute1_PlayersHouse", "AlolaRoute1_KukuiLab",
+                "IkiTown_HalasHouse", "IkiTown_NortheastHouse", "IkiTown_SouthwestHouse", "IkiTown_SoutheastHouse",
+                "HauoliCity_PokemonCenter_1F", "HauoliCity_WestHouse", "HauoliCity_EastHouse",
+            }
+        },
         new() { Id = Galar, Name = "Galar", Generation = 8 },
         new() { Id = Paldea, Name = "Paldea", Generation = 9 }
     };
@@ -964,7 +980,9 @@ public static class RegionDatabase
         // From Unova by air: the airline's attendant stands in the east wing of Mistralton City's cargo hall once Unova's Hall of
         // Fame is entered (plan 22 · U9, part c: the hall's overlay, common.Attendant)
         new() { From = Unova, To = Kalos, Transport = Transport.Plane, Vessel = "plane", DepartureMap = "MistraltonCity_CargoHall" },
-        new() { From = Kalos, To = Alola, Transport = Transport.Plane, Vessel = "plane" },
+        // From Kalos by air (plan 23 · Z5, first part, until Z4 builds a departure hall of its own): the airline's attendant
+        // stands in Lumiose City's Pokémon Center once Kalos's Hall of Fame is entered (common.Attendant)
+        new() { From = Kalos, To = Alola, Transport = Transport.Plane, Vessel = "plane", DepartureMap = "LumioseCity_PokemonCenter_1F" },
         new() { From = Alola, To = Galar, Transport = Transport.Plane, Vessel = "plane" },
         new() { From = Galar, To = Paldea, Transport = Transport.Plane, Vessel = "plane" }
     };

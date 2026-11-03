@@ -1,0 +1,9 @@
+# Hau'oli City, Melemele Island (plan 23 · Z5). The lines are our own. VAR_ALOLA_STORY is alola_route_1.txt's count.
+
+
+# Into the city for the first time with the Pokédex: the first chapter's road is walked
+script OnEnter
+  if var VAR_ALOLA_STORY != 6 end
+  setvar VAR_ALOLA_STORY 7
+  objective alolaFree
+  end

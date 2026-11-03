@@ -1,0 +1,35 @@
+# Professor Kukui's laboratory on the beach of the Hau'oli Outskirts (plan 23 · Z5). The lines are our own, on Sun and
+# Moon's beats as they are publicly described (docs/mechanics/rulings.md, "Alola's first chapter"). VAR_ALOLA_STORY is
+# alola_route_1.txt's count. The professor is hidden by FLAG_ALOLA_HIDE_KUKUI_LAB until the kahuna's scene in Iki Town.
+
+
+# The professor: the Pokédex and five Poké Balls once the first Pokémon is had, the way to Hau'oli City after
+script Kukui
+  speaker "Prof. Kukui"
+  if var VAR_ALOLA_STORY >= 6 goto After
+  if var VAR_ALOLA_STORY < 5 goto Before
+  scene "The professor's gift"
+  say "Alola! Welcome to my lab. Don't mind the hole in the roof. Moves get tested in here, and some of them hit hard!"
+  say "Here, this is for you. A Pokédex: it writes down every Pokémon you meet, all over the islands."
+  setflag FLAG_HAS_POKEDEX
+  fanfare keyitem
+  text "{player} received the Pokédex!"
+  say "And you'll want these to catch the Pokémon you meet. Take five, on me."
+  give "Poké Ball" 5
+  say "Hau'oli City is east along the shore. Have a look round, cousin. The whole island's open to you now!"
+  setvar VAR_ALOLA_STORY 6
+  objective alolaHauoli
+  endscene
+  end
+label Before
+  say "Alola! You'll want to see the kahuna in Iki Town first."
+  end
+label After
+  say "Every move a Pokémon uses tells me something. Go and see as many as you can, yeah?"
+  end
+
+
+script Rockruff
+  cry "Rockruff"
+  text "Rockruff: Arf! Arf!"
+  end
