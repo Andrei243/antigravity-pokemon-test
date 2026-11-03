@@ -47,8 +47,21 @@ public sealed record Language
     /// </summary>
     public string Keyboard { get; init; } = "";
 
-    /// <summary>The scripts the interface's faces can draw; another language is listed but not offered until plan 17 · N5.</summary>
-    public static readonly IReadOnlySet<string> DrawnScripts = new HashSet<string> { "Latin" };
+    /// <summary>
+    /// What a pseudo-language puts round every string (plan 17 · N5): <c>[</c> and <c>]</c> when it gives none, and
+    /// for the CJK pseudo-language (<c>xx-cjk</c>) fullwidth brackets with a kana, a hanzi and a Hangul syllable first,
+    /// so every string runs through the CJK face and its break rule.
+    /// </summary>
+    public string[]? Brackets { get; init; }
+
+    /// <summary>A string as the pseudo-language marks it (<see cref="Brackets"/>).</summary>
+    public string Bracket(string text) => Brackets is [var open, var close] ? open + text + close : $"[{text}]";
+
+    /// <summary>
+    /// The scripts the interface's faces can draw: Nunito's two faces the Latin, and since plan 17 · N5 the CJK face
+    /// (<see cref="UI.Kit.CjkFace"/>) Japanese, Korean and Chinese. A language of another script is listed but not offered.
+    /// </summary>
+    public static readonly IReadOnlySet<string> DrawnScripts = new HashSet<string> { "Latin", "Japanese", "Korean", "Chinese" };
 
     private static IReadOnlyList<Language>? all;
 

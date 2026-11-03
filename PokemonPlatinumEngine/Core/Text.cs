@@ -72,7 +72,7 @@ public static partial class Text
                 : english.TryGetValue(key, out var en) ? en : null;
         }
         string text = entry == null ? $"[{key}]" : Prompts.Fill(Fill(entry.Pick(lang, args), args));
-        return lang.Pseudo ? $"[{text}]" : text;
+        return lang.Pseudo ? lang.Bracket(text) : text;
     }
 
     /// <summary>
@@ -85,7 +85,7 @@ public static partial class Text
     {
         Language lang;
         lock (gate) lang = language ??= Core.Language.Of(English) ?? new Language();
-        if (lang.Pseudo) return $"[{line}]";
+        if (lang.Pseudo) return lang.Bracket(line);
         if (lang.Tag == English) return line;
         return DataTable(lang.Tag).TryGetValue(line, out var own) && own.Length > 0 ? own : line;
     }

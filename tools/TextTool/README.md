@@ -8,7 +8,10 @@ dotnet run --project tools/TextTool -- extract <tag> --update     # bring the ex
 dotnet run --project tools/TextTool -- report                     # every language that has files: per file, what is untranslated, stale or unknown, and what is wrong; rewrites docs/localisation.md
 dotnet run --project tools/TextTool -- report <tag> --lines       # one language, naming each line
 dotnet run --project tools/TextTool -- report --check             # ends with 1 if docs/localisation.md is not what the files give
+dotnet run --project tools/TextTool -- font <sc.ttf> <kr.ttf>     # the CJK face cut again (plan 17 · N5): every CJK character of Data/text's files and the CJK marks, from the whole faces, into Assets/Fonts/NotoSansCJK-Bold-Subset.ttf
 ```
+
+**The CJK face** (`font`, plan 17 · N5). The game ships Noto Sans CJK Bold cut to the characters its files use (about a megabyte where the two whole faces are sixteen). When a translation into Japanese, Korean or Chinese brings characters the face lacks, `CjkFontTests` names them; fetch the two whole faces again (Google Fonts' static Bold instances of Noto Sans SC and Noto Sans KR: `https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@700&family=Noto+Sans+KR:wght@700` asked with a browser that wants TrueType gives their addresses; `docs/art/CREDITS.md`), keep them outside the repository, and run `font` with SC first and KR second. Each character takes the first face's glyph that has one (SC's, KR's for Hangul); the layout tables and the hinting are left out, and the result is one TrueType face with a format 12 character map, which `TextMetrics` and raylib both read.
 
 `<tag>` is a language of `Data/text/languages.json` other than English and the pseudo-language. It reads the game's own files from the build output (`dotnet run` copies them) and writes under `PokemonPlatinumEngine/Data/text/<tag>/`, found by walking up to `PokemonPlatinum.sln`.
 

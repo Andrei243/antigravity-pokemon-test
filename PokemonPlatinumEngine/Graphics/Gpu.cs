@@ -148,4 +148,11 @@ public static unsafe class Gpu
         Ledger.Add(GpuKind.Font, font.Texture.Id, owner, GpuLedger.PictureBytes(font.Texture.Width, font.Texture.Height));
         return font;
     }
+
+    /// <summary>A font let go, its atlas and its glyphs (a language's CJK batches when the language changes, plan 17 · N5).</summary>
+    public static void Unload(Font font)
+    {
+        Ledger.Remove(GpuKind.Font, font.Texture.Id);
+        Raylib.UnloadFont(font);
+    }
 }

@@ -205,11 +205,14 @@ public class TextTests
         },
         // The region, the starter and its move an old save was given, and the save's field of its checksum
         ["Core/SaveManager.cs"] = new[] { "Lucas", "Sinnoh", "Turtwig", "Tackle", "Poké Ball", "Checksum", "Kanto", "PalletTown_PlayersHouse_1F" },
-        // English as languages.json names it and its script, the language every other falls back to
-        ["Core/Language.cs"] = new[] { "English", "Latin" },
+        // English as languages.json names it and its script, the language every other falls back to, and the scripts
+        // the CJK face draws (plan 17 · N5), names of languages.json too
+        ["Core/Language.cs"] = new[] { "English", "Latin", "Japanese", "Korean", "Chinese" },
         // The folders the typeface is read from
         ["UI/Kit/UiFonts.cs"] = new[] { "Assets", "Fonts" },
         ["UI/Kit/TextMetrics.cs"] = new[] { "Assets", "Fonts" },
+        // The CJK marks no line may begin with (plan 17 · N5's break rule), characters the rules compare, never shown
+        ["UI/Kit/CjkFace.cs"] = new[] { "、。，．・：；？！ー～ゝゞヽヾ々〻ぁぃぅぇぉっゃゅょゎゕゖァィゥェォッャュョヮヵヶ」』）］｝〕〉》】〙〗〟’”｠｝…‥!?),.:;]}%" },
         // The keyboard's rows of letters, which plan 17 · N5 gives each language its own of
         ["UI/Kit/NameEntry.cs"] = new[] { "ABCDEFGHIJ", "KLMNOPQRST", "UVWXYZ.-' ", "uvwxyz.-' " },
         // The bands' trainers by class and name as trainers.json has them, and the mark's lettering, a picture as the title's logo is

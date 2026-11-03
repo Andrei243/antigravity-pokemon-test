@@ -50,7 +50,7 @@ public class LatinFontTests
         {
             var runs = UiFonts.Runs("Hello there! Welcome to the world of Pokémon – and « ¿ñ? » … ok", weight);
             Assert.Single(runs);
-            Assert.False(runs[0].Extra);
+            Assert.Equal(UiFonts.FirstFace, runs[0].Face);
             // Not a Latin-1 character at all: the first face's question mark, as before
             Assert.Single(UiFonts.Runs("→ ♂", weight));
         }
@@ -62,11 +62,11 @@ public class LatinFontTests
         var runs = UiFonts.Runs("Țara și ăștia", UiWeight.Bold);
         Assert.Equal(new[] { "Ț", "ara ", "ș", "i ", "ăș", "tia" }.Length, runs.Count);
         Assert.Equal("Țara și ăștia", string.Concat(runs.Select(r => r.Text)));
-        Assert.True(runs[0].Extra);
-        Assert.False(runs[1].Extra);
-        for (int i = 1; i < runs.Count; i++) Assert.NotEqual(runs[i - 1].Extra, runs[i].Extra);
+        Assert.Equal(UiFonts.ExtraFace, runs[0].Face);
+        Assert.Equal(UiFonts.FirstFace, runs[1].Face);
+        for (int i = 1; i < runs.Count; i++) Assert.NotEqual(runs[i - 1].Face, runs[i].Face);
         // The runs are all text with a glyph in their face; a character neither face has stays with the first
-        Assert.Equal(new[] { false }, UiFonts.Runs("a→b", UiWeight.Bold).Select(r => r.Extra));
+        Assert.Equal(new[] { UiFonts.FirstFace }, UiFonts.Runs("a→b", UiWeight.Bold).Select(r => r.Face));
     }
 
     [Fact]

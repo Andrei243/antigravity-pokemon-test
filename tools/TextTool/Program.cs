@@ -31,13 +31,39 @@ TranslationFiles.Lister = relative =>
 
 var words = args.Where(a => !a.StartsWith("--", StringComparison.Ordinal)).ToList();
 var switches = args.Where(a => a.StartsWith("--", StringComparison.Ordinal)).ToHashSet();
-if (words.Count == 0 || words[0] is not ("extract" or "report"))
+if (words.Count == 0 || words[0] is not ("extract" or "report" or "font"))
 {
-    Console.Error.WriteLine("Say extract <tag> [--update] or report [tag] [--lines] [--check].");
+    Console.Error.WriteLine("Say extract <tag> [--update], report [tag] [--lines] [--check] or font <Noto Sans SC Bold .ttf> <Noto Sans KR Bold .ttf>.");
     return 2;
 }
 
-return words[0] == "extract" ? Extract() : Report();
+return words[0] switch { "extract" => Extract(), "font" => Font(), _ => Report() };
+
+// The CJK face cut down to what the game's files use (plan 17 · N5): every CJK character of every file under
+// Data/text (the names of Japanese, Korean and both Chinese, a language's ui.json and scripts once written,
+// languages.json with each language's own name and the CJK pseudo-language's brackets) and CjkFace.Marks
+int Font()
+{
+    if (words.Count < 2 || words.Skip(1).Any(w => !File.Exists(w)))
+    {
+        Console.Error.WriteLine("font needs the whole faces to cut, in order: font <NotoSansSC-Bold.ttf> <NotoSansKR-Bold.ttf> (docs/art/CREDITS.md says where they come from).");
+        return 2;
+    }
+    var wanted = new SortedSet<int>(PokemonPlatinumEngine.UI.Kit.CjkFace.Marks);
+    string textFolder = Path.Combine(sourceData, "text");
+    foreach (string path in Directory.EnumerateFiles(textFolder, "*.json", SearchOption.AllDirectories).Order(StringComparer.Ordinal))
+        foreach (int c in PokemonPlatinumEngine.UI.Kit.CjkFace.CjkIn(File.ReadAllText(path))) wanted.Add(c);
+    var sources = words.Skip(1).Select(File.ReadAllBytes).ToList();
+    var maps = sources.Select(FontSubset.Cmap).ToList();
+    var missing = wanted.Where(c => !maps.Any(m => m.ContainsKey(c)) && !(c is >= 0x3000 and <= 0x30FF or >= 0x3131 and <= 0x318E or >= 0xFF01 and <= 0xFF5E)).ToList();
+    var (cut, glyphs) = FontSubset.Subset(sources, wanted);
+    string output = Path.Combine(repo, "PokemonPlatinumEngine", "Assets", "Fonts", PokemonPlatinumEngine.UI.Kit.CjkFace.FileName);
+    File.WriteAllBytes(output, cut);
+    Console.WriteLine($"{wanted.Count} codepoints asked for, {glyphs} glyphs kept, {cut.Length / 1024} KB written to {output} (the whole faces are {sources.Sum(f => f.Length) / 1024} KB).");
+    if (missing.Count > 0)
+        Console.WriteLine($"The face has no glyph for {missing.Count} of the files' characters: {string.Concat(missing.Take(40).Select(char.ConvertFromUtf32))}");
+    return 0;
+}
 
 int Extract()
 {

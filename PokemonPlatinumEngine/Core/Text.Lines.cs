@@ -24,7 +24,7 @@ public static partial class Text
     {
         string source = english[k];
         var lang = Language;
-        if (lang.Pseudo) return $"[{source}]";
+        if (lang.Pseudo) return lang.Bracket(source);
         if (lang.Tag == English) return source;
         int dot = script.IndexOf('.');
         if (dot < 0) return source;
@@ -37,7 +37,7 @@ public static partial class Text
     public static string PersonName(string? place, string? key, string english)
     {
         var lang = Language;
-        if (lang.Pseudo) return english.Length == 0 ? english : $"[{english}]";
+        if (lang.Pseudo) return english.Length == 0 ? english : lang.Bracket(english);
         if (lang.Tag == English || english.Length == 0) return english;
         return Pick(PersonOf(lang.Tag, place, key)?.Name, 0, new[] { english }) ?? english;
     }
@@ -47,7 +47,7 @@ public static partial class Text
     {
         string source = english[k];
         var lang = Language;
-        if (lang.Pseudo) return $"[{source}]";
+        if (lang.Pseudo) return lang.Bracket(source);
         if (lang.Tag == English) return source;
         var person = PersonOf(lang.Tag, place, key);
         var entry = field switch { PersonField.Before => person?.Before, PersonField.After => person?.After, _ => person?.Dialog };
@@ -59,7 +59,7 @@ public static partial class Text
     {
         string source = english[k];
         var lang = Language;
-        if (lang.Pseudo) return $"[{source}]";
+        if (lang.Pseudo) return lang.Bracket(source);
         if (lang.Tag == English || place == null || id == null) return source;
         var signs = TranslationFiles.Place(lang.Tag, place)?.Signs;
         return signs != null && signs.TryGetValue(id, out var entry) ? Pick(entry, k, english) ?? source : source;
