@@ -10,6 +10,7 @@
   "architecture": "Heritage",
   "triggers": [ { "trigger": 0, "script": "RivalBumps" } ],
   "people": {
+    "t27_gsmiddleman1": { "name": "Cameron", "script": "Cameron", "still": true, "hiddenBy": "", "shownBy": "FLAG_JOHTO_MET_CAMERONS_FATHER" },
     "t27_gsrivel": { "name": "{rival}", "npcType": "Silver", "still": true, "dialog": [ "..." ] },
     "t27_gsoldman1_3": {
       "name": "Old Man",

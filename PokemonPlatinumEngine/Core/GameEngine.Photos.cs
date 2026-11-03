@@ -18,6 +18,15 @@ public partial class GameEngine
         var screen = flow.PhotoAlbumScreen;
         screen.PlaceOf = key => MapDatabase.MapNames.Select(MapDatabase.Get).SelectMany(m => m.Areas).FirstOrDefault(a => a.Key == key)?.DisplayName is { Length: > 0 } name
             ? PlayerIdentity.Fill(LocalNames.PlaceShown(key, name)) : key;
+        // The scene each print is drawn on (plan 20, part t), from the area and the map it lies on
+        screen.SettingOf = key =>
+        {
+            foreach (var map in MapDatabase.MapNames.Select(MapDatabase.Get))
+                if (map.Areas.FirstOrDefault(a => a.Key == key) is { } area)
+                    return PhotoScenes.Of(key, area.IsTown, area.IsCave || map.IsCave, map.IsIndoors || map.Setting == Overworld.MapSetting.Indoors, area.Snowbound);
+            return PhotoSetting.Route;
+        };
+        screen.InKantoOf = key => MapDatabase.MapNames.Select(MapDatabase.Get).SelectMany(m => m.Areas).FirstOrDefault(a => a.Key == key)?.InKanto ?? false;
         flow.State = GameState.PhotoAlbum;
         screen.Open(flow.Photos);
     }

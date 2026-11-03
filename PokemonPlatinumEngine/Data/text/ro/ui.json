@@ -2574,6 +2574,7 @@
     "nobody": "Doar tu, zâmbind",
     "taken": "{day} {month} {year}",
     "removeAsk": "Arunci fotografia aceasta?",
+    "region": { "johto": "JOHTO", "kanto": "KANTO" },
     "hint": { "throwAway": "Aruncă", "remove": "Arunc-o", "keep": "Păstreaz-o" }
   },
   "apricorn": {

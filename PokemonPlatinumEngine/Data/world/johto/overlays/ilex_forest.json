@@ -22,6 +22,7 @@
     { "trigger": 8, "script": "ApprenticeStops" }
   ],
   "people": {
+    "d36r0101_gsmiddleman1": { "name": "Cameron", "script": "Cameron", "still": true, "hiddenBy": "", "shownBy": "FLAG_JOHTO_MET_CAMERONS_FATHER" },
     "d36r0101_gsbigman": {
       "name": "Man",
       "dialog": [

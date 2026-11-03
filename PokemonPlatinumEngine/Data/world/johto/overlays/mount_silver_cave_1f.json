@@ -1,8 +1,11 @@
 {
   // Mt. Silver Cave's first floor (plan 20 · J15): the mouth of the climb, with ways out onto the lower mountainside,
-  // to the chamber of the Expert Belt and to Moltres's chamber. Cameron is held back, as on Route 48
+  // to the chamber of the Expert Belt and to Moltres's chamber. Cameron the photographer takes pictures here (plan 20, part t, common.Cameron)
   "area": "mount_silver_cave_1f",
   "ours": { "land": [ ["Cerberhound", 120, 124], ["Siegephant", 115, 119] ] },
   "bgmTrack": "johto/lighthouse",
-  "people": {}
+  "people": {},
+  "people": {
+    "d41r0101_gsmiddleman1": { "name": "Cameron", "script": "Cameron", "still": true, "hiddenBy": "", "shownBy": "FLAG_JOHTO_MET_CAMERONS_FATHER" }
+  }
 }

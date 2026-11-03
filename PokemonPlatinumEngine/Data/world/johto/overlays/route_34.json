@@ -8,6 +8,7 @@
   "bgmTrack": "johto/route34",
   "trees": "Round",
   "people": {
+    "r34_gsmiddleman1_2": { "name": "Cameron", "script": "Cameron", "still": true, "hiddenBy": "", "shownBy": "FLAG_JOHTO_MET_CAMERONS_FATHER" },
     "r34_gsboy2": {
       "name": "Samuel",
       "trainer": {

@@ -2429,6 +2429,7 @@
     "nobody": "Just you, smiling",
     "taken": "{day} {month} {year}",
     "removeAsk": "Throw this photograph away?",
+    "region": { "johto": "JOHTO", "kanto": "KANTO" },
     "hint": { "throwAway": "Throw away", "remove": "Throw it away", "keep": "Keep it" }
   },
   "apricorn": {

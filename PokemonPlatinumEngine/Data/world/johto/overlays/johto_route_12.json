@@ -12,10 +12,10 @@
     "r12_gsbabyboy1",
     "r12_gsbabyboy1_2",
     "r12_gsbabyboy1_3",
-    "r12_gsmiddleman1",
     "r12_gswoman1"
   ],
   "people": {
+    "r12_gsmiddleman1": { "name": "Cameron", "script": "Cameron", "still": true, "hiddenBy": "", "shownBy": "FLAG_JOHTO_MET_CAMERONS_FATHER" },
     "r12_kabigon": {
       "name": "Snorlax",
       "npcType": "Pokemon",
