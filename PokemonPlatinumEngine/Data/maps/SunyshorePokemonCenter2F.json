@@ -176,11 +176,11 @@
       "x": 7,
       "y": 4,
       "facing": "Down",
-      "script": "GlobalLink",
       "dialog": [
         "This is the desk of the Union Room, where Trainers from all over meet to chat, to trade and to battle.",
         "I'm sorry to say its door is shut for now. The wireless link it runs on has gone quiet all over Sinnoh."
-      ]
+      ],
+      "script": "GlobalLink"
     },
     {
       "id": "teala_middle",
