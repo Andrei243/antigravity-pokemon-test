@@ -762,8 +762,11 @@ public sealed partial class WorldRenderer
         // Where the place's light is strongly coloured, people and Pokémon keep their own colours (style guide,
         // "Climates"); the things of the map, drawn before them, are lit as the rock they stand among is
         if (rig.PeopleWash > 0f) shaders.SetPeopleLight(ArtLook.ForPeople(light, rig.PeopleWash));
+        // In a room the people and the Pokémon stand straight on screen, though the room keeps its perspective
+        if (indoors) shaders.SetUprightCards(ArtLook.FieldUpright, pitchDeg);
         DrawPokemon(CharacterPass.Color);
         DrawPeople(CharacterPass.Color);
+        if (indoors) shaders.SetUprightCards(0f, pitchDeg);
         DrawLife(map, camera, rig, upright: true);
         DrawBubbles(map, player, camera, rig, indoors, pitchDeg, vs);
         // The field's rules as layers, when a developer has turned any on (plan 16 · T18)

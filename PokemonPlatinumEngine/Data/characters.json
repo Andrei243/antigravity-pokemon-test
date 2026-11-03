@@ -238,6 +238,7 @@
     "cooltrainer_f": { "hairColor": "#b83a2a", "hair": "Long", "top": "#2a4aa8", "accent": "#f2f2f6", "bottom": "#2a4aa8", "shoes": "#1e1e26", "eyes": "#3a2a30", "skirt": true, "build": "Adult", "lashes": true },
     "swimmer_m_water": { "hairColor": "#2a2224", "top": "#2a3460", "accent": "#2a3460", "bottom": "#2a3460", "shoes": "#e0b894", "eyes": "#2a2024", "shorts": true, "shortSleeves": true, "build": "Adult" },
     "swimmer_f_water": { "hairColor": "#f2f2f6", "hat": "Cap", "hatColor": "#f2f2f6", "hatBand": "#f2f2f6", "top": "#d83a3a", "accent": "#d83a3a", "bottom": "#d83a3a", "shoes": "#e0b894", "eyes": "#3a2a30", "shorts": true, "shortSleeves": true, "build": "Adult", "lashes": true },
+    "safari_warden": { "hairColor": "#a8a4ac", "hat": "WideHat", "hatColor": "#c8a868", "hatBand": "#5a4a2a", "top": "#b89a5c", "accent": "#f2ead6", "bottom": "#6a5a3a", "shoes": "#4a3a2a", "mustache": true, "coat": true, "build": "Adult", "height": 1.04 },
     "gentleman": { "hairColor": "#96929c", "hair": "Swept", "top": "#424660", "accent": "#f6f6fa", "bottom": "#383a4c", "shoes": "#342a28", "mustache": true, "coat": true, "build": "Adult", "height": 1.02 },
     // Unova's first two (plan 22 · U2; our own takes): Professor Juniper, light brown hair gathered up, a long white coat
     // over a green top and a pale skirt; Hugh, the friend from Aspertia, dark blue hair standing up and a red jacket

@@ -117,6 +117,8 @@ internal static class PropModels
             case PropType.WarpPanel: WarpPanel(kit, wayOut: false); break;
             case PropType.WarpPanelOut: WarpPanel(kit, wayOut: true); break;
             case PropType.Tank: Tank(kit, w, d); break;
+            // The S.S. Aqua's engines (plan 20 · J15, part s): a tile of machinery, its sides shown where floor is beside it
+            case PropType.ShipEngine: ShipEngine(kit, map, p.X, p.Y); break;
             // The seats of the rooms rebuilt to the original's plans (plan 01 · M11): walked onto, never in the way
             case PropType.Cushion: Cushion(kit); break;
             case PropType.FlowerStand: FlowerStand(kit, p); break;
@@ -361,6 +363,54 @@ internal static class PropModels
     /// A tank of the laboratory on its tiles (two by two): a steel foot, a cylinder of glass seen as three faces with
     /// the fluid and what hangs in it, and a steel cap.
     /// </summary>
+    /// <summary>
+    /// One tile of a ship's engines (plan 20 · J15, part s; style guide, "Rooms", "A ship's engines"): a casing of
+    /// green-grey steel 40 texels tall, its sides where no engine stands beside it, a cylinder head on every tile's
+    /// top and a pipe run along the top of the tiles in a row.
+    /// </summary>
+    private static void ShipEngine(KitBuilder kit, Map map, int x, int y)
+    {
+        bool Engine(int ex, int ey) => map.Props.Any(q => q.Type == PropType.ShipEngine && q.X == ex && q.Y == ey);
+        bool s = !Engine(x, y + 1), wst = !Engine(x - 1, y), e = !Engine(x + 1, y);
+        const int h = 40;
+        var side = kit.Face("engine.side", 32, h, PaintEngineSide);
+        var top = kit.Face("engine.top", 32, 32, PaintEngineTop);
+        kit.Box(0, 32, 0, 32, 0, h, top, s ? side : null, wst ? side : null, e ? side : null);
+        // A cylinder head standing on the casing, and a pipe along the row
+        var head = kit.Face("engine.head", 16, 10, c => Pix.Raised(c, 0, 0, 16, 10, Tone.Of(150, 160, 152)));
+        var headTop = kit.Face("engine.head.top", 16, 16, c =>
+        {
+            c.Rect(0, 0, 16, 16, Rgb(172, 182, 172));
+            c.Disc(7.5f, 7.5f, 4f, Rgb(120, 128, 122));
+            c.Disc(7.5f, 7.5f, 2f, Rgb(214, 96, 70));
+        });
+        kit.Box(8, 24, 8, 24, h, h + 10, headTop, head, head, head);
+        var pipe = kit.Face("engine.pipe", 32, 4, c => { c.Rect(0, 0, 32, 4, Rgb(196, 150, 70)); c.HLine(0, 0, 32, Rgb(232, 196, 112)); c.HLine(0, 3, 32, Rgb(140, 100, 48)); });
+        kit.Box(0, 32, 26, 30, h, h + 4, pipe, pipe);
+    }
+
+    private static void PaintEngineSide(PixelCanvas c)
+    {
+        int w = c.Width, h = c.Height;
+        var casing = Tone.Of(96, 118, 108);
+        Pix.Raised(c, 0, 0, w, h, casing);
+        // A grille of vents, a gauge with its needle, a band of rivets under the top and a dark plinth
+        for (int yy = 8; yy < 22; yy += 3) c.HLine(4, yy, 14, casing.Deep);
+        c.Disc(25f, 13f, 4f, Rgb(232, 230, 214));
+        c.Line(25, 13, 27, 10, Rgb(200, 54, 48));
+        for (int xx = 2; xx < w - 2; xx += 5) c.Set(xx, 3, casing.Light);
+        c.Rect(0, h - 6, w, 6, Rgb(52, 56, 60));
+        c.HLine(0, h - 6, w, Rgb(232, 192, 62));
+    }
+
+    private static void PaintEngineTop(PixelCanvas c)
+    {
+        int w = c.Width, h = c.Height;
+        c.Rect(0, 0, w, h, Rgb(110, 132, 120));
+        for (int i = 0; i < w; i += 8) c.VLine(i, 0, h, Rgb(96, 116, 106));
+        c.HLine(0, 0, w, Rgb(140, 160, 148));
+    }
+
     private static void Tank(KitBuilder kit, int w, int d)
     {
         const int foot = GalacticArt.TankFoot, glass = GalacticArt.TankGlass, cap = GalacticArt.TankCap;

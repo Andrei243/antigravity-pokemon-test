@@ -260,6 +260,13 @@ public class Map
     public CaveLook CaveLook { get; set; } = CaveLook.Rock;
 
     /// <summary>
+    /// What a room's inner walls are (plan 20 · J15, part s; style guide, "Rooms", "Partitions of their own"): its own
+    /// wall cut to the wainscot unless its catalogue gives it another look (the Goldenrod Gym's hedges, the S.S. Aqua's
+    /// bulkheads). Only drawing reads it.
+    /// </summary>
+    public PartitionLook Partitions { get; set; } = PartitionLook.Wall;
+
+    /// <summary>
     /// Where a room's floor begins: the first column and the first row with anything but wall on them, above the
     /// front wall's row. Its side wall stands west of the one and its back wall north of the other. The rooms made
     /// by hand begin at (1, 2); a room rebuilt to the original's plan begins where the original's floor does, so its
