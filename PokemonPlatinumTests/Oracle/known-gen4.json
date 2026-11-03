@@ -23,16 +23,16 @@
     },
     {
       "name": "Guts under a burn on a hit of ten thousand",
-      "owner": "plan 24 · X5's follow-up (triage against battle_lib.c not finished)",
-      "reason": "One scenario (#1629: a level 100 Larvitar with Guts, burned, at +5 Attack on a level 8 Lotad) differs by 14 points in 12,400, about a tenth of a percent; the decompilation has not been read for it yet. rulings.md, 'Oracle disagreements', generation 4.",
+      "owner": "the calculator (@smogon/calc generation 4); settled against battle_lib.c, plan 24 · X5",
+      "reason": "One scenario (#1629: a level 100 Larvitar with Guts, burned, at +5 Attack on a level 8 Lotad) differs by 14 points in 12,400. The decompilation's BattleSystem_CalcMoveDamage multiplies the raw Attack stat by 150/100 for Guts (any status) and only afterwards applies the stage's numerator/denominator, each step cut down; the calculator applies the stage first and Guts to the staged stat, so the two round differently. Ours follows the decompilation (the burn halving is skipped for Guts, as the function does). rulings.md, 'Oracle disagreements', generation 4.",
       "kind": "damage",
       "withinPercent": 0.2,
       "when": { "attackerAbility": "Guts", "attackerStatus": "brn" }
     },
     {
       "name": "Hustle on a hit of two or three points",
-      "owner": "plan 24 · X5's follow-up (triage against battle_lib.c not finished)",
-      "reason": "One scenario (#143: a level 50 Delibird with Hustle at -5 Attack biting a level 100 Raticate at +6 Defense) comes to 3 for us and 2 for the calculator on fifteen rolls of sixteen; where the decompilation rounds Hustle's half again against the stage has not been read yet. rulings.md, 'Oracle disagreements', generation 4.",
+      "owner": "the calculator (@smogon/calc generation 4); settled against battle_lib.c, plan 24 · X5",
+      "reason": "One scenario (#143: a level 50 Delibird with Hustle at -5 Attack biting a level 100 Raticate at +6 Defense) comes to 3 for us and 2 for the calculator on fifteen rolls of sixteen. BattleSystem_CalcMoveDamage multiplies the raw Attack by 150/100 for Hustle before the stage's numerator/denominator is applied; the calculator stages first and then applies Hustle, so a heavily lowered stat rounds down further. Ours follows the decompilation. rulings.md, 'Oracle disagreements', generation 4.",
       "kind": "damage",
       "within": 1,
       "when": { "attackerAbility": "Hustle" }
