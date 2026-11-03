@@ -261,7 +261,10 @@ public class OracleTests
 
         public static List<KnownList> Read(string text) => JsonSerializer.Deserialize<File>(text, Json)!.Known;
 
-        public bool Excuses(OracleScenario s, Difference d)
+        public bool Excuses(OracleScenario s, Difference d) => Excuses(s, d, OracleScenarios.MoveOf);
+
+        /// <summary>The same, with the move as the oracle's rules have it (Platinum's for generation 4, plan 24 · X5).</summary>
+        public bool Excuses(OracleScenario s, Difference d, Func<string, MoveData> moveOf)
         {
             if (Kind != null && Kind != d.Kind) return false;
             // Within so many points, or so many hundredths of the hit, on every roll (either will do where both are given)
@@ -271,13 +274,13 @@ public class OracleTests
                 if (!near) return false;
             }
             foreach (var (key, value) in When ?? new())
-                if (!Holds(key, value, s)) return false;
+                if (!Holds(key, value, s, moveOf)) return false;
             return true;
         }
 
-        private static bool Holds(string key, JsonElement value, OracleScenario s)
+        private static bool Holds(string key, JsonElement value, OracleScenario s, Func<string, MoveData> moveOf)
         {
-            var move = OracleScenarios.MoveOf(s.Move);
+            var move = moveOf(s.Move);
             string?[] seen = key switch
             {
                 "ability" => new[] { s.Attacker.Ability, s.Defender.Ability },
@@ -300,8 +303,20 @@ public class OracleTests
                 "doubles" => new[] { s.Doubles ? "true" : "false" },
                 "spread" => new[] { s.Spread ? "true" : "false" },
                 "screen" => new[] { s.Field.Reflect ? "Reflect" : null, s.Field.LightScreen ? "Light Screen" : null, s.Field.AuroraVeil ? "Aurora Veil" : null },
-                _ => throw new InvalidOperationException($"known-gen9.json asks after {key}, which the oracle doesn't know")
+                "defenderStatus" => new[] { s.Defender.Status },
+                "anyStatus" => new[] { s.Attacker.Status == "" ? null : s.Attacker.Status, s.Defender.Status == "" ? null : s.Defender.Status },
+                "level" => new[] { s.Attacker.Level.ToString(), s.Defender.Level.ToString() },
+                "defenderType" => TypesOf(s.Defender),
+                _ => throw new InvalidOperationException($"the known list asks after {key}, which the oracle doesn't know")
             };
+            static string?[] TypesOf(OracleMon m)
+            {
+                // The species as the data loads it (Platinum's types, for the oracle of generation 4 that asks)
+                var species = m.Form == null ? PokemonDatabase.Get(m.Species) : PokemonDatabase.SpeciesOfForm(m.Form);
+                var p = new Pokemon(species!, 5, 0u, new BattleRandom(1));
+                p.ChangeForm(m.Form);
+                return Enum.GetValues<PokemonType>().Where(p.HasType).Select(t => (string?)t.ToString()).ToArray();
+            }
             var wanted = value.ValueKind == JsonValueKind.Array ? value.EnumerateArray().Select(v => v.ToString()).ToList() : new List<string> { value.ToString() };
             return seen.Any(v => v != null && wanted.Contains(v, StringComparer.Ordinal));
         }

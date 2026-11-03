@@ -155,6 +155,18 @@ public class ContentTests
         Assert.Equal(10, found.LinesByRows.Values.Sum());
     }
 
+    [Fact]
+    public void WhatTheStrictReadingStopsOnIsNamedWithItsPath()
+    {
+        // Plan 24 · X4: the game reads the hand-written files strictly. A required field left out and a value of the
+        // wrong type inside a record written on one line are each a finding that names the JSON path
+        using var folder = Sound();
+        folder.Write("world/test/world.json", """{ "maps": [ { "name": "TestTown", "matrix": 1, "area": "test_town" } ], "areas": [ "test_town" ] }""");
+        var found = folder.Check();
+        Has(found, Kind.Unreadable, "world/test/world.json", "world.json", "the game stops on it: $: missing");
+        Has(found, Kind.Unreadable, "world/test/world.json", "world.json", "region");
+    }
+
     // ------------------------------------------------------------------ an overlay
 
     [Fact]

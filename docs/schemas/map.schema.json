@@ -1,0 +1,1125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "A map file, a room (Data/maps/<Name>.json)",
+  "description": "Written by SchemaTests (plan 24 · X4) from the records the game reads the file into; don't edit by hand. The game reads the file strictly: a key no field has stops it.",
+  "type": [
+    "object",
+    "null"
+  ],
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "displayName": {
+      "type": "string"
+    },
+    "bgmTrack": {
+      "type": "string"
+    },
+    "interior": {
+      "enum": [
+        "None",
+        "House",
+        "PokemonCenter",
+        "PokeMart",
+        "Lab",
+        "Gym",
+        "Museum",
+        "GameHall",
+        "Street",
+        "Tower",
+        "Aerie",
+        "Tent"
+      ]
+    },
+    "trees": {
+      "enum": [
+        "Round",
+        "Pine"
+      ]
+    },
+    "architecture": {
+      "enum": [
+        "Timber",
+        "Plaster",
+        "City",
+        "Clapboard",
+        "Brick",
+        "Cottage",
+        "HalfTimber",
+        "Townhouse",
+        "Farm",
+        "Stone",
+        "Marsh",
+        "Harbour",
+        "Snow",
+        "Seaside",
+        "Resort",
+        "Evergreen",
+        "Granite",
+        "Riverside",
+        "Portside",
+        "Lilac",
+        "Wildwood",
+        "Breeze",
+        "Bayside",
+        "OldTimber",
+        "Woodland",
+        "Boulevard",
+        "Heritage",
+        "Seaport",
+        "Cliffside",
+        "Upland",
+        "Dragonstone",
+        "Sapling",
+        "Meadow",
+        "Parkside",
+        "Quarry",
+        "Islet",
+        "Wharf",
+        "Jade",
+        "Uptown",
+        "Cinder",
+        "Dynamo",
+        "Glade",
+        "Hayloft",
+        "Isle",
+        "Spa",
+        "Treetop",
+        "Starward",
+        "Crater",
+        "Raft",
+        "Bloomstone",
+        "Hillside",
+        "Bellfield",
+        "Dockyard",
+        "Metropolis",
+        "Funfair",
+        "Storehouse",
+        "Railyard",
+        "Airfield",
+        "Skyline",
+        "Stilts",
+        "Hamlet",
+        "Canalside",
+        "Lumiose",
+        null
+      ]
+    },
+    "battleArena": {
+      "enum": [
+        "Grass",
+        "Forest",
+        "Cave",
+        "Water",
+        "Snow",
+        "Sand",
+        "Indoors",
+        "Gym",
+        "League",
+        "Underwater",
+        "City",
+        null
+      ]
+    },
+    "arenaType": {
+      "enum": [
+        "Normal",
+        "Fire",
+        "Water",
+        "Grass",
+        "Electric",
+        "Ice",
+        "Fighting",
+        "Poison",
+        "Ground",
+        "Flying",
+        "Psychic",
+        "Bug",
+        "Rock",
+        "Ghost",
+        "Dragon",
+        "Steel",
+        "Dark",
+        "Fairy",
+        null
+      ]
+    },
+    "hall": {
+      "enum": [
+        "League",
+        "Champion",
+        "HallOfFame",
+        null
+      ]
+    },
+    "evolutionSites": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "puzzle": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "weather": {
+      "enum": [
+        "Clear",
+        "Cloudy",
+        "Rain",
+        "HeavyRain",
+        "Thunderstorm",
+        "Snow",
+        "HeavySnow",
+        "Blizzard",
+        "Hail",
+        "Fog",
+        "Sandstorm",
+        "Ash",
+        "Drought",
+        "Abnormal",
+        null
+      ]
+    },
+    "encounterRate": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "bike": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "noBoxLink": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "width": {
+      "type": "integer"
+    },
+    "height": {
+      "type": "integer"
+    },
+    "ground": {
+      "type": "array",
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "solid": {
+      "type": "array",
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "overhead": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "heights": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "number"
+          },
+          "z": {
+            "type": "number"
+          },
+          "width": {
+            "type": "number"
+          },
+          "depth": {
+            "type": "number"
+          },
+          "height": {
+            "type": "number"
+          },
+          "slopeX": {
+            "type": "number"
+          },
+          "slopeZ": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "behaviours": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "integer"
+          },
+          "y": {
+            "type": "integer"
+          },
+          "width": {
+            "type": "integer"
+          },
+          "depth": {
+            "type": "integer"
+          },
+          "behaviour": {
+            "enum": [
+              "None",
+              "TallGrass",
+              "VeryTallGrass",
+              "HeadbuttTree",
+              "CaveFloor",
+              "OldChateauFloor",
+              "MountainFloor",
+              "River",
+              "Whirlpool",
+              "Waterfall",
+              "Sea",
+              "Puddle",
+              "ShallowWater",
+              "StillPuddle",
+              "Ice",
+              "Sand",
+              "WaterfallLip",
+              "ShinyFloor",
+              "NoExplorerKit",
+              "BlockEast",
+              "BlockWest",
+              "BlockNorth",
+              "BlockSouth",
+              "BlockNorthAndEast",
+              "BlockNorthAndWest",
+              "BlockSouthAndEast",
+              "BlockSouthAndWest",
+              "LedgeEast",
+              "LedgeWest",
+              "LedgeNorth",
+              "LedgeSouth",
+              "Unknown3C",
+              "Unknown3D",
+              "LedgeCornerSouthEast",
+              "LedgeCornerSouthWest",
+              "SlideEast",
+              "SlideWest",
+              "SlideNorth",
+              "SlideSouth",
+              "BlockNorthAndSouth",
+              "BlockEastAndWest",
+              "RockClimbNorthSouth",
+              "RockClimbEastWest",
+              "StopSliding",
+              "PastoriaGymHigh",
+              "PastoriaGymMiddle",
+              "PastoriaGymLow",
+              "MovingFloor",
+              "LongLedgeNorth",
+              "LongLedgeSouth",
+              "LongLedgeWest",
+              "LongLedgeEast",
+              "StairsEast",
+              "StairsWest",
+              "Unknown60",
+              "EntranceEast",
+              "EntranceWest",
+              "EntranceNorth",
+              "EntranceSouth",
+              "WarpPanel",
+              "Door",
+              "EscalatorFacingBack",
+              "Escalator",
+              "ExitEast",
+              "ExitWest",
+              "ExitNorth",
+              "ExitSouth",
+              "BridgeEnd",
+              "Bridge",
+              "BridgeOverCave",
+              "BridgeOverWater",
+              "BridgeOverSnow",
+              "BikeBridgeNorthSouth",
+              "BikeBridgeNorthSouthOverSand",
+              "BikeBridgeEastWest",
+              "BikeBridgeEastWestOverGrass",
+              "BikeBridgeEastWestOverWater",
+              "BikeBridgeEastWestOverSand",
+              "Counter",
+              "Computer",
+              "TownMap",
+              "Television",
+              "Unknown88",
+              "Unknown8E",
+              "Unknown8F",
+              "BerrySoil",
+              "DeepSnow",
+              "DeeperSnow",
+              "DeepestSnow",
+              "Mud",
+              "DeepMud",
+              "MarshGrass",
+              "DeepMarshGrass",
+              "ShallowSnow",
+              "ShadedSnow",
+              "DarkGrass",
+              "VeryTallDarkGrass",
+              "GrottoGrass",
+              "DeepSand",
+              "Quicksand",
+              "StrengthHole",
+              "ChargedFloor",
+              "SurfEdge",
+              "Catwalk",
+              "BikeRampEast",
+              "BikeRampWest",
+              "BikeSlopeTop",
+              "BikeSlopeBottom",
+              "BikeRack",
+              "SmallBookshelf",
+              "Bookshelf",
+              "TallBookshelf",
+              "TrashCan",
+              "ShopShelf",
+              "Magma",
+              "LadderNorth",
+              "LadderSouth",
+              "LadderDown",
+              "DiveWater",
+              "NoSurfacing",
+              "Seaweed",
+              "ThinIce",
+              "CrackedFloor",
+              "Hole",
+              "CurrentEast",
+              "CurrentWest",
+              "CurrentNorth",
+              "CurrentSouth",
+              "Spinner",
+              "SecretBaseSpot",
+              "RailNorthSouth",
+              "RailEastWest",
+              "BumpySlope",
+              "CyclingRoadPull",
+              "NoRunning",
+              "SeaweedNoSurfacing"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "props": {
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "type": {
+            "enum": [
+              "Table",
+              "Chair",
+              "Sofa",
+              "Bookshelf",
+              "Television",
+              "Plant",
+              "Fridge",
+              "KitchenCounter",
+              "Stove",
+              "Stairs",
+              "Counter",
+              "HealingMachine",
+              "Bench",
+              "StoreShelf",
+              "LabDesk",
+              "LabMachine",
+              "Bed",
+              "Computer",
+              "SideStairsUp",
+              "SideStairsDown",
+              "SideStairsUpEast",
+              "SideStairsDownWest",
+              "Headstone",
+              "Tomb",
+              "Bicycle",
+              "TrashCan",
+              "Wardrobe",
+              "ClothesRack",
+              "CookingTable",
+              "Boulder",
+              "CutTree",
+              "CrackedRock",
+              "StrengthBoulder",
+              "Fence",
+              "LowWall",
+              "LampPost",
+              "Mailbox",
+              "Planter",
+              "Fountain",
+              "Boat",
+              "WindTurbine",
+              "Statue",
+              "HoneyTree",
+              "Crates",
+              "CoalHeap",
+              "Hedge",
+              "FlowerBed",
+              "Column",
+              "Topiary",
+              "Cairn",
+              "Billboard",
+              "Outcrop",
+              "Mast",
+              "Drums",
+              "Conveyor",
+              "Gantry",
+              "OreHeap",
+              "Headframe",
+              "LiftBase",
+              "Drawbridge",
+              "Tram",
+              "Binoculars",
+              "Pavilion",
+              "SeaStack",
+              "Snowdrift",
+              "Rift",
+              "RiftShadow",
+              "PunchingBag",
+              "TireStack",
+              "Bollard",
+              "Snowball",
+              "LeagueDoor",
+              "Container",
+              "GrandFountain",
+              "Pool",
+              "Lava",
+              "Crater",
+              "Booth",
+              "ScaleModel",
+              "TrainerStatue",
+              "Colossus",
+              "RuinHut",
+              "ReceptionDesk",
+              "Rug",
+              "Window",
+              "Painting",
+              "Clock",
+              "WallEmblem",
+              "WarpPanel",
+              "WarpPanelOut",
+              "GalacticDoor",
+              "Tank",
+              "Rubble",
+              "CavePainting",
+              "DisplayCase",
+              "SlotMachine",
+              "Piano",
+              "Rack",
+              "AudioSystem",
+              "Bust",
+              "SilverBust",
+              "GuestSet",
+              "NightTable",
+              "MusicBox",
+              "TeaSet",
+              "PcDesk",
+              "Cushion",
+              "FlowerStand",
+              "LiftCar",
+              "LiftIndicator",
+              "BookPile",
+              "VendingMachine",
+              "MagmaStone",
+              "WallShelf",
+              "Blackboard",
+              "ElectricGate",
+              "DomeFossil",
+              "HelixFossil",
+              "OldAmber",
+              "DeskPokedex",
+              "RolledTownMap",
+              "Whirlpool",
+              "IceBlock",
+              "GymStatue",
+              "Decoration",
+              "Airplane",
+              "ChargeStone",
+              "Microwave",
+              "WashingMachine",
+              "Refrigerator",
+              "ElectricFan",
+              "Lawnmower",
+              "UnownWall",
+              "GrottoHollow",
+              "GymWaterfall",
+              "CratePile",
+              "PrismTower",
+              "DeoxysTriangle",
+              "Wreck",
+              "ShipEngine"
+            ]
+          },
+          "x": {
+            "type": "integer"
+          },
+          "y": {
+            "type": "integer"
+          },
+          "width": {
+            "type": "integer"
+          },
+          "depth": {
+            "type": "integer"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "buildings": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "x": {
+            "type": "integer"
+          },
+          "y": {
+            "type": "integer"
+          },
+          "kind": {
+            "enum": [
+              "House",
+              "PokemonCenter",
+              "PokeMart",
+              "Lab",
+              "School",
+              "Office",
+              "TvStation",
+              "Terminal",
+              "Apartments",
+              "Gym",
+              "Gate",
+              "Museum",
+              "Library",
+              "Shop",
+              "Hotel",
+              "Hall",
+              "Chapel",
+              "Temple",
+              "Shrine",
+              "Tower",
+              "Lighthouse",
+              "Factory",
+              "Warehouse",
+              "Mansion",
+              "Galactic",
+              "League"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "warps": {
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "sourceX": {
+            "type": "integer"
+          },
+          "sourceY": {
+            "type": "integer"
+          },
+          "targetMap": {
+            "type": "string"
+          },
+          "targetX": {
+            "type": "integer"
+          },
+          "targetY": {
+            "type": "integer"
+          },
+          "targetFacing": {
+            "enum": [
+              "Down",
+              "Up",
+              "Left",
+              "Right"
+            ]
+          },
+          "cyclistsOnly": {
+            "type": "boolean"
+          },
+          "openedBy": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "until": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "from": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "signboards": {
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "x": {
+            "type": "integer"
+          },
+          "y": {
+            "type": "integer"
+          },
+          "text": {
+            "type": "string"
+          },
+          "script": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "npcs": {
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "name": {
+            "type": "string"
+          },
+          "npcType": {
+            "type": "string"
+          },
+          "x": {
+            "type": "integer"
+          },
+          "y": {
+            "type": "integer"
+          },
+          "facing": {
+            "enum": [
+              "Down",
+              "Up",
+              "Left",
+              "Right"
+            ]
+          },
+          "dialog": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "isStarterBriefcase": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "isHealingNurse": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "isPokeMartClerk": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "isPCTerminal": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "isTransportAttendant": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "mart": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "script": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "hiddenBy": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "shownBy": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "item": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "count": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "species": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "trainer": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "trainerClass": {
+                "type": "string"
+              },
+              "party": {
+                "type": "array",
+                "items": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "species": {
+                      "type": "string"
+                    },
+                    "level": {
+                      "type": "integer"
+                    },
+                    "moves": {
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "prizeMoney": {
+                "type": "integer"
+              },
+              "dialogueBefore": {
+                "type": "string"
+              },
+              "dialogueAfter": {
+                "type": "string"
+              },
+              "sightRange": {
+                "type": "integer"
+              },
+              "doubleBattle": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "format": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "additionalProperties": false
+          },
+          "movement": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "rangeX": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "rangeZ": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "level": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "stance": {
+            "enum": [
+              "Stand",
+              "Sit",
+              "SitGround",
+              "Lie",
+              "Swim",
+              "Fish",
+              "Tug",
+              null
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "triggers": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "x": {
+            "type": "integer"
+          },
+          "y": {
+            "type": "integer"
+          },
+          "width": {
+            "type": "integer"
+          },
+          "depth": {
+            "type": "integer"
+          },
+          "script": {
+            "type": "string"
+          },
+          "variable": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "value": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "hiddenItems": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "x": {
+            "type": "integer"
+          },
+          "y": {
+            "type": "integer"
+          },
+          "item": {
+            "type": "string"
+          },
+          "count": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "flag": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "tileScripts": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "integer"
+          },
+          "y": {
+            "type": "integer"
+          },
+          "script": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "wildEncounters": {
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "speciesName": {
+            "type": "string"
+          },
+          "minLevel": {
+            "type": "integer"
+          },
+          "maxLevel": {
+            "type": "integer"
+          },
+          "weight": {
+            "type": "integer"
+          },
+          "daySpecies": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "nightSpecies": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "count": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "name",
+    "width",
+    "height",
+    "ground"
+  ],
+  "additionalProperties": false
+}

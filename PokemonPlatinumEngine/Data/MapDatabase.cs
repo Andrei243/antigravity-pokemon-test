@@ -45,7 +45,8 @@ public static partial class MapDatabase
         // The game's own rooms and every pack's, a pack's map replacing the game's of the same name (plan 16 · T14)
         foreach (var (key, path) in DataLayers.FilesIn(Folder, "*.json"))
         {
-            var file = GameDataFiles.Load<MapFile>(Path.Combine(Folder, key));
+            // Written by hand, so read strictly (plan 24 · X4): a mistyped key stops the start with the file and the key
+            var file = GameDataFiles.Load<MapFile>(Path.Combine(Folder, key), strict: true);
             string expected = Path.GetFileNameWithoutExtension(path);
             if (file.Name != expected)
                 throw new InvalidDataException($"Map file {path} names its map '{file.Name}'; the file must be called {file.Name}.json.");

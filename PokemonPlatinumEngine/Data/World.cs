@@ -41,7 +41,7 @@ public sealed class World
         {
             string relative = Path.Combine(Folder, name);
             if (File.Exists(GameDataFiles.PathOf(Path.Combine(relative, IndexFile))))
-                worlds.Add(new World(relative, GameDataFiles.Load<WorldIndexFile>(Path.Combine(relative, IndexFile))));
+                worlds.Add(new World(relative, GameDataFiles.Load<WorldIndexFile>(Path.Combine(relative, IndexFile), strict: true)));
         }
         return worlds;
     }
@@ -50,12 +50,21 @@ public sealed class World
     /// A world read from any folder that has the layout of <c>Data/world/&lt;region&gt;/</c>, with the index given
     /// instead of read: how tools look at an import the game doesn't ship (the importer's whole output).
     /// </summary>
-    public static World Open(string folder, WorldIndexFile index) => new(Path.GetFullPath(folder), index);
+    /// <param name="folder">The folder laid out as <c>Data/world/&lt;region&gt;/</c>.</param>
+    /// <param name="index">Its <c>world.json</c>, read already.</param>
+    /// <param name="strictOverlays">False reads the overlays as a tool that tells of a mistyped key itself does (the
+    /// content check, which reports the key and the field meant, and goes on to check the rest).</param>
+    public static World Open(string folder, WorldIndexFile index, bool strictOverlays = true) =>
+        new(Path.GetFullPath(folder), index) { strictOverlays = strictOverlays };
 
-    private T? Optional<T>(string file) where T : class
+    // The overlays are written by hand and read strictly (plan 24 · X4), but where a tool asks otherwise
+    private bool strictOverlays = true;
+
+    // A file written by hand (an overlay) is read strictly (plan 24 · X4); what the importer writes is not
+    private T? Optional<T>(string file, bool strict = false) where T : class
     {
         string relative = Path.Combine(folder, file);
-        return File.Exists(GameDataFiles.PathOf(relative)) ? GameDataFiles.Load<T>(relative) : null;
+        return File.Exists(GameDataFiles.PathOf(relative)) ? GameDataFiles.Load<T>(relative, strict) : null;
     }
 
     // The files read so far are kept for everyone who asks: tests and the chunks' workers ask from several threads at
@@ -123,7 +132,7 @@ public sealed class World
     {
         lock (reading)
         {
-            if (!overlays.TryGetValue(key, out var overlay)) overlays[key] = overlay = Optional<WorldOverlayFile>(Path.Combine("overlays", key + ".json"));
+            if (!overlays.TryGetValue(key, out var overlay)) overlays[key] = overlay = Optional<WorldOverlayFile>(Path.Combine("overlays", key + ".json"), strictOverlays);
             return overlay;
         }
     }

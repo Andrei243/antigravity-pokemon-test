@@ -1,0 +1,615 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "The importer's patch of moves.json (tools/DataImporter/Overrides/moves.json)",
+  "description": "Written by SchemaTests (plan 24 · X4) from the records the game reads the file into; don't edit by hand. The game reads the file strictly: a key no field has stops it.",
+  "type": "object",
+  "additionalProperties": {
+    "type": [
+      "object",
+      "null"
+    ],
+    "properties": {
+      "id": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "name": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "generation": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "type": {
+        "anyOf": [
+          {
+            "enum": [
+              "Normal",
+              "Fire",
+              "Water",
+              "Grass",
+              "Electric",
+              "Ice",
+              "Fighting",
+              "Poison",
+              "Ground",
+              "Flying",
+              "Psychic",
+              "Bug",
+              "Rock",
+              "Ghost",
+              "Dragon",
+              "Steel",
+              "Dark",
+              "Fairy"
+            ]
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "category": {
+        "anyOf": [
+          {
+            "enum": [
+              "Physical",
+              "Special",
+              "Status"
+            ]
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "power": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "accuracy": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "maxPP": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "priority": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "description": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "inflictStatus": {
+        "anyOf": [
+          {
+            "enum": [
+              "None",
+              "Poison",
+              "Toxic",
+              "Burn",
+              "Paralyze",
+              "Sleep",
+              "Freeze",
+              "Faint"
+            ]
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "statusChancePercent": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "targetStatChange": {
+        "anyOf": [
+          {
+            "enum": [
+              "HP",
+              "Attack",
+              "Defense",
+              "SpAttack",
+              "SpDefense",
+              "Speed",
+              "Accuracy",
+              "Evasion",
+              null
+            ]
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "statStageAmount": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "statChangeTargetSelf": {
+        "anyOf": [
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "statChangeChancePercent": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "recoilPercent": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "drainPercent": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "critStage": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "alsoChangesStats": {
+        "anyOf": [
+          {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "enum": [
+                "HP",
+                "Attack",
+                "Defense",
+                "SpAttack",
+                "SpDefense",
+                "Speed",
+                "Accuracy",
+                "Evasion"
+              ]
+            }
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "flinchChancePercent": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "confuseChancePercent": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "target": {
+        "anyOf": [
+          {
+            "enum": [
+              "Selected",
+              "AllFoes",
+              "AllOthers",
+              "User",
+              "RandomFoe",
+              "UserSide",
+              "FoeSide",
+              "Field",
+              "Ally",
+              "UserOrAlly",
+              "UserAndAllies",
+              "Allies",
+              "AllPokemon"
+            ]
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "flags": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "thawsUser": {
+        "anyOf": [
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "healPercent": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "effect": {
+        "anyOf": [
+          {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "effectChance": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "battleEffect": {
+        "anyOf": [
+          {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "contest": {
+        "anyOf": [
+          {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "type": {
+                "enum": [
+                  "Cool",
+                  "Beauty",
+                  "Cute",
+                  "Smart",
+                  "Tough"
+                ]
+              },
+              "effect": {
+                "enum": [
+                  "None",
+                  "FirstNextTurn",
+                  "LastNextTurn",
+                  "DoubledJudge",
+                  "TwoHeartsWhenVoltageUp",
+                  "Basic",
+                  "UniqueJudge",
+                  "ConsecutiveUse",
+                  "Voltage",
+                  "AllSameJudge",
+                  "LowersVoltage",
+                  "DoubleNextTurn",
+                  "StealVoltage",
+                  "SuppressVoltage",
+                  "RandomOrder",
+                  "DoubleFinalAct",
+                  "LowVoltageAdvantage",
+                  "FirstPerformanceAdvantage",
+                  "FinalPerformanceAdvantage",
+                  "NoVoltageDown",
+                  "TwoVoltageInARowAdvantage",
+                  "HighScoreLaterTurn",
+                  "MaxVoltageAdvantage",
+                  "PityPoints"
+                ]
+              }
+            },
+            "additionalProperties": false
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "support": {
+        "anyOf": [
+          {
+            "enum": [
+              "Full",
+              "Partial",
+              "None"
+            ]
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "kind": {
+        "anyOf": [
+          {
+            "enum": [
+              "Standard",
+              "ZMove",
+              "MaxMove",
+              "GMaxMove"
+            ]
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "zPower": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "maxPower": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "zBonus": {
+        "anyOf": [
+          {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "effect": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "stats": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "enum": [
+                    "HP",
+                    "Attack",
+                    "Defense",
+                    "SpAttack",
+                    "SpDefense",
+                    "Speed",
+                    "Accuracy",
+                    "Evasion"
+                  ]
+                }
+              },
+              "stages": {
+                "type": "integer"
+              }
+            },
+            "additionalProperties": false
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "gigantamaxOf": {
+        "anyOf": [
+          {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "modern": {
+        "anyOf": [
+          {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "power": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "accuracy": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "maxPP": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "priority": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "type": {
+                "enum": [
+                  "Normal",
+                  "Fire",
+                  "Water",
+                  "Grass",
+                  "Electric",
+                  "Ice",
+                  "Fighting",
+                  "Poison",
+                  "Ground",
+                  "Flying",
+                  "Psychic",
+                  "Bug",
+                  "Rock",
+                  "Ghost",
+                  "Dragon",
+                  "Steel",
+                  "Dark",
+                  "Fairy",
+                  null
+                ]
+              },
+              "category": {
+                "enum": [
+                  "Physical",
+                  "Special",
+                  "Status",
+                  null
+                ]
+              }
+            },
+            "additionalProperties": false
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "new": {
+        "type": "boolean",
+        "description": "An entry the import has none of by this name: added only when it says so, so a misspelt name stops the importer."
+      }
+    },
+    "additionalProperties": false
+  }
+}

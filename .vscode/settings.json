@@ -1,0 +1,21 @@
+{
+  // Plan 24 · X4: each hand-written data file is checked against its schema as it is written (docs/schemas, made by
+  // PokemonPlatinumTests' SchemaTests). The game reads these files strictly, so a key the schema refuses would stop it.
+  "json.schemas": [
+    { "fileMatch": ["PokemonPlatinumEngine/Data/world/*/world.json"], "url": "./docs/schemas/world.schema.json" },
+    { "fileMatch": ["PokemonPlatinumEngine/Data/world/*/overlays/*.json"], "url": "./docs/schemas/overlay.schema.json" },
+    { "fileMatch": ["PokemonPlatinumEngine/Data/maps/*.json"], "url": "./docs/schemas/map.schema.json" },
+    { "fileMatch": ["PokemonPlatinumEngine/Data/audio/sound-map.json"], "url": "./docs/schemas/sound-map.schema.json" },
+    { "fileMatch": ["**/overrides/models/*.json", "assets/models/*.json"], "url": "./docs/schemas/model-options.schema.json" },
+    { "fileMatch": ["tools/DataImporter/Overrides/species.json"], "url": "./docs/schemas/species-patch.schema.json" },
+    { "fileMatch": ["tools/DataImporter/Overrides/items.json"], "url": "./docs/schemas/items-patch.schema.json" },
+    { "fileMatch": ["tools/DataImporter/Overrides/moves.json"], "url": "./docs/schemas/moves-patch.schema.json" }
+  ],
+  // The files the game reads with comments and trailing commas allowed
+  "files.associations": {
+    "**/PokemonPlatinumEngine/Data/world/*/world.json": "jsonc",
+    "**/PokemonPlatinumEngine/Data/world/*/overlays/*.json": "jsonc",
+    "**/PokemonPlatinumEngine/Data/maps/*.json": "jsonc",
+    "**/tools/DataImporter/Overrides/*.json": "jsonc"
+  }
+}

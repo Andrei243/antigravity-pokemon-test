@@ -96,6 +96,37 @@ public static partial class DamageCalculator
     public static bool IsHeldDown(Battler b) =>
         b.Field?.Gravity == true || b.Volatile.Ingrained || b.Volatile.SmackedDown || BattleEffects.Of(b).Any(e => e.GroundsHolder);
 
+    /// <summary>
+    /// For each attacking type, the defending types its matchups are listed against in the original's chart
+    /// (<c>sTypeMatchupMultipliers</c> in <c>src/battle/battle_lib.c</c>), in the chart's order: the order
+    /// <c>BattleSystem_ApplyTypeChart</c> applies a dual type's two multipliers in, each rounded down, which is not the
+    /// order of the target's own types. Normal's and Fighting's immunity of the Ghost type stands last, apart.
+    /// </summary>
+    private static readonly Dictionary<PokemonType, PokemonType[]> ChartRows = new()
+    {
+        [PokemonType.Normal] = new[] { PokemonType.Rock, PokemonType.Steel, PokemonType.Ghost },
+        [PokemonType.Fire] = new[] { PokemonType.Fire, PokemonType.Water, PokemonType.Grass, PokemonType.Ice, PokemonType.Bug, PokemonType.Rock, PokemonType.Dragon, PokemonType.Steel },
+        [PokemonType.Water] = new[] { PokemonType.Fire, PokemonType.Water, PokemonType.Grass, PokemonType.Ground, PokemonType.Rock, PokemonType.Dragon },
+        [PokemonType.Electric] = new[] { PokemonType.Water, PokemonType.Electric, PokemonType.Grass, PokemonType.Ground, PokemonType.Flying, PokemonType.Dragon },
+        [PokemonType.Grass] = new[] { PokemonType.Fire, PokemonType.Water, PokemonType.Grass, PokemonType.Poison, PokemonType.Ground, PokemonType.Flying, PokemonType.Bug, PokemonType.Rock, PokemonType.Dragon, PokemonType.Steel },
+        [PokemonType.Ice] = new[] { PokemonType.Water, PokemonType.Grass, PokemonType.Ice, PokemonType.Ground, PokemonType.Flying, PokemonType.Dragon, PokemonType.Steel, PokemonType.Fire },
+        [PokemonType.Fighting] = new[] { PokemonType.Normal, PokemonType.Ice, PokemonType.Poison, PokemonType.Flying, PokemonType.Psychic, PokemonType.Bug, PokemonType.Rock, PokemonType.Dark, PokemonType.Steel, PokemonType.Ghost },
+        [PokemonType.Poison] = new[] { PokemonType.Grass, PokemonType.Poison, PokemonType.Ground, PokemonType.Rock, PokemonType.Ghost, PokemonType.Steel },
+        [PokemonType.Ground] = new[] { PokemonType.Fire, PokemonType.Electric, PokemonType.Grass, PokemonType.Poison, PokemonType.Flying, PokemonType.Bug, PokemonType.Rock, PokemonType.Steel },
+        [PokemonType.Flying] = new[] { PokemonType.Electric, PokemonType.Grass, PokemonType.Fighting, PokemonType.Bug, PokemonType.Rock, PokemonType.Steel },
+        [PokemonType.Psychic] = new[] { PokemonType.Fighting, PokemonType.Poison, PokemonType.Psychic, PokemonType.Dark, PokemonType.Steel },
+        [PokemonType.Bug] = new[] { PokemonType.Fire, PokemonType.Grass, PokemonType.Fighting, PokemonType.Poison, PokemonType.Flying, PokemonType.Psychic, PokemonType.Ghost, PokemonType.Dark, PokemonType.Steel },
+        [PokemonType.Rock] = new[] { PokemonType.Fire, PokemonType.Ice, PokemonType.Fighting, PokemonType.Ground, PokemonType.Flying, PokemonType.Bug, PokemonType.Steel },
+        [PokemonType.Ghost] = new[] { PokemonType.Normal, PokemonType.Psychic, PokemonType.Dark, PokemonType.Steel, PokemonType.Ghost },
+        [PokemonType.Dragon] = new[] { PokemonType.Dragon, PokemonType.Steel },
+        [PokemonType.Dark] = new[] { PokemonType.Fighting, PokemonType.Psychic, PokemonType.Ghost, PokemonType.Dark, PokemonType.Steel },
+        [PokemonType.Steel] = new[] { PokemonType.Fire, PokemonType.Water, PokemonType.Electric, PokemonType.Ice, PokemonType.Rock, PokemonType.Steel }
+    };
+
+    /// <summary>Where a matchup stands in the original's chart for its attacking type; a matchup the chart lacks (a later type's) after all of them.</summary>
+    internal static int ChartOrder(PokemonType attacking, PokemonType defending) =>
+        ChartRows.TryGetValue(attacking, out var row) && Array.IndexOf(row, defending) is var at and >= 0 ? at : int.MaxValue;
+
     /// <summary>Each of the target's types with what the move's type does against it, the immunities that don't hold left out.</summary>
     private static IEnumerable<(PokemonType Type, float Multiplier)> Matchups(Battler attacker, Battler defender, Move move, Ruleset rules)
     {
@@ -393,8 +424,11 @@ public static partial class DamageCalculator
                 damage = Formulas.Scale(damage, stab);
             }
 
-            // Each of the target's types in turn; a hit that isn't stopped never rounds down to nothing
-            foreach (var (_, against) in Matchups(attacker, defender, move, rules))
+            // Each of the target's types in turn, in the order of the original's chart (sTypeMatchupMultipliers, which
+            // BattleSystem_ApplyTypeChart walks from the top, plan 24 · X5): a Ground move on a Rock and Grass type is
+            // halved for the Grass before it is doubled for the Rock, each step rounded down. A hit that isn't stopped
+            // never rounds down to nothing
+            foreach (var (_, against) in Matchups(attacker, defender, move, rules).OrderBy(m => ChartOrder(move.Type, m.Type)))
                 damage = Formulas.Divide(damage * (int)MathF.Round(against * 10f), 10);
 
             // Filter and Solid Rock, then an Expert Belt on a super-effective hit, then Tinted Lens (BattleSystem_ApplyTypeChart)

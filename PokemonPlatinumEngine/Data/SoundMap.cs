@@ -32,7 +32,7 @@ public static class SoundMap
 
     private static readonly Lazy<SoundMapFile> file = new(() =>
     {
-        var read = GameDataFiles.Load<SoundMapFile>(FileName);
+        var read = GameDataFiles.Load<SoundMapFile>(FileName, strict: true);
         return new SoundMapFile
         {
             Comment = read.Comment,

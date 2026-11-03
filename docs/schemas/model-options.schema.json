@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "A model file's options (overrides/models/<model>.json)",
+  "description": "Written by SchemaTests (plan 24 · X4) from the records the game reads the file into; don't edit by hand. The game reads the file strictly: a key no field has stops it.",
+  "type": [
+    "object",
+    "null"
+  ],
+  "properties": {
+    "yaw": {
+      "type": "number"
+    },
+    "fill": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "hovers": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "clips": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "hide": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "onlyClipIsIdle": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": false
+}

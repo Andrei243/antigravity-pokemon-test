@@ -103,6 +103,10 @@ A `.json` file with the same name beside a model file can set:
 }
 ```
 
+The keys may be written in any case, but a key that is none of these (a misspelt `"yaww"`), or a value of the wrong
+kind, is reported in the log and the harness's problems with the file and the key, and **none of the file's settings
+are used** until it is put right (plan 24 · X4). `docs/schemas/model-options.schema.json` lets an editor check it.
+
 - `yaw`: degrees to turn the model round the vertical, for a file whose front isn't +Z.
 - `fill`: how much of its sprite frame (and so its platform) the species fills, 0.45 to 1.
 - `hovers`: whether it floats above its platform.
