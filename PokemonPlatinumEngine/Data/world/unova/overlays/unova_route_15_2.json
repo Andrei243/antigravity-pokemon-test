@@ -1,0 +1,8 @@
+{
+  // A house on Route 15 (plan 22 · U10, part g), Black 2's, our words
+  "area": "unova_route_15_2",
+  "bgmTrack": "unova/route13",
+  "people": {
+    "0": { "name": "Scientist", "dialog": [ "I watch the canyon's rocks shift over the years. Very slowly. Very, very slowly." ] }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  // The Marvelous Bridge's gate on Route 16's side (plan 22 · U10, part g), Black 2's, our words
+  "area": "bridge_gate_gate_7",
+  "bgmTrack": "unova/opelucid",
+  "people": {
+    "0": { "name": "Roughneck", "dialog": [ "The Marvelous Bridge goes all the way over the canyon to Route 15. Mind the wind." ] },
+    "1": { "name": "Parasol Lady", "dialog": [ "My parasol nearly flew away on the bridge. I hold it with both hands now." ] },
+    "2": { "name": "Lady", "npcType": "lady", "dialog": [ "Nimbasa City is just west of here. Its amusement park is lovely at night." ] }
+  }
+}

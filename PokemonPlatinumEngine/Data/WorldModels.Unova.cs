@@ -353,6 +353,18 @@ public static partial class WorldModels
         Furniture("machine_l02", PropType.LabMachine, "a large machine of a laboratory"),
         Furniture("d1disk01", PropType.LabMachine, "a disc reader of the Dreamyard's ruined laboratory"),
         Furniture("d1shelf01", PropType.Bookshelf, "a shelf of the Dreamyard's ruined laboratory"),
+
+        // ---------------------------------------------------------------- Black City and Route 15 (plan 22 · U10, part g)
+        // Black City is built as Castelia's towers (Metropolis), until a row of the style guide's "Buildings" is written for it
+        Built("bc_build_s1", BuildingKind.Apartments, "a dark tower of Black City", Architecture.Metropolis),
+        Built("bc_house_s1", BuildingKind.House, "a house of Black City", Architecture.Metropolis),
+        Built("bc_shop_s1", BuildingKind.Shop, "a shop of Black City's market street", Architecture.Metropolis),
+        Built("bc_mugen_s1", BuildingKind.Tower, "the Black Tower, whose challenge is not open", Architecture.Metropolis),
+        Built("palpark", BuildingKind.Lab, "the Poké Transfer Lab on Route 15, shut", Architecture.Storehouse),
+        Ground("door_h5_in", "a door of the Black Tower's lobby (the warp's tile draws it)"),
+        Ground("h05_elevator", "the Black Tower's lift in its lobby, not running (no model of its own)"),
+        Ground("h05_light", "a light of the Black Tower's lobby (no model of its own)"),
+        Ground("h05_panel", "a panel of the Black Tower's lobby (no model of its own)"),
     };
 
     private static readonly Dictionary<string, WorldModel> UnovaByName = UnovaTable.ToDictionary(m => m.Name, StringComparer.Ordinal);

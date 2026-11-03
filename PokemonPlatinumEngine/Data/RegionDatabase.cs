@@ -908,6 +908,8 @@ public static class RegionDatabase
                 "DragonspiralTower_1F", "DragonspiralTower_2F", "DragonspiralTower_3F", "DragonspiralTower_4F", "DragonspiralTower_5F", "DragonspiralTower_Top",
                 // Plan 22 · U10, part f: the Skyarrow Bridge to Nuvema Town
                 "SkyarrowBridge_WestEnd", "SkyarrowGate_Pinwheel", "PinwheelForest_Inside", "NacreneGate", "NacreneCity_PokemonCenter", "NacreneCity_Museum", "NacreneCity_Museum2F", "NacreneCity_Museum3", "NacreneCity_Room5", "NacreneCity_Warehouse1", "NacreneCity_Warehouse2", "NacreneCity_Warehouse3", "NacreneCity_Room9", "NacreneCity_Room10", "Route3_House", "Route3_DayCare", "WellspringCave_1F", "StriatonCity_PokemonCenter", "StriatonCity_Room2", "StriatonCity_House1_1F", "StriatonCity_Room4", "StriatonCity_House2_1F", "StriatonCity_House2_2F", "StriatonCity_House3_1F", "StriatonCity_Room8", "StriatonCity_Room9", "Dreamyard", "Dreamyard_Basement", "AccumulaGate", "AccumulaTown_PokemonCenter", "AccumulaTown_House1_1F", "AccumulaTown_House1_2F", "AccumulaTown_House2_1F", "AccumulaTown_House2_2F", "AccumulaTown_House3_1F", "AccumulaTown_Room7", "AccumulaTown_Room8", "NuvemaTown_Room2", "NuvemaTown_Room3", "NuvemaTown_Room4", "NuvemaTown_Room5", "NuvemaTown_Room6", "NuvemaTown_Room7", "NuvemaTown_Lab", "Route1Gate",
+                // Plan 22 · U10, part g: Black City, Route 15 and the Marvelous Bridge
+                "BlackGate_Route14", "BlackGate_Route15", "BlackCity", "BlackCity_Room2", "BlackCity_Room5", "BlackCity_PokemonCenter", "Route15_House", "MarvelousBridge", "MarvelousBridgeGate_West", "MarvelousBridgeGate_East",
             }
         },
         new()

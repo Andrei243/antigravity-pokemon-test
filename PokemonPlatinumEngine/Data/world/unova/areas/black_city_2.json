@@ -1,0 +1,28 @@
+{
+  "key": "black_city_2",
+  "index": 2,
+  "name": "Black City",
+  "matrix": 209,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_C_10_B",
+  "nightMusic": "BGM_C_10_B",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 12, "to": "black_city", "toWarp": 3 },
+    { "x": 7, "z": 12, "to": "black_city", "toWarp": 3 },
+    { "x": 8, "z": 12, "to": "black_city", "toWarp": 3 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "19", "movement": "wander_around", "x": 6, "z": 5, "facing": 1, "rangeX": 3, "rangeZ": 3, "script": "1" },
+    { "id": "1", "looks": "21", "movement": "none", "x": 9, "z": 10, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "2" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -1,0 +1,18 @@
+{
+  // Black City (plan 22 · U10, part g): Black 2's city of dark towers between Route 14 and Route 15, its people read by the
+  // importer, our words. Its people of scenes (3, 6) are left out; the Black Tower beyond its lobby (Black 2's facility) is not
+  // open
+  "area": "black_city",
+  "bgmTrack": "unova/castelia",
+  "people": {
+    "0": { "name": "Roughneck", "dialog": [ "This city never sleeps. Every street has a Trainer looking for a fight." ] },
+    "1": { "name": "Battle Girl", "dialog": [ "I came to Black City to climb the Black Tower. Its battles are the best training there is." ] },
+    "2": { "name": "Veteran", "dialog": [ "In my day this was a forest. Now it's all towers and lights." ] },
+    "4": { "name": "Clerk", "dialog": [ "The shops here stay open all night. So do the battles." ] },
+    "5": { "name": "Clerk", "npcType": "clerk", "dialog": [ "Welcome to Black City! Everything's for sale, if you've got the money." ] },
+    "7": { "name": "Backpacker", "dialog": [ "I heard the Black Tower's floors are different every time you climb them." ] }
+  },
+  "signs": {
+    "5": "Black City\nThe city that never sleeps"
+  }
+}

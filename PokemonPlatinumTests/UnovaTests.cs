@@ -464,8 +464,8 @@ public class UnovaTests
         // the road's small tree and boulder are Black 2's obstacles, told by the global scripts they run
         Assert.Contains(Overworld.NPCs, n => n.Obstacle == PropType.CutTree && Overworld.AreaAt(n.GridX, n.GridY)?.Key == "unova_route_16");
         Assert.Contains(Overworld.NPCs, n => n.Obstacle == PropType.StrengthBoulder && Overworld.AreaAt(n.GridX, n.GridY)?.Key == "unova_route_16");
-        // the Marvelous Bridge beyond the gate house at the road's east end is the post-game's
-        Assert.DoesNotContain(Overworld.Warps, w => w.SourceX == 503 && w.SourceY is 431 or 432);
+        // the gate house at the road's east end leads to the Marvelous Bridge since plan 22 · U10, part g
+        Assert.Contains(Overworld.Warps, w => w.TargetMap == "MarvelousBridgeGate_East");
         var forest = MapNamed("LostlornForest");
         Assert.Contains(forest.NPCs, n => n.Key == "7" && n.Script == "Traveller");
         Assert.True(forest.NPCs.Count(n => n.IsTrainer) >= 4);
@@ -587,7 +587,9 @@ public class UnovaTests
                 // and Icirrus City's houses since plan 22 · U10, part e
                 || m.Name == "c7_house"
                 // and the old roads from the Skyarrow Bridge to Nuvema Town since plan 22 · U10, part f
-                || m.Name is "c1_build" or "c1_rest" or "c1_school" or "c2_build" or "c2_cafe" or "c2_museum" or "t1_house" or "t1_labo" or "t2_house01" or "t2_build01" or "sodateya")
+                || m.Name is "c1_build" or "c1_rest" or "c1_school" or "c2_build" or "c2_cafe" or "c2_museum" or "t1_house" or "t1_labo" or "t2_house01" or "t2_build01" or "sodateya"
+                // and Black City and Route 15 since plan 22 · U10, part g
+                || m.Name is "bc_build_s1" or "bc_house_s1" or "bc_shop_s1" or "bc_mugen_s1" or "palpark")
                 Assert.True(string.IsNullOrEmpty(m.StandInUntil), $"{m.Name} is still a stand-in");
             else Assert.False(string.IsNullOrEmpty(m.StandInUntil), $"{m.Name} is no stand-in");
         }

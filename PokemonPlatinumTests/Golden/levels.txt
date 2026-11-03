@@ -3510,6 +3510,10 @@ grass 33-36
 surf 15-35
 super rod 40-70
 trainers 8, 38-52: unova_ace_trainer_junko 39, unova_ace_trainer_kipp 39, unova_backpacker_reece 38, unova_battle_girl_glinda 40, unova_black_belt_jay 52, unova_fisherman_sid 38, unova_gentleman_sheldon 39, unova_socialite_marian 39
+=== unova_route_15
+Route 15
+grass 54-57
+trainers 5, 60: unova_backpacker_corin 60, unova_backpacker_talon 60, unova_pokefan_elliot 60, unova_pokefan_lydia 60, unova_scientist_marie 60
 === unova_route_16
 Route 16
 grass 21-24

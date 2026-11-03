@@ -1004,13 +1004,11 @@ unova_backers_masa_yas_3 187 (61)
 unova_backpacker_alexander 188 (62) [Zangoose → Ravagoose]
 unova_backpacker_boone 176 (36) [Numel → Volcamel, Sigilyph → Glyphoracle]
 unova_backpacker_clifford 168 (16) [Sandile → Krookodile, Herdier → Stoutland]
-unova_backpacker_corin 186 (60) [Poochyena → Hyaenarch, Cubone → Ossugard, Torkoal → Smeltortoise]
 unova_backpacker_kiyo_2 176 (37) [Golbat → Crobat, Swanna → Cygnelle]
 unova_backpacker_kumiko 176 (37) [Golbat → Crobat, Darmanitan → Darumandala]
 unova_backpacker_patty 188 (62) [Flareon → Pyreon]
 unova_backpacker_rachel 170 (21) [Woobat → Amorabat, Pidove → Unfezant]
 unova_backpacker_roland 170 (21) [Riolu → Aurasage, Timburr → Conkeldurr]
-unova_backpacker_talon 186 (60) [Seedot → Shiftry, Cacnea → Saguarox, Croagunk → Venomsensei]
 unova_baker_chris 178 (42) [Heatmor → Pyrovore]
 unova_baker_lilly 187 (61) [Torkoal → Smeltortoise, Miltank → Pastorine]
 unova_battle_girl_janie 188 (63) [Hitmonchan → Pugilord]
@@ -1227,8 +1225,6 @@ unova_pkmn_ranger_malory 175 (33) [Arcanine → Kirinine]
 unova_pkmn_ranger_naoko 174 (32) [Foongus → Sporemonarch]
 unova_pokefan_colin 187 (61) [Slowpoke → Slowmantle, Slowbro → Slowmantle]
 unova_pokefan_darcy 185 (58) [Rattata → Ratchisel, Sentret → Ermilong, Zigzagoon → Streakoon, Bidoof → Dambarel, Patrat → Beaconwatch]
-unova_pokefan_elliot 186 (60) [Growlithe → Kirinine, Houndour → Cerberhound]
-unova_pokefan_lydia 186 (60) [Meowth → Regalynx, Glameow → Brutabby, Liepard → Umbrapard]
 unova_pokefan_norbert 170 (21) [Growlithe → Kirinine, Sandshrew → Sandspire]
 unova_pokefan_sachiko 170 (22) [Darumaka → Darmanitan]
 unova_policeman_jeff 187 (61) [Arcanine → Kirinine, Mienshao → Mienshifu]
@@ -1292,7 +1288,6 @@ unova_school_kid_seymour_2 165 (9) [Pansage → Simisage]
 unova_school_kid_seymour_3 165 (9) [Pansear → Simisear]
 unova_scientist_blythe 187 (61) [Skorupi → Dreadpion, Swalot → Gulpgorge]
 unova_scientist_dudley 175 (34) [Klink → Klinklang, Klang → Klinklang]
-unova_scientist_marie 186 (60) [Gulpin → Gulpgorge, Garbodor → Scrapodor]
 unova_scientist_simon 187 (61) [Stunky → Mephitarch, Muk → Sludgemire]
 unova_smasher_aspen 180 (47) [Whimsicott → Cottonimbus, Lilligant → Ballerilly]
 unova_smasher_aspen_2 188 (63) [Whimsicott → Cottonimbus, Lilligant → Ballerilly]
@@ -4055,6 +4050,10 @@ grass 175-176 (own 33-36)
 surf 167-175 (own 15-35)
 super rod 177-194 (own 40-70)
 trainers 8, 177-182 (own 38-52): unova_ace_trainer_junko 177 (39) [Basculin → Bascurage, Lilligant → Ballerilly, Gligar → Fangliscor], unova_ace_trainer_kipp 177 (39) [Zebstrika → Stormstrika, Skarmory → Rapierwing, Tangela → Tanglewood], unova_backpacker_reece 177 (38) [Skorupi → Dreadpion, Pinsir → Mandibron], unova_battle_girl_glinda 177 (40) [Gurdurr → Conkeldurr], unova_black_belt_jay 182 (52) [Heracross → Atlascross], unova_fisherman_sid 177 (38) [Staryu → Stellamir, Buizel → Tidestoat], unova_gentleman_sheldon 177 (39) [Delcatty → Felinelle], unova_socialite_marian 177 (39) [Lopunny → Lapinova]
+=== unova_route_15
+Route 15, Unova
+grass 183-184 (own 54-57)
+trainers 5, 186 (own 60): unova_backpacker_corin 186 (60) [Poochyena → Hyaenarch, Cubone → Ossugard, Torkoal → Smeltortoise], unova_backpacker_talon 186 (60) [Seedot → Shiftry, Cacnea → Saguarox, Croagunk → Venomsensei], unova_pokefan_elliot 186 (60) [Growlithe → Kirinine, Houndour → Cerberhound], unova_pokefan_lydia 186 (60) [Meowth → Regalynx, Glameow → Brutabby, Liepard → Umbrapard], unova_scientist_marie 186 (60) [Gulpin → Gulpgorge, Garbodor → Scrapodor]
 === unova_route_16
 Route 16, Unova
 grass 170-171 (own 21-24)
