@@ -108,6 +108,18 @@ public class SaveData
     public int PlayerGridY { get; set; } = 886;
     public Direction PlayerFacing { get; set; } = Direction.Down;
 
+    /// <summary>
+    /// Where the body's centre stood off its tile's centre, in 256ths of a tile (plan 30 · FM7): only a region that moves
+    /// freely leaves it anything but nought, and nought is left out of the file. A save from before
+    /// <see cref="FreePositions"/> stands on its tile's centre (<see cref="SaveMigration"/>).
+    /// </summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]
+    public int PlayerSubX { get; set; }
+
+    /// <inheritdoc cref="PlayerSubX"/>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]
+    public int PlayerSubY { get; set; }
+
     /// <summary>How the player was getting about: a save made while surfing loads out on the water.</summary>
     public PokemonPlatinumEngine.Overworld.TravelMode Travel { get; set; }
 
@@ -322,8 +334,14 @@ public class SaveData
     /// </summary>
     public const int PokemonIdsGiven = 1;
 
+    /// <summary>
+    /// The <see cref="SaveVersion"/> from which a save keeps where the player's body stood between tiles (plan 30 · FM7,
+    /// <see cref="PlayerSubX"/>): a save from before stands on its tile's centre.
+    /// </summary>
+    public const int FreePositions = 2;
+
     /// <summary>The <see cref="SaveVersion"/> of saves made today.</summary>
-    public const int CurrentSave = PokemonIdsGiven;
+    public const int CurrentSave = FreePositions;
 
     /// <summary>
     /// The version of the save's own records, beside <see cref="WorldVersion"/> (where its player stands) and

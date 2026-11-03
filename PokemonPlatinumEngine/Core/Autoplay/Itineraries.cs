@@ -31,6 +31,19 @@ public static class Itineraries
     };
 
     /// <summary>
+    /// Kalos's first chapter's opening (plan 23 · Z1; plan 30 · FM9, which plays it in <c>Eight</c> and in <c>Free</c>):
+    /// downstairs to Mom, out of the door past the neighbours' scene, up Route 1 to the café's table in Aquacorde Town
+    /// (the first Pokémon, the Pokédex and Shauna's battle), and home to Mom for the roller skates.
+    /// </summary>
+    public static IReadOnlyList<Leg> KalosOpening { get; } = new[]
+    {
+        Leg.Enter("VanivilleTown_PlayersHouse_1F"),
+        Leg.Reach("Kalos", 255, 690),
+        Leg.Trigger("Kalos", "Cafe1", "aquacorde_town"),
+        Leg.Talk("VanivilleTown_PlayersHouse_1F", "mom"),
+    };
+
+    /// <summary>
     /// The second chapter (plan 02 · S5) to the Coal Badge: Jubilife City, the Trainers' School, the Pokétch campaign,
     /// the rival on Route 203, Oreburgh Gate's hiker, the boy and the rival at the Gym's door, Roark down the mine, a
     /// stretch of the mine trained in, and the Gym.
