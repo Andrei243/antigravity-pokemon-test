@@ -80,6 +80,65 @@ public sealed class VoicePlaybackTests : IDisposable
         Assert.Equal(0f, samples[^1]);
     }
 
+    /// <summary>Encodes mono samples as Ogg Vorbis with the test-only encoder, entirely in memory.</summary>
+    private static byte[] OggOf(float[] samples, int rate)
+    {
+        var info = OggVorbisEncoder.VorbisInfo.InitVariableBitRate(1, rate, 0.5f);
+        var stream = new OggVorbisEncoder.OggStream(1);
+        var comments = new OggVorbisEncoder.Comments();
+        stream.PacketIn(OggVorbisEncoder.HeaderPacketBuilder.BuildInfoPacket(info));
+        stream.PacketIn(OggVorbisEncoder.HeaderPacketBuilder.BuildCommentsPacket(comments));
+        stream.PacketIn(OggVorbisEncoder.HeaderPacketBuilder.BuildBooksPacket(info));
+        var output = new MemoryStream();
+        void Pages(bool flush)
+        {
+            while (stream.PageOut(out var page, flush))
+            {
+                output.Write(page.Header, 0, page.Header.Length);
+                output.Write(page.Body, 0, page.Body.Length);
+            }
+        }
+        Pages(true);
+        var processing = OggVorbisEncoder.ProcessingState.Create(info);
+        processing.WriteData(new[] { samples }, samples.Length);
+        processing.WriteEndOfStream();
+        while (!stream.Finished && processing.PacketOut(out var packet))
+        {
+            stream.PacketIn(packet);
+            Pages(false);
+        }
+        Pages(true);
+        return output.ToArray();
+    }
+
+    [Fact]
+    public void AnOggTakeIsDecodedToMonoAtTheDsRateAndPlaysFromAPack()
+    {
+        var samples = VoicePacks.Vowels(One, "rival");
+        var ogg = OggOf(samples, Synthesizer.DsRate);
+        var back = new OggVoiceDecoder().Decode(ogg);
+        Assert.InRange(back.Length, samples.Length - 4096, samples.Length + 4096);
+        Assert.True(back.Max(MathF.Abs) > 0.05f);
+        // Another rate is taken to the DS's
+        var at44 = new OggVoiceDecoder().Decode(OggOf(WavDecoder.Resample(samples, Synthesizer.DsRate, 44100), 44100));
+        Assert.InRange(at44.Length, samples.Length - 4096, samples.Length + 4096);
+
+        // And a pack of an .ogg file is found, current and loaded like a .wav
+        Directory.CreateDirectory(folder);
+        File.WriteAllBytes(Path.Combine(folder, "take.ogg"), ogg);
+        File.WriteAllText(Path.Combine(folder, "bad.ogg"), "this is not an Ogg file");
+        var file = new VoicePackFile();
+        file.Lines.Add(new VoicePackEntry { Key = "k:ogg", Voice = "rival", File = "take.ogg", TextHash = VoiceCatalogue.HashOf(One) });
+        file.Lines.Add(new VoicePackEntry { Key = "k:bad", Voice = "rival", File = "bad.ogg", TextHash = VoiceCatalogue.HashOf(One) });
+        File.WriteAllText(Path.Combine(folder, VoiceLibrary.PackFileName), GameDataFiles.Serialize(file));
+        var pack = VoiceLibrary.Open(folder)!;
+        var (state, take) = pack.StateOf("k:ogg", One, "rival");
+        Assert.Equal(VoiceState.Current, state);
+        Assert.NotNull(pack.Load(take!));
+        // A damaged file is a take that can't be read, never a crash
+        Assert.Null(pack.Load(pack.StateOf("k:bad", One, "rival").Entry!));
+    }
+
     [Fact]
     public void ATakeMadeFromOtherEnglishIsStaleAndOneThePackLacksIsMissing()
     {

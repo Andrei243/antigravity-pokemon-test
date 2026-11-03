@@ -334,7 +334,7 @@ every chapter from the first scene to the Pokémon League and after.
 ## Status
 
 - [x] V1 The catalogue, the cast and the keys
-- [ ] V2 Playing a voice
+- [x] V2 Playing a voice
 - [ ] V3 The samples and Barry's first chapter
 - [ ] V4 The synthesised cast, the trial
 - [ ] V5 Everyone else
@@ -352,3 +352,9 @@ every chapter from the first scene to the Pokémon League and after.
 - **`speaker <id> "Name"`** is in the language (`Instruction.VoiceId`; `docs/scripts.md`); no script uses it yet, the names do the work.
 - **Static speaker rule**: a line's voice is the last `speaker` written before it in the script; a script starts as `self`, which is the one voice of the people whose `script` it is, else `@self`, decided at run time (V2) by the person spoken to. Called scripts are not followed. `text` lines, `speaker none`, answers, signs and Pokémon (`npcType` Pokemon) are unvoiced and counted. `sayown`, `trainerline` and `broadcast` lines are not catalogued (a person's own before/after lines are); `Data/trainer-lines.json` (plan 11 · C12) is V6's.
 - **Left for V2**: nothing plays; `IScriptHost.Say` does not carry keys yet; `Listen` has no voice lines.
+
+## V2 as finished (2026-11-03)
+
+- Ogg Vorbis is decoded by `Audio/OggVoiceDecoder.cs` over NVorbis 0.10.5 (MIT, approved by the user 2026-11-03), registered as `.ogg` in `VoiceLibrary.Decoders`; any rate, mono or stereo, taken to mono at the DS's rate like WAV. A damaged file is a take that can't be read (null), never a crash.
+- `VoicePlaybackTests.AnOggTakeIsDecodedToMonoAtTheDsRateAndPlaysFromAPack` makes its Ogg in memory from the synthesised vowels with `OggVorbisEncoder` 1.2.2 (MIT), referenced by the test project alone; no audio is in the repository. (A new test-only package: the user may prefer another way to produce a test file.)
+- The three options rows (VOICES, VOICE VOLUME, LET VOICES FINISH), `waitvoice`, the bus and its dip, the keys on `Say` and `Listen`'s voice lines were already in place.
