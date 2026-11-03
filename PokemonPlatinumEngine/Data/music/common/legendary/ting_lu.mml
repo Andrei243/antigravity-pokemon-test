@@ -1,6 +1,6 @@
 # Battle against Ting-Lu (the Ruinous Pokémon of the vessel): the Treasures of Ruin's four-note creep, down and back,
 # ground out by tuba and timpani under a heavy horn in C minor, half time. Original composition for this game.
-# Arranged again for the modern sound (plan 31 · MU7) on the instruments of Paldea: a string orchestra, a nylon guitar strumming the choir's chords and a wood block clacking like castanets.
+# Arranged again for the modern sound (plan 31 · MU7) on the instruments of Paldea: a string orchestra, a flamenco guitar strumming the choir's chords and castanets clicking on the bass's eighths (MU6's instruments since; a wood block in the red).
 title Battle! Ting-Lu
 tempo 144
 meter 4/4
@@ -51,9 +51,15 @@ track drums kit vol=0.56 rev=0.2
 track hats kit vol=0.36 pan=0.2 rev=0.1
   r1 | r1 | L v60 [ h8 v35 h8 v60 h8 v35 h8 v60 h8 v35 h8 v70 o8 v35 h8 v60 | ]16
 
-# Paldea: a nylon guitar strumming the choir's chords, a wood block clacking like castanets
-track chordguitar nylonguitar unless=lowhp double=choir vol=0.2 pan=-0.3 rev=0.3
-track castanets kit vol=0.3 pan=0.3 rev=0.16
+# Paldea: a flamenco guitar strumming the choir's chords, castanets on each bar's root from the loop on (the intro's
+# pedal C under the horn's B would be a clash up there), and a wood block clacking in their place in the red
+track chordguitar flamencoguitar unless=lowhp double=choir vol=0.2 pan=-0.3 rev=0.3
+track castanets castanets unless=lowhp vol=0.24 pan=0.3 rev=0.16
+  r1 | r1 | L o6 v60 c16 c16 v90 c8 r4 v60 c16 c16 v90 c8 r4 | v60 b16 b16 v90 b8 r4 v60 b16 b16 v90 b8 r4 | v60 a-16 a-16 v90 a-8 r4 v60 a-16 a-16 v90 a-8 r4 | v60 c16 c16 v90 c8 r4 v60 c16 c16 v90 c8 r4 |
+  v60 f16 f16 v90 f8 r4 v60 f16 f16 v90 f8 r4 | v60 c16 c16 v90 c8 r4 v60 c16 c16 v90 c8 r4 | v60 d-16 d-16 v90 d-8 r4 v60 d-16 d-16 v90 d-8 r4 | v60 g16 g16 v90 g8 r4 v60 g16 g16 v90 g8 r4 |
+  v60 c16 c16 v90 c8 r4 v60 c16 c16 v90 c8 r4 | v60 a-16 a-16 v90 a-8 r4 v60 a-16 a-16 v90 a-8 r4 | v60 f16 f16 v90 f8 r4 v60 f16 f16 v90 f8 r4 | v60 g16 g16 v90 g8 r4 v60 g16 g16 v90 g8 r4 |
+  v60 a-16 a-16 v90 a-8 r4 v60 a-16 a-16 v90 a-8 r4 | v60 d-16 d-16 v90 d-8 r4 v60 d-16 d-16 v90 d-8 r4 | v60 f16 f16 v90 f8 r4 v60 f16 f16 v90 f8 r4 | v60 g16 g16 v90 g8 r4 v60 g16 g16 v90 g8 r4 |
+track woodblock kit only=lowhp vol=0.3 pan=0.3 rev=0.16
   r1 | r1 | L [ v90 w16 v55 w16 v60 w16 r16 r8 v90 w8 r4 v90 w16 v55 w16 v60 w16 r16 | ]16
 
 # Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
