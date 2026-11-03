@@ -223,6 +223,10 @@ public class ModernMusicTests
     [InlineData("bodhran")]
     [InlineData("stadiumorgan")]
     [InlineData("driveguitar")]
+    [InlineData("flamencoguitar")]
+    [InlineData("mutedtrumpet")]
+    [InlineData("castanets")]
+    [InlineData("cajon")]
     public void TestEachAlolaInstrumentPlaysCleanlyAtTheBanksLevelInBothSounds(string name)
     {
         // As MusicRender --calibrate measures: quarter notes round middle C, dry; every instrument of the bank sits near −21 dB
@@ -333,6 +337,28 @@ public class ModernMusicTests
     [Theory]
     [MemberData(nameof(GalarSongs))]
     public void TestEachGalarSongRendersCleanlyInTheModernSoundInEveryArrangement(string id) => RendersCleanlyInEveryArrangement(id);
+
+    /// <summary>Paldea's songs (plan 31 · MU6): every file of <c>music/paldea/</c>.</summary>
+    public static IEnumerable<object[]> PaldeaSongs() =>
+        MusicLibrary.All.Where(s => s.Id.StartsWith("paldea/")).Select(s => s.Id).OrderBy(id => id).Select(id => new object[] { id });
+
+    [Fact]
+    public void TestPaldeaHasItsSongsAndPlaysThemInTheModernSoundOnceItsRegionNamesIt()
+    {
+        // As Galar's: no Paldea region file yet, so the folder names no sound until plan 23's Paldea sessions write it
+        var ids = MusicLibrary.All.Where(s => s.Id.StartsWith("paldea/")).Select(s => s.Id).ToHashSet();
+        foreach (var role in new[] { "battle_wild", "battle_trainer", "battle_gym", "battle_rival", "victory_wild", "victory_trainer",
+                     "victory_gym", "eye_boy", "eye_girl", "rival", "pokecenter", "pokemart", "cabo_poco", "south_province",
+                     "mesagoza", "academy", "gym" })
+            Assert.Contains("paldea/" + role, ids);
+        Assert.All(MusicLibrary.All.Where(s => s.Id.StartsWith("paldea/")), s => Assert.Null(s.Sound));
+        var sounds = MusicLibrary.RegionSounds(new[] { new RegionFile { Id = "Paldea", Folder = "paldea", Sound = "modern" } });
+        Assert.Equal(SynthSound.Modern, MusicLibrary.SoundOfFolder("paldea/mesagoza", sounds));
+    }
+
+    [Theory]
+    [MemberData(nameof(PaldeaSongs))]
+    public void TestEachPaldeaSongRendersCleanlyInTheModernSoundInEveryArrangement(string id) => RendersCleanlyInEveryArrangement(id);
 
     /// <summary>
     /// A song of a later region in the modern sound, in every arrangement it has (day, night, red, giant, both): in the

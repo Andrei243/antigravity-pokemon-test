@@ -1,0 +1,39 @@
+# A Gym of Paldea: the test before the Leader, a funky synth bass and a saw lead in E minor over a flamenco
+# guitar's chops, castanets and a tight kit; the same by day and night.
+# Original composition for this game (plan 31 · MU6), in the modern sound.
+title Gym (Paldea)
+tempo 126
+meter 4/4
+reverb 0.24
+night none
+room hall 1.4
+
+track lead sawlead vol=0.57 pan=0.05 rev=0.24
+  o5 b2 d+4 f+4 | L o5 e8 g8 b8 o6 e8 d4 o5 b4 | o5 c8 e8 g8 o6 c8 o5 g4 e4 | o5 d8 f+8 a8 o6 d8 o5 a4 f+4 |
+  o5 b4 f+4 d4 f+4 | o5 e4 g8 b8 o6 e4 o5 b4 | o5 g4 o6 c8 e8 g4 e4 | o6 e4 c8 o5 a8 o6 c4 e4 |
+  o5 b2 d+4 f+4 |
+
+track guitar flamencoguitar vol=0.30 pan=-0.3 rev=0.2
+  o3 r8 o3 (b > d+ f+)8 r8 o3 (b > d+ f+)8 r8 o3 (b > d+ f+)8 r8 o3 (b > d+ f+)8 | L o3 r8 o3 (e g b)8 r8 o3 (e g b)8 r8 o3 (e g b)8 r8 o3 (e g b)8 | o3 r8 o3 (c e g)8 r8 o3 (c e g)8 r8 o3 (c e g)8 r8 o3 (c e g)8 | o3 r8 o3 (d f+ a)8 r8 o3 (d f+ a)8 r8 o3 (d f+ a)8 r8 o3 (d f+ a)8 |
+  o3 r8 o3 (b > d f+)8 r8 o3 (b > d f+)8 r8 o3 (b > d f+)8 r8 o3 (b > d f+)8 | o3 r8 o3 (e g b)8 r8 o3 (e g b)8 r8 o3 (e g b)8 r8 o3 (e g b)8 | o3 r8 o3 (c e g)8 r8 o3 (c e g)8 r8 o3 (c e g)8 r8 o3 (c e g)8 | o3 r8 o3 (a > c e)8 r8 o3 (a > c e)8 r8 o3 (a > c e)8 r8 o3 (a > c e)8 |
+  o3 r8 o3 (b > d+ f+)8 r8 o3 (b > d+ f+)8 r8 o3 (b > d+ f+)8 r8 o3 (b > d+ f+)8 |
+
+track pad warmpad vol=0.21 pan=0.25 rev=0.35
+  o4 (b > d+ f+)1 | L o4 (e g b)1 | o4 (c e g)1 | o4 (d f+ a)1 |
+  o4 (b > d f+)1 | o4 (e g b)1 | o4 (c e g)1 | o4 (a > c e)1 |
+  o4 (b > d+ f+)1 |
+
+track bass synthbass vol=0.64 rev=0.05
+  o2 b8 o3 b8 r8 b8 o2 f+8 o3 f+8 r8 b8 | L o2 e8 o3 e8 r8 e8 o2 b8 o3 b8 r8 e8 | o2 c8 o3 c8 r8 c8 o2 g8 o3 g8 r8 c8 | o2 d8 o3 d8 r8 d8 o2 a8 o3 a8 r8 d8 |
+  o2 b8 o3 b8 r8 b8 o2 f+8 o3 f+8 r8 b8 | o2 e8 o3 e8 r8 e8 o2 b8 o3 b8 r8 e8 | o2 c8 o3 c8 r8 c8 o2 g8 o3 g8 r8 c8 | o2 a8 o3 a8 r8 a8 o2 e8 o3 e8 r8 a8 |
+  o2 b8 o3 b8 r8 b8 o2 f+8 o3 f+8 r8 b8 |
+
+track castanets castanets vol=0.23 pan=0.3 rev=0.16
+  o7 v60 b16 b16 v90 b8 r4 v60 b16 b16 v90 b8 r4 | L o7 v60 e16 e16 v90 e8 r4 v60 e16 e16 v90 e8 r4 | o7 v60 c16 c16 v90 c8 r4 v60 c16 c16 v90 c8 r4 | o7 v60 d16 d16 v90 d8 r4 v60 d16 d16 v90 d8 r4 |
+  o7 v60 b16 b16 v90 b8 r4 v60 b16 b16 v90 b8 r4 | o7 v60 e16 e16 v90 e8 r4 v60 e16 e16 v90 e8 r4 | o7 v60 c16 c16 v90 c8 r4 v60 c16 c16 v90 c8 r4 | o7 v60 a16 a16 v90 a8 r4 v60 a16 a16 v90 a8 r4 |
+  o7 v60 b16 b16 v90 b8 r4 v60 b16 b16 v90 b8 r4 |
+
+track drums kit vol=0.38 rev=0.1
+  b8 h8 s8 b8 s16 s16 s16 s16 s8 s8 | L v90 b8 h8 v80 s8 h8 b8 b8 s8 h8 | v90 b8 h8 v80 s8 h8 b8 b8 s8 h8 | v90 b8 h8 v80 s8 h8 b8 b8 s8 h8 |
+  v90 b8 h8 v80 s8 h8 b8 b8 s8 h8 | v90 b8 h8 v80 s8 h8 b8 b8 s8 h8 | v90 b8 h8 v80 s8 h8 b8 b8 s8 h8 | v90 b8 h8 v80 s8 h8 b8 b8 s8 h8 |
+  b8 h8 s8 b8 s16 s16 s16 s16 s8 s8 |

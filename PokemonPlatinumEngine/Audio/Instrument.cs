@@ -468,5 +468,34 @@ public static class InstrumentBank
             Mellow = new[] { 1f, 0.6f, 0.65f, 0.38f, 0.42f, 0.25f, 0.28f, 0.15f, 0.15f, 0.08f }, BrightDecay = 0.3f, BrightSustain = 0.5f,
             Detune = 8f, Spread = 0.5f, Attack = 0.004f, Decay = 0.9f, Sustain = 0.7f, Release = 0.07f, Noise = 0.025f, Gain = 0.63f
         });
+
+        // Plan 31 · MU6: Paldea's instruments, beside Kalos's nylon guitar and orchestra
+        Add(new Instrument
+        {
+            // A flamenco guitar: brighter and drier than the nylon guitar, plucked nearer the bridge, for runs and rasgueados
+            Name = "flamencoguitar", Kind = VoiceKind.Pluck, Ring = 1.2f, PluckBright = 0.65f, PluckPosition = 0.12f, PluckDamp = 0.4f,
+            Release = 0.07f, Gain = 5.5f
+        });
+        Add(new Instrument
+        {
+            // A trumpet with a cup mute: nasal and thin, its lowest harmonics taken out, a quick vibrato
+            Name = "mutedtrumpet", Bright = new[] { 0.35f, 0.7f, 1f, 0.85f, 0.7f, 0.55f, 0.45f, 0.35f, 0.25f, 0.18f, 0.12f },
+            Mellow = new[] { 0.4f, 0.75f, 1f, 0.7f, 0.5f, 0.35f, 0.22f, 0.12f }, BrightDecay = 0.2f, BrightSustain = 0.5f,
+            Attack = 0.015f, Decay = 0.4f, Sustain = 0.78f, Release = 0.06f, Vibrato = 0.1f, VibratoRate = 6.2f, VibratoDelay = 0.2f,
+            Noise = 0.015f, PitchStart = -0.4f, PitchTime = 0.03f, Gain = 0.64f
+        });
+        Add(new Instrument
+        {
+            // Castanets: two clicks of hardwood, gone almost at once
+            Name = "castanets", Kind = VoiceKind.Modal, Ratios = new[] { 1f, 2.31f, 3.87f }, Amps = new[] { 1f, 0.6f, 0.35f },
+            Decays = new[] { 0.025f, 0.015f, 0.01f }, Strike = 0.5f, Release = 0.03f, Gain = 1.8f
+        });
+        Add(new Instrument
+        {
+            // A cajón: a box drum's deep thud and the slap of its front, an octave below where it is written
+            Name = "cajon", Kind = VoiceKind.Modal, Ratios = new[] { 1f, 1.83f, 3.2f }, Amps = new[] { 1f, 0.3f, 0.15f },
+            Decays = new[] { 0.16f, 0.06f, 0.025f }, Strike = 0.4f, PitchStart = 0.3f, PitchTime = 0.03f, Release = 0.06f,
+            OctaveShift = -1, Gain = 0.76f
+        });
     }
 }
