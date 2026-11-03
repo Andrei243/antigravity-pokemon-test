@@ -61,5 +61,17 @@
       "tan_brogues", "black_boots",
       "black_backpack"
     ]
-  }
+  },
+  // The sets offered in the introduction (plan 11 · C10; style guide, "The new-game introduction"), after the look's
+  // own clothes, which come first so that a press goes on as before. A set is garments of the list above, a slot left
+  // out being the look's own; "for" keeps a set to the boy or the girl (left out: both). Choosing one gives its
+  // garments for nothing, and they are the player's to wear from then on.
+  "sets": [
+    { "id": "trail", "name": "Trail Set", "garments": [ "red_cap", "forest_hoodie", "khaki_shorts", "green_runners", "green_backpack" ] },
+    { "id": "city", "name": "City Set", "garments": [ "black_cap", "black_jacket", "denim_jeans", "white_sneakers", "black_backpack" ] },
+    { "id": "sunny", "name": "Sunny Set", "garments": [ "blue_cap", "striped_tee", "khaki_shorts", "red_sneakers", "blue_backpack" ], "for": "Boy" },
+    { "id": "snow", "name": "Snow Set", "garments": [ "navy_beret", "winter_coat", "black_trousers", "black_boots" ] },
+    { "id": "beret", "name": "Beret Set", "garments": [ "plum_beret", "sunny_tee", "red_skirt", "white_sneakers", "pink_backpack" ], "for": "Girl" },
+    { "id": "rose", "name": "Rose Set", "garments": [ "mint_beret", "rose_coat", "navy_skirt", "white_sneakers" ], "for": "Girl" }
+  ]
 }

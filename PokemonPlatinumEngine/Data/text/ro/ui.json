@@ -3923,6 +3923,10 @@
       "yes": "DA",
       "goBack": "NU, ÎNAPOI"
     },
+    "outfit": {
+      "question": "Și cu ce haine pornești la drum? Alege ce ți se potrivește.",
+      "own": "Hainele tale"
+    },
     "sevenLetters": "Cel mult șapte litere. Lasă gol ca să te numești {name}.",
     "key": {
       "delete": "ȘTERGE"

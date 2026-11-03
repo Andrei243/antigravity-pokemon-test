@@ -38,6 +38,14 @@ partial class Harness
         intro.Move(1, 0); Frames(40); Shot("i13_the_girl");
         intro.PressConfirm(); Frames(30); Shot("i14_so_you_are_a_girl");
         intro.PressConfirm();
+        // The clothes (plan 11 · C10): her own first, then a set tried on and taken, which the rest of the run wears.
+        // A set's rig is built in the background, so the shot waits until the card shows it
+        Until(IntroPhase.ChooseOutfit); Frames(40); Shot("i14b_clothes_own");
+        intro.Move(1, 0);
+        for (int guard = 0; guard < 1200 && intro.Dressing; guard++) Frames(1);
+        Frames(40); Shot("i14c_clothes_set");
+        Console.WriteLine($"  clothes: {intro.OutfitNames[intro.OutfitIndex]} = {intro.Dressed}");
+        intro.PressConfirm();
         Until(IntroPhase.AskName); Line(); Shot("i15_your_name");
         Until(IntroPhase.EnterName); Frames(30); Shot("i16_keyboard");
         // "Maya", through the keyboard's own cursor: M is the third key of the second row

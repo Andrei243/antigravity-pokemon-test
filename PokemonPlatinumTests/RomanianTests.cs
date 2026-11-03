@@ -1,4 +1,4 @@
-using System.Text.Json;
+﻿using System.Text.Json;
 using System.Text.RegularExpressions;
 using PokemonPlatinumEngine.Battle;
 using PokemonPlatinumEngine.Battle.Sim;
@@ -299,7 +299,7 @@ public class RomanianTests
                     if (intro.LineComplete) said.Add(intro.SpokenText);
                     intro.PressConfirm();
                 }
-                else if (intro.Phase is IntroPhase.ChooseLook or IntroPhase.ConfirmLook or IntroPhase.ConfirmName or IntroPhase.ConfirmRival)
+                else if (intro.Phase is IntroPhase.ChooseLook or IntroPhase.ConfirmLook or IntroPhase.ChooseOutfit or IntroPhase.ConfirmName or IntroPhase.ConfirmRival)
                     intro.PressConfirm();
                 else if (intro.Phase is IntroPhase.EnterName or IntroPhase.EnterRival)
                 {

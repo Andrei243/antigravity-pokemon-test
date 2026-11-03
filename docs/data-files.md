@@ -540,6 +540,7 @@ The engine builds the rigs of the people within two chunks of the player in the 
 - What a slot's garment may say: a hat its shape (`Beret` or `Cap`); a top `coat` (long, over the hips), `shortSleeves`, `stripes` (in the accent) and `scarf` (in the accent); bottoms `skirt` or `shorts`.
 - `price` is in the game's money; a price of 0 is free, owned from the start.
 - A boutique (`boutiques`) is a counter's key and the garments it sells, in the order its rows show them. A script opens it with `wardrobe "<key>"`; `wardrobe` alone opens the player's own clothes at home.
+- A set (`sets`, plan 11 · C10) is offered in the new-game introduction, after the look's own clothes: `{ "id": "trail", "name": "Trail Set", "garments": [ "red_cap", "forest_hoodie", "..." ], "for": "Boy" }`, at most one garment to a slot, a slot left out being the look's own; `for` (`Boy` or `Girl`) keeps a set to one look, and left out offers it to both. A set chosen there is given for nothing (`Wardrobe.Start`): its garments are the player's from then on, worn and taken off at the wardrobe at no cost.
 
 What the player wears is an `Outfit` (`Core/Outfit.cs`): a garment's id in each slot, or nothing for the look's own. It is saved as `SaveData.Outfit` with the garments bought (`SaveData.Wardrobe`); a save without them loads in the look's own clothes. A character dressed in an outfit is named `PLAYER@<hat>.<top>.<bottoms>.<shoes>.<bag>` (a dash for the look's own), so its rig, sprites and mesh cache follow the outfit, and an outfit with nothing chosen is plain `PLAYER` or `DAWN`.
 
