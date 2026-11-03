@@ -492,6 +492,7 @@ public partial class GameEngine
         flow.RunState = new RunState { Timer = new RunTimer() };
         timerLookedAt = -1;
         flow.Statistics = new Statistics();
+        flow.FriendsHall = new FriendsHallState();
         flow.Jobs = new JobBoard();
         flow.Medals = new Medals();
         flow.MedalNotice.Clear();
@@ -810,6 +811,7 @@ public partial class GameEngine
         if (flow.RunState.Timer == null) flow.RunState.Timer = RunTimerBegunLate(flow.PlayTime, flow.Story);
         timerLookedAt = -1;
         flow.Statistics = Statistics.From(save.Counters);
+        flow.FriendsHall = FriendsHallState.From(save.FriendsBeaten);
         flow.Medals = Medals.From(save.Medals);
         flow.MedalNotice.Clear();
         medalsLookedAt = -1;
@@ -859,6 +861,7 @@ public partial class GameEngine
             Run = flow.Run.IsNormal ? null : flow.Run,
             RunState = flow.RunState.IsEmpty ? null : flow.RunState,
             Counters = flow.Statistics.ToSaved(),
+            FriendsBeaten = flow.FriendsHall.ToSaved(GameClock.Today),
             Research = flow.Pokedex.Research.ToSaved(),
             ResearchComplete = flow.Pokedex.Research.Complete,
             Jobs = flow.Jobs.ToSaved(),
@@ -1195,6 +1198,9 @@ public partial class GameEngine
 
         // The mouse (plan 12 · Q6, Q7): a hover moves the screen's cursor, a click is its Confirm, a right click its Cancel
         KeepThePointer(dt);
+
+        // A friend at the partner's place answers their turns on the second pad, read from the next frame (plan 13 · V20)
+        InputManager.FriendsTurn = flow.State == GameState.Battle && flow.Battle?.FriendChoosing == true;
 
         switch (flow.State)
         {

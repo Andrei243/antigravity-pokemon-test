@@ -153,7 +153,9 @@ internal static partial class ModernUi
                 // The Great Marsh and Pal Park are played with balls alone: the commands are the ball and what else can be thrown
                 bool balls = battle.Kind is BattleKind.Safari or BattleKind.PalPark;
                 // In a rotation battle the box names the one the turntable is turned to (plan 14 · B7)
-                MessageBox(new Rectangle(48, 858, 1060, 172), null, balls ? PlayerIdentity.Name : battle.IsRotation ? battle.Fighter.DisplayName : active.DisplayName);
+                MessageBox(new Rectangle(48, 858, 1060, 172), null, balls ? PlayerIdentity.Name : battle.IsRotation ? battle.Fighter.DisplayName : active.DisplayName,
+                    // Whose turn it is where a friend shares the menus (plan 13 · V20)
+                    speaker: battle.HasFriendPartner ? Text.Of(battle.FriendChoosing ? "battleMenu.friendsTurn" : "battleMenu.playersTurn", ("player", PlayerIdentity.Name)) : null);
                 var (big, labels) = CommandLabels(battle);
                 Color[] colors = { Gold, Green, Blue };
                 Button(CommandRect(0), balls ? 30 : 34, Red, big, balls ? 40 : 60, hud.MainMenuIndex == 0);
@@ -173,7 +175,8 @@ internal static partial class ModernUi
                 TargetMenu(hud, battle);
                 break;
             case BattleMenuState.SwitchPokemon:
-                SwitchPanel(hud, sw, sh, party, active, battle);
+                // The place's own team: a friend at the partner's place sees the partner's (plan 13 · V20)
+                SwitchPanel(hud, sw, sh, battle.SwitchParty, active, battle);
                 break;
             case BattleMenuState.SelectBagPocket:
                 BagPockets(hud, sw, sh, battle);
@@ -193,8 +196,9 @@ internal static partial class ModernUi
                 if (battle.InfoShown is { } info) InfoPanel(info, battle.IsDouble || battle.IsSos);
                 break;
             case BattleMenuState.Summary:
-                if (battle.SummaryIndex < party.Count)
-                    DrawSummary(sw, sh, party.Members[battle.SummaryIndex], battle.SummaryIndex, party.Count, 1f, (int)battle.Summary.Page,
+                var looked = battle.SwitchParty;
+                if (battle.SummaryIndex < looked.Count)
+                    DrawSummary(sw, sh, looked.Members[battle.SummaryIndex], battle.SummaryIndex, looked.Count, 1f, (int)battle.Summary.Page,
                         battle.Summary.RibbonCursor, battle.Summary.MarkCursor, battle.Summary.MoveSelection, canMark: false, heldAt: battle.Core.RunLevelCap);
                 break;
             case BattleMenuState.LearnMove:
@@ -593,7 +597,8 @@ internal static partial class ModernUi
         var ink = Ink;
         if (Seeing.HighContrast) ink = ContrastBox(r, 28);
         else Panel(r, 28);
-        if (prompting == null && !string.IsNullOrEmpty(speaker)) SpeakerPill(r, speaker);
+        // (With the commands' question, the pill names whose turn it is where a friend shares the menus: plan 13 · V20)
+        if (!string.IsNullOrEmpty(speaker)) SpeakerPill(r, speaker);
         float x = r.X + 52, cy = r.Y + r.Height / 2f, size = MessageSizeNow;
         if (prompting != null)
         {

@@ -568,6 +568,10 @@ public class ScriptTests
           subway print
           subway prize
           subway buy
+          friend beaten
+          friend before
+          friend after
+          friend battle
           subway end
           joinavenue visit
           joinavenue rank

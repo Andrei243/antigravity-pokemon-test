@@ -45,7 +45,7 @@ public partial class BattleEngine : IPointable
                 return null;
             }
             case BattleMenuState.SwitchPokemon or BattleMenuState.SelectBagTarget:
-                for (int i = 0; i < PlayerParty.Count; i++)
+                for (int i = 0, count = HUD.MenuState == BattleMenuState.SwitchPokemon ? SwitchParty.Count : PlayerParty.Count; i < count; i++)
                     if (UiPointer.Inside(ModernUi.TeamCardRect(i), at)) return i;
                 return null;
             case BattleMenuState.SelectBagPocket:

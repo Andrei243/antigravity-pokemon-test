@@ -282,6 +282,13 @@ public sealed class BattleSetup
     /// </summary>
     public Sim.IBattleController? EnemyController { get; init; }
 
+    /// <summary>
+    /// A friend chooses for the <see cref="Partner"/>'s place through the battle's own menus (plan 13 · V20): the rules
+    /// are handed no mind for it (<see cref="Sim.CoreSetup.PartnerController"/> null), so the place is asked like the
+    /// player's own. Off, the partner thinks for itself as ever. Nothing without a partner.
+    /// </summary>
+    public bool FriendPartner { get; init; }
+
     /// <summary>A battle of the Battle Palace (plan 14 · B9; <see cref="Sim.CoreSetup.Palace"/>): the menus never open.</summary>
     public bool Palace { get; init; }
 

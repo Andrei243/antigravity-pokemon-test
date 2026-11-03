@@ -1484,6 +1484,25 @@ public sealed class HeadlessScriptHost : IScriptHost
         Log.Add($"frontierbattle {string.Join(" and ", foes.Select(f => f.Id))}{(partner != null ? $" with {partner.Id}" : "")} {Outcome}");
     }
 
+    // ------------------------------------------------------------------ the friends' hall (plan 13 · V23)
+
+    /// <summary>The friends' trainers by the person who stands for them, as a test lays them out.</summary>
+    public Dictionary<NPC, TrainerFile> Friends { get; } = new();
+
+    public TrainerFile? FriendOf(NPC? person) => person != null && Friends.TryGetValue(person, out var file) ? file : null;
+
+    /// <summary>Who of the hall has been beaten; a hall of its own for each host.</summary>
+    public FriendsHallState? FriendsHall { get; set; } = new();
+
+    /// <summary>How many friends' trainers were beaten.</summary>
+    public int FriendsWon { get; private set; }
+
+    public void FriendWon()
+    {
+        FriendsWon++;
+        Log.Add("friendwon");
+    }
+
     // ------------------------------------------------------------------ the Hall of Fame's end (plan 02 · S14)
 
     /// <summary>Whether the National Pokédex is the player's (<c>if nationaldex</c>); not unless a test says so.</summary>

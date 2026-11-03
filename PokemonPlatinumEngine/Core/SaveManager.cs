@@ -205,6 +205,13 @@ public class SaveData
     public Dictionary<string, long>? Counters { get; set; }
 
     /// <summary>
+    /// The friends' trainers beaten today in the friends' hall (plan 13 · V23, <see cref="Models.FriendsHallState"/>): each
+    /// file's checksum with the day. Null while none is, and in every save from before it, so no save version was raised.
+    /// </summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public List<Models.SavedFriendBeaten>? FriendsBeaten { get; set; }
+
+    /// <summary>
     /// The Pokédex's research (plan 15 · E1, <see cref="Models.Research"/>): each species' counts by task key, by National
     /// number. Null while nothing is counted and in every save from before it, which reads as nothing counted, so no
     /// save version was raised.

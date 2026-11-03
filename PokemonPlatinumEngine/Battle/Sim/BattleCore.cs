@@ -467,7 +467,13 @@ public sealed partial class BattleCore : IBattleContext
     /// given from outside. Null when its numbers aren't a <see cref="BattleRandom"/>'s: nothing else comes out
     /// the same everywhere.
     /// </summary>
-    public BattleRecord? Record => startedFrom is uint seed ? new BattleRecord(seed, answers.ToList(), Inverse, OffersSwitch, Difficulty, RunLevelCap ?? 0, Format, CrossedExp, LaterMechanicsBarred) : null;
+    public BattleRecord? Record => startedFrom is uint seed ? new BattleRecord(seed, answers.ToList(), Inverse, OffersSwitch, Difficulty, RunLevelCap ?? 0, Format, CrossedExp, LaterMechanicsBarred, FriendPartner) : null;
+
+    /// <summary>
+    /// A friend chooses for the partner's place (plan 13 · V20): there is a partner, and nobody inside the rules thinks
+    /// for it, so its place is asked from outside like the player's own and its answers are the record's.
+    /// </summary>
+    public bool FriendPartner => Partner != null && partnerController == null;
 
     /// <summary>
     /// Plays a record through. The battle must be new, between teams as they were when the recorded one began,
@@ -483,6 +489,7 @@ public sealed partial class BattleCore : IBattleContext
         if ((RunLevelCap ?? 0) != record.RunLevelCap) throw new ArgumentException("A replay is fought under the record's own level cap (plan 13 · V3): a capped battle's EXP as capped");
         if (LaterMechanicsBarred != record.NoLaterMechanics) throw new ArgumentException("A replay bars the later mechanics where the recorded battle did (plan 06 · R30): the trainers' choices hang on it");
         if (CrossedExp != record.CrossedExp) throw new ArgumentException("A replay gives the record's own EXP (plan 18 · W4b-3): a crossed region's half again as such");
+        if (FriendPartner != record.FriendPartner) throw new ArgumentException("A replay is answered for the partner's place where the recorded battle was (plan 13 · V20): a friend's answers as a friend's");
         if (record.Format is { } format && format != Format) throw new ArgumentException("A replay is fought in the record's own format (plan 14 · B3): a horde's as a horde");
         Start();
         foreach (var answered in record.Answers) Submit(answered);

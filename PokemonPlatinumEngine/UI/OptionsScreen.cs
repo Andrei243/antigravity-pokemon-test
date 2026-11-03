@@ -48,6 +48,7 @@ public enum OptionRow
     Jukebox,
     Packs,
     StreamFeed, StreamSafe,
+    Coop,
     Help,
     ResetDefaults
 }
@@ -527,6 +528,9 @@ public class OptionsScreen
             case OptionRow.StreamSafe:
                 s.StreamSafe = !s.StreamSafe;
                 break;
+            case OptionRow.Coop:
+                s.Coop = !s.Coop; // plan 13 · V20
+                break;
             case OptionRow.Captions:
                 s.Captions = !s.Captions; // plan 12 · Q9
                 break;
@@ -636,6 +640,7 @@ public class OptionsScreen
         OptionRow.RunTimer => (Text.Of("options.runTimer.label"), Text.Of($"options.runTimer.value.{s.RunTimer}"), Text.Of($"options.runTimer.help.{s.RunTimer}")),
         OptionRow.StreamFeed => (Text.Of("options.streamFeed.label"), Text.Of($"options.streamFeed.value.{s.StreamFeed}"), Text.Of($"options.streamFeed.help.{s.StreamFeed}")),
         OptionRow.StreamSafe => (Text.Of("options.streamSafe.label"), OnOff(s.StreamSafe), Text.Of(s.StreamSafe ? "options.streamSafe.help.on" : "options.streamSafe.help.off")),
+        OptionRow.Coop => (Text.Of("options.coop.label"), OnOff(s.Coop), Text.Of(s.Coop ? "options.coop.help.on" : "options.coop.help.off")),
         OptionRow.Captions => (Text.Of("options.captions.label"), OnOff(s.Captions), Text.Of(s.Captions ? "options.captions.help.on" : "options.captions.help.off")),
         OptionRow.HoldToConfirm => (Text.Of("options.holdToConfirm.label"), OnOff(s.HoldToConfirm), Text.Of(s.HoldToConfirm ? "options.holdToConfirm.help.on" : "options.holdToConfirm.help.off")),
         OptionRow.TextSize => (Text.Of("options.textSize.label"), Text.Of($"options.textSize.value.{s.TextSize}"), Text.Of($"options.textSize.help.{s.TextSize}")),
