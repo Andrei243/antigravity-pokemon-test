@@ -8918,13 +8918,16 @@ The rules of plan 10's companions that need no picture; what they draw waits (pl
   clear sky none). The marks' words and titles are ours. They are kept as `Pokemon.EncounterMarks`, not `Marks`,
   which are the boxes' markings; an older save's Pokémon has none, with no version raised. The title the player chooses
   (`Pokemon.Title`, one of its marks) goes into the send-out lines alone ("Go! Starly the Sleepy!"); every other line
-  names it as before. Choosing it on the summary, and the marks' row and glyph, wait for their drawing.
+  names it as before. It is chosen on the summary's INFO, where the marks' cursor goes on past the six markings into
+  the marks met with and the button makes one the title (or takes it away); a party card and the PC show the title's
+  mark, or the first. *Ours*: the badge is a rosette of our own in the colour of the mark's kind.
 - **The camp** (`Models/Camp.cs`, `UI/CampScreen.cs`): each Pokémon is petted and fed once a visit, by two events of
   Platinum's table that Platinum hasn't (`FriendshipEvent.Petted` 3/2/1, `Fed` 5/3/2, with the Luxury Ball's and the
   Soothe Bell's bonus as any event); a meal is one of the bag's berries (decision 4: no cooking). A visit after a
   battle cures the team's status conditions (not fainting) once per battle (`CampCare`, not saved). Its screen's logic is
-  built; its stage, models, faces and its START menu entry wait for a session that can look at them, so nothing opens
-  it yet.
+  opened by the START menu's CAMP, after POKéMON, while the options' FOLLOWER row is on and there is a Pokémon (no
+  row of its own: with FOLLOWER off the menu is Platinum's). *Ours*: the team stands as its menu sprites on a clearing
+  of our own, not as models on a stage, and a meal is chosen from the bag's berries with the item button.
 - **The DexNav** (`Overworld/DexNav.cs`, `Core/GameEngine.DexNav.cs`; decision 6's recommendation, a key item): its HERE
   list is the species of the place the player stands in met now (the grass at this hour, the water and the rods),
   from `Habitats.At`, the region's habitats by cell, with what the Pokédex knows and each species' search level. Switched
