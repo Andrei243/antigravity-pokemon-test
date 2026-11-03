@@ -9011,3 +9011,37 @@ Our own: Platinum has neither. `Core/GameEngine.Coop.cs`, `BattleSetup.FriendPar
 - **The battle**: `friend battle` fights the friend's own team made from their file at level 50 (`TrainerFile.ToTrainer`, every routine of the trainer AI, prize 0) against copies of the player's whole team but its Eggs at level 50 (`LevelScaling.TeamAt`), as a battle of the Frontier (`FrontierBattle`: no EXP, effort, money or bag, nothing used up, the Pokédex told nothing). Their two lines, before and after, are the file's two numbers of `friends.line.*`. A loss leaves them unbeaten and changes nothing; a win beats them for the day and is counted as a trainer beaten (`Statistics.TrainerWon`, V8's counter; plan 08 · P10's Vs. Recorder may keep it, as any Frontier battle).
 - **Once a day** by `GameClock.Today`: told by the file's checksum (a file changed is another trainer), kept in `GameFlow.FriendsHall` and saved as `SaveData.FriendsBeaten` (checksum and day, only today's; null with none, so no save version was raised and no fixture moved). Spoken to again that day they say their last line and that they will be ready tomorrow.
 - **Not built**: the Battle Tower's friends' room and visitors in a secret base (handed on, as the plan says); V21 reading friends' files (V21 is not built).
+
+## Alola's first chapter, drawn by hand (2026-11-04, plan 23 · Z5, first part)
+
+- **Where Alola's layout comes from.** Kalos's way (the user's decision of 2026-11-02, option (b)), followed for Alola
+  by this session and open to the user's word: the decompilation of Pokémon Moon that plan 23 names
+  (gradenGnostic/pokemoon) holds code and no maps, events, wild Pokémon or trainers, and states no licence, so nothing
+  of it is fetched or pinned, and no dump is read. Melemele is drawn by hand on the tile grid in its shape as it is
+  publicly described, never from a picture, tile, model, line or script of the original: `tools/MapDraw/alola/*.txt`,
+  placed by `layout.json`, and `dotnet run --project tools/MapDraw -- alola` writes the chunks, the matrix and the
+  habitats (`AlolaTests.TheWorldFilesAreWhatTheDrawingsGive`). Each island is a matrix of its own (plan 23's Alola
+  decisions); Melemele is matrix 0, the map `Melemele`, 16 chunks by 16. Houses are drawn into the tiles and found at
+  their doors (`buildingsAtDoors`); rooms are hand-made map files. Keys are the places' names in lower case, a route's
+  taking the region's name (`alola_route_1`).
+- **What the first part draws.** Route 1 with the player's new home and Professor Kukui's laboratory on the beach of the
+  Hau'oli Outskirts, Iki Town on its hill round the festival's stage, the Mahalo Trail to its plank bridge and the
+  guardian's ruins, and Hau'oli City's west end (its Pokémon Center and two houses), with nine rooms. Two ways of
+  building of their own (style guide, "Buildings"): `Architecture.Islander` (Iki Town and Route 1) and `Shoreline`
+  (Hau'oli). Route 1 and the trail have wild Pokémon of the area files' own tables; the Ride Pager, the ferry, Routes 2
+  and 3 and the other islands are later parts of Z5.
+- **The first chapter** (our words on Sun and Moon's beats as they are publicly told; no script of the original is
+  read): Mom on the first morning says the professor is waiting; Professor Kukui meets the player at the door and goes
+  ahead to Iki Town; there he finds the kahuna out and sends the player after a girl who ran up the Mahalo Trail; at
+  the bridge her little Pokémon is set on by Spearow, the planks give way and the island's guardian (Tapu Koko, seen in
+  the Pokédex) catches them; back in Iki Town Hala gives the first Pokémon (`starter`, Rowlet, Litten or Popplio) and
+  Hau battles with the one strong against it (`alola_hau_1` to `_3`, our own teams); at the laboratory the professor
+  gives the Pokédex and five Poké Balls; Hau'oli City ends the part. `VAR_ALOLA_STORY` counts it (0 to 7,
+  `alola_route_1.txt`'s header), `common.AlolaNewGame` hides its people for every new game, and the objectives are
+  Alola's block (600 to 699). **Ours**: the Pokémon is chosen in Iki Town after the bridge, where Sun and Moon hand it
+  over on the stage before the trail; the Running Shoes' flag is set on the first morning, since the player runs from
+  the start; Lillie's Cosmog is told of and never shown; a Champion crossing in from Kalos lands before the house with
+  the chapter at the professor's word and is sent up to Iki Town.
+- **The way in.** Until Z4 builds Kalos's League and a departure hall of its own, the airline's attendant to Alola
+  stands in Lumiose City's Pokémon Center, shown by `KalosHallOfFame` (`common.Attendant`), and lands the player before
+  their new home.
