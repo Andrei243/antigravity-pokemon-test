@@ -8393,6 +8393,57 @@ Plan 10 · F2 to F5 (2026-11-02). Neither is Platinum's: both are rows of the op
 - **The Town Map and Fly**: Route 4 and Lumiose's twenty cells are blocks of `townmap.json`, and Fly lands before
   Lumiose's Pokémon Center (spawn 3) once the city has been come to.
 
+## Central Kalos, drawn by hand: Route 5 to Cyllage City (2026-11-03, plan 23 · Z2, second part)
+
+- **The way west.** Lumiose's road out of the Vert gate opens once Lysandre's café is heard
+  (`VAR_KALOS_LUMIOSE_ROADS` 1, which the café's scene sets and Lumiose's arrival gives an older save past it); the
+  other roads (Routes 13 to 16) are plan 23 · Z4's and go on turning the player back, their triggers repeated on 1.
+  Route 5 (our name, the Skaters' Lane) runs west through meadows to Camphrier Town with a paved square of skaters in
+  its middle; Camphrier Town is a crossroads with its keeper's castle in a moat, a Pokémon Center (the Mart's counter
+  inside) and three houses, built as an old timbered town (`Architecture.OldTimber`); Route 6 (the Palace Avenue)
+  runs north between rows of trees to the palace's railings; Route 7 (the Riverbank Walk) runs south between rocks
+  and then west along a river to the coast; Route 8 (the Cliff Coast Path) runs north along the beach under the cliffs
+  to Cyllage City, a town of three terraces on the cliffs over a bay (`Architecture.Cyllage`: white stucco, ochre
+  hips), its Gym at the head of its main street. All of it is drawn by the same small script of ours as Lumiose (the
+  script is not kept; the drawings are the source). **Ours**: every shape and name of a route; the palace itself is
+  not built (its gate is shut and its butler stands before it); the original's way from Route 7 to the coast runs
+  through the Connecting Cave, which plan 23 · Z3 builds, so until then Route 7's walk reaches Route 8 in the open;
+  Route 8's stretch south to Ambrette Town is shut by a rockfall (a fence and a sign) until Z3 draws it; Cyllage's
+  road north (Route 10) is not drawn; Cyllage's bicycle shop sells nothing yet; the drawings have no heights, so
+  Cyllage's terraces are cliff tiles with steps cut through them on one level.
+- **Wild Pokémon** (tables of ours, twelve slots each, Kalos-Central's species, the coast's Kalos-Coastal's): Route 5
+  9 to 11 (Pancham, Furfrou, Skiddo, Gulpin, Bunnelby, Abra, Doduo, Smeargle), Route 6 10 to 12 (Espurr, Oddish,
+  Sentret, Nincada, Kecleon, Audino, Honedge), Route 7 12 to 14 (Hoppip, Ducklett, Volbeat, Illumise, Roselia,
+  Spritzee, Swirlix, Combee, Croagunk, Smeargle) and Route 8 13 to 15 (Wingull, Spoink, Drifloon, Zubat, Taillow, Absol,
+  Inkay, Starly, Mienfoo). Nobody surfs yet, so the river and the sea have no tables. Ten trainers of ours on the routes,
+  two hikers in the Gym, all in `Data/world/kalos/trainers.json`.
+- **The story** (our words on X and Y's beats as they are publicly told; `VAR_KALOS_STORY` 12 to 18): Tierno and
+  Trevor wait near Route 5's west end and Tierno battles with a new partner (`kalos_tierno_2`; 13); the keeper of
+  Camphrier's castle (Castellan Aubert, a name of ours) meets the player coming into town and tells of a Snorlax asleep
+  across the road south, which only the palace's flute wakes (14); the palace's butler at the gate on Route 6 lends the
+  Poké Flute (15); the flute wakes the Snorlax in the gap between Route 7's rocks, which battles at level 15 and is gone
+  whatever the battle's end (`FLAG_KALOS_HIDE_SNORLAX_ROUTE_7`; 16); the neighbour waits at the foot of Cyllage's main
+  street and battles with a team of three (`kalos_rival_cyllage_*`, the starter strong against the player's evolved;
+  17); and Grant, a climber, battles with Amaura and Tyrunt at 25 for the Cliff Badge, Kalos's second, and gives TM39
+  (18). **Ours**: the flute is lent at the gate by the butler, where X and Y's owner lends it inside the palace after a
+  favour; the castle's keeper meets the player in the street; the neighbour's battle is in Cyllage, not on the way; the
+  Gym's climbing wall is not built (one hall, no puzzle). Nobody new is hidden at the start of a game (everyone of this
+  part is on the map from a new game and taken away by their own scene), so no catch-up script was needed beyond the
+  road's. The objectives go on in Kalos's block (512 to 517), "nothing presses" stays 599.
+- **Rooms**: fifteen more hand-made map files: Lumiose's boutique (its clerk opens the wardrobe on `clothes.json`'s
+  `lumiose` stock, six garments of ours and eight of the classics), a stone shop and two houses by the Pokémon Center;
+  Camphrier's Pokémon Center, castle hall and three houses; Cyllage's Pokémon Center, Gym, bicycle shop and three
+  houses. The other twenty-seven of Lumiose's doors stay shut.
+- **The tower of light** is redrawn: from the field's steep camera the first tower, twelve tiles of dark steel lattice,
+  read as a black block running off the top of the picture. It is now four short stages stepped like a pyramid (128 to
+  44 texels across, 122 tall, a gold crown and a short spire above, four and a half tiles in all), pale steel and lit
+  glass with gold bands, so from the camera it reads as bright decks stepping up to a crown, and stands whole in the
+  picture with the player a tile or two from its foot (style guide, "Props").
+- **Music**: no new songs: Route 5 to 8 play Route 2's, Camphrier and its rooms Aquacorde's, Cyllage and its rooms
+  Santalune's, the Gym the Gym's, the Pokémon Centers the Center's, until plan 31 writes their own.
+- **The Town Map and Fly**: the six places are blocks of `townmap.json`, and Fly lands before Camphrier's (spawn 4) and
+  Cyllage's (spawn 5) Pokémon Centers once each town has been come to.
+
 ## How the player moves, region by region (2026-11-02, plan 30 · FM1)
 
 Not Platinum's: Platinum and every game before X and Y walk four ways a tile at a time (`src/player_move.c`), and

@@ -1,0 +1,13 @@
+# Lumiose City's boutique (plan 23 · Z2, second part; plan 11 · C10's wardrobe screen). docs/scripts.md describes the
+# language. The shop, its clerk and its lines are our own; its stock is clothes.json's "lumiose" boutique.
+
+
+# The clerk: the boutique's stock, tried on and bought on the wardrobe screen
+script Clerk
+  speaker "Clerk"
+  say "Bienvenue! Welcome to the boutique. Everything here was made in Lumiose this season."
+  say "Do try on whatever catches your eye. What you buy is yours to change into at home whenever you wish."
+  wardrobe "lumiose"
+  speaker "Clerk"
+  say "Merci! Do come back when the new season arrives."
+  end

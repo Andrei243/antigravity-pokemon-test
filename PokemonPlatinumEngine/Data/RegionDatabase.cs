@@ -895,6 +895,13 @@ public static class RegionDatabase
                 // Plan 23 · Z2: Lumiose City's rooms
                 "LumioseCity_PokemonCenter_1F", "LumioseCity_SycamoreLab", "LumioseCity_LysandreCafe", "LumioseCity_Cafe",
                 "LumioseCity_SouthHouse",
+                // Plan 23 · Z2, second part: Lumiose's boutique, stone shop and two more houses, and the rooms of Camphrier
+                // Town and Cyllage City
+                "LumioseCity_Boutique", "LumioseCity_StoneEmporium", "LumioseCity_SouthwestHouse", "LumioseCity_SoutheastHouse",
+                "CamphrierTown_PokemonCenter_1F", "CamphrierTown_Castle", "CamphrierTown_NorthwestHouse",
+                "CamphrierTown_SouthwestHouse", "CamphrierTown_SoutheastHouse",
+                "CyllageCity_PokemonCenter_1F", "CyllageCity_Gym", "CyllageCity_NorthHouse", "CyllageCity_WestHouse",
+                "CyllageCity_BikeShop", "CyllageCity_SouthwestHouse",
             }
         },
         new() { Id = Alola, Name = "Alola", Generation = 7 },

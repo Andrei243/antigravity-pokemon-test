@@ -155,6 +155,9 @@ internal static partial class BuildingArt
             {
                 Storeys = 3, Window = WindowKind.Sash, Balconies = true, Steep = true, Chimney = true, Accent = roof ?? Rgb(44, 52, 70)
             },
+            // Cyllage (plan 23 · Z2, second part): white stucco under sun-baked ochre hips with shutters and flower boxes,
+            // the seaside town of terraces on the cliffs
+            Architecture.Cyllage => Pitched(WallKind.Stucco, Rgb(204, 142, 66), RoofShape.Hip) with { Shutters = true, FlowerBoxes = true },
             Architecture.Crater =>Pitched(WallKind.PaleStone, Rgb(46, 96, 168), RoofShape.Hip) with { Shutters = true },
             Architecture.Raft => Pitched(WallKind.Log, Rgb(206, 166, 92)) with { Shutters = true },
             Architecture.Bloomstone => Pitched(WallKind.PaleStone, Rgb(190, 92, 132), RoofShape.Hip) with { FlowerBoxes = true },

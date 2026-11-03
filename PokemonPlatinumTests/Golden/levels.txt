@@ -6,6 +6,9 @@ trainers 3, 25: collector_edwin 25, collector_fernando 25, waitress_kati 25
 === CanalaveGym
 Canalave Gym
 trainers 7, 34-40: ace_trainer_breanna 38, ace_trainer_cesar 40, black_belt_david 37, black_belt_ricky 38, worker_gary 37, worker_gerardo 35, worker_jackson 34
+=== CyllageCity_Gym
+Cyllage Gym
+trainers 2, 19-20: kalos_hiker_armand 19, kalos_hiker_bruno 20
 === DriftveilCity_Gym
 Driftveil City
 trainers 7, 29-31: unova_worker_friedrich 31, unova_worker_maynard 31, unova_worker_niel 30, unova_worker_noel 31, unova_worker_pasqual 30, unova_worker_tavarius 29, unova_worker_tibor 30
@@ -1045,6 +1048,22 @@ trainers 3, 5-6: kalos_lass_colette 6, kalos_picnicker_ines 6, kalos_youngster_h
 Route 4
 grass 7-9
 trainers 3, 7-8: kalos_lass_elodie 8, kalos_picnicker_margaux 8, kalos_youngster_theo 8
+=== kalos_route_5
+Route 5
+grass 9-11
+trainers 3, 10-11: kalos_backpacker_gaspard 10, kalos_lass_noemie 11, kalos_youngster_julien 10
+=== kalos_route_6
+Route 6
+grass 10-12
+trainers 2, 11-12: kalos_backpacker_clement 12, kalos_picnicker_lea 11
+=== kalos_route_7
+Route 7
+grass 12-14
+trainers 3, 13-14: kalos_fisherman_rene 13, kalos_lass_sylvie 14, kalos_youngster_adrien 13
+=== kalos_route_8
+Route 8
+grass 13-15
+trainers 2, 14-15: kalos_fisherman_yves 14, kalos_hiker_marcel 15
 === kanto_victory_road_1f
 Victory Road
 grass 32-46

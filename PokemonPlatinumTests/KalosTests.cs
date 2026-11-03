@@ -279,4 +279,112 @@ public class KalosTests
         Assert.True(Reached("LumioseCity_LysandreCafe", 6, 7), "Lysandre's café");
         Assert.True(Reached("LumioseCity_PokemonCenter_1F", 8, 6), "Lumiose's Pokémon Center");
     }
+
+    [Fact]
+    public void Route5ToCyllageAreOpenWithTheirWildPokemonRoomsAndGym()
+    {
+        foreach (var (x, y, name) in new[]
+                 {
+                     (260, 359, "Route 5"), (201, 360, "Camphrier Town"), (201, 300, "Route 6"),
+                     (160, 398, "Route 7"), (103, 390, "Route 8"), (103, 330, "Cyllage City")
+                 })
+            Assert.Equal(name, Overworld.DisplayNameAt(x, y));
+        Assert.Equal(Architecture.OldTimber, Overworld.ArchitectureAt(201, 360));
+        Assert.Equal(Architecture.Cyllage, Overworld.ArchitectureAt(103, 330));
+        foreach (string key in new[] { "kalos_route_5", "camphrier_town", "kalos_route_6", "kalos_route_7", "kalos_route_8", "cyllage_city" })
+            Assert.False(string.IsNullOrEmpty(Kalos.Overlay(key)?.BgmTrack), $"{key} has no song");
+        // Every wild Pokémon of the new routes is one of Kalos's own Pokédexes' (the coast's are Kalos-Coastal's), at the
+        // levels between the Bug Badge and the Cliff Badge
+        foreach (string key in new[] { "kalos_route_5", "kalos_route_6", "kalos_route_7", "kalos_route_8" })
+        {
+            Assert.Equal(12, Kalos.Area(key)!.Land!.Count);
+            foreach (var slot in Kalos.Area(key)!.Land!)
+            {
+                var dex = PokemonDatabase.Get(slot.Species)!.DexNumbers;
+                Assert.True(dex.ContainsKey("kalos-central") || dex.ContainsKey("kalos-coastal"), $"{key}: {slot.Species} is no Kalos species");
+                Assert.InRange(slot.Level, 9, 15);
+            }
+        }
+        // Camphrier's Pokémon Center and castle and Cyllage's Pokémon Center and Gym, found at their doors
+        Assert.Equal("CamphrierTown_PokemonCenter_1F", Overworld.GetWarpAt(186, 355)?.TargetMap);
+        Assert.Equal("CamphrierTown_Castle", Overworld.GetWarpAt(214, 345)?.TargetMap);
+        Assert.Equal("CyllageCity_PokemonCenter_1F", Overworld.GetWarpAt(112, 347)?.TargetMap);
+        Assert.Equal("CyllageCity_Gym", Overworld.GetWarpAt(103, 311)?.TargetMap);
+        Assert.Contains(Overworld.PlacedBuildings, b => b.Kind == BuildingKind.PokemonCenter && b.X0 >= 176 && b.X1 < 228 && b.Y0 >= 328);
+        Assert.Contains(Overworld.PlacedBuildings, b => b.Kind == BuildingKind.Gym && b.X0 >= 72 && b.X1 < 128 && b.Y0 >= 296 && b.Y1 < 360);
+        foreach (string pc in new[] { "CamphrierTown_PokemonCenter_1F", "CyllageCity_PokemonCenter_1F" })
+        {
+            Assert.Contains(MapNamed(pc).NPCs, n => n.IsHealingNurse);
+            Assert.Contains(MapNamed(pc).NPCs, n => n.IsPokeMartClerk);
+        }
+        Assert.Contains(MapNamed("CyllageCity_Gym").NPCs, n => n.Name == "Grant");
+        var grant = TrainerDatabase.Get("kalos_grant_1")!;
+        Assert.Equal("Leader", grant.Class);
+        Assert.Equal(new[] { "Amaura", "Tyrunt" }, grant.Party.Select(p => p.Species));
+        Assert.Equal("Cliff", Region.BadgeNames[1]);
+        // The sleeping Snorlax blocks the lane south of Camphrier between its rocks until the palace's flute wakes it
+        var snorlax = Overworld.Everyone.Single(n => n.Name == "Snorlax");
+        Assert.Equal((202, 392), (snorlax.GridX, snorlax.GridY));
+        Assert.Equal("FLAG_KALOS_HIDE_SNORLAX_ROUTE_7", snorlax.HiddenBy);
+        Assert.False(Overworld.IsWalkable(201, 392));
+        Assert.False(Overworld.IsWalkable(203, 392));
+        // Lumiose's boutique sells its own clothes, and four more of its doors are open
+        Assert.Equal("LumioseCity_Boutique", Overworld.GetWarpAt(353, 337)?.TargetMap);
+        Assert.Contains(ClothingDatabase.Stock("lumiose"), g => g.Id == "trench_coat");
+        Assert.All(ClothingDatabase.Stock("lumiose"), g => Assert.True(g.Price > 0));
+        foreach (var (x, y, room) in new[] { (379, 357, "LumioseCity_StoneEmporium"), (340, 407, "LumioseCity_SouthwestHouse"), (379, 407, "LumioseCity_SoutheastHouse") })
+            Assert.Equal(room, Overworld.GetWarpAt(x, y)?.TargetMap);
+        // Fly lands before the two new Pokémon Centers once their towns have been come to
+        var townMap = RegionMap.Of(RegionDatabase.Kalos)!;
+        Assert.Contains(townMap.FlySpots, f => f.Spawn == 4 && f.Cells.Contains(RegionMap.CellOf(186, 356)));
+        Assert.Contains(townMap.FlySpots, f => f.Spawn == 5 && f.Cells.Contains(RegionMap.CellOf(112, 348)));
+        Assert.Contains("FLAG_FIRST_ARRIVAL_CAMPHRIER_TOWN", townMap.ArrivalFlags("camphrier_town"));
+        Assert.Contains("FLAG_FIRST_ARRIVAL_CYLLAGE_CITY", townMap.ArrivalFlags("cyllage_city"));
+    }
+
+    [Fact]
+    public void FromTheBedroomTheWayRunsWestThroughCamphrierAndAlongTheCoastToCyllagesGym()
+    {
+        var walked = Walked.Value;
+        bool Reached(string map, int x, int y) => walked.Any(p => p.Key.Name == map && p.Value.Contains((x, y)));
+        Assert.True(Reached("Kalos", 299, 359), "Lumiose's west gate onto Route 5");
+        Assert.True(Reached("Kalos", 260, 359), "Route 5's skaters' square");
+        Assert.True(Reached("Kalos", 201, 360), "Camphrier's crossroads");
+        Assert.True(Reached("Kalos", 214, 346), "the castle's bridge");
+        Assert.True(Reached("Kalos", 201, 269), "the palace gate on Route 6");
+        Assert.True(Reached("Kalos", 202, 396), "Route 7 past the sleeping Snorlax");
+        Assert.True(Reached("Kalos", 121, 398), "Route 7's west end");
+        Assert.True(Reached("Kalos", 103, 380), "Route 8's cliff path");
+        Assert.True(Reached("Kalos", 103, 357), "the foot of Cyllage's main street");
+        Assert.True(Reached("Kalos", 103, 312), "before Cyllage's Gym");
+        Assert.True(Reached("CyllageCity_Gym", 6, 5), "Grant's place");
+        Assert.True(Reached("CamphrierTown_Castle", 7, 6), "the castle's hall");
+        Assert.True(Reached("LumioseCity_Boutique", 7, 7), "the boutique's counter");
+        // Route 8's coast path south to Ambrette is shut by a rockfall until plan 23 · Z3
+        Assert.False(Reached("Kalos", 103, 423), "Route 8 beyond the rockfall");
+    }
+
+    [Fact]
+    public void KalosStoryRunsFromLysandresCafeToTheCliffBadgeInOrder()
+    {
+        // The objectives follow VAR_KALOS_STORY on past the café, and "nothing presses" is still the last
+        var story = new StoryState();
+        string? Next() => Objectives.Current(story, RegionDatabase.Kalos)?.Name;
+        story.SetVar("VAR_KALOS_STORY", 12);
+        Assert.Equal("kalosRoute5", Next());
+        foreach (var (value, name) in new[] { (13, "kalosCamphrier"), (14, "kalosPalace"), (15, "kalosSnorlax"), (16, "kalosCyllage"), (17, "kalosGrant"), (18, "kalosFree") })
+        {
+            story.SetVar("VAR_KALOS_STORY", value);
+            Assert.Equal(name, Next());
+        }
+        Assert.Equal(599, Objectives.Find("kalosFree")!.Id);
+        // The scenes move the count on one step each, and the Gym's script gives the Cliff Badge
+        var library = ScriptLibrary.Default;
+        foreach (var (file, script) in new[]
+                 {
+                     ("kalos_route_5", "Friends"), ("camphrier_town", "Castellan"), ("kalos_route_6", "Butler"),
+                     ("kalos_route_7", "Snorlax"), ("cyllage_city", "Neighbour"), ("CyllageCity_Gym", "Grant")
+                 })
+            Assert.NotNull(library.Find(script, file));
+    }
 }

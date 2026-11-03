@@ -1,0 +1,44 @@
+{
+  "key": "kalos_route_7",
+  "index": 12,
+  "name": "Route 7",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "ROUTE_7",
+  "nightMusic": "ROUTE_7",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [],
+  "objects": [
+    { "id": "snorlax", "looks": "snorlax", "movement": "look_south", "x": 202, "z": 392, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_HIDE_SNORLAX_ROUTE_7", "script": "" },
+    { "id": "fisherman", "looks": "fisherman", "movement": "look_north", "x": 150, "z": 402, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_FISHERMAN_RENE" },
+    { "id": "lass", "looks": "lass", "movement": "look_south", "x": 175, "z": 394, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_LASS_SYLVIE" },
+    { "id": "youngster", "looks": "youngster", "movement": "look_south", "x": 130, "z": 393, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_YOUNGSTER_ADRIEN" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 190, "z": 390, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_ROUTE_7_SUPER_POTION", "item": "Super Potion", "script": "" }
+  ],
+  "signs": [
+    { "x": 206, "z": 401, "type": 0, "script": "RouteSign" }
+  ],
+  "triggers": [],
+  "land": [
+    { "species": "Hoppip", "level": 12 },
+    { "species": "Ducklett", "level": 12 },
+    { "species": "Volbeat", "level": 12 },
+    { "species": "Illumise", "level": 12 },
+    { "species": "Roselia", "level": 13 },
+    { "species": "Spritzee", "level": 13 },
+    { "species": "Swirlix", "level": 13 },
+    { "species": "Combee", "level": 13 },
+    { "species": "Croagunk", "level": 13 },
+    { "species": "Smeargle", "level": 14 },
+    { "species": "Hoppip", "level": 14 },
+    { "species": "Ducklett", "level": 14 }
+  ],
+  "landRate": 20
+}

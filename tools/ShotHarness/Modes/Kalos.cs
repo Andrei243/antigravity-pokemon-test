@@ -15,6 +15,8 @@ partial class Harness
     /// </summary>
     public void KalosMode()
     {
+        // KALOS_FROM=central: plan 23 · Z2's second part alone (wk74 on, wks30 on)
+        if (Environment.GetEnvironmentVariable("KALOS_FROM") == "central") { KalosCentral(); return; }
         engine.NewGameRegion = "Kalos";
         engine.StartNewGame();
         game.State = GameState.Overworld;
@@ -111,6 +113,7 @@ partial class Harness
         engine.ApplySettings(window: false);
 
         KalosScenes();
+        KalosCentral();
     }
 
     private void KalosScenes()

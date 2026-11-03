@@ -1,0 +1,191 @@
+{
+  "name": "CyllageCity_Gym",
+  "displayName": "Cyllage Gym",
+  "bgmTrack": "kalos/gym",
+  "interior": "Gym",
+  "trees": "Round",
+  "battleArena": "Gym",
+  "arenaType": "Rock",
+  "width": 13,
+  "height": 18,
+  "ground": [
+    "#############",
+    "#############",
+    "#############",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "######D######"
+  ],
+  "solid": [
+    "#############",
+    "#############",
+    "#############",
+    "##.........##",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "##.........##",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...#...#...#",
+    "#...........#",
+    "######.######"
+  ],
+  "props": [
+    {
+      "type": "Statue",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 11,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 1,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 11,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 4,
+      "y": 15,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 8,
+      "y": 15,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 6,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 6,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 3,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 8,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 6,
+      "sourceY": 17,
+      "targetMap": "Kalos",
+      "targetX": 103,
+      "targetY": 312,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "grant",
+      "name": "Grant",
+      "npcType": "grant",
+      "x": 6,
+      "y": 4,
+      "facing": "Down",
+      "script": "Grant"
+    },
+    {
+      "id": "gym_guide",
+      "name": "Gym Guide",
+      "npcType": "Gentleman",
+      "x": 9,
+      "y": 15,
+      "facing": "Down",
+      "script": "GymGuide"
+    },
+    {
+      "id": "kalos_hiker_bruno",
+      "name": "Bruno",
+      "npcType": "Hiker",
+      "x": 3,
+      "y": 11,
+      "facing": "Right",
+      "trainer": {
+        "id": "kalos_hiker_bruno",
+        "name": "Bruno",
+        "trainerClass": "Hiker",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Hiker Bruno: Grant says every climb starts with one good hold. Here is mine!",
+        "dialogueAfter": "Hiker Bruno: You found the hold I missed. Go on up.",
+        "sightRange": 3
+      }
+    },
+    {
+      "id": "kalos_hiker_armand",
+      "name": "Armand",
+      "npcType": "Hiker",
+      "x": 9,
+      "y": 7,
+      "facing": "Left",
+      "trainer": {
+        "id": "kalos_hiker_armand",
+        "name": "Armand",
+        "trainerClass": "Hiker",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Hiker Armand: Nobody reaches the top of this wall without getting past me!",
+        "dialogueAfter": "Hiker Armand: You climbed right over me. Grant is waiting at the top.",
+        "sightRange": 3
+      }
+    }
+  ],
+  "wildEncounters": []
+}

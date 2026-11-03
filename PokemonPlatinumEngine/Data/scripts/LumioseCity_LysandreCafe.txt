@@ -27,7 +27,8 @@ script OnEnter
   setflag FLAG_KALOS_HIDE_SYCAMORE_CAFE
   clearflag FLAG_KALOS_HIDE_SYCAMORE_LAB
   setvar VAR_KALOS_STORY 12
-  objective kalosFree
+  setvar VAR_KALOS_LUMIOSE_ROADS 1
+  objective kalosRoute5
   endscene
   end
 

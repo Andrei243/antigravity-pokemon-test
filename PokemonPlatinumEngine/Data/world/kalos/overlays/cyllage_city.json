@@ -1,0 +1,58 @@
+{
+  // Cyllage City (plan 23 · Z2, second part): drawn by hand, our words. A town of terraces on the cliffs over the sea:
+  // the beach and the Pokémon Center (with the Mart's counter inside) on the lowest terrace, a house and the bicycle
+  // shop on the middle one, and the Gym at the head of the main street on the highest, its steps climbing the cliffs
+  // between. The neighbour waits at the foot of the street for a battle (cyllage_city.txt); the road north (Route 10)
+  // is plan 23 · Z3's. Its houses are Cyllage's own (Architecture.Cyllage), and it plays Santalune's song until
+  // plan 31 writes it its own
+  "area": "cyllage_city",
+  "bgmTrack": "kalos/santalune",
+  "trees": "Round",
+  "architecture": "Cyllage",
+  "doors": [
+    { "warp": 0, "map": "CyllageCity_NorthHouse", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 1, "map": "CyllageCity_Gym", "x": 6, "y": 16, "facing": "Up" },
+    { "warp": 2, "map": "CyllageCity_WestHouse", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 3, "map": "CyllageCity_BikeShop", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 4, "map": "CyllageCity_SouthwestHouse", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 5, "map": "CyllageCity_PokemonCenter_1F", "x": 8, "y": 12, "facing": "Up" }
+  ],
+  "triggers": [
+    { "script": "Neighbour", "x": 102, "z": 358, "width": 4, "depth": 1, "variable": "VAR_KALOS_STORY", "value": 16 }
+  ],
+  "props": [
+    { "type": "LampPost", "x": 101, "y": 351, "width": 1, "depth": 1 },
+    { "type": "LampPost", "x": 106, "y": 351, "width": 1, "depth": 1 },
+    { "type": "Planter", "x": 101, "y": 314, "width": 1, "depth": 1 },
+    { "type": "Planter", "x": 106, "y": 314, "width": 1, "depth": 1 },
+    { "type": "Bench", "x": 84, "y": 352, "width": 2, "depth": 1 }
+  ],
+  "people": {
+    "rival": { "name": "{rival}", "npcType": "Rival:SERENA:CALEM", "script": "Rival", "still": true, "hiddenBy": "FLAG_KALOS_HIDE_RIVAL_CYLLAGE" },
+    "climber": {
+      "name": "Climber",
+      "npcType": "Hiker",
+      "still": true,
+      "dialog": [ "The Gym up there is a wall of rock inside! Its Leader climbs it every morning before breakfast." ]
+    },
+    "swimmer": {
+      "name": "Swimmer",
+      "npcType": "Lass",
+      "dialog": [ "The sea here is cold, but the beach is the best in Kalos. Ask anyone from Cyllage!" ]
+    },
+    "gentleman": {
+      "name": "Gentleman",
+      "npcType": "Gentleman",
+      "still": true,
+      "dialog": [ "Every street in this town goes up or down. I've lived here sixty years and my knees still complain." ]
+    },
+    "boy": {
+      "name": "Boy",
+      "npcType": "Youngster",
+      "dialog": [ "The bicycle shop is closed. The owner says he's waiting for the parts from Lumiose." ]
+    }
+  },
+  "signs": {
+    "CitySign": "Cyllage City\nA town of terraces between the cliffs and the sea."
+  }
+}
