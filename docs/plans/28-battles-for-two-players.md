@@ -106,7 +106,7 @@ Each session builds the solution, the harness and `tools/MusicRender`, runs the 
 
 - [x] I1 The log on the wire (2026-11-03; the events keep their Pokémon, the wire names them: notes below)
 - [x] I2 What each side may see (2026-11-03)
-- [ ] I3 Both sides asked: the rules' half done 2026-11-03 (server, loopback, both sides asked, the bench); the screen's half and the harness's `link` mode left
+- [ ] I3 Both sides asked: the rules' half done 2026-11-03 (server, loopback, both sides asked, the bench); the screen's half and the harness's `link` mode left. Looked at again on 2026-11-03 for a CPU-only pass: what is left is the battle's face (`BeginChoosing`, `Commit`, `CancelChoice` and the HUD keyed to `PlayerSlots` throughout, a `BattleEngine` that plays a `SideView` with no core of its own, the waiting line drawn), which is screen work shared with plan 13 · V12 and judged by shots, so it goes with V12's session rather than as a rules pass. *Owed shots*: the `link` mode, both players' screens on the same turn and the waiting line
 - [x] I4 A link battle's setup (2026-11-03; but the sleep clause)
 - [x] I5 State written out (2026-11-03, as the record held to a check: notes below)
 
