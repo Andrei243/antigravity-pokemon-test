@@ -477,6 +477,7 @@ public partial class GameEngine
         flow.DayCare.Clear();
         flow.AdventureStarted = GameClock.Today;
         flow.Run = RunRules.Current = run ?? RunRules.Normal;
+        LayTheRemix();
         flow.Party.Limit = RunRules.ClampLimit(flow.Run.PartyLimit);
         // The run timer begins with the game (plan 13 · V10)
         flow.RunState = new RunState { Timer = new RunTimer() };
@@ -790,6 +791,7 @@ public partial class GameEngine
         flow.LinkBattles = LinkBattleRecord.From(save.LinkBattles);
         flow.AdventureStarted = save.Started;
         flow.Run = RunRules.Current = save.Run ?? RunRules.Normal;
+        LayTheRemix();
         flow.Party.Limit = RunRules.ClampLimit(flow.Run.PartyLimit);
         flow.RunState = save.RunState ?? new RunState();
         // A save from before the run timer (plan 13 · V10) begins it now, from its play time, with what it had reached already untimed

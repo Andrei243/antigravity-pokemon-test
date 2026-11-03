@@ -72,6 +72,15 @@ public sealed record RunRules
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public RandomizerOptions? Random { get; init; }
 
+    /// <summary>
+    /// Remix (plan 13 · V15): the trainers who matter fight teams of our own and the areas' wild Pokémon come from
+    /// tables of our own (<see cref="Models.Remix"/>, <c>Data/remix/sinnoh/</c>), the rules, the AI's flags, the slots'
+    /// weights, the areas' rates and the story staying Platinum's. Off by default, and left out of a save's run when
+    /// off, so no version was raised.
+    /// </summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public bool Remix { get; init; }
+
     public static RunRules Normal { get; } = new();
 
     /// <summary>The usual Nuzlocke: the two common clauses, nothing else.</summary>
@@ -113,7 +122,7 @@ public sealed record RunRules
     public static readonly string[] RuleNames =
     {
         "nuzlocke", "monotype", "solo", "noitems", "nocenter", "nocatching", "norunning", "set", "shinyodds", "challenge", "easy", "levelcap",
-        "nolatermechanics"
+        "nolatermechanics", "remix"
     };
 
     /// <summary>Whether the run has a rule on, by its script word (<see cref="RuleNames"/>); false for a word it doesn't know.</summary>
@@ -132,6 +141,7 @@ public sealed record RunRules
         "easy" => Difficulty == Difficulty.Easy,
         "levelcap" => LevelCap,
         "nolatermechanics" => NoLaterMechanics,
+        "remix" => Remix,
         _ => false
     };
 
