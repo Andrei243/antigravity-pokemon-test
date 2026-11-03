@@ -322,6 +322,13 @@ public sealed class Ruleset
     public bool Rotations { get; private init; }
 
     /// <summary>
+    /// Battles Royal (plan 14 · B13; Sun and Moon's): a battle asked for as a <see cref="Battle.BattleFormat.Royal"/> is fought
+    /// four ways, each for themselves. Platinum has none, and under its rules such a battle is the double the first two
+    /// trainers make (<see cref="Battle.BattleFormats.FallBack"/>), so <c>battles-platinum.txt</c> never moves for it.
+    /// </summary>
+    public bool Royals { get; private init; }
+
+    /// <summary>
     /// Affection's perks in battle (plan 10 · F7, <see cref="Models.Affection"/>): a Pokémon of the player's at
     /// friendship 220 or more gains a fifth more EXP, may hold on at 1 HP or shake off a status, and at 255 may dodge a
     /// move and lands critical hits a stage more often. Platinum has no affection, so under its rules nothing of it is
@@ -394,6 +401,7 @@ public sealed class Ruleset
         BackStrikes = true,
         Triples = true,
         Rotations = true,
+        Royals = true,
         MegaDynamax = true,
         AffectionPerks = true
     };

@@ -870,6 +870,7 @@ internal static partial class ModernUi
         BattleResult.EnemyCaught => (Text.Of("replays.result.caught"), Frame),
         BattleResult.PlayerRan => (Text.Of("replays.result.ran"), Frame),
         BattleResult.EnemyFled => (Text.Of("replays.result.fled"), Frame),
+        BattleResult.Placed => (Text.Of("replays.result.placed"), Frame),
         _ => (Text.Of("replays.result.none"), Frame)
     };
 

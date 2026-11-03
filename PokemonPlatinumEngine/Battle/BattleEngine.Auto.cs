@@ -55,7 +55,7 @@ public partial class BattleEngine
         if (move < 0) return new AutoCommand(-1, null);
         var mine = InCore(MenuBattler);
         var foe = core.ActiveFoes(mine).FirstOrDefault();
-        bool aimed = (IsDouble || IsHorde || IsSos || IsTriple) && Fighter.Moves[move].Target == MoveTarget.Selected;
+        bool aimed = (IsDouble || IsHorde || IsSos || IsTriple || IsRoyal) && Fighter.Moves[move].Target == MoveTarget.Selected;
         return new AutoCommand(move, aimed ? foe?.Place : null);
     }
 

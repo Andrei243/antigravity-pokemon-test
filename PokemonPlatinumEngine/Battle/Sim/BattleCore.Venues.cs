@@ -71,7 +71,8 @@ public sealed partial class BattleCore
     /// </summary>
     private BattleChoice AsTheVenueLets(Battler b, BattleChoice chosen)
     {
-        if (TurnLimit <= 0 || chosen.Kind != ChoiceKind.Switch) return chosen;
+        // (A Battle Royal's Pokémon stay out too: plan 14 · B13)
+        if ((TurnLimit <= 0 && !IsRoyal) || chosen.Kind != ChoiceKind.Switch) return chosen;
         var moves = b.Pokemon!.Moves;
         int first = Enumerable.Range(0, moves.Count).FirstOrDefault(i => WhyNotMove(b, moves[i]) == null, -1);
         return BattleChoice.Fight(b.Place, first);

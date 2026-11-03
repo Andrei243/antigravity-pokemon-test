@@ -19,7 +19,7 @@ internal readonly record struct ArenaSpec(BattleArena Kind, PokemonType? Theme =
     }
 
     /// <summary>Under the open sky, lit by the time of day.</summary>
-    public bool Outdoors => Kind is BattleArena.Grass or BattleArena.Forest or BattleArena.Water or BattleArena.Snow or BattleArena.Sand or BattleArena.City;
+    public bool Outdoors => Kind is BattleArena.Grass or BattleArena.Forest or BattleArena.Water or BattleArena.Snow or BattleArena.Sand or BattleArena.City or BattleArena.Sky;
 
     /// <summary>A gym or a room of the League.</summary>
     public bool Hall => Kind is BattleArena.Gym or BattleArena.League;
@@ -55,6 +55,7 @@ internal static class BattleArenas
             case BattleArena.League: Hall(b, spec.Theme, league: true); break;
             case BattleArena.Underwater: Underwater(b); break;
             case BattleArena.City: City(b); break;
+            case BattleArena.Sky: Sky(b); break;
             default: Meadow(b, spec); break;
         }
     }
@@ -804,6 +805,61 @@ internal static class BattleArenas
             white.Box(new Vector3(bx - 1.4f, 0.65f, bz - 0.35f), new Vector3(bx + 1.4f, 1.3f, bz - 0.25f), Rgb(150, 104, 70), BoxFaces.All);
             foreach (float leg in new[] { -1.2f, 1.2f })
                 white.Box(new Vector3(bx + leg - 0.08f, 0f, bz - 0.25f), new Vector3(bx + leg + 0.08f, 0.5f, bz + 0.25f), Rgb(70, 76, 92), BoxFaces.All);
+        }
+    }
+
+    /// <summary>
+    /// The sky (plan 14 · B2): a sea of cloud far below, the two platforms heaps of cloud under soft white tops, and puffs
+    /// drifting at the sides and behind; nothing stands on the ground, since there is none.
+    /// </summary>
+    private static void Sky(MeshBatches batches)
+    {
+        // The sea of cloud, well below the platforms: it takes the light as the ground does, and casts nothing
+        var under = batches.For(SoftTextures.Ground("cloudsea", Rgb(236, 240, 248), Rgb(250, 251, 255), Rgb(214, 222, 238), Rgb(226, 232, 246)), MeshPass.Ground);
+        const int rings = 12, segments = 48;
+        const float radius = 120f, depth = -9f;
+        for (int r = 0; r < rings; r++)
+        {
+            float r0 = radius * r / rings, r1 = radius * (r + 1) / rings;
+            for (int s = 0; s < segments; s++)
+            {
+                float a0 = s * MathF.Tau / segments, a1 = (s + 1) * MathF.Tau / segments;
+                Vector3 P(float rr, float a) => new(MathF.Cos(a) * rr, depth, MathF.Sin(a) * rr - 4f);
+                Vector2 T(Vector3 p) => new(p.X / 6f, p.Z / 6f);
+                var p00 = P(r0, a0); var p01 = P(r0, a1); var p10 = P(r1, a0); var p11 = P(r1, a1);
+                under.Tri(p00, p11, p10, T(p00), T(p11), T(p10), Color.White, Vector3.UnitY);
+                under.Tri(p00, p01, p11, T(p00), T(p01), T(p11), Color.White, Vector3.UnitY);
+            }
+        }
+
+        // The platforms: a heap of cloud under a flat white top, a little grey-blue in its folds
+        var top = SoftTextures.Top("sky", Rgb(252, 253, 255), Rgb(234, 240, 250), Rgb(206, 218, 238), rings: 2);
+        var puff = batches.For(SceneTextures.White, MeshPass.Ground);
+        int salt = 0;
+        foreach (var (center, rad) in new[] { (Enemy, EnemyRadius), (Player, PlayerRadius) })
+        {
+            Platform(batches, center, rad, top, Rgb(214, 224, 242));
+            salt++;
+            for (int i = 0; i < 9; i++)
+            {
+                float a = i * MathF.Tau / 9f + Rand(i, salt, 151) * 0.4f;
+                float r = rad * (0.62f + Rand(i, salt, 152) * 0.3f), size = rad * (0.34f + Rand(i, salt, 153) * 0.16f);
+                var at = center + new Vector3(MathF.Cos(a) * r, -size * 0.55f, MathF.Sin(a) * r);
+                puff.Ellipsoid(at, new Vector3(size, size * 0.62f, size), ring => ring < 5 ? Rgb(196, 208, 230) : Rgb(244, 247, 253));
+            }
+        }
+
+        // Puffs drifting at the sides of the field and behind it, clear of the platforms
+        for (int i = 0; i < 14; i++)
+        {
+            float x = -44f + Rand(i, 1, 154) * 80f, z = -36f + Rand(i, 2, 154) * 30f, y = -4f + Rand(i, 3, 154) * 9f;
+            if (!Clear(x, z, 6f)) continue;
+            float size = 2.4f + Rand(i, 4, 154) * 3.6f;
+            for (int k = 0; k < 3; k++)
+            {
+                var at = new Vector3(x + (k - 1) * size * 0.8f, y + (k == 1 ? size * 0.25f : 0f), z + Rand(i, k, 155) * 1.2f);
+                puff.Ellipsoid(at, new Vector3(size, size * 0.6f, size * 0.8f), ring => ring < 5 ? Rgb(204, 214, 234) : Rgb(248, 250, 255));
+            }
         }
     }
 

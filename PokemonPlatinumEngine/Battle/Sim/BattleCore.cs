@@ -351,14 +351,21 @@ public sealed partial class BattleCore : IBattleContext
         // A double battle needs two Pokémon able to fight on each side; a partner brings the player's second. A horde
         // needs the rules that have it and wild Pokémon enough (plan 14 · B3): what can't be had falls back
         Format = BattleFormats.FallBack(setup.Format, PlayerParty.Members.Count(p => !p.IsFainted), Partner?.Party.Members.Count(p => !p.IsFainted) ?? 0,
-            Partner != null, Trainers.Count, Trainers.Count == 0 ? 0 : Trainers[0].Party.Members.Count(p => !p.IsFainted), WildPokemon.Count,
+            Partner != null, Trainers.Count, Trainers.Count == 0 ? 0 : setup.Format == BattleFormat.Royal ? Trainers.Min(t => t.Party.Members.Count(p => !p.IsFainted))
+                : Trainers[0].Party.Members.Count(p => !p.IsFainted), WildPokemon.Count,
             Kind, Rules, out bool partnerStays);
         if (!partnerStays) Partner = null;
+        // A Battle Royal is fought for its placing alone, from the team alone: no EXP, prize or white-out, and nothing from the bag (plan 14 · B13)
+        if (IsRoyal)
+        {
+            NoRewards = true;
+            NoBattleItems = true;
+        }
         int slots = Format.PlacesOf(BattleSide.Player);
         // A horde of fewer than five is fought with as many places as it has Pokémon
         int foeSlots = IsHorde ? Math.Min(Format.PlacesOf(BattleSide.Enemy), WildPokemon.Count) : Format.PlacesOf(BattleSide.Enemy);
         // Every place draws a number for the turn: the original's four, or a number for each a horde can have
-        speedRolls = new int[IsHorde || IsTriple ? Place.MaxNumber : 4];
+        speedRolls = new int[IsHorde || IsTriple || IsRoyal ? Place.MaxNumber : 4];
 
         PlayerSlots = Enumerable.Range(0, slots).Select(i => new Battler(BattleSide.Player, i)
         {
@@ -402,6 +409,8 @@ public sealed partial class BattleCore : IBattleContext
         foreach (var b in AllBattlers.Where(b => b.Pokemon != null)) b.Pokemon!.ResetStatStages();
         // A rotation battle's two seats behind each front (plan 14 · B7)
         SetUpTheTurntables();
+        // A sky battle's teams can all fly (plan 14 · B2)
+        CheckTheSky();
     }
 
     // ---------------------------------------------------------------- asking and answering
@@ -467,7 +476,7 @@ public sealed partial class BattleCore : IBattleContext
     /// given from outside. Null when its numbers aren't a <see cref="BattleRandom"/>'s: nothing else comes out
     /// the same everywhere.
     /// </summary>
-    public BattleRecord? Record => startedFrom is uint seed ? new BattleRecord(seed, answers.ToList(), Inverse, OffersSwitch, Difficulty, RunLevelCap ?? 0, Format, CrossedExp, LaterMechanicsBarred) : null;
+    public BattleRecord? Record => startedFrom is uint seed ? new BattleRecord(seed, answers.ToList(), Inverse, OffersSwitch, Difficulty, RunLevelCap ?? 0, Format, CrossedExp, LaterMechanicsBarred, InTheAir) : null;
 
     /// <summary>
     /// Plays a record through. The battle must be new, between teams as they were when the recorded one began,
@@ -483,6 +492,7 @@ public sealed partial class BattleCore : IBattleContext
         if ((RunLevelCap ?? 0) != record.RunLevelCap) throw new ArgumentException("A replay is fought under the record's own level cap (plan 13 · V3): a capped battle's EXP as capped");
         if (LaterMechanicsBarred != record.NoLaterMechanics) throw new ArgumentException("A replay bars the later mechanics where the recorded battle did (plan 06 · R30): the trainers' choices hang on it");
         if (CrossedExp != record.CrossedExp) throw new ArgumentException("A replay gives the record's own EXP (plan 18 · W4b-3): a crossed region's half again as such");
+        if (InTheAir != record.InTheAir) throw new ArgumentException("A replay is fought where the recorded battle was (plan 14 · B2): a sky battle's in the air");
         if (record.Format is { } format && format != Format) throw new ArgumentException("A replay is fought in the record's own format (plan 14 · B3): a horde's as a horde");
         Start();
         foreach (var answered in record.Answers) Submit(answered);
@@ -661,7 +671,8 @@ public sealed partial class BattleCore : IBattleContext
         if (IsTrainerBattle)
         {
             Emit(new TrainersStand(Trainers[0].TrainerClass, Trainers.Count > 1 ? Trainers[1].TrainerClass : null));
-            Say(Trainers.Count > 1
+            Say(IsRoyal ? RoyalBegins()
+                : Trainers.Count > 1
                 ? Text.Of("battle.wouldLikeToBattle", ("trainer", Trainers[0].FullTitle), ("trainer2", Trainers[1].FullTitle))
                 : Text.Of("battle.wantsToBattle", ("trainer", Trainers[0].FullTitle)));
 
@@ -1161,7 +1172,7 @@ public sealed partial class BattleCore : IBattleContext
             var down = NextFallen(last);
             if (down == null) break;
 
-            if (by != null && by.User.Side != down.Side && by.User.IsActive && by.Hits.Any(h => h.Target == down && h.Touched))
+            if (by != null && AreFoes(by.User, down) && by.User.IsActive && by.Hits.Any(h => h.Target == down && h.Touched))
             {
                 var foe = by.User;
                 // A Dynamaxed Pokémon isn't taken down (plan 06 · R22; Showdown's destinybond onFaint)
@@ -1191,6 +1202,8 @@ public sealed partial class BattleCore : IBattleContext
         if (down.HasSubstitute) Emit(new SubstituteChanged(down.Place, Up: false));
         Undynamax(down, said: false);
         Revert(down);
+        // A Battle Royal counts who brought it down (plan 14 · B13)
+        CreditTheKnockOut(down);
         down.ClearVolatile();
         NoteFaint(down);
         faintedOnTurn[down.Side] = Turn;
@@ -1235,6 +1248,12 @@ public sealed partial class BattleCore : IBattleContext
 
     private void CheckBattleEnd()
     {
+        // A Battle Royal ends when any one of the four is out, and is placed (plan 14 · B13)
+        if (IsRoyal)
+        {
+            EndTheRoyal();
+            return;
+        }
         // Beside a partner the player is beaten once their own party is down, whatever the partner has left
         // (BattleControllerPlayer_CheckBattleOver, for a battle with an AI partner)
         bool beaten = Partner != null ? !PlayerParty.Members.Any(p => !p.IsFainted) : SideDefeated(PlayerSlots);

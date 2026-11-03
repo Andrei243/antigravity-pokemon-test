@@ -733,7 +733,8 @@ public sealed partial class BattleCore
         // In a triple battle only the places in its user's reach, unless the move reaches anywhere (plan 14 · B6);
         // in every other format everything is in reach
         bool Near(Battler b) => GetsTo(user, b, move.Data);
-        var foes = SlotsOf(Other(user.Side)).Where(b => b.IsActive && Near(b)).ToList();
+        // In a Battle Royal every other place is a foe's (plan 14 · B13)
+        var foes = PlacesOfFoes(user).Where(b => b.IsActive && Near(b)).ToList();
         switch (EffectOf(move.Data).TargetFor(user, move.Target))
         {
             case MoveTarget.User:
@@ -743,11 +744,11 @@ public sealed partial class BattleCore
             case MoveTarget.FoeSide:
                 return new List<Battler> { user };
             case MoveTarget.UserAndAllies:
-                return SlotsOf(user.Side).Where(b => b.IsActive).ToList();
+                return SlotsOf(user.Side).Where(b => b.IsActive && (b == user || !AreFoes(user, b))).ToList();
             case MoveTarget.Ally:
-                return SlotsOf(user.Side).Where(b => b.IsActive && b != user && Near(b)).ToList();
+                return SlotsOf(user.Side).Where(b => b.IsActive && b != user && !AreFoes(user, b) && Near(b)).ToList();
             case MoveTarget.Allies:
-                return SlotsOf(user.Side).Where(b => b.IsActive && b != user).ToList();
+                return SlotsOf(user.Side).Where(b => b.IsActive && b != user && !AreFoes(user, b)).ToList();
             case MoveTarget.AllPokemon:
                 return BySpeed().Where(b => b.IsActive).ToList();
             case MoveTarget.AllFoes:
@@ -762,7 +763,7 @@ public sealed partial class BattleCore
                 if (Centre() is { } centre) return new List<Battler> { centre };
                 if (chosen != null && chosen.IsActive && chosen != user && Near(chosen)) return Drawn(chosen);
                 // The chosen foe is gone: the move goes to the other one (an ally that fainted leaves nothing to hit)
-                if (chosen != null && chosen.Side == user.Side) return new List<Battler>();
+                if (chosen != null && !AreFoes(chosen, user)) return new List<Battler>();
                 return foes.Count == 0 ? foes : Drawn(foes[rng.Roll(RollKind.Target, foes.Count)]);
         }
 

@@ -54,6 +54,8 @@ public sealed partial class BattleCore
         if (data.Effect == "Belch" && !ateBerry.Contains(mine.Pokemon!)) return Text.Of("battle.isDisabled", ("pokemon", mine.Name), ("move", move.DisplayName));
         if (CantUseTwice(mine, data)) return Text.Of("battle.cantUseTwiceInARow", ("pokemon", mine.Name), ("move", move.DisplayName));
         if (IsSealed(mine, data)) return Text.Of("battle.cantUseTheSealed", ("pokemon", mine.Name), ("move", move.DisplayName));
+        // A sky battle refuses the moves that need the ground (plan 14 · B2)
+        if (NotInTheAir(mine, move) is { } grounded) return grounded;
         if (Field.Gravity && FailsUnderGravity(data)) return Text.Of("battle.cantUseBecauseOf", ("pokemon", mine.Name), ("move", move.DisplayName));
         if (v.HealBlockTurns > 0 && IsHealingMove(data)) return Text.Of("battle.cantUseWhileIt", ("pokemon", mine.Name), ("move", move.DisplayName));
         if (v.Encored != null && v.Encored != data && mine.Pokemon!.Moves.Any(m => m.Data == v.Encored))
@@ -108,6 +110,8 @@ public sealed partial class BattleCore
                 // At Battle Style Shift's offer nothing holds it: the original opens the team with nothing barred
                 // (BtlCmd_ChoosePokemonMenu), and whatever bound it fell with the foe
                 if (Request is SwitchOfferRequest offered && offered.Place == choice.Who) return null;
+                // A Battle Royal's Pokémon stay out until they fall (plan 14 · B13)
+                if (IsRoyal && Request is not ReplacementRequest) return Text.Of("battle.royalNoSwitching");
                 // A bout of the Battle Arena is fought to its end by the two in it (plan 14 · B9)
                 if (TurnLimit > 0 && Request is not ReplacementRequest) return Text.Of("battle.venue.noSwitching");
                 return TrapOn(b, forRunning: false);

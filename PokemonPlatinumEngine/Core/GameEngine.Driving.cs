@@ -262,6 +262,9 @@ public partial class GameEngine
         public void StartWildBattle(WildEncounterEntry entry) => game.StartWildBattle(entry);
         public void StartTrainerBattle(NPC trainer, NPC? second = null, Trainer? partner = null, bool firstBattle = false) =>
             game.StartTrainerBattle(trainer, second, partner, firstBattle);
+        /// <summary>A Battle Royal against three trainers of the map, each for themselves (plan 14 · B13), begun as any trainer's battle.</summary>
+        public void StartBattleRoyal(NPC first, NPC second, NPC third) =>
+            game.StartTrainerBattle(first, second, thirdNpc: third);
         public void StartTransition(GameState next, Action? onMidpoint = null, TransitionKind kind = TransitionKind.Fade) =>
             game.StartTransition(next, onMidpoint, kind);
         /// <summary>How the scene last closed, or is closing: the way into a battle the game picked for whom it met and where (plan 09 · L13).</summary>

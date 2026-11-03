@@ -249,9 +249,11 @@ public partial class GameEngine
     /// the battle itself (<paramref name="terms"/>, plan 14 · B1: an inverse battle) goes in with them, which is the
     /// only way it reaches a battle: nothing sets it on one that is running.
     /// </summary>
-    private Battle.Sim.BattleConditions BattleConditionsHere(BattleTerms? terms = null) => new()
+    private Battle.Sim.BattleConditions BattleConditionsHere(BattleTerms? terms = null, bool inTheAir = false) => new()
     {
         Inverse = terms?.Inverse ?? false,
+        // A sky trainer's battle is fought in the air (plan 14 · B2)
+        InTheAir = inTheAir,
         // A Pokémon hooked on a rod is fought on the water, wherever the player stands (FieldBattleDTO_SetWaterTerrain)
         Terrain = flow.Hooked ? Battle.Sim.BattleTerrain.Water : TerrainAt(flow.Map, flow.Player.GridX, flow.Player.GridY),
         Fishing = flow.Hooked,
@@ -467,7 +469,7 @@ public partial class GameEngine
     /// with <paramref name="terms"/>, one of the formats a script may ask for (plan 14 · B1: an inverse battle; B14: a
     /// Master Trainer's, one Pokémon of the team alone and the bag closed).
     /// </summary>
-    private void StartTrainerBattle(NPC trainerNpc, NPC? secondNpc = null, Trainer? partner = null, bool firstBattle = false, BattleTerms? terms = null)
+    private void StartTrainerBattle(NPC trainerNpc, NPC? secondNpc = null, Trainer? partner = null, bool firstBattle = false, BattleTerms? terms = null, NPC? thirdNpc = null)
     {
         // A trainer's battle ends the Poké Radar's chain (Encounter_NewVsTrainer)
         EndRadarChain();
@@ -479,6 +481,13 @@ public partial class GameEngine
         // Two trainers at once (a tag battle's foes), each with a team of their own
         var trainers = new List<Trainer> { trainer };
         if (secondNpc?.TrainerData is { } second) trainers.Add(second);
+        // A Battle Royal's third (plan 14 · B13): three trainers, each fighting for themselves, and the player
+        if (thirdNpc?.TrainerData is { } third)
+        {
+            trainers.Add(third);
+            third.Look = thirdNpc.NpcType;
+        }
+        bool royal = trainers.Count == 3 && partner == null;
         // Each is drawn on the platform as their class, or as the person who carries them where the class names
         // nobody in particular (plan 11 · C1), whose rig is built behind the fade
         trainer.Look = trainerNpc.NpcType;
@@ -546,7 +555,7 @@ public partial class GameEngine
         bool two = trainer.DoubleBattle || trainers.Count > 1 || partner != null;
         // A trainer of a later game's format alone against the player asks for it (plan 14 · B6: a triple), which the
         // battle fights where the rules and both sides allow and otherwise makes the double or single they can field
-        var asked = trainers.Count == 1 && partner == null && trainer.AskedFormat is { } format ? format : two ? BattleFormat.Double : BattleFormat.Single;
+        var asked = royal ? BattleFormat.Royal : trainers.Count == 1 && partner == null && trainer.AskedFormat is { } format ? format : two ? BattleFormat.Double : BattleFormat.Single;
         // Who is met and where, which is what the way into the battle goes by (plan 09 · L13): the first trainer's
         // class decides for both, as in the original, and the first Pokémon of theirs that can fight is measured
         // against the player's
@@ -566,6 +575,19 @@ public partial class GameEngine
             side = new Party();
             side.Add(alone);
         }
+        // A sky battle (plan 14 · B2): only the team's Pokémon that fly or float take part, the same Pokémon on a party of
+        // their own; with none able to fight the trainer says so and there is no battle
+        bool inTheAir = trainer.InTheAir && trainers.Count == 1;
+        if (inTheAir)
+        {
+            if (!SkyBattles.CanTakePart(side))
+            {
+                flow.Dialogue.ShowDialogue(trainer.FullTitle, Text.Of("battle.noneCanFly"));
+                flow.State = GameState.Dialogue;
+                return;
+            }
+            side = SkyBattles.Fliers(side);
+        }
         StartTransition(GameState.Battle, () =>
         {
             AwaitModels(shown);
@@ -582,7 +604,9 @@ public partial class GameEngine
                 Partner = partner,
                 FirstBattle = firstBattle,
                 NoBattleItems = terms?.NoBattleItems ?? false,
-                Conditions = BattleConditionsHere(terms),
+                Conditions = BattleConditionsHere(terms, inTheAir),
+                // A Battle Royal is fought for its placing alone: no EXP, no prize and nobody whites out (plan 14 · B13)
+                NoRewards = royal,
                 MoveHints = MoveHintsOn,
                 TrainerLines = TrainerLinesOn,
                 // Platinum's two battle options (plan 08 · P1): the core offers only where a single battle allows it
@@ -595,6 +619,8 @@ public partial class GameEngine
                 Scene = Settings.BattleScene
             });
             battleRenderer.SetArena(flow.Map, flow.Player.GridX, flow.Player.GridY);
+            // A sky battle's stage is the sky's, wherever it is met (plan 14 · B2)
+            if (inTheAir) battleRenderer.SetArena(BattleArena.Sky);
             flow.BattleTrainers.Clear();
             flow.BattleTrainers.Add(trainerNpc);
             if (secondNpc?.TrainerData != null) flow.BattleTrainers.Add(secondNpc);

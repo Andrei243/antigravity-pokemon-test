@@ -18,7 +18,9 @@ public enum BattleResult
     EnemyCaught,
     PlayerRan,
     /// <summary>The wild Pokémon ran away (a roamer, one of the Great Marsh's).</summary>
-    EnemyFled
+    EnemyFled,
+    /// <summary>A Battle Royal ended with the player placed second or lower (plan 14 · B13): no loss, nothing paid, nobody whites out.</summary>
+    Placed
 }
 
 /// <summary>
@@ -69,6 +71,9 @@ public partial class BattleEngine
 
     /// <summary>A rotation battle (plan 14 · B7): one place a side, the front of a turntable of three.</summary>
     public bool IsRotation => Format == BattleFormat.Rotation;
+
+    /// <summary>A Battle Royal (plan 14 · B13): the player's one place against three trainers, each for themselves.</summary>
+    public bool IsRoyal => Format == BattleFormat.Royal;
 
     /// <summary>
     /// The Pokémon whose action is being chosen stands at an end of a triple battle's side, so its fourth command is

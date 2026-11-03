@@ -420,7 +420,7 @@ public partial class BattleEngine
         }
 
         // In a double battle and a horde a single-target move asks where to aim it
-        if ((IsDouble || IsHorde || IsSos || IsTriple) && move.Target == MoveTarget.Selected)
+        if ((IsDouble || IsHorde || IsSos || IsTriple || IsRoyal) && move.Target == MoveTarget.Selected)
         {
             // In the order the target menu lays them out: the foes left to right, then the partner; in a triple battle
             // only those the move reaches from where its user stands (plan 14 · B6)

@@ -30,6 +30,8 @@ public sealed partial class BattleCore
     private void AnnounceFormat()
     {
         if (Inverse) Say(InverseLine);
+        // A sky battle says so too (plan 14 · B2)
+        if (InTheAir) Say(SkyLine);
     }
 
     /// <summary>

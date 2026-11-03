@@ -48,6 +48,9 @@ partial class Harness
         // The sea floor's own stage (plan 21 · H5, part b), whose light ignores the clock
         Arena("a40_underwater", BattleArena.Underwater);
         Arena("a41_underwater_night", BattleArena.Underwater, time: TimeOfDay.Night);
+        // A sky battle's stage (plan 14 · B2), by day and after dark
+        Arena("a42_sky", BattleArena.Sky);
+        Arena("a43_sky_night", BattleArena.Sky, time: TimeOfDay.Night);
         engine.Settings.TimeOfDay = TimeOfDay.Day;
         engine.ApplySettings(window: false);
     }
