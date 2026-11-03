@@ -1,5 +1,37 @@
 # Every script of the game on every way through it (plan 24 · X3), made by GoldenScriptTests. Rewritten by: GOLDEN=accept dotnet test PokemonPlatinumTests --filter Golden
 # '>' a line said, '?' a question and the answer taken, '*' what the script did, '!' a problem, '+'/'-' a flag set or cleared, '=' a variable changed, '+ seen' a scene played to its end; a way after the first is told from the answer where it parts from those before it.
+=== AlolaRoute1_KukuiLab.Kukui
+from Prof. Kukui at 7,4 of AlolaRoute1_KukuiLab
+way -
+  Prof. Kukui> Alola! You'll want to see the kahuna in Iki Town first.
+=== AlolaRoute1_KukuiLab.Rockruff
+from Rockruff at 9,6 of AlolaRoute1_KukuiLab
+way -
+  > Rockruff: Arf! Arf!
+  * cry Rockruff
+=== AlolaRoute1_PlayersHouse.Mom
+from Mom at 7,8 of AlolaRoute1_PlayersHouse
+way 0
+  Mom> Mom: Welcome home! Sit down a while and rest.
+  Mom> Mom: ...There! You both look much better.
+  Mom> By the way, would you like a reminder of what to do next?
+  Mom> Let me see... Head for the door. Mom has something to tell you.
+  ? By the way, would you like a reminder of what to do next? = Yes
+  * fanfare FanfareHeal
+way 1, from answer 1
+  ? By the way, would you like a reminder of what to do next? = No
+=== AlolaRoute1_PlayersHouse.MomCalls
+from the trigger at 2,10 of AlolaRoute1_PlayersHouse
+way -
+  Mom> Oh, you're up! Did you sleep with all those boxes still everywhere?
+  Mom> Professor Kukui came by while you were asleep. He said he'd take you up to Iki Town to meet the island's kahuna.
+  Mom> He's waiting just outside. Off you go, and say alola for me!
+  * scene AlolaRoute1_PlayersHouse.Mom on the first morning
+  * endscene
+  + FLAG_HAS_RUNNING_SHOES
+  = VAR_ALOLA_STORY 0 -> 1
+  = VAR_OBJECTIVE 0 -> 601
+  + seen AlolaRoute1_PlayersHouse.Mom on the first morning
 === BattleArcade.Beauty
 from Beauty at 4,14 of BattleArcade
 way -
@@ -6550,6 +6582,10 @@ way -
   + FLAG_HIDE_ACUITY_LAKEFRONT_RIVAL
   = VAR_ACUITY_LAKEFRONT_STATE 0 -> 1
   + seen acuity_lakefront.The rival calls down
+=== alola_route_1.Kukui
+from Prof. Kukui at 240,158 of Melemele
+way -
+  Prof. Kukui> Iki Town is just north of here. The kahuna's waiting!
 === amity_square.EastGate
 from the trigger at 51,46 of AmitySquare
 way 0
@@ -10238,6 +10274,16 @@ from Woman at 34,19 of CliffEdgeGate
 way -
   Woman> Have you heard? They're building a Safari Zone just past this cliff. You can catch any Pokémon you find there!
   Woman> I can hardly wait. Hurry up and finish it, workmen!
+=== common.AlolaNewGame
+from a trainer with lines of their own
+way -
+  + FLAG_ALOLA_HIDE_HALA_IKI
+  + FLAG_ALOLA_HIDE_HAU_IKI
+  + FLAG_ALOLA_HIDE_KUKUI_HOME
+  + FLAG_ALOLA_HIDE_KUKUI_IKI
+  + FLAG_ALOLA_HIDE_KUKUI_LAB
+  + FLAG_ALOLA_HIDE_LILLIE_TRAIL
+  + FLAG_ALOLA_STORY_BEGUN
 === common.ApricornTree
 from a trainer with lines of their own
 way -
@@ -18278,6 +18324,63 @@ way 0
 way 1, from answer 1
   * wildbattle Regice 65 Lost
   + seen iceberg_chamber.Regice wakes
+=== iki_town.Hala
+from Hala at 249,121 of Melemele
+way -
+  Hala> The island watches over all of us, and the guardian watches over the island. Take good care of your partner.
+=== iki_town.Hau
+from Hau at 252,124 of Melemele
+way -
+  Hau> Have you tried the malasadas in Hau'oli City? They're the best thing in Alola! Well, after Pokémon.
+=== iki_town.KahunaAway
+from the trigger at 248,137 of Melemele
+way -
+  Prof. Kukui> Welcome to Iki Town! This is where the island's festival is held, right on that stage.
+  Prof. Kukui> Bad news, though: the kahuna's gone off somewhere. He does that. He's a busy man.
+  Prof. Kukui> Oh, and a girl I know just ran up the Mahalo Trail, north of the village, in an awful hurry. Would you go and check on her for me?
+  * scene iki_town.The kahuna away
+  * endscene
+  = VAR_ALOLA_STORY 0 -> 3
+  = VAR_OBJECTIVE 0 -> 603
+  + seen iki_town.The kahuna away
+=== iki_town.KahunaHome
+from the trigger at 248,113 of Melemele
+way 0
+  Hala> Ho ho! So you're the new face Kukui told me about. And it seems the island's guardian has taken an interest in you as well!
+  Prof. Kukui> Hala's the kahuna of Melemele, the one who watches over the whole island. Kahuna, this is Lucas.
+  Hala> Every child in Alola goes out into the world with a partner. Here are three who have been waiting. Choose the one you like!
+  > Lucas chose Rowlet!
+  Hala> A fine choice. May the two of you grow strong together.
+  Hau> Tutu! Wait for me! Did I miss it?
+  Hau> Alola! I'm Hau. That's my grandpa, the kahuna! You got your Pokémon already? Then this one's mine!
+  Hala> You were off eating again, weren't you? Very well, very well.
+  Hau> Hey, Lucas! We've both got Pokémon now, so let's battle! The first battle's the best one!
+  Hau> Aw, you're really good! That was so much fun. Your Pokémon looked like it was having fun too!
+  Prof. Kukui> Woo! What a battle! Now, Lucas, come by my laboratory on the beach south of your house. I've got something for you.
+  * scene iki_town.The kahuna comes home
+  * open Starter
+  * battle alola_hau_1 Won
+  * endscene
+  + FLAG_ALOLA_HIDE_KUKUI_IKI
+  = VAR_ALOLA_STORY 0 -> 5
+  = VAR_OBJECTIVE 0 -> 605
+  + beaten alola_hau_1
+  = starters none/none -> Rowlet/Litten
+  + seen iki_town.The kahuna comes home
+way 1, from answer 1
+  Hau> We won! But that was so close. Let's battle again sometime, okay?
+  Prof. Kukui> Woo! What a battle! Now, Lucas, come by my laboratory on the beach south of your house. I've got something for you.
+  * battle alola_hau_1 Lost
+  * endscene
+  + FLAG_ALOLA_HIDE_KUKUI_IKI
+  = VAR_ALOLA_STORY 0 -> 5
+  = VAR_OBJECTIVE 0 -> 605
+  = starters none/none -> Rowlet/Litten
+  + seen iki_town.The kahuna comes home
+=== iki_town.Kukui
+from Prof. Kukui at 250,128 of Melemele
+way -
+  Prof. Kukui> The kahuna might be back soon. Have a look around the village while you wait.
 === ilex_forest.Apprentice
 from Apprentice at 15,64 of IlexForest
 way -
@@ -20747,6 +20850,34 @@ way 1, from answer 1
 from Groudon at 16,17 of MagmaHideout_4F
 way -
   > Groudon is sleeping, curled in the magma. It doesn't stir at all.
+=== mahalo_trail.Bridge
+from the trigger at 247,85 of Melemele
+way -
+  Lillie> Oh! Please, could you help? My little one jumped out of my bag and ran onto the bridge!
+  Lillie> There are Spearow all around it, and I... I can't make myself step onto those planks.
+  > Lucas hurried past her, out onto the old bridge.
+  > A flock of Spearow came diving down on the little Pokémon in the middle of the bridge!
+  > With a crack, the old planks gave way!
+  > Something swept out of the sky in a flash of yellow and caught them both before they fell!
+  Lillie> That was... the island's guardian! It saved you. Thank you, thank you so much for helping.
+  Lillie> Please, don't tell anyone you saw my little one. It's a secret. I should go back down now.
+  * scene mahalo_trail.The guardian at the bridge
+  * shake player 4
+  * fade out
+  * cry Tapu Koko
+  * seen Tapu Koko
+  * fade in
+  * fade out
+  * fade in
+  * endscene
+  + FLAG_ALOLA_HIDE_LILLIE_TRAIL
+  = VAR_ALOLA_STORY 0 -> 4
+  = VAR_OBJECTIVE 0 -> 604
+  + seen mahalo_trail.The guardian at the bridge
+=== mahalo_trail.Lillie
+from Lillie at 249,84 of Melemele
+way -
+  Lillie> Please be careful on the bridge. The planks are very old.
 === mahogany.RageCandySeller
 from Man at 540,175 of Johto
 way 0

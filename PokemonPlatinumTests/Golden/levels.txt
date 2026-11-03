@@ -162,6 +162,10 @@ trainers 4, 37-39: unova_lass_lurleen 39, unova_twins_rae_ula 38, unova_youngste
 === acuity_lakefront
 Acuity Lakefront
 grass 32-35
+=== alola_route_1
+Route 1
+grass 2-4
+trainers 1, 3: alola_youngster_keoni 3
 === altering_cave
 Altering Cave
 grass 6-16
@@ -1199,6 +1203,9 @@ grass 27-33
 Magma Hideout
 grass 27-33
 trainers 4, 26-33: hoenn_grunt_magma_hideout_11 29, hoenn_grunt_magma_hideout_12 29, hoenn_grunt_magma_hideout_13 29, hoenn_tabitha_magma_hideout 33
+=== mahalo_trail
+Mahalo Trail
+grass 3-5
 === mahogany_gym_leader_room
 Mahogany Town
 trainers 3, 25-29: johto_boarder_deandre 26, johto_boarder_gerardo 26, johto_skier_jill 29
