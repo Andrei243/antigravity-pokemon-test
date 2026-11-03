@@ -117,10 +117,12 @@ jobs:
   shots:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    # field, menus and battle take about 70 minutes under llvmpipe, and story half an hour in each tree
+    timeout-minutes: 200
     env:
       POKEMON_CACHE: ${{ github.workspace }}/../pokemon-cache
-      DEV_SCRATCH: ${{ github.workspace }}/../dev
+      # story runs for about half an hour here: the harness's own half-hour stuck limit is too short
+      SHOTS_TIME_LIMIT: 3600
       SHOTS_CHANGE: ${{ contains(github.event.pull_request.labels.*.name, 'shots-change') }}
       # mode:filter, a few shots of each (llvmpipe fills a 4K screen slowly); "" for a whole mode
       SHOT_SET: >-
@@ -132,6 +134,12 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      # upload-artifact refuses a path with '..' in it, so the worktrees and shots live in the runner's temp
+      # (the runner context can't be read in a job's env)
+      - name: Scratch folder
+        shell: bash
+        run: echo "DEV_SCRATCH=$RUNNER_TEMP/dev" >> "$GITHUB_ENV"
 
       - uses: actions/setup-dotnet@v4
         with:
