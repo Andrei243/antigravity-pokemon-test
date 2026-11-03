@@ -326,7 +326,7 @@ public static class InstrumentBank
         Add(new Instrument
         {
             Name = "contrabass", Bright = Falling(10, 1.4f), Mellow = Falling(6, 2f), BrightDecay = 0.2f, BrightSustain = 0.3f,
-            Attack = 0.06f, Decay = 0.8f, Sustain = 0.8f, Release = 0.15f, Vibrato = 0.05f, OctaveShift = -1, Gain = 0.48f
+            Attack = 0.06f, Decay = 0.8f, Sustain = 0.8f, Release = 0.15f, Vibrato = 0.05f, OctaveShift = -1, Gain = 0.62f
         });
         Add(new Instrument
         {
@@ -410,6 +410,63 @@ public static class InstrumentBank
             Name = "bambooflute", Bright = new[] { 1f, 0.18f, 0.1f, 0.03f }, Mellow = new[] { 1f, 0.1f, 0.03f },
             BrightDecay = 0.2f, Attack = 0.06f, Decay = 0.5f, Sustain = 0.8f, Release = 0.14f,
             Vibrato = 0.22f, VibratoRate = 4.4f, VibratoDelay = 0.3f, Noise = 0.11f, PitchStart = -0.6f, PitchTime = 0.06f, Gain = 0.5f
+        });
+
+        // Plan 31 · MU5: Galar's instruments
+        Add(new Instrument
+        {
+            // A brass band's cornets: rounder than the trumpet, three players a few cents apart, a band's slow vibrato
+            Name = "cornet", Bright = Falling(14, 1.05f), Mellow = Falling(9, 1.6f), BrightDecay = 0.22f, BrightSustain = 0.35f,
+            Detune = 6f, Unison = 3, Spread = 0.4f, Attack = 0.025f, Decay = 0.45f, Sustain = 0.8f, Release = 0.09f,
+            Vibrato = 0.1f, VibratoRate = 5f, VibratoDelay = 0.3f, PitchStart = -0.5f, PitchTime = 0.03f, Gain = 0.68f
+        });
+        Add(new Instrument
+        {
+            // A chanter: a hard, reedy tone that starts at once and never decays, two reeds a few cents apart
+            Name = "bagpipe", Bright = new[] { 1f, 0.9f, 0.75f, 0.6f, 0.55f, 0.4f, 0.32f, 0.22f, 0.16f, 0.1f },
+            Mellow = new[] { 1f, 0.8f, 0.62f, 0.5f, 0.42f, 0.3f, 0.22f, 0.14f }, BrightDecay = 0.1f, BrightSustain = 0.6f,
+            Detune = 5f, Spread = 0.25f, Attack = 0.012f, Decay = 1f, Sustain = 1f, Release = 0.05f, Noise = 0.02f, Gain = 0.57f
+        });
+        Add(new Instrument
+        {
+            // The pipes' drones: a buzzing held tone an octave below where it is written, slow to swell
+            Name = "pipedrone", Bright = new[] { 1f, 0.7f, 0.55f, 0.45f, 0.35f, 0.28f, 0.2f, 0.14f }, Detune = 3f, Spread = 0.6f,
+            Attack = 0.25f, Decay = 1f, Sustain = 1f, Release = 0.3f, Noise = 0.01f, OctaveShift = -1, Gain = 0.62f
+        });
+        Add(new Instrument
+        {
+            // A folk fiddle: brighter and scratchier than the violin, quick to speak, little vibrato
+            Name = "fiddle", Bright = Falling(16, 0.95f), Mellow = Falling(12, 1.3f), BrightDecay = 0.12f, BrightSustain = 0.55f,
+            Attack = 0.025f, Decay = 0.5f, Sustain = 0.82f, Release = 0.08f, Vibrato = 0.08f, VibratoRate = 6.2f,
+            VibratoDelay = 0.3f, Noise = 0.03f, Gain = 0.5f
+        });
+        Add(new Instrument
+        {
+            // A tin whistle: thin and breathy, flicking up into each note
+            Name = "tinwhistle", Bright = new[] { 1f, 0.28f, 0.12f, 0.05f }, Mellow = new[] { 1f, 0.16f, 0.05f },
+            BrightDecay = 0.1f, Attack = 0.02f, Decay = 0.4f, Sustain = 0.82f, Release = 0.07f, Vibrato = 0.1f, VibratoRate = 5.6f,
+            VibratoDelay = 0.3f, Noise = 0.08f, PitchStart = 0.8f, PitchTime = 0.025f, Gain = 0.52f
+        });
+        Add(new Instrument
+        {
+            // A frame drum: a deep thud that sinks a little and the tipper's slap, an octave below where it is written
+            Name = "bodhran", Kind = VoiceKind.Modal, Ratios = new[] { 1f, 1.59f, 2.14f, 2.65f }, Amps = new[] { 1f, 0.45f, 0.25f, 0.12f },
+            Decays = new[] { 0.18f, 0.08f, 0.05f, 0.03f }, Strike = 0.3f, PitchStart = 0.4f, PitchTime = 0.04f, Release = 0.08f,
+            OctaveShift = -1, Gain = 0.66f
+        });
+        Add(new Instrument
+        {
+            // A stadium organ: every drawbar out, three voices and a quick rotating-speaker shimmer
+            Name = "stadiumorgan", Bright = new[] { 1f, 0.85f, 0.6f, 0.55f, 0.2f, 0.4f, 0.1f, 0.3f, 0.1f, 0.15f },
+            Detune = 6f, Unison = 3, Spread = 0.55f, Attack = 0.008f, Decay = 1f, Sustain = 1f, Release = 0.06f,
+            Vibrato = 0.06f, VibratoRate = 6.8f, VibratoDelay = 0f, Gain = 0.53f
+        });
+        Add(new Instrument
+        {
+            // An overdriven electric guitar for power chords: the harsh, odd-leaning spectrum distortion gives, as a wavetable
+            Name = "driveguitar", Bright = new[] { 1f, 0.75f, 0.85f, 0.5f, 0.6f, 0.38f, 0.45f, 0.28f, 0.32f, 0.2f, 0.24f, 0.14f, 0.16f, 0.1f, 0.1f, 0.06f },
+            Mellow = new[] { 1f, 0.6f, 0.65f, 0.38f, 0.42f, 0.25f, 0.28f, 0.15f, 0.15f, 0.08f }, BrightDecay = 0.3f, BrightSustain = 0.5f,
+            Detune = 8f, Spread = 0.5f, Attack = 0.004f, Decay = 0.9f, Sustain = 0.7f, Release = 0.07f, Noise = 0.025f, Gain = 0.63f
         });
     }
 }

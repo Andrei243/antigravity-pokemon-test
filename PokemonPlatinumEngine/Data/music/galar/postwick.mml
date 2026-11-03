@@ -1,0 +1,44 @@
+# The farm village at the edge of the region: sheep in the fields and a wood behind the houses, an unhurried
+# fiddle in G over a nylon guitar picked softly and a cello's long notes; at night a clarinet and a harp.
+# Original composition for this game (plan 31 · MU5), in the modern sound.
+title Postwick
+tempo 88
+meter 4/4
+reverb 0.3
+nighttempo 0.92
+room chamber 1.5
+
+track lead fiddle night=clarinet vol=0.83 pan=0 rev=0.3
+  o5 b2. r4 | L o5 d4 g8 a8 b4 g4 | o5 e4 g8 b8 o6 e4 o5 b4 | o5 c4 e8 g8 o6 c4 o5 g4 |
+  o5 a2 f+4 d4 | o5 b4. a8 g4 d4 | o5 g4 e8 g8 b2 | o5 a4 o6 c8 o5 a8 e4 a4 |
+  o5 f+2. r4 | o5 e4 g8 o6 c8 e4 c4 | o5 b4 d8 g8 b4 d4 | o5 c4 e8 a8 o6 c4 o5 a4 |
+  o5 a2 f+4 a4 | o5 g4 e8 g8 o6 c4 o5 g4 | o5 f+4 a8 o6 d8 c8 o5 a8 f+4 | o5 g4 b8 o6 d8 g4 d4 |
+  o5 b2. r4 |
+
+track pick nylonguitar night=harp vol=0.44 pan=-0.3 rev=0.26
+  o4 g8 o4 b8 o5 d8 o4 b8 o4 g8 o4 b8 o5 d8 o4 b8 | L o4 g8 o4 b8 o5 d8 o4 b8 o4 g8 o4 b8 o5 d8 o4 b8 | o4 e8 o4 g8 o4 b8 o4 g8 o4 e8 o4 g8 o4 b8 o4 g8 | o4 c8 o4 e8 o4 g8 o4 e8 o4 c8 o4 e8 o4 g8 o4 e8 |
+  o4 d8 o4 f+8 o4 a8 o4 f+8 o4 d8 o4 f+8 o4 a8 o4 f+8 | o4 g8 o4 b8 o5 d8 o4 b8 o4 g8 o4 b8 o5 d8 o4 b8 | o4 e8 o4 g8 o4 b8 o4 g8 o4 e8 o4 g8 o4 b8 o4 g8 | o4 a8 o5 c8 o5 e8 o5 c8 o4 a8 o5 c8 o5 e8 o5 c8 |
+  o4 d8 o4 f+8 o4 a8 o4 f+8 o4 d8 o4 f+8 o4 a8 o4 f+8 | o4 c8 o4 e8 o4 g8 o4 e8 o4 c8 o4 e8 o4 g8 o4 e8 | o4 g8 o4 b8 o5 d8 o4 b8 o4 g8 o4 b8 o5 d8 o4 b8 | o4 a8 o5 c8 o5 e8 o5 c8 o4 a8 o5 c8 o5 e8 o5 c8 |
+  o4 d8 o4 f+8 o4 a8 o4 f+8 o4 d8 o4 f+8 o4 a8 o4 f+8 | o4 c8 o4 e8 o4 g8 o4 e8 o4 c8 o4 e8 o4 g8 o4 e8 | o4 d8 o4 f+8 o4 a8 o4 f+8 o4 d8 o4 f+8 o4 a8 o4 f+8 | o4 g8 o4 b8 o5 d8 o4 b8 o4 g8 o4 b8 o5 d8 o4 b8 |
+  o4 g8 o4 b8 o5 d8 o4 b8 o4 g8 o4 b8 o5 d8 o4 b8 |
+
+track cello cello vol=0.41 pan=0.25 rev=0.3
+  o3 g2 d2 | L o3 g2 d2 | o3 e2 b2 | o3 c2 g2 |
+  o3 d2 a2 | o3 g2 d2 | o3 e2 b2 | o3 a2 e2 |
+  o3 d2 a2 | o3 c2 g2 | o3 g2 d2 | o3 a2 e2 |
+  o3 d2 a2 | o3 c2 g2 | o3 d2 a2 | o3 g2 d2 |
+  o3 g2 d2 |
+
+track pad warmpad vol=0.19 rev=0.45
+  o3 (g b > d)1 | L o3 (g b > d)1 | o3 (e g b)1 | o3 (c e g)1 |
+  o3 (d f+ a)1 | o3 (g b > d)1 | o3 (e g b)1 | o3 (a > c e)1 |
+  o3 (d f+ a)1 | o3 (c e g)1 | o3 (g b > d)1 | o3 (a > c e)1 |
+  o3 (d f+ a)1 | o3 (c e g)1 | o3 (d f+ a)1 | o3 (g b > d)1 |
+  o3 (g b > d)1 |
+
+track bodhran bodhran vol=0.33 pan=-0.2 rev=0.24
+  o4 v80 g4 r4 v60 g4 r4 | L o4 v80 g4 r4 v60 g4 r4 | o4 v80 e4 r4 v60 e4 r4 | o4 v80 c4 r4 v60 c4 r4 |
+  o4 v80 d4 r4 v60 d4 r4 | o4 v80 g4 r4 v60 g4 r4 | o4 v80 e4 r4 v60 e4 r4 | o4 v80 a4 r4 v60 a4 r4 |
+  o4 v80 d4 r4 v60 d4 r4 | o4 v80 c4 r4 v60 c4 r4 | o4 v80 g4 r4 v60 g4 r4 | o4 v80 a4 r4 v60 a4 r4 |
+  o4 v80 d4 r4 v60 d4 r4 | o4 v80 c4 r4 v60 c4 r4 | o4 v80 d4 r4 v60 d4 r4 | o4 v80 g4 r4 v60 g4 r4 |
+  o4 v80 g4 r4 v60 g4 r4 |

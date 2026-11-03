@@ -215,6 +215,14 @@ public class ModernMusicTests
     [InlineData("cello")]
     [InlineData("orchestra")]
     [InlineData("bambooflute")]
+    [InlineData("cornet")]
+    [InlineData("bagpipe")]
+    [InlineData("pipedrone")]
+    [InlineData("fiddle")]
+    [InlineData("tinwhistle")]
+    [InlineData("bodhran")]
+    [InlineData("stadiumorgan")]
+    [InlineData("driveguitar")]
     public void TestEachAlolaInstrumentPlaysCleanlyAtTheBanksLevelInBothSounds(string name)
     {
         // As MusicRender --calibrate measures: quarter notes round middle C, dry; every instrument of the bank sits near −21 dB
@@ -301,10 +309,39 @@ public class ModernMusicTests
 
     [Theory]
     [MemberData(nameof(AlolaSongs))]
-    public void TestEachAlolaSongRendersCleanlyInTheModernSoundInEveryArrangement(string id)
+    public void TestEachAlolaSongRendersCleanlyInTheModernSoundInEveryArrangement(string id) => RendersCleanlyInEveryArrangement(id);
+
+    /// <summary>Galar's songs (plan 31 · MU5): every file of <c>music/galar/</c>.</summary>
+    public static IEnumerable<object[]> GalarSongs() =>
+        MusicLibrary.All.Where(s => s.Id.StartsWith("galar/")).Select(s => s.Id).OrderBy(id => id).Select(id => new object[] { id });
+
+    [Fact]
+    public void TestGalarHasItsSongsAndPlaysThemInTheModernSoundOnceItsRegionNamesIt()
+    {
+        // The roles a region needs, and its first field songs. There is no Galar region file yet: plan 23's Galar
+        // sessions write it with "sound": "modern", so until then the folder names no sound and no song names its own
+        var ids = MusicLibrary.All.Where(s => s.Id.StartsWith("galar/")).Select(s => s.Id).ToHashSet();
+        foreach (var role in new[] { "battle_wild", "battle_trainer", "battle_gym", "battle_rival", "victory_wild", "victory_trainer",
+                     "victory_gym", "eye_boy", "eye_girl", "rival", "pokecenter", "pokemart", "route1", "postwick", "wedgehurst",
+                     "wild_area", "stadium" })
+            Assert.Contains("galar/" + role, ids);
+        Assert.All(MusicLibrary.All.Where(s => s.Id.StartsWith("galar/")), s => Assert.Null(s.Sound));
+        var sounds = MusicLibrary.RegionSounds(new[] { new RegionFile { Id = "Galar", Folder = "galar", Sound = "modern" } });
+        Assert.Equal(SynthSound.Modern, MusicLibrary.SoundOfFolder("galar/wild_area", sounds));
+    }
+
+    [Theory]
+    [MemberData(nameof(GalarSongs))]
+    public void TestEachGalarSongRendersCleanlyInTheModernSoundInEveryArrangement(string id) => RendersCleanlyInEveryArrangement(id);
+
+    /// <summary>
+    /// A song of a later region in the modern sound, in every arrangement it has (day, night, red, giant, both): in the
+    /// music bus's window, unclipped, no voice cut short and no clash. A battle theme must have its low-HP and giant arrangements.
+    /// </summary>
+    private static void RendersCleanlyInEveryArrangement(string id)
     {
         var song = MusicLibrary.Get(id)!;
-        bool battle = id.StartsWith("alola/battle_");
+        bool battle = id.Contains("/battle_");
         var arrangements = new List<(bool Night, bool LowHp, bool Giant)> { (false, false, false) };
         if (song.Tracks.Any(t => t.NightInstrument != null)) arrangements.Add((true, false, false));
         if (battle)

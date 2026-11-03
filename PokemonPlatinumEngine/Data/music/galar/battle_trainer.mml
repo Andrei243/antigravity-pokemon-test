@@ -1,0 +1,55 @@
+# A trainer of Galar: a brass band's cornets in G, punching on the beat and climbing the chord, an accordion
+# racing under them, a driven guitar and a rock kit driving. Original composition for this game (plan 31 · MU5), in the modern sound.
+title Battle! Trainer (Galar)
+tempo 174
+meter 4/4
+lowhptempo 1.08
+reverb 0.2
+room hall 1.4
+
+track lead cornet lowhp=sawlead vol=0.66 pan=0.05 rev=0.2
+  o5 g8 r8 g8 r8 b4 o6 d4 | o6 d4 o5 a4 f+4 a4 | L o5 g4 b8 o6 d8 g4 d4 | o6 e4 c8 o5 g8 o6 c4 e4 |
+  o6 f+4 d8 o5 a8 o6 d4 f+4 | o6 g2 e4 o5 b4 | o6 d4. c8 o5 b4 g4 | o5 e4 g8 o6 c8 e4 c4 |
+  o5 a4 o6 c8 e8 a4 e4 | o6 f+4 a8 f+8 d2 |
+
+track pad warmpad unless=lowhp vol=0.24 pan=-0.25 rev=0.26
+  r1 | r1 | L o4 (g b > d)1 | o4 (c e g)1 |
+  o4 (d f+ a)1 | o4 (e g b)1 | o4 (g b > d)1 | o4 (c e g)1 |
+  o4 (a > c e)1 | o4 (d f+ a)1 |
+
+track riff accordion vol=0.26 pan=0.35 rev=0.2
+  o4 g8 o4 b8 o5 d8 o4 b8 o4 g8 o4 b8 o5 d8 o4 b8 | o4 d8 o4 f+8 o4 a8 o4 f+8 o4 d8 o4 f+8 o4 a8 o4 f+8 | L o4 g8 o4 b8 o5 d8 o5 g8 o5 d8 o4 b8 o4 g8 o4 b8 | o4 c8 o4 e8 o4 g8 o5 c8 o4 g8 o4 e8 o4 c8 o4 e8 |
+  o4 d8 o4 f+8 o4 a8 o5 d8 o4 a8 o4 f+8 o4 d8 o4 f+8 | o4 e8 o4 g8 o4 b8 o5 e8 o4 b8 o4 g8 o4 e8 o4 g8 | o4 g8 o4 b8 o5 d8 o5 g8 o5 d8 o4 b8 o4 g8 o4 b8 | o4 c8 o4 e8 o4 g8 o5 c8 o4 g8 o4 e8 o4 c8 o4 e8 |
+  o4 a8 o5 c8 o5 e8 o5 a8 o5 e8 o5 c8 o4 a8 o5 c8 | o4 d8 o4 f+8 o4 a8 o5 d8 o4 a8 o4 f+8 o4 d8 o4 f+8 |
+
+track rhythm driveguitar vol=0.24 pan=-0.4 rev=0.16
+  r1 | r1 | L o3 v70 (g b > d)8 v100 (g b > d)8 v70 (g b > d)8 v100 (g b > d)8 v70 (g b > d)8 v100 (g b > d)8 v70 (g b > d)8 v100 (g b > d)8 | o3 v70 (c e g)8 v100 (c e g)8 v70 (c e g)8 v100 (c e g)8 v70 (c e g)8 v100 (c e g)8 v70 (c e g)8 v100 (c e g)8 |
+  o3 v70 (d f+ a)8 v100 (d f+ a)8 v70 (d f+ a)8 v100 (d f+ a)8 v70 (d f+ a)8 v100 (d f+ a)8 v70 (d f+ a)8 v100 (d f+ a)8 | o3 v70 (e g b)8 v100 (e g b)8 v70 (e g b)8 v100 (e g b)8 v70 (e g b)8 v100 (e g b)8 v70 (e g b)8 v100 (e g b)8 | o3 v70 (g b > d)8 v100 (g b > d)8 v70 (g b > d)8 v100 (g b > d)8 v70 (g b > d)8 v100 (g b > d)8 v70 (g b > d)8 v100 (g b > d)8 | o3 v70 (c e g)8 v100 (c e g)8 v70 (c e g)8 v100 (c e g)8 v70 (c e g)8 v100 (c e g)8 v70 (c e g)8 v100 (c e g)8 |
+  o3 v70 (a > c e)8 v100 (a > c e)8 v70 (a > c e)8 v100 (a > c e)8 v70 (a > c e)8 v100 (a > c e)8 v70 (a > c e)8 v100 (a > c e)8 | o3 v70 (d f+ a)8 v100 (d f+ a)8 v70 (d f+ a)8 v100 (d f+ a)8 v70 (d f+ a)8 v100 (d f+ a)8 v70 (d f+ a)8 v100 (d f+ a)8 |
+
+track band brass vol=0.24 pan=0.3 rev=0.2
+  r1 | r1 | L o4 r4 (g b > d)4 r4 (g b > d)4 | o4 r4 (c e g)4 r4 (c e g)4 |
+  o4 r4 (d f+ a)4 r4 (d f+ a)4 | o4 r4 (e g b)4 r4 (e g b)4 | o4 r4 (g b > d)4 r4 (g b > d)4 | o4 r4 (c e g)4 r4 (c e g)4 |
+  o4 r4 (a > c e)4 r4 (a > c e)4 | o4 r4 (d f+ a)4 r4 (d f+ a)4 |
+
+track bass synthbass vol=0.62 rev=0.05
+  [ o2 g8 o3 g8 ]4 | [ o2 d8 o3 d8 ]4 | L [ o2 g8 o3 g8 ]4 | [ o2 c8 o3 c8 ]4 |
+  [ o2 d8 o3 d8 ]4 | [ o2 e8 o3 e8 ]4 | [ o2 g8 o3 g8 ]4 | [ o2 c8 o3 c8 ]4 |
+  [ o2 a8 o3 a8 ]4 | [ o2 d8 o3 d8 ]4 |
+
+track drums kit vol=0.5 rev=0.1
+  v95 b8 s8 b8 s8 b8 s8 (b c)4 | (b c)4 t8 t8 m8 m8 f8 f8 | L v95 (b c)8 h8 s8 h8 b8 b8 s8 h8 | b8 h8 s8 h8 b8 b8 s8 h8 |
+  b8 h8 s8 h8 b8 b8 s8 h8 | b8 h8 s8 h8 b8 b8 s8 h8 | b8 h8 s8 h8 b8 b8 s8 h8 | b8 h8 s8 h8 b8 b8 s8 h8 |
+  b8 h8 s8 h8 b8 b8 s8 h8 | b8 h8 s8 b8 s16 s16 s16 s16 s8 s8 |
+
+# Low HP: two pips a beat, only while a Pokémon of the player's is in the red, on each bar's root
+track alarm pulse only=lowhp vol=0.45 pan=0.1 rev=0.08
+  r1 | r1 | L v110 o6 g16 r16 g16 r16 r4 g16 r16 g16 r16 r4 | v110 o6 c16 r16 c16 r16 r4 c16 r16 c16 r16 r4 |
+  v110 o6 d16 r16 d16 r16 r4 d16 r16 d16 r16 r4 | v110 o6 e16 r16 e16 r16 r4 e16 r16 e16 r16 r4 | v110 o6 g16 r16 g16 r16 r4 g16 r16 g16 r16 r4 | v110 o6 c16 r16 c16 r16 r4 c16 r16 c16 r16 r4 |
+  v110 o6 a16 r16 a16 r16 r4 a16 r16 a16 r16 r4 | v110 o6 d16 r16 d16 r16 r4 d16 r16 d16 r16 r4 |
+
+# Giant (plan Y · YD5): while a Dynamaxed Pokémon stands on the field, a choir on the chords,
+# brass on the roots and timpani on the bass's beats
+track giantchoir choir only=giant double=pad vol=0.2 pan=-0.25 rev=0.4
+track giantbrass brass only=giant double=bass beats=4 shift=24 vol=0.2 pan=0.25 rev=0.28
+track gianttimpani timpani only=giant double=bass beats=4 shift=24 vol=0.3 rev=0.2
