@@ -633,3 +633,8 @@ Placeholders and plan 09's markup pass through untouched; a translation may use 
 
 - **N6zh, done 2026-10-31**: everything still empty in `ro`: 169 entries in 16 files (2 scripts, 14 world files), by hand. J15 part g: Route 1 and its Viridian gate house, Pallet Town (Red's and Blue's houses, Oak's Lab), Cinnabar Island and its Pokémon Center, Routes 20 and 21, the Seafoam Islands and Blaine's Gym, and Blue's lines on Cinnabar. Volcano Badge "Insigna Vulcan", Overheat "Supraîncălzire"; class prefixes Înotător/Înotătoare, Pescar, Campist, Excursionistă, Crescător de păsări, Școlar, Antrenor/Antrenoare As.
   - **Left**: nothing in `ro` after this.
+
+- [x] N6zi Kalos's Camphrier, Cyllage and Routes 5 to 8 in Romanian (done 2026-11-03)
+
+- **N6zi, done 2026-11-03**: `extract ro --update`, then the 156 distinct untranslated English lines (193 entries in 31 files: Camphrier Town's and Cyllage City's rooms and Gym, Grant, Routes 5 to 8, Lumiose's boutique and houses) by hand, class prefixes as before (Puști, Pescar, Drumeț, Domnișoară, Excursionistă; Rucsacist for Backpacker). Badge names stay English as Kalos's earlier lines have them ("Cliff Badge"). `report ro` says nothing untranslated, stale, unknown or wrong; ContentCheck finds nothing; filtered tests pass (203).
+  - **Left**: nothing in `ro`; N6 stays `[~]` for the accessories' and traps' names, the credits and the boxes' default names.

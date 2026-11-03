@@ -1,0 +1,41 @@
+{
+  "displayName": {
+    "en": [
+      "Boutique"
+    ],
+    "text": [
+      "Butic"
+    ]
+  },
+  "people": {
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      }
+    },
+    "shopper": {
+      "name": {
+        "en": [
+          "Shopper"
+        ],
+        "text": [
+          "Clienta"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The berets here are the height of fashion. I can never choose just one colour!"
+        ],
+        "text": [
+          "Bereturile de aici sunt ultimul răcnet al modei. Nu pot niciodată să aleg o singură culoare!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

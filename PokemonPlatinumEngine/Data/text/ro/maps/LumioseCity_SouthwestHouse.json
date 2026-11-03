@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Lumiose City"
+    ],
+    "text": [
+      "Orașul Lumiose"
+    ]
+  },
+  "people": {
+    "florist": {
+      "name": {
+        "en": [
+          "Florist"
+        ],
+        "text": [
+          "Florăreasa"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I sell flowers at the south square every morning. The Flabébé from Route 4 always come to look at my stall."
+        ],
+        "text": [
+          "Vând flori în piața de la sud în fiecare dimineață. Flabébé-ii de pe Ruta 4 vin mereu să se uite la tarabă."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Stone Shop"
+    ],
+    "text": [
+      "Magazin de Pietre"
+    ]
+  },
+  "people": {
+    "keeper": {
+      "name": {
+        "en": [
+          "Shopkeeper"
+        ],
+        "text": [
+          "Negustorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Evolution stones, polished stones, stones from every mountain in Kalos! The rarest ones are not for sale yet, I am afraid."
+        ],
+        "text": [
+          "Pietre de evoluție, pietre șlefuite, pietre din fiecare munte din Kalos! Din păcate, cele mai rare nu sunt încă de vânzare."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

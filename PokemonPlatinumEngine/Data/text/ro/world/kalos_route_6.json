@@ -1,0 +1,76 @@
+{
+  "people": {
+    "butler": {
+      "name": {
+        "en": [
+          "Butler"
+        ],
+        "text": [
+          "Majordom"
+        ]
+      }
+    },
+    "picnicker": {
+      "name": {
+        "en": [
+          "Léa"
+        ],
+        "text": [
+          "Léa"
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Léa: Shh! I'm hiding in the grass to watch the palace. Oh, you found me. Battle!"
+        ],
+        "text": [
+          "Excursionistă Léa: Șșt! Mă ascund în iarbă ca să urmăresc palatul. A, m-ai găsit. Luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Léa: Some hiding place this turned out to be."
+        ],
+        "text": [
+          "Excursionistă Léa: Frumoasă ascunzătoare mi-am găsit."
+        ]
+      }
+    },
+    "backpacker": {
+      "name": {
+        "en": [
+          "Clément"
+        ],
+        "text": [
+          "Clément"
+        ]
+      },
+      "before": {
+        "en": [
+          "Backpacker Clément: I came to see the palace, but its gates are shut. A battle will cheer me up!"
+        ],
+        "text": [
+          "Rucsacist Clément: Am venit să văd palatul, dar porțile îi sunt închise. O luptă mă va înveseli!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Backpacker Clément: That didn't cheer me up at all."
+        ],
+        "text": [
+          "Rucsacist Clément: Asta nu m-a înveselit deloc."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": {
+      "en": [
+        "Route 6 · The Palace Avenue\nNorth: the palace\nSouth: Camphrier Town"
+      ],
+      "text": [
+        "Ruta 6 · Aleea Palatului\nNord: palatul\nSud: Orașul Camphrier"
+      ]
+    }
+  }
+}

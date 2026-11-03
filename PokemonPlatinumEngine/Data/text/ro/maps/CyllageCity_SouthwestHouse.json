@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Cyllage City"
+    ],
+    "text": [
+      "Orașul Cyllage"
+    ]
+  },
+  "people": {
+    "sailor": {
+      "name": {
+        "en": [
+          "Old Sailor"
+        ],
+        "text": [
+          "Bătrânul Marinar"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Fossils turn up in the caves along this coast. People say the old Pokémon in them can be brought back to life!"
+        ],
+        "text": [
+          "Prin peșterile de pe coasta asta ies la iveală fosile. Oamenii zic că vechii Pokémoni din ele pot fi readuși la viață!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

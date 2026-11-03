@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Camphrier Town"
+    ],
+    "text": [
+      "Orașul Camphrier"
+    ]
+  },
+  "people": {
+    "farmer": {
+      "name": {
+        "en": [
+          "Farmer"
+        ],
+        "text": [
+          "Fermier"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Nobody can take a cart to the coast while that sleepy Pokémon lies in the lane. The whole town is waiting."
+        ],
+        "text": [
+          "Nimeni nu poate duce o căruță la coastă cât timp Pokémonul ăla somnoros zace pe drum. Tot orașul așteaptă."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}
