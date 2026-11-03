@@ -1,6 +1,6 @@
 # Battle against Chi-Yu (the Ruinous Pokémon of the beads): the Treasures of Ruin's four-note creep, down and back,
 # blazed out on a trumpet over square flares and an organ in D minor. Original composition for this game.
-# Arranged again for the modern sound (plan 31 · MU7) on the instruments of Paldea: a string orchestra, a nylon guitar strumming the bass's eighths and a wood block clacking like castanets.
+# Arranged again for the modern sound (plan 31 · MU7) on the instruments of Paldea: a string orchestra, a flamenco guitar strumming the bass's eighths and castanets clicking with it (MU6's instruments since; a wood block in the red).
 title Battle! Chi-Yu
 tempo 176
 meter 4/4
@@ -44,9 +44,10 @@ track drums kit vol=0.55 rev=0.14
 track hats kit vol=0.4 pan=0.15 rev=0.1
   r1 | r1 | L [ v60 h8 v72 o8 v60 h8 v72 o8 v60 h8 v72 o8 v60 h8 v72 o8 | ]16
 
-# Paldea: a nylon guitar strumming on the bass's eighths, a wood block clacking like castanets
-track bassguitar nylonguitar unless=lowhp double=bass beats=8 shift=24 vol=0.18 pan=-0.3 rev=0.24
-track castanets kit vol=0.3 pan=0.3 rev=0.16
+# Paldea: a flamenco guitar strumming on the bass's eighths, castanets clicking with it, and a wood block clacking in their place in the red
+track bassguitar flamencoguitar unless=lowhp double=bass beats=8 shift=24 vol=0.18 pan=-0.3 rev=0.24
+track castanets castanets unless=lowhp double=bass beats=8 shift=36 vol=0.24 pan=0.3 rev=0.16
+track woodblock kit only=lowhp vol=0.3 pan=0.3 rev=0.16
   r1 | r1 | L [ v90 w16 v55 w16 v60 w16 r16 r8 v90 w8 r4 v90 w16 v55 w16 v60 w16 r16 | ]16
 
 # Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red

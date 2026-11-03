@@ -1,6 +1,6 @@
 # Battle against Regidrago (the dragon-orb golem): the Regis' tapped code (short, short, long) on a square under
 # bare fifths on horns, and a weighty G-minor brass theme in dotted strides. Original composition for this game.
-# Arranged again for the modern sound (plan 31 · MU7) on the instruments of Galar: a string orchestra, a stadium organ under the choir, a cornet-bright trumpet on the tune and the crowd's claps.
+# Arranged again for the modern sound (plan 31 · MU7) on the instruments of Galar: a string orchestra, a stadium organ under the choir, a brass band's cornets on the tune (MU5's instruments since) and the crowd's claps.
 title Battle! Regidrago
 tempo 156
 meter 4/4
@@ -58,9 +58,9 @@ track drums kit vol=0.5 rev=0.15
 track hats kit vol=0.36 pan=0.15 rev=0.1
   r1 | r1 | L [ v65 h8 v40 h8 v55 h8 v40 h8 v65 h8 v40 h8 v55 h8 v40 h8 | ]16
 
-# Galar: a stadium organ under the choir, a bright trumpet on the tune, the crowd's claps
-track choirorgan organ unless=lowhp double=choir vol=0.12 pan=-0.2 rev=0.4
-track tunetrumpet trumpet unless=lowhp double=lead vol=0.12 pan=0.3 rev=0.3
+# Galar: a stadium organ under the choir, a brass band's cornets on the tune, the crowd's claps
+track choirorgan stadiumorgan unless=lowhp double=choir vol=0.12 pan=-0.2 rev=0.4
+track tunecornet cornet unless=lowhp double=lead vol=0.12 pan=0.3 rev=0.3
 track crowd kit vol=0.3 pan=0.1 rev=0.3
   r1 | r1 | L [ r4 v85 x4 r4 v85 x4 | ]16
 

@@ -1,6 +1,6 @@
 # Battle against Zarude (the rogue monkey of the jungle): a swung D-dorian groove, a marimba swinging from branch to
 # branch over offbeat pulse stabs, bongos and a walking bass. Original composition for this game.
-# Arranged again for the modern sound (plan 31 · MU7) on the instruments of Galar: a string orchestra, a stadium organ under the choir, a cornet-bright trumpet on the tune and the crowd's claps.
+# Arranged again for the modern sound (plan 31 · MU7) on the instruments of Galar: a string orchestra, a stadium organ under the choir, a brass band's cornets on the tune (MU5's instruments since) and the crowd's claps.
 title Battle! Zarude
 tempo 172
 meter 4/4
@@ -47,8 +47,8 @@ track bongos kit vol=0.34 pan=-0.3 rev=0.15
 track shaker kit vol=0.36 pan=0.25 rev=0.1
   r1 | r1 | L [ v70 k6 v40 k12 v60 k6 v40 k12 v70 k6 v40 k12 v60 k6 v40 k12 | ]16
 
-# Galar: a stadium organ under the choir, a bright trumpet on the tune, the crowd's claps
-track tunetrumpet trumpet unless=lowhp double=lead vol=0.12 pan=0.3 rev=0.3
+# Galar: a stadium organ under the choir, a brass band's cornets on the tune, the crowd's claps
+track tunecornet cornet unless=lowhp double=lead vol=0.12 pan=0.3 rev=0.3
 track crowd kit vol=0.3 pan=0.1 rev=0.3
   r1 | r1 | L [ r4 v85 x4 r4 v85 x4 | ]16
 

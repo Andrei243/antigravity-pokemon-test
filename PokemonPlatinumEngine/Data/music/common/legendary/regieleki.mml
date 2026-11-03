@@ -1,6 +1,6 @@
 # Battle against Regieleki (the electron golem): the Regis' tapped code (short, short, long) on a pulse, bare
 # parallel fifths, and a frantic F-sharp-minor square lead over a breakbeat. Original composition for this game.
-# Arranged again for the modern sound (plan 31 · MU7) on the instruments of Galar: a string orchestra, a stadium organ under the choir, a cornet-bright trumpet on the tune and the crowd's claps.
+# Arranged again for the modern sound (plan 31 · MU7) on the instruments of Galar: a string orchestra, a stadium organ under the choir, a brass band's cornets on the tune (MU5's instruments since) and the crowd's claps.
 title Battle! Regieleki
 tempo 200
 meter 4/4
@@ -51,8 +51,8 @@ track drums kit vol=0.5 rev=0.1
 track hats kit vol=0.38 pan=0.15 rev=0.08
   r1 | r1 | L [ v70 h8 v45 h8 v60 h8 v45 h8 v70 h8 v45 h8 v60 h8 v45 o8 | ]16
 
-# Galar: a stadium organ under the choir, a bright trumpet on the tune, the crowd's claps
-track tunetrumpet trumpet unless=lowhp double=lead vol=0.12 pan=0.3 rev=0.3
+# Galar: a stadium organ under the choir, a brass band's cornets on the tune, the crowd's claps
+track tunecornet cornet unless=lowhp double=lead vol=0.12 pan=0.3 rev=0.3
 track crowd kit vol=0.3 pan=0.1 rev=0.3
   r1 | r1 | L [ r4 v85 x4 r4 v85 x4 | ]16
 

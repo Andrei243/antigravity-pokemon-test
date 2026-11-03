@@ -1,6 +1,6 @@
 # Battle against Urshifu (the wushu master): the training chant grown up, called low on a trumpet over pounding toms,
 # then a fierce E-minor fight with a machine-gun bass. Original composition for this game.
-# Arranged again for the modern sound (plan 31 · MU7) on the instruments of Galar: a string orchestra, a stadium organ under the choir, a cornet-bright trumpet on the tune and the crowd's claps.
+# Arranged again for the modern sound (plan 31 · MU7) on the instruments of Galar: a string orchestra, a stadium organ under the choir, a brass band's cornets on the tune (MU5's instruments since) and the crowd's claps.
 title Battle! Urshifu
 tempo 180
 meter 4/4
@@ -48,8 +48,8 @@ track toms kit vol=0.44 pan=-0.15 rev=0.18
 track hats kit vol=0.38 pan=0.2 rev=0.1
   r1 | r1 | L [ v70 o8 v45 h8 v60 h8 v45 h8 v70 o8 v45 h8 v60 h8 v45 h8 | ]16
 
-# Galar: a stadium organ under the choir, a bright trumpet on the tune, the crowd's claps
-track tunetrumpet trumpet unless=lowhp double=lead vol=0.12 pan=0.3 rev=0.3
+# Galar: a stadium organ under the choir, a brass band's cornets on the tune, the crowd's claps
+track tunecornet cornet unless=lowhp double=lead vol=0.12 pan=0.3 rev=0.3
 track crowd kit vol=0.3 pan=0.1 rev=0.3
   r1 | r1 | L [ r4 v85 x4 r4 v85 x4 | ]16
 

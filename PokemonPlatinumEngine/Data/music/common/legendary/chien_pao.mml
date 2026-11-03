@@ -1,6 +1,6 @@
 # Battle against Chien-Pao (the Ruinous Pokémon of the sword): the Treasures of Ruin's four-note creep, down and
 # back, cut out by a saw lead over an icy celesta in B minor. Original composition for this game.
-# Arranged again for the modern sound (plan 31 · MU7) on the instruments of Paldea: a string orchestra, a nylon guitar strumming the bass's eighths and a wood block clacking like castanets.
+# Arranged again for the modern sound (plan 31 · MU7) on the instruments of Paldea: a string orchestra, a flamenco guitar strumming the bass's eighths and castanets clicking with it (MU6's instruments since; a wood block in the red).
 title Battle! Chien-Pao
 tempo 184
 meter 4/4
@@ -48,9 +48,15 @@ track drums kit vol=0.5 rev=0.12
 track hats kit vol=0.44 pan=0.15 rev=0.1
   r1 | r1 | L v65 [ h16 v40 h16 h16 h16 v65 h16 v40 h16 h16 h16 v65 h16 v40 h16 h16 h16 v65 o16 v40 h16 h16 h16 v65 | ]16
 
-# Paldea: a nylon guitar strumming on the bass's eighths, a wood block clacking like castanets
-track bassguitar nylonguitar unless=lowhp double=bass beats=8 shift=24 vol=0.18 pan=-0.3 rev=0.24
-track castanets kit vol=0.3 pan=0.3 rev=0.16
+# Paldea: a flamenco guitar strumming on the bass's eighths, castanets on each bar's root from the loop on (the intro's
+# pedal under the celesta's run would be a clash up there), and a wood block clacking in their place in the red
+track bassguitar flamencoguitar unless=lowhp double=bass beats=8 shift=24 vol=0.18 pan=-0.3 rev=0.24
+track castanets castanets unless=lowhp vol=0.24 pan=0.3 rev=0.16
+  r1 | r1 | L o6 v60 b16 b16 v90 b8 r4 v60 b16 b16 v90 b8 r4 | v60 f+16 f+16 v90 f+8 r4 v60 f+16 f+16 v90 f+8 r4 | v60 g16 g16 v90 g8 r4 v60 g16 g16 v90 g8 r4 | v60 b16 b16 v90 b8 r4 v60 b16 b16 v90 b8 r4 |
+  v60 e16 e16 v90 e8 r4 v60 e16 e16 v90 e8 r4 | v60 b16 b16 v90 b8 r4 v60 b16 b16 v90 b8 r4 | v60 c16 c16 v90 c8 r4 v60 c16 c16 v90 c8 r4 | v60 f+16 f+16 v90 f+8 r4 v60 f+16 f+16 v90 f+8 r4 |
+  v60 b16 b16 v90 b8 r4 v60 b16 b16 v90 b8 r4 | v60 g16 g16 v90 g8 r4 v60 g16 g16 v90 g8 r4 | v60 e16 e16 v90 e8 r4 v60 e16 e16 v90 e8 r4 | v60 f+16 f+16 v90 f+8 r4 v60 f+16 f+16 v90 f+8 r4 |
+  v60 g16 g16 v90 g8 r4 v60 g16 g16 v90 g8 r4 | v60 a16 a16 v90 a8 r4 v60 a16 a16 v90 a8 r4 | v60 e16 e16 v90 e8 r4 v60 e16 e16 v90 e8 r4 | v60 f+16 f+16 v90 f+8 r4 v60 f+16 f+16 v90 f+8 r4 |
+track woodblock kit only=lowhp vol=0.3 pan=0.3 rev=0.16
   r1 | r1 | L [ v90 w16 v55 w16 v60 w16 r16 r8 v90 w8 r4 v90 w16 v55 w16 v60 w16 r16 | ]16
 
 # Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
