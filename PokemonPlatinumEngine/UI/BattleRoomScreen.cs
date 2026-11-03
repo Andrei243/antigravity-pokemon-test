@@ -12,11 +12,12 @@ namespace PokemonPlatinumEngine.UI;
 public enum RoomPage { Menu, PickTeam, Puzzles, Between, RunOver, PuzzleOver }
 
 /// <summary>The battle room's menu, in its order.</summary>
-public enum RoomEntry { Teams, Gauntlet, Streak, Puzzles }
+public enum RoomEntry { Teams, Gauntlet, Streak, Puzzles, Friends }
 
 /// <summary>What the battle room asks the engine for, handed over once (<see cref="BattleRoomScreen.TakeRequest"/>).</summary>
 public abstract record RoomRequest;
 public sealed record OpenBuilder : RoomRequest;
+public sealed record OpenFriends : RoomRequest;
 public sealed record BeginRun(RoomChallenge Kind, int Team) : RoomRequest;
 public sealed record NextBattle : RoomRequest;
 public sealed record GiveUpRun : RoomRequest;
@@ -149,6 +150,7 @@ public sealed class BattleRoomScreen
                 switch (Entries[Cursor])
                 {
                     case RoomEntry.Teams: Ask(new OpenBuilder()); break;
+                    case RoomEntry.Friends: Ask(new OpenFriends()); break;
                     case RoomEntry.Gauntlet: PickFor(RoomChallenge.Gauntlet); break;
                     case RoomEntry.Streak: PickFor(RoomChallenge.Streak); break;
                     case RoomEntry.Puzzles:
@@ -194,7 +196,7 @@ public sealed class BattleRoomScreen
                 break;
             case RoomPage.PickTeam or RoomPage.Puzzles:
                 AudioManager.PlaySound("cancel");
-                Show(RoomPage.Menu, Page == RoomPage.Puzzles ? (int)RoomEntry.Puzzles : picking == RoomChallenge.Gauntlet ? (int)RoomEntry.Gauntlet : (int)RoomEntry.Streak);
+                Show(RoomPage.Menu, Page == RoomPage.Puzzles ? (int)RoomEntry.Puzzles : picking == RoomChallenge.Friend ? (int)RoomEntry.Friends : picking == RoomChallenge.Gauntlet ? (int)RoomEntry.Gauntlet : (int)RoomEntry.Streak);
                 break;
             case RoomPage.PuzzleOver:
                 AudioManager.PlaySound("cancel");
@@ -202,6 +204,24 @@ public sealed class BattleRoomScreen
                 break;
             // Between two battles B asks nothing: the run is given up only from its row
         }
+    }
+
+    /// <summary>A friend's trainer chosen on the friends' page: which of the teams takes them on (plan 13 · V22).</summary>
+    public void PickForFriend(IReadOnlyList<BuiltTeam> teams)
+    {
+        Teams = teams;
+        IsActive = true;
+        age = AppearTime;
+        PickFor(RoomChallenge.Friend);
+    }
+
+    /// <summary>A fight with a friend's trainer is over: the room's menu again, on the friends' row.</summary>
+    public void AfterFriend(IReadOnlyList<BuiltTeam> teams)
+    {
+        Teams = teams;
+        IsActive = true;
+        age = AppearTime;
+        Show(RoomPage.Menu, (int)RoomEntry.Friends);
     }
 
     private void PickFor(RoomChallenge kind)

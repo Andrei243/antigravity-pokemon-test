@@ -458,6 +458,22 @@
         "Story": "A corner shows the run's time; splits at every Badge, each Team Galactic commander and the Hall of Fame."
       }
     },
+    "streamFeed": {
+      "label": "Stream feed",
+      "value": { "Off": "Off", "File": "A file", "FileAndSplits": "File + LiveSplit" },
+      "help": {
+        "Off": "Nothing is written for a stream.",
+        "File": "The run is written to stream/state.json beside the save as it changes, for an OBS browser source (stream/overlay.html). Nothing is sent anywhere.",
+        "FileAndSplits": "As a file, and stream/livesplit.lss, a LiveSplit splits file, is kept up as splits are taken."
+      }
+    },
+    "streamSafe": {
+      "label": "Stream-safe",
+      "help": {
+        "off": "Trainer IDs and your folder's name show as they are.",
+        "on": "Trainer IDs are hidden and your folder's name is left out of the log's paths."
+      }
+    },
     "captions": {
       "label": "Captions",
       "help": {
@@ -5216,6 +5232,69 @@
       }
     }
   },
+  "friends": {
+    "title": "Friends' trainers",
+    "hint": { "do": "Do" },
+    "row": { "ready": "READY", "refused": "REFUSED", "readCode": "READ A CODE", "pasteTeam": "PASTE A TEAM", "send": "Send {name}" },
+    "refused": "REFUSED",
+    "pastedName": "Pasted {n}",
+    "fightBlurb": "Both teams are made afresh and brought to level {level}. Nothing is gained, paid or kept; the trainer thinks with every routine the game's trainers use.",
+    "blurb": {
+      "readCode": "Reads a code from the clipboard. A good one is kept as a trainer file in the trainers folder and stands in the list; a bad one is refused, with its reason.",
+      "pasteTeam": "Reads a team in Pokémon Showdown's text format from the clipboard and keeps it among your teams, if every Pokémon in it can battle here.",
+      "send": "Writes this team as a trainer file in the trainers folder and puts its code on the clipboard, to paste anywhere."
+    },
+    "code": "CODE",
+    "notice": {
+      "refused": "That file can't be used.",
+      "read": "{value} is in the list.",
+      "pasted": "A team of {value} was added to your teams.",
+      "sent": "{value} was written to the trainers folder and its code copied.",
+      "cantWrite": "The file couldn't be written.",
+      "full": "You already keep {value} teams."
+    },
+    "line": {
+      "0": "Let's have a good battle!",
+      "1": "That was fun. Thank you!",
+      "2": "I've been training for this.",
+      "3": "You won't beat my team so easily.",
+      "4": "I hope you brought your best.",
+      "5": "Good game!",
+      "6": "I'll get you next time.",
+      "7": "My team is my pride.",
+      "8": "Ready when you are.",
+      "9": "What a close one!",
+      "10": "Don't hold back.",
+      "11": "I learned a lot from that."
+    }
+  },
+  "paste": {
+    "empty": "There is nothing to read.",
+    "tooLong": "That is too long to be a team.",
+    "tooMany": "Line {value}: a team has six Pokémon at most.",
+    "unknownMove": "Line {value}: the game doesn't know that move.",
+    "unknownNature": "Line {value}: that nature isn't one the game has.",
+    "unknownAbility": "Line {value}: the game doesn't know that ability.",
+    "badLevel": "Line {value}: the level must be 1 to 100.",
+    "badSpread": "Line {value}: those numbers can't be read.",
+    "unknownLine": "Line {value}: that line can't be read.",
+    "unknownSpecies": "Line {value}: the game has no Pokémon by that name.",
+    "unknownItem": "Line {value}: the game doesn't know that item."
+  },
+  "trainerFile": {
+    "refused": {
+      "empty": "There is nothing to read.",
+      "tooBig": "That is too big to be a trainer file.",
+      "shape": "That is not a trainer file.",
+      "checksum": "That file was changed after it was made.",
+      "name": "The trainer's name can't be used.",
+      "class": "The trainer's class isn't one the game has.",
+      "line": "One of the trainer's lines isn't one the game has.",
+      "version": "That trainer was made for other game data. Ask your friend to send it again from this version.",
+      "paste": "The team in it can't be read (line {value}).",
+      "code": "That isn't a trainer code."
+    }
+  },
   "battleRoom": {
     "title": "Battle Room",
     "menu": {
@@ -5223,6 +5302,7 @@
       "gauntlet": "GAUNTLET",
       "streak": "STREAK",
       "puzzles": "PUZZLES",
+      "friends": "FRIENDS' TRAINERS",
       "teamsCount": "{n} kept",
       "gauntletBest": "Best {n}/{of}",
       "streakBest": "Best {n}",
@@ -5232,12 +5312,14 @@
       "teams": "Build teams from nothing: any species, its level, nature, ability, item and four moves it can know. Teams are kept on this machine, apart from every save.",
       "gauntlet": "Take a team against Sinnoh's eight Gym Leaders, the Elite Four and the Champion, one after another, each with the team and levels they have in the story. Your team is made whole before every battle.",
       "streak": "Battle trainers of the Battle Frontier one after another at level 50 for as long as your team keeps winning. Every seven battles they grow stronger.",
-      "puzzles": "A battle stopped halfway, with a goal: win this turn, outlast an attack, make a catch. Every roll is fixed, so only the right idea works."
+      "puzzles": "A battle stopped halfway, with a goal: win this turn, outlast an attack, make a catch. Every roll is fixed, so only the right idea works.",
+      "friends": "Fight a friend's trainer at level 50: a trainer file dropped in the trainers folder, or a code pasted from the clipboard. You can send your own teams the same way."
     },
     "clears": "Cleared {n} times",
     "pick": {
       "gauntlet": "Which team takes on the gauntlet?",
       "streak": "Which team starts a streak?",
+      "friend": "Which team takes on this trainer?",
       "speciesTitle": "Choose a species",
       "itemTitle": "Choose an item to hold",
       "moveTitle": "Choose a move"

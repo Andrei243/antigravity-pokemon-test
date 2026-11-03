@@ -267,7 +267,7 @@ public class TrainerCardScreen
     public void Close() => IsActive = false;
 
     /// <summary>A trainer's number as the card prints it: five digits.</summary>
-    public static string FormatId(int trainerId) => (((trainerId % 100000) + 100000) % 100000).ToString("D5");
+    public static string FormatId(int trainerId) => StreamSafe.Id((((trainerId % 100000) + 100000) % 100000).ToString("D5"));
 
     public void Update(float dt = 1f / 60f)
     {

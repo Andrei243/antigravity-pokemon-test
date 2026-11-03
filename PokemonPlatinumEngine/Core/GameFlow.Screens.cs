@@ -51,6 +51,7 @@ public sealed partial class GameFlow
     /// <summary>The title's BATTLE ROOM and its team builder (plan 13 · V13, V26).</summary>
     public BattleRoomScreen BattleRoomScreen { get; } = new();
     public TeamBuilderScreen TeamBuilderScreen { get; } = new();
+    public FriendsScreen FriendsScreen { get; } = new();
     /// <summary>The title's CREDITS (plan 16 · T1): whose work is in the game.</summary>
     public TitleCreditsScreen TitleCreditsScreen { get; } = new();
     /// <summary>The first start's page of options (plan 16 · T24).</summary>

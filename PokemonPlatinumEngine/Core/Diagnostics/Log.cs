@@ -99,6 +99,8 @@ public sealed class LogBook : IDisposable
     /// <summary>A line with its time and level. A line the same as the one before it is only counted.</summary>
     public void Write(string level, string message)
     {
+        // Stream-safe (plan 13 · V24): the user's folder is left out of the paths a line names
+        if (StreamSafe.On) message = CrashReport.Scrub(message);
         // Lines after a message's first are set in under it, so every line of the file that begins with a time is a line of its own
         string body = $"{level,-5} {message.ReplaceLineEndings("\n").Replace("\n", "\n" + new string(' ', 19))}";
         lock (gate)

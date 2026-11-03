@@ -80,6 +80,7 @@ internal static partial class ModernUi
                 RoomEntry.Teams => Text.Of("battleRoom.menu.teamsCount", ("n", room.Teams.Count)),
                 RoomEntry.Gauntlet => Text.Of("battleRoom.menu.gauntletBest", ("n", room.Records.GauntletBest), ("of", GauntletData.Default.Order.Count)),
                 RoomEntry.Streak => Text.Of("battleRoom.menu.streakBest", ("n", room.Records.StreakBest)),
+                RoomEntry.Friends => "",
                 _ => Text.Of("battleRoom.menu.puzzlesSolved", ("n", room.Records.Puzzles.Count(p => room.PuzzleList.Any(q => q.Id == p))), ("of", room.PuzzleList.Count))
             };
             RowValue(r, value, ink, 28);
@@ -102,12 +103,13 @@ internal static partial class ModernUi
         RoomEntry.Teams => "teams",
         RoomEntry.Gauntlet => "gauntlet",
         RoomEntry.Streak => "streak",
+        RoomEntry.Friends => "friends",
         _ => "puzzles"
     };
 
     private static void RoomPickTeam(int sw, BattleRoomScreen room, float rise)
     {
-        ScreenTitle(Text.Of(room.Picking == RoomChallenge.Gauntlet ? "battleRoom.pick.gauntlet" : "battleRoom.pick.streak"));
+        ScreenTitle(Text.Of(room.Picking == RoomChallenge.Gauntlet ? "battleRoom.pick.gauntlet" : room.Picking == RoomChallenge.Friend ? "battleRoom.pick.friend" : "battleRoom.pick.streak"));
         Hints(sw - Margin, 44, Hint("shared.keys.upDown", "shared.hints.choose"), Hint("shared.keys.z", "battleRoom.hint.begin"), Hint("shared.keys.esc", "shared.hints.back"));
         var list = RoomList(rise);
         Panel(list, 40);

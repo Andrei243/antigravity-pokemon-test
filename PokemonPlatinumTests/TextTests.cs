@@ -59,6 +59,8 @@ public class TextTests
     private static readonly Dictionary<string, string> NotOnTheTable = new()
     {
         ["Core/CommandLine.cs"] = "the switches and --help, said to the terminal",
+        ["Core/LiveFeed.cs"] = "the stream feed's JSON, written for an OBS overlay to read, in English (plan 13 · V24)",
+        ["Core/GameEngine.Stream.cs"] = "the files of the streamer kit and the date format its feed writes (plan 13 · V24)",
         ["Core/SavePaths.cs"] = "--where, said to the terminal",
         ["Core/MigrationOut.cs"] = "the extensions of the files it writes, not words on a screen",
         ["Core/Diagnostics/Log.cs"] = "the log, for whoever reads log.txt",

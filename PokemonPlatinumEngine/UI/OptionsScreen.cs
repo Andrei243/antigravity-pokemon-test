@@ -47,6 +47,7 @@ public enum OptionRow
     Controls,
     Jukebox,
     Packs,
+    StreamFeed, StreamSafe,
     Help,
     ResetDefaults
 }
@@ -519,6 +520,13 @@ public class OptionsScreen
                 // Off, the Hall of Fame alone, the Badges, the whole story, and round again (plan 13 · V10)
                 s.RunTimer = (Models.TimerCategory)Wrap((int)s.RunTimer + step, 4);
                 break;
+            case OptionRow.StreamFeed:
+                // Off, a file, a file and a LiveSplit splits file, and round again (plan 13 · V24)
+                s.StreamFeed = (StreamFeedMode)Wrap((int)s.StreamFeed + step, 3);
+                break;
+            case OptionRow.StreamSafe:
+                s.StreamSafe = !s.StreamSafe;
+                break;
             case OptionRow.Captions:
                 s.Captions = !s.Captions; // plan 12 · Q9
                 break;
@@ -626,6 +634,8 @@ public class OptionsScreen
         OptionRow.ReduceMotion => (Text.Of("options.reduceMotion.label"), OnOff(s.ReduceMotion), Text.Of(s.ReduceMotion ? "options.reduceMotion.help.on" : "options.reduceMotion.help.off")),
         OptionRow.MedalNotices => (Text.Of("options.medalNotices.label"), OnOff(s.MedalNotices), Text.Of(s.MedalNotices ? "options.medalNotices.help.on" : "options.medalNotices.help.off")),
         OptionRow.RunTimer => (Text.Of("options.runTimer.label"), Text.Of($"options.runTimer.value.{s.RunTimer}"), Text.Of($"options.runTimer.help.{s.RunTimer}")),
+        OptionRow.StreamFeed => (Text.Of("options.streamFeed.label"), Text.Of($"options.streamFeed.value.{s.StreamFeed}"), Text.Of($"options.streamFeed.help.{s.StreamFeed}")),
+        OptionRow.StreamSafe => (Text.Of("options.streamSafe.label"), OnOff(s.StreamSafe), Text.Of(s.StreamSafe ? "options.streamSafe.help.on" : "options.streamSafe.help.off")),
         OptionRow.Captions => (Text.Of("options.captions.label"), OnOff(s.Captions), Text.Of(s.Captions ? "options.captions.help.on" : "options.captions.help.off")),
         OptionRow.HoldToConfirm => (Text.Of("options.holdToConfirm.label"), OnOff(s.HoldToConfirm), Text.Of(s.HoldToConfirm ? "options.holdToConfirm.help.on" : "options.holdToConfirm.help.off")),
         OptionRow.TextSize => (Text.Of("options.textSize.label"), Text.Of($"options.textSize.value.{s.TextSize}"), Text.Of($"options.textSize.help.{s.TextSize}")),

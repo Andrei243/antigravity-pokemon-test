@@ -474,6 +474,22 @@
         "Story": "Un colț arată timpul jocului; timpi parțiali la fiecare Insignă, fiecare comandant Galactic și Sala Faimei."
       }
     },
+    "streamFeed": {
+      "label": "Flux pentru stream",
+      "value": { "Off": "Oprit", "File": "Un fișier", "FileAndSplits": "Fișier + LiveSplit" },
+      "help": {
+        "Off": "Nu se scrie nimic pentru stream.",
+        "File": "Jocul este scris în stream/state.json de lângă salvare pe măsură ce se schimbă, pentru o sursă browser OBS (stream/overlay.html). Nu se trimite nimic nicăieri.",
+        "FileAndSplits": "Ca un fișier, iar stream/livesplit.lss, un fișier de timpi LiveSplit, e ținut la zi pe măsură ce se iau timpii."
+      }
+    },
+    "streamSafe": {
+      "label": "Sigur pentru stream",
+      "help": {
+        "off": "ID-urile antrenorilor și numele dosarului tău se văd ca atare.",
+        "on": "ID-urile antrenorilor sunt ascunse, iar numele dosarului tău este scos din căile din jurnal."
+      }
+    },
     "captions": {
       "label": "Subtitrări",
       "help": {
@@ -5509,6 +5525,69 @@
       }
     }
   },
+  "friends": {
+    "title": "Antrenori prieteni",
+    "hint": { "do": "Fă" },
+    "row": { "ready": "GATA", "refused": "REFUZAT", "readCode": "CITEȘTE UN COD", "pasteTeam": "LIPEȘTE O ECHIPĂ", "send": "Trimite {name}" },
+    "refused": "REFUZAT",
+    "pastedName": "Lipită {n}",
+    "fightBlurb": "Ambele echipe sunt refăcute și aduse la nivelul {level}. Nu se câștigă, nu se plătește și nu se păstrează nimic; antrenorul gândește cu toate rutinele antrenorilor jocului.",
+    "blurb": {
+      "readCode": "Citește un cod din clipboard. Unul bun e păstrat ca fișier de antrenor în dosarul trainers și apare în listă; unul prost e refuzat, cu motivul.",
+      "pasteTeam": "Citește din clipboard o echipă în formatul text Pokémon Showdown și o păstrează printre echipele tale, dacă fiecare Pokémon din ea poate lupta aici.",
+      "send": "Scrie această echipă ca fișier de antrenor în dosarul trainers și pune codul ei în clipboard, ca să-l lipești oriunde."
+    },
+    "code": "COD",
+    "notice": {
+      "refused": "Fișierul acesta nu poate fi folosit.",
+      "read": "{value} e în listă.",
+      "pasted": "O echipă de {value} a fost adăugată la echipele tale.",
+      "sent": "{value} a fost scrisă în dosarul trainers și codul ei a fost copiat.",
+      "cantWrite": "Fișierul nu a putut fi scris.",
+      "full": "Păstrezi deja {value} echipe."
+    },
+    "line": {
+      "0": "Să avem o luptă bună!",
+      "1": "A fost distractiv. Mulțumesc!",
+      "2": "M-am antrenat pentru asta.",
+      "3": "Nu-mi vei învinge echipa atât de ușor.",
+      "4": "Sper că ai adus ce ai mai bun.",
+      "5": "Joc bun!",
+      "6": "Data viitoare te bat.",
+      "7": "Echipa mea e mândria mea.",
+      "8": "Sunt gata când ești și tu.",
+      "9": "Ce luptă strânsă!",
+      "10": "Nu te abține.",
+      "11": "Am învățat multe din asta."
+    }
+  },
+  "paste": {
+    "empty": "Nu e nimic de citit.",
+    "tooLong": "Este prea lung pentru o echipă.",
+    "tooMany": "Linia {value}: o echipă are cel mult șase Pokémon.",
+    "unknownMove": "Linia {value}: jocul nu cunoaște acest atac.",
+    "unknownNature": "Linia {value}: jocul nu are această fire.",
+    "unknownAbility": "Linia {value}: jocul nu cunoaște această abilitate.",
+    "badLevel": "Linia {value}: nivelul trebuie să fie între 1 și 100.",
+    "badSpread": "Linia {value}: numerele acestea nu pot fi citite.",
+    "unknownLine": "Linia {value}: linia aceasta nu poate fi citită.",
+    "unknownSpecies": "Linia {value}: jocul nu are niciun Pokémon cu acest nume.",
+    "unknownItem": "Linia {value}: jocul nu cunoaște acest obiect."
+  },
+  "trainerFile": {
+    "refused": {
+      "empty": "Nu e nimic de citit.",
+      "tooBig": "Este prea mare pentru un fișier de antrenor.",
+      "shape": "Acesta nu este un fișier de antrenor.",
+      "checksum": "Fișierul a fost schimbat după ce a fost făcut.",
+      "name": "Numele antrenorului nu poate fi folosit.",
+      "class": "Clasa antrenorului nu există în joc.",
+      "line": "Una dintre replicile antrenorului nu există în joc.",
+      "version": "Antrenorul acesta a fost făcut pentru alte date ale jocului. Roagă-ți prietenul să-l trimită din nou din această versiune.",
+      "paste": "Echipa din el nu poate fi citită (linia {value}).",
+      "code": "Acesta nu este un cod de antrenor."
+    }
+  },
   "battleRoom": {
     "title": "Sala de luptă",
     "menu": {
@@ -5516,6 +5595,7 @@
       "gauntlet": "ÎNCERCAREA",
       "streak": "ȘIRUL",
       "puzzles": "ENIGME",
+      "friends": "ANTRENORI PRIETENI",
       "teamsCount": "{n} păstrate",
       "gauntletBest": "Record {n}/{of}",
       "streakBest": "Record {n}",
@@ -5525,12 +5605,14 @@
       "teams": "Construiește echipe de la zero: orice specie, cu nivelul, firea, abilitatea, obiectul și patru atacuri pe care le poate ști. Echipele sunt păstrate pe acest calculator, separat de orice salvare.",
       "gauntlet": "Du o echipă împotriva celor opt lideri de sală din Sinnoh, a Celor Patru și a Campioanei, unul după altul, fiecare cu echipa și nivelurile din poveste. Echipa ta e refăcută înaintea fiecărei lupte.",
       "streak": "Luptă cu antrenorii Frontierei de Luptă unul după altul, la nivelul 50, cât timp echipa ta continuă să câștige. La fiecare șapte lupte devin mai puternici.",
-      "puzzles": "O luptă oprită la jumătate, cu un scop: câștigă tura aceasta, rezistă unui atac, prinde un Pokémon. Fiecare aruncare a zarului e fixată, așa că doar ideea bună merge."
+      "puzzles": "O luptă oprită la jumătate, cu un scop: câștigă tura aceasta, rezistă unui atac, prinde un Pokémon. Fiecare aruncare a zarului e fixată, așa că doar ideea bună merge.",
+      "friends": "Luptă cu antrenorul unui prieten la nivelul 50: un fișier de antrenor pus în dosarul trainers sau un cod lipit din clipboard. Îți poți trimite echipele în același fel."
     },
     "clears": "Terminată de {n} ori",
     "pick": {
       "gauntlet": "Ce echipă înfruntă încercarea?",
       "streak": "Ce echipă începe un șir?",
+      "friend": "Ce echipă înfruntă acest antrenor?",
       "speciesTitle": "Alege o specie",
       "itemTitle": "Alege un obiect de ținut",
       "moveTitle": "Alege un atac"

@@ -429,7 +429,7 @@ internal static partial class ModernUi
         UiFonts.Draw(name, x, r.Y + 62, 40, Ink, UiWeight.Black);
         string idLabel = Text.Of("summary.memo.id");
         Label(idLabel, x + 640, r.Y + 34);
-        UiFonts.Draw(id.ToString("D5"), x + 640, r.Y + 62, 40, Ink, UiWeight.Black);
+        UiFonts.Draw(Core.StreamSafe.Id(id.ToString("D5")), x + 640, r.Y + 62, 40, Ink, UiWeight.Black);
         UiShapes.Fill(new Rectangle(x, r.Y + 140, wide, 3), 1.5f, Rule);
 
         Label(p.MetDate != null ? Text.Of("summary.memo.metOn") : Text.Of("summary.memo.metOnUnknown"), x, r.Y + 166);
