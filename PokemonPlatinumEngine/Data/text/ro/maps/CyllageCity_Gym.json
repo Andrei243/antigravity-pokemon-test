@@ -1,0 +1,85 @@
+{
+  "displayName": {
+    "en": [
+      "Cyllage Gym"
+    ],
+    "text": [
+      "Gym-ul din Cyllage"
+    ]
+  },
+  "people": {
+    "grant": {
+      "name": {
+        "en": [
+          "Grant"
+        ],
+        "text": [
+          "Grant"
+        ]
+      }
+    },
+    "gym_guide": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          "Ghidul Arenei"
+        ]
+      }
+    },
+    "kalos_hiker_bruno": {
+      "name": {
+        "en": [
+          "Bruno"
+        ],
+        "text": [
+          "Bruno"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Bruno: Grant says every climb starts with one good hold. Here is mine!"
+        ],
+        "text": [
+          "Drumeț Bruno: Grant zice că fiecare urcare începe cu un punct de sprijin bun. Iată-l pe al meu!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Bruno: You found the hold I missed. Go on up."
+        ],
+        "text": [
+          "Drumeț Bruno: Ai găsit sprijinul pe care eu l-am ratat. Urcă mai departe."
+        ]
+      }
+    },
+    "kalos_hiker_armand": {
+      "name": {
+        "en": [
+          "Armand"
+        ],
+        "text": [
+          "Armand"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Armand: Nobody reaches the top of this wall without getting past me!"
+        ],
+        "text": [
+          "Drumeț Armand: Nimeni nu ajunge în vârful peretelui ăstuia fără să treacă de mine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Armand: You climbed right over me. Grant is waiting at the top."
+        ],
+        "text": [
+          "Drumeț Armand: Ai trecut direct peste mine. Grant te așteaptă sus."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

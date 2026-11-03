@@ -1,0 +1,144 @@
+{
+  "Friends": [
+    {
+      "en": [
+        "Tierno"
+      ],
+      "text": [
+        "Tierno"
+      ]
+    },
+    {
+      "en": [
+        "Hey, {player}! We skated all the way from Lumiose. Did you see the square back there? The skaters spin like dancers!"
+      ],
+      "text": [
+        "Hei, {player}! Am venit pe patine tot drumul de la Lumiose. Ai văzut piața de acolo? Patinatorii se rotesc ca niște dansatori!"
+      ]
+    },
+    {
+      "en": [
+        "Trevor"
+      ],
+      "text": [
+        "Trevor"
+      ]
+    },
+    {
+      "en": [
+        "I counted four kinds of Pokémon I'd never seen in the grass along here. Four!"
+      ],
+      "text": [
+        "Am numărat patru feluri de Pokémoni pe care nu-i mai văzusem în iarba de pe aici. Patru!"
+      ]
+    },
+    {
+      "en": [
+        "Tierno"
+      ],
+      "text": [
+        "Tierno"
+      ]
+    },
+    {
+      "en": [
+        "I caught a new partner on the way, and we've worked out a routine. Battle us and see!"
+      ],
+      "text": [
+        "Mi-am prins pe drum un nou partener și am pus la punct un număr. Luptă cu noi și vezi!"
+      ]
+    },
+    {
+      "en": [
+        "Tierno"
+      ],
+      "text": [
+        "Tierno"
+      ]
+    },
+    {
+      "en": [
+        "You're getting really strong! I'll need a brand new routine to keep up with you."
+      ],
+      "text": [
+        "Devii foarte puternic! O să am nevoie de un număr cu totul nou ca să țin pasul."
+      ]
+    },
+    {
+      "en": [
+        "Ta-da! But honestly, your team kept perfect time with ours. That was fun."
+      ],
+      "text": [
+        "Ta-da! Dar, sincer, echipa ta a ținut perfect ritmul cu a noastră. A fost distractiv."
+      ]
+    },
+    {
+      "en": [
+        "Trevor"
+      ],
+      "text": [
+        "Trevor"
+      ]
+    },
+    {
+      "en": [
+        "Camphrier Town is just ahead. They say a big Pokémon has been asleep on the road south of it for days."
+      ],
+      "text": [
+        "Orașul Camphrier e chiar în față. Se zice că un Pokémon uriaș doarme de zile întregi pe drumul spre sud."
+      ]
+    },
+    {
+      "en": [
+        "Tierno"
+      ],
+      "text": [
+        "Tierno"
+      ]
+    },
+    {
+      "en": [
+        "Let's go and see it! Maybe it likes dancing."
+      ],
+      "text": [
+        "Hai să-l vedem! Poate îi place dansul."
+      ]
+    }
+  ],
+  "Tierno": [
+    {
+      "en": [
+        "Tierno"
+      ],
+      "text": [
+        "Tierno"
+      ]
+    },
+    {
+      "en": [
+        "Ready to see our routine?"
+      ],
+      "text": [
+        "Ești gata să vezi numărul nostru?"
+      ]
+    }
+  ],
+  "Trevor": [
+    {
+      "en": [
+        "Trevor"
+      ],
+      "text": [
+        "Trevor"
+      ]
+    },
+    {
+      "en": [
+        "Um. Four new kinds. I wrote them all down."
+      ],
+      "text": [
+        "Hm. Patru feluri noi. Le-am scris pe toate."
+      ]
+    }
+  ]
+}

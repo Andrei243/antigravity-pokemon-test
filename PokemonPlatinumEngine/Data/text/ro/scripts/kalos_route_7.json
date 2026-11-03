@@ -1,0 +1,52 @@
+{
+  "Snorlax": [
+    {
+      "en": [
+        "A huge Pokémon lies asleep across the lane, snoring like distant thunder."
+      ],
+      "text": [
+        "Un Pokémon uriaș doarme de-a curmezișul drumului, sforăind ca un tunet îndepărtat."
+      ]
+    },
+    {
+      "en": [
+        "A huge Pokémon lies asleep across the lane. Play the palace's flute?"
+      ],
+      "text": [
+        "Un Pokémon uriaș doarme de-a curmezișul drumului. Cânți din flautul palatului?"
+      ]
+    },
+    {
+      "en": [
+        "{player} played the palace's flute."
+      ],
+      "text": [
+        "{player} a cântat din flautul palatului."
+      ]
+    },
+    {
+      "en": [
+        "Snorlax woke up! It doesn't look pleased about it..."
+      ],
+      "text": [
+        "Snorlax s-a trezit! Pare să nu fie prea încântat..."
+      ]
+    },
+    {
+      "en": [
+        "Snorlax lumbered off to find a quieter place to sleep."
+      ],
+      "text": [
+        "Snorlax s-a dus de acolo să găsească un loc mai liniștit de dormit."
+      ]
+    },
+    {
+      "en": [
+        "Snorlax yawned, and wandered off down the riverbank."
+      ],
+      "text": [
+        "Snorlax a căscat și s-a îndepărtat de-a lungul malului râului."
+      ]
+    }
+  ]
+}

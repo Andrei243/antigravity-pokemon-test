@@ -1,0 +1,66 @@
+{
+  "people": {
+    "fisherman": {
+      "name": {
+        "en": [
+          "Yves"
+        ],
+        "text": [
+          "Yves"
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Yves: The sea's too rough for fishing today. A battle will have to do!"
+        ],
+        "text": [
+          "Pescar Yves: Marea e prea agitată azi pentru pescuit. O luptă va trebui să ajungă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Yves: Rough sea, rough luck."
+        ],
+        "text": [
+          "Pescar Yves: Mare agitată, noroc prost."
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Marcel"
+        ],
+        "text": [
+          "Marcel"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Marcel: I climb these cliffs every morning. Strong legs, strong Pokémon!"
+        ],
+        "text": [
+          "Drumeț Marcel: Mă cațăr pe stâncile astea în fiecare dimineață. Picioare tari, Pokémoni tari!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Marcel: My legs are fine. My Pokémon need more climbing."
+        ],
+        "text": [
+          "Drumeț Marcel: Picioarele mele sunt bune. Pokémonii mei mai au nevoie de cățărat."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": {
+      "en": [
+        "Route 8 · Cliff Coast Path\nNorth: Cyllage City\nSouth: closed by a rockfall"
+      ],
+      "text": [
+        "Ruta 8 · Poteca Coastei Stâncoase\nNord: Orașul Cyllage\nSud: închis de o alunecare de teren"
+      ]
+    }
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Center"
+    ],
+    "text": [
+      "Centru Pokémon"
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          "Asistenta Joy"
+        ]
+      }
+    },
+    "12,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    },
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome! The Poké Mart counter is open. What can I get you?"
+        ],
+        "text": [
+          "Vânzătorul: Bun venit! Tejgheaua Poké Mart e deschisă. Cu ce vă pot ajuta?"
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Climbers come down from the cliffs scraped and tired. This counter has seen every kind of bruise."
+        ],
+        "text": [
+          "Cățărătorii coboară de pe stânci julițiți și obosiți. Tejgheaua asta a văzut orice fel de vânătaie."
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Lass"
+        ],
+        "text": [
+          "Domnișoara"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The road out of town goes on and on. I always rest here before setting off again."
+        ],
+        "text": [
+          "Drumul din oraș ține și ține. Mă odihnesc mereu aici înainte să pornesc din nou."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,86 @@
+{
+  "Neighbour": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "{player}! You woke that Snorlax? I heard it snoring from the coast. I took the long way round."
+      ],
+      "text": [
+        "{player}! Tu ai trezit Snorlaxul ăla? L-am auzit sforăind până la coastă. Eu am luat-o pe ocolite."
+      ]
+    },
+    {
+      "en": [
+        "The Gym here is at the very top of the town. Its Leader climbs rock walls, and his Pokémon are as hard as the cliffs."
+      ],
+      "text": [
+        "Gym-ul de aici e chiar în vârful orașului. Liderul lui se cațără pe pereți de stâncă, iar Pokémonii lui sunt tari ca stâncile."
+      ]
+    },
+    {
+      "en": [
+        "Before you go up, let's see what you've learned since Santalune."
+      ],
+      "text": [
+        "Înainte să urci, hai să vedem ce ai învățat de la Santalune încoace."
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "You're climbing faster than I am. Good. Then I know who I'm racing."
+      ],
+      "text": [
+        "Urci mai repede decât mine. Bine. Atunci știu cu cine mă întrec."
+      ]
+    },
+    {
+      "en": [
+        "Close. Very close. Rock-type Pokémon won't be as kind to you as I was, though."
+      ],
+      "text": [
+        "La mustață. Foarte aproape. Pokémonii de Stâncă nu vor fi însă la fel de blânzi cu tine ca mine."
+      ]
+    },
+    {
+      "en": [
+        "Water and Grass get the better of stone, they say. Good luck with the climb."
+      ],
+      "text": [
+        "Se zice că apa și iarba o iau înaintea pietrei. Spor la urcat."
+      ]
+    }
+  ],
+  "Rival": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "The Gym is up the steps, right at the top."
+      ],
+      "text": [
+        "Gym-ul e sus pe trepte, chiar în vârf."
+      ]
+    }
+  ]
+}

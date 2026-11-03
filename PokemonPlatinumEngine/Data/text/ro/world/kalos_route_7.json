@@ -1,0 +1,102 @@
+{
+  "people": {
+    "snorlax": {
+      "name": {
+        "en": [
+          "Snorlax"
+        ],
+        "text": [
+          "Snorlax"
+        ]
+      }
+    },
+    "fisherman": {
+      "name": {
+        "en": [
+          "René"
+        ],
+        "text": [
+          "René"
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman René: Quiet on the bank! You'll frighten the fish. Well, you'll battle them instead!"
+        ],
+        "text": [
+          "Pescar René: Liniște pe mal! Sperii peștii. Ei bine, o să lupți cu ei în schimb!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman René: The river's calm again. That's the main thing."
+        ],
+        "text": [
+          "Pescar René: Râul s-a liniștit din nou. Asta contează."
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Sylvie"
+        ],
+        "text": [
+          "Sylvie"
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Sylvie: The flowers here smell sweeter than any perfume in Lumiose. Smell this battle!"
+        ],
+        "text": [
+          "Domnișoară Sylvie: Florile de aici miros mai dulce decât orice parfum din Lumiose. Miroase și lupta asta!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Sylvie: That smelled like defeat."
+        ],
+        "text": [
+          "Domnișoară Sylvie: Asta mirosea a înfrângere."
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Adrien"
+        ],
+        "text": [
+          "Adrien"
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Adrien: The big Pokémon on the lane kept me stuck here for days! I've been training!"
+        ],
+        "text": [
+          "Puști Adrien: Pokémonul ăla mare de pe alee m-a ținut blocat aici zile întregi! Am tot făcut antrenament!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Adrien: Training for days, and still. Hmph."
+        ],
+        "text": [
+          "Puști Adrien: Zile de antrenament și tot nimic. Hmph."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": {
+      "en": [
+        "Route 7 · Riverbank Walk\nNorth: Camphrier Town\nWest: the coast"
+      ],
+      "text": [
+        "Ruta 7 · Poteca de pe Malul Râului\nNord: Orașul Camphrier\nVest: coasta"
+      ]
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "displayName": {
+    "en": [
+      "Camphrier Castle"
+    ],
+    "text": [
+      "Castelul Camphrier"
+    ]
+  },
+  "people": {
+    "castellan": {
+      "name": {
+        "en": [
+          "Castellan Aubert"
+        ],
+        "text": [
+          "Castelanul Aubert"
+        ]
+      }
+    },
+    "maid": {
+      "name": {
+        "en": [
+          "Maid"
+        ],
+        "text": [
+          "Cameristă"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The castle is very old and very draughty. I dust the suits of armour every morning, and every morning they are dusty again."
+        ],
+        "text": [
+          "Castelul e foarte vechi și foarte plin de curenți. Șterg armurile de praf în fiecare dimineață, iar în fiecare dimineață sunt iar pline de praf."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

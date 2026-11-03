@@ -1,0 +1,110 @@
+{
+  "Grant": [
+    {
+      "en": [
+        "Grant"
+      ],
+      "text": [
+        "Grant"
+      ]
+    },
+    {
+      "en": [
+        "So you made the climb. I'm Grant, Leader of the Cyllage Gym."
+      ],
+      "text": [
+        "Deci ai urcat până aici. Eu sunt Grant, Liderul Gym-ului din Cyllage."
+      ]
+    },
+    {
+      "en": [
+        "On a rock face you look for the next hold, and then the one after it. One mistake and you start again from the bottom."
+      ],
+      "text": [
+        "Pe un perete de stâncă cauți următorul punct de sprijin, apoi pe cel de după el. O greșeală și o iei de la capăt, de jos."
+      ]
+    },
+    {
+      "en": [
+        "A battle is the same. Show me how you climb!"
+      ],
+      "text": [
+        "O luptă e la fel. Arată-mi cum urci!"
+      ]
+    },
+    {
+      "en": [
+        "You never once lost your grip. That's a climb I'd be proud of."
+      ],
+      "text": [
+        "Nu ți-ai pierdut prinderea nicio clipă. Aceasta e o urcare de care aș fi mândru."
+      ]
+    },
+    {
+      "en": [
+        "Here. The Cliff Badge is yours, proof that you reached the top of the Cyllage Gym."
+      ],
+      "text": [
+        "Ține. Cliff Badge e a ta, dovada că ai ajuns în vârful Gym-ului din Cyllage."
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Cliff Badge from Grant!"
+      ],
+      "text": [
+        "{player} a primit Cliff Badge de la Grant!"
+      ]
+    },
+    {
+      "en": [
+        "Take this too. My Pokémon use it to bury a foe's feet in stone and slow it right down."
+      ],
+      "text": [
+        "Ia și asta. Pokémonii mei o folosesc ca să îngroape picioarele unui adversar în piatră și să-l încetinească de tot."
+      ]
+    },
+    {
+      "en": [
+        "There's more of Kalos to climb. Keep looking for the next hold."
+      ],
+      "text": [
+        "Mai e mult din Kalos de urcat. Continuă să cauți următorul punct de sprijin."
+      ]
+    },
+    {
+      "en": [
+        "Every morning I climb this wall and think of our battle. I still haven't found where I slipped."
+      ],
+      "text": [
+        "În fiecare dimineață urc peretele ăsta și mă gândesc la lupta noastră. Tot nu am găsit unde am alunecat."
+      ]
+    }
+  ],
+  "GymGuide": [
+    {
+      "en": [
+        "Gym Guide"
+      ],
+      "text": [
+        "Ghidul Arenei"
+      ]
+    },
+    {
+      "en": [
+        "Hello there, future Champion! Grant's Rock types shrug off fire and flight. Bring water, grass or a good fist!"
+      ],
+      "text": [
+        "Salut, viitor Campion! Pokémonii de Stâncă ai lui Grant nu simt focul și zborul. Adu apă, iarbă sau un pumn bun!"
+      ]
+    },
+    {
+      "en": [
+        "You beat Grant! You must have hands of iron."
+      ],
+      "text": [
+        "L-ai învins pe Grant! Ai mâini de fier, nu alta."
+      ]
+    }
+  ]
+}

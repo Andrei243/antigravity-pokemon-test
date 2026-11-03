@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Camphrier Town"
+    ],
+    "text": [
+      "Orașul Camphrier"
+    ]
+  },
+  "people": {
+    "boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The big Pokémon on the south road snores so loudly I can hear it from my bed!"
+        ],
+        "text": [
+          "Pokémonul cel mare de pe drumul din sud sforăie atât de tare că îl aud din pat!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Cyllage City"
+    ],
+    "text": [
+      "Orașul Cyllage"
+    ]
+  },
+  "people": {
+    "mother": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My son swims in the bay every day, even in winter. He says the cold makes his Pokémon tougher."
+        ],
+        "text": [
+          "Fiul meu înoată în golf în fiecare zi, chiar și iarna. Zice că frigul îi face Pokémonii mai duri."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}
