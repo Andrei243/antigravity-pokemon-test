@@ -1,10 +1,13 @@
 # Battle against Yveltal (the destruction bird): an organ darkening over four bars, then a D-minor saw lead that
 # swoops and snaps over brass hits and a churning bass. Original composition for this game.
+# Arranged again for the modern sound (plan 31 · MU7) on the instruments of Kalos: a string orchestra, a harpsichord where a harp was, and a musette doubling the tune.
 title Battle! Yveltal
 tempo 168
 meter 4/4
 lowhptempo 1.07
 reverb 0.26
+sound modern
+room hall 2.0
 
 track lead sawlead lowhp=square vol=0.72 pan=0 rev=0.24
   r1 | r1 | o4 b-8 o5 d8 f8 b-8 o6 d4 c4 | o5 g8 o6 c8 e8 g8 e4 c4 |
@@ -40,6 +43,9 @@ track drums kit vol=0.56 rev=0.12
 
 track hats kit vol=0.46 pan=0.2 rev=0.1
   r1 | r1 | r1 | r1 | L [ v70 h8 v45 h16 h16 v70 h8 v45 h16 h16 v70 h8 v45 h16 h16 v70 h8 v45 h16 h16 | ]16
+
+# Kalos: a musette doubling the tune
+track tunemusette musette unless=lowhp double=lead vol=0.14 pan=-0.35 rev=0.34
 
 # Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
 track alarm pulse only=lowhp vol=0.5 pan=0.1 rev=0.08

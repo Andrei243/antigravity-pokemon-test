@@ -1,10 +1,13 @@
 # Battle against Volcanion (steam and fire): a snare and a pulsing synth building pressure, then a C-minor trumpet
 # line in clipped bursts over brass stabs, the pulse never letting go. Original composition for this game.
+# Arranged again for the modern sound (plan 31 · MU7) on the instruments of Kalos: a string orchestra, a harpsichord where a harp was, and a musette doubling the tune.
 title Battle! Volcanion
 tempo 172
 meter 4/4
 lowhptempo 1.07
 reverb 0.22
+sound modern
+room hall 2.0
 
 track lead trumpet lowhp=sawlead vol=0.7 pan=0 rev=0.2
   r1 | o5 c4 r8 c8 r8 e-8 g4 |
@@ -47,6 +50,9 @@ track drums kit vol=0.54 rev=0.14
 
 track hats kit vol=0.4 pan=0.2 rev=0.08
   r1 | r1 | L [ v60 h16 v35 h16 v45 h16 v35 h16 v60 h16 v35 h16 v45 h16 v35 h16 v60 h16 v35 h16 v45 h16 v35 h16 v60 h16 v35 h16 v45 h16 v35 h16 | ]16
+
+# Kalos: a musette doubling the tune
+track tunemusette musette unless=lowhp double=lead vol=0.14 pan=-0.35 rev=0.34
 
 # Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
 track alarm pulse only=lowhp vol=0.48 pan=0.1 rev=0.08

@@ -104,10 +104,64 @@ public class ModernMusicTests
     }
 
     [Fact]
-    public void TestNoExistingSongNamesASoundYet()
+    public void TestOnlyTheLaterLegendariesNameASoundInTheirHeader()
     {
-        // MU0 changes no song of the game: the modern sound is heard only through MusicRender until MU2
-        Assert.All(MusicLibrary.All, s => Assert.Null(s.Sound));
+        // MU0 to MU6 named no sound in a song's header (a region's file names its folder's); MU7's later legendaries,
+        // which live in common/legendary, name the modern sound in their own, and no other song does
+        Assert.All(MusicLibrary.All, s => Assert.Equal(IsLaterLegendary(s.Id) ? SynthSound.Modern : (SynthSound?)null, s.Sound));
+    }
+
+    /// <summary>
+    /// Plan 31 · MU7: the wild-battle themes of the legendary and mythical Pokémon of Kalos on (generation 6 to 9), which
+    /// <c>common/legendary</c> holds and which play in the modern sound by their own header.
+    /// </summary>
+    public static readonly string[] LaterLegendaryKeys =
+    {
+        "xerneas", "yveltal", "zygarde", "diancie", "hoopa", "volcanion",
+        "type_null", "silvally", "tapu_koko", "tapu_lele", "tapu_bulu", "tapu_fini", "cosmog", "cosmoem", "solgaleo", "lunala",
+        "necrozma", "magearna", "marshadow", "zeraora", "meltan", "melmetal",
+        "zacian", "zamazenta", "eternatus", "kubfu", "urshifu", "zarude", "regieleki", "regidrago", "glastrier", "spectrier",
+        "calyrex", "enamorus",
+        "wo_chien", "chien_pao", "ting_lu", "chi_yu", "koraidon", "miraidon", "okidogi", "munkidori", "fezandipiti", "ogerpon",
+        "terapagos", "pecharunt",
+    };
+
+    public static bool IsLaterLegendary(string id) =>
+        id.StartsWith("common/legendary/") && LaterLegendaryKeys.Contains(id["common/legendary/".Length..]);
+
+    public static IEnumerable<object[]> LaterLegendaries() => LaterLegendaryKeys.Select(k => new object[] { "common/legendary/" + k });
+
+    [Fact]
+    public void TestEveryLegendaryOfKalosOnHasAThemeInTheModernSound()
+    {
+        // The list is the data's: every legendary or mythical species of the games' generations 6 to 9 has its theme,
+        // and every earlier one keeps the DS sound
+        var later = PokemonDatabase.GetAll().Where(s => (s.Legendary || s.Mythical) && s.Generation >= 6)
+            .Select(s => MusicDirector.LegendaryKey(s.Name)).OrderBy(k => k).ToList();
+        Assert.Equal(LaterLegendaryKeys.OrderBy(k => k), later);
+        foreach (var species in PokemonDatabase.GetAll().Where(s => s.Legendary || s.Mythical))
+        {
+            string? id = MusicDirector.WildBattleTheme(species, null, MusicLibrary.Exists);
+            Assert.Equal($"common/legendary/{MusicDirector.LegendaryKey(species.Name)}", id);
+            Assert.Equal(species.Generation >= 6 ? SynthSound.Modern : SynthSound.Ds, MusicLibrary.Get(id!)!.PlaysIn);
+        }
+    }
+
+    [Theory]
+    [MemberData(nameof(LaterLegendaries))]
+    public void TestEachLaterLegendaryRendersCleanlyInTheModernSoundInEveryArrangement(string id) =>
+        AssertCleanInEveryArrangement(id, battle: true);
+
+    /// <summary>Kalos's League (plan 31 · MU7's set pieces): the Elite Four's and the Champion's battles, the victory and the Hall of Fame.</summary>
+    [Theory]
+    [InlineData("kalos/battle_elite_four")]
+    [InlineData("kalos/battle_champion")]
+    [InlineData("kalos/victory_champion")]
+    [InlineData("kalos/hall_of_fame")]
+    public void TestKalossLeagueSongsRenderCleanlyInTheModernSoundInEveryArrangement(string id)
+    {
+        Assert.Equal(SynthSound.Modern, MusicLibrary.Get(id)!.PlaysIn);
+        AssertCleanInEveryArrangement(id, id.StartsWith("kalos/battle_"));
     }
 
     [Theory]
@@ -364,10 +418,12 @@ public class ModernMusicTests
     /// A song of a later region in the modern sound, in every arrangement it has (day, night, red, giant, both): in the
     /// music bus's window, unclipped, no voice cut short and no clash. A battle theme must have its low-HP and giant arrangements.
     /// </summary>
-    private static void RendersCleanlyInEveryArrangement(string id)
+    private static void AssertCleanInEveryArrangement(string id, bool battle) => RendersCleanlyInEveryArrangement(id, battle);
+
+    private static void RendersCleanlyInEveryArrangement(string id, bool? battleIs = null)
     {
         var song = MusicLibrary.Get(id)!;
-        bool battle = id.Contains("/battle_");
+        bool battle = battleIs ?? id.Contains("/battle_");
         var arrangements = new List<(bool Night, bool LowHp, bool Giant)> { (false, false, false) };
         if (song.Tracks.Any(t => t.NightInstrument != null)) arrangements.Add((true, false, false));
         if (battle)

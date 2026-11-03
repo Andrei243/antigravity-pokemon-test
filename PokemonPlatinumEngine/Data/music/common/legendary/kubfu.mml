@@ -1,10 +1,13 @@
 # Battle against Kubfu (the wushu cub): the training chant (three quick calls and a long one) on a flute, then a
 # bright G-major romp over busy drums and a bouncing bass. Original composition for this game.
+# Arranged again for the modern sound (plan 31 · MU7) on the instruments of Galar: a string orchestra, a stadium organ under the choir, a cornet-bright trumpet on the tune and the crowd's claps.
 title Battle! Kubfu
 tempo 168
 meter 4/4
 lowhptempo 1.07
 reverb 0.24
+sound modern
+room hall 2.4
 
 track lead flute lowhp=sawlead vol=0.79 pan=0 rev=0.25
   o5 d8 d8 d8 g2 r8 | o5 d8 d8 d8 o6 c4 o5 b8 a4 |
@@ -20,7 +23,7 @@ track counter clarinet vol=0.46 pan=-0.25 rev=0.22
   o4 b2 g2 | o5 c2 e2 | o5 d2 f+2 | o5 e2 o4 b2 |
   o5 e2 c2 | o4 a2 f+2 | o5 d2 o4 b2 | o4 a2 f+2 |
 
-track strings strings unless=lowhp vol=0.33 pan=0.3 rev=0.3
+track strings orchestra unless=lowhp vol=0.33 pan=0.3 rev=0.3
   r1 | r1 |
   L o4 (d g b)1 | o4 (c e g)1 | o4 (d f+ a)1 | o4 (d g b)1 |
   o4 (e g b)1 | o4 (c e g)1 | o4 (c e a)1 | o4 (d f+ a)1 |
@@ -40,6 +43,11 @@ track drums kit vol=0.55 rev=0.12
 
 track hats kit vol=0.44 pan=0.18 rev=0.1
   r1 | r1 | L [ v65 h16 v40 h16 v55 h16 v40 h16 v65 h16 v40 h16 v55 h16 v40 h16 v65 h16 v40 h16 v55 h16 v40 h16 v65 h16 v40 h16 v55 o8 | ]16
+
+# Galar: a stadium organ under the choir, a bright trumpet on the tune, the crowd's claps
+track tunetrumpet trumpet unless=lowhp double=lead vol=0.12 pan=0.3 rev=0.3
+track crowd kit vol=0.3 pan=0.1 rev=0.3
+  r1 | r1 | L [ r4 v85 x4 r4 v85 x4 | ]16
 
 # Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
 track alarm pulse only=lowhp vol=0.48 pan=0.1 rev=0.08

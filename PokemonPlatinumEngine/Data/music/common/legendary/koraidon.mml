@@ -1,10 +1,13 @@
 # Battle against Koraidon (the Paradox Pokémon of the ancient past): the paradox pair's call (a leap up and a turn
 # back to the tonic) roared on brass over pounding toms and timpani in D minor. Original composition for this game.
+# Arranged again for the modern sound (plan 31 · MU7) on the instruments of Paldea: a string orchestra, a nylon guitar strumming the bass's eighths and a wood block clacking like castanets.
 title Battle! Koraidon
 tempo 180
 meter 4/4
 lowhptempo 1.08
 reverb 0.28
+sound modern
+room hall 1.8
 
 track lead brass lowhp=sawlead vol=0.78 pan=0 rev=0.26
   r1 | o4 d4 a8 o5 c8 d2 |
@@ -20,7 +23,7 @@ track horn horn vol=0.42 pan=-0.25 rev=0.3
   o4 f1 | o4 g1 | o4 f1 | o4 a1 |
   o4 g1 | o4 f1 | o4 e1 | o4 e2 c+2 |
 
-track strings strings unless=lowhp vol=0.32 pan=0.3 rev=0.36
+track strings orchestra unless=lowhp vol=0.32 pan=0.3 rev=0.36
   r1 | r1 |
   L o4 (d f a)1 | o4 (c e g)1 | o4 (d f a)1 | o4 (c e g)1 |
   o4 (d f b-)1 | o4 (c e g)1 | o4 (d f a)1 | o4 (c+ e a)1 |
@@ -47,6 +50,11 @@ track drums kit vol=0.54 rev=0.18
 
 track hats kit vol=0.38 pan=0.2 rev=0.1
   r1 | r1 | L [ v62 h8 v40 h8 v62 h8 v40 h8 v62 h8 v40 h8 v62 h8 v40 h8 | ]16
+
+# Paldea: a nylon guitar strumming on the bass's eighths, a wood block clacking like castanets
+track bassguitar nylonguitar unless=lowhp double=bass beats=8 shift=24 vol=0.18 pan=-0.3 rev=0.24
+track castanets kit vol=0.3 pan=0.3 rev=0.16
+  r1 | r1 | L [ v90 w16 v55 w16 v60 w16 r16 r8 v90 w8 r4 v90 w16 v55 w16 v60 w16 r16 | ]16
 
 # Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
 track alarm pulse only=lowhp vol=0.48 pan=0.1 rev=0.08

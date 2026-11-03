@@ -1,10 +1,13 @@
 # Battle against Magearna (the artificial mythical, a music-box heart): a wound-up spring of celesta, then a G-major
 # music-box tune ticking over a clockwork pulse of pizzicato, hats and shaker. Original composition for this game.
+# Arranged again for the modern sound (plan 31 · MU7) on the instruments of Alola: a steel drum doubling the tune, an ukulele chopping on the bass's eighths, congas and bongos.
 title Battle! Magearna
 tempo 160
 meter 4/4
 lowhptempo 1.07
 reverb 0.3
+sound modern
+room hall 1.6
 
 track lead celesta lowhp=sawlead vol=0.86 pan=0 rev=0.32
   o6 g8 r8 d8 r8 o5 b8 r8 g8 r8 | o5 a4 o6 d4 f+4 r4 |
@@ -46,6 +49,12 @@ track drums kit vol=0.44 rev=0.15
 
 track ticktock kit vol=0.8 pan=-0.2 rev=0.1
   [ v60 h16 r16 v40 k16 r16 ]4 | [ v60 h16 r16 v40 k16 r16 ]4 | L [ v60 h16 r16 v40 k16 r16 v60 h16 r16 v40 k16 r16 v60 h16 r16 v40 k16 r16 v60 h16 r16 v40 k16 r16 | ]16
+
+# Alola: a steel drum doubling the tune, an ukulele on the bass's eighths, hand drums
+track tunesteel steeldrum unless=lowhp double=lead vol=0.13 pan=-0.35 rev=0.3
+track bassukulele ukulele double=bass beats=8 shift=24 vol=0.16 pan=0.35 rev=0.22
+track handdrums kit vol=0.34 pan=-0.15 rev=0.14
+  r1 | r1 | L [ v80 g8 v50 g8 v90 d8 v50 g8 v80 g8 v50 g8 v90 d8 v60 n16 n16 | ]16
 
 # Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
 track alarm pulse only=lowhp vol=0.42 pan=0.1 rev=0.08

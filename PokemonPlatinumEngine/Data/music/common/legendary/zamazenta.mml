@@ -1,11 +1,14 @@
 # Battle against Zamazenta (the hero of the shield, a wolf armoured like a wall): hammered open fifths, then the
 # heroes' knightly fanfare, the same dotted leap up a fourth, held up by a brass wall in C minor over marcato strings
 # and a steady drum line. Original composition for this game.
+# Arranged again for the modern sound (plan 31 · MU7) on the instruments of Galar: a string orchestra, a stadium organ under the choir, a cornet-bright trumpet on the tune and the crowd's claps.
 title Battle! Zamazenta
 tempo 172
 meter 4/4
 lowhptempo 1.07
 reverb 0.27
+sound modern
+room hall 2.4
 
 track lead brass lowhp=sawlead vol=0.8 pan=0 rev=0.24
   o4 (c g)4 r8 (c g)8 (c g)4 r4 | o4 (d g)4 r8 (d g)8 (d g)2 |
@@ -14,7 +17,7 @@ track lead brass lowhp=sawlead vol=0.8 pan=0 rev=0.24
   o5 e-8. e-16 a-8. b-16 o6 c4 e-4 | o6 e-4. d8 c4 o5 b-4 | o5 b-8. b-16 o6 d8. c16 o5 b-4 f4 | o5 g4. a-8 g4 e-4 |
   o5 a-8. a-16 o6 c8. d-16 e-4 c4 | o6 d4. c8 o5 b-4 f4 | o5 f8. f16 a-8. b-16 o6 c4 o5 a-4 | o5 g8. g16 b8. o6 c16 d4 o5 b4 |
 
-track strings strings vol=0.6 pan=-0.3 rev=0.25
+track strings orchestra vol=0.6 pan=-0.3 rev=0.25
   r1 | r1 |
   L q5 o4 c8 c8 e-8 e-8 g8 g8 e-8 e-8 | o4 d8 d8 f8 f8 b-8 b-8 f8 f8 | o4 c8 c8 e-8 e-8 a-8 a-8 e-8 e-8 | o4 d8 d8 g8 g8 b8 b8 g8 g8 |
   o4 c8 c8 e-8 e-8 g8 g8 e-8 e-8 | o4 e-8 e-8 g8 g8 b-8 b-8 g8 g8 | o4 c8 c8 f8 f8 a-8 a-8 f8 f8 | o4 d8 d8 g8 g8 b8 b8 g8 g8 |
@@ -48,6 +51,11 @@ track drums kit vol=0.48 rev=0.12
 
 track hats kit vol=0.62 pan=0.15 rev=0.1
   r1 | r1 | L [ v65 h8 v40 h8 v65 h8 v40 h8 v65 h8 v40 h8 v65 h8 v40 h8 | ]16
+
+# Galar: a stadium organ under the choir, a bright trumpet on the tune, the crowd's claps
+track tunetrumpet trumpet unless=lowhp double=lead vol=0.12 pan=0.3 rev=0.3
+track crowd kit vol=0.3 pan=0.1 rev=0.3
+  r1 | r1 | L [ r4 v85 x4 r4 v85 x4 | ]16
 
 # Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
 track alarm pulse only=lowhp vol=0.4 pan=0.1 rev=0.08
