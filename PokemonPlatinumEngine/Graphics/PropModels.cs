@@ -82,6 +82,8 @@ internal static class PropModels
             case PropType.LabMachine: LabMachine(kit, d, facesEast: p.X <= map.RoomCorner().Left, facesWest: p.X + p.Width >= map.Width - 1); break;
             case PropType.Rug: Rug(kit, w, d, map.Interior == InteriorStyle.PokemonCenter); break;
             case PropType.Window: Window(kit, w); break;
+            // A winner's painting hung in the Lilycove Museum's gallery (plan 21 · H11, part f) is the contest's own
+            case PropType.Painting when p.Model.StartsWith("contest:", StringComparison.Ordinal): HoennArt.ContestPainting(kit, p.Model); break;
             case PropType.Painting: kit.Card(3, 29, 32.5f, 40, 60, kit.Face("painting", 26, 20, PaintPainting)); break;
             case PropType.Clock: kit.Card(8, 24, 32.5f, 50, 66, kit.Face("clock", 16, 16, PaintClock)); break;
             // The rocks of the Oreburgh Gym's ledges (plan 02 · S5) are the boulders of the field

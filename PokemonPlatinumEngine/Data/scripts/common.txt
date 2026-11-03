@@ -399,7 +399,18 @@ script Television
   if flag FLAG_JUBILIFE_TV_INTERVIEW_ON_AIR goto OnAir
   # Gabby and Ty's segment on the interview the player gave them is shown first as well (plan 21 · H6, part c)
   if flag FLAG_GABBY_AND_TY_SHOW_NEW goto GabbyAndTyOnAir
+  # Hoenn's Safari Fan Club after a Safari Game, and the Contest Lady's Pokémon once ready (plan 21 · H11, part f)
+  if flag FLAG_HOENN_SAFARI_FAN_CLUB_NEW goto SafariOnAir
+  if flag FLAG_HOENN_CONTEST_LADY_SHOW_NEW goto ContestLadyOnAir
   broadcast
+  end
+label SafariOnAir
+  clearflag FLAG_HOENN_SAFARI_FAN_CLUB_NEW
+  broadcast safarifanclub
+  end
+label ContestLadyOnAir
+  clearflag FLAG_HOENN_CONTEST_LADY_SHOW_NEW
+  broadcast contestlady
   end
 label OnAir
   clearflag FLAG_JUBILIFE_TV_INTERVIEW_ON_AIR

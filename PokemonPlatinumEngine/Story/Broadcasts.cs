@@ -63,6 +63,22 @@ public sealed record BroadcastFacts
     public string? GabbyMon2 { get; init; }
     public int GabbyTrivia { get; init; }
     public IReadOnlyList<string>? GabbyQuote { get; init; }
+
+    /// <summary>
+    /// The Safari Fan Club (plan 21 · H11, part f; Emerald's <c>TVSHOW_SAFARI_FAN_CLUB</c>): on the air once a Safari
+    /// Game in Hoenn's Safari Zone has ended, with the Pokémon caught and the Pokéblocks thrown in it.
+    /// </summary>
+    public bool SafariOnAir { get; init; }
+    public int SafariCaught { get; init; }
+    public int SafariBlocks { get; init; }
+
+    /// <summary>
+    /// The Contest Lady's programme (plan 21 · H11, part f; Emerald's <c>TVSHOW_CONTEST_LIVE_UPDATES</c>' kin, the lady's
+    /// own show of record mixing, ours on the air at home): on once her Pokémon is ready, the condition it trained for
+    /// (1 to 5, <see cref="Models.ContestLady.Categories"/>) and whether the Pokéblocks given were the good ones.
+    /// </summary>
+    public int ContestLadyShow { get; init; }
+    public bool ContestLadyGood { get; init; }
 }
 
 /// <summary>The programmes a television shows when it has nothing of its own (plan 08 · P8; plan 08's decision 5).</summary>
@@ -82,6 +98,10 @@ public enum Programme
     Interview,
     /// <summary>Gabby and Ty's segment on the trainer they last interviewed (plan 21 · H6, part c). Hoenn's, once an interview has been given.</summary>
     GabbyAndTy,
+    /// <summary>The Safari Fan Club: the last Safari Game in Hoenn, its catches and its Pokéblocks thrown (plan 21 · H11, part f). Hoenn's.</summary>
+    SafariFanClub,
+    /// <summary>The Contest Lady's Pokémon ready for its contest (plan 21 · H11, part f). Hoenn's.</summary>
+    ContestLady,
 }
 
 /// <summary>
@@ -106,8 +126,46 @@ public static class Broadcasts
     public const string GabbyMon1Variable = "VAR_GABBY_AND_TY_MON_1";
     public const string GabbyMon2Variable = "VAR_GABBY_AND_TY_MON_2";
 
+    /// <summary>
+    /// The Safari Fan Club's flags and counts (plan 21 · H11, part f): a Safari Game begun in Hoenn sets the counts to
+    /// nought and takes the show off the air, its battles count the catches and the Pokéblocks thrown, and its end puts the
+    /// show on the air (<see cref="SafariNewFlag"/> too, which a television clears as it first shows it).
+    /// </summary>
+    public const string SafariOnAirFlag = "FLAG_HOENN_SAFARI_FAN_CLUB_ON_AIR";
+    public const string SafariNewFlag = "FLAG_HOENN_SAFARI_FAN_CLUB_NEW";
+    public const string SafariCaughtVariable = "VAR_HOENN_SAFARI_FAN_CLUB_CAUGHT";
+    public const string SafariBlocksVariable = "VAR_HOENN_SAFARI_FAN_CLUB_BLOCKS";
+
+    /// <summary>The Contest Lady's programme (plan 21 · H11, part f): the condition her ready Pokémon trained for (1 to 5, nought for none) and whether the good Pokéblocks made it ready.</summary>
+    public const string ContestLadyShowVariable = "VAR_HOENN_CONTEST_LADY_SHOW";
+    public const string ContestLadyGoodVariable = "VAR_HOENN_CONTEST_LADY_SHOW_GOOD";
+    public const string ContestLadyNewFlag = "FLAG_HOENN_CONTEST_LADY_SHOW_NEW";
+
     /// <summary>The programmes by the names a script calls them (<c>broadcast interview</c>), in the enum's order.</summary>
-    public static string[] Names => new[] { "clock", "pokedex", "survey", "lottery", "halloffame", "interview", "gabbyandty" };
+    public static string[] Names => new[] { "clock", "pokedex", "survey", "lottery", "halloffame", "interview", "gabbyandty", "safarifanclub", "contestlady" };
+
+    /// <summary>A Safari Game begun in Hoenn: the counts start again and the last game's show is off the air.</summary>
+    public static void BeginSafari(StoryState story)
+    {
+        story.SetVar(SafariCaughtVariable, 0);
+        story.SetVar(SafariBlocksVariable, 0);
+        story.Unset(SafariOnAirFlag);
+        story.Unset(SafariNewFlag);
+    }
+
+    /// <summary>A battle of a Safari Game in Hoenn: what it caught and the Pokéblocks thrown in it are counted.</summary>
+    public static void CountSafariBattle(StoryState story, bool caught, int pokeblocksThrown)
+    {
+        if (caught) story.SetVar(SafariCaughtVariable, story.Var(SafariCaughtVariable) + 1);
+        if (pokeblocksThrown > 0) story.SetVar(SafariBlocksVariable, story.Var(SafariBlocksVariable) + pokeblocksThrown);
+    }
+
+    /// <summary>A Safari Game in Hoenn over: its show goes on the air.</summary>
+    public static void EndSafari(StoryState story)
+    {
+        story.Set(SafariOnAirFlag);
+        story.Set(SafariNewFlag);
+    }
 
     /// <summary>A programme by the name a script calls it.</summary>
     public static Programme Named(string name) => (Programme)Math.Max(0, Array.IndexOf(Names, name));
@@ -143,7 +201,12 @@ public static class Broadcasts
             GabbyMon1 = SpeciesShown(host.Story.Var(GabbyMon1Variable)),
             GabbyMon2 = SpeciesShown(host.Story.Var(GabbyMon2Variable)),
             GabbyTrivia = host.Story.Var(GabbyTriviaVariable),
-            GabbyQuote = host.Story.PhraseOf(GabbyQuoteName) is { } quote && PhraseGroups.IsWhole(quote) ? quote : null
+            GabbyQuote = host.Story.PhraseOf(GabbyQuoteName) is { } quote && PhraseGroups.IsWhole(quote) ? quote : null,
+            SafariOnAir = host.Story.Has(SafariOnAirFlag),
+            SafariCaught = host.Story.Var(SafariCaughtVariable),
+            SafariBlocks = host.Story.Var(SafariBlocksVariable),
+            ContestLadyShow = host.Story.Var(ContestLadyShowVariable),
+            ContestLadyGood = host.Story.Var(ContestLadyGoodVariable) != 0
         };
     }
 
@@ -161,6 +224,8 @@ public static class Broadcasts
         if (facts.LeagueVictories > 0) on.Add(Programme.HallOfFame);
         if (facts.Interview != null) on.Add(Programme.Interview);
         if (facts.GabbyOnAir && facts.Region == RegionDatabase.Hoenn && facts.GabbyMon1 != null) on.Add(Programme.GabbyAndTy);
+        if (facts.SafariOnAir && facts.Region == RegionDatabase.Hoenn) on.Add(Programme.SafariFanClub);
+        if (facts.ContestLadyShow is >= 1 and <= 5 && facts.Region == RegionDatabase.Hoenn) on.Add(Programme.ContestLady);
         return on;
     }
 
@@ -190,6 +255,8 @@ public static class Broadcasts
         Programme.HallOfFame => HallOfFame(facts),
         Programme.Interview => Interview(facts),
         Programme.GabbyAndTy => GabbyAndTy(facts),
+        Programme.SafariFanClub => SafariFanClub(facts),
+        Programme.ContestLady => ContestLady(facts),
         _ => Clock(facts),
     };
 
@@ -285,6 +352,42 @@ public static class Broadcasts
         if (f.GabbyQuote != null) lines.Add(Text.Of("broadcast.search.quote", ("player", f.PlayerName), ("phrase", PhraseGroups.Shown(f.GabbyQuote))));
         lines.Add(Text.Of("broadcast.search.close"));
         return lines;
+    }
+
+    /// <summary>The Safari Fan Club on the player's last day in Hoenn's Safari Zone (plan 21 · H11, part f): what was caught and how many Pokéblocks were thrown.</summary>
+    private static IReadOnlyList<string> SafariFanClub(BroadcastFacts f) => new[]
+    {
+        Text.Of("broadcast.safari.open"),
+        Text.Of("broadcast.safari.visit", ("player", f.PlayerName)),
+        f.SafariCaught switch
+        {
+            0 => Text.Of("broadcast.safari.caughtNone", ("player", f.PlayerName)),
+            1 => Text.Of("broadcast.safari.caughtOne", ("player", f.PlayerName)),
+            _ => Text.Of("broadcast.safari.caught", ("player", f.PlayerName), ("n", f.SafariCaught))
+        },
+        f.SafariBlocks switch
+        {
+            0 => Text.Of("broadcast.safari.blocksNone", ("player", f.PlayerName)),
+            1 => Text.Of("broadcast.safari.blocksOne", ("player", f.PlayerName)),
+            _ => Text.Of("broadcast.safari.blocks", ("player", f.PlayerName), ("n", f.SafariBlocks))
+        },
+        Text.Of("broadcast.safari.close")
+    };
+
+    /// <summary>The Contest Lady's Pokémon ready at last (plan 21 · H11, part f): its condition, whether the Pokéblocks were the good ones, and thanks.</summary>
+    private static IReadOnlyList<string> ContestLady(BroadcastFacts f)
+    {
+        int c = Math.Clamp(f.ContestLadyShow - 1, 0, Models.ContestLady.Species.Length - 1);
+        string mon = LocalNames.Species(Models.ContestLady.Species[c]);
+        string quality = Text.Of($"contest.category.{(Models.ContestStat)c}");
+        return new[]
+        {
+            Text.Of("broadcast.contestLady.open"),
+            Text.Of("broadcast.contestLady.ready", ("mon", mon), ("quality", quality)),
+            Text.Of(f.ContestLadyGood ? "broadcast.contestLady.good" : "broadcast.contestLady.plain", ("mon", mon)),
+            Text.Of("broadcast.contestLady.thanks", ("player", f.PlayerName)),
+            Text.Of("broadcast.contestLady.close")
+        };
     }
 
     private static IReadOnlyList<string> HallOfFame(BroadcastFacts f) => new[]

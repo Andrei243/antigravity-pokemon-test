@@ -63,6 +63,11 @@ public sealed class AppealScreen
     public int Mover { get; private set; } = -1;
     public string MoveShown { get; private set; } = "";
 
+    /// <summary>The burst of the last appeal shown (plan 21 · H11, part f; <see cref="AppealBurst"/>): its quality, seconds since it began (past <see cref="AppealBurst.Seconds"/> once gone) and its seed.</summary>
+    public ContestStat BurstQuality { get; private set; }
+    public float BurstAge { get; private set; } = AppealBurst.Seconds;
+    public int BurstSeed { get; private set; }
+
     /// <summary>What the stage shows so far: each contestant's hearts of the round in points, the points before the round, the stars, the judge's eye and the crowd's meter.</summary>
     public int[] ShownAppeal { get; } = new int[AppealRound.Contestants];
     public int[] ShownTotal { get; } = new int[AppealRound.Contestants];
@@ -122,6 +127,7 @@ public sealed class AppealScreen
         Mover = -1;
         Showing = -1;
         ResultStage = 0;
+        BurstAge = AppealBurst.Seconds;
         Enter(AppealPhase.Lineup);
         Line = Text.Of("appeal.welcome", ("rank", Text.Of($"appeal.rank.{round.Rank}")), ("category", Text.Of($"contest.category.{round.Category}")));
         AudioManager.PlaySound("menu_open");
@@ -324,6 +330,11 @@ public sealed class AppealScreen
         {
             case AppealEventKind.Appealed:
                 ShownAppeal[e.Who] = e.Amount;
+                // The appeal's own burst and chimes (plan 21 · H11, part f)
+                BurstQuality = MoveDatabase.Has(e.Move) ? MoveDatabase.Get(e.Move).HoennContest.Category : round.Category;
+                BurstSeed = AppealBurst.SeedOf(e.Move);
+                BurstAge = 0f;
+                AudioManager.PlaySound("contest_appeal");
                 break;
             case AppealEventKind.TooNervous:
                 ShownNervous[e.Who] = true;
@@ -337,6 +348,7 @@ public sealed class AppealScreen
                 break;
             case AppealEventKind.ComboStarted:
                 ShownEye[e.Who] = true;
+                AudioManager.PlaySound("contest_judge");
                 break;
             case AppealEventKind.Repeated:
                 ShownAppeal[e.Who] -= e.Amount;
@@ -350,12 +362,18 @@ public sealed class AppealScreen
             case AppealEventKind.CrowdUp:
                 ShownAppeal[e.Who] += e.Amount;
                 ShownCrowd = e.Other > AppealRound.ApplauseSize - 1 ? 0 : e.Other;
+                AudioManager.PlaySound("contest_cheer");
                 break;
             case AppealEventKind.CrowdDown:
                 ShownCrowd = e.Other;
+                AudioManager.PlaySound("contest_groan");
                 break;
             case AppealEventKind.Line:
-                if (e.Line == AppealLine.JudgeLookAway) ShownEye[e.Who] = false;
+                if (e.Line == AppealLine.JudgeLookAway)
+                {
+                    ShownEye[e.Who] = false;
+                    AudioManager.PlaySound("contest_judge");
+                }
                 break;
         }
     }
@@ -490,6 +508,7 @@ public sealed class AppealScreen
         if (!IsActive) return;
         PhaseTime += dt;
         wait += dt;
+        if (BurstAge < AppealBurst.Seconds) BurstAge += dt;
         if (Phase is AppealPhase.Turn && wait >= LineWait) NextLine();
     }
 

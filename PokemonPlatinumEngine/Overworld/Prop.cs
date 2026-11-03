@@ -310,6 +310,12 @@ public enum PropType
     /// it stands low, a roof of rusted plate. It blocks nothing by itself.
     /// </summary>
     ShipCabin,
+    /// <summary>
+    /// A Pokéblock feeder of Hoenn's Safari Zone (plan 21 · H11, part f; our own drawing, <c>HoennArt.PaintFeeder</c>): a
+    /// roofed box on a post, a card on the feeder's tile, which the import blocks already. An overlay's prop; it blocks
+    /// nothing by itself.
+    /// </summary>
+    PokeblockFeeder,
 }
 
 /// <summary>A piece of furniture or decoration placed in a room, covering a rectangle of tiles.</summary>

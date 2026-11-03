@@ -311,6 +311,11 @@ label Count
   end
 label Ready
   say "With all the Pokéblocks we've been given, we're ready to enter contests at last! Next time it'll be another contest."
+  # Her Pokémon ready goes on the air at home: the condition it trained for, and whether the good Pokéblocks made it so (plan 21 · H11, part f)
+  setvar VAR_HOENN_CONTEST_LADY_SHOW VAR_HOENN_CONTEST_LADY
+  setvar VAR_HOENN_CONTEST_LADY_SHOW_GOOD 0
+  if var VAR_HOENN_CONTEST_LADY_GOOD >= 5 setvar VAR_HOENN_CONTEST_LADY_SHOW_GOOD 1
+  setflag FLAG_HOENN_CONTEST_LADY_SHOW_NEW
   setvar VAR_HOENN_CONTEST_LADY 0
   setvar VAR_HOENN_CONTEST_LADY_GOOD 0
   setvar VAR_HOENN_CONTEST_LADY_OTHER 0

@@ -93,6 +93,10 @@ Every sound effect of the game (plan 05 · A3), what it stands for in the origin
 | `machine_ball` | `SEQ_SE_DP_BOWA` | A Poké Ball is laid on a Pokémon Center's machine (`anim heal`, plan 09 · L12): one to each Pokémon of the team that is no Egg, a soft pop and a small round note, before the heal's fanfare as the balls light. |
 | `lift_hum` | `SEQ_SE_DP_ELEBETA2` | A lift's car between floors (`anim elevator`, plan 09 · L12): half a second of a motor's even hum, played once to each round of the indicator's lights (four in every lift but the Battle Tower's, which has three), where the original loops its sound until the lights have gone round. |
 | `lift_ding` | `SEQ_SE_DP_PINPON` | A lift arrives at its floor (`anim elevator`): two notes of a chime, the second a third below the first. |
+| `contest_appeal` | — | A Pokémon makes its appeal in a Hoenn contest (plan 21 · H11, part f): a rising run of four bell notes over a high shimmer. |
+| `contest_cheer` | — | The crowd of a Hoenn contest warms to an appeal: clapping over a soft bed of noise and a whoop gliding up. |
+| `contest_groan` | — | The crowd of a Hoenn contest cools: a low murmur sliding downward. |
+| `contest_judge` | — | The judge of a Hoenn contest takes notice of a combo begun, or looks away: a short voiced "hm!". |
 
 **The Underground** (plan 06 · R16a) has no sounds of its own yet, and plays ones the game already has until plan 05 · A6 gives it its own: `stairs` going down, coming up and through a base's way in; `poketch_beep` for the radar's pulse and as the wall's game begins; in the wall, `ledge` for a blow of the pick, `rock_smash` for one of the hammer, `bump` on bare dark rock, `select` as a thing is bared, `levelup` when the last is out and `boulder` when the wall falls in; `exclaim` as a trap goes off, `cursor` for a turn in a hole or a bubble burst and `bump` for a blow at a trap's boulder; `rock_smash` for the Digger Drill; `levelup` for a flag put up at home.
 

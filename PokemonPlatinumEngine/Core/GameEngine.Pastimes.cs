@@ -28,7 +28,8 @@ public partial class GameEngine
         VillaRules.Furniture.Where(f => f.Places.Any(p => p.Blocks)).Select(f => (VillaMap, VillaLookScript(f))).Append(("pal_park", ParkCaughtAllScript));
 
     /// <summary>The flags and variables the game itself sets here, which scripts only read: the Villa's furniture, the day's visitor's words, the slot machines' and the Catching Show's records.</summary>
-    public static IEnumerable<string> PastimeFlags => VillaRules.Furniture.Select(f => f.Flag);
+    // The Safari Fan Club's new show is set by the runner's `safari end` in Hoenn (plan 21 · H11, part f), not by a script
+    public static IEnumerable<string> PastimeFlags => VillaRules.Furniture.Select(f => f.Flag).Append(Story.Broadcasts.SafariNewFlag);
     public static readonly string[] PastimeVariables = { GameCornerPrizes.StreakVariable, VillaRules.MessageVariable, VillaRules.VisitorVariable, PalParkState.RecordVariable };
 
     private readonly List<Prop> villaProps = new();

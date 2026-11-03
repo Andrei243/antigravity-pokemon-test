@@ -7,6 +7,8 @@
   "trees": "Round",
   // Emerald's Pokéblock feeders (plan 21 · H11, part d), read on their tiles: common.HoennFeeder
   "readAt": [ { "x": 72, "z": 26, "script": "HoennFeeder" }, { "x": 45, "z": 34, "script": "HoennFeeder" } ],
+  // The feeders drawn as Pokéblock feeders (plan 21 · H11, part f)
+  "props": [ { "type": "PokeblockFeeder", "x": 72, "y": 26 }, { "type": "PokeblockFeeder", "x": 45, "y": 34 } ],
   "people": {
     "fisherman": { "name": "Fisherman", "dialog": [ "I came looking for water Pokémon nobody sees in Hoenn. Is there a lake around here somewhere?" ] },
     "man_4": { "name": "Man", "dialog": [ "I'm going to catch heaps of rare Pokémon and trade them with my friends back home!" ] }

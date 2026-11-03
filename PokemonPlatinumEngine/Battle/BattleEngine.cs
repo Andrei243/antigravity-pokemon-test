@@ -421,6 +421,9 @@ public partial class BattleEngine
     /// <summary>The Pokéblock Case POKéBLOCK draws from in Hoenn's Safari Zone; null in every other battle.</summary>
     public Models.PokeblockCase? Pokeblocks { get; }
 
+    /// <summary>The Pokéblocks thrown in this battle (Hoenn's Safari Zone): the Safari Fan Club counts them (plan 21 · H11, part f).</summary>
+    public int PokeblocksThrown { get; private set; }
+
     /// <summary>The Pokéblocks the case lists, in its order, for the battle's list (<see cref="BattleMenuState.Pokeblocks"/>).</summary>
     public IReadOnlyList<(int Slot, Models.Pokeblock Block)> PokeblocksListed =>
         Pokeblocks?.Listed() ?? (IReadOnlyList<(int, Models.Pokeblock)>)System.Array.Empty<(int, Models.Pokeblock)>();

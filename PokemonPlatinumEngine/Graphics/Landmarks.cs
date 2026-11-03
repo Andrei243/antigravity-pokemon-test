@@ -64,6 +64,9 @@ internal static partial class Landmarks
             case PropType.Wreck:
                 HoennArt.Wreck(kit, w, d);
                 return true;
+            case PropType.PokeblockFeeder:
+                kit.Sprite(kit.Face("hoenn.feeder", 24, 34, HoennArt.PaintFeeder), 16, d - 12);
+                return true;
             case PropType.ShipCabin:
                 HoennArt.ShipCabin(kit, map, prop);
                 return true;

@@ -9,6 +9,8 @@
   "trees": "Round",
   // Emerald's Pokéblock feeders (plan 21 · H11, part d), read on their tiles: common.HoennFeeder
   "readAt": [ { "x": 64, "z": 70, "script": "HoennFeeder" } ],
+  // The feeders drawn as Pokéblock feeders (plan 21 · H11, part f)
+  "props": [ { "type": "PokeblockFeeder", "x": 64, "y": 70 } ],
   "people": {
     "safari_exit_attendant": { "name": "Attendant", "script": "ExitAttendant", "still": true },
     "boy_1": { "name": "Boy", "dialog": [ "Someone told me Pokémon gather round the little boxes in the grass if you leave a treat in them. I've got nothing to leave!" ] },

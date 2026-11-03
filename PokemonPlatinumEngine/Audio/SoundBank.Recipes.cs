@@ -91,6 +91,10 @@ public static partial class SoundBank
         Add("machine_ball", SoundGroup.Field, "SEQ_SE_DP_BOWA", "A Poké Ball is laid on a Pokémon Center's machine (`anim heal`): one to each Pokémon of the team.");
         Add("lift_hum", SoundGroup.Field, "SEQ_SE_DP_ELEBETA2", "A lift's car between floors (`anim elevator`): one hum to each round of its indicator's lights.");
         Add("lift_ding", SoundGroup.Field, "SEQ_SE_DP_PINPON", "A lift arrives at its floor (`anim elevator`): two notes of a chime.");
+        Add("contest_appeal", SoundGroup.Field, null, "A Pokémon makes its appeal in a Hoenn contest (plan 21 · H11, part f): a rising run of chimes.");
+        Add("contest_cheer", SoundGroup.Field, null, "The crowd of a Hoenn contest warms to an appeal: a burst of clapping and a whoop.");
+        Add("contest_groan", SoundGroup.Field, null, "The crowd of a Hoenn contest cools: a falling murmur.");
+        Add("contest_judge", SoundGroup.Field, null, "The judge of a Hoenn contest takes notice, or looks away: a short spoken \"hm!\".");
 
         // ---- Battles
         Add("send_out", SoundGroup.Battle, "SEQ_SE_DP_BOWA4", "A ball opens and a Pokémon comes out.");
@@ -470,6 +474,35 @@ public static partial class SoundBank
                 d.Bell(0, 0.34f, N(88), 2f, 1.3f, 0.4f);
                 d.Bell(0.16f, 0.46f, N(84), 2f, 1.3f, 0.42f);
                 return Finish(d.S, 0.36f);
+            case "contest_appeal":
+                // A rising run of four bell notes over a shimmer: the appeal made
+                d = new SoundDesign(0.7f, 0xC0A1u);
+                d.Bell(0, 0.3f, N(84), 3f, 1.1f, 0.3f);
+                d.Bell(0.07f, 0.3f, N(88), 3f, 1.1f, 0.3f);
+                d.Bell(0.14f, 0.3f, N(91), 3f, 1.1f, 0.3f);
+                d.Bell(0.21f, 0.45f, N(96), 3f, 1.1f, 0.34f);
+                d.Noise(0.05f, 0.5f, Filter.High, 6000f, 9000f, 0.06f, 0.7f, 0.1f, 2f);
+                return Finish(d.S, 0.34f);
+            case "contest_cheer":
+                // A crowd's applause: a bed of soft noise clapping irregularly, a whoop gliding up over it
+                d = new SoundDesign(1.1f, 0xC0A2u);
+                d.Noise(0, 1.05f, Filter.Band, 1800f, 1500f, 0.22f, 0.9f, 0.1f, 1.6f, 13f, 0.6f);
+                d.Crackle(0, 0.95f, 34, 2400f, 0.32f);
+                d.Tone(0.12f, 0.42f, Wave.Triangle, 520f, 980f, 0.18f, 0.08f, 1.6f, 0.5f, 6f, 0.02f);
+                return Finish(d.S, 0.4f);
+            case "contest_groan":
+                // The crowd let down: a low murmur sliding downward
+                d = new SoundDesign(0.8f, 0xC0A3u);
+                d.Noise(0, 0.75f, Filter.Band, 700f, 380f, 0.3f, 1.2f, 0.12f, 1.4f, 5f, 0.4f);
+                d.Tone(0.04f, 0.6f, Wave.Triangle, 230f, 150f, 0.18f, 0.1f, 1.5f, 0.5f, 4f, 0.03f);
+                return Finish(d.S, 0.32f);
+            case "contest_judge":
+                // A short spoken "hm!": a voiced buzz through two formants, the pitch falling a little
+                d = new SoundDesign(0.32f, 0xC0A4u);
+                d.Tone(0, 0.26f, Wave.Pulse, 170f, 140f, 0.2f, 0.03f, 1.8f, 0.3f);
+                d.Noise(0, 0.26f, Filter.Band, 600f, 520f, 0.12f, 4f, 0.03f, 1.8f);
+                d.Tone(0, 0.26f, Wave.Sine, 340f, 280f, 0.16f, 0.03f, 1.8f);
+                return Finish(d.S, 0.3f);
             case "save":
                 // A soft chime of three bells: written and kept
                 d = new SoundDesign(0.75f);

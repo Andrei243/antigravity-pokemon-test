@@ -4275,6 +4275,25 @@
       "lost": "„{player} a pierdut un Pokémon pe drum, dar n-a cedat deloc. Asta e atitudinea!”",
       "quote": "„Întrebat cum s-a simțit, {player} ne-a dat doar două cuvinte: {phrase}!”",
       "close": "„Atât deocamdată! Gabby și Ty se întorc curând pe drumuri. Fiți cu ochii-n patru!”"
+    },
+    "safari": {
+      "open": "„Bun venit la Clubul Fanilor Safari! În fiecare săptămână, ziua unui vizitator în Zona Safari din Hoenn.”",
+      "visit": "„Vizitatorul săptămânii este {player}, abia întors dintr-o zi în iarba înaltă a zonei.”",
+      "caughtNone": "„De data asta, {player} s-a întors fără nicio captură. Pokémonii sălbatici au fost precauți în ziua aceea!”",
+      "caughtOne": "„{player} a adus acasă un Pokémon din zonă!”",
+      "caught": "„{player} a adus acasă {n} Pokémoni din zonă!”",
+      "blocksNone": "„Și niciun Pokéblock aruncat. {player} a intrat doar cu mingi!”",
+      "blocksOne": "„{player} a aruncat un singur Pokéblock ca să câștige un Pokémon.”",
+      "blocks": "„{player} a aruncat {n} Pokéblocuri ca să câștige Pokémonii. Ce generozitate!”",
+      "close": "„Asta a fost Clubul Fanilor Safari! Luați-vă de mâncare și câteva Pokéblocuri, și ne vedem în zonă!”"
+    },
+    "contestLady": {
+      "open": "„Bună seara din Lilycove! În seara asta, un candidat la concursuri și doamna care îl antrenează.”",
+      "ready": "„Cu Pokéblocurile dăruite de prieteni, {mon} al ei e în sfârșit gata pentru Concursul de {quality}!”",
+      "good": "„Spune că Pokéblocurile au avut exact gustul potrivit. {mon} al ei n-a arătat niciodată mai bine!”",
+      "plain": "„Recunoaște că gusturile n-au fost chiar cele potrivite, dar {mon} al ei s-a bucurat de fiecare îmbucătură.”",
+      "thanks": "„A vrut să le mulțumească tuturor celor care i-au dat un Pokéblock, și mai ales lui {player}!”",
+      "close": "„Mult noroc pe scenă! Vă vom aplauda.”"
     }
   },
   "phrases": {
@@ -5360,6 +5379,10 @@
       "machineBall": "O minge e așezată",
       "liftHum": "Un lift zumzăie",
       "liftDing": "Un lift sună",
+      "contestAppeal": "O prezentare strălucește",
+      "contestCheer": "Publicul aclamă",
+      "contestGroan": "Publicul oftează",
+      "contestJudge": "Juriul murmură",
       "sendOut": "Se deschide o minge",
       "recall": "Un Pokémon e chemat înapoi",
       "shiny": "O sclipire",
