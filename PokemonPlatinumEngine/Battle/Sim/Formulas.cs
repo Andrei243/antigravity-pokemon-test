@@ -331,4 +331,12 @@ public sealed class BattleConditions
     /// Under rules with <see cref="Ruleset.BackStrikes"/> it loses its first turn (Legends: Arceus); Platinum's never read it.
     /// </summary>
     public bool Surprised { get; init; }
+
+    /// <summary>
+    /// A sky battle (plan 14 · B2; <c>docs/mechanics/rulings.md</c>, "Sky battles"): fought in the air by Pokémon that fly
+    /// or float alone (<see cref="Data.SkyBattles.CanFly"/>), the moves that need the ground refused
+    /// (<see cref="Data.SkyBattles.Grounded"/>). Handed in with the battle's other conditions and never changed while it
+    /// runs; a <see cref="BattleRecord"/>'s file keeps it.
+    /// </summary>
+    public bool InTheAir { get; init; }
 }

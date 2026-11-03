@@ -94,6 +94,12 @@ public class Trainer
         _ => null
     };
 
+    /// <summary>
+    /// A sky trainer (plan 14 · B2: <c>"sky"</c>), whose battle is fought in the air (<see cref="Battle.Sim.BattleConditions.InTheAir"/>):
+    /// a single or a double as ever, with only the Pokémon that fly or float taking part. None of Platinum's trainers is one.
+    /// </summary>
+    public bool InTheAir => Format == "sky";
+
     /// <summary>How the trainer thinks in battle (plan 06 · R9): Platinum's flags from the trainer's data.</summary>
     public Battle.Sim.Ai.AiFlags Ai { get; set; } = Battle.Sim.Ai.AiFlags.Basic;
 

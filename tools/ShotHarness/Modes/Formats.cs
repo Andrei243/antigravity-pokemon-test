@@ -345,6 +345,8 @@ partial class Harness
         SosShots();
         TripleShots();
         RotationShots();
+        SkyShots();
+        RoyalShots();
     }
 
     // Plan 14 · B6, a triple battle (ft30 to ft32), last in `formats` so nothing before it moves: a trainer of the

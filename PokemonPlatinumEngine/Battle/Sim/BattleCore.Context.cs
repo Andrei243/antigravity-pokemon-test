@@ -21,7 +21,7 @@ public sealed partial class BattleCore
 {
     public void Announce(string text) => Say(text);
 
-    public IEnumerable<Battler> ActiveFoes(Battler battler) => SlotsOf(Other(battler.Side)).Where(b => b.IsActive);
+    public IEnumerable<Battler> ActiveFoes(Battler battler) => PlacesOfFoes(battler).Where(b => b.IsActive);
 
     public bool ChangeStat(Battler target, StatType stat, int amount, Battler? source, bool announceFailure = false) =>
         ChangeStat(target, stat, amount, source, announceFailure, By.Ability);

@@ -431,3 +431,10 @@ public sealed record Rotated(Place Place, int Way, Pokemon Pokemon, bool Substit
 /// HP falls to nothing on the lines after it.
 /// </summary>
 public sealed record Judged(ArenaVerdict Verdict) : BattleEvent;
+
+/// <summary>
+/// A Battle Royal is over (plan 14 · B13; <see cref="BattleCore.RoyalStanding"/>): the four camps first first (0 the
+/// player's, 1 to 3 the other side's places) and each one's score, in the same order. It stands by itself in the log,
+/// after the lines that place them.
+/// </summary>
+public sealed record RoyalPlaced(IReadOnlyList<int> Standing, IReadOnlyList<int> Scores) : BattleEvent;

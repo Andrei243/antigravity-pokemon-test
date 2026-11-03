@@ -1,0 +1,13 @@
+{
+  "groundedMoves": [
+    "Body Slam", "Bulldoze", "Dig", "Dive", "Earth Power", "Earthquake", "Electric Terrain", "Fire Pledge", "Fissure",
+    "Flying Press", "Frenzy Plant", "Geomancy", "Grass Knot", "Grass Pledge", "Grassy Terrain", "Gravity", "Heat Crash",
+    "Heavy Slam", "Ingrain", "Land's Wrath", "Magnitude", "Mat Block", "Misty Terrain", "Mud Sport", "Muddy Water",
+    "Rototiller", "Seismic Toss", "Slam", "Smack Down", "Spikes", "Stomp", "Substitute", "Surf", "Thousand Arrows",
+    "Thousand Waves", "Toxic Spikes", "Water Pledge", "Water Sport"
+  ],
+  "groundedSpecies": [
+    "Pidgey", "Spearow", "Farfetch'd", "Doduo", "Dodrio", "Hoothoot", "Natu", "Murkrow", "Delibird", "Taillow", "Starly",
+    "Chatot", "Pidove", "Archen", "Ducklett", "Rufflet", "Vullaby", "Fletchling", "Hawlucha"
+  ]
+}

@@ -173,7 +173,12 @@ public enum BattleArena
     /// A city's street (plan 22, wave 48): flagstones under a row of buildings, for a battle begun on paving where the
     /// area's header names a city's background.
     /// </summary>
-    City
+    City,
+    /// <summary>
+    /// The sky (plan 14 · B2): a sky battle's stage, platforms of cloud over a sea of cloud, wherever it is met. No map
+    /// names it; a sky trainer's battle sets it.
+    /// </summary>
+    Sky
 }
 
 /// <summary>How a town's houses are built (style guide, "Buildings"); public buildings look the same everywhere.</summary>

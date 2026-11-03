@@ -146,7 +146,8 @@ public sealed class TrainerAi : IBattleController
         // A rotation battle turns to whichever of its three has the best move against the front (plan 14 · B7)
         if (battle.IsRotation) return Rotating(battle, mine, flags);
         // A triple battle is thought through as a double is, over every place in reach (plan 14 · B6)
-        return battle.IsDouble || battle.IsTriple ? Doubles(battle, mine, flags) : Singles(battle, mine, flags);
+        // A Battle Royal too, over everyone else on the field (plan 14 · B13)
+        return battle.IsDouble || battle.IsTriple || battle.IsRoyal ? Doubles(battle, mine, flags) : Singles(battle, mine, flags);
     }
 
     /// <summary>
@@ -269,7 +270,7 @@ public sealed class TrainerAi : IBattleController
                 bestOf[target] = (-1, -1);
                 continue;
             }
-            if (target.Side != mine.Side) battle.AiMemory.RecordLastMove(target);
+            if (battle.AreFoes(mine, target)) battle.AiMemory.RecordLastMove(target);
             var look = new AiThinking(battle, battle.AiMemory, mine, target, flags);
             look.Think();
             if (look.Escaped) return Escape(battle, mine);
@@ -284,7 +285,7 @@ public sealed class TrainerAi : IBattleController
             int slot = best[battle.Random.Roll(RollKind.AiChoice, best.Count)];
             int score = look.Scores[best[0]];
             // A move on its own partner is only worth it scored at 100 or more
-            if (target.Side == mine.Side && score < 100) score = -1;
+            if (!battle.AreFoes(mine, target) && score < 100) score = -1;
             bestOf[target] = (slot, score);
             lastScores = look.Scores;
         }
@@ -297,7 +298,7 @@ public sealed class TrainerAi : IBattleController
 
         var move = mine.Pokemon!.Moves[moveSlot].Data;
         var aim = chosen.Place;
-        if (move.Target == MoveTarget.UserOrAlly && chosen.Side == BattleSide.Player) aim = mine.Place;
+        if (move.Target == MoveTarget.UserOrAlly && (battle.IsRoyal ? battle.AreFoes(mine, chosen) : chosen.Side == BattleSide.Player)) aim = mine.Place;
         if (move.Name == "Curse" && !mine.HasType(PokemonType.Ghost)) aim = mine.Place;
         return Usable(battle, mine, moveSlot, lastScores ?? new int[4], aim);
     }

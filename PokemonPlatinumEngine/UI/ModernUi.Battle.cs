@@ -126,8 +126,9 @@ internal static partial class ModernUi
                     if (slide >= 0f) TripleBox(at.X + 640 * slide, at.Y, mine, choosing && battle.MenuBattler.Slot == slot);
                 }
         }
-        else if (battle.IsHorde)
+        else if (battle.IsHorde || battle.IsRoyal)
         {
+            // (A Battle Royal's three others are boxed as a horde's are: plan 14 · B13)
             // A horde (plan 14 · B4): the foes' small boxes stacked down the left, the player's own box as in a single.
             // The information panel shows every foe on a card of its own, so the boxes stand back while it is open
             if (hud.MenuState != BattleMenuState.Info)
@@ -721,7 +722,7 @@ internal static partial class ModernUi
             var left = battle.IsDouble || battle.IsSos ? battle.EnemySlots.ElementAtOrDefault(1) : null;
             // A horde's move cards tell of the first foe still standing; the target menu tells of each (plan 14 · B4)
             // and a triple battle's of the first in reach of the Pokémon choosing (plan 14 · B6)
-            var right = battle.IsHorde || battle.IsTriple
+            var right = battle.IsHorde || battle.IsTriple || battle.IsRoyal
                 ? battle.EnemySlots.FirstOrDefault(b => b.IsActive && PokemonPlatinumEngine.Battle.Sim.BattleCore.InReach(battle.Format, battle.MenuBattler.Place, b.Place)) ?? battle.EnemySlots[0]
                 : battle.EnemySlots[0];
             for (int i = 0; i < Math.Min(4, p.Moves.Count); i++)

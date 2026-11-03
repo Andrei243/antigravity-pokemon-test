@@ -70,6 +70,10 @@ internal static partial class ArenaFx
             case BattleArena.League:
                 HallMatter(fx, time, spec.Theme, spec.Kind == BattleArena.League);
                 break;
+            case BattleArena.Sky:
+                // The sky (plan 14 · B2): wisps of cloud blowing past
+                Wisps(fx, time, night);
+                break;
             case BattleArena.Underwater:
                 // The sea floor (plan 21 · H5): bubbles rising, the waves' light slanting down, motes adrift
                 SeaBubbles(fx, time);
@@ -128,6 +132,21 @@ internal static partial class ArenaFx
             float breathe = 0.75f + 0.25f * MathF.Sin(time * 0.4f + i * 1.7f);
             var at = new Vector3(x, 6f, z);
             fx.Streak(FxShape.Glow, at, along, w, 4.5f, Rgba(color.R, color.G, color.B, (int)(alpha * breathe)), depth: true);
+        }
+    }
+
+    /// <summary>Wisps of cloud blowing across the sky's stage (plan 14 · B2), in the scene, greyer after dark.</summary>
+    private static void Wisps(FxList fx, float time, bool night)
+    {
+        var min = new Vector3(-26f, -2f, -14f);
+        var max = new Vector3(18f, 6f, 20f);
+        for (int i = 0; i < 26; i++)
+        {
+            var speed = new Vector3(1.6f + R(i, 3) * 1.4f, 0f, 0.15f);
+            var p = Drift(i, time, min, max, speed, 30);
+            float u = (p.X - min.X) / (max.X - min.X);
+            var color = night ? Rgba(170, 186, 220, (int)(90 * EdgeFade(u))) : Rgba(255, 255, 255, (int)(150 * EdgeFade(u)));
+            fx.Streak(FxShape.Wisp, p, Vector3.UnitX, 0.5f + R(i, 4) * 0.5f, 3.5f + R(i, 5) * 3f, color, FxBlend.Alpha, depth: true);
         }
     }
 

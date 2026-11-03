@@ -52,7 +52,15 @@ public enum BattleFormat
     /// (<see cref="Sim.BattleChoice.Rotation"/>). Fought only under rules that have it (<see cref="Data.Ruleset.Rotations"/>)
     /// against one trainer with three able on each side; anywhere else it is the single it began as (<see cref="BattleFormats.FallBack"/>).
     /// </summary>
-    Rotation
+    Rotation,
+    /// <summary>
+    /// A Battle Royal (plan 14 · B13, Sun and Moon's): four trainers, each for themselves, the player and three others with
+    /// a Pokémon out each; the battle ends the moment any of the four has none left able to fight, and they are placed by
+    /// knock-outs dealt and Pokémon left (<see cref="Sim.BattleCore.RoyalStanding"/>). Fought only under rules that have it
+    /// (<see cref="Data.Ruleset.Royals"/>) against three trainers; anywhere else it is the double the first two make
+    /// (<see cref="BattleFormats.FallBack"/>).
+    /// </summary>
+    Royal
 }
 
 /// <summary>What each format is made of (plan 14 · B3): how many places a side has, and what a battle asked for becomes.</summary>
@@ -70,6 +78,8 @@ public static class BattleFormats
         BattleFormat.Sos => side == BattleSide.Enemy ? 2 : 1,
         // Three a side (plan 14 · B6)
         BattleFormat.Triple => 3,
+        // The player's one place and one for each of the three others (plan 14 · B13)
+        BattleFormat.Royal => side == BattleSide.Enemy ? 3 : 1,
         _ => 1
     };
 
@@ -107,6 +117,14 @@ public static class BattleFormats
             if (!partner && rules.Rotations && ownAble >= 3 && trainers == 1 && foesAble >= 3 && kind == BattleKind.Normal)
                 return BattleFormat.Rotation;
             asked = BattleFormat.Single;
+        }
+        // A Battle Royal (plan 14 · B13): the player alone against three trainers, each with one able to fight, under rules
+        // that have it; otherwise the double the first two of them make
+        if (asked == BattleFormat.Royal)
+        {
+            if (!partner && rules.Royals && trainers == 3 && ownAble > 0 && foesAble > 0 && kind == BattleKind.Normal)
+                return BattleFormat.Royal;
+            asked = BattleFormat.Double;
         }
         return (asked == BattleFormat.Double || partnerStays) && canDouble && !special ? BattleFormat.Double : BattleFormat.Single;
     }

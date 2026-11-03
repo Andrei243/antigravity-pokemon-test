@@ -194,6 +194,7 @@ public sealed class BattleRecordFile
                 Fishing = conditions.Fishing,
                 OnlyBall = conditions.OnlyBall,
                 Surprised = conditions.Surprised,
+                InTheAir = conditions.InTheAir,
                 // The only species a battle asks about having caught is the wild one's (the Repeat Ball)
                 Caught = setup.WildPokemon.Select(p => p.Species).Distinct().Where(conditions.HasCaught).Select(s => s.DexNumber).ToList()
             }
@@ -219,7 +220,7 @@ public sealed class BattleRecordFile
     /// <summary>The record the rules replay: the seed and the answers, with the two flags a record keeps.</summary>
     [System.Text.Json.Serialization.JsonIgnore]
     public BattleRecord Record => new(Seed, Answers.Select(turn => (IReadOnlyList<BattleChoice>)turn.Select(c => c.ToChoice()).ToList()).ToList(),
-        Conditions.Inverse, OffersSwitch, Difficulty, RunLevelCap, CrossedExp: CrossedExp, NoLaterMechanics: NoLaterMechanics, FriendPartner: FriendPartner == true);
+        Conditions.Inverse, OffersSwitch, Difficulty, RunLevelCap, CrossedExp: CrossedExp, NoLaterMechanics: NoLaterMechanics, FriendPartner: FriendPartner == true, InTheAir: Conditions.InTheAir);
 
     /// <summary>Whom the battle was against: the first trainer's class and name, or the first wild Pokémon's species.</summary>
     [System.Text.Json.Serialization.JsonIgnore]
@@ -263,7 +264,8 @@ public sealed class BattleRecordFile
                 Inverse = Conditions.Inverse,
                 Fishing = Conditions.Fishing,
                 OnlyBall = Conditions.OnlyBall,
-                Surprised = Conditions.Surprised
+                Surprised = Conditions.Surprised,
+                InTheAir = Conditions.InTheAir
             },
             PlayerName = PlayerName,
             PlayerController = null,
@@ -496,6 +498,9 @@ public sealed class RecordedConditions
 
     /// <summary>The wild Pokémon was met from behind (plan 10 · F5).</summary>
     public bool Surprised { get; set; }
+
+    /// <summary>A sky battle (plan 14 · B2): who may take part and which moves may be used. A file without it was fought on the ground.</summary>
+    public bool InTheAir { get; set; }
 
     /// <summary>The wild species met that the player had caught before, by their National Pokédex numbers (the Repeat Ball).</summary>
     public List<int> Caught { get; set; } = new();
