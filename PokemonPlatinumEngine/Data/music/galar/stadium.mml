@@ -1,0 +1,60 @@
+# A Gym's stadium: the lobby and the pitch where the Gym Challenge is held, the crowd waiting in the stands; a
+# stadium organ's anthem in C over a brass band, a marching snare, the crowd's claps and, in
+# the second half, its chant; the same by day and night.
+# Original composition for this game (plan 31 · MU5), in the modern sound.
+title Stadium (Galar)
+tempo 124
+meter 4/4
+reverb 0.3
+night none
+room hall 2.0
+
+track lead stadiumorgan vol=0.68 pan=0 rev=0.32
+  o6 e2. r4 | L o5 g4 o6 c8 e8 g4 e4 | o6 e4 c8 o5 a8 o6 c4 e4 | o6 f4 c8 o5 a8 o6 c4 f4 |
+  o6 d2. r4 | o6 e4. d8 c4 o5 g4 | o5 a4 o6 c8 e8 a4 e4 | o6 d4 f8 a8 f4 d4 |
+  o5 b2. r4 | o6 c4 f8 a8 f4 c4 | o6 d4 o5 b8 g8 b4 o6 d4 | o6 e4 g8 e8 o5 b4 o6 e4 |
+  o6 c2 o5 a4 e4 | o5 a4 o6 c8 f8 a4 f4 | o6 g4 d8 o5 b8 g4 b4 | o6 c4 e8 g8 o7 c4 o6 g4 |
+  o6 e2. r4 |
+
+track band cornet vol=0.32 pan=-0.3 rev=0.28
+  o4 r4 (c e g)4 r4 (c e g)4 | L o4 r4 (c e g)4 r4 (c e g)4 | o4 r4 (a > c e)4 r4 (a > c e)4 | o4 r4 (f a > c)4 r4 (f a > c)4 |
+  o4 r4 (g b > d)4 r4 (g b > d)4 | o4 r4 (c e g)4 r4 (c e g)4 | o4 r4 (a > c e)4 r4 (a > c e)4 | o4 r4 (d f a)4 r4 (d f a)4 |
+  o4 r4 (g b > d)4 r4 (g b > d)4 | o4 r4 (f a > c)4 r4 (f a > c)4 | o4 r4 (g b > d)4 r4 (g b > d)4 | o4 r4 (e g b)4 r4 (e g b)4 |
+  o4 r4 (a > c e)4 r4 (a > c e)4 | o4 r4 (f a > c)4 r4 (f a > c)4 | o4 r4 (g b > d)4 r4 (g b > d)4 | o4 r4 (c e g)4 r4 (c e g)4 |
+  o4 r4 (c e g)4 r4 (c e g)4 |
+
+track pad strings vol=0.27 pan=0.25 rev=0.4
+  o3 (c e g)1 | L o3 (c e g)1 | o3 (a > c e)1 | o3 (f a > c)1 |
+  o3 (g b > d)1 | o3 (c e g)1 | o3 (a > c e)1 | o3 (d f a)1 |
+  o3 (g b > d)1 | o3 (f a > c)1 | o3 (g b > d)1 | o3 (e g b)1 |
+  o3 (a > c e)1 | o3 (f a > c)1 | o3 (g b > d)1 | o3 (c e g)1 |
+  o3 (c e g)1 |
+
+track bass tuba vol=0.68 rev=0.08
+  o3 c4 g4 c4 g4 | L o3 c4 g4 c4 g4 | o3 a4 e4 a4 e4 | o3 f4 c4 f4 c4 |
+  o3 g4 d4 g4 d4 | o3 c4 g4 c4 g4 | o3 a4 e4 a4 e4 | o3 d4 a4 d4 a4 |
+  o3 g4 d4 g4 d4 | o3 f4 c4 f4 c4 | o3 g4 d4 g4 d4 | o3 e4 b4 e4 b4 |
+  o3 a4 e4 a4 e4 | o3 f4 c4 f4 c4 | o3 g4 d4 g4 d4 | o3 c4 g4 c4 g4 |
+  o3 c4 g4 c4 g4 |
+
+track drums kit vol=0.34 rev=0.14
+  v80 b4 s16 s16 s16 s16 s8 s8 s8 s8 | L v80 b4 v56 s8 s8 v74 b4 v56 s8 s8 | v80 b4 v56 s8 s8 v74 b4 v56 s8 s8 | v80 b4 v56 s8 s8 v74 b4 v56 s8 s8 |
+  v80 b4 v56 s8 s8 v74 b4 v56 s8 s8 | v80 b4 v56 s8 s8 v74 b4 v56 s8 s8 | v80 b4 v56 s8 s8 v74 b4 v56 s8 s8 | v80 b4 v56 s8 s8 v74 b4 v56 s8 s8 |
+  v80 b4 v56 s8 s8 v74 b4 v56 s8 s8 | v80 b4 v56 s8 s8 v74 b4 v56 s8 s8 | v80 b4 v56 s8 s8 v74 b4 v56 s8 s8 | v80 b4 v56 s8 s8 v74 b4 v56 s8 s8 |
+  v80 b4 v56 s8 s8 v74 b4 v56 s8 s8 | v80 b4 v56 s8 s8 v74 b4 v56 s8 s8 | v80 b4 v56 s8 s8 v74 b4 v56 s8 s8 | v80 b4 v56 s8 s8 v74 b4 v56 s8 s8 |
+  v80 b4 s16 s16 s16 s16 s8 s8 s8 s8 |
+
+track crowd kit vol=0.38 pan=0.2 rev=0.4
+  r4 v96 x4 r4 x4 | L r4 v96 x4 r4 x4 | r4 v96 x4 r4 x4 | r4 v96 x4 r4 x4 |
+  r4 v96 x4 r4 x4 | r4 v96 x4 r4 x4 | r4 v96 x4 r4 x4 | r4 v96 x4 r4 x4 |
+  r4 v96 x4 r4 x4 | r4 v96 x4 r4 x4 | r4 v96 x4 r4 x4 | r4 v96 x4 r4 x4 |
+  r4 v96 x4 r4 x4 | r4 v96 x4 r4 x4 | r4 v96 x4 r4 x4 | r4 v96 x4 r4 x4 |
+  r4 v96 x4 r4 x4 |
+
+# The crowd's chant on each bar's root in the second half
+track chant choir vol=0.27 pan=-0.15 rev=0.5
+  o4 v100 c4 r4 v90 c4 r4 | L r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  r1 | o4 v100 f4 r4 v90 f4 r4 | o4 v100 g4 r4 v90 g4 r4 | o4 v100 e4 r4 v90 e4 r4 |
+  o4 v100 a4 r4 v90 a4 r4 | o4 v100 f4 r4 v90 f4 r4 | o4 v100 g4 r4 v90 g4 r4 | o4 v100 c4 r4 v90 c4 r4 |
+  o4 v100 c4 r4 v90 c4 r4 |

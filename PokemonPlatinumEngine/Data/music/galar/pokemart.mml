@@ -1,0 +1,37 @@
+# A Poké Mart of Galar: a bouncing accordion tune in G over a tuba's walk, a fiddle's after-beats and a
+# shaker by the till; at night a musette.
+# Original composition for this game (plan 31 · MU5), in the modern sound.
+title Poké Mart (Galar)
+tempo 128
+meter 4/4
+reverb 0.22
+nighttempo 0.95
+room room 0.8
+
+track lead accordion night=musette vol=0.72 pan=0.05 rev=0.22
+  o6 g2 r2 | L o5 d8 g8 b8 g8 d4 b4 | o5 e8 g8 b8 g8 e4 b4 | o5 e8 g8 o6 c8 o5 g8 e4 c4 |
+  o5 f+8 a8 o6 d8 c8 o5 a4 r4 | o5 b8 a8 g8 a8 b4 g4 | o5 g8 b8 o6 e8 d8 e4 o5 b4 | o5 a8 o6 c8 e8 d8 c4 o5 a4 |
+  o5 f+8 a8 o6 c8 d8 o5 f+4 r4 | o5 e4 g8 o6 c8 e4 c4 | o5 f+4 a8 o6 d8 f+4 d4 | o5 f+4 b8 o6 d8 f+4 d4 |
+  o5 g4 b8 o6 e8 g4 e4 | o5 g8 a8 b8 o6 c8 e4 c4 | o5 a8 b8 o6 c8 d8 f+4 d4 | o6 d8 o5 b8 g8 b8 o6 d4 g4 |
+  o6 g2 r2 |
+
+track fiddle pizzicato vol=0.43 pan=-0.3 rev=0.22
+  o4 r4 o4 (g b > d)8 r8 r4 o4 (g b > d)8 r8 | L o4 r4 o4 (g b > d)8 r8 r4 o4 (g b > d)8 r8 | o4 r4 o4 (e g b)8 r8 r4 o4 (e g b)8 r8 | o4 r4 o4 (c e g)8 r8 r4 o4 (c e g)8 r8 |
+  o4 r4 o4 (d f+ a)8 r8 r4 o4 (d f+ a)8 r8 | o4 r4 o4 (g b > d)8 r8 r4 o4 (g b > d)8 r8 | o4 r4 o4 (e g b)8 r8 r4 o4 (e g b)8 r8 | o4 r4 o4 (a > c e)8 r8 r4 o4 (a > c e)8 r8 |
+  o4 r4 o4 (d f+ a)8 r8 r4 o4 (d f+ a)8 r8 | o4 r4 o4 (c e g)8 r8 r4 o4 (c e g)8 r8 | o4 r4 o4 (d f+ a)8 r8 r4 o4 (d f+ a)8 r8 | o4 r4 o4 (b > d f+)8 r8 r4 o4 (b > d f+)8 r8 |
+  o4 r4 o4 (e g b)8 r8 r4 o4 (e g b)8 r8 | o4 r4 o4 (c e g)8 r8 r4 o4 (c e g)8 r8 | o4 r4 o4 (d f+ a)8 r8 r4 o4 (d f+ a)8 r8 | o4 r4 o4 (g b > d)8 r8 r4 o4 (g b > d)8 r8 |
+  o4 r4 o4 (g b > d)8 r8 r4 o4 (g b > d)8 r8 |
+
+track bass tuba vol=0.72 rev=0.06
+  o3 g4 d8 g8 b4 d4 | L o3 g4 d8 g8 b4 d4 | o3 e4 b8 e8 g4 b4 | o3 c4 g8 c8 e4 g4 |
+  o3 d4 a8 d8 f+4 a4 | o3 g4 d8 g8 b4 d4 | o3 e4 b8 e8 g4 b4 | o3 a4 e8 a8 c4 e4 |
+  o3 d4 a8 d8 f+4 a4 | o3 c4 g8 c8 e4 g4 | o3 d4 a8 d8 f+4 a4 | o3 b4 f+8 b8 d4 f+4 |
+  o3 e4 b8 e8 g4 b4 | o3 c4 g8 c8 e4 g4 | o3 d4 a8 d8 f+4 a4 | o3 g4 d8 g8 b4 d4 |
+  o3 g4 d8 g8 b4 d4 |
+
+track shaker kit vol=0.2 pan=0.3 rev=0.12
+  v50 b8 v30 k8 v40 k8 v30 k8 v46 x8 v30 k8 v40 k8 v30 k8 | L v50 b8 v30 k8 v40 k8 v30 k8 v46 x8 v30 k8 v40 k8 v30 k8 | v50 b8 v30 k8 v40 k8 v30 k8 v46 x8 v30 k8 v40 k8 v30 k8 | v50 b8 v30 k8 v40 k8 v30 k8 v46 x8 v30 k8 v40 k8 v30 k8 |
+  v50 b8 v30 k8 v40 k8 v30 k8 v46 x8 v30 k8 v40 k8 v30 k8 | v50 b8 v30 k8 v40 k8 v30 k8 v46 x8 v30 k8 v40 k8 v30 k8 | v50 b8 v30 k8 v40 k8 v30 k8 v46 x8 v30 k8 v40 k8 v30 k8 | v50 b8 v30 k8 v40 k8 v30 k8 v46 x8 v30 k8 v40 k8 v30 k8 |
+  v50 b8 v30 k8 v40 k8 v30 k8 v46 x8 v30 k8 v40 k8 v30 k8 | v50 b8 v30 k8 v40 k8 v30 k8 v46 x8 v30 k8 v40 k8 v30 k8 | v50 b8 v30 k8 v40 k8 v30 k8 v46 x8 v30 k8 v40 k8 v30 k8 | v50 b8 v30 k8 v40 k8 v30 k8 v46 x8 v30 k8 v40 k8 v30 k8 |
+  v50 b8 v30 k8 v40 k8 v30 k8 v46 x8 v30 k8 v40 k8 v30 k8 | v50 b8 v30 k8 v40 k8 v30 k8 v46 x8 v30 k8 v40 k8 v30 k8 | v50 b8 v30 k8 v40 k8 v30 k8 v46 x8 v30 k8 v40 k8 v30 k8 | v50 b8 v30 k8 v40 k8 v30 k8 v46 x8 v30 k8 v40 k8 v30 k8 |
+  v50 b8 v30 k8 v40 k8 v30 k8 v46 x8 v30 k8 v40 k8 v30 k8 |

@@ -1,0 +1,37 @@
+# Victory over a wild Pokémon of Galar: a fiddle's flourish in G and a loop that strolls home over an
+# accordion's after-beats and a bodhrán. Original composition for this game (plan 31 · MU5), in the modern sound.
+title Victory! Wild Pokémon (Galar)
+tempo 138
+meter 4/4
+reverb 0.22
+room hall 1.3
+
+track lead fiddle vol=0.74 pan=0 rev=0.24
+  o5 d8 g8 b8 o6 d8 g4 d4 | o5 b2. r4 | L o5 b4 a8 g8 b4 o6 d4 | o6 e4 c8 o5 g8 o6 c4 e4 |
+  o6 d4 o5 a8 f+8 a4 o6 d4 | o5 b2 g4 b4 | o5 g4 b8 o6 e8 d8 o5 b8 g4 | o6 c4 e8 d8 c4 o5 g4 |
+  o5 a4 o6 d8 c8 o5 a4 f+4 | o5 g2. r4 |
+
+track comp accordion vol=0.34 pan=0.3 rev=0.24
+  o4 (g b > d)2 r2 | o4 (g b > d)2 r2 | L o4 r4 (g b > d)4 r4 (g b > d)4 | o4 r4 (c e g)4 r4 (c e g)4 |
+  o4 r4 (d f+ a)4 r4 (d f+ a)4 | o4 r4 (g b > d)4 r4 (g b > d)4 | o4 r4 (e g b)4 r4 (e g b)4 | o4 r4 (c e g)4 r4 (c e g)4 |
+  o4 r4 (d f+ a)4 r4 (d f+ a)4 | o4 r4 (g b > d)4 r4 (g b > d)4 |
+
+track pad strings vol=0.24 pan=-0.3 rev=0.3
+  r1 | r1 | L o4 (g b > d)1 | o4 (c e g)1 |
+  o4 (d f+ a)1 | o4 (g b > d)1 | o4 (e g b)1 | o4 (c e g)1 |
+  o4 (d f+ a)1 | o4 (g b > d)1 |
+
+track bass bass vol=0.72 rev=0.08
+  o3 g8 r8 g8 r8 g4 d4 | o3 g8 r8 g8 r8 g4 d4 | L o3 g4 d4 g4 d4 | o3 c4 g4 c4 g4 |
+  o3 d4 a4 d4 a4 | o3 g4 d4 g4 d4 | o3 e4 b4 e4 b4 | o3 c4 g4 c4 g4 |
+  o3 d4 a4 d4 a4 | o3 g4 d4 g4 d4 |
+
+track bodhran bodhran vol=0.43 pan=-0.15 rev=0.18
+  r1 | r1 | L o4 v100 g4 v60 g8 g8 v84 g4 v60 g8 g8 | o4 v100 c4 v60 c8 c8 v84 c4 v60 c8 c8 |
+  o4 v100 d4 v60 d8 d8 v84 d4 v60 d8 d8 | o4 v100 g4 v60 g8 g8 v84 g4 v60 g8 g8 | o4 v100 e4 v60 e8 e8 v84 e4 v60 e8 e8 | o4 v100 c4 v60 c8 c8 v84 c4 v60 c8 c8 |
+  o4 v100 d4 v60 d8 d8 v84 d4 v60 d8 d8 | o4 v100 g4 v60 g8 g8 v84 g4 v60 g8 g8 |
+
+track drums kit vol=0.36 rev=0.12
+  v88 b8 s16 s16 s8 r8 b4 b4 | (b c)2. r4 | L b4 v76 x4 v88 b8 b8 v76 x4 | b4 v76 x4 v88 b8 b8 v76 x4 |
+  b4 v76 x4 v88 b8 b8 v76 x4 | b4 v76 x4 v88 b8 b8 v76 x4 | b4 v76 x4 v88 b8 b8 v76 x4 | b4 v76 x4 v88 b8 b8 v76 x4 |
+  b4 v76 x4 v88 b8 b8 v76 x4 | b4 s4 s16 s16 s16 s16 s8 s8 |

@@ -1,0 +1,44 @@
+# A Pokémon Center of Paldea: an easy tune in C on the marimba over a nylon guitar picked softly and warm
+# strings, a wood block keeping time; at night a flute and a harp.
+# Original composition for this game (plan 31 · MU6), in the modern sound.
+title Pokémon Center (Paldea)
+tempo 96
+meter 4/4
+reverb 0.26
+nighttempo 0.95
+room room 0.9
+
+track lead marimba night=flute vol=0.84 pan=0 rev=0.26
+  o5 c2. r4 | L o5 e4. g8 e4 c4 | o5 a4 o6 c8 o5 a8 e2 | o5 f4 a8 o6 c8 o5 a4 f4 |
+  o5 g2 d4 b4 | o6 c4. o5 b8 g4 e4 | o5 e4 a8 g8 e4 c4 | o5 d4 f8 a8 o6 d4 o5 a4 |
+  o5 g2. r4 | o5 a4. g8 f4 c4 | o5 b4. a8 g4 d4 | o5 e4 g8 b8 o6 e4 o5 b4 |
+  o5 a2 e4 a4 | o6 c4 o5 a8 f8 c4 f4 | o5 d4 g8 b8 o6 d4 o5 b4 | o6 c4 o5 g8 e8 c4 e4 |
+  o5 c2. r4 |
+
+track pick nylonguitar night=harp vol=0.48 pan=-0.3 rev=0.24
+  o4 c8 o4 e8 o4 g8 o4 e8 o4 c8 o4 e8 o4 g8 o4 e8 | L o4 c8 o4 e8 o4 g8 o4 e8 o4 c8 o4 e8 o4 g8 o4 e8 | o4 a8 o5 c8 o5 e8 o5 c8 o4 a8 o5 c8 o5 e8 o5 c8 | o4 f8 o4 a8 o5 c8 o4 a8 o4 f8 o4 a8 o5 c8 o4 a8 |
+  o4 g8 o4 b8 o5 d8 o4 b8 o4 g8 o4 b8 o5 d8 o4 b8 | o4 c8 o4 e8 o4 g8 o4 e8 o4 c8 o4 e8 o4 g8 o4 e8 | o4 a8 o5 c8 o5 e8 o5 c8 o4 a8 o5 c8 o5 e8 o5 c8 | o4 d8 o4 f8 o4 a8 o4 f8 o4 d8 o4 f8 o4 a8 o4 f8 |
+  o4 g8 o4 b8 o5 d8 o4 b8 o4 g8 o4 b8 o5 d8 o4 b8 | o4 f8 o4 a8 o5 c8 o4 a8 o4 f8 o4 a8 o5 c8 o4 a8 | o4 g8 o4 b8 o5 d8 o4 b8 o4 g8 o4 b8 o5 d8 o4 b8 | o4 e8 o4 g8 o4 b8 o4 g8 o4 e8 o4 g8 o4 b8 o4 g8 |
+  o4 a8 o5 c8 o5 e8 o5 c8 o4 a8 o5 c8 o5 e8 o5 c8 | o4 f8 o4 a8 o5 c8 o4 a8 o4 f8 o4 a8 o5 c8 o4 a8 | o4 g8 o4 b8 o5 d8 o4 b8 o4 g8 o4 b8 o5 d8 o4 b8 | o4 c8 o4 e8 o4 g8 o4 e8 o4 c8 o4 e8 o4 g8 o4 e8 |
+  o4 c8 o4 e8 o4 g8 o4 e8 o4 c8 o4 e8 o4 g8 o4 e8 |
+
+track pad strings vol=0.22 pan=0.25 rev=0.35
+  o3 (c e g)1 | L o3 (c e g)1 | o3 (a > c e)1 | o3 (f a > c)1 |
+  o3 (g b > d)1 | o3 (c e g)1 | o3 (a > c e)1 | o3 (d f a)1 |
+  o3 (g b > d)1 | o3 (f a > c)1 | o3 (g b > d)1 | o3 (e g b)1 |
+  o3 (a > c e)1 | o3 (f a > c)1 | o3 (g b > d)1 | o3 (c e g)1 |
+  o3 (c e g)1 |
+
+track bass bass vol=0.67 rev=0.06
+  o3 c2 g2 | L o3 c2 g2 | o3 a2 e2 | o3 f2 c2 |
+  o3 g2 d2 | o3 c2 g2 | o3 a2 e2 | o3 d2 a2 |
+  o3 g2 d2 | o3 f2 c2 | o3 g2 d2 | o3 e2 b2 |
+  o3 a2 e2 | o3 f2 c2 | o3 g2 d2 | o3 c2 g2 |
+  o3 c2 g2 |
+
+track clock kit vol=0.14 pan=0.3 rev=0.15
+  v40 w4 v28 w4 v34 w4 v28 w4 | L v40 w4 v28 w4 v34 w4 v28 w4 | v40 w4 v28 w4 v34 w4 v28 w4 | v40 w4 v28 w4 v34 w4 v28 w4 |
+  v40 w4 v28 w4 v34 w4 v28 w4 | v40 w4 v28 w4 v34 w4 v28 w4 | v40 w4 v28 w4 v34 w4 v28 w4 | v40 w4 v28 w4 v34 w4 v28 w4 |
+  v40 w4 v28 w4 v34 w4 v28 w4 | v40 w4 v28 w4 v34 w4 v28 w4 | v40 w4 v28 w4 v34 w4 v28 w4 | v40 w4 v28 w4 v34 w4 v28 w4 |
+  v40 w4 v28 w4 v34 w4 v28 w4 | v40 w4 v28 w4 v34 w4 v28 w4 | v40 w4 v28 w4 v34 w4 v28 w4 | v40 w4 v28 w4 v34 w4 v28 w4 |
+  v40 w4 v28 w4 v34 w4 v28 w4 |

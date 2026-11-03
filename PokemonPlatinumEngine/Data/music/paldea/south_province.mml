@@ -1,0 +1,51 @@
+# The southern province's open roads: dry hills, olive trees and a long way to go, a trumpet in D over a
+# flamenco guitar's strum, castanets and a cajón, strings swelling in the second half; at night a horn and a harp.
+# Original composition for this game (plan 31 · MU6), in the modern sound.
+title South Province
+tempo 120
+meter 4/4
+reverb 0.3
+nighttempo 0.9
+room hall 1.9
+
+track lead trumpet night=horn vol=0.6 pan=0.05 rev=0.3
+  o5 d2. r4 | L o5 a4 o6 d8 e8 f+4 d4 | o6 e4 c+8 o5 a8 e4 a4 | o5 b4 o6 d8 f+8 b4 f+4 |
+  o6 g2 d4 o5 b4 | o6 d4. e8 f+4 a4 | o6 e4 c+8 e8 a4 e4 | o6 d4 o5 b8 g8 b4 o6 d4 |
+  o6 c+2. r4 | o5 b4 o6 d8 c+8 o5 b4 f+4 | o5 g4 b8 o6 d8 g4 d4 | o6 f+4 e8 d8 a4 f+4 |
+  o6 e2 c+4 o5 a4 | o5 b4 o6 d8 o5 b8 g4 b4 | o5 a4 o6 c+8 e8 a4 e4 | o6 d4 o5 a8 f+8 d4 f+4 |
+  o5 d2. r4 |
+
+track guitar flamencoguitar night=harp vol=0.28 pan=-0.3 rev=0.24
+  o3 (d f+ a)4 (d f+ a)8 (d f+ a)8 r8 (d f+ a)8 (d f+ a)4 | L o3 (d f+ a)4 (d f+ a)8 (d f+ a)8 r8 (d f+ a)8 (d f+ a)4 | o3 (a > c+ e)4 (a > c+ e)8 (a > c+ e)8 r8 (a > c+ e)8 (a > c+ e)4 | o3 (b > d f+)4 (b > d f+)8 (b > d f+)8 r8 (b > d f+)8 (b > d f+)4 |
+  o3 (g b > d)4 (g b > d)8 (g b > d)8 r8 (g b > d)8 (g b > d)4 | o3 (d f+ a)4 (d f+ a)8 (d f+ a)8 r8 (d f+ a)8 (d f+ a)4 | o3 (a > c+ e)4 (a > c+ e)8 (a > c+ e)8 r8 (a > c+ e)8 (a > c+ e)4 | o3 (g b > d)4 (g b > d)8 (g b > d)8 r8 (g b > d)8 (g b > d)4 |
+  o3 (a > c+ e)4 (a > c+ e)8 (a > c+ e)8 r8 (a > c+ e)8 (a > c+ e)4 | o3 (b > d f+)4 (b > d f+)8 (b > d f+)8 r8 (b > d f+)8 (b > d f+)4 | o3 (g b > d)4 (g b > d)8 (g b > d)8 r8 (g b > d)8 (g b > d)4 | o3 (d f+ a)4 (d f+ a)8 (d f+ a)8 r8 (d f+ a)8 (d f+ a)4 |
+  o3 (a > c+ e)4 (a > c+ e)8 (a > c+ e)8 r8 (a > c+ e)8 (a > c+ e)4 | o3 (g b > d)4 (g b > d)8 (g b > d)8 r8 (g b > d)8 (g b > d)4 | o3 (a > c+ e)4 (a > c+ e)8 (a > c+ e)8 r8 (a > c+ e)8 (a > c+ e)4 | o3 (d f+ a)4 (d f+ a)8 (d f+ a)8 r8 (d f+ a)8 (d f+ a)4 |
+  o3 (d f+ a)4 (d f+ a)8 (d f+ a)8 r8 (d f+ a)8 (d f+ a)4 |
+
+track swell strings vol=0.34 pan=0.35 rev=0.4
+  o4 a1 | L r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  r1 | o4 f+1 | o4 g1 | o4 a1 |
+  o4 a1 | o4 b1 | o4 c+1 | o4 a1 |
+  o4 a1 |
+
+track bass bass vol=0.54 rev=0.08
+  o3 d4 a4 d4 a4 | L o3 d4 a4 d4 a4 | o3 a4 e4 a4 e4 | o3 b4 f+4 b4 f+4 |
+  o3 g4 d4 g4 d4 | o3 d4 a4 d4 a4 | o3 a4 e4 a4 e4 | o3 g4 d4 g4 d4 |
+  o3 a4 e4 a4 e4 | o3 b4 f+4 b4 f+4 | o3 g4 d4 g4 d4 | o3 d4 a4 d4 a4 |
+  o3 a4 e4 a4 e4 | o3 g4 d4 g4 d4 | o3 a4 e4 a4 e4 | o3 d4 a4 d4 a4 |
+  o3 d4 a4 d4 a4 |
+
+track cajon cajon vol=0.32 pan=-0.15 rev=0.18
+  o4 v100 d4 v70 d8 v56 d8 v96 d4 v70 d8 v56 d8 | L o4 v100 d4 v70 d8 v56 d8 v96 d4 v70 d8 v56 d8 | o4 v100 a4 v70 a8 v56 a8 v96 a4 v70 a8 v56 a8 | o4 v100 b4 v70 b8 v56 b8 v96 b4 v70 b8 v56 b8 |
+  o4 v100 g4 v70 g8 v56 g8 v96 g4 v70 g8 v56 g8 | o4 v100 d4 v70 d8 v56 d8 v96 d4 v70 d8 v56 d8 | o4 v100 a4 v70 a8 v56 a8 v96 a4 v70 a8 v56 a8 | o4 v100 g4 v70 g8 v56 g8 v96 g4 v70 g8 v56 g8 |
+  o4 v100 a4 v70 a8 v56 a8 v96 a4 v70 a8 v56 a8 | o4 v100 b4 v70 b8 v56 b8 v96 b4 v70 b8 v56 b8 | o4 v100 g4 v70 g8 v56 g8 v96 g4 v70 g8 v56 g8 | o4 v100 d4 v70 d8 v56 d8 v96 d4 v70 d8 v56 d8 |
+  o4 v100 a4 v70 a8 v56 a8 v96 a4 v70 a8 v56 a8 | o4 v100 g4 v70 g8 v56 g8 v96 g4 v70 g8 v56 g8 | o4 v100 a4 v70 a8 v56 a8 v96 a4 v70 a8 v56 a8 | o4 v100 d4 v70 d8 v56 d8 v96 d4 v70 d8 v56 d8 |
+  o4 v100 d4 v70 d8 v56 d8 v96 d4 v70 d8 v56 d8 |
+
+track castanets castanets night=pizzicato vol=0.2 pan=0.3 rev=0.18
+  o7 v60 d16 d16 v90 d8 r4 v60 d16 d16 v90 d8 r4 | L o7 v60 d16 d16 v90 d8 r4 v60 d16 d16 v90 d8 r4 | o7 v60 a16 a16 v90 a8 r4 v60 a16 a16 v90 a8 r4 | o7 v60 b16 b16 v90 b8 r4 v60 b16 b16 v90 b8 r4 |
+  o7 v60 g16 g16 v90 g8 r4 v60 g16 g16 v90 g8 r4 | o7 v60 d16 d16 v90 d8 r4 v60 d16 d16 v90 d8 r4 | o7 v60 a16 a16 v90 a8 r4 v60 a16 a16 v90 a8 r4 | o7 v60 g16 g16 v90 g8 r4 v60 g16 g16 v90 g8 r4 |
+  o7 v60 a16 a16 v90 a8 r4 v60 a16 a16 v90 a8 r4 | o7 v60 b16 b16 v90 b8 r4 v60 b16 b16 v90 b8 r4 | o7 v60 g16 g16 v90 g8 r4 v60 g16 g16 v90 g8 r4 | o7 v60 d16 d16 v90 d8 r4 v60 d16 d16 v90 d8 r4 |
+  o7 v60 a16 a16 v90 a8 r4 v60 a16 a16 v90 a8 r4 | o7 v60 g16 g16 v90 g8 r4 v60 g16 g16 v90 g8 r4 | o7 v60 a16 a16 v90 a8 r4 v60 a16 a16 v90 a8 r4 | o7 v60 d16 d16 v90 d8 r4 v60 d16 d16 v90 d8 r4 |
+  o7 v60 d16 d16 v90 d8 r4 v60 d16 d16 v90 d8 r4 |

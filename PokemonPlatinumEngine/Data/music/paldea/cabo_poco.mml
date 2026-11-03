@@ -1,0 +1,44 @@
+# The house on the cliff by the sea where the journey begins: a nylon guitar's tune in G, the flamenco guitar
+# picking under it, strings and a soft cajón, the sea wind in no hurry; at night a harp and a flute.
+# Original composition for this game (plan 31 · MU6), in the modern sound.
+title Cabo Poco
+tempo 92
+meter 4/4
+reverb 0.3
+nighttempo 0.92
+room chamber 1.5
+
+track lead nylonguitar night=flute vol=0.96 pan=0 rev=0.3
+  o5 g2. r4 | L o5 b4 a8 g8 d4 g4 | o5 b4 o6 e8 d8 o5 b4 g4 | o5 g4 o6 c8 o5 b8 g4 e4 |
+  o5 f+2. r4 | o5 g4 b8 o6 d8 g4 d4 | o6 e4 d8 o5 b8 g4 b4 | o5 a4 o6 c8 e8 a4 e4 |
+  o6 d2 o5 a4 f+4 | o5 g4. e8 c4 e4 | o5 f+4 a8 o6 d8 f+4 d4 | o5 f+4 b8 o6 d8 f+4 d4 |
+  o5 g2 e4 b4 | o6 c4 o5 g8 e8 g4 o6 c4 | o6 d4 o5 a8 f+8 a4 o6 d4 | o5 b4 g8 d8 g4 b4 |
+  o5 g2. r4 |
+
+track pick flamencoguitar night=harp vol=0.43 pan=-0.3 rev=0.26
+  o3 g8 o3 b8 o4 d8 o3 b8 o3 g8 o3 b8 o4 d8 o3 b8 | L o3 g8 o3 b8 o4 d8 o3 b8 o3 g8 o3 b8 o4 d8 o3 b8 | o3 e8 o3 g8 o3 b8 o3 g8 o3 e8 o3 g8 o3 b8 o3 g8 | o3 c8 o3 e8 o3 g8 o3 e8 o3 c8 o3 e8 o3 g8 o3 e8 |
+  o3 d8 o3 f+8 o3 a8 o3 f+8 o3 d8 o3 f+8 o3 a8 o3 f+8 | o3 g8 o3 b8 o4 d8 o3 b8 o3 g8 o3 b8 o4 d8 o3 b8 | o3 e8 o3 g8 o3 b8 o3 g8 o3 e8 o3 g8 o3 b8 o3 g8 | o3 a8 o4 c8 o4 e8 o4 c8 o3 a8 o4 c8 o4 e8 o4 c8 |
+  o3 d8 o3 f+8 o3 a8 o3 f+8 o3 d8 o3 f+8 o3 a8 o3 f+8 | o3 c8 o3 e8 o3 g8 o3 e8 o3 c8 o3 e8 o3 g8 o3 e8 | o3 d8 o3 f+8 o3 a8 o3 f+8 o3 d8 o3 f+8 o3 a8 o3 f+8 | o3 b8 o4 d8 o4 f+8 o4 d8 o3 b8 o4 d8 o4 f+8 o4 d8 |
+  o3 e8 o3 g8 o3 b8 o3 g8 o3 e8 o3 g8 o3 b8 o3 g8 | o3 c8 o3 e8 o3 g8 o3 e8 o3 c8 o3 e8 o3 g8 o3 e8 | o3 d8 o3 f+8 o3 a8 o3 f+8 o3 d8 o3 f+8 o3 a8 o3 f+8 | o3 g8 o3 b8 o4 d8 o3 b8 o3 g8 o3 b8 o4 d8 o3 b8 |
+  o3 g8 o3 b8 o4 d8 o3 b8 o3 g8 o3 b8 o4 d8 o3 b8 |
+
+track pad strings vol=0.26 pan=0.25 rev=0.4
+  o3 (g b > d)1 | L o3 (g b > d)1 | o3 (e g b)1 | o3 (c e g)1 |
+  o3 (d f+ a)1 | o3 (g b > d)1 | o3 (e g b)1 | o3 (a > c e)1 |
+  o3 (d f+ a)1 | o3 (c e g)1 | o3 (d f+ a)1 | o3 (b > d f+)1 |
+  o3 (e g b)1 | o3 (c e g)1 | o3 (d f+ a)1 | o3 (g b > d)1 |
+  o3 (g b > d)1 |
+
+track bass contrabass vol=0.67 rev=0.1
+  o3 g2 d2 | L o3 g2 d2 | o3 e2 b2 | o3 c2 g2 |
+  o3 d2 a2 | o3 g2 d2 | o3 e2 b2 | o3 a2 e2 |
+  o3 d2 a2 | o3 c2 g2 | o3 d2 a2 | o3 b2 f+2 |
+  o3 e2 b2 | o3 c2 g2 | o3 d2 a2 | o3 g2 d2 |
+  o3 g2 d2 |
+
+track cajon cajon vol=0.38 pan=-0.2 rev=0.22
+  o4 v84 g4 r4 v64 g4 r4 | L o4 v84 g4 r4 v64 g4 r4 | o4 v84 e4 r4 v64 e4 r4 | o4 v84 c4 r4 v64 c4 r4 |
+  o4 v84 d4 r4 v64 d4 r4 | o4 v84 g4 r4 v64 g4 r4 | o4 v84 e4 r4 v64 e4 r4 | o4 v84 a4 r4 v64 a4 r4 |
+  o4 v84 d4 r4 v64 d4 r4 | o4 v84 c4 r4 v64 c4 r4 | o4 v84 d4 r4 v64 d4 r4 | o4 v84 b4 r4 v64 b4 r4 |
+  o4 v84 e4 r4 v64 e4 r4 | o4 v84 c4 r4 v64 c4 r4 | o4 v84 d4 r4 v64 d4 r4 | o4 v84 g4 r4 v64 g4 r4 |
+  o4 v84 g4 r4 v64 g4 r4 |

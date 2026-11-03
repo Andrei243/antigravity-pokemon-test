@@ -1,0 +1,29 @@
+# A boy of Galar spots the player (Youngsters and their like): a cocky fiddle in E that saws up the chord and
+# tumbles back, over a guitar and a rock kit.
+# Original composition for this game (plan 31 · MU5), in the modern sound.
+title Eyes Meet: Boy (Galar)
+tempo 150
+meter 4/4
+reverb 0.18
+night none
+room room 1.0
+
+track lead fiddle vol=0.68 pan=0.05 rev=0.18
+  o5 b8 o6 e8 g+8 b8 r4 g+4 | L o5 e8 g+8 b8 g+8 e4 b4 | o5 a8 o6 c+8 e8 c+8 o5 a4 e4 | o5 f+8 b8 o6 d+8 o5 b8 f+4 d+4 |
+  o5 g+4 e4 b4 r4 | o5 c+8 e8 g+8 e8 c+4 g+4 | o5 f+4 d+4 b4 r4 |
+
+track rhythm guitar vol=0.29 pan=-0.3 rev=0.18
+  o3 (e g+ b)4 (e g+ b)8 (e g+ b)8 r8 (e g+ b)8 (e g+ b)4 | L o3 (e g+ b)4 (e g+ b)8 (e g+ b)8 r8 (e g+ b)8 (e g+ b)4 | o3 (a > c+ e)4 (a > c+ e)8 (a > c+ e)8 r8 (a > c+ e)8 (a > c+ e)4 | o3 (b > d+ f+)4 (b > d+ f+)8 (b > d+ f+)8 r8 (b > d+ f+)8 (b > d+ f+)4 |
+  o3 (e g+ b)4 (e g+ b)8 (e g+ b)8 r8 (e g+ b)8 (e g+ b)4 | o3 (c+ e g+)4 (c+ e g+)8 (c+ e g+)8 r8 (c+ e g+)8 (c+ e g+)4 | o3 (b > d+ f+)4 (b > d+ f+)8 (b > d+ f+)8 r8 (b > d+ f+)8 (b > d+ f+)4 |
+
+track box accordion vol=0.18 pan=0.25 rev=0.25
+  o4 (e g+ b)1 | L o4 (e g+ b)1 | o4 (a > c+ e)1 | o4 (b > d+ f+)1 |
+  o4 (e g+ b)1 | o4 (c+ e g+)1 | o4 (b > d+ f+)1 |
+
+track bass synthbass vol=0.62 rev=0.05
+  [ o2 e8 o3 e8 ]4 | L [ o2 e8 o3 e8 ]4 | [ o2 a8 o3 a8 ]4 | [ o2 b8 o3 b8 ]4 |
+  [ o2 e8 o3 e8 ]4 | [ o2 c+8 o3 c+8 ]4 | [ o2 b8 o3 b8 ]4 |
+
+track drums kit vol=0.36 rev=0.1
+  v88 b8 r8 s8 r8 (b c)4 s4 | L b8 h8 s8 b8 h8 b8 s8 h8 | b8 h8 s8 b8 h8 b8 s8 h8 | b8 h8 s8 b8 h8 b8 s8 h8 |
+  b8 h8 s8 b8 h8 b8 s8 h8 | b8 h8 s8 b8 h8 b8 s8 h8 | v88 b8 r8 s8 b8 s16 s16 s16 s16 s8 s8 |

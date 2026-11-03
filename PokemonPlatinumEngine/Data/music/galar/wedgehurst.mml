@@ -1,0 +1,44 @@
+# The market town with the professor's lab and the railway station: a brass band's cornets in B flat over the
+# band's after-beats, a tuba walking and a snare marching; at night a horn and a softer band.
+# Original composition for this game (plan 31 · MU5), in the modern sound.
+title Wedgehurst
+tempo 112
+meter 4/4
+reverb 0.28
+nighttempo 0.92
+room hall 1.6
+
+track lead cornet night=horn vol=0.77 pan=0.05 rev=0.28
+  o5 b-2. r4 | L o5 f4 d8 f8 b-4 f4 | o5 g4 b-8 o6 d8 c8 o5 b-8 g4 | o5 g4. b-8 o6 e-4 o5 b-4 |
+  o5 a2 f4 c4 | o5 d4 f8 b-8 o6 d4 o5 b-4 | o5 b-4 a8 g8 d4 g4 | o5 c4 e-8 g8 o6 c4 o5 g4 |
+  o5 a2. r4 | o5 b-4 g8 b-8 o6 e-4 o5 b-4 | o5 f4 b-8 o6 d8 f4 d4 | o6 e-4 c8 o5 g8 e-4 g4 |
+  o5 a2 o6 c4 o5 f4 | o5 g4 b-8 o6 e-8 g4 e-4 | o6 f4 c8 o5 a8 f4 a4 | o5 b-4 f8 d8 f4 b-4 |
+  o5 b-2. r4 |
+
+track band brass night=strings vol=0.28 pan=-0.3 rev=0.26
+  o4 r4 (b- > d f)4 r4 (b- > d f)4 | L o4 r4 (b- > d f)4 r4 (b- > d f)4 | o4 r4 (g b- > d)4 r4 (g b- > d)4 | o4 r4 (e- g b-)4 r4 (e- g b-)4 |
+  o4 r4 (f a > c)4 r4 (f a > c)4 | o4 r4 (b- > d f)4 r4 (b- > d f)4 | o4 r4 (g b- > d)4 r4 (g b- > d)4 | o4 r4 (c e- g)4 r4 (c e- g)4 |
+  o4 r4 (f a > c)4 r4 (f a > c)4 | o4 r4 (e- g b-)4 r4 (e- g b-)4 | o4 r4 (b- > d f)4 r4 (b- > d f)4 | o4 r4 (c e- g)4 r4 (c e- g)4 |
+  o4 r4 (f a > c)4 r4 (f a > c)4 | o4 r4 (e- g b-)4 r4 (e- g b-)4 | o4 r4 (f a > c)4 r4 (f a > c)4 | o4 r4 (b- > d f)4 r4 (b- > d f)4 |
+  o4 r4 (b- > d f)4 r4 (b- > d f)4 |
+
+track box accordion night=musette vol=0.20 pan=0.3 rev=0.3
+  o4 (b- > d f)1 | L o4 (b- > d f)1 | o4 (g b- > d)1 | o4 (e- g b-)1 |
+  o4 (f a > c)1 | o4 (b- > d f)1 | o4 (g b- > d)1 | o4 (c e- g)1 |
+  o4 (f a > c)1 | o4 (e- g b-)1 | o4 (b- > d f)1 | o4 (c e- g)1 |
+  o4 (f a > c)1 | o4 (e- g b-)1 | o4 (f a > c)1 | o4 (b- > d f)1 |
+  o4 (b- > d f)1 |
+
+track bass tuba vol=0.64 rev=0.08
+  o3 b-4 f8 b-8 d4 f4 | L o3 b-4 f8 b-8 d4 f4 | o3 g4 d8 g8 b-4 d4 | o3 e-4 b-8 e-8 g4 b-4 |
+  o3 f4 c8 f8 a4 c4 | o3 b-4 f8 b-8 d4 f4 | o3 g4 d8 g8 b-4 d4 | o3 c4 g8 c8 e-4 g4 |
+  o3 f4 c8 f8 a4 c4 | o3 e-4 b-8 e-8 g4 b-4 | o3 b-4 f8 b-8 d4 f4 | o3 c4 g8 c8 e-4 g4 |
+  o3 f4 c8 f8 a4 c4 | o3 e-4 b-8 e-8 g4 b-4 | o3 f4 c8 f8 a4 c4 | o3 b-4 f8 b-8 d4 f4 |
+  o3 b-4 f8 b-8 d4 f4 |
+
+track drums kit vol=0.26 pan=0.1 rev=0.12
+  v66 b4 v44 s8 s8 v60 s4 v44 s8 s8 | L v66 b4 v44 s8 s8 v60 s4 v44 s8 s8 | v66 b4 v44 s8 s8 v60 s4 v44 s8 s8 | v66 b4 v44 s8 s8 v60 s4 v44 s8 s8 |
+  v66 b4 v44 s8 s8 v60 s4 v44 s8 s8 | v66 b4 v44 s8 s8 v60 s4 v44 s8 s8 | v66 b4 v44 s8 s8 v60 s4 v44 s8 s8 | v66 b4 v44 s8 s8 v60 s4 v44 s8 s8 |
+  v66 b4 v44 s8 s8 v60 s4 v44 s8 s8 | v66 b4 v44 s8 s8 v60 s4 v44 s8 s8 | v66 b4 v44 s8 s8 v60 s4 v44 s8 s8 | v66 b4 v44 s8 s8 v60 s4 v44 s8 s8 |
+  v66 b4 v44 s8 s8 v60 s4 v44 s8 s8 | v66 b4 v44 s8 s8 v60 s4 v44 s8 s8 | v66 b4 v44 s8 s8 v60 s4 v44 s8 s8 | v66 b4 v44 s8 s8 v60 s4 v44 s8 s8 |
+  v66 b4 v44 s8 s8 v60 s4 v44 s8 s8 |
