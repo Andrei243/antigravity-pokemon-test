@@ -23554,14 +23554,25 @@ way 0.0
   Steven> Ha! It's never let anyone get that close. It'll be back in Hoenn's skies by nightfall, I expect.
   Steven> I'll be in the museum a while longer. The stone has to go back where it belongs.
   ? Will you face Steven's friend? = Yes
+  * scene pewter.Latias rises from Steven's side
+  * letterbox on
+  * camera Pan 1039 83
+  * camera Zoom 1.4
+  * effect Sparkles 1039 83
+  * effect Ripple 1039 83
   * cry Latias
+  * camera Release
+  * letterbox off
+  * endscene
   * wildbattle Latias 40 Won
   + FLAG_HIDE_PEWTER_CITY_LATIAS
   + FLAG_HIDE_PEWTER_CITY_LATIOS
   + FLAG_HIDE_PEWTER_CITY_STEVEN
   + FLAG_JOHTO_MET_STEVENS_EON
+  + seen pewter.Latias rises from Steven's side
 way 0.1, from answer 2
   * wildbattle Latias 40 Lost
+  + seen pewter.Latias rises from Steven's side
 way 1, from answer 1
   Steven> No? Then we'll wait. It's patient, in its way. Come back when you're ready.
   ? Will you face Steven's friend? = No

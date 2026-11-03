@@ -91,6 +91,8 @@ public class TextTests
     {
         ["UI/TitleScreen.cs"] = new[] { "Sinnoh", "Giratina", "PLATINUM", "Pokémon", "A  FAN  REMAKE" },
         ["UI/StartMenu.cs"] = new[] { "Trainer" },
+        // A name of the story's flags, which is data and no word (plan 21 · H12)
+        ["Core/GameEngine.Salt.cs"] = new[] { "FLAG_HOENN_ABNORMAL_WEATHER_" },
         // The address of a translated line, which is a key and no word (plan 17 · N4)
         ["Core/Text.Lines.cs"] = new[] { "script:{script}#{index}.{k}" },
         // The text box's markup problems, which ScriptLibrary.Problems and the content check tell whoever writes a line, never the screen (plan 09 · L3)

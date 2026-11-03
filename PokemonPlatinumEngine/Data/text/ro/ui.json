@@ -5813,5 +5813,24 @@
         "greeting": "Tocmai m-am mutat în Nimbasa. Toată lumea mi-a zis să vin întâi aici, și acum văd de ce."
       }
     }
+  },
+  "linkRoom": {
+    "fault": {
+      "teamSize": "O echipă de {count} nu poate fi adusă.",
+      "tooFew": "Camera alege {count}: adu pe atâția.",
+      "egg": "Un Ou nu poate lupta.",
+      "unknown": "{species} nu este cunoscut în acest joc.",
+      "notInRules": "{species} nu este în regulile camerei.",
+      "speciesClause": "Doi din aceeași specie (clauza de specie).",
+      "itemClause": "Doi care țin același obiect (clauza de obiect).",
+      "pickCount": "Alege {count} care să intre.",
+      "pickEach": "Alege fiecare membru al echipei cel mult o dată."
+    },
+    "refused": {
+      "notAsked": "Nu ți se cere nimic.",
+      "stale": "Aceasta răspunde la o întrebare care nu mai e pusă.",
+      "places": "Se așteaptă câte o alegere pentru fiecare dintre locurile tale."
+    },
+    "waiting": "Se așteaptă {player}…"
   }
 }
