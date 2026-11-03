@@ -70,11 +70,10 @@ public sealed class VoiceLibrary
     public const string PackFileName = "pack.json";
 
     /// <summary>
-    /// The decoders by extension. WAV (16- or 24-bit PCM or 32-bit float, any rate, mono or stereo) is built in; the
-    /// plan's Ogg Vorbis waits for a decoder package the user approves (NVorbis), which registers itself here as <c>.ogg</c>.
-    /// A take whose extension has no decoder counts as missing.
+    /// The decoders by extension. WAV (16- or 24-bit PCM or 32-bit float, any rate, mono or stereo) and Ogg Vorbis
+    /// (<see cref="OggVoiceDecoder"/>, NVorbis) are built in. A take whose extension has no decoder counts as missing.
     /// </summary>
-    public static Dictionary<string, IVoiceDecoder> Decoders { get; } = new(StringComparer.OrdinalIgnoreCase) { [".wav"] = new WavDecoder() };
+    public static Dictionary<string, IVoiceDecoder> Decoders { get; } = new(StringComparer.OrdinalIgnoreCase) { [".wav"] = new WavDecoder(), [".ogg"] = new OggVoiceDecoder() };
 
     public string Folder { get; }
     public string Language { get; }
@@ -212,7 +211,7 @@ public sealed class VoiceLibrary
         {
             return new SoundSample("voice " + take.Key, decoder.Decode(System.IO.File.ReadAllBytes(path)));
         }
-        catch (Exception e) when (e is InvalidDataException or IOException or ArgumentException or IndexOutOfRangeException)
+        catch (Exception e) when (e is InvalidDataException or IOException or ArgumentException or IndexOutOfRangeException or NotSupportedException)
         {
             return null;
         }

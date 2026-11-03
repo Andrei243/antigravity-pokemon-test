@@ -660,7 +660,7 @@ Plan 26 · V2. A pack is the spoken lines of one language, never in git (`/voice
 
 - `key` is the line's key in `Data/voice/lines.json` (plan 17 · N4's address), or a variant's (`…~starter=Piplup`, `…~assistant=Dawn`), which the game asks for where the line names those.
 - `voice` is the cast's voice. A line said by whoever is spoken to (`@self` in the catalogue) may have one take, which any voice speaks, or a take for each voice, of which the game plays the speaker's.
-- `file` is relative to the pack: `<voice>/<key>.<ext>`, the colons of both written `+` (`VoicePacks.FileOf`). Today the game reads WAV (16- or 24-bit PCM or 32-bit float, mono or stereo, any rate, taken to the DS's 32,768 Hz); the plan's Ogg Vorbis waits for its decoder package (NVorbis) and the user's OK, and a file with no decoder counts as missing.
+- `file` is relative to the pack: `<voice>/<key>.<ext>`, the colons of both written `+` (`VoicePacks.FileOf`). The game reads WAV (16- or 24-bit PCM or 32-bit float, mono or stereo, any rate, taken to the DS's 32,768 Hz); and Ogg Vorbis (`.ogg`, any rate, mono or stereo, through NVorbis, `Audio/OggVoiceDecoder.cs`) the same way; a file with no decoder, or one that cannot be read, counts as missing.
 - `textHash` is the hash of the English the take was made from (`VoiceCatalogue.HashOf`, the catalogue's `hash`). A line whose English has changed since is **stale** and never played: the text shows alone until the take is made again.
 - `fileHash` (FNV-1a of the bytes), `engine`, `seed` and `sample` are kept for `VoiceTool check` and for making a take again; the game reads none of them.
 
