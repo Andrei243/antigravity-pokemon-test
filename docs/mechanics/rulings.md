@@ -6476,6 +6476,40 @@ Emerald's `LilycoveCity_LilycoveMuseum_2F`, `SlateportCity_PokemonFanClub`, `Mos
   nothing to build them from honestly; the reader's chunks carry no such tile yet either. **The Lilycove Lady's contest**
   is the same (her rules are in source the import does not read); both are left.
 
+## Emerald's Safari battle (2026-11-03, plan 21 · H11, part e)
+
+Emerald's `HandleAction_ThrowPokeblock` and `HandleAction_GoNear` (`src/battle_util.c`), the factors as a Safari battle
+begins (`src/battle_main.c`), `Cmd_if_random_safari_flee` (`src/battle_ai_script_commands.c`),
+`PokeblockAction_UseInBattle` (`src/pokeblock.c`) and a Safari Ball's catch rate (`Cmd_handleballthrow`,
+`src/battle_script_commands.c`), read from the pinned commit; the lines are our own.
+
+- **Where.** Every Safari battle met while the player stands in Hoenn (`GameEngine.Here` is Hoenn's) is Emerald's:
+  `BattleSetup.EmeraldSafari` / `CoreSetup.EmeraldSafari`, kept by a battle's record file. The Great Marsh, FireRed's and
+  HeartGold's Safari Zones keep the Marsh's battle.
+- **The commands.** The Safari Ball, POKéBLOCK, GO NEAR and RUN (`ChoiceKind.Pokeblock`, `ChoiceKind.GoNear`, at the
+  enum's end). POKéBLOCK opens the Pokéblock Case's list over the commands (`BattleMenuState.Pokeblocks`); the one chosen
+  leaves the case as it is thrown, as in Emerald. With an empty case POKéBLOCK says so and the commands stay. Bait and
+  mud are refused here, POKéBLOCK and GO NEAR anywhere else.
+- **The factors.** The catch factor begins at the species' catch rate × 100 / 1275 and the escape factor at 3. GO NEAR
+  adds 4, 3, 2 and then 1 to the first (20 at most) and 4 to the second (20 at most); after its third time it says
+  there is no getting closer, though both still rise. A Pokéblock is taken by the Pokémon's nature (`Pokeblocks.Gain`):
+  curious at no gain, enthralled when liked, ignoring it when disliked. The throw count is raised first (3 at most), and
+  while the escape factor is over 1 it falls by 3, 2 or 1 (curious) or 5, 3 or 2 (enthralled) at the first, second and
+  third throw on, or to 1 where that step is larger; ignored, nothing comes off.
+- **Emerald's own bug is kept.** The comparison is "less than", so a factor equal to the step falls to 0 (a curious
+  Pokémon's first Pokéblock at the starting 3 does), and a Pokémon whose factor is 0 never runs and is moved by no
+  further Pokéblock: the "Pokéblock throw glitch".
+- **Running.** The wild Pokémon runs when a roll of a hundred comes out under five times the escape factor the turn
+  began with: Emerald's AI decides as the turn's actions are chosen, before the player's throw or step. It is decided
+  after the player's action (`RollKind.Safari`), so a ball that catches comes first. Otherwise it watches carefully (the
+  Marsh's line).
+- **The ball.** A Safari Ball's catch rate is the catch factor × 1275 / 100 (255 at most) in place of the species', with
+  the modern catch formula and the Safari Ball's own bonus round it, as every catch of this game (Emerald's formula is
+  generation 3's). The last ball's line names the Safari Zone.
+- **Not here.** The Safari Fan Club's television show of Pokéblocks thrown (`TryPutSafariFanClubOnAir`): the battle counts
+  them (`BattleCore.PokeblocksThrown`) and nothing reads it yet. Emerald's throw animation is our own moments (happy as it
+  is thrown, eating or angry as it is taken).
+
 ## The Safari Zone's Pokéblock feeders (2026-11-03, plan 21 · H11, part d)
 
 Emerald's `src/safari_zone.c`, `PickWildMonNature` of `src/wild_encounter.c` and `EventScript_PokeBlockFeeder` of
@@ -6501,9 +6535,8 @@ Pokéblocks" that the feeders could not be built is out of date: the source was 
 - **Emerald's carried difference is kept.** `GetPokeblockFeederWithinRange` subtracts each feeder's tile from what it made
   of the one before, not from the player's tile again, so with two Pokéblocks in a part the second is found where Emerald
   finds it (sometimes not when the player stands beside it). It works on each part's own tiles, as Emerald's maps have them.
-- **Not here.** Emerald's Safari battle throws Pokéblocks at the wild Pokémon (POKéBLOCK in place of the Great Marsh's
-  bait and mud); the battle here is still the Great Marsh's, so the Safari Fan Club's count of Pokéblocks thrown is not
-  kept either. A feeder's own picture is not drawn.
+- **Not here.** A feeder's own picture is not drawn. (Emerald's Safari battle with POKéBLOCK thrown is built since:
+  "Emerald's Safari battle".)
 
 ## The Lilycove Lady (2026-11-01, plan 21 · H11, part c)
 

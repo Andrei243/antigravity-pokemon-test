@@ -20,11 +20,17 @@ internal static partial class ModernUi
     /// The battle's four commands: FIGHT and BAG, POKÉMON, RUN; in the Great Marsh the Safari Ball (with how many are
     /// left), BAIT, MUD and RUN; in Pal Park the Park Ball and RUN (an empty label is a command that isn't there).
     /// </summary>
+    /// <summary>Each Pokéblock of the case as its row in the battle's list: its colour's name and its level.</summary>
+    public static string[] PokeblockLabels(BattleEngine battle) =>
+        battle.PokeblocksListed.Select(p => Text.Of("battleMenu.pokeblockRow", ("block", p.Block.Name), ("level", p.Block.Level))).ToArray();
+
     /// <summary>A command that can't be used in this battle (plan 14 · B14: BAG in a Master Trainer's battle).</summary>
     public static readonly Color Closed = new(150, 156, 174, 255);
 
     public static (string Big, string[] Small) CommandLabels(BattleEngine battle) => battle.Kind switch
     {
+        // Hoenn's Safari Zone (plan 21 · H11, part e): Emerald's POKéBLOCK and GO NEAR where the Marsh's bait and mud stand
+        BattleKind.Safari when battle.EmeraldSafari => (Text.Of("battleMenu.safariBall", ("n", battle.SpecialBalls)), new[] { Text.Of("battleMenu.pokeblock"), Text.Of("battleMenu.goNear"), Text.Of("battleMenu.run") }),
         BattleKind.Safari => (Text.Of("battleMenu.safariBall", ("n", battle.SpecialBalls)), new[] { Text.Of("battleMenu.bait"), Text.Of("battleMenu.mud"), Text.Of("battleMenu.run") }),
         BattleKind.PalPark => (Text.Of("battleMenu.parkBall", ("n", battle.SpecialBalls)), new[] { "", "", Text.Of("battleMenu.run") }),
         // The Bug-Catching Contest's Sport Balls stand where the bag does (plan 15 · E5)
@@ -188,6 +194,11 @@ internal static partial class ModernUi
                 BagTargets(hud, sw, sh, party, battle);
                 if (battle.BagTarget >= 0 && battle.BagTarget < party.Count && battle.BagItemChosen is { } restoring)
                     MovePick(new Rectangle(sw - 64 - 760, 64, 760, 476), party.Members[battle.BagTarget], hud.BagMoveIndex, Text.Of("battleMenu.useOnWhichMove", ("item", restoring.DisplayName)));
+                break;
+            case BattleMenuState.Pokeblocks:
+                // The case's Pokéblocks as a list of answers over the commands, as the question box draws one (plan 21 · H11, part e)
+                MessageBox(new Rectangle(48, 858, MessageBoxWidth, 172), Text.Of("battleMenu.whichPokeblock"), null);
+                DrawChoices(sw + 48, sh + 40 + (int)(DialogueBox.HeightNow - DialogueBox.Height), PokeblockLabels(battle), hud.PokeblockIndex, 1f);
                 break;
             case BattleMenuState.Info:
                 if (battle.InfoShown is { } info) InfoPanel(info, battle.IsDouble || battle.IsSos);

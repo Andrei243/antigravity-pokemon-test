@@ -274,6 +274,7 @@ public partial class BattleEngine
         Watched = watched;
         PlayerParty = setup.PlayerParty;
         PlayerInventory = setup.Inventory;
+        Pokeblocks = setup.Pokeblocks;
         Pokedex = setup.Pokedex;
         pcBoxStorage = setup.PcStorage;
         place = setup.Place;
@@ -308,6 +309,7 @@ public partial class BattleEngine
             CannotFlee = setup.CannotFlee,
             FirstBattle = setup.FirstBattle,
             SpecialBalls = setup.SpecialBalls,
+            EmeraldSafari = setup.EmeraldSafari,
             Frontier = setup.Frontier,
             NoRewards = setup.NoRewards,
             NoBattleItems = setup.NoBattleItems,
@@ -405,6 +407,16 @@ public partial class BattleEngine
 
     /// <summary>The Safari Balls or Park Balls left.</summary>
     public int SpecialBalls => core.SpecialBalls;
+
+    /// <summary>Hoenn's Safari Zone: Emerald's Safari battle, with POKéBLOCK and GO NEAR (plan 21 · H11, part e).</summary>
+    public bool EmeraldSafari => core.EmeraldSafari;
+
+    /// <summary>The Pokéblock Case POKéBLOCK draws from in Hoenn's Safari Zone; null in every other battle.</summary>
+    public Models.PokeblockCase? Pokeblocks { get; }
+
+    /// <summary>The Pokéblocks the case lists, in its order, for the battle's list (<see cref="BattleMenuState.Pokeblocks"/>).</summary>
+    public IReadOnlyList<(int Slot, Models.Pokeblock Block)> PokeblocksListed =>
+        Pokeblocks?.Listed() ?? (IReadOnlyList<(int, Models.Pokeblock)>)System.Array.Empty<(int, Models.Pokeblock)>();
 
     /// <summary>The places the player chooses for: the player's own (not a partner's, and none in the catching lesson).</summary>
     public IEnumerable<Battler> PlayerChooses => Kind == BattleKind.CatchingLesson ? Enumerable.Empty<Battler>() : PlayerSlots.Where(b => b.Trainer == null);

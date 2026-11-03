@@ -23,6 +23,7 @@ What changes from one release to the next, for players. Every session's close-ou
 - Kalos's Routes 2 to 4, Santalune Forest, Santalune City, its houses, Pokémon Center and Gym now play their own songs.
 
 ### Added
+- Hoenn's Safari Zone plays its own Safari battle: in place of bait and mud you throw Pokéblocks from your case, which a Pokémon whose nature likes the flavour is happy to stay for, or step closer with GO NEAR to make it easier to catch, at the risk of scaring it off.
 - Hoenn's Safari Zone has its Pokéblock feeders: set a Pokéblock down on one of the eleven stands in the grass, and for a hundred steps most wild Pokémon met nearby will have a nature that likes it.
 - A new game asks what you set out in, right after boy or girl: your own clothes, as before, or one of a few outfits (a trail set, a city set, a snow set and more), which are yours to keep and change at the wardrobe for nothing.
 - The options have three new rows for spoken lines: VOICES (off, the story's characters only, or everyone), VOICE VOLUME and LET VOICES FINISH. No voices are recorded yet, so they stay silent until a voice pack is put beside the game; with VOICES off (as it starts) the game is exactly as before.
