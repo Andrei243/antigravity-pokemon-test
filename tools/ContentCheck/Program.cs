@@ -8,6 +8,7 @@
 //   dotnet run --project tools/ContentCheck -- --plan <out dir> <name>@x,y,w,h   a rectangle of a map's tiles alone
 //   ... --tile <pixels>                                                      how large a plan draws a tile (8, 16, 32, 48, 64 or 96; fitted unless said)
 //   dotnet run --project tools/ContentCheck -- --rows "<line>"               a line as the text box breaks it (\n for a break), row by row
+//   dotnet run --project tools/ContentCheck -- --generated                   also read every generated file strictly (the five tables, the worlds' chunks, areas...: plan 24 · X4)
 
 using System.Diagnostics;
 using System.Globalization;
@@ -22,6 +23,7 @@ string? planDir = null;
 int? tile = null;
 var names = new List<string>();
 var packFolders = new List<string>();
+bool generated = false;
 for (int i = 0; i < args.Length; i++)
 {
     string Value() => i + 1 < args.Length ? args[++i] : throw new ArgumentException($"{args[i]} needs a value");
@@ -32,6 +34,7 @@ for (int i = 0; i < args.Length; i++)
             case "--data": root = Value(); break;
             case "--pack": packFolders.Add(Value()); break;
             case "--plan": planDir = Value(); break;
+            case "--generated": generated = true; break;
             case "--tile": tile = int.Parse(Value(), CultureInfo.InvariantCulture); break;
             case "--rows":
             {
@@ -117,6 +120,13 @@ if (planDir != null)
 }
 
 var found = Checks.All(content);
+if (generated)
+{
+    // The importer's files read as strictly as the hand-written ones (plan 24 · X4): a field the code renamed without
+    // the importer run again. The game reads these leniently, so this is the tests' and this switch's alone
+    foreach (string line in StrictFiles.Generated(root))
+        found.Add(new Finding(Kind.Unreadable, line[..line.IndexOf(':')], "generated", line[(line.IndexOf(':') + 2)..]));
+}
 foreach (var finding in found) Console.WriteLine(finding);
 if (found.Count > 0) Console.WriteLine();
 Console.WriteLine($"Read {content.Regions.Sum(r => r.Overlays.Count)} overlays, {content.Rooms.Count} rooms and {content.Scripts.Files.Count} script files of {root} ({clock.Elapsed.TotalSeconds:F1} s).");

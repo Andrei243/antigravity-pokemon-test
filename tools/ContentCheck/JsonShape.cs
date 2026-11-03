@@ -7,10 +7,11 @@ using PokemonPlatinumEngine.Data;
 namespace ContentCheck;
 
 /// <summary>
-/// Fields of a hand-written file that its format doesn't have. The game's reader passes over a field it doesn't know
-/// without a word, so a slip of the pen (<c>"dialogue"</c> for <c>"dialog"</c>, <c>"hiddenby"</c>) quietly leaves
-/// someone with nothing to say or always on the map: this walks the file's JSON beside the record it is read into and
-/// names each field no property answers to, with the nearest one that would.
+/// Fields of a hand-written file that its format doesn't have. Since plan 24 · X4 the game reads these files strictly
+/// and stops on such a field (<see cref="GameDataFiles.Strict"/>); before, a slip of the pen (<c>"dialogue"</c> for
+/// <c>"dialog"</c>, <c>"hiddenby"</c>) quietly left someone with nothing to say or always on the map. This walks the
+/// file's JSON beside the record it is read into and names each field no property answers to, with the nearest one
+/// that would.
 /// </summary>
 public static class JsonShape
 {
@@ -61,7 +62,7 @@ public static class JsonShape
                 continue;
             }
             string? near = properties.Keys.OrderBy(name => Distance(name, field.Name)).FirstOrDefault(name => Distance(name, field.Name) <= Math.Max(2, field.Name.Length / 3));
-            found.Add((Join(path, field.Name), $"a {Describe(type)} has no field \"{field.Name}\", so the game passes over it without a word" + (near != null ? $" (\"{near}\"?)" : "")));
+            found.Add((Join(path, field.Name), $"a {Describe(type)} has no field \"{field.Name}\", so the game refuses the file as it loads (plan 24 · X4)" + (near != null ? $" (\"{near}\"?)" : "")));
         }
     }
 

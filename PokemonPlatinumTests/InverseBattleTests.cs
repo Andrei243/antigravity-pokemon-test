@@ -169,13 +169,14 @@ public class InverseBattleTests
     {
         // Garchomp's Earthquake (Attack 135, power 100) on Skarmory (Defense 145, HP 125):
         // 135 × 100 × 22 / 145 / 50 = 40, + 2 = 42; its own type, 63. In Platinum the Flying type stops it. Turned
-        // round, Steel resists it (63 × 5 / 10 = 31) and Flying is weak to it (31 × 20 / 10 = 62), each in the order
-        // of Skarmory's types: an even hit, with nothing said of it
+        // round, Flying is weak to it (63 × 20 / 10 = 126) and Steel resists it (126 × 5 / 10 = 63), in the order of
+        // the original's chart, whose line of Ground against Flying comes before Ground against Steel (plan 24 · X5,
+        // DamageCalculator.ChartOrder): an even hit, with nothing said of it
         var skarmory = Mon("Skarmory", 50);
         var said = Turn(Wild(true, Mon("Garchomp", 50, "Earthquake"), skarmory));
         Assert.DoesNotContain("It's super effective!", said);
         Assert.DoesNotContain("It's not very effective...", said);
-        Assert.Equal(125 - 62, skarmory.CurrentHP);
+        Assert.Equal(125 - 63, skarmory.CurrentHP);
 
         skarmory = Mon("Skarmory", 50);
         Assert.Contains("It doesn't affect Foe Skarmory...", Turn(Wild(false, Mon("Garchomp", 50, "Earthquake"), skarmory)));

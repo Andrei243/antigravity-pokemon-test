@@ -1,0 +1,483 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "The importer's patch of items.json (tools/DataImporter/Overrides/items.json)",
+  "description": "Written by SchemaTests (plan 24 · X4) from the records the game reads the file into; don't edit by hand. The game reads the file strictly: a key no field has stops it.",
+  "type": "object",
+  "additionalProperties": {
+    "type": [
+      "object",
+      "null"
+    ],
+    "properties": {
+      "id": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "name": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "pocket": {
+        "anyOf": [
+          {
+            "enum": [
+              "Items",
+              "Medicine",
+              "PokeBalls",
+              "TMsAndHMs",
+              "KeyItems",
+              "Berries",
+              "Mail",
+              "BattleItems"
+            ]
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "effectType": {
+        "anyOf": [
+          {
+            "enum": [
+              "None",
+              "HealHP",
+              "Revive",
+              "HealStatus",
+              "FullRestore",
+              "CatchPokemon",
+              "LevelUp",
+              "KeyItem"
+            ]
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "effectValue": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "healsStatus": {
+        "anyOf": [
+          {
+            "enum": [
+              "None",
+              "Poison",
+              "Toxic",
+              "Burn",
+              "Paralyze",
+              "Sleep",
+              "Freeze",
+              "Faint"
+            ]
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "price": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "canUseInBattle": {
+        "anyOf": [
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "canUseInOverworld": {
+        "anyOf": [
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "description": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "holdEffect": {
+        "anyOf": [
+          {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "teachesMove": {
+        "anyOf": [
+          {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "holdParam": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "flingPower": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "flingEffect": {
+        "anyOf": [
+          {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "naturalGiftPower": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "naturalGiftType": {
+        "anyOf": [
+          {
+            "enum": [
+              "Normal",
+              "Fire",
+              "Water",
+              "Grass",
+              "Electric",
+              "Ice",
+              "Fighting",
+              "Poison",
+              "Ground",
+              "Flying",
+              "Psychic",
+              "Bug",
+              "Rock",
+              "Ghost",
+              "Dragon",
+              "Steel",
+              "Dark",
+              "Fairy",
+              null
+            ]
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "pluckEffect": {
+        "anyOf": [
+          {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "cantBeTossed": {
+        "anyOf": [
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "canBeRegistered": {
+        "anyOf": [
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "fieldUse": {
+        "anyOf": [
+          {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "battleUse": {
+        "anyOf": [
+          {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "battlePocket": {
+        "anyOf": [
+          {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "effectParam": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "use": {
+        "anyOf": [
+          {
+            "type": [
+              "object",
+              "null"
+            ],
+            "additionalProperties": {
+              "type": "integer"
+            }
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "berry": {
+        "anyOf": [
+          {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "size": {
+                "type": "integer"
+              },
+              "firmness": {
+                "type": "string"
+              },
+              "baseYield": {
+                "type": "integer"
+              },
+              "stageDuration": {
+                "type": "integer"
+              },
+              "moistureDrainRate": {
+                "type": "integer"
+              },
+              "spiciness": {
+                "type": "integer"
+              },
+              "dryness": {
+                "type": "integer"
+              },
+              "sweetness": {
+                "type": "integer"
+              },
+              "bitterness": {
+                "type": "integer"
+              },
+              "sourness": {
+                "type": "integer"
+              },
+              "smoothness": {
+                "type": "integer"
+              }
+            },
+            "additionalProperties": false
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "megaStone": {
+        "anyOf": [
+          {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "species": {
+                "type": "string"
+              },
+              "form": {
+                "type": "string"
+              },
+              "heldByForm": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "additionalProperties": false
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "zCrystal": {
+        "anyOf": [
+          {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "type": {
+                "enum": [
+                  "Normal",
+                  "Fire",
+                  "Water",
+                  "Grass",
+                  "Electric",
+                  "Ice",
+                  "Fighting",
+                  "Poison",
+                  "Ground",
+                  "Flying",
+                  "Psychic",
+                  "Bug",
+                  "Rock",
+                  "Ghost",
+                  "Dragon",
+                  "Steel",
+                  "Dark",
+                  "Fairy",
+                  null
+                ]
+              },
+              "move": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "from": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "users": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "additionalProperties": false
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "new": {
+        "type": "boolean",
+        "description": "An entry the import has none of by this name: added only when it says so, so a misspelt name stops the importer."
+      }
+    },
+    "additionalProperties": false
+  }
+}

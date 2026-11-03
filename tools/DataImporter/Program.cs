@@ -280,22 +280,44 @@ static class Overrides
         }
     }
 
+    /// <summary>
+    /// Lays a patch file over the imported entries (plan 24 · X4). Each patched entry is read strictly as the entry it
+    /// patches, so a mistyped field stops the importer with the patch file, the entry and the key named; an entry the
+    /// import lacks is added only when it says <c>"new": true</c> (taken off before it is read), so a misspelt name
+    /// stops the importer instead of adding an entry, and an entry that says it is new but the import has is told too.
+    /// </summary>
     public static List<T> Apply<T>(List<T> records, string path)
     {
         if (!File.Exists(path)) return records;
+        string file = "Overrides/" + Path.GetFileName(path);
         var patches = JsonNode.Parse(File.ReadAllText(path), documentOptions: new() { CommentHandling = System.Text.Json.JsonCommentHandling.Skip, AllowTrailingCommas = true })!.AsObject();
         var nodes = JsonNode.Parse(PokemonPlatinumEngine.Data.GameDataFiles.Serialize(records))!.AsArray();
-        foreach (var (name, patch) in patches)
+        foreach (var (name, entry) in patches)
         {
+            var patch = entry!.DeepClone().AsObject();
+            bool isNew = patch["new"] is JsonValue flag && flag.GetValueKind() == System.Text.Json.JsonValueKind.True;
+            patch.Remove("new");
+            // The fields as the entry's own, strictly: a field the code has no property for is a finding. A field set to
+            // null takes the field away, so it is only asked to be a field the entry has
+            var given = new JsonObject(patch.Where(kv => kv.Value != null).Select(kv => KeyValuePair.Create(kv.Key, kv.Value!.DeepClone())));
+            PokemonPlatinumEngine.Data.GameDataFiles.ReadStrict<T>(given.ToJsonString(), $"{file}: {name}");
+            var fields = typeof(T).GetProperties().Select(p => System.Text.Json.JsonNamingPolicy.CamelCase.ConvertName(p.Name)).ToHashSet(StringComparer.Ordinal);
+            foreach (var (key, value) in patch)
+                if (value == null && !fields.Contains(key))
+                    throw new InvalidDataException($"{file}: {name}: $.{key}: no such field");
+
             var target = nodes.OfType<JsonObject>().FirstOrDefault(n => (string?)n["name"] == name);
             if (target == null)
             {
-                var added = patch!.DeepClone().AsObject();
-                added["name"] = name;
-                nodes.Add(added);
+                if (!isNew)
+                    throw new InvalidDataException($"{file}: {name}: the import has no entry of that name; an entry the patch adds says \"new\": true");
+                patch["name"] = name;
+                nodes.Add(patch);
                 continue;
             }
-            foreach (var (key, value) in patch!.AsObject())
+            if (isNew)
+                throw new InvalidDataException($"{file}: {name}: says \"new\": true, but the import has an entry of that name; take the key off to patch it");
+            foreach (var (key, value) in patch)
             {
                 if (value == null) target.Remove(key);
                 else target[key] = value.DeepClone();

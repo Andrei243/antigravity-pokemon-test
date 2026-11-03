@@ -2,6 +2,7 @@
 {
   // Platinum gives running shoes as a feature, not an item; this game keeps them in the Key Items pocket
   "Running Shoes": {
+    "new": true,
     "id": 9000,
     "pocket": "KeyItems",
     "effectType": "KeyItem",
@@ -13,6 +14,7 @@
   },
   // A key item made for this game; nothing gives it yet
   "Distortion Orb": {
+    "new": true,
     "id": 9001,
     "pocket": "KeyItems",
     "effectType": "KeyItem",
@@ -25,6 +27,7 @@
   // FireRed's Bike Voucher (plan 19 · K4, part b), which no game this importer reads has: the Pokémon Fan Club's
   // chairman gives it, and Cerulean City's Bike Shop takes it for a Bicycle
   "Bike Voucher": {
+    "new": true,
     "id": 9010,
     "pocket": "KeyItems",
     "effectType": "KeyItem",
@@ -38,6 +41,7 @@
   // Hoenn's key items of plan 21 · H2 (part b), which no game this importer reads has: Mr. Stone's Letter to Steven,
   // the Devon Goods the grunt snatched, and the Pretty Petal flower shop's pail for watering berries
   "Letter": {
+    "new": true,
     "id": 9100,
     "pocket": "KeyItems",
     "effectType": "KeyItem",
@@ -49,6 +53,7 @@
     "cantBeTossed": true
   },
   "Devon Goods": {
+    "new": true,
     "id": 9101,
     "pocket": "KeyItems",
     "effectType": "KeyItem",
@@ -62,6 +67,7 @@
   // Emerald's Pokéblock Case (plan 21 · H11), which no game this importer reads has: the Lilycove Contest Lobby's
   // receptionist gives it once, and it holds the Pokéblocks the Berry Blender makes (Models/Pokeblocks.cs)
   "Pokéblock Case": {
+    "new": true,
     "id": 9300,
     "pocket": "KeyItems",
     "effectType": "KeyItem",
@@ -75,6 +81,7 @@
     "fieldUse": "PokeblockCase"
   },
   "Wailmer Pail": {
+    "new": true,
     "id": 9102,
     "pocket": "KeyItems",
     "effectType": "KeyItem",
@@ -89,6 +96,7 @@
   // the player holds one at a time (the fast one that climbs muddy slopes and the nimble one that hops along rails), and
   // the rival's Itemfinder, which points at things buried nearby. Trick House's Orange Mail is Emerald's own mail
   "Mach Bike": {
+    "new": true,
     "id": 9103,
     "pocket": "KeyItems",
     "effectType": "KeyItem",
@@ -102,6 +110,7 @@
     "fieldUse": "Bicycle"
   },
   "Acro Bike": {
+    "new": true,
     "id": 9104,
     "pocket": "KeyItems",
     "effectType": "KeyItem",
@@ -115,6 +124,7 @@
     "fieldUse": "Bicycle"
   },
   "Itemfinder": {
+    "new": true,
     "id": 9105,
     "pocket": "KeyItems",
     "effectType": "KeyItem",
@@ -128,6 +138,7 @@
     "fieldUse": "Itemfinder"
   },
   "Orange Mail": {
+    "new": true,
     "id": 9106,
     "pocket": "Mail",
     "effectType": "None",
@@ -139,17 +150,18 @@
     "fieldUse": "Mail"
   },
   // Plan 21 · H12, part j: the rest of Emerald's mail, found in the Trick House's later puzzles
-  "Wave Mail": { "id": 9140, "pocket": "Mail", "effectType": "None", "effectValue": 0, "price": 50, "canUseInBattle": false, "canUseInOverworld": true, "description": "Writing paper with Wailmer spouting in the open sea. A Pokémon can carry it in a trade.", "fieldUse": "Mail" },
-  "Wood Mail": { "id": 9141, "pocket": "Mail", "effectType": "None", "effectValue": 0, "price": 50, "canUseInBattle": false, "canUseInOverworld": true, "description": "Writing paper with Slakoth dozing among the trees. A Pokémon can carry it in a trade.", "fieldUse": "Mail" },
-  "Shadow Mail": { "id": 9142, "pocket": "Mail", "effectType": "None", "effectValue": 0, "price": 50, "canUseInBattle": false, "canUseInOverworld": true, "description": "Writing paper with Duskull drifting through the dark. A Pokémon can carry it in a trade.", "fieldUse": "Mail" },
-  "Mech Mail": { "id": 9143, "pocket": "Mail", "effectType": "None", "effectValue": 0, "price": 50, "canUseInBattle": false, "canUseInOverworld": true, "description": "Writing paper with Magnemite among cogs and bolts. A Pokémon can carry it in a trade.", "fieldUse": "Mail" },
-  "Glitter Mail": { "id": 9144, "pocket": "Mail", "effectType": "None", "effectValue": 0, "price": 50, "canUseInBattle": false, "canUseInOverworld": true, "description": "Writing paper with Pikachu on a sparkling ground. A Pokémon can carry it in a trade.", "fieldUse": "Mail" },
-  "Tropic Mail": { "id": 9145, "pocket": "Mail", "effectType": "None", "effectValue": 0, "price": 50, "canUseInBattle": false, "canUseInOverworld": true, "description": "Writing paper with Bellossom among bright flowers. A Pokémon can carry it in a trade.", "fieldUse": "Mail" },
-  "Bead Mail": { "id": 9146, "pocket": "Mail", "effectType": "None", "effectValue": 0, "price": 50, "canUseInBattle": false, "canUseInOverworld": true, "description": "Writing paper strung with beads, showing the icon of the Pokémon that carries it.", "fieldUse": "Mail" },
+  "Wave Mail": {"new":true,"id": 9140, "pocket": "Mail", "effectType": "None", "effectValue": 0, "price": 50, "canUseInBattle": false, "canUseInOverworld": true, "description": "Writing paper with Wailmer spouting in the open sea. A Pokémon can carry it in a trade.", "fieldUse": "Mail" },
+  "Wood Mail": {"new":true,"id": 9141, "pocket": "Mail", "effectType": "None", "effectValue": 0, "price": 50, "canUseInBattle": false, "canUseInOverworld": true, "description": "Writing paper with Slakoth dozing among the trees. A Pokémon can carry it in a trade.", "fieldUse": "Mail" },
+  "Shadow Mail": {"new":true,"id": 9142, "pocket": "Mail", "effectType": "None", "effectValue": 0, "price": 50, "canUseInBattle": false, "canUseInOverworld": true, "description": "Writing paper with Duskull drifting through the dark. A Pokémon can carry it in a trade.", "fieldUse": "Mail" },
+  "Mech Mail": {"new":true,"id": 9143, "pocket": "Mail", "effectType": "None", "effectValue": 0, "price": 50, "canUseInBattle": false, "canUseInOverworld": true, "description": "Writing paper with Magnemite among cogs and bolts. A Pokémon can carry it in a trade.", "fieldUse": "Mail" },
+  "Glitter Mail": {"new":true,"id": 9144, "pocket": "Mail", "effectType": "None", "effectValue": 0, "price": 50, "canUseInBattle": false, "canUseInOverworld": true, "description": "Writing paper with Pikachu on a sparkling ground. A Pokémon can carry it in a trade.", "fieldUse": "Mail" },
+  "Tropic Mail": {"new":true,"id": 9145, "pocket": "Mail", "effectType": "None", "effectValue": 0, "price": 50, "canUseInBattle": false, "canUseInOverworld": true, "description": "Writing paper with Bellossom among bright flowers. A Pokémon can carry it in a trade.", "fieldUse": "Mail" },
+  "Bead Mail": {"new":true,"id": 9146, "pocket": "Mail", "effectType": "None", "effectValue": 0, "price": 50, "canUseInBattle": false, "canUseInOverworld": true, "description": "Writing paper strung with beads, showing the icon of the Pokémon that carries it.", "fieldUse": "Mail" },
   // Hoenn's items of plan 21 · H4 (part a) and H3 (part c), which no game this importer reads has: the goggles that
   // let their wearer cross the desert's sandstorm, the sack that gathers volcanic ash, and the mail Slateport sells,
   // which the woman of Mauville trades her Coin Case for
   "Go-Goggles": {
+    "new": true,
     "id": 9107,
     "pocket": "KeyItems",
     "effectType": "KeyItem",
@@ -161,6 +173,7 @@
     "cantBeTossed": true
   },
   "Soot Sack": {
+    "new": true,
     "id": 9108,
     "pocket": "KeyItems",
     "effectType": "KeyItem",
@@ -172,6 +185,7 @@
     "cantBeTossed": true
   },
   "Harbor Mail": {
+    "new": true,
     "id": 9109,
     "pocket": "Mail",
     "effectType": "None",
@@ -184,6 +198,7 @@
   },
   // Professor Cozmo's meteorite, which Team Magma takes at Meteor Falls (plan 21 · H4)
   "Meteorite": {
+    "new": true,
     "id": 9110,
     "pocket": "KeyItems",
     "effectType": "KeyItem",
@@ -196,6 +211,7 @@
   },
   // The scope Devon made to see what hides in plain sight, which Steven gives on Route 120 (plan 21 · H6)
   "Devon Scope": {
+    "new": true,
     "id": 9111,
     "pocket": "KeyItems",
     "effectType": "KeyItem",
@@ -209,6 +225,7 @@
   // Team Magma's emblem, which the old woman of Mt. Pyre's summit gives and which opens the way into Team Magma's
   // hideout on Jagged Pass (plan 21 · H7)
   "Magma Emblem": {
+    "new": true,
     "id": 9112,
     "pocket": "KeyItems",
     "effectType": "KeyItem",
@@ -223,6 +240,7 @@
   // eight HMs keep their numbers, so Hoenn's Dive is the ninth; the species that learn it are those that learn Dive by a
   // machine in any game (Importer.AddHoennMachines)
   "HM09": {
+    "new": true,
     "id": 9113,
     "pocket": "TMsAndHMs",
     "effectType": "None",
@@ -239,6 +257,7 @@
   // Scanner, found in a cabin of its hidden floor and taken to Captain Stern, and the keys of four of those cabins,
   // each left in the cabin before it and used up in its door. The Storage Key is Platinum's, which has the same name
   "Scanner": {
+    "new": true,
     "id": 9114,
     "pocket": "KeyItems",
     "effectType": "KeyItem",
@@ -250,6 +269,7 @@
     "cantBeTossed": true
   },
   "Room 1 Key": {
+    "new": true,
     "id": 9115,
     "pocket": "KeyItems",
     "effectType": "KeyItem",
@@ -261,6 +281,7 @@
     "cantBeTossed": true
   },
   "Room 2 Key": {
+    "new": true,
     "id": 9116,
     "pocket": "KeyItems",
     "effectType": "KeyItem",
@@ -272,6 +293,7 @@
     "cantBeTossed": true
   },
   "Room 4 Key": {
+    "new": true,
     "id": 9117,
     "pocket": "KeyItems",
     "effectType": "KeyItem",
@@ -283,6 +305,7 @@
     "cantBeTossed": true
   },
   "Room 6 Key": {
+    "new": true,
     "id": 9118,
     "pocket": "KeyItems",
     "effectType": "KeyItem",
@@ -296,6 +319,7 @@
   // Johto's key item of the second chapter (plan 20 · J7), which no game this importer reads has: Goldenrod's flower
   // shop lends it for the strange tree on Route 36
   "SquirtBottle": {
+    "new": true,
     "id": 9200,
     "pocket": "KeyItems",
     "effectType": "KeyItem",
@@ -310,6 +334,7 @@
   // Tunnel's locked door, and the wing the Radio Tower's director gives (HeartGold's; SoulSilver's Silver Wing is
   // another game's). The Card Key the director gives is Silph Co.'s item, below
   "Basement Key": {
+    "new": true,
     "id": 9201,
     "pocket": "KeyItems",
     "effectType": "KeyItem",
@@ -321,6 +346,7 @@
     "cantBeTossed": true
   },
   "Rainbow Wing": {
+    "new": true,
     "id": 9202,
     "pocket": "KeyItems",
     "effectType": "KeyItem",
@@ -334,6 +360,7 @@
   // The Silver Wing (plan 20 · J11, part d): HeartGold hands it out in Kanto; here the Kimono Girls give it on the Bell
   // Tower's roof once Ho-Oh has come, and it lets the player near Lugia in the Whirl Islands
   "Silver Wing": {
+    "new": true,
     "id": 9203,
     "pocket": "KeyItems",
     "effectType": "KeyItem",
@@ -349,6 +376,7 @@
   // the species that learn it are those that learn Whirlpool by a machine in any game PokeAPI lists
   // (Importer.AddHoennMachines), since HeartGold's own machine table isn't one the importer reads
   "HM10": {
+    "new": true,
     "id": 9204,
     "pocket": "TMsAndHMs",
     "effectType": "None",
@@ -365,6 +393,7 @@
   // leaves behind, which Mr. Pokémon trades for an Exp. Share, and the town's famous sweet, which its souvenir shop sells
   // once Team Rocket is gone and which cures as a Lava Cookie does (HeartGold's Rage Candy Bar)
   "Red Scale": {
+    "new": true,
     "id": 9230,
     "pocket": "KeyItems",
     "effectType": "KeyItem",
@@ -378,6 +407,7 @@
   // Buena's card (plan 20, Johto's leftovers): the points a right password earns, kept in VAR_JOHTO_BLUE_CARD_POINTS,
   // which the woman beside Buena trades for prizes (HeartGold's Blue Card)
   "Blue Card": {
+    "new": true,
     "id": 9232,
     "pocket": "KeyItems",
     "effectType": "KeyItem",
@@ -391,6 +421,7 @@
   // The third orb of the Embedded Tower (plan 20, Johto's leftovers: HeartGold's Jade Orb), which Mr. Pokémon gives
   // once Groudon and Kyogre have both been met there, and which calls Rayquaza down to its room
   "Jade Orb": {
+    "new": true,
     "id": 9233,
     "pocket": "KeyItems",
     "effectType": "KeyItem",
@@ -402,6 +433,7 @@
     "cantBeTossed": true
   },
   "Rage Candy Bar": {
+    "new": true,
     "id": 9231,
     "pocket": "Medicine",
     "effectType": "HealStatus",
@@ -427,6 +459,7 @@
   // Rocket Hideout's Lift Key and the Silph Scope Giovanni leaves, Mr. Fuji's Poké Flute, the Tea Celadon's old lady
   // gives (for the thirsty guards of Saffron City's gates) and Silph Co.'s Card Key
   "Lift Key": {
+    "new": true,
     "id": 9020,
     "pocket": "KeyItems",
     "effectType": "KeyItem",
@@ -438,6 +471,7 @@
     "cantBeTossed": true
   },
   "Silph Scope": {
+    "new": true,
     "id": 9021,
     "pocket": "KeyItems",
     "effectType": "KeyItem",
@@ -449,6 +483,7 @@
     "cantBeTossed": true
   },
   "Poké Flute": {
+    "new": true,
     "id": 9022,
     "pocket": "KeyItems",
     "effectType": "KeyItem",
@@ -460,6 +495,7 @@
     "cantBeTossed": true
   },
   "Tea": {
+    "new": true,
     "id": 9023,
     "pocket": "KeyItems",
     "effectType": "KeyItem",
@@ -471,6 +507,7 @@
     "cantBeTossed": true
   },
   "Card Key": {
+    "new": true,
     "id": 9024,
     "pocket": "KeyItems",
     "effectType": "KeyItem",
@@ -483,6 +520,7 @@
   },
   // Plan 19 · K6: the Safari Zone Warden's lost dentures, found in the zone's west part and traded for HM04
   "Gold Teeth": {
+    "new": true,
     "id": 9025,
     "pocket": "KeyItems",
     "effectType": "KeyItem",
@@ -495,6 +533,7 @@
   },
   // Plan 19 · K7: Celio's pass for the Seagallop ferry between Kanto and the first three of the Sevii Islands
   "Tri-Pass": {
+    "new": true,
     "id": 9026,
     "pocket": "KeyItems",
     "effectType": "KeyItem",
@@ -508,6 +547,7 @@
   // Plan 19 · K9, part a: the gem Celio sends the player into Mt. Ember for, and the pass he gives for it, which the
   // Seagallop takes to all seven islands (FireRed's ITEM_RUBY and ITEM_RAINBOW_PASS)
   "Ruby": {
+    "new": true,
     "id": 9035,
     "pocket": "KeyItems",
     "effectType": "KeyItem",
@@ -519,6 +559,7 @@
     "cantBeTossed": true
   },
   "Rainbow Pass": {
+    "new": true,
     "id": 9036,
     "pocket": "KeyItems",
     "effectType": "KeyItem",
@@ -530,6 +571,7 @@
     "cantBeTossed": true
   },
   "Sapphire": {
+    "new": true,
     "id": 9037,
     "pocket": "KeyItems",
     "effectType": "KeyItem",
@@ -544,6 +586,7 @@
   // Radio Tower's director gives once the plant runs again, which brings in Kanto's stations (HeartGold's
   // ITEM_MACHINE_PART and ITEM_EXPN_CARD, which no game this importer reads has)
   "Machine Part": {
+    "new": true,
     "id": 9038,
     "pocket": "KeyItems",
     "effectType": "KeyItem",
@@ -555,6 +598,7 @@
     "cantBeTossed": true
   },
   "Expn Card": {
+    "new": true,
     "id": 9039,
     "pocket": "KeyItems",
     "effectType": "KeyItem",
@@ -609,23 +653,24 @@
   // The Mega Stones of our own (plan 06 · R20b: docs/plans/decisions/R20b-mega-proposals.md, approved 2026-10-26), ids 9400 on
   // (the document's 9002 to 9016 would meet the Bike Voucher's 9010). Nothing gives them yet: each is given in its
   // starter's home region once that region's chapter stands and the player holds the Key Stone (plan 23)
-  "Typhlosionite": { "id": 9400, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Typhlosion, it lets it Mega Evolve in battle.", "megaStone": { "species": "Typhlosion", "form": "Typhlosion-Mega" } },
-  "Torterrite": { "id": 9401, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Torterra, it lets it Mega Evolve in battle.", "megaStone": { "species": "Torterra", "form": "Torterra-Mega" } },
-  "Infernapite": { "id": 9402, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Infernape, it lets it Mega Evolve in battle.", "megaStone": { "species": "Infernape", "form": "Infernape-Mega" } },
-  "Empoleonite": { "id": 9403, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Empoleon, it lets it Mega Evolve in battle.", "megaStone": { "species": "Empoleon", "form": "Empoleon-Mega" } },
-  "Serperiorite": { "id": 9404, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Serperior, it lets it Mega Evolve in battle.", "megaStone": { "species": "Serperior", "form": "Serperior-Mega" } },
-  "Samurottite": { "id": 9405, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Samurott, it lets it Mega Evolve in battle.", "megaStone": { "species": "Samurott", "form": "Samurott-Mega" } },
-  "Decidueyite": { "id": 9406, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Decidueye, it lets it Mega Evolve in battle.", "megaStone": { "species": "Decidueye", "form": "Decidueye-Mega" } },
-  "Incineroarite": { "id": 9407, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Incineroar, it lets it Mega Evolve in battle.", "megaStone": { "species": "Incineroar", "form": "Incineroar-Mega" } },
-  "Primarinite": { "id": 9408, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Primarina, it lets it Mega Evolve in battle.", "megaStone": { "species": "Primarina", "form": "Primarina-Mega" } },
-  "Rillaboomite": { "id": 9409, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Rillaboom, it lets it Mega Evolve in battle.", "megaStone": { "species": "Rillaboom", "form": "Rillaboom-Mega" } },
-  "Cinderacite": { "id": 9410, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Cinderace, it lets it Mega Evolve in battle.", "megaStone": { "species": "Cinderace", "form": "Cinderace-Mega" } },
-  "Inteleonite": { "id": 9411, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Inteleon, it lets it Mega Evolve in battle.", "megaStone": { "species": "Inteleon", "form": "Inteleon-Mega" } },
-  "Meowscaradite": { "id": 9412, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Meowscarada, it lets it Mega Evolve in battle.", "megaStone": { "species": "Meowscarada", "form": "Meowscarada-Mega" } },
-  "Skeledirgite": { "id": 9413, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Skeledirge, it lets it Mega Evolve in battle.", "megaStone": { "species": "Skeledirge", "form": "Skeledirge-Mega" } },
-  "Quaquavalite": { "id": 9414, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Quaquaval, it lets it Mega Evolve in battle.", "megaStone": { "species": "Quaquaval", "form": "Quaquaval-Mega" } },
+  "Typhlosionite": {"new":true,"id": 9400, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Typhlosion, it lets it Mega Evolve in battle.", "megaStone": { "species": "Typhlosion", "form": "Typhlosion-Mega" } },
+  "Torterrite": {"new":true,"id": 9401, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Torterra, it lets it Mega Evolve in battle.", "megaStone": { "species": "Torterra", "form": "Torterra-Mega" } },
+  "Infernapite": {"new":true,"id": 9402, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Infernape, it lets it Mega Evolve in battle.", "megaStone": { "species": "Infernape", "form": "Infernape-Mega" } },
+  "Empoleonite": {"new":true,"id": 9403, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Empoleon, it lets it Mega Evolve in battle.", "megaStone": { "species": "Empoleon", "form": "Empoleon-Mega" } },
+  "Serperiorite": {"new":true,"id": 9404, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Serperior, it lets it Mega Evolve in battle.", "megaStone": { "species": "Serperior", "form": "Serperior-Mega" } },
+  "Samurottite": {"new":true,"id": 9405, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Samurott, it lets it Mega Evolve in battle.", "megaStone": { "species": "Samurott", "form": "Samurott-Mega" } },
+  "Decidueyite": {"new":true,"id": 9406, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Decidueye, it lets it Mega Evolve in battle.", "megaStone": { "species": "Decidueye", "form": "Decidueye-Mega" } },
+  "Incineroarite": {"new":true,"id": 9407, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Incineroar, it lets it Mega Evolve in battle.", "megaStone": { "species": "Incineroar", "form": "Incineroar-Mega" } },
+  "Primarinite": {"new":true,"id": 9408, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Primarina, it lets it Mega Evolve in battle.", "megaStone": { "species": "Primarina", "form": "Primarina-Mega" } },
+  "Rillaboomite": {"new":true,"id": 9409, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Rillaboom, it lets it Mega Evolve in battle.", "megaStone": { "species": "Rillaboom", "form": "Rillaboom-Mega" } },
+  "Cinderacite": {"new":true,"id": 9410, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Cinderace, it lets it Mega Evolve in battle.", "megaStone": { "species": "Cinderace", "form": "Cinderace-Mega" } },
+  "Inteleonite": {"new":true,"id": 9411, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Inteleon, it lets it Mega Evolve in battle.", "megaStone": { "species": "Inteleon", "form": "Inteleon-Mega" } },
+  "Meowscaradite": {"new":true,"id": 9412, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Meowscarada, it lets it Mega Evolve in battle.", "megaStone": { "species": "Meowscarada", "form": "Meowscarada-Mega" } },
+  "Skeledirgite": {"new":true,"id": 9413, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Skeledirge, it lets it Mega Evolve in battle.", "megaStone": { "species": "Skeledirge", "form": "Skeledirge-Mega" } },
+  "Quaquavalite": {"new":true,"id": 9414, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Quaquaval, it lets it Mega Evolve in battle.", "megaStone": { "species": "Quaquaval", "form": "Quaquaval-Mega" } },
   // The band of Mega Dynamax (plan 06 · R20c, our own): Sonia sets the Key Stone into the Dynamax Band after Galar's Hall of Fame
   "Mega Max Band": {
+    "new": true,
     "id": 9500,
     "pocket": "KeyItems",
     "effectType": "None",
@@ -639,6 +684,7 @@
   // Plan 29 · LS11b, our own: the strange ball Kurt can't open, handed over after Johto's Hall of Fame to be laid on Ilex
   // Forest's shrine, where Celebi comes for it. Its id stands apart from the other event key items of LS11 (9500 and on)
   "GS Ball": {
+    "new": true,
     "id": 9510,
     "pocket": "KeyItems",
     "effectType": "KeyItem",
@@ -652,6 +698,7 @@
   // The Liberty Pass (plan 29 · LS11d, our own after Black and White's event): the sailor at Castelia's Liberty Pier gives
   // it to a Champion of Unova who has fought in the World Tournament, and sails whoever holds it to the Liberty Garden
   "Liberty Pass": {
+    "new": true,
     "id": 9571,
     "pocket": "KeyItems",
     "effectType": "KeyItem",

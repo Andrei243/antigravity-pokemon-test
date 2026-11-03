@@ -1,9 +1,10 @@
-// The oracle of plan 24 X6: Pokemon Showdown's damage calculator (@smogon/calc, pinned in package.json and
+// The oracles of plan 24 X5 and X6: Pokemon Showdown's damage calculator (@smogon/calc, pinned in package.json and
 // package-lock.json) works out every scenario the tests draw, and its answers are written beside them, to be
 // committed. Nothing of the calculator's own is written: only numbers it gives for our scenarios.
 //
 //   npm ci
 //   node oracle.mjs [scenarios-gen9.json] [damage-gen9.json]
+//   node oracle.mjs --gen 4      (Platinum's rules: scenarios-gen4.json -> damage-gen4.json, X5)
 //   node oracle.mjs --check      (exits 1 when the committed answers are not what the pinned calculator gives)
 import { calculate, Generations, Pokemon, Move, Field } from '@smogon/calc';
 import { createHash } from 'node:crypto';
@@ -15,12 +16,15 @@ const here = dirname(fileURLToPath(import.meta.url));
 const folder = join(here, '..', '..', 'PokemonPlatinumTests', 'Oracle');
 const args = process.argv.slice(2);
 const check = args.includes('--check');
-const files = args.filter(a => !a.startsWith('--'));
-const scenariosPath = files[0] ?? join(folder, 'scenarios-gen9.json');
-const answersPath = files[1] ?? join(folder, 'damage-gen9.json');
+const genAt = args.indexOf('--gen');
+const generation = genAt >= 0 ? Number(args[genAt + 1]) : 9;
+if (generation !== 4 && generation !== 9) throw new Error(`--gen is 4 or 9, not ${args[genAt + 1]}`);
+const files = args.filter((a, i) => !a.startsWith('--') && !(genAt >= 0 && i === genAt + 1));
+const scenariosPath = files[0] ?? join(folder, `scenarios-gen${generation}.json`);
+const answersPath = files[1] ?? join(folder, `damage-gen${generation}.json`);
 
 const calcVersion = JSON.parse(readFileSync(join(here, 'node_modules', '@smogon', 'calc', 'package.json'), 'utf8')).version;
-const gen = Generations.get(9);
+const gen = Generations.get(generation);
 
 const scenariosText = readFileSync(scenariosPath, 'utf8').replace(/\r\n/g, '\n');
 const hash = createHash('sha256').update(scenariosText, 'utf8').digest('hex');
@@ -86,7 +90,7 @@ function mon(m, notes) {
     // A hit in a battle that has only begun: Slow Start is still at work
     abilityOn: m.ability === 'Slow Start',
     // Protosynthesis and Quark Drive take hold under their sky or terrain, on the best stat by its stage (plan 06 · R27b)
-    boostedStat: m.ability === 'Protosynthesis' || m.ability === 'Quark Drive' ? 'auto' : undefined
+    boostedStat: generation === 9 && (m.ability === 'Protosynthesis' || m.ability === 'Quark Drive') ? 'auto' : undefined
   };
   const species = speciesOf(m.species, notes);
   let p = new Pokemon(gen, species, options);
@@ -105,8 +109,9 @@ const answers = scenarios.map(s => {
     const field = new Field({
       gameType: s.doubles ? 'Doubles' : 'Singles',
       weather: s.field.weather ?? undefined,
-      terrain: s.field.terrain ?? undefined,
-      defenderSide: { isReflect: s.field.reflect, isLightScreen: s.field.lightScreen, isAuroraVeil: s.field.auroraVeil }
+      // Generation 4 has no terrain and no Aurora Veil, and its scenarios draw neither
+      terrain: generation === 9 ? s.field.terrain ?? undefined : undefined,
+      defenderSide: { isReflect: s.field.reflect, isLightScreen: s.field.lightScreen, isAuroraVeil: generation === 9 && s.field.auroraVeil }
     });
     const result = calculate(gen, attacker, defender, move, field);
     let damage = result.damage;
@@ -119,7 +124,7 @@ const answers = scenarios.map(s => {
 });
 
 let out = '{\n';
-out += `  "calculator": ${JSON.stringify(`@smogon/calc ${calcVersion}, generation 9`)},\n`;
+out += `  "calculator": ${JSON.stringify(`@smogon/calc ${calcVersion}, generation ${generation}`)},\n`;
 out += `  "scenarios": ${JSON.stringify(hash)},\n`;
 out += '  "answers": [\n';
 out += answers.map(a => '    ' + JSON.stringify(a)).join(',\n');

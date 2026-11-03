@@ -194,7 +194,7 @@ public sealed class Habitats
         {
             // Most overlays hold none: only those that name the key are read whole
             if (!File.ReadAllText(file).Contains("\"ours\"", StringComparison.Ordinal)) continue;
-            var overlay = GameDataFiles.Load<WorldOverlayFile>(Path.Combine(regionFolder, "overlays", Path.GetFileName(file)));
+            var overlay = GameDataFiles.Load<WorldOverlayFile>(Path.Combine(regionFolder, "overlays", Path.GetFileName(file)), strict: true);
             if (overlay.Ours != null) found.Add((Path.GetFileNameWithoutExtension(file), overlay.Ours));
         }
         return found;

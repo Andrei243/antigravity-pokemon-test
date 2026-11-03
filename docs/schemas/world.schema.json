@@ -1,0 +1,222 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "A region's world.json (Data/world/<region>/world.json)",
+  "description": "Written by SchemaTests (plan 24 · X4) from the records the game reads the file into; don't edit by hand. The game reads the file strictly: a key no field has stops it.",
+  "type": [
+    "object",
+    "null"
+  ],
+  "properties": {
+    "region": {
+      "type": "string"
+    },
+    "buildingsAtDoors": {
+      "type": "boolean"
+    },
+    "maps": {
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "matrix": {
+            "type": "integer"
+          },
+          "area": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "trees": {
+            "enum": [
+              "Round",
+              "Pine"
+            ]
+          },
+          "setting": {
+            "enum": [
+              "Outdoors",
+              "Cave",
+              "Void",
+              "Indoors",
+              "Underwater"
+            ]
+          },
+          "arrivals": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": "integer"
+              }
+            }
+          },
+          "arrivalsInEveryChunk": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "$ref": "#/properties/maps/items/properties/arrivals/items"
+            }
+          },
+          "puzzle": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "seaBelow": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "movement": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "directions": {
+                "enum": [
+                  "Four",
+                  "Eight",
+                  "Free"
+                ]
+              },
+              "speed": {
+                "enum": [
+                  "Paces",
+                  "Analog"
+                ]
+              },
+              "modes": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "enum": [
+                    "Skates",
+                    "Ride",
+                    "RotomBike",
+                    "Mount"
+                  ]
+                }
+              },
+              "isGrid": {
+                "type": "boolean"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "areas": {
+      "type": "array",
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "hidden": {
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "map": {
+            "type": "string"
+          },
+          "var": {
+            "type": "string"
+          },
+          "value": {
+            "type": "integer"
+          },
+          "chunkX": {
+            "type": "integer"
+          },
+          "chunkY": {
+            "type": "integer"
+          },
+          "chunksWide": {
+            "type": "integer"
+          },
+          "chunksHigh": {
+            "type": "integer"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "swaps": {
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "map": {
+            "type": "string"
+          },
+          "var": {
+            "type": "string"
+          },
+          "value": {
+            "type": "integer"
+          },
+          "flag": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "cells": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "chunkX": {
+                  "type": "integer"
+                },
+                "chunkY": {
+                  "type": "integer"
+                },
+                "chunk": {
+                  "type": "integer"
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "region"
+  ],
+  "additionalProperties": false
+}

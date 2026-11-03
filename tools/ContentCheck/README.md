@@ -5,6 +5,7 @@ Reads the files of the game that are written by hand (the overlays of the import
 ```bash
 dotnet run --project tools/ContentCheck                                  # check the game's own files; ends with 1 on a finding
 dotnet run --project tools/ContentCheck -- --data <dir>                  # check another folder laid out like Data/
+dotnet run --project tools/ContentCheck -- --generated                   # also every generated file (the five tables, the worlds' chunks, areas...) read strictly (plan 24 · X4)
 dotnet run --project tools/ContentCheck -- --pack <folder> [--pack ...]  # the game with packs laid on it in that order (plan 16 · T15): only what the packs add is told
 dotnet run --project tools/ContentCheck -- --plan <out dir> <name>...    # plans of rooms (PlayerHouse) and open areas (twinleaf_town), as PNGs
 dotnet run --project tools/ContentCheck -- --plan <out dir> Sinnoh@96,864,20,12   # a rectangle of a map's tiles alone: x, y, width, height
@@ -17,6 +18,8 @@ It opens no window and takes about two seconds. It is in the solution, and the t
 ## What it checks
 
 A finding is one line: the file (from the data folder), the name of the thing in it, and what is wrong.
+
+Since plan 24 · X4 the game reads the hand-written files strictly and stops on a key no field has, a value of the wrong type or a required field left out. The check reads each file the same way: a wrong type or a missing field is an `Unreadable` finding with its JSON path ("the game stops on it: $.width: ..."), and an unknown key is an `UnknownField` finding that also names the field meant.
 
 ```text
 world/sinnoh/overlays/route_227.json: people.crasher_wake: is drawn as 'CrasherWake', which is no look of characters.json and no thing of the map: they would stand there as the plain default ('crasher_wake'?)

@@ -1,0 +1,1289 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "An area's overlay (Data/world/<region>/overlays/<key>.json)",
+  "description": "Written by SchemaTests (plan 24 · X4) from the records the game reads the file into; don't edit by hand. The game reads the file strictly: a key no field has stops it.",
+  "type": [
+    "object",
+    "null"
+  ],
+  "properties": {
+    "area": {
+      "type": "string"
+    },
+    "bgmTrack": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "name": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "trees": {
+      "enum": [
+        "Round",
+        "Pine",
+        null
+      ]
+    },
+    "architecture": {
+      "enum": [
+        "Timber",
+        "Plaster",
+        "City",
+        "Clapboard",
+        "Brick",
+        "Cottage",
+        "HalfTimber",
+        "Townhouse",
+        "Farm",
+        "Stone",
+        "Marsh",
+        "Harbour",
+        "Snow",
+        "Seaside",
+        "Resort",
+        "Evergreen",
+        "Granite",
+        "Riverside",
+        "Portside",
+        "Lilac",
+        "Wildwood",
+        "Breeze",
+        "Bayside",
+        "OldTimber",
+        "Woodland",
+        "Boulevard",
+        "Heritage",
+        "Seaport",
+        "Cliffside",
+        "Upland",
+        "Dragonstone",
+        "Sapling",
+        "Meadow",
+        "Parkside",
+        "Quarry",
+        "Islet",
+        "Wharf",
+        "Jade",
+        "Uptown",
+        "Cinder",
+        "Dynamo",
+        "Glade",
+        "Hayloft",
+        "Isle",
+        "Spa",
+        "Treetop",
+        "Starward",
+        "Crater",
+        "Raft",
+        "Bloomstone",
+        "Hillside",
+        "Bellfield",
+        "Dockyard",
+        "Metropolis",
+        "Funfair",
+        "Storehouse",
+        "Railyard",
+        "Airfield",
+        "Skyline",
+        "Stilts",
+        "Hamlet",
+        "Canalside",
+        "Lumiose",
+        null
+      ]
+    },
+    "climate": {
+      "enum": [
+        "Temperate",
+        "Volcanic",
+        "Frozen",
+        null
+      ]
+    },
+    "callsForHelp": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "battleArena": {
+      "enum": [
+        "Grass",
+        "Forest",
+        "Cave",
+        "Water",
+        "Snow",
+        "Sand",
+        "Indoors",
+        "Gym",
+        "League",
+        "Underwater",
+        "City",
+        null
+      ]
+    },
+    "arenaType": {
+      "enum": [
+        "Normal",
+        "Fire",
+        "Water",
+        "Grass",
+        "Electric",
+        "Ice",
+        "Fighting",
+        "Poison",
+        "Ground",
+        "Flying",
+        "Psychic",
+        "Bug",
+        "Rock",
+        "Ghost",
+        "Dragon",
+        "Steel",
+        "Dark",
+        "Fairy",
+        null
+      ]
+    },
+    "interior": {
+      "enum": [
+        "None",
+        "House",
+        "PokemonCenter",
+        "PokeMart",
+        "Lab",
+        "Gym",
+        "Museum",
+        "GameHall",
+        "Street",
+        "Tower",
+        "Aerie",
+        "Tent",
+        null
+      ]
+    },
+    "overTheDark": {
+      "type": "boolean"
+    },
+    "caveLook": {
+      "enum": [
+        "Rock",
+        "Charred",
+        "Ruins",
+        null
+      ]
+    },
+    "evolutionSites": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "doors": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "object",
+        "properties": {
+          "warp": {
+            "type": "integer"
+          },
+          "map": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "x": {
+            "type": "integer"
+          },
+          "y": {
+            "type": "integer"
+          },
+          "facing": {
+            "enum": [
+              "Down",
+              "Up",
+              "Left",
+              "Right"
+            ]
+          },
+          "openedBy": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "locked": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "integer"
+      }
+    },
+    "switches": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "object",
+        "properties": {
+          "warp": {
+            "type": "integer"
+          },
+          "until": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "from": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "exits": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "integer"
+          },
+          "z": {
+            "type": "integer"
+          },
+          "map": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "toX": {
+            "type": "integer"
+          },
+          "toY": {
+            "type": "integer"
+          },
+          "facing": {
+            "enum": [
+              "Down",
+              "Up",
+              "Left",
+              "Right"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "people": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "name": {
+            "type": "string"
+          },
+          "npcType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "dialog": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "isStarterBriefcase": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "isHealingNurse": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "script": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "hiddenBy": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "shownBy": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "trainer": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "id": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "dialogueBefore": {
+                "type": "string"
+              },
+              "dialogueAfter": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          },
+          "item": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "still": {
+            "type": "boolean"
+          },
+          "stance": {
+            "enum": [
+              "Stand",
+              "Sit",
+              "SitGround",
+              "Lie",
+              "Swim",
+              "Fish",
+              "Tug",
+              null
+            ]
+          },
+          "at": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": "integer"
+            }
+          },
+          "seenBy": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "species": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "level": {
+            "type": [
+              "number",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "heldBack": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "national": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "land": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "superRod": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "ours": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "land": {
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "surf": {
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "superRod": {
+          "type": [
+            "array",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "signs": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "signScripts": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "read": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "triggers": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "object",
+        "properties": {
+          "trigger": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "script": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "x": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "z": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "width": {
+            "type": "integer"
+          },
+          "depth": {
+            "type": "integer"
+          },
+          "variable": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "value": {
+            "type": "integer"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "npcs": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "name": {
+            "type": "string"
+          },
+          "npcType": {
+            "type": "string"
+          },
+          "x": {
+            "type": "integer"
+          },
+          "y": {
+            "type": "integer"
+          },
+          "facing": {
+            "enum": [
+              "Down",
+              "Up",
+              "Left",
+              "Right"
+            ]
+          },
+          "dialog": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "isStarterBriefcase": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "isHealingNurse": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "isPokeMartClerk": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "isPCTerminal": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "isTransportAttendant": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "mart": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "script": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "hiddenBy": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "shownBy": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "item": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "count": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "species": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "trainer": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "trainerClass": {
+                "type": "string"
+              },
+              "party": {
+                "type": "array",
+                "items": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "species": {
+                      "type": "string"
+                    },
+                    "level": {
+                      "type": "integer"
+                    },
+                    "moves": {
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "prizeMoney": {
+                "type": "integer"
+              },
+              "dialogueBefore": {
+                "type": "string"
+              },
+              "dialogueAfter": {
+                "type": "string"
+              },
+              "sightRange": {
+                "type": "integer"
+              },
+              "doubleBattle": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "format": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "additionalProperties": false
+          },
+          "movement": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "rangeX": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "rangeZ": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "level": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "stance": {
+            "enum": [
+              "Stand",
+              "Sit",
+              "SitGround",
+              "Lie",
+              "Swim",
+              "Fish",
+              "Tug",
+              null
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "props": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "type": {
+            "enum": [
+              "Table",
+              "Chair",
+              "Sofa",
+              "Bookshelf",
+              "Television",
+              "Plant",
+              "Fridge",
+              "KitchenCounter",
+              "Stove",
+              "Stairs",
+              "Counter",
+              "HealingMachine",
+              "Bench",
+              "StoreShelf",
+              "LabDesk",
+              "LabMachine",
+              "Bed",
+              "Computer",
+              "SideStairsUp",
+              "SideStairsDown",
+              "SideStairsUpEast",
+              "SideStairsDownWest",
+              "Headstone",
+              "Tomb",
+              "Bicycle",
+              "TrashCan",
+              "Wardrobe",
+              "ClothesRack",
+              "CookingTable",
+              "Boulder",
+              "CutTree",
+              "CrackedRock",
+              "StrengthBoulder",
+              "Fence",
+              "LowWall",
+              "LampPost",
+              "Mailbox",
+              "Planter",
+              "Fountain",
+              "Boat",
+              "WindTurbine",
+              "Statue",
+              "HoneyTree",
+              "Crates",
+              "CoalHeap",
+              "Hedge",
+              "FlowerBed",
+              "Column",
+              "Topiary",
+              "Cairn",
+              "Billboard",
+              "Outcrop",
+              "Mast",
+              "Drums",
+              "Conveyor",
+              "Gantry",
+              "OreHeap",
+              "Headframe",
+              "LiftBase",
+              "Drawbridge",
+              "Tram",
+              "Binoculars",
+              "Pavilion",
+              "SeaStack",
+              "Snowdrift",
+              "Rift",
+              "RiftShadow",
+              "PunchingBag",
+              "TireStack",
+              "Bollard",
+              "Snowball",
+              "LeagueDoor",
+              "Container",
+              "GrandFountain",
+              "Pool",
+              "Lava",
+              "Crater",
+              "Booth",
+              "ScaleModel",
+              "TrainerStatue",
+              "Colossus",
+              "RuinHut",
+              "ReceptionDesk",
+              "Rug",
+              "Window",
+              "Painting",
+              "Clock",
+              "WallEmblem",
+              "WarpPanel",
+              "WarpPanelOut",
+              "GalacticDoor",
+              "Tank",
+              "Rubble",
+              "CavePainting",
+              "DisplayCase",
+              "SlotMachine",
+              "Piano",
+              "Rack",
+              "AudioSystem",
+              "Bust",
+              "SilverBust",
+              "GuestSet",
+              "NightTable",
+              "MusicBox",
+              "TeaSet",
+              "PcDesk",
+              "Cushion",
+              "FlowerStand",
+              "LiftCar",
+              "LiftIndicator",
+              "BookPile",
+              "VendingMachine",
+              "MagmaStone",
+              "WallShelf",
+              "Blackboard",
+              "ElectricGate",
+              "DomeFossil",
+              "HelixFossil",
+              "OldAmber",
+              "DeskPokedex",
+              "RolledTownMap",
+              "Whirlpool",
+              "IceBlock",
+              "GymStatue",
+              "Decoration",
+              "Airplane",
+              "ChargeStone",
+              "Microwave",
+              "WashingMachine",
+              "Refrigerator",
+              "ElectricFan",
+              "Lawnmower",
+              "UnownWall",
+              "GrottoHollow",
+              "GymWaterfall",
+              "CratePile",
+              "PrismTower",
+              "DeoxysTriangle",
+              "Wreck",
+              "ShipEngine"
+            ]
+          },
+          "x": {
+            "type": "integer"
+          },
+          "y": {
+            "type": "integer"
+          },
+          "width": {
+            "type": "integer"
+          },
+          "depth": {
+            "type": "integer"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "readAt": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "integer"
+          },
+          "z": {
+            "type": "integer"
+          },
+          "script": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "pits": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "integer"
+          },
+          "z": {
+            "type": "integer"
+          },
+          "script": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "holes": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "integer"
+          },
+          "z": {
+            "type": "integer"
+          },
+          "width": {
+            "type": "integer"
+          },
+          "depth": {
+            "type": "integer"
+          },
+          "filledBy": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "zones": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "integer"
+          },
+          "z": {
+            "type": "integer"
+          },
+          "width": {
+            "type": "integer"
+          },
+          "depth": {
+            "type": "integer"
+          },
+          "weather": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "bgmTrack": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "while": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "diveTo": {
+      "type": "object",
+      "properties": {
+        "area": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "x": {
+          "type": "integer"
+        },
+        "z": {
+          "type": "integer"
+        },
+        "facing": {
+          "enum": [
+            "Down",
+            "Up",
+            "Left",
+            "Right"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "emergeTo": {
+      "type": "object",
+      "properties": {
+        "area": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "x": {
+          "type": "integer"
+        },
+        "z": {
+          "type": "integer"
+        },
+        "facing": {
+          "enum": [
+            "Down",
+            "Up",
+            "Left",
+            "Right"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "emergeAt": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "integer"
+          },
+          "z": {
+            "type": "integer"
+          },
+          "to": {}
+        },
+        "additionalProperties": false
+      }
+    },
+    "braille": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "integer"
+          },
+          "z": {
+            "type": "integer"
+          },
+          "move": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "script": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "holeTo": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "camera": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "darkWater": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "integer"
+          },
+          "z": {
+            "type": "integer"
+          },
+          "width": {
+            "type": "integer"
+          },
+          "depth": {
+            "type": "integer"
+          },
+          "weather": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "bgmTrack": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "while": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
