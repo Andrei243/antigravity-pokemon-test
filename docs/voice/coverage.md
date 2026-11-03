@@ -9,10 +9,10 @@ A **line** is one string a character says in a text box (a script's `say` and th
 | Kind | Lines | Spoken | Shown only | With variants | Written by hand |
 |---|---|---|---|---|---|
 | The introduction (`intro:`) | 96 | 96 | 0 | 0 | 0 |
-| People of the hand-made maps (`map:`) | 1343 | 1301 | 42 | 1 | 0 |
+| People of the hand-made maps (`map:`) | 1354 | 1312 | 42 | 1 | 0 |
 | Scripts (`script:`) | 10310 | 9846 | 464 | 17 | 0 |
-| People of the world (`world:`) | 7206 | 7144 | 62 | 4 | 0 |
-| **All** | 18955 | 18387 | 568 | 22 | 0 |
+| People of the world (`world:`) | 7240 | 7178 | 62 | 4 | 0 |
+| **All** | 19000 | 18432 | 568 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -22,7 +22,7 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 |---|---|
 | a Pokémon's cry | 244 |
 | a question's answers | 780 |
-| a sign | 1592 |
+| a sign | 1596 |
 | the game's own voice (speaker none) | 283 |
 | the game's own voice (text) | 1664 |
 
@@ -40,36 +40,36 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | Voice | Lines | Shown only |
 |---|---|---|
 | `@self` | 1896 | 138 |
-| `look:gentleman (any)` | 727 | 15 |
+| `look:gentleman (any)` | 728 | 15 |
 | `rival` | 605 | 18 |
 | `look:grunt (any)` | 587 | 0 |
-| `look:lady (any)` | 429 | 1 |
-| `look:youngster (any)` | 403 | 21 |
-| `look:clerk (any)` | 377 | 10 |
-| `look:lass (any)` | 328 | 11 |
+| `look:lady (any)` | 431 | 1 |
+| `look:youngster (any)` | 405 | 21 |
+| `look:clerk (any)` | 379 | 10 |
+| `look:lass (any)` | 332 | 11 |
 | `look:attendant (any)` | 321 | 12 |
 | `look:nurse (any)` | 256 | 0 |
 | `look:gym_guide (any)` | 201 | 1 |
 | `look:scientist (any)` | 198 | 4 |
 | `look:receptionist (any)` | 159 | 19 |
 | `cynthia` | 157 | 1 |
+| `class:hiker (any)` | 154 | 0 |
 | `class:ace_trainer (any)` | 152 | 0 |
 | `look:sailor (any)` | 151 | 0 |
-| `class:hiker (any)` | 150 | 0 |
+| `class:fisherman (any)` | 150 | 0 |
 | `rowan` | 147 | 12 |
-| `class:fisherman (any)` | 146 | 0 |
-| `look:old_man (any)` | 133 | 4 |
+| `class:youngster (any)` | 134 | 0 |
+| `look:old_man (any)` | 134 | 4 |
 | `look:woman (any)` | 133 | 14 |
 | `class:team_rocket (any)` | 132 | 0 |
-| `class:youngster (any)` | 128 | 0 |
+| `class:picnicker (any)` | 128 | 0 |
 | `class:swimmer_m (any)` | 126 | 0 |
-| `class:picnicker (any)` | 124 | 0 |
 | `class:black_belt (any)` | 118 | 0 |
+| `class:lass (any)` | 118 | 0 |
 | `look:man (any)` | 118 | 4 |
 | `mom` | 116 | 7 |
 | `assistant` | 115 | 5 |
 | `look:guard (any)` | 115 | 0 |
-| `class:lass (any)` | 112 | 0 |
 | `class:psychic (any)` | 112 | 0 |
 | `look:boy (any)` | 104 | 4 |
 | `class:swimmer_f (any)` | 102 | 0 |
@@ -85,10 +85,10 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `cyrus` | 83 | 7 |
 | `look:aqua_grunt (any)` | 83 | 3 |
 | `look:hiker (any)` | 83 | 0 |
-| `look:old_woman (any)` | 81 | 5 |
+| `look:old_woman (any)` | 83 | 5 |
 | `class:twins (any)` | 80 | 0 |
 | `class:camper (any)` | 78 | 0 |
-| `look:fisherman (any)` | 77 | 4 |
+| `look:fisherman (any)` | 78 | 4 |
 | `look:worker (any)` | 77 | 0 |
 | `class:swimmer (any)` | 76 | 0 |
 | `ace_trainer` | 75 | 0 |
@@ -129,6 +129,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:veteran (any)` | 42 | 0 |
 | `riley` | 42 | 0 |
 | `flint` | 41 | 1 |
+| `class:backpacker (any)` | 40 | 0 |
 | `look:host (any)` | 40 | 16 |
 | `volkner` | 40 | 1 |
 | `collector` | 39 | 0 |
@@ -138,7 +139,6 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `prof_birch` | 38 | 3 |
 | `wally` | 38 | 0 |
 | `baoba` | 37 | 0 |
-| `class:backpacker (any)` | 36 | 0 |
 | `class:ninja_boy (any)` | 36 | 0 |
 | `look:magma_grunt (any)` | 36 | 0 |
 | `iris` | 35 | 0 |
