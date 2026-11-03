@@ -177,7 +177,7 @@ public class RegionTests
 
         // Johto is built since plan 20 · J2, so the ship sails, and Hoenn since plan 21 · H1, so the way on from Johto opens
         // with its Hall of Fame; Unova since plan 22 · U2, so Hoenn's opens on; Kalos since plan 23 · Z1, so Unova's opens on,
-        // and Alola has no maps yet, so nothing goes on from Kalos
+        // Alola since plan 23 · Z5, so Kalos's opens on, and Galar has no maps yet, so nothing goes on from Alola
         Assert.Equal(TravelCheck.Ready, RegionDatabase.CheckTravel(kantoToJohto, progress));
         var johtoToHoenn = RegionDatabase.LinkFrom(RegionDatabase.Johto)!;
         Assert.Equal(TravelCheck.StoryUnfinished, RegionDatabase.CheckTravel(johtoToHoenn, progress));
@@ -188,7 +188,9 @@ public class RegionTests
         progress.CompleteRegion(RegionDatabase.Unova);
         Assert.Equal(TravelCheck.Ready, RegionDatabase.CheckTravel(RegionDatabase.LinkFrom(RegionDatabase.Unova)!, progress));
         progress.CompleteRegion(RegionDatabase.Kalos);
-        Assert.Equal(TravelCheck.DestinationNotBuilt, RegionDatabase.CheckTravel(RegionDatabase.LinkFrom(RegionDatabase.Kalos)!, progress));
+        Assert.Equal(TravelCheck.Ready, RegionDatabase.CheckTravel(RegionDatabase.LinkFrom(RegionDatabase.Kalos)!, progress));
+        progress.CompleteRegion(RegionDatabase.Alola);
+        Assert.Equal(TravelCheck.DestinationNotBuilt, RegionDatabase.CheckTravel(RegionDatabase.LinkFrom(RegionDatabase.Alola)!, progress));
     }
 
     [Fact]

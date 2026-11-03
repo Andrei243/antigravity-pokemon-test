@@ -9,7 +9,7 @@
   "start": [ 0, 0 ],
   "hidden": [],
   "areas": [
-    { "key": "tidemark_town", "flag": "FLAG_FIRST_ARRIVAL_TIDEMARK_TOWN", "arrival": [ "tidemark_town" ], "about": "A fishing town on a small island, where the ferry from Kalos comes in." }
+    { "key": "tidemark_town", "flag": "FLAG_FIRST_ARRIVAL_TIDEMARK_TOWN", "arrival": [ "tidemark_town" ], "about": "A fishing town on a small island, where the ferry from Alola comes in." }
   ],
   "landmarks": [],
   "blocks": [
