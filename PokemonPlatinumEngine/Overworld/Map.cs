@@ -267,6 +267,20 @@ public class Map
     public PartitionLook Partitions { get; set; } = PartitionLook.Wall;
 
     /// <summary>
+    /// Stretches of a room's inner walls that stand for something else than the rest (plan 20 · J15, part u: the table in
+    /// the middle of the S.S. Aqua's mess among its bulkheads), each a rectangle of tiles and its look. Only drawing reads it.
+    /// </summary>
+    public IReadOnlyList<PartitionPatch> PartitionPatches { get; set; } = Array.Empty<PartitionPatch>();
+
+    /// <summary>The look of the inner wall at a tile: a patch's where one covers it, the room's own otherwise.</summary>
+    public PartitionLook PartitionAt(int x, int y)
+    {
+        foreach (var patch in PartitionPatches)
+            if (patch.Covers(x, y)) return patch.Look;
+        return Partitions;
+    }
+
+    /// <summary>
     /// Where a room's floor begins: the first column and the first row with anything but wall on them, above the
     /// front wall's row. Its side wall stands west of the one and its back wall north of the other. The rooms made
     /// by hand begin at (1, 2); a room rebuilt to the original's plan begins where the original's floor does, so its

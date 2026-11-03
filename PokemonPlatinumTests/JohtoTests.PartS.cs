@@ -21,8 +21,8 @@ public partial class JohtoTests
             Assert.True(Enumerable.Range(1, map.Height - 2).Any(y => Enumerable.Range(1, map.Width - 2).Any(x => map.GetGroundTile(x, y) == TileType.Wall)), name);
         }
         // A room the table names nothing for keeps its wall cut to the wainscot
-        Assert.Equal(PartitionLook.Wall, WorldModels.JohtoPartitionsOf("Goldenrod_DeptStore_Basement"));
-        Assert.Equal(PartitionLook.Wall, MapNamed("Goldenrod_DeptStore_Basement").Partitions);
+        Assert.Equal(PartitionLook.Wall, WorldModels.JohtoPartitionsOf("Azalea_CharcoalKiln"));
+        Assert.Equal(PartitionLook.Wall, MapNamed("Azalea_CharcoalKiln").Partitions);
     }
 
     [Fact]

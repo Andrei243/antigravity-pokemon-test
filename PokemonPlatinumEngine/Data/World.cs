@@ -329,6 +329,8 @@ public static class WorldMapBuilder
         // A Johto or Hoenn room's inner walls may be something of their own (plan 20 · J15, part s: the Goldenrod Gym's
         // hedges; plan 21 · part q: the S.S. Tidal's bulkheads)
         if (room) map.Partitions = WorldModels.PartitionsOf(world.Index.Region, entry.Name);
+        // (and a stretch of one may be something else again: the S.S. Aqua's table among its bulkheads, part u)
+        if (room) map.PartitionPatches = WorldModels.PartitionPatchesOf(world.Index.Region, entry.Name);
         // A room whose entry names a puzzle has it, as a map file's does (plan 21 · H6: Fortree's rotating gates)
         map.Puzzle = GymPuzzle.Create(entry.Puzzle);
         // A place that keeps its own word on movement inside a free region (plan 30 · FM1)

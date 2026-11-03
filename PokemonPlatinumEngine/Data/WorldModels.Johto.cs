@@ -527,7 +527,116 @@ public static partial class WorldModels
         ["OlivineLighthouse_3F"] = PartitionLook.Pillar,
         ["OlivineLighthouse_4F"] = PartitionLook.Pillar,
         ["OlivineLighthouse_5F"] = PartitionLook.Pillar,
+
+        // ---- plan 20 · J15, part u: the rooms part s left, each looked at in the harness (JOHTO_FROM=roomsu, jru_*)
+        // The League's reception gate: the blocks either side of its hall are planters, the rest of them the dark
+        ["Route22_LeagueReceptionGate"] = PartitionLook.Hedge,
+        // The Magnet Train's two stations: ticket counters and barriers
+        ["Saffron_MagnetTrainStation"] = PartitionLook.Counter,
+        ["Goldenrod_MagnetTrainStation"] = PartitionLook.Counter,
+        // The department stores' floors: their counters and shop fixtures; the roofs' are planters
+        ["Celadon_DeptStore_1F"] = PartitionLook.Counter,
+        ["Celadon_DeptStore_2F"] = PartitionLook.Counter,
+        ["Celadon_DeptStore_3F"] = PartitionLook.Counter,
+        ["Celadon_DeptStore_4F"] = PartitionLook.Counter,
+        ["Celadon_DeptStore_5F"] = PartitionLook.Counter,
+        ["Celadon_DeptStore_Roof"] = PartitionLook.Hedge,
+        ["Goldenrod_DeptStore_1F"] = PartitionLook.Counter,
+        ["Goldenrod_DeptStore_2F"] = PartitionLook.Counter,
+        ["Goldenrod_DeptStore_3F"] = PartitionLook.Counter,
+        ["Goldenrod_DeptStore_4F"] = PartitionLook.Counter,
+        ["Goldenrod_DeptStore_5F"] = PartitionLook.Counter,
+        ["Goldenrod_DeptStore_6F"] = PartitionLook.Counter,
+        // The store's basement: its stock stacked in crates
+        ["Goldenrod_DeptStore_Basement"] = PartitionLook.Crate,
+        // Celadon's Condominiums: desks and tables; the roof's planters
+        ["Celadon_Condominiums_1F"] = PartitionLook.Counter,
+        ["Celadon_Condominiums_2F"] = PartitionLook.Counter,
+        ["Celadon_Condominiums_3F"] = PartitionLook.Counter,
+        ["Celadon_Condominiums_RoofRoom"] = PartitionLook.Counter,
+        ["Celadon_Condominiums_Roof"] = PartitionLook.Hedge,
+        // The radio towers: a lobby's counter, studios' and offices' control desks
+        ["Goldenrod_RadioTower_1F"] = PartitionLook.Counter,
+        ["Goldenrod_RadioTower_3F"] = PartitionLook.Console,
+        ["Goldenrod_RadioTower_4F"] = PartitionLook.Console,
+        ["Goldenrod_RadioTower_5F"] = PartitionLook.Console,
+        ["Goldenrod_RadioTower_ObservationDeck"] = PartitionLook.Console,
+        ["Lavender_RadioTower"] = PartitionLook.Console,
+        ["Route10_PowerPlant"] = PartitionLook.Console,
+        ["CeruleanCape_SeaCottage"] = PartitionLook.Console,
+        // The Pewter Museum's halls: display cases
+        ["Pewter_Museum"] = PartitionLook.Case,
+        // Lavender's House of Memories: cases of keepsakes
+        ["Lavender_HouseOfMemories"] = PartitionLook.Case,
+        // Team Rocket's hideout and the rest of the S.S. Aqua: steel
+        ["TeamRocketHQ_B1F"] = PartitionLook.Bulkhead,
+        ["TeamRocketHQ_B2F"] = PartitionLook.Bulkhead,
+        ["TeamRocketHQ_B3F"] = PartitionLook.Bulkhead,
+        ["SSAqua_1F_NortheastRooms"] = PartitionLook.Bulkhead,
+        ["SSAqua_1F_NorthwestRooms"] = PartitionLook.Bulkhead,
+        ["SSAqua_1F_SoutheastRooms"] = PartitionLook.Bulkhead,
+        ["SSAqua_1F_SouthwestRooms"] = PartitionLook.Bulkhead,
+        ["SSAqua_CaptainRoom"] = PartitionLook.Bulkhead,
+        // The lighthouse's lamp room and its gallery: the lamp's steel housing and the gallery's plating
+        ["OlivineLighthouse_LightRoom"] = PartitionLook.Bulkhead,
+        ["OlivineLighthouse_Ledge"] = PartitionLook.Bulkhead,
+        // Ecruteak's halls by the Bell Tower and its dance theatre: timber and paper screens
+        ["Ecruteak_BellTowerGate"] = PartitionLook.Lattice,
+        ["Ecruteak_BellTowerCorridor"] = PartitionLook.Lattice,
+        ["Ecruteak_DanceTheater"] = PartitionLook.Lattice,
+        // The Moomoo Farm's stable: its stalls' rails
+        ["Route39_MoomooFarmStable"] = PartitionLook.Fence,
+        // Halls of counters and desks: the Pokéathlon dome, the gates, the shops and clubs
+        ["PokeathlonDome_1F"] = PartitionLook.Counter,
+        ["PokeathlonDome_2F"] = PartitionLook.Counter,
+        ["PokeathlonDome_B1F_Friendship"] = PartitionLook.Counter,
+        ["PokeathlonDome_B1F_Potential"] = PartitionLook.Counter,
+        ["PokeathlonDome_B1F_Solidarity"] = PartitionLook.Counter,
+        ["PokeathlonDome_B1F_Trust"] = PartitionLook.Counter,
+        ["SafariZone_Gate"] = PartitionLook.Counter,
+        ["Fuchsia_PalParkGate"] = PartitionLook.Counter,
+        ["Olivine_PortHall"] = PartitionLook.Counter,
+        ["Vermilion_PortHall"] = PartitionLook.Counter,
+        ["Viridian_TrainerHouse_1F"] = PartitionLook.Counter,
+        ["Viridian_TrainerHouse_B1F"] = PartitionLook.Counter,
+        ["Vermilion_FanClub"] = PartitionLook.Counter,
+        ["Goldenrod_BikeShop"] = PartitionLook.Counter,
+        ["Route35_NationalParkGate"] = PartitionLook.Counter,
+        ["Route26_WeekSiblingsHouse"] = PartitionLook.Counter,
+        ["Saffron_SilphCo_RotomRoom"] = PartitionLook.Counter,
+        ["Azalea_KurtsHouse"] = PartitionLook.Counter,
+        ["Azalea_GymEntrance"] = PartitionLook.Counter,
+        ["Route19_FuchsiaGate"] = PartitionLook.Counter,
+        ["Route2_ForestNorthGate"] = PartitionLook.Counter,
+        ["Route2_ForestSouthGate"] = PartitionLook.Counter,
+        ["Route2_SoutheastGate"] = PartitionLook.Counter,
+        ["Route29_Route46Gate"] = PartitionLook.Counter,
+        ["Route34_IlexForestGate"] = PartitionLook.Counter,
+        ["Route35_GoldenrodGate"] = PartitionLook.Counter,
+        ["Route36_RuinsOfAlphGate"] = PartitionLook.Counter,
+        ["Route40_FrontierGate"] = PartitionLook.Counter,
+        ["Route43_Gate"] = PartitionLook.Counter,
+        ["Route43_MahoganyGate"] = PartitionLook.Counter,
+        ["Route5_SaffronGate"] = PartitionLook.Counter,
+        ["Route6_SaffronGate"] = PartitionLook.Counter,
+        ["Viridian_Route1Gate"] = PartitionLook.Counter,
+        // Goldenrod's flower shop: its beds
+        ["Goldenrod_FlowerShop"] = PartitionLook.Hedge,
     };
+
+    /// <summary>
+    /// Stretches of a Johto room whose inner walls stand for something else than the rest of the room's (plan 20 · J15,
+    /// part u): the table in the middle of the S.S. Aqua's mess, among the hold's bulkheads.
+    /// </summary>
+    private static readonly Dictionary<string, PartitionPatch[]> JohtoPatches = new(StringComparer.Ordinal)
+    {
+        ["SSAqua_B1F"] = new[] { new PartitionPatch(32, 6, 3, 5, PartitionLook.Table) },
+    };
+
+    /// <summary>The stretches of an imported room whose inner walls have a look of their own, by its region and map.</summary>
+    public static IReadOnlyList<PartitionPatch> PartitionPatchesOf(string region, string map) =>
+        string.Equals(region, "johto", StringComparison.OrdinalIgnoreCase) && JohtoPatches.TryGetValue(map, out var patches)
+            ? patches : Array.Empty<PartitionPatch>();
 
     /// <summary>The look of a Johto room's inner walls by its map's name; <see cref="PartitionLook.Wall"/> for every other.</summary>
     public static PartitionLook JohtoPartitionsOf(string map) => JohtoPartitions.GetValueOrDefault(map, PartitionLook.Wall);
