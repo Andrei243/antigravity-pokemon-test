@@ -590,7 +590,8 @@
               "PrismTower",
               "DeoxysTriangle",
               "Wreck",
-              "ShipEngine"
+              "ShipEngine",
+              "ShipCabin"
             ]
           },
           "x": {

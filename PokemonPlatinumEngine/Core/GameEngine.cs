@@ -1712,6 +1712,7 @@ public partial class GameEngine
         KeepTheClock();
         KeepBerriesInView();
         KeepApricornTreesInView();
+        KeepTheSaltInView();
         SlideBoulders(fieldDt);
         flow.PoketchView.Update(dt);
         // The app on the Pokétch runs on whether it is out or not, as the original's lower screen does

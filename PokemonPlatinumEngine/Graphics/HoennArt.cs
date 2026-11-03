@@ -141,6 +141,85 @@ internal static class HoennArt
         }
     }
 
+    // ------------------------------------------------------------------ the Abandoned Ship's deck
+
+    private static readonly Tone Plate = Tone.Of(150, 146, 140, 176, 172, 164, 112, 108, 106);
+
+    /// <summary>
+    /// The Abandoned Ship's deckhouse and bulwarks on its deck (plan 21 · part r; style guide, "Hoenn's last things"): a
+    /// box over the prop's tiles from the deck south of it up to the top of what it covers, a texel wider all round than
+    /// those tiles so it stands in front of the rock the import lays there. Tall, a wall of white-painted steel gone to rust
+    /// with a row of dark portholes; low, a bulwark with a rusted rail along its top. Its roof is rusted plate. The kit's
+    /// origin is the north-west corner of its tiles, at the height of their middle.
+    /// </summary>
+    public static void ShipCabin(KitBuilder kit, Overworld.Map map, Overworld.Prop p)
+    {
+        float hi = float.MinValue, lo = float.MaxValue;
+        for (int y = p.Y; y < p.Y + p.Depth; y++)
+            for (int x = p.X; x < p.X + p.Width; x++)
+                hi = MathF.Max(hi, Relief.At(map, x + 0.5f, y + 0.5f));
+        // It stands on the deck before it: the lowest ground on the row south of it
+        for (int x = p.X; x < p.X + p.Width; x++)
+            if (map.InBounds(x, p.Y + p.Depth)) lo = MathF.Min(lo, Relief.At(map, x + 0.5f, p.Y + p.Depth + 0.5f));
+        if (lo == float.MaxValue || lo > hi) lo = hi;
+        float perTexel = kit.VS / 32f;
+        int y0 = (int)MathF.Floor((lo - kit.Origin.Y) / perTexel), y1 = (int)MathF.Ceiling((hi - kit.Origin.Y) / perTexel) + 1;
+        int tall = Math.Max(4, y1 - y0), w = p.Width * 32 + 2, d = p.Depth * 32 + 2;
+        bool house = tall >= 40;
+        var roof = kit.Face($"ship.roof.{w}x{d}", w, d, c => PaintShipRoof(c, house));
+        var front = kit.Face($"ship.wall.{w}x{tall}", w, tall, c => PaintShipWall(c, house));
+        var side = kit.Face($"ship.wall.{d}x{tall}", d, tall, c => PaintShipWall(c, house));
+        kit.Box(-1, w - 1, -1, d - 1, y0, y0 + tall, roof, front, side, side, front);
+    }
+
+    /// <summary>A deckhouse's roof or a bulwark's top from above: rusted plate in panels with a dark seam round its edge.</summary>
+    private static void PaintShipRoof(PixelCanvas c, bool house)
+    {
+        if (house)
+        {
+            Pix.Raised(c, 0, 0, c.Width, c.Height, Plate);
+            for (int x = 15; x < c.Width; x += 16) c.VLine(x, 0, c.Height, Plate.Dark);
+            for (int y = 15; y < c.Height; y += 16) c.HLine(0, y, c.Width, Plate.Dark);
+            Streaks(c, c.Width + c.Height);
+        }
+        else
+        {
+            // A bulwark's top: the rail, rusted, with the hull's white each side of it
+            Pix.Raised(c, 0, 0, c.Width, c.Height, RustHull);
+            int mid = c.Height / 2;
+            c.Rect(0, mid - 3, c.Width, 6, Rust.Base);
+            c.HLine(0, mid - 3, c.Width, Rust.Light);
+            c.HLine(0, mid + 2, c.Width, Rust.Dark);
+        }
+    }
+
+    /// <summary>A deckhouse's wall: white-painted steel streaked with rust, its foot rusted, a row of dark portholes; or a bulwark: the same steel under a rusted rail.</summary>
+    private static void PaintShipWall(PixelCanvas c, bool house)
+    {
+        Pix.Raised(c, 0, 0, c.Width, c.Height, RustHull);
+        c.Rect(0, c.Height - 4, c.Width, 4, Rust.Base);
+        c.HLine(0, c.Height - 4, c.Width, Rust.Light);
+        if (house)
+        {
+            // A band of plate under the roof and portholes a tile apart, dark and empty
+            c.Rect(0, 0, c.Width, 3, Plate.Base);
+            c.HLine(0, 3, c.Width, Plate.Dark);
+            int row = Math.Min(14, c.Height / 3);
+            for (int x = 10; x + 10 < c.Width; x += 32)
+            {
+                Pix.Disc(c, x, row, 10, Rust.Dark);
+                Pix.Disc(c, x + 2, row + 2, 6, Hole);
+            }
+        }
+        else
+        {
+            // The rail along the bulwark's top
+            c.Rect(0, 0, c.Width, 3, Rust.Base);
+            c.HLine(0, 3, c.Width, Rust.Dark);
+        }
+        Streaks(c, c.Width + c.Height);
+    }
+
     private static void PaintWreckCabin(PixelCanvas c)
     {
         Pix.Raised(c, 0, 0, c.Width, c.Height, RustHull);
