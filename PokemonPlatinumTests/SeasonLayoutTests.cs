@@ -59,6 +59,24 @@ public class SeasonLayoutTests
     }
 
     [Fact]
+    public void IcirrusCitysMarshFreezesInWinter()
+    {
+        // Plan 22 · U10, part e opened Icirrus City: its six winter cells lie in winter and turn its marsh to ice
+        var unova = Built();
+        var winter = Assert.Single(unova.SwappedPlaces, p => p.Season == Season.Winter);
+        Assert.Equal(6, winter.Cells.Count);
+        Assert.Contains(winter.Cells, c => c.X == 5 && c.Y == 6);
+        string spring = Ground(unova, winter);
+        int iceBefore = TilesOf(winter).Count(t => unova.GetGroundTile(t.X, t.Y) == TileType.Ice);
+        unova.ApplySeason(Season.Winter);
+        Assert.Equal(Season.Winter, unova.SeasonLaid);
+        Assert.NotEqual(spring, Ground(unova, winter));
+        Assert.True(TilesOf(winter).Count(t => unova.GetGroundTile(t.X, t.Y) == TileType.Ice) > iceBefore, "winter lays no ice in Icirrus City");
+        unova.ApplySeason(Season.Spring);
+        Assert.Equal(spring, Ground(unova, winter));
+    }
+
+    [Fact]
     public void NoOtherRegionHasASeasonsChunks()
     {
         foreach (var world in World.LoadAll().Where(w => w.Index.Region != "Unova"))

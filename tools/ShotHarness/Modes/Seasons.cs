@@ -8,8 +8,8 @@ partial class Harness
     /// <c>season_spring_twinleaf</c>). It prints the season the field holds at each, and the sign's two lines.
     /// Plan 22 · U4 adds, in each season, Route 20's south-west where its autumn chunks lie (<c>season_&lt;name&gt;_route20</c>:
     /// the autumn's own layout in autumn, spring's in the other three) and a Deerling and a Sawsbuck on the party screen
-    /// in the season's coat (<c>season_&lt;name&gt;_deerling</c>); it prints the layout laid and the coats. Icirrus City's
-    /// winter waits for the area (U10).
+    /// in the season's coat (<c>season_&lt;name&gt;_deerling</c>); it prints the layout laid and the coats. Since plan 22 · U10,
+    /// part e, Icirrus City's marsh in each season too (<c>season_&lt;name&gt;_icirrus</c>: winter's own chunks in winter).
     /// </summary>
     public void SeasonsMode()
     {
@@ -50,6 +50,12 @@ partial class Harness
             At("Unova", rx, ry, Direction.Up); Frames(2);
             Console.WriteLine($"{season}: Route 20 lies in {(unova.SeasonLaid?.ToString() ?? "spring")}'s chunks; the player at {rx},{ry}");
             Shot($"season_{name}_route20");
+
+            // Icirrus City's marsh (plan 22 · U10, part e opened it): its six winter cells freeze the pools over
+            var (ix, iy) = NearestOpen(unova, 190, 207);
+            At("Unova", ix, iy, Direction.Down); Frames(2);
+            Console.WriteLine($"{season}: Icirrus City lies in {(unova.SeasonLaid?.ToString() ?? "spring")}'s chunks; the player at {ix},{iy}");
+            Shot($"season_{name}_icirrus");
 
             // The coats on the party screen
             game.State = GameState.PartyMenu;
