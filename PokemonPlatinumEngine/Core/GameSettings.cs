@@ -410,6 +410,13 @@ public sealed class GameSettings
     public bool StreamSafe { get; set; }
 
     /// <summary>
+    /// A friend in the partner's place (plan 13 · V20, decision 10): off unless chosen. On, a battle beside a partner is
+    /// first asked about, and a yes lets a friend choose for the partner through the battle's menus (a second pad, where
+    /// one is plugged in, answering their turns).
+    /// </summary>
+    public bool Coop { get; set; }
+
+    /// <summary>
     /// The battle room's records (plan 13 · V13, V26): the furthest a gauntlet came, the longest streak and the puzzles
     /// solved. Per machine, never per save; no row of the options, and kept when the options are reset.
     /// </summary>

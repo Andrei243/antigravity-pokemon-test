@@ -143,6 +143,22 @@ public partial class BattleEngine
     private static bool ConfirmPressed =>
         InputManager.IsActionPressed(GameAction.Confirm) || InputManager.IsActionPressed(GameAction.Menu);
 
+    /// <summary>
+    /// A friend is choosing now (plan 13 · V20): the menus are open for the partner's place, which the rules ask from
+    /// outside because <see cref="BattleSetup.FriendPartner"/> gave it no mind of its own.
+    /// </summary>
+    public bool FriendChoosing => core.FriendPartner && MenuBattler.Trainer != null && Result == BattleResult.None
+        && (core.Request is ActionRequest || replacing);
+
+    /// <summary>Whether a friend chooses for the partner's place in this battle (plan 13 · V20).</summary>
+    public bool HasFriendPartner => core.FriendPartner;
+
+    /// <summary>
+    /// The team the switch menu lists: the place's own (plan 13 · V20: a friend at the partner's place switches among
+    /// the partner's Pokémon), the player's for every other place.
+    /// </summary>
+    public Party SwitchParty => MenuBattler.Trainer != null && MenuBattler.Roster is { } theirs ? theirs : PlayerParty;
+
     /// <summary>The switch menu is open because a fainted Pokémon has to be replaced.</summary>
     public bool IsChoosingReplacement => replacing;
 
@@ -301,6 +317,12 @@ public partial class BattleEngine
                 HUD.MoveMenuIndex = Math.Clamp(lastMove.GetValueOrDefault(Fighter), 0, Math.Max(0, Fighter.Moves.Count - 1));
                 break;
             case 1:
+                // A friend at the partner's place has no bag of their own (plan 13 · V20)
+                if (FriendChoosing)
+                {
+                    Refuse(BattleCore.FriendBagRefusal, BattleMenuState.Main);
+                    return;
+                }
                 // The Battle Frontier lets nothing out of the Bag, and says so at once (PLAYER_INPUT_ITEM)
                 if (IsFrontier)
                 {
@@ -457,8 +479,10 @@ public partial class BattleEngine
     /// <summary>Sends in the party's Pokémon at <paramref name="partyIndex"/>: a switch for this turn, or a fainted Pokémon's replacement.</summary>
     public void SelectSwitch(int partyIndex)
     {
-        if (partyIndex < 0 || partyIndex >= PlayerParty.Count) return;
-        var chosen = PlayerParty.Members[partyIndex];
+        // The place's own team: a friend at the partner's place switches among the partner's (plan 13 · V20)
+        var team = SwitchParty;
+        if (partyIndex < 0 || partyIndex >= team.Count) return;
+        var chosen = team.Members[partyIndex];
 
         string? refusal = null;
         if (chosen.IsEgg) refusal = Text.Of("battle.anEggCantBattle");
@@ -667,7 +691,7 @@ public partial class BattleEngine
             case BattleMenuState.SwitchPokemon:
                 // The team is laid out three to a row
                 before = HUD.SwitchMenuIndex;
-                after = HUD.SwitchMenuIndex = UI.Kit.UiNav.Grid(before, PlayerParty.Count, 3, dx, dy);
+                after = HUD.SwitchMenuIndex = UI.Kit.UiNav.Grid(before, SwitchParty.Count, 3, dx, dy);
                 break;
             case BattleMenuState.SelectBagPocket:
                 // The four pockets two to a row, and the item used last under them
@@ -758,7 +782,7 @@ public partial class BattleEngine
     /// <summary>Opens the summary of the Pokémon under the switching cards' cursor; false when no one is there.</summary>
     public bool OpenSummary()
     {
-        if (HUD.MenuState != BattleMenuState.SwitchPokemon || HUD.SwitchMenuIndex >= PlayerParty.Count) return false;
+        if (HUD.MenuState != BattleMenuState.SwitchPokemon || HUD.SwitchMenuIndex >= SwitchParty.Count) return false;
         SummaryIndex = HUD.SwitchMenuIndex;
         Summary.Open();
         HUD.MenuState = BattleMenuState.Summary;
@@ -769,14 +793,15 @@ public partial class BattleEngine
     public void UpdateSummary(int dx, int dy)
     {
         if (dx == 0) dx = InputManager.Axis(GameAction.PageLeft, GameAction.PageRight);
-        var result = Summary.Press(PlayerParty.Members[Math.Min(SummaryIndex, PlayerParty.Count - 1)], dx, dy);
+        var team = SwitchParty;
+        var result = Summary.Press(team.Members[Math.Min(SummaryIndex, team.Count - 1)], dx, dy);
         if (result.Close)
         {
             HUD.MenuState = BattleMenuState.SwitchPokemon;
             return;
         }
         if (result.Step == 0) return;
-        SummaryIndex = UI.Kit.UiNav.Wrap(SummaryIndex, result.Step, PlayerParty.Count);
+        SummaryIndex = UI.Kit.UiNav.Wrap(SummaryIndex, result.Step, team.Count);
         HUD.SwitchMenuIndex = SummaryIndex;
         Summary.PutCursorsAway();
         AudioManager.PlaySound("cursor");

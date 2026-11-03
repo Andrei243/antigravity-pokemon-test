@@ -11174,6 +11174,10 @@ way -
   > Lucas put it away in the Berries pocket.
   * cry Turtwig
   * fanfare FanfareItem
+=== common.FriendsHallTrainer
+from a trainer with lines of their own
+way -
+  > Your friend's trainer will be ready for another battle tomorrow.
 === common.GabbyAndTyAfterTheBattle
 from a trainer with lines of their own
 way 0

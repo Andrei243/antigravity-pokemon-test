@@ -207,6 +207,8 @@ public partial class GameEngine
         if (flow.Map.Name == VillaMap) FurnishVilla();
         // and a secret base's decorations where they were set down, its door aimed at its spot (plan 21 · H10)
         if (SecretBaseLayouts.IsBaseMap(flow.Map.Name)) LayOutSecretBase(flow.Map);
+        // The friends' trainers stand in the friends' hall as it is come to (plan 13 · V23)
+        StandTheFriends();
         // The people of the place come to are made ready behind the fade, and the rigs of the place left are let go
         KeepCharactersNear(trim: true);
         flow.Arrived = true;
@@ -863,6 +865,13 @@ public partial class GameEngine
             {
                 flow.Dialogue.Close();
                 AnswerTheRecord(picked == 0);
+                return;
+            }
+            // So has the question about a friend in the partner's place, whose answer begins the battle (plan 13 · V20)
+            if (AskingAboutAFriend)
+            {
+                flow.Dialogue.Close();
+                AnswerAboutAFriend(picked == 0);
                 return;
             }
             flow.ScriptAnswer = picked;

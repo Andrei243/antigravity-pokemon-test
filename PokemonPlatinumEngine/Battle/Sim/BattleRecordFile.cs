@@ -119,6 +119,9 @@ public sealed class BattleRecordFile
     /// <summary>A battle between two players (plan 28 · I4), which may be given up; null, as a file without it, for every other.</summary>
     public bool? Link { get; set; }
 
+    /// <summary>A friend chose for the partner's place (plan 13 · V20), whose answers are in the record; null, as a file without it, for the partner's own mind.</summary>
+    public bool? FriendPartner { get; set; }
+
     public RecordedConditions Conditions { get; set; } = new();
 
     /// <summary>Where the battle's chance began (<see cref="BattleRecord.Seed"/>).</summary>
@@ -175,6 +178,7 @@ public sealed class BattleRecordFile
             Palace = setup.Palace,
             TurnLimit = setup.TurnLimit,
             Link = setup.Link ? true : null,
+            FriendPartner = setup.Partner != null && setup.PartnerController == null ? true : null,
             Conditions = new RecordedConditions
             {
                 Terrain = conditions.Terrain,
@@ -213,7 +217,7 @@ public sealed class BattleRecordFile
     /// <summary>The record the rules replay: the seed and the answers, with the two flags a record keeps.</summary>
     [System.Text.Json.Serialization.JsonIgnore]
     public BattleRecord Record => new(Seed, Answers.Select(turn => (IReadOnlyList<BattleChoice>)turn.Select(c => c.ToChoice()).ToList()).ToList(),
-        Conditions.Inverse, OffersSwitch, Difficulty, RunLevelCap, CrossedExp: CrossedExp, NoLaterMechanics: NoLaterMechanics);
+        Conditions.Inverse, OffersSwitch, Difficulty, RunLevelCap, CrossedExp: CrossedExp, NoLaterMechanics: NoLaterMechanics, FriendPartner: FriendPartner == true);
 
     /// <summary>Whom the battle was against: the first trainer's class and name, or the first wild Pokémon's species.</summary>
     [System.Text.Json.Serialization.JsonIgnore]
@@ -263,6 +267,8 @@ public sealed class BattleRecordFile
             PlayerController = null,
             // A link battle's other side was a player too, whose answers are in the record (plan 28 · I5)
             EnemyController = Link == true ? null : TrainerAi.Instance,
+            // And a friend's at the partner's place (plan 13 · V20)
+            PartnerController = FriendPartner == true ? null : TrainerAi.Instance,
             Kind = Kind,
             Partner = Partner?.ToTrainer(rules),
             CannotFlee = CannotFlee,

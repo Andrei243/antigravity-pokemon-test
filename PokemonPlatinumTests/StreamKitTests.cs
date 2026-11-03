@@ -282,8 +282,9 @@ public class StreamKitTests
     public void TheTwoRowsStandBeforeHelpWithTheirWordsInBothLanguagesAndOffByDefault()
     {
         var rows = Enum.GetValues<OptionRow>();
-        Assert.Equal(OptionRow.StreamFeed, rows[Array.IndexOf(rows, OptionRow.Help) - 2]);
-        Assert.Equal(OptionRow.StreamSafe, rows[Array.IndexOf(rows, OptionRow.Help) - 1]);
+        // (FRIEND AS PARTNER, plan 13 · V20, stands between them and HELP)
+        Assert.Equal(OptionRow.StreamFeed, rows[Array.IndexOf(rows, OptionRow.Help) - 3]);
+        Assert.Equal(OptionRow.StreamSafe, rows[Array.IndexOf(rows, OptionRow.Help) - 2]);
         var fresh = new GameSettings();
         Assert.Equal(StreamFeedMode.Off, fresh.StreamFeed);
         Assert.False(fresh.StreamSafe);

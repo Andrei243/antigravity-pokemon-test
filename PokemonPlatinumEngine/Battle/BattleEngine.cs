@@ -322,6 +322,8 @@ public partial class BattleEngine
             PlayerController = setup.PlayerController,
             // A battle puzzle's foe uses the moves its file names (plan 13 · V26)
             EnemyController = setup.EnemyController ?? TrainerAi.Instance,
+            // A friend at the partner's place chooses through the menus (plan 13 · V20); a battle watched as recorded
+            PartnerController = (watched?.FriendPartner ?? setup.FriendPartner) && setup.Partner != null ? null : TrainerAi.Instance,
             Palace = watched?.Palace ?? setup.Palace,
             TurnLimit = watched?.TurnLimit ?? setup.TurnLimit,
             // A Key Stone in the bag lets one of the player's Pokémon Mega Evolve (plan 06 · R20); a battle watched

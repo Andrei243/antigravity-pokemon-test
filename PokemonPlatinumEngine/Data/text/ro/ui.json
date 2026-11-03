@@ -490,6 +490,13 @@
         "on": "ID-urile antrenorilor sunt ascunse, iar numele dosarului tău este scos din căile din jurnal."
       }
     },
+    "coop": {
+      "label": "Prieten ca partener",
+      "help": {
+        "off": "Cine luptă lângă tine își alege singur mutările.",
+        "on": "Înaintea unei lupte lângă un partener, ești întrebat dacă un prieten alege pentru el. Un al doilea controler răspunde la rândurile prietenului."
+      }
+    },
     "captions": {
       "label": "Subtitrări",
       "help": {
@@ -2910,6 +2917,9 @@
     "noWayOut": "Aici nu se găsește nicio ieșire cu el.",
     "scriptWentWrong": "Un script a mers prost: {problem}",
     "onlyCanBeChosen": "Aici poate fi ales doar {only}.",
+    "coop": {
+      "question": "Alege un prieten pentru {partner} în lupta asta?"
+    },
     "recordBattle": {
       "question": "Înregistrezi lupta asta?",
       "saved": "Lupta a fost păstrată pe Vs. Recorder.",
@@ -3157,6 +3167,7 @@
     "madeFallInLove": "Obiectul {item} al lui {pokemon} l-a îndrăgostit pe {attacker}!",
     "nothingFromTheBag": "Nimic din Rucsac nu poate fi folosit aici.",
     "noItemsMayBe": "În această luptă nu se pot folosi obiecte!",
+    "friendHasNoBag": "Un partener nu are rucsac în această luptă!",
     "thereIsNoItem": "Nu există niciun obiect numit {item}.",
     "onlyTheBallsYou": "Aici pot fi folosite doar ball-urile primite.",
     "youHaveNoBalls": "Nu mai ai niciun ball!",
@@ -3831,6 +3842,8 @@
     "safariBall": "SAFARI BALL ×{n}",
     "parkBall": "PARK BALL ×{n}",
     "whatWill": "Ce va face {name}?",
+    "playersTurn": "Rândul lui {player}",
+    "friendsTurn": "Rândul unui prieten",
     "useOnWhichMove": "Pe ce mișcare folosești {item}?",
     "yes": "Da",
     "no": "Nu",

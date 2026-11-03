@@ -24,6 +24,8 @@ What changes from one release to the next, for players. Every session's close-ou
 - Kalos's Routes 2 to 4, Santalune Forest, Santalune City, its houses, Pokémon Center and Gym now play their own songs.
 
 ### Added
+- A friend can play beside you: with the new FRIEND AS PARTNER option on, the game asks before every battle fought beside a partner whether a friend will choose for them, and on yes the friend picks the partner's moves and switches through the same menus (a second controller answers their turns), with a pill saying whose turn it is.
+- Friends' trainers stand upstairs in Jubilife City's Pokémon Center: every trainer file in the `trainers` folder beside your save (up to eight) waits there to battle at level 50, with nothing won or used up, and can be beaten once a day.
 - Hoenn's Safari Zone has its Pokéblock feeders: set a Pokéblock down on one of the eleven stands in the grass, and for a hundred steps most wild Pokémon met nearby will have a nature that likes it.
 - A new game asks what you set out in, right after boy or girl: your own clothes, as before, or one of a few outfits (a trail set, a city set, a snow set and more), which are yours to keep and change at the wardrobe for nothing.
 - The options have three new rows for spoken lines: VOICES (off, the story's characters only, or everyone), VOICE VOLUME and LET VOICES FINISH. No voices are recorded yet, so they stay silent until a voice pack is put beside the game; with VOICES off (as it starts) the game is exactly as before.

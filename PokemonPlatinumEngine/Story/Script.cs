@@ -169,6 +169,8 @@ public enum Op
     JoinAvenue,
     // The last line's voice waited for to its end, for a scene timed to speech (plan 26 · V2)
     WaitVoice,
+    // A friend's trainer of the friends' hall (plan 13 · V23): beaten today, their two lines, their battle at level 50
+    Friend,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

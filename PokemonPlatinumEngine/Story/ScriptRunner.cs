@@ -371,6 +371,8 @@ public sealed partial class ScriptRunner
         Op.Fossil or Op.GameCorner or Op.Villa or Op.PalPark => true,
         Op.Frontier or Op.Tower or Op.Factory or Op.Hall or Op.Castle or Op.Arcade or Op.Subway or Op.TrainerHill => true,
         Op.Tutor or Op.Amity => true,
+        // A friend's trainer says their lines and battles; whether they were beaten today is asked with no screen
+        Op.Friend => i.Name != "beaten",
         // A grotto's Pokémon is battled and its item is handed over with its lines; what it holds is asked without a screen
         Op.Grotto => i.Name is "battle" or "take",
         // Join Avenue's numbers are counted with no screen; a shop is opened
@@ -1376,6 +1378,10 @@ public sealed partial class ScriptRunner
             // The Battle Subway (plan 22 · U6, part d)
             case Op.Subway:
                 Subway(i);
+                break;
+            // A friend's trainer of the friends' hall (plan 13 · V23)
+            case Op.Friend:
+                FriendCommand(i);
                 break;
             case Op.TrainerHill:
                 TrainerHillCommand(i);

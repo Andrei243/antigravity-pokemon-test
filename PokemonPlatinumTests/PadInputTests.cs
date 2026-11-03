@@ -335,8 +335,13 @@ public class PadInputTests
     public void TheOptionsRowsStandBeforeHelpAndChange()
     {
         var rows = Enum.GetValues<OptionRow>();
+<<<<<<< HEAD
         // (The Vs. Recorder's row, plan 08 · P10, the second slot's, P23, the next objective's, plan 12 · Q14, the season's, plan 22 · U3, and the three voice rows, plan 26 · V2, went in after them, before CONTROLS, as every new row does)
         Assert.Equal(new[] { OptionRow.ButtonMode, OptionRow.StickDeadZone, OptionRow.Gamepad, OptionRow.RecordBattles, OptionRow.SlotTwo, OptionRow.NextObjective, OptionRow.Season, OptionRow.FieldHelpers, OptionRow.PartyTools, OptionRow.BoxesAnywhere, OptionRow.Autosave, OptionRow.DynamicResolution, OptionRow.TimingAssist, OptionRow.Rumble, OptionRow.ReduceFlashes, OptionRow.ReduceMotion, OptionRow.MedalNotices, OptionRow.RunTimer, OptionRow.Captions, OptionRow.HoldToConfirm, OptionRow.BoxTools, OptionRow.AutoBattle, OptionRow.AreaChecklist, OptionRow.Requests, OptionRow.TextSize, OptionRow.ColourVision, OptionRow.HighContrast, OptionRow.Tips, OptionRow.RetryBattles, OptionRow.Follower, OptionRow.WildPokemon, OptionRow.Movement, OptionRow.Voices, OptionRow.VoiceVolume, OptionRow.LetVoicesFinish, OptionRow.Controls, OptionRow.Jukebox, OptionRow.Packs, OptionRow.StreamFeed, OptionRow.StreamSafe, OptionRow.Help, OptionRow.ResetDefaults }, rows[^42..]);
+=======
+        // (The Vs. Recorder's row, plan 08 · P10, the second slot's, P23, the next objective's, plan 12 · Q14, and the season's, plan 22 · U3, went in after them, before CONTROLS, as every new row does)
+        Assert.Equal(new[] { OptionRow.ButtonMode, OptionRow.StickDeadZone, OptionRow.Gamepad, OptionRow.RecordBattles, OptionRow.SlotTwo, OptionRow.NextObjective, OptionRow.Season, OptionRow.FieldHelpers, OptionRow.PartyTools, OptionRow.BoxesAnywhere, OptionRow.Autosave, OptionRow.DynamicResolution, OptionRow.TimingAssist, OptionRow.Rumble, OptionRow.ReduceFlashes, OptionRow.ReduceMotion, OptionRow.MedalNotices, OptionRow.RunTimer, OptionRow.Captions, OptionRow.HoldToConfirm, OptionRow.BoxTools, OptionRow.AutoBattle, OptionRow.AreaChecklist, OptionRow.Requests, OptionRow.TextSize, OptionRow.ColourVision, OptionRow.HighContrast, OptionRow.Tips, OptionRow.RetryBattles, OptionRow.Follower, OptionRow.WildPokemon, OptionRow.Movement, OptionRow.Voices, OptionRow.VoiceVolume, OptionRow.LetVoicesFinish, OptionRow.Controls, OptionRow.Jukebox, OptionRow.Packs, OptionRow.StreamFeed, OptionRow.StreamSafe, OptionRow.Coop, OptionRow.Help, OptionRow.ResetDefaults }, rows[^43..]);
+>>>>>>> worktree-agent-a7a186f06828de20e
 
         var s = new GameSettings();
         OptionsScreen.Change(s, OptionRow.ButtonMode, 1);
