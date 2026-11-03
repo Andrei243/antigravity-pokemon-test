@@ -1,4 +1,4 @@
-using PokemonPlatinumEngine.Graphics;
+﻿using PokemonPlatinumEngine.Graphics;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Overworld;
@@ -583,7 +583,9 @@ public class UnovaTests
                 // and the P2 Laboratory since plan 22 · U10, part c
                 || m.Name == "d13_house"
                 // and the Abundant Shrine and its house since plan 22 · U10, part d
-                || m.Name is "d19_house01" or "d19_shirne01")
+                || m.Name is "d19_house01" or "d19_shirne01"
+                // and Icirrus City's houses since plan 22 · U10, part e
+                || m.Name == "c7_house")
                 Assert.True(string.IsNullOrEmpty(m.StandInUntil), $"{m.Name} is still a stand-in");
             else Assert.False(string.IsNullOrEmpty(m.StandInUntil), $"{m.Name} is no stand-in");
         }
@@ -619,5 +621,24 @@ public class UnovaTests
         // the house by the pond and the gate to Black City lead nowhere yet
         Assert.DoesNotContain(shrine.Warps, w => w.TargetMap.StartsWith("AbundantShrine_", StringComparison.Ordinal));
         Assert.Equal(BuildingKind.Shrine, WorldModels.Of("d19_shirne01", "unova")!.Kind);
+    }
+
+    [Fact]
+    public void TheOldRoadsRoundIcirrusCityAreWalkedFromRouteSevenAndRouteNine()
+    {
+        // Plan 22 · U10, part e: Twist Mountain from Route 7's north end to Icirrus City, Route 8 and its moor, the Tubeline Bridge on to
+        // Route 9, and the Dragonspiral Tower to its top, whose rail walks are joined by the overlays' doors
+        var walked = Walked.Value;
+        foreach (var key in new[] { "twist_mountain", "icirrus_city", "unova_route_8", "dragonspiral_tower" })
+            Assert.Contains(walked[Overworld], t => Overworld.AreaAt(t.X, t.Y)?.Key == key);
+        foreach (var name in new[] { "TwistMountain_1", "TwistMountain_4", "TwistMountain_Chamber", "IcirrusCity_Gym", "IcirrusCity_FanClub",
+            "MoorOfIcirrus", "TubelineBridge", "TubelineBridgeGate_West", "TubelineBridgeGate_East", "DragonspiralTower_5F", "DragonspiralTower_Top" })
+            Assert.Contains(walked.Keys, m => m.Name == name);
+        // Black 2's trainers stand with their teams; Regigigas sleeps in the chamber
+        Assert.Contains(MapNamed("TwistMountain_1").Everyone, n => n.TrainerData?.Id == "unova_hiker_wade");
+        Assert.Contains(Overworld.Everyone, n => n.TrainerData?.Id == "unova_youngster_astor");
+        Assert.Contains(MapNamed("TwistMountain_Chamber").Everyone, n => n.Species == "Regigigas");
+        // Clay Tunnel's way on to Twist Mountain is open now
+        Assert.Contains(MapNamed("ClayTunnel_3").Warps, w => w.TargetMap == "TwistMountain_5");
     }
 }

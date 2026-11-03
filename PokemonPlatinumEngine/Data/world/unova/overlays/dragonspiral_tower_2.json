@@ -1,0 +1,6 @@
+{
+  // The Dragonspiral Tower, its ground floor, with Black 2's person and trigger of a scene left out (plan 22 · U10, part e): Black 2's, empty but for what the importer reads
+  "area": "dragonspiral_tower_2",
+  "bgmTrack": "unova/celestial_tower",
+  "battleArena": "Cave"
+}

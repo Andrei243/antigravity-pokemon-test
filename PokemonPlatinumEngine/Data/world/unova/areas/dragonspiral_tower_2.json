@@ -1,0 +1,191 @@
+{
+  "key": "dragonspiral_tower_2",
+  "index": 206,
+  "name": "Dragonspiral Tower",
+  "matrix": 208,
+  "kind": "Outdoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Plain",
+  "dayMusic": "BGM_D_05",
+  "nightMusic": "BGM_D_05",
+  "encounters": "ENCOUNTERS_DRAGONSPIRAL_TOWER_2",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Tranquill", "level": 55 },
+    { "species": "Sawsbuck", "level": 55 },
+    { "species": "Mienshao", "level": 56 },
+    { "species": "Sawsbuck", "level": 57 },
+    { "species": "Mienshao", "level": 57 },
+    { "species": "Tranquill", "level": 57 },
+    { "species": "Mienshao", "level": 58 },
+    { "species": "Tranquill", "level": 58 },
+    { "species": "Sawsbuck", "level": 58 },
+    { "species": "Druddigon", "level": 58 },
+    { "species": "Sawsbuck", "level": 58 },
+    { "species": "Druddigon", "level": 58 }
+  ],
+  "landRate": 13,
+  "water": [
+    { "species": "Basculin", "level": 45, "maxLevel": 60 },
+    { "species": "Basculin", "level": 45, "maxLevel": 60 },
+    { "species": "Basculin", "level": 50, "maxLevel": 60 },
+    { "species": "Basculin", "level": 50, "maxLevel": 60 },
+    { "species": "Basculin", "level": 50, "maxLevel": 60 }
+  ],
+  "waterRate": 12,
+  "superRod": [
+    { "species": "Dratini", "level": 40, "maxLevel": 60, "weight": 60 },
+    { "species": "Basculin", "level": 40, "maxLevel": 60, "weight": 30 },
+    { "species": "Dratini", "level": 50, "maxLevel": 70, "weight": 5 },
+    { "species": "Dratini", "level": 50, "maxLevel": 70, "weight": 4 },
+    { "species": "Dratini", "level": 50, "maxLevel": 70, "weight": 1 }
+  ],
+  "superRodRate": 50,
+  "darkGrass": [
+    { "species": "Tranquill", "level": 63 },
+    { "species": "Sawsbuck", "level": 63 },
+    { "species": "Mienshao", "level": 64 },
+    { "species": "Sawsbuck", "level": 65 },
+    { "species": "Mienshao", "level": 65 },
+    { "species": "Tranquill", "level": 65 },
+    { "species": "Mienshao", "level": 66 },
+    { "species": "Tranquill", "level": 66 },
+    { "species": "Sawsbuck", "level": 66 },
+    { "species": "Druddigon", "level": 66 },
+    { "species": "Sawsbuck", "level": 66 },
+    { "species": "Druddigon", "level": 66 }
+  ],
+  "darkGrassRate": 13,
+  "shakingGrass": [
+    { "species": "Audino", "level": 55 },
+    { "species": "Audino", "level": 55 },
+    { "species": "Emolga", "level": 56 },
+    { "species": "Audino", "level": 56 },
+    { "species": "Audino", "level": 57 },
+    { "species": "Audino", "level": 57 },
+    { "species": "Audino", "level": 57 },
+    { "species": "Audino", "level": 57 },
+    { "species": "Audino", "level": 57 },
+    { "species": "Unfezant", "level": 57 },
+    { "species": "Audino", "level": 57 },
+    { "species": "Unfezant", "level": 57 }
+  ],
+  "shakingGrassRate": 13,
+  "ripplingWater": [
+    { "species": "Basculin", "level": 45, "maxLevel": 60 },
+    { "species": "Basculin", "level": 45, "maxLevel": 60 },
+    { "species": "Basculin", "level": 50, "maxLevel": 60 },
+    { "species": "Basculin", "level": 50, "maxLevel": 60 },
+    { "species": "Basculin", "level": 50, "maxLevel": 60 }
+  ],
+  "ripplingWaterRate": 13,
+  "ripplingRod": [
+    { "species": "Dratini", "level": 40, "maxLevel": 60, "weight": 60 },
+    { "species": "Basculin", "level": 40, "maxLevel": 60, "weight": 30 },
+    { "species": "Dragonair", "level": 50, "maxLevel": 70, "weight": 5 },
+    { "species": "Dragonair", "level": 50, "maxLevel": 70, "weight": 4 },
+    { "species": "Dragonite", "level": 50, "maxLevel": 70, "weight": 1 }
+  ],
+  "ripplingRodRate": 1,
+  "seasons": [
+    {
+      "season": "Winter",
+      "land": [
+        { "species": "Vanillish", "level": 55 },
+        { "species": "Sawsbuck", "level": 55 },
+        { "species": "Mienshao", "level": 56 },
+        { "species": "Sawsbuck", "level": 57 },
+        { "species": "Mienshao", "level": 57 },
+        { "species": "Beartic", "level": 57 },
+        { "species": "Mienshao", "level": 58 },
+        { "species": "Vanillish", "level": 57 },
+        { "species": "Beartic", "level": 58 },
+        { "species": "Druddigon", "level": 58 },
+        { "species": "Beartic", "level": 58 },
+        { "species": "Druddigon", "level": 58 }
+      ],
+      "landRate": 13,
+      "darkGrass": [
+        { "species": "Vanillish", "level": 63 },
+        { "species": "Sawsbuck", "level": 63 },
+        { "species": "Mienshao", "level": 64 },
+        { "species": "Sawsbuck", "level": 65 },
+        { "species": "Mienshao", "level": 65 },
+        { "species": "Beartic", "level": 65 },
+        { "species": "Mienshao", "level": 66 },
+        { "species": "Vanillish", "level": 65 },
+        { "species": "Beartic", "level": 66 },
+        { "species": "Druddigon", "level": 66 },
+        { "species": "Beartic", "level": 66 },
+        { "species": "Druddigon", "level": 66 }
+      ],
+      "darkGrassRate": 13,
+      "shakingGrass": [
+        { "species": "Audino", "level": 55 },
+        { "species": "Audino", "level": 55 },
+        { "species": "Emolga", "level": 56 },
+        { "species": "Audino", "level": 56 },
+        { "species": "Audino", "level": 57 },
+        { "species": "Audino", "level": 57 },
+        { "species": "Audino", "level": 57 },
+        { "species": "Audino", "level": 57 },
+        { "species": "Audino", "level": 57 },
+        { "species": "Vanilluxe", "level": 57 },
+        { "species": "Audino", "level": 57 },
+        { "species": "Vanilluxe", "level": 57 }
+      ],
+      "shakingGrassRate": 13,
+      "water": [
+        { "species": "Basculin", "level": 45, "maxLevel": 60 },
+        { "species": "Basculin", "level": 45, "maxLevel": 60 },
+        { "species": "Basculin", "level": 50, "maxLevel": 60 },
+        { "species": "Basculin", "level": 50, "maxLevel": 60 },
+        { "species": "Basculin", "level": 50, "maxLevel": 60 }
+      ],
+      "waterRate": 12,
+      "ripplingWater": [
+        { "species": "Basculin", "level": 45, "maxLevel": 60 },
+        { "species": "Basculin", "level": 45, "maxLevel": 60 },
+        { "species": "Basculin", "level": 50, "maxLevel": 60 },
+        { "species": "Basculin", "level": 50, "maxLevel": 60 },
+        { "species": "Basculin", "level": 50, "maxLevel": 60 }
+      ],
+      "ripplingWaterRate": 13,
+      "superRod": [
+        { "species": "Dratini", "level": 40, "maxLevel": 60, "weight": 60 },
+        { "species": "Basculin", "level": 40, "maxLevel": 60, "weight": 30 },
+        { "species": "Dratini", "level": 50, "maxLevel": 70, "weight": 5 },
+        { "species": "Dratini", "level": 50, "maxLevel": 70, "weight": 4 },
+        { "species": "Dratini", "level": 50, "maxLevel": 70, "weight": 1 }
+      ],
+      "superRodRate": 50,
+      "ripplingRod": [
+        { "species": "Dratini", "level": 40, "maxLevel": 60, "weight": 60 },
+        { "species": "Basculin", "level": 40, "maxLevel": 60, "weight": 30 },
+        { "species": "Dragonair", "level": 50, "maxLevel": 70, "weight": 5 },
+        { "species": "Dragonair", "level": 50, "maxLevel": 70, "weight": 4 },
+        { "species": "Dragonite", "level": 50, "maxLevel": 70, "weight": 1 }
+      ],
+      "ripplingRodRate": 1
+    }
+  ],
+  "warps": [
+    { "x": 21, "z": 51, "to": "dragonspiral_tower", "toWarp": 0 },
+    { "x": 21, "z": 34, "to": "dragonspiral_tower_3", "toWarp": 0 },
+    { "x": 22, "z": 51, "to": "dragonspiral_tower", "toWarp": 0 },
+    { "x": 22, "z": 34, "to": "dragonspiral_tower_3", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "110", "movement": "none", "x": 43, "z": 31, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0531", "item": "Carbos", "script": "7229" },
+    { "id": "1", "looks": "104", "movement": "none", "x": 22, "z": 45, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x03f4", "script": "1" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 20, "z": 47, "width": 4, "depth": 1, "script": "2", "variable": "VAR_UNOVA_0x4148", "value": "1" }
+  ]
+}

@@ -3639,6 +3639,33 @@ or beaten (`FLAG_UNOVA_FOUGHT_<SPECIES>`), back the next time its place is come 
 - **Still held back.** The artist, the three at the wood's mouth and the trigger before the shrine (the scene of the forces
   of nature) and the house by the pond stay as part d's first piece left them.
 
+## The old roads round Icirrus City (2026-11-04, plan 22 · U10, part e)
+
+- **What is open.** Twist Mountain from its foot at Route 7's north end through its five floors and its miners' room to
+  Icirrus City, with its deepest tunnel joined to Clay Tunnel's third floor (whose way on was shut until now) and its chamber;
+  Icirrus City with its Gym, two houses, the Pokémon Fan Club and its Pokémon Center; Route 8 and the Moor of Icirrus; the
+  Tubeline Bridge with its two gate houses (`bridge_gate_gate_2` and `_3`, Black 2's own; the zone `tubeline_bridge_gate`
+  shares the bridge's matrix and is no room), so Route 9's way west (warp 0, locked since U8) leads on to it; and the
+  Dragonspiral Tower's ground and floors. All open from the start, as Black 2's are; the trainers are Black 2's.
+- **The tower's rail walks.** Black 2's `dragonspiral_tower_5` and `_7` are the walks round the tower's outside, on rails, with
+  no ground in the import. They are not opened: the third floor's stairs up lead straight to where the walk comes in on the
+  fourth floor (Black 2's `_6`), and its way up to the fifth (`_8`), by the overlays' `doors`. The maps are named by the floors
+  the player walks (`DragonspiralTower_1F` to `_5F` and `_Top`).
+- **Left out.** Black 2's people and triggers of the old roads' scenes (the tower's dragon at its top, the artist of the moor,
+  the rocks by Icirrus's Gym, the worker of Twist Mountain's hall), Twist Mountain's winter ice blocks, its lifts (drawn as the
+  floor they stand on), and the Icirrus Gym's slides: its Leader is gone to Pokéstar Studios, so only its guide is there. The
+  house in Icirrus City's south-east corner has its door on the side no way reaches, and stays shut. A Big Nugget and two Comet
+  Shards are held back, those items not being in the game's data.
+- **Regigigas.** It sleeps in Twist Mountain's chamber (Black 2's object, hidden by its own flag there) and wakes, as Platinum's
+  does in Snowpoint Temple, only for a team carrying Regirock, Regice and Registeel; level 68, gone for good once caught or
+  beaten (`FLAG_UNOVA_FOUGHT_REGIGIGAS`), back the next time if run from. Black 2's event Regigigas, which opened the Regis'
+  chambers, has no stand-in: our chambers open by the Underground Ruins' switch (part b).
+- **Icirrus City's houses** are built as Pastoria's (`Architecture.Marsh`, boards under reed-green roofs): a marsh town's
+  look, until a row of the style guide's "Buildings" is written for Icirrus. Its songs stand in from Lacunosa Town's (the town),
+  Route 6's (the roads), Reversal Mountain's cave (Twist Mountain), Lostlorn Forest's (the moor), the Village Bridge's (the
+  Tubeline Bridge) and the Celestial Tower's (the Dragonspiral Tower), until plan 05 writes Unova's `icirrus` and
+  `dragonspiral_tower`.
+
 ## The Hidden Grottoes (2026-11-02, plan 22 · U11)
 
 Black 2's Hidden Grottoes are hollows in the trees that hold one thing at a time. The decompilation has the grotto's own room

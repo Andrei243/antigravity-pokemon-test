@@ -1,0 +1,13 @@
+{
+  // The Dragonspiral Tower, its third floor (plan 22 · U10, part e): Black 2's, with a Strength boulder. Its stairs up (warps 1 to 3)
+  // lead onto Black 2's walk round the tower's outside, which stands on rails and has no ground here, so they lead straight on to the
+  // fourth floor, where that walk comes in
+  "area": "dragonspiral_tower_4",
+  "bgmTrack": "unova/celestial_tower",
+  "battleArena": "Cave",
+  "doors": [
+    { "warp": 1, "map": "DragonspiralTower_4F", "x": 27, "y": 15, "facing": "Left" },
+    { "warp": 2, "map": "DragonspiralTower_4F", "x": 27, "y": 15, "facing": "Left" },
+    { "warp": 3, "map": "DragonspiralTower_4F", "x": 27, "y": 15, "facing": "Left" }
+  ]
+}

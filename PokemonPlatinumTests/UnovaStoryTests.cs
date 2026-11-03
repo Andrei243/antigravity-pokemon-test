@@ -1,4 +1,4 @@
-using PokemonPlatinumEngine.Audio;
+﻿using PokemonPlatinumEngine.Audio;
 using PokemonPlatinumEngine.Battle;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
@@ -2438,9 +2438,9 @@ public class UnovaStoryTests
         game.Arrive("Unova", 480, 175);
         Assert.Null(game.Present("0", "unova_route_11"));
         Assert.Null(game.Present("7", "unova_route_11"));
-        // Route 9's way west to the Tubeline Bridge waits for the post-game
+        // Route 9's way west leads to the Tubeline Bridge's gate since the old roads opened (plan 22 · U10, part e)
         game.Arrive("Unova", 360, 175);
-        Assert.True(game.Map.Warps.All(w => !w.TargetMap.Contains("Tubeline", StringComparison.OrdinalIgnoreCase)));
+        Assert.Contains(game.Map.Warps, w => w.TargetMap == "TubelineBridgeGate_East");
         // the gate houses join the bridge to both roads and Opelucid City to both of its
         game.Arrive("Unova", 583, 175);
         game.Through("VillageBridgeGate_East");

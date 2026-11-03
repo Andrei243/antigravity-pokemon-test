@@ -1,0 +1,25 @@
+{
+  "key": "twist_mountain_7",
+  "index": 204,
+  "name": "Twist Mountain",
+  "matrix": 91,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_D_03",
+  "nightMusic": "BGM_D_03",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 10, "to": "twist_mountain_2", "toWarp": 16 },
+    { "x": 4, "z": 10, "to": "twist_mountain_2", "toWarp": 16 },
+    { "x": 5, "z": 10, "to": "twist_mountain_2", "toWarp": 16 }
+  ],
+  "objects": [],
+  "signs": [],
+  "triggers": []
+}

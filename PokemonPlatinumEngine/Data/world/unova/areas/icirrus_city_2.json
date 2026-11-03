@@ -1,0 +1,49 @@
+{
+  "key": "icirrus_city_2",
+  "index": 114,
+  "name": "Icirrus City",
+  "matrix": 64,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "27",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_C_07",
+  "nightMusic": "BGM_C_07",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 16, "z": 63, "to": "icirrus_city", "toWarp": 3 },
+    { "x": 17, "z": 63, "to": "icirrus_city", "toWarp": 3 },
+    { "x": 18, "z": 63, "to": "icirrus_city", "toWarp": 3 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "187", "movement": "none", "x": 18, "z": 61, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "2" },
+    { "id": "1", "looks": "0", "movement": "none", "x": 18, "z": 54, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "2000" },
+    { "id": "2", "looks": "0", "movement": "none", "x": 18, "z": 55, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "2000" },
+    { "id": "3", "looks": "0", "movement": "none", "x": 17, "z": 54, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "2000" },
+    { "id": "4", "looks": "0", "movement": "none", "x": 55, "z": 43, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "2000" },
+    { "id": "5", "looks": "0", "movement": "none", "x": 55, "z": 44, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "2000" },
+    { "id": "6", "looks": "0", "movement": "none", "x": 56, "z": 43, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "2000" },
+    { "id": "7", "looks": "0", "movement": "none", "x": 17, "z": 33, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "2000" },
+    { "id": "8", "looks": "0", "movement": "none", "x": 16, "z": 33, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "2000" },
+    { "id": "9", "looks": "0", "movement": "none", "x": 17, "z": 34, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "2000" },
+    { "id": "10", "looks": "91", "movement": "none", "x": 17, "z": 14, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x038b", "script": "1" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 59, "z": 41, "width": 1, "depth": 1, "script": "5", "variable": "VAR_UNOVA_0x400f", "value": "0" },
+    { "x": 23, "z": 53, "width": 1, "depth": 1, "script": "4", "variable": "VAR_UNOVA_0x400f", "value": "0" },
+    { "x": 15, "z": 29, "width": 1, "depth": 1, "script": "6", "variable": "VAR_UNOVA_0x400f", "value": "0" },
+    { "x": 17, "z": 60, "width": 1, "depth": 1, "script": "7", "variable": "VAR_UNOVA_0x400a", "value": "0" },
+    { "x": 22, "z": 53, "width": 1, "depth": 1, "script": "8", "variable": "VAR_UNOVA_0x400a", "value": "0" },
+    { "x": 60, "z": 44, "width": 1, "depth": 1, "script": "9", "variable": "VAR_UNOVA_0x400a", "value": "0" },
+    { "x": 54, "z": 39, "width": 1, "depth": 1, "script": "10", "variable": "VAR_UNOVA_0x400a", "value": "0" },
+    { "x": 16, "z": 38, "width": 1, "depth": 1, "script": "11", "variable": "VAR_UNOVA_0x400a", "value": "0" },
+    { "x": 12, "z": 34, "width": 1, "depth": 1, "script": "12", "variable": "VAR_UNOVA_0x400a", "value": "0" },
+    { "x": 22, "z": 32, "width": 1, "depth": 1, "script": "13", "variable": "VAR_UNOVA_0x400a", "value": "0" },
+    { "x": 18, "z": 29, "width": 1, "depth": 1, "script": "14", "variable": "VAR_UNOVA_0x400a", "value": "0" }
+  ]
+}

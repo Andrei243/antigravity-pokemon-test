@@ -1,0 +1,29 @@
+{
+  "key": "dragonspiral_tower_9",
+  "index": 213,
+  "name": "Dragonspiral Tower",
+  "matrix": 206,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "",
+  "dayMusic": "BGM_D_05",
+  "nightMusic": "BGM_D_05",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 11, "z": 24, "to": "dragonspiral_tower_8", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "work_00", "movement": "none", "x": 16, "z": 11, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x029b", "script": "3" }
+  ],
+  "signs": [
+    { "x": 22, "z": 8, "type": 2, "script": "8072", "item": "ITEM_COMET_SHARD", "flag": "FLAG_UNOVA_0x0b4c" }
+  ],
+  "triggers": [
+    { "x": 15, "z": 13, "width": 3, "depth": 1, "script": "2", "variable": "VAR_UNOVA_0x411b", "value": "1" }
+  ]
+}

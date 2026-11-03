@@ -1,0 +1,6 @@
+{
+  // The Dragonspiral Tower, its second floor (plan 22 · U10, part e): Black 2's, empty but for what the importer reads
+  "area": "dragonspiral_tower_3",
+  "bgmTrack": "unova/celestial_tower",
+  "battleArena": "Cave"
+}

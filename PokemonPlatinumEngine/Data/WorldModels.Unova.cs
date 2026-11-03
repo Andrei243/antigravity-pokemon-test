@@ -287,6 +287,15 @@ public static partial class WorldModels
         // ---------------------------------------------------------------- the Abundant Shrine (d19, plan 22 · U10, part d)
         Built("d19_house01", BuildingKind.House, "the house by the Abundant Shrine's pond", Architecture.Bellfield),
         Built("d19_shirne01", BuildingKind.Shrine, "the Abundant Shrine itself, at the head of its wood", Architecture.Bellfield),
+
+        // ---------------------------------------------------------------- Icirrus City and Twist Mountain (plan 22 · U10, part e)
+        // Icirrus's houses are built as Pastoria's: boards under reed-green roofs, a marsh town's (the rulings' "The old roads round
+        // Icirrus City" say why no row of its own yet)
+        Built("c7_house", BuildingKind.House, "a house of Icirrus City, the Pokémon Center's and the Fan Club's among them", Architecture.Marsh),
+        Ground("elboard_test", "a lift's platform in Twist Mountain's great hall, walked on (the floor's own tiles; the lift doesn't run)"),
+        Ground("elboard2_test", "a lift's landing in Twist Mountain's great hall, walked on (the floor's own tiles)"),
+        Ground("mugenobj06", "a winch post of Twist Mountain's lifts, against the rock (no model of its own: the rock face draws it)"),
+        Ground("mugenobj07", "a winch post of Twist Mountain's lifts, against the rock (no model of its own: the rock face draws it)"),
     };
 
     private static readonly Dictionary<string, WorldModel> UnovaByName = UnovaTable.ToDictionary(m => m.Name, StringComparer.Ordinal);

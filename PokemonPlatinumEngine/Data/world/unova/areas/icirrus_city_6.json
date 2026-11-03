@@ -1,0 +1,33 @@
+{
+  "key": "icirrus_city_6",
+  "index": 119,
+  "name": "Icirrus City",
+  "matrix": 359,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_C_07",
+  "nightMusic": "BGM_C_07",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 10, "to": "icirrus_city", "toWarp": 5 },
+    { "x": 6, "z": 10, "to": "icirrus_city", "toWarp": 5 },
+    { "x": 7, "z": 10, "to": "icirrus_city", "toWarp": 5 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "backers_f", "movement": "none", "x": 3, "z": 6, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "2" },
+    { "id": "1", "looks": "126", "movement": "none", "x": 2, "z": 6, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "3" },
+    { "id": "2", "looks": "gentleman", "movement": "none", "x": 7, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "1" },
+    { "id": "3", "looks": "312", "movement": "wander_around", "x": 4, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "5" },
+    { "id": "4", "looks": "325", "movement": "wander_around", "x": 4, "z": 3, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "7" },
+    { "id": "5", "looks": "131", "movement": "wander_around", "x": 9, "z": 7, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "4" },
+    { "id": "6", "looks": "316", "movement": "wander_around", "x": 8, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "6" }
+  ],
+  "signs": [],
+  "triggers": []
+}

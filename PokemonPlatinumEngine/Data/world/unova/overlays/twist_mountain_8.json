@@ -1,0 +1,13 @@
+{
+  // Twist Mountain's chamber (plan 22 · U10, part e), behind the deepest tunnel, Black 2's; our words. Three Strength boulders
+  // (0 to 2) stand in it; Regigigas (3) sleeps at its head and wakes only for a team with Regirock, Regice and Registeel in it,
+  // level 68; caught or beaten it is gone for good (FLAG_UNOVA_FOUGHT_REGIGIGAS), run from, it is back the next time
+  // (twist_mountain_8.txt; the rulings' "The old roads round Icirrus City")
+  "area": "twist_mountain_8",
+  "bgmTrack": "johto/ruins_of_alph",
+  "battleArena": "Cave",
+  "read": { "2": "Plaque", "3": "Inscription", "4": "Inscription" },
+  "people": {
+    "3": { "name": "Regigigas", "npcType": "Pokemon", "species": "Regigigas", "hiddenBy": "FLAG_UNOVA_FOUGHT_REGIGIGAS", "script": "Regigigas", "still": true }
+  }
+}

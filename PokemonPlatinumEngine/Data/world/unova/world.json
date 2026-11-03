@@ -275,7 +275,33 @@
     { "name": "P2Laboratory", "matrix": 191, "area": "p2_laboratory_2", "trees": "Round", "setting": "Indoors" },
     { "name": "HiddenGrotto", "matrix": 314, "area": "hidden_grotto", "trees": "Round" },
     // Plan 22 · U10, part d: the Abundant Shrine, the wood off Route 14's west end (its matrix of its own)
-    { "name": "AbundantShrine", "matrix": 190, "area": "abundant_shrine", "trees": "Round" }
+    { "name": "AbundantShrine", "matrix": 190, "area": "abundant_shrine", "trees": "Round" },
+    // Plan 22 · U10, part e: the north of the old roads. Twist Mountain's floors between Route 7 and Icirrus City, Icirrus City's
+    // rooms, the Moor of Icirrus off Route 8, the Tubeline Bridge to Route 9 with its gate, and the Dragonspiral Tower's floors
+    { "name": "TwistMountain_1", "matrix": 93, "area": "twist_mountain_2", "trees": "Pine", "setting": "Cave" },
+    { "name": "TwistMountain_2", "matrix": 94, "area": "twist_mountain_3", "trees": "Pine", "setting": "Cave" },
+    { "name": "TwistMountain_3", "matrix": 95, "area": "twist_mountain_4", "trees": "Pine", "setting": "Cave" },
+    { "name": "TwistMountain_4", "matrix": 96, "area": "twist_mountain_5", "trees": "Pine", "setting": "Cave" },
+    { "name": "TwistMountain_5", "matrix": 97, "area": "twist_mountain_6", "trees": "Pine", "setting": "Cave" },
+    { "name": "TwistMountain_6", "matrix": 91, "area": "twist_mountain_7", "trees": "Pine", "setting": "Cave" },
+    { "name": "TwistMountain_Chamber", "matrix": 311, "area": "twist_mountain_8", "trees": "Pine", "setting": "Cave" },
+    { "name": "IcirrusCity_Gym", "matrix": 64, "area": "icirrus_city_2", "trees": "Pine", "setting": "Indoors" },
+    { "name": "IcirrusCity_House1", "matrix": 46, "area": "icirrus_city_3", "trees": "Pine", "setting": "Indoors" },
+    { "name": "IcirrusCity_House2", "matrix": 44, "area": "icirrus_city_4", "trees": "Pine", "setting": "Indoors" },
+    { "name": "IcirrusCity_FanClub", "matrix": 359, "area": "icirrus_city_6", "trees": "Pine", "setting": "Indoors" },
+    { "name": "IcirrusCity_PokemonCenter", "matrix": 13, "area": "icirrus_city_pokemon_center", "trees": "Pine", "setting": "Indoors" },
+    { "name": "MoorOfIcirrus", "matrix": 183, "area": "moor_of_icirrus", "trees": "Pine" },
+    { "name": "TubelineBridge", "matrix": 136, "area": "tubeline_bridge", "trees": "Round" },
+    { "name": "TubelineBridgeGate_West", "matrix": 129, "area": "bridge_gate_gate_2", "trees": "Round", "setting": "Indoors" },
+    { "name": "TubelineBridgeGate_East", "matrix": 129, "area": "bridge_gate_gate_3", "trees": "Round", "setting": "Indoors" },
+    { "name": "DragonspiralTower_1F", "matrix": 208, "area": "dragonspiral_tower_2", "trees": "Pine", "setting": "Indoors" },
+    { "name": "DragonspiralTower_2F", "matrix": 200, "area": "dragonspiral_tower_3", "trees": "Pine", "setting": "Indoors" },
+    { "name": "DragonspiralTower_3F", "matrix": 201, "area": "dragonspiral_tower_4", "trees": "Pine", "setting": "Indoors" },
+    // (Black 2's walks round the tower's outside, dragonspiral_tower_5 and _7, stand on rails and have no ground: their
+    // stairs are joined by the overlays' doors, the rulings' "The old roads round Icirrus City")
+    { "name": "DragonspiralTower_4F", "matrix": 203, "area": "dragonspiral_tower_6", "trees": "Pine", "setting": "Indoors" },
+    { "name": "DragonspiralTower_5F", "matrix": 205, "area": "dragonspiral_tower_8", "trees": "Pine", "setting": "Indoors" },
+    { "name": "DragonspiralTower_Top", "matrix": 206, "area": "dragonspiral_tower_9", "trees": "Pine", "setting": "Indoors" }
   ],
   "areas": [
     "aspertia_city", "aspertia_city_2", "aspertia_city_3", "aspertia_city_4", "aspertia_city_5", "aspertia_city_6",
@@ -329,6 +355,12 @@
     // plan 22 · U10, part c: Routes 17 and 18 and the P2 Laboratory (for Genesect, plan 29 · LS11d); U11: the Hidden Grotto
     "unova_route_17", "unova_route_18", "p2_laboratory", "p2_laboratory_2", "hidden_grotto",
     // plan 22 · U10, part d: Route 14 and the Abundant Shrine, north of Undella Town
-    "unova_route_14", "abundant_shrine"
+    "unova_route_14", "abundant_shrine",
+    // plan 22 · U10, part e: Twist Mountain, Icirrus City, Route 8, the Moor of Icirrus, the Tubeline Bridge, the Dragonspiral Tower
+    "twist_mountain", "twist_mountain_2", "twist_mountain_3", "twist_mountain_4", "twist_mountain_5", "twist_mountain_6",
+    "twist_mountain_7", "twist_mountain_8", "icirrus_city", "icirrus_city_2", "icirrus_city_3", "icirrus_city_4",
+    "icirrus_city_6", "icirrus_city_pokemon_center", "unova_route_8", "moor_of_icirrus", "tubeline_bridge", "bridge_gate_gate_2", "bridge_gate_gate_3",
+    "dragonspiral_tower", "dragonspiral_tower_2", "dragonspiral_tower_3", "dragonspiral_tower_4",
+    "dragonspiral_tower_6", "dragonspiral_tower_8", "dragonspiral_tower_9"
   ]
 }

@@ -1,0 +1,13 @@
+{
+  // Twist Mountain's middle floor (plan 22 · U10, part e), Black 2's, our words. The ice blocks of Black 2's winter (0) wait
+  // for a session that lays the season's ice in the caves
+  "area": "twist_mountain_4",
+  "bgmTrack": "unova/reversal_cave",
+  "battleArena": "Cave",
+  "people": {
+    "4": { "name": "Chloris", "trainer": { "dialogueBefore": "I've battled in every cave in Unova. This one has the best echo. Listen!", "dialogueAfter": "That echo will be my defeat ringing for a while." } },
+    "5": { "name": "Patton", "trainer": { "dialogueBefore": "Nobody's mined this seam in years, but a battle's still worth digging for!", "dialogueAfter": "Struck out, didn't I?" } },
+    "6": { "name": "Ryan", "trainer": { "dialogueBefore": "You look lost. Beat me and I'll pretend I didn't notice!", "dialogueAfter": "You're not lost. I am. In a losing streak." } },
+    "7": { "name": "Hunter", "trainer": { "dialogueBefore": "Every hiker worth the name climbs Twist Mountain once a year. Battle me at the top of my climb!", "dialogueAfter": "Down I go, then." } }
+  }
+}

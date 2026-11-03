@@ -1,0 +1,137 @@
+{
+  "key": "twist_mountain_6",
+  "index": 203,
+  "name": "Twist Mountain",
+  "matrix": 97,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave1",
+  "dayMusic": "BGM_D_03",
+  "nightMusic": "BGM_D_03",
+  "encounters": "ENCOUNTERS_TWIST_MOUNTAIN_4",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Boldore", "level": 54 },
+    { "species": "Boldore", "level": 55 },
+    { "species": "Gurdurr", "level": 55 },
+    { "species": "Woobat", "level": 54 },
+    { "species": "Durant", "level": 56 },
+    { "species": "Beartic", "level": 56 },
+    { "species": "Heatmor", "level": 56 },
+    { "species": "Durant", "level": 57 },
+    { "species": "Cryogonal", "level": 57 },
+    { "species": "Onix", "level": 57 },
+    { "species": "Cryogonal", "level": 57 },
+    { "species": "Onix", "level": 57 }
+  ],
+  "landRate": 18,
+  "shakingGrass": [
+    { "species": "Excadrill", "level": 54 },
+    { "species": "Onix", "level": 54 },
+    { "species": "Excadrill", "level": 55 },
+    { "species": "Excadrill", "level": 55 },
+    { "species": "Excadrill", "level": 56 },
+    { "species": "Excadrill", "level": 56 },
+    { "species": "Excadrill", "level": 57 },
+    { "species": "Excadrill", "level": 57 },
+    { "species": "Excadrill", "level": 57 },
+    { "species": "Steelix", "level": 57 },
+    { "species": "Excadrill", "level": 57 },
+    { "species": "Steelix", "level": 57 }
+  ],
+  "shakingGrassRate": 13,
+  "seasons": [
+    {
+      "season": "Summer",
+      "land": [
+        { "species": "Boldore", "level": 54 },
+        { "species": "Gurdurr", "level": 55 },
+        { "species": "Heatmor", "level": 55 },
+        { "species": "Woobat", "level": 54 },
+        { "species": "Durant", "level": 56 },
+        { "species": "Heatmor", "level": 56 },
+        { "species": "Beartic", "level": 56 },
+        { "species": "Durant", "level": 57 },
+        { "species": "Cryogonal", "level": 57 },
+        { "species": "Onix", "level": 57 },
+        { "species": "Cryogonal", "level": 57 },
+        { "species": "Onix", "level": 57 }
+      ],
+      "landRate": 18,
+      "shakingGrass": [
+        { "species": "Excadrill", "level": 54 },
+        { "species": "Onix", "level": 54 },
+        { "species": "Excadrill", "level": 55 },
+        { "species": "Excadrill", "level": 55 },
+        { "species": "Excadrill", "level": 56 },
+        { "species": "Excadrill", "level": 56 },
+        { "species": "Excadrill", "level": 57 },
+        { "species": "Excadrill", "level": 57 },
+        { "species": "Excadrill", "level": 57 },
+        { "species": "Steelix", "level": 57 },
+        { "species": "Excadrill", "level": 57 },
+        { "species": "Steelix", "level": 57 }
+      ],
+      "shakingGrassRate": 13
+    },
+    {
+      "season": "Winter",
+      "land": [
+        { "species": "Beartic", "level": 54 },
+        { "species": "Boldore", "level": 55 },
+        { "species": "Gurdurr", "level": 55 },
+        { "species": "Woobat", "level": 54 },
+        { "species": "Durant", "level": 56 },
+        { "species": "Cryogonal", "level": 56 },
+        { "species": "Heatmor", "level": 56 },
+        { "species": "Durant", "level": 57 },
+        { "species": "Cryogonal", "level": 57 },
+        { "species": "Onix", "level": 57 },
+        { "species": "Cryogonal", "level": 57 },
+        { "species": "Onix", "level": 57 }
+      ],
+      "landRate": 18,
+      "shakingGrass": [
+        { "species": "Excadrill", "level": 54 },
+        { "species": "Onix", "level": 54 },
+        { "species": "Excadrill", "level": 55 },
+        { "species": "Excadrill", "level": 55 },
+        { "species": "Excadrill", "level": 56 },
+        { "species": "Excadrill", "level": 56 },
+        { "species": "Excadrill", "level": 57 },
+        { "species": "Excadrill", "level": 57 },
+        { "species": "Excadrill", "level": 57 },
+        { "species": "Steelix", "level": 57 },
+        { "species": "Excadrill", "level": 57 },
+        { "species": "Steelix", "level": 57 }
+      ],
+      "shakingGrassRate": 13
+    }
+  ],
+  "warps": [
+    { "x": 7, "z": 26, "to": "twist_mountain_5", "toWarp": 5 },
+    { "x": 21, "z": 25, "to": "clay_tunnel_3", "toWarp": 4 },
+    { "x": 13, "z": 5, "to": "twist_mountain_8", "toWarp": 0 },
+    { "x": 22, "z": 25, "to": "clay_tunnel_3", "toWarp": 4 },
+    { "x": 23, "z": 25, "to": "clay_tunnel_3", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "110", "movement": "none", "x": 20, "z": 11, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0541", "item": "TM71", "script": "7245" }
+  ],
+  "signs": [
+    { "x": 12, "z": 11, "type": 0, "script": "1" },
+    { "x": 13, "z": 11, "type": 0, "script": "1" },
+    { "x": 14, "z": 11, "type": 0, "script": "1" },
+    { "x": 12, "z": 12, "type": 0, "script": "1" },
+    { "x": 14, "z": 12, "type": 0, "script": "1" },
+    { "x": 12, "z": 13, "type": 0, "script": "1" },
+    { "x": 13, "z": 13, "type": 0, "script": "1" },
+    { "x": 14, "z": 13, "type": 0, "script": "1" }
+  ],
+  "triggers": []
+}

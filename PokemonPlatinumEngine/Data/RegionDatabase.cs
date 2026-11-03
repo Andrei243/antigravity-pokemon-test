@@ -901,6 +901,11 @@ public static class RegionDatabase
                 "P2Laboratory", "HiddenGrotto",
                 // Plan 22 · U10, part d: the Abundant Shrine off Route 14
                 "AbundantShrine",
+                // Plan 22 · U10, part e: Twist Mountain, Icirrus City's rooms, the Moor, the Tubeline Bridge and the Dragonspiral Tower
+                "TwistMountain_1", "TwistMountain_2", "TwistMountain_3", "TwistMountain_4", "TwistMountain_5", "TwistMountain_6", "TwistMountain_Chamber",
+                "IcirrusCity_Gym", "IcirrusCity_House1", "IcirrusCity_House2", "IcirrusCity_FanClub", "IcirrusCity_PokemonCenter",
+                "MoorOfIcirrus", "TubelineBridge", "TubelineBridgeGate_West", "TubelineBridgeGate_East",
+                "DragonspiralTower_1F", "DragonspiralTower_2F", "DragonspiralTower_3F", "DragonspiralTower_4F", "DragonspiralTower_5F", "DragonspiralTower_Top",
             }
         },
         new()

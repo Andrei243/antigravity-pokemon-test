@@ -1,0 +1,20 @@
+{
+  // Route 8 (plan 22 · U10, part e): Black 2's boggy road from Icirrus City east to the Tubeline Bridge's gate, with the way into the
+  // Moor of Icirrus, its trainers, balls and hidden things read by the importer, our words. Black 2's fisherman of a scene (1) is
+  // left out
+  "area": "unova_route_8",
+  "bgmTrack": "unova/route6",
+  "people": {
+    "0": { "name": "Parasol Lady", "dialog": [ "The puddles here are deeper than they look. My boots learned that the hard way." ] },
+    "5": { "name": "Astor", "trainer": { "dialogueBefore": "I'm the toughest kid in Icirrus! Want to see?", "dialogueAfter": "Okay, maybe the second toughest." } },
+    "6": { "name": "Mai", "trainer": { "dialogueBefore": "I jumped from puddle to puddle all the way here! Now I'll jump on you!", "dialogueAfter": "Splash. That's the sound of me losing." } },
+    "7": { "name": "Tyra", "trainer": { "dialogueBefore": "Rain or shine, my parasol and I are always ready for a battle.", "dialogueAfter": "Shine for you. Rain for me." } },
+    "8": { "name": "Ryder", "trainer": { "dialogueBefore": "Nothing bites in a bog like this. Let's battle while I wait.", "dialogueAfter": "Something bit, all right. It was you." } },
+    "9": { "name": "Ingrid", "trainer": { "dialogueBefore": "A walk in the marsh does wonders for one's complexion. A battle, even more so!", "dialogueAfter": "Flushed with defeat. How unbecoming." } }
+  },
+  "signs": {
+    "1": "Route 8\nIcirrus City - Tubeline Bridge",
+    "2": "Moor of Icirrus\nRangers watch over the moor",
+    "3": "Beware of the bog!\nKeep to the dry ground"
+  }
+}

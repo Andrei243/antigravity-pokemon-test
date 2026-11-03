@@ -1,0 +1,48 @@
+{
+  "key": "dragonspiral_tower_4",
+  "index": 208,
+  "name": "Dragonspiral Tower",
+  "matrix": 201,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_D_05",
+  "nightMusic": "BGM_D_05",
+  "encounters": "ENCOUNTERS_DRAGONSPIRAL_TOWER_4",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Golurk", "level": 55 },
+    { "species": "Golurk", "level": 55 },
+    { "species": "Golurk", "level": 56 },
+    { "species": "Golurk", "level": 56 },
+    { "species": "Golurk", "level": 57 },
+    { "species": "Golurk", "level": 57 },
+    { "species": "Golurk", "level": 58 },
+    { "species": "Golurk", "level": 58 },
+    { "species": "Golurk", "level": 58 },
+    { "species": "Golurk", "level": 58 },
+    { "species": "Golurk", "level": 58 },
+    { "species": "Golurk", "level": 58 }
+  ],
+  "landRate": 18,
+  "warps": [
+    { "x": 15, "z": 26, "to": "dragonspiral_tower_3", "toWarp": 1 },
+    { "x": 0, "z": 13, "to": "dragonspiral_tower_5", "toWarp": 0 },
+    { "x": 0, "z": 14, "to": "dragonspiral_tower_5", "toWarp": 0 },
+    { "x": 0, "z": 15, "to": "dragonspiral_tower_5", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "model_bigrock2", "movement": "none", "x": 10, "z": 12, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "10000" },
+    { "id": "1", "looks": "110", "movement": "none", "x": 22, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0534", "item": "Elixir", "script": "7232" },
+    { "id": "2", "looks": "110", "movement": "none", "x": 7, "z": 19, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0538", "item": "Ultra Ball", "script": "7236" }
+  ],
+  "signs": [
+    { "x": 15, "z": 2, "type": 2, "script": "8071", "item": "Red Shard", "flag": "FLAG_UNOVA_0x0b4b" }
+  ],
+  "triggers": []
+}

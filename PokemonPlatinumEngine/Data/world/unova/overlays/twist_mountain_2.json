@@ -1,0 +1,15 @@
+{
+  // Twist Mountain's great hall (plan 22 · U10, part e): Black 2's floor of mine roads and ladders, its trainers, balls and
+  // hidden things read by the importer, our words. Black 2's worker of the old roads' scene (0) is left out
+  "area": "twist_mountain_2",
+  "bgmTrack": "unova/reversal_cave",
+  "battleArena": "Cave",
+  "people": {
+    "5": { "name": "Cliff", "trainer": { "dialogueBefore": "My shift's over, but a battle's never over. Let's go!", "dialogueAfter": "Back to the pick for me, then." } },
+    "6": { "name": "Carter", "trainer": { "dialogueBefore": "I've walked these tunnels since before the lifts were built. Show me what you've got!", "dialogueAfter": "You walk them better than I ever did." } },
+    "7": { "name": "Wade", "trainer": { "dialogueBefore": "A mountain this twisted needs a Trainer this stubborn. Battle!", "dialogueAfter": "Twisted me right round, you did." } },
+    "8": { "name": "Carol", "trainer": { "dialogueBefore": "I patch up the miners when a ladder gives way. Let's see if your Pokémon need patching!", "dialogueAfter": "They don't. Mine do. Excuse me a moment." } },
+    "9": { "name": "Worker", "dialog": [ "The ladders take you up and down the mountain's floors. Lose count and you'll be wandering for hours." ] },
+    "10": { "name": "Worker", "dialog": [ "In winter the snow comes in through the high openings and the lower floors freeze over. Bring something warm." ] }
+  }
+}

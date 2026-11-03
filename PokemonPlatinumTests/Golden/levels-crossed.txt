@@ -1114,12 +1114,9 @@ unova_elite_four_shauntal 185 (58) [Cofagrigus → Pharaurum, Drifblim → Dirig
 unova_elite_four_shauntal_2 198 (74) [Cofagrigus → Pharaurum, Mismagius → Hexmagistra, Froslass → Frostbride, Drifblim → Dirigeist, Golurk → Colossurk]
 unova_elite_four_shauntal_3 185 (58) [Cofagrigus → Pharaurum, Drifblim → Dirigeist, Golurk → Colossurk, Banette → Effigrim]
 unova_elite_four_shauntal_4 199 (75) [Cofagrigus → Pharaurum, Froslass → Frostbride, Drifblim → Dirigeist, Golurk → Colossurk]
-unova_fisherman_arnold 186 (60) [Whiscash → Namazuro]
 unova_fisherman_bruce 187 (61) [Slowpoke → Slowmantle, Goldeen → Sabrefin, Seaking → Sabrefin]
 unova_fisherman_devon 185 (59) [Finneon → Lumifathom, Gorebyss → Sirenyss, Huntail → Gulpereel, Lumineon → Lumifathom]
-unova_fisherman_eustace 186 (60) [Corphish → Crayronin, Poliwag → Poliwhirl, Stunfisk → Fluxflounder]
 unova_fisherman_mack 185 (58) [Magikarp → Typhonarch, Magikarp → Typhonarch, Magikarp → Typhonarch, Magikarp → Typhonarch, Magikarp → Typhonarch, Magikarp → Typhonarch]
-unova_fisherman_ryder 186 (60) [Barboach → Namazuro, Stunfisk → Fluxflounder, Whiscash → Namazuro]
 unova_game_freak_morimoto 201 (78) [Liepard → Umbrapard, Simipour → Simitorrent, Simisear → Simiscorch, Simisage → Simisylvan, Swoobat → Amorabat, Zebstrika → Stormstrika]
 unova_game_freak_morimoto_2 167 (14) [Pansage → Simisage, Pansear → Simisear, Panpour → Simipour]
 unova_game_freak_nishino 168 (16) [Clefairy → Clefable]
@@ -1134,10 +1131,8 @@ unova_guitarist_tina 175 (33) [Krokorok → Krookodile, Liepard → Umbrapard]
 unova_harlequin_charley 187 (61) [Exeggcute → Palmagus, Electrode → Dynamorb]
 unova_harlequin_jack 169 (20) [Swadloon → Leavanny]
 unova_hiker_andy 171 (24) [Boldore → Gigalith]
-unova_hiker_hunter 187 (61) [Larvitar → Tyranitar, Probopass → Lodestarch]
 unova_hiker_jerome 166 (11) [Riolu → Aurasage]
 unova_hiker_russel 186 (60) [Geodude → Golem, Graveler → Golem]
-unova_hiker_wade 187 (61) [Golett → Colossurk]
 unova_hiker_zaiem 187 (61) [Hippowdon → Behemowdon, Rhydon → Rhyperior, Marowak → Ossugard]
 unova_hoopster_bobby 172 (26) [Whirlipede → Scolipede]
 unova_hoopster_bobby_2 175 (34)
@@ -1174,7 +1169,6 @@ unova_lass_diana 162 (1)
 unova_lass_diana_2 188 (63) [Hippowdon → Behemowdon, Sandslash → Sandspire]
 unova_lass_helia 186 (60) [Nidoran♀ → Nidoqueen, Nidoran♂ → Nidoking]
 unova_lass_henrietta 187 (61) [Illumise → Lampyria]
-unova_lass_mai 186 (60) [Shelmet → Velocigor, Slugma → Calderon, Gastrodon → Gastromire]
 unova_lass_mali 187 (61) [Pidgey → Pidgeot, Hoothoot → Noctaugur, Taillow → Swiftarrow, Starly → Staraptor]
 unova_lass_persephone 171 (24) [Liepard → Umbrapard]
 unova_lass_shannon 188 (62) [Vulpix → Kitsunox, Flareon → Pyreon]
@@ -1231,7 +1225,6 @@ unova_no_data_617 162 (1) [Patrat → Watchog]
 unova_no_data_618 162 (1) [Patrat → Watchog]
 unova_no_data_619 162 (1) [Patrat → Watchog]
 unova_no_data_620 162 (1) [Patrat → Watchog]
-unova_nurse_carol 188 (62)
 unova_nurse_kirsten 188 (62) [Chansey → Blissey]
 unova_nursery_aide_autumn 187 (61) [Jigglypuff → Wigglytuff, Purugly → Brutabby, Lickitung → Lickolossus]
 unova_nursery_aide_ethel 187 (61) [Exeggcute → Palmagus, Miltank → Pastorine]
@@ -1241,8 +1234,6 @@ unova_nursery_aide_leah 187 (61) [Clefairy → Clefable]
 unova_nursery_aide_naoise 162 (1) [Patrat → Watchog]
 unova_nursery_aide_rosalyn 187 (61) [Chansey → Blissey]
 unova_parasol_lady_gwyneth 188 (62)
-unova_parasol_lady_ingrid 186 (60)
-unova_parasol_lady_tyra 186 (60) [Jolteon → Fulgureon]
 unova_pilot_leonard 186 (60) [Hoothoot → Noctaugur, Swellow → Swiftarrow]
 unova_pkmn_breeder_brooke 184 (57) [Swinub → Mamoswine, Poliwag → Poliwhirl, Cleffa → Clefable, Gible → Garchomp, Igglybuff → Wigglytuff, Larvitar → Tyranitar]
 unova_pkmn_breeder_owen 184 (57) [Bonsly → Mimicedar, Wooper → Mirelord, Munchlax → Dozemount, Sandshrew → Sandspire, Wynaut → Wobbulwark, Spoink → Boarcane]
@@ -1250,7 +1241,6 @@ unova_pkmn_ranger_alain 187 (61) [Ambipom → Quadripom, Carnivine → Flytrapex
 unova_pkmn_ranger_audra 189 (64) [Girafarig → Farigiraf]
 unova_pkmn_ranger_bret 175 (33)
 unova_pkmn_ranger_dwayne 188 (62) [Weepinbell → Victreebel, Ursaring → Ursaluna]
-unova_pkmn_ranger_elaine 188 (62) [Accelgor → Velocigor, Kecleon → Chromeleon, Swalot → Gulpgorge]
 unova_pkmn_ranger_eliza_2 177 (38) [Krokorok → Krookodile, Arcanine → Kirinine]
 unova_pkmn_ranger_heidi 187 (61) [Musharna → Somnarna, Drifblim → Dirigeist, Umbreon → Eclipseon]
 unova_pkmn_ranger_hillary 188 (62) [Sudowoodo → Mimicedar, Beartic → Beartundra]
@@ -1259,7 +1249,6 @@ unova_pkmn_ranger_lewis_2 177 (38) [Watchog → Beaconwatch, Camerupt → Volcam
 unova_pkmn_ranger_malory 175 (33) [Arcanine → Kirinine]
 unova_pkmn_ranger_melita 188 (62) [Munchlax → Dozemount, Kricketune → Maestrikket, Zebstrika → Stormstrika]
 unova_pkmn_ranger_naoko 174 (32) [Foongus → Sporemonarch]
-unova_pkmn_ranger_parker 188 (62) [Escavalier → Lancelier, Carnivine → Flytrapex, Skuntank → Mephitarch]
 unova_pkmn_ranger_ralph 188 (62) [Electrike → Fulmenhound, Farfetch'd → Porrigard, Rapidash → Solarion]
 unova_pkmn_ranger_rick 189 (64) [Vigoroth → Slaking, Stantler → Wyrdeer]
 unova_pokefan_colin 187 (61) [Slowpoke → Slowmantle, Slowbro → Slowmantle]
@@ -1437,8 +1426,6 @@ unova_team_plasma_zinzolin_3 181 (48) [Cryogonal → Cryohedron, Cryogonal → C
 unova_twins_ally_amy 186 (60) [Plusle → Anodion, Minun → Cathodion]
 unova_twins_tara_val 169 (20) [Cottonee → Whimsicott, Petilil → Lilligant]
 unova_veteran_arlen 188 (63) [Jolteon → Fulgureon, Sandslash → Sandspire, Skarmory → Rapierwing]
-unova_veteran_carter 189 (64) [Carracosta → Tortugarch, Tauros → Bovarch]
-unova_veteran_chloris 189 (64) [Gyarados → Typhonarch, Archeops → Primavian, Kangaskhan → Matriroo]
 unova_veteran_crispin 186 (60)
 unova_veteran_denae 179 (44) [Fraxure → Haxorus, Axew → Haxorus]
 unova_veteran_donnaven 186 (60)
@@ -1446,7 +1433,6 @@ unova_veteran_eli 186 (60)
 unova_veteran_ernest 186 (60) [Tangrowth → Tanglewood]
 unova_veteran_jerry 179 (45) [Fraxure → Haxorus]
 unova_veteran_joseph 186 (60)
-unova_veteran_julia 188 (63) [Glaceon → Borealeon, Drapion → Dreadpion, Bastiodon → Bastionsaur]
 unova_veteran_lucius 180 (46) [Fraxure → Haxorus]
 unova_veteran_oriana 191 (66) [Magcargo → Calderon]
 unova_veteran_rayne 191 (66) [Masquerain → Ocellwing, Dragonair → Dragonite, Slowbro → Slowmantle]
@@ -1457,22 +1443,14 @@ unova_veteran_sayuri 188 (63) [Relicanth → Aeonfin, Magcargo → Calderon, Gla
 unova_veteran_shaun 188 (62) [Gyarados → Typhonarch, Excadrill → Excavarch, Druddigon → Drudrakon, Snorlax → Dozemount]
 unova_veteran_sinan 189 (64) [Forretress → Pinecitadel]
 unova_veteran_wain 186 (60)
-unova_veteran_zach 188 (63) [Weavile → Rimeripper, Toxicroak → Venomsensei, Rampardos → Cranialith]
 unova_waiter_clint 186 (60) [Glameow → Brutabby]
 unova_waitress_aurora 171 (24) [Swadloon → Leavanny]
 unova_waitress_bonita 187 (61) [Psyduck → Psyduke, Leafeon → Dryadeon]
 unova_waitress_jan 186 (60) [Arcanine → Kirinine]
-unova_worker_cairn 186 (60) [Roggenrola → Gigalith, Graveler → Golem, Excadrill → Excavarch]
-unova_worker_cliff 188 (62) [Sigilyph → Glyphoracle]
-unova_worker_gus 186 (60) [Geodude → Golem, Boldore → Gigalith, Steelix → Ironwyrm]
 unova_worker_matthew 187 (61) [Sealeo → Walrein, Glalie → Bergmaw]
-unova_worker_patton 187 (61) [Machoke → Machamp, Abomasnow → Glaciarbor]
-unova_worker_ryan 186 (60) [Smoochum → Aurorelle, Kadabra → Alakazam, Claydol → Dogunarch]
 unova_worker_tyler 187 (61) [Mawile → Deceivore, Excadrill → Excavarch]
-unova_worker_victor 187 (61) [Glalie → Bergmaw, Beartic → Beartundra]
 unova_youngster_abe 186 (60) [Spearow → Lancerow, Linoone → Streakoon, Fearow → Lancerow]
 unova_youngster_abe_2 168 (16) [Pidove → Unfezant, Patrat → Beaconwatch]
-unova_youngster_astor 186 (60) [Palpitoad → Seismitoad, Croagunk → Venomsensei, Vaporeon → Naiadeon]
 unova_youngster_henley 186 (60) [Cascoon → Dustox, Silcoon → Beautifly]
 unova_youngster_jimmy 187 (61) [Rattata → Ratchisel, Sentret → Ermilong, Zigzagoon → Streakoon, Bidoof → Dambarel, Watchog → Beaconwatch]
 unova_youngster_keita 188 (63) [Slakoth → Slaking]
@@ -1802,6 +1780,20 @@ old rod 109 (own 10)
 good rod 116 (own 20)
 super rod 129 (own 40)
 trainers 5, 125-149 (own 33-75): johto_ace_trainer_f_piper 126 (35) [Horsea → Kingdra, Horsea → Kingdra, Seadra → Kingdra], johto_ace_trainer_m_kobe 127 (37) [Dragonair → Dragonite], johto_champion_lance_3 149 (75) [Gyarados → Typhonarch], johto_leader_clair_clair_3 141 (60) [Dragonair → Dragonite], johto_twins_clea_and_gil 126 (35) [Dratini → Dragonite, Dratini → Dragonite]
+=== dragonspiral_tower
+Dragonspiral Tower, Unova
+grass 183-185 (own 55-58)
+=== dragonspiral_tower_2
+Dragonspiral Tower, Unova
+grass 183-185 (own 55-58)
+surf 179-186 (own 45-60)
+super rod 177-194 (own 40-70)
+=== dragonspiral_tower_3
+Dragonspiral Tower, Unova
+grass 183-185 (own 55-58)
+=== dragonspiral_tower_4
+Dragonspiral Tower, Unova
+grass 183-185 (own 55-58)
 === ecruteak
 Ecruteak City, Johto
 surf 109-119 (own 10-25)
@@ -1976,6 +1968,10 @@ Giant Chasm, Unova
 grass 179-180 (own 44-47)
 surf 175-181 (own 35-50)
 super rod 177-194 (own 40-70)
+=== glittering_cave
+Glittering Cave, Kalos
+grass 190-191 (own 20-22)
+trainers 2, 190-191 (own 20-21): kalos_backpacker_solene 191 (21) [Magnemite → Magnezone], kalos_hiker_hilaire 191 (21) [Machop → Machamp, Onix → Ironwyrm, Geodude → Golem]
 === goldenrod_gym
 Goldenrod City, Johto
 trainers 4, 109-114 (own 9-17): johto_beauty_samantha 113 (16) [Meowth → Regalynx, Meowth → Regalynx], johto_beauty_victoria 113 (16) [Sentret → Ermilong, Sentret → Ermilong, Sentret → Ermilong], johto_lass_carrie 114 (17) [Snubbull → Mastiffang], johto_lass_cathy 113 (15) [Jigglypuff → Wigglytuff, Jigglypuff → Wigglytuff, Jigglypuff → Wigglytuff]
@@ -2083,6 +2079,11 @@ grass 117-119 (own 22-24)
 === iceberg_chamber
 Iceberg Chamber, Unova
 grass 183-184 (own 54-57)
+=== icirrus_city
+Icirrus City, Unova
+grass 183-184 (own 54-57)
+surf 179-186 (own 45-60)
+super rod 179-186 (own 45-60)
 === ilex_forest
 Ilex Forest, Johto
 grass 106-107 (own 5-6)
@@ -2464,6 +2465,12 @@ trainers 2, 175 (own 33): unova_ace_trainer_belle 175 (33) [Archen → Archeops,
 === mistralton_city_gym
 Mistralton City, Unova
 trainers 5, 176 (own 36-37): unova_pilot_chase 176 (36) [Ducklett → Cygnelle, Swoobat → Amorabat], unova_pilot_elron 176 (36) [Archen → Archeops], unova_pilot_ewing 176 (37), unova_pilot_flynn 176 (37) [Swoobat → Amorabat], unova_pilot_winslow 176 (37) [Sigilyph → Glyphoracle]
+=== moor_of_icirrus
+Moor Of Icirrus, Unova
+grass 183-184 (own 54-57)
+surf 179-186 (own 45-60)
+super rod 179-186 (own 45-60)
+trainers 4, 186-188 (own 60-62): unova_fisherman_arnold 186 (60) [Whiscash → Namazuro], unova_fisherman_eustace 186 (60) [Corphish → Crayronin, Poliwag → Poliwhirl, Stunfisk → Fluxflounder], unova_pkmn_ranger_elaine 188 (62) [Accelgor → Velocigor, Kecleon → Chromeleon, Swalot → Gulpgorge], unova_pkmn_ranger_parker 188 (62) [Escavalier → Lancelier, Carnivine → Flytrapex, Skuntank → Mephitarch]
 === mossdeep_city
 Mossdeep City, Hoenn
 surf 137-151 (own 5-35)
@@ -2792,6 +2799,10 @@ trainers 3, 76-79 (own 23-26): kanto_team_rocket_grunt_19 78 (25) [Zubat → Cro
 === power_plant
 Power Plant, Kanto
 grass 76-85 (own 22-35)
+=== reflection_cave
+Reflection Cave, Kalos
+grass 190 (own 18-20)
+trainers 2, 190 (own 18-19): kalos_lass_perrine 190 (19) [Sableye → Gemwraith, Mawile → Deceivore], kalos_youngster_ambroise 190 (19) [Roggenrola → Gigalith]
 === relic_castle
 Relic Castle, Unova
 grass 168-170 (own 18-21)
@@ -3976,6 +3987,24 @@ surf 116 (own 20)
 old rod 109 (own 10)
 good rod 116 (own 20)
 super rod 129 (own 40)
+=== twist_mountain_2
+Twist Mountain, Unova
+trainers 4, 187-189 (own 61-64): unova_hiker_wade 187 (61) [Golett → Colossurk], unova_nurse_carol 188 (62), unova_veteran_carter 189 (64) [Carracosta → Tortugarch, Tauros → Bovarch], unova_worker_cliff 188 (62) [Sigilyph → Glyphoracle]
+=== twist_mountain_3
+Twist Mountain, Unova
+grass 183-184 (own 54-57)
+trainers 3, 186-188 (own 60-63): unova_veteran_julia 188 (63) [Glaceon → Borealeon, Drapion → Dreadpion, Bastiodon → Bastionsaur], unova_worker_cairn 186 (60) [Roggenrola → Gigalith, Graveler → Golem, Excadrill → Excavarch], unova_worker_gus 186 (60) [Geodude → Golem, Boldore → Gigalith, Steelix → Ironwyrm]
+=== twist_mountain_4
+Twist Mountain, Unova
+grass 183-184 (own 54-57)
+trainers 4, 186-189 (own 60-64): unova_hiker_hunter 187 (61) [Larvitar → Tyranitar, Probopass → Lodestarch], unova_veteran_chloris 189 (64) [Gyarados → Typhonarch, Archeops → Primavian, Kangaskhan → Matriroo], unova_worker_patton 187 (61) [Machoke → Machamp, Abomasnow → Glaciarbor], unova_worker_ryan 186 (60) [Smoochum → Aurorelle, Kadabra → Alakazam, Claydol → Dogunarch]
+=== twist_mountain_5
+Twist Mountain, Unova
+grass 183-184 (own 54-57)
+trainers 2, 187-188 (own 61-63): unova_veteran_zach 188 (63) [Weavile → Rimeripper, Toxicroak → Venomsensei, Rampardos → Cranialith], unova_worker_victor 187 (61) [Glalie → Bergmaw, Beartic → Beartundra]
+=== twist_mountain_6
+Twist Mountain, Unova
+grass 183-184 (own 54-57)
 === two_island_cape_brink
 Cape Brink, Kanto
 grass 81-88 (own 30-40)
@@ -4116,6 +4145,12 @@ trainers 8, 172 (own 27-28): unova_parasol_lady_nicole 172 (28), unova_parasol_l
 Route 7, Unova
 grass 173-175 (own 30-33)
 trainers 9, 175 (own 33-35): unova_harlequin_ian 175 (35) [Baltoy → Dogunarch], unova_harlequin_pat 175 (35) [Baltoy → Dogunarch], unova_lass_flo 175 (33) [Ducklett → Cygnelle, Ducklett → Cygnelle], unova_nursery_aide_hollie 175 (34) [Cleffa → Clefable, Cinccino → Chinchillux], unova_pkmn_breeder_marcus 175 (34) [Ducklett → Cygnelle, Tranquill → Unfezant], unova_preschooler_chrissy 175 (34) [Darumaka → Darumandala], unova_preschooler_greg 175 (34) [Sunflora → Helianthra], unova_twins_sola_ana 175 (33) [Zangoose → Ravagoose, Seviper → Scimitail], unova_youngster_cody 175 (33) [Deerling → Seasonstag, Deerling → Seasonstag]
+=== unova_route_8
+Route 8, Unova
+grass 183-184 (own 54-57)
+surf 179-186 (own 45-60)
+super rod 179-186 (own 45-60)
+trainers 5, 186 (own 60): unova_fisherman_ryder 186 (60) [Barboach → Namazuro, Stunfisk → Fluxflounder, Whiscash → Namazuro], unova_lass_mai 186 (60) [Shelmet → Velocigor, Slugma → Calderon, Gastrodon → Gastromire], unova_parasol_lady_ingrid 186 (60), unova_parasol_lady_tyra 186 (60) [Jolteon → Fulgureon], unova_youngster_astor 186 (60) [Palpitoad → Seismitoad, Croagunk → Venomsensei, Vaporeon → Naiadeon]
 === unova_route_9
 Route 9, Unova
 grass 176-177 (own 37-40)

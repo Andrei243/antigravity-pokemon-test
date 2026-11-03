@@ -1,0 +1,12 @@
+{
+  // Icirrus City's Gym (plan 22 · U10, part e): Black 2's hall of ice, whose Leader has gone off to act in films, our words. Only the
+  // guide by the door is here; the hall's slides and their triggers (5 to 14) and Black 2's other objects (1 to 10) are left out
+  "area": "icirrus_city_2",
+  "bgmTrack": "unova/gym",
+  "people": {
+    "0": { "name": "Gym Guide", "npcType": "gym_guide", "dialog": [
+      "Hey there, champ in the making! I'm afraid the Leader here hasn't held a battle in a long while.",
+      "He's off acting in films at Pokéstar Studios these days. The ice in here keeps itself, though. Feel free to look round."
+    ] }
+  }
+}

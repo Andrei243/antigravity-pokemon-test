@@ -1,0 +1,29 @@
+{
+  "key": "twist_mountain",
+  "index": 198,
+  "name": "Twist Mountain",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Mountain",
+  "dayMusic": "BGM_R_D_SP",
+  "nightMusic": "BGM_R_D_SP",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 140, "z": 202, "to": "twist_mountain_3", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "95", "movement": "none", "x": 142, "z": 203, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x029c", "script": "2" }
+  ],
+  "signs": [
+    { "x": 146, "z": 210, "type": 0, "script": "1" }
+  ],
+  "triggers": [
+    { "x": 142, "z": 204, "width": 1, "depth": 1, "script": "3", "variable": "VAR_UNOVA_0x413b", "value": "0" }
+  ]
+}

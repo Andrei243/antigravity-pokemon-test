@@ -5,6 +5,7 @@ What changes from one release to the next, for players. Every session's close-ou
 ## [Unreleased]
 
 ### Changed
+- Unova's old roads in the north are open: Twist Mountain from Route 7 to Icirrus City (and on into Clay Tunnel), Icirrus City with its Pokémon Center, Fan Club and quiet Gym, Route 8 and the Moor of Icirrus, the Tubeline Bridge across to Route 9, and the Dragonspiral Tower to its top. Bring Regirock, Regice and Registeel to Twist Mountain's chamber and Regigigas wakes.
 - Voice packs may hold Ogg Vorbis files as well as WAV (no voices ship yet).
 - Harbours sail both ways: once you are Champion of a region, the captain at its harbour (Canalave's pier, Vermilion's quay, Olivine's port hall, Lilycove's harbour, Mistralton's cargo hall) asks where you'd like to go, the next region or any region you have already been to, and takes your whole team there, landing you back at that region's own harbour.
 - Unova's lawns and streets no longer have pale squares with green corners in them: a patch of ground that only turns to snow in winter was drawn as snow all year in Aspertia City, on Route 19, in Floccesy Town, in Driftveil City and at the outlook.

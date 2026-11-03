@@ -1,0 +1,32 @@
+{
+  "key": "twist_mountain_8",
+  "index": 509,
+  "name": "Twist Mountain",
+  "matrix": 311,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave1",
+  "dayMusic": "BGM_SW_D_REGI",
+  "nightMusic": "BGM_SW_D_REGI",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 15, "z": 29, "to": "twist_mountain_6", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "model_bigrock2", "movement": "none", "x": 8, "z": 21, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "10000" },
+    { "id": "1", "looks": "model_bigrock2", "movement": "none", "x": 15, "z": 20, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "10000" },
+    { "id": "2", "looks": "model_bigrock2", "movement": "none", "x": 23, "z": 18, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "10000" },
+    { "id": "3", "looks": "356", "movement": "none", "x": 14, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x039c", "script": "1" }
+  ],
+  "signs": [
+    { "x": 15, "z": 1, "type": 0, "script": "2" },
+    { "x": 10, "z": 4, "type": 0, "script": "3" },
+    { "x": 20, "z": 4, "type": 0, "script": "4" }
+  ],
+  "triggers": []
+}

@@ -1,0 +1,28 @@
+{
+  "key": "dragonspiral_tower_6",
+  "index": 210,
+  "name": "Dragonspiral Tower",
+  "matrix": 203,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_D_05",
+  "nightMusic": "BGM_D_05",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 31, "z": 15, "to": "dragonspiral_tower_5", "toWarp": 1 },
+    { "x": 15, "z": 1, "to": "dragonspiral_tower_7", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "110", "movement": "none", "x": 23, "z": 7, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0500", "item": "Adamant Orb", "script": "7180" },
+    { "id": "1", "looks": "110", "movement": "none", "x": 23, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x05c8", "item": "Griseous Orb", "script": "7380" },
+    { "id": "2", "looks": "110", "movement": "none", "x": 23, "z": 9, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x05c9", "item": "Lustrous Orb", "script": "7381" }
+  ],
+  "signs": [],
+  "triggers": []
+}
