@@ -58,7 +58,8 @@ partial class Harness
         game.Story.Unset("FLAG_DEFEATED_GROUDON");
 
         // ---- The scientist's report
-        At("Route119_WeatherInstitute_2F", 4, 7, Direction.Up);
+        // before the scientist, who stands at 18, 6
+        At("Route119_WeatherInstitute_2F", 18, 7, Direction.Up);
         game.ArriveOnMap(); Frames(20);
         ReadOn();
         Shot("h2a0_weather_institute_scientist");

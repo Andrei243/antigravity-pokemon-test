@@ -260,7 +260,7 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
     Smash's rocks in Rusturf Tunnel and the young man's HM04, Verdanturf; Hoenn's trainers in Match Call and their
     rematches; Emerald's own berry rules (the Wailmer Pail waters nothing yet); cover rows of the tilesets not yet walked
     (`out/hoenn/report.md`); Walda's phrase; the Devon employee of Route 116 (shown once Steven has his letter).
-- [ ] H3 Dewford, Slateport and Mauville (part a done 2026-10-18, wave 32: Mr. Briney's boat to Slateport's museum; part b
+- [x] H3 Dewford, Slateport and Mauville (part a done 2026-10-18, wave 32: Mr. Briney's boat to Slateport's museum; part b
   done 2026-10-19, wave 33: Route 110 to Verdanturf Town, both bikes; part c, Mauville's Game Corner, done 2026-10-20,
   wave 34; left: the Battle Tents' bouts)
   - **Played**: Mr. Briney sails from his cottage to Dewford Town (a scene: the jetty, the sailing song, the camera over
@@ -352,6 +352,10 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
     tables (ours draw the Frontier's), the REST between battles, a paused round, the tent rooms' own looks (their floors
     and walls stand as a plain room: no cover rows of the tents' tileset yet); Emerald's own slot machine and roulette and
     the Cycling Road's timed challenge, as above where no later part did them.
+  - **Closed** (2026-11-04): the Battle Tents' bouts are part d's; Emerald's own slot machine and roulette are H12's
+    parts n and o, the Cycling Road's run its part k, the tents' look the look at parts i and j. Emerald's own tent tables,
+    the REST between battles and a paused round stay unbuilt (the tents draw the Frontier's trainers and play a round
+    through; rulings, "Hoenn's Battle Tents").
 - [x] H4 The desert, Mt. Chimney and Lavaridge (part a done 2026-10-20, wave 34: Route 111 to Meteor Falls; part b
   done 2026-10-20, wave 35: the cable car to Norman, its record below part a's)
   - **Played**: the Winstrates one after another at their door (Victor, Victoria, Vivi, Vicky; a family lost to part
@@ -433,7 +437,7 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
     walk with Wally's father across Petalburg to his house (here the dark that closes in the Gym opens in the house);
     Mirage Tower's coming and going by the day (it stands until it falls); the buried trainers springing out of
     Lavaridge's sand; the rival's bicycle; the harness's shots above. Still from H2 and H3 as part a lists them.
-- [ ] H5 Dive and the sea floor (part a done 2026-10-20, wave 36: Dive, Route 124 and the sea floor under it; part b
+- [x] H5 Dive and the sea floor (part a done 2026-10-20, wave 36: Dive, Route 124 and the sea floor under it; part b
   done 2026-10-20, wave 37: the sea floor's light, bubbles, stage and sound, its record below part a's; only the frame's
   timing on the user's machine is left before the box is ticked)
   - **Opened**: Route 124 (its sea, islets and nine swimmers; the treasure hunter's house `locked` until H8) and
@@ -520,7 +524,10 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
     (`tools/dev/ab.sh` on the commit before part b with `sea floor`), which is what "Done when" still waits for: the
     caustics are two full-screen draws of a 64-texel texture and the kelp sway geometry, so the floor is the scene to
     watch; looking at `h94` to `h99`, `a40`, `a41` and listening to the bed and `bubbles` (MP3s from MusicRender's WAVs).
-- [ ] H6 Route 118 to Fortree (part a done 2026-10-20, wave 38: Route 118 to Winona and Route 120; part b done
+  - **Closed** (2026-11-04): Dive, the sea floor and its look are built and shot; the frame's timing on High is the
+    user's to read on the GTX 970 (no session times anything): `tools/dev/ab.sh <commit before part b> "sea floor"`, its
+    floor against the 8 ms budget, is handed over with the plan's close.
+- [x] H6 Route 118 to Fortree (part a done 2026-10-20, wave 38: Route 118 to Winona and Route 120; part b done
   2026-10-20, wave 39: Route 121, the Safari Zone, the Ancient Tomb and the Scorched Slab, Fortree's trade, Hidden
   Power quiz and Sleep Talk tutor; part c done 2026-10-20, wave 40: Gabby and Ty, Fortree's half of the Wingull
   errand and the plank bridges' bounce; what is left of the chapter is listed under "Left after part c")
@@ -677,6 +684,13 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
     Pokéblock feeders and the Case the counter asks for (H11); the expansion's opening (H9); the Ancient Tomb's Flash in
     the chamber's middle and Registeel (with the Sealed Chamber, H8 and after); then the "Done when": Winona beaten in
     the harness, and Fortree's bridges looked at as decks over the forest floor in `h108` and `h109`.
+  - **Closed** (2026-11-04): the list above is built by later parts (the bridge's planks pressed, H12 part r; the
+    Wingull's return and the Mental Herb, H8 part a; the feeders and the Case, H11 parts b and d; the expansion, H9;
+    Registeel, H12 part a); the pair's thrown-ball and healing-item trivia stays unbuilt (the engine counts neither, and
+    Gabby and Ty's other trivia stand in). The "Done when": Winona is beaten in `HoennStoryTests` and the harness's story
+    (`hs139`), and Fortree's walkways were looked at from the places of `h108` and `h109` (`h3m3_fortree_city`,
+    `h3m4_fortree_west`, 2026-11-04): drawn over the forest floor, the player on the eastern walk half hidden by the
+    trees south of it, as part r left it.
 - [x] H7 Lilycove, Mt. Pyre and the hideouts (part a done 2026-10-24, wave 41: Lilycove City and its rooms, Routes 122
   and 123 and Mt. Pyre to the Magma Emblem; part b done 2026-10-24, wave 42: the two hideouts, its record below part
   a's; tests and shots written, not run)
@@ -777,7 +791,7 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
     of the teams' grunts); the submarine's shadow as a picture; Emerald's Jagged Pass ash after the hideout
     (`VAR_JAGGED_PASS_ASH_WEATHER`); the crowd round Stern's interview; the Pichu doll in the rival's room; the harbour's
     patrons back after Mossdeep's Gym (H8).
-- [ ] H8 Mossdeep, the Seafloor Cavern and Sootopolis (part a done 2026-10-24, wave 43: Routes 125 to 127, Mossdeep City
+- [x] H8 Mossdeep, the Seafloor Cavern and Sootopolis (part a done 2026-10-24, wave 43: Routes 125 to 127, Mossdeep City
   to Dive; part b done 2026-10-24, wave 44: Route 128, the Seafloor Cavern, Kyogre, Sootopolis and its clash, Wallace;
   tests and shots written, not run; part c done 2026-10-24, wave 45: Routes 129 to 131, Pacifidlog, Sky Pillar and
   Rayquaza, Sootopolis calmed, Waterfall and Juan's Rain Badge; part d done 2026-10-24, wave 46: Shoal Cave and its tide,
@@ -1025,6 +1039,8 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
     Tests: `HoennPartFTests`' three; shot `h3m2_mt_pyre_leaders`. With it every leftover of the list above is built by a
     later part (the salt piles, part r; the clash's layout, its rough water and Rayquaza's flash stay the rulings of parts b and c, not followed; Mirage Island and
     the Sealed Chamber, H12; Match Call's rematches, H12 part i).
+  - **Closed** (2026-11-04): Juan is beaten and Sootopolis's scene plays under its weather (parts b and c, the tests of
+    `HoennStoryTests`), and part e closes the list above.
 - [x] H9 Ever Grande and the League (part c done 2026-10-26, wave 50: Scott's Frontier Pass and the crossing to the Battle Frontier, and the Four's, Wallace's and Wally's rematches over Match Call: `docs/mechanics/rulings.md`, "Scott's way to the Battle Frontier and the League's rematches"; tests written and run with `--filter` (`HoennPartCTests`), shots `hs2c0` to `hs2e3` written and not taken; part b done 2026-10-25, wave 48: home as the Champion, the eon roamer, the harbour to Unova and the bands; part a done 2026-10-25, wave 47: Ever Grande City, Victory Road, the League's battles,
   the Hall of Fame and the National Pokédex; tests written and run with `--filter`, shots written and not taken; what is
   left is listed under "Left for part b")
@@ -1160,7 +1176,7 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
       Wailmer Doll's woman in Mossdeep, the Gold and Silver Shields from the Battle Tower and the Glass Ornament (H12),
       the Battle Frontier's and the Game Corner's decorations as prizes; the TM salesman Emerald shows at Slateport once
       Secret Power is given; the player's own room's decorations (Emerald's `playerRoomDecorations`).
-- [ ] H11 The Contest Hall and Pokéblocks (part a done 2026-10-26, wave 51; `docs/mechanics/rulings.md`, "Hoenn's contests and Pokéblocks"; part b done 2026-10-26, wave 53, "The museum's gallery, the chairman's scarves and the rest of the Pokéblock people"; a part c is what is left, below)
+- [x] H11 The Contest Hall and Pokéblocks (part a done 2026-10-26, wave 51; `docs/mechanics/rulings.md`, "Hoenn's contests and Pokéblocks"; part b done 2026-10-26, wave 53, "The museum's gallery, the chairman's scarves and the rest of the Pokéblock people"; a part c is what is left, below)
     - **Built**: Emerald's contest as the game's own rules, `Models/Contest/AppealRound.cs` and `AppealRound.Ai.cs`
       (the first round's order by condition, the 48 effects, jam, combos, repeats, the crowd's meter, nerves, the
       condition's stars, the order bent, the opponents' minds; `AppealRules`), `HoennContests.cs` (who may enter a
@@ -1275,7 +1291,10 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
       `h3m4_fortree_west`, `h3l0_safari_feeder_south`. **Decided, and left to plan 07**: contests and the blender with
       friends, the link receptionist's records, a player's own quiz for others and Mossdeep's link games; Emerald's
       service-day roulette rate and its roulette streak are not built (nothing reads them).
-- [ ] H12 The Frontier island and the post-game (part a done 2026-10-26, wave 52: the Regis, the Sealed Chamber and Southern Island; `docs/mechanics/rulings.md`, "The Regis, the Sealed Chamber and Southern Island"; tests written and run with `--filter` (`HoennPostGameTests`), shots `h240` to `h268` written and not taken; part b done 2026-10-26, wave 56: the Battle Frontier island and the rooms of its grounds; part c done 2026-10-26, wave 57: Rayquaza on Sky Pillar cracked, Steven at Meteor Falls and Hoenn's species check)
+    - **Closed** (2026-11-04): with part f everything of the Contest Hall and Pokéblocks a single player can do is built;
+      the Master Rank won twice by the same round is `HoennContestPartBTests`' (the "Done when"), and what needs friends
+      is plan 07's.
+- [x] H12 The Frontier island and the post-game (part a done 2026-10-26, wave 52: the Regis, the Sealed Chamber and Southern Island; `docs/mechanics/rulings.md`, "The Regis, the Sealed Chamber and Southern Island"; tests written and run with `--filter` (`HoennPostGameTests`), shots `h240` to `h268` written and not taken; part b done 2026-10-26, wave 56: the Battle Frontier island and the rooms of its grounds; part c done 2026-10-26, wave 57: Rayquaza on Sky Pillar cracked, Steven at Meteor Falls and Hoenn's species check)
     - **Built**: nine maps opened (matrices 193, 254, 256 to 259, 362, 363: Desert Ruins, Island Cave, the floor under Route
       134, the Sealed Chamber's corridor, outer room and inner room, Southern Island's beach and garden; the Ancient Tomb was
       open), all in `RegionDatabase`'s Hoenn list; Route 105's and Route 111's doors into their caves unlocked.
@@ -1619,3 +1638,16 @@ oute_119_weather_institute_2f.txt), common.HoennAbnormalWeather and HoennAbnorma
       Lady's television show and a player's own quiz for others (record mixing); Emerald's service-day roulette rate and
       its record of roulette wins in a row; and pictures only, as after part k, with Mauville's machine and roulette, the
       contest's stage, the museum's scene and the two basements unshot.
+    - **Closed** (2026-11-04, with H11's part f): what part o left is built or decided. The contest's music, cheers, the
+      judge's voice and per-move bursts, the painting on the gallery's wall, the Contest Lady's programme and the Safari Fan
+      Club are H11's part f; the Pokéblock feeders, H11's part d; Jirachi wakes in Steven's cave (plan 29 · LS11c); the
+      service-day roulette rate and the roulette streak are not built (rulings, "Hoenn's last leftovers"); everything that
+      needs another player (contests and the blender with friends, Mossdeep's link games, the link receptionist's records,
+      a player's own quiz) is plan 07's. **Shots taken** (the harness's `hoenn`, `HOENN_FROM=postgame`, filter `h2`, into a
+      scratch folder, and looked at): `h240` to `h268` with every later part's `h270` to `h2d1`; the run threw at Mirage
+      Island (`h2d2`), a chunk baking while the island's swap changed the map's props, which `Map.Hide`, `Reveal` and the
+      season's swap now do under the list's lock and `OutdoorProps.Add` reads from a copy taken under it (`h2d2` and
+      `h2d3` taken after the fix). The harness stood
+      the player three tiles short of each Regi and away from the Weather Institute's scientist, so their battles and
+      report never came (`!! never happened`); it now stands them before each. **Left to pictures only**: the Fortree
+      walkway under the trees south of it (part r), Mew's grass shaking, the cave mouth as a card.

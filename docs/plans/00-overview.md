@@ -32,7 +32,7 @@ About 350 sittings are left, a dozen or so of them marked optional (Hisui and th
 | 18 · Other regions | W6, W7 | 8 | W6 done 2026-10-17: the GBA reader's layouts, behaviours, heights and matrices (`--game firered`, `--game emerald`); W7 done 2026-10-17: its events, wild Pokémon, trainers, heal locations, rooms and houses found at their doors, `--game … --data` |
 | 19 · Kanto | — | 9 | |
 | 20 · Johto | — | 15 | J15 optional |
-| 21 · Hoenn | — | 12 | |
+| 21 · Hoenn | H1 to H12 (finished 2026-11-04) | 12 | the sea floor's timing (H5) is the user's to read on the GTX 970 |
 | 22 · Unova | — | 12 | |
 | 23 · Later regions | — | 24 | drawn by hand; Hisui (Z17–Z20) and Lumiose's era (Z21–Z24) are wanted since 2026-10-12, through a rift after the last region |
 | 24 · Guards | X1, X2, X3 | 3 | |
