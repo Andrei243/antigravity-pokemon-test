@@ -1017,6 +1017,14 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
     summit giving back the orbs (`VAR_MT_PYRE_STATE` 2); Mirage Island; the abnormal weather over Ever Grande City (H9);
     the Mach Bike's climb of the cracked floors and Rayquaza's battle (H12); Route 134's Sealed Chamber (H12); Match Call
     for Routes 132 to 134's rematch trainers; and parts a's and b's leftovers above but Sootopolis's spawn.
+  - **Part e** (done 2026-11-04, with H11's part f; rulings, "Hoenn's last leftovers: ..."): **Archie and Maxie give the
+    orbs back**: leaving Sootopolis sets `VAR_MT_PYRE_STATE` 2 and stands them at Mt. Pyre's summit (Maxie a tile west of
+    Archie by the overlay's `at`); the summit's triggers 3 to 5 play `mt_pyre_summit.LeadersTrigger` (a scene: they own
+    they were wrong, the orbs go back to the old woman, they leave for good, state 3), the old woman's word after it, and
+    the summit's `OnEnter` gives an older save that had seen them leave Sootopolis state 2. Lines ours, Romanian for each.
+    Tests: `HoennPartFTests`' three; shot `h3m2_mt_pyre_leaders`. With it every leftover of the list above is built by a
+    later part (the salt piles, part r; the clash's layout, its rough water and Rayquaza's flash stay the rulings of parts b and c, not followed; Mirage Island and
+    the Sealed Chamber, H12; Match Call's rematches, H12 part i).
 - [x] H9 Ever Grande and the League (part c done 2026-10-26, wave 50: Scott's Frontier Pass and the crossing to the Battle Frontier, and the Four's, Wallace's and Wally's rematches over Match Call: `docs/mechanics/rulings.md`, "Scott's way to the Battle Frontier and the League's rematches"; tests written and run with `--filter` (`HoennPartCTests`), shots `hs2c0` to `hs2e3` written and not taken; part b done 2026-10-25, wave 48: home as the Champion, the eon roamer, the harbour to Unova and the bands; part a done 2026-10-25, wave 47: Ever Grande City, Victory Road, the League's battles,
   the Hall of Fame and the National Pokédex; tests written and run with `--filter`, shots written and not taken; what is
   left is listed under "Left for part b")
@@ -1248,6 +1256,25 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
       (a Timid Pikachu turning its nose up at a red one, angry). **Still
       left**: the Safari Fan Club's television show of Pokéblocks thrown (the battle counts them), a feeder's own picture,
       and part c's other leftovers above.
+    - **Part f built** (2026-11-04; rulings, "Hoenn's last leftovers: the contest's stage, the gallery's wall, the feeders,
+      two programmes and the orbs given back"; style guide, "Hoenn's last things" and "Hoenn's contests and Pokéblocks"):
+      **the contest's song** (`hoenn/contest.mml`, ours, played as a scene's song from the stage's first frame), **the crowd
+      and the judge** (`contest_appeal`, `contest_cheer`, `contest_groan`, `contest_judge` on the turn's events), **an
+      appeal's burst** for every move (`Models/Contest/AppealBurst.cs`, sparks in the move's quality's shape and colour,
+      laid out by the move's own seed, drawn by `ModernUi.AppealSparks`), **the paintings on the gallery's wall**
+      (`HoennArt.PaintContestPainting`, laid over each frame's tiles by `GameEngine.HangThePaintings` as the gallery is
+      come to), **the feeders drawn** (`PropType.PokeblockFeeder`, `HoennArt.PaintFeeder`, on the eleven feeders' tiles of
+      the six overlays), **the Safari Fan Club** on Hoenn's televisions after a Safari Game, with its catches and the
+      Pokéblocks thrown (`Broadcasts.SafariFanClub`, `BattleEngine.PokeblocksThrown`, counted from `safari start` to
+      `safari end` in Hoenn), and **the Contest Lady's programme** once her Pokémon is ready (`Broadcasts.ContestLady`).
+      Romanian for every new word. Tests (`--filter`, run): `HoennPartFTests` (11), Script, Story, Content, SceneSkip,
+      Voice, ScriptTranslation, Text, Romanian, Sound, Music, Furniture, HoennSafari*, HoennContest*, HoennPartN,
+      HoennFeeder, HoennLilycoveLady, Architecture, StyleGuide, Golden (`scripts.txt` gains
+      `mt_pyre_summit.LeadersTrigger`: accepted). Shots (the harness's `hoenn`, `HOENN_FROM=look`, `LOOK_ONLY=h3m,h3l0`):
+      `h3m0_museum_paintings_hung`, `h3m1_appeal_burst`, `h3m1b_appeal_burst`, `h3m2_mt_pyre_leaders`, `h3m3_fortree_city`,
+      `h3m4_fortree_west`, `h3l0_safari_feeder_south`. **Decided, and left to plan 07**: contests and the blender with
+      friends, the link receptionist's records, a player's own quiz for others and Mossdeep's link games; Emerald's
+      service-day roulette rate and its roulette streak are not built (nothing reads them).
 - [ ] H12 The Frontier island and the post-game (part a done 2026-10-26, wave 52: the Regis, the Sealed Chamber and Southern Island; `docs/mechanics/rulings.md`, "The Regis, the Sealed Chamber and Southern Island"; tests written and run with `--filter` (`HoennPostGameTests`), shots `h240` to `h268` written and not taken; part b done 2026-10-26, wave 56: the Battle Frontier island and the rooms of its grounds; part c done 2026-10-26, wave 57: Rayquaza on Sky Pillar cracked, Steven at Meteor Falls and Hoenn's species check)
     - **Built**: nine maps opened (matrices 193, 254, 256 to 259, 362, 363: Desert Ruins, Island Cave, the floor under Route
       134, the Sealed Chamber's corridor, outer room and inner room, Southern Island's beach and garden; the Ancient Tomb was

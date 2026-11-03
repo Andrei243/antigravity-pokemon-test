@@ -296,6 +296,9 @@ partial class Harness
             }
             game.State = GameState.Overworld;
         }
+        // Fortree's walkways over the forest floor, the "Done when" of plan 21 · H6 (the places of h108 and h109)
+        Look("h3m3_fortree_city", "Hoenn", 335, 10, Direction.Up);
+        Look("h3m4_fortree_west", "Hoenn", 326, 9, Direction.Up);
         if (Wants("h3m2"))
         {
             game.Story.SetVar("VAR_MT_PYRE_STATE", 2);

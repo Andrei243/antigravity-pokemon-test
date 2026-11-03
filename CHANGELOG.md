@@ -25,6 +25,11 @@ What changes from one release to the next, for players. Every session's close-ou
 - Kalos's Routes 2 to 4, Santalune Forest, Santalune City, its houses, Pokémon Center and Gym now play their own songs.
 
 ### Added
+- Hoenn's contests have a song of their own, the crowd claps or groans, the judge says "hm!", and every appeal throws a burst of stars, glints, hearts, rings or shards in its move's own quality round the Pokémon.
+- The Lilycove Museum hangs each winner's painting on its gallery wall where its frame was empty.
+- The Safari Zone's Pokéblock feeders stand in the grass as little roofed boxes on posts.
+- Hoenn's televisions show the Safari Fan Club after a day in the Safari Zone (what you caught and the Pokéblocks you threw), and the Contest Lady's Pokémon once your Pokéblocks have made it ready.
+- After Rayquaza calms Sootopolis, Archie and Maxie climb Mt. Pyre and give the Red and Blue Orbs back to the shrine.
 - The battle room has a DAILY RUN: a round of the Battle Factory drawn from today's date, the same six rentals and seven trainers for everyone that day, harder as the week goes on. The day's first run is kept on this machine, with your best.
 - A friend can play beside you: with the new FRIEND AS PARTNER option on, the game asks before every battle fought beside a partner whether a friend will choose for them, and on yes the friend picks the partner's moves and switches through the same menus (a second controller answers their turns), with a pill saying whose turn it is.
 - Friends' trainers stand upstairs in Jubilife City's Pokémon Center: every trainer file in the `trainers` folder beside your save (up to eight) waits there to battle at level 50, with nothing won or used up, and can be beaten once a day.
