@@ -5,6 +5,7 @@ What changes from one release to the next, for players. Every session's close-ou
 ## [Unreleased]
 
 ### Changed
+- The Union Room's desk upstairs in every Pokémon Center of Sinnoh is now the Global Link counter: with an online server written into `settings.json` (`onlineServer`), it shows your friend code, makes or takes a link code and lets you trade a Pokémon with a friend, saving the trade before it is finished; with none, the attendant still says the link is down.
 - Voice packs may hold Ogg Vorbis files as well as WAV (no voices ship yet).
 - Harbours sail both ways: once you are Champion of a region, the captain at its harbour (Canalave's pier, Vermilion's quay, Olivine's port hall, Lilycove's harbour, Mistralton's cargo hall) asks where you'd like to go, the next region or any region you have already been to, and takes your whole team there, landing you back at that region's own harbour.
 - Unova's lawns and streets no longer have pale squares with green corners in them: a patch of ground that only turns to snow in winter was drawn as snow all year in Aspertia City, on Route 19, in Floccesy Town, in Driftveil City and at the outlook.
