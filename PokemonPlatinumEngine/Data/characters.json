@@ -378,6 +378,11 @@
     // Cyllage City's Gym Leader (plan 23 · Z2, second part; our own design): a climber, close-cropped dark hair, a sand
     // vest over a rust shirt with its sleeves rolled, olive trousers and climbing shoes
     "grant": { "skin": "#9a6440", "hairColor": "#1e1a18", "hair": "Short", "top": "#b4583a", "accent": "#e8d8b0", "bottom": "#5a6a3a", "shoes": "#3a2e26", "eyes": "#3a2a20", "vest": "#d8c08a", "shortSleeves": true, "build": "Adult", "height": 1.1 },
+    // Shalour City (plan 23 · Z3, first part; our own designs): its Gym Leader, a fighter on skates, a high fair ponytail
+    // under a red headband, a sleeveless sky-blue top and dark shorts; and her grandfather, the old master of the Tower of
+    // Mastery, bald with a white moustache and bushy brows in a long sky-blue coat
+    "korrina": { "hairColor": "#ecd27a", "hair": "Ponytail", "hat": "Headband", "hatColor": "#d8383c", "hatBand": "#d8383c", "top": "#6ab0dc", "accent": "#f2f2ee", "bottom": "#2a2a36", "shoes": "#d8383c", "eyes": "#3a5a7a", "shorts": true, "shortSleeves": true, "lashes": true, "build": "Adult", "height": 1.02 },
+    "gurkinn": { "hairColor": "#e8e8ee", "hair": "Bald", "top": "#6ab0dc", "accent": "#f2f2ee", "bottom": "#2a2a36", "shoes": "#3a302a", "eyes": "#3a3a4a", "mustache": true, "bushyBrows": true, "coat": true, "build": "Elder" },
     // The first trainers of the open areas (plan 11 · C2), each our own take. The school kids: navy with a white collar, the boy in a bowl cut and grey shorts with a satchel, the girl with a ponytail tied in red and a red skirt
     "school_kid_m": { "hairColor": "#4a3428", "hair": "Bowl", "top": "#34467a", "accent": "#f4f4f6", "bottom": "#8a8c96", "shoes": "#4a3428", "shorts": true, "bag": "#b4864e", "blush": true },
     "school_kid_f": { "hairColor": "#3c2a26", "hair": "Ponytail", "hatBand": "#d8434a", "top": "#34467a", "accent": "#f4f4f6", "bottom": "#c4464c", "shoes": "#3c2c2a", "skirt": true, "bag": "#b4864e", "lashes": true, "blush": true },

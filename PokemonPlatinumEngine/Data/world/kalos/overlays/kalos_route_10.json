@@ -1,0 +1,30 @@
+{
+  // Route 10, the Menhir Trail (plan 23 · Z3, first part): drawn by hand, our words. North out of Cyllage City along a
+  // straight path between two lines of standing stones, through meadows and tall grass, to Geosenge Town. It plays
+  // Route 2's song until plan 31 writes it its own
+  "area": "kalos_route_10",
+  "bgmTrack": "kalos/route2",
+  "trees": "Round",
+  "architecture": "OldTimber",
+  "people": {
+    "hiker": {
+      "name": "Odilon",
+      "npcType": "Hiker",
+      "trainer": {
+        "dialogueBefore": "Hiker Odilon: Nobody knows who stood these stones up. I like to think it was a very strong hiker!",
+        "dialogueAfter": "Hiker Odilon: Strong legs, but not strong enough. Like the stones, I'll just stand here."
+      }
+    },
+    "lass": {
+      "name": "Maëlle",
+      "npcType": "Lass",
+      "trainer": {
+        "dialogueBefore": "Lass Maëlle: I count the stones every time I walk this way, and I always get a different number!",
+        "dialogueAfter": "Lass Maëlle: Now I've lost count again."
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": "Route 10 · Menhir Trail\nNorth: Geosenge Town\nSouth: Cyllage City"
+  }
+}

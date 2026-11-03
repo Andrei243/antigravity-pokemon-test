@@ -236,6 +236,8 @@ public static class MapStructures
         // Plan 21 · H12, part p: the Trainer Hill on Route 111 (a tall tower of floors), and the Battle Frontier island's
         // Ranking Hall and Exchange Service Corner
         "TrainerHillLobby" => BuildingKind.Tower,
+        // Plan 23 · Z3: Shalour City's Tower of Mastery, a tall hall of stone on the shore
+        "ShalourCity_TowerOfMastery" => BuildingKind.Tower,
         "BattleFrontier_RankingHall" => BuildingKind.Hall,
         "BattleFrontier_ExchangeServiceCorner" => BuildingKind.Shop,
         _ => null

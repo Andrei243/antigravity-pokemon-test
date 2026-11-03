@@ -27,7 +27,13 @@
     { "file": "kalos_route_6.txt", "x": 184, "z": 262 },
     { "file": "kalos_route_7.txt", "x": 120, "z": 386 },
     { "file": "kalos_route_8.txt", "x": 80, "z": 360 },
-    { "file": "cyllage_city.txt", "x": 72, "z": 296 }
+    { "file": "cyllage_city.txt", "x": 72, "z": 296 },
+    // Plan 23 · Z3, first part: north out of Cyllage up Route 10's line of standing stones to Geosenge Town, east along
+    // Route 11 and north up it to Shalour City on the north-west coast, its Tower of Mastery on the shore
+    { "file": "kalos_route_10.txt", "x": 100, "z": 236 },
+    { "file": "geosenge_town.txt", "x": 96, "z": 192 },
+    { "file": "kalos_route_11.txt", "x": 144, "z": 150 },
+    { "file": "shalour_city.txt", "x": 136, "z": 92 }
   ],
   "areas": [
     { "key": "vaniville_town", "x": 236, "z": 700, "width": 40, "depth": 30 },
@@ -44,6 +50,10 @@
     { "key": "kalos_route_6", "x": 184, "z": 262, "width": 36, "depth": 66 },
     { "key": "kalos_route_7", "x": 120, "z": 386, "width": 100, "depth": 42 },
     { "key": "kalos_route_8", "x": 80, "z": 360, "width": 40, "depth": 68 },
-    { "key": "cyllage_city", "x": 72, "z": 296, "width": 56, "depth": 64 }
+    { "key": "cyllage_city", "x": 72, "z": 296, "width": 56, "depth": 64 },
+    { "key": "kalos_route_10", "x": 100, "z": 236, "width": 36, "depth": 60 },
+    { "key": "geosenge_town", "x": 96, "z": 192, "width": 48, "depth": 44 },
+    { "key": "kalos_route_11", "x": 144, "z": 150, "width": 36, "depth": 58 },
+    { "key": "shalour_city", "x": 136, "z": 92, "width": 60, "depth": 58 }
   ]
 }

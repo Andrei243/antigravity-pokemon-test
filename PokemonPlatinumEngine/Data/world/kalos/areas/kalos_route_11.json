@@ -1,0 +1,42 @@
+{
+  "key": "kalos_route_11",
+  "index": 17,
+  "name": "Route 11",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "ROUTE_11",
+  "nightMusic": "ROUTE_11",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [],
+  "objects": [
+    { "id": "battle_girl", "looks": "battle_girl", "movement": "look_west", "x": 170, "z": 186, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_BATTLE_GIRL_ELODIE" },
+    { "id": "black_belt", "looks": "black_belt", "movement": "look_east", "x": 158, "z": 165, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 6, "script": "TRAINER_BLACK_BELT_GUSTAVE" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 170, "z": 160, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_ROUTE_11_REVIVE", "item": "Revive", "script": "" }
+  ],
+  "signs": [
+    { "x": 146, "z": 203, "type": 0, "script": "RouteSign" }
+  ],
+  "triggers": [],
+  "land": [
+    { "species": "Nidorina", "level": 19 },
+    { "species": "Nidorino", "level": 19 },
+    { "species": "Stunky", "level": 19 },
+    { "species": "Chingling", "level": 19 },
+    { "species": "Staravia", "level": 20 },
+    { "species": "Makuhita", "level": 20 },
+    { "species": "Dedenne", "level": 20 },
+    { "species": "Hawlucha", "level": 20 },
+    { "species": "Throh", "level": 21 },
+    { "species": "Sawk", "level": 21 },
+    { "species": "Stunky", "level": 21 },
+    { "species": "Dedenne", "level": 21 }
+  ],
+  "landRate": 20
+}

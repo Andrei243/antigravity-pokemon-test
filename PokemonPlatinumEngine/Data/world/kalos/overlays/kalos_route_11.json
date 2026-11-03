@@ -1,0 +1,31 @@
+{
+  // Route 11, the Miroir Way (plan 23 · Z3, first part): drawn by hand, our words. East out of Geosenge Town and north
+  // through the hills toward Shalour City. The original's way north runs through a cave of mirrors (Reflection Cave),
+  // which a later part of plan 23 · Z3 builds as a map of its own; until then the walk reaches Shalour in the open. It
+  // plays Route 2's song until plan 31 writes it its own
+  "area": "kalos_route_11",
+  "bgmTrack": "kalos/route2",
+  "trees": "Round",
+  "architecture": "OldTimber",
+  "people": {
+    "battle_girl": {
+      "name": "Élodie",
+      "npcType": "battle_girl",
+      "trainer": {
+        "dialogueBefore": "Battle Girl Élodie: Everyone on this road is going to Shalour to train. Let's warm up first!",
+        "dialogueAfter": "Battle Girl Élodie: Warmed up and knocked down."
+      }
+    },
+    "black_belt": {
+      "name": "Gustave",
+      "npcType": "blackbelt",
+      "trainer": {
+        "dialogueBefore": "Black Belt Gustave: The tower at Shalour taught my grandfather to fight. Let me teach you!",
+        "dialogueAfter": "Black Belt Gustave: Grandfather would say I need more teaching."
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": "Route 11 · Miroir Way\nWest: Geosenge Town\nNorth: Shalour City"
+  }
+}

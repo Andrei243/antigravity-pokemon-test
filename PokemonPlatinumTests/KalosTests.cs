@@ -1,4 +1,6 @@
+using PokemonPlatinumEngine.Battle.Sim;
 using PokemonPlatinumEngine.Data;
+using PokemonPlatinumEngine.Models;
 using PokemonPlatinumEngine.Overworld;
 using PokemonPlatinumEngine.Story;
 
@@ -372,7 +374,7 @@ public class KalosTests
         string? Next() => Objectives.Current(story, RegionDatabase.Kalos)?.Name;
         story.SetVar("VAR_KALOS_STORY", 12);
         Assert.Equal("kalosRoute5", Next());
-        foreach (var (value, name) in new[] { (13, "kalosCamphrier"), (14, "kalosPalace"), (15, "kalosSnorlax"), (16, "kalosCyllage"), (17, "kalosGrant"), (18, "kalosFree") })
+        foreach (var (value, name) in new[] { (13, "kalosCamphrier"), (14, "kalosPalace"), (15, "kalosSnorlax"), (16, "kalosCyllage"), (17, "kalosGrant"), (18, "kalosRoute10") })
         {
             story.SetVar("VAR_KALOS_STORY", value);
             Assert.Equal(name, Next());
@@ -386,5 +388,156 @@ public class KalosTests
                      ("kalos_route_7", "Snorlax"), ("cyllage_city", "Neighbour"), ("CyllageCity_Gym", "Grant")
                  })
             Assert.NotNull(library.Find(script, file));
+    }
+
+    [Fact]
+    public void Route10ToShalourAreOpenWithTheirWildPokemonRoomsGymAndTower()
+    {
+        foreach (var (x, y, name) in new[]
+                 {
+                     (119, 270, "Route 10"), (120, 210, "Geosenge Town"), (165, 190, "Route 11"), (165, 130, "Shalour City")
+                 })
+            Assert.Equal(name, Overworld.DisplayNameAt(x, y));
+        Assert.Equal(Architecture.OldTimber, Overworld.ArchitectureAt(120, 210));
+        Assert.Equal(Architecture.Cyllage, Overworld.ArchitectureAt(165, 130));
+        foreach (string key in new[] { "kalos_route_10", "geosenge_town", "kalos_route_11", "shalour_city" })
+            Assert.False(string.IsNullOrEmpty(Kalos.Overlay(key)?.BgmTrack), $"{key} has no song");
+        // Every wild Pokémon of the two routes is one of Kalos's own Pokédexes', at the levels between the Cliff Badge
+        // and the Rumble Badge
+        foreach (string key in new[] { "kalos_route_10", "kalos_route_11" })
+        {
+            Assert.Equal(12, Kalos.Area(key)!.Land!.Count);
+            foreach (var slot in Kalos.Area(key)!.Land!)
+            {
+                var dex = PokemonDatabase.Get(slot.Species)!.DexNumbers;
+                Assert.True(dex.ContainsKey("kalos-central") || dex.ContainsKey("kalos-coastal"), $"{key}: {slot.Species} is no Kalos species");
+                Assert.InRange(slot.Level, 17, 21);
+            }
+        }
+        // The road north out of Cyllage is open, and the two towns' Pokémon Centers, Shalour's Gym and its tower are
+        // found at their doors
+        Assert.True(Overworld.IsWalkable(119, 297));
+        Assert.Equal("GeosengeTown_PokemonCenter_1F", Overworld.GetWarpAt(127, 214)?.TargetMap);
+        Assert.Equal("ShalourCity_PokemonCenter_1F", Overworld.GetWarpAt(155, 122)?.TargetMap);
+        Assert.Equal("ShalourCity_Gym", Overworld.GetWarpAt(181, 123)?.TargetMap);
+        Assert.Equal("ShalourCity_TowerOfMastery", Overworld.GetWarpAt(165, 109)?.TargetMap);
+        Assert.Contains(Overworld.PlacedBuildings, b => b.Kind == BuildingKind.Tower && b.X0 >= 136 && b.X1 < 196 && b.Y1 < 150);
+        Assert.Contains(Overworld.PlacedBuildings, b => b.Kind == BuildingKind.Gym && b.X0 >= 136 && b.X1 < 196 && b.Y1 < 150);
+        foreach (string pc in new[] { "GeosengeTown_PokemonCenter_1F", "ShalourCity_PokemonCenter_1F" })
+        {
+            Assert.Contains(MapNamed(pc).NPCs, n => n.IsHealingNurse);
+            Assert.Contains(MapNamed(pc).NPCs, n => n.IsPokeMartClerk);
+        }
+        Assert.Contains(MapNamed("ShalourCity_Gym").NPCs, n => n.Name == "Korrina");
+        Assert.Contains(MapNamed("ShalourCity_TowerOfMastery").NPCs, n => n.Name == "Gurkinn");
+        var korrina = TrainerDatabase.Get("kalos_korrina_1")!;
+        Assert.Equal("Leader", korrina.Class);
+        Assert.Equal("Rumble", Region.BadgeNames[2]);
+        // At the tower Korrina battles with a Key Stone of her own and a Lucario holding its stone
+        var tower = TrainerDatabase.Get("kalos_korrina_tower")!;
+        Assert.True(tower.KeyStone);
+        Assert.Contains(tower.Party, p => p.Species == "Lucario" && p.Item == "Lucarionite");
+        // Fly lands before the two new Pokémon Centers once their towns have been come to
+        var townMap = RegionMap.Of(RegionDatabase.Kalos)!;
+        Assert.Contains(townMap.FlySpots, f => f.Spawn == 6 && f.Cells.Contains(RegionMap.CellOf(127, 215)));
+        Assert.Contains(townMap.FlySpots, f => f.Spawn == 7 && f.Cells.Contains(RegionMap.CellOf(155, 123)));
+        Assert.Contains("FLAG_FIRST_ARRIVAL_GEOSENGE_TOWN", townMap.ArrivalFlags("geosenge_town"));
+        Assert.Contains("FLAG_FIRST_ARRIVAL_SHALOUR_CITY", townMap.ArrivalFlags("shalour_city"));
+    }
+
+    [Fact]
+    public void FromTheBedroomTheWayRunsNorthFromCyllageToShalourAndItsTower()
+    {
+        var walked = Walked.Value;
+        bool Reached(string map, int x, int y) => walked.Any(p => p.Key.Name == map && p.Value.Contains((x, y)));
+        Assert.True(Reached("Kalos", 119, 296), "Cyllage's road north");
+        Assert.True(Reached("Kalos", 119, 260), "Route 10 between the stones");
+        Assert.True(Reached("Kalos", 120, 210), "Geosenge's street");
+        Assert.True(Reached("Kalos", 150, 205), "Route 11 out of Geosenge");
+        Assert.True(Reached("Kalos", 165, 155), "Route 11's north end");
+        Assert.True(Reached("Kalos", 165, 110), "before the Tower of Mastery");
+        Assert.True(Reached("ShalourCity_TowerOfMastery", 7, 8), "the tower's hall");
+        Assert.True(Reached("ShalourCity_Gym", 6, 5), "Korrina's place");
+        Assert.True(Reached("GeosengeTown_PokemonCenter_1F", 8, 6), "Geosenge's Pokémon Center");
+    }
+
+    [Fact]
+    public void KalosStoryRunsFromTheCliffBadgeToTheKeyStoneInOrder()
+    {
+        var story = new StoryState();
+        string? Next() => Objectives.Current(story, RegionDatabase.Kalos)?.Name;
+        story.SetVar("VAR_KALOS_STORY", 18);
+        Assert.Equal("kalosRoute10", Next());
+        foreach (var (value, name) in new[] { (19, "kalosShalour"), (20, "kalosKorrina"), (21, "kalosMastery"), (22, "kalosFree") })
+        {
+            story.SetVar("VAR_KALOS_STORY", value);
+            Assert.Equal(name, Next());
+        }
+        var library = ScriptLibrary.Default;
+        foreach (var (file, script) in new[]
+                 {
+                     ("geosenge_town", "Trevor"), ("ShalourCity_TowerOfMastery", "Guru"), ("ShalourCity_Gym", "Korrina")
+                 })
+            Assert.NotNull(library.Find(script, file));
+    }
+
+    /// <summary>The guru's scene after the Rumble Badge, played on a game with no screen: the bag and the team afterwards.</summary>
+    private static HeadlessScriptHost PlayTheMastery(StoryState story, Inventory bag, Party party)
+    {
+        story.SetVar("VAR_KALOS_STORY", 21);
+        var tower = MapNamed("ShalourCity_TowerOfMastery");
+        var host = new HeadlessScriptHost(story, party, bag) { Map = tower };
+        var runner = new ScriptRunner(ScriptLibrary.Default, host);
+        runner.Start(ScriptLibrary.Default.Find("Guru", "ShalourCity_TowerOfMastery")!, tower.NPCs.Single(n => n.Name == "Gurkinn"));
+        runner.RunToEnd();
+        return host;
+    }
+
+    [Fact]
+    public void TheTowerGivesAKeyStoneOnlyToABagWithoutOneAndItsLucarioOnce()
+    {
+        var keyStone = ItemDatabase.Get(BattleCore.KeyStoneItem)!;
+        // A bag with no Key Stone is given one, and the team a Lucario holding its Lucarionite
+        var story = new StoryState();
+        var bag = new Inventory();
+        var party = new Party();
+        party.Add(new Pokemon(PokemonDatabase.Get("Froakie")!, 30));
+        PlayTheMastery(story, bag, party);
+        Assert.Equal(1, bag.GetQuantity(keyStone));
+        var lucario = party.Members.Single(p => p.Species.Name == "Lucario");
+        Assert.Equal("Lucarionite", lucario.HeldItem?.Name);
+        Assert.Equal(22, story.Var("VAR_KALOS_STORY"));
+        Assert.True(story.Has("FLAG_KALOS_RECEIVED_LUCARIO"));
+        // The scene played again gives neither a second stone nor a second Lucario
+        PlayTheMastery(story, bag, party);
+        Assert.Equal(1, bag.GetQuantity(keyStone));
+        Assert.Single(party.Members, p => p.Species.Name == "Lucario");
+        // A bag that already holds a Key Stone (a Champion from Hoenn's crossing, say) is given none
+        var other = new Inventory();
+        other.AddItem(keyStone, 1);
+        var team = new Party();
+        team.Add(new Pokemon(PokemonDatabase.Get("Froakie")!, 30));
+        PlayTheMastery(new StoryState(), other, team);
+        Assert.Equal(1, other.GetQuantity(keyStone));
+        Assert.Contains(team.Members, p => p.Species.Name == "Lucario");
+    }
+
+    [Fact]
+    public void TheTowersLucarioMegaEvolvesWithTheKeyStoneItGave()
+    {
+        var bag = new Inventory();
+        var party = new Party();
+        PlayTheMastery(new StoryState(), bag, party);
+        var lucario = party.Members.Single(p => p.Species.Name == "Lucario");
+        var core = new PokemonPlatinumEngine.Battle.Sim.BattleCore(new PokemonPlatinumEngine.Battle.Sim.CoreSetup
+        {
+            PlayerParty = party, WildPokemon = new List<Pokemon> { new(PokemonDatabase.Get("Magikarp")!, 20) }, Random = CoreScenario.Calm(),
+            Rules = Ruleset.Modern, PlayerController = null, EnemyController = null, PlayerName = "Kalos",
+            KeyStone = bag.AllItems.Any(s => s.Name == BattleCore.KeyStoneItem)
+        });
+        core.Start();
+        core.Submit(BattleChoice.Fight(CoreScenario.Mine, 0) with { Mega = true }, BattleChoice.Fight(CoreScenario.Foe, 0));
+        // (the battle may be over within the turn, which gives the form back, so the line says it)
+        Assert.Contains("Lucario has Mega Evolved into Mega Lucario!", CoreScenario.Lines(core.TakeLog()));
     }
 }

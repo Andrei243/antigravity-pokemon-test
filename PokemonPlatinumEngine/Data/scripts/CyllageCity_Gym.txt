@@ -22,7 +22,7 @@ script Grant
   defeat "kalos_hiker_bruno"
   defeat "kalos_hiker_armand"
   setvar VAR_KALOS_STORY 18
-  objective kalosFree
+  objective kalosRoute10
 label Tm
   say "Take this too. My Pokémon use it to bury a foe's feet in stone and slow it right down."
   give "TM39"

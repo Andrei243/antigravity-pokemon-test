@@ -8570,6 +8570,41 @@ Plan 10 · F2 to F5 (2026-11-02). Neither is Platinum's: both are rows of the op
 - **The Town Map and Fly**: the six places are blocks of `townmap.json`, and Fly lands before Camphrier's (spawn 4) and
   Cyllage's (spawn 5) Pokémon Centers once each town has been come to.
 
+## Route 10 to Shalour City and the Key Stone, drawn by hand (2026-11-03, plan 23 · Z3, first part)
+
+Drawn as Z1 and Z2 were (`tools/MapDraw/kalos`: `kalos_route_10.txt`, `geosenge_town.txt`, `kalos_route_11.txt`,
+`shalour_city.txt`, and Cyllage's north edge opened), in the shape the places are publicly described, every word ours.
+
+- **The way**: north out of Cyllage City along Route 10, a straight path between two lines of standing stones; Geosenge
+  Town beside a ring of stones; east and north up Route 11 to Shalour City on the north-west coast. The original's way
+  north from Route 11 runs through Reflection Cave, a cave of its own: no drawn region has a cave map yet, so until a
+  later part of Z3 builds it the walk reaches Shalour in the open, and Route 11's overlay says so.
+- **The story** goes on `VAR_KALOS_STORY` (vaniville_town.txt's count): 18 (the Cliff Badge) becomes 19 at Trevor's
+  scene on Geosenge's street (`geosenge_town.txt`, the trigger across the street's foot); 20 at the Tower of Mastery's
+  first visit, where Gurkinn, its master, tells of Mega Evolution and Korrina sends the player to her Gym
+  (`ShalourCity_TowerOfMastery.txt`); 21 with the Rumble Badge (`ShalourCity_Gym.txt`, which also clears
+  `FLAG_KALOS_HIDE_KORRINA_TOWER` so she is back at the tower); 22 at the tower again. Objectives 518 to 521, with
+  "nothing presses" still 599; Grant's scene now ends on `objective kalosRoute10`.
+- **The Key Stone and the Lucario**: the tower's second scene gives `Key Stone` only to a bag without one (`if item`),
+  since a Champion who crossed in may carry one; Korrina then battles with `kalos_korrina_tower`, a Lucario holding its
+  Lucarionite and a Key Stone of the trainer's own, so the player sees Mega Evolution before using it; and she gives a
+  Lucario at 32 holding its Lucarionite, once (`FLAG_KALOS_RECEIVED_LUCARIO`). The original hands the Lucario over on
+  Route 12 after a battle at the tower's top; ours does both in the tower's one hall. Under any run that bars the later
+  mechanics (`RunRules.NoLaterMechanics`) the stone and the Lucario are given all the same and simply never react.
+  `tools/dev/grown-names.json` keeps the three lines that name Lucario, since a crossed game's Korrina may be met with
+  what Lucario grows into, but the lesson and the gift are Lucario's own stone.
+- **Korrina** battles for the Rumble Badge (Kalos's third, `givebadge rumble`) with Mienfoo, Machoke and Hawlucha at 28
+  to 32 (`kalos_korrina_1`), and gives TM08 (Bulk Up; Platinum's table has no Power-Up Punch machine). Her Gym is
+  Grant's hall made hers, one room with no puzzle (X and Y's rails on skates are not built).
+- **Looks**: Korrina and Gurkinn are designs of ours (`characters.json`); the tower is a `BuildingKind.Tower`
+  (`MapStructures.KindOfDoor`), its hall the stone of a tower's floors. Geosenge builds as `OldTimber` and Shalour as
+  `Cyllage`, so no new `Architecture` row was needed.
+- **Wild Pokémon and trainers**: Kalos-Coastal's species at 17 to 21 on both routes; four trainers on the routes and
+  two in the Gym, teams of ours (`Data/world/kalos/trainers.json`).
+- **Music**: no new songs: the routes play Route 2's, the towns Santalune's, the tower and Gym the Gym's.
+- **The Town Map and Fly**: the four places are blocks of `townmap.json`, and Fly lands before Geosenge's (spawn 6) and
+  Shalour's (spawn 7) Pokémon Centers once each town has been come to.
+
 ## How the player moves, region by region (2026-11-02, plan 30 · FM1)
 
 Not Platinum's: Platinum and every game before X and Y walk four ways a tile at a time (`src/player_move.c`), and

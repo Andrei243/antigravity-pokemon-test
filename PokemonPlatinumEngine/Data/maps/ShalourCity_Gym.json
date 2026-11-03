@@ -1,0 +1,191 @@
+{
+  "name": "ShalourCity_Gym",
+  "displayName": "Shalour Gym",
+  "bgmTrack": "kalos/gym",
+  "interior": "Gym",
+  "trees": "Round",
+  "battleArena": "Gym",
+  "arenaType": "Fighting",
+  "width": 13,
+  "height": 18,
+  "ground": [
+    "#############",
+    "#############",
+    "#############",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "######D######"
+  ],
+  "solid": [
+    "#############",
+    "#############",
+    "#############",
+    "##.........##",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "##.........##",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...#...#...#",
+    "#...........#",
+    "######.######"
+  ],
+  "props": [
+    {
+      "type": "Statue",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 11,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 1,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 11,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 4,
+      "y": 15,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 8,
+      "y": 15,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 6,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 6,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 3,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 8,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 6,
+      "sourceY": 17,
+      "targetMap": "Kalos",
+      "targetX": 181,
+      "targetY": 124,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "korrina",
+      "name": "Korrina",
+      "npcType": "korrina",
+      "x": 6,
+      "y": 4,
+      "facing": "Down",
+      "script": "Korrina"
+    },
+    {
+      "id": "gym_guide",
+      "name": "Gym Guide",
+      "npcType": "Gentleman",
+      "x": 9,
+      "y": 15,
+      "facing": "Down",
+      "script": "GymGuide"
+    },
+    {
+      "id": "kalos_black_belt_lucien",
+      "name": "Lucien",
+      "npcType": "blackbelt",
+      "x": 3,
+      "y": 11,
+      "facing": "Right",
+      "trainer": {
+        "id": "kalos_black_belt_lucien",
+        "name": "Lucien",
+        "trainerClass": "Black Belt",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Black Belt Lucien: Korrina trains on wheels, and so do we. Feel the speed!",
+        "dialogueAfter": "Black Belt Lucien: Too slow. Korrina is much faster than me.",
+        "sightRange": 3
+      }
+    },
+    {
+      "id": "kalos_battle_girl_ines",
+      "name": "Inès",
+      "npcType": "battle_girl",
+      "x": 9,
+      "y": 7,
+      "facing": "Left",
+      "trainer": {
+        "id": "kalos_battle_girl_ines",
+        "name": "Inès",
+        "trainerClass": "Battle Girl",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Battle Girl Inès: You won't reach Korrina without a fight. Hi-yah!",
+        "dialogueAfter": "Battle Girl Inès: Korrina will knock you flat. Go on, then!",
+        "sightRange": 3
+      }
+    }
+  ],
+  "wildEncounters": []
+}

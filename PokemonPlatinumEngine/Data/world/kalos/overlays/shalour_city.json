@@ -1,0 +1,45 @@
+{
+  // Shalour City (plan 23 · Z3, first part): drawn by hand, our words. A city on the north-west coast round a cross of
+  // streets: its Pokémon Center (with the Mart's counter inside) and two houses west and south, the Gym east of the main
+  // street, and on the shore at the head of the street, in a square of flowers, the Tower of Mastery
+  // (ShalourCity_TowerOfMastery.txt), where the guru of Mega Evolution keeps his Key Stones. Its houses are Cyllage's
+  // coastal stone (Architecture.Cyllage), and it plays Santalune's song until plan 31 writes it its own
+  "area": "shalour_city",
+  "bgmTrack": "kalos/santalune",
+  "trees": "Round",
+  "architecture": "Cyllage",
+  "doors": [
+    { "warp": 0, "map": "ShalourCity_TowerOfMastery", "x": 7, "y": 16, "facing": "Up" },
+    { "warp": 1, "map": "ShalourCity_PokemonCenter_1F", "x": 8, "y": 12, "facing": "Up" },
+    { "warp": 2, "map": "ShalourCity_Gym", "x": 6, "y": 16, "facing": "Up" },
+    { "warp": 3, "map": "ShalourCity_SouthwestHouse", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 4, "map": "ShalourCity_SoutheastHouse", "x": 4, "y": 8, "facing": "Up" }
+  ],
+  "props": [
+    { "type": "LampPost", "x": 163, "y": 113, "width": 1, "depth": 1 },
+    { "type": "LampPost", "x": 168, "y": 113, "width": 1, "depth": 1 },
+    { "type": "Bench", "x": 150, "y": 130, "width": 2, "depth": 1 }
+  ],
+  "people": {
+    "skater": {
+      "name": "Skater",
+      "npcType": "Lass",
+      "dialog": [ "Shalour's streets are the smoothest in Kalos. I come all the way from Cyllage just to skate here!" ]
+    },
+    "fisherman": {
+      "name": "Fisherman",
+      "npcType": "Fisherman",
+      "still": true,
+      "dialog": [ "At low tide you could walk out to the tower once, they say. Now the sea's come in, and it stands on the shore." ]
+    },
+    "old_woman": {
+      "name": "Old Woman",
+      "npcType": "old_woman",
+      "still": true,
+      "dialog": [ "The guru up in the tower is older than me, and still climbs those stairs every day. Imagine!" ]
+    }
+  },
+  "signs": {
+    "CitySign": "Shalour City\nWhere the tower of Mega Evolution stands by the sea."
+  }
+}

@@ -520,16 +520,16 @@
       "note": "first spoken at route_113_glass_workshop.txt(17)",
       "provisional": true
     },
-    "kalos_grant": {
-      "note": "first spoken at CyllageCity_Gym.txt(10)",
-      "provisional": true
-    },
     "grimsley": {
       "note": "first spoken at unova_pokemon_league_6.txt(12)",
       "provisional": true
     },
     "guide_gent": {
       "note": "first spoken at cherrygrove.txt(21)",
+      "provisional": true
+    },
+    "gurkinn": {
+      "note": "first spoken at ShalourCity_TowerOfMastery.txt(15)",
       "provisional": true
     },
     "gym_trainer": {
@@ -625,6 +625,10 @@
       "provisional": true
     },
     "jupiter": {},
+    "kalos_grant": {
+      "note": "first spoken at CyllageCity_Gym.txt(10)",
+      "provisional": true
+    },
     "kanto_attendant": {
       "note": "first spoken at PalParkLobby.txt(210)",
       "provisional": true
@@ -671,6 +675,10 @@
     },
     "koji": {
       "note": "first spoken at phone.txt(384)",
+      "provisional": true
+    },
+    "korrina": {
+      "note": "first spoken at ShalourCity_Gym.txt(11)",
       "provisional": true
     },
     "kuni": {
@@ -1654,6 +1662,7 @@
     "Guide": "look:gym_guide",
     "Guide Gent": "guide_gent",
     "Guitarist": "look:guitarist",
+    "Gurkinn": "gurkinn",
     "Gym Guide": "look:gym_guide",
     "Gym Trainer": "gym_trainer",
     "Harlequin": "harlequin",
@@ -1692,6 +1701,7 @@
     "Koga": "koga",
     "Koichi": "koichi",
     "Koji": "koji",
+    "Korrina": "korrina",
     "Kuni": "kuni",
     "Kurt": "kurt",
     "Lady": "look:lady",

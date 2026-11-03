@@ -1,0 +1,42 @@
+{
+  "key": "kalos_route_10",
+  "index": 15,
+  "name": "Route 10",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "ROUTE_10",
+  "nightMusic": "ROUTE_10",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [],
+  "objects": [
+    { "id": "hiker", "looks": "hiker", "movement": "look_east", "x": 112, "z": 262, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 6, "script": "TRAINER_HIKER_ODILON" },
+    { "id": "lass", "looks": "lass", "movement": "look_west", "x": 126, "z": 250, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 5, "script": "TRAINER_LASS_MAELLE" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 105, "z": 282, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_ROUTE_10_HYPER_POTION", "item": "Hyper Potion", "script": "" }
+  ],
+  "signs": [
+    { "x": 116, "z": 293, "type": 0, "script": "RouteSign" }
+  ],
+  "triggers": [],
+  "land": [
+    { "species": "Hawlucha", "level": 17 },
+    { "species": "Golett", "level": 17 },
+    { "species": "Snubbull", "level": 17 },
+    { "species": "Houndour", "level": 17 },
+    { "species": "Electrike", "level": 18 },
+    { "species": "Nosepass", "level": 18 },
+    { "species": "Yanma", "level": 18 },
+    { "species": "Emolga", "level": 18 },
+    { "species": "Sigilyph", "level": 19 },
+    { "species": "Eevee", "level": 19 },
+    { "species": "Golett", "level": 19 },
+    { "species": "Hawlucha", "level": 19 }
+  ],
+  "landRate": 20
+}

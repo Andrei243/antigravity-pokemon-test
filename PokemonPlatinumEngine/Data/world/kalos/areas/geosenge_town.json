@@ -1,0 +1,31 @@
+{
+  "key": "geosenge_town",
+  "index": 16,
+  "name": "Geosenge Town",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "GEOSENGE",
+  "nightMusic": "GEOSENGE",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 105, "z": 200, "to": "GeosengeTown_NorthwestHouse", "toWarp": 0 },
+    { "x": 127, "z": 214, "to": "GeosengeTown_PokemonCenter_1F", "toWarp": 0 },
+    { "x": 129, "z": 225, "to": "GeosengeTown_EastHouse", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "trevor", "looks": "trevor", "movement": "look_west", "x": 120, "z": 220, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_HIDE_TREVOR_GEOSENGE", "script": "" },
+    { "id": "elder", "looks": "old_man", "movement": "look_around", "x": 112, "z": 228, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "girl", "looks": "lass", "movement": "wander_around", "x": 134, "z": 208, "facing": 1, "rangeX": 2, "rangeZ": 1, "script": "" }
+  ],
+  "signs": [
+    { "x": 117, "z": 229, "type": 0, "script": "TownSign" }
+  ],
+  "triggers": []
+}

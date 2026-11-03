@@ -904,6 +904,10 @@ public static class RegionDatabase
                 "CamphrierTown_SouthwestHouse", "CamphrierTown_SoutheastHouse",
                 "CyllageCity_PokemonCenter_1F", "CyllageCity_Gym", "CyllageCity_NorthHouse", "CyllageCity_WestHouse",
                 "CyllageCity_BikeShop", "CyllageCity_SouthwestHouse",
+                // Plan 23 · Z3, first part: the rooms of Geosenge Town and Shalour City, its Gym and its Tower of Mastery
+                "GeosengeTown_PokemonCenter_1F", "GeosengeTown_NorthwestHouse", "GeosengeTown_EastHouse",
+                "ShalourCity_PokemonCenter_1F", "ShalourCity_Gym", "ShalourCity_TowerOfMastery",
+                "ShalourCity_SouthwestHouse", "ShalourCity_SoutheastHouse",
             }
         },
         new() { Id = Alola, Name = "Alola", Generation = 7 },
