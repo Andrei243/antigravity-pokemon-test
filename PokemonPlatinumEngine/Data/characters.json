@@ -297,6 +297,17 @@
     // Plan 22 · U9, part c: Unova's Elite Four (our own takes, stand-ins until plan 22 · U12; Caitlin is the Battle Castle's own):
     // Shauntal, who writes ghost stories, a purple bob, glasses and a long plum dress; Marshal, who trains in the mountains, a
     // bald head and a dark gi tied with a brown belt; Grimsley, the gambler, swept dark hair and a black suit with a yellow scarf
+    // Plan 22 · U12, the last of the named cast: looks of our own for the roles (no attempt at the games' designs), on the
+    // kit's parts with nothing new. Opelucid's Gym Leader, an old scholar of dragons: short grey hair, round glasses and a
+    // slate jacket banded in copper; Humilau's, a young man of the beach: sandy hair, a coral and white striped shirt
+    // over navy shorts; the young Boss Trainer of the tournament's hall: a teal cap over brown hair and an olive jacket; and
+    // the three brothers of Striaton's café, alike in a cream shirt and a deep teal apron, told apart by their hair
+    "opelucid_leader": { "hairColor": "#b8b4ac", "hair": "Short", "top": "#3e4a5e", "accent": "#c8783a", "bottom": "#2e3440", "shoes": "#3a2a24", "eyes": "#3a3a4a", "glasses": "#5a4a3a", "jacket": true, "bushyBrows": true, "build": "Adult", "height": 1.06 },
+    "humilau_leader": { "skin": "#d8a074", "hairColor": "#d8b878", "hair": "Swept", "top": "#e8704e", "accent": "#f6f2ea", "bottom": "#2a3a62", "shoes": "#e8d8b8", "eyes": "#2a3a4a", "stripes": true, "shorts": true, "build": "Adult", "height": 1.08 },
+    "tower_boss": { "hairColor": "#5a3a26", "hair": "Short", "hat": "Cap", "hatColor": "#2a8a8a", "hatBand": "#f4f4f6", "top": "#6a7a3a", "accent": "#f4f4f6", "bottom": "#3a3a44", "shoes": "#2a8a8a", "eyes": "#3a2a24", "jacket": true, "height": 0.94 },
+    "cafe_brother_a": { "hairColor": "#5a3a24", "hair": "Short", "top": "#f2ead8", "accent": "#1e5a5a", "bottom": "#2a2a30", "shoes": "#2a2420", "eyes": "#3a2a24", "apron": "#1e5a5a", "build": "Adult", "height": 1.04 },
+    "cafe_brother_b": { "hairColor": "#1e1e24", "hair": "Swept", "top": "#f2ead8", "accent": "#1e5a5a", "bottom": "#2a2a30", "shoes": "#2a2420", "eyes": "#2a2a2a", "apron": "#1e5a5a", "build": "Adult", "height": 1.04 },
+    "cafe_brother_c": { "hairColor": "#b8642e", "hair": "Curls", "top": "#f2ead8", "accent": "#1e5a5a", "bottom": "#2a2a30", "shoes": "#2a2420", "eyes": "#4a3a24", "apron": "#1e5a5a", "build": "Adult", "height": 1.04 },
     "shauntal": { "hairColor": "#5a3a6e", "hair": "Short", "top": "#4a2a58", "accent": "#d8c8e8", "bottom": "#4a2a58", "shoes": "#2a1e2e", "eyes": "#6a4a8a", "glasses": "#2a2a36", "skirt": true, "lashes": true, "build": "Adult", "height": 1.02 },
     "marshal": { "skin": "#d8a078", "hairColor": "#3a2a24", "hair": "Bald", "top": "#3a3a40", "accent": "#7a5232", "bottom": "#3a3a40", "shoes": "#3a3a40", "eyes": "#2a2420", "bushyBrows": true, "build": "Adult", "height": 1.12 },
     "grimsley": { "hairColor": "#2e2a36", "hair": "Swept", "top": "#22222a", "accent": "#e8c040", "bottom": "#22222a", "shoes": "#1c1c22", "eyes": "#4a3a2a", "scarf": true, "coat": true, "build": "Adult", "height": 1.08 },
@@ -869,7 +880,7 @@
     "Elite Four Grimsley": "grimsley",
     "Elite Four Caitlin": "caitlin",
     // Plan 22 · U12: the rest of Unova's classes on looks of their own, and its cast in battle as they stand in the field;
-    // a Leader whom no look of the table names (Drayden, Marlon) and the Boss Trainers of the tournament's hall are the
+    // the Boss Trainers of the tournament's hall are the
     // person's own look, as "Leader" is; Team Plasma's grunts by the person's look, the men's first
     "Team Plasma Grunt": [ "plasma_grunt", "plasma_grunt_f" ],
     "Team Plasma Zinzolin": "zinzolin",
@@ -887,17 +898,17 @@
     "Pokémon Trainer Alder": "alder",
     "Leader Cheren": "cheren",
     "Leader Roxie": "roxie",
-    "Leader Drayden": null,
-    "Leader Marlon": null,
+    "Leader Drayden": "opelucid_leader",
+    "Leader Marlon": "humilau_leader",
     "Boss Trainer": null,
-    "Boss Trainer Benga": null, "Boss Trainer Abed": null, "Boss Trainer Abigail": null, "Boss Trainer Bess": null,
+    "Boss Trainer Benga": "tower_boss", "Boss Trainer Abed": null, "Boss Trainer Abigail": null, "Boss Trainer Bess": null,
     "Boss Trainer Brent": null, "Boss Trainer Carleigh": null, "Boss Trainer Carlen": null, "Boss Trainer Daneil": null,
     "Boss Trainer Danelle": null, "Boss Trainer Frederick": null, "Boss Trainer Freira": null, "Boss Trainer Gail": null,
     "Boss Trainer Gaius": null,
     "Pokémon Trainer Cynthia": "cynthia",
-    "Pokémon Trainer Cilan": null,
-    "Pokémon Trainer Chili": null,
-    "Pokémon Trainer Cress": null,
+    "Pokémon Trainer Cilan": "cafe_brother_a",
+    "Pokémon Trainer Chili": "cafe_brother_c",
+    "Pokémon Trainer Cress": "cafe_brother_b",
     "Game Freak Morimoto": null,
     "Game Freak Nishino": null,
     // Plan 14 · B10: the Battle Pike's and the Battle Pyramid's Brains in battle
