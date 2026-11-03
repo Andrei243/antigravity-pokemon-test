@@ -110,6 +110,21 @@ public static class Bw2Cover
         return Cover.OfTexture(name, out known);
     }
 
+    /// <summary>
+    /// A texture's ground on a chunk of a season (plan 22 · U12's look at wave 60's shots): <c>kisetu_yuki</c>, "the
+    /// season's snow", is a patch of ground whose picture Black 2 changes with the month, snow only in winter. Every
+    /// chunk of the matrices is spring's (a winter chunk's folder begins <c>winter</c>), and there the patch is the lawn:
+    /// read as snow, it laid 3,168 pale squares with green corners over Aspertia's, Route 19's, Floccesy's, Driftveil's and
+    /// the outlook's grass and paving.
+    /// </summary>
+    public static TerrainCover? OfSeasonalTexture(string? name, bool winter, out bool known)
+    {
+        if (!winter && name != null && SeasonalSnow.IsMatch(name)) { known = true; return TerrainCover.Grass; }
+        return OfTexture(name, out known);
+    }
+
+    private static readonly Regex SeasonalSnow = new("^kisetu_yuki", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
     /// <summary>What a behaviour says about the look of its tile: Platinum's rules, and Black 2's own values.</summary>
     public static TerrainCover? OfBehaviour(TileBehavior behaviour) => Cover.OfBehaviour(behaviour) ?? behaviour switch
     {
@@ -179,9 +194,10 @@ public static class Bw2Cover
                         if (x + 0.5f > x0 && z + 0.5f > z0) buildings[z * w + x] = true;
             }
 
+        bool winter = chunk.StartsWith("winter", StringComparison.Ordinal);
         TerrainCover? Sort(string? name)
         {
-            var cover = OfTexture(name, out bool known);
+            var cover = OfSeasonalTexture(name, winter, out bool known);
             if (!known && name != null && unsorted != null) unsorted[name] = unsorted.GetValueOrDefault(name) + 1;
             return cover;
         }

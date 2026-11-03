@@ -1261,6 +1261,18 @@ public class Bw2ImportTests
     }
 
     [Fact]
+    public void TheSeasonsSnowPatchIsTheLawnOutsideWinter()
+    {
+        // (plan 22 · U12: kisetu_yuki is a patch whose picture Black 2 changes by the month; read as snow on the spring
+        // chunks, it laid pale squares over Aspertia's and Route 19's lawns)
+        Assert.Equal(TerrainCover.Grass, Bw2Cover.OfSeasonalTexture("kisetu_yuki", winter: false, out bool known));
+        Assert.True(known);
+        Assert.Equal(TerrainCover.Snow, Bw2Cover.OfSeasonalTexture("kisetu_yuki", winter: true, out _));
+        Assert.Equal(TerrainCover.Snow, Bw2Cover.OfSeasonalTexture("yuki01", winter: false, out _));
+        Assert.Equal(TerrainCover.Flowers, Bw2Cover.OfSeasonalTexture("kisetu_hana", winter: false, out _));
+    }
+
+    [Fact]
     public void Black2sTextureNamesAreSortedBeforePlatinums()
     {
         Assert.Equal(TerrainCover.Path, Bw2Cover.OfTexture("gake_michi_01", out bool known));

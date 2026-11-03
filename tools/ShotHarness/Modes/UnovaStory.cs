@@ -63,6 +63,9 @@ partial class Harness
                         if (foe != null) { foe.HeldItem = null; foreach (var move in foe.Moves) move.CurrentPP = 0; }
                     var lead = fight.PlayerPokemon;
                     if (lead != null) lead.CurrentHP = lead.MaxHP;
+                    // (and its PP, as a nurse would give them back: by Iris the lead had spent every move since the
+                    // last Pokémon Center and Struggled past the run's half hour, wave 60)
+                    if (lead != null) foreach (var move in lead.Moves) move.CurrentPP = move.MaxPP;
                     fight.SelectMainMenuOption(0);
                     int hurts = lead == null ? 0 : Math.Max(0, lead.Moves.FindIndex(m => m.Data.Category != MoveCategory.Status));
                     fight.SelectMove(hurts);

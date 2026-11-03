@@ -91,6 +91,16 @@ public class UnovaCastTests
         Assert.Equal("hugh", Table.InBattle(TrainerDatabase.RivalClass, "hugh"));
         Assert.Equal("bianca", Table.InBattle("Pokémon Trainer Bianca", null));
         Assert.Equal("cheren", Table.InBattle("Leader Cheren", null));
+        // and the last named people on looks of their own (our own designs for the roles), never the person's stand-in
+        foreach (var (cls, look) in new[]
+        {
+            ("Leader Drayden", "opelucid_leader"), ("Leader Marlon", "humilau_leader"), ("Boss Trainer Benga", "tower_boss"),
+            ("Pokémon Trainer Cilan", "cafe_brother_a"), ("Pokémon Trainer Cress", "cafe_brother_b"), ("Pokémon Trainer Chili", "cafe_brother_c")
+        })
+        {
+            Assert.True(Table.Has(look), $"{look} is no look");
+            Assert.Equal(look, Table.InBattle(cls, "swimmer_m"));
+        }
 
         // Every class of Unova's records stands as a look, or as the person
         var plain = new SortedSet<string>(StringComparer.Ordinal);
