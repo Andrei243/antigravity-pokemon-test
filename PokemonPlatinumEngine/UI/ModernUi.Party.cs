@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Numerics;
 using Raylib_cs;
 using PokemonPlatinumEngine.Core;
@@ -137,6 +138,7 @@ internal static partial class ModernUi
         float tx = TypePills(x, r.Y + 94, p);
         float status = StatusPill(tx + 4, r.Y + 94, p.IsFainted ? StatusCondition.Faint : p.Status);
         PokerusTag(tx + 4 + (status > 0 ? status + 8 : 0), r.Y + 94, p, 34);
+        CardMark(new Vector2(r.X + r.Width - 62, r.Y + 112), p);
 
         HpBar(x, r.Y + 150, r.Width - 308, 26, (float)p.CurrentHP / Math.Max(1, p.MaxHP));
         string hpText = Text.Of("party.hpValue", ("hp", p.CurrentHP), ("max", p.MaxHP));
@@ -305,12 +307,16 @@ internal static partial class ModernUi
             var marks = new Rectangle(696 + slide, 556, 1160, 476);
             Panel(marks, 34);
             Label(Text.Of("summary.marks"), marks.X + 44, marks.Y + 30);
+            // A Pokémon met with a mark (plan 10 · F9) has its six markings higher, and its marks and title under a rule
+            var met = EncounterMarks.Of(p).ToList();
+            float markRow = met.Count > 0 ? marks.Y + 140 : marks.Y + 250;
             for (int m = 0; m < MarkCount; m++)
             {
-                var at = new Vector2(marks.X + 44 + 52 + m * 120, marks.Y + 250);
+                var at = new Vector2(marks.X + 44 + 52 + m * 120, markRow);
                 if (m == markCursor) UiShapes.Shape(new Rectangle(at.X - 48, at.Y - 48, 96, 96), 24, Lighter(Selection, 0.88f), Lighter(Selection, 0.8f), Selection, 4);
                 MarkShape(at, 52, m, SummaryView.HasMark(p, m) ? Ink : Rule);
             }
+            if (met.Count > 0) EncounterMarksRow(marks, p, met, markCursor);
             return;
         }
 

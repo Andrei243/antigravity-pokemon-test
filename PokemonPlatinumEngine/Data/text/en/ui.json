@@ -643,6 +643,7 @@
     "pokedex": "POKÉDEX",
     "pokemon": "POKÉMON",
     "boxes": "BOXES",
+    "camp": "CAMP",
     "noBoxLink": "The boxes can't be reached from here.",
     "bag": "BAG",
     "pokegear": "POKéGEAR",
@@ -817,6 +818,10 @@
   "marks": {
     "name": "{word} Mark",
     "titled": "{pokemon} the {word}",
+    "heading": "MET WITH",
+    "title": "TITLE",
+    "noTitle": "None: the button on a mark makes it the title.",
+    "titleLine": "Sent out as {name}",
     "word": {
       "rare": "Rare", "rowdy": "Rowdy", "absentMinded": "Dreamy", "jittery": "Jittery", "excited": "Eager",
       "charismatic": "Dazzling", "calmness": "Calm", "intense": "Intense", "zonedOut": "Faraway", "joyful": "Joyful",
@@ -827,6 +832,23 @@
       "lunchtime": "Peckish", "sleepyTime": "Sleepy", "dusk": "Dusky", "dawn": "Early",
       "cloudy": "Cloudy", "rainy": "Rain-Soaked", "stormy": "Thunderous", "snowy": "Snowy", "blizzard": "Frosty",
       "dry": "Sun-Baked", "sandstorm": "Sandy", "misty": "Misty", "fishing": "Hooked", "alpha": "Mighty"
+    }
+  },
+
+  "camp": {
+    "title": "CAMP",
+    "hint": { "pet": "Pet", "feed": "Feed" },
+    "friendship": "FRIENDSHIP",
+    "petted": "PETTED",
+    "fed": "FED",
+    "note": {
+      "welcome": "Everyone stretches out on the grass.",
+      "cured": "A rest by the fire, and everyone feels better.",
+      "petted": "{name} leans into your hand, happy.",
+      "fed": "{name} ate the {berry} up!",
+      "egg": "The Egg sits warm by the fire.",
+      "already": "{name} has had its share for this visit.",
+      "noBerry": "There are no berries in the bag."
     }
   },
 

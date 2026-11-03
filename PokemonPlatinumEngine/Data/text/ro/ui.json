@@ -665,6 +665,7 @@
     "pokedex": "POKÉDEX",
     "pokemon": "POKÉMON",
     "boxes": "CUTII",
+    "camp": "TABĂRĂ",
     "noBoxLink": "Cutiile nu pot fi deschise de aici.",
     "bag": "RUCSAC",
     "pokegear": "POKéGEAR",
@@ -1221,6 +1222,10 @@
   "marks": {
     "name": "Semnul: {word}",
     "titled": "{pokemon} cel {word}",
+    "heading": "ÎNTÂLNIT CU",
+    "title": "TITLU",
+    "noTitle": "Niciunul: butonul pe un semn îl face titlu.",
+    "titleLine": "Trimis în luptă ca {name}",
     "word": {
       "rare": "Rar", "rowdy": "Gălăgios", "absentMinded": "Visător", "jittery": "Agitat", "excited": "Nerăbdător",
       "charismatic": "Strălucitor", "calmness": "Calm", "intense": "Intens", "zonedOut": "Absent", "joyful": "Vesel",
@@ -1231,6 +1236,23 @@
       "lunchtime": "Flămând", "sleepyTime": "Somnoros", "dusk": "Crepuscular", "dawn": "Matinal",
       "cloudy": "Înnorat", "rainy": "Plouat", "stormy": "Tunător", "snowy": "Înzăpezit", "blizzard": "Înghețat",
       "dry": "Pârjolit", "sandstorm": "Nisipos", "misty": "Încețoșat", "fishing": "Pescuit", "alpha": "Puternic"
+    }
+  },
+
+  "camp": {
+    "title": "TABĂRĂ",
+    "hint": { "pet": "Mângâie", "feed": "Hrănește" },
+    "friendship": "PRIETENIE",
+    "petted": "MÂNGÂIAT",
+    "fed": "HRĂNIT",
+    "note": {
+      "welcome": "Toți se întind pe iarbă.",
+      "cured": "Un popas lângă foc, și toți se simt mai bine.",
+      "petted": "{name} se lipește de mâna ta, fericit.",
+      "fed": "{name} a mâncat {berry} cu poftă!",
+      "egg": "Oul stă la căldură lângă foc.",
+      "already": "{name} a primit destul la popasul ăsta.",
+      "noBerry": "Nu ai nicio boabă în rucsac."
     }
   },
 

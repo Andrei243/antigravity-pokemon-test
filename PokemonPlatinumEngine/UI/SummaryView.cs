@@ -116,19 +116,37 @@ public sealed class SummaryView
         return true;
     }
 
-    /// <summary>Moves the marks' cursor along the six, round at the ends.</summary>
-    public void MoveMark(int dx)
+    /// <summary>
+    /// How many places the marks' cursor goes through for a Pokémon (plan 10 · F9): the six markings, then each mark
+    /// of its encounter it carries, in <see cref="EncounterMarks.Of"/>'s order, which the button makes its title.
+    /// </summary>
+    public static int MarkPlaces(Pokemon shown) => ModernUi.MarkCount + EncounterMarks.Of(shown).Count();
+
+    /// <summary>The encounter mark under the cursor, or null while it is on the six markings (plan 10 · F9).</summary>
+    public static Mark? EncounterMarkAt(Pokemon shown, int cursor) =>
+        cursor < ModernUi.MarkCount ? null : EncounterMarks.Of(shown).Skip(cursor - ModernUi.MarkCount).Cast<Mark?>().FirstOrDefault();
+
+    /// <summary>Moves the marks' cursor along the six (and, for a Pokémon with marks of its encounter, along those after them), round at the ends.</summary>
+    public void MoveMark(int dx, int places = ModernUi.MarkCount)
     {
         if (MarkCursor < 0 || dx == 0) return;
-        MarkCursor = UiNav.Wrap(MarkCursor, Math.Sign(dx), ModernUi.MarkCount);
+        MarkCursor = UiNav.Wrap(Math.Min(MarkCursor, places - 1), Math.Sign(dx), Math.Max(1, places));
         AudioManager.PlaySound("cursor");
     }
 
-    /// <summary>Sets or clears the mark under the cursor on the Pokémon.</summary>
+    /// <summary>
+    /// Sets or clears the marking under the cursor on the Pokémon; on a mark of its encounter, makes that mark its title,
+    /// or takes the title away when it is already the one (plan 10 · F9).
+    /// </summary>
     public void ToggleMark(Pokemon shown)
     {
         if (MarkCursor < 0) return;
-        shown.Marks ^= 1 << MarkCursor;
+        if (MarkCursor >= ModernUi.MarkCount)
+        {
+            if (EncounterMarkAt(shown, MarkCursor) is not { } mark) return;
+            EncounterMarks.ChooseTitle(shown, shown.Title == mark.ToString() ? null : mark);
+        }
+        else shown.Marks ^= 1 << MarkCursor;
         AudioManager.PlaySound("select");
     }
 
@@ -191,7 +209,7 @@ public sealed class SummaryView
         {
             if (cancel) LeaveMarks();
             else if (confirm) ToggleMark(shown);
-            else MoveMark(dx);
+            else MoveMark(dx, MarkPlaces(shown));
             return default;
         }
         if (MoveSelection >= 0 && shown != null)

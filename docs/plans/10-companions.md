@@ -72,6 +72,8 @@ Written 2026-10-06, before any session.
 
 **Outcome of F2 to F5 (2026-11-02).** One session; the plan's defaults were taken for every open question (both rows off; rooms and lit caves allowed; decision 3's recommendation). *F2*: `PokePose.Walk` and `Moving` at the end of their group; `PokemonAnimation.Walk` by body plan (a biped's stride of 0.45 rad, a quadruped's trot, a hop of a twentieth of its height for every bird, since every bird model hovers at rest, an undulation for serpents and fish, a lean for anything else that hovers), the idle at half under it; `walk` in `PokemonAnimation.Clips`, `ClipRole.Walk` (`walk`, `run`), keyed by `GltfWriter` and the Blender tool; `FieldSprites.PrepareWalk`/`GetWalk`, eight frames a facing baked on request the first time a Pokémon is drawn on the move, cached as `-fieldwalk-`, overridden by `<facing>_walk_<n>.png`; `WorldRenderer` shows `WalkFrameAt(WalkCycle)` and hops until the strip is there. *F3*: `GameSettings.Follower`, `OptionRow.Follower` (after RETRY BATTLES), `Overworld/LeadFollower.cs` (who and where), `Core/GameEngine.Follower.cs` (a body `lead_follower` made for the map, carried across warps, put away and called out in a puff, prints through `FieldLife.Footstep`); `Follower` hops a ledge (`Hopping`, `KeepHopping`, `NPC.Hop`); Amity Square's stroll code leaves this follower alone. *F4*: `TalkToTheLead` in `TryInteract`, the `followerTalk.*` words, `common.FollowerFound`. *F5*: `Overworld/FieldPokemon.cs`, `Core/GameEngine.WildInSight.cs`, `GameEngine.MakeWild` (split out of `StartWildBattle`, the same draws in the same order), `Player.WildInSight` and `PushedAgainst`, `OptionRow.WildPokemon`, `BattleConditions.Surprised` (in the Vs. Recorder's file), `Ruleset.BackStrikes` (modern only) and its line in `BattleCore.Moves.cs`. Tests: `CompanionTests`, `CompanionGameTests`. Shots: `pokemon <species>` writes `97_field_walk_<species>` and its clip boards gain a walk row; a new `companions` mode (not part of `all`) shoots `cp01` to `cp13`, since the plan's `l50` to `l62`, `st38` and `st39` were taken or would move `life` and `story`. Left: a shot on the water (`l61`'s), `profile` with each row on, prints for Pokémon of the map that wander, and nothing of the follower is saved.
 
+**Outcome of F6, F7 and F9 (2026-11-03 and 2026-11-04).** Two sessions with no window, so nothing was shot; docs/mechanics/rulings.md, "Affection's perks, marks, the camp and the DexNav", has the rules. *F7*: `Ruleset.AffectionPerks` (modern only), `Models/Affection.cs` and `BattleCore.Affection.cs`: a fifth more EXP, holding on at 1 HP, a status shaken off, a dodge and a critical stage, each rolled as `RollKind.Affection` only where a perk can be given, so `battles-modern.txt` held; tests `CompanionPerksTests`. *F6*: `Models/Camp.cs` (`CampVisit`, `CampCare`, `FriendshipEvent.Petted` and `Fed`), `UI/CampScreen.cs` (its logic, its clock and its line), `GameState.Camp`, `Core/GameEngine.Camp.cs`, `StartMenuChoice.Camp` after POKéMON, offered while the FOLLOWER row is on and there is a Pokémon (*decided*: no options row of its own; the camp belongs with the follower, and with the row off Platinum's start menu is as it was), the item button opening the bag on its berries and the berry fed as the bag is put away; drawn by `ModernUi.Camp.cs` (style guide, "Menu screens (G10)", "The camp"). *Decided*: the team stands as its menu sprites at 2× on a clearing of the kit's shapes, not as six 3D models on a stage, so the risk of six models over the frame budget is gone and no `profile` scene is needed; the plan's three poses and faces (`PokePose.Happy`, `Sleepy`, `LookAt`) stay unbuilt with it, and a pat or a meal is shown by a hop and rising hearts or a berry. *F9*: `Models/EncounterMarks.cs`, `Pokemon.EncounterMarks` and `Title` (saved, copied), the send-out line; the summary's MET WITH row with the title chosen by the marks' cursor going on past the six markings (`SummaryView.MarkPlaces`, `EncounterMarkAt`), and the badge on the party cards and the PC's detail (`ModernUi.Marks.cs`; style guide, "Summary", "Marks and titles"). Tests: `CompanionCampTests`. **Owed shots** (on a machine with the harness): the `menus` mode's camp (`27_camp`, `27b_camp_petting`, `27c_camp_feeding`, `27d_camp_six`, reached through `Driver.Camp` and `ChooseFromStartMenu(StartMenuChoice.Camp)` with `Settings.Follower` on), and the summary's marks and a titled send-out (`20h_summary_marks`, `23d_battle_titled_send_out`, whose names `menus` and `battle` may already hold: take the next free ones), each looked at before the pictures are called right.
+
 ### F2 · Walk cycles
 - The style guide's "Clips" bullet (under "Pokémon (version 2, G7)") first, then `PokePose.Walk` and `Moving`, the six plans' cycles in `PokemonAnimation`, `ClipRole.Walk` for imported models, the walk strip in `FieldSprites` (8 frames × 4 facings, baked on request).
 - Tests: a walking biped's legs alternate and its root stays on the ground; a quadruped's front and hind legs oppose; a `Hovers` model keeps its height; a `Fish` undulates its segments in phase order; the clip is a pure function of its phase; every hand-built model's walk keeps every bone within its idle's reach.
@@ -171,36 +173,10 @@ Written 2026-10-06, before any session.
 - [x] F3 The follower
 - [x] F4 Talking to the follower
 - [x] F5 Wild Pokémon in sight
-- [ ] F6 The camp
-- [ ] F7 Affection's perks
-- [ ] F8 Cooking (optional: a second check judged it low value)
-- [ ] F9 Marks and titles
-- [ ] F10 Alphas
-- [ ] F11 What lives here
-- [ ] F12 Rustles and chains
-g moves), R28 (the ingredients F8 cooks); plan 07 · O2 or plan 08 · P3 (the memo page F9's row goes on; F9 adds `Marks` beside whatever ran first); plan 03 · D12 (the post-game zone whose tables carry alphas); plan 05 · A4 (the cries, done).
-- **Gives** plan 02 every stationary Pokémon as a map object with a cry and a script (F1); plan 06 · R16 the walker Amity Square's walk is built on (F3, F4; the square is open, its gates' triggers and the walking Pokémon's object imported and waiting), R17 the title slot (F9), R13 a visible form for swarms and the Poké Radar's shaking grass if it wants one (F5, F12); plan 03 · D12 alphas as a post-game draw (F10); plan 08 · P3 a marks row (F9); plan 07 the save fields of F9 and F10 to validate on its server.
-
-## Decisions for the user
-
-1. **Whose back the surfer rides.** *Recommended:* the party Pokémon whose Surf was used, so the models carry the player as the newest games' rides do (no Generation 4 game does: HeartGold and SoulSilver keep the one swimmer too); `SurfMount` stays as the stand-in. The alternative keeps Platinum's one swimmer for all, which costs nothing and changes no picture.
-2. **Which species get field sprites.** *Recommended:* all of them, baked on demand from whatever model there is, as the menus do. The alternative is the hand-built species only, with a Poké Ball card for the rest, which spares the generated walks.
-3. **Where the follower and visible wild Pokémon are switched on.** *Recommended:* two rows of the options, off, changeable at any time like Battle Style. The alternative ties both to the Modern preset at NEW GAME, which keeps the options short but mixes the field's feel with the battles' rules.
-4. **Cooking.** *Recommended:* since a second check (by fit and by value) judged F8 low value, F8 stays optional and out of the order of work, and the camp feeds berries and R14's Poffins; plan 06 · decision 5 and ruling 5 stand, and F1 to F7 and F9 to F12 lose nothing. The alternative is the plan's first recommendation: F8 in, after the Hall of Fame, as the camp's one activity, with curry alone (sandwiches add a second kitchen for the same powers), which amends plan 06 · decision 5 for the ingredients used.
-5. **Alphas in Platinum's areas.** *Recommended:* none; the post-game zone's tables only. The alternative is a rare slot in every area under the Modern preset, which moves Modern's encounter odds a little.
-6. **The DexNav's home.** *Recommended:* a Key Item that switches it on, given with the National Pokédex as the Poké Radar is, and a page of the Pokédex for the list. The alternative is a Pokétch app, beside the three apps plan 02 · S2's Pokétch runs (`Poketch.Runs`), under plan 06 · R14 with the other apps.
-
-## Status
-
-- [x] F1 Field sprites and the stationary Pokémon
-- [x] F2 Walk cycles
-- [x] F3 The follower
-- [x] F4 Talking to the follower
-- [x] F5 Wild Pokémon in sight
-- [ ] F6 The camp (rules and data done 2026-11-03; its drawing, its state and its menu entry wait)
+- [x] F6 The camp (2026-11-04; its shots owed)
 - [x] F7 Affection's perks
 - [ ] F8 Cooking (optional: a second check judged it low value)
-- [ ] F9 Marks and titles (rules, save and the send-out line done 2026-11-03; the summary's row, the title's choice and the glyph wait)
+- [x] F9 Marks and titles (2026-11-04; its shots owed)
 - [ ] F10 Alphas
 - [ ] F11 What lives here (`Habitats.At`, the HERE list, the item and the save done 2026-11-03; the Pokédex page, its painter and the item's giving wait)
 - [ ] F12 Rustles and chains (rules, the creep and the chain done 2026-11-03; the rustle's drawing and shots wait)

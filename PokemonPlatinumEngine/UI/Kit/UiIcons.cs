@@ -5,7 +5,7 @@ using PokemonPlatinumEngine.Models;
 
 namespace PokemonPlatinumEngine.UI.Kit;
 
-public enum UiIcon { Dex, Ball, Bag, Trainer, Save, Options, Close, Quit, Pouch, Cross, Disc, Berry, Letter, Boost, Key, Pin, Size, Hat, Shirt, Trousers, Shoe, Gear, Phone, MapCard, Radio, Star, Boxes }
+public enum UiIcon { Dex, Ball, Bag, Trainer, Save, Options, Close, Quit, Pouch, Cross, Disc, Berry, Letter, Boost, Key, Pin, Size, Hat, Shirt, Trousers, Shoe, Gear, Phone, MapCard, Radio, Star, Boxes, Camp }
 
 /// <summary>
 /// Small vector icons built from <see cref="UiShapes"/>: the start menu's entries, gender marks and arrows.
@@ -183,6 +183,12 @@ internal static class UiIcons
                     float x = i == 0 ? -0.48f : i == 1 ? 0.48f : 0f, y = i == 2 ? -0.44f : 0.46f;
                     UiShapes.Line(c + new Vector2(x - 0.2f, y) * s, c + new Vector2(x + 0.2f, y) * s, 0.12f * s, back);
                 }
+                break;
+            case UiIcon.Camp:
+                // A tent with its door open (plan 10 · F6: the start menu's CAMP), on a line of ground
+                UiShapes.Triangle(c + new Vector2(0, -0.86f) * s, c + new Vector2(-0.92f, 0.66f) * s, c + new Vector2(0.92f, 0.66f) * s, ink, 0.06f * s);
+                UiShapes.Triangle(c + new Vector2(0, -0.1f) * s, c + new Vector2(-0.32f, 0.66f) * s, c + new Vector2(0.32f, 0.66f) * s, back);
+                UiShapes.Line(c + new Vector2(-0.98f, 0.78f) * s, c + new Vector2(0.98f, 0.78f) * s, 0.14f * s, ink);
                 break;
             default:
                 UiShapes.Ring(c + new Vector2(0, 0.08f) * s, 0.82f * s, 0.22f * s, ink);
