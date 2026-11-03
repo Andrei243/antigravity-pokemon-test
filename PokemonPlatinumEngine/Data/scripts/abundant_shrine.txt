@@ -1,0 +1,35 @@
+# The Abundant Shrine (plan 22 · U10, part d, second piece). docs/scripts.md describes the language; the lines are our own.
+# Black 2's Landorus waits before the shrine once the player has entered Unova's Hall of Fame (shown by UnovaHallOfFame), at
+# level 70: caught or beaten it is gone for good (FLAG_UNOVA_FOUGHT_LANDORUS); run from, it flies off and is back the next
+# time the wood is come to. Black 2 asks for Tornadus and Thundurus first (from the Dream Radar, which this game has no
+# stand-in for), so ours asks only the Hall of Fame (the rulings' "The Abundant Shrine's Landorus").
+
+
+script Landorus
+  if not flag UnovaHallOfFame end
+  scene "Landorus at the Abundant Shrine"
+  music stop
+  face player self
+  face self player
+  letterbox on 0.4
+  camera path 22 14 22 15 3
+  camera zoom 1.4 0.8
+  effect beam 22 14 0.8
+  shake self 8
+  camera shake 0.8
+  cry "Landorus"
+  speaker none
+  text "Landorus let out a thundering cry!\nThe soil of the whole wood seems to stir at its call!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Landorus" 70
+  if result == 2 goto Fled
+  setflag FLAG_UNOVA_FOUGHT_LANDORUS
+  hide self
+  text "The wood settles. Only the wind over the pond is left..."
+  end
+label Fled
+  hide self
+  text "Landorus soared away over the wood..."
+  end

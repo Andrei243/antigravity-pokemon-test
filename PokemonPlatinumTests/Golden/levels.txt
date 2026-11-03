@@ -150,6 +150,12 @@ surf 5-35
 old rod 5-10
 good rod 10-30
 super rod 20-35
+=== abundant_shrine
+Abundant Shrine
+grass 32-36
+surf 25-40
+super rod 40-70
+trainers 4, 37-39: unova_lass_lurleen 39, unova_twins_rae_ula 38, unova_youngster_jaye 37, unova_youngster_wes 39
 === acuity_lakefront
 Acuity Lakefront
 grass 32-35
@@ -3401,6 +3407,12 @@ grass 34-37
 surf 25-40
 super rod 40-70
 trainers 11, 39-41: unova_ace_trainer_angi 41, unova_ace_trainer_miguel 41, unova_battle_girl_alize 41, unova_black_belt_wesley 41, unova_fisherman_damon 39, unova_fisherman_jones 40, unova_fisherman_leroy 40, unova_fisherman_vince 40, unova_parasol_lady_laura 40, unova_pkmn_ranger_daryl 39, unova_pkmn_ranger_dianne 39
+=== unova_route_14
+Route 14
+grass 33-36
+surf 15-35
+super rod 40-70
+trainers 8, 38-52: unova_ace_trainer_junko 39, unova_ace_trainer_kipp 39, unova_backpacker_reece 38, unova_battle_girl_glinda 40, unova_black_belt_jay 52, unova_fisherman_sid 38, unova_gentleman_sheldon 39, unova_socialite_marian 39
 === unova_route_16
 Route 16
 grass 21-24

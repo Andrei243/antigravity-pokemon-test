@@ -283,6 +283,10 @@ public static partial class WorldModels
         Built("d13_house", BuildingKind.Lab, "the P2 Laboratory on Route 17's island", Architecture.Airfield, sign: "P2 LAB"),
         Furniture("d4pillar01", PropType.Column, "a pillar of the P2 Laboratory's hall"),
         Furniture("table02", PropType.Table, "a long table of the P2 Laboratory's hall"),
+
+        // ---------------------------------------------------------------- the Abundant Shrine (d19, plan 22 · U10, part d)
+        Built("d19_house01", BuildingKind.House, "the house by the Abundant Shrine's pond", Architecture.Bellfield),
+        Built("d19_shirne01", BuildingKind.Shrine, "the Abundant Shrine itself, at the head of its wood", Architecture.Bellfield),
     };
 
     private static readonly Dictionary<string, WorldModel> UnovaByName = UnovaTable.ToDictionary(m => m.Name, StringComparer.Ordinal);
