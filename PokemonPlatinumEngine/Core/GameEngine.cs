@@ -1361,6 +1361,9 @@ public partial class GameEngine
                         flow.ScriptTurns = flow.Battle.Core.Turn;
                         // The Safari Game counts what it caught (the Matchup Checker is given for five in one game)
                         if (flow.Safari.Active && flow.Battle.Kind == BattleKind.Safari && flow.Battle.Result == BattleResult.EnemyCaught) flow.Safari.Caught++;
+                        // and Hoenn's Safari Fan Club what each of its battles caught and the Pokéblocks thrown (plan 21 · H11, part f)
+                        if (flow.Safari.Active && flow.Battle.Kind == BattleKind.Safari && Here.Id == RegionDatabase.Hoenn)
+                            Story.Broadcasts.CountSafariBattle(flow.Story, flow.Battle.Result == BattleResult.EnemyCaught, flow.Battle.PokeblocksThrown);
                         EndBattle();
                     }
                 }

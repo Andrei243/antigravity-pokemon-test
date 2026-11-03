@@ -5,6 +5,8 @@
   "trees": "Round",
   // Emerald's Pokéblock feeders (plan 21 · H11, part d), read on their tiles: common.HoennFeeder
   "readAt": [ { "x": 18, "z": 56, "script": "HoennFeeder" } ],
+  // The feeders drawn as Pokéblock feeders (plan 21 · H11, part f)
+  "props": [ { "type": "PokeblockFeeder", "x": 18, "y": 56 } ],
   "people": {
     "woman_2": { "name": "Woman", "dialog": [ "Some Pokémon gobble up whatever I toss them, and some won't touch it. I wonder if they're fussy eaters." ] }
   },

@@ -116,5 +116,59 @@ label Declined
 script OldWoman
   face self player
   speaker "Old Woman"
+  if var VAR_MT_PYRE_STATE >= 3 goto Returned
   say "The orbs have been taken from this summit. I pray no harm comes of it."
+  end
+label Returned
+  say "The Red Orb and the Blue Orb are back where they belong. The mountain can rest again, and so can I."
+  end
+
+
+# The two leaders bring the orbs back (plan 21 · H8, part e; Emerald's MtPyre_Summit_EventScript_ArchieMaxieBeginReturnOrbs):
+# once Rayquaza has calmed Sootopolis and the two have gone their ways (sootopolis_city.LeadersLeave sets
+# VAR_MT_PYRE_STATE 2 and shows them here), the first step onto the row below the shrine (the area's triggers 3 to 5)
+# turns them round. They own they were wrong, give the orbs back to the old woman and go down the mountain for good
+# (VAR_MT_PYRE_STATE 3). The lines are our own.
+script LeadersTrigger
+  if var VAR_MT_PYRE_STATE != 2 end
+  scene "Archie and Maxie give the orbs back"
+  face player up
+  face mt_pyre_summit_archie down
+  face mt_pyre_summit_maxie down
+  speaker "Archie"
+  say "Oh. It's you. Come to see us say sorry, have you?"
+  speaker "Maxie"
+  say "We woke two Pokémon that were never ours to command. The land and the sea nearly tore each other apart."
+  speaker "Archie"
+  say "So we're putting things back where they were. Starting with these."
+  face mt_pyre_summit_archie up
+  face mt_pyre_summit_maxie up
+  speaker "Old Woman"
+  say "The Red Orb... and the Blue Orb. You have brought them home."
+  speaker "Maxie"
+  say "Keep them safe, and keep them together. Nobody should ever have parted them."
+  face mt_pyre_summit_archie down
+  face mt_pyre_summit_maxie down
+  speaker "Archie"
+  say "We'll be off, then. Hoenn's had enough of Team Aqua and Team Magma for one lifetime."
+  fade out
+  hide mt_pyre_summit_archie
+  hide mt_pyre_summit_maxie
+  setflag FLAG_HIDE_MT_PYRE_SUMMIT_ARCHIE
+  setflag FLAG_HIDE_MT_PYRE_SUMMIT_MAXIE
+  setvar VAR_MT_PYRE_STATE 3
+  fade in
+  speaker "Old Woman"
+  say "Thank you, child. Whatever you did out there, it brought them back to their senses."
+  endscene
+  end
+
+
+# A save whose leaders left Sootopolis before they came up the mountain finds them at the summit
+script OnEnter
+  if var VAR_MT_PYRE_STATE != 1 end
+  if not flag FLAG_SOOTOPOLIS_ARCHIE_MAXIE_LEAVE end
+  setvar VAR_MT_PYRE_STATE 2
+  clearflag FLAG_HIDE_MT_PYRE_SUMMIT_ARCHIE
+  clearflag FLAG_HIDE_MT_PYRE_SUMMIT_MAXIE
   end

@@ -58,6 +58,10 @@ partial class Harness
         game.Story.Unset("FLAG_DEFEATED_GROUDON");
 
         // ---- The scientist's report
+        // Shelly beaten and Team Aqua gone, so the scientist stands at his desk (the room's OnEnter puts him at 4, 6)
+        game.Story.SetVar("VAR_WEATHER_INSTITUTE_STATE", 1);
+        game.Story.Set("FLAG_HIDE_ROUTE_119_TEAM_AQUA");
+        game.Story.Set("FLAG_HIDE_WEATHER_INSTITUTE_2F_AQUA_GRUNT_M");
         At("Route119_WeatherInstitute_2F", 4, 7, Direction.Up);
         game.ArriveOnMap(); Frames(20);
         ReadOn();

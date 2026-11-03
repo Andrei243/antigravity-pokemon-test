@@ -4147,6 +4147,25 @@
       "lost": "\"{player} lost a Pokémon on the way to the win, but never let up. That's the spirit!\"",
       "quote": "\"Asked how it felt, {player} gave us just two words: {phrase}!\"",
       "close": "\"That's all for now! Gabby and Ty will be back on the road soon. Keep your eyes peeled!\""
+    },
+    "safari": {
+      "open": "\"Welcome to the Safari Fan Club! Every week, a visitor's day in Hoenn's Safari Zone.\"",
+      "visit": "\"This week's visitor is {player}, fresh from a day in the zone's tall grass.\"",
+      "caughtNone": "\"{player} came home without a catch this time. The wild ones were wary that day!\"",
+      "caughtOne": "\"{player} brought home one Pokémon from the zone!\"",
+      "caught": "\"{player} brought home {n} Pokémon from the zone!\"",
+      "blocksNone": "\"And not a single Pokéblock thrown. {player} went in with balls alone!\"",
+      "blocksOne": "\"{player} tossed just one Pokéblock to win a Pokémon over.\"",
+      "blocks": "\"{player} tossed {n} Pokéblocks to win the Pokémon over. Generous!\"",
+      "close": "\"That's the Safari Fan Club! Pack a lunch and a few Pokéblocks, and see you in the zone!\""
+    },
+    "contestLady": {
+      "open": "\"Good evening from Lilycove! Tonight, a contest hopeful and the lady who trains it.\"",
+      "ready": "\"With the Pokéblocks friends shared, her {mon} is finally ready for the {quality} Contest!\"",
+      "good": "\"She says the Pokéblocks hit just the right flavour. Her {mon} has never looked better!\"",
+      "plain": "\"She admits the flavours were a little off, but her {mon} enjoyed every bite all the same.\"",
+      "thanks": "\"She wanted to thank everyone who gave her a Pokéblock, and {player} most of all!\"",
+      "close": "\"Good luck on the stage! We'll be cheering for you.\""
     }
   },
   "cyclingRoad": { "seconds": "{time} seconds", "minute": "a minute or more", "times": "{count} times", "many": "99 times or more" },
@@ -5098,6 +5117,10 @@
       "machineBall": "A ball is laid down",
       "liftHum": "A lift hums",
       "liftDing": "A lift chimes",
+      "contestAppeal": "An appeal sparkles",
+      "contestCheer": "The crowd cheers",
+      "contestGroan": "The crowd groans",
+      "contestJudge": "The judge murmurs",
       "sendOut": "A ball opens",
       "recall": "A Pokémon is called back",
       "shiny": "A sparkle",

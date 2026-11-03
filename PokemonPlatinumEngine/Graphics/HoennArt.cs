@@ -11,6 +11,9 @@ internal static class HoennArt
 {
     private static Color Rgb(int r, int g, int b) => new(r, g, b, 255);
 
+    private static Color Lighter(Color c, float k) => new((byte)(c.R + (255 - c.R) * k), (byte)(c.G + (255 - c.G) * k), (byte)(c.B + (255 - c.B) * k), (byte)255);
+    private static Color Darker(Color c, float k) => new((byte)(c.R * (1 - k)), (byte)(c.G * (1 - k)), (byte)(c.B * (1 - k)), (byte)255);
+
     /// <summary>The triangle's card's size: a tile across and a little taller, so its point stands above the tile.</summary>
     public const int TriangleWidth = 30, TriangleHeight = 32;
 
@@ -48,6 +51,106 @@ internal static class HoennArt
         // The stone foot it stands in
         c.Rect(3, baseY + 1, 24, 4, foot);
         c.HLine(3, baseY + 1, 24, footLit);
+        Pix.Outline(c);
+    }
+
+    // ------------------------------------------------------------------ the Lilycove Museum's paintings
+
+    /// <summary>A contest painting's prop model: its quality (0 to 4, <c>ContestStat</c>) and the winner's colour as the data names it.</summary>
+    public static string ContestPaintingModel(int quality, string? colour) => $"contest:{quality}:{(colour ?? "gray").ToLowerInvariant()}";
+
+    /// <summary>The background of a painting of each quality, cool to tough: the contest's own colours, softened.</summary>
+    private static readonly Color[] PaintingSky =
+    {
+        Rgb(232, 118, 98), Rgb(112, 168, 232), Rgb(246, 166, 196), Rgb(128, 196, 128), Rgb(236, 206, 104)
+    };
+
+    /// <summary>The colour the species data names, as a painter's colour.</summary>
+    private static Color SpeciesPaint(string colour) => colour switch
+    {
+        "red" => Rgb(214, 70, 64),
+        "blue" => Rgb(70, 112, 210),
+        "yellow" => Rgb(240, 208, 70),
+        "green" => Rgb(90, 168, 92),
+        "black" => Rgb(66, 64, 78),
+        "brown" => Rgb(156, 108, 70),
+        "purple" => Rgb(150, 98, 186),
+        "pink" => Rgb(240, 150, 190),
+        "white" => Rgb(240, 238, 232),
+        _ => Rgb(156, 160, 170)
+    };
+
+    /// <summary>
+    /// A winner's painting on the gallery's wall (plan 21 · H11, part f; style guide, "Hoenn's last things", "A painting on
+    /// the wall"): a gilt frame two tiles wide, the quality's colour behind and the winner as a round figure of its own
+    /// colour, with a sparkle of its quality. Our own drawing, nothing of a game's: the painting looked at closely is the
+    /// Fashion Case's viewer (<c>appeals view</c>). 56 by 30.
+    /// </summary>
+    public static void PaintContestPainting(PixelCanvas c, int quality, string colour)
+    {
+        const int w = 56, h = 30;
+        Pix.Raised(c, 0, 0, w, h, Tone.Of(198, 156, 86));
+        var sky = PaintingSky[Math.Clamp(quality, 0, 4)];
+        c.Rect(3, 3, w - 6, h - 6, sky);
+        // The light falling from the top left, a ground below
+        c.Rect(3, 3, w - 6, 4, Lighter(sky, 0.35f));
+        c.Rect(3, h - 8, w - 6, 5, Darker(sky, 0.25f));
+        // The winner: a body and a head of its colour, its eyes, its shadow on the ground
+        var body = SpeciesPaint(colour);
+        var shade = Darker(body, 0.3f);
+        c.Rect(19, h - 8, 20, 2, Darker(sky, 0.45f));
+        Pix.Disc(c, 18, 10, 16, body);
+        Pix.Disc(c, 28, 6, 11, body);
+        Pix.Disc(c, 20, 18, 6, shade);
+        c.Rect(31, 10, 2, 2, Rgb(30, 30, 40));
+        c.Rect(35, 10, 2, 2, Rgb(30, 30, 40));
+        c.Set(31, 10, Rgb(250, 250, 250));
+        c.Set(35, 10, Rgb(250, 250, 250));
+        // The quality's sparkle in the corner
+        int sx = 46, sy = 9;
+        c.Rect(sx - 3, sy, 7, 1, Rgb(255, 250, 220));
+        c.Rect(sx, sy - 3, 1, 7, Rgb(255, 250, 220));
+        c.Set(sx, sy, Rgb(255, 255, 255));
+        Pix.Shade(c, 3, 3, w - 6, 1, 0.25f);
+    }
+
+    /// <summary>A painting's card, two tiles wide on the wall above its frame's tiles; the prop's model says what it shows.</summary>
+    public static void ContestPainting(KitBuilder kit, string model)
+    {
+        var parts = model.Split(':');
+        int quality = parts.Length > 1 && int.TryParse(parts[1], out int q) ? q : 0;
+        string colour = parts.Length > 2 ? parts[2] : "gray";
+        var face = kit.Face($"hoenn.painting.{quality}.{colour}", 56, 30, c => PaintContestPainting(c, quality, colour));
+        kit.Card(4, 60, 32.5f, 36, 66, face);
+    }
+
+    // ------------------------------------------------------------------ the Safari Zone's Pokéblock feeders
+
+    /// <summary>
+    /// One of the Safari Zone's Pokéblock feeders (plan 21 · H11, part f; style guide, "Hoenn's last things", "A Pokéblock
+    /// feeder"): a little roofed box of pale wood on a post, its open front showing a tray, as a card standing on the
+    /// feeder's tile. Our own drawing. 24 by 34.
+    /// </summary>
+    public static void PaintFeeder(PixelCanvas c)
+    {
+        Color post = Rgb(120, 92, 64), postLit = Rgb(150, 118, 84), wood = Rgb(214, 184, 132), woodShade = Rgb(176, 146, 98);
+        Color roof = Rgb(186, 82, 66), roofLit = Rgb(220, 112, 90), tray = Rgb(96, 70, 48), block = Rgb(240, 120, 150);
+        // The post into the ground
+        c.Rect(10, 18, 4, 16, post);
+        c.VLine(10, 18, 16, postLit);
+        // The box
+        c.Rect(3, 8, 18, 12, wood);
+        c.Rect(3, 17, 18, 3, woodShade);
+        // Its open front and the tray inside, a Pokéblock left in it
+        c.Rect(6, 11, 12, 6, tray);
+        c.Rect(9, 13, 3, 3, block);
+        c.Set(9, 13, Rgb(255, 196, 210));
+        // The roof, a gable over the box
+        for (int y = 0; y < 8; y++)
+        {
+            int half = 3 + y * 9 / 7;
+            c.HLine(12 - half, y + 1, half * 2, y < 2 ? roofLit : roof);
+        }
         Pix.Outline(c);
     }
 

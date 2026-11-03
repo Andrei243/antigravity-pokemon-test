@@ -947,8 +947,17 @@ public sealed partial class ScriptRunner
                 host.Poketch.Register(Enum.Parse<PoketchApp>(i.Name));
                 break;
             case Op.Safari:
+            {
+                bool wasOn = host.Safari.Active;
                 if (i.Option) host.Safari.Start(i.Number > 0 ? i.Number : i.Number < 0 ? SafariGame.NoStepLimit : SafariGame.StartSteps);
                 else host.Safari.End();
+                // Hoenn's Safari Fan Club counts a game from its start and goes on the air at its end (plan 21 · H11, part f)
+                if (host.Region == RegionDatabase.Hoenn)
+                {
+                    if (i.Option) Broadcasts.BeginSafari(host.Story);
+                    else if (wasOn) Broadcasts.EndSafari(host.Story);
+                }
+            }
                 break;
             case Op.Bicycle:
                 host.Ride(i.Option);

@@ -6,6 +6,8 @@
   "trees": "Round",
   // Emerald's Pokéblock feeders (plan 21 · H11, part d), read on their tiles: common.HoennFeeder
   "readAt": [ { "x": 85, "z": 22, "script": "HoennFeeder" } ],
+  // The feeders drawn as Pokéblock feeders (plan 21 · H11, part f)
+  "props": [ { "type": "PokeblockFeeder", "x": 85, "y": 22 } ],
   "people": {
     "boy_3": { "name": "Boy", "dialog": [ "I've only got a couple of Safari Balls left. Which Pokémon should I spend them on?" ] },
     "girl_3": { "name": "Girl", "dialog": [ "Oh, come on! I haven't caught a single thing! That's my entry fee wasted!" ] },

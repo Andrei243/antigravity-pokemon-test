@@ -4,6 +4,7 @@ using System.Linq;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
 using PokemonPlatinumEngine.Models.Contest;
+using PokemonPlatinumEngine.Overworld;
 using PokemonPlatinumEngine.UI;
 
 namespace PokemonPlatinumEngine.Core;
@@ -45,6 +46,8 @@ public partial class GameEngine
         StartTransition(GameState.Appeals, () =>
         {
             flow.AppealScreen.Begin(pokemon, PlayerIdentity.Name, category, rank, afterGame, fieldRandom);
+            // The stage's own song (plan 21 · H11, part f), until the field comes back
+            AudioManager.PlaySceneMusic("contest", Audio.MusicRole.Title);
             foreach (var a in flow.AppealScreen.Round!.Appealers) Graphics.PokemonSprites.Request(a.Pokemon.ModelName);
         });
     }
@@ -77,6 +80,36 @@ public partial class GameEngine
             flow.AppealScreen.Close();
             PlayFieldMusic();
         });
+    }
+
+    /// <summary>The Lilycove Museum's gallery, whose frames show the paintings hung (plan 21 · H11, part f).</summary>
+    public const string MuseumGallery = "LilycoveCity_LilycoveMuseum_2F";
+
+    /// <summary>The scripts of the gallery's five frames, in the qualities' order, which find each frame's tiles.</summary>
+    private static readonly string[] FrameScripts = { "CoolPainting", "BeautyPainting", "CutePainting", "SmartPainting", "ToughPainting" };
+
+    private readonly List<Prop> galleryProps = new();
+
+    /// <summary>
+    /// Every painting hung shows on the gallery's wall (plan 21 · H11, part f; Emerald's metatile swap of each frame, here a
+    /// painting of our own drawn over the frame's tiles: <see cref="Graphics.HoennArt.PaintContestPainting"/>), laid as the
+    /// gallery is come to. A frame is the westmost of the two tiles its script is read on.
+    /// </summary>
+    internal void HangThePaintings(Map room)
+    {
+        foreach (var prop in galleryProps) room.Props.Remove(prop);
+        galleryProps.Clear();
+        for (int q = 0; q < FrameScripts.Length; q++)
+        {
+            if (flow.HoennContests.Museum[q] is not { } painting) continue;
+            var tiles = room.TileScripts.Where(t => t.Value == FrameScripts[q]).Select(t => t.Key).OrderBy(t => t.X).ToList();
+            if (tiles.Count == 0) continue;
+            string? colour = PokemonDatabase.Get(painting.Species)?.Color;
+            var prop = new Prop { Type = PropType.Painting, X = tiles[0].X, Y = tiles[0].Y, Width = 2, Model = Graphics.HoennArt.ContestPaintingModel(q, colour) };
+            room.Props.Add(prop);
+            galleryProps.Add(prop);
+        }
+        world?.Forget(room, 0, 0, room.Width, room.Height);
     }
 
     /// <summary>Shows the painting of a quality in the museum's gallery (the Fashion Case's viewer, on a painting); the script waits for it.</summary>

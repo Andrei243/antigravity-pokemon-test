@@ -27,7 +27,7 @@ Thirty-two plans, each worked through over several sessions. Plans 01 to 07 buil
 | [18 · The other regions](18-regions.md) | What every region after Sinnoh needs first: the engine's Sinnoh-only parts made regional, the crossings and the level curve, every regional Pokédex, a reader of the GBA decompilations and the source for Generation 5 onward, the way back between regions and where a journey begins | W1 | 10 sessions |
 | [19 · Kanto](finished/19-kanto.md) | The region after Sinnoh, in full from FireRed and LeafGreen, in place of the stand-in Pallet Town | K1 | 9 sessions |
 | [20 · Johto](finished/20-johto.md) | Johto from HeartGold and SoulSilver with the same importer, the Pokégear and Apricorns | J1 | 15 sessions |
-| [21 · Hoenn](21-hoenn.md) | Hoenn from Emerald: Dive and the sea floor, Secret Bases, its contests and its own Frontier | H1 | 12 sessions |
+| [21 · Hoenn](finished/21-hoenn.md) | Hoenn from Emerald: Dive and the sea floor, Secret Bases, its contests and its own Frontier | H1 | 12 sessions |
 | [22 · Unova](22-unova.md) | The first region with no decompilation, from Black 2 and White 2, with its seasons | U1 | 12 sessions |
 | [23 · The later regions](23-later-regions.md) | Kalos, Alola, Galar, Paldea, Hisui as Sinnoh's past and Legends: Z-A's Lumiose, on the tile grid | Z1 | 24 sessions |
 | [24 · Guards](finished/24-guards.md) | What must not move, checked by machine: CLAUDE.md's rules as build errors, golden battles, scripts, teams and saves, strict data loading with schemas, and a damage oracle against Showdown's calculator | X1 | 6 sessions |

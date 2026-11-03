@@ -252,6 +252,8 @@ public class TextTests
             "Bookshelf", "Rack", "Houseplant", "PC Desk", "Music Box", "Pokémon Bust", "Silver Pokémon Bust", "Piano", "Guest Set", "Wall Clock",
             "Masterpiece", "Tea Set", "Look", "FLAG_VILLA_FURNITURE_", "Chandelier", "VeilstoneGameCorner", "VeilstonePrizeExchange", "Coin Case"
         },
+        // The Lilycove Museum's gallery, whose frames show the paintings hung (plan 21 · H11, part f)
+        ["Core/GameEngine.HoennContests.cs"] = new[] { "LilycoveCity_LilycoveMuseum_2F" },
         // The lobby's map, a person of the room by name, and the look a trainer with none takes
         ["Core/GameEngine.Frontier.cs"] = new[] { "BattleTower", "opponent_2", "Trainer" },
         ["Core/GameEngine.Capsules.cs"] = new[] { "Fashion Case" },

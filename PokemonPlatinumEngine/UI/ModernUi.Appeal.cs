@@ -155,6 +155,39 @@ internal static partial class ModernUi
             Tag(crowd.X + crowd.Width - 36 - UiFonts.Measure(Text.Of("appeal.crowdHeld"), 20, UiWeight.Black) - 28, crowd.Y + 20, Text.Of("appeal.crowdHeld"), Muted, 34);
     }
 
+    // An appeal's burst round the appealer (plan 21 · H11, part f; AppealBurst): sparks in its quality's colour and shape
+    private static void AppealSparks(Vector2 c, ContestStat quality, float age, int seed)
+    {
+        var tint = QualityColor(quality);
+        foreach (var s in AppealBurst.Sparks(quality, age, seed))
+        {
+            var p = c + s.Offset;
+            var col = new Color(tint.R, tint.G, tint.B, (byte)(255 * s.Alpha));
+            var light = new Color((byte)255, (byte)255, (byte)255, (byte)(220 * s.Alpha));
+            switch (s.Shape)
+            {
+                case SparkShape.Star:
+                    Star(p, s.Size, col);
+                    Star(p, s.Size * 0.45f, light);
+                    break;
+                case SparkShape.Heart:
+                    Heart(p, s.Size, col);
+                    break;
+                case SparkShape.Ring:
+                    UiShapes.Ring(p, s.Size, 4, col);
+                    break;
+                case SparkShape.Glint:
+                    UiShapes.Circle(p, s.Size * 0.35f, light);
+                    UiShapes.Line(p - new Vector2(s.Size, 0), p + new Vector2(s.Size, 0), 3, col);
+                    UiShapes.Line(p - new Vector2(0, s.Size), p + new Vector2(0, s.Size), 3, col);
+                    break;
+                default:
+                    UiShapes.Triangle(p + new Vector2(0, -s.Size), p + new Vector2(s.Size * 0.6f, s.Size * 0.5f), p + new Vector2(-s.Size * 0.5f, s.Size * 0.4f), col);
+                    break;
+            }
+        }
+    }
+
     // The judge's eye: a lens with a pupil, over the card of whoever has begun a combo
     private static void AppealEye(Vector2 c, float r)
     {
@@ -176,6 +209,7 @@ internal static partial class ModernUi
         var c = new Vector2(box.X + box.Width / 2f, box.Y + box.Height / 2f - 20);
         BallDisc(c, 150);
         PixelArt(PixelArtGenerator.SpriteOf(a.Pokemon), c, 2, screen.Phase == AppealPhase.Turn ? MathF.Abs(MathF.Sin((float)FrameClock.Now * 5f)) * 10f : 0f);
+        if (screen.Phase == AppealPhase.Turn) AppealSparks(c, screen.BurstQuality, screen.BurstAge, screen.BurstSeed);
         if (screen.MoveShown.Length > 0)
         {
             var data = MoveDatabase.Has(screen.MoveShown) ? MoveDatabase.Get(screen.MoveShown) : null;

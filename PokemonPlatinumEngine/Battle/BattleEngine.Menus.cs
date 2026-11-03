@@ -651,6 +651,7 @@ public partial class BattleEngine
         if (Pokeblocks == null || index < 0 || index >= listed.Count) return;
         var (slot, block) = listed[index];
         Pokeblocks.RemoveAt(slot);
+        PokeblocksThrown++;
         HUD.PokeblockIndex = Math.Max(0, Math.Min(index, listed.Count - 2));
         AudioManager.PlaySound("select");
         Commit(BattleChoice.Pokeblock(PlayerSlots[0].Place, block));

@@ -205,6 +205,8 @@ public partial class GameEngine
         }
         // The Villa's furniture stands where it is owned (plan 06 · R16b)
         if (flow.Map.Name == VillaMap) FurnishVilla();
+        // and the Lilycove Museum's paintings where they hang (plan 21 · H11, part f)
+        if (flow.Map.Name == MuseumGallery) HangThePaintings(flow.Map);
         // and a secret base's decorations where they were set down, its door aimed at its spot (plan 21 · H10)
         if (SecretBaseLayouts.IsBaseMap(flow.Map.Name)) LayOutSecretBase(flow.Map);
         // The friends' trainers stand in the friends' hall as it is come to (plan 13 · V23)

@@ -181,6 +181,8 @@ partial class Harness
         Flags("the wall", "FLAG_SYS_BRAILLE_REGICE_COMPLETED");
         At("IslandCave", 8, 10, Direction.Up);
         game.ArriveOnMap(); Frames(20); Shot("h253_island_cave_chamber");
+        // before the Regi itself, a tile under it (it stands at 8, 7)
+        At("IslandCave", 8, 8, Direction.Up);
         shotName = "h254_regice";
         game.Interact(); Frames(3);
         ReadOn();
@@ -197,6 +199,8 @@ partial class Harness
         Flags("the wall", "FLAG_SYS_REGIROCK_PUZZLE_COMPLETED");
         At("DesertRuins", 8, 10, Direction.Up);
         game.ArriveOnMap(); Frames(20); Shot("h259_desert_ruins_chamber");
+        // before the Regi itself, a tile under it (it stands at 8, 7)
+        At("DesertRuins", 8, 8, Direction.Up);
         shotName = "h25a_regirock";
         game.Interact(); Frames(3);
         ReadOn();
@@ -213,6 +217,8 @@ partial class Harness
         Flags("the wall", "FLAG_SYS_REGISTEEL_PUZZLE_COMPLETED");
         At("AncientTomb", 8, 10, Direction.Up);
         game.ArriveOnMap(); Frames(20); Shot("h25f_ancient_tomb_chamber");
+        // before the Regi itself, a tile under it (it stands at 8, 7)
+        At("AncientTomb", 8, 8, Direction.Up);
         shotName = "h260_registeel";
         game.Interact(); Frames(3);
         ReadOn();
