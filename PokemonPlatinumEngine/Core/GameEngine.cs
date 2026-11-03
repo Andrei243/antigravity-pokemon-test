@@ -574,7 +574,8 @@ public partial class GameEngine
         GameClock.FixedSeason = Settings.Season;
         TakeTheSeason();
         if (AudioManager.IsMuted != Settings.Muted) AudioManager.ToggleMute();
-        AudioManager.SetVolumes(Settings.MusicVolume / 100f, Settings.SoundVolume / 100f, Settings.CryVolume / 100f, Settings.AmbienceVolume / 100f);
+        AudioManager.SetVolumes(Settings.MusicVolume / 100f, Settings.SoundVolume / 100f, Settings.CryVolume / 100f, Settings.AmbienceVolume / 100f, Settings.VoiceVolume / 100f);
+        UseVoices();
         AudioManager.Handheld = Settings.Speakers == SpeakerMode.Handheld;
         AudioManager.Mono = Settings.Speakers == SpeakerMode.Mono;
         // A battle under way plays on with the scene as the options now have it (plan 08 · P1); the battle style is

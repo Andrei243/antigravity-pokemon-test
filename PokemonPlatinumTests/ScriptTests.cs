@@ -158,6 +158,7 @@ public class ScriptTests
           fade out 0.2
           fade in
           wait 0.5
+          waitvoice
           camera pan 3 4 0.5
           camera release
           camera shake

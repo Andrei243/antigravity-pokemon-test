@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace PokemonPlatinumEngine.Audio;
 
 /// <summary>The buses everything the game hears goes through, each with its own volume.</summary>
-public enum AudioBus { Music, Fanfare, Sound, Cry, Ambience }
+public enum AudioBus { Music, Fanfare, Sound, Cry, Ambience, Voice }
 
 /// <summary>
 /// Mixes everything the game hears, the way the DS games do: a new area's theme fades the old one out first, a
@@ -115,7 +115,18 @@ public sealed class AudioMixer
     {
         get { lock (gate) return musicNow.Sound; }
     }
-    private readonly float[] busVolume = { 1f, 1f, 1f, 1f, 1f };
+    private readonly float[] busVolume = { 1f, 1f, 1f, 1f, 1f, 1f };
+
+    // Plan 26 · V2: the one voice speaking now, and the one being cut (a new line cuts the one before it with a fade)
+    private SoundSample? voice, voiceFading;
+    private int voicePosition, voiceFadingPosition, voiceFadeLeft;
+    private float voiceDuck = 1f, voiceEnvelope;
+
+    /// <summary>How far the music and the ambience dip under a voice (plan 26 · V2): gentler than a cry's dip.</summary>
+    public const float VoiceDuckLevel = 0.6f;
+
+    /// <summary>How long a voice that is cut takes to fade out (plan 26: 30 ms), so a cut never clicks.</summary>
+    public const float VoiceCutTime = 0.03f;
     private readonly SoundVoice[] sounds = new SoundVoice[MaxSounds];
     private readonly BedVoice[] beds = new BedVoice[MaxBeds];
     private readonly float[] handheldHigh = new float[2], handheldLastIn = new float[2], handheldLow1 = new float[2], handheldLow2 = new float[2];
@@ -391,6 +402,95 @@ public sealed class AudioMixer
         lock (gate) Array.Clear(sounds);
     }
 
+    /// <summary>
+    /// Speaks a line (plan 26 · V2): mono samples at the DS's rate on <see cref="AudioBus.Voice"/>, centred. One voice
+    /// speaks at a time: whatever was speaking is cut with a fade of <see cref="VoiceCutTime"/>. While a voice speaks the
+    /// music and the ambience dip to <see cref="VoiceDuckLevel"/>; a cry still dips the music and never the voice.
+    /// </summary>
+    public void PlayVoice(SoundSample line)
+    {
+        lock (gate)
+        {
+            CutVoice();
+            voice = line;
+            voicePosition = 0;
+        }
+    }
+
+    /// <summary>Cuts the voice speaking now with a short fade (the A button on a finished line, a scene skipped). Nothing when none speaks.</summary>
+    public void StopVoice()
+    {
+        lock (gate) CutVoice();
+    }
+
+    private void CutVoice()
+    {
+        if (voice == null) return;
+        voiceFading = voice;
+        voiceFadingPosition = voicePosition;
+        voiceFadeLeft = (int)(VoiceCutTime * Synthesizer.DsRate);
+        voice = null;
+    }
+
+    /// <summary>Whether a voice is speaking now (the fade of one cut counts for nothing).</summary>
+    public bool VoicePlaying
+    {
+        get { lock (gate) return voice != null; }
+    }
+
+    /// <summary>The envelope of the voice speaking now, 0 to about 1: what moves a speaker's mouth (plan 26 · V6).</summary>
+    public float VoiceLevel
+    {
+        get { lock (gate) return voice == null ? 0f : voiceEnvelope; }
+    }
+
+    /// <summary>How far the music and the ambience are dipped for a voice now: 1 with none.</summary>
+    public float VoiceDuck
+    {
+        get { lock (gate) return voiceDuck; }
+    }
+
+    /// <summary>Adds the voice (and the fade of one cut) into <paramref name="o"/>, centred, and moves the voice's dip along.</summary>
+    private void RenderVoice(Span<float> o, float dt)
+    {
+        int n = o.Length / 2;
+        float bus = busVolume[(int)AudioBus.Voice];
+        float centre = MathF.Cos(MathF.PI / 4f) * bus;
+        if (voiceFading != null)
+        {
+            var data = voiceFading.Samples;
+            int total = (int)(VoiceCutTime * Synthesizer.DsRate);
+            for (int i = 0; i < n && voiceFadeLeft > 0 && voiceFadingPosition < data.Length; i++, voiceFadeLeft--)
+            {
+                float x = data[voiceFadingPosition++] * centre * voiceFadeLeft / total;
+                o[i * 2] += x;
+                o[i * 2 + 1] += x;
+            }
+            if (voiceFadeLeft <= 0 || voiceFadingPosition >= data.Length) voiceFading = null;
+        }
+        if (voice != null)
+        {
+            var data = voice.Samples;
+            int count = Math.Min(n, data.Length - voicePosition);
+            float peak = 0f;
+            for (int i = 0; i < count; i++)
+            {
+                float s = data[voicePosition + i];
+                peak = MathF.Max(peak, MathF.Abs(s));
+                float x = s * centre;
+                o[i * 2] += x;
+                o[i * 2 + 1] += x;
+            }
+            voicePosition += count;
+            // A quick rise and a slower fall: an envelope a mouth can follow
+            voiceEnvelope = peak > voiceEnvelope ? peak : voiceEnvelope + (peak - voiceEnvelope) * MathF.Min(1f, dt / 0.08f);
+            if (voicePosition >= data.Length) { voice = null; voiceEnvelope = 0f; }
+        }
+        float target = voice != null ? VoiceDuckLevel : 1f;
+        if (voiceDuck > target) voiceDuck = MathF.Max(target, voiceDuck - dt / DuckTime);
+        else if (voiceDuck < target) voiceDuck = MathF.Min(target, voiceDuck + dt / UnduckTime);
+    }
+
     private void StartPending()
     {
         // A song of the other sound takes over from the one before, which has faded out (or is cut, for a battle)
@@ -504,12 +604,16 @@ public sealed class AudioMixer
                 if (duck > duckTarget) duck = MathF.Max(duckTarget, duck - dt / DuckTime);
                 else if (duck < duckTarget) duck = MathF.Min(duckTarget, duck + dt / UnduckTime);
 
+                // A voice speaks (plan 26 · V2) and the music and the ambience dip under it; with none, nothing here changes a sample
+                RenderVoice(o, dt);
+
                 // The music holds its place while a fanfare plays. A song in the modern sound is rendered at the mix's
                 // rate below, with this chunk's gain, never here
                 var song = musicNow;
                 bool modernSong = ReferenceEquals(song, modernMusic);
                 bool musicSounds = song.Song != null && musicGain > 0f;
                 float musicLevel = musicGain * duck * busVolume[(int)AudioBus.Music];
+                if (voiceDuck != 1f) musicLevel *= voiceDuck;
                 if (musicSounds && !modernSong) song.Render(o, musicLevel);
                 var jingle = fanfareNow;
                 bool modernJingle = ReferenceEquals(jingle, modernFanfare) && jingle.Song != null;
@@ -583,6 +687,7 @@ public sealed class AudioMixer
         int n = o.Length / 2;
         float step = dt / AmbienceFade;
         float bus = busVolume[(int)AudioBus.Ambience];
+        if (voiceDuck != 1f) bus *= voiceDuck;
         for (int b = 0; b < beds.Length; b++)
         {
             ref var v = ref beds[b];

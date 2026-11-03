@@ -112,7 +112,7 @@ public class RegionMovementTests
     {
         var rows = Enum.GetValues<OptionRow>();
         Assert.Equal(Array.IndexOf(rows, OptionRow.WildPokemon) + 1, Array.IndexOf(rows, OptionRow.Movement));
-        Assert.Equal(Array.IndexOf(rows, OptionRow.Movement) + 1, Array.IndexOf(rows, OptionRow.Controls));
+        Assert.Equal(Array.IndexOf(rows, OptionRow.Movement) + 1, Array.IndexOf(rows, OptionRow.Voices));
         Assert.DoesNotContain(nameof(OptionRow.Movement), FirstStartScreen.Wanted);
 
         var s = new GameSettings();

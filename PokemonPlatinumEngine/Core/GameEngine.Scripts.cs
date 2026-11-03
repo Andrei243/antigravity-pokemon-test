@@ -1137,21 +1137,28 @@ public partial class GameEngine
             // A skip's dark keeps the script waiting while it closes and opens, but not the hurry in its middle (plan 12 · Q20)
             || (game.skipPhase != SkipPhase.None && !game.skipRunning);
 
-        public void Say(string? speaker, IReadOnlyList<string> lines)
+        public void Say(string? speaker, IReadOnlyList<string> lines) => Say(speaker, lines, Array.Empty<SpokenLine?>());
+
+        public void Say(string? speaker, IReadOnlyList<string> lines, IReadOnlyList<SpokenLine?> voices)
         {
-            // (In a hurry the lines are dropped unread)
+            // (In a hurry the lines are dropped unread, and nothing of them is heard)
             if (lines.Count == 0 || Skipping) return;
-            game.flow.Dialogue.ShowDialogue(speaker ?? "", lines);
+            game.flow.Dialogue.ShowDialogue(speaker ?? "", lines, voices);
             game.flow.State = GameState.Dialogue;
         }
 
-        public void Ask(string? speaker, string question, IReadOnlyList<string> answers, int cancel)
+        /// <summary>Whether the box's voice still speaks (plan 26 · V2: a script's <c>waitvoice</c>); never in a hurry.</summary>
+        public bool VoiceSpeaking => !Skipping && game.flow.Dialogue.Voice.IsSpeaking;
+
+        public void Ask(string? speaker, string question, IReadOnlyList<string> answers, int cancel) => Ask(speaker, question, answers, cancel, null);
+
+        public void Ask(string? speaker, string question, IReadOnlyList<string> answers, int cancel, SpokenLine? voice)
         {
             game.flow.Choice.Dismiss();
             game.flow.PendingAnswers = answers;
             game.flow.PendingCancel = cancel;
             game.flow.ScriptAnswer = Math.Max(0, cancel);
-            game.flow.Dialogue.ShowQuestion(speaker ?? "", question);
+            game.flow.Dialogue.ShowQuestion(speaker ?? "", question, voice);
             game.flow.State = GameState.Dialogue;
         }
 

@@ -156,6 +156,36 @@ public static class AudioManager
         mixer.PlaySound(Cries.Shaped(species, form, shape), AudioBus.Cry, 1f, shape.Clamped().PanPosition);
     }
 
+    /// <summary>
+    /// A spoken line asked for (plan 26 · V2), noted for whoever listens as "voice &lt;key&gt; &lt;voice&gt;", with a take in
+    /// a pack or without, with an audio device or without. No caption is shown: the text box is the line's own caption
+    /// (plan 12 · Q9). Nothing in a hurry, where no line is shown.
+    /// </summary>
+    public static void NoteVoice(SpokenLine line)
+    {
+        if (hushed) return;
+        heard?.Add($"voice {line.Key} {line.Voice ?? "-"}");
+    }
+
+    /// <summary>Speaks a take on the voice bus, cutting whatever spoke before (plan 26 · V2). Nothing without an audio device or muted.</summary>
+    public static void PlayVoice(SoundSample take)
+    {
+        if (hushed) return;
+        heard?.Add("voice play");
+        if (isMuted || !isInitialized) return;
+        mixer.PlayVoice(take);
+    }
+
+    /// <summary>Cuts the voice speaking with a short fade (plan 26 · V2). Tests hear "voice cut".</summary>
+    public static void StopVoice()
+    {
+        heard?.Add("voice cut");
+        if (isInitialized) mixer.StopVoice();
+    }
+
+    /// <summary>The envelope of the voice speaking now (plan 26: what V6's mouths follow); 0 without a device.</summary>
+    public static float VoiceLevel => isInitialized ? mixer.VoiceLevel : 0f;
+
     /// <summary>Makes the cries a scene is about to play on a worker, so none is made on the frame that plays it. Nothing without an audio device.</summary>
     public static void RequestCries(IEnumerable<Pokemon> pokemon)
     {
@@ -328,8 +358,9 @@ public static class AudioManager
     /// The options' volumes, 0 to 1, one for each bus but the fanfares', which follow the music (a fanfare is the
     /// music's own pause).
     /// </summary>
-    public static void SetVolumes(float music, float sound, float cries, float ambience)
+    public static void SetVolumes(float music, float sound, float cries, float ambience, float voices = 1f)
     {
+        mixer.SetVolume(AudioBus.Voice, voices);
         mixer.SetVolume(AudioBus.Music, music);
         mixer.SetVolume(AudioBus.Fanfare, music);
         mixer.SetVolume(AudioBus.Sound, sound);

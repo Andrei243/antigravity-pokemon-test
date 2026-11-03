@@ -43,6 +43,7 @@ public enum OptionRow
     RetryBattles,
     Follower, WildPokemon,
     Movement,
+    Voices, VoiceVolume, LetVoicesFinish,
     Controls,
     Jukebox,
     Packs,
@@ -468,6 +469,16 @@ public class OptionsScreen
             case OptionRow.AreaChecklist:
                 s.AreaChecklist = !s.AreaChecklist;
                 break;
+            case OptionRow.Voices:
+                // Off, Story only, All, and round again (plan 26 · V2)
+                s.Voices = (VoiceMode)Wrap((int)s.Voices + step, 3);
+                break;
+            case OptionRow.VoiceVolume:
+                s.VoiceVolume = Math.Clamp(s.VoiceVolume + step * GameSettings.VolumeStep, 0, 100);
+                break;
+            case OptionRow.LetVoicesFinish:
+                s.LetVoicesFinish = !s.LetVoicesFinish;
+                break;
             case OptionRow.Tips:
                 // Off, as the rules have it, On (plan 12 · Q23), and round again
                 s.Tips = (RulesDefault)Wrap((int)s.Tips + step, 3);
@@ -620,6 +631,9 @@ public class OptionsScreen
         OptionRow.TextSize => (Text.Of("options.textSize.label"), Text.Of($"options.textSize.value.{s.TextSize}"), Text.Of($"options.textSize.help.{s.TextSize}")),
         OptionRow.ColourVision => (Text.Of("options.colourVision.label"), Text.Of($"options.colourVision.value.{s.ColourVision}"), Text.Of($"options.colourVision.help.{s.ColourVision}")),
         OptionRow.HighContrast => (Text.Of("options.highContrast.label"), OnOff(s.HighContrast), Text.Of(s.HighContrast ? "options.highContrast.help.on" : "options.highContrast.help.off")),
+        OptionRow.Voices => (Text.Of("options.voices.label"), Text.Of($"options.voices.value.{s.Voices}"), Text.Of($"options.voices.help.{s.Voices}")),
+        OptionRow.VoiceVolume => (Text.Of("options.voiceVolume.label"), Percent(s.VoiceVolume), Text.Of("options.voiceVolume.help")),
+        OptionRow.LetVoicesFinish => (Text.Of("options.letVoicesFinish.label"), OnOff(s.LetVoicesFinish), Text.Of(s.LetVoicesFinish ? "options.letVoicesFinish.help.on" : "options.letVoicesFinish.help.off")),
         OptionRow.ResetDefaults => (Text.Of("options.resetDefaults.label"), Text.Of("options.resetDefaults.value"), Text.Of("options.resetDefaults.help")),
         OptionRow.Controls => (Text.Of("options.controls.label"), Text.Of("options.controls.value"), Text.Of("options.controls.help")),
         OptionRow.Jukebox => (Text.Of("options.jukebox.label"), Text.Of("options.jukebox.value"), Text.Of("options.jukebox.help")),

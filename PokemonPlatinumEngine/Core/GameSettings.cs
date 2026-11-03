@@ -281,6 +281,19 @@ public sealed class GameSettings
     public MovementChoice Movement { get; set; } = MovementChoice.AsTheRegion;
 
     /// <summary>
+    /// Whose lines are spoken (plan 26 · V2): nobody's, the named cast's alone (Story only), or everyone's. Off unless
+    /// chosen (plan 26's decision 4: off until the first chapter is voiced), and off gives back the game without voices
+    /// exactly: nothing is looked up, loaded or played.
+    /// </summary>
+    public VoiceMode Voices { get; set; } = VoiceMode.Off;
+
+    /// <summary>How loud the voices speak, 0 to 100 (plan 26 · V2): the voice bus's own volume.</summary>
+    public int VoiceVolume { get; set; } = 100;
+
+    /// <summary>Whether A at a finished line waits for its voice to end (plan 26 · V2); off, A goes on and cuts it.</summary>
+    public bool LetVoicesFinish { get; set; }
+
+    /// <summary>
     /// Every option back at its default (plan 12 · Q3: the options' last row, behind a question): the settings as
     /// <c>new GameSettings()</c> has them. Not the scenes this machine has seen (<see cref="ScenesSeen"/>), which are
     /// no option but a record of what was played, nor what the first run measured (plan 16 · T23), and not what a switch of the command line set for this run alone,

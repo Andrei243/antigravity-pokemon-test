@@ -716,7 +716,15 @@ public sealed class HeadlessScriptHost : IScriptHost
     /// <summary>How many times the text box was opened: lines said one after another are one talk.</summary>
     public int Talks { get; private set; }
 
-    public void Say(string? speaker, IReadOnlyList<string> lines)
+    public void Say(string? speaker, IReadOnlyList<string> lines) => Say(speaker, lines, Array.Empty<SpokenLine?>());
+
+    /// <summary>
+    /// The voices of the lines said (plan 26 · V2): the line of <see cref="Transcript"/> each is beside (by its place
+    /// there), its key and its voice. A line nobody speaks (the game's own voice, a sign) has none.
+    /// </summary>
+    public List<(int Line, SpokenLine Voice)> Voices { get; } = new();
+
+    public void Say(string? speaker, IReadOnlyList<string> lines, IReadOnlyList<SpokenLine?> voices)
     {
         Shown("say something");
         string? who = speaker != null ? Named(speaker) : null;
@@ -728,15 +736,22 @@ public sealed class HeadlessScriptHost : IScriptHost
         }
         Waits();
         Talks++;
-        foreach (string line in lines) Transcript.Add((who, Named(line)));
+        for (int k = 0; k < lines.Count; k++)
+        {
+            if (k < voices.Count && voices[k] is { } voice) Voices.Add((Transcript.Count, voice));
+            Transcript.Add((who, Named(lines[k])));
+        }
     }
 
-    public void Ask(string? speaker, string question, IReadOnlyList<string> answers, int cancel)
+    public void Ask(string? speaker, string question, IReadOnlyList<string> answers, int cancel) => Ask(speaker, question, answers, cancel, null);
+
+    public void Ask(string? speaker, string question, IReadOnlyList<string> answers, int cancel, SpokenLine? voice)
     {
         Shown("ask something");
         NeverInAHurry("a question");
         Waits();
         string asked = Named(question);
+        if (voice != null) Voices.Add((Transcript.Count, voice));
         Transcript.Add((speaker != null ? Named(speaker) : null, asked));
         int answer = Answers.Count > 0 ? Answers.Dequeue() : Decide?.Invoke(asked, answers) ?? 0;
         Answer = Math.Clamp(answer, 0, answers.Count - 1);

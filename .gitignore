@@ -44,6 +44,9 @@ portable.txt
 # Hand-made art that replaces generated art (plan 04: overrides/sprites, overrides/models)
 overrides/
 
+# Voice packs (plan 26 · V2): voice/<language>/ at the repository's root or beside the game, a separate download, never in git
+/voice/
+
 # The data importer's hand corrections are part of the repository
 !tools/DataImporter/Overrides/
 

@@ -643,6 +643,28 @@ A region file may also name the sound its music plays in, `"sound": "modern"` (p
 
 `eyeThemes` is the original's table of eye themes (`src/field_bgm.c`), by our names for the classes, one entry where the original has one for each gender; its values are the short names of `MusicDirector.EyeThemes` (`boy`, `girl`, `kid`, `lady`, `rich`, `mountain`, `fighter`, `sport`, `fun`, `mystery`, `sailor`, `galactic`, `ace`, `eliteFour`, `champion`). `battleThemes` names the few classes whose battle has a theme of its own (`MusicDirector.BattleThemes`: `gym`, `rival`, `galactic`, `galacticBoss`, `eliteFour`, `champion`). A class in neither gets `eye_boy` and the trainer battle theme. `MusicTests` holds every trainer class the maps use to an entry.
 
+## Voice packs
+
+Plan 26 · V2. A pack is the spoken lines of one language, never in git (`/voice/` is ignored): a folder `voice/<language>/` beside the executable, or at the repository's root while the game is developed (`VoiceLibrary.FoldersFor`). It holds a file to a take and `pack.json` listing them (`Audio/VoiceLibrary.cs`, `VoicePackFile`):
+
+```json
+{
+  "version": 1,
+  "language": "en",
+  "lines": [
+    { "key": "script:Twinleaf.Rival#3.0", "voice": "rival", "file": "rival/script+Twinleaf.Rival#3.0.wav", "textHash": "1f0c9a2e", "fileHash": "7d03b1c4" }
+  ]
+}
+```
+
+- `key` is the line's key in `Data/voice/lines.json` (plan 17 · N4's address), or a variant's (`…~starter=Piplup`, `…~assistant=Dawn`), which the game asks for where the line names those.
+- `voice` is the cast's voice. A line said by whoever is spoken to (`@self` in the catalogue) may have one take, which any voice speaks, or a take for each voice, of which the game plays the speaker's.
+- `file` is relative to the pack: `<voice>/<key>.<ext>`, the colons of both written `+` (`VoicePacks.FileOf`). Today the game reads WAV (16- or 24-bit PCM or 32-bit float, mono or stereo, any rate, taken to the DS's 32,768 Hz); the plan's Ogg Vorbis waits for its decoder package (NVorbis) and the user's OK, and a file with no decoder counts as missing.
+- `textHash` is the hash of the English the take was made from (`VoiceCatalogue.HashOf`, the catalogue's `hash`). A line whose English has changed since is **stale** and never played: the text shows alone until the take is made again.
+- `fileHash` (FNV-1a of the bytes), `engine`, `seed` and `sample` are kept for `VoiceTool check` and for making a take again; the game reads none of them.
+
+`dotnet run --project tools/VoiceTool -- manifest [folder]` writes `pack.json` from the files a folder holds (each stamped with its line's English now), `check [folder]` holds a pack to the game (every key a line's, every file there, decoding, within the voice bus's loudness window of −24 to −18 dB with its peak under −1 dB, starting and ending at nothing; stale takes listed apart) and `vowels [folder] --voice <id>` or `--all` writes a pack of stand-in takes of synthesised vowels, to try the voices in the game before anything is recorded.
+
 ## Recorded battles
 
 A battle kept on the Vs. Recorder (plan 08 · P10; `Battle/Sim/BattleRecordFile.cs`) is a JSON file in `replays/` beside the saves (`SavePaths.Replays`), written by the game and never by hand, named by the day and the foe (`20261020-YoungsterTristan.json`, then `-2`, `-3` for more the same day). It holds everything the rules need to fight the battle again with no screen:
