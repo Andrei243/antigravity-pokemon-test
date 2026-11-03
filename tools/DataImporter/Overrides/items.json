@@ -661,5 +661,20 @@
     "canUseInOverworld": false,
     "description": "A pass for the ferry from Castelia's Liberty Pier to the Liberty Garden, given to champions.",
     "cantBeTossed": true
+  },
+  // The DexNav (plan 10 · F11, F12, our own after Omega Ruby and Alpha Sapphire's): switched on and off with USE, it
+  // lists what lives where the player stands and finds Pokémon hiding in the grass. Given with the National Pokédex
+  // once its page and its rustles are drawn; its id stands apart from the event key items
+  "DexNav": {
+    "id": 9530,
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "A device that tells what lives nearby and finds Pokémon hiding in tall grass. Switch it on to search.",
+    "cantBeTossed": true,
+    "fieldUse": "DexNav"
   }
 }

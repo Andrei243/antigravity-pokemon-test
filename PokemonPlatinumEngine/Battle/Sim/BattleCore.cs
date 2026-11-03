@@ -673,7 +673,7 @@ public sealed partial class BattleCore : IBattleContext
 
         // A partner sends theirs out with their own line
         var own = mine.Where(b => b.Trainer == null).ToList();
-        var go = Say(Text.Of("battle.go", ("pokemon", JoinNames(own.Select(b => ShownAs(b, b.Pokemon!))))));
+        var go = Say(Text.Of("battle.go", ("pokemon", JoinNames(own.Select(b => GoesOutAs(b, b.Pokemon!))))));
         foreach (var b in own)
         {
             OnEntered(b, opening: true);
@@ -1389,6 +1389,8 @@ public sealed partial class BattleCore : IBattleContext
     /// </summary>
     private void Give(Pokemon p, int exp, bool boosted, Pokemon foe, bool fought = true)
     {
+        // A Pokémon of the player's that loves it gains a fifth more (plan 10 · F7), before everything after the formula
+        exp = WithAffection(p, exp);
         // A crossed region's foes give half as much again (plan 18 · W4b-3), after the formula and before Easy's three halves
         if (CrossedExp) exp = LevelCaps.CrossedExp(exp);
         // Easy gives three halves of it (plan 13 · V2); the other difficulties leave it as it is

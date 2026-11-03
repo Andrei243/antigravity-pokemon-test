@@ -431,6 +431,7 @@ public partial class GameEngine
         LoadSecretBase(null, null);
         flow.Pastimes.Clear();
         flow.Apricorns.Clear();
+        flow.DexNav = new();
         flow.Photos.Clear();
         LoadFrontier(null);
         flow.ContestRecords.Load(null);
@@ -676,6 +677,7 @@ public partial class GameEngine
         LoadSecretBase(save.SecretBase, save.Decorations);
         flow.Pastimes.Load(save.Pastimes);
         flow.Apricorns.Load(save.Apricorns);
+        flow.DexNav = Overworld.DexNavState.From(save.DexNav);
         flow.Photos.Load(save.Photos);
         LoadFrontier(save.Frontier);
         flow.ContestRecords.Load(save.ContestRecords);
@@ -876,6 +878,7 @@ public partial class GameEngine
             Decorations = flow.Decorations.Count > 0 ? flow.Decorations : null,
             Pastimes = flow.Pastimes.ToSave(),
             Apricorns = flow.Apricorns.ToSave(),
+            DexNav = flow.DexNav.IsEmpty ? null : flow.DexNav.ToSave(),
             Photos = flow.Photos.ToSave(),
             Frontier = flow.Frontier,
             ContestRecords = flow.ContestRecords.IsEmpty ? null : flow.ContestRecords,
@@ -2063,6 +2066,8 @@ public partial class GameEngine
         if (flow.Safari.Step() && StartScript(FieldScripts.SafariTimeUp)) return true;
         // The Day Care's couple walk the step too, and an Egg of the team may hatch (Field_UpdateDaycare, plan 06 · R15)
         if (DayCareStep()) return true;
+        // The DexNav's find in the grass stays, flees or is met, or one is found (plan 10 · F12)
+        if (DexNavStep()) return true;
         // A Repel's last step says it has worn off (Repel_UpdateSteps, plan 06 · R11)
         if (flow.EncounterAids.Step() && StartScript(FieldScripts.RepelWoreOff)) return true;
         // The S.S. Tidal comes in by itself after enough steps aboard (plan 21 · H12, part k; Emerald's CountSSTidalStep)

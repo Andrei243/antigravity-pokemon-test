@@ -471,6 +471,8 @@ public class BattleCoreTests
         p.IsEgg = true;
         p.EvolutionProgress["uses:Rage Fist"] = 4;
         p.Ribbons.Add("RIBBON_COOL");
+        p.EncounterMarks.Add("SleepyTime");
+        p.Title = "SleepyTime";
         p.CapsuleId = 3;
         p.TeraType = TeraType.Of(PokemonType.Fire);
         p.Capsule = new BallCapsule(new[] { new BallSeal(SealDatabase.Seal("HEART_SEAL_A"), 180, 60) });

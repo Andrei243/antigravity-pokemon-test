@@ -161,6 +161,13 @@ public sealed class BattleSetup
     /// </summary>
     public Sim.BattleConditions? Conditions { get; init; }
 
+    /// <summary>
+    /// When and how a wild Pokémon was met (plan 10 · F9): the hour, the weather and whether a rod reeled it in, which
+    /// its marks are read from as it is caught (<see cref="Models.EncounterMarks"/>). Left out, a catch carries no
+    /// mark; nothing of the battle itself reads it.
+    /// </summary>
+    public Models.MarkMoment? Encounter { get; init; }
+
     /// <summary>What kind of battle it is (a roamer, the catching lesson, the Great Marsh, Pal Park).</summary>
     public BattleKind Kind { get; init; } = BattleKind.Normal;
 

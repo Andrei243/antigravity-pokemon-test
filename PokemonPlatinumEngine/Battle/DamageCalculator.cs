@@ -424,6 +424,8 @@ public static partial class DamageCalculator
         bool breaks = LaterItems.Breaks(attackerEffects.Any(e => e.IgnoresTargetAbility), defender);
         var defenderEffects = BattleEffects.Of(defender, includeAbility: !breaks).ToList();
         int stage = move.Data.CritStage + critBonus + attackerEffects.Sum(e => e.CritStageBonus) + ItemCritStages(attacker) + (attacker.Volatile.FocusEnergy ? 2 : 0) + attacker.Volatile.ChiStrike + attacker.Volatile.DragonCheer;
+        // A Pokémon of the player's devoted to it lands them a stage more often (plan 10 · F7; nothing under Platinum's rules)
+        stage += Models.Affection.CritStages(Models.Affection.In(attacker, rules));
         // Storm Throw, Frost Breath and Wicked Blow are critical with no roll (Showdown's willCrit; plan 06 · R24)
         // Laser Focus makes its user's hits critical with no roll for the turn after it too (plan 06 · R25)
         bool focused = attacker.Volatile.LaserFocusUntil >= (attacker.Field?.Turn() ?? int.MaxValue);

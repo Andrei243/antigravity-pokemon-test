@@ -219,6 +219,8 @@ public partial class GameEngine
                 Format = horde != null ? BattleFormat.Horde : second != null ? BattleFormat.Double : sos ? BattleFormat.Sos : BattleFormat.Single,
                 Partner = beside,
                 Conditions = BattleConditionsHere(),
+                // When, under what sky and how it was met, for a catch's mark (plan 10 · F9)
+                Encounter = new MarkMoment(GameClock.Now, flow.Map.WeatherAt(flow.Player.GridX, flow.Player.GridY), flow.Hooked),
                 Kind = kind,
                 CannotFlee = cannotFlee,
                 PlayerName = name,
