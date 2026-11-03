@@ -581,7 +581,9 @@ public class UnovaTests
                 // and the Liberty Garden's lighthouse since plan 29 · LS11d
                 || m.Name == "d12_tower"
                 // and the P2 Laboratory since plan 22 · U10, part c
-                || m.Name == "d13_house")
+                || m.Name == "d13_house"
+                // and the Abundant Shrine and its house since plan 22 · U10, part d
+                || m.Name is "d19_house01" or "d19_shirne01")
                 Assert.True(string.IsNullOrEmpty(m.StandInUntil), $"{m.Name} is still a stand-in");
             else Assert.False(string.IsNullOrEmpty(m.StandInUntil), $"{m.Name} is no stand-in");
         }
@@ -595,5 +597,27 @@ public class UnovaTests
         Assert.Equal(Architecture.Bellfield, Overworld.ArchitectureAt(110, 690));
         // Unova's names are its own: Sinnoh never looks in its table
         Assert.Null(WorldModels.Of("c12_house"));
+    }
+
+    [Fact]
+    public void RouteFourteenAndTheAbundantShrineAreOpenFromUndellaTown()
+    {
+        // Plan 22 · U10, part d: Route 14 on the overworld, walked to from Undella Town before any Hall of Fame, as Black 2's is
+        var walked = Walked.Value;
+        Assert.Contains(walked[Overworld], t => Overworld.AreaAt(t.X, t.Y)?.Key == "unova_route_14");
+        Assert.Contains(Unova.Index.Areas, k => k == "unova_route_14");
+        // its west end leads into the Abundant Shrine's wood, a map of its own, and back
+        var shrine = MapNamed("AbundantShrine");
+        Assert.Contains(walked.Keys, m => m.Name == "AbundantShrine");
+        Assert.Contains(shrine.Warps, w => w.TargetMap == "Unova" && Overworld.AreaAt(w.TargetX, w.TargetY)?.Key == "unova_route_14");
+        Assert.Contains(Overworld.Warps, w => w.TargetMap == "AbundantShrine");
+        // its trainers are Black 2's, levels and all; the shrine's scene's people are held back, the breeder talks
+        Assert.Contains(Overworld.Everyone, n => n.TrainerData?.Id == "unova_battle_girl_glinda");
+        Assert.Contains(shrine.Everyone, n => n.TrainerData?.Id == "unova_twins_rae_ula");
+        Assert.DoesNotContain(shrine.Everyone, n => n.Key is "11" or "12" or "13" or "14");
+        Assert.Contains(shrine.Everyone, n => n.Key == "10" && n.DialogLines.Count > 0);
+        // the house by the pond and the gate to Black City lead nowhere yet
+        Assert.DoesNotContain(shrine.Warps, w => w.TargetMap.StartsWith("AbundantShrine_", StringComparison.Ordinal));
+        Assert.Equal(BuildingKind.Shrine, WorldModels.Of("d19_shirne01", "unova")!.Kind);
     }
 }

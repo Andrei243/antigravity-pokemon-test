@@ -3586,6 +3586,24 @@ or beaten (`FLAG_UNOVA_FOUGHT_<SPECIES>`), back the next time its place is come 
   once Genesect has been fought, gives the **Shock Drive** (in the data already) once (`FLAG_UNOVA_GOT_SHOCK_DRIVE`); the other three
   drives are not given (the proposal). The Pokédex's area page leaves Genesect off, as Unova has no `special.json`.
 
+## Route 14 and the Abundant Shrine (2026-11-03, plan 22 · U10, part d)
+
+- **The places.** Black 2's `route_14` (a zone of the overworld, from Undella Town's north end west past the falls) and
+  `abundant_shrine` (its own matrix 190, the map `AbundantShrine`) are opened from the data (`world.json`, `--game black2
+  --data`), with Black 2's trainers, balls, hidden things and wild Pokémon by season; the words are ours.
+- **When they open.** From the start, as Black 2's do: their trainers are level 37 to 40 and their grass 33 to 40, the
+  middle of the story, not the post-game the plan's list put them in. (Black 2's black belt Jay stands there with a level-52
+  Heracross; his team is Black 2's.)
+- **What is shut.** Route 14's gate at its south-west end leads to Black City, which is not open; the house by the shrine's
+  pond leads into a room nobody opens yet. Both stay shut.
+- **What is held back.** The shrine's scene of the forces of nature (Black 2's artist at the shrine and the three at the
+  wood's mouth, behind placeholder flags, and its trigger before the shrine) and Route 14's trigger by the falls belong to
+  the old roads' scenes and are not built: the people are held back, the triggers have no script. The breeder by the pond
+  talks of the three great Pokémon; the shrine's plaque is read.
+- **The buildings.** `d19_shirne01` is a `Shrine` and `d19_house01` a house, both of Bellfield's way (the catalogue).
+- **Music.** No song is new: Route 14 plays Route 13's (`unova/route13`, Black 2's same theme), the shrine the Lostlorn
+  Forest's (`unova/lostlorn_forest`, Black 2's same theme).
+
 ## The Hidden Grottoes (2026-11-02, plan 22 · U11)
 
 Black 2's Hidden Grottoes are hollows in the trees that hold one thing at a time. The decompilation has the grotto's own room

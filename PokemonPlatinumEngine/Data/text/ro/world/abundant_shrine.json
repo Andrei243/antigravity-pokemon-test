@@ -1,0 +1,80 @@
+{
+  "people": {
+    "5": {
+      "name": { "en": [ "Jaye" ], "text": [ "Jaye" ] },
+      "before": {
+        "en": [ "I come to the shrine to wish for stronger Pokémon. Let's test the wish!" ],
+        "text": [ "Vin la altar să-mi doresc Pokémoni mai puternici. Hai să punem dorința la încercare!" ]
+      },
+      "after": {
+        "en": [ "Maybe I should wish a bit harder." ],
+        "text": [ "Poate ar trebui să-mi doresc ceva mai tare." ]
+      }
+    },
+    "6": {
+      "name": { "en": [ "Lurleen" ], "text": [ "Lurleen" ] },
+      "before": {
+        "en": [ "The pond is so pretty I could stay all day. Battle me while I do!" ],
+        "text": [ "Iazul e atât de frumos că aș sta aici toată ziua. Luptă cu mine cât stau!" ]
+      },
+      "after": {
+        "en": [ "Still pretty. Still beaten." ],
+        "text": [ "Tot frumos. Tot învinsă." ]
+      }
+    },
+    "7": {
+      "name": { "en": [ "Rae" ], "text": [ "Rae" ] },
+      "before": {
+        "en": [ "We came to see the shrine together! And to battle together!" ],
+        "text": [ "Am venit să vedem altarul împreună! Și să luptăm împreună!" ]
+      },
+      "after": {
+        "en": [ "Together we lost. That's still together!" ],
+        "text": [ "Am pierdut împreună. Tot împreună e!" ]
+      }
+    },
+    "8": {
+      "name": { "en": [ "Ula" ], "text": [ "Ula" ] },
+      "before": {
+        "en": [ "Two of us and one of you! That's fair, right?" ],
+        "text": [ "Noi două și tu singur! E corect, nu?" ]
+      },
+      "after": {
+        "en": [ "It wasn't fair at all. For us!" ],
+        "text": [ "N-a fost deloc corect. Pentru noi!" ]
+      }
+    },
+    "9": {
+      "name": { "en": [ "Wes" ], "text": [ "Wes" ] },
+      "before": {
+        "en": [ "I've walked every path in this wood. Now walk into a battle!" ],
+        "text": [ "Am umblat pe toate cărările din pădurea asta. Acum hai într-o luptă!" ]
+      },
+      "after": {
+        "en": [ "I'll walk home now." ],
+        "text": [ "Acum mă duc pe jos acasă." ]
+      }
+    },
+    "10": {
+      "name": { "en": [ "Pokémon Breeder" ], "text": [ "Crescător de Pokémoni" ] },
+      "dialog": {
+        "en": [ "The folk round here say three great Pokémon once made the land rich. The shrine's for the one that blessed the fields." ],
+        "text": [ "Oamenii de pe-aici spun că trei Pokémoni mari au făcut cândva pământul bogat. Altarul e pentru cel care a binecuvântat câmpurile." ]
+      }
+    }
+  },
+  "signs": {
+    "10807": {
+      "en": [ "Abundant Shrine\nA wood kept for the one who blesses the harvest" ],
+      "text": [ "Altarul Belșugului\nO pădure păstrată pentru cel care binecuvântează recolta" ]
+    },
+    "10808": {
+      "en": [ "A small shrine, worn smooth by the weather. Someone has left an offering of fruit." ],
+      "text": [ "Un altar mic, tocit de vreme. Cineva a lăsat o ofrandă de fructe." ]
+    },
+    "4": {
+      "en": [ "The words on the stone are too worn to read." ],
+      "text": [ "Cuvintele de pe piatră sunt prea tocite ca să poată fi citite." ]
+    }
+  }
+}

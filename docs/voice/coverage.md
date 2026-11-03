@@ -10,9 +10,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 |---|---|---|---|---|---|
 | The introduction (`intro:`) | 96 | 96 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1328 | 1286 | 42 | 1 | 0 |
-| Scripts (`script:`) | 10276 | 9812 | 464 | 17 | 0 |
-| People of the world (`world:`) | 7166 | 7104 | 62 | 4 | 0 |
-| **All** | 18866 | 18298 | 568 | 22 | 0 |
+| Scripts (`script:`) | 10272 | 9810 | 462 | 17 | 0 |
+| People of the world (`world:`) | 7193 | 7131 | 62 | 4 | 0 |
+| **All** | 18889 | 18323 | 566 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -22,7 +22,7 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 |---|---|
 | a Pokémon's cry | 244 |
 | a question's answers | 780 |
-| a sign | 1582 |
+| a sign | 1588 |
 | the game's own voice (speaker none) | 283 |
 | the game's own voice (text) | 1657 |
 
@@ -31,7 +31,7 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 - Named characters: 394 voices (357 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Cloned from the user's samples: `rival`.
 - Archetypes in use: 239, with 722 voices to cast (V5).
-- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1896.
+- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1892.
 
 ## Lines by voice
 
@@ -39,7 +39,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 
 | Voice | Lines | Shown only |
 |---|---|---|
-| `@self` | 1896 | 138 |
+| `@self` | 1892 | 136 |
 | `look:gentleman (any)` | 726 | 15 |
 | `rival` | 605 | 18 |
 | `look:grunt (any)` | 587 | 0 |
@@ -53,24 +53,24 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:scientist (any)` | 198 | 4 |
 | `look:receptionist (any)` | 159 | 19 |
 | `cynthia` | 157 | 1 |
+| `class:ace_trainer (any)` | 152 | 0 |
 | `look:sailor (any)` | 151 | 0 |
-| `class:ace_trainer (any)` | 148 | 0 |
 | `class:hiker (any)` | 148 | 0 |
 | `rowan` | 147 | 12 |
-| `class:fisherman (any)` | 144 | 0 |
+| `class:fisherman (any)` | 146 | 0 |
 | `look:woman (any)` | 133 | 14 |
 | `class:team_rocket (any)` | 132 | 0 |
 | `look:old_man (any)` | 132 | 4 |
+| `class:youngster (any)` | 128 | 0 |
 | `class:swimmer_m (any)` | 126 | 0 |
 | `class:picnicker (any)` | 124 | 0 |
-| `class:youngster (any)` | 124 | 0 |
 | `look:man (any)` | 118 | 4 |
 | `mom` | 116 | 7 |
 | `assistant` | 115 | 5 |
 | `look:guard (any)` | 115 | 0 |
-| `class:black_belt (any)` | 112 | 0 |
+| `class:black_belt (any)` | 114 | 0 |
 | `class:psychic (any)` | 112 | 0 |
-| `class:lass (any)` | 108 | 0 |
+| `class:lass (any)` | 110 | 0 |
 | `look:boy (any)` | 104 | 4 |
 | `class:swimmer_f (any)` | 102 | 0 |
 | `class:cooltrainer (any)` | 100 | 0 |
@@ -85,11 +85,11 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `cyrus` | 83 | 7 |
 | `look:aqua_grunt (any)` | 83 | 3 |
 | `look:hiker (any)` | 83 | 0 |
+| `class:twins (any)` | 80 | 0 |
 | `look:old_woman (any)` | 80 | 5 |
 | `class:camper (any)` | 78 | 0 |
 | `look:worker (any)` | 77 | 0 |
 | `class:swimmer (any)` | 76 | 0 |
-| `class:twins (any)` | 76 | 0 |
 | `ace_trainer` | 75 | 0 |
 | `look:fisherman (any)` | 75 | 4 |
 | `class:biker (any)` | 64 | 0 |
@@ -106,6 +106,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:scientist (any)` | 52 | 0 |
 | `class:worker (any)` | 52 | 0 |
 | `look:girl (any)` | 51 | 0 |
+| `class:battle_girl (any)` | 50 | 0 |
 | `class:beauty (any)` | 50 | 0 |
 | `class:young_couple (any)` | 50 | 0 |
 | `elder` | 50 | 0 |
@@ -113,7 +114,6 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `artist` | 49 | 1 |
 | `depot_agent` | 49 | 3 |
 | `clair` | 48 | 4 |
-| `class:battle_girl (any)` | 48 | 0 |
 | `crasher_wake` | 46 | 1 |
 | `drayden` | 46 | 0 |
 | `maxie` | 46 | 1 |
@@ -134,16 +134,16 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `collector` | 39 | 0 |
 | `colress` | 39 | 1 |
 | `owner` | 39 | 5 |
+| `class:gentleman (any)` | 38 | 0 |
 | `prof_birch` | 38 | 3 |
 | `wally` | 38 | 0 |
 | `baoba` | 37 | 0 |
-| `class:gentleman (any)` | 36 | 0 |
+| `class:backpacker (any)` | 36 | 0 |
 | `class:ninja_boy (any)` | 36 | 0 |
 | `look:magma_grunt (any)` | 36 | 0 |
 | `iris` | 35 | 0 |
 | `kurt` | 35 | 6 |
 | `look:pokefan_f (any)` | 35 | 0 |
-| `class:backpacker (any)` | 34 | 0 |
 | `class:ruin_maniac (any)` | 34 | 0 |
 | `maylene` | 34 | 1 |
 | `mr_briney` | 34 | 1 |

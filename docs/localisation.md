@@ -9,7 +9,7 @@ A line is one string a language may translate. A line is **translated** when its
 | Kind | Files | Lines |
 |---|---|---|
 | Scripts (`scripts/<file>.json`) | 961 | 15840 |
-| Overlays (`world/<key>.json`) | 1509 | 15751 |
+| Overlays (`world/<key>.json`) | 1511 | 15798 |
 | Hand-made maps (`maps/<Name>.json`) | 353 | 3441 |
 | Data files' lines (`data.json`: the professors, the trainers in battle, the radio, the Town Map's words about each place) | 1 | 507 |
 
