@@ -23254,6 +23254,34 @@ way -
   > Lucas put it away in the Items pocket.
   * fanfare FanfareItem
   + FLAG_RECEIVED_MIRACLE_SEED
+=== pewter.Eon
+from Latias at 1039,83 of Johto
+from Latios at 1039,83 of Johto
+way -
+  > It watches Lucas closely, as if it already knows who you are.
+=== pewter.Steven
+from Steven at 1044,81 of Johto
+way 0.0
+  Steven> There you are, Lucas. This is the friend I told you about. It came all this way for the stone, and now it's curious about you.
+  Steven> It won't settle for words, though. It wants to feel your strength for itself.
+  Steven> Will you face Steven's friend?
+  Steven> I thought you might. Don't hold back. It wouldn't thank you for it.
+  > Latias rose from Steven's side with a bright cry!
+  > Steven's friend wheeled once over the rooftops and was gone into the sky.
+  Steven> Ha! It's never let anyone get that close. It'll be back in Hoenn's skies by nightfall, I expect.
+  Steven> I'll be in the museum a while longer. The stone has to go back where it belongs.
+  ? Will you face Steven's friend? = Yes
+  * cry Latias
+  * wildbattle Latias 40 Won
+  + FLAG_HIDE_PEWTER_CITY_LATIAS
+  + FLAG_HIDE_PEWTER_CITY_LATIOS
+  + FLAG_HIDE_PEWTER_CITY_STEVEN
+  + FLAG_JOHTO_MET_STEVENS_EON
+way 0.1, from answer 2
+  * wildbattle Latias 40 Lost
+way 1, from answer 1
+  Steven> No? Then we'll wait. It's patient, in its way. Come back when you're ready.
+  ? Will you face Steven's friend? = No
 === pewter_city.GymGuide
 from Boy at 90,80 of Kanto
 from the trigger at 90,81 of Kanto
@@ -23406,8 +23434,18 @@ way -
 === pewter_museum_of_science.Steven
 from Steven at 23,7 of Pewter_Museum
 way -
-  Steven> This stone fell from the sky long ago. In Hoenn, people say stones like it carry something of the space between stars.
-  Steven> I collect rare stones, you see. Some people find that dull. I find it endlessly exciting!
+  Steven> Lucas! Good timing. The museum let me hold one of its stones for a moment. Come and look.
+  > Steven held out a smooth, pale stone. Deep inside it, something like an eye seemed to glint.
+  Steven> They call it the Enigma Stone. Nobody knows where it came from. But my travelling friend felt it from far away.
+  Steven> My friend is a Pokémon of the skies over Hoenn. I think it would like to meet you, too.
+  Steven> I'll go and fetch it. Meet us outside, by the houses at the north of the city.
+  + FLAG_JOHTO_HIDE_PEWTER_MUSEUM_STEVEN
+  + FLAG_JOHTO_STEVEN_SHOWED_STONE
+=== pewter_museum_of_science.StevenAfter
+from Steven at 16,4 of Pewter_Museum
+way -
+  Steven> I gave the Enigma Stone back to the museum. Some stones are meant to be looked at, not kept.
+  Steven> Old bones and fallen stars under one roof. I could spend a whole day in here.
 === plasma_frigate_2.Barrier
 from the trigger at 9,7 of PlasmaFrigate_Hold
 way -
@@ -30028,13 +30066,24 @@ way -
 from Sailor at 25,18 of SSAqua_1F
 way 0
   Sailor> Welcome aboard the S.S. Aqua! We're bound for Vermilion City in Kanto. Shall we cast off?
-  Sailor> Anchors aweigh! Make yourself at home. We'll be there before you know it.
-  > The S.S. Aqua sped east across the sea, skimming the waves...
-  Sailor> We've docked at Vermilion City, Kanto! Mind your step on the gangway.
+  Sailor> Anchors aweigh! We sail overnight and dock in the morning. Your cabin's made up, so rest easy.
+  > The S.S. Aqua slipped out of Olivine's harbour and turned east. The lighthouse's beam shrank away behind it...
+  > Lucas was shown to a small cabin. Through the porthole, the last of the sunset sank into the sea.
+  > Somewhere along the corridor a passenger laughed, and a door clicked shut. The engines hummed below the floor.
+  > Rocked by the waves, Lucas fell asleep...
+  > A long blast of the ship's horn! Morning light poured in through the porthole.
+  Sailor> Morning! We've docked at Vermilion City, Kanto! Mind your step on the gangway.
   ? Welcome aboard the S.S. Aqua! We're bound for Vermilion City in Kanto. Shall we cast off? = Yes
+  * scene ss_aqua_1f.A night aboard the ship
   * fade out
+  * warp SSAqua_1F_SouthwestRooms 23 3
   * fade in
+  * fade out
+  * warp SSAqua_1F 24 18
+  * fade in
+  * endscene
   + FLAG_JOHTO_SS_AQUA_AT_VERMILION
+  + seen ss_aqua_1f.A night aboard the ship
 way 1, from answer 1
   Sailor> No rush. The gangway's behind you, if you'd rather stay ashore a while longer.
   ? Welcome aboard the S.S. Aqua! We're bound for Vermilion City in Kanto. Shall we cast off? = No

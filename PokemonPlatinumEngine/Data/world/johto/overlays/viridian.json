@@ -3,7 +3,7 @@
   // Route 22's east end from the League's reception gate, with Route 2 north to Pewter. Its Gym (warp 0) is shut until
   // Blue comes home from Cinnabar Island (FLAG_JOHTO_BLUE_BACK_IN_GYM, part h), and the old man HeartGold stands before
   // it while it is shut says so and goes once it opens. The gate house to Route 1 (warps 5 and 6) leads south to Pallet
-  // Town since part g. Cameron the photographer waits for his session
+  // Town since part g. Cameron the photographer takes pictures here (common.Cameron)
   "area": "viridian",
   "bgmTrack": "kanto/viridian",
   "trees": "Round",

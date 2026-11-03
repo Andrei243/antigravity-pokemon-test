@@ -4,6 +4,7 @@
   "area": "olivine_lighthouse_5f",
   "bgmTrack": "johto/lighthouse",
   "people": {
+    "d27r0106_gsmiddleman1": { "name": "Cameron", "script": "Cameron", "still": true, "hiddenBy": "", "shownBy": "FLAG_JOHTO_MET_CAMERONS_FATHER" },
     "d27r0106_seaman_2": {
       "name": "Terrell",
       "trainer": {

@@ -10,9 +10,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 |---|---|---|---|---|---|
 | The introduction (`intro:`) | 96 | 96 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1305 | 1263 | 42 | 1 | 0 |
-| Scripts (`script:`) | 10186 | 9728 | 458 | 17 | 0 |
+| Scripts (`script:`) | 10198 | 9740 | 458 | 17 | 0 |
 | People of the world (`world:`) | 7138 | 7076 | 62 | 4 | 0 |
-| **All** | 18725 | 18163 | 562 | 22 | 0 |
+| **All** | 18737 | 18175 | 562 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -24,7 +24,7 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | a question's answers | 774 |
 | a sign | 1576 |
 | the game's own voice (speaker none) | 282 |
-| the game's own voice (text) | 1634 |
+| the game's own voice (text) | 1643 |
 
 ## The cast
 
@@ -78,6 +78,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `black_belt` | 97 | 14 |
 | `looker` | 91 | 1 |
 | `prof_oak` | 90 | 3 |
+| `steven` | 89 | 1 |
 | `class:bug_catcher (any)` | 88 | 0 |
 | `class:bird_keeper (any)` | 84 | 0 |
 | `class:galactic (any)` | 84 | 0 |
@@ -87,7 +88,6 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:old_woman (any)` | 79 | 5 |
 | `class:camper (any)` | 78 | 0 |
 | `look:worker (any)` | 77 | 0 |
-| `steven` | 77 | 1 |
 | `class:swimmer (any)` | 76 | 0 |
 | `class:twins (any)` | 76 | 0 |
 | `ace_trainer` | 75 | 0 |

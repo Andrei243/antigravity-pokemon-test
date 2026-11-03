@@ -12,6 +12,7 @@
     6
   ],
   "people": {
+    "d22r0101_gsmiddleman1_3": { "name": "Cameron", "script": "Cameron", "still": true, "hiddenBy": "", "shownBy": "FLAG_JOHTO_MET_CAMERONS_FATHER" },
     // Bugsy, out on Sundays once his number is registered (plan 20, part q; scripts/national_park.txt)
     "d22r0101_gsleader2": { "name": "Bugsy", "script": "MeetBugsy", "still": true },
     "d22r0101_gsgirl1": {

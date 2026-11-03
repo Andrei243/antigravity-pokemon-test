@@ -8149,6 +8149,40 @@ every number, day and tile not said to be HeartGold's is ours.
   (`VAR_JOHTO_BILL_FULL_BOXES`, the full boxes he last rang about). HeartGold's Bill rings for the current box; this
   game's boxes take a catch into the first with room, so it counts full boxes instead.
 
+## Johto's last leftovers, part t: the Enigma Stone, the night aboard, the photographs' scenes, Cameron everywhere (2026-11-03, plan 20, part t)
+
+Built with no screen; every beat, number and tile not said to be HeartGold's is ours.
+
+- *Steven's Enigma Stone and his friend*: HeartGold's was an event a distributed item started; ours needs no item. Once
+  Steven has given his Hoenn starter (`FLAG_JOHTO_GOT_HOENN_STARTER`) he stands in the museum's first place, and spoken
+  to he shows the player the Enigma Stone the museum lent him (a stone he holds, not a key item), goes out
+  (`FLAG_JOHTO_STEVEN_SHOWED_STONE`, ours) and waits in Pewter City by the north houses with his friend, on HeartGold's
+  own objects and hiding flags (`FLAG_HIDE_PEWTER_CITY_STEVEN`, `_LATIAS`, `_LATIOS`, laid by `pewter.txt`'s arrival).
+  His friend is the one of the pair not flying over Hoenn: Latios where Hoenn's Hall of Fame is entered and its
+  television was told red (`VAR_ROAMER_POKEMON` 0), Latias otherwise (HeartGold's own, for a game that hasn't been to
+  Hoenn). Asked and agreed to, it is battled once at level 40 (ours); beaten, caught or run from it goes
+  (`FLAG_JOHTO_MET_STEVENS_EON`, ours), and Steven stands for good in the museum's second place, by the fossils
+  (HeartGold's `FLAG_HIDE_STEVEN_IN_HOUSE_AFTER_LATIS`, laid by the museum's arrival). A battle lost leaves both waiting.
+- *The night aboard the S.S. Aqua*: the crewman's crossing, either way, is a short scene of our own (`scene "A night
+  aboard the ship"`, and `"... homeward"`): the harbour left over the dark, a cabin of the south-west rooms (23, 3, the
+  tile inside the east cabin's door), the evening at the porthole, sleep (the team rested, `heal`), the horn in the
+  morning, and the deck again at the head of the gangway (24, 18) with the ship docked. HeartGold's trainers of the
+  night and its sleep's other beats are not copied; the granddaughter's errand stays at the quay (part p).
+- *The photographs' scenes* (`Models/PhotoScenes.cs`, GPU-free): a print is drawn on a scene of the kind of place it was
+  taken in (`PhotoSetting`: a room where the map is indoors, a mountain for Mt. Silver and snowy ground, a cave, a
+  forest by its name, the shore for the sea's routes and the ports, a town where the area's header says so, a route
+  otherwise), each a sky, a ground and a few plain shapes of the kit; the player's figure stands beside the lead in a
+  boy's blue or a girl's red, and a place card in the print's corner names the region (JOHTO, or KANTO for HeartGold's
+  Kanto, `MapArea.InKanto`). Nothing of HeartGold's frames or poses.
+- *Cameron everywhere*: every object HeartGold hides behind `FLAG_HIDE_CAMERON` in an open area of Johto is Cameron of
+  ours (`common.Cameron`, shown by `FLAG_JOHTO_MET_CAMERONS_FATHER`), the twenty-seven part q held back among them (New
+  Bark, Cherrygrove, Route 32, the Ruins of Alph and its hall's two, the Slowpoke Well, Ilex Forest, Routes 34, 35 and
+  39, the National Park, Ecruteak, Olivine, its café and lighthouse, Route 45, the Ice Path, Blackthorn, the Dragon
+  Shrine, Routes 26 and 22, Mt. Silver and its cave, Saffron, Vermilion and Route 12), the photograph with Clair's
+  shrine among them. The two of the Pokéathlon's gate and square that wave 45 gave another part (a man who talks) keep
+  it. A test holds that none cuts off a tile of his map.
+- *Left out still*: the Magnet Train's platform (part o's decision 8) and the Safari Zone's rearranging (decision 5).
+
 ## Research (2026-11-02, plan 15 · E1, E2)
 
 Legends: Arceus's research tasks, in our own words and numbers; nothing of a game's tables.

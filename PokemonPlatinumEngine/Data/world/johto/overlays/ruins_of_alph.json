@@ -14,6 +14,7 @@
     { "warp": 9, "map": "RuinsOfAlph_HallEntrance", "x": 6, "y": 12, "facing": "Up", "openedBy": "FLAG_ALPH_HALL_OPEN" }
   ],
   "people": {
+    "d24r0101_gsmiddleman1": { "name": "Cameron", "script": "Cameron", "still": true, "hiddenBy": "", "shownBy": "FLAG_JOHTO_MET_CAMERONS_FATHER" },
     "d24r0101_mystery_2": {
       "name": "Nathan",
       "trainer": {

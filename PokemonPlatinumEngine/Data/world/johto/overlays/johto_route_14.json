@@ -1,7 +1,7 @@
 {
   // Route 14 as HeartGold has it three years on (plan 20 · J15, part h): the grassy road south from Route 13 to Route
   // 15. Suicune's second Kanto stop is part o's (johto_route_14.txt, HeartGold's trigger on VAR_UNK_4086 1); Eusine,
-  // who waits here on it, is the route's arrival's (Johto's leftovers); Cameron is held back. Its key meets FireRed's, so it takes Johto's prefix
+  // who waits here on it, is the route's arrival's (Johto's leftovers); Cameron takes pictures here (plan 20, part t). Its key meets FireRed's, so it takes Johto's prefix
   // (HgWorld.Clashes). Its trainers battle by their own records (Johto's trainers.json)
   "area": "johto_route_14",
   "bgmTrack": "kanto/route11",

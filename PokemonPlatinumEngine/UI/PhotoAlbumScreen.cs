@@ -36,6 +36,15 @@ public sealed class PhotoAlbumScreen
     /// <summary>The name a place's key is shown by (the engine hands it the world's areas); the key itself until then.</summary>
     public Func<string, string> PlaceOf { get; set; } = key => key;
 
+    /// <summary>The kind of place a key is (plan 20, part t: the scene its print is drawn on); a route until the engine says.</summary>
+    public Func<string, PhotoSetting> SettingOf { get; set; } = _ => PhotoSetting.Route;
+
+    /// <summary>Whether a place is in HeartGold's Kanto (its place card says KANTO, otherwise JOHTO).</summary>
+    public Func<string, bool> InKantoOf { get; set; } = _ => false;
+
+    /// <summary>The scene the open page's photograph is printed on, or null for an empty album.</summary>
+    public PhotoSceneLook? Scene => Shown is { } photo ? PhotoScenes.Look(SettingOf(photo.Place)) : null;
+
     public void Open(PhotoAlbum from)
     {
         album = from;

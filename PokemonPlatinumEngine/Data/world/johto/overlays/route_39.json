@@ -8,6 +8,7 @@
   "bgmTrack": "johto/route38",
   "trees": "Round",
   "people": {
+    "r39_gsmiddleman1_2": { "name": "Cameron", "script": "Cameron", "still": true, "hiddenBy": "", "shownBy": "FLAG_JOHTO_MET_CAMERONS_FATHER" },
     // Lt. Surge, out on Mondays once his number is registered (plan 20, part q; scripts/route_39.txt)
     "r39_gsleader9": { "name": "Lt. Surge", "script": "MeetLtSurge", "still": true },
     "r39_seaman_2": {
