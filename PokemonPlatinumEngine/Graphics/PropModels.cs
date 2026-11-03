@@ -373,19 +373,19 @@ internal static class PropModels
         bool Engine(int ex, int ey) => map.Props.Any(q => q.Type == PropType.ShipEngine && q.X == ex && q.Y == ey);
         bool s = !Engine(x, y + 1), wst = !Engine(x - 1, y), e = !Engine(x + 1, y);
         const int h = 40;
-        var side = kit.Face("engine.side", 32, h, PaintEngineSide);
-        var top = kit.Face("engine.top", 32, 32, PaintEngineTop);
+        var side = kit.Face("ship.engine.side", 32, h, PaintEngineSide);
+        var top = kit.Face("ship.engine.top", 32, 32, PaintEngineTop);
         kit.Box(0, 32, 0, 32, 0, h, top, s ? side : null, wst ? side : null, e ? side : null);
         // A cylinder head standing on the casing, and a pipe along the row
-        var head = kit.Face("engine.head", 16, 10, c => Pix.Raised(c, 0, 0, 16, 10, Tone.Of(150, 160, 152)));
-        var headTop = kit.Face("engine.head.top", 16, 16, c =>
+        var head = kit.Face("ship.engine.head", 16, 10, c => Pix.Raised(c, 0, 0, 16, 10, Tone.Of(150, 160, 152)));
+        var headTop = kit.Face("ship.engine.head.top", 16, 16, c =>
         {
             c.Rect(0, 0, 16, 16, Rgb(172, 182, 172));
             c.Disc(7.5f, 7.5f, 4f, Rgb(120, 128, 122));
             c.Disc(7.5f, 7.5f, 2f, Rgb(214, 96, 70));
         });
         kit.Box(8, 24, 8, 24, h, h + 10, headTop, head, head, head);
-        var pipe = kit.Face("engine.pipe", 32, 4, c => { c.Rect(0, 0, 32, 4, Rgb(196, 150, 70)); c.HLine(0, 0, 32, Rgb(232, 196, 112)); c.HLine(0, 3, 32, Rgb(140, 100, 48)); });
+        var pipe = kit.Face("ship.engine.pipe", 32, 4, c => { c.Rect(0, 0, 32, 4, Rgb(196, 150, 70)); c.HLine(0, 0, 32, Rgb(232, 196, 112)); c.HLine(0, 3, 32, Rgb(140, 100, 48)); });
         kit.Box(0, 32, 26, 30, h, h + 4, pipe, pipe);
     }
 
