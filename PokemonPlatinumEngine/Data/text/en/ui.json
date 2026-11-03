@@ -5315,5 +5315,24 @@
       "title": "Lullaby",
       "hint": "One Poké Ball, and a Dratini at full health. Make the throw count within two turns."
     }
+  },
+  "linkRoom": {
+    "fault": {
+      "teamSize": "A team of {count} can't be brought.",
+      "tooFew": "The room picks {count}: bring that many.",
+      "egg": "An Egg can't battle.",
+      "unknown": "{species} isn't known to this game.",
+      "notInRules": "{species} isn't in the room's rules.",
+      "speciesClause": "Two of one species (the species clause).",
+      "itemClause": "Two holding the same item (the item clause).",
+      "pickCount": "Pick {count} to go in.",
+      "pickEach": "Pick each of your team once at most."
+    },
+    "refused": {
+      "notAsked": "Nothing is being asked of you.",
+      "stale": "That answers a question no longer asked.",
+      "places": "One choice is wanted for each of your places."
+    },
+    "waiting": "Waiting for {player}…"
   }
 }

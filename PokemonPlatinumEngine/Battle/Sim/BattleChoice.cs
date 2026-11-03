@@ -6,9 +6,9 @@ namespace PokemonPlatinumEngine.Battle.Sim;
 /// <summary>
 /// What a choice is: a move, a switch, an item, running; in the Great Marsh also bait or mud thrown at the Pokémon;
 /// and staying in when Battle Style Shift offers a switch (plan 08 · P1); in a triple battle, a Pokémon at an end moving
-/// to the centre (plan 14 · B6).
+/// to the centre (plan 14 · B6); in a link battle, giving the match up (plan 28 · I4).
 /// </summary>
-public enum ChoiceKind { Fight, Switch, Item, Run, Bait, Mud, Stay, Shift }
+public enum ChoiceKind { Fight, Switch, Item, Run, Bait, Mud, Stay, Shift, Forfeit }
 
 /// <summary>
 /// What one Pokémon's trainer decides for a turn, as plain data: a seed and the choices made are a whole battle
@@ -102,6 +102,12 @@ public sealed record BattleChoice(Place Who, ChoiceKind Kind)
     /// (Black and White's rule). Refused anywhere else (<see cref="BattleCore.WhyNot"/>).
     /// </summary>
     public static BattleChoice Shift(Place who) => new(who, ChoiceKind.Shift);
+
+    /// <summary>
+    /// A link battle (plan 28 · I4): the side of <paramref name="who"/> gives the match up and loses it. Taken at any
+    /// question, alone, whatever else was asked; refused in every other battle (<see cref="CoreSetup.Link"/>).
+    /// </summary>
+    public static BattleChoice Forfeit(Place who) => new(who, ChoiceKind.Forfeit);
 }
 
 /// <summary>
