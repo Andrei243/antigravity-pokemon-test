@@ -5,7 +5,7 @@
         "A game table set up with a slot machine. Play it?"
       ],
       "text": [
-        ""
+        "O masă de joc cu un aparat de jocuri de noroc. Joci?"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "A game table set up with a slot machine. Without a Coin Case there is nothing to play with."
       ],
       "text": [
-        ""
+        "O masă de joc cu un aparat de jocuri de noroc. Fără un Coin Case nu ai cu ce să joci."
       ]
     }
   ],
@@ -23,7 +23,7 @@
         "Clerk"
       ],
       "text": [
-        ""
+        "Funcționar"
       ]
     },
     {
@@ -31,7 +31,7 @@
         "Welcome to the Celadon Game Corner! The tables take coins, and coins need a case to carry them in."
       ],
       "text": [
-        ""
+        "Bine ai venit la Celadon Game Corner! Mesele iau monede, iar monedele au nevoie de un Coin Case în care să fie purtate."
       ]
     },
     {
@@ -39,7 +39,7 @@
         "Here, have one of ours. Every new player gets one."
       ],
       "text": [
-        ""
+        "Ține, ia unul de-al nostru. Fiecare jucător nou primește unul."
       ]
     },
     {
@@ -47,7 +47,7 @@
         "We sell coins for the machines: 50 for $1,000. Would you like some?"
       ],
       "text": [
-        ""
+        "Vindem monede pentru aparate: 50 pentru $1,000. Vrei?"
       ]
     },
     {
@@ -55,7 +55,7 @@
         "{player} bought 50 coins."
       ],
       "text": [
-        ""
+        "{player} a cumpărat 50 de monede."
       ]
     },
     {
@@ -63,7 +63,7 @@
         "Please come again!"
       ],
       "text": [
-        ""
+        "Mai vino pe la noi!"
       ]
     },
     {
@@ -71,7 +71,7 @@
         "Your Coin Case is full already!"
       ],
       "text": [
-        ""
+        "Coin Case-ul tău e deja plin!"
       ]
     },
     {
@@ -79,7 +79,7 @@
         "I'm sorry, you don't have enough money."
       ],
       "text": [
-        ""
+        "Îmi pare rău, nu ai destui bani."
       ]
     }
   ]

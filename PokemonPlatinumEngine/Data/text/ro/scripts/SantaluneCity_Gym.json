@@ -1,0 +1,110 @@
+{
+  "Viola": [
+    {
+      "en": [
+        "Viola"
+      ],
+      "text": [
+        "Viola"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Santalune Gym! I'm Viola, its Leader. When I'm not battling, I'm behind a camera."
+      ],
+      "text": [
+        "Bine ai venit la Gym-ul din Santalune! Sunt Viola, Liderul lui. Când nu lupt, sunt în spatele unui aparat foto."
+      ]
+    },
+    {
+      "en": [
+        "Through a lens you learn to wait for the right moment. Bug-type Pokémon taught me that."
+      ],
+      "text": [
+        "Printr-un obiectiv înveți să aștepți momentul potrivit. Pokémonii de tip Insectă m-au învățat asta."
+      ]
+    },
+    {
+      "en": [
+        "Let's see if you know when to strike. I'll capture this battle in a single shot!"
+      ],
+      "text": [
+        "Să vedem dacă știi când să lovești. Voi surprinde lupta asta într-o singură poză!"
+      ]
+    },
+    {
+      "en": [
+        "What a picture! You and your Pokémon were perfectly in focus the whole time."
+      ],
+      "text": [
+        "Ce imagine! Tu și Pokémonul tău ați fost perfect în focus tot timpul."
+      ]
+    },
+    {
+      "en": [
+        "Here, this is yours. The Bug Badge, proof that you won at the Santalune Gym."
+      ],
+      "text": [
+        "Ține, e a ta. Bug Badge, dovada că ai câștigat la Gym-ul din Santalune."
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Bug Badge from Viola!"
+      ],
+      "text": [
+        "{player} a primit Bug Badge de la Viola!"
+      ]
+    },
+    {
+      "en": [
+        "And take this as well. My bugs use it to strike and slip away before anyone can blink."
+      ],
+      "text": [
+        "Și ia și asta. Insectele mele o folosesc ca să lovească și să dispară înainte să clipești."
+      ]
+    },
+    {
+      "en": [
+        "The road to Lumiose City starts north of town, past the garden. There's a lot more of Kalos to see through your lens!"
+      ],
+      "text": [
+        "Drumul spre Lumiose City începe la nord de oraș, dincolo de grădină. Mai e mult din Kalos de văzut prin obiectivul tău!"
+      ]
+    },
+    {
+      "en": [
+        "I still can't stop thinking about our battle. I wish I'd taken more photos of it!"
+      ],
+      "text": [
+        "Încă nu mă pot opri să mă gândesc la lupta noastră. Aș fi vrut să fac mai multe poze!"
+      ]
+    }
+  ],
+  "GymGuide": [
+    {
+      "en": [
+        "Gym Guide"
+      ],
+      "text": [
+        "Ghid de Gym"
+      ]
+    },
+    {
+      "en": [
+        "Hello there, future Champion! Viola's Bug types don't care for fire or wind. Pick your partner well!"
+      ],
+      "text": [
+        "Salut, viitor Campion! Insectele Violei nu iubesc nici focul, nici vântul. Alege-ți bine partenerul!"
+      ]
+    },
+    {
+      "en": [
+        "You beat Viola! Now that's a photo finish I'd have liked to see."
+      ],
+      "text": [
+        "Ai învins-o pe Viola! Asta e un final la mustață pe care mi-ar fi plăcut să-l văd."
+      ]
+    }
+  ]
+}

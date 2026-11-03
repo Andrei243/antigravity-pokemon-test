@@ -239,7 +239,7 @@
         "Cyclist"
       ],
       "text": [
-        ""
+        "Biciclist"
       ]
     },
     {
@@ -247,7 +247,7 @@
         "Ride the Cycling Road from the north gate on a Mach Bike, and I'll time you all the way down to here."
       ],
       "text": [
-        ""
+        "Pedalează pe Cycling Road de la poarta de nord cu un Mach Bike și te voi cronometra tot drumul până aici."
       ]
     },
     {
@@ -255,7 +255,7 @@
         "The fewer things you crash into, and the quicker you are, the better your mark. Give it a go!"
       ],
       "text": [
-        ""
+        "Cu cât te lovești de mai puține lucruri și cu cât ești mai rapid, cu atât nota e mai bună. Încearcă!"
       ]
     }
   ],
@@ -265,7 +265,7 @@
         "Cyclist"
       ],
       "text": [
-        ""
+        "Biciclist"
       ]
     },
     {
@@ -273,7 +273,7 @@
         "You crashed {cycling:COLLISIONS}, and it took you {cycling:TIME}."
       ],
       "text": [
-        ""
+        "Te-ai lovit de {cycling:COLLISIONS} ori și ți-a luat {cycling:TIME}."
       ]
     },
     {
@@ -281,7 +281,7 @@
         "Hm... Were you even trying? Walking would have been quicker!"
       ],
       "text": [
-        ""
+        "Hm... Ai încercat măcar? Mersul pe jos ar fi fost mai rapid!"
       ]
     },
     {
@@ -289,7 +289,7 @@
         "Incredible! A perfect ride! You were born to be on a bike!"
       ],
       "text": [
-        ""
+        "Incredibil! O cursă perfectă! Te-ai născut pentru bicicletă!"
       ]
     },
     {
@@ -297,7 +297,7 @@
         "That was a great ride! You've really got the hang of the Mach Bike."
       ],
       "text": [
-        ""
+        "A fost o cursă grozavă! Chiar te-ai prins de Mach Bike."
       ]
     },
     {
@@ -305,7 +305,7 @@
         "Not bad at all! A little more practice and you'll be flying."
       ],
       "text": [
-        ""
+        "Deloc rău! Încă puțin exercițiu și vei zbura."
       ]
     },
     {
@@ -313,7 +313,7 @@
         "You'll get there. Keep your eyes on the road and try again!"
       ],
       "text": [
-        ""
+        "O să reușești. Ține ochii pe drum și încearcă din nou!"
       ]
     }
   ],
@@ -323,7 +323,7 @@
         "Seaside Cycling Road: best run. Collisions: {cycling:BEST_COLLISIONS}. Time: {cycling:BEST_TIME}."
       ],
       "text": [
-        ""
+        "Seaside Cycling Road: cea mai bună cursă. Ciocniri: {cycling:BEST_COLLISIONS}. Timp: {cycling:BEST_TIME}."
       ]
     },
     {
@@ -331,7 +331,7 @@
         "Seaside Cycling Road: best run. Nobody has set a time yet."
       ],
       "text": [
-        ""
+        "Seaside Cycling Road: cea mai bună cursă. Nimeni nu a stabilit încă un timp."
       ]
     }
   ]

@@ -5,7 +5,7 @@
         "Attendant"
       ],
       "text": [
-        ""
+        "Însoțitor"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Welcome to Pal Park's gate! The park itself is far away in Sinnoh, but we can take you straight there."
       ],
       "text": [
-        ""
+        "Bine ai venit la poarta Pal Park! Parcul e departe, în Sinnoh, dar te putem duce direct acolo."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Would you like to go to Pal Park?"
       ],
       "text": [
-        ""
+        "Vrei să mergi la Pal Park?"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Right this way, please. Mind the step!"
       ],
       "text": [
-        ""
+        "Pe aici, te rog. Ai grijă la treaptă!"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "{player} was shown through the gate on the long way to Pal Park..."
       ],
       "text": [
-        ""
+        "{player} a fost condus prin poartă pe drumul lung spre Pal Park..."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Whenever you're ready. The park's Pokémon aren't going anywhere."
       ],
       "text": [
-        ""
+        "Oricând ești gata. Pokémonii din parc nu pleacă nicăieri."
       ]
     },
     {
@@ -53,7 +53,7 @@
         "Pal Park is a place for Pokémon from far away. Only a Trainer with the National Pokédex may go through."
       ],
       "text": [
-        ""
+        "Pal Park e un loc pentru Pokémoni de departe. Doar un Antrenor cu Pokédex-ul Național poate trece."
       ]
     }
   ]

@@ -5,7 +5,7 @@
         "Kimono Girl"
       ],
       "text": [
-        ""
+        "Kimono Girl"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Oh, it's you! I came to Goldenrod to dance, and in all the confusion I lost my way down here."
       ],
       "text": [
-        ""
+        "Oh, tu ești! Am venit în Goldenrod să dansez și, în toată zăpăceala, m-am rătăcit aici jos."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Now that the city is safe again, I can find my way back to Ecruteak. Thank you. Your Pokémon shine brighter every time."
       ],
       "text": [
-        ""
+        "Acum că orașul e din nou în siguranță, pot găsi drumul înapoi spre Ecruteak. Mulțumesc. Pokémonii tăi strălucesc mai tare de fiecare dată."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Team Rocket are everywhere up there... I came to dance, and now I'm afraid to go back up."
       ],
       "text": [
-        ""
+        "Team Rocket e peste tot acolo sus... Am venit să dansez și acum mi-e frică să mă întorc."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "You have the look of someone who could set things right. Please, free the Radio Tower!"
       ],
       "text": [
-        ""
+        "Ai înfățișarea cuiva care ar putea îndrepta lucrurile. Te rog, eliberează Radio Tower!"
       ]
     }
   ],
@@ -47,7 +47,7 @@
         "Herbalist"
       ],
       "text": [
-        ""
+        "Vânzător de plante"
       ]
     },
     {
@@ -55,7 +55,7 @@
         "Hello, dear. Herbs are bitter, but they do a body good, and they cost next to nothing."
       ],
       "text": [
-        ""
+        "Bună, dragă. Ierburile sunt amare, dar fac bine trupului și costă aproape nimic."
       ]
     },
     {
@@ -63,7 +63,7 @@
         "Mind your Pokémon pull a face when they take them. It means they're working."
       ],
       "text": [
-        ""
+        "Bagă de seamă dacă Pokémonii tăi fac grimase când le iau. Înseamnă că funcționează."
       ]
     }
   ],
@@ -73,7 +73,7 @@
         "Old Man"
       ],
       "text": [
-        ""
+        "Bătrân"
       ]
     },
     {
@@ -81,7 +81,7 @@
         "Psst! Treasures at a fraction of what the collectors pay. One to a customer, mind, and only today."
       ],
       "text": [
-        ""
+        "Psst! Comori la o fracțiune din ce plătesc colecționarii. Câte una de client, să știi, și doar azi."
       ]
     },
     {
@@ -95,13 +95,13 @@
         "NOTHING"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Ce va fi?",
+        "NUGGET  4,500",
+        "PEARL  650",
+        "BIG PEARL  3,500",
+        "STARDUST  900",
+        "STAR PIECE  4,600",
+        "NIMIC"
       ]
     },
     {
@@ -109,7 +109,7 @@
         "A pleasure doing business. Not a word to the collectors, eh?"
       ],
       "text": [
-        ""
+        "O plăcere să fac afaceri. Nici un cuvânt colecționarilor, da?"
       ]
     },
     {
@@ -117,7 +117,7 @@
         "Your purse is a little light for that one, I'm afraid."
       ],
       "text": [
-        ""
+        "Punga ta e cam ușoară pentru asta, mă tem."
       ]
     },
     {
@@ -125,7 +125,7 @@
         "Suit yourself. These bargains won't wait for ever, though."
       ],
       "text": [
-        ""
+        "Cum vrei. Chilipirurile astea nu așteaptă la nesfârșit, totuși."
       ]
     },
     {
@@ -133,7 +133,7 @@
         "That's all I'll part with today. Come by again on a Monday."
       ],
       "text": [
-        ""
+        "Asta e tot ce mă despart azi. Mai vino într-o zi de luni."
       ]
     }
   ],
@@ -143,7 +143,7 @@
         "Barber"
       ],
       "text": [
-        ""
+        "Frizer"
       ]
     },
     {
@@ -151,7 +151,7 @@
         "Welcome! I'm the elder of the two barbers down here, and the better, whatever my brother tells you."
       ],
       "text": [
-        ""
+        "Bine ai venit! Sunt cel mai bătrân dintre cei doi frizeri de aici, și mai bun, orice ți-ar spune fratele meu."
       ]
     },
     {
@@ -159,7 +159,7 @@
         "A trim for one of your Pokémon is 500. Shall I?"
       ],
       "text": [
-        ""
+        "O tunsoare pentru unul dintre Pokémonii tăi costă 500. Să fac?"
       ]
     },
     {
@@ -167,7 +167,7 @@
         "Which one shall it be?"
       ],
       "text": [
-        ""
+        "Care să fie?"
       ]
     },
     {
@@ -175,7 +175,7 @@
         "{member:RESULT} is delighted with its new look!"
       ],
       "text": [
-        ""
+        "{member:RESULT} e încântat de noul lui aspect!"
       ]
     },
     {
@@ -183,7 +183,7 @@
         "{member:RESULT} looks pleased with its trim."
       ],
       "text": [
-        ""
+        "{member:RESULT} pare mulțumit de tunsoare."
       ]
     },
     {
@@ -191,7 +191,7 @@
         "There we are. Come back another day and I'll do it again."
       ],
       "text": [
-        ""
+        "Gata. Revino altă zi și o fac din nou."
       ]
     },
     {
@@ -199,7 +199,7 @@
         "An Egg? There's nothing on it to trim!"
       ],
       "text": [
-        ""
+        "Un Ou? N-are ce să i se tundă!"
       ]
     },
     {
@@ -207,7 +207,7 @@
         "Oh dear, that's not quite enough. Another time."
       ],
       "text": [
-        ""
+        "Oh, vai, nu e chiar de ajuns. Altă dată."
       ]
     },
     {
@@ -215,7 +215,7 @@
         "Another time, then."
       ],
       "text": [
-        ""
+        "Altă dată, atunci."
       ]
     },
     {
@@ -223,7 +223,7 @@
         "One trim a day is plenty. Come again another day."
       ],
       "text": [
-        ""
+        "O tunsoare pe zi e suficientă. Revino altă zi."
       ]
     }
   ],
@@ -233,7 +233,7 @@
         "Barber"
       ],
       "text": [
-        ""
+        "Frizer"
       ]
     },
     {
@@ -241,7 +241,7 @@
         "Welcome! I'm the younger of the two barbers down here, and the cheaper, whatever my brother tells you."
       ],
       "text": [
-        ""
+        "Bine ai venit! Sunt cel mai tânăr dintre cei doi frizeri de aici, și mai ieftin, orice ți-ar spune fratele meu."
       ]
     },
     {
@@ -249,7 +249,7 @@
         "A trim for one of your Pokémon is 300. Shall I?"
       ],
       "text": [
-        ""
+        "O tunsoare pentru unul dintre Pokémonii tăi costă 300. Să fac?"
       ]
     },
     {
@@ -257,7 +257,7 @@
         "Which one shall it be?"
       ],
       "text": [
-        ""
+        "Care să fie?"
       ]
     },
     {
@@ -265,7 +265,7 @@
         "{member:RESULT} looks a little happier."
       ],
       "text": [
-        ""
+        "{member:RESULT} pare puțin mai fericit."
       ]
     },
     {
@@ -273,7 +273,7 @@
         "{member:RESULT} looks pleased with its trim."
       ],
       "text": [
-        ""
+        "{member:RESULT} pare mulțumit de tunsoare."
       ]
     },
     {
@@ -281,7 +281,7 @@
         "{member:RESULT} is overjoyed with its new look!"
       ],
       "text": [
-        ""
+        "{member:RESULT} e extaziat de noul lui aspect!"
       ]
     },
     {
@@ -289,7 +289,7 @@
         "All done! I'm still learning, so every trim comes out a little different."
       ],
       "text": [
-        ""
+        "Gata! Încă învăț, așa că fiecare tunsoare iese puțin altfel."
       ]
     },
     {
@@ -297,7 +297,7 @@
         "An Egg? There's nothing on it to trim!"
       ],
       "text": [
-        ""
+        "Un Ou? N-are ce să i se tundă!"
       ]
     },
     {
@@ -305,7 +305,7 @@
         "Oh, that's not quite enough. Another time!"
       ],
       "text": [
-        ""
+        "Oh, nu e chiar de ajuns. Altă dată!"
       ]
     },
     {
@@ -313,7 +313,7 @@
         "Another time, then!"
       ],
       "text": [
-        ""
+        "Altă dată, atunci!"
       ]
     },
     {
@@ -321,7 +321,7 @@
         "My brother and I share one chair: one trim a day. Come again another day!"
       ],
       "text": [
-        ""
+        "Eu și fratele meu avem un singur scaun: o tunsoare pe zi. Revino altă zi!"
       ]
     }
   ],

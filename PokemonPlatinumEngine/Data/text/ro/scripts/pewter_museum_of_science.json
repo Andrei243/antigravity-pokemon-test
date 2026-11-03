@@ -5,31 +5,89 @@
         "Steven"
       ],
       "text": [
-        ""
+        "Steven"
       ]
     },
     {
       "en": [
-        "This stone fell from the sky long ago. In Hoenn, people say stones like it carry something of the space between stars."
+        "{player}! Good timing. The museum let me hold one of its stones for a moment. Come and look."
       ],
       "text": [
-        ""
+        "{player}! Moment bun. Muzeul m-a lăsat să țin o clipă una dintre pietrele lui. Vino să te uiți."
       ]
     },
     {
       "en": [
-        "I collect rare stones, you see. Some people find that dull. I find it endlessly exciting!"
+        "Steven held out a smooth, pale stone. Deep inside it, something like an eye seemed to glint."
       ],
       "text": [
-        ""
+        "Steven a întins o piatră netedă și palidă. Adânc în ea părea să licărească ceva ca un ochi."
       ]
     },
     {
       "en": [
-        "How is the Pokémon I gave you? A Pokémon from far away sees everything with fresh eyes. So does its Trainer."
+        "Steven"
       ],
       "text": [
-        ""
+        "Steven"
+      ]
+    },
+    {
+      "en": [
+        "They call it the Enigma Stone. Nobody knows where it came from. But my travelling friend felt it from far away."
+      ],
+      "text": [
+        "Îi spun Enigma Stone. Nimeni nu știe de unde vine. Dar prietenul meu de drum a simțit-o de departe."
+      ]
+    },
+    {
+      "en": [
+        "My friend is a Pokémon of the skies over Hoenn. I think it would like to meet you, too."
+      ],
+      "text": [
+        "Prietenul meu e un Pokémon al cerului din Hoenn. Cred că ar vrea să te cunoască și pe tine."
+      ]
+    },
+    {
+      "en": [
+        "I'll go and fetch it. Meet us outside, by the houses at the north of the city."
+      ],
+      "text": [
+        "Mă duc să-l aduc. Ne vedem afară, lângă casele din nordul orașului."
+      ]
+    }
+  ],
+  "StevenAfter": [
+    {
+      "en": [
+        "Steven"
+      ],
+      "text": [
+        "Steven"
+      ]
+    },
+    {
+      "en": [
+        "I gave the Enigma Stone back to the museum. Some stones are meant to be looked at, not kept."
+      ],
+      "text": [
+        "Am dat Enigma Stone înapoi muzeului. Unele pietre sunt făcute să fie privite, nu păstrate."
+      ]
+    },
+    {
+      "en": [
+        "Old bones and fallen stars under one roof. I could spend a whole day in here."
+      ],
+      "text": [
+        "Oase bătrâne și stele căzute sub același acoperiș. Aș putea petrece o zi întreagă aici."
+      ]
+    },
+    {
+      "en": [
+        "Hoenn's skies are wide, {player}. If you ever cross the sea that way, look up now and then."
+      ],
+      "text": [
+        "Cerul Hoenn e larg, {player}. Dacă traversezi vreodată marea într-acolo, uită-te în sus din când în când."
       ]
     }
   ]

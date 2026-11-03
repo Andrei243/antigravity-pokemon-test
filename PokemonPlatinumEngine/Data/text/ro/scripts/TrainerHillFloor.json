@@ -1,0 +1,46 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Trainer Hill, floor {number}. The clock reads {hill:TIME}."
+      ],
+      "text": [
+        "Trainer Hill, etajul {number}. Ceasul arată {hill:TIME}."
+      ]
+    }
+  ],
+  "Trainer": [
+    {
+      "en": [
+        "{foe} is ready for a battle!"
+      ],
+      "text": [
+        "{foe} e gata de luptă!"
+      ]
+    },
+    {
+      "en": [
+        "{foe} stepped aside. On to the next floor!"
+      ],
+      "text": [
+        "{foe} s-a dat la o parte. Spre etajul următor!"
+      ]
+    },
+    {
+      "en": [
+        "{foe} is cheering you on to the roof."
+      ],
+      "text": [
+        "{foe} te încurajează spre acoperiș."
+      ]
+    },
+    {
+      "en": [
+        "{player}'s climb ended here..."
+      ],
+      "text": [
+        "Urcușul lui {player} s-a terminat aici..."
+      ]
+    }
+  ]
+}

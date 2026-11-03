@@ -1,0 +1,78 @@
+{
+  "Genesect": [
+    {
+      "en": [
+        "Sparks race along the old pod's casing, and the Pokémon inside it unfolds!\nIts cannon swings round to lock on to {player}!"
+      ],
+      "text": [
+        "Scântei aleargă pe carcasa vechiului cocon, iar Pokémonul dinăuntru se desface!\nTunul lui se răsucește să țintească spre {player}!"
+      ]
+    },
+    {
+      "en": [
+        "The pod stands open and empty, still humming faintly..."
+      ],
+      "text": [
+        "Coconul stă deschis și gol, încă bâzâind slab..."
+      ]
+    },
+    {
+      "en": [
+        "Genesect blasted off through the hall's broken skylight..."
+      ],
+      "text": [
+        "Genesect a țâșnit prin lucarna spartă a sălii..."
+      ]
+    }
+  ],
+  "Scientist": [
+    {
+      "en": [
+        "Scientist"
+      ],
+      "text": [
+        "Om de știință"
+      ]
+    },
+    {
+      "en": [
+        "Team Plasma rebuilt an ancient Pokémon here. They called it a weapon. I call it a crime."
+      ],
+      "text": [
+        "Team Plasma a reconstruit aici un Pokémon străvechi. L-au numit armă. Eu îl numesc crimă."
+      ]
+    },
+    {
+      "en": [
+        "It still sleeps in its pod at the back. I don't dare go near it."
+      ],
+      "text": [
+        "Încă doarme în coconul lui din spate. Nu îndrăznesc să mă apropii."
+      ]
+    },
+    {
+      "en": [
+        "You faced Genesect? Then you should have this. It was made to fit the cannon on its back."
+      ],
+      "text": [
+        "L-ai înfruntat pe Genesect? Atunci ar trebui să ai asta. A fost făcut să se potrivească tunului de pe spatele lui."
+      ]
+    },
+    {
+      "en": [
+        "The other drives were taken away when Team Plasma left. Where to, nobody knows."
+      ],
+      "text": [
+        "Celelalte drive-uri au fost luate când a plecat Team Plasma. Unde, nimeni nu știe."
+      ]
+    },
+    {
+      "en": [
+        "A Pokémon made to be a weapon, set free at last. Treat it kindly."
+      ],
+      "text": [
+        "Un Pokémon făcut să fie armă, eliberat în sfârșit. Poartă-te frumos cu el."
+      ]
+    }
+  ]
+}

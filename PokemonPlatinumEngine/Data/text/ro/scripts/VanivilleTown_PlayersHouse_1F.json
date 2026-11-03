@@ -1,0 +1,118 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Mom"
+      ],
+      "text": [
+        "Mama"
+      ]
+    },
+    {
+      "en": [
+        "Good morning, sleepyhead! Did you sleep well in the new house?"
+      ],
+      "text": [
+        "Bună dimineața, somnoroaso! Ai dormit bine în casa nouă?"
+      ]
+    },
+    {
+      "en": [
+        "{rival} from next door came by with a friend while you were still asleep. They're waiting for you outside."
+      ],
+      "text": [
+        "{rival} de alături a trecut cu un prieten cât ai dormit. Te așteaptă afară."
+      ]
+    },
+    {
+      "en": [
+        "Go on, go and say hello! It's your first day in Vaniville, after all."
+      ],
+      "text": [
+        "Hai, du-te și salută-i! E prima ta zi în Vaniville, până la urmă."
+      ]
+    }
+  ],
+  "Mom": [
+    {
+      "en": [
+        "Mom"
+      ],
+      "text": [
+        "Mama"
+      ]
+    },
+    {
+      "en": [
+        "Your new friends are waiting outside. Don't keep them standing there!"
+      ],
+      "text": [
+        "Noii tăi prieteni te așteaptă afară. Nu-i lăsa să stea acolo!"
+      ]
+    },
+    {
+      "en": [
+        "Mom"
+      ],
+      "text": [
+        "Mama"
+      ]
+    },
+    {
+      "en": [
+        "Oh! Is that your very own Pokémon? It's lovely! And what's this, a letter?"
+      ],
+      "text": [
+        "Oh! Ăsta e propriul tău Pokémon? E drăguț! Și ce-i asta, o scrisoare?"
+      ]
+    },
+    {
+      "en": [
+        "{player} handed over the professor's letter."
+      ],
+      "text": [
+        "{player} a dat scrisoarea profesorului."
+      ]
+    },
+    {
+      "en": [
+        "...A professor in Lumiose City wants you to travel Kalos and meet all its Pokémon. Well! I'd say that settles it."
+      ],
+      "text": [
+        "...Un profesor din Lumiose City vrea să călătorești prin Kalos și să cunoști toți Pokémonii. Ei bine! Aș zice că asta lămurește lucrurile."
+      ]
+    },
+    {
+      "en": [
+        "You'll need to get about quickly, then. Here, these are for you. I was saving them for your birthday!"
+      ],
+      "text": [
+        "Va trebui să te miști repede, atunci. Ține, astea sunt pentru tine. Le păstram pentru ziua ta!"
+      ]
+    },
+    {
+      "en": [
+        "{player} received the roller skates!"
+      ],
+      "text": [
+        "{player} a primit patinele cu rotile!"
+      ]
+    },
+    {
+      "en": [
+        "Hold the run button and off you go. Everyone in Kalos skates! Just not through the tall grass, mind, or up stairs."
+      ],
+      "text": [
+        "Ține apăsat butonul de alergare și pornești. Toată lumea din Kalos patinează! Doar nu prin iarba înaltă, atenție, sau pe scări."
+      ]
+    },
+    {
+      "en": [
+        "Come home whenever you're tired. Now go on, your friends will be waiting!"
+      ],
+      "text": [
+        "Vino acasă oricând ești obosit. Acum du-te, prietenii tăi te așteaptă!"
+      ]
+    }
+  ]
+}

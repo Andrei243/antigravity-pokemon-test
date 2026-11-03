@@ -1,0 +1,166 @@
+{
+  "Neighbour": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "You made it, {player}. I've been waiting. The forest wasn't too much trouble, I hope?"
+      ],
+      "text": [
+        "Ai reușit, {player}. Te așteptam. Pădurea nu ți-a dat prea multe bătăi de cap, sper?"
+      ]
+    },
+    {
+      "en": [
+        "Let's see how far our partners have come since the café. Ready?"
+      ],
+      "text": [
+        "Să vedem cât au avansat partenerii noștri de la cafenea. Gata?"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "You're quick to learn. I'll have to train harder."
+      ],
+      "text": [
+        "Înveți repede. Va trebui să mă antrenez mai mult."
+      ]
+    },
+    {
+      "en": [
+        "A good battle. You'll catch up soon, I'm sure of it."
+      ],
+      "text": [
+        "O luptă bună. Mă vei prinde din urmă curând, sunt sigur."
+      ]
+    },
+    {
+      "en": [
+        "The Gym here is north of the fountain. Its Leader, Viola, uses Bug types and she's very patient."
+      ],
+      "text": [
+        "Gym-ul de aici e la nord de fântână. Liderul lui, Viola, folosește tipuri Insectă și e foarte răbdătoare."
+      ]
+    },
+    {
+      "en": [
+        "Earn her Badge, and the road to Lumiose City opens up. I'll go on ahead and meet you there."
+      ],
+      "text": [
+        "Câștigă-i Insigna și drumul spre Lumiose City se deschide. Eu merg înainte și ne vedem acolo."
+      ]
+    }
+  ],
+  "Shauna": [
+    {
+      "en": [
+        "Shauna"
+      ],
+      "text": [
+        "Shauna"
+      ]
+    },
+    {
+      "en": [
+        "No Pikachu yet... but look at this fountain! Santalune's so pretty. Are you going to take on the Gym?"
+      ],
+      "text": [
+        "Încă nu e nici un Pikachu... dar uită-te la fântâna asta! Santalune e atât de frumos. Vei înfrunta Gym-ul?"
+      ]
+    },
+    {
+      "en": [
+        "Your very first Badge! Ooh, let me see it! It's so shiny!"
+      ],
+      "text": [
+        "Prima ta Insignă! Ooh, lasă-mă să o văd! E atât de strălucitoare!"
+      ]
+    }
+  ],
+  "Tierno": [
+    {
+      "en": [
+        "Tierno"
+      ],
+      "text": [
+        "Tierno"
+      ]
+    },
+    {
+      "en": [
+        "Viola's bugs are tough, so go in with a Pokémon that can fly or burn. That's what I heard, anyway!"
+      ],
+      "text": [
+        "Insectele Violei sunt dure, așa că intră cu un Pokémon care zboară sau care arde. Așa am auzit eu, oricum!"
+      ]
+    },
+    {
+      "en": [
+        "One Badge down! That deserves a dance. Or a pastry. Or both!"
+      ],
+      "text": [
+        "O Insignă făcută! Asta merită un dans. Sau un cozonac. Sau amândouă!"
+      ]
+    }
+  ],
+  "Trevor": [
+    {
+      "en": [
+        "Trevor"
+      ],
+      "text": [
+        "Trevor"
+      ]
+    },
+    {
+      "en": [
+        "Every Pokémon here is in my Pokédex now. Well. Almost every one."
+      ],
+      "text": [
+        "Fiecare Pokémon de aici e acum în Pokédex-ul meu. Ei bine. Aproape fiecare."
+      ]
+    }
+  ],
+  "Rival": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Over here, {player}."
+      ],
+      "text": [
+        "Pe aici, {player}."
+      ]
+    }
+  ],
+  "NotYet": [
+    {
+      "en": [
+        "A guard stands at the garden gate: only Trainers with a Badge may take the road to Lumiose City."
+      ],
+      "text": [
+        "Un paznic stă la poarta grădinii: doar Antrenorii cu o Insignă pot lua drumul spre Lumiose City."
+      ]
+    }
+  ]
+}

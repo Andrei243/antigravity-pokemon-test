@@ -1,0 +1,144 @@
+{
+  "Assistants": [
+    {
+      "en": [
+        "Sina"
+      ],
+      "text": [
+        "Sina"
+      ]
+    },
+    {
+      "en": [
+        "There you are! You must be {player}. We've been watching the gate all morning!"
+      ],
+      "text": [
+        "Aici erai! Trebuie să fii {player}. Am urmărit poarta toată dimineața!"
+      ]
+    },
+    {
+      "en": [
+        "Dexio"
+      ],
+      "text": [
+        "Dexio"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to Lumiose City. We assist Professor Sycamore with his research. I'm Dexio, and this is Sina."
+      ],
+      "text": [
+        "Bine ai venit în Lumiose City. Îl ajutăm pe Profesorul Sycamore cu cercetarea. Eu sunt Dexio, iar ea e Sina."
+      ]
+    },
+    {
+      "en": [
+        "Sina"
+      ],
+      "text": [
+        "Sina"
+      ]
+    },
+    {
+      "en": [
+        "The professor is waiting for you at his laboratory. It's just up this avenue, on the right. You can't miss it!"
+      ],
+      "text": [
+        "Profesorul te așteaptă la laboratorul lui. E chiar pe bulevardul ăsta, pe dreapta. Nu poți greși!"
+      ]
+    },
+    {
+      "en": [
+        "Dexio"
+      ],
+      "text": [
+        "Dexio"
+      ]
+    },
+    {
+      "en": [
+        "We'll go ahead and tell him you've arrived. Don't get lost among the shops, now."
+      ],
+      "text": [
+        "Mergem înainte să-i spunem că ai ajuns. Nu te pierde printre magazine, ai grijă."
+      ]
+    }
+  ],
+  "Sina": [
+    {
+      "en": [
+        "Sina"
+      ],
+      "text": [
+        "Sina"
+      ]
+    },
+    {
+      "en": [
+        "The professor's laboratory is up the avenue on the right!"
+      ],
+      "text": [
+        "Laboratorul profesorului e pe bulevard, pe dreapta!"
+      ]
+    }
+  ],
+  "Dexio": [
+    {
+      "en": [
+        "Dexio"
+      ],
+      "text": [
+        "Dexio"
+      ]
+    },
+    {
+      "en": [
+        "Lumiose is a big city. The avenues all lead back to the tower, if you ever lose your way."
+      ],
+      "text": [
+        "Lumiose e un oraș mare. Toate bulevardele duc înapoi la turn, dacă te rătăcești vreodată."
+      ]
+    }
+  ],
+  "NotYetNorth": [
+    {
+      "en": [
+        "The road beyond is closed for repairs. It will open again soon."
+      ],
+      "text": [
+        "Drumul de dincolo e închis pentru reparații. Se va deschide în curând."
+      ]
+    }
+  ],
+  "NotYetSouth": [
+    {
+      "en": [
+        "The road beyond is closed for repairs. It will open again soon."
+      ],
+      "text": [
+        "Drumul de dincolo e închis pentru reparații. Se va deschide în curând."
+      ]
+    }
+  ],
+  "NotYetWest": [
+    {
+      "en": [
+        "The road to Route 5 is closed for repairs. It will open again soon."
+      ],
+      "text": [
+        "Drumul spre Route 5 e închis pentru reparații. Se va deschide în curând."
+      ]
+    }
+  ],
+  "NotYetEast": [
+    {
+      "en": [
+        "The road beyond is closed for repairs. It will open again soon."
+      ],
+      "text": [
+        "Drumul de dincolo e închis pentru reparații. Se va deschide în curând."
+      ]
+    }
+  ]
+}

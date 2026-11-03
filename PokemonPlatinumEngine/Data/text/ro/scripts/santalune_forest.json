@@ -1,0 +1,62 @@
+{
+  "Meet": [
+    {
+      "en": [
+        "Shauna"
+      ],
+      "text": [
+        "Shauna"
+      ]
+    },
+    {
+      "en": [
+        "{player}! Isn't it amazing in here? It's all green and quiet and full of Pokémon!"
+      ],
+      "text": [
+        "{player}! Nu e uimitor aici? E tot verde, liniștit și plin de Pokémoni!"
+      ]
+    },
+    {
+      "en": [
+        "I heard there's a Pikachu living somewhere in these woods. I'm going to find it before anyone else does!"
+      ],
+      "text": [
+        "Am auzit că trăiește un Pikachu pe undeva prin pădurea asta. O să-l găsesc înaintea tuturor!"
+      ]
+    },
+    {
+      "en": [
+        "Want to know a secret? When your Pokémon's tired, you can rest it with a Potion. Here, I've got a spare."
+      ],
+      "text": [
+        "Vrei să afli un secret? Când Pokémonul tău e obosit, îl poți odihni cu un Potion. Ține, am unul în plus."
+      ]
+    },
+    {
+      "en": [
+        "See you on the other side! Last one out of the forest is a Slowpoke!"
+      ],
+      "text": [
+        "Ne vedem dincolo! Ultimul care iese din pădure e un Slowpoke!"
+      ]
+    }
+  ],
+  "Shauna": [
+    {
+      "en": [
+        "Shauna"
+      ],
+      "text": [
+        "Shauna"
+      ]
+    },
+    {
+      "en": [
+        "Have you seen a Pikachu around here?"
+      ],
+      "text": [
+        "Ai văzut un Pikachu pe aici?"
+      ]
+    }
+  ]
+}
