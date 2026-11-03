@@ -55,6 +55,11 @@ partial class Harness
             game.State = GameState.PartyMenu;
             game.PartyScreen.Open();
             Frames(40);
+            // (a coat's icon is baked the first time it is asked for, and four seconds of sprite service a frame isn't always
+            // enough: wave 60's run of the mode showed summer's, autumn's and winter's as the stand-in. Wait for both)
+            for (int i = 0; i < 900 && (PokemonSprites.GetBaked(deerling.LookName, SpriteView.Icon) == null
+                || PokemonSprites.GetBaked(sawsbuck.LookName, SpriteView.Icon) == null); i++) Frames(1);
+            Frames(4);
             Console.WriteLine($"{season}: Deerling as {deerling.Form ?? "itself"}, Sawsbuck as {sawsbuck.Form ?? "itself"}");
             Shot($"season_{name}_deerling");
             game.PartyScreen.Close();

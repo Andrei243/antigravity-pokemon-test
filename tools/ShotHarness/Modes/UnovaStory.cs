@@ -1340,8 +1340,29 @@ partial class Harness
         League("the Hall of Fame");
 
         // ---- home: Mom and the professor's father with the National Pokédex; and the flight to Kalos at Mistralton
-        ComeThrough("AspertiaCity_PlayersHouse", 14, 5, Direction.Down); Frames(20); Shot("us416_home_again");
+        // (the ceremony and the credits end in black, which the field opens out of: wave 60's frame of 20 was still dark)
+        // (the Hall of Fame's script is still running at home: its save's line and the credits come first, and Mom's scene
+        // only once it has ended; read on through both, holding the credits' button as the Johto mode does)
+        for (int i = 0; i < 20000 && (State() != GameState.Overworld || engine.ScriptRunning || Box().IsActive); i++)
+        {
+            if (State() == GameState.Credits) { game.Credits.Held = true; Frames(1); }
+            else if (State() == GameState.HallOfFameCeremony) { game.Ceremony.PressConfirm(); Frames(1); }
+            else if (Box().IsActive && Box().IsCurrentLineComplete && !Box().IsQuestion) { Box().Advance(); Frames(2); }
+            else Frames(1);
+        }
+        if (State() != GameState.Overworld) Console.WriteLine($"  !! never happened: home after the credits (state {State()})");
+        ComeThrough("AspertiaCity_PlayersHouse", 14, 5, Direction.Down);
+        Frames(30); Shot("us416_home_again");
         StepOnto("AspertiaCity_PlayersHouse", 10, 8, Direction.Left);
+        // (the house's own arrival runs first and takes the step: wave 60's run of UNOVA_FROM=league found the player
+        // still on 11, 8 and Mom's scene never begun. Let it end and take the step again)
+        if (game.Player.GridX != 10 && !Box().IsActive)
+        {
+            ReadTo(null);
+            engine.Steering = (Direction.Left, false);
+            Until(() => engine.ScriptRunning, "Mom's scene at 10,8", 120);
+            engine.Steering = null;
+        }
         ReadTo("Welcome home, Champion!"); Frames(10); Shot("us417_mom_welcomes_the_champion");
         ReadTo("It's the National Pokédex now."); Frames(10); Shot("us418_the_national_pokedex");
         ReadTo(null); Frames(10);
@@ -1350,6 +1371,15 @@ partial class Harness
         At("MistraltonCity_CargoHall", 23, 16, Direction.Up); Frames(4);
         game.Interact();
         ReadTo("Kalos"); Frames(10); Shot("us419_the_flight_to_kalos");
+        // (the attendant asks whether to set off: ReadTo's yes flew to Kalos, where its rival's name was asked over
+        // every shot after it and U10's legendaries stood under Kalos's sign. The harness stays in Unova: no)
+        for (int i = 0; i < 600 && !engine.Choice.IsOpen; i++)
+        {
+            if (Box().IsActive && Box().IsCurrentLineComplete && !Box().IsQuestion) { Box().Advance(); Frames(2); }
+            else Frames(1);
+        }
+        if (engine.Choice.IsOpen) { Frames(10); engine.Choice.Move(1); engine.Choice.Confirm(); Frames(4); }
+        else Console.WriteLine("  !! never happened: the attendant's question");
         ReadTo(null); Frames(10); Shot("us420_the_cargo_hall_after");
         League("Mistralton");
 
@@ -1528,6 +1558,44 @@ partial class Harness
         ReadTo("You faced Genesect?"); Frames(10); Shot("us489_the_shock_drive");
         ReadTo(null); Frames(10);
         Console.WriteLine($"  the Shock Drive: {game.Bag.AllItems.Any(s => s.Name == "Shock Drive")}");
+
+        // ---- plan 22 · U11's leftovers (us494 on, shot before the Super train, whose battle the mode ends in): the Subway's
+        // records board at the Single desk, the friends a Multi line offers, and Join Avenue's owner and market
+        ComeThrough("GearStation", 11, 4, Direction.Up); Frames(30);
+        TalkToKey("GearStation", "single_desk");
+        for (int i = 0; i < 900 && !engine.Choice.IsOpen; i++)
+        {
+            if (Box().IsActive && Box().IsCurrentLineComplete && !Box().IsQuestion) { Box().Advance(); Frames(2); }
+            else Frames(1);
+        }
+        if (engine.Choice.IsOpen)
+        {
+            Frames(10); engine.Choice.Move(1); engine.Choice.Move(1); engine.Choice.Confirm(); Frames(4);
+            for (int i = 0; i < 600 && State() != GameState.FrontierRecords; i++)
+            {
+                if (Box().IsActive && Box().IsCurrentLineComplete && !Box().IsQuestion) { Box().Advance(); Frames(2); }
+                else Frames(1);
+            }
+            if (State() == GameState.FrontierRecords) { Frames(30); Shot("us494_the_subways_records"); game.FrontierBoard.Close(); Frames(4); }
+            else Console.WriteLine($"  !! never happened: the Subway's records board (state {State()})");
+        }
+        else Console.WriteLine("  !! never happened: the Single desk's question");
+        ReadTo(null); Frames(10);
+        Console.WriteLine($"  the friends a Multi line offers: {PokemonPlatinumEngine.Models.Frontier.BattleSubway.FriendsOffered(story)}");
+        ComeThrough("JoinAvenue", 8, 30, Direction.Up); Frames(30); Shot("us495_join_avenue");
+        TalkTo("JoinAvenue", "0", "join_avenue");
+        ReadTo("Will you be Join Avenue's manager?"); Frames(10); Shot("us496_the_avenues_owner");
+        ReadTo(null); Frames(10);
+        Console.WriteLine($"  Join Avenue: manager {story.Has("FLAG_UNOVA_JOIN_AVENUE_MANAGER")}");
+        TalkToKey("JoinAvenue", "market", 1, 0);
+        for (int i = 0; i < 900 && State() != GameState.Shop; i++)
+        {
+            if (Box().IsActive && Box().IsCurrentLineComplete && !Box().IsQuestion) { Box().Advance(); Frames(2); }
+            else Frames(1);
+        }
+        if (State() == GameState.Shop) { Frames(30); Shot("us497_the_avenues_market"); game.Shop.Close(); Frames(6); }
+        else Console.WriteLine($"  !! never happened: Join Avenue's market (state {State()})");
+        ReadTo(null); Frames(10);
 
         // ---- the Battle Subway's Super Single Train, once Ingo is beaten in the 21st car
         story.SetVar(PokemonPlatinumEngine.Models.Frontier.BattleSubway.Vars.Best(PokemonPlatinumEngine.Models.Frontier.SubwayTrain.Single), 21);
