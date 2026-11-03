@@ -257,5 +257,51 @@ partial class Harness
             Shot("h3k7_museum_first_scene");
             Console.WriteLine($"h3k7: the script {game.ScriptNow ?? "none"}, the museum's state {game.Story.Var("VAR_LILYCOVE_MUSEUM_2F_STATE")}");
         }
+        // ---- Plan 21 · H11, part f: the paintings on the gallery's wall, an appeal's burst, and the orbs given back
+        if (Wants("h3m0"))
+        {
+            foreach (var quality in new[] { ContestStat.Cool, ContestStat.Cute, ContestStat.Tough })
+            {
+                var winner = new Pokemon(PokemonDatabase.Get(quality switch { ContestStat.Cool => "Absol", ContestStat.Cute => "Azumarill", _ => "Blaziken" })!, 60);
+                game.HoennContests.HangInMuseum(PokemonPlatinumEngine.Models.Contest.HoennContestRules.PaintingOf(
+                    PokemonPlatinumEngine.Models.Contest.HoennContestRules.Conclude(quality, PokemonPlatinumEngine.Models.Contest.AppealRank.Master, winner, 0, 850), winner, "Brendan"));
+            }
+            game.Story.SetVar("VAR_LILYCOVE_MUSEUM_2F_STATE", 1);
+            Look("h3m0_museum_paintings_hung", "LilycoveCity_LilycoveMuseum_2F", 11, 7, Direction.Up);
+            Console.WriteLine($"h3m0: {game.Map.Props.Count(p => p.Type == PropType.Painting && p.Model.StartsWith("contest:"))} paintings on the wall");
+        }
+        if (Wants("h3m1"))
+        {
+            var screen = game.AppealScreen;
+            game.State = GameState.Appeals;
+            screen.Begin(party.Members[0], "Brendan", ContestStat.Cool, PokemonPlatinumEngine.Models.Contest.AppealRank.Normal, afterTheGame: false, new Random(5));
+            foreach (var a in screen.Round!.Appealers) PokemonPlatinumEngine.Graphics.PokemonSprites.Request(a.Pokemon.ModelName);
+            for (int i = 0; i < 200 && screen.Phase != PokemonPlatinumEngine.UI.AppealPhase.Choose && screen.IsActive; i++) { screen.PressConfirm(); screen.Advance(0.5f); Frames(1); }
+            screen.PressConfirm();
+            Frames(4);
+            int shots = 0;
+            for (int i = 0; i < 60 && shots < 2 && screen.IsActive; i++)
+            {
+                if (screen.Phase == PokemonPlatinumEngine.UI.AppealPhase.Turn && screen.BurstAge < 0.1f)
+                {
+                    screen.Advance(0.35f);
+                    Frames(1);
+                    Shot(shots == 0 ? "h3m1_appeal_burst" : "h3m1b_appeal_burst");
+                    Console.WriteLine($"h3m1: {screen.MoveShown}, its burst {screen.BurstQuality} at {screen.BurstAge:0.00} s");
+                    shots++;
+                }
+                screen.Advance(0.3f);
+                if (screen.Phase == PokemonPlatinumEngine.UI.AppealPhase.Choose || screen.Phase == PokemonPlatinumEngine.UI.AppealPhase.RoundEnd || screen.BurstAge >= 0.1f) screen.PressConfirm();
+                Frames(1);
+            }
+            game.State = GameState.Overworld;
+        }
+        if (Wants("h3m2"))
+        {
+            game.Story.SetVar("VAR_MT_PYRE_STATE", 2);
+            game.Story.Unset("FLAG_HIDE_MT_PYRE_SUMMIT_ARCHIE");
+            game.Story.Unset("FLAG_HIDE_MT_PYRE_SUMMIT_MAXIE");
+            Look("h3m2_mt_pyre_leaders", "MtPyre_Summit", 23, 10, Direction.Up);
+        }
     }
 }
