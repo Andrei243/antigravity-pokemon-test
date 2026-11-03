@@ -3246,6 +3246,89 @@ way 1, from answer 1
   Depot Agent> The Subway Bosses wait for those who ride on to the 21st car and the 49th.
   Depot Agent> Beat the Boss in the 21st car and the Super Double Train opens to you, with tougher trainers and more Battle Points.
   ? What would you like to do? = INFO
+=== GearStation.Exchange
+from Clerk at 21,5 of GearStation
+way 0
+  Clerk> Welcome to the Battle Subway's prize counter! Battle Points earned on the trains buy what you see here.
+  Clerk> Which prize would you like?
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = HP Up   4 BP
+  * frontier points 1
+way 25, from answer 1
+  Clerk> Do come back when you've ridden a few more cars!
+  ? Which prize would you like? = No thanks
+way 24, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Air Balloon   32 BP
+way 23, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Weakness Policy   32 BP
+way 22, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Eviolite   48 BP
+way 21, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Rocky Helmet   48 BP
+way 20, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Assault Vest   48 BP
+way 19, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Focus Sash   48 BP
+way 18, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Life Orb   48 BP
+way 17, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Choice Specs   48 BP
+way 16, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Choice Scarf   48 BP
+way 15, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Choice Band   48 BP
+way 14, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Power Anklet   16 BP
+way 13, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Power Band   16 BP
+way 12, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Power Lens   16 BP
+way 11, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Power Belt   16 BP
+way 10, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Power Bracer   16 BP
+way 9, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Power Weight   16 BP
+way 8, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = PP Max   48 BP
+way 7, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = PP Up   24 BP
+way 6, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Rare Candy   24 BP
+way 5, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Carbos   4 BP
+way 4, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Zinc   4 BP
+way 3, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Calcium   4 BP
+way 2, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Iron   4 BP
+way 1, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Protein   4 BP
 === GearStation.MultiTrain
 from Depot Agent at 11,3 of GearStation
 way 0
@@ -18448,6 +18531,14 @@ way 1, from answer 1
 from Bugsy at 25,71 of Viridian_Forest
 way -
   Bugsy> Oh, hi! I come to Viridian Forest on Fridays. The bug Pokémon here are so different from Ilex Forest's!
+=== join_avenue.Antiques
+from Antique Dealer at 24,64 of JoinAvenue
+way -
+  Antique Dealer> My shop opens once the avenue draws a better class of visitor. A little busier, and I'll be here!
+=== join_avenue.AntiquesSign
+from the tile read at 23,63 of JoinAvenue
+way -
+  > Join Avenue Antiques\nFossils and curios of old.
 === join_avenue.Cafe
 from Waitress at 6,42 of JoinAvenue
 way -
@@ -18458,6 +18549,14 @@ way -
 from the tile read at 7,41 of JoinAvenue
 way -
   > Join Avenue Café\nCold drinks all day long.
+=== join_avenue.Dojo
+from Dojo Master at 24,35 of JoinAvenue
+way -
+  Dojo Master> The dojo isn't open yet. Once the avenue's busier, I'll have the room to train your Pokémon!
+=== join_avenue.DojoSign
+from the tile read at 23,34 of JoinAvenue
+way -
+  > Join Avenue Dojo\nTraining for tough Pokémon.
 === join_avenue.Flowers
 from Florist at 24,21 of JoinAvenue
 way -
@@ -18478,6 +18577,14 @@ way -
 from the tile read at 7,27 of JoinAvenue
 way -
   > Join Avenue Market\nEverything for the road ahead!
+=== join_avenue.Nursery
+from Nursery Aide at 24,48 of JoinAvenue
+way -
+  Nursery Aide> The nursery isn't ready yet. Once the avenue has more visitors, we'll open our doors!
+=== join_avenue.NurserySign
+from the tile read at 23,47 of JoinAvenue
+way -
+  > Join Avenue Nursery\nA warm corner for Eggs.
 === join_avenue.Owner
 from Owner at 15,70 of JoinAvenue
 way 0
@@ -18493,10 +18600,47 @@ way 0
 way 1, from answer 1
   Owner> No? Well, the offer stands. Come and see me if you change your mind.
   ? You have the look of a Trainer people follow. Will you be Join Avenue's manager? = No
+=== join_avenue.Raffle
+from Raffle Clerk at 6,13 of JoinAvenue
+way 0
+  Raffle Clerk> Welcome to the raffle! One free ticket a day, and the busier the avenue, the better the prizes. Draw today's?
+  > Lucas received the Super Potion!
+  > Lucas put it away in the Medicine pocket.
+  Raffle Clerk> Congratulations! Come back tomorrow for another ticket.
+  ? Welcome to the raffle! One free ticket a day, and the busier the avenue, the better the prizes. Draw today's? = Yes
+  * fanfare FanfareItem
+  + FLAG_DAILY_UNOVA_JOIN_AVENUE_RAFFLE
+way 1, from answer 1
+  Raffle Clerk> No? Your ticket will wait until the end of the day.
+  ? Welcome to the raffle! One free ticket a day, and the busier the avenue, the better the prizes. Draw today's? = No
+=== join_avenue.RaffleSign
+from the tile read at 7,12 of JoinAvenue
+way -
+  > Join Avenue Raffle\nOne free ticket a day!
+=== join_avenue.Salon
+from Stylist at 6,56 of JoinAvenue
+way -
+  Stylist> The salon isn't open yet. We're waiting for the avenue to bring the customers in!
+=== join_avenue.SalonSign
+from the tile read at 7,55 of JoinAvenue
+way -
+  > Join Avenue Salon\nGrooming for happy Pokémon.
 === join_avenue.Stones
 from Shop Girl at 16,70 of JoinAvenue
 way -
   Shop Girl> Our shop isn't open yet. Come back once the avenue's up and running!
+=== join_avenue.Visitor1
+from Visitor at 12,31 of JoinAvenue
+way -
+  Saskia> I came all the way from Undella Bay just to see this street. It's livelier every time!
+=== join_avenue.Visitor2
+from Visitor at 19,45 of JoinAvenue
+way -
+  Ronan> My Herdier sniffs out the café from three streets away. We always stop here first.
+=== join_avenue.Visitor3
+from Visitor at 14,59 of JoinAvenue
+way -
+  Mirela> A friend told me the manager here is a real Trainer. Is that you? Pleased to meet you!
 === join_avenue.Vitamins
 from Shop Girl at 14,70 of JoinAvenue
 way -

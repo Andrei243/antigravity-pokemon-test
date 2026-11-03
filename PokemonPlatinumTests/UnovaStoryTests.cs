@@ -1395,7 +1395,7 @@ public class UnovaStoryTests
         Assert.Equal(21, car.FrontierBattles.Count);
         Assert.Equal("subway_ingo", Assert.Single(car.FrontierBattles[20].Foes).Id);
         Assert.Equal(new[] { "Excadrill", "Conkeldurr", "Archeops" }, car.FrontierBattles[20].Foes[0].Party.Members.Select(p => p.Species.Name));
-        Assert.All(car.FrontierBattles.Take(20), b => Assert.StartsWith("frontier_", Assert.Single(b.Foes).Id));
+        Assert.All(car.FrontierBattles.Take(20), b => Assert.StartsWith("subway_rider_", Assert.Single(b.Foes).Id));
         Assert.Equal(12, car.Frontier.BattlePoints);
         Assert.Equal(21, game.Story.Var(BattleSubway.Vars.Best(SubwayTrain.Single)));
 
@@ -1440,7 +1440,7 @@ public class UnovaStoryTests
         var car = Car(game);
         Assert.Equal(49, car.FrontierBattles.Count);
         // No Boss in the 21st car of a Super train, and its Boss in the 49th
-        Assert.All(car.FrontierBattles.Take(48), b => Assert.All(b.Foes, f => Assert.StartsWith("frontier_", f.Id)));
+        Assert.All(car.FrontierBattles.Take(48), b => Assert.All(b.Foes, f => Assert.StartsWith("subway_rider_", f.Id)));
         Assert.Equal(boss, car.FrontierBattles[48].Foes[0].Id);
         if (BattleSubway.Multi(super)) Assert.Equal(2, car.FrontierBattles[48].Foes.Count);
         Assert.All(car.FrontierBattles, b => Assert.Equal(BattleSubway.PartySize(line), b.Team.Count));
@@ -1543,12 +1543,75 @@ public class UnovaStoryTests
     }
 
     [Fact]
+    public void TheSubwaysRidersAreUnovasClassesAndItsBossesLeavePrints()
+    {
+        // Ingo beaten in the 21st car: every car before his a rider of the Subway's own, and the silver print waits
+        var game = Rider();
+        game.Answers.AddRange(new[] { 0, 1, 1, 0 });
+        game.TalkTo("single_desk");
+        var car = Car(game);
+        Assert.All(car.FrontierBattles.Take(20), b =>
+        {
+            var foe = Assert.Single(b.Foes);
+            Assert.Contains(SubwayRiders.Riders, r => r.Class == foe.TrainerClass && r.Names.Contains(foe.Name));
+        });
+        Assert.Contains(car.Transcript, l => SubwayRiders.Riders.Any(r => l.Text.Contains(r.Class + " ")));
+        Assert.Equal(1, game.Story.Var(SubwayRiders.PrintVariable));
+        Assert.Equal(FrontierPrint.None, FrontierBoard.ForSubway(new FrontierRecords(), game.Story).Print);
+
+        // A desk hands it over before anything else, once; the board shows it
+        game.Answers.AddRange(new[] { 3 });
+        var desk = game.TalkTo("double_desk");
+        Assert.Contains(desk.Transcript, l => l.Text.Contains("silver print"));
+        Assert.Equal(2, game.Story.Var(SubwayRiders.PrintVariable));
+        Assert.Equal(FrontierPrint.Silver, FrontierBoard.ForSubway(new FrontierRecords(), game.Story).Print);
+        game.Answers.AddRange(new[] { 3 });
+        Assert.DoesNotContain(game.TalkTo("double_desk").Transcript, l => l.Text.Contains("print"));
+
+        // Emmet after it: the gold
+        Assert.Equal(FrontierPrint.Gold, SubwayRiders.Beaten(game.Story, 2));
+        Assert.Equal(FrontierPrint.Gold, SubwayRiders.HandOver(game.Story));
+        Assert.Equal(FrontierPrint.Gold, SubwayRiders.PrintOf(game.Story));
+        // and the Subway's prints are no facility's of the Frontier's
+        Assert.False(FrontierBrains.AnyPrint(game.Story));
+    }
+
+    [Fact]
+    public void TheSubwaysCounterTradesBattlePointsForItsPrizes()
+    {
+        var game = Rider();
+        var counter = game.Map.NPCs.First(n => n.Key == "bp_counter");
+        game.Tile = (counter.GridX - 1, counter.GridY);
+        // Too few points: refused, nothing given
+        var poor = new HeadlessScriptHost(game.Story, game.Party, game.Bag) { Map = game.Map, PlayerTile = game.Tile };
+        poor.Answers.Enqueue(6);
+        var runner = new ScriptRunner(Scripts, poor);
+        runner.Start(Scripts.Find("Exchange", "GearStation")!, counter);
+        runner.RunToEnd();
+        Assert.Empty(poor.Problems);
+        Assert.Contains(poor.Transcript, l => l.Text.Contains("don't have the Battle Points"));
+        Assert.Equal(0, game.Bag.GetQuantity(ItemDatabase.Get("Rare Candy")!));
+
+        // With 30 points the Rare Candy (24) is bought and 6 points are left
+        var rich = new HeadlessScriptHost(game.Story, game.Party, game.Bag) { Map = game.Map, PlayerTile = game.Tile };
+        rich.Frontier.GivePoints(30);
+        rich.Answers.Enqueue(SubwayRiders.Prizes.Select(p => p.Item).ToList().IndexOf("Rare Candy"));
+        runner = new ScriptRunner(Scripts, rich);
+        runner.Start(Scripts.Find("Exchange", "GearStation")!, counter);
+        runner.RunToEnd();
+        Assert.Empty(rich.Problems);
+        Assert.Equal(6, rich.Frontier.BattlePoints);
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Rare Candy")!));
+        Assert.Contains(rich.Transcript, l => l.Text.Contains("24 BP"));
+    }
+
+    [Fact]
     public void AFriendRidesTheMultiTrainOnceTheLeagueIsSeen()
     {
         // Before Unova's Hall of Fame: no question of partners, the staff's own
         var plain = Rider();
         Assert.DoesNotContain(plain.TalkTo("multi_desk").Asked, q => q.Question.Contains("ride beside you"));
-        Assert.All(Car(plain).FrontierBattles, b => Assert.StartsWith("frontier_", b.Partner!.Id));
+        Assert.All(Car(plain).FrontierBattles, b => Assert.StartsWith("subway_rider_depotagent_", b.Partner!.Id));
 
         // After it: Cheren rides beside the player, with two of his own at level 50 that share nothing with the two entered
         var game = Rider();

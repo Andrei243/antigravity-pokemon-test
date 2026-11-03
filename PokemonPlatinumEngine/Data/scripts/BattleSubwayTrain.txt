@@ -15,6 +15,9 @@
 # Since plan 22 · U11 a run may also be put down after a set (REST): the player goes back to the Gear Station with the
 # game saved there, and any desk takes the run up again from the next car (GearStation.txt's Waiting). On a Multi line
 # the partner may be a friend, Cheren or Bianca, dressed in the car by `subway partner again`.
+#
+# Since U11's leftovers the trainers of the cars ride as the Subway's own riders of Unova's classes (Data/subway.json),
+# and a Subway Boss beaten leaves a print waiting at the Gear Station's desks (subway beaten, GearStation.txt's Prints).
 
 
 script OnEnter
@@ -100,6 +103,8 @@ label BothBosses
 label BossBattle
   subway battle
   if result == 0 goto Lost
+  # plan 22 · U11's leftovers: the Boss beaten leaves the Subway's print waiting at the desks
+  subway beaten
   subway boss
   if result == 2 goto EmmetBeaten
   speaker "Ingo"

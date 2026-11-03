@@ -258,6 +258,15 @@
       "script": "AnvilleLine"
     },
     {
+      "id": "bp_counter",
+      "name": "Clerk",
+      "npcType": "clerk",
+      "x": 21,
+      "y": 5,
+      "facing": "Left",
+      "script": "Exchange"
+    },
+    {
       "id": "traveller",
       "name": "Gentleman",
       "npcType": "Gentleman",

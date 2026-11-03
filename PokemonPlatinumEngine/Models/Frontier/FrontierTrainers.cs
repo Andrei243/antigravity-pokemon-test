@@ -35,17 +35,38 @@ public sealed class FrontierOpponent
     {
         var trainer = new Trainer
         {
-            Id = "frontier_" + Record.Id,
-            Name = Record.Name,
-            TrainerClass = Record.Class,
+            Id = Dress?.Id ?? "frontier_" + Record.Id,
+            Name = ShownName,
+            TrainerClass = ShownClass,
             PrizeMoney = 0,
             Ai = mind ?? FrontierTrainers.Mind,
-            Look = FrontierTrainers.LookOf(Record)
+            Look = ShownLook
         };
         foreach (var p in Pokemon) trainer.Party.Add(p);
         return trainer;
     }
+
+    /// <summary>
+    /// Who the trainer is dressed as where a place has trainers of its own over the Frontier's teams (plan 22 · U11: the
+    /// Battle Subway's riders, <see cref="SubwayRiders"/>); null for the Frontier's own trainer.
+    /// </summary>
+    public FrontierDress? Dress { get; init; }
+
+    /// <summary>The class, name and look the trainer is met as: the dress's, or the Frontier record's.</summary>
+    public string ShownClass => Dress?.Class ?? Record.Class;
+    public string ShownName => Dress?.Name ?? Record.Name;
+    public string ShownLook => Dress?.Look ?? FrontierTrainers.LookOf(Record);
+
+    /// <summary>The same trainer and team, dressed as someone else.</summary>
+    public FrontierOpponent DressedAs(FrontierDress dress) => new()
+    {
+        Number = Number, Sets = Sets, Pokemon = Pokemon, OtId = OtId, Personalities = Personalities,
+        ReservedItems = ReservedItems, Dress = dress
+    };
 }
+
+/// <summary>Who a Frontier trainer's team is met as somewhere of its own: an id for the battle, a class, a name and a look.</summary>
+public sealed record FrontierDress(string Id, string Class, string Name, string Look);
 
 /// <summary>
 /// How the Battle Frontier makes its trainers' Pokémon (plan 06 · R18a), ported from

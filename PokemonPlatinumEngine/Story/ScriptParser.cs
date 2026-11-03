@@ -1031,7 +1031,8 @@ public static class ScriptParser
             case "subway":
             {
                 string what = r.OneOf("enough", "begin", "choose", "check", "active", "end", "next", "boss", "opponent", "battle", "won", "streak",
-                    "best", "finish", "points", "mode", "foe", "super", "opened", "pause", "paused", "resume", "records", "friends", "partner");
+                    "best", "finish", "points", "mode", "foe", "super", "opened", "pause", "paused", "resume", "records", "friends", "partner",
+                    "beaten", "print", "prize", "buy");
                 string which = what switch
                 {
                     "begin" => r.OneOf("single", "double", "multi", "supersingle", "superdouble", "supermulti"),
@@ -1055,8 +1056,15 @@ public static class ScriptParser
             // Join Avenue's growth (plan 22 · U11): the day's visitors, the rank, a shop's stock by the rank
             case "joinavenue":
             {
-                string what = r.OneOf("visit", "rank", "visitors", "next", "shop");
-                string which = what == "shop" ? r.OneOf("market", "flowers", "cafe", "stones", "vitamins") : "";
+                string what = r.OneOf("visit", "rank", "visitors", "next", "shop", "open", "dojo", "salon", "nursery", "raffle", "visitor");
+                string which = what switch
+                {
+                    "shop" => r.OneOf("market", "flowers", "cafe", "stones", "vitamins", "antiques"),
+                    "open" => r.OneOf("raffle", "dojo", "salon", "nursery", "antiques", "stones", "vitamins"),
+                    "dojo" => r.OneOf("hp", "attack", "defense", "speed", "spatk", "spdef"),
+                    "visitor" => r.OneOf("1", "2", "3"),
+                    _ => ""
+                };
                 return new Instruction { Op = Op.JoinAvenue, Line = line, Name = what, Other = which };
             }
 

@@ -41,6 +41,7 @@ script ToAnville
 script SingleTrain
   face self player
   speaker "Depot Agent"
+  call Prints
   call Waiting
   if result == 1 end
   say "Welcome to the Battle Subway! On the Single Train you battle one on one, car after car, seven to a set."
@@ -82,6 +83,7 @@ label Bye
 script DoubleTrain
   face self player
   speaker "Depot Agent"
+  call Prints
   call Waiting
   if result == 1 end
   say "Welcome to the Battle Subway! On the Double Train two of your Pokémon battle two at a time, car after car."
@@ -124,6 +126,7 @@ label Bye
 script MultiTrain
   face self player
   speaker "Depot Agent"
+  call Prints
   call Waiting
   if result == 1 end
   say "Welcome to the Battle Subway! The Multi Train is for two Trainers who battle side by side, a pair against a pair."
@@ -252,3 +255,44 @@ label Withdraw
   subway end
   say "Please ride with us again!"
   return
+
+
+# The Subway's prints (plan 22 · U11's leftovers): a Subway Boss beaten in a car leaves a print waiting, silver for Ingo's
+# first defeat and gold for Emmet's after it (Models/Frontier/SubwayRiders.cs), and any desk hands it over before its
+# welcome. The prints are the Subway's own: no facility of the Battle Frontier counts them.
+script Prints
+  subway print
+  if result == 0 goto None
+  if result == 2 goto Gold
+  say "Before anything else: the Subway Bosses asked us to hand you this, for beating Ingo on the line."
+  text "{player} received the Subway's silver print!"
+  fanfare item
+  return
+label Gold
+  say "Before anything else: Emmet himself asked us to hand you this. Few riders have ever earned it."
+  text "{player} received the Subway's gold print!"
+  fanfare item
+label None
+  return
+
+
+# The Battle Point counter (plan 22 · U11's leftovers): the Frontier's Battle Points, earned on the trains, traded for
+# prizes of ours (Data/subway.json). One prize to a visit, as the Exchange Service Corner's booths.
+script Exchange
+  face self player
+  speaker "Clerk"
+  say "Welcome to the Battle Subway's prize counter! Battle Points earned on the trains buy what you see here."
+  subway prize
+  if result == 0 goto Bye
+  subway buy
+  if result == 0 goto Short
+  sound "select"
+  text "{player} traded {price} BP for the {item}."
+  say "Thank you! Mind the gap on your way to the platforms."
+  end
+label Short
+  say "I'm sorry. You don't have the Battle Points for that."
+  end
+label Bye
+  say "Do come back when you've ridden a few more cars!"
+  end

@@ -32,8 +32,8 @@ public enum SubwayTrain
 /// stand at the 21st and the 49th battle in every train; a Super train (plan 22 · U11) begins three rooms further on and
 /// has its Boss at the 49th alone, and a run may be put down between two sets and taken up again
 /// (<see cref="PutDown"/>), its streaks told on a records' board (<see cref="FrontierBoard.ForSubway"/>) and its Multi
-/// lines ridden beside a friend (<see cref="Friends"/>). What is left (Wi-Fi, the Subway's own trainers and prints and
-/// its Battle Point counter) is listed in plan 22. No drawing or input; every
+/// lines ridden beside a friend (<see cref="Friends"/>). Since U11's leftovers its trainers ride dressed as its own riders,
+/// its Bosses leave prints and a counter trades Battle Points (<see cref="SubwayRiders"/>). No drawing or input; every
 /// draw is on the sixteen-bit draw the caller hands over.
 /// </summary>
 public static class BattleSubway
@@ -223,7 +223,8 @@ public static class BattleSubway
         int first = TrainerFor(at, next16), second = first;
         if (Multi(train))
             while ((second = TrainerFor(at, next16)) == first) { }
-        return FrontierTrainers.ForTrainers(PartySize(train) * (Multi(train) ? 2 : 1), first, second, Multi(train), next16);
+        // Plan 22 · U11's leftovers: the teams ride dressed as the Subway's own riders of Unova's classes (no draw moves)
+        return SubwayRiders.Dress(FrontierTrainers.ForTrainers(PartySize(train) * (Multi(train) ? 2 : 1), first, second, Multi(train), next16));
     }
 
     /// <summary>
@@ -235,7 +236,9 @@ public static class BattleSubway
         var rng = new Random(seed);
         int Next16() => rng.Next(0x10000);
         int trainer = TrainerFor(1, Next16);
-        return FrontierTrainers.ForTrainers(PartySize(SubwayTrain.Multi), trainer, trainer, false, Next16)[0];
+        var partner = FrontierTrainers.ForTrainers(PartySize(SubwayTrain.Multi), trainer, trainer, false, Next16)[0];
+        // the staff's own: a Depot Agent of the Subway's (plan 22 · U11's leftovers)
+        return partner.DressedAs(SubwayRiders.StaffOf(partner.Number));
     }
 
     /// <summary>

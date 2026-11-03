@@ -180,11 +180,6 @@
         "COBOR",
         "MERG MAI DEPARTE",
         "PAUZĂ"
-      ],
-      "was": [
-        "Cobori aici sau continui cu seria următoare?",
-        "COBOARĂ",
-        "CONTINUĂ"
       ]
     },
     {
@@ -217,9 +212,6 @@
       ],
       "text": [
         "Lași cursa deoparte deocamdată? Jocul va fi salvat la Gear Station și poți continua mai târziu din vagonul {number}."
-      ],
-      "was": [
-        "Agentul depoului"
       ]
     },
     {
@@ -232,9 +224,6 @@
         "Atunci cobori aici sau mergi mai departe la următorul set?",
         "COBOR",
         "MERG MAI DEPARTE"
-      ],
-      "was": [
-        "Oh, ghinion! Aici se termină călătoria. Ai învins {number} vagoane înainte să fii oprit."
       ]
     },
     {
@@ -243,9 +232,6 @@
       ],
       "text": [
         "Foarte bine. Locul tău va fi păstrat!"
-      ],
-      "was": [
-        "Seriile învinse se păstrează. Iată Punctele de Luptă câștigate."
       ]
     },
     {
@@ -254,9 +240,6 @@
       ],
       "text": [
         "{player} a salvat jocul."
-      ],
-      "was": [
-        "{player} a primit {number} PL!"
       ]
     },
     {

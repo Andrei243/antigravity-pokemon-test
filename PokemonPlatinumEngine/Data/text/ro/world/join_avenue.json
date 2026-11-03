@@ -95,6 +95,86 @@
           "Chelnerița"
         ]
       }
+    },
+    "raffle": {
+      "name": {
+        "en": [
+          "Raffle Clerk"
+        ],
+        "text": [
+          "Vânzătoarea de la tombolă"
+        ]
+      }
+    },
+    "dojo": {
+      "name": {
+        "en": [
+          "Dojo Master"
+        ],
+        "text": [
+          "Maestrul dojo-ului"
+        ]
+      }
+    },
+    "nursery": {
+      "name": {
+        "en": [
+          "Nursery Aide"
+        ],
+        "text": [
+          "Îngrijitoare de creșă"
+        ]
+      }
+    },
+    "salon": {
+      "name": {
+        "en": [
+          "Stylist"
+        ],
+        "text": [
+          "Stilistă"
+        ]
+      }
+    },
+    "antiques": {
+      "name": {
+        "en": [
+          "Antique Dealer"
+        ],
+        "text": [
+          "Anticarul"
+        ]
+      }
+    },
+    "visitor_1": {
+      "name": {
+        "en": [
+          "Visitor"
+        ],
+        "text": [
+          "Vizitator"
+        ]
+      }
+    },
+    "visitor_2": {
+      "name": {
+        "en": [
+          "Visitor"
+        ],
+        "text": [
+          "Vizitator"
+        ]
+      }
+    },
+    "visitor_3": {
+      "name": {
+        "en": [
+          "Visitor"
+        ],
+        "text": [
+          "Vizitator"
+        ]
+      }
     }
   },
   "signs": {

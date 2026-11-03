@@ -111,3 +111,208 @@ script CafeSign
   speaker none
   text "Join Avenue Café\nCold drinks all day long."
   end
+
+
+# The avenue's other shops (plan 22 · U11's leftovers; rulings, "Join Avenue's other shops"): Black 2's raffle, dojo, salon,
+# nursery and antique shop, each in a bay of the street with its keeper behind a counter, open from their ranks and doing more
+# the higher the avenue's rank (Models/JoinAvenue.cs; every number ours). The raffle draws on the game's own chance once a day.
+script Raffle
+  face self player
+  speaker "Raffle Clerk"
+  ask "Welcome to the raffle! One free ticket a day, and the busier the avenue, the better the prizes. Draw today's?"
+  if no goto Bye
+  joinavenue raffle
+  if result == 0 goto Drawn
+  say "Congratulations! Come back tomorrow for another ticket."
+  end
+label Drawn
+  say "You've drawn today's ticket already. There'll be a new one for you tomorrow!"
+  end
+label Bye
+  say "No? Your ticket will wait until the end of the day."
+  end
+
+
+script Dojo
+  face self player
+  speaker "Dojo Master"
+  joinavenue open dojo
+  if result == 0 goto Closed
+  say "Hah! Welcome to the dojo. One session is $1,000, and your Pokémon comes out tougher in the stat you pick."
+  if money < 1000 goto Poor
+  choose "Which stat shall we train?" "HP" "ATTACK" "DEFENSE" "SP. ATK" "SP. DEF" "SPEED"
+  if result == 0 goto Hp
+  if result == 1 goto Attack
+  if result == 2 goto Defense
+  if result == 3 goto SpAtk
+  if result == 4 goto SpDef
+  if result == 5 goto Speed
+  goto Bye
+label Hp
+  choosepokemon
+  if result == 255 goto Bye
+  joinavenue dojo hp
+  goto Trained
+label Attack
+  choosepokemon
+  if result == 255 goto Bye
+  joinavenue dojo attack
+  goto Trained
+label Defense
+  choosepokemon
+  if result == 255 goto Bye
+  joinavenue dojo defense
+  goto Trained
+label SpAtk
+  choosepokemon
+  if result == 255 goto Bye
+  joinavenue dojo spatk
+  goto Trained
+label SpDef
+  choosepokemon
+  if result == 255 goto Bye
+  joinavenue dojo spdef
+  goto Trained
+label Speed
+  choosepokemon
+  if result == 255 goto Bye
+  joinavenue dojo speed
+label Trained
+  if result >= 254 goto Egg
+  if result == 0 goto Full
+  takemoney 1000
+  sound "select"
+  say "Hup! Hah! {wearer} trained hard and came out tougher than it went in!"
+  end
+label Full
+  say "{wearer} can't grow any tougher there. Its training is complete! I won't take your money for nothing."
+  end
+label Egg
+  say "An Egg? Ha! Bring it back once it's hatched and has some fight in it."
+  end
+label Poor
+  say "You're short of the fee, I'm afraid. Come back with $1,000!"
+  end
+label Bye
+  say "Come back when you're ready to sweat!"
+  end
+label Closed
+  say "The dojo isn't open yet. Once the avenue's busier, I'll have the room to train your Pokémon!"
+  end
+
+
+script Salon
+  face self player
+  speaker "Stylist"
+  joinavenue open salon
+  if result == 0 goto Closed
+  ask "Welcome to the salon! A grooming is $500, and your Pokémon will love you all the more. Shall we?"
+  if no goto Bye
+  if money < 500 goto Poor
+  choosepokemon
+  if result == 255 goto Bye
+  joinavenue salon
+  if result >= 254 goto Egg
+  if result == 0 goto Full
+  takemoney 500
+  sound "select"
+  say "All done! {wearer} looks wonderful, and it knows exactly who to thank for it."
+  end
+label Full
+  say "{wearer} couldn't love you any more than it already does! No grooming needed today."
+  end
+label Egg
+  say "An Egg? There's nothing to brush yet! Bring it back once it's hatched."
+  end
+label Poor
+  say "Oh dear, you're a little short. A grooming is $500."
+  end
+label Bye
+  say "Do come back! A brushed Pokémon is a happy Pokémon."
+  end
+label Closed
+  say "The salon isn't open yet. We're waiting for the avenue to bring the customers in!"
+  end
+
+
+script Nursery
+  face self player
+  speaker "Nursery Aide"
+  joinavenue open nursery
+  if result == 0 goto Closed
+  say "This is the avenue's nursery. Eggs love a warm, quiet corner, and ours is the warmest in Unova."
+  joinavenue nursery
+  if result == 0 goto Nothing
+  say "There! Every Egg you carry has had a good warm. They'll hatch all the sooner now."
+  end
+label Nothing
+  say "Bring an Egg along and I'll warm it for you. Once a day, mind. Eggs mustn't be rushed."
+  end
+label Closed
+  say "The nursery isn't ready yet. Once the avenue has more visitors, we'll open our doors!"
+  end
+
+
+script Antiques
+  face self player
+  speaker "Antique Dealer"
+  joinavenue open antiques
+  if result == 0 goto Closed
+  say "Welcome, welcome. Fossils, pearls, old curios... Do mind how you handle them."
+  joinavenue shop antiques
+  say "A fine choice. Old things are precious things."
+  end
+label Closed
+  say "My shop opens once the avenue draws a better class of visitor. A little busier, and I'll be here!"
+  end
+
+
+script RaffleSign
+  speaker none
+  text "Join Avenue Raffle\nOne free ticket a day!"
+  end
+
+
+script DojoSign
+  speaker none
+  text "Join Avenue Dojo\nTraining for tough Pokémon."
+  end
+
+
+script SalonSign
+  speaker none
+  text "Join Avenue Salon\nGrooming for happy Pokémon."
+  end
+
+
+script NurserySign
+  speaker none
+  text "Join Avenue Nursery\nA warm corner for Eggs."
+  end
+
+
+script AntiquesSign
+  speaker none
+  text "Join Avenue Antiques\nFossils and curios of old."
+  end
+
+
+# The visitors (plan 22 · U11's leftovers): three of the passers-by of ours stand in the street once the avenue is managed,
+# picked by its visitors so far, standing in for those met over the console's wireless. Each greets the player in their
+# own words (ui.json's joinAvenue.visitor.N).
+script Visitor1
+  face self player
+  joinavenue visitor 1
+  end
+
+
+script Visitor2
+  face self player
+  joinavenue visitor 2
+  end
+
+
+script Visitor3
+  face self player
+  joinavenue visitor 3
+  end

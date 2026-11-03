@@ -180,8 +180,8 @@ public partial class GameEngine
         for (int i = 0; i < foes.Count && i < TowerOpponentPeople.Length; i++)
         {
             if (flow.Map.FindPerson(TowerOpponentPeople[i]) is not { } person) continue;
-            person.NpcType = FrontierTrainers.LookOf(foes[i].Record);
-            person.Name = $"{foes[i].Record.Class} {foes[i].Record.Name}";
+            person.NpcType = foes[i].ShownLook;
+            person.Name = $"{foes[i].ShownClass} {foes[i].ShownName}";
         }
         KeepCharactersNear(trim: false);
     }

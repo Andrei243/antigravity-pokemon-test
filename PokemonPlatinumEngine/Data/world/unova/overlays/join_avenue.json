@@ -14,17 +14,37 @@
   "props": [
     { "type": "Counter", "x": 7, "y": 27, "width": 1, "depth": 3 },
     { "type": "Counter", "x": 23, "y": 20, "width": 1, "depth": 3 },
-    { "type": "Counter", "x": 7, "y": 41, "width": 1, "depth": 3 }
+    { "type": "Counter", "x": 7, "y": 41, "width": 1, "depth": 3 },
+    // the other shops of plan 22 · U11's leftovers: the raffle, the dojo, the nursery, the salon and the antique shop
+    { "type": "Counter", "x": 7, "y": 12, "width": 1, "depth": 3 },
+    { "type": "Counter", "x": 23, "y": 34, "width": 1, "depth": 3 },
+    { "type": "Counter", "x": 23, "y": 47, "width": 1, "depth": 3 },
+    { "type": "Counter", "x": 7, "y": 55, "width": 1, "depth": 3 },
+    { "type": "Counter", "x": 23, "y": 63, "width": 1, "depth": 3 }
   ],
   "npcs": [
     { "id": "market", "name": "Shopkeeper", "npcType": "Clerk", "x": 6, "y": 28, "facing": "Right", "script": "Market" },
     { "id": "florist", "name": "Florist", "npcType": "Lady", "x": 24, "y": 21, "facing": "Left", "script": "Flowers" },
-    { "id": "waitress", "name": "Waitress", "npcType": "waitress", "x": 6, "y": 42, "facing": "Right", "script": "Cafe" }
+    { "id": "waitress", "name": "Waitress", "npcType": "waitress", "x": 6, "y": 42, "facing": "Right", "script": "Cafe" },
+    { "id": "raffle", "name": "Raffle Clerk", "npcType": "clerk", "x": 6, "y": 13, "facing": "Right", "script": "Raffle" },
+    { "id": "dojo", "name": "Dojo Master", "npcType": "blackbelt", "x": 24, "y": 35, "facing": "Left", "script": "Dojo" },
+    { "id": "nursery", "name": "Nursery Aide", "npcType": "nursery_aide", "x": 24, "y": 48, "facing": "Left", "script": "Nursery" },
+    { "id": "salon", "name": "Stylist", "npcType": "beauty", "x": 6, "y": 56, "facing": "Right", "script": "Salon" },
+    { "id": "antiques", "name": "Antique Dealer", "npcType": "gentleman", "x": 24, "y": 64, "facing": "Left", "script": "Antiques" },
+    // three of the passers-by of ours (JoinAvenue.VisitorAt), standing in the street once the avenue is managed
+    { "id": "visitor_1", "name": "Visitor", "npcType": "backpacker_f", "x": 12, "y": 31, "facing": "Down", "shownBy": "FLAG_UNOVA_JOIN_AVENUE_MANAGER", "script": "Visitor1" },
+    { "id": "visitor_2", "name": "Visitor", "npcType": "school_kid_m", "x": 19, "y": 45, "facing": "Left", "shownBy": "FLAG_UNOVA_JOIN_AVENUE_MANAGER", "script": "Visitor2" },
+    { "id": "visitor_3", "name": "Visitor", "npcType": "veteran_f", "x": 14, "y": 59, "facing": "Up", "shownBy": "FLAG_UNOVA_JOIN_AVENUE_MANAGER", "script": "Visitor3" }
   ],
   "readAt": [
     { "x": 7, "z": 27, "script": "MarketSign" },
     { "x": 23, "z": 20, "script": "FlowersSign" },
-    { "x": 7, "z": 41, "script": "CafeSign" }
+    { "x": 7, "z": 41, "script": "CafeSign" },
+    { "x": 7, "z": 12, "script": "RaffleSign" },
+    { "x": 23, "z": 34, "script": "DojoSign" },
+    { "x": 23, "z": 47, "script": "NurserySign" },
+    { "x": 7, "z": 55, "script": "SalonSign" },
+    { "x": 23, "z": 63, "script": "AntiquesSign" }
   ],
   "people": {
     "0": {
