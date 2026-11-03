@@ -1172,7 +1172,8 @@ internal sealed class MapScene
                 bool n = Floor(tx, ty - 1), s = Floor(tx, ty + 1), wst = Floor(tx - 1, ty) || Low(tx - 1, ty), e = Floor(tx + 1, ty) || Low(tx + 1, ty);
                 // A room whose inner walls stand for something of their own (plan 20 · J15, part s: the Goldenrod Gym's
                 // hedges, the S.S. Aqua's bulkheads) builds that, low enough to be seen over, never the back wall come forward
-                if (Map.Partitions != PartitionLook.Wall)
+                var partition = Map.PartitionAt(tx, ty);
+                if (partition != PartitionLook.Wall)
                 {
                     // (a tile with no floor within two tiles is the solid between the room's halls, not a partition: it is the
                     // room's dark at the floor's level, as beyond a house's plan, so no hall of floor shows where nobody walks)
@@ -1187,7 +1188,10 @@ internal sealed class MapScene
                         continue;
                     }
                     kit.Origin = new Vector3(0f, Map.HasRelief ? InnerWallFoot(tx, ty) : 0f, 0f);
-                    PartitionArt.Build(kit, Map.Partitions, tx, ty, n, s, wst, e);
+                    // (a run of one look reads as one piece: beside a patch of another look the side shows)
+                    bool Other(int x, int y) => x >= lx && x < w - 1 && y >= by && y < h - 1
+                        && Map.GetGroundTile(x, y) == TileType.Wall && Map.PartitionAt(x, y) != partition;
+                    PartitionArt.Build(kit, partition, tx, ty, n || Other(tx, ty - 1), s || Other(tx, ty + 1), wst || Other(tx - 1, ty), e || Other(tx + 1, ty));
                     continue;
                 }
                 if (Jog(tx, ty))

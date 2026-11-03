@@ -21,4 +21,22 @@ public enum PartitionLook
     Ice,
     /// <summary>Square pillars of pale stone under a capital (the Glitter Lighthouse's floors).</summary>
     Pillar,
+    /// <summary>A table of dark wood on stout legs (the S.S. Aqua's mess; plan 20 · J15, part u).</summary>
+    Table,
+    /// <summary>Stacked wooden crates with slats and stencils (the Department Store's basement, the stockrooms).</summary>
+    Crate,
+    /// <summary>Control desks of cream steel with a dark panel of lit buttons and dials (the radio towers, the Power Plant).</summary>
+    Console,
+    /// <summary>Glass display cases on a wooden plinth (the Pewter Museum's halls).</summary>
+    Case,
+    /// <summary>Screens of dark timber over paper panels (Ecruteak's halls by the Bell Tower and the dance theatre).</summary>
+    Lattice,
+    /// <summary>Rails of weathered wood between posts, straw at their foot (the Moomoo Farm's stable).</summary>
+    Fence,
+}
+
+/// <summary>A rectangle of a room's tiles whose inner walls have a look of their own (plan 20 · J15, part u).</summary>
+public readonly record struct PartitionPatch(int X, int Y, int Width, int Height, PartitionLook Look)
+{
+    public bool Covers(int x, int y) => x >= X && x < X + Width && y >= Y && y < Y + Height;
 }

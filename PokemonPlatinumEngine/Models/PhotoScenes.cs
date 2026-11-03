@@ -56,8 +56,9 @@ public static class PhotoScenes
         string key = place ?? "";
         if (indoors) return PhotoSetting.Room;
         if (key.Contains("mount_silver", StringComparison.OrdinalIgnoreCase) || snowbound) return PhotoSetting.Mountain;
-        if (cave) return PhotoSetting.Cave;
+        // (a wood is its own map and a cave to the field's camera, Ilex Forest among them: its print is still the wood's, plan 20 · part u)
         if (key.Contains("forest", StringComparison.OrdinalIgnoreCase)) return PhotoSetting.Forest;
+        if (cave) return PhotoSetting.Cave;
         if (SeaPlaces.Contains(key)) return PhotoSetting.Shore;
         return town ? PhotoSetting.Town : PhotoSetting.Route;
     }

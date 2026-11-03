@@ -22,6 +22,12 @@ internal static class PartitionArt
         PartitionLook.Rock => 22,
         PartitionLook.Ice => 24,
         PartitionLook.Pillar => 44,
+        PartitionLook.Table => 18,
+        PartitionLook.Crate => 26,
+        PartitionLook.Console => 24,
+        PartitionLook.Case => 24,
+        PartitionLook.Lattice => 28,
+        PartitionLook.Fence => 18,
         _ => PropModels.InnerWallHeight
     };
 
@@ -37,7 +43,7 @@ internal static class PartitionArt
         bool apart = look is PartitionLook.Pillar;
         if (apart) north = south = west = east = true;
         int inset = look == PartitionLook.Pillar ? 4 : 0;
-        int variant = look == PartitionLook.Rock ? (int)(Hash(tx, ty, 17) % 3) : 0;
+        int variant = look is PartitionLook.Rock or PartitionLook.Crate ? (int)(Hash(tx, ty, 17) % 3) : 0;
         int fw = T - 2 * inset;
         var top = kit.Face($"partition.{look}.top.{(north ? "n" : "")}{(south ? "s" : "")}{(west ? "w" : "")}{(east ? "e" : "")}.{variant}",
             fw, fw, c => PaintTop(c, look, north, south, west, east, variant));
@@ -78,6 +84,10 @@ internal static class PartitionArt
         PartitionLook.Counter => Rgb(246, 238, 220),
         PartitionLook.Bulkhead => Rgb(220, 184, 64),
         PartitionLook.Ice => Rgb(236, 248, 255),
+        PartitionLook.Table => Rgb(84, 54, 34),
+        PartitionLook.Console => Rgb(150, 144, 128),
+        PartitionLook.Case => Rgb(196, 160, 72),
+        PartitionLook.Lattice => Rgb(62, 40, 28),
         _ => null
     };
 
@@ -117,6 +127,48 @@ internal static class PartitionArt
             case PartitionLook.Pillar:
                 // The capital: pale stone with a raised square
                 return x is 3 or 20 || y is 3 or 20 ? Rgb(196, 190, 176) : Rgb(226, 220, 204);
+            case PartitionLook.Table:
+                // Planks of dark wood running across, a seam every eight texels, a faint grain
+                if (y % 8 == 7) return Rgb(96, 62, 40);
+                return Hash(x / 5, y, 113) % 6 == 0 ? Rgb(130, 88, 58) : Rgb(140, 96, 64);
+            case PartitionLook.Crate:
+            {
+                // Two crates to a tile, their lids of pale slats framed darker
+                int cx = x % 16, cy = y % 16;
+                if (cx is 0 or 15 || cy is 0 or 15) return Rgb(132, 96, 58);
+                if (cy % 5 == 0) return Rgb(160, 120, 76);
+                var slat = variant == 1 ? Rgb(196, 156, 104) : variant == 2 ? Rgb(186, 146, 96) : Rgb(204, 164, 110);
+                return n % 13 == 0 ? Shadow(slat, 0.1f) : slat;
+            }
+            case PartitionLook.Console:
+            {
+                // A cream steel desk with a dark panel of lit buttons set in its back half
+                if (x < 6 || x > 25 || y < 5 || y > 14) return n % 17 == 0 ? Rgb(206, 200, 182) : Rgb(222, 216, 198);
+                if (x is 6 or 25 || y is 5 or 14) return Rgb(150, 144, 128);
+                if ((x - 9) % 4 == 0 && (y - 8) % 3 == 0) return Hash(x, y, 7) % 3 == 0 ? Rgb(232, 84, 72) : Hash(x, y, 9) % 2 == 0 ? Rgb(108, 214, 128) : Rgb(244, 208, 84);
+                return Rgb(58, 64, 78);
+            }
+            case PartitionLook.Case:
+            {
+                // Glass over a bed of deep teal cloth with a pale stone laid on it, a sheen across the glass
+                if (x + y is 20 or 21) return Rgb(206, 228, 234);
+                float dx = (x - 15.5f) / 5f, dy = (y - 15.5f) / 3f;
+                if (dx * dx + dy * dy <= 1f) return dy < -0.3f ? Rgb(236, 226, 204) : Rgb(212, 200, 174);
+                return n % 19 == 0 ? Rgb(52, 84, 92) : Rgb(60, 94, 102);
+            }
+            case PartitionLook.Lattice:
+            {
+                // Paper between a grid of dark timber, the top rail wider
+                if (x % 8 == 0 || y % 8 == 0) return Rgb(84, 56, 38);
+                return n % 23 == 0 ? Rgb(232, 224, 204) : Rgb(242, 236, 218);
+            }
+            case PartitionLook.Fence:
+            {
+                // A top rail of weathered wood over packed earth, a wisp of straw here and there
+                if (y >= 12 && y <= 19) return y is 12 or 19 ? Rgb(110, 82, 56) : Rgb(156, 120, 84);
+                uint wisp = Hash(x / 2, y, 61);
+                return wisp % 9 == 0 ? Rgb(206, 174, 96) : wisp % 4 == 0 ? Rgb(112, 90, 66) : Rgb(124, 100, 74);
+            }
             default:
                 return Rgb(128, 128, 128);
         }
@@ -180,6 +232,61 @@ internal static class PartitionArt
                 if (y >= h - 5) return y == h - 5 ? Rgb(236, 230, 216) : y == h - 1 ? Rgb(150, 144, 132) : Rgb(212, 206, 190);
                 int f = x % 6;
                 return f == 0 ? Rgb(176, 170, 156) : f == 1 ? Rgb(232, 226, 210) : Rgb(214, 208, 192);
+            }
+            case PartitionLook.Table:
+            {
+                // A top's edge four texels deep, then the shade under it with a stout leg at each end
+                if (y < 4) return y == 0 ? Rgb(160, 112, 76) : y == 3 ? Rgb(96, 62, 40) : Rgb(128, 86, 56);
+                bool leg = x is >= 2 and <= 5 or >= 26 and <= 29;
+                if (leg) return x is 2 or 26 ? Rgb(124, 84, 54) : Rgb(104, 68, 44);
+                return Rgb(52, 40, 34);
+            }
+            case PartitionLook.Crate:
+            {
+                // Two crates to a tile, their sides of planks with a frame, a cross brace and a stencilled mark
+                int cx = x % 16;
+                if (cx is 0 or 15 || y is 0 || y == h - 1) return Rgb(120, 86, 52);
+                if (y == 1 || cx == 1) return Rgb(214, 176, 120);
+                if (Math.Abs(cx - 1 - (y - 1) * 14 / Math.Max(1, h - 2)) <= 1) return Rgb(146, 106, 64);
+                if (y % 6 == 0) return Rgb(156, 116, 72);
+                if (x / 16 == variant % 2 && cx >= 9 && cx <= 12 && y >= h / 2 && y <= h / 2 + 3) return Rgb(60, 52, 48);
+                return n % 9 == 0 ? Rgb(178, 136, 86) : Rgb(188, 146, 94);
+            }
+            case PartitionLook.Console:
+            {
+                // Cream steel panels, a dark sloping band of lit buttons under the top, a kick at the foot
+                if (y == 0) return Rgb(236, 230, 214);
+                if (y < 7) return (x % 5 == 2 && y == 4) ? (Hash(x, 3, 13) % 2 == 0 ? Rgb(108, 214, 128) : Rgb(244, 208, 84)) : Rgb(58, 64, 78);
+                if (y >= h - 3) return Rgb(84, 86, 96);
+                if (x % 16 == 15) return Rgb(178, 172, 154);
+                if (x % 16 == 0) return Rgb(232, 226, 210);
+                if (y == 12 && x % 16 is >= 5 and <= 10) return Rgb(150, 144, 128);
+                return n % 13 == 0 ? Rgb(206, 200, 182) : Rgb(214, 208, 190);
+            }
+            case PartitionLook.Case:
+            {
+                // A brass-edged glass front over a plinth of dark wood half its height
+                int glass = h / 2;
+                if (y == 0 || y == glass) return Rgb(196, 160, 72);
+                if (y < glass) return (x + y) % 14 < 2 ? Rgb(220, 238, 244) : x % 16 == 15 ? Rgb(196, 160, 72) : Rgb(150, 176, 186);
+                if (y >= h - 2) return Rgb(52, 34, 26);
+                return x % 16 == 15 ? Rgb(70, 46, 32) : n % 11 == 0 ? Rgb(92, 60, 40) : Rgb(100, 66, 44);
+            }
+            case PartitionLook.Lattice:
+            {
+                // Paper panels in a grid of dark timber, a deep rail at the top and the foot
+                if (y < 3 || y >= h - 4) return y == 0 ? Rgb(110, 76, 52) : Rgb(70, 46, 32);
+                if (x % 8 == 0 || (y - 3) % 7 == 0) return Rgb(84, 56, 38);
+                return n % 29 == 0 ? Rgb(228, 220, 198) : Rgb(240, 234, 214);
+            }
+            case PartitionLook.Fence:
+            {
+                // Two rails between posts at each end of the tile, straw heaped at their foot
+                if (y >= h - 4) return Hash(x / 2, y, 67) % 4 == 0 ? Rgb(196, 162, 84) : Rgb(220, 188, 104);
+                bool post = x is 0 or 1 or 30 or 31;
+                if (post) return x is 0 or 30 ? Rgb(132, 98, 66) : Rgb(108, 78, 52);
+                if (y is >= 1 and <= 4 || y is >= 8 and <= 11) return y is 1 or 8 ? Rgb(170, 134, 96) : Rgb(146, 112, 78);
+                return Rgb(82, 64, 50);
             }
             default:
                 return Rgb(128, 128, 128);
