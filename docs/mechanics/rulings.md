@@ -8260,6 +8260,26 @@ Built with no screen; every beat, number and tile not said to be HeartGold's is 
   it. A test holds that none cuts off a tile of his map.
 - *Left out still*: the Magnet Train's platform (part o's decision 8) and the Safari Zone's rearranging (decision 5).
 
+## Johto's rooms on the wainscot, part v, and the Ice Path's walk (2026-11-03, plan 20 · J15, part v)
+
+Looked at in the harness's pictures (`JOHTO_FROM=roomsu JOHTO_ROOMS=…`, `jru_*`); what HeartGold's models stand there
+could not be read, so each look is ours, chosen from the kit's.
+
+- *The gates of twelve by twelve* (thirteen: the Ilex Forest, Violet, Ruins of Alph, National Park, Ecruteak and Saffron
+  gates and the four of Kanto's routes 11 to 18): the block between their two front alcoves is a planter bed
+  (`PartitionLook.Hedge`), as the League's reception gate's blocks are; cut to the wainscot it read as a bare brown slab.
+  A test names every gate of that plan, so one opened later can't keep the slab.
+- *The charcoal kiln*: only its two corner blocks are charcoal in crates (two `PartitionPatch`es); a look for the whole
+  room would have turned its back wall come forward into a wall of crates, so the room keeps its wall.
+- *Mahogany's souvenir shop*: counters.
+- *Kept on the wainscot*, since cut low they read as the cabinets they stand for: the Pokémon School's and the houses'
+  blocks of a tile or two, the Underground Path's gates and corridor, the café, the research centre; the Pokémon
+  Centers, Marts and Gyms have looks of their own already.
+- *The Ice Path's walk* (J10's "a streaming fault, not looked into"): timed again, the walk from Mahogany Town through
+  the Ice Path to Blackthorn City waits for no chunk while walking; its nine waits are all on arriving at a floor, behind
+  the warp's fade, where `WorldRenderer.ScenesFor` waits on purpose. J10's count had added the two together before the
+  harness told them apart, so there is no fault.
+
 ## Research (2026-11-02, plan 15 · E1, E2)
 
 Legends: Arceus's research tasks, in our own words and numbers; nothing of a game's tables.
