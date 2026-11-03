@@ -6,7 +6,7 @@
           "Joshua"
         ],
         "text": [
-          ""
+          "Joshua"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Psychic Joshua: When the switch is pressed, I move. I can't help it!"
         ],
         "text": [
-          ""
+          "Medium Joshua: Când se apasă comutatorul, mă mișc. Nu mă pot abține!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Psychic Joshua: I move whether I win or not."
         ],
         "text": [
-          ""
+          "Medium Joshua: Mă mișc fie că învingi, fie că nu."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Alexis"
         ],
         "text": [
-          ""
+          "Alexis"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Psychic Alexis: The floor carries us round like a carousel. Dizzy yet?"
         ],
         "text": [
-          ""
+          "Medium Alexis: Podeaua ne poartă în cerc ca un carusel. Te-a luat amețeala?"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Psychic Alexis: I am, a little."
         ],
         "text": [
-          ""
+          "Medium Alexis: Pe mine, puțin."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Patricia"
         ],
         "text": [
-          ""
+          "Patricia"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Hex Maniac Patricia: The statues watch... and turn... and watch again..."
         ],
         "text": [
-          ""
+          "Maniac ocult Patricia: Statuile privesc... și se întorc... și privesc iar..."
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Hex Maniac Patricia: They saw me lose. How embarrassing."
         ],
         "text": [
-          ""
+          "Maniac ocult Patricia: M-au văzut pierzând. Ce rușine."
         ]
       }
     },
@@ -84,7 +84,7 @@
           "Alvaro"
         ],
         "text": [
-          ""
+          "Alvaro"
         ]
       },
       "before": {
@@ -92,7 +92,7 @@
           "Psychic Alvaro: I foresaw you coming this way. Did I foresee who wins?"
         ],
         "text": [
-          ""
+          "Medium Alvaro: Am prevăzut că vei veni pe aici. Am prevăzut și cine câștigă?"
         ]
       },
       "after": {
@@ -100,7 +100,7 @@
           "Psychic Alvaro: Apparently not."
         ],
         "text": [
-          ""
+          "Medium Alvaro: Se pare că nu."
         ]
       }
     },
@@ -110,7 +110,7 @@
           "Mariela"
         ],
         "text": [
-          ""
+          "Mariela"
         ]
       },
       "before": {
@@ -118,7 +118,7 @@
           "Psychic Mariela: Every switch you press, I end up somewhere new. It's like a holiday!"
         ],
         "text": [
-          ""
+          "Medium Mariela: La fiecare comutator apăsat ajung într-un loc nou. E ca o vacanță!"
         ]
       },
       "after": {
@@ -126,7 +126,7 @@
           "Psychic Mariela: A holiday with a lost battle in it."
         ],
         "text": [
-          ""
+          "Medium Mariela: O vacanță cu o luptă pierdută."
         ]
       }
     },
@@ -136,7 +136,7 @@
           "Everett"
         ],
         "text": [
-          ""
+          "Everett"
         ]
       },
       "before": {
@@ -144,7 +144,7 @@
           "Gentleman Everett: Ah, a fellow guest. The Trick Master's hospitality is... unusual."
         ],
         "text": [
-          ""
+          "Gentleman Everett: A, un alt oaspete. Ospitalitatea Maestrului Trucurilor este... neobișnuită."
         ]
       },
       "after": {
@@ -152,7 +152,7 @@
           "Gentleman Everett: Most unusual indeed."
         ],
         "text": [
-          ""
+          "Gentleman Everett: Într-adevăr, foarte neobișnuită."
         ]
       }
     },
@@ -162,7 +162,7 @@
           "Statue"
         ],
         "text": [
-          ""
+          "Statuie"
         ]
       },
       "dialog": {
@@ -170,7 +170,7 @@
           "A stone statue of the Trick Master, striking a grand pose."
         ],
         "text": [
-          ""
+          "O statuie de piatră a Maestrului Trucurilor, într-o poză grandioasă."
         ]
       }
     },
@@ -180,7 +180,7 @@
           "Statue"
         ],
         "text": [
-          ""
+          "Statuie"
         ]
       },
       "dialog": {
@@ -188,7 +188,7 @@
           "A stone statue of the Trick Master, striking a grand pose."
         ],
         "text": [
-          ""
+          "O statuie de piatră a Maestrului Trucurilor, într-o poză grandioasă."
         ]
       }
     }

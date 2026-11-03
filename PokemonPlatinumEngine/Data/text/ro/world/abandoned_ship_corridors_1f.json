@@ -6,7 +6,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "A shipwreck you can walk right into! I've been running up and down these corridors all day!"
         ],
         "text": [
-          ""
+          "O epavă în care poți intra direct! Alerg de-a lungul coridoarelor astea de azi-dimineață!"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Charlie"
         ],
         "text": [
-          ""
+          "Charlie"
         ]
       },
       "before": {
@@ -32,7 +32,7 @@
           "Tuber Charlie: Laugh at my float ring and you'll be sorry. Battle!"
         ],
         "text": [
-          ""
+          "Copil cu colac Charlie: Râzi de colacul meu și o să-ți pară rău. Luptă!"
         ]
       },
       "after": {
@@ -40,7 +40,7 @@
           "Tuber Charlie: Throwing a ball while holding on to a float ring is really hard!"
         ],
         "text": [
-          ""
+          "Copil cu colac Charlie: E tare greu să arunci o minge ținându-te de un colac!"
         ]
       }
     }

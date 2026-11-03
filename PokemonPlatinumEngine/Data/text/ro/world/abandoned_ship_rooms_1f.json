@@ -6,7 +6,7 @@
           "Gentleman"
         ],
         "text": [
-          ""
+          "Gentlemanul"
         ]
       },
       "dialog": {
@@ -15,8 +15,8 @@
           "Hm. There seem to be more cabins than the plans on the wall show..."
         ],
         "text": [
-          "",
-          ""
+          "O corabie de felul ăsta e o raritate în zilele noastre. Mă uit și eu în jur, înțelegi.",
+          "Hm. Par să fie mai multe cabine decât arată planurile de pe perete..."
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Thalia"
         ],
         "text": [
-          ""
+          "Thalia"
         ]
       },
       "before": {
@@ -34,7 +34,7 @@
           "Beauty Thalia: What brings someone to a wreck like this? Curiosity, I suppose. Mine too!"
         ],
         "text": [
-          ""
+          "Frumoasă Thalia: Ce aduce pe cineva într-o epavă ca asta? Curiozitatea, presupun. Și pe mine!"
         ]
       },
       "after": {
@@ -42,7 +42,7 @@
           "Beauty Thalia: The man in the next cabin says he's sightseeing. I'm not so sure."
         ],
         "text": [
-          ""
+          "Frumoasă Thalia: Bărbatul din cabina de alături zice că vizitează. Eu nu prea cred."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Demetrius"
         ],
         "text": [
-          ""
+          "Demetrius"
         ]
       },
       "before": {
@@ -60,7 +60,7 @@
           "Youngster Demetrius: Aaah! Found already! ...Wait, you're not my mom."
         ],
         "text": [
-          ""
+          "Puști Demetrius: Aaah! M-ai găsit deja! ...Stai, nu ești mama."
         ]
       },
       "after": {
@@ -68,7 +68,7 @@
           "Youngster Demetrius: I ran away from home for a bit. Don't tell anyone I'm here!"
         ],
         "text": [
-          ""
+          "Puști Demetrius: Am fugit puțin de acasă. Să nu spui nimănui că sunt aici!"
         ]
       }
     }
