@@ -5,6 +5,7 @@ What changes from one release to the next, for players. Every session's close-ou
 ## [Unreleased]
 
 ### Changed
+- In battle, about 150 moves now tint the Pokémon's body as they play (Dragon Dance flushes its user red, Surf leaves its target sea-green for a moment), the weather and terrain moves spread from their user across the field, and the big ground-shaking blows are framed lower so the cracks at the target's feet are in view.
 - Voice packs may hold Ogg Vorbis files as well as WAV (no voices ship yet).
 - Harbours sail both ways: once you are Champion of a region, the captain at its harbour (Canalave's pier, Vermilion's quay, Olivine's port hall, Lilycove's harbour, Mistralton's cargo hall) asks where you'd like to go, the next region or any region you have already been to, and takes your whole team there, landing you back at that region's own harbour.
 - Unova's lawns and streets no longer have pale squares with green corners in them: a patch of ground that only turns to snow in winter was drawn as snow all year in Aspertia City, on Route 19, in Floccesy Town, in Driftveil City and at the outlook.
