@@ -1,0 +1,50 @@
+{
+  "people": {
+    "rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Milo"
+        ],
+        "text": [
+          "Milo"
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Milo: You've got a brand-new Pokémon, haven't you? I can tell! Let's battle!"
+        ],
+        "text": [
+          "Puști Milo: Ai un Pokémon nou-nouț, nu-i așa? Se vede! Hai să luptăm!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Milo: Okay, okay, I believe you. You're new, but you're good."
+        ],
+        "text": [
+          "Puști Milo: Bine, bine, te cred. Ești nou, dar ești bun."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": {
+      "en": [
+        "Route 2 · Avance Trail\nNorth: Santalune Forest\nSouth: Aquacorde Town"
+      ],
+      "text": [
+        "Ruta 2 · Calea Avance\nNord: Pădurea Santalune\nSud: Orașul Aquacorde"
+      ]
+    }
+  }
+}

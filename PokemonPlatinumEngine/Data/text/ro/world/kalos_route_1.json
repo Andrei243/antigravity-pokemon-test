@@ -1,0 +1,13 @@
+{
+  "people": {},
+  "signs": {
+    "RouteSign": {
+      "en": [
+        "Route 1 · Vaniville Pathway\nNorth: Aquacorde Town\nSouth: Vaniville Town"
+      ],
+      "text": [
+        "Ruta 1 · Poteca Vaniville\nNord: Orașul Aquacorde\nSud: Orașul Vaniville"
+      ]
+    }
+  }
+}

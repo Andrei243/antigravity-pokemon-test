@@ -113,6 +113,16 @@
           "Centură Neagră Lung: Maestrul va fi mulțumit de tine."
         ]
       }
+    },
+    "cianwood_gym_waterfall": {
+      "name": {
+        "en": [
+          "Waterfall"
+        ],
+        "text": [
+          "Cascadă"
+        ]
+      }
     }
   },
   "signs": {

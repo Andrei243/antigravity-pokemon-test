@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Santalune City"
+    ],
+    "text": [
+      "Orașul Santalune"
+    ]
+  },
+  "people": {
+    "grandpa": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "When I was a boy, everyone in Santalune kept a Fletchling for the mornings. Better than any alarm clock."
+        ],
+        "text": [
+          "Când eram copil, toți din Santalune țineau câte un Fletchling pentru dimineți. Mai bun decât orice ceas deșteptător."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

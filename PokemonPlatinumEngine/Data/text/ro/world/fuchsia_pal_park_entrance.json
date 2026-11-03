@@ -3,10 +3,21 @@
     "t08r0201_middlewoman1_2": {
       "name": {
         "en": [
-          "Attendant"
+          "Woman"
         ],
         "text": [
+          "Femeia"
+        ],
+        "was": [
           "Însoțitorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "These pictures show Pal Park in Sinnoh. Everyone says it's even lovelier than the paintings."
+        ],
+        "text": [
+          "Tablourile astea înfățișează Pal Park din Sinnoh. Toți spun că e și mai frumos decât în picturi."
         ]
       }
     },

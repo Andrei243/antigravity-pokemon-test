@@ -1,0 +1,170 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Bucky"
+        ],
+        "text": [
+          "Bucky"
+        ]
+      },
+      "before": {
+        "en": [
+          "The currents out here bring the big ones right to my line. And the battles!"
+        ],
+        "text": [
+          "Curenții de aici aduc peștii mari chiar la undița mea. Și luptele!"
+        ]
+      },
+      "after": {
+        "en": [
+          "That one got away. So did the battle."
+        ],
+        "text": [
+          "Ăla mi-a scăpat. La fel și lupta."
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Lydon"
+        ],
+        "text": [
+          "Lydon"
+        ]
+      },
+      "before": {
+        "en": [
+          "Shh! You'll scare the fish. ...Oh, fine, let's battle instead."
+        ],
+        "text": [
+          "Șșt! Sperii peștii. ...Of, bine, hai să luptăm."
+        ]
+      },
+      "after": {
+        "en": [
+          "At least the fish didn't see that."
+        ],
+        "text": [
+          "Măcar peștii n-au văzut asta."
+        ]
+      }
+    },
+    "2": {
+      "name": {
+        "en": [
+          "Ruth"
+        ],
+        "text": [
+          "Ruth"
+        ]
+      },
+      "before": {
+        "en": [
+          "I swim round the old lab's island every morning. Can you keep up?"
+        ],
+        "text": [
+          "Înot în jurul insulei vechiului laborator în fiecare dimineață. Poți ține pasul?"
+        ]
+      },
+      "after": {
+        "en": [
+          "I'm going to need a longer swim to get over that."
+        ],
+        "text": [
+          "Voi avea nevoie de o înotată mai lungă ca să trec peste asta."
+        ]
+      }
+    },
+    "3": {
+      "name": {
+        "en": [
+          "Wright"
+        ],
+        "text": [
+          "Wright"
+        ]
+      },
+      "before": {
+        "en": [
+          "The current's strong here. Don't let it carry you off before we battle!"
+        ],
+        "text": [
+          "Curentul e puternic aici. Nu-l lăsa să te ia înainte să luptăm!"
+        ]
+      },
+      "after": {
+        "en": [
+          "It carried me off instead."
+        ],
+        "text": [
+          "M-a luat pe mine, în schimb."
+        ]
+      }
+    },
+    "4": {
+      "name": {
+        "en": [
+          "Jeffery"
+        ],
+        "text": [
+          "Jeffery"
+        ]
+      },
+      "before": {
+        "en": [
+          "Nobody swims this far out without wanting a battle!"
+        ],
+        "text": [
+          "Nimeni nu înoată atât de departe fără să vrea o luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "I think I'll float for a bit."
+        ],
+        "text": [
+          "Cred că mă las puțin pe spate."
+        ]
+      }
+    },
+    "5": {
+      "name": {
+        "en": [
+          "Dara"
+        ],
+        "text": [
+          "Dara"
+        ]
+      },
+      "before": {
+        "en": [
+          "Looking for the lab? You'll have to get past me first!"
+        ],
+        "text": [
+          "Cauți laboratorul? Mai întâi trebuie să treci de mine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Go on, then. The island's just east of here."
+        ],
+        "text": [
+          "Hai, du-te. Insula e chiar la est de aici."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "1": {
+      "en": [
+        "Route 17\nThe currents run strong. Swimmers, take care!"
+      ],
+      "text": [
+        "Ruta 17\nCurenții sunt puternici. Înotători, aveți grijă!"
+      ]
+    }
+  }
+}

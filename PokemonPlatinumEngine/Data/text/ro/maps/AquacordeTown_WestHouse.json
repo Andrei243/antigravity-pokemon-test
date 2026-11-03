@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Aquacorde Town"
+    ],
+    "text": [
+      "Orașul Aquacorde"
+    ]
+  },
+  "people": {
+    "fisher": {
+      "name": {
+        "en": [
+          "Fisherman"
+        ],
+        "text": [
+          "Pescarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The river runs right under the bridge and on out to the sea. On a still morning you can see Magikarp under the arches."
+        ],
+        "text": [
+          "Râul curge chiar pe sub pod și mai departe spre mare. Într-o dimineață liniștită poți vedea Magikarp sub arcade."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

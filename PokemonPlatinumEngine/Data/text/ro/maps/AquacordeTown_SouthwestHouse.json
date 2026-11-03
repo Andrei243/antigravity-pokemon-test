@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Aquacorde Town"
+    ],
+    "text": [
+      "Orașul Aquacorde"
+    ]
+  },
+  "people": {
+    "grandma": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          "Bătrâna"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Aquacorde was built where the old road met the river. People have stopped here to rest for hundreds of years."
+        ],
+        "text": [
+          "Aquacorde a fost construit acolo unde vechiul drum întâlnea râul. Oamenii se opresc aici să se odihnească de sute de ani."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

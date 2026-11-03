@@ -1,0 +1,33 @@
+{
+  "displayName": {
+    "en": [
+      "{player}'s Home"
+    ],
+    "text": [
+      "Casa lui {player}"
+    ]
+  },
+  "people": {
+    "mom": {
+      "name": {
+        "en": [
+          "Mom"
+        ],
+        "text": [
+          "Mama"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Mom: Welcome home, dear! You all look worn out.",
+          "Mom: ...There! Everyone's fit and well again."
+        ],
+        "text": [
+          "Mama: Bine ați venit acasă, dragilor! Arătați toți istoviți.",
+          "Mama: ...Gata! Toți sunt iar sănătoși și în formă."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

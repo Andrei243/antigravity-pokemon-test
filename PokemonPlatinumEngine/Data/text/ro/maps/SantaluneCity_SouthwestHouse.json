@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Santalune City"
+    ],
+    "text": [
+      "Orașul Santalune"
+    ]
+  },
+  "people": {
+    "mother": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pokémon tired? The Pokémon Center is just west of the square. They'll have your team right as rain."
+        ],
+        "text": [
+          "Pokémonii ți-au obosit? Centrul Pokémon e chiar la vest de piață. Îți pun echipa pe picioare într-o clipă."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

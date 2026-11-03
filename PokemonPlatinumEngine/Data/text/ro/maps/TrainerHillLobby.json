@@ -1,0 +1,53 @@
+{
+  "displayName": {
+    "en": [
+      "Trainer Hill"
+    ],
+    "text": [
+      "Dealul Antrenorilor"
+    ]
+  },
+  "people": {
+    "hill_attendant": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitorul"
+        ]
+      }
+    },
+    "hill_records": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          "Gentlemanul"
+        ]
+      }
+    },
+    "hill_visitor": {
+      "name": {
+        "en": [
+          "Lass"
+        ],
+        "text": [
+          "Domnișoara"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The floors change with the challenge you choose. I always get lost on the second floor of the Expert one!",
+          "If two trainers can both see you, they'll battle you together. Watch where you step."
+        ],
+        "text": [
+          "Etajele se schimbă după provocarea aleasă. Eu mă rătăcesc mereu la etajul doi al celei pentru Experți!",
+          "Dacă doi antrenori te văd amândoi, vor lupta împreună cu tine. Ai grijă pe unde calci."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

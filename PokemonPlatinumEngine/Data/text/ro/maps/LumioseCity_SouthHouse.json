@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Lumiose City"
+    ],
+    "text": [
+      "Orașul Lumiose"
+    ]
+  },
+  "people": {
+    "grandpa": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "From my window I watch the tower light up every evening. Forty years, and I've never once grown tired of it."
+        ],
+        "text": [
+          "De la fereastra mea privesc turnul luminându-se în fiecare seară. Patruzeci de ani și nu m-am săturat niciodată."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

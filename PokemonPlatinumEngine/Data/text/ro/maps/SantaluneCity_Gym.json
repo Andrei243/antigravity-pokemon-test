@@ -1,0 +1,85 @@
+{
+  "displayName": {
+    "en": [
+      "Santalune Gym"
+    ],
+    "text": [
+      "Arena Santalune"
+    ]
+  },
+  "people": {
+    "viola": {
+      "name": {
+        "en": [
+          "Viola"
+        ],
+        "text": [
+          "Viola"
+        ]
+      }
+    },
+    "gym_guide": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          "Ghidul Arenei"
+        ]
+      }
+    },
+    "kalos_lass_mireille": {
+      "name": {
+        "en": [
+          "Mireille"
+        ],
+        "text": [
+          "Mireille"
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Mireille: Viola says a good Trainer never moves too fast. Hold still and battle me!"
+        ],
+        "text": [
+          "Domnișoara Mireille: Viola zice că un antrenor bun nu se mișcă niciodată prea repede. Stai pe loc și luptă cu mine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Mireille: You moved fast and still won. Viola will like you."
+        ],
+        "text": [
+          "Domnișoara Mireille: Te-ai mișcat repede și tot ai câștigat. Viola o să te placă."
+        ]
+      }
+    },
+    "kalos_bug_catcher_luc": {
+      "name": {
+        "en": [
+          "Luc"
+        ],
+        "text": [
+          "Luc"
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Catcher Luc: Nobody reaches Viola without getting past my bugs!"
+        ],
+        "text": [
+          "Vânător de insecte Luc: Nimeni nu ajunge la Viola fără să treacă de insectele mele!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Catcher Luc: Got past them after all. Go on, she is waiting."
+        ],
+        "text": [
+          "Vânător de insecte Luc: Ai trecut de ele, până la urmă. Hai, te așteaptă."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

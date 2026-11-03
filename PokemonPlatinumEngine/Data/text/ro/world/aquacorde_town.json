@@ -1,0 +1,126 @@
+{
+  "people": {
+    "shauna": {
+      "name": {
+        "en": [
+          "Shauna"
+        ],
+        "text": [
+          "Shauna"
+        ]
+      }
+    },
+    "tierno": {
+      "name": {
+        "en": [
+          "Tierno"
+        ],
+        "text": [
+          "Tierno"
+        ]
+      }
+    },
+    "trevor": {
+      "name": {
+        "en": [
+          "Trevor"
+        ],
+        "text": [
+          "Trevor"
+        ]
+      }
+    },
+    "rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      }
+    },
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the market stall! What can I get for you?"
+        ],
+        "text": [
+          "Bun venit la taraba din piață! Cu ce vă pot servi?"
+        ]
+      }
+    },
+    "waiter": {
+      "name": {
+        "en": [
+          "Waiter"
+        ],
+        "text": [
+          "Chelnerul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The café's tables look over the river. Trainers come from all over to plan their journeys here."
+        ],
+        "text": [
+          "Mesele cafenelei dau spre râu. Antrenori din toate colțurile vin aici să-și planifice călătoriile."
+        ]
+      }
+    },
+    "fisherman": {
+      "name": {
+        "en": [
+          "Fisherman"
+        ],
+        "text": [
+          "Pescarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The river's too lively for fishing today. I just like watching the water go under the bridge."
+        ],
+        "text": [
+          "Râul e prea agitat pentru pescuit azi. Îmi place doar să privesc apa trecând pe sub pod."
+        ]
+      }
+    },
+    "girl": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The bridge here is older than anyone can remember. They say it was built for a king's carriages!"
+        ],
+        "text": [
+          "Podul de aici e mai vechi decât își amintește cineva. Se zice că a fost construit pentru caleștile unui rege!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "TownSign": {
+      "en": [
+        "Aquacorde Town\nA riverside town where journeys meet."
+      ],
+      "text": [
+        "Orașul Aquacorde\nUn oraș de pe malul râului, unde se întâlnesc călătoriile."
+      ]
+    }
+  }
+}

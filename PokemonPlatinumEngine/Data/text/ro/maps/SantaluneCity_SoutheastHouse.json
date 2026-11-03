@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Santalune City"
+    ],
+    "text": [
+      "Orașul Santalune"
+    ]
+  },
+  "people": {
+    "gentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          "Gentlemanul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Lumiose City is a long way north-east of here. The road there is Route 4, all flowers and fountains."
+        ],
+        "text": [
+          "Orașul Lumiose e departe, spre nord-est. Drumul până acolo e Ruta 4, numai flori și fântâni."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,34 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          "Cercetătorul"
+        ]
+      }
+    },
+    "genesect": {
+      "name": {
+        "en": [
+          "Genesect"
+        ],
+        "text": [
+          "Genesect"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "2": {
+      "en": [
+        "P2 Laboratory\nProject records: sealed by order of Team Plasma"
+      ],
+      "text": [
+        "Laboratorul P2\nArhivele proiectului: sigilate din ordinul Team Plasma"
+      ]
+    }
+  }
+}

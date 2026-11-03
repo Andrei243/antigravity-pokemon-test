@@ -1,0 +1,196 @@
+{
+  "people": {
+    "3": {
+      "name": {
+        "en": [
+          "Gina"
+        ],
+        "text": [
+          "Gina"
+        ]
+      },
+      "before": {
+        "en": [
+          "I've battled on every shore of Unova. This one's my favourite!"
+        ],
+        "text": [
+          "M-am luptat pe fiecare țărm din Unova. Ăsta e preferatul meu!"
+        ]
+      },
+      "after": {
+        "en": [
+          "And now it's my least favourite. Just for today."
+        ],
+        "text": [
+          "Iar acum e cel mai puțin preferat. Doar pentru azi."
+        ]
+      }
+    },
+    "4": {
+      "name": {
+        "en": [
+          "Vincent"
+        ],
+        "text": [
+          "Vincent"
+        ]
+      },
+      "before": {
+        "en": [
+          "The sea air keeps an old Trainer sharp. Let me show you!"
+        ],
+        "text": [
+          "Aerul mării ține un antrenor bătrân în formă. Lasă-mă să-ți arăt!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Sharp, but not sharp enough."
+        ],
+        "text": [
+          "În formă, dar nu destul de în formă."
+        ]
+      }
+    },
+    "5": {
+      "name": {
+        "en": [
+          "Zachary"
+        ],
+        "text": [
+          "Zachary"
+        ]
+      },
+      "before": {
+        "en": [
+          "I train on these rocks with the waves crashing all round. Hyah!"
+        ],
+        "text": [
+          "Mă antrenez pe stâncile astea cu valurile izbind peste tot în jur. Hiii-iah!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Washed out!"
+        ],
+        "text": [
+          "Spălat de valuri!"
+        ]
+      }
+    },
+    "6": {
+      "name": {
+        "en": [
+          "Stephen"
+        ],
+        "text": [
+          "Stephen"
+        ]
+      },
+      "before": {
+        "en": [
+          "I came down from the mountain to see the sea. And to battle!"
+        ],
+        "text": [
+          "Am coborât de pe munte să văd marea. Și să lupt!"
+        ]
+      },
+      "after": {
+        "en": [
+          "The sea's still nice, at least."
+        ],
+        "text": [
+          "Măcar marea e tot frumoasă."
+        ]
+      }
+    },
+    "7": {
+      "name": {
+        "en": [
+          "Chester"
+        ],
+        "text": [
+          "Chester"
+        ]
+      },
+      "before": {
+        "en": [
+          "From up here I can see every Trainer coming. Including you!"
+        ],
+        "text": [
+          "De aici de sus văd fiecare antrenor care vine. Inclusiv pe tine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "I should have looked harder."
+        ],
+        "text": [
+          "Ar fi trebuit să mă uit mai atent."
+        ]
+      }
+    },
+    "8": {
+      "name": {
+        "en": [
+          "Wendy"
+        ],
+        "text": [
+          "Wendy"
+        ]
+      },
+      "before": {
+        "en": [
+          "My Pokémon and I run this coast every day. Ready?"
+        ],
+        "text": [
+          "Eu și Pokémonii mei alergăm pe coasta asta în fiecare zi. Gata?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Time for another lap to cool off."
+        ],
+        "text": [
+          "E timpul pentru încă un tur ca să mă răcoresc."
+        ]
+      }
+    },
+    "9": {
+      "name": {
+        "en": [
+          "Maya"
+        ],
+        "text": [
+          "Maya"
+        ]
+      },
+      "before": {
+        "en": [
+          "Few Trainers come this far south. Let's make it worth the trip!"
+        ],
+        "text": [
+          "Puțini antrenori ajung atât de la sud. Să facem drumul să merite!"
+        ]
+      },
+      "after": {
+        "en": [
+          "It was worth it. For you, anyway."
+        ],
+        "text": [
+          "A meritat. Pentru tine, cel puțin."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "10814": {
+      "en": [
+        "Route 18\nThe coast road to Route 17 and the sea"
+      ],
+      "text": [
+        "Ruta 18\nDrumul de coastă spre Ruta 17 și mare"
+      ]
+    }
+  }
+}

@@ -1,5 +1,16 @@
 {
-  "people": {},
+  "people": {
+    "t31_gsmiddleman1": {
+      "name": {
+        "en": [
+          "Cameron"
+        ],
+        "text": [
+          "Cameron"
+        ]
+      }
+    }
+  },
   "signs": {
     "T31_002+1": {
       "en": [

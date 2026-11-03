@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Aquacorde Town"
+    ],
+    "text": [
+      "Orașul Aquacorde"
+    ]
+  },
+  "people": {
+    "man": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          "Gentlemanul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "North of the bridge, the trail runs through the grass to Santalune Forest. Mind the wild Pokémon."
+        ],
+        "text": [
+          "La nord de pod, poteca trece prin iarbă spre Pădurea Santalune. Atenție la Pokémonii sălbatici."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

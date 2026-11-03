@@ -702,9 +702,12 @@
     },
     "Route111_EventScript_TrainerHillSign": {
       "en": [
-        "Trainer Hill\nThis way. Closed for building work."
+        "Trainer Hill\nThis way. Four floors of trainers, and the owner waiting on the roof."
       ],
       "text": [
+        "Dealul Antrenorilor\nPe aici. Patru etaje de antrenori, iar proprietarul așteaptă pe acoperiș."
+      ],
+      "was": [
         "Dealul Antrenorilor\nPe aici. Închis pentru lucrări de construcție."
       ]
     }
