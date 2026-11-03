@@ -303,7 +303,7 @@ public sealed class GameSettings
     {
         var fresh = new GameSettings();
         foreach (var property in typeof(GameSettings).GetProperties())
-            if (property.GetSetMethod() is { IsPublic: true } && property.Name is not (nameof(ScenesSeen) or nameof(BattleRoom) or nameof(MeasuredQuality) or nameof(MeasuredMilliseconds)))
+            if (property.GetSetMethod() is { IsPublic: true } && property.Name is not (nameof(ScenesSeen) or nameof(BattleRoom) or nameof(MeasuredQuality) or nameof(MeasuredMilliseconds) or nameof(OnlineServer)))
                 property.SetValue(this, property.GetValue(fresh));
         forThisRun.Clear();
     }
@@ -402,6 +402,14 @@ public sealed class GameSettings
     /// sent anywhere: both are files.
     /// </summary>
     public StreamFeedMode StreamFeed { get; set; }
+
+    /// <summary>
+    /// The online server the Global Link counter connects to (plan 07 · O7): <c>wss://name.example/link</c>, or
+    /// <c>ws://127.0.0.1:5080/link</c> for a server on this machine (<c>--local</c>). None unless written into
+    /// <c>settings.json</c>; with none the counter's attendant says the link is down (<see cref="Online.OnlineIdentity.ServerOf"/>).
+    /// No row of the options: an address is typed into the file, as the server's guide says.
+    /// </summary>
+    public string? OnlineServer { get; set; }
 
     /// <summary>
     /// Stream-safe (plan 13 · V24, <see cref="StreamSafe"/>): the trainer ID shown as dashes and the user's folder left out

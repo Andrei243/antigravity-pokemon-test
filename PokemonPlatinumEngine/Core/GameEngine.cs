@@ -137,7 +137,9 @@ public enum GameState
     /// <summary>A sitting at one of Mauville's slot machines, Emerald's own with its Reel Time (plan 21 · H12, part n).</summary>
     ReelMachine,
     /// <summary>A sitting at one of Mauville's two roulette tables, the wheel and its ball (plan 21 · H12, part o).</summary>
-    RouletteTable
+    RouletteTable,
+    /// <summary>The Global Link counter: the online server's friend code, link codes and a trade room (plan 07 · O5, O7).</summary>
+    GlobalLink
 }
 
 public partial class GameEngine
@@ -1555,6 +1557,9 @@ public partial class GameEngine
                 break;
             case GameState.PhotoAlbum:
                 UpdatePhotoAlbum(dt);
+                break;
+            case GameState.GlobalLink:
+                UpdateGlobalLink(dt);
                 break;
             case GameState.ApricornBox:
                 UpdateApricornBox(dt);
@@ -3274,6 +3279,9 @@ public partial class GameEngine
                 break;
             case GameState.PhotoAlbum:
                 flow.PhotoAlbumScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.GlobalLink:
+                flow.GlobalLinkScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.ApricornBox:
                 flow.ApricornBoxScreen.Draw(VirtualWidth, VirtualHeight);

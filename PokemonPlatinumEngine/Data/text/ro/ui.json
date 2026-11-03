@@ -5893,5 +5893,84 @@
       "places": "Se așteaptă câte o alegere pentru fiecare dintre locurile tale."
     },
     "waiting": "Se așteaptă {player}…"
+  },
+  "globalLink": {
+    "title": "LEGĂTURA GLOBALĂ",
+    "about": "Fă schimburi cu un prieten de oriunde: unul face un cod, celălalt îl tastează. Codul tău de prieten îi arată că ești tu.",
+    "friendCode": "CODUL TĂU DE PRIETEN",
+    "server": "SERVER",
+    "theirCode": "CODUL PRIETENULUI",
+    "yourCode": "CODUL TĂU",
+    "codeLeft": "Mai merge {minutes}:{seconds}",
+    "offered": "OFERIT",
+    "youOffer": "OFERI",
+    "theyOffer": "{name} OFERĂ",
+    "nothingYet": "Nimic încă",
+    "trainer": "AO {name}",
+    "holding": "Ține {item}",
+    "ready": "GATA DE SCHIMB",
+    "otherCode": "Cod de prieten {code}",
+    "menu": {
+      "makeCode": "FĂ UN COD",
+      "enterCode": "TASTEAZĂ UN COD",
+      "leave": "PLEACĂ"
+    },
+    "key": {
+      "ok": "OK",
+      "erase": "ȘTERGE"
+    },
+    "hint": {
+      "type": "Tastează",
+      "erase": "Șterge",
+      "trade": "Schimbă",
+      "offer": "Oferă",
+      "callOff": "Anulează",
+      "leave": "Pleacă"
+    },
+    "line": {
+      "welcome": "Ești conectat! Fă un cod pentru prietenul tău sau tastează-l pe cel făcut de el.",
+      "finishing": "Conectat. Întâi se încheie un schimb de la vizita trecută.",
+      "making": "Se cere un cod…",
+      "typeCode": "Tastează cele {digits} cifre ale codului prietenului tău.",
+      "joining": "Se caută camera prietenului tău…",
+      "checking": "Se verifică Pokémonul tău…",
+      "codeMade": "Spune-i prietenului tău acest cod. Merge o singură dată.",
+      "codeExpired": "N-a venit nimeni la timp, iar codul nu mai e valabil.",
+      "choose": "Ești conectat cu {name}! Alege un Pokémon de oferit.",
+      "waitOffer": "Se așteaptă ca {name} să ofere un Pokémon…",
+      "mayTrade": "Amândoi sunt oferiți. Apasă A pe al tău ca să faci schimbul.",
+      "theyOffered": "{name} a oferit un Pokémon. Alege unul de oferit înapoi.",
+      "waitConfirm": "Se așteaptă ca {name} să fie de acord…",
+      "theyConfirmed": "{name} vrea să facă schimbul. Apasă A pe al tău ca să fii de acord.",
+      "cancelled": "Schimbul a fost anulat. Alege din nou.",
+      "otherLeft": "Prietenul tău a ieșit din cameră.",
+      "otherAway": "Legătura lui {name} a căzut. Se așteaptă {seconds} secunde…",
+      "otherBack": "{name} s-a întors.",
+      "notThisSave": "Un schimb așteaptă o altă salvare de-a ta, nu pe aceasta.",
+      "finished": "{pokemon} de la vizita trecută a sosit, iar jocul a fost salvat.",
+      "traded": "Schimbul cu {name} s-a încheiat! {pokemon} e al tău, iar jocul a fost salvat."
+    },
+    "refused": {
+      "outdated": "Jocul acesta e prea vechi pentru server. Te rog actualizează-l.",
+      "dataVersion": "Datele jocului nu sunt ale serverului. Actualizează-l ca să faci schimburi.",
+      "badMessage": "Asta nu se poate face acum.",
+      "tooFast": "Prea multe deodată. Așteaptă puțin și încearcă din nou.",
+      "tooManyGuesses": "Prea multe coduri greșite. Așteaptă zece minute înainte să încerci din nou.",
+      "noSuchRoom": "Nicio cameră nu are codul acesta. Verifică-l cu prietenul tău.",
+      "roomFull": "Camera aceea are deja doi oameni.",
+      "inARoom": "Ești deja într-o cameră.",
+      "illegal": "Serverul spune că acest Pokémon nu poate exista.",
+      "duplicate": "Acest Pokémon a mai fost dat la schimb sau e într-un alt schimb.",
+      "closing": "Serverul se închide. Te rog revino mai târziu."
+    },
+    "error": {
+      "noServer": "Legătura nu merge: nu e setat niciun server. Adaugă unul în fișierul de opțiuni, cum spune ghidul.",
+      "badServer": "Adresa serverului nu poate fi folosită.",
+      "unreachable": "Serverul nu a putut fi contactat. Te rog încearcă mai târziu.",
+      "dropped": "Legătura a căzut. Un schimb început se încheie la vizita următoare.",
+      "closing": "Serverul se închide. Te rog revino mai târziu.",
+      "notSaved": "Jocul nu a putut fi salvat, așa că schimbul așteaptă vizita următoare.",
+      "runEnded": "Această încercare s-a încheiat, așa că nu mai poate primi nimic."
+    }
   }
 }

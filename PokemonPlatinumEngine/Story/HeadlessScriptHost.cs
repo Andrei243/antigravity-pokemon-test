@@ -1526,6 +1526,9 @@ public sealed class HeadlessScriptHost : IScriptHost
     /// <summary>Whether the game is played by the modern rules (plan 15 · E3): Platinum's unless a test says so, as the rules in force are while nothing has set them.</summary>
     public bool Modern { get; set; }
 
+    /// <summary>Whether an online server is set (plan 07 · O7: <c>globallink check</c>); none unless a test says so.</summary>
+    public bool OnlineServerSet { get; set; }
+
     /// <summary>Whether <c>save</c> can write the game; it can, unless a test says otherwise.</summary>
     public bool SaveFails { get; set; }
 
