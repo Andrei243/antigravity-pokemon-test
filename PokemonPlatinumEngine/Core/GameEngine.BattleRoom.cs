@@ -26,8 +26,12 @@ public partial class GameEngine
     /// <summary>The puzzle being played; null outside one.</summary>
     private PuzzleFile? roomPuzzle;
 
+    /// <summary>A friend's trainer being fought and the team that fights them (plan 13 · V22); null outside such a battle.</summary>
+    private TrainerFile? roomFriend;
+    private BuiltTeam? roomFriendTeam;
+
     /// <summary>A battle of the battle room is being fought (a run's or a puzzle's).</summary>
-    internal bool InRoomBattle => flow.State == GameState.Battle && (roomRun != null || roomPuzzle != null) && roomBattle;
+    internal bool InRoomBattle => flow.State == GameState.Battle && (roomRun != null || roomPuzzle != null || roomFriend != null) && roomBattle;
     private bool roomBattle;
 
     private string TeamsFile => System.IO.Path.Combine(SavePaths.Current.Folder, BuiltTeams.FileName);
@@ -37,6 +41,8 @@ public partial class GameEngine
     {
         roomRun = null;
         roomPuzzle = null;
+        roomFriend = null;
+        roomFriendTeam = null;
         roomBattle = false;
         flow.BattleRoomScreen.Open(BuiltTeams.Read(TeamsFile).Teams, Puzzles.All, Settings.BattleRoom);
         flow.State = GameState.BattleRoom;
@@ -51,6 +57,14 @@ public partial class GameEngine
             case OpenBuilder:
                 flow.TeamBuilderScreen.Open(BuiltTeams.Read(TeamsFile));
                 flow.State = GameState.TeamBuilder;
+                break;
+            case OpenFriends:
+                OpenTheFriendsPage();
+                break;
+            case BeginRun { Kind: RoomChallenge.Friend } friend:
+                roomFriend = friendToFight;
+                roomFriendTeam = room.Teams[friend.Team];
+                StartRoomBattle();
                 break;
             case BeginRun begin:
                 // The run's own seed: drawn from the game's chance once, everything after it from the seed
@@ -82,6 +96,8 @@ public partial class GameEngine
         flow.BattleRoomScreen.Close();
         roomRun = null;
         roomPuzzle = null;
+        roomFriend = null;
+        roomFriendTeam = null;
         flow.State = GameState.Title;
     }
 
@@ -122,6 +138,28 @@ public partial class GameEngine
                 NoRewards = true,
                 PlayerName = PlayerIdentity.Name,
                 MoveHints = MoveHintsOn,
+                Scene = Settings.BattleScene
+            };
+        }
+        else if (roomFriend is { } friend && roomFriendTeam is { } mine)
+        {
+            // A friend's trainer: both sides made afresh and brought to level 50, the trainer thinking with every routine of the AI
+            foe = friend.ToTrainer();
+            foe.DialogueBefore = Text.Of($"friends.line.{friend.Before}");
+            foe.DialogueAfter = Text.Of($"friends.line.{friend.After}");
+            setup = new BattleSetup
+            {
+                PlayerParty = LevelScaling.TeamAt(BuiltTeams.PartyOf(mine).Members, TrainerFile.FlatLevel),
+                Inventory = new Inventory(),
+                Pokedex = new Pokedex(),
+                Trainers = new List<Trainer> { foe },
+                Random = new BattleRandom((uint)Dice.Shared.Next()),
+                Rules = Ruleset.Modern,
+                Conditions = new BattleConditions { Terrain = BattleTerrain.Building },
+                Frontier = true,
+                PlayerName = PlayerIdentity.Name,
+                MoveHints = MoveHintsOn,
+                TrainerLines = TrainerLinesOn,
                 Scene = Settings.BattleScene
             };
         }
@@ -188,6 +226,14 @@ public partial class GameEngine
             if (solved && Settings.BattleRoom.Solve(puzzle.Id)) Settings.Save();
             roomPuzzle = null;
             StartTransition(GameState.BattleRoom, () => LeaveTheRoomsBattle(() => flow.BattleRoomScreen.AfterPuzzle(puzzle, solved)));
+            return;
+        }
+        if (roomFriend != null)
+        {
+            // One battle and no run: nothing is kept, and the friends' row is the room's cursor again
+            roomFriend = null;
+            roomFriendTeam = null;
+            StartTransition(GameState.BattleRoom, () => LeaveTheRoomsBattle(() => flow.BattleRoomScreen.AfterFriend(BuiltTeams.Read(TeamsFile).Teams)));
             return;
         }
         if (roomRun is { } run)

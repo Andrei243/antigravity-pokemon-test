@@ -384,6 +384,19 @@ public sealed class GameSettings
     public Models.TimerCategory RunTimer { get; set; }
 
     /// <summary>
+    /// The streamer kit's files (plan 13 · V24, <see cref="LiveFeed"/>): off unless chosen; a file of what the run is doing
+    /// beside the save for an OBS browser source, and with the third value a LiveSplit splits file as well. Nothing is
+    /// sent anywhere: both are files.
+    /// </summary>
+    public StreamFeedMode StreamFeed { get; set; }
+
+    /// <summary>
+    /// Stream-safe (plan 13 · V24, <see cref="StreamSafe"/>): the trainer ID shown as dashes and the user's folder left out
+    /// of the paths the log writes; off unless chosen.
+    /// </summary>
+    public bool StreamSafe { get; set; }
+
+    /// <summary>
     /// The battle room's records (plan 13 · V13, V26): the furthest a gauntlet came, the longest streak and the puzzles
     /// solved. Per machine, never per save; no row of the options, and kept when the options are reset.
     /// </summary>

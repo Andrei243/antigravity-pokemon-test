@@ -128,6 +128,8 @@ public enum GameState
     BattleRoom,
     /// <summary>The battle room's team builder (plan 13 · V13).</summary>
     TeamBuilder,
+    /// <summary>The battle room's friends' page: trainer files and codes, pasted teams, teams sent (plan 13 · V22).</summary>
+    Friends,
     /// <summary>A PC's Poké Jobs board: the boxes' Pokémon sent on jobs while the game is shut (plan 15 · E3).</summary>
     Jobs,
     /// <summary>Cameron's photo album looked through, a script's <c>photo album</c> waiting on it (plan 20, part q).</summary>
@@ -588,6 +590,7 @@ public partial class GameEngine
         Accessibility.Use(Settings.ReduceFlashes, Settings.ReduceMotion);
         UseCaptionsAndHold(); // and sound and holding (plan 12 · Q9, GameEngine.Captions.cs)
         Seeing.Use(Settings.ColourVision, Settings.TextSize, Settings.HighContrast); // and seeing (plan 12 · Q8)
+        StreamSafe.Use(Settings.StreamSafe); // and what a viewer might copy (plan 13 · V24)
         if (window && !WindowLocked) WindowSettings.Apply(Settings);
     }
 
@@ -1104,6 +1107,7 @@ public partial class GameEngine
         KeepTheMedals(dt);
         KeepTheResearch();
         KeepTheTimer(dt);
+        KeepTheStream(dt);
         KeepTheAutosave(dt);
         Accessibility.CaptionsShown.Advance(dt); // plan 12 · Q9
         flow.StartMenu.Animate(dt);
@@ -1581,6 +1585,9 @@ public partial class GameEngine
                 break;
             case GameState.BattleRoom:
                 UpdateBattleRoom(dt);
+                break;
+            case GameState.Friends:
+                UpdateFriends(dt);
                 break;
             case GameState.TeamBuilder:
                 UpdateTeamBuilder(dt);
@@ -3100,6 +3107,9 @@ public partial class GameEngine
                 break;
             case GameState.BattleRoom:
                 flow.BattleRoomScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.Friends:
+                flow.FriendsScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.TeamBuilder:
                 flow.TeamBuilderScreen.Draw(VirtualWidth, VirtualHeight);

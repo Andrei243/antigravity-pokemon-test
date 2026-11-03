@@ -130,7 +130,7 @@ internal static partial class ModernUi
                 UiShapes.Shape(pill, 42, new Color(16, 16, 44, (int)(226 * look.Title)), new Color(30, 14, 40, (int)(226 * look.Title)), CeremonyGold with { A = a }, 3);
                 float mid = pill.Y + pill.Height / 2f;
                 UiFonts.DrawCentered(scene.Champion, pill.X + 48, mid, 40, Color.White with { A = a }, UiWeight.Black);
-                string id = Text.Of("ceremony.id", ("id", scene.ChampionId)), played = Text.Of("ceremony.time", ("time", scene.TimePlayed));
+                string id = Text.Of("ceremony.id", ("id", Core.StreamSafe.Id(scene.ChampionId))), played = Text.Of("ceremony.time", ("time", scene.TimePlayed));
                 UiFonts.DrawCentered(id, pill.X + pill.Width / 2f - UiFonts.Measure(id, 30, UiWeight.ExtraBold) / 2f + 40, mid, 30, CeremonyGold with { A = a }, UiWeight.ExtraBold);
                 UiFonts.DrawCentered(played, pill.X + pill.Width - 48 - UiFonts.Measure(played, 30, UiWeight.ExtraBold), mid, 30, CeremonyCream with { A = a }, UiWeight.ExtraBold);
             }
@@ -173,7 +173,7 @@ internal static partial class ModernUi
             UiShapes.Fill(new Rectangle(x, r.Y + 296, r.Width - 104, 3), 1.5f, Rule);
             Label(Text.Of("ceremony.trainer"), x, r.Y + 316);
             UiFonts.Draw(card.Trainer, x, r.Y + 340, 36, Ink, UiWeight.Black);
-            string id = Text.Of("ceremony.id", ("id", card.TrainerId));
+            string id = Text.Of("ceremony.id", ("id", Core.StreamSafe.Id(card.TrainerId)));
             UiFonts.Draw(id, right - UiFonts.Measure(id, 28, UiWeight.ExtraBold), r.Y + 348, 28, Muted, UiWeight.ExtraBold);
             DrawWrapped(card.Met, x, r.Y + 398, r.Width - 220, 28, Ink, 34, UiWeight.ExtraBold);
         }
