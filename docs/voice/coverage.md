@@ -10,9 +10,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 |---|---|---|---|---|---|
 | The introduction (`intro:`) | 112 | 112 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1365 | 1323 | 42 | 1 | 0 |
-| Scripts (`script:`) | 10348 | 9883 | 465 | 17 | 0 |
+| Scripts (`script:`) | 10356 | 9891 | 465 | 17 | 0 |
 | People of the world (`world:`) | 7250 | 7188 | 62 | 4 | 0 |
-| **All** | 19075 | 18506 | 569 | 22 | 0 |
+| **All** | 19083 | 18514 | 569 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -80,7 +80,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `prof_oak` | 90 | 3 |
 | `steven` | 89 | 1 |
 | `class:bug_catcher (any)` | 88 | 0 |
-| `look:old_woman (any)` | 85 | 5 |
+| `look:old_woman (any)` | 88 | 5 |
 | `class:bird_keeper (any)` | 84 | 0 |
 | `class:galactic (any)` | 84 | 0 |
 | `look:hiker (any)` | 84 | 0 |
@@ -100,10 +100,10 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `lance` | 60 | 0 |
 | `beauty` | 59 | 4 |
 | `class:pokémon_ranger (any)` | 58 | 0 |
+| `archie` | 55 | 3 |
 | `class:battle_girl (any)` | 54 | 0 |
 | `bill` | 53 | 2 |
 | `cheren` | 53 | 1 |
-| `archie` | 52 | 3 |
 | `class:scientist (any)` | 52 | 0 |
 | `class:worker (any)` | 52 | 0 |
 | `look:girl (any)` | 51 | 0 |
@@ -114,9 +114,9 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `artist` | 49 | 1 |
 | `depot_agent` | 49 | 3 |
 | `clair` | 48 | 4 |
+| `maxie` | 48 | 1 |
 | `crasher_wake` | 46 | 1 |
 | `drayden` | 46 | 0 |
-| `maxie` | 46 | 1 |
 | `scott` | 46 | 0 |
 | `wallace` | 46 | 2 |
 | `class:team_aqua (any)` | 44 | 0 |
