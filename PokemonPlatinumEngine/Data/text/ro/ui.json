@@ -1173,7 +1173,12 @@
     "kalosPalace": "Urcă spre nord pe Drumul 6 și cere la poarta palatului flautul acestuia.",
     "kalosSnorlax": "Trezește-l cu flautul palatului pe Snorlax-ul adormit pe Drumul 7, la sud de Camphrier.",
     "kalosCyllage": "Urmează Drumul 7 până la coastă și Drumul 8 spre nord, până în orașul Cyllage.",
-    "kalosGrant": "Urcă la Sala din vârful orașului Cyllage și câștigă de la Grant Insigna Stâncii.",    "kalosFree": "Până aici merge drumul deocamdată. Kalos îți stă deschis."
+    "kalosGrant": "Urcă la Sala din vârful orașului Cyllage și câștigă de la Grant Insigna Stâncii.",
+    "kalosRoute10": "Ieși din orașul Cyllage pe drumul de nord și urmează pietrele înălțate ale Drumului 10 până în orășelul Geosenge.",
+    "kalosShalour": "Ia Drumul 11 spre est și apoi spre nord, până în orașul Shalour, și urcă în Turnul Măiestriei de pe țărm.",
+    "kalosKorrina": "Câștigă de la Korrina Insigna Bubuitului, la Sala de la est de strada principală a orașului Shalour.",
+    "kalosMastery": "Întoarce-te în Turnul Măiestriei și vorbește cu Gurkinn, maestrul lui.",
+    "kalosFree": "Până aici merge drumul deocamdată. Kalos îți stă deschis."
   },
 
   "close": {

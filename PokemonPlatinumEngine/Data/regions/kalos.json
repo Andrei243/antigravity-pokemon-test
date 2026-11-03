@@ -58,7 +58,10 @@
     { "id": 3, "area": "lumiose_city", "x": 349, "y": 408, "room": "LumioseCity_PokemonCenter_1F" },
     // Plan 23 · Z2, second part: Camphrier Town's and Cyllage City's Pokémon Centers
     { "id": 4, "area": "camphrier_town", "x": 186, "y": 356, "room": "CamphrierTown_PokemonCenter_1F" },
-    { "id": 5, "area": "cyllage_city", "x": 112, "y": 348, "room": "CyllageCity_PokemonCenter_1F" }
+    { "id": 5, "area": "cyllage_city", "x": 112, "y": 348, "room": "CyllageCity_PokemonCenter_1F" },
+    // Plan 23 · Z3, first part: Geosenge Town's and Shalour City's Pokémon Centers
+    { "id": 6, "area": "geosenge_town", "x": 127, "y": 215, "room": "GeosengeTown_PokemonCenter_1F" },
+    { "id": 7, "area": "shalour_city", "x": 155, "y": 123, "room": "ShalourCity_PokemonCenter_1F" }
   ],
   // Plan 18 · W4: X and Y's levels for a team that crossed from Unova, from Iris's 185 on the first route to Diantha at
   // 205, as the W4 study placed Kalos's Champion; W4b-1: the post-game's strongest (about 76, approximate until the

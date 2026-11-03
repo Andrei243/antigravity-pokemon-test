@@ -1,0 +1,97 @@
+# The Tower of Mastery in Shalour City (plan 23 · Z3, first part). The lines are our own, on X and Y's beats as they
+# are publicly described (docs/mechanics/rulings.md, "Route 10 to Shalour City and the Key Stone, drawn by hand"): the
+# old master of the tower, Gurkinn, keeps the stones that let a Trainer's Pokémon Mega Evolve. On the first visit he
+# and his granddaughter Korrina, Shalour's Gym Leader, send the player to her Gym first; once the Rumble Badge is won
+# he hands over a Key Stone, only to a bag without one, and Korrina shows Mega Evolution in a battle of her Lucario,
+# then gives the player a Lucario of their own holding its Lucarionite, once. VAR_KALOS_STORY is vaniville_town.txt's
+# count: 19 becomes 20 at the first visit, 21 is the Rumble Badge (ShalourCity_Gym.txt) and 22 the Key Stone's scene.
+#
+# The people: gurkinn, and korrina (FLAG_KALOS_HIDE_KORRINA_TOWER: set as she leaves for her Gym, cleared once the
+# Badge is won). Korrina's tower team is Kalos's trainers.json's kalos_korrina_tower, with a Key Stone of her own.
+
+
+script Guru
+  face gurkinn player
+  speaker "Gurkinn"
+  if var VAR_KALOS_STORY >= 22 goto After
+  if var VAR_KALOS_STORY == 21 goto Mastery
+  if var VAR_KALOS_STORY == 20 goto Waiting
+  if var VAR_KALOS_STORY == 19 goto First
+  say "Welcome to the Tower of Mastery. Look around as long as you like, young Trainer. The statue has stood here a very long time."
+  end
+
+label First
+  scene "The Tower of Mastery"
+  say "Ho! Another young Trainer climbs my stairs. I am Gurkinn, the master of this tower."
+  say "This statue shows a Pokémon in a shape it can only take when its heart and its Trainer's beat as one. We call it Mega Evolution."
+  say "Two stones make it happen: a Mega Stone held by the Pokémon, and a Key Stone carried by the Trainer."
+  speaker "Korrina"
+  face korrina player
+  say "Grandpa, can I? I'm Korrina, the Leader of Shalour's Gym. Grandpa only gives Key Stones to Trainers who've earned them."
+  say "So come to my Gym first and show me what you've got! If you beat me, I'll put in a good word."
+  walk korrina down 9 fast
+  hide korrina
+  setflag FLAG_KALOS_HIDE_KORRINA_TOWER
+  speaker "Gurkinn"
+  say "Ho ho. She skates everywhere, that one. Her Gym is east of the main street. Go on!"
+  setvar VAR_KALOS_STORY 20
+  objective kalosKorrina
+  endscene
+  end
+
+label Waiting
+  say "Korrina waits at her Gym, east of the main street. Win her Badge, then come back to me."
+  end
+
+label Mastery
+  scene "Mega Evolution"
+  say "Ho! Korrina's Rumble Badge. Then you are ready to carry what the tower keeps."
+  if item "Key Stone" goto HasStone
+  say "This Key Stone is yours. Wear it close, and let it listen to your heart."
+  give "Key Stone"
+  goto Shown
+label HasStone
+  say "You carry a Key Stone already, I see. Then you need no other from me. Keep it close."
+label Shown
+  speaker "Korrina"
+  face korrina player
+  say "My turn! Watch closely: this is what a Key Stone and a Mega Stone can do together."
+  battle korrina as "kalos_korrina_tower" canlose
+  heal
+  speaker "Korrina"
+  if lost goto KorrinaWon
+  say "You beat a Mega Evolved Lucario! Grandpa, did you see that?"
+  goto Gift
+label KorrinaWon
+  say "That's the power of Mega Evolution! And now you have a Key Stone too."
+label Gift
+  if flag FLAG_KALOS_RECEIVED_LUCARIO goto Done
+  say "Here, take this Lucario. It was raised at the tower, and it holds its own Mega Stone, the Lucarionite."
+  givepokemon "Lucario" 32 holding "Lucarionite"
+  text "{player} received a Lucario holding a Lucarionite!"
+  setflag FLAG_KALOS_RECEIVED_LUCARIO
+  say "In battle, choose its move with the Key Stone ready, and it'll Mega Evolve. Take good care of it!"
+label Done
+  setvar VAR_KALOS_STORY 22
+  objective kalosFree
+  endscene
+  end
+
+label After
+  say "The bond between you and your Pokémon is the real stone. The rest is only rock."
+  end
+
+
+script Korrina
+  face korrina player
+  speaker "Korrina"
+  if var VAR_KALOS_STORY >= 22 goto After
+  if var VAR_KALOS_STORY == 21 goto Ready
+  say "Grandpa talks to that statue more than to me. I think it listens better!"
+  end
+label Ready
+  say "You won my Badge! Go and talk to Grandpa. He's been waiting all morning."
+  end
+label After
+  say "Train that Lucario well. Next time we battle, it'll be Mega against Mega!"
+  end

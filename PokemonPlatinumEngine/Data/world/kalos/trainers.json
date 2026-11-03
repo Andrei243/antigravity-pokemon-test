@@ -888,5 +888,208 @@
         "personality": 11977158
       }
     ]
+  },
+  {
+    "id": "kalos_hiker_odilon",
+    "name": "Odilon",
+    "class": "Hiker",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 720,
+    "party": [
+      {
+        "species": "Nosepass",
+        "level": 18,
+        "ivScale": 0,
+        "personality": 9371828
+      },
+      {
+        "species": "Roggenrola",
+        "level": 18,
+        "ivScale": 0,
+        "personality": 9643656
+      }
+    ]
+  },
+  {
+    "id": "kalos_lass_maelle",
+    "name": "Maëlle",
+    "class": "Lass",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 380,
+    "party": [
+      {
+        "species": "Snubbull",
+        "level": 19,
+        "ivScale": 0,
+        "personality": 9915484
+      }
+    ]
+  },
+  {
+    "id": "kalos_battle_girl_elodie",
+    "name": "Élodie",
+    "class": "Battle Girl",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 560,
+    "party": [
+      {
+        "species": "Mienfoo",
+        "level": 20,
+        "ivScale": 0,
+        "personality": 10187312
+      },
+      {
+        "species": "Throh",
+        "level": 20,
+        "ivScale": 0,
+        "personality": 10459140
+      }
+    ]
+  },
+  {
+    "id": "kalos_black_belt_gustave",
+    "name": "Gustave",
+    "class": "Black Belt",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 600,
+    "party": [
+      {
+        "species": "Makuhita",
+        "level": 20,
+        "ivScale": 0,
+        "personality": 10730968
+      },
+      {
+        "species": "Sawk",
+        "level": 21,
+        "ivScale": 0,
+        "personality": 11002796
+      }
+    ]
+  },
+  {
+    "id": "kalos_black_belt_lucien",
+    "name": "Lucien",
+    "class": "Black Belt",
+    "ai": [
+      "Basic",
+      "EvalAttack"
+    ],
+    "items": [],
+    "prizeMoney": 640,
+    "party": [
+      {
+        "species": "Machop",
+        "level": 26,
+        "ivScale": 0,
+        "personality": 11274624
+      },
+      {
+        "species": "Hawlucha",
+        "level": 26,
+        "ivScale": 0,
+        "personality": 11546452
+      }
+    ]
+  },
+  {
+    "id": "kalos_battle_girl_ines",
+    "name": "Inès",
+    "class": "Battle Girl",
+    "ai": [
+      "Basic",
+      "EvalAttack"
+    ],
+    "items": [],
+    "prizeMoney": 600,
+    "party": [
+      {
+        "species": "Meditite",
+        "level": 27,
+        "ivScale": 0,
+        "personality": 11818280
+      },
+      {
+        "species": "Mienfoo",
+        "level": 27,
+        "ivScale": 0,
+        "personality": 12090108
+      }
+    ]
+  },
+  {
+    "id": "kalos_korrina_1",
+    "name": "Korrina",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Hyper Potion",
+      "Hyper Potion"
+    ],
+    "prizeMoney": 3200,
+    "party": [
+      {
+        "species": "Mienfoo",
+        "level": 29,
+        "ivScale": 0,
+        "personality": 12361936
+      },
+      {
+        "species": "Machoke",
+        "level": 28,
+        "ivScale": 0,
+        "personality": 12633764
+      },
+      {
+        "species": "Hawlucha",
+        "level": 32,
+        "ivScale": 0,
+        "personality": 12905592
+      }
+    ]
+  },
+  {
+    "id": "kalos_korrina_tower",
+    "name": "Korrina",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 3200,
+    "keyStone": true,
+    "party": [
+      {
+        "species": "Lucario",
+        "level": 32,
+        "ivScale": 0,
+        "personality": 13177420,
+        "item": "Lucarionite",
+        "moves": [
+          "Power-Up Punch",
+          "Bone Rush",
+          "Metal Claw",
+          "Quick Attack"
+        ]
+      }
+    ]
   }
 ]

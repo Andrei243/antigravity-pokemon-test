@@ -1496,6 +1496,8 @@ unova_youngster_wes 177 (39) [Skorupi → Dreadpion, Seviper → Scimitail]
 levels 2 → 185, 68 → 205, 76 → 222
 caps 188 192 194 195 196 197 199 202 205 (own 12 25 32 34 37 42 48 59 68)
 kalos_grant_1 192 (25) [Amaura → Aurorus, Tyrunt → Tyrantrum]
+kalos_korrina_1 194 (32) [Mienfoo → Mienshifu, Machoke → Machamp, Hawlucha → Luchacondor]
+kalos_korrina_tower 194 (32) [Lucario → Aurasage]
 kalos_rival_cyllage_chespin 190 (19) [Fletchling → Talonflame, Espurr → Occulynx, Quilladin → Chesnaught]
 kalos_rival_cyllage_fennekin 190 (19) [Fletchling → Talonflame, Espurr → Occulynx, Braixen → Delphox]
 kalos_rival_cyllage_froakie 190 (19) [Fletchling → Talonflame, Espurr → Occulynx, Frogadier → Greninja]
@@ -1518,6 +1520,9 @@ trainers 7, 173-174 (own 29-31): unova_worker_friedrich 174 (31) [Sandile → Kr
 === SantaluneCity_Gym
 Santalune Gym, Kalos
 trainers 2, 187 (own 7-8): kalos_bug_catcher_luc 187 (8) [Spewpa → Vivillon, Kakuna → Beedrill], kalos_lass_mireille 187 (8) [Ledyba → Coccinova, Surskit → Ocellwing]
+=== ShalourCity_Gym
+Shalour Gym, Kalos
+trainers 2, 192-193 (own 26-27): kalos_battle_girl_ines 193 (27) [Meditite → Ascetrance, Mienfoo → Mienshifu], kalos_black_belt_lucien 192 (26) [Machop → Machamp]
 === abandoned_ship_corridors_1f
 Abandoned Ship, Hoenn
 trainers 1, 147 (own 26): hoenn_charlie 147 (26) [Marill → Azumarill]
@@ -2288,6 +2293,14 @@ grass 124-127 (own 32-36)
 Viridian Forest, Johto
 grass 105-107 (own 3-7)
 trainers 5, 121-141 (own 28-60): johto_bug_catcher_abner 132 (44) [Pikachu → Raichu], johto_bug_catcher_dane 135 (48), johto_bug_catcher_dion 136 (50) [Ariados → Orbweavix], johto_bug_catcher_ellis 133 (46) [Weedle → Beedrill, Kakuna → Beedrill], johto_bug_catcher_stacey 141 (60) [Metapod → Butterfree, Metapod → Butterfree, Metapod → Butterfree]
+=== kalos_route_10
+Route 10, Kalos
+grass 190 (own 17-19)
+trainers 2, 190 (own 18-19): kalos_hiker_odilon 190 (18) [Nosepass → Lodestarch, Roggenrola → Gigalith], kalos_lass_maelle 190 (19) [Snubbull → Mastiffang]
+=== kalos_route_11
+Route 11, Kalos
+grass 190-191 (own 19-21)
+trainers 2, 190-191 (own 20-21): kalos_battle_girl_elodie 190 (20) [Mienfoo → Mienshifu, Throh → Throjutsu], kalos_black_belt_gustave 191 (21) [Makuhita → Yokozan, Sawk → Sawkendo]
 === kalos_route_2
 Route 2, Kalos
 grass 185-186 (own 2-4)

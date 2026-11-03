@@ -2,14 +2,14 @@
   "map": [
     "                        ",
     "                        ",
-    "                        ",
-    "                        ",
-    "                        ",
-    "                        ",
-    "                        ",
-    "                        ",
-    "     ..                 ",
-    "  .T ..   TT.           ",
+    "    ...                 ",
+    "    .T.                 ",
+    "    .T.                 ",
+    "    ..                  ",
+    "   T..                  ",
+    "   ..                   ",
+    "   ....                 ",
+    "  .T...   TT.           ",
     "  TT .T..TTTT           ",
     "  .. TT.TTTTT.          ",
     "  ...... .TTT           ",
@@ -26,6 +26,88 @@
     "                        "
   ],
   "areas": [
+    {
+      "key": "kalos_route_10",
+      "name": "Route 10",
+      "cells": "3,7 3,8 4,8 4,9",
+      "morning": [
+        "Hawlucha",
+        "Golett",
+        "Snubbull",
+        "Houndour",
+        "Electrike",
+        "Nosepass",
+        "Yanma",
+        "Emolga",
+        "Sigilyph",
+        "Eevee"
+      ],
+      "day": [
+        "Hawlucha",
+        "Golett",
+        "Snubbull",
+        "Houndour",
+        "Electrike",
+        "Nosepass",
+        "Yanma",
+        "Emolga",
+        "Sigilyph",
+        "Eevee"
+      ],
+      "night": [
+        "Hawlucha",
+        "Golett",
+        "Snubbull",
+        "Houndour",
+        "Electrike",
+        "Nosepass",
+        "Yanma",
+        "Emolga",
+        "Sigilyph",
+        "Eevee"
+      ]
+    },
+    {
+      "key": "kalos_route_11",
+      "name": "Route 11",
+      "cells": "4,5 5,5 5,6",
+      "morning": [
+        "Nidorina",
+        "Nidorino",
+        "Stunky",
+        "Chingling",
+        "Staravia",
+        "Makuhita",
+        "Dedenne",
+        "Hawlucha",
+        "Throh",
+        "Sawk"
+      ],
+      "day": [
+        "Nidorina",
+        "Nidorino",
+        "Stunky",
+        "Chingling",
+        "Staravia",
+        "Makuhita",
+        "Dedenne",
+        "Hawlucha",
+        "Throh",
+        "Sawk"
+      ],
+      "night": [
+        "Nidorina",
+        "Nidorino",
+        "Stunky",
+        "Chingling",
+        "Staravia",
+        "Makuhita",
+        "Dedenne",
+        "Hawlucha",
+        "Throh",
+        "Sawk"
+      ]
+    },
     {
       "key": "kalos_route_2",
       "name": "Route 2",
