@@ -1139,7 +1139,7 @@ public static class ScriptParser
             // The Berry Blender and the Pokéblock Case (plan 21 · H11)
             case "pokeblock":
             {
-                string what = r.OneOf("blend", "count", "full", "taste", "lady");
+                string what = r.OneOf("blend", "count", "full", "taste", "lady", "feeder", "place");
                 int others = 0;
                 if (what == "blend")
                 {

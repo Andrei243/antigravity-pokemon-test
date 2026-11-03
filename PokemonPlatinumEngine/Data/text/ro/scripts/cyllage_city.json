@@ -1,0 +1,86 @@
+{
+  "Neighbour": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! You woke that Snorlax? I heard it snoring from the coast. I took the long way round."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Gym here is at the very top of the town. Its Leader climbs rock walls, and his Pokémon are as hard as the cliffs."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Before you go up, let's see what you've learned since Santalune."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You're climbing faster than I am. Good. Then I know who I'm racing."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Close. Very close. Rock-type Pokémon won't be as kind to you as I was, though."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Water and Grass get the better of stone, they say. Good luck with the climb."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Rival": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Gym is up the steps, right at the top."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

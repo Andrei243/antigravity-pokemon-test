@@ -1244,6 +1244,30 @@ label Hoenn
   warp "Route121_SafariZoneEntrance" 2 4 right
   end
 
+# A Pokéblock feeder of Hoenn's Safari Zone (plan 21 · H11, part d; Emerald's EventScript_PokeBlockFeeder), read on its
+# tile by the zone's overlays (readAt). One that holds a Pokéblock already says so; on an empty one the player may set a
+# Pokéblock of the case down, where it lasts a hundred steps of the Safari Game and, four times in five, gives the wild
+# Pokémon met within five steps of it a nature that likes it (Models/PokeblockFeeders.cs). Our own lines.
+script HoennFeeder
+  pokeblock feeder
+  if result == 1 goto Full
+  ask "It's a little feeder for wild Pokémon. Set a Pokéblock down on it?"
+  if no goto Leave
+  pokeblock count
+  if result == 0 goto Empty
+  pokeblock place
+  if result == 0 goto Leave
+  say "You set the {feeder} down on the feeder. Pokémon nearby might come sniffing round..."
+  end
+label Full
+  say "The {feeder} you left is still lying on the feeder."
+  end
+label Empty
+  say "You haven't got a single Pokéblock to set down."
+  end
+label Leave
+  end
+
 
 # A Repel's last step (plan 06 · R11; the original's common script 32).
 script RepelWoreOff

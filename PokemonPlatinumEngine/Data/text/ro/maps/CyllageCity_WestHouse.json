@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Cyllage City"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "mother": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My son swims in the bay every day, even in winter. He says the cold makes his Pokémon tougher."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,110 @@
+{
+  "Grant": [
+    {
+      "en": [
+        "Grant"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "So you made the climb. I'm Grant, Leader of the Cyllage Gym."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "On a rock face you look for the next hold, and then the one after it. One mistake and you start again from the bottom."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A battle is the same. Show me how you climb!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You never once lost your grip. That's a climb I'd be proud of."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Here. The Cliff Badge is yours, proof that you reached the top of the Cyllage Gym."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Cliff Badge from Grant!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Take this too. My Pokémon use it to bury a foe's feet in stone and slow it right down."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There's more of Kalos to climb. Keep looking for the next hold."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Every morning I climb this wall and think of our battle. I still haven't found where I slipped."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "GymGuide": [
+    {
+      "en": [
+        "Gym Guide"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hello there, future Champion! Grant's Rock types shrug off fire and flight. Bring water, grass or a good fist!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You beat Grant! You must have hands of iron."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

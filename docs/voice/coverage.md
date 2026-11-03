@@ -10,9 +10,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 |---|---|---|---|---|---|
 | The introduction (`intro:`) | 96 | 96 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1328 | 1286 | 42 | 1 | 0 |
-| Scripts (`script:`) | 10272 | 9810 | 462 | 17 | 0 |
+| Scripts (`script:`) | 10276 | 9812 | 464 | 17 | 0 |
 | People of the world (`world:`) | 7166 | 7104 | 62 | 4 | 0 |
-| **All** | 18862 | 18296 | 566 | 22 | 0 |
+| **All** | 18866 | 18298 | 568 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -31,7 +31,7 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 - Named characters: 394 voices (357 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Cloned from the user's samples: `rival`.
 - Archetypes in use: 239, with 722 voices to cast (V5).
-- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1892.
+- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1896.
 
 ## Lines by voice
 
@@ -39,7 +39,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 
 | Voice | Lines | Shown only |
 |---|---|---|
-| `@self` | 1892 | 136 |
+| `@self` | 1896 | 138 |
 | `look:gentleman (any)` | 726 | 15 |
 | `rival` | 605 | 18 |
 | `look:grunt (any)` | 587 | 0 |

@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Lumiose City"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "florist": {
+      "name": {
+        "en": [
+          "Florist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I sell flowers at the south square every morning. The Flabébé from Route 4 always come to look at my stall."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

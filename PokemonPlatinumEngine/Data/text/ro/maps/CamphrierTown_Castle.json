@@ -1,0 +1,41 @@
+{
+  "displayName": {
+    "en": [
+      "Camphrier Castle"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "castellan": {
+      "name": {
+        "en": [
+          "Castellan Aubert"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "maid": {
+      "name": {
+        "en": [
+          "Maid"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The castle is very old and very draughty. I dust the suits of armour every morning, and every morning they are dusty again."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -5,6 +5,8 @@
   "area": "hoenn_safari_zone_southeast",
   "bgmTrack": "hoenn/safari_zone",
   "trees": "Round",
+  // Emerald's Pokéblock feeders (plan 21 · H11, part d), read on their tiles: common.HoennFeeder
+  "readAt": [ { "x": 109, "z": 51, "script": "HoennFeeder" }, { "x": 105, "z": 61, "script": "HoennFeeder" }, { "x": 99, "z": 73, "script": "HoennFeeder" } ],
   "people": {
     "rich_boy": { "name": "Boy", "dialog": [ "The Pokémon around here don't look like they come from Hoenn at all." ] },
     "fat_man": { "name": "Man", "dialog": [ "Every Pokémon in this part is new to me. And I'm allowed to catch them! How great is that?" ] },

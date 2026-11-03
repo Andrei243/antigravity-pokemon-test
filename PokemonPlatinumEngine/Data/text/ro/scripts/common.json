@@ -1047,6 +1047,40 @@
       ]
     }
   ],
+  "HoennFeeder": [
+    {
+      "en": [
+        "It's a little feeder for wild Pokémon. Set a Pokéblock down on it?"
+      ],
+      "text": [
+        "E o mică hrănitoare pentru Pokémonii sălbatici. Lași un Pokéblock pe ea?"
+      ]
+    },
+    {
+      "en": [
+        "You set the {feeder} down on the feeder. Pokémon nearby might come sniffing round..."
+      ],
+      "text": [
+        "Ai lăsat {feeder} pe hrănitoare. Pokémonii din apropiere ar putea veni să adulmece..."
+      ]
+    },
+    {
+      "en": [
+        "The {feeder} you left is still lying on the feeder."
+      ],
+      "text": [
+        "{feeder} pe care l-ai lăsat e încă pe hrănitoare."
+      ]
+    },
+    {
+      "en": [
+        "You haven't got a single Pokéblock to set down."
+      ],
+      "text": [
+        "N-ai niciun Pokéblock de lăsat."
+      ]
+    }
+  ],
   "RepelWoreOff": [
     {
       "en": [

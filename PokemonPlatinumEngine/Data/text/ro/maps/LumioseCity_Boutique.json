@@ -1,0 +1,41 @@
+{
+  "displayName": {
+    "en": [
+      "Boutique"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "shopper": {
+      "name": {
+        "en": [
+          "Shopper"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The berets here are the height of fashion. I can never choose just one colour!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

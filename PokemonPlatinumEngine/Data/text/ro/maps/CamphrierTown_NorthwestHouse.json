@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Camphrier Town"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "grandma": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My grandmother told me the palace up the avenue once belonged to a king. Now it belongs to whoever pays the most."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

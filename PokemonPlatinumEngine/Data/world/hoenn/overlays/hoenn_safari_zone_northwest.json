@@ -4,6 +4,8 @@
   "area": "hoenn_safari_zone_northwest",
   "bgmTrack": "hoenn/safari_zone",
   "trees": "Round",
+  // Emerald's Pokéblock feeders (plan 21 · H11, part d), read on their tiles: common.HoennFeeder
+  "readAt": [ { "x": 4, "z": 7, "script": "HoennFeeder" }, { "x": 33, "z": 15, "script": "HoennFeeder" }, { "x": 31, "z": 29, "script": "HoennFeeder" } ],
   "people": {
     "man_1": { "name": "Man", "dialog": [ "Huff... huff... I made it all the way out here... and now I'm too tired to catch anything..." ] }
   }

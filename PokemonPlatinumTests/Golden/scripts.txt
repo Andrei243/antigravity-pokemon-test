@@ -11475,6 +11475,14 @@ way -
   + FLAG_HIDE_RUSTURF_TUNNEL_PEEKO
   + FLAG_HIDE_RUSTURF_TUNNEL_WANDA
   + FLAG_HIDE_RUSTURF_TUNNEL_WANDAS_BOYFRIEND
+=== common.HoennFeeder
+from a trainer with lines of their own
+way 0
+  Anyone> It's a little feeder for wild Pokémon. Set a Pokéblock down on it?
+  Anyone> You haven't got a single Pokéblock to set down.
+  ? It's a little feeder for wild Pokémon. Set a Pokéblock down on it? = Yes
+way 1, from answer 1
+  ? It's a little feeder for wild Pokémon. Set a Pokéblock down on it? = No
 === common.HoennKecleonFound
 from a Kecleon seen through the Devon Scope
 way 0

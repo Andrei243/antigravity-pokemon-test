@@ -465,6 +465,8 @@ Plan 21 · H11. Hoenn's contest is a different game from the Super Contest: `Mod
 | `pokeblock taste` | `RESULT` 1 when the first of the team's nature likes a flavour, and `{taste}` is the colour of Pokéblock of it (Mossdeep's black belt, `GetPokeblockNameByMonNature`); 0 for the five natures with no taste. |
 | `pokeblock blend 2` | The Berry Blender with so many others (1 to 3) at the drum: the bag chooses the player's berry, the blender plays and the script waits; `RESULT` 1 when a Pokéblock went into the case, 0 when the player backed out or the case was full. |
 | `pokeblock count` | How many Pokéblocks the Pokéblock Case holds. |
+| `pokeblock feeder` | Hoenn's Safari Zone's feeders (plan 21 · H11, part d; `Models/PokeblockFeeders.cs`, Emerald's `GetPokeblockFeederInFront`): `RESULT` 1 when a Pokéblock already lies on the feeder before the player, with `{feeder}` its name; else 0. |
+| `pokeblock place` | Asks which of the case's Pokéblocks to set down on the feeder before the player and sets it there for a hundred steps of the Safari Game (`SafariZoneActivatePokeblockFeeder`), taking it out of the case; `RESULT` 1 with `{feeder}` its name, 0 when the player backed out, had none, or all ten of the zone's places are taken. Stops a hurry. |
 | `pokeblock lady` | Lilycove's Contest Lady (plan 21 · H12, part n; `Models/ContestLady.cs`): asks which of the case's Pokéblocks to give her Pokémon, takes it out of the case and judges it by the condition in `VAR_HOENN_CONTEST_LADY` (1 to 5), counting a good one or another; `RESULT` 0 backed out, 1 not its flavour, 2 its flavour. |
 | `pokeblock full` | `RESULT` 1 when the case can take no more (forty). |
 

@@ -1,0 +1,102 @@
+{
+  "people": {
+    "snorlax": {
+      "name": {
+        "en": [
+          "Snorlax"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fisherman": {
+      "name": {
+        "en": [
+          "René"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman René: Quiet on the bank! You'll frighten the fish. Well, you'll battle them instead!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman René: The river's calm again. That's the main thing."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Sylvie"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Sylvie: The flowers here smell sweeter than any perfume in Lumiose. Smell this battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Sylvie: That smelled like defeat."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Adrien"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Adrien: The big Pokémon on the lane kept me stuck here for days! I've been training!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Adrien: Training for days, and still. Hmph."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": {
+      "en": [
+        "Route 7 · Riverbank Walk\nNorth: Camphrier Town\nWest: the coast"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

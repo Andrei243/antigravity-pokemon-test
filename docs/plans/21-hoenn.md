@@ -1221,6 +1221,18 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
       and the contest lady, the Pokéblock feeders (the Safari Zone's, its other session's), contests and the blender with
       friends (plan 07), the contest's music, cheers, voices and per-move animations, the painting on the wall, the
       museum's first scene.
+    - **Part d built** (2026-11-03; rulings, "The Safari Zone's Pokéblock feeders"): Emerald's eleven **Pokéblock
+      feeders** in Hoenn's Safari Zone, their tiles read from the pinned layouts (`MB_POKEBLOCK_FEEDER`, metatile 0x310)
+      and read by the six parts' overlays (`readAt`, `common.HoennFeeder`); `Models/PokeblockFeeders.cs` (ten places, a
+      hundred steps, the five-step reach with Emerald's carried difference, the nature chosen four times in five before
+      Synchronize), kept by `SafariGame.Feeders` (not saved), handed to the wild Pokémon through `WildLead.Feeder`
+      (`GameEngine.FeederInReach`, by where the step ends); script words `pokeblock feeder|place` and `{feeder}`; Romanian
+      for the four new lines. Tests (`--filter`, run): `HoennFeederTests` (8), `ScriptTests`, Story, Voice, translation,
+      Text, Content, SceneSkip, Romanian, Golden (`scripts.txt` gains `common.HoennFeeder`: accepted), DataFile, Schema,
+      HoennContest, Safari. Shots: `h3l0_safari_feeder_south`, `h3l1_safari_feeder_northwest` (the harness's `hoenn`,
+      `HOENN_FROM=look`, `LOOK_ONLY=h3l`), taken and looked at: the feeders stand as grey stone stands in the grass.
+      **Still left**: Emerald's Safari battle with POKéBLOCK thrown (the Great Marsh's bait and mud stand in), a feeder's
+      own picture, and part c's other leftovers above (the Pokéblock feeders are no longer among them).
 - [ ] H12 The Frontier island and the post-game (part a done 2026-10-26, wave 52: the Regis, the Sealed Chamber and Southern Island; `docs/mechanics/rulings.md`, "The Regis, the Sealed Chamber and Southern Island"; tests written and run with `--filter` (`HoennPostGameTests`), shots `h240` to `h268` written and not taken; part b done 2026-10-26, wave 56: the Battle Frontier island and the rooms of its grounds; part c done 2026-10-26, wave 57: Rayquaza on Sky Pillar cracked, Steven at Meteor Falls and Hoenn's species check)
     - **Built**: nine maps opened (matrices 193, 254, 256 to 259, 362, 363: Desert Ruins, Island Cave, the floor under Route
       134, the Sealed Chamber's corridor, outer room and inner room, Southern Island's beach and garden; the Ancient Tomb was

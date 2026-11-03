@@ -403,7 +403,7 @@ public sealed partial class ScriptRunner
         Op.OpenBase => i.Name is not ("check" or "kind" or "give" or "buy" or "room"),
         // Hoenn's contests: the contest and the blender are the player's to play; the rest only asks and changes (plan 21 · H11)
         Op.Appeals => i.Name is "enter" or "view",
-        Op.Pokeblock => i.Name == "blend",
+        Op.Pokeblock => i.Name is "blend" or "place",
         // The Battle Dome opens screens, asks the Frontier and battles on most of its words, as the facilities do: none is hurried through (plan 14 · B8)
         Op.Bracket => true,
         // So do the Battle Palace and the Battle Arena (plan 14 · B9)
@@ -2550,6 +2550,8 @@ public sealed partial class ScriptRunner
             "wall" => lastWinner,
             "wallmon" => lastWinnerMon,
             "taste" => lastTaste,
+            // Hoenn's Safari Zone's feeders (plan 21 · H11, part d): the Pokéblock lying on the one before the player
+            "feeder" => lastFeeder,
             // The Seaside Cycling Road (plan 21 · H12, part k): the last run's and the best's time and collisions
             "cycling" when argument == "TIME" => Models.CyclingRoad.Time(host.Story.Var(Models.CyclingRoad.LastFrames)),
             "cycling" when argument == "COLLISIONS" => Models.CyclingRoad.Collisions(host.Story.Var(Models.CyclingRoad.LastCollisions)),

@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Camphrier Town"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The big Pokémon on the south road snores so loudly I can hear it from my bed!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

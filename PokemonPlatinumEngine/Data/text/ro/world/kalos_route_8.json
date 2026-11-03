@@ -1,0 +1,66 @@
+{
+  "people": {
+    "fisherman": {
+      "name": {
+        "en": [
+          "Yves"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Yves: The sea's too rough for fishing today. A battle will have to do!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Yves: Rough sea, rough luck."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Marcel"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Marcel: I climb these cliffs every morning. Strong legs, strong Pokémon!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Marcel: My legs are fine. My Pokémon need more climbing."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": {
+      "en": [
+        "Route 8 · Cliff Coast Path\nNorth: Cyllage City\nSouth: closed by a rockfall"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

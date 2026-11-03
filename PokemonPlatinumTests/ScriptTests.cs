@@ -667,6 +667,8 @@ public class ScriptTests
           pokeblock blend 2
           pokeblock count
           pokeblock full
+          pokeblock feeder
+          pokeblock place
           bracket enough
           bracket choose
           bracket check
