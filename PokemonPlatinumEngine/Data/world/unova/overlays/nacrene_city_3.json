@@ -1,0 +1,22 @@
+{
+  // The Nacrene Museum's upper floor and library (plan 22 · U10, part f), Black 2's, our words. Its shelves read as books
+  "area": "nacrene_city_3",
+  "bgmTrack": "unova/driftveil",
+  "people": {
+    "0": { "name": "Librarian", "npcType": "gym_guide", "dialog": [ "This is the museum's library. Every book here is about Unova's past." ] },
+    "1": { "name": "School Kid", "dialog": [ "I'm reading about the dragon in the tower up north. It's a scary story." ] },
+    "2": { "name": "Little Girl", "npcType": "school_kid_f", "dialog": [ "I'm waiting for my brother. He reads so slowly!" ] }
+  },
+  "signs": {
+    "2": "A book about Unova's founding. The two brothers and their dragon are on every page.",
+    "3": "A book about fossils. Rocks with shells in them, and rocks with bones.",
+    "4": "A book about the Skyarrow Bridge. It took years to build.",
+    "5": "A book about the old warehouses. The city once moved goods all over Unova.",
+    "6": "A book of paintings. Many are of Nacrene City.",
+    "7": "A book of old maps. Some of the roads have changed names.",
+    "8": "A book about meteorites. Some fell near the Giant Chasm.",
+    "9": "A book about Pokémon of the forest. The pictures are beautiful.",
+    "10": "A book of folk tales. The dragon of Dragonspiral Tower is in most of them.",
+    "11": "A book about museums. This one is in it, of course."
+  }
+}

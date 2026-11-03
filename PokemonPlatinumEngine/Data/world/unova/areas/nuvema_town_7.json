@@ -1,0 +1,25 @@
+{
+  "key": "nuvema_town_7",
+  "index": 395,
+  "name": "Nuvema Town",
+  "matrix": 36,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_T_01",
+  "nightMusic": "BGM_T_01",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 2, "z": 2, "to": "nuvema_town_6", "toWarp": 1 }
+  ],
+  "objects": [],
+  "signs": [
+    { "x": 1, "z": 7, "type": 0, "script": "1" }
+  ],
+  "triggers": []
+}

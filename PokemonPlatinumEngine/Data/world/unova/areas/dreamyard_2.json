@@ -1,0 +1,51 @@
+{
+  "key": "dreamyard_2",
+  "index": 153,
+  "name": "Dreamyard",
+  "matrix": 15,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_D_01",
+  "nightMusic": "BGM_D_01",
+  "encounters": "ENCOUNTERS_DREAMYARD_2",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "darkGrass": [
+    { "species": "Raticate", "level": 64 },
+    { "species": "Golbat", "level": 64 },
+    { "species": "Watchog", "level": 65 },
+    { "species": "Jigglypuff", "level": 65 },
+    { "species": "Munna", "level": 65 },
+    { "species": "Munna", "level": 66 },
+    { "species": "Liepard", "level": 65 },
+    { "species": "Liepard", "level": 66 },
+    { "species": "Raticate", "level": 67 },
+    { "species": "Golbat", "level": 67 },
+    { "species": "Raticate", "level": 67 },
+    { "species": "Golbat", "level": 67 }
+  ],
+  "darkGrassRate": 13,
+  "warps": [
+    { "x": 26, "z": 3, "to": "dreamyard", "toWarp": 0 },
+    { "x": 26, "z": 27, "to": "dreamyard", "toWarp": 1 },
+    { "x": 3, "z": 20, "to": "dreamyard", "toWarp": 3 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "110", "movement": "none", "x": 4, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0576", "item": "Iron", "script": "7298" },
+    { "id": "1", "looks": "110", "movement": "none", "x": 3, "z": 26, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0577", "item": "Dawn Stone", "script": "7299" },
+    { "id": "2", "looks": "110", "movement": "none", "x": 24, "z": 10, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0575", "item": "HP Up", "script": "7297" },
+    { "id": "3", "looks": "scientist_f_46", "movement": "wander_around", "x": 23, "z": 12, "facing": 1, "rangeX": 2, "rangeZ": 4, "trainer": "sees", "sight": 2, "script": "TRAINER_SCIENTIST_ATHENA" },
+    { "id": "4", "looks": "scientist_m_52", "movement": "wander_around", "x": 5, "z": 24, "facing": 1, "rangeX": 4, "rangeZ": 3, "trainer": "sees", "sight": 2, "script": "TRAINER_SCIENTIST_FRANKLIN" },
+    { "id": "5", "looks": "psychic_f", "movement": "wander_around", "x": 17, "z": 22, "facing": 0, "rangeX": 4, "rangeZ": 4, "trainer": "sees", "sight": 2, "script": "TRAINER_PSYCHIC_OLESIA" },
+    { "id": "6", "looks": "psychic_m", "movement": "none", "x": 19, "z": 14, "facing": 1, "rangeX": 8, "rangeZ": 4, "trainer": "sees", "sight": 3, "script": "TRAINER_PSYCHIC_NANDOR" }
+  ],
+  "signs": [
+    { "x": 12, "z": 3, "type": 2, "script": "8042", "item": "Psychic Gem", "flag": "FLAG_UNOVA_0x0b2e" }
+  ],
+  "triggers": []
+}

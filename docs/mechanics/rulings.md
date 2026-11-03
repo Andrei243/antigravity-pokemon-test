@@ -3666,6 +3666,29 @@ or beaten (`FLAG_UNOVA_FOUGHT_<SPECIES>`), back the next time its place is come 
   Tubeline Bridge) and the Celestial Tower's (the Dragonspiral Tower), until plan 05 writes Unova's `icirrus` and
   `dragonspiral_tower`.
 
+## The old roads from the Skyarrow Bridge to Nuvema Town (2026-11-04, plan 22 · U10, part f)
+
+- **What is open.** Route 17's gate on to Route 1 (unlocked), Route 1, Nuvema Town with its houses and Professor Juniper's
+  lab, Accumula Town with its gate, houses and Pokémon Center, Route 2, Striaton City with its restaurant, Trainers' School,
+  houses and Pokémon Center, the Dreamyard and its basement, Route 3 with the Pokémon Nursery and the Day Care's house,
+  Wellspring Cave's upper floor, Nacrene City with its gate, museum (both floors), warehouse studios, café and Pokémon Center,
+  Pinwheel Forest's clearing and heart, and the Skyarrow Bridge's west end and its gate house. All open from the start, as
+  Black 2's are; the trainers are Black 2's. The walk of the whole game finds them by Route 17's gate.
+- **What stays shut.** The Skyarrow Bridge itself (`skyarrow_bridge`) and its Castelia gate: the bridge stands on Black 2's
+  rails with no ground in the import, so its west gate's way on leads nowhere yet, and Castelia's side is unchanged.
+  Wellspring Cave's lower floor, which nothing walked reaches from the upper one in the import. Two rooms Black 2 reaches only by
+  scene (`nacrene_city_11`, `striaton_city_10`). The Rumination Field off Pinwheel Forest. Black 2's people and triggers of
+  scenes throughout (Uxie in Nacrene, Juniper and her aides in the lab, the brothers' workers in the restaurant, the smoke and
+  the Munna of the Dreamyard), its Pokémon of the rooms, and a Big Nugget and a Balm Mushroom (items not in the game's data).
+- **Pinwheel Forest's planks.** The heart's plank bridges over its streams are its chunks' second grid, read as decks as
+  Humilau's boardwalks are (`Bw2World.Decks` gains the forest's twelve chunks).
+- **The Day Care's house** on Route 3 is people and words only: leaving Pokémon there waits for a session that gives Unova a
+  Day Care (Sinnoh's is Solaceon's). **Buildings**: Striaton's are Hearthome's townhouses, Nacrene's warehouses Driftveil's
+  brick (`Storehouse`), Accumula's Aspertia's (`Hillside`) and Nuvema's and the Day Care's Floccesy's (`Bellfield`), until rows
+  of the style guide's "Buildings" are written for them. The songs stand in from Floccesy (Striaton, Nuvema), Aspertia
+  (Accumula), Driftveil (Nacrene), Route 19 (Routes 1 and 2), Route 4 (Route 3), Lostlorn Forest (Pinwheel Forest), the Relic
+  Passage (the Dreamyard) and the Seaside Cave (Wellspring Cave), until plan 05 writes `nuvema`, `accumula`, `striaton`, `nacrene`.
+
 ## The Hidden Grottoes (2026-11-02, plan 22 · U11)
 
 Black 2's Hidden Grottoes are hollows in the trees that hold one thing at a time. The decompilation has the grotto's own room

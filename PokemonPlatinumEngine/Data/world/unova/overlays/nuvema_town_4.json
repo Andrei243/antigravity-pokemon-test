@@ -1,0 +1,9 @@
+{
+  // A house of Nuvema Town (plan 22 · U10, part f), Black 2's, our words
+  "area": "nuvema_town_4",
+  "bgmTrack": "unova/floccesy",
+  "people": {
+    "0": { "name": "Poké Fan", "dialog": [ "My children both became Trainers. The house is so quiet now." ] },
+    "1": { "name": "Poké Fan", "npcType": "pokefan_m", "dialog": [ "We still get letters from them. They're in Opelucid now!" ] }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "key": "bridge_gate_2",
+  "index": 251,
+  "name": "Bridge Gate",
+  "matrix": 137,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_R_B_SP",
+  "nightMusic": "BGM_R_B_SP",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 1, "z": 4, "to": "bridge_gate", "toWarp": 1 },
+    { "x": 12, "z": 0, "to": "skyarrow_bridge", "toWarp": 0 },
+    { "x": 1, "z": 5, "to": "bridge_gate", "toWarp": 1 },
+    { "x": 1, "z": 6, "to": "bridge_gate", "toWarp": 1 },
+    { "x": 13, "z": 0, "to": "skyarrow_bridge", "toWarp": 0 },
+    { "x": 14, "z": 0, "to": "skyarrow_bridge", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "76", "movement": "none", "x": 16, "z": 5, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "2" },
+    { "id": "1", "looks": "clerk_f", "movement": "none", "x": 5, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "4" },
+    { "id": "2", "looks": "hiker", "movement": "wander_around", "x": 11, "z": 7, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "3" }
+  ],
+  "signs": [],
+  "triggers": []
+}

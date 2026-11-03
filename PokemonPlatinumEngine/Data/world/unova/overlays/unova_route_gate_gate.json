@@ -1,0 +1,10 @@
+{
+  // The gate house between Route 17 and Route 1 (plan 22 · U10, part f), Black 2's, our words
+  "area": "unova_route_gate_gate",
+  "bgmTrack": "unova/route19",
+  "people": {
+    "0": { "name": "Gate Guard", "npcType": "worker", "dialog": [ "Route 1 leads up to Accumula Town. Route 17 goes out over the sea." ] },
+    "1": { "name": "Backpacker", "dialog": [ "I came in from the sea route. The currents out there are fierce!" ] },
+    "2": { "name": "Ace Trainer", "dialog": [ "Route 17's Trainers are tough. Make sure your team's ready." ] }
+  }
+}

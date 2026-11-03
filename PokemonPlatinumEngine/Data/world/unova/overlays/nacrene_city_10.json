@@ -1,0 +1,12 @@
+{
+  // The Café Warehouse of Nacrene City (plan 22 · U10, part f), Black 2's, our words. Its workers of scenes are left out
+  "area": "nacrene_city_10",
+  "bgmTrack": "unova/driftveil",
+  "people": {
+    "0": { "name": "Waitress", "dialog": [ "Welcome to the Café Warehouse! The music starts later tonight." ] },
+    "3": { "name": "Old Woman", "npcType": "old_woman", "dialog": [ "I come here every day for the music. Sometimes I even dance." ] },
+    "4": { "name": "Backers", "dialog": [ "We come to the café after every match at the Gym." ] },
+    "5": { "name": "Old Man", "npcType": "old_man", "dialog": [ "The coffee here is the strongest in Unova. My heart can tell." ] },
+    "6": { "name": "Nursery Aide", "dialog": [ "The little ones are napping, so I'm having a coffee in peace." ] }
+  }
+}

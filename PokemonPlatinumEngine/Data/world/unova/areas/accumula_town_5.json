@@ -1,0 +1,28 @@
+{
+  "key": "accumula_town_5",
+  "index": 402,
+  "name": "Accumula Town",
+  "matrix": 27,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_T_02",
+  "nightMusic": "BGM_T_02",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 10, "z": 2, "to": "accumula_town_4", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "307", "movement": "none", "x": 8, "z": 7, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "4" },
+    { "id": "1", "looks": "21", "movement": "none", "x": 13, "z": 3, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2" },
+    { "id": "2", "looks": "14", "movement": "none", "x": 7, "z": 7, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "3" },
+    { "id": "3", "looks": "18", "movement": "none", "x": 12, "z": 9, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

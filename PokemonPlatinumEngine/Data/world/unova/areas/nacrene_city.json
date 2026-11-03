@@ -1,0 +1,59 @@
+{
+  "key": "nacrene_city",
+  "index": 16,
+  "name": "Nacrene City",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "City",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "City",
+  "dayMusic": "BGM_C_02",
+  "nightMusic": "BGM_C_02",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 657, "z": 585, "to": "nacrene_city_6", "toWarp": 0 },
+    { "x": 658, "z": 597, "to": "nacrene_city_5", "toWarp": 0 },
+    { "x": 648, "z": 597, "to": "nacrene_city_7", "toWarp": 0 },
+    { "x": 626, "z": 597, "to": "nacrene_city_8", "toWarp": 0 },
+    { "x": 621, "z": 597, "to": "nacrene_city_9", "toWarp": 0 },
+    { "x": 637, "z": 597, "to": "nacrene_city_pokemon_center", "toWarp": 0 },
+    { "x": 624, "z": 584, "to": "nacrene_city_10", "toWarp": 0 },
+    { "x": 629, "z": 594, "to": "nacrene_city_8", "toWarp": 1 },
+    { "x": 651, "z": 594, "to": "nacrene_city_7", "toWarp": 1 },
+    { "x": 660, "z": 582, "to": "nacrene_city_6", "toWarp": 1 },
+    { "x": 671, "z": 598, "to": "nacrene_gate", "toWarp": 1 },
+    { "x": 644, "z": 581, "to": "nacrene_city_2", "toWarp": 0 },
+    { "x": 671, "z": 599, "to": "nacrene_gate", "toWarp": 1 },
+    { "x": 671, "z": 600, "to": "nacrene_gate", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "pokemon_uxie", "movement": "none", "x": 644, "z": 584, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0396", "script": "6" },
+    { "id": "1", "looks": "132", "movement": "none", "x": 629, "z": 582, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "11" },
+    { "id": "2", "looks": "19", "movement": "look_around", "x": 624, "z": 598, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "8" },
+    { "id": "3", "looks": "backers_f", "movement": "wander_around", "x": 652, "z": 588, "facing": 1, "rangeX": 3, "rangeZ": 3, "script": "7" },
+    { "id": "4", "looks": "27", "movement": "wander_around", "x": 642, "z": 598, "facing": 1, "rangeX": 3, "rangeZ": 0, "script": "9" },
+    { "id": "5", "looks": "backpacker_f", "movement": "wander_around", "x": 634, "z": 588, "facing": 2, "rangeX": 3, "rangeZ": 0, "script": "10" },
+    { "id": "6", "looks": "school_kid_f", "movement": "none", "x": 662, "z": 586, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "12" },
+    { "id": "7", "looks": "school_kid_f", "movement": "none", "x": 663, "z": 586, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "13" },
+    { "id": "8", "looks": "27", "movement": "wander_around", "x": 621, "z": 587, "facing": 1, "rangeX": 1, "rangeZ": 0, "script": "16" },
+    { "id": "9", "looks": "dancer", "movement": "none", "x": 632, "z": 602, "facing": 3, "rangeX": 4, "rangeZ": 0, "script": "17" },
+    { "id": "10", "looks": "clerk_f", "movement": "wander_around", "x": 658, "z": 600, "facing": 2, "rangeX": 2, "rangeZ": 0, "script": "18" },
+    { "id": "11", "looks": "artist", "movement": "none", "x": 636, "z": 584, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "19" }
+  ],
+  "signs": [
+    { "x": 609, "z": 601, "type": 2, "script": "8001", "item": "PP Up", "flag": "FLAG_UNOVA_0x0b05" },
+    { "x": 667, "z": 597, "type": 0, "script": "2" },
+    { "x": 626, "z": 587, "type": 0, "script": "3" },
+    { "x": 641, "z": 582, "type": 0, "script": "4" },
+    { "x": 649, "z": 584, "type": 0, "script": "14" },
+    { "x": 650, "z": 584, "type": 0, "script": "14" },
+    { "x": 651, "z": 584, "type": 0, "script": "15" }
+  ],
+  "triggers": [
+    { "x": 644, "z": 585, "width": 1, "depth": 1, "script": "5", "variable": "VAR_UNOVA_0x4116", "value": "1" }
+  ]
+}

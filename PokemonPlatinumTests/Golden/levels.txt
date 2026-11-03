@@ -458,6 +458,13 @@ grass 55-58
 === dragonspiral_tower_4
 Dragonspiral Tower
 grass 55-58
+=== dreamyard
+Dreamyard
+grass 56-59
+trainers 3, 63: unova_school_kid_rita 63, unova_school_kid_william 63, unova_youngster_keita 63
+=== dreamyard_2
+Dreamyard
+trainers 4, 62-63: unova_psychic_nandor 62, unova_psychic_olesia 62, unova_scientist_athena 63, unova_scientist_franklin 63
 === ecruteak
 Ecruteak City
 surf 10-25
@@ -1662,6 +1669,16 @@ trainers 1, 10-11: kanto_camper_liam 11
 === pewter_gym
 Pewter City
 trainers 2, 50: johto_camper_jerry 50, johto_hiker_edwin 50
+=== pinwheel_forest
+Pinwheel Forest
+grass 54-57
+trainers 6, 60-63: unova_ace_trainer_kathrine 63, unova_ace_trainer_kelsey 63, unova_battle_girl_lee 61, unova_black_belt_kentaro 61, unova_school_kid_keston 60, unova_school_kid_millie 60
+=== pinwheel_forest_2
+Pinwheel Forest
+grass 54-57
+surf 45-60
+super rod 40-70
+trainers 17, 59-64: unova_lass_helia 60, unova_nursery_aide_ethel 61, unova_nursery_aide_rosalyn 61, unova_pkmn_ranger_dwayne 62, unova_pkmn_ranger_hillary 62, unova_pkmn_ranger_melita 62, unova_pkmn_ranger_ralph 62, unova_preschooler_ike 60, unova_preschooler_jojo 60, unova_preschooler_jose 59, unova_preschooler_samantha 59, unova_twins_ally_amy 60, unova_veteran_rosaline 64, unova_veteran_sinan 64, unova_youngster_henley 60, unova_youngster_keita_2 60, unova_youngster_nicholas 60
 === plasma_frigate_2
 Plasma Frigate
 trainers 2, 46: unova_team_plasma_grunt_50 46, unova_team_plasma_grunt_51 46
@@ -3278,6 +3295,10 @@ grass 31-34
 === strange_house_6
 Strange House
 grass 31-34
+=== striaton_city
+Striaton City
+surf 45-60
+super rod 40-70
 === sunyshore_city
 Sunyshore City
 surf 30-50
@@ -3459,6 +3480,12 @@ old rod 10
 good rod 20
 super rod 40
 trainers 3, 22-28: johto_ace_trainer_f_emma 28, johto_ace_trainer_f_gwen 26, johto_ace_trainer_m_nick 26
+=== unova_route_1
+Route 1
+grass 56-59
+surf 45-60
+super rod 40-70
+trainers 6, 62-66: unova_ace_trainer_cheyenne 66, unova_ace_trainer_sean 66, unova_backpacker_jill 62, unova_backpacker_shane 62, unova_pkmn_ranger_audra 64, unova_pkmn_ranger_rick 64
 === unova_route_11
 Route 11
 grass 36-39
@@ -3503,6 +3530,10 @@ Route 19
 grass 2-4
 surf 5-15
 super rod 40-70
+=== unova_route_2
+Route 2
+grass 56-59
+trainers 6, 61-66: unova_lass_henrietta 61, unova_lass_mali 61, unova_veteran_oriana 66, unova_veteran_rayne 66, unova_youngster_jimmy 61, unova_youngster_mikey 61
 === unova_route_20
 Route 20
 grass 2-4
@@ -3529,6 +3560,12 @@ surf 40-55
 super rod 40-70
 ours Bouffalanx 176-180, Mienshifu 180-184, Bascurage 172-176
 trainers 12, 51-54: unova_ace_trainer_grant 53, unova_ace_trainer_juliet 53, unova_ace_trainer_miki 54, unova_ace_trainer_tom 54, unova_battle_girl_brenda 53, unova_battle_girl_tiffany 53, unova_black_belt_benjamin 53, unova_black_belt_luke 53, unova_hiker_don 51, unova_hiker_doug 53, unova_pkmn_ranger_lena 53, unova_pkmn_ranger_steve 52
+=== unova_route_3
+Route 3
+grass 55-58
+surf 45-60
+super rod 40-70
+trainers 10, 58-62: unova_backers_may_mal 62, unova_fisherman_bruce 61, unova_fisherman_mack 58, unova_lass_shannon 62, unova_nursery_aide_autumn 61, unova_preschooler_buster 61, unova_preschooler_eva 61, unova_preschooler_tyrone 61, unova_school_kid_edgar 61, unova_school_kid_marsha 61
 === unova_route_4
 Route 4
 grass 14-17
@@ -3731,6 +3768,12 @@ trainers 10, 17-22: camper_diego 22, camper_parker 20, collector_terry 22, hiker
 === wayward_cave_b1f
 Wayward Cave
 grass 17-20
+=== wellspring_cave
+Wellspring Cave
+grass 55-58
+surf 45-60
+super rod 50-70
+trainers 2, 61-62: unova_battle_girl_maggie 62, unova_hiker_zaiem 61
 === whirl_islands_1f
 Whirl Islands
 grass 22-24

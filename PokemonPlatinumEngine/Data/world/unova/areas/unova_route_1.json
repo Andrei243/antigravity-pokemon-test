@@ -1,0 +1,124 @@
+{
+  "key": "unova_route_1",
+  "index": 317,
+  "name": "Route 1",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "",
+  "dayMusic": "BGM_R_A",
+  "nightMusic": "BGM_R_A",
+  "encounters": "ENCOUNTERS_ROUTE_1",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Watchog", "level": 56 },
+    { "species": "Herdier", "level": 56 },
+    { "species": "Jigglypuff", "level": 57 },
+    { "species": "Herdier", "level": 57 },
+    { "species": "Watchog", "level": 58 },
+    { "species": "Herdier", "level": 58 },
+    { "species": "Watchog", "level": 59 },
+    { "species": "Herdier", "level": 59 },
+    { "species": "Watchog", "level": 59 },
+    { "species": "Herdier", "level": 59 },
+    { "species": "Watchog", "level": 59 },
+    { "species": "Herdier", "level": 59 }
+  ],
+  "landRate": 13,
+  "water": [
+    { "species": "Basculin", "level": 45, "maxLevel": 60 },
+    { "species": "Basculin", "level": 45, "maxLevel": 60 },
+    { "species": "Basculin", "level": 50, "maxLevel": 60 },
+    { "species": "Basculin", "level": 50, "maxLevel": 60 },
+    { "species": "Basculin", "level": 50, "maxLevel": 60 }
+  ],
+  "waterRate": 12,
+  "superRod": [
+    { "species": "Basculin", "level": 40, "maxLevel": 60, "weight": 60 },
+    { "species": "Basculin", "level": 40, "maxLevel": 60, "weight": 30 },
+    { "species": "Basculin", "level": 50, "maxLevel": 70, "weight": 5 },
+    { "species": "Feebas", "level": 50, "maxLevel": 70, "weight": 4 },
+    { "species": "Feebas", "level": 50, "maxLevel": 70, "weight": 1 }
+  ],
+  "superRodRate": 50,
+  "darkGrass": [
+    { "species": "Watchog", "level": 64 },
+    { "species": "Herdier", "level": 64 },
+    { "species": "Jigglypuff", "level": 65 },
+    { "species": "Herdier", "level": 65 },
+    { "species": "Watchog", "level": 66 },
+    { "species": "Scrafty", "level": 66 },
+    { "species": "Watchog", "level": 67 },
+    { "species": "Herdier", "level": 67 },
+    { "species": "Watchog", "level": 67 },
+    { "species": "Herdier", "level": 67 },
+    { "species": "Watchog", "level": 67 },
+    { "species": "Scrafty", "level": 67 }
+  ],
+  "darkGrassRate": 13,
+  "shakingGrass": [
+    { "species": "Audino", "level": 56 },
+    { "species": "Audino", "level": 56 },
+    { "species": "Audino", "level": 57 },
+    { "species": "Dunsparce", "level": 57 },
+    { "species": "Audino", "level": 58 },
+    { "species": "Audino", "level": 58 },
+    { "species": "Audino", "level": 59 },
+    { "species": "Audino", "level": 59 },
+    { "species": "Stoutland", "level": 59 },
+    { "species": "Wigglytuff", "level": 59 },
+    { "species": "Stoutland", "level": 59 },
+    { "species": "Wigglytuff", "level": 59 }
+  ],
+  "shakingGrassRate": 13,
+  "ripplingWater": [
+    { "species": "Basculin", "level": 45, "maxLevel": 60 },
+    { "species": "Basculin", "level": 45, "maxLevel": 60 },
+    { "species": "Basculin", "level": 50, "maxLevel": 60 },
+    { "species": "Basculin", "level": 50, "maxLevel": 60 },
+    { "species": "Basculin", "level": 50, "maxLevel": 60 }
+  ],
+  "ripplingWaterRate": 13,
+  "ripplingRod": [
+    { "species": "Feebas", "level": 40, "maxLevel": 60, "weight": 60 },
+    { "species": "Basculin", "level": 40, "maxLevel": 60, "weight": 30 },
+    { "species": "Feebas", "level": 50, "maxLevel": 70, "weight": 5 },
+    { "species": "Milotic", "level": 50, "maxLevel": 70, "weight": 4 },
+    { "species": "Milotic", "level": 50, "maxLevel": 70, "weight": 1 }
+  ],
+  "ripplingRodRate": 1,
+  "warps": [
+    { "x": 742, "z": 747, "to": "unova_route_gate_gate", "toWarp": 0 },
+    { "x": 742, "z": 748, "to": "unova_route_gate_gate", "toWarp": 0 },
+    { "x": 742, "z": 749, "to": "unova_route_gate_gate", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "backpacker_f", "movement": "none", "x": 789, "z": 692, "facing": 3, "rangeX": 6, "rangeZ": 0, "trainer": "sees", "sight": 1, "script": "TRAINER_BACKPACKER_JILL" },
+    { "id": "1", "looks": "backpacker_m", "movement": "none", "x": 785, "z": 702, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "script": "TRAINER_BACKPACKER_SHANE" },
+    { "id": "2", "looks": "pkmn_ranger_f", "movement": "look_north_and_east", "x": 746, "z": 745, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_PKMN_RANGER_AUDRA" },
+    { "id": "3", "looks": "pkmn_ranger_m", "movement": "none", "x": 757, "z": 747, "facing": 1, "rangeX": 0, "rangeZ": 3, "trainer": "sees", "sight": 3, "script": "TRAINER_PKMN_RANGER_RICK" },
+    { "id": "4", "looks": "ace_trainer_m", "movement": "wander_around", "x": 758, "z": 727, "facing": 0, "rangeX": 5, "rangeZ": 5, "trainer": "sees", "sight": 5, "script": "TRAINER_ACE_TRAINER_SEAN" },
+    { "id": "5", "looks": "ace_trainer_f", "movement": "wander_around", "x": 756, "z": 736, "facing": 1, "rangeX": 4, "rangeZ": 7, "trainer": "sees", "sight": 3, "script": "TRAINER_ACE_TRAINER_CHEYENNE" },
+    { "id": "6", "looks": "110", "movement": "none", "x": 759, "z": 759, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0580", "item": "Prism Scale", "script": "7308" },
+    { "id": "7", "looks": "110", "movement": "none", "x": 746, "z": 722, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x057f", "item": "Full Restore", "script": "7307" },
+    { "id": "8", "looks": "18", "movement": "wander_north_and_south", "x": 786, "z": 712, "facing": 1, "rangeX": 0, "rangeZ": 1, "script": "5" },
+    { "id": "9", "looks": "fisherman", "movement": "none", "x": 781, "z": 707, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "6" },
+    { "id": "10", "looks": "14", "movement": "wander_around", "x": 794, "z": 704, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "4" }
+  ],
+  "signs": [
+    { "x": 791, "z": 725, "type": 0, "script": "2" },
+    { "x": 791, "z": 710, "type": 0, "script": "3" },
+    { "x": 787, "z": 687, "type": 0, "script": "2" },
+    { "x": 751, "z": 747, "type": 0, "script": "2" },
+    { "x": 793, "z": 702, "type": 2, "script": "8128", "item": "Ultra Ball", "flag": "FLAG_UNOVA_0x0b84" },
+    { "x": 754, "z": 741, "type": 2, "script": "8129", "item": "Protein", "flag": "FLAG_UNOVA_0x0b85" }
+  ],
+  "triggers": [
+    { "x": 786, "z": 731, "width": 6, "depth": 1, "script": "7", "variable": "VAR_UNOVA_0x4136", "value": "1" }
+  ]
+}

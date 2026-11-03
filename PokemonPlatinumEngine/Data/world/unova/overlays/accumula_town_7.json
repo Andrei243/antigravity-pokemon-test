@@ -1,0 +1,10 @@
+{
+  // The upper floor of a house of Accumula Town (plan 22 · U10, part f), Black 2's, our words. Its Pokémon (3) is left out
+  "area": "accumula_town_7",
+  "bgmTrack": "unova/aspertia",
+  "people": {
+    "0": { "name": "Poké Fan", "npcType": "pokefan_m", "dialog": [ "I collect records. This one is from the very first festival." ] },
+    "1": { "name": "Lady", "npcType": "lady", "dialog": [ "The festival is the best week of the year. The whole town sings." ] },
+    "2": { "name": "Twins", "npcType": "twin", "dialog": [ "We're going to sing at the festival! We've been practising for weeks!" ] }
+  }
+}

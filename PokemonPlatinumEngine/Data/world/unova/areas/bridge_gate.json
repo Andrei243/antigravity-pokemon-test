@@ -1,0 +1,27 @@
+{
+  "key": "bridge_gate",
+  "index": 250,
+  "name": "Bridge Gate",
+  "matrix": 41,
+  "kind": "Outdoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_R_B_SP",
+  "nightMusic": "BGM_R_B_SP",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 15, "z": 30, "to": "pinwheel_forest_2", "toWarp": 1 },
+    { "x": 20, "z": 25, "to": "bridge_gate_2", "toWarp": 0 },
+    { "x": 16, "z": 30, "to": "pinwheel_forest_2", "toWarp": 1 },
+    { "x": 17, "z": 30, "to": "pinwheel_forest_2", "toWarp": 1 },
+    { "x": 20, "z": 26, "to": "bridge_gate_2", "toWarp": 0 }
+  ],
+  "objects": [],
+  "signs": [],
+  "triggers": []
+}

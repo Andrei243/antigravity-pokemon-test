@@ -1,0 +1,10 @@
+{
+  // The upper floor of a house of Striaton City (plan 22 · U10, part f), Black 2's, our words
+  "area": "striaton_city_6",
+  "bgmTrack": "unova/floccesy",
+  "people": {
+    "0": { "name": "Nursery Aide", "dialog": [ "My children are at the nursery on Route 3. It's so quiet without them." ] },
+    "1": { "name": "Gentleman", "dialog": [ "I collect teapots. The restaurant brothers gave me this one." ] },
+    "2": { "name": "Old Man", "npcType": "middle_aged_man", "dialog": [ "I retired here for the quiet. Striaton's the right place for it." ] }
+  }
+}

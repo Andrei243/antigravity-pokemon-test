@@ -1,0 +1,22 @@
+{
+  // Route 2 (plan 22 · U10, part f): Black 2's road from Accumula Town's gate to Striaton City, its trainers, balls, the Strength
+  // boulder (0) and hidden things read by the importer, our words. Its object of a scene (1) and its worker (9) are left out
+  "area": "unova_route_2",
+  "bgmTrack": "unova/route19",
+  "people": {
+    "2": { "name": "Rayne", "trainer": { "dialogueBefore": "I've walked this road a thousand times. Battle me, and make it a thousand and one!", "dialogueAfter": "A thousand and one losses, it feels like." } },
+    "3": { "name": "Jimmy", "trainer": { "dialogueBefore": "This is my road! Battle me if you want to pass!", "dialogueAfter": "It's your road now." } },
+    "4": { "name": "Henrietta", "trainer": { "dialogueBefore": "I just started my journey! Let's battle!", "dialogueAfter": "I'll start again tomorrow." } },
+    "5": { "name": "Mali", "trainer": { "dialogueBefore": "Route 2's tall grass is full of Pokémon. And Trainers!", "dialogueAfter": "Full of Trainers better than me." } },
+    "6": { "name": "Youngster", "dialog": [ "Striaton City is north. The Trainers' School there is great for beginners." ] },
+    "7": { "name": "Youngster", "dialog": [ "I'm looking for a Purrloin. They're sneaky!" ] },
+    "8": { "name": "Lass", "dialog": [ "This road is where most Trainers from Nuvema have their first battles." ] },
+    "10": { "name": "Mikey", "trainer": { "dialogueBefore": "I've been training since sunrise! Battle!", "dialogueAfter": "Time for a nap." } },
+    "11": { "name": "Oriana", "trainer": { "dialogueBefore": "Even old Trainers like a good stroll. And a good battle!", "dialogueAfter": "A good stroll, at least." } }
+  },
+  "signs": {
+    "2": "Route 2\nAccumula Town - Striaton City",
+    "3": "Trainer Tips\nWeaken a wild Pokémon before you throw a Poké Ball.",
+    "4": "Trainer Tips\nPokémon learn new moves as they grow. Check your team after a level up!"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  // Route 1 (plan 22 · U10, part f): Black 2's road from Nuvema Town north to Accumula Town, with the gate west to Route 17, its
+  // trainers, balls and hidden things read by the importer, our words. Its trigger of a scene is left out
+  "area": "unova_route_1",
+  "bgmTrack": "unova/route19",
+  "people": {
+    "0": { "name": "Jill", "trainer": { "dialogueBefore": "I've walked all of Unova with my backpack. Let's see how far you've come!", "dialogueAfter": "Further than me, apparently." } },
+    "1": { "name": "Shane", "trainer": { "dialogueBefore": "Route 1 is where my journey began. Let's make it where yours gets tough!", "dialogueAfter": "Tough for me, at least." } },
+    "2": { "name": "Audra", "trainer": { "dialogueBefore": "Even here, close to Nuvema, a Ranger has to stay sharp!", "dialogueAfter": "Not sharp enough." } },
+    "3": { "name": "Rick", "trainer": { "dialogueBefore": "I protect the Pokémon of Route 1. Let me test your team!", "dialogueAfter": "They're well protected." } },
+    "4": { "name": "Sean", "trainer": { "dialogueBefore": "I came back to where I started to see how much I've grown. Battle me!", "dialogueAfter": "I've still got growing to do." } },
+    "5": { "name": "Cheyenne", "trainer": { "dialogueBefore": "Every great Trainer passes along Route 1 once. Let's see how great you are!", "dialogueAfter": "Very great, it turns out." } },
+    "8": { "name": "Old Man", "npcType": "middle_aged_man", "dialog": [ "Nuvema Town is just down the road. New Trainers set off from there." ] },
+    "9": { "name": "Fisherman", "dialog": [ "The sea is just past the trees. Good fishing, if you have the patience." ] },
+    "10": { "name": "Woman", "npcType": "middle_aged_woman", "dialog": [ "Accumula Town is up the hill. You'll hear the music before you see it." ] }
+  },
+  "signs": {
+    "2": "Route 1\nNuvema Town - Accumula Town",
+    "3": "Trainer Tips\nPress the button to talk to people and check signs!"
+  }
+}

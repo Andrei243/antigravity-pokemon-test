@@ -1,0 +1,15 @@
+{
+  // The Trainers' School of Striaton City (plan 22 · U10, part f), Black 2's, our words
+  "area": "striaton_city_9",
+  "bgmTrack": "unova/floccesy",
+  "people": {
+    "0": { "name": "Ace Trainer", "dialog": [ "I teach the battle class. Today's lesson: types, types, types!" ] },
+    "1": { "name": "Teacher", "npcType": "gentleman", "dialog": [ "Welcome to the Trainers' School. We teach the basics to every new Trainer." ] },
+    "2": { "name": "Woman", "npcType": "middle_aged_woman", "dialog": [ "My son is in the class. I'm waiting to take him home." ] },
+    "3": { "name": "Youngster", "dialog": [ "Fire beats Grass, Grass beats Water, Water beats Fire! I know that much." ] },
+    "4": { "name": "School Kid", "dialog": [ "I'm top of the class in status conditions. Ask me about paralysis!" ] }
+  },
+  "signs": {
+    "1": "The blackboard reads: \"A Pokémon that is asleep can't move. Wake it with an Awakening!\""
+  }
+}

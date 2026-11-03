@@ -1,0 +1,45 @@
+{
+  "people": {},
+  "signs": {
+    "1": {
+      "en": [
+        "A shelf of books on Pokémon origins. Professor Juniper wrote some of them."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "2": {
+      "en": [
+        "A machine for studying Pokémon. Its lights are blinking."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "3": {
+      "en": [
+        "A computer showing a map of Unova."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "4": {
+      "en": [
+        "A bookshelf of research notes. They're very neat."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "5": {
+      "en": [
+        "A poster of the three Pokémon a new Trainer can choose from."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

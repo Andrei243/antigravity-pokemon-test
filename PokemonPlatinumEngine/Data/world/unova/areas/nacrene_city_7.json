@@ -1,0 +1,30 @@
+{
+  "key": "nacrene_city_7",
+  "index": 23,
+  "name": "Nacrene City",
+  "matrix": 31,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_C_02",
+  "nightMusic": "BGM_C_02",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 10, "to": "nacrene_city", "toWarp": 2 },
+    { "x": 11, "z": 3, "to": "nacrene_city", "toWarp": 8 },
+    { "x": 6, "z": 10, "to": "nacrene_city", "toWarp": 2 },
+    { "x": 7, "z": 10, "to": "nacrene_city", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "14", "movement": "none", "x": 9, "z": 7, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "2" },
+    { "id": "1", "looks": "work_00", "movement": "none", "x": 10, "z": 7, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "3" },
+    { "id": "2", "looks": "10", "movement": "wander_around", "x": 5, "z": 3, "facing": 2, "rangeX": 1, "rangeZ": 0, "script": "4" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -1,0 +1,32 @@
+{
+  "key": "accumula_town_2",
+  "index": 399,
+  "name": "Accumula Town",
+  "matrix": 26,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_T_02",
+  "nightMusic": "BGM_T_02",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 10, "to": "accumula_town", "toWarp": 1 },
+    { "x": 8, "z": 2, "to": "accumula_town_3", "toWarp": 0 },
+    { "x": 7, "z": 10, "to": "accumula_town", "toWarp": 1 },
+    { "x": 8, "z": 10, "to": "accumula_town", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "21", "movement": "none", "x": 10, "z": 5, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "2" },
+    { "id": "1", "looks": "lass", "movement": "none", "x": 5, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "5" },
+    { "id": "2", "looks": "10", "movement": "none", "x": 3, "z": 7, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "3" },
+    { "id": "3", "looks": "311", "movement": "wander_around", "x": 3, "z": 8, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "4" },
+    { "id": "4", "looks": "pokefan_f", "movement": "none", "x": 12, "z": 5, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

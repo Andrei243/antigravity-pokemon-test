@@ -1,0 +1,8 @@
+{
+  // A studio of Nacrene City (plan 22 · U10, part f), Black 2's, our words. Black 2's guests of its scenes (1 to 4) are left out
+  "area": "nacrene_city_5",
+  "bgmTrack": "unova/driftveil",
+  "people": {
+    "0": { "name": "Backers", "dialog": [ "This studio puts on shows sometimes. Nobody's booked tonight, though." ] }
+  }
+}

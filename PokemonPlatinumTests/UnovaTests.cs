@@ -585,7 +585,9 @@ public class UnovaTests
                 // and the Abundant Shrine and its house since plan 22 · U10, part d
                 || m.Name is "d19_house01" or "d19_shirne01"
                 // and Icirrus City's houses since plan 22 · U10, part e
-                || m.Name == "c7_house")
+                || m.Name == "c7_house"
+                // and the old roads from the Skyarrow Bridge to Nuvema Town since plan 22 · U10, part f
+                || m.Name is "c1_build" or "c1_rest" or "c1_school" or "c2_build" or "c2_cafe" or "c2_museum" or "t1_house" or "t1_labo" or "t2_house01" or "t2_build01" or "sodateya")
                 Assert.True(string.IsNullOrEmpty(m.StandInUntil), $"{m.Name} is still a stand-in");
             else Assert.False(string.IsNullOrEmpty(m.StandInUntil), $"{m.Name} is no stand-in");
         }
@@ -640,5 +642,20 @@ public class UnovaTests
         Assert.Contains(MapNamed("TwistMountain_Chamber").Everyone, n => n.Species == "Regigigas");
         // Clay Tunnel's way on to Twist Mountain is open now
         Assert.Contains(MapNamed("ClayTunnel_3").Warps, w => w.TargetMap == "TwistMountain_5");
+    }
+    [Fact]
+    public void TheOldRoadsFromNuvemaToPinwheelForestAreWalkedFromRouteSeventeen()
+    {
+        // Plan 22 · U10, part f: Route 17's gate leads to Route 1, Nuvema Town and on through Accumula Town, Route 2, Striaton City,
+        // Route 3 and Nacrene City to Pinwheel Forest and the Skyarrow Bridge's west gate
+        var walked = Walked.Value;
+        foreach (var key in new[] { "unova_route_1", "nuvema_town", "accumula_town", "unova_route_2", "striaton_city", "unova_route_3", "nacrene_city", "pinwheel_forest" })
+            Assert.Contains(walked[Overworld], t => Overworld.AreaAt(t.X, t.Y)?.Key == key);
+        foreach (var name in new[] { "Route1Gate", "NuvemaTown_Lab", "AccumulaTown_PokemonCenter", "StriatonCity_Room9", "Dreamyard_Basement",
+            "WellspringCave_1F", "NacreneCity_Museum2F", "PinwheelForest_Inside", "SkyarrowGate_Pinwheel" })
+            Assert.Contains(walked.Keys, m => m.Name == name);
+        Assert.Contains(MapNamed("PinwheelForest_Inside").Everyone, n => n.TrainerData?.Id == "unova_nursery_aide_ethel");
+        // the bridge itself stands on rails in Black 2, with no ground: its west gate leads nowhere yet
+        Assert.DoesNotContain(MapNamed("SkyarrowGate_Pinwheel").Warps, w => w.TargetMap.StartsWith("SkyarrowBridge", StringComparison.Ordinal) && w.TargetMap != "SkyarrowBridge_WestEnd" && !w.Shut);
     }
 }

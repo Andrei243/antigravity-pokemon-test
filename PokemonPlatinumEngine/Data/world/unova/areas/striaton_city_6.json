@@ -1,0 +1,27 @@
+{
+  "key": "striaton_city_6",
+  "index": 12,
+  "name": "Striaton City",
+  "matrix": 27,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_C_01",
+  "nightMusic": "BGM_C_01",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 10, "z": 2, "to": "striaton_city_5", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "nursery_aide", "movement": "none", "x": 13, "z": 3, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "3" },
+    { "id": "1", "looks": "gentleman", "movement": "none", "x": 7, "z": 7, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "1" },
+    { "id": "2", "looks": "18", "movement": "wander_around", "x": 10, "z": 6, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "2" }
+  ],
+  "signs": [],
+  "triggers": []
+}

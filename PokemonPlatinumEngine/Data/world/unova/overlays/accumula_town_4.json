@@ -1,0 +1,10 @@
+{
+  // A house of Accumula Town (plan 22 · U10, part f), Black 2's, our words
+  "area": "accumula_town_4",
+  "bgmTrack": "unova/aspertia",
+  "people": {
+    "0": { "name": "Woman", "npcType": "middle_aged_woman", "dialog": [ "The hill is steep, but the air up here is fresh." ] },
+    "1": { "name": "Poké Fan", "dialog": [ "My Pokémon loves the town's music. It dances whenever it hears a song." ] },
+    "2": { "name": "Little Boy", "npcType": "school_kid_m", "dialog": [ "I want to go to Nuvema and get a Pokémon from the professor!" ] }
+  }
+}

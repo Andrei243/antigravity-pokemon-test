@@ -211,6 +211,11 @@ public sealed class Bw2World
     {
         "overworld_2_map24_03", "overworld_2_map24_04", "overworld_2_map24_05",
         "overworld_2_map25_03", "overworld_2_map25_04", "overworld_2_map25_05",
+        // plan 22 · U10, part f: Pinwheel Forest's heart, whose plank bridges over its streams are a second grid
+        "pinwheel_forest_2_m_dun0201_00_00", "pinwheel_forest_2_m_dun0201_00_01", "pinwheel_forest_2_m_dun0201_00_02",
+        "pinwheel_forest_2_m_dun0201_01_00", "pinwheel_forest_2_m_dun0201_01_01", "pinwheel_forest_2_m_dun0201_01_02",
+        "pinwheel_forest_2_m_dun0201_02_00", "pinwheel_forest_2_m_dun0201_02_01", "pinwheel_forest_2_m_dun0201_02_02",
+        "pinwheel_forest_2_m_dun0201_03_00", "pinwheel_forest_2_m_dun0201_03_01", "pinwheel_forest_2_m_dun0201_03_02",
     };
 
     /// <summary>

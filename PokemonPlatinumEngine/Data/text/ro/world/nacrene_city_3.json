@@ -1,0 +1,140 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Librarian"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This is the museum's library. Every book here is about Unova's past."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "School Kid"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm reading about the dragon in the tower up north. It's a scary story."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "2": {
+      "name": {
+        "en": [
+          "Little Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm waiting for my brother. He reads so slowly!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "2": {
+      "en": [
+        "A book about Unova's founding. The two brothers and their dragon are on every page."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "3": {
+      "en": [
+        "A book about fossils. Rocks with shells in them, and rocks with bones."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "4": {
+      "en": [
+        "A book about the Skyarrow Bridge. It took years to build."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "5": {
+      "en": [
+        "A book about the old warehouses. The city once moved goods all over Unova."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "6": {
+      "en": [
+        "A book of paintings. Many are of Nacrene City."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "7": {
+      "en": [
+        "A book of old maps. Some of the roads have changed names."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "8": {
+      "en": [
+        "A book about meteorites. Some fell near the Giant Chasm."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "9": {
+      "en": [
+        "A book about Pokémon of the forest. The pictures are beautiful."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "10": {
+      "en": [
+        "A book of folk tales. The dragon of Dragonspiral Tower is in most of them."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "11": {
+      "en": [
+        "A book about museums. This one is in it, of course."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

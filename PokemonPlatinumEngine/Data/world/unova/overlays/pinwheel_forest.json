@@ -1,0 +1,20 @@
+{
+  // Pinwheel Forest's edge (plan 22 · U10, part f): Black 2's clearing south of Nacrene City, its trainers, balls and hidden
+  // things read by the importer, our words
+  "area": "pinwheel_forest",
+  "bgmTrack": "unova/lostlorn_forest",
+  "people": {
+    "5": { "name": "Kentaro", "trainer": { "dialogueBefore": "The forest is my dojo! Show me your fighting spirit!", "dialogueAfter": "My spirit wavered. Yours didn't." } },
+    "6": { "name": "Lee", "trainer": { "dialogueBefore": "I punch the air in the clearing every morning. Today I'll punch through you!", "dialogueAfter": "Well, the air never punched back." } },
+    "7": { "name": "Kelsey", "trainer": { "dialogueBefore": "Only strong Trainers make it this far into the forest. Are you one?", "dialogueAfter": "You're one, all right." } },
+    "8": { "name": "Kathrine", "trainer": { "dialogueBefore": "I came here to train in peace. A battle is a kind of peace too, right?", "dialogueAfter": "A very loud kind, it turns out." } },
+    "9": { "name": "Keston", "trainer": { "dialogueBefore": "We're on a school trip! I'm supposed to be studying bugs, but battling's more fun!", "dialogueAfter": "I'll go back to the bugs now." } },
+    "10": { "name": "Millie", "trainer": { "dialogueBefore": "Our teacher said to stay with the group. Battle me quickly before she notices!", "dialogueAfter": "She noticed. And I lost." } },
+    "11": { "name": "Battle Girl", "dialog": [ "Running round the clearing is my warm-up. The real training starts deeper in." ] },
+    "12": { "name": "Woman", "npcType": "middle_aged_woman", "dialog": [ "The trees grow so thick in the middle that the sun barely gets through. Mind you don't get lost." ] }
+  },
+  "signs": {
+    "1": "Pinwheel Forest\nThe great wood south of Nacrene City",
+    "2": "Trainer Tips\nThe forest's tall grass hides many Bug Pokémon. Bring plenty of Poké Balls!"
+  }
+}

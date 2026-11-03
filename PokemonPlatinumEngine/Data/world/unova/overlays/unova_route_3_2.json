@@ -1,0 +1,13 @@
+{
+  // The Pokémon Nursery on Route 3 (plan 22 · U10, part f), Black 2's, our words. Black 2's toys and objects are left out
+  "area": "unova_route_3_2",
+  "bgmTrack": "unova/route4",
+  "people": {
+    "0": { "name": "Nursery Aide", "dialog": [ "Welcome to the nursery! The children play while their parents train." ] },
+    "2": { "name": "Little Boy", "npcType": "school_kid_m", "dialog": [ "I'm building a tower of blocks! Don't knock it down!" ] },
+    "3": { "name": "Little Boy", "npcType": "school_kid_m", "dialog": [ "When I grow up I'll have six Pokémon!" ] },
+    "4": { "name": "Old Woman", "npcType": "old_woman", "dialog": [ "I volunteer here. The children keep me young." ] },
+    "5": { "name": "Twins", "npcType": "twin", "dialog": [ "We're playing hide and seek. Don't tell anyone where I am!" ] },
+    "9": { "name": "Nursery Aide", "dialog": [ "Naptime is at two. Please keep your voice down after then!" ] }
+  }
+}
