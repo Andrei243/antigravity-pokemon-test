@@ -600,7 +600,8 @@ public static class ScriptParser
             case "travel":
             {
                 // "travel go" is the crossing itself, over a script's dark (plan 18 · W5: common.Crossing)
-                string how = r.More ? r.OneOf("go", "to") : "";
+                // "travel where" and "travel others" are a harbour's question of where to sail (plan 18 · W8)
+                string how = r.More ? r.OneOf("go", "to", "where", "others") : "";
                 if (how != "to") return new Instruction { Op = Op.Travel, Line = line, Name = how };
                 // "travel to "BattleFrontier" 47 51 up": a crossing onto a tile of another region's map, by no vessel
                 // (plan 20 · J13, part d: Route 40's way to the Battle Frontier and back)

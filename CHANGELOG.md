@@ -5,6 +5,7 @@ What changes from one release to the next, for players. Every session's close-ou
 ## [Unreleased]
 
 ### Changed
+- Harbours sail both ways: once you are Champion of a region, the captain at its harbour (Canalave's pier, Vermilion's quay, Olivine's port hall, Lilycove's harbour, Mistralton's cargo hall) asks where you'd like to go, the next region or any region you have already been to, and takes your whole team there, landing you back at that region's own harbour.
 - Unova's lawns and streets no longer have pale squares with green corners in them: a patch of ground that only turns to snow in winter was drawn as snow all year in Aspertia City, on Route 19, in Floccesy Town, in Driftveil City and at the outlook.
 - Opelucid's and Humilau's Gym Leaders, the young Boss Trainer of the tournament's hall and the three brothers of Striaton's café now have looks of their own, in the field and in battle, where they had stood in another person's clothes.
 - Hoenn: the Seaside Cycling Road now stands on its deck over Route 110's sea, so its cyclists ride on planks instead of wading waist-deep; the Abandoned Ship's deck is planks instead of grey stone and lawn; the S.S. Tidal's cabins are walled by low steel bulkheads you can see over instead of tall beams that hid them; Mew's hiding place on Faraway Island stirs its grass; the roulette ball now comes to rest in its slot, and a one-coin table says “A BALL: 1 COIN”.

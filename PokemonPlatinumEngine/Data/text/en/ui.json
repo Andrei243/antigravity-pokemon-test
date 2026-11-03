@@ -4260,7 +4260,11 @@
     "congratulations": "Congratulations, Champion of {from}!",
     "notReady": "The {vessel} to {to} isn't ready to leave yet. Check back another time.",
     "ready": "Congratulations, Champion of {from}! The {vessel} to {to} is ready.",
-    "welcome": "Your Pokémon are welcome aboard, every one of them. All aboard!"
+    "welcome": "Your Pokémon are welcome aboard, every one of them. All aboard!",
+    "harbour": "Welcome, Champion of {from}! Our {vessel} sails on, and back to every region you've been to.",
+    "whereTo": "Where would you like to go?",
+    "otherRegions": "OTHER REGIONS",
+    "stay": "STAY"
   },
   "crossing": {
     "rivalName": "YOUR RIVAL'S NAME",

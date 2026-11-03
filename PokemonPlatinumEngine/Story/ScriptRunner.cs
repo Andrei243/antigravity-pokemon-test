@@ -47,6 +47,8 @@ public sealed partial class ScriptRunner
     private float waiting;
     private bool waitingForWalks;
     private Action? afterBusy;
+    // The region a harbour's question chose to sail to (plan 18 · W8), handed to the crossing at "travel go"
+    private string? travelPick;
     private BattleOutcome lastOutcome;
     private string lastItem = "";
 
@@ -1007,7 +1009,33 @@ public sealed partial class ScriptRunner
                 // script goes on in the region arrived in once the arrival's fade has opened
                 if (i.Name == "go")
                 {
-                    host.Open(ScriptScreen.Crossing, Subject);
+                    // A harbour's pick, where its question chose one (plan 18 · W8); the one way it sails otherwise
+                    host.Open(ScriptScreen.Crossing, Subject, travelPick);
+                    travelPick = null;
+                    break;
+                }
+                // "travel where" and "travel others": a harbour's question of where to sail (plan 18 · W8), the way on
+                // first, then the regions to go back to, and STAY last; beyond five the first step offers the way on
+                // and OTHER REGIONS, and "travel others" asks for the rest. RESULT is 1 with a region chosen, 2 for
+                // OTHER REGIONS and 0 for STAY
+                if (i.Name is "where" or "others")
+                {
+                    var ways = RegionDatabase.Get(host.Region) is { } harbour
+                        ? RegionDatabase.LinksFrom(harbour, story).Select(w => w.To).ToList()
+                        : new List<string>();
+                    bool twoSteps = ways.Count > RegionDatabase.HarbourAnswers;
+                    var offered = i.Name == "others" ? ways.Skip(1).ToList() : twoSteps ? ways.Take(1).ToList() : ways;
+                    bool more = i.Name == "where" && twoSteps;
+                    var answers = offered.Select(id => RegionDatabase.Get(id)!.Name).ToList();
+                    if (more) answers.Add(Text.Of("attendant.otherRegions"));
+                    answers.Add(Text.Of("attendant.stay"));
+                    host.Ask(speakerShown, Text.Of("attendant.whereTo"), answers, cancel: answers.Count - 1);
+                    afterBusy = () =>
+                    {
+                        int a = host.Answer;
+                        travelPick = a >= 0 && a < offered.Count ? offered[a] : null;
+                        Result = travelPick != null ? 1 : more && a == offered.Count ? 2 : 0;
+                    };
                     break;
                 }
                 // "travel to": into another region at a tile of its map, by the one way a region is crossed into

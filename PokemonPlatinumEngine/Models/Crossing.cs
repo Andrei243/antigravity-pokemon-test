@@ -80,7 +80,7 @@ public static class Crossing
     /// region with no Pokédex of its own is entered only by its badges or its Hall of Fame.
     /// </summary>
     public static bool HasEntered(Region region, StoryState story, IEnumerable<string> dexesEntered) =>
-        story.BadgeMask(region.Id) != 0 || story.IsRegionComplete(region.Id)
+        story.HasEntered(region.Id)
         || (region.Dex is { } dex && dexesEntered.Contains(dex));
 
     /// <summary>

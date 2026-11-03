@@ -860,7 +860,7 @@ public sealed class HeadlessScriptHost : IScriptHost
         // The way to the next region (plan 18 · W4, part b): played as the game plays it, so tests cross
         if (screen == ScriptScreen.Travel) Travel(subject);
         // The crossing itself, over the dark (plan 18 · W5)
-        if (screen == ScriptScreen.Crossing) Cross();
+        if (screen == ScriptScreen.Crossing) Cross(counter);
         // The Pokéathlon (plan 15 · E6): the place the test says, the points recorded as a course run would
         if (screen == ScriptScreen.Athlon && counter is "records" or "shop")
         {
@@ -921,10 +921,20 @@ public sealed class HeadlessScriptHost : IScriptHost
     private void Travel(NPC? subject)
     {
         if (RegionDatabase.Get(Region) is not { } here || RegionDatabase.LinkFrom(here.Id) is not { } link) return;
+        string? who = subject != null ? Named(Text.PersonName(subject.LinesPlace, subject.LinesKey, subject.Name)) : null;
+        Talks++;
+        // A harbour with ways back as well as on (plan 18 · W8): 3, and common.Crossing asks where
+        var ways = RegionDatabase.LinksFrom(here, Story);
+        if (ways.Count > 1)
+        {
+            Answer = 3;
+            foreach (string line in RegionDatabase.HarbourLines(here, ways)) Transcript.Add((who, Named(line)));
+            return;
+        }
+        if (ways.Count == 1 && ways[0] != link) link = ways[0];
         var check = RegionDatabase.CheckTravel(link, Story);
         Answer = check == TravelCheck.Ready ? 2 : 1;
-        Talks++;
-        foreach (string line in RegionDatabase.AttendantLines(link, check)) Transcript.Add((subject != null ? Named(Text.PersonName(subject.LinesPlace, subject.LinesKey, subject.Name)) : null, Named(line)));
+        foreach (string line in RegionDatabase.AttendantLines(link, check)) Transcript.Add((who, Named(line)));
     }
 
     /// <summary>
@@ -933,17 +943,21 @@ public sealed class HeadlessScriptHost : IScriptHost
     /// under option B), and the player put down on the next region's arrival, with its rival the one <c>{rival}</c> names.
     /// Where no way leads on now nothing happens.
     /// </summary>
-    private void Cross()
+    private void Cross(string? pick)
     {
-        if (RegionDatabase.Get(Region) is not { } here || RegionDatabase.LinkFrom(here.Id) is not { } link
-            || RegionDatabase.CheckTravel(link, Story) != TravelCheck.Ready) return;
+        // A harbour's pick (plan 18 · W8) or its one way; a region already entered is landed in at its harbour
+        if (RegionDatabase.Get(Region) is not { } here) return;
+        var ways = RegionDatabase.LinksFrom(here, Story);
+        var link = ways.FirstOrDefault(w => string.Equals(w.To, pick, StringComparison.OrdinalIgnoreCase)) ?? ways.FirstOrDefault();
+        if (link == null) return;
         Log.Add($"sound {RegionDatabase.CrossingSound(link)}");
         Transcript.Add((null, Named(RegionDatabase.VoyageLine(link))));
         BeganInRegion ??= here.Id;
 
         var to = RegionDatabase.Get(link.To)!;
+        var landing = RegionDatabase.LandingOf(to, Story);
         Log.Add($"travel {to.Id}");
-        CrossTo(here, to, to.ArrivalSpot!);
+        CrossTo(here, to, landing);
     }
 
     /// <summary>
@@ -961,6 +975,7 @@ public sealed class HeadlessScriptHost : IScriptHost
             Boxes.Add(member);
         }
         Crossings.Add(to.Id);
+        Story.EnterRegion(to.Id);
         if (MapNamed?.Invoke(spot.Map) is { } target)
         {
             Map = target;

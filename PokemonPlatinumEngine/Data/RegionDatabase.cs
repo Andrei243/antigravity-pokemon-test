@@ -40,10 +40,26 @@ public sealed class Region
     /// <summary>The story flag set when the player enters this region's Hall of Fame, which ends its story.</summary>
     public string StoryCompleteFlag => $"{Id}HallOfFame";
 
+    /// <summary>
+    /// The story flag set when the player first stands in this region (plan 18 · W8): by a new game begun here, by every
+    /// crossing into it, and for the region an older save is in as it loads. <c>StoryState.HasEntered</c> also counts a
+    /// badge of the region or its Hall of Fame, so a save from before the flag needs nothing more.
+    /// </summary>
+    public string EnteredFlag => $"{Id}Entered";
+
     /// <summary>True once the region has maps to play in.</summary>
     public bool IsBuilt => Start != null;
 
     public MapSpot? ArrivalSpot => Arrival ?? Start;
+
+    /// <summary>
+    /// The region's harbour (plan 18 · W8): the tile beside its departure's attendant where every way back into the
+    /// region lands, facing the attendant. Null for a region with no departure yet, whose returns land on its arrival.
+    /// </summary>
+    public MapSpot? Harbour { get; init; }
+
+    /// <summary>Where a return to the region lands: its <see cref="Harbour"/>, or its arrival where it has none.</summary>
+    public MapSpot? HarbourSpot => Harbour ?? ArrivalSpot;
 
     /// <summary>What the region's file holds (plan 18 · W1); null for a region with no file yet.</summary>
     public RegionFile? File { get; init; }
@@ -208,6 +224,8 @@ public static class RegionDatabase
             Id = Sinnoh, Name = "Sinnoh", Generation = 4, File = RegionFiles.Load(Sinnoh),
             // In the player's room upstairs at home in Twinleaf Town, facing the television, as in Platinum (plan 02 · S4)
             Start = new MapSpot("PlayerHouse2F", 4, 6, Direction.Up),
+            // Its harbour (plan 18 · W8): on Canalave's pier, beside the captain who waits there once its Hall of Fame is entered
+            Harbour = new MapSpot("Sinnoh", 44, 751, Direction.Right),
             Maps = new[]
             {
                 // The imported world: the overworld, and the places that are matrices of their own
@@ -396,6 +414,8 @@ public static class RegionDatabase
             // Champion come across from Sinnoh steps out before the player's house in Pallet Town, on the overworld
             Start = new MapSpot("PalletTown_PlayersHouse_2F", 6, 6, Direction.Up),
             Arrival = new MapSpot("Kanto", 66, 268, Direction.Down),
+            // Its harbour (plan 18 · W8): on Vermilion City's quay, before the captain
+            Harbour = new MapSpot("Kanto", 301, 229, Direction.Down),
             Maps = new[]
             {
                 "Kanto",
@@ -508,6 +528,8 @@ public static class RegionDatabase
             // own overworld, Johto and Kanto on one grid
             Start = new MapSpot("NewBark_PlayersHouse_2F", 4, 9, Direction.Up),
             Arrival = new MapSpot("Johto", 695, 397, Direction.Down),
+            // Its harbour (plan 18 · W8): in Olivine's port hall, before the sailor at the quay's door
+            Harbour = new MapSpot("Olivine_PortHall", 7, 8, Direction.Down),
             Maps = new[]
             {
                 "Johto",
@@ -645,6 +667,8 @@ public static class RegionDatabase
             // the family's door, Emerald's spot for a white-out at home
             Start = new MapSpot("Hoenn", 123, 292, Direction.Right),
             Arrival = new MapSpot("Hoenn", 125, 291, Direction.Down),
+            // Its harbour (plan 18 · W8): on the quay of Lilycove City's harbour, before the captain
+            Harbour = new MapSpot("LilycoveCity_Harbor", 7, 11, Direction.Up),
             Maps = new[]
             {
                 "Hoenn",
@@ -800,6 +824,8 @@ public static class RegionDatabase
             // house in Aspertia City (its story is plan 22 · U4's); a Champion come across stands before the house's door
             Start = new MapSpot("AspertiaCity_PlayersHouse", 14, 5, Direction.Down),
             Arrival = new MapSpot("Unova", 47, 762, Direction.Down),
+            // Its harbour (plan 18 · W8): before the airline's attendant in the east wing of Mistralton City's cargo hall
+            Harbour = new MapSpot("MistraltonCity_CargoHall", 23, 16, Direction.Up),
             Maps = new[]
             {
                 "Unova",
@@ -1063,6 +1089,47 @@ public static class RegionDatabase
 
     /// <summary>The way on from a region to the next one, or null for the last region.</summary>
     public static RegionLink? LinkFrom(string regionId) => Chain.LinkFrom(regionId);
+
+    /// <summary>
+    /// Every way a region's harbour sails now (plan 18 · W8, decision 9 (a), answered 2026-11-03): nothing before the
+    /// region's Hall of Fame; after it the way on first (where the next region is built), then a way back to every other
+    /// region the player has entered (<see cref="StoryState.HasEntered"/>) and that has maps, in the chain's order. A way
+    /// back is the harbour's own vessel (its link's transport, vessel and departure) to the other region. Nobody leaves a
+    /// region before its Hall of Fame, so every way back lands in a region whose story is over or still ahead of the player.
+    /// </summary>
+    public static IReadOnlyList<RegionLink> LinksFrom(Region region, StoryState story)
+    {
+        var ways = new List<RegionLink>();
+        if (!story.Has(region.StoryCompleteFlag) || LinkFrom(region.Id) is not { } onward) return ways;
+        if (Get(onward.To) is { IsBuilt: true }) ways.Add(onward);
+        foreach (var other in All)
+        {
+            if (other == region || !other.IsBuilt || ways.Any(w => string.Equals(w.To, other.Id, StringComparison.OrdinalIgnoreCase))) continue;
+            if (!story.HasEntered(other.Id)) continue;
+            ways.Add(new RegionLink
+            {
+                From = region.Id, To = other.Id, Transport = onward.Transport, Vessel = onward.Vessel, DepartureMap = onward.DepartureMap
+            });
+        }
+        return ways;
+    }
+
+    /// <summary>The most answers a harbour's question shows besides STAY before it asks in two steps (the field's <c>ChoiceBox</c> holds six).</summary>
+    public const int HarbourAnswers = 5;
+
+    /// <summary>
+    /// Where a crossing along a link lands (plan 18 · W8): a region already entered on its <see cref="Region.Harbour"/>
+    /// (a return), and one never entered on its arrival, as W4's first crossing did.
+    /// </summary>
+    public static MapSpot LandingOf(Region to, StoryState story) => story.HasEntered(to.Id) ? to.HarbourSpot! : to.ArrivalSpot!;
+
+    /// <summary>What the attendant of a harbour with more than one way says before asking where (plan 18 · W8).</summary>
+    public static List<string> HarbourLines(Region from, IReadOnlyList<RegionLink> ways)
+    {
+        var onward = ways[0];
+        string vessel = Core.Text.Of($"attendant.vessel.{onward.VesselWord}");
+        return new() { Core.Text.Of("attendant.harbour", ("from", from.Name), ("vessel", vessel)) };
+    }
 
     /// <summary>Whether the player may take a link now, given what they have done.</summary>
     public static TravelCheck CheckTravel(RegionLink link, StoryState progress)

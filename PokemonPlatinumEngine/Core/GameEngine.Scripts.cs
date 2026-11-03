@@ -1325,9 +1325,21 @@ public partial class GameEngine
                     // the script hears 2 when the story of this region is done and the vessel may leave (plan 18 · W5:
                     // common.Crossing asks, and crosses with "travel go"), 1 when it may not
                     if (RegionDatabase.RegionOfMap(game.flow.Map.Name) is not { } here || RegionDatabase.LinkFrom(here.Id) is not { } link) break;
+                    string who = subject == null ? "" : Text.PersonName(subject.LinesPlace, subject.LinesKey, subject.Name);
+                    // A harbour with ways back as well as on (plan 18 · W8): 3, and common.Crossing asks where
+                    var ways = RegionDatabase.LinksFrom(here, game.flow.Story);
+                    if (ways.Count > 1)
+                    {
+                        game.flow.ScriptAnswer = 3;
+                        game.flow.Dialogue.ShowDialogue(who, RegionDatabase.HarbourLines(here, ways));
+                        game.flow.State = GameState.Dialogue;
+                        break;
+                    }
+                    // A Hall of Fame whose next region isn't built yet, with one region entered to sail back to
+                    if (ways.Count == 1 && ways[0] != link) link = ways[0];
                     var check = RegionDatabase.CheckTravel(link, game.flow.Story);
                     game.flow.ScriptAnswer = check == TravelCheck.Ready ? 2 : 1;
-                    game.flow.Dialogue.ShowDialogue(subject == null ? "" : Text.PersonName(subject.LinesPlace, subject.LinesKey, subject.Name), RegionDatabase.AttendantLines(link, check));
+                    game.flow.Dialogue.ShowDialogue(who, RegionDatabase.AttendantLines(link, check));
                     game.flow.State = GameState.Dialogue;
                     break;
                 }
@@ -1336,12 +1348,16 @@ public partial class GameEngine
                     // The journey on screen (plan 18 · W5), over the script's dark: the field's music stops, the vessel
                     // is heard and its one line is said, and as the line is put away the crossing is made; the script
                     // waits through the arrival's own fade. Where no way leads on now nothing happens
-                    if (RegionDatabase.RegionOfMap(game.flow.Map.Name) is not { } here || RegionDatabase.LinkFrom(here.Id) is not { } link
-                        || RegionDatabase.CheckTravel(link, game.flow.Story) != TravelCheck.Ready) break;
+                    // A harbour's pick (plan 18 · W8) or its one way; a region already entered is landed in at its harbour
+                    if (RegionDatabase.RegionOfMap(game.flow.Map.Name) is not { } here) break;
+                    var ways = RegionDatabase.LinksFrom(here, game.flow.Story);
+                    var link = ways.FirstOrDefault(w => string.Equals(w.To, counter, StringComparison.OrdinalIgnoreCase)) ?? ways.FirstOrDefault();
+                    if (link == null) break;
                     var to = RegionDatabase.Get(link.To)!;
+                    var landing = RegionDatabase.LandingOf(to, game.flow.Story);
                     AudioManager.StopMusic();
                     AudioManager.PlaySound(RegionDatabase.CrossingSound(link));
-                    game.flow.Dialogue.ShowDialogue("", new[] { RegionDatabase.VoyageLine(link) }, () => game.TravelTo(to));
+                    game.flow.Dialogue.ShowDialogue("", new[] { RegionDatabase.VoyageLine(link) }, () => game.CrossTo(to, landing));
                     game.flow.State = GameState.Dialogue;
                     break;
                 }

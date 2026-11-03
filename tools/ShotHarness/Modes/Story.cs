@@ -693,5 +693,44 @@ partial class Harness
         engine.Settings.FieldHelpers = helpersBefore;
         engine.Settings.Tips = tipsBefore;
         Frames(2);
+
+        // ---- the harbours both ways (plan 18 · W8), the very last so that nothing before it moves: Canalave's captain
+        // with two ways open (Kanto on, already entered by W5's crossing above, and Johto, its flag forced), his question
+        // shot and left with STAY; then Kanto's Hall of Fame forced and Vermilion's captain sailing back to Sinnoh, the
+        // return landing on Canalave's pier under its sign. The forced flags are cleared after. It prints the answers
+        // offered and where the return landed
+        var johtoEntered = RegionDatabase.Get(RegionDatabase.Johto)!.EnteredFlag;
+        var kantoDone = RegionDatabase.Get(RegionDatabase.Kanto)!.StoryCompleteFlag;
+        bool johtoWas = story.Has(johtoEntered), kantoWas = story.Has(kantoDone);
+        story.Set(johtoEntered);
+        At("Sinnoh", 44, 751, Direction.Right);
+        Frames(10);
+        Talk();
+        ReadOn();
+        Whole(); Until(() => engine.Choice.IsOpen, "the harbour's question"); Frames(20); Shot("st45_harbour_where_to");
+        Console.WriteLine($"harbour: Canalave offers {string.Join(", ", engine.Choice.Options)}");
+        engine.Choice.Move(engine.Choice.Options.Count - 1); engine.Choice.Confirm(); Frames(4);
+        ReadOn();
+        Until(() => !engine.ScriptRunning && State() == GameState.Overworld, "the captain's goodbye", 300);
+
+        story.Set(kantoDone);
+        var kantoHarbour = RegionDatabase.Get(RegionDatabase.Kanto)!.Harbour!;
+        At(kantoHarbour.Map, kantoHarbour.X, kantoHarbour.Y, kantoHarbour.Facing);
+        Frames(10);
+        Talk();
+        ReadOn();
+        Whole(); Until(() => engine.Choice.IsOpen, "Vermilion's question");
+        Console.WriteLine($"harbour: Vermilion offers {string.Join(", ", engine.Choice.Options)}");
+        engine.Choice.Move(engine.Choice.Options.ToList().IndexOf("Sinnoh")); engine.Choice.Confirm(); Frames(4);
+        ReadOn();
+        Until(() => Box().IsActive && game.ScriptFade.Level >= 1f, "the line over the dark", 300);
+        Whole(); Next();
+        Until(() => !engine.ScriptRunning && State() == GameState.Overworld, "the return", 900);
+        Frames(30); Shot("st46_harbour_back_in_sinnoh");
+        Console.WriteLine($"harbour: returned to {engine.Here.Id} on {game.Map.Name} {game.Player.GridX},{game.Player.GridY}, " +
+            $"the team {team.Count}, the sign \"{game.LocationSign.Name}\"");
+        if (!johtoWas) story.Unset(johtoEntered);
+        if (!kantoWas) story.Unset(kantoDone);
+        Frames(2);
     }
 }

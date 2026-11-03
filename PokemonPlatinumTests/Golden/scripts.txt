@@ -3894,6 +3894,7 @@ way 0
   * fade out
   * travel to Johto Fuchsia_PalParkGate 7 17
   * fade in
+  + JohtoEntered
 way 1, from answer 1
   Kanto Attendant> Take your time. I'll be here whenever you'd like to go back.
   ? Shall I take you back to Fuchsia City? = No
@@ -7689,6 +7690,7 @@ way 0
   * fade out
   * travel to Hoenn LilycoveCity_Harbor 12 12
   * fade in
+  + HoennEntered
 way 1, from answer 1
   Guide> Take your time. The ferry waits for those who have Scott's pass.
   ? Shall I take you back to Lilycove City? = No
@@ -7703,6 +7705,7 @@ way 0
   * fade out
   * travel to Johto Route40_FrontierGate 5 4
   * fade in
+  + JohtoEntered
 way 1, from answer 1
   Guide> Take your time. I'll be here whenever you'd like to go back.
   ? Shall I take you back along the road to Route 40? = No
@@ -8030,6 +8033,7 @@ way 0
   * travel to Sinnoh BattleFrontier 47 51
   * fade in
   + FLAG_RECEIVED_SCOTTS_BATTLE_POINTS
+  + SinnohEntered
 way 1, from answer 1
   Scott> Whenever you're ready. I'll be here.
   ? Shall I take you to the Battle Frontier in Sinnoh? = No
@@ -20281,6 +20285,7 @@ way 0
   * travel to Sinnoh BattleFrontier 47 51
   * fade in
   + FLAG_RECEIVED_FRONTIER_PASS
+  + SinnohEntered
 way 1, from answer 1
   Scott> No hurry. The Frontier will still be there when you are ready.
   ? Shall we sail for the Battle Frontier now? = No

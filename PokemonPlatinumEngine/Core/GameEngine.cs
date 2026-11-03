@@ -467,6 +467,8 @@ public partial class GameEngine
         ResetTheSkip();
         flow.Story.Clear();
         StoryMigration.BeginNewGame(flow.Story, flow.Scripts);
+        // The region begun in is entered (plan 18 · W8)
+        flow.Story.EnterRegion(NewGameRegionRecord.Id);
         RefreshPresence(startOver: true);
         flow.Evolutions.Clear();
         flow.FriendshipSteps = 0;
@@ -765,6 +767,9 @@ public partial class GameEngine
         flow.CameraSent = false;
         flow.Story.Restore(save.ToStory());
         StoryMigration.Upgrade(flow.Story, save.StoryVersion, flow.Party.Members.Concat(flow.Boxes.All), flow.Scripts, flow.Bag);
+        // The region the save stands in is entered, which an older save never noted (plan 18 · W8; no version: the
+        // regions it crossed out of are counted by their Halls of Fame, StoryState.HasEntered)
+        flow.Story.EnterRegion(Here.Id);
         flow.Story.RestoreGreetings(save.GreetedPeople);
         flow.Story.RestoreScenes(save.ScenesSeen);
         AudioManager.SetHeard(save.Heard);
@@ -2630,6 +2635,8 @@ public partial class GameEngine
     {
         GiveIds();
         Crossing.Depart(flow.Party, flow.Boxes, region, flow.Story);
+        // The region is entered, and its harbour sails back to it from every other's from now on (plan 18 · W8)
+        flow.Story.EnterRegion(region.Id);
         PlayAreaMusic(MapDatabase.Get(spot.Map), spot.X, spot.Y);
         StartTransition(GameState.Overworld, () =>
         {
