@@ -379,7 +379,8 @@ public static class Broadcasts
     {
         int c = Math.Clamp(f.ContestLadyShow - 1, 0, Models.ContestLady.Species.Length - 1);
         string mon = LocalNames.Species(Models.ContestLady.Species[c]);
-        string quality = Text.Of($"contest.category.{(Models.ContestStat)c}");
+        var stat = (Models.ContestStat)c;
+        string quality = Text.Of($"contest.category.{stat}");
         return new[]
         {
             Text.Of("broadcast.contestLady.open"),

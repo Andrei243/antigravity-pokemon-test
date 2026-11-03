@@ -485,9 +485,9 @@ public static partial class SoundBank
                 return Finish(d.S, 0.34f);
             case "contest_cheer":
                 // A crowd's applause: a bed of soft noise clapping irregularly, a whoop gliding up over it
-                d = new SoundDesign(1.1f, 0xC0A2u);
-                d.Noise(0, 1.05f, Filter.Band, 1800f, 1500f, 0.22f, 0.9f, 0.1f, 1.6f, 13f, 0.6f);
-                d.Crackle(0, 0.95f, 34, 2400f, 0.32f);
+                d = new SoundDesign(0.98f, 0xC0A2u);
+                d.Noise(0, 0.94f, Filter.Band, 1800f, 1500f, 0.22f, 0.9f, 0.1f, 1.6f, 13f, 0.6f);
+                d.Crackle(0, 0.86f, 30, 2400f, 0.32f);
                 d.Tone(0.12f, 0.42f, Wave.Triangle, 520f, 980f, 0.18f, 0.08f, 1.6f, 0.5f, 6f, 0.02f);
                 return Finish(d.S, 0.4f);
             case "contest_groan":

@@ -120,7 +120,7 @@ internal static class HoennArt
         var parts = model.Split(':');
         int quality = parts.Length > 1 && int.TryParse(parts[1], out int q) ? q : 0;
         string colour = parts.Length > 2 ? parts[2] : "gray";
-        var face = kit.Face($"contest.painting.{quality}.{colour}", 56, 30, c => PaintContestPainting(c, quality, colour));
+        var face = kit.Face($"hoenn.painting.{quality}.{colour}", 56, 30, c => PaintContestPainting(c, quality, colour));
         kit.Card(4, 60, 32.5f, 36, 66, face);
     }
 
