@@ -14,7 +14,9 @@
   "running": true,
   "escapeRope": false,
   "fly": false,
-  "warps": [],
+  "warps": [
+    { "x": 172, "z": 174, "to": "reflection_cave", "toWarp": 0 }
+  ],
   "objects": [
     { "id": "battle_girl", "looks": "battle_girl", "movement": "look_west", "x": 170, "z": 186, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_BATTLE_GIRL_ELODIE" },
     { "id": "black_belt", "looks": "black_belt", "movement": "look_east", "x": 158, "z": 165, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 6, "script": "TRAINER_BLACK_BELT_GUSTAVE" },

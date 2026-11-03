@@ -908,6 +908,10 @@ public static class RegionDatabase
                 "GeosengeTown_PokemonCenter_1F", "GeosengeTown_NorthwestHouse", "GeosengeTown_EastHouse",
                 "ShalourCity_PokemonCenter_1F", "ShalourCity_Gym", "ShalourCity_TowerOfMastery",
                 "ShalourCity_SouthwestHouse", "ShalourCity_SoutheastHouse",
+                // Plan 23 · Z3, second part: the two caves, maps of their own (tools/MapDraw's layout "maps"), and Ambrette Town's rooms
+                "ReflectionCave", "GlitteringCave",
+                "AmbretteTown_PokemonCenter_1F", "AmbretteTown_WestHouse", "AmbretteTown_Aquarium", "AmbretteTown_Cottage",
+                "CoumarineCity_PokemonCenter_1F", "CoumarineCity_GardenHouse", "CoumarineCity_EastHouse",
             }
         },
         new() { Id = Alola, Name = "Alola", Generation = 7 },

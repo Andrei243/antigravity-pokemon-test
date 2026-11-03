@@ -1,0 +1,46 @@
+{
+  // Route 9, the Coast Road (plan 23 · Z3, second part): drawn by hand, our words. East out of Ambrette Town along the
+  // south coast between tall grass and the sea, with the mouth of Glittering Cave on its north side, and on as Route 12
+  // to Coumarine City. It plays Route 2's song until plan 31 writes it its own
+  "area": "kalos_route_9",
+  "bgmTrack": "kalos/route2",
+  "trees": "Round",
+  "architecture": "Cyllage",
+  "people": {
+    "lass": {
+      "name": "Clémence",
+      "npcType": "Lass",
+      "trainer": {
+        "dialogueBefore": "Lass Clémence: I come out to the coast every weekend. The sea air is good for Pokémon!",
+        "dialogueAfter": "Lass Clémence: Well, that was bracing."
+      }
+    },
+    "youngster": {
+      "name": "Basile",
+      "npcType": "Youngster",
+      "trainer": {
+        "dialogueBefore": "Youngster Basile: I've been waiting here all morning for someone to battle. Finally!",
+        "dialogueAfter": "Youngster Basile: Should've waited for an easier challenger."
+      }
+    },
+    "backpacker": {
+      "name": "Odile",
+      "npcType": "backpacker_m",
+      "trainer": {
+        "dialogueBefore": "Backpacker Odile: I've walked half of Kalos with this pack. My Pokémon have, too!",
+        "dialogueAfter": "Backpacker Odile: My feet are sore and my pride is, too."
+      }
+    },
+    "fisherman": {
+      "name": "Loïc",
+      "npcType": "Fisherman",
+      "trainer": {
+        "dialogueBefore": "Fisherman Loïc: The fish aren't biting, so I'll take a battle instead!",
+        "dialogueAfter": "Fisherman Loïc: Even the fish would have given me more of a fight."
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": "Route 9 · Coast Road\nWest: Ambrette Town\nEast: Route 12"
+  }
+}

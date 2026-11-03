@@ -1,0 +1,46 @@
+{
+  "key": "kalos_route_9",
+  "index": 20,
+  "name": "Route 9",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "ROUTE_9",
+  "nightMusic": "ROUTE_9",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 168, "z": 474, "to": "glittering_cave", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "lass", "looks": "lass", "movement": "look_south", "x": 152, "z": 481, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_LASS_CLEMENCE" },
+    { "id": "youngster", "looks": "youngster", "movement": "look_north", "x": 172, "z": 487, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_YOUNGSTER_BASILE" },
+    { "id": "backpacker", "looks": "backpacker", "movement": "look_south", "x": 196, "z": 480, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_BACKPACKER_ODILE" },
+    { "id": "fisherman", "looks": "fisherman", "movement": "look_north", "x": 158, "z": 489, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_FISHERMAN_LOIC" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 176, "z": 478, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_ROUTE_9_SUPER_POTION", "item": "Super Potion", "script": "" }
+  ],
+  "signs": [
+    { "x": 148, "z": 481, "type": 0, "script": "RouteSign" }
+  ],
+  "triggers": [],
+  "land": [
+    { "species": "Skiddo", "level": 17 },
+    { "species": "Pancham", "level": 17 },
+    { "species": "Mienfoo", "level": 17 },
+    { "species": "Wingull", "level": 17 },
+    { "species": "Spoink", "level": 18 },
+    { "species": "Slowpoke", "level": 18 },
+    { "species": "Staravia", "level": 18 },
+    { "species": "Inkay", "level": 18 },
+    { "species": "Clauncher", "level": 18 },
+    { "species": "Skrelp", "level": 18 },
+    { "species": "Hawlucha", "level": 19 },
+    { "species": "Pancham", "level": 19 }
+  ],
+  "landRate": 20
+}

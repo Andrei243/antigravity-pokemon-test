@@ -8605,6 +8605,46 @@ Drawn as Z1 and Z2 were (`tools/MapDraw/kalos`: `kalos_route_10.txt`, `geosenge_
 - **The Town Map and Fly**: the four places are blocks of `townmap.json`, and Fly lands before Geosenge's (spawn 6) and
   Shalour's (spawn 7) Pokémon Centers once each town has been come to.
 
+## The coast road, two caves and Coumarine City, drawn by hand (2026-11-03, plan 23 · Z3, second part)
+
+Drawn as the first part was (`tools/MapDraw/kalos`: `kalos_route_8_south.txt`, `ambrette_town.txt`, `kalos_route_9.txt`,
+`kalos_route_12.txt`, `coumarine_city.txt`, `reflection_cave.txt`, `glittering_cave.txt`), every word ours.
+
+- **Caves are maps of their own in a drawn region.** `layout.json`'s `maps` list a drawing set on a grid of its own
+  (`MapDrawing`: a matrix number, its size in chunks, its one area, a `cell` of the overworld for the Pokédex's area page),
+  written as its own matrix beside the overworld's with chunk ids that go on after the overworld's. Where nothing is drawn
+  is rock (`Fill`, `r`). The legend gained `c` (cave floor, a tile that rolls the area's wild Pokémon), `r` (rock,
+  blocked), `M` (a cave's mouth on the open ground outside: taken walking north) and `m` (the way out of a cave: taken
+  walking south, so whoever comes in stands one step inside and whoever goes out one step outside, as `World.Arrival`
+  puts them). A cave is two areas joined by their warps' `to` and `toWarp`, like Hoenn's: Route 11's and Route 9's areas
+  each have a warp on the mouth, the cave's area has one on its way out, and `world.json` lists the cave as a map with
+  `"setting": "Cave"` and the area in its `areas`. The caves are lit (no Flash: Kalos has no such move) and play
+  Santalune Forest's song until plan 31 writes a cave song.
+- **Reflection Cave** is a dead end off Route 11 (a corridor, a long hall with two still pools, a west pocket and a north
+  chamber), the original's way north through a cave of mirrors becoming an optional place beside the open road: Shalour is
+  reached in the open as before. **Glittering Cave** is a dead end off Route 9 (a corridor, a great chamber with pillars, a
+  west pocket and a north chamber). Wild Pokémon 18 to 20 and 20 to 22, with Sableye, Mawile and Carbink in one and Magnemite,
+  Onix and a rare Klefki or Skarmory in the other, two trainers each and an item ball or two.
+- **The Connecting Cave** between Route 7 and Route 8 is not built: the two routes already join in the open (Route 7 comes
+  down to Route 8's north stretch), so it would be a second way for nothing. It stays on the list, where the plan says
+  what would add it.
+- **Route 8's rockfall is gone**: its path runs on south past three more trainers to Ambrette Town, a town on a bay with a
+  pier, a Pokémon Center (with the Mart's counter), an aquarium, a house and a cottage. X and Y's fossil laboratory is not
+  built: no fossil of Kalos is among the game's items, so there is nothing to revive.
+- **Route 9** runs east along the south coast with four trainers and Glittering Cave's mouth; **Route 12** goes on east
+  between flower beds with three trainers (levels 20 to 22) to **Coumarine City**, a garden city with a Pokémon Center
+  (spawn 9), two houses and a shut Gym (`locked`; its Leader and his Badge, Kalos's fourth, are a later part of Z3). Route
+  8's wild table was already Kalos-Coastal's; Route 9's and 12's are Kalos-Central's and Kalos-Coastal's at 17 to 19 and 20
+  to 22.
+- **Looks**: Ambrette and Coumarine build as `Cyllage`, the coastal stone, so no new `Architecture` row.
+- **The Town Map and Fly**: Ambrette (spawn 8) and Coumarine (spawn 9) are blocks and Fly places; Route 12's cells are
+  shared with Route 9's and Coumarine's, so it has no block of its own.
+- **What the first part's shots showed** (`kalos` mode, `KALOS_FROM=coast`): the Tower of Mastery was a twelve-tile hall
+  with its stages out of the picture, a low flat roof from the street; it is seven tiles wide now, the door in the middle,
+  and `wk118b` (the lens zoomed out beside it) shows the stepped stone stages and their purple cap. Trevor's trigger in
+  Geosenge was thirteen tiles from him, so the scene began with nobody in the picture; it is seven tiles now. The lens
+  has a floor of 0.5: a shot that asks for less gets nothing.
+
 ## How the player moves, region by region (2026-11-02, plan 30 · FM1)
 
 Not Platinum's: Platinum and every game before X and Y walk four ways a tile at a time (`src/player_move.c`), and

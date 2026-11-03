@@ -98,6 +98,37 @@ public class KalosTests
     }
 
     [Fact]
+    public void ACaveDrawnAsAMapOfItsOwnIsItsOwnMatrixWithChunksAfterTheOverworlds()
+    {
+        // Plan 23 · Z3, second part: a layout's maps are drawn beside the overworld, each its own matrix, its rock where
+        // nothing is drawn, its floor wild ground and its way in and out told by the tiles' behaviours
+        var layout = new MapDraw.Layout
+        {
+            Region = "Test", Width = 1, Height = 1,
+            Areas = { new MapDraw.AreaRect { Key = "here", X = 0, Z = 0, Width = 32, Depth = 32 } },
+            Maps = { new MapDraw.MapDrawing { Matrix = 1, Width = 1, Height = 1, Area = "cave", Cell = "0,0" } }
+        };
+        var overworld = new MapDraw.Piece { File = "o.txt", X = 0, Z = 0 };
+        var cave = new MapDraw.Piece { File = "c.txt", X = 1, Z = 1 };
+        var world = MapDraw.Drawing.Build(layout, new[] { (overworld, new[] { "M." }) },
+            new IReadOnlyList<(MapDraw.Piece, string[])>[] { new[] { (cave, new[] { "rcr", "cmc" }) } });
+        Assert.Equal(2, world.Chunks.Count);
+        Assert.Equal(1, world.Maps!.Single().Id);
+        Assert.Equal(1, world.Maps!.Single().ChunkAt(0, 0));
+        var outside = world.Chunks[0];
+        Assert.Equal(TileBehavior.EntranceNorth, outside.BehaviourAt(0, 0));
+        Assert.Equal(TerrainCover.CaveMouth, outside.CoverAt(0, 0));
+        var inside = world.Chunks[1];
+        Assert.True(inside.SolidAt(1, 1));                                   // rock
+        Assert.False(inside.SolidAt(2, 1));
+        Assert.Equal(TileBehavior.CaveFloor, inside.BehaviourAt(2, 1));
+        Assert.Equal(TileBehavior.EntranceSouth, inside.BehaviourAt(2, 2));  // the way out is taken walking south
+        Assert.True(inside.SolidAt(0, 0));                                   // where nothing is drawn, rock
+        Assert.Equal(TerrainCover.Rock, inside.CoverAt(0, 0));
+        Assert.Equal("0,0", world.Cells!["cave"]);
+    }
+
+    [Fact]
     public void VanivilleRouteOneAndAquacordeAreOpenWithTheirHousesSongsAndSigns()
     {
         Assert.Equal(Areas, Kalos.Index.Areas.Take(Areas.Length));
@@ -362,8 +393,8 @@ public class KalosTests
         Assert.True(Reached("CyllageCity_Gym", 6, 5), "Grant's place");
         Assert.True(Reached("CamphrierTown_Castle", 7, 6), "the castle's hall");
         Assert.True(Reached("LumioseCity_Boutique", 7, 7), "the boutique's counter");
-        // Route 8's coast path south to Ambrette is shut by a rockfall until plan 23 · Z3
-        Assert.False(Reached("Kalos", 103, 423), "Route 8 beyond the rockfall");
+        // Route 8's coast path south to Ambrette was shut by a rockfall until plan 23 · Z3, second part
+        Assert.True(Reached("Kalos", 103, 423), "Route 8 past the old rockfall");
     }
 
     [Fact]
@@ -459,6 +490,120 @@ public class KalosTests
         Assert.True(Reached("ShalourCity_TowerOfMastery", 7, 8), "the tower's hall");
         Assert.True(Reached("ShalourCity_Gym", 6, 5), "Korrina's place");
         Assert.True(Reached("GeosengeTown_PokemonCenter_1F", 8, 6), "Geosenge's Pokémon Center");
+    }
+
+    [Fact]
+    public void RouteEightRunsOnSouthToAmbretteTownAndRouteNineEastWithTheirRoomsTrainersAndPokemon()
+    {
+        foreach (var (x, y, name) in new[] { (103, 440, "Route 8"), (103, 478, "Ambrette Town"), (170, 483, "Route 9"), (220, 483, "Route 12"), (250, 483, "Coumarine City") })
+            Assert.Equal(name, Overworld.DisplayNameAt(x, y));
+        Assert.Equal(Architecture.Cyllage, Overworld.ArchitectureAt(103, 478));
+        // The rockfall that shut Route 8 is gone: its path runs on south through the town to the pier
+        for (int z = 415; z < 496; z++) Assert.True(Overworld.IsWalkable(103, z), $"the way south is shut at {z}");
+        Assert.Equal("AmbretteTown_WestHouse", Overworld.GetWarpAt(89, 474)?.TargetMap);
+        Assert.Equal("AmbretteTown_PokemonCenter_1F", Overworld.GetWarpAt(97, 474)?.TargetMap);
+        Assert.Equal("AmbretteTown_Aquarium", Overworld.GetWarpAt(114, 474)?.TargetMap);
+        Assert.Equal("AmbretteTown_Cottage", Overworld.GetWarpAt(115, 491)?.TargetMap);
+        // Coumarine City: its Pokémon Center and two houses open, its Gym shut until a later part of plan 23 · Z3
+        Assert.Equal("CoumarineCity_PokemonCenter_1F", Overworld.GetWarpAt(243, 472)?.TargetMap);
+        Assert.Equal("CoumarineCity_GardenHouse", Overworld.GetWarpAt(253, 472)?.TargetMap);
+        Assert.Equal("CoumarineCity_EastHouse", Overworld.GetWarpAt(280, 472)?.TargetMap);
+        Assert.Null(Overworld.GetWarpAt(268, 472));
+        Assert.Contains(MapNamed("CoumarineCity_PokemonCenter_1F").NPCs, n => n.IsHealingNurse);
+        Assert.Contains(MapNamed("CoumarineCity_PokemonCenter_1F").NPCs, n => n.IsPokeMartClerk);
+        Assert.Equal(4, Overworld.PlacedBuildings.Count(b => b.X0 >= 72 && b.X1 < 128 && b.Y0 >= 462 && b.Y1 < 506));
+        Assert.Contains(MapNamed("AmbretteTown_PokemonCenter_1F").NPCs, n => n.IsHealingNurse);
+        Assert.Contains(MapNamed("AmbretteTown_PokemonCenter_1F").NPCs, n => n.IsPokeMartClerk);
+        Assert.False(string.IsNullOrEmpty(Kalos.Overlay("ambrette_town")?.BgmTrack));
+        // Route 9's wild Pokémon are Kalos's own, a step above Route 11's
+        var route9 = Kalos.Area("kalos_route_9")!;
+        Assert.Equal(12, route9.Land!.Count);
+        foreach (var slot in route9.Land)
+        {
+            var dex = PokemonDatabase.Get(slot.Species)!.DexNumbers;
+            Assert.True(dex.ContainsKey("kalos-central") || dex.ContainsKey("kalos-coastal"), $"{slot.Species} is no Kalos species");
+            Assert.InRange(slot.Level, 17, 19);
+        }
+        // Every trainer of the new stretches is a record of Kalos's table, in the class the overlay's look says
+        foreach (string key in new[] { "kalos_route_8", "kalos_route_9", "kalos_route_12", "glittering_cave", "reflection_cave" })
+            foreach (var obj in Kalos.Area(key)!.Objects.Where(o => o.Script.StartsWith("TRAINER_", StringComparison.Ordinal)))
+                Assert.NotNull(TrainerDatabase.Get("kalos_" + obj.Script["TRAINER_".Length..].ToLowerInvariant()));
+        Assert.Equal("Hiker", TrainerDatabase.Get("kalos_hiker_aurelien")!.Class);
+        Assert.Equal("Backpacker", TrainerDatabase.Get("kalos_backpacker_solene")!.Class);
+        var townMap = RegionMap.Of(RegionDatabase.Kalos)!;
+        Assert.Contains(townMap.FlySpots, f => f.Spawn == 8 && f.Cells.Contains(RegionMap.CellOf(97, 475)));
+        Assert.Contains("FLAG_FIRST_ARRIVAL_AMBRETTE_TOWN", townMap.ArrivalFlags("ambrette_town"));
+        Assert.Contains(townMap.FlySpots, f => f.Spawn == 9 && f.Cells.Contains(RegionMap.CellOf(243, 473)));
+        Assert.Contains("FLAG_FIRST_ARRIVAL_COUMARINE_CITY", townMap.ArrivalFlags("coumarine_city"));
+        // Route 12's wild Pokémon are Kalos's own, at 20 to 22
+        foreach (var slot in Kalos.Area("kalos_route_12")!.Land!)
+        {
+            var dex = PokemonDatabase.Get(slot.Species)!.DexNumbers;
+            Assert.True(dex.ContainsKey("kalos-central") || dex.ContainsKey("kalos-coastal"), $"{slot.Species} is no Kalos species");
+            Assert.InRange(slot.Level, 20, 22);
+        }
+    }
+
+    [Fact]
+    public void ReflectionCaveAndGlitteringCaveAreMapsOfTheirOwnJoinedToTheRoadsByTheirMouths()
+    {
+        foreach (var (mouthX, mouthY, cave) in new[] { (172, 174, "ReflectionCave"), (168, 474, "GlitteringCave") })
+        {
+            // The mouth is a tile of the road that is taken walking north, and comes out of the cave one step inside its way out
+            Assert.Equal(TileBehavior.EntranceNorth, Overworld.BehaviourAt(mouthX, mouthY));
+            var inWarp = Overworld.GetWarpAt(mouthX, mouthY);
+            Assert.Equal(cave, inWarp?.TargetMap);
+            var map = MapNamed(cave);
+            Assert.True(map.IsWalkable(inWarp!.TargetX, inWarp.TargetY), $"{cave}: nobody can stand where the mouth leads");
+            Assert.Equal(TileBehavior.CaveFloor, map.BehaviourAt(inWarp.TargetX, inWarp.TargetY));
+            var outWarp = map.GetWarpAt(inWarp.TargetX, inWarp.TargetY + 1);
+            Assert.Equal("Kalos", outWarp?.TargetMap);
+            Assert.Equal(mouthX, outWarp!.TargetX);
+            Assert.Equal(mouthY + 1, outWarp.TargetY);
+            Assert.True(Overworld.IsWalkable(outWarp.TargetX, outWarp.TargetY));
+            Assert.True(map.IsStreamed);
+            Assert.False(map.IsDark);
+        }
+        Assert.Equal("Glittering Cave", MapNamed("GlitteringCave").DisplayNameAt(23, 34));
+        Assert.Equal("Reflection Cave", MapNamed("ReflectionCave").DisplayNameAt(21, 30));
+        // A wild Pokémon is met on the cave's floor, of the level its caves' tables give
+        foreach (var (key, low, high) in new[] { ("reflection_cave", 18, 20), ("glittering_cave", 20, 22) })
+        {
+            Assert.Equal(12, Kalos.Area(key)!.Land!.Count);
+            foreach (var slot in Kalos.Area(key)!.Land!) Assert.InRange(slot.Level, low, high);
+        }
+        Assert.True(TileBehaviors.HasEncounters(TileBehavior.CaveFloor));
+        Assert.Equal(2, Kalos.Area("glittering_cave")!.Objects.Count(o => o.Script.StartsWith("TRAINER_", StringComparison.Ordinal)));
+        Assert.Equal(2, Kalos.Area("reflection_cave")!.Objects.Count(o => o.Script.StartsWith("TRAINER_", StringComparison.Ordinal)));
+    }
+
+    [Fact]
+    public void FromTheBedroomTheCoastRoadReachesAmbretteRouteNineAndBothCaves()
+    {
+        var walked = Walked.Value;
+        bool Reached(string map, int x, int y) => walked.Any(p => p.Key.Name == map && p.Value.Contains((x, y)));
+        Assert.True(Reached("Kalos", 103, 440), "Route 8 south of the old rockfall");
+        Assert.True(Reached("Kalos", 103, 484), "Ambrette's street");
+        Assert.True(Reached("Kalos", 103, 497), "Ambrette's pier");
+        Assert.True(Reached("AmbretteTown_PokemonCenter_1F", 8, 6), "Ambrette's Pokémon Center");
+        Assert.True(Reached("AmbretteTown_Aquarium", 4, 8), "the aquarium");
+        Assert.True(Reached("Kalos", 140, 483), "Route 9 outside the town");
+        Assert.True(Reached("Kalos", 200, 483), "Route 9's far end");
+        Assert.True(Reached("Kalos", 220, 483), "Route 12 under its flowers");
+        Assert.True(Reached("Kalos", 250, 483), "Coumarine's street");
+        Assert.True(Reached("Kalos", 262, 495), "Coumarine's garden");
+        Assert.True(Reached("CoumarineCity_PokemonCenter_1F", 8, 6), "Coumarine's Pokémon Center");
+        Assert.True(Reached("CoumarineCity_EastHouse", 4, 8), "the east house");
+        // Reflection Cave, off Route 11: its corridor, its long hall and its north chamber
+        Assert.True(Reached("ReflectionCave", 21, 28), "Reflection Cave's corridor");
+        Assert.True(Reached("ReflectionCave", 12, 18), "Reflection Cave's hall");
+        Assert.True(Reached("ReflectionCave", 28, 10), "Reflection Cave's north chamber");
+        Assert.True(Reached("ReflectionCave", 6, 14), "Reflection Cave's west pocket");
+        // Glittering Cave, off Route 9
+        Assert.True(Reached("GlitteringCave", 23, 30), "Glittering Cave's corridor");
+        Assert.True(Reached("GlitteringCave", 20, 22), "Glittering Cave's chamber");
+        Assert.True(Reached("GlitteringCave", 28, 10), "Glittering Cave's north chamber");
+        Assert.True(Reached("GlitteringCave", 8, 10), "Glittering Cave's west pocket");
     }
 
     [Fact]

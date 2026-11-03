@@ -2295,6 +2295,10 @@ trainers 2, 190 (own 18-19): kalos_hiker_odilon 190 (18) [Nosepass → Lodestarc
 Route 11, Kalos
 grass 190-191 (own 19-21)
 trainers 2, 190-191 (own 20-21): kalos_battle_girl_elodie 190 (20) [Mienfoo → Mienshifu, Throh → Throjutsu], kalos_black_belt_gustave 191 (21) [Makuhita → Yokozan, Sawk → Sawkendo]
+=== kalos_route_12
+Route 12, Kalos
+grass 190-191 (own 20-22)
+trainers 3, 191 (own 21-22): kalos_lass_violette 191 (22) [Spritzee → Aromatisse, Floette → Florges], kalos_picnicker_hortense 191 (22) [Skiddo → Alpicorn, Bellsprout → Victreebel, Weepinbell → Victreebel], kalos_youngster_matthieu 191 (22) [Fletchinder → Talonflame, Pancham → Pangoro]
 === kalos_route_2
 Route 2, Kalos
 grass 185-186 (own 2-4)
@@ -2324,7 +2328,11 @@ trainers 3, 188-189 (own 13-14): kalos_fisherman_rene 188 (13) [Goldeen → Sabr
 === kalos_route_8
 Route 8, Kalos
 grass 188-189 (own 13-15)
-trainers 2, 189 (own 14-15): kalos_fisherman_yves 189 (14) [Tentacool → Medusarch, Wingull → Pelicaptain], kalos_hiker_marcel 189 (15) [Roggenrola → Gigalith, Nosepass → Lodestarch]
+trainers 5, 189 (own 14-16): kalos_fisherman_pierrick 189 (16) [Remoraid → Krakannon, Corphish → Crayronin], kalos_fisherman_yves 189 (14) [Tentacool → Medusarch, Wingull → Pelicaptain], kalos_hiker_aurelien 189 (16) [Geodude → Golem, Machop → Machamp], kalos_hiker_marcel 189 (15) [Roggenrola → Gigalith, Nosepass → Lodestarch], kalos_picnicker_ysolde 189 (16) [Skiddo → Gogoat, Buneary → Lapinova, Fletchling → Talonflame]
+=== kalos_route_9
+Route 9, Kalos
+grass 190 (own 17-19)
+trainers 4, 190 (own 17-18): kalos_backpacker_odile 190 (18) [Skiddo → Alpicorn, Zubat → Crobat, Mienfoo → Mienshifu], kalos_fisherman_loic 190 (18) [Barboach → Namazuro, Staryu → Stellamir], kalos_lass_clemence 190 (18) [Vulpix → Kitsunox, Spritzee → Aromatisse], kalos_youngster_basile 190 (18) [Fletchling → Talonflame, Pancham → Pangoro]
 === kanto_victory_road_1f
 Victory Road, Kanto
 grass 83-92 (own 32-46)

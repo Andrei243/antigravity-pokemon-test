@@ -1,0 +1,43 @@
+{
+  "key": "reflection_cave",
+  "index": 21,
+  "name": "Reflection Cave",
+  "matrix": 1,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "REFLECTION_CAVE",
+  "nightMusic": "REFLECTION_CAVE",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 21, "z": 31, "to": "kalos_route_11", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "lass", "looks": "lass", "movement": "look_south", "x": 18, "z": 20, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_LASS_PERRINE" },
+    { "id": "youngster", "looks": "youngster", "movement": "look_east", "x": 9, "z": 14, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_YOUNGSTER_AMBROISE" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 31, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_REFLECTION_CAVE_REVIVE", "item": "Revive", "script": "" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 7, "z": 13, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_REFLECTION_CAVE_EVERSTONE", "item": "Everstone", "script": "" }
+  ],
+  "signs": [],
+  "triggers": [],
+  "land": [
+    { "species": "Zubat", "level": 18 },
+    { "species": "Roggenrola", "level": 18 },
+    { "species": "Sableye", "level": 18 },
+    { "species": "Mawile", "level": 18 },
+    { "species": "Gastly", "level": 19 },
+    { "species": "Zubat", "level": 19 },
+    { "species": "Roggenrola", "level": 19 },
+    { "species": "Carbink", "level": 19 },
+    { "species": "Sableye", "level": 20 },
+    { "species": "Mawile", "level": 20 },
+    { "species": "Carbink", "level": 20 },
+    { "species": "Golbat", "level": 20 }
+  ],
+  "landRate": 10
+}

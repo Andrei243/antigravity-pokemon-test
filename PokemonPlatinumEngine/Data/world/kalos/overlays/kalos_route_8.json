@@ -1,13 +1,37 @@
 {
-  // Route 8, the Cliff Coast Path, its northern stretch (plan 23 · Z2, second part): drawn by hand, our words. Along
+  // Route 8, the Cliff Coast Path (plan 23 · Z2, second part, and Z3, second part): drawn by hand, our words. Along
   // the sea between the cliffs and the shore: a sandy beach, a path north to Cyllage City and the way in from Route 7
-  // in the east; south of the way in the path is shut by a rockfall, where Ambrette Town and the rest of the coast are
-  // plan 23 · Z3's. It plays Route 2's song until plan 31 writes it its own
+  // in the east; from Z3's second part the path goes on south, the rockfall that shut it gone, past three more
+  // trainers to Ambrette Town. It plays Route 2's song until plan 31 writes it its own
   "area": "kalos_route_8",
   "bgmTrack": "kalos/route2",
   "trees": "Round",
   "architecture": "OldTimber",
   "people": {
+    "fisherman_2": {
+      "name": "Pierrick",
+      "npcType": "Fisherman",
+      "trainer": {
+        "dialogueBefore": "Fisherman Pierrick: The bay is empty today, and I'm itching for a bite. You'll do!",
+        "dialogueAfter": "Fisherman Pierrick: Nothing on the line, nothing in the bucket. Typical."
+      }
+    },
+    "picnicker": {
+      "name": "Ysolde",
+      "npcType": "picnicker",
+      "trainer": {
+        "dialogueBefore": "Picnicker Ysolde: My sandwiches are on the rocks and my Pokémon are rested. Let's battle!",
+        "dialogueAfter": "Picnicker Ysolde: Now my sandwiches are cold. Worth it."
+      }
+    },
+    "hiker_2": {
+      "name": "Aurélien",
+      "npcType": "Hiker",
+      "trainer": {
+        "dialogueBefore": "Hiker Aurélien: The cliffs got me early today. Let me see how you do on flat ground!",
+        "dialogueAfter": "Hiker Aurélien: Flat ground, and you still knocked me over."
+      }
+    },
     "fisherman": {
       "name": "Yves",
       "npcType": "Fisherman",
@@ -26,6 +50,6 @@
     }
   },
   "signs": {
-    "RouteSign": "Route 8 · Cliff Coast Path\nNorth: Cyllage City\nSouth: closed by a rockfall"
+    "RouteSign": "Route 8 · Cliff Coast Path\nNorth: Cyllage City\nSouth: Ambrette Town"
   }
 }

@@ -1091,5 +1091,365 @@
         ]
       }
     ]
+  },
+  {
+    "id": "kalos_fisherman_pierrick",
+    "name": "Pierrick",
+    "class": "Fisherman",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 420,
+    "party": [
+      {
+        "species": "Remoraid",
+        "level": 15,
+        "ivScale": 0,
+        "personality": 11546452
+      },
+      {
+        "species": "Corphish",
+        "level": 16,
+        "ivScale": 0,
+        "personality": 11818280
+      }
+    ]
+  },
+  {
+    "id": "kalos_picnicker_ysolde",
+    "name": "Ysolde",
+    "class": "Picnicker",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 480,
+    "party": [
+      {
+        "species": "Skiddo",
+        "level": 15,
+        "ivScale": 0,
+        "personality": 12090108
+      },
+      {
+        "species": "Buneary",
+        "level": 15,
+        "ivScale": 0,
+        "personality": 12361936
+      },
+      {
+        "species": "Fletchling",
+        "level": 16,
+        "ivScale": 0,
+        "personality": 12633764
+      }
+    ]
+  },
+  {
+    "id": "kalos_hiker_aurelien",
+    "name": "Aurélien",
+    "class": "Hiker",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 640,
+    "party": [
+      {
+        "species": "Geodude",
+        "level": 16,
+        "ivScale": 0,
+        "personality": 12905592
+      },
+      {
+        "species": "Machop",
+        "level": 16,
+        "ivScale": 0,
+        "personality": 13177420
+      }
+    ]
+  },
+  {
+    "id": "kalos_lass_clemence",
+    "name": "Clémence",
+    "class": "Lass",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 520,
+    "party": [
+      {
+        "species": "Vulpix",
+        "level": 17,
+        "ivScale": 0,
+        "personality": 13449248
+      },
+      {
+        "species": "Spritzee",
+        "level": 18,
+        "ivScale": 0,
+        "personality": 13721076
+      }
+    ]
+  },
+  {
+    "id": "kalos_youngster_basile",
+    "name": "Basile",
+    "class": "Youngster",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 520,
+    "party": [
+      {
+        "species": "Fletchling",
+        "level": 17,
+        "ivScale": 0,
+        "personality": 13992904
+      },
+      {
+        "species": "Pancham",
+        "level": 18,
+        "ivScale": 0,
+        "personality": 14264732
+      }
+    ]
+  },
+  {
+    "id": "kalos_backpacker_odile",
+    "name": "Odile",
+    "class": "Backpacker",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 560,
+    "party": [
+      {
+        "species": "Skiddo",
+        "level": 18,
+        "ivScale": 0,
+        "personality": 14536560
+      },
+      {
+        "species": "Zubat",
+        "level": 17,
+        "ivScale": 0,
+        "personality": 14808388
+      },
+      {
+        "species": "Mienfoo",
+        "level": 18,
+        "ivScale": 0,
+        "personality": 15080216
+      }
+    ]
+  },
+  {
+    "id": "kalos_fisherman_loic",
+    "name": "Loïc",
+    "class": "Fisherman",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 560,
+    "party": [
+      {
+        "species": "Barboach",
+        "level": 18,
+        "ivScale": 0,
+        "personality": 15352044
+      },
+      {
+        "species": "Staryu",
+        "level": 18,
+        "ivScale": 0,
+        "personality": 15623872
+      }
+    ]
+  },
+  {
+    "id": "kalos_hiker_hilaire",
+    "name": "Hilaire",
+    "class": "Hiker",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 720,
+    "party": [
+      {
+        "species": "Machop",
+        "level": 20,
+        "ivScale": 0,
+        "personality": 15895700
+      },
+      {
+        "species": "Onix",
+        "level": 20,
+        "ivScale": 0,
+        "personality": 16167528
+      },
+      {
+        "species": "Geodude",
+        "level": 21,
+        "ivScale": 0,
+        "personality": 16439356
+      }
+    ]
+  },
+  {
+    "id": "kalos_backpacker_solene",
+    "name": "Solène",
+    "class": "Backpacker",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 640,
+    "party": [
+      {
+        "species": "Magnemite",
+        "level": 20,
+        "ivScale": 0,
+        "personality": 16711184
+      },
+      {
+        "species": "Klefki",
+        "level": 21,
+        "ivScale": 0,
+        "personality": 16983012
+      }
+    ]
+  },
+  {
+    "id": "kalos_lass_perrine",
+    "name": "Perrine",
+    "class": "Lass",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 560,
+    "party": [
+      {
+        "species": "Sableye",
+        "level": 19,
+        "ivScale": 0,
+        "personality": 17254840
+      },
+      {
+        "species": "Mawile",
+        "level": 19,
+        "ivScale": 0,
+        "personality": 17526668
+      }
+    ]
+  },
+  {
+    "id": "kalos_youngster_ambroise",
+    "name": "Ambroise",
+    "class": "Youngster",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 540,
+    "party": [
+      {
+        "species": "Roggenrola",
+        "level": 18,
+        "ivScale": 0,
+        "personality": 17798496
+      },
+      {
+        "species": "Carbink",
+        "level": 19,
+        "ivScale": 0,
+        "personality": 18070324
+      }
+    ]
+  },
+  {
+    "id": "kalos_lass_violette",
+    "name": "Violette",
+    "class": "Lass",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 640,
+    "party": [
+      {
+        "species": "Spritzee",
+        "level": 21,
+        "ivScale": 0,
+        "personality": 14771828
+      },
+      {
+        "species": "Floette",
+        "level": 22,
+        "ivScale": 0,
+        "personality": 15043656
+      }
+    ]
+  },
+  {
+    "id": "kalos_picnicker_hortense",
+    "name": "Hortense",
+    "class": "Picnicker",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 660,
+    "party": [
+      {
+        "species": "Skiddo",
+        "level": 21,
+        "ivScale": 0,
+        "personality": 15315484
+      },
+      {
+        "species": "Bellsprout",
+        "level": 21,
+        "ivScale": 0,
+        "personality": 15587312
+      },
+      {
+        "species": "Weepinbell",
+        "level": 22,
+        "ivScale": 0,
+        "personality": 15859140
+      }
+    ]
+  },
+  {
+    "id": "kalos_youngster_matthieu",
+    "name": "Matthieu",
+    "class": "Youngster",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 660,
+    "party": [
+      {
+        "species": "Fletchinder",
+        "level": 22,
+        "ivScale": 0,
+        "personality": 16130968
+      },
+      {
+        "species": "Pancham",
+        "level": 22,
+        "ivScale": 0,
+        "personality": 16402796
+      }
+    ]
   }
 ]

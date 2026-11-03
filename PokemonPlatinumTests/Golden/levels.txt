@@ -652,6 +652,10 @@ Giant Chasm
 grass 44-47
 surf 35-50
 super rod 40-70
+=== glittering_cave
+Glittering Cave
+grass 20-22
+trainers 2, 20-21: kalos_backpacker_solene 21, kalos_hiker_hilaire 21
 === goldenrod_gym
 Goldenrod City
 trainers 4, 9-17: johto_beauty_samantha 16, johto_beauty_victoria 16, johto_lass_carrie 17, johto_lass_cathy 15
@@ -1051,6 +1055,10 @@ trainers 2, 18-19: kalos_hiker_odilon 18, kalos_lass_maelle 19
 Route 11
 grass 19-21
 trainers 2, 20-21: kalos_battle_girl_elodie 20, kalos_black_belt_gustave 21
+=== kalos_route_12
+Route 12
+grass 20-22
+trainers 3, 21-22: kalos_lass_violette 22, kalos_picnicker_hortense 22, kalos_youngster_matthieu 22
 === kalos_route_2
 Route 2
 grass 2-4
@@ -1080,7 +1088,11 @@ trainers 3, 13-14: kalos_fisherman_rene 13, kalos_lass_sylvie 14, kalos_youngste
 === kalos_route_8
 Route 8
 grass 13-15
-trainers 2, 14-15: kalos_fisherman_yves 14, kalos_hiker_marcel 15
+trainers 5, 14-16: kalos_fisherman_pierrick 16, kalos_fisherman_yves 14, kalos_hiker_aurelien 16, kalos_hiker_marcel 15, kalos_picnicker_ysolde 16
+=== kalos_route_9
+Route 9
+grass 17-19
+trainers 4, 17-18: kalos_backpacker_odile 18, kalos_fisherman_loic 18, kalos_lass_clemence 18, kalos_youngster_basile 18
 === kanto_victory_road_1f
 Victory Road
 grass 32-46
@@ -1692,6 +1704,10 @@ surf 20-40
 old rod 3-15
 good rod 10-25
 super rod 30-55
+=== reflection_cave
+Reflection Cave
+grass 18-20
+trainers 2, 18-19: kalos_lass_perrine 19, kalos_youngster_ambroise 19
 === relic_castle
 Relic Castle
 grass 18-21

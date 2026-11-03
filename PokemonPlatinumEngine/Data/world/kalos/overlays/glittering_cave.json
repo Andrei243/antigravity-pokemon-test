@@ -1,0 +1,27 @@
+{
+  // Glittering Cave (plan 23 · Z3, second part): a map of its own, drawn by hand (tools/MapDraw/kalos/glittering_cave.txt),
+  // our words. A dead-end cave off Route 9: a long corridor, a great chamber with a few pillars, a west pocket and a north
+  // chamber, with three items, two trainers and the steel and rock Pokémon of the coast. It plays Santalune Forest's
+  // song until plan 31 writes it a cave song of its own
+  "area": "glittering_cave",
+  "bgmTrack": "kalos/santalune_forest",
+  "trees": "Round",
+  "people": {
+    "hiker": {
+      "name": "Hilaire",
+      "npcType": "Hiker",
+      "trainer": {
+        "dialogueBefore": "Hiker Hilaire: This cave glitters like a jewel box. I'll guard the treasure!",
+        "dialogueAfter": "Hiker Hilaire: You take the treasure, then. It's mostly wet rock anyway."
+      }
+    },
+    "backpacker": {
+      "name": "Solène",
+      "npcType": "backpacker_f",
+      "trainer": {
+        "dialogueBefore": "Backpacker Solène: Shh! Do you hear the Magnemite humming? ...Oh. You've seen me. Battle!",
+        "dialogueAfter": "Backpacker Solène: The humming was louder than I thought."
+      }
+    }
+  }
+}
