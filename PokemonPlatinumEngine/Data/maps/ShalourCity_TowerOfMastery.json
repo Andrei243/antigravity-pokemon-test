@@ -1,0 +1,151 @@
+{
+  "name": "ShalourCity_TowerOfMastery",
+  "displayName": "Tower of Mastery",
+  "bgmTrack": "kalos/gym",
+  "interior": "Lab",
+  "trees": "Round",
+  "width": 15,
+  "height": 18,
+  "ground": [
+    "###############",
+    "###############",
+    "###############",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#######D#######"
+  ],
+  "solid": [
+    "###############",
+    "###############",
+    "###############",
+    "#.....###.....#",
+    "#.....###.....#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#######.#######"
+  ],
+  "props": [
+    {
+      "type": "Statue",
+      "x": 6,
+      "y": 3,
+      "width": 3,
+      "depth": 2
+    },
+    {
+      "type": "Statue",
+      "x": 1,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 13,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 1,
+      "y": 13,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 13,
+      "y": 13,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 7,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 2,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 11,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 7,
+      "sourceY": 17,
+      "targetMap": "Kalos",
+      "targetX": 165,
+      "targetY": 110,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "gurkinn",
+      "name": "Gurkinn",
+      "npcType": "gurkinn",
+      "x": 7,
+      "y": 6,
+      "facing": "Down",
+      "script": "Guru"
+    },
+    {
+      "id": "korrina",
+      "name": "Korrina",
+      "npcType": "korrina",
+      "x": 9,
+      "y": 7,
+      "facing": "Down",
+      "script": "Korrina",
+      "hiddenBy": "FLAG_KALOS_HIDE_KORRINA_TOWER"
+    },
+    {
+      "id": "pupil",
+      "name": "Pupil",
+      "npcType": "blackbelt",
+      "x": 3,
+      "y": 11,
+      "facing": "Right",
+      "dialog": [
+        "The master says a Pokémon only changes when its heart and its Trainer's beat as one. I'm still listening for mine."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

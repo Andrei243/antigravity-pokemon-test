@@ -2469,7 +2469,7 @@ way 0
   + FLAG_KALOS_DEFEATED_CYLLAGE_GYM
   + FLAG_KALOS_RECEIVED_TM_GRANT
   = VAR_KALOS_STORY 0 -> 18
-  = VAR_OBJECTIVE 0 -> 599
+  = VAR_OBJECTIVE 0 -> 518
   + beaten kalos_grant_1
   + beaten kalos_hiker_armand
   + beaten kalos_hiker_bruno
@@ -5236,6 +5236,50 @@ way -
 from Roman at 8,3 of SevenStarsRestaurant
 way -
   Roman> The house rule is two Pokémon against two, I'm afraid. Do come back with a second!
+=== ShalourCity_Gym.GymGuide
+from Gym Guide at 9,15 of ShalourCity_Gym
+way -
+  Gym Guide> Hello there, future Champion! Korrina's Fighting types fear flying, psychic power and the fair folk. Choose well!
+=== ShalourCity_Gym.Korrina
+from Korrina at 6,4 of ShalourCity_Gym
+way 0
+  Korrina> You made it! I'm Korrina, and this is the Shalour Gym. We train on wheels here, so keep up!
+  Korrina> Grandpa says a Trainer's heart shows in battle. Let's see what yours is made of!
+  Korrina> Wow! You hit hard and you never stopped moving. That's a real fighter!
+  Korrina> This is the Rumble Badge. You've earned it, and Grandpa's Key Stone too, I bet.
+  > Lucas received the Rumble Badge from Korrina!
+  Korrina> And take this. My Pokémon use it to tense every muscle before they strike, harder and harder.
+  > Lucas received the TM08!
+  > TM08 holds the move Bulk Up.
+  > Lucas put it away in the TMs & HMs pocket.
+  Korrina> Now go and see Grandpa at the tower. I'll skate over and meet you there!
+  * scene ShalourCity_Gym.Korrina
+  * battle kalos_korrina_1 Won
+  * fanfare FanfareBadge
+  * defeat kalos_black_belt_lucien
+  * defeat kalos_battle_girl_ines
+  * fanfare FanfareTM
+  * endscene
+  + FLAG_KALOS_DEFEATED_SHALOUR_GYM
+  + FLAG_KALOS_RECEIVED_TM_KORRINA
+  = VAR_KALOS_STORY 0 -> 21
+  = VAR_OBJECTIVE 0 -> 521
+  + beaten kalos_battle_girl_ines
+  + beaten kalos_black_belt_lucien
+  + beaten kalos_korrina_1
+  = badges Kalos 0 -> 100
+  + seen ShalourCity_Gym.Korrina
+way 1, from answer 1
+  * battle kalos_korrina_1 Lost
+  * scene over, unseen
+=== ShalourCity_TowerOfMastery.Guru
+from Gurkinn at 7,6 of ShalourCity_TowerOfMastery
+way -
+  Gurkinn> Welcome to the Tower of Mastery. Look around as long as you like, young Trainer. The statue has stood here a very long time.
+=== ShalourCity_TowerOfMastery.Korrina
+from Korrina at 9,7 of ShalourCity_TowerOfMastery
+way -
+  Korrina> Grandpa talks to that statue more than to me. I think it listens better!
 === SnowpointCityEastHouse.Sayings
 from Old Man at 5,5 of SnowpointCityEastHouse
 way 0
@@ -16955,6 +16999,23 @@ way -
   + FLAG_HIDE_FULLMOON_ISLAND_FOREST_CRESSELIA
   + FLAG_MET_CRESSELIA
   + seen fullmoon_island_forest.Cresselia on Fullmoon Island
+=== geosenge_town.Trevor
+from the trigger at 118,233 of Kalos
+way -
+  Trevor> Lucas! I've been reading about these stones. Nobody knows who stood them up, or why.
+  Trevor> And there's something even stranger in Shalour City, up the coast. The professor's research is all about it.
+  Trevor> Some Pokémon can change, all at once, into a stronger shape. A tower in Shalour is where people go to learn how.
+  Trevor> Route 11 runs east out of town and up toward the coast. I'm going to write everything down on the way!
+  * scene geosenge_town.Trevor in Geosenge
+  * endscene
+  + FLAG_KALOS_HIDE_TREVOR_GEOSENGE
+  = VAR_KALOS_STORY 0 -> 19
+  = VAR_OBJECTIVE 0 -> 519
+  + seen geosenge_town.Trevor in Geosenge
+=== geosenge_town.TrevorWaits
+from Trevor at 120,220 of Kalos
+way -
+  Trevor> Um. I counted the stones three times. I got three different answers.
 === giant_chasm_2.Guard
 from Grunt at 2,22 of GiantChasm_Cave
 from Grunt at 2,23 of GiantChasm_Cave

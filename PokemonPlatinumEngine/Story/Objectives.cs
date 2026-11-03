@@ -238,7 +238,13 @@ public static class Objectives
         (515, "kalosSnorlax", AtLeast("VAR_KALOS_STORY", 16), false),
         (516, "kalosCyllage", AtLeast("VAR_KALOS_STORY", 17), false),
         (517, "kalosGrant", s => s.Var("VAR_KALOS_STORY") >= 18 || s.HasBadge(RegionDatabase.Kalos, "Cliff"), false),
-        // What comes after the Cliff Badge is a later session's
+        // Plan 23 · Z3, first part: north up Route 10 to Geosenge Town, on to Shalour City's tower, Korrina's Rumble Badge
+        // and the Key Stone
+        (518, "kalosRoute10", AtLeast("VAR_KALOS_STORY", 19), false),
+        (519, "kalosShalour", AtLeast("VAR_KALOS_STORY", 20), false),
+        (520, "kalosKorrina", s => s.Var("VAR_KALOS_STORY") >= 21 || s.HasBadge(RegionDatabase.Kalos, "Rumble"), false),
+        (521, "kalosMastery", AtLeast("VAR_KALOS_STORY", 22), false),
+        // What comes after the Key Stone is a later session's
         (599, "kalosFree", null, false));
 
     private static readonly Dictionary<string, Objective> ByName = All.ToDictionary(o => o.Name, StringComparer.Ordinal);
