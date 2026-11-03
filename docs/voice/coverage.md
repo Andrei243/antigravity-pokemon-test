@@ -9,10 +9,10 @@ A **line** is one string a character says in a text box (a script's `say` and th
 | Kind | Lines | Spoken | Shown only | With variants | Written by hand |
 |---|---|---|---|---|---|
 | The introduction (`intro:`) | 96 | 96 | 0 | 0 | 0 |
-| People of the hand-made maps (`map:`) | 1343 | 1301 | 42 | 1 | 0 |
-| Scripts (`script:`) | 10306 | 9844 | 462 | 17 | 0 |
-| People of the world (`world:`) | 7179 | 7117 | 62 | 4 | 0 |
-| **All** | 18924 | 18358 | 566 | 22 | 0 |
+| People of the hand-made maps (`map:`) | 1354 | 1312 | 42 | 1 | 0 |
+| Scripts (`script:`) | 10310 | 9846 | 464 | 17 | 0 |
+| People of the world (`world:`) | 7213 | 7151 | 62 | 4 | 0 |
+| **All** | 18973 | 18405 | 568 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -22,7 +22,7 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 |---|---|
 | a Pokémon's cry | 244 |
 | a question's answers | 780 |
-| a sign | 1586 |
+| a sign | 1590 |
 | the game's own voice (speaker none) | 283 |
 | the game's own voice (text) | 1659 |
 
@@ -31,7 +31,7 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 - Named characters: 396 voices (359 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Cloned from the user's samples: `rival`.
 - Archetypes in use: 239, with 722 voices to cast (V5).
-- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1892.
+- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1896.
 
 ## Lines by voice
 
@@ -39,38 +39,38 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 
 | Voice | Lines | Shown only |
 |---|---|---|
-| `@self` | 1892 | 136 |
-| `look:gentleman (any)` | 727 | 15 |
+| `@self` | 1896 | 138 |
+| `look:gentleman (any)` | 728 | 15 |
 | `rival` | 605 | 18 |
 | `look:grunt (any)` | 587 | 0 |
-| `look:lady (any)` | 429 | 1 |
-| `look:youngster (any)` | 403 | 21 |
-| `look:clerk (any)` | 377 | 10 |
-| `look:lass (any)` | 328 | 11 |
+| `look:lady (any)` | 431 | 1 |
+| `look:youngster (any)` | 405 | 21 |
+| `look:clerk (any)` | 379 | 10 |
+| `look:lass (any)` | 332 | 11 |
 | `look:attendant (any)` | 321 | 12 |
 | `look:nurse (any)` | 256 | 0 |
 | `look:gym_guide (any)` | 201 | 1 |
 | `look:scientist (any)` | 198 | 4 |
 | `look:receptionist (any)` | 159 | 19 |
 | `cynthia` | 157 | 1 |
+| `class:hiker (any)` | 154 | 0 |
 | `look:sailor (any)` | 151 | 0 |
-| `class:hiker (any)` | 150 | 0 |
 | `class:ace_trainer (any)` | 148 | 0 |
+| `class:fisherman (any)` | 148 | 0 |
 | `rowan` | 147 | 12 |
-| `class:fisherman (any)` | 144 | 0 |
-| `look:old_man (any)` | 133 | 4 |
+| `look:old_man (any)` | 134 | 4 |
 | `look:woman (any)` | 133 | 14 |
 | `class:team_rocket (any)` | 132 | 0 |
+| `class:youngster (any)` | 130 | 0 |
+| `class:picnicker (any)` | 128 | 0 |
 | `class:swimmer_m (any)` | 126 | 0 |
-| `class:picnicker (any)` | 124 | 0 |
-| `class:youngster (any)` | 124 | 0 |
 | `look:man (any)` | 118 | 4 |
 | `class:black_belt (any)` | 116 | 0 |
+| `class:lass (any)` | 116 | 0 |
 | `mom` | 116 | 7 |
 | `assistant` | 115 | 5 |
 | `look:guard (any)` | 115 | 0 |
 | `class:psychic (any)` | 112 | 0 |
-| `class:lass (any)` | 110 | 0 |
 | `look:boy (any)` | 104 | 4 |
 | `class:swimmer_f (any)` | 102 | 0 |
 | `class:cooltrainer (any)` | 100 | 0 |
@@ -85,9 +85,9 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `cyrus` | 83 | 7 |
 | `look:aqua_grunt (any)` | 83 | 3 |
 | `look:hiker (any)` | 83 | 0 |
-| `look:old_woman (any)` | 81 | 5 |
+| `look:old_woman (any)` | 83 | 5 |
 | `class:camper (any)` | 78 | 0 |
-| `look:fisherman (any)` | 77 | 4 |
+| `look:fisherman (any)` | 78 | 4 |
 | `look:worker (any)` | 77 | 0 |
 | `class:swimmer (any)` | 76 | 0 |
 | `class:twins (any)` | 76 | 0 |
@@ -134,6 +134,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `collector` | 39 | 0 |
 | `colress` | 39 | 1 |
 | `owner` | 39 | 5 |
+| `class:backpacker (any)` | 38 | 0 |
 | `prof_birch` | 38 | 3 |
 | `wally` | 38 | 0 |
 | `baoba` | 37 | 0 |
@@ -143,7 +144,6 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `iris` | 35 | 0 |
 | `kurt` | 35 | 6 |
 | `look:pokefan_f (any)` | 35 | 0 |
-| `class:backpacker (any)` | 34 | 0 |
 | `class:ruin_maniac (any)` | 34 | 0 |
 | `maylene` | 34 | 1 |
 | `mr_briney` | 34 | 1 |

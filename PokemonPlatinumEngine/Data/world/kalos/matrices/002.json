@@ -1,0 +1,16 @@
+{
+  "id": 2,
+  "width": 2,
+  "height": 2,
+  "chunks": [
+    "107 108",
+    "109 110"
+  ],
+  "areas": [
+    "  0   0",
+    "  0   0"
+  ],
+  "areaKeys": [
+    "glittering_cave"
+  ]
+}

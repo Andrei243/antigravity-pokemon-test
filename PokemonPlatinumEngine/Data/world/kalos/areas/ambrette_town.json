@@ -1,0 +1,32 @@
+{
+  "key": "ambrette_town",
+  "index": 19,
+  "name": "Ambrette Town",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "AMBRETTE",
+  "nightMusic": "AMBRETTE",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 89, "z": 474, "to": "AmbretteTown_WestHouse", "toWarp": 0 },
+    { "x": 97, "z": 474, "to": "AmbretteTown_PokemonCenter_1F", "toWarp": 0 },
+    { "x": 114, "z": 474, "to": "AmbretteTown_Aquarium", "toWarp": 0 },
+    { "x": 115, "z": 491, "to": "AmbretteTown_Cottage", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "angler", "looks": "fisherman", "movement": "look_south", "x": 103, "z": 499, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "child", "looks": "youngster", "movement": "wander_around", "x": 94, "z": 484, "facing": 1, "rangeX": 3, "rangeZ": 1, "script": "" },
+    { "id": "woman", "looks": "lady", "movement": "look_around", "x": 120, "z": 488, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" }
+  ],
+  "signs": [
+    { "x": 101, "z": 481, "type": 0, "script": "TownSign" }
+  ],
+  "triggers": []
+}

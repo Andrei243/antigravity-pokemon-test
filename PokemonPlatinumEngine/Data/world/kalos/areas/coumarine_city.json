@@ -1,0 +1,32 @@
+{
+  "key": "coumarine_city",
+  "index": 24,
+  "name": "Coumarine City",
+  "matrix": 0,
+  "kind": "City",
+  "sign": "City",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "COUMARINE",
+  "nightMusic": "COUMARINE",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 243, "z": 472, "to": "CoumarineCity_PokemonCenter_1F", "toWarp": 0 },
+    { "x": 253, "z": 472, "to": "CoumarineCity_GardenHouse", "toWarp": 0 },
+    { "x": 268, "z": 472, "to": "coumarine_city_gym", "toWarp": 0 },
+    { "x": 280, "z": 472, "to": "CoumarineCity_EastHouse", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "gardener", "looks": "lady", "movement": "wander_around", "x": 250, "z": 490, "facing": 1, "rangeX": 3, "rangeZ": 1, "script": "" },
+    { "id": "boy", "looks": "youngster", "movement": "wander_around", "x": 246, "z": 480, "facing": 1, "rangeX": 2, "rangeZ": 1, "script": "" },
+    { "id": "old_man", "looks": "old_man", "movement": "look_around", "x": 268, "z": 495, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" }
+  ],
+  "signs": [
+    { "x": 238, "z": 481, "type": 0, "script": "CitySign" }
+  ],
+  "triggers": []
+}

@@ -14,7 +14,7 @@
     { "warp": 2, "map": "GeosengeTown_EastHouse", "x": 4, "y": 8, "facing": "Up" }
   ],
   "triggers": [
-    { "script": "Trevor", "x": 118, "z": 233, "width": 4, "depth": 1, "variable": "VAR_KALOS_STORY", "value": 18 }
+    { "script": "Trevor", "x": 118, "z": 227, "width": 4, "depth": 1, "variable": "VAR_KALOS_STORY", "value": 18 }
   ],
   "props": [
     { "type": "LampPost", "x": 117, "y": 211, "width": 1, "depth": 1 },

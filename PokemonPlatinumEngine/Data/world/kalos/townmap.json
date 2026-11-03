@@ -25,12 +25,16 @@
     { "key": "camphrier_town", "flag": "FLAG_FIRST_ARRIVAL_CAMPHRIER_TOWN", "arrival": [ "camphrier_town" ], "about": "An old town of timber and stone, watched over by a castle in its moat." },
     { "key": "kalos_route_6", "about": "A straight avenue of trees north from Camphrier to the gates of a palace." },
     { "key": "kalos_route_7", "about": "A walk along the river south and west of Camphrier, past meadows and flower beds." },
-    { "key": "kalos_route_8", "about": "A cliff path along the sea, north to Cyllage City; its southern stretch is shut by a rockfall." },
+    { "key": "kalos_route_8", "about": "A cliff path along the sea between Cyllage City in the north and Ambrette Town in the south." },
     { "key": "cyllage_city", "flag": "FLAG_FIRST_ARRIVAL_CYLLAGE_CITY", "arrival": [ "cyllage_city" ], "about": "A town of terraces on the cliffs over a sandy bay, its Gym at the very top." },
     { "key": "kalos_route_10", "about": "A straight path north from Cyllage between two long lines of standing stones." },
     { "key": "geosenge_town", "flag": "FLAG_FIRST_ARRIVAL_GEOSENGE_TOWN", "arrival": [ "geosenge_town" ], "about": "A quiet town of a few houses beside an old ring of standing stones." },
     { "key": "kalos_route_11", "about": "A road east from Geosenge through the hills, then north toward the coast." },
-    { "key": "shalour_city", "flag": "FLAG_FIRST_ARRIVAL_SHALOUR_CITY", "arrival": [ "shalour_city" ], "about": "A city on the north-west coast, where the Tower of Mastery keeps the secret of Mega Evolution." }
+    { "key": "shalour_city", "flag": "FLAG_FIRST_ARRIVAL_SHALOUR_CITY", "arrival": [ "shalour_city" ], "about": "A city on the north-west coast, where the Tower of Mastery keeps the secret of Mega Evolution." },
+    { "key": "ambrette_town", "flag": "FLAG_FIRST_ARRIVAL_AMBRETTE_TOWN", "arrival": [ "ambrette_town" ], "about": "A seaside town on a bay at the end of the cliff road, with an aquarium and a pier." },
+    { "key": "kalos_route_9", "about": "A road east from Ambrette along the south coast, past a cave that glitters." },
+    { "key": "kalos_route_12", "about": "A road lined with flower beds, east to Coumarine City." },
+    { "key": "coumarine_city", "flag": "FLAG_FIRST_ARRIVAL_COUMARINE_CITY", "arrival": [ "coumarine_city" ], "about": "A garden city of flower beds on the south coast, its Gym shut for now." }
   ],
   "landmarks": [],
   "blocks": [
@@ -113,7 +117,22 @@
     { "x": 4, "y": 6, "kind": "Town", "name": "Geosenge Town", "area": "geosenge_town" },
     { "x": 3, "y": 7, "kind": "Route", "name": "Route 10", "area": "kalos_route_10" },
     { "x": 3, "y": 8, "kind": "Route", "name": "Route 10", "area": "kalos_route_10" },
-    { "x": 4, "y": 8, "kind": "Route", "name": "Route 10", "area": "kalos_route_10" }
+    { "x": 4, "y": 8, "kind": "Route", "name": "Route 10", "area": "kalos_route_10" },
+    { "x": 3, "y": 13, "kind": "Route", "name": "Route 8", "area": "kalos_route_8" },
+    { "x": 2, "y": 14, "kind": "Town", "name": "Ambrette Town", "area": "ambrette_town" },
+    { "x": 3, "y": 14, "kind": "Town", "name": "Ambrette Town", "area": "ambrette_town" },
+    { "x": 2, "y": 15, "kind": "Town", "name": "Ambrette Town", "area": "ambrette_town" },
+    { "x": 3, "y": 15, "kind": "Town", "name": "Ambrette Town", "area": "ambrette_town" },
+    { "x": 4, "y": 14, "kind": "Route", "name": "Route 9", "area": "kalos_route_9" },
+    { "x": 5, "y": 14, "kind": "Route", "name": "Route 9", "area": "kalos_route_9" },
+    { "x": 6, "y": 14, "kind": "Route", "name": "Route 9", "area": "kalos_route_9" },
+    { "x": 4, "y": 15, "kind": "Route", "name": "Route 9", "area": "kalos_route_9" },
+    { "x": 5, "y": 15, "kind": "Route", "name": "Route 9", "area": "kalos_route_9" },
+    { "x": 6, "y": 15, "kind": "Route", "name": "Route 9", "area": "kalos_route_9" },
+    { "x": 7, "y": 14, "kind": "Town", "name": "Coumarine City", "area": "coumarine_city" },
+    { "x": 8, "y": 14, "kind": "Town", "name": "Coumarine City", "area": "coumarine_city" },
+    { "x": 7, "y": 15, "kind": "Town", "name": "Coumarine City", "area": "coumarine_city" },
+    { "x": 8, "y": 15, "kind": "Town", "name": "Coumarine City", "area": "coumarine_city" }
   ],
   "fly": [
     { "spawn": 1, "cells": "7,22 8,22" },
@@ -122,6 +141,8 @@
     { "spawn": 4, "cells": "5,10 6,10 5,11 6,11" },
     { "spawn": 5, "cells": "2,9 3,9 2,10 3,10" },
     { "spawn": 6, "cells": "3,6 4,6" },
-    { "spawn": 7, "cells": "4,2 5,2 6,2 4,3 5,3 6,3" }
+    { "spawn": 7, "cells": "4,2 5,2 6,2 4,3 5,3 6,3" },
+    { "spawn": 8, "cells": "2,14 3,14 2,15 3,15" },
+    { "spawn": 9, "cells": "7,14 8,14 7,15 8,15" }
   ]
 }

@@ -1,0 +1,43 @@
+{
+  "key": "kalos_route_12",
+  "index": 23,
+  "name": "Route 12",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "ROUTE_12",
+  "nightMusic": "ROUTE_12",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [],
+  "objects": [
+    { "id": "lass", "looks": "lass", "movement": "look_south", "x": 216, "z": 479, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_LASS_VIOLETTE" },
+    { "id": "picnicker", "looks": "picnicker", "movement": "look_north", "x": 224, "z": 488, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_PICNICKER_HORTENSE" },
+    { "id": "youngster", "looks": "youngster", "movement": "look_south", "x": 228, "z": 479, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_YOUNGSTER_MATTHIEU" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 222, "z": 473, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_ROUTE_12_ETHER", "item": "Ether", "script": "" }
+  ],
+  "signs": [
+    { "x": 210, "z": 481, "type": 0, "script": "RouteSign" }
+  ],
+  "triggers": [],
+  "land": [
+    { "species": "Flabébé", "level": 20 },
+    { "species": "Skiddo", "level": 20 },
+    { "species": "Spritzee", "level": 20 },
+    { "species": "Pancham", "level": 20 },
+    { "species": "Dedenne", "level": 21 },
+    { "species": "Ledyba", "level": 21 },
+    { "species": "Flabébé", "level": 21 },
+    { "species": "Skiddo", "level": 21 },
+    { "species": "Mienfoo", "level": 21 },
+    { "species": "Hawlucha", "level": 22 },
+    { "species": "Spritzee", "level": 22 },
+    { "species": "Floette", "level": 22 }
+  ],
+  "landRate": 20
+}

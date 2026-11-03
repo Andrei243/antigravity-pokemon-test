@@ -1,0 +1,38 @@
+{
+  // Route 12, the Blossom Road (plan 23 · Z3, second part): drawn by hand, our words. East out of Route 9 between two long
+  // beds of flowers, with tall grass behind them, to the gate of Coumarine City. It plays Route 2's song until plan 31
+  // writes it its own
+  "area": "kalos_route_12",
+  "bgmTrack": "kalos/route2",
+  "trees": "Round",
+  "architecture": "Cyllage",
+  "people": {
+    "lass": {
+      "name": "Violette",
+      "npcType": "Lass",
+      "trainer": {
+        "dialogueBefore": "Lass Violette: I grew these flowers myself, and I'll fight for every one. Ready?",
+        "dialogueAfter": "Lass Violette: You trampled one. Just kidding! Good battle."
+      }
+    },
+    "picnicker": {
+      "name": "Hortense",
+      "npcType": "picnicker",
+      "trainer": {
+        "dialogueBefore": "Picnicker Hortense: The flower beds make the best picnic spots. Want to join? After a battle!",
+        "dialogueAfter": "Picnicker Hortense: Fine, fine. Come and sit down, then."
+      }
+    },
+    "youngster": {
+      "name": "Matthieu",
+      "npcType": "Youngster",
+      "trainer": {
+        "dialogueBefore": "Youngster Matthieu: Coumarine's Gym Leader taught me everything I know. Watch this!",
+        "dialogueAfter": "Youngster Matthieu: He didn't teach me that. I'd better ask him."
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": "Route 12 · Blossom Road\nWest: Route 9\nEast: Coumarine City"
+  }
+}

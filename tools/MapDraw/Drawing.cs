@@ -21,6 +21,9 @@ public sealed class Layout
 
     public List<Piece> Pieces { get; set; } = new();
 
+    /// <summary>Maps of their own beside the overworld (plan 23 · Z3: a cave), each drawn on a grid of its own and written as its own matrix.</summary>
+    public List<MapDrawing> Maps { get; set; } = new();
+
     /// <summary>The areas, the first holding a tile winning; in the order of the matrix's area keys.</summary>
     public List<AreaRect> Areas { get; set; } = new();
 }
@@ -49,7 +52,7 @@ public sealed class AreaRect
 public readonly record struct Ink(char Cover, bool Solid, TileBehavior Behaviour);
 
 /// <summary>The world files a layout makes (<see cref="Drawing.Build"/>).</summary>
-public sealed record DrawnWorld(WorldMatrixFile Matrix, IReadOnlyList<WorldChunkFile> Chunks);
+public sealed record DrawnWorld(WorldMatrixFile Matrix, IReadOnlyList<WorldChunkFile> Chunks, IReadOnlyList<WorldMatrixFile>? Maps = null, IReadOnlyDictionary<string, string>? Cells = null);
 
 public static class Drawing
 {
@@ -83,6 +86,11 @@ public static class Drawing
         ['D'] = new('B', true, TileBehavior.Door),
         ['S'] = new('.', true, TileBehavior.None),
         ['K'] = new('=', true, TileBehavior.Counter),
+        // A cave (plan 23 · Z3): its floor, its rock (blocked), and a cave's mouth on the open ground outside
+        ['c'] = new('c', false, TileBehavior.CaveFloor),
+        ['r'] = new('r', true, TileBehavior.None),
+        ['M'] = new('M', false, TileBehavior.EntranceNorth),
+        ['m'] = new('c', false, TileBehavior.EntranceSouth),
     };
 
     /// <summary>What fills a drawn chunk where no drawing reaches: the woods every place is cut out of.</summary>
@@ -95,11 +103,30 @@ public static class Drawing
     {
         var layout = GameDataFiles.Deserialize<Layout>(File.ReadAllText(Path.Combine(folder, LayoutFile)));
         var drawings = layout.Pieces.Select(p => (p, Rows: File.ReadAllLines(Path.Combine(folder, p.File)).Where(r => r.Length > 0).ToArray())).ToList();
-        return Build(layout, drawings);
+        var maps = layout.Maps.Select(m => (IReadOnlyList<(Piece Piece, string[] Rows)>)m.Pieces.Select(p => (p, Rows: File.ReadAllLines(Path.Combine(folder, p.File)).Where(r => r.Length > 0).ToArray())).ToList()).ToList();
+        return Build(layout, drawings, maps);
     }
 
-    public static DrawnWorld Build(Layout layout, IReadOnlyList<(Piece Piece, string[] Rows)> drawings)
+    /// <summary>The overworld and, from each <see cref="MapDrawing"/> of the layout, a map of its own with its own matrix (plan 23 · Z3: the caves).</summary>
+    public static DrawnWorld Build(Layout layout, IReadOnlyList<(Piece Piece, string[] Rows)> drawings, IReadOnlyList<IReadOnlyList<(Piece Piece, string[] Rows)>>? mapDrawings = null)
     {
+        var keys = layout.Areas.Select(a => a.Key).ToList();
+        var (matrix, chunks) = BuildMatrix(0, layout.Width, layout.Height, drawings, keys, (x, z) => layout.Areas.FirstOrDefault(a => a.Holds(x, z))?.Key, Fill, 0);
+        var extra = new List<WorldMatrixFile>();
+        for (int i = 0; i < layout.Maps.Count; i++)
+        {
+            var m = layout.Maps[i];
+            var (mx, mc) = BuildMatrix(m.Matrix, m.Width, m.Height, mapDrawings![i], new List<string> { m.Area }, (x, z) => m.Area, m.Fill, chunks.Count);
+            chunks.AddRange(mc);
+            extra.Add(mx);
+        }
+        return new DrawnWorld(matrix, chunks, extra, layout.Maps.Where(m => m.Cell.Length > 0).ToDictionary(m => m.Area, m => m.Cell));
+    }
+
+    private static (WorldMatrixFile Matrix, List<WorldChunkFile> Chunks) BuildMatrix(int matrixId, int layoutWidth, int layoutHeight, IReadOnlyList<(Piece Piece, string[] Rows)> drawings,
+        List<string> keys, Func<int, int, string?> AreaOf, char fill, int firstChunk)
+    {
+        var layout = (Width: layoutWidth, Height: layoutHeight);
         int width = layout.Width * T, height = layout.Height * T;
         var tiles = new char?[width, height];
         foreach (var (piece, rows) in drawings)
@@ -113,9 +140,6 @@ public static class Drawing
                     if (gx < 0 || gz < 0 || gx >= width || gz >= height) throw new InvalidDataException($"{piece.File}: tile {x},{z} lies outside the region.");
                     tiles[gx, gz] = c;
                 }
-
-        var keys = layout.Areas.Select(a => a.Key).ToList();
-        string? AreaOf(int x, int z) => layout.Areas.FirstOrDefault(a => a.Holds(x, z))?.Key;
 
         var chunks = new List<WorldChunkFile>();
         var cells = new string[layout.Height, layout.Width];
@@ -136,7 +160,7 @@ public static class Drawing
                         if (AreaOf(cx * T + x, cy * T + z) is { } a) counts[a] = counts.GetValueOrDefault(a) + 1;
                 string own = counts.Count == 0 ? keys[0] : counts.OrderByDescending(p => p.Value).ThenBy(p => keys.IndexOf(p.Key)).First().Key;
 
-                var chunk = new WorldChunkFile { Id = chunks.Count };
+                var chunk = new WorldChunkFile { Id = firstChunk + chunks.Count };
                 var areaRows = new List<string>();
                 bool mixed = false;
                 for (int z = 0; z < T; z++)
@@ -148,7 +172,7 @@ public static class Drawing
                     for (int x = 0; x < T; x++)
                     {
                         int gx = cx * T + x, gz = cy * T + z;
-                        var ink = Legend[tiles[gx, gz] ?? Fill];
+                        var ink = Legend[tiles[gx, gz] ?? fill];
                         behaviours.Append(((byte)ink.Behaviour).ToString("x2"));
                         solid.Append(ink.Solid ? '#' : '.');
                         cover.Append(ink.Cover);
@@ -169,15 +193,15 @@ public static class Drawing
                 cellAreas[cy, cx] = keys.IndexOf(own).ToString(System.Globalization.CultureInfo.InvariantCulture);
             }
 
-        int cellWidth = Math.Max(2, chunks.Count.ToString(System.Globalization.CultureInfo.InvariantCulture).Length);
+        int cellWidth = Math.Max(2, (firstChunk + chunks.Count).ToString(System.Globalization.CultureInfo.InvariantCulture).Length);
         var matrix = new WorldMatrixFile
         {
-            Id = 0, Width = layout.Width, Height = layout.Height,
+            Id = matrixId, Width = layout.Width, Height = layout.Height,
             Chunks = Enumerable.Range(0, layout.Height).Select(y => WorldMatrixFile.Row(Enumerable.Range(0, layout.Width).Select(x => cells[y, x]), cellWidth)).ToList(),
             Areas = Enumerable.Range(0, layout.Height).Select(y => WorldMatrixFile.Row(Enumerable.Range(0, layout.Width).Select(x => cellAreas[y, x]), cellWidth)).ToList(),
             AreaKeys = keys
         };
-        return new DrawnWorld(matrix, chunks);
+        return (matrix, chunks);
     }
 
     /// <summary>
@@ -209,6 +233,7 @@ public static class Drawing
             for (int y = 0; y < world.Matrix.Height; y++)
                 for (int x = 0; x < world.Matrix.Width; x++)
                     if (world.Matrix.AreaAt(x, y) == area.Key) cells.Add($"{x},{y}");
+            if (cells.Count == 0 && world.Cells != null && world.Cells.TryGetValue(area.Key, out var mouth)) cells.Add(mouth);
             var land = area.Land?.Select(e => e.Species).Distinct().ToList();
             habitats.Areas.Add(new HabitatArea
             {
@@ -219,4 +244,26 @@ public static class Drawing
         }
         return habitats;
     }
+}
+
+/// <summary>
+/// A map of its own drawn beside the overworld (<see cref="Layout.Maps"/>): a cave or any place whose world file lists
+/// it as a map (<c>world.json</c>'s <c>maps</c>), on a grid of <see cref="Width"/> by <see cref="Height"/> chunks written as
+/// matrix <see cref="Matrix"/>, all one area. Where no drawing reaches is <see cref="Fill"/>, rock by default.
+/// </summary>
+public sealed class MapDrawing
+{
+    public int Matrix { get; set; }
+    public int Width { get; set; }
+    public int Height { get; set; }
+
+    /// <summary>The map's one area key, which its area file names.</summary>
+    public string Area { get; set; } = "";
+
+    public char Fill { get; set; } = 'r';
+
+    /// <summary>The cell of the overworld its mouth lies in, <c>"x,y"</c>: where the Pokédex's area page shows the cave's Pokémon.</summary>
+    public string Cell { get; set; } = "";
+
+    public List<Piece> Pieces { get; set; } = new();
 }

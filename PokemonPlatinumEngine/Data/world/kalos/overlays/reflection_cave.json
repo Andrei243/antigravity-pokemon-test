@@ -1,0 +1,27 @@
+{
+  // Reflection Cave (plan 23 · Z3, second part): a map of its own, drawn by hand (tools/MapDraw/kalos/reflection_cave.txt),
+  // our words. A dead-end cave off Route 11, east of the road: a corridor, a long hall with two still pools that mirror the
+  // ceiling, a west pocket and a north chamber, with two items, two trainers and the shy rock and ghost Pokémon that
+  // like the dark. It plays Santalune Forest's song until plan 31 writes it a cave song of its own
+  "area": "reflection_cave",
+  "bgmTrack": "kalos/santalune_forest",
+  "trees": "Round",
+  "people": {
+    "lass": {
+      "name": "Perrine",
+      "npcType": "Lass",
+      "trainer": {
+        "dialogueBefore": "Lass Perrine: Look at the pools! You can see the whole ceiling in them. Now look at my Pokémon!",
+        "dialogueAfter": "Lass Perrine: I looked at the pools too long and not at you."
+      }
+    },
+    "youngster": {
+      "name": "Ambroise",
+      "npcType": "Youngster",
+      "trainer": {
+        "dialogueBefore": "Youngster Ambroise: It's spooky in here, and I love it. Come on, let's battle!",
+        "dialogueAfter": "Youngster Ambroise: Okay, that was a little spooky for me too."
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  // Ambrette Town (plan 23 · Z3, second part): drawn by hand, our words. A town on a bay at the foot of the coast road:
+  // Route 8 comes in from the north along a long avenue, the street runs east out of town as Route 9, and a pier
+  // reaches out into the water. Its Pokémon Center (with the Mart's counter inside), an aquarium, a cottage and a house
+  // are its rooms. Its houses are Cyllage's coastal stone (Architecture.Cyllage), and it plays Santalune's song until
+  // plan 31 writes it its own. X and Y's fossil laboratory is not built (no fossil of Kalos is in the game's items yet)
+  "area": "ambrette_town",
+  "bgmTrack": "kalos/santalune",
+  "trees": "Round",
+  "architecture": "Cyllage",
+  "doors": [
+    { "warp": 0, "map": "AmbretteTown_WestHouse", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 1, "map": "AmbretteTown_PokemonCenter_1F", "x": 8, "y": 12, "facing": "Up" },
+    { "warp": 2, "map": "AmbretteTown_Aquarium", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 3, "map": "AmbretteTown_Cottage", "x": 4, "y": 8, "facing": "Up" }
+  ],
+  "props": [
+    { "type": "LampPost", "x": 100, "y": 468, "width": 1, "depth": 1 },
+    { "type": "LampPost", "x": 107, "y": 481, "width": 1, "depth": 1 },
+    { "type": "Bench", "x": 92, "y": 487, "width": 2, "depth": 1 }
+  ],
+  "people": {
+    "angler": {
+      "name": "Angler",
+      "npcType": "fisherman",
+      "still": true,
+      "dialog": [ "I've fished off this pier since before the aquarium was built. The big ones only bite at dusk." ]
+    },
+    "child": {
+      "name": "Child",
+      "npcType": "Youngster",
+      "dialog": [ "I saw a Pokémon in the tide pools that looked just like a rock. Then it blinked at me!" ]
+    },
+    "woman": {
+      "name": "Lady",
+      "npcType": "Lady",
+      "still": true,
+      "dialog": [ "Ambrette is quiet in the afternoons. Everyone's out on the water, or asleep in the shade." ]
+    }
+  },
+  "signs": {
+    "TownSign": "Ambrette Town\nA town on a bay, where the cliff road meets the south coast."
+  }
+}

@@ -33,7 +33,20 @@
     { "file": "kalos_route_10.txt", "x": 100, "z": 236 },
     { "file": "geosenge_town.txt", "x": 96, "z": 192 },
     { "file": "kalos_route_11.txt", "x": 144, "z": 150 },
-    { "file": "shalour_city.txt", "x": 136, "z": 92 }
+    { "file": "shalour_city.txt", "x": 136, "z": 92 },
+    // Plan 23 � Z3, second part: Route 8 on south past the rockfall to Ambrette Town on its bay, and Route 9 east along the
+    // south coast, with a cave off each of the two roads (Reflection Cave off Route 11, Glittering Cave off Route 9)
+    { "file": "kalos_route_8_south.txt", "x": 80, "z": 422 },
+    { "file": "ambrette_town.txt", "x": 72, "z": 462 },
+    { "file": "kalos_route_9.txt", "x": 128, "z": 472 },
+    // Route 12, the Blossom Road, on east to Coumarine City, a garden city on the south coast
+    { "file": "kalos_route_12.txt", "x": 208, "z": 470 },
+    { "file": "coumarine_city.txt", "x": 232, "z": 458 }
+  ],
+  // Plan 23 � Z3, second part: maps of their own beside the overworld, each on a grid of its own and its own matrix (the caves)
+  "maps": [
+    { "matrix": 1, "area": "reflection_cave", "width": 2, "height": 1, "cell": "5,5", "pieces": [ { "file": "reflection_cave.txt", "x": 4, "z": 4 } ] },
+    { "matrix": 2, "area": "glittering_cave", "width": 2, "height": 2, "cell": "5,14", "pieces": [ { "file": "glittering_cave.txt", "x": 4, "z": 4 } ] }
   ],
   "areas": [
     { "key": "vaniville_town", "x": 236, "z": 700, "width": 40, "depth": 30 },
@@ -49,11 +62,15 @@
     { "key": "camphrier_town", "x": 176, "z": 328, "width": 52, "depth": 58 },
     { "key": "kalos_route_6", "x": 184, "z": 262, "width": 36, "depth": 66 },
     { "key": "kalos_route_7", "x": 120, "z": 386, "width": 100, "depth": 42 },
-    { "key": "kalos_route_8", "x": 80, "z": 360, "width": 40, "depth": 68 },
+    { "key": "kalos_route_8", "x": 80, "z": 360, "width": 40, "depth": 102 },
     { "key": "cyllage_city", "x": 72, "z": 296, "width": 56, "depth": 64 },
     { "key": "kalos_route_10", "x": 100, "z": 236, "width": 36, "depth": 60 },
     { "key": "geosenge_town", "x": 96, "z": 192, "width": 48, "depth": 44 },
     { "key": "kalos_route_11", "x": 144, "z": 150, "width": 36, "depth": 58 },
-    { "key": "shalour_city", "x": 136, "z": 92, "width": 60, "depth": 58 }
+    { "key": "shalour_city", "x": 136, "z": 92, "width": 60, "depth": 58 },
+    { "key": "ambrette_town", "x": 72, "z": 462, "width": 56, "depth": 44 },
+    { "key": "kalos_route_9", "x": 128, "z": 472, "width": 80, "depth": 28 },
+    { "key": "kalos_route_12", "x": 208, "z": 470, "width": 24, "depth": 30 },
+    { "key": "coumarine_city", "x": 232, "z": 458, "width": 56, "depth": 52 }
   ]
 }

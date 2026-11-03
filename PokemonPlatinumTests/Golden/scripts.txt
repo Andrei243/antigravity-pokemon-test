@@ -17008,7 +17008,7 @@ way -
   + FLAG_MET_CRESSELIA
   + seen fullmoon_island_forest.Cresselia on Fullmoon Island
 === geosenge_town.Trevor
-from the trigger at 118,233 of Kalos
+from the trigger at 118,227 of Kalos
 way -
   Trevor> Lucas! I've been reading about these stones. Nobody knows who stood them up, or why.
   Trevor> And there's something even stranger in Shalour City, up the coast. The professor's research is all about it.

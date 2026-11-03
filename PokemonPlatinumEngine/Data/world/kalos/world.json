@@ -10,7 +10,10 @@
   "buildingsAtDoors": true,
   "maps": [
     // The overworld: 24 chunks by 24, Vaniville Town in its south-west
-    { "name": "Kalos", "matrix": 0, "trees": "Round" }
+    { "name": "Kalos", "matrix": 0, "trees": "Round" },
+    // Plan 23 · Z3, second part: the two caves, maps of their own (tools/MapDraw's layout.json "maps")
+    { "name": "ReflectionCave", "matrix": 1, "area": "reflection_cave", "trees": "Round", "setting": "Cave" },
+    { "name": "GlitteringCave", "matrix": 2, "area": "glittering_cave", "trees": "Round", "setting": "Cave" }
   ],
   "areas": [
     "vaniville_town",
@@ -33,6 +36,14 @@
     "kalos_route_10",
     "geosenge_town",
     "kalos_route_11",
-    "shalour_city"
+    "shalour_city",
+    // Plan 23 · Z3, second part: Route 8 on south to Ambrette Town, Route 9 east along the coast, and the two caves
+    "ambrette_town",
+    "kalos_route_9",
+    "reflection_cave",
+    "glittering_cave",
+    // Route 12 on east to Coumarine City, whose Gym is a later part of plan 23 · Z3
+    "kalos_route_12",
+    "coumarine_city"
   ]
 }

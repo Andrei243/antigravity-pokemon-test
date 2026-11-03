@@ -79,6 +79,8 @@ namespace MapDraw
             foreach (var chunk in world.Chunks)
                 list.Add((Path.Combine(target, "chunks", $"{chunk.Id:000}.json"), GameDataFiles.Serialize(chunk)));
             list.Add((Path.Combine(target, "matrices", "000.json"), GameDataFiles.Serialize(world.Matrix)));
+            foreach (var map in world.Maps ?? new List<WorldMatrixFile>())
+                list.Add((Path.Combine(target, "matrices", $"{map.Id:000}.json"), GameDataFiles.Serialize(map)));
             string areas = Path.Combine(target, "areas");
             var areaFiles = Directory.Exists(areas)
                 ? Directory.GetFiles(areas, "*.json").Select(f => GameDataFiles.Deserialize<WorldAreaFile>(File.ReadAllText(f))).ToList()
