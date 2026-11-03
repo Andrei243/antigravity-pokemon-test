@@ -6469,11 +6469,41 @@ Emerald's `LilycoveCity_LilycoveMuseum_2F`, `SlateportCity_PokemonFanClub`, `Mos
 - **What is not here.** The stage rooms (`ContestHall`, `ContestHallBeauty`, `ContestHallCool`, `ContestHallCute`,
   `ContestHallSmart`, `ContestHallTough`): Emerald never lets the player walk in them (its player is hidden and the
   contest's graphics replace the map; they have no warps), so they are a backdrop for the contest and not a place;
-  the contest here is the screen alone. **Emerald's Pokéblock feeders** are not built: the pinned data names their tile
+  the contest here is the screen alone. **Emerald's Pokéblock feeders** (since built: "The Safari Zone's Pokéblock
+  feeders", below) were not built then: the pinned data names their tile
   behaviour (`MB_POKEBLOCK_FEEDER`) and no script or text uses them, and their rules (what a Pokéblock set down does to
   the wild Pokémon round it, for how many steps) are in source (`src/`) that the importer's cache does not hold, so there is
   nothing to build them from honestly; the reader's chunks carry no such tile yet either. **The Lilycove Lady's contest**
   is the same (her rules are in source the import does not read); both are left.
+
+## The Safari Zone's Pokéblock feeders (2026-11-03, plan 21 · H11, part d)
+
+Emerald's `src/safari_zone.c`, `PickWildMonNature` of `src/wild_encounter.c` and `EventScript_PokeBlockFeeder` of
+`data/scripts/safari_zone.inc`, read from the pinned commit; the lines are our own. The note under "Hoenn's contests and
+Pokéblocks" that the feeders could not be built is out of date: the source was reachable all along.
+
+- **Where they are.** The eleven tiles of Emerald's Safari Zone whose metatile has `MB_POKEBLOCK_FEEDER` (metatile 0x310
+  of `gTileset_Lilycove`): three in the north-west part, two in the north, one each in the south-west, south and
+  north-east, three in the south-east. The reader's chunks keep no such behaviour, so the zone's overlays read each tile
+  (`readAt`, `common.HoennFeeder`), laid where its part lies on the zone's one map (each part forty tiles square, from
+  the north-west part at nought). The feeder itself is drawn as the blocked metatile it is (a stone stand), not as a
+  box of its own.
+- **Setting one down.** Facing a feeder: one that holds a Pokéblock already says so (`pokeblock feeder`); otherwise the
+  player is asked and may set a Pokéblock of the case down (`pokeblock place`), which leaves the case. Ten may lie in the
+  zone at once (`NUM_POKEBLOCK_FEEDERS`); each lasts a hundred steps of the Safari Game, counted before the game's own
+  steps, and every one is cleared as a game begins, ends or is read back from a save. Nothing of them is saved, as
+  Emerald keeps them in working memory only.
+- **What it does.** While a Pokéblock lies within five steps across and down together of where the player's step ends,
+  in the same part, four wild Pokémon in five take a nature that likes it: the twenty-five natures are shuffled (each
+  pair swapped on a coin, in Emerald's order) and the first whose gain from the Pokéblock is above nothing is taken.
+  This comes before Synchronize, as in Emerald; a Pokéblock no nature likes chooses nothing. It works on every wild
+  Pokémon of the zone, the grass's, the water's and the rocks'.
+- **Emerald's carried difference is kept.** `GetPokeblockFeederWithinRange` subtracts each feeder's tile from what it made
+  of the one before, not from the player's tile again, so with two Pokéblocks in a part the second is found where Emerald
+  finds it (sometimes not when the player stands beside it). It works on each part's own tiles, as Emerald's maps have them.
+- **Not here.** Emerald's Safari battle throws Pokéblocks at the wild Pokémon (POKéBLOCK in place of the Great Marsh's
+  bait and mud); the battle here is still the Great Marsh's, so the Safari Fan Club's count of Pokéblocks thrown is not
+  kept either. A feeder's own picture is not drawn.
 
 ## The Lilycove Lady (2026-11-01, plan 21 · H11, part c)
 

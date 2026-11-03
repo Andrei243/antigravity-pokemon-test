@@ -1915,7 +1915,7 @@ public partial class GameEngine
         var movement = MovementHere;
         flow.Player.Directions = movement.Directions;
         flow.Player.AnalogSpeed = movement.Speed == MovementSpeed.Analog;
-        flow.Player.Lead = WildLead.Of(flow.Party, flow.EncounterAids);
+        flow.Player.Lead = WildLead.Of(flow.Party, flow.EncounterAids) is { } lead ? lead with { Feeder = FeederInReach } : null;
         flow.Player.Moment = momentOf ??= EncounterMomentNow;
         if (Steering is { } steer) flow.Player.Advance(dt, flow.Map, steer.Want, steer.Run, MeetInTheField, HandleWarp, OnStep);
         // A tool's stick (plan 30 · FM9: the bot and the fuzzer in a free region): free where the place moves freely

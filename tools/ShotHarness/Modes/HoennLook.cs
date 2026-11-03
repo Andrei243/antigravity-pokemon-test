@@ -166,6 +166,16 @@ partial class Harness
         Look("h3k1_cycling_road_north", "Hoenn", 212, 200, Direction.Down);
         Look("h3k8_route119_small_bridge", "Hoenn", 334, 85, Direction.Up);
         Look("h3k9_route119_bridge_west", "Hoenn", 302, 83, Direction.Up);
+        // ---- The Safari Zone's Pokéblock feeders (plan 21 · H11, part d): the south part's, two steps before it, and the
+        // north-west part's by its pond
+        Look("h3l0_safari_feeder_south", "HoennSafariZone", 64, 72, Direction.Up);
+        Look("h3l1_safari_feeder_northwest", "HoennSafariZone", 33, 17, Direction.Up);
+        if (Wants("h3l"))
+            foreach (var (fx, fy) in new[] { (64, 70), (33, 15) })
+            {
+                var zone = PokemonPlatinumEngine.Data.MapDatabase.Get("HoennSafariZone");
+                Console.WriteLine($"h3l*: feeder ({fx}, {fy}): behaviour {zone.BehaviourAt(fx, fy)}, walkable {zone.IsWalkable(fx, fy)}, script {zone.TileScripts.GetValueOrDefault((fx, fy))}");
+            }
         if (Wants("h3k2"))
         {
             At("MauvilleCity_GameCorner", 4, 9, Direction.Up);

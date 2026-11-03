@@ -11,10 +11,12 @@ namespace PokemonPlatinumEngine.Overworld;
 /// <c>WildEncounters_FieldParams</c>): its ability works in the field whether it can fight or not, and so does
 /// what it holds (<paramref name="HoldEffect"/>: a Cleanse Tag's <c>EncountersDown</c>). The bag's aids ride with it
 /// (plan 06 · R11): <paramref name="RepelLevel"/> is the level of the team's first Pokémon that can fight while a
-/// Repel works, and <paramref name="Flute"/> the flute played in this place.
+/// Repel works, and <paramref name="Flute"/> the flute played in this place. <paramref name="Feeder"/> is the Pokéblock
+/// lying on a feeder of Hoenn's Safari Zone within reach of where the player stands (plan 21 · H11, part d), which
+/// chooses the nature before the lead's Synchronize has its say.
 /// </summary>
 public readonly record struct WildLead(string? Ability, int Level, Nature Nature, Gender Gender, string? HoldEffect = null,
-    int? RepelLevel = null, Flute Flute = Flute.None)
+    int? RepelLevel = null, Flute Flute = Flute.None, Pokeblock? Feeder = null)
 {
     public static WildLead? Of(Party party) =>
         party.Members.Count == 0 ? null
@@ -177,9 +179,16 @@ public static class WildEncounterRules
         return wildLevel <= first.Level - 5 && rng.Next(2) == 0;
     }
 
-    /// <summary><c>GetNatureForWildMon</c>: with Synchronize the lead's own nature one time in two; null leaves it to chance.</summary>
-    public static Nature? NatureFor(WildLead? lead, Random rng) =>
-        lead is { Ability: "Synchronize" } first && rng.Next(2) == 0 ? first.Nature : null;
+    /// <summary>
+    /// <c>GetNatureForWildMon</c>: with Synchronize the lead's own nature one time in two; null leaves it to chance. In
+    /// Hoenn's Safari Zone a Pokéblock on a feeder in reach chooses first (Emerald's <c>PickWildMonNature</c>, plan 21 ·
+    /// H11, part d; <see cref="PokeblockFeeders.NatureFor"/>), and nothing is drawn for it where none lies.
+    /// </summary>
+    public static Nature? NatureFor(WildLead? lead, Random rng)
+    {
+        if (lead?.Feeder is { } block && PokeblockFeeders.NatureFor(block, rng) is { } liked) return liked;
+        return lead is { Ability: "Synchronize" } first && rng.Next(2) == 0 ? first.Nature : null;
+    }
 
     /// <summary>
     /// What a wild Pokémon is holding (plan 06 · R13; <c>Pokemon_GiveHeldItem</c>, from <c>AddWildMonToParty</c>): a

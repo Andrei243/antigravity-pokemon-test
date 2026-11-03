@@ -18,6 +18,18 @@ namespace PokemonPlatinumEngine.Core;
 /// </summary>
 public partial class GameEngine
 {
+    // ------------------------------------------------------------------ the Safari Zone's feeders
+
+    /// <summary>
+    /// The Pokéblock on a feeder of Hoenn's Safari Zone within reach of where the player's step ends (plan 21 · H11, part
+    /// d; Emerald's <c>SafariZoneGetActivePokeblock</c>, by <c>PlayerGetDestCoords</c>), or null: only while a Safari Game
+    /// is on, and only on the zone's map. The wild Pokémon met there take a nature it chooses (<see cref="WildLead.Feeder"/>).
+    /// </summary>
+    internal Pokeblock? FeederInReach =>
+        flow.Safari.Active && flow.Map?.Name == PokeblockFeeders.MapName
+            ? flow.Safari.Feeders.InReach(flow.Player.Heading.X, flow.Player.Heading.Y)
+            : null;
+
     // ------------------------------------------------------------------ the appeals
 
     /// <summary>

@@ -16,7 +16,7 @@ public sealed partial class ScriptRunner
 {
     private AppealRank appealRank = AppealRank.Normal;
     private ContestStat appealCategory = ContestStat.Cool;
-    private string lastWinner = "", lastWinnerMon = "", lastTaste = "";
+    private string lastWinner = "", lastWinnerMon = "", lastTaste = "", lastFeeder = "";
 
     /// <summary>
     /// <c>rank</c> and <c>category</c> set what is entered; <c>check</c> asks whether the Pokémon chosen (the slot in
@@ -142,6 +142,14 @@ public sealed partial class ScriptRunner
     /// script waits (RESULT 1 when a Pokéblock went into the case, 0 when the player backed out or the case was full);
     /// <c>count</c> is how many Pokéblocks the case holds and <c>full</c> is 1 when it can take no more.
     /// </summary>
+    /// <summary>The tile one step before the player (<c>GetXYCoordsOneStepInFrontOfPlayer</c>): the feeder they face.</summary>
+    private (int X, int Y) FeederTile()
+    {
+        var (x, y) = host.TileOf(null);
+        var (dx, dy) = Overworld.FieldMovement.Delta(host.FacingOf(null));
+        return (x + dx, y + dy);
+    }
+
     private void PokeblockOp(Instruction i)
     {
         switch (i.Name)
@@ -165,6 +173,38 @@ public sealed partial class ScriptRunner
             case "full":
                 Result = host.PokeblockCase.IsFull ? 1 : 0;
                 break;
+            // Hoenn's Safari Zone's feeders (plan 21 · H11, part d; Emerald's GetPokeblockFeederInFront): RESULT 1, with
+            // {feeder} its name, when a Pokéblock already lies on the feeder before the player, else 0
+            case "feeder":
+            {
+                var (x, y) = FeederTile();
+                int at = host.Safari.Feeders.At(x, y);
+                Result = at >= 0 ? 1 : 0;
+                lastFeeder = at >= 0 ? host.Safari.Feeders.Slots[at]!.Block.Name : "";
+                break;
+            }
+            // A Pokéblock of the case chosen and set down on that feeder (OpenPokeblockCaseOnFeeder,
+            // SafariZoneActivatePokeblockFeeder): RESULT 1 with {feeder} its name, 0 when the player backed out, had none
+            // or every one of the zone's ten places is taken
+            case "place":
+            {
+                var listed = host.PokeblockCase.Listed();
+                if (listed.Count == 0) { Result = 0; break; }
+                var rows = listed.Select(p => Text.Of("scriptLines.pokeblockRow", ("name", p.Block.Name), ("level", p.Block.Level)))
+                    .Append(Text.Of("scriptLines.noThanks")).ToList();
+                host.Ask(speakerShown, Text.Of("scriptLines.whichPokeblock"), rows, cancel: listed.Count);
+                afterBusy = () =>
+                {
+                    if (host.Answer < 0 || host.Answer >= listed.Count) { Result = 0; return; }
+                    var (slot, block) = listed[host.Answer];
+                    var (x, y) = FeederTile();
+                    if (!host.Safari.Feeders.Place(x, y, block)) { Result = 0; return; }
+                    host.PokeblockCase.RemoveAt(slot);
+                    lastFeeder = block.Name;
+                    Result = 1;
+                };
+                break;
+            }
             // Lilycove's Contest Lady (plan 21 · H12, part n; Models/ContestLady.cs): a Pokéblock of the case chosen and fed
             // to her Pokémon, judged by the condition it trains for (RESULT 0 backed out, 1 not its flavour, 2 its flavour)
             case "lady":
