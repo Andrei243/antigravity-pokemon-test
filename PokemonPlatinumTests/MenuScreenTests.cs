@@ -1774,6 +1774,10 @@ public class MenuScreenTests
         intro.PressConfirm();
         Assert.True(intro.AnswerYes);
         intro.PressConfirm();
+        // The clothes (plan 11 · C10): her own under the cursor, so a press goes on as before
+        Assert.Equal((IntroPhase.ChooseOutfit, 0), (intro.Phase, intro.OutfitIndex));
+        Assert.True(intro.Outfit.IsOwn);
+        intro.PressConfirm();
         Assert.Equal(IntroPhase.AskName, intro.Phase);
 
         // The keyboard: with nothing entered the name is the character's own
@@ -1852,10 +1856,11 @@ public class MenuScreenTests
         Assert.Equal(("Maya", PlayerLook.Girl, "Kit"), (intro.Name, intro.Look, intro.RivalName));
         Assert.Equal(1f, intro.Appearance().Dark);
 
-        // The boy with nothing entered is Lucas
+        // The boy with nothing entered is Lucas, in his own clothes
         var plain = new IntroScreen();
         plain.Open();
         Through(plain, IntroPhase.ChooseLook);
+        plain.PressConfirm();
         plain.PressConfirm();
         plain.PressConfirm();
         Through(plain, IntroPhase.EnterName);
@@ -1867,6 +1872,101 @@ public class MenuScreenTests
         plain.PressConfirm();
         plain.PressConfirm();
         Assert.Equal(("Lucas", PlayerLook.Boy, "Barry"), (plain.Name, plain.Look, plain.RivalName));
+        Assert.True(plain.Outfit.IsOwn);
+        Assert.Equal("PLAYER", plain.Dressed);
+    }
+
+    // ------------------------------------------------------------------ the clothes in the introduction (plan 11 · C10)
+
+    private static IntroScreen AtTheClothes(PlayerLook look)
+    {
+        var intro = new IntroScreen();
+        intro.Open();
+        Through(intro, IntroPhase.ChooseLook);
+        if (look == PlayerLook.Girl) intro.Move(1, 0);
+        intro.PressConfirm();
+        intro.PressConfirm();
+        Assert.Equal(IntroPhase.ChooseOutfit, intro.Phase);
+        return intro;
+    }
+
+    [Fact]
+    public void TheIntroductionOffersTheLooksOwnClothesFirstAndTheSetsThatSuitIt()
+    {
+        foreach (var look in new[] { PlayerLook.Boy, PlayerLook.Girl })
+        {
+            var intro = AtTheClothes(look);
+            var sets = ClothingDatabase.SetsFor(look);
+            Assert.NotEmpty(sets);
+            Assert.Equal(sets.Count + 1, intro.Outfits.Count);
+            Assert.True(intro.Outfits[0].IsOwn);
+            Assert.Equal(sets.Select(s => s.Outfit), intro.Outfits.Skip(1));
+            Assert.Equal(sets.Select(s => s.Name), intro.OutfitNames.Skip(1));
+            // Every set is whole: its garments all in the data, each in a slot of its own
+            foreach (var set in sets)
+            {
+                Assert.All(set.Garments, g => Assert.NotNull(ClothingDatabase.Get(g)));
+                Assert.Equal(set.Garments.Count, set.Outfit.Garments().Count());
+            }
+        }
+        // A set for the boy alone isn't the girl's, and the other way round
+        Assert.DoesNotContain(ClothingDatabase.SetsFor(PlayerLook.Girl), s => s.For == PlayerLook.Boy);
+        Assert.DoesNotContain(ClothingDatabase.SetsFor(PlayerLook.Boy), s => s.For == PlayerLook.Girl);
+    }
+
+    [Fact]
+    public void TheClothesGoRoundAndBGoesBackToTheLook()
+    {
+        var intro = AtTheClothes(PlayerLook.Girl);
+        int count = intro.Outfits.Count;
+        intro.Move(-1, 0);
+        Assert.Equal(count - 1, intro.OutfitIndex);
+        intro.Move(1, 0);
+        intro.Move(1, 0);
+        Assert.Equal(1, intro.OutfitIndex);
+        Assert.Equal(Outfit.Dress("DAWN", intro.Outfits[1]), intro.Dressed);
+        // Up and down do nothing
+        intro.Move(0, 1);
+        Assert.Equal(1, intro.OutfitIndex);
+
+        // B goes back to the two; choosing the look again offers its own clothes first once more
+        intro.PressCancel();
+        Assert.Equal(IntroPhase.ChooseLook, intro.Phase);
+        intro.PressConfirm();
+        intro.PressConfirm();
+        Assert.Equal((IntroPhase.ChooseOutfit, 0), (intro.Phase, intro.OutfitIndex));
+
+        // A set taken is the outfit the game begins in
+        intro.Move(1, 0);
+        var chosen = intro.Outfit;
+        intro.PressConfirm();
+        Assert.Equal(IntroPhase.AskName, intro.Phase);
+        Assert.Equal(chosen, intro.Outfit);
+        Assert.False(intro.Outfit.IsOwn);
+    }
+
+    [Fact]
+    public void ASetChosenAtTheStartIsGivenForNothingAndWorn()
+    {
+        var set = ClothingDatabase.SetsFor(PlayerLook.Boy)[0].Outfit;
+        var wardrobe = new Wardrobe();
+        wardrobe.Start(set);
+        Assert.Equal(set, wardrobe.Worn);
+        foreach (var (slot, garment) in set.Garments())
+        {
+            Assert.True(wardrobe.Owns(garment));
+            // ... and is the player's to take off and put on again at no cost
+            Assert.True(wardrobe.Wear(slot, null));
+            Assert.Equal(0, wardrobe.Buy(ClothingDatabase.Get(garment)!, 0));
+        }
+
+        // Nothing chosen is the start the game always had: the look's own clothes and nothing owned
+        wardrobe.Start(null);
+        Assert.True(wardrobe.Worn.IsOwn);
+        Assert.Empty(wardrobe.Owned);
+        wardrobe.Start(Outfit.Own);
+        Assert.True(wardrobe.Worn.IsOwn);
+        Assert.Empty(wardrobe.Owned);
     }
 
     [Fact]

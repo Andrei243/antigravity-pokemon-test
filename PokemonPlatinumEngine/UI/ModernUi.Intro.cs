@@ -46,6 +46,12 @@ internal static partial class ModernUi
             new Color(255, 255, 255, (int)(255 * Math.Clamp(alpha, 0f, 1f))));
     }
 
+    /// <summary>
+    /// Where the outfit's card stands while the clothes are chosen (plan 11 · C10): one card the size of the look's
+    /// two, in the middle, which drawing and the pointer share.
+    /// </summary>
+    public static Rectangle IntroOutfitCard(int sw) => new(sw / 2f - 260, 96, 520, 640);
+
     /// <summary>The whole introduction at one moment.</summary>
     public static void DrawIntro(int sw, int sh, IntroScreen intro, IntroLook look, Texture2D? professor, Texture2D? boy, Texture2D? girl,
         Texture2D? pokemon, Texture2D? ball, Texture2D? sprite, Texture2D? friend = null)
@@ -106,8 +112,37 @@ internal static partial class ModernUi
             UiShapes.Shadow(new Rectangle(place.X - r, place.Y - r, r * 2, r * 2), r, r * 0.35f, Vector2.Zero, new Color(255, 255, 255, (int)(255 * look.Flash)));
         }
 
+        // ---- The clothes to set out in (plan 11 · C10): one card, the look chosen dressed in the outfit under the
+        // cursor, its name under it with arrows either side and a pip for each outfit offered
+        if (phase == IntroPhase.ChooseOutfit && look.Choice > 0.004f)
+        {
+            var r = IntroOutfitCard(sw);
+            r.Y += (1f - look.Choice) * 50f;
+            Card(r, 40, true);
+            var plate = new Rectangle(r.X + 30, r.Y + 30, r.Width - 60, r.Height - 170);
+            UiShapes.Shape(plate, 26, Disc, Disc, Rule, 3);
+            if ((intro.Look == PlayerLook.Girl ? girl : boy) is { } dressed)
+                IntroFigure(dressed, r.X + r.Width / 2f, plate.Y + plate.Height + 34, 560, look.Choice);
+            string label = intro.OutfitNames[intro.OutfitIndex].ToUpperInvariant();
+            float lw = UiFonts.Measure(label, 44, UiWeight.Black);
+            UiFonts.DrawCentered(label, r.X + (r.Width - lw) / 2f, r.Y + r.Height - 92, 44, Selection, UiWeight.Black);
+            int count = intro.Outfits.Count;
+            for (int i = 0; i < count; i++)
+            {
+                var pip = new Vector2(r.X + r.Width / 2f + (i - (count - 1) / 2f) * 30f, r.Y + r.Height - 36);
+                UiShapes.Circle(pip, i == intro.OutfitIndex ? 9f : 6f, i == intro.OutfitIndex ? Selection : Rule);
+            }
+            if (count > 1)
+            {
+                // The arrows beside the card say the choice goes round
+                float mid = r.Y + r.Height / 2f;
+                UiShapes.Triangle(new Vector2(r.X - 70, mid), new Vector2(r.X - 30, mid - 34), new Vector2(r.X - 30, mid + 34), Color.White);
+                UiShapes.Triangle(new Vector2(r.X + r.Width + 70, mid), new Vector2(r.X + r.Width + 30, mid + 34), new Vector2(r.X + r.Width + 30, mid - 34), Color.White);
+            }
+        }
+
         // ---- The two the player can be
-        if (look.Choice > 0.004f && boy is { } first && girl is { } second)
+        if (phase != IntroPhase.ChooseOutfit && look.Choice > 0.004f && boy is { } first && girl is { } second)
         {
             const float w = 500, h = 640;
             float rise = (1f - look.Choice) * 50f;
@@ -130,7 +165,11 @@ internal static partial class ModernUi
         if (intro.Talking) DrawDialogue(sw, sh, intro.Speaker, intro.SpokenText, intro.LineComplete);
         else if (phase is IntroPhase.ChooseLook or IntroPhase.ConfirmLook)
             DrawDialogue(sw, sh, intro.Professor, intro.BoyOrGirl, false);
+        else if (phase == IntroPhase.ChooseOutfit)
+            DrawDialogue(sw, sh, intro.Professor, intro.WhichClothes, false);
 
+        if (phase == IntroPhase.ChooseOutfit)
+            Hints(sw - Margin, 44, Hint("shared.keys.leftRight", "shared.hints.choose"), Hint("shared.keys.z", "intro.thisOne"), Hint("shared.keys.x", "shared.hints.back"));
         if (phase == IntroPhase.ChooseLook) Hints(sw - Margin, 44, Hint("shared.keys.leftRight", "shared.hints.choose"), Hint("shared.keys.z", "intro.thisOne"));
         if (phase == IntroPhase.ConfirmLook)
             Prompt(sw, sh, Text.Of(intro.Look == PlayerLook.Boy ? "intro.confirmLook.boy" : "intro.confirmLook.girl"), Text.Of("intro.confirmLook.blurb"),

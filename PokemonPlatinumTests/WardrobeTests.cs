@@ -246,7 +246,9 @@ public class WardrobeTests
         Assert.Equal(ClothingSlot.Hat, screen.Slot);
         Assert.Null(screen.Rows[0]);
         Assert.Equal(0, screen.SelectedIndex);
-        Assert.Equal(ClothingDatabase.All.Where(g => g.Slot == ClothingSlot.Hat).Select(g => g.Id), screen.Rows.Skip(1));
+        // The free hats and the boutique's own (Lumiose's berets are sold in Lumiose alone)
+        var stock = ClothingDatabase.Stock("jubilife");
+        Assert.Equal(ClothingDatabase.All.Where(g => g.Slot == ClothingSlot.Hat && (g.IsFree || stock.Contains(g))).Select(g => g.Id), screen.Rows.Skip(1));
         Assert.True(screen.Trial.IsOwn);
 
         screen.Move(1);

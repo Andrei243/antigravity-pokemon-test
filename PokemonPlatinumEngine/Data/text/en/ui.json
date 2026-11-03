@@ -3767,6 +3767,10 @@
       "yes": "YES",
       "goBack": "NO, GO BACK"
     },
+    "outfit": {
+      "question": "And what will you set out in? Pick whatever suits you.",
+      "own": "Your own clothes"
+    },
     "sevenLetters": "Seven letters at most. Leave it empty to be called {name}.",
     "key": {
       "delete": "DELETE"

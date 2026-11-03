@@ -407,7 +407,7 @@ public partial class GameEngine
     /// Starts a new game as the character and under the name chosen in the introduction. Every game is played by the
     /// modern rules (plan 06 · R19): Platinum's are the baseline the code writes them against, and no game's.
     /// </summary>
-    public void StartNewGame(string? name, PlayerLook look, string? rival = null, RunRules? run = null)
+    public void StartNewGame(string? name, PlayerLook look, string? rival = null, RunRules? run = null, Outfit? outfit = null)
     {
         // The new game is saved in the slot the title chose for it, the first empty one; a game begun without the
         // title (a test, a tool) takes the first empty one too, and with none keeps the slot it had (plan 12 · Q2)
@@ -477,7 +477,8 @@ public partial class GameEngine
         // A new game names no other region's rival: forget those of any game played before it
         PlayerIdentity.SetRival(null);
         PlayerIdentity.SetRival(rival, NewGameRegionRecord.RivalFor(look), NewGameRegionRecord.Id);
-        flow.Wardrobe.Clear();
+        // The clothes chosen in the introduction, given for nothing and worn (plan 11 · C10; none: the look's own)
+        flow.Wardrobe.Start(outfit);
         PlayerIdentity.SetOutfit(flow.Wardrobe.Worn);
         flow.TrainerId = fieldRandom.Next(0, 65536);
         // Whose Pokémon are shiny for whom: the card's number and its hidden half (plan 06 · R15)
@@ -1252,8 +1253,10 @@ public partial class GameEngine
                 if (flow.IntroScreen.Phase == IntroPhase.Done)
                 {
                     flow.IntroScreen.Close();
-                    StartNewGame(flow.IntroScreen.Name, flow.IntroScreen.Look, flow.IntroScreen.RivalName, newGameRun);
+                    StartNewGame(flow.IntroScreen.Name, flow.IntroScreen.Look, flow.IntroScreen.RivalName, newGameRun, flow.IntroScreen.Outfit);
                     newGameRun = null;
+                    // The outfits looked at and not chosen are let go of, as the wardrobe's are (plan 11 · C10)
+                    if (!IsHeadless) foreach (string tried in flow.IntroScreen.TakeTried()) CharacterModels.Forget(tried);
                 }
                 break;
             case GameState.Overworld:

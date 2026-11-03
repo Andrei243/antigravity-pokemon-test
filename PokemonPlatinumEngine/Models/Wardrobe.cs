@@ -56,6 +56,21 @@ public sealed class Wardrobe
         return cost;
     }
 
+    /// <summary>
+    /// A new game's wardrobe (plan 11 · C10): nothing bought, and the outfit chosen in the introduction given for nothing
+    /// and worn. Null or the look's own clothes is today's start.
+    /// </summary>
+    public void Start(Outfit? chosen)
+    {
+        Clear();
+        if (chosen == null) return;
+        foreach (var (slot, garment) in chosen.Garments())
+        {
+            Give(garment);
+            Wear(slot, garment);
+        }
+    }
+
     /// <summary>Takes a save's wardrobe back: garments the data no longer has are dropped, and so is wearing one not owned.</summary>
     public void Restore(Outfit? worn, IEnumerable<string>? bought)
     {
