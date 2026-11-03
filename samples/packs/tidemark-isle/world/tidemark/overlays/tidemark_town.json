@@ -1,0 +1,25 @@
+{
+  // Tidemark Town (the sample pack's region, plan 16 · T14): our own words. The fisherman on the shore battles when
+  // spoken to (his team is the region's trainers.json, tidemark_fisherman_wade); the house's door leads into the pack's
+  // own room
+  "area": "tidemark_town",
+  "bgmTrack": "tidemark/town",
+  "trees": "Round",
+  "architecture": "Hamlet",
+  "doors": [
+    { "warp": 0, "map": "TidemarkTown_House", "x": 4, "y": 8, "facing": "Up" }
+  ],
+  "people": {
+    "fisherman": {
+      "name": "Wade",
+      "npcType": "Fisherman",
+      "trainer": {
+        "dialogueBefore": "Fisherman Wade: The ferry brings a new face! Let's see if you can land a battle as well as a fish.",
+        "dialogueAfter": "Fisherman Wade: Reeled in, hook and all. Welcome to Tidemark!"
+      }
+    }
+  },
+  "signs": {
+    "TownSign": "Tidemark Town\nWhere the ferry comes in."
+  }
+}

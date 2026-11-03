@@ -83,11 +83,53 @@ Six files are changed a field at a time rather than replaced, with a file of the
 Each field given replaces the field whole; `null` takes it away; an entry whose name or id isn't there is added. In
 `characters.patch.json` (an object, not a list) objects are merged key by key all the way down.
 
+## A region of your own
+
+A pack can add a region the game doesn't have: its file in `regions/<id>.json`, its world in `world/<folder>/` (the
+index `world.json`, matrices, chunks, areas, overlays, `townmap.json`, `habitats.json`, `trainers.json`), its rooms in
+`maps/`, its songs in `music/<folder>/` and its scripts in `scripts/`, all read through the layers as the game's own
+are. A region's file is laid out as the game's are (`docs/data-files.md`, "Regions"), with what the game's own regions
+keep in code said in the file itself:
+
+```json
+{
+  "id": "Tidemark", "name": "Tidemark", "folder": "tidemark", "map": "Tidemark",
+  "start": { "map": "TidemarkTown_House", "x": 4, "y": 7, "facing": "Up" },
+  "arrival": { "map": "Tidemark", "x": 14, "y": 23, "facing": "Up" },
+  "maps": [ "Tidemark", "TidemarkTown_House" ],
+  "after": "Kalos",
+  "link": {
+    "transport": "Boat", "vessel": "ferry", "departureMap": "Kalos",
+    "attendant": { "id": "tidemark_ferryman", "name": "Ferryman", "npcType": "sailor", "x": 259, "y": 709, "facing": "Down", "isTransportAttendant": true }
+  }
+}
+```
+
+- `id` must be no region of the game's (Sinnoh to Paldea, built or not): a pack's file of a game region's name replaces
+  that region's file instead, as any file does. A `world.json` is read from a pack only for a region the pack adds.
+- `after` names where the region joins the chain of regions: right after **the last region with maps** (the game's or
+  an earlier pack's). The way from that region now leads to yours, and its way on to the next leaves from yours. A
+  region whose file names no `after`, or another, is still a region (its maps are its own, `--region` can't reach it
+  since the switch is read before the packs, and nothing sails there); the log and `--validate-packs` say why.
+- `link` is the way to it from the region before: how it goes (`Boat`, `Plane`), the attendant's word for it
+  (`ship`, `ferry`, `plane`, `way`), the map of the region before that it leaves from, and the attendant who stands
+  there, a person as a room writes one with `isTransportAttendant`. The game lays them onto that map as the maps
+  load, so you never copy a file of the game's region to stand someone on it. They take a Champion of the region
+  before across, as the game's own attendants do.
+- `maps` lists every map of the region, its overworld and its rooms. Every map belongs to exactly one region, and no way
+  out of a map leads into another region.
+- The trainers of `world/<folder>/trainers.json` carry the region's folder before their ids (`tidemark_fisherman_wade`),
+  and an area's trainer object finds them by its script, `TRAINER_FISHERMAN_WADE`, as Kalos's do.
+
+**A save made in a pack's region** names the region beside the pack in the packs it keeps. Continued without the
+pack, the title says so with the rest of its notice, and the game wakes where the game began (the first region's start
+for a game begun in Sinnoh), since the save's map is nowhere; everything else of the save is as it was.
+
 ## What can't change
 
-- `world/<region>/world.json`: what is open of a region is always the game's own. A pack's copy is never read.
+- `world/<region>/world.json` of a region the game has: what is open of it is always the game's own. A pack's copy is never read.
 - The save's format, the battle rules written in code and anything else that isn't a data file.
-- A new region: the regions are the game's.
+- The order of the game's own regions, and their ways: a pack's region only joins after the last with maps.
 
 ## Checking a pack
 
@@ -97,8 +139,12 @@ dotnet run --project PokemonPlatinumEngine -- --validate-packs
 
 checks every pack beside the game and the saves without starting it: the manifest, every JSON file, each patch laid
 over the game's file and read as the game reads it, the overlays and rooms, every script (with the same checks the
-game's own scripts get: a song, an item or a species nobody has heard of) and every song. It says a line for each
-finding and exits with 6 when there is one, 0 when all pass. Nothing is put in use.
+game's own scripts get: a song, an item or a species nobody has heard of) and every song, and a region the pack adds:
+that it joins after the last region with maps, that every map of its world belongs to exactly one region and every
+map it lists is the pack's own and no other region's, that no way out of its maps leads into another region, that its
+start and arrival stand on open ground, and that the way to it leaves from a map of the region before with an
+attendant standing on open ground there. It says a line for each finding and exits with 6 when there is one, 0 when
+all pass. Nothing is put in use.
 
 ```bash
 dotnet run --project tools/ContentCheck -- --pack <your pack> [--pack <another> ...]
@@ -114,3 +160,10 @@ and exits with 1 when there is something.
 `samples/packs/gate-lanterns` in the repository is a pack of our own: Oreburgh Gate's lower floor with an overlay's new
 lines, a script for the cyclist, Veteran Grant's team patched and a short tune of its own. The game never loads it
 unless it is copied into a `packs` folder; the tests check it passes `--validate-packs`.
+
+`samples/packs/tidemark-isle` adds a region of its own, Tidemark, after Kalos: one town drawn by hand (its drawing is
+`tools/MapDraw/tidemark`, written into the pack with `dotnet run --project tools/MapDraw -- tidemark --out
+samples/packs/tidemark-isle/world/tidemark`), one house, a fisherman who battles with a team of the region's own
+`trainers.json`, a Town Map, a tune, and a ferryman laid onto Vaniville Town who takes a Champion of Kalos across. The
+tests load it (its maps built, its ways held to the region, the ferryman in Kalos, a save made there), and it passes
+`--validate-packs` and adds nothing to the content check.

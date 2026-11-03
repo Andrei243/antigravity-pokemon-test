@@ -1,0 +1,15 @@
+# Tidemark Town, the sample pack's region (plan 16 · T14). An original tune for this game: a lilting harbour waltz in
+# D major on a marimba over a soft pad, like a boat rocking at its mooring.
+title Tidemark Town
+tempo 96
+meter 3/4
+reverb 0.35
+night none
+
+track lead marimba vol=0.6 pan=0.1 rev=0.35
+  L o5 a4 f+4 d4 | o5 e4 f+4 g4 | o5 a2 b4 | o5 a2. |
+  o5 b4 a4 g4 | o5 f+4 e4 d4 | o5 e4 g4 f+4 | o5 d2. |
+
+track pad pad vol=0.3 pan=-0.2 rev=0.5
+  L o3 (d f+ a)2. | (a c+ e)2. | (g b d)2. | (d f+ a)2. |
+  (g b d)2. | (d f+ a)2. | (a c+ e)2. | (d f+ a)2. |

@@ -1,0 +1,21 @@
+// The Town Map of Tidemark (the sample pack's region, plan 16 · T14; docs/data-files.md, "The region map"): one cell, its
+// one town. Every word is ours. Fly lands before the house once Tidemark Town has been come to.
+{
+  "map": "Tidemark",
+  "columns": 1,
+  "rows": 1,
+  "view": [ 0, 0, 1, 1 ],
+  "cursor": [ 0, 0, 0, 0 ],
+  "start": [ 0, 0 ],
+  "hidden": [],
+  "areas": [
+    { "key": "tidemark_town", "flag": "FLAG_FIRST_ARRIVAL_TIDEMARK_TOWN", "arrival": [ "tidemark_town" ], "about": "A fishing town on a small island, where the ferry from Kalos comes in." }
+  ],
+  "landmarks": [],
+  "blocks": [
+    { "x": 0, "y": 0, "kind": "Town", "name": "Tidemark Town", "area": "tidemark_town" }
+  ],
+  "fly": [
+    { "spawn": 1, "cells": "0,0" }
+  ]
+}

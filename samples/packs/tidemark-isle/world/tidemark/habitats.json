@@ -1,0 +1,30 @@
+{
+  "map": [
+    "."
+  ],
+  "areas": [
+    {
+      "key": "tidemark_town",
+      "name": "Tidemark Town",
+      "cells": "0,0",
+      "morning": [
+        "Wingull",
+        "Shellos",
+        "Corphish",
+        "Krabby"
+      ],
+      "day": [
+        "Wingull",
+        "Shellos",
+        "Corphish",
+        "Krabby"
+      ],
+      "night": [
+        "Wingull",
+        "Shellos",
+        "Corphish",
+        "Krabby"
+      ]
+    }
+  ]
+}

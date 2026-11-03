@@ -1,0 +1,14 @@
+{
+  // Tidemark, the sample pack's region (plan 16 · T14): one chunk drawn by hand (tools/MapDraw/tidemark), written into
+  // the pack with `dotnet run --project tools/MapDraw -- tidemark --out samples/packs/tidemark-isle/world/tidemark`.
+  // A region the game doesn't have reads its pack's own index, where the game's regions always read the game's.
+  "region": "Tidemark",
+  // Its house is drawn into the tiles and found at its door, as Kalos's are
+  "buildingsAtDoors": true,
+  "maps": [
+    { "name": "Tidemark", "matrix": 0, "trees": "Round" }
+  ],
+  "areas": [
+    "tidemark_town"
+  ]
+}

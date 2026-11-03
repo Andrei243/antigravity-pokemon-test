@@ -176,6 +176,59 @@ public sealed class RegionFile
         "ds" => Audio.SynthSound.Ds,
         _ => throw new FormatException($"region {Id}: 'sound' is 'modern' or 'ds', not '{Sound}'")
     };
+
+    // What a region a pack adds says of its place in the chain (plan 16 · T14, the last part; docs/packs.md, "A region
+    // of your own"). The game's own regions are code in RegionDatabase and their files leave these out; a pack's region
+    // has no code, so its file says them all. RegionDatabase reads them only for a region no game region is called.
+
+    /// <summary>A pack's region: its name as the game shows it (the id when left out).</summary>
+    public string? Name { get; set; }
+
+    /// <summary>A pack's region: the generation it stands for, nought when left out (no generation of the games').</summary>
+    public int? Generation { get; set; }
+
+    /// <summary>A pack's region: where a new game begun there (<c>--region</c>) wakes.</summary>
+    public RegionSpot? Start { get; set; }
+
+    /// <summary>A pack's region: where a Champion who crosses in lands; the start when left out.</summary>
+    public RegionSpot? Arrival { get; set; }
+
+    /// <summary>A pack's region: every map that belongs to it, its overworld and its rooms.</summary>
+    public List<string>? Maps { get; set; }
+
+    /// <summary>
+    /// A pack's region: the region it joins the chain after, which must be the last region with maps (the game's or an
+    /// earlier pack's). Left out, the region is no part of the chain: nothing sails there, though its maps are its own.
+    /// </summary>
+    public string? After { get; set; }
+
+    /// <summary>A pack's region: the way to it from <see cref="After"/>, with where it leaves from and who takes the player.</summary>
+    public RegionLinkFile? Link { get; set; }
+}
+
+/// <summary>A place a pack's region file names: a map, a tile and the way the player faces.</summary>
+public sealed class RegionSpot
+{
+    public string Map { get; set; } = "";
+    public int X { get; set; }
+    public int Y { get; set; }
+    public Direction Facing { get; set; } = Direction.Down;
+
+    public MapSpot ToSpot() => new(Map, X, Y, Facing);
+}
+
+/// <summary>
+/// The way to a pack's region from the region it joins after (plan 16 · T14): how it goes, the attendant's word for
+/// it, the map of the region before where it leaves from, and the attendant who stands there, laid onto that map by
+/// the game as the maps load (a person of a room's own shape, <see cref="MapFile.NpcRecord"/>, with
+/// <c>isTransportAttendant</c>), so a pack never copies a file of the game's region to put someone on it.
+/// </summary>
+public sealed class RegionLinkFile
+{
+    public Transport Transport { get; set; } = Transport.Boat;
+    public string? Vessel { get; set; }
+    public string? DepartureMap { get; set; }
+    public MapFile.NpcRecord? Attendant { get; set; }
 }
 
 /// <summary>Which ways the player may step (plan 30): the grid's four, eight on the grid (stage 1), or free (stage 2).</summary>

@@ -75,6 +75,8 @@ public static class PackCheck
             }
             else if (rel.Contains("/overlays/", StringComparison.Ordinal))
                 Read(rel, () => GameDataFiles.Deserialize<WorldOverlayFile>(File.ReadAllText(path)), findings);
+            else if (rel.StartsWith("regions/", StringComparison.Ordinal))
+                Read(rel, () => GameDataFiles.Deserialize<RegionFile>(File.ReadAllText(path)).MusicSound ?? (object)rel, findings);
             else if (rel.StartsWith(MapDatabase.Folder + "/", StringComparison.Ordinal))
                 Read(rel, () => GameDataFiles.Deserialize<MapFile>(File.ReadAllText(path)).ToMap(), findings);
             else if (DataLayers.Patchable.ContainsKey(Path.GetFileName(rel)))
@@ -110,7 +112,174 @@ public static class PackCheck
                 findings.Add($"{ScriptLibrary.Folder}/{e.Message}");
             }
         }
+        CheckRegions(folder, pack, findings);
         return findings;
+    }
+
+    /// <summary>The words an attendant has for the way across (<c>attendant.vessel.*</c>), and so the vessels a pack's link may name.</summary>
+    public static readonly IReadOnlyList<string> Vessels = new[] { "ship", "ferry", "plane", "way" };
+
+    /// <summary>
+    /// A region a pack adds (plan 16 · T14; docs/packs.md, "A region of your own") held to the rules the game's regions
+    /// are: it joins the chain after the last region with maps; every map of it is the pack's own and belongs to it
+    /// alone, and every map the pack's world makes belongs to exactly one region; no way out of its maps leads into
+    /// another region; its start and arrival stand on open ground of its own maps; and the way to it names where it
+    /// leaves from, in the region before, with an attendant standing there on open ground. Read from the pack's files
+    /// as they are, with nothing put in use and no map of the pack built (a trainer of its own is no trainer until it is).
+    /// </summary>
+    private static void CheckRegions(string folder, DataLayer pack, List<string> findings)
+    {
+        string Rel(string path) => Path.GetRelativePath(folder, path).Replace('\\', '/');
+        var chain = RegionDatabase.With(new[] { pack });
+        string regionFolder = Path.Combine(folder, "regions");
+        foreach (string problem in chain.Problems)
+            findings.Add(problem.Replace(regionFolder + Path.DirectorySeparatorChar, "regions/", StringComparison.Ordinal));
+        // The file a region of the pack's was read from, as a finding names it
+        string FileOf(Region region) =>
+            (Directory.Exists(regionFolder) ? Directory.GetFiles(regionFolder, "*.json") : Array.Empty<string>())
+            .Where(p => string.Equals(Path.GetFileNameWithoutExtension(p), region.Id, StringComparison.OrdinalIgnoreCase))
+            .Select(Rel).FirstOrDefault() ?? "regions/";
+        var own = chain.OfPacks.ToList();
+
+        // The maps the pack makes: its rooms, and its worlds' maps (from the worlds' own index, a region's of its own),
+        // each with the maps its ways lead to and whether a tile of it is open ground
+        var ways = new Dictionary<string, (string File, List<string> To, Func<int, int, bool?> Open)>(StringComparer.OrdinalIgnoreCase);
+        var worldMaps = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+        string rooms = Path.Combine(folder, MapDatabase.Folder);
+        if (Directory.Exists(rooms))
+            foreach (string path in Directory.GetFiles(rooms, "*.json").OrderBy(p => p, StringComparer.Ordinal))
+            {
+                try
+                {
+                    var room = GameDataFiles.Deserialize<MapFile>(File.ReadAllText(path));
+                    var map = room.ToMap();
+                    ways[room.Name] = (Rel(path), room.Warps.Select(w => w.TargetMap).ToList(),
+                        (x, y) => map.InBounds(x, y) ? !map.IsSolid(x, y) : null);
+                }
+                catch (Exception e) when (e is JsonException or InvalidDataException or ArgumentException or IndexOutOfRangeException or ArgumentOutOfRangeException)
+                {
+                    // Said above, as the room was read
+                }
+            }
+        string worlds = Path.Combine(folder, World.Folder);
+        if (Directory.Exists(worlds))
+            foreach (string dir in Directory.GetDirectories(worlds).OrderBy(d => d, StringComparer.Ordinal))
+            {
+                string index = Path.Combine(dir, World.IndexFile);
+                if (!File.Exists(index) || DataLayers.IsFixed(Rel(index))) continue;
+                WorldIndexFile file;
+                try
+                {
+                    file = GameDataFiles.Deserialize<WorldIndexFile>(File.ReadAllText(index));
+                }
+                catch (JsonException)
+                {
+                    continue; // Said above, as every JSON file was read
+                }
+                if (!own.Any(r => string.Equals(r.Id, file.Region, StringComparison.OrdinalIgnoreCase)))
+                    findings.Add($"{Rel(index)}: its region, \"{file.Region}\", is no region this pack adds; a world of a region the game has is the game's own.");
+                var world = World.Open(dir, file);
+                foreach (var entry in file.Maps)
+                {
+                    worldMaps[entry.Name] = Rel(index);
+                    var to = new List<string>();
+                    foreach (string key in file.Areas)
+                    {
+                        try
+                        {
+                            if (world.Area(key) is { } area && area.Matrix == entry.Matrix) to.AddRange(area.Warps.Select(w => w.To));
+                            if (world.Overlay(key) is { } overlay)
+                            {
+                                to.AddRange((overlay.Doors ?? new()).Select(d => d.Map));
+                                to.AddRange((overlay.Exits ?? new()).Select(x => x.Map));
+                            }
+                        }
+                        catch (Exception e) when (e is JsonException or InvalidDataException)
+                        {
+                            findings.Add($"{Rel(dir)}: the area {key} can't be read ({e.Message}).");
+                        }
+                    }
+                    int matrix = entry.Matrix;
+                    ways[entry.Name] = (Rel(index), to.Where(t => t.Length > 0).ToList(), (x, y) =>
+                    {
+                        try
+                        {
+                            return world.ChunkAt(matrix, x, y) is { } at ? !at.Chunk.SolidAt(at.X, at.Z) : null;
+                        }
+                        catch (Exception e) when (e is IOException or InvalidDataException or JsonException)
+                        {
+                            return null;
+                        }
+                    });
+                }
+            }
+
+        // Every map of the pack's own worlds belongs to exactly one region
+        foreach (var (map, file) in worldMaps)
+        {
+            int count = chain.Regions.Count(r => r.Maps.Contains(map, StringComparer.OrdinalIgnoreCase));
+            if (count != 1) findings.Add($"{file}: the map {map} belongs to {(count == 0 ? "no region" : $"{count} regions")}; every map belongs to exactly one.");
+        }
+
+        var game = RegionDatabase.With(Array.Empty<DataLayer>());
+        foreach (var region in own)
+        {
+            string file = FileOf(region);
+            if (region.Maps.Count == 0) findings.Add($"{file}: {region.Id} lists no maps (\"maps\").");
+            foreach (string map in region.Maps)
+            {
+                if (!ways.ContainsKey(map)) findings.Add($"{file}: {region.Id} lists the map {map}, which the pack doesn't make (a room of maps/ or a map of its world).");
+                if (game.RegionOfMap(map) is { } theirs) findings.Add($"{file}: the map {map} is {theirs.Id}'s; a map belongs to exactly one region.");
+                foreach (var other in own.Where(o => o != region && o.Maps.Contains(map, StringComparer.OrdinalIgnoreCase)))
+                    findings.Add($"{file}: the map {map} is listed by {other.Id} too; a map belongs to exactly one region.");
+                // No way out of the region's maps leads into another region, nor nowhere
+                if (ways.TryGetValue(map, out var made))
+                    foreach (string to in made.To.Distinct(StringComparer.OrdinalIgnoreCase))
+                        if (!region.Maps.Contains(to, StringComparer.OrdinalIgnoreCase))
+                            findings.Add($"{made.File}: a way out of {map} leads to {to}, which is {(chain.RegionOfMap(to) is { } beyond ? $"{beyond.Id}'s" : "no map of the region")}; no way crosses regions.");
+            }
+            void Place(string what, MapSpot? spot)
+            {
+                if (spot == null)
+                {
+                    if (what == "start") findings.Add($"{file}: {region.Id} has no \"start\": a region of a pack's needs one, or it has no maps to play in.");
+                    return;
+                }
+                if (!region.Maps.Contains(spot.Map, StringComparer.OrdinalIgnoreCase)) findings.Add($"{file}: its {what} is on {spot.Map}, which isn't one of its maps.");
+                else if (ways.TryGetValue(spot.Map, out var made) && made.Open(spot.X, spot.Y) != true)
+                    findings.Add($"{file}: its {what}, {spot.X},{spot.Y} on {spot.Map}, is no open ground.");
+            }
+            Place("start", region.Start);
+            Place("arrival", region.Arrival);
+
+            // The way to it: from the region before, named in the file, with someone to take the player across
+            var link = chain.Links.FirstOrDefault(l => string.Equals(l.To, region.Id, StringComparison.OrdinalIgnoreCase));
+            if (link == null) continue;
+            if (link.Vessel != null && !Vessels.Contains(link.Vessel))
+                findings.Add($"{file}: the way to {region.Id} is a \"{link.Vessel}\"; an attendant knows {string.Join(", ", Vessels)}.");
+            var before = chain.Get(link.From)!;
+            if (link.DepartureMap == null)
+            {
+                findings.Add($"{file}: the way to {region.Id} from {before.Id} names no \"departureMap\": every way between two regions with maps leaves from one, with an attendant.");
+                continue;
+            }
+            if (!before.Maps.Contains(link.DepartureMap, StringComparer.OrdinalIgnoreCase))
+            {
+                findings.Add($"{file}: the way to {region.Id} leaves from {link.DepartureMap}, which is no map of {before.Id}.");
+                continue;
+            }
+            var departure = MapDatabase.TryGet(link.DepartureMap);
+            if (link.Attendant is { } who)
+            {
+                if (who.IsTransportAttendant != true) findings.Add($"{file}: the attendant at {link.DepartureMap} needs \"isTransportAttendant\": true.");
+                if (departure != null && (!departure.InBounds(who.X, who.Y) || !departure.IsWalkable(who.X, who.Y)))
+                    findings.Add($"{file}: the attendant stands at {who.X},{who.Y} on {link.DepartureMap}, which is no open ground.");
+                else if (departure != null && departure.Everyone.Any(n => n.GridX == who.X && n.GridY == who.Y))
+                    findings.Add($"{file}: the attendant stands at {who.X},{who.Y} on {link.DepartureMap}, where someone stands already.");
+            }
+            else if (departure == null || !departure.Everyone.Any(n => n.IsTransportAttendant))
+                findings.Add($"{file}: nobody takes the player from {link.DepartureMap} to {region.Id}: the link needs an \"attendant\".");
+        }
     }
 
     /// <summary>A file of the data read as the game reads it.</summary>

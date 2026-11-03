@@ -30,15 +30,16 @@ public sealed class World
         Index = index;
     }
 
-    /// <summary>Every region that has a world folder, in name order.</summary>
+    /// <summary>
+    /// Every region that has a world folder, in name order: the game's, and a region a pack adds (plan 16 · T14), whose
+    /// folder and index are its pack's own.
+    /// </summary>
     public static List<World> LoadAll()
     {
         var worlds = new List<World>();
-        string root = GameDataFiles.PathOf(Folder);
-        if (!Directory.Exists(root)) return worlds;
-        foreach (string dir in Directory.GetDirectories(root).OrderBy(d => d, StringComparer.Ordinal))
+        foreach (string name in DataLayers.FoldersIn(Folder))
         {
-            string relative = Path.Combine(Folder, Path.GetFileName(dir));
+            string relative = Path.Combine(Folder, name);
             if (File.Exists(GameDataFiles.PathOf(Path.Combine(relative, IndexFile))))
                 worlds.Add(new World(relative, GameDataFiles.Load<WorldIndexFile>(Path.Combine(relative, IndexFile))));
         }

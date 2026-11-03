@@ -558,7 +558,8 @@
         "heading": "Slot {slot} was played with packs",
         "body": "Not in use now: {packs}. The game goes on without what they changed; turn them on under OPTIONS, PACKS.",
         "gone": "{name} {version}",
-        "other": "{name} {version} (now {now})"
+        "other": "{name} {version} (now {now})",
+        "region": "The game was saved in {region}, which {pack} adds: without it, the game wakes where it began."
       },
       "crash": {
         "heading": "The game stopped unexpectedly",
