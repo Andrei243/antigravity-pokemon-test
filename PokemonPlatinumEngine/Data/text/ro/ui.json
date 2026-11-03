@@ -5610,5 +5610,73 @@
       "title": "Cântec de leagăn",
       "hint": "Un singur Poké Ball și un Dratini cu viața plină. Fă aruncarea să conteze în două ture."
     }
+  },
+  "joinAvenue": {
+    "visitor": {
+      "0": {
+        "name": "Saskia",
+        "greeting": "Am venit tocmai din Golful Undella ca să văd strada asta. E tot mai vie de fiecare dată!"
+      },
+      "1": {
+        "name": "Ronan",
+        "greeting": "Herdier-ul meu simte cafeneaua de la trei străzi distanță. Mereu ne oprim întâi aici."
+      },
+      "2": {
+        "name": "Mirela",
+        "greeting": "O prietenă mi-a zis că administratorul de aici e un Antrenor adevărat. Tu ești? Încântată!"
+      },
+      "3": {
+        "name": "Theo",
+        "greeting": "Strâng bani pentru dojo. Timburr-ul meu zice că e gata, dar eu nu sunt prea sigur de mine!"
+      },
+      "4": {
+        "name": "Ines",
+        "greeting": "Trec pe aici în drum spre Stația Gear. Întâi cumpărături, apoi lupte. Asta e regula!"
+      },
+      "5": {
+        "name": "Bartek",
+        "greeting": "Când eram tânăr, strada asta era numai vitrine goale. Ia uite-o acum!"
+      },
+      "6": {
+        "name": "Cosima",
+        "greeting": "Trag la tombolă în fiecare zi. Într-o zi o să iasă premiul cel mare, simt asta."
+      },
+      "7": {
+        "name": "Jonah",
+        "greeting": "Sunt curier. Duc colete din Castelia în Nimbasa, iar Join Avenue e pauza mea."
+      },
+      "8": {
+        "name": "Lumi",
+        "greeting": "Minccino-ul meu adoră salonul. Iese atât de pufos că abia mai vede!"
+      },
+      "9": {
+        "name": "Ezra",
+        "greeting": "Ai încercat anticariatul? Am găsit acolo o fosilă mai veche decât poveștile bunicului meu."
+      },
+      "10": {
+        "name": "Paloma",
+        "greeting": "Scriu un ghid al regiunii Unova. Join Avenue primește o pagină întreagă, datorită ție!"
+      },
+      "11": {
+        "name": "Konstantin",
+        "greeting": "Am pierdut de două ori în al șaptelea vagon al Metroului. O băutură rece aici mai alină durerea."
+      },
+      "12": {
+        "name": "Nell",
+        "greeting": "Am venit pentru creșă. Oul meu s-a tot clătinat toată săptămâna!"
+      },
+      "13": {
+        "name": "Aurel",
+        "greeting": "Sunt muzician stradal. Ecoul de sub acoperișul ăsta e cel mai bun din oraș."
+      },
+      "14": {
+        "name": "Yara",
+        "greeting": "Am auzit că rangul lui Join Avenue crește cu fiecare vizitator. Așa că iată-mă, îmi fac partea!"
+      },
+      "15": {
+        "name": "Dov",
+        "greeting": "Tocmai m-am mutat în Nimbasa. Toată lumea mi-a zis să vin întâi aici, și acum văd de ce."
+      }
+    }
   }
 }

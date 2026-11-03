@@ -1,0 +1,59 @@
+{
+  // The Battle Subway's own riders and its Battle Point counter (plan 22 · U11's leftovers; rulings, "The Battle Subway's
+  // riders, prints and counter"). Written by hand, ours: Black 2's Subway trainers aren't in the import, so the Frontier's
+  // trainers' teams ride the cars dressed as these, a rider by the Frontier trainer's number (Models/Frontier/SubwayRiders.cs:
+  // the rider is the number modulo the riders, the name the number divided by the riders, modulo eight). Every class is one of
+  // Unova's, with a look of its own; a class of two looks names the one its rider wears.
+  "riders": [
+    { "class": "Ace Trainer", "look": "ace_trainer_m", "names": [ "Dorian", "Kellan", "Rafe", "Torin", "Wystan", "Calder", "Bram", "Ilario" ] },
+    { "class": "Ace Trainer", "look": "ace_trainer_f", "names": [ "Odessa", "Maren", "Liesl", "Tamsin", "Vera", "Rosalind", "Imke", "Saoirse" ] },
+    { "class": "Backpacker", "look": "backpacker_m", "names": [ "Lukas", "Hollis", "Emrys", "Jory", "Anselm", "Reto", "Teodor", "Barnaby" ] },
+    { "class": "Backpacker", "look": "backpacker_f", "names": [ "Sunniva", "Petra", "Elodie", "Wren", "Isolde", "Ingrid", "Mila", "Fern" ] },
+    { "class": "Clerk", "look": "clerk", "names": [ "Norbert", "Hugo", "Clement", "Desmond", "Ivo", "Lionel", "Mortimer", "Osric" ] },
+    { "class": "Clerk", "look": "cashier_f", "names": [ "Agathe", "Brigid", "Corinne", "Delphine", "Elsbeth", "Philippa", "Ottilie", "Henrike" ] },
+    { "class": "Depot Agent", "look": "depot_agent", "names": [ "Fenwick", "Gustav", "Hamish", "Ignatius", "Jarvis", "Konrad", "Leopold", "Matthias" ] },
+    { "class": "Doctor", "look": "physician", "names": [ "Aurelio", "Benedikt", "Cassius", "Dmitri", "Erasmus", "Florian", "Gideon", "Horatio" ] },
+    { "class": "Nurse", "look": "nurse", "names": [ "Annika", "Beatrix", "Clio", "Dagny", "Esme", "Freya", "Greta", "Hedda" ] },
+    { "class": "Gentleman", "look": "gentleman", "names": [ "Ambrose", "Bertrand", "Cuthbert", "Edmund", "Fitzgerald", "Godfrey", "Percival", "Reginald" ] },
+    { "class": "Lady", "look": "lady", "names": [ "Arabella", "Celestine", "Cordelia", "Evangeline", "Genevieve", "Henrietta", "Loretta", "Ophelia" ] },
+    { "class": "Socialite", "look": "socialite", "names": [ "Antonia", "Bettina", "Camilla", "Dorothea", "Estelle", "Fiorella", "Giselle", "Honora" ] },
+    { "class": "Pilot", "look": "pilot", "names": [ "Aldo", "Brennan", "Corwin", "Dashiell", "Everett", "Finnian", "Garrick", "Hadley" ] },
+    { "class": "Pokémon Ranger", "look": "ranger_m", "names": [ "Arlo", "Bjorn", "Cormac", "Dax", "Eamon", "Fergus", "Griff", "Ivar" ] },
+    { "class": "Pokémon Ranger", "look": "ranger_f", "names": [ "Astrid", "Brynja", "Calla", "Dagmar", "Eira", "Fiadh", "Gwen", "Hjordis" ] },
+    { "class": "Veteran", "look": "veteran", "names": [ "Alaric", "Bartholomew", "Casimir", "Darius", "Evander", "Ferdinand", "Gregor", "Hartwig" ] },
+    { "class": "Veteran", "look": "veteran_f", "names": [ "Adelheid", "Berenice", "Cressida", "Drusilla", "Eleanor", "Frederica", "Gwendolyn", "Hyacinth" ] },
+    { "class": "Scientist", "look": "scientist", "names": [ "Archibald", "Basil", "Cornelius", "Dunstan", "Ezekiel", "Fabian", "Gottfried", "Hieronymus" ] },
+    { "class": "Worker", "look": "worker", "names": [ "Abe", "Boris", "Clint", "Duncan", "Egon", "Frank", "Gunther", "Hal" ] },
+    { "class": "Musician", "look": "musician", "names": [ "Alessio", "Brio", "Cosimo", "Dario", "Enzo", "Fausto", "Gino", "Mauro" ] }
+  ],
+  // The staff partner of the Multi lines: always a Depot Agent, named by the partner's Frontier number
+  "staff": 6,
+  // The Battle Point counter at the Gear Station: our own prizes and prices, the Frontier's Battle Points
+  "prizes": [
+    { "item": "HP Up", "price": 4 },
+    { "item": "Protein", "price": 4 },
+    { "item": "Iron", "price": 4 },
+    { "item": "Calcium", "price": 4 },
+    { "item": "Zinc", "price": 4 },
+    { "item": "Carbos", "price": 4 },
+    { "item": "Rare Candy", "price": 24 },
+    { "item": "PP Up", "price": 24 },
+    { "item": "PP Max", "price": 48 },
+    { "item": "Power Weight", "price": 16 },
+    { "item": "Power Bracer", "price": 16 },
+    { "item": "Power Belt", "price": 16 },
+    { "item": "Power Lens", "price": 16 },
+    { "item": "Power Band", "price": 16 },
+    { "item": "Power Anklet", "price": 16 },
+    { "item": "Choice Band", "price": 48 },
+    { "item": "Choice Scarf", "price": 48 },
+    { "item": "Choice Specs", "price": 48 },
+    { "item": "Life Orb", "price": 48 },
+    { "item": "Focus Sash", "price": 48 },
+    { "item": "Assault Vest", "price": 48 },
+    { "item": "Rocky Helmet", "price": 48 },
+    { "item": "Eviolite", "price": 48 },
+    { "item": "Weakness Policy", "price": 32 },
+    { "item": "Air Balloon", "price": 32 }
+  ]
+}

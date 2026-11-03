@@ -3653,7 +3653,53 @@ link (plan 06's decision 7), ours grows by days. Every number is ours (`Models/J
   Super Repels) and more again from rank 6 (Max Potions, Full Restores, Max Repels); the flower shop adds the Sweet Heart
   from 4; the café adds Old Gateaux, Lava Cookies and Rage Candy Bars from 5; and the two shop girls open shops of their
   own, the evolution stones from rank 7 and the vitamins from rank 9 (`marts.json`'s `join_avenue_*`). Black 2's dojo,
-  salon, nursery and the rest, its shop ranks of their own and the visitors' greetings are not built.
+  salon, nursery and the rest, its shop ranks of their own and the visitors' greetings are not built (since built: "Join
+  Avenue's other shops and its visitors", below).
+
+## Join Avenue's other shops and its visitors (2026-11-03, plan 22 · U11's leftovers)
+
+Black 2's avenue opens the shops of the passers-by who settle there, each with a level of its own; ours has five more shops
+in the street's empty bays, each opening at a rank of the avenue and doing more the higher that rank goes, which stands for
+Black 2's levels of a shop. Every number is ours (`Models/JoinAvenue.cs`), and none of it is a draw but the raffle.
+
+- **The raffle** (from rank 1, the north-west bay): one free ticket a day (`FLAG_DAILY_UNOVA_JOIN_AVENUE_RAFFLE`), drawn on
+  the game's own chance, 0 to 99, moved up three a rank: a Potion from 0, a Great Ball from 35, a Super Potion from 60, an
+  Ultra Ball from 75, a Revive from 85, a PP Up from 93, a Rare Candy from 99.
+- **The dojo** (from rank 2, the east side): $1,000 a session for one Pokémon chosen and one stat, which gains 4 effort at
+  rank 2 and two more a rank (20 at the top), cut to the rules' cap of a stat (252 by the modern rules) and to 510 in all;
+  nothing is charged when it can gain nothing. An Egg is turned away.
+- **The salon** (from rank 3, the west side): $500 a grooming, 10 friendship at rank 3 and three more a rank, never past
+  255, charged only when it does something.
+- **The nursery** (from rank 4, the east side): once a day (`FLAG_DAILY_UNOVA_JOIN_AVENUE_NURSERY`), free, every Egg of the
+  team is brought on by 2 cycles at rank 4 and one more a rank, never under one cycle, so it still hatches by walking.
+- **The antique shop** (from rank 5, more from 8; the east side): fossils, pearls and Stardust for money at the items'
+  prices, then the Skull and Armor Fossils, Big Pearls, Star Pieces and Rare Bones (`marts.json`'s `join_avenue_antiques`
+  and `_2`). Black 2's antique shop sells relics of its own region, which the data doesn't have.
+- **The visitors** (the stand-in for passers-by met over the console's wireless, which plan 06's decision 7 doesn't hold):
+  sixteen people of ours, each a name and a greeting (`ui.json`'s `joinAvenue.visitor.N`), of whom three stand in the
+  street once the player manages the avenue. Which three is the avenue's visitors so far (`JoinAvenue.VisitorAt`), so they
+  change with each day's visitors and never by chance; they only greet. Black 2's visitors who can be invited to open a
+  shop, its shop levels by money spent and its Join Avenue links are not built.
+
+## The Battle Subway's riders, prints and counter (2026-11-03, plan 22 · U11's leftovers)
+
+- **Riders of its own**: Black 2's Subway trainers aren't in the import, so the Frontier's trainers' teams go on riding the
+  cars, drawn by the Battle Tower's rooms as before (no draw moved), but dressed as riders of the Subway's own: twenty riders
+  of Unova's classes (Ace Trainers, Backpackers, Clerks, Depot Agents, Doctors, Nurses, Gentlemen, Ladies, Socialites,
+  Pilots, Pokémon Rangers, Veterans, Scientists, Workers and Musicians), each with eight names of ours (`Data/subway.json`,
+  `Models/Frontier/SubwayRiders.cs`). A Frontier trainer of number *n* rides as the rider *n* modulo twenty, named by *n*
+  divided by twenty, modulo eight; the two of a Multi pair never share a name. The Multi lines' staff partner is a Depot
+  Agent. The Subway Bosses are as before.
+- **Prints** on the Frontier's frame (the states 0 to 4) in a variable of the Subway's own, `VAR_UNOVA_SUBWAY_PRINT_STATE`:
+  Ingo beaten in a 21st car leaves the silver print waiting, and Emmet beaten in a 49th car after it the gold; a Super
+  train's Boss counts the same, and Emmet beaten first (a Super Double Train meets no Ingo) leaves the silver. Any desk
+  hands the print over before its welcome, and the records' board shows it. Black 2's Subway gives no prints; the Subway is
+  no facility of the Frontier's, so its prints count toward none of the Frontier's own (the gold prints' flag, Lilycove's
+  passes, the Villa's bust).
+- **The prize counter**: a clerk at the Gear Station's east end trades the Frontier's Battle Points (one count with the
+  Frontier's, as the Subway's points always were) for prizes of ours, one to a visit as at the Exchange Service Corner:
+  vitamins at 4, the Power items at 16, Rare Candy and PP Up at 24, Weakness Policy and Air Balloon at 32, PP Max, the Choice
+  items, Life Orb, Focus Sash, Assault Vest, Rocky Helmet and Eviolite at 48.
 
 ## Kanto's first chapter (2026-10-18, plan 19 · K3)
 

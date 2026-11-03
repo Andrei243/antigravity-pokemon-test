@@ -563,12 +563,23 @@ public class ScriptTests
           subway partner staff
           subway partner cheren
           subway partner again
+          subway beaten
+          subway print
+          subway prize
+          subway buy
           subway end
           joinavenue visit
           joinavenue rank
           joinavenue visitors
           joinavenue next
           joinavenue shop market
+          joinavenue shop antiques
+          joinavenue open dojo
+          joinavenue dojo attack
+          joinavenue salon
+          joinavenue nursery
+          joinavenue raffle
+          joinavenue visitor 2
           trainerhill begin expert
           trainerhill active
           trainerhill mode

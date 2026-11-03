@@ -532,6 +532,29 @@
       "Zinc",
       "Carbos"
     ],
+    "join_avenue_antiques": [
+      "Helix Fossil",
+      "Dome Fossil",
+      "Old Amber",
+      "Root Fossil",
+      "Claw Fossil",
+      "Pearl",
+      "Stardust"
+    ],
+    "join_avenue_antiques_2": [
+      "Helix Fossil",
+      "Dome Fossil",
+      "Old Amber",
+      "Root Fossil",
+      "Claw Fossil",
+      "Skull Fossil",
+      "Armor Fossil",
+      "Pearl",
+      "Big Pearl",
+      "Stardust",
+      "Star Piece",
+      "Rare Bone"
+    ],
     "driftveil_market_herbs": [
       "Energy Powder",
       "Energy Root",

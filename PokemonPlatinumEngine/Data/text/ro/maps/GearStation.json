@@ -48,6 +48,16 @@
         ]
       }
     },
+    "bp_counter": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Funcționar"
+        ]
+      }
+    },
     "traveller": {
       "name": {
         "en": [

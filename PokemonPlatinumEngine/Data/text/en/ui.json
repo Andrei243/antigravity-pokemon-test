@@ -5316,5 +5316,73 @@
       "title": "Lullaby",
       "hint": "One Poké Ball, and a Dratini at full health. Make the throw count within two turns."
     }
+  },
+  "joinAvenue": {
+    "visitor": {
+      "0": {
+        "name": "Saskia",
+        "greeting": "I came all the way from Undella Bay just to see this street. It's livelier every time!"
+      },
+      "1": {
+        "name": "Ronan",
+        "greeting": "My Herdier sniffs out the café from three streets away. We always stop here first."
+      },
+      "2": {
+        "name": "Mirela",
+        "greeting": "A friend told me the manager here is a real Trainer. Is that you? Pleased to meet you!"
+      },
+      "3": {
+        "name": "Theo",
+        "greeting": "I'm saving up for the dojo. My Timburr says it's ready, but I'm not so sure about me!"
+      },
+      "4": {
+        "name": "Ines",
+        "greeting": "I stop by on my way to the Gear Station. Shopping first, battles after. That's the rule!"
+      },
+      "5": {
+        "name": "Bartek",
+        "greeting": "When I was young this street was nothing but empty shopfronts. Look at it now!"
+      },
+      "6": {
+        "name": "Cosima",
+        "greeting": "I draw the raffle every day. One day it'll be the top prize, I can feel it."
+      },
+      "7": {
+        "name": "Jonah",
+        "greeting": "I'm a courier. I carry parcels from Castelia to Nimbasa, and this avenue is my break."
+      },
+      "8": {
+        "name": "Lumi",
+        "greeting": "My Minccino loves the salon. It comes out so fluffy it can barely see!"
+      },
+      "9": {
+        "name": "Ezra",
+        "greeting": "Have you tried the antique shop? I found a fossil there older than my grandfather's stories."
+      },
+      "10": {
+        "name": "Paloma",
+        "greeting": "I'm writing a guidebook to Unova. This avenue gets a whole page, thanks to you!"
+      },
+      "11": {
+        "name": "Konstantin",
+        "greeting": "I've lost in the Subway's seventh car twice now. A cold drink here helps with the sting."
+      },
+      "12": {
+        "name": "Nell",
+        "greeting": "I'm here for the nursery. My Egg has been wobbling all week!"
+      },
+      "13": {
+        "name": "Aurel",
+        "greeting": "I'm a street musician. The echo under this roof is the best in the city."
+      },
+      "14": {
+        "name": "Yara",
+        "greeting": "I heard Join Avenue's rank goes up with every visitor. So here I am, doing my part!"
+      },
+      "15": {
+        "name": "Dov",
+        "greeting": "I just moved to Nimbasa. Everyone said to come here first, and now I see why."
+      }
+    }
   }
 }

@@ -248,5 +248,325 @@
         "Cafeneaua Join Avenue\nBăuturi răcoroase toată ziua."
       ]
     }
+  ],
+  "Raffle": [
+    {
+      "en": [
+        "Raffle Clerk"
+      ],
+      "text": [
+        "Vânzătoarea de la tombolă"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the raffle! One free ticket a day, and the busier the avenue, the better the prizes. Draw today's?"
+      ],
+      "text": [
+        "Bine ai venit la tombolă! Un bilet gratuit pe zi, iar cu cât e mai aglomerat bulevardul, cu atât mai bune premiile. Tragi azi?"
+      ]
+    },
+    {
+      "en": [
+        "Congratulations! Come back tomorrow for another ticket."
+      ],
+      "text": [
+        "Felicitări! Revino mâine pentru alt bilet."
+      ]
+    },
+    {
+      "en": [
+        "You've drawn today's ticket already. There'll be a new one for you tomorrow!"
+      ],
+      "text": [
+        "Ai tras deja biletul de azi. Mâine te așteaptă unul nou!"
+      ]
+    },
+    {
+      "en": [
+        "No? Your ticket will wait until the end of the day."
+      ],
+      "text": [
+        "Nu? Biletul te așteaptă până la sfârșitul zilei."
+      ]
+    }
+  ],
+  "Dojo": [
+    {
+      "en": [
+        "Dojo Master"
+      ],
+      "text": [
+        "Maestrul dojo-ului"
+      ]
+    },
+    {
+      "en": [
+        "Hah! Welcome to the dojo. One session is $1,000, and your Pokémon comes out tougher in the stat you pick."
+      ],
+      "text": [
+        "Ha! Bine ai venit la dojo. O ședință costă $1.000, iar Pokémonul tău iese mai puternic la statistica aleasă."
+      ]
+    },
+    {
+      "en": [
+        "Which stat shall we train?",
+        "HP",
+        "ATTACK",
+        "DEFENSE",
+        "SP. ATK",
+        "SP. DEF",
+        "SPEED"
+      ],
+      "text": [
+        "Ce statistică antrenăm?",
+        "HP",
+        "ATAC",
+        "APĂRARE",
+        "AT. SP.",
+        "AP. SP.",
+        "VITEZĂ"
+      ]
+    },
+    {
+      "en": [
+        "Hup! Hah! {wearer} trained hard and came out tougher than it went in!"
+      ],
+      "text": [
+        "Hop! Ha! {wearer} s-a antrenat din greu și a ieșit mai puternic decât a intrat!"
+      ]
+    },
+    {
+      "en": [
+        "{wearer} can't grow any tougher there. Its training is complete! I won't take your money for nothing."
+      ],
+      "text": [
+        "{wearer} nu mai poate deveni mai puternic acolo. Antrenamentul e complet! Nu-ți iau banii degeaba."
+      ]
+    },
+    {
+      "en": [
+        "An Egg? Ha! Bring it back once it's hatched and has some fight in it."
+      ],
+      "text": [
+        "Un Ou? Ha! Adu-l înapoi după ce eclozează și are ceva luptă în el."
+      ]
+    },
+    {
+      "en": [
+        "You're short of the fee, I'm afraid. Come back with $1,000!"
+      ],
+      "text": [
+        "Mă tem că nu ai destui bani. Revino cu $1.000!"
+      ]
+    },
+    {
+      "en": [
+        "Come back when you're ready to sweat!"
+      ],
+      "text": [
+        "Revino când ești gata să transpiri!"
+      ]
+    },
+    {
+      "en": [
+        "The dojo isn't open yet. Once the avenue's busier, I'll have the room to train your Pokémon!"
+      ],
+      "text": [
+        "Dojo-ul nu e încă deschis. Când bulevardul va fi mai aglomerat, voi avea loc să-ți antrenez Pokémonii!"
+      ]
+    }
+  ],
+  "Salon": [
+    {
+      "en": [
+        "Stylist"
+      ],
+      "text": [
+        "Stilistă"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the salon! A grooming is $500, and your Pokémon will love you all the more. Shall we?"
+      ],
+      "text": [
+        "Bine ai venit la salon! O îngrijire costă $500, iar Pokémonul tău te va iubi și mai mult. Începem?"
+      ]
+    },
+    {
+      "en": [
+        "All done! {wearer} looks wonderful, and it knows exactly who to thank for it."
+      ],
+      "text": [
+        "Gata! {wearer} arată minunat și știe exact cui să-i mulțumească."
+      ]
+    },
+    {
+      "en": [
+        "{wearer} couldn't love you any more than it already does! No grooming needed today."
+      ],
+      "text": [
+        "{wearer} nu te-ar putea iubi mai mult decât o face deja! Azi nu e nevoie de îngrijire."
+      ]
+    },
+    {
+      "en": [
+        "An Egg? There's nothing to brush yet! Bring it back once it's hatched."
+      ],
+      "text": [
+        "Un Ou? Încă nu e nimic de periat! Adu-l înapoi după ce eclozează."
+      ]
+    },
+    {
+      "en": [
+        "Oh dear, you're a little short. A grooming is $500."
+      ],
+      "text": [
+        "Vai, nu ai destui bani. O îngrijire costă $500."
+      ]
+    },
+    {
+      "en": [
+        "Do come back! A brushed Pokémon is a happy Pokémon."
+      ],
+      "text": [
+        "Să revii! Un Pokémon periat e un Pokémon fericit."
+      ]
+    },
+    {
+      "en": [
+        "The salon isn't open yet. We're waiting for the avenue to bring the customers in!"
+      ],
+      "text": [
+        "Salonul nu e încă deschis. Așteptăm ca bulevardul să aducă clienții!"
+      ]
+    }
+  ],
+  "Nursery": [
+    {
+      "en": [
+        "Nursery Aide"
+      ],
+      "text": [
+        "Îngrijitoare de creșă"
+      ]
+    },
+    {
+      "en": [
+        "This is the avenue's nursery. Eggs love a warm, quiet corner, and ours is the warmest in Unova."
+      ],
+      "text": [
+        "Aceasta e creșa bulevardului. Ouăle iubesc un colț cald și liniștit, iar al nostru e cel mai cald din Unova."
+      ]
+    },
+    {
+      "en": [
+        "There! Every Egg you carry has had a good warm. They'll hatch all the sooner now."
+      ],
+      "text": [
+        "Gata! Toate Ouăle pe care le porți s-au încălzit bine. Acum vor ecloza mai repede."
+      ]
+    },
+    {
+      "en": [
+        "Bring an Egg along and I'll warm it for you. Once a day, mind. Eggs mustn't be rushed."
+      ],
+      "text": [
+        "Adu un Ou și ți-l încălzesc. O dată pe zi, atenție. Ouăle nu trebuie grăbite."
+      ]
+    },
+    {
+      "en": [
+        "The nursery isn't ready yet. Once the avenue has more visitors, we'll open our doors!"
+      ],
+      "text": [
+        "Creșa nu e încă gata. Când bulevardul va avea mai mulți vizitatori, ne vom deschide ușile!"
+      ]
+    }
+  ],
+  "Antiques": [
+    {
+      "en": [
+        "Antique Dealer"
+      ],
+      "text": [
+        "Anticarul"
+      ]
+    },
+    {
+      "en": [
+        "Welcome, welcome. Fossils, pearls, old curios... Do mind how you handle them."
+      ],
+      "text": [
+        "Bine ai venit, bine ai venit. Fosile, perle, curiozități vechi... Ai grijă cum le atingi."
+      ]
+    },
+    {
+      "en": [
+        "A fine choice. Old things are precious things."
+      ],
+      "text": [
+        "O alegere bună. Lucrurile vechi sunt lucruri de preț."
+      ]
+    },
+    {
+      "en": [
+        "My shop opens once the avenue draws a better class of visitor. A little busier, and I'll be here!"
+      ],
+      "text": [
+        "Prăvălia mea se deschide când bulevardul atrage vizitatori mai aleși. Încă puțină agitație și voi fi aici!"
+      ]
+    }
+  ],
+  "RaffleSign": [
+    {
+      "en": [
+        "Join Avenue Raffle\nOne free ticket a day!"
+      ],
+      "text": [
+        "Tombola Join Avenue\nUn bilet gratuit pe zi!"
+      ]
+    }
+  ],
+  "DojoSign": [
+    {
+      "en": [
+        "Join Avenue Dojo\nTraining for tough Pokémon."
+      ],
+      "text": [
+        "Dojo-ul Join Avenue\nAntrenament pentru Pokémoni puternici."
+      ]
+    }
+  ],
+  "SalonSign": [
+    {
+      "en": [
+        "Join Avenue Salon\nGrooming for happy Pokémon."
+      ],
+      "text": [
+        "Salonul Join Avenue\nÎngrijire pentru Pokémoni fericiți."
+      ]
+    }
+  ],
+  "NurserySign": [
+    {
+      "en": [
+        "Join Avenue Nursery\nA warm corner for Eggs."
+      ],
+      "text": [
+        "Creșa Join Avenue\nUn colț cald pentru Ouă."
+      ]
+    }
+  ],
+  "AntiquesSign": [
+    {
+      "en": [
+        "Join Avenue Antiques\nFossils and curios of old."
+      ],
+      "text": [
+        "Anticariatul Join Avenue\nFosile și curiozități de altădată."
+      ]
+    }
   ]
 }

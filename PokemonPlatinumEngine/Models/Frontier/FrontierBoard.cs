@@ -39,7 +39,8 @@ public sealed record FrontierBoard(FrontierFacility Facility, string Title, IRea
     /// The Battle Subway's board (plan 22 · U11): a row for each of its trains, the three lines and each Super train once
     /// open, with the train's longest streak and its last run's, the run under way (or put down) counted as it stands.
     /// The Subway is no facility of the Frontier's (its streaks are the story's own variables, <see cref="BattleSubway.Vars"/>),
-    /// so the board is the Tower's frame with the Subway's name, no print and no victories.
+    /// so the board is the Tower's frame with the Subway's name and no victories; since U11's leftovers it shows the
+    /// Subway's own print (<see cref="SubwayRiders.PrintOf"/>).
     /// </summary>
     public static FrontierBoard ForSubway(FrontierRecords records, StoryState story)
     {
@@ -54,7 +55,7 @@ public sealed record FrontierBoard(FrontierFacility Facility, string Title, IRea
                 story.Var(BattleSubway.Vars.Best(train)),
                 now ? story.Var(BattleSubway.Vars.Wins) : story.Var(BattleSubway.Vars.Latest(train)), now));
         }
-        return new FrontierBoard(FrontierFacility.Tower, Text.Of("records.facility.subway"), rows, records.BattlePoints, FrontierPrint.None, 0);
+        return new FrontierBoard(FrontierFacility.Tower, Text.Of("records.facility.subway"), rows, records.BattlePoints, SubwayRiders.PrintOf(story), 0);
     }
 
     /// <summary>The board of a facility as the records stand: every one of the five has rows of its own.</summary>
