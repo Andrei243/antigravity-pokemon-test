@@ -21,10 +21,7 @@
         "Attention, passengers. We are halfway to Lilycove City."
       ],
       "text": [
-        ""
-      ],
-      "was": [
-        "Atenție, pasageri. Am ajuns în Orașul Lilycove."
+        "Atenție, pasageri. Suntem la jumătatea drumului spre Lilycove City."
       ]
     },
     {
@@ -32,10 +29,7 @@
         "Attention, passengers. We are halfway to Slateport City."
       ],
       "text": [
-        ""
-      ],
-      "was": [
-        "Atenție, pasageri. Am ajuns în Orașul Slateport."
+        "Atenție, pasageri. Suntem la jumătatea drumului spre Slateport City."
       ]
     },
     {
@@ -43,7 +37,7 @@
         "Attention, passengers. We have arrived at Lilycove City."
       ],
       "text": [
-        ""
+        "Atenție, pasageri. Am ajuns în Lilycove City."
       ]
     },
     {
@@ -51,7 +45,7 @@
         "Attention, passengers. We have arrived at Slateport City."
       ],
       "text": [
-        ""
+        "Atenție, pasageri. Am ajuns în Slateport City."
       ]
     }
   ]

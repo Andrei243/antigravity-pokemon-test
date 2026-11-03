@@ -1,0 +1,154 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Prof. Sycamore"
+      ],
+      "text": [
+        "Prof. Sycamore"
+      ]
+    },
+    {
+      "en": [
+        "Ah, {player}, here you are! Come, come. Let me introduce an old friend of mine."
+      ],
+      "text": [
+        "Ah, {player}, ai ajuns! Vino, vino. Îți prezint un vechi prieten de-al meu."
+      ]
+    },
+    {
+      "en": [
+        "Lysandre"
+      ],
+      "text": [
+        "Lysandre"
+      ]
+    },
+    {
+      "en": [
+        "So this is the young Trainer the professor speaks of. My name is Lysandre."
+      ],
+      "text": [
+        "Deci ăsta e tânărul Antrenor despre care vorbește profesorul. Numele meu este Lysandre."
+      ]
+    },
+    {
+      "en": [
+        "I want this world to be beautiful. To be beautiful, it must be fair, and to be fair, it must be shared by fewer hands."
+      ],
+      "text": [
+        "Vreau ca lumea asta să fie frumoasă. Ca să fie frumoasă, trebuie să fie dreaptă, iar ca să fie dreaptă, trebuie împărțită între mai puține mâini."
+      ]
+    },
+    {
+      "en": [
+        "Some Pokémon change their very shape when a bond is strong enough. Power like that should go to those who would use it well."
+      ],
+      "text": [
+        "Unii Pokémoni își schimbă forma când legătura e destul de puternică. O asemenea putere ar trebui să meargă la cei care o vor folosi bine."
+      ]
+    },
+    {
+      "en": [
+        "Prof. Sycamore"
+      ],
+      "text": [
+        "Prof. Sycamore"
+      ]
+    },
+    {
+      "en": [
+        "Lysandre helped pay for my research for years. He's a good man, if a little grand about it!"
+      ],
+      "text": [
+        "Lysandre mi-a finanțat cercetările ani la rând. E un om bun, deși cam grandios!"
+      ]
+    },
+    {
+      "en": [
+        "Lysandre"
+      ],
+      "text": [
+        "Lysandre"
+      ]
+    },
+    {
+      "en": [
+        "Tell me, {player}: will you use your strength for others, or only for yourself? I'll be watching to find out."
+      ],
+      "text": [
+        "Spune-mi, {player}: îți vei folosi puterea pentru alții, sau doar pentru tine? Voi urmări să aflu."
+      ]
+    },
+    {
+      "en": [
+        "Prof. Sycamore"
+      ],
+      "text": [
+        "Prof. Sycamore"
+      ]
+    },
+    {
+      "en": [
+        "Well! I should get back to the laboratory. Go and see Kalos, {player}. Its roads are opening up again soon!"
+      ],
+      "text": [
+        "Ei bine! Trebuie să mă întorc la laborator. Mergi și vezi Kalos, {player}. Drumurile ei se deschid din nou în curând!"
+      ]
+    }
+  ],
+  "Lysandre": [
+    {
+      "en": [
+        "Lysandre"
+      ],
+      "text": [
+        "Lysandre"
+      ]
+    },
+    {
+      "en": [
+        "The world grows more crowded every year. One day someone will have to choose who it is for."
+      ],
+      "text": [
+        "Lumea devine mai aglomerată în fiecare an. Într-o zi cineva va trebui să aleagă pentru cine este."
+      ]
+    }
+  ],
+  "Sycamore": [
+    {
+      "en": [
+        "Prof. Sycamore"
+      ],
+      "text": [
+        "Prof. Sycamore"
+      ]
+    },
+    {
+      "en": [
+        "Isn't this café wonderful? The best in Lumiose, I'd say."
+      ],
+      "text": [
+        "Nu-i minunată cafeneaua asta? Cea mai bună din Lumiose, aș zice."
+      ]
+    }
+  ],
+  "Waiter": [
+    {
+      "en": [
+        "Waiter"
+      ],
+      "text": [
+        "Chelner"
+      ]
+    },
+    {
+      "en": [
+        "Good day. The gentleman in red owns this café. He takes his coffee very black and very hot."
+      ],
+      "text": [
+        "Bună ziua. Domnul în roșu e proprietarul cafenelei. Își bea cafeaua foarte neagră și foarte fierbinte."
+      ]
+    }
+  ]
+}

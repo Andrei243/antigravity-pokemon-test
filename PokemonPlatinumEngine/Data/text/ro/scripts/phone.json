@@ -91,7 +91,7 @@
         "Prof. Elm"
       ],
       "text": [
-        ""
+        "Prof. Elm"
       ]
     },
     {
@@ -99,7 +99,7 @@
         "{player}? It's Elm! My aide tells me the Egg hatched. A Togepi! I knew it was a Pokémon Egg all along!"
       ],
       "text": [
-        ""
+        "{player}? Sunt Elm! Asistentul meu zice că Oul a ecloziat. Un Togepi! Am știut de la început că era un Ou de Pokémon!"
       ]
     },
     {
@@ -107,7 +107,7 @@
         "Togepi are said to share their happiness with those who care for them. Raise it with lots of love, won't you?"
       ],
       "text": [
-        ""
+        "Se zice că Togepi își împart fericirea cu cei care au grijă de ei. Crește-l cu multă dragoste, da?"
       ]
     }
   ],
@@ -117,7 +117,7 @@
         "Bike Shop owner"
       ],
       "text": [
-        ""
+        "Proprietarul Bike Shop"
       ]
     },
     {
@@ -125,7 +125,7 @@
         "Hello, is that {player}? It's the bike shop in Goldenrod! Business is booming since folks saw you riding around."
       ],
       "text": [
-        ""
+        "Alo, ești {player}? Aici magazinul de biciclete din Goldenrod! Afacerile merg strălucit de când v-a văzut lumea pe bicicletă."
       ]
     },
     {
@@ -133,7 +133,7 @@
         "That Bicycle I lent you? Keep it! Consider it a thank-you from the shop. Ride safely!"
       ],
       "text": [
-        ""
+        "Bicycle-ul pe care ți l-am împrumutat? Păstrează-l! Ia-l ca mulțumire din partea magazinului. Pedalează cu grijă!"
       ]
     }
   ],
@@ -143,7 +143,7 @@
         "Bike Shop owner"
       ],
       "text": [
-        ""
+        "Proprietarul Bike Shop"
       ]
     },
     {
@@ -151,7 +151,7 @@
         "Goldenrod Bike Shop! Oh, it's you. We can hardly keep bikes on the shelves now. Thanks again, {player}!"
       ],
       "text": [
-        ""
+        "Goldenrod Bike Shop! Oh, tu ești. Abia mai ținem biciclete pe rafturi. Mulțumesc din nou, {player}!"
       ]
     }
   ],
@@ -161,7 +161,7 @@
         "Bill"
       ],
       "text": [
-        ""
+        "Bill"
       ]
     },
     {
@@ -169,7 +169,7 @@
         "Hiya, {player}! It's Bill. I was checking on the storage system, and one of your boxes is chock-full."
       ],
       "text": [
-        ""
+        "Salut, {player}! Sunt Bill. Verificam sistemul de stocare și una dintre cutiile tale e plină ochi."
       ]
     },
     {
@@ -177,7 +177,7 @@
         "Pokémon you catch will go into the next box with room, but you might want to tidy up. Bye now!"
       ],
       "text": [
-        ""
+        "Pokémonii pe care îi prinzi vor merge în următoarea cutie cu loc, dar poate vrei să faci ordine. Pa!"
       ]
     }
   ],
@@ -187,7 +187,7 @@
         "Bill"
       ],
       "text": [
-        ""
+        "Bill"
       ]
     },
     {
@@ -195,7 +195,7 @@
         "Bill here! The storage system's running smoothly. If you ever have trouble with it, you know who to call!"
       ],
       "text": [
-        ""
+        "Aici Bill! Sistemul de stocare funcționează fără probleme. Dacă ai vreodată probleme cu el, știi pe cine să suni!"
       ]
     }
   ],
@@ -297,7 +297,7 @@
         "Joey here! I found something great, but my Ratchisel can't use it. Come and get it from me on Route 30!"
       ],
       "text": [
-        ""
+        "Aici Joey! Am găsit ceva grozav, dar Ratchisel-ul meu nu-l poate folosi. Vino să-l iei de la mine pe Route 30!"
       ]
     },
     {
@@ -305,7 +305,7 @@
         "It's Joey! Did you forget? I've still got that present for you. I'm on Route 30!"
       ],
       "text": [
-        ""
+        "Sunt Joey! Ai uitat? Încă am cadoul ăla pentru tine. Sunt pe Route 30!"
       ]
     },
     {
@@ -313,7 +313,7 @@
         "It's Joey! My Ratchisel's in even better shape now. Come and battle me again on Route 30!"
       ],
       "text": [
-        ""
+        "Sunt Joey! Ratchisel-ul meu e acum și mai în formă. Vino să lupți din nou cu mine pe Route 30!"
       ]
     },
     {
@@ -321,7 +321,7 @@
         "Joey here. I'm still waiting for you on Route 30! My Ratchisel is getting restless."
       ],
       "text": [
-        ""
+        "Aici Joey. Te aștept în continuare pe Route 30! Ratchisel-ul meu devine neliniștit."
       ]
     }
   ],
@@ -331,7 +331,7 @@
         "Kenji"
       ],
       "text": [
-        ""
+        "Kenji"
       ]
     },
     {
@@ -339,7 +339,7 @@
         "Kenji here. I've been training on the slope since sunrise. Hyah! My legs are like iron now."
       ],
       "text": [
-        ""
+        "Aici Kenji. M-am antrenat pe pantă de la răsărit. Hyah! Picioarele mele sunt acum de fier."
       ]
     },
     {
@@ -347,7 +347,7 @@
         "Kenji here. A fellow climber left me something I've no use for. Come up Route 45 and it's yours."
       ],
       "text": [
-        ""
+        "Aici Kenji. Un alpinist mi-a lăsat ceva de care n-am nevoie. Urcă pe Route 45 și e al tău."
       ]
     },
     {
@@ -355,7 +355,7 @@
         "It's Kenji. Your present is still waiting for you on Route 45. Don't keep it waiting too long!"
       ],
       "text": [
-        ""
+        "Sunt Kenji. Cadoul tău te așteaptă încă pe Route 45. Nu-l lăsa să aștepte prea mult!"
       ]
     },
     {
@@ -363,7 +363,7 @@
         "Kenji here! My training is finished for today. Come to Route 45 and let us test each other again!"
       ],
       "text": [
-        ""
+        "Aici Kenji! Antrenamentul de azi s-a terminat. Vino pe Route 45 și să ne punem din nou la încercare!"
       ]
     },
     {
@@ -371,7 +371,7 @@
         "Kenji again. I'm on Route 45, stretching. Come whenever you're ready to battle."
       ],
       "text": [
-        ""
+        "Din nou Kenji. Sunt pe Route 45, mă întind. Vino când ești gata de luptă."
       ]
     }
   ],
@@ -381,7 +381,7 @@
         "Parry"
       ],
       "text": [
-        ""
+        "Parry"
       ]
     },
     {
@@ -389,7 +389,7 @@
         "Parry here! Climbed every inch of Route 45 again today. Nothing like mountain air, eh?"
       ],
       "text": [
-        ""
+        "Aici Parry! Am urcat din nou fiecare centimetru din Route 45 azi. Nimic ca aerul de munte, nu?"
       ]
     },
     {
@@ -397,7 +397,7 @@
         "Parry here! I dug up something good on the mountain. Meet me on Route 45 and I'll hand it over!"
       ],
       "text": [
-        ""
+        "Aici Parry! Am dezgropat ceva bun pe munte. Vino pe Route 45 și ți-l dau!"
       ]
     },
     {
@@ -405,7 +405,7 @@
         "It's Parry! That present's still in my pack. I'm on Route 45, so come and get it!"
       ],
       "text": [
-        ""
+        "Sunt Parry! Cadoul ăla e încă în ghiozdanul meu. Sunt pe Route 45, vino să-l iei!"
       ]
     },
     {
@@ -413,7 +413,7 @@
         "Parry here! My Pokémon are rock-solid today. Come to Route 45 for a rematch!"
       ],
       "text": [
-        ""
+        "Aici Parry! Pokémonii mei sunt solizi ca piatra azi. Vino pe Route 45 pentru o revanșă!"
       ]
     },
     {
@@ -421,7 +421,7 @@
         "It's Parry. Still up on Route 45, waiting for our battle. The mountain isn't going anywhere!"
       ],
       "text": [
-        ""
+        "Sunt Parry. Tot sus pe Route 45, așteptând lupta noastră. Muntele nu pleacă nicăieri!"
       ]
     }
   ],
@@ -431,7 +431,7 @@
         "Huey"
       ],
       "text": [
-        ""
+        "Huey"
       ]
     },
     {
@@ -439,7 +439,7 @@
         "Ahoy, it's Huey! The sea was rough today, but the lighthouse kept us all on course."
       ],
       "text": [
-        ""
+        "Ahoy, sunt Huey! Marea a fost agitată azi, dar farul ne-a ținut pe toți pe drum."
       ]
     },
     {
@@ -447,7 +447,7 @@
         "Huey here! A ship brought in something fine for you. I'm at the lighthouse in Olivine, matey!"
       ],
       "text": [
-        ""
+        "Aici Huey! O corabie a adus ceva frumos pentru tine. Sunt la farul din Olivine, prietene!"
       ]
     },
     {
@@ -455,7 +455,7 @@
         "It's Huey! Your present's waiting at the lighthouse. Don't leave it to the gulls!"
       ],
       "text": [
-        ""
+        "Sunt Huey! Cadoul tău te așteaptă la far. Nu-l lăsa pe seama pescărușilor!"
       ]
     },
     {
@@ -463,7 +463,7 @@
         "Ahoy! Huey here. My sea legs are steady again. Come to the lighthouse for a rematch!"
       ],
       "text": [
-        ""
+        "Ahoy! Aici Huey. Picioarele mele de marinar sunt iar ferme. Vino la far pentru o revanșă!"
       ]
     },
     {
@@ -471,7 +471,7 @@
         "Huey again! Still at the lighthouse, ready for battle whenever you come aboard."
       ],
       "text": [
-        ""
+        "Din nou Huey! Tot la far, gata de luptă oricând urci la bord."
       ]
     }
   ],
@@ -481,7 +481,7 @@
         "Vance"
       ],
       "text": [
-        ""
+        "Vance"
       ]
     },
     {
@@ -489,7 +489,7 @@
         "Vance here. My birds flew circles over the Ice Path this morning. What a sight it was!"
       ],
       "text": [
-        ""
+        "Aici Vance. Păsările mele au zburat în cercuri deasupra Ice Path azi dimineață. Ce priveliște a fost!"
       ]
     },
     {
@@ -497,7 +497,7 @@
         "Vance here. I've got something that makes Pokémon faster. My birds are fast enough, so it's yours! Route 44."
       ],
       "text": [
-        ""
+        "Aici Vance. Am ceva care face Pokémonii mai rapizi. Păsările mele sunt destul de rapide, așa că e al tău! Route 44."
       ]
     },
     {
@@ -505,7 +505,7 @@
         "It's Vance. Your present's still here on Route 44. My birds are guarding it for you."
       ],
       "text": [
-        ""
+        "Sunt Vance. Cadoul tău e încă aici pe Route 44. Păsările mele îl păzesc pentru tine."
       ]
     },
     {
@@ -513,7 +513,7 @@
         "Vance here! My birds are ready to fly. Come to Route 44 for a rematch!"
       ],
       "text": [
-        ""
+        "Aici Vance! Păsările mele sunt gata de zbor. Vino pe Route 44 pentru o revanșă!"
       ]
     },
     {
@@ -521,7 +521,7 @@
         "Vance again. I'm on Route 44, and my birds are getting impatient!"
       ],
       "text": [
-        ""
+        "Din nou Vance. Sunt pe Route 44, iar păsările mele își pierd răbdarea!"
       ]
     }
   ],
@@ -531,7 +531,7 @@
         "Erin"
       ],
       "text": [
-        ""
+        "Erin"
       ]
     },
     {
@@ -539,7 +539,7 @@
         "Hi, it's Erin! My partner and I raced all the way down Route 46 today. We won, of course!"
       ],
       "text": [
-        ""
+        "Salut, sunt Erin! Eu și partenerul meu am alergat tot drumul pe Route 46 azi. Am câștigat, desigur!"
       ]
     },
     {
@@ -547,7 +547,7 @@
         "It's Erin! I've got a present for you. Come and find me on Route 46, all right?"
       ],
       "text": [
-        ""
+        "Sunt Erin! Am un cadou pentru tine. Vino să mă găsești pe Route 46, bine?"
       ]
     },
     {
@@ -555,7 +555,7 @@
         "Erin here! Hey, you still haven't picked up your present. I'm on Route 46!"
       ],
       "text": [
-        ""
+        "Aici Erin! Hei, tot nu ți-ai luat cadoul. Sunt pe Route 46!"
       ]
     },
     {
@@ -563,7 +563,7 @@
         "Erin here! Let's have a rematch! I'll be waiting on Route 46."
       ],
       "text": [
-        ""
+        "Aici Erin! Hai la o revanșă! Te aștept pe Route 46."
       ]
     },
     {
@@ -571,7 +571,7 @@
         "It's Erin! I'm still on Route 46. Hurry up, or I'll race you there!"
       ],
       "text": [
-        ""
+        "Sunt Erin! Sunt tot pe Route 46. Grăbește-te, sau te întrec până acolo!"
       ]
     }
   ],
@@ -581,7 +581,7 @@
         "Ian"
       ],
       "text": [
-        ""
+        "Ian"
       ]
     },
     {
@@ -589,7 +589,7 @@
         "Ian here! My Pokémon dug a hole so deep today, I could hardly see the bottom!"
       ],
       "text": [
-        ""
+        "Aici Ian! Pokémonul meu a săpat azi o groapă atât de adâncă încât abia i-am văzut fundul!"
       ]
     },
     {
@@ -597,7 +597,7 @@
         "It's Ian! My Pokémon dug up a berry. You can have it! I'm on Route 34."
       ],
       "text": [
-        ""
+        "Sunt Ian! Pokémonul meu a dezgropat o berry. O poți avea! Sunt pe Route 34."
       ]
     },
     {
@@ -605,7 +605,7 @@
         "Ian here! That berry's still waiting for you on Route 34. Come and get it before I eat it!"
       ],
       "text": [
-        ""
+        "Aici Ian! Berry-ul ăla te așteaptă încă pe Route 34. Vino să-l iei înainte să-l mănânc!"
       ]
     },
     {
@@ -613,7 +613,7 @@
         "It's Ian! We've been digging and training. Come to Route 34 for a rematch!"
       ],
       "text": [
-        ""
+        "Sunt Ian! Am tot săpat și ne-am antrenat. Vino pe Route 34 pentru o revanșă!"
       ]
     },
     {
@@ -621,7 +621,7 @@
         "Ian again! Still on Route 34, waiting to battle!"
       ],
       "text": [
-        ""
+        "Din nou Ian! Tot pe Route 34, aștept să lupt!"
       ]
     }
   ],
@@ -799,7 +799,7 @@
         "Falkner"
       ],
       "text": [
-        ""
+        "Falkner"
       ]
     },
     {
@@ -807,7 +807,7 @@
         "Falkner here. My Pidgeot flew all the way to the sea and back this morning. Isn't that something?"
       ],
       "text": [
-        ""
+        "Aici Falkner. Pidgeot-ul meu a zburat azi dimineață până la mare și înapoi. Nu e ceva?"
       ]
     },
     {
@@ -815,7 +815,7 @@
         "Falkner here. It's Saturday morning, and I'm at the Fighting Dojo in Saffron City. Come and battle me!"
       ],
       "text": [
-        ""
+        "Aici Falkner. E sâmbătă dimineață și sunt la Fighting Dojo din Saffron City. Vino să lupți cu mine!"
       ]
     },
     {
@@ -823,7 +823,7 @@
         "Falkner again. I'm still waiting for you at the Fighting Dojo in Saffron City!"
       ],
       "text": [
-        ""
+        "Din nou Falkner. Te aștept în continuare la Fighting Dojo din Saffron City!"
       ]
     }
   ],
@@ -833,7 +833,7 @@
         "Bugsy"
       ],
       "text": [
-        ""
+        "Bugsy"
       ]
     },
     {
@@ -841,7 +841,7 @@
         "Bugsy here! I found a Pokémon in Ilex Forest I'd only ever read about. Research is the best!"
       ],
       "text": [
-        ""
+        "Aici Bugsy! Am găsit în Ilex Forest un Pokémon despre care citisem doar. Cercetarea e cea mai tare!"
       ]
     },
     {
@@ -849,7 +849,7 @@
         "Bugsy here. It's Thursday afternoon, and I'm at the Fighting Dojo in Saffron City. Come and battle me!"
       ],
       "text": [
-        ""
+        "Aici Bugsy. E joi după-amiază și sunt la Fighting Dojo din Saffron City. Vino să lupți cu mine!"
       ]
     },
     {
@@ -857,7 +857,7 @@
         "Bugsy again. I'm still waiting for you at the Fighting Dojo in Saffron City!"
       ],
       "text": [
-        ""
+        "Din nou Bugsy. Te aștept în continuare la Fighting Dojo din Saffron City!"
       ]
     }
   ],
@@ -867,7 +867,7 @@
         "Whitney"
       ],
       "text": [
-        ""
+        "Whitney"
       ]
     },
     {
@@ -875,7 +875,7 @@
         "It's Whitney! I just bought the cutest thing at the Department Store. You have to see it!"
       ],
       "text": [
-        ""
+        "Sunt Whitney! Tocmai am cumpărat cel mai drăguț lucru de la Department Store. Trebuie să-l vezi!"
       ]
     },
     {
@@ -883,7 +883,7 @@
         "Whitney here. It's Saturday afternoon, and I'm at the Fighting Dojo in Saffron City. Come and battle me!"
       ],
       "text": [
-        ""
+        "Aici Whitney. E sâmbătă după-amiază și sunt la Fighting Dojo din Saffron City. Vino să lupți cu mine!"
       ]
     },
     {
@@ -891,7 +891,7 @@
         "Whitney again. I'm still waiting for you at the Fighting Dojo in Saffron City!"
       ],
       "text": [
-        ""
+        "Din nou Whitney. Te aștept în continuare la Fighting Dojo din Saffron City!"
       ]
     }
   ],
@@ -901,7 +901,7 @@
         "Morty"
       ],
       "text": [
-        ""
+        "Morty"
       ]
     },
     {
@@ -909,7 +909,7 @@
         "Morty here. The Bell Tower's bells rang by themselves last night. I wonder what they foretell..."
       ],
       "text": [
-        ""
+        "Aici Morty. Clopotele din Bell Tower au sunat singure azi-noapte. Mă întreb ce prevestesc..."
       ]
     },
     {
@@ -917,7 +917,7 @@
         "Morty here. It's Tuesday night, and I'm at the Fighting Dojo in Saffron City. Come and battle me!"
       ],
       "text": [
-        ""
+        "Aici Morty. E marți seara și sunt la Fighting Dojo din Saffron City. Vino să lupți cu mine!"
       ]
     },
     {
@@ -925,7 +925,7 @@
         "Morty again. I'm still waiting for you at the Fighting Dojo in Saffron City!"
       ],
       "text": [
-        ""
+        "Din nou Morty. Te aștept în continuare la Fighting Dojo din Saffron City!"
       ]
     }
   ],
@@ -935,7 +935,7 @@
         "Pryce"
       ],
       "text": [
-        ""
+        "Pryce"
       ]
     },
     {
@@ -943,7 +943,7 @@
         "Pryce here. The snow on Mahogany's roofs reminds me of my youth. An old man's thoughts, nothing more."
       ],
       "text": [
-        ""
+        "Aici Pryce. Zăpada de pe acoperișurile din Mahogany îmi amintește de tinerețe. Gânduri de bătrân, nimic mai mult."
       ]
     },
     {
@@ -951,7 +951,7 @@
         "Pryce here. It's Monday morning, and I'm at the Fighting Dojo in Saffron City. Come and battle me!"
       ],
       "text": [
-        ""
+        "Aici Pryce. E luni dimineața și sunt la Fighting Dojo din Saffron City. Vino să lupți cu mine!"
       ]
     },
     {
@@ -959,7 +959,7 @@
         "Pryce again. I'm still waiting for you at the Fighting Dojo in Saffron City!"
       ],
       "text": [
-        ""
+        "Din nou Pryce. Te aștept în continuare la Fighting Dojo din Saffron City!"
       ]
     }
   ],
@@ -969,7 +969,7 @@
         "Clair"
       ],
       "text": [
-        ""
+        "Clair"
       ]
     },
     {
@@ -977,7 +977,7 @@
         "It's Clair. I trained in the Dragon's Den all day. ...Don't get the idea I called to chat."
       ],
       "text": [
-        ""
+        "Sunt Clair. M-am antrenat toată ziua în Dragon's Den. ...Să nu crezi că am sunat să stăm de vorbă."
       ]
     },
     {
@@ -985,7 +985,7 @@
         "Clair here. It's Friday night, and I'm at the Fighting Dojo in Saffron City. Come and battle me!"
       ],
       "text": [
-        ""
+        "Aici Clair. E vineri seara și sunt la Fighting Dojo din Saffron City. Vino să lupți cu mine!"
       ]
     },
     {
@@ -993,7 +993,7 @@
         "Clair again. I'm still waiting for you at the Fighting Dojo in Saffron City!"
       ],
       "text": [
-        ""
+        "Din nou Clair. Te aștept în continuare la Fighting Dojo din Saffron City!"
       ]
     }
   ],
@@ -1003,7 +1003,7 @@
         "Brock"
       ],
       "text": [
-        ""
+        "Brock"
       ]
     },
     {
@@ -1011,7 +1011,7 @@
         "Brock here! I've been breeding my Pokémon again. Patience pays off, you know."
       ],
       "text": [
-        ""
+        "Aici Brock! Am crescut iar Pokémoni. Răbdarea dă roade, să știi."
       ]
     },
     {
@@ -1019,7 +1019,7 @@
         "Brock here. It's Saturday night, and I'm at the Fighting Dojo in Saffron City. Come and battle me!"
       ],
       "text": [
-        ""
+        "Aici Brock. E sâmbătă seara și sunt la Fighting Dojo din Saffron City. Vino să lupți cu mine!"
       ]
     },
     {
@@ -1027,7 +1027,7 @@
         "Brock again. I'm still waiting for you at the Fighting Dojo in Saffron City!"
       ],
       "text": [
-        ""
+        "Din nou Brock. Te aștept în continuare la Fighting Dojo din Saffron City!"
       ]
     }
   ],
@@ -1037,7 +1037,7 @@
         "Misty"
       ],
       "text": [
-        ""
+        "Misty"
       ]
     },
     {
@@ -1045,7 +1045,7 @@
         "It's Misty! I spent the whole day at Cerulean Cape. The water was perfect!"
       ],
       "text": [
-        ""
+        "Sunt Misty! Mi-am petrecut toată ziua la Cerulean Cape. Apa a fost perfectă!"
       ]
     },
     {
@@ -1053,7 +1053,7 @@
         "Misty here. It's Wednesday morning, and I'm at the Fighting Dojo in Saffron City. Come and battle me!"
       ],
       "text": [
-        ""
+        "Aici Misty. E miercuri dimineața și sunt la Fighting Dojo din Saffron City. Vino să lupți cu mine!"
       ]
     },
     {
@@ -1061,7 +1061,7 @@
         "Misty again. I'm still waiting for you at the Fighting Dojo in Saffron City!"
       ],
       "text": [
-        ""
+        "Din nou Misty. Te aștept în continuare la Fighting Dojo din Saffron City!"
       ]
     }
   ],
@@ -1071,7 +1071,7 @@
         "Lt. Surge"
       ],
       "text": [
-        ""
+        "Lt. Surge"
       ]
     },
     {
@@ -1079,7 +1079,7 @@
         "Lt. Surge here! My Raichu shorted out the whole Gym again. Ha! Good times!"
       ],
       "text": [
-        ""
+        "Aici Lt. Surge! Raichu-ul meu a scurtcircuitat iar tot Gym-ul. Ha! Vremuri bune!"
       ]
     },
     {
@@ -1087,7 +1087,7 @@
         "Lt. Surge here. It's Friday morning, and I'm at the Fighting Dojo in Saffron City. Come and battle me!"
       ],
       "text": [
-        ""
+        "Aici Lt. Surge. E vineri dimineața și sunt la Fighting Dojo din Saffron City. Vino să lupți cu mine!"
       ]
     },
     {
@@ -1095,7 +1095,7 @@
         "Lt. Surge again. I'm still waiting for you at the Fighting Dojo in Saffron City!"
       ],
       "text": [
-        ""
+        "Din nou Lt. Surge. Te aștept în continuare la Fighting Dojo din Saffron City!"
       ]
     }
   ],
@@ -1105,7 +1105,7 @@
         "Erika"
       ],
       "text": [
-        ""
+        "Erika"
       ]
     },
     {
@@ -1113,7 +1113,7 @@
         "Erika speaking. I dozed off in the garden again. The flowers smelled so lovely today..."
       ],
       "text": [
-        ""
+        "Vorbește Erika. Am aipit iar în grădină. Florile miroseau atât de frumos azi..."
       ]
     },
     {
@@ -1121,7 +1121,7 @@
         "Erika here. It's Sunday morning, and I'm at the Fighting Dojo in Saffron City. Come and battle me!"
       ],
       "text": [
-        ""
+        "Aici Erika. E duminică dimineața și sunt la Fighting Dojo din Saffron City. Vino să lupți cu mine!"
       ]
     },
     {
@@ -1129,7 +1129,7 @@
         "Erika again. I'm still waiting for you at the Fighting Dojo in Saffron City!"
       ],
       "text": [
-        ""
+        "Din nou Erika. Te aștept în continuare la Fighting Dojo din Saffron City!"
       ]
     }
   ],
@@ -1139,7 +1139,7 @@
         "Janine"
       ],
       "text": [
-        ""
+        "Janine"
       ]
     },
     {
@@ -1147,7 +1147,7 @@
         "Janine here. I practised my ninja arts all day. Father would be proud... I hope."
       ],
       "text": [
-        ""
+        "Aici Janine. M-am exersat toată ziua în arte ninja. Tata ar fi mândru... sper."
       ]
     },
     {
@@ -1155,7 +1155,7 @@
         "Janine here. It's Monday afternoon, and I'm at the Fighting Dojo in Saffron City. Come and battle me!"
       ],
       "text": [
-        ""
+        "Aici Janine. E luni după-amiaza și sunt la Fighting Dojo din Saffron City. Vino să lupți cu mine!"
       ]
     },
     {
@@ -1163,7 +1163,7 @@
         "Janine again. I'm still waiting for you at the Fighting Dojo in Saffron City!"
       ],
       "text": [
-        ""
+        "Din nou Janine. Te aștept în continuare la Fighting Dojo din Saffron City!"
       ]
     }
   ],
@@ -1173,7 +1173,7 @@
         "Sabrina"
       ],
       "text": [
-        ""
+        "Sabrina"
       ]
     },
     {
@@ -1181,7 +1181,7 @@
         "Sabrina. I sensed you were about to call... no, wait. I called you. How strange."
       ],
       "text": [
-        ""
+        "Sabrina. Am simțit că ești pe cale să suni... nu, stai. Eu te-am sunat. Ce ciudat."
       ]
     },
     {
@@ -1189,7 +1189,7 @@
         "Sabrina here. It's Sunday afternoon, and I'm at the Fighting Dojo in Saffron City. Come and battle me!"
       ],
       "text": [
-        ""
+        "Aici Sabrina. E duminică după-amiaza și sunt la Fighting Dojo din Saffron City. Vino să lupți cu mine!"
       ]
     },
     {
@@ -1197,7 +1197,7 @@
         "Sabrina again. I'm still waiting for you at the Fighting Dojo in Saffron City!"
       ],
       "text": [
-        ""
+        "Din nou Sabrina. Te aștept în continuare la Fighting Dojo din Saffron City!"
       ]
     }
   ],
@@ -1207,7 +1207,7 @@
         "Blaine"
       ],
       "text": [
-        ""
+        "Blaine"
       ]
     },
     {
@@ -1215,7 +1215,7 @@
         "Blaine here! I've thought up a new quiz for my Gym, once I have a Gym again. Hah!"
       ],
       "text": [
-        ""
+        "Aici Blaine! Am născocit un quiz nou pentru Gym-ul meu, când voi avea din nou un Gym. Hah!"
       ]
     },
     {
@@ -1223,7 +1223,7 @@
         "Blaine here. It's Tuesday afternoon, and I'm at the Fighting Dojo in Saffron City. Come and battle me!"
       ],
       "text": [
-        ""
+        "Aici Blaine. E marți după-amiaza și sunt la Fighting Dojo din Saffron City. Vino să lupți cu mine!"
       ]
     },
     {
@@ -1231,7 +1231,7 @@
         "Blaine again. I'm still waiting for you at the Fighting Dojo in Saffron City!"
       ],
       "text": [
-        ""
+        "Din nou Blaine. Te aștept în continuare la Fighting Dojo din Saffron City!"
       ]
     }
   ],
@@ -1241,7 +1241,7 @@
         "Blue"
       ],
       "text": [
-        ""
+        "Albastru"
       ]
     },
     {
@@ -1249,7 +1249,7 @@
         "It's Blue. ...What? I just called to see if you're still winning. Don't make it weird."
       ],
       "text": [
-        ""
+        "Sunt Blue. ...Ce? Am sunat doar să văd dacă tot mai câștigi. Nu face o dramă din asta."
       ]
     },
     {
@@ -1257,7 +1257,7 @@
         "Blue here. It's Sunday night, and I'm at the Fighting Dojo in Saffron City. Come and battle me!"
       ],
       "text": [
-        ""
+        "Aici Blue. E duminică seara și sunt la Fighting Dojo din Saffron City. Vino să lupți cu mine!"
       ]
     },
     {
@@ -1265,7 +1265,7 @@
         "Blue again. I'm still waiting for you at the Fighting Dojo in Saffron City!"
       ],
       "text": [
-        ""
+        "Din nou Blue. Te aștept în continuare la Fighting Dojo din Saffron City!"
       ]
     }
   ],
@@ -1599,7 +1599,7 @@
         "Ricky here! I can kick my legs now, really fast! Come and battle me on Route 109!"
       ],
       "text": [
-        ""
+        "Aici Ricky! Acum pot da din picioare, foarte repede! Vino să lupți cu mine pe Route 109!"
       ]
     },
     {
@@ -1607,7 +1607,7 @@
         "It's Ricky. I'm on the beach on Route 109, waiting for you. Hurry!"
       ],
       "text": [
-        ""
+        "Sunt Ricky. Sunt pe plaja de pe Route 109 și te aștept. Grăbește-te!"
       ]
     }
   ],
@@ -1633,7 +1633,7 @@
         "It's Lola! Azumarill and I practised all week. Battle us again on Route 109's beach!"
       ],
       "text": [
-        ""
+        "Sunt Lola! Eu și Azumarill ne-am exersat toată săptămâna. Luptă din nou cu noi pe plaja de pe Route 109!"
       ]
     },
     {
@@ -1641,7 +1641,7 @@
         "Lola here. We're still floating about on Route 109. Come soon!"
       ],
       "text": [
-        ""
+        "Aici Lola. Plutim în continuare pe Route 109. Vino curând!"
       ]
     }
   ],
@@ -1667,7 +1667,7 @@
         "Edwin speaking. My collection has grown, and so have my Pokémon. Meet me on Route 110 for a rematch?"
       ],
       "text": [
-        ""
+        "Vorbește Edwin. Colecția mea a crescut, la fel și Pokémonii mei. Ne întâlnim pe Route 110 pentru o revanșă?"
       ]
     },
     {
@@ -1675,7 +1675,7 @@
         "Edwin here. I'm waiting on Route 110 with my newest finds, ready to battle."
       ],
       "text": [
-        ""
+        "Aici Edwin. Aștept pe Route 110 cu cele mai noi descoperiri, gata de luptă."
       ]
     }
   ],
@@ -1701,7 +1701,7 @@
         "Benjamin here! I've cut my times and toughened my team. Race you to a battle on Route 110!"
       ],
       "text": [
-        ""
+        "Aici Benjamin! Mi-am scăzut timpii și mi-am întărit echipa. Te întrec la o luptă pe Route 110!"
       ]
     },
     {
@@ -1709,7 +1709,7 @@
         "It's Benjamin. Still on Route 110, still training. Where are you?"
       ],
       "text": [
-        ""
+        "Sunt Benjamin. Tot pe Route 110, tot antrenându-mă. Unde ești?"
       ]
     }
   ],
@@ -1735,7 +1735,7 @@
         "Abigail calling! I ran Route 110 twice today and I'm itching for a battle. Come find me!"
       ],
       "text": [
-        ""
+        "Sună Abigail! Am alergat de două ori pe Route 110 azi și mă mănâncă palmele de luptă. Vino să mă găsești!"
       ]
     },
     {
@@ -1743,7 +1743,7 @@
         "Abigail here. I'm stretching on Route 110 while I wait for you."
       ],
       "text": [
-        ""
+        "Aici Abigail. Mă întind pe Route 110 în timp ce te aștept."
       ]
     }
   ],
@@ -1769,7 +1769,7 @@
         "It's Isabel! My Pokémon are fitter than ever. Let's have that rematch on Route 110!"
       ],
       "text": [
-        ""
+        "Sunt Isabel! Pokémonii mei sunt mai în formă ca oricând. Hai la revanșa aia pe Route 110!"
       ]
     },
     {
@@ -1777,7 +1777,7 @@
         "Isabel here. I'm on Route 110, ready whenever you are!"
       ],
       "text": [
-        ""
+        "Aici Isabel. Sunt pe Route 110, gata oricând ești și tu!"
       ]
     }
   ],
@@ -1803,7 +1803,7 @@
         "Isaac here! My Pokémon got way bigger. Come battle me on Route 117!"
       ],
       "text": [
-        ""
+        "Aici Isaac! Pokémonii mei au crescut mult. Vino să lupți cu mine pe Route 117!"
       ]
     },
     {
@@ -1811,7 +1811,7 @@
         "It's Isaac. I'm waiting by the flowers on Route 117. Come on!"
       ],
       "text": [
-        ""
+        "Sunt Isaac. Aștept lângă flori pe Route 117. Hai!"
       ]
     }
   ],
@@ -1837,7 +1837,7 @@
         "It's Lydia! I've been raising my Pokémon really well. Let's battle on Route 117 again!"
       ],
       "text": [
-        ""
+        "Sunt Lydia! Mi-am crescut foarte bine Pokémonii. Să luptăm din nou pe Route 117!"
       ]
     },
     {
@@ -1845,7 +1845,7 @@
         "Lydia here. I'm on Route 117, still waiting for our rematch."
       ],
       "text": [
-        ""
+        "Aici Lydia. Sunt pe Route 117, încă aștept revanșa noastră."
       ]
     }
   ],
@@ -1871,7 +1871,7 @@
         "Dylan here. My training on Route 117 has paid off. Fancy another battle?"
       ],
       "text": [
-        ""
+        "Aici Dylan. Antrenamentul meu pe Route 117 a dat roade. Încă o luptă?"
       ]
     },
     {
@@ -1879,7 +1879,7 @@
         "It's Dylan. I'm on Route 117, warmed up and waiting."
       ],
       "text": [
-        ""
+        "Sunt Dylan. Sunt pe Route 117, încălzit și gata."
       ]
     }
   ],
@@ -1905,7 +1905,7 @@
         "Maria calling! I swam, cycled and ran today, and I'm still ready to battle. Route 117!"
       ],
       "text": [
-        ""
+        "Sună Maria! Am înotat, am mers pe bicicletă și am alergat azi, și tot sunt gata de luptă. Route 117!"
       ]
     },
     {
@@ -1913,7 +1913,7 @@
         "Maria here. Route 117, any time now. I'll be waiting!"
       ],
       "text": [
-        ""
+        "Aici Maria. Route 117, oricând acum. Te aștept!"
       ]
     }
   ],
@@ -1939,7 +1939,7 @@
         "It's Rose! My Pokémon have bloomed. Come and see them on Route 118!"
       ],
       "text": [
-        ""
+        "Sunt Rose! Pokémonii mei au înflorit. Vino să-i vezi pe Route 118!"
       ]
     },
     {
@@ -1947,7 +1947,7 @@
         "Rose here. I'm on Route 118 among the flowers, waiting for you."
       ],
       "text": [
-        ""
+        "Aici Rose. Sunt pe Route 118 printre flori, te aștept."
       ]
     }
   ],
@@ -1973,7 +1973,7 @@
         "Dalton here! My team's tougher now. Come to Route 118 and battle me!"
       ],
       "text": [
-        ""
+        "Aici Dalton! Echipa mea e mai dură acum. Vino pe Route 118 și luptă cu mine!"
       ]
     },
     {
@@ -1981,7 +1981,7 @@
         "It's Dalton. I'm on Route 118. Don't keep me waiting too long!"
       ],
       "text": [
-        ""
+        "Sunt Dalton. Sunt pe Route 118. Nu mă lăsa să aștept prea mult!"
       ]
     }
   ],
@@ -2007,7 +2007,7 @@
         "Jackson here. The rain on Route 119 has made my team stronger. Shall we battle?"
       ],
       "text": [
-        ""
+        "Aici Jackson. Ploaia de pe Route 119 mi-a făcut echipa mai puternică. Luptăm?"
       ]
     },
     {
@@ -2015,7 +2015,7 @@
         "It's Jackson. I'm out on Route 119 in the long grass, waiting for you."
       ],
       "text": [
-        ""
+        "Sunt Jackson. Sunt pe Route 119, în iarba înaltă, și te aștept."
       ]
     }
   ],
@@ -2041,7 +2041,7 @@
         "Catherine calling! I've been training hard in Route 119's rain. Let's have a rematch!"
       ],
       "text": [
-        ""
+        "Sună Catherine! M-am antrenat din greu în ploaia de pe Route 119. Hai la o revanșă!"
       ]
     },
     {
@@ -2049,7 +2049,7 @@
         "Catherine here. I'm still on Route 119. Bring an umbrella!"
       ],
       "text": [
-        ""
+        "Aici Catherine. Sunt încă pe Route 119. Adu o umbrelă!"
       ]
     }
   ],
@@ -2075,7 +2075,7 @@
         "It's Robert. I've found a better way to raise my birds. Come and battle on Route 120!"
       ],
       "text": [
-        ""
+        "Sunt Robert. Am găsit un mod mai bun de a-mi crește păsările. Vino să luptăm pe Route 120!"
       ]
     },
     {
@@ -2083,7 +2083,7 @@
         "Robert here. My birds and I are on Route 120, ready for you."
       ],
       "text": [
-        ""
+        "Aici Robert. Păsările mele și cu mine suntem pe Route 120, gata pentru tine."
       ]
     }
   ],
@@ -2109,7 +2109,7 @@
         "Jeffrey here. The insects of Route 120 have taught my team a thing or two. Rematch?"
       ],
       "text": [
-        ""
+        "Aici Jeffrey. Insectele de pe Route 120 i-au învățat câte ceva pe Pokémonii mei. Revanșă?"
       ]
     },
     {
@@ -2117,7 +2117,7 @@
         "It's Jeffrey. Still on Route 120, still waiting for that battle."
       ],
       "text": [
-        ""
+        "Sunt Jeffrey. Tot pe Route 120, tot aștept lupta aia."
       ]
     }
   ],
@@ -2143,7 +2143,7 @@
         "Walter speaking. My Pokémon have grown splendidly. Shall we meet again on Route 121?"
       ],
       "text": [
-        ""
+        "Vorbește Walter. Pokémonii mei au crescut splendid. Ne revedem pe Route 121?"
       ]
     },
     {
@@ -2151,7 +2151,7 @@
         "Walter here. I'm on Route 121 whenever you have a moment."
       ],
       "text": [
-        ""
+        "Aici Walter. Sunt pe Route 121 oricând ai un moment."
       ]
     }
   ],
@@ -2177,7 +2177,7 @@
         "It's Jessica! My lovely Pokémon are even lovelier now. Battle me on Route 121!"
       ],
       "text": [
-        ""
+        "Sunt Jessica! Pokémonii mei frumoși sunt acum și mai frumoși. Luptă cu mine pe Route 121!"
       ]
     },
     {
@@ -2185,7 +2185,7 @@
         "Jessica here. I'm on Route 121, looking my best and waiting for you."
       ],
       "text": [
-        ""
+        "Aici Jessica. Sunt pe Route 121, arătând cât mai bine și te aștept."
       ]
     }
   ],
@@ -2211,7 +2211,7 @@
         "Cristin calling! I've been training on Route 121 every day. Let's have that rematch!"
       ],
       "text": [
-        ""
+        "Sună Cristin! M-am antrenat pe Route 121 în fiecare zi. Hai la revanșa aia!"
       ]
     },
     {
@@ -2219,7 +2219,7 @@
         "It's Cristin. Route 121, any time. I'm ready!"
       ],
       "text": [
-        ""
+        "Sunt Cristin. Route 121, oricând. Sunt gata!"
       ]
     }
   ],
@@ -2375,7 +2375,7 @@
         "Ernest here. The sea's been rough and my crew's the better for it. Rematch on Route 125?"
       ],
       "text": [
-        ""
+        "Aici Ernest. Marea a fost agitată și echipajul meu a ieșit mai bun din asta. Revanșă pe Route 125?"
       ]
     },
     {
@@ -2383,7 +2383,7 @@
         "Ernest here, still sailing about Route 125. Come and find me."
       ],
       "text": [
-        ""
+        "Aici Ernest, tot navigând pe Route 125. Vino să mă găsești."
       ]
     }
   ],
@@ -2409,7 +2409,7 @@
         "Pablo here! I've surfed every wave on Route 126. Ready for a battle?"
       ],
       "text": [
-        ""
+        "Aici Pablo! Am surfat pe fiecare val de pe Route 126. Gata de luptă?"
       ]
     },
     {
@@ -2417,7 +2417,7 @@
         "It's Pablo. I'm out on Route 126's waves, waiting for you."
       ],
       "text": [
-        ""
+        "Sunt Pablo. Sunt pe valurile de pe Route 126 și te aștept."
       ]
     }
   ],
@@ -2443,7 +2443,7 @@
         "Koji here. My body and my Pokémon are both stronger. Battle me on Route 127!"
       ],
       "text": [
-        ""
+        "Aici Koji. Și trupul meu, și Pokémonii mei sunt mai puternici. Luptă cu mine pe Route 127!"
       ]
     },
     {
@@ -2451,7 +2451,7 @@
         "It's Koji. I'm training on Route 127. Come when you're ready."
       ],
       "text": [
-        ""
+        "Sunt Koji. Mă antrenez pe Route 127. Vino când ești gata."
       ]
     }
   ],
@@ -2477,7 +2477,7 @@
         "Isaiah here! New record lap around Route 128, and my team's in top form. Rematch?"
       ],
       "text": [
-        ""
+        "Aici Isaiah! Nou record pe turul din jurul Route 128, iar echipa mea e în formă maximă. Revanșă?"
       ]
     },
     {
@@ -2485,7 +2485,7 @@
         "It's Isaiah. I'm treading water on Route 128, waiting for our battle."
       ],
       "text": [
-        ""
+        "Sunt Isaiah. Mă țin pe apă pe Route 128, aștept lupta noastră."
       ]
     }
   ],
@@ -2511,7 +2511,7 @@
         "It's Katelyn! I finally beat that Wailmer across Route 128. Now let's see if I can beat you!"
       ],
       "text": [
-        ""
+        "Sunt Katelyn! În sfârșit l-am bătut pe Wailmer-ul ăla peste Route 128. Acum să vedem dacă pot să te bat și pe tine!"
       ]
     },
     {
@@ -2519,7 +2519,7 @@
         "Katelyn here. I'm still out on Route 128. Swim over when you can!"
       ],
       "text": [
-        ""
+        "Aici Katelyn. Sunt încă pe Route 128. Vino înot când poți!"
       ]
     }
   ],
@@ -2529,7 +2529,7 @@
         "Thalia"
       ],
       "text": [
-        ""
+        "Thalia"
       ]
     },
     {
@@ -2537,7 +2537,7 @@
         "It's Thalia. I found a cabin on that old ship whose door won't open. I'm sure there's a key somewhere!"
       ],
       "text": [
-        ""
+        "Sunt Thalia. Am găsit o cabină pe corabia aia veche a cărei ușă nu se deschide. Sunt sigură că e o cheie pe undeva!"
       ]
     },
     {
@@ -2545,7 +2545,7 @@
         "It's Thalia. I'm still exploring the Abandoned Ship, and my Pokémon are stronger for it. Come battle me there!"
       ],
       "text": [
-        ""
+        "Sunt Thalia. Încă explorez Abandoned Ship, iar Pokémonii mei au ieșit mai puternici. Vino să lupți cu mine acolo!"
       ]
     },
     {
@@ -2553,7 +2553,7 @@
         "Thalia here. I'm in a cabin on the Abandoned Ship, waiting for you."
       ],
       "text": [
-        ""
+        "Aici Thalia. Sunt într-o cabină de pe Abandoned Ship și te aștept."
       ]
     }
   ],
@@ -2563,7 +2563,7 @@
         "Kira"
       ],
       "text": [
-        ""
+        "Kira"
       ]
     },
     {
@@ -2571,7 +2571,7 @@
         "Kira here! Dan wants to go home, but we haven't found a single treasure yet. We're staying!"
       ],
       "text": [
-        ""
+        "Aici Kira! Dan vrea să meargă acasă, dar n-am găsit nici o comoară. Rămânem!"
       ]
     },
     {
@@ -2579,7 +2579,7 @@
         "Kira here! Dan and I have trained so much. Come to the Abandoned Ship and battle us again!"
       ],
       "text": [
-        ""
+        "Aici Kira! Eu și Dan ne-am antrenat atât de mult. Vino la Abandoned Ship și luptă din nou cu noi!"
       ]
     },
     {
@@ -2587,7 +2587,7 @@
         "It's Kira. We're still on the Abandoned Ship. Dan says hurry up!"
       ],
       "text": [
-        ""
+        "Sunt Kira. Suntem încă pe Abandoned Ship. Dan zice să te grăbești!"
       ]
     }
   ],

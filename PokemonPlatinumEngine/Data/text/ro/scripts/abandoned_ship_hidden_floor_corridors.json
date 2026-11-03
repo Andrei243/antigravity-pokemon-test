@@ -5,7 +5,7 @@
         "{player} put the Room 1 Key in the lock and turned it."
       ],
       "text": [
-        ""
+        "{player} a băgat Room 1 Key în broască și a răsucit-o."
       ]
     },
     {
@@ -13,7 +13,7 @@
         "The key stuck fast in the lock, but the door swung open."
       ],
       "text": [
-        ""
+        "Cheia s-a înțepenit în broască, dar ușa s-a deschis."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "The door is locked. \"RM. 1\" is painted on it."
       ],
       "text": [
-        ""
+        "Ușa e încuiată. Pe ea scrie „RM. 1”."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "The door stands open."
       ],
       "text": [
-        ""
+        "Ușa stă deschisă."
       ]
     }
   ],
@@ -39,7 +39,7 @@
         "{player} put the Room 2 Key in the lock and turned it."
       ],
       "text": [
-        ""
+        "{player} a băgat Room 2 Key în broască și a răsucit-o."
       ]
     },
     {
@@ -47,7 +47,7 @@
         "The key stuck fast in the lock, but the door swung open."
       ],
       "text": [
-        ""
+        "Cheia s-a înțepenit în broască, dar ușa s-a deschis."
       ]
     },
     {
@@ -55,7 +55,7 @@
         "The door is locked. \"RM. 2\" is painted on it."
       ],
       "text": [
-        ""
+        "Ușa e încuiată. Pe ea scrie „RM. 2”."
       ]
     },
     {
@@ -63,7 +63,7 @@
         "The door stands open."
       ],
       "text": [
-        ""
+        "Ușa stă deschisă."
       ]
     }
   ],
@@ -73,7 +73,7 @@
         "{player} put the Room 4 Key in the lock and turned it."
       ],
       "text": [
-        ""
+        "{player} a băgat Room 4 Key în broască și a răsucit-o."
       ]
     },
     {
@@ -81,7 +81,7 @@
         "The key stuck fast in the lock, but the door swung open."
       ],
       "text": [
-        ""
+        "Cheia s-a înțepenit în broască, dar ușa s-a deschis."
       ]
     },
     {
@@ -89,7 +89,7 @@
         "The door is locked. \"RM. 4\" is painted on it."
       ],
       "text": [
-        ""
+        "Ușa e încuiată. Pe ea scrie „RM. 4”."
       ]
     },
     {
@@ -97,7 +97,7 @@
         "The door stands open."
       ],
       "text": [
-        ""
+        "Ușa stă deschisă."
       ]
     }
   ],
@@ -107,7 +107,7 @@
         "{player} put the Room 6 Key in the lock and turned it."
       ],
       "text": [
-        ""
+        "{player} a băgat Room 6 Key în broască și a răsucit-o."
       ]
     },
     {
@@ -115,7 +115,7 @@
         "The key stuck fast in the lock, but the door swung open."
       ],
       "text": [
-        ""
+        "Cheia s-a înțepenit în broască, dar ușa s-a deschis."
       ]
     },
     {
@@ -123,7 +123,7 @@
         "The door is locked. \"RM. 6\" is painted on it."
       ],
       "text": [
-        ""
+        "Ușa e încuiată. Pe ea scrie „RM. 6”."
       ]
     },
     {
@@ -131,7 +131,7 @@
         "The door stands open."
       ],
       "text": [
-        ""
+        "Ușa stă deschisă."
       ]
     }
   ]

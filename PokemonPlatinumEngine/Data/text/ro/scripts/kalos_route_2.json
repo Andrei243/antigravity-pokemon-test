@@ -1,0 +1,78 @@
+{
+  "Lesson": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "{player}! I was hoping to catch you. Your first time in the tall grass?"
+      ],
+      "text": [
+        "{player}! Speram să te prind. Prima ta dată în iarba înaltă?"
+      ]
+    },
+    {
+      "en": [
+        "Wild Pokémon live in there. If you want one on your team, wear it down a little, then throw a Poké Ball. Watch."
+      ],
+      "text": [
+        "Acolo trăiesc Pokémoni sălbatici. Dacă vrei unul în echipă, obosește-l puțin, apoi aruncă un Poké Ball. Uită-te."
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Like that. A tired Pokémon gives in to a ball far more easily than a fresh one."
+      ],
+      "text": [
+        "Așa. Un Pokémon obosit cedează în fața unei bile mult mai ușor decât unul odihnit."
+      ]
+    },
+    {
+      "en": [
+        "Here, take some Poké Balls. The professor wants us to meet every Pokémon in Kalos, after all."
+      ],
+      "text": [
+        "Ține, ia niște Poké Balls. Profesorul vrea ca noi să întâlnim toți Pokémonii din Kalos, până la urmă."
+      ]
+    },
+    {
+      "en": [
+        "The forest is just north of here. The others went on ahead. I'll see you in Santalune City."
+      ],
+      "text": [
+        "Pădurea e chiar la nord de aici. Ceilalți au plecat înainte. Ne vedem în Santalune City."
+      ]
+    }
+  ],
+  "Rival": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Watch closely, {player}."
+      ],
+      "text": [
+        "Uită-te atent, {player}."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,228 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitor"
+      ]
+    },
+    {
+      "en": [
+        "Welcome back down. That climb is over, but the Hill will be here whenever you're ready to try again."
+      ],
+      "text": [
+        "Bine ai revenit jos. Urcușul s-a terminat, dar Hill va fi aici oricând vei fi gata să încerci din nou."
+      ]
+    },
+    {
+      "en": [
+        "Your Pokémon are rested and ready."
+      ],
+      "text": [
+        "Pokémonii tăi sunt odihniți și gata."
+      ]
+    },
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitor"
+      ]
+    },
+    {
+      "en": [
+        "Back from the roof! What a climb. Let me see to your Pokémon."
+      ],
+      "text": [
+        "Înapoi de pe acoperiș! Ce urcuș. Lasă-mă să am grijă de Pokémonii tăi."
+      ]
+    },
+    {
+      "en": [
+        "There you go. They're rested and ready."
+      ],
+      "text": [
+        "Gata. Sunt odihniți și pregătiți."
+      ]
+    }
+  ],
+  "Counter": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitor"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Trainer Hill! Four floors of trainers stand between you and the owner on the roof."
+      ],
+      "text": [
+        "Bine ai venit la Trainer Hill! Patru etaje de Antrenori se află între tine și proprietarul de pe acoperiș."
+      ]
+    },
+    {
+      "en": [
+        "Would you like to take on a challenge?",
+        "YES",
+        "NO",
+        "INFO"
+      ],
+      "text": [
+        "Vrei să încerci o provocare?",
+        "DA",
+        "NU",
+        "INFO"
+      ]
+    },
+    {
+      "en": [
+        "Which challenge will you take?",
+        "NORMAL",
+        "VARIETY",
+        "UNIQUE",
+        "EXPERT",
+        "CANCEL"
+      ],
+      "text": [
+        "Ce provocare alegi?",
+        "NORMAL",
+        "VARIETY",
+        "UNIQUE",
+        "EXPERT",
+        "ANULEAZĂ"
+      ]
+    },
+    {
+      "en": [
+        "Your Pokémon are rested. The clock is running from now on. Good luck up there!"
+      ],
+      "text": [
+        "Pokémonii tăi sunt odihniți. Ceasul pornește de acum. Noroc acolo sus!"
+      ]
+    },
+    {
+      "en": [
+        "You're partway through a climb. Will you head back up?",
+        "GO ON",
+        "GIVE UP"
+      ],
+      "text": [
+        "Ești la jumătatea unui urcuș. Te întorci sus?",
+        "CONTINUĂ",
+        "RENUNȚĂ"
+      ]
+    },
+    {
+      "en": [
+        "Then up you go. The clock never stopped!"
+      ],
+      "text": [
+        "Atunci sus cu tine. Ceasul n-a stat niciodată!"
+      ]
+    },
+    {
+      "en": [
+        "That climb is over, then. Your Pokémon are rested for next time."
+      ],
+      "text": [
+        "Atunci urcușul s-a terminat. Pokémonii tăi sunt odihniți pentru data viitoare."
+      ]
+    },
+    {
+      "en": [
+        "Each challenge has four floors, and two trainers wait on every floor. Their Pokémon match your strongest one's level."
+      ],
+      "text": [
+        "Fiecare provocare are patru etaje, iar doi Antrenori așteaptă la fiecare. Pokémonii lor se potrivesc cu nivelul celui mai puternic al tău."
+      ]
+    },
+    {
+      "en": [
+        "If both trainers on a floor can see you at once, they'll battle you together."
+      ],
+      "text": [
+        "Dacă ambii Antrenori de pe un etaj te văd deodată, vor lupta cu tine împreună."
+      ]
+    },
+    {
+      "en": [
+        "Nothing is earned in these battles, and your Pokémon aren't healed between floors. Reach the roof as fast as you can!"
+      ],
+      "text": [
+        "Nu se câștigă nimic din luptele astea, iar Pokémonii tăi nu sunt vindecați între etaje. Ajunge pe acoperiș cât mai repede!"
+      ]
+    },
+    {
+      "en": [
+        "The owner waits up there with a prize. The quicker the climb, the better it is."
+      ],
+      "text": [
+        "Proprietarul așteaptă acolo cu un premiu. Cu cât urci mai repede, cu atât e mai bun."
+      ]
+    },
+    {
+      "en": [
+        "We aren't quite open yet. The Hill is for trainers who have already beaten Hoenn's League."
+      ],
+      "text": [
+        "Nu am deschis încă oficial. Hill-ul e pentru Antrenorii care au învins deja Liga din Hoenn."
+      ]
+    },
+    {
+      "en": [
+        "Come back once you've made your name as Champion!"
+      ],
+      "text": [
+        "Revino după ce îți faci un nume de Campion!"
+      ]
+    },
+    {
+      "en": [
+        "Come back any time you feel like a climb!"
+      ],
+      "text": [
+        "Revino oricând simți nevoia să urci!"
+      ]
+    }
+  ],
+  "Records": [
+    {
+      "en": [
+        "Gentleman"
+      ],
+      "text": [
+        "Domn"
+      ]
+    },
+    {
+      "en": [
+        "I keep the board of the Hill's best times. Here's how yours stand."
+      ],
+      "text": [
+        "Țin tabla celor mai bune timpuri de pe Hill. Iată cum stai tu."
+      ]
+    },
+    {
+      "en": [
+        "Normal: {hill:BEST_NORMAL}. Variety: {hill:BEST_VARIETY}."
+      ],
+      "text": [
+        "Normal: {hill:BEST_NORMAL}. Variety: {hill:BEST_VARIETY}."
+      ]
+    },
+    {
+      "en": [
+        "Unique: {hill:BEST_UNIQUE}. Expert: {hill:BEST_EXPERT}."
+      ],
+      "text": [
+        "Unique: {hill:BEST_UNIQUE}. Expert: {hill:BEST_EXPERT}."
+      ]
+    }
+  ]
+}

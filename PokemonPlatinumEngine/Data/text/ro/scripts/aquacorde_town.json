@@ -1,0 +1,360 @@
+{
+  "Friends": [
+    {
+      "en": [
+        "Shauna"
+      ],
+      "text": [
+        "Shauna"
+      ]
+    },
+    {
+      "en": [
+        "There you are! Everybody, this is {player}, the one who just moved to Vaniville!"
+      ],
+      "text": [
+        "Aici erai! Toată lumea, el e {player}, cel care tocmai s-a mutat în Vaniville!"
+      ]
+    },
+    {
+      "en": [
+        "Tierno"
+      ],
+      "text": [
+        "Tierno"
+      ]
+    },
+    {
+      "en": [
+        "Hey there! I'm Tierno. Nice to meet you! I love dancing, and I'm going to have a Pokémon dance team one day."
+      ],
+      "text": [
+        "Salut! Sunt Tierno. Încântat! Ador dansul și într-o zi o să am o echipă de dans de Pokémoni."
+      ]
+    },
+    {
+      "en": [
+        "Trevor"
+      ],
+      "text": [
+        "Trevor"
+      ]
+    },
+    {
+      "en": [
+        "I-I'm Trevor. Um. Hello."
+      ],
+      "text": [
+        "E-eu sunt Trevor. Hm. Salut."
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "The four of us were asked to come here. And you too, {player}. Tierno, show them."
+      ],
+      "text": [
+        "Noi patru am fost rugați să venim aici. Și tu, {player}. Tierno, arată-le."
+      ]
+    },
+    {
+      "en": [
+        "Tierno"
+      ],
+      "text": [
+        "Tierno"
+      ]
+    },
+    {
+      "en": [
+        "Right! A professor in Lumiose City sent us Pokémon to start our journeys with. Three of them are for you guys!"
+      ],
+      "text": [
+        "Bine! Un profesor din Lumiose City ne-a trimis Pokémoni cu care să ne începem călătoriile. Trei sunt pentru voi!"
+      ]
+    },
+    {
+      "en": [
+        "Go on, {player}. You pick first!"
+      ],
+      "text": [
+        "Hai, {player}. Tu alegi primul!"
+      ]
+    },
+    {
+      "en": [
+        "{player} chose {starter}!"
+      ],
+      "text": [
+        "{player} l-a ales pe {starter}!"
+      ]
+    },
+    {
+      "en": [
+        "Shauna"
+      ],
+      "text": [
+        "Shauna"
+      ]
+    },
+    {
+      "en": [
+        "Ooh, good pick! Then I'll take this one. We'll be the best of partners, won't we?"
+      ],
+      "text": [
+        "Ooh, alegere bună! Atunci îl iau pe ăsta. O să fim cei mai buni parteneri, nu-i așa?"
+      ]
+    },
+    {
+      "en": [
+        "Trevor"
+      ],
+      "text": [
+        "Trevor"
+      ]
+    },
+    {
+      "en": [
+        "And, um, the professor sent these as well. They're Pokédexes. It writes down every Pokémon you see."
+      ],
+      "text": [
+        "Și, hm, profesorul a trimis și astea. Sunt Pokédexuri. Notează fiecare Pokémon pe care îl vezi."
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Pokédex!"
+      ],
+      "text": [
+        "{player} a primit Pokédex-ul!"
+      ]
+    },
+    {
+      "en": [
+        "He wants us to see as many Pokémon as we can, all over Kalos. I-I'm going to see them all."
+      ],
+      "text": [
+        "Vrea să vedem cât mai mulți Pokémoni, în toată Kalos. E-eu am să-i văd pe toți."
+      ]
+    },
+    {
+      "en": [
+        "Shauna"
+      ],
+      "text": [
+        "Shauna"
+      ]
+    },
+    {
+      "en": [
+        "Now we've all got Pokémon... {player}, let's have a battle! Right here, right now!"
+      ],
+      "text": [
+        "Acum avem cu toții Pokémoni... {player}, hai la o luptă! Chiar aici, chiar acum!"
+      ]
+    },
+    {
+      "en": [
+        "Shauna"
+      ],
+      "text": [
+        "Shauna"
+      ]
+    },
+    {
+      "en": [
+        "Wow, you're strong! Battling's so much fun when your Pokémon are trying their hardest!"
+      ],
+      "text": [
+        "Uau, ești puternic! Lupta e atât de distractivă când Pokémonii se străduiesc din răsputeri!"
+      ]
+    },
+    {
+      "en": [
+        "We won? We won! You did great too, though. That was so much fun!"
+      ],
+      "text": [
+        "Am câștigat? Am câștigat! Și tu ai fost grozav, totuși. A fost atât de distractiv!"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "There's one more thing. The professor sent a letter for your family, {player}. Here."
+      ],
+      "text": [
+        "Mai e ceva. Profesorul a trimis o scrisoare pentru familia ta, {player}. Ține."
+      ]
+    },
+    {
+      "en": [
+        "{player} received the professor's letter."
+      ],
+      "text": [
+        "{player} a primit scrisoarea profesorului."
+      ]
+    },
+    {
+      "en": [
+        "Take it home and show your mum before you set off. The road north over the bridge goes on toward Santalune."
+      ],
+      "text": [
+        "Du-o acasă și arat-o mamei tale înainte să pleci. Drumul spre nord, peste pod, duce mai departe spre Santalune."
+      ]
+    },
+    {
+      "en": [
+        "Tierno"
+      ],
+      "text": [
+        "Tierno"
+      ]
+    },
+    {
+      "en": [
+        "We'll be right here when you get back!"
+      ],
+      "text": [
+        "Te așteptăm chiar aici când te întorci!"
+      ]
+    }
+  ],
+  "Shauna": [
+    {
+      "en": [
+        "Shauna"
+      ],
+      "text": [
+        "Shauna"
+      ]
+    },
+    {
+      "en": [
+        "Hi! Pull up a chair!"
+      ],
+      "text": [
+        "Salut! Ia loc pe un scaun!"
+      ]
+    },
+    {
+      "en": [
+        "My partner and I are going to see every corner of Kalos together!"
+      ],
+      "text": [
+        "Eu și partenerul meu o să vedem fiecare colț din Kalos împreună!"
+      ]
+    }
+  ],
+  "Tierno": [
+    {
+      "en": [
+        "Tierno"
+      ],
+      "text": [
+        "Tierno"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to Aquacorde! The pastries here are the best."
+      ],
+      "text": [
+        "Bine ai venit în Aquacorde! Cozonacii de aici sunt cei mai buni."
+      ]
+    },
+    {
+      "en": [
+        "Did you show your mum yet? She's going to be so happy for you!"
+      ],
+      "text": [
+        "Ai arătat-o deja mamei tale? O să fie atât de fericită pentru tine!"
+      ]
+    }
+  ],
+  "Trevor": [
+    {
+      "en": [
+        "Trevor"
+      ],
+      "text": [
+        "Trevor"
+      ]
+    },
+    {
+      "en": [
+        "Um... hello."
+      ],
+      "text": [
+        "Hm... salut."
+      ]
+    },
+    {
+      "en": [
+        "The Pokédex fills in the moment you see a Pokémon. I-I'm going to check every page."
+      ],
+      "text": [
+        "Pokédex-ul se completează de îndată ce vezi un Pokémon. E-eu am să verific fiecare pagină."
+      ]
+    }
+  ],
+  "Rival": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Everyone's here. Come and sit down, {player}."
+      ],
+      "text": [
+        "Suntem toți aici. Vino și stai jos, {player}."
+      ]
+    }
+  ],
+  "NotYet": [
+    {
+      "en": [
+        "There are wild Pokémon in the tall grass ahead. Better not go without a Pokémon of your own!"
+      ],
+      "text": [
+        "În iarba înaltă din față sunt Pokémoni sălbatici. Mai bine nu te duci fără un Pokémon al tău!"
+      ]
+    }
+  ],
+  "HomeFirst": [
+    {
+      "en": [
+        "Tierno"
+      ],
+      "text": [
+        "Tierno"
+      ]
+    },
+    {
+      "en": [
+        "Hey, {player}! Don't forget the professor's letter. Show your mum first, then we'll all head out!"
+      ],
+      "text": [
+        "Hei, {player}! Nu uita scrisoarea profesorului. Arat-o întâi mamei tale, apoi plecăm cu toții!"
+      ]
+    }
+  ]
+}
