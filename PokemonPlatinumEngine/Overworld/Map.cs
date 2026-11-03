@@ -1231,7 +1231,8 @@ public class Map
             for (int y = place.Y; y < place.Y + place.Height; y++)
                 for (int x = place.X; x < place.X + place.Width; x++) tileAreas[y * Width + x] = null;
         Warps.RemoveAll(place.Warps.Contains);
-        Props.RemoveAll(place.Props.Contains);
+        // under the list's lock: a chunk may be baking on a worker meanwhile (OutdoorProps.Add takes a copy under it)
+        lock (Props) Props.RemoveAll(place.Props.Contains);
         NPCs.RemoveAll(place.People.Contains);
         Absent.RemoveAll(place.People.Contains);
         Triggers.RemoveAll(place.Triggers.Contains);
@@ -1262,7 +1263,7 @@ public class Map
                     areaGrid[(place.Y / ChunkTiles + cy) * ChunkColumns + place.X / ChunkTiles + cx] = place.AreaCells[cy * columns + cx];
         if (place.TileAreas != null && tileAreas != null) Put(place.TileAreas, tileAreas);
         Warps.AddRange(place.Warps);
-        Props.AddRange(place.Props);
+        lock (Props) Props.AddRange(place.Props);
         // Whoever the flags hide goes back among the absent at the next presence check
         NPCs.AddRange(place.People);
         Triggers.AddRange(place.Triggers);
@@ -1380,8 +1381,11 @@ public class Map
         Put(from.SlopesX, slopesX);
         Put(from.SlopesZ, slopesZ);
         Put(from.Decks, decks);
-        Props.RemoveAll(p => p.X >= x0 && p.Y >= y0 && p.X < x0 + w && p.Y < y0 + h);
-        Props.AddRange(from.Props);
+        lock (Props)
+        {
+            Props.RemoveAll(p => p.X >= x0 && p.Y >= y0 && p.X < x0 + w && p.Y < y0 + h);
+            Props.AddRange(from.Props);
+        }
     }
 
     /// <summary>

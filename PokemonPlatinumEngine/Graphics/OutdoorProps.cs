@@ -36,9 +36,13 @@ internal static class OutdoorProps
     public static void Add(KitBuilder kit, Map map, MeshBuilder lamplight, TileWindow? window = null)
     {
         var within = window ?? new TileWindow(0, 0, map.Width, map.Height);
+        // A copy taken under the list's lock: a chunk bakes on a worker while the story may swap chunks on the main thread
+        // (Map.Hide and Reveal), which changes the list meanwhile
+        Prop[] props;
+        lock (map.Props) props = map.Props.ToArray();
         // Fences and low walls join up with each other; a tile that is both is a wall
         var fenced = new Dictionary<(int, int), bool>();
-        foreach (var prop in map.Props)
+        foreach (var prop in props)
         {
             if (prop.Type is not (PropType.Fence or PropType.LowWall)) continue;
             for (int y = prop.Y; y < prop.Y + prop.Depth; y++)
@@ -48,7 +52,7 @@ internal static class OutdoorProps
         foreach (var ((x, y), wall) in fenced)
             if (within.Contains(x, y)) Fence(kit, map, fenced, x, y, wall);
 
-        foreach (var prop in map.Props)
+        foreach (var prop in props)
         {
             if (!within.Contains(prop.X, prop.Y)) continue;
             // What stands in a secret base of the Underground is built as the rooms' furniture is (plan 06 · R16a)
