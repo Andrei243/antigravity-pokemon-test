@@ -1521,6 +1521,24 @@ oute_119_weather_institute_2f.txt), common.HoennAbnormalWeather and HoennAbnorma
       (the roulette's wheel is another session's); the Kecleon bridge's and the Fortree bridge's tile swaps, the salt
       piles shrinking, Mew's grass shaking and the cave mouths' and deep water's looks under the abnormal weather (each a
       swap of chunks or a field effect, none drawn).
+    - **Part r** (done 2026-11-03: Hoenn's picture-only leftovers; style guide, "Hoenn's last things"; shots with the
+      harness's `hoenn` mode, `HOENN_FROM=look`, before and after, `h3e4` to `h3e6`, `h3g1`, `h3h0`, `h3h0b`, `h3h1`, `h3h2`,
+      `h3h2b`, `h3i2`, `h3i2b`, `h3i3`, `h3i3b`, `h3i4`, `h3k6`; tests `HoennPartRTests`, run with `--filter`). **Built**:
+      planks pressed down (`FieldLife.Marks.cs`, our own art, the life atlas grown to six rows of which the marks are
+      blocks of two cells by two): under the player on Hoenn's plank bridges (Emerald's Fortree bridge swap) and under the
+      unseen Kecleon on Route 120's bridge until it is gone; Shoal Cave's salt piles whole, then a little left once the
+      day's salt is taken, none under the tide (`Overworld/SaltPiles.cs`); under the abnormal weather a cave's mouth on
+      the Terra Cave's ways (a door opened by `FLAG_HOENN_ABNORMAL_WEATHER_*`) and one patch of deep water to each run of
+      the overlays' `darkWater` (`GameEngine.StoryMarksOn`, told to the field's life when the story or the map changes);
+      the Abandoned Ship's deckhouse and bulwarks as a ship's steel over its rock (`PropType.ShipCabin`, fourteen overlay
+      props over blocked tiles only); the S.S. Tidal's patches of floor among its bulkheads (a run of walls far from the
+      floor that is shut in by partitions is built as partitions, `MapScene.ShutInBetweenPartitions`, which also fills the
+      corridor's middle block); the contest's line-up cards a row along the foot so the stage reads above. **Checked**: a
+      surfer passes under the Seaside Cycling Road at its north end (rows 193 to 197), where Emerald's sea runs under its
+      deck; along its long stretch the sea beside the deck is Emerald's blocked water, kept. **Fixed**: `h3h1` stood the
+      player inside a house (Fortree's shot is now on the upper walkway), `h3h0` in the river. **Left**: the Fortree
+      walkway's planks under the trees south of it are hidden from the camera (the trees' height, as in `h3h1`'s first
+      look); Mew's grass shaking; the cave mouth is one card on the tile, not a hole cut in the rock's face.
     - **Part o** (done 2026-11-02: Mauville's roulette wheel, the contest's stage and the museum's first scene;
       docs/mechanics/rulings.md, "Mauville's roulette wheel, the contest's stage and the museum's first scene"; tests run
       with --filter (HoennPartOTests 12, and Story, Script, Content, Text, Voice, ScriptTranslation, SceneSkip,

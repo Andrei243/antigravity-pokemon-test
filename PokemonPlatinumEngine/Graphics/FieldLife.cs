@@ -841,7 +841,7 @@ internal static partial class LifeArt
     public static PixelCanvas Atlas()
     {
         const int cell = FieldLife.Cell;
-        var c = new PixelCanvas(cell * FieldLife.Columns, cell * 2);
+        var c = new PixelCanvas(cell * FieldLife.Columns, cell * FieldLife.AtlasRows);
         var white = Color.White;
         var grey = Rgb(206, 206, 214);
         var dark = Rgb(96, 100, 96);
@@ -953,6 +953,8 @@ internal static partial class LifeArt
         c.SetRaw(kx + 11, ky + 5, white);
         c.SetRaw(kx + 5, ky + 11, white);
         c.SetRaw(kx + 10, ky + 11, white);
+        // The marks of plan 21 · part r: a plank pressed down, a heap of salt and the little left of one
+        PaintMarks(c);
         return c;
     }
 

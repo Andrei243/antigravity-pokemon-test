@@ -69,10 +69,13 @@ internal static partial class ModernUi
 
     // ------------------------------------------------------------------ the line-up
 
+    /// <summary>How tall the line-up's cards stand (plan 21 · part r): a row along the foot, over the dialogue box, so the stage behind reads above them.</summary>
+    public const float AppealLineupCardHeight = 380;
+
     private static void AppealLineup(int sw, AppealScreen screen)
     {
         var round = screen.Round!;
-        float top = ContentTop, height = ContentBottom - ContestBox - Gutter - top;
+        float height = AppealLineupCardHeight, top = ContentBottom - ContestBox - Gutter - height;
         float w = (sw - Margin * 2 - Gutter * 3) / 4f;
         float t = (float)FrameClock.Now;
         for (int turn = 0; turn < AppealRound.Contestants; turn++)
@@ -84,13 +87,13 @@ internal static partial class ModernUi
             bool shown = screen.Showing >= turn;
             Card(r, 30, on, QualityColor(round.Category));
             Tag(r.X + 24, r.Y + 22, TurnTag(turn), a.IsPlayer ? Selection : Frame, 38);
-            var c = new Vector2(r.X + r.Width / 2f, r.Y + 60 + (r.Height - 250) / 2f);
-            float radius = MathF.Min(r.Width * 0.38f, (r.Height - 250) / 2f);
+            var c = new Vector2(r.X + r.Width / 2f, r.Y + 145);
+            float radius = MathF.Min(r.Width * 0.3f, 95f);
             BallDisc(c, radius);
             PixelArt(PixelArtGenerator.SpriteOf(a.Pokemon), c, radius >= 150 ? 2 : 1, on ? MathF.Abs(MathF.Sin(t * 7f)) * 14f : 0f);
             string name = a.Pokemon.DisplayName;
-            UiFonts.DrawCentered(name, r.X + (r.Width - UiFonts.Measure(name, 34, UiWeight.Black)) / 2f, r.Y + r.Height - 138, 34, Ink, UiWeight.Black);
-            UiFonts.DrawCentered(a.Trainer, r.X + (r.Width - UiFonts.Measure(a.Trainer, 24, UiWeight.ExtraBold)) / 2f, r.Y + r.Height - 98, 24, Muted, UiWeight.ExtraBold);
+            UiFonts.DrawCentered(name, r.X + (r.Width - UiFonts.Measure(name, 34, UiWeight.Black)) / 2f, r.Y + r.Height - 132, 34, Ink, UiWeight.Black);
+            UiFonts.DrawCentered(a.Trainer, r.X + (r.Width - UiFonts.Measure(a.Trainer, 24, UiWeight.ExtraBold)) / 2f, r.Y + r.Height - 92, 24, Muted, UiWeight.ExtraBold);
             if (shown)
             {
                 string cond = Text.Of("appeal.conditionPoints", ("n", a.Round1Points));

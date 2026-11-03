@@ -303,6 +303,13 @@ public enum PropType
     /// along its top. A room's furniture: the tile blocks by itself.
     /// </summary>
     ShipEngine,
+    /// <summary>
+    /// The Abandoned Ship's deckhouse and bulwarks (plan 21 · part r; our own drawing): an overlay's prop over the deck's
+    /// blocked tiles, whose shared metatiles the import lays as rock. Built from the deck below it up to the top of what it
+    /// covers: a white-painted steel wall gone to rust with dark portholes where it stands tall, a bulwark with a rail where
+    /// it stands low, a roof of rusted plate. It blocks nothing by itself.
+    /// </summary>
+    ShipCabin,
 }
 
 /// <summary>A piece of furniture or decoration placed in a room, covering a rectangle of tiles.</summary>

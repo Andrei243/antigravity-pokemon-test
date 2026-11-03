@@ -44,7 +44,7 @@ partial class Harness
             if (mode != TravelMode.OnFoot) game.Player.SetMode(mode);
             game.ArriveOnMap();
             // On a bridge the player stands on its deck, as one who came onto it would
-            if (game.Map.DeckAt(x, y) is { } deck) game.Player.SetHeight(deck);
+            if (mode != TravelMode.Surfing && game.Map.DeckAt(x, y) is { } deck) game.Player.SetHeight(deck);
             game.LocationSign.Hide();
             Frames(30);
             Console.WriteLine($"{name}: {game.Map.Name} ({game.Player.GridX}, {game.Player.GridY}), {game.Map.NPCs.Count} people, "
@@ -114,11 +114,43 @@ partial class Harness
         Look("h3g2_mechadolls", "Route110_TrickHousePuzzle5", 4, 20, Direction.Up);
 
         // ---- The bridges, the salt, cave mouths, deep water and the triangle
-        Look("h3h0_route120_kecleon_bridge", "Hoenn", 373, 17, Direction.Up);
-        Look("h3h1_fortree_bridge", "Hoenn", 330, 12, Direction.Up);
-        Look("h3h2_shoal_cave_salt", "ShoalCave_LowTideInnerRoom", 31, 22, Direction.Up);
+        // Plan 21 · part r: the player on Route 120's bridge beside the Kecleon nobody sees, whose plank is pressed down,
+        // and the bridge once it is gone; Fortree's walkway with the player's own plank pressed down
+        Look("h3h0_route120_kecleon_bridge", "Hoenn", 369, 16, Direction.Right);
+        if (Wants("h3h0"))
+        {
+            game.Story.Set("FLAG_HIDE_ROUTE_120_KECLEON_BRIDGE");
+            Look("h3h0b_route120_kecleon_gone", "Hoenn", 369, 16, Direction.Right);
+            game.Story.Unset("FLAG_HIDE_ROUTE_120_KECLEON_BRIDGE");
+        }
+        Look("h3h1_fortree_bridge", "Hoenn", 331, 4, Direction.Right);
+        // Shoal Cave's first pile of salt, whole and then with the day's salt taken
+        Look("h3h2_shoal_cave_salt", "ShoalCave_LowTideInnerRoom", 31, 10, Direction.Up);
+        if (Wants("h3h2"))
+        {
+            game.Story.Set("FLAG_DAILY_RECEIVED_SHOAL_SALT_1");
+            Look("h3h2b_shoal_cave_salt_taken", "ShoalCave_LowTideInnerRoom", 31, 10, Direction.Up);
+            game.Story.Unset("FLAG_DAILY_RECEIVED_SHOAL_SALT_1");
+        }
         Look("h3i0_granite_cave_mouth", "Hoenn", 117, 330, Direction.Up);
         Look("h3i1_route124_deep_water", "Hoenn", 500, 140, Direction.Up, TravelMode.Surfing);
+        // The abnormal weather's cave mouth on Route 114 and its deep water on Route 105, before and while it is there
+        if (Wants("h3i2"))
+        {
+            Look("h3i2_route114_terra_cave_shut", "Hoenn", 46, 50, Direction.Up);
+            game.Story.Set("FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_114_SOUTH");
+            Look("h3i2b_route114_terra_cave_mouth", "Hoenn", 46, 50, Direction.Up);
+            game.Story.Unset("FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_114_SOUTH");
+        }
+        if (Wants("h3i3"))
+        {
+            Look("h3i3_route105_sea", "Hoenn", 11, 295, Direction.Up, TravelMode.Surfing);
+            game.Story.Set("FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_105_NORTH");
+            Look("h3i3b_route105_deep_water", "Hoenn", 11, 295, Direction.Up, TravelMode.Surfing);
+            game.Story.Unset("FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_105_NORTH");
+        }
+        // A surfer under the Seaside Cycling Road, where Emerald's sea runs under its deck
+        Look("h3i4_cycling_road_surfer_under", "Hoenn", 210, 196, Direction.Right, TravelMode.Surfing);
         Look("h3j0_birth_island_triangle", "BirthIsland_Exterior", 15, 17, Direction.Up);
 
         // ---- Plan 21 · part q: what parts k, n and o built that nobody had seen. The Seaside Cycling Road ridden (its

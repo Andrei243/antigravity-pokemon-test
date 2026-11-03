@@ -64,6 +64,9 @@ internal static partial class Landmarks
             case PropType.Wreck:
                 HoennArt.Wreck(kit, w, d);
                 return true;
+            case PropType.ShipCabin:
+                HoennArt.ShipCabin(kit, map, prop);
+                return true;
             case PropType.Whirlpool:
                 Whirlpool(kit, w, d);
                 return true;
