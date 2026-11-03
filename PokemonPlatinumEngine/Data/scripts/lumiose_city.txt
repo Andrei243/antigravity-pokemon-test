@@ -6,12 +6,16 @@
 # gate, 11 in the laboratory and 12 in the café.
 #
 # The people: sina and dexio (FLAG_KALOS_HIDE_ASSISTANTS_LUMIOSE once their scene is over). The roads out of the city
-# wait for later sessions (VAR_KALOS_LUMIOSE_ROADS, which nothing sets yet, keeps their triggers on).
+# wait for later sessions: VAR_KALOS_LUMIOSE_ROADS is 1 once Lysandre's café is heard (LumioseCity_LysandreCafe.txt),
+# which opens the road west to Route 5 (plan 23 · Z2, second part); the others keep turning the player back.
 
 
 # A save from before this part of the story was written finds the people of Lumiose's part of the story as a new game does
 script OnEnter
   if not flag FLAG_KALOS_LUMIOSE_BEGUN call KalosLumiose
+  # Plan 23 · Z2, second part: a game saved after Lysandre's café, before the road west was opened, finds it open
+  if var VAR_KALOS_STORY < 12 end
+  if var VAR_KALOS_LUMIOSE_ROADS == 0 setvar VAR_KALOS_LUMIOSE_ROADS 1
   end
 
 

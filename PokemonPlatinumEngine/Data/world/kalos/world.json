@@ -21,6 +21,13 @@
     "kalos_route_3",
     "santalune_city",
     "kalos_route_4",
-    "lumiose_city"
+    "lumiose_city",
+    // Plan 23 · Z2, second part: west of Lumiose to Camphrier, its two roads, the coast and Cyllage City
+    "kalos_route_5",
+    "camphrier_town",
+    "kalos_route_6",
+    "kalos_route_7",
+    "kalos_route_8",
+    "cyllage_city"
   ]
 }

@@ -1,0 +1,27 @@
+# Route 6, the Palace Avenue (plan 23 · Z2, second part). The lines are our own, on X and Y's beats as they are
+# publicly described (docs/mechanics/rulings.md, "Central Kalos, drawn by hand: Route 5 to Cyllage City"): the palace's
+# butler keeps the gate at the head of the avenue and, once the castle's keeper has sent the player, lends them the
+# palace's flute, which wakes the Snorlax on Route 7. The palace itself and its owner are a later session's.
+# VAR_KALOS_STORY is vaniville_town.txt's count: 14, the castle's keeper met, becomes 15 here.
+
+
+script Butler
+  face butler player
+  speaker "Butler"
+  if item "Poké Flute" goto Lent
+  if var VAR_KALOS_STORY >= 14 goto Flute
+  say "Good day. The palace is closed to visitors this week. The master is entertaining, you understand."
+  end
+label Flute
+  scene "The palace's flute"
+  say "Good day. The palace is closed to visitors this week... Oh? Monsieur Aubert sent you?"
+  say "A Snorlax on the south road, again. The last one slept there for a whole summer, I recall."
+  say "Very well. The master would want the road open. Take the palace's flute, and do bring it back one day."
+  give "Poké Flute"
+  setvar VAR_KALOS_STORY 15
+  objective kalosSnorlax
+  endscene
+  end
+label Lent
+  say "Play the flute close to the sleeper and it will wake. It has never failed the palace yet."
+  end

@@ -469,5 +469,424 @@
         "personality": 11534336
       }
     ]
+  },
+  {
+    "id": "kalos_youngster_julien",
+    "name": "Julien",
+    "class": "Youngster",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 160,
+    "party": [
+      {
+        "species": "Pancham",
+        "level": 10,
+        "ivScale": 0,
+        "personality": 4289282
+      },
+      {
+        "species": "Skiddo",
+        "level": 10,
+        "ivScale": 0,
+        "personality": 4561111
+      }
+    ]
+  },
+  {
+    "id": "kalos_lass_noemie",
+    "name": "Noémie",
+    "class": "Lass",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 176,
+    "party": [
+      {
+        "species": "Furfrou",
+        "level": 11,
+        "ivScale": 0,
+        "personality": 5750393
+      }
+    ]
+  },
+  {
+    "id": "kalos_backpacker_gaspard",
+    "name": "Gaspard",
+    "class": "Backpacker",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 200,
+    "party": [
+      {
+        "species": "Doduo",
+        "level": 10,
+        "ivScale": 0,
+        "personality": 7211504
+      },
+      {
+        "species": "Gulpin",
+        "level": 10,
+        "ivScale": 0,
+        "personality": 7483333
+      }
+    ]
+  },
+  {
+    "id": "kalos_tierno_2",
+    "name": "Tierno",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "Basic",
+      "EvalAttack"
+    ],
+    "items": [],
+    "prizeMoney": 192,
+    "party": [
+      {
+        "species": "Corphish",
+        "level": 12,
+        "ivScale": 0,
+        "personality": 8672615
+      },
+      {
+        "species": "Pancham",
+        "level": 11,
+        "ivScale": 0,
+        "personality": 8944444
+      }
+    ]
+  },
+  {
+    "id": "kalos_picnicker_lea",
+    "name": "Léa",
+    "class": "Picnicker",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 176,
+    "party": [
+      {
+        "species": "Espurr",
+        "level": 11,
+        "ivScale": 0,
+        "personality": 10133726
+      },
+      {
+        "species": "Oddish",
+        "level": 11,
+        "ivScale": 0,
+        "personality": 10405555
+      }
+    ]
+  },
+  {
+    "id": "kalos_backpacker_clement",
+    "name": "Clément",
+    "class": "Backpacker",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 240,
+    "party": [
+      {
+        "species": "Sentret",
+        "level": 11,
+        "ivScale": 0,
+        "personality": 11594837
+      },
+      {
+        "species": "Honedge",
+        "level": 12,
+        "ivScale": 0,
+        "personality": 11866666
+      }
+    ]
+  },
+  {
+    "id": "kalos_fisherman_rene",
+    "name": "René",
+    "class": "Fisherman",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 520,
+    "party": [
+      {
+        "species": "Goldeen",
+        "level": 13,
+        "ivScale": 0,
+        "personality": 13055948
+      },
+      {
+        "species": "Psyduck",
+        "level": 13,
+        "ivScale": 0,
+        "personality": 13327777
+      }
+    ]
+  },
+  {
+    "id": "kalos_lass_sylvie",
+    "name": "Sylvie",
+    "class": "Lass",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 224,
+    "party": [
+      {
+        "species": "Spritzee",
+        "level": 14,
+        "ivScale": 0,
+        "personality": 14517059
+      }
+    ]
+  },
+  {
+    "id": "kalos_youngster_adrien",
+    "name": "Adrien",
+    "class": "Youngster",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 208,
+    "party": [
+      {
+        "species": "Hoppip",
+        "level": 13,
+        "ivScale": 0,
+        "personality": 15978170
+      },
+      {
+        "species": "Croagunk",
+        "level": 13,
+        "ivScale": 0,
+        "personality": 16249999
+      }
+    ]
+  },
+  {
+    "id": "kalos_fisherman_yves",
+    "name": "Yves",
+    "class": "Fisherman",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 560,
+    "party": [
+      {
+        "species": "Tentacool",
+        "level": 14,
+        "ivScale": 0,
+        "personality": 662065
+      },
+      {
+        "species": "Wingull",
+        "level": 14,
+        "ivScale": 0,
+        "personality": 933894
+      }
+    ]
+  },
+  {
+    "id": "kalos_hiker_marcel",
+    "name": "Marcel",
+    "class": "Hiker",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 600,
+    "party": [
+      {
+        "species": "Roggenrola",
+        "level": 15,
+        "ivScale": 0,
+        "personality": 2123176
+      },
+      {
+        "species": "Nosepass",
+        "level": 15,
+        "ivScale": 0,
+        "personality": 2395005
+      }
+    ]
+  },
+  {
+    "id": "kalos_hiker_bruno",
+    "name": "Bruno",
+    "class": "Hiker",
+    "ai": [
+      "Basic",
+      "EvalAttack"
+    ],
+    "items": [],
+    "prizeMoney": 800,
+    "party": [
+      {
+        "species": "Onix",
+        "level": 20,
+        "ivScale": 0,
+        "personality": 3584287
+      }
+    ]
+  },
+  {
+    "id": "kalos_hiker_armand",
+    "name": "Armand",
+    "class": "Hiker",
+    "ai": [
+      "Basic",
+      "EvalAttack"
+    ],
+    "items": [],
+    "prizeMoney": 760,
+    "party": [
+      {
+        "species": "Roggenrola",
+        "level": 19,
+        "ivScale": 0,
+        "personality": 5045398
+      },
+      {
+        "species": "Binacle",
+        "level": 19,
+        "ivScale": 0,
+        "personality": 5317227
+      }
+    ]
+  },
+  {
+    "id": "kalos_rival_cyllage_chespin",
+    "name": "{rival}",
+    "class": "Rival",
+    "ai": [
+      "Basic",
+      "EvalAttack"
+    ],
+    "items": [],
+    "prizeMoney": 456,
+    "party": [
+      {
+        "species": "Fletchling",
+        "level": 17,
+        "ivScale": 0,
+        "personality": 6506509
+      },
+      {
+        "species": "Espurr",
+        "level": 17,
+        "ivScale": 0,
+        "personality": 6778338
+      },
+      {
+        "species": "Quilladin",
+        "level": 19,
+        "ivScale": 0,
+        "personality": 7050167
+      }
+    ]
+  },
+  {
+    "id": "kalos_rival_cyllage_fennekin",
+    "name": "{rival}",
+    "class": "Rival",
+    "ai": [
+      "Basic",
+      "EvalAttack"
+    ],
+    "items": [],
+    "prizeMoney": 456,
+    "party": [
+      {
+        "species": "Fletchling",
+        "level": 17,
+        "ivScale": 0,
+        "personality": 8239449
+      },
+      {
+        "species": "Espurr",
+        "level": 17,
+        "ivScale": 0,
+        "personality": 8511278
+      },
+      {
+        "species": "Braixen",
+        "level": 19,
+        "ivScale": 0,
+        "personality": 8783107
+      }
+    ]
+  },
+  {
+    "id": "kalos_rival_cyllage_froakie",
+    "name": "{rival}",
+    "class": "Rival",
+    "ai": [
+      "Basic",
+      "EvalAttack"
+    ],
+    "items": [],
+    "prizeMoney": 456,
+    "party": [
+      {
+        "species": "Fletchling",
+        "level": 17,
+        "ivScale": 0,
+        "personality": 9972389
+      },
+      {
+        "species": "Espurr",
+        "level": 17,
+        "ivScale": 0,
+        "personality": 10244218
+      },
+      {
+        "species": "Frogadier",
+        "level": 19,
+        "ivScale": 0,
+        "personality": 10516047
+      }
+    ]
+  },
+  {
+    "id": "kalos_grant_1",
+    "name": "Grant",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Super Potion",
+      "Super Potion"
+    ],
+    "prizeMoney": 3000,
+    "party": [
+      {
+        "species": "Amaura",
+        "level": 25,
+        "ivScale": 0,
+        "personality": 11705329
+      },
+      {
+        "species": "Tyrunt",
+        "level": 25,
+        "ivScale": 0,
+        "personality": 11977158
+      }
+    ]
   }
 ]

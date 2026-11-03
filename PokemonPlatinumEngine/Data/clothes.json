@@ -34,7 +34,15 @@
     { "id": "blue_backpack", "name": "Blue Backpack", "slot": "Bag", "price": 2000, "color": "#4a7ad8", "description": "A roomy blue backpack." },
     { "id": "green_backpack", "name": "Green Backpack", "slot": "Bag", "price": 2000, "color": "#58a868", "description": "A green backpack, the colour of Route 201." },
     { "id": "black_backpack", "name": "Black Backpack", "slot": "Bag", "price": 2000, "color": "#30303a", "description": "A black backpack that goes with anything." },
-    { "id": "pink_backpack", "name": "Pink Backpack", "slot": "Bag", "price": 2000, "color": "#ee88aa", "description": "A pink backpack, cute and practical." }
+    { "id": "pink_backpack", "name": "Pink Backpack", "slot": "Bag", "price": 2000, "color": "#ee88aa", "description": "A pink backpack, cute and practical." },
+
+    // Lumiose City's boutique (plan 23 · Z2, second part): our own, in the colours of its boulevards
+    { "id": "cream_beret", "name": "Cream Beret", "slot": "Hat", "price": 1600, "hat": "Beret", "color": "#efe4c8", "accent": "#2c3458", "description": "A cream beret with a navy band, worn tilted in Lumiose." },
+    { "id": "rouge_beret", "name": "Rouge Beret", "slot": "Hat", "price": 1600, "hat": "Beret", "color": "#b8323e", "accent": "#f2ead8", "description": "A deep red beret, the colour of Rouge Plaza at dusk." },
+    { "id": "boulevard_tee", "name": "Boulevard Tee", "slot": "Top", "price": 1400, "color": "#f4f2ec", "accent": "#2c3458", "shortSleeves": true, "stripes": true, "description": "A cream tee with navy stripes, as worn on every café terrace." },
+    { "id": "trench_coat", "name": "Trench Coat", "slot": "Top", "price": 4200, "color": "#c8a66e", "accent": "#5a3a2a", "coat": true, "description": "A long sand trench coat for rainy evenings by the tower." },
+    { "id": "grey_skirt", "name": "Grey Skirt", "slot": "Bottoms", "price": 1800, "color": "#6a6c78", "skirt": true, "description": "A pleated skirt in city grey." },
+    { "id": "tan_brogues", "name": "Tan Brogues", "slot": "Shoes", "price": 2200, "color": "#a8683a", "accent": "#5a3a24", "description": "Polished tan shoes, made for cobbled streets." }
   ],
   "boutiques": {
     // Jubilife City's boutique, in the building the original never used (Data/maps/JubilifeBoutique.json)
@@ -44,6 +52,14 @@
       "denim_jeans", "black_trousers", "khaki_shorts", "red_skirt", "navy_skirt",
       "white_sneakers", "red_sneakers", "green_runners", "black_boots",
       "blue_backpack", "green_backpack", "black_backpack", "pink_backpack"
+    ],
+    // Lumiose City's boutique (plan 23 · Z2, second part; Data/maps/LumioseCity_Boutique.json): the city's own and a few of the classics
+    "lumiose": [
+      "cream_beret", "rouge_beret", "navy_beret", "plum_beret",
+      "boulevard_tee", "trench_coat", "black_jacket", "rose_coat",
+      "grey_skirt", "black_trousers", "navy_skirt",
+      "tan_brogues", "black_boots",
+      "black_backpack"
     ]
   }
 }

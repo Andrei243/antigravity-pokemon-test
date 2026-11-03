@@ -1,0 +1,45 @@
+{
+  // Route 7, the Riverbank Walk (plan 23 · Z2, second part): drawn by hand, our words. South out of Camphrier Town by a
+  // lane between rocks, where a great sleeping Pokémon blocks the way until the palace's flute wakes it
+  // (kalos_route_7.txt), then west along the river past meadows and flower beds to the coast and Route 8. The
+  // original's way west runs through a cave (the Connecting Cave), which is plan 23 · Z3's; until it is built the
+  // walk reaches the coast in the open. It plays Route 2's song until plan 31 writes it its own
+  "area": "kalos_route_7",
+  "bgmTrack": "kalos/route2",
+  "trees": "Round",
+  "architecture": "OldTimber",
+  "props": [
+    { "type": "Bench", "x": 160, "y": 401, "width": 2, "depth": 1 },
+    { "type": "Bench", "x": 185, "y": 401, "width": 2, "depth": 1 }
+  ],
+  "people": {
+    "snorlax": { "name": "Snorlax", "script": "Snorlax", "still": true, "hiddenBy": "FLAG_KALOS_HIDE_SNORLAX_ROUTE_7" },
+    "fisherman": {
+      "name": "René",
+      "npcType": "Fisherman",
+      "trainer": {
+        "dialogueBefore": "Fisherman René: Quiet on the bank! You'll frighten the fish. Well, you'll battle them instead!",
+        "dialogueAfter": "Fisherman René: The river's calm again. That's the main thing."
+      }
+    },
+    "lass": {
+      "name": "Sylvie",
+      "npcType": "Lass",
+      "trainer": {
+        "dialogueBefore": "Lass Sylvie: The flowers here smell sweeter than any perfume in Lumiose. Smell this battle!",
+        "dialogueAfter": "Lass Sylvie: That smelled like defeat."
+      }
+    },
+    "youngster": {
+      "name": "Adrien",
+      "npcType": "Youngster",
+      "trainer": {
+        "dialogueBefore": "Youngster Adrien: The big Pokémon on the lane kept me stuck here for days! I've been training!",
+        "dialogueAfter": "Youngster Adrien: Training for days, and still. Hmph."
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": "Route 7 · Riverbank Walk\nNorth: Camphrier Town\nWest: the coast"
+  }
+}

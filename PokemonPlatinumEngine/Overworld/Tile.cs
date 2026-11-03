@@ -321,7 +321,9 @@ public enum Architecture
     /// Cream stone of three storeys under steep slate roofs, sash windows, iron balconies and chimneys: the city of
     /// boulevards round its tower of light (Lumiose, plan 23 · Z2).
     /// </summary>
-    Lumiose
+    Lumiose,
+    /// <summary>White stucco under sun-baked ochre hip roofs with shutters and flower boxes: the seaside town of terraces on the cliffs (Cyllage, plan 23 · Z2, second part).</summary>
+    Cyllage
 }
 
 /// <summary>Visual theme for indoor maps; <see cref="None"/> means the map is outdoors.</summary>

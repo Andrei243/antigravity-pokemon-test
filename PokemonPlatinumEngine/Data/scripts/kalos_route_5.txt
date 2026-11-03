@@ -1,0 +1,55 @@
+# Route 5, the Skaters' Lane (plan 23 · Z2, second part). The lines are our own, on X and Y's beats as they are
+# publicly described (docs/mechanics/rulings.md, "Central Kalos, drawn by hand: Route 5 to Cyllage City"): out of
+# Lumiose's west gate, Tierno and Trevor wait near the lane's west end; Tierno wants a battle to show off his team, and
+# the two go on to Camphrier Town. VAR_KALOS_STORY is vaniville_town.txt's count: 12, Lysandre's café heard, becomes 13.
+#
+# The people: tierno and trevor (FLAG_KALOS_HIDE_FRIENDS_ROUTE_5, set by their scene). Tierno's team is Kalos's
+# trainers.json's kalos_tierno_2.
+
+
+# Along the lane toward Camphrier (the trigger across it near its west end, on VAR_KALOS_STORY 12)
+script Friends
+  scene "Tierno and Trevor on Route 5"
+  face tierno player
+  face trevor player
+  speaker "Tierno"
+  say "Hey, {player}! We skated all the way from Lumiose. Did you see the square back there? The skaters spin like dancers!"
+  speaker trevor "Trevor"
+  say "I counted four kinds of Pokémon I'd never seen in the grass along here. Four!"
+  speaker "Tierno"
+  say "I caught a new partner on the way, and we've worked out a routine. Battle us and see!"
+  battle tierno as "kalos_tierno_2" canlose
+  heal
+  speaker "Tierno"
+  if lost goto TiernoWon
+  say "You're getting really strong! I'll need a brand new routine to keep up with you."
+  goto After
+label TiernoWon
+  say "Ta-da! But honestly, your team kept perfect time with ours. That was fun."
+label After
+  speaker trevor "Trevor"
+  say "Camphrier Town is just ahead. They say a big Pokémon has been asleep on the road south of it for days."
+  speaker "Tierno"
+  say "Let's go and see it! Maybe it likes dancing."
+  walk tierno left 8 fast
+  move trevor left 8 fast
+  waitmoves
+  hide tierno
+  hide trevor
+  setflag FLAG_KALOS_HIDE_FRIENDS_ROUTE_5
+  setvar VAR_KALOS_STORY 13
+  objective kalosCamphrier
+  endscene
+  end
+
+
+# Should they be spoken to while they stand there (they leave in the same scene)
+script Tierno
+  speaker "Tierno"
+  say "Ready to see our routine?"
+  end
+
+script Trevor
+  speaker trevor "Trevor"
+  say "Um. Four new kinds. I wrote them all down."
+  end

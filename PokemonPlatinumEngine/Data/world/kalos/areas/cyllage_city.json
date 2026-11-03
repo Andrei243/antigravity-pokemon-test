@@ -1,0 +1,36 @@
+{
+  "key": "cyllage_city",
+  "index": 14,
+  "name": "Cyllage City",
+  "matrix": 0,
+  "kind": "City",
+  "sign": "City",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "CYLLAGE",
+  "nightMusic": "CYLLAGE",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 119, "z": 309, "to": "CyllageCity_NorthHouse", "toWarp": 0 },
+    { "x": 103, "z": 311, "to": "CyllageCity_Gym", "toWarp": 0 },
+    { "x": 91, "z": 327, "to": "CyllageCity_WestHouse", "toWarp": 0 },
+    { "x": 114, "z": 327, "to": "CyllageCity_BikeShop", "toWarp": 0 },
+    { "x": 91, "z": 347, "to": "CyllageCity_SouthwestHouse", "toWarp": 0 },
+    { "x": 112, "z": 347, "to": "CyllageCity_PokemonCenter_1F", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "rival", "looks": "rival", "movement": "look_south", "x": 104, "z": 354, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_HIDE_RIVAL_CYLLAGE", "script": "" },
+    { "id": "climber", "looks": "hiker", "movement": "look_north", "x": 108, "z": 316, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "swimmer", "looks": "lass", "movement": "wander_around", "x": 82, "z": 340, "facing": 1, "rangeX": 1, "rangeZ": 2, "script": "" },
+    { "id": "gentleman", "looks": "gentleman", "movement": "look_around", "x": 96, "z": 332, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "boy", "looks": "youngster", "movement": "wander_around", "x": 118, "z": 352, "facing": 1, "rangeX": 2, "rangeZ": 1, "script": "" }
+  ],
+  "signs": [
+    { "x": 101, "z": 355, "type": 0, "script": "CitySign" }
+  ],
+  "triggers": []
+}

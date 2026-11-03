@@ -1,0 +1,46 @@
+{
+  "key": "kalos_route_5",
+  "index": 9,
+  "name": "Route 5",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "ROUTE_5",
+  "nightMusic": "ROUTE_5",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [],
+  "objects": [
+    { "id": "youngster", "looks": "youngster", "movement": "look_south", "x": 240, "z": 357, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_YOUNGSTER_JULIEN" },
+    { "id": "lass", "looks": "lass", "movement": "look_south", "x": 262, "z": 352, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_LASS_NOEMIE" },
+    { "id": "backpacker", "looks": "backpacker", "movement": "look_north", "x": 285, "z": 363, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_BACKPACKER_GASPARD" },
+    { "id": "tierno", "looks": "youngster", "movement": "look_east", "x": 277, "z": 357, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_HIDE_FRIENDS_ROUTE_5", "script": "" },
+    { "id": "trevor", "looks": "youngster", "movement": "look_east", "x": 276, "z": 357, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_HIDE_FRIENDS_ROUTE_5", "script": "" },
+    { "id": "skater", "looks": "youngster", "movement": "wander_around", "x": 258, "z": 364, "facing": 1, "rangeX": 2, "rangeZ": 1, "script": "" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 233, "z": 350, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_ROUTE_5_POTION", "item": "Potion", "script": "" }
+  ],
+  "signs": [
+    { "x": 294, "z": 356, "type": 0, "script": "RouteSign" }
+  ],
+  "triggers": [],
+  "land": [
+    { "species": "Pancham", "level": 9 },
+    { "species": "Furfrou", "level": 9 },
+    { "species": "Skiddo", "level": 9 },
+    { "species": "Gulpin", "level": 9 },
+    { "species": "Bunnelby", "level": 9 },
+    { "species": "Abra", "level": 10 },
+    { "species": "Doduo", "level": 10 },
+    { "species": "Smeargle", "level": 10 },
+    { "species": "Pancham", "level": 10 },
+    { "species": "Furfrou", "level": 10 },
+    { "species": "Skiddo", "level": 11 },
+    { "species": "Doduo", "level": 11 }
+  ],
+  "landRate": 20
+}

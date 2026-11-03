@@ -1,0 +1,50 @@
+# Cyllage City (plan 23 · Z2, second part). The lines are our own, on X and Y's beats as they are publicly described
+# (docs/mechanics/rulings.md, "Central Kalos, drawn by hand: Route 5 to Cyllage City"): the neighbour waits at the foot
+# of the main street and battles, and the Gym at its head (CyllageCity_Gym.txt) holds Kalos's second Badge.
+# VAR_KALOS_STORY is vaniville_town.txt's count: 16, the Snorlax woken, becomes 17 here, and 18 once the Cliff Badge is
+# won. The neighbour's teams are Kalos's trainers.json's kalos_rival_cyllage_*: the starter the neighbour took at the
+# café is the one strong against the player's.
+#
+# The people: rival (FLAG_KALOS_HIDE_RIVAL_CYLLAGE, set by the neighbour's scene).
+
+
+# Up from Route 8 onto the main street (the trigger across its foot, on VAR_KALOS_STORY 16)
+script Neighbour
+  scene "The neighbour in Cyllage"
+  face rival player
+  speaker "{rival}"
+  say "{player}! You woke that Snorlax? I heard it snoring from the coast. I took the long way round."
+  say "The Gym here is at the very top of the town. Its Leader climbs rock walls, and his Pokémon are as hard as the cliffs."
+  say "Before you go up, let's see what you've learned since Santalune."
+  if starter "Chespin" goto AgainstChespin
+  if starter "Fennekin" goto AgainstFennekin
+  battle rival as "kalos_rival_cyllage_chespin" canlose
+  goto Fought
+label AgainstChespin
+  battle rival as "kalos_rival_cyllage_fennekin" canlose
+  goto Fought
+label AgainstFennekin
+  battle rival as "kalos_rival_cyllage_froakie" canlose
+label Fought
+  heal
+  speaker "{rival}"
+  if lost goto RivalWon
+  say "You're climbing faster than I am. Good. Then I know who I'm racing."
+  goto Gym
+label RivalWon
+  say "Close. Very close. Rock-type Pokémon won't be as kind to you as I was, though."
+  goto Gym
+label Gym
+  say "Water and Grass get the better of stone, they say. Good luck with the climb."
+  walk rival down 3 fast
+  hide rival
+  setflag FLAG_KALOS_HIDE_RIVAL_CYLLAGE
+  setvar VAR_KALOS_STORY 17
+  objective kalosGrant
+  endscene
+  end
+
+script Rival
+  speaker "{rival}"
+  say "The Gym is up the steps, right at the top."
+  end

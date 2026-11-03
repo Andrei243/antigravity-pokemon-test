@@ -1,0 +1,55 @@
+{
+  // Route 5, the Skaters' Lane (plan 23 · Z2, second part): drawn by hand, our words. West from Lumiose City's Vert
+  // gate to Camphrier Town: a lane between meadows of tall grass, a paved square in its middle where Kalos's skaters
+  // practise their turns, and the friends waiting near its west end (kalos_route_5.txt). Its song is Route 2's
+  // (plan 31 · MU3), which Kalos's routes share until plan 31 writes them their own
+  "area": "kalos_route_5",
+  "bgmTrack": "kalos/route2",
+  "trees": "Round",
+  "architecture": "Hamlet",
+  "triggers": [
+    { "script": "Friends", "x": 278, "z": 358, "width": 1, "depth": 4, "variable": "VAR_KALOS_STORY", "value": 12 }
+  ],
+  "props": [
+    { "type": "Bench", "x": 254, "y": 351, "width": 2, "depth": 1 },
+    { "type": "Bench", "x": 270, "y": 366, "width": 2, "depth": 1 },
+    { "type": "Planter", "x": 253, "y": 355, "width": 1, "depth": 1 },
+    { "type": "Planter", "x": 274, "y": 355, "width": 1, "depth": 1 }
+  ],
+  "people": {
+    "youngster": {
+      "name": "Julien",
+      "npcType": "Youngster",
+      "trainer": {
+        "dialogueBefore": "Youngster Julien: I just learned to turn on my skates! Now watch me turn this battle around!",
+        "dialogueAfter": "Youngster Julien: I spun right off the lane. Again."
+      }
+    },
+    "lass": {
+      "name": "Noémie",
+      "npcType": "Lass",
+      "trainer": {
+        "dialogueBefore": "Lass Noémie: Nobody skates through my square without a battle first!",
+        "dialogueAfter": "Lass Noémie: Fine, it's your square for today."
+      }
+    },
+    "backpacker": {
+      "name": "Gaspard",
+      "npcType": "backpacker_m",
+      "trainer": {
+        "dialogueBefore": "Backpacker Gaspard: I've walked from one end of Kalos to the other. Let's see how far you've come!",
+        "dialogueAfter": "Backpacker Gaspard: You've come further than I thought. Mind the cobbles in Camphrier."
+      }
+    },
+    "tierno": { "name": "Tierno", "npcType": "tierno", "script": "Tierno", "still": true, "hiddenBy": "FLAG_KALOS_HIDE_FRIENDS_ROUTE_5" },
+    "trevor": { "name": "Trevor", "npcType": "trevor", "script": "Trevor", "still": true, "hiddenBy": "FLAG_KALOS_HIDE_FRIENDS_ROUTE_5" },
+    "skater": {
+      "name": "Skater",
+      "npcType": "Youngster",
+      "dialog": [ "Press the run button on your skates and you'll fly down this lane. Just don't try it on the grass!" ]
+    }
+  },
+  "signs": {
+    "RouteSign": "Route 5 · Skaters' Lane\nEast: Lumiose City\nWest: Camphrier Town"
+  }
+}

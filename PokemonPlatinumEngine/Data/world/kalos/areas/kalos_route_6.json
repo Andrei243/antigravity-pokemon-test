@@ -1,0 +1,43 @@
+{
+  "key": "kalos_route_6",
+  "index": 11,
+  "name": "Route 6",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "ROUTE_6",
+  "nightMusic": "ROUTE_6",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [],
+  "objects": [
+    { "id": "butler", "looks": "gentleman", "movement": "look_south", "x": 201, "z": 268, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "picnicker", "looks": "picnicker", "movement": "look_east", "x": 190, "z": 285, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_PICNICKER_LEA" },
+    { "id": "backpacker", "looks": "backpacker", "movement": "look_west", "x": 212, "z": 300, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_BACKPACKER_CLEMENT" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 188, "z": 310, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_ROUTE_6_ETHER", "item": "Ether", "script": "" }
+  ],
+  "signs": [
+    { "x": 207, "z": 324, "type": 0, "script": "RouteSign" }
+  ],
+  "triggers": [],
+  "land": [
+    { "species": "Espurr", "level": 10 },
+    { "species": "Oddish", "level": 10 },
+    { "species": "Sentret", "level": 10 },
+    { "species": "Nincada", "level": 10 },
+    { "species": "Kecleon", "level": 11 },
+    { "species": "Audino", "level": 11 },
+    { "species": "Honedge", "level": 11 },
+    { "species": "Espurr", "level": 11 },
+    { "species": "Oddish", "level": 11 },
+    { "species": "Sentret", "level": 12 },
+    { "species": "Nincada", "level": 12 },
+    { "species": "Honedge", "level": 12 }
+  ],
+  "landRate": 20
+}

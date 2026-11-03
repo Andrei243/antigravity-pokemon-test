@@ -204,6 +204,10 @@
       "note": "first spoken at slateport_city_oceanic_museum_2f.txt(14)",
       "provisional": true
     },
+    "castellan_aubert": {
+      "note": "first spoken at CamphrierTown_Castle.txt(7)",
+      "provisional": true
+    },
     "catherine": {
       "note": "first spoken at phone.txt(315)",
       "provisional": true
@@ -506,6 +510,10 @@
     },
     "glass_worker": {
       "note": "first spoken at route_113_glass_workshop.txt(17)",
+      "provisional": true
+    },
+    "kalos_grant": {
+      "note": "first spoken at CyllageCity_Gym.txt(10)",
       "provisional": true
     },
     "grimsley": {
@@ -1530,6 +1538,7 @@
     "Candice": "candice",
     "Captain": "captain",
     "Captain Stern": "captain_stern",
+    "Castellan Aubert": "castellan_aubert",
     "Catherine": "catherine",
     "Celebrity": "celebrity",
     "Celio": "celio",

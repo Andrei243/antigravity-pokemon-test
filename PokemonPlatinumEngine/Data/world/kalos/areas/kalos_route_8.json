@@ -1,0 +1,42 @@
+{
+  "key": "kalos_route_8",
+  "index": 13,
+  "name": "Route 8",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "ROUTE_8",
+  "nightMusic": "ROUTE_8",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [],
+  "objects": [
+    { "id": "fisherman", "looks": "fisherman", "movement": "look_east", "x": 98, "z": 393, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_FISHERMAN_YVES" },
+    { "id": "hiker", "looks": "hiker", "movement": "look_west", "x": 108, "z": 390, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_HIKER_MARCEL" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 95, "z": 415, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_ROUTE_8_GREAT_BALL", "item": "Great Ball", "script": "" }
+  ],
+  "signs": [
+    { "x": 106, "z": 421, "type": 0, "script": "RouteSign" }
+  ],
+  "triggers": [],
+  "land": [
+    { "species": "Wingull", "level": 13 },
+    { "species": "Spoink", "level": 13 },
+    { "species": "Drifloon", "level": 13 },
+    { "species": "Zubat", "level": 13 },
+    { "species": "Taillow", "level": 13 },
+    { "species": "Absol", "level": 14 },
+    { "species": "Inkay", "level": 14 },
+    { "species": "Starly", "level": 14 },
+    { "species": "Mienfoo", "level": 14 },
+    { "species": "Wingull", "level": 14 },
+    { "species": "Drifloon", "level": 15 },
+    { "species": "Inkay", "level": 15 }
+  ],
+  "landRate": 20
+}
