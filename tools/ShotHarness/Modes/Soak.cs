@@ -166,7 +166,8 @@ partial class Harness
                 if (fight.IsOfferingSwitch) fight.StayIn();
                 else if (fight.HUD.MenuState == BattleMenuState.Main)
                 {
-                    foreach (var foe in fight.EnemyParty.Members) foe.CurrentHP = Math.Min(foe.CurrentHP, 1);
+                    // A wild battle has no trainer's party: its foes are the ones on the field
+                    foreach (var foe in fight.EnemyParty?.Members ?? fight.EnemySlots.Select(s => s.Pokemon).OfType<Pokemon>()) foe.CurrentHP = Math.Min(foe.CurrentHP, 1);
                     fight.SelectMainMenuOption(0);
                     fight.SelectMove(0);
                     if (fight.HUD.MenuState == BattleMenuState.SelectTarget) fight.SelectTarget(0);

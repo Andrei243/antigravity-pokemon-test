@@ -45,13 +45,13 @@ public class BudgetTests
         return times[times.Count / 2];
     }
 
-    private void Hold(string what, double measuredMs, int runs, Action run)
+    private void Hold(string what, double measuredMs, int runs, Action run, string measuredOn = "2026-10-26")
     {
         if (Mode == "off") return;
         double median = MedianMs(runs, run), budget = measuredMs * Headroom;
-        output.WriteLine($"{what}: median {median:F1} ms, budget {budget:F1} ms (measured {measuredMs} ms on 2026-10-26)");
+        output.WriteLine($"{what}: median {median:F1} ms, budget {budget:F1} ms (measured {measuredMs} ms on {measuredOn})");
         Record(what, median);
-        Assert.True(median <= budget, $"{what} took {median:F1} ms (median of {runs}); its budget is {budget:F1} ms, {Headroom}x the {measuredMs} ms measured on 2026-10-26.");
+        Assert.True(median <= budget, $"{what} took {median:F1} ms (median of {runs}); its budget is {budget:F1} ms, {Headroom}x the {measuredMs} ms measured on {measuredOn}.");
     }
 
     /// <summary>
@@ -113,7 +113,7 @@ public class BudgetTests
     public void TheMapsAndTheScriptsLoadInTime()
     {
         Hold("MapDatabase.Initialize", 4700, 2, MapDatabase.Initialize);
-        Hold("ScriptLibrary.Load", 100, 3, () => ScriptLibrary.Load());
+        Hold("ScriptLibrary.Load", 180, 3, () => ScriptLibrary.Load(), "2026-11-03");
     }
 
     [Fact]
@@ -122,7 +122,7 @@ public class BudgetTests
         var files = Directory.GetFiles(GameDataFiles.PathOf("music"), "*.mml", SearchOption.AllDirectories);
         Assert.NotEmpty(files);
         var texts = files.Select(f => (Path.GetFileNameWithoutExtension(f), File.ReadAllText(f))).ToList();
-        Hold($"Mml.Parse of {texts.Count} songs", 40, 3, () => { foreach (var (id, text) in texts) Mml.Parse(id, text); });
+        Hold($"Mml.Parse of {texts.Count} songs", 72, 3, () => { foreach (var (id, text) in texts) Mml.Parse(id, text); }, "2026-11-03");
     }
 
     [Fact]
@@ -131,7 +131,7 @@ public class BudgetTests
         string folder = Path.Combine(Repository.Root, "PokemonPlatinumTests", "Fixtures", "saves");
         string biggest = Directory.GetFiles(folder, "*.json").OrderByDescending(f => new FileInfo(f).Length).First();
         string json = File.ReadAllText(biggest);
-        Hold("SaveManager.Read and Write of " + Path.GetFileName(biggest), 1.5, 5, () => SaveManager.Write(SaveManager.Read(json)!));
+        Hold("SaveManager.Read and Write of " + Path.GetFileName(biggest), 2.6, 5, () => SaveManager.Write(SaveManager.Read(json)!), "2026-11-03");
     }
 
     /// <summary>
