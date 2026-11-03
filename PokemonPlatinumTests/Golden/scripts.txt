@@ -6465,6 +6465,9 @@ from Kira & Dan at 6,13 of AbandonedShip_Rooms2_1F
 from Kira & Dan at 7,13 of AbandonedShip_Rooms2_1F
 way -
   Kira> Only one Pokémon? We battle two at a time, you know. Come back with a partner for it!
+=== abundant_shrine.Landorus
+from Landorus at 22,14 of AbundantShrine
+way -
 === acuity_cavern.Uxie
 from Uxie at 14,10 of AcuityCavern
 way 0

@@ -3015,6 +3015,7 @@ public class UnovaStoryTests
     [InlineData("Unova", 584, 81, "16", "unova_route_23", "Azelf", 65)]
     [InlineData("CelestialTower_Summit", 16, 23, "0", "celestial_tower", "Mesprit", 65)]
     [InlineData("GiantChasm_Cavern", 15, 18, "kyurem_rest", "giant_chasm_6", "Kyurem", 70)]
+    [InlineData("AbundantShrine", 22, 16, "landorus", "abundant_shrine", "Landorus", 70)]
     public void ALegendaryWaitsOnItsRoadOnceTheHallOfFameIsEnteredAndIsGoneOnceFought(string map, int x, int y, string key, string area, string species, int level)
     {
         var game = PastTheChasm();

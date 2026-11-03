@@ -21,6 +21,11 @@
       "dialog": [ "The folk round here say three great Pokémon once made the land rich. The shrine's for the one that blessed the fields." ]
     }
   },
+  // Landorus (plan 22 · U10, part d): a person of ours before the shrine, shown once Unova's Hall of Fame is entered and gone
+  // once fought (abundant_shrine.txt)
+  "npcs": [
+    { "id": "landorus", "name": "Landorus", "npcType": "Pokemon", "species": "Landorus", "x": 22, "y": 14, "facing": "Down", "script": "Landorus", "shownBy": "UnovaHallOfFame", "hiddenBy": "FLAG_UNOVA_FOUGHT_LANDORUS" }
+  ],
   "signs": {
     "10807": "Abundant Shrine\nA wood kept for the one who blesses the harvest",
     "10808": "A small shrine, worn smooth by the weather. Someone has left an offering of fruit.",

@@ -3604,6 +3604,17 @@ or beaten (`FLAG_UNOVA_FOUGHT_<SPECIES>`), back the next time its place is come 
 - **Music.** No song is new: Route 14 plays Route 13's (`unova/route13`, Black 2's same theme), the shrine the Lostlorn
   Forest's (`unova/lostlorn_forest`, Black 2's same theme).
 
+## The Abundant Shrine's Landorus (2026-11-03, plan 22 · U10, part d, second piece)
+
+- **Where and when.** Landorus stands before the shrine (a person of ours on 22, 14, where Black 2's artist would stand) once
+  Unova's Hall of Fame is entered, at level 70 as in Black 2, and is gone once caught or beaten (`FLAG_UNOVA_FOUGHT_LANDORUS`);
+  run from, it flies off and is back the next time the wood is come to, as the swords on the open roads are.
+- **What Black 2 asks and we do not.** Black 2 wants Tornadus and Thundurus first, brought over by the Dream Radar. This game
+  has no stand-in for the Dream Radar, so the Hall of Fame alone opens the meeting; Tornadus and Thundurus themselves are
+  not placed here.
+- **Still held back.** The artist, the three at the wood's mouth and the trigger before the shrine (the scene of the forces
+  of nature) and the house by the pond stay as part d's first piece left them.
+
 ## The Hidden Grottoes (2026-11-02, plan 22 · U11)
 
 Black 2's Hidden Grottoes are hollows in the trees that hold one thing at a time. The decompilation has the grotto's own room
