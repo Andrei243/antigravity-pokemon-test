@@ -341,6 +341,19 @@ public sealed class StoryState
         if (RegionDatabase.Get(regionId) is { } r) Set(r.StoryCompleteFlag);
     }
 
+    /// <summary>Notes that the player stands in a region (plan 18 · W8): its <see cref="Region.EnteredFlag"/>, set once.</summary>
+    public void EnterRegion(string regionId)
+    {
+        if (RegionDatabase.Get(regionId) is { } r && !Has(r.EnteredFlag)) Set(r.EnteredFlag);
+    }
+
+    /// <summary>
+    /// Whether the player has been in a region (plan 18 · W8): its entered flag, or what a save from before the flag
+    /// already keeps of it, a badge of the region or its Hall of Fame. A harbour sails back to every region this holds.
+    /// </summary>
+    public bool HasEntered(string regionId) =>
+        RegionDatabase.Get(regionId) is { } r && (Has(r.EnteredFlag) || Has(r.StoryCompleteFlag) || BadgeMask(r.Id) != 0);
+
     // ------------------------------------------------------------------ a new game, a save
 
     public void Clear()

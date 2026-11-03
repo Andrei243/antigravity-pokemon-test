@@ -5901,6 +5901,34 @@ How a crossing is seen and heard. The rules of what crosses are "Regions", above
   asks his grandson's name, as FireRed's introduction does); Johto's is the officer's question in Elm's lab, where the
   player gives the thief's name (HeartGold asks it there too). A game begun in the region never meets either.
 
+## Harbours both ways (2026-11-03, plan 18 · W8)
+
+The user answered decision 9 with (a) on 2026-11-03: every region's departure is a harbour that sails both ways once
+that region's Hall of Fame is set, as HeartGold and SoulSilver's S.S. Aqua does after the League.
+
+- **What a harbour offers** is `RegionDatabase.LinksFrom(region, story)`: nothing before the region's Hall of Fame;
+  after it the way on first (where the next region is built), then a way back to every other built region the player
+  has entered, in the chain's order. A way back is the harbour's own vessel (its link's transport and word): the ship
+  from Canalave also sails back to Johto, the plane from Mistralton back to Sinnoh.
+- **A region entered** is `StoryState.HasEntered`: its `<Id>Entered` flag (`Region.EnteredFlag`, set by a new game
+  for the region it begins in, by every crossing, a flight between regions and a script's `travel to` among them, and
+  for the region a save stands in as it loads) or, for a save from before the flag, a badge of the region or its Hall
+  of Fame. *Our ruling*: so no save version was raised, and Fly's `Crossing.HasEntered` asks the same with the
+  Pokédexes entered beside it.
+- **Where a crossing lands**: a region never entered on its arrival, as before; a region already entered on its
+  `Region.Harbour`, the tile before its departure's attendant facing them (Canalave's pier, Vermilion's quay,
+  Olivine's port hall, Lilycove's harbour, Mistralton's cargo hall); a region with no departure yet (Kalos) on its
+  arrival (`HarbourSpot`).
+- **The question**: with one way the attendant says the lines of W5 and asks yes or no, as before; with more,
+  `travel` answers 3, the attendant says one line of our own (`attendant.harbour`) and `common.Crossing` asks
+  `travel where`: the regions' names, the way on first, and STAY last, in the field's question box. *Our ruling*:
+  beyond five ways the first step offers the way on and OTHER REGIONS, and `travel others` the rest; no harbour has
+  more than five today, so the second step is never seen yet.
+- **The team** crosses whole on every way, as under option B's first crossing (`Crossing.CanTake`): the plan's first
+  draft, in which a first arrival left the team in the boxes, was the fresh journey option B replaced.
+- **Left**: `WorldWalk` does not take an attendant as a way to the regions it sails to, since the walk already starts
+  from every region's start and finds every place; and the link's `Scene` (a deck to walk) is still not built.
+
 ## Fly between regions (2026-10-24, plan 18 · W9)
 
 The one way back to a region left: the README's "Regions" (the user's answer of 2026-10-12) has one way on by vessel and
