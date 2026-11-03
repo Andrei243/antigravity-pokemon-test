@@ -44,6 +44,7 @@ public sealed partial class GameFlow
     public RequestsScreen RequestsScreen { get; } = new();
     /// <summary>A PC's Poké Jobs board (plan 15 · E3).</summary>
     public JobsScreen JobsScreen { get; } = new();
+    public CampScreen CampScreen { get; } = new();
     public GameState JukeboxReturn { get; set; } = GameState.Title;
     /// <summary>The gallery (plan 12 · Q30), and where it goes back to: the title or the Pokédex.</summary>
     public GalleryScreen GalleryScreen { get; } = new();

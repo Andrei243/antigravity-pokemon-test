@@ -387,6 +387,10 @@ public partial class GameEngine
         public void PointOutThePinnedRequest() => game.PointOutThePinnedRequest();
         /// <summary>A PC's Poké Jobs board (plan 15 · E3), its jobs, and the board opened as the PC's script opens it.</summary>
         public JobsScreen Jobs => game.flow.JobsScreen;
+        /// <summary>The camp (plan 10 · F6), opened from the start menu's CAMP.</summary>
+        public CampScreen Camp => game.flow.CampScreen;
+        /// <summary>Whether the start menu offers CAMP now.</summary>
+        public bool HasCamp => game.HasCamp;
         public JobBoard JobBoard => game.flow.Jobs;
         public void OpenJobs() => game.OpenJobs();
         public void OpenJukebox(GameState returnTo) => game.OpenJukebox(returnTo);

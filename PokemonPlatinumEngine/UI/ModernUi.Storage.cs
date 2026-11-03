@@ -257,6 +257,8 @@ internal static partial class ModernUi
         var disc = new Vector2(detail.X + detail.Width / 2f, detail.Y + 24 + 112);
         BallDisc(disc, 112);
         PixelArt(PixelArtGenerator.SpriteOf(shown), disc, 2);
+        // A mark it was met with, as on its party card (plan 10 · F9), at the disc's upper right
+        CardMark(disc + new Vector2(86, -86), shown, 22);
 
         // The six marks, the ones set in Ink
         const float markStep = 42;

@@ -137,7 +137,9 @@ public enum GameState
     /// <summary>A sitting at one of Mauville's slot machines, Emerald's own with its Reel Time (plan 21 · H12, part n).</summary>
     ReelMachine,
     /// <summary>A sitting at one of Mauville's two roulette tables, the wheel and its ball (plan 21 · H12, part o).</summary>
-    RouletteTable
+    RouletteTable,
+    /// <summary>The camp: the team out of their balls, petted and fed (plan 10 · F6).</summary>
+    Camp
 }
 
 public partial class GameEngine
@@ -1392,6 +1394,7 @@ public partial class GameEngine
                 if (flow.BagScreen.TakeEvolution() is { } fromBag) PlayEvolutions(new[] { fromBag }, GameState.BagMenu);
                 else if (!flow.BagScreen.IsActive && choosingBerryToCook && flow.BagScreen.TakePick(out var toCook)) BerryChosenToCook(toCook);
                 else if (!flow.BagScreen.IsActive && choosingBerryToBlend && flow.BagScreen.TakePick(out var toBlend)) BerryChosenToBlend(toBlend);
+                else if (!flow.BagScreen.IsActive && choosingBerryForCamp && flow.BagScreen.TakePick(out var toFeed)) BerryChosenForCamp(toFeed);
                 else if (!flow.BagScreen.IsActive && flow.BagScreen.TakePick(out var picked))
                 {
                     // A script that asked for an item hears which (plan 06 · R14a)
@@ -1627,6 +1630,9 @@ public partial class GameEngine
                 break;
             case GameState.Jobs:
                 UpdateJobs(dt);
+                break;
+            case GameState.Camp:
+                UpdateCamp(dt);
                 break;
             case GameState.TitleCredits:
                 flow.TitleCreditsScreen.Update(dt);
@@ -1881,6 +1887,7 @@ public partial class GameEngine
             flow.StartMenu.HasPokedex = flow.Story.Has(StoryState.PokedexFlag);
             flow.StartMenu.HasPokemon = flow.Party.Count > 0;
             flow.StartMenu.HasBoxes = BoxLinkOn;
+            flow.StartMenu.HasCamp = HasCamp;
             flow.StartMenu.HasPokegear = HasPokegear;
             flow.StartMenu.HasPokeNav = HasPokeNav;
             flow.StartMenu.HasRequests = HasRequests;
@@ -2727,6 +2734,9 @@ public partial class GameEngine
                 // The summary's condition page, once the Contest Hall has been visited (plan 06 · R14c)
                 flow.PartyScreen.ShowCondition = flow.Story.Has(ContestHallVisitedFlag);
                 break;
+            case StartMenuChoice.Camp:
+                OpenCamp();
+                break;
             case StartMenuChoice.Boxes:
                 OpenBoxesFromMenu();
                 return;
@@ -3200,6 +3210,9 @@ public partial class GameEngine
                 break;
             case GameState.Jobs:
                 flow.JobsScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.Camp:
+                flow.CampScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.TitleCredits:
                 flow.TitleCreditsScreen.Draw(VirtualWidth, VirtualHeight);
