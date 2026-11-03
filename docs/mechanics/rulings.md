@@ -3586,6 +3586,35 @@ or beaten (`FLAG_UNOVA_FOUGHT_<SPECIES>`), back the next time its place is come 
   once Genesect has been fought, gives the **Shock Drive** (in the data already) once (`FLAG_UNOVA_GOT_SHOCK_DRIVE`); the other three
   drives are not given (the proposal). The Pokédex's area page leaves Genesect off, as Unova has no `special.json`.
 
+## Route 14 and the Abundant Shrine (2026-11-03, plan 22 · U10, part d)
+
+- **The places.** Black 2's `route_14` (a zone of the overworld, from Undella Town's north end west past the falls) and
+  `abundant_shrine` (its own matrix 190, the map `AbundantShrine`) are opened from the data (`world.json`, `--game black2
+  --data`), with Black 2's trainers, balls, hidden things and wild Pokémon by season; the words are ours.
+- **When they open.** From the start, as Black 2's do: their trainers are level 37 to 40 and their grass 33 to 40, the
+  middle of the story, not the post-game the plan's list put them in. (Black 2's black belt Jay stands there with a level-52
+  Heracross; his team is Black 2's.)
+- **What is shut.** Route 14's gate at its south-west end leads to Black City, which is not open; the house by the shrine's
+  pond leads into a room nobody opens yet. Both stay shut.
+- **What is held back.** The shrine's scene of the forces of nature (Black 2's artist at the shrine and the three at the
+  wood's mouth, behind placeholder flags, and its trigger before the shrine) and Route 14's trigger by the falls belong to
+  the old roads' scenes and are not built: the people are held back, the triggers have no script. The breeder by the pond
+  talks of the three great Pokémon; the shrine's plaque is read.
+- **The buildings.** `d19_shirne01` is a `Shrine` and `d19_house01` a house, both of Bellfield's way (the catalogue).
+- **Music.** No song is new: Route 14 plays Route 13's (`unova/route13`, Black 2's same theme), the shrine the Lostlorn
+  Forest's (`unova/lostlorn_forest`, Black 2's same theme).
+
+## The Abundant Shrine's Landorus (2026-11-03, plan 22 · U10, part d, second piece)
+
+- **Where and when.** Landorus stands before the shrine (a person of ours on 22, 14, where Black 2's artist would stand) once
+  Unova's Hall of Fame is entered, at level 70 as in Black 2, and is gone once caught or beaten (`FLAG_UNOVA_FOUGHT_LANDORUS`);
+  run from, it flies off and is back the next time the wood is come to, as the swords on the open roads are.
+- **What Black 2 asks and we do not.** Black 2 wants Tornadus and Thundurus first, brought over by the Dream Radar. This game
+  has no stand-in for the Dream Radar, so the Hall of Fame alone opens the meeting; Tornadus and Thundurus themselves are
+  not placed here.
+- **Still held back.** The artist, the three at the wood's mouth and the trigger before the shrine (the scene of the forces
+  of nature) and the house by the pond stay as part d's first piece left them.
+
 ## The Hidden Grottoes (2026-11-02, plan 22 · U11)
 
 Black 2's Hidden Grottoes are hollows in the trees that hold one thing at a time. The decompilation has the grotto's own room
@@ -6476,6 +6505,40 @@ Emerald's `LilycoveCity_LilycoveMuseum_2F`, `SlateportCity_PokemonFanClub`, `Mos
   nothing to build them from honestly; the reader's chunks carry no such tile yet either. **The Lilycove Lady's contest**
   is the same (her rules are in source the import does not read); both are left.
 
+## Emerald's Safari battle (2026-11-03, plan 21 · H11, part e)
+
+Emerald's `HandleAction_ThrowPokeblock` and `HandleAction_GoNear` (`src/battle_util.c`), the factors as a Safari battle
+begins (`src/battle_main.c`), `Cmd_if_random_safari_flee` (`src/battle_ai_script_commands.c`),
+`PokeblockAction_UseInBattle` (`src/pokeblock.c`) and a Safari Ball's catch rate (`Cmd_handleballthrow`,
+`src/battle_script_commands.c`), read from the pinned commit; the lines are our own.
+
+- **Where.** Every Safari battle met while the player stands in Hoenn (`GameEngine.Here` is Hoenn's) is Emerald's:
+  `BattleSetup.EmeraldSafari` / `CoreSetup.EmeraldSafari`, kept by a battle's record file. The Great Marsh, FireRed's and
+  HeartGold's Safari Zones keep the Marsh's battle.
+- **The commands.** The Safari Ball, POKéBLOCK, GO NEAR and RUN (`ChoiceKind.Pokeblock`, `ChoiceKind.GoNear`, at the
+  enum's end). POKéBLOCK opens the Pokéblock Case's list over the commands (`BattleMenuState.Pokeblocks`); the one chosen
+  leaves the case as it is thrown, as in Emerald. With an empty case POKéBLOCK says so and the commands stay. Bait and
+  mud are refused here, POKéBLOCK and GO NEAR anywhere else.
+- **The factors.** The catch factor begins at the species' catch rate × 100 / 1275 and the escape factor at 3. GO NEAR
+  adds 4, 3, 2 and then 1 to the first (20 at most) and 4 to the second (20 at most); after its third time it says
+  there is no getting closer, though both still rise. A Pokéblock is taken by the Pokémon's nature (`Pokeblocks.Gain`):
+  curious at no gain, enthralled when liked, ignoring it when disliked. The throw count is raised first (3 at most), and
+  while the escape factor is over 1 it falls by 3, 2 or 1 (curious) or 5, 3 or 2 (enthralled) at the first, second and
+  third throw on, or to 1 where that step is larger; ignored, nothing comes off.
+- **Emerald's own bug is kept.** The comparison is "less than", so a factor equal to the step falls to 0 (a curious
+  Pokémon's first Pokéblock at the starting 3 does), and a Pokémon whose factor is 0 never runs and is moved by no
+  further Pokéblock: the "Pokéblock throw glitch".
+- **Running.** The wild Pokémon runs when a roll of a hundred comes out under five times the escape factor the turn
+  began with: Emerald's AI decides as the turn's actions are chosen, before the player's throw or step. It is decided
+  after the player's action (`RollKind.Safari`), so a ball that catches comes first. Otherwise it watches carefully (the
+  Marsh's line).
+- **The ball.** A Safari Ball's catch rate is the catch factor × 1275 / 100 (255 at most) in place of the species', with
+  the modern catch formula and the Safari Ball's own bonus round it, as every catch of this game (Emerald's formula is
+  generation 3's). The last ball's line names the Safari Zone.
+- **Not here.** The Safari Fan Club's television show of Pokéblocks thrown (`TryPutSafariFanClubOnAir`): the battle counts
+  them (`BattleCore.PokeblocksThrown`) and nothing reads it yet. Emerald's throw animation is our own moments (happy as it
+  is thrown, eating or angry as it is taken).
+
 ## The Safari Zone's Pokéblock feeders (2026-11-03, plan 21 · H11, part d)
 
 Emerald's `src/safari_zone.c`, `PickWildMonNature` of `src/wild_encounter.c` and `EventScript_PokeBlockFeeder` of
@@ -6501,9 +6564,8 @@ Pokéblocks" that the feeders could not be built is out of date: the source was 
 - **Emerald's carried difference is kept.** `GetPokeblockFeederWithinRange` subtracts each feeder's tile from what it made
   of the one before, not from the player's tile again, so with two Pokéblocks in a part the second is found where Emerald
   finds it (sometimes not when the player stands beside it). It works on each part's own tiles, as Emerald's maps have them.
-- **Not here.** Emerald's Safari battle throws Pokéblocks at the wild Pokémon (POKéBLOCK in place of the Great Marsh's
-  bait and mud); the battle here is still the Great Marsh's, so the Safari Fan Club's count of Pokéblocks thrown is not
-  kept either. A feeder's own picture is not drawn.
+- **Not here.** A feeder's own picture is not drawn. (Emerald's Safari battle with POKéBLOCK thrown is built since:
+  "Emerald's Safari battle".)
 
 ## The Lilycove Lady (2026-11-01, plan 21 · H11, part c)
 
@@ -8508,6 +8570,41 @@ Plan 10 · F2 to F5 (2026-11-02). Neither is Platinum's: both are rows of the op
 - **The Town Map and Fly**: the six places are blocks of `townmap.json`, and Fly lands before Camphrier's (spawn 4) and
   Cyllage's (spawn 5) Pokémon Centers once each town has been come to.
 
+## Route 10 to Shalour City and the Key Stone, drawn by hand (2026-11-03, plan 23 · Z3, first part)
+
+Drawn as Z1 and Z2 were (`tools/MapDraw/kalos`: `kalos_route_10.txt`, `geosenge_town.txt`, `kalos_route_11.txt`,
+`shalour_city.txt`, and Cyllage's north edge opened), in the shape the places are publicly described, every word ours.
+
+- **The way**: north out of Cyllage City along Route 10, a straight path between two lines of standing stones; Geosenge
+  Town beside a ring of stones; east and north up Route 11 to Shalour City on the north-west coast. The original's way
+  north from Route 11 runs through Reflection Cave, a cave of its own: no drawn region has a cave map yet, so until a
+  later part of Z3 builds it the walk reaches Shalour in the open, and Route 11's overlay says so.
+- **The story** goes on `VAR_KALOS_STORY` (vaniville_town.txt's count): 18 (the Cliff Badge) becomes 19 at Trevor's
+  scene on Geosenge's street (`geosenge_town.txt`, the trigger across the street's foot); 20 at the Tower of Mastery's
+  first visit, where Gurkinn, its master, tells of Mega Evolution and Korrina sends the player to her Gym
+  (`ShalourCity_TowerOfMastery.txt`); 21 with the Rumble Badge (`ShalourCity_Gym.txt`, which also clears
+  `FLAG_KALOS_HIDE_KORRINA_TOWER` so she is back at the tower); 22 at the tower again. Objectives 518 to 521, with
+  "nothing presses" still 599; Grant's scene now ends on `objective kalosRoute10`.
+- **The Key Stone and the Lucario**: the tower's second scene gives `Key Stone` only to a bag without one (`if item`),
+  since a Champion who crossed in may carry one; Korrina then battles with `kalos_korrina_tower`, a Lucario holding its
+  Lucarionite and a Key Stone of the trainer's own, so the player sees Mega Evolution before using it; and she gives a
+  Lucario at 32 holding its Lucarionite, once (`FLAG_KALOS_RECEIVED_LUCARIO`). The original hands the Lucario over on
+  Route 12 after a battle at the tower's top; ours does both in the tower's one hall. Under any run that bars the later
+  mechanics (`RunRules.NoLaterMechanics`) the stone and the Lucario are given all the same and simply never react.
+  `tools/dev/grown-names.json` keeps the three lines that name Lucario, since a crossed game's Korrina may be met with
+  what Lucario grows into, but the lesson and the gift are Lucario's own stone.
+- **Korrina** battles for the Rumble Badge (Kalos's third, `givebadge rumble`) with Mienfoo, Machoke and Hawlucha at 28
+  to 32 (`kalos_korrina_1`), and gives TM08 (Bulk Up; Platinum's table has no Power-Up Punch machine). Her Gym is
+  Grant's hall made hers, one room with no puzzle (X and Y's rails on skates are not built).
+- **Looks**: Korrina and Gurkinn are designs of ours (`characters.json`); the tower is a `BuildingKind.Tower`
+  (`MapStructures.KindOfDoor`), its hall the stone of a tower's floors. Geosenge builds as `OldTimber` and Shalour as
+  `Cyllage`, so no new `Architecture` row was needed.
+- **Wild Pokémon and trainers**: Kalos-Coastal's species at 17 to 21 on both routes; four trainers on the routes and
+  two in the Gym, teams of ours (`Data/world/kalos/trainers.json`).
+- **Music**: no new songs: the routes play Route 2's, the towns Santalune's, the tower and Gym the Gym's.
+- **The Town Map and Fly**: the four places are blocks of `townmap.json`, and Fly lands before Geosenge's (spawn 6) and
+  Shalour's (spawn 7) Pokémon Centers once each town has been come to.
+
 ## How the player moves, region by region (2026-11-02, plan 30 · FM1)
 
 Not Platinum's: Platinum and every game before X and Y walk four ways a tile at a time (`src/player_move.c`), and
@@ -8797,3 +8894,17 @@ Stage 2 of plan 30, built and proven on test regions; **no region's own file say
 - **Pace** (FM9): where the region's speed is `Analog`, a tilt under half walks slowly (`Pace.Slow`), a full tilt walks, and the run button or a full tilt held a second runs (`FreeMovement.PaceFor`, `FullTilt`, `RunAfterSeconds`); Autorun turns the button round as before. Where the speed is `Paces`, any tilt walks at the grid's pace. Discrete paces, not a continuous speed, so the legs' stride stays a step's.
 - **The save** keeps the offset (`SaveData.PlayerSubX`, `PlayerSubY`, left out when nought; `SaveData.FreePositions` = `SaveVersion` 2, whose `SaveMigration` step stands an older save on its tile's centre). A save moved by `PlaceOn` drops its offset.
 - **Tools.** The playthrough bot steers a stick at the next tile's centre in a free place (`Autoplayer.Walk`, `GameEngine.Stick`), and judges a leg's last step once the body is counted off the tile it set out from; it plays `Itineraries.KalosOpening` in `Eight` and in `Free`. `new FieldFuzzer(seed, stick: true)` draws angles and tilts; without it the fuzzer is the grid's, draw for draw.
+
+## A friend in the partner's place; the friends' hall (2026-11-03, plan 13 · V20, V23)
+
+Our own: Platinum has neither. `Core/GameEngine.Coop.cs`, `BattleSetup.FriendPartner`, `BattleCore.FriendPartner` (V20); `Models/FriendsHall.cs`, `Core/GameEngine.FriendsHall.cs`, `Story/ScriptRunner.Friend.cs`, `common.FriendsHallTrainer` (V23).
+
+- **The row** (decision 10, as recommended): FRIEND AS PARTNER (`GameSettings.Coop`, `OptionRow.Coop`, after STREAM-SAFE and before HELP), off unless chosen. On, every battle the field starts beside a partner (whatever reaches `GameEngine.StartTrainerBattle` with one: a script's `battle … with`, and through it a pair of trainers who see the player while someone travels along) is first asked about: "Will a friend choose for {partner} in this battle?", YES and NO as the Vs. Recorder's question has them (`GameEngine.AskAboutAFriend`), and a script that started the battle waits for it as for any text. The question is asked every time, so a friend who has gone home is never handed the menus. Off, nothing is asked and nothing changes.
+- **A yes** hands the battle `BattleSetup.FriendPartner`: the rules are given no mind for the partner's place (`CoreSetup.PartnerController` null), so it is asked from outside like the player's own (`ActionRequest` holds both places, a faint's replacement is a `ReplacementRequest` of the partner's place), through the same menus, the player's place first. The partner's Pokémon, team and trainer stay the partner's: the friend's POKéMON lists the partner's team (`BattleEngine.SwitchParty`, the place's `Roster`), the partner's AI flags and items go unused, and the friend's BAG is refused in the core (`WhyNotItem`, `BattleCore.FriendBagRefusal`) and in the menus with a line of our own, since the bag is the player's. The later mechanics stay as the rules have them for that place; nothing new is given the friend.
+- **Whose turn it is** is a pill over the commands' message box (style guide, "Battle panels"); there is no curtain, since partners share the screen. With a second pad plugged in, the pad after the player's (`InputManager.FriendPad`) answers while it is the friend's turn (`InputManager.FriendsTurn`, set by the engine each frame from `BattleEngine.FriendChoosing`), with the first pad's buttons; the keyboard answers either turn. Plan 12 · Q4's per-player bindings would let the friend's pad have its own; not built.
+- **The record** keeps it: `BattleRecord.FriendPartner` (and the Vs. Recorder's file's `FriendPartner`, null for a partner's own mind), so the friend's answers replay, and a record replayed with the other kind of partner is refused, as a record under the other chart is. A battle watched from a file is fought as recorded.
+- **Not built**: VERSUS's "two against the AI" (VERSUS is plan 28's and V12 is not built); the Battle Tower's Multi room with a friend (plan 06 · R18's Battle Salon partner stays the AI: the Tower starts its battles through `FrontierBattle`, which asks nothing).
+- **The friends' hall** (decision 11, as recommended, in the room plan 01 · M11 built since): the floor upstairs in Jubilife City's Pokémon Center (`JubilifePokemonCenter2F`), south of its three closed link desks, not a hand-made room of its own. As the room is come to (`ArriveOnMap`, `StandTheFriends`) the friends of last time are taken off and the files of `trainers/` (V22's folder, `TrainerFiles.In`: ordinal name order, refused files skipped, the same checksum once) stand on eight spots in order, at most eight (`FriendsHall.Spots`: tiles 5, 8, 11 and 14 of rows 7 and 9, facing south). Each is a person of the room drawn in the player's own look of their file (`PlayerIdentity.CharacterOf`), named by their file's name, with the hall's script and no `TrainerData`: they never see the player, are written into no save and no map file, and a spot someone of the room stands on is left empty.
+- **The battle**: `friend battle` fights the friend's own team made from their file at level 50 (`TrainerFile.ToTrainer`, every routine of the trainer AI, prize 0) against copies of the player's whole team but its Eggs at level 50 (`LevelScaling.TeamAt`), as a battle of the Frontier (`FrontierBattle`: no EXP, effort, money or bag, nothing used up, the Pokédex told nothing). Their two lines, before and after, are the file's two numbers of `friends.line.*`. A loss leaves them unbeaten and changes nothing; a win beats them for the day and is counted as a trainer beaten (`Statistics.TrainerWon`, V8's counter; plan 08 · P10's Vs. Recorder may keep it, as any Frontier battle).
+- **Once a day** by `GameClock.Today`: told by the file's checksum (a file changed is another trainer), kept in `GameFlow.FriendsHall` and saved as `SaveData.FriendsBeaten` (checksum and day, only today's; null with none, so no save version was raised and no fixture moved). Spoken to again that day they say their last line and that they will be ready tomorrow.
+- **Not built**: the Battle Tower's friends' room and visitors in a secret base (handed on, as the plan says); V21 reading friends' files (V21 is not built).

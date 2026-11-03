@@ -339,6 +339,9 @@ public sealed partial class BattleCore
     /// <summary>What a battle with no items says when one is reached for (plan 14 · B14): a line of our own.</summary>
     public static string NoItemsRefusal => Text.Of("battle.noItemsMayBe");
 
+    /// <summary>What a friend at the partner's place is told who reaches for the bag (plan 13 · V20): a line of our own.</summary>
+    public static string FriendBagRefusal => Text.Of("battle.friendHasNoBag");
+
     /// <summary>
     /// Why an item from the bag can't be used now; null when it can (<c>BattleSystem_CheckItemUsability</c> and the
     /// bag's own ABLE and NOT ABLE): a Ball in a trainer battle or at two foes, an item the battle doesn't know,
@@ -353,6 +356,8 @@ public sealed partial class BattleCore
         if (Frontier) return FrontierBagRefusal;
         // A Master Trainer's battle (plan 14 · B14): nothing from the bag, for either side
         if (NoBattleItems) return NoItemsRefusal;
+        // A friend at the partner's place (plan 13 · V20): the bag is the player's, not theirs
+        if (FriendPartner && b.IsPlayerSide && b.Trainer != null) return FriendBagRefusal;
         // The Nuzlocke (plan 13 · V4): no revive at any time, and no ball for a Pokémon the run may not catch, the Great
         // Marsh's Safari Balls among them
         if (Nuzlocke is { } nuzlocke && b.IsPlayerSide)

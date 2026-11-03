@@ -864,6 +864,19 @@ by the Tower's rooms, with the Subway Bosses at the 21st battle (Ingo) and the 4
 | `subway beaten`, `subway print` | U11's leftovers: the Subway Boss of the car just won against leaves the Subway's own print waiting (`SubwayRiders.Beaten`, `VAR_UNOVA_SUBWAY_PRINT_STATE` 0 to 4 as the Frontier's: silver for Ingo's first defeat, gold for Emmet's after it), `RESULT` 0 none, 1 silver, 2 gold; a desk hands over the print that waits (`RESULT` the same). |
 | `subway prize`, `subway buy` | The Gear Station's counter: asks which of its prizes (`Data/subway.json`'s, ours), with the Battle Points shown, `RESULT` 1 or 0 for none, `{item}` and `{price}`; then trades the Frontier's Battle Points for it (`RESULT` 1, or 0 with too few). |
 
+### The friends' hall
+
+Plan 13 · V23; `docs/mechanics/rulings.md`, "The friends' hall". The trainers of the files in `trainers/` beside the save (plan
+13 · V22) stand in Jubilife City's Pokémon Center upstairs as the room is come to (`Models/FriendsHall.cs`, laid out by the
+game, never by a script), each running `common.FriendsHallTrainer` when spoken to. The command is said of the person the script
+was started with; anyone else is no friend's trainer and has nothing to battle.
+
+| Command | What it does |
+|---|---|
+| `friend beaten` | `RESULT` 1 when the friend was beaten today (`GameClock.Today`), or the person is no friend's trainer; 0 otherwise. |
+| `friend before`, `friend after` | Says the line their file chose to say before the battle, or after it (`friends.line.N` of the table), under their name. |
+| `friend battle` | The battle at level 50: copies of the player's team but its Eggs, and of the friend's own team made from their file, under the Frontier's battle rules (nothing won, paid, learnt or used up) and every routine of the trainer AI. `RESULT` 1 won, 0 lost; a win beats them for the day and counts as a trainer beaten. |
+
 ### Join Avenue
 
 Plan 22 · U11; `docs/mechanics/rulings.md`, "Join Avenue's growth". The avenue's growth (`Models/JoinAvenue.cs`) is the

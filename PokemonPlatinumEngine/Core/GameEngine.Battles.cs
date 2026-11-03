@@ -227,6 +227,9 @@ public partial class GameEngine
                 PlayerLook = lessonLook,
                 SpecialBalls = kind == BattleKind.Safari ? flow.Safari.Balls : kind == BattleKind.PalPark ? flow.Pastimes.PalPark.Show?.ParkBalls ?? 0
                     : kind == BattleKind.Normal && InBugContest ? flow.BugContest.Balls : 0,
+                // Hoenn's Safari Zone plays Emerald's Safari battle, Pokéblocks from the player's case (plan 21 · H11, part e)
+                EmeraldSafari = kind == BattleKind.Safari && Here.Id == RegionDatabase.Hoenn,
+                Pokeblocks = kind == BattleKind.Safari && Here.Id == RegionDatabase.Hoenn ? flow.PokeblockCase : null,
                 MoveHints = MoveHintsOn,
                 Difficulty = flow.Run.Difficulty,
                 RunLevelCap = CurrentLevelCap() ?? 0,
@@ -467,8 +470,10 @@ public partial class GameEngine
     /// with <paramref name="terms"/>, one of the formats a script may ask for (plan 14 · B1: an inverse battle; B14: a
     /// Master Trainer's, one Pokémon of the team alone and the bag closed).
     /// </summary>
-    private void StartTrainerBattle(NPC trainerNpc, NPC? secondNpc = null, Trainer? partner = null, bool firstBattle = false, BattleTerms? terms = null)
+    private void StartTrainerBattle(NPC trainerNpc, NPC? secondNpc = null, Trainer? partner = null, bool firstBattle = false, BattleTerms? terms = null, bool? friend = null)
     {
+        // Beside a partner, with the options' row on, the game asks first whether a friend chooses for them (plan 13 · V20)
+        if (partner != null && friend == null && AskAboutAFriend(trainerNpc, secondNpc, partner, firstBattle, terms)) return;
         // A trainer's battle ends the Poké Radar's chain (Encounter_NewVsTrainer)
         EndRadarChain();
         var trainer = trainerNpc.TrainerData!;
@@ -580,6 +585,7 @@ public partial class GameEngine
                 Format = asked,
                 Trainers = trainers,
                 Partner = partner,
+                FriendPartner = friend == true && partner != null,
                 FirstBattle = firstBattle,
                 NoBattleItems = terms?.NoBattleItems ?? false,
                 Conditions = BattleConditionsHere(terms),

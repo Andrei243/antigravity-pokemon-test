@@ -1,0 +1,48 @@
+# Shalour City's Gym (plan 23 · Z3, first part). The lines are our own, on X and Y's beats as they are publicly
+# described (docs/mechanics/rulings.md, "Route 10 to Shalour City and the Key Stone, drawn by hand"): Korrina, a
+# fighter on skates, battles for the Rumble Badge, Kalos's third (`givebadge rumble`), and gives a TM. The hall is one
+# room with no puzzle (X and Y's rails are not built). VAR_KALOS_STORY is vaniville_town.txt's count: the Badge makes
+# it 21, and Korrina is back at the tower (FLAG_KALOS_HIDE_KORRINA_TOWER cleared). Her team is Kalos's trainers.json's
+# kalos_korrina_1; her two trainers are the hall's own.
+
+
+script Korrina
+  face korrina player
+  speaker "Korrina"
+  if badge rumble goto Won
+  scene "Korrina"
+  say "You made it! I'm Korrina, and this is the Shalour Gym. We train on wheels here, so keep up!"
+  say "Grandpa says a Trainer's heart shows in battle. Let's see what yours is made of!"
+  battle self as "kalos_korrina_1"
+  say "Wow! You hit hard and you never stopped moving. That's a real fighter!"
+  say "This is the Rumble Badge. You've earned it, and Grandpa's Key Stone too, I bet."
+  givebadge rumble
+  text "{player} received the Rumble Badge from Korrina!"
+  setflag FLAG_KALOS_DEFEATED_SHALOUR_GYM
+  defeat "kalos_black_belt_lucien"
+  defeat "kalos_battle_girl_ines"
+  if var VAR_KALOS_STORY >= 21 goto Tm
+  setvar VAR_KALOS_STORY 21
+  clearflag FLAG_KALOS_HIDE_KORRINA_TOWER
+  objective kalosMastery
+label Tm
+  say "And take this. My Pokémon use it to tense every muscle before they strike, harder and harder."
+  give "TM08"
+  setflag FLAG_KALOS_RECEIVED_TM_KORRINA
+  say "Now go and see Grandpa at the tower. I'll skate over and meet you there!"
+  endscene
+  end
+label Won
+  if not flag FLAG_KALOS_RECEIVED_TM_KORRINA goto Tm
+  say "Grandpa's waiting for you at the tower. Go, go!"
+  end
+
+
+script GymGuide
+  speaker "Gym Guide"
+  if badge rumble goto Won
+  say "Hello there, future Champion! Korrina's Fighting types fear flying, psychic power and the fair folk. Choose well!"
+  end
+label Won
+  say "You beat Korrina! Your fists must be made of iron."
+  end

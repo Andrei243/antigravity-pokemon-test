@@ -1029,6 +1029,10 @@ public static class ScriptParser
                 return new Instruction { Op = Op.Arcade, Line = line, Name = what, Other = which };
             }
 
+            // A friend's trainer of the friends' hall (plan 13 · V23)
+            case "friend":
+                return new Instruction { Op = Op.Friend, Line = line, Name = r.OneOf("beaten", "before", "after", "battle") };
+
             // The Battle Subway (plan 22 · U6, part d)
             case "subway":
             {

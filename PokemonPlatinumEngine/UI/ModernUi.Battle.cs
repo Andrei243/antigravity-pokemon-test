@@ -20,11 +20,17 @@ internal static partial class ModernUi
     /// The battle's four commands: FIGHT and BAG, POKÉMON, RUN; in the Great Marsh the Safari Ball (with how many are
     /// left), BAIT, MUD and RUN; in Pal Park the Park Ball and RUN (an empty label is a command that isn't there).
     /// </summary>
+    /// <summary>Each Pokéblock of the case as its row in the battle's list: its colour's name and its level.</summary>
+    public static string[] PokeblockLabels(BattleEngine battle) =>
+        battle.PokeblocksListed.Select(p => Text.Of("battleMenu.pokeblockRow", ("block", p.Block.Name), ("level", p.Block.Level))).ToArray();
+
     /// <summary>A command that can't be used in this battle (plan 14 · B14: BAG in a Master Trainer's battle).</summary>
     public static readonly Color Closed = new(150, 156, 174, 255);
 
     public static (string Big, string[] Small) CommandLabels(BattleEngine battle) => battle.Kind switch
     {
+        // Hoenn's Safari Zone (plan 21 · H11, part e): Emerald's POKéBLOCK and GO NEAR where the Marsh's bait and mud stand
+        BattleKind.Safari when battle.EmeraldSafari => (Text.Of("battleMenu.safariBall", ("n", battle.SpecialBalls)), new[] { Text.Of("battleMenu.pokeblock"), Text.Of("battleMenu.goNear"), Text.Of("battleMenu.run") }),
         BattleKind.Safari => (Text.Of("battleMenu.safariBall", ("n", battle.SpecialBalls)), new[] { Text.Of("battleMenu.bait"), Text.Of("battleMenu.mud"), Text.Of("battleMenu.run") }),
         BattleKind.PalPark => (Text.Of("battleMenu.parkBall", ("n", battle.SpecialBalls)), new[] { "", "", Text.Of("battleMenu.run") }),
         // The Bug-Catching Contest's Sport Balls stand where the bag does (plan 15 · E5)
@@ -153,7 +159,9 @@ internal static partial class ModernUi
                 // The Great Marsh and Pal Park are played with balls alone: the commands are the ball and what else can be thrown
                 bool balls = battle.Kind is BattleKind.Safari or BattleKind.PalPark;
                 // In a rotation battle the box names the one the turntable is turned to (plan 14 · B7)
-                MessageBox(new Rectangle(48, 858, 1060, 172), null, balls ? PlayerIdentity.Name : battle.IsRotation ? battle.Fighter.DisplayName : active.DisplayName);
+                MessageBox(new Rectangle(48, 858, 1060, 172), null, balls ? PlayerIdentity.Name : battle.IsRotation ? battle.Fighter.DisplayName : active.DisplayName,
+                    // Whose turn it is where a friend shares the menus (plan 13 · V20)
+                    speaker: battle.HasFriendPartner ? Text.Of(battle.FriendChoosing ? "battleMenu.friendsTurn" : "battleMenu.playersTurn", ("player", PlayerIdentity.Name)) : null);
                 var (big, labels) = CommandLabels(battle);
                 Color[] colors = { Gold, Green, Blue };
                 Button(CommandRect(0), balls ? 30 : 34, Red, big, balls ? 40 : 60, hud.MainMenuIndex == 0);
@@ -173,7 +181,8 @@ internal static partial class ModernUi
                 TargetMenu(hud, battle);
                 break;
             case BattleMenuState.SwitchPokemon:
-                SwitchPanel(hud, sw, sh, party, active, battle);
+                // The place's own team: a friend at the partner's place sees the partner's (plan 13 · V20)
+                SwitchPanel(hud, sw, sh, battle.SwitchParty, active, battle);
                 break;
             case BattleMenuState.SelectBagPocket:
                 BagPockets(hud, sw, sh, battle);
@@ -189,12 +198,18 @@ internal static partial class ModernUi
                 if (battle.BagTarget >= 0 && battle.BagTarget < party.Count && battle.BagItemChosen is { } restoring)
                     MovePick(new Rectangle(sw - 64 - 760, 64, 760, 476), party.Members[battle.BagTarget], hud.BagMoveIndex, Text.Of("battleMenu.useOnWhichMove", ("item", restoring.DisplayName)));
                 break;
+            case BattleMenuState.Pokeblocks:
+                // The case's Pokéblocks as a list of answers over the commands, as the question box draws one (plan 21 · H11, part e)
+                MessageBox(new Rectangle(48, 858, MessageBoxWidth, 172), Text.Of("battleMenu.whichPokeblock"), null);
+                DrawChoices(sw + 48, sh + 40 + (int)(DialogueBox.HeightNow - DialogueBox.Height), PokeblockLabels(battle), hud.PokeblockIndex, 1f);
+                break;
             case BattleMenuState.Info:
                 if (battle.InfoShown is { } info) InfoPanel(info, battle.IsDouble || battle.IsSos);
                 break;
             case BattleMenuState.Summary:
-                if (battle.SummaryIndex < party.Count)
-                    DrawSummary(sw, sh, party.Members[battle.SummaryIndex], battle.SummaryIndex, party.Count, 1f, (int)battle.Summary.Page,
+                var looked = battle.SwitchParty;
+                if (battle.SummaryIndex < looked.Count)
+                    DrawSummary(sw, sh, looked.Members[battle.SummaryIndex], battle.SummaryIndex, looked.Count, 1f, (int)battle.Summary.Page,
                         battle.Summary.RibbonCursor, battle.Summary.MarkCursor, battle.Summary.MoveSelection, canMark: false, heldAt: battle.Core.RunLevelCap);
                 break;
             case BattleMenuState.LearnMove:
@@ -593,7 +608,8 @@ internal static partial class ModernUi
         var ink = Ink;
         if (Seeing.HighContrast) ink = ContrastBox(r, 28);
         else Panel(r, 28);
-        if (prompting == null && !string.IsNullOrEmpty(speaker)) SpeakerPill(r, speaker);
+        // (With the commands' question, the pill names whose turn it is where a friend shares the menus: plan 13 · V20)
+        if (!string.IsNullOrEmpty(speaker)) SpeakerPill(r, speaker);
         float x = r.X + 52, cy = r.Y + r.Height / 2f, size = MessageSizeNow;
         if (prompting != null)
         {

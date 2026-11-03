@@ -490,6 +490,13 @@
         "on": "ID-urile antrenorilor sunt ascunse, iar numele dosarului tău este scos din căile din jurnal."
       }
     },
+    "coop": {
+      "label": "Prieten ca partener",
+      "help": {
+        "off": "Cine luptă lângă tine își alege singur mutările.",
+        "on": "Înaintea unei lupte lângă un partener, ești întrebat dacă un prieten alege pentru el. Un al doilea controler răspunde la rândurile prietenului."
+      }
+    },
     "captions": {
       "label": "Subtitrări",
       "help": {
@@ -1173,7 +1180,12 @@
     "kalosPalace": "Urcă spre nord pe Drumul 6 și cere la poarta palatului flautul acestuia.",
     "kalosSnorlax": "Trezește-l cu flautul palatului pe Snorlax-ul adormit pe Drumul 7, la sud de Camphrier.",
     "kalosCyllage": "Urmează Drumul 7 până la coastă și Drumul 8 spre nord, până în orașul Cyllage.",
-    "kalosGrant": "Urcă la Sala din vârful orașului Cyllage și câștigă de la Grant Insigna Stâncii.",    "kalosFree": "Până aici merge drumul deocamdată. Kalos îți stă deschis."
+    "kalosGrant": "Urcă la Sala din vârful orașului Cyllage și câștigă de la Grant Insigna Stâncii.",
+    "kalosRoute10": "Ieși din orașul Cyllage pe drumul de nord și urmează pietrele înălțate ale Drumului 10 până în orășelul Geosenge.",
+    "kalosShalour": "Ia Drumul 11 spre est și apoi spre nord, până în orașul Shalour, și urcă în Turnul Măiestriei de pe țărm.",
+    "kalosKorrina": "Câștigă de la Korrina Insigna Bubuitului, la Sala de la est de strada principală a orașului Shalour.",
+    "kalosMastery": "Întoarce-te în Turnul Măiestriei și vorbește cu Gurkinn, maestrul lui.",
+    "kalosFree": "Până aici merge drumul deocamdată. Kalos îți stă deschis."
   },
 
   "close": {
@@ -1625,7 +1637,8 @@
     "Boulder": "Bolovan", "Cascade": "Cascadă", "Thunder": "Tunet", "Rainbow": "Curcubeu", "Soul": "Suflet", "Marsh": "Smârc", "Volcano": "Vulcan", "Earth": "Pământ",
     "Zephyr": "Zefir", "Hive": "Stup", "Plain": "Câmpie", "Fog": "Ceață", "Storm": "Furtună", "Mineral": "Mineral", "Glacier": "Ghețar", "Rising": "Înălțare",
     "Stone": "Piatră", "Knuckle": "Pumn", "Dynamo": "Dinam", "Heat": "Arșiță", "Balance": "Echilibru", "Feather": "Pană", "Mind": "Minte", "Rain": "Ploaie",
-    "Basic": "Bază", "Toxic": "Toxic", "Insect": "Insectă", "Bolt": "Fulger", "Quake": "Cutremur", "Jet": "Jet", "Legend": "Legendă", "Wave": "Val",
+    "Basic": "Bază", "Toxic": "Toxic", "Insect": "Insectă", "Bolt": "Fulger", "Quake": "Cutremur", "Jet": "Jet", "Legend": "Legendă", "Wave": "Val"
+,
     "Bug": "Insectă", "Cliff": "Stâncă", "Rumble": "Bubuit", "Plant": "Plantă", "Voltage": "Tensiune", "Fairy": "Zână", "Psychic": "Psihic", "Iceberg": "Aisberg"
   },
   "card": {
@@ -2910,6 +2923,9 @@
     "noWayOut": "Aici nu se găsește nicio ieșire cu el.",
     "scriptWentWrong": "Un script a mers prost: {problem}",
     "onlyCanBeChosen": "Aici poate fi ales doar {only}.",
+    "coop": {
+      "question": "Alege un prieten pentru {partner} în lupta asta?"
+    },
     "recordBattle": {
       "question": "Înregistrezi lupta asta?",
       "saved": "Lupta a fost păstrată pe Vs. Recorder.",
@@ -3157,6 +3173,7 @@
     "madeFallInLove": "Obiectul {item} al lui {pokemon} l-a îndrăgostit pe {attacker}!",
     "nothingFromTheBag": "Nimic din Rucsac nu poate fi folosit aici.",
     "noItemsMayBe": "În această luptă nu se pot folosi obiecte!",
+    "friendHasNoBag": "Un partener nu are rucsac în această luptă!",
     "thereIsNoItem": "Nu există niciun obiect numit {item}.",
     "onlyTheBallsYou": "Aici pot fi folosite doar ball-urile primite.",
     "youHaveNoBalls": "Nu mai ai niciun ball!",
@@ -3230,6 +3247,14 @@
     "theWildIsFuming": "{pokemon} cel sălbatic fierbe de furie!",
     "theWildFled": "{pokemon} cel sălbatic a fugit!",
     "theWildIsKeeping": "{pokemon} cel sălbatic nu te scapă din ochi.",
+    "threwAPokeblockAt": "{player} a aruncat un {block} spre {pokemon} cel sălbatic!",
+    "pokeblockCurious": "{pokemon} cel sălbatic adulmecă {block}!",
+    "pokeblockEnthralled": "{pokemon} cel sălbatic nu-și ia ochii de la {block}!",
+    "pokeblockIgnored": "{pokemon} cel sălbatic strâmbă din nas la {block}!",
+    "creptCloser": "{player} s-a apropiat puțin de {pokemon} cel sălbatic!",
+    "cantGetCloser": "{player} nu se mai poate apropia de {pokemon} cel sălbatic!",
+    "noPokeblocksLeft": "Nu e niciun Pokéblock în cutie.",
+    "safariZoneOver": "Timpul tău în Safari Zone s-a terminat.",
     "youveThrownYourLast": "Ai aruncat ultimul Safari Ball!",
     "thatTheEndOf": "Timpul tău în Great Marsh s-a terminat.",
     "finallyGotGoing": "{pokemon} s-a pornit în sfârșit!",
@@ -3827,10 +3852,16 @@
     "run": "FUGI",
     "shift": "MUTĂ",
     "bait": "MOMEALĂ",
+    "pokeblock": "POKéBLOCK",
+    "goNear": "APROPIE-TE",
+    "whichPokeblock": "Ce Pokéblock arunci?",
+    "pokeblockRow": "{block}  Nv. {level}",
     "mud": "NOROI",
     "safariBall": "SAFARI BALL ×{n}",
     "parkBall": "PARK BALL ×{n}",
     "whatWill": "Ce va face {name}?",
+    "playersTurn": "Rândul lui {player}",
+    "friendsTurn": "Rândul unui prieten",
     "useOnWhichMove": "Pe ce mișcare folosești {item}?",
     "yes": "Da",
     "no": "Nu",

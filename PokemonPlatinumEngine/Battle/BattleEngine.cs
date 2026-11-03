@@ -274,6 +274,7 @@ public partial class BattleEngine
         Watched = watched;
         PlayerParty = setup.PlayerParty;
         PlayerInventory = setup.Inventory;
+        Pokeblocks = setup.Pokeblocks;
         Pokedex = setup.Pokedex;
         pcBoxStorage = setup.PcStorage;
         place = setup.Place;
@@ -308,6 +309,7 @@ public partial class BattleEngine
             CannotFlee = setup.CannotFlee,
             FirstBattle = setup.FirstBattle,
             SpecialBalls = setup.SpecialBalls,
+            EmeraldSafari = setup.EmeraldSafari,
             Frontier = setup.Frontier,
             NoRewards = setup.NoRewards,
             NoBattleItems = setup.NoBattleItems,
@@ -322,6 +324,8 @@ public partial class BattleEngine
             PlayerController = setup.PlayerController,
             // A battle puzzle's foe uses the moves its file names (plan 13 · V26)
             EnemyController = setup.EnemyController ?? TrainerAi.Instance,
+            // A friend at the partner's place chooses through the menus (plan 13 · V20); a battle watched as recorded
+            PartnerController = (watched?.FriendPartner ?? setup.FriendPartner) && setup.Partner != null ? null : TrainerAi.Instance,
             Palace = watched?.Palace ?? setup.Palace,
             TurnLimit = watched?.TurnLimit ?? setup.TurnLimit,
             // A Key Stone in the bag lets one of the player's Pokémon Mega Evolve (plan 06 · R20); a battle watched
@@ -405,6 +409,16 @@ public partial class BattleEngine
 
     /// <summary>The Safari Balls or Park Balls left.</summary>
     public int SpecialBalls => core.SpecialBalls;
+
+    /// <summary>Hoenn's Safari Zone: Emerald's Safari battle, with POKéBLOCK and GO NEAR (plan 21 · H11, part e).</summary>
+    public bool EmeraldSafari => core.EmeraldSafari;
+
+    /// <summary>The Pokéblock Case POKéBLOCK draws from in Hoenn's Safari Zone; null in every other battle.</summary>
+    public Models.PokeblockCase? Pokeblocks { get; }
+
+    /// <summary>The Pokéblocks the case lists, in its order, for the battle's list (<see cref="BattleMenuState.Pokeblocks"/>).</summary>
+    public IReadOnlyList<(int Slot, Models.Pokeblock Block)> PokeblocksListed =>
+        Pokeblocks?.Listed() ?? (IReadOnlyList<(int, Models.Pokeblock)>)System.Array.Empty<(int, Models.Pokeblock)>();
 
     /// <summary>The places the player chooses for: the player's own (not a partner's, and none in the catching lesson).</summary>
     public IEnumerable<Battler> PlayerChooses => Kind == BattleKind.CatchingLesson ? Enumerable.Empty<Battler>() : PlayerSlots.Where(b => b.Trainer == null);

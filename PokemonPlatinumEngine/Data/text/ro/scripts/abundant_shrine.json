@@ -1,0 +1,28 @@
+{
+  "Landorus": [
+    {
+      "en": [
+        "Landorus let out a thundering cry!\nThe soil of the whole wood seems to stir at its call!"
+      ],
+      "text": [
+        "Landorus a scos un strigăt tunător!\nPământul întregii păduri pare să se miște la chemarea lui!"
+      ]
+    },
+    {
+      "en": [
+        "The wood settles. Only the wind over the pond is left..."
+      ],
+      "text": [
+        "Pădurea se liniștește. Rămâne doar vântul peste iaz..."
+      ]
+    },
+    {
+      "en": [
+        "Landorus soared away over the wood..."
+      ],
+      "text": [
+        "Landorus s-a înălțat departe peste pădure..."
+      ]
+    }
+  ]
+}

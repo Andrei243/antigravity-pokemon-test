@@ -1,0 +1,30 @@
+# Geosenge Town (plan 23 · Z3, first part). The lines are our own, on X and Y's beats as they are publicly described
+# (docs/mechanics/rulings.md, "Route 10 to Shalour City and the Key Stone, drawn by hand"): Trevor waits by the
+# standing stones and tells of Shalour City's tower and the change some Pokémon go through there. VAR_KALOS_STORY is
+# vaniville_town.txt's count: 18, the Cliff Badge won, becomes 19 here.
+#
+# The people: trevor (FLAG_KALOS_HIDE_TREVOR_GEOSENGE, set by his scene).
+
+
+# Up from Route 10 into the town (the trigger across the street's foot, on VAR_KALOS_STORY 18)
+script Trevor
+  scene "Trevor in Geosenge"
+  face trevor player
+  speaker trevor "Trevor"
+  say "{player}! I've been reading about these stones. Nobody knows who stood them up, or why."
+  say "And there's something even stranger in Shalour City, up the coast. The professor's research is all about it."
+  say "Some Pokémon can change, all at once, into a stronger shape. A tower in Shalour is where people go to learn how."
+  say "Route 11 runs east out of town and up toward the coast. I'm going to write everything down on the way!"
+  walk trevor up 6 fast
+  hide trevor
+  setflag FLAG_KALOS_HIDE_TREVOR_GEOSENGE
+  setvar VAR_KALOS_STORY 19
+  objective kalosShalour
+  endscene
+  end
+
+# Should he be spoken to before his scene (he leaves in the same scene)
+script TrevorWaits
+  speaker trevor "Trevor"
+  say "Um. I counted the stones three times. I got three different answers."
+  end

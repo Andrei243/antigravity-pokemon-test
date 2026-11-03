@@ -99,6 +99,9 @@ trainers 2, 7-8: kalos_bug_catcher_luc 8, kalos_lass_mireille 8
 === SevenStarsRestaurant
 Seven Stars Restaurant
 trainers 18, 24-31: aroma_lady_alison 28, artist_ismael 28, beauty_gabriella 26, beauty_harley 26, breeder_kaylee 26, cameraman_darryl 26, collector_eugene 28, gentleman_leonardo 27, lady_kylie 26, lass_blythe 25, pi_kendrick 31, pokefan_meredith 26, reporter_valerie 26, rich_boy_roman 26, school_kid_esteban 26, scientist_emilio 27, socialite_rebecca 27, veteran_emanuel 28
+=== ShalourCity_Gym
+Shalour Gym
+trainers 2, 26-27: kalos_battle_girl_ines 27, kalos_black_belt_lucien 26
 === SnowpointGym
 Snowpoint Gym
 trainers 6, 39-44: ace_trainer_alicia 43, ace_trainer_anton 44, ace_trainer_brenna 41, ace_trainer_isaiah 44, ace_trainer_savannah 42, ace_trainer_sergio 42
@@ -150,6 +153,12 @@ surf 5-35
 old rod 5-10
 good rod 10-30
 super rod 20-35
+=== abundant_shrine
+Abundant Shrine
+grass 32-36
+surf 25-40
+super rod 40-70
+trainers 4, 37-39: unova_lass_lurleen 39, unova_twins_rae_ula 38, unova_youngster_jaye 37, unova_youngster_wes 39
 === acuity_lakefront
 Acuity Lakefront
 grass 32-35
@@ -1034,6 +1043,14 @@ trainers 5, 28-60: johto_bug_catcher_abner 44, johto_bug_catcher_dane 48, johto_
 === jubilife_city
 Jubilife City
 trainers 2, 11: galactic_grunt_jubilife_city_1 11, galactic_grunt_jubilife_city_2 11
+=== kalos_route_10
+Route 10
+grass 17-19
+trainers 2, 18-19: kalos_hiker_odilon 18, kalos_lass_maelle 19
+=== kalos_route_11
+Route 11
+grass 19-21
+trainers 2, 20-21: kalos_battle_girl_elodie 20, kalos_black_belt_gustave 21
 === kalos_route_2
 Route 2
 grass 2-4
@@ -3401,6 +3418,12 @@ grass 34-37
 surf 25-40
 super rod 40-70
 trainers 11, 39-41: unova_ace_trainer_angi 41, unova_ace_trainer_miguel 41, unova_battle_girl_alize 41, unova_black_belt_wesley 41, unova_fisherman_damon 39, unova_fisherman_jones 40, unova_fisherman_leroy 40, unova_fisherman_vince 40, unova_parasol_lady_laura 40, unova_pkmn_ranger_daryl 39, unova_pkmn_ranger_dianne 39
+=== unova_route_14
+Route 14
+grass 33-36
+surf 15-35
+super rod 40-70
+trainers 8, 38-52: unova_ace_trainer_junko 39, unova_ace_trainer_kipp 39, unova_backpacker_reece 38, unova_battle_girl_glinda 40, unova_black_belt_jay 52, unova_fisherman_sid 38, unova_gentleman_sheldon 39, unova_socialite_marian 39
 === unova_route_16
 Route 16
 grass 21-24

@@ -2950,5 +2950,23 @@
         "Oh! Tata zice că albumul tău din Cianwood City e plin. Aruncă acolo o fotografie sau două și îți mai fac una."
       ]
     }
+  ],
+  "FriendsHallTrainer": [
+    {
+      "en": [
+        "Your friend's trainer will be ready for another battle tomorrow."
+      ],
+      "text": [
+        "Antrenorul prietenului tău va fi gata de o nouă luptă mâine."
+      ]
+    },
+    {
+      "en": [
+        "Your friend's trainer was too strong this time. Try again whenever you like!"
+      ],
+      "text": [
+        "Antrenorul prietenului tău a fost prea puternic de data asta. Încearcă din nou oricând vrei!"
+      ]
+    }
   ]
 }

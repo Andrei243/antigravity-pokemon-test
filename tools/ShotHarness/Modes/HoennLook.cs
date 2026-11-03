@@ -176,6 +176,40 @@ partial class Harness
                 var zone = PokemonPlatinumEngine.Data.MapDatabase.Get("HoennSafariZone");
                 Console.WriteLine($"h3l*: feeder ({fx}, {fy}): behaviour {zone.BehaviourAt(fx, fy)}, walkable {zone.IsWalkable(fx, fy)}, script {zone.TileScripts.GetValueOrDefault((fx, fy))}");
             }
+        // ---- Emerald's Safari battle (plan 21 · H11, part e): the commands with POKéBLOCK and GO NEAR, the case's list
+        // over them, and a Pokéblock taken by the Pokémon's nature
+        if (Wants("h3l2"))
+        {
+            At("HoennSafariZone", 64, 72, Direction.Up);
+            game.Safari.Start();
+            game.PokeblockCase.Clear();
+            game.PokeblockCase.Add(new Pokeblock(PokeblockColor.Red, 20, 0, 0, 0, 0, 10));
+            game.PokeblockCase.Add(new Pokeblock(PokeblockColor.Blue, 0, 22, 0, 0, 0, 12));
+            game.PokeblockCase.Add(new Pokeblock(PokeblockColor.Gold, 30, 30, 30, 0, 0, 20));
+            game.StartWildBattle(new WildEncounterEntry { SpeciesName = "Pikachu", MinLevel = 25, MaxLevel = 25 });
+            for (int i = 0; i < 300 && game.State != GameState.Battle; i++) Frames(1);
+            var safari = game.Battle;
+            ToMainMenu(safari);
+            Shot("h3l2_safari_battle_commands");
+            safari.SelectMainMenuOption(1);
+            Frames(10);
+            Shot("h3l3_safari_battle_pokeblocks");
+            safari.SelectPokeblock(0);
+            Skip(0.8);
+            Confirm(safari);
+            Skip(0.8);
+            Shot("h3l4_safari_battle_pokeblock_taken");
+            Console.WriteLine($"h3l2*: Emerald's {safari.EmeraldSafari}, catch factor {safari.Core.SafariCatchFactor}, escape {safari.Core.SafariEscapeFactor}, " +
+                $"the case {game.PokeblockCase.Count}, the wild nature {safari.EnemySlots[0].Pokemon?.Nature}");
+            for (int guard = 0; guard < 200 && !safari.IsBattleOver; guard++)
+            {
+                if (safari.HUD.MenuState == BattleMenuState.Main) safari.SelectMainMenuOption(3);
+                else Confirm(safari);
+                Skip(0.5);
+            }
+            for (int i = 0; i < 1500 && game.State != GameState.Overworld; i++) Frames(1);
+            game.Safari.End();
+        }
         if (Wants("h3k2"))
         {
             At("MauvilleCity_GameCorner", 4, 9, Direction.Up);

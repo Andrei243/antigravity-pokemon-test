@@ -186,6 +186,15 @@ public sealed class BattleSetup
     /// <summary>The Safari Balls or Park Balls the player has, in the Great Marsh and Pal Park.</summary>
     public int SpecialBalls { get; init; }
 
+    /// <summary>
+    /// Hoenn's Safari Zone (plan 21 · H11, part e): the Safari battle is Emerald's, with POKéBLOCK and GO NEAR in place of
+    /// the Great Marsh's bait and mud, its catch and escape factors in place of the Marsh's stages.
+    /// </summary>
+    public bool EmeraldSafari { get; init; }
+
+    /// <summary>The Pokéblock Case POKéBLOCK draws from in Hoenn's Safari Zone (the face's alone: a Pokéblock thrown leaves it).</summary>
+    public Models.PokeblockCase? Pokeblocks { get; init; }
+
     /// <summary>The name the battle's lines give the player's side; left out, the player's (the catching lesson's is the assistant's).</summary>
     public string? PlayerName { get; init; }
 
@@ -282,6 +291,13 @@ public sealed class BattleSetup
     /// </summary>
     public Sim.IBattleController? EnemyController { get; init; }
 
+    /// <summary>
+    /// A friend chooses for the <see cref="Partner"/>'s place through the battle's own menus (plan 13 · V20): the rules
+    /// are handed no mind for it (<see cref="Sim.CoreSetup.PartnerController"/> null), so the place is asked like the
+    /// player's own. Off, the partner thinks for itself as ever. Nothing without a partner.
+    /// </summary>
+    public bool FriendPartner { get; init; }
+
     /// <summary>A battle of the Battle Palace (plan 14 · B9; <see cref="Sim.CoreSetup.Palace"/>): the menus never open.</summary>
     public bool Palace { get; init; }
 
@@ -317,6 +333,8 @@ public sealed class BattleSetup
         CannotFlee = CannotFlee,
         FirstBattle = FirstBattle,
         SpecialBalls = SpecialBalls,
+        EmeraldSafari = EmeraldSafari,
+        Pokeblocks = Pokeblocks,
         PlayerName = PlayerName,
         PlayerLook = PlayerLook,
         MoveHints = MoveHints,

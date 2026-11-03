@@ -1233,6 +1233,21 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
       `HOENN_FROM=look`, `LOOK_ONLY=h3l`), taken and looked at: the feeders stand as grey stone stands in the grass.
       **Still left**: Emerald's Safari battle with POKéBLOCK thrown (the Great Marsh's bait and mud stand in), a feeder's
       own picture, and part c's other leftovers above (the Pokéblock feeders are no longer among them).
+    - **Part e built** (2026-11-03; rulings, "Emerald's Safari battle"): every Safari battle in Hoenn is **Emerald's**
+      (`CoreSetup.EmeraldSafari`, set by `GameEngine.MeetWildPokemon` where `Here` is Hoenn, kept by the record file):
+      the Safari Ball, POKéBLOCK, GO NEAR and RUN (`ChoiceKind.Pokeblock`, `GoNear`); the catch factor from the catch rate
+      and the escape factor from 3, GO NEAR's table, a Pokéblock taken by the nature (curious, enthralled, ignoring it)
+      and Emerald's throw table with its bug kept (a factor equal to the step falls to 0 and never runs again), the run
+      rolled on the factor the turn began with, the ball's rate from the catch factor (`CatchCalculator.Shakes`'s
+      `safariRate`), the last ball naming the Safari Zone (`BattleCore.Special.cs`). The face: the commands' labels, the
+      case's list over them (`BattleMenuState.Pokeblocks`, `BattleEngine.SelectPokeblock`, `ModernUi.PokeblockLabels`,
+      drawn as a question's answers), the Pokéblock leaving the case as it is thrown, an empty case refused. Romanian for
+      every new line. Tests (`--filter`, run): `HoennSafariBattleTests` (10) with the battle, text and Hoenn suites listed
+      in the commit. Shots (the harness's `hoenn`, `HOENN_FROM=look`, `LOOK_ONLY=h3l2,h3l3,h3l4`), taken and looked at:
+      `h3l2_safari_battle_commands`, `h3l3_safari_battle_pokeblocks` (the list over the commands), `h3l4_safari_battle_pokeblock_taken`
+      (a Timid Pikachu turning its nose up at a red one, angry). **Still
+      left**: the Safari Fan Club's television show of Pokéblocks thrown (the battle counts them), a feeder's own picture,
+      and part c's other leftovers above.
 - [ ] H12 The Frontier island and the post-game (part a done 2026-10-26, wave 52: the Regis, the Sealed Chamber and Southern Island; `docs/mechanics/rulings.md`, "The Regis, the Sealed Chamber and Southern Island"; tests written and run with `--filter` (`HoennPostGameTests`), shots `h240` to `h268` written and not taken; part b done 2026-10-26, wave 56: the Battle Frontier island and the rooms of its grounds; part c done 2026-10-26, wave 57: Rayquaza on Sky Pillar cracked, Steven at Meteor Falls and Hoenn's species check)
     - **Built**: nine maps opened (matrices 193, 254, 256 to 259, 362, 363: Desert Ruins, Island Cave, the floor under Route
       134, the Sealed Chamber's corridor, outer room and inner room, Southern Island's beach and garden; the Ancient Tomb was

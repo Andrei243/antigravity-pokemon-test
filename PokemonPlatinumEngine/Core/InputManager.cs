@@ -65,6 +65,16 @@ public static class InputManager
     public static int PadIndex => padIndex;
 
     /// <summary>
+    /// A friend's turn in a battle (plan 13 · V20): set by the engine while a friend chooses for the partner's place, so
+    /// that the second pad (<see cref="FriendPad"/>), where one is plugged in, answers in place of the first, with the
+    /// first's buttons. The keyboard answers either turn. Off once <see cref="Reset"/>.
+    /// </summary>
+    public static bool FriendsTurn { get; set; }
+
+    /// <summary>The friend's pad: the one after the player's, round to the first.</summary>
+    public static int FriendPad => (padIndex + 1) % 4;
+
+    /// <summary>
     /// Which device the player touched last (plan 12 · Q4): what a prompt names the controls of, and the pad that
     /// plan 12 · Q24's pulses go to. Set from the keys and the pad as they are read each frame, never by a fed frame.
     /// </summary>
@@ -96,6 +106,7 @@ public static class InputManager
         lastDevice = (int)InputDevice.Keyboard;
         CaptureRequested = false;
         Captured = null;
+        FriendsTurn = false;
         stick.Reset();
     }
 
@@ -232,17 +243,19 @@ public static class InputManager
     /// <summary>The pad as raylib reports it (the thin layer: everything made of it is <see cref="InputBindings"/>'s).</summary>
     private static PadSnapshot ReadPad()
     {
-        if (!Raylib.IsGamepadAvailable(padIndex)) return PadSnapshot.None;
+        // A friend's turn in a battle reads the second pad where one is plugged in (plan 13 · V20)
+        int pad = FriendsTurn && Raylib.IsGamepadAvailable(FriendPad) ? FriendPad : padIndex;
+        if (!Raylib.IsGamepadAvailable(pad)) return PadSnapshot.None;
         uint down = 0, pressed = 0;
         foreach (var button in Enum.GetValues<GamepadButton>())
         {
             if (button == GamepadButton.Unknown) continue;
             uint bit = 1u << (int)button;
-            if (Raylib.IsGamepadButtonDown(padIndex, button)) down |= bit;
-            if (Raylib.IsGamepadButtonPressed(padIndex, button)) pressed |= bit;
+            if (Raylib.IsGamepadButtonDown(pad, button)) down |= bit;
+            if (Raylib.IsGamepadButtonPressed(pad, button)) pressed |= bit;
         }
         return new PadSnapshot(true, down, pressed,
-            Raylib.GetGamepadAxisMovement(padIndex, GamepadAxis.LeftX), Raylib.GetGamepadAxisMovement(padIndex, GamepadAxis.LeftY));
+            Raylib.GetGamepadAxisMovement(pad, GamepadAxis.LeftX), Raylib.GetGamepadAxisMovement(pad, GamepadAxis.LeftY));
     }
 
     public static bool IsActionPressed(GameAction action)

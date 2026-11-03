@@ -692,6 +692,18 @@ public interface IScriptHost
     void FrontierBattle(Party team, IReadOnlyList<Trainer> foes, Trainer? partner, bool doubles, Models.Frontier.FrontierConditions? conditions = null);
 
     /// <summary>
+    /// The friend's trainer a person of the friends' hall stands for (plan 13 · V23), read from their file; null for
+    /// anyone else. A host with no hall has none.
+    /// </summary>
+    TrainerFile? FriendOf(NPC? person) => null;
+
+    /// <summary>Who of the friends' hall has been beaten, and when (plan 13 · V23); null for a host with no hall.</summary>
+    FriendsHallState? FriendsHall => null;
+
+    /// <summary>A friend's trainer beaten (plan 13 · V23): a trainer's battle won, for the game's counters. Nothing by default.</summary>
+    void FriendWon() { }
+
+    /// <summary>
     /// How many turns the battle last fought went on for before the one that ended it (plan 01 · M11, part b; the
     /// original's <c>VAR_TOTAL_TURNS_LAST_BATTLE</c>, which a battle won on its first turn leaves at nought): what the
     /// Pokémon Mansion's maids count.

@@ -3433,3 +3433,26 @@ label No
 label Full
   say "Oh! Dad says your album in Cianwood City is full. Throw a photograph or two away there, and I'll take another."
   end
+
+# ------------------------------------------------------------------ the friends' hall (plan 13 · V23)
+
+# A friend's trainer, stood in Jubilife City's Pokémon Center upstairs from a file in trainers/ beside the save (the
+# game lays them out as the room is come to: Models/FriendsHall.cs). Our own: Platinum has no such room. They say the
+# line their file chose, battle at level 50 on copies of both teams (nothing won, paid, learnt or used up), and are
+# beaten once a day.
+script FriendsHallTrainer
+  face self player
+  friend beaten
+  if result == 1 goto Beaten
+  friend before
+  friend battle
+  if result == 0 goto Lost
+  friend after
+  end
+label Beaten
+  friend after
+  text "Your friend's trainer will be ready for another battle tomorrow."
+  end
+label Lost
+  text "Your friend's trainer was too strong this time. Try again whenever you like!"
+  end

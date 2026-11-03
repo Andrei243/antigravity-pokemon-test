@@ -873,6 +873,8 @@ public static class RegionDatabase
                 "MistraltonCave_2F", "GuidanceChamber", "ClayTunnel_1", "ClayTunnel_2", "ClayTunnel_3", "UndergroundRuins", "UndergroundRuins_Sun", "UndergroundRuins_Moon", "RockPeakChamber", "IcebergChamber", "IronChamber",
                 // Plan 22 · U10, part c: the P2 Laboratory's hall; U11: the Hidden Grotto every grotto's mouth leads into
                 "P2Laboratory", "HiddenGrotto",
+                // Plan 22 · U10, part d: the Abundant Shrine off Route 14
+                "AbundantShrine",
             }
         },
         new()
@@ -902,6 +904,10 @@ public static class RegionDatabase
                 "CamphrierTown_SouthwestHouse", "CamphrierTown_SoutheastHouse",
                 "CyllageCity_PokemonCenter_1F", "CyllageCity_Gym", "CyllageCity_NorthHouse", "CyllageCity_WestHouse",
                 "CyllageCity_BikeShop", "CyllageCity_SouthwestHouse",
+                // Plan 23 · Z3, first part: the rooms of Geosenge Town and Shalour City, its Gym and its Tower of Mastery
+                "GeosengeTown_PokemonCenter_1F", "GeosengeTown_NorthwestHouse", "GeosengeTown_EastHouse",
+                "ShalourCity_PokemonCenter_1F", "ShalourCity_Gym", "ShalourCity_TowerOfMastery",
+                "ShalourCity_SouthwestHouse", "ShalourCity_SoutheastHouse",
             }
         },
         new() { Id = Alola, Name = "Alola", Generation = 7 },

@@ -8,7 +8,7 @@ namespace PokemonPlatinumEngine.Battle.Sim;
 /// and staying in when Battle Style Shift offers a switch (plan 08 · P1); in a triple battle, a Pokémon at an end moving
 /// to the centre (plan 14 · B6); in a link battle, giving the match up (plan 28 · I4).
 /// </summary>
-public enum ChoiceKind { Fight, Switch, Item, Run, Bait, Mud, Stay, Shift, Forfeit }
+public enum ChoiceKind { Fight, Switch, Item, Run, Bait, Mud, Stay, Shift, Forfeit, Pokeblock, GoNear }
 
 /// <summary>
 /// What one Pokémon's trainer decides for a turn, as plain data: a seed and the choices made are a whole battle
@@ -92,6 +92,18 @@ public sealed record BattleChoice(Place Who, ChoiceKind Kind)
     public static BattleChoice Mud(Place who) => new(who, ChoiceKind.Mud);
 
     /// <summary>
+    /// Hoenn's Safari Zone (plan 21 · H11, part e; <see cref="CoreSetup.EmeraldSafari"/>): a Pokéblock from the case thrown
+    /// at the Pokémon (Emerald's <c>B_ACTION_SAFARI_POKEBLOCK</c>), less likely to run the more its nature likes it.
+    /// </summary>
+    public static BattleChoice Pokeblock(Place who, Models.Pokeblock block) => new(who, ChoiceKind.Pokeblock) { Block = block };
+
+    /// <summary>Hoenn's Safari Zone: GO NEAR (Emerald's <c>B_ACTION_SAFARI_GO_NEAR</c>), easier to catch and likelier to run.</summary>
+    public static BattleChoice GoNear(Place who) => new(who, ChoiceKind.GoNear);
+
+    /// <summary>With <see cref="ChoiceKind.Pokeblock"/>: the Pokéblock thrown, as it was in the case.</summary>
+    public Models.Pokeblock? Block { get; init; }
+
+    /// <summary>
     /// The answer to a <see cref="SwitchOfferRequest"/> that keeps the Pokémon in (plan 08 · P1); a
     /// <see cref="Switch"/> is the other answer. (<see cref="GoOn"/> is the core's own answer for a Pokémon held to its move.)
     /// </summary>
@@ -121,7 +133,7 @@ public sealed record BattleChoice(Place Who, ChoiceKind Kind)
 /// doesn't say (one written before, or a Vs. Recorder file's, whose setup names the format itself) isn't held to one.
 /// </summary>
 public sealed record BattleRecord(uint Seed, IReadOnlyList<IReadOnlyList<BattleChoice>> Answers, bool Inverse = false, bool OffersSwitch = false, Difficulty Difficulty = Difficulty.Normal, int RunLevelCap = 0,
-    BattleFormat? Format = null, bool CrossedExp = false, bool NoLaterMechanics = false);
+    BattleFormat? Format = null, bool CrossedExp = false, bool NoLaterMechanics = false, bool FriendPartner = false);
 
 /// <summary>What the core is waiting for before it can go on.</summary>
 public abstract record BattleRequest;

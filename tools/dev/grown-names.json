@@ -1,6 +1,9 @@
 {
   "//": "Plan 18 · W4b-2 with plan 03 · D15-A: the lines tools/dev/grown-names.mjs would change that a person decided otherwise. 'kept': lines that name a species the speaker's team no longer is but mean another Pokémon or a time before (a wild one, a find, a catch, a family raised); 'written': lines whose new species a plain swap would say badly. GrownNamesTests reads 'kept' as the lines it lets name a forebear.",
   "kept": {
+    "You beat a Mega Evolved Lucario! Grandpa, did you see that?": "the Tower of Mastery's lesson is Lucario's own Mega Evolution by its Lucarionite, which no Pokémon it grows into takes",
+    "Here, take this Lucario. It was raised at the tower, and it holds its own Mega Stone, the Lucarionite.": "the gift is a Lucario for its Lucarionite, whatever Korrina's own team is met as",
+    "{player} received a Lucario holding a Lucarionite!": "the gift is a Lucario for its Lucarionite, whatever Korrina's own team is met as",
     "I saw old Mr. Briney hurrying home with his Wingull. He looked so happy!": "Mr. Briney's own Wingull, Peeko, who is no trainer's Pokémon",
     "Wally's been so full of energy since he caught his Ralts. It's wonderful, but I do worry about him.": "the catch, told as it happened",
     "Edwin speaking. I found a Nuzleaf with the most elegant leaf. My collection grows ever finer!": "a Nuzleaf he found, not one of his team",

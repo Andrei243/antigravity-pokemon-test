@@ -43,6 +43,7 @@ public class AccessibilityTests : IDisposable
         // (plan 13 · V9 put MEDAL NOTICES between Reduce motion and Controls, and V10 the RUN TIMER after it, part b CAPTIONS and HOLD TO CONFIRM after that, and plan 12 · Q26 BOX TOOLS after those, and Q12 AUTO-BATTLE after it)
         // (and Q22's WHAT IS LEFT HERE after that)
         // (and Q21's REQUESTS after that, and Q8's three rows of seeing after it, and Q23's TIPS after those)
+        // (and plan 12 · Q15b's RETRY BATTLES, plan 10's FOLLOWER and WILD POKéMON, plan 30's MOVEMENT and plan 26's three voice rows)
         Assert.Equal(motion + 20, Array.IndexOf(rows, OptionRow.Controls));
         Assert.True(motion < Array.IndexOf(rows, OptionRow.Help));
     }

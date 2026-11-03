@@ -59,6 +59,12 @@ public sealed partial class GameFlow
     /// <summary>What the game has counted (plan 13 · V8; saved as <c>SaveData.Counters</c>).</summary>
     public Models.Statistics Statistics { get; set; } = new();
 
+    /// <summary>Who of the friends' hall has been beaten today (plan 13 · V23); saved as <c>SaveData.FriendsBeaten</c>.</summary>
+    public Models.FriendsHallState FriendsHall { get; set; } = new();
+
+    /// <summary>The friends' trainers standing in the friends' hall now, by the person who stands for them (plan 13 · V23).</summary>
+    public Dictionary<Overworld.NPC, Models.TrainerFile> FriendsStanding { get; } = new();
+
     /// <summary>The Pokémon away on Poké Jobs (plan 15 · E3; saved as <c>SaveData.Jobs</c>).</summary>
     public Models.JobBoard Jobs { get; set; } = new();
 

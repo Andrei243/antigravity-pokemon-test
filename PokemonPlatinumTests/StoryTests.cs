@@ -698,6 +698,8 @@ public class StoryTests
         started.Add(FieldScripts.TrainerPair);
         // An Egg hatching at the end of a step (plan 06 · R15)
         started.Add(FieldScripts.HatchEgg);
+        // A friend's trainer of the friends' hall, stood by the game from a file (plan 13 · V23)
+        started.Add("common." + PokemonPlatinumEngine.Models.FriendsHall.Script);
         // The follower spoken to with something found (plan 10 · F4)
         started.Add(FieldScripts.FollowerFound);
         // The Underground (plan 06 · R16a): a wall that holds something, a base's PC and the bag's way up, which the game starts
