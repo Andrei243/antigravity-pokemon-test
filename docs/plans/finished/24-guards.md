@@ -164,7 +164,7 @@ Written 2026-10-06, before any session.
 - [x] X2 Golden battles and trainer teams
 - [x] X3 Golden scripts and saves of every version
 - [x] X4 Strict loading and schemas (2026-11-03)
-- [x] X5 The damage oracle: Platinum against generation 4 (2026-11-03; two disagreements left to read against the decompilation)
+- [x] X5 The damage oracle: Platinum against generation 4 (2026-11-03; the last two disagreements read against battle_lib.c: both are the calculator's, which stages the attack stat before Guts and Hustle where the decompilation applies them first)
 - [x] X6 The oracle under the modern rules (2026-10-17, before X5, as the overview orders since one set of rules)
 
 ## Wave 48 note: the slow warp walks
