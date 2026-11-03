@@ -92,6 +92,8 @@ public partial class GameEngine
     {
         flow.FactoryScreen.Update(dt);
         if (flow.FactoryScreen.IsActive) return;
+        // The daily run's screen, opened over the battle room (plan 13 · V14), answers the room and no script
+        if (dailyScreen != null) { CloseTheDailysScreen(); return; }
         // The script that opened the screen hears what was decided
         flow.EnteredSlots = flow.FactoryScreen.Outcome.ToList();
         flow.ScriptAnswer = flow.EnteredSlots.Count > 0 ? 1 : 0;

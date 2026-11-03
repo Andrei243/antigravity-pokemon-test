@@ -183,6 +183,17 @@ public sealed class BattleFactoryChallenge
     }
 
     /// <summary>
+    /// A Single challenge at level 50 standing at the start of a round of its own (plan 13 · V14, the daily run): no
+    /// records are read or written, its streak is the round's first battle less one and no trade has been made, so the
+    /// round's trainers, rows and minds are the Factory's own for that round.
+    /// </summary>
+    internal static BattleFactoryChallenge AtRound(int round)
+    {
+        round = Math.Clamp(round, 0, DistinctRounds - 1);
+        return new BattleFactoryChallenge(FrontierChallenge.Single, false) { Round = round, Streak = round * BattlesPerRound };
+    }
+
+    /// <summary>
     /// <c>BattleFactory_Init</c> and <c>LoadTrainersAndMonsFromSave</c> for a challenge taken up again: as it was
     /// put down (<see cref="Pause"/>), its streak and trades the latest kept; null when none was.
     /// </summary>

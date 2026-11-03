@@ -5633,6 +5633,7 @@
       "streak": "ȘIRUL",
       "puzzles": "ENIGME",
       "friends": "ANTRENORI PRIETENI",
+      "daily": "RUNDA ZILEI",
       "teamsCount": "{n} păstrate",
       "gauntletBest": "Record {n}/{of}",
       "streakBest": "Record {n}",
@@ -5643,9 +5644,21 @@
       "gauntlet": "Du o echipă împotriva celor opt lideri de sală din Sinnoh, a Celor Patru și a Campioanei, unul după altul, fiecare cu echipa și nivelurile din poveste. Echipa ta e refăcută înaintea fiecărei lupte.",
       "streak": "Luptă cu antrenorii Frontierei de Luptă unul după altul, la nivelul 50, cât timp echipa ta continuă să câștige. La fiecare șapte lupte devin mai puternici.",
       "puzzles": "O luptă oprită la jumătate, cu un scop: câștigă tura aceasta, rezistă unui atac, prinde un Pokémon. Fiecare aruncare a zarului e fixată, așa că doar ideea bună merge.",
-      "friends": "Luptă cu antrenorul unui prieten la nivelul 50: un fișier de antrenor pus în dosarul trainers sau un cod lipit din clipboard. Îți poți trimite echipele în același fel."
+      "friends": "Luptă cu antrenorul unui prieten la nivelul 50: un fișier de antrenor pus în dosarul trainers sau un cod lipit din clipboard. Îți poți trimite echipele în același fel.",
+      "daily": "O rundă a Fabricii de Luptă trasă din data de azi: aceleași șase Pokémon de închiriat și aceiași șapte antrenori pentru toată lumea azi. Închiriază trei, fă un schimb după o victorie și vezi cât de departe ajungi. Se păstrează prima rundă a zilei."
     },
     "clears": "Terminată de {n} ori",
+    "daily": {
+      "today": "Azi {n}/{of}",
+      "notYet": "Nouă azi",
+      "round": "Runda {n}",
+      "fresh": "Runda de azi e încă de jucat.",
+      "played": "Runda de azi: {n} din {of} câștigate",
+      "records": "Record {best} · Toți șapte de {clears} ori · {days} zile",
+      "cleared": "Toți șapte învinși azi!",
+      "practice": "EXERSARE",
+      "trade": "SCHIMB"
+    },
     "pick": {
       "gauntlet": "Ce echipă înfruntă încercarea?",
       "streak": "Ce echipă începe un șir?",

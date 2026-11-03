@@ -172,6 +172,9 @@ public sealed class SavePaths
     public string Replays => Path.Combine(Folder, ReplaysName);
     public string Migrate => Path.Combine(Folder, MigrateName);
     public string Splits => Path.Combine(Folder, SplitsName);
+
+    /// <summary>The daily run's results (plan 13 · V14, <see cref="Models.DailyRecords"/>): each day's first run, kept on this machine and sent nowhere.</summary>
+    public string Daily => Path.Combine(Folder, Models.DailyRecords.FileName);
     public string Stream => Path.Combine(Folder, StreamName);
     public string Trainers => Path.Combine(Folder, TrainersName);
 

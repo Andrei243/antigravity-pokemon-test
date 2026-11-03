@@ -5339,6 +5339,7 @@
       "streak": "STREAK",
       "puzzles": "PUZZLES",
       "friends": "FRIENDS' TRAINERS",
+      "daily": "DAILY RUN",
       "teamsCount": "{n} kept",
       "gauntletBest": "Best {n}/{of}",
       "streakBest": "Best {n}",
@@ -5349,9 +5350,21 @@
       "gauntlet": "Take a team against Sinnoh's eight Gym Leaders, the Elite Four and the Champion, one after another, each with the team and levels they have in the story. Your team is made whole before every battle.",
       "streak": "Battle trainers of the Battle Frontier one after another at level 50 for as long as your team keeps winning. Every seven battles they grow stronger.",
       "puzzles": "A battle stopped halfway, with a goal: win this turn, outlast an attack, make a catch. Every roll is fixed, so only the right idea works.",
-      "friends": "Fight a friend's trainer at level 50: a trainer file dropped in the trainers folder, or a code pasted from the clipboard. You can send your own teams the same way."
+      "friends": "Fight a friend's trainer at level 50: a trainer file dropped in the trainers folder, or a code pasted from the clipboard. You can send your own teams the same way.",
+      "daily": "A round of the Battle Factory drawn from today's date: the same six rentals and the same seven trainers for everyone today. Rent three, trade after a win, and see how far you get. The first run of the day is the one kept."
     },
     "clears": "Cleared {n} times",
+    "daily": {
+      "today": "Today {n}/{of}",
+      "notYet": "New today",
+      "round": "Round {n}",
+      "fresh": "Today's run is still to play.",
+      "played": "Today's run: {n} of {of} won",
+      "records": "Best {best} · All seven {clears} times · {days} days",
+      "cleared": "All seven beaten today!",
+      "practice": "PRACTICE",
+      "trade": "TRADE"
+    },
     "pick": {
       "gauntlet": "Which team takes on the gauntlet?",
       "streak": "Which team starts a streak?",

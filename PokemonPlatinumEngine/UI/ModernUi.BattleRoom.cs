@@ -81,6 +81,9 @@ internal static partial class ModernUi
                 RoomEntry.Gauntlet => Text.Of("battleRoom.menu.gauntletBest", ("n", room.Records.GauntletBest), ("of", GauntletData.Default.Order.Count)),
                 RoomEntry.Streak => Text.Of("battleRoom.menu.streakBest", ("n", room.Records.StreakBest)),
                 RoomEntry.Friends => "",
+                RoomEntry.Daily => room.DailyRecords.On(room.Today) is { } day
+                    ? Text.Of("battleRoom.daily.today", ("n", day.Wins), ("of", DailyRun.Battles))
+                    : Text.Of("battleRoom.daily.notYet"),
                 _ => Text.Of("battleRoom.menu.puzzlesSolved", ("n", room.Records.Puzzles.Count(p => room.PuzzleList.Any(q => q.Id == p))), ("of", room.PuzzleList.Count))
             };
             RowValue(r, value, ink, 28);
@@ -96,6 +99,21 @@ internal static partial class ModernUi
         DrawWrapped(Text.Of($"battleRoom.blurb.{chosenKey}"), x, y + 100, wide, 30, Ink, 42);
         if (chosen == RoomEntry.Gauntlet && room.Records.GauntletClears > 0)
             Tag(x, detail.Y + detail.Height - 96, Text.Of("battleRoom.clears", ("n", room.Records.GauntletClears)), Gold, 44);
+        if (chosen == RoomEntry.Daily) DailyDetail(room, x, wide, detail);
+    }
+
+    // The daily run's detail (plan 13 · V14): the day and its round in tags, today's result or that the day is still to play, the best and the clears
+    private static void DailyDetail(BattleRoomScreen room, float x, float wide, Rectangle detail)
+    {
+        float y = detail.Y + detail.Height - 300;
+        UiShapes.Fill(new Rectangle(x, y, wide, 3), 1.5f, Rule);
+        float w = Tag(x, y + 28, Words.Date(room.Today), Blue, 40);
+        Tag(x + w + 16, y + 28, Text.Of("battleRoom.daily.round", ("n", DailyRun.RoundFor(room.Today) + 1)), Frame, 40);
+        var day = room.DailyRecords.On(room.Today);
+        string line = day == null ? Text.Of("battleRoom.daily.fresh") : Text.Of("battleRoom.daily.played", ("n", day.Wins), ("of", DailyRun.Battles));
+        UiFonts.Draw(line, x, y + 96, 32, day == null ? Green : Ink, UiWeight.ExtraBold);
+        string records = Text.Of("battleRoom.daily.records", ("best", room.DailyRecords.Best), ("clears", room.DailyRecords.Clears), ("days", room.DailyRecords.Days.Count));
+        UiFonts.Draw(records, x, y + 148, 28, Muted, UiWeight.Bold);
     }
 
     private static string Key(RoomEntry entry) => entry switch
@@ -104,6 +122,7 @@ internal static partial class ModernUi
         RoomEntry.Gauntlet => "gauntlet",
         RoomEntry.Streak => "streak",
         RoomEntry.Friends => "friends",
+        RoomEntry.Daily => "daily",
         _ => "puzzles"
     };
 
@@ -210,6 +229,33 @@ internal static partial class ModernUi
             UiShapes.Fill(new Rectangle(x, y + 156, wide, 3), 1.5f, Rule);
             DrawWrapped(Text.Of(room.PuzzleSolved ? "battleRoom.puzzle.solvedBlurb" : puzzle.HintKey), x, y + 184, wide, 30, Ink, 42);
             rows = new[] { Text.Of("battleRoom.puzzle.again"), Text.Of("battleRoom.puzzle.back") };
+        }
+        else if (room.Daily is { } daily)
+        {
+            ScreenTitle(Text.Of("battleRoom.menu.daily"));
+            string heading = daily.Cleared ? Text.Of("battleRoom.daily.cleared")
+                : daily.Over ? Text.Of("battleRoom.run.over", ("n", daily.Wins))
+                : Text.Of("battleRoom.run.won", ("n", daily.Wins));
+            UiFonts.Draw(heading, x, y, 52, daily.Cleared ? Gold : daily.Over ? Red : Ink, UiWeight.Black);
+            float w = Tag(x, y + 88, Text.Of("battleRoom.run.progress", ("n", daily.Wins), ("of", DailyRun.Battles)), Blue, 40);
+            if (!daily.Counts) w += 16 + Tag(x + w + 16, y + 88, Text.Of("battleRoom.daily.practice"), Frame, 40);
+            if (room.NewBest && daily.Over) Tag(x + w + 16, y + 88, Text.Of("battleRoom.run.newBest"), Gold, 40);
+            UiShapes.Fill(new Rectangle(x, y + 152, wide, 3), 1.5f, Rule);
+            Label(Text.Of("battleRoom.run.team"), x, y + 176);
+            IconRow(daily.Factory.Team.Select(r => (r.Species, (string?)null, daily.Factory.Level)), x - 8, y + 204, wide);
+            if (!daily.Over)
+            {
+                var next = daily.NextTrainer;
+                UiFonts.Draw(Text.Of("battleRoom.run.next", ("who", Trainer.ClassName(next.Class) + " " + next.Name)), x, y + 360, 32, Ink, UiWeight.ExtraBold);
+                rows = new[] { Text.Of("battleRoom.run.continue"), Text.Of("battleRoom.daily.trade"), Text.Of("battleRoom.run.giveUp") };
+            }
+            else rows = new[] { Text.Of("battleRoom.run.ok") };
+            for (int i = 0; i < rows.Length; i++)
+            {
+                var row = new Rectangle(r.X + 40, r.Y + r.Height - 40 - (rows.Length - i) * RowPitch, r.Width - 80, RowHeight);
+                ListRow(row, i == room.Cursor, rows[i], nameX: 44, enabled: !(rows.Length == 3 && i == 1 && !daily.CanTrade));
+            }
+            return;
         }
         else if (room.Run is { } run)
         {
