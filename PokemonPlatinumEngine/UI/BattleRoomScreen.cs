@@ -12,7 +12,7 @@ namespace PokemonPlatinumEngine.UI;
 public enum RoomPage { Menu, PickTeam, Puzzles, Between, RunOver, PuzzleOver }
 
 /// <summary>The battle room's menu, in its order.</summary>
-public enum RoomEntry { Teams, Gauntlet, Streak, Puzzles, Friends }
+public enum RoomEntry { Teams, Gauntlet, Streak, Puzzles, Friends, Daily }
 
 /// <summary>What the battle room asks the engine for, handed over once (<see cref="BattleRoomScreen.TakeRequest"/>).</summary>
 public abstract record RoomRequest;
@@ -22,6 +22,10 @@ public sealed record BeginRun(RoomChallenge Kind, int Team) : RoomRequest;
 public sealed record NextBattle : RoomRequest;
 public sealed record GiveUpRun : RoomRequest;
 public sealed record PlayPuzzle(string Id) : RoomRequest;
+/// <summary>The day's run begun (plan 13 · V14): its six on offer to be rented.</summary>
+public sealed record BeginDaily : RoomRequest;
+/// <summary>A trade offered after a win of the daily run.</summary>
+public sealed record TradeDaily : RoomRequest;
 
 /// <summary>
 /// The battle room (plan 13 · V13, V26; style guide, "Opening and title screen" and "Menu screens", "The battle room"): the
@@ -54,6 +58,15 @@ public sealed class BattleRoomScreen
 
     /// <summary>The run under way or just over, and whether it ended on a new best.</summary>
     public RoomRun? Run { get; private set; }
+
+    /// <summary>The daily run under way or just over (plan 13 · V14); null outside one.</summary>
+    public DailyRun? Daily { get; private set; }
+
+    /// <summary>This machine's daily results, as the engine hands them over.</summary>
+    public DailyRecords DailyRecords { get; private set; } = new();
+
+    /// <summary>Today as the daily run counts days, as the engine hands it over.</summary>
+    public DateTime Today { get; private set; } = DailyRun.Today();
     public bool NewBest { get; private set; }
 
     /// <summary>The puzzle just played and whether it was solved.</summary>
@@ -67,12 +80,15 @@ public sealed class BattleRoomScreen
 
     public static int VisibleRows => ModernUi.RowsIn(ModernUi.ContentBottom - ModernUi.ContentTop);
 
-    public void Open(IReadOnlyList<BuiltTeam> teams, IReadOnlyList<PuzzleFile> puzzles, BattleRoomRecords records)
+    public void Open(IReadOnlyList<BuiltTeam> teams, IReadOnlyList<PuzzleFile> puzzles, BattleRoomRecords records, DailyRecords? daily = null, DateTime? today = null)
     {
         Teams = teams;
         PuzzleList = puzzles;
         Records = records;
+        DailyRecords = daily ?? new DailyRecords();
+        Today = (today ?? DailyRun.Today()).Date;
         Run = null;
+        Daily = null;
         request = null;
         Left = false;
         Show(RoomPage.Menu, 0);
@@ -97,6 +113,26 @@ public sealed class BattleRoomScreen
         IsActive = true;
         age = AppearTime;
         Show(run.Over ? RoomPage.RunOver : RoomPage.Between, 0);
+    }
+
+    /// <summary>A battle of the daily run is over, or the run was given up: between battles if it goes on, or its end.</summary>
+    public void AfterDailyBattle(DailyRun run, bool newBest)
+    {
+        Run = null;
+        Daily = run;
+        NewBest = newBest;
+        IsActive = true;
+        age = AppearTime;
+        Show(run.Over ? RoomPage.RunOver : RoomPage.Between, 0);
+    }
+
+    /// <summary>The day's rentals were put back without three chosen: the room's menu again, on the daily row.</summary>
+    public void AfterDailyRentals()
+    {
+        Daily = null;
+        IsActive = true;
+        age = AppearTime;
+        Show(RoomPage.Menu, (int)RoomEntry.Daily);
     }
 
     /// <summary>A puzzle's battle is over, solved or not.</summary>
@@ -124,7 +160,7 @@ public sealed class BattleRoomScreen
         RoomPage.Menu => Entries.Length,
         RoomPage.PickTeam => Math.Max(1, Teams.Count),
         RoomPage.Puzzles => PuzzleList.Count,
-        RoomPage.Between => 2,
+        RoomPage.Between => Daily != null ? 3 : 2,
         RoomPage.PuzzleOver => 2,
         _ => 1
     };
@@ -153,6 +189,7 @@ public sealed class BattleRoomScreen
                     case RoomEntry.Friends: Ask(new OpenFriends()); break;
                     case RoomEntry.Gauntlet: PickFor(RoomChallenge.Gauntlet); break;
                     case RoomEntry.Streak: PickFor(RoomChallenge.Streak); break;
+                    case RoomEntry.Daily: Ask(new BeginDaily()); break;
                     case RoomEntry.Puzzles:
                         AudioManager.PlaySound("select");
                         Show(RoomPage.Puzzles, 0);
@@ -166,12 +203,23 @@ public sealed class BattleRoomScreen
             case RoomPage.Puzzles:
                 if (Cursor < PuzzleList.Count) Ask(new PlayPuzzle(PuzzleList[Cursor].Id));
                 break;
+            case RoomPage.Between when Daily != null:
+                // NEXT BATTLE, TRADE (once after each win), GIVE UP
+                if (Cursor == 1 && !Daily.CanTrade) { AudioManager.PlaySound("error"); return; }
+                Ask(Cursor == 0 ? new NextBattle() : Cursor == 1 ? new TradeDaily() : new GiveUpRun());
+                break;
             case RoomPage.Between:
                 Ask(Cursor == 0 ? new NextBattle() : new GiveUpRun());
                 break;
             case RoomPage.RunOver:
                 AudioManager.PlaySound("select");
                 Run = null;
+                if (Daily != null)
+                {
+                    Daily = null;
+                    Show(RoomPage.Menu, (int)RoomEntry.Daily);
+                    break;
+                }
                 Show(RoomPage.Menu, (int)(picking == RoomChallenge.Gauntlet ? RoomEntry.Gauntlet : RoomEntry.Streak));
                 break;
             case RoomPage.PuzzleOver:

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using PokemonPlatinumEngine.Audio;
@@ -30,8 +31,17 @@ public partial class GameEngine
     private TrainerFile? roomFriend;
     private BuiltTeam? roomFriendTeam;
 
+    /// <summary>The daily run under way (plan 13 · V14), between its battles and in them; null outside one.</summary>
+    private DailyRun? dailyRun;
+
+    /// <summary>This machine's daily results (<c>daily.json</c>), read as the room opens.</summary>
+    private DailyRecords dailyRecords = new();
+
+    /// <summary>What the Factory's screen is open for in the room: the day's six to rent, or a trade; null when the field's Factory has it.</summary>
+    private FactoryScreenMode? dailyScreen;
+
     /// <summary>A battle of the battle room is being fought (a run's or a puzzle's).</summary>
-    internal bool InRoomBattle => flow.State == GameState.Battle && (roomRun != null || roomPuzzle != null || roomFriend != null) && roomBattle;
+    internal bool InRoomBattle => flow.State == GameState.Battle && (roomRun != null || roomPuzzle != null || roomFriend != null || dailyRun != null) && roomBattle;
     private bool roomBattle;
 
     private string TeamsFile => System.IO.Path.Combine(SavePaths.Current.Folder, BuiltTeams.FileName);
@@ -44,7 +54,10 @@ public partial class GameEngine
         roomFriend = null;
         roomFriendTeam = null;
         roomBattle = false;
-        flow.BattleRoomScreen.Open(BuiltTeams.Read(TeamsFile).Teams, Puzzles.All, Settings.BattleRoom);
+        dailyRun = null;
+        dailyScreen = null;
+        dailyRecords = DailyRecords.Read(SavePaths.Current.Daily);
+        flow.BattleRoomScreen.Open(BuiltTeams.Read(TeamsFile).Teams, Puzzles.All, Settings.BattleRoom, dailyRecords, DailyRun.Today());
         flow.State = GameState.BattleRoom;
     }
 
@@ -71,8 +84,20 @@ public partial class GameEngine
                 roomRun = new RoomRun(begin.Kind, room.Teams[begin.Team], (uint)Dice.Shared.Next());
                 StartRoomBattle();
                 break;
+            case BeginDaily:
+                BeginTheDailyRun();
+                break;
+            case TradeDaily when dailyRun is { CanTrade: true } daily:
+                OpenTheDailysScreen(FactoryScreenMode.Trade, daily);
+                break;
             case NextBattle:
                 StartRoomBattle();
+                break;
+            case GiveUpRun when dailyRun != null:
+                dailyRun.Lose();
+                bool dailyBest = KeepTheDay(dailyRun);
+                room.AfterDailyBattle(dailyRun, dailyBest);
+                dailyRun = null;
                 break;
             case GiveUpRun when roomRun != null:
                 roomRun.Lose();
@@ -98,7 +123,74 @@ public partial class GameEngine
         roomPuzzle = null;
         roomFriend = null;
         roomFriendTeam = null;
+        dailyRun = null;
+        dailyScreen = null;
         flow.State = GameState.Title;
+    }
+
+    /// <summary>
+    /// The day's run (plan 13 · V14): drawn from today's seed, counted only when the day has no result yet, its six on
+    /// offer on the Factory's own screen. Nothing is kept until three are rented, so the six may be looked at and put back.
+    /// </summary>
+    private void BeginTheDailyRun()
+    {
+        var today = DailyRun.Today();
+        dailyRun = DailyRun.For(today, counts: !dailyRecords.Played(today));
+        OpenTheDailysScreen(FactoryScreenMode.Rent, dailyRun);
+    }
+
+    private void OpenTheDailysScreen(FactoryScreenMode mode, DailyRun daily)
+    {
+        var factory = daily.Factory;
+        foreach (var rental in factory.Offer.Concat(factory.Team).Concat(factory.Foe))
+        {
+            flow.WantModel(rental.Species);
+            Graphics.PokemonSprites.Request(rental.Species);
+        }
+        dailyScreen = mode;
+        if (mode == FactoryScreenMode.Rent) flow.FactoryScreen.OpenToRent(factory.Offer.Select(factory.Build).ToList(), Models.Frontier.BattleFactoryChallenge.TeamSize);
+        else
+        {
+            // The trainer just beaten is the one before the battle to come
+            var beaten = FrontierDatabase.Trainer(factory.Trainers[Math.Max(0, factory.Battle - 1)]);
+            flow.FactoryScreen.OpenToTrade(factory.Team.Select(factory.Build).ToList(), factory.Foe.Select(factory.Build).ToList(), beaten.Name);
+        }
+        flow.State = GameState.FactoryRentals;
+    }
+
+    /// <summary>The Factory's screen closed over the room: three rented and the first battle, a trade made or not, or the six put back.</summary>
+    private void CloseTheDailysScreen()
+    {
+        var outcome = flow.FactoryScreen.Outcome;
+        var mode = dailyScreen;
+        dailyScreen = null;
+        flow.State = GameState.BattleRoom;
+        if (dailyRun is not { } daily) { flow.BattleRoomScreen.AfterDailyRentals(); return; }
+        if (mode == FactoryScreenMode.Rent)
+        {
+            if (outcome.Count != Models.Frontier.BattleFactoryChallenge.TeamSize)
+            {
+                dailyRun = null;
+                flow.BattleRoomScreen.AfterDailyRentals();
+                return;
+            }
+            daily.Rent(outcome);
+            // The day is spent from here: a run left half way is kept where it stood
+            KeepTheDay(daily);
+            StartRoomBattle();
+            return;
+        }
+        if (outcome.Count == 2) daily.Trade(outcome[0], outcome[1]);
+        flow.BattleRoomScreen.AfterDailyBattle(daily, false);
+    }
+
+    /// <summary>The day's result written as it stands; true on a new best. A practice run writes nothing.</summary>
+    private bool KeepTheDay(DailyRun daily)
+    {
+        if (!daily.Counts) return false;
+        bool best = dailyRecords.Keep(daily);
+        DailyRecords.Write(SavePaths.Current.Daily, dailyRecords);
+        return best;
     }
 
     private void UpdateTeamBuilder(float dt)
@@ -154,6 +246,27 @@ public partial class GameEngine
                 Pokedex = new Pokedex(),
                 Trainers = new List<Trainer> { foe },
                 Random = new BattleRandom((uint)Dice.Shared.Next()),
+                Rules = Ruleset.Modern,
+                Conditions = new BattleConditions { Terrain = BattleTerrain.Building },
+                Frontier = true,
+                PlayerName = PlayerIdentity.Name,
+                MoveHints = MoveHintsOn,
+                TrainerLines = TrainerLinesOn,
+                Scene = Settings.BattleScene
+            };
+        }
+        else if (dailyRun is { Rented: true } daily)
+        {
+            daily.Ready();
+            foe = daily.NextFoe();
+            setup = new BattleSetup
+            {
+                PlayerParty = daily.PlayerParty(),
+                Inventory = new Inventory(),
+                Pokedex = new Pokedex(),
+                Trainers = new List<Trainer> { foe },
+                // The day's battle on the day's generator: the same battle for everyone who answers it the same
+                Random = new BattleRandom(daily.BattleSeed),
                 Rules = Ruleset.Modern,
                 Conditions = new BattleConditions { Terrain = BattleTerrain.Building },
                 Frontier = true,
@@ -236,6 +349,15 @@ public partial class GameEngine
             StartTransition(GameState.BattleRoom, () => LeaveTheRoomsBattle(() => flow.BattleRoomScreen.AfterFriend(BuiltTeams.Read(TeamsFile).Teams)));
             return;
         }
+        if (dailyRun is { } daily)
+        {
+            if (battle.Result == BattleResult.PlayerVictory) daily.Won();
+            else daily.Lose();
+            bool dayBest = KeepTheDay(daily);
+            if (daily.Over) dailyRun = null;
+            StartTransition(GameState.BattleRoom, () => LeaveTheRoomsBattle(() => flow.BattleRoomScreen.AfterDailyBattle(daily, dayBest)));
+            return;
+        }
         if (roomRun is { } run)
         {
             if (battle.Result == BattleResult.PlayerVictory) run.Won();
@@ -277,6 +399,18 @@ public partial class GameEngine
             game.roomPuzzle = puzzle;
             game.StartRoomBattle();
         }
+
+        /// <summary>The daily run begun, as the room's DAILY RUN does, but on a day of the tool's (the harness's fixed date by default) and with its six on offer.</summary>
+        public void BeginDailyRun(DailyRun daily)
+        {
+            game.roomRun = null;
+            game.roomPuzzle = null;
+            game.dailyRun = daily;
+            game.OpenTheDailysScreen(FactoryScreenMode.Rent, daily);
+        }
+
+        /// <summary>The daily run under way, if any.</summary>
+        public DailyRun? DailyRun => game.dailyRun;
 
         /// <summary>Whether a battle of the room is being fought.</summary>
         public bool InRoomBattle => game.roomBattle;

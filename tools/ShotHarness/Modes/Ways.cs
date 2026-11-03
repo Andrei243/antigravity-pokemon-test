@@ -9,6 +9,8 @@ partial class Harness
     {
         // WAYS_ONLY=room: the battle room alone (plan 13 · V13, V26), which begins no run of its own
         if (Environment.GetEnvironmentVariable("WAYS_ONLY") == "room") { BattleRoomMode(); return; }
+        // WAYS_ONLY=daily: the daily run alone (plan 13 · V14)
+        if (Environment.GetEnvironmentVariable("WAYS_ONLY") == "daily") { DailyRunMode(); return; }
         LevelCapMode();
         RoarkMode();
         NuzlockeMode();
@@ -19,6 +21,7 @@ partial class Harness
         TimerMode();
         NewGamePlusMode();
         BattleRoomMode();
+        DailyRunMode();
     }
 
     // V4, the Nuzlocke: wy_nuzlocke_ball_refused (a second wild Pokémon met on Route 201, whose catch the run has had, and
