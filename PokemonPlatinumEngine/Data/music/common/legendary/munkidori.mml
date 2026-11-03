@@ -1,11 +1,14 @@
 # Battle against Munkidori (the Retainer Pokémon, the toxic monkey of the Loyal Three): the Loyal Three's cocky
 # long-short swing and strutting bass, slipped through by a quick clarinet and a sly pulse in A minor.
 # Original composition for this game.
+# Arranged again for the modern sound (plan 31 · MU7) on the instruments of Paldea: a string orchestra, a nylon guitar strumming the bass's eighths and a wood block clacking like castanets.
 title Battle! Munkidori
 tempo 176
 meter 4/4
 lowhptempo 1.07
 reverb 0.22
+sound modern
+room hall 1.8
 
 track lead clarinet lowhp=sawlead vol=0.92 pan=0 rev=0.22
   o5 e8. d16 c8. o4 b16 a8. g+16 a4 | o4 b8. o5 c16 d8. e16 g+4 r4 |
@@ -21,7 +24,7 @@ track pulse pulse vol=0.42 pan=-0.3 rev=0.16
   o4 r8. c16 r8. e16 r8. c16 r8. e16 | o4 r8. g16 r8. b16 r8. g16 r8. b16 | o4 r8. a16 r8. o5 c16 o4 r8. a16 r8. o5 c16 | o4 r8. g+16 r8. b16 r8. g+16 r8. b16 |
   o4 r8. f16 r8. a16 r8. f16 r8. a16 | o4 r8. c16 r8. e16 r8. c16 r8. e16 | o4 r8. a16 r8. o5 c16 o4 r8. a16 r8. o5 c16 | o4 r8. g+16 r8. b16 r8. g+16 r8. b16 |
 
-track strings strings unless=lowhp vol=0.3 pan=0.3 rev=0.32
+track strings orchestra unless=lowhp vol=0.3 pan=0.3 rev=0.32
   r1 | r1 |
   L o4 (a >c e)1 | o4 (a >c e)1 | o4 (a >c f)1 | o4 (g+ b >e)1 |
   o4 (a >d f)1 | o4 (a >c e)1 | o4 (a >c f)1 | o4 (g+ b >e)1 |
@@ -41,6 +44,11 @@ track drums kit vol=0.54 rev=0.12
 
 track shaker kit vol=0.42 pan=0.2 rev=0.1
   r1 | r1 | L [ v66 k8. v40 k16 v66 k8. v40 k16 v66 k8. v40 k16 v66 k8. v40 k16 | ]16
+
+# Paldea: a nylon guitar strumming on the bass's eighths, a wood block clacking like castanets
+track bassguitar nylonguitar unless=lowhp double=bass beats=8 shift=24 vol=0.18 pan=-0.3 rev=0.24
+track castanets kit vol=0.3 pan=0.3 rev=0.16
+  r1 | r1 | L [ v90 w16 v55 w16 v60 w16 r16 r8 v90 w8 r4 v90 w16 v55 w16 v60 w16 r16 | ]16
 
 # Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
 track alarm pulse only=lowhp vol=0.54 pan=0.1 rev=0.08

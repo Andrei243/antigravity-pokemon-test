@@ -81,7 +81,9 @@ public class ModernMixTests
         foreach (var id in new[] { "Sinnoh", "Kanto", "Johto", "Hoenn", "Unova" })
             Assert.Null(RegionFiles.Load(id)?.MusicSound);
         Assert.Equal(SynthSound.Modern, RegionFiles.Load("Kalos")?.MusicSound);
-        Assert.All(MusicLibrary.All, s => Assert.Equal(s.Id.StartsWith("kalos/") ? SynthSound.Modern : SynthSound.Ds, s.PlaysIn));
+        // The later legendaries' themes of common/legendary name the modern sound in their own headers (MU7)
+        Assert.All(MusicLibrary.All, s => Assert.Equal(s.Id.StartsWith("kalos/") || ModernMusicTests.IsLaterLegendary(s.Id)
+            ? SynthSound.Modern : SynthSound.Ds, s.PlaysIn));
         Assert.Contains(MusicLibrary.All, s => s.Id.StartsWith("kalos/"));
     }
 

@@ -1,11 +1,14 @@
 # Battle against Pecharunt (the Subjugation Pokémon of the poisoned mochi): a sugary accordion tune with chromatic
 # slips over an oom-pah of pizzicato strings and a hollow pad, sweet and sinister in C minor. Original composition for
 # this game.
+# Arranged again for the modern sound (plan 31 · MU7) on the instruments of Paldea: a string orchestra, a nylon guitar strumming the bass's eighths and a wood block clacking like castanets.
 title Battle! Pecharunt
 tempo 150
 meter 4/4
 lowhptempo 1.09
 reverb 0.3
+sound modern
+room hall 1.8
 
 track lead accordion lowhp=sawlead vol=0.95 pan=0 rev=0.26
   o5 c4 o4 b8 o5 c8 e-4 d4 | o5 c4 e-4 g4 r4 |
@@ -41,6 +44,11 @@ track drums kit vol=0.56 rev=0.18
 
 track hats kit vol=0.42 pan=0.2 rev=0.12
   r1 | r1 | L [ v58 h8 v34 h8 v58 h8 v34 h8 v58 h8 v34 h8 v66 o8 v34 h8 | ]16
+
+# Paldea: a nylon guitar strumming on the bass's eighths, a wood block clacking like castanets
+track bassguitar nylonguitar unless=lowhp double=bass beats=8 shift=24 vol=0.18 pan=-0.3 rev=0.24
+track castanets kit vol=0.3 pan=0.3 rev=0.16
+  r1 | r1 | L [ v90 w16 v55 w16 v60 w16 r16 r8 v90 w8 r4 v90 w16 v55 w16 v60 w16 r16 | ]16
 
 # Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
 track alarm pulse only=lowhp vol=0.58 pan=0.1 rev=0.08

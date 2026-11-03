@@ -1,10 +1,13 @@
 # Battle against Ting-Lu (the Ruinous Pokémon of the vessel): the Treasures of Ruin's four-note creep, down and back,
 # ground out by tuba and timpani under a heavy horn in C minor, half time. Original composition for this game.
+# Arranged again for the modern sound (plan 31 · MU7) on the instruments of Paldea: a string orchestra, a nylon guitar strumming the choir's chords and a wood block clacking like castanets.
 title Battle! Ting-Lu
 tempo 144
 meter 4/4
 lowhptempo 1.09
 reverb 0.3
+sound modern
+room hall 1.8
 
 track lead horn lowhp=sawlead vol=0.86 pan=0 rev=0.28
   r1 | o5 c4 o4 b4 a-4 o5 c4 |
@@ -13,7 +16,7 @@ track lead horn lowhp=sawlead vol=0.86 pan=0 rev=0.28
   o5 g2. f8 e-8 | o5 e-2. f8 e-8 | o5 c4. d8 e-4 f4 | o4 g2 b4 o5 d4 |
   o5 c4 e-4 a-4 g-4 | o5 f2 e-4 d-4 | o5 c4 o4 a-4 f4 a-4 | o4 b2 o5 f4 d4 |
 
-track counter strings vol=0.48 pan=-0.25 rev=0.3
+track counter orchestra vol=0.48 pan=-0.25 rev=0.3
   r1 | r1 |
   L o4 g1 | o4 g1 | o4 e-1 | o4 e-2 g2 |
   o4 a-1 | o4 g1 | o4 f1 | o4 b1 |
@@ -47,6 +50,11 @@ track drums kit vol=0.56 rev=0.2
 
 track hats kit vol=0.36 pan=0.2 rev=0.1
   r1 | r1 | L v60 [ h8 v35 h8 v60 h8 v35 h8 v60 h8 v35 h8 v70 o8 v35 h8 v60 | ]16
+
+# Paldea: a nylon guitar strumming the choir's chords, a wood block clacking like castanets
+track chordguitar nylonguitar unless=lowhp double=choir vol=0.2 pan=-0.3 rev=0.3
+track castanets kit vol=0.3 pan=0.3 rev=0.16
+  r1 | r1 | L [ v90 w16 v55 w16 v60 w16 r16 r8 v90 w8 r4 v90 w16 v55 w16 v60 w16 r16 | ]16
 
 # Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
 track alarm pulse only=lowhp vol=0.56 pan=0.1 rev=0.08

@@ -1,11 +1,14 @@
 # Battle against Zeraora (the thunderclap, lightning on legs): crackling stutters, then a breakneck A-minor square
 # lead of sixteenth bursts and repeated sparks over brass stabs, a pumping bass and hard drums. Original composition
 # for this game.
+# Arranged again for the modern sound (plan 31 · MU7) on the instruments of Alola: a steel drum doubling the tune, an ukulele chopping on the bass's eighths, congas and bongos.
 title Battle! Zeraora
 tempo 196
 meter 4/4
 lowhptempo 1.06
 reverb 0.18
+sound modern
+room hall 1.6
 
 track lead square lowhp=sawlead vol=0.9 pan=0 rev=0.16
   o5 a16 r16 a16 r16 a16 a16 r8 o6 a16 r16 a16 r16 a16 a16 r8 | o5 g+16 r16 g+16 r16 g+16 g+16 r8 b16 o6 d16 e16 g+16 b4 |
@@ -41,6 +44,12 @@ track drums kit vol=0.46 rev=0.08
 
 track hats kit vol=0.56 pan=0.15 rev=0.06
   r1 | r1 | L [ v70 h16 v40 h16 v60 o16 v40 h16 v70 h16 v40 h16 v60 o16 v40 h16 v70 h16 v40 h16 v60 o16 v40 h16 v70 h16 v40 h16 v60 o16 v40 h16 | ]16
+
+# Alola: a steel drum doubling the tune, an ukulele on the bass's eighths, hand drums
+track tunesteel steeldrum unless=lowhp double=lead vol=0.13 pan=-0.35 rev=0.3
+track bassukulele ukulele double=bass beats=8 shift=24 vol=0.16 pan=0.35 rev=0.22
+track handdrums kit vol=0.34 pan=-0.15 rev=0.14
+  r1 | r1 | L [ v80 g8 v50 g8 v90 d8 v50 g8 v80 g8 v50 g8 v90 d8 v60 n16 n16 | ]16
 
 # Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
 track alarm pulse only=lowhp vol=0.4 pan=0.1 rev=0.08

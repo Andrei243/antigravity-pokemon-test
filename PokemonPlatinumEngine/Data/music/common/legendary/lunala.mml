@@ -1,11 +1,14 @@
 # Battle against Lunala (the moone bird, the grown light at midnight): a harp turning under a choir, then the light
 # line's arpeggio in full on organ, rising in triplets through C-sharp minor and folding back, dark and hushed.
 # Original composition for this game.
+# Arranged again for the modern sound (plan 31 · MU7) on the instruments of Alola: a steel drum doubling the tune, an ukulele chopping on the bass's eighths, congas and bongos.
 title Battle! Lunala
 tempo 164
 meter 4/4
 lowhptempo 1.08
 reverb 0.4
+sound modern
+room hall 1.6
 
 track lead organ lowhp=sawlead vol=0.92 pan=0 rev=0.38
   o5 c+2 e2 | o5 d+2 c4 o4 g+4 |
@@ -21,7 +24,7 @@ track counter clarinet vol=0.42 pan=-0.3 rev=0.4
   o4 c+2 e2 | o4 c+2 f+2 | o4 e2 g+2 | o4 g+2 d+2 |
   o4 a2 e2 | o4 f+2 a2 | o4 a2 f+2 | o4 g+2 o5 c2 |
 
-track harp harp vol=0.36 pan=0.35 rev=0.45
+track harp ukulele vol=0.36 pan=0.35 rev=0.45
   [ o4 c+8 g+8 o5 c+8 e8 ]2 | [ o3 g+8 o4 d+8 g+8 o5 c8 ]2 |
   L [ o4 c+8 g+8 o5 c+8 e8 ]2 | [ o3 a8 o4 e8 a8 o5 c+8 ]2 | [ o3 f+8 o4 c+8 f+8 a8 ]2 | [ o3 g+8 o4 d+8 g+8 o5 c8 ]2 |
   [ o4 c+8 g+8 o5 c+8 e8 ]2 | [ o3 e8 b8 o4 e8 g+8 ]2 | [ o3 b8 o4 f+8 b8 o5 d+8 ]2 | [ o3 g+8 o4 d+8 g+8 o5 c8 ]2 |
@@ -47,6 +50,12 @@ track drums kit vol=0.46 rev=0.2
 
 track shaker kit vol=0.6 pan=0.2 rev=0.12
   r1 | r1 | L [ v65 k16 v35 k16 k16 k16 v65 k16 v35 k16 k16 k16 v65 k16 v35 k16 k16 k16 v65 k16 v35 k16 k16 k16 | ]16
+
+# Alola: a steel drum doubling the tune, an ukulele on the bass's eighths, hand drums
+track tunesteel steeldrum unless=lowhp double=lead vol=0.13 pan=-0.35 rev=0.3
+track bassukulele ukulele double=bass beats=8 shift=24 vol=0.16 pan=0.35 rev=0.22
+track handdrums kit vol=0.34 pan=-0.15 rev=0.14
+  r1 | r1 | L [ v80 g8 v50 g8 v90 d8 v50 g8 v80 g8 v50 g8 v90 d8 v60 n16 n16 | ]16
 
 # Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
 track alarm pulse only=lowhp vol=0.42 pan=0.1 rev=0.08

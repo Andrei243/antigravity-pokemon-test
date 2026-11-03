@@ -1,11 +1,14 @@
 # Battle against Necrozma (the prism, devourer of light): blinding stabs and a chromatic splinter, then the light
 # line's arpeggio broken into shards on a saw lead, F minor torn by a Phrygian G-flat, over a choir and a 3-3-2
 # drive. Original composition for this game.
+# Arranged again for the modern sound (plan 31 · MU7) on the instruments of Alola: a steel drum doubling the tune, an ukulele chopping on the bass's eighths, congas and bongos.
 title Battle! Necrozma
 tempo 184
 meter 4/4
 lowhptempo 1.07
 reverb 0.26
+sound modern
+room hall 1.6
 
 track lead sawlead lowhp=square vol=0.92 pan=0 rev=0.22
   o5 (f a- >c)8 r8 r8 (f a- >c)8 r4 (f a- >c)4 | o5 (e g >c)8 r8 r8 (e g >c)8 r4 o6 c16 o5 b16 b-16 a16 |
@@ -48,6 +51,12 @@ track drums kit vol=0.44 rev=0.12
 
 track hats kit vol=0.6 pan=0.15 rev=0.08
   r1 | r1 | L [ v70 h16 v40 h16 h16 v70 h16 v70 h16 v40 h16 h16 v70 o16 v70 h16 v40 h16 h16 v70 h16 v70 h16 v40 h16 h16 v70 o16 | ]16
+
+# Alola: a steel drum doubling the tune, an ukulele on the bass's eighths, hand drums
+track tunesteel steeldrum unless=lowhp double=lead vol=0.13 pan=-0.35 rev=0.3
+track bassukulele ukulele double=bass beats=8 shift=24 vol=0.16 pan=0.35 rev=0.22
+track handdrums kit vol=0.34 pan=-0.15 rev=0.14
+  r1 | r1 | L [ v80 g8 v50 g8 v90 d8 v50 g8 v80 g8 v50 g8 v90 d8 v60 n16 n16 | ]16
 
 # Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
 track alarm pulse only=lowhp vol=0.4 pan=0.1 rev=0.08

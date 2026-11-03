@@ -1,13 +1,16 @@
 # Battle against Meltan (the hex-nut mythical, a little drop of liquid metal): marimba bouncing on octaves like a nut
 # on a bolt, a three-note twist to finish each bounce, bells ringing on the off beats, all in a bright C major.
 # Original composition for this game.
+# Arranged again for the modern sound (plan 31 · MU7) on the instruments of Alola: a steel drum doubling the tune, an ukulele chopping on the bass's eighths, congas and bongos.
 title Battle! Meltan
 tempo 154
 meter 4/4
 lowhptempo 1.07
 reverb 0.24
+sound modern
+room hall 1.6
 
-track lead marimba lowhp=sawlead vol=0.92 pan=0 rev=0.22
+track lead steeldrum lowhp=sawlead vol=0.92 pan=0 rev=0.22
   o4 g8 o5 g8 o4 g8 o5 g8 o4 g8 o5 g8 o4 g8 o5 g8 | o5 d8 o6 d8 o5 b8 o6 b8 o5 g4 r4 |
   L o5 c8 o6 c8 o5 g8 o6 g8 e8 d8 c4 | o5 e8 g8 o6 c8 o5 g8 a8 g8 e4 | o5 f8 o6 f8 o5 c8 o6 c8 a8 g8 f4 | o5 g8 b8 o6 d8 o5 b8 a8 b8 g4 |
   o5 c8 o6 c8 o5 g8 o6 g8 a8 g8 e8 c8 | o6 c8 o5 a8 e8 a8 o6 c8 d8 e4 | o5 d8 o6 d8 o5 a8 o6 a8 f+8 e8 d4 | o5 b8 o6 d8 o5 g8 a8 b4 r4 |
@@ -41,6 +44,12 @@ track drums kit vol=0.5 rev=0.12
 
 track hats kit vol=0.66 pan=0.2 rev=0.08
   r1 | r1 | L [ v60 h8 v40 k8 v60 h8 v40 k8 v60 h8 v40 k8 v60 o8 v40 k8 | ]16
+
+# Alola: a steel drum doubling the tune, an ukulele on the bass's eighths, hand drums
+track tunesteel steeldrum unless=lowhp double=lead vol=0.13 pan=-0.35 rev=0.3
+track bassukulele ukulele double=bass beats=8 shift=24 vol=0.16 pan=0.35 rev=0.22
+track handdrums kit vol=0.34 pan=-0.15 rev=0.14
+  r1 | r1 | L [ v80 g8 v50 g8 v90 d8 v50 g8 v80 g8 v50 g8 v90 d8 v60 n16 n16 | ]16
 
 # Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
 track alarm pulse only=lowhp vol=0.42 pan=0.1 rev=0.08

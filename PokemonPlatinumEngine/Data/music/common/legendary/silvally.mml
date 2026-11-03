@@ -1,11 +1,14 @@
 # Battle against Silvally (Type: Null freed from its mask): the family's motif, which Type: Null holds in minor, sung
 # out in A major on a high violin with long notes, brass answering in fanfare and strings driving underneath.
 # Original composition for this game.
+# Arranged again for the modern sound (plan 31 · MU7) on the instruments of Alola: a steel drum doubling the tune, an ukulele on the bass's beats, congas and bongos; the giant's choir takes each bar's first chord alone.
 title Battle! Silvally
 tempo 176
 meter 4/4
 lowhptempo 1.07
 reverb 0.3
+sound modern
+room hall 1.6
 
 track lead violin lowhp=sawlead vol=0.78 pan=0 rev=0.3
   r1 | o5 e8 g+8 b8 o6 e8 g+4 b4 |
@@ -49,12 +52,18 @@ track drums kit vol=0.5 rev=0.14
 track hats kit vol=0.4 pan=0.2 rev=0.1
   r1 | r1 | L [ v65 h8 v45 h8 v65 h8 v45 h8 v65 h8 v45 h8 v65 h8 v50 o8 | ]16
 
+# Alola: a steel drum doubling the tune, an ukulele on the bass's beats, hand drums
+track tunesteel steeldrum unless=lowhp double=lead vol=0.13 pan=-0.35 rev=0.3
+track bassukulele ukulele double=bass beats=4 shift=24 vol=0.16 pan=0.35 rev=0.22
+track handdrums kit vol=0.34 pan=-0.15 rev=0.14
+  r1 | r1 | L [ v80 g8 v50 g8 v90 d8 v50 g8 v80 g8 v50 g8 v90 d8 v60 n16 n16 | ]16
+
 # Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
 track alarm pulse only=lowhp vol=0.46 pan=0.1 rev=0.08
   v110 r1 | r1 | L [ o6 e16 r16 e16 r16 r4 e16 r16 e16 r16 r4 | ]16
 
 # Giant (plan Y · YD5): while a Dynamaxed Pokémon stands on the field, a choir on the chords,
 # brass on the roots and timpani on the bass's beats
-track giantchoir choir only=giant double=strings vol=0.2 pan=-0.25 rev=0.4
+track giantchoir choir only=giant double=strings beats=1 vol=0.2 pan=-0.25 rev=0.4
 track giantbrass brass only=giant double=bass beats=4 shift=12 vol=0.22 pan=0.25 rev=0.28
 track gianttimpani timpani only=giant double=bass beats=4 shift=12 vol=0.32 rev=0.2
