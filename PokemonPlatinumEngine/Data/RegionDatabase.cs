@@ -873,6 +873,8 @@ public static class RegionDatabase
                 "MistraltonCave_2F", "GuidanceChamber", "ClayTunnel_1", "ClayTunnel_2", "ClayTunnel_3", "UndergroundRuins", "UndergroundRuins_Sun", "UndergroundRuins_Moon", "RockPeakChamber", "IcebergChamber", "IronChamber",
                 // Plan 22 · U10, part c: the P2 Laboratory's hall; U11: the Hidden Grotto every grotto's mouth leads into
                 "P2Laboratory", "HiddenGrotto",
+                // Plan 22 · U10, part d: the Abundant Shrine off Route 14
+                "AbundantShrine",
             }
         },
         new()

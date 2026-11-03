@@ -1,0 +1,130 @@
+{
+  "key": "abundant_shrine",
+  "index": 376,
+  "name": "Abundant Shrine",
+  "matrix": 190,
+  "kind": "Outdoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "",
+  "dayMusic": "BGM_D_06",
+  "nightMusic": "BGM_D_06",
+  "encounters": "ENCOUNTERS_ABUNDANT_SHRINE",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Swablu", "level": 33 },
+    { "species": "Cottonee", "level": 33 },
+    { "species": "Vulpix", "level": 34 },
+    { "species": "Bronzor", "level": 32 },
+    { "species": "Marill", "level": 34 },
+    { "species": "Golduck", "level": 34 },
+    { "species": "Cottonee", "level": 35 },
+    { "species": "Bronzor", "level": 32 },
+    { "species": "Cottonee", "level": 35 },
+    { "species": "Altaria", "level": 36 },
+    { "species": "Cottonee", "level": 35 },
+    { "species": "Altaria", "level": 36 }
+  ],
+  "landRate": 13,
+  "water": [
+    { "species": "Basculin", "level": 25, "maxLevel": 40 },
+    { "species": "Marill", "level": 25, "maxLevel": 40 },
+    { "species": "Basculin", "level": 30, "maxLevel": 40 },
+    { "species": "Basculin", "level": 30, "maxLevel": 40 },
+    { "species": "Basculin", "level": 30, "maxLevel": 40 }
+  ],
+  "waterRate": 12,
+  "superRod": [
+    { "species": "Goldeen", "level": 40, "maxLevel": 60, "weight": 60 },
+    { "species": "Basculin", "level": 40, "maxLevel": 60, "weight": 30 },
+    { "species": "Goldeen", "level": 50, "maxLevel": 70, "weight": 5 },
+    { "species": "Goldeen", "level": 50, "maxLevel": 70, "weight": 4 },
+    { "species": "Goldeen", "level": 50, "maxLevel": 70, "weight": 1 }
+  ],
+  "superRodRate": 50,
+  "darkGrass": [
+    { "species": "Vulpix", "level": 37 },
+    { "species": "Cottonee", "level": 37 },
+    { "species": "Altaria", "level": 38 },
+    { "species": "Cottonee", "level": 39 },
+    { "species": "Marill", "level": 38 },
+    { "species": "Golduck", "level": 38 },
+    { "species": "Bronzong", "level": 36 },
+    { "species": "Bronzong", "level": 36 },
+    { "species": "Cottonee", "level": 39 },
+    { "species": "Altaria", "level": 40 },
+    { "species": "Cottonee", "level": 39 },
+    { "species": "Altaria", "level": 40 }
+  ],
+  "darkGrassRate": 13,
+  "shakingGrass": [
+    { "species": "Audino", "level": 33 },
+    { "species": "Audino", "level": 33 },
+    { "species": "Emolga", "level": 34 },
+    { "species": "Audino", "level": 34 },
+    { "species": "Audino", "level": 35 },
+    { "species": "Audino", "level": 35 },
+    { "species": "Audino", "level": 36 },
+    { "species": "Audino", "level": 36 },
+    { "species": "Whimsicott", "level": 36 },
+    { "species": "Ninetales", "level": 36 },
+    { "species": "Whimsicott", "level": 36 },
+    { "species": "Ninetales", "level": 36 }
+  ],
+  "shakingGrassRate": 13,
+  "ripplingWater": [
+    { "species": "Marill", "level": 25, "maxLevel": 40 },
+    { "species": "Basculin", "level": 25, "maxLevel": 40 },
+    { "species": "Basculin", "level": 30, "maxLevel": 40 },
+    { "species": "Azumarill", "level": 30, "maxLevel": 40 },
+    { "species": "Azumarill", "level": 30, "maxLevel": 40 }
+  ],
+  "ripplingWaterRate": 13,
+  "ripplingRod": [
+    { "species": "Goldeen", "level": 40, "maxLevel": 60, "weight": 60 },
+    { "species": "Basculin", "level": 40, "maxLevel": 60, "weight": 30 },
+    { "species": "Seaking", "level": 50, "maxLevel": 70, "weight": 5 },
+    { "species": "Seaking", "level": 50, "maxLevel": 70, "weight": 4 },
+    { "species": "Seaking", "level": 50, "maxLevel": 70, "weight": 1 }
+  ],
+  "ripplingRodRate": 1,
+  "warps": [
+    { "x": 50, "z": 54, "to": "unova_route_14", "toWarp": 0 },
+    { "x": 36, "z": 46, "to": "abundant_shrine_2", "toWarp": 0 },
+    { "x": 51, "z": 54, "to": "unova_route_14", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "216", "movement": "none", "x": 43, "z": 22, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0549", "item": "Rare Candy", "script": "7253" },
+    { "id": "1", "looks": "110", "movement": "none", "x": 30, "z": 29, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x054a", "item": "TM92", "script": "7254" },
+    { "id": "2", "looks": "110", "movement": "none", "x": 23, "z": 33, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x054b", "item": "Max Revive", "script": "7255" },
+    { "id": "3", "looks": "110", "movement": "none", "x": 45, "z": 24, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x054c", "item": "Shiny Stone", "script": "7256" },
+    { "id": "4", "looks": "110", "movement": "none", "x": 32, "z": 12, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x054d", "item": "Heal Ball", "script": "7257" },
+    { "id": "5", "looks": "youngster", "movement": "wander_around", "x": 21, "z": 24, "facing": 1, "rangeX": 2, "rangeZ": 5, "trainer": "sees", "sight": 1, "script": "TRAINER_YOUNGSTER_JAYE" },
+    { "id": "6", "looks": "lass", "movement": "look_north_and_west", "x": 13, "z": 36, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 2, "script": "TRAINER_LASS_LURLEEN" },
+    { "id": "7", "looks": "twins", "movement": "none", "x": 25, "z": 39, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 2, "script": "TRAINER_TWINS_RAE_ULA" },
+    { "id": "8", "looks": "twins", "movement": "none", "x": 26, "z": 39, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 2, "script": "TRAINER_TWINS_RAE_ULA" },
+    { "id": "9", "looks": "youngster", "movement": "none", "x": 39, "z": 32, "facing": 3, "rangeX": 3, "rangeZ": 0, "trainer": "sees", "sight": 2, "script": "TRAINER_YOUNGSTER_WES" },
+    { "id": "10", "looks": "pkmn_breeder_m", "movement": "wander_around", "x": 40, "z": 20, "facing": 3, "rangeX": 3, "rangeZ": 3, "script": "1" },
+    { "id": "11", "looks": "artist", "movement": "none", "x": 22, "z": 14, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0404", "script": "2000" },
+    { "id": "12", "looks": "youngster", "movement": "none", "x": 50, "z": 48, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x040e", "script": "2000" },
+    { "id": "13", "looks": "10", "movement": "none", "x": 52, "z": 48, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x040e", "script": "2000" },
+    { "id": "14", "looks": "14", "movement": "none", "x": 50, "z": 50, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x040e", "script": "2000" }
+  ],
+  "signs": [
+    { "x": 47, "z": 29, "type": 0, "script": "10807" },
+    { "x": 35, "z": 9, "type": 0, "script": "10808" },
+    { "x": 36, "z": 9, "type": 0, "script": "10808" },
+    { "x": 14, "z": 23, "type": 2, "script": "8177", "item": "Big Mushroom", "flag": "FLAG_UNOVA_0x0bb5" },
+    { "x": 25, "z": 51, "type": 2, "script": "8178", "item": "Calcium", "flag": "FLAG_UNOVA_0x0bb6" },
+    { "x": 50, "z": 35, "type": 2, "script": "8179", "item": "Tiny Mushroom", "flag": "FLAG_UNOVA_0x0bb7" },
+    { "x": 47, "z": 22, "type": 2, "script": "8180", "item": "PP Max", "flag": "FLAG_UNOVA_0x0bb8" },
+    { "x": 22, "z": 12, "type": 0, "script": "4" }
+  ],
+  "triggers": [
+    { "x": 21, "z": 17, "width": 3, "depth": 1, "script": "3", "variable": "VAR_UNOVA_0x4150", "value": "1" }
+  ]
+}
