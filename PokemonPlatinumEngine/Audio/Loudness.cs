@@ -26,6 +26,9 @@ public static class Loudness
     /// </summary>
     public const double CryCeiling = -12.5;
 
+    /// <summary>The highest peak a voice file may have (plan 26 · V2's checks): −1 dBFS.</summary>
+    public const double VoicePeak = -1;
+
     /// <summary>The window a bus's content must measure within, in dBFS (at the bus's full volume).</summary>
     public static (double Low, double High) Target(AudioBus bus) => bus switch
     {
@@ -33,6 +36,8 @@ public static class Loudness
         AudioBus.Fanfare => (-20.5, -14.5),
         AudioBus.Sound => (-38, -20),
         AudioBus.Cry => (-27, -17),
+        // A spoken line (plan 26 · V2): level with the cries, a little over the dipped music, so speech is clear over a song
+        AudioBus.Voice => (-24, -18),
         _ => (-30, -26)
     };
 

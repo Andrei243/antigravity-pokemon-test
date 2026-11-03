@@ -371,6 +371,26 @@
         "fourWays": "Te miști mereu în patru direcții, câte un pas pe cărări, orice ar permite regiunea."
       }
     },
+    "voices": {
+      "label": "Voci",
+      "value": { "Off": "OPRITE", "Story": "DOAR POVESTEA", "All": "TOATE" },
+      "help": {
+        "Off": "Replicile nu sunt rostite de nimeni: textul apare singur, ca în original.",
+        "Story": "Personajele cu nume ale poveștii își rostesc replicile cu voce tare; ale celorlalți apar doar ca text.",
+        "All": "Toți cei care au o voce își rostesc replicile cu voce tare. Replicile fără voce apar ca text."
+      }
+    },
+    "voiceVolume": {
+      "label": "Volumul vocilor",
+      "help": "Cât de tare vorbesc vocile personajelor. Muzica și sunetele din jur se coboară puțin cât vorbește cineva."
+    },
+    "letVoicesFinish": {
+      "label": "Lasă vocile să termine",
+      "help": {
+        "off": "A pe o replică terminată trece mai departe pe loc și oprește vocea.",
+        "on": "A pe o replică terminată așteaptă până termină vocea de vorbit."
+      }
+    },
     "areaChecklist": {
       "label": "Ce a mai rămas aici",
       "help": {

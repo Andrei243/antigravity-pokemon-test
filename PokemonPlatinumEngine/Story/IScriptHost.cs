@@ -274,6 +274,18 @@ public interface IScriptHost
     int Answer { get; }
 
     /// <summary>
+    /// <see cref="Say(string?, IReadOnlyList{string})"/> with each line's voice beside it (plan 26 · V2): one entry to a
+    /// line, null for a line nobody speaks. A host with no voices shows the lines alone.
+    /// </summary>
+    void Say(string? speaker, IReadOnlyList<string> lines, IReadOnlyList<SpokenLine?> voices) => Say(speaker, lines);
+
+    /// <summary><see cref="Ask(string?, string, IReadOnlyList{string}, int)"/> with the question's voice (its answers are never spoken).</summary>
+    void Ask(string? speaker, string question, IReadOnlyList<string> answers, int cancel, SpokenLine? voice) => Ask(speaker, question, answers, cancel);
+
+    /// <summary>Whether the last line's voice still speaks (plan 26 · V2): what a script's <c>waitvoice</c> waits for. Never, where there are no voices.</summary>
+    bool VoiceSpeaking => false;
+
+    /// <summary>
     /// Battles a trainer of the map, or two at once (<paramref name="second"/>), perhaps with a trainer at the
     /// player's side (<paramref name="partner"/>, a tag battle). <see cref="Outcome"/> is how it went once the host is
     /// no longer busy. The game's first battle (<paramref name="first"/>) has no critical hits. What the script asks

@@ -56,17 +56,36 @@ public class DialogueManager
     /// <summary>The colours of the line's stretches, for whoever draws it.</summary>
     public IReadOnlyList<RunSpan> CurrentSpans => current.Spans;
 
-    public void ShowDialogue(string speaker, IEnumerable<string> lines, Action? onComplete = null)
+    public void ShowDialogue(string speaker, IEnumerable<string> lines, Action? onComplete = null) => ShowDialogue(speaker, lines, null, onComplete);
+
+    /// <summary>
+    /// Shows lines with their voices beside them (plan 26 · V2): <paramref name="voices"/> has one entry to a line, null
+    /// for a line nobody speaks (the game's own voice). Each line's voice starts as the box shows it.
+    /// </summary>
+    public void ShowDialogue(string speaker, IEnumerable<string> lines, IReadOnlyList<SpokenLine?>? voices, Action? onComplete = null)
     {
         // Written lines name the player and the professor's assistant with {player} and {assistant}
         currentSpeaker = PlayerIdentity.Fill(speaker);
         question = false;
         BacklogOpen = false;
         lineQueue.Clear();
-        foreach (var l in lines) lineQueue.Enqueue(l);
+        voiceQueue.Clear();
+        int k = 0;
+        foreach (var l in lines)
+        {
+            lineQueue.Enqueue(l);
+            voiceQueue.Enqueue(voices != null && k < voices.Count ? voices[k] : null);
+            k++;
+        }
+        if (voices != null) Voice.Prefetch(voices);
         onCompleteCallback = onComplete;
         AdvanceLine();
     }
+
+    private readonly Queue<SpokenLine?> voiceQueue = new();
+
+    /// <summary>The voices of the box (plan 26 · V2): the options set its mode and whether a voice is let finish.</summary>
+    public VoiceTalk Voice { get; } = new();
 
     public void ShowDialogue(string speaker, string singleLine, Action? onComplete = null)
     {
@@ -77,18 +96,21 @@ public class DialogueManager
     /// Shows a line that is a question: it is written out like any other and then stays, with no arrow to go on,
     /// until <see cref="Close"/>. Whoever asked shows the answers beside it and closes the box on the one picked.
     /// </summary>
-    public void ShowQuestion(string speaker, string line)
+    public void ShowQuestion(string speaker, string line, SpokenLine? voice = null)
     {
-        ShowDialogue(speaker, new[] { line });
+        // A question's voice plays as it shows; its answers are not spoken (plan 26's decision 7)
+        ShowDialogue(speaker, new[] { line }, voice == null ? null : new[] { voice });
         question = true;
     }
 
-    /// <summary>Takes the box away at once, whatever was on it. Nothing is called.</summary>
+    /// <summary>Takes the box away at once, whatever was on it, and cuts its voice. Nothing is called.</summary>
     public void Close()
     {
+        Voice.Cut();
         question = false;
         BacklogOpen = false;
         lineQueue.Clear();
+        voiceQueue.Clear();
         current = Empty;
         currentSpeaker = "";
         onCompleteCallback = null;
@@ -127,9 +149,12 @@ public class DialogueManager
             autoAdvanceWaited = 0f;
             Log.Add(currentSpeaker, current.Plain);
             AudioManager.PlaySound("text");
+            // The voice and the typing start together; neither waits for the other (plan 26 · V2)
+            Voice.Start(voiceQueue.Count > 0 ? voiceQueue.Dequeue() : null);
         }
         else
         {
+            Voice.Cut();
             current = Empty;
             currentSpeaker = "";
             var cb = onCompleteCallback;
@@ -141,6 +166,7 @@ public class DialogueManager
     public void Update(float dt)
     {
         if (!IsActive) return;
+        Voice.Advance(dt);
 
         if (BacklogOpen)
         {
@@ -153,6 +179,7 @@ public class DialogueManager
             Type(dt);
             if (InputManager.IsActionPressed(GameAction.Confirm) || InputManager.IsActionPressed(GameAction.Cancel))
             {
+                // The text is finished at once and the voice speaks on (plan 26 · V2)
                 FinishLine();
             }
         }
@@ -164,16 +191,23 @@ public class DialogueManager
             }
             else if (InputManager.IsActionPressed(GameAction.Confirm))
             {
-                AdvanceLine();
+                Advance();
             }
-            else if (AutoAdvanceAfter is { } pause)
+            else if (AutoAdvanceAfter is { } pause && !Voice.IsSpeaking)
             {
-                // A whole line goes on by itself once it has been read (plan 08 · P2); a question never does
+                // A whole line goes on by itself once it has been read (plan 08 · P2), and heard: the pause counts from
+                // the end of its voice (plan 26 · V2); a question never does
                 autoAdvanceWaited += dt;
                 if (autoAdvanceWaited >= pause) AdvanceLine();
             }
         }
     }
+
+    /// <summary>
+    /// Whether the A button on the finished line waits for its voice (plan 26 · V2): only with the options' LET VOICES
+    /// FINISH on, while the line still speaks.
+    /// </summary>
+    public bool HeldForVoice => IsActive && IsCurrentLineComplete && !question && Voice.LetFinish && Voice.IsSpeaking;
 
     // ------------------------------------------------------------------ the backlog
 
@@ -262,9 +296,13 @@ public class DialogueManager
         pauseLeft = 0f;
     }
 
-    /// <summary>Goes on to the next line, or ends the talk after the last (the A button once a line is complete).</summary>
+    /// <summary>
+    /// Goes on to the next line, or ends the talk after the last (the A button once a line is complete), cutting the
+    /// line's voice; with LET VOICES FINISH on, a line still speaking holds the box instead (plan 26 · V2).
+    /// </summary>
     public void Advance()
     {
+        if (HeldForVoice) return;
         if (IsActive && IsCurrentLineComplete && !question) AdvanceLine();
     }
 

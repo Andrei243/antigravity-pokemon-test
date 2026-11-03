@@ -218,6 +218,26 @@
         "fourWays": "You always move four ways, a step at a time along the paths, whatever the region allows."
       }
     },
+    "voices": {
+      "label": "Voices",
+      "value": { "Off": "OFF", "Story": "STORY ONLY", "All": "ALL" },
+      "help": {
+        "Off": "Nobody's lines are spoken: the text shows alone, as in the original.",
+        "Story": "The story's named characters speak their lines aloud; everyone else's show as text.",
+        "All": "Everyone who has a voice speaks their lines aloud. Lines without one show as text."
+      }
+    },
+    "voiceVolume": {
+      "label": "Voice volume",
+      "help": "How loud the characters' voices speak. The music and the ambience dip a little while someone speaks."
+    },
+    "letVoicesFinish": {
+      "label": "Let voices finish",
+      "help": {
+        "off": "A on a finished line goes on at once and cuts its voice short.",
+        "on": "A on a finished line waits until its voice has finished speaking."
+      }
+    },
     "areaChecklist": {
       "label": "What is left here",
       "help": {

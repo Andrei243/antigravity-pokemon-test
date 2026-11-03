@@ -409,6 +409,8 @@ public static class ScriptParser
             }
             case "wait":
                 return new Instruction { Op = Op.Wait, Line = line, Seconds = r.Seconds() };
+            case "waitvoice":
+                return new Instruction { Op = Op.WaitVoice, Line = line };
             case "camera":
             {
                 // A move the script waits for goes on under whatever comes next when its line ends in 'nowait' (plan

@@ -16,6 +16,7 @@ What changes from one release to the next, for players. Every session's close-ou
 - Kalos's Routes 2 to 4, Santalune Forest, Santalune City, its houses, Pokémon Center and Gym now play their own songs.
 
 ### Added
+- The options have three new rows for spoken lines: VOICES (off, the story's characters only, or everyone), VOICE VOLUME and LET VOICES FINISH. No voices are recorded yet, so they stay silent until a voice pack is put beside the game; with VOICES off (as it starts) the game is exactly as before.
 - In HeartGold's Kanto, Steven shows you a strange stone in Pewter's museum and then waits in the city with the Latias or Latios he travels with (whichever isn't flying over Hoenn): face it once, and afterwards he stays in the museum by the fossils.
 - Sailing on the S.S. Aqua is a night aboard now: the harbour slipping away, a cabin at sunset, a night's sleep that rests your team, and the ship's horn in the morning as you dock.
 - Cameron's photographs show the place they were taken: a town, a route, a forest, the shore, a mountain, a cave or a room, with you standing beside your lead and a card naming the region. Cameron now waits at every place he visits in Johto and Kanto, the Dragon Shrine and Mt. Silver among them.
