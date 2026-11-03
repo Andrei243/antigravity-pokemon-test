@@ -44,7 +44,7 @@ public class TitleCreditsTests
         });
         // What the records name is there: the typeface, the data's sources and the licences
         string all = string.Join("\n", sections.SelectMany(s => s.Lines.Prepend(s.Heading)));
-        foreach (var word in new[] { "Nunito", "SIL Open Font License", "PokeAPI", "pret", "Pokémon Showdown", "MIT License" })
+        foreach (var word in new[] { "Nunito", "Noto Sans CJK", "OFL-NotoSansCJK.txt", "SIL Open Font License", "PokeAPI", "pret", "Pokémon Showdown", "MIT License" })
             Assert.Contains(word, all);
         // Plain text: no Markdown's marks left
         Assert.DoesNotContain("**", all);

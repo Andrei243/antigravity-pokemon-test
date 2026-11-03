@@ -17,6 +17,8 @@ public class StyleGuideTests
     [InlineData("Nunito-ExtraBold.ttf")]
     [InlineData("Nunito-Black.ttf")]
     [InlineData("OFL.txt")]
+    [InlineData("NotoSansCJK-Bold-Subset.ttf")]
+    [InlineData("OFL-NotoSansCJK.txt")]
     public void TheInterfaceFontShipsWithTheBuild(string file)
     {
         Assert.True(File.Exists(Path.Combine(AppContext.BaseDirectory, "Assets", "Fonts", file)), $"{file} is not copied next to the executable");

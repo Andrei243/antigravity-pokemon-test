@@ -7,8 +7,9 @@ Everything else in the game (models, textures, sprites, interface, sounds, text)
 | Asset | Files | Author | License | Source |
 |---|---|---|---|---|
 | Nunito (Bold, ExtraBold, Black) | `PokemonPlatinumEngine/Assets/Fonts/Nunito-*.ttf` | © 2014 The Nunito Project Authors; designed by Vernon Adams, Cyreal and Jacques Le Bailly | SIL Open Font License 1.1 (`PokemonPlatinumEngine/Assets/Fonts/OFL.txt`) | Google Fonts static instances; project at <https://github.com/googlefonts/nunito> |
+| Noto Sans CJK (Noto Sans SC and Noto Sans KR, Bold), cut to the characters the game uses | `PokemonPlatinumEngine/Assets/Fonts/NotoSansCJK-Bold-Subset.ttf` | © 2014-2021 Adobe; the Noto project (Google) | SIL Open Font License 1.1, Reserved Font Name 'Source' (`PokemonPlatinumEngine/Assets/Fonts/OFL-NotoSansCJK.txt`) | Google Fonts static instances of <https://github.com/notofonts/noto-cjk> (Sans 2.004); cut and joined by `tools/TextTool -- font` (plan 17 · N5) |
 
-The license file ships next to the fonts in every build, as the OFL requires.
+The license files ship next to the fonts in every build, as the OFL requires.
 
 ## Data
 

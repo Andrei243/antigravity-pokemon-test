@@ -114,7 +114,7 @@ public static class LocalNames
     public static string PlaceShown(string? place, string english)
     {
         if (english.Length == 0) return english;
-        if (Bracketed) return $"[{english}]";
+        if (Bracketed) return Text.Language.Bracket(english);
         if (Text.PlaceName(place, english) is { } own) return own;
         if (Current?.Places is { } places && places.TryGetValue(english, out var named)) return named;
         string name = Models.Trainer.KeyOf(english);
@@ -138,7 +138,7 @@ public static class LocalNames
     private static string Show(Dictionary<string, string>? table, string key, string english) =>
         Wrap(table != null && table.TryGetValue(key, out var own) ? own : english);
 
-    private static string Wrap(string name) => Bracketed ? $"[{name}]" : name;
+    private static string Wrap(string name) => Bracketed ? Text.Language.Bracket(name) : name;
 
     // ------------------------------------------------------------------ the files
 

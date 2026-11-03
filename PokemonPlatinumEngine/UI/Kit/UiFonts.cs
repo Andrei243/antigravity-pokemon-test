@@ -87,32 +87,112 @@ public static class UiFonts
     internal static bool InExtra(int codepoint, UiWeight weight) =>
         codepoint > 0xFF && ExtraSet.Contains(codepoint) && TextMetrics.HasExtra(codepoint, weight);
 
+    /// <summary>The face a run is drawn from: Nunito's first, its second, or a batch of the CJK face.</summary>
+    internal const int FirstFace = 0, ExtraFace = 1;
+
+    /// <summary>The face of the CJK batch <paramref name="batch"/> as <see cref="Runs"/> numbers faces.</summary>
+    internal static int CjkFaceOf(int batch) => 2 + batch;
+
     /// <summary>
-    /// A text cut into runs by the face that has each glyph, in order (<c>Extra</c> says which): one run for the
-    /// text of Latin-1, the common case, which is found with a scan of its characters and no allocation.
+    /// The face a codepoint is drawn from: the CJK batch that holds it (plan 17 · N5; a CJK character the language's
+    /// batches don't hold is the first face's question mark), the second face, or the first.
     /// </summary>
-    internal static List<(string Text, bool Extra)> Runs(string text, UiWeight weight)
+    internal static int FaceOf(int codepoint, UiWeight weight)
     {
-        var runs = new List<(string, bool)>();
-        int start = 0;
-        bool extra = false;
-        for (int i = 0; i < text.Length; i++)
+        if (codepoint <= 0xFF) return FirstFace;
+        if (CjkFace.IsCjk(codepoint)) return Cjk.BatchOf(codepoint) is int batch ? CjkFaceOf(batch) : FirstFace;
+        return InExtra(codepoint, weight) ? ExtraFace : FirstFace;
+    }
+
+    /// <summary>
+    /// A text cut into runs by the face that has each glyph, in order (<c>Face</c> says which: 0 the first, 1 the
+    /// second, 2 and on the CJK batches): one run for the text of Latin-1, the common case, which is found with a scan
+    /// of its characters and no allocation.
+    /// </summary>
+    internal static List<(string Text, int Face)> Runs(string text, UiWeight weight)
+    {
+        var runs = new List<(string, int)>();
+        int start = 0, at = 0, face = FirstFace;
+        foreach (var rune in text.EnumerateRunes())
         {
-            bool here = text[i] > 0xFF && InExtra(text[i], weight);
-            if (here == extra) continue;
-            if (i > start) runs.Add((text[start..i], extra));
-            start = i;
-            extra = here;
+            int here = FaceOf(rune.Value, weight);
+            if (here != face)
+            {
+                if (at > start) runs.Add((text[start..at], face));
+                start = at;
+                face = here;
+            }
+            at += rune.Utf16SequenceLength;
         }
-        if (text.Length > start) runs.Add((text[start..], extra));
+        if (text.Length > start) runs.Add((text[start..], face));
         return runs;
     }
 
-    private static bool NeedsExtra(string text, UiWeight weight)
+    private static bool NeedsRuns(string text, UiWeight weight)
     {
         foreach (char c in text)
-            if (c > 0xFF && InExtra(c, weight)) return true;
+            if (c > 0xFF && (char.IsSurrogate(c) || CjkFace.IsCjk(c) || InExtra(c, weight))) return true;
         return false;
+    }
+
+    private static Font FontOf(int face, UiWeight weight) => face switch
+    {
+        FirstFace => Get(weight),
+        ExtraFace => GetExtra(weight),
+        _ => Cjk.Batch(face - 2)
+    };
+
+    /// <summary>How far down a run of a face is drawn, in layout units, so that it stands on the weight's baseline.</summary>
+    private static float DropOf(int face, float size, UiWeight weight) => face >= 2 ? MathF.Round(TextMetrics.CjkDrop(weight) * size) : 0f;
+
+    /// <summary>
+    /// The CJK face's atlases for the language in force (plan 17 · N5): the codepoints <see cref="CjkFace.Gathered"/>
+    /// gives it, cut into batches of six hundred, each made the first time a text needs one of its characters and let go
+    /// when the language changes. The atlases' contents depend on the list alone, so two runs draw the same pictures.
+    /// </summary>
+    private static class Cjk
+    {
+        private static string? tag;
+        private static Dictionary<int, int> batchOf = new();
+        private static List<int[]> batches = new();
+        private static readonly Dictionary<int, Font> loaded = new();
+        private static readonly HashSet<int> warned = new();
+
+        private static void Follow()
+        {
+            string current = Core.Text.Current;
+            if (current == tag) return;
+            foreach (var font in loaded.Values) PokemonPlatinumEngine.Graphics.Gpu.Unload(font);
+            loaded.Clear();
+            tag = current;
+            batches = CjkFace.Batches(CjkFace.Gathered(current));
+            batchOf = new Dictionary<int, int>();
+            for (int b = 0; b < batches.Count; b++)
+                foreach (int c in batches[b]) batchOf[c] = b;
+        }
+
+        public static int? BatchOf(int codepoint)
+        {
+            Follow();
+            if (batchOf.TryGetValue(codepoint, out int batch)) return batch;
+            if (TextMetrics.HasCjk(codepoint) && warned.Add(codepoint))
+                Core.Diagnostics.Log.Warn($"The CJK character {char.ConvertFromUtf32(codepoint)} (U+{codepoint:X4}) is in no file of the language '{tag}', so it has no atlas and is drawn as '?'.");
+            return null;
+        }
+
+        public static Font Batch(int batch)
+        {
+            if (loaded.TryGetValue(batch, out var font)) return font;
+            string path = Path.Combine(AppContext.BaseDirectory, "Assets", "Fonts", CjkFace.FileName);
+            font = PokemonPlatinumEngine.Graphics.Gpu.FontFrom(path, CjkFace.AtlasSize, batches[batch], "font");
+            if (font.Texture.Id != 0)
+            {
+                Raylib.GenTextureMipmaps(ref font.Texture);
+                Raylib.SetTextureFilter(font.Texture, TextureFilter.Trilinear);
+            }
+            loaded[batch] = font;
+            return font;
+        }
     }
 
     /// <summary>
@@ -129,18 +209,19 @@ public static class UiFonts
         text = Spaced(text);
         color = Core.Seeing.Seen(color); // the colour-vision remap (plan 12 · Q8), the colour itself under Normal
         float tracking = Tracking(size);
-        if (!NeedsExtra(text, weight))
+        if (!NeedsRuns(text, weight))
         {
             Raylib.DrawTextEx(Get(weight), text, new Vector2(MathF.Round(x), MathF.Round(y)), size, tracking, color);
             return;
         }
-        // Runs by face, each drawn where the one before ended: the tracking sits between two runs as between two letters
+        // Runs by face, each drawn where the one before ended: the tracking sits between two runs as between two letters,
+        // and a CJK run is dropped onto the weight's baseline
         float at = MathF.Round(x);
         y = MathF.Round(y);
-        foreach (var (part, extra) in Runs(text, weight))
+        foreach (var (part, face) in Runs(text, weight))
         {
-            var font = extra ? GetExtra(weight) : Get(weight);
-            Raylib.DrawTextEx(font, part, new Vector2(at, y), size, tracking, color);
+            var font = FontOf(face, weight);
+            Raylib.DrawTextEx(font, part, new Vector2(at, y + DropOf(face, size, weight)), size, tracking, color);
             at += Raylib.MeasureTextEx(font, part, size, tracking).X + tracking;
         }
     }
@@ -149,11 +230,11 @@ public static class UiFonts
     {
         text = Spaced(text);
         float tracking = Tracking(size);
-        if (!NeedsExtra(text, weight)) return Raylib.MeasureTextEx(Get(weight), text, size, tracking).X;
+        if (!NeedsRuns(text, weight)) return Raylib.MeasureTextEx(Get(weight), text, size, tracking).X;
         float width = 0f;
         var runs = Runs(text, weight);
-        foreach (var (part, extra) in runs)
-            width += Raylib.MeasureTextEx(extra ? GetExtra(weight) : Get(weight), part, size, tracking).X;
+        foreach (var (part, face) in runs)
+            width += Raylib.MeasureTextEx(FontOf(face, weight), part, size, tracking).X;
         return width + (runs.Count - 1) * tracking;
     }
 
