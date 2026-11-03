@@ -40,6 +40,8 @@
     <ProjectReference Include="..\tools\MapDraw\MapDraw.csproj" />
     <!-- The room and overlay editor's documents, which need no window (plan 16 · T9) -->
     <ProjectReference Include="..\tools\RoomEditor\RoomEditor.csproj" />
+    <!-- The online server, started in-process on a free localhost port by the Online tests (plan 07 · O4 to O6) -->
+    <ProjectReference Include="..\server\PokemonPlatinum.Server\PokemonPlatinum.Server.csproj" />
   </ItemGroup>
 
 </Project>

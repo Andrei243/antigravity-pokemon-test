@@ -38,7 +38,7 @@
 
 <div class="box">
 <b>What you end up with.</b> One small Linux server on the internet, with a free web address such as <code>yourname.duckdns.org</code>. Players' games connect to it over an encrypted connection (<code>wss://</code>). The server program runs as a service that restarts on its own, the operating system installs its security updates by itself, and the database is backed up every night.<br><br>
-<b>When to do what.</b> You can do steps 1 to 6 today. Steps 7 to 10 need the server program, which plan 07's session O4 builds. Until then the server sits ready and costs the monthly fee.
+<b>When to do what.</b> You can do steps 1 to 6 today. Steps 7 to 10 put the server program on it; the program is in the repository (<code>server/PokemonPlatinum.Server</code>, since plan 07's session O4), and the game's screens that use it are still to come (O5 to O7).
 </div>
 
 <h2>1. Which provider</h2>
@@ -144,11 +144,11 @@ curl -I https://sinnoh-link.duckdns.org     <span class="c"># "502 Bad Gateway" 
 <pre>sudo useradd --system --home /var/lib/linkserver --create-home --shell /usr/sbin/nologin linkserver
 sudo mkdir -p /opt/linkserver
 sudo apt install -y sqlite3           <span class="c"># for backups and for looking inside the database</span></pre>
-<p>Steps 1 to 6 are everything you can do before the server program exists.</p>
+<p>Steps 1 to 6 need nothing from the repository.</p>
 
-<h3><span class="step">7</span> Put the server program on it (once plan 07 · O4 exists)</h3>
+<h3><span class="step">7</span> Put the server program on it</h3>
 <p>On your computer, in the repository folder, build a self-contained copy, so the server doesn't need .NET installed:</p>
-<pre>dotnet publish PokemonPlatinumServer -c Release -r linux-x64 --self-contained -o publish/server
+<pre>dotnet publish server/PokemonPlatinum.Server -c Release -r linux-x64 --self-contained -o publish/server
 <span class="c"># for a CAX11 (ARM) server: -r linux-arm64</span>
 scp -r publish/server admin@203.0.113.25:/tmp/linkserver</pre>
 <p>On the server:</p>
@@ -182,10 +182,10 @@ WantedBy=multi-user.target</pre>
 <pre>sudo systemctl daemon-reload
 sudo systemctl enable --now linkserver
 systemctl status linkserver             <span class="c"># should say "active (running)"</span></pre>
-<p class="small">The exact setting names (<code>LinkServer__…</code>) and the program's name are fixed when O4 writes the server. O7 ships this file and the Caddyfile in the repository, so you copy them rather than type them.</p>
+<p class="small">The setting names and the program's name above are the server's own (plan 07 · O4). This file, the Caddyfile and the backup script are in the repository under <code>docs/online/</code>, so you copy them rather than type them (<code>docs/online/README.md</code>).</p>
 
 <h3><span class="step">8</span> Check it works</h3>
-<pre>curl https://sinnoh-link.duckdns.org/health     <span class="c"># O4's health check: "ok" and the protocol version</span>
+<pre>curl https://sinnoh-link.duckdns.org/health     <span class="c"># the health check: "ok", the protocol version and the data version</span>
 journalctl -u linkserver -f                     <span class="c"># the server's log, live; Ctrl+C to stop</span></pre>
 <p>In the log, a player's first connection should show their real IP address being hashed, not <code>127.0.0.1</code>. If every player shows <code>127.0.0.1</code>, they would all get the same friend code, and section 5 has the fix.</p>
 

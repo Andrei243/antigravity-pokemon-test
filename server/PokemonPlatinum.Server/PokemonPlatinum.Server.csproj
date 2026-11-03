@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <!-- The online server (plan 07 · O4 to O7): friend codes, link-code rooms, the trade broker and the battle host,
+       behind Caddy on the user's own small server (docs/online/README.md). It references the engine for the rules,
+       the data and the protocol, as tools/SaveTool does, until plan 07 · O1's Core library takes the engine's place
+       here. The program's name is the setup guide's. -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>PokemonPlatinumServer</AssemblyName>
+    <RootNamespace>PokemonPlatinum.Server</RootNamespace>
+    <InvariantGlobalization>true</InvariantGlobalization>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- SQLite: the friend codes, the trade log and the battles' record. Pinned at a version weeks old. -->
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="10.0.13" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../../PokemonPlatinumEngine/PokemonPlatinumEngine.csproj" />
+  </ItemGroup>
+
+</Project>
