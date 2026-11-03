@@ -78,6 +78,7 @@ public partial class BattleEngine
             CannotFlee = rules.CannotFlee,
             FirstBattle = rules.FirstBattle,
             SpecialBalls = rules.SpecialBalls,
+            EmeraldSafari = rules.EmeraldSafari,
             PlayerName = rules.PlayerName,
             PlayerLook = playerLook,
             MoveHints = false,

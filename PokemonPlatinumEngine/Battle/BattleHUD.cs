@@ -29,7 +29,9 @@ public enum BattleMenuState
     /// <summary>The information panel over the main menu (plan 12 · Q11): the field's state and each Pokémon's, as far as the player has been told.</summary>
     Info,
     /// <summary>A Pokémon of the team's summary, opened from the switching cards (plan 08 · P4).</summary>
-    Summary
+    Summary,
+    /// <summary>Hoenn's Safari Zone: the Pokéblocks of the case, one to throw (plan 21 · H11, part e).</summary>
+    Pokeblocks
 }
 
 public class BattleHUD
@@ -41,6 +43,9 @@ public class BattleHUD
     public int MoveMenuIndex { get; set; } = 0;
     public int SwitchMenuIndex { get; set; } = 0;
     public int BagMenuIndex { get; set; } = 0;
+
+    /// <summary>The cursor on the Pokéblock Case's list in Hoenn's Safari Zone.</summary>
+    public int PokeblockIndex { get; set; } = 0;
 
     /// <summary>The cursor on the bag's pockets (4: the item used last), the first row of a pocket's list that shows, and the cursors on the team and on a Pokémon's moves.</summary>
     public int BagPocketIndex { get; set; } = 0;

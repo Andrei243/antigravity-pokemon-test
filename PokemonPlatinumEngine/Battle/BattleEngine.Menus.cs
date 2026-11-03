@@ -274,6 +274,36 @@ public partial class BattleEngine
     /// </summary>
     public void SelectMainMenuOption(int index)
     {
+        // Hoenn's Safari Zone: 0 the Safari Ball, 1 POKéBLOCK, 2 GO NEAR, 3 RUN (plan 21 · H11, part e)
+        if (EmeraldSafari)
+        {
+            var place = PlayerSlots[0].Place;
+            switch (index)
+            {
+                case 0:
+                    AudioManager.PlaySound("select");
+                    Commit(BattleChoice.UseItem(place, "Safari Ball"));
+                    break;
+                case 1:
+                    if (PokeblocksListed.Count == 0)
+                    {
+                        Refuse(Text.Of("battle.noPokeblocksLeft"), BattleMenuState.Main);
+                        break;
+                    }
+                    AudioManager.PlaySound("select");
+                    HUD.PokeblockIndex = Math.Min(HUD.PokeblockIndex, PokeblocksListed.Count - 1);
+                    HUD.MenuState = BattleMenuState.Pokeblocks;
+                    break;
+                case 2:
+                    AudioManager.PlaySound("select");
+                    Commit(BattleChoice.GoNear(place));
+                    break;
+                case 3:
+                    Commit(BattleChoice.Run(place));
+                    break;
+            }
+            return;
+        }
         if (Kind is BattleKind.Safari or BattleKind.PalPark)
         {
             var place = PlayerSlots[0].Place;
@@ -611,6 +641,21 @@ public partial class BattleEngine
         Commit(choice);
     }
 
+    /// <summary>
+    /// Throws the Pokéblock at this place in the case's list (Hoenn's Safari Zone): it leaves the case as it is chosen, as
+    /// Emerald's <c>PokeblockAction_UseInBattle</c> takes it, and the turn is played.
+    /// </summary>
+    public void SelectPokeblock(int index)
+    {
+        var listed = PokeblocksListed;
+        if (Pokeblocks == null || index < 0 || index >= listed.Count) return;
+        var (slot, block) = listed[index];
+        Pokeblocks.RemoveAt(slot);
+        HUD.PokeblockIndex = Math.Max(0, Math.Min(index, listed.Count - 2));
+        AudioManager.PlaySound("select");
+        Commit(BattleChoice.Pokeblock(PlayerSlots[0].Place, block));
+    }
+
     /// <summary>The B button in the battle's bag: a step back, from a move to the team, the team to the pocket, the pocket to the bag, the bag to the commands.</summary>
     public void BagBack()
     {
@@ -707,6 +752,10 @@ public partial class BattleEngine
             case BattleMenuState.SelectBagTarget:
                 before = HUD.BagTargetIndex;
                 after = HUD.BagTargetIndex = UI.Kit.UiNav.Grid(before, PlayerParty.Count, 3, dx, dy);
+                break;
+            case BattleMenuState.Pokeblocks:
+                before = HUD.PokeblockIndex;
+                after = HUD.PokeblockIndex = UI.Kit.UiNav.Grid(before, PokeblocksListed.Count, 1, dx, dy);
                 break;
             case BattleMenuState.SelectBagMove:
                 before = HUD.BagMoveIndex;
@@ -890,6 +939,17 @@ public partial class BattleEngine
 
             case BattleMenuState.Summary:
                 UpdateSummary(dx, dy);
+                break;
+
+            case BattleMenuState.Pokeblocks:
+                if (cancel)
+                {
+                    AudioManager.PlaySound("cancel");
+                    HUD.MenuState = BattleMenuState.Main;
+                    return;
+                }
+                MoveCursor(dx, dy);
+                if (confirm) SelectPokeblock(HUD.PokeblockIndex);
                 break;
 
             case BattleMenuState.SwitchPokemon:

@@ -26,6 +26,7 @@ What changes from one release to the next, for players. Every session's close-ou
 ### Added
 - A friend can play beside you: with the new FRIEND AS PARTNER option on, the game asks before every battle fought beside a partner whether a friend will choose for them, and on yes the friend picks the partner's moves and switches through the same menus (a second controller answers their turns), with a pill saying whose turn it is.
 - Friends' trainers stand upstairs in Jubilife City's Pokémon Center: every trainer file in the `trainers` folder beside your save (up to eight) waits there to battle at level 50, with nothing won or used up, and can be beaten once a day.
+- Hoenn's Safari Zone plays its own Safari battle: in place of bait and mud you throw Pokéblocks from your case, which a Pokémon whose nature likes the flavour is happy to stay for, or step closer with GO NEAR to make it easier to catch, at the risk of scaring it off.
 - Hoenn's Safari Zone has its Pokéblock feeders: set a Pokéblock down on one of the eleven stands in the grass, and for a hundred steps most wild Pokémon met nearby will have a nature that likes it.
 - A new game asks what you set out in, right after boy or girl: your own clothes, as before, or one of a few outfits (a trail set, a city set, a snow set and more), which are yours to keep and change at the wardrobe for nothing.
 - Unova: Landorus waits before the Abundant Shrine once you have entered the Hall of Fame: a level-70 battle, gone once caught or beaten.

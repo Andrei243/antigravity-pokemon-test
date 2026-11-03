@@ -130,7 +130,13 @@ public sealed partial class BattleCore
                 return IsTrainerBattle ? null : TrapOn(b, forRunning: true);
 
             case ChoiceKind.Bait or ChoiceKind.Mud:
-                return Kind == BattleKind.Safari ? null : Text.Of("battle.thereNothingToThrow");
+                return Kind == BattleKind.Safari && !EmeraldSafari ? null : Text.Of("battle.thereNothingToThrow");
+
+            // Hoenn's Safari Zone has POKéBLOCK and GO NEAR in their place (plan 21 · H11, part e)
+            case ChoiceKind.Pokeblock:
+                return EmeraldSafari && choice.Block != null ? null : Text.Of("battle.thereNothingToThrow");
+            case ChoiceKind.GoNear:
+                return EmeraldSafari ? null : Text.Of("battle.thereNothingToThrow");
 
             case ChoiceKind.Item:
                 return WhyNotItem(b, choice);

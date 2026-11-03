@@ -89,6 +89,7 @@ public sealed class BattleRecordFile
     public bool CannotFlee { get; set; }
     public bool FirstBattle { get; set; }
     public int SpecialBalls { get; set; }
+    public bool EmeraldSafari { get; set; }
     public bool Frontier { get; set; }
     public bool NoRewards { get; set; }
     public bool NoBattleItems { get; set; }
@@ -161,6 +162,7 @@ public sealed class BattleRecordFile
             CannotFlee = setup.CannotFlee,
             FirstBattle = setup.FirstBattle,
             SpecialBalls = setup.SpecialBalls,
+            EmeraldSafari = setup.EmeraldSafari,
             Frontier = setup.Frontier,
             NoRewards = setup.NoRewards,
             NoBattleItems = setup.NoBattleItems,
@@ -274,6 +276,7 @@ public sealed class BattleRecordFile
             CannotFlee = CannotFlee,
             FirstBattle = FirstBattle,
             SpecialBalls = SpecialBalls,
+            EmeraldSafari = EmeraldSafari,
             Frontier = Frontier,
             NoRewards = NoRewards,
             NoBattleItems = NoBattleItems,

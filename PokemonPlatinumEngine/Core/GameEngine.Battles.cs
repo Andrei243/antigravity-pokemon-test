@@ -227,6 +227,9 @@ public partial class GameEngine
                 PlayerLook = lessonLook,
                 SpecialBalls = kind == BattleKind.Safari ? flow.Safari.Balls : kind == BattleKind.PalPark ? flow.Pastimes.PalPark.Show?.ParkBalls ?? 0
                     : kind == BattleKind.Normal && InBugContest ? flow.BugContest.Balls : 0,
+                // Hoenn's Safari Zone plays Emerald's Safari battle, Pokéblocks from the player's case (plan 21 · H11, part e)
+                EmeraldSafari = kind == BattleKind.Safari && Here.Id == RegionDatabase.Hoenn,
+                Pokeblocks = kind == BattleKind.Safari && Here.Id == RegionDatabase.Hoenn ? flow.PokeblockCase : null,
                 MoveHints = MoveHintsOn,
                 Difficulty = flow.Run.Difficulty,
                 RunLevelCap = CurrentLevelCap() ?? 0,

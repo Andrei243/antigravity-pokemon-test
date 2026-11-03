@@ -38,14 +38,16 @@ public static partial class CatchCalculator
     /// <param name="safariStage">For a Safari Ball, the Great Marsh's stage the species' catch rate is taken at.</param>
     /// <param name="rules">The battle's rules: the later games' balls and bonuses are theirs (plan 06 · R28a); left out, Platinum's.</param>
     /// <param name="mine">The player's Pokémon on the field, which a Level Ball and a Love Ball go by.</param>
+    /// <param name="safariRate">For a Safari Ball in Hoenn's Safari Zone, the catch rate Emerald's catch factor gives in place of the species' (plan 21 · H11, part e).</param>
     public static int Shakes(Pokemon wild, ItemData ball, Random rng, int turn, BattleConditions conditions, int safariStage = 6,
-        Ruleset? rules = null, Pokemon? mine = null)
+        Ruleset? rules = null, Pokemon? mine = null, int? safariRate = null)
     {
         // A Master Ball holds whatever the rolls would have said (and an Origin Ball and a Park Ball: plan 06 · R28a)
         if (ball.EffectValue >= 9999 || (rules?.LaterBalls == true && AlwaysHolds(ball.Name))) return 4;
 
         int speciesRate = wild.CatchRate;
-        if (ball.Name == "Safari Ball") speciesRate = speciesRate * SafariStages[safariStage].Num / SafariStages[safariStage].Den;
+        if (ball.Name == "Safari Ball")
+            speciesRate = safariRate ?? speciesRate * SafariStages[safariStage].Num / SafariStages[safariStage].Den;
         int tenths = Formulas.BallTenths(ball.Name, wild, turn, conditions);
         if (rules?.LaterBalls == true)
         {

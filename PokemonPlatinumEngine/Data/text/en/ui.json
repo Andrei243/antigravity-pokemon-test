@@ -1226,7 +1226,8 @@
     "Boulder": "Boulder", "Cascade": "Cascade", "Thunder": "Thunder", "Rainbow": "Rainbow", "Soul": "Soul", "Marsh": "Marsh", "Volcano": "Volcano", "Earth": "Earth",
     "Zephyr": "Zephyr", "Hive": "Hive", "Plain": "Plain", "Fog": "Fog", "Storm": "Storm", "Mineral": "Mineral", "Glacier": "Glacier", "Rising": "Rising",
     "Stone": "Stone", "Knuckle": "Knuckle", "Dynamo": "Dynamo", "Heat": "Heat", "Balance": "Balance", "Feather": "Feather", "Mind": "Mind", "Rain": "Rain",
-    "Basic": "Basic", "Toxic": "Toxic", "Insect": "Insect", "Bolt": "Bolt", "Quake": "Quake", "Jet": "Jet", "Legend": "Legend", "Wave": "Wave",
+    "Basic": "Basic", "Toxic": "Toxic", "Insect": "Insect", "Bolt": "Bolt", "Quake": "Quake", "Jet": "Jet", "Legend": "Legend", "Wave": "Wave"
+,
     "Bug": "Bug", "Cliff": "Cliff", "Rumble": "Rumble", "Plant": "Plant", "Voltage": "Voltage", "Fairy": "Fairy", "Psychic": "Psychic", "Iceberg": "Iceberg"
   },
   "run": {
@@ -3081,6 +3082,14 @@
     "theWildIsFuming": "The wild {pokemon} is fuming!",
     "theWildFled": "The wild {pokemon} fled!",
     "theWildIsKeeping": "The wild {pokemon} is keeping a close eye on you.",
+    "threwAPokeblockAt": "{player} tossed a {block} toward the wild {pokemon}!",
+    "pokeblockCurious": "The wild {pokemon} is sniffing at the {block}!",
+    "pokeblockEnthralled": "The wild {pokemon} can't take its eyes off the {block}!",
+    "pokeblockIgnored": "The wild {pokemon} turned its nose up at the {block}!",
+    "creptCloser": "{player} edged a little closer to the wild {pokemon}!",
+    "cantGetCloser": "{player} can't get any closer to the wild {pokemon}!",
+    "noPokeblocksLeft": "There are no Pokéblocks in the case.",
+    "safariZoneOver": "That's the end of your time in the Safari Zone.",
     "youveThrownYourLast": "You've thrown your last Safari Ball!",
     "youveThrownYourLastSport": "You've thrown your last Sport Ball!",
     "thatTheEndOf": "That's the end of your time in the Great Marsh.",
@@ -3683,6 +3692,10 @@
     "shift": "SHIFT",
     "bait": "BAIT",
     "mud": "MUD",
+    "pokeblock": "POKéBLOCK",
+    "goNear": "GO NEAR",
+    "whichPokeblock": "Which Pokéblock will you throw?",
+    "pokeblockRow": "{block}  Lv. {level}",
     "safariBall": "SAFARI BALL ×{n}",
     "parkBall": "PARK BALL ×{n}",
     "sportBall": "SPORT BALL ×{n}",

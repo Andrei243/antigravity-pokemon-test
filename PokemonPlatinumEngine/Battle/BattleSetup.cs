@@ -186,6 +186,15 @@ public sealed class BattleSetup
     /// <summary>The Safari Balls or Park Balls the player has, in the Great Marsh and Pal Park.</summary>
     public int SpecialBalls { get; init; }
 
+    /// <summary>
+    /// Hoenn's Safari Zone (plan 21 · H11, part e): the Safari battle is Emerald's, with POKéBLOCK and GO NEAR in place of
+    /// the Great Marsh's bait and mud, its catch and escape factors in place of the Marsh's stages.
+    /// </summary>
+    public bool EmeraldSafari { get; init; }
+
+    /// <summary>The Pokéblock Case POKéBLOCK draws from in Hoenn's Safari Zone (the face's alone: a Pokéblock thrown leaves it).</summary>
+    public Models.PokeblockCase? Pokeblocks { get; init; }
+
     /// <summary>The name the battle's lines give the player's side; left out, the player's (the catching lesson's is the assistant's).</summary>
     public string? PlayerName { get; init; }
 
@@ -324,6 +333,8 @@ public sealed class BattleSetup
         CannotFlee = CannotFlee,
         FirstBattle = FirstBattle,
         SpecialBalls = SpecialBalls,
+        EmeraldSafari = EmeraldSafari,
+        Pokeblocks = Pokeblocks,
         PlayerName = PlayerName,
         PlayerLook = PlayerLook,
         MoveHints = MoveHints,

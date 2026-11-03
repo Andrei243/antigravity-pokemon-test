@@ -62,6 +62,12 @@ public sealed class CoreSetup
     public int SpecialBalls { get; init; }
 
     /// <summary>
+    /// Hoenn's Safari Zone (plan 21 · H11, part e): the Safari battle is Emerald's, with POKéBLOCK and GO NEAR in place of
+    /// the Great Marsh's bait and mud, its catch and escape factors in place of the Marsh's stages.
+    /// </summary>
+    public bool EmeraldSafari { get; init; }
+
+    /// <summary>
     /// A battle of the Battle Frontier (<c>BATTLE_TYPE_FRONTIER</c>, plan 06 · R18a): no item from the bag
     /// (<c>PLAYER_INPUT_ITEM</c>), no EXP (<c>BATTLE_TYPE_NO_EXPERIENCE</c>), no money won or lost and nothing picked up
     /// (<c>subscript_battle_won</c>, <c>subscript_battle_lost</c>), RUN gives the match up, a Soul Dew does nothing
@@ -286,6 +292,21 @@ public sealed partial class BattleCore : IBattleContext
     public int SafariCatchStage { get; private set; } = 6;
     public int SafariEscapeCount { get; private set; } = 6;
 
+    /// <summary>Hoenn's Safari Zone plays Emerald's Safari battle (<see cref="CoreSetup.EmeraldSafari"/>).</summary>
+    public bool EmeraldSafari { get; }
+
+    /// <summary>
+    /// Emerald's two factors (<c>safariCatchFactor</c>, 0 to 20, the species' catch rate × 100 / 1275 to begin with;
+    /// <c>safariEscapeFactor</c>, 0 to 20, 3 to begin with): GO NEAR raises both, a Pokéblock lowers the second.
+    /// </summary>
+    public int SafariCatchFactor { get; private set; }
+    public int SafariEscapeFactor { get; private set; } = 3;
+
+    /// <summary>Emerald's <c>safariGoNearCounter</c> and <c>safariPkblThrowCounter</c> (each 0 to 3), and every Pokéblock thrown.</summary>
+    public int SafariGoNearCount { get; private set; }
+    public int SafariPokeblockCount { get; private set; }
+    public int PokeblocksThrown { get; private set; }
+
     private readonly Random rng;
     private readonly string playerName;
     private readonly IBattleController? playerController, enemyController, partnerController;
@@ -346,6 +367,10 @@ public sealed partial class BattleCore : IBattleContext
         NoBattleItems = setup.NoBattleItems;
         Field.Inverse = Conditions.Inverse;
         SpecialBalls = setup.SpecialBalls;
+        EmeraldSafari = setup.EmeraldSafari && Kind == BattleKind.Safari;
+        // Emerald's catch factor begins from the species' catch rate (TryDoEventsBeforeFirstTurn)
+        if (EmeraldSafari && setup.WildPokemon.FirstOrDefault() is { } met) SafariCatchFactor = met.CatchRate * 100 / 1275;
+        safariFleeFactor = SafariEscapeFactor;
         Partner = Kind is BattleKind.Safari or BattleKind.PalPark ? null : setup.Partner;
 
         // A double battle needs two Pokémon able to fight on each side; a partner brings the player's second. A horde
@@ -788,6 +813,12 @@ public sealed partial class BattleCore : IBattleContext
                 case ChoiceKind.Mud:
                     ThrowMud(act.User);
                     break;
+                case ChoiceKind.Pokeblock:
+                    ThrowPokeblock(act.User, act.Choice.Block!);
+                    break;
+                case ChoiceKind.GoNear:
+                    GoNear(act.User);
+                    break;
                 case ChoiceKind.Fight:
                     // In an SOS battle a wild Pokémon may spend its turn calling for help (plan 14 · B5)
                     if (CallsForHelp(act)) break;
@@ -1051,7 +1082,7 @@ public sealed partial class BattleCore : IBattleContext
 
         // The catching lesson's ball and Pal Park's can't fail (BATTLE_TYPE_ALWAYS_CATCH)
         int shakes = Kind is BattleKind.CatchingLesson or BattleKind.PalPark ? 4 : CatchCalculator.Shakes(foe, ball, rng, Turn, Conditions, SafariCatchStage,
-            Rules, PlayerSlots.FirstOrDefault(b => b.IsActive)?.Pokemon);
+            Rules, PlayerSlots.FirstOrDefault(b => b.IsActive)?.Pokemon, EmeraldSafari ? EmeraldSafariRate : null);
         if (ball.Name == "Safari Ball" || ball.Name == Conditions.OnlyBall) SpecialBalls = Math.Max(0, SpecialBalls - 1);
         Emit(new BallThrown(ball.Name, target.Slot, shakes));
         if (shakes < 4)

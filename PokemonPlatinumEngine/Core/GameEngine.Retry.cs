@@ -267,6 +267,7 @@ public partial class GameEngine
             CannotFlee = file.CannotFlee,
             FirstBattle = file.FirstBattle,
             SpecialBalls = file.SpecialBalls,
+            EmeraldSafari = file.EmeraldSafari,
             MoveHints = MoveHintsOn,
             TrainerLines = TrainerLinesOn,
             NoBattleItems = file.NoBattleItems,
