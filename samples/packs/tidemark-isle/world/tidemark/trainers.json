@@ -1,0 +1,26 @@
+[
+  {
+    "id": "tidemark_fisherman_wade",
+    "name": "Wade",
+    "class": "Fisherman",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 40,
+    "party": [
+      {
+        "species": "Corphish",
+        "level": 6,
+        "ivScale": 0,
+        "personality": 1234567
+      },
+      {
+        "species": "Wingull",
+        "level": 7,
+        "ivScale": 0,
+        "personality": 7654321
+      }
+    ]
+  }
+]

@@ -76,9 +76,31 @@ public static class DataLayers
         GameDataFiles.ForgetVersion();
     }
 
-    /// <summary>Whether a file is read from the game's own data whatever the packs hold: a region's <c>world.json</c>.</summary>
-    public static bool IsFixed(string relativePath) =>
-        string.Equals(Path.GetFileName(relativePath), "world.json", StringComparison.OrdinalIgnoreCase);
+    /// <summary>
+    /// Whether a file is read from the game's own data whatever the packs hold: the <c>world.json</c> of a region the game
+    /// has. A region a pack adds (plan 16 · T14) has no index of the game's, so its own pack's is read.
+    /// </summary>
+    public static bool IsFixed(string relativePath) => IsFixed(relativePath, GameDataFiles.Directory);
+
+    /// <summary><see cref="IsFixed(string)"/> against the game data of <paramref name="gameRoot"/> (a tool's merge of another folder).</summary>
+    public static bool IsFixed(string relativePath, string gameRoot) =>
+        string.Equals(Path.GetFileName(relativePath), "world.json", StringComparison.OrdinalIgnoreCase)
+        && File.Exists(Path.Combine(gameRoot, relativePath));
+
+    /// <summary>
+    /// The names of the folders a folder of the data holds across the layers (the game's and every pack's), in ordinal
+    /// order: what the regions' world folders are found by, a pack's own region's among them.
+    /// </summary>
+    public static IReadOnlyList<string> FoldersIn(string relativeFolder, IReadOnlyList<DataLayer>? over = null)
+    {
+        var names = new SortedSet<string>(StringComparer.Ordinal);
+        var roots = new List<string> { Path.Combine(GameDataFiles.Directory, relativeFolder) };
+        roots.AddRange((over ?? packs).Select(p => Path.Combine(p.Root, relativeFolder)));
+        foreach (string root in roots)
+            if (Directory.Exists(root))
+                foreach (string dir in Directory.GetDirectories(root)) names.Add(Path.GetFileName(dir));
+        return names.ToList();
+    }
 
     /// <summary>The file a relative path is read from: the last layer that has it, or the game's own path.</summary>
     public static string PathOf(string relativePath, IReadOnlyList<DataLayer>? over = null)

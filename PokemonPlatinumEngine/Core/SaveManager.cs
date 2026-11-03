@@ -424,6 +424,18 @@ public class SaveData
     /// tile it begins on: a game saved in the player's bedroom before the first step wakes there, where the scene
     /// that the first step starts finds it.
     /// </summary>
+    /// <summary>
+    /// Where a save wakes that stands on a map no region has now (plan 16 · T14): one made in a region a pack adds, the
+    /// pack gone or turned off. It wakes where the region its game began in begins (Sinnoh's room for most), with
+    /// everything else of it as it was; null for a save whose map is there, which <see cref="PlaceOn"/> places.
+    /// </summary>
+    public MapSpot? WhereAPackLeftIt(Func<string, Map?> tryGet)
+    {
+        if (tryGet(Place().Map) != null) return null;
+        var began = Data.RegionDatabase.Get(BeganInOrHere());
+        return (began?.IsBuilt == true ? began.Start : null) ?? Data.RegionDatabase.First.Start;
+    }
+
     public MapSpot PlaceOn(Func<string, Map?> maps)
     {
         var spot = Place();

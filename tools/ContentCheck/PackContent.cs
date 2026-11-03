@@ -21,18 +21,19 @@ public static class PackContent
     {
         if (Directory.Exists(into)) Directory.Delete(into, recursive: true);
         Directory.CreateDirectory(into);
-        foreach (string folder in Folders) CopyTree(Path.Combine(gameRoot, folder), Path.Combine(into, folder), fromPack: false);
+        foreach (string folder in Folders) CopyTree(gameRoot, folder, Path.Combine(gameRoot, folder), Path.Combine(into, folder), fromPack: false);
         foreach (var pack in packs)
-            foreach (string folder in Folders) CopyTree(Path.Combine(pack.Root, folder), Path.Combine(into, folder), fromPack: true);
+            foreach (string folder in Folders) CopyTree(gameRoot, folder, Path.Combine(pack.Root, folder), Path.Combine(into, folder), fromPack: true);
     }
 
-    private static void CopyTree(string from, string to, bool fromPack)
+    private static void CopyTree(string gameRoot, string folder, string from, string to, bool fromPack)
     {
         if (!Directory.Exists(from)) return;
         foreach (string path in Directory.EnumerateFiles(from, "*", SearchOption.AllDirectories))
         {
             string relative = Path.GetRelativePath(from, path);
-            if (fromPack && (DataLayers.IsFixed(relative) || path.EndsWith(DataLayers.PatchSuffix, StringComparison.OrdinalIgnoreCase))) continue;
+            // A region's world.json is the game's own, but a region a pack adds, which the game has none of (plan 16 · T14)
+            if (fromPack && (DataLayers.IsFixed(Path.Combine(folder, relative), gameRoot) || path.EndsWith(DataLayers.PatchSuffix, StringComparison.OrdinalIgnoreCase))) continue;
             string target = Path.Combine(to, relative);
             Directory.CreateDirectory(Path.GetDirectoryName(target)!);
             File.Copy(path, target, overwrite: true);

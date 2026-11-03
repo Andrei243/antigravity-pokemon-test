@@ -1,0 +1,15 @@
+{
+  // Tidemark, the sample pack's region (plan 16 · T14; samples/packs/tidemark-isle): a town on an island, one chunk
+  // of our own drawing. The world files are written into the pack, not the game's data:
+  // `dotnet run --project tools/MapDraw -- tidemark --out samples/packs/tidemark-isle/world/tidemark` (`--check` says
+  // whether they are what the drawing gives).
+  "region": "Tidemark",
+  "width": 1,
+  "height": 1,
+  "pieces": [
+    { "file": "tidemark_town.txt", "x": 0, "z": 0 }
+  ],
+  "areas": [
+    { "key": "tidemark_town", "x": 0, "z": 0, "width": 32, "depth": 32 }
+  ]
+}

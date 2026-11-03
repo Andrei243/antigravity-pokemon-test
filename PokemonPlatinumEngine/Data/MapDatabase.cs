@@ -64,6 +64,12 @@ public static partial class MapDatabase
         if (!loaded.ContainsKey(StartMap))
             throw new InvalidDataException($"No map is called {StartMap}: the world of Sinnoh is missing from {GameDataFiles.PathOf(World.Folder)}.");
 
+        // A region a pack adds names who takes the player there from the region before it (plan 16 · T14): laid onto
+        // the map they leave from, so the pack never copies a file of the game's region to stand them on it
+        foreach (var link in RegionDatabase.Links)
+            if (link.Attendant is { } who && link.DepartureMap != null && loaded.TryGetValue(link.DepartureMap, out var departure))
+                departure.Add(MapFile.BuildNpc(who, departure.Name));
+
         maps = loaded;
         return loaded;
     }

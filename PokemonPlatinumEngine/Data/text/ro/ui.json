@@ -579,7 +579,8 @@
         "heading": "Slotul {slot} a fost jucat cu pachete",
         "body": "Nefolosite acum: {packs}. Jocul merge mai departe fără ce au schimbat ele; pornește-le din OPȚIUNI, PACHETE.",
         "gone": "{name} {version}",
-        "other": "{name} {version} (acum {now})"
+        "other": "{name} {version} (acum {now})",
+        "region": "Jocul a fost salvat în {region}, regiunea pe care o adaugă {pack}: fără ea, se trezește acolo unde a început."
       },
       "crash": {
         "heading": "Jocul s-a oprit pe neașteptate",

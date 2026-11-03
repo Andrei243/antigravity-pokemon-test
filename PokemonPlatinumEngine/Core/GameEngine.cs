@@ -639,7 +639,11 @@ public partial class GameEngine
         if (idsGiven > 0) Log.Info($"A save of version {savedFrom} was brought up to date: {idsGiven} Pokémon were given ids.");
 
         // (A save made in a room laid out again since wakes on the tile the room is come into by: plan 01 · M11)
-        var place = save.PlaceOn(MapDatabase.Get);
+        // (A save made in a region a pack adds, with the pack no longer in use, stands on no map at all: it wakes where
+        // its game began, plan 16 · T14, which the title has said)
+        var place = save.WhereAPackLeftIt(MapDatabase.TryGet) ?? save.PlaceOn(MapDatabase.Get);
+        if (MapDatabase.TryGet(save.Place().Map) == null)
+            Log.Warn($"The save stood on {save.Place().Map}, which no region has now (a pack's region not in use?): it wakes on {place.Map}.");
         flow.Map = MapDatabase.Get(place.Map);
         flow.Player = new Player(place.X, place.Y);
         flow.Player.Facing = place.Facing;
@@ -913,7 +917,7 @@ public partial class GameEngine
             ScenesSeen = flow.Story.ScenesSeen.Order(StringComparer.Ordinal).ToList(),
             Heard = AudioManager.Heard.ToList(),
             StoryPhrases = flow.Story.PhrasesToSave(),
-            Packs = PackRecords.InUse(),
+            Packs = PackRecords.InUse(Here),
             PlayerStarter = told.PlayerStarter,
             RivalStarter = told.RivalStarter,
             Money = flow.Money,
