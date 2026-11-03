@@ -1,0 +1,13 @@
+{
+  // The Dreamyard's basement (plan 22 · U10, part f): Black 2's ruined floor below the grounds, its trainers read by the
+  // importer, our words
+  "area": "dreamyard_2",
+  "bgmTrack": "unova/relic_passage",
+  "battleArena": "Cave",
+  "people": {
+    "3": { "name": "Athena", "trainer": { "dialogueBefore": "We study the old laboratory down here. You're interrupting my research!", "dialogueAfter": "Research on losing: complete." } },
+    "4": { "name": "Franklin", "trainer": { "dialogueBefore": "Dreams leave traces in the air here. Do you feel it?", "dialogueAfter": "I felt that." } },
+    "5": { "name": "Olesia", "trainer": { "dialogueBefore": "I sense the dreams of Pokémon in these walls. Battle me!", "dialogueAfter": "The walls saw that coming." } },
+    "6": { "name": "Nandor", "trainer": { "dialogueBefore": "This place hums with sleeping power. Let me show you!", "dialogueAfter": "It hums with my defeat." } }
+  }
+}

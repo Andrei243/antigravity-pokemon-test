@@ -1,0 +1,11 @@
+{
+  // The gate house between Nacrene City and Route 3 (plan 22 · U10, part f), Black 2's, our words
+  "area": "nacrene_gate",
+  "bgmTrack": "unova/driftveil",
+  "people": {
+    "0": { "name": "Gate Guard", "npcType": "worker", "dialog": [ "Nacrene City is through there: a city of artists, old warehouses and a fine museum." ] },
+    "1": { "name": "Dancer", "dialog": [ "I dance in Nacrene's streets on weekends. The artists paint me!" ] },
+    "2": { "name": "Lass", "dialog": [ "Route 3 has a Day Care. My friend leaves her Pokémon there while she shops." ] },
+    "3": { "name": "Pokémon Breeder", "npcType": "pokemon_breeder_f", "dialog": [ "The Day Care on Route 3 raises Pokémon so well. I learn a lot just watching." ] }
+  }
+}

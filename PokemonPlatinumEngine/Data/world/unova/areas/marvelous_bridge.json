@@ -1,0 +1,50 @@
+{
+  "key": "marvelous_bridge",
+  "index": 263,
+  "name": "Marvelous Bridge",
+  "matrix": 135,
+  "kind": "Outdoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "26",
+  "battleBackground": "City",
+  "dayMusic": "BGM_H_05",
+  "nightMusic": "BGM_H_05",
+  "encounters": "ENCOUNTERS_MARVELOUS_BRIDGE",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "shakingGrass": [
+    { "species": "Swanna", "level": 54 },
+    { "species": "Swanna", "level": 54 },
+    { "species": "Swanna", "level": 55 },
+    { "species": "Swanna", "level": 55 },
+    { "species": "Swanna", "level": 56 },
+    { "species": "Swanna", "level": 56 },
+    { "species": "Swanna", "level": 57 },
+    { "species": "Swanna", "level": 57 },
+    { "species": "Swanna", "level": 57 },
+    { "species": "Swanna", "level": 57 },
+    { "species": "Swanna", "level": 57 },
+    { "species": "Swanna", "level": 57 }
+  ],
+  "shakingGrassRate": 13,
+  "warps": [
+    { "x": 14, "z": 31, "to": "bridge_gate_gate_7", "toWarp": 1 },
+    { "x": 161, "z": 31, "to": "bridge_gate_gate_6", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "pokefan_m", "movement": "none", "x": 38, "z": 31, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "2" },
+    { "id": "1", "looks": "backers_m", "movement": "wander_around", "x": 145, "z": 31, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x035e", "script": "3" },
+    { "id": "2", "looks": "347", "movement": "none", "x": 130, "z": 31, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0381", "script": "5" },
+    { "id": "3", "looks": "lass", "movement": "none", "x": 148, "z": 36, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0403", "script": "2000" },
+    { "id": "4", "looks": "backers_m", "movement": "none", "x": 146, "z": 36, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "7" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 128, "z": 31, "width": 1, "depth": 6, "script": "4", "variable": "VAR_UNOVA_0x4073", "value": "1" },
+    { "x": 147, "z": 36, "width": 3, "depth": 1, "script": "8", "variable": "VAR_UNOVA_0x414f", "value": "1" },
+    { "x": 148, "z": 35, "width": 1, "depth": 1, "script": "8", "variable": "VAR_UNOVA_0x414f", "value": "1" }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  // The Marvelous Bridge's gate on Route 15's side (plan 22 · U10, part g), Black 2's, our words. Its Pokémon (2) is left out
+  "area": "bridge_gate_gate_6",
+  "bgmTrack": "unova/opelucid",
+  "people": {
+    "0": { "name": "Scientist", "dialog": [ "The bridge was built with a new kind of steel. It flexes in the wind without breaking." ] },
+    "1": { "name": "Veteran", "dialog": [ "I watched them build this bridge. It took years, and they never once stopped for rain." ] }
+  }
+}

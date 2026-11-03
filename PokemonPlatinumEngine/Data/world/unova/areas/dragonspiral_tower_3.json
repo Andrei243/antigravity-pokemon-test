@@ -1,0 +1,40 @@
+{
+  "key": "dragonspiral_tower_3",
+  "index": 207,
+  "name": "Dragonspiral Tower",
+  "matrix": 200,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_D_05",
+  "nightMusic": "BGM_D_05",
+  "encounters": "ENCOUNTERS_DRAGONSPIRAL_TOWER_3",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Golurk", "level": 55 },
+    { "species": "Mienshao", "level": 55 },
+    { "species": "Golurk", "level": 56 },
+    { "species": "Druddigon", "level": 56 },
+    { "species": "Golurk", "level": 57 },
+    { "species": "Druddigon", "level": 57 },
+    { "species": "Golurk", "level": 58 },
+    { "species": "Druddigon", "level": 58 },
+    { "species": "Golurk", "level": 58 },
+    { "species": "Druddigon", "level": 58 },
+    { "species": "Golurk", "level": 58 },
+    { "species": "Druddigon", "level": 58 }
+  ],
+  "landRate": 18,
+  "warps": [
+    { "x": 14, "z": 30, "to": "dragonspiral_tower_2", "toWarp": 1 },
+    { "x": 25, "z": 0, "to": "dragonspiral_tower_4", "toWarp": 0 }
+  ],
+  "objects": [],
+  "signs": [],
+  "triggers": []
+}

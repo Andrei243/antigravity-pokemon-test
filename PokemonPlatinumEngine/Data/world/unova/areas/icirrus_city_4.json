@@ -1,0 +1,29 @@
+{
+  "key": "icirrus_city_4",
+  "index": 117,
+  "name": "Icirrus City",
+  "matrix": 44,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_C_07",
+  "nightMusic": "BGM_C_07",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 9, "to": "icirrus_city", "toWarp": 0 },
+    { "x": 6, "z": 9, "to": "icirrus_city", "toWarp": 0 },
+    { "x": 7, "z": 9, "to": "icirrus_city", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "27", "movement": "none", "x": 6, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "1" },
+    { "id": "1", "looks": "25", "movement": "none", "x": 2, "z": 5, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "2" },
+    { "id": "2", "looks": "school_kid_f", "movement": "none", "x": 8, "z": 4, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "3" }
+  ],
+  "signs": [],
+  "triggers": []
+}

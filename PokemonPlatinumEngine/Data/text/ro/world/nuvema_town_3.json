@@ -1,0 +1,37 @@
+{
+  "people": {},
+  "signs": {
+    "2": {
+      "en": [
+        "A bookshelf full of Pokémon books."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "3": {
+      "en": [
+        "A game console. Someone left it on."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "4": {
+      "en": [
+        "A map of Unova on the wall. Nuvema Town is circled."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "5": {
+      "en": [
+        "A computer with a lot of e-mails from friends."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

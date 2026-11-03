@@ -1,0 +1,10 @@
+{
+  // The gate house between Route 15 and Black City (plan 22 · U10, part g), Black 2's, our words
+  "area": "black_gate_gate",
+  "bgmTrack": "unova/undella",
+  "people": {
+    "0": { "name": "Gate Guard", "npcType": "worker", "dialog": [ "Route 15 runs west to the Marvelous Bridge. The wind off the canyon is fierce." ] },
+    "1": { "name": "Backpacker", "dialog": [ "I'm walking from Black City to Nimbasa. A long way, but the bridge is worth it." ] },
+    "2": { "name": "Poké Fan", "npcType": "pokefan_m", "dialog": [ "Black City's Trainers are the toughest in Unova. I come just to watch them battle." ] }
+  }
+}

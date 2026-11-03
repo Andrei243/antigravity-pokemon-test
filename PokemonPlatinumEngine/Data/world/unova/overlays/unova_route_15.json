@@ -1,0 +1,20 @@
+{
+  // Route 15 (plan 22 · U10, part g): Black 2's canyon road from Black City's gate west to the Marvelous Bridge's gate, its
+  // trainers, two Strength boulders (0, 1), balls and hidden things read by the importer, our words. The way into the Poké
+  // Transfer Lab (Black 2's link with older games) stays shut
+  "area": "unova_route_15",
+  "bgmTrack": "unova/route13",
+  "people": {
+    "4": { "name": "Elliot", "trainer": { "dialogueBefore": "My Pokémon is the cutest in Unova. And the strongest! Battle!", "dialogueAfter": "Still the cutest, at least." } },
+    "5": { "name": "Marie", "trainer": { "dialogueBefore": "I study the canyon's rocks. And the Trainers who cross them!", "dialogueAfter": "My study is complete. I lose." } },
+    "6": { "name": "Lydia", "trainer": { "dialogueBefore": "I come to the canyon to show off my Pokémon. Look!", "dialogueAfter": "You looked. Then you won." } },
+    "7": { "name": "Talon", "trainer": { "dialogueBefore": "The canyon wind tests your balance. Let's test your team!", "dialogueAfter": "Blown away." } },
+    "8": { "name": "Corin", "trainer": { "dialogueBefore": "I've hiked from one end of Unova to the other. Battle me here!", "dialogueAfter": "The hike was easier." } }
+  },
+  "signs": {
+    "1": "Route 15\nBlack City - Marvelous Bridge",
+    "2": "Poké Transfer Lab\nThe lab is closed",
+    "3": "Trainer Tips\nStrength moves heavy boulders out of the way.",
+    "4": "Watch out for falling rocks!"
+  }
+}

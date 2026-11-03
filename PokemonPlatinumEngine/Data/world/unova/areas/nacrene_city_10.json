@@ -1,0 +1,33 @@
+{
+  "key": "nacrene_city_10",
+  "index": 26,
+  "name": "Nacrene City",
+  "matrix": 30,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_C_02",
+  "nightMusic": "BGM_C_02",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 7, "z": 15, "to": "nacrene_city", "toWarp": 6 },
+    { "x": 8, "z": 15, "to": "nacrene_city", "toWarp": 6 },
+    { "x": 9, "z": 15, "to": "nacrene_city", "toWarp": 6 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "waitress", "movement": "none", "x": 9, "z": 12, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "2" },
+    { "id": "1", "looks": "work_00", "movement": "none", "x": 3, "z": 6, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "3" },
+    { "id": "2", "looks": "work_01", "movement": "none", "x": 4, "z": 7, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "4" },
+    { "id": "3", "looks": "27", "movement": "none", "x": 8, "z": 3, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "5" },
+    { "id": "4", "looks": "backers_m", "movement": "none", "x": 8, "z": 5, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "6" },
+    { "id": "5", "looks": "19", "movement": "none", "x": 8, "z": 9, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "7" },
+    { "id": "6", "looks": "nursery_aide", "movement": "none", "x": 10, "z": 10, "facing": 0, "rangeX": 0, "rangeZ": 7, "script": "8" }
+  ],
+  "signs": [],
+  "triggers": []
+}

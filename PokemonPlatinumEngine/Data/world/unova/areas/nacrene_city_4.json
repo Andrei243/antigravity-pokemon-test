@@ -1,0 +1,25 @@
+{
+  "key": "nacrene_city_4",
+  "index": 19,
+  "name": "Nacrene City",
+  "matrix": 378,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_C_02",
+  "nightMusic": "BGM_C_02",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 19, "to": "nacrene_city_3", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "86", "movement": "none", "x": 5, "z": 3, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "3" }
+  ],
+  "signs": [],
+  "triggers": []
+}

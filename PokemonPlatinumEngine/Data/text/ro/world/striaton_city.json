@@ -1,0 +1,254 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Fisherman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The fountain's water comes all the way from Wellspring Cave. It's the cleanest in Unova."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Pokémon Breeder"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Striaton is a quiet city. Perfect for raising Pokémon."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "12": {
+      "name": {
+        "en": [
+          "Artist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The old Trainers' School is where I learned to draw Pokémon."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "13": {
+      "name": {
+        "en": [
+          "Roughneck"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The restaurant's three brothers used to run the Gym. Now they just run the restaurant."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "14": {
+      "name": {
+        "en": [
+          "Twins"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Dreamyard is behind the city. It's spooky at night!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "15": {
+      "name": {
+        "en": [
+          "Artist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The fountains in the plaza look different in every light."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "16": {
+      "name": {
+        "en": [
+          "Roughneck"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I eat at the restaurant every day. The brothers know my order by heart."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "17": {
+      "name": {
+        "en": [
+          "Backers"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We cheer for the brothers' battles at the restaurant. Three at once!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "18": {
+      "name": {
+        "en": [
+          "Nursery Aide"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The children love the fountains. So do I."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "19": {
+      "name": {
+        "en": [
+          "Backers"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Striaton's the first city most Trainers from Nuvema see."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "20": {
+      "name": {
+        "en": [
+          "Pokémon Breeder"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Pokémon love walking by the fountain. They always want to splash in."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "21": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm going to the Dreamyard to look for Munna!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "2": {
+      "en": [
+        "Striaton City\nA city that blooms with the passion of Trainers"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "3": {
+      "en": [
+        "Trainers' School"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "4": {
+      "en": [
+        "Striaton Restaurant"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "5": {
+      "en": [
+        "Trainer Tips\nThe Dreamyard lies east of the city."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

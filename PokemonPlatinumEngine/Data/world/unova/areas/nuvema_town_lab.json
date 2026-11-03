@@ -1,0 +1,36 @@
+{
+  "key": "nuvema_town_lab",
+  "index": 396,
+  "name": "Nuvema Town",
+  "matrix": 42,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_LABO",
+  "nightMusic": "BGM_LABO",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 11, "to": "nuvema_town", "toWarp": 3 },
+    { "x": 4, "z": 11, "to": "nuvema_town", "toWarp": 3 },
+    { "x": 5, "z": 11, "to": "nuvema_town", "toWarp": 3 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "104", "movement": "none", "x": 12, "z": 7, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "7" },
+    { "id": "1", "looks": "105", "movement": "none", "x": 4, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "6" },
+    { "id": "2", "looks": "305", "movement": "wander_around", "x": 12, "z": 4, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "8" },
+    { "id": "3", "looks": "376", "movement": "wander_around", "x": 8, "z": 8, "facing": 1, "rangeX": 2, "rangeZ": 2, "script": "9" }
+  ],
+  "signs": [
+    { "x": 7, "z": 5, "type": 0, "script": "1" },
+    { "x": 5, "z": 2, "type": 0, "script": "2" },
+    { "x": 6, "z": 2, "type": 0, "script": "3" },
+    { "x": 1, "z": 4, "type": 0, "script": "4" },
+    { "x": 1, "z": 5, "type": 0, "script": "5" }
+  ],
+  "triggers": []
+}

@@ -1,0 +1,562 @@
+{
+  "people": {
+    "7": {
+      "name": {
+        "en": [
+          "Amy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "We're Amy and May! We battle together, so you'll battle us both!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "We lost together too."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "8": {
+      "name": {
+        "en": [
+          "May"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "We're Amy and May! We battle together, so you'll battle us both!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "We lost together too."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "9": {
+      "name": {
+        "en": [
+          "Jojo"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "I'm big now! I can battle by myself!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "I'm still big. Just a bit sad."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "10": {
+      "name": {
+        "en": [
+          "Ethel"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "I'm minding the little ones on their walk. A quick battle won't hurt!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Back in line, everyone!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "11": {
+      "name": {
+        "en": [
+          "Samantha"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "I found a really cool leaf! Battle me for it!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "You can keep the leaf. No, wait, I'll keep it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "12": {
+      "name": {
+        "en": [
+          "Jose"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "My Pokémon is the strongest in the whole nursery!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "In the nursery. Not in the forest."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "13": {
+      "name": {
+        "en": [
+          "Keita"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Lost in the woods? Battle your way out!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "You found your way. Past me."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "14": {
+      "name": {
+        "en": [
+          "Hillary"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "I look after the forest's Pokémon. Let me see how you look after yours!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "You look after them well."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "15": {
+      "name": {
+        "en": [
+          "Dwayne"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Rangers have to be ready for anything. Even you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "I wasn't ready for that."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "16": {
+      "name": {
+        "en": [
+          "Sinan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "I've walked this forest for fifty years. Battle me, young one!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fifty years, and still learning."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "17": {
+      "name": {
+        "en": [
+          "Ralph"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "The forest is calm today. Let's liven it up!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Too lively for me."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "18": {
+      "name": {
+        "en": [
+          "Rosaline"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Old Trainers know old tricks. Let me show you a few."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "You knew newer ones."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "19": {
+      "name": {
+        "en": [
+          "Nicholas"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "I'm catching every Bug Pokémon in here! You first!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "You're not a Bug Pokémon. And you won."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "20": {
+      "name": {
+        "en": [
+          "Melita"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "The trees are listening. Let's give them a good battle to hear!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "They heard me lose."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "23": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm counting the Pokémon of the forest. Every year there are a few more Sewaddle."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "25": {
+      "name": {
+        "en": [
+          "Rosalyn"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "One battle, then it's naptime for the little ones!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Naptime for me too, I think."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "26": {
+      "name": {
+        "en": [
+          "Ike"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "My Pokémon is really, really fast!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Not fast enough!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "27": {
+      "name": {
+        "en": [
+          "Helia"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "I picked this forest for a picnic. A battle makes a better picnic!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "My picnic's ruined."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "28": {
+      "name": {
+        "en": [
+          "Henley"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "I climb the trees to look for Pokémon. Found one! Yours!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Yours was too strong to catch."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "29": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "They say a Pokémon of legend once rested in the middle of this wood."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "30": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came down from the north through the trees. Nacrene's just past the clearing."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "31": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We're studying how the wood's Pokémon change with the seasons. Spring is the busiest."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "1": {
+      "en": [
+        "Pinwheel Forest\nThe path to the Skyarrow Bridge"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "2": {
+      "en": [
+        "Trainer Tips\nThe forest's paths twist. Keep the stream on your right to find the bridge."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

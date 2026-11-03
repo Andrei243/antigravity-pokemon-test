@@ -3639,6 +3639,56 @@ or beaten (`FLAG_UNOVA_FOUGHT_<SPECIES>`), back the next time its place is come 
 - **Still held back.** The artist, the three at the wood's mouth and the trigger before the shrine (the scene of the forces
   of nature) and the house by the pond stay as part d's first piece left them.
 
+## The old roads round Icirrus City (2026-11-04, plan 22 · U10, part e)
+
+- **What is open.** Twist Mountain from its foot at Route 7's north end through its five floors and its miners' room to
+  Icirrus City, with its deepest tunnel joined to Clay Tunnel's third floor (whose way on was shut until now) and its chamber;
+  Icirrus City with its Gym, two houses, the Pokémon Fan Club and its Pokémon Center; Route 8 and the Moor of Icirrus; the
+  Tubeline Bridge with its two gate houses (`bridge_gate_gate_2` and `_3`, Black 2's own; the zone `tubeline_bridge_gate`
+  shares the bridge's matrix and is no room), so Route 9's way west (warp 0, locked since U8) leads on to it; and the
+  Dragonspiral Tower's ground and floors. All open from the start, as Black 2's are; the trainers are Black 2's.
+- **The tower's rail walks.** Black 2's `dragonspiral_tower_5` and `_7` are the walks round the tower's outside, on rails, with
+  no ground in the import. They are not opened: the third floor's stairs up lead straight to where the walk comes in on the
+  fourth floor (Black 2's `_6`), and its way up to the fifth (`_8`), by the overlays' `doors`. The maps are named by the floors
+  the player walks (`DragonspiralTower_1F` to `_5F` and `_Top`).
+- **Left out.** Black 2's people and triggers of the old roads' scenes (the tower's dragon at its top, the artist of the moor,
+  the rocks by Icirrus's Gym, the worker of Twist Mountain's hall), Twist Mountain's winter ice blocks, its lifts (drawn as the
+  floor they stand on), and the Icirrus Gym's slides: its Leader is gone to Pokéstar Studios, so only its guide is there. The
+  house in Icirrus City's south-east corner has its door on the side no way reaches, and stays shut. A Big Nugget and two Comet
+  Shards are held back, those items not being in the game's data.
+- **Regigigas.** It sleeps in Twist Mountain's chamber (Black 2's object, hidden by its own flag there) and wakes, as Platinum's
+  does in Snowpoint Temple, only for a team carrying Regirock, Regice and Registeel; level 68, gone for good once caught or
+  beaten (`FLAG_UNOVA_FOUGHT_REGIGIGAS`), back the next time if run from. Black 2's event Regigigas, which opened the Regis'
+  chambers, has no stand-in: our chambers open by the Underground Ruins' switch (part b).
+- **Icirrus City's houses** are built as Pastoria's (`Architecture.Marsh`, boards under reed-green roofs): a marsh town's
+  look, until a row of the style guide's "Buildings" is written for Icirrus. Its songs stand in from Lacunosa Town's (the town),
+  Route 6's (the roads), Reversal Mountain's cave (Twist Mountain), Lostlorn Forest's (the moor), the Village Bridge's (the
+  Tubeline Bridge) and the Celestial Tower's (the Dragonspiral Tower), until plan 05 writes Unova's `icirrus` and
+  `dragonspiral_tower`.
+
+## The old roads from the Skyarrow Bridge to Nuvema Town (2026-11-04, plan 22 · U10, part f)
+
+- **What is open.** Route 17's gate on to Route 1 (unlocked), Route 1, Nuvema Town with its houses and Professor Juniper's
+  lab, Accumula Town with its gate, houses and Pokémon Center, Route 2, Striaton City with its restaurant, Trainers' School,
+  houses and Pokémon Center, the Dreamyard and its basement, Route 3 with the Pokémon Nursery and the Day Care's house,
+  Wellspring Cave's upper floor, Nacrene City with its gate, museum (both floors), warehouse studios, café and Pokémon Center,
+  Pinwheel Forest's clearing and heart, and the Skyarrow Bridge's west end and its gate house. All open from the start, as
+  Black 2's are; the trainers are Black 2's. The walk of the whole game finds them by Route 17's gate.
+- **What stays shut.** The Skyarrow Bridge itself (`skyarrow_bridge`) and its Castelia gate: the bridge stands on Black 2's
+  rails with no ground in the import, so its west gate's way on leads nowhere yet, and Castelia's side is unchanged.
+  Wellspring Cave's lower floor, which nothing walked reaches from the upper one in the import. Two rooms Black 2 reaches only by
+  scene (`nacrene_city_11`, `striaton_city_10`). The Rumination Field off Pinwheel Forest. Black 2's people and triggers of
+  scenes throughout (Uxie in Nacrene, Juniper and her aides in the lab, the brothers' workers in the restaurant, the smoke and
+  the Munna of the Dreamyard), its Pokémon of the rooms, and a Big Nugget and a Balm Mushroom (items not in the game's data).
+- **Pinwheel Forest's planks.** The heart's plank bridges over its streams are its chunks' second grid, read as decks as
+  Humilau's boardwalks are (`Bw2World.Decks` gains the forest's twelve chunks).
+- **The Day Care's house** on Route 3 is people and words only: leaving Pokémon there waits for a session that gives Unova a
+  Day Care (Sinnoh's is Solaceon's). **Buildings**: Striaton's are Hearthome's townhouses, Nacrene's warehouses Driftveil's
+  brick (`Storehouse`), Accumula's Aspertia's (`Hillside`) and Nuvema's and the Day Care's Floccesy's (`Bellfield`), until rows
+  of the style guide's "Buildings" are written for them. The songs stand in from Floccesy (Striaton, Nuvema), Aspertia
+  (Accumula), Driftveil (Nacrene), Route 19 (Routes 1 and 2), Route 4 (Route 3), Lostlorn Forest (Pinwheel Forest), the Relic
+  Passage (the Dreamyard) and the Seaside Cave (Wellspring Cave), until plan 05 writes `nuvema`, `accumula`, `striaton`, `nacrene`.
+
 ## The Hidden Grottoes (2026-11-02, plan 22 · U11)
 
 Black 2's Hidden Grottoes are hollows in the trees that hold one thing at a time. The decompilation has the grotto's own room

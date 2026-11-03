@@ -1,7 +1,7 @@
 {
   // Clay Tunnel's third floor (plan 22 · U10, part b), Black 2's, our words: the long works under the hills, with the way into
-  // the Underground Ruins (warp 3) and the way on to Twist Mountain (warps 4, 7, 8), which stays shut until the old roads round
-  // Icirrus City are open. Mining carts: the workers by them ride the player up to the first floor (8, 13) or across the floor
+  // the Underground Ruins (warp 3) and the way on to Twist Mountain (warps 4, 7, 8), open since the old roads round Icirrus City
+  // were (plan 22 · U10, part e). Mining carts: the workers by them ride the player up to the first floor (8, 13) or across the floor
   // (9 and 12, 10 and 11, each to the other's end). Black 2 keeps one worker at each cart and moves them with it; ours stay put
   "area": "clay_tunnel_3",
   "bgmTrack": "unova/seaside_cave",

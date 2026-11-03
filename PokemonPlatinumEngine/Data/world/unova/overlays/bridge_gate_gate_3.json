@@ -1,0 +1,11 @@
+{
+  // The gate house between the Tubeline Bridge and Route 9 (plan 22 · U10, part e): three who talk, our words. Black 2's trigger by
+  // its door (5) belongs to a scene and is left out
+  "area": "bridge_gate_gate_3",
+  "bgmTrack": "unova/opelucid",
+  "people": {
+    "0": { "name": "Youngster", "dialog": [ "Opelucid City is just east of here, past the mall on Route 9." ] },
+    "1": { "name": "Backers", "dialog": [ "We're off to cheer at the Dragon Gym! Drayden's battles are always a show." ] },
+    "2": { "name": "Backers", "dialog": [ "Don't forget the banners! Oh, you're not with us? Never mind!" ] }
+  }
+}

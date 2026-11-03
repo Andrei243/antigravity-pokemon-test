@@ -1,0 +1,29 @@
+{
+  "key": "nuvema_town_4",
+  "index": 392,
+  "name": "Nuvema Town",
+  "matrix": 37,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_T_01",
+  "nightMusic": "BGM_T_01",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 10, "to": "nuvema_town", "toWarp": 1 },
+    { "x": 11, "z": 2, "to": "nuvema_town_5", "toWarp": 0 },
+    { "x": 6, "z": 10, "to": "nuvema_town", "toWarp": 1 },
+    { "x": 7, "z": 10, "to": "nuvema_town", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "pokefan_f", "movement": "none", "x": 3, "z": 5, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "2" },
+    { "id": "1", "looks": "pokefan_m", "movement": "none", "x": 8, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -1,0 +1,12 @@
+{
+  // The Dragonspiral Tower, its fifth floor (plan 22 · U10, part e): Black 2's. Its way down (warp 0) leads onto Black 2's walk round
+  // the outside, which stands on rails, so it leads straight back to the fourth floor
+  // Its Comet Shard's ball (0) is held back, the item not being in the game's data
+  "area": "dragonspiral_tower_8",
+  "heldBack": [ "0" ],
+  "bgmTrack": "unova/celestial_tower",
+  "battleArena": "Cave",
+  "doors": [
+    { "warp": 0, "map": "DragonspiralTower_4F", "x": 15, "y": 7, "facing": "Down" }
+  ]
+}

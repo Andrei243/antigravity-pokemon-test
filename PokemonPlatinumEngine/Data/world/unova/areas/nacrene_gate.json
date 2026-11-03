@@ -1,0 +1,33 @@
+{
+  "key": "nacrene_gate",
+  "index": 27,
+  "name": "Nacrene Gate",
+  "matrix": 50,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_GATE",
+  "nightMusic": "BGM_GATE",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 15, "z": 4, "to": "unova_route_3", "toWarp": 0 },
+    { "x": 1, "z": 4, "to": "nacrene_city", "toWarp": 10 },
+    { "x": 15, "z": 5, "to": "unova_route_3", "toWarp": 0 },
+    { "x": 15, "z": 6, "to": "unova_route_3", "toWarp": 0 },
+    { "x": 1, "z": 5, "to": "nacrene_city", "toWarp": 10 },
+    { "x": 1, "z": 6, "to": "nacrene_city", "toWarp": 10 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "76", "movement": "none", "x": 13, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "2" },
+    { "id": "1", "looks": "dancer", "movement": "none", "x": 4, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "4" },
+    { "id": "2", "looks": "lass", "movement": "wander_around", "x": 11, "z": 7, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "3" },
+    { "id": "3", "looks": "pkmn_breeder_f", "movement": "look_around", "x": 6, "z": 7, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "5" }
+  ],
+  "signs": [],
+  "triggers": []
+}

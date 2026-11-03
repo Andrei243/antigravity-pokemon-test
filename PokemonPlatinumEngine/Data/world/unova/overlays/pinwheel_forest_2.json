@@ -1,0 +1,37 @@
+{
+  // Pinwheel Forest's heart (plan 22 · U10, part f): Black 2's wood between the Skyarrow Bridge's path and its clearing, its
+  // trainers, balls and hidden things read by the importer, our words. Its people of scenes (21, 24) and its triggers are left
+  // out; the way into the Rumination Field (not open) stays shut
+  "area": "pinwheel_forest_2",
+  // (an item this game's data hasn't is held back)
+  "heldBack": [ "8047" ],
+  "bgmTrack": "unova/lostlorn_forest",
+  "people": {
+    "7": { "name": "Amy", "trainer": { "dialogueBefore": "We're Amy and May! We battle together, so you'll battle us both!", "dialogueAfter": "We lost together too." } },
+    "8": { "name": "May", "trainer": { "dialogueBefore": "We're Amy and May! We battle together, so you'll battle us both!", "dialogueAfter": "We lost together too." } },
+    "9": { "name": "Jojo", "trainer": { "dialogueBefore": "I'm big now! I can battle by myself!", "dialogueAfter": "I'm still big. Just a bit sad." } },
+    "10": { "name": "Ethel", "trainer": { "dialogueBefore": "I'm minding the little ones on their walk. A quick battle won't hurt!", "dialogueAfter": "Back in line, everyone!" } },
+    "11": { "name": "Samantha", "trainer": { "dialogueBefore": "I found a really cool leaf! Battle me for it!", "dialogueAfter": "You can keep the leaf. No, wait, I'll keep it." } },
+    "12": { "name": "Jose", "trainer": { "dialogueBefore": "My Pokémon is the strongest in the whole nursery!", "dialogueAfter": "In the nursery. Not in the forest." } },
+    "13": { "name": "Keita", "trainer": { "dialogueBefore": "Lost in the woods? Battle your way out!", "dialogueAfter": "You found your way. Past me." } },
+    "14": { "name": "Hillary", "trainer": { "dialogueBefore": "I look after the forest's Pokémon. Let me see how you look after yours!", "dialogueAfter": "You look after them well." } },
+    "15": { "name": "Dwayne", "trainer": { "dialogueBefore": "Rangers have to be ready for anything. Even you!", "dialogueAfter": "I wasn't ready for that." } },
+    "16": { "name": "Sinan", "trainer": { "dialogueBefore": "I've walked this forest for fifty years. Battle me, young one!", "dialogueAfter": "Fifty years, and still learning." } },
+    "17": { "name": "Ralph", "trainer": { "dialogueBefore": "The forest is calm today. Let's liven it up!", "dialogueAfter": "Too lively for me." } },
+    "18": { "name": "Rosaline", "trainer": { "dialogueBefore": "Old Trainers know old tricks. Let me show you a few.", "dialogueAfter": "You knew newer ones." } },
+    "19": { "name": "Nicholas", "trainer": { "dialogueBefore": "I'm catching every Bug Pokémon in here! You first!", "dialogueAfter": "You're not a Bug Pokémon. And you won." } },
+    "20": { "name": "Melita", "trainer": { "dialogueBefore": "The trees are listening. Let's give them a good battle to hear!", "dialogueAfter": "They heard me lose." } },
+    "23": { "name": "Scientist", "dialog": [ "I'm counting the Pokémon of the forest. Every year there are a few more Sewaddle." ] },
+    "25": { "name": "Rosalyn", "trainer": { "dialogueBefore": "One battle, then it's naptime for the little ones!", "dialogueAfter": "Naptime for me too, I think." } },
+    "26": { "name": "Ike", "trainer": { "dialogueBefore": "My Pokémon is really, really fast!", "dialogueAfter": "Not fast enough!" } },
+    "27": { "name": "Helia", "trainer": { "dialogueBefore": "I picked this forest for a picnic. A battle makes a better picnic!", "dialogueAfter": "My picnic's ruined." } },
+    "28": { "name": "Henley", "trainer": { "dialogueBefore": "I climb the trees to look for Pokémon. Found one! Yours!", "dialogueAfter": "Yours was too strong to catch." } },
+    "29": { "name": "Old Man", "npcType": "middle_aged_man", "dialog": [ "They say a Pokémon of legend once rested in the middle of this wood." ] },
+    "30": { "name": "Hiker", "dialog": [ "I came down from the north through the trees. Nacrene's just past the clearing." ] },
+    "31": { "name": "Scientist", "dialog": [ "We're studying how the wood's Pokémon change with the seasons. Spring is the busiest." ] }
+  },
+  "signs": {
+    "1": "Pinwheel Forest\nThe path to the Skyarrow Bridge",
+    "2": "Trainer Tips\nThe forest's paths twist. Keep the stream on your right to find the bridge."
+  }
+}

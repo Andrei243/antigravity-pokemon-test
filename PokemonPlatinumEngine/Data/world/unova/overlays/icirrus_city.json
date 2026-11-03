@@ -1,0 +1,23 @@
+{
+  // Icirrus City (plan 22 · U10, part e): Black 2's marsh town between Twist Mountain and Route 8, its people, balls and signs read
+  // by the importer, our words. Black 2's three rocks of a scene (10 to 12) and the trigger by the Gym (13) are left out. In
+  // winter the town's marsh freezes over (the seasons' chunks of its cells). The house in the south-east (warp 6) has its door on
+  // the trees' side, which no way reaches, and stays shut
+  "area": "icirrus_city",
+  "bgmTrack": "unova/lacunosa",
+  "people": {
+    "0": { "name": "Lass", "dialog": [ "In spring the whole town turns to marsh. In winter you can skate from one end to the other!" ] },
+    "1": { "name": "Parasol Lady", "dialog": [ "I carry my parasol in every season here. Rain, snow, the odd hailstone... you never know." ] },
+    "2": { "name": "Backers", "dialog": [ "The Gym's been quiet since its Leader went off to act in films. We still cheer for it, though." ] },
+    "3": { "name": "Black Belt", "dialog": [ "I train in the shallows. Wading through the marsh builds the legs like nothing else!" ] },
+    "4": { "name": "Old Man", "npcType": "old_man", "dialog": [ "Up north stands the Dragonspiral Tower, the oldest thing in Unova. Nobody knows who built it." ] },
+    "5": { "name": "Backers", "dialog": [ "The Pokémon Fan Club's chairman lives here. He'll talk your ear off about his favourites." ] },
+    "6": { "name": "Lass", "dialog": [ "Route 8 is all bog. Watch your step or you'll be in it up to your knees." ] },
+    "7": { "name": "Young Boy", "npcType": "school_kid_m", "dialog": [ "When the marsh freezes I'm going to slide all the way to the Pokémon Center!" ] },
+    "8": { "name": "Parasol Lady", "dialog": [ "The mountain's tunnels bring the cold right down to the town. Even in summer it's cool here." ] }  },
+  "signs": {
+    "1": "Icirrus City\nThe city that changes with the seasons",
+    "2": "Pokémon Fan Club\nAll who love Pokémon are welcome!",
+    "3": "Icirrus City Pokémon Gym"
+  }
+}

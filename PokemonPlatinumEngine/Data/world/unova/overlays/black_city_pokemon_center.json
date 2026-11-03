@@ -1,0 +1,14 @@
+{
+  // Black City's Pokémon Center (plan 22 · U10, part g): the same floor as Lacunosa Town's, with the city's own people
+  "area": "black_city_pokemon_center",
+  "bgmTrack": "common/pokecenter",
+  "read": { "2108": "PC" },
+  "people": {
+    "1": { "name": "Receptionist", "npcType": "Nurse", "dialog": [ "I'm sorry, the link to other players is closed for now." ] },
+    "2": { "name": "Nurse", "npcType": "Nurse", "script": "Nurse", "isHealingNurse": true },
+    "3": { "name": "Clerk", "npcType": "Clerk", "script": "Clerk", "dialog": [ "Welcome! How can I help you?" ] },
+    "5": { "name": "Clerk", "npcType": "Clerk", "script": "Clerk", "dialog": [ "Welcome! How can I help you?" ] },
+    "6": { "name": "Clerk", "npcType": "Clerk", "script": "Clerk", "dialog": [ "Welcome! How can I help you?" ] },
+    "7": { "name": "Backpacker", "dialog": [ "Even the Pokémon Center is open all night here. Black City never stops." ] }
+  }
+}

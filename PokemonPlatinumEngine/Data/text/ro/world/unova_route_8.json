@@ -1,0 +1,178 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Parasol Lady"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The puddles here are deeper than they look. My boots learned that the hard way."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "5": {
+      "name": {
+        "en": [
+          "Astor"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "I'm the toughest kid in Icirrus! Want to see?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Okay, maybe the second toughest."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "6": {
+      "name": {
+        "en": [
+          "Mai"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "I jumped from puddle to puddle all the way here! Now I'll jump on you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Splash. That's the sound of me losing."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "7": {
+      "name": {
+        "en": [
+          "Tyra"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Rain or shine, my parasol and I are always ready for a battle."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Shine for you. Rain for me."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "8": {
+      "name": {
+        "en": [
+          "Ryder"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Nothing bites in a bog like this. Let's battle while I wait."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Something bit, all right. It was you."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "9": {
+      "name": {
+        "en": [
+          "Ingrid"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "A walk in the marsh does wonders for one's complexion. A battle, even more so!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Flushed with defeat. How unbecoming."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "1": {
+      "en": [
+        "Route 8\nIcirrus City - Tubeline Bridge"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "2": {
+      "en": [
+        "Moor of Icirrus\nRangers watch over the moor"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "3": {
+      "en": [
+        "Beware of the bog!\nKeep to the dry ground"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

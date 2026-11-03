@@ -1,0 +1,41 @@
+{
+  "people": {
+    "1": {
+      "name": {
+        "en": [
+          "Roughneck"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I look tough, but I'm the best Pokémon babysitter in Unova."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "2": {
+      "name": {
+        "en": [
+          "Backers"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We left our Pokémon here while we cheer at the matches. They come back so happy!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

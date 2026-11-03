@@ -1,0 +1,11 @@
+{
+  // The Dreamyard (plan 22 · U10, part f): Black 2's ruined grounds east of Striaton City, its trainers, the Strength boulder (1) and
+  // balls read by the importer, our words. Its objects and triggers of scenes are left out
+  "area": "dreamyard",
+  "bgmTrack": "unova/relic_passage",
+  "people": {
+    "8": { "name": "William", "trainer": { "dialogueBefore": "I come to the Dreamyard to catch Munna. Battle me instead!", "dialogueAfter": "You're no Munna." } },
+    "9": { "name": "Rita", "trainer": { "dialogueBefore": "My teacher says the ruins were a laboratory once. Spooky!", "dialogueAfter": "Spookier to lose." } },
+    "10": { "name": "Keita", "trainer": { "dialogueBefore": "I'm exploring the ruins! Want to battle?", "dialogueAfter": "The ruins win this one. And you." } }
+  }
+}

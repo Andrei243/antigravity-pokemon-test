@@ -1,4 +1,4 @@
-using PokemonPlatinumEngine.Graphics;
+﻿using PokemonPlatinumEngine.Graphics;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Overworld;
@@ -464,8 +464,8 @@ public class UnovaTests
         // the road's small tree and boulder are Black 2's obstacles, told by the global scripts they run
         Assert.Contains(Overworld.NPCs, n => n.Obstacle == PropType.CutTree && Overworld.AreaAt(n.GridX, n.GridY)?.Key == "unova_route_16");
         Assert.Contains(Overworld.NPCs, n => n.Obstacle == PropType.StrengthBoulder && Overworld.AreaAt(n.GridX, n.GridY)?.Key == "unova_route_16");
-        // the Marvelous Bridge beyond the gate house at the road's east end is the post-game's
-        Assert.DoesNotContain(Overworld.Warps, w => w.SourceX == 503 && w.SourceY is 431 or 432);
+        // the gate house at the road's east end leads to the Marvelous Bridge since plan 22 · U10, part g
+        Assert.Contains(Overworld.Warps, w => w.TargetMap == "MarvelousBridgeGate_East");
         var forest = MapNamed("LostlornForest");
         Assert.Contains(forest.NPCs, n => n.Key == "7" && n.Script == "Traveller");
         Assert.True(forest.NPCs.Count(n => n.IsTrainer) >= 4);
@@ -583,7 +583,13 @@ public class UnovaTests
                 // and the P2 Laboratory since plan 22 · U10, part c
                 || m.Name == "d13_house"
                 // and the Abundant Shrine and its house since plan 22 · U10, part d
-                || m.Name is "d19_house01" or "d19_shirne01")
+                || m.Name is "d19_house01" or "d19_shirne01"
+                // and Icirrus City's houses since plan 22 · U10, part e
+                || m.Name == "c7_house"
+                // and the old roads from the Skyarrow Bridge to Nuvema Town since plan 22 · U10, part f
+                || m.Name is "c1_build" or "c1_rest" or "c1_school" or "c2_build" or "c2_cafe" or "c2_museum" or "t1_house" or "t1_labo" or "t2_house01" or "t2_build01" or "sodateya"
+                // and Black City and Route 15 since plan 22 · U10, part g
+                || m.Name is "bc_build_s1" or "bc_house_s1" or "bc_shop_s1" or "bc_mugen_s1" or "palpark")
                 Assert.True(string.IsNullOrEmpty(m.StandInUntil), $"{m.Name} is still a stand-in");
             else Assert.False(string.IsNullOrEmpty(m.StandInUntil), $"{m.Name} is no stand-in");
         }
@@ -619,5 +625,39 @@ public class UnovaTests
         // the house by the pond and the gate to Black City lead nowhere yet
         Assert.DoesNotContain(shrine.Warps, w => w.TargetMap.StartsWith("AbundantShrine_", StringComparison.Ordinal));
         Assert.Equal(BuildingKind.Shrine, WorldModels.Of("d19_shirne01", "unova")!.Kind);
+    }
+
+    [Fact]
+    public void TheOldRoadsRoundIcirrusCityAreWalkedFromRouteSevenAndRouteNine()
+    {
+        // Plan 22 · U10, part e: Twist Mountain from Route 7's north end to Icirrus City, Route 8 and its moor, the Tubeline Bridge on to
+        // Route 9, and the Dragonspiral Tower to its top, whose rail walks are joined by the overlays' doors
+        var walked = Walked.Value;
+        foreach (var key in new[] { "twist_mountain", "icirrus_city", "unova_route_8", "dragonspiral_tower" })
+            Assert.Contains(walked[Overworld], t => Overworld.AreaAt(t.X, t.Y)?.Key == key);
+        foreach (var name in new[] { "TwistMountain_1", "TwistMountain_4", "TwistMountain_Chamber", "IcirrusCity_Gym", "IcirrusCity_FanClub",
+            "MoorOfIcirrus", "TubelineBridge", "TubelineBridgeGate_West", "TubelineBridgeGate_East", "DragonspiralTower_5F", "DragonspiralTower_Top" })
+            Assert.Contains(walked.Keys, m => m.Name == name);
+        // Black 2's trainers stand with their teams; Regigigas sleeps in the chamber
+        Assert.Contains(MapNamed("TwistMountain_1").Everyone, n => n.TrainerData?.Id == "unova_hiker_wade");
+        Assert.Contains(Overworld.Everyone, n => n.TrainerData?.Id == "unova_youngster_astor");
+        Assert.Contains(MapNamed("TwistMountain_Chamber").Everyone, n => n.Species == "Regigigas");
+        // Clay Tunnel's way on to Twist Mountain is open now
+        Assert.Contains(MapNamed("ClayTunnel_3").Warps, w => w.TargetMap == "TwistMountain_5");
+    }
+    [Fact]
+    public void TheOldRoadsFromNuvemaToPinwheelForestAreWalkedFromRouteSeventeen()
+    {
+        // Plan 22 · U10, part f: Route 17's gate leads to Route 1, Nuvema Town and on through Accumula Town, Route 2, Striaton City,
+        // Route 3 and Nacrene City to Pinwheel Forest and the Skyarrow Bridge's west gate
+        var walked = Walked.Value;
+        foreach (var key in new[] { "unova_route_1", "nuvema_town", "accumula_town", "unova_route_2", "striaton_city", "unova_route_3", "nacrene_city", "pinwheel_forest" })
+            Assert.Contains(walked[Overworld], t => Overworld.AreaAt(t.X, t.Y)?.Key == key);
+        foreach (var name in new[] { "Route1Gate", "NuvemaTown_Lab", "AccumulaTown_PokemonCenter", "StriatonCity_Room9", "Dreamyard_Basement",
+            "WellspringCave_1F", "NacreneCity_Museum2F", "PinwheelForest_Inside", "SkyarrowGate_Pinwheel" })
+            Assert.Contains(walked.Keys, m => m.Name == name);
+        Assert.Contains(MapNamed("PinwheelForest_Inside").Everyone, n => n.TrainerData?.Id == "unova_nursery_aide_ethel");
+        // the bridge itself stands on rails in Black 2, with no ground: its west gate leads nowhere yet
+        Assert.DoesNotContain(MapNamed("SkyarrowGate_Pinwheel").Warps, w => w.TargetMap.StartsWith("SkyarrowBridge", StringComparison.Ordinal) && w.TargetMap != "SkyarrowBridge_WestEnd" && !w.Shut);
     }
 }

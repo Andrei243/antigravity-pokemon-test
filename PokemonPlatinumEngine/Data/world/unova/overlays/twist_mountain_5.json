@@ -1,0 +1,15 @@
+{
+  // Twist Mountain's north floor (plan 22 · U10, part e), with the way out to Icirrus City and the way down to its deepest
+  // tunnel, Black 2's, our words. Black 2's winter ice blocks (0, 1) are left out, and its Big Nugget's ball (3) is held back,
+  // the item not being in the game's data
+  "area": "twist_mountain_5",
+  "heldBack": [ "3" ],
+  "bgmTrack": "unova/reversal_cave",
+  "battleArena": "Cave",
+  "people": {
+    "2": { "name": "Worker", "dialog": [ "Icirrus City is just through there. The cold hits you the moment you step out." ] },
+    "5": { "name": "Victor", "trainer": { "dialogueBefore": "My Pokémon dug half these tunnels. They can dig you a defeat too!", "dialogueAfter": "They dug us a hole instead." } },
+    "6": { "name": "Zach", "trainer": { "dialogueBefore": "I came up the mountain for the view and stayed for the battles. Have at you!", "dialogueAfter": "A fine battle. Better than the view." } },
+    "7": { "name": "Worker", "dialog": [ "Deeper down there's a tunnel that runs all the way to Driftveil's side. The diggers there are always busy." ] }
+  }
+}

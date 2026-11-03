@@ -1,0 +1,107 @@
+{
+  "key": "dragonspiral_tower",
+  "index": 205,
+  "name": "Dragonspiral Tower",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Plain",
+  "dayMusic": "BGM_R_D_SP",
+  "nightMusic": "BGM_R_D_SP",
+  "encounters": "ENCOUNTERS_DRAGONSPIRAL_TOWER",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Tranquill", "level": 55 },
+    { "species": "Sawsbuck", "level": 55 },
+    { "species": "Mienshao", "level": 56 },
+    { "species": "Sawsbuck", "level": 57 },
+    { "species": "Mienshao", "level": 57 },
+    { "species": "Tranquill", "level": 57 },
+    { "species": "Mienshao", "level": 58 },
+    { "species": "Tranquill", "level": 58 },
+    { "species": "Sawsbuck", "level": 58 },
+    { "species": "Druddigon", "level": 58 },
+    { "species": "Sawsbuck", "level": 58 },
+    { "species": "Druddigon", "level": 58 }
+  ],
+  "landRate": 13,
+  "shakingGrass": [
+    { "species": "Audino", "level": 55 },
+    { "species": "Audino", "level": 55 },
+    { "species": "Emolga", "level": 56 },
+    { "species": "Audino", "level": 56 },
+    { "species": "Audino", "level": 57 },
+    { "species": "Audino", "level": 57 },
+    { "species": "Audino", "level": 58 },
+    { "species": "Audino", "level": 58 },
+    { "species": "Audino", "level": 58 },
+    { "species": "Unfezant", "level": 58 },
+    { "species": "Audino", "level": 58 },
+    { "species": "Unfezant", "level": 58 }
+  ],
+  "shakingGrassRate": 13,
+  "seasons": [
+    {
+      "season": "Winter",
+      "land": [
+        { "species": "Vanillish", "level": 55 },
+        { "species": "Sawsbuck", "level": 55 },
+        { "species": "Mienshao", "level": 56 },
+        { "species": "Sawsbuck", "level": 57 },
+        { "species": "Mienshao", "level": 57 },
+        { "species": "Beartic", "level": 57 },
+        { "species": "Mienshao", "level": 58 },
+        { "species": "Vanillish", "level": 57 },
+        { "species": "Mienshao", "level": 58 },
+        { "species": "Beartic", "level": 58 },
+        { "species": "Mienshao", "level": 58 },
+        { "species": "Beartic", "level": 58 }
+      ],
+      "landRate": 13,
+      "darkGrass": [
+        { "species": "Vanillish", "level": 63 },
+        { "species": "Sawsbuck", "level": 63 },
+        { "species": "Mienshao", "level": 64 },
+        { "species": "Sawsbuck", "level": 65 },
+        { "species": "Mienshao", "level": 65 },
+        { "species": "Beartic", "level": 65 },
+        { "species": "Mienshao", "level": 66 },
+        { "species": "Vanillish", "level": 65 },
+        { "species": "Mienshao", "level": 66 },
+        { "species": "Beartic", "level": 66 },
+        { "species": "Mienfoo", "level": 66 },
+        { "species": "Beartic", "level": 66 }
+      ],
+      "darkGrassRate": 13,
+      "shakingGrass": [
+        { "species": "Audino", "level": 55 },
+        { "species": "Audino", "level": 55 },
+        { "species": "Emolga", "level": 56 },
+        { "species": "Audino", "level": 56 },
+        { "species": "Audino", "level": 57 },
+        { "species": "Audino", "level": 57 },
+        { "species": "Audino", "level": 58 },
+        { "species": "Audino", "level": 58 },
+        { "species": "Audino", "level": 58 },
+        { "species": "Vanilluxe", "level": 58 },
+        { "species": "Audino", "level": 58 },
+        { "species": "Vanilluxe", "level": 58 }
+      ],
+      "shakingGrassRate": 13
+    }
+  ],
+  "warps": [
+    { "x": 179, "z": 141, "to": "dragonspiral_tower_2", "toWarp": 0 },
+    { "x": 180, "z": 141, "to": "dragonspiral_tower_2", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "110", "movement": "none", "x": 174, "z": 147, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x053a", "item": "Never-Melt Ice", "script": "7238" }
+  ],
+  "signs": [],
+  "triggers": []
+}

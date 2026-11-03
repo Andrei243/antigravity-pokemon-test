@@ -1,4 +1,4 @@
-using PokemonPlatinumEngine.Core;
+﻿using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
 using PokemonPlatinumEngine.Overworld;
@@ -31,7 +31,8 @@ public class SeasonLayoutTests
         var unova = Built();
         // Route 20's four cells change in autumn (U2, part b), the ranch's gate standing in one of them in both
         var autumn = Assert.Single(unova.SwappedPlaces, p => p.Season == Season.Autumn);
-        Assert.Equal(4, autumn.Cells.Count);
+        // (and since plan 22 · U10, part f opened Route 1 and Nuvema Town, the east coast's two cells in each later season)
+        Assert.Equal(6, autumn.Cells.Count);
         Assert.Null(unova.SeasonLaid);
         string spring = Ground(unova, autumn);
         var springSolid = TilesOf(autumn).Where(t => unova.IsSolid(t.X, t.Y)).ToHashSet();
@@ -56,6 +57,24 @@ public class SeasonLayoutTests
         unova.ApplySeason(Season.Autumn);
         unova.ApplySeason(Season.Spring);
         Assert.Equal(spring, Ground(unova, autumn));
+    }
+
+    [Fact]
+    public void IcirrusCitysMarshFreezesInWinter()
+    {
+        // Plan 22 · U10, part e opened Icirrus City: its six winter cells lie in winter and turn its marsh to ice
+        var unova = Built();
+        var winter = Assert.Single(unova.SwappedPlaces, p => p.Season == Season.Winter);
+        Assert.Equal(8, winter.Cells.Count);
+        Assert.Contains(winter.Cells, c => c.X == 5 && c.Y == 6);
+        string spring = Ground(unova, winter);
+        int iceBefore = TilesOf(winter).Count(t => unova.GetGroundTile(t.X, t.Y) == TileType.Ice);
+        unova.ApplySeason(Season.Winter);
+        Assert.Equal(Season.Winter, unova.SeasonLaid);
+        Assert.NotEqual(spring, Ground(unova, winter));
+        Assert.True(TilesOf(winter).Count(t => unova.GetGroundTile(t.X, t.Y) == TileType.Ice) > iceBefore, "winter lays no ice in Icirrus City");
+        unova.ApplySeason(Season.Spring);
+        Assert.Equal(spring, Ground(unova, winter));
     }
 
     [Fact]

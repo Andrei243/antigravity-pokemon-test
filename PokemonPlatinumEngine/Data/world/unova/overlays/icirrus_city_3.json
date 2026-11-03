@@ -1,0 +1,11 @@
+{
+  // A house of Icirrus City (plan 22 · U10, part e), Black 2's, our words
+  "area": "icirrus_city_3",
+  "bgmTrack": "unova/lacunosa",
+  "people": {
+    "0": { "name": "Poké Fan", "dialog": [ "We keep the windows shut tight in winter. The wind off the mountain goes straight through you." ] },
+    "1": { "name": "Vanillite", "npcType": "Pokemon", "species": "Vanillite", "script": "Pokemon", "dialog": [ "Vanillite huddles happily by the window." ] },
+    "2": { "name": "Little Girl", "npcType": "school_kid_f", "dialog": [ "My Vanillite loves winter. In summer it stays in the cold room all day." ] },
+    "3": { "name": "Artist", "dialog": [ "I paint the marsh in all four seasons. My spring paintings are the muddiest, I'm afraid." ] }
+  }
+}

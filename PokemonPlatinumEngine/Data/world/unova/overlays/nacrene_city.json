@@ -1,0 +1,26 @@
+{
+  // Nacrene City (plan 22 · U10, part f): Black 2's city of warehouses turned to studios, its people, balls and signs read
+  // by the importer, our words. Uxie's object (0) and the trigger by the museum belong to scenes and are left out
+  "area": "nacrene_city",
+  "bgmTrack": "unova/driftveil",
+  "people": {
+    "1": { "name": "Old Man", "npcType": "middle_aged_man", "dialog": [ "The warehouses were all turned into studios. Now the whole city smells of paint." ] },
+    "2": { "name": "Old Man", "npcType": "old_man", "dialog": [ "The museum's dragon skeleton has stood in its hall since before I was born." ] },
+    "3": { "name": "Backers", "dialog": [ "Lenora runs the museum now. She's as tough a curator as she was a Leader." ] },
+    "4": { "name": "Old Woman", "npcType": "old_woman", "dialog": [ "Once a week the café puts on music. You can hear it all down the street." ] },
+    "5": { "name": "Backpacker", "dialog": [ "I came to see the museum and stayed for the café. Best coffee in Unova." ] },
+    "6": { "name": "School Kid", "dialog": [ "We're here on a school trip to the museum. I'm going to look at the fossils!" ] },
+    "7": { "name": "School Kid", "dialog": [ "My art teacher says Nacrene is where all the great painters live." ] },
+    "8": { "name": "Old Woman", "npcType": "old_woman", "dialog": [ "The old rails along the city were for trains carrying goods. Now people walk on them." ] },
+    "9": { "name": "Dancer", "dialog": [ "Nacrene's streets are made for dancing. Nobody minds a little music here." ] },
+    "10": { "name": "Clerk", "dialog": [ "I sell paint in the warehouse district. Business is always good." ] },
+    "11": { "name": "Artist", "dialog": [ "I'm painting the museum's roof. It's harder than it looks; the light keeps changing." ] }
+  },
+  "signs": {
+    "2": "Nacrene City\nThe city of art, where the past meets the present",
+    "3": "Nacrene Museum\nFossils and treasures of Unova",
+    "4": "Nacrene City Warehouse District",
+    "14": "Café Warehouse",
+    "15": "Trainer Tips\nWarehouses here have been turned into studios. Please knock before you enter!"
+  }
+}

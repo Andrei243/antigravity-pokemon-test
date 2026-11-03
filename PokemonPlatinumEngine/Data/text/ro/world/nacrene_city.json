@@ -1,0 +1,244 @@
+{
+  "people": {
+    "1": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The warehouses were all turned into studios. Now the whole city smells of paint."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "2": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The museum's dragon skeleton has stood in its hall since before I was born."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "3": {
+      "name": {
+        "en": [
+          "Backers"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Lenora runs the museum now. She's as tough a curator as she was a Leader."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "4": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Once a week the café puts on music. You can hear it all down the street."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "5": {
+      "name": {
+        "en": [
+          "Backpacker"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came to see the museum and stayed for the café. Best coffee in Unova."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "6": {
+      "name": {
+        "en": [
+          "School Kid"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We're here on a school trip to the museum. I'm going to look at the fossils!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "7": {
+      "name": {
+        "en": [
+          "School Kid"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My art teacher says Nacrene is where all the great painters live."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "8": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The old rails along the city were for trains carrying goods. Now people walk on them."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "9": {
+      "name": {
+        "en": [
+          "Dancer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Nacrene's streets are made for dancing. Nobody minds a little music here."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "10": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I sell paint in the warehouse district. Business is always good."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "11": {
+      "name": {
+        "en": [
+          "Artist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm painting the museum's roof. It's harder than it looks; the light keeps changing."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "2": {
+      "en": [
+        "Nacrene City\nThe city of art, where the past meets the present"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "3": {
+      "en": [
+        "Nacrene Museum\nFossils and treasures of Unova"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "4": {
+      "en": [
+        "Nacrene City Warehouse District"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "14": {
+      "en": [
+        "Café Warehouse"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "15": {
+      "en": [
+        "Trainer Tips\nWarehouses here have been turned into studios. Please knock before you enter!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

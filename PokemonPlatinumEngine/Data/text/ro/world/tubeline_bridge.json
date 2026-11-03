@@ -1,0 +1,77 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Poké Fan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The trains run underneath us, inside the bridge. You can feel them hum through your shoes."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I walk the bridge every day for my health. Opelucid at one end, Icirrus at the other. A good stretch."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "2": {
+      "name": {
+        "en": [
+          "Battle Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Sprinting the length of this bridge is my morning training. Want to race? No? Suit yourself!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "4": {
+      "name": {
+        "en": [
+          "Biker"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "No riding on the bridge, they say. So I walk my bike. Very slowly. Very sadly."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,9 @@
+{
+  // A house of Nacrene City (plan 22 · U10, part f), Black 2's, our words
+  "area": "nacrene_city_9",
+  "bgmTrack": "unova/driftveil",
+  "people": {
+    "0": { "name": "Backers", "dialog": [ "We cheer for every Gym Leader. Lenora's battles were always the loudest." ] },
+    "1": { "name": "Old Man", "npcType": "old_man", "dialog": [ "I used to work in these warehouses. Now they're full of paintbrushes instead of crates." ] }
+  }
+}

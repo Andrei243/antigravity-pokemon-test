@@ -1,0 +1,43 @@
+{
+  "key": "nacrene_city_2",
+  "index": 17,
+  "name": "Nacrene City",
+  "matrix": 52,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_C_02",
+  "nightMusic": "BGM_C_02",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 11, "z": 28, "to": "nacrene_city", "toWarp": 11 },
+    { "x": 11, "z": 2, "to": "nacrene_city_3", "toWarp": 0 },
+    { "x": 12, "z": 28, "to": "nacrene_city", "toWarp": 11 },
+    { "x": 13, "z": 28, "to": "nacrene_city", "toWarp": 11 },
+    { "x": 12, "z": 2, "to": "nacrene_city_3", "toWarp": 0 },
+    { "x": 13, "z": 2, "to": "nacrene_city_3", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "76", "movement": "none", "x": 9, "z": 26, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "4" },
+    { "id": "1", "looks": "76", "movement": "none", "x": 9, "z": 25, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "5" },
+    { "id": "2", "looks": "scientist_m_52", "movement": "none", "x": 12, "z": 21, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "6" },
+    { "id": "3", "looks": "artist", "movement": "none", "x": 3, "z": 12, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "9" },
+    { "id": "4", "looks": "school_kid_f", "movement": "none", "x": 7, "z": 5, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "8" },
+    { "id": "5", "looks": "model_dragon_bone", "movement": "none", "x": 12, "z": 19, "facing": 1, "rangeX": 0, "rangeZ": 0, "y": 4, "script": "2000" },
+    { "id": "6", "looks": "76", "movement": "none", "x": 15, "z": 25, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "10280" },
+    { "id": "7", "looks": "pkmn_ranger_f", "movement": "none", "x": 20, "z": 16, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "10" },
+    { "id": "8", "looks": "18", "movement": "none", "x": 15, "z": 22, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "7" },
+    { "id": "9", "looks": "86", "movement": "none", "x": 12, "z": 13, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02b7", "script": "2000" },
+    { "id": "10", "looks": "work_00", "movement": "none", "x": 6, "z": 9, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "2000" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 11, "z": 22, "width": 3, "depth": 1, "script": "3", "variable": "VAR_UNOVA_0x407c", "value": "0" },
+    { "x": 10, "z": 6, "width": 5, "depth": 1, "script": "18", "variable": "VAR_UNOVA_0x4140", "value": "1" }
+  ]
+}

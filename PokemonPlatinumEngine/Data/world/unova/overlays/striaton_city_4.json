@@ -1,0 +1,9 @@
+{
+  // The upper floor of a house of Striaton City (plan 22 · U10, part f), Black 2's, our words
+  "area": "striaton_city_4",
+  "bgmTrack": "unova/floccesy",
+  "people": {
+    "1": { "name": "Backers", "dialog": [ "Don't mind the mess. We're getting ready for the big match." ] },
+    "2": { "name": "Nursery Aide", "dialog": [ "My day off! I'm not looking after anyone today but myself." ] }
+  }
+}

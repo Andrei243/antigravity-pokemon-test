@@ -1,0 +1,214 @@
+{
+  "people": {
+    "5": {
+      "name": {
+        "en": [
+          "Kentaro"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "The forest is my dojo! Show me your fighting spirit!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "My spirit wavered. Yours didn't."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "6": {
+      "name": {
+        "en": [
+          "Lee"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "I punch the air in the clearing every morning. Today I'll punch through you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Well, the air never punched back."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "7": {
+      "name": {
+        "en": [
+          "Kelsey"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Only strong Trainers make it this far into the forest. Are you one?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "You're one, all right."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "8": {
+      "name": {
+        "en": [
+          "Kathrine"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "I came here to train in peace. A battle is a kind of peace too, right?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "A very loud kind, it turns out."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "9": {
+      "name": {
+        "en": [
+          "Keston"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "We're on a school trip! I'm supposed to be studying bugs, but battling's more fun!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "I'll go back to the bugs now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "10": {
+      "name": {
+        "en": [
+          "Millie"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Our teacher said to stay with the group. Battle me quickly before she notices!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "She noticed. And I lost."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "11": {
+      "name": {
+        "en": [
+          "Battle Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Running round the clearing is my warm-up. The real training starts deeper in."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "12": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The trees grow so thick in the middle that the sun barely gets through. Mind you don't get lost."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "1": {
+      "en": [
+        "Pinwheel Forest\nThe great wood south of Nacrene City"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "2": {
+      "en": [
+        "Trainer Tips\nThe forest's tall grass hides many Bug Pokémon. Bring plenty of Poké Balls!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "key": "nacrene_city_5",
+  "index": 21,
+  "name": "Nacrene City",
+  "matrix": 169,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_C_02",
+  "nightMusic": "BGM_C_02",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 10, "to": "nacrene_city", "toWarp": 1 },
+    { "x": 6, "z": 10, "to": "nacrene_city", "toWarp": 1 },
+    { "x": 7, "z": 10, "to": "nacrene_city", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "backers_f", "movement": "none", "x": 6, "z": 6, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "10445" },
+    { "id": "1", "looks": "lass", "movement": "look_around", "x": 8, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x03e0", "script": "1" },
+    { "id": "2", "looks": "rich_boy", "movement": "none", "x": 6, "z": 3, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x03e0", "script": "2" },
+    { "id": "3", "looks": "ace_trainer_f", "movement": "look_around", "x": 3, "z": 5, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x03e0", "script": "3" },
+    { "id": "4", "looks": "gentleman", "movement": "none", "x": 9, "z": 6, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x03e0", "script": "4" }
+  ],
+  "signs": [],
+  "triggers": []
+}

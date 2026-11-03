@@ -31580,6 +31580,19 @@ way -
   * endscene
   = VAR_TWINLEAF_TOWN_RIVAL_TRIGGER_STATE 0 -> 1
   + seen twinleaf_town.The rival runs out
+=== twist_mountain_8.Inscription
+from the tile read at 10,4 of TwistMountain_Chamber
+from the tile read at 20,4 of TwistMountain_Chamber
+way -
+  > Gather the giants of rock, ice and steel, and the one who shaped them will stir.
+=== twist_mountain_8.Plaque
+from the tile read at 15,1 of TwistMountain_Chamber
+way -
+  > Twist Mountain Chamber
+=== twist_mountain_8.Regigigas
+from Regigigas at 14,5 of TwistMountain_Chamber
+way -
+  > A colossus of stone sleeps here, unmoving.\nIt seems to be waiting for something.
 === two_island.Clerk
 from Clerk at 28,44 of TwoIsland
 way -

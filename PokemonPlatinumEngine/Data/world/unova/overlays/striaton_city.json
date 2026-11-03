@@ -1,0 +1,26 @@
+{
+  // Striaton City (plan 22 · U10, part f): Black 2's city of the school and the restaurant by the Dreamyard, its people, balls and
+  // signs read by the importer, our words. Black 2's objects of its scenes (4 to 11, 23) are left out
+  "area": "striaton_city",
+  "bgmTrack": "unova/floccesy",
+  "people": {
+    "0": { "name": "Fisherman", "dialog": [ "The fountain's water comes all the way from Wellspring Cave. It's the cleanest in Unova." ] },
+    "1": { "name": "Pokémon Breeder", "npcType": "pokemon_breeder_f", "dialog": [ "Striaton is a quiet city. Perfect for raising Pokémon." ] },
+    "12": { "name": "Artist", "dialog": [ "The old Trainers' School is where I learned to draw Pokémon." ] },
+    "13": { "name": "Roughneck", "dialog": [ "The restaurant's three brothers used to run the Gym. Now they just run the restaurant." ] },
+    "14": { "name": "Twins", "npcType": "twin", "dialog": [ "The Dreamyard is behind the city. It's spooky at night!" ] },
+    "15": { "name": "Artist", "dialog": [ "The fountains in the plaza look different in every light." ] },
+    "16": { "name": "Roughneck", "dialog": [ "I eat at the restaurant every day. The brothers know my order by heart." ] },
+    "17": { "name": "Backers", "dialog": [ "We cheer for the brothers' battles at the restaurant. Three at once!" ] },
+    "18": { "name": "Nursery Aide", "dialog": [ "The children love the fountains. So do I." ] },
+    "19": { "name": "Backers", "dialog": [ "Striaton's the first city most Trainers from Nuvema see." ] },
+    "20": { "name": "Pokémon Breeder", "npcType": "pokemon_breeder_m", "dialog": [ "My Pokémon love walking by the fountain. They always want to splash in." ] },
+    "21": { "name": "Youngster", "dialog": [ "I'm going to the Dreamyard to look for Munna!" ] }
+  },
+  "signs": {
+    "2": "Striaton City\nA city that blooms with the passion of Trainers",
+    "3": "Trainers' School",
+    "4": "Striaton Restaurant",
+    "5": "Trainer Tips\nThe Dreamyard lies east of the city."
+  }
+}

@@ -67,7 +67,7 @@ partial class Harness
         }
 
         // ---- Unova
-        string[] unova = { "fusion", "cobalion", "virizion", "terrakion", "azelf", "mesprit", "kyurem", "heatran", "regirock_u", "regice_u", "registeel_u" };
+        string[] unova = { "fusion", "cobalion", "virizion", "terrakion", "azelf", "mesprit", "kyurem", "heatran", "regirock_u", "regice_u", "registeel_u", "landorus" };
         if (unova.Any(Wanted))
         {
             Begin("Unova");
@@ -94,6 +94,7 @@ partial class Harness
             if (Wanted("regirock_u")) Beat("regirock_u", "RockPeakChamber", "rock_peak_chamber", "0", "Regirock", -1, -1, Direction.Up);
             if (Wanted("regice_u")) Beat("regice_u", "IcebergChamber", "iceberg_chamber", "0", "Regice", -1, -1, Direction.Up);
             if (Wanted("registeel_u")) Beat("registeel_u", "IronChamber", "iron_chamber", "0", "Registeel", -1, -1, Direction.Up);
+            if (Wanted("landorus")) Beat("landorus", "AbundantShrine", "abundant_shrine", "landorus", "Landorus", -1, -1, Direction.Up);
         }
         engine.NewGameRegion = "Sinnoh";
     }

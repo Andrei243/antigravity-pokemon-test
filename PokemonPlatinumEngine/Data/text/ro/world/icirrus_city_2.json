@@ -1,0 +1,25 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Hey there, champ in the making! I'm afraid the Leader here hasn't held a battle in a long while.",
+          "He's off acting in films at Pokéstar Studios these days. The ice in here keeps itself, though. Feel free to look round."
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

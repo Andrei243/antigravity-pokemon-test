@@ -1,0 +1,10 @@
+{
+  // The gate house between Route 8 and the Tubeline Bridge (plan 22 · U10, part e): three who talk, our words
+  "area": "bridge_gate_gate_2",
+  "bgmTrack": "unova/opelucid",
+  "people": {
+    "0": { "name": "Backpacker", "dialog": [ "I came over the bridge from Opelucid. The view of the water is worth the walk." ] },
+    "1": { "name": "Scientist", "dialog": [ "The bridge carries the train line inside it. A marvel of Unova's engineering, if I say so myself." ] },
+    "2": { "name": "Roughneck", "dialog": [ "Watch out on Route 8. One wrong step and you're in the bog to your knees." ] }
+  }
+}

@@ -1,0 +1,227 @@
+{
+  "key": "unova_route_8",
+  "index": 345,
+  "name": "Route 8",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Plain",
+  "dayMusic": "BGM_R_D_SP",
+  "nightMusic": "BGM_R_D_SP",
+  "encounters": "ENCOUNTERS_ROUTE_8",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Palpitoad", "level": 54 },
+    { "species": "Shelmet", "level": 54 },
+    { "species": "Palpitoad", "level": 55 },
+    { "species": "Croagunk", "level": 55 },
+    { "species": "Stunfisk", "level": 55 },
+    { "species": "Stunfisk", "level": 56 },
+    { "species": "Palpitoad", "level": 56 },
+    { "species": "Croagunk", "level": 56 },
+    { "species": "Palpitoad", "level": 57 },
+    { "species": "Karrablast", "level": 57 },
+    { "species": "Palpitoad", "level": 57 },
+    { "species": "Karrablast", "level": 57 }
+  ],
+  "landRate": 13,
+  "water": [
+    { "species": "Stunfisk", "level": 45, "maxLevel": 60 },
+    { "species": "Palpitoad", "level": 45, "maxLevel": 60 },
+    { "species": "Stunfisk", "level": 60, "maxLevel": 60 },
+    { "species": "Stunfisk", "level": 60, "maxLevel": 60 },
+    { "species": "Stunfisk", "level": 60, "maxLevel": 60 }
+  ],
+  "waterRate": 12,
+  "superRod": [
+    { "species": "Barboach", "level": 45, "maxLevel": 60, "weight": 60 },
+    { "species": "Stunfisk", "level": 45, "maxLevel": 60, "weight": 30 },
+    { "species": "Barboach", "level": 60, "maxLevel": 60, "weight": 5 },
+    { "species": "Barboach", "level": 60, "maxLevel": 60, "weight": 4 },
+    { "species": "Barboach", "level": 60, "maxLevel": 60, "weight": 1 }
+  ],
+  "superRodRate": 50,
+  "ripplingWater": [
+    { "species": "Stunfisk", "level": 45, "maxLevel": 60 },
+    { "species": "Palpitoad", "level": 45, "maxLevel": 60 },
+    { "species": "Stunfisk", "level": 60, "maxLevel": 60 },
+    { "species": "Seismitoad", "level": 60, "maxLevel": 60 },
+    { "species": "Seismitoad", "level": 60, "maxLevel": 60 }
+  ],
+  "ripplingWaterRate": 13,
+  "ripplingRod": [
+    { "species": "Barboach", "level": 45, "maxLevel": 60, "weight": 60 },
+    { "species": "Stunfisk", "level": 45, "maxLevel": 60, "weight": 30 },
+    { "species": "Whiscash", "level": 60, "maxLevel": 60, "weight": 5 },
+    { "species": "Whiscash", "level": 60, "maxLevel": 60, "weight": 4 },
+    { "species": "Whiscash", "level": 60, "maxLevel": 60, "weight": 1 }
+  ],
+  "ripplingRodRate": 1,
+  "seasons": [
+    {
+      "season": "Summer",
+      "land": [
+        { "species": "Palpitoad", "level": 54 },
+        { "species": "Shelmet", "level": 54 },
+        { "species": "Palpitoad", "level": 55 },
+        { "species": "Croagunk", "level": 55 },
+        { "species": "Stunfisk", "level": 55 },
+        { "species": "Stunfisk", "level": 56 },
+        { "species": "Palpitoad", "level": 56 },
+        { "species": "Croagunk", "level": 56 },
+        { "species": "Palpitoad", "level": 57 },
+        { "species": "Karrablast", "level": 57 },
+        { "species": "Palpitoad", "level": 57 },
+        { "species": "Karrablast", "level": 57 }
+      ],
+      "landRate": 13,
+      "water": [
+        { "species": "Stunfisk", "level": 45, "maxLevel": 60 },
+        { "species": "Palpitoad", "level": 45, "maxLevel": 60 },
+        { "species": "Stunfisk", "level": 50, "maxLevel": 60 },
+        { "species": "Stunfisk", "level": 50, "maxLevel": 60 },
+        { "species": "Stunfisk", "level": 50, "maxLevel": 60 }
+      ],
+      "waterRate": 12,
+      "ripplingWater": [
+        { "species": "Stunfisk", "level": 45, "maxLevel": 60 },
+        { "species": "Palpitoad", "level": 45, "maxLevel": 60 },
+        { "species": "Stunfisk", "level": 50, "maxLevel": 60 },
+        { "species": "Seismitoad", "level": 50, "maxLevel": 60 },
+        { "species": "Seismitoad", "level": 50, "maxLevel": 60 }
+      ],
+      "ripplingWaterRate": 13,
+      "superRod": [
+        { "species": "Barboach", "level": 45, "maxLevel": 60, "weight": 60 },
+        { "species": "Stunfisk", "level": 45, "maxLevel": 60, "weight": 30 },
+        { "species": "Barboach", "level": 50, "maxLevel": 60, "weight": 5 },
+        { "species": "Barboach", "level": 50, "maxLevel": 60, "weight": 4 },
+        { "species": "Barboach", "level": 50, "maxLevel": 60, "weight": 1 }
+      ],
+      "superRodRate": 50,
+      "ripplingRod": [
+        { "species": "Barboach", "level": 45, "maxLevel": 60, "weight": 60 },
+        { "species": "Stunfisk", "level": 45, "maxLevel": 60, "weight": 30 },
+        { "species": "Whiscash", "level": 50, "maxLevel": 60, "weight": 5 },
+        { "species": "Whiscash", "level": 50, "maxLevel": 60, "weight": 4 },
+        { "species": "Whiscash", "level": 50, "maxLevel": 60, "weight": 1 }
+      ],
+      "ripplingRodRate": 1
+    },
+    {
+      "season": "Autumn",
+      "land": [
+        { "species": "Palpitoad", "level": 54 },
+        { "species": "Shelmet", "level": 54 },
+        { "species": "Palpitoad", "level": 55 },
+        { "species": "Croagunk", "level": 55 },
+        { "species": "Stunfisk", "level": 55 },
+        { "species": "Stunfisk", "level": 56 },
+        { "species": "Palpitoad", "level": 56 },
+        { "species": "Croagunk", "level": 56 },
+        { "species": "Palpitoad", "level": 57 },
+        { "species": "Karrablast", "level": 57 },
+        { "species": "Palpitoad", "level": 57 },
+        { "species": "Karrablast", "level": 57 }
+      ],
+      "landRate": 13,
+      "water": [
+        { "species": "Stunfisk", "level": 45, "maxLevel": 60 },
+        { "species": "Palpitoad", "level": 45, "maxLevel": 60 },
+        { "species": "Stunfisk", "level": 50, "maxLevel": 60 },
+        { "species": "Stunfisk", "level": 50, "maxLevel": 60 },
+        { "species": "Stunfisk", "level": 50, "maxLevel": 60 }
+      ],
+      "waterRate": 12,
+      "ripplingWater": [
+        { "species": "Stunfisk", "level": 45, "maxLevel": 60 },
+        { "species": "Palpitoad", "level": 45, "maxLevel": 60 },
+        { "species": "Stunfisk", "level": 50, "maxLevel": 60 },
+        { "species": "Seismitoad", "level": 50, "maxLevel": 60 },
+        { "species": "Seismitoad", "level": 50, "maxLevel": 60 }
+      ],
+      "ripplingWaterRate": 13,
+      "superRod": [
+        { "species": "Barboach", "level": 45, "maxLevel": 60, "weight": 60 },
+        { "species": "Stunfisk", "level": 45, "maxLevel": 60, "weight": 30 },
+        { "species": "Barboach", "level": 50, "maxLevel": 60, "weight": 5 },
+        { "species": "Barboach", "level": 50, "maxLevel": 60, "weight": 4 },
+        { "species": "Barboach", "level": 50, "maxLevel": 60, "weight": 1 }
+      ],
+      "superRodRate": 50,
+      "ripplingRod": [
+        { "species": "Barboach", "level": 45, "maxLevel": 60, "weight": 60 },
+        { "species": "Stunfisk", "level": 45, "maxLevel": 60, "weight": 30 },
+        { "species": "Whiscash", "level": 50, "maxLevel": 60, "weight": 5 },
+        { "species": "Whiscash", "level": 50, "maxLevel": 60, "weight": 4 },
+        { "species": "Whiscash", "level": 50, "maxLevel": 60, "weight": 1 }
+      ],
+      "ripplingRodRate": 1
+    },
+    {
+      "season": "Winter",
+      "water": [
+        { "species": "Stunfisk", "level": 45, "maxLevel": 60 },
+        { "species": "Palpitoad", "level": 45, "maxLevel": 60 },
+        { "species": "Stunfisk", "level": 50, "maxLevel": 60 },
+        { "species": "Stunfisk", "level": 50, "maxLevel": 60 },
+        { "species": "Stunfisk", "level": 50, "maxLevel": 60 }
+      ],
+      "waterRate": 12,
+      "ripplingWater": [
+        { "species": "Stunfisk", "level": 45, "maxLevel": 60 },
+        { "species": "Palpitoad", "level": 45, "maxLevel": 60 },
+        { "species": "Stunfisk", "level": 50, "maxLevel": 60 },
+        { "species": "Seismitoad", "level": 50, "maxLevel": 60 },
+        { "species": "Seismitoad", "level": 50, "maxLevel": 60 }
+      ],
+      "ripplingWaterRate": 13,
+      "superRod": [
+        { "species": "Barboach", "level": 45, "maxLevel": 60, "weight": 60 },
+        { "species": "Stunfisk", "level": 45, "maxLevel": 60, "weight": 30 },
+        { "species": "Barboach", "level": 50, "maxLevel": 60, "weight": 5 },
+        { "species": "Barboach", "level": 50, "maxLevel": 60, "weight": 4 },
+        { "species": "Barboach", "level": 50, "maxLevel": 60, "weight": 1 }
+      ],
+      "superRodRate": 50,
+      "ripplingRod": [
+        { "species": "Barboach", "level": 45, "maxLevel": 60, "weight": 60 },
+        { "species": "Stunfisk", "level": 45, "maxLevel": 60, "weight": 30 },
+        { "species": "Whiscash", "level": 50, "maxLevel": 60, "weight": 5 },
+        { "species": "Whiscash", "level": 50, "maxLevel": 60, "weight": 4 },
+        { "species": "Whiscash", "level": 50, "maxLevel": 60, "weight": 1 }
+      ],
+      "ripplingRodRate": 1
+    }
+  ],
+  "warps": [
+    { "x": 244, "z": 180, "to": "bridge_gate_gate_2", "toWarp": 0 },
+    { "x": 233, "z": 165, "to": "moor_of_icirrus", "toWarp": 0 },
+    { "x": 234, "z": 165, "to": "moor_of_icirrus", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "parasol_lady", "movement": "none", "x": 237, "z": 176, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "4" },
+    { "id": "1", "looks": "fisherman", "movement": "none", "x": 233, "z": 183, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0317", "script": "5" },
+    { "id": "2", "looks": "110", "movement": "none", "x": 195, "z": 168, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0528", "item": "TM36", "script": "7220" },
+    { "id": "3", "looks": "110", "movement": "none", "x": 228, "z": 187, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0529", "item": "Big Pearl", "script": "7221" },
+    { "id": "4", "looks": "110", "movement": "none", "x": 206, "z": 168, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x052a", "item": "Nest Ball", "script": "7222" },
+    { "id": "5", "looks": "youngster", "movement": "none", "x": 196, "z": 174, "facing": 1, "rangeX": 0, "rangeZ": 5, "trainer": "sees", "sight": 1, "script": "TRAINER_YOUNGSTER_ASTOR" },
+    { "id": "6", "looks": "lass", "movement": "none", "x": 220, "z": 177, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_LASS_MAI" },
+    { "id": "7", "looks": "parasol_lady", "movement": "none", "x": 230, "z": 168, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_PARASOL_LADY_TYRA" },
+    { "id": "8", "looks": "fisherman", "movement": "none", "x": 218, "z": 170, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "talks", "sight": 0, "script": "TRAINER_FISHERMAN_RYDER" },
+    { "id": "9", "looks": "parasol_lady", "movement": "wander_around", "x": 222, "z": 183, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "talks", "sight": 0, "script": "TRAINER_PARASOL_LADY_INGRID" }
+  ],
+  "signs": [
+    { "x": 210, "z": 186, "type": 0, "script": "1" },
+    { "x": 220, "z": 180, "type": 0, "script": "3" },
+    { "x": 237, "z": 177, "type": 0, "script": "2" },
+    { "x": 224, "z": 166, "type": 2, "script": "8159", "item": "Max Repel", "flag": "FLAG_UNOVA_0x0ba3" },
+    { "x": 196, "z": 187, "type": 2, "script": "8160", "item": "Rare Candy", "flag": "FLAG_UNOVA_0x0ba4" }
+  ],
+  "triggers": []
+}
