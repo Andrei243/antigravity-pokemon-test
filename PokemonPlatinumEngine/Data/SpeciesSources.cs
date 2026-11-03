@@ -62,7 +62,15 @@ public sealed class SpeciesSources
                 // The scripts of another region's places give nothing in Sinnoh (Kanto's Mewtwo, plan 19 · K9)
                 var elsewhere = worlds.Where(w => w != home).SelectMany(w => w.Index.Areas).ToHashSet(StringComparer.OrdinalIgnoreCase);
                 elsewhere.ExceptWith(home.Index.Areas);
-                return sinnoh = Of(home, ScriptLibrary.Default, Rooms(), HighestInSinnoh, file => !elsewhere.Contains(file));
+                // ... and nor do another region's hand-made rooms (Kalos's laboratory and its briefcase, plan 23 · Z2)
+                var rooms = new List<MapFile>();
+                foreach (var room in Rooms())
+                {
+                    var region = RegionDatabase.RegionOfMap(room.Name);
+                    if (region == null || string.Equals(region.Id, "Sinnoh", StringComparison.OrdinalIgnoreCase)) rooms.Add(room);
+                    else elsewhere.Add(room.Name);
+                }
+                return sinnoh = Of(home, ScriptLibrary.Default, rooms, HighestInSinnoh, file => !elsewhere.Contains(file));
             }
         }
     }

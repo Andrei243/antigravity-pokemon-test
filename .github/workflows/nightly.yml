@@ -203,8 +203,11 @@ jobs:
           restore-keys: |
             meshes-nightly-all-
             meshes-
+      # The whole of `all` under llvmpipe takes hours: the harness's own half-hour stuck limit is the job's here
       - name: all
         shell: bash
+        env:
+          SHOTS_TIME_LIMIT: 19800
         run: tools/dev/shots.sh "$RUNNER_TEMP/all" all
       - name: Contact sheets
         if: always()
@@ -254,7 +257,7 @@ jobs:
 
   harness-checks:
     runs-on: ubuntu-latest
-    timeout-minutes: 240
+    timeout-minutes: 300
     env:
       POKEMON_CACHE: ${{ github.workspace }}/../pokemon-cache
     steps:
@@ -278,6 +281,8 @@ jobs:
       - name: The kept scenarios
         if: always()
         shell: bash
+        env:
+          SHOTS_TIME_LIMIT: 5400
         run: tools/dev/shots.sh "$RUNNER_TEMP/scenarios" scenarios
       # Counts and memory only: a lap's milliseconds under llvmpipe mean nothing
       - name: A soak of half an hour
