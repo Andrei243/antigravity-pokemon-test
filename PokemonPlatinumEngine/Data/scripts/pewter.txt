@@ -37,16 +37,34 @@ script Steven
   if no goto Later
   say "I thought you might. Don't hold back. It wouldn't thank you for it."
   if flag FLAG_HIDE_PEWTER_CITY_LATIAS goto Latios
+  scene "Latias rises from Steven's side"
+  letterbox on 0.4
+  camera pan 1039 83 1.0
+  camera zoom 1.4 0.8
+  effect sparkles 1039 83
+  effect ripple 1039 83
   cry "Latias"
   speaker none
   text "Latias rose from Steven's side with a bright cry!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
   wildbattle "Latias" 40
   if result == 3 goto Caught
   goto Gone
 label Latios
+  scene "Latios rises from Steven's side"
+  letterbox on 0.4
+  camera pan 1039 83 1.0
+  camera zoom 1.4 0.8
+  effect sparkles 1039 83
+  effect ripple 1039 83
   cry "Latios"
   speaker none
   text "Latios rose from Steven's side with a sharp cry!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
   wildbattle "Latios" 40
   if result == 3 goto Caught
 label Gone
