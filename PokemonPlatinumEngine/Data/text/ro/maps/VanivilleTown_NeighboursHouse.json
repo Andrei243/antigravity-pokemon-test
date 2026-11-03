@@ -1,0 +1,33 @@
+{
+  "displayName": {
+    "en": [
+      "Vaniville Town"
+    ],
+    "text": [
+      "Orașul Vaniville"
+    ]
+  },
+  "people": {
+    "neighbours_mom": {
+      "name": {
+        "en": [
+          "{rival}'s Mom"
+        ],
+        "text": [
+          "Mama lui {rival}"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Oh, you're the new family next door! {rival} has talked of nothing else all week.",
+          "Off you go, then. {rival} never waits for anybody."
+        ],
+        "text": [
+          "A, voi sunteți noii vecini! {rival} n-a vorbit despre altceva toată săptămâna.",
+          "Atunci du-te. {rival} nu așteaptă pe nimeni."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

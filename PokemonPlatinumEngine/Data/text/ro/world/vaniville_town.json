@@ -1,0 +1,96 @@
+{
+  "people": {
+    "rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      }
+    },
+    "shauna": {
+      "name": {
+        "en": [
+          "Shauna"
+        ],
+        "text": [
+          "Shauna"
+        ]
+      }
+    },
+    "gardener": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          "Bătrâna"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to Vaniville, dear. It's a small town, but the flowers on the green are the finest in all of Kalos."
+        ],
+        "text": [
+          "Bine ai venit în Vaniville, dragă. E un orășel mic, dar florile de pe peluză sunt cele mai frumoase din tot Kalos."
+        ]
+      }
+    },
+    "boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Everybody in Vaniville has skates! You can get from one end of town to the other in no time."
+        ],
+        "text": [
+          "Toți cei din Vaniville au patine! Poți ajunge dintr-un capăt al orașului în celălalt într-o clipă."
+        ]
+      }
+    },
+    "neighbour": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "You're the family who moved in last week, aren't you? The road north leads to Aquacorde Town. It's a lovely walk."
+        ],
+        "text": [
+          "Voi sunteți familia care s-a mutat săptămâna trecută, nu-i așa? Drumul spre nord duce la Orașul Aquacorde. E o plimbare frumoasă."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "PlayersHouseSign": {
+      "en": [
+        "{player}'s House"
+      ],
+      "text": [
+        "Casa lui {player}"
+      ]
+    },
+    "TownSign": {
+      "en": [
+        "Vaniville Town\nWhere the road through Kalos begins."
+      ],
+      "text": [
+        "Orașul Vaniville\nUnde începe drumul prin Kalos."
+      ]
+    }
+  }
+}

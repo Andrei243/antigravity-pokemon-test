@@ -6,7 +6,7 @@
           "Little girl"
         ],
         "text": [
-          ""
+          "Fetița"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Gentleman"
         ],
         "text": [
-          ""
+          "Gentlemanul"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "My granddaughter loves to wander the ship. I've stopped worrying: she always ends up with the captain."
         ],
         "text": [
-          ""
+          "Nepoata mea adoră să cutreiere corabia. Nu mă mai îngrijorez: ajunge mereu la căpitan."
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Colin"
         ],
         "text": [
-          ""
+          "Colin"
         ]
       },
       "before": {
@@ -42,7 +42,7 @@
           "Pokéfan Colin: Look at my lovely Pokémon! Aren't they the best? Let's battle and you'll see!"
         ],
         "text": [
-          ""
+          "Pokéfanul Colin: Uită-te la Pokémonii mei minunați! Nu sunt cei mai buni? Hai să luptăm și o să vezi!"
         ]
       },
       "after": {
@@ -50,7 +50,7 @@
           "Pokéfan Colin: They're still the best. You're just better."
         ],
         "text": [
-          ""
+          "Pokéfanul Colin: Tot cei mai buni rămân. Tu ești doar mai bun."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Meg"
         ],
         "text": [
-          ""
+          "Meg"
         ]
       },
       "before": {
@@ -68,7 +68,7 @@
           "Twins Meg: We're going on holiday! Battle us first!"
         ],
         "text": [
-          ""
+          "Gemene Meg: Plecăm în vacanță! Luptă mai întâi cu noi!"
         ]
       },
       "after": {
@@ -76,7 +76,7 @@
           "Twins Meg: We'll battle better after our holiday."
         ],
         "text": [
-          ""
+          "Gemene Meg: Vom lupta mai bine după vacanță."
         ]
       }
     },
@@ -86,7 +86,7 @@
           "Peg"
         ],
         "text": [
-          ""
+          "Peg"
         ]
       },
       "before": {
@@ -94,7 +94,7 @@
           "Twins Peg: Two of us on a boat, ready to battle!"
         ],
         "text": [
-          ""
+          "Gemene Peg: Două pe o barcă, gata de luptă!"
         ]
       },
       "after": {
@@ -102,7 +102,7 @@
           "Twins Peg: Two of us, beaten on a boat."
         ],
         "text": [
-          ""
+          "Gemene Peg: Două, învinse pe o barcă."
         ]
       }
     },
@@ -112,7 +112,7 @@
           "Shawn"
         ],
         "text": [
-          ""
+          "Shawn"
         ]
       },
       "before": {
@@ -120,7 +120,7 @@
           "Super Nerd Shawn: I've worked out the ship's speed to three decimal places. Now, your team's chances..."
         ],
         "text": [
-          ""
+          "Tocilar Shawn: Am calculat viteza corabiei cu trei zecimale. Acum, șansele echipei tale..."
         ]
       },
       "after": {
@@ -128,7 +128,7 @@
           "Super Nerd Shawn: My sums were off. Way off."
         ],
         "text": [
-          ""
+          "Tocilar Shawn: Calculele mele au fost greșite. Foarte greșite."
         ]
       }
     },
@@ -138,7 +138,7 @@
           "Rodney"
         ],
         "text": [
-          ""
+          "Rodney"
         ]
       },
       "before": {
@@ -146,7 +146,7 @@
           "Psychic Rodney: I foresaw that you would come into this cabin. I also foresee a battle."
         ],
         "text": [
-          ""
+          "Medium Rodney: Am prevăzut că vei intra în cabina asta. Prevăd și o luptă."
         ]
       },
       "after": {
@@ -154,7 +154,7 @@
           "Psychic Rodney: I didn't foresee losing."
         ],
         "text": [
-          ""
+          "Medium Rodney: Nu am prevăzut că voi pierde."
         ]
       }
     },
@@ -164,7 +164,7 @@
           "Georgia"
         ],
         "text": [
-          ""
+          "Georgia"
         ]
       },
       "before": {
@@ -172,7 +172,7 @@
           "Pokéfan Georgia: My darlings and I take this ship every season. Would you care to battle them?"
         ],
         "text": [
-          ""
+          "Pokéfanul Georgia: Dragii mei și cu mine luăm corabia asta în fiecare sezon. Vrei să lupți cu ei?"
         ]
       },
       "after": {
@@ -180,7 +180,7 @@
           "Pokéfan Georgia: My poor darlings! They need a nap now."
         ],
         "text": [
-          ""
+          "Pokéfanul Georgia: Bieții mei dragi! Au nevoie de un pui de somn acum."
         ]
       }
     },
@@ -190,7 +190,7 @@
           "Jeremy"
         ],
         "text": [
-          ""
+          "Jeremy"
         ]
       },
       "before": {
@@ -198,7 +198,7 @@
           "Pokéfan Jeremy: You can't come in here without admiring my Pokémon. Battle them and admire them!"
         ],
         "text": [
-          ""
+          "Pokéfanul Jeremy: Nu poți intra aici fără să-mi admiri Pokémonii. Luptă cu ei și admiră-i!"
         ]
       },
       "after": {
@@ -206,7 +206,7 @@
           "Pokéfan Jeremy: You admired them a bit too hard."
         ],
         "text": [
-          ""
+          "Pokéfanul Jeremy: I-ai admirat cam prea tare."
         ]
       }
     }

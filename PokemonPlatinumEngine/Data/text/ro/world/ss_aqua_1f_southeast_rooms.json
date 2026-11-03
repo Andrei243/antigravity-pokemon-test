@@ -6,7 +6,7 @@
           "Sailor"
         ],
         "text": [
-          ""
+          "Marinarul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "These cabins are for the passengers. We crew sleep down in the hold, nearer the engines."
         ],
         "text": [
-          ""
+          "Cabinele astea sunt pentru pasageri. Noi, echipajul, dormim jos în cală, mai aproape de motoare."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Edward"
         ],
         "text": [
-          ""
+          "Edward"
         ]
       },
       "before": {
@@ -32,7 +32,7 @@
           "Gentleman Edward: I always book this cabin for the view of the sea. And for the battles, of course."
         ],
         "text": [
-          ""
+          "Gentleman Edward: Rezerv mereu cabina asta pentru priveliștea mării. Și pentru lupte, bineînțeles."
         ]
       },
       "after": {
@@ -40,7 +40,7 @@
           "Gentleman Edward: Splendid. Quite splendid. I shall need another cup of tea."
         ],
         "text": [
-          ""
+          "Gentleman Edward: Splendid. Absolut splendid. Voi avea nevoie de încă o ceașcă de ceai."
         ]
       }
     },
@@ -50,7 +50,7 @@
           "Corey"
         ],
         "text": [
-          ""
+          "Corey"
         ]
       },
       "before": {
@@ -58,7 +58,7 @@
           "Burglar Corey: Hey! I wasn't sneaking around the cabins! Er... battle me and forget you saw me!"
         ],
         "text": [
-          ""
+          "Hoț Corey: Hei! Nu mă furișam prin cabine! Ăă... luptă cu mine și uită că m-ai văzut!"
         ]
       },
       "after": {
@@ -66,7 +66,7 @@
           "Burglar Corey: All right, all right! I'll go back to my own cabin."
         ],
         "text": [
-          ""
+          "Hoț Corey: Bine, bine! Mă întorc în cabina mea."
         ]
       }
     }

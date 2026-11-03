@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Aquacorde Town"
+    ],
+    "text": [
+      "Orașul Aquacorde"
+    ]
+  },
+  "people": {
+    "boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Trainers meet at the café by the bridge before they set off. I'm going to sit there too, one day!"
+        ],
+        "text": [
+          "Antrenorii se întâlnesc la cafeneaua de lângă pod înainte să plece la drum. Într-o zi o să stau și eu acolo!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

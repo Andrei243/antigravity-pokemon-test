@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Vaniville Town"
+    ],
+    "text": [
+      "Orașul Vaniville"
+    ]
+  },
+  "people": {
+    "woman": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The professor in Lumiose City sends Pokémon to young Trainers sometimes. Imagine getting one in a town as quiet as this!"
+        ],
+        "text": [
+          "Profesorul din Orașul Lumiose trimite uneori Pokémoni tinerilor antrenori. Imaginează-ți să primești unul într-un oraș atât de liniștit!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

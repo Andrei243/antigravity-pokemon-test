@@ -1,0 +1,87 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Center"
+    ],
+    "text": [
+      "Centrul Pokémon"
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          "Asistenta Joy"
+        ]
+      }
+    },
+    "12,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    },
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome! The Poké Mart counter is open. What can I get you?"
+        ],
+        "text": [
+          "Vânzătorul: Bun venit! Tejgheaua Poké Mart e deschisă. Cu ce vă pot ajuta?"
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "In Kalos the Poké Mart is right here inside the Pokémon Center. Heal up, stock up, and off you go!"
+        ],
+        "text": [
+          "În Kalos, Poké Mart-ul e chiar aici, în Centrul Pokémon. Vindecă-ți Pokémonii, fă-ți provizii și pornește la drum!"
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Lass"
+        ],
+        "text": [
+          "Domnișoara"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Viola's Bug types are tougher than they look. A Flying or Fire type would make short work of them!"
+        ],
+        "text": [
+          "Pokémonii de tip Insectă ai Violei sunt mai duri decât par. Un tip Zburător sau Foc i-ar răpune repede!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

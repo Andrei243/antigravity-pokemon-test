@@ -1,0 +1,43 @@
+{
+  "displayName": {
+    "en": [
+      "Lysandre Café"
+    ],
+    "text": [
+      "Cafeneaua Lysandre"
+    ]
+  },
+  "people": {
+    "lysandre": {
+      "name": {
+        "en": [
+          "Lysandre"
+        ],
+        "text": [
+          "Lysandre"
+        ]
+      }
+    },
+    "sycamore": {
+      "name": {
+        "en": [
+          "Prof. Sycamore"
+        ],
+        "text": [
+          "Prof. Sycamore"
+        ]
+      }
+    },
+    "waiter": {
+      "name": {
+        "en": [
+          "Waiter"
+        ],
+        "text": [
+          "Chelnerul"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

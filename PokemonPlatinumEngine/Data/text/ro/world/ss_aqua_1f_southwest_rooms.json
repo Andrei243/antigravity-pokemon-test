@@ -6,7 +6,7 @@
           "Noland"
         ],
         "text": [
-          ""
+          "Noland"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Hiker Noland: Mountains, caves, and now the open sea! A hiker goes everywhere. Let's battle!"
         ],
         "text": [
-          ""
+          "Drumeț Noland: Munți, peșteri și acum marea deschisă! Un drumeț merge peste tot. Să luptăm!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Hiker Noland: I've lost my sea legs and my battle, both at once."
         ],
         "text": [
-          ""
+          "Drumeț Noland: Mi-am pierdut și echilibrul pe mare, și lupta, deodată."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Shaye"
         ],
         "text": [
-          ""
+          "Shaye"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Ace Trainer Shaye: A voyage is a fine time to test a team. Will you be my test?"
         ],
         "text": [
-          ""
+          "Antrenor As Shaye: O călătorie e un moment bun să-ți încerci echipa. Vrei să fii proba mea?"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Ace Trainer Shaye: Test failed. There's a lot of sea left to think it over."
         ],
         "text": [
-          ""
+          "Antrenor As Shaye: Probă picată. Mai e mult de mare ca să mă gândesc la asta."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Carol"
         ],
         "text": [
-          ""
+          "Carol"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Ace Trainer Carol: I train on every crossing. The rocking keeps my Pokémon on their toes!"
         ],
         "text": [
-          ""
+          "Antrenor As Carol: Mă antrenez la fiecare traversare. Legănatul îmi ține Pokémonii în alertă!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Ace Trainer Carol: Maybe the rocking kept me off mine."
         ],
         "text": [
-          ""
+          "Antrenor As Carol: Poate legănatul m-a ținut pe mine departe de a mea."
         ]
       }
     },
@@ -84,7 +84,7 @@
           "Morgan"
         ],
         "text": [
-          ""
+          "Morgan"
         ]
       },
       "before": {
@@ -92,7 +92,7 @@
           "Poké Maniac Morgan: My cabin is full of rare Pokémon! Want to see them? In battle, I mean!"
         ],
         "text": [
-          ""
+          "Pasionat Pokémon Morgan: Cabina mea e plină de Pokémoni rari! Vrei să-i vezi? În luptă, adică!"
         ]
       },
       "after": {
@@ -100,7 +100,7 @@
           "Poké Maniac Morgan: Rare, yes. Strong, apparently not."
         ],
         "text": [
-          ""
+          "Pasionat Pokémon Morgan: Rari, da. Puternici, se pare că nu."
         ]
       }
     }

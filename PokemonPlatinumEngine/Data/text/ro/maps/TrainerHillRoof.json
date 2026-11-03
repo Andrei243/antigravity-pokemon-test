@@ -1,0 +1,23 @@
+{
+  "displayName": {
+    "en": [
+      "Trainer Hill"
+    ],
+    "text": [
+      "Dealul Antrenorilor"
+    ]
+  },
+  "people": {
+    "hill_owner": {
+      "name": {
+        "en": [
+          "Owner"
+        ],
+        "text": [
+          "Proprietarul"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

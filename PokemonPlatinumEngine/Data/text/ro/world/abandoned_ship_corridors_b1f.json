@@ -6,7 +6,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Whee! A real ship! It doesn't even rock!"
         ],
         "text": [
-          ""
+          "Iupii! O corabie adevărată! Nici măcar nu se leagănă!"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Duncan"
         ],
         "text": [
-          ""
+          "Duncan"
         ]
       },
       "before": {
@@ -32,7 +32,7 @@
           "Sailor Duncan: A sailor never goes to sea without his Pokémon. Let's see yours!"
         ],
         "text": [
-          ""
+          "Marinar Duncan: Un marinar nu pornește niciodată pe mare fără Pokémonii lui. Să-i vedem pe ai tăi!"
         ]
       },
       "after": {
@@ -40,7 +40,7 @@
           "Sailor Duncan: The bottom of this ship is under water. A Pokémon that could dive might find a way on..."
         ],
         "text": [
-          ""
+          "Marinar Duncan: Fundul corăbiei e sub apă. Un Pokémon care ar ști să se scufunde ar putea găsi drumul mai departe..."
         ]
       }
     }

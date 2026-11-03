@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Vaniville Town"
+    ],
+    "text": [
+      "Orașul Vaniville"
+    ]
+  },
+  "people": {
+    "old_man": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I've lived in Vaniville all my life. It's a small town, but every road in Kalos starts at somebody's door."
+        ],
+        "text": [
+          "Am trăit toată viața în Vaniville. E un orășel mic, dar fiecare drum din Kalos începe de la ușa cuiva."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

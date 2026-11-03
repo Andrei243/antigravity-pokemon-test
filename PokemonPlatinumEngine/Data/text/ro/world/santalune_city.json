@@ -1,0 +1,134 @@
+{
+  "people": {
+    "rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      }
+    },
+    "shauna": {
+      "name": {
+        "en": [
+          "Shauna"
+        ],
+        "text": [
+          "Shauna"
+        ]
+      }
+    },
+    "tierno": {
+      "name": {
+        "en": [
+          "Tierno"
+        ],
+        "text": [
+          "Tierno"
+        ]
+      }
+    },
+    "trevor": {
+      "name": {
+        "en": [
+          "Trevor"
+        ],
+        "text": [
+          "Trevor"
+        ]
+      }
+    },
+    "painter": {
+      "name": {
+        "en": [
+          "Painter"
+        ],
+        "text": [
+          "Pictorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I come every morning to paint the fountain. The light on the water is never the same twice."
+        ],
+        "text": [
+          "Vin în fiecare dimineață să pictez fântâna. Lumina pe apă nu e niciodată la fel de două ori."
+        ]
+      }
+    },
+    "boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Gym Leader here takes photos of bugs! She says a good photo and a good battle both need patience."
+        ],
+        "text": [
+          "Liderul de Arenă de aici fotografiază insecte! Spune că și o fotografie bună, și o luptă bună cer răbdare."
+        ]
+      }
+    },
+    "gentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          "Gentlemanul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This road goes on to Lumiose City, the heart of Kalos. You'll want a Badge or two before you get there."
+        ],
+        "text": [
+          "Drumul ăsta duce la Orașul Lumiose, inima regiunii Kalos. Ai nevoie de o Insignă sau două până ajungi acolo."
+        ]
+      }
+    },
+    "woman": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Santalune is an old town. Some of these stones were laid before anyone thought of Poké Balls!"
+        ],
+        "text": [
+          "Santalune e un oraș vechi. Unele dintre pietrele astea au fost așezate înainte să se fi gândit cineva la Poké Ball-uri!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "CitySign": {
+      "en": [
+        "Santalune City\nA city of old stone and quiet streets."
+      ],
+      "text": [
+        "Orașul Santalune\nUn oraș de piatră veche și străzi liniștite."
+      ]
+    },
+    "RouteFourSign": {
+      "en": [
+        "North: Route 4\nLumiose City beyond"
+      ],
+      "text": [
+        "Nord: Ruta 4\nMai departe, Orașul Lumiose"
+      ]
+    }
+  }
+}

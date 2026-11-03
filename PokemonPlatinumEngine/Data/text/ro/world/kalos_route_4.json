@@ -1,0 +1,110 @@
+{
+  "people": {
+    "lass": {
+      "name": {
+        "en": [
+          "Élodie"
+        ],
+        "text": [
+          "Élodie"
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Élodie: Isn't the garden lovely? My Pokémon and I come to see the flowers every day!"
+        ],
+        "text": [
+          "Domnișoara Élodie: Nu-i frumoasă grădina? Eu și Pokémonii mei venim să vedem florile în fiecare zi!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Élodie: I should spend less time smelling flowers and more time training."
+        ],
+        "text": [
+          "Domnișoara Élodie: Ar trebui să miros mai puțin florile și să mă antrenez mai mult."
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Théo"
+        ],
+        "text": [
+          "Théo"
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Théo: Lumiose is just up the road! But you'll have to get past me first!"
+        ],
+        "text": [
+          "Puști Théo: Lumiose e chiar în capătul drumului! Dar mai întâi trebuie să treci de mine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Théo: Go on, then. The city won't wait for you forever."
+        ],
+        "text": [
+          "Puști Théo: Hai, du-te. Orașul nu te va aștepta o veșnicie."
+        ]
+      }
+    },
+    "picnicker": {
+      "name": {
+        "en": [
+          "Margaux"
+        ],
+        "text": [
+          "Margaux"
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Margaux: I picked the best spot in the garden for lunch. Want to battle for it?"
+        ],
+        "text": [
+          "Excursionistă Margaux: Mi-am ales cel mai bun loc din grădină pentru prânz. Vrei să luptăm pentru el?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Margaux: Fine, the spot is yours. I'll share my sandwich, though."
+        ],
+        "text": [
+          "Excursionistă Margaux: Bine, locul e al tău. Dar îți dau din sandvișul meu."
+        ]
+      }
+    },
+    "gardener": {
+      "name": {
+        "en": [
+          "Gardener"
+        ],
+        "text": [
+          "Grădinarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I've tended these beds for thirty years. The Flabébé know me, and they choose a flower of their very own."
+        ],
+        "text": [
+          "Îngrijesc straturile astea de treizeci de ani. Flabébé mă cunosc și își aleg fiecare propria floare."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": {
+      "en": [
+        "Route 4 · Parterre Way\nNorth: Lumiose City\nSouth: Santalune City"
+      ],
+      "text": [
+        "Ruta 4 · Calea Parterre\nNord: Orașul Lumiose\nSud: Orașul Santalune"
+      ]
+    }
+  }
+}

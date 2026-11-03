@@ -1,0 +1,43 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Lab"
+    ],
+    "text": [
+      "Laboratorul Pokémon"
+    ]
+  },
+  "people": {
+    "sycamore": {
+      "name": {
+        "en": [
+          "Prof. Sycamore"
+        ],
+        "text": [
+          "Prof. Sycamore"
+        ]
+      }
+    },
+    "sina": {
+      "name": {
+        "en": [
+          "Sina"
+        ],
+        "text": [
+          "Sina"
+        ]
+      }
+    },
+    "dexio": {
+      "name": {
+        "en": [
+          "Dexio"
+        ],
+        "text": [
+          "Dexio"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

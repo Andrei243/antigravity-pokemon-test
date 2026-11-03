@@ -1,5 +1,15 @@
 {
   "people": {
+    "t11_gsmiddleman1_2": {
+      "name": {
+        "en": [
+          "Cameron"
+        ],
+        "text": [
+          "Cameron"
+        ]
+      }
+    },
     "t11_gsgirl2": {
       "name": {
         "en": [
@@ -184,9 +194,6 @@
       ],
       "text": [
         "Silph Co. Head Office\nVizitatorii sunt bineveniți în hol."
-      ],
-      "was": [
-        "Sediul central Silph Co.\nÎnchis vizitatorilor."
       ]
     },
     "T11_013+1": {

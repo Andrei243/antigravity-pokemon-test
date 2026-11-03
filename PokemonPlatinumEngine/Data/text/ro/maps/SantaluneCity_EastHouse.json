@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Santalune City"
+    ],
+    "text": [
+      "Orașul Santalune"
+    ]
+  },
+  "people": {
+    "girl": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My big sister wants to be a photographer like Viola. She's always asking the Gym Leader for tips!"
+        ],
+        "text": [
+          "Sora mea mai mare vrea să devină fotografă ca Viola. O tot întreabă pe Liderul de Arenă de sfaturi!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

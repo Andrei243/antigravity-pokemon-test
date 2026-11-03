@@ -1,0 +1,23 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Team Plasma Grunt"
+        ],
+        "text": [
+          "Recrutul Team Plasma"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This lab was ours once. Team Plasma made something in there... something they never let out."
+        ],
+        "text": [
+          "Laboratorul ăsta a fost al nostru odată. Team Plasma a făcut ceva acolo... ceva ce nu a lăsat niciodată să iasă."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Lumiose City"
+    ],
+    "text": [
+      "Orașul Lumiose"
+    ]
+  },
+  "people": {
+    "grandpa": {
+      "name": {
+        "en": [
+          "Regular"
+        ],
+        "text": [
+          "Clientul fidel"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A café au lait and a view of the avenue. Lumiose has a hundred cafés, but this one is mine."
+        ],
+        "text": [
+          "O cafea cu lapte și o privelişte spre bulevard. Lumiose are o sută de cafenele, dar asta e a mea."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

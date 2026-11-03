@@ -1,0 +1,226 @@
+{
+  "people": {
+    "sina": {
+      "name": {
+        "en": [
+          "Sina"
+        ],
+        "text": [
+          "Sina"
+        ]
+      }
+    },
+    "dexio": {
+      "name": {
+        "en": [
+          "Dexio"
+        ],
+        "text": [
+          "Dexio"
+        ]
+      }
+    },
+    "guard": {
+      "name": {
+        "en": [
+          "Guard"
+        ],
+        "text": [
+          "Paznicul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The tower is closed to visitors today. Its Gym Leader is busy with one of his inventions again."
+        ],
+        "text": [
+          "Turnul e închis pentru vizitatori azi. Liderul lui de Arenă e iar ocupat cu una dintre invențiile sale."
+        ]
+      }
+    },
+    "artist": {
+      "name": {
+        "en": [
+          "Artist"
+        ],
+        "text": [
+          "Artistul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Vert Plaza in the morning light... Every painter in Kalos comes to Lumiose at least once."
+        ],
+        "text": [
+          "Piața Vert în lumina dimineții... Fiecare pictor din Kalos vine la Lumiose măcar o dată."
+        ]
+      }
+    },
+    "tourist": {
+      "name": {
+        "en": [
+          "Tourist"
+        ],
+        "text": [
+          "Turistul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came all this way to see the tower, and now I can't stop looking at the shop windows instead!"
+        ],
+        "text": [
+          "Am venit de-atât de departe să văd turnul și acum nu mă mai pot dezlipi de vitrinele magazinelor!"
+        ]
+      }
+    },
+    "boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Lumiose is so big I got lost twice this morning. Just follow the avenues back to the tower!"
+        ],
+        "text": [
+          "Lumiose e atât de mare, că m-am rătăcit de două ori azi-dimineață. Urmează bulevardele înapoi spre turn!"
+        ]
+      }
+    },
+    "gentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          "Gentlemanul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Five plazas, five colours. Jaune is yellow, the colour of good fortune, or so my grandmother said."
+        ],
+        "text": [
+          "Cinci piețe, cinci culori. Jaune e galben, culoarea norocului, așa zicea bunica."
+        ]
+      }
+    },
+    "waiter": {
+      "name": {
+        "en": [
+          "Waiter"
+        ],
+        "text": [
+          "Chelnerul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The café behind me belongs to a very important gentleman. Do mind your manners inside."
+        ],
+        "text": [
+          "Cafeneaua din spatele meu aparține unui domn foarte important. Să te porți frumos înăuntru."
+        ]
+      }
+    },
+    "lady": {
+      "name": {
+        "en": [
+          "Lady"
+        ],
+        "text": [
+          "Doamna"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The boutiques on this side of town are terribly grand. One day I'll be brave enough to go in."
+        ],
+        "text": [
+          "Buticurile din partea asta a orașului sunt grozav de rafinate. Într-o zi voi avea curajul să intru."
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Lass"
+        ],
+        "text": [
+          "Domnișoara"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The roads out of the city are being mended. Everyone's stuck in Lumiose for a while. I don't mind!"
+        ],
+        "text": [
+          "Drumurile din oraș sunt în reparații. Toți rămân blocați în Lumiose o vreme. Mie nu-mi pasă!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "CitySign": {
+      "en": [
+        "Lumiose City\nThe city of light, the heart of Kalos."
+      ],
+      "text": [
+        "Orașul Lumiose\nOrașul luminii, inima regiunii Kalos."
+      ]
+    },
+    "PrismTowerSign": {
+      "en": [
+        "Prism Tower\nThe light of Lumiose City."
+      ],
+      "text": [
+        "Turnul Prism\nLumina Orașului Lumiose."
+      ]
+    },
+    "JauneSign": {
+      "en": [
+        "Jaune Plaza\nNorth of the tower"
+      ],
+      "text": [
+        "Piața Jaune\nLa nord de turn"
+      ]
+    },
+    "VertSign": {
+      "en": [
+        "Vert Plaza\nWest of the tower"
+      ],
+      "text": [
+        "Piața Vert\nLa vest de turn"
+      ]
+    },
+    "RougeSign": {
+      "en": [
+        "Rouge Plaza\nEast of the tower"
+      ],
+      "text": [
+        "Piața Rouge\nLa est de turn"
+      ]
+    },
+    "MagentaSign": {
+      "en": [
+        "Magenta Plaza\nNorth-east of the tower"
+      ],
+      "text": [
+        "Piața Magenta\nLa nord-est de turn"
+      ]
+    },
+    "BleuSign": {
+      "en": [
+        "Bleu Plaza\nSouth-east of the tower"
+      ],
+      "text": [
+        "Piața Bleu\nLa sud-est de turn"
+      ]
+    }
+  }
+}
