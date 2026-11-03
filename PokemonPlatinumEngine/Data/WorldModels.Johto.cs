@@ -535,6 +535,28 @@ public static partial class WorldModels
     /// <summary>Every Johto room whose inner walls have a look of their own.</summary>
     public static IReadOnlyDictionary<string, PartitionLook> JohtoRoomPartitions => JohtoPartitions;
 
+    /// <summary>
+    /// Hoenn's rooms whose blocked tiles stand for something other than wall (plan 21 · part q): the S.S. Tidal's decks,
+    /// whose cabins' walls ran from the back wall to the front and stood their full height as beams that hid the cabins.
+    /// </summary>
+    private static readonly Dictionary<string, PartitionLook> HoennPartitions = new(StringComparer.Ordinal)
+    {
+        ["SSTidalCorridor"] = PartitionLook.Bulkhead,
+        ["SSTidalRooms"] = PartitionLook.Bulkhead,
+        ["SSTidalLowerDeck"] = PartitionLook.Bulkhead,
+    };
+
+    /// <summary>Every Hoenn room whose inner walls have a look of their own.</summary>
+    public static IReadOnlyDictionary<string, PartitionLook> HoennRoomPartitions => HoennPartitions;
+
+    /// <summary>The look of an imported room's inner walls by its region and map; <see cref="PartitionLook.Wall"/> for every other.</summary>
+    public static PartitionLook PartitionsOf(string region, string map) => region.ToLowerInvariant() switch
+    {
+        "johto" => JohtoPartitionsOf(map),
+        "hoenn" => HoennPartitions.GetValueOrDefault(map, PartitionLook.Wall),
+        _ => PartitionLook.Wall,
+    };
+
     /// <summary>Every model of Johto's own catalogue.</summary>
     public static IReadOnlyList<WorldModel> Johto => JohtoTable;
 

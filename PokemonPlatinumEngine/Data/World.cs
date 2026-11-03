@@ -316,8 +316,9 @@ public static class WorldMapBuilder
         // A room built from a layout is a room of the kind its name says (plan 19 · K1): a Pokémon Center's floor, a
         // Mart's, a lab's, and a house's for the rest, until the region's plan gives its rooms looks of their own
         if (room) map.Interior = RoomStyleOf(entry.Name);
-        // A Johto room's inner walls may be something of their own (plan 20 · J15, part s: the Goldenrod Gym's hedges)
-        if (room && string.Equals(world.Index.Region, "johto", StringComparison.OrdinalIgnoreCase)) map.Partitions = WorldModels.JohtoPartitionsOf(entry.Name);
+        // A Johto or Hoenn room's inner walls may be something of their own (plan 20 · J15, part s: the Goldenrod Gym's
+        // hedges; plan 21 · part q: the S.S. Tidal's bulkheads)
+        if (room) map.Partitions = WorldModels.PartitionsOf(world.Index.Region, entry.Name);
         // A room whose entry names a puzzle has it, as a map file's does (plan 21 · H6: Fortree's rotating gates)
         map.Puzzle = GymPuzzle.Create(entry.Puzzle);
         // A place that keeps its own word on movement inside a free region (plan 30 · FM1)

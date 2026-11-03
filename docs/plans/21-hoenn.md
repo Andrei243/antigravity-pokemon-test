@@ -1309,7 +1309,8 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
       **Built**: eight maps (matrices 3, 4, 5, 288 to 292: the sea floors of Routes 129, 105 and 125, Underwater_MarineCave,
       MarineCave_Entrance, MarineCave_End, TerraCave_Entrance, TerraCave_End) in RegionDatabase's Hoenn list; the
       scientist's report after the Hall of Fame drawing one of Emerald's sixteen places (VAR_ABNORMAL_WEATHER_LOCATION,
-      Draw in oute_119_weather_institute_2f.txt), common.HoennAbnormalWeather and HoennAbnormalWeatherEnd (sixteen flags
+      Draw in 
+oute_119_weather_institute_2f.txt), common.HoennAbnormalWeather and HoennAbnormalWeatherEnd (sixteen flags
       of ours), the eight ways into Terra Cave on Routes 114 to 118 and the eight passages into the Marine Cave's pool on the
       floors of Routes 105 to 129 as overlay doors openedBy those flags, a drought or heavy rain over each route by a zone
       while its flag, Emerald's deep water (abnormal_weather.inc's coordinates) as a new overlay field darkWater

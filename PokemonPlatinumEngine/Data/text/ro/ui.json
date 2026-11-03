@@ -5,6 +5,7 @@
     "coins": "FISE",
     "balls": "BILE RĂMASE",
     "wager": "O BILĂ: {coins} FISE",
+    "wagerOne": "O BILĂ: 1 FISĂ",
     "odds": "PLĂTEȘTE x{odds}",
     "place": "Alege o culoare, un Pokémon sau un pătrat și pune-ți miza!",
     "hit": "Bila a căzut în {square}. Ai nimerit!",

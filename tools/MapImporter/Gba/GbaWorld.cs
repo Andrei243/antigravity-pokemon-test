@@ -352,6 +352,9 @@ public sealed class GbaWorld
                     // and nothing else names it: its tileset is shared with Mt. Pyre and the Space Center, so no row of
                     // the tileset's own could say so
                     if (cover == TerrainCover.Unknown && !m.Solid[i] && ShipDecks.Contains(map.Name)) cover = TerrainCover.Bridge;
+                    // and the cabins' doorways and stairs on it (the shipyard's stairs, which the tileset's row calls a path),
+                    // drawn as sand on the deck, are its planks too (plan 21 · part q)
+                    if (cover == TerrainCover.Path && ShipDecks.Contains(map.Name)) cover = TerrainCover.Bridge;
                     m.Cover[i] = cover;
                     if (indoors) m.Furniture[i] = GbaFurniture.Of(name, tileset, metatile, Source.Game);
                     if (!count) continue;
@@ -429,10 +432,15 @@ public sealed class GbaWorld
         var level = new float[n];
         var known = new bool[n];
         var queue = new Queue<int>();
+        // A road over the water at a level of its own (plan 21 · part q: the Seaside Cycling Road, whose planks Emerald
+        // keeps at elevation 4 over Route 110's sea with a surfable behaviour under them) is a bridge's deck at its level:
+        // its water takes no level from it, and the ground under it is the water's
+        bool Road(int i) => m.Area[i] >= 0 && m.Elevation[i] is not (0 or 1 or 15)
+            && (TileBehavior)m.Behaviour[i] is TileBehavior.BridgeOverWater or TileBehavior.BikeBridgeEastWestOverWater;
         for (int i = 0; i < n; i++)
         {
             int e = m.Elevation[i];
-            if (m.Area[i] < 0 || e is 0 or 1 or 15) continue;
+            if (m.Area[i] < 0 || e is 0 or 1 or 15 || Road(i)) continue;
             level[i] = LevelOf(e);
             known[i] = true;
             queue.Enqueue(i);
@@ -455,6 +463,12 @@ public sealed class GbaWorld
                 queue.Enqueue(j);
             }
         }
+
+        // What a walker stands at: the land's levels and a road's deck, for the ramps and bridges that lead up onto them
+        var standsKnown = (bool[])known.Clone();
+        var standsAt = (float[])level.Clone();
+        for (int i = 0; i < n; i++)
+            if (Road(i)) { standsKnown[i] = true; standsAt[i] = LevelOf(m.Elevation[i]); }
 
         // Water a bridge crosses lies at one level, the lowest its shores give it (plan 21 · H8, part c): Route 120's pond
         // took its west half's level from the bridge's own raised ends, so the deck stood level with the water there and
@@ -495,6 +509,20 @@ public sealed class GbaWorld
                 if (m.Elevation[i] == 1) nearest[i] = lowest;
         }
 
+        // The sea a road or a bridge crosses: the lowest open water within six tiles (a road's rails and the sea beside
+        // a stretch of it can take a raised platform's level for their own)
+        float SeaNear(int x, int y, float lo)
+        {
+            for (int dy = -6; dy <= 6; dy++)
+                for (int dx = -6; dx <= 6; dx++)
+                {
+                    int nx = x + dx, ny = y + dy;
+                    if (!m.Has(nx, ny)) continue;
+                    int j = ny * w + nx;
+                    if (m.Area[j] >= 0 && m.Elevation[j] == 1 && reached[j]) lo = Math.Min(lo, nearest[j]);
+                }
+            return lo;
+        }
         for (int i = 0; i < n; i++)
         {
             if (m.Area[i] < 0) { m.Ground[i] = GroundLevel; continue; }
@@ -502,15 +530,38 @@ public sealed class GbaWorld
             int e = m.Elevation[i];
             float fallback = reached[i] ? nearest[i] : GroundLevel;
             m.Ground[i] = known[i] ? level[i] : fallback;
-            if (e == 0)
+            if (Road(i))
             {
+                float lo = fallback;
+                foreach (var (dx, dy) in Sides)
+                {
+                    int nx = x + dx, ny = y + dy;
+                    if (!m.Has(nx, ny)) continue;
+                    int j = ny * w + nx;
+                    if (m.Elevation[j] != 15 && !Road(j) && reached[j]) lo = Math.Min(lo, nearest[j]);
+                }
+                lo = SeaNear(x, y, lo);
+                m.Ground[i] = lo;
+                if (LevelOf(e) > lo)
+                {
+                    m.Deck[i] = LevelOf(e);
+                    if (m.Cover[i] == TerrainCover.Path) m.Cover[i] = TerrainCover.Bridge;
+                }
+            }
+            else if (e == 0)
+            {
+                // The sea under a road's rails (Route 110's) is the sea's level, not the road's: drawn at the road's, or as a
+                // ramp up to it, it stood up beside the road as walls of water
+                if (m.Cover[i] == TerrainCover.Water && TileBehaviors.IsSurfable((TileBehavior)m.Behaviour[i])
+                    && Sides.Any(d => m.Has(x + d.Item1, y + d.Item2) && (Road((y + d.Item2) * w + x + d.Item1) || m.Elevation[(y + d.Item2) * w + x + d.Item1] == 15)))
+                    m.Ground[i] = SeaNear(x, y, m.Ground[i]);
                 // A run of "any level" tiles between two levels along one way is a ramp from one to the other
-                if (Ends(m, known, level, x, y, 0, 1) is { } ns && ns.A != ns.B)
+                else if (Ends(m, standsKnown, standsAt, x, y, 0, 1) is { } ns && ns.A != ns.B)
                 {
                     m.SlopeZ[i] = (ns.B - ns.A) / ns.Length;
                     m.Ground[i] = ns.A + m.SlopeZ[i] * ns.Before;
                 }
-                else if (Ends(m, known, level, x, y, 1, 0) is { } we && we.A != we.B)
+                else if (Ends(m, standsKnown, standsAt, x, y, 1, 0) is { } we && we.A != we.B)
                 {
                     m.SlopeX[i] = (we.B - we.A) / we.Length;
                     m.Ground[i] = we.A + m.SlopeX[i] * we.Before;
@@ -521,17 +572,60 @@ public sealed class GbaWorld
                 // The deck is at the level of the bridge's ends; the ground is the lowest beside it (the water it crosses)
                 float lo = fallback, hi = fallback;
                 foreach (var (dx, dy) in new[] { (0, 1), (1, 0) })
-                    if (Ends(m, known, level, x, y, dx, dy, 15) is { } ends)
+                    if (Ends(m, standsKnown, standsAt, x, y, dx, dy, 15) is { } ends)
                         hi = Math.Max(hi, Math.Max(ends.A, ends.B));
                 foreach (var (dx, dy) in Sides)
                 {
                     int nx = x + dx, ny = y + dy;
-                    if (m.Has(nx, ny) && m.Elevation[ny * w + nx] != 15 && reached[ny * w + nx]) lo = Math.Min(lo, nearest[ny * w + nx]);
+                    if (m.Has(nx, ny) && m.Elevation[ny * w + nx] != 15 && !Road(ny * w + nx) && reached[ny * w + nx]) lo = Math.Min(lo, nearest[ny * w + nx]);
                 }
                 m.Ground[i] = lo;
                 if (hi > lo) m.Deck[i] = hi;
                 // A plank of the bridge whose metatile does nothing (where Route 120's Steven stands) is still the deck
                 if (hi > lo && m.Cover[i] == TerrainCover.Path) m.Cover[i] = TerrainCover.Bridge;
+            }
+        }
+
+        // A bridge that bends (the Seaside Cycling Road over Route 110's sea, plan 21 · part q) has stretches whose
+        // straight ways end in water, not land, so they found no ends and took no deck: its cyclists stood waist-deep in
+        // the sea. Each such tile takes the deck of the whole bridge it is part of (its elevation-15 tiles joined side by
+        // side): the highest level of the land it meets
+        var bridgeSeen = new bool[n];
+        for (int s = 0; s < n; s++)
+        {
+            if (bridgeSeen[s] || m.Area[s] < 0 || m.Elevation[s] != 15) continue;
+            var span = new List<int>();
+            float top = float.MinValue;
+            var flood = new Queue<int>();
+            flood.Enqueue(s);
+            bridgeSeen[s] = true;
+            while (flood.Count > 0)
+            {
+                int i = flood.Dequeue();
+                span.Add(i);
+                int x = i % w, y = i / w;
+                foreach (var (dx, dy) in Sides)
+                {
+                    int nx = x + dx, ny = y + dy;
+                    if (!m.Has(nx, ny)) continue;
+                    int j = ny * w + nx;
+                    if (m.Area[j] < 0) continue;
+                    if (m.Elevation[j] == 15)
+                    {
+                        if (!bridgeSeen[j]) { bridgeSeen[j] = true; flood.Enqueue(j); }
+                    }
+                    else if (standsKnown[j]) top = Math.Max(top, standsAt[j]);
+                }
+            }
+            if (top == float.MinValue) continue;
+            foreach (int i in span)
+            {
+                if (!float.IsNaN(m.Deck[i])) continue;
+                float below = SeaNear(i % w, i / w, m.Ground[i]);
+                if (top <= below) continue;
+                m.Ground[i] = below;
+                m.Deck[i] = top;
+                if (m.Cover[i] == TerrainCover.Path) m.Cover[i] = TerrainCover.Bridge;
             }
         }
     }

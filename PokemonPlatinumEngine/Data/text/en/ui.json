@@ -4011,6 +4011,7 @@
     "coins": "COINS",
     "balls": "BALLS LEFT",
     "wager": "A BALL: {coins} COINS",
+    "wagerOne": "A BALL: 1 COIN",
     "odds": "PAYS x{odds}",
     "place": "Choose a colour, a Pokémon or a square, and place your wager!",
     "hit": "The ball dropped into {square}. It's a hit!",

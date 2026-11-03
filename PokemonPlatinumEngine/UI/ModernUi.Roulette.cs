@@ -86,11 +86,11 @@ internal static partial class ModernUi
         foreach (int onWheel in w.RestingBalls)
         {
             float a = ((w.WheelAngle + onWheel) % 360) * MathF.PI / 180f;
-            RouletteBallAt(centre + new Vector2(MathF.Sin(a), -MathF.Cos(a)) * 30 * scale, 5 * scale);
+            RouletteBallAt(centre + new Vector2(MathF.Sin(a), -MathF.Cos(a)) * OnOurWheel(30f) * scale, 5 * scale);
         }
         if (w.Ball is not (RouletteBall.Hidden or RouletteBall.InSlot))
         {
-            var (bx, by) = w.BallPosition;
+            var (bx, by) = BallOnOurWheel(w);
             float lift = -w.BallLift;
             if (lift > 0) UiShapes.Circle(centre + new Vector2(bx, by + lift) * scale, 4 * scale, new Color(0, 0, 0, 70));
             RouletteBallAt(centre + new Vector2(bx, by) * scale, 5 * scale);
@@ -149,7 +149,7 @@ internal static partial class ModernUi
             RouletteBallAt(new Vector2(side.X + 262 + (i % 3) * 44, side.Y + 70 + (i / 3) * 40), 15, i < RouletteRound.BallsPerRound - w.BallsThisRound ? 1f : 0.25f);
         var wager = new Rectangle(sw - 468 + (1f - ease) * 200f, 48, 420, 80);
         Panel(wager, 26);
-        UiFonts.Draw(Text.Of("rouletteTable.wager", ("coins", w.MinBet)), wager.X + 26, wager.Y + 24, 32, Ink, UiWeight.Black);
+        UiFonts.Draw((w.MinBet == 1 ? Text.Of("rouletteTable.wagerOne") : Text.Of("rouletteTable.wager", ("coins", w.MinBet))), wager.X + 26, wager.Y + 24, 32, Ink, UiWeight.Black);
 
         // ---- the table's line
         string say = w.Phase switch
@@ -206,6 +206,24 @@ internal static partial class ModernUi
             ("pokemon", LocalNames.Species(RouletteRound.Columns[square % RouletteRound.Pokemon])));
     }
 
+    /// <summary>
+    /// A distance from the wheel's middle in Emerald's pixels as our wheel draws it (plan 21 · part q): Emerald's ball runs at
+    /// 68 and rests in a slot at 30, where our slots run from 40 to 76 round a hub of 40, so the ball rested on the hub.
+    /// The track is laid on our dark rim and the rest in the slot's inner half.
+    /// </summary>
+    private static float OnOurWheel(float distance) => 48f + (distance - 30f) * (84f - 48f) / (68f - 30f);
+
+    private static (float X, float Y) BallOnOurWheel(RouletteWheel w)
+    {
+        float d = w.BallDistance, a = w.BallAngle * MathF.PI / 180f;
+        // (BallPosition is the angle and distance with the ball's lift and a slot's shake on its y)
+        var (x, y) = w.BallPosition;
+        if (d <= 0.01f) return (x, y);
+        float k = OnOurWheel(d) / d;
+        float baseY = -MathF.Cos(a) * d;
+        return (x * k, baseY * k + (y - baseY));
+    }
+
     private static void RouletteBallAt(Vector2 c, float r, float alpha = 1f)
     {
         UiShapes.Circle(c + new Vector2(r * 0.15f, r * 0.2f), r, new Color(0, 0, 0, (int)(80 * alpha)));
@@ -241,7 +259,8 @@ internal static partial class ModernUi
         }
         if (w.Helper != RouletteHelper.Taillow) return;
         float side = w.StuckOnLeft ? -1f : 1f;
-        var ball = centre + new Vector2(w.BallPosition.X, w.BallPosition.Y) * scale;
+        var (tx, ty) = BallOnOurWheel(w);
+        var ball = centre + new Vector2(tx, ty) * scale;
         switch (w.HelperStep)
         {
             case RouletteHelperStep.FlyingIn:
